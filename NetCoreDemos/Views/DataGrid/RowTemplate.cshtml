@@ -1,0 +1,54 @@
+﻿@using DevExtreme.NETCore.Demos.Models.DataGrid
+
+@model IEnumerable<Employee>
+
+@(Html.DevExtreme().DataGrid<Employee>()
+    .ID("gridContainer")
+    .ShowBorders(true)
+    .DataSource(Model, new[] { "ID" })
+    .RowTemplate(@<text>
+        <% var rowClass = "employee dx-row " + ((rowIndex % 2) ? "dx-row-alt" : ""); %>
+        <tbody class="<%- rowClass %>">
+            <tr class="main-row">
+                <td rowspan="2">
+                    <img src="<%- data.Picture %>" alt=""/>
+                </td>
+                <td><%- data.Prefix %></td>
+                <td><%- data.FirstName %></td>
+                <td><%- data.LastName %></td>
+                <td><%- data.Position %></td>
+                <td><%- formatDate(new Date(data.BirthDate)) %></td>
+                <td><%- formatDate(new Date(data.HireDate)) %></td>
+            </tr>
+            <tr class="notes-row">
+                <td colspan="6">
+                    <div><%- data.Notes %></div>
+                </td>
+            </tr>
+        </tbody>
+    </text>)
+    .ColumnAutoWidth(true)
+    .Columns(columns => {
+        columns.AddFor(m => m.Picture)
+            .Caption("Photo")
+            .Width(100)
+            .AllowFiltering(false)
+            .AllowSorting(false);
+
+        columns.AddFor(m => m.Prefix)
+            .Width(70);
+
+        columns.AddFor(m => m.FirstName);
+
+        columns.AddFor(m => m.LastName);
+
+        columns.AddFor(m => m.Position);
+
+        columns.AddFor(m => m.BirthDate);
+
+        columns.AddFor(m => m.HireDate);
+    })
+)
+<script>
+    var formatDate = new Intl.DateTimeFormat("en-US").format;
+</script>

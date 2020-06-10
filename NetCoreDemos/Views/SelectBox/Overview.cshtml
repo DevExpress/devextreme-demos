@@ -1,0 +1,108 @@
+﻿@model DevExtreme.NETCore.Demos.ViewModels.SelectBoxViewModel
+
+<div id="form">
+    <div class="dx-fieldset">
+        <div class="dx-field">
+            <div class="dx-field-label">Default mode</div>
+            <div class="dx-field-value">
+                <div id="products-simple"></div>
+                @(Html.DevExtreme().SelectBox()
+                    .DataSource(Model.Items)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">With a custom placeholder</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().SelectBox()
+                    .DataSource(Model.Items)
+                    .Placeholder("Choose Product")
+                    .ShowClearButton(true)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Read only</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().SelectBox()
+                    .DataSource(Model.Items)
+                    .ReadOnly(true)
+                    .Value("HD Video Player")
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Disabled</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().SelectBox()
+                    .DataSource(Model.Items)
+                    .Disabled(true)
+                    .Value("HD Video Player")
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Data source usage</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().SelectBox()
+                    .DataSource(d => d.Mvc().LoadAction("GetProducts").Key("ID"))
+                    .DisplayExpr("Name")
+                    .ValueExpr("ID")
+                    .Value(1)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Custom templates</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().SelectBox()
+                    .ID("custom-templates")
+                    .DataSource(d => d.Mvc().LoadAction("GetProducts").Key("ID"))
+                    .DisplayExpr("Name")
+                    .ValueExpr("ID")
+                    .Value(4)
+                    .FieldTemplate(@<text>
+                        <div class="custom-item">
+                            <% if(typeof ImageSrc !== 'undefined') { %>
+                                <img src="<%- ImageSrc %>" />
+                            <% } %>
+                            @(Html.DevExtreme().TextBox()
+                                .Value(new JS("typeof Name !== 'undefined' && Name"))
+                                .ElementAttr("class", "product-name")
+                                .ReadOnly(true)
+                            )
+                        </div>
+                    </text>)
+                    .ItemTemplate(@<text>
+                        <div class="custom-item">
+                            <img src="<%- ImageSrc %>" />
+                            <div class="product-name"><%- Name %></div>
+                        </div>
+                    </text>)
+                )
+            </div>
+        </div>
+    </div>
+    <div class="dx-fieldset">
+        <div class="dx-fieldset-header">Event Handling</div>
+        <div class="dx-field">
+            <div class="dx-field-label">Product</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().SelectBox()
+                    .DataSource(Model.Items)
+                    .OnValueChanged("selectBox_valueChanged")
+                    .Value("HD Video Player")
+                )
+            </div>
+        </div>
+        <div class="current-value">
+            Selected product is <span>HD Video Player</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function selectBox_valueChanged(data) {
+        $(".current-value > span").text(data.value);
+    }
+</script>

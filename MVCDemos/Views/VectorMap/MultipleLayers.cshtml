@@ -1,0 +1,41 @@
+﻿@(Html.DevExtreme().VectorMap()
+    .ID("map-container")
+    .Title(t => t.Text("Sea Currents"))
+    .MaxZoomFactor(3)
+    .Layers(layers => {
+        layers.Add()
+            .DataSource(new JS("DevExpress.viz.map.sources.world"))
+            .HoverEnabled(false);
+
+        layers.Add()
+            .Name("water")
+            .DataSource(d => d.StaticJson().Url(Url.Action("GetStreamsData")))
+            .ColorGroupingField("tag")
+            .ColorGroups(new double[] { 0, 1, 2 })
+            .Palette(new[] { "#3c20c8", "#d82020" })
+            .BorderColor("none")
+            .HoverEnabled(false);
+    })
+    .Legends(l => l.Add()
+        .Font(f => f.Size(14))
+        .HorizontalAlignment(HorizontalAlignment.Right)
+        .VerticalAlignment(VerticalEdge.Top)
+        .Source(s => s
+            .Layer("water")
+            .Grouping("color")
+        )
+        .CustomizeText("vectorMap_waterLegend_customizeText")
+    )
+    .Export(e => e.Enabled(true))
+    .Bounds(new double[] { -180, 85, 180, -75 })
+)
+
+<script>
+    function vectorMap_waterLegend_customizeText() {
+        if(this.color === "#3c20c8") {
+            return "Cold";
+        } else {
+            return "Warm";
+        }
+    }
+</script>

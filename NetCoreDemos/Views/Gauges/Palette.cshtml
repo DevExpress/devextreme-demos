@@ -1,0 +1,18 @@
+﻿@(Html.DevExtreme().BarGauge()
+    .ID("gauge")
+    .StartValue(-50)
+    .EndValue(50)
+    .BaseValue(0)
+    .Values(new[] { -21.3, 14.8, -30.9, 45.2 })
+    .Label(l => l.CustomizeText(@<text>
+        function (arg) {
+            return arg.valueText + " mm";
+        }
+    </text>))
+    .Export(e => e.Enabled(true))
+    .Palette(VizPalette.Ocean)
+    .Title(t => t
+        .Text("Deviations in the Manufactured Parts")
+        .Font(f => f.Size(28))
+    )
+)

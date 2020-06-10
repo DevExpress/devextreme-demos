@@ -1,0 +1,27 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Palette(VizPalette.Violet)
+    .CommonSeriesSettings(s => s
+        .ArgumentField("Country")
+        .ValueField("Oil")
+        .Type(SeriesType.Bar)
+    )
+    .SeriesTemplate(t => t
+        .NameField("Year")
+        .CustomizeSeries(@<text>
+            function(valueFromNameField) {
+                return valueFromNameField === 2009 ? { type: "line", label: { visible: true }, color: "#ff3f7a" } : {};
+            }
+        </text>)
+    )
+    .Title(t => t
+        .Text("Oil Production")
+        .Subtitle(s => s.Text("(in millions tonnes)"))
+    )
+    .Export(e => e.Enabled(true))
+    .Legend(l => l
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+    )
+    .DataSource(Model)
+)

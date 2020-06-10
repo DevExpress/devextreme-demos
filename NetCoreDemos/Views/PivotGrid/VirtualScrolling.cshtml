@@ -1,0 +1,43 @@
+﻿@using DevExtreme.NETCore.Demos.Models
+
+@(Html.DevExtreme().PivotGrid<Sale>()
+    .AllowSortingBySummary(true)
+    .AllowSorting(true)
+    .AllowFiltering(true)
+    .AllowExpandAll(true)
+    .ShowBorders(true)
+    .Height(560)
+    .FieldChooser(c => c.Enabled(false))
+    .Scrolling(s => s.Mode(PivotGridScrollingMode.Virtual))
+    .DataSource(d => d
+        .Store(s => s.Mvc().Controller("SalesData").LoadAction("Get"))
+        .Fields(fields => {
+            fields.AddFor(m => m.Region)
+                .Width(120)
+                .Area(PivotGridArea.Row)
+                .Expanded(true);
+
+            fields.AddFor(m => m.City)
+                .Width(150)
+                .Area(PivotGridArea.Row);
+
+            fields.AddFor(m => m.Date)
+                .Area(PivotGridArea.Column);
+
+            fields.Add()
+                .GroupName("Date")
+                .GroupInterval(PivotGridGroupInterval.Year)
+                .Expanded(true);
+
+            fields.Add()
+                .GroupName("Date")
+                .GroupInterval(PivotGridGroupInterval.Quarter)
+                .Expanded(true);
+
+            fields.AddFor(m => m.Amount)
+                .SummaryType(SummaryType.Sum)
+                .Format(Format.Currency)
+                .Area(PivotGridArea.Data);
+        })
+    )
+)

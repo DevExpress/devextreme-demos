@@ -1,0 +1,159 @@
+﻿<div class="long-title"><h3>Daily temperature</h3></div>
+<div id="chart-demo">
+    <table class="demo-table">
+        <tr>
+            <th>
+            </th>
+            <th>June</th>
+            <th>July</th>
+            <th>August</th>
+        </tr>
+        <tr>
+            <th>First week</th>
+            <td>
+                @(Html.DevExtreme().Bullet()
+                    .StartScaleValue(0)
+                    .EndScaleValue(35)
+                    .Tooltip(t => t.CustomizeTooltip("customizeTooltip"))
+                    .ElementAttr("class", "bullet")
+                    .Value(23)
+                    .Target(20)
+                    .Color("#ebdd8f")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Bullet()
+                    .StartScaleValue(0)
+                    .EndScaleValue(35)
+                    .Tooltip(t => t.CustomizeTooltip("customizeTooltip"))
+                    .ElementAttr("class", "bullet")
+                    .Value(27)
+                    .Target(24)
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Bullet()
+                    .StartScaleValue(0)
+                    .EndScaleValue(35)
+                    .Tooltip(t => t.CustomizeTooltip("customizeTooltip"))
+                    .ElementAttr("class", "bullet")
+                    .Value(20)
+                    .Target(26)
+                    .Color("#e55253")
+                )
+            </td>
+        </tr>
+        <tr>
+            <th>Second week</th>
+            <td>
+                @(Html.DevExtreme().Bullet()
+                    .StartScaleValue(0)
+                    .EndScaleValue(35)
+                    .Tooltip(t => t.CustomizeTooltip("customizeTooltip"))
+                    .ElementAttr("class", "bullet")
+                    .Value(24)
+                    .Target(22)
+                    .Color("#ebdd8f")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Bullet()
+                    .StartScaleValue(0)
+                    .EndScaleValue(35)
+                    .Tooltip(t => t.CustomizeTooltip("customizeTooltip"))
+                    .ElementAttr("class", "bullet")
+                    .Value(28)
+                    .Target(24)
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Bullet()
+                    .StartScaleValue(0)
+                    .EndScaleValue(35)
+                    .Tooltip(t => t.CustomizeTooltip("customizeTooltip"))
+                    .ElementAttr("class", "bullet")
+                    .Value(30)
+                    .Target(24)
+                    .Color("#e55253")
+                )
+            </td>
+        </tr>
+        <tr>
+            <th>Third week</th>
+            <td>
+                @(Html.DevExtreme().Bullet()
+                    .StartScaleValue(0)
+                    .EndScaleValue(35)
+                    .Tooltip(t => t.CustomizeTooltip("customizeTooltip"))
+                    .ElementAttr("class", "bullet")
+                    .Value(35)
+                    .Target(24)
+                    .Color("#ebdd8f")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Bullet()
+                    .StartScaleValue(0)
+                    .EndScaleValue(35)
+                    .Tooltip(t => t.CustomizeTooltip("customizeTooltip"))
+                    .ElementAttr("class", "bullet")
+                    .Value(24)
+                    .Target(26)
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Bullet()
+                    .StartScaleValue(0)
+                    .EndScaleValue(35)
+                    .Tooltip(t => t.CustomizeTooltip("customizeTooltip"))
+                    .ElementAttr("class", "bullet")
+                    .Value(28)
+                    .Target(22)
+                    .Color("#e55253")
+                )
+            </td>
+        </tr>
+        <tr>
+            <th>Fourth week</th>
+            <td>
+                @(Html.DevExtreme().Bullet()
+                    .StartScaleValue(0)
+                    .EndScaleValue(35)
+                    .Tooltip(t => t.CustomizeTooltip("customizeTooltip"))
+                    .ElementAttr("class", "bullet")
+                    .Value(29)
+                    .Target(25)
+                    .Color("#ebdd8f")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Bullet()
+                    .StartScaleValue(0)
+                    .EndScaleValue(35)
+                    .Tooltip(t => t.CustomizeTooltip("customizeTooltip"))
+                    .ElementAttr("class", "bullet")
+                    .Value(24)
+                    .Target(27)
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Bullet()
+                    .StartScaleValue(0)
+                    .EndScaleValue(35)
+                    .Tooltip(t => t.CustomizeTooltip("customizeTooltip"))
+                    .ElementAttr("class", "bullet")
+                    .Value(21)
+                    .Target(21)
+                    .Color("#e55253")
+                )
+            </td>
+        </tr>
+    </table>
+</div>
+<script>
+    function customizeTooltip(arg) {
+        return {
+            text: 'Current t&#176: ' + arg.value + '&#176C<br>' + 'Average t&#176: ' + arg.target + '&#176C'
+        };
+    }
+</script>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.SelectedEmployee>
+
+@(Html.DevExtreme().RangeSelector()
+    .ID("range-selector")
+    .Margin(m => m.Top(20))
+    .DataSource(Model)
+    .DataSourceField("BirthYear")
+    .Scale(s => s
+        .TickInterval(1)
+        .MinorTickInterval(1)
+        .Label(f => f.Format(Format.Decimal)))
+    .Behavior(b => b.CallValueChanged(ValueChangedCallMode.OnMoving))
+    .Title("Filter Employee List by Birth Year")
+    .OnValueChanged("rangeSelector_valueChanged")
+)
+<h2 class="grid-header">Selected Employees</h2>
+@(Html.DevExtreme().DataGrid()
+    .ID("data-grid")
+    .DataSource(Model)
+    .ShowBorders(true)
+    .ColumnAutoWidth(true)
+    .Columns(c => {
+        c.Add().DataField("FirstName");
+        c.Add().DataField("LastName");
+        c.Add().DataField("BirthYear");
+        c.Add().DataField("City");
+        c.Add().DataField("Title");
+    })
+)
+
+<script>
+    var _employees = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+
+    function rangeSelector_valueChanged(e) {
+        var selectedEmployees = $.grep(_employees, function(employee) {
+            return employee.BirthYear >= e.value[0] && employee.BirthYear <= e.value[1];
+        });
+        $("#data-grid").dxDataGrid({ dataSource: selectedEmployees });
+    }
+</script>

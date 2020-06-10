@@ -1,0 +1,67 @@
+﻿@model DevExtreme.NETCore.Demos.Models.FileManagement.AzureStorageAccount
+
+@if(!Model.IsEmpty()) {
+    @(Html.DevExtreme().FileUploader()
+        .ID("file-uploader")
+        .ChunkSize(200000)
+        .MaxFileSize(1048576)
+        .UploadChunk("uploadChunk")
+    )
+    <text>
+        <div id="request-panel"></div>
+        <script src="~/utils/azure-file-system.js"></script>
+        <script>
+            function uploadChunk(file, uploadInfo) {
+                var deferred = null;
+
+                if(uploadInfo.chunkIndex === 0) {
+                    deferred = gateway.getUploadAccessUrl(file.name).done(function(accessUrl) {
+                        uploadInfo.customData.accessUrl = accessUrl;
+                    });
+                } else {
+                    deferred = $.Deferred().resolve().promise();
+                }
+
+                deferred = deferred.then(function() {
+                    return gateway.putBlock(uploadInfo.customData.accessUrl, uploadInfo.chunkIndex, uploadInfo.chunkBlob);
+                });
+
+                if(uploadInfo.chunkIndex === uploadInfo.chunkCount - 1) {
+                    deferred = deferred.then(function() {
+                        return gateway.putBlockList(uploadInfo.customData.accessUrl, uploadInfo.chunkCount);
+                    });
+                }
+
+                return deferred.promise();
+            }
+
+            function onRequestExecuted(e) {
+                $("<div>").addClass("request-info").append(
+                        createParameterInfoDiv("Method:", e.method),
+                        createParameterInfoDiv("Url path:", e.urlPath),
+                        createParameterInfoDiv("Query string:", e.queryString),
+                        $("<br>")
+                    )
+                    .prependTo("#request-panel");
+            }
+
+            function createParameterInfoDiv(name, value) {
+                return $("<div>").addClass("parameter-info").append(
+                    $("<div>").addClass("parameter-name").text(name),
+                    $("<div>").addClass("parameter-value dx-theme-accent-as-text-color").text(value).attr("title", value)
+                );
+            }
+
+            var endpointUrl = '@Url.RouteUrl("FileUploaderAzureAccessApi")';
+            var gateway = new AzureGateway(endpointUrl, onRequestExecuted);
+        </script>
+    </text>
+}
+else {
+    <text>
+        To run the demo locally, specify your Azure storage account name, access key and container name in the appsettings.json file.
+        Refer to the <a href="https://demos.devexpress.com/ASPNetCore/Demo/FileUploader/AzureDirectUploading/" target="_blank">
+            https://demos.devexpress.com/ASPNetCore/Demo/FileUploader/AzureDirectUploading/
+        </a> to see the demo online.
+    </text>
+}

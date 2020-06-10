@@ -1,0 +1,1 @@
+DevExtreme ASP.NET MVC Scheduler is a jQuery-powered control for managing events and appointments. Its key features include data binding to Web API and MVC controllers, integration with online services, appointment editing and grouping, time zones support, and many more. You can choose between Razor C\# and Razor VB syntax and use lambda expressions when configuring it.

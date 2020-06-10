@@ -1,0 +1,105 @@
+﻿@model DevExtreme.MVC.Demos.Models.Company
+
+<div id="form-demo">
+    <div class="widget-container">
+        <div>Select company:</div>
+        @(Html.DevExtreme().SelectBox()
+            .DisplayExpr("Name")
+            .DataSource(d => d.Mvc().LoadAction("GetCompanies").Key("ID"))
+            .Value(1)
+            .OnValueChanged("selectBox_valueChanged")
+        )
+        @(Html.DevExtreme().Form()
+            .ID("form")
+            .ColCount(2)
+            .FormData(Model)
+            .LabelLocation(FormLabelLocation.Top)
+            .MinColWidth(300)
+            .ReadOnly(false)
+            .ShowColonAfterLabel(true)
+        )
+    </div>
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            <span>Label location:</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new[] { "left", "top" })
+                .Value("top")
+                .OnValueChanged("labelLocation_changed")
+            )
+        </div>
+        <div class="option">
+            <span>Columns count:</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new object[] { "auto", 1, 2, 3 })
+                .Value(2)
+                .OnValueChanged("colCount_changed")
+            )
+        </div>
+        <div class="option">
+            <span>Min column width:</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new[] { 150, 200, 300 })
+                .Value(300)
+                .OnValueChanged("minColWidth_changed")
+            )
+        </div>
+        <div class="option">
+            <span>Form width:</span>
+            @(Html.DevExtreme().NumberBox()
+                .Value(null)
+                .Max(550)
+                .OnValueChanged("formWidth_changed")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("readOnly")
+                .Value(false)
+                .OnValueChanged("readOnly_changed")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("showColonAfterLabel")
+                .Value(true)
+                .OnValueChanged("showColonAfterLabel_changed")
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    function getFormInstance() {
+        return $("#form").dxForm("instance");
+    }
+
+    function selectBox_valueChanged(data) {
+        getFormInstance().option("formData", data.value);
+    }
+
+    function labelLocation_changed(data) {
+        getFormInstance().option("labelLocation", data.value);
+    }
+
+    function colCount_changed(data) {
+        getFormInstance().option("colCount", data.value);
+    }
+
+    function minColWidth_changed(data) {
+        getFormInstance().option("minColWidth", data.value);
+    }
+
+    function formWidth_changed(data) {
+        getFormInstance().option("width", data.value);
+    }
+
+    function readOnly_changed(data) {
+        getFormInstance().option("readOnly", data.value);
+    }
+
+    function showColonAfterLabel_changed(data) {
+        getFormInstance().option("showColonAfterLabel", data.value);
+    }
+</script>

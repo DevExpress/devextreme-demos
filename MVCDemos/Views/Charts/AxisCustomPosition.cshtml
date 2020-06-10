@@ -1,0 +1,89 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .CommonSeriesSettings(s => s.Type(SeriesType.Scatter))
+    .Series(s => {
+        s.Add().ArgumentField("x1").ValueField("y1");
+        s.Add().ArgumentField("x2").ValueField("y2").Point(p => p
+            .Symbol(PointSymbol.TriangleDown)
+        );
+    })
+    .ArgumentAxis(a => a
+        .CustomPosition(0)
+        .Offset(0)
+        .VisualRange(new double[] { -20, 20 })
+    )
+    .ValueAxis(a => a.Add()
+        .CustomPosition(0)
+        .Offset(0)
+        .EndOnTick(false)
+        .VisualRange(new double[] { -20, 20 })
+    )
+    .Legend(l => l
+        .Visible(false)
+    )
+    .DataSource(Model)
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="common">
+        <div class="block left">
+            <span>Argument Axis</span>
+            <div class="option">
+                <span>Custom position:</span>
+                @(Html.DevExtreme().NumberBox()
+                .Value(0)
+                .ShowSpinButtons(true)
+                .OnValueChanged(@<text>
+                    function(e) {
+                        var chart = $("#chart").dxChart("instance");
+                        chart.option("argumentAxis.customPosition", e.value);
+                    }
+                </text>)
+                )
+            </div>
+            <div class="option">
+                <span>Offset:</span>
+                @(Html.DevExtreme().NumberBox()
+                .Value(0)
+                .ShowSpinButtons(true)
+                .OnValueChanged(@<text>
+                    function(e) {
+                        var chart = $("#chart").dxChart("instance");
+                        chart.option("argumentAxis.offset", e.value);
+                    }
+                </text>)
+                )
+            </div>
+        </div>
+        <div class="block right">
+            <span>Value Axis</span>
+            <div class="option">
+                <span>Custom position:</span>
+                @(Html.DevExtreme().NumberBox()
+                .Value(0)
+                .ShowSpinButtons(true)
+                .OnValueChanged(@<text>
+                    function(e) {
+                        var chart = $("#chart").dxChart("instance");
+                        chart.option("valueAxis[0].customPosition", e.value);
+                    }
+                </text>)
+                )
+            </div>
+            <div class="option">
+                <span>Offset:</span>
+                @(Html.DevExtreme().NumberBox()
+                .Value(0)
+                .ShowSpinButtons(true)
+                .OnValueChanged(@<text>
+                    function(e) {
+                        var chart = $("#chart").dxChart("instance");
+                        chart.option("valueAxis[0].offset", e.value);
+                    }
+                </text>)
+                )
+            </div>
+        </div>
+    </div>
+</div>

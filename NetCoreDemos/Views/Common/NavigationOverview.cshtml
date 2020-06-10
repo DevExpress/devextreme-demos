@@ -1,0 +1,93 @@
+﻿@using DevExtreme.NETCore.Demos.Models
+
+@model CountryInfo
+
+<div class="container">
+    <div class="left-content">
+        @(Html.DevExtreme().TreeView()
+            .DataSource(d => d.Mvc().Controller("Common").LoadAction("GetContinentsInfo").Key("ID"))
+            .ItemsExpr("Items")
+            .ExpandedExpr("Expanded")
+            .SelectionMode(NavSelectionMode.Single)
+            .SelectByClick(true)
+            .SelectedExpr("Selected")
+            .DisplayExpr("Text")
+            .OnItemClick("treeViewItemClick")
+        )
+    </div>
+    <div class="right-content">
+        <div class="title-container">
+            <img class="flag" id="country-flag" src="@Model.Flag" />
+            <div>
+                <div class="country-name" id="full-country-name">@Model.FullName</div>
+                <div id="country-description">@Model.Description</div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div>
+                <div class="sub-title">Area, km<sup>2</sup></div>
+                <div class="stat-value" id="country-area">@Model.Area</div>
+            </div>
+            <div>
+                <div class="sub-title">Population</div>
+                <div class="stat-value" id="country-population">@Model.Population</div>
+            </div>
+            <div>
+                <div class="sub-title">GDP, billion</div>
+                <div class="stat-value" id="country-gdp">$@Model.GDP</div>
+            </div>
+        </div>
+
+        <div class="sub-title">Largest cities</div>
+        @(Html.DevExtreme().TabPanel()
+            .ID("tabpanel")
+            .DataSource(Model.Cities)
+            .AnimationEnabled(true)
+            .ItemTitleTemplate(@<text>
+                <span class="tab-panel-title"><%- Text%></span>
+            </text>)
+            .ItemTemplate(@<text>
+
+                <img class="flag" src="<%- Flag %>" />
+                <div class="right-content">
+                    <div><b><%- (typeof Capital != "undefined" && Capital) ? "Capital. " : "" %></b><%- Description %></div>
+                    <div class="stats">
+                        <div>
+                            <div>Population</div>
+                            <div><b><%- Population %> people</b></div>
+                        </div>
+                        <div>
+                            <div>Area</div>
+                            <div><b><%- Area %> km<sup>2</sup></b></div>
+                        </div>
+                        <div>
+                            <div>Density</div>
+                            <div><b><%- Density %>/km<sup>2</sup></b></div>
+                        </div>
+                    </div>
+                </div>
+            </text>)
+        )
+    </div>
+</div>
+
+<script>
+    function treeViewItemClick(e) {
+        var data = e.itemData;
+        var citiesData = data.Cities;
+        if (citiesData) {
+            $("#country-flag").attr("src", data.Flag);
+            $("#full-country-name").text(data.FullName);
+            $("#country-description").text(data.Description);
+
+            $("#country-area").text(data.Area);
+            $("#country-population").text(data.Population);
+            $("#country-gdp").text("$" + data.GDP);
+
+            var tabPanel = $("#tabpanel").dxTabPanel("instance");
+            tabPanel.option("dataSource", citiesData);
+            tabPanel.option("selectedIndex", 0);
+        }
+    }
+</script>

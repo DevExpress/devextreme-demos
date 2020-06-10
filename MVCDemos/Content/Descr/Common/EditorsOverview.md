@@ -1,0 +1,1 @@
+DevExtreme ASP.NET MVC Editors is a set of jQuery-powered server-side controls for editing and validating data. They can be configured using strongly-typed HTML helpers (see Validation demo), which provides client-side validation based on Data Annotations by default. You can use DevExtreme ASP.NET MVC Editors in Razor C\# or Razor VB views.

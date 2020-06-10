@@ -1,0 +1,27 @@
+﻿@(Html.DevExtreme().CircularGauge()
+    .ID("gauge")
+    .Scale(s => s
+        .StartValue(0)
+        .EndValue(100)
+        .Tick(t => t.Color("#536878"))
+        .TickInterval(10)
+        .Label(l => l.IndentFromTick(3))
+    )
+    .RangeContainer(c => c
+        .Offset(10)
+        .Ranges(r => {
+            r.Add().StartValue(0).EndValue(30).Color("#92000A");
+            r.Add().StartValue(30).EndValue(70).Color("#E6E200");
+            r.Add().StartValue(70).EndValue(100).Color("#77DD77");
+        })
+    )
+    .ValueIndicator(i => i.Offset(50))
+    .SubvalueIndicator(i => i.Offset(-25))
+    .Title(t => t
+        .Text("Amount of Tickets Sold (with Min and Max Expected)")
+        .Font(f => f.Size(28))
+    )
+    .Export(e => e.Enabled(true))
+    .Value(85)
+    .Subvalues(new double[] { 40, 90 })
+)

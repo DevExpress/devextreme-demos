@@ -1,0 +1,80 @@
+﻿<div id="tree-list-demo">
+    @(Html.DevExtreme().TreeList<DevExtreme.NETCore.Demos.Models.TreeList.Employee>()
+        .ID("employees")
+        .DataSource(ds => ds.Mvc()
+            .Controller("TreeListEmployees")
+            .LoadAction("Get")
+            .UpdateAction("Put")
+            .InsertAction("Post")
+            .DeleteAction("Delete")
+            .Key("ID")
+        )
+        .KeyExpr("ID")
+        .ParentIdExpr("HeadID")
+        .ShowRowLines(true)
+        .ShowBorders(true)
+        .Editing(e => e
+            .Mode(GridEditMode.Popup)
+            .AllowUpdating(true)
+            .AllowDeleting(true)
+            .AllowAdding(true)
+            .Popup(p => p
+                .Title("Employee Info")
+                .ShowTitle(true)
+                .Width(700)
+                .Position(pos => pos
+                    .My(HorizontalAlignment.Center, VerticalAlignment.Top)
+                    .At(HorizontalAlignment.Center, VerticalAlignment.Top)
+                    .Of(new JS("window"))
+                )
+            )
+        )
+        .Columns(columns => {
+            columns.AddFor(m => m.FullName);
+
+            columns.AddFor(m => m.Prefix);
+
+            columns.AddFor(m => m.HeadID)
+                .Width(150)
+                .Visible(false)
+                .Lookup(lookup => lookup
+                    .DataSource(ds => ds.Mvc().Controller("TreeListEmployees").LoadAction("Get").Key("ID"))
+                    .DataSourceOptions(dso => dso.Sort(sort => sort.AddSorting("FullName")))
+                    .ValueExpr("ID")
+                    .DisplayExpr("FullName")
+                );
+
+            columns.AddFor(m => m.Title);
+
+            columns.AddFor(m => m.City)
+                .Width(150);
+
+            columns.AddFor(m => m.HireDate)
+                .Width(120);
+
+            columns.Add()
+                .Type(TreeListCommandColumnType.Buttons)
+                .Buttons(b => {
+                    b.Add().Name(TreeListColumnButtonName.Edit);
+                    b.Add().Name(TreeListColumnButtonName.Delete);
+                });
+        })
+        .ColumnAutoWidth(true)
+        .OnEditorPreparing("treeList_onEditorPreparing")
+        .OnInitNewRow("treeList_onInitNewRow")
+        .ExpandedRowKeys(new[] { 1 })
+    )
+</div>
+
+<script>
+    function treeList_onEditorPreparing(e) {
+        if(e.dataField === "HeadID" && e.row.data.ID === 1) {
+            e.editorOptions.disabled = true;
+            e.editorOptions.value = null;
+        }
+    }
+
+    function treeList_onInitNewRow(e) {
+        e.data.HeadID = 1;
+    }
+</script>

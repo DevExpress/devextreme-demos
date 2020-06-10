@@ -1,0 +1,88 @@
+﻿@using DevExtreme.NETCore.Demos.ViewModels
+@model FormViewModel
+
+<div class="long-title"><h3>Employee Details</h3></div>
+<div id="form-container">
+    @(Html.DevExtreme().Form<FormViewModel>()
+        .ID("form")
+        .ColCount(2)
+        .Items(items => {
+            items.AddSimpleFor(m => m.FirstName)
+                .Editor(e => e
+                    .TextBox()
+                    .Disabled(true)
+                );
+
+            items.AddSimpleFor(m => m.Position)
+                .Editor(e => e
+                    .SelectBox()
+                    .DataSource(new[] {
+                            "HR Manager",
+                            "IT Manager",
+                            "CEO",
+                            "Controller",
+                            "Sales Manager",
+                            "Support Manager",
+                            "Shipping Manager"
+                        }
+                    )
+                    .SearchEnabled(true)
+                    .Value("")
+                )
+                .ValidationRules(r => r
+                    .AddRequired()
+                    .Message("Position is required")
+                );
+
+            items.AddSimpleFor(m => m.LastName)
+                .Editor(e => e
+                    .TextBox()
+                    .Disabled(true)
+                );
+
+            items.AddSimpleFor(m => m.HireDate)
+                .Editor(e => e
+                    .DateBox()
+                    .Value(new JS("null"))
+                    .Width("100%")
+                )
+                .ValidationRules(r => r
+                    .AddRequired()
+                    .Message("Hire date is required")
+                );
+
+            items.AddSimpleFor(m => m.BirthDate)
+                .Editor(e => e
+                    .DateBox()
+                    .Disabled(true)
+                    .Width("100%")
+                )
+                .IsRequired(false);
+
+
+            items.AddSimpleFor(m => m.Address);
+
+            items.AddSimpleFor(m => m.Notes)
+                .ColSpan(2)
+                .Editor(e => e
+                    .TextArea()
+                    .Height(90)
+                );
+
+            items.AddSimpleFor(m => m.Phone)
+                .Editor(e => e
+                    .TextBox()
+                    .Mask("+1 (X00) 000-0000")
+                    .MaskRules(new { X = new JS("/[02-9]/") })
+                );
+
+            items.AddSimpleFor(m => m.Email);
+        })
+        .OnContentReady(@<text>
+            function(e) {
+                e.component.validate();
+            }
+        </text>)
+        .FormData(Model)
+    )
+</div>

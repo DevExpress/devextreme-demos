@@ -1,0 +1,54 @@
+﻿<div class="form">
+    <div class="label">Custom size</div>
+
+    @(Html.DevExtreme().LoadIndicator()
+        .ID("small-indicator")
+        .Height(20)
+        .Width(20)
+    )
+
+    @(Html.DevExtreme().LoadIndicator()
+        .ID("medium-indicator")
+        .Height(40)
+        .Width(40)
+    )
+
+    @(Html.DevExtreme().LoadIndicator()
+        .ID("large-indicator")
+        .Height(60)
+        .Width(60)
+    )
+
+    <div class="label">Custom image</div>
+    @(Html.DevExtreme().LoadIndicator()
+        .IndicatorSrc(@Url.Content("~/images/LoadIndicator/Loading.gif"))
+    )
+
+    <div class="label">Using with other widgets</div>
+    @(Html.DevExtreme().Button()
+        .ID("button")
+        .Text("Send")
+        .Height(40)
+        .Width(180)
+        .Template(@<text>
+            @(Html.DevExtreme().LoadIndicator()
+                .ID("button-indicator")
+                .Visible(false)
+            )
+            <span class="dx-button-text"><%- text %></span>
+        </text>)
+        .OnClick("button_onClick")
+    )
+</div>
+
+<script>
+    function button_onClick(data) {
+        data.component.option("text", "Sending");
+        $("#button-indicator").dxLoadIndicator("option", "visible", true);
+
+        setTimeout(function() {
+            $("#button-indicator").dxLoadIndicator("option", "visible", false);
+            data.component.option("text", "Send");
+        }, 2000);
+    }
+</script>

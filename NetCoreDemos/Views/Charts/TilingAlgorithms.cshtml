@@ -1,0 +1,100 @@
+﻿@(Html.DevExtreme().TreeMap()
+    .ID("treemap")
+    .DataSource(new[] {
+        new { name = "Brazil", total = 200050486, items = new[] {
+                new { name = "Age 0-14", value = 48058462 },
+                new { name = "Age 15-44", value = 96036995 },
+                new { name = "Age 45-64", value = 40715296 },
+                new { name = "Age 65+", value = 15239733 }
+            }
+        },
+        new { name = "Japan", total = 126345237, items = new[] {
+                new { name = "Age 0-14", value = 16593766 },
+                new { name = "Age 15-44", value = 45455276 },
+                new { name = "Age 45-64", value = 32845790 },
+                new { name = "Age 65+", value = 31450405 }
+            }
+        },
+        new { name = "United States", total = 318497627, items = new[] {
+                new { name = "Age 0-14", value = 63968935 },
+                new { name = "Age 15-44", value = 127217843 },
+                new { name = "Age 45-64", value = 83145484 },
+                new { name = "Age 65+", value = 44165365 }
+            }
+        }
+    })
+    .LayoutAlgorithm(TreeMapLayoutAlgorithm.Strip)
+    .Colorizer(c => c
+        .Type(TreeMapColorizerType.Discrete)
+        .ColorizeGroups(true))
+    .Title("Population by Age Groups")
+    .Tooltip(t => t
+        .Enabled(true)
+        .Format(Format.Thousands)
+        .CustomizeTooltip("customizeTooltip"))
+    .Size(s => s.Height(460))
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Tiling Algorithm</span>
+        @(Html.DevExtreme().SelectBox()
+            .DataSource(new[] { "sliceAndDice", "squarified", "strip", "custom" })
+            .Width(200)
+            .Value("strip")
+            .OnValueChanged("selectBox_valueChanged")
+            .ElementAttr("class", "selectbox")
+        )
+    </div>
+</div>
+
+<script>
+    function selectBox_valueChanged(data) {
+        var currentAlgorithm;
+
+        if(data.value == "custom") {
+            currentAlgorithm = customAlgorithm;
+        } else {
+            currentAlgorithm = data.value;
+        }
+
+        $("#treemap").dxTreeMap("instance").option("layoutAlgorithm", currentAlgorithm);
+    }
+
+    function customAlgorithm(arg) {
+        var side = 0,
+            totalRect = arg.rect.slice(),
+            totalSum = arg.sum;
+
+        arg.items.forEach(function(item) {
+            var size = Math.round((totalRect[side + 2] -
+                    totalRect[side]) * item.value / totalSum),
+                pos,
+                rect = totalRect.slice();
+
+            totalSum -= item.value;
+            rect[side + 2] = totalRect[side] = totalRect[side] + size;
+            item.rect = rect;
+            side = 1 - side;
+        });
+    }
+
+    function customizeTooltip(arg) {
+        var data = arg.node.data,
+            parentData = arg.node.getParent().data,
+            result = "";
+
+        if(arg.node.isLeaf()) {
+            result = "<span class='country'>" + parentData.name + "</span><br />" +
+            data.name + "<br />" + arg.valueText + " (" +
+            (100 * data.value / parentData.total).toFixed(1) + "%)";
+        } else {
+            result = "<span class='country'>" + data.name + "</span>";
+        }
+
+        return {
+            text: result
+        };
+    }
+</script>

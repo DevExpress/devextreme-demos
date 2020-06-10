@@ -1,0 +1,43 @@
+﻿<div class="tables">
+    <div class="column">
+        @Html.Partial("CollaborativeEditingPartial", "grid1")
+    </div>
+    <div class="column">
+        @Html.Partial("CollaborativeEditingPartial", "grid2")
+    </div>
+</div>
+
+<script src="~/Scripts/signalr/jquery.signalR-2.2.2.js"></script>
+<script src="~/signalr/hubs"></script>
+<script>
+    var groupId = new DevExpress.data.Guid().toJSON();
+    var onBeforeSend = function (operation, ajaxSettings) {
+        ajaxSettings.data.groupId = groupId;
+    };
+
+    $(function () {
+        var store1 = $("#grid1").dxDataGrid("getDataSource").store();
+        var store2 = $("#grid2").dxDataGrid("getDataSource").store();
+        var hub = $.connection.dataGridCollaborativeEditingHub;
+
+        var updateStores = function (events) {
+            store1.push(events);
+            store2.push(events);
+        };
+
+        hub.client.update = function (key, data) {
+            updateStores([{ type: "update", key: key, data: data }]);
+        };
+
+        hub.client.insert = function (data) {
+            updateStores([{ type: "insert", data: data }]);
+        };
+
+        hub.client.remove = function (key) {
+            updateStores([{ type: "remove", key: key }]);
+        };
+
+        $.connection.hub.qs = { 'GroupId': groupId };
+        $.connection.hub.start({ waitForPageLoad: false });
+    });
+</script>

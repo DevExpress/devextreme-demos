@@ -1,0 +1,48 @@
+﻿<div id="chart-demo">
+    <div class="pies-container">
+        @(Html.DevExtreme().PieChart()
+            .Series(s => {
+                s.Add().ArgumentField("Name").ValueField("Area").Label(e => { e.Visible(true); e.Format("percent"); });
+
+            })
+            .Title("Area of Countries")
+            .Palette(VizPalette.Soft)
+            .SizeGroup("sizeGroupName")
+            .Legend(l => l
+                .VerticalAlignment(VerticalEdge.Bottom)
+                .HorizontalAlignment(HorizontalAlignment.Center)
+                .ItemTextPosition(Position.Right)
+                .RowCount(2)
+            )
+            .DataSource(new[] {
+                new { Name = "Russia", Area = 0.12 },
+                new { Name = "Canada", Area = 0.07 },
+                new { Name = "USA", Area = 0.07 },
+                new { Name = "China", Area = 0.07 },
+                new { Name = "Brazil", Area = 0.06 },
+                new { Name = "Australia", Area = 0.05 },
+                new { Name = "India", Area = 0.02 },
+                new { Name = "Others", Area = 0.55 }
+            })
+        )
+
+        @(Html.DevExtreme().PieChart()
+            .Series(s => {
+                s.Add().ArgumentField("Name").ValueField("Area").Label(e => { e.Visible(true); e.Format("percent"); });
+            })
+            .Palette(VizPalette.SoftPastel)
+            .Title("Water/Land Ratio")
+            .SizeGroup("sizeGroupName")
+            .Legend(l => l
+                .VerticalAlignment(VerticalEdge.Bottom)
+                .HorizontalAlignment(HorizontalAlignment.Center)
+                .ItemTextPosition(Position.Right)
+                .RowCount(2)
+            )
+            .DataSource(new[] {
+                new { Name = "Land", Area = 0.29 },
+                new { Name = "Water", Area = 0.71 }
+            })
+        )
+    </div>
+</div>

@@ -1,0 +1,15 @@
+﻿.custom-icon {
+    max-height: 100%;
+    max-width: 100%;
+    font-size: 28px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.custom-item img {
+    float: right;
+}
+
+.custom-item .product-name {
+    padding-right: 20px;
+}

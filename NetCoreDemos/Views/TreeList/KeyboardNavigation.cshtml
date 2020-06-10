@@ -1,0 +1,44 @@
+﻿<div id="tree-list-demo">
+    <p>Click this text and press <b>Tab</b></p>
+    @(Html.DevExtreme().TreeList<DevExtreme.NETCore.Demos.Models.TreeList.Employee>()
+        .ID("treeListContainer")
+        .DataSource(ds => ds.Mvc()
+            .Controller("TreeListEmployees")
+            .LoadAction("Get")
+            .UpdateAction("Put")
+            .DeleteAction("Delete")
+            .Key("ID")
+        )
+        .KeyExpr("ID")
+        .ParentIdExpr("HeadID")
+        .ShowBorders(true)
+        .ExpandedRowKeys(new JS("[1, 2, 3, 5]"))
+        .Editing(editing => {
+            editing.AllowUpdating(true);
+            editing.AllowDeleting(true);
+            editing.SelectTextOnEditStart(true);
+            editing.UseIcons(true);
+        })
+        .HeaderFilter(headerFilter => headerFilter.Visible(true))
+        .FilterPanel(filterPanel => filterPanel.Visible(true))
+        .FilterRow(filterRow => filterRow.Visible(true))
+        .Paging(paging => {
+            paging.Enabled(true);
+            paging.PageSize(10);
+        })
+        .Scrolling(s => s.Mode(TreeListScrollingMode.Standard))
+        .Pager(pager => {
+            pager.Visible(true);
+            pager.AllowedPageSizes(new[] {5, 10});
+            pager.ShowPageSizeSelector(true);
+            pager.ShowNavigationButtons(true);
+        })
+        .FocusedRowEnabled(true)
+        .Columns(columns => {
+            columns.AddFor(m => m.FullName);
+            columns.AddFor(m => m.Title);
+            columns.AddFor(m => m.City);
+            columns.AddFor(m => m.State);
+        })
+    )
+</div>

@@ -1,0 +1,27 @@
+﻿@model DevExtreme.NETCore.Demos.Models.FileManagement.AzureStorageAccount
+
+@if(!Model.IsEmpty()) {
+    @(Html.DevExtreme().FileManager()
+        .FileSystemProvider(provider => provider.Remote()
+            .Url(Url.RouteUrl("FileManagerAzureProviderApi")))
+        .Permissions(permissions => {
+            permissions.Download(true);
+            // uncomment the code below to enable file/folder management
+            // permissions.Create(true);
+            // permissions.Copy(true);
+            // permissions.Move(true);
+            // permissions.Delete(true);
+            // permissions.Rename(true);
+            // permissions.Upload(true);
+        })
+        .AllowedFileExtensions(new string[0])
+        .Upload(upload => upload.MaxFileSize(1048576)));
+}
+else {
+    <text>
+        To run the demo locally, specify your Azure storage account name, access key and container name in the appsettings.json file.
+        Refer to the <a href="https://demos.devexpress.com/ASPNetCore/Demo/FileManager/AzureServerBinding/" target="_blank">
+            https://demos.devexpress.com/ASPNetCore/Demo/FileManager/AzureServerBinding/
+        </a> to see the demo online.
+    </text>
+}

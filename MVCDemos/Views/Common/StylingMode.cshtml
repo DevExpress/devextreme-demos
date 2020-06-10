@@ -1,0 +1,97 @@
+﻿<div class="title">Edit Task</div>
+<div class="editors">
+    <div class="left">
+        @(Html.DevExtreme().TextBox()
+            .Value("Samantha Bright")
+            .Width("100%")
+            .Placeholder("Owner")
+        )
+        @(Html.DevExtreme().TextBox()
+            .ID("subject")
+            .Value("")
+            .Width("100%")
+            .Placeholder("Subject")
+        )
+    </div>
+    <div class="right">
+        @(Html.DevExtreme().DateBox()
+            .Value(new DateTime(2020, 5, 3))
+            .Width("100%")
+            .Placeholder("Start Date")
+        )
+        @(Html.DevExtreme().SelectBox()
+            .Items(new[] { "High", "Urgent", "Normal", "Low" })
+            .Value("High")
+            .Width("100%")
+            .Placeholder("Priority")
+        )
+    </div>
+    <div class="center">
+        @(Html.DevExtreme().TagBox()
+            .Items(new[] { "Not Started", "Need Assistance", "In Progress", "Deferred", "Completed" })
+            .Value(new[] { "Not Started" })
+            .Multiline(false)
+            .Width("100%")
+            .Placeholder("Status")
+        )
+        @(Html.DevExtreme().TextArea()
+            .Value("Need sign-off on the new NDA agreement. It's important that this is done quickly to prevent any unauthorized leaks.")
+            .Width("100%")
+            .Placeholder("Details")
+        )
+    </div>
+    <div class="center">
+        @(Html.DevExtreme().Button()
+            .ElementAttr("class", "validate")
+            .Text("Save")
+            .Type(ButtonType.Default)
+            .OnClick("saveClick")
+        )
+    </div>
+</div>
+<div class="options">
+    <div class="caption">Styling Mode</div>
+    <div class="option">
+        @(Html.DevExtreme().SelectBox()
+            .Items(new[] { "outlined", "filled", "underlined" })
+            .Value(new JS("stylingMode"))
+            .OnValueChanged("stylingModeChanged")
+        )
+    </div>
+</div>
+
+<script>
+    var storageKey = "stylingMode";
+    var stylingMode = readStylingMode() || "filled";
+
+    DevExpress.config({
+        editorStylingMode: stylingMode
+    });
+
+    function saveClick(e) {
+        var result = e.validationGroup.validate();
+        if(result.isValid) {
+            DevExpress.ui.notify("The task was saved successfully.", "success");
+        } else {
+            DevExpress.ui.notify("The task was not saved. Please check if all fields are valid.", "error");
+        }
+    }
+
+    function readStylingMode() {
+        var mode = localStorage.getItem(storageKey);
+        localStorage.removeItem(storageKey);
+        return mode;
+    }
+
+    function stylingModeChanged(e) {
+        localStorage.setItem(storageKey, e.value);
+        window.location.reload(true);
+    }
+
+    $(function() {
+        $("#subject").dxValidator({
+            validationRules: [{ type: "required" }]
+        });
+        DevExpress.validationEngine.validateGroup();
+    });
+</script>

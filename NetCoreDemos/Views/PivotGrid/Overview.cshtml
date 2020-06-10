@@ -1,0 +1,72 @@
+﻿@using DevExtreme.NETCore.Demos.Models
+
+<div id="pivotgrid-demo">
+    @(Html.DevExtreme().Chart()
+        .ID("pivotgrid-chart")
+        .CommonSeriesSettings(s => s.Type(SeriesType.Bar))
+        .Tooltip(t => t.Enabled(true).CustomizeTooltip("customize_tooltip").Format(Format.Currency))
+        .Size(s => s.Height(200))
+        .AdaptiveLayout(l => l.Width(450))
+    )
+
+    @(Html.DevExtreme().PivotGrid<Sale>()
+        .ID("pivotgrid")
+        .AllowSortingBySummary(true)
+        .AllowFiltering(true)
+        .ShowBorders(true)
+        .ShowColumnGrandTotals(false)
+        .ShowRowGrandTotals(false)
+        .ShowRowTotals(false)
+        .ShowColumnTotals(false)
+        .FieldChooser(c => c.Enabled(true).Height(400))
+        .DataSource(d => d
+            .Store(s => s.Mvc().Controller("PivotGridData").LoadAction("Get"))
+            .Fields(fields => {
+                fields.AddFor(m => m.Region)
+                    .Width(120)
+                    .Area(PivotGridArea.Row)
+                    .SortBySummaryField("Total");
+
+                fields.AddFor(m => m.City)
+                    .Width(150)
+                    .Area(PivotGridArea.Row);
+
+                fields.AddFor(m => m.Date)
+                    .Area(PivotGridArea.Column);
+
+                fields.Add()
+                    .GroupName("Date")
+                    .GroupInterval(PivotGridGroupInterval.Month)
+                    .Visible(false);
+
+                fields.AddFor(m => m.Amount)
+                    .SummaryType(SummaryType.Sum)
+                    .Format(Format.Currency)
+                    .Area(PivotGridArea.Data);
+            })
+        )
+        .OnInitialized("bind_chart")
+    )
+</div>
+
+<script>
+    function customize_tooltip(args) {
+        return {
+            html: args.seriesName + " | Total<div class='currency'>" + args.valueText + "</div>"
+        };
+    }
+
+    function bind_chart(e) {
+        e.component.bindChart($("#pivotgrid-chart"), {
+            dataFieldsDisplayMode: "splitPanes",
+            alternateDataFields: false
+        });
+        e.component.on("contentReady", contentReady);
+    }
+    function contentReady(e) {
+        e.component.off("contentReady", contentReady);
+        var dataSource = e.component.getDataSource()
+        dataSource.expandHeaderItem("row", ["North America"]);
+        dataSource.expandHeaderItem("column", [2013]);
+    }
+</script>

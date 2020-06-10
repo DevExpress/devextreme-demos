@@ -1,0 +1,120 @@
+﻿<div id="container">
+    <h1>John Heart</h1>
+
+    @(Html.DevExtreme().Button()
+        .Text("Load Data")
+        .OnClick("button_click")
+    )
+
+    <div id="employee">
+        <p>
+            Birth date: <b class="birth-date"></b>
+        </p>
+        <p class="address">
+            Address:<br />
+            <b class="city"></b><br />
+            <span class="zipcode"></span>
+            <span class="address-info"></span>
+        </p>
+        <p>
+            Phone:
+            <b class="mobile-phone"></b><br />
+            Email: <b class="email"></b>
+        </p>
+    </div>
+
+    @(Html.DevExtreme().LoadPanel()
+        .ID("loadPanel")
+        .ShadingColor("rgba(0,0,0,0.4)")
+        .Position(p => p.Of("#employee"))
+        .Visible(false)
+        .ShowIndicator(true)
+        .ShowPane(true)
+        .Shading(true)
+        .CloseOnOutsideClick(false)
+        .OnShown("loadPanel_shown")
+        .OnHidden("loadPanel_hidden")
+    )
+
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(true)
+                .Text("With indicator")
+                .OnValueChanged("withIndicator_checkBox_valueChanged")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(true)
+                .Text("With overlay")
+                .OnValueChanged("withOverlay_checkBox_valueChanged")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(true)
+                .Text("With pane")
+                .OnValueChanged("withPane_checkBox_valueChanged")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(false)
+                .Text("Close on outside click")
+                .OnValueChanged("closeOnOutsideClick_checkBox_valueChanged")
+            )
+        </div>
+    </div>
+</div>
+
+<script src="~/data/employee.js"></script>
+
+<script>
+
+    function getLoadPanelInstance() {
+        return $("#loadPanel").dxLoadPanel("instance");
+    }
+
+    function showEmployeeInfo(employee) {
+        $(".birth-date").text(employee.Birth_Date || "");
+        $(".city").text(employee.City || "");
+        $(".zipcode").text(employee.Zipcode || "");
+        $(".address-info").text(employee.Address || "");
+        $(".mobile-phone").text(employee.Mobile_Phone || "");
+        $(".email").text(employee.Email || "");
+    }
+
+    function button_click() {
+        getLoadPanelInstance().show();
+        showEmployeeInfo({});
+    }
+
+    function loadPanel_shown(e) {
+        setTimeout(function() {
+            e.component.hide();
+        }, 3000);
+    }
+
+    function loadPanel_hidden() {
+        showEmployeeInfo(employee);
+    }
+
+    function withIndicator_checkBox_valueChanged(e) {
+        getLoadPanelInstance().option("showIndicator", e.value);
+    }
+
+    function withOverlay_checkBox_valueChanged(e) {
+        getLoadPanelInstance().option("shading", e.value);
+    }
+
+    function withPane_checkBox_valueChanged(e) {
+        getLoadPanelInstance().option("showPane", e.value);
+    }
+
+    function closeOnOutsideClick_checkBox_valueChanged(e) {
+        getLoadPanelInstance().option("closeOnOutsideClick", e.value);
+    }
+
+</script>

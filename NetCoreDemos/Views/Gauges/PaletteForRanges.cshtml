@@ -1,0 +1,23 @@
+﻿@(Html.DevExtreme().CircularGauge()
+    .ID("gauge")
+    .Scale(s => s
+        .StartValue(50)
+        .EndValue(150)
+        .TickInterval(10)
+        .Label(l => l.UseRangeColors(true))
+    )
+    .RangeContainer(c => c
+        .Palette(VizPalette.Pastel)
+        .Ranges(r => {
+            r.Add().StartValue(50).EndValue(90);
+            r.Add().StartValue(90).EndValue(130);
+            r.Add().StartValue(130).EndValue(150);
+        })
+    )
+    .Title(t => t
+        .Text("Temperature of the Liquid in the Boiler")
+        .Font(f => f.Size(28))
+    )
+    .Export(e => e.Enabled(true))
+    .Value(105)
+)

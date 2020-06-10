@@ -1,0 +1,60 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.SubvalueIndicator>
+
+@{ var firstIndicator = Model.First(); }
+
+<div id="gauge-demo">
+    @(Html.DevExtreme().LinearGauge()
+        .ID("gauge")
+        .Scale(s => s
+            .StartValue(0)
+            .EndValue(10)
+            .TickInterval(2)
+            .Label(l => l.CustomizeText(@<text>
+                function (arg) {
+                    return arg.valueText + " kW";
+                }
+            </text>))
+        )
+        .Tooltip(t => t
+            .Enabled(true)
+            .CustomizeTooltip(@<text>
+                function (arg) {
+                    var result = arg.valueText + " kW";
+                    if(arg.index >= 0) {
+                        result = "Secondary " + (arg.index + 1) + ": " + result;
+                    }
+                    else {
+                        result = "Primary: " + result;
+                    }
+                    return {
+                        text: result
+                    };
+                }
+            </text>)
+        )
+        .Export(e => e.Enabled(true))
+        .Title(t => t
+            .Text("Power of Air Conditioners in Store Departments (kW)")
+            .Font(f => f.Size(28))
+        )
+        .Value(firstIndicator.Primary)
+        .Subvalues(firstIndicator.Secondary)
+    )
+
+    @(Html.DevExtreme().SelectBox()
+        .ID("selectbox")
+        .DataSource(Model, "Name")
+        .DisplayExpr("Name")
+        .Value("Meat")
+        .OnValueChanged("selectBox_OnValueChanged")
+        .Width(200)
+    )
+</div>
+
+<script>
+    function selectBox_OnValueChanged(data) {
+        var instance = $('#gauge').dxLinearGauge('instance');
+        instance.value(data.value.Primary);
+        instance.subvalues(data.value.Secondary);
+    }
+</script>

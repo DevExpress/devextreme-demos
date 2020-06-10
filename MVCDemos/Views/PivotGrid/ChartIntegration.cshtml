@@ -1,0 +1,78 @@
+﻿@using DevExtreme.MVC.Demos.Models
+
+<div id="pivotgrid-demo">
+    @(Html.DevExtreme().Chart()
+        .ID("pivotgrid-chart")
+        .CommonSeriesSettings(s => s.Type(SeriesType.Bar))
+        .Tooltip(t => t.Enabled(true).CustomizeTooltip("customize_tooltip"))
+        .Size(s => s.Height(320))
+        .AdaptiveLayout(l => l.Width(450))
+    )
+
+    @(Html.DevExtreme().PivotGrid<Sale>()
+        .ID("pivotgrid")
+        .AllowSortingBySummary(true)
+        .AllowFiltering(true)
+        .ShowBorders(true)
+        .ShowColumnGrandTotals(false)
+        .ShowRowGrandTotals(false)
+        .ShowRowTotals(false)
+        .ShowColumnTotals(false)
+        .FieldChooser(c => c.Enabled(true))
+        .DataSource(d => d
+            .Store(s => s.WebApi().Controller("PivotGridData"))
+            .Fields(fields => {
+                fields.AddFor(m => m.Region)
+                    .Width(120)
+                    .Area(PivotGridArea.Row)
+                    .SortBySummaryField("Total");
+
+                fields.AddFor(m => m.City)
+                    .Width(150)
+                    .Area(PivotGridArea.Row);
+
+                fields.AddFor(m => m.Date)
+                    .Area(PivotGridArea.Column);
+
+                fields.Add()
+                    .GroupName("Date")
+                    .GroupInterval(PivotGridGroupInterval.Month)
+                    .Visible(false);
+
+                fields.AddFor(m => m.Amount)
+                    .SummaryType(SummaryType.Sum)
+                    .Format(Format.Currency)
+                    .Area(PivotGridArea.Data);
+
+                fields.Add()
+                    .SummaryType(SummaryType.Count)
+                    .Area(PivotGridArea.Data);
+            })
+        )
+        .OnContentReady("bind_chart")
+    )
+</div>
+
+<script>
+    function formatCurrency(value) {
+        return "$" + new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(value);
+    }
+
+    function customize_tooltip(args) {
+        var valueText = (args.seriesName.indexOf("Total") != -1)
+            ? formatCurrency(args.originalValue)
+            : args.originalValue;
+
+        return {
+            html: args.seriesName + "<div class='currency'>"
+                + valueText + "</div>"
+        };
+    }
+
+    function bind_chart(e) {
+        e.component.bindChart($("#pivotgrid-chart"), {
+            dataFieldsDisplayMode: "splitPanes",
+            alternateDataFields: false
+        });
+    }
+</script>

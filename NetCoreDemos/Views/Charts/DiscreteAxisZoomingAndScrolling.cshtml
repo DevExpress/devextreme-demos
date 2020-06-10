@@ -1,0 +1,77 @@
+﻿<div id="chart-demo">
+    @{
+        var dataSource = new object[] {
+            new { arg = "Inner Core", Si = 7.35, Fe = 79.39, Ni = 5.2, S = 2.3, O = 4.1 },
+            new { arg = "Outer Core", Si = 7.33, Fe = 78.56, Ni =  5.2, S = 2.7, O = 4.2 },
+            new { arg = "Lower Mantle", Si = 21.5, Fe = 5.8, O = 44.8, Mg = 22.8, Al = 2.2, Ca = 2.3, Na = 0.3, K = 0.03 },
+            new { arg = "Upper Mantle", Si = 28.1, Mg = 23.2, Fe = 4.3, Al = 1.2, Ca = 2.2, O = 40.3, Na = 0.2 },
+            new { arg = "Lower Crust", O = 46.6, Si = 27.7, Al = 8.1, Fe = 5, Ca = 3.6, Na = 2.8, K = 2.6, Mg = 1.5 },
+            new { arg = "Upper Crust", O = 47, Si = 29.5, Al = 8.05, Fe = 4.66, Ca = 2.96, Na = 2.5, K = 2.5, Mg = 1.87 }
+        };
+    }
+    @(Html.DevExtreme().Chart()
+        .ID("zoomedChart")
+        .Palette(VizPalette.Soft)
+        .Title("The Chemical Composition of the Earth Layers")
+        .ValueAxis(a => a
+            .Add()
+            .Label(l => l
+                .CustomizeText(@<text>
+                    function() {
+                        return this.valueText + "%";
+                    }
+                </text>)))
+        .DataSource(dataSource)
+        .Series(s => {
+            s.Add().Name("Si").ValueField("Si");
+            s.Add().Name("Fe").ValueField("Fe");
+            s.Add().Name("Ni").ValueField("Ni");
+            s.Add().Name("S").ValueField("S");
+            s.Add().Name("O").ValueField("O");
+            s.Add().Name("Mg").ValueField("Mg");
+            s.Add().Name("Al").ValueField("Al");
+            s.Add().Name("K").ValueField("K");
+            s.Add().Name("Na").ValueField("Na");
+        })
+        .CommonSeriesSettings(s => s
+            .Type(SeriesType.Bar)
+            .IgnoreEmptyPoints(true)
+        )
+        .Legend(l => l
+            .Border(b => b.Visible(true))
+            .Visible(true)
+            .VerticalAlignment(VerticalEdge.Top)
+            .HorizontalAlignment(HorizontalAlignment.Right)
+            .Orientation(Orientation.Horizontal)
+        )
+    )
+    @(Html.DevExtreme().RangeSelector()
+        .Size(s => s.Height(120))
+        .Margin(m => m.Left(10))
+        .Scale(s => s.MinorTickCount(1))
+        .DataSource(dataSource)
+        .Chart(c => c
+            .Palette(VizPalette.Soft)
+            .CommonSeriesSettings(s => s
+                .Type(SeriesType.Bar)
+                .IgnoreEmptyPoints(true)
+            )
+            .Series(s => {
+                s.Add().Name("Si").ValueField("Si");
+                s.Add().Name("Fe").ValueField("Fe");
+                s.Add().Name("Ni").ValueField("Ni");
+                s.Add().Name("S").ValueField("S");
+                s.Add().Name("O").ValueField("O");
+                s.Add().Name("Mg").ValueField("Mg");
+                s.Add().Name("Al").ValueField("Al");
+                s.Add().Name("K").ValueField("K");
+                s.Add().Name("Na").ValueField("Na");
+        }))
+        .Behavior(b => b.CallValueChanged(ValueChangedCallMode.OnMoving))
+        .OnValueChanged(@<text>
+            function (e) {
+                $("#zoomedChart").dxChart("instance").getArgumentAxis().visualRange(e.value);
+            }
+        </text>)
+    )
+</div>

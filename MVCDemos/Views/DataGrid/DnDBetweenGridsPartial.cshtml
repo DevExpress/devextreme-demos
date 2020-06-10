@@ -1,0 +1,35 @@
+﻿@model int
+
+@(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.RowReorderingTask>()
+    .ID("grid" + @Model)
+    .ElementAttr("class", "grid")
+    .Height(440)
+    .DataSource(d => d.WebApi()
+        .RouteName("DnDBetweenGrids")
+        .Key("ID")
+        .LoadAction("Tasks")
+        .UpdateAction("UpdateTask")
+    )
+    .DataSourceOptions(o => o.ReshapeOnPush(true).Filter(new object[]{"Status", "=", @Model}))
+    .RowDragging(rd => rd
+        .Group("tasksGroup")
+        .Option("data", @Model)
+        .OnAdd("onAdd")
+    )
+    .Scrolling(scrolling => scrolling.Mode(GridScrollingMode.Virtual))
+    .ShowBorders(true)
+    .Columns(columns => {
+        columns.AddFor(m => m.Subject);
+
+        columns.AddFor(m => m.Priority)
+            .Width(80)
+            .Lookup(lookup => lookup
+                .DataSource(new JS("priorities"))
+                .ValueExpr("id")
+                .DisplayExpr("text")
+            );
+
+        columns.AddFor(m => m.Status)
+            .Visible(false);
+    })
+)

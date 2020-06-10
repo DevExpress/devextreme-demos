@@ -1,0 +1,82 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Palette(VizPalette.HarmonyLight)
+    .Title("Pizza Shop Complaints")
+    .ArgumentAxis(a => a
+        .Label(l => l
+            .OverlappingBehavior(OverlappingBehavior.Stagger)
+        )
+    )
+    .Tooltip(t => t
+        .Enabled(true)
+        .Shared(true)
+        .CustomizeTooltip(
+            @<text>
+                function(info) {
+                    return {
+                        html: "<div><div class='tooltip-header'>" +
+                        info.argumentText + "</div>" +
+                        "<div class='tooltip-body'><div class='series-name'>" +
+                        info.points[0].seriesName +
+                        ": </div><div class='value-text'>" +
+                        info.points[0].valueText +
+                        "</div><div class='series-name'>" +
+                        info.points[1].seriesName +
+                        ": </div><div class='value-text'>" +
+                        info.points[1].valueText +
+                        "% </div></div></div>"
+                    };
+                }
+            </text>)
+    )
+    .ValueAxis(a => {
+        a.Add()
+            .Name("frequency")
+            .Position(Position.Left)
+            .TickInterval(300);
+        a.Add()
+            .Name("percentage")
+            .Position(Position.Right)
+            .ShowZero(true)
+            .Label(l => l
+            .CustomizeText(
+                @<text>
+                    function(info) {
+                        return info.valueText + "%";
+                    }
+                </text>)
+            )
+            .ConstantLines(c => {
+                c.Add()
+                    .Value(80)
+                    .Color("#fc3535")
+                    .DashStyle(DashStyle.Dash)
+                    .Width(2)
+                    .Label(l => l.Visible(false));
+            })
+            .TickInterval(20)
+            .ValueMarginsEnabled(false);
+    })
+    .CommonSeriesSettings(s => s
+        .ArgumentField("complaint")
+    )
+    .Series(s => {
+        s.Add()
+            .Type(SeriesType.Bar)
+            .ValueField("count")
+            .Axis("frequency")
+            .Name("Complaint frequency")
+            .Color("#fac29a");
+        s.Add()
+            .Type(SeriesType.Spline)
+            .ValueField("cumulativePercentage")
+            .Axis("percentage")
+            .Name("Cumulative percentage")
+            .Color("#6b71c3");
+    })
+    .Legend(l => l
+        .VerticalAlignment(VerticalEdge.Top)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+    )
+    .DataSource(d => d.Mvc().LoadAction("GetComplaintsData"))
+)

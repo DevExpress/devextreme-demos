@@ -1,0 +1,57 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.ViewportCoordinate>
+
+@(Html.DevExtreme().VectorMap()
+    .ID("vector-map")
+    .Layers(l => l.Add().DataSource(new JS("DevExpress.viz.map.sources.world")))
+    .Bounds(new double[] { -180, 85, 180, -60 })
+    .OnZoomFactorChanged("vectorMap_onZoomFactorChanged")
+    .OnCenterChanged("vectorMap_onCenterChanged")
+)
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Continent</span>
+        @(Html.DevExtreme().SelectBox()
+            .ID("choose-continent")
+            .DataSource(Model)
+            .Width(210)
+            .DisplayExpr("Continent")
+            .ValueExpr("Coordinates")
+            .Value(Model.First().Coordinates)
+            .OnValueChanged("selectBox_onValueChanged")
+        )
+    </div>
+    <div class="option">
+        <span>Zoom factor</span>
+        @(Html.DevExtreme().TextBox()
+            .ID("zoom-factor")
+            .Width(210)
+            .ReadOnly(true)
+            .Value("1.00")
+        )
+    </div>
+    <div class="option">
+        <span>Center</span>
+        @(Html.DevExtreme().TextBox()
+            .ID("center")
+            .Width(210)
+            .ReadOnly(true)
+            .Value("0.000, 46.036")
+        )
+    </div>
+</div>
+
+<script>
+    function vectorMap_onZoomFactorChanged(e) {
+        $("#zoom-factor").dxTextBox("instance").option("value", e.zoomFactor.toFixed(2));
+    }
+
+    function vectorMap_onCenterChanged(e) {
+        $("#center").dxTextBox("instance").option("value", e.center[0].toFixed(3) +
+            ", " + e.center[1].toFixed(3));
+    }
+
+    function selectBox_onValueChanged(data) {
+        $("#vector-map").dxVectorMap("instance").viewport(data.value);
+    }
+</script>

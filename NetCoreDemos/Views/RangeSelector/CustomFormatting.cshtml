@@ -1,0 +1,27 @@
+﻿@(Html.DevExtreme().RangeSelector()
+    .ID("range-selector")
+    .Margin(m => m.Top(50))
+    .Scale(s => s
+        .MinorTickInterval(0.001)
+        .TickInterval(0.005)
+        .StartValue(0.004563)
+        .EndValue(0.04976)
+        .Label(l => l.Format(f => f
+            .Type(Format.FixedPoint)
+            .Precision(3)
+        ))
+    )
+    .SliderMarker(sm => sm
+        .Format(f => f
+            .Type(Format.FixedPoint)
+            .Precision(4)
+        )
+        .CustomizeText(@<text>
+            function() {
+                return this.valueText + " mg/L";
+            }
+        </text>)
+    )
+    .Behavior(b => b.SnapToTicks(true))
+    .Title("Select a Lead Concentration in Water")
+)

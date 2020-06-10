@@ -1,0 +1,128 @@
+﻿<div class="form">
+    <div class="dx-fieldset">
+        <div class="dx-fieldset-header">Default Mode</div>
+        <div class="dx-field">
+            <div class="dx-field-label">First Name</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().Autocomplete()
+                    .DataSource(d => d.Mvc().LoadAction("GetNames"))
+                    .Placeholder("Type first name...")
+                    .OnValueChanged("name_changed")
+                )
+            </div>
+        </div>
+    </div>
+    <div class="dx-fieldset">
+        <div class="dx-fieldset-header">With Clear Button</div>
+        <div class="dx-field">
+            <div class="dx-field-label">Last Name</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().Autocomplete()
+                    .DataSource(d => d.Mvc().LoadAction("GetSurnames"))
+                    .ShowClearButton(true)
+                    .Placeholder("Type last name...")
+                    .OnValueChanged("surname_changed")
+                )
+            </div>
+        </div>
+    </div>
+    <div class="dx-fieldset">
+        <div class="dx-fieldset-header">Disabled</div>
+        <div class="dx-field">
+            <div class="dx-field-label">Position</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().Autocomplete()
+                    .DataSource(d => d.Mvc().LoadAction("GetPositions"))
+                    .Value("CEO")
+                    .Disabled(true)
+                    .OnValueChanged("position_changed")
+                )
+            </div>
+        </div>
+    </div>
+    <div class="dx-fieldset">
+        <div class="dx-fieldset-header">With Custom Search Options</div>
+        <div class="dx-field">
+            <div class="dx-field-label">City</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().Autocomplete()
+                    .DataSource(d => d.Mvc().LoadAction("GetCities"))
+                    .MinSearchLength(2)
+                    .SearchTimeout(500)
+                    .Placeholder("Type two symbols to search...")
+                    .OnValueChanged("city_changed")
+                )
+            </div>
+        </div>
+    </div>
+    <div class="dx-fieldset">
+        <div class="dx-fieldset-header">Custom Item Template and Data Source Usage</div>
+        <div class="dx-field">
+            <div class="dx-field-label">State</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().Autocomplete()
+                    .DataSource(d => d.OData()
+                        .Url("https://js.devexpress.com/Demos/DevAV/odata/States?$select=Sate_ID,State_Long,State_Short")
+                        .Key("Sate_ID")
+                        .KeyType(EdmType.Int32)
+                    )
+                    .ValueExpr("State_Long")
+                    .Placeholder("Type state name...")
+                    .OnValueChanged("state_changed")
+                    .ItemTemplate(@<text>
+                        <div><%- State_Long %> (<%- State_Short %>)</div>
+                    </text>)
+                )
+            </div>
+        </div>
+    </div>
+    <div class="dx-fieldset">
+        <div class="dx-fieldset-header">Event Handling</div>
+        <div class="employees-data">
+            Employee data: <span id="employee-data"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    var firstName = "",
+        lastName = "",
+        position = "CEO",
+        city = "",
+        state = "";
+
+    function updateEmployeeInfo() {
+        var result = $.trim((firstName || "") + " " + (lastName || ""));
+
+        result += (result && position) ? (", " + position) : position;
+        result += (result && city) ? (", " + city) : city;
+        result += (result && state) ? (", " + state) : state;
+
+        $("#employee-data").text(result);
+    }
+
+    function name_changed(data) {
+        firstName = data.value;
+        updateEmployeeInfo();
+    }
+
+    function surname_changed(data) {
+        lastName = data.value;
+        updateEmployeeInfo();
+    }
+
+    function position_changed(dat) {
+        position = data.value;
+        updateEmployeeInfo();
+    }
+
+    function city_changed(data) {
+        city = data.value;
+        updateEmployeeInfo();
+    }
+
+    function state_changed(data) {
+        state = data.value;
+        updateEmployeeInfo();
+    }
+</script>

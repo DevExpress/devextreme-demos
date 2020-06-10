@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.ListProduct>
+
+<div class="list-container">
+    @(Html.DevExtreme().List()
+        .ID("list")
+        .DataSource(Model)
+        .Height(400)
+        .SearchEnabled(true)
+        .SearchExpr(new[] { "Name" })
+        .ItemTemplate("<div><%- Name %></div>")
+    )
+</div>
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Search mode</span>
+        @(Html.DevExtreme().SelectBox()
+            .ID("searchMode")
+            .DataSource(new[] { "contains", "startsWith" })
+            .Value("contains")
+            .OnValueChanged("selectBox_valueChanged")
+        )
+    </div>
+</div>
+
+
+
+<script>
+    function selectBox_valueChanged(e) {
+        $("#list").dxList("option", "searchMode", e.value);
+    }
+</script>

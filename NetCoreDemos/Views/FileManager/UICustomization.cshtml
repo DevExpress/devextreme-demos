@@ -1,0 +1,188 @@
+﻿@(Html.DevExtreme().FileManager()
+    .ID("file_manager")
+    .FileSystemProvider(new JS("fileSystem"))
+    .Permissions(permissions => permissions
+        .Create(true)
+        .Delete(true)
+        .Rename(true)
+        .Download(true))
+    .Height(450)
+    .ItemView(itemView => {
+        itemView.Details(details => {
+            details.Columns(columns => {
+                columns.Add().DataField("thumbnail");
+                columns.Add().DataField("name");
+                columns.Add().DataField("category").Caption("Category").Width(95);
+                columns.Add().DataField("dateModified");
+                columns.Add().DataField("size");
+            });
+        })
+        .ShowParentFolder(false);
+    })
+    .Toolbar(toolbar => {
+        toolbar.Items(items => {
+            items.Add().Name(FileManagerToolbarItem.ShowNavPane).Visible(true);
+            items.Add().Name(FileManagerToolbarItem.Separator);
+            items.Add().Name(FileManagerToolbarItem.Create);
+
+            items.Add()
+                .Widget(widget => widget.Menu()
+                    .Items(menuItems => {
+                        menuItems.Add()
+                            .Text("Create new file")
+                            .Icon("plus")
+                            .Items(subItems => {
+                                subItems.Add()
+                                    .Text("Text Document")
+                                    .Option("extension", ".txt");
+                                subItems.Add()
+                                    .Text("RTF Document")
+                                    .Option("extension", ".rtf");
+                                subItems.Add()
+                                    .Text("Spreadsheet")
+                                    .Option("extension", ".xls");
+                            });
+                    })
+                    .OnItemClick("onItemClick"))
+                .Location(ToolbarItemLocation.Before);
+
+            items.Add().Name(FileManagerToolbarItem.Refresh);
+            items.Add().Name(FileManagerToolbarItem.Separator).Location(ToolbarItemLocation.After);
+            items.Add().Name(FileManagerToolbarItem.SwitchView);
+        });
+
+        toolbar.FileSelectionItems(items => {
+            items.Add().Name(FileManagerToolbarItem.Rename);
+            items.Add().Name(FileManagerToolbarItem.Separator);
+            items.Add().Name(FileManagerToolbarItem.Delete);
+            items.Add().Name(FileManagerToolbarItem.Separator);
+
+            items.Add()
+                .Widget(widget => widget.Menu()
+                    .Items(menuItems => {
+                        menuItems.Add()
+                            .Text("Category")
+                            .Icon("tags")
+                            .Items(subItems => {
+                                subItems.Add()
+                                    .Text("Work")
+                                    .Option("category", "Work");
+                                subItems.Add()
+                                    .Text("Important")
+                                    .Option("category", "Important");
+                                subItems.Add()
+                                    .Text("Home")
+                                    .Option("category", "Home");
+                                subItems.Add()
+                                    .Text("None")
+                                    .Option("category", "None");
+                            });
+                    })
+                    .OnItemClick("onItemClick"))
+                    .Location(ToolbarItemLocation.Before);
+
+            items.Add().Name(FileManagerToolbarItem.Refresh);
+            items.Add().Name(FileManagerToolbarItem.ClearSelection);
+        });
+    })
+    .OnContextMenuItemClick("onItemClick")
+    .ContextMenu(contextMenu => {
+        contextMenu.Items(items => {
+            items.Add().Name(FileManagerContextMenuItem.Create);
+
+            items.Add()
+                .Text("Create new file")
+                .Icon("plus")
+                .Items(subItems => {
+                    subItems.Add()
+                        .Text("Text Document")
+                        .Option("extension", ".txt");
+                    subItems.Add()
+                        .Text("RTF Document")
+                        .Option("extension", ".rtf");
+                    subItems.Add()
+                        .Text("Spreadsheet")
+                        .Option("extension", ".xls");
+                });
+
+            items.Add()
+                .Name(FileManagerContextMenuItem.Rename)
+                .BeginGroup(true);
+
+            items.Add().Name(FileManagerContextMenuItem.Delete);
+
+            items.Add()
+                .Text("Category")
+                .Icon("tags")
+                .Items(subItems => {
+                    subItems.Add()
+                        .Text("Work")
+                        .Option("category", "Work");
+                    subItems.Add()
+                        .Text("Important")
+                        .Option("category", "Important");
+                    subItems.Add()
+                        .Text("Home")
+                        .Option("category", "Home");
+                    subItems.Add()
+                        .Text("None")
+                        .Option("category", "");
+                })
+                .BeginGroup(true);
+
+            items.Add().Name(FileManagerContextMenuItem.Refresh);
+        });
+    })
+)
+
+<script type="text/javascript">
+    function onItemClick(args) {
+        var fileManager = getFileManager();
+        var updated = false;
+        if(args.itemData.extension) {
+            updated = createFile(args.itemData.extension);
+        } else if(args.itemData.category !== undefined) {
+            updated = updateCategory(args.itemData.category);
+        }
+
+        if(updated) {
+            fileManager.refresh();
+        }
+    }
+
+    function createFile(fileExtension) {
+        var fileManager = getFileManager();
+        var currentDirectory = fileManager.getCurrentDirectory();
+
+        var newItem = {
+            __KEY__: Date.now(),
+            name: "New file" + fileExtension,
+            isDirectory: false,
+            size: 0
+        };
+
+        if(currentDirectory.dataItem) {
+            currentDirectory.dataItem.items.push(newItem);
+        } else {
+            fileSystem.push(newItem);
+        }
+        return true;
+    }
+
+    function updateCategory(newCategory) {
+        var fileManager = getFileManager();
+        var selectedItems = fileManager.getSelectedItems();
+
+        selectedItems.forEach(function(selectedItem) {
+            selectedItem.dataItem.category = newCategory;
+        });
+
+        return selectedItems.length > 0;
+    }
+
+    function getFileManager() {
+        return $("#file_manager").dxFileManager("instance");
+    }
+</script>
+
+<script src="~/data/fileSystem.js"></script>

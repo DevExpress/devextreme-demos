@@ -1,0 +1,37 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Palette(VizPalette.Violet)
+    .Title("Crude Oil Prices in 2005")
+    .CommonSeriesSettings(s => s
+        .ArgumentField("Date")
+        .Type(SeriesType.RangeBar)
+    )
+    .Series(s => {
+        s.Add().RangeValue1Field("AVal1").RangeValue2Field("AVal2").Name("ANS West Coast");
+        s.Add().RangeValue1Field("TVal1").RangeValue2Field("TVal2").Name("West Texas Intermediate");
+    })
+    .ValueAxis(a => a
+        .Add()
+        .Title(t => t.Text("$ per barrel"))
+    )
+    .ArgumentAxis(a => a.Label(l => l.Format(Format.Month)))
+    .Export(e => e.Enabled(true))
+    .Legend(l => l
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+    )
+    .DataSource(new[] {
+        new { Date = new DateTime(2005, 1, 1), AVal1 = 36.0, AVal2 = 43.29, TVal1 = 42.12, TVal2 = 49.91 },
+        new { Date = new DateTime(2005, 2, 1), AVal1 = 40.68, AVal2 = 47.07, TVal1 = 28.33, TVal2 = 51.75 },
+        new { Date = new DateTime(2005, 3, 1), AVal1 = 45.01, AVal2 = 52.77, TVal1 = 48.96, TVal2 = 56.72 },
+        new { Date = new DateTime(2005, 4, 1), AVal1 = 45.99, AVal2 = 54.14, TVal1 = 49.72, TVal2 = 57.27 },
+        new { Date = new DateTime(2005, 5, 1), AVal1 = 43.73, AVal2 = 49.03, TVal1 = 46.8, TVal2 = 52.07 },
+        new { Date = new DateTime(2005, 6, 1), AVal1 = 49.94, AVal2 = 57.94, TVal1 = 52.54, TVal2 = 60.54 },
+        new { Date = new DateTime(2005, 7, 1), AVal1 = 52.88, AVal2 = 58.98, TVal1 = 54.93, TVal2 = 61.28 },
+        new { Date = new DateTime(2005, 8, 1), AVal1 = 58.81, AVal2 = 67.06, TVal1 = 60.86, TVal2 = 68.94 },
+        new { Date = new DateTime(2005, 9, 1), AVal1 = 61.0, AVal2 = 66.72, TVal1 = 63.0,  TVal2 = 69.47 },
+        new { Date = new DateTime(2005, 10, 1), AVal1 = 57.86, AVal2 = 63.47, TVal1 = 59.76, TVal2 = 65.47 },
+        new { Date = new DateTime(2005, 11, 1), AVal1 = 54.24, AVal2 = 59.98, TVal1 = 56.14, TVal2 = 61.78 },
+        new { Date = new DateTime(2005, 12, 1), AVal1 = 55.22, AVal2 = 59.22, TVal1 = 57.34, TVal2 = 61.37 }
+    })
+)

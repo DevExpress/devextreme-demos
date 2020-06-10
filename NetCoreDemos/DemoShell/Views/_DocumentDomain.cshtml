@@ -1,0 +1,17 @@
+﻿@using System.Text.RegularExpressions
+@functions {
+    (string subdomain, string sld) ParseDomain() {
+        var match = Regex.Match(Context.Request.Host.Host, @"^(\w+)\.(devexpress\.\w+)$", RegexOptions.IgnoreCase);
+        if(match.Success)
+            return (match.Groups[1].Value, match.Groups[2].Value);
+
+        return (null, null);
+    }
+}
+@{
+    var domainInfo = ParseDomain();
+    if(!String.IsNullOrEmpty(domainInfo.sld)) {
+        var useSLD = String.Equals(domainInfo.subdomain, "demos", StringComparison.OrdinalIgnoreCase) || Context.Request.Query.ContainsKey("sld");
+        if(useSLD) {<script>document.domain = @Json.Serialize(domainInfo.sld);</script>}
+    }
+}

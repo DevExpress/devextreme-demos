@@ -1,0 +1,81 @@
+﻿@(Html.DevExtreme().PivotGrid()
+    .AllowSorting(true)
+    .AllowSortingBySummary(true)
+    .AllowFiltering(true)
+    .Height(620)
+    .ShowBorders(true)
+    .RowHeaderLayout(PivotGridRowHeadersLayout.Tree)
+    .Scrolling(e => e.Mode(PivotGridScrollingMode.Virtual))
+    .DataSource(d => d
+        .RemoteOperations(true)
+        .Store(s => s.RemoteController()
+            .Key("OrderID")
+            .LoadUrl("https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/Sales/Orders")
+        )
+        .Fields(fields => {
+            fields.Add()
+                .Caption("Category")
+                .DataField("ProductCategoryName")
+                .Width(250)
+                .SortBySummaryField("SalesAmount")
+                .SortBySummaryPath(new string[0])
+                .SortOrder(SortOrder.Desc)
+                .Expanded(true)
+                .Area(PivotGridArea.Row);
+
+            fields.Add()
+                .Caption("Subcategory")
+                .DataField("ProductSubcategoryName")
+                .Width(250)
+                .SortBySummaryField("SalesAmount")
+                .SortBySummaryPath(new string[0])
+                .SortOrder(SortOrder.Desc)
+                .Area(PivotGridArea.Row);
+
+            fields.Add()
+                .Caption("Product")
+                .DataField("ProductName")
+                .Width(250)
+                .SortBySummaryField("SalesAmount")
+                .SortBySummaryPath(new string[0])
+                .SortOrder(SortOrder.Desc)
+                .Area(PivotGridArea.Row);
+
+            fields.Add()
+                .Caption("Date")
+                .DataField("DateKey")
+                .DataType(PivotGridDataType.Date)
+                .Area(PivotGridArea.Column);
+
+            fields.Add()
+                .Caption("Amount")
+                .DataField("SalesAmount")
+                .SummaryType(SummaryType.Sum)
+                .Format(Format.Currency)
+                .Area(PivotGridArea.Data);
+
+            fields.Add()
+                .Caption("Store")
+                .DataField("StoreName");
+
+            fields.Add()
+                .Caption("Quantity")
+                .DataField("SalesQuantity")
+                .SummaryType(SummaryType.Sum);
+
+            fields.Add()
+                .Caption("Store")
+                .DataField("StoreName");
+
+            fields.Add()
+                .Caption("Unit Price")
+                .DataField("UnitPrice")
+                .SummaryType(SummaryType.Sum)
+                .Format(Format.Currency);
+
+            fields.Add()
+                .DataField("Id")
+                .Visible(false);
+        })
+    )
+)

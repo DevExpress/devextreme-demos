@@ -1,0 +1,150 @@
+﻿@using DevExtreme.AspNet.Mvc.Builders;
+
+<div id="gauge-demo">
+    <div id="gauge-container">
+        <div class="left-section">
+            @(Html.DevExtreme().CircularGauge()
+                .ID("coolant-gauge")
+                .Geometry(g => g
+                    .StartAngle(180)
+                    .EndAngle(90)
+                )
+                .Scale(s => s
+                    .StartValue(0)
+                    .EndValue(100)
+                    .TickInterval(50)
+                )
+                .Value(20)
+                .Size(s => s
+                    .Width(90)
+                    .Height(90)
+                )
+                .ValueIndicator(v => v.Color("#f05b41"))
+            )
+            @(Html.DevExtreme().CircularGauge()
+                .ID("rpm-gauge")
+                .Geometry(g => g
+                    .StartAngle(-90)
+                    .EndAngle(-180)
+                )
+                .Scale(s => s
+                    .StartValue(100)
+                    .EndValue(0)
+                    .TickInterval(50)
+                )
+                .Value(20)
+                .Size(s => s
+                    .Width(90)
+                    .Height(90)
+                )
+                .ValueIndicator(v => v.Color("#f05b41"))
+            )
+        </div>
+        <div class="center-section">
+            @(Html.DevExtreme().CircularGauge()
+                .ID("speed-gauge")
+                .Geometry(g => g
+                    .StartAngle(225)
+                    .EndAngle(315)
+                )
+                .Scale(s => s
+                    .StartValue(20)
+                    .EndValue(200)
+                    .TickInterval(20)
+                    .MinorTickInterval(10)
+                )
+                .Value(40)
+                .Size(s => s.Width(260))
+                .ValueIndicator(v => v
+                    .Type(GaugeIndicatorType.TwoColorNeedle)
+                    .Color("none")
+                    .SecondFraction(0.24)
+                    .SecondColor("#f05b41")
+                )
+            )
+            <div class="speed-value">
+                <span>40</span>
+            </div>
+            @(Html.DevExtreme().LinearGauge()
+                .ID("fuel-gauge")
+                .Scale(s => s
+                    .StartValue(0)
+                    .EndValue(50)
+                    .TickInterval(25)
+                    .MinorTickInterval(12.5)
+                    .MinorTick(mt => mt.Visible(true))
+                    .Label(l => l.Visible(false))
+                )
+                .Value(40.4)
+                .Size(s => s
+                    .Width(90)
+                    .Height(20)
+                )
+                .ValueIndicator(v => v
+                    .Color("#f05b41")
+                    .Size(8)
+                    .Offset(7)
+                )
+            )
+        </div>
+        <div class="right-section">
+            @(Html.DevExtreme().CircularGauge()
+                .ID("psi-gauge")
+                .Geometry(g => g
+                    .StartAngle(90)
+                    .EndAngle(0)
+                )
+                .Scale(s => s
+                    .StartValue(100)
+                    .EndValue(0)
+                    .TickInterval(50)
+                )
+                .Value(20)
+                .Size(s => s
+                    .Width(90)
+                    .Height(90)
+                )
+                .ValueIndicator(v => v.Color("#f05b41"))
+            )
+            @(Html.DevExtreme().CircularGauge()
+                .ID("instant-fuel-gauge")
+                .Geometry(g => g
+                    .StartAngle(0)
+                    .EndAngle(-90)
+                )
+                .Scale(s => s
+                    .StartValue(0)
+                    .EndValue(100)
+                    .TickInterval(50)
+                )
+                .Value(20)
+                .Size(s => s
+                    .Width(90)
+                    .Height(90)
+                )
+                .ValueIndicator(v => v.Color("#f05b41"))
+            )
+        </div>
+    </div>
+    @(Html.DevExtreme().Slider()
+        .ID("slider")
+        .Min(0)
+        .Max(200)
+        .Value(40)
+        .Width(155)
+        .OnValueChanged(@<text>
+            function(e) {
+            var gauges = ["coolant", "psi", "rpm", "instant-fuel"];
+
+            $(".speed-value > span").text(e.value);
+            $("#speed-gauge").dxCircularGauge("instance").value(e.value);
+
+            gauges.forEach(function(gaugeName) {
+            $("#" + gaugeName + "-gauge").dxCircularGauge("instance").value(e.value / 2);
+            });
+
+            $("#fuel-gauge").dxLinearGauge("instance").value(50 - e.value * 0.24);
+            }
+        </text>)
+    )
+</div>

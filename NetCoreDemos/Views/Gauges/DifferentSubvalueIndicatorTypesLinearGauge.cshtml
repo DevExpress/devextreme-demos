@@ -1,0 +1,71 @@
+﻿<div class="long-title"><h3>Current Price (with Min and Max)</h3></div>
+
+@using DevExtreme.AspNet.Mvc.Builders;
+
+@functions {
+    LinearGaugeBuilder CreateGauge() {
+        return Html.DevExtreme().LinearGauge()
+            .Scale(s => s
+                .StartValue(10)
+                .EndValue(50)
+                .TickInterval(10)
+                .Label(l => l.CustomizeText(@"
+                    function (arg) {
+                        return ""$"" + arg.valueText;
+                    }
+                "))
+            );
+    }
+}
+
+<div id="gauge-demo">
+    @(CreateGauge()
+        .ID("c1")
+        .Value(24)
+        .Subvalues(new double[] { 18, 43})
+        .SubvalueIndicator(i => i
+            .Type(GaugeIndicatorType.Rectangle)
+            .Color("#9B870C")
+        )
+    )
+
+    @(CreateGauge()
+        .ID("c2")
+        .Value(38)
+        .Subvalues(new double[] { 18, 43 })
+        .SubvalueIndicator(i => i
+            .Type(GaugeIndicatorType.Rhombus)
+            .Color("#779ECB")
+        )
+    )
+
+    @(CreateGauge()
+        .ID("c3")
+        .Value(21)
+        .Subvalues(new double[] { 18, 43 })
+        .SubvalueIndicator(i => i
+            .Type(GaugeIndicatorType.Circle)
+            .Color("#8FBC8F")
+        )
+    )
+
+    @(CreateGauge()
+        .ID("c4")
+        .Value(42)
+        .Subvalues(new double[] { 18, 43 })
+        .SubvalueIndicator(i => i
+            .Type(GaugeIndicatorType.TextCloud)
+            .Color("#734F96")
+        )
+    )
+
+    @(CreateGauge()
+        .ID("c5")
+        .Value(28)
+        .Subvalues(new double[] { 18, 43 })
+        .SubvalueIndicator(i => i
+            .Type(GaugeIndicatorType.TriangleMarker)
+            .Color("#f05b41")
+        )
+    )
+</div>

@@ -1,0 +1,1 @@
+This example demonstrates the **Scheduler** widget communicating with a&nbsp;Web API service.

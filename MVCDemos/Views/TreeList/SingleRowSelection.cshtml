@@ -1,0 +1,33 @@
+﻿@using DevExtreme.MVC.Demos.Models.TreeList
+
+@model IEnumerable<Employee>
+
+@(Html.DevExtreme().TreeList<Employee>()
+    .ID("employees")
+    .DataSource(Model, "ID")
+    .KeyExpr("ID")
+    .ParentIdExpr("HeadID")
+    .ShowRowLines(true)
+    .ShowBorders(true)
+    .Selection(s => s.Mode(SelectionMode.Single))
+    .Columns(columns => {
+        columns.AddFor(m => m.FullName);
+
+        columns.AddFor(m => m.Title);
+
+        columns.AddFor(m => m.City);
+
+        columns.AddFor(m => m.State);
+
+        columns.AddFor(m => m.HireDate)
+            .Width(120);
+    })
+    .ColumnAutoWidth(true)
+    .OnInitialized("treeList_onInitialized")
+)
+
+<script>
+    function treeList_onInitialized (args) {
+        args.component.expandRow(1);
+    }
+</script>

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.Workout>
+
+@(Html.DevExtreme().Scheduler()
+    .DataSource(Model)
+    .TextExpr("Text")
+    .StartDateExpr("StartDate")
+    .EndDateExpr("EndDate")
+    .Views(new[] { SchedulerViewType.Month })
+    .CurrentView(SchedulerViewType.Month)
+    .CurrentDate(new DateTime(2016, 8, 2, 11, 30, 0))
+    .FirstDayOfWeek(FirstDayOfWeek.Monday)
+    .StartDayHour(8)
+    .EndDayHour(19)
+    .ShowAllDayPanel(false)
+    .Height(600)
+    .Groups(new[] { "EmployeeID" })
+    .Resources(res => {
+        res.Add()
+            .FieldExpr("EmployeeID")
+            .ColorExpr("Color")
+            .DisplayExpr("Text")
+            .ValueExpr("Id")
+            .AllowMultiple(false)
+            .Label("Employee")
+            .DataSource(new[] {
+                new {
+                    Id = 1,
+                    Text = "John Heart",
+                    Color = "#56ca85",
+                    Avatar = "../../images/gym/coach-man.png",
+                    Age = 27,
+                    Discipline = "ABS, Fitball, StepFit"
+                },
+                new {
+                    Id = 2,
+                    Text = "Sandra Johnson",
+                    Color = "#ff9747",
+                    Avatar = "../../images/gym/coach-woman.png",
+                    Age = 25,
+                    Discipline = "ABS, Fitball, StepFit"
+                }
+            });
+    })
+    .DataCellTemplate(new JS(@"
+        function dataCellTemplate(cellData, index, container) {
+            var employeeID = cellData.groups.EmployeeID,
+                currentTraining = getCurrentTraining(cellData.startDate.getDate(), employeeID);
+
+            var wrapper = $('<div>')
+                .toggleClass('employee-weekend-' + employeeID, isWeekEnd(cellData.startDate)).appendTo(container)
+                .addClass('employee-' + employeeID)
+                .addClass('dx-template-wrapper');
+
+            wrapper.append($('<div>')
+                .text(cellData.text)
+                .addClass(currentTraining)
+                .addClass('day-cell')
+            );
+    }"))
+    .ResourceCellTemplate(@<text>
+        <div>
+            <div class="name" style="background-color: <%- data.Color %>;">
+                <h2><%- data.Text %></h2>
+            </div>
+            <div class="avatar" title="<%- data.Text %>">
+                <img src="<%- data.Avatar %>" alt=""/>
+            </div>
+            <div class="info" style="color: <%- data.Color %>;">
+                Age: <%- data.Age %> <br />
+                <b><%- data.Discipline %></b>
+            </div>
+        </div>
+    </text>)
+)
+
+<script>
+    function isWeekEnd(date) {
+        var day = date.getDay();
+        return day === 0 || day === 6;
+    }
+
+    function getCurrentTraining(date, employeeID) {
+        var result = (date + employeeID) % 3,
+            currentTraining = "training-background-" + result;
+
+        return currentTraining;
+    }
+</script>

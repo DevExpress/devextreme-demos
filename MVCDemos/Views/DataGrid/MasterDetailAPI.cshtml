@@ -1,0 +1,43 @@
+﻿@(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.DataGrid.Employee>()
+    .ID("gridContainer")
+    .DataSource(d => d.WebApi().Controller("DataGridMasterDetailAPI").Key("ID"))
+    .ShowBorders(true)
+    .Selection(s => s.Mode(SelectionMode.Single))
+    .OnSelectionChanged(@<text>
+        function(e) {
+            e.component.collapseAll(-1);
+            e.component.expandRow(e.currentSelectedRowKeys[0]);
+        }
+    </text>)
+    .OnContentReady(@<text>
+        function(e) {
+            if(!e.component.getSelectedRowKeys().length)
+                e.component.selectRowsByIndexes(0);
+        }
+    </text>)
+    .Columns(columns => {
+        columns.AddFor(m => m.Prefix)
+            .Width(70);
+
+        columns.AddFor(m => m.FirstName);
+
+        columns.AddFor(m => m.LastName);
+
+        columns.AddFor(m => m.Position)
+            .Width(170);
+
+        columns.AddFor(m => m.State)
+            .Width(125);
+
+        columns.AddFor(m => m.BirthDate);
+    })
+    .MasterDetail(md => {
+        md.Enabled(false);
+        md.Template(@<text>
+            <div class="employeeInfo">
+                <img class="employeePhoto" src="<%- data.Picture %>" />
+                <p class="employeeNotes"><%- data.Notes %></p>
+            </div>
+        </text>);
+    })
+)

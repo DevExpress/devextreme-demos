@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevExtreme.MVC.Demos", "DevExtreme.MVC.Demos.csproj", "{0DDBB45F-E352-4795-AE04-C531A02BCEC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Daily|Any CPU = Daily|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Publish|Any CPU = Publish|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DDBB45F-E352-4795-AE04-C531A02BCEC2}.Daily|Any CPU.ActiveCfg = Daily|Any CPU
+		{0DDBB45F-E352-4795-AE04-C531A02BCEC2}.Daily|Any CPU.Build.0 = Daily|Any CPU
+		{0DDBB45F-E352-4795-AE04-C531A02BCEC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DDBB45F-E352-4795-AE04-C531A02BCEC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DDBB45F-E352-4795-AE04-C531A02BCEC2}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{0DDBB45F-E352-4795-AE04-C531A02BCEC2}.Publish|Any CPU.Build.0 = Publish|Any CPU
+		{0DDBB45F-E352-4795-AE04-C531A02BCEC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DDBB45F-E352-4795-AE04-C531A02BCEC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

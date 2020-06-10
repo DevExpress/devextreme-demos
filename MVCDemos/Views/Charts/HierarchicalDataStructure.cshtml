@@ -1,0 +1,66 @@
+﻿@(Html.DevExtreme().TreeMap()
+    .DataSource(new[] {
+        new { name = "Africa", items = new[] {
+                new { value = 21324000, name = "Lagos", country = "Nigeria" },
+                new { value = 9735000, name = "Kinshasa", country = "Democratic Republic of the Congo" },
+                new { value = 9278441, name = "Cairo", country = "Egypt" }
+            }
+        },
+        new { name = "Asia", items = new[] {
+                new { value = 24256800, name = "Shanghai", country = "China" },
+                new { value = 23500000, name = "Karachi", country = "Pakistan" },
+                new { value = 21516000, name = "Beijing", country = "China" },
+                new { value = 16787941, name = "Delhi", country = "India" },
+                new { value = 15200000, name = "Tianjin", country = "China" }
+            }
+        },
+        new { name = "Australia", items = new[] {
+                new { value = 4840600, name = "Sydney", country = "Austraila" },
+                new { value = 4440000, name = "Melbourne", country = "Austraila" }
+            }
+        },
+        new { name = "Europe", items = new[] {
+                new { value = 14160467, name = "Istanbul", country = "Turkey" },
+                new { value = 12197596, name = "Moscow", country = "Russia" },
+                new { value = 8538689, name = "London", country = "United Kingdom" },
+                new { value = 5191690, name = "Saint Petersburg", country = "Russia" },
+                new { value = 4470800, name = "Ankara", country = "Turkey" },
+                new { value = 3517424, name = "Berlin", country = "Germany" }
+            }
+        },
+        new { name = "North America", items = new[] {
+                new { value = 8874724, name = "Mexico City", country = "Mexico" },
+                new { value = 8550405, name = "New York City", country = "United States" },
+                new { value = 3884307, name = "Los Angeles", country = "United States" },
+                new { value = 2808503, name = "Toronto", country = "Canada" }
+            }
+        },
+        new { name = "South America", items = new[] {
+                new { value = 11895893, name = "São Paulo", country = "Brazil" },
+                new { value = 8693387, name = "Lima", country = "Peru" },
+                new { value = 7776845, name = "Bogotá", country = "Colombia" },
+                new { value = 6429923, name = "Rio de Janeiro", country = "Brazil" }
+            }
+        }
+    })
+    .Title("The Most Populated Cities by Continents")
+    .Tooltip(t => t
+        .Enabled(true)
+        .Format(Format.Thousands)
+        .CustomizeTooltip(@<text>
+            function(arg) {
+                var data = arg.node.data,
+                    result = null;
+
+                if (arg.node.isLeaf()) {
+                    result = "<span class='city'>" + data.name + "</span> (" +
+                        data.country + ")<br />Population: " + arg.valueText;
+                }
+
+                return {
+                    text: result
+                };
+            }
+        </text>))
+    .Size(s => s.Height(500))
+)

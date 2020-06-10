@@ -1,0 +1,74 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Title("Relative Masses of the Heaviest\n Solar System Objects")
+    .Legend(l => l.Visible(false))
+    .Series(s => s
+        .Add()
+        .Type(SeriesType.Bar)
+        .ValueField("Mass")
+        .ArgumentField("Name")
+    )
+    .ValueAxis(v => v
+        .Add()
+        .Visible(true)
+        .AutoBreaksEnabled(true)
+        .MaxAutoBreakCount(3)
+        .BreakStyle(b => b.Line(ScaleBreakLineStyle.Waved))
+    )
+    .DataSource(new[] {
+        new { Name = "Jupiter", Mass = 318.0 },
+        new { Name = "Saturn", Mass = 95.0 },
+        new { Name = "Uranus", Mass = 14.6 },
+        new { Name = "Neptune", Mass = 17.2 },
+        new { Name = "Earth", Mass = 1.0 },
+        new { Name = "Venus", Mass = 0.82 },
+        new { Name = "Mars", Mass = 0.11 },
+        new { Name = "Mercury", Mass = 0.06 }
+    })
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Enable Breaks")
+            .ElementAttr("class", "checkbox")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(data) {
+                    var chart = $("#chart").dxChart("instance");
+                    chart.option("valueAxis[0].autoBreaksEnabled", data.value);
+                }
+            </text>)
+        )
+    </div>
+    <div class="option">
+        <span>Max Count</span>
+        @(Html.DevExtreme().SelectBox()
+            .DataSource(new[] { 1, 2, 3, 4 })
+            .Value(3)
+            .Width(60)
+            .OnValueChanged(@<text>
+                function(data) {
+                    var chart = $("#chart").dxChart("instance");
+                    chart.option("valueAxis[0].maxAutoBreakCount", data.value);
+                }
+            </text>)
+        )
+    </div>
+    <div class="option">
+        <span>Style</span>
+        @(Html.DevExtreme().SelectBox()
+            .DataSource(new[] { ScaleBreakLineStyle.Waved, ScaleBreakLineStyle.Straight })
+            .Value(ScaleBreakLineStyle.Waved)
+            .Width(120)
+            .OnValueChanged(@<text>
+                function(data) {
+                    var chart = $("#chart").dxChart("instance");
+                    chart.option("valueAxis[0].breakStyle.line", data.value);
+                }
+            </text>)
+        )
+    </div>
+</div>
+

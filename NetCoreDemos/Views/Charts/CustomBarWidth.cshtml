@@ -1,0 +1,33 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Palette(VizPalette.Soft)
+    .CommonSeriesSettings(s => s
+        .ArgumentField("State")
+        .Type(SeriesType.Bar)
+        .BarPadding(0.5)
+    )
+    .Series(s => {
+        s.Add().ValueField("Year1970").Name("1970");
+        s.Add().ValueField("Year1980").Name("1980");
+        s.Add().ValueField("Year1990").Name("1990");
+        s.Add().ValueField("Year2000").Name("2000");
+        s.Add().ValueField("Year2008").Name("2008");
+        s.Add().ValueField("Year2009").Name("2009");
+    })
+    .Legend(l => l
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+    )
+    .Export(e => e.Enabled(true))
+    .Title(t => t
+        .Text("Oil Production")
+        .Subtitle(s => s.Text("(in millions tonnes)"))
+    )
+    .DataSource(new[] {
+        new { State = "Saudi Arabia", Year1970 = 192.2, Year1980 = 509.8, Year1990 = 342.6, Year2000 = 456.3, Year2008 = 515.3, Year2009 = 459.5 },
+        new { State = "USA", Year1970 = 533.5, Year1980 = 480.2, Year1990 = 416.6, Year2000 = 352.6, Year2008 = 304.9, Year2009 = 325.3 },
+        new { State = "China", Year1970 = 30.7, Year1980 = 106.0, Year1990 = 138.3, Year2000 = 162.6, Year2008 = 195.1, Year2009 = 189.0 },
+        new { State = "Canada", Year1970 = 70.1, Year1980 = 83.3, Year1990 = 92.6, Year2000 = 126.9, Year2008 = 157.7, Year2009 = 155.7 },
+        new { State = "Mexico", Year1970 = 24.2, Year1980 = 107.2, Year1990 = 146.3, Year2000 = 171.2, Year2008 = 157.7, Year2009 = 147.5 }
+    })
+)

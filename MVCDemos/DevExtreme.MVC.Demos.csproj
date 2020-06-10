@@ -1,0 +1,2390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0DDBB45F-E352-4795-AE04-C531A02BCEC2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DevExtreme.MVC.Demos</RootNamespace>
+    <AssemblyName>DevExtreme.MVC.Demos</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>true</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <ExcludeFilesFromDeployment>App_Data\Northwind_log.ldf</ExcludeFilesFromDeployment>
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
+    <LangVersion>6</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonMark, Version=0.1.0.0, Culture=neutral, PublicKeyToken=001ef8810438905d, processorArchitecture=MSIL">
+      <HintPath>packages\CommonMark.NET.0.15.1\lib\net45\CommonMark.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExtreme.AspNet.Data, Version=2.6.1.0, Culture=neutral, PublicKeyToken=982f5dab1439d0f7, processorArchitecture=MSIL">
+      <HintPath>packages\DevExtreme.AspNet.Data.2.6.1\lib\net452\DevExtreme.AspNet.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExtreme.AspNet.Mvc">
+      <HintPath>lib\DevExtreme.AspNet.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.SignalR.Core.2.4.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SqlServer, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.SignalR.SqlServer.2.4.0\lib\net45\Microsoft.AspNet.SignalR.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Storage.Blob, Version=11.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Azure.Storage.Blob.11.1.0\lib\net452\Microsoft.Azure.Storage.Blob.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Storage.Common, Version=11.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Azure.Storage.Common.11.1.0\lib\net452\Microsoft.Azure.Storage.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Cors.3.1.0\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridRowReorderingController.cs" />
+    <Compile Include="Controllers\ApiControllers\DnDBetweenGridsController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridCustomEditorsController.cs" />
+    <Compile Include="Controllers\ApiControllers\FileManagerAzureAccessApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\FileManagerAzureProviderApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\FileManagerAzureStatusApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\FileManagerDBProviderApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\FileManagerScriptsApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\FileManagerImagesApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\FileUploaderAzureAccessApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\ListItemDraggingEditingController.cs" />
+    <Compile Include="Controllers\ApiControllers\SchedulerSignalRController.cs" />
+    <Compile Include="Controllers\ApiControllers\SelectBoxEditingController.cs" />
+    <Compile Include="Controllers\ApiControllers\DiagramEmployeesController.cs" />
+    <Compile Include="Controllers\ApiControllers\TreeListEditingEmployeesController.cs" />
+    <Compile Include="Controllers\DiagramController.cs" />
+    <Compile Include="Controllers\DrawerController.cs" />
+    <Compile Include="Controllers\ApiControllers\ActionsOverviewController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridColumnsController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridCustomSummariesController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridAdvancedMasterDetailViewController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridEmployeesByStateController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridCitiesByStateController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridCollaborativeEditingController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridEmployeesValidationController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridHorizontalScrollingController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridStatesWithCitiesController.cs" />
+    <Compile Include="Controllers\ApiControllers\TemperatureDataController.cs" />
+    <Compile Include="Controllers\ApiControllers\WorldPopulationDataController.cs" />
+    <Compile Include="Controllers\ApiControllers\ListEditingController.cs" />
+    <Compile Include="Controllers\ApiControllers\TreeListDataController.cs" />
+    <Compile Include="Controllers\ApiControllers\EmployeesTasksController.cs" />
+    <Compile Include="Controllers\ApiControllers\TreeListTasksController.cs" />
+    <Compile Include="Controllers\ApiControllers\TreeViewPlainDataController.cs" />
+    <Compile Include="Controllers\ApiControllers\TreeListEmployeesController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridMasterDetailAPIController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridEmployeesController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridSalesController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridFilteringController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridMultipleSortingController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridStatesLookupController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridSummariesController.cs" />
+    <Compile Include="Controllers\ApiControllers\GeoNamesController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridMasterDetailViewController.cs" />
+    <Compile Include="Controllers\ApiControllers\SalesDataController.cs" />
+    <Compile Include="Controllers\ApiControllers\PivotGridDataController.cs" />
+    <Compile Include="Controllers\ApiControllers\SchedulerDataController.cs" />
+    <Compile Include="Controllers\ApiControllers\TreeViewDataController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridCustomersController.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridScrollingController.cs" />
+    <Compile Include="Controllers\AutocompleteController.cs" />
+    <Compile Include="Controllers\ButtonGroupController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\DropDownButtonController.cs" />
+    <Compile Include="Controllers\FieldSetController.cs" />
+    <Compile Include="Controllers\FileManagerController.cs" />
+    <Compile Include="Controllers\FilterBuilderController.cs" />
+    <Compile Include="Controllers\FloatingActionButtonController.cs" />
+    <Compile Include="Controllers\HtmlEditorController.cs" />
+    <Compile Include="Controllers\LocalizationController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\LookupController.cs" />
+    <Compile Include="Controllers\MultiViewController.cs" />
+    <Compile Include="Controllers\SortableController.cs" />
+    <Compile Include="Controllers\TabsController.cs" />
+    <Compile Include="Controllers\RangeSliderController.cs" />
+    <Compile Include="Controllers\SliderController.cs" />
+    <Compile Include="Controllers\RadioGroupController.cs" />
+    <Compile Include="Controllers\ScrollViewController.cs" />
+    <Compile Include="Controllers\ButtonController.cs" />
+    <Compile Include="Controllers\ColorBoxController.cs" />
+    <Compile Include="Controllers\CalendarController.cs" />
+    <Compile Include="Controllers\DropDownBoxController.cs" />
+    <Compile Include="Controllers\GaugesController.cs" />
+    <Compile Include="Controllers\LoadPanelController.cs" />
+    <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Controllers\LoadIndicatorController.cs" />
+    <Compile Include="Controllers\ProgressBarController.cs" />
+    <Compile Include="Controllers\ContextMenuController.cs" />
+    <Compile Include="Controllers\TooltipController.cs" />
+    <Compile Include="Controllers\ToastController.cs" />
+    <Compile Include="Controllers\PopupController.cs" />
+    <Compile Include="Controllers\PopoverController.cs" />
+    <Compile Include="Controllers\RangeSelectorController.cs" />
+    <Compile Include="Controllers\TagBoxController.cs" />
+    <Compile Include="Controllers\SelectBoxController.cs" />
+    <Compile Include="Controllers\NumberBoxController.cs" />
+    <Compile Include="Controllers\DateBoxController.cs" />
+    <Compile Include="Controllers\TextAreaController.cs" />
+    <Compile Include="Controllers\TextBoxController.cs" />
+    <Compile Include="Controllers\SwitchController.cs" />
+    <Compile Include="Controllers\CheckBoxController.cs" />
+    <Compile Include="Controllers\PivotGridController.cs" />
+    <Compile Include="Controllers\ChartsController.cs" />
+    <Compile Include="Controllers\TreeListController.cs" />
+    <Compile Include="Controllers\GanttController.cs" />
+    <Compile Include="Controllers\RemoteValidationController.cs" />
+    <Compile Include="Controllers\ValidationController.cs" />
+    <Compile Include="Controllers\VectorMapController.cs" />
+    <Compile Include="DemoShell\Demo.cs" />
+    <Compile Include="DemoShell\DemoGroup.cs" />
+    <Compile Include="DemoShell\DemoMenuMeta.cs" />
+    <Compile Include="DemoShell\DemoSourceFile.cs" />
+    <Compile Include="DemoShell\DemoTreeNode.cs" />
+    <Compile Include="DemoShell\DemoUtils.cs" />
+    <Compile Include="DemoShell\Parsers\ActionTextParser.cs" />
+    <Compile Include="DemoShell\Parsers\IParser.cs" />
+    <Compile Include="Hubs\DataGridCollaborativeEditingHub.cs" />
+    <Compile Include="Hubs\SchedulerSignalRHub.cs" />
+    <Compile Include="Hubs\LiveUpdateSignalRHub.cs" />
+    <Compile Include="Hubs\StockTickDataHub.cs" />
+    <Compile Include="Models\AdaptabilityAppointment.cs" />
+    <Compile Include="Models\AdaptabilityAppointmentsResource.cs" />
+    <Compile Include="Models\CustomEditorsEmployee.cs" />
+    <Compile Include="Models\CustomEditorsTask.cs" />
+    <Compile Include="Models\DataGrid\InMemoryRowReorderingTasksDataContext.cs" />
+    <Compile Include="Models\DataGrid\InMemoryTasksDataContext.cs" />
+    <Compile Include="Models\DiscreteScaleTemperature.cs" />
+    <Compile Include="Models\ElectronicsCategory.cs" />
+    <Compile Include="Models\ElectronicsGroupedItem.cs" />
+    <Compile Include="Models\ElectronicsSimpleItem.cs" />
+    <Compile Include="Models\FileManagement\AzureBlobFileProvider.cs" />
+    <Compile Include="Models\FileManagement\AzureStorageAccount.cs" />
+    <Compile Include="Models\FileManagement\DBFileProvider.cs" />
+    <Compile Include="Models\FileManagement\FileItem.cs" />
+    <Compile Include="Models\FileManagement\FileManagementDbContext.cs" />
+    <Compile Include="Models\FileManagement\InMemoryFileManagementDataContext.cs" />
+    <Compile Include="Models\FileManagement\User.cs" />
+    <Compile Include="Models\Gantt\Resource.cs" />
+    <Compile Include="Models\Gantt\ResourceAssignment.cs" />
+    <Compile Include="Models\Gantt\Dependency.cs" />
+    <Compile Include="Models\Gantt\Task.cs" />
+    <Compile Include="Models\InMemoryDataContext.cs" />
+    <Compile Include="Models\InMemoryListDoingDataContext.cs" />
+    <Compile Include="Models\InMemoryListPlannedDataContext.cs" />
+    <Compile Include="Models\InMemoryListTasksDataContext.cs" />
+    <Compile Include="Models\InMemorySelectBoxDataContext.cs" />
+    <Compile Include="Models\ListTaskItem.cs" />
+    <Compile Include="Models\NavigationItem.cs" />
+    <Compile Include="Models\NavigationItemWithIcon.cs" />
+    <Compile Include="Models\DataService\Sale.cs" />
+    <Compile Include="Models\EmployeeMention.cs" />
+    <Compile Include="Models\OrgItems.cs" />
+    <Compile Include="Models\ContextMenuItem.cs" />
+    <Compile Include="Models\RowReorderingTask.cs" />
+    <Compile Include="Models\SampleData\AdaptabilityAppointments.cs" />
+    <Compile Include="Models\SampleData\AnnotationData.cs" />
+    <Compile Include="Models\SampleData\Appointments.cs" />
+    <Compile Include="Models\SampleData\CustomLegendMarkersSampleData.cs" />
+    <Compile Include="Models\SampleData\DiscreteScaleTemperatures.cs" />
+    <Compile Include="Models\SampleData\DoughnutWithCustomLabelInCenterData.cs" />
+    <Compile Include="Models\SampleData\GanttData.cs" />
+    <Compile Include="Models\SampleData\CustomEditorsEmployees.cs" />
+    <Compile Include="Models\SampleData\CustomEditorsTasks.cs" />
+    <Compile Include="Models\SampleData\DropDownButtonData.cs" />
+    <Compile Include="Models\SampleData\ElectronicsSimple.cs" />
+    <Compile Include="Models\SampleData\ElectronicsGrouped.cs" />
+    <Compile Include="Models\ExtendedListItemData.cs" />
+    <Compile Include="Models\SampleData\ListTasksData.cs" />
+    <Compile Include="Models\SampleData\NavigationItems.cs" />
+    <Compile Include="Models\SampleData\NavigationItemsWithIcon.cs" />
+    <Compile Include="Models\SampleData\GroupByDateTasks.cs" />
+    <Compile Include="Models\SampleData\EmployeeMentions.cs" />
+    <Compile Include="Models\SampleData\OilProductionByMonths.cs" />
+    <Compile Include="Models\SampleData\OrgItems.cs" />
+    <Compile Include="Models\SampleData\RowReorderingTasks.cs" />
+    <Compile Include="Models\SampleData\CustomPositionData.cs" />
+    <Compile Include="Models\SampleData\ServiceRepository.cs" />
+    <Compile Include="Models\SampleData\StochasticData.cs" />
+    <Compile Include="Models\SampleData\TreeViewHierarchicalDataForDragAndDrop.cs" />
+    <Compile Include="Models\SampleData\TreeViewPlainDataForDragAndDrop.cs" />
+    <Compile Include="Models\SimpleData.cs" />
+    <Compile Include="Models\TemperatureItem.cs" />
+    <Compile Include="Models\SampleData\WeatherIndicators.cs" />
+    <Compile Include="Models\SignalRTickData\TickDataService.cs" />
+    <Compile Include="Models\SignalRTickData\TickItem.cs" />
+    <Compile Include="Models\TreeView\FileSystemItem.cs" />
+    <Compile Include="Models\WeatherIndicator.cs" />
+    <Compile Include="Models\DynamicAppointmentsResource.cs" />
+    <Compile Include="Models\AgendaTask.cs" />
+    <Compile Include="Models\DynamicAppointment.cs" />
+    <Compile Include="Models\CountryInfo.cs" />
+    <Compile Include="Models\Details.cs" />
+    <Compile Include="Models\ColumnChooserMode.cs" />
+    <Compile Include="Models\ApplyFilterType.cs" />
+    <Compile Include="Models\AppointmentWithResources.cs" />
+    <Compile Include="Models\CityByState.cs" />
+    <Compile Include="Models\CityInfo.cs" />
+    <Compile Include="Models\CountryPopulationAndGDP.cs" />
+    <Compile Include="Models\DataGrid\EmployeeValidation.cs" />
+    <Compile Include="Models\DataGrid\EmployeeByState.cs" />
+    <Compile Include="Models\CustomerInfo.cs" />
+    <Compile Include="Models\OrderWithDelivery.cs" />
+    <Compile Include="Models\OrderWithCustomerInfo.cs" />
+    <Compile Include="Models\DataGrid\InMemoryEmployeesByStateDataContext.cs" />
+    <Compile Include="Models\DataGrid\InMemoryEmployeesValidationDataContext.cs" />
+    <Compile Include="Models\Demo.cs" />
+    <Compile Include="Models\ContinentInfo.cs" />
+    <Compile Include="Models\OwnerResource.cs" />
+    <Compile Include="Models\Payment.cs" />
+    <Compile Include="Models\PriorityResource.cs" />
+    <Compile Include="Models\AdaptiveAppointment.cs" />
+    <Compile Include="Models\RecurringAppointment.cs" />
+    <Compile Include="Models\AdaptiveAppointmentsResource.cs" />
+    <Compile Include="Models\RecurringAppointmentsResource.cs" />
+    <Compile Include="Models\RoomResource.cs" />
+    <Compile Include="Models\SampleData\DynamicAppointmentsResources.cs" />
+    <Compile Include="Models\SampleData\AgendaTasks.cs" />
+    <Compile Include="Models\SampleData\DynamicAppointments.cs" />
+    <Compile Include="Models\SampleData\AppointmentsWithResources.cs" />
+    <Compile Include="Models\SampleData\ContinentsInfo.cs" />
+    <Compile Include="Models\SampleData\DataGridEmployeesByState.cs" />
+    <Compile Include="Models\SampleData\Continents.cs" />
+    <Compile Include="Models\EuCountry.cs" />
+    <Compile Include="Models\SampleData\Hotels.cs" />
+    <Compile Include="Models\SampleData\OrdersWithDelivery.cs" />
+    <Compile Include="Models\SampleData\EmployeeTasks.cs" />
+    <Compile Include="Models\SampleData\EuropeanUnion.cs" />
+    <Compile Include="Models\GeoInfo.cs" />
+    <Compile Include="Models\SampleData\OrdersWithCustomerInfo.cs" />
+    <Compile Include="Models\SampleData\OwnerResources.cs" />
+    <Compile Include="Models\SampleData\ParetoChartData.cs" />
+    <Compile Include="Models\ParetoChartData.cs" />
+    <Compile Include="Models\SampleData\CitiesByState.cs" />
+    <Compile Include="Models\SampleData\Payments.cs" />
+    <Compile Include="Models\SampleData\PlannedTasks.cs" />
+    <Compile Include="Models\SampleData\PopulationPyramidData.cs" />
+    <Compile Include="Models\SampleData\PriorityResources.cs" />
+    <Compile Include="Models\SampleData\AdaptiveAppointments.cs" />
+    <Compile Include="Models\SampleData\RecurringAppointments.cs" />
+    <Compile Include="Models\SampleData\AdaptiveAppointmentsResources.cs" />
+    <Compile Include="Models\SampleData\RecurringAppointmentsResources.cs" />
+    <Compile Include="Models\SampleData\RoomResources.cs" />
+    <Compile Include="Models\SampleData\StatesWithCities.cs" />
+    <Compile Include="Models\SampleData\TreeViewHierarchicalDataForSearch.cs" />
+    <Compile Include="Models\SignalR\Stock.cs" />
+    <Compile Include="Models\SignalR\StockTicker.cs" />
+    <Compile Include="Models\TreeList\EmployeeTask.cs" />
+    <Compile Include="Models\TreeList\InMemoryTasksDataContext.cs" />
+    <Compile Include="Models\TreeView\Employee.cs" />
+    <Compile Include="Models\InMemoryListDataContext.cs" />
+    <Compile Include="Models\GalleryItem.cs" />
+    <Compile Include="Models\Layout.cs" />
+    <Compile Include="Models\City.cs" />
+    <Compile Include="Models\CoordLines.cs" />
+    <Compile Include="Models\ClimateData.cs" />
+    <Compile Include="Models\Color.cs" />
+    <Compile Include="Models\InMemoryAppointmentsDataContext.cs" />
+    <Compile Include="Models\DataGrid\InMemoryEmployeesDataContext.cs" />
+    <Compile Include="Models\SampleData\WorldPopulationData.cs" />
+    <Compile Include="Models\ListItem.cs" />
+    <Compile Include="Models\SampleData\Demos.cs" />
+    <Compile Include="Models\SampleData\Stores.cs" />
+    <Compile Include="Models\SampleData\EmployeesList.cs" />
+    <Compile Include="Models\SampleData\EmployeesTasks.cs" />
+    <Compile Include="Models\SampleData\GalleryItems.cs" />
+    <Compile Include="Models\SampleData\Layouts.cs" />
+    <Compile Include="Models\SampleData\PangaeaContinents.cs" />
+    <Compile Include="Models\SampleData\PangaeaBorders.cs" />
+    <Compile Include="Models\SampleData\RoomData.cs" />
+    <Compile Include="Models\SampleData\BuildingData.cs" />
+    <Compile Include="Models\SampleData\CoordLinesData.cs" />
+    <Compile Include="Models\CostAndRevenue.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\Job.cs" />
+    <Compile Include="Models\ListProduct.cs" />
+    <Compile Include="Models\MarkerAttribute.cs" />
+    <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\OilProduction.cs" />
+    <Compile Include="Models\SampleData\BubbleMarkers.cs" />
+    <Compile Include="Models\SampleData\CopperProductionData.cs" />
+    <Compile Include="Models\SampleData\ListProducts.cs" />
+    <Compile Include="Models\DateTimeScaleTemperature.cs" />
+    <Compile Include="Models\NumericScaleProduct.cs" />
+    <Compile Include="Models\SampleData\CostsAndRevenues.cs" />
+    <Compile Include="Models\SampleData\CpuPoints.cs" />
+    <Compile Include="Models\SampleData\MonthNames.cs" />
+    <Compile Include="Models\SampleData\AreaLabelsData.cs" />
+    <Compile Include="Models\SampleData\StreamsData.cs" />
+    <Compile Include="Models\SampleData\ViewportCoordinateData.cs" />
+    <Compile Include="Models\SampleData\ListGroupedData.cs" />
+    <Compile Include="Models\SampleData\ListPlainData.cs" />
+    <Compile Include="Models\SampleData\Jobs.cs" />
+    <Compile Include="Models\SampleData\DateTimeScaleTemperatures.cs" />
+    <Compile Include="Models\SampleData\MonthWeather.cs" />
+    <Compile Include="Models\SampleData\NumericScaleProducts.cs" />
+    <Compile Include="Models\SampleData\PieMarkersData.cs" />
+    <Compile Include="Models\SampleData\SelectedEmployees.cs" />
+    <Compile Include="Models\SampleData\VectorMapMarkerData.cs" />
+    <Compile Include="Models\SampleData\WeatherData.cs" />
+    <Compile Include="Models\SampleData\Workouts.cs" />
+    <Compile Include="Models\SampleData\CinemaData.cs" />
+    <Compile Include="Models\SampleData\Colors.cs" />
+    <Compile Include="Models\SampleData\Events.cs" />
+    <Compile Include="Models\SampleData\GaugeCitiesData.cs" />
+    <Compile Include="Models\GaugeProduct.cs" />
+    <Compile Include="Models\SampleData\GaugeProducts.cs" />
+    <Compile Include="Models\SampleData\GaugeSeasonsData.cs" />
+    <Compile Include="Models\SampleData\Movies.cs" />
+    <Compile Include="Models\SampleData\SubvalueIndicators.cs" />
+    <Compile Include="Models\SampleData\Theatres.cs" />
+    <Compile Include="Models\SampleData\TimelineTasks.cs" />
+    <Compile Include="Models\Season.cs" />
+    <Compile Include="Models\SelectedEmployee.cs" />
+    <Compile Include="Models\Store.cs" />
+    <Compile Include="Models\SubvalueIndicator.cs" />
+    <Compile Include="Models\EmployeeTask.cs" />
+    <Compile Include="Models\Appointment.cs" />
+    <Compile Include="Models\ContinentPopulation.cs" />
+    <Compile Include="Models\EuropeanCountry.cs" />
+    <Compile Include="Models\CountryPopulation.cs" />
+    <Compile Include="Models\CityPopulation.cs" />
+    <Compile Include="Models\MonthlyPrice.cs" />
+    <Compile Include="Models\Northwind\InMemoryNorthwindContext.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Sale.cs" />
+    <Compile Include="Models\SampleData\Tasks.cs" />
+    <Compile Include="Models\SampleData\ContinentsPopulation.cs" />
+    <Compile Include="Models\SampleData\CountriesPopulationAndGDP.cs" />
+    <Compile Include="Models\SampleData\AppointmentsWorkHours.cs" />
+    <Compile Include="Models\SampleData\IntradayData.cs" />
+    <Compile Include="Models\SampleData\EuropeanCountries.cs" />
+    <Compile Include="Models\SampleData\MonthlyPrices.cs" />
+    <Compile Include="Models\SampleData\SalesData.cs" />
+    <Compile Include="Models\SampleData\WindRoseData.cs" />
+    <Compile Include="Models\SampleData\AustralianOlympicMedals.cs" />
+    <Compile Include="Models\ElectronicsItem.cs" />
+    <Compile Include="Models\SampleData\StockPrices.cs" />
+    <Compile Include="Models\SampleData\Sales.cs" />
+    <Compile Include="Models\SampleData\Positions.cs" />
+    <Compile Include="Models\SampleData\Surnames.cs" />
+    <Compile Include="Models\SampleData\Names.cs" />
+    <Compile Include="Models\SampleData\Cities.cs" />
+    <Compile Include="Models\SampleData\FinancialData.cs" />
+    <Compile Include="Models\SampleData\Countries.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\DataGrid\Employee.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\SampleData\Companies.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridWebApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\ListDataController.cs" />
+    <Compile Include="Controllers\FileUploaderController.cs" />
+    <Compile Include="Controllers\FormController.cs" />
+    <Compile Include="Controllers\DataGridController.cs" />
+    <Compile Include="Controllers\ListController.cs" />
+    <Compile Include="Controllers\AccordionController.cs" />
+    <Compile Include="Controllers\TabPanelController.cs" />
+    <Compile Include="Controllers\GalleryController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\ToolbarController.cs" />
+    <Compile Include="Controllers\TreeViewController.cs" />
+    <Compile Include="Controllers\SchedulerController.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Northwind\Category.cs" />
+    <Compile Include="Models\Northwind\Customer.cs" />
+    <Compile Include="Models\Northwind\Employee.cs" />
+    <Compile Include="Models\Northwind\NorthwindContext.cs" />
+    <Compile Include="Models\Northwind\Order.cs" />
+    <Compile Include="Models\Northwind\Order_Detail.cs" />
+    <Compile Include="Models\Northwind\Product.cs" />
+    <Compile Include="Models\Northwind\Shipper.cs" />
+    <Compile Include="Models\Northwind\Supplier.cs" />
+    <Compile Include="Models\SampleData\LanguagesPercentage.cs" />
+    <Compile Include="Models\SampleData\OilProductionData.cs" />
+    <Compile Include="Models\SampleData\Orders.cs" />
+    <Compile Include="Models\SampleData\PointsData.cs" />
+    <Compile Include="Models\SampleData\PopulationData.cs" />
+    <Compile Include="Models\SampleData\Products.cs" />
+    <Compile Include="Models\SampleData\MenuData.cs" />
+    <Compile Include="Models\SampleData\ScatterData.cs" />
+    <Compile Include="Models\SampleData\Electronics.cs" />
+    <Compile Include="Models\SampleData\TreeViewHierarchicalData.cs" />
+    <Compile Include="Models\SampleData\TabPanelData.cs" />
+    <Compile Include="Models\SampleData\TreeViewPlainData.cs" />
+    <Compile Include="Models\SampleData\Customers.cs" />
+    <Compile Include="Models\SampleData\DataGridEmployees.cs" />
+    <Compile Include="Models\SampleData\States.cs" />
+    <Compile Include="Models\State.cs" />
+    <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Models\StockPrice.cs" />
+    <Compile Include="Models\Intraday.cs" />
+    <Compile Include="Models\CinemaDataItem.cs" />
+    <Compile Include="Models\Theatre.cs" />
+    <Compile Include="Models\TreeList\Employee.cs" />
+    <Compile Include="Models\SampleData\TreeListEmployees.cs" />
+    <Compile Include="Models\TreeList\InMemoryEmployeesDataContext.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\VectorMapMarker.cs" />
+    <Compile Include="Models\ViewportCoordinate.cs" />
+    <Compile Include="Models\Weather.cs" />
+    <Compile Include="Models\WindRoseItem.cs" />
+    <Compile Include="Models\WorldPopulationDataItem.cs" />
+    <Compile Include="Models\Workout.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\DropDownButtonViewModel.cs" />
+    <Compile Include="ViewModels\DynamicAppointmentsViewModel.cs" />
+    <Compile Include="ViewModels\VerifyAgeAttribute.cs" />
+    <Compile Include="ViewModels\EditorsViewModel.cs" />
+    <Compile Include="ViewModels\FormViewModel.cs" />
+    <Compile Include="ViewModels\KanbanListViewModel.cs" />
+    <Compile Include="ViewModels\KanbanViewModel.cs" />
+    <Compile Include="ViewModels\LimitAppointmentCountPerCellModel.cs" />
+    <Compile Include="ViewModels\AdaptabilityAppointmentViewModel.cs" />
+    <Compile Include="ViewModels\RecurringAppointmentsViewModel.cs" />
+    <Compile Include="ViewModels\RtlViewModel.cs" />
+    <Compile Include="ViewModels\SchedulerResourcesViewModel.cs" />
+    <Compile Include="ViewModels\SchedulerViewModel.cs" />
+    <Compile Include="ViewModels\TagBoxViewModel.cs" />
+    <Compile Include="ViewModels\SelectBoxViewModel.cs" />
+    <Compile Include="ViewModels\GalleryViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\FileManagement.mdf" />
+    <Content Include="App_Data\Northwind.mdf" />
+    <Content Include="App_Data\Northwind_log.ldf">
+      <DependentUpon>Northwind.mdf</DependentUpon>
+    </Content>
+    <Content Include="Content\demo-template.css" />
+    <Content Include="Content\DemosStyles\Charts\AxisCustomPosition.css" />
+    <Content Include="Content\DemosStyles\Charts\CustomAnnotations.css" />
+    <Content Include="Content\DemosStyles\Charts\CustomLegendMarkers.css" />
+    <Content Include="Content\DemosStyles\Charts\DiscreteAggregation.css" />
+    <Content Include="Content\DemosStyles\Charts\DoughnutWithCustomLabelInCenter.css" />
+    <Content Include="Content\DemosStyles\Charts\ExportCustomMarkup.css" />
+    <Content Include="Content\DemosStyles\Charts\LogarithmicVsLinearAxes.css" />
+    <Content Include="Content\DemosStyles\Charts\PolarChartAnnotations.css" />
+    <Content Include="Content\DemosStyles\Charts\PolarChartZoomingAndScrollingAPI.css" />
+    <Content Include="Content\DemosStyles\DataGrid\CustomEditors.css" />
+    <Content Include="Content\DemosStyles\DataGrid\DnDBetweenGrids.css" />
+    <Content Include="Content\DemosStyles\DataGrid\LocalReordering.css" />
+    <Content Include="Content\DemosStyles\Diagram\AdvancedDataBinding.css" />
+    <Content Include="Content\DemosStyles\Diagram\Containers.css" />
+    <Content Include="Content\DemosStyles\Diagram\CustomShapesWithIcons.css" />
+    <Content Include="Content\DemosStyles\Diagram\CustomShapesWithTemplates.css" />
+    <Content Include="Content\DemosStyles\Diagram\CustomShapesWithTexts.css" />
+    <Content Include="Content\DemosStyles\Diagram\ImagesInShapes.css" />
+    <Content Include="Content\DemosStyles\Diagram\NodesAndEdgesArrays.css" />
+    <Content Include="Content\DemosStyles\Diagram\NodesArrayHierarchicalStructure.css" />
+    <Content Include="Content\DemosStyles\Diagram\Adaptability.css" />
+    <Content Include="Content\DemosStyles\Diagram\WebAPIService.css" />
+    <Content Include="Content\DemosStyles\Diagram\NodesArrayPlainStructure.css" />
+    <Content Include="Content\DemosStyles\Diagram\Overview.css" />
+    <Content Include="Content\DemosStyles\Diagram\ReadOnly.css" />
+    <Content Include="Content\DemosStyles\Diagram\SimpleView.css" />
+    <Content Include="Content\DemosStyles\Diagram\UICustomization.css" />
+    <Content Include="Content\DemosStyles\FieldSet\Overview.css" />
+    <Content Include="Content\DemosStyles\FileManager\AzureClientBinding.css" />
+    <Content Include="Content\DemosStyles\FileManager\Overview.css" />
+    <Content Include="Content\DemosStyles\FileUploader\AzureDirectUploading.css" />
+    <Content Include="Content\DemosStyles\FloatingActionButton\Overview.css" />
+    <Content Include="Content\DemosStyles\Charts\Annotation.css" />
+    <Content Include="Content\DemosStyles\Common\CustomTextEditorButtons.css" />
+    <Content Include="Content\DemosStyles\DataGrid\CustomizeKeyboardNavigation.css" />
+    <Content Include="Content\DemosStyles\DataGrid\ExcelJS.css" />
+    <Content Include="Content\DemosStyles\DataGrid\ExcelJSCellCustomization.css" />
+    <Content Include="Content\DemosStyles\DataGrid\ExcelJSHeaderAndFooter.css" />
+    <Content Include="Content\DemosStyles\DataGrid\ExcelJSOverview.css" />
+    <Content Include="Content\DemosStyles\DataGrid\ExcelJSExportImages.css" />
+    <Content Include="Content\DemosStyles\DataGrid\ExcelJSExportMultipleGrids.css" />
+    <Content Include="Content\DemosStyles\DataGrid\RecalculateWhileEditing.css" />
+    <Content Include="Content\DemosStyles\DataGrid\CRUDOperations.css" />
+    <Content Include="Content\DemosStyles\Drawer\TopOrBottomPosition.css" />
+    <Content Include="Content\DemosStyles\Drawer\LeftOrRightPosition.css" />
+    <Content Include="Content\DemosStyles\ButtonGroup\Overview.css" />
+    <Content Include="Content\DemosStyles\Button\Icons.css" />
+    <Content Include="Content\DemosStyles\Button\PredefinedTypes.css" />
+    <Content Include="Content\DemosStyles\Charts\BiDirectionalBarChart.css" />
+    <Content Include="Content\DemosStyles\Charts\ChartsDrillDown.css" />
+    <Content Include="Content\DemosStyles\Charts\AxisLabelsOverlapping.css" />
+    <Content Include="Content\DemosStyles\Charts\FlatDataStructure.css" />
+    <Content Include="Content\DemosStyles\Charts\FunnelChart.css" />
+    <Content Include="Content\DemosStyles\Charts\LoadDataOnDemand.css" />
+    <Content Include="Content\DemosStyles\Charts\Overview.css" />
+    <Content Include="Content\DemosStyles\Charts\ParetoChart.css" />
+    <Content Include="Content\DemosStyles\Charts\ExportSeveralCharts.css" />
+    <Content Include="Content\DemosStyles\Charts\Palette.css" />
+    <Content Include="Content\DemosStyles\Charts\PyramidChart.css" />
+    <Content Include="Content\DemosStyles\Charts\PiesWithEqualSize.css" />
+    <Content Include="Content\DemosStyles\Charts\AjaxRequest.css" />
+    <Content Include="Content\DemosStyles\Charts\APISelectAPoint.css" />
+    <Content Include="Content\DemosStyles\Charts\ColorEachBar.css" />
+    <Content Include="Content\DemosStyles\Charts\HoverMode.css" />
+    <Content Include="Content\DemosStyles\Charts\FullStackedBar.css" />
+    <Content Include="Content\DemosStyles\Charts\CustomizePointsAndLabels.css" />
+    <Content Include="Content\DemosStyles\Charts\CustomBarWidth.css" />
+    <Content Include="Content\DemosStyles\Charts\Candlestick.css" />
+    <Content Include="Content\DemosStyles\Charts\Bubble.css" />
+    <Content Include="Content\DemosStyles\Charts\AutoCalculatedBarWidth.css" />
+    <Content Include="Content\DemosStyles\Charts\ClientSideDataProcessing.css" />
+    <Content Include="Content\DemosStyles\Charts\Crosshair.css" />
+    <Content Include="Content\DemosStyles\Charts\DoughnutWithTopNSeries.css" />
+    <Content Include="Content\DemosStyles\Charts\DoughnutSelection.css" />
+    <Content Include="Content\DemosStyles\Charts\Doughnut.css" />
+    <Content Include="Content\DemosStyles\Charts\SankeyChart.css" />
+    <Content Include="Content\DemosStyles\Charts\ScaleBreaks.css" />
+    <Content Include="Content\DemosStyles\Charts\SignalRService.css" />
+    <Content Include="Content\DemosStyles\Charts\SimpleArray.css" />
+    <Content Include="Content\DemosStyles\Charts\LogarithmicAxis.css" />
+    <Content Include="Content\DemosStyles\Charts\MultiplePanes.css" />
+    <Content Include="Content\DemosStyles\Charts\MultipleAxes.css" />
+    <Content Include="Content\DemosStyles\Charts\MultiplePointSelection.css" />
+    <Content Include="Content\DemosStyles\Charts\MultipleSeriesSelection.css" />
+    <Content Include="Content\DemosStyles\Charts\NullPointSupport.css" />
+    <Content Include="Content\DemosStyles\Charts\PieWithCustomLabels.css" />
+    <Content Include="Content\DemosStyles\Charts\PieWithMultipleSeries.css" />
+    <Content Include="Content\DemosStyles\Charts\PieWithSmallValuesGrouped.css" />
+    <Content Include="Content\DemosStyles\Charts\PointImage.css" />
+    <Content Include="Content\DemosStyles\Charts\RangeArea.css" />
+    <Content Include="Content\DemosStyles\Charts\RangeBar.css" />
+    <Content Include="Content\DemosStyles\Charts\Scatter.css" />
+    <Content Include="Content\DemosStyles\Charts\Selection.css" />
+    <Content Include="Content\DemosStyles\Charts\SeriesTemplates.css" />
+    <Content Include="Content\DemosStyles\Charts\ServerSideDataProcessing.css" />
+    <Content Include="Content\DemosStyles\Charts\SideBySideBar.css" />
+    <Content Include="Content\DemosStyles\Charts\SideBySideFullStackedBar.css" />
+    <Content Include="Content\DemosStyles\Charts\SideBySideStackedBar.css" />
+    <Content Include="Content\DemosStyles\Charts\StackedBar.css" />
+    <Content Include="Content\DemosStyles\Charts\StandardBar.css" />
+    <Content Include="Content\DemosStyles\Charts\StepArea.css" />
+    <Content Include="Content\DemosStyles\Charts\StepLine.css" />
+    <Content Include="Content\DemosStyles\Charts\Stock.css" />
+    <Content Include="Content\DemosStyles\Charts\ZoomingAndScrolling.css" />
+    <Content Include="Content\DemosStyles\Charts\ZoomingOnAreaSelection.css" />
+    <Content Include="Content\DemosStyles\Common\FormsAndMultiPurposeOverview.css" />
+    <Content Include="Content\DemosStyles\Common\DialogsAndNotificationsOverview.css" />
+    <Content Include="Content\DemosStyles\Common\EditorsOverview.css" />
+    <Content Include="Content\DemosStyles\Common\EditorsRightToLeftSupport.css" />
+    <Content Include="Content\DemosStyles\Common\ActionAndListsOverview.css" />
+    <Content Include="Content\DemosStyles\Common\NavigationOverview.css" />
+    <Content Include="Content\DemosStyles\Common\NavigationRightToLeftSupport.css" />
+    <Content Include="Content\DemosStyles\Common\StylingMode.css" />
+    <Content Include="Content\DemosStyles\ContextMenu\Basics.css" />
+    <Content Include="Content\DemosStyles\ContextMenu\Templates.css" />
+    <Content Include="Content\DemosStyles\DataGrid\BatchEditing.css" />
+    <Content Include="Content\DemosStyles\DataGrid\CellCustomization.css" />
+    <Content Include="Content\DemosStyles\DataGrid\CollaborativeEditing.css" />
+    <Content Include="Content\DemosStyles\DataGrid\ColumnCustomization.css" />
+    <Content Include="Content\DemosStyles\DataGrid\Appearance.css" />
+    <Content Include="Content\DemosStyles\DataGrid\ColumnsBasedOnADataSource.css" />
+    <Content Include="Content\DemosStyles\DataGrid\ColumnTemplate.css" />
+    <Content Include="Content\DemosStyles\DataGrid\CustomizeCommandColumns.css" />
+    <Content Include="Content\DemosStyles\DataGrid\CustomSummaries.css" />
+    <Content Include="Content\DemosStyles\DataGrid\ExcelCellCustomization.css" />
+    <Content Include="Content\DemosStyles\DataGrid\FilterPanel.css" />
+    <Content Include="Content\DemosStyles\DataGrid\FocusedRow.css" />
+    <Content Include="Content\DemosStyles\DataGrid\FormEditing.css" />
+    <Content Include="Content\DemosStyles\DataGrid\GridAdaptabilityOverview.css" />
+    <Content Include="Content\DemosStyles\DataGrid\GridColumnsHidingPriority.css" />
+    <Content Include="Content\DemosStyles\DataGrid\GroupSummaries.css" />
+    <Content Include="Content\DemosStyles\DataGrid\HorizontalVirtualScrolling.css" />
+    <Content Include="Content\DemosStyles\DataGrid\RealTimeUpdates.css" />
+    <Content Include="Content\DemosStyles\DataGrid\SignalRService.css" />
+    <Content Include="Content\DemosStyles\DataGrid\MasterDetailAPI.css" />
+    <Content Include="Content\DemosStyles\DataGrid\AdvancedMasterDetailView.css" />
+    <Content Include="Content\DemosStyles\DataGrid\MasterDetailView.css" />
+    <Content Include="Content\DemosStyles\DataGrid\MultiRowHeadersBands.css" />
+    <Content Include="Content\DemosStyles\DataGrid\CascadingLookups.css" />
+    <Content Include="Content\DemosStyles\DataGrid\Overview.css" />
+    <Content Include="Content\DemosStyles\DataGrid\PopupEditing.css" />
+    <Content Include="Content\DemosStyles\DataGrid\ColumnResizing.css" />
+    <Content Include="Content\DemosStyles\DataGrid\RightToLeftSupport.css" />
+    <Content Include="Content\DemosStyles\DataGrid\RowTemplate.css" />
+    <Content Include="Content\DemosStyles\DataGrid\GridSummaries.css" />
+    <Content Include="Content\DemosStyles\DataGrid\StatePersistence.css" />
+    <Content Include="Content\DemosStyles\DataGrid\ToolbarCustomization.css" />
+    <Content Include="Content\DemosStyles\DropDownBox\MultipleSelection.css" />
+    <Content Include="Content\DemosStyles\DropDownBox\SingleSelection.css" />
+    <Content Include="Content\DemosStyles\DropDownButton\Overview.css" />
+    <Content Include="Content\DemosStyles\FileUploader\ChunkUploading.css" />
+    <Content Include="Content\DemosStyles\FileUploader\Validation.css" />
+    <Content Include="Content\DemosStyles\FileUploader\FileSelection.css" />
+    <Content Include="Content\DemosStyles\FilterBuilder\Customization.css" />
+    <Content Include="Content\DemosStyles\FilterBuilder\WithDataGrid.css" />
+    <Content Include="Content\DemosStyles\FilterBuilder\WithList.css" />
+    <Content Include="Content\DemosStyles\Form\ColumnsAdaptability.css" />
+    <Content Include="Content\DemosStyles\Form\CustomizeItem.css" />
+    <Content Include="Content\DemosStyles\Form\GroupedFields.css" />
+    <Content Include="Content\DemosStyles\Form\UpdateItemsDynamically.css" />
+    <Content Include="Content\DemosStyles\Form\Validation.css" />
+    <Content Include="Content\DemosStyles\Gallery\ItemTemplate.css" />
+    <Content Include="Content\DemosStyles\Gantt\Overview.css" />
+    <Content Include="Content\DemosStyles\Gauges\AnglesCustomization.css" />
+    <Content Include="Content\DemosStyles\Gauges\BaseValueForRangeBar.css" />
+    <Content Include="Content\DemosStyles\Gauges\CustomLayout.css" />
+    <Content Include="Content\DemosStyles\Gauges\CustomLayoutLinearGauge.css" />
+    <Content Include="Content\DemosStyles\Gauges\DifferentSubvalueIndicatorTypes.css" />
+    <Content Include="Content\DemosStyles\Gauges\DifferentSubvalueIndicatorTypesLinearGauge.css" />
+    <Content Include="Content\DemosStyles\Gauges\DifferentValueIndicatorTypes.css" />
+    <Content Include="Content\DemosStyles\Gauges\DifferentValueIndicatorTypesLinearGauge.css" />
+    <Content Include="Content\DemosStyles\Gauges\GaugeTitleCustomized.css" />
+    <Content Include="Content\DemosStyles\Gauges\GaugeTooltip.css" />
+    <Content Include="Content\DemosStyles\Gauges\LabelsCustomization.css" />
+    <Content Include="Content\DemosStyles\Gauges\Overview.css" />
+    <Content Include="Content\DemosStyles\Gauges\Palette.css" />
+    <Content Include="Content\DemosStyles\Gauges\ScaleCustomTickInterval.css" />
+    <Content Include="Content\DemosStyles\Gauges\ScaleCustomTickValues.css" />
+    <Content Include="Content\DemosStyles\Gauges\ScaleLabelFormatting.css" />
+    <Content Include="Content\DemosStyles\Gauges\ScaleMinorTicks.css" />
+    <Content Include="Content\DemosStyles\Gauges\SubvalueIndicatorTextFormatting.css" />
+    <Content Include="Content\DemosStyles\Gauges\UpdateLinearGaugeDataAtRuntime.css" />
+    <Content Include="Content\DemosStyles\Gauges\Tooltip.css" />
+    <Content Include="Content\DemosStyles\Gauges\ValueIndicatorsAPI.css" />
+    <Content Include="Content\DemosStyles\Gauges\UpdateCircularGaugeDataAtRuntime.css" />
+    <Content Include="Content\DemosStyles\Gauges\VariableNumberOfBars.css" />
+    <Content Include="Content\DemosStyles\Gauges\VariableNumberOfSubvalueIndicators.css" />
+    <Content Include="Content\DemosStyles\HtmlEditor\OutputFormats.css" />
+    <Content Include="Content\DemosStyles\HtmlEditor\Mentions.css" />
+    <Content Include="Content\DemosStyles\HtmlEditor\Overview.css" />
+    <Content Include="Content\DemosStyles\HtmlEditor\ToolbarCustomization.css" />
+    <Content Include="Content\DemosStyles\Localization\UsingIntl.css" />
+    <Content Include="Content\DemosStyles\Localization\UsingGlobalize.css" />
+    <Content Include="Content\DemosStyles\List\GroupedList.css" />
+    <Content Include="Content\DemosStyles\List\ItemTemplate.css" />
+    <Content Include="Content\DemosStyles\List\ListEditingAndAPI.css" />
+    <Content Include="Content\DemosStyles\List\ListSelection.css" />
+    <Content Include="Content\DemosStyles\List\ListWithSearchBar.css" />
+    <Content Include="Content\DemosStyles\List\ItemDragging.css" />
+    <Content Include="Content\DemosStyles\LoadIndicator\Overview.css" />
+    <Content Include="Content\DemosStyles\LoadPanel\Overview.css" />
+    <Content Include="Content\DemosStyles\Lookup\Basics.css" />
+    <Content Include="Content\DemosStyles\Lookup\EventHandling.css" />
+    <Content Include="Content\DemosStyles\Lookup\Templates.css" />
+    <Content Include="Content\DemosStyles\Map\Markers.css" />
+    <Content Include="Content\DemosStyles\Map\ProvidersAndTypes.css" />
+    <Content Include="Content\DemosStyles\Map\Routes.css" />
+    <Content Include="Content\DemosStyles\MultiView\Overview.css" />
+    <Content Include="Content\DemosStyles\NumberBox\Formatting.css" />
+    <Content Include="Content\DemosStyles\PivotGrid\ChartIntegration.css" />
+    <Content Include="Content\DemosStyles\PivotGrid\DrillDown.css" />
+    <Content Include="Content\DemosStyles\PivotGrid\HeaderFilter.css" />
+    <Content Include="Content\DemosStyles\PivotGrid\FieldPanel.css" />
+    <Content Include="Content\DemosStyles\PivotGrid\IntegratedFieldChooser.css" />
+    <Content Include="Content\DemosStyles\PivotGrid\LayoutCustomization.css" />
+    <Content Include="Content\DemosStyles\PivotGrid\RemoteVirtualScrolling.css" />
+    <Content Include="Content\DemosStyles\PivotGrid\Overview.css" />
+    <Content Include="Content\DemosStyles\PivotGrid\SimpleArray.css" />
+    <Content Include="Content\DemosStyles\PivotGrid\OLAPDataSource.css" />
+    <Content Include="Content\DemosStyles\PivotGrid\RunningTotals.css" />
+    <Content Include="Content\DemosStyles\PivotGrid\StandaloneFieldChooser.css" />
+    <Content Include="Content\DemosStyles\PivotGrid\StatePersistence.css" />
+    <Content Include="Content\DemosStyles\PivotGrid\SummaryDisplayModes.css" />
+    <Content Include="Content\DemosStyles\Popover\Overview.css" />
+    <Content Include="Content\DemosStyles\Popup\Scrolling.css" />
+    <Content Include="Content\DemosStyles\Popup\Overview.css" />
+    <Content Include="Content\DemosStyles\ProgressBar\Overview.css" />
+    <Content Include="Content\DemosStyles\RadioGroup\Overview.css" />
+    <Content Include="Content\DemosStyles\RangeSelector\ChartOnBackground.css" />
+    <Content Include="Content\DemosStyles\RangeSelector\ChartOnBackgroundWithSeriesTemplate.css" />
+    <Content Include="Content\DemosStyles\RangeSelector\CustomizedChartOnBackground.css" />
+    <Content Include="Content\DemosStyles\RangeSelector\CustomFormatting.css" />
+    <Content Include="Content\DemosStyles\RangeSelector\UseRangeSelectionForCalculation.css" />
+    <Content Include="Content\DemosStyles\RangeSelector\DiscreteScale.css" />
+    <Content Include="Content\DemosStyles\RangeSelector\ImageOnBackground.css" />
+    <Content Include="Content\DemosStyles\RangeSelector\LogarithmicScale.css" />
+    <Content Include="Content\DemosStyles\RangeSelector\DateTimeScale.css" />
+    <Content Include="Content\DemosStyles\RangeSelector\DateTimeScaleLightweight.css" />
+    <Content Include="Content\DemosStyles\RangeSelector\NumericScale.css" />
+    <Content Include="Content\DemosStyles\RangeSelector\NumericScaleLightweight.css" />
+    <Content Include="Content\DemosStyles\RangeSelector\UseRangeSelectionForFiltering.css" />
+    <Content Include="Content\DemosStyles\RangeSlider\Overview.css" />
+    <Content Include="Content\DemosStyles\Scheduler\Adaptability.css" />
+    <Content Include="Content\DemosStyles\Scheduler\ContextMenuIntegration.css" />
+    <Content Include="Content\DemosStyles\Scheduler\CurrentTimeIndicator.css" />
+    <Content Include="Content\DemosStyles\Scheduler\AdaptiveAppointments.css" />
+    <Content Include="Content\DemosStyles\Scheduler\CellTemplates.css" />
+    <Content Include="Content\DemosStyles\Scheduler\CustomizeIndividualViews.css" />
+    <Content Include="Content\DemosStyles\Scheduler\CustomTemplates.css" />
+    <Content Include="Content\DemosStyles\Scheduler\GroupByDate.css" />
+    <Content Include="Content\DemosStyles\Scheduler\GroupOrientation.css" />
+    <Content Include="Content\DemosStyles\Scheduler\GoogleCalendarIntegration.css" />
+    <Content Include="Content\DemosStyles\Scheduler\Overview.css" />
+    <Content Include="Content\DemosStyles\Scheduler\Resources.css" />
+    <Content Include="Content\DemosStyles\Scheduler\SignalRService.css" />
+    <Content Include="Content\DemosStyles\Scheduler\TimeZonesSupport.css" />
+    <Content Include="Content\DemosStyles\ScrollView\Overview.css" />
+    <Content Include="Content\DemosStyles\SelectBox\CustomizeDropDownButton.css" />
+    <Content Include="Content\DemosStyles\SelectBox\GroupedItems.css" />
+    <Content Include="Content\DemosStyles\Sortable\Customization.css" />
+    <Content Include="Content\DemosStyles\Sortable\Kanban.css" />
+    <Content Include="Content\DemosStyles\TabPanel\SortableClosableTabs.css" />
+    <Content Include="Content\DemosStyles\Tabs\Overview.css" />
+    <Content Include="Content\DemosStyles\TagBox\GroupedItems.css" />
+    <Content Include="Content\DemosStyles\TagBox\TagCountLimitation.css" />
+    <Content Include="Content\DemosStyles\Toast\Overview.css" />
+    <Content Include="Content\DemosStyles\Tooltip\Overview.css" />
+    <Content Include="Content\DemosStyles\Slider\Overview.css" />
+    <Content Include="Content\DemosStyles\TreeList\Adaptability.css" />
+    <Content Include="Content\DemosStyles\TreeList\BatchEditing.css" />
+    <Content Include="Content\DemosStyles\TreeList\CellEditing.css" />
+    <Content Include="Content\DemosStyles\TreeList\ColumnChooser.css" />
+    <Content Include="Content\DemosStyles\TreeList\ColumnFixing.css" />
+    <Content Include="Content\DemosStyles\TreeList\CustomizeKeyboardNavigation.css" />
+    <Content Include="Content\DemosStyles\TreeList\FilterModes.css" />
+    <Content Include="Content\DemosStyles\TreeList\FilterPanel.css" />
+    <Content Include="Content\DemosStyles\TreeList\FocusedRow.css" />
+    <Content Include="Content\DemosStyles\TreeList\FormEditing.css" />
+    <Content Include="Content\DemosStyles\TreeList\Overview.css" />
+    <Content Include="Content\DemosStyles\TreeList\LocalReordering.css" />
+    <Content Include="Content\DemosStyles\TreeList\SingleRowSelection.css" />
+    <Content Include="Content\DemosStyles\TreeList\StatePersistence.css" />
+    <Content Include="Content\DemosStyles\TreeList\UsingFilterRow.css" />
+    <Content Include="Content\DemosStyles\TreeList\UsingHeaderFilter.css" />
+    <Content Include="Content\DemosStyles\TreeList\UsingSearchPanel.css" />
+    <Content Include="Content\DemosStyles\TreeList\WebAPIService.css" />
+    <Content Include="Content\DemosStyles\TreeList\SimpleArrayPlainStructure.css" />
+    <Content Include="Content\DemosStyles\TreeList\SimpleArrayHierarchicalStructure.css" />
+    <Content Include="Content\DemosStyles\TreeList\MultipleRowSelection.css" />
+    <Content Include="Content\DemosStyles\TreeList\MultipleSorting.css" />
+    <Content Include="Content\DemosStyles\TreeList\PopupEditing.css" />
+    <Content Include="Content\DemosStyles\TreeList\Reordering.css" />
+    <Content Include="Content\DemosStyles\TreeList\Resizing.css" />
+    <Content Include="Content\DemosStyles\TreeList\LoadDataOnDemand.css" />
+    <Content Include="Content\DemosStyles\TreeList\RowEditing.css" />
+    <Content Include="Content\DemosStyles\TreeView\ContextMenuIntegration.css" />
+    <Content Include="Content\DemosStyles\TreeView\DragAndDropHierarchicalDataStructure.css" />
+    <Content Include="Content\DemosStyles\TreeView\DragAndDropPlainDataStructure.css" />
+    <Content Include="Content\DemosStyles\TreeView\FlatDataStructure.css" />
+    <Content Include="Content\DemosStyles\Toolbar\Overview.css" />
+    <Content Include="Content\DemosStyles\TextArea\Overview.css" />
+    <Content Include="Content\DemosStyles\TagBox\Overview.css" />
+    <Content Include="Content\DemosStyles\TabPanel\Overview.css" />
+    <Content Include="Content\DemosStyles\Accordion\Overview.css" />
+    <Content Include="Content\DemosStyles\Autocomplete\Overview.css" />
+    <Content Include="Content\DemosStyles\Calendar\Overview.css" />
+    <Content Include="Content\DemosStyles\Charts\APIDisplayATooltip.css" />
+    <Content Include="Content\DemosStyles\Charts\Area.css" />
+    <Content Include="Content\DemosStyles\Charts\AreaSparklines.css" />
+    <Content Include="Content\DemosStyles\Charts\BarSparklines.css" />
+    <Content Include="Content\DemosStyles\Charts\Colorization.css" />
+    <Content Include="Content\DemosStyles\Charts\ContinuousData.css" />
+    <Content Include="Content\DemosStyles\Charts\DiscreteAxisZoomingAndScrolling.css" />
+    <Content Include="Content\DemosStyles\Charts\DiscreteData.css" />
+    <Content Include="Content\DemosStyles\Charts\DrillDown.css" />
+    <Content Include="Content\DemosStyles\Charts\ErrorBars.css" />
+    <Content Include="Content\DemosStyles\Charts\ExportAndPrintingAPI.css" />
+    <Content Include="Content\DemosStyles\Charts\InvertedChart.css" />
+    <Content Include="Content\DemosStyles\Charts\Line.css" />
+    <Content Include="Content\DemosStyles\Charts\PeriodicData.css" />
+    <Content Include="Content\DemosStyles\Charts\Pie.css" />
+    <Content Include="Content\DemosStyles\Charts\PieWithResolvedLabelOverlapping.css" />
+    <Content Include="Content\DemosStyles\Charts\PointsAggregation.css" />
+    <Content Include="Content\DemosStyles\Charts\PointsAggregationFinancialChart.css" />
+    <Content Include="Content\DemosStyles\Charts\SimpleBullets.css" />
+    <Content Include="Content\DemosStyles\Charts\SimpleSparklines.css" />
+    <Content Include="Content\DemosStyles\Charts\SpiderWeb.css" />
+    <Content Include="Content\DemosStyles\Charts\Spline.css" />
+    <Content Include="Content\DemosStyles\Charts\SplineArea.css" />
+    <Content Include="Content\DemosStyles\Charts\TilingAlgorithms.css" />
+    <Content Include="Content\DemosStyles\Charts\TooltipHTMLSupport.css" />
+    <Content Include="Content\DemosStyles\Charts\WindRose.css" />
+    <Content Include="Content\DemosStyles\Charts\WinlossSparklines.css" />
+    <Content Include="Content\DemosStyles\Gauges\PaletteForRanges.css" />
+    <Content Include="Content\DemosStyles\ColorBox\Overview.css" />
+    <Content Include="Content\DemosStyles\DataGrid\CellEditingAndEditingAPI.css" />
+    <Content Include="Content\DemosStyles\DataGrid\DeferredSelection.css" />
+    <Content Include="Content\DemosStyles\DataGrid\Filtering.css" />
+    <Content Include="Content\DemosStyles\DataGrid\FilteringAPI.css" />
+    <Content Include="Content\DemosStyles\DataGrid\InfiniteScrolling.css" />
+    <Content Include="Content\DemosStyles\DataGrid\MultipleRecordSelectionAPI.css" />
+    <Content Include="Content\DemosStyles\DataGrid\MultipleRecordSelectionModes.css" />
+    <Content Include="Content\DemosStyles\DataGrid\MultipleSorting.css" />
+    <Content Include="Content\DemosStyles\DataGrid\RecordGrouping.css" />
+    <Content Include="Content\DemosStyles\DataGrid\RemoteGrouping.css" />
+    <Content Include="Content\DemosStyles\DataGrid\RowEditingAndEditingEvents.css" />
+    <Content Include="Content\DemosStyles\DataGrid\RowSelection.css" />
+    <Content Include="Content\DemosStyles\DataGrid\VirtualScrolling.css" />
+    <Content Include="Content\DemosStyles\DateBox\Overview.css" />
+    <Content Include="Content\DemosStyles\FileUploader\FileUploading.css" />
+    <Content Include="Content\DemosStyles\Form\Overview.css" />
+    <Content Include="Content\DemosStyles\Menu\Overview.css" />
+    <Content Include="Content\DemosStyles\Gallery\Overview.css" />
+    <Content Include="Content\DemosStyles\SelectBox\Overview.css" />
+    <Content Include="Content\DemosStyles\SelectBox\SearchAndEditing.css" />
+    <Content Include="Content\DemosStyles\TreeView\TreeViewWithSearchBar.css" />
+    <Content Include="Content\DemosStyles\TreeView\HierarchicalDataStructure.css" />
+    <Content Include="Content\DemosStyles\TreeView\ItemSelectionAndCustomization.css" />
+    <Content Include="Content\DemosStyles\Validation\Overview.css" />
+    <Content Include="Content\DemosStyles\VectorMap\CustomMapData.css" />
+    <Content Include="Content\DemosStyles\VectorMap\MultipleLayers.css" />
+    <Content Include="Content\DemosStyles\VectorMap\FloorPlan.css" />
+    <Content Include="Content\DemosStyles\VectorMap\AreaWithLabelsAndTwoLegends.css" />
+    <Content Include="Content\DemosStyles\VectorMap\BubbleMarkers.css" />
+    <Content Include="Content\DemosStyles\VectorMap\ColorsCustomization.css" />
+    <Content Include="Content\DemosStyles\VectorMap\DynamicViewport.css" />
+    <Content Include="Content\DemosStyles\VectorMap\ImageMarkers.css" />
+    <Content Include="Content\DemosStyles\VectorMap\Overview.css" />
+    <Content Include="Content\DemosStyles\VectorMap\Palette.css" />
+    <Content Include="Content\DemosStyles\VectorMap\CustomProjection.css" />
+    <Content Include="Content\DemosStyles\VectorMap\PieMarkers.css" />
+    <Content Include="Content\DemosStyles\VectorMap\TooltipHTMLSupport.css" />
+    <Content Include="Content\DemosStyles\VectorMap\ZoomingAndCentering.css" />
+    <Content Include="Content\DevExtreme\dx-diagram.css" />
+    <Content Include="Content\DevExtreme\dx-diagram.min.css" />
+    <Content Include="Content\DevExtreme\dx-gantt.css" />
+    <Content Include="Content\DevExtreme\dx-gantt.min.css" />
+    <Content Include="Content\DevExtreme\dx.carmine.css" />
+    <Content Include="Content\DevExtreme\dx.common.css" />
+    <Content Include="Content\DevExtreme\dx.contrast.compact.css" />
+    <Content Include="Content\DevExtreme\dx.contrast.css" />
+    <Content Include="Content\DevExtreme\dx.dark.compact.css" />
+    <Content Include="Content\DevExtreme\dx.dark.css" />
+    <Content Include="Content\DevExtreme\dx.darkmoon.css" />
+    <Content Include="Content\DevExtreme\dx.darkviolet.css" />
+    <Content Include="Content\DevExtreme\dx.greenmist.css" />
+    <Content Include="Content\DevExtreme\dx.ios7.default.css" />
+    <Content Include="Content\DevExtreme\dx.light.compact.css" />
+    <Content Include="Content\DevExtreme\dx.light.css" />
+    <Content Include="Content\DevExtreme\dx.material.blue.dark.compact.css" />
+    <Content Include="Content\DevExtreme\dx.material.blue.dark.css" />
+    <Content Include="Content\DevExtreme\dx.material.blue.light.compact.css" />
+    <Content Include="Content\DevExtreme\dx.material.blue.light.css" />
+    <Content Include="Content\DevExtreme\dx.material.lime.dark.compact.css" />
+    <Content Include="Content\DevExtreme\dx.material.lime.dark.css" />
+    <Content Include="Content\DevExtreme\dx.material.lime.light.compact.css" />
+    <Content Include="Content\DevExtreme\dx.material.lime.light.css" />
+    <Content Include="Content\DevExtreme\dx.material.orange.dark.compact.css" />
+    <Content Include="Content\DevExtreme\dx.material.orange.dark.css" />
+    <Content Include="Content\DevExtreme\dx.material.orange.light.compact.css" />
+    <Content Include="Content\DevExtreme\dx.material.orange.light.css" />
+    <Content Include="Content\DevExtreme\dx.material.purple.dark.compact.css" />
+    <Content Include="Content\DevExtreme\dx.material.purple.dark.css" />
+    <Content Include="Content\DevExtreme\dx.material.purple.light.compact.css" />
+    <Content Include="Content\DevExtreme\dx.material.purple.light.css" />
+    <Content Include="Content\DevExtreme\dx.material.teal.dark.compact.css" />
+    <Content Include="Content\DevExtreme\dx.material.teal.dark.css" />
+    <Content Include="Content\DevExtreme\dx.material.teal.light.compact.css" />
+    <Content Include="Content\DevExtreme\dx.material.teal.light.css" />
+    <Content Include="Content\DevExtreme\dx.softblue.css" />
+    <Content Include="Content\Images\button\weather.png" />
+    <Content Include="Content\Images\Charts\Annotation\apple-watch.png" />
+    <Content Include="Content\Images\Charts\Annotation\iphone-se.png" />
+    <Content Include="Content\Images\Charts\Annotation\iphone-x.png" />
+    <Content Include="Content\Images\colorbox\hero_black.png" />
+    <Content Include="Content\Images\colorbox\hero_contrast.png" />
+    <Content Include="Content\Images\colorbox\hero_darkmoon.png" />
+    <Content Include="Content\Images\colorbox\hero_darkviolet.png" />
+    <Content Include="Content\Images\colorbox\hero_greenmist.png" />
+    <Content Include="Content\Images\colorbox\hero_material_dark.png" />
+    <Content Include="Content\Images\colorbox\hero_white.png" />
+    <Content Include="Content\Images\DataGrid\arrow.png" />
+    <Content Include="Content\Images\DataGrid\logo-devav.png" />
+    <Content Include="Content\Images\DataGrid\logo-tasks.png" />
+    <Content Include="Content\Images\employees\01.png" />
+    <Content Include="Content\Images\employees\02.png" />
+    <Content Include="Content\Images\employees\03.png" />
+    <Content Include="Content\Images\employees\04.png" />
+    <Content Include="Content\Images\employees\05.png" />
+    <Content Include="Content\Images\employees\06.png" />
+    <Content Include="Content\Images\employees\07.png" />
+    <Content Include="Content\Images\employees\08.png" />
+    <Content Include="Content\Images\employees\09.png" />
+    <Content Include="Content\Images\employees\10.png" />
+    <Content Include="Content\Images\employees\11.png" />
+    <Content Include="Content\Images\employees\12.png" />
+    <Content Include="Content\Images\employees\13.png" />
+    <Content Include="Content\Images\employees\14.png" />
+    <Content Include="Content\Images\employees\15.png" />
+    <Content Include="Content\Images\employees\16.png" />
+    <Content Include="Content\Images\employees\17.png" />
+    <Content Include="Content\Images\employees\18.png" />
+    <Content Include="Content\Images\employees\19.png" />
+    <Content Include="Content\Images\employees\20.png" />
+    <Content Include="Content\Images\employees\21.png" />
+    <Content Include="Content\Images\employees\22.png" />
+    <Content Include="Content\Images\employees\23.png" />
+    <Content Include="Content\Images\employees\24.png" />
+    <Content Include="Content\Images\employees\25.png" />
+    <Content Include="Content\Images\employees\26.png" />
+    <Content Include="Content\Images\employees\27.png" />
+    <Content Include="Content\Images\employees\28.png" />
+    <Content Include="Content\Images\employees\29.png" />
+    <Content Include="Content\Images\employees\30.png" />
+    <Content Include="Content\Images\employees\31.png" />
+    <Content Include="Content\Images\employees\32.png" />
+    <Content Include="Content\Images\employees\33.png" />
+    <Content Include="Content\Images\employees\34.png" />
+    <Content Include="Content\Images\employees\35.png" />
+    <Content Include="Content\Images\employees\36.png" />
+    <Content Include="Content\Images\employees\37.png" />
+    <Content Include="Content\Images\employees\38.png" />
+    <Content Include="Content\Images\employees\39.png" />
+    <Content Include="Content\Images\employees\40.png" />
+    <Content Include="Content\Images\employees\41.png" />
+    <Content Include="Content\Images\employees\42.png" />
+    <Content Include="Content\Images\employees\43.png" />
+    <Content Include="Content\Images\employees\44.png" />
+    <Content Include="Content\Images\employees\45.png" />
+    <Content Include="Content\Images\employees\46.png" />
+    <Content Include="Content\Images\employees\47.png" />
+    <Content Include="Content\Images\employees\48.png" />
+    <Content Include="Content\Images\employees\49.png" />
+    <Content Include="Content\Images\employees\50.png" />
+    <Content Include="Content\Images\flags\Alexandria.png" />
+    <Content Include="Content\Images\flags\Australia.png" />
+    <Content Include="Content\Images\flags\Berlin.png" />
+    <Content Include="Content\Images\flags\Birmingham.png" />
+    <Content Include="Content\Images\flags\Bogota.png" />
+    <Content Include="Content\Images\flags\Brasilia.png" />
+    <Content Include="Content\Images\flags\Brazil.png" />
+    <Content Include="Content\Images\flags\Cairo.png" />
+    <Content Include="Content\Images\flags\Cali.png" />
+    <Content Include="Content\Images\flags\california.gif" />
+    <Content Include="Content\Images\flags\Canberra.png" />
+    <Content Include="Content\Images\flags\Chicago.png" />
+    <Content Include="Content\Images\flags\Colombia.png" />
+    <Content Include="Content\Images\flags\Durban.png" />
+    <Content Include="Content\Images\flags\Egypt.png" />
+    <Content Include="Content\Images\flags\florida.gif" />
+    <Content Include="Content\Images\flags\france.svg" />
+    <Content Include="Content\Images\flags\GeorgeTown.png" />
+    <Content Include="Content\Images\flags\georgia.gif" />
+    <Content Include="Content\Images\flags\Germany.png" />
+    <Content Include="Content\Images\flags\germany.svg" />
+    <Content Include="Content\Images\flags\Giza.png" />
+    <Content Include="Content\Images\flags\Guadalajara.png" />
+    <Content Include="Content\Images\flags\Hamburg.png" />
+    <Content Include="Content\Images\flags\illinois.gif" />
+    <Content Include="Content\Images\flags\Ipoh.png" />
+    <Content Include="Content\Images\flags\Japan.png" />
+    <Content Include="Content\Images\flags\Johannesburg.png" />
+    <Content Include="Content\Images\flags\KualaLumpur.png" />
+    <Content Include="Content\Images\flags\London.png" />
+    <Content Include="Content\Images\flags\LosAngeles.png" />
+    <Content Include="Content\Images\flags\Malaysia.png" />
+    <Content Include="Content\Images\flags\Medellin.png" />
+    <Content Include="Content\Images\flags\Melbourne.png" />
+    <Content Include="Content\Images\flags\Mexico.png" />
+    <Content Include="Content\Images\flags\MexicoCity.png" />
+    <Content Include="Content\Images\flags\michigan.gif" />
+    <Content Include="Content\Images\flags\Moscow.png" />
+    <Content Include="Content\Images\flags\Munich.png" />
+    <Content Include="Content\Images\flags\Nagoya.png" />
+    <Content Include="Content\Images\flags\newyork.gif" />
+    <Content Include="Content\Images\flags\NewYork.png" />
+    <Content Include="Content\Images\flags\northcarolina.gif" />
+    <Content Include="Content\Images\flags\Novosibirsk.png" />
+    <Content Include="Content\Images\flags\ohio.gif" />
+    <Content Include="Content\Images\flags\Osaka.png" />
+    <Content Include="Content\Images\flags\pennsylvania.gif" />
+    <Content Include="Content\Images\flags\Pretoria.png" />
+    <Content Include="Content\Images\flags\Puebla.png" />
+    <Content Include="Content\Images\flags\RioDeJaneiro.png" />
+    <Content Include="Content\Images\flags\Russia.png" />
+    <Content Include="Content\Images\flags\SaintPetersburg.png" />
+    <Content Include="Content\Images\flags\SaoPaulo.png" />
+    <Content Include="Content\Images\flags\SouthAfrica.png" />
+    <Content Include="Content\Images\flags\Sydney.jpg" />
+    <Content Include="Content\Images\flags\texas.gif" />
+    <Content Include="Content\Images\flags\texas.gif" />
+    <Content Include="Content\Images\flags\Tokyo.png" />
+    <Content Include="Content\Images\flags\UnitedKingdom.png" />
+    <Content Include="Content\Images\flags\UnitedStates.png" />
+    <Content Include="Content\Images\flags\Washington.png" />
+    <Content Include="Content\Images\flags\Yokohama.png" />
+    <Content Include="Content\Images\Gallery\1.jpg" />
+    <Content Include="Content\Images\Gallery\1b.jpg" />
+    <Content Include="Content\Images\Gallery\2.jpg" />
+    <Content Include="Content\Images\Gallery\2b.jpg" />
+    <Content Include="Content\Images\Gallery\3.jpg" />
+    <Content Include="Content\Images\Gallery\3b.jpg" />
+    <Content Include="Content\Images\Gallery\4.jpg" />
+    <Content Include="Content\Images\Gallery\4b.jpg" />
+    <Content Include="Content\Images\Gallery\5.jpg" />
+    <Content Include="Content\Images\Gallery\5b.jpg" />
+    <Content Include="Content\Images\Gallery\6.jpg" />
+    <Content Include="Content\Images\Gallery\6b.jpg" />
+    <Content Include="Content\Images\Gallery\7.jpg" />
+    <Content Include="Content\Images\Gallery\7b.jpg" />
+    <Content Include="Content\Images\Gallery\8.jpg" />
+    <Content Include="Content\Images\Gallery\8b.jpg" />
+    <Content Include="Content\Images\Gallery\9.jpg" />
+    <Content Include="Content\Images\Gallery\9b.jpg" />
+    <Content Include="Content\Images\gym\coach-man.png" />
+    <Content Include="Content\Images\gym\coach-woman.png" />
+    <Content Include="Content\Images\gym\icon-abs.png" />
+    <Content Include="Content\Images\gym\icon-fitball.png" />
+    <Content Include="Content\Images\gym\icon-step.png" />
+    <Content Include="Content\Images\hotels\Bathroom-0.jpg" />
+    <Content Include="Content\Images\hotels\Bathroom-2.jpg" />
+    <Content Include="Content\Images\hotels\Bathroom-3.jpg" />
+    <Content Include="Content\Images\hotels\Bathroom-4.jpg" />
+    <Content Include="Content\Images\hotels\Bathroom-6.jpg" />
+    <Content Include="Content\Images\hotels\Bathroom-7.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-1-0.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-1-2.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-1-3.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-1-5.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-1-7.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-1-8.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-1-9.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-2-0.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-2-1.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-2-10.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-2-11.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-2-2.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-2-3.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-2-4.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-2-5.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-2-8.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-2-9.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-3-0.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-3-1.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-3-10.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-3-11.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-3-2.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-3-3.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-3-4.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-3-5.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-3-6.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-3-7.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-3-8.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-3-9.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-4-0.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-4-10.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-4-11.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-4-3.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-4-4.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-4-5.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-4-6.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-4-7.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-4-8.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-4-9.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-5-1.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-5-10.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-5-11.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-5-12.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-5-14.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-5-2.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-5-3.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-5-4.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-5-5.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-5-7.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-5-8.jpg" />
+    <Content Include="Content\Images\hotels\Bedroom-5-9.jpg" />
+    <Content Include="Content\Images\hotels\Hamburg-0.jpg" />
+    <Content Include="Content\Images\hotels\Hamburg-1.jpg" />
+    <Content Include="Content\Images\hotels\Hamburg-2.jpg" />
+    <Content Include="Content\Images\hotels\Hamburg-3.jpg" />
+    <Content Include="Content\Images\hotels\Hamburg-4.jpg" />
+    <Content Include="Content\Images\hotels\Hamburg-5.jpg" />
+    <Content Include="Content\Images\hotels\Hamburg-6.jpg" />
+    <Content Include="Content\Images\hotels\Hamburg-7.jpg" />
+    <Content Include="Content\Images\hotels\Hamburg-8.jpg" />
+    <Content Include="Content\Images\hotels\Honolulu-0.jpg" />
+    <Content Include="Content\Images\hotels\Honolulu-1.jpg" />
+    <Content Include="Content\Images\hotels\Honolulu-10.jpg" />
+    <Content Include="Content\Images\hotels\Honolulu-2.jpg" />
+    <Content Include="Content\Images\hotels\Honolulu-3.jpg" />
+    <Content Include="Content\Images\hotels\Honolulu-4.jpg" />
+    <Content Include="Content\Images\hotels\Honolulu-5.jpg" />
+    <Content Include="Content\Images\hotels\Honolulu-6.jpg" />
+    <Content Include="Content\Images\hotels\Honolulu-7.jpg" />
+    <Content Include="Content\Images\hotels\Honolulu-9.jpg" />
+    <Content Include="Content\Images\hotels\LA-0.jpg" />
+    <Content Include="Content\Images\hotels\LA-1.jpg" />
+    <Content Include="Content\Images\hotels\LA-2.jpg" />
+    <Content Include="Content\Images\hotels\LA-3.jpg" />
+    <Content Include="Content\Images\hotels\LA-4.jpg" />
+    <Content Include="Content\Images\hotels\LA-5.jpg" />
+    <Content Include="Content\Images\hotels\LA-7.jpg" />
+    <Content Include="Content\Images\hotels\LA-8.jpg" />
+    <Content Include="Content\Images\hotels\LA-9.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-0.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-1.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-10.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-11.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-12.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-13.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-14.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-15.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-16.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-17.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-18.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-19.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-2.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-20.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-21.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-22.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-23.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-25.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-27.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-28.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-29.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-3.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-30.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-31.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-32.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-33.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-4.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-5.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-6.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-7.jpg" />
+    <Content Include="Content\Images\hotels\Lobby-9.jpg" />
+    <Content Include="Content\Images\hotels\London-0.jpg" />
+    <Content Include="Content\Images\hotels\London-1.jpg" />
+    <Content Include="Content\Images\hotels\London-10.jpg" />
+    <Content Include="Content\Images\hotels\London-2.jpg" />
+    <Content Include="Content\Images\hotels\London-3.jpg" />
+    <Content Include="Content\Images\hotels\London-4.jpg" />
+    <Content Include="Content\Images\hotels\London-5.jpg" />
+    <Content Include="Content\Images\hotels\London-7.jpg" />
+    <Content Include="Content\Images\hotels\London-8.jpg" />
+    <Content Include="Content\Images\hotels\LV-0.jpg" />
+    <Content Include="Content\Images\hotels\LV-1.jpg" />
+    <Content Include="Content\Images\hotels\LV-2.jpg" />
+    <Content Include="Content\Images\hotels\LV-3.jpg" />
+    <Content Include="Content\Images\hotels\LV-4.jpg" />
+    <Content Include="Content\Images\hotels\LV-5.jpg" />
+    <Content Include="Content\Images\hotels\LV-6.jpg" />
+    <Content Include="Content\Images\hotels\LV-7.jpg" />
+    <Content Include="Content\Images\hotels\LV-8.jpg" />
+    <Content Include="Content\Images\hotels\MeetingRoom-0.jpg" />
+    <Content Include="Content\Images\hotels\MeetingRoom-1.jpg" />
+    <Content Include="Content\Images\hotels\MeetingRoom-2.jpg" />
+    <Content Include="Content\Images\hotels\MeetingRoom-4.jpg" />
+    <Content Include="Content\Images\hotels\MeetingRoom-5.jpg" />
+    <Content Include="Content\Images\hotels\Nassau-0.jpg" />
+    <Content Include="Content\Images\hotels\Nassau-11.jpg" />
+    <Content Include="Content\Images\hotels\Nassau-12.jpg" />
+    <Content Include="Content\Images\hotels\Nassau-14.jpg" />
+    <Content Include="Content\Images\hotels\Nassau-2.jpg" />
+    <Content Include="Content\Images\hotels\Nassau-4.jpg" />
+    <Content Include="Content\Images\hotels\Nassau-5.jpg" />
+    <Content Include="Content\Images\hotels\Nassau-6.jpg" />
+    <Content Include="Content\Images\hotels\Nassau-8.jpg" />
+    <Content Include="Content\Images\hotels\NYC-0.jpg" />
+    <Content Include="Content\Images\hotels\NYC-1.jpg" />
+    <Content Include="Content\Images\hotels\NYC-10.jpg" />
+    <Content Include="Content\Images\hotels\NYC-2.jpg" />
+    <Content Include="Content\Images\hotels\NYC-3.jpg" />
+    <Content Include="Content\Images\hotels\NYC-4.jpg" />
+    <Content Include="Content\Images\hotels\NYC-6.jpg" />
+    <Content Include="Content\Images\hotels\NYC-8.jpg" />
+    <Content Include="Content\Images\hotels\NYC-9.jpg" />
+    <Content Include="Content\Images\hotels\Paris-1.jpg" />
+    <Content Include="Content\Images\hotels\Paris-10.jpg" />
+    <Content Include="Content\Images\hotels\Paris-2.jpg" />
+    <Content Include="Content\Images\hotels\Paris-3.jpg" />
+    <Content Include="Content\Images\hotels\Paris-4.jpg" />
+    <Content Include="Content\Images\hotels\Paris-5.jpg" />
+    <Content Include="Content\Images\hotels\Paris-6.jpg" />
+    <Content Include="Content\Images\hotels\Paris-8.jpg" />
+    <Content Include="Content\Images\hotels\Paris-9.jpg" />
+    <Content Include="Content\Images\hotels\Pool-0.jpg" />
+    <Content Include="Content\Images\hotels\Pool-1.jpg" />
+    <Content Include="Content\Images\hotels\Pool-11.jpg" />
+    <Content Include="Content\Images\hotels\Pool-13.jpg" />
+    <Content Include="Content\Images\hotels\Pool-14.jpg" />
+    <Content Include="Content\Images\hotels\Pool-3.jpg" />
+    <Content Include="Content\Images\hotels\Pool-4.jpg" />
+    <Content Include="Content\Images\hotels\Pool-5.jpg" />
+    <Content Include="Content\Images\hotels\Pool-6.jpg" />
+    <Content Include="Content\Images\hotels\Pool-7.jpg" />
+    <Content Include="Content\Images\hotels\Pool-8.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-0.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-1.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-10.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-11.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-12.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-13.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-14.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-15.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-16.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-17.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-18.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-19.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-2.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-20.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-21.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-3.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-4.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-5.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-6.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-7.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-8.jpg" />
+    <Content Include="Content\Images\hotels\Restaurant-9.jpg" />
+    <Content Include="Content\Images\hotels\Rome-0.jpg" />
+    <Content Include="Content\Images\hotels\Rome-1.jpg" />
+    <Content Include="Content\Images\hotels\Rome-2.jpg" />
+    <Content Include="Content\Images\hotels\Rome-3.jpg" />
+    <Content Include="Content\Images\hotels\Rome-4.jpg" />
+    <Content Include="Content\Images\hotels\Rome-5.jpg" />
+    <Content Include="Content\Images\hotels\Rome-6.jpg" />
+    <Content Include="Content\Images\hotels\Rome-7.jpg" />
+    <Content Include="Content\Images\hotels\Rome-8.jpg" />
+    <Content Include="Content\Images\hotels\Room-0.jpg" />
+    <Content Include="Content\Images\hotels\Room-1.jpg" />
+    <Content Include="Content\Images\hotels\Room-2.jpg" />
+    <Content Include="Content\Images\hotels\Room-3.jpg" />
+    <Content Include="Content\Images\hotels\SF-0.jpg" />
+    <Content Include="Content\Images\hotels\SF-2.jpg" />
+    <Content Include="Content\Images\hotels\SF-3.jpg" />
+    <Content Include="Content\Images\hotels\SF-4.jpg" />
+    <Content Include="Content\Images\hotels\SF-5.jpg" />
+    <Content Include="Content\Images\hotels\SF-6.jpg" />
+    <Content Include="Content\Images\hotels\SF-7.jpg" />
+    <Content Include="Content\Images\hotels\SF-8.jpg" />
+    <Content Include="Content\Images\hotels\SF-9.jpg" />
+    <Content Include="Content\Images\icon-agent.svg" />
+    <Content Include="Content\Images\icon-medal-bronse.png" />
+    <Content Include="Content\Images\icon-medal-gold.png" />
+    <Content Include="Content\Images\icon-medal-silver.png" />
+    <Content Include="Content\Images\icons\custom-dropbutton-icon.svg" />
+    <Content Include="Content\Images\icons\eye.png" />
+    <Content Include="Content\Images\icons\status-1.png" />
+    <Content Include="Content\Images\icons\status-2.png" />
+    <Content Include="Content\Images\icons\status-3.png" />
+    <Content Include="Content\Images\icons\status-4.png" />
+    <Content Include="Content\Images\icons\status-5.png" />
+    <Content Include="Content\Images\icons\tv.svg" />
+    <Content Include="Content\Images\icons\video-player.svg" />
+    <Content Include="Content\Images\Layout\dx-footer-logo.svg" />
+    <Content Include="Content\Images\Layout\icon-buy-hover.svg" />
+    <Content Include="Content\Images\Layout\icon-buy.svg" />
+    <Content Include="Content\Images\Layout\icon-trial-hover.svg" />
+    <Content Include="Content\Images\Layout\icon-trial.svg" />
+    <Content Include="Content\Images\LoadIndicator\Loading.gif" />
+    <Content Include="Content\Images\mask.png" />
+    <Content Include="Content\Images\mentions\Brett-Wade.png" />
+    <Content Include="Content\Images\mentions\Cynthia-Stanwick.png" />
+    <Content Include="Content\Images\mentions\Greta-Sims.png" />
+    <Content Include="Content\Images\mentions\John-Heart.png" />
+    <Content Include="Content\Images\mentions\Kevin-Carter.png" />
+    <Content Include="Content\Images\mentions\Olivia-Peyton.png" />
+    <Content Include="Content\Images\mentions\Robert-Reagan.png" />
+    <Content Include="Content\Images\Menu\treeview_collapsed_icon.png" />
+    <Content Include="Content\Images\Menu\treeview_expanded_icon.png" />
+    <Content Include="Content\Images\movies\AStartIsBorn.jpg" />
+    <Content Include="Content\Images\movies\CityLights.jpg" />
+    <Content Include="Content\Images\movies\HisGirlFriday.jpg" />
+    <Content Include="Content\Images\movies\ItsAWonderfulLife.jpg" />
+    <Content Include="Content\Images\movies\RoyalWedding.jpg" />
+    <Content Include="Content\Images\movies\ScreamingSkull.jpg" />
+    <Content Include="Content\Images\petersmith.png" />
+    <Content Include="Content\Images\Popup-Scrolling-Image.jpg" />
+    <Content Include="Content\Images\products\1-small.png" />
+    <Content Include="Content\Images\products\10-small.png" />
+    <Content Include="Content\Images\products\11-small.png" />
+    <Content Include="Content\Images\products\12-small.png" />
+    <Content Include="Content\Images\products\13-small.png" />
+    <Content Include="Content\Images\products\14-small.png" />
+    <Content Include="Content\Images\products\15-small.png" />
+    <Content Include="Content\Images\products\16-small.png" />
+    <Content Include="Content\Images\products\17-small.png" />
+    <Content Include="Content\Images\products\18-small.png" />
+    <Content Include="Content\Images\products\19-small.png" />
+    <Content Include="Content\Images\products\2-small.png" />
+    <Content Include="Content\Images\products\3-small.png" />
+    <Content Include="Content\Images\products\4-small.png" />
+    <Content Include="Content\Images\products\5-small.png" />
+    <Content Include="Content\Images\products\6-small.png" />
+    <Content Include="Content\Images\products\7-small.png" />
+    <Content Include="Content\Images\products\8-small.png" />
+    <Content Include="Content\Images\products\9-small.png" />
+    <Content Include="Content\Images\RangeImage\Background.png" />
+    <Content Include="Content\Images\ProductsLarge\1.png" />
+    <Content Include="Content\Images\ProductsLarge\10.png" />
+    <Content Include="Content\Images\ProductsLarge\11.png" />
+    <Content Include="Content\Images\ProductsLarge\12.png" />
+    <Content Include="Content\Images\ProductsLarge\13.png" />
+    <Content Include="Content\Images\ProductsLarge\14.png" />
+    <Content Include="Content\Images\ProductsLarge\15.png" />
+    <Content Include="Content\Images\ProductsLarge\16.png" />
+    <Content Include="Content\Images\ProductsLarge\17.png" />
+    <Content Include="Content\Images\ProductsLarge\18.png" />
+    <Content Include="Content\Images\ProductsLarge\19.png" />
+    <Content Include="Content\Images\ProductsLarge\2.png" />
+    <Content Include="Content\Images\ProductsLarge\3.png" />
+    <Content Include="Content\Images\ProductsLarge\4.png" />
+    <Content Include="Content\Images\ProductsLarge\5.png" />
+    <Content Include="Content\Images\ProductsLarge\6.png" />
+    <Content Include="Content\Images\ProductsLarge\7.png" />
+    <Content Include="Content\Images\ProductsLarge\8.png" />
+    <Content Include="Content\Images\ProductsLarge\9.png" />
+    <Content Include="Content\Images\shapes\internet.svg" />
+    <Content Include="Content\Images\shapes\laptop.svg" />
+    <Content Include="Content\Images\shapes\mobile.svg" />
+    <Content Include="Content\Images\shapes\pc.svg" />
+    <Content Include="Content\Images\shapes\phone.svg" />
+    <Content Include="Content\Images\shapes\printer.svg" />
+    <Content Include="Content\Images\shapes\router.svg" />
+    <Content Include="Content\Images\shapes\scaner.svg" />
+    <Content Include="Content\Images\shapes\server.svg" />
+    <Content Include="Content\Images\shapes\switch.svg" />
+    <Content Include="Content\Images\shapes\wifi.svg" />
+    <Content Include="Content\Images\thumbnails\doc-rtf.svg" />
+    <Content Include="Content\Images\thumbnails\doc-txt.svg" />
+    <Content Include="Content\Images\thumbnails\doc-xml.svg" />
+    <Content Include="Content\Images\thumbnails\folder.svg" />
+    <Content Include="Content\Images\VectorMap\Cloudy.png" />
+    <Content Include="Content\Images\VectorMap\PartlyCloudy.png" />
+    <Content Include="Content\Images\VectorMap\Rain.png" />
+    <Content Include="Content\Images\VectorMap\Storm.png" />
+    <Content Include="Content\Images\VectorMap\Sunny.png" />
+    <Content Include="Content\Images\widgets\HtmlEditor.svg" />
+    <Content Include="Content\Images\widgets\LoadPanel.svg" />
+    <Content Include="Content\Images\widgets\Popover.svg" />
+    <Content Include="Content\Images\widgets\Popup.svg" />
+    <Content Include="Content\Images\widgets\ProgressBar.svg" />
+    <Content Include="Content\Images\widgets\Toast.svg" />
+    <Content Include="Content\Images\widgets\Tooltip.svg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Athens\%28Athens%29-Academy-of-Athens.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Barcelona\%28Barcelona%29-Arc-de-Triomf.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Barcelona\%28Barcelona%29-Camp-Nou.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Berlin\%28Berlin%29-Brandenburg-Gate.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Berlin\%28Berlin%29-Red-City-Hall.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Berlin\%28Berlin%29-Reichstag.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Cairo\%28Cairo%29-Cairo-Citadel.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Cairo\%28Cairo%29-Mosque-of-Ibn-Tulun.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Las-Vegas\%28Las-Vegas%29-Bally%27s-Hotel-and-Casino.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Las-Vegas\%28Las-Vegas%29-Bellagio-Hotel-and-Casino.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Las-Vegas\%28Las-Vegas%29-Luxor-Hotel-and-Casino.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\London\%28London%29-St-Paul%27s-Cathedral.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\London\%28London%29-Tower-Bridge.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\London\%28London%29-Tower-of-London.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\London\%28London%29-Trafalgar-Square.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\London\%28London%29-Westminster-Abbey.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Los-Angeles\%28Los-Angeles%29-Downtown.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Los-Angeles\%28Los-Angeles%29-International-Airport.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Los-Angeles\%28Los-Angeles%29-Music-Center.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Moscow\%28Moscow%29-Bolshoi-Theatre.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Moscow\%28Moscow%29-Cathedral-of-Christ-the-Saviour.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Moscow\%28Moscow%29-Saint-Basil%27s-Cathedral.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Moscow\%28Moscow%29-Spasskaya-Tower.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\New-York\%28New-York%29-Brooklyn-Bridge.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\New-York\%28New-York%29-Empire-State-Building.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\New-York\%28New-York%29-Rockefeller-Center.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\New-York\%28New-York%29-Times-Square.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Paris\%28Paris%29-Arc-de-Triomphe.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Paris\%28Paris%29-Eiffel-Tower.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Paris\%28Paris%29-Montmartre.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Prague\%28Prague%29-Charles-Bridge.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Prague\%28Prague%29-Prague-Orloj.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Prague\%28Prague%29-Prague-Zoo.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Prague\%28Prague%29-St.-Vitus-Cathedral.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Sydney\%28Sydney%29-Sydney-Central-Business-District.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Sydney\%28Sydney%29-Sydney-Opera-House.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Tokyo\%28Tokyo%29-Rainbow-Bridge.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Tokyo\%28Tokyo%29-Tokyo-Imperial-Palace.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Cities\Tokyo\%28Tokyo%29-Tokyo-Tower.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Alberto_Alonso.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Alfredo_Gomez.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Andrew_Lee.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Angela_Murphy.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Clarence_Nath.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Colin_He.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Connor_Jenkins.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Connor_Lopez.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Destiny_Clark.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Diana_Martin.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Gary_Rubio.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Heidi_Lopez.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Jesse_Gonzalez.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Jessie_She.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Julia_Bell.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Julia_Evans.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Katelyn_Lopez.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Kevin_Collins.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Logan_Hernandez.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Maria_Hernandez.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Martha_Gao.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Megan_Sanchez.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Miguel_Jones.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Naomi_Moreno.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Nathan_Bryant.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Rafael_Raje.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Rebekah_Raman.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Shannon_Sanz.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Contacts\Xavier_Richardson.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Landscapes\01.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Landscapes\02.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Landscapes\03.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Landscapes\04.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Landscapes\05.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Landscapes\06.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Landscapes\07.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Landscapes\08.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Landscapes\09.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Landscapes\10.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Portraits\01.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Portraits\02.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Portraits\03.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Portraits\04.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Portraits\05.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Portraits\06.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Widescreen\man-climbing-on-limestone-wall.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Widescreen\swimmer-underwater.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Widescreen\typing-male-hands.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Widescreen\woman-using-laptop.jpg" />
+    <Content Include="Content\SampleData\SampleImages\Widescreen\woman-using-notebook.jpg" />
+    <Content Include="Content\SampleData\TemperatureData.xml" />
+    <Content Include="Content\site.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\data\companies.js" />
+    <Content Include="Scripts\data\employeeData.js" />
+    <Content Include="Scripts\data\employeesEI.js" />
+    <Content Include="Scripts\data\employeesPS.js" />
+    <Content Include="Scripts\data\fileSystem.js" />
+    <Content Include="Scripts\data\localReordering.js" />
+    <Content Include="Scripts\data\orgItems.js" />
+    <Content Include="Scripts\data\orgItemsAdvanced.js" />
+    <Content Include="Scripts\data\orgItemsHierarchy.js" />
+    <Content Include="Scripts\data\orgItemsPlain.js" />
+    <Content Include="Scripts\data\orgItemsWithImages.js" />
+    <Content Include="Scripts\data\priorities.js" />
+    <Content Include="Scripts\data\realTimeData.js" />
+    <Content Include="Scripts\data\statuses.js" />
+    <Content Include="Scripts\dx-diagram.js" />
+    <Content Include="Scripts\dx-diagram.min.js" />
+    <Content Include="Scripts\dx-gantt.js" />
+    <Content Include="Scripts\dx-gantt.min.js" />
+    <Content Include="Scripts\dx.aspnet.data.js" />
+    <Content Include="Scripts\dx.aspnet.mvc.js" />
+    <Content Include="Content\SampleData\Copper.json" />
+    <Content Include="Content\SampleData\Stock.json" />
+    <Content Include="Content\SampleData\TreeMap.json" />
+    <Content Include="Content\SampleData\VectorMap.json" />
+    <Content Include="Content\SampleData\Wind.json" />
+    <Content Include="Scripts\cldr.js" />
+    <Content Include="Scripts\cldr.js" />
+    <Content Include="Scripts\cldr\event.js" />
+    <Content Include="Scripts\cldr\event.min.js" />
+    <Content Include="Scripts\cldr\supplemental.js" />
+    <Content Include="Scripts\cldr\supplemental.min.js" />
+    <Content Include="Scripts\cldr\unresolved.js" />
+    <Content Include="Scripts\cldr\unresolved.min.js" />
+    <Content Include="Scripts\data\appointments.js" />
+    <Content Include="Scripts\data\areaPopulations.js" />
+    <Content Include="Scripts\data\countries.js" />
+    <Content Include="Scripts\data\countriesGDP.js" />
+    <Content Include="Scripts\data\customers.js" />
+    <Content Include="Scripts\data\customMapData.js" />
+    <Content Include="Scripts\data\customProjection.js" />
+    <Content Include="Scripts\data\employee.js" />
+    <Content Include="Scripts\data\employees.js" />
+    <Content Include="Scripts\data\employeesHS.js" />
+    <Content Include="Scripts\data\floorPlanProjection.js" />
+    <Content Include="Scripts\data\orders.js" />
+    <Content Include="Scripts\data\palette.js" />
+    <Content Include="Scripts\data\names.js" />
+    <Content Include="Scripts\data\populationData.js" />
+    <Content Include="Scripts\data\populations.js" />
+    <Content Include="Scripts\data\sales.js" />
+    <Content Include="Scripts\dx.all.debug.js" />
+    <Content Include="Scripts\dx.all.js" />
+    <Content Include="Scripts\globalize.js" />
+    <Content Include="Scripts\globalize.min.js" />
+    <Content Include="Scripts\globalize\currency.js" />
+    <Content Include="Scripts\globalize\currency.min.js" />
+    <Content Include="Scripts\globalize\date.js" />
+    <Content Include="Scripts\globalize\date.min.js" />
+    <Content Include="Scripts\globalize\message.js" />
+    <Content Include="Scripts\globalize\message.min.js" />
+    <Content Include="Scripts\globalize\number.js" />
+    <Content Include="Scripts\globalize\number.min.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\signalr\jquery.signalR-2.2.2.js" />
+    <Content Include="Scripts\signalr\jquery.signalR-2.2.2.min.js" />
+    <Content Include="Scripts\jszip.min.js" />
+    <Content Include="Scripts\localization\dx.messages.de.js" />
+    <Content Include="Scripts\localization\dx.messages.en.js" />
+    <Content Include="Scripts\localization\dx.messages.ja.js" />
+    <Content Include="Scripts\localization\dx.messages.ru.js" />
+    <Content Include="Scripts\utils\azure-file-system.js" />
+    <Content Include="Scripts\vectormap-data\africa.js" />
+    <Content Include="Scripts\vectormap-data\canada.js" />
+    <Content Include="Scripts\vectormap-data\eurasia.js" />
+    <Content Include="Scripts\vectormap-data\europe.js" />
+    <Content Include="Scripts\vectormap-data\usa.js" />
+    <Content Include="Scripts\vectormap-data\world.js" />
+    <Content Include="Content\DevExtreme\icons\dxicons.ttf" />
+    <Content Include="Content\DevExtreme\icons\dxicons.woff" />
+    <Content Include="Content\DevExtreme\icons\dxiconsios.ttf" />
+    <Content Include="Content\DevExtreme\icons\dxiconsios.woff" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\DateBox\Overview.cshtml" />
+    <Content Include="Views\ColorBox\Overview.cshtml" />
+    <Content Include="Views\Charts\MultipleAxes.cshtml" />
+    <Content Include="Views\Charts\MultiplePanes.cshtml" />
+    <Content Include="Views\Charts\HoverMode.cshtml" />
+    <Content Include="Views\Charts\Selection.cshtml" />
+    <Content Include="Views\Charts\MultipleSeriesSelection.cshtml" />
+    <Content Include="Views\Charts\MultiplePointSelection.cshtml" />
+    <Content Include="Views\Charts\SeriesTemplates.cshtml" />
+    <Content Include="Views\Charts\NullPointSupport.cshtml" />
+    <Content Include="Views\Calendar\Overview.cshtml" />
+    <Content Include="Views\Autocomplete\Overview.cshtml" />
+    <Content Include="Views\Charts\APISelectAPoint.cshtml" />
+    <Content Include="Views\DataGrid\RowSelection.cshtml" />
+    <Content Include="Views\Charts\APIDisplayATooltip.cshtml" />
+    <Content Include="Views\Charts\TooltipHTMLSupport.cshtml" />
+    <Content Include="Views\Charts\Crosshair.cshtml" />
+    <Content Include="Views\Charts\PointImage.cshtml" />
+    <Content Include="Views\Charts\CustomizePointsAndLabels.cshtml" />
+    <Content Include="Views\Charts\LogarithmicAxis.cshtml" />
+    <Content Include="Views\DataGrid\MultipleRecordSelectionModes.cshtml" />
+    <Content Include="Views\Charts\PointsAggregation.cshtml" />
+    <Content Include="Views\DataGrid\MultipleRecordSelectionAPI.cshtml" />
+    <Content Include="Views\DataGrid\DeferredSelection.cshtml" />
+    <Content Include="Views\Charts\PointsAggregationFinancialChart.cshtml" />
+    <Content Include="Views\Charts\DiscreteAxisZoomingAndScrolling.cshtml" />
+    <Content Include="Views\Charts\ErrorBars.cshtml" />
+    <Content Include="Views\Charts\ExportAndPrintingAPI.cshtml" />
+    <Content Include="Views\Charts\ContinuousData.cshtml" />
+    <Content Include="Views\Charts\DiscreteData.cshtml" />
+    <Content Include="Views\Charts\SpiderWeb.cshtml" />
+    <Content Include="Views\Charts\WindRose.cshtml" />
+    <Content Include="Views\Charts\PeriodicData.cshtml" />
+    <Content Include="Views\Charts\InvertedChart.cshtml" />
+    <Content Include="Views\Charts\SimpleSparklines.cshtml" />
+    <Content Include="Views\Charts\AreaSparklines.cshtml" />
+    <Content Include="Views\Charts\BarSparklines.cshtml" />
+    <Content Include="Views\Charts\WinlossSparklines.cshtml" />
+    <Content Include="Views\Charts\SimpleBullets.cshtml" />
+    <Content Include="Views\Charts\HierarchicalDataStructure.cshtml" />
+    <Content Include="Views\Charts\FlatDataStructure.cshtml" />
+    <Content Include="Views\Charts\TilingAlgorithms.cshtml" />
+    <Content Include="Views\Charts\Colorization.cshtml" />
+    <Content Include="Views\Charts\DrillDown.cshtml" />
+    <Content Include="Views\Gauges\PaletteForRanges.cshtml" />
+    <Content Include="Views\Shared\_DemoCode.cshtml" />
+    <Content Include="Content\Fonts\OpenSansCondensedBold.eot" />
+    <Content Include="Content\Fonts\OpenSansCondensedBold.ttf" />
+    <Content Include="Content\Fonts\OpenSansCondensedBold.woff" />
+    <Content Include="Views\PivotGrid\SimpleArray.cshtml" />
+    <Content Include="Views\PivotGrid\OLAPDataSource.cshtml" />
+    <Content Include="Views\PivotGrid\FieldPanel.cshtml" />
+    <Content Include="Views\PivotGrid\RunningTotals.cshtml" />
+    <Content Include="Views\PivotGrid\SummaryDisplayModes.cshtml" />
+    <Content Include="Views\PivotGrid\DrillDown.cshtml" />
+    <Content Include="Views\DataGrid\ColumnCustomization.cshtml" />
+    <Content Include="Views\PivotGrid\VirtualScrolling.cshtml" />
+    <Content Include="Views\PivotGrid\StatePersistence.cshtml" />
+    <Content Include="Views\PivotGrid\ChartIntegration.cshtml" />
+    <Content Include="Views\PivotGrid\LayoutCustomization.cshtml" />
+    <Content Include="Views\DataGrid\Appearance.cshtml" />
+    <Content Include="Views\DataGrid\CommandColumnCustomization.cshtml" />
+    <Content Include="Views\DataGrid\GridSummaries.cshtml" />
+    <Content Include="Views\DataGrid\RightToLeftSupport.cshtml" />
+    <Content Include="Views\DataGrid\ColumnTemplate.cshtml" />
+    <Content Include="Views\DataGrid\RowTemplate.cshtml" />
+    <Content Include="Views\DataGrid\GroupSummaries.cshtml" />
+    <Content Include="Views\DataGrid\MultiRowHeadersBands.cshtml" />
+    <Content Include="Views\DataGrid\StatePersistence.cshtml" />
+    <Content Include="Views\DataGrid\CustomSummaries.cshtml" />
+    <Content Include="Views\DataGrid\CellCustomization.cshtml" />
+    <Content Include="Views\DataGrid\ColumnsBasedOnADataSource.cshtml" />
+    <Content Include="Views\DataGrid\MasterDetailView.cshtml" />
+    <Content Include="Views\DataGrid\ToolbarCustomization.cshtml" />
+    <Content Include="Views\DataGrid\ExportToExcel.cshtml" />
+    <Content Include="Views\DataGrid\GridAdaptabilityOverview.cshtml" />
+    <Content Include="Views\DataGrid\GridColumnsHidingPriority.cshtml" />
+    <Content Include="Views\Gauges\ScaleMinorTicks.cshtml" />
+    <Content Include="Views\Gauges\ScaleLabelFormatting.cshtml" />
+    <Content Include="Views\Gauges\DifferentValueIndicatorTypes.cshtml" />
+    <Content Include="Views\Gauges\DifferentSubvalueIndicatorTypes.cshtml" />
+    <Content Include="Views\Gauges\SubvalueIndicatorTextFormatting.cshtml" />
+    <Content Include="Views\Gauges\CustomLayout.cshtml" />
+    <Content Include="Views\Gauges\AnglesCustomization.cshtml" />
+    <Content Include="Views\Scheduler\GroupOrientation.cshtml" />
+    <Content Include="Views\DataGrid\MasterDetailAPI.cshtml" />
+    <Content Include="Views\Scheduler\Timelines.cshtml" />
+    <Content Include="Views\Gauges\UpdateCircularGaugeDataAtRuntime.cshtml" />
+    <Content Include="Views\Scheduler\GoogleCalendarIntegration.cshtml" />
+    <Content Include="Views\Gauges\GaugeTitleCustomized.cshtml" />
+    <Content Include="Views\Gauges\GaugeTooltip.cshtml" />
+    <Content Include="Views\Gauges\ValueIndicatorsAPI.cshtml" />
+    <Content Include="Views\Form\CustomizeItem.cshtml" />
+    <Content Include="Views\Gauges\UpdateLinearGaugeDataAtRuntime.cshtml" />
+    <Content Include="Views\Form\GroupedFields.cshtml" />
+    <Content Include="Views\Form\ColumnsAdaptability.cshtml" />
+    <Content Include="Views\Gauges\LabelsCustomization.cshtml" />
+    <Content Include="Views\Gauges\Palette.cshtml" />
+    <Content Include="Views\Gauges\Tooltip.cshtml" />
+    <Content Include="Views\Gauges\BaseValueForRangeBar.cshtml" />
+    <Content Include="Views\Gauges\CustomLayoutLinearGauge.cshtml" />
+    <Content Include="Views\Gauges\DifferentSubvalueIndicatorTypesLinearGauge.cshtml" />
+    <Content Include="Views\Gauges\DifferentValueIndicatorTypesLinearGauge.cshtml" />
+    <Content Include="Views\Gauges\ScaleCustomTickInterval.cshtml" />
+    <Content Include="Views\Gauges\ScaleCustomTickValues.cshtml" />
+    <Content Include="Views\Gauges\VariableNumberOfSubvalueIndicators.cshtml" />
+    <Content Include="Content\DemosStyles\Gauges\UpdateBarGaugeDataAtRuntime.css" />
+    <Content Include="Views\Gauges\UpdateBarGaugeDataAtRuntime.cshtml" />
+    <Content Include="Views\Gauges\VariableNumberOfBars.cshtml" />
+    <Content Include="Views\Scheduler\CustomTemplates.cshtml" />
+    <Content Include="Views\Scheduler\TimeZonesSupport.cshtml" />
+    <Content Include="Views\Scheduler\CellTemplates.cshtml" />
+    <Content Include="Views\Scheduler\CustomizeIndividualViews.cshtml" />
+    <Content Include="Views\RangeSelector\NumericScaleLightweight.cshtml" />
+    <Content Include="Views\RangeSelector\NumericScale.cshtml" />
+    <Content Include="Views\RangeSelector\DateTimeScaleLightweight.cshtml" />
+    <Content Include="Views\RangeSelector\DateTimeScale.cshtml" />
+    <Content Include="Views\RangeSelector\LogarithmicScale.cshtml" />
+    <Content Include="Views\RangeSelector\UseRangeSelectionForFiltering.cshtml" />
+    <Content Include="Views\RangeSelector\ImageOnBackground.cshtml" />
+    <Content Include="Views\RangeSelector\CustomizedChartOnBackground.cshtml" />
+    <Content Include="Views\RangeSelector\ChartOnBackgroundWithSeriesTemplate.cshtml" />
+    <Content Include="Views\RangeSelector\ChartOnBackground.cshtml" />
+    <Content Include="Views\RangeSelector\DiscreteScale.cshtml" />
+    <Content Include="Views\RangeSelector\CustomFormatting.cshtml" />
+    <Content Include="Views\RangeSelector\UseRangeSelectionForCalculation.cshtml" />
+    <Content Include="Views\Charts\SimpleArray.cshtml" />
+    <Content Include="Views\List\ListEditingAndAPI.cshtml" />
+    <Content Include="Views\Charts\ClientSideDataProcessing.cshtml" />
+    <Content Include="Views\Charts\ServerSideDataProcessing.cshtml" />
+    <Content Include="Views\List\GroupedList.cshtml" />
+    <Content Include="Views\List\ItemTemplate.cshtml" />
+    <Content Include="Views\List\ListWithSearchBar.cshtml" />
+    <Content Include="Views\List\ListSelection.cshtml" />
+    <Content Include="Views\Map\Routes.cshtml" />
+    <Content Include="Views\Map\ProvidersAndTypes.cshtml" />
+    <Content Include="Views\Map\Markers.cshtml" />
+    <Content Include="Views\DataGrid\SimpleArray.cshtml" />
+    <Content Include="Views\Button\Icons.cshtml" />
+    <Content Include="Content\SampleData\Demos.json" />
+    <Content Include="Views\Button\PredefinedTypes.cshtml" />
+    <Content Include="Views\SelectBox\CustomizeDropDownButton.cshtml" />
+    <Content Include="Views\SelectBox\GroupedItems.cshtml" />
+    <Content Include="Views\DropDownBox\SingleSelection.cshtml" />
+    <Content Include="Views\DropDownBox\MultipleSelection.cshtml" />
+    <Content Include="Views\ScrollView\Overview.cshtml" />
+    <Content Include="Views\RadioGroup\Overview.cshtml" />
+    <Content Include="Views\Popover\Overview.cshtml" />
+    <Content Include="Views\Popup\Overview.cshtml" />
+    <Content Include="Views\ProgressBar\Overview.cshtml" />
+    <Content Include="Views\LoadIndicator\Overview.cshtml" />
+    <Content Include="Views\LoadPanel\Overview.cshtml" />
+    <Content Include="Views\DataGrid\PopupEditing.cshtml" />
+    <Content Include="Views\RangeSlider\Overview.cshtml" />
+    <Content Include="Views\Lookup\Basics.cshtml" />
+    <Content Include="Views\Gallery\ItemTemplate.cshtml" />
+    <Content Include="Views\ContextMenu\Basics.cshtml" />
+    <Content Include="Views\Charts\PiesWithEqualSize.cshtml" />
+    <Content Include="Views\Charts\AxisLabelsOverlapping.cshtml" />
+    <Content Include="Views\ContextMenu\Templates.cshtml" />
+    <Content Include="Views\DataGrid\ColumnResizing.cshtml" />
+    <Content Include="Views\MultiView\Overview.cshtml" />
+    <Content Include="Views\Lookup\Templates.cshtml" />
+    <Content Include="Views\Lookup\EventHandling.cshtml" />
+    <Content Include="Views\FileUploader\FileSelection.cshtml" />
+    <Content Include="Views\FileUploader\SubmissionResult.cshtml" />
+    <Content Include="Views\Charts\ColorEachBar.cshtml" />
+    <Content Include="Views\Charts\ChartsDrillDown.cshtml" />
+    <Content Include="Views\Charts\ExportSeveralCharts.cshtml" />
+    <Content Include="Views\Charts\ParetoChart.cshtml" />
+    <Content Include="App_Data\menuMeta.json" />
+    <Content Include="Content\SampleData\Customers.json" />
+    <Content Include="Views\Common\EditorsRightToLeftSupport.cshtml" />
+    <Content Include="Views\DataGrid\CascadingLookups.cshtml" />
+    <Content Include="Views\Common\NavigationRightToLeftSupport.cshtml" />
+    <Content Include="Views\Localization\UsingGlobalize.cshtml" />
+    <Content Include="Views\Localization\UsingIntl.cshtml" />
+    <Content Include="Content\cldr-data\main\de\ca-gregorian.json" />
+    <Content Include="Content\cldr-data\main\de\currencies.json" />
+    <Content Include="Content\cldr-data\main\de\numbers.json" />
+    <Content Include="Content\cldr-data\main\ru\ca-gregorian.json" />
+    <Content Include="Content\cldr-data\main\ru\currencies.json" />
+    <Content Include="Content\cldr-data\main\ru\numbers.json" />
+    <Content Include="Content\cldr-data\supplemental\currencyData.json" />
+    <Content Include="Content\cldr-data\supplemental\likelySubtags.json" />
+    <Content Include="Content\cldr-data\supplemental\numberingSystems.json" />
+    <Content Include="Content\cldr-data\supplemental\timeData.json" />
+    <Content Include="Content\cldr-data\supplemental\weekData.json" />
+    <Content Include="Views\Scheduler\IncreaseViewDuration.cshtml" />
+    <Content Include="Views\DataGrid\AdvancedMasterDetailView.cshtml" />
+    <Content Include="Views\Scheduler\Agenda.cshtml" />
+    <Content Include="Views\Scheduler\BasicViews.cshtml" />
+    <Content Include="Views\Scheduler\Editing.cshtml" />
+    <Content Include="Views\Scheduler\RecurringAppointments.cshtml" />
+    <Content Include="Views\Scheduler\Resources.cshtml" />
+    <Content Include="Views\Scheduler\SimpleArray.cshtml" />
+    <Content Include="Views\Scheduler\WebAPIService.cshtml" />
+    <Content Include="Views\Scheduler\_AppointmentTooltipTemplate.cshtml" />
+    <Content Include="Views\Scheduler\_DateCellTemplate.cshtml" />
+    <Content Include="Views\DataGrid\Overview.cshtml" />
+    <Content Include="Views\Charts\Overview.cshtml" />
+    <Content Include="Views\Gauges\Overview.cshtml" />
+    <Content Include="Views\PivotGrid\Overview.cshtml" />
+    <Content Include="Views\Common\NavigationOverview.cshtml" />
+    <Content Include="Views\Common\ActionAndListsOverview.cshtml" />
+    <Content Include="Views\Charts\PyramidChart.cshtml" />
+    <Content Include="Views\Common\EditorsOverview.cshtml" />
+    <Content Include="Views\Charts\FunnelChart.cshtml" />
+    <Content Include="Views\Common\FormsAndMultiPurposeOverview.cshtml" />
+    <Content Include="Views\Common\DialogsAndNotificationsOverview.cshtml" />
+    <Content Include="Views\NumberBox\Formatting.cshtml" />
+    <Content Include="Views\FilterBuilder\WithList.cshtml" />
+    <Content Include="Views\FilterBuilder\WithDataGrid.cshtml" />
+    <Content Include="Views\DataGrid\FilterPanel.cshtml" />
+    <Content Include="Views\Charts\ScaleBreaks.cshtml" />
+    <Content Include="Views\Scheduler\LimitAppointmentCountPerCell.cshtml" />
+    <Content Include="Views\Scheduler\CurrentTimeIndicator.cshtml" />
+    <Content Include="Content\Descr\Charts\Overview.md" />
+    <Content Include="Content\Descr\Common\ActionAndListsOverview.md" />
+    <Content Include="Content\Descr\Common\DialogsAndNotificationsOverview.md" />
+    <Content Include="Content\Descr\Common\EditorsOverview.md" />
+    <Content Include="Content\Descr\Common\FormsAndMultiPurposeOverview.md" />
+    <Content Include="Content\Descr\Common\NavigationOverview.md" />
+    <Content Include="Content\Descr\DataGrid\AdvancedMasterDetailView.md" />
+    <Content Include="Content\Descr\DataGrid\DataValidation.md" />
+    <Content Include="Content\Descr\DataGrid\Overview.md" />
+    <Content Include="Content\Descr\DataGrid\WebAPIService.md" />
+    <Content Include="Content\Descr\Form\Validation.md" />
+    <Content Include="Content\Descr\Gauges\Overview.md" />
+    <Content Include="Content\Descr\Localization\UsingGlobalize.md" />
+    <Content Include="Content\Descr\Localization\UsingIntl.md" />
+    <Content Include="Content\Descr\PivotGrid\Overview.md" />
+    <Content Include="Content\Descr\Scheduler\Overview.md" />
+    <Content Include="Content\Descr\Scheduler\WebAPIService.md" />
+    <Content Include="Content\Descr\TreeList\Overview.md" />
+    <Content Include="Content\Descr\VectorMap\Overview.md" />
+    <Content Include="Views\Charts\BiDirectionalBarChart.cshtml" />
+    <Content Include="Views\DataGrid\SignalRService.cshtml" />
+    <Content Include="Views\Charts\Palette.cshtml" />
+    <Content Include="Content\Descr\TreeList\WebAPIService.md" />
+    <Content Include="Content\DevExtreme\icons\dxicons.woff2" />
+    <Content Include="Content\DevExtreme\icons\dxiconsios.woff2" />
+    <Content Include="Content\DevExtreme\icons\dxiconsmaterial.ttf" />
+    <Content Include="Content\DevExtreme\icons\dxiconsmaterial.woff" />
+    <Content Include="Content\DevExtreme\icons\dxiconsmaterial.woff2" />
+    <Content Include="Content\DevExtreme\fonts\Roboto-300.ttf" />
+    <Content Include="Content\DevExtreme\fonts\Roboto-300.woff" />
+    <Content Include="Content\DevExtreme\fonts\Roboto-300.woff2" />
+    <Content Include="Content\DevExtreme\fonts\Roboto-400.ttf" />
+    <Content Include="Content\DevExtreme\fonts\Roboto-400.woff" />
+    <Content Include="Content\DevExtreme\fonts\Roboto-400.woff2" />
+    <Content Include="Content\DevExtreme\fonts\Roboto-500.ttf" />
+    <Content Include="Content\DevExtreme\fonts\Roboto-500.woff" />
+    <Content Include="Content\DevExtreme\fonts\Roboto-500.woff2" />
+    <Content Include="Views\Scheduler\ContextMenuIntegration.cshtml" />
+    <Content Include="Views\DataGrid\RemoteVirtualScrolling.cshtml" />
+    <Content Include="Views\DataGrid\HorizontalVirtualScrolling.cshtml" />
+    <Content Include="Views\PivotGrid\IntegratedFieldChooser.cshtml" />
+    <Content Include="Views\PivotGrid\StandaloneFieldChooser.cshtml" />
+    <Content Include="Views\Shared\_DemoStyles.cshtml" />
+    <Content Include="Views\TreeView\DragAndDropHierarchicalDataStructure.cshtml" />
+    <Content Include="Views\TreeView\DragAndDropPlainDataStructure.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\DataGrid\WebAPIService.cshtml" />
+    <Content Include="Views\DataGrid\ODataService.cshtml" />
+    <Content Include="Views\Shared\_LayoutNavigation.cshtml" />
+    <Content Include="Views\Shared\_DemoMenu.cshtml" />
+    <Content Include="Views\TextArea\Overview.cshtml" />
+    <Content Include="Views\VectorMap\ColorsCustomization.cshtml" />
+    <Content Include="Views\VectorMap\ZoomingAndCentering.cshtml" />
+    <Content Include="Views\VectorMap\Palette.cshtml" />
+    <Content Include="Views\VectorMap\ImageMarkers.cshtml" />
+    <Content Include="Views\VectorMap\BubbleMarkers.cshtml" />
+    <Content Include="Views\VectorMap\PieMarkers.cshtml" />
+    <Content Include="Views\VectorMap\DynamicViewport.cshtml" />
+    <Content Include="Views\VectorMap\AreaWithLabelsAndTwoLegends.cshtml" />
+    <Content Include="Views\VectorMap\TooltipHTMLSupport.cshtml" />
+    <Content Include="Views\VectorMap\CustomProjection.cshtml" />
+    <Content Include="Views\VectorMap\FloorPlan.cshtml" />
+    <Content Include="Views\VectorMap\MultipleLayers.cshtml" />
+    <Content Include="Views\VectorMap\CustomMapData.cshtml" />
+    <Content Include="Views\TreeList\SimpleArrayPlainStructure.cshtml" />
+    <Content Include="Views\TreeList\MultipleSorting.cshtml" />
+    <Content Include="Views\TreeList\RowEditing.cshtml" />
+    <Content Include="Views\TreeList\SimpleArrayHierarchicalStructure.cshtml" />
+    <Content Include="Views\TreeList\ColumnChooser.cshtml" />
+    <Content Include="Views\TreeList\Reordering.cshtml" />
+    <Content Include="Views\TreeList\Resizing.cshtml" />
+    <Content Include="Views\TagBox\GroupedItems.cshtml" />
+    <Content Include="Views\TreeList\CellEditing.cshtml" />
+    <Content Include="Views\TreeList\ColumnFixing.cshtml" />
+    <Content Include="Views\TreeList\Adaptability.cshtml" />
+    <Content Include="Views\TreeList\BatchEditing.cshtml" />
+    <Content Include="Views\TreeList\FormEditing.cshtml" />
+    <Content Include="Views\TreeList\MultipleRowSelection.cshtml" />
+    <Content Include="Views\Toast\Overview.cshtml" />
+    <Content Include="Views\TreeList\LoadDataOnDemand.cshtml" />
+    <Content Include="Views\Tooltip\Overview.cshtml" />
+    <Content Include="Views\TreeList\WebAPIService.cshtml" />
+    <Content Include="Views\TreeList\PopupEditing.cshtml" />
+    <Content Include="Views\TreeList\SingleRowSelection.cshtml" />
+    <Content Include="Views\TreeList\UsingFilterRow.cshtml" />
+    <Content Include="Views\TreeList\UsingHeaderFilter.cshtml" />
+    <Content Include="Views\TreeList\UsingSearchPanel.cshtml" />
+    <Content Include="Views\Slider\Overview.cshtml" />
+    <Content Include="Views\Tabs\Overview.cshtml" />
+    <Content Include="Views\TagBox\TagCountLimitation.cshtml" />
+    <Content Include="Views\VectorMap\Overview.cshtml" />
+    <Content Include="Views\TreeList\Overview.cshtml" />
+    <Content Include="Views\TreeView\TreeViewWithSearchBar.cshtml" />
+    <Content Include="Views\TreeList\StatePersistence.cshtml" />
+    <Content Include="Views\TreeList\Paging.cshtml" />
+    <Content Include="Views\TreeList\FilterPanel.cshtml" />
+    <Content Include="Content\DemosStyles\Charts\HierarchicalDataStructure.css" />
+    <Content Include="Views\Charts\SankeyChart.cshtml" />
+    <Content Include="Views\FileUploader\Validation.cshtml" />
+    <Content Include="Views\FileUploader\ChunkUploading.cshtml" />
+    <Content Include="Views\DataGrid\CollaborativeEditing.cshtml" />
+    <Content Include="Views\DataGrid\RealTimeUpdates.cshtml" />
+    <Content Include="Views\DataGrid\FocusedRow.cshtml" />
+    <Content Include="Views\Charts\SignalRService.cshtml" />
+    <Content Include="Views\ButtonGroup\Overview.cshtml" />
+    <Content Include="Views\Common\StylingMode.cshtml" />
+    <Content Include="Views\Charts\ZoomingOnAreaSelection.cshtml" />
+    <Content Include="Content\SampleData\Birthlife.json" />
+    <Content Include="Views\Charts\LoadDataOnDemand.cshtml" />
+    <Content Include="Views\DataGrid\ExcelCellCustomization.cshtml" />
+    <Content Include="Views\Drawer\LeftOrRightPosition.cshtml" />
+    <Content Include="Views\Drawer\TopOrBottomPosition.cshtml" />
+    <Content Include="Views\DataGrid\RecalculateWhileEditing.cshtml" />
+    <Content Include="Views\DataGrid\CRUDOperations.cshtml" />
+    <Content Include="Views\FilterBuilder\Customization.cshtml" />
+    <Content Include="Views\Scheduler\GroupByDate.cshtml" />
+    <Content Include="Views\Scheduler\SignalRService.cshtml" />
+    <Content Include="Views\TreeList\FocusedRow.cshtml" />
+    <Content Include="Views\HtmlEditor\Overview.cshtml" />
+    <Content Include="Views\HtmlEditor\ToolbarCustomization.cshtml" />
+    <Content Include="Views\HtmlEditor\OutputFormats.cshtml" />
+    <Content Include="Views\TreeList\FilterModes.cshtml" />
+    <Content Include="Views\DataGrid\CustomizeKeyboardNavigation.cshtml" />
+    <Content Include="Views\FileManager\BindingToFileSystem.cshtml" />
+    <Content Include="Views\FileManager\CustomThumbnails.cshtml" />
+    <Content Include="Views\FileManager\BindingToHierarchicalStructure.cshtml" />
+    <Content Include="Views\DataGrid\ExcelJS.cshtml" />
+    <Content Include="Views\DataGrid\ExcelJSCellCustomization.cshtml" />
+    <Content Include="Views\DataGrid\ExcelJSHeaderAndFooter.cshtml" />
+    <Content Include="Views\DataGrid\ExcelJSOverview.cshtml" />
+    <Content Include="Views\DataGrid\ExcelJSExportImages.cshtml" />
+    <Content Include="Views\DataGrid\ExcelJSExportMultipleGrids.cshtml" />
+    <Content Include="Views\HtmlEditor\Mentions.cshtml" />
+    <Content Include="Views\FloatingActionButton\Overview.cshtml" />
+    <Content Include="Views\PivotGrid\RemoteVirtualScrolling.cshtml" />
+    <Content Include="Views\PivotGrid\HeaderFilter.cshtml" />
+    <Content Include="Views\Common\CustomTextEditorButtons.cshtml" />
+    <Content Include="Views\Scheduler\Adaptability.cshtml" />
+    <Content Include="Views\DataGrid\KeyboardNavigation.cshtml" />
+    <Content Include="Views\Charts\Timeline.cshtml" />
+    <Content Include="Views\TreeList\KeyboardNavigation.cshtml" />
+    <Content Include="Views\Charts\Annotation.cshtml" />
+    <Content Include="Views\PivotGrid\WebAPIService.cshtml" />
+    <Content Include="Views\DropDownButton\Overview.cshtml" />
+    <Content Include="Views\TreeList\CustomizeKeyboardNavigation.cshtml" />
+    <Content Include="Views\DataGrid\CustomEditors.cshtml" />
+    <Content Include="Views\Charts\LogarithmicVsLinearAxes.cshtml" />
+    <Content Include="Views\Charts\ExportCustomMarkup.cshtml" />
+    <Content Include="Views\Gantt\Overview.cshtml" />
+    <Content Include=".editorconfig" />
+    <Content Include="Views\DataGrid\CollaborativeEditingPartial.cshtml" />
+    <Content Include="Views\Diagram\AdvancedDataBinding.cshtml" />
+    <Content Include="Views\Diagram\Containers.cshtml" />
+    <Content Include="Views\Diagram\CustomShapesWithIcons.cshtml" />
+    <Content Include="Views\Diagram\CustomShapesWithTexts.cshtml" />
+    <Content Include="Views\Diagram\ImagesInShapes.cshtml" />
+    <Content Include="Views\Diagram\NodesAndEdgesArrays.cshtml" />
+    <Content Include="Views\Diagram\NodesArrayHierarchicalStructure.cshtml" />
+    <Content Include="Views\Diagram\NodesArrayPlainStructure.cshtml" />
+    <Content Include="Views\Diagram\Overview.cshtml" />
+    <Content Include="Views\Diagram\ReadOnly.cshtml" />
+    <Content Include="Views\Diagram\SimpleView.cshtml" />
+    <Content Include="Views\Diagram\UICustomization.cshtml" />
+    <Content Include="Content\SampleData\diagram-employees.json" />
+    <Content Include="Content\SampleData\diagram-flow.json" />
+    <Content Include="Content\SampleData\diagram-hardware.json" />
+    <Content Include="Content\SampleData\diagram-structure.json" />
+    <Content Include="Views\FileManager\UICustomization.cshtml" />
+    <Content Include="Views\DataGrid\LocalReordering.cshtml" />
+    <Content Include="Views\Charts\CustomLegendMarkers.cshtml" />
+    <Content Include="Views\Charts\DoughnutWithCustomLabelInCenter.cshtml" />
+    <Content Include="Views\Diagram\WebAPIService.cshtml" />
+    <Content Include="Views\FileManager\Overview.cshtml" />
+    <Content Include="Views\Charts\PolarChartZoomingAndScrollingAPI.cshtml" />
+    <Content Include="Views\Sortable\Kanban.cshtml" />
+    <Content Include="Views\Charts\CustomAnnotations.cshtml" />
+    <Content Include="Views\DataGrid\RemoteReordering.cshtml" />
+    <Content Include="Views\DataGrid\DnDBetweenGrids.cshtml" />
+    <Content Include="Views\DataGrid\DnDBetweenGridsPartial.cshtml" />
+    <Content Include="Views\FileManager\BindingToEF.cshtml" />
+    <Content Include="Views\Sortable\Customization.cshtml" />
+    <Content Include="Views\FileManager\AzureServerBinding.cshtml" />
+    <Content Include="Views\FileManager\AzureClientBinding.cshtml" />
+    <Content Include="Views\FileUploader\AzureDirectUploading.cshtml" />
+    <Content Include="Views\TreeList\LocalReordering.cshtml" />
+    <Content Include="Views\Form\UpdateItemsDynamically.cshtml" />
+    <Content Include="Views\Diagram\CustomShapesWithTemplates.cshtml" />
+    <Content Include="Views\Sortable\_Kanban.cshtml" />
+    <Content Include="Views\List\ItemDragging.cshtml" />
+    <Content Include="Views\List\_ItemDragging.cshtml" />
+    <Content Include="Views\Popup\Scrolling.cshtml" />
+    <Content Include="Views\Charts\DiscreteAggregation.cshtml" />
+    <Content Include="Views\Charts\PolarChartAnnotations.cshtml" />
+    <Content Include="Views\Charts\AxisCustomPosition.cshtml" />
+    <Content Include="Views\Diagram\Adaptability.cshtml" />
+    <Content Include="Views\FieldSet\Overview.cshtml" />
+    <Content Include="Views\TabPanel\SortableClosableTabs.cshtml" />
+    <Content Include="Views\TabPanel\_SortableTabPanel.cshtml" />
+    <None Include="Web.Daily.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Publish.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Form\Overview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Form\Validation.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Scheduler\Overview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\List\WebApi.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Gallery\Overview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TreeView\HierarchicalDataStructure.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TreeView\FlatDataStructure.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TreeView\ContextMenuIntegration.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Toolbar\Overview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Menu\Overview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TabPanel\Overview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Accordion\Overview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DataGrid\AjaxRequest.cshtml" />
+    <Content Include="Views\DataGrid\InfiniteScrolling.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DataGrid\RecordPaging.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DataGrid\VirtualScrolling.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\AjaxRequest.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TreeView\LoadDataOnDemand.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\StandardBar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DataGrid\CellEditingAndEditingAPI.cshtml" />
+    <Content Include="Views\DataGrid\RowEditingAndEditingEvents.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\SideBySideBar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\StackedBar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\SideBySideFullStackedBar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\FullStackedBar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\SideBySideStackedBar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DataGrid\BatchEditing.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\AutoCalculatedBarWidth.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\CustomBarWidth.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\FileUploader\FileUploading.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\Line.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Form\SuccessValidation.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Validation\Overview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Validation\SuccessValidation.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TreeView\ItemSelectionAndCustomization.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DataGrid\DataValidation.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DataGrid\FormEditing.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\Spline.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\StepLine.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DataGrid\RecordGrouping.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DataGrid\RemoteGrouping.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DataGrid\MultipleSorting.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\Bubble.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\Scatter.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\Stock.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\Candlestick.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TreeView\VirtualMode.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Switch\Overview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\CheckBox\Overview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TextBox\Overview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\NumberBox\Overview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DataGrid\Filtering.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\Area.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\SplineArea.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DataGrid\FilteringAPI.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\StepArea.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\RangeBar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\RangeArea.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\Pie.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\PieWithCustomLabels.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\PieWithSmallValuesGrouped.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\PieWithResolvedLabelOverlapping.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SelectBox\Overview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SelectBox\SearchAndEditing.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\PieWithMultipleSeries.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TagBox\Overview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\Doughnut.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\DoughnutSelection.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\DoughnutWithTopNSeries.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\ZoomingAndScrolling.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\ZoomingAndScrollingAPI.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\ActionsOverview\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Daily|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54651</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54651/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>sqllocaldb create "devextreme"
+sqllocaldb start "devextreme"
+exit 0</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>sqllocaldb stop "devextreme" 2&gt;nul 1&gt;nul
+sqllocaldb delete "devextreme" 2&gt;nul 1&gt;nul
+del /F /Q "$(ProjectDir)App_Data\Northwind_log.ldf"  2&gt;nul 1&gt;nul
+del /F /Q "$(ProjectDir)App_Data\FileManagement_log.ldf"  2&gt;nul 1&gt;nul
+exit 0</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

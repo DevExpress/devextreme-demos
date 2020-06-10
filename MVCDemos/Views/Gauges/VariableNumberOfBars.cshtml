@@ -1,0 +1,42 @@
+﻿<div class="long-title"><h3>Sampling by Goods</h3></div>
+
+<div id="gauge-demo">
+    @(Html.DevExtreme().BarGauge()
+        .ID("gauge")
+        .StartValue(0)
+        .EndValue(50)
+        .Values(new JS("productsToValues()"))
+        .Label(l => l.Format(f => f
+            .Type(Format.FixedPoint)
+            .Precision(0)
+        ))
+    )
+
+    <div id="panel">
+        @foreach(var product in Model) {
+            @(Html.DevExtreme().CheckBox()
+                .Value(product.Active)
+                .Text(product.Name)
+                .OnValueChanged("checkBox_valueChanged")
+            )
+        }
+    </div>
+</div>
+
+<script>
+    var products = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+
+    var productsToValues = function() {
+        return $.map(products, function(item) {
+            return item.Active ? item.Count : null;
+        });
+    };
+
+    var checkBox_valueChanged = function(e) {
+        var currentProduct = products.filter(function(product) {
+            return product.Name === e.component.option("text");
+        })[0];
+        currentProduct.Active = e.value;
+        $("#gauge").dxBarGauge("option", "values", productsToValues());
+    };
+</script>

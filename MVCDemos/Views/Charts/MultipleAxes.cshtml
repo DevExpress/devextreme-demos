@@ -1,0 +1,61 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Palette(VizPalette.Vintage)
+    .CommonSeriesSettings(s => s
+        .ArgumentField("Year")
+        .Type(SeriesType.FullStackedBar)
+    )
+    .Series(s => {
+        s.Add().ValueField("Africa").Name("Africa");
+        s.Add().ValueField("Asia").Name("Asia");
+        s.Add().ValueField("Europe").Name("Europe");
+        s.Add().ValueField("Latinamerica").Name("Latin America & Caribbean");
+        s.Add().ValueField("Northamerica").Name("Northern America");
+        s.Add().ValueField("Oceania").Name("Oceania");
+        s.Add().Axis("Total").Type(SeriesType.Spline).ValueField("Total").Name("Total").Color("#008fd8");
+    })
+    .ValueAxis(a => {
+        a.Add().Grid(g => g.Visible(true));
+        a.Add()
+            .Name("Total")
+            .Position(Position.Right)
+            .Grid(g => g.Visible(true))
+            .Title(t => t.Text("Total Population, billions"));
+    })
+    .Tooltip(t => t
+        .Enabled(true)
+        .Shared(true)
+        .Format(f => f.Type(Format.LargeNumber).Precision(1))
+        .CustomizeTooltip(@<text>
+            function (arg) {
+                var items = arg.valueText.split("\n"),
+                    color = arg.point.getColor();
+                $.each(items, function(index, item) {
+                    if(item.indexOf(arg.seriesName) === 0) {
+                        items[index] = $("<span>")
+                                        .text(item)
+                                        .addClass("active")
+                                        .css("color", color)
+                                        .prop("outerHTML");
+                    }
+                });
+                return { text: items.join("\n") };
+            }
+        </text>)
+    )
+    .Legend(l => l
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+    )
+    .Export(e => e.Enabled(true))
+    .Title(t => t.Text("Evolution of Population by Continent"))
+    .DataSource(new[] {
+        new { Year = "1750", Africa = 106000000L, Asia = 502000000L, Europe = 163000000L, Latinamerica = 16000000L, Northamerica = 2000000L, Oceania = 2000000L, Total = 791000000L },
+        new { Year = "1800", Africa = 107000000L, Asia = 635000000L, Europe = 203000000L, Latinamerica = 24000000L, Northamerica = 7000000L, Oceania = 2000000L, Total = 978000000L },
+        new { Year = "1850", Africa = 111000000L, Asia = 809000000L, Europe = 276000000L, Latinamerica = 38000000L, Northamerica = 26000000L, Oceania = 2000000L, Total = 1262000000L },
+        new { Year = "1900", Africa = 133000000L, Asia = 947000000L, Europe = 408000000L, Latinamerica = 74000000L, Northamerica = 82000000L, Oceania = 6000000L, Total = 1650000000L },
+        new { Year = "1950", Africa = 229895000L, Asia = 1403388000L, Europe = 547287000L, Latinamerica = 167368000L, Northamerica = 171614000L, Oceania = 12675000L, Total = 2532227000L },
+        new { Year = "2000", Africa = 811101000L, Asia = 3719044000L, Europe = 726777000L, Latinamerica = 521419000L, Northamerica = 313289000L, Oceania = 31130000L, Total = 6122770000L },
+        new { Year = "2050", Africa = 2191599000L, Asia = 5142220000L, Europe = 719257000L, Latinamerica = 750956000L, Northamerica = 446862000L, Oceania = 55223000L, Total = 9306128000L }
+    })
+)

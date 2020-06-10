@@ -1,0 +1,38 @@
+﻿@model DevExtreme.NETCore.Demos.ViewModels.KanbanListViewModel
+@using DevExtreme.NETCore.Demos.Models.TreeList
+@using Microsoft.AspNetCore.Html
+
+@functions {
+    class CardTasks {
+        public EmployeeTask Task { get; set; }
+    }
+}
+
+@{
+    Func<CardTasks, IHtmlContent> CreateCards = @<div class="card dx-card dx-theme-text-color dx-theme-background-color">
+        <div class="card-priority priority-@((int)item.Task.Task_Priority + 1)"></div>
+        <div class="card-subject">@item.Task.Task_Subject</div>
+        <div class="card-assignee">@Model.Employees.Where(e => e.ID == @item.Task.Task_Assigned_Employee_ID).FirstOrDefault().Name</div>
+    </div>;
+}
+
+<div class="list">
+    <div class="list-title dx-theme-text-color">@Model.Status</div>
+    @(Html.DevExtreme().ScrollView()
+        .ElementAttr("class", "scrollable-list")
+        .Direction(ScrollDirection.Vertical)
+        .ShowScrollbar(ShowScrollbarMode.Always)
+        .Content(
+            Html.DevExtreme().Sortable()
+                .ElementAttr("class", "sortable-cards")
+                .ItemOrientation(Orientation.Vertical)
+                .MoveItemOnDrop(true)
+                .Group("tasksGroup")
+                .Content(@<text>
+                    @foreach (var task in @Model.Tasks) {
+                        @CreateCards(new CardTasks { Task = task })
+                    }
+                </text>).ToString()
+        )
+    )
+</div>

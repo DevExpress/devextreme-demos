@@ -1,0 +1,40 @@
+﻿@(Html.DevExtreme().Map()
+    .ID("map")
+    .Center("Brooklyn Bridge,New York,NY")
+    .Zoom(14)
+    .Height(400)
+    .Width("100%")
+    .Provider(GeoMapProvider.Bing)
+    // NOTE: Specify your map API keys for every used provider
+    //.Key(k => k
+    //    .Bing("YOUR_BING_MAPS_API_KEY")
+    //    .Google("YOUR_GOOGLE_MAPS_API_KEY")
+    //    .GoogleStatic("YOUR_GOOGLE_STATIC_MAPS_API_KEY")
+    //)
+    .Type(GeoMapType.Roadmap)
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Map Type</span>
+        @(Html.DevExtreme().SelectBox()
+            .ID("choose-type")
+            .DataSource(new[] {
+                new { key = GeoMapType.Roadmap, name = "Road Map" },
+                new { key = GeoMapType.Satellite, name = "Satellite (Photographic) Map" },
+                new { key= GeoMapType.Hybrid, name= "Hybrid Map" }
+            })
+            .DisplayExpr("name")
+            .ValueExpr("key")
+            .Value(GeoMapType.Roadmap)
+            .OnValueChanged("selectBoxChooseType_onValueChanged")
+        )
+    </div>
+</div>
+
+<script>
+    function selectBoxChooseType_onValueChanged(data) {
+        $("#map").dxMap("instance").option("type", data.value);
+    }
+</script>

@@ -1,0 +1,77 @@
+﻿<script>
+    var highAverage = 77,
+        lowAverage = 58;
+</script>
+
+@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .CommonSeriesSettings(s => s
+        .ArgumentField("Day")
+        .ValueField("Temperature")
+        .Type(SeriesType.Bar)
+        .Color("#e7d19a")
+    )
+    .CustomizePoint(@<text>
+        function() {
+            if(this.value > highAverage) {
+                return { color: "#ff7c7c", hoverStyle: { color: "#ff7c7c" } };
+            } else if(this.value < lowAverage) {
+                return { color: "#8c8cff", hoverStyle: { color: "#8c8cff" } };
+            }
+        }
+    </text>)
+    .CustomizeLabel(@<text>
+        function() {
+            if (this.value > highAverage) {
+                return {
+                    visible: true,
+                    backgroundColor: "#ff7c7c",
+                    customizeText: function () {
+                        return this.valueText + "&#176F";
+                    }
+                };
+            }
+        }
+    </text>)
+    .Export(e => e.Enabled(true))
+    .ValueAxis(a => a
+        .Add()
+        .VisualRange(range => range.StartValue(40))
+        .MaxValueMargin(0.01)
+        .Label(l => l.CustomizeText(@<text>
+            function() {
+                return this.valueText + "&#176F";
+            }
+        </text>))
+        .ConstantLines(cl => {
+            cl.Add()
+                .Label(l => l.Text("Low Average"))
+                .Width(2)
+                .Value(new JS("lowAverage"))
+                .Color("#8c8cff")
+                .DashStyle(DashStyle.Dash);
+            cl.Add()
+                .Label(l => l.Text("High Average"))
+                .Width(2)
+                .Value(new JS("highAverage"))
+                .Color("#ff7c7c")
+                .DashStyle(DashStyle.Dash);
+        })
+    )
+    .Series(s => s.Add())
+    .Title(t => t.Text("Daily Temperature in May"))
+    .Legend(l => l.Visible(false))
+    .DataSource(new[] {
+        new { Day = "1", Temperature = 57 }, new { Day = "2", Temperature = 58 }, new { Day = "3", Temperature = 57 },
+        new { Day = "4", Temperature = 59 }, new { Day = "5", Temperature = 63 }, new { Day = "6", Temperature = 63 },
+        new { Day = "7", Temperature = 63 }, new { Day = "8", Temperature = 64 }, new { Day = "9", Temperature = 64 },
+        new { Day = "10", Temperature = 64 }, new { Day = "11", Temperature = 69 }, new { Day = "12", Temperature = 72 },
+        new { Day = "13", Temperature = 75 }, new { Day = "14", Temperature = 78 }, new { Day = "15", Temperature = 76 },
+        new { Day = "16", Temperature = 70 }, new { Day = "17", Temperature = 65 }, new { Day = "18", Temperature = 65 },
+        new { Day = "19", Temperature = 68 }, new { Day = "20", Temperature = 70 }, new { Day = "21", Temperature = 73 },
+        new { Day = "22", Temperature = 73 }, new { Day = "23", Temperature = 75 }, new { Day = "24", Temperature = 78 },
+        new { Day = "25", Temperature = 76 }, new { Day = "26", Temperature = 76 }, new { Day = "27", Temperature = 80 },
+        new { Day = "28", Temperature = 76 }, new { Day = "29", Temperature = 75 }, new { Day = "30", Temperature = 75 },
+        new { Day = "31", Temperature = 74 }
+    })
+)

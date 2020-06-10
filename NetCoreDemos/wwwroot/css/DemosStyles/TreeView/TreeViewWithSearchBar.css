@@ -1,0 +1,30 @@
+﻿#treeview {
+    height: 400px;
+}
+
+.options {
+	padding: 20px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 260px;
+	top: 0;
+	background-color: rgba(191, 191, 191, 0.15);
+}
+
+.caption {
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.option {
+	margin-top: 10px;
+}
+
+	.option > .dx-selectbox {
+		display: inline-block;
+		vertical-align: middle;
+		max-width: 350px;
+		width: 100%;
+		margin-top: 5px;
+	}

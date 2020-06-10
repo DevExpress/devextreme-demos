@@ -1,0 +1,32 @@
+﻿@model DevExtreme.MVC.Demos.ViewModels.KanbanListViewModel
+@using DevExtreme.MVC.Demos.Models.TreeList
+
+<div class="list">
+    <div class="list-title dx-theme-text-color">@Model.Status</div>
+    @(Html.DevExtreme().ScrollView()
+        .ElementAttr("class", "scrollable-list")
+        .Direction(ScrollDirection.Vertical)
+        .ShowScrollbar(ShowScrollbarMode.Always)
+        .Content(
+            Html.DevExtreme().Sortable()
+                .ElementAttr("class", "sortable-cards")
+                .ItemOrientation(Orientation.Vertical)
+                .MoveItemOnDrop(true)
+                .Group("tasksGroup")
+                .Content(@<text>
+                            @CreateCards(@Model.Tasks)
+                </text>).ToString()
+        )
+    )
+</div>
+
+@helper CreateCards(IEnumerable<EmployeeTask> tasks)
+{
+    foreach (var task in tasks) {
+        <div class="card dx-card dx-theme-text-color dx-theme-background-color">
+            <div class="card-priority priority-@((int)task.Task_Priority + 1)"></div>
+            <div class="card-subject">@task.Task_Subject</div>
+            <div class="card-assignee">@Model.Employees.Where(e => e.ID == task.Task_Assigned_Employee_ID).FirstOrDefault().Name</div>
+        </div>
+    }
+}

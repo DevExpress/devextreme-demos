@@ -1,0 +1,54 @@
+﻿@model string
+
+@(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.DataGrid.Employee>()
+    .ID(@Model)
+    .DataSource(d => d.Mvc()
+        .Controller("DataGridCollaborativeEditing")
+        .Key("ID")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .DeleteAction("Delete")
+        .UpdateAction("Put")
+        .OnBeforeSend("onBeforeSend")
+    )
+    .Height(600)
+    .ShowBorders(true)
+    .RepaintChangesOnly(true)
+    .HighlightChanges(true)
+    .Paging(paging => paging.Enabled(false))
+    .Editing(editing =>
+    {
+        editing.Mode(GridEditMode.Cell);
+        editing.RefreshMode(GridEditRefreshMode.Reshape);
+        editing.AllowUpdating(true);
+        editing.AllowDeleting(true);
+        editing.AllowAdding(true);
+        editing.UseIcons(true);
+    })
+    .Columns(columns =>
+    {
+        columns.AddFor(m => m.Prefix)
+            .Caption("Title")
+            .Width(50)
+            .ValidationRules(r => r.AddRequired());
+
+        columns.AddFor(m => m.FirstName)
+            .ValidationRules(r => r.AddRequired());
+
+        columns.AddFor(m => m.StateID)
+            .Caption("State")
+            .Lookup(lookup => lookup
+                .DataSource(d => d.Mvc().Controller("DataGridStatesLookup").LoadAction("Get").Key("ID"))
+                .DisplayExpr("Name")
+                .ValueExpr("ID")
+            )
+            .ValidationRules(r => r.AddRequired());
+
+        columns.AddFor(m => m.BirthDate)
+            .DataType(GridColumnDataType.Date)
+            .ValidationRules(r => r.AddRange()
+                .Max(new DateTime(3000, 1, 1))
+                .Message("Date can not be greater than 01/01/3000")
+            );
+    })
+)

@@ -1,0 +1,70 @@
+﻿@(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.DataGrid.Employee>()
+    .ID("gridContainer")
+    .ShowBorders(true)
+    .Paging(paging => paging.Enabled(false))
+    .Editing(editing => {
+        editing.Mode(GridEditMode.Row);
+        editing.AllowAdding(true);
+        editing.AllowDeleting(true);
+        editing.AllowUpdating(true);
+    })
+    .Columns(columns => {
+        columns.AddFor(m => m.Prefix);
+
+        columns.AddFor(m => m.FirstName);
+
+        columns.AddFor(m => m.LastName);
+
+        columns.AddFor(m => m.Position)
+            .Width(130);
+
+        columns.AddFor(m => m.StateID)
+            .Width(125)
+            .Lookup(lookup => lookup
+                .DataSource(d => d.WebApi().Controller("DataGridStatesLookup").Key("ID"))
+                .DisplayExpr("Name")
+                .ValueExpr("ID")
+            );
+
+        columns.AddFor(m => m.BirthDate)
+            .Width(125);
+    })
+    .DataSource(d => d.WebApi()
+        .Controller("DataGridEmployees")
+        .InsertAction(true)
+        .UpdateAction(true)
+        .DeleteAction(true)
+        .Key("ID")
+    )
+    .OnEditingStart(@<text> function(e) { logEvent("EditingStart"); } </text>)
+    .OnInitNewRow(@<text> function(e) { logEvent("InitNewRow"); } </text>)
+    .OnRowInserting(@<text> function(e) { logEvent("RowInserting"); } </text>)
+    .OnRowInserted(@<text> function(e) { logEvent("RowInserted"); } </text>)
+    .OnRowUpdating(@<text> function(e) { logEvent("RowUpdating"); } </text>)
+    .OnRowUpdated(@<text> function(e) { logEvent("RowUpdated"); } </text>)
+    .OnRowRemoving(@<text> function(e) { logEvent("RowRemoving"); } </text>)
+    .OnRowRemoved(@<text> function(e) { logEvent("RowRemoved"); } </text>)
+)
+
+<div id="events">
+    <div>
+        <div class="caption">
+            Fired events
+        </div>
+        @(Html.DevExtreme().Button()
+            .ID("clear")
+            .Text("Clear")
+            .OnClick(@<text> function() { $("#events ul").empty(); } </text>)
+        )
+    </div>
+    <ul></ul>
+</div>
+
+<script>
+    function logEvent(eventName) {
+        var logList = $("#events ul"),
+            newItem = $("<li>", { text: eventName });
+
+        logList.prepend(newItem);
+    }
+</script>

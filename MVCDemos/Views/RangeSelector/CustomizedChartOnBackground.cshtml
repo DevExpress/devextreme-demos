@@ -1,0 +1,29 @@
+﻿@(Html.DevExtreme().RangeSelector()
+    .ID("range-selector")
+    .Margin(m => m
+        .Left(15)
+        .Right(15)
+        .Top(50)
+    )
+    .Scale(s => s
+        .MinorTickInterval(0.5)
+        .TickInterval(1)
+        .Label(l => l.CustomizeText(@<text>
+            function() {
+                return this.valueText + " s";
+            }
+        </text>))
+    )
+    .SliderMarker(s => s.Visible(false))
+    .Background(b => b.Color("#808080"))
+    .Chart(c => c
+        .Series(s => s
+            .Add().Color("#ffa500").Width(3).Type(SeriesType.Line).ArgumentField("X").ValueField("Y")
+        )
+        .TopIndent(0.05)
+        .BottomIndent(0.05)
+    )
+    .Value(new[] { 0, 5.0 })
+    .Title("Select a Range in the CPU Usage History")
+    .DataSource(Model)
+)

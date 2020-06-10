@@ -1,0 +1,41 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .CommonSeriesSettings(s => s
+        .ArgumentField("Argument")
+        .Point(p => p.Visible(false))
+    )
+    .Title(t => t.Text("Noisy and Original Signals"))
+    .Series(s =>
+    {
+        s.Add().ValueField("OriginalValue").Name("Original Signal");
+        s.Add().ValueField("Value").Name("Noisy Signal");
+    })
+    .OnLegendClick(
+        @<text>
+            function(e){
+                e.target.isVisible()?e.target.hide():e.target.show();
+            }
+        </text>)
+    .Legend(l => l
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+        .MarkerTemplate(
+            @<text>
+                <% var color = series.isVisible() ? marker.fill : "#888" %>
+                <svg>
+                    <rect x="0" y="0" width="18px" height="18px" fill="<%- color %>" opacity="0.3"></rect>
+                    <path d="<%- getMarkerPath(series.name)%>" fill="<%- color %>"></path>
+                </svg>
+            </text>))
+    .DataSource(Model)
+)
+
+<script>
+    var markerPath = {
+        "Original Signal": "M 0 8 C 2 4 7 4 9.5 8 C 11 12 16 12 18 8 L 18 10 C 16 14 11 14 8.5 10 C 7 6 2 6 0 10 Z",
+        "Noisy Signal": "M 18 8 L 12 12 L 7 3 L 0 7.4 L 0 10 L 6 6 L 11 15 L 18 10.6 Z"
+    };
+    function getMarkerPath(seriesName) {
+        return markerPath[seriesName];
+    }
+</script>

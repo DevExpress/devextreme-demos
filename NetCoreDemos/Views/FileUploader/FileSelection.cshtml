@@ -1,0 +1,38 @@
+﻿<form id="form" method="post" enctype="multipart/form-data">
+    <h3>Profile Settings</h3>
+    <div class="dx-fieldset">
+        <div class="dx-field">
+            <div class="dx-field-label">First Name:</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TextBox()
+                    .Name("FirstName")
+                    .Value("John")
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Last Name:</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TextBox()
+                    .Name("LastName")
+                    .Value("Smith")
+                )
+            </div>
+        </div>
+    </div>
+    <div id="fileuploader-container">
+        @(Html.DevExtreme().FileUploader()
+            .Name("Photo")
+            .SelectButtonText("Select photo")
+            .LabelText("")
+            .Accept("image/*")
+            .UploadMode(FileUploadMode.UseForm)
+        )
+    </div>
+    @(Html.DevExtreme().Button()
+        .ID("button")
+        .Text("Update profile")
+        .Type(ButtonType.Success)
+        .UseSubmitBehavior(true)
+    )
+</form>

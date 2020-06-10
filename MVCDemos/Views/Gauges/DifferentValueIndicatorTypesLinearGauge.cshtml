@@ -1,0 +1,75 @@
+﻿<div class="long-title"><h3>Available Disk Space</h3></div>
+
+@using DevExtreme.AspNet.Mvc.Builders;
+
+@functions {
+    LinearGaugeBuilder CreateGauge() {
+        return Html.DevExtreme().LinearGauge()
+            .Scale(s => s
+                .StartValue(0)
+                .EndValue(100)
+                .TickInterval(50)
+                .Label(l => l.CustomizeText(@"
+                    function (arg) {
+                        return arg.valueText + "" %"";
+                    }
+                "))
+            );
+    }
+}
+
+<div id="gauge-demo">
+    @(CreateGauge()
+        .ID("c1")
+        .Value(75)
+        .ValueIndicator(i => i
+            .Type(GaugeIndicatorType.Rectangle)
+            .Color("#9B870C")
+        )
+    )
+
+    @(CreateGauge()
+        .ID("c2")
+        .Value(80)
+        .ValueIndicator(i => i
+            .Type(GaugeIndicatorType.Rhombus)
+            .Color("#779ECB")
+        )
+    )
+
+    @(CreateGauge()
+        .ID("c3")
+        .Value(65)
+        .ValueIndicator(i => i
+            .Type(GaugeIndicatorType.Circle)
+            .Color("#8FBC8F")
+        )
+    )
+
+    @(CreateGauge()
+        .ID("c4")
+        .Value(90)
+        .ValueIndicator(i => i
+            .Type(GaugeIndicatorType.RangeBar)
+            .Color("#483D8B")
+        )
+    )
+
+    @(CreateGauge()
+        .ID("c5")
+        .Value(70)
+        .ValueIndicator(i => i
+            .Type(GaugeIndicatorType.TextCloud)
+            .Color("#734F96")
+        )
+    )
+
+    @(CreateGauge()
+        .ID("c6")
+        .Value(85)
+        .ValueIndicator(i => i
+            .Type(GaugeIndicatorType.TriangleMarker)
+            .Color("#f05b41")
+        )
+    )
+</div>

@@ -1,0 +1,77 @@
+<div class="form">
+    @(Html.DevExtreme().TreeView()
+        .ID("treeview")
+        .DataSource(d => d.Mvc().LoadAction("GetHierarchicalData"))
+        .DisplayExpr("Text")
+        .ItemsExpr("Items")
+        .ExpandedExpr("Expanded")
+        .Width(300)
+        .Height(450)
+        .OnItemContextMenu("onTreeViewItemContextMenu"))
+
+    <div class="log-container">
+        <div><i class="icon dx-icon-clock"></i>&nbsp;Operations log:</div>
+        @(Html.DevExtreme().List()
+            .ID("log")
+            .Width(400)
+            .Height(300)
+            .ShowScrollbar(ShowScrollbarMode.Always))
+    </div>
+
+    @(Html.DevExtreme().ContextMenu()
+        .ID("contexmenu")
+        .Target("#treeview .dx-treeview-item")
+        .OnItemClick("onContextMenuItemClick")
+        .DataSource(new object[] {
+            new { id = "expand", text = "Expand category" },
+            new { id = "collapse", text = "Collapse category" },
+            new { id = "details", text = "Show product details" },
+            new { id = "copy", text = "Copy product info" }
+        })
+    )
+</div>
+<script>
+    var logItems = [];
+    var selectedTreeItem = undefined;
+
+    function onTreeViewItemContextMenu(e) {
+        selectedTreeItem = e.itemData;
+
+        var isProduct = e.itemData.Price > 0;
+        var contextMenu = $('#contexmenu').dxContextMenu('instance');
+        contextMenu.option('items[0].visible', !isProduct);
+        contextMenu.option('items[1].visible', !isProduct);
+        contextMenu.option('items[2].visible', isProduct);
+        contextMenu.option('items[3].visible', isProduct);
+
+        contextMenu.option('items[0].disabled', e.node.expanded);
+        contextMenu.option('items[1].disabled', !e.node.expanded);
+    }
+
+    function onContextMenuItemClick(e) {
+        var logEntry = '';
+        var treeView = $('#treeview').dxTreeView('instance');
+        switch(e.itemData.id) {
+            case 'expand': {
+                logEntry = 'The "' + selectedTreeItem.Text + '" group was expanded';
+                treeView.expandItem(selectedTreeItem);
+                break;
+            }
+            case 'collapse': {
+                logEntry = 'The "' + selectedTreeItem.Text + '" group was collapsed';
+                treeView.collapseItem(selectedTreeItem);
+                break;
+            }
+            case 'details': {
+                logEntry = 'Details about "' + selectedTreeItem.Text + '" were displayed';
+                break;
+            }
+            case 'copy': {
+                logEntry = 'Information about "' + selectedTreeItem.Text + '" was copied';
+                break;
+            }
+        }
+        logItems.push(logEntry);
+        $('#log').dxList('instance').option('items', logItems);
+    }
+</script>

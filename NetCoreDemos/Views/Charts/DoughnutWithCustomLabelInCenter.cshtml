@@ -1,0 +1,56 @@
+﻿@{
+    var data = (DevExtreme.NETCore.Demos.Models.SampleData.DoughnutWithCustomLabelInCenterDataItem[])Model;
+    var countries = Enumerable.Distinct((data).Select(i => i.Country));
+}
+
+<div class="long-title"><h3>Energy Production (GWh, 2016)</h3></div>
+
+<div class="pies-container">
+
+    @foreach(var country in countries) {
+        @(Html.DevExtreme().PieChart()
+        .Type(PieChartType.Doughnut)
+        .ResolveLabelOverlapping(PieChartResolveLabelOverlapping.Shift)
+        .InnerRadius(0.65)
+        .SizeGroup("piesGroup")
+        .Series(s => s
+            .Add()
+            .ArgumentField("Commodity")
+            .ValueField("Total")
+            .Label(l=>l.Visible(true)
+                .Connector(c=>c.Visible(true))
+                .BackgroundColor("none")
+                .CustomizeText("customizeLabel")
+                .Format(Format.FixedPoint)
+            )
+        )
+        .Legend(l=>l.Visible(false))
+        .CenterTemplate(@<text>
+            <svg>
+                <circle cx="100" cy="100" r="<%- getInnerRadius() - 6 %>" fill="#eee"></circle>
+                <image href="<%- getImagePath('@(country)') %>" x="70" y="58" width="60px" height="40px"/>
+                <text text-anchor="middle" style="font-size: 18px" x="100" y="120" fill="#494949">
+                    <tspan x="100">@(country)</tspan><tspan x="100" dy="20px" style="font-weight: 600"><%- formatNumber(calculateTotal(getAllSeries())) %></tspan>
+                </text>
+            </svg>
+        </text>)
+        .DataSource(data.Where(item=>item.Country==country).ToList())
+        )
+    }
+</div>
+
+<script>
+    var formatNumber = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format;
+
+    function getImagePath(country) {
+        return '../../images/flags/' + country.replace(/\s/, "").toLowerCase() + ".svg";
+    }
+
+    function customizeLabel(e) {
+        return e.argumentText + "\n" + e.valueText;
+    }
+
+    function calculateTotal(series) {
+        return series[0].getVisiblePoints().reduce(function (s, p) { return s + p.originalValue }, 0);
+    }
+</script>

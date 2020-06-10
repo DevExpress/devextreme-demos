@@ -1,0 +1,43 @@
+﻿@(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.DataGrid.Employee>()
+    .ID("gridContainer")
+    .ShowBorders(true)
+    .Sorting(sorting => sorting.Mode(GridSortingMode.Multiple))
+    .Columns(columns => {
+        columns.AddFor(m => m.Prefix)
+            .Width(70);
+
+        columns.AddFor(m => m.FirstName)
+            .SortOrder(SortOrder.Asc);
+
+        columns.AddFor(m => m.LastName)
+            .SortOrder(SortOrder.Asc);
+
+        columns.AddFor(m => m.City);
+
+        columns.AddFor(m => m.State);
+
+        columns.AddFor(m => m.Position)
+            .Width(130);
+
+        columns.AddFor(m => m.HireDate);
+    })
+    .DataSource(d => d.Mvc().Controller("DataGridMultipleSorting").LoadAction("Get").Key("ID"))
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Value(false)
+            .Text("Disable Sorting for the Position Column")
+            .OnValueChanged(@<text>
+                    function(data) {
+                        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                        dataGrid.columnOption(5, "sortOrder", undefined);
+                        dataGrid.columnOption(5, "allowSorting", !data.value);
+                    }
+                </text>
+            )
+        )
+    </div>
+</div>

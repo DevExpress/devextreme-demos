@@ -1,0 +1,49 @@
+﻿<div class="long-title"><h3>Sales Amount by Region</h3></div>
+
+@(Html.DevExtreme().PivotGrid()
+    .ID("sales")
+    .AllowSortingBySummary(true)
+    .AllowSorting(true)
+    .AllowFiltering(true)
+    .AllowExpandAll(true)
+    .Height(440)
+    .ShowBorders(true)
+    .FieldChooser(c => c.Enabled(false))
+    .Export(e => e.Enabled(true).FileName("Sales"))
+    .DataSource(d => d
+        .Store(new JS("sales"))
+        .Fields(fields => {
+            fields.Add()
+                .Caption("Region")
+                .Width(120)
+                .DataField("Region")
+                .Area(PivotGridArea.Row);
+
+            fields.Add()
+                .Caption("City")
+                .Width(150)
+                .DataField("City")
+                .Area(PivotGridArea.Row)
+                .Selector(@<text>
+                    function(data) {
+                        return  data.City + " (" + data.Country + ")";
+                    }
+                </text>);
+
+            fields.Add()
+                .DataField("Date")
+                .DataType(PivotGridDataType.Date)
+                .Area(PivotGridArea.Column);
+
+            fields.Add()
+                .Caption("Sales")
+                .DataField("Amount")
+                .DataType(PivotGridDataType.Number)
+                .SummaryType(SummaryType.Sum)
+                .Format(Format.Currency)
+                .Area(PivotGridArea.Data);
+        })
+    )
+)
+
+<script src="~/data/sales.js"></script>

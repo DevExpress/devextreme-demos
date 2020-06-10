@@ -1,0 +1,71 @@
+﻿<div class="long-title"><h3>Grades of Goods</h3></div>
+
+@using DevExtreme.AspNet.Mvc.Builders;
+
+@functions {
+    CircularGaugeBuilder CreateGauge() {
+        return Html.DevExtreme().CircularGauge()
+            .Geometry(g => g
+                .StartAngle(180)
+                .EndAngle(0)
+            )
+            .Scale(s => s
+                .StartValue(0)
+                .EndValue(10)
+                .TickInterval(1)
+            );
+    }
+}
+
+<div id="gauge-demo">
+    @(CreateGauge()
+        .ID("triangleMarker")
+        .Value(8)
+        .Subvalues(new double[] { 2, 8 })
+        .SubvalueIndicator(i => i
+            .Type(GaugeIndicatorType.TriangleMarker)
+            .Color("#8FBC8F")
+        )
+    )
+
+    @(CreateGauge()
+        .ID("rectangleNeedle")
+        .Value(9)
+        .Subvalues(new double[] { 2,8 })
+        .SubvalueIndicator(i => i
+            .Type(GaugeIndicatorType.RectangleNeedle)
+            .Color("#9B870C")
+        )
+    )
+
+    @(CreateGauge()
+        .ID("triangleNeedle")
+        .Value(5)
+        .Subvalues(new double[] { 2, 8 })
+        .SubvalueIndicator(i => i
+            .Type(GaugeIndicatorType.TriangleNeedle)
+            .Color("#779ECB")
+        )
+    )
+
+    @(CreateGauge()
+        .ID("textCloud")
+        .Value(6)
+        .Subvalues(new double[] { 2, 8 })
+        .SubvalueIndicator(i => i
+            .Type(GaugeIndicatorType.TextCloud)
+            .Color("#F05B41")
+        )
+    )
+
+    @(CreateGauge()
+        .ID("twoColorNeedle")
+        .Value(4)
+        .Subvalues(new double[] { 2, 8 })
+        .SubvalueIndicator(i => i
+            .Type(GaugeIndicatorType.TwoColorNeedle)
+            .Color("#779ECB")
+            .SecondColor("#734F96")
+        )
+    )
+</div>

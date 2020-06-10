@@ -1,0 +1,122 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Title("Stock Price")
+    .Series(s => {
+        s.Add()
+            .Type(SeriesType.Candlestick)
+            .ArgumentField("Date")
+            .Pane("Price")
+            .Aggregation(a =>
+                a.Enabled(true)
+                .Calculate((@<text>
+                    function(e) {
+                        var prices = e.data.map(function(i) { return i.Price; });
+                        if(prices.length) {
+                            return {
+                                Date: e.intervalStart,
+                                open: prices[0],
+                                high: Math.max.apply(null, prices),
+                                low: Math.min.apply(null, prices),
+                                close: prices[prices.length - 1]
+                            };
+                        }
+                    }
+                </text>))
+                .Method(ChartSeriesAggregationMethod.Custom));
+        s.Add()
+            .Type(SeriesType.Bar)
+            .ArgumentField("Date")
+            .ValueField("Volume")
+            .Color("red")
+            .Pane("Volume")
+            .Name("Volume")
+            .Aggregation(a =>
+                a.Enabled(true)
+                .Method(ChartSeriesAggregationMethod.Sum));
+    })
+    .CustomizePoint((@<text>
+        function(arg) {
+            if(arg.seriesName === "Volume") {
+                var ohlc = $("#chart").dxChart("getAllSeries")[0].getPointsByArg(arg.argument)[0].data;
+                if(ohlc.close >= ohlc.open) {
+                    return { color: "#1db2f5" };
+                }
+            }
+        }
+    </text>))
+    .Panes(p => {
+        p.Add().Name("Price");
+        p.Add().Name("Volume").Height(80);
+    })
+    .ArgumentAxis(a =>
+        a.ArgumentType(ChartDataType.DateTime)
+        .MinVisualRangeLength(l => l.Minutes(10))
+        .VisualRange(v => v.Length(VizTimeInterval.Hour))
+    )
+    .Legend(l => l.Visible(false))
+    .ValueAxis(v => v.Add().PlaceholderSize(50))
+    .Margin(m => m.Right(30))
+    .ScrollBar(s => s.Visible(true))
+    .LoadingIndicator(l => l.Enabled(true))
+    .ZoomAndPan(z => z.ArgumentAxis(ChartZoomAndPanMode.Both))
+    .Tooltip(t =>
+        t.Enabled(true)
+        .Shared(true)
+        .ArgumentFormat("shortDateShortTime")
+        .ContentTemplate(@<text>
+            <% var volume = points.filter(point => point.seriesName === 'Volume')[0]; %>
+            <% var prices = points.filter(point => point.seriesName !== 'Volume')[0]; %>
+            <div class='tooltip-template'>
+                <div><%- argumentText %></div>
+                <div>
+                    <span>Open: </span>
+                    <%- formatCurrency(prices.openValue) %>
+                </div>
+                <div>
+                    <span>High: </span>
+                    <%- formatCurrency(prices.highValue) %>
+                </div>
+                <div>
+                    <span>Low: </span>
+                    <%- formatCurrency(prices.lowValue) %>
+                </div>
+                <div>
+                    <span>Close: </span>
+                    <%- formatCurrency(prices.closeValue) %>
+                </div>
+                <div>
+                    <span>Volume: </span>
+                    <%- formatNumber(volume.value) %>
+                </div>
+            </div>
+        </text>)
+    )
+    .Crosshair(c => c.Enabled(true).HorizontalLine(hl => hl.Visible(false)))
+)
+
+<script src="~/Scripts/signalr/jquery.signalR-2.2.2.js"></script>
+<script src="~/signalr/hubs"></script>
+<script>
+    var formatCurrency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2 }).format;
+    var formatNumber = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format;
+
+    $(function () {
+        var hub = $.connection.stockTickDataHub;
+        var store = new DevExpress.data.CustomStore({
+            load: function () {
+                return hub.server.getAllData();
+            },
+            key: "Date"
+        });
+
+        hub.client.updateStockPrice = function (data) {
+            store.push([{ type: "insert", key: data.Date, data: data }]);
+        };
+
+        $.connection.hub.start({ waitForPageLoad: false }).done(function () {
+            $("#chart").dxChart({
+                dataSource: store
+            });
+        });
+    });
+</script>

@@ -1,0 +1,109 @@
+﻿@(Html.DevExtreme().DataGrid()
+    .ID("gridContainer")
+    .DataSource(d => d
+        .OData()
+        .Url("https://js.devexpress.com/Demos/SalesViewer/odata/DaySaleDtoes")
+        .BeforeSend(@<text>
+            function(request) {
+                request.params.startDate = "2018-05-10";
+                request.params.endDate = "2018-05-15";
+            }
+        </text>)
+    )
+    .RemoteOperations(false)
+    .AllowColumnReordering(true)
+    .RowAlternationEnabled(true)
+    .ShowBorders(true)
+    .OnContentReady("contentReady")
+    .Paging(p => p.PageSize(10))
+    .Pager(p => p
+        .ShowPageSizeSelector(true)
+        .AllowedPageSizes(new[] { 10, 25, 50, 100 })
+    )
+    .SearchPanel(s => s
+        .Visible(true)
+        .HighlightCaseSensitive(true)
+    )
+    .GroupPanel(g => g.Visible(true))
+    .Grouping(g => g.AutoExpandAll(false))
+    .Columns(columns => {
+        columns.Add()
+            .DataField("Product")
+            .GroupIndex(0);
+
+        columns.Add()
+            .DataField("Amount")
+            .Caption("Sale Amount")
+            .DataType(GridColumnDataType.Number)
+            .Format(Format.Currency)
+            .Alignment(HorizontalAlignment.Right);
+
+        columns.Add()
+            .DataField("Discount")
+            .Caption("Discount %")
+            .DataType(GridColumnDataType.Number)
+            .Format(Format.Percent)
+            .Alignment(HorizontalAlignment.Right)
+            .AllowGrouping(false)
+            .CssClass("bullet")
+            .CellTemplate(@<text>
+                @(Html.DevExtreme().Bullet()
+                    .Value(new JS("value * 100"))
+                    .Size(s => s
+                        .Height(35)
+                        .Width(150)
+                    )
+                    .Margin(m => m
+                        .Top(5)
+                        .Bottom(0)
+                        .Left(5)
+                    )
+                    .ShowTarget(false)
+                    .ShowZeroLevel(true)
+                    .StartScaleValue(0)
+                    .EndScaleValue(100)
+                    .Tooltip(t => t
+                        .Enabled(true)
+                        .Font(f => f.Size(18))
+                        .PaddingTopBottom(2)
+                        .CustomizeTooltip("customizeTooltip")
+                    )
+                )
+            </text>);
+
+        columns.Add()
+            .DataField("SaleDate")
+            .DataType(GridColumnDataType.Date);
+
+        columns.Add()
+            .DataField("Region")
+            .DataType(GridColumnDataType.String);
+
+        columns.Add()
+            .DataField("Sector")
+            .DataType(GridColumnDataType.String);
+
+        columns.Add()
+            .DataField("Channel")
+            .DataType(GridColumnDataType.String);
+
+        columns.Add()
+            .DataField("Customer")
+            .DataType(GridColumnDataType.String)
+            .Width(150);
+    })
+)
+
+<script>
+    var collapsed = false;
+    function contentReady(e) {
+        if(!collapsed) {
+            collapsed = true;
+            e.component.expandRow(["EnviroCare"]);
+        }
+    }
+
+    function customizeTooltip(pointsInfo) {
+        return { text: parseInt(pointsInfo.originalValue) + "%" };
+    }
+</script>

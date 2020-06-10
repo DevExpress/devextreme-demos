@@ -1,0 +1,169 @@
+﻿<div id="chart-demo">
+    @(Html.DevExtreme().Chart()
+        .ID("chart")
+        .Title("Weather in Las Vegas, NV (2017)")
+        .CommonSeriesSettings(s => s.ArgumentField("Date"))
+        .ArgumentAxis(a => {
+            a.ArgumentType(ChartDataType.DateTime);
+            a.AggregationInterval(VizTimeInterval.Week);
+            a.ValueMarginsEnabled(false);
+        })
+        .ValueAxis(a => {
+            a.Add()
+                .Name("temperature")
+                .Title(t => t.Text("Temperature, °C").Font(f => f.Color("#e91e63")))
+                .Label(l => l.Font(f => f.Color("#e91e63")));
+            a.Add()
+                .Name("precipitation")
+                .Position(Position.Right)
+                .Title(t => t.Text("Precipitation, mm").Font(f => f.Color("#03a9f4")))
+                .Label(l => l.Font(f => f.Color("#03a9f4")));
+        })
+        .Legend(l => l.Visible(false))
+        .Series(s => {
+            s.Add()
+                .Axis("precipitation")
+                .Color("#03a9f4")
+                .Type(SeriesType.Bar)
+                .ValueField("Precip")
+                .Name("Precipitation");
+            s.Add()
+                .Axis("temperature")
+                .Color("#ffc0bb")
+                .Type(SeriesType.RangeArea)
+                .RangeValue1Field("MinTemp")
+                .RangeValue2Field("MaxTemp")
+                .Aggregation(a => {
+                    a.Enabled(true);
+                    a.Method(ChartSeriesAggregationMethod.Custom);
+                    a.Calculate(@<text>
+                        function(aggregationInfo, series) {
+                            if(!aggregationInfo.data.length) {
+                                return;
+                            }
+                            var temp = aggregationInfo.data.map(function(item) { return item.Temp; }),
+                                maxTemp = Math.max.apply(null, temp),
+                                minTemp = Math.min.apply(null, temp);
+
+                            return {
+                                Date: aggregationInfo.intervalStart,
+                                MaxTemp: maxTemp,
+                                MinTemp: minTemp
+                            };
+                        }
+                    </text>);
+                })
+                .Name("Temperature range");
+            s.Add()
+                .Axis("temperature")
+                .Color("#e91e63")
+                .ValueField("Temp")
+                .Point(p => p.Size(7))
+                .Aggregation(a => a.Enabled(true))
+                .Name("Average temperature");
+        })
+        .Tooltip(t => {
+            t.Enabled(true);
+            t.CustomizeTooltip(@<text>
+                function(arg) {
+                    return customTooltipHandlers[arg.seriesName](arg, arg.point.aggregationInfo);
+                }
+            </text>);
+        })
+        .DataSource(d => d.Mvc().LoadAction("GetWeatherIndicators"))
+    )
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Aggregation enabled")
+                .Value(true)
+                .OnValueChanged(@<text>
+                    function(data) {
+                        var chart = $("#chart").dxChart("instance");
+
+                        chart.option("series[1].aggregation.enabled", data.value);
+                        chart.option("series[2].aggregation.enabled", data.value);
+                    }
+                </text>)
+            )
+        </div>
+        <div class="option">
+            <span>Interval:</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new JS("intervals"))
+                .Value(VizTimeInterval.Week)
+                .ValueExpr("Interval")
+                .DisplayExpr("DisplayName")
+                .OnValueChanged(@<text>
+                    function (data) {
+                        $("#chart").dxChart("instance").option("argumentAxis.aggregationInterval", data.value);
+                    }
+                </text>)
+            )
+        </div>
+        <div class="option">
+            <span>Method:</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new[] {
+                    new { DisplayName = "Average", Func = "avg" },
+                    new { DisplayName = "Minimum", Func = "min" },
+                    new { DisplayName = "Maximum", Func = "max" }
+                })
+                .Value(ChartSeriesAggregationMethod.Avg)
+                .ValueExpr("Func")
+                .DisplayExpr("DisplayName")
+                .OnValueChanged(@<text>
+                    function (data) {
+                        $("#chart").dxChart("instance").option("series[2].aggregation.method", data.value);
+                    }
+                </text>)
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    var intervals = [{
+        DisplayName: "One week",
+        Interval: "week"
+    }, {
+        DisplayName: "Two weeks",
+        Interval: { weeks: 2 }
+    }, {
+        DisplayName: "Month",
+        Interval: "month"
+    }];
+
+    var customTooltipHandlers = {
+        "Average temperature": function (arg, aggregationInfo) {
+            var start = aggregationInfo && aggregationInfo.intervalStart,
+                end = aggregationInfo && aggregationInfo.intervalEnd;
+
+            return {
+                text: (!aggregationInfo ?
+                    "Date: " + arg.argument.toDateString() :
+                    "Interval: " + start.toDateString() +
+                    " - " + end.toDateString()) +
+                    "<br/>Temperature: " + arg.value.toFixed(2) + " °C"
+            };
+        },
+        "Temperature range": function (arg, aggregationInfo) {
+            var start = aggregationInfo.intervalStart,
+                end = aggregationInfo.intervalEnd;
+
+            return {
+                text: "Interval: " + start.toDateString() +
+                    " - " + end.toDateString() +
+                    "<br/>Temperature range: " + arg.rangeValue1 +
+                    " - " + arg.rangeValue2 + " °C"
+            };
+        },
+        "Precipitation": function (arg) {
+            return {
+                text: "Date: " + arg.argument.toDateString() +
+                    "<br/>Precipitation: " + arg.valueText + " mm"
+            };
+        }
+    };
+</script>

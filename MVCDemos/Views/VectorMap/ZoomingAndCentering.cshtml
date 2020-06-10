@@ -1,0 +1,49 @@
+﻿@(Html.DevExtreme().VectorMap()
+    .ID("vector-map")
+    .Tooltip(t => t
+        .Enabled(true)
+        .CustomizeTooltip("vectorMap_customizeTooltip")
+    )
+    .OnClick("vectorMap_onClick")
+    .Bounds(new double[] { -180, 85, 180, -60 })
+    .Layers(layers => {
+        layers.Add()
+            .DataSource(new JS("DevExpress.viz.map.sources.world"))
+            .HoverEnabled(false);
+
+        layers.Add()
+            .DataSource(d => d.Mvc().LoadAction("GetMarkersForZoommingAndCentering"))
+            .DataSourceOptions(dso => dso.Map("vectorMap_layer_dataSource_map"));
+    })
+)
+
+@(Html.DevExtreme().Button()
+    .ID("reset")
+    .Text("Reset")
+    .OnClick("button_onClick")
+)
+
+<script>
+    function vectorMap_customizeTooltip(arg) {
+        if(arg.layer.type === "marker") {
+            return { text: arg.attribute("Name") };
+        }
+    }
+
+    function vectorMap_onClick(e) {
+        if(e.target && e.target.layer.type === "marker") {
+            e.component.center(e.target.coordinates()).zoomFactor(10);
+        }
+    }
+
+    function vectorMap_layer_dataSource_map(item) {
+        return {
+            coordinates: item.Coordinates,
+            attributes: item.Attributes
+        };
+    }
+
+    function button_onClick() {
+        $("#vector-map").dxVectorMap("instance").center(null).zoomFactor(null);
+    }
+</script>

@@ -1,0 +1,20 @@
+﻿@(Html.DevExtreme().BarGauge()
+    .ID("gauge")
+    .StartValue(0)
+    .EndValue(100)
+    .Values(new [] { 47.27, 65.32, 84.59, 71.86 })
+    .Label(l => l
+        .Indent(30)
+        .Format(f => f.Type(Format.FixedPoint).Precision(1))
+        .CustomizeText(@<text>
+            function (arg) {
+                return arg.valueText + " %";
+            }
+        </text>)
+    )
+    .Export(e => e.Enabled(true))
+    .Title(t => t
+        .Text("Series' Ratings")
+        .Font(f => f.Size(28))
+    )
+)

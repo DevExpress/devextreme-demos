@@ -1,0 +1,67 @@
+﻿
+<div class="left-side">
+    <div class="logo">
+        <img src="../../Content/images/DataGrid/logo-devav.png" />
+        <img src="../../Content/images/DataGrid/logo-tasks.png" />
+    </div>
+</div>
+<div class="right-side">
+    @{
+        var statuses = new[] { "All", "Not Started", "In Progress", "Need Assistance", "Deferred", "Completed" };
+    }
+    @(Html.DevExtreme().SelectBox()
+        .DataSource(statuses)
+        .Value(statuses[0])
+        .OnValueChanged(@<text>
+            function(data) {
+                var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                if (data.value == "All")
+                    dataGrid.clearFilter();
+                else
+                    dataGrid.filter(["Task_Status", "=", data.value]);
+            }
+        </text>)
+    )
+</div>
+
+@(Html.DevExtreme().DataGrid()
+    .ID("gridContainer")
+    .ShowBorders(true)
+    .DataSource(d => d.OData()
+        .Url("https://js.devexpress.com/Demos/DevAV/odata/Tasks")
+        .Expand("ResponsibleEmployee")
+    )
+    .DataSourceOptions(d => d.Select(new[] {
+        "Task_ID",
+        "Task_Subject",
+        "Task_Start_Date",
+        "Task_Status",
+        "ResponsibleEmployee/Employee_Full_Name"
+    }))
+    .ColumnAutoWidth(true)
+    .Columns(columns => {
+        columns.Add()
+            .DataField("Task_ID")
+            .Width(80);
+
+        columns.Add()
+            .Caption("Start Date")
+            .DataField("Task_Start_Date")
+            .DataType(GridColumnDataType.Date);
+
+        columns.Add()
+            .Caption("Assigned To")
+            .DataField("ResponsibleEmployee.Employee_Full_Name")
+            .CssClass("employee")
+            .AllowSorting(false);
+
+        columns.Add()
+            .Caption("Subject")
+            .DataField("Task_Subject")
+            .Width(350);
+
+        columns.Add()
+            .Caption("Status")
+            .DataField("Task_Status");
+    })
+)

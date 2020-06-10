@@ -1,0 +1,77 @@
+﻿@using DevExtreme.NETCore.Demos.Models
+@model IEnumerable<OrderWithCustomerInfo>
+
+@{
+    var filterValue = new object[] {
+        new object[] { "Employee", FilterBuilderFieldFilterOperations.Equal, "Clark Morgan" },
+        "and",
+        new object[] { "OrderDate", "weekends" }
+    };
+}
+
+@(Html.DevExtreme().DataGrid<OrderWithCustomerInfo>()
+    .ID("gridContainer")
+    .Height(440)
+    .ShowBorders(true)
+    .FilterPanel(f => f.Visible(true))
+    .HeaderFilter(h => h.Visible(true))
+    .Scrolling(s => s.Mode(GridScrollingMode.Infinite))
+    .DataSource(Model)
+    .FilterValue(filterValue)
+    .FilterBuilder(f => f.CustomOperations(co => {
+        var o = co.Add();
+        o.Name("weekends");
+        o.Caption("Weekends");
+        o.DataTypes(new[] { FilterBuilderFieldDataType.Date });
+        o.Icon("check");
+        o.HasValue(false);
+        o.CalculateFilterExpression("function() { return [[getOrderDay, '=', 0], 'or', [getOrderDay, '=', 6]]; }");
+    }))
+    .FilterBuilderPopup(p =>
+        p.Position(pos =>
+            pos.At(HorizontalAlignment.Center, VerticalAlignment.Top)
+                .My(HorizontalAlignment.Center, VerticalAlignment.Top)
+                .Offset(0, 10)
+        )
+    )
+    .FilterRow(f => f.Visible(true))
+    .Columns(columns => {
+        columns.AddFor(m => m.OrderNumber)
+            .HeaderFilter(filter => filter.GroupInterval(10000));
+        columns.AddFor(m => m.OrderDate);
+        columns.AddFor(m => m.SaleAmount)
+            .Format(Format.Currency)
+            .EditorOptions(new { format = "currency", showClearButton = true })
+            .HeaderFilter(filter => filter.DataSource(new[] {
+                new {
+                    text = "Less than $3000",
+                    value = new object[] { "SaleAmount", "<", 3000 }
+                },
+                new {
+                    text = "$3000 - $5000",
+                    value = new object[] { new object[] { "SaleAmount", ">=", 3000 }, new object[] { "SaleAmount", "<", 5000 } }
+                },
+                new {
+                    text = "$5000 - $10000",
+                    value = new object[] { new object[] { "SaleAmount", ">=", 5000 }, new object[] { "SaleAmount", "<", 10000 } }
+                },
+                new {
+                    text = "$10000 - $20000",
+                    value = new object[] { new object[] { "SaleAmount", ">=", 10000}, new object[] { "SaleAmount", "<", 20000}}
+                },
+                new {
+                    text = "Greater than $20000",
+                    value = new object[] { "SaleAmount", ">=", 20000 }
+                }
+            }));
+        columns.AddFor(m => m.Employee);
+        columns.AddFor(m => m.CustomerInfo.StoreCity);
+        columns.AddFor(m => m.CustomerInfo.StoreState);
+    })
+)
+
+<script>
+    function getOrderDay(rowData) {
+        return (new Date(rowData.OrderDate)).getDay();
+    }
+</script>

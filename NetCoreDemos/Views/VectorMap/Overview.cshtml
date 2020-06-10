@@ -1,0 +1,92 @@
+﻿@(Html.DevExtreme().VectorMap()
+    .ID("vector-map")
+    .Layers(l => l.Add()
+        .Name("areas")
+        .DataSource(new JS("DevExpress.viz.map.sources.world"))
+        .ColorGroups(new double[] { 0, 10000, 50000, 100000, 500000, 1000000, 10000000, 50000000 })
+        .ColorGroupingField("total")
+        .Label(lbl => lbl
+            .Enabled(true)
+            .DataField("name")
+        )
+        .Customize("vectorMap_areasLayer_customize")
+    )
+    .Legends(l => l.Add()
+        .Source(s => s
+            .Layer("areas")
+            .Grouping("color")
+        )
+        .CustomizeText("vectorMap_areasLegend_customizeText")
+    )
+    .Title(t => t
+        .Text("Nominal GDP")
+        .Subtitle(st => st.Text("(in millions of US dollars)"))
+    )
+    .Export(e => e.Enabled(true))
+    .Tooltip(t => t
+        .Enabled(true)
+        .ContentTemplate((@<text>
+            <%  var name = attribute('name');
+                var countryGDPData = countriesGDP[name];
+                var total = countryGDPData && countryGDPData.total;
+                var pieData = getPieData(name); %>
+            <h4> <%- name %> </h4>
+            <% if(total) { %> <div id="nominal">Nominal GDP: $ <%- format(total) %>M</div> <% } %>
+            <% if(pieData) { %>
+                @(Html.DevExtreme()
+                .PieChart()
+                .Animation(false)
+                .ID("gdp-sectors")
+                .DataSource(new JS("pieData"))
+                .Series(s=>s.Add()
+                    .ArgumentField("name")
+                    .ValueField("value")
+                    .Label(l=>l
+                        .Visible(true)
+                        .Connector(c=>c
+                            .Visible(true)
+                            .Width(1))
+                    .CustomizeText("pieChart_label_customizeText")
+                    )
+                )
+                .Legend(l=>l.Visible(false))
+                )
+            <% } else { %>
+                <div>No economic development data</div>
+            <% } %>
+
+        </text>))
+        )
+    .Bounds(new JS("[-180, 85, 180, -60]"))
+    )
+
+<script src="~/data/countriesGDP.js"></script>
+<script>
+    var format = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format;
+
+    function getPieData(name) {
+        return countriesGDP[name] ? [
+            { name: 'industry', value: countriesGDP[name].industry },
+            { name: 'services', value: countriesGDP[name].services },
+            { name: 'agriculture', value: countriesGDP[name].agriculture }
+        ] : null;
+    }
+
+    function vectorMap_areasLayer_customize(elements) {
+        $.each(elements, function (_, element) {
+            var countryGDPData = countriesGDP[element.attribute("name")];
+            element.attribute("total", countryGDPData && countryGDPData.total || 0);
+        });
+    }
+
+    function pieChart_label_customizeText(pointInfo) {
+        return pointInfo.argument[0].toUpperCase()
+            + pointInfo.argument.slice(1)
+            + ": $" + pointInfo.value + "M";
+    }
+
+    function vectorMap_areasLegend_customizeText(arg) {
+        return format(arg.start) + " to " + format(arg.end);
+    }
+
+</script>

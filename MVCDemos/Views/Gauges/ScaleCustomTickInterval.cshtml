@@ -1,0 +1,16 @@
+﻿@(Html.DevExtreme().LinearGauge()
+    .ID("gauge")
+    .Scale(s => s
+        .StartValue(0)
+        .EndValue(5)
+        .TickInterval(2.5)
+        .MinorTickInterval(0.625)
+        .MinorTick(m => m.Visible(true))
+    )
+    .Export(e => e.Enabled(true))
+    .Title(t => t
+        .Text("TV Show Rating")
+        .Font(f => f.Size(28))
+    )
+    .Value(4.3)
+)

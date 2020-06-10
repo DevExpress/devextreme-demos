@@ -1,0 +1,59 @@
+﻿<div class="schedulers">
+    @for(int i = 1; i <= 2; i++) {
+        <div class="column-@i">
+            @(Html.DevExtreme().Scheduler()
+                .ID(string.Format("{0}{1}", "scheduler", i))
+                .DataSource(d => d.WebApi()
+                    .Controller("SchedulerSignalR")
+                    .Key("AppointmentId")
+                    .DeleteAction(true)
+                    .UpdateAction(true)
+                    .InsertAction(true)
+                    .Key("AppointmentId")
+                )
+                .Views(new[] {
+                    SchedulerViewType.Day,
+                    SchedulerViewType.WorkWeek
+                })
+                .CurrentView(SchedulerViewType.Day)
+                .CurrentDate(new DateTime(2017, 5, 23))
+                .StartDayHour(9)
+                .EndDayHour(19)
+                .Height(600)
+                .TextExpr("Text")
+                .DescriptionExpr("Description")
+                .StartDateExpr("StartDate")
+                .EndDateExpr("EndDate")
+                .AllDayExpr("AllDay")
+            )
+        </div>
+    }
+</div>
+
+<script src="~/Scripts/signalr/jquery.signalR-2.2.2.js"></script>
+<script src="~/signalr/hubs"></script>
+<script>
+    $(function () {
+        var store1 = $("#scheduler1").dxScheduler("getDataSource").store();
+        var store2 = $("#scheduler2").dxScheduler("getDataSource").store();
+
+        var hub = $.connection.schedulerSignalRHub;
+
+        hub.client.update = function (key, data) {
+            store1.push([{ type: "update", key: key, data: data }]);
+            store2.push([{ type: "update", key: key, data: data }]);
+        };
+
+        hub.client.insert = function (data) {
+            store1.push([{ type: "insert", data: data }]);
+            store2.push([{ type: "insert", data: data }]);
+        };
+
+        hub.client.remove = function (key) {
+            store1.push([{ type: "remove", key: key }]);
+            store2.push([{ type: "remove", key: key }]);
+        };
+
+        $.connection.hub.start({ waitForPageLoad: false });
+    });
+</script>

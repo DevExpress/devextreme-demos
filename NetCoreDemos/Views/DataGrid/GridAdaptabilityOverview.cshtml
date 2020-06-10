@@ -1,0 +1,49 @@
+﻿@using DevExtreme.NETCore.Demos.Models
+
+@model IEnumerable<Order>
+
+@(Html.DevExtreme().DataGrid<Order>()
+    .ID("gridContainer")
+    .DataSource(Model, new[] { "ID" })
+    .ColumnHidingEnabled(true)
+    .ShowBorders(true)
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .Mode(GridEditMode.Batch))
+    .Export(e => e
+        .Enabled(true)
+        .FileName("Orders"))
+    .Grouping(g => g
+        .ContextMenuEnabled(true)
+        .ExpandMode(GridGroupingExpandMode.RowClick))
+    .GroupPanel(p => p
+        .EmptyPanelText("Use the context menu of header columns to group data")
+        .Visible(true))
+    .Pager(p => p
+        .AllowedPageSizes(new[] { 5, 8, 15, 30 })
+        .ShowInfo(true)
+        .ShowNavigationButtons(true)
+        .ShowPageSizeSelector(true)
+        .Visible(true))
+    .Paging(p => p.PageSize(8))
+    .ColumnChooser(c => c
+        .Enabled(true)
+        .Mode(GridColumnChooserMode.Select))
+    .Columns(columns => {
+        columns.AddFor(m => m.OrderNumber)
+            .AllowGrouping(false)
+            .Width(130);
+
+        columns.AddFor(m => m.CustomerStoreCity);
+
+        columns.AddFor(m => m.CustomerStoreState);
+
+        columns.AddFor(m => m.Employee);
+
+        columns.AddFor(m => m.OrderDate);
+
+        columns.AddFor(m => m.SaleAmount)
+            .Format(Format.Currency);
+    })
+)

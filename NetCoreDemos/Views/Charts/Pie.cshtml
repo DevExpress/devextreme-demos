@@ -1,0 +1,51 @@
+﻿@(Html.DevExtreme().PieChart()
+    .ID("pie")
+    .Size(s => s.Width(500))
+    .Palette(VizPalette.Bright)
+    .Series(s => s
+        .Add()
+        .ArgumentField("Country")
+        .ValueField("Area")
+        .Label(l => l
+            .Visible(true)
+            .Connector(c => c
+                .Visible(true)
+                .Width(1)
+            )
+        )
+    )
+    .Title("Area of Countries")
+    .Export(e => e.Enabled(true))
+    .OnPointClick(@<text>
+        function (e) {
+            var point = e.target;
+            toggleVisibility(point);
+        }
+    </text>)
+    .OnLegendClick(@<text>
+        function (e) {
+            var arg = e.target;
+            toggleVisibility(this.getAllSeries()[0].getPointsByArg(arg)[0]);
+        }
+    </text>)
+    .DataSource(new[] {
+        new { Country = "Russia", Area = 12 },
+        new { Country = "Canada", Area = 7 },
+        new { Country = "USA", Area = 7 },
+        new { Country = "China", Area = 7 },
+        new { Country = "Brazil", Area = 6 },
+        new { Country = "Australia", Area = 5 },
+        new { Country = "India", Area = 2 },
+        new { Country = "Others", Area = 55 }
+    })
+)
+
+<script>
+    function toggleVisibility(item) {
+        if(item.isVisible()) {
+            item.hide();
+        } else {
+            item.show();
+        }
+    }
+</script>

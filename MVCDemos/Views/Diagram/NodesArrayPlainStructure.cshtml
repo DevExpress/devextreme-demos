@@ -1,0 +1,21 @@
+﻿@(Html.DevExtreme().Diagram()
+    .ID("diagram")
+    .Nodes(ns => ns
+        .DataSource(d => d
+            .Array()
+            .Key("this")
+            .Data(Model)
+        )
+        .KeyExpr("ID")
+        .TextExpr("Title")
+        .ParentKeyExpr("HeadID")
+        .AutoLayout(al => al
+            .Type(DiagramDataLayoutType.Tree)
+        )
+    )
+    .Toolbox(t => t
+        .Groups(g => g
+            .Add().Category(DiagramShapeCategory.General).Title("General")
+        )
+    )
+)

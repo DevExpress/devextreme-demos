@@ -1,0 +1,61 @@
+﻿<div id="chart-demo">
+    @(Html.DevExtreme().PieChart()
+        .ID("pie-chart")
+        .Palette(VizPalette.Bright)
+        .Title("Olympic Medals in 2008")
+        .Margin(m => m.Bottom(20))
+        .Legend(l => l.Visible(false))
+        .Animation(a => a.Enabled(false))
+        .ResolveLabelOverlapping(PieChartResolveLabelOverlapping.Shift)
+        .Export(e => e.Enabled(true))
+        .Series(s => s
+            .Add()
+            .ArgumentField("Country")
+            .ValueField("Medals")
+            .Label(l => l
+                .Visible(true)
+                .CustomizeText(@<text>
+                    function(arg) {
+                        return arg.argumentText + " (" + arg.percentText + ")";
+                    }
+                </text>)
+            )
+        )
+        .DataSource(new[] {
+            new { Country = "USA", Medals = 112 },
+            new { Country = "China", Medals = 100 },
+            new { Country = "Russia", Medals = 60 },
+            new { Country = "Britain", Medals = 49 },
+            new { Country = "Australia", Medals = 46 },
+            new { Country = "France", Medals = 43 },
+            new { Country = "Germany", Medals = 41 },
+            new { Country = "South Korea", Medals = 32 },
+            new { Country = "Cuba", Medals = 29 },
+            new { Country = "Italy", Medals = 27 },
+            new { Country = "Japan", Medals = 25 },
+            new { Country = "Ukraine", Medals = 22 },
+            new { Country = "Canada", Medals = 20 },
+            new { Country = "Spain", Medals = 19 }
+        })
+    )
+
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            <span>Label Overlapping Resolution Mode</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new[] {
+                    PieChartResolveLabelOverlapping.Shift,
+                    PieChartResolveLabelOverlapping.Hide,
+                    PieChartResolveLabelOverlapping.None
+                })
+                .Value(PieChartResolveLabelOverlapping.Shift)
+                .OnValueChanged(@<text>
+                    function (e) {
+                        $("#pie-chart").dxPieChart("option", "resolveLabelOverlapping", e.value);
+                    }
+                </text>)
+            )
+        </div>
+    </div>
+</div>

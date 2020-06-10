@@ -1,0 +1,5 @@
+﻿@(Html.DevExtreme().DataGrid()
+    .ID("gridContainer")
+    .DataSource(d => d.Mvc().Controller("DataGridColumns").LoadAction("Get"))
+    .ShowBorders(true)
+)

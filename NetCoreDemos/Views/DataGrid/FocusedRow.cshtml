@@ -1,0 +1,138 @@
+﻿@(Html.DevExtreme().DataGrid()
+    .DataSource(d => d.OData()
+        .Url("https://js.devexpress.com/Demos/DevAV/odata/Tasks")
+        .Key("Task_ID")
+        .Expand("ResponsibleEmployee")
+    )
+    .DataSourceOptions(d => d.Select(new[] {
+            "Task_ID",
+            "Task_Subject",
+            "Task_Start_Date",
+            "Task_Status",
+            "Task_Description",
+            "Task_Completion",
+            "ResponsibleEmployee/Employee_Full_Name"
+        })
+    )
+    .Columns(columns => {
+        columns.Add()
+            .DataField("Task_ID")
+            .Width(80);
+
+
+        columns.Add()
+            .DataField("Task_Start_Date")
+            .Caption("Start Date")
+            .DataType(GridColumnDataType.Date);
+
+        columns.Add()
+            .DataField("ResponsibleEmployee.Employee_Full_Name")
+            .Caption("Assigned To")
+            .AllowSorting(false);
+
+        columns.Add()
+            .DataField("Task_Subject")
+            .Caption("Subject")
+            .Width(350);
+
+        columns.Add()
+            .DataField("Task_Status")
+            .Caption("Status");
+    })
+    .FocusedRowEnabled(true)
+    .FocusedRowKey(117)
+    .ShowBorders(true)
+    .Paging(p => p.PageSize(10))
+    .OnInitialized("onDataGridInitialized")
+    .OnFocusedRowChanging("onFocusedRowChanging")
+    .OnFocusedRowChanged("onFocusedRowChanged")
+)
+
+<div class="task-info">
+    <div class="info">
+        <div id="taskSubject"></div>
+        <p id="taskDetails"></p>
+    </div>
+    <div class="progress">
+        <span id="taskStatus"></span>
+        <span id="taskProgress"></span>
+    </div>
+</div>
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Focused Row Key</span>
+        @(Html.DevExtreme().NumberBox()
+            .Min(1)
+            .Max(183)
+            .Step(0)
+            .OnInitialized("onTaskIdEditorInitialized")
+            .OnValueChanged("onTaskIdEditorValueChanged")
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Auto Navigate To Focused Row")
+            .Value(true)
+            .OnValueChanged("autoNavigateToFocusedRowChanged")
+        )
+    </div>
+</div>
+
+
+<script>
+    var dataGrid,
+        taskIdEditor;
+
+    function onTaskIdEditorInitialized(e) {
+        taskIdEditor = e.component;
+    }
+
+    function onTaskIdEditorValueChanged(e) {
+        if (e.event && e.value > 0) {
+            dataGrid.option("focusedRowKey", e.value);
+        }
+    }
+
+    function autoNavigateToFocusedRowChanged(e) {
+        dataGrid.option("autoNavigateToFocusedRow", e.value);
+    }
+
+    function onDataGridInitialized(e) {
+        dataGrid = e.component;
+    }
+
+    function onFocusedRowChanging(e) {
+        var rowsCount = e.component.getVisibleRows().length,
+            pageCount = e.component.pageCount(),
+            pageIndex = e.component.pageIndex(),
+            key = e.event && e.event.key;
+
+        if(key && e.prevRowIndex === e.newRowIndex) {
+            if(e.newRowIndex === rowsCount - 1 && pageIndex < pageCount - 1) {
+                e.component.pageIndex(pageIndex + 1).done(function() {
+                    e.component.option("focusedRowIndex", 0);
+                });
+            } else if(e.newRowIndex === 0 && pageIndex > 0) {
+                e.component.pageIndex(pageIndex - 1).done(function() {
+                    e.component.option("focusedRowIndex", rowsCount - 1);
+                });
+            }
+        }
+    }
+
+    function onFocusedRowChanged(e) {
+        const rowData = e.row && e.row.data;
+
+        $("#taskSubject").html(rowData && rowData.Task_Subject);
+        $("#taskDetails").html(rowData && rowData.Task_Description);
+        $("#taskStatus").html(rowData && rowData.Task_Status);
+
+        var progress = rowData && rowData.Task_Completion ? rowData.Task_Completion + "%" : "";
+        $("#taskProgress").text(progress);
+
+        taskIdEditor.option("value", e.component.option("focusedRowKey"));
+    }
+
+</script>

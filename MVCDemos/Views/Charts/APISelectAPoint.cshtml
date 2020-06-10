@@ -1,0 +1,53 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Rotated(true)
+    .CommonSeriesSettings(s => s
+        .ArgumentField("Breed")
+        .Type(SeriesType.Bar)
+    )
+    .Series(s => s
+        .Add()
+        .ValueField("Count")
+        .Name("breeds")
+        .Color("#a3d6d2")
+        .SelectionStyle(st => st
+            .Color("#ec2e7a")
+            .Hatching(h => h.Direction(HatchingDirection.None))
+        )
+    )
+    .Title(t => t.Text("Most Popular US Cat Breeds"))
+    .Legend(l => l.Visible(false))
+    .Export(e => e.Enabled(true))
+    .OnPointClick(@<text>
+        function(e) {
+            var point = e.target;
+            if(point.isSelected()) {
+                point.clearSelection();
+            } else {
+                point.select();
+            }
+        }
+    </text>)
+    .OnDone(@<text>
+        function(e) {
+            e.component.getSeriesByPos(0).getPointsByArg("Siamese")[0].select();
+        }
+    </text>)
+    .DataSource(new[] {
+        new { Breed = "Domestic Shorthair", Count = 61046 },
+        new { Breed = "American Shorthair", Count = 37545 },
+        new { Breed = "Domestic Medium Hair", Count = 16776 },
+        new { Breed = "Domestic Long Hair", Count = 15049 },
+        new { Breed = "Siamese", Count = 14582 },
+        new { Breed = "Maine Coon", Count = 10852 },
+        new { Breed = "Persian", Count = 6717 },
+        new { Breed = "Russian Blue", Count = 3864 },
+        new { Breed = "Himalayan", Count = 3701 },
+        new { Breed = "Ragdoll", Count = 3567 },
+        new { Breed = "Bengal", Count = 3118 },
+        new { Breed = "Manx", Count = 2349 },
+        new { Breed = "British Shorthair", Count = 2171 },
+        new { Breed = "Norwegian Forest Cat", Count = 1827 },
+        new { Breed = "Bombay", Count = 1580 }
+    })
+)

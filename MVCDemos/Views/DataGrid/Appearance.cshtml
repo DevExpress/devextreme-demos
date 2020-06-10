@@ -1,0 +1,85 @@
+﻿@using DevExtreme.MVC.Demos.Models.DataGrid
+
+@model IEnumerable<Employee>
+
+@(Html.DevExtreme().DataGrid<Employee>()
+    .ID("grid-container")
+    .DataSource(Model, new[] { "ID" })
+    .ShowColumnLines(false)
+    .ShowRowLines(true)
+    .RowAlternationEnabled(true)
+    .ShowBorders(true)
+    .Columns(columns => {
+        columns.AddFor(m => m.Prefix).Width(80);
+
+        columns.AddFor(m => m.FirstName);
+
+        columns.AddFor(m => m.LastName);
+
+        columns.AddFor(m => m.City);
+
+        columns.AddFor(m => m.State);
+
+        columns.AddFor(m => m.Position)
+            .Width(130);
+
+        columns.AddFor(m => m.BirthDate)
+            .Width(100);
+
+        columns.AddFor(m => m.HireDate)
+            .Width(100);
+    })
+)
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Show Column Lines")
+            .Value(false)
+            .OnValueChanged(@<text>
+                function(data) {
+                    getDataGridInstance().option("showColumnLines", data.value);
+                }
+            </text>)
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Show Row Lines")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(data) {
+                    getDataGridInstance().option("showRowLines", data.value);
+                }
+            </text>)
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Show Borders")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(data) {
+                    getDataGridInstance().option("showBorders", data.value);
+                }
+            </text>)
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Alternating Row Color")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(data) {
+                    getDataGridInstance().option("rowAlternationEnabled", data.value);
+                }
+            </text>)
+        )
+    </div>
+</div>
+
+<script>
+    function getDataGridInstance() {
+        return $("#grid-container").dxDataGrid("instance");
+    }
+</script>

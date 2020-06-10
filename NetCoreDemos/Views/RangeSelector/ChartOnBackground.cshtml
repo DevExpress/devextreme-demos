@@ -1,0 +1,20 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.CostAndRevenue>
+
+@(Html.DevExtreme().RangeSelector()
+    .ID("range-selector")
+    .Margin(m => m.Top(50))
+    .Scale(s => s
+        .MinorTickInterval(t => t.Days(1))
+        .TickInterval(t => t.Days(7))
+    )
+    .DataSource(Model)
+    .Chart(c => c
+        .Series(s => {
+            s.Add().ArgumentField("Date").ValueField("Cost");
+            s.Add().ArgumentField("Date").ValueField("Revenue");
+        })
+        .ValueAxis(v => v.Min(0))
+    )
+    .Value(new[] { new DateTime(2011, 12, 25), new DateTime(2012, 1, 1) })
+    .Title("Select a Range in the Costs and Revenues History")
+)
