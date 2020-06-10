@@ -1,0 +1,44 @@
+﻿@(Html.DevExtreme().TreeList<DevExtreme.NETCore.Demos.Models.TreeList.Employee>()
+    .ID("employees")
+    .DataSource(ds => ds.Mvc().Controller("TreeListEmployees").LoadAction("Get").Key("ID"))
+    .KeyExpr("ID")
+    .ParentIdExpr("HeadID")
+    .ShowRowLines(true)
+    .ShowBorders(true)
+    .Selection(s => s
+        .Mode(SelectionMode.Multiple)
+        .Recursive(false)
+    )
+    .Columns(columns => {
+        columns.AddFor(m => m.FullName);
+
+        columns.AddFor(m => m.Title);
+
+        columns.AddFor(m => m.City);
+
+        columns.AddFor(m => m.State);
+
+        columns.AddFor(m => m.HireDate)
+            .Width(120);
+    })
+    .ColumnAutoWidth(true)
+    .ExpandedRowKeys(new[] { 1, 2, 10 })
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Value(false)
+            .Text("Recursive Selection")
+            .OnValueChanged(@<text>
+                function(e) {
+                    var treeList = $("#employees").dxTreeList("instance");
+                    treeList.clearSelection();
+                    treeList.option("selection.recursive", e.value);
+                }
+            </text>
+            )
+        )
+    </div>
+</div>

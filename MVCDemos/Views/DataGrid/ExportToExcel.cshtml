@@ -1,0 +1,33 @@
+﻿@using DevExtreme.MVC.Demos.Models.DataGrid
+
+@model IEnumerable<Employee>
+
+@(Html.DevExtreme().DataGrid<Employee>()
+    .ID("gridContainer")
+    .DataSource(Model, new[] { "ID" })
+    .Selection(s => s.Mode(SelectionMode.Multiple))
+    .Export(e => e.Enabled(true).FileName("Employees").AllowExportSelectedData(true))
+    .GroupPanel(p => p.Visible(true))
+    .ShowBorders(true)
+    .Columns(columns => {
+        columns.AddFor(m => m.Prefix)
+            .Width(60);
+
+        columns.AddFor(m => m.FirstName);
+
+        columns.AddFor(m => m.LastName);
+
+        columns.AddFor(m => m.City);
+
+        columns.AddFor(m => m.State);
+
+        columns.AddFor(m => m.Position)
+            .Width(130);
+
+        columns.AddFor(m => m.BirthDate)
+            .Width(100);
+
+        columns.AddFor(m => m.HireDate)
+            .Width(100);
+    })
+)

@@ -1,0 +1,82 @@
+﻿@model DevExtreme.MVC.Demos.Models.SampleData.OrgData
+
+@(Html.DevExtreme().Diagram()
+    .ID("diagram")
+    .Nodes(ns => ns
+        .DataSource(d => d
+            .Array()
+            .Key("this")
+            .Data(Model.Items)
+        )
+        .KeyExpr("ID")
+        .TextExpr("Name")
+        .TypeExpr(new JS("itemTypeExpr"))
+        .WidthExpr(new JS("itemWidthExpr"))
+        .HeightExpr(new JS("itemHeightExpr"))
+        .TextStyleExpr(new JS("itemTextStyleExpr"))
+        .StyleExpr(new JS("itemStyleExpr"))
+        .AutoLayout(al => al
+            .Type(DiagramDataLayoutType.Tree)
+            .Orientation(DiagramDataLayoutOrientation.Horizontal)
+        )
+    )
+    .Edges(ns => ns
+        .DataSource(d => d
+            .Array()
+            .Key("this")
+            .Data(Model.Links)
+        )
+        .KeyExpr("ID")
+        .FromExpr("From")
+        .ToExpr("To")
+        .StyleExpr(new JS("linkStyleExpr"))
+        .FromLineEndExpr(new JS("linkFromLineEndExpr"))
+        .ToLineEndExpr(new JS("linkToLineEndExpr"))
+    )
+    .Toolbox(t => t
+        .Groups(g => g
+            .Add().Category(DiagramShapeCategory.General).Title("General")
+        )
+    )
+)
+
+<script type="text/javascript">
+    function itemTypeExpr(obj, value) {
+        if(value)
+            obj.Type = (value === "rectangle") ? undefined : "group";
+        else
+            return obj.Type === "group" ? "ellipse" : "rectangle";
+    }
+    function itemWidthExpr(obj, value) {
+        if(value)
+            obj.Width = value;
+        else
+            return obj.Width || (obj.Type === "group" && 1.5) || 1;
+    }
+    function itemHeightExpr(obj, value) {
+        if(value)
+            obj.Height = value;
+        else
+            return obj.Height || (obj.Type === "group" && 1) || 0.75;
+    }
+    function itemTextStyleExpr(obj) {
+        if(obj.Level === "senior")
+            return { "font-weight": "bold", "text-decoration": "underline" };
+        return {};
+    }
+    function itemStyleExpr(obj) {
+        let style = { "stroke": "#444444" };
+        if(obj.Type === "group")
+            style["fill"] = "#f3f3f3";
+        return style;
+    }
+    function linkStyleExpr(obj) {
+        return { "stroke": "#444444" };
+    }
+    function linkFromLineEndExpr(obj) {
+        return "none";
+    }
+    function linkToLineEndExpr(obj) {
+        return "none";
+    }
+</script>

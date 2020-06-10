@@ -1,0 +1,46 @@
+﻿@(Html.DevExtreme().TreeList<DevExtreme.MVC.Demos.Models.TreeList.EmployeeTask>()
+    .ID("tasks")
+    .DataSource(ds => ds.WebApi()
+        .RouteName("TreeListTasks")
+        .LoadAction("Tasks")
+        .Key("Task_ID")
+    )
+    .KeyExpr("Task_ID")
+    .ParentIdExpr("Task_Parent_ID")
+    .ColumnAutoWidth(true)
+    .WordWrapEnabled(true)
+    .ShowBorders(true)
+    .SearchPanel(searchPanel => searchPanel.Visible(true))
+    .Columns(columns => {
+        columns.AddFor(m => m.Task_Subject)
+            .MinWidth(300);
+
+        columns.AddFor(m => m.Task_Assigned_Employee_ID)
+            .MinWidth(120)
+            .Lookup(lookup => lookup
+                .DataSource(ds => ds.WebApi()
+                    .RouteName("TreeListTasks")
+                    .LoadAction("TaskEmployees")
+                    .Key("ID")
+                )
+                .ValueExpr("ID")
+                .DisplayExpr("Name")
+            );
+
+        columns.AddFor(m => m.Task_Status)
+            .MinWidth(120)
+            .Lookup(lookup => lookup
+                .DataSource(new[] {
+                    "Not Started",
+                    "Need Assistance",
+                    "In Progress",
+                    "Deferred",
+                    "Completed"
+                })
+            );
+
+        columns.AddFor(m => m.Task_Start_Date);
+
+        columns.AddFor(m => m.Task_Due_Date);
+    })
+)

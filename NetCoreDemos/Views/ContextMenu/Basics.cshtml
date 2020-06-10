@@ -1,0 +1,32 @@
+﻿<div class="label">
+    Right click the image to show available actions:
+</div>
+<img id="image" src="~/images/ProductsLarge/7.png" />
+
+@(Html.DevExtreme().ContextMenu()
+    .Width(200)
+    .Target("#image")
+    .OnItemClick("contextMenu_ItemClick")
+    .DisplayExpr("Text")
+    .ItemsExpr("Items")
+    .DataSource(new object[] {
+        new {
+            Text = "Share",
+            Items = new[] {
+                new { Text = "Facebook" },
+                new { Text = "Twitter" }
+            }
+        },
+        new { Text = "Download" },
+        new { Text = "Comment" },
+        new { Text = "Favorite" }
+    })
+)
+
+<script>
+    function contextMenu_ItemClick(e) {
+        if(!e.itemData.Items) {
+            DevExpress.ui.notify("The \"" + e.itemData.Text + "\" item was clicked", "success", 1500);
+        }
+    }
+</script>

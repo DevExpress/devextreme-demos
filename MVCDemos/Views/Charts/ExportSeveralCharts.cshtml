@@ -1,0 +1,77 @@
+﻿<div id="chart-demo">
+    <div class="charts">
+        @(Html.DevExtreme().Chart()
+            .ID("chart")
+            .DataSource(new[] {
+                new { country = "China", medals = 51 },
+                new { country = "USA", medals = 36 },
+                new { country = "Russia", medals = 22 },
+                new { country = "UK", medals = 19 },
+                new { country = "Germany", medals = 16 },
+                new { country = "Australia", medals = 14 },
+                new { country = "South Korea", medals = 13 },
+                new { country = "France", medals = 7 }
+            })
+            .Series(s => s.Add()
+                .ArgumentField("country")
+                .ValueField("medals")
+                .Type(SeriesType.Bar)
+                .Color("#f3c40b")
+                .Label(l => l
+                    .Visible(true)
+                )
+            )
+            .Title("Olympic Gold Medals in 2008")
+            .Rotated(true)
+            .Legend(l => l.Visible(false))
+        )
+
+        @(Html.DevExtreme().PieChart()
+            .ID("pieChart")
+            .DataSource(new[] {
+                new { country = "USA", medals = 110 },
+                new { country = "China", medals = 100 },
+                new { country = "Russia", medals = 71 },
+                new { country = "UK", medals = 47 },
+                new { country = "Australia", medals = 46 },
+                new { country = "Germany", medals = 41 },
+                new { country = "France", medals = 41 },
+                new { country = "South Korea", medals = 31 }
+            })
+            .Series(s => s.Add()
+                .ArgumentField("country")
+                .ValueField("medals")
+                .Label(l => l
+                    .Visible(true)
+                    .Connector(c => c
+                        .Visible(true)
+                    )
+                )
+            )
+            .Title("Total Olympic Medals\n in 2008")
+            .Palette(VizPalette.HarmonyLight)
+        )
+    </div>
+
+    <div class="controls-pane">
+        @(Html.DevExtreme().Button()
+            .Icon("export")
+            .Text("Export")
+            .OnClick("exportChart")
+            .Type(ButtonType.Default)
+            .Width(145)
+        )
+    </div>
+</div>
+
+<script>
+    function exportChart() {
+        var chartInstance = $("#chart").dxChart("instance"),
+            pieChartInstance = $("#pieChart").dxPieChart("instance");
+
+        DevExpress.viz.exportWidgets([[chartInstance, pieChartInstance]], {
+            fileName: "chart",
+            format: 'PNG'
+        });
+    }
+</script>

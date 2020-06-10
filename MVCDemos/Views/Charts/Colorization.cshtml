@@ -1,0 +1,94 @@
+﻿@(Html.DevExtreme().TreeMap()
+    .ID("treemap")
+    .DataSource(new[] {
+        new { name = "Monitors", items = new[] {
+                new { name = "DesktopLCD 19", salesAmount = 23420 },
+                new { name = "DesktopLCD 21", salesAmount = 113900 },
+                new { name = "DesktopLED 19", salesAmount = 49170 },
+                new { name = "DesktopLED 21", salesAmount = 81200 }
+            }
+        },
+        new { name = "Projectors", items = new[] {
+                new { name = "Projector Plus", salesAmount = 99000 },
+                new { name = "Projector PlusHD", salesAmount = 152250 }
+            }
+        },
+        new { name = "Televisions", items = new[] {
+                new { name = "SuperLCD 55", salesAmount = 147150 },
+                new { name = "SuperLCD 42", salesAmount = 103200 },
+                new { name = "SuperLCD 70", salesAmount = 56000 },
+                new { name = "SuperLED 42", salesAmount = 159500 },
+                new { name = "SuperLED 50", salesAmount = 233600 },
+                new { name = "SuperPlasma 50", salesAmount = 184800 },
+                new { name = "SuperPlasma 65", salesAmount = 178500 }
+            }
+        },
+        new { name = "Video Players", items = new[] {
+                new { name = "HD Video Player", salesAmount = 63690 },
+                new { name = "SuperHD Video Player", salesAmount = 74000 }
+            }
+        }
+    })
+    .Title("Sales Amount by Product")
+    .ValueField("salesAmount")
+    .Tooltip(t => t
+        .Enabled(true)
+        .Format(Format.Currency)
+        .CustomizeTooltip(@<text>
+            function (arg) {
+                var data = arg.node.data;
+
+                return {
+                    text: arg.node.isLeaf() ? ("<span class='product'>" + data.name + "</span><br />Sales Amount: " + arg.valueText) : null
+                };
+            }
+        </text>))
+    .Colorizer(c => c
+        .Type(TreeMapColorizerType.Range)
+        .Range(new double[] { 0, 50000, 100000, 150000, 200000, 250000 })
+        .Palette(new[] { "#fbd600", "#78299a" })
+        .ColorCodeField("salesAmount")
+        .ColorizeGroups(false))
+
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Colorization Type</span>
+        @(Html.DevExtreme().SelectBox()
+            .DataSource(new object[] {
+                new { name = "Discrete", options = new[] {
+                        new { type = "discrete", palette = "harmony light", colorizeGroups = false }
+                    }
+                },
+                new { name = "Grouped", options = new[] {
+                        new { type = "discrete", palette = "harmony light", colorizeGroups = true }
+                    }
+                },
+                new { name = "Range", options = new[] {
+                        new { type = "range", palette = new[] { "#fbd600", "#78299a" }, colorizeGroups = false, range = new[] { 0, 50000, 100000, 150000, 200000, 250000 }, colorCodeField = "salesAmount" }
+                    }
+                },
+                new { name = "Gradient", options = new[] {
+                        new { type = "gradient", palette = new[] { "#fbd600", "#78299a" }, colorizeGroups = false, range = new[] { 10000, 250000 }, colorCodeField = "salesAmount" }
+                    }
+                }
+            })
+            .Width(200)
+            .DisplayExpr("name")
+            .ValueExpr("name")
+            .Value("Range")
+            .OnValueChanged("selectBox_valueChanged")
+            .ElementAttr("class", "selectbox")
+        )
+    </div>
+</div>
+
+<script>
+    function selectBox_valueChanged(data) {
+        $("#treemap")
+            .dxTreeMap("instance")
+            .option("colorizer", data.component.option("selectedItem").options[0]);
+    }
+</script>

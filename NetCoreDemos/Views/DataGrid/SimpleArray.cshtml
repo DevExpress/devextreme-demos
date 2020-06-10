@@ -1,0 +1,14 @@
+﻿@(Html.DevExtreme().DataGrid()
+    .ID("gridContainer")
+    .ShowBorders(true)
+    .DataSource(new JS("customers"))
+    .Columns(c => {
+        c.Add().DataField("CompanyName");
+        c.Add().DataField("City");
+        c.Add().DataField("State");
+        c.Add().DataField("Phone");
+        c.Add().DataField("Fax");
+    })
+)
+
+<script src="~/data/customers.js"></script>

@@ -1,0 +1,100 @@
+﻿<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+
+<div class="dx-fieldset">
+    <div class="dx-field">
+        <div class="dx-field-label">Built-in icon</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().Button()
+                .Icon("check")
+                .Text("Done")
+                .Type(ButtonType.Success)
+                .OnClick("notify")
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Image icon</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().Button()
+                .Icon(Url.Content("~/Content/Images/button/weather.png"))
+                .Text("Weather")
+                .OnClick("notify")
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">External icon</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().Button()
+                .Icon("fa fa-envelope-o")
+                .Text("Send")
+                .ElementAttr("class", "send")
+                .OnClick("notify")
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Icon only</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().Button()
+                .Icon("plus")
+                .OnClick("notify")
+            )
+            @(Html.DevExtreme().Button()
+                .Icon("back")
+                .OnClick("notify")
+            )
+        </div>
+    </div>
+</div>
+<div class="dx-fieldset">
+    <div class="dx-fieldset-header">DISABLED</div>
+    <div class="dx-field">
+        <div class="dx-field-value">
+            @(Html.DevExtreme().Button()
+                .Icon("check")
+                .Text("Done")
+                .Type(ButtonType.Success)
+                .Disabled(true)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-value">
+            @(Html.DevExtreme().Button()
+                .Icon(Url.Content("~/Content/Images/button/weather.png"))
+                .Text("Weather")
+                .Disabled(true)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-value">
+            @(Html.DevExtreme().Button()
+                .Icon("fa fa-envelope-o")
+                .Text("Send")
+                .ElementAttr("class", "send")
+                .Disabled(true)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-value">
+            @(Html.DevExtreme().Button()
+                .Icon("plus")
+                .Disabled(true)
+            )
+            @(Html.DevExtreme().Button()
+                .Icon("back")
+                .Disabled(true)
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    function notify(data) {
+        var buttonText = data.component.option("text");
+        DevExpress.ui.notify("The " + buttonText + " button was clicked");
+    }
+</script>

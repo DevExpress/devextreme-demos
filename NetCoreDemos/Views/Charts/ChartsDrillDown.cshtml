@@ -1,0 +1,87 @@
+﻿
+@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Series(s => {
+        s.Add().ArgumentField("Arg")
+        .ValueField("Val").Type(SeriesType.Bar).TagField("ParentID");
+    })
+    .Title("The Most Populated Countries by Continents")
+    .ValueAxis(
+        a => a.Add()
+        .ShowZero(false)
+    )
+    .CustomizePoint("customizePoint")
+    .Legend(l => l.Visible(false))
+    .DataSource(d => d.Mvc().Controller("WorldPopulationData").LoadAction("Get"))
+    .DataSourceOptions(o => o.Filter("['ParentID', '']"))
+    .OnPointClick("pointClickHandler")
+)
+<div class="button-container">
+    @(Html.DevExtreme().Button()
+        .ID("backButton")
+        .Text("Back")
+        .Icon("chevronleft")
+        .Visible(false)
+        .OnClick("buttonClickHandler")
+)
+</div>
+<script>
+    var isFirstLevel = true,
+        colors = ["#6babac", "#e55253"],
+        chartContainer;
+
+    $(function () {
+        chartContainer = $("#chart");
+        addPointerCursor();
+    });
+
+    function customizePoint() {
+        var pointSettings = {
+            color: colors[Number(isFirstLevel)]
+        };
+
+        if (!isFirstLevel) {
+            pointSettings.hoverStyle = {
+                hatching: "none"
+            };
+        }
+
+        return pointSettings;
+    }
+
+    function buttonClickHandler() {
+        if (!isFirstLevel) {
+            isFirstLevel = true;
+            addPointerCursor();
+            refreshDataSource("");
+            this.option("visible", false);
+        }
+    }
+
+    function pointClickHandler(e) {
+        if (isFirstLevel) {
+            isFirstLevel = false;
+            removePointerCursor(chartContainer);
+            refreshDataSource(e.target.originalArgument);
+            $("#backButton")
+                .dxButton("instance")
+                .option("visible", true);
+        }
+    }
+
+    function refreshDataSource(argument) {
+        var dataSource = chartContainer.dxChart("instance").getDataSource();
+
+        dataSource.filter(["ParentID", argument]);
+        dataSource.load();
+    }
+
+    function addPointerCursor() {
+        chartContainer.addClass("pointer-on-bars");
+    }
+
+    function removePointerCursor() {
+        chartContainer.removeClass("pointer-on-bars");
+    }
+
+</script>

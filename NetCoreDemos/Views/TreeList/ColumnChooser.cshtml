@@ -1,0 +1,85 @@
+﻿@using DevExtreme.NETCore.Demos.Models.TreeList
+@using DevExtreme.NETCore.Demos.Models
+
+@model IEnumerable<Employee>
+
+@(Html.DevExtreme().TreeList<Employee>()
+    .ID("employees")
+    .DataSource(Model)
+    .KeyExpr("ID")
+    .ParentIdExpr("HeadID")
+    .Columns(column => {
+        column.AddFor(m => m.Title);
+
+        column.AddFor(m => m.FullName)
+            .AllowHiding(false);
+
+        column.AddFor(m => m.City);
+
+        column.AddFor(m => m.State);
+
+        column.AddFor(m => m.MobilePhone);
+
+        column.AddFor(m => m.Email)
+            .Visible(false);
+
+        column.AddFor(m => m.HireDate);
+
+        column.AddFor(m => m.Skype)
+            .Visible(false);
+    })
+    .ColumnAutoWidth(true)
+    .ShowRowLines(true)
+    .ShowBorders(true)
+    .ColumnChooser(cc => cc
+        .Enabled(true)
+        .AllowSearch(true)
+    )
+    .ExpandedRowKeys(new[] { 1 })
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Column chooser mode</span>
+
+        @{
+            var dataSource = new[] {
+                new ColumnChooserMode {
+                    Key = "dragAndDrop",
+                    Name = "Drag and drop"
+                },
+                new ColumnChooserMode {
+                    Key = "select",
+                    Name = "Select"
+                }
+            };
+        }
+
+        @(Html.DevExtreme().SelectBox()
+            .DataSource(dataSource)
+            .Value(dataSource[0].Key)
+            .ValueExpr("Key")
+            .DisplayExpr("Name")
+            .OnValueChanged(@<text>
+                function(data) {
+                    var treeList = $("#employees").dxTreeList("instance");
+                    treeList.option("columnChooser.mode", data.value);
+                }
+            </text>)
+        )
+
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Allow search")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(data) {
+                    var treeList = $("#employees").dxTreeList("instance");
+                    treeList.option("columnChooser.allowSearch", data.value);
+                }
+            </text>)
+        )
+    </div>
+</div>

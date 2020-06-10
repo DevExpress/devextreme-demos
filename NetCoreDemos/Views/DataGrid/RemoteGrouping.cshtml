@@ -1,0 +1,46 @@
+﻿@(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.DataService.Sale>()
+    .ID("gridContainer")
+    .DataSource(d => d.RemoteController()
+        .LoadUrl("https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/Sales")
+        .Key("Id")
+    )
+    .RemoteOperations(ro => ro.GroupPaging(true))
+    .Scrolling(s => s
+        .Mode(GridScrollingMode.Virtual)
+    )
+    .Grouping(g => g.AutoExpandAll(false))
+    .GroupPanel(gp => gp.Visible(true))
+    .WordWrapEnabled(true)
+    .ShowBorders(true)
+
+    .Columns(columns => {
+        columns.AddFor(m => m.Id)
+            .Width(75);
+
+        columns.AddFor(m => m.ProductSubcategoryName)
+            .Width(150);
+
+        columns.AddFor(m => m.StoreName)
+            .GroupIndex(0)
+            .Width(150);
+
+        columns.AddFor(m => m.ProductCategoryName)
+            .GroupIndex(1)
+            .Width(120);
+
+        columns.AddFor(m => m.ProductName);
+
+        columns.AddFor(m => m.DateKey)
+            .Format("yyyy-MM-dd")
+            .Width(100);
+
+        columns.AddFor(m => m.SalesAmount)
+            .Format("currency")
+            .HeaderFilter(h => h.GroupInterval(1000))
+            .Width(100);
+    })
+    .Summary(s => s.GroupItems(items => {
+        items.AddFor(m => m.Id)
+            .SummaryType(SummaryType.Count);
+    }))
+)

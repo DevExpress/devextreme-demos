@@ -1,0 +1,70 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .CommonSeriesSettings(s => s.ArgumentField("Month"))
+    .Panes(p => {
+        p.Add().Name("TopPane");
+        p.Add().Name("BottomPane");
+    })
+    .DefaultPane("BottomPane")
+    .Series(s => {
+        s.Add()
+            .Pane("TopPane")
+            .Color("#b0daff")
+            .Type(SeriesType.RangeArea)
+            .RangeValue1Field("MinT")
+            .RangeValue2Field("MaxT")
+            .Name("Monthly Temperature Ranges, °C");
+        s.Add()
+            .Pane("TopPane")
+            .ValueField("AvgT")
+            .Name("Average Temperature, °C")
+            .Label(l => l
+                .Visible(true)
+                .CustomizeText(@<text>
+                    function (){
+                        return this.valueText + " °C";
+                    }
+                </text>));
+        s.Add()
+            .Type(SeriesType.Bar)
+            .ValueField("Prec")
+            .Name("prec, mm")
+            .Label(l => l
+                .Visible(true)
+                .CustomizeText(@<text>
+                    function (){
+                        return this.valueText  + " mm";
+                    }
+                </text>));
+    })
+    .ValueAxis(a => {
+        a.Add()
+            .Pane("BottomPane")
+            .Grid(g => g.Visible(true))
+            .Title(t => t.Text("Precipitation, mm"));
+        a.Add()
+            .Pane("TopPane")
+            .Grid(g => g.Visible(true))
+            .Title(t => t.Text("Temperature, °C"));
+    })
+    .Legend(l => l
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+    )
+    .Export(e => e.Enabled(true))
+    .Title(t => t.Text("Weather in Glendale, CA"))
+    .DataSource(new[] {
+        new { Month = "January", AvgT = 9.8, MinT = 4.1, MaxT = 15.5, Prec = 109 },
+        new { Month = "February", AvgT = 11.8, MinT = 5.8, MaxT = 17.8, Prec = 104 },
+        new { Month = "March", AvgT = 13.4, MinT = 7.2, MaxT = 19.6, Prec = 92 },
+        new { Month = "April", AvgT = 15.4, MinT = 8.1, MaxT = 22.8, Prec = 30 },
+        new { Month = "May", AvgT = 18.0, MinT = 10.3, MaxT = 25.7, Prec = 10 },
+        new { Month = "June", AvgT = 20.6, MinT = 12.2, MaxT = 29.0, Prec = 2 },
+        new { Month = "July", AvgT = 22.2, MinT = 13.2, MaxT = 31.3, Prec = 2 },
+        new { Month = "August", AvgT = 22.2, MinT = 13.2, MaxT = 31.1, Prec = 1 },
+        new { Month = "September", AvgT = 21.2, MinT = 12.4, MaxT = 29.9, Prec = 8 },
+        new { Month = "October", AvgT = 17.9, MinT = 9.7, MaxT = 26.1, Prec = 24 },
+        new { Month = "November", AvgT = 12.9, MinT = 6.2, MaxT = 19.6, Prec = 64 },
+        new { Month = "December", AvgT = 9.6, MinT = 3.4, MaxT = 15.7, Prec = 76 }
+    })
+)

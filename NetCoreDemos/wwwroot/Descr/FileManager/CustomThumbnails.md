@@ -1,0 +1,1 @@
+The **FileManager** control allows you to provide custom thumbnails. Handle the [customizeThumbnail](/Documentation/ApiReference/UI_Widgets/dxFileManager/Configuration/#customizeThumbnail) option to specify how the control presents files in folders.

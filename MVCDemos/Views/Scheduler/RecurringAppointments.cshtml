@@ -1,0 +1,29 @@
+﻿@model DevExtreme.MVC.Demos.ViewModels.RecurringAppointmentsViewModel
+
+@(Html.DevExtreme().Scheduler()
+    .ID("scheduler")
+    .DataSource(Model.Appointments)
+    .Views(new[] {
+        SchedulerViewType.Day,
+        SchedulerViewType.Week,
+        SchedulerViewType.Month
+    })
+    .CurrentView(SchedulerViewType.Month)
+    .CurrentDate(new DateTime(2017, 5, 25))
+    .StartDayHour(9)
+    .FirstDayOfWeek(FirstDayOfWeek.Monday)
+    .Resources(res => {
+        res.Add()
+            .FieldExpr("RoomId")
+            .ValueExpr("Id")
+            .ColorExpr("Color")
+            .Label("Room")
+            .DataSource(Model.Resources);
+    })
+    .Height(600)
+    .TextExpr("Text")
+    .StartDateExpr("StartDate")
+    .EndDateExpr("EndDate")
+    .RecurrenceRuleExpr("RecurrenceRule")
+    .RecurrenceExceptionExpr("RecurrenceException")
+)

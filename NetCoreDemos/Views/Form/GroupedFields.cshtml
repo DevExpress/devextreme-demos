@@ -1,0 +1,61 @@
+﻿@using DevExtreme.NETCore.Demos.ViewModels
+@model FormViewModel
+
+<div class="long-title"><h3>Personal details</h3></div>
+<div id="form-container">
+    @(Html.DevExtreme().Form<FormViewModel>()
+        .ID("form")
+        .ColCount(2)
+        .Items(items => {
+            items.AddGroup()
+                .Caption("System Information")
+                .Items(groupItems => {
+                    groupItems.AddSimpleFor(m => m.ID).IsRequired(false);
+                    groupItems.AddSimpleFor(m => m.FirstName);
+                    groupItems.AddSimpleFor(m => m.LastName);
+                    groupItems.AddSimpleFor(m => m.HireDate).IsRequired(false);
+                    groupItems.AddSimpleFor(m => m.Position);
+                    groupItems.AddSimpleFor(m => m.OfficeNo);
+                });
+
+            items.AddGroup()
+                .Caption("Personal Data")
+                .Items(groupItems => {
+                    groupItems.AddSimpleFor(m => m.BirthDate)
+                        .IsRequired(false);
+
+                    groupItems.AddGroup()
+                        .Caption("Home Address")
+                        .Items(innerGroupItems => {
+                            innerGroupItems.AddSimpleFor(m => m.Address);
+                            innerGroupItems.AddSimpleFor(m => m.City);
+                            innerGroupItems.AddSimpleFor(m => m.State);
+                            innerGroupItems.AddSimpleFor(m => m.Zipcode);
+                        });
+                });
+
+            items.AddGroup()
+                .Caption("Contact Information")
+                .Items(groupItems => {
+                    groupItems.AddTabbed()
+                        .TabPanelOptions(o => {
+                            o.DeferRendering(false);
+                        })
+                        .Tabs(tabItems => {
+                            tabItems.Add()
+                                .Title("Phone")
+                                .Items(tabItem => tabItem.AddSimpleFor(m => m.Phone));
+
+                            tabItems.Add()
+                                .Title("Skype")
+                                .Items(tabItem => tabItem.AddSimpleFor(m => m.Skype));
+
+                            tabItems.Add()
+                                .Title("Email")
+                                .Items(tabItem => tabItem.AddSimpleFor(m => m.Email));
+                        });
+                });
+        })
+        .FormData(Model)
+    )
+</div>

@@ -1,0 +1,67 @@
+﻿@using DevExtreme.MVC.Demos.Models
+
+@model IEnumerable<Intraday>
+
+@(Html.DevExtreme().DataGrid<Intraday>()
+    .ID("gridContainer")
+    .DataSource(Model)
+    .ShowRowLines(true)
+    .ShowBorders(true)
+    .ShowColumnLines(false)
+    .Sorting(s => s.Mode(GridSortingMode.None))
+    .Paging(p => p.PageSize(10))
+    .OnCellPrepared("cell_prepared")
+    .Columns(columns => {
+        columns.AddFor(m => m.Date)
+            .Width(110);
+
+        columns.AddFor(m => m.Open);
+
+        columns.AddFor(m => m.Close);
+
+        columns.Add()
+            .Caption("Dynamics")
+            .MinWidth(320)
+            .CellTemplate(@<text>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(new JS("data.DayClose"))
+                    .ArgumentField("Date")
+                    .ValueField("Close")
+                    .Type(SparklineType.Line)
+                    .ShowMinMax(true)
+                    .MinColor("#f00")
+                    .MaxColor("#2ab71b")
+                    .PointSize(6)
+                    .Size(s => s.Width(290).Height(40))
+                    .Tooltip(t => t.Enabled(false))
+                )
+            </text>);
+
+        columns.AddFor(m => m.High);
+
+        columns.AddFor(m => m.Low);
+    })
+)
+
+<script>
+    var formatCurrency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2 }).format;
+
+    function cell_prepared(options) {
+        var fieldData = options.value,
+            fieldHtml = "";
+
+        if(fieldData && fieldData.Value) {
+            if(fieldData.Diff) {
+                options.cellElement.addClass((fieldData.Diff > 0) ? "inc" : "dec");
+                fieldHtml += "<div class='current-value'>" +
+                    formatCurrency(fieldData.Value) +
+                    "</div> <div class='diff'>" +
+                    Math.abs(fieldData.Diff).toFixed(2) +
+                    "  </div>";
+            } else {
+                fieldHtml = fieldData.Value;
+            }
+            options.cellElement.html(fieldHtml);
+        }
+    }
+</script>

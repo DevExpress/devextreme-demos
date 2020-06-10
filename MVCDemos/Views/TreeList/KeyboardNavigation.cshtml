@@ -1,0 +1,38 @@
+﻿<div id="tree-list-demo">
+    <p>Click this text and press <b>Tab</b></p>
+    @(Html.DevExtreme().TreeList<DevExtreme.MVC.Demos.Models.TreeList.Employee>()
+        .ID("treeListContainer")
+        .KeyExpr("ID")
+        .ParentIdExpr("HeadID")
+        .ShowBorders(true)
+        .ExpandedRowKeys(new JS("[1, 2, 3, 5]"))
+        .Editing(editing => {
+            editing.AllowUpdating(true);
+            editing.AllowDeleting(true);
+            editing.SelectTextOnEditStart(true);
+            editing.UseIcons(true);
+        })
+        .HeaderFilter(headerFilter => headerFilter.Visible(true))
+        .FilterPanel(filterPanel => filterPanel.Visible(true))
+        .FilterRow(filterRow => filterRow.Visible(true))
+        .Paging(paging => {
+            paging.Enabled(true);
+            paging.PageSize(10);
+        })
+        .Scrolling(s => s.Mode(TreeListScrollingMode.Standard))
+        .Pager(pager => {
+            pager.Visible(true);
+            pager.AllowedPageSizes(new[] { 5, 10 });
+            pager.ShowPageSizeSelector(true);
+            pager.ShowNavigationButtons(true);
+        })
+        .FocusedRowEnabled(true)
+        .Columns(columns => {
+            columns.AddFor(m => m.FullName);
+            columns.AddFor(m => m.Title);
+            columns.AddFor(m => m.City);
+            columns.AddFor(m => m.State);
+        })
+        .DataSource(d => d.WebApi().Controller("TreeListEmployees").UpdateAction(true).Key("ID"))
+    )
+</div>

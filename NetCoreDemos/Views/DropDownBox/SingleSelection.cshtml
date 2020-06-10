@@ -1,0 +1,124 @@
+﻿<div class="dx-fieldset">
+    <div class="dx-field">
+        <div class="dx-field-label">DropDownBox with embedded TreeView</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DropDownBox()
+                .Value("1_1")
+                .ValueExpr("ID")
+                .DisplayExpr("Text")
+                .DropDownOptions(o => o.Height(350))
+                .DataSource(d => d.Mvc()
+                    .Controller("TreeViewPlainData")
+                    .LoadAction("Get")
+                    .LoadMode(DataSourceLoadMode.Raw)
+                    .Key("ID")
+                )
+                .Placeholder("Select a value...")
+                .ShowClearButton(true)
+                .OnValueChanged("treeBox_valueChanged")
+                .ContentTemplate(new TemplateName("EmbeddedTreeViewSingle"))
+            )
+            <div id="treeBox"></div>
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">DropDownBox with embedded DataGrid</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DropDownBox()
+                .Value(3)
+                .ValueExpr("ID")
+                .DisplayExpr(new JS("gridBox_displayExpr"))
+                .DataSource(d => d.Mvc()
+                    .Controller("DataGridCustomers")
+                    .LoadAction("Get")
+                    .LoadMode(DataSourceLoadMode.Raw)
+                    .Key("ID")
+                )
+                .Placeholder("Select a value...")
+                .ShowClearButton(true)
+                .OnValueChanged("gridBox_valueChanged")
+                .ContentTemplate(new TemplateName("EmbeddedDataGridSingle"))
+            )
+        </div>
+    </div>
+</div>
+
+@using(Html.DevExtreme().NamedTemplate("EmbeddedTreeViewSingle")) {
+    @(Html.DevExtreme().TreeView()
+        .DataSource(new JS(@"component.getDataSource()"))
+        .KeyExpr("ID")
+        .DisplayExpr("Text")
+        .ItemsExpr("Items")
+        .ExpandedExpr("Expanded")
+        .ParentIdExpr("CategoryId")
+        .DataStructure(TreeViewDataStructure.Plain)
+        .SelectionMode(NavSelectionMode.Single)
+        .SelectByClick(true)
+        .Height(235)
+        .OnItemSelectionChanged(@<text>
+            function(args) {
+                component.option("value", args.component.getSelectedNodeKeys());
+            }
+        </text>)
+        .OnContentReady(@<text>
+            function(args) {
+                syncTreeViewSelection(args.component, component.option("value"));
+            }
+        </text>)
+    )
+}
+
+@using(Html.DevExtreme().NamedTemplate("EmbeddedDataGridSingle")) {
+    @(Html.DevExtreme().DataGrid()
+        .ID("embedded-datagrid")
+        .DataSource(new JS(@"component.getDataSource()"))
+        .Columns(columns => {
+            columns.Add().DataField("CompanyName");
+            columns.Add().DataField("City");
+            columns.Add().DataField("Phone");
+        })
+        .HoverStateEnabled(true)
+        .Paging(p => p.PageSize(10))
+        .FilterRow(f => f.Visible(true))
+        .Scrolling(s => s.Mode(GridScrollingMode.Infinite))
+        .Height(345)
+        .Selection(s => s.Mode(SelectionMode.Single))
+        .SelectedRowKeys(new JS(@"[component.option(""value"")]"))
+        .OnSelectionChanged(@<text>
+            function(selectedItems) {
+                var keys = selectedItems.selectedRowKeys;
+                component.option("value", keys);
+            }
+        </text>)
+    )
+}
+
+<script>
+    function syncTreeViewSelection(treeView, value) {
+        if (!value) {
+            treeView.unselectAll();
+        } else {
+            treeView.selectItem(value);
+        }
+    }
+
+    function treeBox_valueChanged(e) {
+        var $treeView = e.component.content().find(".dx-treeview");
+        if($treeView.length) {
+            syncTreeViewSelection($treeView.dxTreeView("instance"), e.value);
+        }
+    }
+
+    function gridBox_valueChanged(e) {
+        var $dataGrid = $("#embedded-datagrid");
+
+        if ($dataGrid.length) {
+            var dataGrid = $dataGrid.dxDataGrid("instance");
+            dataGrid.selectRows(e.value, false);
+        }
+    }
+
+    function gridBox_displayExpr(item) {
+        return item && item.CompanyName + " <" + item.Phone + ">";
+    }
+</script>

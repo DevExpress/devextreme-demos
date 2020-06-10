@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.DataGrid.Employee>
+
+<div id="container">
+
+    <h1>Employees</h1>
+
+    @(Html.DevExtreme().Popup()
+        .ID("employee-popup")
+        .Width(300)
+        .Height(250)
+        .ShowTitle(true)
+        .Title("Information")
+        .Visible(false)
+        .DragEnabled(false)
+        .CloseOnOutsideClick(true)
+    )
+
+    <ul class="employees">
+        @foreach(var employee in Model) {
+            <li>
+                <img src="@employee.Picture" /><br />
+                <i>@employee.FirstName</i>
+                <i>@employee.LastName</i><br />
+
+                @(Html.DevExtreme().Button()
+                    .ElementAttr("class", "button-info")
+                    .Text("Details")
+                    .OnClick(@<text>
+                        function showInfo(data) {
+                            var popup = $("#employee-popup").dxPopup("instance");
+                            popup.option("contentTemplate", $("#popup-template-" + @employee.ID));
+                            popup.show();
+                        }
+                    </text>)
+                )
+
+                @using(Html.DevExtreme().NamedTemplate("popup-template-" + employee.ID)) {
+                    <span>
+                        <p>
+                            Full Name:
+                            <span>@employee.FirstName</span>
+                            <span>@employee.LastName</span>
+                        </p>
+                        <p>
+                            Birth Date:
+                            <span>@employee.BirthDate.Value.ToString("yyyy/MM/dd")</span>
+                        </p>
+                        <p>
+                            Address:
+                            <span>@employee.Address</span>
+                        </p>
+                        <p>
+                            Hire Date:
+                            <span>@employee.HireDate.Value.ToString("yyyy/MM/dd")</span>
+                        </p>
+                        <p>
+                            Position:
+                            <span>@employee.Position</span>
+                        </p>
+                    </span>
+                }
+            </li>
+        }
+    </ul>
+</div>

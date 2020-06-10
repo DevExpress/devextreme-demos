@@ -1,0 +1,175 @@
+﻿@model DevExtreme.MVC.Demos.ViewModels.RecurringAppointmentsViewModel
+
+@using DevExtreme.MVC.Demos.Models;
+
+@{
+    var cellContextMenuItems = new[] {
+        new ContextMenuItem { Text = "New Appointment", OnItemClick = new JS("createAppointment") },
+        new ContextMenuItem { Text = "New Recurring Appointment", OnItemClick = new JS("createRecurringAppointment") },
+        new ContextMenuItem { Text = "Group by Room/Ungroup", BeginGroup = true, OnItemClick = new JS("groupCell") },
+        new ContextMenuItem { Text = "Go to Today", OnItemClick = new JS("showCurrentDate") }
+    };
+
+    var resourcesData = Model.Resources.Select(r => new
+    {
+        Id = r.Id,
+        Text = r.Text,
+        Color = r.Color,
+    });
+
+    var appointmentContextMenuItems = new[] {
+        new ContextMenuItem { Text = "Open", OnItemClick = new JS("showAppointment") },
+        new ContextMenuItem { Text = "Delete", OnItemClick = new JS("deleteAppointment") },
+        new ContextMenuItem { Text = "Repeat Weekly", BeginGroup = true, OnItemClick = new JS("repeatAppointmentWeekly") },
+        new ContextMenuItem { Text = "Set Room", BeginGroup = true, Disabled = true }
+    }.Concat(
+        resourcesData.Select(r => new ContextMenuItem
+        {
+            Id = r.Id,
+            Text = r.Text,
+            Color = r.Color,
+            OnItemClick = new JS("setResource")
+        })
+    );
+    }
+
+
+@(Html.DevExtreme().Scheduler()
+    .ID("scheduler")
+    .DataSource(Model.Appointments)
+    .Views(new[] {
+        SchedulerViewType.Day,
+        SchedulerViewType.Month
+    })
+    .CurrentView(SchedulerViewType.Month)
+    .CurrentDate(new DateTime(2017, 5, 25))
+    .RecurrenceEditMode(SchedulerRecurrenceEditMode.Series)
+    .StartDayHour(9)
+    .FirstDayOfWeek(FirstDayOfWeek.Monday)
+    .Groups(null)
+    .Resources(res =>
+        {
+            res.Add()
+            .FieldExpr("RoomId")
+            .ValueExpr("Id")
+            .ColorExpr("Color")
+            .DisplayExpr("Text")
+            .Label("Room")
+            .DataSource(resourcesData);
+    })
+    .OnCellContextMenu("onCellContextMenu")
+    .OnAppointmentContextMenu("onAppointmentContextMenu")
+    .Height(600)
+    .TextExpr("Text")
+    .StartDateExpr("StartDate")
+    .EndDateExpr("EndDate")
+    .RecurrenceRuleExpr("RecurrenceRule")
+    .RecurrenceExceptionExpr("RecurrenceException")
+)
+
+@(Html.DevExtreme().ContextMenu()
+    .ID("context-menu")
+    .Disabled(true)
+    .Width(200)
+    .OnHiding("onContextMenuHiding")
+    .ItemTemplate(new JS(@"
+        function(itemData) {
+            var $template = $('<div></div>');
+
+            if(itemData.Color) {
+                $template.append(""<div class='appointment-badge' style='background-color:"" + itemData.Color + "";'></div>"");
+            }
+
+            $template.append(itemData.Text);
+            return $template;
+        }")
+    )
+)
+
+
+<script>
+    function onAppointmentContextMenu(e) {
+        var contextMenuInstance = $("#context-menu").dxContextMenu("instance");
+        contextMenuInstance.option({
+            dataSource: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(appointmentContextMenuItems)),
+            target: ".dx-scheduler-appointment",
+            onItemClick: onItemClick(e),
+            disabled: false,
+        });
+    }
+
+    function onCellContextMenu(e) {
+        var contextMenuInstance = $("#context-menu").dxContextMenu("instance");
+        contextMenuInstance.option({
+            dataSource: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(cellContextMenuItems)),
+            target: ".dx-scheduler-date-table-cell",
+            onItemClick: onItemClick(e),
+            disabled: false,
+        });
+    }
+
+    var onContextMenuHiding = function (e) {
+        e.component.option({
+            disabled: true,
+            dataSource: []
+        })
+    }
+
+    var onItemClick = function (contextMenuEvent) {
+        return function (e) {
+            e.itemData.onItemClick(contextMenuEvent, e);
+        }
+    }
+
+    var createAppointment = function(e) {
+        e.component.showAppointmentPopup({
+            StartDate: e.cellData.startDate
+        }, true);
+    };
+
+    var createRecurringAppointment = function (e) {
+        e.component.showAppointmentPopup({
+            StartDate: e.cellData.startDate,
+            RecurrenceRule: "FREQ=DAILY"
+        }, true);
+    };
+
+    var groupCell = function(e) {
+        var scheduler = e.component;
+
+        if(scheduler.option("groups")) {
+            scheduler.option({ crossScrollingEnabled: false, groups: undefined });
+        } else {
+            scheduler.option({ crossScrollingEnabled: true, groups: ["RoomId"] });
+        }
+    };
+
+    var showCurrentDate = function(e) {
+        e.component.option("currentDate", new Date());
+    };
+
+    var showAppointment = function(e) {
+        e.component.showAppointmentPopup(e.appointmentData);
+    };
+
+    var deleteAppointment = function(e) {
+        e.component.deleteAppointment(e.appointmentData);
+    };
+
+    var repeatAppointmentWeekly = function(e) {
+        var itemData = e.appointmentData;
+
+        e.component.updateAppointment(itemData, $.extend(itemData, {
+            StartDate: e.targetedAppointmentData.StartDate,
+            RecurrenceRule: "FREQ=WEEKLY"
+        }));
+    };
+
+    var setResource = function(e, clickEvent) {
+        var itemData = e.appointmentData;
+
+        e.component.updateAppointment(itemData, $.extend(itemData, {
+            RoomId: [clickEvent.itemData.Id]
+        }));
+    };
+</script>

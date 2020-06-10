@@ -1,0 +1,66 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.ElectronicsItem>
+
+<div class="dx-fieldset">
+    <div class="dx-field">
+        <div class="dx-field-label">
+            Multi-tag for several items
+        </div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().TagBox()
+                .DataSource(Model)
+                .Value(new[] { 1, 2, 3, 4 })
+                .DisplayExpr("Name")
+                .ValueExpr("ID")
+                .ShowSelectionControls(true)
+                .MaxDisplayedTags(3)
+            )
+        </div>
+    </div>
+
+    <div class="dx-field">
+        <div class="dx-field-label">
+            Multi-tag for all items
+        </div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().TagBox()
+                .DataSource(Model.Take(5))
+                .Value(new[] { 1, 2, 3, 4, 5 })
+                .DisplayExpr("Name")
+                .ValueExpr("ID")
+                .ShowSelectionControls(true)
+                .MaxDisplayedTags(3)
+                .OnMultiTagPreparing("OnMultiTagPreparing")
+            )
+        </div>
+    </div>
+
+    <div class="dx-field">
+        <div class="dx-field-label">
+            Multi-tag with ordinary tags
+        </div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().TagBox()
+                .DataSource(Model)
+                .Value(new[] { 1, 2, 3, 4, 5, 6, 7 })
+                .DisplayExpr("Name")
+                .ValueExpr("ID")
+                .ShowSelectionControls(true)
+                .MaxDisplayedTags(2)
+                .ShowMultiTagOnly(false)
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    function OnMultiTagPreparing(args) {
+        var selectedItemsLength = args.selectedItems.length,
+            totalCount = 5;
+
+        if (selectedItemsLength < totalCount) {
+            args.cancel = true;
+        } else {
+            args.text = "All selected (" + selectedItemsLength + ")";
+        }
+    }
+</script>

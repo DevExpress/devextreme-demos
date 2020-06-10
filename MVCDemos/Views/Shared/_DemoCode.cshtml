@@ -1,0 +1,41 @@
+﻿<div class="code">
+    <div id="code-tabs"></div>
+    @{
+        var meta = DemoMenuMeta.Get(Context);
+        var index = 0;
+        var prettifiedRowsCount = 400;
+    }
+    @foreach(var file in meta.CurrentDemo.Files) {
+        var prettifiedContent = file.Read();
+        var notPretifiedContent = string.Empty;
+        var rows = prettifiedContent.Split('\n');
+        if(rows.Length > prettifiedRowsCount) {
+            prettifiedContent = string.Join("\n", rows.Take(prettifiedRowsCount));
+            notPretifiedContent = string.Join("\n", rows.Skip(prettifiedRowsCount));
+        }
+        <pre class="source-block@(index == 0 ? " prettyprint" : "")" id="source-block@(index)"><code class="@(file.Name.EndsWith(".css") ? "lang-css" : string.Empty)">@prettifiedContent<span class="nocode">@notPretifiedContent</span></code></pre>
+        index++;
+    }
+
+    <script>
+        $(function() {
+            PR.prettyPrint();
+        });
+
+        $(function() {
+            $(".source-block").first().addClass("active");
+
+            $("#code-tabs").dxTabs({
+                dataSource: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(meta.CurrentDemo.Files.Select(item => item.Name))),
+                onItemClick: function(e) {
+                    $('.source-block').removeClass('active prettyprint');
+                    var currentSourceBlock = $('#source-block' + e.itemIndex);
+                    currentSourceBlock.addClass('active prettyprint');
+                    if(!currentSourceBlock.hasClass("prettyprinted"))
+                        PR.prettyPrint();
+                },
+                selectedIndex: 0
+            });
+        });
+    </script>
+</div>

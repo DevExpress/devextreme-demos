@@ -1,0 +1,110 @@
+﻿@(Html.DevExtreme().DataGrid()
+    .ID("grid-container")
+    .ShowBorders(true)
+    .DataSource(d => d.OData()
+        .Url("https://js.devexpress.com/Demos/DevAV/odata/Tasks")
+        .Key("Task_ID")
+        .Expand("ResponsibleEmployee"))
+    .DataSourceOptions(o => o.Select(new[] {
+        "Task_ID",
+        "Task_Subject",
+        "Task_Start_Date",
+        "Task_Due_Date",
+        "Task_Status",
+        "ResponsibleEmployee/Employee_Full_Name"
+    }))
+    .Selection(s => s
+        .Mode(SelectionMode.Multiple)
+        .Deferred(true))
+    .FilterRow(f => f.Visible(true))
+    .OnInitialized("dataGrid_initialized")
+    .SelectionFilter(new object[] { "Task_Status", "=", "Completed" })
+    .Columns(columns => {
+        columns.Add()
+            .DataField("Task_Subject")
+            .Caption("Subject");
+
+        columns.Add()
+            .DataField("Task_Start_Date")
+            .Caption("Start Date")
+            .Width("auto")
+            .DataType(GridColumnDataType.Date);
+
+        columns.Add()
+            .DataField("Task_Due_Date")
+            .Caption("Due Date")
+            .Width("auto")
+            .DataType(GridColumnDataType.Date);
+
+        columns.Add()
+            .DataField("ResponsibleEmployee.Employee_Full_Name")
+            .Caption("Assigned To")
+            .Width("auto")
+            .AllowSorting(false);
+
+        columns.Add()
+            .DataField("Task_Status")
+            .Caption("Status")
+            .Width("auto");
+    })
+
+
+)
+<div class="selection-summary center">
+    @(Html.DevExtreme().Button()
+        .Text("Get statistics on the selected tasks")
+        .Type(ButtonType.Default)
+        .OnClick("calculateStatistics")
+    )
+    <div>
+        <div class="column">
+            <span class="text count">Task count:</span>
+            <span class="value" id="tasks-count">0</span>
+        </div>
+
+        <div class="column">
+            <span class="text people-count">People assingned:</span>
+            <span class="value" id="people-count">0</span>
+        </div>
+
+        <div class="column">
+            <span class="text avg-duration">
+                Average task duration (days):
+            </span>
+            <span class="value" id="avg-duration">0</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    var MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
+
+    function getDataGridInstance() {
+        return $("#grid-container").dxDataGrid("instance");
+    }
+
+    function calculateStatistics() {
+        getDataGridInstance().getSelectedRowsData().done(function(rowData) {
+            var commonDuration = 0;
+
+            for(var i = 0; i < rowData.length; i++) {
+                commonDuration += rowData[i].Task_Due_Date - rowData[i].Task_Start_Date;
+            }
+            commonDuration = commonDuration / MILLISECONDS_IN_DAY;
+
+            $("#tasks-count").text(rowData.length);
+            $("#people-count").text(
+                DevExpress.data.query(rowData)
+                .groupBy("ResponsibleEmployee.Employee_Full_Name")
+                .toArray()
+                .length
+            );
+            $("#avg-duration").text(Math.round(commonDuration / rowData.length) || 0);
+        });
+    }
+
+    function dataGrid_initialized(e) {
+        calculateStatistics();
+    }
+
+</script>

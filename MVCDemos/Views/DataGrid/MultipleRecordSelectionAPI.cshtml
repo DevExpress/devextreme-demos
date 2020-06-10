@@ -1,0 +1,95 @@
+﻿@using DevExtreme.MVC.Demos.Models.DataGrid
+
+@model IEnumerable<Employee>
+
+<div id="grid">
+    @(Html.DevExtreme().SelectBox()
+        .ID("select-prefix")
+        .DataSource(new[] { "All", "Dr.", "Mr.", "Mrs.", "Ms." })
+        .Placeholder("Select title")
+        .OnValueChanged("selectBox_valueChanged")
+    )
+    @(Html.DevExtreme().Button()
+        .ID("grid-clear-selection")
+        .Text("Clear Selection")
+        .Disabled(true)
+        .OnClick("button_click")
+    )
+    @(Html.DevExtreme().DataGrid<Employee>()
+        .ID("grid-container")
+        .DataSource(Model, new[] { "ID" })
+        .ShowBorders(true)
+        .Selection(s => s.Mode(SelectionMode.Multiple))
+        .Columns(columns => {
+            columns.AddFor(m => m.Prefix)
+                .Width(70);
+
+            columns.AddFor(m => m.FirstName);
+
+            columns.AddFor(m => m.LastName);
+
+            columns.AddFor(m => m.Position)
+                .Width(180);
+
+            columns.AddFor(m => m.BirthDate)
+                .Width(125);
+
+            columns.AddFor(m => m.HireDate)
+                .Width(125);
+        })
+        .OnSelectionChanged("selection_changed")
+
+    )
+    <div class="selected-data">
+        <span class="caption">Selected Records:</span>
+        <span id="selectedItemsContainer">Nobody has been selected</span>
+    </div>
+</div>
+
+<script>
+    var changedBySelectBox;
+
+    function getDataGridInstance() {
+        return $("#grid-container").dxDataGrid("instance");
+    }
+
+    function selection_changed(selectedItems) {
+        var data = selectedItems.selectedRowsData;
+        if(data.length > 0)
+            $("#selectedItemsContainer").text(
+            $.map(data, function(value) {
+                return value.FirstName + " " + value.LastName;
+            }).join(", "));
+        else
+            $("#selectedItemsContainer").text("Nobody has been selected");
+        if(!changedBySelectBox)
+            $("#select-prefix").data("dxSelectBox").option("value", null);
+
+        changedBySelectBox = false;
+        $("#grid-clear-selection").dxButton("instance").option("disabled", !data.length);
+    }
+
+    function selectBox_valueChanged(data) {
+        if(!data.value)
+            return;
+
+        var dataGrid = getDataGridInstance();
+
+        changedBySelectBox = true;
+        if(data.value == "All") {
+            dataGrid.selectAll();
+        } else {
+            var employeesToSelect = $.map(dataGrid.getDataSource().items(), function(item) {
+                if(item.Prefix === data.value) {
+                    return item.ID;
+                }
+            });
+
+            dataGrid.selectRows(employeesToSelect);
+        }
+    }
+
+    function button_click() {
+        getDataGridInstance().clearSelection();
+    }
+</script>

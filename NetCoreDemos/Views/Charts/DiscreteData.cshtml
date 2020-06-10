@@ -1,0 +1,39 @@
+﻿<div class="long-title"><h3>Average temperature in London</h3></div>
+<div id="chart-demo">
+    @(Html.DevExtreme().PolarChart()
+        .ID("radarChart")
+        .DataSource(new[] {
+            new { arg = "January", day = 6, night = 2 },
+            new { arg = "February", day = 7, night = 2 },
+            new { arg = "March", day = 10, night = 3 },
+            new { arg = "April", day = 14, night = 5 },
+            new { arg = "May", day = 18, night = 8 },
+            new { arg = "June", day = 21, night = 11 },
+            new { arg = "July", day = 22, night = 13 },
+            new { arg = "August", day = 22, night = 13 },
+            new { arg = "September", day = 19, night = 11 },
+            new { arg = "October", day = 15, night = 8 },
+            new { arg = "November", day = 10, night = 5 },
+            new { arg = "December", day = 7, night = 3 }
+        })
+        .Margin(m => m.Top(50).Bottom(50).Left(100))
+        .Series(s => {
+            s.Add().ValueField("day").Name("Day").Color("#ba4d51");
+            s.Add().ValueField("night").Name("Night").Color("#5f8b95");
+        })
+        .CommonSeriesSettings(s => s.Type(PolarChartSeriesType.Scatter))
+    )
+    <div class="center">
+        <div>Series Type</div>&nbsp;
+        @(Html.DevExtreme().SelectBox()
+            .Width(200)
+            .DataSource(new[] { "scatter", "line", "area", "bar", "stackedbar" })
+            .Value("scatter")
+            .OnValueChanged(@<text>
+                function(e) {
+                    $("#radarChart").dxPolarChart("instance").option("commonSeriesSettings.type", e.value);
+                }
+            </text>)
+        )
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿<div class="long-title"><h3>Deviation from the Target (Horizontal and Vertical)</h3></div>
+
+<div id="gauge-demo">
+    @(Html.DevExtreme().CircularGauge()
+        .ID("c1")
+        .Geometry(g => g
+            .StartAngle(135)
+            .EndAngle(45)
+        ).
+        Scale(s => s
+            .StartValue(45)
+            .EndValue(-45)
+            .TickInterval(45)
+            .Label(l => l.CustomizeText(@<text>
+                function (arg) {
+                    return arg.valueText + "°";
+                }
+            </text>))
+        )
+        .ValueIndicator(v => v
+            .Type(GaugeIndicatorType.RangeBar)
+            .BaseValue(0)
+        )
+        .Value(20)
+    )
+
+    @(Html.DevExtreme().LinearGauge()
+        .ID("c2")
+        .Geometry(g => g.Orientation(Orientation.Vertical))
+        .Scale(s => s
+            .StartValue(-45)
+            .EndValue(45)
+            .TickInterval(45)
+            .Label(l => l.CustomizeText(@<text>
+                function (arg) {
+                    return arg.valueText + "°";
+                }
+            </text>))
+        )
+        .ValueIndicator(v => v
+            .BaseValue(0)
+        )
+        .Value(-10)
+    )
+</div>

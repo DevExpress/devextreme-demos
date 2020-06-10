@@ -1,0 +1,33 @@
+﻿@(Html.DevExtreme().VectorMap()
+    .ID("vector-map")
+    .MaxZoomFactor(4)
+    .Projection(new JS("floorPlanProjection"))
+    .Layers(layers => {
+        layers.Add()
+            .HoverEnabled(false)
+            .DataSource(d => d.StaticJson().Url(Url.Action("GetBuildingData")))
+            .Name("building");
+
+        layers.Add()
+            .Color("transparent")
+            .BorderWidth(1)
+            .Label(l => l
+                .Enabled(true)
+                .DataField("name")
+            )
+            .DataSource(d => d.StaticJson().Url(Url.Action("GetRoomData")))
+            .Name("rooms");
+    })
+    .Tooltip(t => t
+        .Enabled(true)
+        .CustomizeTooltip("vectorMap_customizeTooltip")
+    )
+)
+
+<script src="~/data/floorPlanProjection.js"></script>
+<script>
+    function vectorMap_customizeTooltip(arg) {
+        if(arg.layer.name === "rooms")
+            return { text: "Square: " + arg.attribute("square") + " ft&#178" };
+    }
+</script>

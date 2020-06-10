@@ -1,0 +1,104 @@
+﻿@(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.Northwind.Order>()
+    .ID("grid")
+    .DataSource(d => d.WebApi()
+        .Controller("DataGridWebApi")
+        .LoadAction("Orders")
+        .InsertAction("InsertOrder")
+        .UpdateAction("UpdateOrder")
+        .DeleteAction("DeleteOrder")
+        .Key("OrderID")
+        .OnBeforeSend("beforeSend")
+    )
+    .ShowBorders(true)
+    .RepaintChangesOnly(true)
+    .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
+    .Editing(e => e
+        .Mode(GridEditMode.Cell)
+        .RefreshMode(GridEditRefreshMode.Reshape)
+        .AllowAdding(true)
+        .AllowDeleting(true)
+        .AllowUpdating(true)
+    )
+    .Columns(columns => {
+        columns.AddFor(m => m.CustomerID)
+            .Lookup(lookup => lookup
+                .DataSource(d => d.WebApi()
+                    .Controller("DataGridWebApi")
+                    .LoadAction("CustomersLookup")
+                    .LoadMode(DataSourceLoadMode.Raw)
+                    .Key("Value")
+                    .OnBeforeSend("beforeSend")
+                )
+                .DataSourceOptions(o => o.Paginate(true))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")
+            );
+
+        columns.AddFor(m => m.OrderDate);
+
+        columns.AddFor(m => m.Freight);
+
+        columns.AddFor(m => m.ShipCountry);
+
+        columns.AddFor(m => m.ShipVia)
+            .Lookup(lookup => lookup
+                .DataSource(d => d.WebApi()
+                    .Controller("DataGridWebApi")
+                    .LoadAction("ShippersLookup")
+                    .LoadMode(DataSourceLoadMode.Raw)
+                    .Key("Value")
+                    .OnBeforeSend("beforeSend")
+                )
+                .ValueExpr("Value")
+                .DisplayExpr("Text")
+            );
+
+    })
+    .Summary(s => s
+        .TotalItems(totalItems => {
+            totalItems.AddFor(t => t.CustomerID).SummaryType(SummaryType.Count);
+            totalItems.AddFor(t => t.Freight).ValueFormat("#0.00").SummaryType(SummaryType.Sum);
+        })
+    )
+)
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Refresh Mode:</span>
+        @(Html.DevExtreme().SelectBox()
+            .ID("refresh-mode")
+            .DataSource(new[] { "full", "reshape", "repaint" })
+            .Value("reshape")
+            .OnValueChanged(@<text> function(e) {
+                $("#grid").dxDataGrid("instance").option("editing.refreshMode", e.value);
+            } </text>)
+        )
+    </div>
+    <div id="requests">
+        <div>
+            <div class="caption">Network Requests</div>
+            @(Html.DevExtreme().Button()
+                .ID("clear")
+                .Text("Clear")
+                .OnClick(@<text> function() {
+                    $("#requests ul").empty();
+                } </text>)
+            )
+        </div>
+        <ul></ul>
+    </div>
+</div>
+<script>
+    function beforeSend(operation, ajaxSettings) {
+        var data = ajaxSettings.data || {},
+            args = Object.keys(data).map(function (key) {
+            return key + "=" + data[key];
+        }).join(" ");
+
+        var logList = $("#requests ul"),
+            time = DevExpress.localization.formatDate(new Date(), "HH:mm:ss"),
+            newItem = $("<li>").text([time, ajaxSettings.method, ajaxSettings.url, args].join(" "));
+
+        logList.prepend(newItem);
+    }
+</script>

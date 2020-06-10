@@ -1,0 +1,15 @@
+﻿@(Html.DevExtreme().LinearGauge()
+    .ID("gauge")
+    .Geometry(g => g.Orientation(Orientation.Vertical))
+    .Scale(s => s
+        .StartValue(0)
+        .EndValue(50)
+        .CustomTicks(new double[] { 0, 10, 25, 50 })
+    )
+    .Title(t => t
+        .Text("Fuel Volume (in Liters)")
+        .Font(f => f.Size(28))
+    )
+    .Export(e => e.Enabled(true))
+    .Value(35)
+)

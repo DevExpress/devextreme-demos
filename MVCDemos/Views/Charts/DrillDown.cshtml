@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.ContinentPopulation>
+
+@(Html.DevExtreme().TreeMap()
+    .DataSource(Model)
+    .Size(s => s.Height(440))
+    .Title(t => t
+        .Text("The Most Populated Cities by Continents")
+        .PlaceholderSize(80))
+    .Colorizer(c => c.Palette(VizPalette.Soft))
+    .InteractWithGroup(true)
+    .MaxDepth(2)
+    .OnClick(@<text>
+        function(e) {
+            e.node.drillDown();
+        }
+    </text>)
+    .OnDrill(@<text>
+        function(e) {
+            var markup = $("#drill-down-title").empty(),
+                node;
+            for(node = e.node.getParent(); node; node = node.getParent()) {
+                markup.prepend(" > ").prepend($("<span />")
+                    .addClass("link")
+                    .text(node.label() || "All Continents")
+                    .data("node", node)
+                    .on("dxclick", onLinkClick));
+            }
+            if(markup.children().length) {
+                markup.append(e.node.label());
+            }
+        }
+    </text>)
+)
+<div id="drill-down-title"></div>
+
+<script>
+    function onLinkClick(e) {
+        $(e.target).data("node").drillDown();
+    }
+</script>

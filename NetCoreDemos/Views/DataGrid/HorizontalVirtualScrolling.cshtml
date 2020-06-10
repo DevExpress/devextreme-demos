@@ -1,0 +1,8 @@
+﻿@(Html.DevExtreme().DataGrid()
+    .ID("grid")
+    .Scrolling(scrolling => scrolling.ColumnRenderingMode(GridColumnRenderingMode.Virtual))
+    .Paging(paging => paging.Enabled(false))
+    .DataSource(d => d.Mvc().Controller("DataGridHorizontalScrolling").LoadAction("Get"))
+    .ColumnWidth(100)
+    .ShowBorders(true)
+)

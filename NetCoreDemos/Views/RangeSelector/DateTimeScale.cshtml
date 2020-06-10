@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.DateTimeScaleTemperature>
+
+@(Html.DevExtreme().RangeSelector()
+    .ID("range-selector")
+    .DataSource(Model)
+    .Margin(m => m.Top(50))
+    .Chart(c => c
+        .CommonSeriesSettings(cs => cs
+            .Type(SeriesType.StepArea)
+            .ArgumentField("Date")
+        )
+        .Series(s => {
+            s.Add().ValueField("DayT").Color("yellow");
+            s.Add().ValueField("NigthT");
+        })
+    )
+    .Scale(s => s
+        .MinorTickInterval(VizTimeInterval.Day)
+        .TickInterval(i => i.Days(2))
+        .ValueType(ChartDataType.DateTime)
+    )
+    .SliderMarker(sm => sm.Format(Format.Day))
+    .Value(new[] { new DateTime(2013, 3, 1), new DateTime(2013, 3, 7) })
+    .Title("Select a Month Period")
+)

@@ -1,0 +1,66 @@
+﻿@using DevExtreme.MVC.Demos.Models
+
+@(Html.DevExtreme().PivotGrid<Sale>()
+    .ID("sales")
+    .AllowSortingBySummary(true)
+    .AllowSorting(true)
+    .AllowFiltering(true)
+    .AllowExpandAll(true)
+    .ShowColumnTotals(false)
+    .ShowTotalsPrior(PivotGridTotalsDisplayMode.Rows)
+    .ShowBorders(true)
+    .FieldChooser(c => c.Enabled(false))
+    .DataSource(d => d
+        .Store(s => s.WebApi().Controller("PivotGridData"))
+        .Fields(fields => {
+            fields.AddFor(m => m.Region)
+                .Width(120)
+                .Area(PivotGridArea.Row);
+
+            fields.AddFor(m => m.City)
+                .Width(150)
+                .Area(PivotGridArea.Row);
+
+            fields.AddFor(m => m.Date)
+                .Area(PivotGridArea.Column);
+
+            fields.Add()
+                .GroupName("Date")
+                .GroupInterval(PivotGridGroupInterval.Year)
+                .Expanded(true);
+
+            fields.Add()
+                .GroupName("Date")
+                .GroupInterval(PivotGridGroupInterval.Month)
+                .Visible(false);
+
+            fields.AddFor(m => m.Amount)
+                .SummaryType(SummaryType.Sum)
+                .Format(Format.Currency)
+                .Area(PivotGridArea.Data);
+
+            fields.AddFor(m => m.Amount)
+                .Caption("Running Total")
+                .Area(PivotGridArea.Data)
+                .SummaryType(SummaryType.Sum)
+                .Format(Format.Currency)
+                .RunningTotal(PivotGridRunningTotalMode.Row)
+                .AllowCrossGroupCalculation(true);
+        })
+    )
+)
+
+@(Html.DevExtreme().CheckBox()
+    .Value(true)
+    .Text("Allow cross-group running totals accumulation")
+    .OnValueChanged("selectBox_valueChanged")
+)
+
+<script>
+    function selectBox_valueChanged(e) {
+        var pivotGridDataSource = $("#sales").dxPivotGrid("instance").getDataSource();
+
+        pivotGridDataSource.field(6, { allowCrossGroupCalculation: e.value });
+        pivotGridDataSource.load();
+    }
+</script>

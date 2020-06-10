@@ -1,0 +1,65 @@
+﻿<div id="data-grid-demo">
+    @(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.DataGrid.EmployeeByState>()
+        .ID("gridContainer")
+        .ShowBorders(true)
+        .Editing(editing => {
+            editing.Mode(GridEditMode.Row);
+            editing.AllowUpdating(true);
+            editing.AllowAdding(true);
+        })
+        .OnEditorPreparing("onEditorPreparing")
+        .Columns(columns => {
+            columns.AddFor(m => m.FirstName);
+
+            columns.AddFor(m => m.LastName);
+
+            columns.AddFor(m => m.Position);
+
+            columns.AddFor(m => m.StateID)
+                .SetCellValue("setStateValue")
+                .Lookup(lookup => lookup
+                    .DataSource(d => d.WebApi()
+                        .Controller("DataGridStatesWithCities")
+                        .LoadAction("Get")
+                        .Key("ID"))
+                    .DisplayExpr("Name")
+                    .ValueExpr("ID")
+                );
+
+            columns.AddFor(m => m.CityID)
+                .Lookup(lookup => lookup
+                    .DataSource("getCities")
+                    .DisplayExpr("Name")
+                    .ValueExpr("ID")
+                );
+
+        })
+        .DataSource(d => d.WebApi()
+            .Controller("DataGridEmployeesByState")
+            .InsertAction(true)
+            .UpdateAction(true)
+            .Key("ID")
+        )
+    )
+</div>
+
+<script>
+    function onEditorPreparing(e) {
+        if(e.parentType === "dataRow" && e.dataField === "CityID") {
+            e.editorOptions.disabled = (typeof e.row.data.StateID !== "number");
+        }
+    }
+    function getCities(options) {
+        return {
+            store: DevExpress.data.AspNet.createStore({
+                key: "ID",
+                loadUrl: '@Url.Action("Get", "DataGridCitiesByState", new { httproute = true })'
+            }),
+            filter: options.data ? ["StateID", "=", options.data.StateID] : null
+        };
+    }
+    function setStateValue(rowData, value) {
+        rowData.StateID = value;
+        rowData.CityID = null;
+    }
+</script>

@@ -1,0 +1,74 @@
+﻿@using DevExtreme.MVC.Demos.Models.SignalR
+
+@(Html.DevExtreme().DataGrid<Stock>()
+    .ID("gridContainer")
+    .LoadPanel(loadPanel => loadPanel.Enabled(false))
+    .OnInitialized("onInitialized")
+    .RepaintChangesOnly(true)
+    .HighlightChanges(true)
+    .ShowBorders(true)
+    .Columns(columns => {
+        columns.AddFor(m => m.LastUpdate)
+            .Width(115)
+            .Format(Format.LongTime);
+
+        columns.AddFor(m => m.Symbol);
+
+        columns.AddFor(m => m.Price)
+            .Format("#0.####")
+            .CellTemplate(@<text>
+                <span class="<%- data.Change > 0 ? 'inc' : 'dec' %>">
+                    <%- text %>
+                </span>
+            </text>);
+
+        columns.AddFor(m => m.Change)
+            .Width(140)
+            .Format("#0.####")
+            .CellTemplate(@<text>
+                <span class="<%- data.Change > 0 ? 'inc' : 'dec' %>">
+                    <span class="current-value"><%- text %></span>
+                    <span class="arrow"></span>
+                    <span class="diff"><%- data.PercentChange.toFixed(2) %>%</span>
+                </span>
+            </text>);
+
+        columns.AddFor(m => m.DayOpen)
+            .Format("#0.####");
+
+        columns.AddFor(m => m.DayMin)
+            .Format("#0.####");
+
+        columns.AddFor(m => m.DayMax)
+            .Format("#0.####");
+    })
+)
+
+<script src="~/Scripts/signalr/jquery.signalR-2.2.2.js"></script>
+<script src="~/signalr/hubs"></script>
+<script>
+    function onInitialized(e)  {
+        e.component.beginCustomLoading();
+    }
+
+    $(function () {
+        var hub = $.connection.liveUpdateSignalRHub;
+        var store = new DevExpress.data.CustomStore({
+            load: function () {
+                return hub.server.getAllStocks();
+            },
+            key: "Symbol"
+        });
+
+        hub.client.updateStockPrice = function (data) {
+            store.push([{ type: "update", key: data.Symbol, data: data }]);
+        };
+
+        $.connection.hub.start({ waitForPageLoad: false }).done(function () {
+            $("#gridContainer").dxDataGrid({
+                dataSource: store
+            });
+        });
+    });
+
+</script>

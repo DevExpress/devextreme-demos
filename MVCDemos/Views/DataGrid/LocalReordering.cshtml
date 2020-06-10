@@ -1,0 +1,70 @@
+<div id="data-grid-demo">
+    @(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.RowReorderingTask>()
+        .ID("gridContainer")
+        .DataSource(new JS("tasks"))
+        .ShowBorders(true)
+        .Height(440)
+        .Sorting(sorting => sorting.Mode(GridSortingMode.None))
+        .Scrolling(scrolling => scrolling.Mode(GridScrollingMode.Virtual))
+        .RowDragging(rd => rd
+            .AllowReordering(true)
+            .OnReorder("onReorder")
+            .ShowDragIcons(true)
+        )
+        .Columns(columns => {
+            columns.AddFor(m => m.ID)
+                .Width(55);
+
+            columns.AddFor(m => m.Owner)
+                .Width(150)
+                .Lookup(lookup => lookup
+                    .DataSource(new JS("employees"))
+                    .ValueExpr("ID")
+                    .DisplayExpr("FullName")
+                );
+
+            columns.AddFor(m => m.AssignedEmployee)
+                .Width(150)
+                .Caption("Assignee")
+                .Lookup(lookup => lookup
+                    .DataSource(new JS("employees"))
+                    .ValueExpr("ID")
+                    .DisplayExpr("FullName")
+                );
+
+            columns.AddFor(m => m.Subject);
+        })
+    )
+
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .ID("show-drag-icons")
+                .Text("Show Drag Icons")
+                .Value(true)
+                .OnValueChanged(@<text>
+                    function(data) {
+                        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                        dataGrid.option("rowDragging.showDragIcons", data.value);
+                    }
+                </text>)
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    function onReorder(e) {
+        var dataGrid = e.component,
+            visibleRows = dataGrid.getVisibleRows(),
+            toIndex = tasks.indexOf(visibleRows[e.toIndex].data),
+            fromIndex = tasks.indexOf(e.itemData);
+
+        tasks.splice(fromIndex, 1);
+        tasks.splice(toIndex, 0, e.itemData);
+
+        dataGrid.refresh();
+    }
+</script>
+<script src="~/Scripts/data/localReordering.js"></script>

@@ -1,0 +1,63 @@
+﻿<div class="form">
+    <div class="dx-fieldset">
+        <div class="dx-field">
+            <div class="dx-field-label">Checked</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().CheckBox()
+                    .Value(true)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Unchecked</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().CheckBox()
+                    .Value(false)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Indeterminate</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().CheckBox()
+                    .Value(new JS("undefined"))
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Value change handling</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().CheckBox()
+                    .Value(new JS("undefined"))
+                    .OnValueChanged("checkBox_valueChanged")
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Disabled</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().CheckBox()
+                    .ID("disabled")
+                    .Value(new JS("undefined"))
+                    .Disabled(true)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">With label</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().CheckBox()
+                    .Value(true)
+                    .Width(80)
+                    .Text("Check")
+                )
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function checkBox_valueChanged(data) {
+        $("#disabled").dxCheckBox("instance").option("value", data.value);
+    }
+</script>

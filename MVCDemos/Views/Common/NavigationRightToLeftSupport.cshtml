@@ -1,0 +1,81 @@
+﻿@model DevExtreme.MVC.Demos.ViewModels.RtlViewModel
+
+<div id="rtl" class="@(Model.RtlEnabled ? "dx-rtl" : "")">
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="dx-fieldset">
+            <div class="dx-field">
+                <div class="dx-field-label">Language</div>
+                <div class="dx-field-value">
+                    @(Html.DevExtreme().SelectBox()
+                        .RtlEnabled(Model.RtlEnabled)
+                        .DataSource(Model.LanguageItems)
+                        .Value(Model.RtlEnabled ? Model.LanguageItems.First() : Model.LanguageItems.Last())
+                        .OnValueChanged("selectBox_valueChanged"))
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dx-fieldset">
+            <div class="dx-fieldset-header">
+                @(Html.DevExtreme().Menu()
+                    .DataSource(d => d.Mvc().Controller("Common").LoadAction("GetContinentsData").Key("ID"))
+                    .RtlEnabled(Model.RtlEnabled)
+                    .ItemsExpr("Items")
+                    .DisplayExpr(Model.DisplayExpr))
+            </div>
+
+        </div>
+        <div class="dx-fieldset">
+            <div class="dx-field">
+                <div class="dx-field-label">
+                    @(Html.DevExtreme().TreeView()
+                        .Width(200)
+                        .DataSource(d => d.Mvc().Controller("Common").LoadAction("GetContinentsData").Key("ID"))
+                        .RtlEnabled(Model.RtlEnabled)
+                        .ItemsExpr("Items")
+                        .DisplayExpr(Model.DisplayExpr))
+                </div>
+                <div class="dx-field-value">
+                    @(Html.DevExtreme().Accordion()
+                        .DataSource(d => d.Mvc().Controller("Common").LoadAction("GetEuropeanCountriesData").Key("NameEn"))
+                        .RtlEnabled(Model.RtlEnabled)
+                        .ItemTitleTemplate(@<text>
+                            @if(Model.RtlEnabled) {
+                                <div><%- NameAr %></div>
+                            } else {
+                                <div><%- NameEn %></div>
+                            }
+                        </text>)
+                        .ItemTemplate(@<text>
+                            @if(Model.RtlEnabled) {
+                                <div>
+                                    <div>عاصمة: <%- CapitalAr %></div>
+                                    <div>عدد السكان: <%- Population %> نسمة</div>
+                                    <div>المساحة: <%- Area %> كم<sup>2</sup></div>
+                                </div>
+                            } else {
+                                <div>
+                                    <div>Capital: <%- CapitalEn %></div>
+                                    <div>Population: <%- Population %> people</div>
+                                    <div>Area: <%- Area %> km<sup>2</sup></div>
+                                </div>
+                            }
+                        </text>)
+                    )
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function selectBox_valueChanged(data) {
+        var setRTL = data.value === "@Model.LanguageItems.FirstOrDefault()";
+
+        document.cookie = "direction=" + (setRTL ? "rtl" : "ltr") + "; path=/";
+
+        window.location.reload();
+    }
+</script>

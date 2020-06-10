@@ -1,0 +1,19 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .CommonSeriesSettings(s => s.Type(SeriesType.Scatter))
+    .Series(s => {
+        s.Add().ArgumentField("X1").ValueField("Y1");
+        s.Add().ArgumentField("X2").ValueField("Y2").Point(p => p
+            .Symbol(PointSymbol.TriangleDown)
+        );
+    })
+    .ArgumentAxis(a => a
+        .Grid(g => g.Visible(true))
+        .TickInterval(5)
+        .MinorGrid(g => g.Visible(true))
+    )
+    .ValueAxis(a => a.Add().TickInterval(50))
+    .Legend(l => l.Visible(false))
+    .CommonPaneSettings(s => s.Border(b => b.Visible(true)))
+    .DataSource(Model)
+)

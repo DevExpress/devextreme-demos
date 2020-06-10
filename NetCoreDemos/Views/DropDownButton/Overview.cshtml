@@ -1,0 +1,156 @@
+﻿@model DevExtreme.NETCore.Demos.ViewModels.DropDownButtonViewModel
+
+<div class="dx-fieldset">
+    <div class="dx-fieldset-header">Single usage</div>
+    <div class="dx-field">
+        <div class="dx-field-label">
+            Custom static text
+        </div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DropDownButton()
+                .Text("Download Trial")
+                .Icon("save")
+                .DropDownOptions(options => options.Width(230))
+                .DataSource(Model.Downloads)
+                .OnItemClick("downloadButton_click")
+            )
+        </div>
+    </div>
+
+    <div class="dx-field">
+        <div class="dx-field-label">
+            Custom main button action
+        </div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DropDownButton()
+                .SplitButton(true)
+                .Text("Sandra Johnson")
+                .Icon(Url.Content("~/images/gym/coach-woman.png"))
+                .DisplayExpr("Text")
+                .KeyExpr("Value")
+                .UseSelectMode(false)
+                .DataSource(Model.ProfileSettings)
+                .OnButtonClick("profileButton_click")
+                .OnItemClick("profileItem_click")
+            )
+        </div>
+    </div>
+</div>
+
+<div class="dx-fieldset">
+    <div class="dx-fieldset-header">Usage in a toolbar</div>
+    <div class="dx-field">
+        @(Html.DevExtreme().Toolbar()
+            .Items(items => {
+                items.Add()
+                    .Widget(w => w.DropDownButton()
+                        .DataSource(Model.Alignments)
+                        .DisplayExpr("Text")
+                        .KeyExpr("Value")
+                        .SelectedItemKey("justify")
+                        .Width(125)
+                        .StylingMode(ButtonStylingMode.Text)
+                        .UseSelectMode(true)
+                        .OnSelectionChanged("change_alignment")
+                    )
+                    .Location(ToolbarItemLocation.Before);
+
+                items.Add()
+                    .Widget(w => w.DropDownButton()
+                        .DataSource(Model.Colors)
+                        .StylingMode(ButtonStylingMode.Text)
+                        .Icon("square")
+                        .OnInitialized("init_colorpicker")
+                        .DropDownContentTemplate(new TemplateName("colorpicker-template"))
+                    )
+                    .Location(ToolbarItemLocation.Before);
+
+                items.Add()
+                    .Widget(w => w.DropDownButton()
+                        .DisplayExpr("Text")
+                        .KeyExpr("Value")
+                        .SelectedItemKey("14")
+                        .StylingMode(ButtonStylingMode.Text)
+                        .UseSelectMode(true)
+                        .DataSource(Model.FontSizes)
+                        .OnSelectionChanged("change_size")
+                        .ItemTemplate(@<text>
+                        <div style="font-size: <%- Text %>;"><%- Text %></div>
+                        </text>)
+                    )
+                    .Location(ToolbarItemLocation.Before);
+
+                items.Add()
+                    .Widget(w => w.DropDownButton()
+                        .DisplayExpr("Text")
+                        .KeyExpr("Value")
+                        .SelectedItemKey("1.35")
+                        .StylingMode(ButtonStylingMode.Text)
+                        .UseSelectMode(true)
+                        .DataSource(Model.LineHeights)
+                        .Icon("indent")
+                        .OnSelectionChanged("change_lineHeight")
+                    )
+                    .Location(ToolbarItemLocation.Before);
+            })
+        )
+    </div>
+    <div class="dx-field">
+        <p id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+</div>
+
+@using (Html.DevExtreme().NamedTemplate("colorpicker-template")) {
+    <div class="custom-color-picker">
+        @foreach (var color in Model.Colors)
+        {<i style="color: @color" class="color dx-icon dx-icon-square" onclick="onColorClick('@color')"></i>}
+    </div>
+}
+
+<script>
+    function downloadButton_click(e) {
+        DevExpress.ui.notify("Download " + e.itemData, "success", 600);
+    }
+
+    function profileButton_click(e) {
+        DevExpress.ui.notify("Go to " + e.component.option("text") + "'s profile", "success", 600);
+    }
+
+    function profileItem_click(e) {
+        DevExpress.ui.notify(e.itemData.Text, "success", 600);
+    }
+
+    function change_alignment(e) {
+        $("#text").css("text-align", e.item.Value);
+    }
+
+    function change_size(e) {
+        $("#text").css("font-size", e.item.Text);
+    }
+
+    function change_lineHeight(e) {
+        $("#text").css("line-height", e.item.Value);
+    }
+
+    var dropDownButton;
+    function init_colorpicker(e) {
+        dropDownButton = e.component;
+    }
+
+    function onColorClick(color) {
+        var $colorIcon = dropDownButton.$element().find(".dx-dropdownbutton-action .dx-icon").first();
+
+        applyColor($("#text"), color);
+        applyColor($colorIcon, color);
+        dropDownButton.close();
+    }
+
+    function applyColor($element, color) {
+        if (color) {
+            $element.removeClass("dx-theme-text-color");
+            $element.css("color", color);
+        } else {
+            $element.addClass("dx-theme-text-color");
+        }
+    }
+</script>

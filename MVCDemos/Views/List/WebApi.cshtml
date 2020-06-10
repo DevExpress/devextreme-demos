@@ -1,0 +1,24 @@
+﻿@(Html.DevExtreme().List()
+    .ItemTemplate(@<text>
+        <div><%- ProductName %></div>
+        <div><b><%- formatCurrency(UnitPrice) %></b></div>
+    </text>)
+    .DataSource(d => d.WebApi().Controller("ListData"))
+    .DataSourceOptions(d => d
+        .PageSize(1)
+        .Sort("ProductName")
+        .Group("Category.CategoryName")
+        .Filter("[ 'UnitPrice', '>', '15' ]")
+    )
+    .Grouped(true)
+    .CollapsibleGroups(true)
+    .ItemDeleteMode(ListItemDeleteMode.SlideItem)
+    .SelectionMode(ListSelectionMode.Multiple)
+    .ShowSelectionControls(true)
+    .PageLoadMode(ListPageLoadMode.ScrollBottom)
+    .Height(600)
+)
+
+<script>
+    var formatCurrency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2 }).format;
+</script>

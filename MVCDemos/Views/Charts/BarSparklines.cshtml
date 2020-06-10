@@ -1,0 +1,191 @@
+﻿<div class="long-title"><h3>Monthly Prices of Aluminium, Nickel and Copper</h3></div>
+<div id="chart-demo">
+    <table class="demo-table" border="1">
+        <tr>
+            <th></th>
+            <th>Aluminium (USD/ton)</th>
+            <th>Nickel (USD/ton)</th>
+            <th>Copper (USD/ton)</th>
+        </tr>
+        <tr>
+            <th>2010</th>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .ID("alum2010")
+                    .DataSource(d => d.Mvc().LoadAction("GetMonthlyPrices"))
+                    .DataSourceOptions(o => o.Filter(@"[[""Month"", ""<="", ""12""],[""Category"", ""Aluminium""]]"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2010")
+                    .Type(SparklineType.Bar)
+                    .ShowMinMax(true)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .ID("nick2010")
+                    .DataSource(d => d.Mvc().LoadAction("GetMonthlyPrices"))
+                    .DataSourceOptions(o => o.Filter(@"[[""Month"", ""<="", ""12""],[""Category"", ""Nickel""]]"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2010")
+                    .Type(SparklineType.Bar)
+                    .ShowMinMax(true)
+                    .ShowFirstLast(false)
+                    .BarPositiveColor("#6babac")
+                    .MinColor("#9ab57e")
+                    .MaxColor("#8076bb")
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .ID("cop2010")
+                    .DataSource(d => d.Mvc().LoadAction("GetMonthlyPrices"))
+                    .DataSourceOptions(o => o.Filter(@"[[""Month"", ""<="", ""12""],[""Category"", ""Copper""]]"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2010")
+                    .Type(SparklineType.Bar)
+                    .BarPositiveColor("#e55253")
+                    .FirstLastColor("#ebdd8f")
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+        </tr>
+        <tr>
+            <th>2011</th>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .ID("alum2011")
+                    .DataSource(d => d.Mvc().LoadAction("GetMonthlyPrices"))
+                    .DataSourceOptions(o => o.Filter(@"[[""Month"", ""<="", ""12""],[""Category"", ""Aluminium""]]"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2011")
+                    .Type(SparklineType.Bar)
+                    .ShowMinMax(true)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .ID("nick2011")
+                    .DataSource(d => d.Mvc().LoadAction("GetMonthlyPrices"))
+                    .DataSourceOptions(o => o.Filter(@"[[""Month"", ""<="", ""12""],[""Category"", ""Nickel""]]"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2011")
+                    .Type(SparklineType.Bar)
+                    .ShowMinMax(true)
+                    .ShowFirstLast(false)
+                    .BarPositiveColor("#6babac")
+                    .MinColor("#9ab57e")
+                    .MaxColor("#8076bb")
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .ID("cop2011")
+                    .DataSource(d => d.Mvc().LoadAction("GetMonthlyPrices"))
+                    .DataSourceOptions(o => o.Filter(@"[[""Month"", ""<="", ""12""],[""Category"", ""Copper""]]"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2011")
+                    .Type(SparklineType.Bar)
+                    .BarPositiveColor("#e55253")
+                    .FirstLastColor("#ebdd8f")
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+        </tr>
+        <tr>
+            <th>2012</th>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .ID("alum2012")
+                    .DataSource(d => d.Mvc().LoadAction("GetMonthlyPrices"))
+                    .DataSourceOptions(o => o.Filter(@"[[""Month"", ""<="", ""12""],[""Category"", ""Aluminium""]]"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2012")
+                    .Type(SparklineType.Bar)
+                    .ShowMinMax(true)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .ID("nick2012")
+                    .DataSource(d => d.Mvc().LoadAction("GetMonthlyPrices"))
+                    .DataSourceOptions(o => o.Filter(@"[[""Month"", ""<="", ""12""],[""Category"", ""Nickel""]]"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2012")
+                    .Type(SparklineType.Bar)
+                    .ShowMinMax(true)
+                    .ShowFirstLast(false)
+                    .BarPositiveColor("#6babac")
+                    .MinColor("#9ab57e")
+                    .MaxColor("#8076bb")
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .ID("cop2012")
+                    .DataSource(d => d.Mvc().LoadAction("GetMonthlyPrices"))
+                    .DataSourceOptions(o => o.Filter(@"[[""Month"", ""<="", ""12""],[""Category"", ""Copper""]]"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2012")
+                    .Type(SparklineType.Bar)
+                    .BarPositiveColor("#e55253")
+                    .FirstLastColor("#ebdd8f")
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+        </tr>
+    </table>
+    <div class="action">
+        @(Html.DevExtreme().SelectBox()
+            .ID("choose-months")
+            .DataSource(new[] { 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 })
+            .Width(70)
+            .Value(12)
+            .OnValueChanged("selectBox_valueChanged")
+        )
+        <div class="selectBox-label">
+            Choose a number of months:
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateSparklineFilter(sparkline, count, category) {
+        dataSource = sparkline.getDataSource();
+        dataSource.filter(["Month", "<=", count], ["Category", category]);
+        dataSource.load();
+    }
+
+    function selectBox_valueChanged(data) {
+        var count = data.value;
+
+        $("#alum2010, #alum2011, #alum2012").each(function() {
+            var sparkline = $(this).dxSparkline("instance");
+            updateSparklineFilter(sparkline, count, "Aluminium");
+        });
+
+        $("#nick2010, #nick2011, #nick2012").each(function() {
+            var sparkline = $(this).dxSparkline("instance");
+            updateSparklineFilter(sparkline, count, "Nickel");
+        });
+
+        $("#cop2010, #cop2011, #cop2012").each(function() {
+            var sparkline = $(this).dxSparkline("instance");
+            updateSparklineFilter(sparkline, count, "Copper");
+        });
+    }
+</script>

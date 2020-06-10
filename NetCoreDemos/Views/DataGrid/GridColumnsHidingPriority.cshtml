@@ -1,0 +1,27 @@
+﻿@using DevExtreme.NETCore.Demos.Models
+
+@model IEnumerable<Order>
+
+@(Html.DevExtreme().DataGrid<Order>()
+    .ID("gridContainer")
+    .ShowBorders(true)
+    .DataSource(Model, new[] { "ID" })
+    .Columns(columns => {
+        columns.AddFor(m => m.OrderNumber)
+            .Width(130);
+
+        columns.AddFor(m => m.CustomerStoreCity)
+            .HidingPriority(0);
+
+        columns.AddFor(m => m.CustomerStoreState)
+            .HidingPriority(1);
+
+        columns.AddFor(m => m.Employee);
+
+        columns.AddFor(m => m.OrderDate)
+            .HidingPriority(2);
+
+        columns.AddFor(m => m.SaleAmount)
+            .Format(Format.Currency);
+    })
+)

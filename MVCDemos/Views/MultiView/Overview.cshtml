@@ -1,0 +1,83 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.Store>
+
+<div id="multiview">
+    <div>
+        Item <span class="selected-index">1</span>
+        of <span class="item-count">@Model.Count()</span>:
+        <i>Swipe the view horizontally to switch to the next view.</i>
+    </div>
+    @(Html.DevExtreme().MultiView()
+        .ID("multiview-container")
+        .Height(300)
+        .DataSource(Model)
+        .SelectedIndex(0)
+        .Loop(false)
+        .AnimationEnabled(true)
+        .OnSelectionChanged("multiView_selectionChanged")
+        .ItemTemplate(@<text>
+            <div class="multiview-item">
+                <h1><%- CompanyName %></h1>
+                <div>
+                    <p>
+                        <b><%- City %></b>
+                        (<span><%- State %></span>)
+                    </p>
+                    <p>
+                        <span><%- Zipcode %></span>
+                        <span><%- Address %></span>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        Phone: <b><%- Phone %></b>
+                    </p>
+                    <p>
+                        Fax: <b><%- Fax %></b>
+                    </p>
+                    <p>
+                        Website:
+                        <a href="<%- Website %>" target="_blank">
+                            <%- Website %>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </text>)
+    )
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .ID("loop-enabled")
+                .Value(false)
+                .Text("Loop enabled")
+                .OnValueChanged("checkBoxLoopEnabled_valueChanged")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .ID("animation-enabled")
+                .Value(true)
+                .Text("Animation enabled")
+                .OnValueChanged("checkBoxAnimationEnabled_valueChanged")
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    function multiView_selectionChanged(e) {
+        $(".selected-index")
+            .text(e.component.option("selectedIndex") + 1);
+    }
+
+    function checkBoxLoopEnabled_valueChanged(e) {
+        var multiView = $("#multiview-container").dxMultiView("instance");
+        multiView.option("loop", e.value);
+    }
+
+    function checkBoxAnimationEnabled_valueChanged(e) {
+        var multiView = $("#multiview-container").dxMultiView("instance");
+        multiView.option("animationEnabled", e.value);
+    }
+</script>

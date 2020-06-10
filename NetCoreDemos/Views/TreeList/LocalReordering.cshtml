@@ -1,0 +1,123 @@
+﻿<div id="treeListDemo">
+    @(Html.DevExtreme().TreeList()
+        .ID("treeList")
+        .DataSource(new JS("employees"))
+        .KeyExpr("ID")
+        .ParentIdExpr("Head_ID")
+        .ExpandedRowKeys(new[] { 1 })
+        .ShowRowLines(true)
+        .ShowBorders(true)
+        .ColumnAutoWidth(true)
+        .RowDragging(rd => rd
+            .AllowDropInsideItem(true)
+            .AllowReordering(true)
+            .OnDragChange("onDragChange")
+            .OnReorder("onReorder")
+            .ShowDragIcons(true)
+        )
+        .Columns(columns => {
+            columns.Add().DataField("Title")
+                .Caption("Position");
+
+            columns.Add().DataField("Full_Name");
+
+            columns.Add().DataField("City");
+
+            columns.Add().DataField("State");
+
+            columns.Add().DataField("Mobile_Phone");
+
+            columns.Add().DataField("Hire_Date")
+                .DataType(GridColumnDataType.Date);
+        })
+    )
+
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .ID("allowDropInside")
+                .Text("Allow Drop Inside Item")
+                .Value(true)
+                .OnValueChanged(@<text>
+                    function(e) {
+                        getTreeList().option("rowDragging.allowDropInsideItem", e.value);
+                    }
+                </text>)
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .ID("allowReordering")
+                .Text("Allow Reordering")
+                .Value(true)
+                .OnValueChanged(@<text>
+                    function(e) {
+                        getTreeList().option("rowDragging.allowReordering", e.value);
+                    }
+                </text>)
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .ID("showDragIcons")
+                .Text("Show Drag Icons")
+                .Value(true)
+                .OnValueChanged(@<text>
+                    function(e) {
+                        getTreeList().option("rowDragging.showDragIcons", e.value);
+                    }
+                </text>)
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    function onDragChange(e) {
+        var treeList = e.component,
+            visibleRows = treeList.getVisibleRows(),
+            sourceNode = treeList.getNodeByKey(e.itemData.ID),
+            targetNode = visibleRows[e.toIndex].node;
+
+        while(targetNode && targetNode.data) {
+            if(targetNode.data.ID === sourceNode.data.ID) {
+                e.cancel = true;
+                break;
+            }
+            targetNode = targetNode.parent;
+        }
+    }
+
+    function onReorder(e) {
+        var treeList = e.component,
+            visibleRows = treeList.getVisibleRows(),
+            sourceData = e.itemData,
+            targetData = visibleRows[e.toIndex].data;
+
+        if (e.dropInsideItem) {
+            e.itemData.Head_ID = targetData.ID;
+        } else {
+            var sourceIndex = employees.indexOf(sourceData),
+                targetIndex = employees.indexOf(targetData);
+
+            if (sourceData.Head_ID !== targetData.Head_ID) {
+                sourceData.Head_ID = targetData.Head_ID;
+                if (e.toIndex > e.fromIndex) {
+                    targetIndex++;
+                }
+            }
+
+            employees.splice(sourceIndex, 1);
+            employees.splice(targetIndex, 0, sourceData);
+        }
+
+        treeList.refresh();
+    }
+
+    function getTreeList() {
+        return $("#treeList").dxTreeList("instance");
+    }
+</script>
+
+<script src="~/data/employees.js"></script>

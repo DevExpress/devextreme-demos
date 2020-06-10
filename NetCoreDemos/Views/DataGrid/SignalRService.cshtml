@@ -1,0 +1,71 @@
+﻿@using DevExtreme.NETCore.Demos.Models.SignalR
+
+@(Html.DevExtreme().DataGrid<Stock>()
+    .ID("gridContainer")
+    .Visible(false)
+    .ShowBorders(true)
+    .RepaintChangesOnly(true)
+    .HighlightChanges(true)
+    .Columns(columns => {
+        columns.AddFor(m => m.LastUpdate).DataField("lastUpdate")
+            .Width(115)
+            .Format(Format.LongTime);
+
+        columns.AddFor(m => m.Symbol).DataField("symbol");
+
+        columns.AddFor(m => m.Price).DataField("price")
+            .Format("#0.####")
+            .CellTemplate(@<text>
+                <span class="<%- data.change > 0 ? 'inc' : 'dec' %>">
+                    <%- text %>
+                </span>
+            </text>);
+
+        columns.AddFor(m => m.Change).DataField("change")
+            .Width(140)
+            .Format("#0.####")
+            .CellTemplate(@<text>
+                <span class="<%- data.change > 0 ? 'inc' : 'dec' %>">
+                    <span class="current-value"><%- text %></span>
+                    <span class="arrow"></span>
+                    <span class="diff"><%- data.percentChange.toFixed(2) %>%</span>
+                </span>
+            </text>);
+
+        columns.AddFor(m => m.DayOpen).DataField("dayOpen")
+            .Format("#0.####");
+
+        columns.AddFor(m => m.DayMin).DataField("dayMin")
+            .Format("#0.####");
+
+        columns.AddFor(m => m.DayMax).DataField("dayMax")
+            .Format("#0.####");
+    })
+)
+
+<script src="~/signalr/signalr-client.js"></script>
+<script>
+    var connection = new signalR.HubConnectionBuilder()
+        .withUrl("@Url.Content("~/liveUpdateSignalRHub")")
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
+
+    $(function () {
+        connection.start()
+            .then(function () {
+                var store = new DevExpress.data.CustomStore({
+                    load: function () {
+                        return connection.invoke("getAllStocks");
+                    },
+                    key: "symbol"
+                });
+                $("#gridContainer").dxDataGrid({
+                    dataSource: store,
+                    visible: true
+                });
+                connection.on("updateStockPrice", function (data) {
+                    store.push([{ type: "update", key: data.symbol, data: data }]);
+                });
+            });
+    });
+</script>

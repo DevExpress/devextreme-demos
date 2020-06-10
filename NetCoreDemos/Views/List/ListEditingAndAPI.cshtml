@@ -1,0 +1,65 @@
+﻿<div class="list-api-demo">
+    <div class="widget-container">
+        @(Html.DevExtreme().List()
+            .ID("simpleList")
+            .Height(400)
+            .DataSource(d => d.Mvc()
+                .Controller("ListEditing")
+                .LoadAction("Get")
+                .DeleteAction("Delete")
+                .Key("ID")
+            )
+            .AllowItemDeleting(false)
+            .ItemDeleteMode(ListItemDeleteMode.Toggle)
+            .ShowSelectionControls(true)
+            .SelectionMode(ListSelectionMode.Multiple)
+            .OnSelectionChanged("list_updateSelection")
+            .OnItemDeleted("list_updateSelection")
+            .ItemTemplate(@<text><%- Text %></text>)
+        )
+
+        <div class="selected-data">
+            <span class="caption">Selected Tasks:</span>
+            <span id="selectedItems"></span>
+        </div>
+    </div>
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(false)
+                .Text("Allow deleting")
+                .OnValueChanged("checkBox_valueChanged")
+            )
+        </div>
+        <div class="option">
+            <span>Deleting type</span>
+            @(Html.DevExtreme().SelectBox()
+                .ID("deleteType")
+                .Disabled(true)
+                .DataSource(Enum.GetValues(typeof(ListItemDeleteMode)))
+                .Value(ListItemDeleteMode.Toggle)
+                .OnValueChanged("selectBox_valueChanged")
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    var checkBox_valueChanged = function(e) {
+        $("#simpleList").dxList("option", "allowItemDeleting", e.value);
+        $("#deleteType").dxSelectBox("option", "disabled", !e.value);
+    };
+
+    var selectBox_valueChanged = function(e) {
+        $("#simpleList").dxList("option", "itemDeleteMode", e.value);
+    };
+
+    var list_updateSelection = function(e) {
+        var selectedItems = e.component.option("selectedItems");
+        var selectedTexts = $.map(selectedItems, function (item) {
+            return item.Text;
+        });
+        $("#selectedItems").text(selectedTexts.join(", "));
+    };
+</script>

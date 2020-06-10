@@ -1,0 +1,1 @@
+DevExtreme ASP.NET MVC Controls include a set of jQuery-powered server-side components for visualizing data collections and performing actions on the view. Being intuitive and adaptive, these components blend in with other controls in your application perfectly. You can choose between Razor C\# and Razor VB syntax and use lambda expressions when configuring them.

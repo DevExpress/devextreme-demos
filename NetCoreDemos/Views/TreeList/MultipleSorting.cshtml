@@ -1,0 +1,44 @@
+﻿@(Html.DevExtreme().TreeList<DevExtreme.NETCore.Demos.Models.TreeList.EmployeeTask>()
+    .ID("tasks")
+    .DataSource(ds => ds.Mvc().Controller("TreeListTasks").LoadAction("Tasks").Key("Task_ID"))
+    .KeyExpr("Task_ID")
+    .ParentIdExpr("Task_Parent_ID")
+    .ColumnAutoWidth(true)
+    .WordWrapEnabled(true)
+    .ShowBorders(true)
+    .Sorting(sorting => sorting.Mode(GridSortingMode.Multiple))
+    .Columns(columns => {
+        columns.AddFor(m => m.Task_Subject)
+            .MinWidth(300);
+
+        columns.AddFor(m => m.Task_Assigned_Employee_ID)
+            .SortOrder(SortOrder.Asc)
+            .MinWidth(120)
+            .Lookup(lookup => lookup
+                .DataSource(ds => ds.Mvc()
+                    .Controller("TreeListTasks")
+                    .LoadAction("TaskEmployees")
+                    .Key("ID")
+                )
+                .ValueExpr("ID")
+                .DisplayExpr("Name")
+            );
+
+        columns.AddFor(m => m.Task_Status)
+            .SortOrder(SortOrder.Asc)
+            .MinWidth(120)
+            .Lookup(lookup => lookup
+                .DataSource(new[] {
+                    "Not Started",
+                    "Need Assistance",
+                    "In Progress",
+                    "Deferred",
+                    "Completed"
+                })
+            );
+
+        columns.AddFor(m => m.Task_Start_Date);
+
+        columns.AddFor(m => m.Task_Due_Date);
+    })
+)

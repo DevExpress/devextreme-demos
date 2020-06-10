@@ -1,0 +1,36 @@
+﻿@model IEnumerable<object>
+
+@(Html.DevExtreme().PieChart()
+    .ID("pie")
+    .Palette(VizPalette.SoftPastel)
+    .Type(PieChartType.Doughnut)
+    .Title("The Population of Continents and Regions")
+    .Tooltip(t => t
+        .Enabled(true)
+        .Format(Format.Millions)
+        .CustomizeTooltip(@<text>
+            function(arg) {
+                return {
+                    text: arg.valueText + " - " + (arg.percent * 100).toFixed(2) + "%"
+                };
+            }
+        </text>)
+    )
+    .Legend(l => l
+        .HorizontalAlignment(HorizontalAlignment.Right)
+        .VerticalAlignment(VerticalEdge.Top)
+        .Margin(0)
+    )
+    .Export(e => e.Enabled(true))
+    .Series(s => s
+        .Add()
+        .ArgumentField("Region")
+        .ValueField("Val")
+        .Label(l => l
+            .Visible(true)
+            .Format(Format.Millions)
+            .Connector(c => c.Visible(true))
+        )
+    )
+    .DataSource(Model)
+)

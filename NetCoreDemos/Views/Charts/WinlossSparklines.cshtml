@@ -1,0 +1,145 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.MonthlyPrice>
+
+<div class="long-title"><h3>Monthly Prices of Aluminium, Nickel and Copper</h3></div>
+<div id="chart-demo">
+    <table class="demo-table" border="1">
+        <tr>
+            <th></th>
+            <th>Aluminium (USD/ton)</th>
+            <th>Nickel (USD/ton)</th>
+            <th>Copper (USD/ton)</th>
+        </tr>
+        <tr>
+            <th>2010</th>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Aluminium"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2010")
+                    .Type(SparklineType.WinLoss)
+                    .ShowMinMax(true)
+                    .WinlossThreshold(2100)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Nickel"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2010")
+                    .WinColor("#6babac")
+                    .LossColor("#8076bb")
+                    .WinlossThreshold(19000)
+                    .Type(SparklineType.WinLoss)
+                    .ShowMinMax(true)
+                    .ShowFirstLast(false)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Copper"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2010")
+                    .WinlossThreshold(8000)
+                    .WinColor("#7e4452")
+                    .LossColor("#ebdd8f")
+                    .FirstLastColor("#e55253")
+                    .Type(SparklineType.WinLoss)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+        </tr>
+        <tr>
+            <th>2011</th>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Aluminium"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2011")
+                    .Type(SparklineType.WinLoss)
+                    .ShowMinMax(true)
+                    .WinlossThreshold(2100)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Nickel"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2011")
+                    .WinColor("#6babac")
+                    .LossColor("#8076bb")
+                    .WinlossThreshold(19000)
+                    .Type(SparklineType.WinLoss)
+                    .ShowMinMax(true)
+                    .ShowFirstLast(false)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Copper"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2011")
+                    .WinlossThreshold(8000)
+                    .WinColor("#7e4452")
+                    .LossColor("#ebdd8f")
+                    .FirstLastColor("#e55253")
+                    .Type(SparklineType.WinLoss)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+        </tr>
+        <tr>
+            <th>2012</th>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Aluminium"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2012")
+                    .Type(SparklineType.WinLoss)
+                    .ShowMinMax(true)
+                    .WinlossThreshold(2100)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Nickel"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2012")
+                    .WinColor("#6babac")
+                    .LossColor("#8076bb")
+                    .WinlossThreshold(19000)
+                    .Type(SparklineType.WinLoss)
+                    .ShowMinMax(true)
+                    .ShowFirstLast(false)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Copper"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2012")
+                    .WinlossThreshold(8000)
+                    .WinColor("#7e4452")
+                    .LossColor("#ebdd8f")
+                    .FirstLastColor("#e55253")
+                    .Type(SparklineType.WinLoss)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+        </tr>
+    </table>
+</div>

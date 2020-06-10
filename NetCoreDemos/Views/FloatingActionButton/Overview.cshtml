@@ -1,0 +1,169 @@
+﻿@(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.DataGrid.Employee>()
+    .ID("grid")
+    .DataSource(d => d.Mvc()
+        .Controller("DataGridEmployees")
+        .LoadAction("Get")
+        .UpdateAction("Put")
+        .InsertAction("Post")
+        .DeleteAction("Delete")
+        .Key("ID")
+    )
+    .Selection(s => s.Mode(SelectionMode.Single))
+    .Paging(paging => paging.Enabled(false))
+    .Editing(e => e.Mode(GridEditMode.Popup)
+        .Popup(p => p
+            .Width(600)
+            .Height(400)
+            .Position(pos => pos
+                .My(HorizontalAlignment.Center, VerticalAlignment.Center)
+                .At(HorizontalAlignment.Center, VerticalAlignment.Center)
+                .Of("#grid")
+            )
+        )
+        .Texts(t => t
+            .ConfirmDeleteMessage("")
+        )
+    )
+    .ShowBorders(true)
+    .Columns(columns => {
+        columns.Add()
+            .DataField("Prefix")
+            .Caption("Title");
+
+        columns.Add().DataField("FirstName");
+        columns.Add().DataField("LastName");
+
+        columns.Add()
+            .DataField("Position")
+            .Width(130);
+
+        columns.Add()
+            .DataField("StateID")
+            .Caption("State")
+            .Width(125)
+            .Lookup(lookup => lookup
+                .DataSource(d => d.Mvc().Controller("DataGridStatesLookup").LoadAction("Get").Key("ID"))
+                .DisplayExpr("Name")
+                .ValueExpr("ID")
+            );
+
+        columns.Add()
+            .DataField("BirthDate")
+            .DataType(GridColumnDataType.Date)
+            .Width(125);
+    })
+    .OnSelectionChanged("selectionChanged")
+)
+
+@(Html.DevExtreme().SpeedDialAction()
+    .ID("action-add")
+    .Icon("add")
+    .Label("Add row")
+    .Index(1)
+    .OnClick("addRow")
+)
+
+@(Html.DevExtreme().SpeedDialAction()
+    .ID("action-remove")
+    .Icon("trash")
+    .Visible(false)
+    .Label("Delete row")
+    .Index(2)
+    .OnClick("deleteRow")
+)
+
+@(Html.DevExtreme().SpeedDialAction()
+    .ID("action-edit")
+    .Icon("edit")
+    .Visible(false)
+    .Label("Edit row")
+    .Index(3)
+    .OnClick("editRow")
+)
+
+<div id="action-remove"></div>
+<div id="action-edit"></div>
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Direction:</span>
+        @(Html.DevExtreme().SelectBox()
+            .DataSource(new JS("['auto', 'up', 'down']"))
+            .Value("auto")
+            .OnSelectionChanged("directionChanged")
+        )
+    </div>
+</div>
+
+<script>
+    var directions = {
+        "auto": {
+            icon: "rowfield",
+            shading: true,
+            position: {
+                of: "#grid",
+                my: "right bottom",
+                at: "right bottom",
+                offset: "-16 -16"
+            }
+        },
+        "up": {
+            icon: "rowfield",
+            shading: true,
+            direction: "up",
+            position: {
+                of: "#grid",
+                my: "right bottom",
+                at: "right bottom",
+                offset: "-16 -16"
+            }
+        },
+        "down": {
+            icon: "rowfield",
+            shading: true,
+            direction: "down",
+            position: {
+                of: ".dx-datagrid-rowsview",
+                my: "right top",
+                at: "right top",
+                offset: "-16 16"
+            }
+        }
+    };
+
+    var selectedRowIndex = -1;
+
+    var selectionChanged = function (e) {
+        selectedRowIndex = e.component.getRowIndexByKey(e.selectedRowKeys[0]);
+
+        $("#action-remove").dxSpeedDialAction("instance").option("visible", selectedRowIndex !== -1);
+        $("#action-edit").dxSpeedDialAction("instance").option("visible", selectedRowIndex !== -1);
+    }
+
+    var getGridInstance = function() {
+        return $("#grid").dxDataGrid("instance");
+    }
+
+    var addRow = function () {
+        getGridInstance().addRow();
+        getGridInstance().deselectAll();
+    }
+
+    var deleteRow = function () {
+        getGridInstance().deleteRow(selectedRowIndex);
+        getGridInstance().deselectAll();
+    }
+
+    var editRow = function () {
+        getGridInstance().editRow(selectedRowIndex);
+        getGridInstance().deselectAll();
+    }
+
+    var directionChanged = function(e) {
+        DevExpress.config({
+            floatingActionButtonConfig: directions[e.selectedItem]
+        });
+
+        DevExpress.ui.repaintFloatingActionButton();
+    }
+</script>

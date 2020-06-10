@@ -1,0 +1,7 @@
+﻿#chart {
+    height: 440px;
+}
+
+.tooltip-template span {
+    font-weight: 500;
+}

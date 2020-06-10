@@ -1,0 +1,109 @@
+﻿<div id="data-grid-demo">
+    @(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.DataGrid.Employee>()
+        .ID("gridContainer")
+        .Paging(paging => {
+            paging.Enabled(true);
+            paging.PageSize(10);
+        })
+        .Pager(pager => pager.Visible(false))
+        .ShowBorders(true)
+        .KeyboardNavigation(options => {
+            options.EnterKeyAction(GridEnterKeyAction.MoveFocus);
+            options.EditOnKeyPress(true);
+            options.EnterKeyDirection(GridEnterKeyDirection.Column);
+        })
+        .Editing(editing => {
+            editing.Mode(GridEditMode.Batch);
+            editing.AllowUpdating(true);
+            editing.StartEditAction(GridStartEditAction.DblClick);
+        })
+        .Columns(columns => {
+            columns.AddFor(m => m.Prefix)
+                .Width(70);
+
+            columns.AddFor(m => m.FirstName);
+
+            columns.AddFor(m => m.LastName);
+
+            columns.AddFor(m => m.Position)
+                .Width(170);
+
+            columns.AddFor(m => m.StateID)
+                .Width(125)
+                .Lookup(lookup => lookup
+                    .DataSource(d => d.Mvc().Controller("DataGridStatesLookup").LoadAction("Get").Key("ID"))
+                    .DisplayExpr("Name")
+                    .ValueExpr("ID")
+                );
+
+            columns.AddFor(m => m.BirthDate);
+        })
+        .DataSource(d => d.Mvc()
+            .Controller("DataGridEmployees")
+            .LoadAction("Get")
+            .UpdateAction("Put")
+            .Key("ID")
+        )
+        .OnFocusedCellChanging(@<text>
+            function(e) {
+                e.isHighlighted = true;
+            }
+        </text>)
+    )
+
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option-container">
+            <div class="option check-box">
+                <div id="editOnKeyPress"></div>
+                @(Html.DevExtreme().CheckBox()
+                    .ID("editOnKeyPress")
+                    .Text("Edit On Key Press")
+                    .Value(true)
+                    .OnValueChanged(@<text>
+                        function(data) {
+                            var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                            dataGrid.option("keyboardNavigation.editOnKeyPress", data.value);
+                        }
+                    </text>)
+                )
+            </div>
+            <div class="option">
+                <span class="option-caption">Enter Key Action</span>
+                @{
+                    var enterKeyActionDataSource = new[] { "startEdit", "moveFocus" };
+                }
+
+                @(Html.DevExtreme().SelectBox()
+                    .ID("enterKeyAction")
+                    .DataSource(enterKeyActionDataSource)
+                    .Value(enterKeyActionDataSource[1])
+                    .OnValueChanged(@<text>
+                        function(data) {
+                            var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                            dataGrid.option("keyboardNavigation.enterKeyAction", data.value);
+                        }
+                    </text>)
+                )
+            </div>
+            <div class="option">
+                <span class="option-caption">Enter Key Direction</span>
+                @{
+                    var enterKeyDirectionDataSource = new[] { "none", "column", "row" };
+                }
+
+                @(Html.DevExtreme().SelectBox()
+                    .ID("enterKeyDirection")
+                    .DataSource(enterKeyDirectionDataSource)
+                    .Value(enterKeyDirectionDataSource[1])
+                    .OnValueChanged(@<text>
+                        function(data) {
+                            var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                            dataGrid.option("keyboardNavigation.enterKeyDirection", data.value);
+                        }
+                    </text>)
+                )
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+﻿@(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.Order>()
+    .ID("gridContainer")
+    .ShowBorders(true)
+    .DataSource(d => d.Mvc().Controller("DataGridCustomSummaries").LoadAction("Get").Key("ID"))
+    .Paging(p => p.Enabled(false))
+    .Selection(s => s.Mode(SelectionMode.Multiple))
+    .Columns(columns => {
+        columns.AddFor(m => m.OrderNumber)
+            .Width(130);
+
+        columns.AddFor(m => m.OrderDate)
+            .Width(160);
+
+        columns.AddFor(m => m.Employee);
+
+        columns.AddFor(m => m.CustomerStoreCity);
+
+        columns.AddFor(m => m.CustomerStoreState);
+
+        columns.AddFor(m => m.SaleAmount)
+            .Alignment(HorizontalAlignment.Right)
+            .Format(Format.Currency);
+    })
+    .SelectedRowKeys(new[] { 1, 4, 7 })
+    .OnSelectionChanged(@<text>
+        function(e) {
+            e.component.refresh(true);
+        }
+    </text>)
+    .Summary(s => s.TotalItems(items =>
+        items.Add()
+            .Name("SelectedRowsSummary")
+            .ShowInColumn("SaleAmount")
+            .DisplayFormat("Sum: {0}")
+            .ValueFormat(Format.Currency)
+            .SummaryType(SummaryType.Custom)
+        )
+        .CalculateCustomSummary(@<text>
+            function (options) {
+                if (options.name === "SelectedRowsSummary") {
+                    if (options.summaryProcess === "start") {
+                        options.totalValue = 0;
+                    }
+                    if (options.summaryProcess === "calculate") {
+
+                        if (options.component.isRowSelected(options.value.ID)) {
+                            options.totalValue = options.totalValue + options.value.SaleAmount;
+                        }
+                    }
+                    if (options.summaryProcess === "finalize") {
+                        //
+                    }
+                }
+            }
+        </text>)
+    )
+)

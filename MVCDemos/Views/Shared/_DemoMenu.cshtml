@@ -1,0 +1,25 @@
+﻿@{
+    var routeValues = ViewContext.RouteData.Values;
+    var nodes = DemoMenuMeta.Get(Context).ToHierarchicalDataSource(Url, (string)routeValues["controller"], (string)routeValues["action"]);
+}
+
+<div class="demo-menu">
+    <div id="demo-menu-tree"></div>
+    <script>
+        $(function() {
+            $("#demo-menu-tree").dxTreeView({
+                dataSource: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(nodes)),
+                dataStructure: "tree",
+                itemTemplate: function(data) {
+                    return $(document.createElement("a")).attr("href", data.Url).text(data.Text);
+                },
+                itemsExpr: "Items",
+                expandedExpr: "Active",
+                selectedExpr: "Active",
+                animationEnabled: false,
+                focusStateEnabled: false,
+                selectNodesRecursive: false,
+            });
+        });
+    </script>
+</div>

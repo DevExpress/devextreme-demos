@@ -1,0 +1,18 @@
+﻿<%
+    var movie = getMovieById(appointmentData.MovieId),
+        data = arguments[0];
+%>
+<div class="movie-tooltip">
+    <img src="<%- movie.Image %>" alt="" />
+    <div class="movie-info">
+        <div class="movie-title">
+            <%- movie.Text %> (<%- movie.Year %>)
+        </div>
+        <div>
+            Director <%- movie.Director %>
+        </div>
+        <div>
+            Duration <%- movie.Duration %> minutes
+        </div>
+    </div>
+</div>

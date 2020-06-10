@@ -1,0 +1,20 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.NumericScaleProduct>
+
+@(Html.DevExtreme().RangeSelector()
+    .ID("range-selector")
+    .DataSource(Model)
+    .Margin(m => m.Top(50))
+    .Chart(c => c
+        .CommonSeriesSettings(cs => cs
+            .Type(SeriesType.Spline)
+            .ArgumentField("Weight")
+        )
+        .Series(s => {
+            s.Add().ValueField("AppleCost").Color("#00ff00");
+            s.Add().ValueField("OrangeCost").Color("#ffa500");
+        })
+    )
+    .Scale(s => s.ValueType(ChartDataType.Numeric))
+    .Value(new[] { 1.0, 2.0 })
+    .Title("Select a Product Weight")
+)

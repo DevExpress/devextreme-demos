@@ -1,0 +1,69 @@
+﻿@(Html.DevExtreme().VectorMap()
+    .ID("vector-map")
+    .Layers(layers => {
+        layers.Add()
+            .DataSource(new JS("DevExpress.viz.map.sources.world"))
+            .HoverEnabled(false);
+
+        layers.Add()
+            .Name("bubbles")
+            .DataSource(d => d.StaticJson().Url(Url.Action("GetBubbleMarkers")))
+            .DataSourceOptions(dso => dso.Map("vectorMap_bubblesLayer_dataSource_map"))
+            .ElementType(VectorMapMarkerType.Bubble)
+            .DataField("value")
+            .MinSize(20)
+            .MaxSize(40)
+            .SizeGroups(new double[] { 0, 8000, 10000, 50000 })
+            .Opacity(0.8);
+    })
+    .Tooltip(t => t
+        .Enabled(true)
+        .CustomizeTooltip("vectorMap_customizeTooltip")
+    )
+    .Legends(l => l.Add()
+        .Source(s => s
+            .Layer("bubbles")
+            .Grouping("size")
+        )
+        .MarkerShape(VectorMapMarkerShape.Circle)
+        .CustomizeText("vectorMap_bubblesLegend_customizeText")
+        .CustomizeItems("vectorMap_bubblesLegend_customizeItems")
+    )
+    .Bounds(new double[] { -180, 85, 180, -60 })
+)
+
+<script>
+    function vectorMap_bubblesLayer_dataSource_map(item) {
+        item.features = $.map(item.features,
+            function(data) {
+                return {
+                    type: "Feature",
+                    geometry: {
+                        type: "Point",
+                        coordinates: data.coordinates
+                    },
+                    properties: {
+                        text: data.text,
+                        value: data.value,
+                        tooltip: "<b>"+data.text+"</b>\n"+data.value+"K"
+                    }
+                };
+            }
+        );
+        return item;
+    }
+
+    function vectorMap_customizeTooltip(arg) {
+        if(arg.layer.type === "marker") {
+            return { text: arg.attribute("tooltip") };
+        }
+    }
+
+    function vectorMap_bubblesLegend_customizeText(arg) {
+        return ["< 8000K", "8000K to 10000K", "> 10000K"][arg.index];
+    }
+
+    function vectorMap_bubblesLegend_customizeItems(items) {
+        return items.reverse();
+    }
+</script>

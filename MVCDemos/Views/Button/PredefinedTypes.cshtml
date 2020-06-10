@@ -1,0 +1,143 @@
+﻿<div class="buttons-demo">
+    <div class="buttons">
+        <div>
+            <div class="buttons-column">
+                <div class="column-header">
+                    Normal
+                </div>
+                <div>
+                    @(Html.DevExtreme().Button()
+                        .Text(ButtonStylingMode.Contained.ToString())
+                        .Type(ButtonType.Normal)
+                        .StylingMode(ButtonStylingMode.Contained)
+                        .Width(120)
+                        .OnClick("notify")
+                    )
+                </div>
+                <div>
+                    @(Html.DevExtreme().Button()
+                        .Text(ButtonStylingMode.Outlined.ToString())
+                        .Type(ButtonType.Normal)
+                        .StylingMode(ButtonStylingMode.Outlined)
+                        .Width(120)
+                        .OnClick("notify")
+                    )
+                </div>
+                <div>
+                    @(Html.DevExtreme().Button()
+                        .Text(ButtonStylingMode.Text.ToString())
+                        .Type(ButtonType.Normal)
+                        .StylingMode(ButtonStylingMode.Text)
+                        .Width(120)
+                        .OnClick("notify")
+                    )
+                </div>
+            </div>
+            <div class="buttons-column">
+                <div class="column-header">
+                    Success
+                </div>
+                <div>
+                    @(Html.DevExtreme().Button()
+                        .Text(ButtonStylingMode.Contained.ToString())
+                        .Type(ButtonType.Success)
+                        .StylingMode(ButtonStylingMode.Contained)
+                        .Width(120)
+                        .OnClick("notify")
+                    )
+                </div>
+                <div>
+                    @(Html.DevExtreme().Button()
+                        .Text(ButtonStylingMode.Outlined.ToString())
+                        .Type(ButtonType.Success)
+                        .StylingMode(ButtonStylingMode.Outlined)
+                        .Width(120)
+                        .OnClick("notify")
+                    )
+                </div>
+                <div>
+                    @(Html.DevExtreme().Button()
+                        .Text(ButtonStylingMode.Text.ToString())
+                        .Type(ButtonType.Success)
+                        .StylingMode(ButtonStylingMode.Text)
+                        .Width(120)
+                        .OnClick("notify")
+                    )
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="buttons-column">
+                <div class="column-header">
+                    Default
+                </div>
+                <div>
+                    @(Html.DevExtreme().Button()
+                        .Text(ButtonStylingMode.Contained.ToString())
+                        .Type(ButtonType.Default)
+                        .StylingMode(ButtonStylingMode.Contained)
+                        .Width(120)
+                        .OnClick("notify")
+                    )
+                </div>
+                <div>
+                    @(Html.DevExtreme().Button()
+                        .Text(ButtonStylingMode.Outlined.ToString())
+                        .Type(ButtonType.Default)
+                        .StylingMode(ButtonStylingMode.Outlined)
+                        .Width(120)
+                        .OnClick("notify")
+                    )
+                </div>
+                <div>
+                    @(Html.DevExtreme().Button()
+                        .Text(ButtonStylingMode.Text.ToString())
+                        .Type(ButtonType.Default)
+                        .StylingMode(ButtonStylingMode.Text)
+                        .Width(120)
+                        .OnClick("notify")
+                    )
+                </div>
+            </div>
+            <div class="buttons-column">
+                <div class="column-header">
+                    Danger
+                </div>
+                <div>
+                    @(Html.DevExtreme().Button()
+                        .Text(ButtonStylingMode.Contained.ToString())
+                        .Type(ButtonType.Danger)
+                        .StylingMode(ButtonStylingMode.Contained)
+                        .Width(120)
+                        .OnClick("notify")
+                    )
+                </div>
+                <div>
+                    @(Html.DevExtreme().Button()
+                        .Text(ButtonStylingMode.Outlined.ToString())
+                        .Type(ButtonType.Danger)
+                        .StylingMode(ButtonStylingMode.Outlined)
+                        .Width(120)
+                        .OnClick("notify")
+                    )
+                </div>
+                <div>
+                    @(Html.DevExtreme().Button()
+                        .Text(ButtonStylingMode.Text.ToString())
+                        .Type(ButtonType.Danger)
+                        .StylingMode(ButtonStylingMode.Text)
+                        .Width(120)
+                        .OnClick("notify")
+                    )
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function notify(e) {
+        var buttonText = e.component.option("text");
+        DevExpress.ui.notify("The " + buttonText + " button was clicked");
+    }
+</script>

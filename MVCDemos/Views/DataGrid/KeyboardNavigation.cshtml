@@ -1,0 +1,39 @@
+﻿<div id="data-grid-demo">
+    <p>Click this text and press <b>Tab</b></p>
+    @(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.DataGrid.Employee>()
+        .ID("gridContainer")
+        .ShowBorders(true)
+        .Editing(editing => {
+            editing.AllowUpdating(true);
+            editing.AllowDeleting(true);
+            editing.SelectTextOnEditStart(true);
+            editing.UseIcons(true);
+        })
+        .HeaderFilter(headerFilter => headerFilter.Visible(true))
+        .FilterPanel(filterPanel => filterPanel.Visible(true))
+        .FilterRow(filterRow => filterRow.Visible(true))
+        .Paging(paging => {
+            paging.Enabled(true);
+            paging.PageSize(10);
+        })
+        .Pager(pager => {
+            pager.Visible(true);
+            pager.AllowedPageSizes(new[] {5, 10});
+            pager.ShowPageSizeSelector(true);
+            pager.ShowNavigationButtons(true);
+        })
+        .FocusedRowEnabled(true)
+        .Columns(columns => {
+            columns.AddFor(m => m.FirstName);
+            columns.AddFor(m => m.LastName);
+            columns.AddFor(m => m.Position);
+            columns.AddFor(m => m.StateID)
+                .Lookup(lookup => lookup
+                    .DataSource(d => d.WebApi().Controller("DataGridStatesLookup").Key("ID"))
+                    .DisplayExpr("Name")
+                    .ValueExpr("ID")
+                );
+        })
+        .DataSource(d => d.WebApi().Controller("DataGridEmployees").UpdateAction(true).Key("ID"))
+    )
+</div>

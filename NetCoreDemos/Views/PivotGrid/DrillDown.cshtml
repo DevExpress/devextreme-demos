@@ -1,0 +1,81 @@
+﻿@using DevExtreme.NETCore.Demos.Models
+
+@(Html.DevExtreme().PivotGrid<Sale>()
+    .ID("sales")
+    .AllowSortingBySummary(true)
+    .AllowSorting(true)
+    .AllowFiltering(true)
+    .AllowExpandAll(true)
+    .ShowBorders(true)
+    .FieldChooser(c => c.Enabled(false))
+    .OnCellClick("cell_click")
+    .DataSource(d => d
+        .Store(s => s.Mvc().Controller("PivotGridData").LoadAction("Get"))
+        .Fields(fields => {
+            fields.AddFor(m => m.Region)
+                .Width(120)
+                .Area(PivotGridArea.Row);
+
+            fields.AddFor(m => m.City)
+                .Width(150)
+                .Area(PivotGridArea.Row);
+
+            fields.AddFor(m => m.Date)
+                .Area(PivotGridArea.Column);
+
+            fields.AddFor(m => m.Amount)
+                .SummaryType(SummaryType.Sum)
+                .Format(Format.Currency)
+                .Area(PivotGridArea.Data);
+        })
+    )
+)
+
+@(Html.DevExtreme().Popup()
+    .ID("sales-popup")
+    .Width(600)
+    .Height(400)
+    .ContentTemplate(@<text>
+        @(Html.DevExtreme().DataGrid<Sale>()
+            .ElementAttr("class", "drill-down")
+            .Width(560)
+            .Height(300)
+            .Columns(columns => {
+                columns.AddFor(m => m.Region);
+                columns.AddFor(m => m.City);
+                columns.AddFor(m => m.Amount);
+                columns.AddFor(m => m.Date);
+            }))
+    </text>)
+    .OnShowing("popup_showing")
+    .OnShown("popup_shown")
+)
+
+<script>
+    var drillDownDataSource = {};
+
+    function cell_click(e) {
+        if(e.area == "data") {
+            var pivotGridDataSource = e.component.getDataSource(),
+                rowPathLength = e.cell.rowPath.length,
+                rowPathName = e.cell.rowPath[rowPathLength - 1],
+                popupTitle = (rowPathName ? rowPathName : "Total") + " Drill Down Data",
+                salesPopup = $("#sales-popup").dxPopup("instance");
+
+            drillDownDataSource = pivotGridDataSource.createDrillDownDataSource(e.cell);
+            salesPopup.option("title", popupTitle);
+            salesPopup.show();
+        }
+    }
+
+    function popup_showing() {
+        $(".drill-down")
+            .dxDataGrid("instance")
+            .option("dataSource", drillDownDataSource);
+    }
+    function popup_shown() {
+        $(".drill-down")
+            .dxDataGrid("instance")
+            .updateDimensions();
+    }
+</script>

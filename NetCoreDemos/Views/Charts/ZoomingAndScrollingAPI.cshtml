@@ -1,0 +1,39 @@
+﻿@using DevExtreme.AspNet.Mvc.Factories;
+@using DevExtreme.AspNet.Mvc.Builders;
+
+@functions {
+    Action<CollectionFactory<ChartSeriesBuilder>> ConfigureSeries() {
+        return (CollectionFactory<ChartSeriesBuilder> factory) => {
+            factory.Add().ArgumentField("Arg").ValueField("Y1");
+            factory.Add().ArgumentField("Arg").ValueField("Y2");
+            factory.Add().ArgumentField("Arg").ValueField("Y3");
+        };
+    }
+}
+
+@(Html.DevExtreme().Chart()
+    .ID("zoomedChart")
+    .Palette(VizPalette.HarmonyLight)
+    .CommonSeriesSettings(s => s.Point(p => p.Size(7)))
+    .Series(ConfigureSeries())
+    .Legend(l => l.Visible(false))
+    .DataSource(Model)
+)
+
+@(Html.DevExtreme().RangeSelector()
+    .Size(s => s.Height(120))
+    .Margin(m => m.Left(10))
+    .Scale(s => s.MinorTickCount(1))
+    .Chart(c => c
+        .Series(ConfigureSeries())
+        .Palette(VizPalette.HarmonyLight)
+    )
+    .Behavior(b => b.CallValueChanged(ValueChangedCallMode.OnMoving))
+    .OnValueChanged(@<text>
+        function(e) {
+            var zoomedChart = $("#zoomedChart").dxChart("instance");
+            zoomedChart.getArgumentAxis().visualRange(e.value);
+        }
+    </text>)
+    .DataSource(Model)
+)

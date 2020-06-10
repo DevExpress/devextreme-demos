@@ -1,0 +1,15 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Palette(VizPalette.HarmonyLight)
+    .Series(s => {
+        s.Add().ArgumentField("Arg").ValueField("Y1");
+        s.Add().ArgumentField("Arg").ValueField("Y2");
+    })
+    .ArgumentAxis(a => a
+        .VisualRange(range => range.StartValue(300).EndValue(500))
+    )
+    .ScrollBar(s => s.Visible(true))
+    .ZoomAndPan(z => z.ArgumentAxis(ChartZoomAndPanMode.Both))
+    .Legend(l => l.Visible(false))
+    .DataSource(Model)
+)

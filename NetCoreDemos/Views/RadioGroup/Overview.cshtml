@@ -1,0 +1,100 @@
+﻿@{
+    var priorities = new[] { "Low", "Normal", "Urgent", "High" };
+}
+<div class="form">
+    <div class="dx-fieldset">
+        <div class="dx-field">
+            <div class="dx-field-label">Default mode</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().RadioGroup()
+                    .Items(priorities)
+                    .Value("Low")
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Disabled</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().RadioGroup()
+                    .Items(priorities)
+                    .Value("Normal")
+                    .Disabled(true)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Horizontal layout</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().RadioGroup()
+                    .Items(priorities)
+                    .Value("Low")
+                    .Layout(Orientation.Horizontal)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Custom item template</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().RadioGroup()
+                    .Items(priorities)
+                    .Value("Urgent")
+                    .ItemTemplate(new JS("radioGroupItemTemplate"))
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Event handling</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().RadioGroup()
+                    .ID("radio-group-with-selection")
+                    .Items(priorities)
+                    .Value("Low")
+                    .OnValueChanged("radioGroup_valueChanged")
+                )
+            </div>
+        </div>
+    </div>
+    <div id="tasks-list">
+        Tasks by selected priority:
+        <ul id="list">
+            <li>Non-Compete Agreements</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function radioGroupItemTemplate(itemData, _, itemElement) {
+        itemElement
+            .parent().addClass(itemData.toLowerCase())
+            .text(itemData);
+    }
+
+    function radioGroup_valueChanged(e) {
+        $("#list").children().remove();
+        var priorities = e.component.option("items");
+
+        $.each([{
+            subject: "Choose between PPO and HMO Health Plan",
+            priority: "High"
+        }, {
+            subject: "Non-Compete Agreements",
+            priority: "Low"
+        }, {
+            subject: "Comment on Revenue Projections",
+            priority: "Normal"
+        }, {
+            subject: "Sign Updated NDA",
+            priority: "Urgent"
+        }, {
+            subject: "Submit Questions Regarding New NDA",
+            priority: "High"
+        }, {
+            subject: "Rollout of New Website and Marketing Brochures",
+            priority: "High"
+        }], function(_, item) {
+            if(item.priority === e.value) {
+                $("#list").append($("<li/>").text(item.subject));
+            }
+        });
+    }
+</script>

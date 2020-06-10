@@ -1,0 +1,56 @@
+@model DevExtreme.MVC.Demos.ViewModels.AdaptabilityAppointmentViewModel
+
+@(Html.DevExtreme().Scheduler()
+        .ID("scheduler")
+        .DataSource(Model.Appointments)
+        .Views(new[] {
+SchedulerViewType.Week,
+SchedulerViewType.Month
+        })
+        .CurrentView(SchedulerViewType.Month)
+        .CurrentDate(new DateTime(2017, 5, 25))
+        .AdaptivityEnabled(true)
+        .StartDayHour(9)
+        .Resources(res =>
+            {
+                res.Add()
+                .FieldExpr("PriorityId")
+                .ValueExpr("Id")
+                .ColorExpr("Color")
+                .Label("Room")
+                .DataSource(Model.Priorities);
+            })
+        .Height(590)
+        .TextExpr("Text")
+        .StartDateExpr("StartDate")
+        .EndDateExpr("EndDate")
+        .RecurrenceRuleExpr("RecurrenceRule")
+        .AllDayExpr("AllDay")
+)
+
+@(Html.DevExtreme().SpeedDialAction()
+        .ID("speedDialAction")
+        .Icon("plus")
+        .OnClick(@<text>
+            function() {
+            getSchedulerInstance().showAppointmentPopup(createAppointmentPopupData());
+            }
+        </text>)
+)
+
+<script>
+    function createAppointmentPopupData() {
+        var instance = getSchedulerInstance();
+        var currentDate = instance.option('currentDate');
+        var cellDuration = instance.option('cellDuration');
+
+        return {
+            StartDate: new Date(currentDate),
+            EndDate: new Date(currentDate.setMinutes(cellDuration))
+        };
+    }
+
+    function getSchedulerInstance() {
+        return $("#scheduler").dxScheduler("instance");
+    }
+</script>

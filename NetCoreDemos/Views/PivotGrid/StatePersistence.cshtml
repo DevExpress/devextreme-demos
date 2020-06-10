@@ -1,0 +1,122 @@
+﻿@using DevExtreme.NETCore.Demos.Models
+
+<div id="pivotgrid-demo">
+    <div class="desc-container">
+        Expand, filter, sort and perform other operations on&nbsp;the PivotGrid&rsquo;s columns and rows.
+        <a onclick="window.location.reload()">Refresh</a>
+        the web page and note that the PivotGrid&rsquo;s state is&nbsp;automatically persisted.
+    </div>
+
+    @(Html.DevExtreme().Button()
+        .Text("Reset the PivotGrid's State")
+        .OnClick("resetPivotGrid")
+    )
+
+    @(Html.DevExtreme().PivotGrid<Sale>()
+        .ID("pivotgrid")
+        .AllowSortingBySummary(true)
+        .AllowSorting(true)
+        .AllowFiltering(true)
+        .AllowExpandAll(true)
+        .ShowBorders(true)
+        .OnContextMenuPreparing("contextMenu_preparing")
+        .Height(570)
+        .FieldChooser(c => c.Enabled(true))
+        .FieldPanel(p => p.Visible(true))
+        .StateStoring(s => s
+            .Enabled(true)
+            .Type(StateStoringType.LocalStorage)
+            .StorageKey("dx-widget-gallery-pivotgrid-storing")
+        )
+        .DataSource(d => d
+            .Store(s => s.Mvc().Controller("PivotGridData").LoadAction("Get"))
+            .Fields(fields => {
+                fields.AddFor(m => m.Region)
+                    .Width(120)
+                    .Area(PivotGridArea.Row)
+                    .SortBySummaryField("Amount");
+
+                fields.AddFor(m => m.City)
+                    .Width(150)
+                    .Area(PivotGridArea.Row);
+
+                fields.AddFor(m => m.Date)
+                    .Area(PivotGridArea.Column);
+
+                fields.Add()
+                    .GroupName("Date")
+                    .GroupInterval(PivotGridGroupInterval.Year);
+
+                fields.Add()
+                    .GroupName("Date")
+                    .GroupInterval(PivotGridGroupInterval.Quarter);
+
+                fields.AddFor(m => m.Amount)
+                    .Caption("Sales (Sum)")
+                    .SummaryType(SummaryType.Sum)
+                    .Format(Format.Currency)
+                    .Area(PivotGridArea.Data);
+            })
+        )
+    )
+</div>
+
+<script>
+    function getPivotGridInstance() {
+        return $("#pivotgrid").dxPivotGrid("instance");
+    }
+
+    function contextMenu_preparing(e) {
+        var dataSource = e.component.getDataSource(),
+            sourceField = e.field;
+
+        if(sourceField) {
+            if(!sourceField.groupName || sourceField.groupIndex === 0) {
+                e.items.push({
+                    text: "Hide field",
+                    onItemClick: function() {
+                        var fieldIndex;
+                        if(sourceField.groupName) {
+                            fieldIndex = dataSource.getAreaFields(sourceField.area, true)[sourceField.areaIndex].index;
+                        } else {
+                            fieldIndex = sourceField.index;
+                        }
+
+                        dataSource.field(fieldIndex, {
+                            area: null
+                        });
+                        dataSource.load();
+                    }
+                });
+            }
+
+            if(sourceField.dataType === "number") {
+                var setSummaryType = function(args) {
+                    dataSource.field(sourceField.index, {
+                        summaryType: args.itemData.value
+                    });
+
+                    dataSource.load();
+                },
+                menuItems = [];
+
+                e.items.push({ text: "Summary Type", items: menuItems });
+
+                $.each(["Sum", "Avg", "Min", "Max"], function(_, summaryType) {
+                    var summaryTypeValue = summaryType.toLowerCase();
+
+                    menuItems.push({
+                        text: summaryType,
+                        value: summaryType.toLowerCase(),
+                        onItemClick: setSummaryType,
+                        selected: e.field.summaryType === summaryTypeValue
+                    });
+                });
+            }
+        }
+    }
+
+    function resetPivotGrid() {
+        getPivotGridInstance().getDataSource().state({});
+    }
+</script>

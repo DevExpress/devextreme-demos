@@ -1,0 +1,56 @@
+﻿@using DevExtreme.MVC.Demos.Models.DataGrid
+@model IEnumerable<Employee>
+
+@section ExternalDependencies {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/3.3.1/exceljs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.4.0/polyfill.min.js"></script>
+}
+
+@(Html.DevExtreme().DataGrid<Employee>()
+    .ID("gridContainer")
+    .DataSource(Model)
+    .Selection(s => s.Mode(SelectionMode.Multiple))
+    .Export(e => e.Enabled(true).AllowExportSelectedData(true))
+    .ShowBorders(true)
+    .GroupPanel(groupPanel => groupPanel.Visible(true))
+    .Grouping(grouping => grouping.AutoExpandAll(true))
+    .OnExporting("exporting")
+    .Columns(columns =>
+    {
+        columns.AddFor(m => m.FirstName);
+        columns.AddFor(m => m.LastName);
+        columns.AddFor(m => m.City);
+
+        columns.AddFor(m => m.State)
+            .GroupIndex(0);
+
+        columns.AddFor(m => m.Position)
+            .Width(130);
+
+        columns.AddFor(m => m.BirthDate)
+            .DataType(GridColumnDataType.Date).Width(100);
+
+        columns.AddFor(m => m.HireDate)
+            .DataType(GridColumnDataType.Date).Width(100);
+    })
+)
+
+<script>
+    function exporting(e) {
+        var workbook = new ExcelJS.Workbook();
+        var worksheet = workbook.addWorksheet('Employees');
+
+        DevExpress.excelExporter.exportDataGrid({
+            component: e.component,
+            worksheet: worksheet,
+            autoFilterEnabled: true
+        }).then(function () {
+            // https://github.com/exceljs/exceljs#writing-xlsx
+            workbook.xlsx.writeBuffer().then(function (buffer) {
+                saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Employees.xlsx');
+            });
+        });
+        e.cancel = true;
+    }
+</script>

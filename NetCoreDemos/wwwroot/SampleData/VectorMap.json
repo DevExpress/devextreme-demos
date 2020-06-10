@@ -1,0 +1,148 @@
+﻿{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -74, 40.7 ]
+      },
+      "properties": {
+        "value": 8406,
+        "text": "New York City"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 100.47, 13.75 ]
+      },
+      "properties": {
+        "value": 8281,
+        "text": "Bangkok"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 37.62, 55.75 ]
+      },
+      "properties": {
+        "value": 12111,
+        "text": "Moscow"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 121.5, 31.2 ]
+      },
+      "properties": {
+        "value": 24150,
+        "text": "Shanghai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -43.18, -22.9 ]
+      },
+      "properties": {
+        "value": 6429,
+        "text": "Rio de Janeiro"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 31.23, 30.05 ]
+      },
+      "properties": {
+        "value": 8922,
+        "text": "Cairo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 28.95, 41 ]
+      },
+      "properties": {
+        "value": 14160,
+        "text": "Istanbul"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 127, 37.55 ]
+      },
+      "properties": {
+        "value": 10388,
+        "text": "Seoul"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 139.68, 35.68 ]
+      },
+      "properties": {
+        "value": 9071,
+        "text": "Tokyo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 103.83, 1.28 ]
+      },
+      "properties": {
+        "value": 5399,
+        "text": "Singapore"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 30.3, 59.95 ]
+      },
+      "properties": {
+        "value": 5131,
+        "text": "Saint Petersburg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 28.03, -26.2 ]
+      },
+      "properties": {
+        "value": 4434,
+        "text": "Johannesburg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 144.95, -37.8 ]
+      },
+      "properties": {
+        "value": 4252,
+        "text": "Melbourne"
+      }
+    }
+  ]
+}

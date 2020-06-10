@@ -1,0 +1,26 @@
+﻿@(Html.DevExtreme().Scheduler()
+    .ID("scheduler")
+    .DataSource(d => d.Mvc()
+        .Controller("SchedulerData")
+        .Key("AppointmentId")
+        .LoadAction("Get")
+        .UpdateAction("Put")
+        .InsertAction("Post")
+        .DeleteAction("Delete")
+    )
+    .RemoteFiltering(true)
+    .Views(new[] {
+        SchedulerViewType.Day,
+        SchedulerViewType.WorkWeek,
+        SchedulerViewType.Month
+    })
+    .CurrentView(SchedulerViewType.Day)
+    .CurrentDate(new DateTime(2017, 5, 23))
+    .StartDayHour(9)
+    .EndDayHour(19)
+    .Height(600)
+    .TextExpr("Text")
+    .StartDateExpr("StartDate")
+    .EndDateExpr("EndDate")
+    .AllDayExpr("AllDay")
+)

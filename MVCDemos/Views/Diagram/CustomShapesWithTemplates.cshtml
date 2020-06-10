@@ -1,0 +1,74 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.OrgItemPlain>
+
+@(Html.DevExtreme().Diagram()
+    .ID("diagram")
+    .ReadOnly(true)
+    .CustomShapes(cs => {
+        foreach(var employee in Model) {
+            cs.Add()
+                .Type("employee" + employee.ID)
+                .BaseType("rectangle")
+                .DefaultWidth(1.5)
+                .DefaultHeight(1)
+                .AllowEditText(false)
+                .AllowResize(false);
+        }
+    })
+    .CustomShapeTemplate(@<text>
+        <svg class="template">
+            <text class="template-name" x="50%" y="20%"><%- dataItem.FullName %></text>
+            <text class="template-title" x="50%" y="45%"><%- dataItem.Title %></text>
+            <text class="template-button" x="50%" y="85%" onclick="showInfo(<%- JSON.stringify(dataItem) %>)">Show Details</text>
+        </svg>
+    </text>)
+    .Nodes(ns => ns
+        .DataSource(d => d
+            .Array()
+            .Key("this")
+            .Data(Model)
+        )
+        .KeyExpr("ID")
+        .TypeExpr(new JS("itemTypeExpr"))
+        .ParentKeyExpr("HeadID")
+        .AutoLayout(al => al
+            .Type(DiagramDataLayoutType.Tree)
+        )
+    )
+)
+
+@(Html.DevExtreme().Popup()
+    .ID("popup")
+    .Width(300)
+    .Height(280)
+    .ShowTitle(true)
+    .Title("Information")
+    .Visible(false)
+    .DragEnabled(false)
+    .CloseOnOutsideClick(true)
+)
+
+<script type="text/javascript">
+    var currentEmployee = {};
+
+    function itemTypeExpr(obj) {
+        return "employee" + obj.ID;
+    }
+
+    function showInfo(employee) {
+        currentEmployee = employee;
+
+        var popup = $("#popup").dxPopup("instance");
+        popup.option("contentTemplate", function() {
+            return $("<div />").append(
+                $("<p>Full Name: <b>" + currentEmployee.FullName + "</b></p>"),
+                $("<p>Title: <b>" + currentEmployee.Title + "</b></p>"),
+                $("<p>City: <b>" + currentEmployee.City + "</b></p>"),
+                $("<p>State: <b>" + currentEmployee.State + "</b></p>"),
+                $("<p>Email: <b>" + currentEmployee.Email + "</b></p>"),
+                $("<p>Skype: <b>" + currentEmployee.Skype + "</b></p>"),
+                $("<p>Mobile Phone: <b>" + currentEmployee.MobilePhone + "</b></p>")
+            )
+        });
+        popup.show();
+    }
+</script>

@@ -1,0 +1,17 @@
+﻿@(Html.DevExtreme().Diagram()
+    .ID("diagram")
+    .AutoZoomMode(DiagramAutoZoomMode.FitWidth)
+)
+
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            url: "@Url.Content("~/Content/SampleData/diagram-flow.json")",
+            dataType: "text",
+            success: function(data) {
+                $("#diagram").dxDiagram("instance").import(data);
+            }
+        });
+    });
+</script>
+

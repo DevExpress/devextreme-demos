@@ -1,0 +1,129 @@
+﻿@(Html.DevExtreme().Toolbar()
+    .Items(items => {
+        items.Add()
+            .Widget(w => w
+            .Button()
+            .Type(ButtonType.Back)
+            .OnClick("backButton_click")
+    )
+    .Location(ToolbarItemLocation.Before);
+
+    items.Add()
+        .Widget(w => w
+        .Button()
+        .Icon("refresh")
+        .OnClick("refreshButton_click")
+    )
+    .LocateInMenu(ToolbarItemLocateInMenuMode.Auto)
+    .Location(ToolbarItemLocation.Before);
+
+    items.Add()
+        .Widget(w => w
+            .SelectBox()
+            .Width(140)
+            .Value(1)
+            .DataSource(new[] {
+                new { id = 1, text = "All" },
+                new { id = 2, text = "Video Players" },
+                new { id = 3, text = "Televisions" },
+                new { id = 4, text = "Monitors" },
+                new { id = 5, text = "Projectors" }
+            })
+            .ValueExpr("id")
+            .DisplayExpr("text")
+            .OnValueChanged("selectBox_value_changed")
+    )
+    .LocateInMenu(ToolbarItemLocateInMenuMode.Auto)
+    .Location(ToolbarItemLocation.After);
+
+    items.Add()
+        .Widget(w => w
+            .Button()
+            .Icon("plus")
+            .OnClick("addButton_click")
+    )
+    .LocateInMenu(ToolbarItemLocateInMenuMode.Auto)
+    .Location(ToolbarItemLocation.After);
+
+    items.Add()
+        .Widget(w => w
+            .Button()
+            .Text("Save")
+            .OnClick("saveButton_click")
+    )
+    .LocateInMenu(ToolbarItemLocateInMenuMode.Always);
+
+    items.Add()
+        .Widget(w => w
+            .Button()
+            .Text("Print")
+            .OnClick("printButton_click")
+    )
+    .LocateInMenu(ToolbarItemLocateInMenuMode.Always);
+
+    items.Add()
+        .Widget(w => w
+            .Button()
+            .Text("Setting")
+            .OnClick("settingsButton_click")
+    )
+    .LocateInMenu(ToolbarItemLocateInMenuMode.Always);
+
+    items.Add()
+        .Template(@<text><div class="toolbar-label"><b>Tom's Club</b> Products</div></text>)
+            .LocateInMenu(ToolbarItemLocateInMenuMode.Never)
+            .Location(ToolbarItemLocation.Center);
+    })
+)
+
+@(Html.DevExtreme().List()
+    .ID("products")
+    .DataSource(d => d.Mvc().LoadAction("GetProducts"))
+    .DataSourceOptions(o => o.Map("mapProducts"))
+)
+
+<script>
+
+    function backButton_click() {
+        DevExpress.ui.notify("Back button has been clicked!");
+    }
+
+    function refreshButton_click() {
+        DevExpress.ui.notify("Refresh button has been clicked!");
+    }
+
+    function selectBox_value_changed(args) {
+        var products = $("#products").dxList("instance").getDataSource();
+
+        if(args.value > 1) {
+            products.filter("CategoryId", "=", args.value);
+        } else {
+            products.filter(null);
+        }
+
+        products.load();
+    }
+
+    function addButton_click() {
+        DevExpress.ui.notify("Add button has been clicked!");
+    }
+
+    function saveButton_click() {
+        DevExpress.ui.notify("Save option has been clicked!");
+    }
+
+    function printButton_click() {
+        DevExpress.ui.notify("Print option has been clicked!");
+    }
+
+    function settingsButton_click() {
+        DevExpress.ui.notify("Settings option has been clicked!");
+    }
+
+    function mapProducts(item) {
+        return {
+            text: item.Text,
+            CategoryId: item.CategoryId
+        };
+    }
+</script>

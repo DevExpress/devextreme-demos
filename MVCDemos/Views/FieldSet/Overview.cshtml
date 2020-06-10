@@ -1,0 +1,41 @@
+﻿<div class="form">
+    <div class="dx-fieldset">
+        <div class="dx-fieldset-header">Simple Field Set</div>
+        <div class="dx-field">
+            <div class="dx-field-label">Full Name</div>
+            <div class="dx-field-value-static">Kevin Carter</div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Position</div>
+            <div class="dx-field-value-static">Shipping Manager</div>
+        </div>
+    </div>
+    <div class="dx-fieldset">
+        <div class="dx-fieldset-header">Field Set with DevExtreme Widgets</div>
+        <div class="dx-field">
+            <div class="dx-field-label">Address</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TextBox()
+                    .Value("424 N Main St."))
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">City</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TextBox()
+                    .Value("San Diego"))
+            </div>
+        </div>
+    </div>
+    <div class="dx-fieldset" id="notes-container">
+        <div class="dx-fieldset-header">Field Set with Custom Value Width</div>
+        <div class="dx-field">
+            <div class="dx-field-label">Notes</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TextArea()
+                    .Height(80)
+                    .Value("Kevin is our hard-working shipping manager and has been helping that department work like clockwork for 18 months. When not in the office, he is usually on the basketball court playing pick-up games."))
+            </div>
+        </div>
+    </div>
+</div>

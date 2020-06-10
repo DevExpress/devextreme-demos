@@ -1,0 +1,46 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Title("Stock Price")
+    .CommonSeriesSettings(s => s
+        .ArgumentField("Date")
+        .Type(SeriesType.Stock)
+    )
+    .Series(s => s
+        .Add()
+        .Name("DELL")
+        .OpenValueField("O")
+        .HighValueField("H")
+        .LowValueField("L")
+        .CloseValueField("C")
+        .Reduction(r => r.Color("red"))
+    )
+    .ValueAxis(a => a
+        .Add()
+        .TickInterval(1)
+        .Title(t => t.Text("US dollars"))
+        .Label(l => l.Format(f => f
+            .Type(Format.Currency)
+            .Precision(0)
+        ))
+    )
+    .ArgumentAxis(a => a
+        .WorkdaysOnly(true)
+        .Label(l => l.Format(Format.ShortDate))
+    )
+    .Export(e => e.Enabled(true))
+    .Tooltip(t => t
+        .Enabled(true)
+        .Location(ChartTooltipLocation.Edge)
+        .CustomizeTooltip(@<text>
+            function (arg) {
+                return {
+                    text: "Open: $" + arg.openValue + "<br />" +
+                            "Close: $" + arg.closeValue + "<br />" +
+                            "High: $" + arg.highValue + "<br />" +
+                            "Low: $" + arg.lowValue + "<br />"
+                };
+            }
+        </text>)
+    )
+    .DataSource(Model)
+)

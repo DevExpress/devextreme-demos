@@ -1,0 +1,30 @@
+﻿@(Html.DevExtreme().FileManager()
+    .FileSystemProvider(new JS("fileSystem"))
+    .ItemView(view => view.Mode(FileManagerItemViewMode.Thumbnails))
+    .CustomizeThumbnail(@<text>
+        function(fileManagerItem) {
+            if(fileManagerItem.isDirectory)
+                return '@Url.Content("~/Content/images/thumbnails/folder.svg")';
+
+            var fileExtension = fileManagerItem.getFileExtension();
+            if(fileExtension === ".txt")
+                return '@Url.Content("~/Content/images/thumbnails/doc-txt.svg")';
+            if(fileExtension === ".rtf")
+                return '@Url.Content("~/Content/images/thumbnails/doc-rtf.svg")';
+            if(fileExtension === ".xml")
+                return '@Url.Content("~/Content/images/thumbnails/doc-xml.svg")';
+
+            return null;
+        }
+    </text>)
+    .Permissions(permissions => permissions
+        .Create(true)
+        .Copy(true)
+        .Move(true)
+        .Delete(true)
+        .Rename(true)
+        .Upload(true)
+        .Download(true))
+    .Height(450))
+
+<script src="~/Scripts/data/fileSystem.js"></script>

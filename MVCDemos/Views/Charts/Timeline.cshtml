@@ -1,0 +1,133 @@
+﻿<div id="chart-demo">
+    @(Html.DevExtreme().Chart()
+        .ID("chart")
+        .CommonSeriesSettings(s => s
+            .ArgumentField("Monarch")
+            .Type(SeriesType.RangeBar)
+            .RangeValue1Field("Start")
+            .RangeValue2Field("End")
+            .BarOverlapGroup("monarchs")
+        )
+        .BarGroupPadding(0.2)
+        .Rotated(true)
+        .Title(t=>t.Text("The British Monarchy")
+            .Subtitle("An Abbreviated Timeline")
+        )
+        .ArgumentAxis(a => a
+            .Tick(t => t.Visible(false))
+            .Categories(new[] { "Royal Houses" })
+        )
+        .Size(s=>s.Height(440))
+        .Legend(l => l
+            .Title("Royal Houses")
+            .VerticalAlignment(VerticalEdge.Bottom)
+            .HorizontalAlignment(HorizontalAlignment.Center)
+        )
+        .Animation(a => a.Enabled(false))
+        .SeriesTemplate(s => s.NameField("House"))
+        .DataSource(new[] {
+            new {
+                Monarch="Anne",
+                Start=new DateTime(1701, 5, 1),
+                House="Stuart",
+                End=new DateTime(1714, 8, 1)
+            },
+            new {
+                Monarch="George I",
+                Start=new DateTime(1714, 8, 1),
+                House="Hanover",
+                End=new DateTime(1727, 6, 11)
+            },
+            new {
+                Monarch="George II",
+                Start=new DateTime(1727, 6, 11),
+                House="Hanover",
+                End=new DateTime(1760, 10, 25)
+            },
+            new {
+                Monarch="George III",
+                Start=new DateTime(1760, 10, 25),
+                House="Hanover",
+                End=new DateTime(1820, 1, 29)
+            },
+            new {
+                Monarch="George IV",
+                Start=new DateTime(1820, 1, 29),
+                House="Hanover",
+                End=new DateTime(1830, 6, 26)
+            },
+            new {
+                Monarch="William IV",
+                Start=new DateTime(1830, 6, 26),
+                House="Hanover",
+                End=new DateTime(1837, 6, 20)
+            },
+            new {
+                Monarch="Victoria",
+                Start=new DateTime(1837, 6, 20),
+                House="Hanover",
+                End=new DateTime(1901, 1, 22)
+            },
+            new {
+                Monarch="Edward VII",
+                Start=new DateTime(1901, 1, 22),
+                House="Saxe-Coburg and Gotha",
+                End=new DateTime(1910, 5, 6)
+            },
+            new {
+                Monarch="George V",
+                Start=new DateTime(1910, 5, 6),
+                House="Saxe-Coburg and Gotha",
+                End=new DateTime(1917, 6, 17)
+            },
+            new {
+                Monarch="George V",
+                Start=new DateTime(1917, 6, 17),
+                House="Windsor",
+                End=new DateTime(1936, 1, 20)
+            },
+            new {
+                Monarch="Edward VIII",
+                Start=new DateTime(1936, 1, 20),
+                House="Windsor",
+                End=new DateTime(1936, 12, 11)
+            },
+            new {
+                Monarch="George VI",
+                Start=new DateTime(1936, 12, 11),
+                House="Windsor",
+                End=new DateTime(1952, 2, 6)
+            },
+            new {
+                Monarch="Elizabeth II",
+                Start=new DateTime(1952, 2, 6),
+                House="Windsor",
+                End=DateTime.Now
+            },
+            new {
+                Monarch="Royal Houses",
+                Start=new DateTime(1701, 5, 1),
+                House="Stuart",
+                End=new DateTime(1714, 8, 1)
+            },
+            new {
+                Monarch="Royal Houses",
+                Start=new DateTime(1714, 8, 1),
+                House="Hanover",
+                End=new DateTime(1901, 1, 22)
+            },
+            new {
+                Monarch="Royal Houses",
+                Start=new DateTime(1901, 1, 22),
+                House="Saxe-Coburg and Gotha",
+                End=new DateTime(1917, 6, 17)
+            },
+            new {
+                Monarch="Royal Houses",
+                Start=new DateTime(1917, 6, 17),
+                House="Windsor",
+                End=DateTime.Now
+            }
+        })
+    )
+</div>

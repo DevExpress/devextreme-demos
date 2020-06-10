@@ -1,0 +1,31 @@
+﻿@(Html.DevExtreme().CircularGauge()
+    .ID("gauge")
+    .Scale(s => s
+        .StartValue(0)
+        .EndValue(3000)
+        .TickInterval(500)
+        .Label(l => l.CustomizeText(@<text>
+            function (arg) {
+                return arg.valueText + " °C";
+            }
+        </text>))
+    )
+    .SubvalueIndicator(i => i
+        .Type(GaugeIndicatorType.TextCloud)
+        .Text(t => t
+            .Format(f => f.Type(Format.Thousands).Precision(1))
+            .CustomizeText(@<text>
+                function (arg) {
+                    return arg.valueText + " °C";
+                }
+            </text>)
+        )
+    )
+    .Export(e => e.Enabled(true))
+    .Title(t => t
+        .Text("Oven Temperature (includes Recommended)")
+        .Font(f => f.Size(28))
+    )
+    .Value(2200)
+    .Subvalues(new double[] { 2700 })
+)

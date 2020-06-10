@@ -1,0 +1,63 @@
+﻿@(Html.DevExtreme().PivotGrid()
+    .ID("sales")
+    .AllowSortingBySummary(true)
+    .AllowSorting(true)
+    .AllowFiltering(true)
+    .AllowExpandAll(true)
+    .Height(470)
+    .ShowBorders(true)
+    .FieldChooser(fc => fc
+        .AllowSearch(true)
+        .ApplyChangesMode(ApplyChangesMode.Instantly))
+    .DataSource(d => d
+        .Fields(fields => {
+            fields.Add()
+                .DataField("[Product].[Category]")
+                .Area(PivotGridArea.Row);
+
+            fields.Add()
+                .DataField("[Product].[Subcategory]")
+                .Area(PivotGridArea.Row)
+                .HeaderFilter(hf => hf.AllowSearch(true));
+
+            fields.Add()
+                .DataField("[Ship Date].[Calendar Year]")
+                .Area(PivotGridArea.Column);
+
+            fields.Add()
+                .DataField("[Ship Date].[Month of Year]")
+                .Area(PivotGridArea.Column);
+
+            fields.Add()
+                .DataField("[Measures].[Customer Count]")
+                .Area(PivotGridArea.Data);
+        })
+        .Store(s => s.Xmla()
+            .Url("https://demos.devexpress.com/Services/OLAP/msmdpump.dll")
+            .Catalog("Adventure Works DW Standard Edition")
+            .Cube("Adventure Works")
+        )
+    )
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Apply Changes Mode:</span>
+        @(Html.DevExtreme().SelectBox()
+            .ID("applyChangesMode")
+            .DataSource(new JS("applyChangesModes"))
+            .Width(180)
+            .Value(new JS("applyChangesModes[0]"))
+            .OnValueChanged("selectBox_onValueChanged")
+        )
+    </div>
+</div>
+
+<script>
+    var applyChangesModes = ["instantly", "onDemand"];
+
+    function selectBox_onValueChanged(data) {
+        $("#sales").dxPivotGrid("instance").option("fieldChooser.applyChangesMode", data.value);
+    }
+</script>

@@ -1,0 +1,23 @@
+﻿@(Html.DevExtreme().Diagram()
+    .ID("diagram")
+    .SimpleView(true)
+    .PropertiesPanel(pp => pp
+        .Visibility(DiagramPanelVisibility.Disabled)
+    )
+    .Toolbox(t => t
+        .Visibility(DiagramPanelVisibility.Disabled)
+    )
+    .Nodes(ns => ns
+        .DataSource(d => d
+            .Array()
+            .Key("this")
+            .Data(Model)
+        )
+        .KeyExpr("ID")
+        .TextExpr("Title")
+        .ParentKeyExpr("HeadID")
+        .AutoLayout(al => al
+            .Type(DiagramDataLayoutType.Tree)
+        )
+    )
+)

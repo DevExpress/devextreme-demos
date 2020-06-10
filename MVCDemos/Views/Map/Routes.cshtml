@@ -1,0 +1,66 @@
+﻿@(Html.DevExtreme().Map()
+    .ID("map")
+    .Provider(GeoMapProvider.Bing)
+    .Zoom(14)
+    .Height(440)
+    .Width("100%")
+    .Controls(true)
+    .Markers(markers => {
+        markers.Add().Address("40.782500, -73.966111");
+        markers.Add().Address("40.755833, -73.986389");
+        markers.Add().Coordinates(40.753889, -73.981389);
+        markers.Add().Address("Brooklyn Bridge,New York,NY");
+    })
+    .Routes(routes => {
+        routes.Add().Weight(6)
+            .Color("blue")
+            .Opacity(0.5)
+            .Mode(GeoMapRouteMode.Driving)
+            .Locations(location => {
+                location.Add().Coordinates(40.782500, -73.966111);
+                location.Add().Coordinates(40.755833, -73.986389);
+                location.Add().Coordinates(40.753889, -73.981389);
+                location.Add().Address("Brooklyn Bridge,New York,NY");
+            });
+    })
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Set mode</span>
+        @(Html.DevExtreme().SelectBox()
+            .ID("choose-mode")
+            .DataSource(new[] { "driving", "walking" })
+            .Value("driving")
+            .OnValueChanged("chooseMode_valueChanged")
+        )
+    </div>
+    <div class="option">
+        <span>Route color</span>
+        @(Html.DevExtreme().SelectBox()
+            .ID("choose-color")
+            .DataSource(new[] { "blue", "green", "red" })
+            .Value("blue")
+            .OnValueChanged("chooseColor_valueChanged")
+        )
+    </div>
+</div>
+
+<script>
+    function getMap() {
+        return $("#map").dxMap("instance");
+    }
+
+    function chooseMode_valueChanged(data) {
+        getMap().option("routes", [$.extend({}, getMap().option("routes")[0], {
+            mode: data.value
+        })]);
+    }
+
+    function chooseColor_valueChanged(data) {
+        getMap().option("routes", [$.extend({}, getMap().option("routes")[0], {
+            color: data.value
+        })]);
+    }
+</script>

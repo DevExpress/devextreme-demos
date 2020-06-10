@@ -1,0 +1,54 @@
+﻿@(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.DataGrid.Employee>()
+    .ID("gridContainer")
+    .ShowBorders(true)
+    .DataSource(d => d.Mvc()
+        .Controller("DataGridMasterDetailView")
+        .LoadAction("Tasks")
+        .Key("ID")
+    )
+    .Columns(columns => {
+        columns.AddFor(m => m.Prefix)
+            .Width(70);
+
+        columns.AddFor(m => m.FirstName);
+
+        columns.AddFor(m => m.LastName);
+
+        columns.AddFor(m => m.Position)
+            .Width(170);
+
+        columns.AddFor(m => m.State)
+            .Width(125);
+
+        columns.AddFor(m => m.BirthDate);
+    })
+    .MasterDetail(md => {
+        md.Enabled(true);
+        md.Template(@<text>
+            <div class="master-detail-caption"><%- data.FirstName %> <%- data.LastName %>'s Tasks:</div>
+            @(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.EmployeeTask>()
+                .ColumnAutoWidth(true)
+                .ShowBorders(true)
+                .Columns(columns => {
+                    columns.AddFor(m => m.Subject);
+
+                    columns.AddFor(m => m.StartDate);
+
+                    columns.AddFor(m => m.DueDate);
+
+                    columns.AddFor(m => m.Priority);
+
+                    columns.Add()
+                        .Caption("Completed")
+                        .DataType(GridColumnDataType.Boolean)
+                        .CalculateCellValue(@"function(rowData) { return rowData.Status == ""Completed""; }");
+                })
+                .DataSource(d => d.Mvc()
+                    .Controller("DataGridMasterDetailView")
+                    .LoadAction("TaskDetails")
+                    .LoadParams(new { id = new JS("data.ID") })
+                )
+            )
+        </text>);
+    })
+)

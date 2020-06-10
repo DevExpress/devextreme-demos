@@ -1,0 +1,92 @@
+﻿<div class="form">
+    <div class="dx-fieldset">
+        <div class="dx-field">
+            <div class="dx-field-label">Default mode</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TextBox()
+                    .Value("John Smith")
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">With placeholder</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TextBox()
+                    .Placeholder("Enter full name here...")
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">With clear button</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TextBox()
+                    .Value("John Smith")
+                    .ShowClearButton(true)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Password mode</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TextBox()
+                    .Mode(TextBoxMode.Password)
+                    .Value("f5lzKs0T")
+                    .Placeholder("Enter password")
+                    .ShowClearButton(true)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Text mask</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TextBox()
+                    .Mask("+1 (X00) 000-0000")
+                    .MaskRules(new { X = new JS("/[02-9]/") })
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Disabled</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TextBox()
+                    .Value("John Smith")
+                    .Disabled(true)
+                )
+            </div>
+        </div>
+    </div>
+    <div class="dx-fieldset">
+        <div class="dx-fieldset-header">Events and API</div>
+        <div class="dx-field">
+            <div class="dx-field-label">Full Name</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TextBox()
+                    .Value("Smith")
+                    .ShowClearButton(true)
+                    .Placeholder("Enter full name")
+                    .ValueChangeEvent("keyup")
+                    .OnValueChanged("textBox_valueChanged")
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Email (read only)</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TextBox()
+                    .ID("email")
+                    .Value("smith@corp.com")
+                    .ReadOnly(true)
+                    .HoverStateEnabled(true)
+                )
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function textBox_valueChanged(data) {
+        $("#email")
+            .dxTextBox("instance")
+            .option("value", data.value.replace(/\s/g, "").toLowerCase() + "@@corp.com");
+    }
+</script>

@@ -1,0 +1,47 @@
+﻿@(Html.DevExtreme().DataGrid()
+    .ShowBorders(true)
+    .DataSource(d => d.OData()
+        .Url("https://js.devexpress.com/Demos/DevAV/odata/Products")
+        .Key("Product_ID")
+    )
+    .DataSourceOptions(d => d.Select(new[] {
+            "Product_ID",
+            "Product_Name",
+            "Product_Cost",
+            "Product_Sale_Price",
+            "Product_Retail_Price",
+            "Product_Current_Inventory"
+        })
+        .Filter("['Product_Current_Inventory', '>' , 0]")
+    )
+    .Columns(columns => {
+        columns.Add()
+            .DataField("Product_ID");
+
+        columns.Add()
+            .DataField("Product_Name")
+            .Width(250);
+
+        columns.Add()
+            .Caption("Cost")
+            .DataField("Product_Cost")
+            .DataType(GridColumnDataType.Number)
+            .Format(Format.Currency);
+
+        columns.Add()
+            .DataField("Product_Sale_Price")
+            .Caption("Sale Price")
+            .DataType(GridColumnDataType.Number)
+            .Format(Format.Currency);
+
+        columns.Add()
+            .DataField("Product_Retail_Price")
+            .Caption("Retail Price")
+            .DataType(GridColumnDataType.Number)
+            .Format(Format.Currency);
+
+        columns.Add()
+            .DataField("Product_Current_Inventory")
+            .Caption("Inventory");
+    })
+)

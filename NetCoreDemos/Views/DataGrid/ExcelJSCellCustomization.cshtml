@@ -1,0 +1,100 @@
+﻿@using DevExtreme.NETCore.Demos.Models
+
+@section ExternalDependencies {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/3.3.1/exceljs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.4.0/polyfill.min.js"></script>
+}
+
+@(Html.DevExtreme().DataGrid<Company>()
+    .ID("gridContainer")
+    .DataSource(new JS("companies"))
+    .ShowBorders(true)
+    .GroupPanel(groupPanel => groupPanel.Visible(true))
+    .Grouping(grouping => grouping.AutoExpandAll(true))
+    .SortByGroupSummaryInfo(i => i.Add().SummaryItem("count"))
+    .Export(e => e.Enabled(true))
+    .OnExporting("exporting")
+    .Columns(columns =>
+    {
+        columns.Add().DataField("Name").Width(190);
+        columns.Add().DataField("Address").Width(200);
+        columns.Add().DataField("City");
+        columns.Add().DataField("State")
+            .GroupIndex(0);
+        columns.Add().DataField("Phone")
+            .Format(new JS("phoneNumberFormat"));
+        columns.Add().DataField("Website")
+            .Caption("")
+            .Alignment(HorizontalAlignment.Center)
+            .Width(100)
+            .CellTemplate(@<text>
+                <a href="<%- value %>" target="_blank">
+                    Website
+                </a>
+            </text>);
+    })
+    .Summary(s => s
+        .TotalItems(totalItems => {
+            totalItems.AddFor(m => m.Name)
+                .SummaryType(SummaryType.Count)
+                .DisplayFormat("Total count: {0} companies");
+        })
+    )
+)
+<script src="~/data/companies.js"></script>
+<script>
+    function exporting(e) {
+        var workbook = new ExcelJS.Workbook();
+        var worksheet = workbook.addWorksheet('Companies');
+
+        // https://github.com/exceljs/exceljs#columns
+        worksheet.columns = [
+            { width: 5 }, { width: 30 }, { width: 25 }, { width: 15 }, { width: 25 }, { width: 40 }
+        ];
+
+        DevExpress.excelExporter.exportDataGrid({
+            component: e.component,
+            worksheet: worksheet,
+            keepColumnWidths: false,
+            topLeftCell: { row: 2, column: 2 },
+            customizeCell: function (options) {
+                var { gridCell, excelCell } = options;
+
+                if (gridCell.rowType === "data") {
+                    if (gridCell.column.dataField === 'Phone') {
+                        excelCell.value = parseInt(gridCell.value);
+                        // https://github.com/exceljs/exceljs#number-formats
+                        excelCell.numFmt = '[<=9999999]###-####;(###) ###-####';
+                    }
+                    if (gridCell.column.dataField === 'Website') {
+                        // https://github.com/exceljs/exceljs#hyperlink-value
+                        excelCell.value = { text: gridCell.value, hyperlink: gridCell.value };
+                        // https://github.com/exceljs/exceljs#fonts
+                        excelCell.font = { color: { argb: 'FF0000FF' }, underline: true }
+                        // https://github.com/exceljs/exceljs#alignment
+                        excelCell.alignment = { horizontal: 'left' };
+                    }
+                }
+                if (gridCell.rowType === "group") {
+                    // https://github.com/exceljs/exceljs#fills
+                    excelCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: "BEDFE6" } };
+                }
+                if (gridCell.rowType === "totalFooter" && excelCell.value) {
+                    excelCell.font.italic = true;
+                }
+            }
+        }).then(function () {
+            workbook.xlsx.writeBuffer().then(function (buffer) {
+                saveAs(new Blob([buffer], { type: "application/octet-stream" }), "Companies.xlsx");
+            });
+        });
+        e.cancel = true;
+    }
+
+    function phoneNumberFormat(value) {
+        var USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);
+
+        return `(${ USNumber[1] }) ${ USNumber[2] }-${ USNumber[3] }`;
+    }
+</script>
