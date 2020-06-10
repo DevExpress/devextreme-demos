@@ -1,0 +1,29 @@
+﻿@(Html.DevExtreme().CircularGauge()
+    .ID("gauge")
+    .Scale(s => s
+        .StartValue(0)
+        .EndValue(20)
+        .TickInterval(5)
+    )
+    .Value(12)
+    .Subvalues(new double[] { 8, 18 })
+    .Tooltip(t => t
+        .Enabled(true)
+        .Font(f => f
+            .Color("#DCD0FF")
+            .Size(40)
+        )
+        .CustomizeTooltip(@<text>
+            function (arg) {
+                return {
+                    text: arg.valueText + " ohm"
+                };
+            }
+        </text>)
+    )
+    .Export(e => e.Enabled(true))
+    .Title(t => t
+        .Text("Rheostat Resistance")
+        .Font(f => f.Size(28))
+    )
+)

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.Job>
+
+@(Html.DevExtreme().Scheduler()
+    .Height(600)
+    .DataSource(Model)
+    .TextExpr("Text")
+    .StartDateExpr("StartDate")
+    .EndDateExpr("EndDate")
+    .RecurrenceRuleExpr("RecurrenceRule")
+    .ShowAllDayPanel(false)
+    .Views(views => {
+        views.Add()
+            .Type(SchedulerViewType.Day);
+
+        views.Add()
+            .Type(SchedulerViewType.Week)
+            .Groups(new[] { "TypeId" })
+            .DateCellTemplate(@<text>
+                @(Html.Partial("_DateCellTemplate"))
+            </text>);
+
+        views.Add()
+            .Type(SchedulerViewType.WorkWeek)
+            .StartDayHour(9)
+            .EndDayHour(18)
+            .Groups(new[] { "PriorityId" })
+            .DateCellTemplate(@<text>
+                @(Html.Partial("_DateCellTemplate"))
+            </text>);
+
+        views.Add()
+            .Type(SchedulerViewType.Month);
+    })
+    .CurrentView(SchedulerViewType.WorkWeek)
+    .CurrentDate(new DateTime(2015, 5, 25))
+    .StartDayHour(7)
+    .EndDayHour(23)
+    .Resources(res => {
+        res.Add()
+            .FieldExpr("PriorityId")
+            .AllowMultiple(false)
+            .Label("Priority")
+            .DataSource(new[] {
+                new { text = "Low Priority", id = 1, color = "#fcb65e" },
+                new { text = "High Priority", id = 2, color = "#e18e92" }
+            });
+
+        res.Add()
+            .FieldExpr("TypeId")
+            .AllowMultiple(false)
+            .Label("Type")
+            .DataSource(new[] {
+                new { text = "Home", id = 1, color = "#b6d623" },
+                new { text = "Work", id = 2, color = "#679ec5" }
+            });
+    })
+)

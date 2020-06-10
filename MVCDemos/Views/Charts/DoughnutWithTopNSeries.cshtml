@@ -1,0 +1,45 @@
+﻿@(Html.DevExtreme().PieChart()
+    .ID("pie")
+    .Type(PieChartType.Doughnut)
+    .Palette(VizPalette.SoftPastel)
+    .Title("Top Internet Languages")
+    .Legend(l => l
+        .HorizontalAlignment(HorizontalAlignment.Center)
+        .VerticalAlignment(VerticalEdge.Bottom)
+    )
+    .Export(e => e.Enabled(true))
+    .Series(s => s
+        .Add()
+        .SmallValuesGrouping(g => g
+            .Mode(SmallValuesGroupingMode.TopN)
+            .TopCount(3)
+        )
+        .ArgumentField("Language")
+        .ValueField("Percent")
+        .Label(l => l
+            .Visible(true)
+            .Format(Format.FixedPoint)
+            .CustomizeText(@<text>
+                function (point) {
+                    return point.argumentText + ": " + point.valueText + "%";
+                }
+            </text>)
+            .Connector(c => c
+                .Visible(true)
+                .Width(1)
+            )
+        )
+    )
+    .DataSource(new[] {
+        new { Language = "English", Percent = 55.5 },
+        new { Language = "Chinese", Percent = 4.0 },
+        new { Language = "Spanish", Percent = 4.3 },
+        new { Language = "Japanese", Percent = 4.9 },
+        new { Language = "Portuguese", Percent = 2.3 },
+        new { Language = "German", Percent = 5.6 },
+        new { Language = "French", Percent = 3.8 },
+        new { Language = "Russian", Percent = 6.3 },
+        new { Language = "Italian", Percent = 1.6 },
+        new { Language = "Polish", Percent = 1.8 }
+    })
+)

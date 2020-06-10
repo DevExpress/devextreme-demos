@@ -1,0 +1,18 @@
+﻿@(Html.DevExtreme().CircularGauge()
+    .ID("gauge")
+    .Scale(s => s
+        .StartValue(0)
+        .EndValue(1000)
+        .Tick(t => t.Color("#9c9c9c"))
+        .MinorTick(t => t.Color("#9c9c9c").Visible(true))
+        .TickInterval(100)
+        .MinorTickInterval(25)
+    )
+    .RangeContainer(c => c.BackgroundColor("none"))
+    .Title(t => t
+        .Text("Fan Speed (in rpm)")
+        .Font(f => f.Size(28))
+    )
+    .Export(e => e.Enabled(true))
+    .Value(750)
+)

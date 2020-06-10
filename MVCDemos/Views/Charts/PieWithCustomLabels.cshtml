@@ -1,0 +1,42 @@
+﻿@(Html.DevExtreme().PieChart()
+    .ID("pie")
+    .Palette(VizPalette.Bright)
+    .Title("Olympic Medals in 2008")
+    .Legend(l => l
+        .Orientation(Orientation.Horizontal)
+        .ItemTextPosition(Position.Right)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .ColumnCount(4)
+    )
+    .Export(e => e.Enabled(true))
+    .Series(s => s
+        .Add()
+        .ArgumentField("Country")
+        .ValueField("Medals")
+        .Label(l => l
+            .Visible(true)
+            .Font(f => f.Size(16))
+            .Connector(c => c
+                .Visible(true)
+                .Width(0.5)
+            )
+            .Position(PieChartLabelPosition.Columns)
+            .CustomizeText(@<text>
+                function(arg) {
+                    return arg.valueText + " (" + arg.percentText + ")";
+                }
+            </text>)
+        )
+    )
+    .DataSource(new[] {
+        new { Country = "USA", Medals = 110 },
+        new { Country = "China", Medals = 100 },
+        new { Country = "Russia", Medals = 72 },
+        new { Country = "Britain", Medals = 47 },
+        new { Country = "Australia", Medals = 46 },
+        new { Country = "Germany", Medals = 41 },
+        new { Country = "France", Medals = 40 },
+        new { Country = "South Korea", Medals = 31 }
+    })
+)

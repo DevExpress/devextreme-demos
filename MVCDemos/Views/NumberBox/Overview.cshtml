@@ -1,0 +1,87 @@
+﻿<div class="form">
+    <div class="dx-fieldset">
+        <div class="dx-field">
+            <div class="dx-field-label">Default mode</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().NumberBox())
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">With spin and clear buttons</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().NumberBox()
+                    .Value(20.5)
+                    .ShowSpinButtons(true)
+                    .ShowClearButton(true)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Disabled</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().NumberBox()
+                    .Value(20.5)
+                    .ShowSpinButtons(true)
+                    .ShowClearButton(true)
+                    .Disabled(true)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">With max and min values</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().NumberBox()
+                    .Value(15)
+                    .Min(10)
+                    .Max(20)
+                    .ShowSpinButtons(true)
+                )
+            </div>
+        </div>
+    </div>
+    <div class="dx-fieldset">
+        <div class="dx-fieldset-header">Event Handling</div>
+        <div class="dx-field">
+            <div class="dx-field-label">This month sales</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().NumberBox()
+                    .Max(30)
+                    .Min(0)
+                    .Value(16)
+                    .ShowSpinButtons(true)
+                    .OnKeyDown("key_down")
+                    .OnValueChanged("numberBox_valueChanged")
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Stock</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().NumberBox()
+                    .ID("stock")
+                    .Value(14)
+                    .Min(0)
+                    .ShowSpinButtons(false)
+                    .ReadOnly(true)
+                )
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var totalProductQuantity = 30;
+
+    function key_down(e) {
+        var event = e.jQueryEvent,
+            str = event.key || String.fromCharCode(event.which);
+
+        if(/^[.,e]$/.test(str)) {
+            event.preventDefault();
+        }
+    }
+
+    function numberBox_valueChanged(data) {
+        $("#stock").dxNumberBox("instance").option("value", totalProductQuantity - data.value);
+    }
+</script>

@@ -1,0 +1,37 @@
+﻿@(Html.DevExtreme().BarGauge()
+    .ID("gauge")
+    .StartValue(0)
+    .EndValue(200)
+    .Values(new[] { 121.4, 135.4, 115.9, 141.1, 127.5 })
+    .Label(l => l.Visible(false))
+    .Tooltip(t => t
+        .Enabled(true)
+        .CustomizeTooltip("customizeTooltip")
+    )
+    .Export(e => e.Enabled(true))
+    .Title(t => t
+        .Text("Average Speed by Racer")
+        .Font(f => f.Size(28))
+    )
+    .Legend(l => l
+        .Visible(true)
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+        .CustomizeText("customizeText")
+    )
+)
+<script>
+    function getText(item, text) {
+        return "Racer " + (item.index + 1) + " - " + text + " km/h";
+    }
+
+    function customizeTooltip(arg) {
+        return {
+            text: getText(arg, arg.valueText)
+        };
+    }
+
+    function customizeText(arg) {
+        return getText(arg.item, arg.text);
+    }
+</script>

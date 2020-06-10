@@ -1,0 +1,49 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.Season>
+
+@{ var firstSeason = Model.First(); }
+
+<div id="gauge-demo">
+    @(Html.DevExtreme().CircularGauge()
+        .ID("gauge")
+        .Scale(s => s
+            .StartValue(10)
+            .EndValue(40)
+            .TickInterval(5)
+            .Label(l => l.CustomizeText(@<text>
+                function (arg) {
+                    return arg.valueText + " °C";
+                }
+            </text>))
+        )
+        .RangeContainer(rc => rc
+            .Ranges(r => {
+                r.Add().StartValue(10).EndValue(20).Color("#0077BE");
+                r.Add().StartValue(20).EndValue(30).Color("#E6E200");
+                r.Add().StartValue(30).EndValue(40).Color("#77DD77");
+            })
+        )
+        .Tooltip(t => t.Enabled(true))
+        .Title(t => t
+            .Text("Temperature in the Greenhouse")
+            .Font(f => f.Size(28))
+        )
+        .Value(firstSeason.Mean)
+        .Subvalues(new double[] { firstSeason.Min, firstSeason.Max })
+    )
+
+    @(Html.DevExtreme().SelectBox()
+        .ID("seasons")
+        .Width(150)
+        .DataSource(Model)
+        .DisplayExpr("Name")
+        .ValueExpr("Name")
+        .Value(firstSeason.Name)
+        .OnSelectionChanged(@<text>
+            function(e) {
+                var gauge = $("#gauge").dxCircularGauge("instance");
+                gauge.option("value", e.selectedItem.Mean);
+                gauge.option("subvalues", [e.selectedItem.Min, e.selectedItem.Max]);
+            }
+        </text>)
+    )
+</div>

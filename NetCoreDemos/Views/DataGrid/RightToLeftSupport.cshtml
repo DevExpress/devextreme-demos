@@ -1,0 +1,104 @@
+﻿@using DevExtreme.NETCore.Demos.Models
+
+@model IEnumerable<EuropeanCountry>
+
+@(Html.DevExtreme().DataGrid<EuropeanCountry>()
+    .ID("gridContainer")
+    .DataSource(Model)
+    .ShowBorders(true)
+    .SearchPanel(p => p.Visible(true))
+    .Paging(p => p.PageSize(15))
+    .Columns(columns => {
+        columns.AddFor(m => m.NameEn);
+
+        columns.AddFor(m => m.CapitalEn);
+
+        columns.AddFor(m => m.Population)
+            .Format(f => f.Type(Format.FixedPoint).Precision(0));
+
+        columns.AddFor(m => m.Area)
+            .Format(f => f.Type(Format.FixedPoint).Precision(0))
+            .HeaderCellTemplate(@<text>
+                <div>Area (km<sup>2</sup>)</div>
+            </text>);
+
+        columns.AddFor(m => m.Accession)
+            .Visible(false);
+    })
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Language:</span>
+        @(Html.DevExtreme().SelectBox()
+            .ID("select-language")
+            .DataSource(new[] { "Arabic (Right-to-Left direction)", "English (Left-to-Right direction)" })
+            .Value("English (Left-to-Right direction)")
+            .Width(250)
+            .OnValueChanged("selectBox_valueChanged")
+        )
+    </div>
+</div>
+<script>
+    var arabicColumns = [{
+        dataField: "NameAr",
+        caption: "الدولة"
+    }, {
+        dataField: "CapitalAr",
+        caption: "عاصمة"
+    }, {
+        dataField: "Population",
+        format: {
+            type: "fixedPoint",
+            precision: 0
+        },
+        caption: "عدد السكان (نسمة) 2013"
+    }, {
+        dataField: "Area",
+        format: {
+            type: "fixedPoint",
+            precision: 0
+        },
+        headerCellTemplate: function(container) {
+            container.append($("<div>المساحة (كم<sup>2</sup>)</div>"));
+        }
+    }, {
+        dataField: "Accession",
+        visible: false
+    }],
+    englishColumns = [{
+        dataField: "NameEn",
+        caption: "Name"
+    }, {
+        dataField: "CapitalEn",
+        caption: "Capital"
+    }, {
+        dataField: "Population",
+        format: {
+            type: "fixedPoint",
+            precision: 0
+        },
+    }, {
+        dataField: "Area",
+        format: {
+            type: "fixedPoint",
+            precision: 0
+        },
+        headerCellTemplate: function(container) {
+            container.append($("<div>Area (km<sup>2</sup>)</div>"));
+        }
+    }, {
+        dataField: "Accession",
+        visible: false
+    }];
+
+    function selectBox_valueChanged(data) {
+        var isRTL = data.value === "Arabic (Right-to-Left direction)",
+            dataGrid = $("#gridContainer").dxDataGrid("instance");
+
+        dataGrid.option("rtlEnabled", isRTL);
+        dataGrid.option("columns", (isRTL) ? arabicColumns : englishColumns);
+        dataGrid.option("searchPanel.placeholder", (isRTL) ? "بحث" : "Search...");
+    }
+</script>

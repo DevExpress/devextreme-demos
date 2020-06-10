@@ -1,0 +1,23 @@
+﻿@(Html.DevExtreme().FileManager()
+    .CurrentPath("Documents/Reports")
+    .FileSystemProvider(provider => provider.Remote()
+        .Url(Url.HttpRouteUrl("FileManagerDBProviderApi", null)))
+    .Permissions(permissions => permissions
+        .Create(true)
+        .Copy(true)
+        .Move(true)
+        .Delete(true)
+        .Rename(true))
+    .ItemView(itemView => {
+        itemView.Details(details => {
+            details.Columns(columns => {
+                columns.Add().DataField("thumbnail");
+                columns.Add().DataField("name");
+                columns.Add().DataField("dateModified").Caption("Modified");
+                columns.Add().DataField("created").Caption("Created").DataType(GridColumnDataType.Date);
+                columns.Add().DataField("modifiedBy").Caption("Modified By").VisibleIndex(2);
+            });
+        });
+    })
+    .AllowedFileExtensions(new string[0])
+    .Height(550))

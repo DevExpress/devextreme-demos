@@ -1,0 +1,143 @@
+﻿@model DevExtreme.MVC.Demos.ViewModels.SchedulerViewModel
+
+<div class="long-title"><h3>DXCinema Show Times</h3></div>
+@(Html.DevExtreme().Scheduler()
+    .ID("scheduler")
+    .DataSource(Model.CinemaData)
+    .StartDateExpr("StartDate")
+    .EndDateExpr("EndDate")
+    .Views(new[] {
+        SchedulerViewType.Day,
+        SchedulerViewType.Week,
+        SchedulerViewType.TimelineDay
+    })
+    .CurrentView(SchedulerViewType.Day)
+    .CurrentDate(new DateTime(2015, 5, 25))
+    .FirstDayOfWeek(FirstDayOfWeek.Sunday)
+    .StartDayHour(9)
+    .EndDayHour(23)
+    .ShowAllDayPanel(false)
+    .Height(600)
+    .Groups(new[] { "TheatreId" })
+    .CrossScrollingEnabled(true)
+    .CellDuration(20)
+    .Editing(e => e.AllowAdding(false))
+    .Resources(res => {
+        res.Add()
+            .FieldExpr("MovieId")
+            .AllowMultiple(false)
+            .UseColorAsDefault(true)
+            .DataSource(Model.Movies)
+            .ColorExpr("Color")
+            .ValueExpr("ID");
+
+        res.Add()
+            .FieldExpr("TheatreId")
+            .Label("Text")
+            .DataSource(Model.Theatres)
+            .DisplayExpr("Text")
+            .ValueExpr("ID");
+    })
+    .AppointmentTooltipTemplate(@<text>
+        @(Html.Partial("_AppointmentTooltipTemplate"))
+    </text>)
+    .AppointmentTemplate(@<text>
+        <% var movie = getMovieById(appointmentData.MovieId); %>
+        <div class="showtime-preview">
+            <div><%- movie.Text %></div>
+            <div>
+                Ticket Price: <strong>$<%- appointmentData.Price %></strong>
+            </div>
+            <div>
+                <%- formatTime(appointmentData.StartDate) %> -
+                <%- formatTime(appointmentData.EndDate) %>
+            </div>
+        </div>
+    </text>)
+    .OnAppointmentFormOpening("appointmentForm_created")
+)
+
+<script>
+    var formatTime = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "numeric" }).format;
+    var moviesData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Movies));
+
+    function getSchedulerInstance() {
+        return $("#scheduler").dxScheduler("instance");
+    }
+
+    function getMovieById(id) {
+        return DevExpress.data.query(moviesData)
+            .filter("ID", id)
+            .toArray()[0];
+    }
+
+    function appointmentForm_created(data) {
+        var form = data.form,
+            movie = getMovieById(data.appointmentData.MovieId) || {},
+            startDate = data.appointmentData.StartDate;
+
+        form.option("items", [{
+            label: {
+                text: "Movie"
+            },
+            editorType: "dxSelectBox",
+            dataField: "MovieId",
+            editorOptions: {
+                dataSource: moviesData,
+                displayExpr: "Text",
+                valueExpr: "ID",
+                onValueChanged: function(args) {
+                    movie = getMovieById(args.value);
+
+                    form.getEditor("Director")
+                        .option("value", movie.Director);
+
+                    form.getEditor("EndDate")
+                        .option("value", new Date(startDate.getTime() +
+                            60 * 1000 * movie.Duration));
+                }
+            },
+        }, {
+            label: {
+                text: "Director"
+            },
+            name: "Director",
+            editorType: "dxTextBox",
+            editorOptions: {
+                value: movie.Director,
+                readOnly: true
+            }
+        }, {
+            dataField: "StartDate",
+            editorType: "dxDateBox",
+            editorOptions: {
+                width: "100%",
+                type: "datetime",
+                onValueChanged: function(args) {
+                    startDate = args.value;
+                    form.getEditor("EndDate")
+                        .option("value", new Date(startDate.getTime() +
+                            60 * 1000 * movie.Duration));
+                }
+            }
+        }, {
+            name: "EndDate",
+            dataField: "EndDate",
+            editorType: "dxDateBox",
+            editorOptions: {
+                width: "100%",
+                type: "datetime",
+                readOnly: true
+            }
+        }, {
+            dataField: "Price",
+            editorType: "dxRadioGroup",
+            editorOptions: {
+                dataSource: [5, 10, 15, 20],
+                itemTemplate: function(itemData) {
+                    return "$" + itemData;
+                }
+            }
+        }]);
+    }
+</script>

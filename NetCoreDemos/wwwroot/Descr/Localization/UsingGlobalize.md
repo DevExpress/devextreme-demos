@@ -1,0 +1,1 @@
+DevExtreme ASP.NET MVC Controls can be localized using Globalize. Refer to [this article](https://docs.devexpress.com/AspNetCore/400577/concepts/devextreme-based-controls/localization#globalize) for detailed instructions on how to do it.

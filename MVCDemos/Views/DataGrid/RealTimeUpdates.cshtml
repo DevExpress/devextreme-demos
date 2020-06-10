@@ -1,0 +1,152 @@
+﻿@(Html.DevExtreme().DataGrid()
+    .ID("gridContainer")
+    .DataSource(d => d.Array().Data(new JS("products")).Key("ProductID"))
+    .DataSourceOptions(o => o.ReshapeOnPush(true))
+    .RepaintChangesOnly(true)
+    .ColumnAutoWidth(true)
+    .ShowBorders(true)
+    .Paging(p => p.PageSize(10))
+    .Columns(c => {
+        c.Add()
+            .DataField("ProductName")
+            .DataType(GridColumnDataType.String);
+        c.Add()
+            .DataField("UnitPrice")
+            .DataType(GridColumnDataType.Number)
+            .Format(Format.Currency);
+        c.Add()
+            .DataField("OrderCount")
+            .DataType(GridColumnDataType.Number);
+        c.Add()
+            .DataField("Quantity")
+            .DataType(GridColumnDataType.Number);
+        c.Add()
+            .DataField("Amount")
+            .DataType(GridColumnDataType.Number)
+            .Format(Format.Currency);
+    })
+    .Summary(s =>
+        s.TotalItems(totalItems => {
+            totalItems.Add()
+                .SummaryType(SummaryType.Count)
+                .Column("ProductName");
+            totalItems.Add()
+                .SummaryType(SummaryType.Sum)
+                .DisplayFormat("{0}")
+                .ValueFormat(Format.Currency)
+                .Column("Amount");
+            totalItems.Add()
+                .SummaryType(SummaryType.Sum)
+                .DisplayFormat("{0}")
+                .Column("OrderCount");
+        })
+    )
+    .MasterDetail(md => {
+        md.Enabled(true);
+        md.Template(@<text>
+        @(Html.DevExtreme().DataGrid()
+            .DataSource(new JS("getDetailGridDataSource(key)"))
+            .RepaintChangesOnly(true)
+            .ColumnAutoWidth(true)
+            .ShowBorders(true)
+            .Paging(p => p.PageSize(5))
+            .Columns(c => {
+                c.Add()
+                    .DataField("OrderID")
+                    .DataType(GridColumnDataType.Number);
+                c.Add()
+                    .DataField("ShipCity")
+                    .DataType(GridColumnDataType.String);
+                c.Add()
+                    .DataField("OrderDate")
+                    .DataType(GridColumnDataType.DateTime);
+                c.Add()
+                    .DataField("UnitPrice")
+                    .DataType(GridColumnDataType.Number)
+                    .Format(Format.Currency);
+                c.Add()
+                    .DataField("Quantity")
+                    .DataType(GridColumnDataType.Number);
+                c.Add()
+                    .Caption("Amount")
+                    .DataType(GridColumnDataType.Number)
+                    .Format(Format.Currency)
+                    .CalculateCellValue("getAmount")
+                    .AllowSorting(true);
+            })
+            .Summary(s =>
+                s.TotalItems(totalItems => {
+                    totalItems.Add()
+                        .SummaryType(SummaryType.Count)
+                        .Column("OrderID");
+                    totalItems.Add()
+                        .SummaryType(SummaryType.Sum)
+                        .DisplayFormat("{0}")
+                        .Column("Quantity");
+                    totalItems.Add()
+                        .SummaryType(SummaryType.Sum)
+                        .DisplayFormat("{0}")
+                        .ValueFormat(Format.Currency)
+                        .Column("Amount");
+                })
+            )
+        )
+        </text>);
+    })
+)
+
+<script src="~/Scripts/data/realTimeData.js"></script>
+
+<script>
+    function getDetailGridDataSource(key) {
+        return {
+            store: ordersStore,
+            filter: ["ProductID", "=", key],
+            reshapeOnPush: true
+        }
+    }
+
+    function getAmount(order) {
+        return order.UnitPrice * order.Quantity;
+    }
+
+    function frequencyChanged(e) {
+        updatesPerSecond = e.value;
+    }
+
+    var updatesPerSecond = 100;
+
+    $(function () {
+        var productsStore = $("#gridContainer").dxDataGrid("getDataSource").store();
+        setInterval(function () {
+            if (orders.length > 500000) {
+                return;
+            }
+
+            for (var i = 0; i < updatesPerSecond / 20; i++) {
+                addOrder(productsStore);
+            }
+        }, 50);
+    });
+</script>
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Update frequency:</span>
+        @(Html.DevExtreme().Slider()
+            .ID("frequency-slider")
+            .Min(10)
+            .Max(5000)
+            .Step(10)
+            .Value(new JS("updatesPerSecond"))
+            .OnValueChanged("frequencyChanged")
+            .Tooltip(t => t
+                .Enabled(true)
+                .ShowMode(SliderTooltipShowMode.Always)
+                .Format("#0 per second")
+                .Position(VerticalEdge.Top)
+            )
+        )
+    </div>
+</div>

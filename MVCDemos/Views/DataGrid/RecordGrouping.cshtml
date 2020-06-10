@@ -1,0 +1,39 @@
+﻿@(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.Customer>()
+    .ID("gridContainer")
+    .Columns(columns => {
+        columns.AddFor(m => m.CompanyName);
+
+        columns.AddFor(m => m.Phone);
+
+        columns.AddFor(m => m.Fax);
+
+        columns.AddFor(m => m.City);
+
+        columns.AddFor(m => m.State)
+            .GroupIndex(0);
+    })
+    .AllowColumnReordering(true)
+    .ShowBorders(true)
+    .Grouping(grouping => grouping.AutoExpandAll(true))
+    .SearchPanel(searchPanel => searchPanel.Visible(true))
+    .GroupPanel(groupPanel => groupPanel.Visible(true))
+    .Paging(paging => paging.PageSize(10))
+    .DataSource(d => d.WebApi().Controller("DataGridCustomers").Key("ID"))
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .ID("autoExpand")
+            .Value(true)
+            .Text("Expand All Groups")
+            .OnValueChanged(@<text>
+                function(data) {
+                    var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                    dataGrid.option("grouping.autoExpandAll", data.value);
+                }
+            </text>)
+        )
+    </div>
+</div>

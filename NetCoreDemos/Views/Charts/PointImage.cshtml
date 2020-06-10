@@ -1,0 +1,77 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .CommonSeriesSettings(s => s
+        .ArgumentField("Year")
+        .ValueField("Place")
+        .Type(SeriesType.Spline)
+        .Point(p => p.Visible(false))
+    )
+    .Export(e => e
+        .Enabled(true)
+        .Formats(new[] {
+            ExportFormat.PNG,
+            ExportFormat.PDF,
+            ExportFormat.JPEG,
+            ExportFormat.GIF,
+            ExportFormat.SVG
+        })
+    )
+    .CustomizePoint(@<text>
+        function() {
+            if(this.value == 1) {
+                return { image: { url: "../../images/icon-medal-gold.png", width: 20, height: 20 }, visible: true };
+            } else if(this.value == 2) {
+                return { image: { url: "../../images/icon-medal-silver.png", width: 20, height: 20 }, visible: true };
+            } else if(this.value == 3) {
+                return { image: { url: "../../images/icon-medal-bronse.png", width: 20, height: 20 }, visible: true };
+            }
+        }
+    </text>)
+    .Series(s => s.Add().Color("#888888"))
+    .Title(t => t.Text("Canadian Men’s National Ice Hockey Team\n at the World Championships"))
+    .Legend(l => l.Visible(false))
+    .ArgumentAxis(a => a
+        .Grid(g => g.Visible(true))
+        .Label(l => l
+            .Format(f => f
+                .Type(Format.Decimal)
+            )
+        )
+        .AllowDecimals(false)
+        .AxisDivisionFactor(60)
+    )
+    .ValueAxis(a => a
+        .Add()
+        .Grid(g => g.Visible(false))
+        .Inverted(true)
+        .Label(l => l
+            .CustomizeText(@<text>
+                function() {
+                    if(this.valueText == 1) {
+                        return this.valueText + "st place";
+                    } else if(this.valueText == 2) {
+                        return this.valueText + "nd place";
+                    } else if(this.valueText == 3) {
+                        return this.valueText + "rd place";
+                    } else {
+                        return this.valueText + "th place";
+                    }
+                }
+            </text>)
+        )
+    )
+    .DataSource(new[] {
+        new { Year = 1977, Place = 4 }, new { Year = 1978, Place = 3 }, new { Year = 1979, Place = 4 },
+        new { Year = 1981, Place = 4 }, new { Year = 1982, Place = 3 }, new { Year = 1983, Place = 3 },
+        new { Year = 1985, Place = 2 }, new { Year = 1986, Place = 3 }, new { Year = 1987, Place = 4 },
+        new { Year = 1989, Place = 2 }, new { Year = 1990, Place = 4 }, new { Year = 1991, Place = 2 },
+        new { Year = 1992, Place = 8 }, new { Year = 1993, Place = 4 }, new { Year = 1994, Place = 1 },
+        new { Year = 1995, Place = 3 }, new { Year = 1996, Place = 2 }, new { Year = 1997, Place = 1 },
+        new { Year = 1998, Place = 6 }, new { Year = 1999, Place = 4 }, new { Year = 2000, Place = 4 },
+        new { Year = 2001, Place = 5 }, new { Year = 2002, Place = 6 }, new { Year = 2003, Place = 1 },
+        new { Year = 2004, Place = 1 }, new { Year = 2005, Place = 2 }, new { Year = 2006, Place = 4 },
+        new { Year = 2007, Place = 1 }, new { Year = 2008, Place = 2 }, new { Year = 2009, Place = 2 },
+        new { Year = 2010, Place = 7 }, new { Year = 2011, Place = 5 }, new { Year = 2012, Place = 5 },
+        new { Year = 2013, Place = 5 }
+    })
+)

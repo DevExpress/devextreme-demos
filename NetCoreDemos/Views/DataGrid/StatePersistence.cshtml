@@ -1,0 +1,43 @@
+﻿@using DevExtreme.NETCore.Demos.Models
+
+@model IEnumerable<Order>
+
+<div id="descContainer">Sort and filter data, group, reorder and resize columns, change page numbers and page size. Once you are done, <a onclick="window.location.reload()">refresh</a> the web page to see that the grid’s state is automatically persisted to continue working from where you stopped.</div>
+
+@(Html.DevExtreme().DataGrid<Order>()
+    .ID("gridContainer")
+    .DataSource(Model)
+    .AllowColumnReordering(true)
+    .AllowColumnResizing(true)
+    .ShowBorders(true)
+    .Selection(s => s.Mode(SelectionMode.Single))
+    .FilterRow(r => r.Visible(true))
+    .GroupPanel(p => p.Visible(true))
+    .StateStoring(s => s
+        .Enabled(true)
+        .Type(StateStoringType.LocalStorage)
+        .StorageKey("storage")
+    )
+    .Pager(p => p
+        .ShowPageSizeSelector(true)
+        .AllowedPageSizes(new[] { 5, 10, 20, })
+    )
+    .Columns(columns => {
+        columns.AddFor(m => m.OrderNumber)
+            .Width(130);
+
+        columns.AddFor(m => m.OrderDate)
+            .SortOrder(SortOrder.Desc);
+
+        columns.AddFor(m => m.SaleAmount)
+            .Alignment(HorizontalAlignment.Right)
+            .Format(Format.Currency);
+
+        columns.AddFor(m => m.Employee);
+
+        columns.AddFor(m => m.CustomerStoreCity);
+
+        columns.AddFor(m => m.CustomerStoreState)
+            .GroupIndex(0);
+    })
+)

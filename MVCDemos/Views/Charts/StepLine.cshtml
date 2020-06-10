@@ -1,0 +1,29 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("container")
+    .Title("Australian Olympic Medal Count")
+    .CommonSeriesSettings(s => s
+        .Type(SeriesType.StepLine)
+        .ArgumentField("Year")
+        .Stepline(sl => sl
+            .Point(p => p.Visible(false))
+        )
+    )
+    .Series(s => {
+        s.Add().ValueField("Bronze").Name("Bronze Medals").Color("#cd7f32");
+        s.Add().ValueField("Silver").Name("Silver Medals").Color("#c0c0c0");
+        s.Add().ValueField("Gold").Name("Gold Medals").Color("#ffd700");
+    })
+    .Export(e => e.Enabled(true))
+    .ArgumentAxis(a => a
+        .Label(l => l
+            .Format(f => f
+                .Type(Format.Decimal)
+            )
+        )
+    )
+    .Legend(l => l
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+    )
+    .DataSource(Model)
+)

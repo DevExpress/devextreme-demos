@@ -1,0 +1,59 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .DataSource(d => d
+        .StaticJson()
+        .Url(Url.Action("GetMonthWeatherData"))
+    )
+    .DataSourceOptions(dso => dso.Filter("['Temperature', '>', 6]"))
+    .Series(s => s.Add()
+        .ArgumentField("Day")
+        .ValueField("Temperature")
+        .Type(SeriesType.Bar)
+    )
+    .CustomizePoint(@<text>
+        function() {
+            var color = palette[paletteIndex];
+            paletteIndex = paletteIndex === 2 ? 0 : paletteIndex + 1;
+            return {
+                color: color
+            };
+        }
+    </text>)
+    .ValueAxis(a => a
+        .Add()
+        .Label(l => l
+            .CustomizeText(@<text>
+                function() {
+                    return this.valueText + "&#176C";
+                }
+            </text>)
+        )
+    )
+    .ArgumentAxis(a => a.ArgumentType(ChartDataType.String))
+    .Title("Temperature in Barcelona: January 2012")
+    .Size(s => s.Height(420))
+    .Legend(l => l.Visible(false))
+    .LoadingIndicator(l => l.Enabled(true))
+    .Export(e => e.Enabled(true))
+)
+
+<div class="action">
+    @(Html.DevExtreme().SelectBox()
+        .ID("choose-temperature")
+        .DataSource(new[] { 6, 7, 8, 9, 10, 11, 12 })
+        .Width(70)
+        .Value(6)
+        .OnValueChanged(@<text>
+            function(data) {
+                var source = $("#chart").dxChart("getDataSource");
+                source.filter(["Temperature", ">", data.value]);
+                source.load();
+            }
+        </text>)
+    )
+    <div class="templabel">
+        Choose a temperature threshold, &deg;C:
+    </div>
+</div>
+
+<script src="~/Scripts/data/palette.js"></script>

@@ -1,0 +1,53 @@
+﻿@(Html.DevExtreme().TreeList<DevExtreme.MVC.Demos.Models.TreeList.EmployeeTask>()
+    .ID("tasks")
+    .DataSource(ds => ds.WebApi()
+        .RouteName("TreeListTasks")
+        .LoadAction("Tasks")
+        .Key("Task_ID")
+    )
+    .KeyExpr("Task_ID")
+    .ParentIdExpr("Task_Parent_ID")
+    .AutoExpandAll(true)
+    .ColumnAutoWidth(true)
+    .ShowBorders(true)
+    .Scrolling(scrolling => scrolling.Mode(TreeListScrollingMode.Standard))
+    .Paging(paging => {
+        paging.Enabled(true);
+        paging.PageSize(10);
+    })
+    .Pager(pager => {
+        pager.ShowPageSizeSelector(true);
+        pager.AllowedPageSizes(new[] { 5, 10, 20 });
+        pager.ShowInfo(true);
+    })
+    .Columns(columns => {
+        columns.AddFor(m => m.Task_Subject)
+            .Width(390);
+
+        columns.AddFor(m => m.Task_Assigned_Employee_ID)
+            .Lookup(lookup => lookup
+                .DataSource(ds => ds.WebApi()
+                    .RouteName("TreeListTasks")
+                    .LoadAction("TaskEmployees")
+                    .Key("ID")
+                )
+                .ValueExpr("ID")
+                .DisplayExpr("Name")
+            );
+
+        columns.AddFor(m => m.Task_Status)
+            .Lookup(lookup => lookup
+                .DataSource(new[] {
+                    "Not Started",
+                    "Need Assistance",
+                    "In Progress",
+                    "Deferred",
+                    "Completed"
+                })
+            );
+
+        columns.AddFor(m => m.Task_Start_Date).Width(100);
+
+        columns.AddFor(m => m.Task_Due_Date).Width(100);
+    })
+)

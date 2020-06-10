@@ -1,0 +1,77 @@
+﻿@(Html.DevExtreme().PivotGrid()
+    .ID("pivotgrid")
+    .AllowFiltering(true)
+    .AllowSorting(true)
+    .AllowSortingBySummary(true)
+    .Height(570)
+    .ShowBorders(true)
+    .HeaderFilter(h => h
+        .AllowSearch(true)
+        .ShowRelevantValues(true)
+        .Width(300)
+        .Height(400)
+    )
+    .FieldChooser(f => f.AllowSearch(true))
+    .FieldPanel(f => f.Visible(true))
+    .DataSource(d => d
+        .Fields(fields => {
+            fields.Add()
+                .DataField("[Product].[Category]")
+                .Area(PivotGridArea.Column);
+
+            fields.Add()
+                .DataField("[Product].[Subcategory]")
+                .Area(PivotGridArea.Column);
+
+            fields.Add()
+                .DataField("[Customer].[City]")
+                .Area(PivotGridArea.Row);
+
+            fields.Add()
+                .DataField("[Measures].[Internet Total Product Cost]")
+                .Format(Format.Currency)
+                .Area(PivotGridArea.Data);
+
+            fields.Add()
+                .DataField("[Customer].[Country]")
+                .FilterValues(new[] { "[Customer].[Country].&[United Kingdom]" })
+                .Area(PivotGridArea.Filter);
+
+            fields.Add()
+                .DataField("[Ship Date].[Calendar Year]")
+                .FilterValues(new[] { "[Ship Date].[Calendar Year].&[2004]" })
+                .Area(PivotGridArea.Filter);
+        })
+        .Store(s => s.Xmla()
+            .Url("https://demos.devexpress.com/Services/OLAP/msmdpump.dll")
+            .Catalog("Adventure Works DW Standard Edition")
+            .Cube("Adventure Works")
+        )
+    )
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Allow Search")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(data) {
+                    $("#pivotgrid").dxPivotGrid("instance").option("headerFilter.allowSearch", data.value);
+                }
+            </text>)
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Show Relevant Values")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(data) {
+                    $("#pivotgrid").dxPivotGrid("instance").option("headerFilter.showRelevantValues", data.value);
+                }
+            </text>)
+        )
+    </div>
+</div>

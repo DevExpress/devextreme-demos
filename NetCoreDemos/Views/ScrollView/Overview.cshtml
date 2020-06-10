@@ -1,0 +1,121 @@
+﻿<div id="scrollview-demo">
+    @(Html.DevExtreme().ScrollView()
+        .ID("scrollview")
+        .ScrollByContent(true)
+        .ScrollByThumb(true)
+        .OnReachBottom("scrollView_reachBottom")
+        .ReachBottomText("Updating...")
+        .ShowScrollbar(ShowScrollbarMode.OnScroll)
+        .Content(@<text>
+            <div id="scrollview-content">
+                @for(var i = 0; i < 10; i++) {
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                        in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                        officia deserunt mollit anim id est laborum.
+                    </p>
+                }
+                <br />
+            </div>
+        </text>)
+    )
+
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            <span>Show scrollbar:</span>
+            @(Html.DevExtreme().SelectBox()
+                .ID("show-scrollbar-mode")
+                .Items(items => {
+                    items.Add().Text("On Scroll").Option("value", "onScroll");
+                    items.Add().Text("On Hover").Option("value", "onHover");
+                    items.Add().Text("Always").Option("value", "always");
+                    items.Add().Text("Never").Option("value", "never");
+                })
+                .Value("onScroll")
+                .ValueExpr("value")
+                .DisplayExpr("text")
+                .OnValueChanged("selectBox_valueChanged")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(true)
+                .Text("Update content on the ReachBottom event")
+                .OnValueChanged("reachBottom_checkBox_valueChanged")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(false)
+                .Text("Update content on the PullDown event")
+                .OnValueChanged("pullDownBottom_checkBox_valueChanged")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(true)
+                .Text("Scroll by content")
+                .OnValueChanged("scrollByContent_checkBox_valueChanged")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(true)
+                .Text("Scroll by thumb")
+                .OnValueChanged("scrollByThumb_checkBox_valueChanged")
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    var updateContentTimer;
+
+    function getScrollViewInstance() {
+        return $("#scrollview").dxScrollView("instance");
+    }
+
+    function updateScrollViewContent(eventName, insertBefore) {
+        if(updateContentTimer) {
+            clearTimeout(updateContentTimer);
+        }
+        updateContentTimer = setTimeout(function() {
+            $("#scrollview-content")[insertBefore ? "prepend" : "append"](
+                "<br /><div>Content has been updated on the " + eventName + " event.</div><br />"
+            );
+            getScrollViewInstance().release();
+        }, 500);
+    }
+
+    function scrollView_reachBottom(args) {
+        updateScrollViewContent("ReachBottom", false);
+    }
+
+    function selectBox_valueChanged(data) {
+        getScrollViewInstance().option("showScrollbar", data.value);
+    }
+
+    function reachBottom_checkBox_valueChanged(data) {
+        getScrollViewInstance().option("onReachBottom", data.value ? updateScrollViewContent.bind(null, "ReachBottom", false) : null);
+    }
+
+    function pullDownBottom_checkBox_valueChanged(data) {
+        getScrollViewInstance().option({
+            onPullDown: data.value ? updateScrollViewContent.bind(null, "PullDown", true) : null,
+            bounceEnabled: data.value
+        });
+    }
+
+    function scrollByContent_checkBox_valueChanged(data) {
+        getScrollViewInstance().option("scrollByContent", data.value);
+    }
+
+    function scrollByThumb_checkBox_valueChanged(data) {
+        getScrollViewInstance().option("scrollByThumb", data.value);
+    }
+
+</script>

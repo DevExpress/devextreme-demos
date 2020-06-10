@@ -1,0 +1,75 @@
+﻿@{
+    var longTabs = new[] {
+        "user" , "analytics", "customers", "search", "favorites", "additional", "clients", "orders", "shipment"
+    };
+
+    var tabs = new[] {
+        new { id = 0, text = "user", icon = "user", content = "User tab content" },
+        new { id = 1, text = "comment", icon = "comment", content = "Comment tab content" },
+        new { id = 2, text = "find", icon = "find", content = "Find tab content" }
+    };
+}
+
+<div id="longtabs">
+    <div class="caption">Tabs</div>
+    @(Html.DevExtreme().Tabs()
+        .DataSource(longTabs)
+    )
+</div>
+
+<div id="scrolledtabs">
+    <div class="caption">Tabs with Overflow</div>
+    @(Html.DevExtreme().Tabs()
+        .DataSource(longTabs)
+        .Width(300)
+        .ScrollByContent(true)
+        .ShowNavButtons(true)
+    )
+</div>
+
+<div id="tabs">
+    <div class="caption">API</div>
+    @(Html.DevExtreme().Tabs()
+        .ID("tabs-container")
+        .DataSource(tabs)
+        .SelectedIndex(0)
+        .OnItemClick("tabs_itemClick")
+    )
+    <div class="content  dx-fieldset">
+        <div class="dx-field">
+            <div class="dx-field-label">Selected index:</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().SelectBox()
+                    .ID("selectbox")
+                    .DataSource(tabs)
+                    .Value(0)
+                    .DisplayExpr("text")
+                    .ValueExpr("id")
+                    .OnValueChanged("selectBox_valueChanged")
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Selected content:</div>
+            <div class="dx-field-value-static left-aligned">
+                User tab content
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function tabs_itemClick(e) {
+        var selectBox = $("#selectbox").dxSelectBox("instance");
+        selectBox.option("value", e.itemData.id);
+    }
+
+    function selectBox_valueChanged(e) {
+        var tabsInstance = $("#tabs-container").dxTabs("instance");
+        var tabs = tabsInstance.getDataSource().items();
+        tabsInstance.option("selectedIndex", e.value);
+        $(".left-aligned").text(tabs[e.value].content);
+    }
+</script>

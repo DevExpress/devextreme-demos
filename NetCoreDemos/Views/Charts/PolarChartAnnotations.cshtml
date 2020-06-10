@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.DiscreteScaleTemperature>
+
+@{
+    var maxDay = Model.First(d => d.DayT == Model.Max(dd => dd.DayT));
+    var minNight = Model.First(d => d.NightT == Model.Min(dn => dn.NightT));
+}
+
+@(Html.DevExtreme().PolarChart()
+    .ID("radarChart")
+    .DataSource(Model)
+    .CommonSeriesSettings(s => s.Type(PolarChartSeriesType.Bar).ArgumentField("Date").Opacity(0.75))
+    .Series(s => {
+        s.Add().ValueField("DayT").Name("Day").Color("#fdff5e");
+        s.Add().ValueField("NightT").Name("Night").Color("#0f3b59");
+    })
+    .CommonAnnotationSettings(ca => ca.Type(AnnotationType.Text).Opacity(0.7).ArrowLength(0))
+    .Annotations(a => {
+        a.Add().Text("WINTER").Angle(45).Radius(180);
+        a.Add().Text("SPRING").Angle(135).Radius(180);
+        a.Add().Text("SUMMER").Angle(225).Radius(180);
+        a.Add().Text("FALL").Angle(315).Radius(180);
+        a.Add()
+        .Argument(maxDay.Date)
+        .Series("Day")
+        .Text(String.Format("Highest temperature: {0} °C", maxDay.DayT))
+        .Opacity(1)
+        .OffsetX(105)
+        .PaddingTopBottom(15)
+        .PaddingLeftRight(15);
+        a.Add()
+        .Argument(minNight.Date)
+        .Series("Night")
+        .Text(String.Format("Lowest temperature: {0} °C", minNight.NightT))
+        .Opacity(1)
+        .OffsetX(105)
+        .PaddingTopBottom(15)
+        .PaddingLeftRight(15);
+    })
+    .ArgumentAxis(a => {
+        a.Strips(st => {
+            st.Add().StartValue("December").EndValue("February").Color("#0076d1");
+            st.Add().StartValue("March").EndValue("May").Color("#3ca3b0");
+            st.Add().StartValue("June").EndValue("August").Color("#3fbc1e");
+            st.Add().StartValue("September").EndValue("November").Color("#f0bb00");
+        });
+    })
+    .Legend(l => l
+        .HorizontalAlignment(HorizontalAlignment.Center)
+        .VerticalAlignment(VerticalEdge.Bottom)
+    )
+    .Title("Average temperature in London")
+)

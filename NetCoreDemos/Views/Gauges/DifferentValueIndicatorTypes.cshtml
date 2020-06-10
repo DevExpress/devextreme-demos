@@ -1,0 +1,78 @@
+﻿<div class="long-title"><h3>Power of Engines</h3></div>
+
+@using DevExtreme.AspNet.Mvc.Builders;
+
+@functions {
+    CircularGaugeBuilder CreateGauge() {
+        return Html.DevExtreme().CircularGauge()
+            .Geometry(g => g
+                .StartAngle(180)
+                .EndAngle(0)
+            )
+            .Scale(s => s
+                .StartValue(0)
+                .EndValue(100)
+                .TickInterval(50)
+                .Label(l => l.CustomizeText(@"
+                    function (arg) {
+                        return arg.valueText + "" % "";
+                    }
+                "))
+            );
+    }
+}
+
+@(CreateGauge()
+    .ID("rectangleNeedle")
+    .Value(75)
+    .ValueIndicator(i => i
+        .Type(GaugeIndicatorType.RectangleNeedle)
+        .Color("#9B870C")
+    )
+)
+
+@(CreateGauge()
+    .ID("twoColorNeedle")
+    .Value(80)
+    .ValueIndicator(i => i
+        .Type(GaugeIndicatorType.TwoColorNeedle)
+        .Color("#779ECB")
+        .SecondColor("#734F96")
+    )
+)
+
+@(CreateGauge()
+    .ID("triangleNeedle")
+    .Value(65)
+    .ValueIndicator(i => i
+        .Type(GaugeIndicatorType.TriangleNeedle)
+        .Color("#8FBC8F")
+    )
+)
+
+@(CreateGauge()
+    .ID("rangebar")
+    .Value(90)
+    .ValueIndicator(i => i
+        .Type(GaugeIndicatorType.RangeBar)
+        .Color("#F05B41")
+    )
+)
+
+@(CreateGauge()
+    .ID("textCloud")
+    .Value(70)
+    .ValueIndicator(i => i
+        .Type(GaugeIndicatorType.TextCloud)
+        .Color("#483D8B")
+    )
+)
+
+@(CreateGauge()
+    .ID("triangleMarker")
+    .Value(85)
+    .ValueIndicator(i => i
+        .Type(GaugeIndicatorType.TriangleMarker)
+        .Color("#E0E33B")
+    )
+)

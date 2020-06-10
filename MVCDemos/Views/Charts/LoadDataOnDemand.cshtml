@@ -1,0 +1,130 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Title("Temperature in Toronto (2017)")
+    .DataSource(d => d.Array())
+    .DataSourceOptions(c => c
+        .Sort("date")
+        .Paginate(false)
+    )
+    .ZoomAndPan(z => z.ArgumentAxis(ChartZoomAndPanMode.Pan))
+    .ScrollBar(s => s.Visible(true))
+    .ArgumentAxis(a => a
+        .ArgumentType(ChartDataType.DateTime)
+        .WholeRange(w => w
+            .StartValue(new DateTime(2017, 1, 1))
+            .EndValue(new DateTime(2017, 12, 31))
+        )
+        .VisualRange(v => v
+            .StartValue(new DateTime(2017, 4, 1))
+            .Length(l => l.Weeks(2))
+        )
+        .VisualRangeUpdateMode(VisualRangeUpdateMode.Keep)
+    )
+    .ValueAxis(v => v.Add()
+        .Name("temperature")
+        .AllowDecimals(false)
+        .Title(t => t
+            .Text("Temperature, °C")
+            .Font(f => f.Color("#ff950c"))
+        )
+        .Label(l => l.Font(f => f.Color("#ff950c")))
+    )
+    .Series(s => s.Add()
+        .Color("#ff950c")
+        .Type(SeriesType.RangeArea)
+        .ArgumentField("date")
+        .RangeValue1Field("minTemp")
+        .RangeValue2Field("maxTemp")
+        .Name("Temperature range")
+    )
+    .OnOptionChanged(@<text>
+        function(e){
+            if(e.fullName === "argumentAxis.visualRange") {
+                onVisualRangeChanged(e.value, e.component);
+            }
+        }
+    </text>)
+    .Animation(a => a.Enabled(false))
+    .LoadingIndicator(l => l
+        .BackgroundColor("none")
+        .Font(f => f.Size(14))
+    )
+    .Legend(l => l.Visible(false))
+)
+
+<script>
+    var HALFDAY = 43200000;
+    var packetsLock = 0;
+
+    function onVisualRangeChanged(visualRange, component) {
+        var items = component.getDataSource().items();
+        if (!items.length ||
+            items[0].date - visualRange.startValue >= HALFDAY ||
+            visualRange.endValue - items[items.length - 1].date >= HALFDAY) {
+            uploadDataByVisualRange(visualRange, component);
+        }
+    }
+
+    function uploadDataByVisualRange(visualRange, component) {
+        var dataSource = component.getDataSource();
+        var storage = dataSource.items();
+        var ajaxArgs = {
+            startVisible: getDateString(visualRange.startValue),
+            endVisible: getDateString(visualRange.endValue),
+            startBound: getDateString(storage.length ? storage[0].date : null),
+            endBound: getDateString(storage.length ?
+                storage[storage.length - 1].date : null)
+        };
+
+        if (ajaxArgs.startVisible !== ajaxArgs.startBound &&
+            ajaxArgs.endVisible !== ajaxArgs.endBound && !packetsLock) {
+            packetsLock++;
+            component.showLoadingIndicator();
+            getDataFrame(ajaxArgs)
+                .then(function(dataFrame) {
+                    packetsLock--;
+
+                    var componentStorage = dataSource.store();
+                    dataFrame.forEach(function(item) {
+                        componentStorage.insert(item);
+                    });
+                    dataSource.reload();
+
+                    var range = component.getArgumentAxis().visualRange();
+                    onVisualRangeChanged(range, component);
+                },
+                function(reason) {
+                    packetsLock--;
+                    dataSource.reload();
+                });
+        }
+    }
+
+    function getDataFrame(args) {
+        var deferred = $.Deferred();
+        $.ajax({
+            url: "@Url.Content("~/api/TemperatureData")",
+            dataType: "json",
+            data: args,
+            success: function (result) {
+                deferred.resolve(result.map(function(i) {
+                    return {
+                        date: new Date(i.Date),
+                        minTemp: i.MinTemp,
+                        maxTemp: i.MaxTemp
+                    };
+                }));
+            },
+            error: function () {
+                deferred.reject("Data Loading Error");
+            },
+            timeout: 2000
+        });
+
+        return deferred.promise();
+    }
+
+    function getDateString(dateTime) {
+        return dateTime ? dateTime.toLocaleDateString("en-US") : "";
+    }
+</script>

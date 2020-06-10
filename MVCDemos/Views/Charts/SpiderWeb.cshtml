@@ -1,0 +1,21 @@
+﻿@(Html.DevExtreme().PolarChart()
+    .ID("chart")
+    .DataSource(new[] {
+        new { arg = "USA", apples = 4.21, grapes = 6.22, lemons = 0.8, oranges = 7.47 },
+        new { arg = "China", apples = 3.33, grapes = 8.65, lemons = 1.06, oranges = 5.0 },
+        new { arg = "Turkey", apples = 2.6, grapes = 4.25, lemons = 0.78, oranges = 1.71 },
+        new { arg = "Italy", apples = 2.2, grapes = 7.78, lemons = 0.52, oranges = 2.39 },
+        new { arg = "India", apples = 2.16, grapes = 2.26, lemons = 3.09, oranges = 6.26 }
+    })
+    .UseSpiderWeb(true)
+    .Series(s => {
+        s.Add().ValueField("apples").Name("Apples");
+        s.Add().ValueField("grapes").Name("Grapes");
+        s.Add().ValueField("lemons").Name("Lemons");
+        s.Add().ValueField("oranges").Name("Oranges");
+    })
+    .CommonSeriesSettings(s => s.Type(PolarChartSeriesType.Line))
+    .Export(e => e.Enabled(true))
+    .Title("Fruit Production in 2010 (Millions of Tons)")
+    .Tooltip(t => t.Enabled(true))
+)

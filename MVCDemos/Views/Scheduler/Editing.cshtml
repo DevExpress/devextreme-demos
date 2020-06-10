@@ -1,0 +1,114 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.Appointment>
+
+@(Html.DevExtreme().Scheduler()
+    .ID("scheduler")
+    .DataSource(Model)
+    .Views(new[] {
+        SchedulerViewType.Day,
+        SchedulerViewType.Week
+    })
+    .CurrentView(SchedulerViewType.Week)
+    .CurrentDate(new DateTime(2017, 5, 22))
+    .StartDayHour(9)
+    .EndDayHour(19)
+    .Height(600)
+    .Editing(editing => {
+        editing.AllowAdding(true);
+        editing.AllowDeleting(true);
+        editing.AllowUpdating(true);
+        editing.AllowResizing(true);
+        editing.AllowDragging(true);
+    })
+    .TextExpr("Text")
+    .StartDateExpr("StartDate")
+    .EndDateExpr("EndDate")
+    .AllDayExpr("AllDay")
+    .OnAppointmentAdded(@<text>
+        function(e) {
+            showToast("Added", e.appointmentData.Text, "success");
+        }
+    </text>)
+    .OnAppointmentUpdated(@<text>
+        function(e) {
+            showToast("Updated", e.appointmentData.Text, "info");
+        }
+    </text>)
+    .OnAppointmentDeleted(@<text>
+        function(e) {
+            showToast("Deleted", e.appointmentData.Text, "warning");
+        }
+    </text>)
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Allow adding")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(e) {
+                    getSchedulerInstance().option("editing.allowAdding", e.value);
+                }
+            </text>)
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Allow deleting")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(e) {
+                    getSchedulerInstance().option("editing.allowDeleting", e.value);
+                }
+            </text>)
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Allow updating")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(e) {
+                    getSchedulerInstance().option("editing.allowUpdating", e.value);
+                    $("#allow-resizing").dxCheckBox("instance").option("disabled", !e.value);
+                    $("#allow-dragging").dxCheckBox("instance").option("disabled", !e.value);
+                }
+            </text>)
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .ID("allow-resizing")
+            .Text("Allow resizing")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(e) {
+                    getSchedulerInstance().option("editing.allowResizing", e.value);
+                }
+            </text>)
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .ID("allow-dragging")
+            .Text("Allow dragging")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(e) {
+                    getSchedulerInstance().option("editing.allowDragging", e.value);
+                }
+            </text>)
+        )
+    </div>
+</div>
+
+<script>
+    function getSchedulerInstance() {
+        return $("#scheduler").dxScheduler("instance");
+    }
+
+    function showToast(event, value, type) {
+        DevExpress.ui.notify(event + " \"" + value + "\"" + " task", type, 800);
+    }
+</script>

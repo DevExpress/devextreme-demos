@@ -1,0 +1,18 @@
+﻿@(Html.DevExtreme().VectorMap()
+    .ID("vector-map")
+    .Projection(new JS("customProjection"))
+    .Title("Wagner VI projection")
+    .Export(e => e.Enabled(true))
+    .Layers(layers => {
+        layers.Add()
+            .DataSource(new JS("DevExpress.viz.map.sources.world"));
+
+        layers.Add()
+            .Color("#aaa")
+            .BorderWidth(1)
+            .HoverEnabled(false)
+            .DataSource(d => d.StaticJson().Url(Url.Action("GetCoordLinesData")));
+    })
+)
+
+<script src="~/data/customProjection.js"></script>

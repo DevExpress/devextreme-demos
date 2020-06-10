@@ -1,0 +1,48 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Rotated(true)
+    .CommonSeriesSettings(s => s
+        .ArgumentField("Country")
+        .Type(SeriesType.Bar)
+        .HoverMode(ChartSeriesHoverMode.AllArgumentPoints)
+        .SelectionMode(ChartSeriesSelectionMode.AllArgumentPoints)
+        .Label(l => l
+            .Visible(true)
+            .Format(f => f.Type(Format.Percent).Precision(1))
+        )
+    )
+    .ValueAxis(a => a.Add().Label(l => l.Format(f => f.Type(Format.Percent).Precision(1))))
+    .Series(s => {
+        s.Add().ValueField("Year2007").Name("2007 - 2008");
+        s.Add().ValueField("Year2008").Name("2008 - 2009");
+    })
+    .Title(t => t.Text("Economy - Export Change"))
+    .Legend(l => l
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+    )
+    .Export(e => e.Enabled(true))
+    .OnPointClick(@<text>
+        function(e) {
+            e.target.select();
+        }
+    </text>)
+    .OnLegendClick(@<text>
+        function(e) {
+            var series = e.target;
+            if(series.isVisible()) {
+                series.hide();
+            } else {
+                series.show();
+            }
+        }
+    </text>)
+    .DataSource(new[] {
+        new { Country = "China", Year2007 = 0.1732, Year2008 = -0.1588 },
+        new { Country = "Germany", Year2007 = 0.0964, Year2008 = -0.2231 },
+        new { Country = "United States", Year2007 = 0.1187, Year2008 = -0.1878 },
+        new { Country = "Japan", Year2007 = 0.1081, Year2008 = -0.2614 },
+        new { Country = "France", Year2007 = 0.1014, Year2008 = -0.2222 },
+        new { Country = "Netherlands", Year2007 = 0.1355, Year2008 = -0.2015 }
+    })
+)

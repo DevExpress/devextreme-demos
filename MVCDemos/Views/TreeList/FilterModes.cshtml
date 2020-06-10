@@ -1,0 +1,59 @@
+﻿@(Html.DevExtreme().TreeList()
+    .ID("employees")
+    .DataSource(new JS("employees"))
+    .KeyExpr("ID")
+    .ParentIdExpr("Head_ID")
+    .Columns(columns => {
+        columns.Add()
+            .DataField("Title")
+            .Caption("Position")
+            .DataType(GridColumnDataType.String);
+
+        columns.Add()
+            .DataField("Full_Name")
+            .DataType(GridColumnDataType.String);
+
+        columns.Add()
+            .DataField("City")
+            .DataType(GridColumnDataType.String);
+
+        columns.Add()
+            .DataField("State")
+            .DataType(GridColumnDataType.String);
+
+        columns.Add()
+            .DataField("Mobile_Phone")
+            .DataType(GridColumnDataType.String);
+
+        columns.Add()
+            .DataField("Hire_Date")
+            .DataType(GridColumnDataType.Date);
+    })
+    .SearchPanel(s => s.Visible(true)
+        .Text("Manager")
+    )
+    .ShowRowLines(true)
+    .ShowBorders(true)
+    .ColumnAutoWidth(true)
+    .FilterMode(TreeListFilterMode.MatchOnly)
+)
+
+<script src="~/Scripts/data/employees.js"></script>
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Filter Mode</span>
+        @(Html.DevExtreme().SelectBox()
+            .Value(TreeListFilterMode.MatchOnly)
+            .DataSource(new[] { "matchOnly", "withAncestors", "fullBranch" })
+            .OnValueChanged(@<text>
+                function(data) {
+                    var treeList = $("#employees").dxTreeList("instance");
+                    treeList.option("filterMode", data.value);
+                }
+            </text>
+            )
+        )
+    </div>
+</div>

@@ -1,0 +1,21 @@
+﻿@(Html.DevExtreme().CircularGauge()
+    .ID("gauge")
+    .Scale(s => s
+        .StartValue(0)
+        .EndValue(10)
+        .TickInterval(2)
+    )
+    .Value(7)
+    .Title(t => t
+        .Text("Amount of Produced Gold (Kilos)")
+        .HorizontalAlignment(HorizontalAlignment.Center)
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .Font(f => f
+            .Size(30)
+            .Color("#CFB53B")
+        )
+        .Margin(m => m
+            .Top(25)
+        )
+    )
+)

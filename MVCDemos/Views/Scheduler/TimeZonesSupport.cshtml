@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.Event>
+@{
+    var locations = new[] {
+new { TimeZoneId = "America/Los_Angeles", Text = "Los Angeles (UTC-08:00)" },
+new { TimeZoneId = "America/New_York", Text = "New York (UTC-05:00)" },
+new { TimeZoneId = "Europe/Berlin", Text = "Berlin (UTC+01:00)" }
+};
+}
+
+<div class="option">
+    <span>Office Time Zone</span>
+    @(Html.DevExtreme().SelectBox()
+            .DataSource(locations)
+            .Width(240)
+            .Value(locations[0].TimeZoneId)
+            .DisplayExpr("Text")
+            .ValueExpr("TimeZoneId")
+            .OnValueChanged(@<text>
+                function(e) {
+                var scheduler = $(".scheduler").dxScheduler("instance");
+                scheduler.option("timeZone", e.value);
+                }
+            </text>)
+    )
+</div>
+
+    @(Html.DevExtreme().Scheduler()
+            .DataSource(Model)
+            .StartDateExpr("StartDate")
+            .EndDateExpr("EndDate")
+            .TextExpr("Text")
+            .RecurrenceRuleExpr("RecurrenceRule")
+            .Views(new[] { SchedulerViewType.WorkWeek })
+            .CurrentView(SchedulerViewType.WorkWeek)
+            .CurrentDate(new DateTime(2017, 5, 25))
+            .TimeZone(locations[0].TimeZoneId)
+            .Height(600)
+            .Editing(e => e.AllowTimeZoneEditing(true))
+            .ElementAttr("class", "scheduler")
+    )

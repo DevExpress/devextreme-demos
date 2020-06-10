@@ -1,0 +1,69 @@
+﻿@section ExternalDependencies {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/3.3.1/exceljs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.4.0/polyfill.min.js"></script>
+}
+
+@(Html.DevExtreme().DataGrid()
+        .ID("gridContainer")
+        .DataSource(new JS("employees"))
+        .Export(e => e.Enabled(true))
+        .ShowBorders(true)
+        .ShowRowLines(true)
+        .ShowColumnLines(false)
+        .OnExporting("exporting")
+        .Columns(columns =>
+        {
+            columns.Add().DataField("Picture")
+                .Width(90)
+                .CellTemplate(@<text>
+                    <div>
+                        <img src="<%- value %>" alt="" />
+                    </div>
+                </text>);
+
+            columns.Add().DataField("FirstName");
+            columns.Add().DataField("LastName");
+            columns.Add().DataField("Position");
+            columns.Add().DataField("BirthDate").DataType(GridColumnDataType.Date);
+            columns.Add().DataField("HireDate").DataType(GridColumnDataType.Date);
+        })
+)
+<script src="~/data/employeesEI.js"></script>
+<script>
+    function exporting(e) {
+        var workbook = new ExcelJS.Workbook();
+        var worksheet = workbook.addWorksheet('Main sheet');
+
+        DevExpress.excelExporter.exportDataGrid({
+            component: e.component,
+            worksheet: worksheet,
+            topLeftCell: { row: 2, column: 2 },
+            autoFilterEnabled: true,
+            customizeCell: (options) => {
+                var { excelCell, gridCell } = options;
+                if (gridCell.rowType === "data") {
+                    if (gridCell.column.dataField === "Picture") {
+                        excelCell.value = undefined;
+
+                        const image = workbook.addImage({ // https://github.com/exceljs/exceljs#images
+                            base64: gridCell.value,
+                            extension: 'png',
+                        });
+
+                        worksheet.getRow(excelCell.row).height = 90;
+                        worksheet.addImage(image, {
+                            tl: { col: excelCell.col - 1, row: excelCell.row - 1 },
+                            br: { col: excelCell.col, row: excelCell.row }
+                        });
+                    }
+                }
+            }
+        }).then(function () {
+            workbook.xlsx.writeBuffer().then(function (buffer) {
+                saveAs(new Blob([buffer], { type: "application/octet-stream" }), "DataGrid.xlsx");
+            });
+        });
+        e.cancel = true;
+    }
+</script>

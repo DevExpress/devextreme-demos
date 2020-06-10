@@ -1,0 +1,43 @@
+﻿
+@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Title("Damped Sine Wave")
+    .Panes(p => {
+        p.Add().Name("top");
+        p.Add().Name("bottom");
+    })
+    .Series(s => {
+        s.Add().Pane("top");
+        s.Add().Pane("bottom");
+    })
+    .DataSource(Enumerable.Range(0, 600).Select(x => {
+        var argument = (Double)x / 100;
+        return new { arg = argument, val = Math.Exp(-argument) * Math.Cos(2 * Math.PI * argument) };
+    }))
+    .CommonAxisSettings(c => c.EndOnTick(false))
+    .ValueAxis(v => {
+        v.Add()
+            .Type(AxisScaleType.Logarithmic)
+            .LinearThreshold(-3)
+            .Title("Logarithmic Axis")
+            .Pane("top");
+        v.Add()
+            .Title("Linear Axis")
+            .Pane("bottom");
+    })
+    .Legend(l=>l.Visible(false))
+    .Tooltip(t=>t
+        .Enabled(true)
+        .Format(Format.Exponential))
+    .Crosshair(c=>c
+        .Enabled(true)
+        .HorizontalLine(l=>l.Visible(false))
+        .Label(l=>l
+            .Visible(true)
+            .Format(f=>f
+                .Type(Format.FixedPoint)
+                .Precision(2)
+            )
+        )
+    )
+)

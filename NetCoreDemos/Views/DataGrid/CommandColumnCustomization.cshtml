@@ -1,0 +1,95 @@
+﻿@(Html.DevExtreme().DataGrid()
+    .DataSource(new JS("employees"))
+    .KeyExpr("ID")
+    .Paging(paging => paging.Enabled(false))
+    .ShowBorders(true)
+    .Editing(editing => {
+        editing.Mode(GridEditMode.Row);
+        editing.AllowUpdating(true);
+        editing.AllowDeleting(new JS("allowDeleting"));
+        editing.UseIcons(true);
+    })
+    .Columns(columns => {
+        columns.Add()
+            .Type(GridCommandColumnType.Buttons)
+            .Width(110)
+            .Buttons(b => {
+                b.Add().Name(GridColumnButtonName.Edit);
+                b.Add().Name(GridColumnButtonName.Delete);
+
+                b.Add()
+                    .Hint("Clone")
+                    .Icon("repeat")
+                    .Visible(new JS("isCloneIconVisible"))
+                    .OnClick(@<text>cloneIconClick</text>);
+            });
+
+        columns.Add()
+            .DataField("Prefix")
+            .Caption("Title");
+
+        columns.Add().DataField("FirstName");
+        columns.Add().DataField("LastName");
+
+        columns.Add()
+            .DataField("Position")
+            .Width(130);
+
+        columns.Add()
+            .DataField("StateID")
+            .Caption("State")
+            .Width(125)
+            .Lookup(lookup => lookup
+                .DataSource(new JS("states"))
+                .DisplayExpr("Name")
+                .ValueExpr("ID")
+            );
+
+        columns.Add()
+            .DataField("BirthDate")
+            .DataType(GridColumnDataType.Date)
+            .Width(125);
+    })
+    .OnRowValidating(@<text>rowValidating</text>)
+    .OnEditorPreparing(@<text>editorPreparing</text>)
+)
+
+<script src="~/data/employeeData.js"></script>
+<script>
+    var maxID = employees[employees.length - 1].ID;
+
+    var isChief = function(position) {
+        return position && ["CEO", "CMO"].indexOf(position.trim().toUpperCase()) >= 0;
+    };
+
+    var allowDeleting = function(e) {
+        return !isChief(e.row.data.Position);
+    }
+
+    var isCloneIconVisible = function (e) {
+        return !e.row.isEditing && !isChief(e.row.data.Position);
+    }
+
+    var cloneIconClick = function(e) {
+        var clonedItem = $.extend({}, e.row.data, { ID: ++maxID });
+
+        employees.splice(e.row.rowIndex, 0, clonedItem);
+        e.component.refresh(true);
+        e.event.preventDefault();
+    }
+
+    var rowValidating = function(e) {
+        var position = e.newData.Position;
+
+        if (isChief(position)) {
+            e.errorText = "The company can have only one " + position.toUpperCase() + ". Please choose another position.";
+            e.isValid = false;
+        }
+    }
+
+    var editorPreparing = function(e) {
+        if (e.parentType === "dataRow" && e.dataField === "Position") {
+            e.editorOptions.readOnly = isChief(e.value);
+        }
+    }
+</script>

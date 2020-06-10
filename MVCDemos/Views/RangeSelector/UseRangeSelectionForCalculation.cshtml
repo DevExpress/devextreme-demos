@@ -1,0 +1,50 @@
+﻿<div id="range-selector-demo">
+    @(Html.DevExtreme().RangeSelector()
+        .ID("range-selector")
+        .Margin(m => m.Top(50))
+        .Scale(s => s
+            .StartValue(new DateTime(2011, 1, 1))
+            .EndValue(new DateTime(2011, 12, 31))
+            .MinorTickInterval(VizTimeInterval.Day)
+            .TickInterval(VizTimeInterval.Month)
+            .MinorTick(mt => mt.Visible(false))
+            .Marker(m => m.Visible(false))
+            .Label(l => l.Format("MMM"))
+        )
+        .Behavior(b => b.CallValueChanged(ValueChangedCallMode.OnMoving))
+        .SliderMarker(sm => sm.Format("dd EEEE"))
+        .Title("Calculate the Working Days Count in a Date Period")
+        .OnValueChanged("rangeSelector_valueChanged"))
+
+    <h2>Working days count: <span id="workingDaysCount">260</span></h2>
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            <span>Handle Range Changes</span>
+            @(Html.DevExtreme().SelectBox()
+                .ID("handle")
+                .DataSource(new[] { "onMoving", "onMovingComplete"})
+                .Width(210)
+                .Value("onMoving")
+                .OnValueChanged("selectBox_valueChanged"))
+        </div>
+    </div>
+</div>
+
+<script>
+    function rangeSelector_valueChanged(e) {
+        var currentDate = new Date(e.value[0]),
+            workingDaysCount = 0;
+        while (currentDate <= e.value[1]) {
+            if(currentDate.getDay() > 0 && currentDate.getDay() < 6) {
+                workingDaysCount++;
+            }
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+        $("#workingDaysCount").html(workingDaysCount.toFixed());
+    }
+    function selectBox_valueChanged(data) {
+        var rangeSelector = $("#range-selector").dxRangeSelector("instance");
+        rangeSelector.option("behavior.callValueChanged", data.value);
+    }
+</script>

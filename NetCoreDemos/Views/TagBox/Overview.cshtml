@@ -1,0 +1,117 @@
+﻿@model DevExtreme.NETCore.Demos.ViewModels.TagBoxViewModel
+
+<div class="form">
+    <div class="dx-fieldset">
+        <div class="dx-field">
+            <div class="dx-field-label">Default mode</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TagBox()
+                    .Items(Model.Items)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Search mode</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TagBox()
+                    .Items(Model.Items)
+                    .SearchEnabled(true)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Batch selection</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TagBox()
+                    .Items(Model.Items)
+                    .ShowSelectionControls(true)
+                    .ApplyValueMode(EditorApplyValueMode.UseButtons)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Hide selected items</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TagBox()
+                    .Items(Model.Items)
+                    .HideSelectedItems(true)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Single line mode</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TagBox()
+                    .Items(Model.Items)
+                    .Multiline(false)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Add custom items</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TagBox()
+                    .Items(Model.Items)
+                    .AcceptCustomValue(true)
+                    .OnCustomItemCreating("customItem_creating")
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">With custom placeholder</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TagBox()
+                    .Items(Model.Items)
+                    .Placeholder("Choose Product...")
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Disabled</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TagBox()
+                    .Items(Model.Items)
+                    .Value(new[] { Model.Items.First() })
+                    .Disabled(true)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Data source</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TagBox()
+                    .DataSource(d => d.Mvc().LoadAction("GetProducts").Key("ID"))
+                    .DisplayExpr("Name")
+                    .ValueExpr("ID")
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Custom template</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TagBox()
+                    .DataSource(d => d.Mvc().LoadAction("GetProducts").Key("ID"))
+                    .DisplayExpr("Name")
+                    .ValueExpr("ID")
+                    .ItemTemplate(@<text>
+                    <div class="custom-item">
+                        <img src="<%- ImageSrc %>" />
+                        <div class="product-name"><%- Name %></div>
+                    </div>
+                    </text>)
+                )
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function customItem_creating(args) {
+        var newValue = args.text,
+            component = args.component,
+            currentItems = component.option("items");
+        currentItems.unshift(newValue);
+        component.option("items", currentItems);
+        args.customItem = newValue;
+    }
+</script>

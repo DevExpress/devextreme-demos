@@ -1,0 +1,48 @@
+﻿<div class="widget-container">
+    <div>
+        @Html.Partial("_ItemDragging", "PlannedTasks")
+    </div>
+    <div>
+        @Html.Partial("_ItemDragging", "DoingTasks")
+    </div>
+</div>
+
+<script>
+    function onDragStart(e) {
+        var items = e.component.option("items");
+        e.itemData = items[e.fromIndex];
+    }
+
+    function onAdd(e) {
+        var store = e.component.getDataSource().store(),
+            values = e.itemData;
+
+        values.sort = e.toIndex;
+
+        store.insert(values).then(() => {
+            var changes = [{ type: "insert", data: values }];
+            store.push(changes);
+        });
+    }
+
+    function onRemove(e) {
+        var store = e.component.getDataSource().store(),
+            key = e.itemData.ID;
+
+        store.remove(key).then(() => {
+            var changes = [{ type: "remove", key: key }];
+            store.push(changes);
+        });
+    }
+
+    function onReorder(e) {
+        var store = e.component.getDataSource().store(),
+            key = e.itemData.ID,
+            data = { Sort: e.toIndex };
+
+        store.update(key, data).then(() => {
+            var changes = [{ type: "update", key: key, data: data }];
+            store.push(changes);
+        });
+    }
+</script>

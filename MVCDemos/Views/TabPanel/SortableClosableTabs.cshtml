@@ -1,0 +1,75 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.DataGrid.Employee>
+
+<div id="container">
+    @(Html.DevExtreme().Button()
+        .ID("addButton")
+        .Text("Add Tab")
+        .Icon("add")
+        .Type(ButtonType.Default)
+        .OnClick("addButtonHandler"))
+    @(Html.DevExtreme().Button()
+        .ID("removeButton")
+        .Text("Remove Tab")
+        .Icon("trash")
+        .Type(ButtonType.Danger)
+        .StylingMode(ButtonStylingMode.Outlined)
+        .OnClick(@<text>
+            function() {
+                closeButtonHandler(tabPanel.option("selectedItem"));
+            }
+        </text>))
+</div>
+
+@(Html.DevExtreme().Sortable()
+    .MoveItemOnDrop(true)
+    .Filter(".dx-tab")
+    .ItemOrientation(Orientation.Horizontal)
+    .OnReorder("onReorder")
+    .Content(@<text>@Html.Partial("_SortableTabPanel")</text>)
+)
+
+<script>
+    var tabPanel;
+    var allEmployees = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Take(9)));
+
+    function onInitialized(e) {
+        tabPanel = e.component;
+    }
+
+    function onReorder(e) {
+        var tabPanelItems = tabPanel.option("items");
+        var itemData = tabPanelItems.splice(e.fromIndex, 1)[0];
+        tabPanelItems.splice(e.toIndex, 0, itemData);
+        tabPanel.option("items", tabPanelItems);
+        tabPanel.option("selectedIndex", e.toIndex);
+    }
+
+    function addButtonHandler() {
+        var tabPanelItems = tabPanel.option("items")
+        var newItem = allEmployees.filter(function (employee) { return tabPanelItems.map(function (item) { return item.ID }).indexOf(employee.ID) === -1 })[0];
+
+        tabPanelItems.push(newItem);
+        tabPanel.option("items", tabPanelItems);
+        tabPanel.option("selectedItem", newItem);
+
+        updateButtonAppearance(tabPanelItems);
+    }
+
+    function closeButtonHandler(itemData) {
+        if (!itemData) return;
+
+        var tabPanelItems = tabPanel.option("items").slice();
+        var index = tabPanelItems.indexOf(itemData);
+
+        tabPanelItems.splice(index, 1);
+        if (index >= tabPanelItems.length && index > 0) tabPanel.option("selectedIndex", index - 1);
+        tabPanel.option("items", tabPanelItems);
+
+        updateButtonAppearance(tabPanelItems);
+    }
+
+    function updateButtonAppearance(items) {
+        $("#addButton").dxButton("instance").option("disabled", items.length === allEmployees.length);
+        $("#removeButton").dxButton("instance").option("disabled", items.length === 0);
+    }
+</script>

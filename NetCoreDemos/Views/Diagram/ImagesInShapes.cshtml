@@ -1,0 +1,37 @@
+﻿@model DevExtreme.NETCore.Demos.Models.SampleData.OrgData
+
+@(Html.DevExtreme().Diagram()
+    .ID("diagram")
+    .Nodes(ns => ns
+        .DataSource(d => d
+            .Array()
+            .Key("this")
+            .Data(Model.Items)
+        )
+        .KeyExpr("ID")
+        .TextExpr("Text")
+        .TypeExpr("Type")
+        .ImageUrlExpr("Picture")
+        .AutoLayout(al => al
+            .Type(DiagramDataLayoutType.Tree)
+            .Orientation(DiagramDataLayoutOrientation.Horizontal)
+        )
+    )
+    .Edges(ns => ns
+        .DataSource(d => d
+            .Array()
+            .Key("this")
+            .Data(Model.Links)
+        )
+        .KeyExpr("ID")
+        .FromExpr("From")
+        .ToExpr("To")
+    )
+    .Toolbox(t => t
+        .Groups(g => {
+                g.Add().Category(DiagramShapeCategory.General).Title("General");
+                g.Add().Category(DiagramShapeCategory.OrgChart).Title("Organizational Chart").Expanded(true);
+            }
+        )
+    )
+)

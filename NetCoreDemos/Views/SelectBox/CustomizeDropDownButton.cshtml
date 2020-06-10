@@ -1,0 +1,76 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.ElectronicsItem>
+
+<div class="dx-fieldset">
+    <div class="dx-field">
+        <div class="dx-field-label">Image as the icon</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(d => d.Mvc().LoadAction("GetProductNames"))
+                .DropDownButtonTemplate(@<text>
+                    <img src="~/images/icons/custom-dropbutton-icon.svg" class="custom-icon" />
+                </text>)
+            )
+        </div>
+    </div>
+
+    <div class="dx-field">
+        <div class="dx-field-label">Load indicator as the icon</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(d => d.Mvc().LoadAction("GetProductNames"))
+                .DataSourceOptions(dso => dso.OnLoadingChanged("selectBox_loadingChanged"))
+                .DropDownButtonTemplate(@<text>
+                    @(Html.DevExtreme().LoadIndicator()
+                        .ID("dropDownButtonLoadIndicator")
+                        .Visible(false)
+                    )
+                    <img src="~/images/icons/custom-dropbutton-icon.svg" class="custom-icon" id="dropDownButtonImage" />
+                </text>)
+            )
+        </div>
+    </div>
+
+    <div class="dx-field">
+        <div class="dx-field-label">Value-dependent icon</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(Model)
+                .ShowClearButton(true)
+                .DisplayExpr("Name")
+                .ValueExpr("ID")
+                .Value(1)
+                .ItemTemplate(@<text>
+                    <div class="custom-item">
+                        <img src="<%- IconSrc %>" />
+                        <div class="product-name"><%- Name %></div>
+                    </div>
+                </text>)
+                .OnSelectionChanged("selectBox_selectionChanged")
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    function selectBox_loadingChanged(isLoading) {
+        $("#dropDownButtonLoadIndicator").dxLoadIndicator("option", "visible", isLoading);
+        $("#dropDownButtonImage").toggle(!isLoading);
+    }
+
+    function getDropDownButtonTemplate(selectedItem) {
+        if(selectedItem) {
+            return function () {
+                return $("<img>", {
+                    src: selectedItem.IconSrc,
+                    class: "custom-icon"
+                });
+            }
+        }
+
+        return "dropDownButton";
+    }
+
+    function selectBox_selectionChanged(e) {
+        e.component.option("dropDownButtonTemplate", getDropDownButtonTemplate(e.selectedItem));
+    }
+</script>

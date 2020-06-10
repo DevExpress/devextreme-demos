@@ -1,0 +1,29 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Palette(VizPalette.Soft)
+    .CommonSeriesSettings(s => s
+        .ArgumentField("State")
+        .Type(SeriesType.Bar)
+        .IgnoreEmptyPoints(true)
+    )
+    .Series(s => {
+        s.Add().ValueField("Oil").Name("Oil Production");
+        s.Add().ValueField("Gas").Name("Gas Production");
+        s.Add().ValueField("Coal").Name("Coal Production");
+    })
+    .Legend(l => l
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+    )
+    .Export(e => e.Enabled(true))
+    .Title("Percent of Total Energy Production")
+    .DataSource(new object[] {
+        new { State = "China", Oil = 4.95, Gas = 2.85, Coal = 45.56 },
+        new { State = "Russia", Oil = 12.94, Gas = 17.66, Coal = 4.13 },
+        new { State = "USA", Oil = 8.51, Gas = 19.87, Coal = 15.84 },
+        new { State = "Iran", Oil = 5.3, Gas = 4.39 },
+        new { State = "Canada", Oil = 4.08, Gas = 5.4 },
+        new { State = "Saudi Arabia", Oil = 12.03 },
+        new { State = "Mexico", Oil = 3.86 }
+    })
+)

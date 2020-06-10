@@ -1,0 +1,20 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Series(s => s
+        .Add()
+        .ArgumentField("Day")
+        .ValueField("Oranges")
+        .Name("My oranges")
+        .Type(SeriesType.Bar)
+        .Color("#ffaa66")
+    )
+    .DataSource(new[] {
+        new { Day = "Monday", Oranges = 3 },
+        new { Day = "Tuesday", Oranges = 2 },
+        new { Day = "Wednesday", Oranges = 3 },
+        new { Day = "Thursday", Oranges = 4 },
+        new { Day = "Friday", Oranges = 6 },
+        new { Day = "Saturday", Oranges = 11 },
+        new { Day = "Sunday", Oranges = 4 }
+    })
+)

@@ -1,0 +1,38 @@
+﻿@(Html.DevExtreme().Diagram()
+    .ID("diagram")
+    .Nodes(ns => ns
+        .DataSource(d => d.Mvc()
+            .Controller("DiagramEmployees")
+            .LoadAction("Employees")
+            .InsertAction("InsertEmployee")
+            .UpdateAction("UpdateEmployee")
+            .DeleteAction("DeleteEmployee")
+            .Key("ID")
+            .OnInserting("onInserting")
+        )
+        .KeyExpr("ID")
+        .TextExpr("Title")
+        .ParentKeyExpr("HeadID")
+        .AutoLayout(al => al
+            .Type(DiagramDataLayoutType.Tree)
+        )
+    )
+    .Toolbox(t => t
+        .Groups(g => g
+            .Add().Category(DiagramShapeCategory.General).Title("General")
+        )
+    )
+)
+
+<script type="text/javascript">
+    function onInserting(values) {
+        values["ID"] = 0;
+        values["HeadID"] = 0;
+        values["Title"] = "New Position";
+        values["Prefix"] = "Mr";
+        values["FullName"] = "New Employee";
+        values["City"] = "LA";
+        values["State"] = "CA";
+        values["HireDate"] = new Date();
+    }
+</script>

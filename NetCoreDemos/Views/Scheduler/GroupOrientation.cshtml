@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.EmployeeTask>
+
+@(Html.DevExtreme().Scheduler()
+    .DataSource(Model)
+    .TextExpr("Subject")
+    .StartDateExpr("StartDate")
+    .EndDateExpr("DueDate")
+    .Views(views => {
+        views.Add()
+            .Name("Vertical Grouping")
+            .Type(SchedulerViewType.WorkWeek)
+            .GroupOrientation(Orientation.Vertical)
+            .CellDuration(60)
+            .IntervalCount(2);
+
+        views.Add()
+            .Name("Horizontal Grouping")
+            .Type(SchedulerViewType.WorkWeek)
+            .GroupOrientation(Orientation.Horizontal)
+            .CellDuration(30)
+            .IntervalCount(2);
+    })
+    .CurrentView(SchedulerViewType.WorkWeek)
+    .CrossScrollingEnabled(true)
+    .ShowAllDayPanel(false)
+    .CurrentDate(new DateTime(2018, 5, 21))
+    .StartDayHour(9)
+    .EndDayHour(16)
+    .Groups(new[] { "Priority" })
+    .Resources(res => {
+        res.Add()
+            .FieldExpr("Priority")
+            .AllowMultiple(false)
+            .Label("Priority")
+            .DataSource(new[] {
+                new { id = "Low", text = "Low Priority", color = "#1e90ff" },
+                new { id = "High", text = "High Priority", color = "#ff9747" }
+            });
+    })
+    .ShowCurrentTimeIndicator(false)
+)

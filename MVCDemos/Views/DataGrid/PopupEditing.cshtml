@@ -1,0 +1,78 @@
+﻿<div id="data-grid-demo">
+    @(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.DataGrid.Employee>()
+        .ID("gridContainer")
+        .ShowBorders(true)
+        .Paging(p => p.Enabled(false))
+        .Editing(e => e.Mode(GridEditMode.Popup)
+            .AllowUpdating(true)
+            .Popup(p => p
+                .Title("Employee Info")
+                .ShowTitle(true)
+                .Width(700)
+                .Height(525)
+                .Position(pos => pos
+                    .My(HorizontalAlignment.Center, VerticalAlignment.Top)
+                    .At(HorizontalAlignment.Center, VerticalAlignment.Top)
+                    .Of(new JS("window"))
+                )
+            )
+            .Form(f => f.Items(items => {
+                items.AddGroup()
+                    .ColCount(2)
+                    .ColSpan(2)
+                    .Items(groupItems => {
+                        groupItems.AddSimpleFor(m => m.FirstName);
+                        groupItems.AddSimpleFor(m => m.LastName);
+                        groupItems.AddSimpleFor(m => m.Prefix);
+                        groupItems.AddSimpleFor(m => m.BirthDate);
+                        groupItems.AddSimpleFor(m => m.Position);
+                        groupItems.AddSimpleFor(m => m.HireDate);
+
+                        groupItems.AddSimpleFor(m => m.Notes)
+                            .ColSpan(2)
+                            .Editor(editor => editor.TextArea().Height(100));
+                    });
+
+                items.AddGroup()
+                    .Caption("Home Address")
+                    .ColCount(2)
+                    .ColSpan(2)
+                    .Items(groupItems => {
+                        groupItems.AddSimpleFor(m => m.StateID);
+                        groupItems.AddSimpleFor(m => m.Address);
+                    });
+            }))
+        )
+        .Columns(columns => {
+            columns.AddFor(m => m.Prefix)
+                .Width(70);
+
+            columns.AddFor(m => m.FirstName);
+
+            columns.AddFor(m => m.LastName);
+
+            columns.AddFor(m => m.BirthDate);
+
+            columns.AddFor(m => m.Position)
+                .Width(170);
+
+            columns.AddFor(m => m.HireDate);
+
+            columns.AddFor(m => m.StateID)
+                .Width(125)
+                .Lookup(lookup => lookup
+                    .DataSource(d => d.WebApi().Controller("DataGridStatesLookup").LoadAction("Get").Key("ID"))
+                    .DisplayExpr("Name")
+                    .ValueExpr("ID")
+                );
+
+            columns.AddFor(m => m.Address)
+                .Visible(false);
+
+            columns.AddFor(m => m.Notes)
+                .Visible(false);
+        })
+        .DataSource(d => d.WebApi().Controller("DataGridEmployees").UpdateAction(true).Key("ID"))
+        .DataSourceOptions(d => d.Filter("['ID', '<=' , 14]"))
+    )
+</div>

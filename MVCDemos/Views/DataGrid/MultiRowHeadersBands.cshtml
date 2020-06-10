@@ -1,0 +1,55 @@
+﻿@using DevExtreme.MVC.Demos.Models
+
+@model IEnumerable<CountryPopulationAndGDP>
+
+<div class="long-title"><h3>Country Area, Population, and GDP Structure</h3></div>
+
+@(Html.DevExtreme().DataGrid<CountryPopulationAndGDP>()
+    .ID("gridContainer")
+    .DataSource(Model)
+    .ColumnAutoWidth(true)
+    .AllowColumnReordering(true)
+    .ShowBorders(true)
+    .Columns(c => {
+        c.AddFor(m => m.Country);
+
+        c.AddFor(m => m.Area)
+            .HeaderCellTemplate(@<text>
+                <div>Area, km<sup>2</sup></div>
+            </text>);
+
+        c.Add()
+            .Caption("Population")
+            .Columns(a => {
+                a.AddFor(m => m.Population_Total)
+                    .Format(Format.FixedPoint);
+
+                a.AddFor(m => m.Population_Urban)
+                    .Format(Format.Percent);
+            });
+
+        c.Add()
+            .Caption("Nominal GDP")
+            .Columns(a => {
+                a.AddFor(m => m.GDP_Total)
+                    .Format(Format.FixedPoint)
+                    .SortOrder(SortOrder.Desc);
+
+                a.Add()
+                    .Caption("By Sector")
+                    .Columns(b => {
+                        b.AddFor(m => m.GDP_Agriculture)
+                            .Width(95)
+                            .Format(f => f.Type(Format.Percent).Precision(1));
+
+                        b.AddFor(m => m.GDP_Industry)
+                            .Width(80)
+                            .Format(f => f.Type(Format.Percent).Precision(1));
+
+                        b.AddFor(m => m.GDP_Services)
+                            .Width(85)
+                            .Format(f => f.Type(Format.Percent).Precision(1));
+                    });
+            });
+    })
+)

@@ -1,0 +1,106 @@
+﻿@model DevExtreme.MVC.Demos.ViewModels.RtlViewModel
+
+<div id="form"  class="@(Model.RtlEnabled ? "dx-rtl" : "")">
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="dx-fieldset">
+            <div class="dx-field">
+                <div class="dx-field-label">Language</div>
+                <div class="dx-field-value">
+                    @(Html.DevExtreme().SelectBox()
+                        .RtlEnabled(Model.RtlEnabled)
+                        .DataSource(Model.LanguageItems)
+                        .Value(Model.RtlEnabled ? Model.LanguageItems.First() : Model.LanguageItems.Last())
+                        .OnValueChanged("selectBox_valueChanged"))
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dx-fieldset">
+
+        <div class="dx-field">
+            <div class="dx-field-label">Text Box</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TextBox()
+                    .RtlEnabled(Model.RtlEnabled)
+                    .ShowClearButton(true)
+                    .Value(Model.Text))
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Number Box</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().NumberBox()
+                    .RtlEnabled(Model.RtlEnabled)
+                    .ShowSpinButtons(true)
+                    .Value(123))
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Select Box</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().SelectBox()
+                    .RtlEnabled(Model.RtlEnabled)
+                    .DataSource(d => d.Mvc().Controller("Common").LoadAction("GetEuropeanUnionData").Key("ID"))
+                    .ValueExpr("ID")
+                    .DisplayExpr(Model.DisplayExpr)
+                    .Value(1))
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Tag Box</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TagBox()
+                    .RtlEnabled(Model.RtlEnabled)
+                    .DataSource(d => d.Mvc().Controller("Common").LoadAction("GetEuropeanUnionData").Key("ID"))
+                    .ValueExpr("ID")
+                    .DisplayExpr(Model.DisplayExpr)
+                    .Value(new[] { 1 })
+                    .Placeholder("..."))
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Text Area</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().TextArea()
+                    .RtlEnabled(Model.RtlEnabled)
+                    .Value(Model.Text))
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Autocomplete</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().Autocomplete()
+                    .RtlEnabled(Model.RtlEnabled)
+                    .DataSource(d => d.Mvc().Controller("Common").LoadAction("GetEuropeanUnionData").Key("ID"))
+                    .ValueExpr(Model.DisplayExpr))
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Check Box</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().CheckBox()
+                    .RtlEnabled(Model.RtlEnabled)
+                    .Value(true)
+                    .Text(Model.Text))
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Switch</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().Switch()
+                    .RtlEnabled(Model.RtlEnabled))
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function selectBox_valueChanged(data) {
+        var setRTL = data.value === "@Model.LanguageItems.FirstOrDefault()";
+
+        document.cookie = "direction=" + (setRTL ? "rtl" : "ltr") + "; path=/";
+
+        window.location.reload();
+    }
+</script>

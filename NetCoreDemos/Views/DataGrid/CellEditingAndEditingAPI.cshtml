@@ -1,0 +1,63 @@
+﻿<div id="data-grid-demo">
+    @(Html.DevExtreme().Button()
+        .ID("gridDeleteSelected")
+        .Text("Delete Selected Records")
+        .Height(34)
+        .Disabled(true)
+        .OnClick(@<text>
+            function () {
+                var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                $.when.apply($, dataGrid.getSelectedRowsData().map(function(data) {
+                    return dataGrid.getDataSource().store().remove(data.ID);
+                })).done(function() {
+                    dataGrid.refresh();
+                });
+            }
+        </text>)
+    )
+
+    @(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.DataGrid.Employee>()
+        .ID("gridContainer")
+        .ShowBorders(true)
+        .Paging(paging => paging.Enabled(false))
+        .Editing(editing => {
+            editing.Mode(GridEditMode.Cell);
+            editing.AllowUpdating(true);
+        })
+        .Selection(selection => selection.Mode(SelectionMode.Multiple))
+        .OnSelectionChanged(@<text>
+            function(data) {
+                var deleteButton = $("#gridDeleteSelected").dxButton("instance");
+                deleteButton.option("disabled", !data.selectedRowsData.length);
+            }
+        </text>)
+        .Columns(columns => {
+            columns.AddFor(m => m.Prefix)
+                .Width(55);
+
+            columns.AddFor(m => m.FirstName);
+
+            columns.AddFor(m => m.LastName);
+
+            columns.AddFor(m => m.Position)
+                .Width(170);
+
+            columns.AddFor(m => m.StateID)
+                .Width(125)
+                .Lookup(lookup => lookup
+                    .DataSource(d => d.Mvc().Controller("DataGridStatesLookup").LoadAction("Get").Key("ID"))
+                    .DisplayExpr("Name")
+                    .ValueExpr("ID")
+                );
+
+            columns.AddFor(m => m.BirthDate);
+        })
+        .DataSource(d => d.Mvc()
+            .Controller("DataGridEmployees")
+            .LoadAction("Get")
+            .UpdateAction("Put")
+            .DeleteAction("Delete")
+            .Key("ID")
+        )
+    )
+</div>

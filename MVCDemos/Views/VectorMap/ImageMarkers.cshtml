@@ -1,0 +1,22 @@
+﻿@(Html.DevExtreme().VectorMap()
+    .ID("vector-map")
+    .Bounds(new double[] { -118, 52, -80, 20 })
+    .Layers(layers => {
+        layers.Add()
+            .DataSource(new JS("DevExpress.viz.map.sources.usa"))
+            .BorderColor("#ffffff")
+            .HoverEnabled(false);
+
+        layers.Add()
+            .Type(VectorMapLayerType.Marker)
+            .ElementType(VectorMapMarkerType.Image)
+            .DataField("url")
+            .Size(51)
+            .Label(l => l
+                .DataField("text")
+                .Font(f => f.Size(14))
+            )
+            .DataSource(d => d.Mvc().LoadAction("GetWeatherData"));
+    })
+    .LoadingIndicator(li => li.Show(true))
+)

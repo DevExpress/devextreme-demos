@@ -1,0 +1,22 @@
+﻿@(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.Customer>()
+    .ID("gridContainer")
+    .ShowBorders(true)
+    .Columns(columns => {
+        columns.AddFor(m => m.CompanyName);
+
+        columns.AddFor(m => m.City);
+
+        columns.AddFor(m => m.State);
+
+        columns.AddFor(m => m.Phone);
+
+        columns.AddFor(m => m.Fax);
+    })
+    .Paging(paging => paging.PageSize(10))
+    .Pager(pager => {
+        pager.ShowPageSizeSelector(true);
+        pager.AllowedPageSizes(new[] { 5, 10, 20 });
+        pager.ShowInfo(true);
+    })
+    .DataSource(d => d.WebApi().Controller("DataGridCustomers").Key("ID"))
+)

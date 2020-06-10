@@ -1,0 +1,20 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.Appointment>
+
+@(Html.DevExtreme().Scheduler()
+    .ID("scheduler")
+    .DataSource(Model)
+    .Views(new[] {
+        SchedulerViewType.Day,
+        SchedulerViewType.Week,
+        SchedulerViewType.WorkWeek,
+        SchedulerViewType.Month
+    })
+    .CurrentView(SchedulerViewType.Day)
+    .CurrentDate(new DateTime(2017, 5, 25))
+    .StartDayHour(9)
+    .Height(600)
+    .TextExpr("Text")
+    .StartDateExpr("StartDate")
+    .EndDateExpr("EndDate")
+    .AllDayExpr("AllDay")
+)

@@ -1,0 +1,111 @@
+﻿@(Html.DevExtreme().VectorMap()
+    .ID("vector-map")
+    .Layers(layers => {
+        layers.Add()
+            .Name("areas")
+            .DataSource(new JS("DevExpress.viz.map.sources.world"))
+            .Palette(VizPalette.Violet)
+            .ColorGroups(new double[] { 0, 0.5, 0.8, 1, 2, 3, 100 })
+            .ColorGroupingField("population")
+            .Label(lab => lab
+                .Enabled(true)
+                .DataField("name")
+            )
+            .Customize("vectormMap_areasLayer_customize");
+
+        layers.Add()
+            .Name("markers")
+            .DataSource(d => d.StaticJson().Url(Url.Action("GetAreaWithLabelsAndTwoLegendsData")))
+            .DataSourceOptions(dso => dso.Map("vectormMap_markersLayer_dataSource_map"))
+            .ElementType(VectorMapMarkerType.Bubble)
+            .DataField("value")
+            .SizeGroups(new double[] { 0, 8000, 10000, 50000 })
+            .Opacity(0.8)
+            .Label(l => l.Enabled(false));
+    })
+    .Tooltip(t => t
+        .Enabled(true)
+        .CustomizeTooltip("vectorMap_customizeTooltip")
+    )
+    .Legends(legends => {
+        legends.Add()
+            .Title("World Population\nPercentages")
+            .Source(s => s
+                .Layer("areas")
+                .Grouping("color")
+            )
+            .HorizontalAlignment(HorizontalAlignment.Left)
+            .VerticalAlignment(VerticalEdge.Bottom)
+            .CustomizeText("vectorMap_areasLegend_customizeText")
+            .CustomizeItems("vectorMap_customizeItems");
+
+        legends.Add()
+            .Title("City Population")
+            .Source(s => s
+                .Layer("markers")
+                .Grouping("size")
+            )
+            .MarkerShape(VectorMapMarkerShape.Circle)
+            .HorizontalAlignment(HorizontalAlignment.Right)
+            .VerticalAlignment(VerticalEdge.Bottom)
+            .CustomizeText("vectorMap_markersLegend_customizeText")
+            .CustomizeItems("vectorMap_customizeItems");
+    })
+    .Bounds(new double[] { -180, 85, 180, -75 })
+)
+
+<script src="~/data/areaPopulations.js"></script>
+<script>
+    function vectormMap_markersLayer_dataSource_map(item) {
+        item.features = $.map(item.features,
+            function(data) {
+                return {
+                    type: "Feature",
+                    geometry: {
+                        type: "Point",
+                        coordinates: data.coordinates
+                    },
+                    properties: {
+                        value: data.value,
+                        text: data.text
+                    }
+                };
+            }
+        );
+        return item;
+    }
+
+    function vectormMap_areasLayer_customize(elements) {
+        $.each(elements, function(_, element) {
+            var name = element.attribute("name"),
+                population = areaPopulations[name];
+            if(population) {
+                element.attribute("population", population);
+            }
+        });
+    }
+
+    function vectorMap_customizeTooltip(arg) {
+        return { text: arg.attribute("text") };
+    }
+
+    function vectorMap_areasLegend_customizeText(arg) {
+        if(arg.index === 0) {
+            return "< 0.5%";
+        }
+        else if(arg.index === 5) {
+            return "> 3%";
+        }
+        else {
+            return arg.start + "% to " + arg.end + "%";
+        }
+    }
+
+    function vectorMap_markersLegend_customizeText(arg) {
+        return ["< 8000K", "8000K to 10000K", "> 10000K"][arg.index];
+    }
+
+    function vectorMap_customizeItems(items) {
+        return items.reverse();
+    }
+</script>

@@ -1,0 +1,44 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Title("Population Pyramid For Norway 2016")
+    .Rotated(true)
+    .BarGroupWidth(18)
+    .CommonSeriesSettings(s => s
+        .ArgumentField("Age")
+        .Type(SeriesType.StackedBar)
+    )
+    .Series(s => {
+        s.Add()
+            .ValueField("Male")
+            .Name("Male")
+            .Color("#3F7FBF");
+        s.Add()
+            .ValueField("Female")
+            .Name("Female")
+            .Color("#F87CCC");
+    })
+    .Tooltip(t => t
+        .Enabled(true)
+        .CustomizeTooltip(@<text>
+            function (arg) {
+                return {
+                    text: Math.abs(arg.valueText)
+                };
+            }
+        </text>)
+        )
+        .ValueAxis(a => {
+            a.Add()
+                .Label(l => l.CustomizeText(@<text>
+                    function (arg) {
+                        return Math.abs(arg.value) + "%";
+                    }
+                </text>));
+        })
+    .Legend(l => l
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+        .Margin(m => m.Left(50))
+    )
+    .DataSource(Model)
+)

@@ -1,0 +1,35 @@
+﻿@(Html.DevExtreme().FileManager()
+    .CurrentPath("Widescreen")
+    .FileSystemProvider(provider => provider
+        .Remote()
+        .Url(Url.RouteUrl("FileManagementImagesApi")))
+    .Permissions(permissions => permissions
+        .Create(true)
+        .Copy(true)
+        .Move(true)
+        .Delete(true)
+        .Rename(true)
+        .Upload(true)
+        .Download(true))
+    .OnSelectedFileOpened(@<text>
+        function(e) {
+            var popup = $("#photo-popup").dxPopup("instance");
+            popup.option({
+                "title": e.file.name,
+                "contentTemplate": "<img src=\"" + e.file.dataItem.url + "\" class=\"photo-popup-image\" />"
+            });
+            popup.show();
+        }
+    </text>)
+    .Height(450))
+
+@(Html.DevExtreme().Popup()
+    .ID("photo-popup")
+    .MaxHeight(600)
+    .OnContentReady(@<text>
+        function(e) {
+            var $contentElement = e.component.content();
+            $contentElement.addClass("photo-popup-content");
+        }
+    </text>)
+    .CloseOnOutsideClick(true))

@@ -1,0 +1,131 @@
+﻿@using DevExtreme.NETCore.Demos.Models
+@model IEnumerable<GalleryItem>
+
+<script>
+    var favoritesList = [];
+</script>
+
+<div class="images">
+    @foreach(var property in Model) {
+        <div onclick="showPopup(@property.ID, '@property.Address')">
+            <div class="item-content">
+                <img src="@property.Image" />
+                <div class="item-options">
+                    <div>
+                        <div class="address">@property.Address</div>
+                        <div class="price large-text">$@string.Format("{0:n0}", property.Price)</div>
+                        <div class="agent">
+                            <div id="@("house" + property.ID)">
+                                <img src="~/images/icon-agent.svg">
+                                Listing agent
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @(Html.DevExtreme().Popover()
+                .Target("#house" + property.ID)
+                .ShowEvent("mouseenter")
+                .HideEvent("mouseleave")
+                .Width(260)
+                .ContentTemplate(
+                    "<div class='agent-details'>" +
+                        "<img src='" + property.Agent.Picture + "' />" +
+                        "<div>" +
+                            "<div class='name large-text'>" + property.Agent.FirstName + " " + property.Agent.LastName + "</div>" +
+                            "<div class='phone'>Tel: " + property.Agent.Phone + "</div>" +
+                        "</div>" +
+                    "</div>")
+                .Position(a => a
+                    .At(HorizontalAlignment.Center, VerticalAlignment.Bottom)
+                    .My(HorizontalAlignment.Center, VerticalAlignment.Top)
+                    .Collision(PositionResolveCollision.Fit, PositionResolveCollision.Flip)
+                    .Offset(0, 2)
+                )
+            )
+
+            @using(Html.DevExtreme().NamedTemplate("popup-template-" + property.ID)) {
+                <div class='popup-property-details'>
+                    <div class='large-text'>$@string.Format("{0:n0}", property.Price)</div>
+                    <div class='opacity'>@property.Address, @property.City, @property.State</div>
+                    @(Html.DevExtreme().Button()
+                        .ElementAttr("class", "favorites")
+                        .OnInitialized(@<text>
+                            function buttonOnInitialized(e) {
+                                setFavoriteText(e, @property.ID);
+                            }
+                        </text>)
+                        .Icon("favorites")
+                        .Width(260)
+                        .Height(44)
+                        .OnClick(@<text>
+                            function buttonOnInitialized(e) {
+                                changeFavorite(e, @property.ID);
+                            }
+                        </text>)
+                    )
+                    <div class='images'>
+                        <img src="@property.Image" />
+                        <img src="@property.Image.Replace(".jpg", "b.jpg")" />
+                    </div>
+                    <div>@property.Features</div>
+                </div>
+            }
+        </div>
+    }
+    @(Html.DevExtreme().Popup()
+        .ID("property-popup")
+        .Width(660)
+        .Height(540)
+        .ShowTitle(true)
+        .Title("")
+        .Visible(false)
+        .DragEnabled(false)
+        .CloseOnOutsideClick(true)
+    )
+</div>
+
+<script>
+    function removeItemFromFavorites(id) {
+        var itemIndex = favoritesList.indexOf(id);
+        if (itemIndex >= 0) {
+            favoritesList.splice(itemIndex, 1);
+        }
+    }
+
+    function showPopup(id, address) {
+        var popup = $("#property-popup").dxPopup("instance");
+        popup.option("contentTemplate", $("#popup-template-" + id));
+        popup.option("title", address);
+        popup.show();
+    }
+
+    function setButtonText(button, isFav) {
+        button.option("text", isFav
+            ? "Remove from Favorites"
+            : "Add to Favorites");
+    }
+
+    function setFavoriteText(e, id) {
+        setButtonText(e.component, favoritesList.indexOf(id) >= 0);
+    }
+
+    function changeFavorite(e, id) {
+        var favoriteState = favoritesList.indexOf(id) == -1;
+        favoriteState ? favoritesList.push(id) : removeItemFromFavorites(id);
+        setButtonText(e.component, favoriteState);
+
+        var message = "This item has been "
+            + (favoriteState ? "added to" : "removed from")
+            + " the Favorites list!";
+
+        DevExpress.ui.notify({
+                message: message,
+                width: 450
+            },
+            favoriteState ? "success" : "error",
+            2000
+        );
+    }
+</script>

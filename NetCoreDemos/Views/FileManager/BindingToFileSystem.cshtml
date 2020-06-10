@@ -1,0 +1,15 @@
+﻿@(Html.DevExtreme().FileManager()
+    .FileSystemProvider(provider => provider.Remote()
+        .Url(Url.RouteUrl("FileManagementFileSystemApi")))
+    .Permissions(permissions => {
+        permissions.Download(true);
+        // uncomment the code below to enable file/folder management
+        // permissions.Create(true);
+        // permissions.Copy(true);
+        // permissions.Move(true);
+        // permissions.Delete(true);
+        // permissions.Rename(true);
+        // permissions.Upload(true);
+    })
+    .AllowedFileExtensions(new[] { ".js", ".json", ".css" }))
+

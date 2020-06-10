@@ -1,0 +1,251 @@
+﻿[{
+    "name": "Africa",
+    "items": [{
+        "value": 21324000,
+        "name": "Lagos",
+        "country": "Nigeria"
+    }, {
+        "value": 9735000,
+        "name": "Kinshasa",
+        "country": "Democratic Republic of the Congo"
+    }, {
+        "value": 9278441,
+        "name": "Cairo",
+        "country": "Egypt"
+    }, {
+        "value": 4434827,
+        "name": "Johannesburg",
+        "country": "South Africa"
+    }, {
+        "value": 4395243 ,
+        "name": "Abidjan",
+        "country": " Ivory Coast"
+    }, {
+        "value": 4364541,
+        "name": "Dar es Salaam",
+        "country": "Tanzania"
+    }, {
+        "value": 4239988,
+        "name": "Giza",
+        "country": "Egypt"
+    }, {
+        "value": 3740026,
+        "name": "Cape Town",
+        "country": "South Africa"
+    }, {
+        "value": 3284000,
+        "name": "Casablanca",
+        "country": "Morocco"
+    }]
+}, {
+    "name": "Asia",
+    "items": [{
+        "value": 24256800,
+        "name": "Shanghai",
+        "country": "China"
+    }, {
+        "value": 23500000,
+        "name": "Karachi",
+        "country": "Pakistan"
+    }, {
+        "value": 21516000,
+        "name": "Beijing",
+        "country": "China"
+    }, {
+        "value": 16787941,
+        "name": "Delhi",
+        "country": "India"
+    }, {
+        "value": 15200000,
+        "name": "Tianjin",
+        "country": "China"
+    }, {
+        "value": 13297629,
+        "name": "Tokyo",
+        "country": "Japan"
+    }, {
+        "value": 13080500,
+        "name": "Guangzhou",
+        "country": "China"
+    }, {
+        "value": 12478447,
+        "name": "Mumbai",
+        "country": "India"
+    }, {
+        "value": 10467400,
+        "name": "Shenzhen",
+        "country": "China"
+    }, {
+        "value": 10075310,
+        "name": "Jakarta",
+        "country": "Indonesia"
+    }, {
+        "value": 10048850,
+        "name": "Seoul",
+        "country": "South Korea"
+    }, {
+        "value": 6318745,
+        "name": "Lahore",
+        "country": "Pakistan"
+    }]
+}, {
+    "name": "Australia",
+    "items": [{
+        "value": 4840600,
+        "name": "Sydney",
+        "country": "Austraila"
+    }, {
+        "value": 4440000,
+        "name": "Melbourne",
+        "country": "Austraila"
+    }, {
+        "value": 2274560,
+        "name": "Brisbane",
+        "country": "Austraila"
+    }, {
+        "value": 2021203,
+        "name": "Perth",
+        "country": "Austraila"
+    }, {
+        "value": 1304631,
+        "name": "Adelaide",
+        "country": "Austraila"
+    }]
+}, {
+    "name": "Europe",
+    "items": [{
+        "value": 14160467,
+        "name": "Istanbul",
+        "country": "Turkey"
+    }, {
+        "value": 12197596,
+        "name": "Moscow",
+        "country": "Russia"
+    }, {
+        "value": 8538689,
+        "name": "London",
+        "country": "United Kingdom"
+    }, {
+        "value": 5191690,
+        "name": "Saint Petersburg",
+        "country": "Russia"
+    }, {
+        "value": 4470800,
+        "name": "Ankara",
+        "country": "Turkey"
+    }, {
+        "value": 3517424,
+        "name": "Berlin",
+        "country": "Germany"
+    }, {
+        "value": 3207247,
+        "name": "Madrid",
+        "country": "Spain"
+    }, {
+        "value": 2761477,
+        "name": "Rome",
+        "country": "Italy"
+    }, {
+        "value": 2848597,
+        "name": "Kyiv",
+        "country": "Ukraine"
+    }, {
+        "value": 2249977,
+        "name": "Paris",
+        "country": "France"
+    }, {
+        "value": 1949400,
+        "name": "Minsk",
+        "country": "Belarus"
+    }, {
+        "value": 1924425,
+        "name": "Bucharest",
+        "country": "Romania"
+    }]
+}, {
+    "name": "North America",
+    "items": [{
+        "value": 8874724,
+        "name": "Mexico City",
+        "country": "Mexico"
+    }, {
+        "value": 8550405,
+        "name": "New York City",
+        "country": "United States"
+    }, {
+        "value": 3884307,
+        "name": "Los Angeles",
+        "country": "United States"
+    }, {
+        "value": 2808503,
+        "name": "Toronto",
+        "country": "Canada"
+    }, {
+        "value": 2722389,
+        "name": "Chicago",
+        "country": "United States"
+    }, {
+        "value": 2239558,
+        "name": "Houston",
+        "country": "United States"
+    }, {
+        "value": 2121871,
+        "name": "Havana",
+        "country": "Cuba"
+    }, {
+        "value": 1742023,
+        "name": "Ecatepec de Morelos",
+        "country": "Mexico"
+    }, {
+        "value": 1731245,
+        "name": "Montreal",
+        "country": "Canada"
+    }]
+}, {
+    "name": "South America",
+    "items": [{
+        "value": 11895893,
+        "name": "São Paulo",
+        "country": "Brazil"
+    }, {
+        "value": 8693387,
+        "name": "Lima",
+        "country": "Peru"
+    }, {
+        "value": 7776845,
+        "name": "Bogotá",
+        "country": "Colombia"
+    }, {
+        "value": 6429923,
+        "name": "Rio de Janeiro",
+        "country": "Brazil"
+    }, {
+        "value": 5743719,
+        "name": "Santiago",
+        "country": "Chile"
+    }, {
+        "value": 3273863,
+        "name": "Caracas",
+        "country": "Venezuela"
+    }, {
+        "value": 3054300,
+        "name": "Buenos Aires",
+        "country": "Argentina"
+    }, {
+        "value": 2902927,
+        "name": "Salvador",
+        "country": "Brazil"
+    }, {
+        "value": 2852372,
+        "name": "Brasília",
+        "country": "Brazil"
+    }, {
+        "value": 2571896,
+        "name": "Fortaleza",
+        "country": "Brazil"
+    }, {
+        "value": 2560505,
+        "name": "Guayaquil",
+        "country": "Ecuador"
+    }]
+}]

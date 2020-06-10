@@ -1,0 +1,54 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.EmployeeTask>
+
+@(Html.DevExtreme().Scheduler()
+    .ID("scheduler")
+    .DataSource(Model)
+    .TextExpr("Subject")
+    .StartDateExpr("StartDate")
+    .EndDateExpr("DueDate")
+    .Views(views => {
+        views.Add()
+            .Name("Week")
+            .Type(SchedulerViewType.Week);
+
+        views.Add()
+            .Name("Month")
+            .Type(SchedulerViewType.Month);
+    })
+    .CurrentView(SchedulerViewType.Week)
+    .CrossScrollingEnabled(true)
+    .GroupByDate(true)
+    .CurrentDate(new DateTime(2018, 5, 21))
+    .StartDayHour(9)
+    .EndDayHour(16)
+    .Groups(new[] { "Priority" })
+    .Resources(res => {
+        res.Add()
+            .FieldExpr("Priority")
+            .AllowMultiple(false)
+            .Label("Priority")
+            .DataSource(new[] {
+                new { id = "Low", text = "Low Priority", color = "#1e90ff" },
+                new { id = "High", text = "High Priority", color = "#ff9747" }
+            });
+    })
+    .Height(700)
+    .ShowCurrentTimeIndicator(false)
+)
+
+<div class="options">
+<div class="caption">Group by Date First</div>
+<div class="option">
+    @(Html.DevExtreme().Switch()
+        .Value(true)
+        .OnValueChanged("groupByDate_valueChanged")
+    )
+</div>
+</div>
+
+<script>
+function groupByDate_valueChanged(e) {
+    var scheduler = $("#scheduler").dxScheduler("instance");
+    scheduler.option("groupByDate", e.value)
+}
+</script>

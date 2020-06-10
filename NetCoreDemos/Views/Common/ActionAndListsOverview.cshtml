@@ -1,0 +1,66 @@
+﻿@using DevExtreme.NETCore.Demos.Models.SampleData
+<div class="left">
+    @(Html.DevExtreme().List()
+        .ID("list")
+        .Grouped(true)
+        .SearchEnabled(true)
+        .SelectionMode(ListSelectionMode.Single)
+        .DataSource(d => d.Mvc().Controller("ActionsOverview").Key("Id").LoadAction("Get"))
+        .DataSourceOptions(o => o.Group("City").SearchExpr(new[] { "Hotel_Name", "City", "Address" }))
+        .SelectedItems(new[] { SampleData.Hotels.First() })
+        .ItemTemplate(@<text>
+            <div>
+                <div class="hotel">
+                    <div class="name"><%- Hotel_Name %></div>
+                    <div class="address"><%- Postal_Code + ", " + Address %></div>
+                    <div class="type <%- Hotel_Class.toLowerCase() %>"></div>
+                </div>
+                <div class="price-container">
+                    <div class="price">$<%- Price %></div>
+                    <div class="caption">per<br>night</div>
+                </div>
+            </div>
+        </text>)
+        .OnSelectionChanged("selectionChanged")
+    )
+</div>
+<div class="right">
+    <div class="header">
+        <div class="name-container">
+            <div class="name"></div>
+            <div class="type"></div>
+        </div>
+        <div class="price-container">
+            <div class="price"></div>
+            <div class="caption">per<br>night</div>
+        </div>
+    </div>
+    @(Html.DevExtreme().TileView()
+        .ID("tile")
+        .NoDataText("")
+        .Height(224)
+        .BaseItemHeight(100)
+        .BaseItemWidth(137)
+        .ItemMargin(12)
+        .ItemTemplate(@<text>
+            <div class="tile-image" style="background-image: url(<%- '../../images/hotels/' + FileName %>);"></div>
+        </text>)
+    )
+
+    <div class="address"></div>
+    <div class="description"></div>
+</div>
+
+<script>
+    function selectionChanged(e) {
+        var hotel = e.addedItems[0];
+        var tile = $("#tile").dxTileView("instance");
+        tile.option("dataSource", hotel.Images);
+        $(".header .name").text(hotel.Hotel_Name);
+        $(".header .price").text("$" + hotel.Price);
+        $(".header .type").removeClass("diamond platinum gold");
+        $(".header .type").addClass(hotel.Hotel_Class.toLowerCase());
+        $(".right .description").text(hotel.Description);
+        $(".right .address").text(hotel.Postal_Code + ", " + hotel.Address);
+    }
+</script>

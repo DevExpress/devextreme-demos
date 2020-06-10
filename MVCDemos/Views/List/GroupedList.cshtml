@@ -1,0 +1,11 @@
+﻿<div class="list-container">
+    @(Html.DevExtreme().List()
+        .Height("100%")
+        .Grouped(true)
+        .CollapsibleGroups(true)
+        .GroupTemplate(@<text>
+            <div>Assigned: <%- key %></div>
+        </text>)
+        .DataSource(Model)
+    )
+</div>

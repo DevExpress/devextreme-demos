@@ -1,0 +1,129 @@
+﻿<div class="form">
+    <h4>Employees</h4>
+    @(Html.DevExtreme().TreeView()
+        .ID("treeview")
+        .DataSource(d => d.Mvc().LoadAction("Employees"))
+        .ItemsExpr("Items")
+        .SelectedExpr("Selected")
+        .ExpandedExpr("Expanded")
+        .Width(340)
+        .Height(320)
+        .ShowCheckBoxesMode(TreeViewCheckBoxMode.Normal)
+        .OnSelectionChanged("syncSelection")
+        .OnContentReady("syncSelection")
+        .ItemTemplate(@<text>
+            <div>
+                <%- FullName %>
+                (<%- Position %>)
+            </div>
+        </text>)
+    )
+    <div class="selected-container">
+        Selected employees
+        @(Html.DevExtreme().List()
+            .ID("selected-employees")
+            .Width(400)
+            .Height(200)
+            .ShowScrollbar(ShowScrollbarMode.Always)
+            .ItemTemplate(@<text>
+                <div>
+                    <%- Prefix %> <%- FullName %> (<%- Position %>)
+                </div>
+            </text>)
+        )
+    </div>
+</div>
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Show Check Boxes Mode:</span>
+        @(Html.DevExtreme().SelectBox()
+            .ID("showCheckBoxesMode")
+            .Items(new List<string> { "selectAll", "normal", "none" })
+            .Value("normal")
+            .OnValueChanged("showCheckBoxesModeValueChanged"))
+    </div>
+    <div class="option">
+        <span>Selection Mode:</span>
+        @(Html.DevExtreme().SelectBox()
+            .ID("selectionMode")
+            .Items(new List<string> { "multiple", "single" })
+            .Value("multiple")
+            .OnValueChanged("selectionModeValueChanged"))
+    </div>
+    <div class="option recursive-option">
+        @(Html.DevExtreme().CheckBox()
+            .ID("selectNodesRecursive")
+            .Text("Select Nodes Recursive")
+            .Value(true)
+            .OnValueChanged("selectNodesRecursiveValueChanged"))
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .ID("selectByClick")
+            .Text("Select By Click")
+            .Value(false)
+            .OnValueChanged("selectByClickValueChanged"))
+    </div>
+</div>
+
+<script>
+    function syncSelection(treeView) {
+        var selectedEmployees = treeView.component.getSelectedNodes()
+            .map(function (node) {
+                return {
+                    Prefix: node.itemData.Prefix,
+                    FullName: node.itemData.FullName,
+                    Position: node.itemData.Position
+                }
+            });
+
+        getSelectedEmployeesList().option("items", selectedEmployees);
+    }
+
+    function showCheckBoxesModeValueChanged(e) {
+        getTreeView().option("showCheckBoxesMode", e.value);
+
+        if(e.value === 'selectAll') {
+            getSelectionsModeSelectBox().option('value', 'multiple');
+            getRecursiveCheckBox().option('disabled', false);
+        }
+        getSelectionsModeSelectBox().option('disabled', e.value === 'selectAll');
+    }
+
+    function selectionModeValueChanged(e) {
+        getTreeView().option("selectionMode", e.value);
+
+        if(e.value === 'single') {
+            getRecursiveCheckBox().option('value', false);
+            getTreeView().unselectAll();
+        }
+
+        getRecursiveCheckBox().option('disabled', e.value === 'single');
+    }
+
+    function selectNodesRecursiveValueChanged(e) {
+        getTreeView().option("selectNodesRecursive", e.value);
+    }
+
+    function selectByClickValueChanged(e) {
+        getTreeView().option("selectByClick", e.value);
+    }
+
+    function getTreeView() {
+        return $("#treeview").dxTreeView("instance");
+    }
+
+    function getSelectedEmployeesList() {
+        return $("#selected-employees").dxList("instance");
+    }
+
+    function getSelectionsModeSelectBox() {
+        return $("#selectionMode").dxSelectBox("instance");
+    }
+
+    function getRecursiveCheckBox() {
+        return $("#selectNodesRecursive").dxCheckBox("instance");
+    }
+</script>

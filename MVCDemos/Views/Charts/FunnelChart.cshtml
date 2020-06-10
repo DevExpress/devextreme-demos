@@ -1,0 +1,33 @@
+﻿@(Html.DevExtreme().Funnel()
+    .ID("funnel")
+    .Title(t => t.Text("Website Conversions")
+        .Margin(m => m.Bottom(30))
+    )
+    .Export(e => e.Enabled(true))
+    .ArgumentField("Argument")
+    .ValueField("Value")
+    .Palette(VizPalette.SoftPastel)
+    .Tooltip(t => t.Enabled(true)
+        .Format("fixedPoint")
+    )
+    .Item(i => i.Border(b => b.Visible(true)))
+    .Label(l => l.Visible(true)
+        .Position(FunnelLabelPosition.Inside)
+        .BackgroundColor("none")
+        .CustomizeText(@<text>
+            function(e){
+            return "<span style='font-size: 28px'>"
+                + e.percentText
+                + "</span><br />"
+                + e.item.argument;
+            }
+        </text>)
+    )
+    .DataSource(new[] {
+        new { Argument = "Visited the Website", Value = 9152 },
+        new { Argument = "Downloaded a Trial", Value = 6879 },
+        new { Argument = "Contacted Support", Value = 5121 },
+        new { Argument = "Subscribed", Value = 2224 },
+        new { Argument = "Renewed", Value = 1670 }
+    })
+)

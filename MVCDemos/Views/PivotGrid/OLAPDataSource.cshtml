@@ -1,0 +1,41 @@
+﻿<div class="long-title"><h3>Sales Statistics</h3></div>
+@(Html.DevExtreme().PivotGrid()
+    .AllowSortingBySummary(true)
+    .AllowSorting(true)
+    .AllowFiltering(true)
+    .AllowExpandAll(true)
+    .Height(570)
+    .ShowBorders(true)
+    .Export(e => e.Enabled(true).FileName("Adventure Works"))
+    .FieldChooser(fc => fc.AllowSearch(true))
+    .DataSource(d => d
+        .Fields(fields => {
+            fields.Add()
+                .DataField("[Product].[Category]")
+                .Area(PivotGridArea.Row);
+
+            fields.Add()
+                .DataField("[Product].[Subcategory]")
+                .Area(PivotGridArea.Row)
+                .HeaderFilter(hf => hf.AllowSearch(true));
+
+            fields.Add()
+                .DataField("[Ship Date].[Calendar Year]")
+                .Area(PivotGridArea.Column);
+
+            fields.Add()
+                .DataField("[Ship Date].[Month of Year]")
+                .Area(PivotGridArea.Column);
+
+            fields.Add()
+                .DataField("[Measures].[Reseller Freight Cost]")
+                .Format(Format.Currency)
+                .Area(PivotGridArea.Data);
+        })
+        .Store(s => s.Xmla()
+            .Url("https://demos.devexpress.com/Services/OLAP/msmdpump.dll")
+            .Catalog("Adventure Works DW Standard Edition")
+            .Cube("Adventure Works")
+        )
+    )
+)

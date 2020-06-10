@@ -1,0 +1,55 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.ListItem>
+
+<div id="list-demo">
+    <div class="widget-container">
+        @(Html.DevExtreme().List()
+            .ID("simpleList")
+            .Height(400)
+            .ShowSelectionControls(true)
+            .SelectionMode(ListSelectionMode.All)
+            .DataSource(Model, "ID")
+            .ItemTemplate(@<text><%- Text %></text>)
+            .OnSelectionChanged(@<text>
+                function(data) {
+                    $("#selectedItemKeys").text(data.component.option("selectedItemKeys").join(", "));
+                }
+            </text>)
+        )
+
+        <div class="selected-data">
+            <span class="caption">Selected IDs:</span>
+            <span id="selectedItemKeys"></span>
+        </div>
+    </div>
+
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            <span>Selection Mode</span>
+            @(Html.DevExtreme().SelectBox()
+                .Value(ListSelectionMode.All)
+                .DataSource(Enum.GetValues(typeof(ListSelectionMode)))
+                .OnValueChanged(@<text>
+                    function(data) {
+                        $("#simpleList").dxList("option", "selectionMode", data.value);
+                        $("#selectAllMode").dxSelectBox("option", "disabled", data.value !== "all");
+                    }
+                </text>)
+            )
+        </div>
+        <div class="option">
+            <span>Select All Mode</span>
+            @(Html.DevExtreme().SelectBox()
+                .ID("selectAllMode")
+                .Disabled(false)
+                .DataSource(Enum.GetValues(typeof(SelectAllMode)))
+                .Value(SelectAllMode.Page)
+                .OnValueChanged(@<text>
+                    function(data) {
+                        $("#simpleList").dxList("option", "selectAllMode", data.value);
+                    }
+                </text>)
+            )
+        </div>
+    </div>
+</div>

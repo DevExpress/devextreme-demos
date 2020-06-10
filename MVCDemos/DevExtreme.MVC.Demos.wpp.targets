@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <WebPublishMethod>FileSystem</WebPublishMethod>
+    <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <SiteUrlToLaunchAfterPublish />
+    <LaunchSiteAfterPublish>True</LaunchSiteAfterPublish>
+    <ExcludeApp_Data>False</ExcludeApp_Data>
+    <publishUrl>D:\DX\publish</publishUrl>
+    <DeleteExistingFiles>True</DeleteExistingFiles>
+  </PropertyGroup>
+  <Target Name="CustomCollectFiles">
+    <ItemGroup>
+      <_CustomDescrFiles Include="$(MSBuildProjectDirectory)\Content\Descr\**\*" />
+      <FilesForPackagingFromProject Include="%(_CustomDescrFiles.Identity)">
+        <DestinationRelativePath>Content\Descr\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+    <ItemGroup>
+      <_CustomControllersFiles Include="$(MSBuildProjectDirectory)\Controllers\**\*" />
+      <FilesForPackagingFromProject Include="%(_CustomControllersFiles.Identity)">
+        <DestinationRelativePath>Controllers\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+    <ItemGroup>
+      <_CustomModelsFiles Include="$(MSBuildProjectDirectory)\Models\**\*" />
+      <FilesForPackagingFromProject Include="%(_CustomModelsFiles.Identity)">
+        <DestinationRelativePath>Models\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+    <ItemGroup>
+      <_CustomViewModelsFiles Include="$(MSBuildProjectDirectory)\ViewModels\**\*" />
+      <FilesForPackagingFromProject Include="%(_CustomViewModelsFiles.Identity)">
+          <DestinationRelativePath>ViewModels\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+    <ItemGroup>
+      <_CustomHubsFiles Include="$(MSBuildProjectDirectory)\Hubs\**\*" />
+      <FilesForPackagingFromProject Include="%(_CustomHubsFiles.Identity)">
+        <DestinationRelativePath>Hubs\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+  </Target>
+  <PropertyGroup>
+    <CopyAllFilesToSingleFolderForPackageDependsOn>
+      CustomCollectFiles;
+      $(CopyAllFilesToSingleFolderForPackageDependsOn);
+    </CopyAllFilesToSingleFolderForPackageDependsOn>
+
+    <CopyAllFilesToSingleFolderForMsdeployDependsOn>
+      CustomCollectFiles;
+      $(CopyAllFilesToSingleFolderForPackageDependsOn);
+    </CopyAllFilesToSingleFolderForMsdeployDependsOn>
+  </PropertyGroup>
+</Project>

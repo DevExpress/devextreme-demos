@@ -1,0 +1,118 @@
+﻿@using DevExtreme.MVC.Demos.Models
+
+@(Html.DevExtreme().PivotGrid<Sale>()
+    .ID("sales")
+    .AllowSortingBySummary(true)
+    .AllowSorting(true)
+    .AllowFiltering(true)
+    .ShowBorders(true)
+    .DataSource(d => d
+        .Store(s => s.WebApi().Controller("PivotGridData"))
+        .Fields(fields => {
+            fields.AddFor(m => m.Region)
+                .Width(120)
+                .Area(PivotGridArea.Row)
+                .HeaderFilter(hf => hf.AllowSearch(true));
+
+            fields.AddFor(m => m.City)
+                .Width(150)
+                .Area(PivotGridArea.Row)
+                .HeaderFilter(hf => hf.AllowSearch(true))
+                .Selector("pivotGrid_dataSource_cityField_selector");
+
+            fields.AddFor(m => m.Date)
+                .Area(PivotGridArea.Column);
+
+            fields.AddFor(m => m.Amount)
+                .Caption("Sales")
+                .Area(PivotGridArea.Data)
+                .SummaryType(SummaryType.Sum)
+                .Format(Format.Currency);
+        })
+    )
+    .FieldChooser(fc => fc.Enabled(false))
+)
+<div class="container">
+    <div id="sales-fieldchooser"></div>
+    <div class="bottom-bar">
+        @(Html.DevExtreme().Button()
+            .ID("applyButton")
+            .Text("Apply")
+            .Type(ButtonType.Default)
+            .Visible(false)
+            .OnClick("applyButton_onClick")
+        )
+        @(Html.DevExtreme().Button()
+            .ID("cancelButton")
+            .Text("Cancel")
+            .Visible(false)
+            .OnClick("cancelButton_onClick")
+        )
+    </div>
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            <span>Choose layout:</span>
+            @(Html.DevExtreme().RadioGroup()
+                .ID("layouts")
+                .DataSource(Model)
+                .Layout(Orientation.Vertical)
+                .ValueExpr("Key")
+                .DisplayExpr("Name")
+                .Value(PivotGridFieldChooserLayout.Layout0)
+                .OnValueChanged("radioGroup_onValueChanged")
+            )
+        </div>
+        <div class="option">
+            <span>Apply Changes Mode:</span>
+            @(Html.DevExtreme().SelectBox()
+                .ID("applyChangesMode")
+                .DataSource(new JS("applyChangesModes"))
+                .Width(180)
+                .Value(new JS("applyChangesModes[0]"))
+                .OnValueChanged("selectBox_onValueChanged")
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    var applyChangesModes = ["instantly", "onDemand"];
+
+    function pivotGrid_dataSource_cityField_selector(data) {
+        return data.City + " (" + data.Country + ")";
+    }
+
+    function radioGroup_onValueChanged(e) {
+        $("#sales-fieldchooser").dxPivotGridFieldChooser("instance").option("layout", e.value);
+    }
+
+    function selectBox_onValueChanged(data) {
+        $("#sales-fieldchooser").dxPivotGridFieldChooser("instance").option("applyChangesMode", data.value);
+        $("#applyButton").dxButton("instance").option("visible", data.value === "onDemand");
+        $("#cancelButton").dxButton("instance").option("visible", data.value === "onDemand");
+    }
+
+    function applyButton_onClick(e) {
+        $("#sales-fieldchooser").dxPivotGridFieldChooser("instance").applyChanges();
+    }
+
+    function cancelButton_onClick(e) {
+        $("#sales-fieldchooser").dxPivotGridFieldChooser("instance").cancelChanges();
+    }
+
+    $(function() {
+        $("#sales-fieldchooser").dxPivotGridFieldChooser({
+            dataSource: $("#sales").dxPivotGrid("instance").getDataSource(),
+            texts: {
+                allFields: "All",
+                columnFields: "Columns",
+                dataFields: "Data",
+                rowFields: "Rows",
+                filterFields: "Filter"
+            },
+            width: 400,
+            height: 400
+        });
+    });
+</script>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.EmployeeTask>
+
+@(Html.DevExtreme().Scheduler()
+    .DataSource(Model)
+    .TextExpr("Subject")
+    .StartDateExpr("StartDate")
+    .EndDateExpr("DueDate")
+    .Views(views => {
+    views.Add()
+        .Name("3 Days")
+        .Type(SchedulerViewType.Day)
+        .IntervalCount(3)
+        .StartDate(new DateTime(2017, 4, 30));
+    views.Add()
+        .Name("2 Work Weeks")
+        .Type(SchedulerViewType.WorkWeek)
+        .IntervalCount(2)
+        .StartDate(new DateTime(2017, 4, 3));
+
+    views.Add()
+        .Name("2 Months")
+        .Type(SchedulerViewType.Month)
+        .IntervalCount(2);
+})
+    .CurrentView(SchedulerViewType.Day)
+    .CurrentDate(new DateTime(2017, 5, 1))
+    .StartDayHour(8)
+    .EndDayHour(20)
+    .Height(580)
+)

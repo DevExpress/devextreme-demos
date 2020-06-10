@@ -1,0 +1,37 @@
+﻿@(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.DataService.Sale>()
+    .DataSource(d => d.RemoteController()
+        .LoadUrl("https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/Sales")
+        .Key("Id")
+    )
+    .RemoteOperations(true)
+    .Scrolling(s => s
+        .Mode(GridScrollingMode.Virtual)
+        .RowRenderingMode(GridRowRenderingMode.Virtual)
+    )
+    .Paging(p => p.PageSize(100))
+    .HeaderFilter(f => f.Visible(true))
+    .WordWrapEnabled(true)
+    .Height(440)
+    .ShowBorders(true)
+    .Columns(columns => {
+        columns.AddFor(m => m.Id)
+            .Width(75);
+
+        columns.AddFor(m => m.StoreName)
+            .Width(150);
+
+        columns.AddFor(m => m.ProductCategoryName)
+            .Width(120);
+
+        columns.AddFor(m => m.ProductName);
+
+        columns.AddFor(m => m.DateKey)
+            .Format("yyyy-MM-dd")
+            .Width(100);
+
+        columns.AddFor(m => m.SalesAmount)
+            .Format("currency")
+            .HeaderFilter(h => h.GroupInterval(1000))
+            .Width(100);
+    })
+)

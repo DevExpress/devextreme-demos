@@ -1,0 +1,41 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .CommonSeriesSettings(s => s
+        .ArgumentField("State")
+        .Type(SeriesType.StackedBar)
+    )
+    .Series(s => {
+        s.Add().ValueField("Young").Name("0-14");
+        s.Add().ValueField("Middle").Name("15-64");
+        s.Add().ValueField("Older").Name("65 and older");
+    })
+    .Legend(l => l
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+        .ItemTextPosition(Position.Top)
+    )
+    .ValueAxis(a => a
+        .Add()
+        .Title(t => t.Text("millions"))
+        .Position(Position.Right)
+    )
+    .Title("Male Age Structure")
+    .Export(e => e.Enabled(true))
+    .Tooltip(t => t
+        .Enabled(true)
+        .Location(ChartTooltipLocation.Edge)
+        .CustomizeTooltip(@<text>
+            function(arg) {
+                return {
+                    text: arg.seriesName + " years: " + arg.valueText
+                };
+            }
+        </text>)
+    )
+    .DataSource(new[] {
+        new { State = "Germany", Young = 6.7, Middle = 28.6, Older = 5.1 },
+        new { State = "Japan", Young = 9.6, Middle = 43.4, Older = 9.0 },
+        new { State = "Russia", Young = 13.5, Middle = 49.0, Older = 5.8 },
+        new { State = "USA", Young = 30.0, Middle = 90.3, Older = 14.5 }
+    })
+)

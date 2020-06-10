@@ -1,0 +1,31 @@
+{
+    "name": "devextreme-technical-demos",
+    "version": "20.2.0",
+    "description": "",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "author": "Developer Express Inc.",
+    "devDependencies": {
+        "http-server": "latest",
+        "prompts": "^2.0.4",
+        "systemjs-builder": "^0.15.34"
+    },
+    "peerDependencies": {},
+    "scripts": {
+        "add-demo": "node utils/add-demo.js",
+        "link-repos": "node utils/link-repos.js",
+        "create-config": "node utils/create-config.js",
+        "run-demo": "node utils/run-demo.js",
+        "prepare-js": "cd JSDemos && npm i && node ../utils/create-config.js",
+        "prepare-mvc": "node utils/prepare-mvc.js",
+        "prepare-netcore": "node utils/prepare-netcore.js",
+        "prepare-all": "npm run prepare-js && npm run prepare-mvc && npm run prepare-netcore"
+    },
+    "license": "SEE LICENSE IN README.md",
+    "keywords": [
+        "devextreme",
+        "devexpress"
+    ]
+}

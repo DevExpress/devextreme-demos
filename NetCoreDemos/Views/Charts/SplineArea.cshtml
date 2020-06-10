@@ -1,0 +1,50 @@
+﻿<div id="chart-demo">
+    @(Html.DevExtreme().Chart()
+        .ID("spline-area-chart")
+        .Palette(VizPalette.HarmonyLight)
+        .Title("Corporations with Highest Market Value")
+        .CommonSeriesSettings(s => s
+            .ArgumentField("Company")
+            .Type(SeriesType.SplineArea)
+        )
+        .ArgumentAxis(a => a.ValueMarginsEnabled(false))
+        .Margin(m => m.Bottom(20))
+        .Series(s => {
+            s.Add().ValueField("Y2005").Name("2005");
+            s.Add().ValueField("Y2004").Name("2004");
+        })
+        .Export(e => e.Enabled(true))
+        .Legend(l => l
+            .VerticalAlignment(VerticalEdge.Bottom)
+            .HorizontalAlignment(HorizontalAlignment.Center)
+        )
+        .DataSource(new[] {
+            new { Company = "ExxonMobil", Y2005 = 362.53, Y2004 = 277.02 },
+            new { Company = "GeneralElectric", Y2005 = 348.45, Y2004 = 328.54 },
+            new { Company = "Microsoft", Y2005 = 279.02, Y2004 = 297.02 },
+            new { Company = "Citigroup", Y2005 = 230.93, Y2004 = 255.3 },
+            new { Company = "Royal Dutch Shell plc", Y2005 = 203.52, Y2004 = 173.54 },
+            new { Company = "Procted & Gamble", Y2005 = 197.12, Y2004 = 131.89 }
+        })
+    )
+
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            <span>Series Type</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new[] {
+                    SeriesType.SplineArea,
+                    SeriesType.StackedSplineArea,
+                    SeriesType.FullStackedSplineArea
+                })
+                .Value(SeriesType.SplineArea)
+                .OnValueChanged(@<text>
+                    function(e) {
+                        $("#spline-area-chart").dxChart("option", "commonSeriesSettings.type", e.value);
+                    }
+                </text>)
+            )
+        </div>
+    </div>
+</div>

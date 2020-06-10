@@ -1,0 +1,31 @@
+﻿@(Html.DevExtreme().RangeSelector()
+    .ID("range-selector")
+    .Margin(m => m
+        .Top(50)
+        .Bottom(0)
+    )
+    .Background(b => b
+        .Image(i => i
+            .Url(Url.Content("~/Content/images/RangeImage/Background.png"))
+            .Location(BackgroundImageLocation.Full)
+        )
+    )
+    .Indent(i => i
+        .Left(65)
+        .Right(65)
+    )
+    .SliderMarker(s => s
+        .PlaceholderHeight(30)
+        .Format(Format.ShortTime)
+    )
+    .Scale(s => s
+        .StartValue(new DateTime(2012, 9, 29))
+        .EndValue(new DateTime(2012, 9, 30))
+        .TickInterval(t=>t.Hours(2))
+        .MinorTickInterval(m => m.Hours(1))
+        .PlaceholderHeight(20)
+        .Label(l => l.Format(Format.ShortTime))
+    )
+    .Value(new[] { new DateTime(2012, 9, 29, 11, 0, 0), new DateTime(2012, 9, 29, 17, 0, 0) })
+    .Title("Select a Time Period")
+)

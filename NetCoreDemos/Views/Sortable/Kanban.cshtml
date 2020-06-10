@@ -1,0 +1,27 @@
+﻿@model DevExtreme.NETCore.Demos.ViewModels.KanbanViewModel
+@using DevExtreme.NETCore.Demos.ViewModels
+
+<div id="kanban">
+    @(Html.DevExtreme().ScrollView()
+        .ElementAttr("class", "scrollable-board")
+        .Direction(ScrollDirection.Horizontal)
+        .ShowScrollbar(ShowScrollbarMode.Always)
+        .Content(
+            Html.DevExtreme().Sortable()
+                .ElementAttr("class", "sortable-lists")
+                .ItemOrientation(Orientation.Horizontal)
+                .MoveItemOnDrop(true)
+                .Handle(".list-title")
+                .Content(@<text>
+                    @foreach (var status in Model.Statuses) {
+                        var listModel = new KanbanListViewModel() {
+                            Status = status,
+                            Tasks = Model.Tasks.Where(t => t.Task_Status == status),
+                            Employees = Model.Employees
+                        };
+                        @await Html.PartialAsync("_Kanban", listModel)
+                    }
+                </text>).ToString()
+        )
+    )
+</div>

@@ -1,0 +1,16 @@
+﻿@(Html.DevExtreme().Diagram()
+    .ID("diagram")
+    .ReadOnly(true)
+)
+
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            url: "@Url.Content("~/Content/SampleData/diagram-structure.json")",
+            dataType: "text",
+            success: function(data) {
+                $("#diagram").dxDiagram("instance").import(data);
+            }
+        });
+    });
+</script>

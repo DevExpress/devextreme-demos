@@ -1,0 +1,54 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Series(s => {
+        s.Add().ArgumentField("Country").ValueField("Val");
+    })
+    .ArgumentAxis(a => a
+        .Label(l => l
+            .OverlappingBehavior(OverlappingBehavior.Stagger)
+            .WordWrap(VizWordWrap.None)
+        )
+    )
+    .Legend(l => l
+        .Visible(false)
+    )
+    .DataSource(new[] {
+        new { Country = "China", Val = 1382500000 },
+        new { Country = "India", Val = 1314300000 },
+        new { Country = "United States", Val = 324789000 },
+        new { Country = "Indonesia", Val = 261600000 },
+        new { Country = "Brazil", Val = 207332000 },
+        new { Country = "Pakistan", Val = 196865000 },
+        new { Country = "Nigeria", Val = 188500000 },
+        new { Country = "Bangladesh", Val = 162240000 },
+        new { Country = "Russia", Val = 146400000 },
+        new { Country = "Japan", Val = 126760000 },
+        new { Country = "Mexico", Val = 122273000 },
+        new { Country = "Ethiopia", Val = 104345000 },
+        new { Country = "Philippines", Val = 103906000 },
+        new { Country = "Egypt", Val = 92847800 }
+    })
+    .Title("Population by Countries")
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Overlapping Modes:</span>
+        @(Html.DevExtreme().SelectBox()
+            .DataSource(new[] {
+                OverlappingBehavior.Stagger,
+                OverlappingBehavior.Rotate,
+                OverlappingBehavior.Hide,
+                OverlappingBehavior.None
+            })
+            .Value(OverlappingBehavior.Stagger)
+            .OnValueChanged(@<text>
+                function(e) {
+                    var chart = $("#chart").dxChart("instance");
+                    chart.option("argumentAxis.label.overlappingBehavior", e.value);
+                }
+            </text>)
+        )
+    </div>
+</div>

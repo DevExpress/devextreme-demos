@@ -1,0 +1,81 @@
+﻿@using DevExtreme.NETCore.Demos.Models
+@model IEnumerable<ListProduct>
+
+@{
+    var value = new object[] {
+        new object[] { "Category", "=", "Video Players" },
+        "or",
+        new object[] {
+            new object[] { "Category", "=", "Monitors" },
+            "and",
+            new object[] { "Price", "between", new[] { 165, 700 } }
+        },
+        "or",
+        new object[] {
+            new object[] { "Category", FilterBuilderFieldFilterOperations.Equal, "Televisions" },
+            "and",
+            new object[] { "Price", "between", new[] { 2000, 4000 } }
+        }
+    };
+    var categories = new[] {
+        "Video Players",
+        "Televisions",
+        "Monitors",
+        "Projectors",
+        "Automation"
+    };
+}
+
+<div class="filter-container">
+    @(Html.DevExtreme().FilterBuilder<ListProduct>()
+        .ID("filterBuilder")
+        .Fields(fields => {
+            fields.AddFor(m => m.ID);
+
+            fields.AddFor(m => m.Name);
+
+            fields.AddFor(m => m.Price)
+                .Format(Format.Currency);
+
+            fields.AddFor(m => m.CurrentInventory)
+                .Caption("Inventory");
+
+            fields.AddFor(m => m.Category)
+                .Lookup(l => l.DataSource(categories));
+        })
+        .Value(value)
+    )
+
+    @(Html.DevExtreme().Button()
+        .Text("Apply Filter")
+        .Type(ButtonType.Default)
+        .OnClick("applyFilter")
+    )
+</div>
+<div class="list-container">
+    @(Html.DevExtreme().List()
+        .ID("listWidget")
+        .DataSource(@Model)
+        .DataSourceOptions(d => d.Filter("$('#filterBuilder').dxFilterBuilder('instance').getFilterExpression()"))
+        .ItemTemplate(@<text>
+            <div class="product">
+                <img src="<%- ImageSrc %>">
+                <div><%- Name %></div>
+                <div class="price"><%- formatCurrency(Price) %></div>
+            </div>
+        </text>)
+    )
+</div>
+
+<script>
+    function formatCurrency(value) {
+        return "$" + new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(value);
+    }
+
+    function applyFilter(data) {
+        var filter = $("#filterBuilder").dxFilterBuilder("instance").getFilterExpression(),
+            dataSource = $("#listWidget").dxList("instance").getDataSource();
+        dataSource.filter(filter);
+        dataSource.load();
+    }
+</script>

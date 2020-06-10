@@ -1,0 +1,28 @@
+﻿@(Html.DevExtreme().TreeView()
+    .ID("treeview")
+    .DataSource(d => d.Mvc().LoadAction("GetHierarchicalDataForSearch"))
+    .DisplayExpr("Text")
+    .ItemsExpr("Items")
+    .ExpandedExpr("Expanded")
+    .Width(500)
+    .SearchEnabled(true)
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Search mode</span>
+        @(Html.DevExtreme().SelectBox()
+            .ID("searchMode")
+            .DataSource(new[] { "contains", "startsWith" })
+            .Value("contains")
+            .OnValueChanged("selectBox_valueChanged")
+        )
+    </div>
+</div>
+
+<script>
+    function selectBox_valueChanged(e) {
+        $("#treeview").dxTreeView("option", "searchMode", e.value);
+    }
+</script>

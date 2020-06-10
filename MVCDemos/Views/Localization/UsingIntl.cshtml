@@ -1,0 +1,109 @@
+﻿@section Localization {
+    <script src="~/Scripts/localization/dx.messages.de.js"></script>
+    <script src="~/Scripts/localization/dx.messages.ru.js"></script>
+}
+
+@model IEnumerable<DevExtreme.MVC.Demos.Models.Payment>
+
+<div id="data-grid-demo">
+    @(Html.DevExtreme().DataGrid()
+        .DataSource(Model)
+        .Columns(columns => {
+            columns.Add().DataField("PaymentId")
+                .Caption(new JS("formatMessage('Number')"))
+                .Width(100)
+                .AllowEditing(false);
+            columns.Add().DataField("ContactName")
+                .Caption(new JS("formatMessage('Contact')"));
+            columns.Add().DataField("CompanyName")
+                .Caption(new JS("formatMessage('Company')"));
+            columns.Add().DataField("Amount")
+                .Caption(new JS("formatMessage('Amount')"))
+                .DataType(GridColumnDataType.Number)
+                .Format(Format.Currency)
+                .EditorOptions(new { format = "currency", showClearButton = true });
+            columns.Add().DataField("PaymentDate")
+                .Caption(new JS("formatMessage('PaymentDate')"))
+                .DataType(GridColumnDataType.Date);
+        })
+        .FilterRow(filterRow => filterRow
+            .Visible(true)
+            .ApplyFilter(GridApplyFilterMode.Auto)
+        )
+        .Editing(c => c
+            .Mode(GridEditMode.Popup)
+            .AllowUpdating(true)
+            .Popup(e => e
+                .Width(700)
+                .Height(345)
+            )
+        )
+    )
+
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            <label for="selectInput">Language</label>
+            @(Html.DevExtreme().SelectBox()
+                .ID("selectBox")
+                .InputAttr("id", "selectInput")
+                .DataSource(new JS("locales"))
+                .DisplayExpr("name")
+                .ValueExpr("value")
+                .Value(new JS("locale"))
+                .OnValueChanged("changeLocale")
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    var dictionary = {
+        "en": {
+            "Number": "Number",
+            "Contact": "Contact",
+            "Company": "Company",
+            "Amount": "Amount",
+            "PaymentDate": "Payment Date"
+        },
+        "de": {
+            "Number": "Nummer",
+            "Contact": "Ansprechpartner",
+            "Company": "Firma",
+            "Amount": "Betrag",
+            "PaymentDate": "Zahlungsdatum"
+        },
+        "ru": {
+            "Number": "Номер",
+            "Contact": "Имя",
+            "Company": "Организация",
+            "Amount": "Сумма",
+            "PaymentDate": "Дата оплаты"
+        }
+    };
+    DevExpress.localization.loadMessages(dictionary);
+    var formatMessage = DevExpress.localization.formatMessage;
+
+    var locales = [
+        { name: "English", value: "en" },
+        { name: "Deutsch", value: "de" },
+        { name: "Русский", value: "ru" }
+    ];
+
+    var locale = getLocale();
+    DevExpress.localization.locale(locale);
+
+    function changeLocale(data) {
+        setLocale(data.value);
+        document.location.reload();
+    }
+
+    function getLocale() {
+        var locale = sessionStorage.getItem("locale");
+        return locale != null ? locale : "en";
+    }
+
+    function setLocale(locale) {
+        sessionStorage.setItem("locale", locale);
+    }
+</script>
