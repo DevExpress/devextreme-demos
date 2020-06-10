@@ -1,0 +1,101 @@
+﻿@{
+    var value = new object[] {
+        new object[] { "Category", "anyof", new[] { "Automation", "Monitors" } },
+        "or",
+        new object[] {
+            new object[] { "Category", FilterBuilderFieldFilterOperations.Equal, "Televisions" },
+            "and",
+            new object[] { "Price", "between", new[] { 2000, 4000 } }
+        }
+    };
+    var categories = new[] {
+        "Video Players",
+        "Televisions",
+        "Monitors",
+        "Projectors",
+        "Automation"
+    };
+}
+
+@(Html.DevExtreme().FilterBuilder()
+    .ID("filterBuilder")
+    .Fields(fields => {
+        fields.Add().DataField("Name");
+
+        fields.Add().DataField("Price")
+            .DataType(FilterBuilderFieldDataType.Number)
+            .Format(Format.Currency);
+
+        fields.Add().DataField("CurrentInventory")
+            .DataType(FilterBuilderFieldDataType.Number)
+            .Caption("Inventory");
+
+        fields.Add().DataField("Category")
+            .FilterOperations(new[] { "=", "anyof" })
+            .Lookup(l => l.DataSource(categories));
+    })
+    .Value(value)
+    .MaxGroupLevel(1)
+    .GroupOperations(new[] {
+        FilterBuilderGroupOperations.And,
+        FilterBuilderGroupOperations.Or
+    })
+    .OnValueChanged("filterBuilder_updateTexts")
+    .OnInitialized("filterBuilder_updateTexts")
+    .CustomOperations(o => {
+        o.Add()
+            .Name("anyof")
+            .Caption("Is any of")
+            .Icon("check")
+            .EditorTemplate(@<text>@(
+                Html.DevExtreme().TagBox()
+                    .Value(new JS("value"))
+                    .Items(categories)
+                    .OnValueChanged(@"function(e) {
+                        setValue(e.value && e.value.length ? e.value : null);
+                    }")
+                    .Width("auto")
+            )</text>)
+            .CalculateFilterExpression("tagBox_calculateFilterExpression");
+    })
+)
+
+<div class="results">
+    <div>
+        <b>Value</b>
+        <pre id="filterText"></pre>
+    </div>
+    <div>
+        <b>DataSource's filter expression</b>
+        <pre id="dataSourceText"></pre>
+    </div>
+</div>
+
+<script>
+    function tagBox_calculateFilterExpression(filterValue, field) {
+        return filterValue && filterValue.length
+            && Array.prototype.concat.apply([], filterValue.map(function (value) {
+                return [[field.dataField, "=", value], "or"];
+            })).slice(0, -1);
+    }
+
+    function filterBuilder_updateTexts(e) {
+        $("#filterText").text(formatValue(e.component.option("value")));
+        $("#dataSourceText").text(formatValue(e.component.getFilterExpression()));
+    }
+
+    function formatValue(value, spaces) {
+        if (value && Array.isArray(value[0])) {
+            var TAB_SIZE = 4;
+            spaces = spaces || TAB_SIZE;
+            return "[" + getLineBreak(spaces) + value.map(function (item) {
+                return Array.isArray(item[0]) ? formatValue(item, spaces + TAB_SIZE) : JSON.stringify(item);
+            }).join("," + getLineBreak(spaces)) + getLineBreak(spaces - TAB_SIZE) + "]";
+        }
+        return JSON.stringify(value);
+    }
+
+    function getLineBreak(spaces) {
+        return "\r\n" + new Array(spaces + 1).join(" ");
+    }
+</script>

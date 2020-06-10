@@ -1,0 +1,103 @@
+﻿@using DevExtreme.MVC.Demos.Models
+
+@model IEnumerable<CountryPopulationAndGDP>
+
+@section ExternalDependencies {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/3.3.1/exceljs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.4.0/polyfill.min.js"></script>
+}
+
+<div class="long-title"><h3>Country Area, Population, and GDP Structure</h3></div>
+@(Html.DevExtreme().DataGrid<CountryPopulationAndGDP>()
+    .ID("gridContainer")
+    .DataSource(Model)
+    .Export(e => e.Enabled(true))
+    .ShowBorders(true)
+    .OnExporting("exporting")
+    .Columns(c =>
+    {
+        c.AddFor(m => m.Country);
+        c.AddFor(m => m.Area);
+        c.Add()
+            .Caption("Population")
+            .Columns(a =>
+                    {
+                        a.AddFor(m => m.Population_Total)
+                            .Format(Format.FixedPoint);
+
+                        a.AddFor(m => m.Population_Urban)
+                            .Format(Format.Percent);
+                    });
+
+            c.Add()
+            .Caption("Nominal GDP")
+            .Columns(a =>
+                    {
+                        a.AddFor(m => m.GDP_Total)
+                            .Format(Format.FixedPoint)
+                            .SortOrder(SortOrder.Desc);
+
+                        a.Add()
+                            .Caption("By Sector")
+                            .Columns(b =>
+                            {
+                                b.AddFor(m => m.GDP_Agriculture)
+                                    .Width(95)
+                                    .Format(f => f.Type(Format.Percent).Precision(1));
+
+                                b.AddFor(m => m.GDP_Industry)
+                                    .Width(80)
+                                    .Format(f => f.Type(Format.Percent).Precision(1));
+
+                                b.AddFor(m => m.GDP_Services)
+                                    .Width(85)
+                                    .Format(f => f.Type(Format.Percent).Precision(1));
+                            });
+                    });
+        })
+)
+
+<script>
+    function exporting(e) {
+        var workbook = new ExcelJS.Workbook();
+        var worksheet = workbook.addWorksheet('CountriesPopulation');
+
+        DevExpress.excelExporter.exportDataGrid({
+            component: e.component,
+            worksheet: worksheet,
+            topLeftCell: { row: 4, column: 1 }
+        }).then(function (dataGridRange) {
+            // header
+            // https://github.com/exceljs/exceljs#rows
+            var headerRow = worksheet.getRow(2);
+            headerRow.height = 30;
+            // https://github.com/exceljs/exceljs#merged-cells
+            worksheet.mergeCells(2, 1, 2, 8);
+
+            // https://github.com/exceljs/exceljs#value-types
+            headerRow.getCell(1).value = 'Country Area, Population, and GDP Structure';
+            // https://github.com/exceljs/exceljs#fonts
+            headerRow.getCell(1).font = { name: 'Segoe UI Light', size: 22 };
+            // https://github.com/exceljs/exceljs#alignment
+            headerRow.getCell(1).alignment = { horizontal: 'center' };
+
+            // footer
+            var footerRowIndex = dataGridRange.to.row + 2;
+            var footerRow = worksheet.getRow(footerRowIndex);
+            worksheet.mergeCells(footerRowIndex, 1, footerRowIndex, 8);
+
+            footerRow.getCell(1).value = 'www.wikipedia.org';
+            footerRow.getCell(1).font = { color: { argb: 'BFBFBF' }, italic: true };
+            footerRow.getCell(1).alignment = { horizontal: 'right' };
+
+            return Promise.resolve();
+        }).then(function () {
+            // https://github.com/exceljs/exceljs#writing-xlsx
+            workbook.xlsx.writeBuffer().then(function (buffer) {
+                saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'CountriesPopulation.xlsx');
+            });
+        });
+        e.cancel = true;
+    }
+</script>

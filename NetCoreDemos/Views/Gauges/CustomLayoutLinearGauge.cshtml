@@ -1,0 +1,27 @@
+﻿@(Html.DevExtreme().LinearGauge()
+    .ID("gauge")
+    .Scale(s => s
+        .StartValue(0)
+        .EndValue(30)
+        .TickInterval(5)
+        .Tick(t => t.Color("#536878"))
+        .Label(l => l.IndentFromTick(-3))
+    )
+    .RangeContainer(r => r
+        .Offset(10)
+        .Ranges(c => {
+            c.Add().StartValue(0).EndValue(5).Color("#92000A");
+            c.Add().StartValue(5).EndValue(20).Color("#E6E200");
+            c.Add().StartValue(20).EndValue(30).Color("#77DD77");
+        })
+    )
+    .ValueIndicator(v => v.Offset(20))
+    .SubvalueIndicator(s => s.Offset(-15))
+    .Export(e => e.Enabled(true))
+    .Title(t => t
+        .Text("Issues Closed (with Min and Max Expected)")
+        .Font(f => f.Size(28))
+    )
+    .Value(17)
+    .Subvalues(new double[] { 5, 25 })
+)

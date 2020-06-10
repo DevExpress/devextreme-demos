@@ -1,0 +1,135 @@
+﻿@(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.Northwind.Supplier>()
+    .ID("gridContainer")
+    .ShowBorders(true)
+    .DataSource(d => d.Mvc().Controller("DataGridAdvancedMasterDetailView").LoadAction("GetSuppliers"))
+    .Paging(p => p.PageSize(15))
+    .Columns(columns => {
+        columns.AddFor(m => m.ContactName);
+
+        columns.AddFor(m => m.ContactTitle);
+
+        columns.AddFor(m => m.CompanyName);
+
+        columns.AddFor(m => m.City);
+
+        columns.AddFor(m => m.Country);
+    })
+    .MasterDetail(m => m
+        .Enabled(true)
+        .Template(new TemplateName("gridContainer-details"))
+    )
+)
+
+@using(Html.DevExtreme().NamedTemplate("gridContainer-details")) {
+    @(Html.DevExtreme().TabPanel()
+        .Items(items => {
+            items.Add()
+                .Title("Orders")
+                .Template(new TemplateName("gridContainer-details-tab1Template"))
+                .Option("tabExtras", new { supplierID = new JS("data.SupplierID") });
+
+            items.Add()
+                .Title("Address")
+                .Template(new TemplateName("gridContainer-details-tab2Template"))
+                .Option("tabExtras", new JS("data"));
+        })
+    )
+}
+
+@using(Html.DevExtreme().NamedTemplate("gridContainer-details-tab1Template")) {
+    @(Html.DevExtreme().Form()
+        .ElementAttr("class", "form-container")
+        .FormData(new JS("tabExtras"))
+        .LabelLocation(FormLabelLocation.Top)
+        .Items(items => {
+            items.AddSimple()
+                .Label(l => l.Text("Product"))
+                .Editor(e => e.SelectBox()
+                    .DataSource(d => d.Mvc()
+                        .Controller("DataGridAdvancedMasterDetailView")
+                        .LoadAction("GetProductsBySupplier")
+                        .LoadParams(new { supplierID = new JS("tabExtras.supplierID") })
+                        .Key("ProductID")
+                    )
+                    .ValueExpr("ProductID")
+                    .DisplayExpr("ProductName")
+                    .DeferRendering(false)
+                    .OnContentReady(@<text>
+                    function(e) {
+                        var firstItem = e.component.option("items[0]");
+                        if(firstItem) {
+                            e.component.option("value", firstItem.ProductID);
+                        }
+                    }
+                    </text>)
+                    .OnSelectionChanged(@<text>
+                    function(e) {
+                        tabExtras.productID = e.selectedItem.ProductID;
+                        $("#gridContainer-orderHistoryGrid-" + tabExtras.supplierID).dxDataGrid("instance").refresh();
+                    }
+                    </text>)
+                );
+
+            items.AddSimple()
+                .Label(l => l.Text("Order History"))
+                .Template(new TemplateName("gridContainer-details-tab1-gridTemplate"));
+        })
+    )
+}
+
+@using(Html.DevExtreme().NamedTemplate("gridContainer-details-tab1-gridTemplate")) {
+    @(Html.DevExtreme().DataGrid()
+        .ID(new JS("'gridContainer-orderHistoryGrid-' + component.option('formData').supplierID"))
+        .ShowBorders(true)
+        .DataSource(d => d.Mvc()
+            .Controller("DataGridAdvancedMasterDetailView")
+            .LoadAction("GetOrdersByProduct")
+            .LoadParams(new {
+                productID = new JS("function() { return component.option('formData').productID }")
+            })
+        )
+        .Paging(p => p.PageSize(5))
+        .Columns(columns => {
+            columns.Add().DataField("OrderID");
+            columns.Add().DataField("OrderDate").DataType(GridColumnDataType.Date);
+            columns.Add().DataField("ShipCountry");
+            columns.Add().DataField("ShipCity");
+            columns.Add().DataField("UnitPrice").Format(Format.Currency);
+            columns.Add().DataField("Quantity");
+            columns.Add().DataField("Discount").Format(Format.Percent);
+        })
+        .Summary(s => s
+            .TotalItems(totalItems => {
+                totalItems.Add()
+                    .Column("UnitPrice")
+                    .SummaryType(SummaryType.Sum)
+                    .ValueFormat(f => f
+                        .Currency("USD")
+                        .Precision(2)
+                    );
+
+                totalItems.Add()
+                    .Column("Quantity")
+                    .SummaryType(SummaryType.Count);
+            })
+        )
+    )
+}
+
+@using(Html.DevExtreme().NamedTemplate("gridContainer-details-tab2Template")) {
+    var formItemTemplate = "<%- editorOptions.value %>";
+
+    @(Html.DevExtreme().Form()
+        .ElementAttr("class", "address-form form-container")
+        .FormData(new JS("tabExtras"))
+        .ColCount(2)
+        .Items(items => {
+            items.AddSimple().DataField("Address").Template(formItemTemplate);
+            items.AddSimple().DataField("City").Template(formItemTemplate);
+            items.AddSimple().DataField("Region").Template(formItemTemplate);
+            items.AddSimple().DataField("PostalCode").Template(formItemTemplate);
+            items.AddSimple().DataField("Country").Template(formItemTemplate);
+            items.AddSimple().DataField("Phone").Template(formItemTemplate);
+        })
+    )
+}

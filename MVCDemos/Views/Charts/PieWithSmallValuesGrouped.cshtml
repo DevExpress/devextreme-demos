@@ -1,0 +1,33 @@
+﻿@(Html.DevExtreme().PieChart()
+    .ID("pie")
+    .Palette(VizPalette.Bright)
+    .Title("Top internet languages")
+    .Legend(l => l
+        .HorizontalAlignment(HorizontalAlignment.Center)
+        .VerticalAlignment(VerticalEdge.Bottom)
+    )
+    .Export(e => e.Enabled(true))
+    .Series(s => s
+        .Add()
+        .ArgumentField("Language")
+        .ValueField("Percent")
+        .Label(l => l
+            .Visible(true)
+            .Connector(c => c
+                .Visible(true)
+                .Width(0.5)
+            )
+            .Format(Format.FixedPoint)
+            .CustomizeText(@<text>
+                function (point) {
+                    return point.argumentText + ": " + point.valueText + "%";
+                }
+            </text>)
+        )
+        .SmallValuesGrouping(g => g
+            .Mode(SmallValuesGroupingMode.SmallValueThreshold)
+            .Threshold(4.5)
+        )
+    )
+    .DataSource(Model)
+)

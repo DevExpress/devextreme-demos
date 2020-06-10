@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.WindRoseItem>
+
+<div id="chart-demo">
+    @(Html.DevExtreme().PolarChart()
+        .ID("radarChart")
+        .Palette(VizPalette.Soft)
+        .DataSource(Model.First().Values)
+        .Title("Wind Rose, Philadelphia PA")
+        .CommonSeriesSettings(s => s.Type(PolarChartSeriesType.Stackedbar))
+        .Margin(m => m.Bottom(50).Left(100))
+        .OnLegendClick(@<text>
+            function(e) {
+                var series = e.target;
+                if (series.isVisible()) {
+                    series.hide();
+                } else {
+                    series.show();
+                }
+            }
+        </text>)
+        .ArgumentAxis(a => a
+            .DiscreteAxisDivisionMode(DiscreteAxisDivisionMode.CrossLabels)
+            .FirstPointOnStartAngle(true))
+        .ValueAxis(a => a.ValueMarginsEnabled(false))
+        .Export(e => e.Enabled(true))
+        .Series(s => {
+            s.Add().ValueField("Val1").Name("1.3-4 m/s").ArgumentField("Arg");
+            s.Add().ValueField("Val2").Name("4-8 m/s").ArgumentField("Arg");
+            s.Add().ValueField("Val3").Name("8-13 m/s").ArgumentField("Arg");
+            s.Add().ValueField("Val4").Name("13-19 m/s").ArgumentField("Arg");
+            s.Add().ValueField("Val5").Name("19-25 m/s").ArgumentField("Arg");
+            s.Add().ValueField("Val6").Name("25-32 m/s").ArgumentField("Arg");
+            s.Add().ValueField("Val7").Name("32-39 m/s").ArgumentField("Arg");
+            s.Add().ValueField("Val8").Name("39-47 m/s").ArgumentField("Arg");
+        })
+    )
+    <center>
+        @(Html.DevExtreme().SelectBox()
+            .Width(300)
+            .DataSource(Model)
+            .Value(Model.First().Period)
+            .ValueExpr("Period")
+            .DisplayExpr("Period")
+            .OnValueChanged(@<text>
+                function(e) {
+                    $("#radarChart").dxPolarChart("instance").option("dataSource", e.component.option("selectedItem").Values);
+                }
+            </text>)
+        )
+    </center>
+</div>

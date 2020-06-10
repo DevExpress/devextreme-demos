@@ -1,0 +1,21 @@
+﻿@(Html.DevExtreme().Diagram()
+    .ID("diagram")
+    .Toolbox(t => t
+        .Groups(g => {
+            g.Add().Category(DiagramShapeCategory.General).Title("General");
+            g.Add().Category(DiagramShapeCategory.Containers).Title("Containers").Expanded(true);
+        })
+    )
+)
+
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            url: "@Url.Content("~/Content/SampleData/diagram-structure.json")",
+            dataType: "text",
+            success: function(data) {
+                $("#diagram").dxDiagram("instance").import(data);
+            }
+        });
+    });
+</script>

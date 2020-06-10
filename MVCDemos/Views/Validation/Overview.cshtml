@@ -1,0 +1,122 @@
+﻿@model DevExtreme.MVC.Demos.ViewModels.EditorsViewModel
+
+@using(Html.BeginForm()) {
+
+    using(Html.DevExtreme().ValidationGroup()) {
+
+        @Html.AntiForgeryToken()
+
+        <div class="dx-fieldset">
+            <div class="dx-fieldset-header">Credentials</div>
+
+            <div class="dx-field">
+                <div class="dx-field-label">
+                    @Html.LabelFor(m => m.Email)
+                </div>
+                <div class="dx-field-value">
+                    @Html.DevExtreme().TextBoxFor(m => m.Email)
+                </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">
+                    @Html.LabelFor(m => m.Password)
+                </div>
+                <div class="dx-field-value">
+                    @(Html.DevExtreme().TextBoxFor(m => m.Password)
+                        .Mode(TextBoxMode.Password)
+                    )
+                </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">
+                    @Html.LabelFor(m => m.ConfirmPassword, "Confirm Password")
+                </div>
+                <div class="dx-field-value">
+                    @(Html.DevExtreme().TextBoxFor(m => m.ConfirmPassword)
+                        .Mode(TextBoxMode.Password)
+                    )
+                </div>
+            </div>
+        </div>
+        <div class="dx-fieldset">
+            <div class="dx-fieldset-header">Personal Data</div>
+            <div class="dx-field">
+                <div class="dx-field-label">
+                    @Html.LabelFor(m => m.Name)
+                </div>
+                <div class="dx-field-value">
+                    @Html.DevExtreme().TextBoxFor(m => m.Name)
+                </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">
+                    @Html.LabelFor(m => m.Date, "Date of birth")
+                </div>
+                <div class="dx-field-value">
+                    @(Html.DevExtreme().DateBoxFor(m => m.Date)
+                        .InvalidDateMessage("The date must have the following format: MM/dd/yyyy")
+                    )
+                </div>
+            </div>
+        </div>
+        <div class="dx-fieldset">
+            <div class="dx-fieldset-header">Billing address</div>
+            <div class="dx-field">
+                <div class="dx-field-label">
+                    @Html.LabelFor(m => m.Country)
+                </div>
+                <div class="dx-field-value">
+                    @(Html.DevExtreme().SelectBoxFor(m => m.Country)
+                        .DataSource(d => d.WebApi().RouteName("GeoNames").LoadAction("Countries").Key("this"))
+                    )
+                </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">
+                    @Html.LabelFor(m => m.City)
+                </div>
+                <div class="dx-field-value">
+                    @Html.DevExtreme().TextBoxFor(m => m.City)
+                </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">
+                    @Html.LabelFor(m => m.Address)
+                </div>
+                <div class="dx-field-value">
+                    @Html.DevExtreme().TextBoxFor(m => m.Address)
+                </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">
+                    @Html.LabelFor(m => m.Phone) <i>(optional)</i>
+                </div>
+                <div class="dx-field-value">
+                    @(Html.DevExtreme().TextBoxFor(m => m.Phone)
+                        .Mask("+1 (X00) 000-0000")
+                        .MaskRules(new { X = new JS("/[02-9]/") })
+                        .MaskInvalidMessage("The phone must have a correct USA phone format")
+                        .UseMaskedValue(true)
+                    )
+                </div>
+            </div>
+            @(Html.DevExtreme().CheckBoxFor(m => m.Accepted)
+                .ID("check")
+                .Text("I agree to the Terms and Conditions")
+            )
+        </div>
+
+        <div class="dx-fieldset">
+            @(Html.DevExtreme().ValidationSummary()
+                .ID("summary")
+            )
+
+            @(Html.DevExtreme().Button()
+                .ID("button")
+                .Text("Register")
+                .Type(ButtonType.Success)
+                .UseSubmitBehavior(true)
+            )
+        </div>
+    }
+}

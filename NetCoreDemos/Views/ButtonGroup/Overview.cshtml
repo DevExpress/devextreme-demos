@@ -1,0 +1,60 @@
+﻿<div class="buttongroups-container">
+    @(Html.DevExtreme().ButtonGroup()
+        .KeyExpr("alignment")
+        .StylingMode(ButtonStylingMode.Outlined)
+        .Items(items => {
+            items.Add().Icon("alignleft").Hint("Align left").Option("alignment", "left");
+            items.Add().Icon("aligncenter").Hint("Center").Option("alignment", "center");
+            items.Add().Icon("alignright").Hint("Align right").Option("alignment", "right");
+            items.Add().Icon("alignjustify").Hint("Justify").Option("alignment", "justify");
+        })
+        .SelectedItemKeys(new[] { "left" })
+        .OnItemClick("buttonGroup_ItemClick")
+    )
+    @(Html.DevExtreme().ButtonGroup()
+        .KeyExpr("style")
+        .StylingMode(ButtonStylingMode.Outlined)
+        .SelectionMode(ButtonGroupSelectionMode.Multiple)
+        .Items(items => {
+            items.Add().Icon("bold").Hint("Bold").Option("style", "bold");
+            items.Add().Icon("italic").Hint("Italic").Option("style", "italic");
+            items.Add().Icon("underline").Hint("Underlined").Option("style", "underline");
+            items.Add().Icon("strike").Hint("Strikethrough").Option("style", "strike");
+        })
+        .OnItemClick("buttonGroup_ItemClick")
+    )
+</div>
+<div class="buttongroups-container">
+    @(Html.DevExtreme().ButtonGroup()
+        .KeyExpr("alignment")
+        .StylingMode(ButtonStylingMode.Text)
+        .Items(items => {
+            items.Add().Icon("alignleft").Hint("Align left").Option("alignment", "left");
+            items.Add().Icon("aligncenter").Hint("Center").Option("alignment", "center");
+            items.Add().Icon("alignright").Hint("Align right").Option("alignment", "right");
+            items.Add().Icon("alignjustify").Hint("Justify").Option("alignment", "justify");
+        })
+        .SelectedItemKeys(new[] { "left" })
+        .OnItemClick("buttonGroup_ItemClick")
+    )
+    <div class="multiple-selection-styling-mode">
+        @(Html.DevExtreme().ButtonGroup()
+            .KeyExpr("style")
+            .StylingMode(ButtonStylingMode.Text)
+            .SelectionMode(ButtonGroupSelectionMode.Multiple)
+            .Items(items => {
+                items.Add().Icon("bold").Hint("Bold").Option("style", "bold");
+                items.Add().Icon("italic").Hint("Italic").Option("style", "italic");
+                items.Add().Icon("underline").Hint("Underlined").Option("style", "underline");
+                items.Add().Icon("strike").Hint("Strikethrough").Option("style", "strike");
+            })
+            .OnItemClick("buttonGroup_ItemClick")
+        )
+    </div>
+</div>
+
+<script>
+    function buttonGroup_ItemClick(e) {
+        DevExpress.ui.notify({ message: 'The "' + e.itemData.hint + '" button was clicked', width: 320 }, "success", 1000);
+    }
+</script>

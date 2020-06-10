@@ -1,0 +1,24 @@
+﻿@(Html.DevExtreme().CircularGauge()
+    .ID("gauge")
+    .Scale(s => s
+        .StartValue(0)
+        .EndValue(100)
+        .TickInterval(10)
+        .Label(l => l.CustomizeText(@<text>
+            function (arg) {
+                return arg.valueText + " %";
+            }
+        </text>))
+    )
+    .RangeContainer(c => c.Ranges(r => {
+        r.Add().StartValue(0).EndValue(20).Color("#CE2029");
+        r.Add().StartValue(20).EndValue(50).Color("#FFD700");
+        r.Add().StartValue(50).EndValue(100).Color("#228B22");
+    }))
+    .Export(e => e.Enabled(true))
+    .Title(t => t
+        .Text("Battery Charge")
+        .Font(f => f.Size(28))
+    )
+    .Value(45)
+)

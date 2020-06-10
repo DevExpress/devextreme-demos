@@ -1,0 +1,148 @@
+﻿<div class="form">
+    <div class="dx-fieldset">
+        <div class="dx-field">
+            <div class="dx-field-label">Default mode</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().RangeSlider()
+                    .Min(0)
+                    .Max(100)
+                    .Start(20)
+                    .End(60)
+                )
+            </div>
+        </div>
+        <div class="dx-field custom-height-slider">
+            <div class="dx-field-label">With labels</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().RangeSlider()
+                    .Min(0)
+                    .Max(100)
+                    .Start(35)
+                    .End(65)
+                    .Label(l => l
+                        .Visible(true)
+                        .Format(new JS("formatLabel"))
+                        .Position(VerticalEdge.Top)
+                    )
+                )
+            </div>
+        </div>
+        <div class="dx-field custom-height-slider">
+            <div class="dx-field-label">With tooltips</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().RangeSlider()
+                    .Min(0)
+                    .Max(100)
+                    .Start(15)
+                    .End(65)
+                    .Tooltip(t => t
+                        .Enabled(true)
+                        .Format(new JS("formatLabel"))
+                        .ShowMode(SliderTooltipShowMode.Always)
+                        .Position(VerticalEdge.Bottom)
+                    )
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Without range highlighting</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().RangeSlider()
+                    .Min(0)
+                    .Max(100)
+                    .Start(20)
+                    .End(80)
+                    .ShowRange(false)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">With discrete step</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().RangeSlider()
+                    .Min(0)
+                    .Max(100)
+                    .Start(20)
+                    .End(70)
+                    .Step(10)
+                    .Tooltip(t => t.Enabled(true))
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Disabled</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().RangeSlider()
+                    .Min(0)
+                    .Max(100)
+                    .Start(25)
+                    .End(75)
+                    .Disabled(true)
+                )
+            </div>
+        </div>
+    </div>
+    <div class="dx-fieldset">
+        <div class="dx-fieldset-header">Event Handling and API</div>
+        <div class="dx-field">
+            @(Html.DevExtreme().RangeSlider()
+                .ID("handler-range-slider")
+                .Min(0)
+                .Max(100)
+                .Start(10)
+                .End(90)
+                .OnValueChanged("rangeSlider_valueChanged")
+            )
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Start value</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().NumberBox()
+                    .ID("start-value")
+                    .Value(10)
+                    .Min(0)
+                    .Max(100)
+                    .ShowSpinButtons(true)
+                    .OnValueChanged("startValue_changed")
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">End value</div>
+            <div class="dx-field-value">
+                <div id="end-value"></div>
+                @(Html.DevExtreme().NumberBox()
+                    .ID("end-value")
+                    .Value(90)
+                    .Min(0)
+                    .Max(100)
+                    .ShowSpinButtons(true)
+                    .OnValueChanged("endValue_changed")
+                )
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function formatLabel(value) {
+        return value + "%";
+    }
+
+    function getRangeSliderInstance() {
+        return $("#handler-range-slider").dxRangeSlider("instance");
+    }
+
+    function rangeSlider_valueChanged(data) {
+        $("#start-value").dxNumberBox("instance").option("value", data.start);
+        $("#end-value").dxNumberBox("instance").option("value", data.end);
+    }
+
+    function startValue_changed(data) {
+        getRangeSliderInstance().option("start", data.value);
+    }
+
+    function endValue_changed(data) {
+        getRangeSliderInstance().option("end", data.value);
+    }
+</script>

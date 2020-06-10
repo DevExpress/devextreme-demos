@@ -1,0 +1,52 @@
+﻿@(Html.DevExtreme().VectorMap()
+    .ID("vector-map")
+    .Bounds(new double[] { -180, 85, 180, -60 })
+    .Layers(l => l.Add()
+        .Name("areas")
+        .DataSource(new JS("DevExpress.viz.map.sources.world"))
+        .Palette(VizPalette.Violet)
+        .ColorGroups(new double[] { 0, 0.5, 0.8, 1, 2, 3, 100 })
+        .ColorGroupingField("population")
+        .Customize("vectorMap_areasLayer_customize")
+    )
+    .Legends(l => l.Add()
+        .Source(s => s
+            .Layer("areas")
+            .Grouping("color")
+        )
+        .CustomizeText("vectorMap_areasLegend_customizeText")
+    )
+    .Tooltip(t => t
+        .Enabled(true)
+        .CustomizeTooltip("vectorMap_customizeTooltip")
+    )
+)
+
+<script src="~/data/populations.js"></script>
+<script>
+    function vectorMap_areasLayer_customize(elements) {
+        $.each(elements, function(_, element) {
+            element.attribute("population", populations[element.attribute("name")]);
+        });
+    }
+
+    function vectorMap_areasLegend_customizeText(arg) {
+        var text;
+        if(arg.index === 0) {
+            text = "< 0.5%";
+        }
+        else if(arg.index === 5) {
+            text = "> 3%";
+        }
+        else {
+            text = arg.start + "% to " + arg.end + "%";
+        }
+        return text;
+    }
+
+    function vectorMap_customizeTooltip(arg) {
+        if(arg.attribute("population")) {
+            return { text: arg.attribute("name") + ": " + arg.attribute("population") + "% of world population" };
+        }
+    }
+</script>

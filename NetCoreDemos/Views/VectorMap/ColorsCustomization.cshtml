@@ -1,0 +1,46 @@
+﻿@(Html.DevExtreme().VectorMap()
+    .ID("vector-map")
+    .Bounds(new double[] { -180, 85, 180, -60 })
+    .Tooltip(t => t
+        .Enabled(true)
+        .Border(b => b.Visible(false))
+        .Font(f => f.Color("#fff"))
+        .CustomizeTooltip("vectorMap_customizeTooltip")
+    )
+    .Layers(l => l.Add()
+        .DataSource(new JS("DevExpress.viz.map.sources.world"))
+        .Customize("vectorMap_layer_customize")
+    )
+    .OnClick("vectorMap_onClick")
+)
+
+<script src="~/data/countries.js"></script>
+<script>
+    function vectorMap_customizeTooltip(arg) {
+        var name = arg.attribute("name"),
+            country = countries[name];
+        if(country) {
+            return { text: name + ": " + country.totalArea + "M km&#178", color: country.color };
+        }
+    }
+
+    function vectorMap_layer_customize(elements) {
+        $.each(elements, function(_, element) {
+            var country = countries[element.attribute("name")];
+            if(country) {
+                element.applySettings({
+                    color: country.color,
+                    hoveredColor: "#e0e000",
+                    selectedColor: "#008f00"
+                });
+            }
+        });
+    }
+
+    function vectorMap_onClick(e) {
+        var target = e.target;
+        if(target && countries[target.attribute("name")]) {
+            target.selected(!target.selected());
+        }
+    }
+</script>

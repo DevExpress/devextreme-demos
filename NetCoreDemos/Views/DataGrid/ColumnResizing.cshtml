@@ -1,0 +1,38 @@
+﻿@(Html.DevExtreme().DataGrid()
+    .ID("orders")
+    .DataSource(new JS("customers"))
+    .AllowColumnResizing(true)
+    .ColumnMinWidth(50)
+    .ColumnAutoWidth(true)
+    .ShowBorders(true)
+    .Columns(c => {
+        c.Add().DataField("CompanyName");
+        c.Add().DataField("City");
+        c.Add().DataField("State");
+        c.Add().DataField("Phone");
+        c.Add().DataField("Fax");
+    })
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Column resizing mode:</span>
+        @(Html.DevExtreme().SelectBox()
+            .ID("select-resizing")
+            .DataSource(new[] { "nextColumn", "widget" })
+            .Value("nextColumn")
+            .Width(250)
+            .OnValueChanged("selectBox_valueChanged")
+        )
+    </div>
+</div>
+
+<script src="~/data/customers.js"></script>
+<script>
+    function selectBox_valueChanged(data) {
+        var dataGrid = $("#orders").dxDataGrid("instance");
+
+        dataGrid.option("columnResizingMode", data.value);
+    }
+</script>

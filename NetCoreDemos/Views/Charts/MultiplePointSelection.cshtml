@@ -1,0 +1,39 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Rotated(true)
+    .PointSelectionMode(ChartElementSelectionMode.Multiple)
+    .CommonSeriesSettings(s => s
+        .ArgumentField("Country")
+        .Type(SeriesType.StackedBar)
+        .SelectionStyle(st => st.Hatching(h => h.Direction(HatchingDirection.Left)))
+    )
+    .Series(s => {
+        s.Add().ValueField("Gold").Name("Gold Medals").Color("#ffd700");
+        s.Add().ValueField("Silver").Name("Silver Medals").Color("#c0c0c0");
+        s.Add().ValueField("Bronze").Name("Bronze Medals").Color("#cd7f32");
+    })
+    .Title(t => t.Text("Olympic Medals in 2008"))
+    .Export(e => e.Enabled(true))
+    .Legend(l => l
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+    )
+    .OnPointClick(@<text>
+        function(e) {
+            var point = e.target;
+            if(point.isSelected()) {
+                point.clearSelection();
+            } else {
+                point.select();
+            }
+        }
+    </text>)
+    .DataSource(new[] {
+        new { Country = "USA", Gold = 36, Silver = 38, Bronze = 36 },
+        new { Country = "China", Gold = 51, Silver = 21, Bronze = 28 },
+        new { Country = "Russia", Gold = 23, Silver = 21, Bronze = 28 },
+        new { Country = "Britain", Gold = 19, Silver = 13, Bronze = 15 },
+        new { Country = "Australia", Gold = 14, Silver = 15, Bronze = 17 },
+        new { Country = "Germany", Gold = 16, Silver = 10, Bronze = 15 }
+    })
+)

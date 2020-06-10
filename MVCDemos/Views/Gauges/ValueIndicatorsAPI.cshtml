@@ -1,0 +1,78 @@
+﻿<div id="gauge-demo">
+    <div class="widget-container">
+        @(Html.DevExtreme().CircularGauge()
+            .ID("gauge")
+            .Scale(s => s
+                .StartValue(10)
+                .EndValue(40)
+                .TickInterval(5)
+                .Label(l => l.CustomizeText(@<text>
+                    function (arg) {
+                        return arg.valueText + " kV";
+                    }
+                </text>))
+            )
+            .Tooltip(t => t.Enabled(true))
+            .Title(t => t
+                .Text("Generators Voltage (kV)")
+                .Font(f => f.Size(28))
+            )
+            .Value(34)
+            .Subvalues(new double[] { 12, 23 })
+        )
+    </div>
+
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            <span>Main generator</span>
+            @(Html.DevExtreme().NumberBox()
+                .ID("main-generator")
+                .Min(10)
+                .Max(40)
+                .Value(34)
+                .Width(100)
+                .ShowSpinButtons(true)
+            )
+        </div>
+        <div class="option">
+            <span>Additional generator 1</span>
+            @(Html.DevExtreme().NumberBox()
+                .ID("additional-generator-one")
+                .Min(10)
+                .Max(40)
+                .Value(12)
+                .Width(100)
+                .ShowSpinButtons(true)
+            )
+        </div>
+        <div class="option">
+            <span>Additional generator 2</span>
+            @(Html.DevExtreme().NumberBox()
+                .ID("additional-generator-two")
+                .Min(10)
+                .Max(40)
+                .Value(23)
+                .Width(100)
+                .ShowSpinButtons(true)
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().Button()
+                .Text("Apply")
+                .Width(100)
+                .OnClick(@<text>
+                    function() {
+                        var gauge = $("#gauge").dxCircularGauge("instance");
+
+                        gauge.value($("#main-generator").dxNumberBox("option", "value"));
+                        gauge.subvalues([
+                            $("#additional-generator-one").dxNumberBox("option", "value"),
+                            $("#additional-generator-two").dxNumberBox("option", "value")
+                        ]);
+                    }
+                </text>)
+            )
+        </div>
+    </div>
+</div>

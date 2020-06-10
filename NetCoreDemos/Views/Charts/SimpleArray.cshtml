@@ -1,0 +1,20 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .DataSource(new JS("populationData"))
+    .Series(s => s
+        .Add()
+        .Type(SeriesType.Bar)
+    )
+    .Legend(l => l.Visible(false))
+    .ArgumentAxis(a => a
+        .TickInterval(10)
+        .Label(l => l
+            .Format(f => f
+                .Type(Format.Decimal)
+            )
+        )
+    )
+    .Title("World Population by Decade")
+)
+
+<script src="~/data/populationData.js"></script>

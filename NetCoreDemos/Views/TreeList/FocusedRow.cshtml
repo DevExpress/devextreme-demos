@@ -1,0 +1,125 @@
+﻿@(Html.DevExtreme().TreeList<DevExtreme.NETCore.Demos.Models.TreeList.EmployeeTask>()
+    .ID("treeList")
+    .DataSource(d => d.Mvc()
+        .Controller("TreeListTasks")
+        .LoadAction("Tasks")
+        .Key("Task_ID"))
+    .ParentIdExpr("Task_Parent_ID")
+    .HasItemsExpr("Has_Items")
+    .Columns(columns => {
+        columns.Add()
+            .DataField("Task_ID")
+            .Alignment(HorizontalAlignment.Left)
+            .Width(100);
+
+        columns.Add()
+            .DataField("Task_Assigned_Employee_ID")
+            .Caption("Assigned")
+            .MinWidth(120)
+            .Lookup(lookup => lookup
+                .DataSource(ds => ds.Mvc()
+                    .Controller("TreeListTasks")
+                    .LoadMode(DataSourceLoadMode.Raw)
+                    .LoadAction("TaskEmployees")
+                    .Key("ID")
+                )
+                .ValueExpr("ID")
+                .DisplayExpr("Name")
+            );
+
+        columns.Add()
+            .DataField("Task_Status")
+            .Caption("Status")
+            .Width(160);
+
+        columns.Add()
+            .DataField("Task_Start_Date")
+            .Caption("Start Date")
+            .DataType(GridColumnDataType.Date)
+            .Width(160);
+
+        columns.Add()
+            .DataField("Task_Due_Date")
+            .Caption("Due Date")
+            .DataType(GridColumnDataType.Date)
+            .Width(160);
+    })
+    .FocusedRowEnabled(true)
+    .FocusedRowKey(4)
+    .ShowBorders(true)
+    .OnInitialized("onDataGridInitialized")
+    .OnFocusedRowChanged("onFocusedRowChanged")
+)
+
+<div class="task-info">
+    <div class="info">
+        <div class="task-subject"></div>
+        <span class="task-assigned"></span>
+        <span class="start-date"></span>
+    </div>
+    <div class="progress">
+        <span class="task-status"></span>
+        <span class="task-progress"></span>
+    </div>
+</div>
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Focused row key</span>
+        @(Html.DevExtreme().NumberBox()
+            .ID("taskId")
+            .Min(1)
+            .Max(182)
+            .Step(0)
+            .OnInitialized("onTaskIdEditorInitialized")
+            .OnValueChanged("onTaskIdEditorValueChanged")
+        )
+    </div>
+</div>
+
+
+<script>
+    var treeList,
+        taskIdEditor;
+
+    function onTaskIdEditorInitialized(e) {
+        taskIdEditor = e.component;
+    }
+
+    function onTaskIdEditorValueChanged(e) {
+        if (e.event && e.value > 0) {
+            treeList.option("focusedRowKey", e.value);
+        }
+    }
+
+    function onDataGridInitialized(e) {
+        treeList = e.component;
+    }
+
+    function onFocusedRowChanged(e) {
+        var rowData = e.row && e.row.data,
+            cellValue,
+            assigned,
+            taskEmployees = e.component.columnOption("Assigned").lookup.dataSource;
+
+        if (rowData) {
+            cellValue = e.component.cellValue(e.row.rowIndex, "Assigned");
+            taskEmployees.store.byKey(cellValue).done((item) => {
+                assigned = item.Name;
+            });
+
+            $(".task-subject").html(rowData.Task_Subject);
+
+            $(".task-assigned").html(assigned);
+            $(".start-date").html(new Date(rowData.Task_Start_Date).toLocaleDateString());
+
+            $(".task-status").html(rowData.Task_Status);
+
+            var progress = rowData.Task_Completion ? rowData.Task_Completion + "%" : "";
+            $(".task-progress").text(progress);
+
+            $("#taskId").dxNumberBox("instance").option("value", treeList.option("focusedRowKey"));
+        }
+    }
+</script>

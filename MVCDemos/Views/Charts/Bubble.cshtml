@@ -1,0 +1,65 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .CommonSeriesSettings(s => s.Type(SeriesType.Bubble))
+    .Title("Correlation between Total Population and\n Population with Age over 60")
+    .Tooltip(t => t
+        .Enabled(true)
+        .Location(ChartTooltipLocation.Edge)
+        .CustomizeTooltip(@<text>
+            function (arg) {
+                return {
+                    text: arg.point.tag + '<br />Total Population: ' + arg.argumentText + 'M <br />Population with Age over 60: ' + arg.valueText + 'M (' + arg.size + '%)'
+                };
+            }
+        </text>)
+    )
+    .ArgumentAxis(a => a
+        .Label(l => l.CustomizeText(@<text>
+            function () {
+                return this.value + 'M';
+            }
+        </text>))
+        .Title("Total Population")
+    )
+    .ValueAxis(a => a
+        .Add()
+        .Label(l => l.CustomizeText(@<text>
+            function () {
+                return this.value + 'M';
+            }
+        </text>))
+        .Title("Population with Age over 60")
+    )
+    .Legend(l => l
+        .Position(RelativePosition.Inside)
+        .HorizontalAlignment(HorizontalAlignment.Left)
+        .Border(b => b.Visible(true))
+    )
+    .Palette(new[] { "#00ced1", "#008000", "#ffd700", "#ff7f50" })
+    .OnSeriesClick(@<text>
+        function(e) {
+            var series = e.target;
+            if (series.isVisible()) {
+                series.hide();
+            } else {
+                series.show();
+            }
+        }
+    </text>)
+    .Export(e => e.Enabled(true))
+    .Series(s => {
+        s.Add().Name("Europe").ArgumentField("Total1").ValueField("Older1").SizeField("Perc1").TagField("Tag1");
+        s.Add().Name("Africa").ArgumentField("Total2").ValueField("Older2").SizeField("Perc2").TagField("Tag2");
+        s.Add().Name("Asia").ArgumentField("Total3").ValueField("Older3").SizeField("Perc3").TagField("Tag3");
+        s.Add().Name("North America").ArgumentField("Total4").ValueField("Older4").SizeField("Perc4").TagField("Tag4");
+    })
+    .DataSource(new object[] {
+        new { Total1 = 9.5, Total2 = 168.8, Total3 = 127.2, Older1 = 2.4, Older2 = 8.8, Older3 = 40.1, Perc1 = 25.4, Perc2 = 5.3, Perc3 = 31.6, Tag1 = "Sweden", Tag2 = "Nigeria", Tag3 = "Japan" },
+        new { Total1 = 82.8, Total2 = 91.7, Total3 = 90.8, Older1 = 21.9, Older2 = 4.6, Older3 = 8.0, Perc1 = 26.7, Perc2 = 5.4, Perc3 = 8.9, Tag1 = "Germany", Tag2 = "Ethiopia", Tag3 = "Viet Nam" },
+        new { Total1 = 16.7, Total2 = 80.7, Total3 = 21.1, Older1 = 3.8, Older2 = 7.0, Older3 = 2.7, Perc1 = 22.8, Perc2 = 8.4, Perc3 = 12.9, Tag1 = "Netherlands", Tag2 = "Egypt", Tag3 = "Sri Lanka" },
+        new { Total1 = 62.8, Total2 = 52.4, Total3 = 96.7, Older1 = 14.4, Older2 = 4.0, Older3 = 5.9, Perc1 = 23.0, Perc2 = 7.8, Perc3 = 6.1, Tag1 = "United Kingdom", Tag2 = "South Africa", Tag3 = "Philippines" },
+        new { Total1 = 38.2, Total2 = 43.2, Total3 = 66.8, Older1 = 7.8, Older2 = 1.8, Older3 = 9.6, Perc1 = 20.4, Perc2 = 4.3, Perc3 = 13.7, Tag1 = "Poland", Tag2 = "Kenya", Tag3 = "Thailand" },
+        new { Total1 = 45.5, Total3 = 154.7, Total4 = 34.8, Older1 = 9.5, Older3 = 10.3, Older4 = 7.2, Perc1 = 21.1, Perc3 = 6.8, Perc4 = 20.8, Tag1 = "Ukraine", Tag3 = "Bangladesh", Tag4 = "Canada" },
+        new { Total1 = 143.2, Total4 = 120.8, Older1 = 26.5, Older4 = 11.0, Perc1 = 18.6, Perc4 = 9.5, Tag1 = "Russian Federation", Tag4 = "Mexico" }
+    })
+)

@@ -1,0 +1,52 @@
+﻿<div id="chart-demo">
+    @(Html.DevExtreme().Chart()
+        .ID("area-chart")
+        .Palette(VizPalette.HarmonyLight)
+        .CommonSeriesSettings(s => s
+            .ArgumentField("Country")
+            .Type(SeriesType.Area)
+        )
+        .Series(s => {
+            s.Add().ValueField("Y1564").Name("15-64 years");
+            s.Add().ValueField("Y014").Name("0-14 years");
+            s.Add().ValueField("Y65").Name("65 years and older");
+        })
+        .Margin(m => m.Bottom(20))
+        .Title("Population: Age Structure (2000)")
+        .ArgumentAxis(a => a.ValueMarginsEnabled(false))
+        .Export(e => e.Enabled(true))
+        .Legend(l => l
+            .VerticalAlignment(VerticalEdge.Bottom)
+            .HorizontalAlignment(HorizontalAlignment.Center)
+        )
+        .DataSource(new[] {
+            new { Country = "China", Y014 = 320866959, Y1564 = 853191410, Y65 = 87774113 },
+            new { Country = "India", Y014 = 340419115, Y1564 = 626520945, Y65 = 47063757 },
+            new { Country = "United States", Y014 = 58554755, Y1564 = 182172625, Y65 = 34835293 },
+            new { Country = "Indonesia", Y014 = 68715705, Y1564 = 146014815, Y65 = 10053690 },
+            new { Country = "Brazil", Y014 = 50278034, Y1564 = 113391494, Y65 = 9190842 },
+            new { Country = "Russia", Y014 = 26465156, Y1564 = 101123777, Y65 = 18412243 }
+        })
+    )
+
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            <span>Series Type</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new[] {
+                SeriesType.Area,
+                SeriesType.StackedArea,
+                SeriesType.FullStackedArea
+                })
+                .Value(SeriesType.Area)
+                .OnValueChanged(@<text>
+                    function(e) {
+                        var chart = $("#area-chart").dxChart("instance");
+                        chart.option("commonSeriesSettings.type", e.value);
+                    }
+                </text>)
+            )
+        </div>
+    </div>
+</div>

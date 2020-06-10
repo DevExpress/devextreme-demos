@@ -1,0 +1,12 @@
+﻿@(Html.DevExtreme().DataGrid()
+    .ID("gridContainer")
+    .ShowBorders(true)
+    .Columns(columns => {
+        columns.Add().DataField("CompanyName");
+        columns.Add().DataField("City");
+        columns.Add().DataField("State");
+        columns.Add().DataField("Phone");
+        columns.Add().DataField("Fax");
+    })
+    .DataSource(d => d.StaticJson().Url("~/Content/SampleData/Customers.json").Key("ID"))
+)

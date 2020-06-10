@@ -1,0 +1,75 @@
+﻿<div class="dx-fieldset">
+    <div class="dx-fieldset-header">Default Mode</div>
+    <div class="dx-field">
+        @(Html.DevExtreme().CheckBox()
+            .Value(false)
+            .OnValueChanged("checkBox_valueChanged")
+            .Text("Limit text length")
+        )
+    </div>
+</div>
+
+<div class="left-content">
+    @(Html.DevExtreme().TextArea()
+        .ID("example-textarea")
+        .Value(new JS("text"))
+        .Height(90)
+    )
+</div>
+
+<div class="full-width-content">
+    <div class="dx-fieldset">
+        <div class="dx-fieldset-header">Event Handling and API</div>
+        <div class="dx-field">
+            <div class="dx-field-label">Synchronize text areas </div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().SelectBox()
+                    .DataSource(new[] {
+                        new { name = "change", title = "On Blur" },
+                        new { name = "keyup", title = "On Key Up" }
+                    })
+                    .ValueExpr("name")
+                    .DisplayExpr("title")
+                    .Value("change")
+                    .OnValueChanged("selectBox_valueChanged")
+                )
+            </div>
+        </div>
+    </div>
+    @(Html.DevExtreme().TextArea()
+        .ID("editing-textarea")
+        .Value(new JS("text"))
+        .Height(90)
+        .ValueChangeEvent("change")
+        .OnValueChanged("textArea_valueChanged")
+    )
+    @(Html.DevExtreme().TextArea()
+        .ID("read-only-textarea")
+        .Value(new JS("text"))
+        .Height(90)
+        .ReadOnly(true)
+    )
+</div>
+
+<script>
+    var text = "Prepare 2013 Marketing Plan: We need to double revenues in 2013 and our marketing strategy is going to be key here. R&D is improving existing products and creating new products so we can deliver great AV equipment to our customers.Robert, please make certain to create a PowerPoint presentation for the members of the executive team.";
+
+    function checkBox_valueChanged(data) {
+        var exampleTextArea = $("#example-textarea").dxTextArea("instance");
+        if(data.value) {
+            exampleTextArea.option("value", (exampleTextArea.option("value")).substring(0, 100));
+            exampleTextArea.option("maxLength", 100);
+        } else {
+            exampleTextArea.option("maxLength", null);
+            exampleTextArea.option("value", text);
+        }
+    }
+
+    function selectBox_valueChanged(data) {
+        $("#editing-textarea").dxTextArea("instance").option("valueChangeEvent", data.value);
+    }
+
+    function textArea_valueChanged(data) {
+        $("#read-only-textarea").dxTextArea("instance").option("value", data.value);
+    }
+</script>

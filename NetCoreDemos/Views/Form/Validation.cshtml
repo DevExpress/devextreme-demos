@@ -1,0 +1,75 @@
+﻿@using DevExtreme.NETCore.Demos.ViewModels
+
+@using(Html.BeginForm()) {
+
+    using(Html.DevExtreme().ValidationGroup()) {
+
+        @Html.AntiForgeryToken()
+
+        @(Html.DevExtreme().Form<EditorsViewModel>()
+            .ShowValidationSummary(true)
+            .Items(items => {
+
+                items.AddGroup()
+                    .Caption("Credentials")
+                    .Items(groupItems => {
+                        groupItems.AddSimpleFor(m => m.Email);
+
+                        groupItems.AddSimpleFor(m => m.Password)
+                            .Editor(e => e.TextBox().Mode(TextBoxMode.Password));
+
+                        groupItems.AddSimpleFor(m => m.ConfirmPassword)
+                            .Editor(e => e.TextBox().Mode(TextBoxMode.Password));
+                    });
+
+                items.AddGroup()
+                    .Caption("Personal Data")
+                    .Items(groupItems => {
+                        groupItems.AddSimpleFor(m => m.Name);
+                        groupItems.AddSimpleFor(m => m.Date);
+                    });
+
+                items.AddGroup()
+                    .Caption("Billing address")
+                    .Items(groupItems => {
+                        groupItems.AddSimpleFor(m => m.Country)
+                            .Editor(e => e
+                                .SelectBox()
+                                .DataSource(d => d.Mvc().Controller("GeoNames").LoadAction("Countries"))
+                            );
+
+                        groupItems.AddSimpleFor(m => m.City)
+                            .Editor(e => e
+                                .Autocomplete()
+                                .MinSearchLength(2)
+                                .DataSource(d => d.Mvc().Controller("GeoNames").LoadAction("Cities"))
+                            );
+
+                        groupItems.AddSimpleFor(m => m.Address);
+
+                        groupItems.AddSimpleFor(m => m.Phone)
+                            .HelpText("Enter the phone number in USA phone format")
+                            .Editor(e => e.TextBox()
+                                .Mask("+1 (X00) 000-0000")
+                                .MaskRules(new { X = new JS("/[02-9]/") })
+                                .MaskInvalidMessage("The phone must have a correct USA phone format")
+                                .UseMaskedValue(true)
+                            );
+
+                        groupItems.AddSimpleFor(m => m.Accepted)
+                            .Label(l => l.Visible(false))
+                            .Editor(editor => editor.CheckBox().Text("I agree to the Terms and Conditions"));
+                    });
+
+                items.AddButton()
+                    .HorizontalAlignment(HorizontalAlignment.Left)
+                    .ButtonOptions(b => b.Text("Register")
+                        .Type(ButtonType.Success)
+                        .UseSubmitBehavior(true)
+                );
+
+            })
+            .FormData(Model)
+        )
+    }
+}

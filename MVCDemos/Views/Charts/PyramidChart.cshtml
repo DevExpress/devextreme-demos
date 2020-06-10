@@ -1,0 +1,41 @@
+﻿<div id="pyramid-demo">
+    @(Html.DevExtreme().Funnel()
+        .ID("pyramid")
+        .Palette(VizPalette.HarmonyLight)
+        .ValueField("Count")
+        .ArgumentField("Level")
+        .Legend(l => l
+            .Visible(true)
+        )
+        .Title(t => t
+            .Text("Team Composition")
+            .Margin(m => m.Bottom(30))
+        )
+        .Tooltip(t => t
+            .Enabled(true)
+        )
+        .Inverted(true)
+        .Algorithm(FunnelAlgorithm.DynamicHeight)
+        .Item(i => i
+            .Border(b => b
+                .Visible(true)
+            )
+        )
+        .Label(l => l
+            .Visible(true)
+            .HorizontalAlignment(HorizontalEdge.Left)
+            .BackgroundColor("none")
+            .Font(f => f
+                .Size(16)
+            )
+        )
+        .SortData(false)
+        .DataSource(new[] {
+            new { Level = "Junior Engineer", Count = 75 },
+            new { Level = "Mid-Level Engineer", Count = 95 },
+            new { Level = "Senior Engineer", Count = 53 },
+            new { Level = "Lead Engineer", Count = 23 },
+            new { Level = "Architect", Count = 18 }
+        })
+    )
+</div>

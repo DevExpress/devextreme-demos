@@ -1,0 +1,13 @@
+﻿<p>The submitted data has been successfully accepted.</p>
+<br />
+
+@(Html.DevExtreme().Button()
+    .Text("Reload demo")
+    .Type(ButtonType.Default)
+    .Icon("refresh")
+    .OnClick(@<text>
+        function() {
+            window.location = window.location;
+        }
+    </text>)
+)

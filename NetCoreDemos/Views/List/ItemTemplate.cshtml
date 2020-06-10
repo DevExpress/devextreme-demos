@@ -1,0 +1,21 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.ListProduct>
+
+<div class="list-container">
+    @(Html.DevExtreme().List()
+        .Height("100%")
+        .DataSource(Model)
+        .ItemTemplate(@<text>
+            <div class="product">
+                <img src="<%- ImageSrc %>">
+                <div><%- Name %></div>
+                <div class="price"><%- formatCurrency(Price) %></div>
+            </div>
+        </text>)
+    )
+</div>
+
+<script>
+    function formatCurrency(value) {
+        return "$" + new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(value);
+    }
+</script>

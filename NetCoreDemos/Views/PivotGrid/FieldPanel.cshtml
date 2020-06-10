@@ -1,0 +1,150 @@
+﻿@using DevExtreme.NETCore.Demos.Models
+
+@(Html.DevExtreme().PivotGrid<Sale>()
+    .ID("sales")
+    .AllowSortingBySummary(true)
+    .AllowSorting(true)
+    .AllowFiltering(true)
+    .ShowBorders(true)
+    .Height(490)
+    .FieldPanel(p => p
+        .ShowColumnFields(true)
+        .ShowDataFields(true)
+        .ShowFilterFields(true)
+        .ShowRowFields(true)
+        .AllowFieldDragging(true)
+        .Visible(true)
+    )
+    .FieldChooser(c => c.Height(500))
+    .DataSource(d => d
+        .Store(s => s.Mvc().Controller("PivotGridData").LoadAction("Get"))
+        .Fields(fields => {
+            fields.AddFor(m => m.Region)
+                .Width(120)
+                .Area(PivotGridArea.Row);
+
+            fields.AddFor(m => m.City)
+                .Width(150)
+                .Area(PivotGridArea.Row)
+                .Selector(@<text>
+                    function(data) {
+                        return  data.City + " (" + data.Country + ")";
+                    }
+                </text>);
+
+            fields.AddFor(m => m.Date)
+                .Area(PivotGridArea.Column);
+
+            fields.AddFor(m => m.Amount)
+                .Caption("Sales (Sum)")
+                .Area(PivotGridArea.Data)
+                .SummaryType(SummaryType.Sum)
+                .Format(Format.Currency);
+        })
+    )
+    .OnContextMenuPreparing("contextMenu_preparing")
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Show Data Fields")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(data) {
+                    getPivotGridInstance().option("fieldPanel.showDataFields", data.value);
+                }
+            </text>)
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Show Row Fields")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(data) {
+                    getPivotGridInstance().option("fieldPanel.showRowFields", data.value);
+                }
+            </text>)
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Show Column Fields")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(data) {
+                    getPivotGridInstance().option("fieldPanel.showColumnFields", data.value);
+                }
+            </text>)
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Show Filter Fields")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(data) {
+                    getPivotGridInstance().option("fieldPanel.showFilterFields", data.value);
+                }
+            </text>)
+        )
+    </div>
+</div>
+
+<script>
+    function contextMenu_preparing(e) {
+        var dataSource = e.component.getDataSource(),
+            sourceField = e.field;
+
+        if(sourceField) {
+            if(!sourceField.groupName || sourceField.groupIndex === 0) {
+                e.items.push({
+                    text: "Hide field",
+                    onItemClick: function() {
+                        var fieldIndex;
+                        if(sourceField.groupName) {
+                            fieldIndex = dataSource.getAreaFields(sourceField.area, true)[sourceField.areaIndex].index;
+                        } else {
+                            fieldIndex = sourceField.index;
+                        }
+
+                        dataSource.field(fieldIndex, {
+                            area: null
+                        });
+                        dataSource.load();
+                    }
+                });
+            }
+
+            if(sourceField.dataType === "number") {
+                var setSummaryType = function(args) {
+                    dataSource.field(sourceField.index, {
+                        summaryType: args.itemData.value
+                    });
+
+                    dataSource.load();
+                },
+                menuItems = [];
+
+                e.items.push({ text: "Summary Type", items: menuItems });
+
+                $.each(["Sum", "Avg", "Min", "Max"], function(_, summaryType) {
+                    var summaryTypeValue = summaryType.toLowerCase();
+
+                    menuItems.push({
+                        text: summaryType,
+                        value: summaryType.toLowerCase(),
+                        onItemClick: setSummaryType,
+                        selected: e.field.summaryType === summaryTypeValue
+                    });
+                });
+            }
+        }
+    }
+
+    function getPivotGridInstance() {
+        return $("#sales").dxPivotGrid("instance");
+    }
+</script>

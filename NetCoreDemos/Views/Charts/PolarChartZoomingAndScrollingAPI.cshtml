@@ -1,0 +1,57 @@
+﻿@(Html.DevExtreme().PolarChart()
+    .ID("zoomedChart")
+    .CommonSeriesSettings(c => c
+        .ArgumentField("Argument")
+        .Closed(false)
+    )
+    .Series(s => {
+        s.Add()
+            .Type(PolarChartSeriesType.Scatter)
+            .Name("Test results")
+            .ValueField("Value")
+            .Point(p => p.Size(8));
+        s.Add()
+            .Type(PolarChartSeriesType.Line)
+            .Name("Expected average")
+            .ValueField("OriginalValue")
+            .Point(p => p.Visible(false));
+    })
+    .ArgumentAxis(a => a
+        .StartAngle(90)
+        .TickInterval(30)
+    )
+    .ValueAxis(v => v.
+        VisualRange(range => range.StartValue(0).EndValue(8))
+    )
+    .Export(e => e.Enabled(true))
+    .Legend(l => l
+        .HoverMode(ChartLegendHoverMode.ExcludePoints)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+        .VerticalAlignment(VerticalEdge.Top)
+    )
+    .Title("Stochastic Process")
+    .DataSource(Model)
+)
+@(Html.DevExtreme().RangeSelector()
+    .Size(s => s.Height(100))
+    .Margin(m => m
+        .Top(10)
+        .Left(60)
+        .Bottom(10)
+        .Right(50)
+    )
+    .Scale(s => s
+        .StartValue(0)
+        .EndValue(8)
+        .MinorTickInterval(0.1)
+        .TickInterval(1)
+        .MinorTick(mt => mt.Visible(false))
+    )
+    .Behavior(b => b.CallValueChanged(ValueChangedCallMode.OnMoving))
+    .OnValueChanged(@<text>
+        function(e) {
+            var zoomedChart = $("#zoomedChart").dxPolarChart("instance");
+            zoomedChart.getValueAxis().visualRange(e.value);
+        }
+    </text>)
+)

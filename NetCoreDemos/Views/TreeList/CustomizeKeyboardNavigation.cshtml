@@ -1,0 +1,93 @@
+﻿@using DevExtreme.NETCore.Demos.Models.TreeList
+@model IEnumerable<Employee>
+
+<div id="tree-list-demo">
+    @(Html.DevExtreme().TreeList<Employee>()
+        .ID("treeListContainer")
+        .DataSource(Model)
+        .KeyExpr("ID")
+        .ParentIdExpr("HeadID")
+        .ColumnAutoWidth(true)
+        .ExpandedRowKeys(new[] { 1, 2, 4, 5 })
+        .OnFocusedCellChanging(@<text>
+            function(e) {
+                e.isHighlighted = true;
+            }
+        </text>)
+        .KeyboardNavigation(navigation => {
+            navigation.EnterKeyAction(GridEnterKeyAction.MoveFocus);
+            navigation.EnterKeyDirection(GridEnterKeyDirection.Column);
+            navigation.EditOnKeyPress(true);
+        })
+        .Editing(editing => {
+            editing.Mode(GridEditMode.Batch);
+            editing.AllowUpdating(true);
+            editing.StartEditAction(GridStartEditAction.DblClick);
+        })
+        .Columns(column => {
+            column.AddFor(m => m.FullName);
+            column.AddFor(m => m.Prefix);
+            column.AddFor(m => m.Title);
+            column.AddFor(m => m.City);
+            column.AddFor(m => m.HireDate);
+        })
+    )
+
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option-container">
+            <div class="option check-box">
+                <div id="editOnKeyPress"></div>
+                @(Html.DevExtreme().CheckBox()
+                    .ID("editOnKeyPress")
+                    .Text("Edit On Key Press")
+                    .Value(true)
+                    .OnValueChanged(@<text>
+                        function(data) {
+                            var dataGrid = $("#treeListContainer").dxTreeList("instance");
+                            dataGrid.option("keyboardNavigation.editOnKeyPress", data.value);
+                        }
+                    </text>)
+                )
+            </div>
+            <div class="option">
+                <span class="option-caption">Enter Key Action</span>
+                @{
+                    var enterKeyActionDataSource = new[] { "startEdit", "moveFocus" };
+                }
+
+                @(Html.DevExtreme().SelectBox()
+                    .ID("enterKeyAction")
+                    .DataSource(enterKeyActionDataSource)
+                    .Value(enterKeyActionDataSource[1])
+                    .OnValueChanged(@<text>
+                        function(data) {
+                            var dataGrid = $("#treeListContainer").dxTreeList("instance");
+                            dataGrid.option("keyboardNavigation.enterKeyAction", data.value);
+                        }
+                    </text>)
+                )
+                <div class="select" id="enterKeyAction"></div>
+            </div>
+            <div class="option">
+                <span class="option-caption">Enter Key Direction</span>
+                @{
+                    var enterKeyDirectionDataSource = new[] { "none", "column", "row" };
+                }
+
+                @(Html.DevExtreme().SelectBox()
+                    .ID("enterKeyDirection")
+                    .DataSource(enterKeyDirectionDataSource)
+                    .Value(enterKeyDirectionDataSource[1])
+                    .OnValueChanged(@<text>
+                        function(data) {
+                            var dataGrid = $("#treeListContainer").dxTreeList("instance");
+                            dataGrid.option("keyboardNavigation.enterKeyDirection", data.value);
+                        }
+                    </text>)
+                )
+                <div class="select" id="enterKeyDirection"></div>
+            </div>
+        </div>
+    </div>
+</div>

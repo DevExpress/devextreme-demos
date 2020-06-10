@@ -1,0 +1,60 @@
+﻿<div id="chart-demo">
+    @(Html.DevExtreme().Chart()
+        .ID("spline-chart")
+        .Palette(VizPalette.Violet)
+        .CommonSeriesSettings(s => s
+            .ArgumentField("Year")
+            .Type(SeriesType.Spline)
+        )
+        .CommonAxisSettings(s => s
+            .Grid(g => g.Visible(true))
+        )
+        .Margin(m => m.Bottom(20))
+        .Series(s => {
+            s.Add().ValueField("SMP").Name("SMP");
+            s.Add().ValueField("MMP").Name("MMP");
+            s.Add().ValueField("Cnstl").Name("Cnstl");
+            s.Add().ValueField("Cluster").Name("Cluster");
+        })
+        .Tooltip(t => t.Enabled(true))
+        .Legend(l => l
+            .VerticalAlignment(VerticalEdge.Top)
+            .HorizontalAlignment(HorizontalAlignment.Right)
+        )
+        .ArgumentAxis(a => a
+            .Label(l => l.Format(Format.Decimal))
+            .AllowDecimals(false)
+            .AxisDivisionFactor(60)
+        )
+        .Export(e => e.Enabled(true))
+        .Title("Architecture Share Over Time (Count)")
+        .DataSource(new[] {
+            new { Year = 1997, SMP = 263, MMP = 226, Cnstl = 10, Cluster = 1 },
+            new { Year = 1999, SMP = 169, MMP = 256, Cnstl = 66, Cluster = 7 },
+            new { Year = 2001, SMP = 57, MMP = 257, Cnstl = 143, Cluster = 43 },
+            new { Year = 2003, SMP = 0, MMP = 163, Cnstl = 127, Cluster = 210 },
+            new { Year = 2005, SMP = 0, MMP = 103, Cnstl = 36, Cluster = 361 },
+            new { Year = 2007, SMP = 0, MMP = 91, Cnstl = 3, Cluster = 406 }
+        })
+    )
+
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            <span>Series Type</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new[] {
+                    SeriesType.Spline,
+                    SeriesType.StackedSpline,
+                    SeriesType.FullStackedSpline
+                })
+                .Value(SeriesType.Spline)
+                .OnValueChanged(@<text>
+                    function (e) {
+                        $("#spline-chart").dxChart("option", "commonSeriesSettings.type", e.value);
+                    }
+                </text>)
+            )
+        </div>
+    </div>
+</div>

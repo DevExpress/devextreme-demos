@@ -1,0 +1,22 @@
+﻿@(Html.DevExtreme().RangeSelector()
+    .ID("range-selector")
+    .Margin(m => m.Top(50))
+    .Scale(s => s.Label(f => f.Format(Format.Decimal)))
+    .Chart(c => c
+        .CommonSeriesSettings(x => x
+            .ArgumentField("Year")
+            .ValueField("Oil")
+            .Type(SeriesType.Spline)
+        )
+        .SeriesTemplate(x => x
+            .NameField("Country")
+            .CustomizeSeries(@<text>
+                function(valueFromNameField) {
+                    return valueFromNameField === "USA" ? { color: "red" } : {};
+                }
+            </text>)
+        )
+    )
+    .Title("Select a Year Period")
+    .DataSource(Model)
+)

@@ -1,0 +1,132 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.TreeList.EmployeeTask>
+<div id="demo-container">
+    <div class="widget-container">
+    @(Html.DevExtreme().ScrollView()
+        .ID("scroll")
+        .Direction(ScrollDirection.Vertical)
+        .ShowScrollbar(ShowScrollbarMode.Always)
+        .Content(
+            Html.DevExtreme().Sortable()
+                .ID("list")
+                .MoveItemOnDrop(true)
+                .Content(@<text>
+                    @foreach(var task in Model) {
+                        <div class="item dx-card dx-theme-text-color dx-theme-background-color">
+                            @task.Task_Subject
+                        </div>
+                    }
+                </text>).ToString()
+        )
+    )
+    </div>
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            <span>Drop Feedback Mode:</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new string[] { "push", "indicate" })
+                .Value("push")
+                .OnValueChanged("dropFeedbackMode_changed")
+            )
+        </div>
+        <div class="option">
+            <span>Item Orientation:</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new string[] { "vertical", "horizontal" })
+                .Value("vertical")
+                .OnValueChanged("itemOrientation_changed")
+            )
+        </div>
+        <div class="option">
+            <span>Drag Direction:</span>
+            @(Html.DevExtreme().SelectBox()
+                .ID("drag-direction")
+                .DataSource(new string[] { "both", "vertical" })
+                .Value("both")
+                .OnValueChanged("dragDirection_changed")
+            )
+        </div>
+        <div class="option">
+            <span>Scroll Speed:</span>
+            @(Html.DevExtreme().NumberBox()
+                .Value(30)
+                .OnValueChanged("scrollSpeed_changed")
+            )
+        </div>
+        <div class="option">
+            <span>Scroll Sensitivity:</span>
+            @(Html.DevExtreme().NumberBox()
+                .Value(60)
+                .OnValueChanged("scrollSensitivity_changed")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Use Handle")
+                .OnValueChanged("handle_changed")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Use Drag Template")
+                .OnValueChanged("dragTemplate_changed")
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    function getSortableInstance() {
+        return $("#list").dxSortable("instance");
+    }
+
+    function dropFeedbackMode_changed(data) {
+        getSortableInstance().option("dropFeedbackMode", data.value);
+    }
+
+    function itemOrientation_changed(data) {
+        getSortableInstance().option("itemOrientation", data.value);
+        $("#scroll").toggleClass("horizontal", data.value === "horizontal");
+        $("#scroll").dxScrollView({
+            direction: data.value
+        });
+        $("#drag-direction").dxSelectBox({
+            value: "both",
+            items: ["both", data.value]
+        });
+    }
+
+    function dragDirection_changed(data) {
+        getSortableInstance().option("dragDirection", data.value);
+    }
+
+    function scrollSpeed_changed(data) {
+        getSortableInstance().option("scrollSpeed", data.value);
+    }
+
+    function scrollSensitivity_changed(data) {
+        getSortableInstance().option("scrollSensitivity", data.value);
+    }
+
+    function handle_changed(data) {
+        if (data.value) {
+            $(".item").append("<i class='dx-icon dx-icon-dragvertical handle'></i>");
+        } else {
+            $(".item").children("i").remove();
+        }
+        $(".item").toggleClass("item-with-handle", data.value);
+        getSortableInstance().option("handle", data.value ? ".handle" : "");
+    }
+
+    function dragTemplate(options) {
+        return $("<div>")
+            .addClass("item dx-theme-border-color dx-theme-text-color dx-theme-background-color")
+            .css({ fontWeight: "bold", width: 200, padding: 10 })
+            .text(options.itemElement.text());
+    }
+
+    function dragTemplate_changed(data) {
+        getSortableInstance().option("dragTemplate", data.value ? dragTemplate : null);
+        getSortableInstance().option("cursorOffset", e.value ? { x: 10, y: 20 } : null);
+    }
+</script>

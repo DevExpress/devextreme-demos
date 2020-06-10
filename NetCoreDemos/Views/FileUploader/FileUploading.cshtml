@@ -1,0 +1,91 @@
+﻿<div id="fileuploader">
+    <div class="widget-container">
+        @(Html.DevExtreme().FileUploader()
+            .ID("file-uploader")
+            .Name("myFile")
+            .Multiple(false)
+            .Accept("*")
+            .UploadMode(FileUploadMode.Instantly)
+            .UploadUrl(Url.Action("Upload", "FileUploader"))
+            .OnValueChanged("fileUploader_valueChanged")
+        )
+        <div class="content" id="selected-files">
+            <div>
+                <h4>Selected Files</h4>
+            </div>
+        </div>
+    </div>
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            <span>File types</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new[] {
+                    new { name = "All types", value = "*" },
+                    new { name = "Images", value = "image/*" },
+                    new { name = "Videos", value = "video/*" }
+                })
+                .ValueExpr("value")
+                .DisplayExpr("name")
+                .Value("*")
+                .OnValueChanged("acceptOption_changed")
+            )
+        </div>
+        <div class="option">
+            <span>Upload mode</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new[] {
+                    "instantly", "useButtons"
+                })
+                .Value("instantly")
+                .OnValueChanged("uploadMode_changed")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(false)
+                .Text("Allow multiple files selection")
+                .OnValueChanged("multipleOption_changed")
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    function getFileUploaderInstance() {
+        return $("#file-uploader").dxFileUploader("instance");
+    }
+
+    function fileUploader_valueChanged(e) {
+        var files = e.value;
+        if(files.length > 0) {
+            $("#selected-files .selected-item").remove();
+
+            $.each(files, function(i, file) {
+                var $selectedItem = $("<div />").addClass("selected-item");
+                $selectedItem.append(
+                    $("<span />").html("Name: " + file.name + "<br/>"),
+                    $("<span />").html("Size " + file.size + " bytes" + "<br/>"),
+                    $("<span />").html("Type " + file.type + "<br/>"),
+                    $("<span />").html("Last Modified Date: " + file.lastModifiedDate)
+                );
+                $selectedItem.appendTo($("#selected-files"));
+            });
+            $("#selected-files").show();
+        }
+        else
+            $("#selected-files").hide();
+    }
+
+    function acceptOption_changed(e) {
+        getFileUploaderInstance().option("accept", e.value);
+    }
+
+    function uploadMode_changed(e) {
+        getFileUploaderInstance().option("uploadMode", e.value);
+    }
+
+    function multipleOption_changed(e) {
+        getFileUploaderInstance().option("multiple", e.value);
+    }
+</script>

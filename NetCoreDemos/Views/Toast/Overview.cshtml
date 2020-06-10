@@ -1,0 +1,24 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.ListProduct>
+
+<div id="toast">
+    <h1>Product List</h1>
+    <ul class="products">
+        @foreach(var product in Model) {
+            <li>
+                <img src="@product.ImageSrc" />
+                <div id="name">@product.Name</div>
+                @(Html.DevExtreme().CheckBox()
+                    .Text("Available")
+                    .OnValueChanged(@<text>
+                        function checkAvailable(data) {
+                            var type = data.value ? "success" : "error",
+                                text = "@product.Name" + (data.value ? " is available" : " is not available");
+
+                            DevExpress.ui.notify(text, type, 600);
+                        }
+                    </text>)
+                )
+            </li>
+        }
+    </ul>
+</div>

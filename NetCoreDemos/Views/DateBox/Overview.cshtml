@@ -1,0 +1,126 @@
+﻿<div class="dx-fieldset">
+    <div class="dx-field">
+        <div class="dx-field-label">Date</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateBox()
+                .Type(DateBoxType.Date)
+                .Value(DateTime.Now)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Time</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateBox()
+                .Type(DateBoxType.Time)
+                .Value(DateTime.Now)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Date and time</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateBox()
+                .Type(DateBoxType.DateTime)
+                .Value(DateTime.Now)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Custom format</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateBox()
+                .DisplayFormat("EEEE, MMM dd")
+                .Value(DateTime.Now)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Date picker</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateBox()
+                .PickerType(DateBoxPickerType.Rollers)
+                .Value(DateTime.Now)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Clear button</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateBox()
+                .Type(DateBoxType.Time)
+                .ShowClearButton(true)
+                .Value(new DateTime(2016, 12, 1, 6, 0, 0))
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Disabled</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateBox()
+                .Type(DateBoxType.DateTime)
+                .Value(DateTime.Now)
+                .Disabled(true)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Disable certain dates</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateBox()
+                .Type(DateBoxType.Date)
+                .Value(new DateTime(2017, 1, 3))
+                .PickerType(DateBoxPickerType.Calendar)
+                .DisabledDates(new[] {
+                    new DateTime(2017, 1, 1),
+                    new DateTime(2017, 1, 2),
+                    new DateTime(2017, 1, 16),
+                    new DateTime(2017, 2, 20),
+                    new DateTime(2017, 5, 29),
+                    new DateTime(2017, 7, 4),
+                    new DateTime(2017, 9, 4),
+                    new DateTime(2017, 10, 9),
+                    new DateTime(2017, 11, 11),
+                    new DateTime(2017, 11, 23),
+                    new DateTime(2017, 12, 25)
+                })
+            )
+        </div>
+    </div>
+</div>
+<div class="dx-fieldset">
+    <div class="dx-fieldset-header">Event Handling</div>
+    <div class="dx-field">
+        <div class="dx-field-label">Set Birthday</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateBox()
+                .ApplyValueMode(EditorApplyValueMode.UseButtons)
+                .Max(DateTime.Now)
+                .Min(new DateTime(1900, 1, 1))
+                .Value(new DateTime(1981, 4, 27))
+                .OnValueChanged("dateBox_valueChanged")
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-value">
+            Your age is <div id="age"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function dateDiff(secondDate) {
+        var diffInDay = Math.floor(Math.abs((new Date() - secondDate) / (24 * 60 * 60 * 1000)));
+        return $("#age").text(diffInDay + " days");
+    }
+
+    function dateBox_valueChanged(data) {
+        dateDiff(new Date(data.value));
+    }
+
+    $(function() {
+        dateDiff(new Date(1981, 3, 27));
+    });
+
+</script>

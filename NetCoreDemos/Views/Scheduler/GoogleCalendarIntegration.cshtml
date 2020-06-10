@@ -1,0 +1,45 @@
+﻿<div class="long-title"><h3>Tasks for Employees (USA Office)</h3></div>
+@(Html.DevExtreme().Scheduler()
+    .DataSource(new JS("events"))
+    .StartDateExpr("start.dateTime")
+    .EndDateExpr("end.dateTime")
+    .TextExpr("summary")
+    .StartDayHour(7)
+    .TimeZone("America/Los_Angeles")
+    .ShowAllDayPanel(false)
+    .Editing(false)
+    .CurrentDate(new DateTime(2017, 5, 25))
+    .FirstDayOfWeek(FirstDayOfWeek.Sunday)
+    .Views(new[] {
+        SchedulerViewType.Day,
+        SchedulerViewType.WorkWeek,
+        SchedulerViewType.Month
+    })
+    .CurrentView(SchedulerViewType.WorkWeek)
+    .Height(500)
+)
+
+<script>
+    var PUBLIC_KEY = "AIzaSyBnNAISIUKe6xdhq1_rjor2rxoI3UlMY7k",
+        CALENDAR_ID = "f7jnetm22dsjc3npc2lu3buvu4@group.calendar.google.com";
+
+    var events = {
+        load: function(options) {
+            var result = $.Deferred();
+            $.ajax({
+                data: {showDeleted: false},
+                dataType: "json",
+                url: [
+                    "https://www.googleapis.com/calendar/v3/calendars/",
+                    CALENDAR_ID,
+                    "/events?key=",
+                    PUBLIC_KEY
+                ].join("")
+            }).done(function(response) {
+                result.resolve(response.items);
+            });
+
+            return result.promise();
+        }
+    }
+</script>

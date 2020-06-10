@@ -1,0 +1,40 @@
+﻿@using DevExtreme.NETCore.Demos.Models.DataGrid
+
+@model IEnumerable<Employee>
+
+@(Html.DevExtreme().DataGrid<Employee>()
+    .DataSource(Model, new[] { "ID" })
+    .Selection(s => s.Mode(SelectionMode.Single))
+    .HoverStateEnabled(true)
+    .ShowBorders(true)
+    .Columns(columns => {
+        columns.AddFor(m => m.Prefix)
+            .Width(70);
+
+        columns.AddFor(m => m.FirstName);
+
+        columns.AddFor(m => m.LastName);
+
+        columns.AddFor(m => m.Position)
+            .Width(180);
+
+        columns.AddFor(m => m.BirthDate);
+
+        columns.AddFor(m => m.HireDate);
+    })
+    .OnSelectionChanged("selection_changed")
+)
+<div id="employeeInfo">
+    <img class="employeePhoto" />
+    <p class="employeeNotes"></p>
+</div>
+
+<script>
+    function selection_changed(selectedItems) {
+        var data = selectedItems.selectedRowsData[0];
+        if(data) {
+            $(".employeeNotes").text(data.Notes);
+            $(".employeePhoto").attr("src", data.Picture);
+        }
+    }
+</script>

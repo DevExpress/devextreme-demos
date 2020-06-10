@@ -1,0 +1,50 @@
+﻿
+@{
+    var dataSource = new[] {
+        new { Name = "California", Population = 38802500, Capital = "Sacramento", Area = 423967  },
+        new { Name = "Texas", Population = 26956958, Capital = "Austin", Area = 695662 },
+        new { Name = "Florida", Population = 19893297, Capital = "Tallahassee", Area = 170312 },
+        new { Name = "New York", Population = 19746227, Capital = "Albany", Area = 141297 },
+        new { Name = "Illinois", Population = 12880580, Capital = "Springfield", Area = 149995 }
+    };
+}
+
+@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Title("Top 5 Most Populated States in US")
+    .Series(s => s
+        .Add()
+        .Type(SeriesType.Bar)
+        .ArgumentField("Name")
+        .ValueField("Population")
+        .Name("Population")
+    )
+    .CommonAnnotationSettings(c=>c.Series("Population")
+        .Type(AnnotationType.Custom)
+        .AllowDragging(true)
+        .Template(@<text>
+                <svg class='annotation'>
+                    <image href="<%-getImagePath(argument)%>" width="60" height="40" />
+                    <text x="70" y="25" class="state"><%- argument %></text>
+                    <text x="0" y="60">
+                        <tspan class="caption">Capital:</tspan><tspan dx="5"><%- data.Capital %></tspan><tspan dy="14" x="0" class="caption">Population:</tspan><tspan dx="5"><%- formatNumber(data.Population) %></tspan><tspan dy="14" x="0" class="caption">Area:</tspan><tspan dx="5"><%- formatNumber(data.Area) %></tspan><tspan dx="5">km</tspan><tspan class="sup" dy="-2">2</tspan>
+                    </text>
+                </svg>
+            </text>))
+    .Annotations(a => {
+        foreach(var dataItem in dataSource) {
+            a.Add().Argument(dataItem.Name)
+            .Data(dataItem);
+        }
+    })
+    .Legend(l=>l.Visible(false))
+    .DataSource(dataSource)
+)
+
+<script>
+    var formatNumber = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format;
+
+    function getImagePath(argument) {
+        return '../../Content/Images/flags/' + argument.replace(/\s/, "").toLowerCase() + ".gif"
+    }
+</script>

@@ -1,0 +1,166 @@
+﻿@using DevExtreme.MVC.Demos.ViewModels
+@model DynamicFormViewModel
+
+<div class="long-title"><h3>Personal details</h3></div>
+<div id="form-container">
+    @(Html.DevExtreme().Form<DynamicFormViewModel>()
+        .ID("form")
+        .ColCount(2)
+        .Items(groups => {
+            groups.AddGroup()
+                .Items(leftGroup => {
+                    leftGroup.AddGroup()
+                        .Caption("Personal Data")
+                        .Items(items => {
+                            items.AddSimpleFor(m => m.FirstName);
+                            items.AddSimpleFor(m => m.LastName);
+                            items.AddSimple()
+                                .Label(l => l.Text(""))
+                                .Editor(e =>
+                                    e.CheckBox()
+                                        .OnValueChanged("onCheckBoxValueChanged")
+                                        .Text("Show Address")
+                                        .Value(true)
+                                );
+                        });
+
+                    leftGroup.AddGroup()
+                        .Items(addressGroup => {
+                            addressGroup.AddGroup()
+                            .Name("HomeAddress")
+                            .Caption("Home Address")
+                            .Items(items => {
+                                items.AddSimpleFor(m => m.Address);
+                                items.AddSimpleFor(m => m.City);
+                            });
+                        });
+                });
+
+            groups.AddGroup()
+                .Name("phones-container")
+                .Caption("Phones")
+                .Items(rightGroup => {
+                    rightGroup.AddGroup()
+                        .Name("phones")
+                        .Items(items => {
+                            items.AddSimpleFor(m => m.Phones[0])
+                                .Label(l => l.Text("Phone 1"))
+                                .CssClass("phone-editor")
+                                .Editor(e =>
+                                    e.TextBox()
+                                        .Mask("+1 (X00) 000-0000")
+                                        .MaskRules(new { X = new JS("/[01-9]/") })
+                                        .Buttons(b =>
+                                            b.Add().Name("Trash")
+                                            .Location(TextEditorButtonLocation.After)
+                                            .Widget(w =>
+                                                w.Button()
+                                                    .StylingMode(ButtonStylingMode.Text)
+                                                    .Icon("trash")
+                                                    .OnClick("function(e) {onTrashButtonClick(0)}")
+                                            )
+                                        )
+                                    );
+
+                            items.AddSimpleFor(m => m.Phones[1])
+                                .Label(l => l.Text("Phone 2"))
+                                .CssClass("phone-editor")
+                                .Editor(e =>
+                                    e.TextBox()
+                                        .Mask("+1 (X00) 000-0000")
+                                        .MaskRules(new { X = new JS("/[01-9]/") })
+                                        .Buttons(b =>
+                                            b.Add().Name("Trash")
+                                                .Location(TextEditorButtonLocation.After)
+                                                .Widget(w =>
+                                                    w.Button()
+                                                        .StylingMode(ButtonStylingMode.Text)
+                                                        .Icon("trash")
+                                                        .OnClick("function(e) {onTrashButtonClick(1)}")
+                                                )
+                                        )
+                                    );
+                    });
+
+                    rightGroup.AddGroup()
+                        .Items(items => {
+                            items.AddButton()
+                                .HorizontalAlignment(HorizontalAlignment.Left)
+                                .CssClass("add-phone-button")
+                                .ButtonOptions(b =>
+                                    b.Icon("add")
+                                        .Text("Add phone")
+                                        .OnClick("onAddButtonClick")
+                                );
+                        });
+                });
+        })
+        .OnInitialized("onFormInitialized")
+        .OnContentReady("onFormReady")
+        .FormData(Model)
+    )
+</div>
+<script>
+    var form,
+        employee,
+        isFirstLoad = true;
+
+    function onFormInitialized(e) {
+        form = e.component;
+    }
+
+    function onFormReady(e) {
+        if (isFirstLoad) {
+            employee = e.component.option("formData");
+            isFirstLoad = false;
+        }
+    }
+
+    function onCheckBoxValueChanged(e) {
+        form.itemOption("HomeAddress", "visible", e.value);
+    }
+
+    function onAddButtonClick() {
+        employee.Phones.push("");
+        form.itemOption("phones-container.phones", "items", getPhonesOptions(employee.Phones));
+    }
+
+    function onTrashButtonClick(index) {
+        employee.Phones.splice(index, 1);
+        form.itemOption("phones-container.phones", "items", getPhonesOptions(employee.Phones));
+    }
+
+    function getPhonesOptions(phones) {
+        var options = [];
+        for (var i = 0; i < phones.length; i++) {
+            options.push(generateNewPhoneOptions(i));
+        }
+        return options;
+    }
+
+    function generateNewPhoneOptions(index) {
+        return {
+            dataField: "Phones[" + index + "]",
+            editorType: "dxTextBox",
+            cssClass: "phone-editor",
+            label: {
+                text: "Phone " + (index + 1)
+            },
+            editorOptions: {
+                mask: "+1 (X00) 000-0000",
+                maskRules: { "X": /[01-9]/ },
+                buttons: [{
+                    name: "trash",
+                    location: "after",
+                    options: {
+                        stylingMode: "text",
+                        icon: "trash",
+                        onClick: function () {
+                            onTrashButtonClick(index);
+                        }
+                    }
+                }]
+            }
+        }
+    }
+</script>

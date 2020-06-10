@@ -1,0 +1,55 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .CommonPaneSettings(s => s.Border(b => b.Visible(true)))
+    .Series(s => s
+        .Add()
+        .Type(SeriesType.Scatter)
+        .ValueField("Mass")
+        .ArgumentField("Name")
+        .Point(p => p.Size(20))
+    )
+    .CustomizePoint(@<text>
+        function () {
+            var color, hoverStyle;
+            switch (this.data.Type) {
+                case "Star":
+                    color = "red";
+                    hoverStyle = { border: { color: "red" } };
+                    break;
+                case "Satellite":
+                    color = "gray";
+                    hoverStyle = { border: { color: "gray" } };
+            }
+            return { color: color, hoverStyle: hoverStyle };
+        }
+    </text>)
+    .Export(e => e.Enabled(true))
+    .ArgumentAxis(a => a
+        .Grid(g => g.Visible(true))
+        .Label(l => l
+            .RotationAngle(20)
+            .OverlappingBehavior(OverlappingBehavior.Rotate)
+        )
+    )
+    .ValueAxis(a => a
+        .Add()
+        .Type(AxisScaleType.Logarithmic)
+        .Title("Mass Relative to the Earth")
+    )
+    .Title("Relative Masses of the Heaviest Solar System Objects")
+    .Legend(l => l.Visible(false))
+    .Tooltip(t => t.Enabled(true))
+    .DataSource(new[] {
+        new { Name = "Sun", Mass = 332837.0, Type = "Star" },
+        new { Name = "Jupiter", Mass = 317.83, Type = "Planet" },
+        new { Name = "Saturn", Mass = 95.159, Type = "Planet" },
+        new { Name = "Uranus", Mass = 14.536, Type = "Planet" },
+        new { Name = "Neptune", Mass = 17.147, Type = "Planet" },
+        new { Name = "Earth", Mass = 1.0, Type = "Planet" },
+        new { Name = "Venus", Mass = 0.815, Type = "Planet" },
+        new { Name = "Mars", Mass = 0.107, Type = "Planet" },
+        new { Name = "Mercury", Mass = 0.0553, Type = "Planet" },
+        new { Name = "Moon", Mass = 0.0123, Type = "Satellite" },
+        new { Name = "Europa (Jupiter's Moon)", Mass = 0.00803, Type = "Satellite" }
+    })
+)

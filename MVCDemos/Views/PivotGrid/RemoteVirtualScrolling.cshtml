@@ -1,0 +1,39 @@
+﻿<div class="long-title"><h3>Sales Statistics</h3></div>
+@(Html.DevExtreme().PivotGrid()
+    .AllowSorting(true)
+    .AllowFiltering(true)
+    .Height(570)
+    .ShowBorders(true)
+    .FieldPanel(fp => fp
+        .Visible(true)
+        .ShowFilterFields(false)
+    )
+    .FieldChooser(fc => fc.AllowSearch(true))
+    .HeaderFilter(hf => hf.AllowSearch(true))
+    .Scrolling(fc => fc.Mode(PivotGridScrollingMode.Virtual))
+    .DataSource(d => d
+        .Paginate(true)
+        .Fields(fields => {
+            fields.Add()
+                .DataField("[Customer].[Customer]")
+                .Area(PivotGridArea.Row);
+
+            fields.Add()
+                .DataField("[Ship Date].[Calendar Year]")
+                .Area(PivotGridArea.Column);
+
+            fields.Add()
+                .DataField("[Ship Date].[Month of Year]")
+                .Area(PivotGridArea.Column);
+
+            fields.Add()
+                .DataField("[Measures].[Internet Sales Amount]")
+                .Area(PivotGridArea.Data);
+        })
+        .Store(s => s.Xmla()
+            .Url("https://demos.devexpress.com/Services/OLAP/msmdpump.dll")
+            .Catalog("Adventure Works DW Standard Edition")
+            .Cube("Adventure Works")
+        )
+    )
+)

@@ -1,0 +1,41 @@
+﻿@(Html.DevExtreme().Sankey()
+    .ID("sankey")
+    .Title(t=>t.Text("Commodity Turnover in 2017"))
+    .SourceField("Source")
+    .TargetField("Target")
+    .WeightField("Weight")
+    .Node(n => n.Width(8)
+        .Padding(30)
+    )
+    .Link(l => l.ColorMode(SankeyColorMode.Gradient))
+    .Tooltip(t => t
+        .Enabled(true)
+        .CustomizeLinkTooltip(
+            @<text>
+                function(info) {
+                    return {
+                    html:
+                        "<b>From:</b> " +
+                        info.source +
+                        "<br/><b>To:</b> " +
+                        info.target +
+                        "<br/>" +
+                        "<b>Weight:</b> " +
+                        info.weight
+                };
+                }
+            </text>)
+        )
+    .DataSource(new[] {
+        new { Source = "Spain", Target = "United States of America", Weight = 2 },
+        new { Source = "Germany", Target = "United States of America", Weight = 8 },
+        new { Source = "France", Target = "United States of America", Weight = 4 },
+        new { Source = "Germany", Target = "Great Britain", Weight = 2 },
+        new { Source = "France", Target = "Great Britain", Weight = 4 },
+        new { Source = "United States of America", Target = "Australia", Weight = 6 },
+        new { Source = "United States of America", Target = "New Zealand", Weight = 5 },
+        new { Source = "United States of America", Target = "Japan", Weight = 3 },
+        new { Source = "Great Britain", Target = "New Zealand", Weight = 4 },
+        new { Source = "Great Britain", Target = "Japan", Weight = 1 },
+    })
+)

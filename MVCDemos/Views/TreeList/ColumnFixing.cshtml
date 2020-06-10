@@ -1,0 +1,35 @@
+﻿@using DevExtreme.MVC.Demos.Models.TreeList
+
+@model IEnumerable<Employee>
+
+@(Html.DevExtreme().TreeList<Employee>()
+    .ID("employees")
+    .DataSource(Model)
+    .KeyExpr("ID")
+    .ParentIdExpr("HeadID")
+    .Columns(column => {
+        column.AddFor(m => m.Title);
+
+        column.AddFor(m => m.FullName)
+            .Fixed(true);
+
+        column.AddFor(m => m.City);
+
+        column.AddFor(m => m.State);
+
+        column.AddFor(m => m.MobilePhone);
+
+        column.AddFor(m => m.Email);
+
+        column.AddFor(m => m.HireDate);
+
+        column.AddFor(m => m.BirthDate);
+
+        column.AddFor(m => m.Skype);
+    })
+    .ColumnAutoWidth(true)
+    .ShowRowLines(true)
+    .ShowBorders(true)
+    .ColumnFixing(cf => cf.Enabled(true))
+    .ExpandedRowKeys(new[] { 1, 2, 10 })
+)

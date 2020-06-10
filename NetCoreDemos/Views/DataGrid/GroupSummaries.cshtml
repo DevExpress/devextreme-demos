@@ -1,0 +1,53 @@
+﻿@(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.Order>()
+    .ID("gridContainer")
+    .ShowBorders(true)
+    .DataSource(d => d.Mvc().Controller("DataGridSummaries").LoadAction("Get").Key("ID"))
+    .Selection(s => s.Mode(SelectionMode.Single))
+    .Columns(columns => {
+        columns.AddFor(m => m.OrderNumber)
+            .Width(130);
+
+        columns.AddFor(m => m.OrderDate)
+            .Width(160);
+
+        columns.AddFor(m => m.Employee)
+            .GroupIndex(0);
+
+        columns.AddFor(m => m.CustomerStoreCity);
+
+        columns.AddFor(m => m.CustomerStoreState);
+
+        columns.AddFor(m => m.SaleAmount)
+            .Alignment(HorizontalAlignment.Right)
+            .Format(Format.Currency);
+
+        columns.AddFor(m => m.TotalAmount)
+            .Alignment(HorizontalAlignment.Right)
+            .Format(Format.Currency);
+    })
+    .SortByGroupSummaryInfo(i => i.Add().SummaryItem("count"))
+    .Summary(s => s.GroupItems(items => {
+        items.AddFor(m => m.OrderNumber)
+            .SummaryType(SummaryType.Count)
+            .DisplayFormat("{0} orders");
+
+        items.AddFor(m => m.SaleAmount)
+            .SummaryType(SummaryType.Max)
+            .ValueFormat(Format.Currency)
+            .ShowInGroupFooter(false)
+            .AlignByColumn(true);
+
+        items.AddFor(m => m.TotalAmount)
+            .SummaryType(SummaryType.Max)
+            .ValueFormat(Format.Currency)
+            .ShowInGroupFooter(false)
+            .AlignByColumn(true);
+
+        items.AddFor(m => m.TotalAmount)
+            .SummaryType(SummaryType.Sum)
+            .ValueFormat(Format.Currency)
+            .ShowInGroupFooter(true)
+            .DisplayFormat("Total: {0}");
+        })
+    )
+)

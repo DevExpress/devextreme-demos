@@ -1,0 +1,68 @@
+﻿@(Html.DevExtreme().VectorMap()
+    .ID("vector-map")
+    .Layers(layers => {
+        layers.Add()
+            .DataSource(new JS("DevExpress.viz.map.sources.world"))
+            .HoverEnabled(false);
+
+        layers.Add()
+            .Name("pies")
+            .DataSource(d => d.StaticJson().Url(Url.Action("GetPieMarkers")))
+            .DataSourceOptions(dso => dso.Map("vectorMap_piesLayer_dataSource_map"))
+            .ElementType(VectorMapMarkerType.Pie)
+            .DataField("values")
+            .MinSize(20)
+            .MaxSize(40)
+            .SizeGroups(new double[] { 0, 8000, 10000, 50000 });
+    })
+    .Tooltip(t => t
+        .Enabled(true)
+        .CustomizeTooltip("vectorMap_customizeTooltip")
+    )
+    .Legends(l => l.Add()
+        .Source(s => s
+            .Layer("pies")
+            .Grouping("color")
+        )
+        .CustomizeText("vectorMap_piesLegend_customizeText")
+    )
+    .Bounds(new double[] { -180, 85, 180, -60 })
+)
+
+<script src="~/Scripts/data/names.js"></script>
+<script>
+    function vectorMap_piesLayer_dataSource_map(item) {
+        item.features=$.map(item.features,
+            function(data) {
+                var list = ["<span class='country'>" + data.country + "</span>", "&nbsp;"];
+                $.each(data.values, function(i, value) {
+                    if (value > 0) {
+                        list.push(names[i] + ": " + value + "%");
+                    }
+                });
+                return {
+                    type: "Feature",
+                    geometry: {
+                        type: "Point",
+                        coordinates: data.coordinates
+                    },
+                    properties: {
+                        tooltip: list.join("\n"),
+                        values: data.values
+                    }
+                };
+            }
+        );
+        return item;
+    }
+
+    function vectorMap_customizeTooltip(arg) {
+        if(arg.layer.type === "marker") {
+            return { text: arg.attribute("tooltip") };
+        }
+    }
+
+    function vectorMap_piesLegend_customizeText(arg) {
+        return names[arg.index];
+    }
+</script>

@@ -1,0 +1,40 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .CommonSeriesSettings(s => s
+        .ArgumentField("State")
+        .Type(SeriesType.FullStackedBar)
+    )
+    .Series(s => {
+        s.Add().ValueField("Maleyoung").Name("Male: 0-14").Stack("Male");
+        s.Add().ValueField("Malemiddle").Name("Male: 15-64").Stack("Male");
+        s.Add().ValueField("Maleolder").Name("Male: 65 and older").Stack("Male");
+        s.Add().ValueField("Femaleyoung").Name("Female: 0-14").Stack("Female");
+        s.Add().ValueField("Femalemiddle").Name("Female: 15-64").Stack("Female");
+        s.Add().ValueField("Femaleolder").Name("Female: 65 and older").Stack("Female");
+    })
+    .Legend(l => l
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+    )
+    .Title("Population: Age Structure")
+    .Export(e => e.Enabled(true))
+    .Tooltip(t => t
+        .Enabled(true)
+        .CustomizeTooltip(@<text>
+            function (arg) {
+                return {
+                    text: arg.percentText + " - " + arg.valueText
+                };
+            }
+        </text>)
+    )
+    .DataSource(new[] {
+        new { State = "USA", Maleyoung = 29.956, Malemiddle = 90.354, Maleolder = 14.472, Femaleyoung = 28.597, Femalemiddle = 91.827, Femaleolder = 20.362 },
+        new { State = "Brazil", Maleyoung = 25.607, Malemiddle = 55.793, Maleolder = 3.727, Femaleyoung = 24.67, Femalemiddle = 57.598, Femaleolder = 5.462 },
+        new { State = "Russia", Maleyoung = 13.493, Malemiddle = 48.983, Maleolder = 5.802, Femaleyoung = 12.971, Femalemiddle = 52.14, Femaleolder = 12.61 },
+        new { State = "Japan", Maleyoung = 9.575, Malemiddle = 43.363, Maleolder = 9.024, Femaleyoung = 9.105, Femalemiddle = 42.98, Femaleolder = 12.501 },
+        new { State = "Mexico", Maleyoung = 17.306, Malemiddle = 30.223, Maleolder = 1.927, Femaleyoung = 16.632, Femalemiddle = 31.868, Femaleolder = 2.391 },
+        new { State = "Germany", Maleyoung = 6.679, Malemiddle = 28.638, Maleolder = 5.133, Femaleyoung = 6.333, Femalemiddle = 27.693, Femaleolder = 8.318 },
+        new { State = "United Kindom", Maleyoung = 5.816, Malemiddle = 19.622, Maleolder = 3.864, Femaleyoung = 5.519, Femalemiddle = 19.228, Femaleolder = 5.459 }
+    })
+)

@@ -1,0 +1,7 @@
+﻿@{
+    var appRelativeCssUrl = DemoMenuMeta.Get(Context).CurrentDemo.AdditionalCssUrl;
+}
+
+@if(File.Exists(Server.MapPath(appRelativeCssUrl))) {
+    <link rel="stylesheet" href="@Url.Content(appRelativeCssUrl)" />
+}

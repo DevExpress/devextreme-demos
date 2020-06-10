@@ -1,0 +1,86 @@
+﻿@(Html.DevExtreme().TabPanel()
+    .ID("tabpanel-container")
+    .Height(260)
+    .DataSource(d => d.Mvc().LoadAction("GetCompanies"))
+    .SelectedIndex(0)
+    .Loop(false)
+    .AnimationEnabled(true)
+    .SwipeEnabled(true)
+    .ItemTitleTemplate(@<text><span><%- Name %></span></text>)
+    .ItemTemplate(@<text>
+        <div class="tabpanel-item">
+            <div>
+                <p>
+                    <b><%- City %></b>
+                    (<span><%- State %></span>)
+                </p>
+                <p>
+                    <span><%- ZipCode %></span>
+                    <span><%- Address %></span>
+                </p>
+            </div>
+            <div>
+                <p>Phone: <b><%- Phone %></b></p>
+                <p>Fax: <b><%- Fax %></b></p>
+                <p>
+                    Website:
+                    <a href="<%- Website %>" target="_blank"><%- Website %></a>
+                </p>
+            </div>
+        </div>
+    </text>)
+    .OnSelectionChanged("tabPanelSelection_changed")
+)
+
+<div class="item-box">
+    Item <span class="selected-index">1</span>
+    of <span>4</span>
+</div>
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Value(false)
+            .Text("Loop enabled")
+            .OnValueChanged("loopEnabled")
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Value(true)
+            .Text("Animation enabled")
+            .OnValueChanged("animationEnabled")
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Value(true)
+            .Text("Swipe enabled")
+            .OnValueChanged("swipeEnabled")
+        )
+    </div>
+</div>
+
+<script>
+    function tabPanelSelection_changed(e) {
+        $(".selected-index")
+                .text(e.component.option("selectedIndex") + 1);
+    }
+
+    function getTabPanelInstance() {
+        return $("#tabpanel-container").dxTabPanel("instance");
+    }
+
+    function loopEnabled(e) {
+        getTabPanelInstance().option("loop", e.value);
+    }
+
+    function animationEnabled(e) {
+        getTabPanelInstance().option("animationEnabled", e.value);
+    }
+
+    function swipeEnabled(e) {
+        getTabPanelInstance().option("swipeEnabled", e.value);
+    }
+</script>

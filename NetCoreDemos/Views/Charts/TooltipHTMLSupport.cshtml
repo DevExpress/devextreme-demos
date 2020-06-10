@@ -1,0 +1,49 @@
+﻿@(Html.DevExtreme().PieChart()
+    .ID("pie-chart")
+    .Palette(VizPalette.Bright)
+    .Title("Top 10 Most Populated States in US")
+    .Series(s => s
+        .Add()
+        .ArgumentField("Name")
+        .ValueField("Population")
+    )
+    .Export(e => e.Enabled(true))
+    .Tooltip(t => t
+        .Enabled(true)
+        .ContentTemplate(@<text>
+            <div class='state-tooltip'>
+                <img src="<%- getImagePath(point) %>" /><h4><%- argument %></h4>
+                <div>
+                    <span class='caption'>Capital</span>: <%- point.data.Capital %>
+                </div>
+                <div>
+                    <span class='caption'>Population</span>: <%- formatNumber(value) %> people
+                </div>
+                <div>
+                    <span class='caption'>Area</span>: <%- formatNumber(point.data.Area) %> km<sup>2</sup> (<%- formatNumber(0.3861 * point.data.Area) %> mi<sup>2</sup>)
+                </div>
+            </div>
+        </text>)
+    )
+    .DataSource(new[] {
+        new { Name = "California", Population = 38802500, Capital = "Sacramento", Area = 423967  },
+        new { Name = "Texas", Population = 26956958, Capital = "Austin", Area = 695662 },
+        new { Name = "Florida", Population = 19893297, Capital = "Tallahassee", Area = 170312 },
+        new { Name = "New York", Population = 19746227, Capital = "Albany", Area = 141297 },
+        new { Name = "Illinois", Population = 12880580, Capital = "Springfield", Area = 149995 },
+        new { Name = "Pennsylvania", Population = 12787209, Capital = "Harrisburg", Area = 119280 },
+        new { Name = "Ohio", Population = 11594163, Capital = "Columbus", Area = 116098 },
+        new { Name = "Georgia", Population = 10097343, Capital = "Atlanta", Area = 153910 },
+        new { Name = "North Carolina", Population = 9943964, Capital = "Raleigh", Area = 139391 },
+        new { Name = "Michigan", Population = 9909877, Capital = "Lansing", Area = 250487 }
+    })
+)
+
+
+<script>
+    var formatNumber = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format;
+
+    function getImagePath(point) {
+        return '../../images/flags/' + point.data.Name.replace(/\s/, "").toLowerCase() + ".gif";
+    }
+</script>

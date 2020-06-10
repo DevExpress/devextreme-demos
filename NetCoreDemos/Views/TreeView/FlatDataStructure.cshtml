@@ -1,0 +1,38 @@
+﻿@(Html.DevExtreme().TreeView()
+    .ID("simple-treeview")
+    .DataSource(d => d.Mvc().LoadAction("GetPlainData"))
+    .DataSourceOptions(o => o.Map("mapData"))
+    .DataStructure(TreeViewDataStructure.Plain)
+    .ParentIdExpr("CategoryId")
+    .KeyExpr("ID")
+    .DisplayExpr("Text")
+    .ExpandedExpr("Expanded")
+    .Width(300)
+    .OnItemClick("treeViewItemClick")
+)
+
+<div id="product-details" class="hidden">
+    <img src="" />
+    <div class="name"></div>
+    <div class="price"></div>
+</div>
+
+<script>
+    function treeViewItemClick(e) {
+        var item = e.itemData;
+        if(item.Price) {
+            $("#product-details").removeClass("hidden");
+            $("#product-details > img").attr("src", item.Image);
+            $("#product-details > .price").text("$" + item.Price);
+            $("#product-details > .name").text(item.Text);
+        } else {
+            $("#product-details").addClass("hidden");
+        }
+    }
+    function mapData(item) {
+        if(item.Image) {
+            item.icon = item.Image;
+        }
+        return item;
+    }
+</script>

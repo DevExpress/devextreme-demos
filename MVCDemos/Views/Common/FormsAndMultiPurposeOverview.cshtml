@@ -1,0 +1,80 @@
+﻿@using DevExtreme.MVC.Demos.ViewModels
+@model FormViewModel
+
+<div id="form">
+    @(Html.DevExtreme().Form<FormViewModel>()
+        .ID("form")
+        .Items(items => {
+            items.AddGroup()
+                .CssClass("first-group")
+                .ColCount(4)
+                .Items(groupItems => {
+                    groupItems.AddSimple().Template("<div class='form-avatar'></div>");
+                    groupItems.AddGroup().ColSpan(3).Items(secondGroupItems => {
+                        secondGroupItems.AddSimpleFor(m => m.FirstName);
+                        secondGroupItems.AddSimpleFor(m => m.LastName);
+                        secondGroupItems.AddSimpleFor(m => m.BirthDate)
+                            .Editor(e => e
+                                .DateBox()
+                                .Width("100%")
+                            )
+                            .IsRequired(false);
+                    });
+                });
+
+
+            items.AddGroup()
+                .CssClass("second-group")
+                .ColCount(2)
+                .Items(groupItems => {
+                    groupItems.AddGroup().Items(secondGroupItems => {
+                        secondGroupItems.AddSimpleFor(m => m.Address);
+                        secondGroupItems.AddSimpleFor(m => m.City);
+                        secondGroupItems.AddSimpleFor(m => m.Position)
+                            .Editor(e => e
+                                .SelectBox()
+                                .DataSource(new[] {
+                                        "HR Manager",
+                                        "IT Manager",
+                                        "CEO",
+                                        "Controller",
+                                        "Sales Manager",
+                                        "Support Manager",
+                                        "Shipping Manager"
+                                    }
+                                )
+                                .Value("")
+                            );
+                    });
+                    groupItems.AddGroup().Items(secondGroupItems => {
+                        secondGroupItems.AddSimpleFor(m => m.State)
+                            .Editor(e => e
+                                .SelectBox()
+                                .DataSource(new[] {
+                                        "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
+                                        "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
+                                        "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
+                                        "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
+                                        "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
+                                    }
+                                )
+                            );
+                        secondGroupItems.AddSimpleFor(m => m.Zipcode).Label(l => l.Text("Zip Code"));
+                        secondGroupItems.AddSimpleFor(m => m.Phone)
+                            .Editor(e => e
+                                .TextBox()
+                                .Mask("+1 (000) 000-0000")
+                            );
+                    });
+
+                    groupItems.AddSimpleFor(m => m.Notes)
+                        .ColSpan(2)
+                        .Editor(e => e
+                            .TextArea()
+                            .Height(140)
+                        );
+                });
+        })
+        .FormData(Model)
+    )
+</div>

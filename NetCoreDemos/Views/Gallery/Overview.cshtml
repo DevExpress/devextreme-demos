@@ -1,0 +1,66 @@
+﻿@model DevExtreme.NETCore.Demos.ViewModels.GalleryViewModel
+
+<div class="widget-container">
+    @(Html.DevExtreme().Gallery()
+        .ID("gallery")
+        .DataSource(Model.Images)
+        .Height(300)
+        .Loop(true)
+        .SlideshowDelay(2000)
+        .ShowNavButtons(true)
+        .ShowIndicator(true)
+    )
+</div>
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Value(true)
+            .Text("Loop mode")
+            .OnValueChanged("loopMode_changed")
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Value(true)
+            .Text("Slide show")
+            .OnValueChanged("slideshowDelay_changed")
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Value(true)
+            .Text("Navigation buttons")
+            .OnValueChanged("showNavigationButtons")
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Value(true)
+            .Text("Indicator")
+            .OnValueChanged("showIndicator")
+        )
+    </div>
+</div>
+
+<script>
+    function getGalleryInstance() {
+        return $("#gallery").dxGallery("instance");
+    }
+
+    function loopMode_changed(data) {
+        getGalleryInstance().option("loop", data.value);
+    }
+
+    function slideshowDelay_changed(data) {
+        getGalleryInstance().option("slideshowDelay", data.value ? 2000 : 0);
+    }
+
+    function showNavigationButtons(data) {
+        getGalleryInstance().option("showNavButtons", data.value);
+    }
+
+    function showIndicator(data) {
+        getGalleryInstance().option("showIndicator", data.value);
+    }
+</script>

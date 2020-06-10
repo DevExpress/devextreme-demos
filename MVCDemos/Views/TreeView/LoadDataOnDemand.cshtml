@@ -1,0 +1,19 @@
+﻿@(Html.DevExtreme().TreeView()
+    .ID("simple-treeview")
+    .CreateChildren("treeView_createChildren")
+    .RootValue("")
+    .DataStructure(TreeViewDataStructure.Plain)
+    .Height(500)
+)
+
+<script>
+    function treeView_createChildren(parent) {
+        var parentId = parent ? parent.itemData.id : "";
+
+        return $.ajax({
+            url: "@Url.Content("~/api/TreeViewData")",
+            dataType: "json",
+            data: { parentId: parentId }
+        });
+    }
+</script>

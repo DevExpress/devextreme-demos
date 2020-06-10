@@ -1,0 +1,148 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.MonthlyPrice>
+
+<div class="long-title"><h3>Monthly Prices of Oil, Gold and Silver</h3></div>
+<div id="chart-demo">
+    <table class="demo-table">
+        <tr>
+            <th></th>
+            <th>Oil (USD/barrel)</th>
+            <th>Gold (USD/troy ounce)</th>
+            <th>Silver (USD/troy ounce)</th>
+        </tr>
+        <tr>
+            <th>2010</th>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Oil"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2010")
+                    .Type(SparklineType.Line)
+                    .ShowMinMax(true)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Gold"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2010")
+                    .LineWidth(3)
+                    .LineColor("#9ab57e")
+                    .MinColor("#6babac")
+                    .MaxColor("#ebdd8f")
+                    .Type(SparklineType.Spline)
+                    .ShowMinMax(true)
+                    .ShowFirstLast(false)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Silver"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2010")
+                    .LineColor("#e8c267")
+                    .FirstLastColor("#e55253")
+                    .PointSize(6)
+                    .PointSymbol(VizPointSymbol.Square)
+                    .PointColor("#ebdd8f")
+                    .Type(SparklineType.StepLine)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+        </tr>
+        <tr>
+            <th>2011</th>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Oil"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2011")
+                    .Type(SparklineType.Line)
+                    .ShowMinMax(true)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Gold"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2011")
+                    .LineWidth(3)
+                    .LineColor("#9ab57e")
+                    .MinColor("#6babac")
+                    .MaxColor("#ebdd8f")
+                    .Type(SparklineType.Spline)
+                    .ShowMinMax(true)
+                    .ShowFirstLast(false)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Silver"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2011")
+                    .LineColor("#e8c267")
+                    .FirstLastColor("#e55253")
+                    .PointSize(6)
+                    .PointSymbol(VizPointSymbol.Square)
+                    .PointColor("#ebdd8f")
+                    .Type(SparklineType.StepLine)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+        </tr>
+        <tr>
+            <th>2012</th>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Oil"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2012")
+                    .Type(SparklineType.Line)
+                    .ShowMinMax(true)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Gold"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2012")
+                    .LineWidth(3)
+                    .LineColor("#9ab57e")
+                    .MinColor("#6babac")
+                    .MaxColor("#ebdd8f")
+                    .Type(SparklineType.Spline)
+                    .ShowMinMax(true)
+                    .ShowFirstLast(false)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+            <td>
+                @(Html.DevExtreme().Sparkline()
+                    .DataSource(Model.Where(i => i.Category == "Silver"))
+                    .ArgumentField("Month")
+                    .ValueField("Y2012")
+                    .LineColor("#e8c267")
+                    .FirstLastColor("#e55253")
+                    .PointSize(6)
+                    .PointSymbol(VizPointSymbol.Square)
+                    .PointColor("#ebdd8f")
+                    .Type(SparklineType.StepLine)
+                    .Tooltip(t => t.Format(Format.Currency))
+                    .ElementAttr("class", "sparkline")
+                )
+            </td>
+        </tr>
+    </table>
+</div>

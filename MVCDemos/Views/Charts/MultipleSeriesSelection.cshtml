@@ -1,0 +1,43 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .SeriesSelectionMode(ChartElementSelectionMode.Multiple)
+    .CommonSeriesSettings(s => s
+        .ArgumentField("Year")
+        .Type(SeriesType.StackedArea)
+    )
+    .CommonAxisSettings(s => s.ValueMarginsEnabled(false))
+    .ArgumentAxis(a => a.Type(AxisScaleType.Discrete))
+    .ValueAxis(a => a.Add().Label(l => l.Format(f => f.Type(Format.Percent).Precision(2))))
+    .Series(s => {
+        s.Add().ValueField("IE7").Name("Internet Explorer 7");
+        s.Add().ValueField("IE8").Name("Internet Explorer 8");
+        s.Add().ValueField("IE9").Name("Internet Explorer 9");
+        s.Add().ValueField("IE10").Name("Internet Explorer 10");
+    })
+    .Title(t => t.Text("Internet Explorer Statistics"))
+    .Export(e => e.Enabled(true))
+    .Legend(l => l
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+    )
+    .OnSeriesClick(@<text>
+        function(e) {
+            var series = e.target;
+            if(series.isSelected()) {
+                series.clearSelection();
+            } else {
+                series.select();
+            }
+        }
+    </text>)
+    .DataSource(new object[] {
+        new { Year = 2006, IE7 = 0.011 },
+        new { Year = 2007, IE7 = 0.192 },
+        new { Year = 2008, IE7 = 0.265 },
+        new { Year = 2009, IE7 = 0.213, IE8 = 0.052 },
+        new { Year = 2010, IE7 = 0.091, IE8 = 0.160 },
+        new { Year = 2011, IE7 = 0.053, IE8 = 0.141, IE9 = 0.031 },
+        new { Year = 2012, IE7 = 0.021, IE8 = 0.088, IE9 = 0.065, IE10 = 0.001 },
+        new { Year = 2013, IE7 = 0.008, IE8 = 0.052, IE9 = 0.039, IE10 = 0.026 }
+    })
+)

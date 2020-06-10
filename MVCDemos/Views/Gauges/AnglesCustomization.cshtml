@@ -1,0 +1,59 @@
+﻿<div class="long-title"><h3>Humidity in Rooms (%)</h3></div>
+
+<div id="gauge-demo">
+    @(Html.DevExtreme().CircularGauge()
+        .ElementAttr("class", "gauge")
+        .Scale(s => s
+            .StartValue(0)
+            .EndValue(100)
+            .TickInterval(10)
+        )
+        .Geometry(g => g
+            .StartAngle(180)
+            .EndAngle(90)
+        )
+        .Value(80)
+    )
+
+    @(Html.DevExtreme().CircularGauge()
+        .ElementAttr("class", "gauge")
+        .Scale(s => s
+            .StartValue(100)
+            .EndValue(0)
+            .TickInterval(10)
+        )
+        .Geometry(g => g
+            .StartAngle(90)
+            .EndAngle(0)
+        )
+        .Value(75)
+    )
+
+    @(Html.DevExtreme().CircularGauge()
+        .ElementAttr("class", "gauge")
+        .Scale(s => s
+            .StartValue(100)
+            .EndValue(0)
+            .TickInterval(10)
+        )
+        .Geometry(g => g
+            .StartAngle(-90)
+            .EndAngle(-180)
+        )
+        .Value(70)
+    )
+
+    @(Html.DevExtreme().CircularGauge()
+        .ElementAttr("class", "gauge")
+        .Scale(s => s
+            .StartValue(0)
+            .EndValue(100)
+            .TickInterval(10)
+        )
+        .Geometry(g => g
+            .StartAngle(0)
+            .EndAngle(-90)
+        )
+        .Value(68)
+    )
+</div>

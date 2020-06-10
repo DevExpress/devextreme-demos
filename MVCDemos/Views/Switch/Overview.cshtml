@@ -1,0 +1,44 @@
+﻿<div class="form">
+    <div class="dx-fieldset">
+        <div class="dx-field">
+            <div class="dx-field-label">Switched on</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().Switch()
+                    .Value(true)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Switched off</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().Switch()
+                    .Value(false)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Value change handling</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().Switch()
+                    .OnValueChanged("switch_valueChanged")
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Disabled</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().Switch()
+                    .ID("disabled")
+                    .Value(false)
+                    .Disabled(true)
+                )
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function switch_valueChanged(data) {
+        $("#disabled").dxSwitch("instance").option("value", data.value)
+    }
+</script>

@@ -1,0 +1,51 @@
+﻿@using DevExtreme.MVC.Demos.Models.SampleData
+
+<div class="dx-fieldset">
+    <div class="dx-field">
+        <div class="dx-field-label">Data grouped in the DataSource</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(SampleData.Electronics)
+                .DataSourceOptions(o => o.Group("Category"))
+                .ValueExpr("ID")
+                .Grouped(true)
+                .DisplayExpr("Name")
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Pre-grouped data</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(SampleData.ElectronicsGrouped)
+                .DataSourceOptions(o => o.Map("dataSource_map"))
+                .ValueExpr("ID")
+                .Grouped(true)
+                .DisplayExpr("Name")
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Custom group template</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(SampleData.Electronics)
+                .DataSourceOptions(o => o.Group("Category"))
+                .ValueExpr("ID")
+                .Grouped(true)
+                .DisplayExpr("Name")
+                .GroupTemplate(@<text>
+                    <div class="custom-icon"><span class="dx-icon-box icon"></span><%- key %></div>
+                </text>)
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    function dataSource_map(dataItem) {
+        dataItem.key = dataItem.Name;
+        dataItem.items = dataItem.Products;
+        return dataItem;
+    }
+</script>

@@ -1,0 +1,14 @@
+﻿@(Html.DevExtreme().Scheduler()
+    .ID("scheduler")
+    .DataSource(new JS("appointments"))
+    .Views(new[] {
+        SchedulerViewType.Week,
+        SchedulerViewType.Month
+    })
+    .CurrentView(SchedulerViewType.Week)
+    .CurrentDate(new DateTime(2017, 5, 25))
+    .StartDayHour(9)
+    .Height(600)
+)
+
+<script src="~/Scripts/data/appointments.js"></script>

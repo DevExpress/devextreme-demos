@@ -1,0 +1,75 @@
+﻿<div class="form">
+    <div class="dx-fieldset">
+        <div class="dx-field">
+            <div class="dx-field-label">Default mode</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().ColorBox()
+                    .Value("#f05b41")
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">With alpha channel editing</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().ColorBox()
+                    .Value("#f05b41")
+                    .EditAlphaChannel(true)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Custom button captions</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().ColorBox()
+                    .Value("#f05b41")
+                    .ApplyButtonText("Apply")
+                    .CancelButtonText("Decline")
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Read only</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().ColorBox()
+                    .Value("#f05b41")
+                    .ReadOnly(true)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Disabled</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().ColorBox()
+                    .Value("#f05b41")
+                    .Disabled(true)
+                )
+            </div>
+        </div>
+    </div>
+    <div class="dx-fieldset">
+        <div class="dx-fieldset-header">Event Handling</div>
+        <div class="hero-block">
+            <div class="color-block">
+                <div class="superhero"></div>
+            </div>
+            <div class="hero-color-box">
+                @(Html.DevExtreme().ColorBox()
+                    .Value("#f05b41")
+                    .ApplyValueMode(EditorApplyValueMode.Instantly)
+                    .OnValueChanged("colorBox_valueChanged")
+                    .OnInput("colorBox_inputChanged")
+                )
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function colorBox_valueChanged(e) {
+        $(".color-block").css("background-color", e.component.option("value"));
+    }
+
+    function colorBox_inputChanged(e) {
+        $(".color-block").css("background-color", e.jQueryEvent.target.value);
+    }
+</script>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.Color>
+
+@{ var firstColor = Model.First(); }
+
+<div class="long-title"><h3>Colors Representation via Basic Colors</h3></div>
+<div id="gauge-demo">
+    @(Html.DevExtreme().BarGauge()
+        .ID("gauge")
+        .StartValue(0)
+        .EndValue(255)
+        .Palette(new[] { "#ff0000", "#00ff00", "#0000ff" })
+        .Label(l => l.Visible(false))
+        .Values(new JS(String.Format(@"getBasicColors(""{0}"")", firstColor.Code)))
+    )
+    <div class="action-container">
+        @(Html.DevExtreme().SelectBox()
+            .ID("select-color")
+            .Width(150)
+            .DataSource(Model)
+            .DisplayExpr("Name")
+            .ValueExpr("Name")
+            .Value(firstColor.Name)
+            .OnSelectionChanged(@<text>
+                function(e) {
+                    var gauge = $("#gauge").dxBarGauge("instance");
+                    gauge.option("values", getBasicColors(e.selectedItem.Code));
+                }
+            </text>)
+        )
+        <div class="color-box"></div>
+    </div>
+</div>
+
+<script>
+    function getBasicColors(value) {
+        var code = Number("0x" + value.slice(1));
+
+        $(".color-box").css("background-color", value);
+        return [
+            (code >> 16) & 0xff,
+            (code >> 8) & 0xff,
+            code & 0xff
+        ];
+    }
+</script>

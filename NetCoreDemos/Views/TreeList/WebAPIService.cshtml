@@ -1,0 +1,69 @@
+﻿@(Html.DevExtreme().TreeList<DevExtreme.NETCore.Demos.Models.TreeList.EmployeeTask>()
+    .ID("tree-list")
+    .DataSource(ds => ds.Mvc()
+        .Controller("TreeListTasks")
+        .LoadAction("Tasks")
+        .UpdateAction("UpdateTask")
+        .InsertAction("InsertTask")
+        .DeleteAction("DeleteTask")
+        .Key("Task_ID")
+    )
+    .RemoteOperations(r => r.Filtering(true).Sorting(true).Grouping(true))
+    .KeyExpr("Task_ID")
+    .ParentIdExpr("Task_Parent_ID")
+    .HasItemsExpr("Has_Items")
+    .ExpandedRowKeys(new[] { 1, 2 })
+    .SearchPanel(seachPanel => seachPanel.Visible(true))
+    .HeaderFilter(headerFilter => headerFilter.Visible(true))
+    .Editing(editing => editing
+        .Mode(GridEditMode.Row)
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+    .ShowRowLines(true)
+    .ShowBorders(true)
+    .ColumnAutoWidth(true)
+    .WordWrapEnabled(true)
+    .Columns(columns => {
+        columns.AddFor(m => m.Task_Subject)
+            .MinWidth(250);
+
+        columns.AddFor(m => m.Task_Assigned_Employee_ID)
+            .MinWidth(120)
+            .Lookup(lookup => lookup
+                .DataSource(ds => ds.Mvc()
+                    .Controller("TreeListTasks")
+                    .LoadAction("TaskEmployees")
+                    .Key("ID")
+                )
+                .ValueExpr("ID")
+                .DisplayExpr("Name")
+            );
+
+        columns.AddFor(m => m.Task_Status)
+            .MinWidth(120)
+            .Lookup(lookup => lookup
+                .DataSource(new[] {
+                    "Not Started",
+                    "Need Assistance",
+                    "In Progress",
+                    "Deferred",
+                    "Completed"
+                })
+            );
+
+        columns.AddFor(m => m.Task_Start_Date);
+
+        columns.AddFor(m => m.Task_Due_Date);
+    })
+    .OnInitNewRow("treeList_onInitNewRow")
+)
+
+<script>
+    function treeList_onInitNewRow(e) {
+        e.data.Task_Status = "Not Started";
+        e.data.Task_Start_Date = new Date();
+        e.data.Task_Due_Date = new Date();
+    }
+</script>

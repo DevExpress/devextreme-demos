@@ -1,0 +1,129 @@
+﻿<div class="dx-fieldset">
+    <div class="dx-field">
+        <div class="dx-field-label">Password TextBox</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().TextBox()
+                .ID("password")
+                .Value("password")
+                .Placeholder("password")
+                .Mode(TextBoxMode.Password)
+                .StylingMode(EditorStylingMode.Filled)
+                .Buttons(buttons => {
+                    buttons.Add()
+                        .Name("password")
+                        .Location(TextEditorButtonLocation.After)
+                        .Widget(w => w.Button()
+                            .Type(ButtonType.Default)
+                            .Icon(Url.Content("~/Content/Images/icons/eye.png"))
+                            .OnClick("changePasswordMode"));
+                })
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Multi-currency NumberBox</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().NumberBox()
+                .ID("multicurrency")
+                .Value(14500.55)
+                .Format("$ #.##")
+                .ShowClearButton(true)
+                .ShowSpinButtons(true)
+                .Buttons(buttons => {
+                    buttons.Add()
+                        .Name("currency")
+                        .Location(TextEditorButtonLocation.After)
+                        .Widget(w => w.Button()
+                            .Text("€")
+                            .StylingMode(ButtonStylingMode.Text)
+                            .Width(32)
+                            .ElementAttr("class", "currency")
+                            .OnClick("changeCurrency"));
+                    buttons.Add()
+                        .Name("clear");
+                    buttons.Add()
+                        .Name("spins");
+                })
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Advanced DateBox</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateBox()
+                .ID("advanced-datebox")
+                .Value(new JS("new Date().getTime()"))
+                .StylingMode(EditorStylingMode.Outlined)
+                .OnInitialized("dateOnInitialized")
+                .Buttons(buttons => {
+                    buttons.Add()
+                        .Name("today")
+                        .Location(TextEditorButtonLocation.Before)
+                        .Widget(w => w.Button()
+                            .Text("Today")
+                            .OnClick("today"));
+
+                    buttons.Add()
+                        .Name("prevDate")
+                        .Location(TextEditorButtonLocation.Before)
+                        .Widget(w => w.Button()
+                            .Icon("spinprev")
+                            .StylingMode(ButtonStylingMode.Text)
+                            .OnClick("prevDate"));
+
+                    buttons.Add()
+                        .Name("nextDate")
+                        .Location(TextEditorButtonLocation.After)
+                        .Widget(w => w.Button()
+                            .Icon("spinnext")
+                            .StylingMode(ButtonStylingMode.Text)
+                            .OnClick("nextDate"));
+
+                    buttons.Add()
+                        .Name("dropDown");
+                })
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    var millisecondsInDay = 24 * 60 * 60 * 1000;
+
+    function changePasswordMode() {
+        var passwordEditor = $("#password").dxTextBox("instance");
+        passwordEditor.option("mode", passwordEditor.option("mode") === "text" ? "password" : "text");
+    }
+
+    function changeCurrency(e) {
+        var currencyEditor = $("#multicurrency").dxNumberBox("instance");
+
+        if(e.component.option("text") === "$") {
+            e.component.option("text", "€");
+            currencyEditor.option("format", "$ #.##");
+            currencyEditor.option("value", currencyEditor.option("value") / 0.891);
+        } else {
+            e.component.option("text", "$");
+            currencyEditor.option("format", "€ #.##");
+            currencyEditor.option("value", currencyEditor.option("value") * 0.891);
+        }
+    }
+
+    var dateEditor;
+
+    function dateOnInitialized(e) {
+        dateEditor = e.component;
+    }
+
+    function today() {
+        dateEditor.option("value", new Date().getTime());
+    }
+
+    function prevDate() {
+        dateEditor.option("value", dateEditor.option("value") - millisecondsInDay);
+    }
+
+    function nextDate() {
+        dateEditor.option("value", dateEditor.option("value") + millisecondsInDay);
+    }
+</script>

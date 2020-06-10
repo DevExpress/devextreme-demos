@@ -1,0 +1,49 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.ElectronicsItem>
+
+<div class="dx-fieldset">
+    <div class="dx-field">
+        <div class="dx-field-label">Grouped items</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().TagBox()
+                .DataSource(Model)
+                .DataSourceOptions(o => o.Group("Category"))
+                .ValueExpr("ID")
+                .Value(new[] { 17, 19 })
+                .Grouped(true)
+                .DisplayExpr("Name")
+            )
+        </div>
+    </div>
+
+    <div class="dx-field">
+        <div class="dx-field-label">Grouped items with search enabled</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().TagBox()
+                .DataSource(Model)
+                .DataSourceOptions(o => o.Group("Category"))
+                .ValueExpr("ID")
+                .Value(new[] { 17, 19 })
+                .Grouped(true)
+                .DisplayExpr("Name")
+                .SearchEnabled(true)
+            )
+        </div>
+    </div>
+
+    <div class="dx-field">
+        <div class="dx-field-label">Grouped items with a custom group template</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().TagBox()
+                .DataSource(Model)
+                .DataSourceOptions(o => o.Group("Category"))
+                .ValueExpr("ID")
+                .Value(new[] { 18 })
+                .Grouped(true)
+                .DisplayExpr("Name")
+                .GroupTemplate(@<text>
+                    <div class="custom-icon"><span class="dx-icon-box icon"></span><%- key %></div>
+                </text>)
+            )
+        </div>
+    </div>
+</div>

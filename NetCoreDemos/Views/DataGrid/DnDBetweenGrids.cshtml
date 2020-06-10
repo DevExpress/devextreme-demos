@@ -1,0 +1,25 @@
+<div class="tables">
+    <div class="column">
+        @await Html.PartialAsync("DnDBetweenGridsPartial", 1)
+    </div>
+    <div class="column">
+        @await Html.PartialAsync("DnDBetweenGridsPartial", 2)
+    </div>
+</div>
+
+<script>
+    function onAdd(e) {
+        var store1 = $("#grid1").dxDataGrid("instance").getDataSource().store(),
+            store2 = $("#grid2").dxDataGrid("instance").getDataSource().store(),
+            values = { Status: e.toData },
+            key = e.itemData.ID;
+
+        store1.update(key, values).then(() => {
+            var changes = [{ type: "update", key: key, data: values }];
+
+            store1.push(changes);
+            store2.push(changes);
+        });
+    }
+</script>
+<script src="~/data/priorities.js"></script>

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.SampleData.MonthName>
+
+@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .DataSource(d => d.OData()
+        .Url("https://js.devexpress.com/Demos/WidgetsGallery/odata/WeatherItems")
+        .Expand("DayItems")
+    )
+    .DataSourceOptions(o => o
+        .PostProcess("function(d) { return d[0].DayItems; }")
+        .Filter(@"[""Id"", ""="", 1]")
+    )
+    .Title("Temperature in Barcelona, 2012")
+    .Size(s => s.Height(420))
+    .Series(s => s.Add()
+        .ArgumentField("Number")
+        .ValueField("Temperature")
+        .Type(SeriesType.Spline)
+    )
+    .Legend(l => l.Visible(false))
+    .CommonPaneSettings(s => s
+        .Border(b => b
+            .Visible(true)
+            .Width(2)
+            .Top(false)
+            .Right(false)
+        )
+    )
+    .Export(e => e.Enabled(true))
+    .Tooltip(t => t
+        .Enabled(true)
+        .CustomizeTooltip(@<text>
+                function(arg) {
+                    return {
+                        text: arg.valueText + "&#176C"
+                    };
+                }
+        </text>)
+    )
+    .ValueAxis(a => a
+        .Add()
+        .ValueType(ChartDataType.Numeric)
+        .Grid(g => g.Opacity(0.2))
+        .Label(l => l
+            .CustomizeText(@<text>
+                    function() {
+                        return this.valueText + "&#176C";
+                    }
+            </text>)
+        )
+    )
+    .ArgumentAxis(a => a
+        .Type(AxisScaleType.Discrete)
+        .Grid(g => g
+            .Visible(true)
+            .Opacity(0.5)
+        )
+    )
+    .LoadingIndicator(l => l.Enabled(true))
+)
+
+<div class="action">
+
+    @(Html.DevExtreme().SelectBox()
+        .ID("selectbox")
+        .Width(150)
+        .DataSource(Model)
+        .Value(1)
+        .ValueExpr("Id")
+        .DisplayExpr("Name")
+        .OnValueChanged(@<text>
+            function(data) {
+                var dataSource = $("#chart").dxChart("getDataSource");
+                dataSource.filter(["Id", "=", data.value]);
+                dataSource.load();
+            }
+        </text>)
+    )
+
+    <div class="monthlabel">Choose a month:</div>
+</div>

@@ -1,0 +1,32 @@
+﻿<div id="descContainer">Sort and filter data, reorder and resize columns, select and expand rows. Once you are done, <a onclick="window.location.reload()">refresh</a> the web page to see that the grid’s state is automatically persisted to continue working from where you stopped.</div>
+
+@(Html.DevExtreme().TreeList<DevExtreme.NETCore.Demos.Models.TreeList.Employee>()
+    .ID("employees")
+    .DataSource(ds => ds.Mvc().Controller("TreeListEmployees").LoadAction("Get").Key("ID"))
+    .KeyExpr("ID")
+    .ParentIdExpr("HeadID")
+    .AllowColumnReordering(true)
+    .AllowColumnResizing(true)
+    .ShowBorders(true)
+    .FilterRow(r => r.Visible(true))
+    .StateStoring(s => s
+        .Enabled(true)
+        .Type(StateStoringType.LocalStorage)
+        .StorageKey("treeListStorage")
+    )
+    .Selection(s => s
+        .Mode(SelectionMode.Multiple)
+        .Recursive(true)
+    )
+    .ExpandedRowKeys(new[] { 1, 2, 10 })
+    .Columns(columns => {
+        columns.AddFor(m => m.FullName);
+
+        columns.AddFor(m => m.Title);
+
+        columns.AddFor(m => m.City);
+
+        columns.AddFor(m => m.HireDate)
+            .Width(160);
+    })
+)

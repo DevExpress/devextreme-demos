@@ -1,0 +1,47 @@
+﻿@model IEnumerable<object>
+
+@(Html.DevExtreme().PieChart()
+    .ID("chart")
+    .Type(PieChartType.Doughnut)
+    .Palette(VizPalette.SoftPastel)
+    .Title("The Population of Continents and Regions")
+    .Tooltip(t => t
+        .Enabled(false)
+        .Format(Format.Millions)
+        .CustomizeTooltip(@<text>
+            function (arg) {
+                return {
+                    text: arg.argumentText + "<br />" + arg.valueText
+                };
+            }
+        </text>)
+    )
+    .Size(s => s.Height(350))
+    .OnPointClick(@<text>
+        function(e) {
+            var point = e.target;
+            point.showTooltip();
+            $("#region").dxSelectBox("option", "value", point.argument);
+        }
+    </text>)
+    .Legend(l => l.Visible(false))
+    .Series(s => s.Add().ArgumentField("Region").ValueField("Val"))
+    .DataSource(Model)
+)
+
+<div class="controls-pane">
+    @(Html.DevExtreme().SelectBox()
+        .ID("region")
+        .Width(250)
+        .DisplayExpr("Region")
+        .ValueExpr("Region")
+        .Placeholder("Choose region")
+        .DataSource(Model)
+        .OnValueChanged(@<text>
+            function(data) {
+            var chart = $("#chart").dxPieChart("instance");
+            chart.getAllSeries()[0].getPointsByArg(data.value)[0].showTooltip();
+            }
+        </text>)
+    )
+</div>

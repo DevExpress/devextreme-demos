@@ -1,0 +1,165 @@
+﻿@model DevExtreme.MVC.Demos.ViewModels.SelectBoxViewModel
+
+<div id="selectbox-demo">
+    <div class="widget-container">
+        <div class="dx-fieldset">
+            <div class="dx-fieldset-header">SearchBox</div>
+            <div class="dx-field">
+                <div class="dx-field-label">Product</div>
+                <div class="dx-field-value">
+                    @(Html.DevExtreme().SelectBox()
+                        .ID("search-box")
+                        .DataSource(d => d
+                            .Mvc()
+                            .LoadAction("GetItems")
+                            .LoadMode(DataSourceLoadMode.Raw)
+                            .Key("ID")
+                        )
+                        .DisplayExpr("Name")
+                        .ValueExpr("ID")
+                        .SearchEnabled(true)
+                    )
+                </div>
+            </div>
+        </div>
+        <div class="dx-fieldset">
+            <div class="dx-fieldset-header">EditBox</div>
+            <div class="dx-field">
+                <div class="dx-field">
+                    <div class="dx-field-label">Product</div>
+                    <div class="dx-field-value">
+                        @(Html.DevExtreme().SelectBox()
+                            .DataSource(d => d.WebApi()
+                                .Controller("SelectBoxEditing")
+                                .LoadMode(DataSourceLoadMode.Raw)
+                                .InsertAction(true)
+                                .Key("ID")
+                            )
+                            .DisplayExpr("Name")
+                            .AcceptCustomValue(true)
+                            .OnValueChanged("selectBox_valueChanged")
+                            .OnCustomItemCreating("selectBox_customItemCreating")
+                            .Value(new JS("initialEditBoxValue"))
+                        )
+                    </div>
+                </div>
+                <div class="dx-field current-product">
+                    Current product:
+                    <span class="current-value">
+                        HD Video Player (ID: 0)
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="options">
+        <div class="caption">SearchBox Options</div>
+        <div class="option">
+            <div>Search Mode</div>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new JS("searchModes"))
+                .Value(new JS("searchModes[0]"))
+                .OnValueChanged("searchMode_changed")
+            )
+        </div>
+        <div class="option">
+            <div>Search Expression</div>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new JS("searchExpressions"))
+                .DisplayExpr("name")
+                .ValueExpr("value")
+                .Value(new JS("searchExpressions[0].value"))
+                .OnValueChanged("searchExpr_changed")
+            )
+        </div>
+        <div class="option">
+            <div>Search Timeout</div>
+            @(Html.DevExtreme().NumberBox()
+                .Min(0)
+                .Max(5000)
+                .Value(200)
+                .ShowSpinButtons(true)
+                .Step(100)
+                .OnValueChanged("searchTimeout_changed")
+            )
+        </div>
+        <div class="option">
+            <div>Minimum Search Length</div>
+            @(Html.DevExtreme().NumberBox()
+                .Min(0)
+                .Max(5)
+                .Value(0)
+                .ShowSpinButtons(true)
+                .OnValueChanged("minSearchLength_changed")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(false)
+                .Text("Show Data Before Search")
+                .OnValueChanged("showDataBeforeSearch_changed")
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    var searchModes = ["contains", "startswith"];
+    var searchExpressions = [{
+        name: "'Name'",
+        value: "Name"
+    }, {
+        name: "['Name', 'Category']",
+        value: ['Name', 'Category']
+        }];
+
+    var initialEditBoxValue = {
+        Name: "HD Video Player",
+        ID: 0
+    }
+
+    function selectBox_valueChanged(data) {
+        var $result = $(".current-value");
+
+        if(data.value) {
+            $result.text(data.value.Name + " (ID: " + data.value.ID + ")");
+        } else {
+            $result.text("Not selected");
+        }
+    }
+
+    function getSearchBoxInstance() {
+        return $("#search-box").dxSelectBox("instance");
+    }
+    function searchMode_changed(data) {
+        getSearchBoxInstance().option("searchMode", data.value);
+    }
+    function searchExpr_changed(data) {
+        getSearchBoxInstance().option("searchExpr", data.value);
+    }
+    function searchTimeout_changed(data) {
+        getSearchBoxInstance().option("searchTimeout", data.value);
+    }
+    function minSearchLength_changed(data) {
+        getSearchBoxInstance().option("minSearchLength", data.value);
+    }
+    function showDataBeforeSearch_changed(data) {
+        getSearchBoxInstance().option("showDataBeforeSearch", data.value);
+    }
+
+    function selectBox_customItemCreating(data) {
+        if (!data.text) {
+            data.customItem = null;
+            return;
+        }
+
+        var dataSource = data.component.getDataSource();
+        var newItem = { Name: data.text };
+        var result = dataSource.store().insert(newItem);
+
+        result.done(function() {
+            dataSource.reload();
+        })
+        data.customItem = result;
+    }
+</script>

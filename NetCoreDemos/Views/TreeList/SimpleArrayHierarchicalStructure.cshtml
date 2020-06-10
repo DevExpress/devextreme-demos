@@ -1,0 +1,29 @@
+﻿@(Html.DevExtreme().TreeList()
+    .ID("employees")
+    .DataSource(new JS("employeesHS"))
+    .ItemsExpr("items")
+    .DataStructure(TreeListDataStructure.Tree)
+    .Columns(columns => {
+        columns.Add()
+            .DataField("Title")
+            .Caption("Position");
+
+        columns.Add().DataField("Full_Name");
+
+        columns.Add().DataField("City");
+
+        columns.Add().DataField("State");
+
+        columns.Add().DataField("Mobile_Phone");
+
+        columns.Add()
+            .DataField("Hire_Date")
+            .DataType(GridColumnDataType.Date);
+    })
+    .ShowRowLines(true)
+    .ShowBorders(true)
+    .ColumnAutoWidth(true)
+    .ExpandedRowKeys(new[] { 1 })
+)
+
+<script src="~/data/employeesHS.js"></script>

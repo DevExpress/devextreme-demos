@@ -1,0 +1,37 @@
+﻿@(Html.DevExtreme().VectorMap()
+    .ID("map-container")
+    .Title(t => t
+        .Text("Map of Pangaea")
+        .Subtitle("with modern continental outlines")
+    )
+    .MaxZoomFactor(2)
+    .Projection(new JS("customMapData"))
+    .Export(e => e.Enabled(true))
+    .Layers(layers => {
+        layers.Add()
+            .Name("pangaea")
+            .DataSource(d => d.StaticJson().Url(Url.Action("GetPangaeaBorders")))
+            .HoverEnabled(false)
+            .Color("#bb7862");
+
+        layers.Add()
+            .Name("continents")
+            .DataSource(d => d.StaticJson().Url(Url.Action("GetPangaeaContinents")))
+            .Customize("vectorMap_continentsLayer_customize")
+            .Label(l => l
+                .Enabled(true)
+                .DataField("name")
+            );
+    })
+)
+
+<script src="~/data/customMapData.js"></script>
+<script>
+    function vectorMap_continentsLayer_customize(elements) {
+        $.each(elements, function(_, element) {
+            element.applySettings({
+                color: element.attribute("color")
+            });
+        });
+    }
+</script>

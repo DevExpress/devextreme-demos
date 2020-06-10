@@ -1,0 +1,50 @@
+﻿@using DevExtreme.MVC.Demos.Models.DataGrid
+
+@model IEnumerable<Employee>
+
+@(Html.DevExtreme().DataGrid<Employee>()
+    .ID("gridContainer")
+    .DataSource(Model)
+    .AllowColumnReordering(true)
+    .AllowColumnResizing(true)
+    .ColumnAutoWidth(true)
+    .ShowBorders(true)
+    .ColumnChooser(c => c.Enabled(true))
+    .ColumnFixing(c => c.Enabled(true))
+    .Columns(columns => {
+        columns.Add()
+            .Caption("Employee")
+            .Width(230)
+            .Fixed(true)
+            .CalculateCellValue(@<text>
+                function(data) {
+                    return [data.Prefix,
+                        data.FirstName, data.LastName]
+                        .join(" ");
+                }
+            </text>);
+
+        columns.AddFor(m => m.BirthDate);
+
+        columns.AddFor(m => m.HireDate);
+
+        columns.AddFor(m => m.Position)
+            .Alignment(HorizontalAlignment.Right);
+
+        columns.AddFor(m => m.Address)
+            .Width(230);
+
+        columns.AddFor(m => m.City);
+
+        columns.AddFor(m => m.State);
+
+        columns.AddFor(m => m.HomePhone);
+
+        columns.AddFor(m => m.Phone)
+            .Caption("Mobile Phone");
+
+        columns.AddFor(m => m.Skype);
+
+        columns.AddFor(m => m.Email);
+    })
+)

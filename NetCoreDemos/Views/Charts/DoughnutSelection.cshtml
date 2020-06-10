@@ -1,0 +1,33 @@
+﻿@(Html.DevExtreme().PieChart()
+    .ID("pie")
+    .Type(PieChartType.Donut)
+    .Palette(VizPalette.SoftPastel)
+    .Title("Olympic Medals in 2008")
+    .Legend(l => l
+        .HorizontalAlignment(HorizontalAlignment.Right)
+        .VerticalAlignment(VerticalEdge.Top)
+        .Margin(0)
+    )
+    .Export(e => e.Enabled(true))
+    .Series(s => s
+        .Add()
+        .ArgumentField("Country")
+        .ValueField("Medals")
+        .HoverStyle(h => h.Color("#ffd700"))
+    )
+    .OnPointClick(@<text>
+        function(arg) {
+            arg.target.select();
+        }
+    </text>)
+    .DataSource(new[] {
+        new { Country = "USA", Medals = 110 },
+        new { Country = "China", Medals = 100 },
+        new { Country = "Russia", Medals = 72 },
+        new { Country = "Britain", Medals = 47 },
+        new { Country = "Australia", Medals = 46 },
+        new { Country = "Germany", Medals = 41 },
+        new { Country = "France", Medals = 40 },
+        new { Country = "South Korea", Medals = 31 }
+    })
+)

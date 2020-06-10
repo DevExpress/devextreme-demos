@@ -1,0 +1,47 @@
+﻿@(Html.DevExtreme().TreeList()
+    .ID("treelist")
+    .DataSource(new JS("treeList_dataSource"))
+    .KeyExpr("id")
+    .ParentIdExpr("parentId")
+    .HasItemsExpr("hasItems")
+    .ShowBorders(true)
+    .RemoteOperations(r => r.Filtering(true))
+    .Columns(columns => {
+        columns.Add()
+            .DataField("name");
+
+        columns.Add()
+            .DataField("size")
+            .CustomizeText("treeList_size_customizeText")
+            .Width(100);
+
+        columns.Add()
+            .DataField("createdDate")
+            .DataType(GridColumnDataType.Date)
+            .Width(150);
+
+        columns.Add()
+            .DataField("modifiedDate")
+            .DataType(GridColumnDataType.Date)
+            .Width(150);
+    })
+    .RootValue("")
+)
+
+<script>
+    function treeList_size_customizeText(e) {
+        if(e.value !== null) {
+            return Math.ceil(e.value / 1024) + " KB";
+        }
+    }
+
+    var treeList_dataSource = {
+        load: function(options) {
+            return $.ajax({
+                url: "@Url.Content("~/api/TreeListData")",
+                dataType: "json",
+                data: { parentIds: options.parentIds }
+            });
+        }
+    };
+</script>

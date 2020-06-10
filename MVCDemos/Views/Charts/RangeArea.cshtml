@@ -1,0 +1,52 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .Palette(VizPalette.Violet)
+    .CommonSeriesSettings(s => s
+        .Type(SeriesType.RangeArea)
+        .ArgumentField("Date")
+    )
+    .Series(s => s
+        .Add()
+        .RangeValue1Field("Val2010")
+        .RangeValue2Field("Val2011")
+        .Name("2010 - 2011")
+    )
+    .Title("Annual Inflation Rate in 2010 and 2011")
+    .ArgumentAxis(a => a
+        .ValueMarginsEnabled(false)
+        .Label(l => l.Format(Format.Month))
+    )
+    .ValueAxis(a => a
+        .Add()
+        .VisualRange(range => range.StartValue(0.5).EndValue(4))
+        .TickInterval(0.5)
+        .ValueMarginsEnabled(false)
+        .Label(l => l
+            .Format(f => f
+                .Type(Format.FixedPoint)
+                .Precision(2)
+            )
+            .CustomizeText(@<text>
+                function() {
+                    return this.valueText + " %";
+                }
+            </text>)
+        )
+    )
+    .Export(e => e.Enabled(true))
+    .Legend(l => l.Visible(false))
+    .DataSource(new[] {
+        new { Date = new DateTime(2010, 1, 1), Val2010 = 1.63, Val2011 = 2.63 },
+        new { Date = new DateTime(2010, 2, 1), Val2010 = 2.11, Val2011 = 2.14 },
+        new { Date = new DateTime(2010, 3, 1), Val2010 = 2.68, Val2011 = 2.31 },
+        new { Date = new DateTime(2010, 4, 1), Val2010 = 3.16, Val2011 = 2.24 },
+        new { Date = new DateTime(2010, 5, 1), Val2010 = 3.57, Val2011 = 2.02 },
+        new { Date = new DateTime(2010, 6, 1), Val2010 = 3.56, Val2011 = 1.05 },
+        new { Date = new DateTime(2010, 7, 1), Val2010 = 3.63, Val2011 = 1.24 },
+        new { Date = new DateTime(2010, 8, 1), Val2010 = 3.77, Val2011 = 1.15 },
+        new { Date = new DateTime(2010, 9, 1), Val2010 = 3.87, Val2011 = 1.14 },
+        new { Date = new DateTime(2010, 10, 1), Val2010 = 3.53, Val2011 = 1.17 },
+        new { Date = new DateTime(2010, 11, 1), Val2010 = 3.39, Val2011 = 1.14 },
+        new { Date = new DateTime(2010, 12, 1), Val2010 = 2.96, Val2011 = 1.50 }
+    })
+)

@@ -1,0 +1,52 @@
+@(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.RowReorderingTask>()
+    .ID("gridContainer")
+    .DataSource(d => d.WebApi()
+        .RouteName("DataGridRowReordering")
+        .LoadAction("Tasks")
+        .UpdateAction("UpdateTask")
+        .Key("ID"))
+    .ShowBorders(true)
+    .Height(440)
+    .Sorting(sorting => sorting.Mode(GridSortingMode.None))
+    .Scrolling(scrolling => scrolling.Mode(GridScrollingMode.Virtual))
+    .RowDragging(rd => rd
+        .AllowReordering(true)
+        .OnReorder("onReorder")
+    )
+    .Columns(columns => {
+        columns.AddFor(m => m.ID)
+            .Width(55);
+
+        columns.AddFor(m => m.Owner)
+            .Width(150)
+            .Lookup(lookup => lookup
+                .DataSource(d => d.WebApi().RouteName("DataGridRowReordering").LoadAction("Employees").Key("ID"))
+                .ValueExpr("ID")
+                .DisplayExpr("FullName")
+            );
+
+        columns.AddFor(m => m.AssignedEmployee)
+            .Width(150)
+            .Caption("Assignee")
+            .Lookup(lookup => lookup
+                .DataSource(d => d.WebApi().RouteName("DataGridRowReordering").LoadAction("Employees").Key("ID"))
+                .ValueExpr("ID")
+                .DisplayExpr("FullName")
+            );
+
+        columns.AddFor(m => m.Subject);
+    })
+)
+
+<script>
+    function onReorder(e) {
+        var dataGrid = e.component,
+            store = dataGrid.getDataSource().store(),
+            visibleRows = dataGrid.getVisibleRows(),
+            newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
+
+        store.update(e.itemData.ID, { OrderIndex: newOrderIndex }).then(function() {
+            dataGrid.refresh();
+        });
+    }
+</script>

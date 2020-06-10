@@ -1,0 +1,22 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.GalleryItem>
+
+@(Html.DevExtreme().Gallery()
+    .DataSource(Model)
+    .Height(440)
+    .Width("100%")
+    .Loop(true)
+    .ShowIndicator(false)
+    .ItemTemplate(@<text>
+        <div>
+            <img src="<%- Image %>" />
+            <div class="item-price"><%- formatCurrency(Price) %></div>
+            <div class="item-address"><%- Address %>, <%- City %>, <%- State %></div>
+        </div>
+    </text>)
+)
+
+<script>
+    function formatCurrency(value) {
+        return "$" + new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(value);
+    }
+</script>

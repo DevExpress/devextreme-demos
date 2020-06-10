@@ -1,0 +1,50 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .CommonSeriesSettings(s => s
+        .ArgumentField("Country")
+        .Type(SeriesType.Spline)
+        .Point(p => p.HoverMode(ChartPointInteractionMode.AllArgumentPoints))
+    )
+    .ArgumentAxis(a => a
+        .ValueMarginsEnabled(false)
+        .DiscreteAxisDivisionMode(DiscreteAxisDivisionMode.CrossLabels)
+        .Grid(g => g.Visible(true))
+    )
+    .Crosshair(c => c
+        .Enabled(true)
+        .Color("#949494")
+        .Width(3)
+        .DashStyle(DashStyle.Dot)
+        .Label(l => l
+            .Visible(true)
+            .BackgroundColor("#949494")
+            .Font(f => f.Color("#fff").Size(12))
+        )
+    )
+    .Series(s => {
+        s.Add().ValueField("Hydro").Name("Hydro-electric");
+        s.Add().ValueField("Oil").Name("Oil");
+        s.Add().ValueField("Gas").Name("Natural gas");
+        s.Add().ValueField("Coal").Name("Coal");
+        s.Add().ValueField("Nuclear").Name("Nuclear");
+    })
+    .Legend(l => l
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+        .ItemTextPosition(Position.Bottom)
+    )
+    .Title(t => t
+        .Text("Energy Consumption in 2004")
+        .Subtitle(s => s.Text("(Millions of Tons, Oil Equivalent)"))
+    )
+    .Export(e => e.Enabled(true))
+    .Tooltip(t => t.Enabled(true))
+    .DataSource(new[] {
+        new { Country = "USA", Hydro = 59.8, Oil = 937.6, Gas = 582.0, Coal = 564.3, Nuclear = 187.9 },
+        new { Country = "China", Hydro = 74.2, Oil = 308.6, Gas = 35.1, Coal = 956.9, Nuclear = 11.3 },
+        new { Country = "Russia", Hydro = 40.0, Oil = 128.5, Gas = 361.8, Coal = 105.0, Nuclear = 32.4 },
+        new { Country = "Japan", Hydro = 22.6, Oil = 241.5, Gas = 64.9, Coal = 120.8, Nuclear = 64.8 },
+        new { Country = "India", Hydro = 19.0, Oil = 119.3, Gas = 28.9, Coal = 204.8, Nuclear = 3.8 },
+        new { Country = "Germany", Hydro = 6.1, Oil = 123.6, Gas = 77.3, Coal = 85.7, Nuclear = 37.8 }
+    })
+)

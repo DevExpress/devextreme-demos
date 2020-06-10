@@ -1,0 +1,57 @@
+﻿@(Html.DevExtreme().Map()
+    .ID("map")
+    .Provider(GeoMapProvider.Bing)
+    .Zoom(11)
+    .Height(440)
+    .Width("100%")
+    .Controls(true)
+    .MarkerIconSrc(new JS("markerUrl"))
+    .Markers(markers => {
+        markers.Add().Coordinates(40.755833, -73.986389).Tooltip(t => t.Text("Times Square"));
+        markers.Add().Address("40.7825, -73.966111").Tooltip(t => t.Text("Central Park"));
+        markers.Add().Coordinates(40.753889, -73.981389).Tooltip(t => t.Text("Fifth Avenue"));
+        markers.Add().Address("Brooklyn Bridge,New York,NY").Tooltip(t => t.Text("Brooklyn Bridge"));
+    })
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .ID("use-custom-markers")
+            .Value(true)
+            .Text("Use custom marker icons")
+            .OnValueChanged("checkBox_onValueChanged")
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().Button()
+            .ID("show-tooltips")
+            .Text("Show all tooltips")
+            .OnClick("button_onClick")
+        )
+    </div>
+</div>
+
+<script>
+    var markerUrl = "https://js.devexpress.com/Demos/RealtorApp/images/map-marker.png";
+
+    function checkBox_onValueChanged(data) {
+        var mapWidget = $("#map").dxMap("instance");
+        var markersData = mapWidget.option("markers");
+        var newMarkers = $.map(markersData, function (item) {
+            return $.extend(true, {}, item, { tooltip: { isShown: false }} );
+        });
+        mapWidget.option("markers", newMarkers);
+        mapWidget.option("markerIconSrc", data.value ? markerUrl : null);
+    }
+
+    function button_onClick() {
+        var mapWidget = $("#map").dxMap("instance");
+        var markersData = mapWidget.option("markers");
+        var newMarkers = $.map(markersData, function (item) {
+            return $.extend(true, {}, item, { tooltip: { isShown: true }} );
+        });
+        mapWidget.option("markers", newMarkers);
+    }
+</script>

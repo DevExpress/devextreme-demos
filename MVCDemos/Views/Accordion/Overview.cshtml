@@ -1,0 +1,110 @@
+﻿<div id="accordion">
+    @(Html.DevExtreme().Accordion()
+        .ID("accordion-container")
+        .DataSource(d => d.Mvc().LoadAction("GetData").Key("ID"))
+        .AnimationDuration(300)
+        .Collapsible(false)
+        .Multiple(false)
+        .OnSelectionChanged("accordion_selectionChanged")
+        .ItemTitleTemplate(@<text><h1><%- Name %></h1></text>)
+        .ItemTemplate(@<text>
+            <div class="accodion-item">
+                <div>
+                    <p>
+                        <b><%- City %></b>
+                        (<span><%- State %></span>)
+                    </p>
+                    <p>
+                        <span><%- ZipCode %></span>
+                        <span><%- Address %></span>
+                    </p>
+                </div>
+                <div>
+                    <p>Phone: <b><%- Phone %></b></p>
+                    <p>Fax: <b><%- Fax %></b></p>
+                    <p>Website: <a href="<%- Website %>" target="_blank"><%- Website %></a></p>
+                </div>
+            </div>
+        </text>)
+    )
+
+    <div class="selected-data">
+        <span class="caption">Selected Items</span>
+        @(Html.DevExtreme().TagBox()
+            .ID("tagbox")
+            .DisplayExpr("Name")
+            .ValueExpr("ID")
+            .Value(new[] { 1 })
+            .DataSource(d => d.Mvc().LoadAction("GetData").Key("ID"))
+            .Disabled(true)
+            .OnValueChanged("tagBox_valueChanged")
+        )
+    </div>
+
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Multiple enabled")
+                .OnValueChanged("multipleMode_changed")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Collapsible enabled")
+                .OnValueChanged("collapsibleMode_changed")
+            )
+        </div>
+        <div class="option">
+            <span>Animation duration</span>
+            @(Html.DevExtreme().Slider()
+                .Min(0)
+                .Max(1000)
+                .Value(300)
+                .Label(l => l.Visible(true))
+                .Tooltip(t => t
+                    .Enabled(true)
+                    .Position(VerticalEdge.Bottom)
+                )
+                .OnValueChanged("slider_valueChanged")
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function getAccordionInstance() {
+        return $("#accordion-container").dxAccordion("instance");
+    }
+
+    function getTagBoxInstance() {
+        return $("#tagbox").dxTagBox("instance");
+    }
+
+    function tagBox_valueChanged(e) {
+        getAccordionInstance().option("selectedItemKeys", e.value);
+    }
+
+    function accordion_selectionChanged(e) {
+        getTagBoxInstance().option("value", e.component.option("selectedItemKeys"));
+    }
+
+    function slider_valueChanged(e) {
+        getAccordionInstance().option("animationDuration", e.value);
+    }
+
+    function multipleMode_changed(e) {
+        var tagBox = getTagBoxInstance(),
+            accordion = getAccordionInstance();
+
+        accordion.option("multiple", e.value);
+        tagBox.option("disabled", !e.value);
+        tagBox.option("value", accordion.option("selectedItemKeys"));
+    }
+
+    function collapsibleMode_changed(e) {
+        getAccordionInstance().option("collapsible", e.value);
+    }
+
+</script>

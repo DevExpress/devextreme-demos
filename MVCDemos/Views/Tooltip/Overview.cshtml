@@ -1,0 +1,55 @@
+﻿<div class="form">
+    <div class="label">Default mode</div>
+    <div>
+        <img id="product1" src="~/Content/Images/ProductsLarge/17.png">
+        @(Html.DevExtreme().Tooltip()
+            .Target("#product1")
+            .ShowEvent("mouseenter")
+            .HideEvent("mouseleave")
+            .CloseOnOutsideClick(false)
+            .ContentTemplate("ExcelRemote IR")
+        )
+    </div>
+    <div class="label">With template</div>
+    <div>
+        <img id="product2" src="~/Content/Images/ProductsLarge/3.png">
+        @(Html.DevExtreme().Tooltip()
+            .Target("#product2")
+            .ShowEvent("mouseenter")
+            .HideEvent("mouseleave")
+            .CloseOnOutsideClick(false)
+            .Position(Position.Right)
+            .ContentTemplate(@<text>
+                <img width="150" src="~/Content/Images/ProductsLarge/3.png">
+                <br />
+                <b>SuperPlasma 50</b>
+                <br />
+                2400$
+            </text>)
+        )
+    </div>
+    <div class="label">With animation</div>
+    <div>
+        <img id="product3" src="~/Content/Images/ProductsLarge/15.png">
+        @(Html.DevExtreme().Tooltip()
+            .ContentTemplate("Projector PlusHD")
+            .Target("#product3")
+            .ShowEvent("mouseenter")
+            .HideEvent("mouseleave")
+            .CloseOnOutsideClick(false)
+            .Position(Position.Top)
+            .Animation(a => a
+                .Show(s => s
+                    .Type(AnimationType.Slide)
+                    .From(new { top = -100, opacity = 0 })
+                    .To(new { top = 0, opacity = 1 })
+                )
+                .Hide(h => h
+                    .Type(AnimationType.Pop)
+                    .From(new { scale = 1, opacity = 1 })
+                    .To(new { scale = 0.1, opacity = 0 })
+                )
+            )
+        )
+    </div>
+</div>

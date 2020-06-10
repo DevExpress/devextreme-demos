@@ -1,0 +1,52 @@
+﻿<div>
+    @{
+        var dataSource = new List<object>();
+        var max = 100;
+        var rnd = new System.Random(0);
+        for (var i = 0; i < max; i++) {
+            dataSource.Add(new {
+                arg = Math.Pow(10, i * 0.1),
+                val = Math.Log(i + 1) / Math.Log(0.5) + (rnd.NextDouble() - 0.5) * (100 / (i + 1)) + 10
+            });
+        }
+    }
+    @(Html.DevExtreme().Chart()
+        .ID("zoomed-chart")
+        .DataSource(dataSource)
+        .ArgumentAxis(aa => aa
+            .ValueMarginsEnabled(false)
+            .Type(AxisScaleType.Logarithmic)
+            .Label(l => l.Format(Format.Exponential))
+            .Grid(g => g.Visible(true))
+            .MinorGrid(mg => mg.Visible(true))
+            .MinorTickCount(10)
+        )
+        .ResizePanesOnZoom(true)
+        .Series(s => s.Add())
+        .Legend(l => l.Visible(false))
+    )
+    @(Html.DevExtreme().RangeSelector()
+        .ID("range-selector")
+        .DataSource(dataSource)
+        .Chart(c => c.Series(s => s.Add()))
+        .Scale(s => s
+            .Type(RangeSelectorAxisScaleType.Logarithmic)
+            .Label(l => l.Format(Format.Exponential))
+            .MinRange(1)
+            .MinorTickCount(10)
+        )
+        .SliderMarker(sm => sm.Format(Format.Exponential))
+        .Behavior(b => b
+            .CallValueChanged(ValueChangedCallMode.OnMoving)
+            .SnapToTicks(false)
+        )
+        .OnValueChanged("rangeSelector_valueChanged")
+    )
+</div>
+
+<script>
+    function rangeSelector_valueChanged(e) {
+        var zoomedChart = $("#zoomed-chart").dxChart("instance");
+        zoomedChart.getArgumentAxis().visualRange(e.value);
+    }
+</script>

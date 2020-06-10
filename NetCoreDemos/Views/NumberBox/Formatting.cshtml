@@ -1,0 +1,48 @@
+﻿<div class="dx-fieldset">
+    <div class="dx-field">
+        <div class="dx-field-label">Currency format</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().NumberBox()
+                .Format("$ #,##0.##")
+                .Value(14500.55)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Accounting format</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().NumberBox()
+                .Format("$ #,##0.##;($ #,##0.##)")
+                .Value(-2314.12)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Percent format</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().NumberBox()
+                .Format("#0%")
+                .Value(0.15)
+                .Step(0.01)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Fixed point format</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().NumberBox()
+                .Format("#,##0.00")
+                .Value(13415.24)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Weight format</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().NumberBox()
+                .Format("#0.## kg")
+                .Value(3.14)
+            )
+        </div>
+    </div>
+</div>

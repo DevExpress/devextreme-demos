@@ -1,0 +1,18 @@
+﻿<h3>Data submitted</h3>
+
+<br />
+<p><b>First name:</b> @ViewBag.FirstName</p>
+<p><b>Last name:</b> @ViewBag.LastName</p>
+<p><b>Photo file name:</b> @ViewBag.Photo</p>
+<br />
+
+@(Html.DevExtreme().Button()
+    .Text("Reload demo")
+    .Type(ButtonType.Default)
+    .Icon("refresh")
+    .OnClick(@<text>
+        function() {
+            window.location = window.location;
+        }
+    </text>)
+)

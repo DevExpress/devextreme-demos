@@ -1,0 +1,53 @@
+﻿@section ExternalDependencies {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aspnet-signalr/1.1.4/signalr.min.js"></script>
+}
+
+<div class="tables">
+    <div class="column">
+        @await Html.PartialAsync("CollaborativeEditingPartial", "grid1")
+    </div>
+    <div class="column">
+        @await Html.PartialAsync("CollaborativeEditingPartial", "grid2")
+    </div>
+</div>
+
+<script>
+    var groupId = new DevExpress.data.Guid().toJSON();
+    var onBeforeSend = function(operation, ajaxSettings) {
+        ajaxSettings.data.groupId = groupId;
+    };
+
+    var connection = new signalR.HubConnectionBuilder()
+        .withUrl("@Url.Content("~/dataGridCollaborativeEditingHub")" + "?GroupId=" + groupId, {
+            skipNegotiation: true,
+            transport: signalR.HttpTransportType.WebSockets
+        })
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
+
+    $(function () {
+        connection.start()
+            .then(function () {
+                var store1 = $("#grid1").dxDataGrid("getDataSource").store();
+                var store2 = $("#grid2").dxDataGrid("getDataSource").store();
+
+                var updateStores = function (events) {
+                    store1.push(events);
+                    store2.push(events);
+                };
+
+                connection.on("update", function (key, data) {
+                    updateStores([{ type: "update", key: key, data: data }]);
+                });
+
+                connection.on("insert", function (data) {
+                    updateStores([{ type: "insert", data: data }]);
+                });
+
+                connection.on("remove", function (key) {
+                    updateStores([{ type: "remove", key: key }]);
+                });
+            });
+    });
+</script>
+

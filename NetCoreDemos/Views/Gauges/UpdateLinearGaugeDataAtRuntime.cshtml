@@ -1,0 +1,95 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.City>
+
+@{ var firstCity = Model.First(); }
+
+<div class="long-title"><h3>Weather Indicators</h3></div>
+<div id="gauge-demo">
+    @(Html.DevExtreme().LinearGauge()
+        .ID("temperatureGauge")
+        .ElementAttr(new { @class = "gauge-element" })
+        .Title(t => t
+            .Text("Temperature (°C)")
+            .Font(f => f.Size(16))
+        )
+        .Geometry(g => g.Orientation(Orientation.Vertical))
+        .Scale(s => s
+            .StartValue(-40)
+            .EndValue(40)
+            .TickInterval(40)
+        )
+        .RangeContainer(rc => rc
+            .BackgroundColor("none")
+            .Ranges(r => {
+                r.Add().StartValue(-40).EndValue(0).Color("#679EC5");
+                r.Add().StartValue(0).EndValue(40);
+            })
+        )
+        .Value(firstCity.Data.Temperature)
+    )
+    @(Html.DevExtreme().LinearGauge()
+        .ID("humidityGauge")
+        .ElementAttr("class", "gauge-element")
+        .Title(t => t
+            .Text("Humidity (%)")
+            .Font(f => f.Size(16))
+        )
+        .Geometry(g => g.Orientation(Orientation.Vertical))
+        .Scale(s => s
+            .StartValue(0)
+            .EndValue(100)
+            .TickInterval(10)
+        )
+        .RangeContainer(rc => rc.BackgroundColor("#CACACA"))
+        .ValueIndicator(vi => vi
+            .Type(GaugeIndicatorType.Rhombus)
+            .Color("#A4DDED")
+        )
+        .Value(firstCity.Data.Humidity)
+    )
+    @(Html.DevExtreme().LinearGauge()
+        .ID("pressureGauge")
+        .ElementAttr("class", "gauge-element")
+        .Title(t => t
+            .Text("Barometric Pressure (mb)")
+            .Font(f => f.Size(16))
+        )
+        .Geometry(g => g.Orientation(Orientation.Vertical))
+        .Scale(s => s
+            .StartValue(900)
+            .EndValue(1100)
+            .CustomTicks(new double[] { 900, 1000, 1020, 1100 })
+            .Label(l=>l.Format("decimal"))
+        )
+        .RangeContainer(rc => rc
+            .Ranges(r => {
+                r.Add().StartValue(900).EndValue(1000).Color("#679EC5");
+                r.Add().StartValue(1000).EndValue(1020).Color("#A6C567");
+                r.Add().StartValue(1020).EndValue(1100).Color("#E18E92");
+            })
+        )
+        .ValueIndicator(vi => vi
+            .Type(GaugeIndicatorType.Circle)
+            .Color("#E3A857")
+        )
+        .Value(firstCity.Data.Pressure)
+    )
+</div>
+@(Html.DevExtreme().SelectBox()
+    .ID("selectbox")
+    .DataSource(Model)
+    .DisplayExpr("Name")
+    .ValueExpr("ID")
+    .Value(firstCity.ID)
+    .OnSelectionChanged(@<text>
+        function(e) {
+            var weatherData = e.selectedItem.Data,
+                temperatureGauge = $("#temperatureGauge").dxLinearGauge("instance"),
+                humidityGauge = $("#humidityGauge").dxLinearGauge("instance"),
+                pressureGauge = $("#pressureGauge").dxLinearGauge("instance");
+
+            temperatureGauge.option("value", weatherData.Temperature);
+            humidityGauge.option("value", weatherData.Humidity);
+            pressureGauge.option("value", weatherData.Pressure);
+        }
+    </text>)
+)

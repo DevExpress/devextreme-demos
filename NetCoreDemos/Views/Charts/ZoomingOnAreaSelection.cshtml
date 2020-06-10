@@ -1,0 +1,51 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .DataSource(d=>d
+        .StaticJson().Url("~/SampleData/Birthlife.json")
+    )
+    .Title("Life Expectancy vs. Birth Rates")
+    .ArgumentAxis(a => a.Title("Life Expectancy"))
+    .ValueAxis(a => a.Add().Title("Birth Rate"))
+    .Crosshair(c => c
+        .Enabled(true)
+        .Label(l => l.Visible(true)
+    ))
+    .CommonSeriesSettings(c => c
+        .Type(SeriesType.Scatter)
+        .ArgumentField("life_exp")
+        .ValueField("birth_rate")
+        .Point(p => p.Size(8))
+    )
+    .SeriesTemplate(s => s.NameField("year"))
+    .Tooltip(t => t
+        .Enabled(true)
+        .CustomizeTooltip(@<text>
+            function(arg) {
+                var data = arg.point.data;
+                return {
+                    text: data.country + " " + data.year
+                };
+            }
+    </text>))
+    .ZoomAndPan(z=>z
+        .ArgumentAxis(ChartZoomAndPanMode.Both)
+        .ValueAxis(ChartZoomAndPanMode.Both)
+        .DragToZoom(true)
+        .AllowMouseWheel(true)
+        .PanKey(EventKeyModifier.Shift)
+    )
+    .Legend(l=>l
+        .Position(RelativePosition.Inside)
+        .Border(b=>b.Visible(true))
+    )
+)
+
+@(Html.DevExtreme().Button()
+    .ID("reset-zoom")
+    .Text("Reset")
+    .OnClick(@<text>
+        function() {
+            $("#chart").dxChart("instance").resetVisualRange();
+        }
+    </text>)
+)

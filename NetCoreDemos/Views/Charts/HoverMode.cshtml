@@ -1,0 +1,29 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .CommonSeriesSettings(s => s
+        .ArgumentField("State")
+        .Type(SeriesType.Spline)
+        .HoverMode(ChartSeriesHoverMode.IncludePoints)
+        .Point(p => p.HoverMode(ChartPointInteractionMode.AllArgumentPoints))
+    )
+    .Series(s => {
+        s.Add().ValueField("Year2004").Name("2004");
+        s.Add().ValueField("Year2001").Name("2001");
+        s.Add().ValueField("Year1998").Name("1998");
+    })
+    .StickyHovering(false)
+    .Title(t => t.Text("Great Lakes Gross State Product"))
+    .Export(e => e.Enabled(true))
+    .Legend(l => l
+        .VerticalAlignment(VerticalEdge.Bottom)
+        .HorizontalAlignment(HorizontalAlignment.Center)
+        .HoverMode(ChartLegendHoverMode.ExcludePoints)
+    )
+    .DataSource(new[] {
+        new { State = "Illinois", Year1998 = 423.721, Year2001 = 476.851, Year2004 = 528.904 },
+        new { State = "Indiana", Year1998 = 178.719, Year2001 = 195.769, Year2004 = 227.271 },
+        new { State = "Michigan", Year1998 = 308.845, Year2001 = 335.793, Year2004 = 372.576 },
+        new { State = "Ohio", Year1998 = 348.555, Year2001 = 374.771, Year2004 = 418.258 },
+        new { State = "Wisconsin", Year1998 = 160.274, Year2001 = 182.373, Year2004 = 211.727 }
+    })
+)

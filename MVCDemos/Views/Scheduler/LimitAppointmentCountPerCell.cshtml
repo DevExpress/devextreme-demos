@@ -1,0 +1,37 @@
+﻿@model DevExtreme.MVC.Demos.ViewModels.LimitAppointmentCountPerCellModel
+
+@(Html.DevExtreme().Scheduler()
+    .ID("scheduler")
+    .DataSource(Model.Appointments)
+    .Views(views => {
+        views.Add()
+            .Name("Auto Mode")
+            .Type(SchedulerViewType.Month)
+            .MaxAppointmentsPerCell(MaxAppointmentsPerCell.Auto);
+
+        views.Add()
+            .Name("Unlimited Mode")
+            .Type(SchedulerViewType.Month)
+            .MaxAppointmentsPerCell(MaxAppointmentsPerCell.Unlimited);
+
+        views.Add()
+            .Name("Numeric Mode")
+            .Type(SchedulerViewType.Month)
+            .MaxAppointmentsPerCell(2);
+    })
+    .CurrentView("Auto Mode")
+    .CurrentDate(new DateTime(2017, 5, 25))
+    .Resources(res => {
+        res.Add()
+            .FieldExpr("RoomId")
+            .DisplayExpr("Text")
+            .ValueExpr("Id")
+            .ColorExpr("Color")
+            .Label("Room")
+            .DataSource(Model.Resources);
+    })
+    .Height(650)
+    .TextExpr("Text")
+    .StartDateExpr("StartDate")
+    .EndDateExpr("EndDate")
+)

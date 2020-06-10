@@ -1,0 +1,62 @@
+﻿<div id="tree-list-demo">
+    @(Html.DevExtreme().TreeList<DevExtreme.NETCore.Demos.Models.TreeList.Employee>()
+        .ID("employees")
+        .DataSource(ds => ds.Mvc()
+            .Controller("TreeListEditingEmployees")
+            .LoadAction("Get")
+            .UpdateAction("Put")
+            .InsertAction("Post")
+            .DeleteAction("Delete")
+            .Key("ID")
+        )
+        .KeyExpr("ID")
+        .ParentIdExpr("HeadID")
+        .ShowRowLines(true)
+        .ShowBorders(true)
+        .Editing(editing => editing
+            .Mode(GridEditMode.Row)
+            .AllowUpdating(true)
+            .AllowDeleting(true)
+            .AllowAdding(true)
+        )
+        .Columns(columns => {
+            columns.AddFor(m => m.FullName);
+
+            columns.AddFor(m => m.HeadID)
+                .Lookup(lookup => lookup
+                    .DataSource(ds => ds.Mvc().Controller("TreeListEditingEmployees").LoadAction("Get").Key("ID"))
+                    .DataSourceOptions(dso => dso.Sort(sort => sort.AddSorting("FullName")))
+                    .ValueExpr("ID")
+                    .DisplayExpr("FullName")
+                );
+
+            columns.AddFor(m => m.Title);
+
+            columns.AddFor(m => m.HireDate)
+                .Width(120);
+
+            columns.Add()
+                .Type(TreeListCommandColumnType.Buttons)
+                .Buttons(b => {
+                    b.Add().Name(TreeListColumnButtonName.Edit);
+                    b.Add().Name(TreeListColumnButtonName.Delete);
+                });
+        })
+        .ColumnAutoWidth(true)
+        .OnEditorPreparing("treeList_onEditorPreparing")
+        .OnInitNewRow("treeList_onInitNewRow")
+        .ExpandedRowKeys(new[] { 1, 2, 3, 4, 5 })
+    )
+</div>
+
+<script>
+    function treeList_onEditorPreparing(e) {
+        if(e.dataField === "HeadID" && e.row.data.ID === 1) {
+            e.cancel = true;
+        }
+    }
+
+    function treeList_onInitNewRow(e) {
+        e.data.HeadID = 1;
+    }
+</script>

@@ -1,0 +1,58 @@
+﻿<div id="chart-demo">
+    @(Html.DevExtreme().Chart()
+        .ID("zoomedChart")
+        .Title("Google Inc. Stock Prices")
+        .DataSource(d => d.Mvc().LoadAction("GetStockPrices"))
+        .ValueAxis(a => a
+            .Add()
+            .ValueType(ChartDataType.Numeric))
+            .Margin(m=>m.Right(10))
+        .ArgumentAxis(a => a
+            .Grid(g => g.Visible(true))
+            .Label(l => l.Visible(false))
+            .ValueMarginsEnabled(false)
+            .ArgumentType(ChartDataType.DateTime))
+        .Tooltip(t => t.Enabled(true))
+        .Legend(l => l.Visible(false))
+        .Series(s => s
+            .Add()
+            .Aggregation(a => a.Enabled(true))
+            .Type(SeriesType.Candlestick)
+            .OpenValueField("Open")
+            .HighValueField("High")
+            .LowValueField("Low")
+            .CloseValueField("Close")
+            .ArgumentField("Date")
+        )
+    )
+    @(Html.DevExtreme().RangeSelector()
+        .Size(s => s.Height(120))
+        .DataSource(d => d.Mvc().LoadAction("GetStockPrices"))
+        .Chart(c => c
+            .ValueAxis(a => a
+                .ValueType(ChartDataType.Numeric))
+            .Series(s => s
+                .Add()
+                .Aggregation(a => a.Enabled(true))
+                .Type(SeriesType.Line)
+                .ValueField("Open")
+                .ArgumentField("Date")))
+        .Scale(s => s
+            .MinorTickInterval(VizTimeInterval.Day)
+            .TickInterval(VizTimeInterval.Month)
+            .ValueType(ChartDataType.DateTime)
+            .PlaceholderHeight(20)
+            .AggregationInterval(VizTimeInterval.Week))
+        .Behavior(b => b
+            .CallValueChanged(ValueChangedCallMode.OnMoving)
+            .SnapToTicks(false))
+        .OnValueChanged("rangeSelector_valueChanged")
+    )
+</div>
+
+<script>
+    function rangeSelector_valueChanged(e) {
+        var chart = $("#zoomedChart").dxChart("instance");
+        chart.getArgumentAxis().visualRange(e.value);
+    }
+</script>
