@@ -38,7 +38,7 @@
         "globalize": "1.1.1",
         "html-react-parser": "latest",
         "jquery": "3.5.1",
-        "knockout": "3.4.0",
+        "knockout": "3.5.1",
         "plugin-typescript": "8.0.0",
         "react": "16",
         "react-dom": "16",
