@@ -17,7 +17,7 @@ Use `npm run prepare-js` command to prepare only Javascript based demos, `npm ru
 ## Add and launch Javascript based demos
 
 Run `npm run run-demo` command to launch a demo. Navigate to http://localhost:3000/. 
-Run `npm run add-demo` to add a demo. In both cases choose or write a category, a demo and an approach using built-in cli.
+Run `npm run add-demo` to add a demo. In both cases choose or write a category, a demo and an approach using a built-in CLI.
 
 ## Add and launch ASP.NET MVC and ASP.NET Core demos
 
