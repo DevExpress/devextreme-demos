@@ -19,9 +19,10 @@
         "create-config": "node utils/create-config.js",
         "run-demo": "node utils/run-demo.js",
         "prepare-js": "cd JSDemos && npm i && node ../utils/create-config.js",
+        "prepare-js:dev": "cd JSDemos && npm i && node ../utils/create-config.js && node ../utils/link-repos.js",
         "prepare-mvc": "node utils/prepare-mvc.js",
         "prepare-netcore": "node utils/prepare-netcore.js",
-        "prepare-all": "npm run prepare-js && npm run prepare-mvc && npm run prepare-netcore"
+        "prepare-all": "npm run prepare-js:dev && npm run prepare-mvc && npm run prepare-netcore"
     },
     "license": "SEE LICENSE IN README.md",
     "keywords": [
