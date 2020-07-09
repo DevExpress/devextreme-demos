@@ -17,7 +17,7 @@
         "add-demo": "node utils/add-demo.js",
         "link-repos": "node utils/link-repos.js",
         "create-config": "node utils/create-config.js",
-        "run-demo": "node utils/run-demo.js",
+        "launch-demo": "node utils/launch-demo.js",
         "prepare-js": "cd JSDemos && npm i && node ../utils/create-config.js",
         "prepare-js:dev": "cd JSDemos && npm i && node ../utils/create-config.js && node ../utils/link-repos.js",
         "prepare-mvc": "node utils/prepare-mvc.js",
