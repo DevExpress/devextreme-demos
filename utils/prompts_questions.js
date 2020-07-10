@@ -74,6 +74,7 @@ const getApproachesQuestions = (approaches) => {
         type: 'multiselect',
         name: 'selectedApproaches',
         message: 'Select approaches to add',
+        min: 1,
         choices: () => approaches.map((item) => { return { title: item, value: item }; })
     }
 }
@@ -133,6 +134,31 @@ const getDemoToUpdateQuestions = (menuMetaData) => {
     }]
 }
 
+const getLinkRepositoriesQuestions = () => {
+    return [
+        {
+            type: 'select',
+            name: 'command',
+            message: 'What would you like to do with repositories?',
+            choices: [
+                { title: 'Link repositories', value: 'link' },
+                { title: 'Unlink repositories', value: 'unlink' }
+            ]
+        },
+        {
+            type: 'multiselect',
+            name: 'repositories',
+            message: 'Please select repositories you wish to process and press Enter...',
+            choices: [
+                { title: 'DevExtreme', value: 'devextreme'},
+                { title: 'DevExtreme Angular', value: 'devextreme-angular'},
+                { title: 'DevExtreme React', value: 'devextreme-react'},
+                { title: 'DevExtreme Vue', value: 'devextreme-vue'},
+            ]
+        }
+    ];
+}
+
 const askCategory = async (menuMetaData) => {
     return prompts(getCategoryQuestions(menuMetaData), { onCancel });
 }
@@ -164,11 +190,24 @@ const askApproachesFolder = async (approaches) => {
     return prompts(getApproachesFoldersQuestions(approaches), { onCancel });
 }
 
+const askLinkRepositories = async () => {
+    return prompts(getLinkRepositoriesQuestions(), { onCancel })
+}
+
 const askHGPath = async () => {
     return prompts({
         type: 'text',
         name: 'hgPath',
         message: 'Specify a path of the Tortoise HG repository:'
+    }, { onCancel });
+}
+
+
+const askRepositoryPath = async (repositoryName) => {
+    return prompts({
+        type: 'text',
+        name: 'path',
+        message: 'Please specify a path to the `' + repositoryName + '` repository:'
     }, { onCancel });
 }
 
@@ -185,10 +224,12 @@ module.exports = {
     askApproaches,
     askWidget,
     askHGPath,
+    askRepositoryPath,
     getDemoQuestions,
     getApproachesQuestions,
     getWidgetQuestions,
     getApproachesFoldersQuestions,
     getDemoToUpdateQuestions,
     getNewOrExistingQuestions,
+    askLinkRepositories
 }

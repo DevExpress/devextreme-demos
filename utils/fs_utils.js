@@ -1,5 +1,7 @@
 const fs = require('fs');
 const path = require('path');
+const demosPathPrefix = 'utils';
+const descriptionFileName = 'description.md';
 
 const copyDemos = (demoPath, approaches, newOrExisting, menuMetaData, baseDemosDir) => {
     if(newOrExisting.choice == 'new') {
@@ -24,11 +26,11 @@ const copyFilesFromExistingDemos = (approaches, demoPath, newOrExisting, menuMet
 
 const copyFilesFromBlankDemos = (approaches, demoPath) => {
     approaches.forEach((approach) => {
-        const fromPath = path.join('src', approach);
+        const fromPath = path.join(demosPathPrefix, approach);
         const toPath = path.join(demoPath, approach);
         copyRecursiveSync(fromPath, toPath);
     });
-    fs.writeFileSync(path.join(demoPath, 'description.md'), '', function(err) {
+    fs.writeFileSync(path.join(demoPath, descriptionFileName), '', function(err) {
         if(err) throw err;
         console.log('description.md copied');
     });
@@ -76,7 +78,9 @@ const getApproachesList = (demoPath) => {
         console.error('Directory does not exist:', demoPath);
         process.exit(0);
     }
-    const demosList = fs.readdirSync(demoPath, { withFileTypes: true }).filter(dir => dir.isDirectory()).map(dir => dir.name);
+    const demosList = fs.readdirSync(demoPath, { withFileTypes: true })
+                        .filter(dirent => dirent.isDirectory())
+                        .map(dirent => dirent.name);
     return demosList;
 }
 

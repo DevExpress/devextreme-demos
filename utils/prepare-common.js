@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const pq = require('./prompts_questions');
+const reposHelper = require('./repos_helper');
 const fs_utils = require('./fs_utils');
 
 const scripts = [
@@ -8,14 +9,14 @@ const scripts = [
 ]
 
 const prepareWorkspace = async () => {
-    const response = await pq.askHGPath();
+    const hgPath = await reposHelper.getRepositoryPath('HG');
 
     const rootDir = process.cwd();
     const jsDemos = path.join(rootDir, 'JSDemos')
     const netCoreDemos = path.join(rootDir, 'NetCoreDemos');
     const mvcDemos = path.join(rootDir, 'MVCDemos');
     const mvcDemosAppData = path.normalize(path.join(mvcDemos + '/App_Data'));
-    const hgJSDemos = path.join(response.hgPath, 'Demos/WidgetsGallery/WidgetsGallery');
+    const hgJSDemos = path.join(hgPath, 'Demos/WidgetsGallery/WidgetsGallery');
     const dxStyles = path.join(jsDemos, 'node_modules/devextreme/dist/css');
     const dxIcons = path.join(jsDemos, 'node_modules/devextreme/dist/css/icons');
     const dxScripts = path.join(jsDemos, 'node_modules/devextreme/dist/js');
@@ -25,8 +26,8 @@ const prepareWorkspace = async () => {
     const jQuery = path.join(jsDemos, 'node_modules/jquery/dist');
     const jszip = path.join(jsDemos, 'node_modules/jszip/dist');
 
-    fs_utils.recreateLink(path.join(response.hgPath, 'SampleImages'), path.join(mvcDemos, 'Content/SampleData/SampleImages'));
-    fs_utils.recreateLink(path.join(response.hgPath, 'SampleImages'), path.join(netCoreDemos, 'wwwroot/SampleData/SampleImages'));
+    fs_utils.recreateLink(path.join(hgPath, 'SampleImages'), path.join(mvcDemos, 'Content/SampleData/SampleImages'));
+    fs_utils.recreateLink(path.join(hgPath, 'SampleImages'), path.join(netCoreDemos, 'wwwroot/SampleData/SampleImages'));
  
     fs.readdirSync(mvcDemosAppData)
         .filter(file => /.*\.ldf$/.test(file))
@@ -48,7 +49,7 @@ const prepareWorkspace = async () => {
     fs_utils.copyRecursiveSync(jQuery, path.join(netCoreDemos, 'wwwroot/js'));
     fs_utils.copyRecursiveSync(jszip, path.join(netCoreDemos, 'wwwroot/js'));
 
-    fs.copyFileSync(path.join(response.hgPath, 'SampleDatabases/Northwind.mdf'), path.join(mvcDemosAppData, 'Northwind.mdf'));
+    fs.copyFileSync(path.join(hgPath, 'SampleDatabases/Northwind.mdf'), path.join(mvcDemosAppData, 'Northwind.mdf'));
 
     fs_utils.recreateLink(path.join(hgJSDemos, 'build/demo-template.css'), path.join(mvcDemos, 'Content/demo-template.css'));
     fs_utils.recreateLink(path.join(hgJSDemos, 'build/demo-template.css'), path.join(netCoreDemos, 'wwwroot/css/demo-template.css'));
@@ -56,7 +57,7 @@ const prepareWorkspace = async () => {
     fs_utils.recreateLink(path.join(jsDemos, 'menuMeta.json'), path.join(mvcDemosAppData, 'menuMeta.json'));
     fs_utils.recreateLink(path.join(jsDemos, 'menuMeta.json'), path.join(netCoreDemos, 'menuMeta.json'));
 
-    return response;
+    return hgPath;
 }
 
 module.exports.prepareWorkspace = prepareWorkspace;

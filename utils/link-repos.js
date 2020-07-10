@@ -1,42 +1,22 @@
 const path = require('path');
-const prompts = require('prompts');
-const systemSync = require('./cp_utils').systemSync;
-const fs = require('fs');
-
-const baseDemosDir = 'Demos';
-const reposFilePath = './_reposPaths'; 
+const pq = require('./prompts_questions');
+const reposHelper = require('./repos_helper');
+const { askRepositoryPath } = require('./prompts_questions');
 const node_modulesDir = path.join(process.cwd(), 'node_modules');
 
-let reposPaths = {
-    devextreme: "",
-    devextreme_angular: "",
-    devextreme_react: "",
-    devextreme_vue: ""
-}
-
 const mainRoutine = async () => {
-    if(!fs.existsSync(reposFilePath)){
-        fs.writeFile(reposFilePath, JSON.stringify(reposPaths, null, 2), (err) => {
-            if(err) throw err;
-            console.log('File `' + reposFilePath + '` successfully created. Please fill it with paths to repos and run this script again');
-        });
-    } else {
-        reposPaths = JSON.parse(fs.readFileSync(reposFilePath));
-
-        console.log("Linking devextreme");
-        systemSync('cd ' + node_modulesDir + ' && npm link ' + path.join(reposPaths['devextreme'], 'artifacts', 'npm', 'devextreme'));
-
-        console.log('Linking devextreme-angular');
-        systemSync('cd ' + node_modulesDir + ' && npm link ' + reposPaths['devextreme-angular']);
-
-        console.log('Linking devextreme-react');
-        systemSync('cd ' + node_modulesDir + ' && npm link ' + reposPaths['devextreme-react']);
-
-        console.log('Linking devextreme-vue');
-        systemSync('cd ' + node_modulesDir + ' && npm link ' + reposPaths['devextreme-vue']);
-
-        console.log('Finished...');
-    }
+    response = await pq.askLinkRepositories();    
+    await reposHelper.processRepositoriesAsync(response.repositories, async (item) => {
+        console.log('Processing `' + item + '` repository...');
+        let repositoryPath = await reposHelper.getRepositoryPath(item);
+        if(item === 'devextreme') {
+            repositoryPath = path.join(repositoryPath, 'artifacts', 'npm', 'devextreme');
+            console.log(repositoryPath);
+        }
+        reposHelper.processRepository(response.command, item, repositoryPath, node_modulesDir);
+        console.log("Processed: " + repositoryPath);
+    });
+    console.log('Finished...');
 }
 
 (async () => await mainRoutine())();
