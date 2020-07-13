@@ -6,7 +6,7 @@ To run the demos on your machine, clone this repository, run `npm install`, and 
 
 ## Prepare Demos for Development
 
-The following script prepares demos in all technologies for development. If you run it, you can skip step 1 in the other instructions and start straight from step 2.
+The following script prepares demos in all technologies for development. If you run it, you can skip step 1 in the other instructions and start at step 2.
  
 ```
 npm run prepare-all
@@ -28,7 +28,7 @@ npm run prepare-all
     npm run launch-demo
     ```
 
-1. Choose the category, the demo that you want to launch, and the technology using the built-in CLI.
+1. Use the built-in CLI to choose the category, the demo that you want to launch, and the technology.
 1. Navigate to http://localhost:3000/.
 
 ### Development
@@ -45,7 +45,7 @@ npm run prepare-all
     npm run add-demo
     ```
 
-1. Choose or enter the category, the demo name, and the technology for the new demo using the built-in CLI.
+1. Use the built-in CLI to choose or enter the category, the demo name, and the technology for the new demo.
 
 ## ASP.NET Demos
 
