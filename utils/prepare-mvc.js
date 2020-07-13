@@ -8,13 +8,13 @@ const aspMvcDll = 'DevExtreme.AspNet.Mvc.dll';
 const aspMvcXml = 'DevExtreme.AspNet.Mvc.Xml';
 
 (async () => {
-    const response = await common.prepareWorkspace();
+    const hgPath = await common.prepareWorkspace();
 
     const rootDir = process.cwd();
     const mvcDemosPath = path.join(rootDir, 'MVCDemos');
     const mvcDemosLibPath = path.join(mvcDemosPath, 'lib');
-    const aspMvcPath = path.join(response.hgPath, 'DevExtreme.AspNet.Mvc');
-    const nugetPath = path.join(response.hgPath, '.nuget/Nuget.exe');
+    const aspMvcPath = path.join(hgPath, 'DevExtreme.AspNet.Mvc');
+    const nugetPath = path.join(hgPath, '.nuget/Nuget.exe');
 
     systemSync(nugetPath + ' restore ' + aspMvcPath + '/DevExtreme.AspNet.Mvc.Generator.sln');
     systemSync(nugetPath + ' restore ' + aspMvcPath + '/DevExtreme.AspNet.Mvc.Lib-Release.sln');
