@@ -4,16 +4,20 @@ const reposHelper = require('./repos_helper');
 const node_modulesDir = path.join(process.cwd(), 'node_modules');
 
 const mainRoutine = async () => {
-    response = await pq.askLinkRepositories();    
+    response = await pq.askLinkRepositories();
+    let repositories = [];
     await reposHelper.processRepositoriesAsync(response.repositories, async (repositoryName) => {
-        console.log('Processing `' + repositoryName + '` repository...');
-        let repositoryPath = await reposHelper.getRepositoryPath(repositoryName);
-        if(repositoryName === 'devextreme') {
-            repositoryPath = path.join(repositoryPath, 'artifacts', 'npm', 'devextreme');
-            console.log(repositoryPath);
+        const repositoryPath = await reposHelper.getRepositoryPath(repositoryName);
+        repositories.push({ name: repositoryName, path: repositoryPath });
+    });
+    repositories.forEach(repository => {
+        console.log('Processing the `' + repository.name + '` repository...');
+        if(repository.name === 'devextreme') {
+            repository.path = path.join(repository.path, 'artifacts', 'npm', 'devextreme');            
         }
-        reposHelper.processRepository(response.command, repositoryName, repositoryPath, node_modulesDir);
-        console.log("Processed: " + repositoryPath);
+        console.log(repository.path);
+        reposHelper.processRepository(response.command, repository.name, repository.path, node_modulesDir);
+        console.log("Processed: " + repository.path);
     });
     console.log('Finished ' + response.command + 'ing repositories...');
 }

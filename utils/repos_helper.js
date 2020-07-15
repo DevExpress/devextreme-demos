@@ -1,7 +1,8 @@
+const fs = require('fs');
+const path = require('path');
 const reposPaths = require('./_reposPaths');
 const systemSync = require('./cp_utils').systemSync;
-const reposPathsFilePath = './utils/_reposPaths.js';
-const fs = require('fs');
+const reposPathsFilePath = path.join(__dirname, '_reposPaths.js');
 const pq = require('./prompts_questions');
 
 const processRepositoriesAsync = async (repositories, callback) => {
