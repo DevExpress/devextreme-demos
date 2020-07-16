@@ -11,7 +11,7 @@ const createNugetPackage = (netCorePath, hgPath) => {
     const netCoreReleasePath = path.join(hgPath, 'DevExtreme.AspNet.Mvc/AspNetCore/DevExtreme.AspNet.Core/bin/Release');
     const nugetPath = path.join(hgPath, 'DevExtreme.AspNet.Mvc/AspNetCore/NuGet');
     const demosNugetPath = path.join(netCoreDemos, 'NuGet');
-    const version = require(path.join(rootDir, 'JSDemos', 'node_modules/devextreme/package.json'));
+    const version = require(path.join(rootDir, 'JSDemos', 'node_modules/devextreme/package.json')).version;
 
     fs_utils.recreateLink(nugetPath);
 
