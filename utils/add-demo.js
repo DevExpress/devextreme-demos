@@ -7,6 +7,7 @@ const menuMetaData = require('../JSDemos/menuMeta.json');
 
 const existingApproaches = ['jQuery', 'Knockout', 'AngularJS', 'Angular', 'React', 'Vue'],
     descriptionFileName = 'description.md',
+    menuMetaFilePath = './JSDemos/menuMeta.json',
     baseDemosDir = 'JSDemos/Demos';
 
 const mainRoutine = async (menuMetaData) => {
