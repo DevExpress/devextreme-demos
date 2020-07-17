@@ -27,7 +27,7 @@ const processRepository = (command, repositoryName, repositoryPath, node_modules
 const getUpdatedData = (data, repository, path) => {
     let pattern = "[\'\"]{0,1}DEVEXTREME[\'\"]{0,1}:\\s*[\'\"]{2}";
     pattern = pattern.replace('DEVEXTREME', repository); 
-    const replacement = "'" + repository + "'" + ': "' + path + "\"";
+    const replacement = "'" + repository + "'" + ': "' + path.replace(/\\/g, '\\\\') + "\"";
     const result = data.replace(new RegExp(pattern), replacement);
     return result;
 }
@@ -42,10 +42,10 @@ const savePathToFile = (repository, path) => {
 
 const getRepositoryPathByName = async (repositoryName) => {
     let repositoryNameNormalized = repositoryName.replace(' ', '-').toLowerCase();
-    let repositoryPath = reposPaths.getRepositoryPath(repositoryNameNormalized).trim().replace(/\\/g, '\\');
+    let repositoryPath = reposPaths.getRepositoryPath(repositoryNameNormalized).trim();
     if(!repositoryPath) {
         const response = await pq.askRepositoryPath(repositoryName);
-        repositoryPath = response.path.replace(/\\/g, '\\\\');
+        repositoryPath = response.path;
         savePathToFile(repositoryNameNormalized, repositoryPath);
     }
     return repositoryPath;
