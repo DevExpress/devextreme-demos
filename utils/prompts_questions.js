@@ -98,7 +98,7 @@ const getNewOrExistingQuestions = (menuMetaData) => {
     }, {
         type: (prev, answers) => answers.choice == 'existing' ? 'autocomplete' : null,
         name: 'demo',
-        message: '[Copy from existing]: Select the demo',
+        message: '[Copy from existing demo]: Select a demo',
         choices: (prev, answers) => mm_utils.getDemos(menuMetaData, answers.category, answers.group)
     }]
 }
