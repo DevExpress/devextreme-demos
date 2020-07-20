@@ -51,7 +51,7 @@ const getDemoQuestions = (menuMetaData, category, group) => {
 }
 
 const onCancel = () => {
-    console.log('Operation is cancelled.');
+    console.log('Operation is canceled.');
     process.exit(0);
 }
 
