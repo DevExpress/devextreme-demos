@@ -46,7 +46,7 @@ const getDemoQuestions = (menuMetaData, category, group) => {
     }, {
         type: setTextIfPrevIsNull,
         name: 'newName',
-        message: 'Type the name for a new demo:',
+        message: 'Enter the name of a new demo:',
     }];
 }
 
