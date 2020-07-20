@@ -65,7 +65,7 @@ const getWidgetQuestions = (baseDemosDir) => {
         type: (prev, answers) => answers.name == 'new' ? 'text' : null,
         name: 'newName',
         format: val => val.replace(/(?:^|\s)\S/g, (a) => a.toUpperCase()).replace(/ /g, ""),
-        message: 'Type the name for a new directory:',
+        message: 'Enter the name of a new directory:',
     }];
 }
 
