@@ -124,7 +124,7 @@ const getDemoToUpdateQuestions = (menuMetaData) => {
     }, {
         type: "autocomplete",
         name: 'group',
-        message: 'Select the group:',
+        message: 'Select a group:',
         choices: (prev, answers) => mm_utils.getGroups(menuMetaData, answers.category)
     }, {
         type: "autocomplete",
