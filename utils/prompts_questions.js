@@ -149,7 +149,7 @@ const getLinkRepositoriesQuestions = () => {
             type: 'multiselect',
             name: 'repositories',
             min: 1,
-            instructions: "\nSpace - select a repository\nUp/Down - Highlight next/previous repository\nEnter - complete selection\n",
+            instructions: "\nSpace - select a repository\nUp/Down - Highlight next/previous repository\nEnter - finish selection\n",
             message: (prev, answers) => 'Select repositories that you want to ' + answers.command + ' and press Enter...',
             choices: [
                 { title: 'DevExtreme', value: 'devextreme'},
