@@ -20,7 +20,7 @@ const getCategoryQuestions = (menuMetaData) => {
     { 
         type: setTextIfPrevIsNull,
         name: 'newName',
-        message: 'Type the name of a new category:'
+        message: 'Enter the name of a new category:'
     }];
 }
 
