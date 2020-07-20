@@ -7,23 +7,13 @@
         .Icon("add")
         .Type(ButtonType.Default)
         .OnClick("addButtonHandler"))
-    @(Html.DevExtreme().Button()
-        .ID("removeButton")
-        .Text("Remove Tab")
-        .Icon("trash")
-        .Type(ButtonType.Danger)
-        .StylingMode(ButtonStylingMode.Outlined)
-        .OnClick(@<text>
-            function() {
-                closeButtonHandler(tabPanel.option("selectedItem"));
-            }
-        </text>))
 </div>
 
 @(Html.DevExtreme().Sortable()
     .MoveItemOnDrop(true)
     .Filter(".dx-tab")
     .ItemOrientation(Orientation.Horizontal)
+    .DragDirection(DragDirection.Horizontal)
     .OnReorder("onReorder")
     .Content(@<text>@Html.Partial("_SortableTabPanel")</text>)
 )
@@ -52,12 +42,10 @@
         tabPanel.option("items", tabPanelItems);
         tabPanel.option("selectedItem", newItem);
 
-        updateButtonAppearance(tabPanelItems);
+        updateButtonsState(tabPanelItems);
     }
 
     function closeButtonHandler(itemData) {
-        if (!itemData) return;
-
         var tabPanelItems = tabPanel.option("items").slice();
         var index = tabPanelItems.indexOf(itemData);
 
@@ -65,11 +53,11 @@
         if (index >= tabPanelItems.length && index > 0) tabPanel.option("selectedIndex", index - 1);
         tabPanel.option("items", tabPanelItems);
 
-        updateButtonAppearance(tabPanelItems);
+        updateButtonsState(tabPanelItems);
     }
 
-    function updateButtonAppearance(items) {
+    function updateButtonsState(items) {
         $("#addButton").dxButton("instance").option("disabled", items.length === allEmployees.length);
-        $("#removeButton").dxButton("instance").option("disabled", items.length === 0);
+        if (items.length <= 2) tabPanel.repaint();
     }
 </script>

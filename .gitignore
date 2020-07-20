@@ -23,7 +23,7 @@ MVCDemos/Content/icons
 MVCDemos/Content/DevExtreme
 MVCDemos/Content/Descr/Temp
 MVCDemos/Content/demo-template.css
-MVCDemos/Content/SampleData/SampleImages/
+MVCDemos/Content/SampleData/SampleImages
 MVCDemos/Scripts/*
 !MVCDemos/Scripts/data
 !MVCDemos/Scripts/signalr
@@ -36,6 +36,6 @@ NetCoreDemos/wwwroot/Descr/Temp
 NetCoreDemos/wwwroot/js
 NetCoreDemos/wwwroot/css/*
 !NetCoreDemos/wwwroot/css/DemosStyles
-NetCoreDemos/wwwroot/SampleData/SampleImages/
+NetCoreDemos/wwwroot/SampleData/SampleImages
 NetCoreDemos/menuMeta.json
 

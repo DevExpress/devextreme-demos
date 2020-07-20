@@ -36,6 +36,9 @@ namespace DevExtreme.MVC.Demos.Controllers {
         public ActionResult CustomShapesWithTemplates() {
             return View(SampleData.OrgItemsPlain);
         }
+        public ActionResult CustomShapesWithTemplatesWithEditing() {
+            return View(SampleData.OrgItemsPlain);
+        }
         public ActionResult ReadOnly() {
             return View();
         }
