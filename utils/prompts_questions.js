@@ -33,7 +33,7 @@ const getGroupQuestions = (menuMetaData, category) => {
     }, {
         type: setTextIfPrevIsNull,
         name: 'newName',
-        message: 'Type the name of a new group:'
+        message: 'Enter the name of a new group:'
     }];
 }
 
