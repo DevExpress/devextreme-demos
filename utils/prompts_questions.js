@@ -16,7 +16,7 @@ const getPromptForCategories = (menuMetaData, message, newCategoryText) => {
 
 const getCategoryQuestions = (menuMetaData) => {
     return [
-        getPromptForCategories(menuMetaData, 'Please select the category where to add a new demo or `New category` to add a new category.', '[New category]'),
+        getPromptForCategories(menuMetaData, 'Select a category for the new demo or `New category` to create a new category.', '[New category]'),
     { 
         type: setTextIfPrevIsNull,
         name: 'newName',
