@@ -28,7 +28,7 @@ const getGroupQuestions = (menuMetaData, category) => {
     return [{ 
         type: 'autocomplete', 
         name: 'name', 
-        message: 'Please select the group where to add a new demo or `New group` to add a new group.', 
+        message: 'Select a group for the new demo or `New group` to create a new group.', 
         choices: mm_utils.getGroups(menuMetaData, category.name, '[New group]') 
     }, {
         type: setTextIfPrevIsNull,
