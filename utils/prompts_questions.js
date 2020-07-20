@@ -59,7 +59,7 @@ const getWidgetQuestions = (baseDemosDir) => {
     return [{
         type: 'autocomplete',
         name: 'name',
-        message: 'Please select the directory where to place the demo or `[New directory]` to create a new directory',
+        message: 'Select a directory for the demo or `[New directory]` to create a new directory',
         choices: fs_utils.getWidgets(path.join(baseDemosDir), '[New directory]')
     }, {
         type: (prev, answers) => answers.name == 'new' ? 'text' : null,
