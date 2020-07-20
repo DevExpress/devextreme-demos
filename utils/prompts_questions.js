@@ -210,7 +210,7 @@ const askRepositoryPath = async (repositoryName) => {
         type: 'text',
         name: 'path',
         validate: value => fs_utils.isValidDirectory(value) ? true : 'Invalid path.',
-        message: 'Please specify the location of the `' + repositoryName + '` repository:'
+        message: 'Specify the location of the `' + repositoryName + '` repository:'
     }, { onCancel });
 }
 
