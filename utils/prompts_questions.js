@@ -41,7 +41,7 @@ const getDemoQuestions = (menuMetaData, category, group) => {
     return [{ 
         type: 'autocomplete', 
         name: 'name', 
-        message: 'Please select the demo to add missing approaches or `[New demo]` to add a new demo to this group.', 
+        message: 'Select a demo to which you want to add missing approaches or `[New demo]` to create a new demo in this group.', 
         choices: mm_utils.getDemos(menuMetaData, category.name, group.name, '[New demo]') 
     }, {
         type: setTextIfPrevIsNull,
