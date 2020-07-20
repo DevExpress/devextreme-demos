@@ -129,7 +129,7 @@ const getDemoToUpdateQuestions = (menuMetaData) => {
     }, {
         type: "autocomplete",
         name: 'demo',
-        message: 'Select the demo:',
+        message: 'Select a demo:',
         choices: (prev, answers) => mm_utils.getDemos(menuMetaData, answers.category, answers.group)
     }]
 }
