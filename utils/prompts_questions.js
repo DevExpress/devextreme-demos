@@ -110,7 +110,7 @@ const getApproachesFoldersQuestions = (approaches) => {
     return {
         type: "autocomplete",
         name: 'approach',
-        message: 'Select the approach:',
+        message: 'Select an approach:',
         choices: result
     };
 }
