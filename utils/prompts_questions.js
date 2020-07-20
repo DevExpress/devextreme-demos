@@ -139,7 +139,7 @@ const getLinkRepositoriesQuestions = () => {
         {
             type: 'select',
             name: 'command',
-            message: 'Would you like to link or unlink repositories?',
+            message: 'Do you want to link or unlink repositories?',
             choices: [
                 { title: 'Link repositories', value: 'link' },
                 { title: 'Unlink repositories', value: 'unlink' }
