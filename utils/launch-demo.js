@@ -12,7 +12,6 @@ const mainRoutine = async (menuMetaData) => {
     const demoPath = fs_utils.getDemoPathByMeta(demo.category, demo.group, demo.demo, baseDemosDir, menuMetaData);
     const approaches = fs_utils.getApproachesList(demoPath);
     const demoApproach = await pq.askApproachesFolder(approaches);
-    //let pathToDemo = path.join(process.cwd(), demoPath, demoApproach.approach);
     const command = /^win/.test(process.platform) ? 'http-server.cmd' : 'http-server';
     const openUrl = path.join(demoPath, demoApproach.approach).replace(/\\/g, '/');
     const arguments = ['-a', 'localhost', '-p', '3000', '-c-1', '-d', '--cors', '--o', openUrl];

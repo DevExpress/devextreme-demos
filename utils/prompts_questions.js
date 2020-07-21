@@ -16,11 +16,11 @@ const getPromptForCategories = (menuMetaData, message, newCategoryText) => {
 
 const getCategoryQuestions = (menuMetaData) => {
     return [
-        getPromptForCategories(menuMetaData, 'Select a category to which you wish to add a new demo. Select `New category` to add a new category.', '[New category]'),
+        getPromptForCategories(menuMetaData, 'Select a category for the new demo or `New category` to create a new category.', '[New category]'),
     { 
         type: setTextIfPrevIsNull,
         name: 'newName',
-        message: 'Type name for a new category'
+        message: 'Enter the name of a new category:'
     }];
 }
 
@@ -28,12 +28,12 @@ const getGroupQuestions = (menuMetaData, category) => {
     return [{ 
         type: 'autocomplete', 
         name: 'name', 
-        message: 'Select a group to which you wish to add a new demo. Select `New group` to add a new group.', 
+        message: 'Select a group for the new demo or `New group` to create a new group.', 
         choices: mm_utils.getGroups(menuMetaData, category.name, '[New group]') 
     }, {
         type: setTextIfPrevIsNull,
         name: 'newName',
-        message: 'Type name for a new group'
+        message: 'Enter the name of a new group:'
     }];
 }
 
@@ -41,17 +41,17 @@ const getDemoQuestions = (menuMetaData, category, group) => {
     return [{ 
         type: 'autocomplete', 
         name: 'name', 
-        message: 'Select an existng demo to add missing approaches or `[New demo]` to add a new demo to this group.', 
+        message: 'Select a demo to which you want to add missing approaches or `[New demo]` to create a new demo in this group.', 
         choices: mm_utils.getDemos(menuMetaData, category.name, group.name, '[New demo]') 
     }, {
         type: setTextIfPrevIsNull,
         name: 'newName',
-        message: 'Type name for a new demo',
+        message: 'Enter the name of a new demo:',
     }];
 }
 
 const onCancel = () => {
-    console.log('Bye-bye!');
+    console.log('Operation is canceled.');
     process.exit(0);
 }
 
@@ -59,13 +59,13 @@ const getWidgetQuestions = (baseDemosDir) => {
     return [{
         type: 'autocomplete',
         name: 'name',
-        message: 'Select directory to which place the demo. Select `[New directory]` to create a new directory',
+        message: 'Select a directory for the demo or `[New directory]` to create a new directory',
         choices: fs_utils.getWidgets(path.join(baseDemosDir), '[New directory]')
     }, {
         type: (prev, answers) => answers.name == 'new' ? 'text' : null,
         name: 'newName',
         format: val => val.replace(/(?:^|\s)\S/g, (a) => a.toUpperCase()).replace(/ /g, ""),
-        message: 'Type name for a new directory',
+        message: 'Enter the name of a new directory:',
     }];
 }
 
@@ -73,7 +73,8 @@ const getApproachesQuestions = (approaches) => {
     return {
         type: 'multiselect',
         name: 'selectedApproaches',
-        message: 'Select approaches to add',
+        message: 'Select approaches:',
+        min: 1,
         choices: () => approaches.map((item) => { return { title: item, value: item }; })
     }
 }
@@ -87,17 +88,17 @@ const getNewOrExistingQuestions = (menuMetaData) => {
     },{
         type: (prev, answers) => answers.choice == 'existing' ? 'autocomplete' : null,
         name: 'category',
-        message: 'Copy from existing: Select a category',
+        message: '[Copy from existing demo]: Select a category:',
         choices: mm_utils.getCategories(menuMetaData)
     }, {
         type: (prev, answers) => answers.choice == 'existing' ? 'autocomplete' : null,
         name: 'group',
-        message: 'Copy from existing: Select a group',
+        message: '[Copy from existing demo]: Select a group',
         choices: (prev, answers) => mm_utils.getGroups(menuMetaData, answers.category)
     }, {
         type: (prev, answers) => answers.choice == 'existing' ? 'autocomplete' : null,
         name: 'demo',
-        message: 'Copy from existing: Select a demo',
+        message: '[Copy from existing demo]: Select a demo',
         choices: (prev, answers) => mm_utils.getDemos(menuMetaData, answers.category, answers.group)
     }]
 }
@@ -109,7 +110,7 @@ const getApproachesFoldersQuestions = (approaches) => {
     return {
         type: "autocomplete",
         name: 'approach',
-        message: 'Select approach',
+        message: 'Select an approach:',
         choices: result
     };
 }
@@ -118,19 +119,46 @@ const getDemoToUpdateQuestions = (menuMetaData) => {
     return [{
         type: "autocomplete",
         name: 'category',
-        message: 'Select a category',
+        message: 'Select a category:',
         choices: mm_utils.getCategories(menuMetaData)
     }, {
         type: "autocomplete",
         name: 'group',
-        message: 'Select a group',
+        message: 'Select a group:',
         choices: (prev, answers) => mm_utils.getGroups(menuMetaData, answers.category)
     }, {
         type: "autocomplete",
         name: 'demo',
-        message: 'Select a demo',
+        message: 'Select a demo:',
         choices: (prev, answers) => mm_utils.getDemos(menuMetaData, answers.category, answers.group)
     }]
+}
+
+const getLinkRepositoriesQuestions = () => {
+    return [
+        {
+            type: 'select',
+            name: 'command',
+            message: 'Do you want to link or unlink repositories?',
+            choices: [
+                { title: 'Link repositories', value: 'link' },
+                { title: 'Unlink repositories', value: 'unlink' }
+            ]
+        },
+        {
+            type: 'multiselect',
+            name: 'repositories',
+            min: 1,
+            instructions: "\nSpace - select a repository\nUp/Down - Highlight next/previous repository\nEnter - finish selection\n",
+            message: (prev, answers) => 'Select repositories that you want to ' + answers.command + ' and press Enter...',
+            choices: [
+                { title: 'DevExtreme', value: 'devextreme'},
+                { title: 'DevExtreme Angular', value: 'devextreme-angular'},
+                { title: 'DevExtreme React', value: 'devextreme-react'},
+                { title: 'DevExtreme Vue', value: 'devextreme-vue'},
+            ]
+        }
+    ];
 }
 
 const askCategory = async (menuMetaData) => {
@@ -164,11 +192,25 @@ const askApproachesFolder = async (approaches) => {
     return prompts(getApproachesFoldersQuestions(approaches), { onCancel });
 }
 
+const askLinkRepositories = async () => {
+    return prompts(getLinkRepositoriesQuestions(), { onCancel })
+}
+
 const askHGPath = async () => {
     return prompts({
         type: 'text',
         name: 'hgPath',
-        message: 'Specify a path of the Tortoise HG repository:'
+        message: 'Please specify the location of the Tortoise HG repository:'
+    }, { onCancel });
+}
+
+
+const askRepositoryPath = async (repositoryName) => {
+    return prompts({
+        type: 'text',
+        name: 'path',
+        validate: value => fs_utils.isValidDirectory(value) ? true : 'Invalid path.',
+        message: 'Specify the location of the `' + repositoryName + '` repository:'
     }, { onCancel });
 }
 
@@ -185,10 +227,12 @@ module.exports = {
     askApproaches,
     askWidget,
     askHGPath,
+    askRepositoryPath,
     getDemoQuestions,
     getApproachesQuestions,
     getWidgetQuestions,
     getApproachesFoldersQuestions,
     getDemoToUpdateQuestions,
     getNewOrExistingQuestions,
+    askLinkRepositories
 }
