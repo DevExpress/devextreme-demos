@@ -1,0 +1,233 @@
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.OrgItemPlain>
+
+@(Html.DevExtreme().Diagram()
+    .ID("diagram")
+    .CustomShapes(cs => {
+        cs.Add()
+            .Type("employee")
+            .Category("employee")
+            .BaseType("rectangle")
+            .DefaultWidth(1.5)
+            .DefaultHeight(1)
+            .ToolboxWidth(2)
+            .ToolboxHeight(1)
+            .MinWidth(1.5)
+            .MinHeight(1)
+            .MaxWidth(3)
+            .MaxHeight(2)
+            .AllowEditText(false);
+    })
+    .CustomShapeTemplate(@<text>
+        <svg class="template">
+            <text class="template-name" x="50%" y="20%"><%- dataItem ? dataItem.FullName : "Employee's Name" %></text>
+            <text class="template-title" x="50%" y="45%"><%- dataItem ? dataItem.Title : "Employee's Title" %></text>
+            <text class="template-button" x="40%" y="85%" onclick="editEmployee(<%- dataItem && JSON.stringify(dataItem) %>)">Edit</text>
+            <text class="template-button" x="62%" y="85%" onclick="deleteEmployee(<%- dataItem && JSON.stringify(dataItem) %>)">Delete</text>
+        </svg>
+        </text>)
+    .CustomShapeToolboxTemplate(@<text>
+        <svg class="template">
+            <text class="template-name" x="50%" y="40%">New</text>
+            <text class="template-title" x="50%" y="70%">Employee</text>
+        </svg>
+    </text>)
+    .Nodes(ns => ns
+        .DataSource(d => d
+            .Array()
+                .Key("ID")
+                .Data(Model)
+                .OnInserted("onNodeInserted")
+                .OnUpdated("onNodeUpdated")
+                .OnRemoved("onNodeRemoved")
+            )
+        .KeyExpr("ID")
+        .TypeExpr(new JS("itemTypeExpr"))
+        .CustomDataExpr(new JS("itemCustomDataExpr"))
+        .ParentKeyExpr("HeadID")
+        .AutoLayout(al => al
+            .Type(DiagramDataLayoutType.Tree)
+        )
+    )
+    .ContextToolbox(ct => ct
+        .ShapeIconsPerRow(1)
+        .Width(100)
+    )
+    .Toolbox(tb => tb
+        .Groups(g => {
+            g.Add().Category("employee").Title("Employee").Expanded(true);
+        })
+        .ShowSearch(false)
+        .ShapeIconsPerRow(1)
+    )
+    .PropertiesPanel(pp => pp
+        .Tabs(t => {
+            t.Add()
+                .Groups(g => {
+                    g.Add()
+                        .Title("Page Properties")
+                        .Commands(new[] { DiagramCommand.PageSize, DiagramCommand.PageOrientation, DiagramCommand.PageColor });
+                });
+        })
+    )
+)
+
+@(Html.DevExtreme().Popup()
+    .ID("popup")
+    .Width(400)
+    .Height(480)
+    .ShowTitle(true)
+    .Title("Edit Employee")
+    .Visible(false)
+    .DragEnabled(false)
+    .ContentTemplate(new TemplateName("popup-content"))
+)
+
+@using(Html.DevExtreme().NamedTemplate("popup-content")) {
+    <div class="dx-fieldset">
+        <div class="dx-field">
+            <div class="dx-field-label">Name</div>
+            <div class="dx-field-value" data-field="FullName">
+                @(Html.DevExtreme().TextBox())
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Title</div>
+            <div class="dx-field-value" data-field="Title">
+                @(Html.DevExtreme().TextBox())
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">City</div>
+            <div class="dx-field-value" data-field="City">
+                @(Html.DevExtreme().TextBox())
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">State</div>
+            <div class="dx-field-value" data-field="State">
+                @(Html.DevExtreme().TextBox())
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Email</div>
+            <div class="dx-field-value" data-field="Email">
+                @(Html.DevExtreme().TextBox())
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Skype</div>
+            <div class="dx-field-value" data-field="Skype">
+                @(Html.DevExtreme().TextBox())
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Phone</div>
+            <div class="dx-field-value" data-field="MobilePhone">
+                @(Html.DevExtreme().TextBox())
+            </div>
+        </div>
+    </div>
+    <div class="dx-fieldset buttons">
+        @(Html.DevExtreme().Button()
+            .Text("Update")
+            .Type(ButtonType.Default)
+            .OnClick("updateEmployee")
+        )
+        @(Html.DevExtreme().Button()
+            .Text("Cancel")
+            .OnClick("cancelEditEmployee")
+        )
+    </div>
+}
+
+<script type="text/javascript">
+    var currentEmployee = {}
+
+    function onNodeInserted(values) {
+        values.ID = values.ID || generatedID++;
+        values.FullName = values.FullName || "Employee's Name";
+        values.Title = values.Title || "Employee's Title";
+
+        var diagram = $("#diagram").dxDiagram("instance");
+        diagram.reloadContent(values.ID, values.HeadID !== undefined);
+    }
+
+    function onNodeUpdated(key, values) {
+        var diagram = $("#diagram").dxDiagram("instance");
+        diagram.reloadContent(key, values.HeadID !== undefined);
+    }
+
+    function onNodeRemoved(key) {
+        var diagram = $("#diagram").dxDiagram("instance");
+        diagram.reloadContent(key, true);
+    }
+
+    function itemTypeExpr(obj) {
+        return "employee";
+    }
+
+    function itemCustomDataExpr(obj, value) {
+        if(value === undefined) {
+            return {
+                "FullName": obj.FullName,
+                "Prefix": obj.Prefix,
+                "Title": obj.Title,
+                "City": obj.City,
+                "State": obj.State,
+                "Email": obj.Email,
+                "Skype": obj.Skype,
+                "MobilePhone": obj.MobilePhone
+            };
+        } else {
+            obj.FullName = value.FullName;
+            obj.Prefix = value.Prefix;
+            obj.Title = value.Title;
+            obj.City = value.City;
+            obj.State = value.State;
+            obj.Email = value.Email;
+            obj.Skype = value.Skype;
+            obj.MobilePhone = value.MobilePhone;
+        }
+    }
+
+    function editEmployee(employee) {
+        currentEmployee = Object.assign({}, employee);
+
+        var popup = $("#popup").dxPopup("instance");
+        popup.show();
+        popup.content().find(".dx-field-value").each(function() {
+            var field = $(this).attr("data-field");
+            var edit = $(this).children().dxTextBox("instance");
+            edit.option({
+                value: currentEmployee[field],
+                onValueChanged: function(e) { handleChange(field, e.value); }
+            });
+        });
+    };
+    function deleteEmployee(employee) {
+        var diagram = $("#diagram").dxDiagram("instance");
+        diagram.getNodeDataSource().store().remove(employee.ID);
+    };
+    function updateEmployee() {
+        var diagram = $("#diagram").dxDiagram("instance");
+        diagram.getNodeDataSource().store().update(currentEmployee.ID, {
+            "FullName": currentEmployee.FullName,
+            "Title": currentEmployee.Title,
+            "City": currentEmployee.City,
+            "State": currentEmployee.State,
+            "Email": currentEmployee.Email,
+            "Skype": currentEmployee.Skype,
+            "MobilePhone": currentEmployee.MobilePhone
+        });
+        var popup = $("#popup").dxPopup("instance");
+        popup.hide();
+    };
+    function cancelEditEmployee() {
+        currentEmployee = {};
+        var popup = $("#popup").dxPopup("instance");
+        popup.hide();
+    }
+    function handleChange(field, value) {
+        currentEmployee[field] = value;
+    }
+</script>

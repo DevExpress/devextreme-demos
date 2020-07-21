@@ -66,6 +66,7 @@
     }
 
     function onAppointmentFormOpening(e) {
+        debugger;
         var startDate = new Date(e.appointmentData.StartDate);
         if(!isValidAppointmentDate(startDate)) {
             e.cancel = true;
@@ -141,10 +142,10 @@
     }
 
     function applyDisableDatesToDateEditors(form) {
-        var startDateEditor = form.getEditor('startDate');
+        var startDateEditor = form.getEditor('StartDate');
         startDateEditor.option('disabledDates', holidays);
 
-        var endDateEditor = form.getEditor('endDate');
+        var endDateEditor = form.getEditor('EndDate');
         endDateEditor.option('disabledDates', holidays);
     }
 

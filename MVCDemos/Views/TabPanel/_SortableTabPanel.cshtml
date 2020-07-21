@@ -2,44 +2,31 @@
 
 @(Html.DevExtreme().TabPanel()
     .ID("tabPanel")
-    .Height(472)
+    .Height(410)
     .DataSource(Model.Where(i => i.ID <= 3))
     .ItemTitleTemplate(new JS("titleTemplate"))
     .ItemTemplate(@<text>
-            <div class="employeeInfo">
-                <img class="employeePhoto" src="<%- Picture %>"/>
-                <p class="employeeNotes"><b>Position: <%- Position %></b><br/><%- Notes %></p>
-            </div>
-            <div class="caption"><%- FirstName %> <%- LastName  + "'" %>s Tasks:</div>
-            @(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.EmployeeTask>()
-                .ColumnAutoWidth(true)
-                .ShowBorders(false)
-                .RowAlternationEnabled(true)
-                .ShowColumnLines(false)
-                .Columns(columns => {
-                    columns.AddFor(m => m.Subject);
-                    columns.AddFor(m => m.StartDate).AllowHiding(true);
-                    columns.AddFor(m => m.DueDate).AllowHiding(true);
-                    columns.AddFor(m => m.Priority).DataType(GridColumnDataType.String);
-                    columns.Add()
-                        .Caption("Completed")
-                        .DataType(GridColumnDataType.Boolean)
-                        .CalculateCellValue(@"function(rowData) { return rowData.Status == ""Completed""; }");
-                })
-                .DataSource(d => d.WebApi()
-                    .RouteName("DataGridMasterDetailView")
-                    .LoadAction("TaskDetails")
-                    .LoadParams(new { id = new JS("ID") })
-                )
+        <div class="employeeInfo">
+            <img class="employeePhoto" src="<%- Picture %>" />
+            <p class="employeeNotes"><b>Position: <%- Position %></b><br /><%- Notes %></p>
+        </div>
+        <div class="caption"><%- FirstName %> <%- LastName  + "'" %>s Tasks:</div>
+        <div class="task-list">
+            @(Html.DevExtreme().List()
+                    .DataSource(new JS("getEmployeeTasks(ID)"))
+                    .Disabled(true)
+                    .ShowSelectionControls(true)
+                    .SelectionMode(ListSelectionMode.Multiple)
+                    .SelectedItems(new JS("getCompletedTasks(ID)"))
+                    .ItemTemplate(new JS("taskTemplate"))
             )
-        </text>)
+        </div>
+    </text>)
     .DeferRendering(false)
     .ShowNavButtons(true)
     .RepaintChangesOnly(true)
-    .AnimationEnabled(true)
-    .SwipeEnabled(true)
     .OnInitialized("onInitialized")
-    )
+)
 
 <script>
     function titleTemplate(itemData, itemIndex, itemElement) {
@@ -47,12 +34,27 @@
             $("<span>")
                 .text(`${itemData.FirstName} ${itemData.LastName}`)
         );
-        itemElement.append(' ');
+        if (tabPanel.option("items").length !== 1) {
+            itemElement.append(
+                $("<i>")
+                    .addClass("dx-icon")
+                    .addClass("dx-icon-close")
+                    .click(function () { closeButtonHandler(itemData); })
+            );
+        }
+    }
+
+    function taskTemplate(itemData, itemIndex, itemElement) {
         itemElement.append(
-            $("<i>")
-                .addClass("dx-icon")
-                .addClass("dx-icon-close")
-                .click(function () { closeButtonHandler(itemData); })
+            $("<div>").text(itemData.Subject)
         );
+    }
+
+    function getEmployeeTasks(id) {
+        return allEmployees.filter(function (employee) { return employee.ID === id })[0].Tasks
+    }
+
+    function getCompletedTasks(id) {
+        return getEmployeeTasks(id).filter(function (task) { return task.Status === "Completed" });
     }
 </script>

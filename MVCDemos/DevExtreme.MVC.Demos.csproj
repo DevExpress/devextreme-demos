@@ -631,6 +631,7 @@
     <Content Include="Content\DemosStyles\Diagram\AdvancedDataBinding.css" />
     <Content Include="Content\DemosStyles\Diagram\Containers.css" />
     <Content Include="Content\DemosStyles\Diagram\CustomShapesWithIcons.css" />
+    <Content Include="Content\DemosStyles\Diagram\CustomShapesWithTemplatesWithEditing.css" />
     <Content Include="Content\DemosStyles\Diagram\CustomShapesWithTemplates.css" />
     <Content Include="Content\DemosStyles\Diagram\CustomShapesWithTexts.css" />
     <Content Include="Content\DemosStyles\Diagram\ImagesInShapes.css" />
@@ -1002,7 +1003,6 @@
     <Content Include="Content\DevExtreme\dx.darkmoon.css" />
     <Content Include="Content\DevExtreme\dx.darkviolet.css" />
     <Content Include="Content\DevExtreme\dx.greenmist.css" />
-    <Content Include="Content\DevExtreme\dx.ios7.default.css" />
     <Content Include="Content\DevExtreme\dx.light.compact.css" />
     <Content Include="Content\DevExtreme\dx.light.css" />
     <Content Include="Content\DevExtreme\dx.material.blue.dark.compact.css" />
@@ -1619,7 +1619,7 @@
     <Content Include="Content\SampleData\VectorMap.json" />
     <Content Include="Content\SampleData\Wind.json" />
     <Content Include="Scripts\cldr.js" />
-    <Content Include="Scripts\cldr.js" />
+    <Content Include="Scripts\cldr.min.js" />
     <Content Include="Scripts\cldr\event.js" />
     <Content Include="Scripts\cldr\event.min.js" />
     <Content Include="Scripts\cldr\supplemental.js" />
@@ -1673,8 +1673,6 @@
     <Content Include="Scripts\vectormap-data\world.js" />
     <Content Include="Content\DevExtreme\icons\dxicons.ttf" />
     <Content Include="Content\DevExtreme\icons\dxicons.woff" />
-    <Content Include="Content\DevExtreme\icons\dxiconsios.ttf" />
-    <Content Include="Content\DevExtreme\icons\dxiconsios.woff" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\DateBox\Overview.cshtml" />
     <Content Include="Views\ColorBox\Overview.cshtml" />
@@ -1917,7 +1915,6 @@
     <Content Include="Views\Charts\Palette.cshtml" />
     <Content Include="Content\Descr\TreeList\WebAPIService.md" />
     <Content Include="Content\DevExtreme\icons\dxicons.woff2" />
-    <Content Include="Content\DevExtreme\icons\dxiconsios.woff2" />
     <Content Include="Content\DevExtreme\icons\dxiconsmaterial.ttf" />
     <Content Include="Content\DevExtreme\icons\dxiconsmaterial.woff" />
     <Content Include="Content\DevExtreme\icons\dxiconsmaterial.woff2" />
@@ -2101,6 +2098,7 @@
     <Content Include="Views\FieldSet\Overview.cshtml" />
     <Content Include="Views\TabPanel\SortableClosableTabs.cshtml" />
     <Content Include="Views\TabPanel\_SortableTabPanel.cshtml" />
+    <Content Include="Views\Diagram\CustomShapesWithTemplatesWithEditing.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
