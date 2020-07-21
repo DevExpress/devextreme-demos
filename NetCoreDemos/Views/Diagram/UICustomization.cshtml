@@ -12,6 +12,8 @@
     .ContextToolbox(ct => ct
         .Enabled(true)
         .Category(DiagramShapeCategory.Flowchart)
+        .ShapeIconsPerRow(5)
+        .Width(200)
     )
     .PropertiesPanel(pp => pp
         .Visibility(DiagramPanelVisibility.Visible)
@@ -56,6 +58,9 @@
             g.Add().Category(DiagramShapeCategory.General).Title("General");
             g.Add().Category(DiagramShapeCategory.Flowchart).Title("Flowchart").Expanded(true);
         })
+        .ShowSearch(false)
+        .ShapeIconsPerRow(4)
+        .Width(220)
     )
     .OnCustomCommand(@<text>
         function(e) {

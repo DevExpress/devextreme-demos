@@ -71,13 +71,7 @@
 <script>
     function syncSelection(treeView) {
         var selectedEmployees = treeView.component.getSelectedNodes()
-            .map(function (node) {
-                return {
-                    Prefix: node.itemData.Prefix,
-                    FullName: node.itemData.FullName,
-                    Position: node.itemData.Position
-                }
-            });
+            .map(function (node) { return node.itemData; });
 
         getSelectedEmployeesList().option("items", selectedEmployees);
     }

@@ -36,6 +36,9 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         public IActionResult CustomShapesWithTemplates() {
             return View(SampleData.OrgItemsPlain);
         }
+        public ActionResult CustomShapesWithTemplatesWithEditing() {
+            return View(SampleData.OrgItemsPlain);
+        }
         public IActionResult ReadOnly() {
             return View();
         }
