@@ -139,10 +139,11 @@
     function onItemClick(args) {
         var fileManager = getFileManager();
         var updated = false;
+
         if(args.itemData.extension) {
-            updated = createFile(args.itemData.extension);
+            updated = createFile(args.itemData.extension, args.fileSystemItem);
         } else if(args.itemData.category !== undefined) {
-            updated = updateCategory(args.itemData.category);
+            updated = updateCategory(args.itemData.category, args.fileSystemItem, args.viewArea);
         }
 
         if(updated) {
@@ -150,10 +151,8 @@
         }
     }
 
-    function createFile(fileExtension) {
+    function createFile(fileExtension, directory) {
         var fileManager = getFileManager();
-        var currentDirectory = fileManager.getCurrentDirectory();
-
         var newItem = {
             __KEY__: Date.now(),
             name: "New file" + fileExtension,
@@ -161,23 +160,43 @@
             size: 0
         };
 
-        if(currentDirectory.dataItem) {
-            currentDirectory.dataItem.items.push(newItem);
-        } else {
-            fileSystem.push(newItem);
+        directory = directory || fileManager.getCurrentDirectory();
+        if(!directory.isDirectory) {
+            return false;
         }
+
+        var array = null;
+        if(!directory.dataItem) {
+            array = fileSystem;
+        }
+        else {
+            array = directory.dataItem.items;
+            if(!array) {
+                directory.dataItem.items = array = [];
+            }
+        }
+
+        array.push(newItem);
         return true;
     }
 
-    function updateCategory(newCategory) {
+    function updateCategory(newCategory, directory, viewArea) {
         var fileManager = getFileManager();
-        var selectedItems = fileManager.getSelectedItems();
+        var items = null;
 
-        selectedItems.forEach(function(selectedItem) {
-            selectedItem.dataItem.category = newCategory;
+        if(viewArea === "navPane") {
+            items = [directory];
+        } else {
+            items = fileManager.getSelectedItems();
+        }
+
+        items.forEach(function(item) {
+            if(item.dataItem) {
+                item.dataItem.category = newCategory;
+            }
         });
 
-        return selectedItems.length > 0;
+        return items.length > 0;
     }
 
     function getFileManager() {
