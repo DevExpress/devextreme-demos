@@ -33,23 +33,12 @@ SchedulerViewType.Month
         .Icon("plus")
         .OnClick(@<text>
             function() {
-            getSchedulerInstance().showAppointmentPopup(createAppointmentPopupData());
+            getSchedulerInstance().showAppointmentPopup();
             }
         </text>)
 )
 
 <script>
-    function createAppointmentPopupData() {
-        var instance = getSchedulerInstance();
-        var currentDate = instance.option('currentDate');
-        var cellDuration = instance.option('cellDuration');
-
-        return {
-            StartDate: new Date(currentDate),
-            EndDate: new Date(currentDate.setMinutes(cellDuration))
-        };
-    }
-
     function getSchedulerInstance() {
         return $("#scheduler").dxScheduler("instance");
     }
