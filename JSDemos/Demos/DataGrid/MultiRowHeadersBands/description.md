@@ -1,1 +1,3 @@
-The **DataGrid** widget allows you to&nbsp;group column headers logically to&nbsp;implement a&nbsp;banded layout. In&nbsp;this demo, the **columns** array has a&nbsp;hierarchical structure, although such a&nbsp;layout can be&nbsp;built on&nbsp;a&nbsp;flat-structured array as&nbsp;well. Note that despite being banded, the nested columns remain interactive.
+To implement multi-level headers, transform the [columns](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/) array into a hierarchical one as done in this demo. If you don't use the **columns** array, set the band and banded columns in the [ownerBand](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#ownerBand) and [isBand](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#isBand) options inside the customizeColumns function (see the example in the **isBand** description).  
+
+Note that despite being banded, the nested columns remain interactive.

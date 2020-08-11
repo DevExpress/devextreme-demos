@@ -522,7 +522,7 @@
             "DemoType": "Web"
           },
           {
-            "Title": "Multi-Row Headers (Bands)",
+            "Title": "Multi-Level Headers (Bands)",
             "Name": "MultiRowHeadersBands",
             "DocUrl": "Guide/Widgets/DataGrid/Columns/Column_Types/Band_Columns/",
             "Credits": "www.wikipedia.org",
