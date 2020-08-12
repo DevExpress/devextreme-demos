@@ -524,7 +524,6 @@
           {
             "Title": "Multi-Level Headers (Bands)",
             "Name": "MultiRowHeadersBands",
-            "DocUrl": "Guide/Widgets/DataGrid/Columns/Column_Types/Band_Columns/",
             "Credits": "www.wikipedia.org",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
