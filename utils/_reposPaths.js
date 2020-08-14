@@ -1,10 +1,10 @@
 ﻿
 const reposPaths = {
-    'devextreme': "",
+    'devextreme': "F:\\repositories\\DevExtreme",
     'devextreme-angular': "",
     'devextreme-react': "",
     'devextreme-vue': "",
-    'hg': ""
+    'hg': "F:\\repositories\\dxHG"
 }
 
 const getRepositoryPath = (repositoryName) => {
