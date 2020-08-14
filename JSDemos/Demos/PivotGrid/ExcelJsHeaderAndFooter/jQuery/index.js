@@ -59,7 +59,6 @@ $(function(){
             }).then(function(gridRange) {
                 exportHeader(worksheet, grid);
                 exportRowHeaders(worksheet, grid, gridRange);
-                exportColumnHeaders(worksheet, grid, gridRange);
                 exportFooter(worksheet, gridRange, gridRange);
             }).then(function() {
                 // https://github.com/exceljs/exceljs#writing-xlsx
@@ -88,8 +87,9 @@ function exportHeader(worksheet, grid) {
 }
 
 function exportRowHeaders(worksheet, grid, gridRange){
-    var fields = grid.getDataSource().fields();
-    var rowFields = getFields(fields, 'row', r => r.dataField);
+    var rowFields = grid.getDataSource().fields()
+        .filter(r => r.area === area)
+        .map(r => r.dataField);
 
     var columnFromIndex = 1;
     var columnToIndex = worksheet.views[0].xSplit;
@@ -100,37 +100,10 @@ function exportRowHeaders(worksheet, grid, gridRange){
     });
 }
 
-function exportColumnHeaders(worksheet, grid, gridRange){
-    var fields = grid.getDataSource().fields();
-    var columnFields = getFields(fields, 'column', r => r.dataField);
-    var dataFields = getFields(fields, 'data', r => r.dataField);
-
-    var rowIndex = gridRange.from.row - 1;    
-    var columnIndex = worksheet.views[0].xSplit + 1;
-    var columnHeaderCell = worksheet.getRow(rowIndex).getCell(columnIndex);
-    columnHeaderCell.value = dataFields.join(',') + ' by ' + columnFields.join(' and ');
-}
-
 function exportFooter(worksheet, gridRange) {
     var footerRowIndex = gridRange.to.row + 2;
     var footerCell = worksheet.getRow(footerRowIndex).getCell(gridRange.to.column);
     footerCell.value = 'www.wikipedia.org';
     footerCell.font = { color: { argb: 'BFBFBF' }, italic: true };
     footerCell.alignment = { horizontal: 'right' };
-}
-
-function getYearsRange(grid) {
-    var dateFieldIndex = 2;
-    var filterValues = grid.getDataSource().fields()[dateFieldIndex].filterValues;
-    if(filterValues === null) {
-        return '';
-    }
-
-    var uniqueYears = [...new Set(filterValues.map(f => f[0]))];
-    return ' for ' + uniqueYears.join(', ') 
-        + (uniqueYears.length > 1 ? ' years': ' year');
-}
-
-function getFields(fields, area, mapper){
-    return [...new Set(fields.filter(r => r.area === area).map(mapper))];
 }
