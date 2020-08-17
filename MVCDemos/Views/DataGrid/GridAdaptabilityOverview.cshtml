@@ -11,9 +11,6 @@
         .AllowAdding(true)
         .AllowUpdating(true)
         .Mode(GridEditMode.Batch))
-    .Export(e => e
-        .Enabled(true)
-        .FileName("Orders"))
     .Grouping(g => g
         .ContextMenuEnabled(true)
         .ExpandMode(GridGroupingExpandMode.RowClick))
