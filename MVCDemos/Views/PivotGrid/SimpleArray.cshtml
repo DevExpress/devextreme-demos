@@ -9,7 +9,6 @@
     .Height(440)
     .ShowBorders(true)
     .FieldChooser(c => c.Enabled(false))
-    .Export(e => e.Enabled(true).FileName("Sales"))
     .DataSource(d => d
         .Store(new JS("sales"))
         .Fields(fields => {
