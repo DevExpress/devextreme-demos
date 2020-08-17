@@ -56,5 +56,17 @@ namespace DevExtreme.MVC.Demos.Controllers {
         public ActionResult WebAPIService() {
             return View();
         }
+
+        public ActionResult ExcelJSOverview() {
+            return View();
+        }
+
+        public ActionResult ExcelJSCellCustomization() {
+            return View();
+        }
+
+        public ActionResult ExcelJsHeaderAndFooter() {
+            return View();
+        }
     }
 }

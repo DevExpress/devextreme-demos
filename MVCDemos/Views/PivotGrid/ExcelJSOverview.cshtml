@@ -1,0 +1,63 @@
+﻿@section ExternalDependencies {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/3.3.1/exceljs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.4.0/polyfill.min.js"></script>
+}
+
+@(Html.DevExtreme().PivotGrid()
+    .ID("sales")
+    .Height(440)
+    .RowHeaderLayout(PivotGridRowHeadersLayout.Tree)
+    .ShowBorders(true)
+    .FieldChooser(c => c.Enabled(false))
+    .Export(e => e.Enabled(true))
+    .OnExporting("onExporting")
+    .DataSource(d => d
+        .Store(s => s.WebApi().Controller("PivotGridData"))
+        .Fields(fields => {
+            fields.Add()
+                .Caption("Region")
+                .DataField("Region")
+                .Area(PivotGridArea.Row)
+                .Expanded(true);
+
+            fields.Add()
+                .Caption("City")
+                .Width(150)
+                .DataField("City")
+                .Area(PivotGridArea.Row);
+
+            fields.Add()
+                .DataField("Date")
+                .DataType(PivotGridDataType.Date)
+                .Area(PivotGridArea.Column)
+                .Expanded(true);
+
+            fields.Add()
+                .Caption("Sales")
+                .DataField("Amount")
+                .DataType(PivotGridDataType.Number)
+                .SummaryType(SummaryType.Sum)
+                .Format(Format.Currency)
+                .Area(PivotGridArea.Data);
+        })
+    )
+)
+
+<script>
+    function onExporting(e) {
+        var workbook = new ExcelJS.Workbook();
+        var worksheet = workbook.addWorksheet('Sales');
+
+        DevExpress.excelExporter.exportPivotGrid({
+            component: e.component,
+            worksheet: worksheet
+        }).then(function () {
+            workbook.xlsx.writeBuffer().then(function (buffer) {
+                saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Sales.xlsx');
+            });
+        });
+        e.cancel = true;
+    }
+</script>
+

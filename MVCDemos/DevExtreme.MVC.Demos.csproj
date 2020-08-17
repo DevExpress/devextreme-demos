@@ -2099,6 +2099,9 @@
     <Content Include="Views\TabPanel\SortableClosableTabs.cshtml" />
     <Content Include="Views\TabPanel\_SortableTabPanel.cshtml" />
     <Content Include="Views\Diagram\CustomShapesWithTemplatesWithEditing.cshtml" />
+    <Content Include="Views\PivotGrid\ExcelJSOverview.cshtml" />
+    <Content Include="Views\PivotGrid\ExcelJSCellCustomization.cshtml" />
+    <Content Include="Views\PivotGrid\ExcelJSHeaderAndFooter.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
