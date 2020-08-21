@@ -17,7 +17,7 @@
     .OnCellPrepared("onCellPrepared")
     .OnExporting("onExporting")
     .DataSource(d => d
-        .Store(s => s.Mvc().Controller("PivotGridData"))
+        .Store(s => s.Mvc().Controller("PivotGridData").LoadAction("Get"))
         .Fields(fields => {
             fields.Add()
                 .Caption("Region")
