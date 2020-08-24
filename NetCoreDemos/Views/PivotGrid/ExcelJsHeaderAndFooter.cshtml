@@ -8,14 +8,10 @@
 
 @(Html.DevExtreme().PivotGrid()
     .ID("sales")
-    .AllowSorting(true)
-    .AllowFiltering(true)
     .Height(440)
     .ShowBorders(true)
-    .AllowSortingBySummary(true)
     .AllowSorting(true)
     .AllowFiltering(true)
-    .AllowExpandAll(true)
     .Height(440)
     .ShowBorders(true)
     .FieldPanel(p => p.ShowColumnFields(true)
@@ -47,6 +43,7 @@
                 .DataField("Date")
                 .DataType(PivotGridDataType.Date)
                 .Area(PivotGridArea.Column)
+                .FilterValues(new[] { new[] { 2013 }, new[] { 2014 }, new[] { 2015 } })
                 .Expanded(false);
 
             fields.Add()
