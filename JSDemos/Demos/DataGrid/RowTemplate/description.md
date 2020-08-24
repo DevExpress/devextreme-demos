@@ -1,3 +1,3 @@
-**DataGrid** rows support custom templates to display any content.
+**DataGrid** supports custom row templates. Use the  [rowTemplate](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#rowTemplate) ([rowRender](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#rowRender) in React) option to configure a template for rows.
 
-In this demo, a custom row template is assigned to the [rowTemplate](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#rowTemplate) ([rowRender](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#rowRender) in React) to display the employee's image and their information in a two-row table.
+In this demo, a custom row template displays the employee's image and their information in a two-row table.
