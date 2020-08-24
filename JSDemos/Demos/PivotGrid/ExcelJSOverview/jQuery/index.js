@@ -1,9 +1,5 @@
 $(function(){
     $("#sales").dxPivotGrid({
-        allowSortingBySummary: true,
-        allowSorting: true,
-        allowFiltering: true,
-        allowExpandAll: true,
         height: 440,
         rowHeaderLayout: 'tree',
         showBorders: true,
@@ -15,31 +11,27 @@ $(function(){
         },
         dataSource: {
             fields: [{
-                caption: "Region",
-                width: 120,
-                dataField: "region",
-                area: "row",
+                caption: 'Region',
+                dataField: 'region',
+                area: 'row',
                 expanded: true
             }, {
-                caption: "City",
-                dataField: "city",
-                width: 150,
-                area: "row",
-                selector: function(data) {
-                    return  data.city + " (" + data.country + ")";
-                }
+                caption: 'City',
+                dataField: 'city',
+                area: 'row',
+                width: 150
             }, {
-                dataField: "date",
-                dataType: "date",
-                area: "column",
+                dataField: 'date',
+                dataType: 'date',
+                area: 'column',
                 expanded: true
             }, {
-                caption: "Sales",
-                dataField: "amount",
-                dataType: "number",
-                summaryType: "sum",
-                format: "currency",
-                area: "data"
+                caption: 'Sales',
+                dataField: 'amount',
+                dataType: 'number',
+                area: 'data',
+                summaryType: 'sum',
+                format: 'currency',
             }],
             store: sales
         },
@@ -49,15 +41,13 @@ $(function(){
             
             DevExpress.excelExporter.exportPivotGrid({
                 component: e.component,
-                worksheet: worksheet,
-                topLeftCell: { row: 1, column: 1 },
+                worksheet: worksheet
             }).then(function() {
-                // https://github.com/exceljs/exceljs#writing-xlsx
                 workbook.xlsx.writeBuffer().then(function(buffer) {
                     saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Sales.xlsx');
                 });
             });
             e.cancel = true;
-        },        
+        }
     });
 });

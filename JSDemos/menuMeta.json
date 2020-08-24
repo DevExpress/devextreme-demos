@@ -99,7 +99,6 @@
           {
             "Title": "Record Paging",
             "Name": "RecordPaging",
-            "DocUrl": "Guide/Widgets/DataGrid/Paging/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridCustomersController.cs",
@@ -111,7 +110,6 @@
           {
             "Title": "Local Virtual Scrolling",
             "Name": "VirtualScrolling",
-            "DocUrl": "Guide/Widgets/DataGrid/Scrolling/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridScrollingController.cs",
@@ -141,7 +139,6 @@
           {
             "Title": "Infinite Scrolling",
             "Name": "InfiniteScrolling",
-            "DocUrl": "Guide/Widgets/DataGrid/Scrolling/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridScrollingController.cs",
@@ -790,6 +787,21 @@
         ]
       },
       {
+        "Name": "Export to PDF",
+        "Equivalents": "",
+        "Demos": [
+          {
+            "Title": "Overview",
+            "Hidden":  true,
+            "Name": "ExportToPDF",
+            "DocUrl": "Guide/Widgets/DataGrid/Client-Side_Exporting/",
+            "Widget": "DataGrid",
+            "Modules": "jspdf&jspdf-autotable",
+            "DemoType": "Web"
+          }
+        ]
+      },
+      {
         "Name": "Export to Excel",
         "Equivalents": "",
         "Badge": "New",
@@ -1103,7 +1115,6 @@
           {
             "Title": "Overview",
             "Name": "ExcelJSOverview",
-            "Hidden":  true,
             "Widget": "PivotGrid",
             "Modules": "exceljs&file-saver",
             "MvcAdditionalFiles": [
@@ -1116,7 +1127,6 @@
           {
             "Title": "Cell Customization",
             "Name": "ExcelJSCellCustomization",
-            "Hidden":  true,
             "Widget": "PivotGrid",
             "Modules": "exceljs&file-saver",
             "MvcAdditionalFiles": [
@@ -1129,9 +1139,9 @@
           {
             "Title": "Header and Footer",
             "Name": "ExcelJSHeaderAndFooter",
-            "Hidden":  true,
             "Widget": "PivotGrid",
             "Modules": "exceljs&file-saver",
+            "Credits": "www.wikipedia.org",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/PivotGridDataController.cs",
               "/Models/Sale.cs",
@@ -3976,16 +3986,14 @@
             "Title": "Overview",
             "Name": "Overview",
             "DocUrl": "Guide/Widgets/DateBox/Overview/",
-            "Widget": "DateBox",
-            "Modules": "globalize"
+            "Widget": "DateBox"
           },
           {
             "Title": "Formatting",
             "Name": "Formatting",
             "Equivalents": "mask",
             "DocUrl": "ApiReference/UI_Widgets/dxDateBox/Configuration/#useMaskBehavior",
-            "Widget": "DateBox",
-            "Modules": "globalize"
+            "Widget": "DateBox"
           }
         ]
       },
@@ -4910,7 +4918,6 @@
             "Name": "ItemTemplate",
             "DocUrl": "Guide/Widgets/Gallery/Customize_Item_Appearance/",
             "Widget": "Gallery",
-            "Modules": "globalize--vue&react",
             "MvcAdditionalFiles": [
               "/Models/SampleData/GalleryItems.cs",
               "/Models/GalleryItem.cs"
@@ -5076,8 +5083,7 @@
             "Title": "Item Template",
             "Name": "ItemTemplate",
             "DocUrl": "Guide/Widgets/TileView/Customize_Tile_Appearance/",
-            "Widget": "TileView",
-            "Modules": "globalize--vue&react"
+            "Widget": "TileView"
           },
           {
             "Title": "Item 3rd Party Engine Template",

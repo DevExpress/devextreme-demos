@@ -1,53 +1,48 @@
 $(function(){
     $("#sales").dxPivotGrid({
-        allowSortingBySummary: true,
         allowSorting: true,
         allowFiltering: true,
-        allowExpandAll: true,
         height: 440,
         showBorders: true,
         fieldPanel: {
             showColumnFields: true,
             showDataFields: true,
-            showFilterFields: true,
+            showFilterFields: false,
             showRowFields: true,
-            allowFieldDragging: true,
+            allowFieldDragging: false,
             visible: true
         },        
         fieldChooser: {
-            enabled: true
+            enabled: false
         },
         export: {
             enabled: true
         },
         dataSource: {
             fields: [{
-                caption: "Region",
+                caption: 'Region',
                 width: 120,
-                dataField: "region",
-                area: "row",
+                dataField: 'region',
+                area: 'row',
                 expanded: true
             }, {
-                caption: "City",
-                dataField: "city",
+                caption: 'City',
+                dataField: 'city',
                 width: 150,
-                area: "filter",
-                selector: function(data) {
-                    return  data.city + " (" + data.country + ")";
-                }
+                area: 'row'
             }, {
-                dataField: "date",
-                dataType: "date",
-                area: "column",
-                filterValues: [[2014], [2015]],
-                expanded: true
+                dataField: 'date',
+                dataType: 'date',
+                area: 'column',
+                filterValues: [[2013], [2014], [2015]],
+                expanded: false,
             }, {
-                caption: "Sales",
-                dataField: "amount",
-                dataType: "number",
-                summaryType: "sum",
-                format: "currency",
-                area: "data"
+                caption: 'Sales',
+                dataField: 'amount',
+                dataType: 'number',
+                summaryType: 'sum',
+                format: 'currency',
+                area: 'data'
             }],
             store: sales
         },
@@ -55,18 +50,19 @@ $(function(){
             var workbook = new ExcelJS.Workbook();
             var worksheet = workbook.addWorksheet('Sales');
 
-            var grid = e.component;
+            worksheet.columns = [
+                { width: 30 }, { width: 20 }, { width: 30 }, { width: 30 }, { width: 30 }, { width: 30 }
+            ];
+
             DevExpress.excelExporter.exportPivotGrid({
-                component: grid,
+                component: e.component,
                 worksheet: worksheet,
-                topLeftCell: { row: 2, column: 1 },
-                keepColumnWidths: true,
-            }).then(function(gridRange) {
+                topLeftCell: { row: 4, column: 1 },
+                keepColumnWidths: false
+            }).then(function(cellRange) {
                 exportHeader(worksheet);
-                exportFooter(gridRange, worksheet);
-                exportFieldPanel(worksheet, grid);
+                exportFooter(worksheet, cellRange, cellRange);
             }).then(function() {
-                // https://github.com/exceljs/exceljs#writing-xlsx
                 workbook.xlsx.writeBuffer().then(function(buffer) {
                     saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Sales.xlsx');
                 });
@@ -77,48 +73,23 @@ $(function(){
 });
 
 function exportHeader(worksheet) {
-    var headerRow = worksheet.getRow(1);
-    headerRow.height = 70;
-    worksheet.mergeCells('B1:K1');
-    headerRow.getCell(2).value = 'Average Sales. Amount by Region';
-    headerRow.getCell(2).font = { name: 'Segoe UI Light', size: 22, bold: true };
-    headerRow.getCell(2).alignment = { horizontal: 'left', vertical: 'top', wrapText: true };
+    var headerRow = worksheet.getRow(2);
+    headerRow.height = 30; 
+
+    var columnFromIndex = worksheet.views[0].xSplit + 1;
+    var columnToIndex = columnFromIndex + 3;
+    worksheet.mergeCells(2, columnFromIndex, 2, columnToIndex);
+
+    var headerCell = headerRow.getCell(columnFromIndex);
+    headerCell.value = 'Sales Amount by Region';
+    headerCell.font = { name: 'Segoe UI Light', size: 22, bold: true };
+    headerCell.alignment = { horizontal: 'left', vertical: 'middle', wrapText: true };
 }
 
-function exportFooter(gridRange, worksheet) {
-    var footerRowIndex = gridRange.to.row + 1;
-    var footerRow = worksheet.getRow(footerRowIndex);
-    worksheet.mergeCells(footerRowIndex, 1, footerRowIndex, 11);
-    footerRow.getCell(1).value = 'www.wikipedia.org';
-    footerRow.getCell(1).font = { color: { argb: 'BFBFBF' }, italic: true };
-    footerRow.getCell(1).alignment = { horizontal: 'right' };
-}
-
-function exportFieldPanel(worksheet, grid) {
-    var fields = grid.getDataSource().fields();
-
-    var rowFields = getFields(fields, 'row', r => r.dataField);
-    var dataFields = getFields(fields, 'data', r => `[${r.summaryType}(${r.dataField}])`);
-    var columnFields = getFields(fields, 'column', r => r.dataField);
-    var appliedFilters = fields.filter(r => r.filterValues !== undefined).map(r => `[${r.dataField}:${r.filterValues}]`);
-    var filterFields = getFields(fields, 'filter', r => r.dataField);    
-    
-    var firstRow = worksheet.getRow(1),
-        fieldPanelCell = firstRow.getCell(13);
-
-    worksheet.mergeCells('L1:N1');
-    fieldPanelCell.value = 'Feld Panel area:'
-        + ` \n - Filter fields: [${filterFields.join(', ')}]`
-        + ` \n - Row fields: [${rowFields.join(', ')}]`
-        + ` \n - Column fields: [${columnFields.join(', ')}]`
-        + ` \n - Data fields: [${dataFields.join(', ')}]`
-        + ` \n - Applied filters: [${appliedFilters.join(', ')}]`;
-
-    fieldPanelCell.alignment = { horizontal: 'left', vertical: 'top', wrapText: true };
-    fieldPanelCell.width = 30;
-    firstRow.height = 90;    
-}
-
-function getFields(fields, area, mapper){
-    return [...new Set(fields.filter(r => r.area === area).map(mapper))];
+function exportFooter(worksheet, cellRange) {
+    var footerRowIndex = cellRange.to.row + 2;
+    var footerCell = worksheet.getRow(footerRowIndex).getCell(cellRange.to.column);
+    footerCell.value = 'www.wikipedia.org';
+    footerCell.font = { color: { argb: 'BFBFBF' }, italic: true };
+    footerCell.alignment = { horizontal: 'right' };
 }
