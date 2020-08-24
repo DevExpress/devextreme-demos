@@ -828,6 +828,7 @@
     <Content Include="Content\DemosStyles\NumberBox\Formatting.css" />
     <Content Include="Content\DemosStyles\PivotGrid\ChartIntegration.css" />
     <Content Include="Content\DemosStyles\PivotGrid\DrillDown.css" />
+    <Content Include="Content\DemosStyles\PivotGrid\ExcelJsHeaderAndFooter.css" />
     <Content Include="Content\DemosStyles\PivotGrid\HeaderFilter.css" />
     <Content Include="Content\DemosStyles\PivotGrid\FieldPanel.css" />
     <Content Include="Content\DemosStyles\PivotGrid\IntegratedFieldChooser.css" />
