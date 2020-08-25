@@ -1,13 +1,13 @@
-Toolbar can include any elements from the DevExtreme Widget library to improve the way users work with the DataGrid. To customize the toolbar, implement the onToolbarPreparing option.
+Toolbar provides additional control elements. To customize the toolbar, implement the onToolbarPreparing option. You can add any DevExtreme widget or your own code in this function.
 
-In this demo, the toolbar has the following elements:
+In this demo, the following elements are added:
 
-* Group counter
+* HTML element to display the number of data groups
 
-* Drop-down list to select which field to group by
+* SelectBox to specify a field to group by
 
 * Button to expand or collapse groups
 
-* Button to reload DataGrid data
+* Button to reload data
 
-* Column Chooser button.
+* Column Chooser to display or hide columns.
