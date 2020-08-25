@@ -1,9 +1,21 @@
 const fs = require('fs');
 const path = require('path');
-const reposPaths = require('./_reposPaths');
 const systemSync = require('./cp_utils').systemSync;
-const reposPathsFilePath = path.join(__dirname, '_reposPaths.js');
+const reposPathsFilePath = path.join(__dirname, 'reposPaths.js');
 const pq = require('./prompts_questions');
+const content = `const reposPaths = {
+    'devextreme': "",
+    'devextreme-angular': "",
+    'devextreme-react': "",
+    'devextreme-vue': "",
+    'devextreme-diagram': "",
+    'devextreme-gantt': "",
+    'hg': ""
+}
+
+module.exports = {
+    reposPaths
+}`
 
 const processRepositoriesAsync = async (repositories, callback) => {
     for (let index = 0; index < repositories.length; index++) {
@@ -40,9 +52,16 @@ const savePathToFile = (repository, path) => {
     console.log('File updated.');
 }
 
+const createFileIfNecessary = () => {
+    if(!fs.existsSync(reposPathsFilePath)){
+        fs.appendFileSync(reposPathsFilePath, content);
+    }
+}
+
 const getRepositoryPathByName = async (repositoryName) => {
+    createFileIfNecessary();
     let repositoryNameNormalized = repositoryName.replace(' ', '-').toLowerCase();
-    let repositoryPath = reposPaths.getRepositoryPath(repositoryNameNormalized).trim();
+    let repositoryPath = require('./reposPaths').reposPaths[repositoryNameNormalized].trim();
     if(!repositoryPath) {
         const response = await pq.askRepositoryPath(repositoryName);
         repositoryPath = response.path;
@@ -71,6 +90,14 @@ const getHGRepositoryPath = async () => {
     return getRepositoryPathByName('HG');
 }
 
+const getDevExtremeGanttRepositoryPath = async () => {
+    return getRepositoryPathByName("DevExpress Gantt");
+}
+
+const getDevExtremeDiagramRepositoryPath = async () => {
+    return getRepositoryPathByName("DevExpress Diagram");
+}
+
 const getRepositoryPath = async (repositoryName) => {
     if(repositoryName === 'devextreme') {
         return getDevExtremeRepositoryPath();
@@ -83,6 +110,12 @@ const getRepositoryPath = async (repositoryName) => {
     }
     if(repositoryName === 'devextreme-vue') {
         return getDevExtremeVueRepositoryPath();
+    }
+    if(repositoryName === 'devexpress-gantt') {
+        return getDevExtremeGanttRepositoryPath();
+    }
+    if(repositoryName === 'devexpress-diagram') {
+        return getDevExtremeDiagramRepositoryPath();
     }
     if(repositoryName.toLowerCase() == 'hg') {
         return getHGRepositoryPath();

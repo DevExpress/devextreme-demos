@@ -156,6 +156,18 @@ const getLinkRepositoriesQuestions = () => {
                 { title: 'DevExtreme Angular', value: 'devextreme-angular'},
                 { title: 'DevExtreme React', value: 'devextreme-react'},
                 { title: 'DevExtreme Vue', value: 'devextreme-vue'},
+                { title: 'DevExpress Gantt', value: 'devexpress-gantt'},
+                { title: 'DevExpress Diagram', value: 'devexpress-diagram'},
+            ]
+        },
+        {
+            type: (prev, answers) => answers.repositories.includes('devextreme') ? 'select' : null,
+            name: 'build',
+            initial: 0,           
+            message: 'Select DevExtreme build you want to process.',
+            choices: [
+                { title: 'Current `%devextreme%/artifacts/npm/devextreme`', value: 'devextreme' },
+                { title: 'Renovation `%devextreme%/artifacts/npm/devextreme-renovation`', value: 'devextreme-renovation' },
             ]
         }
     ];
