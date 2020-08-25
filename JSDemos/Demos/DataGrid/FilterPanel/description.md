@@ -1,1 +1,7 @@
-This example shows how to&nbsp;filter data using the filter panel. You can use its check box to&nbsp;enable/disable the current filter expression, and clicking on&nbsp;this expression opens the integrated filter builder. Note that changes made in&nbsp;it&nbsp;are reflected in&nbsp;the filter row and header filter, and vice versa.
+Users can apply filters in the [filter row](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/filterRow/) and [header filter](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/headerFilter/). The resulting filter expression is displayed in the [filter panel](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/filterPanel/). A click on this expression calls the integrated [filter builder](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#filterBuilder). 
+
+To enable this behavior in your application, do the following:
+- Set **filterRow**.[visible](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/filterRow/#visible), **filterPanel**.[visible](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/filterPanel/#visible) and **headerFilter**.[visible](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/headerFilter/#visible) to **true**.
+- Configure the **filterBuilder** object as shown in code.
+
+**DataGrid** uses the DevExtreme [Popup](/Documentation/ApiReference/UI_Widgets/dxPopup/) component to display a filter builder popup. Its default configuration is defined automatically. If this configuration does not meet your requirements, you can redefine it in the [filterBuilderPopup](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#filterBuilderPopup) option. Refer to this option's description to see the limitations.
