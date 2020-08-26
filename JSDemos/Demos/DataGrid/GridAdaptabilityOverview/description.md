@@ -1,1 +1,3 @@
-The **DataGrid** can adapt its layout to narrow screens. If screen width is not enough to display all columns, the widget hides them one by one. To view values of hidden columns, click the ellipsis button in the last column of the required row. Switch between the landscape and portrait layouts to see how the **DataGrid** looks on wide and narrow screens.
+**DataGrid** automatically adapts its layout to screens of different widths. Use buttons in the top right corner to switch between the mobile and tablet screens. If columns do not fit the screen, the widget hides them one by one from right to left. 
+
+To enable this behavior in your application, set the [columnHidingEnabled](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#columnHidingEnabled) option to **true**.

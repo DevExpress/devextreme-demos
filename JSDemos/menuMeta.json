@@ -871,7 +871,6 @@
           {
             "Title": "Grid Adaptability Overview",
             "Name": "GridAdaptabilityOverview",
-            "DocUrl": "Guide/Widgets/DataGrid/Columns/Adaptability/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Models/Order.cs",
@@ -882,7 +881,6 @@
           {
             "Title": "Grid Columns Hiding Priority",
             "Name": "GridColumnsHidingPriority",
-            "DocUrl": "Guide/Widgets/DataGrid/Columns/Adaptability/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Models/Order.cs",
