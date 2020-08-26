@@ -1,4 +1,4 @@
-**DataGrid** automatically adapts its layout to screens of different widths. Use buttons in the top right corner to switch between the mobile and tablet screens. If columns do not fit the chosen screen type, the widget hides them one by one from right to left. 
+**DataGrid** automatically adapts its layout to screens of different widths. In this demo, you can switch between horizontal and vertical screen orientations. If columns do not fit the chosen orientation, the widget hides them one by one, starting with the rightmost column. Information from the hidden columns is still available in adaptive detail rows.
 
 To enable this behavior in your application, set the [columnHidingEnabled](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#columnHidingEnabled) option to **true**.
 
