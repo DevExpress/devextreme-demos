@@ -1,5 +1,3 @@
-When the DataGrid adapts its layout to small screen width, it hides columns based on [hidingPriority](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#hidingPriority).
+When the **DataGrid** adapts its layout to small screen width, it hides columns based on [hidingPriority](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#hidingPriority). The lower a column's **hidingPriority**, the sooner the column will be hidden. For example, a column with priority 0 will be hidden first, then a column with priority 1, and so on.
 
-The lower is this option's value, the sooner a column is hidden. For example, **DataGrid** hides the column whose **hidingPriority** equals *"0"* first, then the column with the priority *"1"* and so on.
-
-In this demo, the `CustomerStoreCity` column has hiding priority *"0"* and is hidden in both vertical and horizontal orientation modes. The `CustomerStoreState` and `OrderDate` columns have priority *"1"* and *"2"* correspondingly. **DataGrid** hides these columns after the `CustomerStoreCity` column when the screen orientation is vertical.
+In this demo, the `CustomerStoreCity` column is hidden in both vertical and horizontal orientation modes because its **hidingPriority** is 0. The `CustomerStoreState` and `OrderDate` columns have priorities 1 and 2. The **DataGrid** hides these columns after the `CustomerStoreCity` column, only when the screen orientation is vertical.
