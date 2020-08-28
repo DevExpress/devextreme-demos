@@ -36,9 +36,7 @@
             .Array()
                 .Key("ID")
                 .Data(Model)
-                .OnInserted("onNodeInserted")
-                .OnUpdated("onNodeUpdated")
-                .OnRemoved("onNodeRemoved")
+                .OnInserting("onNodeInserting")
             )
         .KeyExpr("ID")
         .TypeExpr(new JS("itemTypeExpr"))
@@ -46,6 +44,7 @@
         .ParentKeyExpr("HeadID")
         .AutoLayout(al => al
             .Type(DiagramDataLayoutType.Tree)
+            .RequestUpdate(new JS("requestUpdate"))
         )
     )
     .ContextToolbox(ct => ct
@@ -143,23 +142,10 @@
 <script type="text/javascript">
     var currentEmployee = {}
 
-    function onNodeInserted(values) {
+    function onNodeInserting(values) {
         values.ID = values.ID || generatedID++;
         values.FullName = values.FullName || "Employee's Name";
         values.Title = values.Title || "Employee's Title";
-
-        var diagram = $("#diagram").dxDiagram("instance");
-        diagram.reloadContent(values.ID, values.HeadID !== undefined);
-    }
-
-    function onNodeUpdated(key, values) {
-        var diagram = $("#diagram").dxDiagram("instance");
-        diagram.reloadContent(key, values.HeadID !== undefined);
-    }
-
-    function onNodeRemoved(key) {
-        var diagram = $("#diagram").dxDiagram("instance");
-        diagram.reloadContent(key, true);
     }
 
     function itemTypeExpr(obj) {
@@ -190,6 +176,16 @@
         }
     }
 
+    function requestUpdate(changes) {
+        for(var i = 0; i < changes.length; i++) {
+            if(changes[i].type === 'remove')
+                return true;
+            else if(changes[i].data.Head_ID !== undefined && changes[i].data.Head_ID !== null)
+                return true;
+        }
+        return false;
+    }
+
     function editEmployee(employee) {
         currentEmployee = Object.assign({}, employee);
 
@@ -206,19 +202,23 @@
     };
     function deleteEmployee(employee) {
         var diagram = $("#diagram").dxDiagram("instance");
-        diagram.getNodeDataSource().store().remove(employee.ID);
+        diagram.getNodeDataSource().store().push([{ type: 'remove', key: employee.ID }]);
     };
     function updateEmployee() {
         var diagram = $("#diagram").dxDiagram("instance");
-        diagram.getNodeDataSource().store().update(currentEmployee.ID, {
-            "FullName": currentEmployee.FullName,
-            "Title": currentEmployee.Title,
-            "City": currentEmployee.City,
-            "State": currentEmployee.State,
-            "Email": currentEmployee.Email,
-            "Skype": currentEmployee.Skype,
-            "MobilePhone": currentEmployee.MobilePhone
-        });
+        diagram.getNodeDataSource().store().push([{
+            type: 'update',
+            key: currentEmployee.ID,
+            data: {
+                "FullName": currentEmployee.FullName,
+                "Title": currentEmployee.Title,
+                "City": currentEmployee.City,
+                "State": currentEmployee.State,
+                "Email": currentEmployee.Email,
+                "Skype": currentEmployee.Skype,
+                "MobilePhone": currentEmployee.MobilePhone
+            }
+        }]);
         var popup = $("#popup").dxPopup("instance");
         popup.hide();
     };
