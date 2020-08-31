@@ -140,7 +140,8 @@
 }
 
 <script type="text/javascript">
-    var currentEmployee = {}
+    var currentEmployee = {};
+    var generatedID = 100;
 
     function onNodeInserting(values) {
         values.ID = values.ID || generatedID++;
