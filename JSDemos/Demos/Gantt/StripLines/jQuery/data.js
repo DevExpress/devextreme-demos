@@ -156,4 +156,4 @@ var tasks = [{
     'start': new Date(year, month + 2, 24),
     'end': new Date(year, month + 2, 30),
     'progress': 0
-    }];
+}];

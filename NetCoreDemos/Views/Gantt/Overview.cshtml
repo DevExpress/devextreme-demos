@@ -1,8 +1,8 @@
 ﻿@using DevExtreme.NETCore.Demos.Models.SampleData
-@using DevExtreme.NETCore.Demos.Models.Gantt
+@using Gantt = DevExtreme.NETCore.Demos.Models.Gantt
 
 <div class="widget-container">
-    @(Html.DevExtreme().Gantt<DevExtreme.NETCore.Demos.Models.Gantt.Task>()
+    @(Html.DevExtreme().Gantt<Gantt.Task>()
         .ID("gantt")
         .Tasks(t => t
             .DataSource(ds => ds.Array().Data(SampleData.GanttTasks).Key("ID"))
@@ -31,15 +31,8 @@
             .TaskIdExpr("TaskId")
             .ResourceIdExpr("ResourceId")
         )
-        .Columns(columns => {
-            columns.AddFor(m => m.Title)
-                .Caption("Subject")
-                .Width(300);
-            columns.AddFor(m => m.Start)
-                .Caption("Start Date");
-            columns.AddFor(m => m.End)
-                .Caption("End Date");
-        })
+        .Editing(e => e.Enabled(true))
+        .Validation(v => v.AutoUpdateParentTasks(true))
         .Toolbar(t => {
             t.Items(i => {
                 i.Add().Name(GanttToolbarItem.Undo);
@@ -55,8 +48,15 @@
                 i.Add().Name(GanttToolbarItem.ZoomOut);
             });
         })
-    .Validation(v => v.AutoUpdateParentTasks(true))
-        .Editing(e => e.Enabled(true))
+        .Columns(columns => {
+            columns.AddFor(m => m.Title)
+                .Caption("Subject")
+                .Width(300);
+            columns.AddFor(m => m.Start)
+                .Caption("Start Date");
+            columns.AddFor(m => m.End)
+                .Caption("End Date");
+        })
         .ScaleType(GanttScaleType.Weeks)
         .TaskListWidth(500)
     )

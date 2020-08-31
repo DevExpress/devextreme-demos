@@ -1,0 +1,101 @@
+﻿@using DevExtreme.MVC.Demos.Models.SampleData
+@using DevExtreme.MVC.Demos.Models.Gantt
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Scale Type</span>
+        @(Html.DevExtreme().SelectBox()
+            .ID("scaleType")
+            .DataSource(d => d.Array().Data(SampleData.GanttScaleTypes))
+            .Value("quarters")
+            .OnValueChanged("ganttScaleType_valueChanged")
+        )
+    </div>
+    <div class="option">
+        <span>Title Position</span>
+        @(Html.DevExtreme().SelectBox()
+            .ID("titlePosition")
+            .DataSource(new[] {
+                "inside",
+                "outside",
+                "none"
+            })
+            .Value("outside")
+            .OnValueChanged("ganttTitlePosition_valueChanged")
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Value(true)
+            .Text("Show Resources")
+            .OnValueChanged("ganttShowResources_changed")
+        )
+    </div>
+</div>
+
+@(Html.DevExtreme().Gantt<Task>()
+    .ID("gantt")
+    .TaskTitlePosition(GanttTaskTitlePosition.Outside)
+    .ScaleType(GanttScaleType.Quarters)
+    .Tasks(t => t
+        .DataSource(ds => ds.Array().Data(SampleData.GanttTasks).Key("ID"))
+        .KeyExpr("ID")
+        .TitleExpr("Title")
+        .ParentIdExpr("ParentId")
+        .StartExpr("Start")
+        .EndExpr("End")
+        .ProgressExpr("Progress")
+    )
+    .Dependencies(d => d
+        .DataSource(ds => ds.Array().Data(SampleData.GanttDependencies).Key("ID"))
+        .KeyExpr("ID")
+        .PredecessorIdExpr("PredecessorId")
+        .SuccessorIdExpr("SuccessorId")
+        .TypeExpr("Type")
+    )
+    .Resources(r => r
+        .DataSource(ds => ds.Array().Data(SampleData.GanttResources).Key("ID"))
+        .KeyExpr("ID")
+        .TextExpr("Text")
+    )
+    .ResourceAssignments(ra => ra
+        .DataSource(ds => ds.Array().Data(SampleData.GanttResourceAssignments).Key("ID"))
+        .KeyExpr("ID")
+        .TaskIdExpr("TaskId")
+        .ResourceIdExpr("ResourceId")
+    )
+    .Editing(e => e.Enabled(true))
+    .Columns(columns => {
+        columns.AddFor(m => m.Title)
+            .Caption("Subject")
+            .Width(300);
+        columns.AddFor(m => m.Start)
+            .Caption("Start Date");
+        columns.AddFor(m => m.End)
+            .Caption("End Date");
+    })
+    .TaskListWidth(500)
+)
+
+<script>
+    function getGanttInstance() {
+        return $("#gantt").dxGantt("instance");
+    }
+
+    function ganttScaleType_valueChanged(e) {
+        var ganttInstance = getGanttInstance();
+        ganttInstance.option("scaleType", e.value);
+    }
+
+    function ganttTitlePosition_valueChanged(e) {
+        var ganttInstance = getGanttInstance();
+        ganttInstance.option("taskTitlePosition", e.value);
+
+    }
+
+    function ganttShowResources_changed(e) {
+        var ganttInstance = getGanttInstance();
+        ganttInstance.option("showResources", e.value);
+    }
+</script>
