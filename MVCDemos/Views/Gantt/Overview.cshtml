@@ -30,15 +30,8 @@
         .TaskIdExpr("TaskId")
         .ResourceIdExpr("ResourceId")
     )
-    .Columns(columns => {
-        columns.AddFor(m => m.Title)
-            .Caption("Subject")
-            .Width(300);
-        columns.AddFor(m => m.Start)
-            .Caption("Start Date");
-        columns.AddFor(m => m.End)
-            .Caption("End Date");
-    })
+    .Editing(e => e.Enabled(true))
+    .Validation(v => v.AutoUpdateParentTasks(true))
     .Toolbar(t => {
         t.Items(i => {
             i.Add().Name(GanttToolbarItem.Undo);
@@ -54,8 +47,15 @@
             i.Add().Name(GanttToolbarItem.ZoomOut);
         });
     })
-    .Validation(v => v.AutoUpdateParentTasks(true))
-    .Editing(e => e.Enabled(true))
+    .Columns(columns => {
+        columns.AddFor(m => m.Title)
+            .Caption("Subject")
+            .Width(300);
+        columns.AddFor(m => m.Start)
+            .Caption("Start Date");
+        columns.AddFor(m => m.End)
+            .Caption("End Date");
+    })
     .ScaleType(GanttScaleType.Weeks)
     .TaskListWidth(500)
 )
