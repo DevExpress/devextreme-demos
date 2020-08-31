@@ -779,7 +779,12 @@
     <Content Include="Content\DemosStyles\Form\UpdateItemsDynamically.css" />
     <Content Include="Content\DemosStyles\Form\Validation.css" />
     <Content Include="Content\DemosStyles\Gallery\ItemTemplate.css" />
+    <Content Include="Content\DemosStyles\Gantt\ChartAppearance.css" />
+    <Content Include="Content\DemosStyles\Gantt\DataBinding.css" />
     <Content Include="Content\DemosStyles\Gantt\Overview.css" />
+    <Content Include="Content\DemosStyles\Gantt\StripLines.css" />
+    <Content Include="Content\DemosStyles\Gantt\Toolbar.css" />
+    <Content Include="Content\DemosStyles\Gantt\Validation.css" />
     <Content Include="Content\DemosStyles\Gauges\AnglesCustomization.css" />
     <Content Include="Content\DemosStyles\Gauges\BaseValueForRangeBar.css" />
     <Content Include="Content\DemosStyles\Gauges\CustomLayout.css" />
@@ -2103,6 +2108,11 @@
     <Content Include="Views\PivotGrid\ExcelJSOverview.cshtml" />
     <Content Include="Views\PivotGrid\ExcelJSCellCustomization.cshtml" />
     <Content Include="Views\PivotGrid\ExcelJSHeaderAndFooter.cshtml" />
+    <Content Include="Views\Gantt\ChartAppearance.cshtml" />
+    <Content Include="Views\Gantt\DataBinding.cshtml" />
+    <Content Include="Views\Gantt\StripLines.cshtml" />
+    <Content Include="Views\Gantt\Toolbar.cshtml" />
+    <Content Include="Views\Gantt\Validation.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

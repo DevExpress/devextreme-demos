@@ -1,0 +1,34 @@
+﻿@using DevExtreme.MVC.Demos.Models.SampleData
+@using DevExtreme.MVC.Demos.Models.Gantt
+
+@(Html.DevExtreme().Gantt<Task>()
+    .ID("gantt")
+    .StripLines(s => {
+        s.Add().Title("Start")
+                .Start(SampleData.GanttTasksJohnsonResidence.First().Start);
+        s.Add().Title("Final Phase")
+                .Start(SampleData.GanttTasksJohnsonResidence.Where(t => t.ID == 20).First().Start)
+                .End(SampleData.GanttTasksJohnsonResidence.Where(t => t.ID == 22).First().End);
+        s.Add().Title("Current Time")
+                .Start(DateTime.Now)
+                .CssClass("current-time");
+    })
+    .Tasks(t => t
+        .DataSource(ds => ds.Array().Data(SampleData.GanttTasksJohnsonResidence).Key("ID"))
+        .KeyExpr("ID")
+        .TitleExpr("Title")
+        .ParentIdExpr("ParentId")
+        .StartExpr("Start")
+        .EndExpr("End")
+        .ProgressExpr("Progress")
+    )
+    .Editing(e => e.Enabled(false))
+    .Validation(v => v.AutoUpdateParentTasks(true))
+    .Columns(columns => {
+        columns.AddFor(m => m.Title)
+            .Caption("Task")
+            .Width(300);
+    })
+    .TaskListWidth(300)
+    .TaskTitlePosition(GanttTaskTitlePosition.None)
+)
