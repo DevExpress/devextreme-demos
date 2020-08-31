@@ -44,7 +44,7 @@
         .ParentKeyExpr("HeadID")
         .AutoLayout(al => al
             .Type(DiagramDataLayoutType.Tree)
-            .RequestUpdate(new JS("requestUpdate"))
+            .RequestUpdate("requestUpdate")
         )
     )
     .ContextToolbox(ct => ct
