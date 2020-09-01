@@ -7,9 +7,11 @@
 
     @RenderSection("ExternalDependencies", false)
 
-    @Styles.Render(BundleConfig.StyleBundlePath)
+    <link rel="stylesheet" href="~/Content/DevExtreme/dx.common.css" />
     <link rel="stylesheet" href="~/Content/demo-template.css" />
     <link rel="stylesheet" href="~/Content/DevExtreme/dx.@(DemoUtils.GetCurrentTheme(Context)).css" />
+    @Styles.Render(BundleConfig.StyleBundlePath)
+
     @Html.Partial("_DemoStyles")
 
     @Scripts.Render(BundleConfig.ScriptBundlePath)
