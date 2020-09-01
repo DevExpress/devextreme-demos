@@ -10,6 +10,7 @@
     .ColumnAutoWidth(true)
     .AllowColumnReordering(true)
     .ShowBorders(true)
+    .ColumnChooser(c => c.Enabled(true))
     .Columns(c => {
         c.AddFor(m => m.Country);
 
