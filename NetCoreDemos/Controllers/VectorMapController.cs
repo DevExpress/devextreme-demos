@@ -34,6 +34,10 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         }
         #endregion
 
+        public ActionResult CustomAnnotations() {
+            return View(SampleData.StatesData);
+        }
+
         #region BubbleMarkers
         public ActionResult BubbleMarkers() {
             return View();
