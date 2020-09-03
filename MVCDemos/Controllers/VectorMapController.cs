@@ -34,6 +34,10 @@ namespace DevExtreme.MVC.Demos.Controllers {
         }
         #endregion
 
+        public ActionResult CustomAnnotations() {
+            return View(SampleData.StatesData);
+        }
+
         #region BubbleMarkers
         public ActionResult BubbleMarkers() {
             return View();
@@ -80,7 +84,7 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View();
         }
 
-        #region CustomProjection     
+        #region CustomProjection
         public ActionResult CustomProjection() {
             return View();
         }
@@ -91,7 +95,7 @@ namespace DevExtreme.MVC.Demos.Controllers {
         }
         #endregion
 
-        #region FloorPlan     
+        #region FloorPlan
         public ActionResult FloorPlan() {
             return View();
         }
@@ -107,7 +111,7 @@ namespace DevExtreme.MVC.Demos.Controllers {
         }
         #endregion
 
-        #region MultipleLayers     
+        #region MultipleLayers
         public ActionResult MultipleLayers() {
             return View();
         }
@@ -118,7 +122,7 @@ namespace DevExtreme.MVC.Demos.Controllers {
         }
         #endregion
 
-        #region CustomMapData     
+        #region CustomMapData
         public ActionResult CustomMapData() {
             return View();
         }
