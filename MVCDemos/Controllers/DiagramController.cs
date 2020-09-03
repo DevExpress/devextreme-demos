@@ -45,6 +45,9 @@ namespace DevExtreme.MVC.Demos.Controllers {
         public ActionResult SimpleView() {
             return View(SampleData.OrgItemsPlain);
         }
+        public ActionResult ItemSelection() {
+            return View(SampleData.OrgItemsPlain);
+        }
         public ActionResult UICustomization() {
             return View();
         }

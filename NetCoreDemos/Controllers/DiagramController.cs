@@ -45,6 +45,9 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         public IActionResult SimpleView() {
             return View(SampleData.OrgItemsPlain);
         }
+        public IActionResult ItemSelection() {
+            return View(SampleData.OrgItemsPlain);
+        }
         public IActionResult UICustomization() {
             return View();
         }

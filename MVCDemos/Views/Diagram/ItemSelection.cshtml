@@ -1,0 +1,40 @@
+﻿@(Html.DevExtreme().Diagram()
+    .ID("diagram")
+    .OnSelectionChanged("onSelectionChanged")
+    .PropertiesPanel(pp => pp
+        .Visibility(DiagramPanelVisibility.Disabled)
+    )
+    .Toolbox(t => t
+        .Visibility(DiagramPanelVisibility.Disabled)
+    )
+    .Nodes(ns => ns
+        .DataSource(d => d
+            .Array()
+            .Key("this")
+            .Data(Model)
+        )
+        .KeyExpr("ID")
+        .TextExpr("FullName")
+        .ParentKeyExpr("HeadID")
+        .AutoLayout(al => al
+            .Type(DiagramDataLayoutType.Tree)
+        )
+    )
+)
+
+<div class="selected-data">
+    <span class="caption">Selected Items:</span>
+    <span id="selected-items-container">Nobody has been selected</span>
+</div>
+
+<script type="text/javascript">
+    function onSelectionChanged(args) {
+        var items = args.items
+            .filter(function(item) { return item.itemType === "shape"; })
+            .map(function(item) { return item.text; });
+        if(items.length > 0)
+            $("#selected-items-container").text(items.join(", "));
+        else
+            $("#selected-items-container").text("Nobody has been selected");
+    }
+</script>
