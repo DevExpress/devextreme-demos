@@ -47,6 +47,12 @@ namespace DevExtreme.NETCore.Demos.Models {
         public string Type { set; get; }
         public string Level { set; get; }
     }
+    public class OrgItemRestrictions {
+        public string ID { set; get; }
+        public string Name { set; get; }
+        public string Type { set; get; }
+        public string ParentID { set; get; }
+    }
     public class OrgItemWithImage {
         public string ID { set; get; }
         public string Text { set; get; }
