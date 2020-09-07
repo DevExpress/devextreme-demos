@@ -637,9 +637,11 @@
     <Content Include="Content\DemosStyles\Diagram\CustomShapesWithTemplates.css" />
     <Content Include="Content\DemosStyles\Diagram\CustomShapesWithTexts.css" />
     <Content Include="Content\DemosStyles\Diagram\ImagesInShapes.css" />
+    <Content Include="Content\DemosStyles\Diagram\ItemSelection.css" />
     <Content Include="Content\DemosStyles\Diagram\NodesAndEdgesArrays.css" />
     <Content Include="Content\DemosStyles\Diagram\NodesArrayHierarchicalStructure.css" />
     <Content Include="Content\DemosStyles\Diagram\Adaptability.css" />
+    <Content Include="Content\DemosStyles\Diagram\OperationRestrictions.css" />
     <Content Include="Content\DemosStyles\Diagram\WebAPIService.css" />
     <Content Include="Content\DemosStyles\Diagram\NodesArrayPlainStructure.css" />
     <Content Include="Content\DemosStyles\Diagram\Overview.css" />
@@ -2116,6 +2118,8 @@
     <Content Include="Views\Gantt\Toolbar.cshtml" />
     <Content Include="Views\Gantt\Validation.cshtml" />
     <Content Include="Views\VectorMap\CustomAnnotations.cshtml" />
+    <Content Include="Views\Diagram\ItemSelection.cshtml" />
+    <Content Include="Views\Diagram\OperationRestrictions.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

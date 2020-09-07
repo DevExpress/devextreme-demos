@@ -48,6 +48,9 @@ namespace DevExtreme.MVC.Demos.Controllers {
         public ActionResult ItemSelection() {
             return View(SampleData.OrgItemsPlain);
         }
+        public ActionResult OperationRestrictions() {
+            return View(SampleData.OrgItemsRestrictions);
+        }
         public ActionResult UICustomization() {
             return View();
         }

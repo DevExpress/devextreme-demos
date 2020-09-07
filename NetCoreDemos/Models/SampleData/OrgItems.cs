@@ -979,6 +979,66 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 To = "123",
             }
         };
+        public static readonly IEnumerable<OrgItemRestrictions> OrgItemsRestrictions = new[] {
+            new OrgItemRestrictions{
+                ID = "106",
+                Name = "Development",
+                Type = "root"
+            },
+            new OrgItemRestrictions{
+                ID = "107",
+                Name = "WinForms Team",
+                Type =  "team",
+                ParentID = "106"
+            },
+            new OrgItemRestrictions{
+                ID = "109",
+                Name = "Javascript Team",
+                Type =  "team",
+                ParentID = "106"
+            },
+            new OrgItemRestrictions{
+                ID = "110",
+                Name = "ASP.NET Team",
+                Type =  "team",
+                ParentID = "106"
+            },
+            new OrgItemRestrictions{
+                ID = "112",
+                Name =  "Ana Trujillo",
+                ParentID = "107"
+            },
+            new OrgItemRestrictions{
+                ID = "113",
+                Name = "Antonio Moreno",
+                ParentID = "107"
+            },
+            new OrgItemRestrictions{
+                ID = "115",
+                Name = "Christina Berglund",
+                ParentID = "109"
+            },
+            new OrgItemRestrictions{
+                ID = "116",
+                Name = "Hanna Moos",
+                ParentID = "109"
+            },
+            new OrgItemRestrictions{
+                ID = "119",
+                Name = "Laurence Lebihan",
+                ParentID = "110"
+            },
+            new OrgItemRestrictions{
+                ID = "122",
+                Name =  "Patricio Simpson",
+                ParentID = "110"
+            },
+            new OrgItemRestrictions{
+                ID = "123",
+                Name = "Francisco Chang",
+                ParentID = "110"
+            }
+        };
         public static readonly IEnumerable<OrgItemWithImage> OrgItemsWidthImage = new[] {
             new OrgItemWithImage {
                 ID = "106",
