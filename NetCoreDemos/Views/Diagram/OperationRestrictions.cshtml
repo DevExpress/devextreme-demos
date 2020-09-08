@@ -1,6 +1,7 @@
 ﻿@(Html.DevExtreme().Diagram()
     .ID("diagram")
     .OnRequestOperation("onRequestOperation")
+    .OnRequestLayoutUpdate("onRequestLayoutUpdate")
     .CustomShapes(cs => {
         cs.Add().Category("items").Type("root").BaseType("octagon").DefaultText("Development");
         cs.Add().Category("items").Type("team").BaseType("ellipse").Title("Team").DefaultText("Team Name");
@@ -45,14 +46,13 @@
         }
     }
 
-    function requestUpdate(changes) {
-        for(var i = 0; i < changes.length; i++) {
-            if(changes[i].Type === 'remove')
-                return true;
-            else if(changes[i].data.ParentID !== undefined && changes[i].data.ParentID !== null)
-                return true;
+    function onRequestLayoutUpdate(e) {
+        for(var i = 0; i < e.changes.length; i++) {
+            if(e.changes[i].Type === 'remove')
+                e.allowed = true;
+            else if(e.changes[i].data.ParentID !== undefined && e.changes[i].data.ParentID !== null)
+                e.allowed = true;
         }
-        return false;
     }
 
     function onRequestOperation(e) {
@@ -66,7 +66,8 @@
                 e.allowed = false;
             }
             if(e.args.shape.dataItem && e.args.shape.dataItem.Type === "team") {
-                var children = orgItems.filter(function(item) {
+                var diagram = $("#diagram").dxDiagram("instance");
+                var children = diagram.getNodeDataSource().items().filter(function(item) {
                     return item.ParentID === e.args.shape.dataItem.ID;
                 });
                 if(children.length > 0)
