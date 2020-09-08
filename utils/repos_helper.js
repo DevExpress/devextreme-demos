@@ -37,7 +37,7 @@ const processRepository = (command, repositoryName, repositoryPath, node_modules
 }
 
 const getUpdatedData = (data, repository, path) => {
-    let pattern = "[\'\"]{0,1}DEVEXTREME[\'\"]{0,1}:\\s*[\'\"]{2}";
+    let pattern = '[\'\"]{0,1}DEVEXTREME[\'\"]{0,1}:\\s*[\'\"]{2}';
     pattern = pattern.replace('DEVEXTREME', repository); 
     const replacement = '\'' + repository + '\'' + ': \'' + path.replace(/\\/g, '\\\\') + '\'';
     const result = data.replace(new RegExp(pattern), replacement);
