@@ -64,7 +64,7 @@ const getWidgetQuestions = (baseDemosDir) => {
     }, {
         type: (prev, answers) => answers.name == 'new' ? 'text' : null,
         name: 'newName',
-        format: val => val.replace(/(?:^|\s)\S/g, (a) => a.toUpperCase()).replace(/ /g, ""),
+        format: val => val.replace(/(?:^|\s)\S/g, (a) => a.toUpperCase()).replace(/ /g, ''),
         message: 'Enter the name of a new directory:',
     }];
 }
@@ -108,7 +108,7 @@ const getApproachesFoldersQuestions = (approaches) => {
         return { title: approach };
     });
     return {
-        type: "autocomplete",
+        type: 'autocomplete',
         name: 'approach',
         message: 'Select an approach:',
         choices: result
@@ -117,17 +117,17 @@ const getApproachesFoldersQuestions = (approaches) => {
 
 const getDemoToUpdateQuestions = (menuMetaData) => {
     return [{
-        type: "autocomplete",
+        type: 'autocomplete',
         name: 'category',
         message: 'Select a category:',
         choices: mm_utils.getCategories(menuMetaData)
     }, {
-        type: "autocomplete",
+        type: 'autocomplete',
         name: 'group',
         message: 'Select a group:',
         choices: (prev, answers) => mm_utils.getGroups(menuMetaData, answers.category)
     }, {
-        type: "autocomplete",
+        type: 'autocomplete',
         name: 'demo',
         message: 'Select a demo:',
         choices: (prev, answers) => mm_utils.getDemos(menuMetaData, answers.category, answers.group)
@@ -149,7 +149,7 @@ const getLinkRepositoriesQuestions = () => {
             type: 'multiselect',
             name: 'repositories',
             min: 1,
-            instructions: "\nSpace - select a repository\nUp/Down - Highlight next/previous repository\nEnter - finish selection\n",
+            instructions: '\nSpace - select a repository\nUp/Down - Highlight next/previous repository\nEnter - finish selection\n',
             message: (prev, answers) => 'Select repositories that you want to ' + answers.command + ' and press Enter...',
             choices: [
                 { title: 'DevExtreme', value: 'devextreme'},
@@ -166,8 +166,8 @@ const getLinkRepositoriesQuestions = () => {
             initial: 0,           
             message: 'Select DevExtreme build you want to process.',
             choices: [
-                { title: 'Current `%devextreme%/artifacts/npm/devextreme`', value: 'devextreme' },
-                { title: 'Renovation `%devextreme%/artifacts/npm/devextreme-renovation`', value: 'devextreme-renovation' },
+                { title: 'Current `devextreme/artifacts/npm/devextreme`', value: 'devextreme' },
+                { title: 'Renovation `devextreme/artifacts/npm/devextreme-renovation`', value: 'devextreme-renovation' },
             ]
         }
     ];
