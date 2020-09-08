@@ -980,60 +980,60 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
             }
         };
         public static readonly IEnumerable<OrgItemRestrictions> OrgItemsRestrictions = new[] {
-            new OrgItemRestrictions{  
+            new OrgItemRestrictions {
 		        ID = "106",
-		        Name = "Development",
+                Name = "Development",
 		        Type = "root"
 	        },
-            new OrgItemRestrictions{  
+            new OrgItemRestrictions {
 		        ID = "107",
 		        Name = "WinForms Team",
-		        Type =  "team",
+		        Type = "team",
 		        ParentID = "106"
 	        },
-            new OrgItemRestrictions{  
+            new OrgItemRestrictions {
 		        ID = "109",
 		        Name = "Javascript Team",
-                Type =  "team",
+                Type = "team",
 		        ParentID = "106"
 	        },
-            new OrgItemRestrictions{  
+            new OrgItemRestrictions {
 		        ID = "110",
 		        Name = "ASP.NET Team",
-                Type =  "team",
+                Type = "team",
 		        ParentID = "106"
 	        },
-            new OrgItemRestrictions{  
+            new OrgItemRestrictions {
 		        ID = "112",
-                Name =  "Ana Trujillo",
+                Name = "Ana Trujillo",
 		        ParentID = "107"
 	        },
-            new OrgItemRestrictions{  
+            new OrgItemRestrictions {
 		        ID = "113",
 		        Name = "Antonio Moreno",
 		        ParentID = "107"
 	        },
-            new OrgItemRestrictions{  
+            new OrgItemRestrictions {
 		        ID = "115",
 		        Name = "Christina Berglund",
 		        ParentID = "109"
 	        },
-            new OrgItemRestrictions{  
+            new OrgItemRestrictions {
 		        ID = "116",
 		        Name = "Hanna Moos",
 		        ParentID = "109"
 	        },
-            new OrgItemRestrictions{  
+            new OrgItemRestrictions {
 		        ID = "119",
 		        Name = "Laurence Lebihan",
 		        ParentID = "110"
 	        },
-            new OrgItemRestrictions{  
+            new OrgItemRestrictions {
 		        ID = "122",
-                Name =  "Patricio Simpson",
+                Name = "Patricio Simpson",
 		        ParentID = "110"
 	        },
-            new OrgItemRestrictions{  
+            new OrgItemRestrictions {
 		        ID = "123",
 		        Name = "Francisco Chang",
 		        ParentID = "110"
