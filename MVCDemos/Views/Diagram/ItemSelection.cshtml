@@ -28,8 +28,8 @@
 </div>
 
 <script type="text/javascript">
-    function onSelectionChanged(args) {
-        var items = args.items
+    function onSelectionChanged(e) {
+        var items = e.items
             .filter(function(item) { return item.itemType === "shape"; })
             .map(function(item) { return item.text; });
         if(items.length > 0)

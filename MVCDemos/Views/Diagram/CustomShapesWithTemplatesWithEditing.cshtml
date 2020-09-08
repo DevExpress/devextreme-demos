@@ -2,6 +2,7 @@
 
 @(Html.DevExtreme().Diagram()
     .ID("diagram")
+    .OnRequestLayoutUpdate("onRequestLayoutUpdate")
     .CustomShapes(cs => {
         cs.Add()
             .Type("employee")
@@ -44,7 +45,6 @@
         .ParentKeyExpr("HeadID")
         .AutoLayout(al => al
             .Type(DiagramDataLayoutType.Tree)
-            .RequestUpdate("requestUpdate")
         )
     )
     .ContextToolbox(ct => ct
@@ -177,14 +177,13 @@
         }
     }
 
-    function requestUpdate(changes) {
-        for(var i = 0; i < changes.length; i++) {
-            if(changes[i].type === 'remove')
-                return true;
-            else if(changes[i].data.HeadID !== undefined && changes[i].data.HeadID !== null)
-                return true;
+    function onRequestLayoutUpdate(e) {
+        for(var i = 0; i < e.changes.length; i++) {
+            if(e.changes[i].type === 'remove')
+                e.allowed = true;
+            else if(e.changes[i].data.HeadID !== undefined && e.changes[i].data.HeadID !== null)
+                e.allowed = true;
         }
-        return false;
     }
 
     function editEmployee(employee) {
