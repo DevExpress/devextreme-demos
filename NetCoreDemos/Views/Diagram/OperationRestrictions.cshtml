@@ -13,18 +13,22 @@
             .Key("ID")
             .Data(Model)
         )
-        .Toolbox(t => t
-        .ShapeIconsPerRow(2)
-        .Groups(g => g
-            .Add().Title("Items").Shapes(new[] { "team", "employee" })
-            )
+        .KeyExpr("ID")
+        .TextExpr("Name")
+        .ParentKeyExpr("ParentID")
+        .AutoLayout(al => al
+            .Type(DiagramDataLayoutType.Tree)
         )
     )
     .ContextToolbox(t => t
-        .PropertiesPanel(pp => pp
+        .ShapeIconsPerRow(2)
+        .Width(100)
+        .Shapes(new[] { "team", "employee" })
+    )
+    .Toolbox(t => t
         .ShapeIconsPerRow(2)
         .Groups(g => g
-            .Visibility(DiagramPanelVisibility.Disabled)
+            .Add().Title("Items").Shapes(new[] { "team", "employee" })
         )
     )
     .PropertiesPanel(pp => pp
