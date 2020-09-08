@@ -16,7 +16,7 @@ package-lock.json
 
 *d.ts
 
-utils/_reposPaths.js
+utils/reposPaths.js
 
 JSDemos/Demos/**/config.js
 
