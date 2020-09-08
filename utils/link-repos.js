@@ -13,11 +13,11 @@ const mainRoutine = async () => {
     });
     repositories.forEach(repository => {
         console.log('Processing the `' + repository.name + '` repository...');
-        if(repository.name === 'devextreme') {
-            repository.path = path.join(repository.path, 'artifacts', 'npm', 'devextreme'); 
+        if(repository.name === 'devextreme' && response.build) {
+            repository.path = path.join(repository.path, 'artifacts', 'npm', response.build); 
         }
         reposHelper.processRepository(response.command, repository.name, repository.path, node_modulesDir);
-        console.log("Processed: " + repository.path);
+        console.log('Processed: ' + repository.path);
     });
     console.log('Finished ' + response.command + 'ing repositories...');
 }
