@@ -1,4 +1,4 @@
-**DataGrid** has the following API that you can use to filter data:     
+**DataGrid** includes the following API that you can use to filter data:     
 
 - [filter()](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Methods/#filter) / [filter(filterExpr)](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Methods/#filterfilterExpr)       
 Gets or applies a filter expression to the grid's [dataSource](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#dataSource).
