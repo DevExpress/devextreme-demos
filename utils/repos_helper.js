@@ -8,8 +8,8 @@ const content = `const reposPaths = {
     'devextreme-angular': '',
     'devextreme-react': '',
     'devextreme-vue': '',
-    'devextreme-diagram': '',
-    'devextreme-gantt': '',
+    'devexpress-diagram': '',
+    'devexpress-gantt': '',
     'hg': ''
 };
 
