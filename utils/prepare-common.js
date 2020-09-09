@@ -20,6 +20,8 @@ const prepareProjects = (hgPath) => {
     const dxAspNetData = path.join(jsDemos, 'node_modules/devextreme-aspnet-data/js');
     const jQuery = path.join(jsDemos, 'node_modules/jquery/dist');
     const jszip = path.join(jsDemos, 'node_modules/jszip/dist');
+    const dxDiagrammDist = path.join(jsDemos, 'node_modules/devexpress-diagram/dist');
+    const dxGanttDist = path.join(jsDemos, 'node_modules/devexpress-gantt/dist');
 
     fs.readdirSync(mvcDemosAppData)
         .filter(file => /.*\.ldf$/.test(file))
@@ -40,6 +42,34 @@ const prepareProjects = (hgPath) => {
     fs_utils.copyRecursiveSync(dxAspNetData, path.join(netCoreDemos, 'wwwroot/js'));
     fs_utils.copyRecursiveSync(jQuery, path.join(netCoreDemos, 'wwwroot/js'));
     fs_utils.copyRecursiveSync(jszip, path.join(netCoreDemos, 'wwwroot/js'));
+
+    fs.readdirSync(dxDiagrammDist)
+        .filter(file => /.*\.css$/.test(file))
+        .map(file => { 
+            fs_utils.copyRecursiveSync(path.join(dxDiagrammDist, file), path.join(mvcDemos, 'Content/DevExtreme', file));
+            fs_utils.copyRecursiveSync(path.join(dxDiagrammDist, file), path.join(netCoreDemos, 'wwwroot/css', file));
+    });
+
+    fs.readdirSync(dxDiagrammDist)
+        .filter(file => /.*\.js$/.test(file))
+        .map(file => { 
+            fs_utils.copyRecursiveSync(path.join(dxDiagrammDist, file), path.join(mvcDemos, 'Scripts', file));
+            fs_utils.copyRecursiveSync(path.join(dxDiagrammDist, file), path.join(netCoreDemos, 'wwwroot/js', file));
+    });
+
+    fs.readdirSync(dxGanttDist)
+        .filter(file => /.*\.css$/.test(file))
+        .map(file => { 
+            fs_utils.copyRecursiveSync(path.join(dxGanttDist, file), path.join(mvcDemos, 'Content/DevExtreme', file));
+            fs_utils.copyRecursiveSync(path.join(dxGanttDist, file), path.join(netCoreDemos, 'wwwroot/css', file));
+    });
+
+    fs.readdirSync(dxGanttDist)
+        .filter(file => /.*\.js$/.test(file))
+        .map(file => {
+            fs_utils.copyRecursiveSync(path.join(dxGanttDist, file), path.join(mvcDemos, 'Scripts', file));
+            fs_utils.copyRecursiveSync(path.join(dxGanttDist, file), path.join(netCoreDemos, 'wwwroot/js', file));
+    });
 
     fs.copyFileSync(path.join(hgPath, 'SampleDatabases/Northwind.mdf'), path.join(mvcDemosAppData, 'Northwind.mdf'));
 

@@ -25,7 +25,7 @@ const prepareNetCoreDemos = async () => {
     const netCoreDemos = path.join(rootDir, 'NetCoreDemos');
     const nugetPath = path.join(hgPath, 'DevExtreme.AspNet.Mvc/AspNetCore/NuGet');
     const demosNugetPath = path.join(netCoreDemos, 'NuGet');
-    const version = require(path.join(hgPath, 'GitHub/artifacts/npm/devextreme/package.json')).version;
+    const version = require(path.join(hgPath, 'GitHub/artifacts/npm/devextreme/package.json')).version.split('-')[0];
 
     if(fs.existsSync(demosNugetPath)) {
         fs.unlinkSync(demosNugetPath);
