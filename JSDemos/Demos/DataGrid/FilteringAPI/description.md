@@ -1,7 +1,7 @@
 **DataGrid** includes the following API that you can use to filter data:     
 
 - [filter()](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Methods/#filter) / [filter(filterExpr)](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Methods/#filterfilterExpr)       
-Gets or applies a filter expression to the grid's [dataSource](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#dataSource).
+Gets or sets a filter expression for the grid's [dataSource](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#dataSource).
 
 - [filterValue](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#filterValue)       
 A filter expression applied using the following UI elements: [filter row](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/filterRow/), [header filter](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/headerFilter/), [filter builder](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#filterBuilder).
