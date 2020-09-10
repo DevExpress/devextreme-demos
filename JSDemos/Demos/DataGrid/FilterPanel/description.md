@@ -2,6 +2,6 @@
 
 To display the filter panel, set the **filterPanel**.[visible](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/filterPanel/#visible) option to **true**. 
 
-A click on the combined filter calls the integrated filter builder. You can configure it in the [filterBuilder](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#filterBuilder) object. In this demo, this object is used to add a [custom filter operation](/Documentation/ApiReference/UI_Widgets/dxFilterBuilder/Configuration/customOperations).
+A click on the combined filter calls the integrated filter builder. You can configure it in the [filterBuilder](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#filterBuilder) object. In this demo, this object is used to add the `weekends` [custom filter operation](/Documentation/ApiReference/UI_Widgets/dxFilterBuilder/Configuration/customOperations).
 
 The intergrated filter builder is displayed in a popup window. This is the DevExtreme [Popup](/Documentation/ApiReference/UI_Widgets/dxPopup/) component. Its default configuration is defined automatically, but you can redefine it in the [filterBuilderPopup](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#filterBuilderPopup) object. In this example, this object is used to specify the popup's [position](/Documentation/ApiReference/UI_Widgets/dxPopup/Configuration/#position).
