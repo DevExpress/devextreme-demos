@@ -78,29 +78,22 @@ $(function() {
             e.cancel = true;
         }
     });
-    
+
     function isDataCell(cell) {
         return (cell.area === "data" && cell.rowType === "D" && cell.columnType === "D");
     }
-        
+
     function isTotalCell(cell) {
         return (cell.rowType === "T" || cell.type === "T" || cell.type === "GT" || cell.rowType === "GT" || cell.columnType === "GT");
     }
-            
+
     function getExcelCellFormat(appearance) {
         return {
-            fill: {
-                type: "pattern",
-                pattern: "solid",
-                fgColor: { argb: appearance.fill }
-            },
-            font: {
-                color: { argb: appearance.font },
-                bold: appearance.bold
-            }
+            fill: { type: "pattern", pattern: "solid", fgColor: { argb: appearance.fill }},
+            font: { color: { argb: appearance.font }, bold: appearance.bold }
         };
     }
-    
+
     function getCssStyles(appearance) {
         return {
             "background-color": `#${appearance.fill}`,
@@ -108,14 +101,10 @@ $(function() {
             "font-weight": appearance.bold ? "bold" : undefined
         };
     }
-    
+
     function getConditionalAppearance(cell) {
         if (isTotalCell(cell)) {
-            return {
-                fill: "F2F2F2",
-                font: "3F3F3F",
-                bold: true
-            };
+            return { fill: "F2F2F2", font: "3F3F3F", bold: true };
         } else {
             if (cell.value < 20000) {
                 return { font: "9C0006", fill: "FFC7CE" };
@@ -127,4 +116,3 @@ $(function() {
         }
     }
 });
-        
