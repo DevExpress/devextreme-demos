@@ -30,7 +30,7 @@
     var formatNumber = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format;
 
     function getImagePath(data) {
-        return '../../Content/Images/flags/' + data.Name.replace(/\s/, "").toLowerCase() + ".gif"
+        return '../../Content/Images/flags/' + data.Name.replace(/\s/, "") + ".svg"
     }
 
     function vectorMap_customizeAnnotation(annotationItem) {
