@@ -120,22 +120,20 @@ export default function App() {
   
   return (
     <React.Fragment>
-    <PivotGrid
-    allowSortingBySummary={true}
-    allowSorting={true}
-    allowFiltering={true}
-    allowExpandAll={true}
-    dataSource={dataSource}
-    height={490}
-    showBorders={true}
-    onExporting={onExporting}
-    onCellPrepared={onCellPrepared}
-    >
-    <FieldChooser enabled={false} />
-    <Export enabled={true} />
-    </PivotGrid>
+      <PivotGrid
+        allowSortingBySummary={true}
+        allowSorting={true}
+        allowFiltering={true}
+        allowExpandAll={true}
+        dataSource={dataSource}
+        height={490}
+        showBorders={true}
+        onExporting={onExporting}
+        onCellPrepared={onCellPrepared}
+      >
+        <FieldChooser enabled={false} />
+        <Export enabled={true} />
+      </PivotGrid>
     </React.Fragment>
-    );
-  }
-  
-  
+  );
+}
