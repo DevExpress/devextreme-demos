@@ -30,7 +30,8 @@ export class AppComponent {
             fields: [{
                 caption: 'Region',
                 dataField: 'region',
-                area: 'row'
+                area: 'row',
+                expanded: true
             }, {
                 caption: 'City',
                 dataField: 'city',
@@ -41,18 +42,12 @@ export class AppComponent {
                 dataType: 'date',
                 area: 'column'
             }, {
-                caption: 'Amount',
-                dataField: 'amount',
-                dataType: 'number',
-                summaryType: 'sum',
-                format: 'currency',
-                area: 'data'
-            }, {
-                caption: 'Count',
-                dataField: 'amount',
-                dataType: 'number',
-                summaryType: 'count',
-                area: 'data'
+                caption: "Sales",
+                dataField: "amount",
+                dataType: "number",
+                summaryType: "sum",
+                format: "currency",
+                area: "data"
             }],
             store: service.getSales()
         }
@@ -66,20 +61,9 @@ export class AppComponent {
             component: e.component,
             worksheet: worksheet,
             customizeCell: ({ pivotCell, excelCell }) => {
-                if(pivotCell.rowType === 'T' || pivotCell.type === 'T' || pivotCell.type === 'GT' || pivotCell.rowType === 'GT' || pivotCell.columnType === 'GT') {
-                    excelCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'DDDDDD' } };
-                    if(pivotCell.dataIndex === 0) {
-                        excelCell.numFmt = '$ #,##.#,"K"';
-                    }
-                }
-                
-                if(pivotCell.area === 'data') {
-                    if(pivotCell.dataIndex === 1) {
-                        excelCell.font = { bold: true };
-                    } else {
-                        const color = pivotCell.value < 100000 ? 'DC3545' : '28A745';
-                        excelCell.font = { color: { argb: color } };
-                    }
+                if(this.isDataCell(pivotCell) || this.isTotalCell(pivotCell)) {
+                    const appearance = this.getConditionalAppearance(pivotCell);
+                    Object.assign(excelCell, this.getExcelCellFormat(appearance));
                 }
                 
                 const borderStyle = { style: 'thin', color: { argb: 'FF7E7E7E' } };
@@ -98,20 +82,50 @@ export class AppComponent {
         e.cancel = true;
     }
     
-    onCellPrepared({ area, type, rowType, columnType, cellElement, cell }) {
-        if(rowType === 'T' || type === 'T' || type === 'GT' || rowType === 'GT' || columnType === 'GT') {
-            cellElement.style.backgroundColor = '#DDDDDD';
+    onCellPrepared({ cell, area, cellElement }) {
+        cell.area = area;
+        
+        if(this.isDataCell(cell) || this.isTotalCell(cell)) {
+            const appearance = this.getConditionalAppearance(cell);
+            Object.assign(cellElement.style, this.getCssStyles(appearance));
         }
-        if(area === 'data') {
-            if(cell.dataIndex === 1) {
-                cellElement.style.fontWeight = 'bold';
-            } else {
-                if(cell.value < 100000) {
-                    cellElement.style.color = '#DC3545';
-                } else {
-                    cellElement.style.color = '#28A745';
-                }
+    }
+    
+    isDataCell(cell) {
+        return (cell.area === "data" && cell.rowType === "D" && cell.columnType === "D");
+    }
+    
+    isTotalCell(cell) {
+        return (cell.rowType === "T" || cell.type === "T" || cell.type === "GT" || cell.rowType === "GT" || cell.columnType === "GT");
+    }
+    
+    getExcelCellFormat({ fill, font, bold }) {
+        return {
+            fill: { type: "pattern", pattern: "solid", fgColor: { argb: fill }},
+            font: { color: { argb: font }, bold }
+        };
+    }
+    
+    getCssStyles({ fill, font, bold }) {
+        return { 
+            "background-color": `#${fill}`,
+            color: `#${font}`,
+            "font-weight": bold ? "bold" : undefined
+        };
+    }
+    
+    getConditionalAppearance(cell) {
+        if(this.isTotalCell(cell)) {
+            return { fill: "F2F2F2", font: "3F3F3F", bold: true };
+        } else {
+            const { value } = cell;
+            if(value < 20000) {
+                return { font: "9C0006", fill: "FFC7CE" };
             }
+            if(value > 50000) {
+                return { font: "006100", fill: "C6EFCE" };
+            }
+            return { font: "9C6500", fill: "FFEB9C" };
         }
     }
 }
