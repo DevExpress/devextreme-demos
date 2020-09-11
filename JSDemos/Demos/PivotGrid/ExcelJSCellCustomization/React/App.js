@@ -45,7 +45,7 @@ export default function App() {
   function onExporting(e) {
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Sales');
-    
+
     exportPivotGrid({
       component: e.component,
       worksheet: worksheet,
@@ -54,7 +54,7 @@ export default function App() {
           const appearance = getConditionalAppearance(pivotCell);
           Object.assign(excelCell, getExcelCellFormat(appearance));
         }
-        
+
         const borderStyle = { style: 'thin', color: { argb: 'FF7E7E7E' } };
         excelCell.border = {
           bottom: borderStyle,
@@ -73,28 +73,28 @@ export default function App() {
   
   function onCellPrepared({ cell, area, cellElement }) {
     cell.area = area;
-    
+
     if(isDataCell(cell) || isTotalCell(cell)) {
       const appearance = getConditionalAppearance(cell);
       Object.assign(cellElement.style, getCssStyles(appearance));
     }
   }
-  
+
   function isDataCell(cell) {
     return (cell.area === "data" && cell.rowType === "D" && cell.columnType === "D");
   }
-  
+
   function isTotalCell(cell) {
     return (cell.rowType === "T" || cell.type === "T" || cell.type === "GT" || cell.rowType === "GT" || cell.columnType === "GT");
   }
-  
+
   function getExcelCellFormat({ fill, font, bold }) {
     return {
       fill: { type: "pattern", pattern: "solid", fgColor: { argb: fill }},
       font: { color: { argb: font }, bold }
     };
   }
-  
+
   function getCssStyles({ fill, font, bold }) {
     return { 
       "background-color": `#${fill}`,
@@ -102,7 +102,7 @@ export default function App() {
       "font-weight": bold ? "bold" : undefined
     };
   }
-  
+
   function getConditionalAppearance(cell) {
     if(isTotalCell(cell)) {
       return { fill: "F2F2F2", font: "3F3F3F", bold: true };
@@ -117,7 +117,7 @@ export default function App() {
       return { font: "9C6500", fill: "FFEB9C" };
     }
   }
-  
+
   return (
     <React.Fragment>
       <PivotGrid

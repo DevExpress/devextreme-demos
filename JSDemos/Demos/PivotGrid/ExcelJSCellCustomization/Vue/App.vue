@@ -97,7 +97,6 @@ export default {
     },
     onCellPrepared({ cell, area, cellElement }) {
       cell.area = area;
-
       if(this.isDataCell(cell) || this.isTotalCell(cell)) {
         const appearance = this.getConditionalAppearance(cell);
         Object.assign(cellElement.style, this.getCssStyles(appearance));
