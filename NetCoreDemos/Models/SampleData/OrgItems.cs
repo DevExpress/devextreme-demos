@@ -1006,36 +1006,43 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
             new OrgItemRestrictions {
                 ID = "112",
                 Name = "Ana Trujillo",
+                Type = "employee",
                 ParentID = "107"
             },
             new OrgItemRestrictions {
                 ID = "113",
                 Name = "Antonio Moreno",
+                Type = "employee",
                 ParentID = "107"
             },
             new OrgItemRestrictions {
                 ID = "115",
                 Name = "Christina Berglund",
+                Type = "employee",
                 ParentID = "109"
             },
             new OrgItemRestrictions {
                 ID = "116",
                 Name = "Hanna Moos",
+                Type = "employee",
                 ParentID = "109"
             },
             new OrgItemRestrictions {
                 ID = "119",
                 Name = "Laurence Lebihan",
+                Type = "employee",
                 ParentID = "110"
             },
             new OrgItemRestrictions {
                 ID = "122",
                 Name = "Patricio Simpson",
+                Type = "employee",
                 ParentID = "110"
             },
             new OrgItemRestrictions {
                 ID = "123",
                 Name = "Francisco Chang",
+                Type = "employee",
                 ParentID = "110"
             }
         };
