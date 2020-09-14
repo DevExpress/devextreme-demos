@@ -45,28 +45,28 @@ const prepareProjects = (hgPath) => {
 
     fs.readdirSync(dxDiagrammDist)
         .filter(file => /.*\.css$/.test(file))
-        .map(file => { 
+        .forEach(file => { 
             fs_utils.copyRecursiveSync(path.join(dxDiagrammDist, file), path.join(mvcDemos, 'Content/DevExtreme', file));
             fs_utils.copyRecursiveSync(path.join(dxDiagrammDist, file), path.join(netCoreDemos, 'wwwroot/css', file));
     });
 
     fs.readdirSync(dxDiagrammDist)
         .filter(file => /.*\.js$/.test(file))
-        .map(file => { 
+        .forEach(file => { 
             fs_utils.copyRecursiveSync(path.join(dxDiagrammDist, file), path.join(mvcDemos, 'Scripts', file));
             fs_utils.copyRecursiveSync(path.join(dxDiagrammDist, file), path.join(netCoreDemos, 'wwwroot/js', file));
     });
 
     fs.readdirSync(dxGanttDist)
         .filter(file => /.*\.css$/.test(file))
-        .map(file => { 
+        .forEach(file => { 
             fs_utils.copyRecursiveSync(path.join(dxGanttDist, file), path.join(mvcDemos, 'Content/DevExtreme', file));
             fs_utils.copyRecursiveSync(path.join(dxGanttDist, file), path.join(netCoreDemos, 'wwwroot/css', file));
     });
 
     fs.readdirSync(dxGanttDist)
         .filter(file => /.*\.js$/.test(file))
-        .map(file => {
+        .forEach(file => {
             fs_utils.copyRecursiveSync(path.join(dxGanttDist, file), path.join(mvcDemos, 'Scripts', file));
             fs_utils.copyRecursiveSync(path.join(dxGanttDist, file), path.join(netCoreDemos, 'wwwroot/js', file));
     });
