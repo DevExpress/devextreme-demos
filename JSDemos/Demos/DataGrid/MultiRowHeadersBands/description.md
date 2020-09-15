@@ -1,3 +1,9 @@
-To implement multi-level headers, transform the [columns](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/) array into a hierarchical one as done in this demo. If you don't use the **columns** array, set the band and banded columns in the [ownerBand](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#ownerBand) and [isBand](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#isBand) options inside the [customizeColumns](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#customizeColumns) function (see the example in the **isBand** description).  
+Our **DataGrid** widget allows you to group multiple columns under one header (band). This demo shows an example: the "Nominal GDP" and "Population" bands have banded columns.
 
-Note that despite being banded, the nested columns remain interactive.
+You can drag the band across the grid to reorder all its banded columns simultaneously. You can also move the band to the column chooser and hide the banded columns. Banded columns remain interactive.
+
+To create the banded layout, do one of the following:
+
+* Assign a hierarchical structure to the columns option. The code in this demo is an example.
+
+* Implement a [customizeColumns](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#customizeColumns) function where you should specify the [ownerBand](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#ownerBand) and [isBand](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#isBand) column options. Refer to the isBand description for a code sample.
