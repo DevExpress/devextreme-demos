@@ -1,13 +1,13 @@
-Toolbar provides additional control elements. To add and customize the toolbar, implement the onToolbarPreparing option. You can configure an existent element or add a DevExtreme or custom widget in this function. For this, manipulate the toolbarOptions.items array located in the parameter object.
+The toolbar contains predefined and custom controls that execute various commands.
 
-In this demo, the following elements are added to the toolbar inside the onToolbarPreparing function:
+The **DataGrid** uses the DevExtreme [Toolbar](/Demos/WidgetsGallery/Demo/Toolbar/Overview/) component as the toolbar. To customize the toolbar, implement the [onToolbarPreparing](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#onToolbarPreparing) function. Its parameter contains the [Toolbar's configuration](/Documentation/ApiReference/UI_Widgets/dxToolbar/Configuration/) in the **toolbarOptions** field. You can access toolbar items via the **toolbarOptions**.[items](/Documentation/ApiReference/UI_Widgets/dxToolbar/Configuration/items/) array. Modify this array to add or remove toolbar items.
 
-* Button widget to collapse/expand data groups; it uses the **option** method of DataGrid API to set value for the grouping.autoExpandAll option
+This demo illustrates how to add the following elements to the toolbar:
 
-* Button widget to refresh grid data; this element uses the **refresh** method of DataGrid API
+- **DevExtreme widgets**        
+Specify the [widget](/Documentation/ApiReference/UI_Widgets/dxToolbar/Configuration/items/#widget) that you want to add and its [options](/Documentation/ApiReference/UI_Widgets/dxToolbar/Configuration/items/#options). In this demo, we added the [Button](/Demos/WidgetsGallery/Demo/Button/PredefinedTypes/) and [SelectBox](/Demos/WidgetsGallery/Demo/SelectBox/Overview/) widgets.
 
-* SelectBox to specify whether to group by State ot Employee
+- **Custom elements**     
+Specify a [template](/Documentation/ApiReference/UI_Widgets/dxToolbar/Configuration/items/#template) for your custom element. In this demo, the custom element displays the total group count.
 
-* Custom HTML element to display the number of data groups.
-
-The toolbar also consists of the Column Chooser button. To enable this element, add the columnChooser object to the DataGrid and set its enabled option to true.
+Toolbar items in this demo also include the Column Chooser button. This is a predefined button that the **DataGrid** added because the [columnChooser](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columnChooser/) is enabled.
