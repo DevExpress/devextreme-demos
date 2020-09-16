@@ -1,46 +1,46 @@
 <template>
   <div>
     <DxButton
-      id="btnContainer"
-      text="Export to PDF"
-      @click="onExport()"
+      id='exportButton'
+      text='Export to PDF'
+      @click='exportGrid()'
     />
 
     <DxDataGrid
-      id="gridContainer"
-      :ref="dataGridRef"
-      :data-source="dataSource"
-      :allow-column-reordering="true"
-      :show-borders="true"
+      id='gridContainer'
+      :ref='dataGridRef'
+      :data-source='dataSource'
+      :allow-column-reordering='true'
+      :show-borders='true'
     >
       <DxColumn
-        :width="60"
-        data-field="Prefix"
-        caption="Title"
+        :width='60'
+        data-field='Prefix'
+        caption='Title'
       />
-      <DxColumn data-field="FirstName"/>
-      <DxColumn data-field="LastName"/>
-      <DxColumn data-field="City"/>
+      <DxColumn data-field='FirstName'/>
+      <DxColumn data-field='LastName'/>
+      <DxColumn data-field='City'/>
       <DxColumn
-        :group-index="0"
-        data-field="State"
-      />
-      <DxColumn
-        :width="130"
-        data-field="Position"
+        :group-index='0'
+        data-field='State'
       />
       <DxColumn
-        :width="100"
-        data-field="BirthDate"
-        data-type="date"
+        :width='130'
+        data-field='Position'
       />
       <DxColumn
-        :width="100"
-        data-field="HireDate"
-        data-type="date"
+        :width='100'
+        data-field='BirthDate'
+        data-type='date'
       />
-      <DxGroupPanel :visible="true"/>
-      <DxGrouping :auto-expand-all="true"/>
+      <DxColumn
+        :width='100'
+        data-field='HireDate'
+        data-type='date'
+      />
+      <DxGroupPanel :visible='true'/>
+      <DxGrouping :auto-expand-all='true'/>
     </DxDataGrid>
   </div>
 </template>
@@ -71,14 +71,13 @@ export default {
     }
   },
   methods: {
-    onExport(e) {
-      const pdfDoc = new jsPDF('p', 'pt', 'a4');
-      const options = {
-        jsPDFDocument: pdfDoc,
+    exportGrid() {
+      const doc = new jsPDF('p', 'pt', 'a4');
+      exportDataGrid({
+        jsPDFDocument: doc,
         component: this.dataGrid
-      };
-      exportDataGrid(options).then(function(){
-        pdfDoc.save('dxDataGrid.pdf');
+      }).then(function() {
+        doc.save('Employees.pdf');
       });
     }
   }
@@ -86,7 +85,7 @@ export default {
 </script>
 
 <style scoped>
-#btnContainer {
+#exportButton {
   margin-bottom: 10px;
 }
 

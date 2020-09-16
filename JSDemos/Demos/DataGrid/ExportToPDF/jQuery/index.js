@@ -1,26 +1,25 @@
 $(function(){
-    $('#btnContainer').dxButton({
+    $('#exportButton').dxButton({
         text: 'Export to PDF',
         onClick: function() {
-          const pdfDoc = new jsPDF('p', 'pt', 'a4');
-          const options = {
-            jsPDFDocument: pdfDoc,
-            component: $('#gridContainer').dxDataGrid('instance')
-          };
-          DevExpress.pdfExporter.exportDataGrid(options).then(function(){
-            pdfDoc.save("dxDataGrid.pdf");
+          const doc = new jsPDF('p', 'pt', 'a4');
+          DevExpress.pdfExporter.exportDataGrid({
+            jsPDFDocument: doc,
+            component: dataGrid
+          }).then(function() {
+            doc.save('Employees.pdf');
           });
         }
     });
 
-    $('#gridContainer').dxDataGrid({
+    var dataGrid = $('#gridContainer').dxDataGrid({
         dataSource: employees,
         allowColumnReordering: true,
         showBorders: true,
         grouping: {
             autoExpandAll: true,
         },
-        keyExpr: "ID",
+        keyExpr: 'ID',
         groupPanel: {
             visible: true
         },
@@ -45,5 +44,5 @@ $(function(){
                 width: 100
             }
         ]
-    });
+    }).dxDataGrid('instance');
 });

@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import DataGrid, { Column, GroupPanel, Grouping  } from 'devextreme-react/data-grid';
+import DataGrid, { Column, GroupPanel, Grouping } from 'devextreme-react/data-grid';
 import Button from 'devextreme-react/button';
 
 import { jsPDF } from 'jspdf';
@@ -14,50 +14,49 @@ class App extends React.Component {
     super(props);
     this.dataGridRef = React.createRef();
     this.dataSource = service.getEmployees();
-    this.onExport = this.onExport.bind(this);
+    this.exportGrid = this.exportGrid.bind(this);
   }
   render() {
     return (
       <div>
         <Button
-          id="btnContainer"
-          text="Export to PDF"
-          onClick={this.onExport}
+          id='exportButton'
+          text='Export to PDF'
+          onClick={this.exportGrid}
         />
         <DataGrid
-          id="gridContainer"
+          id='gridContainer'
           ref={this.dataGridRef}
           dataSource={this.dataSource}
           allowColumnReordering={true}
           showBorders={true}
-          keyExpr="ID">
+          keyExpr='ID'>
 
           <GroupPanel visible={true} />
           <Grouping autoExpandAll={true} />
 
-          <Column dataField="FirstName" />
-          <Column dataField="LastName" />
-          <Column dataField="City" />
-          <Column dataField="State" groupIndex={0} />
-          <Column dataField="Position" width={130} />
-          <Column dataField="BirthDate" width={100} dataType="date" />
-          <Column dataField="HireDate" width={100} dataType="date" />
+          <Column dataField='FirstName' />
+          <Column dataField='LastName' />
+          <Column dataField='City' />
+          <Column dataField='State' groupIndex={0} />
+          <Column dataField='Position' width={130} />
+          <Column dataField='BirthDate' width={100} dataType='date' />
+          <Column dataField='HireDate' width={100} dataType='date' />
         </DataGrid>
       </div>
     );
   }
 
-  onExport(e) {
-    const pdfDoc = new jsPDF('p', 'pt', 'a4');
-    const options = {
-      jsPDFDocument: pdfDoc,
+  exportGrid() {
+    const doc = new jsPDF('p', 'pt', 'a4');
+    exportDataGrid({
+      jsPDFDocument: doc,
       component: this.dataGrid
-    };
-    exportDataGrid(options).then(function(){
-      pdfDoc.save("dxDataGrid.pdf");
+    }).then(function() {
+      doc.save('Employees.pdf');
     });
   }
-  
+
   get dataGrid() {
     return this.dataGridRef.current.instance;
   }

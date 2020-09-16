@@ -27,14 +27,13 @@ export class AppComponent {
         this.dataSource = service.getEmployees();
     }
 
-    onExport(e) {
-        const pdfDoc = new jsPDF('p', 'pt', 'a4');
-        const options = {
-            jsPDFDocument: pdfDoc,
+    exportGrid() {
+        const doc = new jsPDF('p', 'pt', 'a4');
+        exportDataGrid({
+            jsPDFDocument: doc,
             component: this.dataGrid.instance
-        };
-        exportDataGrid(options).then(function(){
-        pdfDoc.save("dxDataGrid.pdf");
+        }).then(function() {
+        doc.save('Employees.pdf');
     }
 }
 

@@ -1,6 +1,6 @@
-<dx-button id="btnContainer"
+<dx-button id="exportButton"
     text="Export to PDF"
-    (onClick)="onExport($event)">
+    (onClick)="exportGrid($event)">
 </dx-button>
 
 <dx-data-grid id="gridContainer" ref={this.dataGridRef} [dataSource]="dataSource" [allowColumnReordering]="true" [showBorders]="true">
