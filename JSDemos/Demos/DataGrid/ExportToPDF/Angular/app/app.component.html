@@ -1,15 +1,17 @@
-<dx-button
+<dx-button id="btnContainer"
     text="Export to PDF"
     (onClick)="onExport($event)">
 </dx-button>
 
-<dx-data-grid id="gridContainer" [dataSource]="dataSource" [showBorders]="true" (onExporting)="onExporting($event)">
-    <dxi-column dataField="Prefix" [width]="60" caption="Title"></dxi-column>
+<dx-data-grid id="gridContainer" ref={this.dataGridRef} [dataSource]="dataSource" [allowColumnReordering]="true" [showBorders]="true">
     <dxi-column dataField="FirstName"></dxi-column>
     <dxi-column dataField="LastName"></dxi-column>
     <dxi-column dataField="City"></dxi-column>
-    <dxi-column dataField="State"></dxi-column>
+    <dxi-column dataField="State" [groupIndex]="0"></dxi-column>
     <dxi-column dataField="Position" [width]="130"></dxi-column>
     <dxi-column dataField="BirthDate" [width]="100" dataType="date"></dxi-column>
     <dxi-column dataField="HireDate" [width]="100" dataType="date"></dxi-column>
+
+    <dxo-group-panel [visible]="true"></dxo-group-panel>
+    <dxo-grouping [autoExpandAll]="true"></dxo-grouping>
 </dx-data-grid>

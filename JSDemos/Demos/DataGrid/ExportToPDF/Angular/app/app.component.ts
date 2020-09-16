@@ -1,9 +1,9 @@
-import { NgModule, Component, enableProdMode } from '@angular/core';
+import { NgModule, Component, enableProdMode, ViewChild } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxDataGridModule, DxButtonModule } from 'devextreme-angular';
+import { DxDataGridModule, DxButtonModule, DxDataGridComponent } from 'devextreme-angular';
 import { Service, Employee } from './app.service';
-
+import { exportDataGrid } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 
@@ -15,9 +15,12 @@ if(!/localhost/.test(document.location.host)) {
 @Component({
     selector: 'demo-app',
     templateUrl: 'app/app.component.html',
+    styleUrls: ['app/app.component.css'],
     providers: [Service]
 })
 export class AppComponent {
+    @ViewChild(DxDataGridComponent, { static: false }) dataGrid: DxDataGridComponent;
+
     dataSource: Employee[];
 
     constructor(service: Service) {
@@ -25,30 +28,13 @@ export class AppComponent {
     }
 
     onExport(e) {
-        var headRow = [['Prefix', 'FirstName', 'LastName', 'City', 'State', 'Position', 'BirthDate', 'HireDate']];
-        var bodyRows = [];
-        for(let i = 0; i < this.dataSource.length; i++) {
-            var val = this.dataSource[i];
-            bodyRows.push([val.FirstName, val.LastName, val.Prefix, val.City, val.State, val.Position, val.BirthDate, val.HireDate]);
-        }
-        
-        var autoTableOptions = {
-            theme: 'plain',
-            tableLineColor: 149,
-            tableLineWidth: 0.1,
-            styles: { textColor: 51, lineColor: 149, lineWidth: 0 },
-            columnStyles: {},
-            headStyles: { fontStyle: 'normal', textColor: 149, lineWidth: 0.1 },
-            bodyStyles: { lineWidth: 0.1 },
-            head: headRow,
-            body: bodyRows
+        const pdfDoc = new jsPDF('p', 'pt', 'a4');
+        const options = {
+            jsPDFDocument: pdfDoc,
+            component: this.dataGrid.instance
         };
-        
-        const doc = new jsPDF();
-        doc.autoTable(autoTableOptions);
-        doc.save("filePDF.pdf");
-
-        e.cancel = true;
+        exportDataGrid(options).then(function(){
+        pdfDoc.save("dxDataGrid.pdf");
     }
 }
 

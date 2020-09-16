@@ -1,13 +1,16 @@
 <template>
   <div>
     <DxButton
+      id="btnContainer"
       text="Export to PDF"
       @click="onExport()"
     />
 
     <DxDataGrid
       id="gridContainer"
+      :ref="dataGridRef"
       :data-source="dataSource"
+      :allow-column-reordering="true"
       :show-borders="true"
     >
       <DxColumn
@@ -18,7 +21,10 @@
       <DxColumn data-field="FirstName"/>
       <DxColumn data-field="LastName"/>
       <DxColumn data-field="City"/>
-      <DxColumn data-field="State"/>
+      <DxColumn
+        :group-index="0"
+        data-field="State"
+      />
       <DxColumn
         :width="130"
         data-field="Position"
@@ -33,53 +39,58 @@
         data-field="HireDate"
         data-type="date"
       />
+      <DxGroupPanel :visible="true"/>
+      <DxGrouping :auto-expand-all="true"/>
     </DxDataGrid>
   </div>
 </template>
 <script>
-import { DxDataGrid, DxColumn } from 'devextreme-vue/data-grid';
+import { DxDataGrid, DxColumn, DxGroupPanel, DxGrouping } from 'devextreme-vue/data-grid';
 import DxButton from 'devextreme-vue/button';
 import service from './data.js';
 
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
+import { exportDataGrid } from 'devextreme/pdf_exporter';
+
+const dataGridRef = 'dataGrid';
 
 export default {
   components: {
-    DxDataGrid, DxButton, DxColumn
+    DxDataGrid, DxButton, DxColumn, DxGroupPanel, DxGrouping
   },
   data() {
     return {
-      dataSource: service.getEmployees()
+      dataSource: service.getEmployees(),
+      dataGridRef
     };
+  },
+  computed: {
+    dataGrid: function() {
+      return this.$refs[dataGridRef].instance;
+    }
   },
   methods: {
     onExport(e) {
-      var headRow = [['Prefix', 'FirstName', 'LastName', 'City', 'State', 'Position', 'BirthDate', 'HireDate']];
-      var bodyRows = [];
-      for(let i = 0; i < this.dataSource.length; i++) {
-        var val = this.dataSource[i];
-        bodyRows.push([val.FirstName, val.LastName, val.Prefix, val.City, val.State, val.Position, val.BirthDate, val.HireDate]);
-      }
-
-      var autoTableOptions = {
-        theme: 'plain',
-        tableLineColor: 149,
-        tableLineWidth: 0.1,
-        styles: { textColor: 51, lineColor: 149, lineWidth: 0 },
-        columnStyles: {},
-        headStyles: { fontStyle: 'normal', textColor: 149, lineWidth: 0.1 },
-        bodyStyles: { lineWidth: 0.1 },
-        head: headRow,
-        body: bodyRows
+      const pdfDoc = new jsPDF('p', 'pt', 'a4');
+      const options = {
+        jsPDFDocument: pdfDoc,
+        component: this.dataGrid
       };
-
-      const doc = new jsPDF();
-      doc.autoTable(autoTableOptions);
-      doc.save('filePDF.pdf');
-
-      e.cancel = true;
+      exportDataGrid(options).then(function(){
+        pdfDoc.save('dxDataGrid.pdf');
+      });
     }
   }
 };
 </script>
+
+<style scoped>
+#btnContainer {
+  margin-bottom: 10px;
+}
+
+#gridContainer {
+  height: 423px;
+}
+</style>
