@@ -12,7 +12,7 @@
     stroke: rgba(191, 191, 191, 0.25);
     stroke-width: 1px;
     fill: transparent;
-}
+  }
   
   ::ng-deep .state {
     font-weight: 500;
