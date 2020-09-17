@@ -13,7 +13,7 @@ namespace DevExtreme.NETCore.Demos.Models.Diagram {
         public ICollection<Employee> Employees => ItemsInternal;
 
 
-        protected override IEnumerable<Employee> Source => SampleData.SampleData.TreeListEmployees;
+        protected override IEnumerable<Employee> Source => SampleData.SampleData.DiagramEmployees;
 
         protected override int GetKey(Employee item) => item.ID;
 
