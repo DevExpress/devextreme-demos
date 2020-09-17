@@ -310,6 +310,8 @@
     <Compile Include="Models\CustomEditorsTask.cs" />
     <Compile Include="Models\DataGrid\InMemoryRowReorderingTasksDataContext.cs" />
     <Compile Include="Models\DataGrid\InMemoryTasksDataContext.cs" />
+    <Compile Include="Models\Diagram\Employee.cs" />
+    <Compile Include="Models\Diagram\InMemoryEmployeesDataContext.cs" />
     <Compile Include="Models\DiscreteScaleTemperature.cs" />
     <Compile Include="Models\ElectronicsCategory.cs" />
     <Compile Include="Models\ElectronicsGroupedItem.cs" />
@@ -363,6 +365,7 @@
     <Compile Include="Models\SampleData\ServiceRepository.cs" />
     <Compile Include="Models\SampleData\StatesData.cs" />
     <Compile Include="Models\SampleData\StochasticData.cs" />
+    <Compile Include="Models\SampleData\DiagramEmployees.cs" />
     <Compile Include="Models\SampleData\TreeViewHierarchicalDataForDragAndDrop.cs" />
     <Compile Include="Models\SampleData\TreeViewPlainDataForDragAndDrop.cs" />
     <Compile Include="Models\SimpleData.cs" />
