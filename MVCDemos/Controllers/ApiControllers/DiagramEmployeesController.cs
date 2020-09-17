@@ -1,6 +1,6 @@
 ﻿using DevExtreme.AspNet.Data;
 using DevExtreme.AspNet.Mvc;
-using DevExtreme.MVC.Demos.Models.TreeList;
+using DevExtreme.MVC.Demos.Models.Diagram;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
