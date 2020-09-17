@@ -9,25 +9,34 @@ import { exportDataGrid } from 'devextreme/pdf_exporter';
 
 import service from './data.js';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.dataGridRef = React.createRef();
-    this.dataSource = service.getEmployees();
-    this.exportGrid = this.exportGrid.bind(this);
+const dataGridRef = React.createRef();
+const dataSource = service.getEmployees();
+
+export default function App() {
+  function exportGrid() {
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const dataGrid = dataGridRef.current.instance;
+
+    exportDataGrid({
+      jsPDFDocument: doc,
+      component: dataGrid
+    }).then(() => {
+      doc.save('Employees.pdf');
+    });
   }
-  render() {
-    return (
+
+  return (
+    <React.Fragment>
       <div>
         <Button
           id='exportButton'
           text='Export to PDF'
-          onClick={this.exportGrid}
+          onClick={exportGrid}
         />
         <DataGrid
           id='gridContainer'
-          ref={this.dataGridRef}
-          dataSource={this.dataSource}
+          ref={dataGridRef}
+          dataSource={dataSource}
           allowColumnReordering={true}
           showBorders={true}
           keyExpr='ID'>
@@ -44,22 +53,6 @@ class App extends React.Component {
           <Column dataField='HireDate' width={100} dataType='date' />
         </DataGrid>
       </div>
-    );
-  }
-
-  exportGrid() {
-    const doc = new jsPDF('p', 'pt', 'a4');
-    exportDataGrid({
-      jsPDFDocument: doc,
-      component: this.dataGrid
-    }).then(function() {
-      doc.save('Employees.pdf');
-    });
-  }
-
-  get dataGrid() {
-    return this.dataGridRef.current.instance;
-  }
+    </React.Fragment>
+  );
 }
-
-export default App;

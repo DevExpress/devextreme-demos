@@ -32,7 +32,7 @@ export class AppComponent {
         exportDataGrid({
             jsPDFDocument: doc,
             component: this.dataGrid.instance
-        }).then(function() {
+        }).then(() => {
         doc.save('Employees.pdf');
     }
 }

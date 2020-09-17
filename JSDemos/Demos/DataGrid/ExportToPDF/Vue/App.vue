@@ -76,7 +76,7 @@ export default {
       exportDataGrid({
         jsPDFDocument: doc,
         component: this.dataGrid
-      }).then(function() {
+      }).then(() => {
         doc.save('Employees.pdf');
       });
     }
