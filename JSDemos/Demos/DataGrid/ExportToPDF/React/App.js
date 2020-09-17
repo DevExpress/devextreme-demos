@@ -1,27 +1,32 @@
 ﻿import React from 'react';
-import DataGrid, { Column, GroupPanel, Grouping } from 'devextreme-react/data-grid';
+
+import DataGrid, {
+  Column,
+  Grouping,
+  GroupPanel,
+  Paging,
+  SearchPanel
+} from 'devextreme-react/data-grid';
 import Button from 'devextreme-react/button';
+import { customers } from './data.js';
 
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 
 import { exportDataGrid } from 'devextreme/pdf_exporter';
 
-import service from './data.js';
-
 const dataGridRef = React.createRef();
-const dataSource = service.getEmployees();
 
 export default function App() {
   function exportGrid() {
-    const doc = new jsPDF('p', 'pt', 'a4');
+    const doc = new jsPDF();
     const dataGrid = dataGridRef.current.instance;
 
     exportDataGrid({
       jsPDFDocument: doc,
       component: dataGrid
     }).then(() => {
-      doc.save('Employees.pdf');
+      doc.save('Customers.pdf');
     });
   }
 
@@ -34,23 +39,21 @@ export default function App() {
           onClick={exportGrid}
         />
         <DataGrid
-          id='gridContainer'
           ref={dataGridRef}
-          dataSource={dataSource}
+          dataSource={customers}
           allowColumnReordering={true}
           showBorders={true}
-          keyExpr='ID'>
-
+        >
           <GroupPanel visible={true} />
+          <SearchPanel visible={true} />
           <Grouping autoExpandAll={true} />
+          <Paging defaultPageSize={10} />
 
-          <Column dataField='FirstName' />
-          <Column dataField='LastName' />
-          <Column dataField='City' />
-          <Column dataField='State' groupIndex={0} />
-          <Column dataField='Position' width={130} />
-          <Column dataField='BirthDate' width={100} dataType='date' />
-          <Column dataField='HireDate' width={100} dataType='date' />
+          <Column dataField='CompanyName' dataType='string' />
+          <Column dataField='Phone' dataType='string' />
+          <Column dataField='Fax' dataType='string' />
+          <Column dataField='City' dataType='string' />
+          <Column dataField='State' dataType='string' groupIndex={0} />
         </DataGrid>
       </div>
     </React.Fragment>

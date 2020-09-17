@@ -3,15 +3,21 @@
     (onClick)="exportGrid($event)">
 </dx-button>
 
-<dx-data-grid id="gridContainer" ref={this.dataGridRef} [dataSource]="dataSource" [allowColumnReordering]="true" [showBorders]="true">
-    <dxi-column dataField="FirstName"></dxi-column>
-    <dxi-column dataField="LastName"></dxi-column>
-    <dxi-column dataField="City"></dxi-column>
-    <dxi-column dataField="State" [groupIndex]="0"></dxi-column>
-    <dxi-column dataField="Position" [width]="130"></dxi-column>
-    <dxi-column dataField="BirthDate" [width]="100" dataType="date"></dxi-column>
-    <dxi-column dataField="HireDate" [width]="100" dataType="date"></dxi-column>
-
-    <dxo-group-panel [visible]="true"></dxo-group-panel>
-    <dxo-grouping [autoExpandAll]="true"></dxo-grouping>
+<dx-data-grid 
+    id='gridContainer'
+    ref={this.dataGridRef}
+    [dataSource]='customers'
+    [allowColumnReordering]='true'
+    [showBorders]='true'>    
+    
+    <dxi-column dataField='CompanyName'></dxi-column>
+    <dxi-column dataField='Phone'></dxi-column>
+    <dxi-column dataField='Fax'></dxi-column>
+    <dxi-column dataField='City'></dxi-column>
+    <dxi-column dataField='State' [groupIndex]='0'></dxi-column>
+    
+    <dxo-search-panel [visible]='true'></dxo-search-panel>
+    <dxo-paging [pageSize]='10'></dxo-paging>
+    <dxo-group-panel [visible]='true'></dxo-group-panel>
+    <dxo-grouping [autoExpandAll]='true'></dxo-grouping>
 </dx-data-grid>

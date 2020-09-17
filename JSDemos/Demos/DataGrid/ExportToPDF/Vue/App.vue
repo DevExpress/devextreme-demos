@@ -1,53 +1,45 @@
 <template>
   <div>
     <DxButton
-      id='exportButton'
-      text='Export to PDF'
-      @click='exportGrid()'
+      id="exportButton"
+      text="Export to PDF"
+      @click="exportGrid()"
     />
 
     <DxDataGrid
-      id='gridContainer'
-      :ref='dataGridRef'
-      :data-source='dataSource'
-      :allow-column-reordering='true'
-      :show-borders='true'
+      :ref="dataGridRef"
+      :allow-column-reordering="true"
+      :data-source="customers"
+      :show-borders="true"
     >
+
+      <DxColumn data-field="CompanyName"/>
+      <DxColumn data-field="Phone"/>
+      <DxColumn data-field="Fax"/>
+      <DxColumn data-field="City"/>
       <DxColumn
-        :width='60'
-        data-field='Prefix'
-        caption='Title'
+        :group-index="0"
+        data-field="State"
       />
-      <DxColumn data-field='FirstName'/>
-      <DxColumn data-field='LastName'/>
-      <DxColumn data-field='City'/>
-      <DxColumn
-        :group-index='0'
-        data-field='State'
-      />
-      <DxColumn
-        :width='130'
-        data-field='Position'
-      />
-      <DxColumn
-        :width='100'
-        data-field='BirthDate'
-        data-type='date'
-      />
-      <DxColumn
-        :width='100'
-        data-field='HireDate'
-        data-type='date'
-      />
-      <DxGroupPanel :visible='true'/>
-      <DxGrouping :auto-expand-all='true'/>
+
+      <DxGroupPanel :visible="true"/>
+      <DxGrouping :auto-expand-all="true"/>
+      <DxPaging :page-size="10"/>
+      <DxSearchPanel :visible="true"/>
     </DxDataGrid>
   </div>
 </template>
 <script>
-import { DxDataGrid, DxColumn, DxGroupPanel, DxGrouping } from 'devextreme-vue/data-grid';
+import { customers } from './data.js';
 import DxButton from 'devextreme-vue/button';
-import service from './data.js';
+import {
+  DxDataGrid,
+  DxColumn,
+  DxGrouping,
+  DxGroupPanel,
+  DxSearchPanel,
+  DxPaging
+} from 'devextreme-vue/data-grid';
 
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
@@ -57,11 +49,17 @@ const dataGridRef = 'dataGrid';
 
 export default {
   components: {
-    DxDataGrid, DxButton, DxColumn, DxGroupPanel, DxGrouping
+    DxButton,
+    DxColumn,
+    DxGroupPanel,
+    DxGrouping,
+    DxPaging,
+    DxSearchPanel,
+    DxDataGrid
   },
   data() {
     return {
-      dataSource: service.getEmployees(),
+      customers,
       dataGridRef
     };
   },
@@ -72,12 +70,12 @@ export default {
   },
   methods: {
     exportGrid() {
-      const doc = new jsPDF('p', 'pt', 'a4');
+      const doc = new jsPDF();
       exportDataGrid({
         jsPDFDocument: doc,
         component: this.dataGrid
       }).then(() => {
-        doc.save('Employees.pdf');
+        doc.save('Customers.pdf');
       });
     }
   }
@@ -87,9 +85,5 @@ export default {
 <style scoped>
 #exportButton {
   margin-bottom: 10px;
-}
-
-#gridContainer {
-  height: 423px;
 }
 </style>

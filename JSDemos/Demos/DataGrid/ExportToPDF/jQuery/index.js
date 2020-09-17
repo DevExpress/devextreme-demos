@@ -2,46 +2,40 @@ $(function(){
     $('#exportButton').dxButton({
         text: 'Export to PDF',
         onClick: function() {
-          const doc = new jsPDF('p', 'pt', 'a4');
+          const doc = new jsPDF();
           DevExpress.pdfExporter.exportDataGrid({
             jsPDFDocument: doc,
             component: dataGrid
           }).then(function() {
-            doc.save('Employees.pdf');
+            doc.save('Customers.pdf');
           });
         }
     });
 
     var dataGrid = $('#gridContainer').dxDataGrid({
-        dataSource: employees,
+        dataSource: customers,
         allowColumnReordering: true,
         showBorders: true,
         grouping: {
             autoExpandAll: true,
         },
-        keyExpr: 'ID',
+        searchPanel: {
+            visible: true
+        },
+        paging: {
+            pageSize: 10
+        },  
         groupPanel: {
             visible: true
         },
         columns: [
-            'FirstName',
-            'LastName',
+            'CompanyName',
+            'Phone',
+            'Fax',
             'City',
             {
                 dataField: 'State',
                 groupIndex: 0
-            },
-            {
-                dataField: 'Position',
-                width: 130
-            }, {
-                dataField: 'BirthDate',
-                dataType: 'date',
-                width: 100
-            }, {
-                dataField: 'HireDate',
-                dataType: 'date',
-                width: 100
             }
         ]
     }).dxDataGrid('instance');

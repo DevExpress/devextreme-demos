@@ -2,7 +2,7 @@ import { NgModule, Component, enableProdMode, ViewChild } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxDataGridModule, DxButtonModule, DxDataGridComponent } from 'devextreme-angular';
-import { Service, Employee } from './app.service';
+import { Service, Customer } from './app.service';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
@@ -21,19 +21,20 @@ if(!/localhost/.test(document.location.host)) {
 export class AppComponent {
     @ViewChild(DxDataGridComponent, { static: false }) dataGrid: DxDataGridComponent;
 
-    dataSource: Employee[];
+    customers: Customer[];
 
     constructor(service: Service) {
-        this.dataSource = service.getEmployees();
+        this.customers = service.getCustomers();
     }
 
     exportGrid() {
-        const doc = new jsPDF('p', 'pt', 'a4');
+        const doc = new jsPDF();
         exportDataGrid({
             jsPDFDocument: doc,
             component: this.dataGrid.instance
         }).then(() => {
-        doc.save('Employees.pdf');
+            doc.save('Customers.pdf');
+        })
     }
 }
 
