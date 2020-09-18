@@ -989,6 +989,7 @@
     <Content Include="Content\DemosStyles\TreeView\HierarchicalDataStructure.css" />
     <Content Include="Content\DemosStyles\TreeView\ItemSelectionAndCustomization.css" />
     <Content Include="Content\DemosStyles\Validation\Overview.css" />
+    <Content Include="Content\DemosStyles\VectorMap\CustomAnnotations.css" />
     <Content Include="Content\DemosStyles\VectorMap\CustomMapData.css" />
     <Content Include="Content\DemosStyles\VectorMap\MultipleLayers.css" />
     <Content Include="Content\DemosStyles\VectorMap\FloorPlan.css" />

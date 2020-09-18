@@ -9,13 +9,14 @@
     .CommonAnnotationSettings(c =>
         c.Type(AnnotationType.Custom)
         .Template(@<text>
-                <svg class='annotation'>
-                    <image href="<%-getImagePath(data)%>" width="60" height="40" />
-                    <text x="70" y="25" class="state"><%- data.Name %></text>
-                    <text x="0" y="60">
-                        <tspan class="caption">Capital:</tspan><tspan dx="5"><%- data.Capital %></tspan><tspan dy="14" x="0" class="caption">Population:</tspan><tspan dx="5"><%- formatNumber(data.Population) %></tspan><tspan dy="14" x="0" class="caption">Area:</tspan><tspan dx="5"><%- formatNumber(data.Area) %></tspan><tspan dx="5">km</tspan><tspan class="sup" dy="-2">2</tspan>
-                    </text>
-                </svg>
+            <svg class='annotation'>
+                <image href="<%-getImagePath(data)%>" width="60" height="40" />
+                <rect class="border" x="0" y="0" />
+                <text x="70" y="25" class="state"><%- data.Name %></text>
+                <text x="0" y="60">
+                    <tspan class="caption">Capital:</tspan><tspan dx="5"><%- data.Capital %></tspan><tspan dy="14" x="0" class="caption">Population:</tspan><tspan dx="5"><%- formatNumber(data.Population) %></tspan><tspan dy="14" x="0" class="caption">Area:</tspan><tspan dx="5"><%- formatNumber(data.Area) %></tspan><tspan dx="5">km</tspan><tspan class="sup" dy="-2">2</tspan>
+                </text>
+            </svg>
         </text>))
     .Annotations(a =>
     { foreach (var state in Model)
@@ -30,7 +31,7 @@
     var formatNumber = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format;
 
     function getImagePath(data) {
-        return '../../Content/Images/flags/' + data.Name.replace(/\s/, "").toLowerCase() + ".gif"
+        return '../../Content/Images/flags/' + data.Name.replace(/\s/, "") + ".svg"
     }
 
     function vectorMap_customizeAnnotation(annotationItem) {
