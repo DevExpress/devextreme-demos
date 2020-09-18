@@ -501,7 +501,6 @@
             "Title": "Column Customization",
             "Name": "ColumnCustomization",
             "Equivalents": "column chooser, fixed column, frozen column, pinned column, column fixing",
-            "DocUrl": "Guide/Widgets/DataGrid/Columns/Column_Fixing/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Models/DataGrid/Employee.cs",
@@ -512,7 +511,6 @@
           {
             "Title": "Columns based on a Data Source",
             "Name": "ColumnsBasedOnADataSource",
-            "DocUrl": "Guide/Widgets/DataGrid/Columns/Overview/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridColumnsController.cs",
@@ -534,7 +532,6 @@
           {
             "Title": "Column Resizing",
             "Name": "ColumnResizing",
-            "DocUrl": "Guide/Widgets/DataGrid/Columns/Column_Sizing/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Scripts/data/customers.js"
@@ -544,7 +541,6 @@
           {
             "Title": "Command Column Customization",
             "Name": "CommandColumnCustomization",
-            "DocUrl": "Guide/Widgets/DataGrid/Columns/Column_Types/Command_Columns/",
             "Widget": "DataGrid",
             "Equivalents": "button column",
             "MvcAdditionalFiles": [
