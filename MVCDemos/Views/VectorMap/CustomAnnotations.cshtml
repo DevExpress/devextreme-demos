@@ -3,7 +3,6 @@
 @(Html.DevExtreme().VectorMap()
     .ID("vector-map")
     .Bounds(new double[] { -118, 55, -80, 23 })
-    .CustomizeAnnotation("vectorMap_customizeAnnotation")
     .Layers(l =>
         { l.Add().DataSource(new JS("DevExpress.viz.map.sources.usa")); })
     .CommonAnnotationSettings(c =>
@@ -21,8 +20,17 @@
     .Annotations(a =>
     { foreach (var state in Model)
         {
-            a.Add().Coordinates(state.Coordinates)
-            .Data(state.Data);
+            if (state.OffsetX.HasValue && state.OffsetY.HasValue)
+            {
+                a.Add().Coordinates(state.Coordinates)
+                .Data(state.Data)
+                .OffsetX(state.OffsetX.Value)
+                .OffsetY(state.OffsetY.Value);
+            }
+            else {
+                a.Add().Coordinates(state.Coordinates)
+                .Data(state.Data);
+            }
         }
     })
 )
@@ -32,15 +40,6 @@
 
     function getImagePath(data) {
         return '../../Content/Images/flags/' + data.Name.replace(/\s/, "") + ".svg"
-    }
-
-    function vectorMap_customizeAnnotation(annotationItem) {
-        if (annotationItem.data.Name === "Illinois") {
-            annotationItem.offsetY = -80;
-            annotationItem.offsetX = -100;
-        }
-
-        return annotationItem;
     }
 </script>
 

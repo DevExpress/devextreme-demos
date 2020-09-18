@@ -9,6 +9,8 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
             },
             new StateData {
                 Coordinates = new double[] {-89, 40},
+                OffsetX = -100,
+                OffsetY = -80,
                 Data = new {Name = "Illinois", Population = 12880580, Capital = "Springfield", Area = 149995}
             },
             new StateData {
