@@ -323,6 +323,7 @@
     <Compile Include="Models\FileManagement\FileManagementDbContext.cs" />
     <Compile Include="Models\FileManagement\InMemoryFileManagementDataContext.cs" />
     <Compile Include="Models\FileManagement\User.cs" />
+    <Compile Include="Models\Flow.cs" />
     <Compile Include="Models\Gantt\Resource.cs" />
     <Compile Include="Models\Gantt\ResourceAssignment.cs" />
     <Compile Include="Models\Gantt\Dependency.cs" />
@@ -346,6 +347,7 @@
     <Compile Include="Models\SampleData\CustomLegendMarkersSampleData.cs" />
     <Compile Include="Models\SampleData\DiscreteScaleTemperatures.cs" />
     <Compile Include="Models\SampleData\DoughnutWithCustomLabelInCenterData.cs" />
+    <Compile Include="Models\SampleData\FlowData.cs" />
     <Compile Include="Models\SampleData\GanttData.cs" />
     <Compile Include="Models\SampleData\CustomEditorsEmployees.cs" />
     <Compile Include="Models\SampleData\CustomEditorsTasks.cs" />
