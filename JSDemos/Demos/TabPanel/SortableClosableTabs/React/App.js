@@ -14,15 +14,14 @@ function App() {
   const [selectedItem, setSelectedItem] = useState(allEmployees[0]);
 
   function addButtonHandler() {
-    const newItem = allEmployees.filter(
-      (employee) => employees.indexOf(employee) === -1
-    )[0];
+    const newItem = allEmployees
+      .filter((employee) => employees.indexOf(employee) === -1)[0];
 
     setEmployees([...employees, newItem]);
     setSelectedItem(newItem);
   }
 
-  function disableButton() {
+  function needDisableAddButton() {
     return employees.length === allEmployees.length;
   }
 
@@ -39,13 +38,10 @@ function App() {
   }
 
   function renderTitle(data) {
-    const closeButton =
-      employees.length < 2 ? null : (
-        <i
-          className="dx-icon dx-icon-close"
-          onClick={closeButtonHandler}
-        />
-      );
+    const closeButton = employees.length < 2
+      ? null
+      : (<i className="dx-icon dx-icon-close" onClick={closeButtonHandler} />);
+
     return (
       <React.Fragment>
         <div>
@@ -79,7 +75,7 @@ function App() {
     <React.Fragment>
       <div id="container">
         <Button
-          disabled={disableButton()}
+          disabled={needDisableAddButton()}
           text="Add Tab"
           icon="add"
           type="default"
