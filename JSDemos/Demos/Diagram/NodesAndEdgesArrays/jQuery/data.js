@@ -16,7 +16,7 @@
   },
   {
     "id": 120,
-    "text": "Answered\n",
+    "text": "Answered",
     "type": "terminator"
   },
   {
@@ -118,4 +118,4 @@ var flowEdges = [
     "text": null,
     "toId": 120
   }
-]
+];

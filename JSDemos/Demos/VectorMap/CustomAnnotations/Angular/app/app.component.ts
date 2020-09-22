@@ -26,20 +26,8 @@ export class AppComponent {
   }
 
   getImagePath = (annotation) => {
-    return (
-      "../../../../images/flags/" +
-      annotation.data.name.replace(/\s/, "").toLowerCase() +
-      ".gif"
-    );
-  };
-
-  customizeAnnotation = (annotationItem) => {
-    if (annotationItem.data.name === "Illinois") {
-      annotationItem.offsetY = -80;
-      annotationItem.offsetX = -100;
-    }
-
-    return annotationItem;
+    const name = annotation.data.name.replace(/\s/, "");
+        return `../../../../images/flags/${name}.svg`;
   };
 }
 

@@ -8,7 +8,8 @@ $(function(){
                 const data = annotation.data;
                 return "<svg class='annotation'>" +
                     "<image href='../../../../images/flags/" +
-                    data.name.replace(/\s/, "").toLowerCase() + ".gif' width='60' height='40' />" +
+                    data.name.replace(/\s/, "").toLowerCase() + ".svg' width='60' height='40' />" +
+                    "<rect class='border' x='0' y='0' />" +
                     "<text x='70' y='25' class='state'>" +
                     data.name + "</text>" +
                     "<text x='0' y='60'>" +
@@ -23,14 +24,6 @@ $(function(){
             },
         },
         annotations: statesData,
-        customizeAnnotation: function(annotationItem) {
-            if(annotationItem.data.name === 'Illinois') {
-                annotationItem.offsetY = -80;
-                annotationItem.offsetX = -100;
-            }
-
-            return annotationItem;
-        },
         layers: [{
             dataSource: DevExpress.viz.map.sources.usa
         }]

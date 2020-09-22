@@ -7,7 +7,7 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View();
         }
         public ActionResult NodesAndEdgesArrays() {
-            return View(new OrgData { Items = SampleData.OrgItems, Links = SampleData.OrgLinks });
+            return View(new FlowData { Nodes = SampleData.FlowNodes, Edges = SampleData.FlowEdges });
         }
         public ActionResult NodesArrayHierarchicalStructure() {
             return View(SampleData.OrgItemsHierarchy);
