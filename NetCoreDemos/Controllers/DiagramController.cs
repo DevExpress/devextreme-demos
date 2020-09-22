@@ -7,7 +7,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View();
         }
         public IActionResult NodesAndEdgesArrays() {
-            return View(new OrgData { Items = SampleData.OrgItems, Links = SampleData.OrgLinks });
+            return View(new FlowData { Nodes = SampleData.FlowNodes, Edges = SampleData.FlowEdges });
         }
         public IActionResult NodesArrayHierarchicalStructure() {
             return View(SampleData.OrgItemsHierarchy);
