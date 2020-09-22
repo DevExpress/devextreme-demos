@@ -298,6 +298,20 @@
             ]
           },
           {
+            "Title": "State Management (CTP)",
+            "Name": "StateManagement",
+            "DocUrl": "",
+            "Widget": "DataGrid",
+            "DemoType": "Web",
+            "Equivalents": "",
+            "Badge": "New",
+            "Modules": "whatwg-fetch",
+            "MvcAdditionalFiles": [
+              "/Controllers/ApiControllers/DataGridWebApiController.cs",
+              "/Models/Northwind/InMemoryNorthwindContext.cs"
+            ]
+          },
+          {
             "Title": "Customize Keyboard Navigation",
             "Name": "CustomizeKeyboardNavigation",
             "Widget": "DataGrid",
