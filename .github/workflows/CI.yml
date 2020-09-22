@@ -1,0 +1,20 @@
+name: Linter
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    name: Lint code base
+
+    runs-on: windows-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Linter
+        uses: github/super-linter@v3
+        env:
+          DEFAULT_BRANCH: 20_2
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
