@@ -42,7 +42,7 @@ function App() {
           <span>
             {data.FirstName} {data.LastName}
           </span>
-          { employees.length >= 2 && <i className="dx-icon dx-icon-close" onClick={closeButtonHandler} /> }
+          {employees.length >= 2 && <i className="dx-icon dx-icon-close" onClick={closeButtonHandler} />}
         </div>
       </React.Fragment>
     );
