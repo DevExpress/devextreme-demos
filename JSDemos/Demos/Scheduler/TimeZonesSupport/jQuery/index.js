@@ -36,6 +36,9 @@ $(function () {
 
             startDatedataSource.filter(['id', 'contains', 'Europe']);
             endDateDataSource.filter(['id', 'contains', 'Europe']);
+
+            startDatedataSource.load();
+            endDateDataSource.load();
         }
     }).dxScheduler("instance");
 
