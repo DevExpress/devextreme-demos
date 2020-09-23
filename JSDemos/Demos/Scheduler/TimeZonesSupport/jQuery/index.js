@@ -1,9 +1,14 @@
 $(function () {
     const currentDate = new Date(2017, 4, 25);
-    const timeZones = DevExpress.ui.dxScheduler.getTimeZones(currentDate);
-    const demoLocations = timeZones.filter((timeZone) => {
-        return locations.indexOf(timeZone.id) !== -1;
-    });
+
+    const getLocations = (date) => {
+        const timeZones = DevExpress.ui.dxScheduler.getTimeZones(date);
+        return timeZones.filter((timeZone) => {
+            return locations.indexOf(timeZone.id) !== -1;
+        });
+    };
+
+    const demoLocations = getLocations(currentDate);
 
     var scheduler = $("#scheduler").dxScheduler({
         dataSource: data,
@@ -15,6 +20,11 @@ $(function () {
         height: 600,
         editing: {
             allowTimeZoneEditing: true
+        },
+        onOptionChanged: (e) => {
+            if(e.name === 'currentDate') {                        
+                locationSwitcher.option('items', getLocations(e.value));
+            }
         },
         onAppointmentFormOpening: (e) => {
             const form = e.form;
@@ -29,7 +39,7 @@ $(function () {
         }
     }).dxScheduler("instance");
 
-    $("#location-switcher").dxSelectBox({
+    const locationSwitcher = $("#location-switcher").dxSelectBox({
         items: demoLocations,
         displayExpr: "title",
         valueExpr: "id",
@@ -38,5 +48,5 @@ $(function () {
         onValueChanged: (data) => {
             scheduler.option("timeZone", data.value);
         }
-    });
+    }).dxSelectBox('instance');
 });
