@@ -622,6 +622,7 @@
     <Content Include="App_Data\Northwind_log.ldf">
       <DependentUpon>Northwind.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\demo-template.css" />
     <Content Include="Content\DemosStyles\Charts\AxisCustomPosition.css" />
     <Content Include="Content\DemosStyles\Charts\CustomAnnotations.css" />
     <Content Include="Content\DemosStyles\Charts\CustomLegendMarkers.css" />
