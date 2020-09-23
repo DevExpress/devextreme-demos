@@ -1,22 +1,38 @@
 $(function () {
+    const currentDate = new Date(2017, 4, 25);
+    const timeZones = DevExpress.ui.dxScheduler.getTimeZones(currentDate);
+    const demoLocations = timeZones.filter((timeZone) => {
+        return locations.indexOf(timeZone.id) !== -1;
+    });
+
     var scheduler = $("#scheduler").dxScheduler({
         dataSource: data,
         views: ["workWeek"],
-        timeZone: locations[0].timeZoneId,
+        timeZone: demoLocations[0].id,
         currentView: "workWeek",
-        currentDate: new Date(2017, 4, 25),
+        currentDate: currentDate,
+        startDayHour: 8,
         height: 600,
         editing: {
             allowTimeZoneEditing: true
         },
+        onAppointmentFormOpening: function(e) {
+            const startDateTimezoneEditor = e.form.getEditor('startDateTimeZone');
+            const endDateTimezoneEditor = e.form.getEditor('endDateTimeZone');
+            const startDatedataSource = startDateTimezoneEditor.option('dataSource');
+            const endDateDataSource = endDateTimezoneEditor.option('dataSource');
+
+            startDatedataSource.filter(['id', 'contains', 'Europe']);
+            endDateDataSource.filter(['id', 'contains', 'Europe']);
+        }
     }).dxScheduler("instance");
 
     $("#location-switcher").dxSelectBox({
-        items: locations,
-        displayExpr: "text",
-        valueExpr: "timeZoneId",
+        items: demoLocations,
+        displayExpr: "title",
+        valueExpr: "id",
         width: 240,
-        value: locations[0].timeZoneId,
+        value: demoLocations[0].id,
         onValueChanged: function(data) {
             scheduler.option("timeZone", data.value);
         }
