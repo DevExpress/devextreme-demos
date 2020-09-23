@@ -32,23 +32,17 @@ function App() {
     newEmployees.splice(index, 1);
     setEmployees(newEmployees);
 
-    if (index >= newEmployees.length && index > 0) {
-      setSelectedItem(newEmployees[index - 1]);
-    }
+    setSelectedItem(newEmployees[index - 1]);
   }
 
   function renderTitle(data) {
-    const closeButton = employees.length < 2
-      ? null
-      : (<i className="dx-icon dx-icon-close" onClick={closeButtonHandler} />);
-
     return (
       <React.Fragment>
         <div>
           <span>
             {data.FirstName} {data.LastName}
           </span>
-          {closeButton}
+          { employees.length >= 2 && <i className="dx-icon dx-icon-close" onClick={closeButtonHandler} /> }
         </div>
       </React.Fragment>
     );
