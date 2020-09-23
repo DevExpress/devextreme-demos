@@ -39,12 +39,12 @@
 <script>
     function exportToPDF() {
         var doc = new jsPDF();
-        var dataGrid = $('#gridContainer').dxDataGrid('instance');
+        var dataGrid = $("#gridContainer").dxDataGrid("instance");
         DevExpress.pdfExporter.exportDataGrid({
             jsPDFDocument: doc,
             component: dataGrid
         }).then(function() {
-            doc.save('Customers.pdf');
+            doc.save("Customers.pdf");
         });
     }
 </script>
