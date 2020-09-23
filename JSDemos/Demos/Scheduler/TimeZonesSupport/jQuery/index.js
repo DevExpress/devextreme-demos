@@ -16,9 +16,11 @@ $(function () {
         editing: {
             allowTimeZoneEditing: true
         },
-        onAppointmentFormOpening: function(e) {
-            const startDateTimezoneEditor = e.form.getEditor('startDateTimeZone');
-            const endDateTimezoneEditor = e.form.getEditor('endDateTimeZone');
+        onAppointmentFormOpening: (e) => {
+            const form = e.form;
+
+            const startDateTimezoneEditor = form.getEditor('startDateTimeZone');
+            const endDateTimezoneEditor = form.getEditor('endDateTimeZone');
             const startDatedataSource = startDateTimezoneEditor.option('dataSource');
             const endDateDataSource = endDateTimezoneEditor.option('dataSource');
 
@@ -33,7 +35,7 @@ $(function () {
         valueExpr: "id",
         width: 240,
         value: demoLocations[0].id,
-        onValueChanged: function(data) {
+        onValueChanged: (data) => {
             scheduler.option("timeZone", data.value);
         }
     });

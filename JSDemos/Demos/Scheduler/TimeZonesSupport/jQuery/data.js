@@ -1,4 +1,4 @@
-var data = [
+const data = [
 {
     text: "Stand-up meeting",
     startDate: "2017-05-22T15:30:00.000Z",
@@ -46,4 +46,4 @@ var data = [
     endDate: "2017-05-23T10:35:00.000Z"
 }];
 
-const locationIds = ['Europe/London', 'Europe/Berlin', 'Europe/Helsinki']; 
+const locations = ['Europe/London', 'Europe/Berlin', 'Europe/Helsinki']; 
