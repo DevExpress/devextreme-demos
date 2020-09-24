@@ -66,6 +66,15 @@ class App extends React.Component {
               <Item formatName="clear" />
               <Item formatName="codeBlock" />
               <Item formatName="blockquote" />
+              <Item formatName="separator" />
+              <Item formatName="insertTable" />
+              <Item formatName="insertRowAbove" />
+              <Item formatName="insertRowBelow" />
+              <Item formatName="insertColumnLeft" />
+              <Item formatName="insertColumnRight" />
+              <Item formatName="deleteRow" />
+              <Item formatName="deleteColumn" />
+              <Item formatName="deleteTable" />
             </Toolbar>
             {HTMLReactParser(markup)}
           </HtmlEditor>
