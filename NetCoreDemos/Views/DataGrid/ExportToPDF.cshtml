@@ -13,7 +13,7 @@
     .OnClick("exportToPDF")
 )
 
-@(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.Customer>()
+@(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.Customer>()
     .ID("gridContainer")
     .Columns(columns => {
         columns.AddFor(m => m.CompanyName);
