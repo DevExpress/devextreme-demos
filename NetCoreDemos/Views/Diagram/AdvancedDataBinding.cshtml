@@ -5,7 +5,7 @@
     .Nodes(ns => ns
         .DataSource(d => d
             .Array()
-            .Key("this")
+            .Key("ID")
             .Data(Model.Items)
         )
         .KeyExpr("ID")
@@ -23,7 +23,7 @@
     .Edges(ns => ns
         .DataSource(d => d
             .Array()
-            .Key("this")
+            .Key("ID")
             .Data(Model.Links)
         )
         .KeyExpr("ID")
