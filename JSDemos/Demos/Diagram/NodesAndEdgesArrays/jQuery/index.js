@@ -16,7 +16,7 @@ $(function() {
                 key: "id",
                 data: flowEdges
             }),
-            textExpr="text",
+            textExpr: "text",
             fromExpr: "fromId",
             toExpr: "toId"
         },
