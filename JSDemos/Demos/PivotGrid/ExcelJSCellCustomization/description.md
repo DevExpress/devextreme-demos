@@ -1,4 +1,4 @@
-You can use the [customizeCell](/Documentation/ApiReference/Common/Object_Structures/ExportPivotGridProps/#customizeCell) callback to modify cell data and formatting when you export the PivotGrid to an Excel file. You can access and change the following attributes:
+Our PivotGrid allows you to control and manage the data export process. You can use the PivotGrid’s [customizeCell](/Documentation/ApiReference/Common/Object_Structures/ExportPivotGridProps/#customizeCell) callback to modify cell data and associated formatting prior to export operations (from the Pivot Grid to an Excel file). Our PivotGrid gives you access and allows you to change the following attributes:
 
 - <a href="https://github.com/exceljs/exceljs#fonts" target="_blank">Font</a> options    
 - <a href="https://github.com/exceljs/exceljs#fills" target="_blank">Cell background</a>     
@@ -6,4 +6,4 @@ You can use the [customizeCell](/Documentation/ApiReference/Common/Object_Struct
 - <a href="https://github.com/exceljs/exceljs#borders" target="_blank">Border</a> options        
 - <a href="https://github.com/exceljs/exceljs#number-formats" target="_blank">Formatting</a> options    
 
-The **customizeCell** function also allows you to identify cell area types. For example, this demo shows how to change the pattern and foreground color for cells in the *"T"* and *"GT"* [row](/Documentation/ApiReference/UI_Widgets/dxPivotGrid/Pivot_Grid_Cell/#rowType) and [column](/Documentation/ApiReference/UI_Widgets/dxPivotGrid/Pivot_Grid_Cell/#columnType) types. The font options are changed for the cells in the *"data"* [area](/Documentation/ApiReference/Data_Layer/PivotGridDataSource/Configuration/fields/#area).
+NOTE: the **customizeCell** function also allows you to identify cell area types.
