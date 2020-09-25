@@ -25,7 +25,7 @@ function App() {
     return employees.length === allEmployees.length;
   }
 
-  const closeButtonHandler = React.useCallback((item) => {
+  function closeButtonHandler(item) {
     const newEmployees = [...employees];
     const index = newEmployees.indexOf(item);
 
@@ -35,7 +35,7 @@ function App() {
     if (index >= newEmployees.length && index > 0) {
       setSelectedItem(newEmployees[index - 1]);
     }
-  }, [employees]);
+  }
 
   function renderTitle(data) {
     function closeHandler() {
