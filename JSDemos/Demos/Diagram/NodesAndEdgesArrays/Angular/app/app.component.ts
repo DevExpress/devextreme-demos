@@ -21,17 +21,17 @@ if(!/localhost/.test(document.location.host)) {
     preserveWhitespaces: true
 })
 export class AppComponent {
-    orgItemsDataSource: ArrayStore;
-    orgLinksDataSource: ArrayStore;
+    flowNodesDataSource: ArrayStore;
+    flowEdgesDataSource: ArrayStore;
 
     constructor(service: Service) {
-        this.orgItemsDataSource = new ArrayStore({
-            key: "this",
-            data: service.getOrgItems()
+        this.flowNodesDataSource = new ArrayStore({
+            key: "id",
+            data: service.getFlowNodes()
         });
-        this.orgLinksDataSource = new ArrayStore({
-            key: "this",
-            data: service.getOrgLinks()
+        this.flowEdgesDataSource = new ArrayStore({
+            key: "id",
+            data: service.getFlowEdges()
         });
     }
 }

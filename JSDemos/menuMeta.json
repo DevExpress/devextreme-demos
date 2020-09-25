@@ -788,11 +788,14 @@
         "Demos": [
           {
             "Title": "Overview",
-            "Hidden":  true,
             "Name": "ExportToPDF",
-            "DocUrl": "Guide/Widgets/DataGrid/Client-Side_Exporting/",
             "Widget": "DataGrid",
             "Modules": "jspdf&jspdf-autotable",
+            "MvcAdditionalFiles": [
+              "/Controllers/ApiControllers/DataGridCustomersController.cs",
+              "/Models/Customer.cs",
+              "/Models/SampleData/Customers.cs"
+            ],
             "DemoType": "Web"
           }
         ]
@@ -2557,7 +2560,6 @@
           {
             "Title": "Points Aggregation",
             "Name": "PointsAggregationFinancialChart",
-            "DocUrl": "Guide/Widgets/Chart/Data_Aggregation/",
             "Credits": "www.google.com",
             "Widget": "Charts",
             "MvcAdditionalFiles": [

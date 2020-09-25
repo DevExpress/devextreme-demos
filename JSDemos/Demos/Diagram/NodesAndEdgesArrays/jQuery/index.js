@@ -2,18 +2,23 @@ $(function() {
     $("#diagram").dxDiagram({
         nodes: {
             dataSource: new DevExpress.data.ArrayStore({
-                key: "this",
-                data: orgItems
+                key: "id",
+                data: flowNodes
             }),
+			textExpr: "text",
+			typeExpr: "type",
             autoLayout: {
-                type: "tree"
+                type: "layered"
             }
         },
         edges: {
             dataSource: new DevExpress.data.ArrayStore({
-                key: "this",
-                data: orgLinks
-            })
+                key: "id",
+                data: flowEdges
+            }),
+            textExpr: "text",
+            fromExpr: "fromId",
+            toExpr: "toId",
         },
         toolbox: {
             groups: [ "general" ]

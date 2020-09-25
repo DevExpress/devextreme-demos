@@ -27,11 +27,11 @@ System.config({
     '@aspnet/signalr': 'npm:@aspnet/signalr/dist/cjs',
     'tslib': 'npm:tslib/tslib.js',
     /**/
- 
+
     /** devextreme-aspnet-data-nojquery */
     'devextreme-aspnet-data-nojquery': 'npm:devextreme-aspnet-data-nojquery/index.js',
     /**/
- 
+
     /** showdown&turndown */
     'showdown': "npm:showdown/dist/showdown.js",
     'turndown': "npm:turndown/lib/turndown.browser.umd.js",
@@ -51,7 +51,7 @@ System.config({
 
     /** exceljs&file-saver */
     'exceljs': 'npm:exceljs/dist/exceljs.js',
-    'file-saver': 'npm:file-saver/FileSaver.js',
+    'file-saver': 'npm:file-saver/dist/FileSaver.js',
     /**/
 
     /** jspdf&jspdf-autotable */
@@ -84,6 +84,7 @@ System.config({
 
     'devextreme': 'npm:devextreme',
     'devextreme-vue': 'npm:devextreme-vue',
+    'mitt': 'npm:mitt/dist/mitt.umd.js',
     'jszip': 'npm:jszip/dist/jszip.min.js',
     'devextreme-quill': 'npm:devextreme-quill/dist/dx-quill.min.js',
     'devexpress-diagram': 'npm:devexpress-diagram/dist/dx-diagram.js',
