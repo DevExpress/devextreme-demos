@@ -1758,6 +1758,15 @@
               "/Models/SampleData/PriorityResources.cs"
             ],
             "DemoType": "Web"
+          },
+          {
+            "Title": "Virtual Scrolling",
+            "Name": "VirtualScrolling",
+            "DocUrl": "Guide/Widgets/Scheduler/VirtualScrolling/",
+            "Widget": "Scheduler",
+            "MvcAdditionalFiles": [
+            ],
+            "DemoType": "Web"
           }
         ]
       },
