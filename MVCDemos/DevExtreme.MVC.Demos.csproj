@@ -310,6 +310,7 @@
     <Compile Include="Models\CustomEditorsTask.cs" />
     <Compile Include="Models\DataGrid\InMemoryRowReorderingTasksDataContext.cs" />
     <Compile Include="Models\DataGrid\InMemoryTasksDataContext.cs" />
+    <Compile Include="Models\DataGrid\DataChange.cs" />
     <Compile Include="Models\Diagram\Employee.cs" />
     <Compile Include="Models\Diagram\InMemoryEmployeesDataContext.cs" />
     <Compile Include="Models\DiscreteScaleTemperature.cs" />
@@ -638,6 +639,7 @@
     <Content Include="Content\DemosStyles\Charts\PieWithAnnotations.css" />
     <Content Include="Content\DemosStyles\Charts\PolarChartAnnotations.css" />
     <Content Include="Content\DemosStyles\Charts\PolarChartZoomingAndScrollingAPI.css" />
+    <Content Include="Content\DemosStyles\DataGrid\BatchUpdateRequest.css" />
     <Content Include="Content\DemosStyles\DataGrid\CustomEditors.css" />
     <Content Include="Content\DemosStyles\DataGrid\DnDBetweenGrids.css" />
     <Content Include="Content\DemosStyles\DataGrid\LocalReordering.css" />
@@ -2146,6 +2148,7 @@
     <Content Include="Views\DataGrid\ExportToPDF.cshtml" />
     <Content Include="Views\Gantt\ContextMenu.cshtml" />
     <Content Include="Views\Charts\AxisLabelsTemplates.cshtml" />
+    <Content Include="Views\DataGrid\BatchUpdateRequest.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

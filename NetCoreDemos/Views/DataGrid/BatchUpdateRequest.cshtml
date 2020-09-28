@@ -1,0 +1,59 @@
+﻿@(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.Northwind.Order>()
+    .ID("gridContainer")
+    .DataSource(d => d.WebApi()
+        .Controller("DataGridWebApi")
+        .LoadAction("Orders")
+        .Key("OrderID")
+    )
+    .ShowBorders(true)
+    .RemoteOperations(true)
+    .RepaintChangesOnly(true)
+    .Editing(e => e
+        .Mode(GridEditMode.Batch)
+        .AllowAdding(true)
+        .AllowDeleting(true)
+        .AllowUpdating(true)
+    )
+    .Columns(columns =>
+        {
+        columns.AddFor(m => m.OrderID).AllowEditing(false);
+        columns.AddFor(m => m.ShipName);
+        columns.AddFor(m => m.ShipCountry);
+        columns.AddFor(m => m.ShipCity);
+        columns.AddFor(m => m.ShipAddress);
+        columns.AddFor(m => m.OrderDate).DataType(GridColumnDataType.Date);
+        columns.AddFor(m => m.Freight);
+    })
+    .OnSaving(@<text>onSaving</text>)
+)
+<script>
+    function onSaving(e) {
+        e.cancel = true;
+
+        if (e.changes.length) {
+            e.promise = sendBatchRequest('@Url.RouteUrl(new { controller = "DataGridWebApi", action = "Batch" })', e.changes).done(() => {
+                e.component.refresh().done(() => {
+                    e.component.cancelEditData();
+                });
+            });
+        }
+    }
+
+    function sendBatchRequest(url, changes) {
+        var d = $.Deferred();
+
+        $.ajax(url, {
+            method: "POST",
+            data: JSON.stringify(changes),
+            cache: false,
+            contentType: 'application/json',
+            xhrFields: { withCredentials: true }
+        }).done(function (result) {
+            d.resolve(result);
+        }).fail(function (xhr) {
+            d.reject(xhr.responseJSON ? xhr.responseJSON.Message : xhr.statusText);
+        });
+
+        return d.promise();
+    }
+</script>
