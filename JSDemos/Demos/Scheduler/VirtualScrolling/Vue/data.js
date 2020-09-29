@@ -6,27 +6,27 @@ const colors = [
   'rgba(254, 194, 0, 0.7)'
 ];
 const texts = [
-  "Website Re-Design Plan",
-  "Book Flights to San Fran for Sales Trip",
-  "Install New Router in Dev Room",
-  "Approve Personal Computer Upgrade Plan",
-  "Final Budget Review",
-  "New Brochures",
-  "Install New Database",
-  "Approve New Online Marketing Strategy",
-  "Upgrade Personal Computers",
-  "Customer Workshop",
-  "Prepare 2015 Marketing Plan",
-  "Brochure Design Review",
-  "Create Icons for Website",
-  "Upgrade Server Hardware",
-  "Submit New Website Design",
-  "Launch New Website",
+  'Website Re-Design Plan',
+  'Book Flights to San Fran for Sales Trip',
+  'Install New Router in Dev Room',
+  'Approve Personal Computer Upgrade Plan',
+  'Final Budget Review',
+  'New Brochures',
+  'Install New Database',
+  'Approve New Online Marketing Strategy',
+  'Upgrade Personal Computers',
+  'Customer Workshop',
+  'Prepare 2015 Marketing Plan',
+  'Brochure Design Review',
+  'Create Icons for Website',
+  'Upgrade Server Hardware',
+  'Submit New Website Design',
+  'Launch New Website',
 ];
 
 function getRandomInt(min, max) {
   return Math.floor(min + Math.random() * (max + 1 - min));
-};
+}
 
 export function generateResources() {
   const resources = [];
@@ -42,7 +42,7 @@ export function generateResources() {
   }
 
   return resources;
-};
+}
 
 export function generateAppointments() {
   const startDay = 6;

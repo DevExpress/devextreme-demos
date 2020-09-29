@@ -22,7 +22,7 @@ const views = [{
   name: 'Work Week',
   groupOrientation: 'vertical'
 }];
-const scrolling = { mode: "virtual" };
+const scrolling = { mode: 'virtual' };
 const resourceData = generateResources();
 const resources = [{
   fieldExpr: 'resourceId',
@@ -46,7 +46,7 @@ class App extends React.Component {
         showAllDayPanel={false}
         groups={groups}
         resources={resources}
-        />
+      />
     );
   }
 }
