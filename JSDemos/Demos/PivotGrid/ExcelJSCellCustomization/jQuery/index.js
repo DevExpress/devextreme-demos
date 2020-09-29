@@ -84,7 +84,7 @@ $(function() {
     }
 
     function isTotalCell(cell) {
-        return (cell.rowType === "T" || cell.type === "T" || cell.type === "GT" || cell.rowType === "GT" || cell.columnType === "GT");
+        return (cell.type === "T" || cell.type === "GT" || cell.rowType === "T" || cell.rowType === "GT" || cell.columnType === "T" || cell.columnType === "GT");
     }
 
     function getExcelCellFormat(appearance) {
