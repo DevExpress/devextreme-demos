@@ -96,8 +96,8 @@ $(function() {
 
     function getCssStyles(appearance) {
         return {
-            "background-color": `#${appearance.fill}`,
-            color: `#${appearance.font}`,
+            "background-color": "#" + appearance.fill,
+            color: "#" + appearance.font,
             "font-weight": appearance.bold ? "bold" : undefined
         };
     }
