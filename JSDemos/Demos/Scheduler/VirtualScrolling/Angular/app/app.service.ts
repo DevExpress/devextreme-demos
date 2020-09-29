@@ -17,6 +17,7 @@ export class Resource {
 @Injectable()
 export class Service {
     private colors: string[];
+    private texts: string[];
 
     constructor() {
         this.colors = [
@@ -25,6 +26,24 @@ export class Service {
             'rgba(223, 82, 134, 0.7)',
             'rgba(254, 194, 0, 0.7)'
         ];
+        this.texts = [
+            "Website Re-Design Plan",
+            "Book Flights to San Fran for Sales Trip",
+            "Install New Router in Dev Room",
+            "Approve Personal Computer Upgrade Plan",
+            "Final Budget Review",
+            "New Brochures",
+            "Install New Database",
+            "Approve New Online Marketing Strategy",
+            "Upgrade Personal Computers",
+            "Customer Workshop",
+            "Prepare 2015 Marketing Plan",
+            "Brochure Design Review",
+            "Create Icons for Website",
+            "Upgrade Server Hardware",
+            "Submit New Website Design",
+            "Launch New Website",
+          ];
     }
 
     get resourcesAmount() { return 100; }
@@ -66,7 +85,7 @@ export class Service {
                     const endDate = new Date(startDate.getTime() + apointmentTime);
 
                     const item = {
-                        text: `item ${resourceId}_${dayIndex}`,
+                        text: this.texts[this.getRandomInt(0, this.texts.length)],
                         resourceId: resourceId,
                         startDate: startDate,
                         endDate: endDate,
