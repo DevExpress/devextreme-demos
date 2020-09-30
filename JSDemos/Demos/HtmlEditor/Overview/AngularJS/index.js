@@ -7,7 +7,7 @@ DemoApp.controller('DemoController', function DemoController($scope) {
         bindingOptions: {
             "toolbar.multiline": "multilineToolbar"
         },
-        height: 550,
+        height: 720,
         toolbar: {
             items: [
                 "undo", "redo", "separator",

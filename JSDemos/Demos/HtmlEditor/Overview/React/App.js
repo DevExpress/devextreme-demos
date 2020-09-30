@@ -24,7 +24,7 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <div className="widget-container">
-          <HtmlEditor height="550px">
+          <HtmlEditor height="720px">
             <MediaResizing enabled={true} />
             <Toolbar multiline={this.state.isMultiline}>
               <Item formatName="undo" />
