@@ -8,7 +8,7 @@
     <DxZoomAndPan argument-axis="pan"/>
     <DxScrollBar :visible="true"/>
     <DxArgumentAxis
-      v-model::visual-range="currentVisualRange"
+      v-model:visual-range="currentVisualRange"
       :whole-range="bounds"
       argument-type="datetime"
       visual-range-update-mode="keep"

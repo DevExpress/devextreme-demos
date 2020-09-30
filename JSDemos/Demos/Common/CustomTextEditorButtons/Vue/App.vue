@@ -5,7 +5,7 @@
         <div class="dx-field-label">Password TextBox</div>
         <div class="dx-field-value">
           <DxTextBox
-            v-model::mode="passwordMode"
+            v-model:mode="passwordMode"
             value="password"
             styling-mode="filled"
             placeholder="password"
