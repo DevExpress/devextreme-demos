@@ -11,7 +11,7 @@
     </div>
     <DxSortable
       filter=".dx-tab"
-      :data.sync="employees"
+      v-model:data="employees"
       item-orientation="horizontal"
       drag-direction="horizontal"
       @drag-start="onTabDragStart($event)"
@@ -19,12 +19,12 @@
     >
       <div>
         <DxTabPanel
-          :data-source.sync="employees"
+          v-model:data-source="employees"
           :height="410"
           :defer-rendering="false"
           :show-nav-buttons="true"
           :repaint-changes-only="true"
-          :selected-index.sync="selectedIndex"
+          v-model:selected-index="selectedIndex"
           item-title-template="title"
           item-template="itemTemplate"
         >
