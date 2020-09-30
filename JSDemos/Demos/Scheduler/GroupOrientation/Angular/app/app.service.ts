@@ -60,7 +60,7 @@ let appointments: Appointment[] = [
         startDate: new Date("2021-05-17T06:00:00.000Z"),
         endDate: new Date("2021-05-17T08:30:00.000Z")
     }, {
-        text: "Prepare 2018 Marketing Plan",
+        text: "Prepare 2021 Marketing Plan",
         priorityId: 2,
         startDate: new Date("2021-05-20T08:00:00.000Z"),
         endDate: new Date("2021-05-20T10:30:00.000Z")

@@ -52,7 +52,7 @@ export const data = [
     allDay: false
   },
   {
-    text: 'Prepare 2015 Marketing Plan',
+    text: 'Prepare 2021 Marketing Plan',
     startDate: '2021-05-31T10:00:00.000Z',
     endDate: '2021-05-31T12:00:00.000Z',
     allDay: false

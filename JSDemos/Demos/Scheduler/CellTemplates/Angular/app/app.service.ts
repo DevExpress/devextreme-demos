@@ -48,7 +48,7 @@ const data: Data[] = [
         endDate: new Date("2021-05-25T13:45:00.000Z")
     },
     {
-        text: "Prepare 2015 Marketing Plan",
+        text: "Prepare 2021 Marketing Plan",
         startDate: new Date("2021-05-31T10:00:00.000Z"),
         endDate: new Date("2021-05-31T12:00:00.000Z")
     },
@@ -69,7 +69,7 @@ const data: Data[] = [
     },
     {
         text: "Submit New Website Design",
-        startDate: new Date("2017-05-31:00:00.000Z"),
+        startDate: new Date("2021-05-31:00:00.000Z"),
         endDate: new Date("2021-06-02T08:30:00.000Z")
     },
     {

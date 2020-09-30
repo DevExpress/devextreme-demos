@@ -82,7 +82,7 @@ let appointments: Appointment[] = [
         endDate: new Date("2021-05-27T09:00:00.000Z"),
         allDay: true
     }, {
-        text: "Prepare 2017 Marketing Plan",
+        text: "Prepare 2021 Marketing Plan",
         ownerId: 1, roomId: 1, priorityId: 2,
         startDate: new Date("2021-05-27T08:00:00.000Z"),
         endDate: new Date("2021-05-27T10:30:00.000Z")

@@ -46,7 +46,7 @@ export const appointments = [
     endDate: new Date('2021-05-25T09:00:00.000Z'),
     allDay: true
   }, {
-    text: 'Prepare 2015 Marketing Plan',
+    text: 'Prepare 2021 Marketing Plan',
     startDate: new Date('2021-05-25T08:00:00.000Z'),
     endDate: new Date('2021-05-25T10:30:00.000Z')
   }
