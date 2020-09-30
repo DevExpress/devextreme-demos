@@ -1,6 +1,6 @@
 ﻿@section ExternalDependencies {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/3.3.1/exceljs.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.4.0/polyfill.min.js"></script>
 }
 
@@ -95,7 +95,7 @@
     }
 
     function isTotalCell(cell) {
-        return (cell.rowType === "T" || cell.type === "T" || cell.type === "GT" || cell.rowType === "GT" || cell.columnType === "GT");
+        return (cell.type === "T" || cell.type === "GT" || cell.rowType === "T" || cell.rowType === "GT" || cell.columnType === "T" || cell.columnType === "GT");
     }
 
     function getExcelCellFormat(appearance) {
@@ -107,8 +107,8 @@
 
     function getCssStyles(appearance) {
         return {
-            "background-color": `#${appearance.fill}`,
-            color: `#${appearance.font}`,
+            "background-color": "#" + appearance.fill,
+            color: "#" + appearance.font,
             "font-weight": appearance.bold ? "bold" : undefined
         };
     }

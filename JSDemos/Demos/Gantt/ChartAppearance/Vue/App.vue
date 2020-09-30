@@ -22,6 +22,13 @@
           text="Show Resources"
         />
       </div>
+      <div class="option">
+        <DxCheckBox
+          :value="true"
+          text="Customize Task Tooltip"
+          @value-changed="onShowCustomTaskTooltip"
+        />
+      </div>
     </div>
     <div class="widget-container">
       <DxGantt
@@ -30,6 +37,7 @@
         :task-title-position="taskTitlePosition"
         :scale-type="scaleType"
         :show-resources="showResources"
+        :task-tooltip-content-template="taskTooltipContentTemplate"
       >
 
         <DxTasks :data-source="tasks"/>
@@ -96,8 +104,22 @@ export default {
       resourceAssignments: resourceAssignments,
       scaleType: 'quarters',
       taskTitlePosition: 'outside',
-      showResources: true
+      showResources: true,
+      taskTooltipContentTemplate: this.getTaskTooltipContentTemplate
     };
+  },
+  methods: {
+    getTaskTooltipContentTemplate(model) {
+      const timeEstimate = Math.abs(model.start - model.end) / 36e5;
+      const timeLeft = Math.floor((100 - model.progress) / 100 * timeEstimate);
+
+      return `<div class="template-header"> ${model.title} </div>`
+      + `<p class="template-item"> <span> Estimate: </span> ${timeEstimate} <span> hours </span> </p>`
+      + `<p class="template-item"> <span> Left: </span> ${timeLeft} <span> hours </span> </p>`;
+    },
+    onShowCustomTaskTooltip(e) {
+      e.value ? this.taskTooltipContentTemplate = this.getTaskTooltipContentTemplate : this.taskTooltipContentTemplate = '';
+    }
   }
 };
 </script>
@@ -126,5 +148,13 @@ export default {
 
   .option:last-child {
     margin-right: 0;
+  }
+
+  .template-header {
+    font-size: 14px;
+  }
+
+  .template-item {
+      font-size: 10px;
   }
 </style>

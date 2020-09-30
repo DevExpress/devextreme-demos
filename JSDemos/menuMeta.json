@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "Name": "Data Grid",
     "Equivalents": "dxDataGrid, dx-data-grid",
@@ -407,47 +407,47 @@
       {
         "Name": "Row Drag & Drop",
         "Equivalents": "",
-        "Demos": [
-          {
-            "Title": "Local Reordering",
-            "Name": "LocalReordering",
-            "Widget": "DataGrid",
-            "DemoType": "Web",
-            "MvcAdditionalFiles": [
-              "/Scripts/data/localReordering.js",
-              "/Models/RowReorderingTask.cs"
-            ]
-          },
-          {
-            "Title": "Remote Reordering",
-            "Name": "RemoteReordering",
-            "Widget": "DataGrid",
-            "DemoType": "Web",
-            "Modules": "devextreme-aspnet-data-nojquery",
-            "MvcAdditionalFiles": [
-              "/Controllers/ApiControllers/DataGridRowReorderingController.cs",
-              "/Models/RowReorderingTask.cs",
-              "/Models/SampleData/RowReorderingTasks.cs",
-              "/Models/DataGrid/InMemoryRowReorderingTasksDataContext.cs"
-            ]
-          },
-          {
-            "Title": "Drag & Drop Between Two Grids",
-            "Name": "DnDBetweenGrids",
-            "Widget": "DataGrid",
-            "DemoType": "Web",
-            "Modules": "devextreme-aspnet-data-nojquery",
-            "Equivalents": "Drag and Drop Between Two Grids",
-            "MvcAdditionalFiles": [
-              "/Views/DataGrid/DnDBetweenGridsPartial.cshtml",
-              "/Controllers/ApiControllers/DnDBetweenGridsController.cs",
-              "/Models/RowReorderingTask.cs",
-              "/Models/SampleData/RowReorderingTasks.cs",
-              "/Models/DataGrid/InMemoryRowReorderingTasksDataContext.cs",
-              "/Scripts/data/priorities.js"
-            ]
-          }
-        ]
+        "Demos": [{
+          "Title": "Local Reordering",
+          "Name": "LocalReordering",
+          "Badge": "Updated",
+          "Widget": "DataGrid",
+          "DemoType": "Web",
+          "MvcAdditionalFiles": [
+            "/Scripts/data/localReordering.js",
+            "/Models/RowReorderingTask.cs"
+          ]
+        },
+        {
+          "Title": "Remote Reordering",
+          "Name": "RemoteReordering",
+          "Badge": "Updated",
+          "Widget": "DataGrid",
+          "DemoType": "Web",
+          "Modules": "devextreme-aspnet-data-nojquery",
+          "MvcAdditionalFiles": [
+            "/Controllers/ApiControllers/DataGridRowReorderingController.cs",
+            "/Models/RowReorderingTask.cs",
+            "/Models/SampleData/RowReorderingTasks.cs",
+            "/Models/DataGrid/InMemoryRowReorderingTasksDataContext.cs"
+          ]
+        },
+        {
+          "Title": "Drag & Drop Between Two Grids",
+          "Name": "DnDBetweenGrids",
+          "Widget": "DataGrid",
+          "DemoType": "Web",
+          "Modules": "devextreme-aspnet-data-nojquery",
+          "Equivalents": "Drag and Drop Between Two Grids",
+          "MvcAdditionalFiles": [
+            "/Views/DataGrid/DnDBetweenGridsPartial.cshtml",
+            "/Controllers/ApiControllers/DnDBetweenGridsController.cs",
+            "/Models/RowReorderingTask.cs",
+            "/Models/SampleData/RowReorderingTasks.cs",
+            "/Models/DataGrid/InMemoryRowReorderingTasksDataContext.cs",
+	     "/Scripts/data/priorities.js"
+          ]
+        }]
       },
       {
         "Name": "Selection",
@@ -786,13 +786,11 @@
       {
         "Name": "Export to PDF",
         "Equivalents": "",
-        "Badge": "New",
         "Demos": [
           {
             "Title": "Overview",
-            "Hidden": true,
             "Name": "ExportToPDF",
-            "DocUrl": "Guide/Widgets/DataGrid/Client-Side_Exporting/",
+            "Badge": "New",
             "Widget": "DataGrid",
             "Modules": "jspdf&jspdf-autotable",
             "MvcAdditionalFiles": [
@@ -1764,6 +1762,15 @@
               "/Models/SampleData/PriorityResources.cs"
             ],
             "DemoType": "Web"
+          },
+          {
+            "Title": "Virtual Scrolling",
+            "Name": "VirtualScrolling",
+            "DocUrl": "Guide/Widgets/Scheduler/VirtualScrolling/",
+            "Widget": "Scheduler",
+            "MvcAdditionalFiles": [
+            ],
+            "DemoType": "Web"
           }
         ]
       },
@@ -1973,6 +1980,7 @@
             "Name": "Tables",
             "DocUrl": "",
             "Widget": "HtmlEditor",
+            "Hidden": true,
             "MvcDescription": "",
             "NetCoreDescription": "",
             "MvcAdditionalFiles": [],
