@@ -4,7 +4,7 @@ export const data = [{
   typeId: 1,
   startDate: new Date('2021-05-24T05:00:00.000Z'),
   endDate: new Date('2021-05-24T05:30:00.000Z'),
-  recurrenceRule: 'FREQ=DAILY;BYDAY=MO,TU,WE,TH,FR;UNTIL=20150530'
+  recurrenceRule: 'FREQ=DAILY;BYDAY=MO,TU,WE,TH,FR;UNTIL=20210530'
 },
 {
   text: 'Website Re-Design Plan',
@@ -30,7 +30,7 @@ export const data = [{
   typeId: 1,
   startDate: new Date('2021-05-24T15:30:00.000Z'),
   endDate: new Date('2021-05-24T16:30:00.000Z'),
-  recurrenceRule: 'FREQ=DAILY;BYDAY=MO,WE,FR;UNTIL=20150530'
+  recurrenceRule: 'FREQ=DAILY;BYDAY=MO,WE,FR;UNTIL=20210530'
 }, {
   text: 'Approve Personal Computer Upgrade Plan',
   priorityId: 2,
