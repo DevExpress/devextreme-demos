@@ -109,7 +109,7 @@ var data = [{
         theatreId: 0,
         movieId: 2,
         price: 5,
-        startDate: new Date(2015, 4, 25, 12, 0),
+        startDate: new Date("2021-05-27T09:00:00.000Z"),
         endDate: new Date(2015, 4, 25, 13, 33)
     }, {
         theatreId: 0,
@@ -151,7 +151,7 @@ var data = [{
         theatreId: 0,
         movieId: 2,
         price: 5,
-        startDate: new Date(2015, 4, 26, 11, 0),
+        startDate: new Date("2021-05-28T08:00:00.000Z"),
         endDate: new Date(2015, 4, 26, 12, 33)
     }, {
         theatreId: 0,
@@ -163,7 +163,7 @@ var data = [{
         theatreId: 0,
         movieId: 5,
         price: 15,
-        startDate: new Date(2015, 4, 26, 15, 45),
+        startDate: new Date("2021-05-28T12:45:00.000Z"),
         endDate: new Date(2015, 4, 26, 17, 55)
     }, {
         theatreId: 0,
@@ -229,7 +229,7 @@ var data = [{
         theatreId: 0,
         movieId: 3,
         price: 5,
-        startDate: new Date(2015, 4, 28, 13, 30),
+        startDate: new Date("2021-05-30T10:30:00.000Z"),
         endDate: new Date(2015, 4, 28, 15, 21)
     }, {
         theatreId: 0,
@@ -259,7 +259,7 @@ var data = [{
         theatreId: 0,
         movieId: 1,
         price: 10,
-        startDate: new Date(2015, 4, 29, 11, 30),
+        startDate: new Date("2021-05-31T08:30:00.000Z"),
         endDate: new Date(2015, 4, 29, 13, 2)
     }, {
         theatreId: 0,
@@ -271,7 +271,7 @@ var data = [{
         theatreId: 0,
         movieId: 5,
         price: 10,
-        startDate: new Date(2015, 4, 29, 16, 0),
+        startDate: new Date("2021-05-31T13:00:00.000Z"),
         endDate: new Date(2015, 4, 29, 18, 10)
     }, {
         theatreId: 0,
@@ -301,7 +301,7 @@ var data = [{
         theatreId: 0,
         movieId: 3,
         price: 10,
-        startDate: new Date(2015, 4, 30, 13, 30),
+        startDate: new Date("2021-06-01T10:30:00.000Z"),
         endDate: new Date(2015, 4, 30, 15, 21)
     }, {
         theatreId: 0,
@@ -631,7 +631,7 @@ var data = [{
         theatreId: 1,
         movieId: 2,
         price: 5,
-        startDate: new Date(2015, 4, 25, 11, 30),
+        startDate: new Date("2021-05-27T08:30:00.000Z"),
         endDate: new Date(2015, 4, 25, 13, 3)
     }, {
         theatreId: 1,
@@ -745,7 +745,7 @@ var data = [{
         theatreId: 1,
         movieId: 1,
         price: 5,
-        startDate: new Date(2015, 4, 28, 11, 0),
+        startDate: new Date("2021-05-30T08:00:00.000Z"),
         endDate: new Date(2015, 4, 28, 12, 32)
     }, {
         theatreId: 1,
@@ -775,7 +775,7 @@ var data = [{
         theatreId: 1,
         movieId: 2,
         price: 5,
-        startDate: new Date(2015, 4, 29, 10, 0),
+        startDate: new Date("2021-05-31T07:00:00.000Z"),
         endDate: new Date(2015, 4, 29, 11, 33)
     }, {
         theatreId: 1,
@@ -787,13 +787,13 @@ var data = [{
         theatreId: 1,
         movieId: 3,
         price: 10,
-        startDate: new Date(2015, 4, 29, 14, 0),
+        startDate: new Date("2021-05-31T11:00:00.000Z"),
         endDate: new Date(2015, 4, 29, 15, 51)
     }, {
         theatreId: 1,
         movieId: 5,
         price: 10,
-        startDate: new Date(2015, 4, 29, 16, 30),
+        startDate: new Date("2021-05-31T13:30:00.000Z"),
         endDate: new Date(2015, 4, 29, 18, 40)
     }, {
         theatreId: 1,
@@ -811,7 +811,7 @@ var data = [{
         theatreId: 1,
         movieId: 2,
         price: 5,
-        startDate: new Date(2015, 4, 30, 10, 0),
+        startDate: new Date("2021-06-01T07:00:00.000Z"),
         endDate: new Date(2015, 4, 30, 11, 33)
     }, {
         theatreId: 1,
