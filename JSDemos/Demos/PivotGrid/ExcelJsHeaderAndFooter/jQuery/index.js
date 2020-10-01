@@ -50,15 +50,10 @@ $(function(){
             var workbook = new ExcelJS.Workbook();
             var worksheet = workbook.addWorksheet('Sales');
 
-            worksheet.columns = [
-                { width: 30 }, { width: 20 }, { width: 30 }, { width: 30 }, { width: 30 }, { width: 30 }
-            ];
-
             DevExpress.excelExporter.exportPivotGrid({
                 component: e.component,
                 worksheet: worksheet,
-                topLeftCell: { row: 4, column: 1 },
-                keepColumnWidths: false
+                topLeftCell: { row: 4, column: 1 }
             }).then(function(cellRange) {
                 // Header
                 var headerRow = worksheet.getRow(2);

@@ -50,15 +50,10 @@ export default function App() {
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Sales');
 
-    worksheet.columns = [
-      { width: 30 }, { width: 20 }, { width: 30 }, { width: 30 }, { width: 30 }, { width: 30 }
-    ];
-
     exportPivotGrid({
       component: e.component,
       worksheet: worksheet,
-      topLeftCell: { row: 4, column: 1 },
-      keepColumnWidths: false
+      topLeftCell: { row: 4, column: 1 }
     }).then((cellRange) => {
       // Header
       const headerRow = worksheet.getRow(2);
