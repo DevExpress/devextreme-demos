@@ -305,7 +305,7 @@
             "DemoType": "Web",
             "Equivalents": "",
             "Badge": "New",
-            "Modules": "whatwg-fetch",
+            "Modules": "whatwg-fetch,vuex,devextreme-aspnet-data-nojquery",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridWebApiController.cs",
               "/Models/Northwind/InMemoryNorthwindContext.cs"

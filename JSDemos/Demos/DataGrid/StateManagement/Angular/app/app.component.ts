@@ -1,90 +1,60 @@
-import { NgModule, Component, enableProdMode } from '@angular/core';
+import { NgModule, Component, OnInit, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
-import { DxDataGridModule } from 'devextreme-angular';
-import applyChanges from 'devextreme/data/apply_changes';
+import { DxDataGridModule, DxLoadPanelModule } from 'devextreme-angular';
+import { Service, Order } from './app.service';
+import { Observable } from 'rxjs';
 
 if (!/localhost/.test(document.location.host)) {
     enableProdMode();
 }
 
-var URL = "https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi";
-
 @Component({
     selector: 'demo-app',
     templateUrl: 'app/app.component.html',
+    styleUrls: ['app/app.component.css'],
+    providers: [Service],
     preserveWhitespaces: true
 })
-export class AppComponent {
-    dataSource: any = [];
+export class AppComponent implements OnInit {
+    orders$: Observable<Order[]>;
     changes: any = [];
     editRowKey: any = null;
+    changesText: string = '';
+    isLoading: boolean = false;
 
-    constructor(private http: HttpClient) {
-        this.sendRequest(URL + "/Orders").then((data: any) => {
-            this.dataSource = data;
-        });
-        this.onSaving = this.onSaving.bind(this);
+    constructor(private service: Service) { }
+
+    ngOnInit() {
+        this.orders$ = this.service.getOrders();
+        this.isLoading = true;
+        this.service.loadAll().finally(() => { this.isLoading = false });
+    }
+
+    onChangesChange(changes: Array<any>) {
+        this.changesText = JSON.stringify(changes.map((change) => ({
+            type: change.type,
+            key: change.type !== 'insert' ? change.key : undefined,
+            data: change.data
+        })), null, ' ');
     }
 
     onSaving(e: any) {
+        const change = e.changes[0];
+
         e.cancel = true;
 
-        var change = e.changes[0];
-
-        if (change) {
-            e.promise = this.sendChange(URL, change).then((data: any) => {
-                if (change.type === "insert") {
-                    change.data = data;
-                }                
-                this.dataSource = applyChanges(this.dataSource, [change], { keyExpr: "OrderID" });
-                this.changes = [];
-                this.editRowKey  = null;
-            });
+        if(change) {
+            this.isLoading = true;
+            e.promise = this.service.saveChange(change)
+                .finally(() => { this.isLoading = false; })
+                .then(() => {
+                    this.editRowKey = null;
+                    this.changes = [];
+                });
         }
-    }
-
-    sendChange(url: string, change: any) {
-        switch (change.type) {
-            case "insert":
-                return this.sendRequest(url + "/InsertOrder", "POST", { values: JSON.stringify(change.data) });
-            case "update":
-                return this.sendRequest(url + "/UpdateOrder", "PUT", { key: change.key, values: JSON.stringify(change.data) });
-            case "remove":
-                return this.sendRequest(url + "/DeleteOrder", "DELETE", { key: change.key });
-        }
-    };
-
-    sendRequest(url: string, method: string = "GET", data: any = {}): any {
-        let httpParams = new HttpParams({ fromObject: data });
-        let httpOptions = { withCredentials: true, body: httpParams };
-        let result;
-
-        switch (method) {
-            case "GET":
-                result = this.http.get(url, httpOptions);
-                break;
-            case "PUT":
-                result = this.http.put(url, httpParams, httpOptions);
-                break;
-            case "POST":
-                result = this.http.post(url, httpParams, httpOptions);
-                break;
-            case "DELETE":
-                result = this.http.delete(url, httpOptions);
-                break;
-        }
-
-        return result
-            .toPromise()
-            .then((data: any) => {
-                return method === "GET" ? data.data : data;
-            })
-            .catch(e => {
-                throw e && e.error && e.error.Message;
-            });
     }
 }
 
@@ -92,6 +62,7 @@ export class AppComponent {
     imports: [
         BrowserModule,
         DxDataGridModule,
+        DxLoadPanelModule,
         HttpClientModule
     ],
     declarations: [AppComponent],

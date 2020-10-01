@@ -1,126 +1,128 @@
 <template>
-  <DxDataGrid
-    key-expr="OrderID"
-    :data-source="dataSource"
-    :show-borders="true"
-    :repaint-changes-only="true"
-    @saving="onSaving"
-  >
-    <DxEditing
-      mode="row"
-      :allow-adding="true"
-      :allow-deleting="true"
-      :allow-updating="true"
-      :changes.sync="changes"
-      :edit-row-key.sync="editRowKey"
+  <div>
+    <DxLoadPanel
+      :position="{ of: '#gridContainer' }"
+      :visible="isLoading"
     />
-    <DxColumn data-field="OrderID" :allow-editing="false"></DxColumn>
-    <DxColumn data-field="ShipName"></DxColumn>
-    <DxColumn data-field="ShipCountry"></DxColumn>
-    <DxColumn data-field="ShipCity"></DxColumn>
-    <DxColumn data-field="ShipAddress"></DxColumn>
-    <DxColumn data-field="OrderDate" data-type="date"></DxColumn>
-    <DxColumn data-field="Freight"></DxColumn>
-  </DxDataGrid>
+    <DxDataGrid
+      id="gridContainer"
+      key-expr="OrderID"
+      :data-source="orders"
+      :show-borders="true"
+      :repaint-changes-only="true"
+      @saving="onSaving"
+    >
+      <DxEditing
+        mode="row"
+        :allow-adding="true"
+        :allow-deleting="true"
+        :allow-updating="true"
+        :changes.sync="changes"
+        :edit-row-key.sync="editRowKey"
+      />
+      <DxColumn data-field="OrderID" :allow-editing="false"></DxColumn>
+      <DxColumn data-field="ShipName"></DxColumn>
+      <DxColumn data-field="ShipCountry"></DxColumn>
+      <DxColumn data-field="ShipCity"></DxColumn>
+      <DxColumn data-field="ShipAddress"></DxColumn>
+      <DxColumn data-field="OrderDate" data-type="date"></DxColumn>
+      <DxColumn data-field="Freight"></DxColumn>
+    </DxDataGrid>
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+          <span>Edit Row Key:</span>
+          <div id="editRowKey">{{ editRowKey === null ? "null" : editRowKey.toString() }}</div>
+        </div>
+        <div class="option">
+          <span>Changes:</span>
+          <div id="changes">{{ changesText }}</div>
+        </div>
+      </div>
+  </div>
 </template>
 <script>
-import { DxDataGrid, DxColumn, DxEditing } from "devextreme-vue/data-grid";
-import applyChanges from 'devextreme/data/apply_changes';
-
-const URL = "https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi";
+import { DxDataGrid, DxColumn, DxEditing } from 'devextreme-vue/data-grid';
+import { DxLoadPanel } from 'devextreme-vue/load-panel';
+import { mapGetters, mapActions, mapState } from 'vuex';
 
 export default {
   components: {
     DxDataGrid,
     DxColumn,
-    DxEditing
-  },
-  data() {
-    return {
-      dataSource: [],
-      changes: [],
-      editRowKey: null
-    };
+    DxEditing,
+    DxLoadPanel
   },
   created() {
-    this.sendRequest(URL + "/Orders").then(data => {
-      this.dataSource = data;
-    });
-    this.onSaving = this.onSaving.bind(this);
+    this.loadAll();
+  },
+  computed: {
+    ...mapGetters(['orders', 'isLoading']),
+    editRowKey: {
+      get() {
+        return this.$store.state.editRowKey;
+      },
+      set(value) {
+        this.setEditRowKey(value);
+      }
+    },
+    changes: {
+      get() {
+        return this.$store.state.changes;
+      },
+      set(value) {
+        this.setChanges(value);
+      }
+    },
+    changesText: {
+      get() {
+         return JSON.stringify(this.changes.map((change) => ({
+          type: change.type,
+          key: change.type !== 'insert' ? change.key : undefined,
+          data: change.data
+        })), null, ' ');
+      }
+    }
   },
   methods: {
+    ...mapActions(['setEditRowKey', 'setChanges', 'loadAll', 'insert', 'update', 'remove', 'saveChange']),
     onSaving(e) {
       e.cancel = true;
-
-      var change = e.changes[0];
-
-      if (change) {
-        e.promise = this.sendChange(URL, change).then(data => {
-          if (change.type === "insert") {
-            change.data = data;
-          }
-          this.dataSource = applyChanges(this.dataSource, [change], { keyExpr: "OrderID" });
-          this.editRowKey = null;
-          this.changes = [];
-        });
-      }
-    },
-    sendChange(url, change) {
-      switch (change.type) {
-        case "insert":
-          return this.sendRequest(url + "/InsertOrder", "POST", {
-            values: JSON.stringify(change.data)
-          });
-        case "update":
-          return this.sendRequest(url + "/UpdateOrder", "PUT", {
-            key: change.key,
-            values: JSON.stringify(change.data)
-          });
-        case "remove":
-          return this.sendRequest(url + "/DeleteOrder", "DELETE", {
-            key: change.key
-          });
-      }
-    },
-    sendRequest(url, method, data) {
-      method = method || "GET";
-      data = data || {};
-
-      const params = Object.keys(data)
-        .map(key => {
-          return `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`;
-        })
-        .join("&");
-
-      if (method === "GET") {
-        return fetch(url, {
-          method: method,
-          credentials: "include"
-        }).then(result =>
-          result.json().then(json => {
-            if (result.ok) return json.data;
-            throw json.Message;
-          })
-        );
-      }
-
-      return fetch(url, {
-        method: method,
-        body: params,
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-        },
-        credentials: "include"
-      }).then(result => {
-        if (result.ok) {
-          return result.text().then(text => text && JSON.parse(text));
-        } else {
-          return result.json().then(json => {
-            throw json.Message;
-          });
-        }
-      });
+      e.promise = this.saveChange(e.changes[0]);
     }
   }
 };
 </script>
+<style scoped>
+#gridContainer {
+    height: 440px;
+}
+
+.options {
+    padding: 20px;
+    margin-top: 20px;
+    background-color: rgba(191, 191, 191, 0.15);
+}
+
+.caption {
+    margin-bottom: 10px;
+	font-weight: 500;
+	font-size: 18px;
+}
+
+.option {
+    margin-bottom: 10px;
+}
+
+.option > span {
+    position: relative;
+    top: 2px;
+    margin-right: 10px;
+}
+
+.option > div {
+    display: inline-block;
+    font-weight: bold;
+}
+</style>
+

@@ -1,13 +1,24 @@
 $(function () {
     var URL = "https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi";
 
-    sendRequest(URL + "/Orders").done((data) => {
-        dataGrid.option("dataSource", data);
-    });
+    var loadPanel = $("#loadPanel").dxLoadPanel({
+        position: {
+            of: "#gridContainer"
+        },
+        visible: false
+    }).dxLoadPanel("instance");
+
+    loadPanel.show();
+    sendRequest(URL + "/Orders?skip=700")
+        .always(() => { loadPanel.hide(); })
+        .then((data) => {
+            dataGrid.option("dataSource", data);
+        });
 
     var dataGrid = $("#gridContainer").dxDataGrid({
         keyExpr: "OrderID",
         showBorders: true,
+        dataSource: [],
         editing: {
             mode: "row",
             allowAdding: true,
@@ -15,28 +26,49 @@ $(function () {
             allowDeleting: true
         },
         repaintChangesOnly: true,
+        onOptionChanged: function(e) {
+            if(e.name === "editing") {
+                var editRowKey = e.component.option("editing.editRowKey"),
+                    changes = e.component.option("editing.changes");
+
+                $("#editRowKey").text(editRowKey === null ? "null" : editRowKey);
+
+                changes = changes.map((change) => { 
+                    return {
+                        type: change.type,
+                        key: change.type !== "insert" ? change.key : undefined,
+                        data: change.data
+                    };
+                 });
+
+                $("#changes").text(JSON.stringify(changes, null, " "));      
+            }
+        },
         onSaving: function(e) {
             var change = e.changes[0];
 
             e.cancel = true;
 
             if (change) {
-                e.promise = sendChange(URL, change).done((data) => {
-                    var orders = e.component.option("dataSource");
+                loadPanel.show();
+                e.promise = saveChange(URL, change)
+                    .always(() => { loadPanel.hide(); })
+                    .then((data) => {
+                        var orders = e.component.option("dataSource");
 
-                    if(change.type === "insert") {
-                        change.data = data;
-                    }
-                    orders = DevExpress.data.applyChanges(orders, [change], { keyExpr: "OrderID" });
-
-                    e.component.option({
-                        dataSource: orders,
-                        editing: {
-                            editRowKey: null,
-                            changes: []
+                        if(change.type === "insert") {
+                            change.data = data;
                         }
+                        orders = DevExpress.data.applyChanges(orders, [change], { keyExpr: "OrderID" });
+
+                        e.component.option({
+                            dataSource: orders,
+                            editing: {
+                                editRowKey: null,
+                                changes: []
+                            }
+                        });
                     });
-                });
             }
         },
         columns: [{
@@ -58,7 +90,7 @@ $(function () {
         }]
     }).dxDataGrid("instance");
 
-    function sendChange(url, change) {
+    function saveChange(url, change) {
         switch (change.type) {
             case "insert":
                 return sendRequest(url + "/InsertOrder", "POST", { values: JSON.stringify(change.data) });
@@ -79,9 +111,9 @@ $(function () {
             data: data,
             cache: false,
             xhrFields: { withCredentials: true }
-        }).done(function (result) {
+        }).then(function (result) {
             d.resolve(method === "GET" ? result.data : result);
-        }).fail(function (xhr) {
+        }, function (xhr) {
             d.reject(xhr.responseJSON ? xhr.responseJSON.Message : xhr.statusText);
         });
 

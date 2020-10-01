@@ -1,0 +1,134 @@
+﻿@(Html.DevExtreme().LoadPanel()
+        .ID("loadPanel")
+        .Position(p => p.Of("#gridContainer"))
+        .Visible(false)
+)
+
+@(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.Northwind.Order>()
+    .ID("gridContainer")
+    .KeyExpr("OrderID")
+    .DataSource(new JS("[]"))
+    .ShowBorders(true)
+    .RepaintChangesOnly(true)
+    .Editing(e => e
+        .Mode(GridEditMode.Row)
+        .AllowAdding(true)
+        .AllowDeleting(true)
+        .AllowUpdating(true)
+    )
+    .Columns(columns =>
+        {
+        columns.AddFor(m => m.OrderID).AllowEditing(false);
+        columns.AddFor(m => m.ShipName);
+        columns.AddFor(m => m.ShipCountry);
+        columns.AddFor(m => m.ShipCity);
+        columns.AddFor(m => m.ShipAddress);
+        columns.AddFor(m => m.OrderDate).DataType(GridColumnDataType.Date);
+        columns.AddFor(m => m.Freight);
+    })
+    .OnOptionChanged("onOptionChanged")
+    .OnSaving("onSaving")
+)
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Edit Row Key:</span>
+        <div id="editRowKey">null</div>
+    </div>
+    <div class="option">
+        <span>Changes:</span>
+        <div id="changes">[]</div>
+    </div>
+</div>
+<script>
+    var dataGrid, loadPanel;
+
+    $(function () {
+        dataGrid = $("#gridContainer").dxDataGrid("instance");
+        loadPanel = $("#loadPanel").dxLoadPanel("instance");
+
+        loadPanel.show();
+        sendRequest('@Url.HttpRouteUrl("DataGridWebApi", new { action = "Orders", skip = 700 })')
+            .always(() => { loadPanel.hide(); })
+            .done((data) => {
+                dataGrid.option("dataSource", data);
+            });
+    });
+
+    function onOptionChanged(e) {
+        if (e.name === "editing") {
+            var editRowKey = e.component.option("editing.editRowKey"),
+                changes = e.component.option("editing.changes");
+
+            $("#editRowKey").text(editRowKey === null ? "null" : editRowKey);
+
+            changes = changes.map((change) => {
+                return {
+                    type: change.type,
+                    key: change.type !== "insert" ? change.key : undefined,
+                    data: change.data
+                };
+            });
+
+            $("#changes").text(JSON.stringify(changes, null, " "));
+        }
+    };
+
+    function onSaving(e) {
+        var change = e.changes[0];
+
+        e.cancel = true;
+
+        if (change) {
+            loadPanel.show();
+            e.promise = saveChange(change)
+                .always(() => { loadPanel.hide(); })
+                .done((data) => {
+                    var orders = e.component.option("dataSource");
+
+                    if (change.type === "insert") {
+                        change.data = data;
+                    }
+                    orders = DevExpress.data.applyChanges(orders, [change], { keyExpr: "OrderID" });
+
+                    e.component.option({
+                        dataSource: orders,
+                        editing: {
+                            editRowKey: null,
+                            changes: []
+                        }
+                    });
+                });
+        }
+    };
+
+    function saveChange(change) {
+        switch (change.type) {
+            case "insert":
+                return sendRequest('@Url.HttpRouteUrl("DataGridWebApi", new { action = "InsertOrder" })', "POST", { values: JSON.stringify(change.data) });
+            case "update":
+                return sendRequest('@Url.HttpRouteUrl("DataGridWebApi", new { action = "UpdateOrder" })', "PUT", { key: change.key, values: JSON.stringify(change.data) });
+            case "remove":
+                return sendRequest('@Url.HttpRouteUrl("DataGridWebApi", new { action = "DeleteOrder" })', "DELETE", { key: change.key });
+        }
+    };
+
+    function sendRequest(url, method, data) {
+        var d = $.Deferred();
+
+        method = method || "GET";
+
+        $.ajax(url, {
+            method: method,
+            data: data,
+            cache: false,
+            xhrFields: { withCredentials: true }
+        }).done(function (result) {
+            d.resolve(method === "GET" ? result.data : result);
+        }).fail(function (xhr) {
+            d.reject(xhr.responseJSON ? xhr.responseJSON.Message : xhr.statusText);
+        });
+
+        return d.promise();
+    };
+</script>
