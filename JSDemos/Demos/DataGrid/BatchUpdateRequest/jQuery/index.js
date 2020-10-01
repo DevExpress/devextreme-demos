@@ -9,8 +9,7 @@ $(function () {
                 onBeforeSend: function (method, ajaxOptions) {
                     ajaxOptions.xhrFields = { withCredentials: true };
                 },
-            }),
-            pushAggregationTimeout: 0
+            })
         },
         showBorders: true,
         editing: {
@@ -58,11 +57,9 @@ $(function () {
             method: "POST",
             data: JSON.stringify(changes),
             cache: false,
-            contentType: 'application/json',
+            contentType: "application/json",
             xhrFields: { withCredentials: true }
-        }).done(function (result) {
-            d.resolve(result);
-        }).fail(function (xhr) {
+        }).done(d.resolve).fail(function (xhr) {
             d.reject(xhr.responseJSON ? xhr.responseJSON.Message : xhr.statusText);
         });
 

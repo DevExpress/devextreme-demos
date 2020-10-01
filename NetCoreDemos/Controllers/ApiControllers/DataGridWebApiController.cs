@@ -104,11 +104,13 @@ namespace DevExtreme.NETCore.Demos.Controllers.ApiControllers {
         [HttpPost]
         public object Batch(List<DataChange> changes) {
             foreach(var change in changes) {
-                var order = new Order();
+                Order order;
 
                 if(change.Type == "update" || change.Type == "remove") {
                     var key = Convert.ToInt32(change.Key);
                     order = _nwind.Orders.First(o => o.OrderID == key);
+                } else {
+                    order = new Order();
                 }
 
                 if(change.Type == "insert" || change.Type == "update") {

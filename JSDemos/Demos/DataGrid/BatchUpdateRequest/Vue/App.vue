@@ -1,8 +1,7 @@
 <template>
   <DxDataGrid
     id="gridContainer"
-    key-expr="OrderID"
-    :data-source="dataSource"
+    :data-source="ordersStore"
     :show-borders="true"
     :remote-operations="true"
     :repaint-changes-only="true"
@@ -24,13 +23,13 @@
   </DxDataGrid>
 </template>
 <script>
-import { DxDataGrid, DxColumn, DxEditing } from "devextreme-vue/data-grid";
-import { createStore } from "devextreme-aspnet-data-nojquery";
+import { DxDataGrid, DxColumn, DxEditing } from 'devextreme-vue/data-grid';
+import { createStore } from 'devextreme-aspnet-data-nojquery';
 
-const URL = "https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi";
+const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
 
-const dataSource = createStore({
-  key: "OrderID",
+const ordersStore = createStore({
+  key: 'OrderID',
   loadUrl: `${URL}/Orders`,
   onBeforeSend: (method, ajaxOptions) => {
     ajaxOptions.xhrFields = { withCredentials: true };
@@ -45,11 +44,8 @@ export default {
   },
   data() {
     return {
-      dataSource
+      ordersStore
     };
-  },
-  created() {
-    this.onSaving = this.onSaving.bind(this);
   },
   methods: {
     onSaving(e) {
@@ -57,29 +53,31 @@ export default {
 
       if(e.changes.length) {
         e.promise = this.sendBatchRequest(`${URL}/Batch`, e.changes).then(() => {
-          e.component.refresh().done(() => {
+          e.component.refresh().then(() => {
             e.component.cancelEditData();
           });
         });
       }
     },
-    sendBatchRequest(url, changes) {
-      return fetch(url, {
-        method: "POST",
+    async sendBatchRequest(url, changes) {
+      const result = await fetch(url, {
+        method: 'POST',
         body: JSON.stringify(changes),
         headers: {
-          "Content-Type": "application/json;charset=UTF-8"
+          'Content-Type': 'application/json;charset=UTF-8'
         },
-        credentials: "include"
-      }).then(result => {
-        if (result.ok) {
-          return result.text().then(text => text && JSON.parse(text));
-        } else {
-          return result.json().then(json => {
-            throw json.Message;
-          });
-        }
+        credentials: 'include'
       });
+
+      if (result.ok) {
+        const text = await result.text();
+
+        return text && JSON.parse(text);
+      } else {
+        const json = await result.json();
+
+        throw json.Message;
+      }
     }
   }
 };

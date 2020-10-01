@@ -3,9 +3,9 @@ import DataGrid, { Column, Editing } from 'devextreme-react/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 import 'whatwg-fetch';
 
-var URL = "https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi";
+var URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
 
-const dataSource = createStore({
+const ordersStore = createStore({
   key: 'OrderID',
   loadUrl: `${URL}/Orders`,
   onBeforeSend: (method, ajaxOptions) => {
@@ -13,23 +13,25 @@ const dataSource = createStore({
   }
 });
 
-const sendBatchRequest = (url, changes) => {
-  return fetch(url, {
+const sendBatchRequest = async (url, changes) => {
+  const result = await fetch(url, {
     method: 'POST',
     body: JSON.stringify(changes),
     headers: {
       'Content-Type': 'application/json;charset=UTF-8'
     },
     credentials: 'include'
-  }).then(result => {
-    if (result.ok) {
-      return result.text().then(text => text && JSON.parse(text));
-    } else {
-      return result.json().then(json => {
-        throw json.Message;
-      });
-    }
   });
+
+  if (result.ok) {
+    const text = await result.text();
+
+    return text && JSON.parse(text);
+  } else {
+    const json = await result.json();
+
+    throw json.Message;
+  }
 };
 
 const App = () => {
@@ -40,18 +42,17 @@ const App = () => {
 
     if (changes.length) {
       e.promise = sendBatchRequest(`${URL}/Batch`, changes).then(() => {
-        e.component.refresh().done(() => {
+        e.component.refresh().then(() => {
           e.component.cancelEditData();
         });
       });
     }
-  });
+  }, []);
 
   return (
     <DataGrid
       id="gridContainer"
-      keyExpr="OrderID"
-      dataSource={dataSource}
+      dataSource={ordersStore}
       showBorders={true}
       remoteOperations={true}
       repaintChangesOnly={true}

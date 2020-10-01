@@ -1,7 +1,6 @@
 <dx-data-grid
     id="gridContainer"
-    keyExpr="OrderID"
-    [dataSource]="dataSource"
+    [dataSource]="ordersStore"
     [showBorders]="true"
     [remoteOperations]="true"
     [repaintChangesOnly]="true"
