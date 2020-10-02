@@ -21,5 +21,5 @@ Invoke a context menu in a column's header and specify whether to fix the column
 **Show and hide columns**        
 Click the Column Chooser button to access hidden columns. Drag the column's header between the Column Chooser and the grid to change the column's visibility.
 
-* Widget option: **columnChooser**.[enabled]/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columnChooser/#enabled)
+* Widget option: **columnChooser**.[enabled](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columnChooser/#enabled)
 * Column option: **columns[]**.[visible](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#visible)
