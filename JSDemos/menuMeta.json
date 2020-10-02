@@ -410,6 +410,7 @@
         "Demos": [{
           "Title": "Local Reordering",
           "Name": "LocalReordering",
+          "Badge": "Updated",
           "Widget": "DataGrid",
           "DemoType": "Web",
           "MvcAdditionalFiles": [
@@ -420,6 +421,7 @@
         {
           "Title": "Remote Reordering",
           "Name": "RemoteReordering",
+          "Badge": "Updated",
           "Widget": "DataGrid",
           "DemoType": "Web",
           "Modules": "devextreme-aspnet-data-nojquery",
@@ -784,11 +786,11 @@
       {
         "Name": "Export to PDF",
         "Equivalents": "",
-        "Badge": "New",
         "Demos": [
           {
             "Title": "Overview",
             "Name": "ExportToPDF",
+            "Badge": "New",
             "Widget": "DataGrid",
             "Modules": "jspdf&jspdf-autotable",
             "MvcAdditionalFiles": [
@@ -1756,6 +1758,16 @@
               "/Models/SampleData/OwnerResources.cs",
               "/Models/SampleData/RoomResources.cs",
               "/Models/SampleData/PriorityResources.cs"
+            ],
+            "DemoType": "Web"
+          },
+          {
+            "Title": "Virtual Scrolling",
+            "Badge": "New",
+            "Name": "VirtualScrolling",
+            "DocUrl": "Guide/Widgets/Scheduler/VirtualScrolling/",
+            "Widget": "Scheduler",
+            "MvcAdditionalFiles": [
             ],
             "DemoType": "Web"
           }
