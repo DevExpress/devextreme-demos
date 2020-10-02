@@ -2038,6 +2038,7 @@
     <Content Include="Views\HtmlEditor\Overview.cshtml" />
     <Content Include="Views\HtmlEditor\ToolbarCustomization.cshtml" />
     <Content Include="Views\HtmlEditor\OutputFormats.cshtml" />
+    <Content Include="Views\HtmlEditor\Tables.cshtml" />
     <Content Include="Views\TreeList\FilterModes.cshtml" />
     <Content Include="Views\DataGrid\CustomizeKeyboardNavigation.cshtml" />
     <Content Include="Views\FileManager\BindingToFileSystem.cshtml" />

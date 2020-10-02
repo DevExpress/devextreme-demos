@@ -1,0 +1,75 @@
+﻿@section ExternalDependencies {
+    <script src="https://unpkg.com/devextreme-quill/dist/dx-quill.min.js"></script>
+}
+
+@(Html.DevExtreme().HtmlEditor()
+    .ID("html-editor")
+    .Height(350)
+    .Content(@<text>
+        <h2>
+            Simple table
+        </h2>
+        <br>
+        <table>
+            <tr style="text-align: center; font-weight: bold;">
+                <td>Task</td>
+                <td>Status</td>
+                <td>Progress</td>
+            </tr>
+            <tr style="text-align: center;">
+                <td>Task 1</td>
+                <td>In Progress</td>
+                <td>45%</td>
+            </tr>
+            <tr style="text-align: center;">
+                <td>Task 2</td>
+                <td style="color: red;">Paused</td>
+                <td>80%</td>
+            </tr>
+            <tr style="text-align: center;">
+                <td>Task 3</td>
+                <td style="color: lime;">Finished</td>
+                <td>100%</td>
+            </tr>
+        </table>
+    </text>)
+    .Toolbar(toolbar => toolbar.Items(
+        items => {
+            items.Add()
+                .FormatName("header")
+                .FormatValues(new JS("[false, 1, 2, 3, 4, 5]"));
+
+            items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+
+            items.Add().FormatName(HtmlEditorToolbarItem.Bold);
+
+            items.Add().FormatName(HtmlEditorToolbarItem.Color);
+
+            items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+
+            items.Add().FormatName(HtmlEditorToolbarItem.alignLeft);
+
+            items.Add().FormatName(HtmlEditorToolbarItem.alignCenter);
+
+            items.Add().FormatName(HtmlEditorToolbarItem.alignRight);
+
+            items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+
+            items.Add().FormatName(HtmlEditorToolbarItem.InsertTable);
+
+            items.Add().FormatName(HtmlEditorToolbarItem.InsertRowAbove);
+
+            items.Add().FormatName(HtmlEditorToolbarItem.InsertRowBelow);
+
+            items.Add().FormatName(HtmlEditorToolbarItem.InsertColumnLeft);
+
+            items.Add().FormatName(HtmlEditorToolbarItem.InsertColumnRight);
+
+            items.Add().FormatName(HtmlEditorToolbarItem.DeleteRow);
+
+            items.Add().FormatName(HtmlEditorToolbarItem.DeleteColumn);
+
+            items.Add().FormatName(HtmlEditorToolbarItem.DeleteTable);
+        })
+    )
+)
