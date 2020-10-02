@@ -31,7 +31,7 @@
       <div class="caption">Group by Date First</div>
       <div class="option">
         <DxSwitch
-          v-model="groupByDate"
+          v-model:value="groupByDate"
         />
       </div>
     </div>
@@ -55,7 +55,7 @@ export default {
     return {
       groupByDate: true,
       groups: ['priorityId'],
-      currentDate: new Date(2018, 4, 21),
+      currentDate: new Date(2021, 4, 21),
       dataSource: data,
       priorityData: priorityData
     };
