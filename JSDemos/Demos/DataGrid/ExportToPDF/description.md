@@ -1,4 +1,4 @@
-Our [DataGrid](/Documentation/ApiReference/UI_Widgets/dxDataGrid/) allows you to easily and accurately export its contents to a PDF file. To enable the export operation, you must reference or import <a href="https://github.com/MrRio/jsPDF" target="_blank">jsPDF</a> library.
+Our [DataGrid](/Documentation/ApiReference/UI_Widgets/dxDataGrid/) allows you to easily and accurately export its contents to a PDF file. To enable the export operation, you must reference or import the <a href="https://github.com/MrRio/jsPDF" target="_blank">jsPDF</a> library.
 
 Once you've referenced/imported `jsPDF`, call the **DevExpress**.**pdfExporter**.**exportDataGrid(options)** method to export **DataGrid** content in the PDF format.
 
