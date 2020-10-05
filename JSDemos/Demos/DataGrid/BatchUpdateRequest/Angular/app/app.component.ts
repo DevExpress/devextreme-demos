@@ -34,21 +34,20 @@ export class AppComponent {
     onSaving(e: any) {
         e.cancel = true;
 
-        if(e.changes.length) {
-            e.promise = this.sendBatchRequest(`${URL}/Batch`, e.changes).then(() => {
-                e.component.refresh().then(() => {
-                    e.component.cancelEditData();
-                });
-            });
+        if (e.changes.length) {
+            e.promise = this.processBatchRequest(`${URL}/Batch`, e.changes, e.component);
         }
     }
 
-    async sendBatchRequest(url: string, changes: any): Promise<any> {
-        try {
-            return await this.http.post(url, JSON.stringify(changes), { withCredentials: true, headers: { 'Content-Type': 'application/json' } }).toPromise();
-        } catch(err) {
-            throw err;
-        }
+    async processBatchRequest(url: string, changes: any, component: any): Promise<any> {
+        await this.http.post(url, JSON.stringify(changes), {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).toPromise();
+        await component.refresh()
+        await component.cancelEditData();
     }
 }
 

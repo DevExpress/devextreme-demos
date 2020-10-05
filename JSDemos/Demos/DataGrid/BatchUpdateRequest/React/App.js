@@ -23,11 +23,7 @@ const sendBatchRequest = async (url, changes) => {
     credentials: 'include'
   });
 
-  if (result.ok) {
-    const text = await result.text();
-
-    return text && JSON.parse(text);
-  } else {
+  if (!result.ok) {
     const json = await result.json();
 
     throw json.Message;
