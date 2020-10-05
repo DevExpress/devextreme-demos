@@ -8,7 +8,6 @@
         .Scrolling(scrolling => scrolling.Mode(GridScrollingMode.Virtual))
         .RowDragging(rd => rd
             .AllowReordering(true)
-            .DropFeedbackMode(DropFeedbackMode.Push)
             .OnReorder("onReorder")
             .ShowDragIcons(true)
         )
@@ -65,7 +64,7 @@
         tasks.splice(fromIndex, 1);
         tasks.splice(toIndex, 0, e.itemData);
 
-        dataGrid.refresh();
+        dataGrid.refresh(true);
     }
 </script>
 <script src="~/data/localReordering.js"></script>

@@ -11,7 +11,6 @@ $(function(){
         },
         rowDragging: {
             allowReordering: true,
-            dropFeedbackMode: "push",
             onReorder: function(e) {
                 var visibleRows = e.component.getVisibleRows(),
                     toIndex = tasks.indexOf(visibleRows[e.toIndex].data),
@@ -20,7 +19,7 @@ $(function(){
                 tasks.splice(fromIndex, 1);
                 tasks.splice(toIndex, 0, e.itemData);
 
-                e.component.refresh();
+                e.component.refresh(true);
             }
         },
         showBorders: true,
