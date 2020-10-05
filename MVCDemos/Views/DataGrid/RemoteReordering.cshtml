@@ -44,10 +44,13 @@
         var dataGrid = e.component,
             store = dataGrid.getDataSource().store(),
             visibleRows = dataGrid.getVisibleRows(),
-            newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
+            newOrderIndex = visibleRows[e.toIndex].data.OrderIndex,
+            d = $.Deferred();
 
         store.update(e.itemData.ID, { OrderIndex: newOrderIndex }).then(function() {
-            dataGrid.refresh();
-        });
+            dataGrid.refresh().then(d.resolve, d.reject);
+        }, d.reject);
+
+        e.promise = d.promise();
     }
 </script>
