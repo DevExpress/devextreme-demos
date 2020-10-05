@@ -8,7 +8,6 @@
         .Scrolling(scrolling => scrolling.Mode(GridScrollingMode.Virtual))
         .RowDragging(rd => rd
             .AllowReordering(true)
-            .DropFeedbackMode(DropFeedbackMode.Push)
             .OnReorder("onReorder")
             .ShowDragIcons(true)
         )
