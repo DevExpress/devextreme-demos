@@ -35,7 +35,7 @@ $(function(){
                         d = $.Deferred();
 
                     tasksStore.update(e.itemData.ID, { OrderIndex: newOrderIndex }).then(function() {
-                        e.component.refresh(true).then(d.resolve, d.reject);
+                        e.component.refresh().then(d.resolve, d.reject);
                     }, d.reject);
 
                     e.promise = d.promise();

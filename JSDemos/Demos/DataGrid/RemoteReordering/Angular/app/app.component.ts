@@ -50,7 +50,7 @@ export class AppComponent {
             newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
 
         await this.tasksStore.update(e.itemData.ID, { OrderIndex: newOrderIndex });
-        await e.component.refresh(true);
+        await e.component.refresh();
     }
 }
 

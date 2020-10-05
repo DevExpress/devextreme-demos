@@ -48,7 +48,7 @@
             d = $.Deferred();
 
         store.update(e.itemData.ID, { OrderIndex: newOrderIndex }).then(function() {
-            dataGrid.refresh(true).then(d.resolve, d.reject);
+            dataGrid.refresh().then(d.resolve, d.reject);
         }, d.reject);
 
         e.promise = d.promise();

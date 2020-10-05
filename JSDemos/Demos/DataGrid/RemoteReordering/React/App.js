@@ -37,7 +37,7 @@ class App extends React.Component {
       newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
 
     await tasksStore.update(e.itemData.ID, { OrderIndex: newOrderIndex });
-    await e.component.refresh(true);
+    await e.component.refresh();
   } 
 
   render() {

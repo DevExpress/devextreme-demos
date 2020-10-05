@@ -19,7 +19,7 @@ $(function(){
                 tasks.splice(fromIndex, 1);
                 tasks.splice(toIndex, 0, e.itemData);
 
-                e.component.refresh(true);
+                e.component.refresh();
             }
         },
         showBorders: true,
