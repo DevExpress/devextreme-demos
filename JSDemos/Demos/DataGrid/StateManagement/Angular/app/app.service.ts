@@ -25,23 +25,14 @@ export class Service {
     }
 
     updateOrders(change: any, data: any) {
-        let orders = this.orders$.getValue();
-
-        if (change) {
-            change.data = data;
-            orders = applyChanges(orders, [change], { keyExpr: "OrderID" });
-        } else {
-            orders = data["data"];
-        }
-
+        change.data = data;
+        const orders = applyChanges(this.orders$.getValue(), [change], { keyExpr: "OrderID" });
         this.orders$.next(orders);
     }
 
     async loadAll() {
         const data = await this.http.get(`${this.url}/Orders?skip=700`, { withCredentials: true }).toPromise();
-        this.updateOrders(null, data);
-
-        return data;
+        this.orders$.next(data["data"]);
     }
 
     async insert(change: any) {
