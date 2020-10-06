@@ -2950,8 +2950,7 @@
             "DocUrl": "ApiReference/Data_Visualization_Widgets/dxTreeMap/Configuration/#dataSource",
             "Credits": "www.wikipedia.org",
             "Widget": "Charts",
-            "DemoType": "Viz",
-            "Equivalents": "resolveLabelOverflow"
+            "DemoType": "Viz"
           },
           {
             "Title": "Plain Data Structure",
@@ -2959,8 +2958,7 @@
             "DocUrl": "ApiReference/Data_Visualization_Widgets/dxTreeMap/Configuration/#dataSource",
             "Credits": "www.wikipedia.org",
             "Widget": "Charts",
-            "DemoType": "Viz",
-            "Equivalents": "resolveLabelOverflow"
+            "DemoType": "Viz"
           },
           {
             "Title": "Tiling Algorithms",
