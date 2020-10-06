@@ -1,3 +1,5 @@
-**Scheduler**'s virtual scrolling significantly increases performance because the widget renders only visible appointments and removes them from the DOM once they leave the viewport. This mode should be used when the number of appointments is large. The supported [views](/Documentation/ApiReference/UI_Widgets/dxScheduler/Configuration/views/) are *"day"*, *"week"*, and *"workWeek"*.
+Virtual scrolling helps increase the **Scheduler**'s performance on large datasets. In this mode, the widget renders only visible appointments. When an appointment leaves the viewport, the **Scheduler** removes it from the DOM.
 
-To enable the virtual scrolling mode, add the [scrolling](/Documentation/ApiReference/UI_Widgets/dxScheduler/Configuration/scrolling) option and set its [mode](/Documentation/ApiReference/UI_Widgets/dxScheduler/Configuration/scrolling/#mode) to *"virtual"* as done in this demo.
+To enable the virtual scrolling mode, set the [scrolling](/Documentation/ApiReference/UI_Widgets/dxScheduler/Configuration/scrolling).[mode](/Documentation/ApiReference/UI_Widgets/dxScheduler/Configuration/scrolling/#mode) option to *"virtual"* as done in this demo.
+
+Virtual scrolling is supported by the following [views](/Documentation/ApiReference/UI_Widgets/dxScheduler/Configuration/views/): *"day"*, *"week"*, and *"workWeek"*.
