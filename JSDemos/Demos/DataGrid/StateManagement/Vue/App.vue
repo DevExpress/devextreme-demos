@@ -1,7 +1,7 @@
 <template>
   <div>
     <DxLoadPanel
-      :position="{ of: '#gridContainer' }"
+      :position="loadPanelPosition"
       :visible="isLoading"
     />
     <DxDataGrid
@@ -17,8 +17,8 @@
         :allow-adding="true"
         :allow-deleting="true"
         :allow-updating="true"
-        :changes.sync="changes"
-        :edit-row-key.sync="editRowKey"
+        v-model:changes="changes"
+        v-model:edit-row-key="editRowKey"
       />
       <DxColumn data-field="OrderID" :allow-editing="false"></DxColumn>
       <DxColumn data-field="ShipName"></DxColumn>
@@ -54,7 +54,12 @@ export default {
     DxLoadPanel
   },
   created() {
-    this.loadAll();
+    this.loadOrders();
+  },
+  data() {
+    return {
+      loadPanelPosition: { of: '#gridContainer' }
+    }
   },
   computed: {
     ...mapGetters(['orders', 'isLoading']),
@@ -85,7 +90,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['setEditRowKey', 'setChanges', 'loadAll', 'insert', 'update', 'remove', 'saveChange']),
+    ...mapActions(['setEditRowKey', 'setChanges', 'loadOrders', 'insert', 'update', 'remove', 'saveChange']),
     onSaving(e) {
       e.cancel = true;
       e.promise = this.saveChange(e.changes[0]);

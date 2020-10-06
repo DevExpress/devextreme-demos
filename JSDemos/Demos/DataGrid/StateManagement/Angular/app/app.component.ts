@@ -24,13 +24,17 @@ export class AppComponent implements OnInit {
     editRowKey: any = null;
     changesText: string = '';
     isLoading: boolean = false;
+    loadPanelPosition: any = { of: '#gridContainer' };
 
     constructor(private service: Service) { }
 
     ngOnInit() {
         this.orders$ = this.service.getOrders();
+
         this.isLoading = true;
-        this.service.loadAll().finally(() => { this.isLoading = false });
+        this.orders$.subscribe(() => {
+            this.isLoading = false;
+        });
     }
 
     onChangesChange(changes: Array<any>) {
@@ -47,13 +51,19 @@ export class AppComponent implements OnInit {
         e.cancel = true;
 
         if(change) {
-            this.isLoading = true;
-            e.promise = this.service.saveChange(change)
-                .finally(() => { this.isLoading = false; })
-                .then(() => {
-                    this.editRowKey = null;
-                    this.changes = [];
-                });
+            e.promise = this.processSaving(change);
+        }
+    }
+
+    async processSaving(change: {}) {
+        this.isLoading = true;
+
+        try {
+            await this.service.saveChange(change);
+            this.editRowKey = null;
+            this.changes = [];
+        } finally {
+            this.isLoading = false;
         }
     }
 }

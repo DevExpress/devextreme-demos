@@ -1,14 +1,12 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+
+import { createStore } from 'vuex';
 import 'whatwg-fetch';
 import applyChanges from 'devextreme/data/apply_changes';
 import { sendRequest } from './utils.js';
 
 const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
 
-Vue.use(Vuex);
-
-export default new Vuex.Store({
+export default createStore({
     state: {
         orders: [],
         changes: [],
@@ -54,7 +52,7 @@ export default new Vuex.Store({
             ctx.commit('updateChanges', value);
         },
 
-        async loadAll(ctx) {
+        async loadOrders(ctx) {
             ctx.commit('updateIsLoading', true);
             try {
                 const { data } = await sendRequest(`${URL}/Orders?skip=700`);

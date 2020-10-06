@@ -12,7 +12,7 @@ export const SAVING_CANCEL = 'SAVING_CANCEL';
 export const SET_CHANGES = 'SET_CHANGES';
 export const SET_EDIT_ROW_KEY = 'SET_EDIT_ROW_KEY';
 
-export const loadAll = async (dispatch) => {
+export const loadOrders = async (dispatch) => {
   dispatch({ type: FETCH_PENDING });
 
   try {

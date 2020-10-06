@@ -4,7 +4,7 @@ import { LoadPanel } from 'devextreme-react/load-panel';
 import 'whatwg-fetch';
 
 import reducer from './reducer.js';
-import { saveChange, loadAll, setChanges, setEditRowKey } from './actions.js';
+import { saveChange, loadOrders, setChanges, setEditRowKey } from './actions.js';
 
 const initialState = {
   data: [],
@@ -24,11 +24,10 @@ const App = () => {
     })), null, ' ');
   }, [state.changes]);
 
-  React.useEffect(() => { 
-    async function loadData() {
-      await loadAll(dispatch);
-    }
-    loadData();
+  const loadPanelPosition = { of: '#gridContainer' };
+
+  React.useEffect(() => {
+    loadOrders(dispatch);
   }, []);
 
   const onSaving = React.useCallback((e) => {
@@ -47,7 +46,7 @@ const App = () => {
   return (
     <React.Fragment>
       <LoadPanel
-        position={{ of: '#gridContainer' }}
+        position={loadPanelPosition}
         visible={state.isLoading}
       />
       <DataGrid

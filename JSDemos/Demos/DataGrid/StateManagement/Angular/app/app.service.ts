@@ -20,19 +20,18 @@ export class Service {
 
     constructor(private http: HttpClient) { }
 
-    getOrders() {
-        return this.orders$.asObservable();
-    }
-
     updateOrders(change: any, data: any) {
         change.data = data;
         const orders = applyChanges(this.orders$.getValue(), [change], { keyExpr: "OrderID" });
         this.orders$.next(orders);
     }
 
-    async loadAll() {
-        const data = await this.http.get(`${this.url}/Orders?skip=700`, { withCredentials: true }).toPromise();
-        this.orders$.next(data["data"]);
+    getOrders() {
+        this.http.get(`${this.url}/Orders?skip=700`, { withCredentials: true }).subscribe((data) => {
+            this.orders$.next(data["data"]);
+        });
+
+        return this.orders$.asObservable();
     }
 
     async insert(change: any) {
