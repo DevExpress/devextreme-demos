@@ -25,8 +25,9 @@
 <script>
 import { DxDataGrid, DxColumn, DxEditing } from 'devextreme-vue/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
+import 'whatwg-fetch';
 
-const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
+const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridBatchUpdateWebApi';
 
 const ordersStore = createStore({
   key: 'OrderID',
@@ -35,6 +36,29 @@ const ordersStore = createStore({
     ajaxOptions.xhrFields = { withCredentials: true };
   }
 });
+
+const sendBatchRequest = async (url, changes) => {
+  const result = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(changes),
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    },
+    credentials: 'include'
+  });
+
+  if (!result.ok) {
+    const json = await result.json();
+
+    throw json.Message;
+  }
+};
+
+const processBatchRequest = async (url, changes, component) => {
+  await sendBatchRequest(url, changes);
+  await component.refresh();
+  component.cancelEditData();
+};
 
 export default {
   components: {
@@ -52,27 +76,7 @@ export default {
       e.cancel = true;
 
       if(e.changes.length) {
-        e.promise = this.sendBatchRequest(`${URL}/Batch`, e.changes).then(() => {
-          e.component.refresh().then(() => {
-            e.component.cancelEditData();
-          });
-        });
-      }
-    },
-    async sendBatchRequest(url, changes) {
-      const result = await fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(changes),
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
-        },
-        credentials: 'include'
-      });
-
-      if (!result.ok) {
-        const json = await result.json();
-
-        throw json.Message;
+        e.promise = processBatchRequest(`${URL}/Batch`, e.changes, e.component);
       }
     }
   }

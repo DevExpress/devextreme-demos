@@ -1,8 +1,8 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import DxDataGrid from 'devextreme/ui/data_grid';
 import { DxDataGridModule } from 'devextreme-angular';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
@@ -10,7 +10,7 @@ if (!/localhost/.test(document.location.host)) {
     enableProdMode();
 }
 
-const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
+const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridBatchUpdateWebApi';
 
 @Component({
     selector: 'demo-app',
@@ -39,15 +39,15 @@ export class AppComponent {
         }
     }
 
-    async processBatchRequest(url: string, changes: any, component: any): Promise<any> {
+    async processBatchRequest(url: string, changes: Array<{}>, component: DxDataGrid): Promise<any> {
         await this.http.post(url, JSON.stringify(changes), {
             withCredentials: true,
             headers: {
                 'Content-Type': 'application/json'
             }
         }).toPromise();
-        await component.refresh()
-        await component.cancelEditData();
+        await component.refresh();
+        component.cancelEditData();
     }
 }
 

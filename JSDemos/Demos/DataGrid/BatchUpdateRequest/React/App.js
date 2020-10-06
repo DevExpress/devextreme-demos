@@ -3,7 +3,7 @@ import DataGrid, { Column, Editing } from 'devextreme-react/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 import 'whatwg-fetch';
 
-var URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
+var URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridBatchUpdateWebApi';
 
 const ordersStore = createStore({
   key: 'OrderID',
@@ -30,18 +30,18 @@ const sendBatchRequest = async (url, changes) => {
   }
 };
 
+const processBatchRequest = async (url, changes, component) => {
+  await sendBatchRequest(url, changes);
+  await component.refresh();
+  component.cancelEditData();
+};
+
 const App = () => {
   const onSaving = React.useCallback((e) => {
-    var changes = e.changes;
-
     e.cancel = true;
 
-    if (changes.length) {
-      e.promise = sendBatchRequest(`${URL}/Batch`, changes).then(() => {
-        e.component.refresh().then(() => {
-          e.component.cancelEditData();
-        });
-      });
+    if (e.changes.length) {
+      e.promise = processBatchRequest(`${URL}/Batch`, e.changes, e.component);
     }
   }, []);
 

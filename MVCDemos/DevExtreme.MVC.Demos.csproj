@@ -193,6 +193,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ApiControllers\DataGridBatchUpdateWebApiController.cs" />
     <Compile Include="Controllers\ApiControllers\DataGridRowReorderingController.cs" />
     <Compile Include="Controllers\ApiControllers\DnDBetweenGridsController.cs" />
     <Compile Include="Controllers\ApiControllers\DataGridCustomEditorsController.cs" />

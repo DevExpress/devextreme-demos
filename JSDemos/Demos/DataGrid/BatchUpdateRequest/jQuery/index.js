@@ -1,16 +1,14 @@
 $(function () {
-    var URL = "https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi";
+    var URL = "https://js.devexpress.com/Demos/Mvc/api/DataGridBatchUpdateWebApi";
 
     $("#gridContainer").dxDataGrid({
-        dataSource: {
-            store: DevExpress.data.AspNet.createStore({
-                key: "OrderID",
-                loadUrl: URL + "/Orders",
-                onBeforeSend: function (method, ajaxOptions) {
-                    ajaxOptions.xhrFields = { withCredentials: true };
-                },
-            })
-        },
+        dataSource: DevExpress.data.AspNet.createStore({
+            key: "OrderID",
+            loadUrl: URL + "/Orders",
+            onBeforeSend: function (method, ajaxOptions) {
+                ajaxOptions.xhrFields = { withCredentials: true };
+            },
+        }),
         showBorders: true,
         editing: {
             mode: "batch",

@@ -1,7 +1,7 @@
 ﻿@(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.Northwind.Order>()
     .ID("gridContainer")
     .DataSource(d => d.WebApi()
-        .Controller("DataGridWebApi")
+        .Controller("DataGridBatchUpdateWebApi")
         .LoadAction("Orders")
         .Key("OrderID")
     )
@@ -31,7 +31,7 @@
         e.cancel = true;
 
         if (e.changes.length) {
-            e.promise = sendBatchRequest('@Url.RouteUrl(new { controller = "DataGridWebApi", action = "Batch" })', e.changes).done(() => {
+            e.promise = sendBatchRequest('@Url.RouteUrl(new { controller = "DataGridBatchUpdateWebApi", action = "Batch" })', e.changes).done(() => {
                 e.component.refresh().done(() => {
                     e.component.cancelEditData();
                 });
