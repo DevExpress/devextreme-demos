@@ -1,21 +1,21 @@
-﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.EmployeeTask>
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.EmployeeAppointment>
 
 @(Html.DevExtreme().Scheduler()
     .DataSource(Model)
-    .TextExpr("Subject")
+    .TextExpr("Text")
     .StartDateExpr("StartDate")
-    .EndDateExpr("DueDate")
+    .EndDateExpr("EndDate")
     .Views(views => {
         views.Add()
             .Name("3 Days")
             .Type(SchedulerViewType.Day)
             .IntervalCount(3)
-            .StartDate(new DateTime(2017, 4, 30));
+            .StartDate(new DateTime(2021, 4, 4));
         views.Add()
             .Name("2 Work Weeks")
             .Type(SchedulerViewType.WorkWeek)
             .IntervalCount(2)
-            .StartDate(new DateTime(2017, 4, 3));
+            .StartDate(new DateTime(2021, 3, 4));
 
         views.Add()
             .Name("2 Months")
@@ -23,7 +23,7 @@
             .IntervalCount(2);
     })
     .CurrentView(SchedulerViewType.Day)
-    .CurrentDate(new DateTime(2017, 5, 1))
+    .CurrentDate(new DateTime(2021, 4, 5))
     .StartDayHour(8)
     .EndDayHour(20)
     .Height(580)

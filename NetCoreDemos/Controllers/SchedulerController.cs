@@ -8,7 +8,7 @@ using System.Linq;
 namespace DevExtreme.NETCore.Demos.Controllers {
     public class SchedulerController : Controller {
         public ActionResult SimpleArray() {
-            return View();
+            return View(SampleData.SimpleArrayAppointments);
         }
 
         public ActionResult Adaptability() {
@@ -87,16 +87,16 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         }
 
         public ActionResult CustomizeIndividualViews() {
-            return View(SampleData.Jobs);
+            return View(SampleData.JobAppointments);
         }
 
         public ActionResult IncreaseViewDuration() {
-            return View(SampleData.PlannedTasks);
+            return View(SampleData.IncreaseViewDurationAppointments);
         }
 
         public ActionResult LimitAppointmentCountPerCell() {
             return View(new LimitAppointmentCountPerCellModel {
-                Appointments = SampleData.AdaptiveAppointments,
+                Appointments = SampleData.LimitAppointmentCountPerCellAppointments,
                 Resources = SampleData.AdaptiveAppointmentsResources
             });
         }
