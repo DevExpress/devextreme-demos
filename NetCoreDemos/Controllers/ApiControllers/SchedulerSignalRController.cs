@@ -30,7 +30,7 @@ namespace DevExtreme.NETCore.Demos.Controllers.ApiControllers {
 
         [HttpPost]
         public IActionResult Post(string values) {
-            var newAppointment = new AppointmentTest();
+            var newAppointment = new Appointment();
             JsonConvert.PopulateObject(values, newAppointment);
 
             if(!TryValidateModel(newAppointment))

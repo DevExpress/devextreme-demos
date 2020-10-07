@@ -4,7 +4,7 @@ using System.Linq;
 using Newtonsoft.Json;
 
 namespace DevExtreme.NETCore.Demos.Models {
-    public class AppointmentTest {
+    public class Appointment {
         [JsonProperty(PropertyName = "AppointmentId")]
         public int AppointmentId { get; set; }
         [JsonProperty(PropertyName = "Text")]
