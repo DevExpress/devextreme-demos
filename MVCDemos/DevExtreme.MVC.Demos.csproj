@@ -634,6 +634,7 @@
     <Content Include="Content\DemosStyles\Charts\DoughnutWithCustomLabelInCenter.css" />
     <Content Include="Content\DemosStyles\Charts\ExportCustomMarkup.css" />
     <Content Include="Content\DemosStyles\Charts\LogarithmicVsLinearAxes.css" />
+    <Content Include="Content\DemosStyles\Charts\AxisLabelsTemplates.css" />
     <Content Include="Content\DemosStyles\Charts\PieWithAnnotations.css" />
     <Content Include="Content\DemosStyles\Charts\PolarChartAnnotations.css" />
     <Content Include="Content\DemosStyles\Charts\PolarChartZoomingAndScrollingAPI.css" />
@@ -2144,6 +2145,7 @@
     <Content Include="Views\Diagram\OperationRestrictions.cshtml" />
     <Content Include="Views\DataGrid\ExportToPDF.cshtml" />
     <Content Include="Views\Gantt\ContextMenu.cshtml" />
+    <Content Include="Views\Charts\AxisLabelsTemplates.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
