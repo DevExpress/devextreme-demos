@@ -4,19 +4,19 @@ using System;
 using System.Collections.Generic;
 
 namespace DevExtreme.NETCore.Demos.Models {
-    public class InMemoryAppointmentsDataContext : InMemoryDataContext<Appointment> {
+    public class InMemoryAppointmentsDataContext : InMemoryDataContext<AppointmentTest> {
 
         public InMemoryAppointmentsDataContext(IHttpContextAccessor contextAccessor, IMemoryCache memoryCache)
             : base(contextAccessor, memoryCache) {
         }
 
-        public ICollection<Appointment> Appointments => ItemsInternal;
+        public ICollection<AppointmentTest> Appointments => ItemsInternal;
 
 
-        protected override IEnumerable<Appointment> Source => SampleData.SampleData.Appointments;
+        protected override IEnumerable<AppointmentTest> Source => SampleData.SampleData.Appointments;
 
-        protected override int GetKey(Appointment item) => item.AppointmentId;
+        protected override int GetKey(AppointmentTest item) => item.AppointmentId;
 
-        protected override void SetKey(Appointment item, int key) => item.AppointmentId = key;
+        protected override void SetKey(AppointmentTest item, int key) => item.AppointmentId = key;
     }
 }

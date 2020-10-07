@@ -7,7 +7,12 @@ namespace DevExtreme.NETCore.Demos.Models {
     [JsonConverter(typeof(StringEnumConverter))]
     public enum Priority { High, Normal, Low, Urgent }
 
-    public class EmployeeTask {
+    public class EmployeeAppointment : AppointmentTest {
+        public Priority Priority { set; get; }
+        public IEnumerable<int> OwnerId { get; set; }
+    }
+
+    public class EmployeeTask { // TODO
         public int ID { set; get; }
         public string Subject { set; get; }
         public DateTime StartDate { set; get; }
