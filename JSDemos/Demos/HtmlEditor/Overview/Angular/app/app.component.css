@@ -3,6 +3,10 @@
     padding-right: 10px;
 }
 
+::ng-deep .dx-htmleditor-content table {
+    width: 50%;
+}
+
 ::ng-deep .options {
     padding: 20px;
     background-color: rgba(191, 191, 191, 0.15);
