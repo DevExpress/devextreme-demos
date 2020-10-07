@@ -2,7 +2,9 @@
 
 namespace DevExtreme.MVC.Demos.Controllers {
     public class GanttController : Controller {
-
+        public ActionResult ContextMenu() {
+            return View();
+        }
         public ActionResult ChartAppearance() {
             return View();
         }

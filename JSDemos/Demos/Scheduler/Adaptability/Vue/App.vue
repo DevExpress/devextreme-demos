@@ -2,7 +2,7 @@
   <div>
     <DxScheduler
       :data-source="dataSource"
-      :current-date.sync="currentDate"
+      v-model:current-date="currentDate"
       :cell-duration="cellDuration"
       :views="views"
       :height="590"
@@ -39,7 +39,7 @@ export default {
   data() {
     return {
       views: ['week', 'month'],
-      currentDate: new Date(2017, 4, 25),
+      currentDate: new Date(2021, 4, 25),
       cellDuration: 30,
       dataSource: data,
       priorities: priorities,
