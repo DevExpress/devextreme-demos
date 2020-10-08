@@ -344,6 +344,7 @@
     <Compile Include="Models\ContextMenuItem.cs" />
     <Compile Include="Models\RowReorderingTask.cs" />
     <Compile Include="Models\SampleData\AdaptabilityAppointments.cs" />
+    <Compile Include="Models\SampleData\AgendaTasks.cs" />
     <Compile Include="Models\SampleData\AnnotationData.cs" />
     <Compile Include="Models\SampleData\Appointments.cs" />
     <Compile Include="Models\SampleData\CustomLegendMarkersSampleData.cs" />
@@ -383,7 +384,6 @@
     <Compile Include="Models\TreeView\FileSystemItem.cs" />
     <Compile Include="Models\WeatherIndicator.cs" />
     <Compile Include="Models\DynamicAppointmentsResource.cs" />
-    <Compile Include="Models\AgendaTask.cs" />
     <Compile Include="Models\DynamicAppointment.cs" />
     <Compile Include="Models\CountryInfo.cs" />
     <Compile Include="Models\Details.cs" />
@@ -411,7 +411,7 @@
     <Compile Include="Models\RecurringAppointmentsResource.cs" />
     <Compile Include="Models\RoomResource.cs" />
     <Compile Include="Models\SampleData\DynamicAppointmentsResources.cs" />
-    <Compile Include="Models\SampleData\AgendaTasks.cs" />
+    <Compile Include="Models\SampleData\SimpleArrayAppointments.cs" />
     <Compile Include="Models\SampleData\DynamicAppointments.cs" />
     <Compile Include="Models\SampleData\AppointmentsWithResources.cs" />
     <Compile Include="Models\SampleData\ContinentsInfo.cs" />
