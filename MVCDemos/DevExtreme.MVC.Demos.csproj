@@ -334,6 +334,8 @@
     <Compile Include="Models\InMemoryListTasksDataContext.cs" />
     <Compile Include="Models\InMemorySelectBoxDataContext.cs" />
     <Compile Include="Models\ListTaskItem.cs" />
+    <Compile Include="Models\MedalAnnotationInfo.cs" />
+    <Compile Include="Models\MedalistData.cs" />
     <Compile Include="Models\NavigationItem.cs" />
     <Compile Include="Models\NavigationItemWithIcon.cs" />
     <Compile Include="Models\DataService\Sale.cs" />
@@ -355,7 +357,9 @@
     <Compile Include="Models\SampleData\ElectronicsSimple.cs" />
     <Compile Include="Models\SampleData\ElectronicsGrouped.cs" />
     <Compile Include="Models\ExtendedListItemData.cs" />
+    <Compile Include="Models\SampleData\IceHockeyGoldMedalistsData.cs" />
     <Compile Include="Models\SampleData\ListTasksData.cs" />
+    <Compile Include="Models\SampleData\MedalAnnotations.cs" />
     <Compile Include="Models\SampleData\NavigationItems.cs" />
     <Compile Include="Models\SampleData\NavigationItemsWithIcon.cs" />
     <Compile Include="Models\SampleData\GroupByDateTasks.cs" />
@@ -630,6 +634,7 @@
     <Content Include="Content\DemosStyles\Charts\DoughnutWithCustomLabelInCenter.css" />
     <Content Include="Content\DemosStyles\Charts\ExportCustomMarkup.css" />
     <Content Include="Content\DemosStyles\Charts\LogarithmicVsLinearAxes.css" />
+    <Content Include="Content\DemosStyles\Charts\PieWithAnnotations.css" />
     <Content Include="Content\DemosStyles\Charts\PolarChartAnnotations.css" />
     <Content Include="Content\DemosStyles\Charts\PolarChartZoomingAndScrollingAPI.css" />
     <Content Include="Content\DemosStyles\DataGrid\CustomEditors.css" />
@@ -1111,6 +1116,14 @@
     <Content Include="Content\Images\employees\48.png" />
     <Content Include="Content\Images\employees\49.png" />
     <Content Include="Content\Images\employees\50.png" />
+    <Content Include="Content\Images\flags\3x2\Canada.svg" />
+    <Content Include="Content\Images\flags\3x2\CzechRepublic.svg" />
+    <Content Include="Content\Images\flags\3x2\Finland.svg" />
+    <Content Include="Content\Images\flags\3x2\GreatBritain.svg" />
+    <Content Include="Content\Images\flags\3x2\Russia.svg" />
+    <Content Include="Content\Images\flags\3x2\Slovakia.svg" />
+    <Content Include="Content\Images\flags\3x2\Sweden.svg" />
+    <Content Include="Content\Images\flags\3x2\UnitedStates.svg" />
     <Content Include="Content\Images\flags\Alexandria.svg" />
     <Content Include="Content\Images\flags\Australia.svg" />
     <Content Include="Content\Images\flags\Berlin.svg" />
@@ -2112,6 +2125,7 @@
     <Content Include="Views\Charts\DiscreteAggregation.cshtml" />
     <Content Include="Views\Charts\PolarChartAnnotations.cshtml" />
     <Content Include="Views\Charts\AxisCustomPosition.cshtml" />
+    <Content Include="Views\Charts\PieWithAnnotations.cshtml" />
     <Content Include="Views\Diagram\Adaptability.cshtml" />
     <Content Include="Views\FieldSet\Overview.cshtml" />
     <Content Include="Views\TabPanel\SortableClosableTabs.cshtml" />

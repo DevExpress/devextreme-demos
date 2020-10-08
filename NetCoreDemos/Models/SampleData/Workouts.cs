@@ -3,84 +3,84 @@ using System.Collections.Generic;
 
 namespace DevExtreme.NETCore.Demos.Models.SampleData {
     public partial class SampleData {
-        public static readonly IEnumerable<Workout> Workouts = new[] {
-            new Workout {
+        public static readonly IEnumerable<WorkoutAppointment> Workouts = new[] {
+            new WorkoutAppointment {
                 Text = "Helen",
                 EmployeeID = 2,
-                StartDate = new DateTime(2016, 8, 2, 9, 30, 0),
-                EndDate = new DateTime(2016, 8, 2, 11, 30, 0)
+                StartDate = "2021-07-27T06:30:00.000Z",
+                EndDate = "2021-07-27T08:30:00.000Z"
             },
-            new Workout {
+            new WorkoutAppointment {
                 Text = "Helen",
                 EmployeeID = 2,
-                StartDate = new DateTime(2016, 8, 11, 9, 30, 0),
-                EndDate = new DateTime(2016, 8, 12, 11, 30, 0)
+                StartDate = "2021-08-05T06:30:00.000Z",
+                EndDate = "2021-08-06T08:30:00.000Z"
             },
-            new Workout {
+            new WorkoutAppointment {
                 Text = "Alex",
                 EmployeeID = 1,
-                StartDate = new DateTime(2016, 8, 3, 9, 30, 0),
-                EndDate = new DateTime(2016, 8, 3, 11, 30, 0)
+                StartDate = "2021-07-28T06:30:00.000Z",
+                EndDate = "2021-07-28T08:30:00.000Z"
             },
-            new Workout {
+            new WorkoutAppointment {
                 Text = "Alex",
                 EmployeeID = 1,
-                StartDate = new DateTime(2016, 8, 12, 12, 0, 0),
-                EndDate = new DateTime(2016, 8, 12, 13, 0, 0)
+                StartDate = "2021-08-06T09:00:00.000Z",
+                EndDate = "2021-08-06T10:00:00.000Z"
             },
-            new Workout {
+            new WorkoutAppointment {
                 Text = "Alex",
                 EmployeeID = 2,
-                StartDate = new DateTime(2016, 8, 17, 9, 30, 0),
-                EndDate = new DateTime(2016, 8, 17, 11, 30, 0)
+                StartDate = "2021-08-11T06:30:00.000Z",
+                EndDate = "2021-08-11T08:30:00.000Z"
             },
-            new Workout {
+            new WorkoutAppointment {
                 Text = "Stan",
                 EmployeeID = 1,
-                StartDate = new DateTime(2016, 8, 8, 9, 30, 0),
-                EndDate = new DateTime(2016, 8, 8, 11, 30, 0)
+                StartDate = "2021-08-02T06:30:00.000Z",
+                EndDate = "2021-08-02T08:30:00.000Z"
             },
-            new Workout {
+            new WorkoutAppointment {
                 Text = "Stan",
                 EmployeeID = 1,
-                StartDate = new DateTime(2016, 8, 29, 9, 30, 0),
-                EndDate = new DateTime(2016, 8, 29, 11, 30, 0)
+                StartDate = "2021-08-23T06:30:00.000Z",
+                EndDate = "2021-08-23T08:30:00.000Z"
             },
-            new Workout {
+            new WorkoutAppointment {
                 Text = "Stan",
                 EmployeeID = 1,
-                StartDate = new DateTime(2016, 8, 31, 9, 30, 0),
-                EndDate = new DateTime(2016, 8, 31, 11, 30, 0)
+                StartDate = "2021-08-25T06:30:00.000Z",
+                EndDate = "2021-08-25T08:30:00.000Z"
             },
-            new Workout {
+            new WorkoutAppointment {
                 Text = "Rachel",
                 EmployeeID = 2,
-                StartDate = new DateTime(2016, 8, 5, 9, 30, 0),
-                EndDate = new DateTime(2016, 8, 5, 11, 30, 0)
+                StartDate = "2021-07-30T06:30:00.000Z",
+                EndDate = "2021-07-30T08:30:00.000Z"
             },
-            new Workout {
+            new WorkoutAppointment {
                 Text = "Rachel",
                 EmployeeID = 2,
-                StartDate = new DateTime(2016, 8, 8, 9, 30, 0),
-                EndDate = new DateTime(2016, 8, 8, 11, 30, 0)
+                StartDate = "2021-08-02T06:30:00.000Z",
+                EndDate = "2021-08-02T08:30:00.000Z",
             },
-            new Workout {
+            new WorkoutAppointment {
                 Text = "Rachel",
                 EmployeeID = 1,
-                StartDate = new DateTime(2016, 8, 22, 9, 30, 0),
-                EndDate = new DateTime(2016, 8, 22, 11, 30, 0)
+                StartDate = "2021-08-16T06:30:00.000Z",
+                EndDate = "2021-08-16T06:30:00.000Z"
             },
-            new Workout {
+            new WorkoutAppointment {
                 Text = "Kelly",
                 EmployeeID = 2,
-                StartDate = new DateTime(2016, 8, 16, 9, 30, 0),
-                EndDate = new DateTime(2016, 8, 16, 11, 30, 0)
+                StartDate = "2021-08-10T06:30:00.000Z",
+                EndDate = "2021-08-10T08:30:00.000Z"
             },
-            new Workout {
+            new WorkoutAppointment {
                 Text = "Kelly",
                 EmployeeID = 2,
-                StartDate = new DateTime(2016, 8, 30, 9, 30, 0),
-                EndDate = new DateTime(2016, 8, 30, 11, 30, 0)
+                StartDate = "2021-08-24T06:30:00.000Z",
+                EndDate = "2021-08-24T08:30:00.000Z"
             }
         };
     }

@@ -2739,6 +2739,22 @@
             "DocUrl": "Guide/Widgets/PieChart/Series/Overview/",
             "Widget": "Charts",
             "DemoType": "Viz"
+          },
+          {
+            "Title": "Pie with Annotations",
+            "Name": "PieWithAnnotations",
+            "DocUrl": "",
+            "Widget": "Charts",
+            "MvcDescription": "",
+            "NetCoreDescription": "",
+            "MvcAdditionalFiles": [
+              "/Models/MedalistData.cs",
+              "/Models/MedalAnnotationInfo.cs",
+              "/Models/SampleData/IceHockeyGoldMedalistsData.cs",
+              "/Models/SampleData/MedalAnnotations.cs"
+            ],
+            "DemoType": "Viz",
+            "Badge": "New"
           }
         ]
       },
@@ -2780,8 +2796,7 @@
             "DemoType": "Viz",
             "MvcAdditionalFiles": [
               "/Models/SampleData/CustomPositionData.cs"
-            ],
-            "Badge": "New"
+            ]
           }
         ]
       },
@@ -2849,8 +2864,7 @@
               "/Models/DiscreteScaleTemperature.cs",
               "/Models/SampleData/DiscreteScaleTemperatures.cs"
             ],
-            "DemoType": "Viz",
-            "Badge": "New"
+            "DemoType": "Viz"
           }
         ]
       },
