@@ -144,6 +144,10 @@ export default {
     vertical-align: top;
   }
 
+  .column:last-child .option {
+      margin-left: 4px;
+  }
+
   .option {
     padding: 5px 0;
   }
