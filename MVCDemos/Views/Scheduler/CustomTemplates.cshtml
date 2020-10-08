@@ -12,7 +12,7 @@
         SchedulerViewType.TimelineDay
     })
     .CurrentView(SchedulerViewType.Day)
-    .CurrentDate(new DateTime(2015, 5, 25))
+    .CurrentDate(new DateTime(2021, 5, 25))
     .FirstDayOfWeek(FirstDayOfWeek.Sunday)
     .StartDayHour(9)
     .EndDayHour(23)
@@ -49,8 +49,8 @@
                 Ticket Price: <strong>$<%- appointmentData.Price %></strong>
             </div>
             <div>
-                <%- formatTime(appointmentData.StartDate) %> -
-                <%- formatTime(appointmentData.EndDate) %>
+                <%- formatTime(new Date(appointmentData.StartDate)) %> -
+                <%- formatTime(new Date(appointmentData.EndDate)) %>
             </div>
         </div>
     </text>)
