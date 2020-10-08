@@ -35,6 +35,8 @@ MVCDemos/App_Data/menuMeta.json
 MVCDemos/packages
 
 NetCoreDemos/wwwroot/Descr/Temp
+NetCoreDemos/wwwroot/bundle.min.css
+NetCoreDemos/wwwroot/bundle.min.js
 NetCoreDemos/wwwroot/js
 NetCoreDemos/wwwroot/css/*
 !NetCoreDemos/wwwroot/css/DemosStyles
