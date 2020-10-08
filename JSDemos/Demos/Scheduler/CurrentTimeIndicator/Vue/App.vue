@@ -154,7 +154,7 @@ export default {
   }
 
   .label {
-    width: 180px;
+    width: 184px;
   }
 
   .value {
