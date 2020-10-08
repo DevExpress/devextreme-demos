@@ -7,17 +7,16 @@
 @(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.Northwind.Order>()
     .ID("gridContainer")
     .KeyExpr("OrderID")
-    .DataSource(new JS("[]"))
     .ShowBorders(true)
     .RepaintChangesOnly(true)
+    .LoadPanel(loadPanel => loadPanel.Enabled(false))
     .Editing(e => e
         .Mode(GridEditMode.Row)
         .AllowAdding(true)
         .AllowDeleting(true)
         .AllowUpdating(true)
     )
-    .Columns(columns =>
-        {
+    .Columns(columns => {
         columns.AddFor(m => m.OrderID).AllowEditing(false);
         columns.AddFor(m => m.ShipName);
         columns.AddFor(m => m.ShipCountry);

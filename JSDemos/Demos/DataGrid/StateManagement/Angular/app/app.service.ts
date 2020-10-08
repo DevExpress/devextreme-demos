@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import applyChanges from 'devextreme/data/apply_changes';
 
 export class Order {
@@ -13,20 +13,26 @@ export class Order {
     Freight: number;
 }
 
+export class Change<T> {
+    type: "insert" | "update" | "remove";
+    key: any;
+    data: Partial<T>;
+}
+
 @Injectable()
 export class Service {
-    private orders$: any = new BehaviorSubject<Order[]>([]);
+    private orders$ = new BehaviorSubject<Order[]>([]);
     private url = "https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi";
 
     constructor(private http: HttpClient) { }
 
-    updateOrders(change: any, data: any) {
+    updateOrders(change: Change<Order>, data: Order) {
         change.data = data;
         const orders = applyChanges(this.orders$.getValue(), [change], { keyExpr: "OrderID" });
         this.orders$.next(orders);
     }
 
-    getOrders() {
+    getOrders(): Observable<Order[]> {
         this.http.get(`${this.url}/Orders?skip=700`, { withCredentials: true }).subscribe((data) => {
             this.orders$.next(data["data"]);
         });
@@ -34,37 +40,37 @@ export class Service {
         return this.orders$.asObservable();
     }
 
-    async insert(change: any) {
+    async insert(change: Change<Order>): Promise<Order> {
         const httpParams = new HttpParams({ fromObject: { values: JSON.stringify(change.data) } });
         const httpOptions = { withCredentials: true, body: httpParams };
-        const data = await this.http.post(`${this.url}/InsertOrder`, httpParams, httpOptions).toPromise();
+        const data = await this.http.post<Order>(`${this.url}/InsertOrder`, httpParams, httpOptions).toPromise();
 
         this.updateOrders(change, data);
 
         return data;
     }
 
-    async update(change: any) {
+    async update(change: Change<Order>): Promise<Order> {
         const httpParams = new HttpParams({ fromObject: { key: change.key, values: JSON.stringify(change.data) } });
         const httpOptions = { withCredentials: true, body: httpParams };
-        const data = await this.http.put(`${this.url}/UpdateOrder`, httpParams, httpOptions).toPromise();
+        const data = await this.http.put<Order>(`${this.url}/UpdateOrder`, httpParams, httpOptions).toPromise();
 
         this.updateOrders(change, data);
 
         return data;
     }
 
-    async remove(change: any) {
+    async remove(change: Change<Order>): Promise<Order> {
         const httpParams = new HttpParams({ fromObject: { key: change.key } });
         const httpOptions = { withCredentials: true, body: httpParams };
-        const data = await this.http.delete(`${this.url}/DeleteOrder`, httpOptions).toPromise();
+        const data = await this.http.delete<Order>(`${this.url}/DeleteOrder`, httpOptions).toPromise();
 
         this.updateOrders(change, data);
         
         return data;
     }
 
-    async saveChange(change: any): Promise<any> {
+    async saveChange(change: Change<Order>): Promise<Order> {
         switch (change.type) {
             case "insert":
                 return this.insert(change);

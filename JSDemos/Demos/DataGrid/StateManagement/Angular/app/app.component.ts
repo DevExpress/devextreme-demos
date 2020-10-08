@@ -4,7 +4,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClientModule } from '@angular/common/http';
 
 import { DxDataGridModule, DxLoadPanelModule } from 'devextreme-angular';
-import { Service, Order } from './app.service';
+import { Service, Order, Change } from './app.service';
 import { Observable } from 'rxjs';
 
 if (!/localhost/.test(document.location.host)) {
@@ -20,11 +20,11 @@ if (!/localhost/.test(document.location.host)) {
 })
 export class AppComponent implements OnInit {
     orders$: Observable<Order[]>;
-    changes: any = [];
-    editRowKey: any = null;
-    changesText: string = '';
-    isLoading: boolean = false;
-    loadPanelPosition: any = { of: '#gridContainer' };
+    changes: Change<Order>[] = [];
+    editRowKey?: number = null;
+    changesText = '';
+    isLoading = false;
+    loadPanelPosition = { of: '#gridContainer' };
 
     constructor(private service: Service) { }
 
@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
         });
     }
 
-    onChangesChange(changes: Array<any>) {
+    onChangesChange(changes: Change<Order>[]) {
         this.changesText = JSON.stringify(changes.map((change) => ({
             type: change.type,
             key: change.type !== 'insert' ? change.key : undefined,
@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
         }
     }
 
-    async processSaving(change: {}) {
+    async processSaving(change: Change<Order>) {
         this.isLoading = true;
 
         try {

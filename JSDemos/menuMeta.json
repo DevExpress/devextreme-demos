@@ -298,20 +298,6 @@
             ]
           },
           {
-            "Title": "State Management (CTP)",
-            "Name": "StateManagement",
-            "DocUrl": "",
-            "Widget": "DataGrid",
-            "DemoType": "Web",
-            "Equivalents": "",
-            "Badge": "New",
-            "Modules": "whatwg-fetch,vuex,devextreme-aspnet-data-nojquery",
-            "MvcAdditionalFiles": [
-              "/Controllers/ApiControllers/DataGridWebApiController.cs",
-              "/Models/Northwind/InMemoryNorthwindContext.cs"
-            ]
-          },
-          {
             "Title": "Customize Keyboard Navigation",
             "Name": "CustomizeKeyboardNavigation",
             "Widget": "DataGrid",
@@ -4972,6 +4958,20 @@
               "/Models/State.cs",
               "/Models/SampleData/DataGridEmployees.cs",
               "/Models/SampleData/States.cs"
+            ]
+          },
+          {
+            "Title": "State Management (CTP)",
+            "Name": "StateManagement",
+            "DocUrl": "",
+            "Widget": "DataGrid",
+            "DemoType": "Web",
+            "Equivalents": "",
+            "Badge": "New",
+            "Modules": "whatwg-fetch,vuex,devextreme-aspnet-data-nojquery",
+            "MvcAdditionalFiles": [
+              "/Controllers/ApiControllers/DataGridWebApiController.cs",
+              "/Models/Northwind/InMemoryNorthwindContext.cs"
             ]
           }
         ]
