@@ -2,7 +2,7 @@
   <div :class="markTimeCell(cellData)">
     {{ cellData.text }}
     <div
-      v-if="isDinner"
+      v-if="hasCoffeeCupIcon"
       class="cafe"
     />
   </div>
@@ -21,7 +21,11 @@ export default {
     isDinner: function() {
       const date = this.cellData.date;
       return Utils.isDinner(date);
-    }
+    },
+    hasCoffeeCupIcon: function() {
+      const date = this.cellData.date;
+      return Utils.hasCoffeeCupIcon(date);
+    },
   },
   methods: {
     markTimeCell(cellData) {
