@@ -25,7 +25,7 @@ export default {
     hasCoffeeCupIcon: function() {
       const date = this.cellData.date;
       return Utils.hasCoffeeCupIcon(date);
-    },
+    }
   },
   methods: {
     markTimeCell(cellData) {
