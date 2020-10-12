@@ -1,0 +1,47 @@
+﻿@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .CommonSeriesSettings(s => s
+        .ArgumentField("Country")
+        .Type(SeriesType.Bar)
+        .Label(l => l.Visible(true))
+    )
+    .Series(s =>
+    {
+        s.Add().ValueField("Gold").Name("Gold").Color("#ffd700");
+        s.Add().ValueField("Silver").Name("Silver").Color("#c0c0c0");
+        s.Add().ValueField("Bronze").Name("Bronze").Color("#cd7f32");
+    })
+    .Title(t => t.Text("Ice Hockey World Championship Gold Medal Winners"))
+    .ArgumentAxis(a => a
+        .Label(l => l
+            .Template(@<text>
+            <svg overflow="visible">
+                <image href="<%- getFilePath(valueText) %>" filter="url(#DevExpress_shadow_filter)" y="0" width="60" height="40" />
+                <text class="template-text" x="30" y="59" text-anchor="middle"><%- valueText %></text>
+            </svg></text>)
+        )
+    )
+    .DataSource(new object[] {
+        new { Country = "Russia", Gold = 27,  Silver = 10, Bronze = 10},
+        new { Country = "Canada",  Gold = 26, Silver = 15, Bronze = 9},
+        new { Country = "Czech Republic",  Gold = 12,  Silver = 13,  Bronze = 21},
+        new { Country = "Sweden",  Gold = 11,  Silver = 19,  Bronze = 17},
+        new { Country = "Finland",  Gold = 3,  Silver = 8,  Bronze = 3}
+    })
+)
+<script>
+    function getFilePath(text) {
+        return "../../Content/images/flags/3x2/" + text.toLowerCase().replace(" ", "") + ".svg";
+    }
+</script>
+<svg width="0" height="0">
+    <defs>
+        <filter id="DevExpress_shadow_filter" x="-50%" y="-50%" width="200%" height="200%" transform="translate(0,0)">
+            <fegaussianblur in="SourceGraphic" result="gaussianBlurResult" stdDeviation="3"></fegaussianblur>
+            <feoffset in="gaussianBlurResult" result="offsetResult" dx="0" dy="1"></feoffset>
+            <feflood result="floodResult" flood-color="#000000" flood-opacity="0.3"></feflood>
+            <fecomposite in="floodResult" in2="offsetResult" operator="in" result="compositeResult"></fecomposite>
+            <fecomposite in="SourceGraphic" in2="compositeResult" operator="over"></fecomposite>
+        </filter>
+    </defs>
+</svg>

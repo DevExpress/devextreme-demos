@@ -344,6 +344,7 @@
     <Compile Include="Models\ContextMenuItem.cs" />
     <Compile Include="Models\RowReorderingTask.cs" />
     <Compile Include="Models\SampleData\AdaptabilityAppointments.cs" />
+    <Compile Include="Models\SampleData\AgendaTasks.cs" />
     <Compile Include="Models\SampleData\AnnotationData.cs" />
     <Compile Include="Models\SampleData\Appointments.cs" />
     <Compile Include="Models\SampleData\CustomLegendMarkersSampleData.cs" />
@@ -383,7 +384,6 @@
     <Compile Include="Models\TreeView\FileSystemItem.cs" />
     <Compile Include="Models\WeatherIndicator.cs" />
     <Compile Include="Models\DynamicAppointmentsResource.cs" />
-    <Compile Include="Models\AgendaTask.cs" />
     <Compile Include="Models\DynamicAppointment.cs" />
     <Compile Include="Models\CountryInfo.cs" />
     <Compile Include="Models\Details.cs" />
@@ -411,7 +411,7 @@
     <Compile Include="Models\RecurringAppointmentsResource.cs" />
     <Compile Include="Models\RoomResource.cs" />
     <Compile Include="Models\SampleData\DynamicAppointmentsResources.cs" />
-    <Compile Include="Models\SampleData\AgendaTasks.cs" />
+    <Compile Include="Models\SampleData\SimpleArrayAppointments.cs" />
     <Compile Include="Models\SampleData\DynamicAppointments.cs" />
     <Compile Include="Models\SampleData\AppointmentsWithResources.cs" />
     <Compile Include="Models\SampleData\ContinentsInfo.cs" />
@@ -634,6 +634,7 @@
     <Content Include="Content\DemosStyles\Charts\DoughnutWithCustomLabelInCenter.css" />
     <Content Include="Content\DemosStyles\Charts\ExportCustomMarkup.css" />
     <Content Include="Content\DemosStyles\Charts\LogarithmicVsLinearAxes.css" />
+    <Content Include="Content\DemosStyles\Charts\AxisLabelsTemplates.css" />
     <Content Include="Content\DemosStyles\Charts\PieWithAnnotations.css" />
     <Content Include="Content\DemosStyles\Charts\PolarChartAnnotations.css" />
     <Content Include="Content\DemosStyles\Charts\PolarChartZoomingAndScrollingAPI.css" />
@@ -2144,6 +2145,7 @@
     <Content Include="Views\Diagram\OperationRestrictions.cshtml" />
     <Content Include="Views\DataGrid\ExportToPDF.cshtml" />
     <Content Include="Views\Gantt\ContextMenu.cshtml" />
+    <Content Include="Views\Charts\AxisLabelsTemplates.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 namespace DevExtreme.NETCore.Demos.Models.SampleData {
-    public partial class SampleData  {
+    public partial class SampleData {
         public static readonly IEnumerable<MedalistData> IceHockeyGoldMedalistsData = new[] {
             new MedalistData {
                 Country = "Russia",

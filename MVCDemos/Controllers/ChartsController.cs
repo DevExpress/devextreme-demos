@@ -225,6 +225,10 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View();
         }
 
+        public ActionResult AxisLabelsTemplates() {
+            return View();
+        }
+
         public ActionResult MultiplePanes() {
             return View();
         }

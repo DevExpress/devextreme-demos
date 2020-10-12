@@ -17,14 +17,14 @@
     <div class="options">
       <div class="caption">Options</div>
       <div class="option">
-        <span>Selection Mode</span>
+        <span>Selection Mode </span>
         <DxSelectBox
           :items="['none', 'single', 'multiple', 'all']"
           v-model:value="selectionMode"
         />
       </div>
       <div class="option">
-        <span>Select All Mode</span>
+        <span>Select All Mode </span>
         <DxSelectBox
           :disabled="selectionMode !== 'all'"
           :items="['page', 'allPages']"
@@ -84,7 +84,7 @@ export default {
 }
 
 .option > span {
-    width: 120px;
+    width: 124px;
     display: inline-block;
 }
 

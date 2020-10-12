@@ -3,291 +3,291 @@ using System.Collections.Generic;
 
 namespace DevExtreme.MVC.Demos.Models.SampleData {
     public partial class SampleData {
-        public static readonly IEnumerable<EmployeeTask> PlannedTasks = new[] {
-            new EmployeeTask {
-                Subject = "Google AdWords Strategy",
-                StartDate = new DateTime(2017, 5, 1, 9, 0, 0),
-                DueDate = new DateTime(2017, 5, 1, 10, 30, 0)
+        public static readonly IEnumerable<EmployeeAppointment> IncreaseViewDurationAppointments = new[] {
+            new EmployeeAppointment {
+                Text = "Google AdWords Strategy",
+                StartDate = "2021-04-05T06:00:00.000Z",
+                EndDate = "2021-04-05T07:30:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "New Brochures",
-                StartDate = new DateTime(2017, 5, 1, 11, 30, 0),
-                DueDate = new DateTime(2017, 5, 1, 14, 15, 0)
+            new EmployeeAppointment {
+                Text = "New Brochures",
+                StartDate = "2021-04-05T08:30:00.000Z",
+                EndDate = "2021-04-05T11:15:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Brochure Design Review",
-                StartDate = new DateTime(2017, 5, 30, 10, 15, 0),
-                DueDate = new DateTime(2017, 5, 30, 12, 15, 0)
+            new EmployeeAppointment {
+                Text = "Brochure Design Review",
+                StartDate = "2021-05-04T07:15:00.000Z",
+                EndDate = "2021-05-04T09:15:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Website Re-Design Plan",
-                StartDate = new DateTime(2017, 5, 1, 16, 45, 0),
-                DueDate = new DateTime(2017, 5, 2, 17, 15, 0)
+            new EmployeeAppointment {
+                Text = "Website Re-Design Plan",
+                StartDate = "2021-04-05T13:45:00.000Z",
+                EndDate = "2021-04-06T14:15:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Rollout of New Website and Marketing Brochures",
-                StartDate = new DateTime(2017, 5, 2, 8, 15, 0),
-                DueDate = new DateTime(2017, 5, 2, 10, 45, 0)
+            new EmployeeAppointment {
+                Text = "Rollout of New Website and Marketing Brochures",
+                StartDate = "2021-04-06T05:15:00.000Z",
+                EndDate = "2021-04-06T07:45:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Update Sales Strategy Documents",
-                StartDate = new DateTime(2017, 5, 31, 9, 0, 0),
-                DueDate = new DateTime(2017, 5, 31, 10, 45, 0)
+            new EmployeeAppointment {
+                Text = "Update Sales Strategy Documents",
+                StartDate = "2021-05-05T06:00:00.000Z",
+                EndDate = "2021-05-05T07:45:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Non-Compete Agreements",
-                StartDate = new DateTime(2017, 5, 3, 8, 15, 0),
-                DueDate = new DateTime(2017, 5, 3, 9, 0, 0)
+            new EmployeeAppointment {
+                Text = "Non-Compete Agreements",
+                StartDate = "2021-04-07T05:15:00.000Z",
+                EndDate = "2021-04-07T06:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Approve Hiring of John Jeffers",
-                StartDate = new DateTime(2017, 5, 3, 10, 0, 0),
-                DueDate = new DateTime(2017, 5, 3, 11, 15, 0)
+            new EmployeeAppointment {
+                Text = "Approve Hiring of John Jeffers",
+                StartDate = "2021-04-07T07:00:00.000Z",
+                EndDate = "2021-04-07T08:15:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Update NDA Agreement",
-                StartDate = new DateTime(2017, 6, 1, 9, 45, 0),
-                DueDate = new DateTime(2017, 6, 1, 11, 45, 0)
+            new EmployeeAppointment {
+                Text = "Update NDA Agreement",
+                StartDate = "2021-05-05T06:45:00.000Z",
+                EndDate = "2021-05-05T08:45:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Update Employee Files with New NDA",
-                StartDate = new DateTime(2017, 6, 1, 12, 0, 0),
-                DueDate = new DateTime(2017, 6, 1, 14, 45, 0)
+            new EmployeeAppointment {
+                Text = "Update Employee Files with New NDA",
+                StartDate = "2021-05-05T09:00:00.000Z",
+                EndDate = "2021-05-05T11:45:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Submit Questions Regarding New NDA",
-                StartDate = new DateTime(2017, 5, 4, 8, 0, 0),
-                DueDate = new DateTime(2017, 5, 4, 9, 30, 0)
+            new EmployeeAppointment {
+                Text = "Submit Questions Regarding New NDA",
+                StartDate = "2021-04-08T05:00:00.000Z",
+                EndDate = "2021-04-08T06:30:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Submit Signed NDA",
-                StartDate = new DateTime(2017, 6, 5, 9, 45, 0),
-                DueDate = new DateTime(2017, 6, 5, 11, 0, 0)
+            new EmployeeAppointment {
+                Text = "Submit Signed NDA",
+                StartDate = "2021-05-09T06:45:00.000Z",
+                EndDate = "2021-05-09T08:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Review Revenue Projections",
-                StartDate = new DateTime(2017, 5, 4, 17, 15, 0),
-                DueDate = new DateTime(2017, 5, 4, 18, 0, 0)
+            new EmployeeAppointment {
+                Text = "Review Revenue Projections",
+                StartDate = "2021-04-08T14:15:00.000Z",
+                EndDate = "2021-04-08T15:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Comment on Revenue Projections",
-                StartDate = new DateTime(2017, 5, 5, 9, 15, 0),
-                DueDate = new DateTime(2017, 5, 5, 11, 15, 0)
+            new EmployeeAppointment {
+                Text = "Comment on Revenue Projections",
+                StartDate = "2021-04-09T06:15:00.000Z",
+                EndDate = "2021-04-09T08:15:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Provide New Health Insurance Docs",
-                StartDate = new DateTime(2017, 6, 6, 9, 15, 0),
-                DueDate = new DateTime(2017, 6, 6, 10, 45, 0)
+            new EmployeeAppointment {
+                Text = "Provide New Health Insurance Docs",
+                StartDate = "2021-05-10T06:15:00.000Z",
+                EndDate = "2021-05-10T07:45:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Review Changes to Health Insurance Coverage",
-                StartDate = new DateTime(2017, 6, 6, 10, 50, 0),
-                DueDate = new DateTime(2017, 6, 6, 12, 30, 0)
+            new EmployeeAppointment {
+                Text = "Review Changes to Health Insurance Coverage",
+                StartDate = "2021-05-10T07:50:00.000Z",
+                EndDate = "2021-05-10T09:30:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Review Training Course for any Ommissions",
-                StartDate = new DateTime(2017, 5, 8, 14, 0, 0),
-                DueDate = new DateTime(2017, 5, 9, 14, 0, 0)
+            new EmployeeAppointment {
+                Text = "Review Training Course for any Ommissions",
+                StartDate = "2021-04-12T11:00:00.000Z",
+                EndDate = "2021-04-13T11:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Recall Rebate Form",
-                StartDate = new DateTime(2017, 6, 7, 10, 0, 0),
-                DueDate = new DateTime(2017, 6, 7, 11, 15, 0)
+            new EmployeeAppointment {
+                Text = "Recall Rebate Form",
+                StartDate = "2021-05-11T07:00:00.000Z",
+                EndDate = "2021-05-11T08:15:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Create Report on Customer Feedback",
-                StartDate = new DateTime(2017, 5, 9, 15, 15, 0),
-                DueDate = new DateTime(2017, 5, 9, 17, 30, 0)
+            new EmployeeAppointment {
+                Text = "Create Report on Customer Feedback",
+                StartDate = "2021-04-13T12:15:00.000Z",
+                EndDate = "2021-04-13T14:30:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Review Customer Feedback Report",
-                StartDate = new DateTime(2017, 5, 9, 16, 15, 0),
-                DueDate = new DateTime(2017, 5, 9, 18, 30, 0)
+            new EmployeeAppointment {
+                Text = "Review Customer Feedback Report",
+                StartDate = "2021-04-13T13:15:00.000Z",
+                EndDate = "2021-04-13T15:30:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Customer Feedback Report Analysis",
-                StartDate = new DateTime(2017, 5, 10, 9, 30, 0),
-                DueDate = new DateTime(2017, 5, 10, 10, 30, 0)
+            new EmployeeAppointment {
+                Text = "Customer Feedback Report Analysis",
+                StartDate = "2021-04-14T06:30:00.000Z",
+                EndDate = "2021-04-14T07:30:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Prepare Shipping Cost Analysis Report",
-                StartDate = new DateTime(2017, 6, 8, 11, 30, 0),
-                DueDate = new DateTime(2017, 6, 8, 12, 30, 0)
+            new EmployeeAppointment {
+                Text = "Prepare Shipping Cost Analysis Report",
+                StartDate = "2021-05-12T08:30:00.000Z",
+                EndDate = "2021-05-12T09:30:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Provide Feedback on Shippers",
-                StartDate = new DateTime(2017, 6, 9, 10, 15, 0),
-                DueDate = new DateTime(2017, 6, 9, 12, 0, 0)
+            new EmployeeAppointment {
+                Text = "Provide Feedback on Shippers",
+                StartDate = "2021-05-13T07:15:00.000Z",
+                EndDate = "2021-05-13T09:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Select Preferred Shipper",
-                StartDate = new DateTime(2017, 6, 9, 12, 30, 0),
-                DueDate = new DateTime(2017, 6, 9, 14, 0, 0)
+            new EmployeeAppointment {
+                Text = "Select Preferred Shipper",
+                StartDate = "2021-05-13T09:30:00.000Z",
+                EndDate = "2021-05-13T11:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Complete Shipper Selection Form",
-                StartDate = new DateTime(2017, 6, 12, 8, 30, 0),
-                DueDate = new DateTime(2017, 6, 12, 10, 0, 0)
+            new EmployeeAppointment {
+                Text = "Complete Shipper Selection Form",
+                StartDate = "2021-05-16T05:30:00.000Z",
+                EndDate = "2021-05-16T07:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Upgrade Server Hardware",
-                StartDate = new DateTime(2017, 5, 11, 12, 0, 0),
-                DueDate = new DateTime(2017, 5, 11, 14, 15, 0)
+            new EmployeeAppointment {
+                Text = "Upgrade Server Hardware",
+                StartDate = "2021-04-15T09:00:00.000Z",
+                EndDate = "2021-04-15T11:15:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Upgrade Personal Computers",
-                StartDate = new DateTime(2017, 5, 11, 14, 45, 0),
-                DueDate = new DateTime(2017, 5, 11, 16, 30, 0)
+            new EmployeeAppointment {
+                Text = "Upgrade Personal Computers",
+                StartDate = "2021-04-15T11:45:00.000Z",
+                EndDate = "2021-04-15T13:30:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Upgrade Apps to Windows RT or stay with WinForms",
-                StartDate = new DateTime(2017, 5, 12, 10, 30, 0),
-                DueDate = new DateTime(2017, 5, 12, 13, 0, 0)
+            new EmployeeAppointment {
+                Text = "Upgrade Apps to Windows RT or stay with WinForms",
+                StartDate = "2021-04-16T07:30:00.000Z",
+                EndDate = "2021-04-16T10:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Estimate Time Required to Touch-Enable Apps",
-                StartDate = new DateTime(2017, 6, 13, 9, 45, 0),
-                DueDate = new DateTime(2017, 6, 13, 11, 0, 0)
+            new EmployeeAppointment {
+                Text = "Estimate Time Required to Touch-Enable Apps",
+                StartDate = "2021-05-17T06:45:00.000Z",
+                EndDate = "2021-05-17T08:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Report on Tranistion to Touch-Based Apps",
-                StartDate = new DateTime(2017, 6, 14, 11, 30, 0),
-                DueDate = new DateTime(2017, 6, 14, 12, 30, 0)
+            new EmployeeAppointment {
+                Text = "Report on Tranistion to Touch-Based Apps",
+                StartDate = "2021-05-18T08:30:00.000Z",
+                EndDate = "2021-05-18T09:30:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Submit New Website Design",
-                StartDate = new DateTime(2017, 5, 15, 8, 0, 0),
-                DueDate = new DateTime(2017, 5, 15, 10, 0, 0)
+            new EmployeeAppointment {
+                Text = "Submit New Website Design",
+                StartDate = "2021-04-19T05:00:00.000Z",
+                EndDate = "2021-04-19T07:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Create Icons for Website",
-                StartDate = new DateTime(2017, 6, 15, 11, 30, 0),
-                DueDate = new DateTime(2017, 6, 15, 13, 15, 0)
+            new EmployeeAppointment {
+                Text = "Create Icons for Website",
+                StartDate = "2021-05-19T08:30:00.000Z",
+                EndDate = "2021-05-19T10:15:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Create New Product Pages",
-                StartDate = new DateTime(2017, 5, 16, 9, 45, 0),
-                DueDate = new DateTime(2017, 5, 16, 11, 45, 0)
+            new EmployeeAppointment {
+                Text = "Create New Product Pages",
+                StartDate = "2021-04-20T06:45:00.000Z",
+                EndDate = "2021-04-20T08:45:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Approve Website Launch",
-                StartDate = new DateTime(2017, 6, 16, 12, 0, 0),
-                DueDate = new DateTime(2017, 6, 16, 15, 15, 0)
+            new EmployeeAppointment {
+                Text = "Approve Website Launch",
+                StartDate = "2021-05-20T09:00:00.000Z",
+                EndDate = "2021-05-20T12:15:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Update Customer Shipping Profiles",
-                StartDate = new DateTime(2017, 5, 17, 9, 30, 0),
-                DueDate = new DateTime(2017, 5, 17, 11, 0, 0)
+            new EmployeeAppointment {
+                Text = "Update Customer Shipping Profiles",
+                StartDate = "2021-04-21T06:30:00.000Z",
+                EndDate = "2021-04-21T08:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Create New Shipping Return Labels",
-                StartDate = new DateTime(2017, 5, 17, 12, 45, 0),
-                DueDate = new DateTime(2017, 5, 17, 14, 0, 0)
+            new EmployeeAppointment {
+                Text = "Create New Shipping Return Labels",
+                StartDate = "2021-04-21T09:45:00.000Z",
+                EndDate = "2021-04-21T11:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Get Design for Shipping Return Labels",
-                StartDate = new DateTime(2017, 5, 17, 15, 0, 0),
-                DueDate = new DateTime(2017, 5, 17, 16, 30, 0)
+            new EmployeeAppointment {
+                Text = "Get Design for Shipping Return Labels",
+                StartDate = "2021-04-21T12:00:00.000Z",
+                EndDate = "2021-04-21T13:30:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "PSD needed for Shipping Return Labels",
-                StartDate = new DateTime(2017, 5, 18, 8, 30, 0),
-                DueDate = new DateTime(2017, 5, 18, 9, 15, 0)
+            new EmployeeAppointment {
+                Text = "PSD needed for Shipping Return Labels",
+                StartDate = "2021-04-22T05:30:00.000Z",
+                EndDate = "2021-04-22T06:15:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Contact ISP and Discuss Payment Options",
-                StartDate = new DateTime(2017, 6, 19, 11, 30, 0),
-                DueDate = new DateTime(2017, 6, 19, 16, 0, 0)
+            new EmployeeAppointment {
+                Text = "Contact ISP and Discuss Payment Options",
+                StartDate = "2021-05-23T08:30:00.000Z",
+                EndDate = "2021-05-23T13:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Prepare Year-End Support Summary Report",
-                StartDate = new DateTime(2017, 6, 19, 10, 0, 0),
-                DueDate = new DateTime(2017, 6, 19, 12, 0, 0)
+            new EmployeeAppointment {
+                Text = "Prepare Year-End Support Summary Report",
+                StartDate = "2021-05-23T07:00:00.000Z",
+                EndDate = "2021-05-23T09:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Review New Training Material",
-                StartDate = new DateTime(2017, 5, 22, 8, 0, 0),
-                DueDate = new DateTime(2017, 5, 22, 9, 15, 0)
+            new EmployeeAppointment {
+                Text = "Review New Training Material",
+                StartDate = "2021-04-26T05:00:00.000Z",
+                EndDate = "2021-04-26T06:15:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Distribute Training Material to Support Staff",
-                StartDate = new DateTime(2017, 5, 19, 12, 45, 0),
-                DueDate = new DateTime(2017, 5, 19, 14, 0, 0)
+            new EmployeeAppointment {
+                Text = "Distribute Training Material to Support Staff",
+                StartDate = "2021-04-23T09:45:00.000Z",
+                EndDate = "2021-04-23T11:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Training Material Distribution Schedule",
-                StartDate = new DateTime(2017, 6, 20, 14, 15, 0),
-                DueDate = new DateTime(2017, 6, 20, 16, 15, 0)
+            new EmployeeAppointment {
+                Text = "Training Material Distribution Schedule",
+                StartDate = "2021-05-24T11:15:00.000Z",
+                EndDate = "2021-05-24T13:15:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Approval on Converting to New HDMI Specification",
-                StartDate = new DateTime(2017, 5, 29, 9, 30, 0),
-                DueDate = new DateTime(2017, 5, 29, 10, 15, 0)
+            new EmployeeAppointment {
+                Text = "Approval on Converting to New HDMI Specification",
+                StartDate = "2021-05-03T06:30:00.000Z",
+                EndDate = "2021-05-03T07:15:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Create New Spike for Automation Server",
-                StartDate = new DateTime(2017, 6, 21, 10, 0, 0),
-                DueDate = new DateTime(2017, 6, 21, 12, 30, 0)
+            new EmployeeAppointment {
+                Text = "Create New Spike for Automation Server",
+                StartDate = "2021-05-25T07:00:00.000Z",
+                EndDate = "2021-05-25T09:30:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Code Review - New Automation Server",
-                StartDate = new DateTime(2017, 6, 21, 13, 0, 0),
-                DueDate = new DateTime(2017, 6, 21, 15, 0, 0)
+            new EmployeeAppointment {
+                Text = "Code Review - New Automation Server",
+                StartDate = "2021-05-25T10:00:00.000Z",
+                EndDate = "2021-05-25T12:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Confirm Availability for Sales Meeting",
-                StartDate = new DateTime(2017, 5, 23, 10, 15, 0),
-                DueDate = new DateTime(2017, 5, 23, 15, 15, 0)
+            new EmployeeAppointment {
+                Text = "Confirm Availability for Sales Meeting",
+                StartDate = "2021-04-27T07:15:00.000Z",
+                EndDate = "2021-04-27T12:15:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Reschedule Sales Team Meeting",
-                StartDate = new DateTime(2017, 5, 24, 16, 15, 0),
-                DueDate = new DateTime(2017, 5, 24, 18, 0, 0)
+            new EmployeeAppointment {
+                Text = "Reschedule Sales Team Meeting",
+                StartDate = "2021-04-28T13:15:00.000Z",
+                EndDate = "2021-04-28T15:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Send 2 Remotes for Giveaways",
-                StartDate = new DateTime(2017, 6, 22, 9, 30, 0),
-                DueDate = new DateTime(2017, 6, 22, 11, 45, 0)
+            new EmployeeAppointment {
+                Text = "Send 2 Remotes for Giveaways",
+                StartDate = "2021-05-26T06:30:00.000Z",
+                EndDate = "2021-05-26T08:45:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Discuss Product Giveaways with Management",
-                StartDate = new DateTime(2017, 6, 23, 12, 15, 0),
-                DueDate = new DateTime(2017, 6, 23, 16, 45, 0)
+            new EmployeeAppointment {
+                Text = "Discuss Product Giveaways with Management",
+                StartDate = "2021-05-27T09:15:00.000Z",
+                EndDate = "2021-05-27T13:45:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Replace Desktops on the 3rd Floor",
-                StartDate = new DateTime(2017, 5, 25, 9, 30, 0),
-                DueDate = new DateTime(2017, 5, 25, 10, 45, 0)
+            new EmployeeAppointment {
+                Text = "Replace Desktops on the 3rd Floor",
+                StartDate = "2021-04-29T06:30:00.000Z",
+                EndDate = "2021-04-29T07:45:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Update Database with New Leads",
-                StartDate = new DateTime(2017, 6, 26, 12, 0, 0),
-                DueDate = new DateTime(2017, 6, 26, 14, 15, 0)
+            new EmployeeAppointment {
+                Text = "Update Database with New Leads",
+                StartDate = "2021-05-30T09:00:00.000Z",
+                EndDate = "2021-05-30T11:15:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Mail New Leads for Follow Up",
-                StartDate = new DateTime(2017, 6, 27, 14, 45, 0),
-                DueDate = new DateTime(2017, 6, 27, 15, 30, 0)
+            new EmployeeAppointment {
+                Text = "Mail New Leads for Follow Up",
+                StartDate = "2021-05-31T11:45:00.000Z",
+                EndDate = "2021-05-31T12:30:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Send Territory Sales Breakdown",
-                StartDate = new DateTime(2017, 5, 25, 18, 0, 0),
-                DueDate = new DateTime(2017, 5, 25, 20, 0, 0)
+            new EmployeeAppointment {
+                Text = "Send Territory Sales Breakdown",
+                StartDate = "2021-04-29T15:00:00.000Z",
+                EndDate = "2021-04-29T17:00:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Territory Sales Breakdown Report",
-                StartDate = new DateTime(2017, 5, 26, 8, 45, 0),
-                DueDate = new DateTime(2017, 5, 26, 9, 45, 0)
+            new EmployeeAppointment {
+                Text = "Territory Sales Breakdown Report",
+                StartDate = "2021-04-30T05:45:00.000Z",
+                EndDate = "2021-04-30T06:45:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Report on the State of Engineering Dept",
-                StartDate = new DateTime(2017, 5, 26, 14, 45, 0),
-                DueDate = new DateTime(2017, 5, 26, 15, 30, 0)
+            new EmployeeAppointment {
+                Text = "Report on the State of Engineering Dept",
+                StartDate = "2021-04-30T11:45:00.000Z",
+                EndDate = "2021-04-30T12:30:00.000Z"
             },
-            new EmployeeTask {
-                Subject = "Staff Productivity Report",
-                StartDate = new DateTime(2017, 6, 27, 16, 15, 0),
-                DueDate = new DateTime(2017, 6, 27, 19, 30, 0)
+            new EmployeeAppointment {
+                Text = "Staff Productivity Report",
+                StartDate = "2021-05-31T13:15:00.000Z",
+                EndDate = "2021-05-31T16:30:00.000Z"
             }
         };
     }

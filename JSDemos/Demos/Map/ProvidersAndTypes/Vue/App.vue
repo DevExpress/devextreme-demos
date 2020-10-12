@@ -17,7 +17,7 @@
     <div class="options">
       <div class="caption">Options</div>
       <div class="option">
-        <span>Map Type</span>
+        <span>Map Type </span>
         <DxSelectBox
           v-model:value="mapTypeValue"
           :data-source="mapTypes"
@@ -72,7 +72,7 @@ export default {
 
 .option > span {
     display: inline-block;
-    width: 100px;
+    width: 104px;
 }
 
 .option > .dx-selectbox {

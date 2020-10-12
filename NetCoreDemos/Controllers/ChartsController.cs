@@ -231,6 +231,11 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View();
         }
 
+        public ActionResult AxisLabelsTemplates()
+        {
+            return View();
+        }
+
         public ActionResult HoverMode() {
             return View();
         }

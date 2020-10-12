@@ -224,7 +224,7 @@ export default {
 .option > span {
     width: 50px;
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 14px;
 }
 
 .option > .dx-selectbox {

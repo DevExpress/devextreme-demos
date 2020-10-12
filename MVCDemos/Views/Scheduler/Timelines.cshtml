@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.EmployeeTask>
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.EmployeeAppointment>
 
 @(Html.DevExtreme().Scheduler()
     .DataSource(Model)
@@ -12,7 +12,7 @@
         SchedulerViewType.TimelineMonth
     })
     .CurrentView(SchedulerViewType.TimelineMonth)
-    .CurrentDate(new DateTime(2017, 5, 1))
+    .CurrentDate(new DateTime(2021, 2, 2))
     .FirstDayOfWeek(FirstDayOfWeek.Sunday)
     .StartDayHour(8)
     .EndDayHour(20)
