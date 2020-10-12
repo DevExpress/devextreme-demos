@@ -47,9 +47,8 @@ $(function () {
         onSaving: function(e) {
             var change = e.changes[0];
 
-            e.cancel = true;
-
             if (change) {
+                e.cancel = true;
                 loadPanel.show();
                 e.promise = saveChange(URL, change)
                     .always(() => { loadPanel.hide(); })

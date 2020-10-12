@@ -1,11 +1,11 @@
-import { NgModule, Component, OnInit, enableProdMode } from '@angular/core';
+import { NgModule, Component, OnInit, OnDestroy, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClientModule } from '@angular/common/http';
 
 import { DxDataGridModule, DxLoadPanelModule } from 'devextreme-angular';
 import { Service, Order, Change } from './app.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 if (!/localhost/.test(document.location.host)) {
     enableProdMode();
@@ -18,7 +18,8 @@ if (!/localhost/.test(document.location.host)) {
     providers: [Service],
     preserveWhitespaces: true
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
+    ordersSubscription: Subscription;
     orders$: Observable<Order[]>;
     changes: Change<Order>[] = [];
     editRowKey?: number = null;
@@ -32,7 +33,7 @@ export class AppComponent implements OnInit {
         this.orders$ = this.service.getOrders();
 
         this.isLoading = true;
-        this.orders$.subscribe(() => {
+        this.ordersSubscription = this.orders$.subscribe(() => {
             this.isLoading = false;
         });
     }
@@ -48,9 +49,8 @@ export class AppComponent implements OnInit {
     onSaving(e: any) {
         const change = e.changes[0];
 
-        e.cancel = true;
-
         if(change) {
+            e.cancel = true;
             e.promise = this.processSaving(change);
         }
     }
@@ -65,6 +65,10 @@ export class AppComponent implements OnInit {
         } finally {
             this.isLoading = false;
         }
+    }
+
+    ngOnDestroy() {
+        this.ordersSubscription.unsubscribe();
     }
 }
 

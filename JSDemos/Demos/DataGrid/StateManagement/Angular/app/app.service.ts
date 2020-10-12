@@ -33,7 +33,7 @@ export class Service {
     }
 
     getOrders(): Observable<Order[]> {
-        this.http.get(`${this.url}/Orders?skip=700`, { withCredentials: true }).subscribe((data) => {
+        this.http.get(`${this.url}/Orders?skip=700`, { withCredentials: true }).toPromise().then((data) => {
             this.orders$.next(data["data"]);
         });
 

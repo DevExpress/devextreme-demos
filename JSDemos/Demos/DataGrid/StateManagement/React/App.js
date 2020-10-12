@@ -13,6 +13,8 @@ const initialState = {
   isLoading: false
 };
 
+const loadPanelPosition = { of: '#gridContainer' };
+
 const App = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
@@ -23,8 +25,6 @@ const App = () => {
       data: change.data
     })), null, ' ');
   }, [state.changes]);
-
-  const loadPanelPosition = { of: '#gridContainer' };
 
   React.useEffect(() => {
     loadOrders(dispatch);
