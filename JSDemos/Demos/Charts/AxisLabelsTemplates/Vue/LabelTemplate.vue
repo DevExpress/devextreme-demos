@@ -27,7 +27,7 @@ export default {
     }
   },
   methods: {
-    getFilePath: (text) => `../../../../images/flags/3x2/${text.toLowerCase()}.svg`
+    getFilePath: (text) => `../../../../images/flags/3x2/${text.toLowerCase().replace(' ', '')}.svg`
   }
 };
 </script>
