@@ -432,7 +432,7 @@
     <Compile Include="Models\SampleData\PlannedTasks.cs" />
     <Compile Include="Models\SampleData\PopulationPyramidData.cs" />
     <Compile Include="Models\SampleData\PriorityResources.cs" />
-    <Compile Include="Models\SampleData\AdaptiveAppointments.cs" />
+    <Compile Include="Models\SampleData\LimitAppointmentCountPerCellAppointments.cs" />
     <Compile Include="Models\SampleData\RecurringAppointments.cs" />
     <Compile Include="Models\SampleData\AdaptiveAppointmentsResources.cs" />
     <Compile Include="Models\SampleData\RecurringAppointmentsResources.cs" />

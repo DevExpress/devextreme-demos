@@ -96,7 +96,7 @@ namespace DevExtreme.MVC.Demos.Controllers {
 
         public ActionResult LimitAppointmentCountPerCell() {
             return View(new LimitAppointmentCountPerCellModel {
-                Appointments = SampleData.AdaptiveAppointments,
+                Appointments = SampleData.LimitAppointmentCountPerCellAppointments,
                 Resources = SampleData.AdaptiveAppointmentsResources
             });
         }
