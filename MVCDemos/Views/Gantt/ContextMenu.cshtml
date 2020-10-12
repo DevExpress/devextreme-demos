@@ -5,9 +5,9 @@
     <div class="caption">Options</div>
     <div class="option">
         @(Html.DevExtreme().CheckBox()
+            .ID("preventContextMenuShowing")
             .Value(false)
             .Text("Prevent Context Menu Showing")
-            .OnValueChanged("preventContextMenuShowing_changed")
         )
     </div>
     <div class="option">
@@ -21,8 +21,6 @@
 
 @(Html.DevExtreme().Gantt<Task>()
     .ID("gantt")
-    .TaskTitlePosition(GanttTaskTitlePosition.Outside)
-    .ScaleType(GanttScaleType.Quarters)
     .Tasks(t => t
         .DataSource(ds => ds.Array().Data(SampleData.GanttTasks).Key("ID"))
         .KeyExpr("ID")
@@ -71,6 +69,7 @@
         i.Add().Name("ToggleDisplayOfResources").Text("Toggle Display of Resources");
         });
     })
+    .OnContextMenuPreparing("onContextMenuPreparing")
 
 )
 
@@ -79,9 +78,8 @@
         return $("#gantt").dxGantt("instance");
     }
 
-    function preventContextMenuShowing_changed(e) {
-        var ganttInstance = getGanttInstance();
-        ganttInstance.option("contextMenu.enabled", !e.value);
+    function onContextMenuPreparing(e) {
+        e.cancel = $("#preventContextMenuShowing").dxCheckBox("instance").option("value");
     }
 
     function customizeContextMenu_changed(e) {
