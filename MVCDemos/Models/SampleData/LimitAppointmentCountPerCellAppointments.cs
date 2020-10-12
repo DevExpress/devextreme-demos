@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DevExtreme.MVC.Demos.Models.SampleData {
     public partial class SampleData {
-        public static readonly IEnumerable<AdaptiveAppointment> AdaptiveAppointments = new[] {
+        public static readonly IEnumerable<AdaptiveAppointment> LimitAppointmentCountPerCellAppointments = new[] {
             new AdaptiveAppointment {
                 Text = "Google AdWords Strategy",
                 RoomId = 1,
