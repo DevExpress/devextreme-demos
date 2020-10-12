@@ -24,25 +24,24 @@ export class AppComponent {
     demoLocations: string[];
 
     constructor(service: Service) {
-        this.locations = service.getLocations();
-        this.dataSource = service.getData();
-        this.timezone = this.locations[0];
-        this.currentDate = this.currentDate;
         this.demoLocations = this.getLocations(this.currentDate)
+        this.dataSource = service.getData();
+        this.timezone = service.getLocations()[0];
+        this.currentDate = this.currentDate;
     }
 
     getLocations = (date) => {
         const timeZones = tzUtils.getTimeZones(date);
         return timeZones.filter((timeZone) => {
-            return this.locations.indexOf(timeZone.id) !== -1;
+            return service.getLocations().indexOf(timeZone.id) !== -1;
         });
     };
 
     onValueChanged(e: any) {
         this.timezone = e.value;
-      }
+    }
     
-      onAppointmentFormOpening(e: any) {
+    onAppointmentFormOpening(e: any) {
         const form = e.form;
     
         const startDateTimezoneEditor = form.getEditor('startDateTimeZone');
@@ -55,13 +54,13 @@ export class AppComponent {
 
         startDatedataSource.load();
         endDateDataSource.load();
-      }
+    }
 
-      onOptionChanged(e) {
+    onOptionChanged(e) {
         if(e.name === 'currentDate') { 
             this.demoLocations = this.getLocations(e.value);                      
         }
-      }
+    }
 }
 
 @NgModule({
