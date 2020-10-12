@@ -34,7 +34,11 @@
     .SearchPanel(searchPanel => searchPanel.Visible(true))
     .GroupPanel(groupPanel => groupPanel.Visible(true))
     .Paging(paging => paging.PageSize(10))
-    .DataSource(d => d.Mvc().Controller("DataGridCustomers").LoadAction("Get").Key("ID"))
+    .DataSource(d => d.Mvc()
+        .Controller("DataGridCustomers")
+        .LoadAction("Get")
+        .Key("ID")
+    )
 )
 
 <script>
