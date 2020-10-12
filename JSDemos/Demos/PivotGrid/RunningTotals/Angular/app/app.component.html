@@ -6,7 +6,8 @@
   [showColumnTotals]="false"
   [showBorders]="true"
   showTotalsPrior="rows"
-  [dataSource]="pivotGridDataSource">
+  [dataSource]="pivotGridDataSource"
+  (onCellPrepared)="onCellPrepared($event)">
   <dxo-field-chooser [enabled]="false"></dxo-field-chooser>
 </dx-pivot-grid>
 

@@ -1,8 +1,7 @@
 ﻿import React from 'react';
 
 import PivotGrid, {
-  FieldChooser,
-  Scrolling
+  FieldChooser
 } from 'devextreme-react/pivot-grid';
 import CheckBox from 'devextreme-react/check-box';
 
@@ -24,6 +23,14 @@ class App extends React.Component {
     dataSource.load();
   }
 
+  onCellPrepared(e) {
+    if(e.area === 'data' && e.cell.dataIndex === 2) {
+      e.cellElement.style.color = e.cell.value < 0
+        ? 'red'
+        : 'green';
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -36,9 +43,9 @@ class App extends React.Component {
           allowExpandAll={true}
           showBorders={true}
           showTotalsPrior="rows"
-          showColumnTotals={false}>
+          showColumnTotals={false}
+          onCellPrepared={this.onCellPrepared}>
           <FieldChooser enabled={false} />
-          <Scrolling mode="virtual" />
         </PivotGrid>
         <CheckBox
           value={this.state.allowCrossGroupCalculation}
@@ -64,15 +71,19 @@ const dataSource = new PivotGridDataSource({
   }, {
     dataField: 'date',
     dataType: 'date',
-    area: 'column'
-  }, {
-    groupName: 'date',
     groupInterval: 'year',
+    area: 'column',
     expanded: true
   }, {
-    groupName: 'date',
-    groupInterval: 'month',
-    visible: false
+    area: 'column',
+    expanded: true,
+    selector: function({date}) {
+      var currDate = new Date(date);
+      var currMonth = currDate.getMonth();
+      return currMonth <= 5
+        ? 'H1'
+        : 'H2';
+    }
   }, {
     caption: 'Total',
     dataField: 'amount',
@@ -89,6 +100,20 @@ const dataSource = new PivotGridDataSource({
     area: 'data',
     runningTotal: 'row',
     allowCrossGroupCalculation: true
+  }, {
+    caption: 'Profit/Loss',
+    dataType: 'number',
+    format: 'currency',
+    area: 'data',
+    calculateSummaryValue: function(summaryCell) {
+      const prevCell = summaryCell.prev('column', true);
+      if(prevCell) {
+        const prevVal = prevCell.value('Total');
+        const currVal = summaryCell.value('Total');
+        return currVal - prevVal;
+      }
+      return null;
+    }
   }],
   store: sales
 });

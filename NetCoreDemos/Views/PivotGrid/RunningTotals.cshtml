@@ -10,6 +10,7 @@
     .ShowTotalsPrior(PivotGridTotalsDisplayMode.Rows)
     .ShowBorders(true)
     .FieldChooser(c => c.Enabled(false))
+    .OnCellPrepared("cellPrepared")
     .DataSource(d => d
         .Store(s => s.Mvc().Controller("PivotGridData").LoadAction("Get"))
         .Fields(fields => {
@@ -22,17 +23,14 @@
                 .Area(PivotGridArea.Row);
 
             fields.AddFor(m => m.Date)
-                .Area(PivotGridArea.Column);
-
-            fields.Add()
-                .GroupName("Date")
+                .Area(PivotGridArea.Column)
                 .GroupInterval(PivotGridGroupInterval.Year)
                 .Expanded(true);
 
             fields.Add()
-                .GroupName("Date")
-                .GroupInterval(PivotGridGroupInterval.Month)
-                .Visible(false);
+                .Area(PivotGridArea.Column)
+                .Expanded(true)
+                .Selector("halfYearSelector");
 
             fields.AddFor(m => m.Amount)
                 .SummaryType(SummaryType.Sum)
@@ -46,6 +44,13 @@
                 .Format(Format.Currency)
                 .RunningTotal(PivotGridRunningTotalMode.Row)
                 .AllowCrossGroupCalculation(true);
+
+            fields.Add()
+                .Caption("Profit/Loss")
+                .Area(PivotGridArea.Data)
+                .DataType(PivotGridDataType.Number)
+                .Format(Format.Currency)
+                .CalculateSummaryValue("calculateProfitValue");
         })
     )
 )
@@ -62,5 +67,31 @@
 
         pivotGridDataSource.field(6, { allowCrossGroupCalculation: e.value });
         pivotGridDataSource.load();
+    }
+
+    function halfYearSelector(item) {
+        var currDate = new Date(item.Date);
+        var currMonth = currDate.getMonth();
+        return currMonth <= 5
+            ? "H1"
+            : "H2";
+    }
+
+    function calculateProfitValue(summaryCell) {
+        var prevCell = summaryCell.prev('column', true);
+        if (prevCell) {
+            var prevVal = prevCell.value("Total");
+            var currVal = summaryCell.value("Total");
+            return currVal - prevVal;
+        }
+        return null;
+    }
+
+    function cellPrepared(e) {
+        if (e.area === "data" && e.cell.dataIndex === 2) {
+            e.cellElement[0].style.color = e.cell.value < 0
+                ? "red"
+                : "green";
+        }
     }
 </script>

@@ -34,15 +34,19 @@ export class AppComponent {
             }, {
                 dataField: "date",
                 dataType: "date",
-                area: "column"
-            }, {
-                groupName: "date",
                 groupInterval: "year",
+                area: "column",
                 expanded: true
             }, {
-                groupName: "date",
-                groupInterval: "month",
-                visible: false
+                area: "column",
+                expanded: true,
+                selector: function({date}) {
+                    const currDate = new Date(date);
+                    const currMonth = currDate.getMonth();
+                    return currMonth <= 5
+                        ? "H1"
+                        : "H2";
+                }
             }, {
                 caption: "Total",
                 dataField: "amount",
@@ -59,9 +63,31 @@ export class AppComponent {
                 area: "data",
                 runningTotal: "row",
                 allowCrossGroupCalculation: true
+            }, {
+                caption: "Profit/Loss",
+                dataType: "number",
+                format: "currency",
+                area: "data",
+                calculateSummaryValue: function(summaryCell) {
+                    const prevCell = summaryCell.prev('column', true);
+                    if(prevCell) {
+                        const prevVal = prevCell.value("Total");
+                        const currVal = summaryCell.value("Total");
+                        return currVal - prevVal;
+                    }
+                    return null;
+                }
             }],
             store: service.getSales()
         });
+    }
+
+    onCellPrepared(e) {
+        if(e.area === "data" && e.cell.dataIndex === 2) {
+            e.cellElement.style.color = e.cell.value < 0
+                ? "red"
+                : "green";
+        }
     }
 
     checkBoxChanged(e) {
