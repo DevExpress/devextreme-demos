@@ -1,0 +1,35 @@
+<div class="widget-container flexbox">
+    <span>Profile Picture</span>
+    <div id="dropzone-external" class="flexbox" [ngClass]="isDropZoneActive ? ['dx-theme-accent-as-border-color', 'dropzone-active'] : ['dx-theme-border-color']">
+        <img id="dropzone-image" [src]="imageSource" [hidden]="!imageSource" alt=""  />
+        <div id="dropzone-text" class="flexbox">
+            <span>Drag & Drop the desired file</span>
+            <span>…or click to browse for a file instead.</span>
+        </div>
+        <dx-progress-bar
+            #uploadProgress
+            [min]="0"
+            [max]="100"
+            width="30%"
+            [showStatus]="false"
+            [visible]="progressVisible"
+            [value]="progressValue"
+        ></dx-progress-bar>
+    </div>
+    <dx-file-uploader
+        #fileUploader
+        dialogTrigger="#dropzone-external"
+		dropZone="#dropzone-external"
+        [multiple]="false"
+		[allowedFileExtensions]="['.jpg', '.jpeg', '.gif', '.png']"
+        uploadMode="instantly"
+        uploadUrl="https://js.devexpress.com/Content/Services/upload.aspx"
+		uploadUrl="https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/ChunkUpload"
+		[visible]="false"
+		(onDropZoneEnter)="onDropZoneEnter($event)"
+		(onDropZoneLeave)="onDropZoneLeave($event)"
+		(onUploaded)="onUploaded($event)"
+		(onProgress)="onProgress($event)"
+		(onUploadStarted)="onUploadStarted($event)"
+    ></dx-file-uploader>
+</div>
