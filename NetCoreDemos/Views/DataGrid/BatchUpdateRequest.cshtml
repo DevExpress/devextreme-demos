@@ -32,7 +32,7 @@
 
         if (e.changes.length) {
             e.promise = sendBatchRequest('@Url.RouteUrl(new { controller = "DataGridBatchUpdateWebApi", action = "Batch" })', e.changes).done(() => {
-                e.component.refresh().done(() => {
+                e.component.refresh(true).done(() => {
                     e.component.cancelEditData();
                 });
             });

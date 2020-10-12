@@ -314,7 +314,7 @@
             ]
           },
           {
-            "Title": "Batch Update Request (CTP)",
+            "Title": "Batch Update Request",
             "Name": "BatchUpdateRequest",
             "DocUrl": "",
             "Widget": "DataGrid",

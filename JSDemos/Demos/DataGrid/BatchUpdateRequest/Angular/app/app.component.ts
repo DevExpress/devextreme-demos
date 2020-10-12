@@ -15,11 +15,10 @@ const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridBatchUpdateWebApi';
 @Component({
     selector: 'demo-app',
     templateUrl: 'app/app.component.html',
-    styleUrls: ['app/app.component.css'],
-    preserveWhitespaces: true
+    styleUrls: ['app/app.component.css']
 })
 export class AppComponent {
-    ordersStore: any = [];
+    ordersStore: any;
 
     constructor(private http: HttpClient) {
         this.ordersStore = AspNetData.createStore({
@@ -46,7 +45,7 @@ export class AppComponent {
                 'Content-Type': 'application/json'
             }
         }).toPromise();
-        await component.refresh();
+        await component.refresh(true);
         component.cancelEditData();
     }
 }

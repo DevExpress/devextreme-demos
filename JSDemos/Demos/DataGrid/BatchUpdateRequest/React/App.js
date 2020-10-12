@@ -32,7 +32,7 @@ const sendBatchRequest = async (url, changes) => {
 
 const processBatchRequest = async (url, changes, component) => {
   await sendBatchRequest(url, changes);
-  await component.refresh();
+  await component.refresh(true);
   component.cancelEditData();
 };
 

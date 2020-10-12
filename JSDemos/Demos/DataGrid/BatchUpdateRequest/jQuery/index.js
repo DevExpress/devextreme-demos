@@ -23,7 +23,7 @@ $(function () {
 
             if (e.changes.length) {
                 e.promise = sendBatchRequest(URL + "/Batch", e.changes).done(() => {
-                    e.component.refresh().done(() => {
+                    e.component.refresh(true).done(() => {
                         e.component.cancelEditData();
                     });
                 });
