@@ -22,11 +22,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="widget-container dx-theme-marker flexbox">
+      <div className="widget-container dx-theme-marker flex-box">
         <span>Profile Picture</span>
-        <div id="dropzone-external" className={`flexbox ${this.state.isDropZoneActive ? 'dx-theme-accent-as-border-color dropzone-active' : 'dx-theme-border-color'}`}>
+        <div id="dropzone-external" className={`flex-box ${this.state.isDropZoneActive ? 'dx-theme-accent-as-border-color dropzone-active' : 'dx-theme-border-color'}`}>
           <img id="dropzone-image" src={this.state.imageSource} hidden={!this.state.imageSource} alt="" />
-          <div id="dropzone-text" className="flexbox">
+          <div id="dropzone-text" className="flex-box">
             <span>Drag & Drop the desired file</span>
             <span>…or click to browse for a file instead.</span>
           </div>

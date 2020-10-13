@@ -1,9 +1,9 @@
 <template>
-  <div class="widget-container dx-theme-marker flexbox">
+  <div class="widget-container dx-theme-marker flex-box">
     <span>Profile Picture</span>
     <div
       id="dropzone-external"
-      class="flexbox"
+      class="flex-box"
       :class="[isDropZoneActive ? 'dx-theme-accent-as-border-color dropzone-active' : 'dx-theme-border-color']"
     >
       <img
@@ -14,7 +14,7 @@
       >
       <div
         id="dropzone-text"
-        class="flexbox"
+        class="flex-box"
       >
         <span>Drag & Drop the desired file</span>
         <span>…or click to browse for a file instead.</span>
@@ -129,7 +129,7 @@ export default {
 	display: flex;
 	margin-top: 10px;
 }
-.flexbox {
+.flex-box {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
