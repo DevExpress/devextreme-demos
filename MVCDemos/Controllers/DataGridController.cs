@@ -279,5 +279,9 @@ namespace DevExtreme.MVC.Demos.Controllers {
         public ActionResult BatchUpdateRequest() {
             return View();
         }
+
+        public ActionResult StateManagement() {
+            return View();
+        }
     }
 }

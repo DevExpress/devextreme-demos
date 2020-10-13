@@ -645,6 +645,7 @@
     <Content Include="Content\DemosStyles\DataGrid\DnDBetweenGrids.css" />
     <Content Include="Content\DemosStyles\DataGrid\LocalReordering.css" />
     <Content Include="Content\DemosStyles\DataGrid\ExportToPDF.css" />
+    <Content Include="Content\DemosStyles\DataGrid\StateManagement.css" />
     <Content Include="Content\DemosStyles\Diagram\AdvancedDataBinding.css" />
     <Content Include="Content\DemosStyles\Diagram\Containers.css" />
     <Content Include="Content\DemosStyles\Diagram\CustomShapesWithIcons.css" />
@@ -2150,6 +2151,7 @@
     <Content Include="Views\Gantt\ContextMenu.cshtml" />
     <Content Include="Views\Charts\AxisLabelsTemplates.cshtml" />
     <Content Include="Views\DataGrid\BatchUpdateRequest.cshtml" />
+    <Content Include="Views\DataGrid\StateManagement.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
