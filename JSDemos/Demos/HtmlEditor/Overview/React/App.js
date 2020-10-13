@@ -23,7 +23,7 @@ class App extends React.Component {
       <div className="widget-container">
         <HtmlEditor
           height="725px"
-          defaultValue={markup}  
+          defaultValue={markup}
         >
           <MediaResizing enabled={true} />
           <Toolbar multiline={this.state.isMultiline}>
