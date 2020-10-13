@@ -1,9 +1,21 @@
 <template>
   <div class="widget-container dx-theme-marker flexbox">
     <span>Profile Picture</span>
-    <div id="dropzone-external" class="flexbox" v-bind:class="[isDropZoneActive ? 'dx-theme-accent-as-border-color dropzone-active' : 'dx-theme-border-color']">
-      <img id="dropzone-image" v-bind:src="imageSource" v-bind:hidden="!imageSource" alt="" />
-      <div id="dropzone-text" class="flexbox">
+    <div
+      id="dropzone-external"
+      class="flexbox"
+      :class="[isDropZoneActive ? 'dx-theme-accent-as-border-color dropzone-active' : 'dx-theme-border-color']"
+    >
+      <img
+        id="dropzone-image"
+        :src="imageSource"
+        :hidden="!imageSource"
+        alt=""
+      >
+      <div
+        id="dropzone-text"
+        class="flexbox"
+      >
         <span>Drag & Drop the desired file</span>
         <span>…or click to browse for a file instead.</span>
       </div>
@@ -12,27 +24,27 @@
         :min="0"
         :max="100"
         width="30%"
-        :showStatus="false"
+        :show-status="false"
         :visible="progressVisible"
         :value="progressValue"
-      ></DxProgressBar>
+      />
     </div>
     <DxFileUploader
       ref="uploader"
       id="file-uploader"
-      dialogTrigger="#dropzone-external"
-      dropZone="#dropzone-external"
+      dialog-trigger="#dropzone-external"
+      drop-zone="#dropzone-external"
       :multiple="false"
-      :allowedFileExtensions="['.jpg', '.jpeg', '.gif', '.png']"
-      uploadMode="instantly"
-      uploadUrl="https://js.devexpress.com/Content/Services/upload.aspx"
+      :allowed-file-extensions="['.jpg', '.jpeg', '.gif', '.png']"
+      upload-mode="instantly"
+      upload-url="https://js.devexpress.com/Content/Services/upload.aspx"
       :visible="false"
       @drop-zone-enter="onDropZoneEnter"
       @drop-zone-leave="onDropZoneLeave"
       @uploaded="onUploaded"
       @progress="onProgress"
       @upload-started="onUploadStarted"
-    ></DxFileUploader>
+    />
   </div>
 </template>
 <script>
@@ -47,31 +59,31 @@ export default {
   data() {
     return {
       isDropZoneActive: false,
-      imageSource: "#",
+      imageSource: '#',
       progressVisible: false,
       progressValue: 0
     };
   },
   methods: {
     onDropZoneEnter(e) {
-      if(e.dropZoneElement.id === "dropzone-external")
-        this.isDropZoneActive = true;
+      if(e.dropZoneElement.id === 'dropzone-external')
+      { this.isDropZoneActive = true; }
       console.log(this.$refs.uploader.instance);
     },
     onDropZoneLeave(e) {
-      if(e.dropZoneElement.id === "dropzone-external")
-        this.isDropZoneActive = false;
+      if(e.dropZoneElement.id === 'dropzone-external')
+      { this.isDropZoneActive = false; }
     },
     onUploaded(e) {
       const file = e.file;
-      const dropZoneText = document.getElementById("dropzone-text");
+      const dropZoneText = document.getElementById('dropzone-text');
       const fileReader = new FileReader();
       fileReader.onload = () => {
         this.isDropZoneActive = false;
         this.imageSource = fileReader.result;
-      }
+      };
       fileReader.readAsDataURL(file);
-      dropZoneText.style.display = "none";
+      dropZoneText.style.display = 'none';
       this.progressVisible = false;
       this.progressValue = 0;
     },
@@ -79,7 +91,7 @@ export default {
       this.progressValue = e.bytesLoaded / e.bytesTotal * 100;
     },
     onUploadStarted() {
-      this.imageSource = "";
+      this.imageSource = '';
       this.progressVisible = true;
     }
   }

@@ -1,6 +1,6 @@
-﻿import React from "react";
-import FileUploader from "devextreme-react/file-uploader";
-import ProgressBar from "devextreme-react/progress-bar";
+﻿import React from 'react';
+import FileUploader from 'devextreme-react/file-uploader';
+import ProgressBar from 'devextreme-react/progress-bar';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,7 +8,7 @@ class App extends React.Component {
 
     this.state = {
       isDropZoneActive: false,
-      imageSource: "#",
+      imageSource: '#',
       progressVisible: false,
       progressValue: 0
     };
@@ -24,7 +24,7 @@ class App extends React.Component {
     return (
       <div className="widget-container dx-theme-marker flexbox">
         <span>Profile Picture</span>
-        <div id="dropzone-external" className={`flexbox ${this.state.isDropZoneActive ? "dx-theme-accent-as-border-color dropzone-active" : "dx-theme-border-color"}`}>
+        <div id="dropzone-external" className={`flexbox ${this.state.isDropZoneActive ? 'dx-theme-accent-as-border-color dropzone-active' : 'dx-theme-border-color'}`}>
           <img id="dropzone-image" src={this.state.imageSource} hidden={!this.state.imageSource} alt="" />
           <div id="dropzone-text" className="flexbox">
             <span>Drag & Drop the desired file</span>
@@ -45,7 +45,7 @@ class App extends React.Component {
           dialogTrigger="#dropzone-external"
           dropZone="#dropzone-external"
           multiple={false}
-          allowedFileExtensions={[".jpg", ".jpeg", ".gif", ".png"]}
+          allowedFileExtensions={['.jpg', '.jpeg', '.gif', '.png']}
           uploadMode="instantly"
           uploadUrl="https://js.devexpress.com/Content/Services/upload.aspx"
           visible={false}
@@ -60,36 +60,38 @@ class App extends React.Component {
   }
 
   onDropZoneEnter(e) {
-    if(e.dropZoneElement.id === "dropzone-external")
-      this.setState({isDropZoneActive: true});
+    if(e.dropZoneElement.id === 'dropzone-external') {
+      this.setState({ isDropZoneActive: true });
+    }
   }
 
   onDropZoneLeave(e) {
-    if(e.dropZoneElement.id === "dropzone-external")
-      this.setState({isDropZoneActive: false});
+    if(e.dropZoneElement.id === 'dropzone-external') {
+      this.setState({ isDropZoneActive: false });
+    }
   }
 
   onUploaded(e) {
     const file = e.file;
-    const dropZoneText = document.getElementById("dropzone-text");
+    const dropZoneText = document.getElementById('dropzone-text');
     const fileReader = new FileReader();
     fileReader.onload = () => {
-      this.setState({isDropZoneActive: false});
-      this.setState({imageSource: fileReader.result});
-    }
+      this.setState({ isDropZoneActive: false });
+      this.setState({ imageSource: fileReader.result });
+    };
     fileReader.readAsDataURL(file);
-    dropZoneText.style.display = "none";
-    this.setState({progressVisible: false});
-    this.setState({progressValue: 0});
+    dropZoneText.style.display = 'none';
+    this.setState({ progressVisible: false });
+    this.setState({ progressValue: 0 });
   }
 
   onProgress(e) {
-    this.setState({progressValue: e.bytesLoaded / e.bytesTotal * 100});
+    this.setState({ progressValue: e.bytesLoaded / e.bytesTotal * 100 });
   }
 
   onUploadStarted() {
-    this.setState({imageSource: ""});
-    this.setState({progressVisible: true});
+    this.setState({ imageSource: '' });
+    this.setState({ progressVisible: true });
   }
 }
 
