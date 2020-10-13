@@ -1,6 +1,6 @@
 Annotations are images and text blocks that provide additional information about the visualized data.
 
-To configure annotations, assign an array of objects to the [annotations](/Documentation/ApiReference/Data_Visualization_Widgets/dxVectorMap/Configuration/annotations/) option. To specify settings for all annotations, use the [commonAnnotationSettings](/Documentation/ApiReference/Data_Visualization_Widgets/dxVectorMap/Configuration/commonAnnotationSettings/) object. Individual settings take precedence over common settings.
+To configure individual annotations, assign an array of objects to the [annotations](/Documentation/ApiReference/Data_Visualization_Widgets/dxVectorMap/Configuration/annotations/) option. To specify settings for all annotations, use the [commonAnnotationSettings](/Documentation/ApiReference/Data_Visualization_Widgets/dxVectorMap/Configuration/commonAnnotationSettings/) object. Individual settings take precedence over common settings.
 
 Each annotation's [type](/Documentation/ApiReference/Data_Visualization_Widgets/dxVectorMap/Configuration/annotations/#type) attribute should be set to *"text"*, *"image"* or *"custom"*. In this demo, the type of annotations is *"custom"*.
 
