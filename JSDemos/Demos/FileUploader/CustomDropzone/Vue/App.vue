@@ -66,13 +66,14 @@ export default {
   },
   methods: {
     onDropZoneEnter(e) {
-      if(e.dropZoneElement.id === 'dropzone-external')
-      { this.isDropZoneActive = true; }
-      console.log(this.$refs.uploader.instance);
+      if(e.dropZoneElement.id === 'dropzone-external') {
+        this.isDropZoneActive = true;
+      }
     },
     onDropZoneLeave(e) {
-      if(e.dropZoneElement.id === 'dropzone-external')
-      { this.isDropZoneActive = false; }
+      if(e.dropZoneElement.id === 'dropzone-external') {
+        this.isDropZoneActive = false;
+      }
     },
     onUploaded(e) {
       const file = e.file;
