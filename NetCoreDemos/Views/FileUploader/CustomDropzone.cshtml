@@ -1,0 +1,83 @@
+﻿<div class="widget-container dx-theme-marker flex-box">
+    <span>Profile Picture</span>
+    <div id="dropzone-external" class="flex-box dx-theme-border-color">
+        <img id="dropzone-image" src="#" hidden alt="" onload="toggleImageVisible(true)" />
+        <div id="dropzone-text" class="flex-box">
+            <span>Drag & Drop the desired file</span>
+            <span>…or click to browse for a file instead.</span>
+        </div>
+        @(Html.DevExtreme().ProgressBar()
+            .ID("upload-progress")
+            .Min(0)
+            .Max(100)
+            .Width("30%")
+            .ShowStatus(false)
+            .Visible(false)
+        )
+    </div>
+    @(Html.DevExtreme().FileUploader()
+        .DialogTrigger("#dropzone-external")
+        .DropZone("#dropzone-external")
+        .ID("file-uploader")
+        .Multiple(false)
+        .AllowedFileExtensions(new[] { ".jpg", ".jpeg", ".gif", ".png" })
+        .UploadMode(FileUploadMode.Instantly)
+        .UploadUrl(Url.Action("Upload", "FileUploader"))
+        .Visible(false)
+        .OnDropZoneEnter("fileUploader_dropZoneEnter")
+        .OnDropZoneLeave("fileUploader_dropZoneLeave")
+        .OnUploaded("fileUploader_uploaded")
+        .OnProgress("fileUploader_progress")
+        .OnUploadStarted("fileUploader_uploadStarted")
+    )
+</div>
+
+<script>
+    function getProgressBarInstance() {
+        return $("#upload-progress").dxProgressBar("instance");
+    }
+
+    function fileUploader_dropZoneEnter(e) {
+        if(e.dropZoneElement.id === "dropzone-external")
+            toggleDropZoneActive(e.dropZoneElement, true);
+    }
+
+    function fileUploader_dropZoneLeave(e) {
+        if(e.dropZoneElement.id === "dropzone-external")
+            toggleDropZoneActive(e.dropZoneElement, false);
+    }
+
+    function fileUploader_uploaded(e) {
+        const file = e.file;
+        const fileReader = new FileReader();
+        fileReader.onload = function() {
+            toggleDropZoneActive($("#dropzone-external")[0], false);
+            $("#dropzone-image")[0].src = fileReader.result;
+        }
+        fileReader.readAsDataURL(file);
+        $("#dropzone-text")[0].style.display = "none";
+        getProgressBarInstance().option({
+            visible: false,
+            value: 0
+        });
+    }
+
+    function fileUploader_progress(e) {
+        getProgressBarInstance().option("value", e.bytesLoaded / e.bytesTotal * 100);
+    }
+
+    function fileUploader_uploadStarted() {
+        toggleImageVisible(false);
+        getProgressBarInstance().option("visible", true);
+    }
+
+    function toggleDropZoneActive(dropZone, isActive) {
+        dropZone.classList.toggle("dx-theme-accent-as-border-color", isActive);
+        dropZone.classList.toggle("dx-theme-border-color", !isActive);
+        dropZone.classList.toggle("dropzone-active", isActive);
+    }
+
+    function toggleImageVisible(visible) {
+        $("#dropzone-image")[0].hidden = !visible;
+    }
+</script>
