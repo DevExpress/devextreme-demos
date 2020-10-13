@@ -1,8 +1,20 @@
-<div class="widget-container dx-theme-marker flexbox">
+<div class="widget-container dx-theme-marker flex-box">
     <span>Profile Picture</span>
-    <div id="dropzone-external" class="flexbox" [ngClass]="isDropZoneActive ? ['dx-theme-accent-as-border-color', 'dropzone-active'] : ['dx-theme-border-color']">
-        <img id="dropzone-image" [src]="imageSource" [hidden]="!imageSource" alt="" />
-        <div id="dropzone-text" class="flexbox">
+    <div
+        id="dropzone-external"
+        class="flex-box"
+        [ngClass]="isDropZoneActive ? ['dx-theme-accent-as-border-color', 'dropzone-active'] : ['dx-theme-border-color']"
+    >
+        <img
+            id="dropzone-image"
+            [src]="imageSource"
+            [hidden]="!imageSource"
+            alt=""
+        />
+        <div
+            id="dropzone-text"
+            class="flex-box"
+        >
             <span>Drag & Drop the desired file</span>
             <span>…or click to browse for a file instead.</span>
         </div>
@@ -19,16 +31,16 @@
     <dx-file-uploader
         #fileUploader
         dialogTrigger="#dropzone-external"
-		dropZone="#dropzone-external"
+        dropZone="#dropzone-external"
         [multiple]="false"
-		[allowedFileExtensions]="['.jpg', '.jpeg', '.gif', '.png']"
+        [allowedFileExtensions]="['.jpg', '.jpeg', '.gif', '.png']"
         uploadMode="instantly"
         uploadUrl="https://js.devexpress.com/Content/Services/upload.aspx"
-		[visible]="false"
-		(onDropZoneEnter)="onDropZoneEnter($event)"
-		(onDropZoneLeave)="onDropZoneLeave($event)"
-		(onUploaded)="onUploaded($event)"
-		(onProgress)="onProgress($event)"
-		(onUploadStarted)="onUploadStarted($event)"
+        [visible]="false"
+        (onDropZoneEnter)="onDropZoneEnter($event)"
+        (onDropZoneLeave)="onDropZoneLeave($event)"
+        (onUploaded)="onUploaded($event)"
+        (onProgress)="onProgress($event)"
+        (onUploadStarted)="onUploadStarted($event)"
     ></dx-file-uploader>
 </div>
