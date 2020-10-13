@@ -4726,7 +4726,6 @@
       {
         "Name": "File Manager",
         "Equivalents": "dxFileManager, dx-file-manager",
-        "Badge": "New",
         "Groups": [
           {
             "Name": "Overview",
@@ -4874,6 +4873,7 @@
           {
             "Title": "Custom Dropzone",
             "Name": "CustomDropzone",
+            "Badge": "New",
             "DocUrl": "",
             "Widget": "FileUploader"
           }
