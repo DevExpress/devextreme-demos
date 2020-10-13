@@ -30,7 +30,6 @@
       />
     </div>
     <DxFileUploader
-      ref="uploader"
       id="file-uploader"
       dialog-trigger="#dropzone-external"
       drop-zone="#dropzone-external"
