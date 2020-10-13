@@ -10,9 +10,7 @@ jobs:
     timeout-minutes: 60
 
     steps:
-      - shell: cmd
-
-      - name: Checkout code
+      - name: Get sources
         uses: actions/checkout@v2
 
       - name: Run npm install
