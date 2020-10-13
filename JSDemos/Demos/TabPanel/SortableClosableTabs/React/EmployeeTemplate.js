@@ -27,14 +27,14 @@ class EmployeeTemplate extends React.Component {
           {`${FirstName} ${LastName}'s Tasks:`}
         </div>
         <div className="task-list">
-            <List
-              dataSource={this.tasks}
-              showSelectionControls={true}
-              selectedItems={this.getCompletedTasks()}
-              disabled={true}
-              selectionMode="multiple"
-              itemRender={ItemTemplate}>
-            </List>
+          <List
+            dataSource={this.tasks}
+            showSelectionControls={true}
+            selectedItems={this.getCompletedTasks()}
+            disabled={true}
+            selectionMode="multiple"
+            itemRender={ItemTemplate}>
+          </List>
         </div>
       </React.Fragment>
     );
