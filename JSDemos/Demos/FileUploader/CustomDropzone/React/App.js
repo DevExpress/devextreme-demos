@@ -48,7 +48,6 @@ class App extends React.Component {
           allowedFileExtensions={[".jpg", ".jpeg", ".gif", ".png"]}
           uploadMode="instantly"
           uploadUrl="https://js.devexpress.com/Content/Services/upload.aspx"
-          uploadUrl="https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/ChunkUpload"
           visible={false}
           onDropZoneEnter={this.onDropZoneEnter}
           onDropZoneLeave={this.onDropZoneLeave}

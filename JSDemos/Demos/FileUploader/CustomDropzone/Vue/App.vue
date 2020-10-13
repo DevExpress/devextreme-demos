@@ -25,7 +25,7 @@
       :multiple="false"
       :allowedFileExtensions="['.jpg', '.jpeg', '.gif', '.png']"
       uploadMode="instantly"
-      uploadUrl="https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/ChunkUpload"
+      uploadUrl="https://js.devexpress.com/Content/Services/upload.aspx"
       :visible="false"
       @drop-zone-enter="onDropZoneEnter"
       @drop-zone-leave="onDropZoneLeave"

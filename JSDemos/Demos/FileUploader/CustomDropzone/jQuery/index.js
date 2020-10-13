@@ -3,7 +3,7 @@ $(function(){
 		dialogTrigger: "#dropzone-external",
 		dropZone: "#dropzone-external",
         multiple: false,
-        accept: "image/*",
+        allowedFileExtensions: [".jpg", ".jpeg", ".gif", ".png"],
         uploadMode: "instantly",
 		uploadUrl: "https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/ChunkUpload",
         // uploadUrl: "https://js.devexpress.com/Content/Services/upload.aspx",
