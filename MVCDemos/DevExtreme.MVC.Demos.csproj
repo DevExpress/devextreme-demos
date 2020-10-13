@@ -2152,6 +2152,7 @@
     <Content Include="Views\Charts\AxisLabelsTemplates.cshtml" />
     <Content Include="Views\DataGrid\BatchUpdateRequest.cshtml" />
     <Content Include="Views\DataGrid\StateManagement.cshtml" />
+    <Content Include="Views\FileUploader\CustomDropzone.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
