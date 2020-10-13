@@ -94,7 +94,7 @@ export default {
 	border-style: dashed;
 	padding: 10px;
 }
-#dropzone-external > * { /* TODO: Remove this hack! */
+#dropzone-external > * {
 	pointer-events: none;
 }
 #dropzone-external.dropzone-active {

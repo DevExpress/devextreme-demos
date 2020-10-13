@@ -6,7 +6,7 @@
 	border-style: dashed;
 	padding: 10px;
 }
-::ng-deep #dropzone-external > * { /* TODO: Remove this hack! */
+::ng-deep #dropzone-external > * {
 	pointer-events: none;
 }
 ::ng-deep #dropzone-external.dropzone-active {
