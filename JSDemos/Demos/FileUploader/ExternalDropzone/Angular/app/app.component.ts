@@ -53,7 +53,6 @@ export class AppComponent {
 
     onProgress(e) {
         this.progressValue = e.bytesLoaded / e.bytesTotal * 100;
-
     }
 
     onUploadStarted() {
