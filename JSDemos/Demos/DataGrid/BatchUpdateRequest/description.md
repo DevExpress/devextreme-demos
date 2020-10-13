@@ -1,0 +1,3 @@
+If **DataGrid**'s data is stored on a remote server, a single request can be made to save all changes made in the batch editing mode. To add this functionality, implement the onSaving method. It is called each time a user clicks the 'Save changes' button.
+
+In this demo's onSaving method, e.cancel is set to true to enable a custom saving logic. If any changes are made, a asynchronous request to save them is sent to the server. When the request is successful, the data is reloaded and only changed elements are repainted.
