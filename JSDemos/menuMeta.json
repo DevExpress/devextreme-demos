@@ -4870,6 +4870,12 @@
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/FileUploaderAzureAccessApiController.cs"
             ]
+          },
+          {
+            "Title": "Custom Dropzone",
+            "Name": "CustomDropzone",
+            "DocUrl": "",
+            "Widget": "FileUploader"
           }
         ]
       }
