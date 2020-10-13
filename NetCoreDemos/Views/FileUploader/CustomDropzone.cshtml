@@ -63,8 +63,7 @@
     }
 
     function fileUploader_progress(e) {
-        getProgressBarInstance().option("value", e.bytesLoaded / e.bytesTotal * 100)
-
+        getProgressBarInstance().option("value", e.bytesLoaded / e.bytesTotal * 100);
     }
 
     function fileUploader_uploadStarted() {

@@ -76,8 +76,10 @@ class App extends React.Component {
     const dropZoneText = document.getElementById('dropzone-text');
     const fileReader = new FileReader();
     fileReader.onload = () => {
-      this.setState({ isDropZoneActive: false });
-      this.setState({ imageSource: fileReader.result });
+      this.setState({
+        isDropZoneActive: false,
+        imageSource: fileReader.result
+      });
     };
     fileReader.readAsDataURL(file);
     dropZoneText.style.display = 'none';
