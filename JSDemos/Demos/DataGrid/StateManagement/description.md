@@ -26,13 +26,17 @@ DESCRIPTION
 - [onEditCanceling]() / [onEditCanceled]()      
 DESCRIPTION
 
-Use these event handlers to perform actions before and after pending changes are saved or canceled. In this demo, the **onSaving** event handler saves the changes on a server as follows:
+Use these event handlers to perform actions before and after pending changes are saved or canceled. In this demo, the **onSaving** event handler sends the changes to a server. The handler's parameter `e` contains fields useful for this functionality. To implement it in your application, follow these steps:
 
-1. Disables the built-in edit state management.
+1. **Disable the built-in edit state management**       
+Set the `e.cancel` field to **true**.
 
-1. Sends pending changes to the server which saves them.
+1. **Send a request to the server**      
+Pending changes are stored in the `e.changes` array. It has only one element in all [edit modes](), except batch. Check if this element is not empty and send it to the server.
 
-1. Calls the **applyChanges** method to save the same changes in a local array.
+1. **Apply the same changes to a local array**       
+If the server successfully saves the changes, call the **applyChanges** method to save the same changes in a local array.
 
-1. Sets this array as the **DataGrid**'s [dataSource]() and resets the edit state (the **editRowKey** and **changes** options).
+1. **Update the widget's data source and reset the edit state**
+Assign the local array to the [dataSource](), **null** to the **editRowKey**, and an empty array to the **editing**.**changes** option.
 
