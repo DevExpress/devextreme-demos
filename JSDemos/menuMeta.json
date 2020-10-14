@@ -3123,7 +3123,6 @@
           {
             "Title": "Axis Label Templates",
             "Name": "AxisLabelsTemplates",
-            "DocUrl": "",
             "Widget": "Charts",
             "MvcDescription": "",
             "NetCoreDescription": "",
