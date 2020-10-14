@@ -277,5 +277,13 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         public ActionResult DnDBetweenGrids() {
             return View();
         }
+
+        public ActionResult BatchUpdateRequest() {
+            return View();
+        }
+
+        public ActionResult StateManagement() {
+            return View();
+        }
     }
 }

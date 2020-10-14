@@ -1,40 +1,84 @@
 ﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.Event>
-@{
-    var locations = new[] {
-new { TimeZoneId = "America/Los_Angeles", Text = "Los Angeles (UTC-08:00)" },
-new { TimeZoneId = "America/New_York", Text = "New York (UTC-05:00)" },
-new { TimeZoneId = "Europe/Berlin", Text = "Berlin (UTC+01:00)" }
-};
-}
 
 <div class="option">
     <span>Office Time Zone</span>
     @(Html.DevExtreme().SelectBox()
-            .DataSource(locations)
-            .Width(240)
-            .Value(locations[0].TimeZoneId)
-            .DisplayExpr("Text")
-            .ValueExpr("TimeZoneId")
-            .OnValueChanged(@<text>
-                function(e) {
-                var scheduler = $(".scheduler").dxScheduler("instance");
-                scheduler.option("timeZone", e.value);
-                }
-            </text>)
+        .Width(240)
+        .ElementAttr("class", "selectBox")
+        .DisplayExpr("title")
+        .ValueExpr("id")
+        .OnValueChanged("onSelectBoxValueChanged")
     )
 </div>
 
-    @(Html.DevExtreme().Scheduler()
-            .DataSource(Model)
-            .StartDateExpr("StartDate")
-            .EndDateExpr("EndDate")
-            .TextExpr("Text")
-            .RecurrenceRuleExpr("RecurrenceRule")
-            .Views(new[] { SchedulerViewType.WorkWeek })
-            .CurrentView(SchedulerViewType.WorkWeek)
-            .CurrentDate(new DateTime(2021, 5, 25))
-            .TimeZone(locations[0].TimeZoneId)
-            .Height(600)
-            .Editing(e => e.AllowTimeZoneEditing(true))
-            .ElementAttr("class", "scheduler")
-    )
+@(Html.DevExtreme().Scheduler()
+    .DataSource(Model)
+    .StartDateExpr("StartDate")
+    .EndDateExpr("EndDate")
+    .TextExpr("Text")
+    .RecurrenceRuleExpr("RecurrenceRule")
+    .Views(new[] { SchedulerViewType.WorkWeek })
+    .CurrentView(SchedulerViewType.WorkWeek)
+    .CurrentDate(new DateTime(2021, 5, 25))
+    .StartDayHour(8)
+    .Height(600)
+    .Editing(e => e.AllowTimeZoneEditing(true))
+    .ElementAttr("class", "scheduler")
+    .OnOptionChanged("onSchedulerOptionChanged")
+    .OnAppointmentFormOpening("onAppointmentFormOpening")
+)
+
+<script>
+    const getLocations = (date) => {
+        const timeZones = DevExpress.utils.getTimeZones(date);
+        return timeZones.filter((timeZone) => {
+            return locations.indexOf(timeZone.id) !== -1;
+        });
+    };
+
+    const locations = ["Europe/London", "Europe/Berlin", "Europe/Helsinki"];
+    const currentDate = new Date(2021, 4, 25);
+    const demoLocations = getLocations(currentDate);
+
+    function onSelectBoxValueChanged(e) {
+        getScheduler().option("timeZone", e.value);
+    }
+
+    function onSchedulerOptionChanged(e) {
+        if (e.name === "currentDate") {
+            getSelectBox().option("items", getLocations(e.value));
+        }
+    }
+
+    function onAppointmentFormOpening(e) {
+        const form = e.form;
+
+        const startDateTimezoneEditor = form.getEditor("startDateTimeZone");
+        const endDateTimezoneEditor = form.getEditor("endDateTimeZone");
+        const startDatedataSource = startDateTimezoneEditor.option("dataSource");
+        const endDateDataSource = endDateTimezoneEditor.option("dataSource");
+
+        startDatedataSource.filter(["id", "contains", "Europe"]);
+        endDateDataSource.filter(["id", "contains", "Europe"]);
+
+        startDatedataSource.load();
+        endDateDataSource.load();
+    }
+
+    function getSelectBox() {
+        return $(".selectBox").dxSelectBox("instance");
+    }
+
+    function getScheduler() {
+        return $(".scheduler").dxScheduler("instance");
+    }
+
+    $(function () {
+        const selectBox = getSelectBox();
+        selectBox.option("items", demoLocations);
+        selectBox.option("value", demoLocations[0].id);
+
+        const scheduler = getScheduler();
+        scheduler.option("timeZone", demoLocations[0].id);
+    })
+</script>

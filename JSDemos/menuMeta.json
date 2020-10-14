@@ -312,6 +312,21 @@
               "/Models/SampleData/DataGridEmployees.cs",
               "/Models/SampleData/States.cs"
             ]
+          },
+          {
+            "Title": "Batch Update Request",
+            "Name": "BatchUpdateRequest",
+            "DocUrl": "",
+            "Widget": "DataGrid",
+            "DemoType": "Web",
+            "Equivalents": "",
+            "Badge": "New",
+            "Modules": "whatwg-fetch,devextreme-aspnet-data-nojquery",
+            "MvcAdditionalFiles": [
+              "/Controllers/ApiControllers/DataGridWebApiController.cs",
+              "/Models/Northwind/InMemoryNorthwindContext.cs",
+              "/Models/DataGrid/DataChange.cs"
+            ]
           }
         ]
       },
@@ -1593,9 +1608,6 @@
             "Name": "SimpleArray",
             "DocUrl": "Guide/Widgets/Scheduler/Overview/",
             "Widget": "Scheduler",
-            "MvcAdditionalFiles": [
-              "/Scripts/data/appointments.js"
-            ],
             "DemoType": "Web"
           },
           {
@@ -1671,7 +1683,6 @@
             "DocUrl": "Guide/Widgets/Scheduler/Views/View_Types/#Agenda_View",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
-              "/Models/AgendaTask.cs",
               "/Models/SampleData/AgendaTasks.cs"
             ],
             "DemoType": "Web"
@@ -1917,7 +1928,6 @@
             "DocUrl": "Guide/Widgets/HtmlEditor/Overview/",
             "Widget": "HtmlEditor",
             "DemoType": "Web",
-            "Modules": "html-react-parser",
             "Badge": "Updated"
           }
         ]
@@ -4715,7 +4725,6 @@
       {
         "Name": "File Manager",
         "Equivalents": "dxFileManager, dx-file-manager",
-        "Badge": "New",
         "Groups": [
           {
             "Name": "Overview",
@@ -4859,6 +4868,13 @@
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/FileUploaderAzureAccessApiController.cs"
             ]
+          },
+          {
+            "Title": "Custom Dropzone",
+            "Name": "CustomDropzone",
+            "Badge": "New",
+            "DocUrl": "",
+            "Widget": "FileUploader"
           }
         ]
       }
@@ -4943,6 +4959,20 @@
               "/Models/State.cs",
               "/Models/SampleData/DataGridEmployees.cs",
               "/Models/SampleData/States.cs"
+            ]
+          },
+          {
+            "Title": "State Management (CTP)",
+            "Name": "StateManagement",
+            "DocUrl": "",
+            "Widget": "DataGrid",
+            "DemoType": "Web",
+            "Equivalents": "",
+            "Badge": "New",
+            "Modules": "whatwg-fetch,vuex",
+            "MvcAdditionalFiles": [
+              "/Controllers/ApiControllers/DataGridWebApiController.cs",
+              "/Models/Northwind/InMemoryNorthwindContext.cs"
             ]
           }
         ]

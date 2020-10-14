@@ -2,9 +2,9 @@
 
 @(Html.DevExtreme().Scheduler()
     .DataSource(Model)
-    .TextExpr("Subject")
+    .TextExpr("Text")
     .StartDateExpr("StartDate")
-    .EndDateExpr("DueDate")
+    .EndDateExpr("EndDate")
     .Views(new[] {
         SchedulerViewType.TimelineDay,
         SchedulerViewType.TimelineWeek,
