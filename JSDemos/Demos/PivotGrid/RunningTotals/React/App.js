@@ -19,7 +19,7 @@ class App extends React.Component {
 
   changeAllowCrossGroupCalculation(e) {
     this.setState({ allowCrossGroupCalculation: e.value });
-    dataSource.field(6, { allowCrossGroupCalculation: this.state.allowCrossGroupCalculation });
+    dataSource.field(5, { allowCrossGroupCalculation: this.state.allowCrossGroupCalculation });
     dataSource.load();
   }
 

@@ -85,7 +85,7 @@ $(function(){
         onValueChanged: function(e) {
             var pivotGridDataSource = pivotGrid.getDataSource();
     
-            pivotGridDataSource.field(6, {allowCrossGroupCalculation: e.value});
+            pivotGridDataSource.field(5, {allowCrossGroupCalculation: e.value});
             pivotGridDataSource.load();
         }
     });

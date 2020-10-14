@@ -105,7 +105,7 @@ export default {
   },
   methods: {
     changeAllowCrossGroupCalculation(e) {
-      this.dataSource.field(6, { allowCrossGroupCalculation: e.value });
+      this.dataSource.field(5, { allowCrossGroupCalculation: e.value });
       this.dataSource.load();
     },
     onCellPrepared(e) {

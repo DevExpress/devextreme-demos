@@ -91,7 +91,7 @@ export class AppComponent {
     }
 
     checkBoxChanged(e) {
-        this.pivotGridDataSource.field(6, { allowCrossGroupCalculation: e.value });
+        this.pivotGridDataSource.field(5, { allowCrossGroupCalculation: e.value });
         this.pivotGridDataSource.load();
     }
 }
