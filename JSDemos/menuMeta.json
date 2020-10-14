@@ -1983,7 +1983,6 @@
           {
             "Title": "Tables",
             "Name": "Tables",
-            "DocUrl": "",
             "Widget": "HtmlEditor",
             "Hidden": true,
             "MvcDescription": "",
