@@ -1,7 +1,7 @@
 window.onload = function() {
     var viewModel = {
         htmlEditorOptions: {
-            height: 550,
+            height: 725,
             toolbar: {
                 items: [
                     "undo", "redo", "separator",
@@ -22,7 +22,9 @@ window.onload = function() {
                     "orderedList", "bulletList", "separator",
                     "color", "background", "separator",
                     "link", "image", "separator",
-                    "clear", "codeBlock", "blockquote"
+                    "clear", "codeBlock", "blockquote", "separator",
+                    "insertTable", "insertRowAbove", "insertRowBelow", "insertColumnLeft", "insertColumnRight",
+                    "deleteRow", "deleteColumn", "deleteTable"
                 ]
             },
             mediaResizing: {

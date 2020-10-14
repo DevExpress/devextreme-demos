@@ -32,6 +32,13 @@
             .OnValueChanged("ganttShowResources_changed")
         )
     </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Value(true)
+            .Text("Customize Task Tooltip")
+            .OnValueChanged("ganttShowCustomTaskTooltip_changed")
+        )
+    </div>
 </div>
 
 @(Html.DevExtreme().Gantt<Task>()
@@ -76,9 +83,19 @@
             .Caption("End Date");
     })
     .TaskListWidth(500)
+    .TaskTooltipContentTemplate(new JS("getTaskTooltipContentTemplate"))
 )
 
 <script>
+    function getTaskTooltipContentTemplate(model) {
+        var timeEstimate = Math.abs(model.Start - model.End) / 36e5;
+        var timeLeft = Math.floor((100 - model.Progress) / 100 * timeEstimate);
+
+        return "<div style='font-size:14px'>" + model.Title + "</div>"
+            + "<p style='font-size:10px'>" + "<span> Estimate: </span>" + timeEstimate + "<span> hours </span>" + "</p>"
+            + "<p style='font-size:10px'>" + "<span> Left: </span>" + timeLeft + "<span> hours </span>" + "</p>";
+    }
+
     function getGanttInstance() {
         return $("#gantt").dxGantt("instance");
     }
@@ -97,5 +114,11 @@
     function ganttShowResources_changed(e) {
         var ganttInstance = getGanttInstance();
         ganttInstance.option("showResources", e.value);
+    }
+
+    function ganttShowCustomTaskTooltip_changed(e) {
+        var ganttInstance = getGanttInstance();
+        e.value ? ganttInstance.option("taskTooltipContentTemplate", getTaskTooltipContentTemplate)
+            : ganttInstance.option("taskTooltipContentTemplate", undefined);
     }
 </script>

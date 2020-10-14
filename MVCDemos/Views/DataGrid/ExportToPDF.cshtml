@@ -1,0 +1,54 @@
+﻿@section ExternalDependencies {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.0.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.9/jspdf.plugin.autotable.min.js"></script>
+    <script>
+        window.jsPDF = window.jspdf.jsPDF;
+        applyPlugin(window.jsPDF);
+    </script>
+}
+
+@(Html.DevExtreme().Button()
+    .ID("exportButton")
+    .Icon("exportpdf")
+    .Text("Export to PDF")
+    .OnClick("exportToPDF")
+)
+
+@(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.Customer>()
+    .ID("gridContainer")
+    .Columns(columns => {
+        columns.AddFor(m => m.CompanyName);
+
+        columns.AddFor(m => m.Phone);
+
+        columns.AddFor(m => m.Fax);
+
+        columns.AddFor(m => m.City);
+
+        columns.AddFor(m => m.State)
+            .GroupIndex(0);
+    })
+    .AllowColumnReordering(true)
+    .ShowBorders(true)
+    .Grouping(grouping => grouping.AutoExpandAll(true))
+    .SearchPanel(searchPanel => searchPanel.Visible(true))
+    .GroupPanel(groupPanel => groupPanel.Visible(true))
+    .Paging(paging => paging.PageSize(10))
+    .DataSource(d => d.WebApi()
+        .Controller("DataGridCustomers")
+        .Key("ID")
+    )
+)
+
+<script>
+    function exportToPDF() {
+        var doc = new jsPDF();
+        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+        DevExpress.pdfExporter.exportDataGrid({
+            jsPDFDocument: doc,
+            component: dataGrid
+        }).then(function() {
+            doc.save("Customers.pdf");
+        });
+    }
+</script>

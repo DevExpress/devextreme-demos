@@ -3,7 +3,7 @@
     <div id="range-selector-demo">
       <DxRangeSelector
         id="range-selector"
-        :value.sync="range"
+        v-model:value="range"
         title="Calculate the Working Days Count in a Date Period"
       >
         <DxMargin :top="50"/>
@@ -24,11 +24,11 @@
       <div class="options">
         <div class="caption">Options</div>
         <div class="option">
-          <span>Handle Range Changes</span>
+          <span>Handle Range Changes </span>
           <DxSelectBox
             :data-source="behaviorModes"
             :width="210"
-            v-model="currentBehaviorMode"
+            v-model:value="currentBehaviorMode"
           />
         </div>
       </div>

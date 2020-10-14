@@ -19,6 +19,10 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View();
         }
 
+        public ActionResult Tables() {
+            return View();
+        }
+
         public ActionResult Mentions() {
             return View(SampleData.EmployeeMentions);
         }

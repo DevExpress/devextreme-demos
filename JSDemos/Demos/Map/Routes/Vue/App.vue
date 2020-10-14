@@ -5,7 +5,7 @@
       :height="440"
       :controls="true"
       :markers="markersData"
-      :routes.sync="routesData"
+      v-model:routes="routesData"
       center="Brooklyn Bridge,New York,NY"
       width="100%"
       provider="bing"
@@ -13,7 +13,7 @@
     <div class="options">
       <div class="caption">Options</div>
       <div class="option">
-        <span>Set mode</span>
+        <span>Set mode </span>
         <DxSelectBox
           :items="routeModes"
           :on-value-changed="updateRoutesMode"
@@ -21,7 +21,7 @@
         />
       </div>
       <div class="option">
-        <span>Route color</span>
+        <span>Route color </span>
         <DxSelectBox
           :items="routeColors"
           :on-value-changed="updateRoutesColor"
@@ -85,7 +85,7 @@ export default {
 
 .option > span {
   display: inline-block;
-  width: 90px;
+  width: 94px;
 }
 
 .option > .dx-selectbox {

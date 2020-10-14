@@ -18,10 +18,10 @@
     <div class="options">
       <div class="caption">Options</div>
       <div class="option">
-        <span>Search mode</span>
+        <span>Search mode </span>
         <DxSelectBox
           :items="['contains', 'startsWith']"
-          v-model="searchMode"
+          v-model:value="searchMode"
         />
       </div>
     </div>

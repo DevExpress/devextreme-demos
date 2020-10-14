@@ -6,13 +6,13 @@ System.config({
     },
     /** devextreme-aspnet-data-nojquery */
     'devextreme-aspnet-data-nojquery': {
-      "esModule": true
+      'esModule': true
     },
     /**/
 
     /** vectormap */
     'devextreme/dist/js/vectormap-data/*': {
-        'esModule': true
+      'esModule': true
     },
     /**/
   },
@@ -20,21 +20,21 @@ System.config({
     'npm:': '../../../../node_modules/'
   },
   map: {
-    'vue': 'npm:vue/dist/vue.esm.browser.js',
+    'vue': 'npm:vue/dist/vue.esm-browser.js',
     'vue-loader': 'npm:dx-systemjs-vue-browser/index.js',
 
     /** signalr */
     '@aspnet/signalr': 'npm:@aspnet/signalr/dist/cjs',
     'tslib': 'npm:tslib/tslib.js',
     /**/
- 
+
     /** devextreme-aspnet-data-nojquery */
     'devextreme-aspnet-data-nojquery': 'npm:devextreme-aspnet-data-nojquery/index.js',
     /**/
- 
+
     /** showdown&turndown */
-    'showdown': "npm:showdown/dist/showdown.js",
-    'turndown': "npm:turndown/lib/turndown.browser.umd.js",
+    'showdown': 'npm:showdown/dist/showdown.js',
+    'turndown': 'npm:turndown/lib/turndown.browser.umd.js',
     /**/
 
     /** globalize--vue&react */
@@ -78,6 +78,12 @@ System.config({
     'devextreme/dist/js/vectormap-data': 'npm:devextreme/dist/js/vectormap-data',
     /**/
 
+    'mitt': 'npm:mitt/dist/mitt.umd.js',
+
+    /** vuex */
+    'vuex': 'npm:vuex/dist/vuex.esm-browser.js',
+    /**/
+
     'rrule': 'npm:rrule/dist/es5/rrule.js',
     'luxon': 'npm:luxon/build/global/luxon.min.js',
     'es6-object-assign': 'npm:es6-object-assign',
@@ -105,31 +111,31 @@ System.config({
       main: 'index'
     },
     'devextreme/events': {
-        main: 'index'
+      main: 'index'
     }/** globalize--vue&react */,
     'globalize': {
       main: '../globalize.js',
       defaultExtension: 'js'
     },
     'cldr': {
-        main: '../cldr.js',
-        defaultExtension: 'js'
+      main: '../cldr.js',
+      defaultExtension: 'js'
     }/**//** globalize */,
     'globalize': {
       main: '../globalize.js',
       defaultExtension: 'js'
     },
     'cldr': {
-        main: '../cldr.js',
-        defaultExtension: 'js'
+      main: '../cldr.js',
+      defaultExtension: 'js'
     }/**//**signalr */,
     '@aspnet/signalr': {
       main: 'index.js',
       defaultExtension: 'js'
     }/**/,
     'es6-object-assign': {
-        main: './index.js',
-        defaultExtension: 'js'
+      main: './index.js',
+      defaultExtension: 'js'
     }
   },
   babelOptions: {

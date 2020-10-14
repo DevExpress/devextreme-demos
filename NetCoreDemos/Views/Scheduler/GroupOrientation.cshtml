@@ -1,10 +1,10 @@
-﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.EmployeeTask>
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.EmployeeAppointment>
 
 @(Html.DevExtreme().Scheduler()
     .DataSource(Model)
-    .TextExpr("Subject")
+    .TextExpr("Text")
     .StartDateExpr("StartDate")
-    .EndDateExpr("DueDate")
+    .EndDateExpr("EndDate")
     .Views(views => {
         views.Add()
             .Name("Vertical Grouping")
@@ -23,7 +23,7 @@
     .CurrentView(SchedulerViewType.WorkWeek)
     .CrossScrollingEnabled(true)
     .ShowAllDayPanel(false)
-    .CurrentDate(new DateTime(2018, 5, 21))
+    .CurrentDate(new DateTime(2021, 5, 21))
     .StartDayHour(9)
     .EndDayHour(16)
     .Groups(new[] { "Priority" })

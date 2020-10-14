@@ -27,14 +27,14 @@
         <span>Palette</span>
         <DxSelectBox
           :items="paletteCollection"
-          v-model="palette"
+          v-model:value="palette"
         />
       </div>
       <div class="option">
         <span>Palette Extension Mode</span>
         <DxSelectBox
           :items="paletteExtensionModes"
-          v-model="paletteExtensionMode"
+          v-model:value="paletteExtensionMode"
         />
       </div>
     </div>
@@ -111,12 +111,12 @@ export default {
 
 .option {
     display: inline-block;
-    min-width: 320px;
+    min-width: 324px;
     margin-top: 5px;
 }
 
 .option > span {
-   margin: 0 10px 0 0;
+   margin: 0 14px 0 0;
 }
 
 .option > .dx-widget {

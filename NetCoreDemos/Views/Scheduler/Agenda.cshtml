@@ -1,14 +1,14 @@
-﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.AgendaTask>
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.Appointment>
 
 @(Html.DevExtreme().Scheduler()
     .ID("scheduler")
     .DataSource(Model)
     .Views(new[] { SchedulerViewType.Agenda })
     .CurrentView(SchedulerViewType.Agenda)
-    .CurrentDate(new DateTime(2017, 5, 11))
+    .CurrentDate(new DateTime(2021, 5, 11))
     .StartDayHour(9)
     .Height(600)
-    .TextExpr("Subject")
+    .TextExpr("Text")
     .StartDateExpr("StartDate")
-    .EndDateExpr("DueDate")
+    .EndDateExpr("EndDate")
 )

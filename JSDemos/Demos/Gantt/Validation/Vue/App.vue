@@ -4,13 +4,13 @@
       <div class="caption">Options</div>
       <div class="option">
         <DxCheckBox
-          v-model="autoUpdateParentTasks"
+          v-model:value="autoUpdateParentTasks"
           text="Auto Update Parent Tasks"
         />
       </div>
       <div class="option">
         <DxCheckBox
-          v-model="validateDependencies"
+          v-model:value="validateDependencies"
           text="Enable Dependency Validation"
         />
       </div>
@@ -104,7 +104,7 @@ export default {
 
   .option {
     margin-top: 10px;
-    margin-right: 40px;
+    margin-right: 44px;
     display: inline-block;
   }
 

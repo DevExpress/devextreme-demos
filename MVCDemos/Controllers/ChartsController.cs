@@ -181,6 +181,10 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View();
         }
 
+        public ActionResult PieWithAnnotations() {
+            return View(SampleData.GetAnnotationsInfo());
+        }
+
         public ActionResult Doughnut() {
             return View(SampleData.PopulationData);
         }
@@ -218,6 +222,10 @@ namespace DevExtreme.MVC.Demos.Controllers {
         }
 
         public ActionResult MultipleAxes() {
+            return View();
+        }
+
+        public ActionResult AxisLabelsTemplates() {
             return View();
         }
 

@@ -3,1217 +3,1217 @@ using System.Collections.Generic;
 
 namespace DevExtreme.NETCore.Demos.Models.SampleData {
     public partial class SampleData {
-        public static readonly IEnumerable<CinemaDataItem> CinemaData = new[] {
-            new CinemaDataItem {
+        public static readonly IEnumerable<CinemaAppointment> CinemaData = new[] {
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 10,
+                StartDate = "2021-05-24T06:10:00.000Z",
+                EndDate = "2021-05-24T08:01:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 5,
+                StartDate = "2021-05-24T08:30:00.000Z",
+                EndDate = "2021-05-24T10:02:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 15,
+                StartDate = "2021-05-24T10:30:00.000Z",
+                EndDate = "2021-05-24T12:21:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 4,
+                Price = 5,
+                StartDate = "2021-05-24T13:00:00.000Z",
+                EndDate = "2021-05-24T14:08:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 2,
+                Price = 10,
+                StartDate = "2021-05-24T14:30:00.000Z",
+                EndDate = "2021-05-24T16:03:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 10,
+                StartDate = "2021-05-24T16:30:00.000Z",
+                EndDate = "2021-05-24T18:02:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 2,
+                Price = 10,
+                StartDate = "2021-05-24T18:20:00.000Z",
+                EndDate = "2021-05-24T19:53:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 5,
+                Price = 10,
+                StartDate = "2021-05-25T06:10:00.000Z",
+                EndDate = "2021-05-25T08:20:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 2,
+                Price = 5,
+                StartDate = "2021-05-25T09:00:00.000Z",
+                EndDate = "2021-05-25T10:33:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 5,
+                StartDate = "2021-05-25T11:00:00.000Z",
+                EndDate = "2021-05-25T12:51:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 4,
+                Price = 5,
+                StartDate = "2021-05-25T13:20:00.000Z",
+                EndDate = "2021-05-25T14:28:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 10,
+                StartDate = "2021-05-25T15:00:00.000Z",
+                EndDate = "2021-05-25T16:32:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 2,
+                Price = 15,
+                StartDate = "2021-05-25T17:00:00.000Z",
+                EndDate = "2021-05-25T18:33:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 4,
+                Price = 5,
+                StartDate = "2021-05-25T18:50:00.000Z",
+                EndDate = "2021-05-25T19:58:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 5,
+                StartDate = "2021-05-26T06:00:00.000Z",
+                EndDate = "2021-05-26T07:32:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 2,
+                Price = 5,
+                StartDate = "2021-05-26T08:00:00.000Z",
+                EndDate = "2021-05-26T09:33:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 10,
+                StartDate = "2021-05-26T10:20:00.000Z",
+                EndDate = "2021-05-26T12:11:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 5,
+                Price = 15,
+                StartDate = "2021-05-26T12:45:00.000Z",
+                EndDate = "2021-05-26T14:55:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 4,
+                Price = 10,
+                StartDate = "2021-05-26T15:20:00.000Z",
+                EndDate = "2021-05-26T16:28:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 5,
+                Price = 20,
+                StartDate = "2021-05-26T17:00:00.000Z",
+                EndDate = "2021-05-26T19:10:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 5,
+                StartDate = "2021-05-27T06:00:00.000Z",
+                EndDate = "2021-05-27T07:32:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 2,
+                Price = 5,
+                StartDate = "2021-05-27T08:00:00.000Z",
+                EndDate = "2021-05-27T09:33:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 10,
+                StartDate = "2021-05-27T10:20:00.000Z",
+                EndDate = "2021-05-27T12:11:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 5,
+                Price = 10,
+                StartDate = "2021-05-27T12:45:00.000Z",
+                EndDate = "2021-05-27T14:55:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 4,
+                Price = 5,
+                StartDate = "2021-05-27T15:20:00.000Z",
+                EndDate = "2021-05-27T16:28:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 5,
+                Price = 15,
+                StartDate = "2021-05-27T17:00:00.000Z",
+                EndDate = "2021-05-27T19:10:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 2,
+                Price = 5,
+                StartDate = "2021-05-28T06:30:00.000Z",
+                EndDate = "2021-05-28T08:03:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 5,
+                StartDate = "2021-05-28T08:30:00.000Z",
+                EndDate = "2021-05-28T10:02:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 5,
+                StartDate = "2021-05-28T10:30:00.000Z",
+                EndDate = "2021-05-28T12:21:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 5,
+                Price = 10,
+                StartDate = "2021-05-28T13:00:00.000Z",
+                EndDate = "2021-05-28T15:10:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 4,
+                Price = 5,
+                StartDate = "2021-05-28T15:30:00.000Z",
+                EndDate = "2021-05-28T16:38:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 15,
+                StartDate = "2021-05-28T17:20:00.000Z",
+                EndDate = "2021-05-28T19:11:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 2,
+                Price = 5,
+                StartDate = "2021-05-29T06:30:00.000Z",
+                EndDate = "2021-05-29T08:03:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 10,
+                StartDate = "2021-05-29T08:30:00.000Z",
+                EndDate = "2021-05-29T10:02:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 10,
+                StartDate = "2021-05-29T10:30:00.000Z",
+                EndDate = "2021-05-29T12:21:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 5,
+                Price = 10,
+                StartDate = "2021-05-29T13:00:00.000Z",
+                EndDate = "2021-05-29T15:10:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 4,
+                Price = 10,
+                StartDate = "2021-05-29T15:30:00.000Z",
+                EndDate = "2021-05-29T16:38:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 10,
+                StartDate = "2021-05-29T17:20:00.000Z",
+                EndDate = "2021-05-29T19:11:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 2,
+                Price = 5,
+                StartDate = "2021-05-30T06:30:00.000Z",
+                EndDate = "2021-05-30T08:03:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 5,
+                StartDate = "2021-05-30T08:30:00.000Z",
+                EndDate = "2021-05-30T10:02:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 10,
+                StartDate = "2021-05-30T10:30:00.000Z",
+                EndDate = "2021-05-30T12:21:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 5,
+                Price = 15,
+                StartDate = "2021-05-30T13:00:00.000Z",
+                EndDate = "2021-05-30T15:10:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 4,
+                Price = 10,
+                StartDate = "2021-05-30T15:30:00.000Z",
+                EndDate = "2021-05-30T16:38:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 15,
+                StartDate = "2021-05-30T17:20:00.000Z",
+                EndDate = "2021-05-30T19:11:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 2,
+                Price = 5,
+                StartDate = "2021-05-31T06:30:00.000Z",
+                EndDate = "2021-05-31T08:03:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 6,
+                Price = 15,
+                StartDate = "2021-05-31T08:30:00.000Z",
+                EndDate = "2021-05-31T09:57:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 10,
+                StartDate = "2021-05-31T10:20:00.000Z",
+                EndDate = "2021-05-31T12:11:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 5,
+                StartDate = "2021-05-31T13:00:00.000Z",
+                EndDate = "2021-05-31T14:32:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 2,
+                Price = 10,
+                StartDate = "2021-05-31T15:00:00.000Z",
+                EndDate = "2021-05-31T16:33:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 6,
+                Price = 20,
+                StartDate = "2021-05-31T17:00:00.000Z",
+                EndDate = "2021-05-31T18:27:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 4,
+                Price = 15,
+                StartDate = "2021-05-31T18:50:00.000Z",
+                EndDate = "2021-05-31T19:58:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 5,
+                StartDate = "2021-06-01T06:00:00.000Z",
+                EndDate = "2021-06-01T07:32:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 2,
+                Price = 5,
+                StartDate = "2021-06-01T08:30:00.000Z",
+                EndDate = "2021-06-01T10:03:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 10,
+                StartDate = "2021-06-01T10:30:00.000Z",
+                EndDate = "2021-06-01T12:21:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 10,
+                StartDate = "2021-06-01T12:30:00.000Z",
+                EndDate = "2021-06-01T14:21:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 6,
+                Price = 15,
+                StartDate = "2021-06-01T14:30:00.000Z",
+                EndDate = "2021-06-01T15:57:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 5,
+                Price = 15,
+                StartDate = "2021-06-01T17:00:00.000Z",
+                EndDate = "2021-06-01T19:10:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 5,
+                StartDate = "2021-06-02T06:00:00.000Z",
+                EndDate = "2021-06-02T07:32:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 2,
+                Price = 5,
+                StartDate = "2021-06-02T08:00:00.000Z",
+                EndDate = "2021-06-02T09:33:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 10,
+                StartDate = "2021-06-02T10:00:00.000Z",
+                EndDate = "2021-06-02T11:51:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 10,
+                StartDate = "2021-06-02T12:30:00.000Z",
+                EndDate = "2021-06-02T14:21:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 6,
+                Price = 15,
+                StartDate = "2021-06-02T14:30:00.000Z",
+                EndDate = "2021-06-02T15:57:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 5,
+                Price = 15,
+                StartDate = "2021-06-02T17:00:00.000Z",
+                EndDate = "2021-06-02T19:10:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 5,
+                StartDate = "2021-06-03T06:00:00.000Z",
+                EndDate = "2021-06-03T07:32:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 2,
+                Price = 5,
+                StartDate = "2021-06-03T08:00:00.000Z",
+                EndDate = "2021-06-03T09:33:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 10,
+                StartDate = "2021-06-03T10:00:00.000Z",
+                EndDate = "2021-06-03T11:51:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 10,
+                StartDate = "2021-06-03T12:30:00.000Z",
+                EndDate = "2021-06-03T14:21:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 6,
+                Price = 15,
+                StartDate = "2021-06-03T14:30:00.000Z",
+                EndDate = "2021-06-03T15:57:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 5,
+                Price = 15,
+                StartDate = "2021-06-03T17:00:00.000Z",
+                EndDate = "2021-06-03T19:10:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 2,
+                Price = 5,
+                StartDate = "2021-06-04T06:00:00.000Z",
+                EndDate = "2021-06-04T07:33:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 5,
+                StartDate = "2021-06-04T08:00:00.000Z",
+                EndDate = "2021-06-04T09:32:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 10,
+                StartDate = "2021-06-04T10:00:00.000Z",
+                EndDate = "2021-06-04T11:51:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 5,
+                Price = 10,
+                StartDate = "2021-06-04T12:30:00.000Z",
+                EndDate = "2021-06-04T14:40:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 6,
+                Price = 15,
+                StartDate = "2021-06-04T15:00:00.000Z",
+                EndDate = "2021-06-04T16:27:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 15,
+                StartDate = "2021-06-04T17:00:00.000Z",
+                EndDate = "2021-06-04T18:32:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 2,
+                Price = 5,
+                StartDate = "2021-06-05T06:00:00.000Z",
+                EndDate = "2021-06-05T07:33:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 5,
+                StartDate = "2021-06-05T08:00:00.000Z",
+                EndDate = "2021-06-05T09:32:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 10,
+                StartDate = "2021-06-05T10:00:00.000Z",
+                EndDate = "2021-06-05T11:51:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 5,
+                Price = 10,
+                StartDate = "2021-06-05T12:30:00.000Z",
+                EndDate = "2021-06-05T14:40:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 6,
+                Price = 15,
+                StartDate = "2021-06-05T15:00:00.000Z",
+                EndDate = "2021-06-05T16:27:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 15,
+                StartDate = "2021-06-05T17:00:00.000Z",
+                EndDate = "2021-06-05T18:32:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 2,
+                Price = 5,
+                StartDate = "2021-06-06T06:00:00.000Z",
+                EndDate = "2021-06-06T07:33:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 5,
+                StartDate = "2021-06-06T08:00:00.000Z",
+                EndDate = "2021-06-06T09:32:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 3,
+                Price = 10,
+                StartDate = "2021-06-06T10:00:00.000Z",
+                EndDate = "2021-06-06T11:51:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 5,
+                Price = 10,
+                StartDate = "2021-06-06T12:30:00.000Z",
+                EndDate = "2021-06-06T14:40:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 6,
+                Price = 15,
+                StartDate = "2021-06-06T15:00:00.000Z",
+                EndDate = "2021-06-06T16:27:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 0,
+                MovieId = 1,
+                Price = 15,
+                StartDate = "2021-06-06T17:00:00.000Z",
+                EndDate = "2021-06-06T18:32:00.000Z"
+            },
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 3,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 24, 9, 10, 0),
-                EndDate = new DateTime(2015, 5, 24, 11, 1 ,0)
+                StartDate = "2021-05-24T06:30:00.000Z",
+                EndDate = "2021-05-24T08:21:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 1,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 24, 11, 30, 0),
-                EndDate = new DateTime(2015, 5, 24, 13, 2 ,0)
+                StartDate = "2021-05-24T09:00:00.000Z",
+                EndDate = "2021-05-24T10:32:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 3,
                 Price = 15,
-                StartDate = new DateTime(2015, 5, 24, 13, 30, 0),
-                EndDate = new DateTime(2015, 5, 24, 15, 21 ,0)
+                StartDate = "2021-05-24T11:00:00.000Z",
+                EndDate = "2021-05-24T12:51:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 4,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 24, 16, 0, 0),
-                EndDate = new DateTime(2015, 5, 24, 17, 8 ,0)
+                StartDate = "2021-05-24T13:10:00.000Z",
+                EndDate = "2021-05-24T14:18:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 2,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 24, 17, 30, 0),
-                EndDate = new DateTime(2015, 5, 24, 19, 3 ,0)
+                StartDate = "2021-05-24T14:30:00.000Z",
+                EndDate = "2021-05-24T16:03:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 1,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 24, 19, 30, 0),
-                EndDate = new DateTime(2015, 5, 24, 21, 2 ,0)
+                StartDate = "2021-05-24T16:30:00.000Z",
+                EndDate = "2021-05-24T18:02:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 2,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 24, 21, 20, 0),
-                EndDate = new DateTime(2015, 5, 24, 22, 53 ,0)
+                StartDate = "2021-05-24T18:20:00.000Z",
+                EndDate = "2021-05-24T19:53:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 1,
+                Price = 5,
+                StartDate = "2021-05-25T06:30:00.000Z",
+                EndDate = "2021-05-25T08:02:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 2,
+                Price = 5,
+                StartDate = "2021-05-25T08:30:00.000Z",
+                EndDate = "2021-05-25T10:03:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 5,
+                Price = 15,
+                StartDate = "2021-05-25T10:30:00.000Z",
+                EndDate = "2021-05-25T12:40:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 4,
+                Price = 5,
+                StartDate = "2021-05-25T13:00:00.000Z",
+                EndDate = "2021-05-25T14:08:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 1,
+                Price = 10,
+                StartDate = "2021-05-25T14:30:00.000Z",
+                EndDate = "2021-05-25T16:02:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 2,
+                Price = 15,
+                StartDate = "2021-05-25T16:40:00.000Z",
+                EndDate = "2021-05-25T18:13:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 4,
+                Price = 5,
+                StartDate = "2021-05-25T18:40:00.000Z",
+                EndDate = "2021-05-25T19:48:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 1,
+                Price = 5,
+                StartDate = "2021-05-26T06:30:00.000Z",
+                EndDate = "2021-05-26T08:02:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 2,
+                Price = 5,
+                StartDate = "2021-05-26T08:30:00.000Z",
+                EndDate = "2021-05-26T10:03:00.000Z"
+            },
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 5,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 25, 9, 10, 0),
-                EndDate = new DateTime(2015, 5, 25, 11, 20 ,0)
+                StartDate = "2021-05-26T10:30:00.000Z",
+                EndDate = "2021-05-26T12:41:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 2,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 25, 12, 0, 0),
-                EndDate = new DateTime(2015, 5, 25, 13, 33 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 3,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 25, 14, 0, 0),
-                EndDate = new DateTime(2015, 5, 25, 15, 51 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 4,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 25, 16, 20, 0),
-                EndDate = new DateTime(2015, 5, 25, 17, 28 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 1,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 25, 18, 0, 0),
-                EndDate = new DateTime(2015, 5, 25, 19, 32 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 2,
-                Price = 15,
-                StartDate = new DateTime(2015, 5, 25, 20, 0, 0),
-                EndDate = new DateTime(2015, 5, 25, 21, 33 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 4,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 25, 21, 50, 0),
-                EndDate = new DateTime(2015, 5, 25, 22, 58 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 1,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 26, 9, 0, 0),
-                EndDate = new DateTime(2015, 5, 26, 10, 32 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 2,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 26, 11, 0, 0),
-                EndDate = new DateTime(2015, 5, 26, 12, 33 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 3,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 26, 13, 20, 0),
-                EndDate = new DateTime(2015, 5, 26, 15, 11 ,0)
-            },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 5,
                 Price = 15,
-                StartDate = new DateTime(2015, 5, 26, 15, 45, 0),
-                EndDate = new DateTime(2015, 5, 26, 17, 55 ,0)
+                StartDate = "2021-05-26T13:00:00.000Z",
+                EndDate = "2021-05-26T15:10:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 4,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 26, 18, 20, 0),
-                EndDate = new DateTime(2015, 5, 26, 19, 28 ,0)
+                StartDate = "2021-05-26T15:30:00.000Z",
+                EndDate = "2021-05-26T16:38:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 5,
                 Price = 20,
-                StartDate = new DateTime(2015, 5, 26, 20, 0, 0),
-                EndDate = new DateTime(2015, 5, 26, 22, 10 ,0)
+                StartDate = "2021-05-26T17:20:00.000Z",
+                EndDate = "2021-05-26T19:30:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 1,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 27, 9, 0, 0),
-                EndDate = new DateTime(2015, 5, 27, 10, 32 ,0)
+                StartDate = "2021-05-27T06:30:00.000Z",
+                EndDate = "2021-05-27T08:02:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 2,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 27, 11, 0, 0),
-                EndDate = new DateTime(2015, 5, 27, 12, 33 ,0)
+                StartDate = "2021-05-27T08:30:00.000Z",
+                EndDate = "2021-05-27T10:03:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 3,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 27, 13, 20, 0),
-                EndDate = new DateTime(2015, 5, 27, 15, 11 ,0)
-            },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 5,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 27, 15, 45, 0),
-                EndDate = new DateTime(2015, 5, 27, 17, 55 ,0)
+                StartDate = "2021-05-27T10:30:00.000Z",
+                EndDate = "2021-05-27T12:41:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 5,
+                Price = 10,
+                StartDate = "2021-05-27T13:00:00.000Z",
+                EndDate = "2021-05-27T15:10:00.000Z"
+            },
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 4,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 27, 18, 20, 0),
-                EndDate = new DateTime(2015, 5, 27, 19, 28 ,0)
+                StartDate = "2021-05-27T15:30:00.000Z",
+                EndDate = "2021-05-27T16:38:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 5,
                 Price = 15,
-                StartDate = new DateTime(2015, 5, 27, 20, 0, 0),
-                EndDate = new DateTime(2015, 5, 27, 22, 10 ,0)
+                StartDate = "2021-05-27T17:20:00.000Z",
+                EndDate = "2021-05-27T19:30:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 2,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 28, 9, 30, 0),
-                EndDate = new DateTime(2015, 5, 28, 11, 3 ,0)
+                StartDate = "2021-05-28T06:10:00.000Z",
+                EndDate = "2021-05-28T07:43:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 1,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 28, 11, 30, 0),
-                EndDate = new DateTime(2015, 5, 28, 13, 2 ,0)
+                StartDate = "2021-05-28T08:00:00.000Z",
+                EndDate = "2021-05-28T09:32:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 3,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 28, 13, 30, 0),
-                EndDate = new DateTime(2015, 5, 28, 15, 21 ,0)
+                StartDate = "2021-05-28T10:10:00.000Z",
+                EndDate = "2021-05-28T12:01:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 5,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 28, 16, 0, 0),
-                EndDate = new DateTime(2015, 5, 28, 18, 10 ,0)
+                StartDate = "2021-05-28T12:40:00.000Z",
+                EndDate = "2021-05-28T14:50:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 4,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 28, 18, 30, 0),
-                EndDate = new DateTime(2015, 5, 28, 19, 38 ,0)
+                StartDate = "2021-05-28T15:20:00.000Z",
+                EndDate = "2021-05-28T16:28:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 3,
                 Price = 15,
-                StartDate = new DateTime(2015, 5, 28, 20, 20, 0),
-                EndDate = new DateTime(2015, 5, 28, 22, 11 ,0)
+                StartDate = "2021-05-28T17:20:00.000Z",
+                EndDate = "2021-05-28T19:11:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 2,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 29, 9, 30, 0),
-                EndDate = new DateTime(2015, 5, 29, 11, 3 ,0)
+                StartDate = "2021-05-29T07:00:00.000Z",
+                EndDate = "2021-05-29T08:33:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 1,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 29, 11, 30, 0),
-                EndDate = new DateTime(2015, 5, 29, 13, 2 ,0)
+                StartDate = "2021-05-29T09:00:00.000Z",
+                EndDate = "2021-05-29T10:32:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 3,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 29, 13, 30, 0),
-                EndDate = new DateTime(2015, 5, 29, 15, 21 ,0)
+                StartDate = "2021-05-29T11:00:00.000Z",
+                EndDate = "2021-05-29T12:51:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 5,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 29, 16, 0, 0),
-                EndDate = new DateTime(2015, 5, 29, 18, 10 ,0)
+                StartDate = "2021-05-29T13:30:00.000Z",
+                EndDate = "2021-05-29T15:40:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 4,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 29, 18, 30, 0),
-                EndDate = new DateTime(2015, 5, 29, 19, 38 ,0)
+                StartDate = "2021-05-29T16:00:00.000Z",
+                EndDate = "2021-05-29T17:08:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
-                MovieId = 3,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 29, 20, 20, 0),
-                EndDate = new DateTime(2015, 5, 29, 22, 11 ,0)
+                MovieId = 5,
+                Price = 20,
+                StartDate = "2021-05-29T17:30:00.000Z",
+                EndDate = "2021-05-29T19:50:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 2,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 30, 9, 30, 0),
-                EndDate = new DateTime(2015, 5, 30, 11, 3 ,0)
+                StartDate = "2021-05-30T07:00:00.000Z",
+                EndDate = "2021-05-30T08:33:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 1,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 30, 11, 30, 0),
-                EndDate = new DateTime(2015, 5, 30, 13, 2 ,0)
+                StartDate = "2021-05-30T09:00:00.000Z",
+                EndDate = "2021-05-30T10:32:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 3,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 30, 13, 30, 0),
-                EndDate = new DateTime(2015, 5, 30, 15, 21 ,0)
+                StartDate = "2021-05-30T11:00:00.000Z",
+                EndDate = "2021-05-30T12:51:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 5,
                 Price = 15,
-                StartDate = new DateTime(2015, 5, 30, 16, 0, 0),
-                EndDate = new DateTime(2015, 5, 30, 18, 10 ,0)
+                StartDate = "2021-05-30T13:30:00.000Z",
+                EndDate = "2021-05-30T15:40:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 4,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 30, 18, 30, 0),
-                EndDate = new DateTime(2015, 5, 30, 19, 38 ,0)
+                StartDate = "2021-05-30T16:00:00.000Z",
+                EndDate = "2021-05-30T17:08:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
-                MovieId = 3,
+                MovieId = 5,
                 Price = 15,
-                StartDate = new DateTime(2015, 5, 30, 20, 20, 0),
-                EndDate = new DateTime(2015, 5, 30, 22, 11 ,0)
+                StartDate = "2021-05-30T17:30:00.000Z",
+                EndDate = "2021-05-30T19:50:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 2,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 31, 9, 30, 0),
-                EndDate = new DateTime(2015, 5, 31, 11, 3 ,0)
+                StartDate = "2021-05-31T07:00:00.000Z",
+                EndDate = "2021-05-31T08:33:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 6,
                 Price = 15,
-                StartDate = new DateTime(2015, 5, 31, 11, 30, 0),
-                EndDate = new DateTime(2015, 5, 31, 12, 57 ,0)
+                StartDate = "2021-05-31T09:00:00.000Z",
+                EndDate = "2021-05-31T10:27:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 3,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 31, 13, 20, 0),
-                EndDate = new DateTime(2015, 5, 31, 15, 11 ,0)
+                StartDate = "2021-05-31T11:00:00.000Z",
+                EndDate = "2021-05-31T12:51:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 1,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 31, 16, 0, 0),
-                EndDate = new DateTime(2015, 5, 31, 17, 32 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 2,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 31, 18, 0, 0),
-                EndDate = new DateTime(2015, 5, 31, 19, 33 ,0)
+                StartDate = "2021-05-31T13:30:00.000Z",
+                EndDate = "2021-05-31T15:02:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 5,
+                Price = 15,
+                StartDate = "2021-05-31T15:30:00.000Z",
+                EndDate = "2021-05-31T17:40:00.000Z"
+            },
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 6,
                 Price = 20,
-                StartDate = new DateTime(2015, 5, 31, 20, 0, 0),
-                EndDate = new DateTime(2015, 5, 31, 21, 27 ,0)
+                StartDate = "2021-05-31T18:00:00.000Z",
+                EndDate = "2021-05-31T19:27:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 4,
-                Price = 15,
-                StartDate = new DateTime(2015, 5, 31, 21, 50, 0),
-                EndDate = new DateTime(2015, 5, 31, 22, 58 ,0)
-            },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 1,
                 Price = 5,
-                StartDate = new DateTime(2015, 6, 1, 9, 0, 0),
-                EndDate = new DateTime(2015, 6, 1, 10, 32 ,0)
+                StartDate = "2021-06-01T06:30:00.000Z",
+                EndDate = "2021-06-01T08:02:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
-                MovieId = 2,
+                MovieId = 6,
                 Price = 5,
-                StartDate = new DateTime(2015, 6, 1, 11, 30, 0),
-                EndDate = new DateTime(2015, 6, 1, 13, 3 ,0)
+                StartDate = "2021-06-01T09:00:00.000Z",
+                EndDate = "2021-06-01T10:27:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 3,
                 Price = 10,
-                StartDate = new DateTime(2015, 6, 1, 13, 30, 0),
-                EndDate = new DateTime(2015, 6, 1, 15, 21 ,0)
+                StartDate = "2021-06-01T11:00:00.000Z",
+                EndDate = "2021-06-01T12:51:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 3,
                 Price = 10,
-                StartDate = new DateTime(2015, 6, 1, 15, 30, 0),
-                EndDate = new DateTime(2015, 6, 1, 17, 21 ,0)
+                StartDate = "2021-06-01T13:30:00.000Z",
+                EndDate = "2021-06-01T15:21:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 6,
                 Price = 15,
-                StartDate = new DateTime(2015, 6, 1, 17, 30, 0),
-                EndDate = new DateTime(2015, 6, 1, 18, 57 ,0)
+                StartDate = "2021-06-01T16:00:00.000Z",
+                EndDate = "2021-06-01T17:27:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
-                MovieId = 5,
+                MovieId = 2,
                 Price = 15,
-                StartDate = new DateTime(2015, 6, 1, 20, 0, 0),
-                EndDate = new DateTime(2015, 6, 1, 22, 10 ,0)
+                StartDate = "2021-06-01T18:00:00.000Z",
+                EndDate = "2021-06-01T19:33:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 1,
                 Price = 5,
-                StartDate = new DateTime(2015, 6, 2, 9, 0, 0),
-                EndDate = new DateTime(2015, 6, 2, 10, 32 ,0)
+                StartDate = "2021-06-02T07:00:00.000Z",
+                EndDate = "2021-06-02T08:32:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 6,
+                Price = 5,
+                StartDate = "2021-06-02T09:00:00.000Z",
+                EndDate = "2021-06-02T10:27:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 3,
+                Price = 10,
+                StartDate = "2021-06-02T11:00:00.000Z",
+                EndDate = "2021-06-02T12:51:00.000Z"
+            },
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 2,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 2, 11, 0, 0),
-                EndDate = new DateTime(2015, 6, 2, 12, 33 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 3,
                 Price = 10,
-                StartDate = new DateTime(2015, 6, 2, 13, 0, 0),
-                EndDate = new DateTime(2015, 6, 2, 14, 51 ,0)
+                StartDate = "2021-06-02T13:30:00.000Z",
+                EndDate = "2021-06-02T15:03:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 3,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 2, 15, 30, 0),
-                EndDate = new DateTime(2015, 6, 2, 17, 21 ,0)
-            },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 6,
                 Price = 15,
-                StartDate = new DateTime(2015, 6, 2, 17, 30, 0),
-                EndDate = new DateTime(2015, 6, 2, 18, 57 ,0)
+                StartDate = "2021-06-02T16:00:00.000Z",
+                EndDate = "2021-06-02T17:27:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
-                MovieId = 5,
+                MovieId = 2,
                 Price = 15,
-                StartDate = new DateTime(2015, 6, 2, 20, 0, 0),
-                EndDate = new DateTime(2015, 6, 2, 22, 10 ,0)
+                StartDate = "2021-06-02T18:00:00.000Z",
+                EndDate = "2021-06-02T19:33:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 1,
                 Price = 5,
-                StartDate = new DateTime(2015, 6, 3, 9, 0, 0),
-                EndDate = new DateTime(2015, 6, 3, 10, 32 ,0)
+                StartDate = "2021-06-03T06:30:00.000Z",
+                EndDate = "2021-06-03T08:02:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 2,
                 Price = 5,
-                StartDate = new DateTime(2015, 6, 3, 11, 0, 0),
-                EndDate = new DateTime(2015, 6, 3, 12, 33 ,0)
+                StartDate = "2021-06-03T08:30:00.000Z",
+                EndDate = "2021-06-03T10:03:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 6,
+                Price = 10,
+                StartDate = "2021-06-03T11:00:00.000Z",
+                EndDate = "2021-06-03T12:27:00.000Z"
+            },
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 3,
                 Price = 10,
-                StartDate = new DateTime(2015, 6, 3, 13, 0, 0),
-                EndDate = new DateTime(2015, 6, 3, 14, 51 ,0)
+                StartDate = "2021-06-03T13:00:00.000Z",
+                EndDate = "2021-06-03T14:51:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 3,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 3, 15, 30, 0),
-                EndDate = new DateTime(2015, 6, 3, 17, 21 ,0)
-            },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
                 MovieId = 6,
                 Price = 15,
-                StartDate = new DateTime(2015, 6, 3, 17, 30, 0),
-                EndDate = new DateTime(2015, 6, 3, 18, 57 ,0)
+                StartDate = "2021-06-03T15:10:00.000Z",
+                EndDate = "2021-06-03T16:37:00.000Z"
             },
-            new CinemaDataItem {
+            new CinemaAppointment {
                 TheatreId = 1,
-                MovieId = 5,
-                Price = 15,
-                StartDate = new DateTime(2015, 6, 3, 20, 0, 0),
-                EndDate = new DateTime(2015, 6, 3, 22, 10 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 2,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 4, 9, 0, 0),
-                EndDate = new DateTime(2015, 6, 4, 10, 33 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 1,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 4, 11, 0, 0),
-                EndDate = new DateTime(2015, 6, 4, 12, 32 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 3,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 4, 13, 0, 0),
-                EndDate = new DateTime(2015, 6, 4, 14, 51 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 5,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 4, 15, 30, 0),
-                EndDate = new DateTime(2015, 6, 4, 17, 40 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 6,
-                Price = 15,
-                StartDate = new DateTime(2015, 6, 4, 18, 0, 0),
-                EndDate = new DateTime(2015, 6, 4, 19, 27 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 1,
-                Price = 15,
-                StartDate = new DateTime(2015, 6, 4, 20, 0, 0),
-                EndDate = new DateTime(2015, 6, 4, 21, 32 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 2,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 5, 9, 0, 0),
-                EndDate = new DateTime(2015, 6, 5, 10, 33 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 1,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 5, 11, 0, 0),
-                EndDate = new DateTime(2015, 6, 5, 12, 32 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 3,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 5, 13, 0, 0),
-                EndDate = new DateTime(2015, 6, 5, 14, 51 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 5,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 5, 15, 30, 0),
-                EndDate = new DateTime(2015, 6, 5, 17, 40 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 6,
-                Price = 15,
-                StartDate = new DateTime(2015, 6, 5, 18, 0, 0),
-                EndDate = new DateTime(2015, 6, 5, 19, 27 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 1,
-                Price = 15,
-                StartDate = new DateTime(2015, 6, 5, 20, 0, 0),
-                EndDate = new DateTime(2015, 6, 5, 21, 32 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 2,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 6, 9, 0, 0),
-                EndDate = new DateTime(2015, 6, 6, 10, 33 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 1,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 6, 11, 0, 0),
-                EndDate = new DateTime(2015, 6, 6, 12, 32 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 3,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 6, 13, 0, 0),
-                EndDate = new DateTime(2015, 6, 6, 14, 51 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 5,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 6, 15, 30, 0),
-                EndDate = new DateTime(2015, 6, 6, 17, 40 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 6,
-                Price = 15,
-                StartDate = new DateTime(2015, 6, 6, 18, 0, 0),
-                EndDate = new DateTime(2015, 6, 6, 19, 27 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 1,
-                MovieId = 1,
-                Price = 15,
-                StartDate = new DateTime(2015, 6, 6, 20, 0, 0),
-                EndDate = new DateTime(2015, 6, 6, 21, 32 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 3,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 24, 9, 30, 0),
-                EndDate = new DateTime(2015, 5, 24, 11, 21 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 1,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 24, 12, 0, 0),
-                EndDate = new DateTime(2015, 5, 24, 13, 32 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 3,
-                Price = 15,
-                StartDate = new DateTime(2015, 5, 24, 14, 0, 0),
-                EndDate = new DateTime(2015, 5, 24, 15, 51 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 4,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 24, 16, 10, 0),
-                EndDate = new DateTime(2015, 5, 24, 17, 18 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 2,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 24, 17, 30, 0),
-                EndDate = new DateTime(2015, 5, 24, 19, 3 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 1,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 24, 19, 30, 0),
-                EndDate = new DateTime(2015, 5, 24, 21, 2 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 2,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 24, 21, 20, 0),
-                EndDate = new DateTime(2015, 5, 24, 22, 53 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 1,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 25, 9, 30, 0),
-                EndDate = new DateTime(2015, 5, 25, 11, 2 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 2,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 25, 11, 30, 0),
-                EndDate = new DateTime(2015, 5, 25, 13, 3 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 5,
-                Price = 15,
-                StartDate = new DateTime(2015, 5, 25, 13, 30, 0),
-                EndDate = new DateTime(2015, 5, 25, 15, 40 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 4,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 25, 16, 0, 0),
-                EndDate = new DateTime(2015, 5, 25, 17, 8 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 1,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 25, 17, 30, 0),
-                EndDate = new DateTime(2015, 5, 25, 19, 2 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 2,
-                Price = 15,
-                StartDate = new DateTime(2015, 5, 25, 19, 40, 0),
-                EndDate = new DateTime(2015, 5, 25, 21, 13 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 4,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 25, 21, 40, 0),
-                EndDate = new DateTime(2015, 5, 25, 22, 48 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 1,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 26, 9, 30, 0),
-                EndDate = new DateTime(2015, 5, 26, 11, 2 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 2,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 26, 11, 30, 0),
-                EndDate = new DateTime(2015, 5, 26, 13, 3 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 5,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 26, 13, 30, 0),
-                EndDate = new DateTime(2015, 5, 26, 15, 41 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 5,
-                Price = 15,
-                StartDate = new DateTime(2015, 5, 26, 16, 0, 0),
-                EndDate = new DateTime(2015, 5, 26, 18, 10 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 4,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 26, 18, 30, 0),
-                EndDate = new DateTime(2015, 5, 26, 19, 38 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
                 MovieId = 5,
                 Price = 20,
-                StartDate = new DateTime(2015, 5, 26, 20, 20, 0),
-                EndDate = new DateTime(2015, 5, 26, 22, 30 ,0)
+                StartDate = "2021-06-03T17:30:00.000Z",
+                EndDate = "2021-06-03T19:40:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 1,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 27, 9, 30, 0),
-                EndDate = new DateTime(2015, 5, 27, 11, 2 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
+            new CinemaAppointment {
+                TheatreId = 1,
                 MovieId = 2,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 27, 11, 30, 0),
-                EndDate = new DateTime(2015, 5, 27, 13, 3 ,0)
+                StartDate = "2021-06-04T06:30:00.000Z",
+                EndDate = "2021-06-04T08:02:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 5,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 27, 13, 30, 0),
-                EndDate = new DateTime(2015, 5, 27, 15, 41 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 5,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 27, 16, 0, 0),
-                EndDate = new DateTime(2015, 5, 27, 18, 10 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 4,
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 1,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 27, 18, 30, 0),
-                EndDate = new DateTime(2015, 5, 27, 19, 38 ,0)
+                StartDate = "2021-06-04T08:30:00.000Z",
+                EndDate = "2021-06-04T10:02:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 2,
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 6,
+                Price = 10,
+                StartDate = "2021-06-04T11:00:00.000Z",
+                EndDate = "2021-06-04T12:27:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 5,
+                Price = 10,
+                StartDate = "2021-06-04T13:00:00.000Z",
+                EndDate = "2021-06-04T14:51:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 6,
+                Price = 15,
+                StartDate = "2021-06-04T15:10:00.000Z",
+                EndDate = "2021-06-04T16:37:00.000Z"
+            },
+            new CinemaAppointment {
+                TheatreId = 1,
                 MovieId = 5,
                 Price = 15,
-                StartDate = new DateTime(2015, 5, 27, 20, 20, 0),
-                EndDate = new DateTime(2015, 5, 27, 22, 30 ,0)
+                StartDate = "2021-06-04T17:20:00.000Z",
+                EndDate = "2021-06-04T19:30:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 2,
+            new CinemaAppointment {
+                TheatreId = 1,
                 MovieId = 2,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 28, 9, 10, 0),
-                EndDate = new DateTime(2015, 5, 28, 10, 43 ,0)
+                StartDate = "2021-06-05T06:30:00.000Z",
+                EndDate = "2021-06-05T08:02:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 2,
+            new CinemaAppointment {
+                TheatreId = 1,
                 MovieId = 1,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 28, 11, 0, 0),
-                EndDate = new DateTime(2015, 5, 28, 12, 32 ,0)
+                StartDate = "2021-06-05T08:30:00.000Z",
+                EndDate = "2021-06-05T10:02:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 3,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 28, 13, 10, 0),
-                EndDate = new DateTime(2015, 5, 28, 15, 1 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 5,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 28, 15, 40, 0),
-                EndDate = new DateTime(2015, 5, 28, 17, 50 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 4,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 28, 18, 20, 0),
-                EndDate = new DateTime(2015, 5, 28, 19, 28 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 3,
-                Price = 15,
-                StartDate = new DateTime(2015, 5, 28, 20, 20, 0),
-                EndDate = new DateTime(2015, 5, 28, 22, 11 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 2,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 29, 10, 0, 0),
-                EndDate = new DateTime(2015, 5, 29, 11, 33 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 1,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 29, 12, 0, 0),
-                EndDate = new DateTime(2015, 5, 29, 13, 32 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
+            new CinemaAppointment {
+                TheatreId = 1,
                 MovieId = 3,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 29, 14, 0, 0),
-                EndDate = new DateTime(2015, 5, 29, 15, 51 ,0)
+                StartDate = "2021-06-05T10:30:00.000Z",
+                EndDate = "2021-06-05T12:21:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 2,
+            new CinemaAppointment {
+                TheatreId = 1,
                 MovieId = 5,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 29, 16, 30, 0),
-                EndDate = new DateTime(2015, 5, 29, 18, 40 ,0)
+                StartDate = "2021-06-05T13:00:00.000Z",
+                EndDate = "2021-06-05T15:10:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 4,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 29, 19, 0, 0),
-                EndDate = new DateTime(2015, 5, 29, 20, 8 ,0)
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 6,
+                Price = 15,
+                StartDate = "2021-06-05T15:30:00.000Z",
+                EndDate = "2021-06-05T16:57:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 5,
-                Price = 20,
-                StartDate = new DateTime(2015, 5, 29, 20, 30, 0),
-                EndDate = new DateTime(2015, 5, 29, 22, 50 ,0)
+            new CinemaAppointment {
+                TheatreId = 1,
+                MovieId = 2,
+                Price = 15,
+                StartDate = "2021-06-05T17:30:00.000Z",
+                EndDate = "2021-06-05T19:03:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 2,
+            new CinemaAppointment {
+                TheatreId = 1,
                 MovieId = 2,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 30, 10, 0, 0),
-                EndDate = new DateTime(2015, 5, 30, 11, 33 ,0)
+                StartDate = "2021-06-06T06:30:00.000Z",
+                EndDate = "2021-06-06T08:03:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 2,
+            new CinemaAppointment {
+                TheatreId = 1,
                 MovieId = 1,
                 Price = 5,
-                StartDate = new DateTime(2015, 5, 30, 12, 0, 0),
-                EndDate = new DateTime(2015, 5, 30, 13, 32 ,0)
+                StartDate = "2021-06-06T08:30:00.000Z",
+                EndDate = "2021-06-06T10:02:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 2,
+            new CinemaAppointment {
+                TheatreId = 1,
                 MovieId = 3,
                 Price = 10,
-                StartDate = new DateTime(2015, 5, 30, 14, 0, 0),
-                EndDate = new DateTime(2015, 5, 30, 15, 51 ,0)
+                StartDate = "2021-06-06T10:30:00.000Z",
+                EndDate = "2021-06-06T12:21:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 5,
-                Price = 15,
-                StartDate = new DateTime(2015, 5, 30, 16, 30, 0),
-                EndDate = new DateTime(2015, 5, 30, 18, 40 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 4,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 30, 19, 0, 0),
-                EndDate = new DateTime(2015, 5, 30, 20, 8 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 5,
-                Price = 15,
-                StartDate = new DateTime(2015, 5, 30, 20, 30, 0),
-                EndDate = new DateTime(2015, 5, 30, 22, 50 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 2,
-                Price = 5,
-                StartDate = new DateTime(2015, 5, 31, 10, 0, 0),
-                EndDate = new DateTime(2015, 5, 31, 11, 33 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 6,
-                Price = 15,
-                StartDate = new DateTime(2015, 5, 31, 12, 0, 0),
-                EndDate = new DateTime(2015, 5, 31, 13, 27 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 3,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 31, 14, 0, 0),
-                EndDate = new DateTime(2015, 5, 31, 15, 51 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 1,
-                Price = 10,
-                StartDate = new DateTime(2015, 5, 31, 16, 30, 0),
-                EndDate = new DateTime(2015, 5, 31, 18, 2 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 5,
-                Price = 15,
-                StartDate = new DateTime(2015, 5, 31, 18, 30, 0),
-                EndDate = new DateTime(2015, 5, 31, 20, 40 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 6,
-                Price = 20,
-                StartDate = new DateTime(2015, 5, 31, 21, 0, 0),
-                EndDate = new DateTime(2015, 5, 31, 22, 27 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 1,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 1, 9, 30, 0),
-                EndDate = new DateTime(2015, 6, 1, 11, 2 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 6,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 1, 12, 0, 0),
-                EndDate = new DateTime(2015, 6, 1, 13, 27 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 3,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 1, 14, 0, 0),
-                EndDate = new DateTime(2015, 6, 1, 15, 51 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 3,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 1, 16, 30, 0),
-                EndDate = new DateTime(2015, 6, 1, 18, 21 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 6,
-                Price = 15,
-                StartDate = new DateTime(2015, 6, 1, 19, 0, 0),
-                EndDate = new DateTime(2015, 6, 1, 20, 27 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 2,
-                Price = 15,
-                StartDate = new DateTime(2015, 6, 1, 21, 0, 0),
-                EndDate = new DateTime(2015, 6, 1, 22, 33 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 1,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 2, 10, 0, 0),
-                EndDate = new DateTime(2015, 6, 2, 11, 32 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 6,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 2, 12, 0, 0),
-                EndDate = new DateTime(2015, 6, 2, 13, 27 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 3,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 2, 14, 0, 0),
-                EndDate = new DateTime(2015, 6, 2, 15, 51 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 2,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 2, 16, 30, 0),
-                EndDate = new DateTime(2015, 6, 2, 18, 3 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 6,
-                Price = 15,
-                StartDate = new DateTime(2015, 6, 2, 19, 0, 0),
-                EndDate = new DateTime(2015, 6, 2, 20, 27 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 2,
-                Price = 15,
-                StartDate = new DateTime(2015, 6, 2, 21, 0, 0),
-                EndDate = new DateTime(2015, 6, 2, 22, 33 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 1,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 3, 9, 30, 0),
-                EndDate = new DateTime(2015, 6, 3, 11, 2 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 2,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 3, 11, 30, 0),
-                EndDate = new DateTime(2015, 6, 3, 13, 3 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 6,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 3, 14, 0, 0),
-                EndDate = new DateTime(2015, 6, 3, 15, 27 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 3,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 3, 16, 0, 0),
-                EndDate = new DateTime(2015, 6, 3, 17, 51 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 6,
-                Price = 15,
-                StartDate = new DateTime(2015, 6, 3, 18, 10, 0),
-                EndDate = new DateTime(2015, 6, 3, 19, 37 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 5,
-                Price = 20,
-                StartDate = new DateTime(2015, 6, 3, 20, 30, 0),
-                EndDate = new DateTime(2015, 6, 3, 22, 40 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 2,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 4, 9, 30, 0),
-                EndDate = new DateTime(2015, 6, 4, 11, 2 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 1,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 4, 11, 30, 0),
-                EndDate = new DateTime(2015, 6, 4, 13, 2 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 6,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 4, 14, 0, 0),
-                EndDate = new DateTime(2015, 6, 4, 15, 27 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
+            new CinemaAppointment {
+                TheatreId = 1,
                 MovieId = 5,
                 Price = 10,
-                StartDate = new DateTime(2015, 6, 4, 16, 0, 0),
-                EndDate = new DateTime(2015, 6, 4, 17, 51 ,0)
+                StartDate = "2021-06-06T13:00:00.000Z",
+                EndDate = "2021-06-06T15:10:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 2,
+            new CinemaAppointment {
+                TheatreId = 1,
                 MovieId = 6,
                 Price = 15,
-                StartDate = new DateTime(2015, 6, 4, 18, 10, 0),
-                EndDate = new DateTime(2015, 6, 4, 19, 37 ,0)
+                StartDate = "2021-06-06T15:30:00.000Z",
+                EndDate = "2021-06-06T16:57:00.000Z"
             },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 5,
-                Price = 15,
-                StartDate = new DateTime(2015, 6, 4, 20, 20, 0),
-                EndDate = new DateTime(2015, 6, 4, 22, 30 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 2,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 5, 9, 30, 0),
-                EndDate = new DateTime(2015, 6, 5, 11, 2 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 1,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 5, 11, 30, 0),
-                EndDate = new DateTime(2015, 6, 5, 13, 2 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 3,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 5, 13, 30, 0),
-                EndDate = new DateTime(2015, 6, 5, 15, 21 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 5,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 5, 16, 0, 0),
-                EndDate = new DateTime(2015, 6, 5, 18, 10 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 6,
-                Price = 15,
-                StartDate = new DateTime(2015, 6, 5, 18, 30, 0),
-                EndDate = new DateTime(2015, 6, 5, 19, 57 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 2,
-                Price = 15,
-                StartDate = new DateTime(2015, 6, 5, 20, 30, 0),
-                EndDate = new DateTime(2015, 6, 5, 22, 3 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 2,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 6, 9, 30, 0),
-                EndDate = new DateTime(2015, 6, 6, 11, 3 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 1,
-                Price = 5,
-                StartDate = new DateTime(2015, 6, 6, 11, 30, 0),
-                EndDate = new DateTime(2015, 6, 6, 13, 2 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 3,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 6, 13, 30, 0),
-                EndDate = new DateTime(2015, 6, 6, 15, 21 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 5,
-                Price = 10,
-                StartDate = new DateTime(2015, 6, 6, 16, 0, 0),
-                EndDate = new DateTime(2015, 6, 6, 18, 10 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
-                MovieId = 6,
-                Price = 15,
-                StartDate = new DateTime(2015, 6, 6, 18, 30, 0),
-                EndDate = new DateTime(2015, 6, 6, 19, 57 ,0)
-            },
-            new CinemaDataItem {
-                TheatreId = 2,
+            new CinemaAppointment {
+                TheatreId = 1,
                 MovieId = 1,
                 Price = 15,
-                StartDate = new DateTime(2015, 6, 6, 20, 30, 0),
-                EndDate = new DateTime(2015, 6, 6, 22, 2 ,0)
+                StartDate = "2021-06-06T17:30:00.000Z",
+                EndDate = "2021-06-06T19:02:00.000Z"
             }
         };
     }

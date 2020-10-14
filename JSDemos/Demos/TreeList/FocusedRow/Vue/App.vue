@@ -6,7 +6,7 @@
       :word-wrap-enabled="true"
       :show-borders="true"
       :focused-row-enabled="true"
-      :focused-row-key.sync="focusedRowKey"
+      v-model:focused-row-key="focusedRowKey"
       parent-id-expr="Task_Parent_ID"
       has-items-expr="Has_Items"
       @focused-row-changed="onFocusedRowChanged"
@@ -61,13 +61,13 @@
     <div class="options">
       <div class="caption">Options</div>
       <div class="option">
-        <span>Focused row key</span>
+        <span>Focused row key </span>
         <DxNumberBox
           id="taskId"
           :min="1"
           :max="182"
           :step="0"
-          :value.sync="focusedRowKey"
+          v-model:value="focusedRowKey"
         />
       </div>
     </div>

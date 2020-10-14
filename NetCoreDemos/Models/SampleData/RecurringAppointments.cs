@@ -8,59 +8,59 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
             new RecurringAppointment {
                 Text = "Watercolor Landscape",
                 RoomId = 1,
-                StartDate = new DateTime(2017, 5, 1, 9, 30, 0),
-                EndDate = new DateTime(2017, 5, 1, 11, 0, 0),
+                StartDate = "2021-02-29T06:30:00.000Z",
+                EndDate = "2021-02-29T08:00:00.000Z",
                 RecurrenceRule = "FREQ=WEEKLY;BYDAY=TU,FR;COUNT=10"
             },
             new RecurringAppointment {
                 Text = "Oil Painting for Beginners",
                 RoomId = 2,
-                StartDate = new DateTime(2017, 5, 1, 9, 30, 0),
-                EndDate = new DateTime(2017, 5, 1, 11, 0, 0),
+                StartDate = "2021-02-29T06:30:00.000Z",
+                EndDate = "2021-02-29T08:00:00.000Z",
                 RecurrenceRule = "FREQ=WEEKLY;BYDAY=MO,TH;COUNT=10"
             },
             new RecurringAppointment {
                 Text = "Testing",
                 RoomId = 3,
-                StartDate = new DateTime(2017, 5, 1, 12, 0, 0),
-                EndDate = new DateTime(2017, 5, 1, 13, 0, 0),
+                StartDate = "2021-02-29T09:00:00.000Z",
+                EndDate = "2021-02-29T10:00:00.000Z",
                 RecurrenceRule = "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2"
             },
             new RecurringAppointment {
                 Text = "Meeting of Instructors",
                 RoomId = 4,
-                StartDate = new DateTime(2017, 5, 1, 9, 0, 0),
-                EndDate = new DateTime(2017, 5, 1, 9, 15, 0),
-                RecurrenceRule = "FREQ=DAILY;BYDAY=WE;UNTIL=20170601"
+                StartDate = "2021-02-29T06:00:00.000Z",
+                EndDate = "2021-02-29T06:15:00.000Z",
+                RecurrenceRule = "FREQ=DAILY;BYDAY=WE;UNTIL=20210401"
             },
             new RecurringAppointment {
                 Text = "Recruiting students",
                 RoomId = 5,
-                StartDate = new DateTime(2017, 5, 26, 10, 0, 0),
-                EndDate = new DateTime(2017, 5, 26, 11, 0, 0),
-                RecurrenceRule = "FREQ=YEARLY;BYWEEKNO=23",
-                RecurrenceException = "20170611T100000"
+                StartDate = "2021-02-24T07:00:00.000Z",
+                EndDate = "2021-02-24T08:00:00.000Z",
+                RecurrenceRule = "FREQ=YEARLY;BYWEEKNO=14",
+                RecurrenceException = "20210411T100000"
             },
             new RecurringAppointment {
                 Text = "Final exams",
                 RoomId = 3,
-                StartDate = new DateTime(2017, 5, 26, 12, 0, 0),
-                EndDate = new DateTime(2017, 5, 26, 13, 35, 0),
-                RecurrenceRule = "FREQ=YEARLY;BYWEEKNO=24;BYDAY=TH,FR"
+                StartDate = "2021-02-24T09:00:00.000Z",
+                EndDate = "2021-02-24T10:35:00.000Z",
+                RecurrenceRule = "FREQ=YEARLY;BYWEEKNO=15;BYDAY=TH,FR"
             },
             new RecurringAppointment {
                 Text = "Monthly Planning",
                 RoomId = 4,
-                StartDate = new DateTime(2017, 5, 26, 14, 30, 0),
-                EndDate = new DateTime(2017, 5, 26, 15, 45, 0),
+                StartDate = "2021-03-24T11:30:00.000Z",
+                EndDate = "2021-03-24T12:45:00.000Z",
                 RecurrenceRule = "FREQ=MONTHLY;BYMONTHDAY=27;COUNT=1"
             },
             new RecurringAppointment {
                 Text = "Open Day",
                 RoomId = 5,
-                StartDate = new DateTime(2017, 5, 1, 9, 30, 0),
-                EndDate = new DateTime(2017, 5, 1, 13, 0, 0),
-                RecurrenceRule = "FREQ=YEARLY;BYYEARDAY=148"
+                StartDate = "2021-02-29T06:30:00.000Z",
+                EndDate = "2021-02-29T10:00:00.000Z",
+                RecurrenceRule = "FREQ=YEARLY;BYYEARDAY=87"
             }
         };
     }

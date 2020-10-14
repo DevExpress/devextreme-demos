@@ -3,10 +3,19 @@
     id="diagram"
     ref="diagram"
   >
-    <DxNodes :data-source="orgItemsDataSource">
-      <DxAutoLayout :type="'tree'"/>
+    <DxNodes
+      :data-source="flowNodesDataSource"
+      :text-expr="'text'"
+      :type-expr="'type'"
+    >
+      <DxAutoLayout :type="'layered'"/>
     </DxNodes>
-    <DxEdges :data-source="orgLinksDataSource"/>
+    <DxEdges
+      :data-source="flowEdgesDataSource"
+      :text-expr="'text'"
+      :from-expr="'fromId'"
+      :to-expr="'toId'"
+    />
     <DxToolbox>
       <DxGroup
         :category="'general'"
@@ -26,13 +35,13 @@ export default {
   },
   data() {
     return {
-      orgItemsDataSource: new ArrayStore({
-        key: 'this',
-        data: service.getOrgItems()
+      flowNodesDataSource: new ArrayStore({
+        key: 'id',
+        data: service.getFlowNodes()
       }),
-      orgLinksDataSource: new ArrayStore({
-        key: 'this',
-        data: service.getOrgLinks()
+      flowEdgesDataSource: new ArrayStore({
+        key: 'id',
+        data: service.getFlowEdges()
       })
     };
   }

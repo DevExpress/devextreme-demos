@@ -20,7 +20,7 @@
         <span>Overlapping Modes:</span>
         <DxSelectBox
           :data-source="overlappingModes"
-          :value.sync="currentMode"
+          v-model:value="currentMode"
         />
       </div>
     </div>
@@ -82,7 +82,7 @@ export default {
 .option > span {
     position: relative;
     top: 2px;
-    margin-right: 10px;
+    margin-right: 14px;
 }
 
 .option > .dx-widget {

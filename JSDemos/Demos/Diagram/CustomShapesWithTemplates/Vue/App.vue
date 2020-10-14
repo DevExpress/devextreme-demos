@@ -32,7 +32,7 @@
     </DxDiagram>
 
     <DxPopup
-      :visible.sync="popupVisible"
+      v-model:visible="popupVisible"
       :drag-enabled="false"
       :close-on-outside-click="true"
       :show-title="true"
@@ -66,7 +66,7 @@ export default {
     return {
       employees: service.getEmployees(),
       dataSource: new ArrayStore({
-        key: 'this',
+        key: 'ID',
         data: service.getEmployees()
       }),
       currentEmployee: {},

@@ -19,6 +19,10 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View();
         }
 
+        public IActionResult Tables() {
+            return View();
+        }
+
         public IActionResult Mentions() {
             return View(SampleData.EmployeeMentions);
         }

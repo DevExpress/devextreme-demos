@@ -16,9 +16,9 @@
     <div class="options">
       <div class="caption">Options</div>
       <div class="option">
-        <span>Direction</span>
+        <span>Direction </span>
         <DxSelectBox
-          v-model="direction"
+          v-model:value="direction"
           :items="directions"
         />
       </div>
@@ -77,7 +77,7 @@ export default {
 }
 
 .option > span {
-    width: 70px;
+    width: 74px;
     display: inline-block;
 }
 

@@ -19,7 +19,7 @@ if(!/localhost/.test(document.location.host)) {
 })
 export class AppComponent {
     dataSource: DataSource;
-    currentDate = new Date(2017, 4, 25);
+    currentDate = new Date(2021, 4, 25);
     views = ["workWeek", "month"];
     currentView = this.views[0];
 
@@ -75,6 +75,14 @@ export class AppComponent {
         const hours = date.getHours();
         const dinnerTime = this.dataService.getDinnerTime();
         return hours >= dinnerTime.from && hours < dinnerTime.to;
+    }
+
+    hasCoffeeCupIcon(date: Date) {
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        const dinnerTime = this.dataService.getDinnerTime();
+
+        return hours === dinnerTime.from && minutes === 0;
     }
 
     isValidAppointment(component: any, appointmentData: any) {

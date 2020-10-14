@@ -39,7 +39,7 @@
         <span>Show Check Boxes Mode:</span>
         <DxSelectBox
           :items="showCheckBoxesModes"
-          :value.sync="showCheckBoxesModeValue"
+          v-model:value="showCheckBoxesModeValue"
           @value-changed="showCheckBoxesModeValueChanged"
         />
       </div>
@@ -47,7 +47,7 @@
         <span>Selection Mode:</span>
         <DxSelectBox
           :items="selectionModes"
-          :value.sync="selectionModeValue"
+          v-model:value="selectionModeValue"
           :disabled="isSelectionModeDisabled"
           @value-changed="selectionModeValueChanged"
         />
@@ -56,13 +56,13 @@
         <DxCheckBox
           text="Select Nodes Recursive"
           :disabled="isRecursiveDisabled"
-          :value.sync="selectNodesRecursiveValue"
+          v-model:value="selectNodesRecursiveValue"
         />
       </div>
       <div class="option">
         <DxCheckBox
           text="Select By Click"
-          :value.sync="selectByClickValue"
+          v-model:value="selectByClickValue"
         />
       </div>
     </div>
@@ -154,7 +154,7 @@ export default {
 
 .selected-container {
     padding: 20px;
-    margin-left: 20px;
+    margin-left: 24px;
     background-color: rgba(191, 191, 191, 0.15);
     font-size: 115%;
     font-weight: bold;
@@ -184,7 +184,7 @@ export default {
     width: 24%;
     display: inline-block;
     margin-top: 10px;
-    margin-right: 5px;
+    margin-right: 9px;
     box-sizing: border-box;
 }
 

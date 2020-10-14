@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace DevExtreme.MVC.Demos.Controllers {
     public class SchedulerController : Controller {
         public ActionResult SimpleArray() {
-            return View();
+            return View(SampleData.SimpleArrayAppointments);
         }
 
         public ActionResult WebAPIService() {
@@ -91,12 +91,12 @@ namespace DevExtreme.MVC.Demos.Controllers {
         }
 
         public ActionResult IncreaseViewDuration() {
-            return View(SampleData.PlannedTasks);
+            return View(SampleData.IncreaseViewDurationAppointments);
         }
 
         public ActionResult LimitAppointmentCountPerCell() {
             return View(new LimitAppointmentCountPerCellModel {
-                Appointments = SampleData.AdaptiveAppointments,
+                Appointments = SampleData.LimitAppointmentCountPerCellAppointments,
                 Resources = SampleData.AdaptiveAppointmentsResources
             });
         }

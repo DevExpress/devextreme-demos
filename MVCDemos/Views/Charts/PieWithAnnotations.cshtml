@@ -1,0 +1,76 @@
+﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.MedalAnnotationInfo>
+
+@(Html.DevExtreme().PieChart()
+    .ID("pie")
+    .Palette(VizPalette.Vintage)
+    .Title("Ice Hockey World Championship Gold Medal Winners")
+    .CommonAnnotationSettings(ca => ca
+        .Type(AnnotationType.Image)
+        .PaddingLeftRight(0)
+        .PaddingTopBottom(0)
+        .TooltipTemplate(@<text>
+            <div class='medal-tooltip'>
+                <div class='country-name'>
+                    <%- data.Country %><% if(data.OldCountryName) { %>
+                    <br /><%- data.OldCountryName %>
+                    <% } %>
+                </div>
+                <div>
+                    <span class='caption'>Gold</span>: <%- data.Gold %>
+                </div>
+                <div>
+                    <span class='caption'>Silver</span>: <%- data.Silver %>
+                </div>
+                <div>
+                    <span class='caption'>Bronze</span>: <%- data.Bronze %>
+                </div>
+            </div>
+        </text>)
+        .Image(i => i
+            .Height(60)
+            .Width(90)
+        )
+    )
+    .Annotations(a => {
+        foreach(var annotation in Model) {
+            a.Add()
+            .Argument(annotation.Country)
+            .Image(annotation.Image)
+            .Data(annotation.Data)
+            .Location(annotation.Location)
+            .OffsetX(new JS(annotation.OffsetX.HasValue
+                ? annotation.OffsetX.Value.ToString()
+                : JS.Undefined.ToString()))
+            .OffsetY(new JS(annotation.OffsetY.HasValue
+                ? annotation.OffsetY.Value.ToString()
+                : JS.Undefined.ToString()))
+            .Color(annotation.Color)
+            .Border(b => b.Color(annotation.BorderColor))
+            .Shadow(s => s.Opacity(
+                new JS(annotation.ShadowOpacity.HasValue
+                ? annotation.ShadowOpacity.Value.ToString()
+                : JS.Undefined.ToString())));
+        }
+    })
+    .Series(s =>
+        s.Add()
+        .ArgumentField("Country")
+        .ValueField("Gold")
+        .Label(l => l
+            .Visible(true)
+            .Position(PieChartLabelPosition.Inside)
+            .RadialOffset(83)
+            .BackgroundColor("transparent")
+            .Font(f => f
+                .Size(16)
+                .Weight(600)
+            )
+        )
+    )
+    .Tooltip(t => t
+        .PaddingLeftRight(12)
+        .PaddingTopBottom(10)
+    )
+    .Legend(l => l.Visible(false))
+    .DataSource(Model.Select(d => d.Data))
+)

@@ -1,14 +1,18 @@
-﻿@(Html.DevExtreme().Scheduler()
-    .ID("scheduler")
-    .DataSource(new JS("appointments"))
-    .Views(new[] {
-        SchedulerViewType.Week,
-        SchedulerViewType.Month
-    })
-    .CurrentView(SchedulerViewType.Week)
-    .CurrentDate(new DateTime(2017, 5, 25))
-    .StartDayHour(9)
-    .Height(600)
-)
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.Appointment>
 
-<script src="~/data/appointments.js"></script>
+@(Html.DevExtreme().Scheduler()
+        .ID("scheduler")
+        .DataSource(Model)
+        .TextExpr("Text")
+        .StartDateExpr("StartDate")
+        .EndDateExpr("EndDate")
+        .AllDayExpr("AllDay")
+        .Views(new[] {
+            SchedulerViewType.Week,
+            SchedulerViewType.Month
+        })
+        .CurrentView(SchedulerViewType.Week)
+        .CurrentDate(new DateTime(2021, 5, 25))
+        .StartDayHour(9)
+        .Height(600)
+)

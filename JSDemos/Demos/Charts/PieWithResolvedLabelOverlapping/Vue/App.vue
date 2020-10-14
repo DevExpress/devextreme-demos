@@ -26,7 +26,7 @@
         <span>Label Overlapping Resolution Mode</span>
         <DxSelectBox
           :data-source="resolveModes"
-          v-model="resolveMode"
+          v-model:value="resolveMode"
         />
       </div>
     </div>
@@ -89,7 +89,7 @@ export default {
 }
 
 .option > span {
-    margin-right: 10px;
+    margin-right: 14px;
 }
 
 .option > .dx-widget {

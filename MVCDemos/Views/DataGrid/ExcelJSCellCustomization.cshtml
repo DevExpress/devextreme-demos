@@ -2,7 +2,7 @@
 
 @section ExternalDependencies {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/3.3.1/exceljs.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.4.0/polyfill.min.js"></script>
 }
 
@@ -60,7 +60,8 @@
             keepColumnWidths: false,
             topLeftCell: { row: 2, column: 2 },
             customizeCell: function (options) {
-                var { gridCell, excelCell } = options;
+                var gridCell = options.gridCell;
+                var excelCell = options.excelCell;
 
                 if (gridCell.rowType === "data") {
                     if (gridCell.column.dataField === 'Phone') {
@@ -96,6 +97,6 @@
     function phoneNumberFormat(value) {
         var USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);
 
-        return `(${ USNumber[1] }) ${ USNumber[2] }-${ USNumber[3] }`;
+        return "(" + USNumber[1] + ") " + USNumber[2] + "-" + USNumber[3];
     }
 </script>

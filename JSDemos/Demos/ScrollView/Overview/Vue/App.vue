@@ -12,16 +12,16 @@
         @pull-down="updateTopContent"
         @reach-bottom="updateBottomContent"
       >
-        <div v-html="content"/>
+        <div class="text-content ">{{content}}</div>
       </DxScrollView>
       <div class="options">
         <div class="caption">Options</div>
         <div class="option">
-          <span>Show scrollbar:</span>
+          <span>Show scrollbar: </span>
           <DxSelectBox
             id="show-scrollbar-mode"
             :items="showScrollbarModes"
-            v-model="showScrollbar"
+            v-model:value="showScrollbar"
             value-expr="value"
             display-expr="text"
           />
@@ -37,19 +37,19 @@
         <div class="option">
           <DxCheckBox
             id="use-pull-down-bottom"
-            v-model="pullDown"
+            v-model:value="pullDown"
             text="Update content on the PullDown event"
           />
         </div>
         <div class="option">
           <DxCheckBox
-            v-model="scrollByContent"
+            v-model:value="scrollByContent"
             text="Scroll by content"
           />
         </div>
         <div class="option">
           <DxCheckBox
-            v-model="scrollByThumb"
+            v-model:value="scrollByThumb"
             text="Scroll by thumb"
           />
         </div>
@@ -162,6 +162,10 @@ export default {
   position: relative;
   top: 2px;
   margin-right: 10px;
+}
+
+.text-content {
+    white-space: pre-wrap;
 }
 
 .option > .dx-selectbox {

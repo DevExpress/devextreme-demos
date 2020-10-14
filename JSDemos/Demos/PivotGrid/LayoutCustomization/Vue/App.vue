@@ -130,9 +130,14 @@ export default {
     font-weight: 500;
 }
 
+.option:last-child {
+  margin-right: 0;
+}
+
 .option {
     width: 33%;
     display: inline-block;
     margin-top: 10px;
+    margin-right: 4px;
 }
 </style>

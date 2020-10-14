@@ -19,7 +19,7 @@
       <DxPropertiesPanel :visibility="'disabled'"/>
     </DxDiagram>
     <div class="selected-data">
-      <span class="caption">Selected Items:</span>
+      <span class="caption">Selected Items: </span>
       <span>
         {{ selectedItemNames }}
       </span>
@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       dataSource: new ArrayStore({
-        key: 'this',
+        key: 'ID',
         data: service.getEmployees()
       }),
       selectedItemNames: 'Nobody has been selected'

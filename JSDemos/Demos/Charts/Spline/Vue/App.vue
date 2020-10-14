@@ -41,7 +41,7 @@
         <span>Series Type</span>
         <DxSelectBox
           :data-source="types"
-          :value.sync="type"
+          v-model:value="type"
         />
       </div>
     </div>
@@ -112,7 +112,7 @@ export default {
 }
 
 .option > span {
-    margin-right: 10px;
+    margin-right: 14px;
 }
 
 .option > .dx-widget {

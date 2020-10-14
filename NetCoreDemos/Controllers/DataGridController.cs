@@ -226,6 +226,10 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View(SampleData.CountriesPopulationAndGDP);
         }
 
+        public ActionResult ExportToPDF() {
+            return View();
+        }
+
         public ActionResult GridAdaptabilityOverview() {
             return View(SampleData.Orders);
         }
@@ -271,6 +275,14 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         }
 
         public ActionResult DnDBetweenGrids() {
+            return View();
+        }
+
+        public ActionResult BatchUpdateRequest() {
+            return View();
+        }
+
+        public ActionResult StateManagement() {
             return View();
         }
     }

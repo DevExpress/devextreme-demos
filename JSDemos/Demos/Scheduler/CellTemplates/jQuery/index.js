@@ -3,7 +3,7 @@ $(function () {
         dataSource: data,
         views: ["workWeek", "month"],
         currentView: "workWeek",
-        currentDate: new Date(2017, 4, 25),
+        currentDate: new Date(2021, 4, 25),
         firstDayOfWeek: 0,
         startDayHour: 9,
         endDayHour: 19,
@@ -36,11 +36,13 @@ $(function () {
 
         timeCellTemplate: function(itemData, itemIndex, itemElement) {
             var element = $(`<div>${itemData.text}</div>`);
+            var date = itemData.date;
 
-            if (isDinner(itemData.date)) {
-                element
-                    .addClass('dinner')
-                    .append('<div class="cafe" />');
+            if (isDinner(date)) {
+                element.addClass('dinner');
+            }
+            if (hasCoffeeCupIcon(date)) {
+                element.append('<div class="cafe" />');
             }
 
             return itemElement.append(element);
@@ -73,8 +75,8 @@ $(function () {
 
 var dinnerTime = { from: 12, to: 13 };
 var holidays = [
-    new Date(2017, 4, 25),
-    new Date(2017, 6, 4)
+    new Date(2021, 4, 27),
+    new Date(2021, 6, 4)
 ];
 
 function notifyDisableDate() {
@@ -127,6 +129,13 @@ function isWeekend(date) {
 function isDinner(date) {
     var hours = date.getHours();
     return hours >= dinnerTime.from && hours < dinnerTime.to;
+}
+
+function hasCoffeeCupIcon(date) {
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+
+    return hours === dinnerTime.from && minutes === 0;
 }
 
 function applyDisableDatesToDateEditors(form) {

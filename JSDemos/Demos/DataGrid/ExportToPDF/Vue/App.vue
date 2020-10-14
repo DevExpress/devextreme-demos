@@ -2,6 +2,7 @@
   <div>
     <DxButton
       id="exportButton"
+      icon="exportpdf"
       text="Export to PDF"
       @click="exportGrid()"
     />
@@ -43,7 +44,7 @@ import {
 
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
-import { exportDataGrid } from 'devextreme/pdf_exporter';
+import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
 
 const dataGridRef = 'dataGrid';
 
@@ -71,7 +72,7 @@ export default {
   methods: {
     exportGrid() {
       const doc = new jsPDF();
-      exportDataGrid({
+      exportDataGridToPdf({
         jsPDFDocument: doc,
         component: this.dataGrid
       }).then(() => {

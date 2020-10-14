@@ -3,404 +3,404 @@ using System.Collections.Generic;
 
 namespace DevExtreme.NETCore.Demos.Models.SampleData {
     public partial class SampleData {
-        public static readonly IEnumerable<EmployeeTask> TimelineTasks = new[] {
-            new EmployeeTask {
-                Subject = "Google AdWords Strategy",
+        public static readonly IEnumerable<EmployeeAppointment> TimelineTasks = new[] {
+            new EmployeeAppointment {
+                Text = "Google AdWords Strategy",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 1, 9, 0, 0),
-                DueDate = new DateTime(2017, 5, 1, 10, 30, 0),
+                StartDate = "2021-02-01T06:00:00.000Z",
+                EndDate = "2021-02-01T07:30:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "New Brochures",
+            new EmployeeAppointment {
+                Text = "New Brochures",
                 OwnerId = new[] { 1 },
-                StartDate = new DateTime(2017, 5, 1, 11, 30, 0),
-                DueDate = new DateTime(2017, 5, 1, 14, 15, 0),
+                StartDate = "2021-02-01T08:30:00.000Z",
+                EndDate = "2021-02-01T11:15:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Brochure Design Review",
+            new EmployeeAppointment {
+                Text = "Brochure Design Review",
                 OwnerId = new[] { 4 },
-                StartDate = new DateTime(2017, 5, 1, 13, 15, 0),
-                DueDate = new DateTime(2017, 5, 1, 16, 15, 0),
+                StartDate = "2021-02-01T10:15:00.000Z",
+                EndDate = "2021-02-01T13:15:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Website Re-Design Plan",
+            new EmployeeAppointment {
+                Text = "Website Re-Design Plan",
                 OwnerId = new[] { 3 },
-                StartDate = new DateTime(2017, 5, 1, 16, 45, 0),
-                DueDate = new DateTime(2017, 5, 2, 11, 15, 0),
+                StartDate = "2021-02-01T13:45:00.000Z",
+                EndDate = "2021-02-02T08:15:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Rollout of New Website and Marketing Brochures",
+            new EmployeeAppointment {
+                Text = "Rollout of New Website and Marketing Brochures",
                 OwnerId = new[] { 1 },
-                StartDate = new DateTime(2017, 5, 2, 8, 15, 0),
-                DueDate = new DateTime(2017, 5, 2, 10, 45, 0),
+                StartDate = "2021-02-02T05:15:00.000Z",
+                EndDate = "2021-02-02T07:45:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Update Sales Strategy Documents",
+            new EmployeeAppointment {
+                Text = "Update Sales Strategy Documents",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 2, 12, 0, 0),
-                DueDate = new DateTime(2017, 5, 2, 13, 45, 0),
+                StartDate = "2021-02-02T09:00:00.000Z",
+                EndDate = "2021-02-02T10:45:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Non-Compete Agreements",
+            new EmployeeAppointment {
+                Text = "Non-Compete Agreements",
                 OwnerId = new[] { 4 },
-                StartDate = new DateTime(2017, 5, 3, 8, 15, 0),
-                DueDate = new DateTime(2017, 5, 3, 9, 0, 0),
+                StartDate = "2021-02-03T05:15:00.000Z",
+                EndDate = "2021-02-03T06:00:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Approve Hiring of John Jeffers",
+            new EmployeeAppointment {
+                Text = "Approve Hiring of John Jeffers",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 3, 10, 0, 0),
-                DueDate = new DateTime(2017, 5, 3, 11, 15, 0),
+                StartDate = "2021-02-03T07:00:00.000Z",
+                EndDate = "2021-02-03T08:15:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Update NDA Agreement",
+            new EmployeeAppointment {
+                Text = "Update NDA Agreement",
                 OwnerId = new[] { 1 },
-                StartDate = new DateTime(2017, 5, 3, 11, 45, 0),
-                DueDate = new DateTime(2017, 5, 3, 13, 45, 0),
+                StartDate = "2021-02-03T08:45:00.000Z",
+                EndDate = "2021-02-03T10:45:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Update Employee Files with New NDA",
+            new EmployeeAppointment {
+                Text = "Update Employee Files with New NDA",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 3, 14, 0, 0),
-                DueDate = new DateTime(2017, 5, 3, 16, 45, 0),
+                StartDate = "2021-02-03T11:00:00.000Z",
+                EndDate = "2021-02-03T13:45:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Submit Questions Regarding New NDA",
+            new EmployeeAppointment {
+                Text = "Submit Questions Regarding New NDA",
                 OwnerId = new[] { 1 },
-                StartDate = new DateTime(2017, 5, 4, 8, 0, 0),
-                DueDate = new DateTime(2017, 5, 4, 9, 30, 0),
+                StartDate = "2021-02-04T05:00:00.000Z",
+                EndDate = "2021-02-04T06:30:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Submit Signed NDA",
+            new EmployeeAppointment {
+                Text = "Submit Signed NDA",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 4, 12, 45, 0),
-                DueDate = new DateTime(2017, 5, 4, 14, 0, 0),
+                StartDate = "2021-02-04T09:45:00.000Z",
+                EndDate = "2021-02-04T11:00:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Review Revenue Projections",
+            new EmployeeAppointment {
+                Text = "Review Revenue Projections",
                 OwnerId = new[] { 3 },
-                StartDate = new DateTime(2017, 5, 4, 17, 15, 0),
-                DueDate = new DateTime(2017, 5, 4, 18, 0, 0),
+                StartDate = "2021-02-04T14:15:00.000Z",
+                EndDate = "2021-02-04T15:00:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Comment on Revenue Projections",
+            new EmployeeAppointment {
+                Text = "Comment on Revenue Projections",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 5, 9, 15, 0),
-                DueDate = new DateTime(2017, 5, 5, 11, 15, 0),
+                StartDate = "2021-02-05T06:15:00.000Z",
+                EndDate = "2021-02-05T08:15:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Provide New Health Insurance Docs",
+            new EmployeeAppointment {
+                Text = "Provide New Health Insurance Docs",
                 OwnerId = new[] { 3 },
-                StartDate = new DateTime(2017, 5, 5, 12, 45, 0),
-                DueDate = new DateTime(2017, 5, 5, 14, 15, 0),
+                StartDate = "2021-02-05T09:45:00.000Z",
+                EndDate = "2021-02-05T11:15:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Review Changes to Health Insurance Coverage",
+            new EmployeeAppointment {
+                Text = "Review Changes to Health Insurance Coverage",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 5, 14, 15, 0),
-                DueDate = new DateTime(2017, 5, 5, 15, 30, 0),
+                StartDate = "2021-02-05T11:15:00.000Z",
+                EndDate = "2021-02-05T12:30:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Review Training Course for any Ommissions",
+            new EmployeeAppointment {
+                Text = "Review Training Course for any Ommissions",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 8, 14, 0, 0),
-                DueDate = new DateTime(2017, 5, 9, 12, 0, 0),
+                StartDate = "2021-02-08T11:00:00.000Z",
+                EndDate = "2021-02-09T09:00:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Recall Rebate Form",
+            new EmployeeAppointment {
+                Text = "Recall Rebate Form",
                 OwnerId = new[] { 1 },
-                StartDate = new DateTime(2017, 5, 8, 12, 45, 0),
-                DueDate = new DateTime(2017, 5, 8, 13, 15, 0),
+                StartDate = "2021-02-08T09:45:00.000Z",
+                EndDate = "2021-02-08T10:15:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Create Report on Customer Feedback",
+            new EmployeeAppointment {
+                Text = "Create Report on Customer Feedback",
                 OwnerId = new[] { 4 },
-                StartDate = new DateTime(2017, 5, 9, 15, 15, 0),
-                DueDate = new DateTime(2017, 5, 9, 17, 30, 0),
+                StartDate = "2021-02-09T12:15:00.000Z",
+                EndDate = "2021-02-09T14:30:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Review Customer Feedback Report",
+            new EmployeeAppointment {
+                Text = "Review Customer Feedback Report",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 9, 16, 15, 0),
-                DueDate = new DateTime(2017, 5, 9, 18, 30, 0),
+                StartDate = "2021-02-09T13:15:00.000Z",
+                EndDate = "2021-02-09T15:30:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Customer Feedback Report Analysis",
+            new EmployeeAppointment {
+                Text = "Customer Feedback Report Analysis",
                 OwnerId = new[] { 3 },
-                StartDate = new DateTime(2017, 5, 10, 9, 30, 0),
-                DueDate = new DateTime(2017, 5, 10, 10, 30, 0),
+                StartDate = "2021-02-10T06:30:00.000Z",
+                EndDate = "2021-02-10T07:30:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Prepare Shipping Cost Analysis Report",
+            new EmployeeAppointment {
+                Text = "Prepare Shipping Cost Analysis Report",
                 OwnerId = new[] { 4 },
-                StartDate = new DateTime(2017, 5, 10, 12, 30, 0),
-                DueDate = new DateTime(2017, 5, 10, 13, 30, 0),
+                StartDate = "2021-02-10T09:30:00.000Z",
+                EndDate = "2021-02-10T10:30:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Provide Feedback on Shippers",
+            new EmployeeAppointment {
+                Text = "Provide Feedback on Shippers",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 10, 14, 15, 0),
-                DueDate = new DateTime(2017, 5, 10, 16, 0, 0),
+                StartDate = "2021-02-10T11:15:00.000Z",
+                EndDate = "2021-02-10T13:00:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Select Preferred Shipper",
+            new EmployeeAppointment {
+                Text = "Select Preferred Shipper",
                 OwnerId = new[] { 1 },
-                StartDate = new DateTime(2017, 5, 10, 17, 30, 0),
-                DueDate = new DateTime(2017, 5, 10, 20, 0, 0),
+                StartDate = "2021-02-10T14:30:00.000Z",
+                EndDate = "2021-02-10T17:00:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Complete Shipper Selection Form",
+            new EmployeeAppointment {
+                Text = "Complete Shipper Selection Form",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 11, 8, 30, 0),
-                DueDate = new DateTime(2017, 5, 11, 10, 0, 0),
+                StartDate = "2021-02-11T05:30:00.000Z",
+                EndDate = "2021-02-11T07:00:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Upgrade Server Hardware",
+            new EmployeeAppointment {
+                Text = "Upgrade Server Hardware",
                 OwnerId = new[] { 4 },
-                StartDate = new DateTime(2017, 5, 11, 12, 0, 0),
-                DueDate = new DateTime(2017, 5, 11, 14, 15, 0),
+                StartDate = "2021-02-11T09:00:00.000Z",
+                EndDate = "2021-02-11T11:15:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Upgrade Personal Computers",
+            new EmployeeAppointment {
+                Text = "Upgrade Personal Computers",
                 OwnerId = new[] { 3 },
-                StartDate = new DateTime(2017, 5, 11, 14, 45, 0),
-                DueDate = new DateTime(2017, 5, 11, 16, 30, 0),
+                StartDate = "2021-02-11T11:45:00.000Z",
+                EndDate = "2021-02-11T13:30:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Upgrade Apps to Windows RT or stay with WinForms",
+            new EmployeeAppointment {
+                Text = "Upgrade Apps to Windows RT or stay with WinForms",
                 OwnerId = new[] { 1 },
-                StartDate = new DateTime(2017, 5, 12, 10, 30, 0),
-                DueDate = new DateTime(2017, 5, 12, 13, 0, 0),
+                StartDate = "2021-02-12T07:30:00.000Z",
+                EndDate = "2021-02-12T10:00:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Estimate Time Required to Touch-Enable Apps",
+            new EmployeeAppointment {
+                Text = "Estimate Time Required to Touch-Enable Apps",
                 OwnerId = new[] { 1 },
-                StartDate = new DateTime(2017, 5, 12, 14, 45, 0),
-                DueDate = new DateTime(2017, 5, 12, 16, 30, 0),
+                StartDate = "2021-02-12T11:45:00.000Z",
+                EndDate = "2021-02-12T13:30:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Report on Tranistion to Touch-Based Apps",
+            new EmployeeAppointment {
+                Text = "Report on Tranistion to Touch-Based Apps",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 12, 18, 30, 0),
-                DueDate = new DateTime(2017, 5, 12, 19, 0, 0),
+                StartDate = "2021-02-12T15:30:00.000Z",
+                EndDate = "2021-02-12T16:00:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Submit New Website Design",
+            new EmployeeAppointment {
+                Text = "Submit New Website Design",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 15, 8, 0, 0),
-                DueDate = new DateTime(2017, 5, 15, 10, 0, 0),
+                StartDate = "2021-02-15T05:00:00.000Z",
+                EndDate = "2021-02-15T07:00:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Create Icons for Website",
+            new EmployeeAppointment {
+                Text = "Create Icons for Website",
                 OwnerId = new[] { 4 },
-                StartDate = new DateTime(2017, 5, 15, 11, 30, 0),
-                DueDate = new DateTime(2017, 5, 15, 13, 15, 0),
+                StartDate = "2021-02-15T08:30:00.000Z",
+                EndDate = "2021-02-15T10:15:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Create New Product Pages",
+            new EmployeeAppointment {
+                Text = "Create New Product Pages",
                 OwnerId = new[] { 1 },
-                StartDate = new DateTime(2017, 5, 16, 9, 45, 0),
-                DueDate = new DateTime(2017, 5, 16, 11, 45, 0),
+                StartDate = "2021-02-16T06:45:00.000Z",
+                EndDate = "2021-02-16T08:45:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Approve Website Launch",
+            new EmployeeAppointment {
+                Text = "Approve Website Launch",
                 OwnerId = new[] { 3 },
-                StartDate = new DateTime(2017, 5, 16, 12, 0, 0),
-                DueDate = new DateTime(2017, 5, 16, 15, 15, 0),
+                StartDate = "2021-02-16T09:00:00.000Z",
+                EndDate = "2021-02-16T12:15:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Update Customer Shipping Profiles",
+            new EmployeeAppointment {
+                Text = "Update Customer Shipping Profiles",
                 OwnerId = new[] { 3 },
-                StartDate = new DateTime(2017, 5, 17, 9, 30, 0),
-                DueDate = new DateTime(2017, 5, 17, 11, 0, 0),
+                StartDate = "2021-02-17T06:30:00.000Z",
+                EndDate = "2021-02-17T08:00:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Create New Shipping Return Labels",
+            new EmployeeAppointment {
+                Text = "Create New Shipping Return Labels",
                 OwnerId = new[] { 4 },
-                StartDate = new DateTime(2017, 5, 17, 12, 45, 0),
-                DueDate = new DateTime(2017, 5, 17, 14, 0, 0),
+                StartDate = "2021-02-17T09:45:00.000Z",
+                EndDate = "2021-02-17T11:00:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Get Design for Shipping Return Labels",
+            new EmployeeAppointment {
+                Text = "Get Design for Shipping Return Labels",
                 OwnerId = new[] { 3 },
-                StartDate = new DateTime(2017, 5, 17, 15, 0, 0),
-                DueDate = new DateTime(2017, 5, 17, 16, 30, 0),
+                StartDate = "2021-02-17T12:00:00.000Z",
+                EndDate = "2021-02-17T13:30:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "PSD needed for Shipping Return Labels",
+            new EmployeeAppointment {
+                Text = "PSD needed for Shipping Return Labels",
                 OwnerId = new[] { 4 },
-                StartDate = new DateTime(2017, 5, 18, 8, 30, 0),
-                DueDate = new DateTime(2017, 5, 18, 9, 15, 0),
+                StartDate = "2021-02-18T05:30:00.000Z",
+                EndDate = "2021-02-18T06:15:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Contact ISP and Discuss Payment Options",
+            new EmployeeAppointment {
+                Text = "Contact ISP and Discuss Payment Options",
                 OwnerId = new[] { 1 },
-                StartDate = new DateTime(2017, 5, 18, 11, 30, 0),
-                DueDate = new DateTime(2017, 5, 18, 16, 0, 0),
+                StartDate = "2021-02-18T08:30:00.000Z",
+                EndDate = "2021-02-18T13:00:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Prepare Year-End Support Summary Report",
+            new EmployeeAppointment {
+                Text = "Prepare Year-End Support Summary Report",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 18, 17, 0, 0),
-                DueDate = new DateTime(2017, 5, 18, 20, 0, 0),
+                StartDate = "2021-02-18T14:00:00.000Z",
+                EndDate = "2021-02-18T17:00:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Review New Training Material",
+            new EmployeeAppointment {
+                Text = "Review New Training Material",
                 OwnerId = new[] { 3 },
-                StartDate = new DateTime(2017, 5, 19, 8, 0, 0),
-                DueDate = new DateTime(2017, 5, 19, 9, 15, 0),
+                StartDate = "2021-02-19T05:00:00.000Z",
+                EndDate = "2021-02-19T06:15:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Distribute Training Material to Support Staff",
+            new EmployeeAppointment {
+                Text = "Distribute Training Material to Support Staff",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 19, 12, 45, 0),
-                DueDate = new DateTime(2017, 5, 19, 14, 0, 0),
+                StartDate = "2021-02-19T09:45:00.000Z",
+                EndDate = "2021-02-19T11:00:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Training Material Distribution Schedule",
+            new EmployeeAppointment {
+                Text = "Training Material Distribution Schedule",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 19, 14, 15, 0),
-                DueDate = new DateTime(2017, 5, 19, 16, 15, 0),
+                StartDate = "2021-02-19T11:15:00.000Z",
+                EndDate = "2021-02-19T13:15:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Approval on Converting to New HDMI Specification",
+            new EmployeeAppointment {
+                Text = "Approval on Converting to New HDMI Specification",
                 OwnerId = new[] { 4 },
-                StartDate = new DateTime(2017, 5, 22, 9, 30, 0),
-                DueDate = new DateTime(2017, 5, 22, 10, 15, 0),
+                StartDate = "2021-02-22T06:30:00.000Z",
+                EndDate = "2021-02-22T07:15:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Create New Spike for Automation Server",
+            new EmployeeAppointment {
+                Text = "Create New Spike for Automation Server",
                 OwnerId = new[] { 3 },
-                StartDate = new DateTime(2017, 5, 22, 10, 0, 0),
-                DueDate = new DateTime(2017, 5, 22, 12, 30, 0),
+                StartDate = "2021-02-22T07:00:00.000Z",
+                EndDate = "2021-02-22T09:30:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Code Review - New Automation Server",
+            new EmployeeAppointment {
+                Text = "Code Review - New Automation Server",
                 OwnerId = new[] { 1 },
-                StartDate = new DateTime(2017, 5, 22, 13, 0, 0),
-                DueDate = new DateTime(2017, 5, 22, 15, 0, 0),
+                StartDate = "2021-02-22T10:00:00.000Z",
+                EndDate = "2021-02-22T12:00:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Confirm Availability for Sales Meeting",
+            new EmployeeAppointment {
+                Text = "Confirm Availability for Sales Meeting",
                 OwnerId = new[] { 1 },
-                StartDate = new DateTime(2017, 5, 23, 10, 15, 0),
-                DueDate = new DateTime(2017, 5, 23, 15, 15, 0),
+                StartDate = "2021-02-23T07:15:00.000Z",
+                EndDate = "2021-02-23T12:15:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Reschedule Sales Team Meeting",
+            new EmployeeAppointment {
+                Text = "Reschedule Sales Team Meeting",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 23, 16, 15, 0),
-                DueDate = new DateTime(2017, 5, 23, 18, 0, 0),
+                StartDate = "2021-02-23T13:15:00.000Z",
+                EndDate = "2021-02-23T15:00:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Send 2 Remotes for Giveaways",
+            new EmployeeAppointment {
+                Text = "Send 2 Remotes for Giveaways",
                 OwnerId = new[] { 3 },
-                StartDate = new DateTime(2017, 5, 24, 9, 30, 0),
-                DueDate = new DateTime(2017, 5, 24, 11, 45, 0),
+                StartDate = "2021-02-24T06:30:00.000Z",
+                EndDate = "2021-02-24T08:45:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Discuss Product Giveaways with Management",
+            new EmployeeAppointment {
+                Text = "Discuss Product Giveaways with Management",
                 OwnerId = new[] { 1 },
-                StartDate = new DateTime(2017, 5, 24, 12, 15, 0),
-                DueDate = new DateTime(2017, 5, 24, 16, 45, 0),
+                StartDate = "2021-02-24T09:15:00.000Z",
+                EndDate = "2021-02-24T13:45:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Replace Desktops on the 3rd Floor",
+            new EmployeeAppointment {
+                Text = "Replace Desktops on the 3rd Floor",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 25, 9, 30, 0),
-                DueDate = new DateTime(2017, 5, 25, 10, 45, 0),
+                StartDate = "2021-02-25T06:30:00.000Z",
+                EndDate = "2021-02-25T07:45:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Update Database with New Leads",
+            new EmployeeAppointment {
+                Text = "Update Database with New Leads",
                 OwnerId = new[] { 3 },
-                StartDate = new DateTime(2017, 5, 25, 12, 0, 0),
-                DueDate = new DateTime(2017, 5, 25, 14, 15, 0),
+                StartDate = "2021-02-25T09:00:00.000Z",
+                EndDate = "2021-02-25T11:15:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Mail New Leads for Follow Up",
+            new EmployeeAppointment {
+                Text = "Mail New Leads for Follow Up",
                 OwnerId = new[] { 1 },
-                StartDate = new DateTime(2017, 5, 25, 14, 45, 0),
-                DueDate = new DateTime(2017, 5, 25, 15, 30, 0),
+                StartDate = "2021-02-25T11:45:00.000Z",
+                EndDate = "2021-02-25T12:30:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Send Territory Sales Breakdown",
+            new EmployeeAppointment {
+                Text = "Send Territory Sales Breakdown",
                 OwnerId = new[] { 2 },
-                StartDate = new DateTime(2017, 5, 25, 18, 0, 0),
-                DueDate = new DateTime(2017, 5, 25, 20, 0, 0),
+                StartDate = "2021-02-25T15:00:00.000Z",
+                EndDate = "2021-02-25T17:00:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Territory Sales Breakdown Report",
+            new EmployeeAppointment {
+                Text = "Territory Sales Breakdown Report",
                 OwnerId = new[] { 1 },
-                StartDate = new DateTime(2017, 5, 26, 8, 45, 0),
-                DueDate = new DateTime(2017, 5, 26, 9, 45, 0),
+                StartDate = "2021-02-26T05:45:00.000Z",
+                EndDate = "2021-02-26T06:45:00.000Z",
                 Priority = Priority.Low
             },
-            new EmployeeTask {
-                Subject = "Report on the State of Engineering Dept",
+            new EmployeeAppointment {
+                Text = "Report on the State of Engineering Dept",
                 OwnerId = new[] { 3 },
-                StartDate = new DateTime(2017, 5, 26, 14, 45, 0),
-                DueDate = new DateTime(2017, 5, 26, 15, 30, 0),
+                StartDate = "2021-02-26T11:45:00.000Z",
+                EndDate = "2021-02-26T12:30:00.000Z",
                 Priority = Priority.High
             },
-            new EmployeeTask {
-                Subject = "Staff Productivity Report",
+            new EmployeeAppointment {
+                Text = "Staff Productivity Report",
                 OwnerId = new[] { 4 },
-                StartDate = new DateTime(2017, 5, 26, 16, 15, 0),
-                DueDate = new DateTime(2017, 5, 26, 19, 30, 0),
+                StartDate = "2021-02-26T13:15:00.000Z",
+                EndDate = "2021-02-26T16:30:00.000Z",
                 Priority = Priority.High
             }
         };

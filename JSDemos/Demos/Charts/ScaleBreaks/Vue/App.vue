@@ -24,24 +24,24 @@
       <div class="caption">Options</div>
       <div class="option">
         <DxCheckBox
-          :value.sync="autoBreaksEnabledValue"
+          v-model:value="autoBreaksEnabledValue"
           class="checkbox"
           text="Enable Breaks"
         />
       </div>
       <div class="option center">
-        <span>Max Count</span>
+        <span>Max Count </span>
         <DxSelectBox
           :items="breaksCount"
-          :value.sync="breaksCountValue"
+          v-model:value="breaksCountValue"
           :width="60"
         />
       </div>
       <div class="option right">
-        <span>Style</span>
+        <span>Style </span>
         <DxSelectBox
           :items="lineStyles"
-          :value.sync="lineStyleValue"
+          v-model:value="lineStyleValue"
           :width="120"
         />
       </div>
@@ -121,5 +121,8 @@ export default {
 .option > .dx-widget {
     display: inline-block;
     vertical-align: middle;
+}
+.center, .right {
+  margin-left: 4px;
 }
 </style>

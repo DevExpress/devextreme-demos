@@ -8,6 +8,7 @@
         .InsertAction("Post")
         .DeleteAction("Delete")
     )
+    .DateSerializationFormat("yyyy-MM-ddTHH:mm:ssZ")
     .RemoteFiltering(true)
     .Views(new[] {
         SchedulerViewType.Day,
@@ -15,7 +16,7 @@
         SchedulerViewType.Month
     })
     .CurrentView(SchedulerViewType.Day)
-    .CurrentDate(new DateTime(2017, 5, 23))
+    .CurrentDate(new DateTime(2021, 5, 25))
     .StartDayHour(9)
     .EndDayHour(19)
     .Height(600)

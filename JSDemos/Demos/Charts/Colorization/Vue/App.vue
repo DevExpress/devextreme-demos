@@ -20,7 +20,7 @@
         <DxSelectBox
           :data-source="colorizationOptions"
           :width="200"
-          v-model="typeOptions"
+          v-model:value="typeOptions"
           display-expr="name"
           value-expr="options"
         />
@@ -81,7 +81,7 @@ export default {
 }
 
 .option > span {
-    margin-right: 10px;
+    margin-right: 14px;
 }
 
 .option > .dx-widget {

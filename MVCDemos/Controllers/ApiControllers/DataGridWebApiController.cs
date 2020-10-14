@@ -8,9 +8,10 @@ using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Web.Http;
 using DevExtreme.MVC.Demos.Models.Northwind;
+using DevExtreme.MVC.Demos.Models.DataGrid;
+using System.Collections.Generic;
 
 namespace DevExtreme.MVC.Demos.Controllers {
-
     [Route("api/DataGridWebApi/{action}", Name = "DataGridWebApi")]
     public class DataGridWebApiController : ApiController {
         InMemoryNorthwindContext _nwind = new InMemoryNorthwindContext();
@@ -103,6 +104,39 @@ namespace DevExtreme.MVC.Demos.Controllers {
                          };
 
             return Request.CreateResponse(DataSourceLoader.Load(lookup, loadOptions));
+        }
+
+        [HttpPost]
+        public HttpResponseMessage Batch(List<DataChange> changes) {
+            foreach(var change in changes) {
+                Order order;
+
+                if(change.Type == "update" || change.Type == "remove") {
+                    var key = Convert.ToInt32(change.Key);
+                    order = _nwind.Orders.First(o => o.OrderID == key);
+                } else {
+                    order = new Order();
+                }
+
+                if(change.Type == "insert" || change.Type == "update") {
+                    JsonConvert.PopulateObject(change.Data.ToString(), order);
+
+                    Validate(order);
+                    if(!ModelState.IsValid)
+                        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState.GetFullErrorMessage());
+
+                    if(change.Type == "insert") {
+                        _nwind.Orders.Add(order);
+                    }
+                    change.Data = order;
+                } else if(change.Type == "remove") {
+                    _nwind.Orders.Remove(order);
+                }
+            }
+
+            _nwind.SaveChanges();
+
+            return Request.CreateResponse(HttpStatusCode.OK, changes);
         }
     }
 

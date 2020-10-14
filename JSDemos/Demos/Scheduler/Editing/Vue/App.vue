@@ -17,33 +17,33 @@
       <div class="caption">Options</div>
       <div class="option">
         <DxCheckBox
-          v-model="allowAdding"
+          v-model:value="allowAdding"
           text="Allow adding"
         />
       </div>
       <div class="option">
         <DxCheckBox
-          v-model="allowDeleting"
+          v-model:value="allowDeleting"
           text="Allow deleting"
         />
       </div>
       <div class="option">
         <DxCheckBox
-          v-model="allowUpdating"
+          v-model:value="allowUpdating"
           text="Allow updating"
         />
       </div>
       <div class="option">
         <DxCheckBox
           :disabled="!allowUpdating"
-          v-model="allowResizing"
+          v-model:value="allowResizing"
           text="Allow resizing"
         />
       </div>
       <div class="option">
         <DxCheckBox
           :disabled="!allowUpdating"
-          v-model="allowDragging"
+          v-model:value="allowDragging"
           text="Allow dragging"
         />
       </div>
@@ -68,7 +68,7 @@ export default {
   data() {
     return {
       views: ['day', 'week'],
-      currentDate: new Date(2017, 4, 22),
+      currentDate: new Date(2021, 4, 27),
       dataSource: data,
       allowAdding: true,
       allowDeleting: true,
@@ -122,6 +122,7 @@ export default {
 
   .option {
     margin-top: 10px;
+    margin-right: 4px;
     display: inline-block;
     width: 19%;
   }

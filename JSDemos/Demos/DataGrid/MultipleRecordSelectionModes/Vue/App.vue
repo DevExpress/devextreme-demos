@@ -39,20 +39,20 @@
     <div class="options">
       <div class="caption">Options</div>
       <div class="option">
-        <span>Select All Mode</span>
+        <span>Select All Mode </span>
         <DxSelectBox
           id="select-all-mode"
           :data-source="['allPages', 'page']"
           :disabled="checkBoxesMode === 'none'"
-          v-model="allMode"
+          v-model:value="allMode"
         />
       </div>
       <div class="option checkboxes-mode">
-        <span>Show Checkboxes Mode</span>
+        <span>Show Checkboxes Mode </span>
         <DxSelectBox
           id="show-checkboxes-mode"
           :data-source="['none', 'onClick', 'onLongTap', 'always']"
-          v-model="checkBoxesMode"
+          v-model:value="checkBoxesMode"
         />
       </div>
     </div>
