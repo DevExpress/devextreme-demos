@@ -65,6 +65,8 @@
         "vue/no-unused-components": "off",
         "vue/no-template-shadow": "off",
         "vue/no-v-html": "off",
+        "vue/no-v-model-argument": "off",
+        "vue/valid-v-model": "off",
         "vue/html-closing-bracket-spacing": ["error", {
             "startTag": "never",
             "endTag": "never",
