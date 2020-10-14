@@ -4,7 +4,7 @@
 
 ...OPTION LIST...
 
-Use these options to control the edit state. Two-way bind them to component properties so that you can get and set the options at runtime. In this demo, we bind the **editRowKey** and **changes** options to display their values under the **DataGrid**.
+Use these options to access and change the edit state. Two-way bind them to component properties so that you can get and set the options at runtime. In this demo, we bind the **editRowKey** and **changes** options to display their values under the **DataGrid**.
 
 **Utility Method**
 

@@ -1,4 +1,4 @@
-Our **DataGrid** widget manages row edits internally. However, if your use case requires full control over the editing process, you can disable the built-in edit state management and use the API members below to access and change the state manually.
+Our **DataGrid** widget manages row edits internally. However, if your use case requires full control over the editing process, you can disable the built-in edit state management and use the API members below to manage the state manually.
 
 **Widget Options**
 
@@ -11,7 +11,7 @@ The name or data field of the column being edited.
 - **editing**.[changes]()       
 Pending row changes.
 
-You can get and set these options at runtime to control the edit state. In this demo, the [onOptionChanged]() function gets the **editRowKey** and **changes** option values and displays them under the **DataGrid**.
+You can get and set these options at runtime to access and change the edit state. In this demo, the [onOptionChanged]() function gets the **editRowKey** and **changes** option values and displays them under the **DataGrid**.
 
 **Utility Method**
 
