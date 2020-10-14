@@ -1,4 +1,4 @@
-Our **DataGrid** widget manages row edits internally. However, if your use case requires full control over editing, you can disable the built-in edit state management and use the API members below to manage the state manually.
+...INTRO...
 
 **Widget Options**
 
