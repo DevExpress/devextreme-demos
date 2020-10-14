@@ -2,8 +2,8 @@ DevExtreme **HtmlEditor** allows you to create and manage tables. This demo show
 
 - <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#inserttable" target="_blank">insertTable</a>
 - <a href="" target="_blank">insertRowAbove</a> / <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#insertrowbelow" target="_blank">insertRowBelow</a>
-- <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#insertcolumnright" target="_blank">insertColumnRight / <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#insertcolumnleft" target="_blank">insertColumnLeft
-- <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#deletetable" target="_blank">deleteTable
-- <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#deleterow" target="_blank">deleteRow / <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#deletecolumn" target="_blank">deleteColumn
+- <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#insertcolumnright" target="_blank">insertColumnRight</a> / <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#insertcolumnleft" target="_blank">insertColumnLeft</a>
+- <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#deletetable" target="_blank">deleteTable</a>
+- <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#deleterow" target="_blank">deleteRow</a> / <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#deletecolumn" target="_blank">deleteColumn</a>
 
 When users click a toolbar [item](/Documentation/ApiReference/UI_Widgets/dxHtmlEditor/Configuration/toolbar/items/), it calls the method with the same name. You can also call these methods programmatically via the [getModules](/Documentation/ApiReference/UI_Widgets/dxHtmlEditor/Methods/#getModulemoduleName) method. Refer to the following documentation file to see the full list of supported operations with examples: <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md">DevExtreme Quill modules: Table</a>.
