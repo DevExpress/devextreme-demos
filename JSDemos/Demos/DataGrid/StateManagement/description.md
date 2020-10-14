@@ -3,30 +3,30 @@ Our **DataGrid** widget manages row edits internally. However, if your use case 
 **Widget Options**
 
 - [editing]().[editRowKey]()        
-DESCRIPTION
+The key of the row being edited.
 
 - **editing**.[editColumnName]()        
-DESCRIPTION
+The name or data field of the column being edited.
 
 - **editing**.[changes]()       
-DESCRIPTION
+Pending row changes.
 
 You can get and set these options at runtime to control the edit state. In this demo, the [onOptionChanged]() function gets the **editRowKey** and **changes** option values and displays them under the **DataGrid**.
 
 **Utility Method**
 
 - [DevExpress.data.applyChanges(data, changes, options)]()      
-DESCRIPTION
+Applies an array of changes to a source data array.
 
 **Event Handlers**
 
 - [onSaving]() / [onSaved]()        
-DESCRIPTION
+Functions that are called before / after pending row changes are saved from the UI or programmatically.
 
 - [onEditCanceling]() / [onEditCanceled]()      
-DESCRIPTION
+Functions that are called before / after editing is canceled and pending row changes are discarded.
 
-Use these event handlers to perform actions before and after pending changes are saved or canceled. In this demo, the **onSaving** event handler sends the changes to a server. The handler's parameter `e` contains fields useful for this functionality. To implement it in your application, follow these steps:
+Use these functions to perform custom actions. In this demo, the **onSaving** function sends pending changes to a server. The function's parameter `e` contains fields that can be useful for this functionality. To implement it in your application, follow these steps:
 
 1. **Disable the built-in edit state management**       
 Set the `e.cancel` field to **true**.
@@ -38,5 +38,5 @@ Pending changes are stored in the `e.changes` array. It has only one element in 
 If the server successfully saves the changes, call the **applyChanges** method to save the same changes in a local array.
 
 1. **Update the widget's data source and reset the edit state**
-Assign the local array to the [dataSource](), **null** to the **editRowKey**, and an empty array to the **editing**.**changes** option.
+Assign the local array to the [dataSource](), **null** to the **editRowKey**, and an empty array to the **changes** option.
 
