@@ -1,5 +1,5 @@
 <template>
-  <div class="widget-container dx-theme-marker flex-box">
+  <div class="widget-container flex-box">
     <span>Profile Picture</span>
     <div
       id="dropzone-external"
