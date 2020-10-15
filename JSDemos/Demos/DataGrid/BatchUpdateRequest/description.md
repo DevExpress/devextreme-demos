@@ -7,7 +7,7 @@ Set the `e.cancel` field to `true`.
 Pending changes are contained in the `e.changes` array. Check that it is not empty and send the changes to the server.
 
 3. **Update data in the widget**
-Once the changes are saved, call the [refresh(changesOnly)](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/Methods/#refreshchangesOnly) method.
+Once the changes are saved, call the [refresh(changesOnly)](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Methods/#refreshchangesOnly) method.
 
-4. **Clear the editing.changes array**
-Use the [cancelEditData()](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Methods/#cancelEditData) method.
+4. **Reset the edit state**
+Use the [cancelEditData()](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Methods/#cancelEditData) method to clear the pending changes.
