@@ -32,13 +32,11 @@
         "prepare-mvc": "node utils/prepare-mvc.js",
         "prepare-netcore": "node utils/prepare-netcore.js",
         "prepare-all": "npm run prepare-js:dev && npm run prepare-mvc && npm run prepare-netcore",
-        "lint-js": "eslint --ext .js .",
-        "lint-ts": "eslint .",
         "lint-react": "eslint JSDemos/Demos -c .react.eslintrc.json --ignore-path .react.eslintignore",
         "lint-vue": "eslint JSDemos/Demos -c .vue.eslintrc.json --ignore-path .vue.eslintignore --ext .vue,.js",
         "lint-mvc": "cd MVCDemos && eclint check **/*.cshtml !{bin,obj}/** && dotnet format -w DevExtreme.MVC.Demos.sln --dry-run --check && cd ../",
         "lint-netcore": "cd NetCoreDemos && eclint check **/*.cshtml !{bin,obj}/** !DemoShell/** && dotnet format -w DevExtreme.NETCore.Demos.sln --dry-run --check && cd ../",
-        "lint": "npm run lint-js && npm run lint-ts && npm run lint-react && npm run lint-vue && npm run lint-mvc && npm run lint-netcore"
+        "lint": "eslint . && npm run lint-react && npm run lint-vue && npm run lint-mvc && npm run lint-netcore"
     },
     "license": "SEE LICENSE IN README.md",
     "keywords": [

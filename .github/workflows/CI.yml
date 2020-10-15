@@ -6,7 +6,7 @@ jobs:
   lint:
     name: Lint code base
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     timeout-minutes: 60
 
     steps:
