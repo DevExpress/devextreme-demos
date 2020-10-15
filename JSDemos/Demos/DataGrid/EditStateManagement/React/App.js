@@ -15,7 +15,7 @@ const initialState = {
 
 const loadPanelPosition = { of: '#gridContainer' };
 
-const App = () => {
+function App() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   const changesText = React.useMemo(() => {
@@ -35,12 +35,12 @@ const App = () => {
     e.promise = saveChange(dispatch, e.changes[0]);
   }, []);
 
-  const onOptionChanged = React.useCallback((e) => {
-    if (e.fullName === 'editing.editRowKey') {
-      setEditRowKey(dispatch, e.value);
-    } else if (e.fullName === 'editing.changes') {
-      setChanges(dispatch, e.value);
-    }
+  const onChangesChange = React.useCallback((changes) => {
+    setChanges(dispatch, changes);
+  }, []);
+
+  const onEditRowKeyChange = React.useCallback((editRowKey) => {
+    setEditRowKey(dispatch, editRowKey);
   }, []);
 
   return (
@@ -55,15 +55,16 @@ const App = () => {
         dataSource={state.data}
         showBorders={true}
         repaintChangesOnly={true}
-        onSaving={onSaving}
-        onOptionChanged={onOptionChanged}>
+        onSaving={onSaving}>
         <Editing
           mode="row"
           allowAdding={true}
           allowDeleting={true}
           allowUpdating={true}
           changes={state.changes}
+          onChangesChange={onChangesChange}
           editRowKey={state.editRowKey}
+          onEditRowKeyChange={onEditRowKeyChange}
         />
         <Column dataField="OrderID" allowEditing={false}></Column>
         <Column dataField="ShipName"></Column>
@@ -77,7 +78,7 @@ const App = () => {
         <div className="caption">Options</div>
         <div className="option">
           <span>Edit Row Key:</span>
-          <div id="editRowKey">{state.editRowKey === null ? "null" : state.editRowKey.toString()}</div>
+          <div id="editRowKey">{state.editRowKey === null ? 'null' : state.editRowKey.toString()}</div>
         </div>
         <div className="option">
           <span>Changes:</span>

@@ -205,5 +205,11 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View(AzureStorageAccount.FileUploader);
         }
         #endregion
+
+        #region CustomDropzone
+        public ActionResult CustomDropzone() {
+            return View();
+        }
+        #endregion
     }
 }
