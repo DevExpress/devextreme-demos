@@ -4,7 +4,7 @@ Our **DataGrid** widget manages the edit state automatically. However, if your u
 
 ...OPTION LIST...
 
-Bind these options to state props and set the props to change the edit state at runtime. In this demo, we bind the **editRowKey** and **changes** options and use the [onOptionChanged]() event handler to set the bound props.
+Bind these options to state props and set the props to change the edit state at runtime. In this demo, we bind the **editRowKey** and **changes** options and use the corresponding **on_OptionName_Change** event handlers to set the bound props.
 
 **Utility Method**
 
