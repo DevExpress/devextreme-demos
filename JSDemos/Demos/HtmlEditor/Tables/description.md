@@ -1,4 +1,4 @@
-DevExtreme **HtmlEditor** allows users to create and manage tables. To enable this functionality, add the following items to the [toolbar](/Documentation/ApiReference/UI_Widgets/dxHtmlEditor/Configuration/toolbar/):
+DevExtreme **HtmlEditor** allows users to create and manage tables. To enable this functionality, add the following [items](/Documentation/ApiReference/UI_Widgets/dxHtmlEditor/Configuration/toolbar/items/) to the [toolbar](/Documentation/ApiReference/UI_Widgets/dxHtmlEditor/Configuration/toolbar/):
 
 - <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#inserttable" target="_blank">insertTable</a>
 - <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#insertrowabove" target="_blank">insertRowAbove</a> / <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#insertrowbelow" target="_blank">insertRowBelow</a>
@@ -6,6 +6,4 @@ DevExtreme **HtmlEditor** allows users to create and manage tables. To enable th
 - <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#deletetable" target="_blank">deleteTable</a>
 - <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#deleterow" target="_blank">deleteRow</a> / <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md#deletecolumn" target="_blank">deleteColumn</a>
 
-When users click a toolbar [item](/Documentation/ApiReference/UI_Widgets/dxHtmlEditor/Configuration/toolbar/items/), a method with the same name is called. You can also call these methods via the  method. 
-
-These methods belong to the Table module of Quill. You can use the [getModules](/Documentation/ApiReference/UI_Widgets/dxHtmlEditor/Methods/#getModulemoduleName) method to access this module and call its methods at any point in your application. Refer to the following documentation file to see the full list of the Table methods with examples: <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md">DevExtreme Quill modules: Table</a>.
+When users click a toolbar item, a method with the same name is called. These methods belong to the Table module of Quill. You can use the [getModules](/Documentation/ApiReference/UI_Widgets/dxHtmlEditor/Methods/#getModulemoduleName) method to access this module and call its methods at any point in your application. Refer to the following documentation file to see the full list of the Table methods with examples: <a href="https://github.com/DevExpress/devextreme-quill/blob/master/docs/modules/table.md">DevExtreme Quill modules: Table</a>.
