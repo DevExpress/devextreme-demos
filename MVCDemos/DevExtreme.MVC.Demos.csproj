@@ -790,6 +790,7 @@
     <Content Include="Content\DemosStyles\FileUploader\ChunkUploading.css" />
     <Content Include="Content\DemosStyles\FileUploader\Validation.css" />
     <Content Include="Content\DemosStyles\FileUploader\FileSelection.css" />
+    <Content Include="Content\DemosStyles\FileUploader\CustomDropzone.css" />
     <Content Include="Content\DemosStyles\FilterBuilder\Customization.css" />
     <Content Include="Content\DemosStyles\FilterBuilder\WithDataGrid.css" />
     <Content Include="Content\DemosStyles\FilterBuilder\WithList.css" />
