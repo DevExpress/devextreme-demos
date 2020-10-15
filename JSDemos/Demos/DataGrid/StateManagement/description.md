@@ -2,7 +2,7 @@ Our **DataGrid** widget manages the edit state automatically. However, if your u
 
 **Widget Options**
 
-- [editing]().[editRowKey]()        
+- **editing**.[editRowKey]()        
 The key of the row being edited.
 
 - **editing**.[editColumnName]()        
