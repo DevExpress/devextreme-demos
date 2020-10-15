@@ -1,4 +1,4 @@
-Our **DataGrid** widget manages row edits internally. However, if your use case requires full control over editing, you can disable the built-in edit state management and use the API members below to manage the state manually. This demo shows how to use these members with the <a href="https://vuex.vuejs.org/" target="_blank">Vuex</a> state management pattern and library.
+Our **DataGrid** widget manages the edit state automatically. However, if your use case requires full control over editing, you can use the API members below to manage the state manually. In this demo, we manage the state with a help of the <a href="https://vuex.vuejs.org/" target="_blank">Vuex</a> library.
 
 **Widget Options**
 

@@ -1,4 +1,4 @@
-...INTRO...
+Our **DataGrid** widget manages the edit state automatically. However, if your use case requires full control over editing, you can use the API members below to manage the state manually. In this demo, we manage the state with a help of the <a href="https://reactjs.org/docs/hooks-reference.html#usereducer" target="_blank">useReducer</a> React hook.
 
 **Widget Options**
 
