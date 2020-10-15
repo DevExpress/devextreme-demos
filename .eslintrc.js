@@ -78,6 +78,7 @@ module.exports = {
                     "dialogs",
                     "docurl",
                     "draggable",
+                    "dropzone",
                     "dto",
                     "dx",
                     "dxkey", // for React templates
@@ -103,6 +104,8 @@ module.exports = {
                     "gdp", // gross domestic product
                     "geolocation",
                     "getter",
+                    "getters",
+                    "mapGetters",
                     "gif",
                     "goto",
                     "guid",
