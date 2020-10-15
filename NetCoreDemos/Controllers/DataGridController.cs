@@ -282,7 +282,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View();
         }
 
-        public ActionResult StateManagement() {
+        public ActionResult EditStateManagement() {
             return View();
         }
     }
