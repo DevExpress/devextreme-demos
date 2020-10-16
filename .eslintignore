@@ -1,0 +1,9 @@
+utils/*
+node_modules/*
+MVCDemos/*
+NetCoreDemos/*
+JSDemos/node_modules/*
+JSDemos/Demos/**/React/*
+JSDemos/Demos/**/Vue/*
+JSDemos/Demos/**/testcafe-test-code.js
+JSDemos/Demos/**/azure-file-system.js
