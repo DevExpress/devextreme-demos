@@ -1,8 +1,8 @@
-Annotations are images and text blocks that display additional information about the visualized data.
+Annotations are containers for images, text blocks and custom content that display additional information about the visualized data.
 
-To configure annotations, assign an array of objects to the [annotations](/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/) option. To specify settings for all annotations, use the [commonAnnotationSettings](/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/commonAnnotationSettings/) object. Individual settings take precedence over common settings.
+To add annotations to a polar chart, assign an array of objects to the [annotations](/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/) option. To specify settings for all annotations, use the [commonAnnotationSettings](/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/commonAnnotationSettings/) object. Individual settings take precedence over common settings.
 
-You can set each annotation's [type](/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/#type) attribute to *"text"* or *"image"*. This demo shows only *"text"* annotations.
+You can set each annotation's [type](/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/#type) attribute to *"text"*, *"image"*, or *"custom"*. This demo shows only *"text"* annotations.
 
 You can place annotations at specific coordinates or anchor them to **PolarChart** elements. This demo illustrates the following annotation placement methods:  
 
