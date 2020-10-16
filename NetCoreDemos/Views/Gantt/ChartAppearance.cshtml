@@ -90,13 +90,15 @@
 </div>
 
 <script>
-    function getTaskTooltipContentTemplate(model) {
-        var timeEstimate = Math.abs(model.Start - model.End) / 36e5;
-        var timeLeft = Math.floor((100 - model.Progress) / 100 * timeEstimate);
+    function getTaskTooltipContentTemplate(task) {
+        const parentELemnt = document.getElementsByClassName('dx-gantt-task-edit-tooltip')[0];
+        parentELemnt.className = 'dx-gantt-task-edit-tooltip custom-task-edit-tooltip';
+        const timeEstimate = Math.abs(task.Start - task.End) / 36e5;
+        const timeLeft = Math.floor((100 - task.Progress) / 100 * timeEstimate);
 
-        return "<div style='font-size:14px'>" + model.Title + "</div>"
-            + "<p style='font-size:10px'>" + "<span> Estimate: </span>" + timeEstimate + "<span> hours </span>" + "</p>"
-            + "<p style='font-size:10px'>" + "<span> Left: </span>" + timeLeft + "<span> hours </span>" + "</p>";
+        return "<div class='custom-tooltip-title'>" + task.Title + "</div>"
+            + "<div class='custom-tooltip-row'>" + "<span> Estimate: </span>" + timeEstimate + "<span> hours </span>" + "</div>"
+            + "<div class='custom-tooltip-row'>" + "<span> Left: </span>" + timeLeft + "<span> hours </span>" + "</div>";
     }
 
     function getGanttInstance() {
@@ -120,6 +122,8 @@
     }
 
     function ganttShowCustomTaskTooltip_changed(e) {
+        const parentELemnt = document.getElementsByClassName('dx-gantt-task-edit-tooltip')[0];
+        parentELemnt.className = 'dx-gantt-task-edit-tooltip';
         var ganttInstance = getGanttInstance();
         e.value ? ganttInstance.option("taskTooltipContentTemplate", getTaskTooltipContentTemplate)
             : ganttInstance.option("taskTooltipContentTemplate", undefined);
