@@ -1,6 +1,6 @@
-Annotations are images and text blocks that provide additional information on the visualized data.
+Annotations are images and text blocks that add information to the visualized data.
 
-To configure individual annotations, assign an array of objects to the [annotations](/Documentation/ApiReference/Data_Visualization_Widgets/dxChart/Configuration/annotations/) option. Each object configures an individual annotation. To specify options for all annotations, use the [commonAnnotationSettings](/Documentation/ApiReference/Data_Visualization_Widgets/dxChart/Configuration/commonAnnotationSettings/) object. Individual settings take precedence over these settings.
+To create annotations, populate the widget's [annotations](/Documentation/ApiReference/Data_Visualization_Widgets/dxChart/Configuration/annotations/) array. Each object in the array configures an individual annotation. To specify options for all annotations, use the [commonAnnotationSettings](/Documentation/ApiReference/Data_Visualization_Widgets/dxChart/Configuration/commonAnnotationSettings/) object. Individual settings take precedence over common settings.
 
 Each annotation should have the [type](/Documentation/ApiReference/Data_Visualization_Widgets/dxChart/Configuration/annotations/#type) set to *"text"* or *"image"*. Depending on the **type**, specify the [text](/Documentation/ApiReference/Data_Visualization_Widgets/dxChart/Configuration/annotations/#text) or [image](/Documentation/ApiReference/Data_Visualization_Widgets/dxChart/Configuration/annotations/image/) option. You can also add a [description](/Documentation/ApiReference/Data_Visualization_Widgets/dxChart/Configuration/annotations/#description) that will be displayed in a tooltip.
 
