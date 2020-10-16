@@ -45,6 +45,10 @@
     .OnRowUpdated(@<text> function(e) { logEvent("RowUpdated"); } </text>)
     .OnRowRemoving(@<text> function(e) { logEvent("RowRemoving"); } </text>)
     .OnRowRemoved(@<text> function(e) { logEvent("RowRemoved"); } </text>)
+    .OnSaving(@<text> function(e) { logEvent("Saving"); } </text>)
+    .OnSaved(@<text> function(e) { logEvent("Saved"); } </text>)
+    .OnEditCanceling(@<text> function(e) { logEvent("EditCanceling"); } </text>)
+    .OnEditCanceled(@<text> function(e) { logEvent("EditCanceled"); } </text>)
 )
 
 <div id="events">
