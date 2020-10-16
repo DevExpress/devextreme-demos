@@ -10,7 +10,16 @@
     "devDependencies": {
         "http-server": "latest",
         "prompts": "^2.0.4",
-        "systemjs-builder": "^0.15.34"
+        "systemjs-builder": "^0.15.34",
+        "eslint": "5.4.0",
+        "eslint-plugin-spellcheck": "0.0.10",
+        "eslint-plugin-react": "7.14.3",
+        "eslint-plugin-vue": "6.0.1",
+        "eclint": "2.8.1",
+        "babel-eslint": "10.0.3",
+        "@typescript-eslint/eslint-plugin": "^2.29.0",
+        "@typescript-eslint/parser": "^2.29.0",
+        "typescript": "^3.7.2"
     },
     "peerDependencies": {},
     "scripts": {
@@ -22,7 +31,12 @@
         "prepare-js:dev": "cd JSDemos && npm i && node ../utils/create-config.js && node ../utils/link-repos.js",
         "prepare-mvc": "node utils/prepare-mvc.js",
         "prepare-netcore": "node utils/prepare-netcore.js",
-        "prepare-all": "npm run prepare-js:dev && npm run prepare-mvc && npm run prepare-netcore"
+        "prepare-all": "npm run prepare-js:dev && npm run prepare-mvc && npm run prepare-netcore",
+        "lint-react": "eslint JSDemos/Demos -c .react.eslintrc.json --ignore-path .react.eslintignore",
+        "lint-vue": "eslint JSDemos/Demos -c .vue.eslintrc.json --ignore-path .vue.eslintignore --ext .vue,.js",
+        "lint-mvc": "cd MVCDemos && eclint check **/*.cshtml !{bin,obj}/** && dotnet format -w DevExtreme.MVC.Demos.sln --dry-run --check && cd ../",
+        "lint-netcore": "cd NetCoreDemos && eclint check **/*.cshtml !{bin,obj}/** !DemoShell/** && dotnet format -w DevExtreme.NETCore.Demos.sln --dry-run --check && cd ../",
+        "lint": "eslint . && npm run lint-react && npm run lint-vue && npm run lint-mvc && npm run lint-netcore"
     },
     "license": "SEE LICENSE IN README.md",
     "keywords": [

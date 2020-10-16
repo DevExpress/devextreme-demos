@@ -1,0 +1,23 @@
+name: Linter
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    name: Lint code base
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Get sources
+        uses: actions/checkout@v2
+
+      - name: Run npm install
+        run: npm install --no-package-lock --no-audit --no-fund
+
+      - name: Run dotnet format install
+        run: dotnet tool install -g dotnet-format --version 3.3.111304
+
+      - name: Run lint
+        run: npm run lint
