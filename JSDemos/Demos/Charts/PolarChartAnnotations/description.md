@@ -1,6 +1,6 @@
 Annotations are images and text blocks that provide additional information about the visualized data.
 
-To configure individual annotations, assign an array of objects to the [annotations](https://js.devexpress.com/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/) option. To specify settings for all annotations, use the [commonAnnotationSettings](https://js.devexpress.com/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/commonAnnotationSettings/) object. Individual settings take precedence over common settings.
+To configure annotations, assign an array of objects to the [annotations](https://js.devexpress.com/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/) option. To specify settings for all annotations, use the [commonAnnotationSettings](https://js.devexpress.com/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/commonAnnotationSettings/) object. Individual settings take precedence over common settings.
 
 Each annotation's [type](https://js.devexpress.com/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/#type) attribute should be set to *"text"* or *"image"*. In this demo, all annotations have the *"text"* type.
 
