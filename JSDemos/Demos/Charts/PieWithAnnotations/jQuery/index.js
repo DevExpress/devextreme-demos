@@ -55,11 +55,22 @@ $(function () {
 
     function tooltipTemplate(annotation, container) {
         var data = annotation.data;
-        var country = data.country + (data.oldCountryName ? "<br />" + data.oldCountryName : "");
-        $("<div class='medal-tooltip'><div class='country-name'>" + country
-            + "</div><div><span class='caption'>Gold</span>: " + data.gold
-            + "</div><div><span class='caption'>Silver</span>: " + data.silver
-            + "</div><div><span class='caption'>Bronze</span>: " + data.bronze
-            + "</div></div>").appendTo(container);
+        var wrapper = $("<div class='medal-tooltip'>").appendTo(container);
+        var countryWrapper = $("<div class='country-name'>").appendTo(wrapper).append($("<span>").text(data.country));
+
+        if(data.oldCountryName){
+            countryWrapper.append($("<br/>")).append($("<span>").text(data.oldCountryName));
+        }
+
+        var goldMedalsWrapper = $("<div>").appendTo(wrapper);
+        var silverMedalsWrapper = $("<div>").appendTo(wrapper);
+        var bronzeMedalsWrapper = $("<div>").appendTo(wrapper);
+
+        $("<span class='caption'>Gold: </span>").appendTo(goldMedalsWrapper);
+        $("<span>").appendTo(goldMedalsWrapper).text(data.gold);
+        $("<span class='caption'>Silver: </span>").appendTo(silverMedalsWrapper);
+        $("<span>").appendTo(silverMedalsWrapper).text(data.silver);
+        $("<span class='caption'>Bronze: </span>").appendTo(bronzeMedalsWrapper);
+        $("<span>").appendTo(bronzeMedalsWrapper).text(data.bronze);
     }
 });
