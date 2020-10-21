@@ -13,7 +13,7 @@
                 <rect class="border" x="0" y="0" />
                 <text x="70" y="25" class="state"><%- data.Name %></text>
                 <text x="0" y="60">
-                    <tspan class="caption">Capital:</tspan><tspan dx="5"><%- data.Capital %></tspan><tspan dy="14" x="0" class="caption">Population:</tspan><tspan dx="5"><%- formatNumber(data.Population) %></tspan><tspan dy="14" x="0" class="caption">Area:</tspan><tspan dx="5"><%- formatNumber(data.Area) %></tspan><tspan dx="5">km</tspan><tspan class="sup" dy="-2">2</tspan>
+                    <tspan class="caption">Capital:</tspan><tspan class="capital" dx="5"><%- data.Capital %></tspan><tspan dy="14" x="0" class="caption">Population:</tspan><tspan class="population" dx="5"><%- formatNumber(data.Population) %></tspan><tspan dy="14" x="0" class="caption">Area:</tspan><tspan class="area" dx="5"><%- formatNumber(data.Area) %></tspan><tspan dx="5">km</tspan><tspan class="sup" dy="-2">2</tspan>
                 </text>
             </svg>
         </text>))
