@@ -12,15 +12,15 @@
         .Enabled(true)
         .ContentTemplate(@<text>
             <div class='state-tooltip'>
-                <img src="<%- getImagePath(point) %>" /><h4><%- argument %></h4>
-                <div>
+                <img src="<%- getImagePath(point) %>" /><h4 class='state'><%- argument %></h4>
+                <div class='capital'>
                     <span class='caption'>Capital</span>: <%- point.data.Capital %>
                 </div>
-                <div>
+                <div class='population'>
                     <span class='caption'>Population</span>: <%- formatNumber(value) %> people
                 </div>
                 <div>
-                    <span class='caption'>Area</span>: <%- formatNumber(point.data.Area) %> km<sup>2</sup> (<%- formatNumber(0.3861 * point.data.Area) %> mi<sup>2</sup>)
+                    <span class='caption'>Area</span>: <span class='area-km'><%- formatNumber(point.data.Area) %></span> km<sup>2</sup> (<span class='area-mi'><%- formatNumber(0.3861 * point.data.Area) %></span> mi<sup>2</sup>)
                 </div>
             </div>
         </text>)
