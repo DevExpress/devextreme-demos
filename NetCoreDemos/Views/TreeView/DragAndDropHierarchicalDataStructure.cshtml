@@ -17,12 +17,9 @@
                     .KeyExpr("Id")
                     .ItemsExpr("Items")
                     .ExpandedExpr("IsExpanded")
-                    .ItemTemplate(@<text>
-                            <div>
-                                <i class="dx-icon dx-icon-<%- IsDirectory ? 'activefolder' : 'file' %>"></i><span><%-Name%></span>
-                            </div>
-                        </text>)
+                    .DisplayExpr("Name")
                     .DataSource(d => d.Mvc().LoadAction("GetHierarchicalDataForDragAndDrop"))
+                    .DataSourceOptions(o => o.Map("mapIcons"))
                     .Width(250)
                     .Height(380).ToString()
             ))

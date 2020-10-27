@@ -17,12 +17,9 @@
                     .KeyExpr("Id")
                     .ParentIdExpr("ParentId")
                     .ExpandedExpr("IsExpanded")
-                    .ItemTemplate(@<text>
-                            <div>
-                                <i class="dx-icon dx-icon-<%- IsDirectory ? 'activefolder' : 'file' %>"></i><span><%-Name %></span>
-                            </div>
-                        </text>)
+                    .DisplayExpr("Name")
                     .DataSource(d => d.Mvc().LoadAction("GetPlainDataForDragAndDrop"))
+                    .DataSourceOptions(o => o.Map("mapIcons"))
                     .Width(250)
                     .Height(380).ToString()
             ))
@@ -187,5 +184,12 @@
         }
 
         return null;
+    }
+
+    function mapIcons(item) {
+        if (item.Icon) {
+            item.icon = item.Icon;
+        }
+        return item;
     }
 </script>
