@@ -1,6 +1,6 @@
 <div class="form">
     <div class="drive-panel">
-        <div class="drive-header dx-treeview-item"><i class="dx-icon dx-icon-activefolder"></i><span>Drive C:</span></div>
+        <div class="drive-header dx-treeview-item"><div class="dx-treeview-item-content"><i class="dx-icon dx-icon-activefolder"></i><span>Drive C:</span></div></div>
         @(Html.DevExtreme().Sortable()
             .Filter(".dx-treeview-item")
             .Data("driveC")
@@ -25,7 +25,7 @@
             ))
     </div>
     <div class="drive-panel">
-        <div class="drive-header dx-treeview-item"><i class="dx-icon dx-icon-activefolder"></i><span>Drive D:</span></div>
+        <div class="drive-header dx-treeview-item"><div class="dx-treeview-item-content"><i class="dx-icon dx-icon-activefolder"></i><span>Drive D:</span></div></div>
         @(Html.DevExtreme().Sortable()
             .Filter(".dx-treeview-item")
             .Data("driveD")
