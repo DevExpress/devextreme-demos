@@ -58,9 +58,9 @@ export default {
     this.values = this.getActiveItems();
   },
   methods: {
-      getActiveItems() {
-        return this.products.filter(p=>p.active).map(p=>p.count);
-      }
+    getActiveItems() {
+      return this.products.filter(p=>p.active).map(p=>p.count);
+    }
   }
 };
 </script>
