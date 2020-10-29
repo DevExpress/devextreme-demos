@@ -83,7 +83,7 @@ export default {
 
       newTasks.splice(fromIndex, 1);
       newTasks.splice(toIndex, 0, e.itemData);
-        
+
       this.tasks = newTasks;
     }
   },
