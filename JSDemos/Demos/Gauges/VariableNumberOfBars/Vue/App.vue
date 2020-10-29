@@ -46,20 +46,20 @@ export default {
       }
     };
   },
-  created() {
-      this.values = this.getActiveItems();
-  },
   watch: {
-     products: {
-         handler: function(a, b) {
-             this.values = this.getActiveItems();
-         },
-         deep: true
-     }
+    products: {
+      handler: function() {
+        this.values = this.getActiveItems();
+      },
+      deep: true
+    }
+  },
+  created() {
+    this.values = this.getActiveItems();
   },
   methods: {
       getActiveItems() {
-          return this.products.filter(p=>p.active).map(p=>p.count);
+        return this.products.filter(p=>p.active).map(p=>p.count);
       }
   }
 };
