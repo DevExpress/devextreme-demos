@@ -234,7 +234,9 @@ export default {
     passwordComparison: function () {
       return this.password;
     },
-    checkComparison: function () { return true},
+    checkComparison: function () {
+       return true;
+    },
     asyncValidation(params) {
       return sendRequest(params.value);
     },
