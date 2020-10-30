@@ -231,10 +231,10 @@ export default {
     };
   },
   methods: {
-    passwordComparison () {
+    passwordComparison() {
       return this.password;
     },
-    checkComparison () {
+    checkComparison() {
        return true;
     },
     asyncValidation(params) {
