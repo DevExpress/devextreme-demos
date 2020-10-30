@@ -48,7 +48,7 @@
     >
       <DxBorder :visible="true"/>
     </DxLegend>
-    <DxTooltip 
+    <DxTooltip
       :customize-tooltip="customizeTooltip"
       :enabled="true"
       location="edge"
