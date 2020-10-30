@@ -30,7 +30,8 @@ import DxPieChart, {
   DxSeries,
   DxLabel,
   DxLegend,
-  DxConnector
+  DxConnector,
+  DxSize
 } from 'devextreme-vue/pie-chart';
 
 export default {
