@@ -18,6 +18,10 @@
       </DxLabel>
     </DxSeries>
     <DxLegend :visible="false"/>
+    <DxSize
+      :width="400"
+      :height="200"
+    />
   </DxPieChart>
 </template>
 <script>
@@ -35,7 +39,8 @@ export default {
     DxSeries,
     DxLabel,
     DxLegend,
-    DxConnector
+    DxConnector,
+    DxSize
   },
   props: {
     data: {
