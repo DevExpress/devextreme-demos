@@ -15,6 +15,13 @@ export class Resource {
     color: string;
 }
 
+export class ResourceMenuItem {
+    text: string;
+    id: number;
+    color: string;
+    onItemClick: any;
+}
+
 let appointments: Appointment[] = [
     {
         text: "Watercolor Landscape",
