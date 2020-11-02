@@ -858,7 +858,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 ParentId = 0,
                 Title = "Johnson Residence Construction Project",
                 Start = GetCorrectDate(year, month - 1, 1),
-                End = GetCorrectDate(year, month - 2, 1),
+                End = GetCorrectDate(year, month - 1, 1),
                 Progress = 0
             },
             new Task {
