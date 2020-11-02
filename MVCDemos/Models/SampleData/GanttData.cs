@@ -857,40 +857,40 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 ID = 1,
                 ParentId = 0,
                 Title = "Johnson Residence Construction Project",
-                Start = new DateTime(year, month - 1, 1),
-                End = new DateTime(year, month - 1, 1),
+                Start = GetCorrectDate(year, month - 1, 1),
+                End = GetCorrectDate(year, month - 2, 1),
                 Progress = 0
             },
             new Task {
                 ID = 2,
                 ParentId = 1,
                 Title = "Planning and Pre-Construction Phase",
-                Start = new DateTime(year, month - 1, 1),
-                End = new DateTime(year, month - 1, 1),
+                Start = GetCorrectDate(year, month - 1, 1),
+                End = GetCorrectDate(year, month - 1, 1),
                 Progress = 0
             },
             new Task {
                 ID = 3,
                 ParentId = 2,
                 Title = "Architectural Design and Site Planning",
-                Start = new DateTime(year, month - 1, 1),
-                End = new DateTime(year, month - 1, 15),
+                Start = GetCorrectDate(year, month - 1, 1),
+                End = GetCorrectDate(year, month - 1, 15),
                 Progress = 0
             },
             new Task {
                 ID = 4,
                 ParentId = 2,
                 Title = "Engineering and Final Blueprint",
-                Start = new DateTime(year, month - 1, 8),
-                End = new DateTime(year, month - 1, 15),
+                Start = GetCorrectDate(year, month - 1, 8),
+                End = GetCorrectDate(year, month - 1, 15),
                 Progress = 0
             },
             new Task {
                 ID = 5,
                 ParentId = 2,
                 Title = "City Permits and Contracts",
-                Start = new DateTime(year, month - 1, 15),
-                End = new DateTime(year, month - 1, 18),
+                Start = GetCorrectDate(year, month - 1, 15),
+                End = GetCorrectDate(year, month - 1, 18),
                 Progress = 0
             },
             new Task {
@@ -913,72 +913,72 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 ID = 8,
                 ParentId = 6,
                 Title = "Demolition and Removal",
-                Start = new DateTime(year, month - 1, 19),
-                End = new DateTime(year, month - 1, 23),
+                Start = GetCorrectDate(year, month - 1, 19),
+                End = GetCorrectDate(year, month - 1, 23),
                 Progress = 0
             },
             new Task {
                 ID = 9,
                 ParentId = 6,
                 Title = "Foundation and Concrete ",
-                Start = new DateTime(year, month - 1, 22),
-                End = new DateTime(year, month - 1, 29),
+                Start = GetCorrectDate(year, month - 1, 22),
+                End = GetCorrectDate(year, month - 1, 29),
                 Progress = 0
             },
             new Task {
                 ID = 10,
                 ParentId = 6,
                 Title = "Rough Framing and Carpentery",
-                Start = new DateTime(year, month - 1, 25),
-                End = new DateTime(year, month, 5),
+                Start = GetCorrectDate(year, month - 1, 25),
+                End = GetCorrectDate(year, month, 5),
                 Progress = 0
             },
             new Task {
                 ID = 11,
                 ParentId = 6,
                 Title = "Inspection (Structure)",
-                Start = new DateTime(year, month, 5),
-                End = new DateTime(year, month, 5),
+                Start = GetCorrectDate(year, month, 5),
+                End = GetCorrectDate(year, month, 5),
                 Progress = 0
             },
             new Task {
                 ID = 12,
                 ParentId = 6,
                 Title = "Electrical Rough-in",
-                Start = new DateTime(year, month, 6),
-                End = new DateTime(year, month, 19),
+                Start = GetCorrectDate(year, month, 6),
+                End = GetCorrectDate(year, month, 19),
                 Progress = 0
             },
             new Task {
                 ID = 13,
                 ParentId = 6,
                 Title = "Plumbing Rough-in",
-                Start = new DateTime(year, month, 19),
-                End = new DateTime(year, month, 19),
+                Start = GetCorrectDate(year, month, 19),
+                End = GetCorrectDate(year, month, 19),
                 Progress = 0
             },
             new Task {
                 ID = 14,
                 ParentId = 6,
                 Title = "Heating and A/C",
-                Start = new DateTime(year, month, 19),
-                End = new DateTime(year, month, 26),
+                Start = GetCorrectDate(year, month, 19),
+                End = GetCorrectDate(year, month, 26),
                 Progress = 0
             },
             new Task {
                 ID = 15,
                 ParentId = 6,
                 Title = "Drywall",
-                Start = new DateTime(year, month, 25),
-                End = new DateTime(year, month + 1, 10),
+                Start = GetCorrectDate(year, month, 25),
+                End = GetCorrectDate(year, month + 1, 10),
                 Progress = 0
             },
             new Task {
                 ID = 16,
                 ParentId = 6,
                 Title = "Painting (Exterior)",
-                Start = new DateTime(year, month + 1, 7),
-                End = new DateTime(year, month + 1, 21),
+                Start = GetCorrectDate(year, month + 1, 7),
+                End = GetCorrectDate(year, month + 1, 21),
                 Progress = 0
             },
             new Task {
@@ -993,40 +993,40 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 ID = 18,
                 ParentId = 6,
                 Title = "Flooring and Interior Paint",
-                Start = new DateTime(year, month + 1, 26),
-                End = new DateTime(year, month + 2, 9),
+                Start = GetCorrectDate(year, month + 1, 26),
+                End = GetCorrectDate(year, month + 2, 9),
                 Progress = 0
             },
             new Task {
                 ID = 19,
                 ParentId = 1,
                 Title = "Final Phase",
-                Start = new DateTime(year, month + 2, 9),
-                End = new DateTime(year, month + 2, 9),
+                Start = GetCorrectDate(year, month + 2, 9),
+                End = GetCorrectDate(year, month + 2, 9),
                 Progress = 0
             },
             new Task {
                 ID = 20,
                 ParentId = 19,
                 Title = "Review-Punch List",
-                Start = new DateTime(year, month + 2, 9),
-                End = new DateTime(year, month + 2, 23),
+                Start = GetCorrectDate(year, month + 2, 9),
+                End = GetCorrectDate(year, month + 2, 23),
                 Progress = 0
             },
             new Task {
                 ID = 21,
                 ParentId = 19,
                 Title = "Final Inspection",
-                Start = new DateTime(year, month + 2, 24),
-                End = new DateTime(year, month + 2, 24),
+                Start = GetCorrectDate(year, month + 2, 24),
+                End = GetCorrectDate(year, month + 2, 24),
                 Progress = 0
             },
             new Task {
                 ID = 22,
                 ParentId = 19,
                 Title = "Final Paperwork and Documents",
-                Start = new DateTime(year, month + 2, 24),
-                End = new DateTime(year, month + 2, 30),
+                Start = GetCorrectDate(year, month + 2, 24),
+                End = GetCorrectDate(year, month + 2, 30),
                 Progress = 0
             }
         };
@@ -1050,5 +1050,22 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
             "quarters",
             "years"
         };
+
+        public static DateTime GetCorrectDate(int year, int month, int day) {
+            int monthsInYear = 12;
+            int resultYear = year;
+            int resultMonth = month;
+
+            if (month > monthsInYear) {
+                resultYear++;
+                resultMonth = month % monthsInYear;
+            }
+            if(month < 1) {
+                resultYear--;
+                resultMonth = monthsInYear + month;
+            }
+
+            return new DateTime(resultYear, resultMonth, day);
+        }
     }
 }
