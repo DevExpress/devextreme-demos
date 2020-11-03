@@ -19,7 +19,8 @@
         "babel-eslint": "10.0.3",
         "@typescript-eslint/eslint-plugin": "^2.29.0",
         "@typescript-eslint/parser": "^2.29.0",
-        "typescript": "^3.7.2"
+        "typescript": "^3.7.2",
+        "npm-run-all": "^4.1.5"
     },
     "peerDependencies": {},
     "scripts": {
@@ -32,11 +33,12 @@
         "prepare-mvc": "node utils/prepare-mvc.js",
         "prepare-netcore": "node utils/prepare-netcore.js",
         "prepare-all": "npm run prepare-js:dev && npm run prepare-mvc && npm run prepare-netcore",
+        "lint-js": "eslint .",
         "lint-react": "eslint JSDemos/Demos -c .react.eslintrc.json --ignore-path .react.eslintignore",
         "lint-vue": "eslint JSDemos/Demos -c .vue.eslintrc.json --ignore-path .vue.eslintignore --ext .vue,.js",
         "lint-mvc": "cd MVCDemos && eclint check **/*.cshtml !{bin,obj}/** && dotnet format -w DevExtreme.MVC.Demos.sln --dry-run --check && cd ../",
         "lint-netcore": "cd NetCoreDemos && eclint check **/*.cshtml !{bin,obj}/** !DemoShell/** && dotnet format -w DevExtreme.NETCore.Demos.sln --dry-run --check && cd ../",
-        "lint": "eslint . && npm run lint-react && npm run lint-vue && npm run lint-mvc && npm run lint-netcore"
+        "lint": "npm-run-all -p -c lint-js lint-react lint-vue lint-mvc lint-netcore"
     },
     "license": "SEE LICENSE IN README.md",
     "keywords": [
