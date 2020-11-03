@@ -60,5 +60,5 @@ $(function(){
         dropZoneImage.hidden = !visible;
     }
 
-    document.getElementById("dropzone-image").onload = () => toggleImageVisible(true);
+    document.getElementById("dropzone-image").onload = function() { toggleImageVisible(true); };
 });
