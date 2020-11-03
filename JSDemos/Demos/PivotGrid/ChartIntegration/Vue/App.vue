@@ -43,10 +43,6 @@ import {
   DxFieldChooser
 } from 'devextreme-vue/pivot-grid';
 
-import 'devextreme/localization/globalize/currency';
-
-import Globalize from 'globalize';
-
 import sales from './data.js';
 
 export default {
@@ -95,10 +91,9 @@ export default {
         store: sales
       },
       customizeTooltip(args) {
-        var valueText = (args.seriesName.indexOf('Total') != -1) ?
-          Globalize.formatCurrency(args.originalValue,
-            'USD', { maximumFractionDigits: 0 }) :
-          args.originalValue;
+        var valueText = (args.seriesName.indexOf('Total') != -1)
+          ? new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'USD' }).format(args.originalValue)
+          : args.originalValue;
 
         return {
           html: `${args.seriesName }<div class='currency'>${
