@@ -1056,7 +1056,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
             int resultYear = year;
             int resultMonth = month;
 
-            if (month > monthsInYear) {
+            if(month > monthsInYear) {
                 resultYear++;
                 resultMonth = month % monthsInYear;
             }
