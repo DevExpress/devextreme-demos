@@ -68,9 +68,13 @@ System.config({
     /**/
 
     /** canvg */
-    'stackblur-canvas': 'npm:stackblur-canvas/dist/stackblur.min.js',
-    'rgbcolor': 'npm:rgbcolor/index.js',
-    'canvg': 'npm:canvg/dist/browser/canvg.min.js',
+    "@babel/runtime-corejs3": 'npm:@babel/runtime-corejs3',
+    "@types/raf": 'npm:@types/raf',
+    "raf": 'npm:raf/index.js',
+    "rgbcolor": 'npm:rgbcolor/index.js',
+    "stackblur-canvas": 'npm:stackblur-canvas/dist/stackblur.min.js',
+    "svg-pathdata": 'npm:svg-pathdata/lib/SVGPathData.js',
+    'canvg': 'npm:canvg/lib/index.js',
     /**/
 
     /** whatwg-fetch */
@@ -98,6 +102,9 @@ System.config({
     'plugin-babel': 'npm:systemjs-plugin-babel/plugin-babel.js',
     'systemjs-babel-build': 'npm:systemjs-plugin-babel/systemjs-babel-browser.js'
   },
+  packageConfigPaths: [
+    "npm:@babel/runtime-corejs3/package.json"
+  ],
   packages: {
     'devextreme': {
       defaultExtension: 'js'
@@ -131,6 +138,9 @@ System.config({
       main: 'index.js',
       defaultExtension: 'js'
     }/**/,
+    '@babel/runtime-corejs3/regenerator': {
+      main: 'index'
+    },
     'es6-object-assign': {
       main: './index.js',
       defaultExtension: 'js'

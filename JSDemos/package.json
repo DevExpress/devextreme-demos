@@ -17,7 +17,7 @@
         "@aspnet/signalr": "1.0.0",
         "angular": "^1.6.10",
         "angular-sanitize": "^1.6.10",
-        "canvg": "2",
+        "canvg": "3",
         "cldr-core": "latest",
         "cldr-data": "29",
         "cldr-dates-full": "latest",
