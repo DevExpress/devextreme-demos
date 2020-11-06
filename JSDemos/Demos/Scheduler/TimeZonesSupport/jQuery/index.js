@@ -11,6 +11,7 @@ $(function () {
     const demoLocations = getLocations(currentDate);
 
     var scheduler = $("#scheduler").dxScheduler({
+        timeZone: "America/Los_Angeles",
         dataSource: data,
         views: ["workWeek"],
         timeZone: demoLocations[0].id,

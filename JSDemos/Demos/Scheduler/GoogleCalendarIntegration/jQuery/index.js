@@ -3,6 +3,7 @@ $(function(){
         CALENDAR_ID = "f7jnetm22dsjc3npc2lu3buvu4@group.calendar.google.com";
     
     $("#scheduler").dxScheduler({
+        timeZone: "America/Los_Angeles",
         dataSource: new DevExpress.data.DataSource({
             store: new DevExpress.data.CustomStore({
                 load: function(options) {
