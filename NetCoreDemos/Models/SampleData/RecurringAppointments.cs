@@ -8,29 +8,29 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
             new RecurringAppointment {
                 Text = "Watercolor Landscape",
                 RoomId = 1,
-                StartDate = "2021-02-29T06:30:00.000Z",
-                EndDate = "2021-02-29T08:00:00.000Z",
+                StartDate = "2021-03-01T06:30:00.000Z",
+                EndDate = "2021-03-01T08:00:00.000Z",
                 RecurrenceRule = "FREQ=WEEKLY;BYDAY=TU,FR;COUNT=10"
             },
             new RecurringAppointment {
                 Text = "Oil Painting for Beginners",
                 RoomId = 2,
-                StartDate = "2021-02-29T06:30:00.000Z",
-                EndDate = "2021-02-29T08:00:00.000Z",
+                StartDate = "2021-03-01T06:30:00.000Z",
+                EndDate = "2021-03-01T08:00:00.000Z",
                 RecurrenceRule = "FREQ=WEEKLY;BYDAY=MO,TH;COUNT=10"
             },
             new RecurringAppointment {
                 Text = "Testing",
                 RoomId = 3,
-                StartDate = "2021-02-29T09:00:00.000Z",
-                EndDate = "2021-02-29T10:00:00.000Z",
+                StartDate = "2021-03-01T09:00:00.000Z",
+                EndDate = "2021-03-01T10:00:00.000Z",
                 RecurrenceRule = "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2"
             },
             new RecurringAppointment {
                 Text = "Meeting of Instructors",
                 RoomId = 4,
-                StartDate = "2021-02-29T06:00:00.000Z",
-                EndDate = "2021-02-29T06:15:00.000Z",
+                StartDate = "2021-03-01T06:00:00.000Z",
+                EndDate = "2021-03-01T06:15:00.000Z",
                 RecurrenceRule = "FREQ=DAILY;BYDAY=WE;UNTIL=20210401"
             },
             new RecurringAppointment {
@@ -58,8 +58,8 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
             new RecurringAppointment {
                 Text = "Open Day",
                 RoomId = 5,
-                StartDate = "2021-02-29T06:30:00.000Z",
-                EndDate = "2021-02-29T10:00:00.000Z",
+                StartDate = "2021-03-01T06:30:00.000Z",
+                EndDate = "2021-03-01T10:00:00.000Z",
                 RecurrenceRule = "FREQ=YEARLY;BYYEARDAY=87"
             }
         };
