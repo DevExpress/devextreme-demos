@@ -29,9 +29,9 @@
 )
 
 <script>
-    const getLocations = (date) => {
+    const getLocations = function(date) {
         const timeZones = DevExpress.utils.getTimeZones(date);
-        return timeZones.filter((timeZone) => {
+        return timeZones.filter(function(timeZone) {
             return locations.indexOf(timeZone.id) !== -1;
         });
     };
