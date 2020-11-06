@@ -9,6 +9,7 @@ DemoApp.controller('DemoController', function DemoController($scope) {
     };
 
     $scope.schedulerOptions = {
+        timeZone: "America/Los_Angeles",
         dataSource: data,
         views: ["week", "timelineWeek"],
         currentView: "week",
