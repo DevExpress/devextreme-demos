@@ -31,7 +31,6 @@ class App extends React.Component {
           <h3>Tasks for Employees (USA Office)</h3>
         </div>
         <Scheduler
-          timeZone="America/Los_Angeles"
           dataSource={dataSource}
           views={views}
           defaultCurrentView="workWeek"

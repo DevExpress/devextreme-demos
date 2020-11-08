@@ -4,7 +4,6 @@
       <h3>Tasks for Employees (USA Office)</h3>
     </div>
     <DxScheduler
-      time-zone="America/Los_Angeles"
       :data-source="dataSource"
       :current-date="currentDate"
       :views="views"
