@@ -69,7 +69,7 @@ const data: Data[] = [
     },
     {
         text: "Submit New Website Design",
-        startDate: new Date("2021-05-31T00:00:00.000Z"),
+        startDate: new Date("2021-06-02T07:00:00.000Z"),
         endDate: new Date("2021-06-02T08:30:00.000Z")
     },
     {
