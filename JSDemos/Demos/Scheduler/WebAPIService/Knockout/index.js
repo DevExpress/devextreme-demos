@@ -2,7 +2,7 @@ window.onload = function() {
     var url = "https://js.devexpress.com/Demos/Mvc/api/SchedulerData";
     var viewModel = {
         schedulerOptions: {
-            timeZone:"America/Los_Angeles",
+            timeZone: "America/Los_Angeles",
             dataSource: DevExpress.data.AspNet.createStore({
                 key: "AppointmentId",
                 loadUrl: url + "/Get",

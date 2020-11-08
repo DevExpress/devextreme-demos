@@ -18,8 +18,8 @@ var data = [
         recurrenceRule: "FREQ=WEEKLY;BYDAY=FR;INTERVAL=2;COUNT=32"
     }, {
         text: "Approve Personal Computer Upgrade Plan",
-        startDate: new Date("2021-05-05T17:00:00.000Z"),
-        endDate: new Date("2021-05-05T18:00:00.000Z"),
+        startDate: new Date("2021-04-05T17:00:00.000Z"),
+        endDate: new Date("2021-04-05T18:00:00.000Z"),
         recurrenceRule: "FREQ=WEEKLY;BYDAY=WE;INTERVAL=2;COUNT=32",
         priorityId: [2]
     }, {

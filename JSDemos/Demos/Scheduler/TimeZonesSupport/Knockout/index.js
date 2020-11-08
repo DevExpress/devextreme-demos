@@ -14,7 +14,7 @@ window.onload = function() {
 
     var viewModel = {
         schedulerOptions: {
-            timeZone:"America/Los_Angeles",
+            timeZone: "America/Los_Angeles",
             dataSource: dataSource,
             views: ["workWeek"],
             currentView: "workWeek",
