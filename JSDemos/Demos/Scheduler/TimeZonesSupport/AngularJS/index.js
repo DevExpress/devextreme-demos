@@ -13,7 +13,6 @@ DemoApp.controller('DemoController', function DemoController($scope) {
     $scope.currentLocation = $scope.demoLocations[0].id;
 
     $scope.schedulerOptions = {
-        timeZone: "America/Los_Angeles",
         bindingOptions: {
             timeZone: "currentLocation"
         },

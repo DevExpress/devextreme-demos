@@ -74,7 +74,6 @@ class App extends React.Component {
           />
         </div>
         <Scheduler
-          timeZone="America/Los_Angeles"
           dataSource={data}
           views={views}
           defaultCurrentView="workWeek"
