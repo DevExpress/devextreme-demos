@@ -3,7 +3,7 @@ var data = [{
         priorityId: 1,
         typeId: 1,
         startDate: new Date("2021-05-24T15:00:00.000Z"),
-        endDate: new Date("2021-05-24T15:30:00.000Z"), //TODO
+        endDate: new Date("2021-05-24T15:30:00.000Z"),
         recurrenceRule: "FREQ=DAILY;BYDAY=MO,TU,WE,TH,FR;UNTIL=20210530"
     },
     {
@@ -28,7 +28,7 @@ var data = [{
         text: "Go Grocery Shopping",
         priorityId: 1,
         typeId: 1,
-        startDate: new Date("2021-05-25T01:30:00.000Z"), //TODO
+        startDate: new Date("2021-05-25T01:30:00.000Z"),
         endDate: new Date("2021-05-25T02:30:00.000Z"),
         recurrenceRule: "FREQ=DAILY;BYDAY=MO,WE,FR;UNTIL=20210530"
     }, {
