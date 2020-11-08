@@ -59,7 +59,7 @@ class App extends React.Component {
       <div className="schedulers">
         <div className="column-1">
           <Scheduler
-          timeZone="America/Los_Angeles"
+            timeZone="America/Los_Angeles"
             dataSource={store1}
             views={views}
             defaultCurrentView="day"
@@ -75,7 +75,7 @@ class App extends React.Component {
         </div>
         <div className="column-2">
           <Scheduler
-          timeZone="America/Los_Angeles"
+            timeZone="America/Los_Angeles"
             dataSource={store2}
             views={views}
             defaultCurrentView="day"

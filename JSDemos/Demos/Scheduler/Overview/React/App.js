@@ -14,7 +14,7 @@ class App extends React.Component {
   render() {
     return (
       <Scheduler
-          timeZone="America/Los_Angeles"
+        timeZone="America/Los_Angeles"
         dataSource={data}
         dataCellComponent={DataCell}
         resourceCellComponent={ResourceCell}

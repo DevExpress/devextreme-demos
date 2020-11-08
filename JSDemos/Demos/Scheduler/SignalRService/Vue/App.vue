@@ -2,7 +2,7 @@
   <div class="schedulers">
     <div class="column-1">
       <DxScheduler
-      time-zone="America/Los_Angeles"
+        time-zone="America/Los_Angeles"
         :data-source="store1"
         :current-date="currentDate"
         :views="views"
@@ -21,7 +21,7 @@
     </div>
     <div class="column-2">
       <DxScheduler
-      time-zone="America/Los_Angeles"
+        time-zone="America/Los_Angeles"
         :data-source="store2"
         :current-date="currentDate"
         :views="views"
