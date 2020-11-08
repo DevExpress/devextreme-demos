@@ -3,7 +3,6 @@ $(function () {
     var appointments = generateAppointments();
 
     $("#scheduler").dxScheduler({
-        timeZone: "America/Los_Angeles",
         height: 600,
         dataSource: appointments,
         views: [{
