@@ -60,6 +60,7 @@
                         .DataSource(Model.Colors)
                         .StylingMode(ButtonStylingMode.Text)
                         .Icon("square")
+                        .DropDownOptions(o => o.Width("auto"))
                         .OnInitialized("init_colorpicker")
                         .DropDownContentTemplate(new TemplateName("colorpicker-template"))
                     )
