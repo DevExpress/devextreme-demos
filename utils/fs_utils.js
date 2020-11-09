@@ -1,28 +1,30 @@
+'use strict';
+
 const fs = require('fs');
 const path = require('path');
 const demosPathPrefix = 'utils';
 const descriptionFileName = 'description.md';
 
 const copyDemos = (demoPath, approaches, newOrExisting, menuMetaData, baseDemosDir) => {
-    if(newOrExisting.choice == 'new') {
+    if(newOrExisting.choice === 'new') {
         copyFilesFromBlankDemos(approaches, demoPath);
     } else {
         copyFilesFromExistingDemos(approaches, demoPath, newOrExisting, menuMetaData, baseDemosDir);
     }
     console.log('files for selected approaches were copied');
-}
+};
 
 const copyFilesFromExistingDemos = (approaches, demoPath, newOrExisting, menuMetaData, baseDemosDir) => {
-    approaches.forEach(function(approach){
+    approaches.forEach(function(approach) {
         const demoPathByMeta = getDemoPathByMeta(newOrExisting.category, newOrExisting.group, newOrExisting.demo, baseDemosDir, menuMetaData);
         const fromPath = path.join(demoPathByMeta, approach);
         const toPath = path.join(demoPath, approach);
-        if(!fs.existsSync(toPath)){
+        if(!fs.existsSync(toPath)) {
             fs.mkdirSync(toPath, { recursive: true });
         }
         copyRecursiveSync(fromPath, toPath);
     });
-}
+};
 
 const copyFilesFromBlankDemos = (approaches, demoPath) => {
     approaches.forEach((approach) => {
@@ -34,71 +36,71 @@ const copyFilesFromBlankDemos = (approaches, demoPath) => {
         if(err) throw err;
         console.log('description.md copied');
     });
-}
+};
 
 const copyRecursiveSync = (src, dest) => {
     const exists = fs.existsSync(src);
     const stats = exists && fs.statSync(src);
     const isDirectory = exists && stats.isDirectory();
     if(isDirectory) {
-        if(!fs.existsSync(dest)){
+        if(!fs.existsSync(dest)) {
             fs.mkdirSync(dest, { recursive: true });
         }
-      fs.readdirSync(src).forEach(function(childItemName) {
-        copyRecursiveSync(path.join(src, childItemName),
-                          path.join(dest, childItemName));
-      });
+        fs.readdirSync(src).forEach(function(childItemName) {
+            copyRecursiveSync(path.join(src, childItemName),
+                path.join(dest, childItemName));
+        });
     } else {
-      fs.copyFileSync(src, dest);
+        fs.copyFileSync(src, dest);
     }
-}
+};
 
 const getDemoPathByMeta = (categoryName, groupName, demoName, baseDemosDir, menuMetaData) => {
-    const _categoryIndex = menuMetaData.findIndex(x => x.Name == categoryName);
-    const _groupIndex = menuMetaData[_categoryIndex].Groups.findIndex(x => x.Name == groupName);
-    const demo = menuMetaData[_categoryIndex].Groups[_groupIndex].Demos.find(x => x.Name == demoName);
+    const _categoryIndex = menuMetaData.findIndex(x => x.Name === categoryName);
+    const _groupIndex = menuMetaData[_categoryIndex].Groups.findIndex(x => x.Name === groupName);
+    const demo = menuMetaData[_categoryIndex].Groups[_groupIndex].Demos.find(x => x.Name === demoName);
     const result = path.join(baseDemosDir, demo.Widget, demo.Name);
     return result;
-}
+};
 
 const getMissingApproaches = (demoPath, approachesList) => {
     const currentDemos = getApproachesList(demoPath);
     const missingApproaches = approachesList.filter(x => !currentDemos.includes(x));
     return missingApproaches;
-}
+};
 
 const saveMetaDataFile = (menuMetaDataFilePath, metaData) => {
     console.log('Saving: menuMeta.json');
     fs.writeFileSync(menuMetaDataFilePath, JSON.stringify(metaData, null, 2));
     console.log('Saved: menuMeta.json');
-}
+};
 
 const getApproachesList = (demoPath) => {
-    if(!fs.existsSync(demoPath)){
+    if(!fs.existsSync(demoPath)) {
         console.error('Directory does not exist:', demoPath);
         process.exit(0);
     }
     const demosList = fs.readdirSync(demoPath, { withFileTypes: true })
-                        .filter(dirent => dirent.isDirectory())
-                        .map(dirent => dirent.name);
+        .filter(dirEntity => dirEntity.isDirectory())
+        .map(dirEntity => dirEntity.name);
     return demosList;
-}
+};
 
 const isValidDirectory = (directoryPath) => {
     return fs.existsSync(directoryPath) && fs.lstatSync(directoryPath).isDirectory();
-}
+};
 
 const getWidgets = (widgetsPath, newWidget) => {
-    let result = fs.readdirSync(widgetsPath, {withFileTypes: true})
-                    .filter(dirent => dirent.isDirectory())
-                    .map((dirent) => {
-                        return { title: dirent.name };
-                    });
+    const result = fs.readdirSync(widgetsPath, { withFileTypes: true })
+        .filter(dirEntity => dirEntity.isDirectory())
+        .map((dirEntity) => {
+            return { title: dirEntity.name };
+        });
     if(newWidget) {
-        result.unshift({ title: newWidget, value: 'new' })
+        result.unshift({ title: newWidget, value: 'new' });
     }
     return result;
-}
+};
 
 const recreateLink = (src, dest, callback) => {
     if(!dest) {
@@ -130,7 +132,7 @@ const recreateLink = (src, dest, callback) => {
             console.log(dest + ' link is created');
         });
     }
-}
+};
 
 module.exports = {
     copyDemos,
@@ -142,4 +144,4 @@ module.exports = {
     getWidgets,
     isValidDirectory,
     recreateLink
-}
+};

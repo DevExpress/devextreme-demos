@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 const fs = require('fs');
 
@@ -37,7 +39,7 @@ const getDemosWithExtraModules = () => {
     meta.forEach(section => {
         section.Groups && section.Groups.forEach(group => {
             if(group.Groups) {
-                group.Groups.forEach(group => handleGroup(group))
+                group.Groups.forEach(group => handleGroup(group));
             }
             handleGroup(group);
         });
@@ -66,13 +68,12 @@ const createConfigFilesContent = (demos) => {
 const createConfigForApproaches = (fullDemoName, widgetName, demoName, extraModulesDemos, approachesConfigContent) => {
     approaches.forEach((approach) => {
         const demoApproachName = path.join(fullDemoName, approach);
-        if (!fs.existsSync(demoApproachName))
-            return;
+        if(!fs.existsSync(demoApproachName)) { return; }
         const demoConfigName = path.join(demoApproachName, 'config.js');
-        if (fs.existsSync(demoConfigName)) {
+        if(fs.existsSync(demoConfigName)) {
             fs.unlinkSync(demoConfigName);
         }
-        demoModulesList = extraModulesDemos[getKey(widgetName, demoName)] || '';
+        const demoModulesList = extraModulesDemos[getKey(widgetName, demoName)] || '';
         fs.writeFileSync(demoConfigName, approachesConfigContent[getDemoKey(approach, demoModulesList)], 'utf8');
     });
 };
@@ -91,7 +92,7 @@ const createConfigs = (demosDir) => {
         demoNames.forEach((demoName) => {
             const fullDemoName = path.join(fullWidgetName, demoName);
             if(!fs.statSync(fullDemoName).isDirectory()) return;
-            
+
             createConfigForApproaches(fullDemoName, widgetName, demoName, demosWithExtraModules, configContent);
         });
     });

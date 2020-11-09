@@ -1,7 +1,9 @@
+'use strict';
+
 const fs = require('fs');
 const path = require('path');
 const systemSync = require('./cp_utils').systemSync;
-const reposPathsFilePath = path.join(__dirname, 'reposPaths.js');
+const repositoriesPathsFilePath = path.join(__dirname, 'reposPaths.js');
 const pq = require('./prompts_questions');
 const content = `const reposPaths = {
     'devextreme': '',
@@ -17,50 +19,51 @@ module.exports = {
     reposPaths
 };`;
 
-const processRepositoriesAsync = async (repositories, callback) => {
-    for (let index = 0; index < repositories.length; index++) {
+const processRepositoriesAsync = async(repositories, callback) => {
+    for(let index = 0; index < repositories.length; index++) {
         await callback(repositories[index], index, repositories);
     }
-}
+};
 
 const processRepository = (command, repositoryName, repositoryPath, node_modulesDir) => {
     if(!fs.existsSync(repositoryPath)) {
         console.error('Directory `' + repositoryPath + '` does not exist. Please make sure you built the `' + repositoryName + '` repository.');
         return;
     }
-    if(command == 'unlink') {
+    if(command === 'unlink') {
         systemSync('cd ' + node_modulesDir + ' && npm unlink --no-save ' + repositoryName);
         systemSync('cd ' + repositoryPath + ' && npm unlink ');
     } else {
         systemSync('cd ' + node_modulesDir + ' && npm link ' + repositoryPath);
     }
-}
+};
 
 const getUpdatedData = (data, repository, path) => {
-    let pattern = '[\'\"]{0,1}DEVEXTREME[\'\"]{0,1}:\\s*[\'\"]{2}';
-    pattern = pattern.replace('DEVEXTREME', repository); 
+    let pattern = '[\'"]{0,1}DEVEXTREME[\'"]{0,1}:\\s*[\'"]{2}';
+    pattern = pattern.replace('DEVEXTREME', repository);
     const replacement = '\'' + repository + '\'' + ': \'' + path.replace(/\\/g, '\\\\') + '\'';
     const result = data.replace(new RegExp(pattern), replacement);
     return result;
-}
+};
 
 const savePathToFile = (repository, path) => {
-    console.log('Updating `' + reposPathsFilePath + '` Repository: `' + repository + '` Path : `' + path + '`');
-    let data = fs.readFileSync(reposPathsFilePath, {encoding: 'utf8', flag: 'r+' });
-    const updatedData = getUpdatedData(data, repository, path); 
-    fs.writeFileSync(reposPathsFilePath, updatedData, 'utf8');
+    console.log('Updating `' + repositoriesPathsFilePath + '` Repository: `' + repository + '` Path : `' + path + '`');
+    const data = fs.readFileSync(repositoriesPathsFilePath, { encoding: 'utf8', flag: 'r+' });
+    const updatedData = getUpdatedData(data, repository, path);
+    fs.writeFileSync(repositoriesPathsFilePath, updatedData, 'utf8');
     console.log('File updated.');
-}
+};
 
 const createFileIfNecessary = () => {
-    if(!fs.existsSync(reposPathsFilePath)){
-        fs.appendFileSync(reposPathsFilePath, content);
+    if(!fs.existsSync(repositoriesPathsFilePath)) {
+        fs.appendFileSync(repositoriesPathsFilePath, content);
     }
-}
+};
 
-const getRepositoryPathByName = async (repositoryName) => {
+const getRepositoryPathByName = async(repositoryName) => {
     createFileIfNecessary();
-    let repositoryNameNormalized = repositoryName.replace(' ', '-').toLowerCase();
+    const repositoryNameNormalized = repositoryName.replace(' ', '-').toLowerCase();
+    // eslint-disable-next-line node/no-missing-require, spellcheck/spell-checker
     let repositoryPath = require('./reposPaths').reposPaths[repositoryNameNormalized].trim();
     if(!repositoryPath) {
         const response = await pq.askRepositoryPath(repositoryName);
@@ -68,37 +71,37 @@ const getRepositoryPathByName = async (repositoryName) => {
         savePathToFile(repositoryNameNormalized, repositoryPath);
     }
     return repositoryPath;
-}
+};
 
-const getDevExtremeRepositoryPath = async () => {
+const getDevExtremeRepositoryPath = async() => {
     return getRepositoryPathByName('DevExtreme');
-} 
+};
 
-const getDevExtremeAngularRepositoryPath = async () => {
+const getDevExtremeAngularRepositoryPath = async() => {
     return getRepositoryPathByName('DevExtreme Angular');
-}
+};
 
-const getDevExtremeReactRepositoryPath = async () => {
+const getDevExtremeReactRepositoryPath = async() => {
     return getRepositoryPathByName('DevExtreme React');
-}
+};
 
-const getDevExtremeVueRepositoryPath = async () => {
+const getDevExtremeVueRepositoryPath = async() => {
     return getRepositoryPathByName('DevExtreme Vue');
-}
+};
 
-const getHGRepositoryPath = async () => {
+const getHGRepositoryPath = async() => {
     return getRepositoryPathByName('HG');
-}
+};
 
-const getDevExtremeGanttRepositoryPath = async () => {
+const getDevExtremeGanttRepositoryPath = async() => {
     return getRepositoryPathByName('DevExpress Gantt');
-}
+};
 
-const getDevExtremeDiagramRepositoryPath = async () => {
+const getDevExtremeDiagramRepositoryPath = async() => {
     return getRepositoryPathByName('DevExpress Diagram');
-}
+};
 
-const getRepositoryPath = async (repositoryName) => {
+const getRepositoryPath = async(repositoryName) => {
     if(repositoryName === 'devextreme') {
         return getDevExtremeRepositoryPath();
     }
@@ -117,10 +120,10 @@ const getRepositoryPath = async (repositoryName) => {
     if(repositoryName === 'devexpress-diagram') {
         return getDevExtremeDiagramRepositoryPath();
     }
-    if(repositoryName.toLowerCase() == 'hg') {
+    if(repositoryName.toLowerCase() === 'hg') {
         return getHGRepositoryPath();
     }
-}
+};
 
 module.exports = {
     getRepositoryPath,
@@ -131,4 +134,4 @@ module.exports = {
     getHGRepositoryPath,
     processRepositoriesAsync,
     processRepository
-}
+};
