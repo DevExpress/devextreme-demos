@@ -3,6 +3,7 @@
 @(Html.DevExtreme().Scheduler()
     .ID("scheduler")
     .DataSource(Model.Appointments)
+    .TimeZone("America/Los_Angeles")
     .Views(views => {
         views.Add()
             .Name("Auto Mode")
