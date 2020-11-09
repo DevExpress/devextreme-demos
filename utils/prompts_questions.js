@@ -1,8 +1,9 @@
 'use strict';
 
-const mm_utils = require('./menu_meta_utils');
-const prompts = require('prompts');
 const path = require('path');
+const prompts = require('prompts');
+
+const menuMetaUtils = require('./menu_meta_utils');
 const fileSystemUtils = require('./fs_utils');
 
 const setTextIfPrevIsNull = prev => prev === 'new' ? 'text' : null;
@@ -12,7 +13,7 @@ const getPromptForCategories = (menuMetaData, message, newCategoryText) => {
         type: 'autocomplete',
         name: 'name',
         message: message,
-        choices: mm_utils.getCategories(menuMetaData, newCategoryText)
+        choices: menuMetaUtils.getCategories(menuMetaData, newCategoryText)
     };
 };
 
@@ -35,7 +36,7 @@ const getGroupQuestions = (menuMetaData, category) => {
         type: 'autocomplete',
         name: 'name',
         message: 'Select a group for the new demo or `New group` to create a new group.',
-        choices: mm_utils.getGroups(menuMetaData, category.name, '[New group]')
+        choices: menuMetaUtils.getGroups(menuMetaData, category.name, '[New group]')
     }, {
         type: setTextIfPrevIsNull,
         name: 'newName',
@@ -48,7 +49,7 @@ const getDemoQuestions = (menuMetaData, category, group) => {
         type: 'autocomplete',
         name: 'name',
         message: 'Select a demo to which you want to add missing approaches or `[New demo]` to create a new demo in this group.',
-        choices: mm_utils.getDemos(menuMetaData, category.name, group.name, '[New demo]')
+        choices: menuMetaUtils.getDemos(menuMetaData, category.name, group.name, '[New demo]')
     }, {
         type: setTextIfPrevIsNull,
         name: 'newName',
@@ -95,17 +96,17 @@ const getNewOrExistingQuestions = (menuMetaData) => {
         type: (prev, answers) => answers.choice === 'existing' ? 'autocomplete' : null,
         name: 'category',
         message: '[Copy from existing demo]: Select a category:',
-        choices: mm_utils.getCategories(menuMetaData)
+        choices: menuMetaUtils.getCategories(menuMetaData)
     }, {
         type: (prev, answers) => answers.choice === 'existing' ? 'autocomplete' : null,
         name: 'group',
         message: '[Copy from existing demo]: Select a group',
-        choices: (prev, answers) => mm_utils.getGroups(menuMetaData, answers.category)
+        choices: (prev, answers) => menuMetaUtils.getGroups(menuMetaData, answers.category)
     }, {
         type: (prev, answers) => answers.choice === 'existing' ? 'autocomplete' : null,
         name: 'demo',
         message: '[Copy from existing demo]: Select a demo',
-        choices: (prev, answers) => mm_utils.getDemos(menuMetaData, answers.category, answers.group)
+        choices: (prev, answers) => menuMetaUtils.getDemos(menuMetaData, answers.category, answers.group)
     }];
 };
 
@@ -126,17 +127,17 @@ const getDemoToUpdateQuestions = (menuMetaData) => {
         type: 'autocomplete',
         name: 'category',
         message: 'Select a category:',
-        choices: mm_utils.getCategories(menuMetaData)
+        choices: menuMetaUtils.getCategories(menuMetaData)
     }, {
         type: 'autocomplete',
         name: 'group',
         message: 'Select a group:',
-        choices: (prev, answers) => mm_utils.getGroups(menuMetaData, answers.category)
+        choices: (prev, answers) => menuMetaUtils.getGroups(menuMetaData, answers.category)
     }, {
         type: 'autocomplete',
         name: 'demo',
         message: 'Select a demo:',
-        choices: (prev, answers) => mm_utils.getDemos(menuMetaData, answers.category, answers.group)
+        choices: (prev, answers) => menuMetaUtils.getDemos(menuMetaData, answers.category, answers.group)
     }];
 };
 

@@ -15,10 +15,11 @@ const copyDemos = (demoPath, approaches, newOrExisting, menuMetaData, baseDemosD
 };
 
 const copyFilesFromExistingDemos = (approaches, demoPath, newOrExisting, menuMetaData, baseDemosDir) => {
-    approaches.forEach(function(approach) {
+    approaches.forEach((approach) => {
         const demoPathByMeta = getDemoPathByMeta(newOrExisting.category, newOrExisting.group, newOrExisting.demo, baseDemosDir, menuMetaData);
         const fromPath = path.join(demoPathByMeta, approach);
         const toPath = path.join(demoPath, approach);
+
         if(!fs.existsSync(toPath)) {
             fs.mkdirSync(toPath, { recursive: true });
         }
@@ -32,6 +33,7 @@ const copyFilesFromBlankDemos = (approaches, demoPath) => {
         const toPath = path.join(demoPath, approach);
         copyRecursiveSync(fromPath, toPath);
     });
+
     fs.writeFileSync(path.join(demoPath, descriptionFileName), '', function(err) {
         if(err) throw err;
         console.log('description.md copied');
@@ -42,13 +44,16 @@ const copyRecursiveSync = (src, dest) => {
     const exists = fs.existsSync(src);
     const stats = exists && fs.statSync(src);
     const isDirectory = exists && stats.isDirectory();
+
     if(isDirectory) {
         if(!fs.existsSync(dest)) {
             fs.mkdirSync(dest, { recursive: true });
         }
-        fs.readdirSync(src).forEach(function(childItemName) {
-            copyRecursiveSync(path.join(src, childItemName),
-                path.join(dest, childItemName));
+        fs.readdirSync(src).forEach((childItemName) => {
+            copyRecursiveSync(
+                path.join(src, childItemName),
+                path.join(dest, childItemName)
+            );
         });
     } else {
         fs.copyFileSync(src, dest);
@@ -65,7 +70,7 @@ const getDemoPathByMeta = (categoryName, groupName, demoName, baseDemosDir, menu
 
 const getMissingApproaches = (demoPath, approachesList) => {
     const currentDemos = getApproachesList(demoPath);
-    const missingApproaches = approachesList.filter(x => !currentDemos.includes(x));
+    const missingApproaches = approachesList.filter(approach => !currentDemos.includes(approach));
     return missingApproaches;
 };
 
@@ -80,6 +85,7 @@ const getApproachesList = (demoPath) => {
         console.error('Directory does not exist:', demoPath);
         process.exit(0);
     }
+
     const demosList = fs.readdirSync(demoPath, { withFileTypes: true })
         .filter(dirEntity => dirEntity.isDirectory())
         .map(dirEntity => dirEntity.name);
@@ -93,9 +99,8 @@ const isValidDirectory = (directoryPath) => {
 const getWidgets = (widgetsPath, newWidget) => {
     const result = fs.readdirSync(widgetsPath, { withFileTypes: true })
         .filter(dirEntity => dirEntity.isDirectory())
-        .map((dirEntity) => {
-            return { title: dirEntity.name };
-        });
+        .map((dirEntity) => ({ title: dirEntity.name }));
+
     if(newWidget) {
         result.unshift({ title: newWidget, value: 'new' });
     }
@@ -103,6 +108,7 @@ const getWidgets = (widgetsPath, newWidget) => {
 };
 
 const recreateLink = (src, dest, callback) => {
+    // TODO what this method do, why we use symlink instead of hardlink
     if(!dest) {
         if(fs.existsSync(src)) {
             fs.rmdirSync(src, { recursive: true });

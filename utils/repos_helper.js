@@ -25,16 +25,16 @@ const processRepositoriesAsync = async(repositories, callback) => {
     }
 };
 
-const processRepository = (command, repositoryName, repositoryPath, node_modulesDir) => {
+const processRepository = (command, repositoryName, repositoryPath, nodeModulesDir) => {
     if(!fs.existsSync(repositoryPath)) {
         console.error('Directory `' + repositoryPath + '` does not exist. Please make sure you built the `' + repositoryName + '` repository.');
         return;
     }
     if(command === 'unlink') {
-        systemSync('cd ' + node_modulesDir + ' && npm unlink --no-save ' + repositoryName);
+        systemSync('cd ' + nodeModulesDir + ' && npm unlink --no-save ' + repositoryName);
         systemSync('cd ' + repositoryPath + ' && npm unlink ');
     } else {
-        systemSync('cd ' + node_modulesDir + ' && npm link ' + repositoryPath);
+        systemSync('cd ' + nodeModulesDir + ' && npm link ' + repositoryPath);
     }
 };
 
@@ -105,7 +105,7 @@ const getRepositoryPath = async(repositoryName) => {
     if(repositoryName === 'devextreme') {
         return getDevExtremeRepositoryPath();
     }
-    if(repositoryName === 'devextreme-angular') {
+    if(repositoryName === 'devextreme-angular') { // TODO check name, then hardcoded (line 81), then normalized (line 65)
         return getDevExtremeAngularRepositoryPath();
     }
     if(repositoryName === 'devextreme-react') {

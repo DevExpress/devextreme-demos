@@ -32,9 +32,7 @@ const prepareNetCoreDemos = async() => {
         fs.unlinkSync(demosNugetPath);
     }
 
-    fs.symlink(nugetPath, demosNugetPath, () => {
-        modifyNetCoreProject(netCoreDemos, version);
-    });
+    fs.symlink(nugetPath, demosNugetPath, () => modifyNetCoreProject(netCoreDemos, version));
 };
 
 (async() => await prepareNetCoreDemos())();

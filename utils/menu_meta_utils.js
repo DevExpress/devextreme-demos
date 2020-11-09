@@ -32,9 +32,11 @@ const getCategories = (menuMetaData, newCategory) => {
     const result = menuMetaData.map((current) => {
         return { title: current.Name.toUpperCase(), value: current.Name };
     });
+
     if(newCategory) {
         result.unshift({ title: newCategory, value: 'new' });
     }
+
     return result;
 };
 
@@ -43,9 +45,11 @@ const getGroups = (menuMetaData, category, newGroup) => {
     const result = menuMetaData.find(x => x.Name === category).Groups.map((current) => {
         return { title: current.Name };
     });
+
     if(newGroup) {
         result.unshift({ title: newGroup, value: 'new' });
     }
+
     return result;
 };
 
@@ -53,9 +57,11 @@ const getDemos = (menuMetaData, category, group, newDemo) => {
     const result = menuMetaData.find(x => x.Name === category).Groups.find(x => x.Name === group).Demos.map((current) => {
         return { title: current.Title, value: current.Name };
     });
+
     if(newDemo) {
         result.unshift({ title: newDemo, value: 'new' });
     }
+
     return result;
 };
 

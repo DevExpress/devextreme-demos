@@ -33,16 +33,18 @@ const mainRoutine = async(menuMetaData) => {
     }
 };
 
-const runDemo = (demoPath) => {
-    const command = /^win/.test(process.platform) ? 'code.cmd' : 'code';
+const runDemo = (demoPath) => { // TODO rename method (open demo in editor), 1) why we dont use cp_utils (we use spawn twice (code|http-server))
+    const command = /^win/.test(process.platform) ? 'code.cmd' : 'code'; // TODO 2) do we need this condition
     require('child_process').spawn(command, [demoPath]);
 };
 
 const addDemo = async(category, group, menuMetaData) => {
     const demo = await promptsQuestions.askDemo(menuMetaData, category, group);
-    let demoPath; let missingApproaches = []; let widget;
+    let demoPath;
+    let missingApproaches = [];
+
     if(demo.name === 'new') {
-        widget = await promptsQuestions.askWidget(baseDemosDir);
+        const widget = await promptsQuestions.askWidget(baseDemosDir);
         if(widget.name === 'new') {
             const pathToNewWidget = path.join(baseDemosDir, widget.newName);
             if(!fs.existsSync(pathToNewWidget)) {
