@@ -39,7 +39,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 StartDate = "2021-02-24T18:00:00.000Z",
                 EndDate = "2021-02-24T19:00:00.000Z",
                 RecurrenceRule = "FREQ=YEARLY;BYWEEKNO=14",
-                RecurrenceException = "20210411T100000"
+                RecurrenceException = "20210411T180000Z"
             },
             new RecurringAppointment {
                 Text = "Final exams",
@@ -53,7 +53,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 RoomId = 4,
                 StartDate = "2021-03-24T22:30:00.000Z",
                 EndDate = "2021-03-24T23:45:00.000Z",
-                RecurrenceRule = "FREQ=MONTHLY;BYMONTHDAY=27;COUNT=1"
+                RecurrenceRule = "FREQ=MONTHLY;BYMONTHDAY=28;COUNT=1"
             },
             new RecurringAppointment {
                 Text = "Open Day",

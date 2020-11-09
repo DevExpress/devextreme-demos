@@ -9,7 +9,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 PriorityId = 1,
                 TypeId = 1,
                 StartDate = "2021-05-24T15:00:00.000Z",
-                EndDate = "2021-05-25T01:30:00.000Z",
+                EndDate = "2021-05-24T15:30:00.000Z",
                 RecurrenceRule = "FREQ=DAILY;BYDAY=MO,TU,WE,TH,FR;UNTIL=20210530"
             },
             new Job {
@@ -37,7 +37,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Text = "Go Grocery Shopping",
                 PriorityId = 1,
                 TypeId = 1,
-                StartDate = "2021-05-24T15:30:00.000Z",
+                StartDate = "2021-05-25T01:30:00.000Z",
                 EndDate = "2021-05-25T02:30:00.000Z",
                 RecurrenceRule = "FREQ=DAILY;BYDAY=MO,WE,FR;UNTIL=20210530"
             },

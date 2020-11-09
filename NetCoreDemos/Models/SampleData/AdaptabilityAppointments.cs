@@ -26,8 +26,8 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
             },
             new AdaptabilityAppointment {
                 Text = "Approve Personal Computer Upgrade Plan",
-                StartDate = "2021-05-05T17:00:00.000Z",
-                EndDate = "2021-05-05T18:00:00.000Z",
+                StartDate = "2021-04-05T17:00:00.000Z",
+                EndDate = "2021-04-05T18:00:00.000Z",
                 RecurrenceRule = "FREQ=WEEKLY;BYDAY=WE;INTERVAL=2;COUNT=32",
                 PriorityId = 2
             },
