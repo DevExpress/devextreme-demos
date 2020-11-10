@@ -61,9 +61,9 @@ const copyRecursiveSync = (src, dest) => {
 };
 
 const getDemoPathByMeta = (categoryName, groupName, demoName, baseDemosDir, menuMetaData) => {
-    const _categoryIndex = menuMetaData.findIndex(x => x.Name === categoryName);
-    const _groupIndex = menuMetaData[_categoryIndex].Groups.findIndex(x => x.Name === groupName);
-    const demo = menuMetaData[_categoryIndex].Groups[_groupIndex].Demos.find(x => x.Name === demoName);
+    const categoryIndex = menuMetaData.findIndex(x => x.Name === categoryName);
+    const groupIndex = menuMetaData[categoryIndex].Groups.findIndex(x => x.Name === groupName);
+    const demo = menuMetaData[categoryIndex].Groups[groupIndex].Demos.find(x => x.Name === demoName);
     const result = path.join(baseDemosDir, demo.Widget, demo.Name);
     return result;
 };

@@ -6,13 +6,13 @@ const addCategory = (menuMetaData, categoryName) => {
 };
 
 const addGroup = (menuMetaData, categoryName, groupName) => {
-    const _groupMeta = { Name: groupName, Equivalents: '', Demos: [] };
-    const _categoryIndex = menuMetaData.findIndex(x => x.Name === categoryName);
-    menuMetaData[_categoryIndex].Groups.push(_groupMeta);
+    const groupMeta = { Name: groupName, Equivalents: '', Demos: [] };
+    const categoryIndex = menuMetaData.findIndex(x => x.Name === categoryName);
+    menuMetaData[categoryIndex].Groups.push(groupMeta);
 };
 
 const addDemo = (menuMetaData, categoryName, groupName, demoName, widgetName) => {
-    const _demoMeta = {
+    const demoMeta = {
         Title: demoName,
         Name: demoName.replace(/ /g, ''),
         DocUrl: '',
@@ -23,9 +23,9 @@ const addDemo = (menuMetaData, categoryName, groupName, demoName, widgetName) =>
         DemoType: '',
         Badge: 'New'
     };
-    const _categoryIndex = menuMetaData.findIndex(x => x.Name === categoryName);
-    const _groupIndex = menuMetaData[_categoryIndex].Groups.findIndex(x => x.Name === groupName);
-    menuMetaData[_categoryIndex].Groups[_groupIndex].Demos.push(_demoMeta);
+    const categoryIndex = menuMetaData.findIndex(x => x.Name === categoryName);
+    const groupIndex = menuMetaData[categoryIndex].Groups.findIndex(x => x.Name === groupName);
+    menuMetaData[categoryIndex].Groups[groupIndex].Demos.push(demoMeta);
 };
 
 const getCategories = (menuMetaData, newCategory) => {

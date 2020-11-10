@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const systemSync = require('./cp_utils').systemSync;
 const repositoriesPathsFilePath = path.join(__dirname, 'reposPaths.js');
-const pq = require('./prompts_questions');
+const promptsQuestions = require('./prompts_questions');
 const content = `const reposPaths = {
     'devextreme': '',
     'devextreme-angular': '',
@@ -20,9 +20,7 @@ module.exports = {
 };`;
 
 const processRepositoriesAsync = async(repositories, callback) => {
-    for(let index = 0; index < repositories.length; index++) {
-        await callback(repositories[index], index, repositories);
-    }
+    repositories.forEach(async(repository) => await callback(repository));
 };
 
 const processRepository = (command, repositoryName, repositoryPath, nodeModulesDir) => {
@@ -48,7 +46,7 @@ const getUpdatedData = (data, repository, path) => {
 
 const savePathToFile = (repository, path) => {
     console.log('Updating `' + repositoriesPathsFilePath + '` Repository: `' + repository + '` Path : `' + path + '`');
-    const data = fs.readFileSync(repositoriesPathsFilePath, { encoding: 'utf8', flag: 'r+' });
+    const data = fs.readFileSync(repositoriesPathsFilePath, { encoding: 'utf8', flag: 'r+' });// TODO why r+ flag?
     const updatedData = getUpdatedData(data, repository, path);
     fs.writeFileSync(repositoriesPathsFilePath, updatedData, 'utf8');
     console.log('File updated.');
@@ -66,7 +64,7 @@ const getRepositoryPathByName = async(repositoryName) => {
     // eslint-disable-next-line node/no-missing-require, spellcheck/spell-checker
     let repositoryPath = require('./reposPaths').reposPaths[repositoryNameNormalized].trim();
     if(!repositoryPath) {
-        const response = await pq.askRepositoryPath(repositoryName);
+        const response = await promptsQuestions.askRepositoryPath(repositoryName);
         repositoryPath = response.path;
         savePathToFile(repositoryNameNormalized, repositoryPath);
     }

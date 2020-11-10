@@ -8,14 +8,12 @@ const fileSystemUtils = require('./fs_utils');
 
 const setTextIfPrevIsNull = prev => prev === 'new' ? 'text' : null;
 
-const getPromptForCategories = (menuMetaData, message, newCategoryText) => {
-    return {
-        type: 'autocomplete',
-        name: 'name',
-        message: message,
-        choices: menuMetaUtils.getCategories(menuMetaData, newCategoryText)
-    };
-};
+const getPromptForCategories = (menuMetaData, message, newCategoryText) => ({
+    type: 'autocomplete',
+    name: 'name',
+    message: message,
+    choices: menuMetaUtils.getCategories(menuMetaData, newCategoryText)
+});
 
 const getCategoryQuestions = (menuMetaData) => {
     return [
