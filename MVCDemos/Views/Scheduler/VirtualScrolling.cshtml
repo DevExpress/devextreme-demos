@@ -1,31 +1,32 @@
 ﻿@(Html.DevExtreme().Scheduler()
-    .Height(600)
-    .Views(views => {
-        views.Add()
-            .Name("2 Days")
-            .Type(SchedulerViewType.Day)
-            .GroupOrientation(Orientation.Vertical)
-            .IntervalCount(2);
+        .Height(600)
+        .Views(views =>
+        {
+            views.Add()
+                .Name("2 Days")
+                .Type(SchedulerViewType.Day)
+                .GroupOrientation(Orientation.Vertical)
+                .IntervalCount(2);
 
-        views.Add()
-            .Name("3 Days")
-            .Type(SchedulerViewType.Day)
-            .GroupOrientation(Orientation.Vertical)
-            .IntervalCount(3);
+            views.Add()
+                .Name("3 Days")
+                .Type(SchedulerViewType.Day)
+                .GroupOrientation(Orientation.Vertical)
+                .IntervalCount(3);
 
-        views.Add()
-            .Name("Work Week")
-            .Type(SchedulerViewType.Day)
-            .GroupOrientation(Orientation.Vertical);
-    })
-    .ElementAttr("class", "scheduler")
-    .StartDayHour(9)
-    .EndDayHour(18)
-    .CurrentView("3 Days")
-    .Scrolling(config => { config.Mode(SchedulerScrollingMode.Virtual); })
-    .ShowAllDayPanel(false)
-    .Groups(new[] { "resourceId" })
-    .CurrentDate(new DateTime(2021, 9, 6))
+            views.Add()
+                .Name("Work Week")
+                .Type(SchedulerViewType.Day)
+                .GroupOrientation(Orientation.Vertical);
+        })
+        .ElementAttr("class", "scheduler")
+        .StartDayHour(9)
+        .EndDayHour(18)
+        .CurrentView("3 Days")
+        .Scrolling(config => { config.Mode(SchedulerScrollingMode.Virtual); })
+        .ShowAllDayPanel(false)
+        .Groups(new[] { "resourceId" })
+        .CurrentDate(new DateTime(2021, 9, 6))
 )
 
 <script>
