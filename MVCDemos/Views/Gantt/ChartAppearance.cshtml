@@ -8,7 +8,7 @@
         @(Html.DevExtreme().SelectBox()
             .ID("scaleType")
             .DataSource(d => d.Array().Data(SampleData.GanttScaleTypes))
-            .Value("quarters")
+            .Value("months")
             .OnValueChanged("ganttScaleType_valueChanged")
         )
     </div>
@@ -44,7 +44,7 @@
 @(Html.DevExtreme().Gantt<Task>()
     .ID("gantt")
     .TaskTitlePosition(GanttTaskTitlePosition.Outside)
-    .ScaleType(GanttScaleType.Quarters)
+    .ScaleType(GanttScaleType.Months)
     .Tasks(t => t
         .DataSource(ds => ds.Array().Data(SampleData.GanttTasks).Key("ID"))
         .KeyExpr("ID")
