@@ -9,7 +9,7 @@
       <img
         id="dropzone-image"
         :src="imageSource"
-        :hidden="!imageSource"
+        v-if="imageSource"
         alt=""
       >
       <div
@@ -59,7 +59,7 @@ export default {
   data() {
     return {
       isDropZoneActive: false,
-      imageSource: '#',
+      imageSource: '',
       textVisible: true,
       progressVisible: false,
       progressValue: 0,
