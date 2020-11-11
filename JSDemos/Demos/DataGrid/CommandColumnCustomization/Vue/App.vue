@@ -21,13 +21,14 @@
         type="buttons"
         :width="110"
       >
-        <DxButton name="edit" />
-        <DxButton name="delete" />
+        <DxButton name="edit"/>
+        <DxButton name="delete"/>
         <DxButton
           hint="Clone"
           icon="repeat"
           :visible="isCloneIconVisible"
-          @click="cloneIconClick" />
+          @click="cloneIconClick"
+        />
       </DxColumn>
       <DxColumn
         data-field="Prefix"
@@ -42,7 +43,8 @@
       <DxColumn
         :width="125"
         data-field="StateID"
-        caption="State">
+        caption="State"
+      >
         <DxLookup
           :data-source="states"
           display-expr="Name"
