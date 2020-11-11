@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { spawn } = require('child_process');
 const promptsQuestions = require('./prompts_questions');
 const fileSystemUtils = require('./fs_utils');
 const menuMetaUtils = require('./menu_meta_utils');
@@ -33,10 +34,7 @@ const mainRoutine = async(menuMetaData) => {
     }
 };
 
-const runDemo = (demoPath) => { // TODO rename method (open demo in editor), 1) why we dont use cp_utils (we use spawn twice (code|http-server))
-    const command = /^win/.test(process.platform) ? 'code.cmd' : 'code'; // TODO 2) do we need this condition
-    require('child_process').spawn(command, [demoPath]);
-};
+const openDemoInEditor = (demoPath) => spawn('code', [demoPath], { shell: true });
 
 const addDemo = async(category, group, menuMetaData) => {
     const demo = await promptsQuestions.askDemo(menuMetaData, category, group);
@@ -62,14 +60,14 @@ const addDemo = async(category, group, menuMetaData) => {
     }
     if(missingApproaches.length === 0) {
         console.log('This demo has all approaches.');
-        process.exit(0);
+        return;
     }
     const approaches = await promptsQuestions.askApproaches(missingApproaches);
     const newOrExisting = await promptsQuestions.askNewOrExisting(menuMetaData);
     fileSystemUtils.copyDemos(demoPath, approaches.selectedApproaches, newOrExisting, menuMetaData, baseDemosDir);
     fileSystemUtils.saveMetaDataFile(menuMetaFilePath, menuMetaData);
     console.log(demoPath);
-    runDemo(demoPath);
+    openDemoInEditor(demoPath);
 };
 
 (async() => await mainRoutine(menuMetaData))();

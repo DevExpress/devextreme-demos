@@ -6,8 +6,7 @@ const systemSync = (command) => {
     try {
         childProcess.execSync(command, { stdio: 'inherit' });
     } catch(error) {
-        console.log(error);
-        process.exit(1);
+        throw new Error(error);
     }
 };
 

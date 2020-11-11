@@ -90,7 +90,7 @@ const prepareProjects = (mercurialPath) => {
 };
 
 const prepareWorkspace = async() => {
-    const mercurialPath = await repositoriesHelper.getRepositoryPath('HG');
+    const mercurialPath = await repositoriesHelper.getRepositoryPath('hg');
     const mercurialWG = path.join(mercurialPath, 'Demos/WidgetsGallery');
 
     childProcessUtils.systemSync('call ' + mercurialWG + '/prepareWG.cmd');

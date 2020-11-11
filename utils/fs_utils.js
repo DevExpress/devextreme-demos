@@ -82,8 +82,7 @@ const saveMetaDataFile = (menuMetaDataFilePath, metaData) => {
 
 const getApproachesList = (demoPath) => {
     if(!fs.existsSync(demoPath)) {
-        console.error('Directory does not exist:', demoPath);
-        process.exit(0);
+        throw new Error('Directory does not exist:', demoPath);
     }
 
     const demosList = fs.readdirSync(demoPath, { withFileTypes: true })

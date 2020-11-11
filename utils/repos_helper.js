@@ -60,76 +60,22 @@ const createFileIfNecessary = () => {
 
 const getRepositoryPathByName = async(repositoryName) => {
     createFileIfNecessary();
-    const repositoryNameNormalized = repositoryName.replace(' ', '-').toLowerCase();
     // eslint-disable-next-line node/no-missing-require, spellcheck/spell-checker
-    let repositoryPath = require('./reposPaths').reposPaths[repositoryNameNormalized].trim();
+    let repositoryPath = require('./reposPaths').reposPaths[repositoryName].trim();
     if(!repositoryPath) {
         const response = await promptsQuestions.askRepositoryPath(repositoryName);
         repositoryPath = response.path;
-        savePathToFile(repositoryNameNormalized, repositoryPath);
+        savePathToFile(repositoryName, repositoryPath);
     }
     return repositoryPath;
 };
 
-const getDevExtremeRepositoryPath = async() => {
-    return getRepositoryPathByName('DevExtreme');
-};
-
-const getDevExtremeAngularRepositoryPath = async() => {
-    return getRepositoryPathByName('DevExtreme Angular');
-};
-
-const getDevExtremeReactRepositoryPath = async() => {
-    return getRepositoryPathByName('DevExtreme React');
-};
-
-const getDevExtremeVueRepositoryPath = async() => {
-    return getRepositoryPathByName('DevExtreme Vue');
-};
-
-const getHGRepositoryPath = async() => {
-    return getRepositoryPathByName('HG');
-};
-
-const getDevExtremeGanttRepositoryPath = async() => {
-    return getRepositoryPathByName('DevExpress Gantt');
-};
-
-const getDevExtremeDiagramRepositoryPath = async() => {
-    return getRepositoryPathByName('DevExpress Diagram');
-};
-
 const getRepositoryPath = async(repositoryName) => {
-    if(repositoryName === 'devextreme') {
-        return getDevExtremeRepositoryPath();
-    }
-    if(repositoryName === 'devextreme-angular') { // TODO check name, then hardcoded (line 81), then normalized (line 65)
-        return getDevExtremeAngularRepositoryPath();
-    }
-    if(repositoryName === 'devextreme-react') {
-        return getDevExtremeReactRepositoryPath();
-    }
-    if(repositoryName === 'devextreme-vue') {
-        return getDevExtremeVueRepositoryPath();
-    }
-    if(repositoryName === 'devexpress-gantt') {
-        return getDevExtremeGanttRepositoryPath();
-    }
-    if(repositoryName === 'devexpress-diagram') {
-        return getDevExtremeDiagramRepositoryPath();
-    }
-    if(repositoryName.toLowerCase() === 'hg') {
-        return getHGRepositoryPath();
-    }
+    return getRepositoryPathByName(repositoryName);
 };
 
 module.exports = {
     getRepositoryPath,
-    getDevExtremeRepositoryPath,
-    getDevExtremeAngularRepositoryPath,
-    getDevExtremeReactRepositoryPath,
-    getDevExtremeVueRepositoryPath,
-    getHGRepositoryPath,
     processRepositoriesAsync,
     processRepository
 };

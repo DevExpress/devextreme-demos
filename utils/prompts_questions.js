@@ -57,6 +57,7 @@ const getDemoQuestions = (menuMetaData, category, group) => {
 
 const onCancel = () => {
     console.log('Operation is canceled.');
+    // eslint-disable-next-line no-process-exit
     process.exit(0);
 };
 
