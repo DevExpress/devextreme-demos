@@ -3,6 +3,7 @@
 @(Html.DevExtreme().Scheduler()
     .ID("scheduler")
     .DataSource(Model)
+    .TimeZone("America/Los_Angeles")
     .Views(new[] { SchedulerViewType.Agenda })
     .CurrentView(SchedulerViewType.Agenda)
     .CurrentDate(new DateTime(2021, 5, 11))
