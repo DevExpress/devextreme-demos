@@ -8,7 +8,7 @@
         <img
             id="dropzone-image"
             [src]="imageSource"
-            [hidden]="!imageSource"
+            *ngIf="imageSource"
             alt=""
         />
         <div

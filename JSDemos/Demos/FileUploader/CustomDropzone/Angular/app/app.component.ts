@@ -15,7 +15,7 @@ if(!/localhost/.test(document.location.host)) {
 })
 export class AppComponent {
     isDropZoneActive = false;
-    imageSource = "#";
+    imageSource = "";
     textVisible = true;
     progressVisible = false;
     progressValue = 0;
