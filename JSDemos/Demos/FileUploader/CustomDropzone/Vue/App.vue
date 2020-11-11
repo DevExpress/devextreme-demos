@@ -15,6 +15,7 @@
       <div
         id="dropzone-text"
         class="flex-box"
+        v-if="textVisible"
       >
         <span>Drag & Drop the desired file</span>
         <span>…or click to browse for a file instead.</span>
@@ -59,6 +60,7 @@ export default {
     return {
       isDropZoneActive: false,
       imageSource: '#',
+      textVisible: true,
       progressVisible: false,
       progressValue: 0,
       allowedFileExtensions: ['.jpg', '.jpeg', '.gif', '.png']
@@ -77,14 +79,13 @@ export default {
     },
     onUploaded(e) {
       const file = e.file;
-      const dropZoneText = document.getElementById('dropzone-text');
       const fileReader = new FileReader();
       fileReader.onload = () => {
         this.isDropZoneActive = false;
         this.imageSource = fileReader.result;
       };
       fileReader.readAsDataURL(file);
-      dropZoneText.style.display = 'none';
+      this.textVisible = false;
       this.progressVisible = false;
       this.progressValue = 0;
     },
