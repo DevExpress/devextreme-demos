@@ -8,7 +8,7 @@ class App extends React.Component {
 
     this.state = {
       isDropZoneActive: false,
-      imageSource: '#',
+      imageSource: '',
       textVisible: true,
       progressVisible: false,
       progressValue: 0
@@ -23,12 +23,12 @@ class App extends React.Component {
   }
 
   render() {
-    const { textVisible } = this.state;
+    const { isDropZoneActive, imageSource, textVisible, progressVisible, progressValue } = this.state;
     return (
       <div className="widget-container flex-box">
         <span>Profile Picture</span>
-        <div id="dropzone-external" className={`flex-box ${this.state.isDropZoneActive ? 'dx-theme-accent-as-border-color dropzone-active' : 'dx-theme-border-color'}`}>
-          <img id="dropzone-image" src={this.state.imageSource} hidden={!this.state.imageSource} alt="" />
+        <div id="dropzone-external" className={`flex-box ${isDropZoneActive ? 'dx-theme-accent-as-border-color dropzone-active' : 'dx-theme-border-color'}`}>
+          {imageSource && <img id="dropzone-image" src={imageSource} alt="" />}
           {textVisible &&
           <div id="dropzone-text" className="flex-box">
             <span>Drag & Drop the desired file</span>
@@ -40,8 +40,8 @@ class App extends React.Component {
             max={100}
             width="30%"
             showStatus={false}
-            visible={this.state.progressVisible}
-            value={this.state.progressValue}
+            visible={progressVisible}
+            value={progressValue}
           ></ProgressBar>
         </div>
         <FileUploader
