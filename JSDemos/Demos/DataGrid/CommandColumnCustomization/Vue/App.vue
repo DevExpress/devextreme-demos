@@ -18,10 +18,18 @@
       />
 
       <DxColumn
-        :width="110"
-        :buttons="editButtons"
         type="buttons"
-      />
+        :width="110"
+      >
+        <DxButton name="edit"/>
+        <DxButton name="delete"/>
+        <DxButton
+          hint="Clone"
+          icon="repeat"
+          :visible="isCloneIconVisible"
+          @click="cloneIconClick"
+        />
+      </DxColumn>
       <DxColumn
         data-field="Prefix"
         caption="Title"
@@ -33,11 +41,16 @@
         data-field="Position"
       />
       <DxColumn
-        :lookup="lookup"
         :width="125"
         data-field="StateID"
         caption="State"
-      />
+      >
+        <DxLookup
+          :data-source="states"
+          display-expr="Name"
+          value-expr="ID"
+        />
+      </DxColumn>
       <DxColumn
         :width="125"
         data-field="BirthDate"
@@ -51,7 +64,9 @@ import {
   DxDataGrid,
   DxColumn,
   DxEditing,
-  DxPaging
+  DxButton,
+  DxPaging,
+  DxLookup
 } from 'devextreme-vue/data-grid';
 
 import service from './data.js';
@@ -61,22 +76,14 @@ export default {
     DxDataGrid,
     DxColumn,
     DxEditing,
-    DxPaging
+    DxButton,
+    DxPaging,
+    DxLookup
   },
   data() {
     return {
       employees: service.getEmployees(),
-      editButtons: ['edit', 'delete', {
-        hint: 'Clone',
-        icon: 'repeat',
-        visible: this.isCloneIconVisible,
-        onClick: this.cloneIconClick
-      }],
-      lookup: {
-        dataSource: service.getStates(),
-        displayExpr: 'Name',
-        valueExpr: 'ID'
-      }
+      states: service.getStates()
     };
   },
   methods: {
@@ -87,13 +94,15 @@ export default {
       return !e.row.isEditing && !this.isChief(e.row.data.Position);
     },
     cloneIconClick(e) {
-      var clonedItem = Object.assign({}, e.row.data, { ID: service.getMaxID() });
+      const employees = [...this.employees];
+      const clonedItem = { ...e.row.data, ID: service.getMaxID() };
 
-      this.employees.splice(e.row.rowIndex, 0, clonedItem);
+      employees.splice(e.row.rowIndex, 0, clonedItem);
+      this.employees = employees;
       e.event.preventDefault();
     },
     rowValidating(e) {
-      var position = e.newData.Position;
+      const position = e.newData.Position;
 
       if(this.isChief(position)) {
         e.errorText = `The company can have only one ${ position.toUpperCase() }. Please choose another position.`;

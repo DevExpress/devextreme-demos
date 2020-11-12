@@ -2154,6 +2154,7 @@
     <Content Include="Views\DataGrid\BatchUpdateRequest.cshtml" />
     <Content Include="Views\FileUploader\CustomDropzone.cshtml" />
     <Content Include="Views\DataGrid\EditStateManagement.cshtml" />
+    <Content Include="Views\Scheduler\VirtualScrolling.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
