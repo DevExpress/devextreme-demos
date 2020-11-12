@@ -46,7 +46,7 @@ const getUpdatedData = (data, repository, path) => {
 
 const savePathToFile = (repository, path) => {
     console.log('Updating `' + repositoriesPathsFilePath + '` Repository: `' + repository + '` Path : `' + path + '`');
-    const data = fs.readFileSync(repositoriesPathsFilePath, { encoding: 'utf8', flag: 'r+' });// TODO why r+ flag?
+    const data = fs.readFileSync(repositoriesPathsFilePath, { encoding: 'utf8', flag: 'r+' });
     const updatedData = getUpdatedData(data, repository, path);
     fs.writeFileSync(repositoriesPathsFilePath, updatedData, 'utf8');
     console.log('File updated.');

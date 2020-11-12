@@ -107,7 +107,6 @@ const getWidgets = (widgetsPath, newWidget) => {
 };
 
 const recreateLink = (src, dest, callback) => {
-    // TODO what this method do, why we use symlink instead of hardlink
     if(!dest) {
         if(fs.existsSync(src)) {
             fs.rmdirSync(src, { recursive: true });
