@@ -11,6 +11,10 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View(SampleData.SimpleArrayAppointments);
         }
 
+        public ActionResult VirtualScrolling() {
+            return View();
+        }
+
         public ActionResult Adaptability() {
             return View(new AdaptabilityAppointmentViewModel {
                 Appointments = SampleData.AdaptabilityAppointments,
