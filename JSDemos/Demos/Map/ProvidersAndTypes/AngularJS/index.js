@@ -14,7 +14,7 @@ DemoApp.controller('DemoController', function DemoController($scope) {
     $scope.type = mapTypes[0].key;
     $scope.mapOptions = {
         apiKey: {
-            // NOTE: Specify your map API keys for every used provider
+            // Specify your API keys for each map provider: 
             //bing: "YOUR_BING_MAPS_API_KEY",
             //google: "YOUR_GOOGLE_MAPS_API_KEY",
             //googleStatic: "YOUR_GOOGLE_STATIC_MAPS_API_KEY"

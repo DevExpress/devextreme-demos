@@ -20,7 +20,7 @@ window.onload = function() {
             width: "100%",
             provider: "bing",
             apiKey: {
-                // NOTE: Specify your map API keys for every used provider
+                // Specify your API keys for each map provider: 
                 //bing: "YOUR_BING_MAPS_API_KEY",
                 //google: "YOUR_GOOGLE_MAPS_API_KEY",
                 //googleStatic: "YOUR_GOOGLE_STATIC_MAPS_API_KEY"
