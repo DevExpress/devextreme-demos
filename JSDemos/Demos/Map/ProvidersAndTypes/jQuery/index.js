@@ -16,7 +16,7 @@ $(function(){
         height: 400,
         width: "100%",
         provider: "bing",
-        key: {
+        apiKey: {
             // NOTE: Specify your map API keys for every used provider
             //bing: "YOUR_BING_MAPS_API_KEY",
             //google: "YOUR_GOOGLE_MAPS_API_KEY",

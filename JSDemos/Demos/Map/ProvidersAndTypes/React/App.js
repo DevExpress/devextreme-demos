@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Map, Key } from 'devextreme-react/map';
+import Map from 'devextreme-react/map';
 import SelectBox from 'devextreme-react/select-box';
 
 import { mapTypes } from './data.js';
@@ -31,15 +31,11 @@ class App extends React.Component {
         <Map
           defaultCenter={['Brooklyn Bridge', 'New York', 'NY']}
           defaultZoom={14}
+          apiKey={this.keys}
           height={400}
           width="100%"
           provider="bing"
           type={this.state.mapTypeValue}>
-          <Key
-            bing={this.keys.bing}
-            google={this.keys.google}
-            google-static={this.keys.googleStatic}>
-          </Key>
         </Map>
         <div className="options">
           <div className="caption">Options</div>
