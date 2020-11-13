@@ -1,11 +1,12 @@
-const child_process = require('child_process');
+'use strict';
 
-const systemSync = (cmd) => {
+const childProcess = require('child_process');
+
+const systemSync = (command) => {
     try {
-        child_process.execSync(cmd, { stdio: 'inherit' });
+        childProcess.execSync(command, { stdio: 'inherit' });
     } catch(error) {
-        console.log(error);
-        process.exit(1);
+        throw new Error(error);
     }
 };
 
