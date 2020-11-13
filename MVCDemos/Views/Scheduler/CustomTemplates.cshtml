@@ -4,6 +4,7 @@
 @(Html.DevExtreme().Scheduler()
     .ID("scheduler")
     .DataSource(Model.CinemaData)
+    .TimeZone("America/Los_Angeles")
     .StartDateExpr("StartDate")
     .EndDateExpr("EndDate")
     .Views(new[] {
