@@ -34,7 +34,7 @@ namespace DevExtreme.NETCore.Demos.Controllers.ApiControllers {
             db.Employees.Add(newEmployee);
             db.SaveChanges();
 
-            return Ok();
+            return Created(Request.Path, newEmployee);
         }
 
         [HttpPut]
