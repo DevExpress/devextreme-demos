@@ -2,7 +2,7 @@
 
 const path = require('path');
 const common = require('./prepare-common');
-const fileSystemUtils = require('./fs_utils');
+const fileSystemUtils = require('../shared/fs-utils');
 
 const aspMvcLib = 'DevExtreme.AspNet.Mvc.dll';
 const aspMvcXml = 'DevExtreme.AspNet.Mvc.Xml';

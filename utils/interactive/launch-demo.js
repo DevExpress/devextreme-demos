@@ -2,9 +2,9 @@
 
 const { spawn } = require('child_process');
 const path = require('path');
-const fileSystemUtils = require('./fs_utils');
-const promptsQuestions = require('./prompts_questions');
-const menuMetaData = require('../JSDemos/menuMeta.json');
+const fileSystemUtils = require('../shared/fs-utils');
+const promptsQuestions = require('./prompts-questions');
+const menuMetaData = require('../../JSDemos/menuMeta.json');
 
 const baseDemosDir = 'JSDemos/Demos';
 

@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const demosPathPrefix = 'utils';
+const demosPathPrefix = path.join('utils', 'templates');
 const descriptionFileName = 'description.md';
 
 const copyDemos = (demoPath, approaches, newOrExisting, menuMetaData, baseDemosDir) => {
