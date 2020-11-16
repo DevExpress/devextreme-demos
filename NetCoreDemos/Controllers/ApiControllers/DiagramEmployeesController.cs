@@ -48,7 +48,7 @@ namespace DevExtreme.NETCore.Demos.Controllers.ApiControllers {
 
             db.SaveChanges();
 
-            return Ok();
+            return Ok(employee);
         }
 
         [HttpDelete]
