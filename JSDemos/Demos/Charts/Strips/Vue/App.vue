@@ -115,6 +115,5 @@ export default {
 <style>
 #chart {
   height: 440px;
-  width: 100%;
 }
 </style>
