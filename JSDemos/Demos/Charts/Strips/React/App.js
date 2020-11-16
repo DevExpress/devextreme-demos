@@ -20,8 +20,8 @@ class App extends React.Component {
     this.state = {
       highAverage: 60.8,
       lowAverage: 53,
-      highAverageColor: "#ff9b52",
-      lowAverageColor: "#6199e6"
+      highAverageColor: '#ff9b52',
+      lowAverageColor: '#6199e6'
     };
     this.customizeLabel = this.customizeLabel.bind(this);
     this.customizePoint = this.customizePoint.bind(this);

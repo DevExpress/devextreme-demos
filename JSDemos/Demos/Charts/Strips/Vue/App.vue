@@ -13,25 +13,34 @@
       color="#a3aaaa"
     />
     <DxValueAxis>
-      <DxLabel :customize-text="customizeText" />
-      <DxStrip :start-value="highAverage" color="rgba(255,155,85,0.15)">
+      <DxLabel :customize-text="customizeText"/>
+      <DxStrip
+        :start-value="highAverage"
+        color="rgba(255,155,85,0.15)"
+      >
         <DxLabel text="Above the Average">
-          <DxFont :color="highAverageColor" />
+          <DxFont :color="highAverageColor"/>
         </DxLabel>
       </DxStrip>
-      <DxStrip :end-value="lowAverage" color="rgba(97,153,230,0.10)">
+      <DxStrip
+        :end-value="lowAverage"
+        color="rgba(97,153,230,0.10)"
+      >
         <DxLabel text="Below the Average">
-          <DxFont :color="lowAverageColor" />
+          <DxFont :color="lowAverageColor"/>
         </DxLabel>
       </DxStrip>
       <DxStripStyle>
         <DxLabel>
-          <DxFont :weight="500" :size="14" />
+          <DxFont
+            :weight="500"
+            :size="14"
+          />
         </DxLabel>
       </DxStripStyle>
     </DxValueAxis>
-    <DxLegend :visible="false" />
-    <DxExport :enabled="true" />
+    <DxLegend :visible="false"/>
+    <DxExport :enabled="true"/>
   </DxChart>
 </template>
 <script>
@@ -45,9 +54,9 @@ import {
   DxLegend,
   DxExport,
   DxFont
-} from "devextreme-vue/chart";
+} from 'devextreme-vue/chart';
 
-import { temperaturesData } from "./data.js";
+import { temperaturesData } from './data.js';
 
 export default {
   components: {
@@ -66,8 +75,8 @@ export default {
     return {
       highAverage: 60.8,
       lowAverage: 53,
-      highAverageColor: "#ff9b52",
-      lowAverageColor: "#6199e6",
+      highAverageColor: '#ff9b52',
+      lowAverageColor: '#6199e6',
       dataSource: temperaturesData,
     };
   },
