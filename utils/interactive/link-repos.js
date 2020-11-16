@@ -3,7 +3,7 @@
 const path = require('path');
 const promptsQuestions = require('./prompts-questions');
 const repositoriesHelper = require('./repos-helper');
-const nodeModulesDir = path.join(__dirname, '..', '..', 'JSDemos', 'node_modules');
+const nodeModulesDir = path.join(__dirname, '..', '..', 'node_modules');
 
 const mainRoutine = async() => {
     const response = await promptsQuestions.askLinkRepositories();
