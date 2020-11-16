@@ -21,3 +21,5 @@ export const temperaturesData = [
   { temperature: 52, day: '20' }
 ];
 
+export const highAverage = 60.8;
+export const lowAverage = 53;

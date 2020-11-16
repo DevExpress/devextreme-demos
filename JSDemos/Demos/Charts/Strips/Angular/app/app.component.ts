@@ -16,14 +16,17 @@ if(!/localhost/.test(document.location.host)) {
     styleUrls: ['app/app.component.css']
 })
 export class AppComponent {
-    highAverage = 60.8;
-    lowAverage = 53;
     highAverageColor = "#ff9b52";
     lowAverageColor = "#6199e6";
+    highAverage: number;
+    lowAverage: number;
     temperaturesData: Temperature[];
 
     constructor(service: Service) {
         this.temperaturesData = service.getTemperaturesData();
+        const { highAverage, lowAverage } = service.getRangeOfAverageTemperature();
+        this.highAverage = highAverage;
+        this.lowAverage = lowAverage;
     }
 
     customizePoint = (arg: any) => {

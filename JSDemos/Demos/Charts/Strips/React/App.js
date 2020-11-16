@@ -11,15 +11,13 @@ import {
   Font,
   Export
 } from 'devextreme-react/chart';
-import { temperaturesData } from './data.js';
+import { temperaturesData, lowAverage, highAverage } from './data.js';
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      highAverage: 60.8,
-      lowAverage: 53,
       highAverageColor: '#ff9b52',
       lowAverageColor: '#6199e6'
     };
@@ -44,12 +42,12 @@ class App extends React.Component {
         />
         <ValueAxis>
           <Label customizeText={this.customizeText} />
-          <Strip startValue={this.state.highAverage} color="rgba(255,155,85,0.15)">
+          <Strip startValue={highAverage} color="rgba(255,155,85,0.15)">
             <Label text="Above the Average">
               <Font color={this.state.highAverageColor} />
             </Label>
           </Strip>
-          <Strip endValue={this.state.lowAverage} color="rgba(97,153,230,0.10)">
+          <Strip endValue={lowAverage} color="rgba(97,153,230,0.10)">
             <Label text="Below the Average">
               <Font color={this.state.lowAverageColor} />
             </Label>
@@ -67,17 +65,17 @@ class App extends React.Component {
   }
 
   customizePoint(arg) {
-    if (arg.value > this.state.highAverage) {
+    if (arg.value > highAverage) {
       return { color: this.state.highAverageColor };
-    } else if (arg.value < this.state.lowAverage) {
+    } else if (arg.value < lowAverage) {
       return { color: this.state.lowAverageColor };
     }
   }
 
   customizeLabel(arg) {
-    if (arg.value > this.state.highAverage) {
+    if (arg.value > highAverage) {
       return this.getLabelsSettings(this.state.highAverageColor);
-    } else if (arg.value < this.state.lowAverage) {
+    } else if (arg.value < lowAverage) {
       return this.getLabelsSettings(this.state.lowAverageColor);
     }
   }

@@ -33,4 +33,11 @@ export class Service {
     getTemperaturesData(): Temperature[] {
         return temperaturesData;
     }
+    
+    getRangeOfAverageTemperature(){
+        return{
+            highAverage: 60.8,
+            lowAverage: 53
+        };
+    }
 }
