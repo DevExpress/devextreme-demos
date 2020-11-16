@@ -640,6 +640,7 @@
     <Content Include="Content\DemosStyles\Charts\PieWithAnnotations.css" />
     <Content Include="Content\DemosStyles\Charts\PolarChartAnnotations.css" />
     <Content Include="Content\DemosStyles\Charts\PolarChartZoomingAndScrollingAPI.css" />
+    <Content Include="Content\DemosStyles\Charts\Strips.css" />
     <Content Include="Content\DemosStyles\DataGrid\BatchUpdateRequest.css" />
     <Content Include="Content\DemosStyles\DataGrid\CustomEditors.css" />
     <Content Include="Content\DemosStyles\DataGrid\DnDBetweenGrids.css" />
@@ -2155,6 +2156,7 @@
     <Content Include="Views\FileUploader\CustomDropzone.cshtml" />
     <Content Include="Views\DataGrid\EditStateManagement.cshtml" />
     <Content Include="Views\Scheduler\VirtualScrolling.cshtml" />
+    <Content Include="Views\Charts\Strips.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
