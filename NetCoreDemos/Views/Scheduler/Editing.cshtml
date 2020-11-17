@@ -3,6 +3,7 @@
 @(Html.DevExtreme().Scheduler()
     .ID("scheduler")
     .DataSource(Model)
+    .TimeZone("America/Los_Angeles")
     .Views(new[] {
         SchedulerViewType.Day,
         SchedulerViewType.Week

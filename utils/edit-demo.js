@@ -1,11 +1,14 @@
+'use strict';
+
 const fs = require('fs');
 const path = require('path');
-const pq = require('./prompts_questions');
+const promptsQuestions = require('./prompts_questions');
 
-const existingApproaches = ['jQuery', 'Knockout', 'AngularJS', 'Angular', 'React', 'Vue'],
-    menuMetaFileName = 'menuMeta.json',
-    menuMetaFilePath = path.join('.', menuMetaFileName),
-    baseDemosDir = 'Demos';
+// const existingApproaches = ['jQuery', 'Knockout', 'AngularJS', 'Angular', 'React', 'Vue']; // TODO remove this line
+
+const menuMetaFileName = 'menuMeta.json';
+const menuMetaFilePath = path.join('.', menuMetaFileName);
+// const baseDemosDir = 'Demos'; // TODO remove this line
 
 fs.readFile(menuMetaFilePath, (err, data) => {
     if(err) {
@@ -13,11 +16,11 @@ fs.readFile(menuMetaFilePath, (err, data) => {
         throw err;
     }
 
-    let menuMetaData = JSON.parse(data);
-    (async () => await mainRoutine(menuMetaData))();
+    const menuMetaData = JSON.parse(data);
+    (async() => await mainRoutine(menuMetaData))();
 });
 
-const mainRoutine = async (menuMetaData) => {
-    const demo = await pq.askDemoToUpdate(menuMetaData);
-    console.log("Not implemented");
+const mainRoutine = async(menuMetaData) => {
+    const demo = await promptsQuestions.askDemoToUpdate(menuMetaData);
+    console.log('Not implemented', demo);
 };

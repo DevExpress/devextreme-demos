@@ -3140,6 +3140,17 @@
             "MvcAdditionalFiles": [],
             "DemoType": "Viz",
             "Badge": "New"
+          },
+          {
+            "Title": "Strips",
+            "Name": "Strips",
+            "DocUrl": "Guide/Widgets/Chart/Strips/",
+            "Widget": "Charts",
+            "MvcDescription": "",
+            "NetCoreDescription": "",
+            "MvcAdditionalFiles": [],
+            "DemoType": "Viz",
+            "Badge": "New"
           }
         ]
       },
@@ -4876,7 +4887,7 @@
             ]
           },
           {
-            "Title": "Custom Dropzone",
+            "Title": "Custom Drop Zone",
             "Name": "CustomDropzone",
             "Badge": "New",
             "DocUrl": "",
