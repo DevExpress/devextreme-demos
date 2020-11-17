@@ -18,7 +18,7 @@ $(function () {
             },
             strips: [{
                 label: {
-                    text: "above average",
+                    text: "Above average",
                     font: {
                         color: highAverageColor
                     }
@@ -28,7 +28,7 @@ $(function () {
             },
             {
                 label: {
-                    text: "below average",
+                    text: "Below average",
                     font: {
                         color: lowAverageColor
                     }
