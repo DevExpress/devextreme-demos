@@ -21,7 +21,7 @@ class App extends React.Component {
         wordWrapEnabled={true}
       >
         <Scrolling mode="virtual" rowRenderingMode="virtual" />
-        <Paging pageSize="100" />
+        <Paging defaultPageSize="100" />
         <HeaderFilter visible={true} allowSearch={true} />
 
         <Column dataField="Id" width="75" />
