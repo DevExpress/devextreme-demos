@@ -1,8 +1,8 @@
 'use strict';
 
 const addCategory = (menuMetaData, categoryName) => {
-    const _categoryMeta = { Name: categoryName, Equivalents: '', Groups: [] };
-    menuMetaData.push(_categoryMeta);
+    const categoryMeta = { Name: categoryName, Equivalents: '', Groups: [] };
+    menuMetaData.push(categoryMeta);
 };
 
 const addGroup = (menuMetaData, categoryName, groupName) => {
