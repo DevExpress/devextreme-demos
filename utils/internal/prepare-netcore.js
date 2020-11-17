@@ -2,7 +2,7 @@
 
 const path = require('path');
 const fs = require('fs');
-const childProcessUtils = require('./cp_utils');
+const childProcessUtils = require('../shared/child-process-utils');
 const common = require('./prepare-common');
 
 

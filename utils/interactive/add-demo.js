@@ -3,10 +3,10 @@
 const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');
-const promptsQuestions = require('./prompts_questions');
-const fileSystemUtils = require('./fs_utils');
-const menuMetaUtils = require('./menu_meta_utils');
-const menuMetaData = require('../JSDemos/menuMeta.json');
+const promptsQuestions = require('./prompts-questions');
+const fileSystemUtils = require('../shared/fs-utils');
+const menuMetaUtils = require('./menu-meta-utils');
+const menuMetaData = require('../../JSDemos/menuMeta.json');
 
 const existingApproaches = ['jQuery', 'Knockout', 'AngularJS', 'Angular', 'React', 'Vue'];
 
