@@ -23,6 +23,7 @@ class App extends React.Component {
   render() {
     return (
       <Scheduler
+        timeZone="America/Los_Angeles"
         dataSource={dataSource}
         views={views}
         defaultCurrentView="day"
@@ -30,6 +31,7 @@ class App extends React.Component {
         height={600}
         startDayHour={9}
         endDayHour={19}
+        remoteFiltering={true}
         dateSerializationFormat="yyyy-MM-ddTHH:mm:ssZ"
         textExpr="Text"
         startDateExpr="StartDate"

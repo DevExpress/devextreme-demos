@@ -640,6 +640,7 @@
     <Content Include="Content\DemosStyles\Charts\PieWithAnnotations.css" />
     <Content Include="Content\DemosStyles\Charts\PolarChartAnnotations.css" />
     <Content Include="Content\DemosStyles\Charts\PolarChartZoomingAndScrollingAPI.css" />
+    <Content Include="Content\DemosStyles\Charts\Strips.css" />
     <Content Include="Content\DemosStyles\DataGrid\BatchUpdateRequest.css" />
     <Content Include="Content\DemosStyles\DataGrid\CustomEditors.css" />
     <Content Include="Content\DemosStyles\DataGrid\DnDBetweenGrids.css" />
@@ -1439,11 +1440,11 @@
     <Content Include="Content\Images\icon-agent.svg" />
     <Content Include="Content\Images\icons\custom-dropbutton-icon.svg" />
     <Content Include="Content\Images\icons\eye.png" />
-    <Content Include="Content\Images\icons\status-1.png" />
-    <Content Include="Content\Images\icons\status-2.png" />
-    <Content Include="Content\Images\icons\status-3.png" />
-    <Content Include="Content\Images\icons\status-4.png" />
-    <Content Include="Content\Images\icons\status-5.png" />
+    <Content Include="Content\Images\icons\status-1.svg" />
+    <Content Include="Content\Images\icons\status-2.svg" />
+    <Content Include="Content\Images\icons\status-3.svg" />
+    <Content Include="Content\Images\icons\status-4.svg" />
+    <Content Include="Content\Images\icons\status-5.svg" />
     <Content Include="Content\Images\icons\tv.svg" />
     <Content Include="Content\Images\icons\video-player.svg" />
     <Content Include="Content\Images\Layout\dx-footer-logo.svg" />
@@ -2154,6 +2155,8 @@
     <Content Include="Views\DataGrid\BatchUpdateRequest.cshtml" />
     <Content Include="Views\FileUploader\CustomDropzone.cshtml" />
     <Content Include="Views\DataGrid\EditStateManagement.cshtml" />
+    <Content Include="Views\Scheduler\VirtualScrolling.cshtml" />
+    <Content Include="Views\Charts\Strips.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -35,6 +35,7 @@
 @(Html.DevExtreme().Scheduler()
     .ID("scheduler")
     .DataSource(Model.Appointments)
+    .TimeZone("America/Los_Angeles")
     .Views(new[] {
         SchedulerViewType.Day,
         SchedulerViewType.Month

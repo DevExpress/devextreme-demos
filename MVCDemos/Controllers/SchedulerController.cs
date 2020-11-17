@@ -11,6 +11,10 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View(SampleData.SimpleArrayAppointments);
         }
 
+        public ActionResult VirtualScrolling() {
+            return View();
+        }
+
         public ActionResult WebAPIService() {
             return View();
         }
