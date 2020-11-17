@@ -1,9 +1,4 @@
-utils/Angular/*
-utils/AngularJS/*
-utils/jQuery/*
-utils/Knockout/*
-utils/React/*
-utils/Vue/*
+utils/templates/*
 node_modules/*
 MVCDemos/*
 NetCoreDemos/*
