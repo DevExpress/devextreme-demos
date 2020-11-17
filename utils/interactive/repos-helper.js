@@ -2,9 +2,9 @@
 
 const fs = require('fs');
 const path = require('path');
-const systemSync = require('./cp_utils').systemSync;
-const repositoriesPathsFilePath = path.join(__dirname, 'reposPaths.js');
-const promptsQuestions = require('./prompts_questions');
+const systemSync = require('../shared/child-process-utils').systemSync;
+const repositoriesPathsFilePath = path.join(__dirname, '..', 'reposPaths.js');
+const promptsQuestions = require('./prompts-questions');
 const content = `const reposPaths = {
     'devextreme': '',
     'devextreme-angular': '',
@@ -61,7 +61,7 @@ const createFileIfNecessary = () => {
 const getRepositoryPathByName = async(repositoryName) => {
     createFileIfNecessary();
     // eslint-disable-next-line node/no-missing-require, spellcheck/spell-checker
-    let repositoryPath = require('./reposPaths').reposPaths[repositoryName].trim();
+    let repositoryPath = require('../reposPaths').reposPaths[repositoryName].trim();
     if(!repositoryPath) {
         const response = await promptsQuestions.askRepositoryPath(repositoryName);
         repositoryPath = response.path;
