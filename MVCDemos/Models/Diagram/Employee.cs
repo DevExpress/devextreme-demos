@@ -5,9 +5,8 @@ namespace DevExtreme.MVC.Demos.Models.Diagram {
     public class Employee {
         public int ID { get; set; }
 
-        [Required]
         [Display(Name = "Head")]
-        public int HeadID { get; set; }
+        public int? HeadID { get; set; }
         [Required]
         public string FullName { get; set; }
 
