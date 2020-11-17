@@ -40,7 +40,7 @@ class App extends React.Component {
               07/03/19 - 12:25AM
             </div>
             <div className="text">
-              I've been in the audio/video industry since 2001, and I've been the CEO of DevAv since 2009.
+              I&apos;ve been in the audio/video industry since 2001, and I&apos;ve been the CEO of DevAv since 2009.
             </div>
           </div>
           <br />
@@ -55,7 +55,7 @@ class App extends React.Component {
               07/03/19 - 12:26AM
             </div>
             <div className="text">
-              That's very interesting. <span className="dx-mention" spellCheck="false"><span><span>@</span>Olivia Peyton</span></span>, what do you think?
+              That&apos;s very interesting. <span className="dx-mention" spellCheck="false"><span><span>@</span>Olivia Peyton</span></span>, what do you think?
             </div>
           </div>
         </div>
