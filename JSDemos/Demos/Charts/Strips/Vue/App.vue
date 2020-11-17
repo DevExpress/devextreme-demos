@@ -18,7 +18,7 @@
         :start-value="highAverage"
         color="rgba(255,155,85,0.15)"
       >
-        <DxLabel text="Above the Average">
+        <DxLabel text="above average">
           <DxFont :color="highAverageColor"/>
         </DxLabel>
       </DxStrip>
@@ -26,7 +26,7 @@
         :end-value="lowAverage"
         color="rgba(97,153,230,0.10)"
       >
-        <DxLabel text="Below the Average">
+        <DxLabel text="below average">
           <DxFont :color="lowAverageColor"/>
         </DxLabel>
       </DxStrip>
