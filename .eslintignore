@@ -1,4 +1,4 @@
-utils/*
+utils/templates/*
 node_modules/*
 MVCDemos/*
 NetCoreDemos/*
