@@ -1,11 +1,12 @@
+'use strict';
+
 const path = require('path');
 const fs = require('fs');
 
-const configDir = path.join(__dirname, '..', 'JSDemos/configs');
-const tmpConfigDir = path.join(__dirname, 'tmp');
-const demosDir = path.join(__dirname, '..', 'JSDemos/Demos');
+const configDir = path.join(__dirname, '..', '..', 'JSDemos/configs');
+const demosDir = path.join(__dirname, '..', '..', 'JSDemos/Demos');
 const approaches = ['Angular', 'React', 'Vue'];
-const meta = require('../JSDemos/menuMeta.json');
+const meta = require('../../JSDemos/menuMeta.json');
 
 const getKey = (widget, name) => `${widget}--${name}`.toLowerCase();
 
@@ -37,7 +38,7 @@ const getDemosWithExtraModules = () => {
     meta.forEach(section => {
         section.Groups && section.Groups.forEach(group => {
             if(group.Groups) {
-                group.Groups.forEach(group => handleGroup(group))
+                group.Groups.forEach(group => handleGroup(group));
             }
             handleGroup(group);
         });
@@ -49,10 +50,6 @@ const createConfigFilesContent = (demos) => {
     const result = {};
     const uniqueConfigurations = unique(Object.values(demos));
     uniqueConfigurations.push(''); // default config has no modules
-
-    if(!fs.existsSync(tmpConfigDir)) {
-        fs.mkdirSync(tmpConfigDir);
-    }
 
     uniqueConfigurations.forEach(modulesList => {
         approaches.forEach(approach => {
@@ -66,13 +63,14 @@ const createConfigFilesContent = (demos) => {
 const createConfigForApproaches = (fullDemoName, widgetName, demoName, extraModulesDemos, approachesConfigContent) => {
     approaches.forEach((approach) => {
         const demoApproachName = path.join(fullDemoName, approach);
-        if (!fs.existsSync(demoApproachName))
-            return;
+        if(!fs.existsSync(demoApproachName)) return;
+
         const demoConfigName = path.join(demoApproachName, 'config.js');
-        if (fs.existsSync(demoConfigName)) {
+        if(fs.existsSync(demoConfigName)) {
             fs.unlinkSync(demoConfigName);
         }
-        demoModulesList = extraModulesDemos[getKey(widgetName, demoName)] || '';
+
+        const demoModulesList = extraModulesDemos[getKey(widgetName, demoName)] || '';
         fs.writeFileSync(demoConfigName, approachesConfigContent[getDemoKey(approach, demoModulesList)], 'utf8');
     });
 };
@@ -91,7 +89,7 @@ const createConfigs = (demosDir) => {
         demoNames.forEach((demoName) => {
             const fullDemoName = path.join(fullWidgetName, demoName);
             if(!fs.statSync(fullDemoName).isDirectory()) return;
-            
+
             createConfigForApproaches(fullDemoName, widgetName, demoName, demosWithExtraModules, configContent);
         });
     });
