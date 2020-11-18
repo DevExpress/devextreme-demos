@@ -46,7 +46,7 @@
                                 minTemp = Math.min.apply(null, temp);
 
                             return {
-                                Date: aggregationInfo.intervalStart,
+                                Date: new Date((aggregationInfo.intervalStart.valueOf() + aggregationInfo.intervalEnd.valueOf()) / 2),
                                 MaxTemp: maxTemp,
                                 MinTemp: minTemp
                             };
