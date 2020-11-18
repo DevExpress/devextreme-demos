@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
     'parser': 'babel-eslint',
     'extends': ['devextreme/spell-check', 'eslint:recommended', 'plugin:node/recommended'],
@@ -32,7 +34,7 @@ module.exports = {
         'no-unused-vars': ['error', { 'args': 'none', 'ignoreRestSiblings': true }],
         'no-extend-native': 'error',
         'no-alert': 'error',
-        'no-console': 1,
+        'no-console': 0,
         'no-restricted-syntax': ['error', 'ForOfStatement'],
         'no-var': 'error',
         'no-whitespace-before-property': 'error',

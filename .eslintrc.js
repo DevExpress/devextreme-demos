@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
     root: true,
     env: {
@@ -127,6 +129,7 @@ module.exports = {
                     'jun',
                     'june',
                     'Kanban',
+                    'lang',
                     'latinamerica',
                     'len',
                     'li',
