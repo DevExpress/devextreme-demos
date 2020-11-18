@@ -2,9 +2,9 @@
 
 const path = require('path');
 const fs = require('fs');
-const repositoriesHelper = require('./repos_helper');
-const fileSystemUtils = require('./fs_utils');
-const childProcessUtils = require('./cp_utils');
+const repositoriesHelper = require('../interactive/repos-helper');
+const fileSystemUtils = require('../shared/fs-utils');
+const childProcessUtils = require('../shared/child-process-utils');
 
 const prepareProjects = (mercurialPath) => {
     const rootDir = process.cwd();

@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const promptsQuestions = require('./prompts_questions');
+const promptsQuestions = require('./prompts-questions');
 
 // const existingApproaches = ['jQuery', 'Knockout', 'AngularJS', 'Angular', 'React', 'Vue']; // TODO remove this line
 

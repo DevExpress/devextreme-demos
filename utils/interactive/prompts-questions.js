@@ -3,8 +3,8 @@
 const path = require('path');
 const prompts = require('prompts');
 
-const menuMetaUtils = require('./menu_meta_utils');
-const fileSystemUtils = require('./fs_utils');
+const menuMetaUtils = require('./menu-meta-utils');
+const fileSystemUtils = require('../shared/fs-utils');
 
 const setTextIfPrevIsNull = prev => prev === 'new' ? 'text' : null;
 

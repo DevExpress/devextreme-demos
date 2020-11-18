@@ -3,11 +3,10 @@
 const path = require('path');
 const fs = require('fs');
 
-const configDir = path.join(__dirname, '..', 'JSDemos/configs');
-const tmpConfigDir = path.join(__dirname, 'tmp');
-const demosDir = path.join(__dirname, '..', 'JSDemos/Demos');
+const configDir = path.join(__dirname, '..', '..', 'JSDemos/configs');
+const demosDir = path.join(__dirname, '..', '..', 'JSDemos/Demos');
 const approaches = ['Angular', 'React', 'Vue'];
-const meta = require('../JSDemos/menuMeta.json');
+const meta = require('../../JSDemos/menuMeta.json');
 
 const getKey = (widget, name) => `${widget}--${name}`.toLowerCase();
 
@@ -51,10 +50,6 @@ const createConfigFilesContent = (demos) => {
     const result = {};
     const uniqueConfigurations = unique(Object.values(demos));
     uniqueConfigurations.push(''); // default config has no modules
-
-    if(!fs.existsSync(tmpConfigDir)) {
-        fs.mkdirSync(tmpConfigDir);
-    }
 
     uniqueConfigurations.forEach(modulesList => {
         approaches.forEach(approach => {
