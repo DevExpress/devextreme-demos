@@ -8,21 +8,21 @@
             .Pane("Price")
             .Aggregation(a =>
                 a.Enabled(true)
-                    .Calculate((@<text>
-                        function(e) {
-                            var prices = e.data.map(function(i) { return i.price; });
-                            if(prices.length) {
-                                return {
-                                    date: e.intervalStart,
-                                    open: prices[0],
-                                    high: Math.max.apply(null, prices),
-                                    low: Math.min.apply(null, prices),
-                                    close: prices[prices.length - 1]
-                                };
-                            }
+                .Calculate((@<text>
+                    function(e) {
+                        var prices = e.data.map(function(i) { return i.price; });
+                        if(prices.length) {
+                            return {
+                                date: new Date((e.intervalStart.valueOf() + e.intervalEnd.valueOf()) / 2),
+                                open: prices[0],
+                                high: Math.max.apply(null, prices),
+                                low: Math.min.apply(null, prices),
+                                close: prices[prices.length - 1]
+                            };
                         }
-                    </text>))
-                    .Method(ChartSeriesAggregationMethod.Custom));
+                    }
+                </text>))
+                .Method(ChartSeriesAggregationMethod.Custom));
         s.Add()
             .Type(SeriesType.Bar)
             .ArgumentField("date")
