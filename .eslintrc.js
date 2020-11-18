@@ -36,7 +36,7 @@ module.exports = {
                     "ar", // arabic
                     "arabic",
                     "arg",
-					"argb", // ExcelJS
+                    "argb", // ExcelJS
                     "args",
                     "asia",
                     "async",
@@ -48,7 +48,7 @@ module.exports = {
                     "backordered", // DevAV NetCore
                     "bing",
                     "bkg",
-					"bg", //ExcelJS
+                    "bg", //ExcelJS
                     "br", // <br> tag in html
                     "Cldr",
                     "canada",
@@ -97,7 +97,7 @@ module.exports = {
                     "femaleyoung",
                     "filename", // DXHotelsNetApi\Client\views\booking.js from db
                     "fitted",
-					"fg", // ExcelJS
+                    "fg", // ExcelJS
                     "formatter",
                     "func",
                     "gantt",
@@ -121,7 +121,7 @@ module.exports = {
                     "init",
                     "inited",
                     "ity", // DXHotelsNetApi\Client\views\home.js  CIty_Image from db
-					"Fmt", // ExcelJS
+                    "Fmt", // ExcelJS
                     "jan",
                     "js",
                     "jszip",
@@ -162,7 +162,7 @@ module.exports = {
                     "occured",
                     "oceania",
                     "ok",
-					"olympic",
+                    "olympic",
                     "onclick",
                     "onhashchange",
                     "onreadystatechange",
@@ -251,10 +251,10 @@ module.exports = {
                     "vue",
                     "winloss",
                     "writeable", // knockout
-					"xlsx", // ExcelJS
+                    "xlsx", // ExcelJS
                     "xhr",
-					"Xmla",
-					"xmla",
+                    "Xmla",
+                    "xmla",
                     "youtube",
                     "ytd",
                     "zipcode",
