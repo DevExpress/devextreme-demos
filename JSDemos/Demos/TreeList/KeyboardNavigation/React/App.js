@@ -10,6 +10,8 @@ import TreeList, {
   Column } from 'devextreme-react/tree-list';
 import { employees } from './data.js';
 
+const allowedPageSizes = [5, 10];
+
 class App extends React.Component {
   render() {
     return (
@@ -37,17 +39,17 @@ class App extends React.Component {
           visible={true}
         />
         <Scrolling
-          mode='standard'
+          mode="standard"
         />
-        <Column dataField='Full_Name' />
+        <Column dataField="Full_Name" />
         <Column
-          dataField='Title'
-          caption='Position'
+          dataField="Title"
+          caption="Position"
         />
-        <Column dataField='City' />
-        <Column dataField= 'State' />
+        <Column dataField="City" />
+        <Column dataField= "State" />
         <Pager
-          allowedPageSizes={[5, 10]}
+          allowedPageSizes={allowedPageSizes}
           showPageSizeSelector={true}
           showNavigationButtons={true}
         />

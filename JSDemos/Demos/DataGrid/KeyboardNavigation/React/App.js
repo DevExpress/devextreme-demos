@@ -10,6 +10,8 @@ import DataGrid, {
   Paging } from 'devextreme-react/data-grid';
 import { employees, states } from './data.js';
 
+const allowedPageSizes = [5, 10];
+
 class App extends React.Component {
   render() {
     return (
@@ -29,7 +31,7 @@ class App extends React.Component {
         <FilterPanel visible={true} />
         <FilterRow visible={true} />
         <Pager
-          allowedPageSizes={[5, 10]}
+          allowedPageSizes={allowedPageSizes}
           showPageSizeSelector={true}
           showNavigationButtons={true}
         />
