@@ -1,0 +1,88 @@
+﻿<script>
+    var highAverage = 60.8,
+        lowAverage = 53,
+        highAverageColor = "#ff9b52",
+        lowAverageColor = "#6199e6";
+
+    function getLabelsSettings(backgroundColor) {
+        return {
+            visible: true,
+            backgroundColor: backgroundColor,
+            customizeText: customizeText
+        };
+    }
+    function customizeText() {
+        return this.valueText + "&#176F";
+    }
+</script>
+
+@(Html.DevExtreme().Chart()
+    .ID("chart")
+    .ValueAxis(a => a
+        .Add()
+        .Label(l => l.CustomizeText("customizeText"))
+        .Strips(s =>
+        {
+            s.Add()
+                .StartValue(new JS("highAverage"))
+                .Color("rgba(255,155,85,0.15)")
+                .Label(l => l
+                    .Text("Above average")
+                    .Font(f => f.Color(new JS("highAverageColor")))
+                );
+            s.Add()
+                .EndValue(new JS("lowAverage"))
+                .Color("rgba(97,153,230,0.10)")
+                .Label(l => l
+                    .Text("Below average")
+                    .Font(f => f.Color(new JS("lowAverageColor")))
+                );
+        })
+        .StripStyle(s => s.
+            Label(l => l.Font(f => f.Weight(500).Size(14)))
+        )
+    )
+    .Series(s => s.Add()
+        .ArgumentField("Day")
+        .ValueField("Temperature")
+        .Type(SeriesType.Spline)
+        .Color("#a3aaaa")
+    )
+    .CustomizePoint(@<text>
+        function() {
+            if (this.value > highAverage) {
+                return {
+                    color: highAverageColor
+                };
+            } else if (this.value < lowAverage) {
+                return {
+                    color: lowAverageColor
+                };
+            }
+        }
+    </text>)
+    .CustomizeLabel(@<text>
+        function() {
+            if (this.value > highAverage) {
+                return getLabelsSettings(highAverageColor);
+            } else if (this.value < lowAverage) {
+                return getLabelsSettings(lowAverageColor);
+            }
+        }
+    </text>)
+    .Title("Temperature in September")
+    .Legend(l => l.Visible(false))
+    .Export(e => e.Enabled(true))
+    .DataSource(new[] {
+        new { Temperature = 52, Day = "1" }, new { Temperature = 57, Day = "2" },
+        new { Temperature = 58, Day = "3" }, new { Temperature = 56, Day = "4" },
+        new { Temperature = 59, Day = "5" }, new { Temperature = 59, Day = "6" },
+        new { Temperature = 56, Day = "7" }, new { Temperature = 62, Day = "8" },
+        new { Temperature = 57, Day = "9" }, new { Temperature = 54, Day = "10" },
+        new { Temperature = 52, Day = "11" }, new { Temperature = 58, Day = "12" },
+        new { Temperature = 53, Day = "13" }, new { Temperature = 54, Day = "14" },
+        new { Temperature = 57, Day = "15" }, new { Temperature = 61, Day = "16" },
+        new { Temperature = 58, Day = "17" }, new { Temperature = 63, Day = "18" },
+        new { Temperature = 64, Day = "19" }, new { Temperature = 52, Day = "20" }
+    })
+)
