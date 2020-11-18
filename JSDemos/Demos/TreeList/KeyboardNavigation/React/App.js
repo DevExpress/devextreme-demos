@@ -29,13 +29,13 @@ class App extends React.Component {
           selectTextOnEditStart={true}
           useIcons={true}
         />
-        <HeaderFilter 
+        <HeaderFilter
           visible={true}
         />
-        <FilterPanel 
+        <FilterPanel
           visible={true}
         />
-        <FilterRow 
+        <FilterRow
           visible={true}
         />
         <Scrolling
