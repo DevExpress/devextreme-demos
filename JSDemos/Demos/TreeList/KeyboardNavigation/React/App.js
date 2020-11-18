@@ -27,29 +27,29 @@ class App extends React.Component {
           selectTextOnEditStart={true}
           useIcons={true}
         />
-        <HeaderFilter 
+        <HeaderFilter
           visible={true}
         />
-        <FilterPanel 
+        <FilterPanel
           visible={true}
         />
-        <FilterRow 
+        <FilterRow
           visible={true}
         />
-        <Scrolling 
+        <Scrolling
           mode='standard'
         />
         <Column dataField='Full_Name' />
         <Column
           dataField='Title'
-          caption='Position'  
+          caption='Position'
         />
         <Column dataField='City' />
         <Column dataField= 'State' />
         <Pager
-            allowedPageSizes={[5, 10]}
-            showPageSizeSelector={true}
-            showNavigationButtons={true}
+          allowedPageSizes={[5, 10]}
+          showPageSizeSelector={true}
+          showNavigationButtons={true}
         />
         <Paging
           enabled={true}
