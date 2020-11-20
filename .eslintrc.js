@@ -121,6 +121,7 @@ module.exports = {
                     'Fmt', // ExcelJS
                     'jan',
                     'js',
+                    'jspdf',
                     'jszip',
                     'jsonp',
                     'jsserver',
