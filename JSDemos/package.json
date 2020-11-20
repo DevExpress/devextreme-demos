@@ -68,7 +68,7 @@
     "scripts": {
         "start": "npm i && node ../utils/create-config.js && http-server -a localhost -p 3000 -o",
         "test:e2e": "testcafe \"chrome:headless '--window-size=400,300'\" && npm run test:e2e:jest",
-        "test:e2e:docker": "docker run -w /tests -v /Users/ovchinnikov/Dev/devextreme-demos/JSDemos:/tests -it testcafe/testcafe && npm run test:e2e:jest",
+        "test:e2e:docker": "docker run -w /tests -v /Users/ovchinnikov/Dev/forks/devextreme-demos/JSDemos:/tests -it testcafe/testcafe && npm run test:e2e:jest",
         "test:e2e:jest": "jest ./e2e/index.test.js",
         "test:e2e:circleci": "testcafe && npm run test:e2e:jest"
     },
