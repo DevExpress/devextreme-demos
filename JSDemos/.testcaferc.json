@@ -5,5 +5,5 @@
         "path": "./e2e/__current_snapshots__",
         "pathPattern": "${TEST}.png"
     },
-    "concurrency": 4
+    "concurrency": 1
 }
