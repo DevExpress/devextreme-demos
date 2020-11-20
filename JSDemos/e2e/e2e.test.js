@@ -10,6 +10,7 @@ const getDemoPaths = (platform) => {
 };
 
 const demos = getDemoPaths('JQuery');
+console.log(demos);
 demos.length = 10;
 demos.forEach((demo) => {
     test
