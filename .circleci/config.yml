@@ -18,11 +18,7 @@ jobs:
       - run:
           name: prepare
           command: "npm run prepare-js"
-      
-      - run:
-          name: prepare
-          command: "cd JSDemos && pwd"
 
       - run:
-          name: prepare
-          command: "npm run test:e2e:circleci"
+          name: Run tests
+          command: "npm run test:e2e:circleci --prefix JSDemos"
