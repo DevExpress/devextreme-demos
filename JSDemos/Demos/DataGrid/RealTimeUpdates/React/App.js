@@ -39,7 +39,7 @@ class App extends React.Component {
           repaintChangesOnly={true}
           columnAutoWidth={true}
           showBorders={true}>
-          <Paging pageSize={10} />
+          <Paging defaultPageSize={10} />
           <Column
             dataField="ProductName"
             dataType="string" />
@@ -59,8 +59,8 @@ class App extends React.Component {
             format="currency" />
           <Summary>
             <TotalItem column="ProductName" summaryType="count" />
-            <TotalItem column="Amount" summaryType="sum" displayFormat={'{0}'} valueFormat="currency" />
-            <TotalItem column="OrderCount" summaryType="sum" displayFormat={'{0}'} />
+            <TotalItem column="Amount" summaryType="sum" displayFormat="{0}" valueFormat="currency" />
+            <TotalItem column="OrderCount" summaryType="sum" displayFormat="{0}" />
           </Summary>
           <MasterDetail
             enabled={true}
@@ -97,7 +97,7 @@ class App extends React.Component {
         repaintChangesOnly={true}
         columnAutoWidth={true}
         showBorders={true}>
-        <Paging pageSize={5} />
+        <Paging defaultPageSize={5} />
         <Column
           dataField="OrderID"
           dataType="number" />
@@ -123,8 +123,8 @@ class App extends React.Component {
           calculateCellValue={this.getAmount} />
         <Summary>
           <TotalItem column="OrderID" summaryType="count" />
-          <TotalItem column="Quantity" summaryType="sum" displayFormat={'{0}'} />
-          <TotalItem column="Amount" summaryType="sum" displayFormat={'{0}'} valueFormat="currency" />
+          <TotalItem column="Quantity" summaryType="sum" displayFormat="{0}" />
+          <TotalItem column="Amount" summaryType="sum" displayFormat="{0}" valueFormat="currency" />
         </Summary>
       </DataGrid>
     );
