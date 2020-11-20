@@ -1,0 +1,9 @@
+{
+    "src": "./e2e/e2e.test.js",
+    "browsers": "chromium",
+    "screenshots": {
+        "path": "./e2e/__current_snapshots__",
+        "pathPattern": "${TEST}.png"
+    },
+    "concurrency": 4
+}

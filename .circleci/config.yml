@@ -10,3 +10,19 @@ jobs:
       - run:
           name: Update npm
           command: "sudo npm install -g npm@latest"
+
+      - run:
+          name: npm
+          command: "npm install"
+
+      - run:
+          name: prepare
+          command: "npm run prepare-js"
+      
+      - run:
+          name: prepare
+          command: "cd JSDemos"
+
+      - run:
+          name: prepare
+          command: "npm run test:e2e:circleci"

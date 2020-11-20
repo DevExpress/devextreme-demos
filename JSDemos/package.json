@@ -58,11 +58,19 @@
         "preact": "^10.4.5"
     },
     "devDependencies": {
-        "http-server": "latest"
+        "glob": "^7.1.6",
+        "http-server": "latest",
+        "jest": "^26.6.3",
+        "jest-image-snapshot": "^4.2.0",
+        "testcafe": "^1.9.4"
     },
     "peerDependencies": {},
     "scripts": {
-        "start": "npm i && node ../utils/create-config.js && http-server -a localhost -p 3000 -o"
+        "start": "npm i && node ../utils/create-config.js && http-server -a localhost -p 3000 -o",
+        "test:e2e": "testcafe \"chrome:headless '--window-size=400,300'\" && npm run test:e2e:jest",
+        "test:e2e:docker": "docker run -w /tests -v /Users/ovchinnikov/Dev/devextreme-demos/JSDemos:/tests -it testcafe/testcafe && npm run test:e2e:jest",
+        "test:e2e:jest": "jest ./e2e/index.test.js",
+        "test:e2e:circleci": "testcafe && npm run test:e2e:jest"
     },
     "license": "SEE LICENSE IN README.md",
     "keywords": [

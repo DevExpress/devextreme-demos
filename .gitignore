@@ -19,6 +19,9 @@ package-lock.json
 utils/reposPaths.js
 
 JSDemos/Demos/**/config.js
+JSDemos/e2e/__current_snapshots__
+JSDemos/e2e/__diff_snapshots__
+
 
 MVCDemos/App_Data/Northwind.mdf
 MVCDemos/Content/icons
