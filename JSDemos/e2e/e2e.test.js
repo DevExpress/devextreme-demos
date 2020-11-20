@@ -9,7 +9,7 @@ const getDemoPaths = (platform) => {
     return glob.sync(`Demos/**/${platform}`);
 };
 
-const demos = getDemoPaths('JQuery');
+const demos = getDemoPaths('jQuery'); // TODO: 1 folder is JQuery
 console.log(demos);
 demos.length = 10;
 demos.forEach((demo) => {
