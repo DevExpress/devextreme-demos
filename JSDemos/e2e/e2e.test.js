@@ -9,9 +9,15 @@ const getDemoPaths = (platform) => {
     return glob.sync(`Demos/**/${platform}`);
 };
 
-const demos = getDemoPaths('jQuery'); // TODO: 1 folder is JQuery
+const demos = getDemoPaths('jQuery')
+        .filter((d) => [
+            'Demos/Charts/SideBySideStackedBar/jQuery',
+            'Demos/DataGrid/ExportToExcel/jQuery',
+        ].includes(d)); // TODO: 1 folder is JQuery
 console.log(demos);
-demos.length = 10;
+// demos.length = 10;
+
+
 demos.forEach((demo) => {
     test
         .page`file://${path.resolve(demo)}/index.html`
