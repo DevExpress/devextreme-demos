@@ -1,6 +1,6 @@
 {
     "src": "./e2e/e2e.test.js",
-    "browsers": "chromium",
+    "browsers": "chrome",
     "screenshots": {
         "path": "./e2e/__current_snapshots__",
         "pathPattern": "${TEST}.png"
