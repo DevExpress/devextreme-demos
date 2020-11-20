@@ -14,16 +14,16 @@ const prepareProjects = (mercurialPath) => {
     const mvcDemosAppData = path.normalize(path.join(mvcDemos + '/App_Data'));
     const mercurialJSDemos = path.join(mercurialPath, 'Demos/WidgetsGallery/WidgetsGallery');
     const mercurialNetCoreDemoShell = path.join(mercurialPath, 'Demos/WidgetsGallery/AspNetCoreDemos.DemoShell');
-    const dxStyles = path.join(jsDemos, 'node_modules/devextreme/dist/css');
-    const dxIcons = path.join(jsDemos, 'node_modules/devextreme/dist/css/icons');
-    const dxScripts = path.join(jsDemos, 'node_modules/devextreme/dist/js');
-    const globalize = path.join(jsDemos, 'node_modules/globalize/dist');
-    const cldr = path.join(jsDemos, 'node_modules/cldrjs/dist');
-    const dxAspNetData = path.join(jsDemos, 'node_modules/devextreme-aspnet-data/js');
-    const jQueryDist = path.join(jsDemos, 'node_modules/jquery/dist');
-    const jsZipDist = path.join(jsDemos, 'node_modules/jszip/dist');
-    const dxDiagramDist = path.join(jsDemos, 'node_modules/devexpress-diagram/dist');
-    const dxGanttDist = path.join(jsDemos, 'node_modules/devexpress-gantt/dist');
+    const dxStyles = path.join(rootDir, 'node_modules/devextreme/dist/css');
+    const dxIcons = path.join(rootDir, 'node_modules/devextreme/dist/css/icons');
+    const dxScripts = path.join(rootDir, 'node_modules/devextreme/dist/js');
+    const globalize = path.join(rootDir, 'node_modules/globalize/dist');
+    const cldr = path.join(rootDir, 'node_modules/cldrjs/dist');
+    const dxAspNetData = path.join(rootDir, 'node_modules/devextreme-aspnet-data/js');
+    const jQueryDist = path.join(rootDir, 'node_modules/jquery/dist');
+    const jsZipDist = path.join(rootDir, 'node_modules/jszip/dist');
+    const dxDiagramDist = path.join(rootDir, 'node_modules/devexpress-diagram/dist');
+    const dxGanttDist = path.join(rootDir, 'node_modules/devexpress-gantt/dist');
 
     fs.readdirSync(mvcDemosAppData)
         .filter(file => /.*\.ldf$/.test(file))
