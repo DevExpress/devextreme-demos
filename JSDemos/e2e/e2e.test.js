@@ -10,7 +10,7 @@ const getDemoPaths = (platform) => {
 };
 
 const demos = getDemoPaths('jQuery')
-        .filter((d) => [
+        .filter((d) => ![
             'Demos/Charts/SideBySideStackedBar/jQuery',
             'Demos/DataGrid/ExportToExcel/jQuery',
         ].includes(d)); // TODO: 1 folder is JQuery
