@@ -37,7 +37,7 @@
       :multiple="false"
       :allowed-file-extensions="allowedFileExtensions"
       upload-mode="instantly"
-      upload-url="https://js.devexpress.com/FileUploader/Upload"
+      upload-url="https://js.devexpress.com/Demos/NetCore/FileUploader/Upload"
       :visible="false"
       @drop-zone-enter="onDropZoneEnter"
       @drop-zone-leave="onDropZoneLeave"

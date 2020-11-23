@@ -5,7 +5,7 @@
         :accept="accept"
         :multiple="multiple"
         :upload-mode="uploadMode"
-        upload-url="https://js.devexpress.com/FileUploader/Upload"
+        upload-url="https://js.devexpress.com/Demos/NetCore/FileUploader/Upload"
         @value-changed="e => files = e.value"
       />
       <div
