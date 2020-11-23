@@ -51,7 +51,7 @@ class App extends React.Component {
           multiple={false}
           allowedFileExtensions={this.allowedFileExtensions}
           uploadMode="instantly"
-          uploadUrl="https://js.devexpress.com/FileUploader/Upload"
+          uploadUrl="https://js.devexpress.com/Demos/NetCore/FileUploader/Upload"
           visible={false}
           onDropZoneEnter={this.onDropZoneEnter}
           onDropZoneLeave={this.onDropZoneLeave}
