@@ -1,4 +1,5 @@
 ﻿using DevExtreme.NETCore.Demos.Models.FileManagement;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -15,6 +16,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         }
 
         [HttpPost]
+        [EnableCors("CorsPolicy")]
         public ActionResult Upload() {
             // Learn more on the functionality of the dxFileUploader widget at:
             // http://js.devexpress.com/Documentation/Guide/UI_Widgets/UI_Widgets_-_Deep_Dive/dxFileUploader/
