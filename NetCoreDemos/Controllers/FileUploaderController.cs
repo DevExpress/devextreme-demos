@@ -1,4 +1,5 @@
 ﻿using DevExtreme.NETCore.Demos.Models.FileManagement;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
