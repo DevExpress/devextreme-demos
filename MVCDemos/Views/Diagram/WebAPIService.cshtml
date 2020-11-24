@@ -17,17 +17,25 @@
                 .Type(DiagramDataLayoutType.Tree)
             )
         )
+        .ContextToolbox(ct => ct
+            .ShapeIconsPerRow(2)
+            .Width(100)
+            .Shapes(new[] { DiagramShapeType.Rectangle })
+        )
         .Toolbox(t => t
             .Groups(g => g
-                .Add().Category(DiagramShapeCategory.General).Title("General")
+                .Add().Title("Items").Shapes(new[] { DiagramShapeType.Rectangle })
             )
+            .ShowSearch(false)
+            .ShapeIconsPerRow(2)
         )
+    )
 )
 
 <script type="text/javascript">
     function onInserting(values) {
         values["ID"] = 0;
-        values["Title"] = "New Position";
+        values["Title"] = values["Title"] || "New Position";
         values["Prefix"] = "Mr";
         values["FullName"] = "New Employee";
         values["City"] = "LA";
