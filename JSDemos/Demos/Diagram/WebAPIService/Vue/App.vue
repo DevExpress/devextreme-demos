@@ -24,8 +24,7 @@
         :title="'Items'"
         :shapes="['rectangle']"
       />
-    </DxToolbox>     
-    
+    </DxToolbox>
   </DxDiagram>
 </template>
 <script>
