@@ -107,19 +107,25 @@ const getWidgets = (widgetsPath, newWidget) => {
 };
 
 const recreateLink = (src, dest, callback) => {
-    if(!dest) {
-        if(fs.existsSync(src)) {
-            fs.rmdirSync(src, { recursive: true });
+    const exists = fs.existsSync(src);
+    const stats = exists && fs.statSync(src);
+    const isDirectory = exists && stats.isDirectory();
+
+    if(isDirectory) {
+        if(fs.existsSync(dest)) {
+            fs.rmdirSync(dest, { recursive: true });
         }
 
-        fs.mkdir(src, (error) => {
-            if(error) {
-                console.log(error);
-                return;
-            }
+        fs.mkdirSync(dest);
 
-            console.log(src + ' is created');
+        fs.readdirSync(src).forEach((childItemName) => {
+            copyRecursiveSync(
+                path.join(src, childItemName),
+                path.join(dest, childItemName)
+            );
         });
+
+        console.log(dest + ' is copied');
     } else {
         if(fs.existsSync(dest)) {
             fs.unlinkSync(dest);
