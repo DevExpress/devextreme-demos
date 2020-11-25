@@ -67,7 +67,7 @@ window.onload = function() {
                 };
 
                 productsDataSource.store().insert(newItem);
-                productsDataSource.load();
+                productsDataSource.reload();
                 data.customItem = newItem;
             }
         },

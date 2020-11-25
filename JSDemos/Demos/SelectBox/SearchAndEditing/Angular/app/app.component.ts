@@ -63,7 +63,7 @@ export class AppComponent {
         };
 
         this.productsDataSource.store().insert(newItem);
-        this.productsDataSource.load();
+        this.productsDataSource.reload();
         data.customItem = newItem;
     }
 }
