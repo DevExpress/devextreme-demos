@@ -60,7 +60,7 @@ DemoApp.controller('DemoController', function DemoController($scope) {
                 };
 
                 $scope.productsDataSource.store().insert(newItem);
-                $scope.productsDataSource.load();
+                $scope.productsDataSource.reload();
                 data.customItem = newItem;
             }
         }

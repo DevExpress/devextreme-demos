@@ -70,7 +70,7 @@ class App extends React.Component {
     };
 
     productsDataSource.store().insert(newItem);
-    productsDataSource.load();
+    productsDataSource.reload();
     args.customItem = newItem;
   }
 
