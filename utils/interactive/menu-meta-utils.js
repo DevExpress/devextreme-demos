@@ -28,6 +28,21 @@ const addDemo = (menuMetaData, categoryName, groupName, demoName, widgetName) =>
     menuMetaData[categoryIndex].Groups[groupIndex].Demos.push(demoMeta);
 };
 
+const getDemoMeta = (menuMetaData, categoryName, groupName, demoName) => {
+    const categoryIndex = menuMetaData.findIndex(x => x.Name === categoryName);
+    const groupIndex = menuMetaData[categoryIndex].Groups.findIndex(x => x.Name === groupName);
+    const demoIndex = menuMetaData[categoryIndex].Groups[groupIndex].Demos.findIndex(x => x.Name === demoName);
+    return menuMetaData[categoryIndex].Groups[groupIndex].Demos[demoIndex];
+};
+
+const updateDemoProperties = (menuMetaData, categoryName, groupName, demoNewName, newOrExisting) => {
+    let demoMetaSource = getDemoMeta(menuMetaData, newOrExisting.category, newOrExisting.group, newOrExisting.demo);
+    let demoMetaDest = getDemoMeta(menuMetaData, categoryName, groupName, demoNewName);
+    if(demoMetaSource.Modules) {
+        demoMetaDest.Modules = demoMetaSource.Modules;
+    }
+};
+
 const getCategories = (menuMetaData, newCategory) => {
     const result = menuMetaData.map((current) => {
         return { title: current.Name.toUpperCase(), value: current.Name };
@@ -68,6 +83,7 @@ const getDemos = (menuMetaData, category, group, newDemo) => {
 module.exports = {
     addCategory,
     addGroup,
+    updateDemoProperties,
     addDemo,
     getCategories,
     getGroups,
