@@ -3150,7 +3150,8 @@
             "NetCoreDescription": "",
             "MvcAdditionalFiles": [],
             "DemoType": "Viz",
-            "Badge": "New"
+            "Badge": "New",
+            "Hidden": true
           }
         ]
       },
