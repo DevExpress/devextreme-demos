@@ -60,7 +60,7 @@ const createFileIfNecessary = () => {
 
 const getRepositoryPathByName = async(repositoryName) => {
     createFileIfNecessary();
-    // eslint-disable-next-line node/no-missing-require, spellcheck/spell-checker
+    // eslint-disable-next-line node/no-missing-require, spellcheck/spell-checker, node/no-unpublished-require
     let repositoryPath = require('../reposPaths').reposPaths[repositoryName].trim();
     if(!repositoryPath) {
         const response = await promptsQuestions.askRepositoryPath(repositoryName);
