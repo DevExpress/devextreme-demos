@@ -64,8 +64,8 @@ const addDemo = async(category, group, menuMetaData) => {
     }
     const approaches = await promptsQuestions.askApproaches(missingApproaches);
     const newOrExisting = await promptsQuestions.askNewOrExisting(menuMetaData);
-    if(newOrExisting.choice == "existing") {
-        menuMetaUtils.updateDemoProperties(menuMetaData, category.name, group.name, demo.newName, newOrExisting);        
+    if(newOrExisting.choice === 'existing') {
+        menuMetaUtils.updateDemoProperties(menuMetaData, category.name, group.name, demo.newName, newOrExisting);
     }
     fileSystemUtils.copyDemos(demoPath, approaches.selectedApproaches, newOrExisting, menuMetaData, baseDemosDir);
     fileSystemUtils.saveMetaDataFile(menuMetaFilePath, menuMetaData);

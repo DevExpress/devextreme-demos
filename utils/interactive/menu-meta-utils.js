@@ -36,8 +36,8 @@ const getDemoMeta = (menuMetaData, categoryName, groupName, demoName) => {
 };
 
 const updateDemoProperties = (menuMetaData, categoryName, groupName, demoNewName, newOrExisting) => {
-    let demoMetaSource = getDemoMeta(menuMetaData, newOrExisting.category, newOrExisting.group, newOrExisting.demo);
-    let demoMetaDest = getDemoMeta(menuMetaData, categoryName, groupName, demoNewName);
+    const demoMetaSource = getDemoMeta(menuMetaData, newOrExisting.category, newOrExisting.group, newOrExisting.demo);
+    const demoMetaDest = getDemoMeta(menuMetaData, categoryName, groupName, demoNewName);
     if(demoMetaSource.Modules) {
         demoMetaDest.Modules = demoMetaSource.Modules;
     }
