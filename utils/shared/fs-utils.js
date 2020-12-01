@@ -47,15 +47,27 @@ const copyRecursiveSync = (src, dest) => {
 
     if(isDirectory) {
         if(!fs.existsSync(dest)) {
-            fs.mkdirSync(dest, { recursive: true });
+            fs.mkdirSync(dest);
         }
         fs.readdirSync(src).forEach((childItemName) => {
-            copyRecursiveSync(
-                path.join(src, childItemName),
-                path.join(dest, childItemName)
-            );
+            const subSrc = path.join(src, childItemName);
+            const subDest =  path.join(dest, childItemName);
+
+            if(fs.statSync(subSrc).isDirectory()) {
+                if(fs.existsSync(subDest)) {
+                    fs.rmdirSync(subDest, { recursive: true });
+                }
+
+                fs.mkdirSync(subDest);
+            }
+
+            copyRecursiveSync(subSrc, subDest);
         });
     } else {
+        if(fs.existsSync(dest)) {
+            fs.unlinkSync(dest);
+        }
+
         fs.copyFileSync(src, dest);
     }
 };
@@ -116,14 +128,7 @@ const recreateLink = (src, dest, callback) => {
             fs.rmdirSync(dest, { recursive: true });
         }
 
-        fs.mkdirSync(dest);
-
-        fs.readdirSync(src).forEach((childItemName) => {
-            copyRecursiveSync(
-                path.join(src, childItemName),
-                path.join(dest, childItemName)
-            );
-        });
+        copyRecursiveSync(src, dest);
 
         console.log(dest + ' is copied');
     } else {
