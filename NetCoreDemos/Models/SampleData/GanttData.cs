@@ -856,176 +856,176 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 ID = 1,
                 ParentId = 0,
                 Title = "Johnson Residence Construction Project",
-                Start = GetCorrectDate(year, month - 1, 1),
-                End = GetCorrectDate(year, month - 1, 1),
+                Start = new DateTime(year, month, 1).AddMonths(-1),
+                End = new DateTime(year, month, 1).AddMonths(-1),
                 Progress = 0
             },
             new Task {
                 ID = 2,
                 ParentId = 1,
                 Title = "Planning and Pre-Construction Phase",
-                Start = GetCorrectDate(year, month - 1, 1),
-                End = GetCorrectDate(year, month - 1, 1),
+                Start = new DateTime(year, month, 1).AddMonths(-1),
+                End = new DateTime(year, month, 1).AddMonths(-1),
                 Progress = 0
             },
             new Task {
                 ID = 3,
                 ParentId = 2,
                 Title = "Architectural Design and Site Planning",
-                Start = GetCorrectDate(year, month - 1, 1),
-                End = GetCorrectDate(year, month - 1, 15),
+                Start = new DateTime(year, month, 1).AddMonths(-1),
+                End = new DateTime(year, month, 15).AddMonths(-1),
                 Progress = 0
             },
             new Task {
                 ID = 4,
                 ParentId = 2,
                 Title = "Engineering and Final Blueprint",
-                Start = GetCorrectDate(year, month - 1, 8),
-                End = GetCorrectDate(year, month - 1, 15),
+                Start = new DateTime(year, month, 8).AddMonths(-1),
+                End = new DateTime(year, month, 15).AddMonths(-1),
                 Progress = 0
             },
             new Task {
                 ID = 5,
                 ParentId = 2,
                 Title = "City Permits and Contracts",
-                Start = GetCorrectDate(year, month - 1, 15),
-                End = GetCorrectDate(year, month - 1, 18),
+                Start = new DateTime(year, month, 15).AddMonths(-1),
+                End = new DateTime(year, month, 18).AddMonths(-1),
                 Progress = 0
             },
             new Task {
                 ID = 6,
                 ParentId = 1,
                 Title = "Construction Phase",
-                Start = GetCorrectDate(year, month - 1, 18),
-                End = GetCorrectDate(year, month - 1, 18),
+                Start = new DateTime(year, month, 18).AddMonths(-1),
+                End = new DateTime(year, month, 18).AddMonths(-1),
                 Progress = 0
             },
             new Task {
                 ID = 7,
                 ParentId = 6,
                 Title = "Grading and Excavation",
-                Start = GetCorrectDate(year, month - 1, 18),
-                End = GetCorrectDate(year, month - 1, 22),
+                Start = new DateTime(year, month, 18).AddMonths(-1),
+                End = new DateTime(year, month, 22).AddMonths(-1),
                 Progress = 0
             },
             new Task {
                 ID = 8,
                 ParentId = 6,
                 Title = "Demolition and Removal",
-                Start = GetCorrectDate(year, month - 1, 19),
-                End = GetCorrectDate(year, month - 1, 23),
+                Start = new DateTime(year, month, 19).AddMonths(-1),
+                End = new DateTime(year, month, 23).AddMonths(-1),
                 Progress = 0
             },
             new Task {
                 ID = 9,
                 ParentId = 6,
                 Title = "Foundation and Concrete ",
-                Start = GetCorrectDate(year, month - 1, 22),
-                End = GetCorrectDate(year, month - 1, 29),
+                Start = new DateTime(year, month, 22).AddMonths(-1),
+                End = new DateTime(year, month, 28).AddMonths(-1),
                 Progress = 0
             },
             new Task {
                 ID = 10,
                 ParentId = 6,
                 Title = "Rough Framing and Carpentery",
-                Start = GetCorrectDate(year, month - 1, 25),
-                End = GetCorrectDate(year, month, 5),
+                Start = new DateTime(year, month, 25).AddMonths(-1),
+                End = new DateTime(year, month, 5),
                 Progress = 0
             },
             new Task {
                 ID = 11,
                 ParentId = 6,
                 Title = "Inspection (Structure)",
-                Start = GetCorrectDate(year, month, 5),
-                End = GetCorrectDate(year, month, 5),
+                Start = new DateTime(year, month, 5),
+                End = new DateTime(year, month, 5),
                 Progress = 0
             },
             new Task {
                 ID = 12,
                 ParentId = 6,
                 Title = "Electrical Rough-in",
-                Start = GetCorrectDate(year, month, 6),
-                End = GetCorrectDate(year, month, 19),
+                Start = new DateTime(year, month, 6),
+                End = new DateTime(year, month, 19),
                 Progress = 0
             },
             new Task {
                 ID = 13,
                 ParentId = 6,
                 Title = "Plumbing Rough-in",
-                Start = GetCorrectDate(year, month, 19),
-                End = GetCorrectDate(year, month, 19),
+                Start = new DateTime(year, month, 19),
+                End = new DateTime(year, month, 19),
                 Progress = 0
             },
             new Task {
                 ID = 14,
                 ParentId = 6,
                 Title = "Heating and A/C",
-                Start = GetCorrectDate(year, month, 19),
-                End = GetCorrectDate(year, month, 26),
+                Start = new DateTime(year, month, 19),
+                End = new DateTime(year, month, 26),
                 Progress = 0
             },
             new Task {
                 ID = 15,
                 ParentId = 6,
                 Title = "Drywall",
-                Start = GetCorrectDate(year, month, 25),
-                End = GetCorrectDate(year, month + 1, 10),
+                Start = new DateTime(year, month, 25),
+                End = new DateTime(year, month, 10).AddMonths(1),
                 Progress = 0
             },
             new Task {
                 ID = 16,
                 ParentId = 6,
                 Title = "Painting (Exterior)",
-                Start = GetCorrectDate(year, month + 1, 7),
-                End = GetCorrectDate(year, month + 1, 21),
+                Start = new DateTime(year, month, 7).AddMonths(1),
+                End = new DateTime(year, month, 21).AddMonths(1),
                 Progress = 0
             },
             new Task {
                 ID = 17,
                 ParentId = 6,
                 Title = "Interior Carpentery (Interior)",
-                Start = GetCorrectDate(year, month + 1, 17),
-                End = GetCorrectDate(year, month + 1, 29),
+                Start = new DateTime(year, month, 17).AddMonths(1),
+                End = new DateTime(year, month, 28).AddMonths(1),
                 Progress = 0
             },
             new Task {
                 ID = 18,
                 ParentId = 6,
                 Title = "Flooring and Interior Paint",
-                Start = GetCorrectDate(year, month + 1, 26),
-                End = GetCorrectDate(year, month + 2, 9),
+                Start = new DateTime(year, month, 26).AddMonths(1),
+                End = new DateTime(year, month, 9).AddMonths(2),
                 Progress = 0
             },
             new Task {
                 ID = 19,
                 ParentId = 1,
                 Title = "Final Phase",
-                Start = GetCorrectDate(year, month + 2, 9),
-                End = GetCorrectDate(year, month + 2, 9),
+                Start = new DateTime(year, month, 9).AddMonths(2),
+                End = new DateTime(year, month, 9).AddMonths(2),
                 Progress = 0
             },
             new Task {
                 ID = 20,
                 ParentId = 19,
                 Title = "Review-Punch List",
-                Start = GetCorrectDate(year, month + 2, 9),
-                End = GetCorrectDate(year, month + 2, 23),
+                Start = new DateTime(year, month, 9).AddMonths(2),
+                End = new DateTime(year, month, 23).AddMonths(2),
                 Progress = 0
             },
             new Task {
                 ID = 21,
                 ParentId = 19,
                 Title = "Final Inspection",
-                Start = GetCorrectDate(year, month + 2, 24),
-                End = GetCorrectDate(year, month + 2, 24),
+                Start = new DateTime(year, month, 24).AddMonths(2),
+                End = new DateTime(year, month, 24).AddMonths(2),
                 Progress = 0
             },
             new Task {
                 ID = 22,
                 ParentId = 19,
                 Title = "Final Paperwork and Documents",
-                Start = GetCorrectDate(year, month + 2, 24),
-                End = GetCorrectDate(year, month + 2, 30),
+                Start = new DateTime(year, month, 24).AddMonths(2),
+                End = new DateTime(year, month, 28).AddMonths(2),
                 Progress = 0
             }
         };
@@ -1050,21 +1050,5 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
             "years"
         };
 
-        public static DateTime GetCorrectDate(int year, int month, int day) {
-            int monthsInYear = 12;
-            int resultYear = year;
-            int resultMonth = month;
-
-            if(month > monthsInYear) {
-                resultYear++;
-                resultMonth = month % monthsInYear;
-            }
-            if(month < 1) {
-                resultYear--;
-                resultMonth = monthsInYear + month;
-            }
-
-            return new DateTime(resultYear, resultMonth, day);
-        }
     }
 }
