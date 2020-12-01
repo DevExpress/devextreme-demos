@@ -51,7 +51,7 @@ const copyRecursiveSync = (src, dest) => {
         }
         fs.readdirSync(src).forEach((childItemName) => {
             const subSrc = path.join(src, childItemName);
-            const subDest =  path.join(dest, childItemName);
+            const subDest = path.join(dest, childItemName);
 
             if(fs.statSync(subSrc).isDirectory()) {
                 if(fs.existsSync(subDest)) {
