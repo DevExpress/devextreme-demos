@@ -63,7 +63,7 @@
         else
             $("#selectedItemsContainer").text("Nobody has been selected");
         if(!changedBySelectBox)
-            $("#select-prefix").data("dxSelectBox").option("value", null);
+            $("#select-prefix").dxSelectBox("instance").option("value", null);
 
         changedBySelectBox = false;
         $("#grid-clear-selection").dxButton("instance").option("disabled", !data.length);
