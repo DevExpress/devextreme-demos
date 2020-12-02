@@ -11,9 +11,6 @@ import {
   DxTooltip
 } from 'devextreme-vue/sparkline';
 
-import Globalize from 'globalize';
-import 'devextreme/localization/globalize/currency';
-
 const gridCellData = function(value) {
   return value.data[value.column.caption.toLowerCase()];
 };
@@ -35,7 +32,7 @@ export default {
       return gridCellData(value).diff > 0 ? 'inc' : 'dec';
     },
     formatCurrency(value, currency) {
-      return Globalize.formatCurrency(gridCellData(value).value, currency);
+      return `$${gridCellData(value).value}`;
     },
     abs(value) {
       return Math.abs(gridCellData(value).diff);

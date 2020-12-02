@@ -17,7 +17,7 @@ $(function() {
                 if(fieldData.diff) {
                     options.cellElement.addClass((fieldData.diff > 0) ? "inc" : "dec");
                     fieldHtml += "<div class='current-value'>" +
-                        Globalize.formatCurrency(fieldData.value, "USD") +
+                        `$${fieldData.value}` +
                         "</div> <div class='diff'>" +
                         Math.abs(fieldData.diff).toFixed(2) +
                         "  </div>";
