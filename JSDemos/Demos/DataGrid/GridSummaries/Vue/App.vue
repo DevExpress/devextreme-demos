@@ -78,7 +78,7 @@ export default {
   methods: {
     formatDate: formatDate,
     customizeDate(data) {
-      return `First: ${ formatDate(data.value, "MMM dd, yyyy")}`;
+      return `First: ${ formatDate(data.value, 'MMM dd, yyyy')}`;
     }
   }
 };

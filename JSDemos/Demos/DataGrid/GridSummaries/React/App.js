@@ -9,7 +9,7 @@ class App extends React.Component {
     this.orders = service.getOrders();
   }
   customizeDate(data) {
-    return `First: ${ formatDate(data.value, "MMM dd, yyyy")}`;
+    return `First: ${ formatDate(data.value, 'MMM dd, yyyy')}`;
   }
   render() {
     return (
