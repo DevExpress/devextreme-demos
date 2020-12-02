@@ -1,6 +1,6 @@
 <template>
   <div :class="className(cellData)">
-    <div class="current-value">{{ formatCurrency(cellData, 'USD') }}</div>
+    <div class="current-value">{{ formatCurrency(cellData) }}</div>
     <div class="diff">{{ fixed(abs(cellData), 2) }}</div>
   </div>
 </template>
@@ -31,7 +31,7 @@ export default {
     className(value) {
       return gridCellData(value).diff > 0 ? 'inc' : 'dec';
     },
-    formatCurrency(value, currency) {
+    formatCurrency(value) {
       return `$${gridCellData(value).value}`;
     },
     abs(value) {
