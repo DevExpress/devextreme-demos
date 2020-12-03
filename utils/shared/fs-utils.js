@@ -53,7 +53,7 @@ const copyRecursiveSync = (src, dest) => {
             const subSrc = path.join(src, childItemName);
             const subDest = path.join(dest, childItemName);
 
-            // remove only subdirectories before copying (e.g. main directory include commited files) 
+            // remove only subdirectories before copying (e.g. main directory include commited files)
             if(fs.statSync(subSrc).isDirectory()) {
                 if(fs.existsSync(subDest)) {
                     fs.rmdirSync(subDest, { recursive: true });
