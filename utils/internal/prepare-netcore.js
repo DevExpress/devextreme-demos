@@ -8,7 +8,8 @@ const common = require('./prepare-common');
 
 const modifyNetCoreProject = (netCoreDemos, demosNugetPath) => {
     const netCoreDemosProj = path.join(netCoreDemos, 'DevExtreme.NETCore.Demos.csproj');
-    const version = fs.readdirSync(demosNugetPath)[0].match(/\d+\.\d+\.\d+/)[0];
+    const nugetFile = fs.readdirSync(demosNugetPath).filter(file => file.match(/DevExtreme.AspNet.Core\.\d+\.\d+\.\d+\.nupkg/))[0];
+    const version = nugetFile.match(/\d+\.\d+\.\d+/)[0];
 
     let content = fs.readFileSync(netCoreDemosProj, 'utf-8');
 
