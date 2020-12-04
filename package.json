@@ -80,6 +80,7 @@
     "peerDependencies": {},
     "scripts": {
         "postinstall": "node utils/internal/create-config.js",
+        "clean": "git clean -f -x -d",
         "add-demo": "node utils/interactive/add-demo.js",
         "link-repos": "node utils/interactive/link-repos.js",
         "create-config": "node utils/internal/create-config.js",
