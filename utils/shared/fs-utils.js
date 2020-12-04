@@ -47,15 +47,28 @@ const copyRecursiveSync = (src, dest) => {
 
     if(isDirectory) {
         if(!fs.existsSync(dest)) {
-            fs.mkdirSync(dest, { recursive: true });
+            fs.mkdirSync(dest);
         }
         fs.readdirSync(src).forEach((childItemName) => {
-            copyRecursiveSync(
-                path.join(src, childItemName),
-                path.join(dest, childItemName)
-            );
+            const subSrc = path.join(src, childItemName);
+            const subDest = path.join(dest, childItemName);
+
+            // remove only subdirectories before copying (e.g. main directory include commited files)
+            if(fs.statSync(subSrc).isDirectory()) {
+                if(fs.existsSync(subDest)) {
+                    fs.rmdirSync(subDest, { recursive: true });
+                }
+
+                fs.mkdirSync(subDest);
+            }
+
+            copyRecursiveSync(subSrc, subDest);
         });
     } else {
+        if(fs.existsSync(dest)) {
+            fs.unlinkSync(dest);
+        }
+
         fs.copyFileSync(src, dest);
     }
 };
@@ -107,19 +120,18 @@ const getWidgets = (widgetsPath, newWidget) => {
 };
 
 const recreateLink = (src, dest, callback) => {
-    if(!dest) {
-        if(fs.existsSync(src)) {
-            fs.rmdirSync(src, { recursive: true });
+    const exists = fs.existsSync(src);
+    const stats = exists && fs.statSync(src);
+    const isDirectory = exists && stats.isDirectory();
+
+    if(isDirectory) {
+        if(fs.existsSync(dest)) {
+            fs.rmdirSync(dest, { recursive: true });
         }
 
-        fs.mkdir(src, (error) => {
-            if(error) {
-                console.log(error);
-                return;
-            }
+        copyRecursiveSync(src, dest);
 
-            console.log(src + ' is created');
-        });
+        console.log(dest + ' is copied');
     } else {
         if(fs.existsSync(dest)) {
             fs.unlinkSync(dest);
