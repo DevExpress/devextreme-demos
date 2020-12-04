@@ -111,7 +111,7 @@ class App extends React.Component {
     });
     this.setCustomTooltipStyles();
   }
-  setCustomTooltipStyles(e) {
+  setCustomTooltipStyles() {
     const parentElement = document.getElementsByClassName('dx-gantt-task-edit-tooltip')[0];
     parentElement.className = this.state.showCustomTaskTooltip ? 'dx-gantt-task-edit-tooltip custom-task-edit-tooltip' : 'dx-gantt-task-edit-tooltip';
   }

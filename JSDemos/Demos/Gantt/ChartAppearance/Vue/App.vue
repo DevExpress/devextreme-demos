@@ -117,19 +117,19 @@ export default {
     };
   },
   methods: {
-    onShowCustomTaskTooltip(e) {
+    onShowCustomTaskTooltip() {
       this.setCustomTooltipStyles();
     },
     getTimeEstimate(task) {
-        return  Math.abs(task.start - task.end) / 36e5;
+      return Math.abs(task.start - task.end) / 36e5;
     },
     getTimeLeft(task) {
-        const timeEstimate = Math.abs(task.start - task.end) / 36e5;
-        return Math.floor((100 - task.progress) / 100 * timeEstimate);
+      const timeEstimate = Math.abs(task.start - task.end) / 36e5;
+      return Math.floor((100 - task.progress) / 100 * timeEstimate);
     },
     setCustomTooltipStyles() {
-        const parentElement = document.getElementsByClassName('dx-gantt-task-edit-tooltip')[0];
-        parentElement.className = this.showCustomTaskTooltip ? 'dx-gantt-task-edit-tooltip custom-task-edit-tooltip' : 'dx-gantt-task-edit-tooltip';
+      const parentElement = document.getElementsByClassName('dx-gantt-task-edit-tooltip')[0];
+      parentElement.className = this.showCustomTaskTooltip ? 'dx-gantt-task-edit-tooltip custom-task-edit-tooltip' : 'dx-gantt-task-edit-tooltip';
     }
   }
 };

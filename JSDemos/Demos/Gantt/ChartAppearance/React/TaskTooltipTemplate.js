@@ -1,7 +1,7 @@
 import React from 'react';
 
 function getTimeEstimate(task) {
-  return  Math.abs(task.start - task.end) / 36e5;
+  return Math.abs(task.start - task.end) / 36e5;
 }
 
 function getTimeLeft(task) {
@@ -17,10 +17,10 @@ function setCustomTooltipStyles() {
 export default function TaskTooltipTemplate(task) {
   return (
     <div>
-        {setCustomTooltipStyles()}
-      <div class="custom-tooltip-title">{task.title}</div>
-      <div class="custom-tooltip-row"><span> Estimate: </span>{getTimeEstimate(task)}<span> hours </span></div>
-      <div class="custom-tooltip-row"><span> Left: </span>{getTimeLeft(task)}<span> hours </span></div>
+      {setCustomTooltipStyles()}
+      <div className="custom-tooltip-title">{task.title}</div>
+      <div className="custom-tooltip-row"><span> Estimate: </span>{getTimeEstimate(task)}<span> hours </span></div>
+      <div className="custom-tooltip-row"><span> Left: </span>{getTimeLeft(task)}<span> hours </span></div>
     </div>
   );
 }
