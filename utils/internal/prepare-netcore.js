@@ -6,8 +6,10 @@ const childProcessUtils = require('../shared/child-process-utils');
 const common = require('./prepare-common');
 
 
-const modifyNetCoreProject = (netCoreDemos, version) => {
+const modifyNetCoreProject = (netCoreDemos, demosNugetPath) => {
     const netCoreDemosProj = path.join(netCoreDemos, 'DevExtreme.NETCore.Demos.csproj');
+    const nugetFile = fs.readdirSync(demosNugetPath).filter(file => file.match(/DevExtreme.AspNet.Core.*.nupkg/))[0];
+    const version = nugetFile.match(/\d+\.\d+\.\d+/)[0];
 
     let content = fs.readFileSync(netCoreDemosProj, 'utf-8');
 
@@ -26,13 +28,12 @@ const prepareNetCoreDemos = async() => {
     const netCoreDemos = path.join(rootDir, 'NetCoreDemos');
     const nugetPath = path.join(mercurialPath, 'DevExtreme.AspNet.Mvc/AspNetCore/NuGet');
     const demosNugetPath = path.join(netCoreDemos, 'NuGet');
-    const version = require(path.join(mercurialPath, 'GitHub/artifacts/npm/devextreme/package.json')).version.split('-')[0];
 
     if(fs.existsSync(demosNugetPath)) {
-        fs.unlinkSync(demosNugetPath);
+        fs.rmdirSync(demosNugetPath, { recursive: true });
     }
 
-    fs.symlink(nugetPath, demosNugetPath, () => modifyNetCoreProject(netCoreDemos, version));
+    fs.symlink(nugetPath, demosNugetPath, 'junction', () => modifyNetCoreProject(netCoreDemos, demosNugetPath));
 };
 
 (async() => await prepareNetCoreDemos())();
