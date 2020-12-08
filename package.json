@@ -88,7 +88,7 @@
         "prepare-js": "node utils/internal/create-config.js",
         "prepare-mvc": "node utils/internal/prepare-mvc.js",
         "prepare-netcore": "node utils/internal/prepare-netcore.js",
-        "prepare-all": "npm run prepare-js:dev && npm run prepare-mvc && npm run prepare-netcore",
+        "prepare-all": "npm run prepare-js && npm run prepare-mvc && npm run prepare-netcore",
         "lint-js": "eslint .",
         "lint-react": "eslint JSDemos/Demos -c .react.eslintrc.json --ignore-path .react.eslintignore",
         "lint-vue": "eslint JSDemos/Demos -c .vue.eslintrc.json --ignore-path .vue.eslintignore --ext .vue,.js",
