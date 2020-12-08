@@ -79,6 +79,7 @@
     },
     "peerDependencies": {},
     "scripts": {
+        "test": "jest",
         "postinstall": "node utils/internal/create-config.js",
         "clean": "git clean -f -x -d",
         "add-demo": "node utils/interactive/add-demo.js",
