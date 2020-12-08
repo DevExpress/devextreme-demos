@@ -73,12 +73,14 @@
         "eslint-plugin-spellcheck": "^0.0.17",
         "eslint-plugin-vue": "^7.0.1",
         "http-server": "latest",
+        "jest": "^26.6.3",
         "npm-run-all": "^4.1.5",
         "systemjs-builder": "^0.15.34",
         "typescript": "^3.7.2"
     },
     "peerDependencies": {},
     "scripts": {
+        "test": "jest",
         "clean": "git clean -f -x -d",
         "add-demo": "node utils/interactive/add-demo.js",
         "link-repos": "node utils/interactive/link-repos.js",
