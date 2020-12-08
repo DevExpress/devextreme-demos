@@ -5,7 +5,6 @@ jest.mock('fs');
 
 describe('check fs utils', () => {
     beforeAll(() => {
-        // clear any previous calls
         fs.writeFileSync.mockClear();
     });
 
