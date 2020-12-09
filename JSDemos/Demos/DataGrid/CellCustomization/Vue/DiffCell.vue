@@ -33,7 +33,7 @@ export default {
       return gridCellData(value).diff > 0 ? 'inc' : 'dec';
     },
     formatCurrency(value) {
-      return formatNumber(gridCellData(value).value, {type: 'currency', currency: 'USD', precision: 2 });
+      return formatNumber(gridCellData(value).value, { type: 'currency', currency: 'USD', precision: 2 });
     },
     abs(value) {
       return Math.abs(gridCellData(value).diff);
