@@ -10,6 +10,7 @@ import {
   DxSize,
   DxTooltip
 } from 'devextreme-vue/sparkline';
+import { formatNumber } from 'devextreme/localization';
 
 const gridCellData = function(value) {
   return value.data[value.column.caption.toLowerCase()];
@@ -32,7 +33,7 @@ export default {
       return gridCellData(value).diff > 0 ? 'inc' : 'dec';
     },
     formatCurrency(value) {
-      return `$${gridCellData(value).value}`;
+      return formatNumber(gridCellData(value).value, {type: 'currency', currency: 'USD', precision: 2 });
     },
     abs(value) {
       return Math.abs(gridCellData(value).diff);
