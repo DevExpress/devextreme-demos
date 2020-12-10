@@ -106,9 +106,7 @@ export default {
       };
     },
 
-    customizeText(arg) {
-      return `${arg.valueText}&#176F`;
-    },
+    customizeText: (arg) => `${arg.valueText}&#176F`
   },
 };
 </script>
