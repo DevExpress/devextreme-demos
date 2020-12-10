@@ -39,25 +39,21 @@ export class AppComponent {
 
     customizeLabel = (arg: any) => {
         if (arg.value > this.highAverage) {
-            return getLabelsSettings(this.highAverageColor);
+            return this.getLabelsSettings(this.highAverageColor);
         } else if (arg.value < this.lowAverage) {
-            return getLabelsSettings(this.lowAverageColor);
+            return this.getLabelsSettings(this.lowAverageColor);
         }
     }
 
-    customizeText = customizeText
-}
-
-function getLabelsSettings(backgroundColor: any) {
-    return {
-        visible: true,
-        backgroundColor: backgroundColor,
-        customizeText: customizeText
-    };
-}
-
-function customizeText(arg: any) {
-    return arg.valueText + "&#176F";
+    getLabelsSettings = (backgroundColor: any) => {
+        return {
+            visible: true,
+            backgroundColor: backgroundColor,
+            customizeText: this.customizeText
+        };
+    }
+    
+    customizeText = (arg: any) => `${arg.valueText}&#176F`;
 }
 
 @NgModule({
