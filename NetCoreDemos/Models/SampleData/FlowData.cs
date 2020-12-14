@@ -89,16 +89,6 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
             },
             new FlowEdge() {
               FromID = 120,
-              ID = 128,
-              ToID = 120
-            },
-            new FlowEdge() {
-              FromID = 127,
-              ID = 129,
-              ToID = 127
-            },
-            new FlowEdge() {
-              FromID = 120,
               ID = 130,
               Text = "",
               ToID = 127
