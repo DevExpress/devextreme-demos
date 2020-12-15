@@ -1,1 +1,1 @@
-The **NavBar** is&nbsp;a&nbsp;widget that navigates the application views.
+The **NavBar** is&nbsp;a&nbsp;component that navigates the application views.

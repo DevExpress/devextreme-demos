@@ -1,1 +1,1 @@
-The **ProgressBar** is&nbsp;a&nbsp;widget that shows current progress.
+The **ProgressBar** is&nbsp;a&nbsp;component that shows current progress.

@@ -1,6 +1,6 @@
-Our **DataGrid** widget manages its edit state automatically. If your use case requires full control over the editing process, you can use the API members below to manage state manually. In this demo, we manage state with a help of the <a href="https://angular.io/guide/rx-library" target="_blank">RxJS</a> library.
+Our **DataGrid** component manages its edit state automatically. If your use case requires full control over the editing process, you can use the API members below to manage state manually. In this demo, we manage state with a help of the <a href="https://angular.io/guide/rx-library" target="_blank">RxJS</a> library.
 
-**Widget Options**
+**Component Options**
 
 - **editing**.[editRowKey](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/editing/#editRowKey)        
 The key for the row being edited.
@@ -34,8 +34,8 @@ Set the `e.cancel` field to **true**.
 1. **Send a request to the server**      
 Pending changes are stored in the `e.changes` array. This array has only a single element in all [edit modes](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/editing/#mode), except for batch. Check if this element is not empty and send it to the server (see the `processSaving` method in `app.component.ts` and the `saveChange` method in `app.service.ts`).
 
-1. **Apply the same changes to the widget's data source**       
-If the server successfully saves changes, call the **applyChanges** method to save the same changes in the widget's data source (see the `updateOrders` method in `app.service.ts`).
+1. **Apply the same changes to the component's data source**       
+If the server successfully saves changes, call the **applyChanges** method to save the same changes in the component's data source (see the `updateOrders` method in `app.service.ts`).
 
 1. **Reset edit state**         
 Assign **null** to the **editRowKey** and an empty array to the **changes** option (see the `processSaving` method in `app.component.ts`).
