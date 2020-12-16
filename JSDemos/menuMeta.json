@@ -1885,7 +1885,6 @@
             "Title": "Limit the Appointment Count per Cell",
             "Name": "LimitAppointmentCountPerCell",
             "Widget": "Scheduler",
-            "Modules": "globalize--vue&react",
             "MvcAdditionalFiles": [
               "/Models/SampleData/LimitAppointmentCountPerCellAppointments.cs",
               "/Models/SampleData/AdaptiveAppointmentsResources.cs"
