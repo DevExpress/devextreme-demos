@@ -1,4 +1,4 @@
-The **DropDownBox** UI component is an editor that consists of a text field and drop-down content. In this demo, the content is the **TreeView** and the **DataGrid** widgets in the single selection mode. 
+The **DropDownBox** UI component is an editor that consists of a text field and drop-down content. In this demo, the content is the **TreeView** and the **DataGrid** in the single selection mode. 
 
 The following instructions show how to synchronize the **DropDownBox** with any other embedded DevExtreme UI component:
 
