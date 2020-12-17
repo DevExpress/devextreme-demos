@@ -1,6 +1,6 @@
-The **DropDownBox** widget is an editor that consists of a text field and drop-down content. In this demo, the content is the **TreeView** and the **DataGrid** widgets in the single selection mode. 
+The **DropDownBox** UI component is an editor that consists of a text field and drop-down content. In this demo, the content is the **TreeView** and the **DataGrid** widgets in the single selection mode. 
 
-The following instructions show how to synchronize the **DropDownBox** widget with any other embedded DevExtreme widget:
+The following instructions show how to synchronize the **DropDownBox** with any other embedded DevExtreme UI component:
 
 1. **Specify data sources**    
 The **DropDownBox**'s and embedded widget's data sources can be the same or different. If they are different, the widget's key field should be present in the **DropDownBox**'s data source.        
