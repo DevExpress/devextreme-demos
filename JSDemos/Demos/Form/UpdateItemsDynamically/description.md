@@ -1,4 +1,4 @@
-The [Form](/Documentation/ApiReference/UI_Widgets/dxForm/) widget allows you to add/remove items and specify item visibility at runtime. The **Form** only updates the affected items and does not re-render the entire form.
+The [Form](/Documentation/ApiReference/UI_Widgets/dxForm/) UI component allows you to add/remove items and specify item visibility at runtime. The **Form** only updates the affected items and does not re-render the entire form.
 
 In this demo, the "Show Address" checkbox specifies the visibility of address-related fields. Review the widget's code to see how to set the "HomeAddress" group's [visible](/Documentation/ApiReference/UI_Widgets/dxForm/Item_Types/GroupItem/#visible) attribute.
 

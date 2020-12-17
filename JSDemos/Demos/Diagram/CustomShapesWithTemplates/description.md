@@ -1,4 +1,4 @@
-The **Diagram** widget provides the following options to create custom shape templates.
+The **Diagram** UI component provides the following options to create custom shape templates.
 
 * The [customShapeTemplate](/Documentation/ApiReference/UI_Widgets/dxDiagram/Configuration/#customShapeTemplate) option defines a common template for all shapes in the widget.
 * The [template](/Documentation/ApiReference/UI_Widgets/dxDiagram/Configuration/customShapes/#template) option defines a template for an individual shape. 

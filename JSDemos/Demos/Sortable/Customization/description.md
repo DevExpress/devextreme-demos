@@ -4,7 +4,7 @@ This demo illustrates some of the options that allow you to customize the [Sorta
   Specifies how to highlight the item's drop position.
 
 - [itemOrientation](/Documentation/ApiReference/UI_Widgets/dxSortable/Configuration/#itemOrientation)    
-  Notifies the widget about item layout so that it can properly re-position items or the drop indicator during drag and drop.
+  Notifies the UI component about item layout so that it can properly re-position items or the drop indicator during drag and drop.
 
 - [dragDirection](/Documentation/ApiReference/UI_Widgets/dxSortable/Configuration/#dragDirection)    
   Specifies the directions in which an item can be dragged.

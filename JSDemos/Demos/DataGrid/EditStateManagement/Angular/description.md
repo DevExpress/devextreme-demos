@@ -1,4 +1,4 @@
-Our **DataGrid** widget manages its edit state automatically. If your use case requires full control over the editing process, you can use the API members below to manage state manually. In this demo, we manage state with a help of the <a href="https://angular.io/guide/rx-library" target="_blank">RxJS</a> library.
+Our **DataGrid** UI component manages its edit state automatically. If your use case requires full control over the editing process, you can use the API members below to manage state manually. In this demo, we manage state with a help of the <a href="https://angular.io/guide/rx-library" target="_blank">RxJS</a> library.
 
 **Widget Options**
 

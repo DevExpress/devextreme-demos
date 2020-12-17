@@ -10,7 +10,7 @@ Drag the column's header to reorder the column.
 Drag the edge of the column's header to resize the column.
 
 * Widget option: [allowColumnResizing](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#allowColumnResizing)
-* Related functionality:  [columnAutoWidth](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#columnAutoWidth) - resizes widget columns to automatically fit the content
+* Related functionality:  [columnAutoWidth](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#columnAutoWidth) - resizes UI component columns to automatically fit the content
 
 **Fix (pin) columns**         
 Invoke a context menu in a column's header and specify whether to fix the column to the left or right. The fixed column remains visible when users scroll the view horizontally.
