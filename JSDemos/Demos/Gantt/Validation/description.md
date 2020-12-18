@@ -14,4 +14,4 @@ The Gantt also has the [autoUpdateParentTasks](/Documentation/ApiReference/UI_Wi
 * A parent task and its last child ends at the same time.
 * A parent task's progress is a summary progress of its child tasks.
 
-The **Gantt** processes changes in task values before they are saved to a database. The component displays a popup window with a list of available actions if an error can be handled in several ways.
+The **Gantt** processes changes in task values before they are saved to a database. The UI component displays a popup window with a list of available actions if an error can be handled in several ways.

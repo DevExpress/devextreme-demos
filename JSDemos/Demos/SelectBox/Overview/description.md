@@ -7,9 +7,9 @@ Specifies the text that is displayed when no items are selected.
 - [readOnly](/Documentation/ApiReference/UI_Widgets/dxSelectBox/Configuration/#readOnly)     
 Prevents users from changing the editor's value via the UI.
 - [disabled](/Documentation/ApiReference/UI_Widgets/dxSelectBox/Configuration/#disabled)        
-Specifies whether the component responds to user interaction.
+Specifies whether the UI component responds to user interaction.
 - [dataSource](/Documentation/ApiReference/UI_Widgets/dxSelectBox/Configuration/#dataSource)        
-Binds the component to data. Unlike the **items** option, **dataSource** accepts the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) object that allows users to sort, filter, group, and shape data.
+Binds the UI component to data. Unlike the **items** option, **dataSource** accepts the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) object that allows users to sort, filter, group, and shape data.
 - [fieldTemplate](/Documentation/ApiReference/UI_Widgets/dxSelectBox/Configuration/#fieldTemplate) and [itemTemplate](/Documentation/ApiReference/UI_Widgets/dxSelectBox/Configuration/#itemTemplate)       
 Allow you to customize the text field and drop-down list items.
 - [onValueChanged](/Documentation/ApiReference/UI_Widgets/dxSelectBox/Configuration/#onValueChanged) event handler      
