@@ -6,4 +6,4 @@ This **Sortable** allows users to reorder card lists. It nests `<div>` elements 
 - `sortable-cards`         
 This **Sortable** allows users to reorder cards. It nests `<div>` elements that represent all cards in a specific list. All **Sortable**s are added to the same [group](/Documentation/ApiReference/UI_Widgets/dxSortable/Configuration/#group) to allow users to move cards between lists.
 
-In addition to **Sortable**, this kanban board implementation uses the [ScrollView](/Demos/WidgetsGallery/Demo/ScrollView/Overview/) widget. The widget's instance with the `scrollable-board` class allows you to scroll the board left to right. The widget's instance with the `scrollable-list` class makes lists scrollable.
+In addition to **Sortable**, this kanban board implementation uses the [ScrollView](/Demos/WidgetsGallery/Demo/ScrollView/Overview/) UI component. The UI component's instance with the `scrollable-board` class allows you to scroll the board left to right. The UI component's instance with the `scrollable-list` class makes lists scrollable.

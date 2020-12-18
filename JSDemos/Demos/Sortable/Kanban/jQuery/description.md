@@ -6,4 +6,4 @@ In this function, **Sortable** allows users to reorder card lists. It is attache
 - `renderCards`         
 In this function, **Sortable** allows users to reorder cards. It is attached to the `$items` element (a container for all cards in a specific list). All **Sortable**s are added to the same [group](/Documentation/ApiReference/UI_Widgets/dxSortable/Configuration/#group) to allow users to move cards between lists.
 
-In addition to **Sortable**, this kanban board implementation uses the [ScrollView](/Demos/WidgetsGallery/Demo/ScrollView/Overview/) widget. The widget's instance in the `renderKanban` function allows you to scroll the board left to right. The widget's instance in the `renderCards` function makes lists scrollable.
+In addition to **Sortable**, this kanban board implementation uses the [ScrollView](/Demos/WidgetsGallery/Demo/ScrollView/Overview/) UI component. The UI component's instance in the `renderKanban` function allows you to scroll the board left to right. The UI component's instance in the `renderCards` function makes lists scrollable.

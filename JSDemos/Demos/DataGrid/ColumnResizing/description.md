@@ -2,6 +2,6 @@ Users can resize **DataGrid** columns if the [allowColumnResizing](/Documentatio
 
 * *"nextColumn"*: the UI component resizes its adjacent column; total component width stays the same.
 
-* *"widget"*: the UI component size increases or decreases; all other columns maintain their widths.
+* *"UI component"*: the UI component size increases or decreases; all other columns maintain their widths.
 
 Use the drop-down list below the **DataGrid** to try both values.

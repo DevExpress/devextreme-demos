@@ -1,4 +1,4 @@
-The **Diagram** can adapt its layout to narrow screens. In this demo, the widget's **Height** property is set to 100% to fit a screen.
+The **Diagram** can adapt its layout to narrow screens. In this demo, the UI component's **Height** property is set to 100% to fit a screen.
 
 Note the following changes to the toolbox and properties panel:
 
