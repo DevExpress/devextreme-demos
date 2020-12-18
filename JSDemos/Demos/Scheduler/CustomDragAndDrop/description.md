@@ -4,7 +4,7 @@ Appointment drag and drop is enabled out-of-the-box, but only if appointments ar
 In the [appointmentDragging][0] object, implement the [onAdd][2] function (in which you should [add an appointment][1]) and the [onRemove][4] function (in which you should [delete an appointment][3] and create a corresponding list item).
 
 2. **Configure list items**      
-Attach an instance of the [Draggable][5] widget to every list item. The widget has the [data][6] option that can contain custom data. In this demo, it is an appointment's subject. Implement the [onDragStart][7] function in which you should pass the subject to the **Scheduler** where it is used to add new appointments.
+Attach an instance of the [Draggable][5] UI component to every list item. The UI component has the [data][6] option that can contain custom data. In this demo, it is an appointment's subject. Implement the [onDragStart][7] function in which you should pass the subject to the **Scheduler** where it is used to add new appointments.
 
 3. **Configure the list**        
 Attach another **Draggable** instance to the list which only serves as the drop target. Implement the **onDragStart** function to ensure the list cannot be dragged.
