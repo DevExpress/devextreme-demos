@@ -146,7 +146,7 @@ export default {
         }
         if(shapeType === 'team') {
           if(e.args.connectorPosition === 'end' && e.args.newShape.attachedConnectorIds.length > 1) {
-            for(var i = 0; i < e.args.newShape.attachedConnectorIds.length; i++) {
+            for(i = 0; i < e.args.newShape.attachedConnectorIds.length; i++) {
               if(e.args.connector && e.args.newShape.attachedConnectorIds[i] != e.args.connector.id) {
                 var connector = diagram.getItemById(e.args.newShape.attachedConnectorIds[i]);
                 if(connector.toId === e.args.newShape.id) {
