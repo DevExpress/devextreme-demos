@@ -89,8 +89,9 @@ export default {
         var connector = diagram.getItemById(shapeToTest.attachedConnectorIds[i]);
         if(connector.fromId === shapeToTest.id && connector.toId) {
           var childShape = diagram.getItemById(connector.toId);
-          if(childShape.id === shape.id || this.isParent(childShape, shape))
+          if(childShape.id === shape.id || this.isParent(childShape, shape)){
             return true;
+          }
         }
       }
       return false;
@@ -108,22 +109,25 @@ export default {
       var diagram = this.$refs['diagram'].instance;
       if(e.operation === 'addShape') {
         if(e.args.shape.type !== 'employee' && e.args.shape.type !== 'team') {
-          if(e.reason !== 'checkUIElementAvailability')
+          if(e.reason !== 'checkUIElementAvailability') {
             this.showToast('You can add only a \'Team\' or \'Employee\' shape.');
+          }
           e.allowed = false;
         }
       }
       else if(e.operation === 'deleteShape') {
         if(e.args.shape.type === 'root') {
-          if(e.reason !== 'checkUIElementAvailability')
+          if(e.reason !== 'checkUIElementAvailability') {
             this.showToast('You cannot delete the \'Development\' shape.');
+          }
           e.allowed = false;
         }
         if(e.args.shape.type === 'team') {
           for(var i = 0; i < e.args.shape.attachedConnectorIds.length; i++) {
             if(diagram.getItemById(e.args.shape.attachedConnectorIds[i]).toId != e.args.shape.id) {
-              if(e.reason !== 'checkUIElementAvailability')
+              if(e.reason !== 'checkUIElementAvailability') {
                 this.showToast('You cannot delete a \'Team\' shape that has a child shape.');
+              }
               e.allowed = false;
               break;
             }
@@ -132,16 +136,18 @@ export default {
       }
       else if(e.operation === 'resizeShape') {
         if(e.args.newSize.width < 1 || e.args.newSize.height < 0.75) {
-          if(e.reason !== 'checkUIElementAvailability')
+          if(e.reason !== 'checkUIElementAvailability') {
             this.showToast('The shape size is too small.');
+          }
           e.allowed = false;
         }
       }
       else if(e.operation === 'changeConnection') {
         var shapeType = e.args.newShape && e.args.newShape.type;
         if(shapeType === 'root' && e.args.connectorPosition === 'end') {
-          if(e.reason !== 'checkUIElementAvailability')
+          if(e.reason !== 'checkUIElementAvailability') {
             this.showToast('The \'Development\' shape cannot have an incoming connection.');
+          }
           e.allowed = false;
         }
         if(shapeType === 'team') {
@@ -150,8 +156,9 @@ export default {
               if(e.args.connector && e.args.newShape.attachedConnectorIds[i] != e.args.connector.id) {
                 var connector = diagram.getItemById(e.args.newShape.attachedConnectorIds[i]);
                 if(connector.toId === e.args.newShape.id) {
-                  if(e.reason !== 'checkUIElementAvailability')
+                  if(e.reason !== 'checkUIElementAvailability') {
                     this.showToast('A \'Team\' shape can have only one incoming connection.');
+                  }
                   e.allowed = false;
                   break;
                 }
@@ -162,8 +169,9 @@ export default {
             var shapeFrom = diagram.getItemById(e.args.connector.fromId);
             var shapeTo = diagram.getItemById(e.args.connector.toId);
             if(this.isParent(shapeTo, shapeFrom)) {
-              if(e.reason !== 'checkUIElementAvailability')
+              if(e.reason !== 'checkUIElementAvailability') {
                 this.showToast('A circular reference is not allowed.');
+              }
               e.allowed = false;
             }
           }
@@ -173,30 +181,34 @@ export default {
             e.allowed = false;
 
           if(e.args.connectorPosition === 'end' && e.args.newShape.attachedConnectorIds.length > 1) {
-            if(e.reason !== 'checkUIElementAvailability')
+            if(e.reason !== 'checkUIElementAvailability') {
               this.showToast('An \'Employee\' shape can have only one incoming connection.');
+            }
             e.allowed = false;
           }
         }
       }
       else if(e.operation === 'changeConnectorPoints') {
         if(e.args.newPoints.length > 2) {
-          if(e.reason !== 'checkUIElementAvailability')
+          if(e.reason !== 'checkUIElementAvailability') {
             this.showToast('You cannot add points to a connector.');
+          }
           e.allowed = false;
         }
       }
       else if(e.operation === 'beforeChangeShapeText') {
         if(e.args.shape.type === 'root') {
-          if(e.reason !== 'checkUIElementAvailability')
+          if(e.reason !== 'checkUIElementAvailability') {
             this.showToast('You cannot change the \'Development\' shape\'s text.');
+          }
           e.allowed = false;
         }
       }
       else if(e.operation === 'changeShapeText') {
         if(e.args.text === '') {
-          if(e.reason !== 'checkUIElementAvailability')
+          if(e.reason !== 'checkUIElementAvailability') {
             this.showToast('A shape text cannot be empty.');
+          }
           e.allowed = false;
         }
       }
