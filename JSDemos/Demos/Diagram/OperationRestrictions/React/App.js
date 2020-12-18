@@ -55,7 +55,7 @@ class App extends React.Component {
       var connector = diagram.getItemById(shapeToTest.attachedConnectorIds[i]);
       if(connector.fromId === shapeToTest.id && connector.toId) {
         var childShape = diagram.getItemById(connector.toId);
-        if(childShape.id === shape.id || this.isParent(childShape, shape)){
+        if(childShape.id === shape.id || this.isParent(childShape, shape)) {
           return true;
         }
       }
@@ -143,8 +143,9 @@ class App extends React.Component {
         }
       }
       if(shapeType === 'employee') {
-        if(e.args.connectorPosition === 'start')
+        if(e.args.connectorPosition === 'start') {
           e.allowed = false;
+        }
 
         if(e.args.connectorPosition === 'end' && e.args.newShape.attachedConnectorIds.length > 1) {
           if(e.reason !== 'checkUIElementAvailability') {
