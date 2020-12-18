@@ -197,6 +197,7 @@ module.exports = {
                     'sclass', // CSSClass
                     'scrollable',
                     'scrollbar',
+                    'sep',
                     'setted',
                     'skype',
                     'smp',
