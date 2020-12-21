@@ -107,6 +107,7 @@ export default {
     },
     onRequestEditOperation(e) {
       var diagram = this.$refs['diagram'].instance;
+      var i;
       if(e.operation === 'addShape') {
         if(e.args.shape.type !== 'employee' && e.args.shape.type !== 'team') {
           if(e.reason !== 'checkUIElementAvailability') {
@@ -123,7 +124,7 @@ export default {
           e.allowed = false;
         }
         if(e.args.shape.type === 'team') {
-          for(var i = 0; i < e.args.shape.attachedConnectorIds.length; i++) {
+          for(i = 0; i < e.args.shape.attachedConnectorIds.length; i++) {
             if(diagram.getItemById(e.args.shape.attachedConnectorIds[i]).toId != e.args.shape.id) {
               if(e.reason !== 'checkUIElementAvailability') {
                 this.showToast('You cannot delete a \'Team\' shape that has a child shape.');
