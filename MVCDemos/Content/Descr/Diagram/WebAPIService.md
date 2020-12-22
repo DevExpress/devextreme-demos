@@ -1,1 +1,1 @@
-This example demonstrates the **Diagram** widget communicating with a Web API service. 
+This example demonstrates the **Diagram** UI component communicating with a Web API service. 
