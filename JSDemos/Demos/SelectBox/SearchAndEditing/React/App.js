@@ -6,6 +6,7 @@ import DataSource from 'devextreme/data/data_source';
 
 import { simpleProducts, products } from './data.js';
 
+const searchModeItems = ['contains', 'startswith'];
 const searchExprItems = [{
   name: "'Name'",
   value: 'Name'
@@ -128,7 +129,7 @@ class App extends React.Component {
           <div className="caption">SearchBox Options</div>
           <div className="option">
             <div>Search Mode</div>
-            <SelectBox items={['contains', 'startswith']}
+            <SelectBox items={searchModeItems}
               value={searchModeOption}
               onValueChanged={this.searchModeOptionChanged} />
           </div>
