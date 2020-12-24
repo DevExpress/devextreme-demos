@@ -34,8 +34,8 @@ class App extends React.Component {
       showDataBeforeSearchOption: false
 
     };
-    this.editBoxValueChanged = ({ value }) => {
-      this.setState({ editBoxValue: value });
+    this.editBoxValueChanged = ({ component }) => {
+      this.setState({ editBoxValue: component.option("selectedItem") });
     };
     this.searchModeOptionChanged = ({ value }) => {
       this.setState({ searchModeOption: value });
@@ -55,12 +55,12 @@ class App extends React.Component {
   }
 
   customItemCreating(args) {
-    if(!args.text) {
+    if (!args.text) {
       args.customItem = null;
       return;
     }
 
-    const productIds = simpleProducts.map(function(item) {
+    const productIds = simpleProducts.map(function (item) {
       return item.ID;
     });
     const incrementedId = Math.max.apply(null, productIds) + 1;
@@ -69,12 +69,18 @@ class App extends React.Component {
       ID: incrementedId
     };
 
-    productsDataSource.store().insert(newItem);
-    productsDataSource.load();
-    args.customItem = newItem;
+    args.customItem = productsDataSource.store().insert(newItem)
+      .then(() => productsDataSource.load())
+      .then(() => {
+        return newItem;
+      })
+      .catch((error) => {
+        throw error;
+      });
   }
 
   render() {
+    let { editBoxValue, searchModeOption, searchExprOption, minSearchLengthOption, showDataBeforeSearchOption, searchTimeoutOption } = this.state;
     return (
       <div id="selectbox-demo">
         <div className="widget-container">
@@ -86,11 +92,11 @@ class App extends React.Component {
                 <SelectBox dataSource={products}
                   displayExpr="Name"
                   searchEnabled={true}
-                  searchMode={this.state.searchModeOption}
-                  searchExpr={this.state.searchExprOption}
-                  searchTimeout={this.state.searchTimeoutOption}
-                  minSearchLength={this.state.minSearchLengthOption}
-                  showDataBeforeSearch={this.state.showDataBeforeSearchOption} />
+                  searchMode={searchModeOption}
+                  searchExpr={searchExprOption}
+                  searchTimeout={searchTimeoutOption}
+                  minSearchLength={minSearchLengthOption}
+                  showDataBeforeSearch={showDataBeforeSearchOption} />
               </div>
             </div>
           </div>
@@ -101,16 +107,17 @@ class App extends React.Component {
               <div className="dx-field-value">
                 <SelectBox dataSource={productsDataSource}
                   displayExpr="Name"
+                  valueExpr="ID"
                   acceptCustomValue={true}
-                  defaultValue={this.state.editBoxValue}
+                  defaultValue={simpleProducts[0].ID}
                   onCustomItemCreating={this.customItemCreating}
                   onValueChanged={this.editBoxValueChanged} />
               </div>
             </div>
             <div className="dx-field current-product">
               Current product: <span className="current-value">
-                {this.state.editBoxValue ?
-                  `${this.state.editBoxValue.Name} (ID: ${this.state.editBoxValue.ID})` :
+                {editBoxValue ?
+                  `${editBoxValue.Name} (ID: ${editBoxValue.ID})` :
                   'Not selected'}
               </span>
             </div>
@@ -122,7 +129,7 @@ class App extends React.Component {
           <div className="option">
             <div>Search Mode</div>
             <SelectBox items={['contains', 'startswith']}
-              defaultValue={this.state.searchModeOption}
+              value={searchModeOption}
               onValueChanged={this.searchModeOptionChanged} />
           </div>
           <div className="option">
@@ -130,7 +137,7 @@ class App extends React.Component {
             <SelectBox items={searchExprItems}
               displayExpr="name"
               valueExpr="value"
-              defaultValue={this.state.searchExprOption}
+              value={searchExprOption}
               onValueChanged={this.searchExprOptionChanged} />
           </div>
           <div className="option">
@@ -139,7 +146,7 @@ class App extends React.Component {
               max={5000}
               showSpinButtons={true}
               step={100}
-              defaultValue={this.state.searchTimeoutOption}
+              value={searchTimeoutOption}
               onValueChanged={this.searchTimeoutOptionChanged} />
           </div>
           <div className="option">
@@ -147,12 +154,12 @@ class App extends React.Component {
             <NumberBox min={0}
               max={5}
               showSpinButtons={true}
-              defaultValue={this.state.minSearchLengthOption}
+              value={minSearchLengthOption}
               onValueChanged={this.minSearchLengthOptionChanged} />
           </div>
           <div className="option">
             <CheckBox text="Show Data Before Search"
-              defaultValue={this.state.showDataBeforeSearchOption}
+              value={showDataBeforeSearchOption}
               onValueChanged={this.showDataBeforeSearchOptionChanged} />
           </div>
         </div>
