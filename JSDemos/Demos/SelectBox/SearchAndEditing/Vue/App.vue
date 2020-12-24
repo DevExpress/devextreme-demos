@@ -38,10 +38,16 @@
         </div>
         <div class="dx-field current-product">
           Current product:
-          <span v-if="editBoxValue" class="current-value">
+          <span
+            v-if="editBoxValue"
+            class="current-value"
+          >
             {{ editBoxValue.Name }} (ID: {{ editBoxValue.ID }})
           </span>
-          <span v-else class="current-value"> Not selected </span>
+          <span
+            v-else
+            class="current-value"
+          > Not selected </span>
         </div>
       </div>
     </div>
@@ -92,17 +98,17 @@
   </div>
 </template>
 <script>
-import { DxSelectBox } from "devextreme-vue/select-box";
-import { DxNumberBox } from "devextreme-vue/number-box";
-import { DxCheckBox } from "devextreme-vue/check-box";
-import DataSource from "devextreme/data/data_source";
+import { DxSelectBox } from 'devextreme-vue/select-box';
+import { DxNumberBox } from 'devextreme-vue/number-box';
+import { DxCheckBox } from 'devextreme-vue/check-box';
+import DataSource from 'devextreme/data/data_source';
 
-import { products, simpleProducts } from "./data.js";
+import { products, simpleProducts } from './data.js';
 const productsDataSource = new DataSource({
   store: {
     data: simpleProducts,
-    type: "array",
-    key: "ID",
+    type: 'array',
+    key: 'ID',
   },
 });
 
@@ -118,19 +124,19 @@ export default {
       productsDataSource,
       editBoxValue: simpleProducts[0],
       product: simpleProducts[0].ID,
-      searchModeOption: "contains",
-      searchExprOption: "Name",
+      searchModeOption: 'contains',
+      searchExprOption: 'Name',
       searchTimeoutOption: 200,
       minSearchLengthOption: 0,
       showDataBeforeSearchOption: false,
       searchExprItems: [
         {
           name: "'Name'",
-          value: "Name",
+          value: 'Name',
         },
         {
           name: "['Name', 'Category']",
-          value: ["Name", "Category"],
+          value: ['Name', 'Category'],
         },
       ],
     };
@@ -142,7 +148,7 @@ export default {
         return;
       }
 
-      const productIds = simpleProducts.map(function (item) {
+      const productIds = simpleProducts.map(function(item) {
         return item.ID;
       });
       const incrementedId = Math.max.apply(null, productIds) + 1;

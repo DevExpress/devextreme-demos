@@ -35,7 +35,7 @@ class App extends React.Component {
 
     };
     this.editBoxValueChanged = ({ component }) => {
-      this.setState({ editBoxValue: component.option("selectedItem") });
+      this.setState({ editBoxValue: component.option('selectedItem') });
     };
     this.searchModeOptionChanged = ({ value }) => {
       this.setState({ searchModeOption: value });
@@ -60,7 +60,7 @@ class App extends React.Component {
       return;
     }
 
-    const productIds = simpleProducts.map(function (item) {
+    const productIds = simpleProducts.map(function(item) {
       return item.ID;
     });
     const incrementedId = Math.max.apply(null, productIds) + 1;
