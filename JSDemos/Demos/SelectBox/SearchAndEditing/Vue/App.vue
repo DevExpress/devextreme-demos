@@ -15,6 +15,7 @@
               :min-search-length="minSearchLengthOption"
               :show-data-before-search="showDataBeforeSearchOption"
               display-expr="Name"
+              value-expr="ID"
             />
           </div>
         </div>
@@ -25,28 +26,22 @@
           <div class="dx-field-label">Product</div>
           <div class="dx-field-value">
             <DxSelectBox
-              v-model:value="editBoxValue"
+              v-model:selectedItem="editBoxValue"
+              :value="product"
               :accept-custom-value="true"
               :data-source="productsDataSource"
               display-expr="Name"
+              value-expr="ID"
               @customItemCreating="customItemCreating($event)"
             />
           </div>
         </div>
         <div class="dx-field current-product">
           Current product:
-          <span
-            v-if="editBoxValue"
-            class="current-value"
-          >
+          <span v-if="editBoxValue" class="current-value">
             {{ editBoxValue.Name }} (ID: {{ editBoxValue.ID }})
           </span>
-          <span
-            v-else
-            class="current-value"
-          >
-            Not selected
-          </span>
+          <span v-else class="current-value"> Not selected </span>
         </div>
       </div>
     </div>
@@ -97,97 +92,108 @@
   </div>
 </template>
 <script>
-import { DxSelectBox } from 'devextreme-vue/select-box';
-import { DxNumberBox } from 'devextreme-vue/number-box';
-import { DxCheckBox } from 'devextreme-vue/check-box';
-import DataSource from 'devextreme/data/data_source';
+import { DxSelectBox } from "devextreme-vue/select-box";
+import { DxNumberBox } from "devextreme-vue/number-box";
+import { DxCheckBox } from "devextreme-vue/check-box";
+import DataSource from "devextreme/data/data_source";
 
-import { products, simpleProducts } from './data.js';
+import { products, simpleProducts } from "./data.js";
 const productsDataSource = new DataSource({
   store: {
     data: simpleProducts,
-    type: 'array',
-    key: 'ID'
-  }
+    type: "array",
+    key: "ID",
+  },
 });
 
 export default {
   components: {
     DxSelectBox,
     DxNumberBox,
-    DxCheckBox
+    DxCheckBox,
   },
   data() {
     return {
       products,
       productsDataSource,
       editBoxValue: simpleProducts[0],
-      searchModeOption: 'contains',
-      searchExprOption: 'Name',
+      product: simpleProducts[0].ID,
+      searchModeOption: "contains",
+      searchExprOption: "Name",
       searchTimeoutOption: 200,
       minSearchLengthOption: 0,
       showDataBeforeSearchOption: false,
-      searchExprItems: [{
-        name: "'Name'",
-        value: 'Name'
-      }, {
-        name: "['Name', 'Category']",
-        value: ['Name', 'Category']
-      }]
+      searchExprItems: [
+        {
+          name: "'Name'",
+          value: "Name",
+        },
+        {
+          name: "['Name', 'Category']",
+          value: ["Name", "Category"],
+        },
+      ],
     };
   },
   methods: {
     customItemCreating(data) {
-      if(!data.text) {
+      if (!data.text) {
         data.customItem = null;
         return;
       }
 
-      const productIds = simpleProducts.map(function(item) {
+      const productIds = simpleProducts.map(function (item) {
         return item.ID;
       });
       const incrementedId = Math.max.apply(null, productIds) + 1;
       const newItem = {
         Name: data.text,
-        ID: incrementedId
+        ID: incrementedId,
       };
 
-      productsDataSource.store().insert(newItem);
-      productsDataSource.load();
-      data.customItem = newItem;
-    }
-  }
+      data.customItem = productsDataSource
+        .store()
+        .insert(newItem)
+        .then(() => productsDataSource.load())
+        .then(() => {
+          return newItem;
+        })
+        .catch((error) => {
+          throw error;
+        });
+    },
+  },
 };
 </script>
 <style scoped>
-    .widget-container {
-        margin-right: 320px;
-    }
+.widget-container {
+  margin-right: 320px;
+}
 
-    .current-product {
-        padding-top: 11px;
-    }
+.current-product {
+  padding-top: 11px;
+}
 
-    .current-value {
-        font-weight: bold;
-    }
+.current-value {
+  font-weight: bold;
+}
 
-    .options {
-        padding: 20px;
-        background-color: rgba(191, 191, 191, 0.15);
-        position: absolute;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        width: 260px;
-    }
+.options {
+  padding: 20px;
+  background-color: rgba(191, 191, 191, 0.15);
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 260px;
+}
 
-    .caption {
-        font-weight: 500;
-        font-size: 18px;
-    }
+.caption {
+  font-weight: 500;
+  font-size: 18px;
+}
 
-    .option {
-        margin-top: 10px;
-    }
+.option {
+  margin-top: 10px;
+}
 </style>
