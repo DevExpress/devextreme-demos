@@ -90,12 +90,8 @@
                 onValueChanged: function(args) {
                     movie = getMovieById(args.value);
 
-                    form.getEditor("Director")
-                        .option("value", movie.Director);
-
-                    form.getEditor("EndDate")
-                        .option("value", new Date(startDate.getTime() +
-                            60 * 1000 * movie.Duration));
+                    form.updateData("director", movie.Director);
+                    form.updateData("endDate", new Date(startDate.getTime() + 60 * 1000 * movie.Duration));
                 }
             },
         }, {
@@ -116,9 +112,8 @@
                 type: "datetime",
                 onValueChanged: function(args) {
                     startDate = args.value;
-                    form.getEditor("EndDate")
-                        .option("value", new Date(startDate.getTime() +
-                            60 * 1000 * movie.Duration));
+
+                    form.updateData("endDate", new Date(startDate.getTime() + 60 * 1000 * movie.Duration));
                 }
             }
         }, {
