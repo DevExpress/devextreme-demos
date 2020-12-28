@@ -1,19 +1,19 @@
 The [TextBox](/Documentation/ApiReference/UI_Widgets/dxTextBox/) is a UI component that allows users to enter and edit a single line of text. This demo illustrates the following  **TextBox** options:
 
 - [value](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#value) 
-Specifies a value the **TextBox** displays.
+A value the **TextBox** displays.
 - [placeholder](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#placeholder)       
-Displays a default text in the **TextBox** if its value is not defined.
+A default text in the **TextBox**, displayed when its value is not defined.
 - [showClearButton](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#showClearButton)        
 Determines whether the Clear button is displayed. The button is used to clear the **TextBox** value.
 - [mode (password in this demo)](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#mode)        
 This property affects a set of characters displayed on a mobile device's keyboard and adds certain visual features to the UI component. In this example, characters are obscured so that the password cannot be read.
 - [mask](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#mask)        
-Defines a custom format for the entered string.
+A custom format for the entered string.
 - [maskRules](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#maskRules)        
 Use this parameter to customize mask rules.
 - [disabled](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#disabled)        
-This parameter is used to determine whether the UI component responds to user interaction.
+Specifies whether the TextBox responds to user interaction.
 - [onValueChanged](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#onValueChanged) event handler      
 Use this function to perform an action when a user chooses a new value. In this demo, this function is used to display the selected value.
 - [valueChangeEvent](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#valueChangeEvent) 
