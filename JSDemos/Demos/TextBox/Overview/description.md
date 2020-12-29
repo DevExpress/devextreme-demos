@@ -15,7 +15,7 @@ Custom mask rules.
 - [disabled](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#disabled)        
 Specifies whether the TextBox responds to user interaction.
 - [onValueChanged](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#onValueChanged) event handler      
-Use this function to perform an action when a user chooses a new value. In this demo, this function is used to display the selected value.
+Use this function to perform an action when a user enters a new value. In this demo, this function uses the entered value to combine a dummy email address and assigns it a **value** to another **TextBox**.
 - [valueChangeEvent](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#valueChangeEvent) 
 One or several DOM events that trigger the **onValueChanged** event handler.
 - [readOnly](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#readOnly)     
