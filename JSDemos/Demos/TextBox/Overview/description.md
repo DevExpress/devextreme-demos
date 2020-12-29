@@ -3,7 +3,7 @@ The [TextBox](/Documentation/ApiReference/UI_Widgets/dxTextBox/) is a UI compone
 - [value](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#value) 
 A value the **TextBox** displays.
 - [placeholder](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#placeholder)       
-A default text in the **TextBox**, displayed when its value is not defined.
+A text that the **TextBox** displays when the **value** is not defined.
 - [showClearButton](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#showClearButton)        
 Determines whether the Clear button is displayed. The button is used to clear the **TextBox** value.
 - [mode (password in this demo)](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#mode)        
