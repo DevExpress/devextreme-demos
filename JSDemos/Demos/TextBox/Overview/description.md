@@ -1,6 +1,6 @@
 The [TextBox](/Documentation/ApiReference/UI_Widgets/dxTextBox/) is a UI component that allows users to enter and edit a single line of text. This demo illustrates the following  **TextBox** options:
 
-- [value](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#value) 
+- [value](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#value)     
 A value the **TextBox** displays.
 
 - [placeholder](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#placeholder)       
