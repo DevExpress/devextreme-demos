@@ -6,7 +6,7 @@ A value the **TextBox** displays.
 A text that the **TextBox** displays when the **value** is not defined.
 - [showClearButton](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#showClearButton)        
 Specifies whether to display the button that clears the **TextBox** **value**.
-- [mode (password in this demo)](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#mode)        
+- [mode](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#mode)        
 Affects a set of keyboard characters displayed on a mobile device when the **TextBox** gets focus and adds specific visual features to the UI component. In this example, the **mode** is set to *"password"* so that entered characters are obscured, and the password cannot be read.
 - [mask](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#mask)        
 A mask that specifies a custom format for the entered string.
