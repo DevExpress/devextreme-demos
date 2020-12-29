@@ -17,7 +17,7 @@ Specifies whether the TextBox responds to user interaction.
 - [onValueChanged](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#onValueChanged) event handler      
 Use this function to perform an action when a user chooses a new value. In this demo, this function is used to display the selected value.
 - [valueChangeEvent](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#valueChangeEvent) 
-Use this parameter to declare DOM events that trigger an update of the UI component's value.
+One or several DOM events that trigger the **onValueChanged** event handler.
 - [readOnly](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#readOnly)     
 Prevents users from changing the editor's value via the UI.
 - [hoverStateEnabled](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#hoverStateEnabled)        
