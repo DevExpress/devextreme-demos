@@ -5,7 +5,7 @@ A value the **TextBox** displays.
 - [placeholder](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#placeholder)       
 A text that the **TextBox** displays when the **value** is not defined.
 - [showClearButton](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#showClearButton)        
-Determines whether the Clear button is displayed. The button is used to clear the **TextBox** value.
+Specifies whether to display the button that clears the **TextBox** **value**.
 - [mode (password in this demo)](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#mode)        
 This property affects a set of characters displayed on a mobile device's keyboard and adds certain visual features to the UI component. In this example, characters are obscured so that the password cannot be read.
 - [mask](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#mask)        
