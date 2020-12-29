@@ -1,4 +1,4 @@
-The [TextBox](/Documentation/ApiReference/UI_Widgets/dxTextBox/) is a UI component that allows users to enter and edit a single line of text. This demo illustrates the following  **TextBox** options:
+The [TextBox](/Documentation/ApiReference/UI_Widgets/dxTextBox/) is a UI component that allows users to enter and edit a single line of text. This demo illustrates the following  **TextBox** properties:
 
 - [value](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#value)     
 A value the **TextBox** displays.
@@ -31,4 +31,4 @@ One or several DOM events that trigger the **onValueChanged** event handler.
 Prevents users from changing the editor's value.
 
 - [hoverStateEnabled](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#hoverStateEnabled)        
-Specifies whether the **TextBox** responses when users long press or hover the mouse pointer over it.
+Specifies whether the **TextBox** responds when users long press or hover the mouse pointer over it.
