@@ -38,10 +38,11 @@
                                 .InsertAction("Insert")
                             )
                             .DisplayExpr("Name")
+                            .ValueExpr("ID")
                             .AcceptCustomValue(true)
                             .OnValueChanged("selectBox_valueChanged")
                             .OnCustomItemCreating("selectBox_customItemCreating")
-                            .Value(new JS("initialEditBoxValue"))
+                            .Value(0)
                         )
                     </div>
                 </div>
@@ -115,16 +116,12 @@
         value: ['Name', 'Category']
         }];
 
-    var initialEditBoxValue = {
-        Name: "HD Video Player",
-        ID: 0
-    }
-
     function selectBox_valueChanged(data) {
         var $result = $(".current-value");
 
-        if(data.value) {
-            $result.text(data.value.Name + " (ID: " + data.value.ID + ")");
+        if (data.value !== null) {
+            var selectedItem = data.component.option('selectedItem');
+            $result.text(selectedItem.Name + " (ID: " + selectedItem.ID + ")");
         } else {
             $result.text("Not selected");
         }
