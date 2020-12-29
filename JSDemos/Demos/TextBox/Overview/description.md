@@ -19,6 +19,6 @@ Use this function to perform an action when a user chooses a new value. In this 
 - [valueChangeEvent](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#valueChangeEvent) 
 One or several DOM events that trigger the **onValueChanged** event handler.
 - [readOnly](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#readOnly)     
-Prevents users from changing the editor's value via the UI.
+Prevents users from changing the editor's value.
 - [hoverStateEnabled](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#hoverStateEnabled)        
 Allows users to enable or disable **TextBox** state change on hover.
