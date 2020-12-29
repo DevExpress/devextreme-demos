@@ -11,7 +11,7 @@ Affects a set of keyboard characters displayed on a mobile device when the **Tex
 - [mask](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#mask)        
 A mask that specifies a custom format for the entered string.
 - [maskRules](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#maskRules)        
-Use this parameter to customize mask rules.
+Custom mask rules.
 - [disabled](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#disabled)        
 Specifies whether the TextBox responds to user interaction.
 - [onValueChanged](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#onValueChanged) event handler      
