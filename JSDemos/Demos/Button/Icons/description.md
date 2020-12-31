@@ -1,10 +1,10 @@
-To add an icon to **Button**, pass its name as a value to the UI component's **icon** property. This demo covers the following use cases:   
+To add an icon to **Button** use the UI component's **icon** property. This demo covers the following use cases:   
 
 - **Built-in icons**    
 Make use of the built-in DevExtreme icon [library](/Documentation/Guide/Themes_and_Styles/Icons/) by assigning the relevant icon name to the **icon** property.    
 
 - **Image icons**    
-Pass a path to the image to the UI component's **icon** property.    
+Pass the image file path or URI to the UI component's **icon** property.    
 
 - **External icon**   
 You may choose to import an external font library. In this case, refer to its documentation for proper icon names. This example makes use of [Fontawesome](https://fontawesome.com/icons?d=gallery), therefore the icon names provided herein are specific to this library.    
