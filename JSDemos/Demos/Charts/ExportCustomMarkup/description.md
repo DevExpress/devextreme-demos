@@ -1,4 +1,4 @@
-The [DevExpress.viz.exportFromMarkup(markup, options)](/Documentation/ApiReference/Common/utils/viz/Methods/#exportFromMarkupmarkup_options) method allows you to export SVG content, including [SVG-based DevExtreme widgets](/Documentation/Guide/Themes_and_Styles/HTML-_and_SVG-Based_Widgets/), to an image or document.
+The [DevExpress.viz.exportFromMarkup(markup, options)](/Documentation/ApiReference/Common/utils/viz/Methods/#exportFromMarkupmarkup_options) method allows you to export SVG content, including [SVG-based DevExtreme UI components](/Documentation/Guide/Themes_and_Styles/HTML-_and_SVG-Based_Widgets/), to an image or document.
  
 The **markup** parameter accepts valid SVG markup (see the `prepareMarkup()` function in the code). To get the markup of a UI component,
 call its [svg()](/Documentation/ApiReference/Data_Visualization_Widgets/dxChart/Methods/#svg) method.
