@@ -1,12 +1,14 @@
-There are several ways to format the value of **DateBox**, including [Intl](/Documentation/Guide/Common/Localization/#Localize_Dates_Numbers_and_Currencies/Using_Intl). This demo illustrates the following formatting cases:
+To customize the **DateBox** format, use the **displayFormat** property. This demo illustrates the following use cases of this property:
 - **Locale-dependent format**     
-Set [type](/Documentation/ApiReference/UI_Widgets/dxDateBox/Configuration/#type) property of the **DateBox** to the relevant value.    
+This is the default formatting behavior dependent on the User's [locale](/Documentation/Guide/Common/Localization/#Localize_Dates_Numbers_and_Currencies).    
 
 - **Built-in predefined format**    
-In addition to defining the **type** property as specified above, the value of [displayFormat](/Documentation/ApiReference/UI_Widgets/dxDateBox/Configuration/#displayFormat) property must be configured to correspond with the respective **type** property of [format](https://js.devexpress.com/Documentation/ApiReference/Common/Object_Structures/format/#type) object structure.    
+DevExtreme supports predefined [formats](https://js.devexpress.com/Documentation/ApiReference/Common/Object_Structures/format/#type). Set the **displayFormat** property to the respective format.    
 
 - **LDML pattern**    
-Pass a custom format string that specifies the format to **displayFormat** property using [LDML](/Documentation/Guide/Common/Value_Formatting/#Format_Widget_Values/Custom_Format_String) patterns.    
+Set the **displayFormat** property to a custom format string using [LDML](/Documentation/Guide/Common/Value_Formatting/#Format_Widget_Values/Custom_Format_String) patterns.    
 
 - **Format with literal characters**    
-Define the **type** property. Specify the **displayFormat** using a string combined with an element of the Date object.
+The **displayFormat** property can contain literal characters combined with **LDML** characters. Wrap the literal characters in quotation marks.
+
+Refer to the [displayFormat](/Documentation/ApiReference/UI_Widgets/dxDateBox/Configuration/#displayFormat) description for additional information.
