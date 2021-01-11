@@ -10,7 +10,7 @@ Attach an instance of the [Draggable][5] UI component to every list item. The UI
 Attach another **Draggable** instance to the list which only serves as the drop target. Implement the **onDragStart** function to ensure the list cannot be dragged.
 
 4. **Add the controls to the same group**            
-To enable drag and drop operations between the controls, assign the same value to the [group][8] option of the **Scheduler**'s **appointmentDragging** object and both **Draggable** widgets. 
+To enable drag and drop operations between the controls, assign the same value to the [group][8] option of the **Scheduler**'s **appointmentDragging** object and both **Draggable** UI components. 
 
 [0]: /Documentation/ApiReference/UI_Widgets/dxScheduler/Configuration/appointmentDragging/
 [1]: /Documentation/ApiReference/UI_Widgets/dxScheduler/Methods/#addAppointmentappointment

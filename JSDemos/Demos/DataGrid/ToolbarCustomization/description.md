@@ -2,7 +2,7 @@ The **DataGrid** uses an integrated DevExtreme [Toolbar](/Demos/WidgetsGallery/D
 
 This demo illustrates how to add the following items to the toolbar:
 
-- **DevExtreme widgets**        
+- **DevExtreme UI components**        
 Specify a [UI component](/Documentation/ApiReference/UI_Widgets/dxToolbar/Configuration/items/#UI component) that you want to add and its [options](/Documentation/ApiReference/UI_Widgets/dxToolbar/Configuration/items/#options). In this demo, we extended the toolbar's item collection with a [Button](/Demos/WidgetsGallery/Demo/Button/PredefinedTypes/) and a [SelectBox](/Demos/WidgetsGallery/Demo/SelectBox/Overview/).
 
 - **Custom elements**       
