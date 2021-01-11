@@ -1,15 +1,15 @@
-To add an icon to **Button** use the UI component's **icon** property. This demo covers the following use cases:   
+To add an icon to **Button**, use the UI component's **icon** property. This demo covers the following use cases of this property:   
 
 - **Built-in icons**    
-Make use of the built-in DevExtreme icon [library](/Documentation/Guide/Themes_and_Styles/Icons/) by assigning the relevant icon name to the **icon** property.    
+DevExtreme comes with an [icon library](/Documentation/Guide/Themes_and_Styles/Icons/#Built-In_Icon_Library). Set the **icon** property to the relevant icon name.    
 
 - **Image icons**    
-Pass the image file path or URI to the UI component's **icon** property.    
+Set the **icon** value to the image file path or URI.    
 
-- **External icon**   
-You may choose to import an external font library. In this case, refer to its documentation for proper icon names. This example makes use of [Fontawesome](https://fontawesome.com/icons?d=gallery), therefore the icon names provided herein are specific to this library.    
+- **External icon fonts**   
+It is possible to import an external font library. In this case, use **icon** names taken from the library. Refer to the library's documentation for proper icon names. This example uses <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a>.    
 
-- **Icon only**   
-Do not define the **text** property to achieve this.    
+- **Icon without a text**   
+Define the **icon** but do not define the **text** property.    
 
-Additionally, you can disable buttons by setting the **disabled** parameter to *true*.
+Refer to the [Icons](/Documentation/Guide/Themes_and_Styles/Icons) help topic for additional information.
