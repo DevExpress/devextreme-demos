@@ -6,7 +6,7 @@ You can set each annotation's [type](/Documentation/ApiReference/Data_Visualizat
 
 You can place annotations at specific coordinates or anchor them to **PolarChart** elements. This demo illustrates the following annotation placement methods:  
 
-- [Angle](/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/#angle) and [radius](/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/#radius) options specify the position of annotations with season names.
-- Annotations with temperatures are anchored to series, and the [offsetX](/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/#offsetX), [paddingTopBottom](/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/#paddingTopBottom), and [paddingLeftRight](/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/#paddingLeftRight) options specify their position.
+- [Angle](/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/#angle) and [radius](/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/#radius) properties specify the position of annotations with season names.
+- Annotations with temperatures are anchored to series, and the [offsetX](/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/#offsetX), [paddingTopBottom](/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/#paddingTopBottom), and [paddingLeftRight](/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/#paddingLeftRight) properties specify their position.
 
 For more information on annotation settings, refer to the [annotations[]](/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/annotations/) help topic.

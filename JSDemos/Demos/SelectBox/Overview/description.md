@@ -1,4 +1,4 @@
-The [SelectBox](/Documentation/ApiReference/UI_Widgets/dxSelectBox/) UI component allows users to select an item from a drop-down list. This demo illustrates the following  **SelectBox** options:
+The [SelectBox](/Documentation/ApiReference/UI_Widgets/dxSelectBox/) UI component allows users to select an item from a drop-down list. This demo illustrates the following  **SelectBox** properties:
 
 - [items](/Documentation/ApiReference/UI_Widgets/dxSelectBox/Configuration/#items)    
 Specifies an array of items displayed in the **SelectBox**.

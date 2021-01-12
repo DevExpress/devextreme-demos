@@ -5,4 +5,4 @@ The **DataGrid** UI component can sort values by a single or multiple columns. U
 
 A user can also apply or cancel sorting settings in the column header's context menu. To disallow a user to sort by a particular column, set the column's [allowSorting](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#allowSorting) property to **false**.
 
-To specify the initial sorting settings, use the column's [sortOrder](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#sortOrder) and [sortIndex](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#sortIndex) options. You can also use these options to change sorting settings at runtime, as shown in this demo.
+To specify the initial sorting settings, use the column's [sortOrder](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#sortOrder) and [sortIndex](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#sortIndex) properties. You can also use these properties to change sorting settings at runtime, as shown in this demo.

@@ -11,7 +11,7 @@ The name or data field of the column being edited.
 - **editing**.[changes](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/editing/#changes)       
 Pending row changes.
 
-You can get and set these options at runtime to access and change edit state. In this demo, the [onOptionChanged](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#onOptionChanged) function gets **editRowKey** and **changes** property values and displays them under the **DataGrid**.
+You can get and set these properties at runtime to access and change edit state. In this demo, the [onOptionChanged](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#onOptionChanged) function gets **editRowKey** and **changes** property values and displays them under the **DataGrid**.
 
 **Utility Method**
 

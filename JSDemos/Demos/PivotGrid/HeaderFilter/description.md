@@ -1,6 +1,6 @@
 A header filter allows a user to filter field values by including or excluding them from the applied filter. Click a header filter icon in the field chooser or on the field panel to open a popup menu that displays all unique field values.
 
-Use the following options to configure the header filter:
+Use the following properties to configure the header filter:
 
 - [allowSearch](/Documentation/ApiReference/UI_Widgets/dxPivotGrid/Configuration/headerFilter/#allowSearch)     
 Enables a user to search through field values.

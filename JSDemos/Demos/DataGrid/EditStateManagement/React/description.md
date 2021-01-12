@@ -11,7 +11,7 @@ The name or data field of the column being edited.
 - **editing**.[changes](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/editing/#changes)       
 Pending row changes.
 
-Bind these options to state props and set the props to change edit state at runtime. In this demo, we bind the **editRowKey** and **changes** options and use the corresponding **on_OptionName_Change** event handlers to set the bound props.
+Bind these properties to state props and set the props to change edit state at runtime. In this demo, we bind the **editRowKey** and **changes** properties and use the corresponding **on_OptionName_Change** event handlers to set the bound props.
 
 **Utility Method**
 

@@ -10,6 +10,6 @@ Assign the field's name to the **DropDownBox**'s [valueExpr](/Documentation/ApiR
 
 3. **Synchronize the DropDownBox's value and the embedded UI component's selection**
 
-    1.  Select data items according to the **DropDownBox**'s initial value. To do this, assign the value to the embedded UI component's **selectedRowKeys**/**selectedItemKeys** property (see the example with the **DataGrid** below). If the UI component does not have such options, implement the **onContentReady** handler (the example with the **TreeView**).
+    1.  Select data items according to the **DropDownBox**'s initial value. To do this, assign the value to the embedded UI component's **selectedRowKeys**/**selectedItemKeys** property (see the example with the **DataGrid** below). If the UI component does not have such properties, implement the **onContentReady** handler (the example with the **TreeView**).
     2.  Implement the **DropDownBox**'s [onValueChanged](/Documentation/ApiReference/UI_Widgets/dxDropDownBox/Configuration/#onValueChanged) handler to update the selection when the value changes.
     3.  Implement the embedded UI component's **onSelectionChanged** handler to update the **DropDownBox**'s value when the selection changes.

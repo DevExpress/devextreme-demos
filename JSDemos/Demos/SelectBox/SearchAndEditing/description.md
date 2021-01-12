@@ -1,4 +1,4 @@
-Set the [searchEnabled](/Documentation/ApiReference/UI_Widgets/dxSelectBox/Configuration/#searchEnabled) property to **true** to allow users to search. The following options help you configure the feature:
+Set the [searchEnabled](/Documentation/ApiReference/UI_Widgets/dxSelectBox/Configuration/#searchEnabled) property to **true** to allow users to search. The following properties help you configure the feature:
 
 - [searchExpr](/Documentation/ApiReference/UI_Widgets/dxSelectBox/Configuration/#searchExpr)   
 Specifies one or several data fields to search.
