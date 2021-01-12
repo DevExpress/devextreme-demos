@@ -3,7 +3,7 @@ To customize the **DateBox** format, use the **displayFormat** property. This de
 This is the default formatting behavior dependent on the User's [locale](/Documentation/Guide/Common/Localization/#Localize_Dates_Numbers_and_Currencies).    
 
 - **Built-in predefined format**    
-DevExtreme supports predefined [formats](https://js.devexpress.com/Documentation/ApiReference/Common/Object_Structures/format/#type). Set the **displayFormat** property to the respective format.    
+DevExtreme supports [predefined formats](/Documentation/ApiReference/Common/Object_Structures/format/#type). Set the **displayFormat** property to the respective format.    
 
 - **LDML pattern**    
 Set the **displayFormat** property to a custom format string using [LDML](/Documentation/Guide/Common/Value_Formatting/#Format_Widget_Values/Custom_Format_String) patterns.    
