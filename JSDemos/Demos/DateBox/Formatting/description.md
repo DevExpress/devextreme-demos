@@ -1,6 +1,6 @@
 To customize the **DateBox** format, use the **displayFormat** property. This demo illustrates the following use cases of this property:
 - **Locale-dependent format**     
-This is the default formatting behavior dependent on the User's [locale](/Documentation/Guide/Common/Localization/#Localize_Dates_Numbers_and_Currencies).    
+The DateBox formats its value according to the user's locale. This is the default behavior. Refer to the following help topic for more information: [Localize Dates, Numbers, and Currencies](/Documentation/Guide/Common/Localization/#Localize_Dates_Numbers_and_Currencies)
 
 - **Built-in predefined format**    
 DevExtreme supports [predefined formats](/Documentation/ApiReference/Common/Object_Structures/format/#type). Set the **displayFormat** property to the respective format.    
