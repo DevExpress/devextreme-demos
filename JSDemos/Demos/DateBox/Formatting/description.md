@@ -11,4 +11,4 @@ An LDML pattern consists of wildcard characters and characters displayed as is. 
 - **Format with literal characters**    
 The **displayFormat** property can contain literal characters combined with **LDML** characters. Wrap the literal characters in quotation marks.
 
-Refer to the [displayFormat](/Documentation/ApiReference/UI_Widgets/dxDateBox/Configuration/#displayFormat) description for additional information.
+To get more information about value formatting, refer to the [Value Formatting](/Documentation/Guide/Common/Value_Formatting/) article.
