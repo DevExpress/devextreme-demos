@@ -6,7 +6,7 @@ Menu items can be&nbsp;specified in&nbsp;the [items](/Documentation/ApiReference
 
 
 
-The **DropDownButton** stores the most recent selected menu item if&nbsp;you set the [useSelectMode](/Documentation/ApiReference/UI_Widgets/dxDropDownButton/Configuration/#useSelectMode) option to&nbsp;**true**. In&nbsp;this case, the button uses the selected item&rsquo;s text and icon.
+The **DropDownButton** stores the most recent selected menu item if&nbsp;you set the [useSelectMode](/Documentation/ApiReference/UI_Widgets/dxDropDownButton/Configuration/#useSelectMode) property to&nbsp;**true**. In&nbsp;this case, the button uses the selected item&rsquo;s text and icon.
 
 
 

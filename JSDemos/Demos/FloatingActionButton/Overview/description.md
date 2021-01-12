@@ -4,7 +4,7 @@ This demo illustrates a FAB that opens a speed dial when there are selected grid
 
 In DevExtreme, the FAB is implemented as a container that collects and stores [SpeedDialAction][0] components. To display a FAB that performs a custom action, add a **SpeedDialAction** to the page. Specify its [onClick][1] and [icon][2] options. Setting other options is not required.
 
-Two to five **SpeedDialAction**s are collected in the FAB's speed dial. The actions are sorted according to their [indexes][3]. To hide an action from the speed dial, set its [visible][4] option to **false**.
+Two to five **SpeedDialAction**s are collected in the FAB's speed dial. The actions are sorted according to their [indexes][3]. To hide an action from the speed dial, set its [visible][4] property to **false**.
 
 FAB parameters are configured in the [floatingActionButtonConfig][5] object. Use it to change the FAB's [position][6], [maximum number of actions][7], icons in the [open][8] and [close][9] states, and other parameters. In this demo, the drop-down menu under the grid allows you to select the [direction][10] in which the speed dial should be opened. The [repaintFloatingActionButton()][11] method is called to apply the new configuration.
 

@@ -35,6 +35,6 @@ Set the `e.cancel` field to **true**.
 Pending changes are stored in the `e.changes` array. This array has only a single element in all [edit modes](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/editing/#mode), except for batch. Check if this element is not empty and send it to the server (see the `saveChange` action in `actions.js`).
 
 1. **Apply the same changes to the UI component's data source and reset edit state**       
-If the server successfully saves changes, call the **applyChanges** method to save the same changes in the UI component's data source. Assign **null** to the **editRowKey** and an empty array to the **changes** option. This resets edit state (see the `SAVING_SUCCESS` handler in `reducer.js`).
+If the server successfully saves changes, call the **applyChanges** method to save the same changes in the UI component's data source. Assign **null** to the **editRowKey** and an empty array to the **changes** property. This resets edit state (see the `SAVING_SUCCESS` handler in `reducer.js`).
 
 [note] This functionality is available as a <a href="https://www.devexpress.com/aboutus/pre-release.xml" target="_blank">community technology preview (CTP)</a>. Should you have any questions or suggestions prior to its official release, please email your comments to <a href="mailto:support@devexpress.com">support@devexpress.com</a>.

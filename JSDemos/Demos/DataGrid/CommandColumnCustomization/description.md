@@ -11,7 +11,7 @@ This demo has the following configuration:
   
 * **allowDeleting** is set to a function that hides the Delete button based on a custom condition.
 
-The predefined edit buttons are displayed as textual links by default. To use icons instead, set the [useIcons](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/editing/#useIcons) option to **true**.
+The predefined edit buttons are displayed as textual links by default. To use icons instead, set the [useIcons](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/editing/#useIcons) property to **true**.
 
 **Custom buttons**             
 If a command column should contain custom buttons, add its configuration to the [columns](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/) array. **DataGrid** will display this column according to its position in this array. Specify the column's [type](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#type) as *"buttons"* and declare the [buttons](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/buttons/) array. It should contain your custom buttons along with the predefined buttons. If you need to customize a predefined button, add an object with specified [name](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/buttons/#name) and [other button options](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/buttons/). If customization is not required, add only button names.
