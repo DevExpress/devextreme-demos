@@ -1,1 +1,1 @@
-This example demonstrates the **Scheduler** widget communicating with a&nbsp;Web API service.
+This example demonstrates the **Scheduler** UI component communicating with a&nbsp;Web API service.
