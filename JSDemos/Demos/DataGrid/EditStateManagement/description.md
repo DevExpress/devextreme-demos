@@ -1,6 +1,6 @@
 Our **DataGrid** UI component manages its edit state automatically. If your use case requires full control over the editing process, you can use the API members below to manage state manually.
 
-**UI component Options**
+**UI component Properties**
 
 - **editing**.[editRowKey](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/editing/#editRowKey)        
 The key for the row being edited.

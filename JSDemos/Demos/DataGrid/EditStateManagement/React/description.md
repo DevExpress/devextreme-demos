@@ -1,6 +1,6 @@
 Our **DataGrid** UI component manages its edit state automatically. If your use case requires full control over the editing process, you can use the API members below to manage state manually. In this demo, we manage state with a help of the <a href="https://reactjs.org/docs/hooks-reference.html#usereducer" target="_blank">useReducer</a> React hook.
 
-**UI component Options**
+**UI component Properties**
 
 - **editing**.[editRowKey](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/editing/#editRowKey)        
 The key for the row being edited.
