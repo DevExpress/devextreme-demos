@@ -6,7 +6,7 @@ The DateBox formats its value according to the user's locale. This is the defaul
 DevExtreme supports [predefined formats](/Documentation/ApiReference/Common/Object_Structures/format/#type). Set the **displayFormat** property to the respective format.    
 
 - **LDML pattern**    
-Set the **displayFormat** property to a custom format string using [LDML](/Documentation/Guide/Common/Value_Formatting/#Format_Widget_Values/Custom_Format_String) patterns.    
+An LDML pattern consists of wildcard characters and characters displayed as is. Set the **displayFormat** property to a string that specifies an LDML pattern. Refer to the following help topic for information about supported format characters: [Custom Format String](/Documentation/Guide/Common/Value_Formatting/#Format_Widget_Values/Custom_Format_String)    
 
 - **Format with literal characters**    
 The **displayFormat** property can contain literal characters combined with **LDML** characters. Wrap the literal characters in quotation marks.
