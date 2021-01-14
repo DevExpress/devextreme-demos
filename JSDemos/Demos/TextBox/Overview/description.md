@@ -4,16 +4,16 @@ The [TextBox](/Documentation/ApiReference/UI_Widgets/dxTextBox/) is a UI compone
 A value the **TextBox** displays.
 
 - [placeholder](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#placeholder)       
-A text that the **TextBox** displays when the **value** is not defined.
+An input prompt the **TextBox** displays when the **value** is not defined.
 
 - [showClearButton](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#showClearButton)        
 Specifies whether to display the button that clears the **TextBox** **value**.
 
 - [mode](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#mode)        
-Affects a set of keyboard characters displayed on a mobile device when the **TextBox** gets focus and adds specific visual features to the UI component. In this example, the **mode** is set to *"password"* so that entered characters are obscured, and the password cannot be read.
+Affects a set of keyboard characters displayed on a mobile device when the **TextBox** gets focus and modifies the UI component's display style. In this example, the **mode** is set to *"password"* so that entered characters are obscured, and the password cannot be read.
 
 - [mask](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#mask)        
-A mask that specifies a custom format for the entered string.
+An input mask.
 
 - [maskRules](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#maskRules)        
 Custom mask rules.
@@ -22,7 +22,7 @@ Custom mask rules.
 Specifies whether the TextBox responds to user interaction.
 
 - [onValueChanged](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#onValueChanged) event handler      
-Use this function to perform an action when a user enters a new value. In this demo, this function uses the entered value to combine a dummy email address and assigns it a **value** to another **TextBox**.
+Use this function to perform an action when a user enters a new value. In this demo, this function uses the entered value to construct a dummy email address and assign it to another **TextBox**.
 
 - [valueChangeEvent](/Documentation/ApiReference/UI_Widgets/dxTextBox/Configuration/#valueChangeEvent)     
 One or several DOM events that trigger the **onValueChanged** event handler.
