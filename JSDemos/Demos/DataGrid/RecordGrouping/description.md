@@ -1,1 +1,9 @@
-The **DataGrid** widget allows you and your end users to&nbsp;group data against an&nbsp;unlimited number of&nbsp;columns. In&nbsp;this example, data is&nbsp;grouped by&nbsp;the _Country_ column (a&nbsp;group index is&nbsp;specified for this column in&nbsp;the **columns** array). Your users can group data by&nbsp;dragging column headers to&nbsp;the group panel. You can control its visibility using the **groupPanel**&nbsp;| **visible** option. A&nbsp;user can also reorder the columns using drag and drop, because the **allowColumnReordering** option is&nbsp;set to _true_.
+The **DataGrid** supports data grouping by a column or multiple columns. 
+
+To group data by a single **column**, apply the [groupIndex](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#groupIndex) property to it. This property accepts a zero-based index number that controls column ordering. In this example, the data is grouped by the *State* column.
+
+Groups are displayed on the [groupPanel](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/groupPanel/) above the grid. To show the **groupPanel**, set its **visible** property to *"true"*. 
+
+It is possible additionaly set user interaction-related grouping parameters. To do so, use the [grouping](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/grouping/) object that accepts properties like. This demo illustrates the use of [autoExpandAll](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/grouping/#autoExpandAll) parameter that specifies whether the groups appear expanded.
+
+Users can drag and drop columns within the **groupPanel** to reorder them. To enable this functionality, set the [allowColumnReordering](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#allowColumnReordering) property to *"true"*. 
