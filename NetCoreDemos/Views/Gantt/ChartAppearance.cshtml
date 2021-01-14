@@ -91,15 +91,26 @@
 
 <script>
     function getTaskTooltipContentTemplate(task, container) {
-        container[0].innerHTML = "";
-        const parentElement = document.getElementsByClassName('dx-gantt-task-edit-tooltip')[0];
-        parentElement.className = 'dx-gantt-task-edit-tooltip custom-task-edit-tooltip';
-        const timeEstimate = Math.abs(task.Start - task.End) / 36e5;
-        const timeLeft = Math.floor((100 - task.Progress) / 100 * timeEstimate);
+        var timeEstimate = Math.abs(task.Start - task.End) / 36e5;
+        var timeLeft = Math.floor((100 - task.Progress) / 100 * timeEstimate);
 
-        return "<div class='custom-tooltip-title'>" + task.Title + "</div>"
-            + "<div class='custom-tooltip-row'>" + "<span> Estimate: </span>" + timeEstimate + "<span> hours </span>" + "</div>"
-            + "<div class='custom-tooltip-row'>" + "<span> Left: </span>" + timeLeft + "<span> hours </span>" + "</div>";
+        var $customTooltip = $(document.createElement("div"))
+            .addClass("custom-task-edit-tooltip");
+
+        $(document.createElement("div"))
+            .addClass("custom-tooltip-title")
+            .text(task.Title)
+            .appendTo($customTooltip);
+        $(document.createElement("div"))
+            .addClass("custom-tooltip-row")
+            .text("Estimate: " + timeEstimate + " hours")
+            .appendTo($customTooltip);
+        $(document.createElement("div"))
+            .addClass("custom-tooltip-row")
+            .text("Left: " + timeLeft + " hours")
+            .appendTo($customTooltip);
+
+        return $customTooltip;
     }
 
     function getGanttInstance() {
@@ -123,8 +134,6 @@
     }
 
     function ganttShowCustomTaskTooltip_changed(e) {
-        const parentELemnt = document.getElementsByClassName('dx-gantt-task-edit-tooltip')[0];
-        parentELemnt.className = 'dx-gantt-task-edit-tooltip';
         var ganttInstance = getGanttInstance();
         e.value ? ganttInstance.option("taskTooltipContentTemplate", getTaskTooltipContentTemplate)
             : ganttInstance.option("taskTooltipContentTemplate", undefined);
