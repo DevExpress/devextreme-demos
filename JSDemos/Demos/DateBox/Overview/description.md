@@ -1,13 +1,13 @@
-The [DateBox](/Documentation/ApiReference/UI_Widgets/dxDateBox/) displays date and time in DeveExtreme [predefined formats](https://js.devexpress.com/Documentation/ApiReference/Common/Object_Structures/format/#type) or a formats provided by an external localization library such as [Intl](/Documentation/Guide/Common/Localization/#Localize_Dates_Numbers_and_Currencies/Using_Intl). This demo illustrates the following  **DateBox** properties:
+The [DateBox](/Documentation/ApiReference/UI_Widgets/dxDateBox/) is an editor that allows users to select date and time and displays them. This demo illustrates the following **DateBox** properties:
 
 - [value](/Documentation/ApiReference/UI_Widgets/dxDateBox/Configuration/#value)     
 A value the **DateBox** displays.
 
 - [type](/Documentation/ApiReference/UI_Widgets/dxDateBox/Configuration/#type)       
-Specifies whether the **DateBox** displays the date, time, or both date and time.
+Specifies whether the **DateBox** allows users to select only date, only time, or both date and time.
 
 - [displayFormat](/Documentation/ApiReference/UI_Widgets/dxDateBox/Configuration/#displayFormat)        
-**DateBox** date display format.
+A date/time display format. You can use one of the [predefined formats](/Documentation/ApiReference/Common/Object_Structures/format/#type) or specify a [custom format](/Documentation/Guide/Common/Value_Formatting/#Format_Widget_Values/Custom_Format_String). This demo illustrates the latter case.
 
 - [pickerType](/Documentation/ApiReference/UI_Widgets/dxDateBox/Configuration/#pickerType)        
 The type of date/time picker.
@@ -22,4 +22,4 @@ Specifies whether the DateBox responds to user interaction.
 Dates that are not available for selection.
 
 - [applyValueMode](/Documentation/ApiReference/UI_Widgets/dxDateBox/Configuration/#applyValueMode)     
-Defines how users apply the selected **DateBox** value.
+Defines whether the selected value applies instantly or after a user clicks an Apply button.
