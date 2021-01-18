@@ -12,6 +12,6 @@ Use an LDML pattern to construct a custom date-time format string. This demo set
 - **Format with literal characters**    
 Specify the **displayFormat** property as a string that contains literal and LDML characters. Wrap any characters that are not part of the LDML pattern in quotation marks. Otherwise, they can be interpreted as wildcards. In this example, if you remove quotation marks from the word "Year", the letter "a" is interpreted as an "AM/PM" placeholder.
 
-Note that the **DateBox** supports input masks. Use them to ensure that the input value format is consistent with **displayFormat**. To enable this behavior, set the [useMaskBehavior](/Documentation/ApiReference/UI_Widgets/dxDateBox/Configuration/#useMaskBehavior) value to *"true"*.
+You can also use input mask in the **DateBox**. Input masks ensure that the input value format is consistent with **displayFormat**. To do this, set the [useMaskBehavior](/Documentation/ApiReference/UI_Widgets/dxDateBox/Configuration/#useMaskBehavior) value to *"true"*.
 
 For more information about value formatting, refer to the [Value Formatting](/Documentation/Guide/Common/Value_Formatting/) article.
