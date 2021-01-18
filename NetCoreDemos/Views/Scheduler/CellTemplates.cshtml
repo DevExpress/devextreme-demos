@@ -1,9 +1,8 @@
-﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.Appointment>
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.DisableDatesAppointment>
 
 @(Html.DevExtreme().Scheduler()
     .ID("scheduler")
     .DataSource(Model)
-    .TimeZone("America/Los_Angeles")
     .TextExpr("Text")
     .StartDateExpr("StartDate")
     .EndDateExpr("EndDate")
