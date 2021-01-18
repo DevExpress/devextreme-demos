@@ -1,7 +1,7 @@
 To change how a **DateBox** displays dates, use the [displayFormat](/Documentation/ApiReference/UI_Widgets/dxDateBox/Configuration/#displayFormat) property. This demo illustrates the following examples:
 
 - **Locale-dependent format**     
-The DateBox formats its value according to the user's locale. This is the default behavior. You don't need to define the **displayFormat** property. Refer to the following help topic for more information: [Localize Dates, Numbers, and Currencies](/Documentation/Guide/Common/Localization/#Localize_Dates_Numbers_and_Currencies)
+The DateBox formats its value according to the user's locale. This is the default format and you do not need to define the **displayFormat** property. Refer to the following help topic for more information: [Localize Dates, Numbers, and Currencies](/Documentation/Guide/Common/Localization/#Localize_Dates_Numbers_and_Currencies)
 
 - **Built-in predefined formats**    
 DevExtreme supports a number of [predefined formats](/Documentation/ApiReference/Common/Object_Structures/format/#type). Those are simple strings or shortcuts that define commonly used date formats so that you don't need to spell out a complex expression. Review the linked document for the list of values you can assign to **displayFormat**.  This demo uses the "shortdate" format. 
