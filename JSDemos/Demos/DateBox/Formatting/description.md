@@ -4,7 +4,7 @@ To change how a **DateBox** displays dates, use the [displayFormat](/Documentati
 The DateBox formats its value according to the user's locale. This is the default format and you do not need to define the **displayFormat** property. Refer to the following help topic for more information: [Localize Dates, Numbers, and Currencies](/Documentation/Guide/Common/Localization/#Localize_Dates_Numbers_and_Currencies)
 
 - **Built-in predefined formats**    
-DevExtreme supports a number of [predefined formats](/Documentation/ApiReference/Common/Object_Structures/format/#type). Those are simple strings or shortcuts that define commonly used date formats so that you don't need to spell out a complex expression. Review the linked document for the list of values you can assign to **displayFormat**.  This demo uses the "shortdate" format. 
+DevExtreme supports various [predefined formats](/Documentation/ApiReference/Common/Object_Structures/format/#type). You can use simple strings or shortcuts that define commonly used date formats instead of complex expressions. Review the linked document for a list of values you can assign to **displayFormat**.  This demo uses the "shortdate" format. 
 
 - **LDML pattern**    
 Use an LDML pattern to construct a custom date-time format string. This demo sets **displayFormat** property to "EEEE, d of MMM, yyyy HH:mm" - a combination of the day of the week, day number, month, year, hour, and minute. The editor displays the formatted value. Refer to the following help topic for information about supported format characters: [Custom Format String](/Documentation/Guide/Common/Value_Formatting/#Format_Widget_Values/Custom_Format_String)    
