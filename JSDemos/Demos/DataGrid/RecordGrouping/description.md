@@ -1,6 +1,6 @@
 The **DataGrid** supports data grouping by a column or multiple columns. 
 
-To group data by a single **column**, apply the [groupIndex](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#groupIndex) property to it. This property accepts a zero-based index number that controls column ordering. In this example, the data is grouped by the *State* column.
+To group data by a single **column**, apply the [groupIndex](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/columns/#groupIndex) property to it. This property accepts a zero-based index number that controls the column order. In this example, the data is grouped by the *State* column.
 
 Groups are displayed on the [groupPanel](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/groupPanel/) above the grid. To show the **groupPanel**, set its **visible** property to **true**. Users can drag and drop columns onto and from the group panel to regroup data.
 
