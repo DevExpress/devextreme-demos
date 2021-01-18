@@ -1,4 +1,4 @@
-To customize how a **DateBox** displays dates, use the [displayFormat](/Documentation/ApiReference/UI_Widgets/dxDateBox/Configuration/#displayFormat) property. This demo illustrates the following use cases:
+To change how a **DateBox** displays dates, use the [displayFormat](/Documentation/ApiReference/UI_Widgets/dxDateBox/Configuration/#displayFormat) property. This demo illustrates the following examples:
 
 - **Locale-dependent format**     
 The DateBox formats its value according to the user's locale. This is the default behavior. You don't need to define the **displayFormat** property. Refer to the following help topic for more information: [Localize Dates, Numbers, and Currencies](/Documentation/Guide/Common/Localization/#Localize_Dates_Numbers_and_Currencies)
