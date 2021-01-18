@@ -10,7 +10,7 @@ DevExtreme supports a number of [predefined formats](/Documentation/ApiReference
 Use an LDML pattern to construct a custom date-time format string. This demo sets **displayFormat** property to "EEEE, d of MMM, yyyy HH:mm" - a combination of the day of the week, day number, month, year, hour, and minute. The editor displays the formatted value. Refer to the following help topic for information about supported format characters: [Custom Format String](/Documentation/Guide/Common/Value_Formatting/#Format_Widget_Values/Custom_Format_String)    
 
 - **Format with literal characters**    
-Specify the **displayFormat** property as a string that contains literal characters. This string can also contain LDML format characters. Wrap any characters that are not a part of the LDML pattern in quotation marks. Otherwise they may be interpreted as wildcards. In this example, if you remove quotation marks from the word "Year", the letter "a" will be interpreted as "AM/PM" placeholder.
+Specify the **displayFormat** property as a string that contains literal and LDML characters. Wrap any characters that are not part of the LDML pattern in quotation marks. Otherwise, they can be interpreted as wildcards. In this example, if you remove quotation marks from the word "Year", the letter "a" is interpreted as an "AM/PM" placeholder.
 
 Note that the **DateBox** supports input masks. Use them to ensure that the input value format is consistent with **displayFormat**. To enable this behavior, set the [useMaskBehavior](/Documentation/ApiReference/UI_Widgets/dxDateBox/Configuration/#useMaskBehavior) value to *"true"*.
 
