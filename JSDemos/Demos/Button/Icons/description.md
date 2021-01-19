@@ -6,7 +6,7 @@ DevExtreme ships with its own [icon library](/Documentation/Guide/Themes_and_Sty
 - **Image file**    
 Set the **icon** value to the image file path or URI.    
 
-- **3rd-party icon fonts**
+- **3rd-party icon fonts**    
 You can import a 3rd-party font library (this example uses <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a>). In such cases, set the **icon** property to a name that identifies the required glyph. Look up names in the imported library's documentation.
 
 - **Buttons with icons and no caption text**   
