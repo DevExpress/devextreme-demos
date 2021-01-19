@@ -2,11 +2,11 @@ The **Popup** UI component is a pop-up window that overlays the current view and
 
 This demo illustrates the following **Popup** use cases:    
 
-- **Specify the content**       
-Define the **Popup** content within the UI component's markup.   
+- **Content**       
+Put any valid markup inside the component. 
 
-- **Set the title**   
-Use the [showTitle](Documentation/ApiReference/UI_Widgets/dxPopup/Configuration/#showTitle) property to show or hide the **Popup** title. If the **showTitle** value is set to **true**, define the **Popup** title within the [title](/Documentation/ApiReference/UI_Widgets/dxPopup/Configuration/#title) property.         
+- **Title Bar**   
+Set [showTitle](Documentation/ApiReference/UI_Widgets/dxPopup/Configuration/#showTitle) to **true** and use the [title](/Documentation/ApiReference/UI_Widgets/dxPopup/Configuration/#title) property to specify the caption. 
 
 - **Show and hide the Popup**   
 Use two-way binding to define the [visible](/Documentation/ApiReference/UI_Widgets/dxPopup/Configuration/#visible) property and manipulate its value directly. If the **Popup** should be hidden on clicks outside its bounds, enable the [closeOnOutsideClick](/Documentation/ApiReference/UI_Widgets/dxPopup/Configuration/#closeOnOutsideClick) property.
