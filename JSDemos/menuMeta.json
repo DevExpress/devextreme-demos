@@ -2005,6 +2005,22 @@
             "Badge": "New"
           }
         ]
+      },
+      {
+        "Name": "Survey Example",
+        "Equivalents": "",
+        "Hidden": true,
+        "Demos": [
+          {
+            "Title": "Survey Example",
+            "Name": "SurveyExample",
+            "Widget": "HtmlEditor",
+            "MvcDescription": "",
+            "NetCoreDescription": "",
+            "MvcAdditionalFiles": [],
+            "DemoType": "Web"
+          }
+        ]
       }
     ]
   },
@@ -3325,7 +3341,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           }
         ]
@@ -3341,7 +3361,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           },
           {
@@ -3351,7 +3375,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           }
         ]
@@ -3369,7 +3397,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           },
           {
@@ -3379,7 +3411,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           },
           {
@@ -3390,7 +3426,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           }
         ]
@@ -3406,7 +3446,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           }
         ]
@@ -4291,7 +4335,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/TextBox/Overview/",
             "Widget": "TextBox"
           }
         ]
