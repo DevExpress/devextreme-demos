@@ -1,15 +1,15 @@
-To add an icon to **Button**, use the UI component's **icon** property. This demo covers the following use cases of this property:   
+To add an icon to a **Button**, set the **icon** property. This demo shows several ways you can use this property:   
 
 - **Built-in icons**    
-DevExtreme comes with an [icon library](/Documentation/Guide/Themes_and_Styles/Icons/#Built-In_Icon_Library). Set the **icon** property to the relevant icon name.    
+DevExtreme ships with its own [icon library](/Documentation/Guide/Themes_and_Styles/Icons/#Built-In_Icon_Library). Pick any icon and assign its name to the **icon** property.
 
-- **Image icons**    
+- **Image file**    
 Set the **icon** value to the image file path or URI.    
 
-- **External icon fonts**   
-It is possible to import an external font library. In this case, use **icon** names taken from the library. Refer to the library's documentation for proper icon names. This example uses <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a>.    
+- **3rd-party icon fonts**
+You can import a 3rd-party font library (this example uses <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a>). In such cases, set the **icon** property to a name that identifies the required glyph. Look up names in the imported library's documentation.
 
-- **Icon without a text**   
+- **Buttons with icons and no caption text**   
 Define the **icon** but do not define the **text** property.    
 
 Refer to the [Icons](/Documentation/Guide/Themes_and_Styles/Icons) help topic for additional information.
