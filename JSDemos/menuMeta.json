@@ -2005,22 +2005,6 @@
             "Badge": "New"
           }
         ]
-      },
-      {
-        "Name": "Survey Example",
-        "Equivalents": "",
-        "Hidden": true,
-        "Demos": [
-          {
-            "Title": "Survey Example",
-            "Name": "SurveyExample",
-            "Widget": "HtmlEditor",
-            "MvcDescription": "",
-            "NetCoreDescription": "",
-            "MvcAdditionalFiles": [],
-            "DemoType": "Web"
-          }
-        ]
       }
     ]
   },
