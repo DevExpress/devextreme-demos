@@ -4,10 +4,10 @@ In this demo, you can use the following keys and key combinations to interact wi
 Execute an action on a focused element.
 
 - **Tab**
-Navigate between TreeList elements.
+Navigate within TreeList elements.
 
 - **Ctrl** + **&uarr;** or **Ctrl** + **&darr;**
-Navigate between column header, column filter, data area, filter builder, and pager.
+Navigate between column header, filter row, data area, filter panel, and pager.
 
 - **Ctrl** + **&larr;** or **Ctrl** + **&rarr;**
 Expand/collapse the focused row.
