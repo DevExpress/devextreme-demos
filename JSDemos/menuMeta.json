@@ -4137,7 +4137,6 @@
             "Title": "Formatting",
             "Name": "Formatting",
             "Equivalents": "mask",
-            "DocUrl": "ApiReference/UI_Widgets/dxDateBox/Configuration/#useMaskBehavior",
             "Widget": "DateBox"
           }
         ]
