@@ -1,5 +1,5 @@
 <!-- jQuery -->
-The [List](/Documentation/ApiReference/UI_Widgets/dxList/) is a UI component that displays a collection of items as a scrollable list. To create a list, pass an array of items to **dataSource**. 
+The [List](/Documentation/ApiReference/UI_Widgets/dxList/) displays a collection of items as a scrollable list. To create a list, pass an array of items to **dataSource**. 
 
 This demo illustrates selection and deletion, and its UI can be divided into three sections: the **List**, "Selected Tasks" section, and "Options". 
 
@@ -10,15 +10,9 @@ The number of items users can select at a time is defined by the [selectionMode]
 
 In this example, selected list items are displayed in the "Selected tasks" section. This done by a function that handles the [onSelectionChanged](/Documentation/ApiReference/UI_Widgets/dxList/Configuration/#onSelectionChanged) event.
 
+<!-- deletion -->
+To allow users delete selected items, set the [allowItemDeleting](/Documentation/ApiReference/UI_Widgets/dxList/Configuration/#allowItemDeleting) property to *true*. Use the checkbox in the "Options" section to see how it works.
 
+The **List** supports six deletion modes. You can see them in action in the "Deleting type" dropdown menu of the "Options" section. Use the [itemDeleteMode](/Documentation/ApiReference/UI_Widgets/dxList/Configuration/#itemDeleteMode) property to set the deletion mode.
 
-
-[allowItemDeleting]
-
-[itemDeleteMode]
-
-[onItemDeleted]
-
-
-<!-- ANGULAR, etc -->
-The [List](/Documentation/ApiReference/UI_Widgets/dxList/) is a UI component that displays a collection of items as a scrollable list. To create a list, pass an array of items to the **items** property. This demo illustrates the following  **List** properties:
+When users delete a list item, it is removed from the "Selected tasks" section. This is done by a function that handles the [onItemDeleted](/Documentation/ApiReference/UI_Widgets/dxList/Configuration/#onItemDeleted) event.
