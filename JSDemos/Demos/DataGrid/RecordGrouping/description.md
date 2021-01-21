@@ -1,6 +1,6 @@
 The **DataGrid** allows users to group data against a single column or multiple columns.
 
-To group data, users can drag and drop column headers onto and from the area above the grid. This area is called the [groupPanel](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/groupPanel/). Set its **visible** property to **true** when you need to show it. 
+To group data, users can drag and drop column headers onto and from the area above the grid. This area is called the [groupPanel](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/groupPanel/). Set its **visible** property to **true** to show it. 
 
 Users can reorder headers within the **groupPanel** to change group hierarchy. To enable this functionality, set the [allowColumnReordering](/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#allowColumnReordering) property to *"true"*. 
 
