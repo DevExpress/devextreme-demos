@@ -7,4 +7,4 @@ Execute an action on a focused element.
 Navigate within DataGrid elements.
 
 - **Ctrl** + **&uarr;** or **Ctrl** + **&darr;**            
-Navigate between column header, filter row, data area, filter panel, and pager.
+Navigate between a column header, filter row, data area, filter panel, and pager.
