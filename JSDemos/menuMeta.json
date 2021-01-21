@@ -2005,22 +2005,6 @@
             "Badge": "New"
           }
         ]
-      },
-      {
-        "Name": "Survey Example",
-        "Equivalents": "",
-        "Hidden": true,
-        "Demos": [
-          {
-            "Title": "Survey Example",
-            "Name": "SurveyExample",
-            "Widget": "HtmlEditor",
-            "MvcDescription": "",
-            "NetCoreDescription": "",
-            "MvcAdditionalFiles": [],
-            "DemoType": "Web"
-          }
-        ]
       }
     ]
   },
@@ -4153,7 +4137,6 @@
             "Title": "Formatting",
             "Name": "Formatting",
             "Equivalents": "mask",
-            "DocUrl": "ApiReference/UI_Widgets/dxDateBox/Configuration/#useMaskBehavior",
             "Widget": "DateBox"
           }
         ]
@@ -5559,7 +5542,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/Popup/Overview/",
             "Widget": "Popup",
             "MvcAdditionalFiles": [
               "/Models/DataGrid/Employee.cs",
