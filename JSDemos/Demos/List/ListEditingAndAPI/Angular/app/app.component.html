@@ -1,7 +1,7 @@
 <div id="list-api-demo">
     <div class="widget-container">
         <dx-list
-            [items]="tasks"
+            [dataSource]="tasks"
             [height]="400"
             [allowItemDeleting]="allowDeleting"
             [itemDeleteMode]="deleteType"
@@ -23,7 +23,7 @@
             </dx-check-box>
         </div>
         <div class="option">
-            <span>Deleting type</span>
+            <span>Item delete mode</span>
             <dx-select-box
                 [disabled]="!allowDeleting"
                 [items]="['static', 'toggle', 'slideButton', 'slideItem', 'swipe', 'context']"
