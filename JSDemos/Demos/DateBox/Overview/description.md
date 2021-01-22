@@ -22,4 +22,4 @@ Specifies whether the DateBox responds to user interaction.
 Dates that are not available for selection.
 
 - [applyValueMode](/Documentation/ApiReference/UI_Widgets/dxDateBox/Configuration/#applyValueMode)     
-Defines whether the selected value applies instantly or after a user clicks the Apply button.
+Defines whether the selected value applies instantly or after a user clicks the **Apply** button.
