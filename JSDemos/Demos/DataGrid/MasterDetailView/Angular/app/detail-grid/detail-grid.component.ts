@@ -5,8 +5,8 @@ import { Service, Task } from '../app.service';
 
 @Component({
     selector: 'detail-grid',
-    templateUrl: 'app/detailgrid/detail-grid.component.html',
-    styleUrls: ['app/detailgrid/detail-grid.component.css'],
+    templateUrl: 'app/detail-grid/detail-grid.component.html',
+    styleUrls: ['app/detail-grid/detail-grid.component.css'],
     providers: [Service]
 })
 export class DetailGridComponent implements AfterViewInit {

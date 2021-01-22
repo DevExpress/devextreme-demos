@@ -5,8 +5,8 @@ import * as AspNetData from "devextreme-aspnet-data-nojquery";
 
 @Component({
     selector: 'detail-grid',
-    templateUrl: 'app/detailgrid/detail-grid.component.html',
-    styleUrls: ['app/detailgrid/detail-grid.component.css'],
+    templateUrl: 'app/detail-grid/detail-grid.component.html',
+    styleUrls: ['app/detail-grid/detail-grid.component.css'],
     providers: []
 })
 export class DetailGridComponent implements AfterViewInit {
