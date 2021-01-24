@@ -16,7 +16,7 @@ export const owners = [{
   color: '#7b49d3'
 }];
 
-export const  priorities = [{
+export const priorities = [{
   text: 'High priority',
   id: 1,
   color: '#cc5c53'
@@ -26,7 +26,7 @@ export const  priorities = [{
   color: '#ff9747'
 }];
 
-export const  data = [{
+export const data = [{
   text: 'Google AdWords Strategy',
   startDate: new Date('2021-05-03T16:00:00.000Z'),
   endDate: new Date('2021-05-03T17:30:00.000Z'),

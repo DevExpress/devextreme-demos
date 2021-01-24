@@ -18,19 +18,19 @@ class App extends React.Component {
         defaultCurrentDate={currentDate}
         height={600}
         startDayHour={9}>
-          <Resource
-            dataSource={owners}
-            allowMultiple={true}
-            fieldExpr="ownerId"
-            label="Owner"
-            useColorAsDefault={true}
-          />
-          <Resource
-            dataSource={priorities}
-            allowMultiple={true}
-            fieldExpr="priorityId"
-            label="Priority"
-          />
+        <Resource
+          dataSource={owners}
+          allowMultiple={true}
+          fieldExpr="ownerId"
+          label="Owner"
+          useColorAsDefault={true}
+        />
+        <Resource
+          dataSource={priorities}
+          allowMultiple={true}
+          fieldExpr="priorityId"
+          label="Priority"
+        />
       </Scheduler>
     );
   }
