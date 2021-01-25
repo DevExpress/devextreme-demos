@@ -1,15 +1,37 @@
-﻿@model IEnumerable<DevExtreme.MVC.Demos.Models.Appointment>
+﻿@model DevExtreme.MVC.Demos.ViewModels.SchedulerResourcesViewModel
 
 @(Html.DevExtreme().Scheduler()
     .ID("scheduler")
-    .DataSource(Model)
+    .DataSource(Model.Appointments)
     .TimeZone("America/Los_Angeles")
     .Views(new[] { SchedulerViewType.Agenda })
     .CurrentView(SchedulerViewType.Agenda)
     .CurrentDate(new DateTime(2021, 5, 11))
+    .Resources(res =>
+    {
+        res.Add()
+            .FieldExpr("OwnerId")
+            .ValueExpr("Id")
+            .ColorExpr("Color")
+            .Label("Owner")
+            .DisplayExpr("Text")
+            .AllowMultiple(true)
+            .UseColorAsDefault(true)
+            .DataSource(Model.Owners);
+
+        res.Add()
+            .FieldExpr("PriorityId")
+            .ValueExpr("Id")
+            .ColorExpr("Color")
+            .Label("Priority")
+            .DisplayExpr("Text")
+            .AllowMultiple(true)
+            .DataSource(Model.Priorities);
+    })
     .StartDayHour(9)
     .Height(600)
     .TextExpr("Text")
     .StartDateExpr("StartDate")
     .EndDateExpr("EndDate")
+    .RecurrenceRuleExpr("RecurrenceRule")
 )
