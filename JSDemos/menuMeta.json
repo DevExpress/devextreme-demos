@@ -353,7 +353,6 @@
           {
             "Title": "Record Grouping",
             "Name": "RecordGrouping",
-            "DocUrl": "Guide/Widgets/DataGrid/Grouping/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridCustomersController.cs",
@@ -4975,13 +4974,11 @@
           {
             "Title": "Predefined Types",
             "Name": "PredefinedTypes",
-            "DocUrl": "Guide/Widgets/Button/Customize_the_Appearance/",
             "Widget": "Button"
           },
           {
             "Title": "Icons",
             "Name": "Icons",
-            "DocUrl": "Guide/Widgets/Button/Customize_the_Appearance/",
             "Widget": "Button"
           }
         ]
