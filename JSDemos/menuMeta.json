@@ -353,7 +353,6 @@
           {
             "Title": "Record Grouping",
             "Name": "RecordGrouping",
-            "DocUrl": "Guide/UI_Components/DataGrid/Grouping/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridCustomersController.cs",
@@ -3325,7 +3324,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           }
         ]
@@ -3341,7 +3344,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           },
           {
@@ -3351,7 +3358,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           }
         ]
@@ -3369,7 +3380,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           },
           {
@@ -3379,7 +3394,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           },
           {
@@ -3390,7 +3409,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           }
         ]
@@ -3406,7 +3429,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           }
         ]
@@ -4109,7 +4136,6 @@
             "Title": "Formatting",
             "Name": "Formatting",
             "Equivalents": "mask",
-            "DocUrl": "ApiReference/UI_Widgets/dxDateBox/Configuration/#useMaskBehavior",
             "Widget": "DateBox"
           }
         ]
@@ -4947,13 +4973,11 @@
           {
             "Title": "Predefined Types",
             "Name": "PredefinedTypes",
-            "DocUrl": "Guide/UI_Components/Button/Customize_the_Appearance/",
             "Widget": "Button"
           },
           {
             "Title": "Icons",
             "Name": "Icons",
-            "DocUrl": "Guide/UI_Components/Button/Customize_the_Appearance/",
             "Widget": "Button"
           }
         ]
@@ -5515,7 +5539,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/Popup/Overview/",
             "Widget": "Popup",
             "MvcAdditionalFiles": [
               "/Models/DataGrid/Employee.cs",
