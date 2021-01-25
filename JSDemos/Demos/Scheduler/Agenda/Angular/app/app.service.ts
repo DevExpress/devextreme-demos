@@ -7,6 +7,7 @@ export class Appointment {
     allDay?: boolean;
     ownerId: number;
     priorityId: number;
+    recurrenceRule?: string;
 }
 
 export class Owner {
@@ -146,6 +147,7 @@ let appointments: Appointment[] = [
         text: "Customer Feedback Report Analysis",
         startDate: new Date("2021-05-12T16:30:00.000Z"),
         endDate: new Date("2021-05-12T17:30:00.000Z"),
+        recurrenceRule: "FREQ=WEEKLY",
         ownerId: 4,
         priorityId: 2
     }, {
@@ -176,6 +178,7 @@ let appointments: Appointment[] = [
         text: "Upgrade Server Hardware",
         startDate: new Date("2021-05-13T19:00:00.000Z"),
         endDate: new Date("2021-05-13T21:15:00.000Z"),
+        recurrenceRule: "FREQ=WEEKLY",
         ownerId: 2,
         priorityId: 1
     }, {

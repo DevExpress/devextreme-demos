@@ -35,7 +35,11 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         }
 
         public ActionResult Agenda() {
-            return View(SampleData.AgendaTasks);
+            return View(new SchedulerResourcesViewModel {
+                Appointments = SampleData.AgendaTasks,
+                Owners = SampleData.OwnerResources,
+                Priorities = SampleData.PriorityResources
+            });
         }
 
         public ActionResult RecurringAppointments() {
