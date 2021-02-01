@@ -5063,7 +5063,6 @@
           {
             "Title": "List Editing and API",
             "Name": "ListEditingAndAPI",
-            "DocUrl": "Guide/Widgets/List/Item_Deletion/",
             "Widget": "List",
             "MvcAdditionalFiles": [
               "/Models/InMemoryListDataContext.cs",
