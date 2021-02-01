@@ -1,10 +1,8 @@
-The [List](/Documentation/ApiReference/UI_Widgets/dxList/) displays a collection of items as a scrollable list. To create a list, pass an array of items to **dataSource**. 
+The [List](/Documentation/ApiReference/UI_Widgets/dxList/) displays a collection of items as a scrollable list. To create a list, pass an array of items to the [dataSource](/Documentation/ApiReference/UI_Components/dxList/Configuration/#dataSource) property. 
 
-This demo illustrates deletion. The UI consists of the **List** and the "Options" section. 
+This demo illustrates item deletion. To allow users delete items, set the [allowItemDeleting](/Documentation/ApiReference/UI_Widgets/dxList/Configuration/#allowItemDeleting) property to **true**. Click the Allow deleting checkbox under the List to see how this property works.
 
-To allow users delete items, set the [allowItemDeleting](/Documentation/ApiReference/UI_Widgets/dxList/Configuration/#allowItemDeleting) property to *true*. Use the checkbox in the "Options" section to see how it works.
-
-The **List** supports three default and three additional deletion modes. You can see them in action in the "itemDeleteMode" dropdown menu of the "Options" section.
+The **List** supports several deletion modes listed below. Use the [itemDeleteMode](/Documentation/ApiReference/UI_Widgets/dxList/Configuration/#itemDeleteMode) property to set one of the modes. In this demo, you can select a deletion mode from the itemDeleteMode drop-down menu under the List.
 
 **Default modes**
     
@@ -13,14 +11,10 @@ When you select *"static"* mode, click an **X** button next to a list item to de
 **Additional modes**
 
 - *"slideButton"*    
-Users can swipe right to show the **delete** button next to the list item. The content stays in its place.    
+Swipe left or right to show the Delete button next to the list item. The content stays in its place.    
 
-- *"Toggle"*    
+- *"toggle"*    
 Click a **minus** icon next to a list item to display the **delete** button. 
 
 - *"context"*    
 Right-click or touch and hold the list item to call a context menu that contains the **delete** option.    
-
-Use the [itemDeleteMode](/Documentation/ApiReference/UI_Widgets/dxList/Configuration/#itemDeleteMode) property to set the deletion mode.
-
-When users delete a list item, it is removed from the "Selected tasks" section. This is done by a function that handles the [onItemDeleted](/Documentation/ApiReference/UI_Widgets/dxList/Configuration/#onItemDeleted) event.
