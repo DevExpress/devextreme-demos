@@ -5134,7 +5134,6 @@
           {
             "Title": "List Selection",
             "Name": "ListSelection",
-            "DocUrl": "Guide/UI_Components/List/Selection/",
             "Widget": "List",
             "MvcAdditionalFiles": [
               "/Models/ListItem.cs",
