@@ -5108,7 +5108,6 @@
           {
             "Title": "Item Template",
             "Name": "ItemTemplate",
-            "DocUrl": "Guide/UI_Components/List/Customize_Item_Appearance/",
             "Widget": "List",
             "MvcAdditionalFiles": [
               "/Models/ListProduct.cs",
