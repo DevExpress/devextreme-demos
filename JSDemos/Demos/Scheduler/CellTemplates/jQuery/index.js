@@ -1,6 +1,5 @@
 $(function () {
     $("#scheduler").dxScheduler({
-        timeZone: "America/Los_Angeles",
         dataSource: data,
         views: ["workWeek", "month"],
         currentView: "workWeek",
@@ -14,7 +13,7 @@ $(function () {
         dataCellTemplate: function(itemData, itemIndex, itemElement) {
             var date = itemData.startDate;
             var isDisabled = isHoliday(date) || isWeekend(date);
-            var element = $(`<div>${itemData.text}</div>`);
+            var element = $('<div>' + itemData.text + '</div>');
 
             if (isDisabled) {
                 element.addClass('disable-date');
@@ -26,7 +25,7 @@ $(function () {
         },
 
         dateCellTemplate: function(itemData, itemIndex, itemElement) {
-            var element = $(`<div>${itemData.text}</div>`);
+            var element = $('<div>' + itemData.text + '</div>');
 
             if (isWeekend(itemData.date)) {
                 element.addClass('disable-date');
@@ -36,7 +35,7 @@ $(function () {
         },
 
         timeCellTemplate: function(itemData, itemIndex, itemElement) {
-            var element = $(`<div>${itemData.text}</div>`);
+            var element = $('<div>' + itemData.text + '</div>');
             var date = itemData.date;
 
             if (isDinner(date)) {
