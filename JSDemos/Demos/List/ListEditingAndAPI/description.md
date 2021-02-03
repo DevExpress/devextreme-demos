@@ -2,7 +2,7 @@ The [List](/Documentation/ApiReference/UI_Components/dxList/) displays a collect
 
 To allow users to delete items, set the [allowItemDeleting](/Documentation/ApiReference/UI_Components/dxList/Configuration/#allowItemDeleting) property to **true**. Use the "Allow deletion" checkbox under the List to see how this property works.
 
-The "Deletion UI type" drop-down menu under the List widget allows you to switch between the different deletion behaviors described below. Menu items correspond to [itemDeleteMode](/Documentation/ApiReference/UI_Components/dxList/Configuration/#itemDeleteMode) property values. 
+The "Deletion UI type" drop-down menu under the List allows you to switch between the different deletion behaviors described below. Menu items correspond to [itemDeleteMode](/Documentation/ApiReference/UI_Components/dxList/Configuration/#itemDeleteMode) property values. 
     
 - *"static"* (default for desktops)    
 Click an X button next to a list item to delete it. 
