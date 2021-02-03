@@ -11,7 +11,7 @@ Click an X button next to a list item to delete it.
 Click a **minus** icon next to a list item to display the Delete button. 
 
 - *"slideButton"*    
-Swipe left or right to show the Delete button next to the list item. The content stays in place.  
+Swipe left or right to show the Delete button next to the list item. The content of the list item does not move.  
 
 - *"slideItem"* (default for iOS)    
 Slide list items left. Item content shifts and the Delete button appears. 
