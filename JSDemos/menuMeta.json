@@ -5085,7 +5085,7 @@
         "Equivalents": "ListView, TableView, ListBox, dxList, dx-list",
         "Demos": [
           {
-            "Title": "List Editing and API",
+            "Title": "Item Deletion UI",
             "Name": "ListEditingAndAPI",
             "Widget": "List",
             "MvcAdditionalFiles": [

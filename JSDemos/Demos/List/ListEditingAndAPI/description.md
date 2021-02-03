@@ -1,8 +1,8 @@
 The [List](/Documentation/ApiReference/UI_Components/dxList/) displays a collection of items as a scrollable list. To create a list, pass an array of items to the [dataSource](/Documentation/ApiReference/UI_Components/dxList/Configuration/#dataSource) property. 
 
-This demo illustrates item deletion. To allow users delete items, set the [allowItemDeleting](/Documentation/ApiReference/UI_Components/dxList/Configuration/#allowItemDeleting) property to **true**. Click the Allow deleting checkbox under the List to see how this property works.
+To allow users to delete items, set the [allowItemDeleting](/Documentation/ApiReference/UI_Components/dxList/Configuration/#allowItemDeleting) property to **true**. Use the "Allow deletion" checkbox under the List to see how this property works.
 
-The **List** supports several deletion modes listed below. Use the [itemDeleteMode](/Documentation/ApiReference/UI_Components/dxList/Configuration/#itemDeleteMode) property to set one of the modes. In this demo, you can select a deletion mode from the itemDeleteMode drop-down menu under the List.
+Use the "Deletion UI type" drop-down menu under the List widget to try different deletion behaviors described below. Menu items correspond to [itemDeleteMode](/Documentation/ApiReference/UI_Components/dxList/Configuration/#itemDeleteMode) property values. 
     
 - *"static"* (default for desktops)    
 Click an X button next to a list item to delete it. 
@@ -11,10 +11,10 @@ Click an X button next to a list item to delete it.
 Click a **minus** icon next to a list item to display the Delete button. 
 
 - *"slideButton"*    
-Swipe left or right to show the Delete button next to the list item. The content stays in its place.  
+Swipe left or right to show the Delete button next to the list item. The content stays in place.  
 
 - *"slideItem"* (default for iOS)    
-Slide list items left to show the Delete button. In this case, the list item is moved off the canvas. 
+Slide list items left. Item content shifts and the Delete button appears. 
 
 - *"swipe"* (default for Android)    
  Swipe items to delete them.
