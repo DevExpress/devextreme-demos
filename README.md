@@ -36,7 +36,7 @@ npm run prepare-all
 1. Prepare JavaScript demos for development:
 
     ```
-    npm run prepare-js:dev
+    npm run prepare-js
     ```
 
 1. Run the following script to add a new demo:
