@@ -5122,7 +5122,6 @@
           {
             "Title": "List with Search Bar",
             "Name": "ListWithSearchBar",
-            "DocUrl": "Guide/UI_Components/List/Searching/",
             "Widget": "List",
             "MvcAdditionalFiles": [
               "/Models/ListProduct.cs",
