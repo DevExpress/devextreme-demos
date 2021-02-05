@@ -16,8 +16,6 @@ package-lock.json
 
 *d.ts
 
-utils/reposPaths.js
-
 JSDemos/Demos/**/config.js
 
 MVCDemos/App_Data/Northwind.mdf
