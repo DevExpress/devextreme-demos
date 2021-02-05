@@ -1,4 +1,4 @@
-It is possible to display the **List** in groups under the following conditions:
+**List** can display items as a two-level hierarchy - parent and child items. To group items, set the [grouped](/Documentation/ApiReference/UI_Components/dxList/Configuration/#grouped) property to **true** and make sure that the data source defines the hierarchy in one of the following ways. 
 
 - The **List** data passed to the **dataSource** is structured so that each group is an object that contains two fields: **key** and **items**. The **key** field represents a group header, and the **items** field represents an array of group items.
 
