@@ -2,6 +2,7 @@
 
 
 const { src, dest, parallel } = require('gulp');
+const { existsSync } = require('fs');
 const clean = require('gulp-clean');
 const mercurialPath = require('../repository.config.json').hg;
 
@@ -9,7 +10,11 @@ if(!mercurialPath) {
     throw Error('Mercurial path is not specified. Look at repository.config.json');
 }
 
-const parallelTasks = [
+if(!existsSync(mercurialPath)) {
+    throw Error(`Specified mercurial ${mercurialPath} path doesn't exists.`);
+}
+
+exports.copyMercurialAspFiles = parallel(
     () => src('MVCDemos/AppData/*.ldf', { read: false }).pipe(clean()),
 
     () => src('SampleDatabases/Northwind.mdf', { cwd: mercurialPath })
@@ -31,8 +36,4 @@ const parallelTasks = [
 
     () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/.editorconfig', { cwd: mercurialPath })
         .pipe(dest('NetCoreDemos'))
-
-];
-
-exports.copyMercurialAspFiles = parallel.apply(this, parallelTasks);
-
+);

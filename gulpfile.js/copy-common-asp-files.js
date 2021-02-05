@@ -2,7 +2,7 @@
 
 const { src, dest, parallel } = require('gulp');
 
-const parallelTasks = [
+exports.copyCommonAspFiles = parallel(
     () => src([
         'node_modules/devextreme/dist/css/**/*',
         'node_modules/devexpress-diagram/dist/**/*.css',
@@ -30,6 +30,4 @@ const parallelTasks = [
     () => src('JSDemos/menuMeta.json') // TODO make link
         .pipe(dest('MVCDemos/App_Data'))
         .pipe(dest('NetCoreDemos'))
-];
-
-exports.copyCommonAspFiles = parallel.apply(this, parallelTasks);
+);
