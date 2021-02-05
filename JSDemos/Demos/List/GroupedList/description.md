@@ -6,7 +6,9 @@ You can use a **dataSource** where each entry is an object that contains two fie
 
 A data source can specify different field names as long as the data is structured in the same manner. If that's the case, implement the DataSource's [map](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#map) function to create **key** and **items** field mappings. Refer to the following help topic for more information: [Item Mapping](/Documentation/Guide/Data_Binding/Data_Layer/#Reading_Data/Data_Transformation/Item_Mapping).
 
-    In cases when the data source doesn't conform to the structure specified above, use the [DataSource](https://js.devexpress.com/Documentation/ApiReference/Data_Layer/DataSource/)'s [group](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#group) property to define the data field to group against. If data objects are grouped but use other field names, implement the DataSource's [map](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#map) function to create **key** + **items** field mappings. Refer to the following help topic for more information: [Item Mapping](/Documentation/Guide/Data_Binding/Data_Layer/#Reading_Data/Data_Transformation/Item_Mapping).
+### Grouping Field
+
+The data source can contain a plain list of objects with multiple fields. Assign a field to the [DataSource](https://js.devexpress.com/Documentation/ApiReference/Data_Layer/DataSource/)'s [group](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#group) property to create a hierarchical display. Parent items will display unique values from the specified field. Child items will display ... 
 
 - The [grouped](/Documentation/ApiReference/UI_Components/dxList/Configuration/#grouped) property is set to **true**.    
 
