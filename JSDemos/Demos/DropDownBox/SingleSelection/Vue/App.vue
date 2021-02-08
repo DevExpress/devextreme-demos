@@ -126,10 +126,10 @@ export default {
     gridBoxDisplayExpr(item) {
       return item && `${item.CompanyName } <${ item.Phone }>`;
     },
-    onTreeItemClick(e){
+    onTreeItemClick() {
       this.isTreeBoxOpened = false;
     },
-    onGridSelectionChanged(e){
+    onGridSelectionChanged() {
       this.isGridBoxOpened = false;
     }
   }

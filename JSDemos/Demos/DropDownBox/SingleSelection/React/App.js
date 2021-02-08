@@ -158,14 +158,14 @@ class App extends React.Component {
     e.component.selectItem(this.state.treeBoxValue);
   }
 
-  onTreeItemClick(e){
+  onTreeItemClick() {
     this.setState({
       isTreeBoxOpened: false
     });
   }
 
   onGridBoxOpened(e) {
-    if(e.name === "opened"){
+    if(e.name === 'opened') {
       this.setState({
         isGridBoxOpened: e.value
       });
@@ -173,7 +173,7 @@ class App extends React.Component {
   }
 
   onTreeBoxOpened(e) {
-    if(e.name === "opened"){
+    if(e.name === 'opened') {
       this.setState({
         isTreeBoxOpened: e.value
       });
