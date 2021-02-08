@@ -10,6 +10,8 @@ A data source can specify different field names as long as the data is structure
 
 The data source can contain a plain list of objects with multiple fields. Assign a field to the [DataSource](https://js.devexpress.com/Documentation/ApiReference/Data_Layer/DataSource/)'s [group](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#group) property to create a hierarchical display. Parent items will display unique values from the specified field. Child items will display grouped values. 
 
+### Group Display Settings
+
 - The [grouped](/Documentation/ApiReference/UI_Components/dxList/Configuration/#grouped) property is set to **true**.    
 
 If you need to make the groups collapsible, set the [collapsibleGroups](/Documentation/ApiReference/UI_Components/dxList/Configuration/#collapsibleGroups) to **true**. 
