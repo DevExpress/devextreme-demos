@@ -2,7 +2,7 @@
 
 ### Hierarchical Data Source Structure
 
-You can use a **dataSource** where each entry is an object that contains two fields: **key** and **items**. The **key** field specifies the group header (parent), and the **items** field holds an array of child items. This demo shows how to use such a data source.
+You can use a [dataSource](/Documentation/ApiReference/UI_Components/dxList/Configuration/#dataSource) where each entry is an object that contains two fields: **key** and **items**. The **key** field specifies the group header (parent), and the **items** field holds an array of child items. This demo shows how to use such a data source.
 
 A data source can specify different field names as long as the data is structured in the same manner. If that's the case, implement the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/)'s [map](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#map) function to create **key** and **items** field mappings. Refer to the following help topic for more information: [Item Mapping](/Documentation/Guide/Data_Binding/Data_Layer/#Reading_Data/Data_Transformation/Item_Mapping).
 
