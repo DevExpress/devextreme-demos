@@ -12,8 +12,6 @@ The data source can contain a plain list of objects with multiple fields. Assign
 
 ### Group Display Settings
 
-- The [grouped](/Documentation/ApiReference/UI_Components/dxList/Configuration/#grouped) property is set to **true**.    
-
 If you need to make the groups collapsible, set the [collapsibleGroups](/Documentation/ApiReference/UI_Components/dxList/Configuration/#collapsibleGroups) to **true**. 
 
 You can also customize the look of group headers. To do so, use the [groupTemplate](/Documentation/ApiReference/UI_Components/dxList/Configuration/#groupTemplate) property.
