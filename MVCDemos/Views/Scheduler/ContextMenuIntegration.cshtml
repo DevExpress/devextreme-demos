@@ -73,17 +73,7 @@
     .Disabled(true)
     .Width(200)
     .OnHiding("onContextMenuHiding")
-    .ItemTemplate(new JS(@"
-        function(itemData) {
-            var $template = $('<div></div>');
-
-            if(itemData.Color) {
-                $template.append(""<div class='appointment-badge' style='background-color:"" + itemData.Color + "";'></div>"");
-            }
-
-            $template.append(itemData.Text);
-            return $template;
-        }")
+    .ItemTemplate(new JS("contextMenuItemTemplate")
     )
 )
 
@@ -173,4 +163,15 @@
             RoomId: [clickEvent.itemData.Id]
         }));
     };
+
+    var contextMenuItemTemplate = function(itemData) {
+        var $template = $('<div></div>');
+
+        if(itemData.Color) {
+            $template.append("<div class='appointment-badge' style='background-color:" + itemData.Color + ";'></div>");
+        }
+
+        $template.append(itemData.Text);
+        return $template;
+    }
 </script>
