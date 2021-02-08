@@ -34,15 +34,11 @@ SchedulerViewType.Month
 @(Html.DevExtreme().SpeedDialAction()
         .ID("speedDialAction")
         .Icon("plus")
-        .OnClick(@<text>
-            function() {
-            getSchedulerInstance().showAppointmentPopup();
-            }
-        </text>)
+        .OnClick("onPlusClick")
 )
 
 <script>
-    function getSchedulerInstance() {
-        return $("#scheduler").dxScheduler("instance");
+    function onPlusClick(e) {
+        $("#scheduler").dxScheduler("instance").showAppointmentPopup();
     }
 </script>

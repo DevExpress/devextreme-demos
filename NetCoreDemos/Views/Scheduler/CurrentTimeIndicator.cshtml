@@ -24,29 +24,16 @@ SchedulerViewType.TimelineWeek
         .StartDateExpr("StartDate")
         .EndDateExpr("EndDate")
         .RecurrenceRuleExpr("RecurrenceRule")
-        .OnContentReady(@<text>
-            function(e) {
-            var currentHour = new Date().getHours() - 1;
-            e.component.scrollToTime(currentHour, 30, new Date());
-            }
+        .OnContentReady("onContentReady")
+        .OnAppointmentClick("onAppointmentClick")
+        .OnAppointmentDblClick("onAppointmentClick")
+        .AppointmentTemplate(@<text>
+            <% var movie = getMovieById(appointmentData.MovieId); %>
+            <div class="movie">
+                <img src="<%- movie.Image %>" alt="" />
+                <div class="movie-text"><%- movie.Text %></div>
+            </div>
         </text>)
-            .OnAppointmentClick(@<text>
-                function(e) {
-                e.cancel = true;
-                }
-            </text>)
-                .OnAppointmentDblClick(@<text>
-                    function(e) {
-                    e.cancel = true;
-                    }
-                </text>)
-                    .AppointmentTemplate(@<text>
-                        <% var movie = getMovieById(appointmentData.MovieId); %>
-                        <div class="movie">
-                            <img src="<%- movie.Image %>" alt="" />
-                            <div class="movie-text"><%- movie.Text %></div>
-                        </div>
-                    </text>)
 )
 
 <div class="options">
@@ -106,7 +93,16 @@ SchedulerViewType.TimelineWeek
 </div>
 
 <script>
-    var moviesData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Resources));
+    let moviesData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Resources));
+
+    function onContentReady(e) {
+        let currentHour = new Date().getHours() - 1;
+        e.component.scrollToTime(currentHour, 30, new Date());
+    }
+
+    function onAppointmentClick(e) {
+        e.cancel = true;
+    }
 
     function getSchedulerInstance() {
         return $("#scheduler").dxScheduler("instance");
