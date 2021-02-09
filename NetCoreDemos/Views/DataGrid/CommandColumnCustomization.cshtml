@@ -21,7 +21,7 @@
                     .Hint("Clone")
                     .Icon("repeat")
                     .Visible(new JS("isCloneIconVisible"))
-                    .OnClick("cloneIconClick");
+                    .OnClick("onCloneIconClick");
             });
 
         columns.Add()
@@ -50,8 +50,8 @@
             .DataType(GridColumnDataType.Date)
             .Width(125);
     })
-    .OnRowValidating("rowValidating")
-    .OnEditorPreparing("editorPreparing")
+    .OnRowValidating("onRowValidating")
+    .OnEditorPreparing("onEditorPreparing")
 )
 
 <script src="~/data/employeeData.js"></script>
@@ -70,7 +70,7 @@
         return !e.row.isEditing && !isChief(e.row.data.Position);
     }
 
-    function cloneIconClick(e) {
+    function onCloneIconClick(e) {
         var clonedItem = $.extend({}, e.row.data, { ID: ++maxID });
 
         employees.splice(e.row.rowIndex, 0, clonedItem);
@@ -78,7 +78,7 @@
         e.event.preventDefault();
     }
 
-    function rowValidating(e) {
+    function onRowValidating(e) {
         var position = e.newData.Position;
 
         if (isChief(position)) {
@@ -87,7 +87,7 @@
         }
     }
 
-    function editorPreparing(e) {
+    function onEditorPreparing(e) {
         if (e.parentType === "dataRow" && e.dataField === "Position") {
             e.editorOptions.readOnly = isChief(e.value);
         }

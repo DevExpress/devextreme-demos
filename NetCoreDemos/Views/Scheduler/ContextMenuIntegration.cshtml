@@ -29,32 +29,27 @@
             Color = r.Color,
             OnItemClick = new JS("setResource")
         })
-    );}
-
+    );
+}
 
 @(Html.DevExtreme().Scheduler()
     .ID("scheduler")
     .DataSource(Model.Appointments)
     .TimeZone("America/Los_Angeles")
-    .Views(new[] {
-        SchedulerViewType.Day,
-        SchedulerViewType.Month
-    })
+    .Views(new[] { SchedulerViewType.Day, SchedulerViewType.Month })
     .CurrentView(SchedulerViewType.Month)
     .CurrentDate(new DateTime(2021, 3, 25))
     .RecurrenceEditMode(SchedulerRecurrenceEditMode.Series)
     .StartDayHour(9)
     .FirstDayOfWeek(FirstDayOfWeek.Monday)
     .Groups(null)
-    .Resources(res =>
-        {
-            res.Add()
-            .FieldExpr("RoomId")
-            .ValueExpr("Id")
-            .ColorExpr("Color")
-            .DisplayExpr("Text")
-            .Label("Room")
-            .DataSource(resourcesData);
+    .Resources(res => { res.Add()
+        .FieldExpr("RoomId")
+        .ValueExpr("Id")
+        .ColorExpr("Color")
+        .DisplayExpr("Text")
+        .Label("Room")
+        .DataSource(resourcesData);
     })
     .OnCellContextMenu("onCellContextMenu")
     .OnAppointmentContextMenu("onAppointmentContextMenu")
@@ -71,9 +66,8 @@
     .Disabled(true)
     .Width(200)
     .OnHiding("onContextMenuHiding")
-    .ItemTemplate(new JS("contextMenuItemTemplate")
+    .ItemTemplate(new JS("contextMenuItemTemplate"))
 )
-
 
 <script>
     function onAppointmentContextMenu(e) {
@@ -96,33 +90,33 @@
         });
     }
 
-    var onContextMenuHiding = function (e) {
+    function onContextMenuHiding(e) {
         e.component.option({
             disabled: true,
             dataSource: []
         })
     }
 
-    var onItemClick = function (contextMenuEvent) {
+    function onItemClick(contextMenuEvent) {
         return function (e) {
             e.itemData.onItemClick(contextMenuEvent, e);
         }
     }
 
-    var createAppointment = function(e) {
+    function createAppointment(e) {
         e.component.showAppointmentPopup({
             StartDate: e.cellData.startDate
         }, true);
     };
 
-    var createRecurringAppointment = function (e) {
+    function createRecurringAppointment(e) {
         e.component.showAppointmentPopup({
             StartDate: e.cellData.startDate,
             RecurrenceRule: "FREQ=DAILY"
         }, true);
     };
 
-    var groupCell = function(e) {
+    function groupCell(e) {
         var scheduler = e.component;
 
         if(scheduler.option("groups")) {
@@ -132,19 +126,19 @@
         }
     };
 
-    var showCurrentDate = function(e) {
+    function showCurrentDate(e) {
         e.component.option("currentDate", new Date());
     };
 
-    var showAppointment = function(e) {
+    function showAppointment(e) {
         e.component.showAppointmentPopup(e.appointmentData);
     };
 
-    var deleteAppointment = function(e) {
+    function deleteAppointment(e) {
         e.component.deleteAppointment(e.appointmentData);
     };
 
-    var repeatAppointmentWeekly = function(e) {
+    function repeatAppointmentWeekly(e) {
         var itemData = e.appointmentData;
 
         e.component.updateAppointment(itemData, $.extend(itemData, {
@@ -153,7 +147,7 @@
         }));
     };
 
-    var setResource = function(e, clickEvent) {
+    function setResource(e, clickEvent) {
         var itemData = e.appointmentData;
 
         e.component.updateAppointment(itemData, $.extend(itemData, {
@@ -161,7 +155,7 @@
         }));
     };
 
-    var contextMenuItemTemplate = function(itemData) {
+    function contextMenuItemTemplate(itemData) {
         var $template = $('<div></div>');
 
         if(itemData.Color) {
