@@ -1,38 +1,33 @@
 @model DevExtreme.MVC.Demos.ViewModels.AdaptabilityAppointmentViewModel
 
 @(Html.DevExtreme().Scheduler()
-        .ID("scheduler")
-        .DataSource(Model.Appointments)
-        .TimeZone("America/Los_Angeles")
-        .Views(new[] {
-SchedulerViewType.Week,
-SchedulerViewType.Month
-        })
-        .CurrentView(SchedulerViewType.Month)
-        .CurrentDate(new DateTime(2021, 5, 25))
-        .AdaptivityEnabled(true)
-        .StartDayHour(9)
-        .Resources(res =>
-            {
-                res.Add()
-                .FieldExpr("PriorityId")
-                .ValueExpr("Id")
-                .ColorExpr("Color")
-                .Label("Room")
-                .DataSource(Model.Priorities);
-            })
-        .Height(590)
-        .TextExpr("Text")
-        .StartDateExpr("StartDate")
-        .EndDateExpr("EndDate")
-        .RecurrenceRuleExpr("RecurrenceRule")
-        .AllDayExpr("AllDay")
+    .ID("scheduler")
+    .DataSource(Model.Appointments)
+    .TimeZone("America/Los_Angeles")
+    .Views(new[] { SchedulerViewType.Week, SchedulerViewType.Month })
+    .CurrentView(SchedulerViewType.Month)
+    .CurrentDate(new DateTime(2021, 5, 25))
+    .AdaptivityEnabled(true)
+    .StartDayHour(9)
+    .Resources(res => { res.Add()
+        .FieldExpr("PriorityId")
+        .ValueExpr("Id")
+        .ColorExpr("Color")
+        .Label("Room")
+        .DataSource(Model.Priorities);
+    })
+    .Height(590)
+    .TextExpr("Text")
+    .StartDateExpr("StartDate")
+    .EndDateExpr("EndDate")
+    .RecurrenceRuleExpr("RecurrenceRule")
+    .AllDayExpr("AllDay")
 )
 
 @(Html.DevExtreme().SpeedDialAction()
-        .ID("speedDialAction")
-        .Icon("plus")
-        .OnClick("onPlusClick")
+    .ID("speedDialAction")
+    .Icon("plus")
+    .OnClick("onPlusClick")
 )
 
 <script>

@@ -3,21 +3,17 @@
 @(Html.DevExtreme().Scheduler()
     .ID("scheduler")
     .DataSource(Model.Appointments)
-    .Views(new[] {
-        SchedulerViewType.Week,
-        SchedulerViewType.TimelineWeek
-    })
+    .Views(new[] { SchedulerViewType.Week, SchedulerViewType.TimelineWeek })
     .CurrentView(SchedulerViewType.Week)
     .CurrentDate(DateTime.Today)
     .ShowCurrentTimeIndicator(true)
     .ShadeUntilCurrentTime(true)
     .ShowAllDayPanel(false)
     .Editing(false)
-    .Resources(res => {
-        res.Add()
-            .FieldExpr("MovieId")
-            .ValueExpr("Id")
-            .DataSource(Model.Resources);
+    .Resources(res => { res.Add()
+        .FieldExpr("MovieId")
+        .ValueExpr("Id")
+        .DataSource(Model.Resources);
     })
     .Height(600)
     .StartDateExpr("StartDate")
@@ -108,7 +104,7 @@
 
     function getMovieById(id) {
         return DevExpress.data.query(moviesData)
-                .filter("Id", id)
-                .toArray()[0]
+            .filter("Id", id)
+            .toArray()[0]
     }
 </script>

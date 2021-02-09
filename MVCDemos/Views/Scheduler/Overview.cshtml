@@ -15,32 +15,31 @@
     .ShowAllDayPanel(false)
     .Height(600)
     .Groups(new[] { "EmployeeID" })
-    .Resources(res => {
-        res.Add()
-            .FieldExpr("EmployeeID")
-            .ColorExpr("Color")
-            .DisplayExpr("Text")
-            .ValueExpr("Id")
-            .AllowMultiple(false)
-            .Label("Employee")
-            .DataSource(new[] {
-                new {
-                    Id = 1,
-                    Text = "John Heart",
-                    Color = "#56ca85",
-                    Avatar = "../../Content/images/gym/coach-man.png",
-                    Age = 27,
-                    Discipline = "ABS, Fitball, StepFit"
-                },
-                new {
-                    Id = 2,
-                    Text = "Sandra Johnson",
-                    Color = "#ff9747",
-                    Avatar = "../../Content/images/gym/coach-woman.png",
-                    Age = 25,
-                    Discipline = "ABS, Fitball, StepFit"
-                }
-            });
+    .Resources(res => { res.Add()
+        .FieldExpr("EmployeeID")
+        .ColorExpr("Color")
+        .DisplayExpr("Text")
+        .ValueExpr("Id")
+        .AllowMultiple(false)
+        .Label("Employee")
+        .DataSource(new[] {
+            new {
+                Id = 1,
+                Text = "John Heart",
+                Color = "#56ca85",
+                Avatar = "../../Content/images/gym/coach-man.png",
+                Age = 27,
+                Discipline = "ABS, Fitball, StepFit"
+            },
+            new {
+                Id = 2,
+                Text = "Sandra Johnson",
+                Color = "#ff9747",
+                Avatar = "../../Content/images/gym/coach-woman.png",
+                Age = 25,
+                Discipline = "ABS, Fitball, StepFit"
+            }
+        });
     })
     .DataCellTemplate(new JS("dataCellTemplate"))
     .ResourceCellTemplate(@<text>
