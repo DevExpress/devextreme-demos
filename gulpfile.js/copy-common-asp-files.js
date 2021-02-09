@@ -1,6 +1,6 @@
 'use strict';
 
-const { src, dest, parallel } = require('gulp');
+const { src, dest, symlink, parallel } = require('gulp');
 
 exports.copyCommonAspFiles = parallel(
     () => src([
@@ -28,6 +28,6 @@ exports.copyCommonAspFiles = parallel(
         .pipe(dest('NetCoreDemos/wwwroot/js')),
 
     () => src('JSDemos/menuMeta.json') // TODO make link
-        .pipe(dest('MVCDemos/App_Data'))
-        .pipe(dest('NetCoreDemos'))
+        .pipe(symlink('MVCDemos/App_Data'))
+        .pipe(symlink('NetCoreDemos'))
 );

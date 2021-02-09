@@ -1,7 +1,7 @@
 'use strict';
 
 
-const { src, dest, parallel } = require('gulp');
+const { src, dest, symlink, parallel } = require('gulp');
 const { existsSync } = require('fs');
 const clean = require('gulp-clean');
 const mercurialPath = require('../repository.config.json').hg;
@@ -11,7 +11,7 @@ if(!mercurialPath) {
 }
 
 if(!existsSync(mercurialPath)) {
-    throw Error(`Specified mercurial ${mercurialPath} path doesn't exists.`);
+    throw Error(`Specified mercurial path (${mercurialPath}) doesn't exists.`);
 }
 
 exports.copyMercurialAspFiles = parallel(
@@ -20,18 +20,18 @@ exports.copyMercurialAspFiles = parallel(
     () => src('SampleDatabases/Northwind.mdf', { cwd: mercurialPath })
         .pipe(dest('MVCDemos/App_Data')),
 
-    () => src('SampleImages/**/*', { cwd: mercurialPath })// TODO was link
+    () => src('SampleImages/**/*', { cwd: mercurialPath })
         .pipe(dest('MVCDemos/Content/SampleData/SampleImages'))
         .pipe(dest('NetCoreDemos/wwwroot/SampleData/SampleImages')),
 
-    () => src('Demos/WidgetsGallery/WidgetsGallery/build/demo-template.css', { cwd: mercurialPath }) // TODO was link
-        .pipe(dest('MVCDemos/Content'))
-        .pipe(dest('NetCoreDemos/wwwroot/css')),
+    () => src('Demos/WidgetsGallery/WidgetsGallery/build/demo-template.css', { cwd: mercurialPath })
+        .pipe(symlink('MVCDemos/Content'))
+        .pipe(symlink('NetCoreDemos/wwwroot/css')),
 
-    () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/wwwroot/DemoShell/**/*', { cwd: mercurialPath })// TODO was link
+    () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/wwwroot/DemoShell/**/*', { cwd: mercurialPath })
         .pipe(dest('NetCoreDemos/wwwroot/DemoShell')),
 
-    () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/DemoShell/**/*', { cwd: mercurialPath })// TODO was link
+    () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/DemoShell/**/*', { cwd: mercurialPath })
         .pipe(dest('NetCoreDemos/DemoShell')),
 
     () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/.editorconfig', { cwd: mercurialPath })
