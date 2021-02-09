@@ -53,6 +53,11 @@
         .SelectionMode(NavSelectionMode.Single)
         .SelectByClick(true)
         .Height(235)
+        .OnItemClick(@<text>
+            function(args) {
+                component.close();
+            }
+        </text>)
         .OnItemSelectionChanged(@<text>
             function(args) {
                 component.option("value", args.component.getSelectedNodeKeys());
@@ -86,6 +91,7 @@
             function(selectedItems) {
                 var keys = selectedItems.selectedRowKeys;
                 component.option("value", keys);
+                component.close();
             }
         </text>)
     )
