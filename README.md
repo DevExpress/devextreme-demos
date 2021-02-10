@@ -49,11 +49,12 @@ npm run prepare-all
 
 ## ASP.NET Demos
 
+1. Set `hg` property in repository.config.json
+
 1. Prepare ASP.NET demos for launch and development:
 
     ```
     npm run prepare-mvc
-    npm run prepare-netcore
     ```
 
 1. Open the ASP.NET or ASP.NET Core project in Visual Studio and add or edit demos there.
