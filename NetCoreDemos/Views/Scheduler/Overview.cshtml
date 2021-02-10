@@ -15,49 +15,33 @@
     .ShowAllDayPanel(false)
     .Height(600)
     .Groups(new[] { "EmployeeID" })
-    .Resources(res => {
-        res.Add()
-            .FieldExpr("EmployeeID")
-            .ColorExpr("Color")
-            .DisplayExpr("Text")
-            .ValueExpr("Id")
-            .AllowMultiple(false)
-            .Label("Employee")
-            .DataSource(new[] {
-                new {
-                    Id = 1,
-                    Text = "John Heart",
-                    Color = "#56ca85",
-                    Avatar = "../../images/gym/coach-man.png",
-                    Age = 27,
-                    Discipline = "ABS, Fitball, StepFit"
-                },
-                new {
-                    Id = 2,
-                    Text = "Sandra Johnson",
-                    Color = "#ff9747",
-                    Avatar = "../../images/gym/coach-woman.png",
-                    Age = 25,
-                    Discipline = "ABS, Fitball, StepFit"
-                }
-            });
+    .Resources(res => { res.Add()
+        .FieldExpr("EmployeeID")
+        .ColorExpr("Color")
+        .DisplayExpr("Text")
+        .ValueExpr("Id")
+        .AllowMultiple(false)
+        .Label("Employee")
+        .DataSource(new[] {
+            new {
+                Id = 1,
+                Text = "John Heart",
+                Color = "#56ca85",
+                Avatar = "../../images/gym/coach-man.png",
+                Age = 27,
+                Discipline = "ABS, Fitball, StepFit"
+            },
+            new {
+                Id = 2,
+                Text = "Sandra Johnson",
+                Color = "#ff9747",
+                Avatar = "../../images/gym/coach-woman.png",
+                Age = 25,
+                Discipline = "ABS, Fitball, StepFit"
+            }
+        });
     })
-    .DataCellTemplate(new JS(@"
-        function dataCellTemplate(cellData, index, container) {
-            var employeeID = cellData.groups.EmployeeID,
-                currentTraining = getCurrentTraining(cellData.startDate.getDate(), employeeID);
-
-            var wrapper = $('<div>')
-                .toggleClass('employee-weekend-' + employeeID, isWeekEnd(cellData.startDate)).appendTo(container)
-                .addClass('employee-' + employeeID)
-                .addClass('dx-template-wrapper');
-
-            wrapper.append($('<div>')
-                .text(cellData.text)
-                .addClass(currentTraining)
-                .addClass('day-cell')
-            );
-    }"))
+    .DataCellTemplate(new JS("dataCellTemplate"))
     .ResourceCellTemplate(@<text>
         <div>
             <div class="name" style="background-color: <%- data.Color %>;">
@@ -76,14 +60,28 @@
 
 <script>
     function isWeekEnd(date) {
-        var day = date.getDay();
+        let day = date.getDay();
         return day === 0 || day === 6;
     }
 
     function getCurrentTraining(date, employeeID) {
-        var result = (date + employeeID) % 3,
-            currentTraining = "training-background-" + result;
+        let result = (date + employeeID) % 3;
+        let currentTraining = "training-background-" + result;
 
         return currentTraining;
+    }
+
+    function dataCellTemplate(cellData, index, container) {
+        let employeeID = cellData.groups.EmployeeID;
+        let currentTraining = getCurrentTraining(cellData.startDate.getDate(), employeeID);
+        let wrapper = $('<div>')
+            .toggleClass('employee-weekend-' + employeeID, isWeekEnd(cellData.startDate)).appendTo(container)
+            .addClass('employee-' + employeeID)
+            .addClass('dx-template-wrapper');
+        wrapper.append($('<div>')
+            .text(cellData.text)
+            .addClass(currentTraining)
+            .addClass('day-cell')
+        );
     }
 </script>

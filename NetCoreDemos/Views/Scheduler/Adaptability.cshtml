@@ -1,20 +1,15 @@
 ﻿@model DevExtreme.NETCore.Demos.ViewModels.AdaptabilityAppointmentViewModel
 
 @(Html.DevExtreme().Scheduler()
-        .ID("scheduler")
-        .DataSource(Model.Appointments)
-        .TimeZone("America/Los_Angeles")
-        .Views(new[] {
-SchedulerViewType.Week,
-SchedulerViewType.Month
-        })
-        .CurrentView(SchedulerViewType.Month)
-        .CurrentDate(new DateTime(2021, 5, 25))
-        .AdaptivityEnabled(true)
-        .StartDayHour(9)
-        .Resources(res =>
-            {
-                res.Add()
+    .ID("scheduler")
+    .DataSource(Model.Appointments)
+    .TimeZone("America/Los_Angeles")
+    .Views(new[] { SchedulerViewType.Week, SchedulerViewType.Month })
+    .CurrentView(SchedulerViewType.Month)
+    .CurrentDate(new DateTime(2021, 5, 25))
+    .AdaptivityEnabled(true)
+    .StartDayHour(9)
+    .Resources(res => { res.Add()
         .FieldExpr("PriorityId")
         .ValueExpr("Id")
         .ColorExpr("Color")
@@ -22,27 +17,23 @@ SchedulerViewType.Month
         .DisplayExpr("Text")
         .AllowMultiple(true)
         .DataSource(Model.Priorities);
-            })
-        .Height(590)
-        .TextExpr("Text")
-        .StartDateExpr("StartDate")
-        .EndDateExpr("EndDate")
-        .RecurrenceRuleExpr("RecurrenceRule")
-        .AllDayExpr("AllDay")
+    })
+    .Height(590)
+    .TextExpr("Text")
+    .StartDateExpr("StartDate")
+    .EndDateExpr("EndDate")
+    .RecurrenceRuleExpr("RecurrenceRule")
+    .AllDayExpr("AllDay")
 )
 
 @(Html.DevExtreme().SpeedDialAction()
-        .ID("speedDialAction")
-        .Icon("plus")
-        .OnClick(@<text>
-            function() {
-            getSchedulerInstance().showAppointmentPopup();
-            }
-        </text>)
+    .ID("speedDialAction")
+    .Icon("plus")
+    .OnClick("onPlusClick")
 )
 
 <script>
-    function getSchedulerInstance() {
-        return $("#scheduler").dxScheduler("instance");
+    function onPlusClick(e) {
+        $("#scheduler").dxScheduler("instance").showAppointmentPopup();
     }
 </script>
