@@ -17,7 +17,13 @@ if(!existsSync(mercurialPath)) {
 }
 
 function runMvcBuild(callback) {
-    systemSync(`call ${join(mercurialPath, 'DevExtreme.AspNet.Mvc', 'build.cmd')}`);
+    systemSync(`${join(mercurialPath, 'DevExtreme.AspNet.Mvc', 'build.cmd')}`);
+    callback();
+}
+
+function restorePackages(callback) {
+    systemSync(`${join(mercurialPath, '.nuget', 'NuGet.exe')} restore ${join('MVCDemos', 'DevExtreme.MVC.Demos.sln')}`);
+    systemSync('dotnet restore NetCoreDemos');
     callback();
 }
 
@@ -25,6 +31,8 @@ exports.copyMercurialAspFiles = series(
     runMvcBuild,
     parallel(
         () => src('MVCDemos/AppData/*.ldf', { read: false }).pipe(clean()),
+
+        () => src('NetCoreDemos/project.lock.json', { read: false, allowEmpty: true }).pipe(clean()),
 
         () => src('SampleDatabases/Northwind.mdf', { cwd: mercurialPath })
             .pipe(dest('MVCDemos/App_Data')),
@@ -51,4 +59,6 @@ exports.copyMercurialAspFiles = series(
 
         () => src('DevExtreme.AspNet.Mvc/AspNetCore/NuGet/**/*', { cwd: mercurialPath })
             .pipe(dest('NetCoreDemos/Nuget')),
-    ));
+    ),
+    restorePackages
+);
