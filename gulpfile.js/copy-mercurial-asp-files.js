@@ -8,12 +8,16 @@ const clean = require('gulp-clean');
 const mercurialPath = require('../repository.config.json').hg;
 const { systemSync } = require('../utils/shared/child-process-utils');
 
-if(!mercurialPath) {
-    throw Error('Mercurial path is not specified. Look at repository.config.json');
-}
+function checkMercurialPath(callback) {
+    if(!mercurialPath) {
+        throw Error('Mercurial path is not specified. Look at repository.config.json');
+    }
 
-if(!existsSync(mercurialPath)) {
-    throw Error(`Specified mercurial path (${mercurialPath}) doesn't exists.`);
+    if(!existsSync(mercurialPath)) {
+        throw Error(`Specified mercurial path (${mercurialPath}) doesn't exists.`);
+    }
+
+    callback();
 }
 
 function runMvcBuild(callback) {
@@ -28,6 +32,7 @@ function restorePackages(callback) {
 }
 
 exports.copyMercurialAspFiles = series(
+    checkMercurialPath,
     runMvcBuild,
     parallel(
         () => src('MVCDemos/AppData/*.ldf', { read: false }).pipe(clean()),
