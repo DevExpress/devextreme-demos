@@ -26,7 +26,8 @@ function runMvcBuild(callback) {
 }
 
 function restorePackages(callback) {
-    systemSync(`${join(mercurialPath, '.nuget', 'NuGet.exe')} restore ${join('MVCDemos', 'DevExtreme.MVC.Demos.sln')}`);
+    const nuget = join(mercurialPath, '.nuget', 'NuGet.exe');
+    systemSync(`${nuget} restore ${join('MVCDemos', 'DevExtreme.MVC.Demos.sln')}`);
     systemSync('dotnet restore NetCoreDemos');
     callback();
 }
