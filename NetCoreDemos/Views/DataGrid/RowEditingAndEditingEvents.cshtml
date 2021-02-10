@@ -59,7 +59,7 @@
         @(Html.DevExtreme().Button()
             .ID("clear")
             .Text("Clear")
-            .OnClick(@<text> function() { $("#events ul").empty(); } </text>)
+            .OnClick("onClearClick")
         )
     </div>
     <ul></ul>
@@ -71,5 +71,9 @@
             newItem = $("<li>", { text: eventName });
 
         logList.prepend(newItem);
+    }
+
+    function onClearClick() {
+        $("#events ul").empty();
     }
 </script>
