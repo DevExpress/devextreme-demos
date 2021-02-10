@@ -15,6 +15,7 @@ NuGet
 package-lock.json
 
 *d.ts
+gulpfile.js/.eslintrc.js
 
 JSDemos/Demos/**/config.js
 
