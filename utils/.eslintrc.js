@@ -70,6 +70,7 @@ module.exports = {
             }
         ],
         'quotes': ['error', 'single'],
+        'node/no-unpublished-require': 0,
         'node/no-unsupported-features/node-builtins': ['error', {
             'version': '>=10.0.0',
             'ignores': []
