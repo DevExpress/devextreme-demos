@@ -26,7 +26,7 @@
             o.DataTypes(new[] { FilterBuilderFieldDataType.Date });
             o.Icon("check");
             o.HasValue(false);
-            o.CalculateFilterExpression("function() { return [[getOrderDay, '=', 0], 'or', [getOrderDay, '=', 6]]; }");
+            o.CalculateFilterExpression("calculateFilterExpression");
         })
         .AllowHierarchicalFields(true))
     .FilterBuilderPopup(p =>
@@ -73,6 +73,9 @@
 )
 
 <script>
+    function calculateFilterExpression() {
+        return [[getOrderDay, '=', 0], 'or', [getOrderDay, '=', 6]];
+    }
     function getOrderDay(rowData) {
         return (new Date(rowData.OrderDate)).getDay();
     }

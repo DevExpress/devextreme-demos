@@ -4,16 +4,7 @@
         .Text("Delete Selected Records")
         .Height(34)
         .Disabled(true)
-        .OnClick(@<text>
-            function () {
-                var dataGrid = $("#gridContainer").dxDataGrid("instance");
-                $.when.apply($, dataGrid.getSelectedRowsData().map(function(data) {
-                    return dataGrid.getDataSource().store().remove(data.ID);
-                })).done(function() {
-                    dataGrid.refresh();
-                });
-            }
-        </text>)
+        .OnClick("onDeleteBtnClick")
     )
 
     @(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.DataGrid.Employee>()
@@ -25,12 +16,7 @@
             editing.AllowUpdating(true);
         })
         .Selection(selection => selection.Mode(SelectionMode.Multiple))
-        .OnSelectionChanged(@<text>
-            function(data) {
-                var deleteButton = $("#gridDeleteSelected").dxButton("instance");
-                deleteButton.option("disabled", !data.selectedRowsData.length);
-            }
-        </text>)
+        .OnSelectionChanged("onSelectionChanged")
         .Columns(columns => {
             columns.AddFor(m => m.Prefix)
                 .Width(55);
@@ -55,3 +41,19 @@
         .DataSource(d => d.WebApi().Controller("DataGridEmployees").UpdateAction(true).DeleteAction(true).Key("ID"))
     )
 </div>
+
+<script>
+    function onDeleteBtnClick(){
+        let dataGrid = $("#gridContainer").dxDataGrid("instance");
+        $.when.apply($, dataGrid.getSelectedRowsData().map(function(data) {
+            return dataGrid.getDataSource().store().remove(data.ID);
+        })).done(function() {
+            dataGrid.refresh();
+        });
+    }
+
+    function onSelectionChanged(data){
+        let deleteButton = $("#gridDeleteSelected").dxButton("instance");
+        deleteButton.option("disabled", !data.selectedRowsData.length);
+    }
+</script>
