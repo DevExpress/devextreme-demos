@@ -1854,7 +1854,7 @@
             "Equivalents": "customization, disable dates, work hours",
             "MvcAdditionalFiles": [
               "/Models/Appointment.cs",
-              "/Models/SampleData/Appointments.cs"
+              "/Models/SampleData/AppointmentsWorkHours.cs"
             ],
             "DemoType": "Web"
           },
@@ -5085,9 +5085,8 @@
         "Equivalents": "ListView, TableView, ListBox, dxList, dx-list",
         "Demos": [
           {
-            "Title": "List Editing and API",
+            "Title": "Item Deletion UI",
             "Name": "ListEditingAndAPI",
-            "DocUrl": "Guide/UI_Components/List/Item_Deletion/",
             "Widget": "List",
             "MvcAdditionalFiles": [
               "/Models/InMemoryListDataContext.cs",
@@ -5099,7 +5098,6 @@
           {
             "Title": "Grouped List",
             "Name": "GroupedList",
-            "DocUrl": "Guide/UI_Components/List/Grouping/In_the_Data_Source/",
             "Widget": "List",
             "MvcAdditionalFiles": [
               "/Models/SampleData/ListGroupedData.cs"
@@ -5108,7 +5106,6 @@
           {
             "Title": "Item Template",
             "Name": "ItemTemplate",
-            "DocUrl": "Guide/UI_Components/List/Customize_Item_Appearance/",
             "Widget": "List",
             "MvcAdditionalFiles": [
               "/Models/ListProduct.cs",
@@ -5124,7 +5121,6 @@
           {
             "Title": "List with Search Bar",
             "Name": "ListWithSearchBar",
-            "DocUrl": "Guide/UI_Components/List/Searching/",
             "Widget": "List",
             "MvcAdditionalFiles": [
               "/Models/ListProduct.cs",
@@ -5134,7 +5130,6 @@
           {
             "Title": "List Selection",
             "Name": "ListSelection",
-            "DocUrl": "Guide/UI_Components/List/Selection/",
             "Widget": "List",
             "MvcAdditionalFiles": [
               "/Models/ListItem.cs",
@@ -5159,7 +5154,6 @@
           {
             "Title": "Web API Service",
             "Name": "WebApi",
-            "DocUrl": "Guide/Data_Binding/Specify_a_Data_Source/Web_API,_PHP,_MongoDB/",
             "MvcDocUrl": "https://docs.devexpress.com/DevExtremeAspNetMvc/400704/concepts/data-binding",
             "NetCoreDocUrl": "https://docs.devexpress.com/AspNetCore/400575/concepts/devextreme-based-controls/data-binding",
             "Equivalents": "webapi",
