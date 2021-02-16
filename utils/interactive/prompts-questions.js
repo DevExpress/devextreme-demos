@@ -214,15 +214,6 @@ const askLinkRepositories = async() => {
     return prompts(getLinkRepositoriesQuestions(), { onCancel });
 };
 
-const askHGPath = async() => {
-    return prompts({
-        type: 'text',
-        name: 'hgPath',
-        message: 'Please specify the location of the Tortoise HG repository:'
-    }, { onCancel });
-};
-
-
 const askRepositoryPath = async(repositoryName) => {
     return prompts({
         type: 'text',
@@ -231,7 +222,6 @@ const askRepositoryPath = async(repositoryName) => {
         message: 'Specify the location of the `' + repositoryName + '` repository:'
     }, { onCancel });
 };
-
 
 module.exports = {
     getCategoryQuestions,
@@ -244,7 +234,6 @@ module.exports = {
     askDemoToUpdate,
     askApproaches,
     askWidget,
-    askHGPath,
     askRepositoryPath,
     getDemoQuestions,
     getApproachesQuestions,
