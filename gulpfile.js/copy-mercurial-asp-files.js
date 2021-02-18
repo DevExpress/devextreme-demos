@@ -2,9 +2,10 @@
 
 
 const { src, dest, symlink, parallel, series } = require('gulp');
-const { existsSync } = require('fs');
+const { existsSync, readFileSync } = require('fs');
 const { join } = require('path');
 const clean = require('gulp-clean');
+const replace = require('gulp-replace');
 const mercurialPath = require('../repository.config.json').hg;
 const { systemSync } = require('../utils/shared/child-process-utils');
 
@@ -32,9 +33,31 @@ function restorePackages(callback) {
     callback();
 }
 
+function changeNetCoreVersion() {
+    const projectAssetsPath = join(
+        mercurialPath,
+        'DevExtreme.AspNet.Mvc',
+        'AspNetCore',
+        'DevExtreme.AspNet.Core',
+        'obj',
+        'project.assets.json'
+    );
+
+    if(!existsSync(projectAssetsPath)) {
+        throw new Error(`NetCore assets path ${projectAssetsPath} does not exists`);
+    }
+
+    const version = JSON.parse(readFileSync(projectAssetsPath)).project.version;
+
+    return src('NetCoreDemos/DevExtreme.NETCore.Demos.csproj')
+        .pipe(replace(/("DevExtreme.AspNet.Core"\s*Version=")(\d+\.\d+\.\d+).*?(?=")/, `$1${version}`))
+        .pipe(dest('NetCoreDemos'));
+}
+
 exports.copyMercurialAspFiles = series(
     checkMercurialPath,
     runMvcBuild,
+    changeNetCoreVersion,
     parallel(
         () => src('MVCDemos/AppData/*.ldf', { read: false }).pipe(clean()),
         () => src('SampleDatabases/Northwind.mdf', { cwd: mercurialPath })
