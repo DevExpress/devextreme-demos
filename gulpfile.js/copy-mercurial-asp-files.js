@@ -73,13 +73,13 @@ exports.copyMercurialAspFiles = series(
             .pipe(symlink('MVCDemos/Content'))
             .pipe(symlink('NetCoreDemos/wwwroot/css')),
 
-        () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/wwwroot/DemoShell/**/*', { cwd: mercurialPath })
+        () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/wwwroot/DemoShell/**/*', { cwd: mercurialPath, removeBOM: false })
             .pipe(dest('NetCoreDemos/wwwroot/DemoShell')),
 
-        () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/DemoShell/**/*', { cwd: mercurialPath })
+        () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/DemoShell/**/*', { cwd: mercurialPath, removeBOM: false })
             .pipe(dest('NetCoreDemos/DemoShell')),
 
-        () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/.editorconfig', { cwd: mercurialPath })
+        () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/.editorconfig', { cwd: mercurialPath, removeBOM: false })
             .pipe(dest('NetCoreDemos')),
 
         () => src('DevExtreme.AspNet.Mvc/Bin/**/*', { cwd: mercurialPath })
