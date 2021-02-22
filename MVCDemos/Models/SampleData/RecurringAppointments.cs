@@ -38,7 +38,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 StartDate = "2021-02-24T18:00:00.000Z",
                 EndDate = "2021-02-24T19:00:00.000Z",
                 RecurrenceRule = "FREQ=YEARLY;BYWEEKNO=14",
-                RecurrenceException = "20210411T180000Z"
+                RecurrenceException = "20210411T170000Z"
             },
             new RecurringAppointment {
                 Text = "Final exams",

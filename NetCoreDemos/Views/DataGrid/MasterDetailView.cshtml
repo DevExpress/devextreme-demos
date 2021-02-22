@@ -41,7 +41,7 @@
                     columns.Add()
                         .Caption("Completed")
                         .DataType(GridColumnDataType.Boolean)
-                        .CalculateCellValue(@"function(rowData) { return rowData.Status == ""Completed""; }");
+                        .CalculateCellValue("calculateCellValue");
                 })
                 .DataSource(d => d.Mvc()
                     .Controller("DataGridMasterDetailView")
@@ -52,3 +52,9 @@
         </text>);
     })
 )
+
+<script>
+    function calculateCellValue(rowData) {
+        return rowData.Status === "Completed";
+    }
+</script>

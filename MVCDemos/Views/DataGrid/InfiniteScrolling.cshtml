@@ -1,11 +1,6 @@
 ﻿@(Html.DevExtreme().DataGrid()
     .ID("gridContainer")
-    .CustomizeColumns(@<text>
-        function(columns) {
-            columns[0].width = 70;
-            columns[4].dataType = "date";
-        }
-    </text>)
+    .CustomizeColumns("customizeColumns")
     .LoadPanel(loadPanel => loadPanel.Enabled(false))
     .Scrolling(scrolling => scrolling.Mode(GridScrollingMode.Infinite))
     .RemoteOperations(true)
@@ -13,3 +8,10 @@
     .DataSource(d => d.WebApi().Controller("DataGridScrolling").Key("Id"))
     .ShowBorders(true)
 )
+
+<script>
+    function customizeColumns(columns) {
+        columns[0].width = 70;
+        columns[4].dataType = "date";
+    }
+</script>

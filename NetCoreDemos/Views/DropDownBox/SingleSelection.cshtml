@@ -55,6 +55,11 @@
         .SelectionMode(NavSelectionMode.Single)
         .SelectByClick(true)
         .Height(235)
+        .OnItemClick(@<text>
+            function(args) {
+                component.close();
+            }
+        </text>)
         .OnItemSelectionChanged(@<text>
             function(args) {
                 component.option("value", args.component.getSelectedNodeKeys());
@@ -80,7 +85,7 @@
         .HoverStateEnabled(true)
         .Paging(p => p.PageSize(10))
         .FilterRow(f => f.Visible(true))
-        .Scrolling(s => s.Mode(GridScrollingMode.Infinite))
+        .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
         .Height(345)
         .Selection(s => s.Mode(SelectionMode.Single))
         .SelectedRowKeys(new JS(@"[component.option(""value"")]"))
@@ -88,6 +93,7 @@
             function(selectedItems) {
                 var keys = selectedItems.selectedRowKeys;
                 component.option("value", keys);
+                component.close();
             }
         </text>)
     )
