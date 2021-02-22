@@ -3,7 +3,7 @@ A group summary  creates a synopsis for a column data in a group. Adding this fe
 This demo groups the sales data by the *"Employee"* column. Each group has summaries that do the following:
 
 1. Count the number of orders         
-The quantity is displayed in the parantheses after the group caption (the default position).
+The quantity is displayed in the parentheses  after the group caption (the default position).
 
 1. Determine the maximum sale amount           
 The value is shown in the *"Sale Amount"* column of the group row.
