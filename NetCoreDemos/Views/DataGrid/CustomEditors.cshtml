@@ -35,15 +35,7 @@
                 .DisplayExpr("FullName")
             )
             .CellTemplate(new JS("cellTemplate"))
-            .CalculateFilterExpression(@<text>
-                function(filterValue, selectedFilterOperation, target) {
-                    if(target === "search" && typeof(filterValue) === "string") {
-                        return [this.dataField, "contains", filterValue]
-                    }
-                    return function(data) {
-                        return (data.AssignedEmployee || []).indexOf(filterValue) !== -1
-                    }
-                }</text>)
+            .CalculateFilterExpression("calculateFilterExpression")
             .EditCellTemplate(new TemplateName("TagBoxTemplate"))
             .Width(200);
         columns.AddFor(m => m.Subject);
@@ -116,6 +108,15 @@
                 return options.column.lookup.calculateCellValue(element);
             }).join(", ");
         container.text(text || noBreakSpace).attr("title", text);
+    }
+
+    function calculateFilterExpression(filterValue, selectedFilterOperation, target) {
+        if(target === "search" && typeof(filterValue) === "string") {
+            return [this.dataField, "contains", filterValue]
+        }
+        return function(data) {
+            return (data.AssignedEmployee || []).indexOf(filterValue) !== -1
+        }
     }
 
     function onSelectionChanged(selectionChangedArgs, component) {

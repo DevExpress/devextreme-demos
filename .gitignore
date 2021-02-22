@@ -15,8 +15,7 @@ NuGet
 package-lock.json
 
 *d.ts
-
-utils/reposPaths.js
+gulpfile.js/.eslintrc.js
 
 JSDemos/Demos/**/config.js
 

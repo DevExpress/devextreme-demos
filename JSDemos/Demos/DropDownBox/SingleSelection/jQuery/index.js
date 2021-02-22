@@ -50,6 +50,7 @@ $(function(){
             
             e.component.on("valueChanged", function(args){
                 syncTreeViewSelection(treeView, args.value);
+                e.component.close();
             });
             
             return $treeView;
@@ -74,7 +75,7 @@ $(function(){
                     hoverStateEnabled: true,
                     paging: { enabled: true, pageSize: 10 },
                     filterRow: { visible: true },
-                    scrolling: { mode: "infinite" },
+                    scrolling: { mode: "virtual" },
                     selection: { mode: "single" },
                     selectedRowKeys: [value],
                     height: "100%",
@@ -90,6 +91,7 @@ $(function(){
             
             e.component.on("valueChanged", function(args){
                 dataGrid.selectRows(args.value, false);
+                e.component.close();
             });
             
             return $dataGrid;

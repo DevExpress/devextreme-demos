@@ -1,1 +1,1 @@
-This example demonstrates the **DataGrid** widget communicating with a Web API service. Most of the **DataGrid** features are enabled, including the master-detail interface, header filter, summary, editing, and many more.
+This example demonstrates the DataGrid UI component communicating with a Web API service. Most of the DataGrid features are enabled, including the master-detail interface, header filter, summary, editing, and many more.
