@@ -4,6 +4,8 @@ This demo has summaries that do the following:
 
 1. Count the number of orders (summaryType of *"count"*)
 
-2. Determine the date of the first order (summaryType of *"min"*). This summary also customizes the displayed text in the [customizeText](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#customizeText) property
+2. Determine the date of the first order (summaryType of *"min"*)
    
-3. Calculate the total revenue (summaryType of *"sum"*). This summary also sets the value's display format in the [valueFormat](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#valueFormat) property.
+3. Calculate the total revenue (summaryType of *"sum"*).
+
+The second and the third demos use the [customizeText](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#customizeText) and [valueFormat](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#valueFormat) properties to customize the displayed text and set the value's display format, respectively.
