@@ -8,4 +8,4 @@ This demo has summaries that do the following:
    
 3. Calculate the total revenue (summaryType of *"sum"*).
 
-The second and the third demos use the [customizeText](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#customizeText) and [valueFormat](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#valueFormat) properties to customize the displayed text and set the value's display format, respectively.
+The second and the third summaries use the [customizeText](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#customizeText) and [valueFormat](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#valueFormat) properties to customize the displayed text and set the display format, respectively.
