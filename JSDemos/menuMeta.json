@@ -690,7 +690,7 @@
         "Equivalents": "",
         "Demos": [
           {
-            "Title": "Grid Summaries",
+            "Title": "Total Summaries",
             "Name": "GridSummaries",
             "DocUrl": "Guide/Widgets/DataGrid/Summaries/Total_Summary/",
             "Widget": "DataGrid",

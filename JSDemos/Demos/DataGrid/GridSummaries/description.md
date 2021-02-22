@@ -1,1 +1,9 @@
-The **DataGrid** widget allows you to&nbsp;display data summaries within its container. This example illustrates the use of&nbsp;total summaries. The demo is&nbsp;configured using the **totalItems** array declared within the **summary** object. This array contains several objects that specify summary settings for each item.
+A total summary provides a synopsis for all data of a certain column. To configure this feature, add the [summary](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/) object, instatiate the **summary**.[totalItems](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/) array and add summary objects. Each object must consist of at least the [column](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#column) and [summaryType](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#summaryType) properties. The former specifies the column that supplies data, the latter sets the aggregate function that applies to this data.
+
+This demo has summaries that do the following:
+
+1. Count the number of orders (summaryType of *"count"*)
+
+2. Determine the date of the first order (summaryType of *"min"*). This summary also customizes the displayed text in the [customizeText](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#customizeText) property
+   
+3. Calculate the total revenue (summaryType of *"sum"*). This summary also sets the value's display format in the [valueFormat](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#valueFormat) property.
