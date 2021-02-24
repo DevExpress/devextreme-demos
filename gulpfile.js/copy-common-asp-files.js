@@ -17,11 +17,11 @@ exports.copyCommonAspFiles = parallel(
 
     () => src([
         'node_modules/devextreme/dist/js/**/*',
-        'node_modules/globalize/dist/**/*',
-        'node_modules/cldrjs/dist/**/*',
+        'node_modules/globalize/dist/**/+(currency|date|message|number|globalize).js',
+        'node_modules/cldrjs/dist/**/!(node_main.js)',
         'node_modules/devextreme-aspnet-data/js/**/**',
-        'node_modules/jquery/dist/**/*',
-        'node_modules/jszip/dist/**/*',
+        'node_modules/jquery/dist/jquery.js',
+        'node_modules/jszip/dist/jszip.js',
         'node_modules/devexpress-diagram/dist/**/*.js',
         'node_modules/devexpress-gantt/dist/**/*.js'
     ])
