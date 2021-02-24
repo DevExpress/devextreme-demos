@@ -76,6 +76,7 @@
         "fs-extra": "^9.1.0",
         "gulp": "^4.0.2",
         "gulp-clean": "^0.4.0",
+        "gulp-minify": "^3.1.0",
         "gulp-replace": "^1.0.0",
         "http-server": "latest",
         "jest": "^26.6.3",
