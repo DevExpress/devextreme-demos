@@ -1,11 +1,12 @@
-A total summary creates a synopsis for all data of a certain column. To configure this feature, add the [summary](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/) object, instatiate the **summary**.[totalItems](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/) array and add summary objects. Each object must consist of at least the [column](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#column) and [summaryType](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#summaryType) properties. The former specifies the column that supplies data, the latter sets the aggregate function that applies to this data.
+A total summary creates a synopsis for all data of a certain column. To configure this feature, populate the [summary](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/).[totalItems](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/) array with summary configuration objects. Each object should specify a [column](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#column) that supplies data for summary calculation and a [summaryType](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#summaryType)&mdash;an aggregate function that should be applied to this data.
 
-This demo has summaries that do the following:
+This demo illustrates the following total summaries:
 
-1. Count the number of orders (summaryType of *"count"*)
+- **Total number of orders**             
+This summary uses the *"count"* **summaryType**.
 
-2. Determine the date of the first order (summaryType of *"min"*)
+- **Date of the first order**              
+This summary uses the *"min"* **summaryType** and the [customizeText](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#customizeText) function that formats the displayed summary value.
    
-3. Calculate the total revenue (summaryType of *"sum"*).
-
-The second and the third summaries use the [customizeText](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#customizeText) and [valueFormat](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#valueFormat) properties to customize the displayed text and set the display format, respectively.
+- **Total revenue**        
+This summary uses the *"sum"* **summaryType** and the [valueFormat](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#valueFormat) property to format the summary value as currency.
