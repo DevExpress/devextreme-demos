@@ -1,20 +1,18 @@
-A group summary  creates a synopsis for a column data in a group. Adding this feature is similar to that of total summaries, except that you should use the **summary**.[groupItems[]](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/groupItems/) instead of **summary**.[totalItems[]](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/). Each array object must consist of at least the [column](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/groupItems/#column) and [summaryType](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/groupItems/#summaryType) properties.
+A group summary creates a synopsis for a column data in a group. Adding this feature is similar to that of total summaries, except that you should use the **summary**.[groupItems[]](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/groupItems/) instead of **summary**.[totalItems[]](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/). Each array object should consist of the [column](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/groupItems/#column) and [summaryType](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/groupItems/#summaryType) properties.
 
-This demo groups the sales data by the *"Employee"* column. Each group has summaries that do the following:
+This demo groups the sales data by the *"Employee"* column. Each group displays the following summaries:
 
-1. Count the number of orders         
-The quantity is displayed in the parentheses  after the group caption (the default position).
+- Number of orders         
+The summary is displayed in the parentheses after the group caption (the default position).
 
-1. Determine the maximum sale amount           
-The value is shown in the *"Sale Amount"* column of the group row.
+- Maximum sale amount           
+The summary is displayed in the *"Sale Amount"* column of the group row. To align summaries by the corresponding columns within the group row, use the [alignByColumn](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/groupItems/#alignByColumn) property.
 
-1. Determine the maximum total amount           
-The value is shown in the *"Total Amount"* column of the group row.
+- Maximum total amount           
+The summary is displayed in the *"Total Amount"* column of the group row.
 
-1. Calculate the sum of the *"Total Amount"* column values              
-The sum is displayed in the group footer.
-
-To display summaries in the group footer and specified columns within the group row, set the summary object's [showInGroupFooter](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/groupItems/#showInGroupFooter) and [alignByColumn](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/groupItems/#alignByColumn) properties to **true** as done in this demo. You can also display summaries in a certain column within the footer. For this, enable showInGroupFooter and specify the column in the 
+- Sum of total amounts              
+The summary is displayed in the group footer. To display summaries there, set the [showInGroupFooter](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/groupItems/#showInGroupFooter) property to **true**. You can also display summaries in a certain column within the footer. For this, enable showInGroupFooter and specify the column in the 
 [showInColumn](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/groupItems/#showInColumn) property.
 
-Groups can be sorted by the summary values. To configure this feature, add the [sortByGroupSummaryInfo](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/sortByGroupSummaryInfo/) object and specify the compulsory [summaryItem](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/sortByGroupSummaryInfo/#summaryItem) property. In this demo, we have sorted the groups by the summary that counts the number of  orders. 
+Groups can be sorted by the summary values. To configure this feature, add the [sortByGroupSummaryInfo](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/sortByGroupSummaryInfo/) object and specify the compulsory [summaryItem](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/sortByGroupSummaryInfo/#summaryItem) property. In this demo, we have sorted the groups by the summary that displays the number of orders. 
