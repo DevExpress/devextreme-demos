@@ -1620,7 +1620,6 @@
           {
             "Title": "Simple Array",
             "Name": "SimpleArray",
-            "DocUrl": "Guide/UI_Components/Scheduler/Overview/",
             "Widget": "Scheduler",
             "DemoType": "Web"
           },
