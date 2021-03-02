@@ -1672,7 +1672,6 @@
           {
             "Title": "Basic Views",
             "Name": "BasicViews",
-            "DocUrl": "Guide/UI_Components/Scheduler/Views/View_Types/",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/Appointment.cs",
