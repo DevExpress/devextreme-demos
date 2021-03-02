@@ -59,7 +59,7 @@ describe('Config helper tests', () => {
         });
 
         expect(fs.readFileSync).toHaveBeenCalledTimes(1);
-        expect(fs.readFileSync).toHaveBeenCalledWith(configPath);
+        expect(fs.readFileSync).toHaveBeenCalledWith(configPath, 'utf8');
         expect(fs.writeFileSync).toHaveBeenCalledTimes(0);
     });
 

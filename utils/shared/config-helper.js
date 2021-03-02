@@ -24,7 +24,7 @@ const updateConfig = (configObject) => {
 
 const init = () => {
     if(existsSync(configPath)) {
-        return JSON.parse(readFileSync(configPath), 'utf8');
+        return JSON.parse(readFileSync(configPath, 'utf8'));
     } else {
         updateConfig(config);
         return config;
