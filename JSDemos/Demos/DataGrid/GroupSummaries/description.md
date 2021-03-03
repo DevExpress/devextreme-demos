@@ -2,13 +2,13 @@ A group summary creates a synopsis for records in a group. To configure this fea
 
 ### Position a Group Summary
 
-The default position for group summaries are the parentheses after the group caption. You can change the position to one of the following:
+Group summaries are displayed in parentheses after the group caption. You can reposition them as follows:
 
 
-* Group row's column
+* Display a summary in a column          
 You can align a summary with the column by which it was calculated (see the Sale Amount and Total Amount columns). To do this, enable the [alignByColumn](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/groupItems/#alignByColumn) property. If you want to align a summary with a column of your choice, specify it in the [showInColumn](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/groupItems/#showInColumn) property.
 
-* Group footer
+* Move a summary to the group footer       
 To position a summary in the group footer, enable the [showInGroupFooter](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/groupItems/#showInGroupFooter) property. The summary will be aligned with the column by which it was calculated (see the Total Amount column). If you want to use another column, specify it in the [showInColumn](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/groupItems/#showInColumn) property.
 
 ### Format Summary Values
