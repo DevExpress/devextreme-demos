@@ -73,6 +73,10 @@ namespace DevExtreme.NETCore.Demos {
             services.AddSingleton<StockTicker>();
             services.AddSingleton<TickDataService>();
 
+            services.AddAntiforgery(options => {
+                options.SuppressXFrameOptionsHeader = true;
+            });
+
 #if DEBUG
             services.AddScoped<DemoMenuMeta>();
 #else
