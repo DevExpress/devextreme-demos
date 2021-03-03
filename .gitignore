@@ -13,6 +13,8 @@ NuGet
 *.ldf
 *proj.user
 package-lock.json
+repository.config.json
+coverage
 
 *d.ts
 gulpfile.js/.eslintrc.js
