@@ -130,7 +130,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
             },
             new ListTaskItem {
                 ID = 25,
-                Text = "Review Training Course for any Ommissions",
+                Text = "Review Training Course for any Omissions",
                 Sort = 20
             },
             new ListTaskItem {
