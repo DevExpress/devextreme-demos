@@ -167,7 +167,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 EndDate = "2021-05-27T20:00:00.000Z"
             },
             new EmployeeAppointment {
-                Text = "Review Training Course for any Ommissions",
+                Text = "Review Training Course for any Omissions",
                 Priority = Priority.Low,
                 StartDate = "2021-05-27T18:00:00.000Z",
                 EndDate = "2021-05-27T21:00:00.000Z"
