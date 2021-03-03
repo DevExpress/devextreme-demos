@@ -48,7 +48,7 @@ export const data = [
     startDate: new Date('2020-11-01T17:30:00.000Z'),
     endDate: new Date('2020-11-01T21:00:00.000Z'),
     recurrenceRule: 'FREQ=YEARLY;BYYEARDAY=333'
-}
+  }
 ];
 
 export const resourcesData = [
