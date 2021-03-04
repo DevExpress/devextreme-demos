@@ -1,6 +1,4 @@
-This demo shows how two users can edit the Scheduler's appointments simultaneously. A <a href="https://dotnet.microsoft.com/apps/aspnet/signalr" target="blank">SignalR</a> service is used to broadcast push notifications.
-
-Each Scheduler is bound to an individual store to emulate the situation when Schedulers are being edited on two different clients. Changes made in one Scheduler are repeated in the other and persist until the browser session has expired.
+This demo shows how you can use a <a href="https://dotnet.microsoft.com/apps/aspnet/signalr" target="blank">SignalR</a> service to synchronize appointments across different devices. Each Scheduler is bound to an individual store to emulate the situation when Schedulers are being edited on two different clients. Changes made in one Scheduler are repeated in the other and persist until the browser session has expired.
 
 To implement this functionality, follow the steps below:
 
