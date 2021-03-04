@@ -1,4 +1,4 @@
-The Agenda view shows appointments in a stack. This view does not render timetable cells. This allows the Scheduler to save screen space and display appointments more compactly.
+The Agenda view shows appointments as a simple list. This view does not render timetable cells. This allows the Scheduler to save screen space and display appointments more compactly.
 
 To add the Agenda view to your Scheduler, declare it in the [views](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/views/) array.
 
