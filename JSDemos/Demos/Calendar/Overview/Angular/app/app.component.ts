@@ -23,9 +23,9 @@ export class AppComponent {
     now: Date = new Date();
     currentValue: Date = new Date();
     firstDay: number = 0;
-    minDateValue: Date = null;
-    maxDateValue: Date = null;
-    disabledDates: Function = null;
+    minDateValue: Date | null = null;
+    maxDateValue: Date | null = null;
+    disabledDates: Function | null = null;
     zoomLevels: string[] = [
         "month", "year", "decade", "century"
     ];
