@@ -1709,7 +1709,6 @@
           {
             "Title": "Current Time Indicator",
             "Name": "CurrentTimeIndicator",
-            "DocUrl": "Guide/UI_Components/Scheduler/Current_Time_Indication/",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/DynamicAppointment.cs",
