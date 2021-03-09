@@ -65,89 +65,89 @@
     </text>)
     .Toolbar(toolbar => toolbar.Items(
         items => {
-            items.Add().FormatName(HtmlEditorToolbarItem.Undo);
+            items.Add().Name(HtmlEditorToolbarItem.Undo);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.Redo);
+            items.Add().Name(HtmlEditorToolbarItem.Redo);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.Separator);
-
-            items.Add()
-                .FormatName("size")
-                .FormatValues(new[] { "8pt", "10pt", "12pt", "14pt", "18pt", "24pt", "36pt" });
+            items.Add().Name(HtmlEditorToolbarItem.Separator);
 
             items.Add()
-                .FormatName("font")
-                .FormatValues(new[] { "Arial", "Courier New", "Georgia", "Impact", "Lucida Console", "Tahoma", "Times New Roman", "Verdana" });
-
-            items.Add().FormatName(HtmlEditorToolbarItem.Separator);
-
-            items.Add().FormatName(HtmlEditorToolbarItem.Bold);
-
-            items.Add().FormatName(HtmlEditorToolbarItem.Italic);
-
-            items.Add().FormatName(HtmlEditorToolbarItem.Strike);
-
-            items.Add().FormatName(HtmlEditorToolbarItem.Underline);
-
-            items.Add().FormatName(HtmlEditorToolbarItem.Separator);
-
-            items.Add().FormatName(HtmlEditorToolbarItem.AlignLeft);
-
-            items.Add().FormatName(HtmlEditorToolbarItem.AlignCenter);
-
-            items.Add().FormatName(HtmlEditorToolbarItem.AlignRight);
-
-            items.Add().FormatName(HtmlEditorToolbarItem.AlignJustify);
-
-            items.Add().FormatName(HtmlEditorToolbarItem.Separator);
-
-            items.Add().FormatName(HtmlEditorToolbarItem.OrderedList);
-
-            items.Add().FormatName(HtmlEditorToolbarItem.BulletList);
-
-            items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+                .Name("size")
+                .AcceptedValues(new[] { "8pt", "10pt", "12pt", "14pt", "18pt", "24pt", "36pt" });
 
             items.Add()
-                .FormatName("header")
-                .FormatValues(new JS("[false, 1, 2, 3, 4, 5]"));
+                .Name("font")
+                .AcceptedValues(new[] { "Arial", "Courier New", "Georgia", "Impact", "Lucida Console", "Tahoma", "Times New Roman", "Verdana" });
 
-            items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+            items.Add().Name(HtmlEditorToolbarItem.Separator);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.Color);
+            items.Add().Name(HtmlEditorToolbarItem.Bold);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.Background);
+            items.Add().Name(HtmlEditorToolbarItem.Italic);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+            items.Add().Name(HtmlEditorToolbarItem.Strike);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.Link);
+            items.Add().Name(HtmlEditorToolbarItem.Underline);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.Image);
+            items.Add().Name(HtmlEditorToolbarItem.Separator);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+            items.Add().Name(HtmlEditorToolbarItem.AlignLeft);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.Clear);
+            items.Add().Name(HtmlEditorToolbarItem.AlignCenter);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.CodeBlock);
+            items.Add().Name(HtmlEditorToolbarItem.AlignRight);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.Blockquote);
+            items.Add().Name(HtmlEditorToolbarItem.AlignJustify);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+            items.Add().Name(HtmlEditorToolbarItem.Separator);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.InsertTable);
+            items.Add().Name(HtmlEditorToolbarItem.OrderedList);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.DeleteTable);
+            items.Add().Name(HtmlEditorToolbarItem.BulletList);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.InsertRowAbove);
+            items.Add().Name(HtmlEditorToolbarItem.Separator);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.InsertRowBelow);
+            items.Add()
+                .Name("header")
+                .AcceptedValues(new JS("[false, 1, 2, 3, 4, 5]"));
 
-            items.Add().FormatName(HtmlEditorToolbarItem.DeleteRow);
+            items.Add().Name(HtmlEditorToolbarItem.Separator);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.InsertColumnLeft);
+            items.Add().Name(HtmlEditorToolbarItem.Color);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.InsertColumnRight);
+            items.Add().Name(HtmlEditorToolbarItem.Background);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.DeleteColumn);
+            items.Add().Name(HtmlEditorToolbarItem.Separator);
+
+            items.Add().Name(HtmlEditorToolbarItem.Link);
+
+            items.Add().Name(HtmlEditorToolbarItem.Image);
+
+            items.Add().Name(HtmlEditorToolbarItem.Separator);
+
+            items.Add().Name(HtmlEditorToolbarItem.Clear);
+
+            items.Add().Name(HtmlEditorToolbarItem.CodeBlock);
+
+            items.Add().Name(HtmlEditorToolbarItem.Blockquote);
+
+            items.Add().Name(HtmlEditorToolbarItem.Separator);
+
+            items.Add().Name(HtmlEditorToolbarItem.InsertTable);
+
+            items.Add().Name(HtmlEditorToolbarItem.DeleteTable);
+
+            items.Add().Name(HtmlEditorToolbarItem.InsertRowAbove);
+
+            items.Add().Name(HtmlEditorToolbarItem.InsertRowBelow);
+
+            items.Add().Name(HtmlEditorToolbarItem.DeleteRow);
+
+            items.Add().Name(HtmlEditorToolbarItem.InsertColumnLeft);
+
+            items.Add().Name(HtmlEditorToolbarItem.InsertColumnRight);
+
+            items.Add().Name(HtmlEditorToolbarItem.DeleteColumn);
         })
     )
     .MediaResizing(m => m.Enabled(true))

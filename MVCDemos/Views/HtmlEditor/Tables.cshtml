@@ -36,40 +36,40 @@
     .Toolbar(toolbar => toolbar.Items(
         items => {
             items.Add()
-                .FormatName("header")
-                .FormatValues(new JS("[false, 1, 2, 3, 4, 5]"));
+                .Name("header")
+                .AcceptedValues(new JS("[false, 1, 2, 3, 4, 5]"));
 
-            items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+            items.Add().Name(HtmlEditorToolbarItem.Separator);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.Bold);
+            items.Add().Name(HtmlEditorToolbarItem.Bold);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.Color);
+            items.Add().Name(HtmlEditorToolbarItem.Color);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+            items.Add().Name(HtmlEditorToolbarItem.Separator);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.AlignLeft);
+            items.Add().Name(HtmlEditorToolbarItem.AlignLeft);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.AlignCenter);
+            items.Add().Name(HtmlEditorToolbarItem.AlignCenter);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.AlignRight);
+            items.Add().Name(HtmlEditorToolbarItem.AlignRight);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+            items.Add().Name(HtmlEditorToolbarItem.Separator);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.InsertTable);
+            items.Add().Name(HtmlEditorToolbarItem.InsertTable);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.DeleteTable);
+            items.Add().Name(HtmlEditorToolbarItem.DeleteTable);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.InsertRowAbove);
+            items.Add().Name(HtmlEditorToolbarItem.InsertRowAbove);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.InsertRowBelow);
+            items.Add().Name(HtmlEditorToolbarItem.InsertRowBelow);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.DeleteRow);
+            items.Add().Name(HtmlEditorToolbarItem.DeleteRow);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.InsertColumnLeft);
+            items.Add().Name(HtmlEditorToolbarItem.InsertColumnLeft);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.InsertColumnRight);
+            items.Add().Name(HtmlEditorToolbarItem.InsertColumnRight);
 
-            items.Add().FormatName(HtmlEditorToolbarItem.DeleteColumn);
+            items.Add().Name(HtmlEditorToolbarItem.DeleteColumn);
         })
     )
 )
