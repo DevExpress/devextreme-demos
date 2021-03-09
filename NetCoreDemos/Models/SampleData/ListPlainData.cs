@@ -163,7 +163,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
             },
             new ListItem {
                 ID = 40,
-                Text = "Review Training Course for any Ommissions"
+                Text = "Review Training Course for any Omissions"
             },
             new ListItem {
                 ID = 41,
