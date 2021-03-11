@@ -8,8 +8,8 @@ DataGrid can calculate custom summaries on the client or server side. In this de
 
 1. Specify the summary's [name](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/totalItems/#name). It will be used to identify the summary item within the **calculateCustomSummary** function in the next step.
 
-1. Calculate the resulting value in the [calculateCustomSummary](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/#calculateCustomSummary) function. Implement the necessary calculation stages as described in the function's description.
+1. Calculate the resulting value in the [calculateCustomSummary](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/#calculateCustomSummary) function. Implement the necessary calculation stages. See the function's description for details.
 
-In this example, the custom summary displays the sum of sale amounts for selected rows only. To recalculate the resulting value on each selection change, the [refresh()](/Documentation/ApiReference/UI_Components/dxDataGrid/Methods/#refresh) method is called within the [onSelectionChanged](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/#onSelectionChanged) handler.
+The custom summary in this example calculates the sum of sale amounts for selected rows. To recalculate the resulting value on selection change, the code calls the [refresh()](/Documentation/ApiReference/UI_Components/dxDataGrid/Methods/#refresh) method in the [onSelectionChanged](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/#onSelectionChanged) handler.
 
-Client-side custom summaries are suitable if your dataset is small. For large datasets, we recommend that you use [Server-Side Data Aggregation](/Documentation/Guide/UI_Components/DataGrid/Summaries/Custom_Aggregate_Function/#Server-Side_Data_Aggregation).
+Client-side custom summaries are suitable for small datasets. If your tests show that client-side calculations result in noticeable lags, we recommend that you use [Server-Side Data Aggregation](/Documentation/Guide/UI_Components/DataGrid/Summaries/Custom_Aggregate_Function/#Server-Side_Data_Aggregation).
