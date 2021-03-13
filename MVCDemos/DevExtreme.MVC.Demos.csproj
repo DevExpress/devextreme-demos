@@ -55,8 +55,8 @@
     <Reference Include="CommonMark, Version=0.1.0.0, Culture=neutral, PublicKeyToken=001ef8810438905d, processorArchitecture=MSIL">
       <HintPath>packages\CommonMark.NET.0.15.1\lib\net45\CommonMark.dll</HintPath>
     </Reference>
-    <Reference Include="DevExtreme.AspNet.Data, Version=2.8.0.0, Culture=neutral, PublicKeyToken=982f5dab1439d0f7, processorArchitecture=MSIL">
-      <HintPath>packages\DevExtreme.AspNet.Data.2.8.0\lib\net452\DevExtreme.AspNet.Data.dll</HintPath>
+    <Reference Include="DevExtreme.AspNet.Data, Version=2.8.2.0, Culture=neutral, PublicKeyToken=982f5dab1439d0f7, processorArchitecture=MSIL">
+      <HintPath>packages\DevExtreme.AspNet.Data.2.8.2\lib\net452\DevExtreme.AspNet.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="DevExtreme.AspNet.Mvc">
