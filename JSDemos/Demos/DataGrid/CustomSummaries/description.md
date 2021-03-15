@@ -10,6 +10,6 @@ The DataGrid can calculate custom summaries on the client or server side. In thi
 
 1. Calculate the resulting value in the [calculateCustomSummary](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/summary/#calculateCustomSummary) function. Implement the necessary calculation stages. See the function's description for details.
 
-The custom summary in this example calculates the sum of sale amounts for selected rows. To recalculate the resulting value on selection change, the code calls the [refresh()](/Documentation/ApiReference/UI_Components/dxDataGrid/Methods/#refresh) method in the [onSelectionChanged](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/#onSelectionChanged) handler.
+The custom summary in this example calculates the sum of sale amounts for selected rows. To recalculate the resulting value when selection is changed, the code calls the [refresh()](/Documentation/ApiReference/UI_Components/dxDataGrid/Methods/#refresh) method in the [onSelectionChanged](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/#onSelectionChanged) handler.
 
 Client-side custom summaries are suitable for small datasets. If your tests show that client-side calculations result in noticeable lags, we recommend that you use [Server-Side Data Aggregation](/Documentation/Guide/UI_Components/DataGrid/Summaries/Custom_Aggregate_Function/#Server-Side_Data_Aggregation).
