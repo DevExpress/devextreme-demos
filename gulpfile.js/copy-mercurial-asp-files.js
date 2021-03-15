@@ -1,13 +1,15 @@
 'use strict';
 
 
-const { src, dest, symlink, parallel, series } = require('gulp');
+const { src, dest, parallel, series } = require('gulp');
 const { existsSync, readFileSync } = require('fs');
 const { join } = require('path');
 const clean = require('gulp-clean');
 const replace = require('gulp-replace');
-const mercurialPath = require('../repository.config.json').hg;
 const { systemSync } = require('../utils/shared/child-process-utils');
+const { init } = require('../utils/shared/config-helper');
+
+const mercurialPath = init().hg;
 
 function checkMercurialPath(callback) {
     if(!mercurialPath) {
@@ -70,8 +72,8 @@ exports.copyMercurialAspFiles = series(
             .pipe(dest('NetCoreDemos/wwwroot/SampleData/SampleImages')),
 
         () => src('Demos/WidgetsGallery/WidgetsGallery/build/demo-template.css', { cwd: mercurialPath })
-            .pipe(symlink('MVCDemos/Content'))
-            .pipe(symlink('NetCoreDemos/wwwroot/css')),
+            .pipe(dest('MVCDemos/Content'))
+            .pipe(dest('NetCoreDemos/wwwroot/css')),
 
         () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/wwwroot/DemoShell/**/*', { cwd: mercurialPath, removeBOM: false })
             .pipe(dest('NetCoreDemos/wwwroot/DemoShell')),

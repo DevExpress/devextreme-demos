@@ -690,7 +690,7 @@
         "Equivalents": "",
         "Demos": [
           {
-            "Title": "Grid Summaries",
+            "Title": "Total Summaries",
             "Name": "GridSummaries",
             "DocUrl": "Guide/UI_Components/DataGrid/Summaries/Total_Summary/",
             "Widget": "DataGrid",
@@ -746,7 +746,6 @@
           {
             "Title": "Master-Detail View",
             "Name": "MasterDetailView",
-            "DocUrl": "Guide/UI_Components/DataGrid/Master-Detail_Interface/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridMasterDetailViewController.cs",
@@ -759,7 +758,6 @@
           {
             "Title": "Master-Detail API",
             "Name": "MasterDetailAPI",
-            "DocUrl": "Guide/UI_Components/DataGrid/Master-Detail_Interface/#API",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridMasterDetailAPIController.cs",
@@ -1632,7 +1630,6 @@
             "Title": "Web API Service",
             "Name": "WebAPIService",
             "Equivalents": "webapi",
-            "DocUrl": "Guide/Data_Binding/Specify_a_Data_Source/Custom_Data_Sources/",
             "Widget": "Scheduler",
             "Modules": "devextreme-aspnet-data-nojquery",
             "MvcAdditionalFiles": [
