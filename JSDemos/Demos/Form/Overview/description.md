@@ -2,7 +2,7 @@ The Form component represents fields of a data object as a collection of label-e
 
 You can use the editors on the right to modify the following properties:     
 - [labelLocation](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#labelLocation)
-Specifies whether to display item labels on top or on the left
+Specifies whether to display item labels above the editor or to the left of it.
 - [colCount](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#colCount)
 Specifies the number of columns. Assign a number to this property to make the amount of columns fixed. Assign *"auto"* to make it adapt to the screen width.
 - [minColWidth](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#minColWidth)
