@@ -101,7 +101,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 OwnerId = 3,
                 PriorityId = 2
             }, new AppointmentWithResources {
-                Text = "Review Training Course for any Ommissions",
+                Text = "Review Training Course for any Omissions",
                 StartDate = "2021-05-10T21:00:00.000Z",
                 EndDate = "2021-05-11T19:00:00.000Z",
                 OwnerId = 1,

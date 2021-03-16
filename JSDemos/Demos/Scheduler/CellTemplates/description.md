@@ -15,13 +15,13 @@ These functions should check whether a date or time is available. This demo incl
     Check whether a date/time interval is a holiday, a weekend, or dinner time.
 
 1. **Validate appointments before they are created or updated**         
-Before an appointment is created or updated, the **Scheduler** executes the [onAppointmentAdding][0] and [onAppointmentUpdating][1] functions. Use them to start validation. If a date or time is invalid, `cancel` the creation or update. Implement the same logic in the [onAppointmentFormOpening][2] function so that users cannot open the appointment details form for a disabled date or time.
+Before an appointment is created or updated, the Scheduler executes the [onAppointmentAdding][0] and [onAppointmentUpdating][1] functions. Use them to start validation. If a date or time is invalid, `cancel` the creation or update. Implement the same logic in the [onAppointmentFormOpening][2] function so that users cannot open the appointment details form for a disabled date or time.
 
 1. **Customize the appointment details form**           
 The appointment details form includes two calendars that allow users to select an appointment's start and end date/time. You should also disable dates in these calendars. Review the `applyDisableDatesToDateEditors` function to see how this is done. Call this function from **onAppointmentFormOpening**.
 
 1. **Customize the timetable appearance**       
-Use templates to customize the appearance of data cells ([dataCellTemplate][3]), time cells ([timeCellTemplate][4]), and date cells ([dateCellTemplate][5]). In this demo, date cell customization is visible only in the Month view. To switch to this view, use the view switcher in the UI component's upper right corner.
+Use templates to customize the appearance of data cells ([dataCellTemplate][3]), time cells ([timeCellTemplate][4]), and date cells ([dateCellTemplate][5]). In this demo, date cell customization is visible only in the Month view. To switch to this view, use the view switcher in the Scheduler's upper right corner.
 
 [0]: /Documentation/ApiReference/UI_Components/dxScheduler/Configuration/#onAppointmentAdding
 [1]: /Documentation/ApiReference/UI_Components/dxScheduler/Configuration/#onAppointmentUpdating

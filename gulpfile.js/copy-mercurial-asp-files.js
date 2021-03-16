@@ -1,12 +1,15 @@
 'use strict';
 
 
-const { src, dest, symlink, parallel, series } = require('gulp');
-const { existsSync } = require('fs');
+const { src, dest, parallel, series } = require('gulp');
+const { existsSync, readFileSync } = require('fs');
 const { join } = require('path');
 const clean = require('gulp-clean');
-const mercurialPath = require('../repository.config.json').hg;
+const replace = require('gulp-replace');
 const { systemSync } = require('../utils/shared/child-process-utils');
+const { init } = require('../utils/shared/config-helper');
+
+const mercurialPath = init().hg;
 
 function checkMercurialPath(callback) {
     if(!mercurialPath) {
@@ -32,9 +35,31 @@ function restorePackages(callback) {
     callback();
 }
 
+function changeNetCoreVersion() {
+    const projectAssetsPath = join(
+        mercurialPath,
+        'DevExtreme.AspNet.Mvc',
+        'AspNetCore',
+        'DevExtreme.AspNet.Core',
+        'obj',
+        'project.assets.json'
+    );
+
+    if(!existsSync(projectAssetsPath)) {
+        throw new Error(`NetCore assets path ${projectAssetsPath} does not exists`);
+    }
+
+    const version = JSON.parse(readFileSync(projectAssetsPath)).project.version;
+
+    return src('NetCoreDemos/DevExtreme.NETCore.Demos.csproj')
+        .pipe(replace(/("DevExtreme.AspNet.Core"\s*Version=")(\d+\.\d+\.\d+).*?(?=")/, `$1${version}`))
+        .pipe(dest('NetCoreDemos'));
+}
+
 exports.copyMercurialAspFiles = series(
     checkMercurialPath,
     runMvcBuild,
+    changeNetCoreVersion,
     parallel(
         () => src('MVCDemos/AppData/*.ldf', { read: false }).pipe(clean()),
         () => src('SampleDatabases/Northwind.mdf', { cwd: mercurialPath })
@@ -47,16 +72,16 @@ exports.copyMercurialAspFiles = series(
             .pipe(dest('NetCoreDemos/wwwroot/SampleData/SampleImages')),
 
         () => src('Demos/WidgetsGallery/WidgetsGallery/build/demo-template.css', { cwd: mercurialPath })
-            .pipe(symlink('MVCDemos/Content'))
-            .pipe(symlink('NetCoreDemos/wwwroot/css')),
+            .pipe(dest('MVCDemos/Content'))
+            .pipe(dest('NetCoreDemos/wwwroot/css')),
 
-        () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/wwwroot/DemoShell/**/*', { cwd: mercurialPath })
+        () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/wwwroot/DemoShell/**/*', { cwd: mercurialPath, removeBOM: false })
             .pipe(dest('NetCoreDemos/wwwroot/DemoShell')),
 
-        () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/DemoShell/**/*', { cwd: mercurialPath })
+        () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/DemoShell/**/*', { cwd: mercurialPath, removeBOM: false })
             .pipe(dest('NetCoreDemos/DemoShell')),
 
-        () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/.editorconfig', { cwd: mercurialPath })
+        () => src('Demos/WidgetsGallery/AspNetCoreDemos.DemoShell/.editorconfig', { cwd: mercurialPath, removeBOM: false })
             .pipe(dest('NetCoreDemos')),
 
         () => src('DevExtreme.AspNet.Mvc/Bin/**/*', { cwd: mercurialPath })
