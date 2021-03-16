@@ -1,6 +1,6 @@
-This demo shows how you can use a <a href="https://dotnet.microsoft.com/apps/aspnet/signalr" target="blank">SignalR</a> service to synchronize appointments across different devices. Each Scheduler is bound to an individual store to emulate the situation when Schedulers are being edited on two different clients. Changes made in one Scheduler are repeated in the other and persist until the browser session has expired.
+This demo shows how you can use a <a href="https://dotnet.microsoft.com/apps/aspnet/signalr" target="blank">SignalR</a> service to synchronize appointments across different devices. To emulate such a setup, each Scheduler on this page reads data from its own separate data store. Changes made in one control are repeated in the other and persist until the browser session has expired.
 
-To implement this functionality, follow the steps below:
+Follow the steps below to implement this functionality. Note again that this demo repeats all steps twice for the two Schedulers. Your project will have a single control and a single store.
 
 1. Configure CustomStores. In this demo, we use the <a href="https://github.com/DevExpress/DevExtreme.AspNet.Data/blob/master/docs/client-side-with-jquery.md#api-reference" target="_blank">createStore</a> method (part of the <a href="https://github.com/DevExpress/DevExtreme.AspNet.Data" target="_blank">DevExtreme.AspNet.data</a> extension).
 
