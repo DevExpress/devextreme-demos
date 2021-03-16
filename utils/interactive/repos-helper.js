@@ -1,11 +1,9 @@
 'use strict';
 
 const fs = require('fs');
-const path = require('path');
 const { systemSync } = require('../shared/child-process-utils');
 const promptsQuestions = require('./prompts-questions');
-const repositoriesPathsFilePath = path.join(__dirname, '..', '..', 'repository.config.json');
-const repositoryPaths = require(repositoriesPathsFilePath);
+const { updateConfig, init } = require('../shared/config-helper');
 
 const processRepositoriesAsync = async(repositories, callback) => {
     repositories.forEach(async(repository) => await callback(repository));
@@ -24,19 +22,13 @@ const processRepository = (command, repositoryName, repositoryPath, nodeModulesD
     }
 };
 
-const updateConfig = () => {
-    const configString = JSON.stringify(repositoryPaths, null, 2);
-    console.log(`Updating ${repositoriesPathsFilePath}. Config:\n${configString}`);
-    fs.writeFileSync(repositoriesPathsFilePath, configString, 'utf8');
-    console.log('File updated.');
-};
-
 const getRepositoryPathByName = async(repositoryName) => {
-    let repositoryPath = repositoryPaths[repositoryName].trim();
+    const config = init();
+    let repositoryPath = config[repositoryName].trim();
     if(!repositoryPath) {
         const response = await promptsQuestions.askRepositoryPath(repositoryName);
-        repositoryPath = repositoryPaths[repositoryName] = response.path;
-        updateConfig();
+        repositoryPath = config[repositoryName] = response.path;
+        updateConfig(config);
     }
     return repositoryPath;
 };

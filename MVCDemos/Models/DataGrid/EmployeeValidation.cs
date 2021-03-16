@@ -20,7 +20,7 @@ namespace DevExtreme.MVC.Demos.Models.DataGrid {
         public string Position { get; set; }
 
         [Required]
-        [RegularExpression(@"^[\d\w\._\-]+@([\d\w\._\-]+\.)+[\w]+$", ErrorMessage = @"Email is invalid")]
+        [RegularExpression(@"^[\d\w._-]+@[\d\w._-]+\.[\w]+$", ErrorMessage = @"Email is invalid")]
         public string Email { get; set; }
     }
 }

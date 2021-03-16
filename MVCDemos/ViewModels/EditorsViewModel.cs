@@ -9,7 +9,7 @@ using System.Web.Mvc;
 namespace DevExtreme.MVC.Demos.ViewModels {
     public class EditorsViewModel {
         [Required(ErrorMessage = "Email is required")]
-        [RegularExpression(@"^[\d\w\._\-]+@([\d\w\._\-]+\.)+[\w]+$", ErrorMessage = "Email is invalid")]
+        [RegularExpression(@"^[\d\w._-]+@[\d\w._-]+\.[\w]+$", ErrorMessage = "Email is invalid")]
         [Remote("CheckEmailAddress", "RemoteValidation", ErrorMessage = "Email is already registered", HttpMethod = "POST")]
         public string Email { get; set; }
 
