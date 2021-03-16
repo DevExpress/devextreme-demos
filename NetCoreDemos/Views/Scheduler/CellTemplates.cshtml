@@ -1,9 +1,8 @@
-﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.Appointment>
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.DisableDatesAppointment>
 
 @(Html.DevExtreme().Scheduler()
     .ID("scheduler")
     .DataSource(Model)
-    .TimeZone("America/Los_Angeles")
     .TextExpr("Text")
     .StartDateExpr("StartDate")
     .EndDateExpr("EndDate")
@@ -18,9 +17,9 @@
     .DataCellTemplate(new JS("dataCellTemplate"))
     .DateCellTemplate(new JS("dateCellTemplate"))
     .TimeCellTemplate(new JS("timeCellTemplate"))
-    .OnAppointmentFormOpening("function(e) { onAppointmentFormOpening(e); }")
-    .OnAppointmentAdding("function(e) { onAppointmentAdding(e); }")
-    .OnAppointmentUpdating("function(e) { onAppointmentUpdating(e); }")
+    .OnAppointmentFormOpening("onAppointmentFormOpening")
+    .OnAppointmentAdding("onAppointmentAdding")
+    .OnAppointmentUpdating("onAppointmentUpdating")
 )
 
 <script>
@@ -33,7 +32,7 @@
     function dataCellTemplate(itemData, itemIndex, itemElement) {
         var date = itemData.startDate;
         var isDisabled = isHoliday(date) || isWeekend(date);
-        var element = $(`<div>${itemData.text}</div>`);
+        var element = $('<div>' + itemData.text + '</div>');
 
         if (isDisabled) {
             element.addClass('disable-date');
@@ -45,7 +44,7 @@
     }
 
     function dateCellTemplate(itemData, itemIndex, itemElement) {
-        var element = $(`<div>${itemData.text}</div>`);
+        var element = $('<div>' + itemData.text + '</div>');
 
         if (isWeekend(itemData.date)) {
             element.addClass('disable-date');
@@ -55,7 +54,7 @@
     }
 
     function timeCellTemplate(itemData, itemIndex, itemElement) {
-        var element = $(`<div>${itemData.text}</div>`);
+        var element = $('<div>' + itemData.text + '</div>');
         var date = itemData.date;
 
         if (isDinner(date)) {

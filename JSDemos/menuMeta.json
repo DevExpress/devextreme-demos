@@ -232,7 +232,8 @@
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridCustomEditorsController.cs",
               "/Models/DataGrid/InMemoryTasksDataContext.cs",
-              "/Models/SampleData/CustomEditorsTasks.cs"
+              "/Models/SampleData/CustomEditorsTasks.cs",
+              "/Scripts/data/statuses.js"
             ],
             "DemoType": "Web"
           },
@@ -324,7 +325,7 @@
             "Badge": "New",
             "Modules": "whatwg-fetch,devextreme-aspnet-data-nojquery",
             "MvcAdditionalFiles": [
-              "/Controllers/ApiControllers/DataGridWebApiController.cs",
+              "/Controllers/ApiControllers/DataGridBatchUpdateWebApiController.cs",
               "/Models/Northwind/InMemoryNorthwindContext.cs",
               "/Models/DataGrid/DataChange.cs"
             ]
@@ -352,7 +353,6 @@
           {
             "Title": "Record Grouping",
             "Name": "RecordGrouping",
-            "DocUrl": "Guide/Widgets/DataGrid/Grouping/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridCustomersController.cs",
@@ -388,7 +388,7 @@
           {
             "Title": "Filtering",
             "Name": "Filtering",
-            "DocUrl": "Guide/Widgets/DataGrid/Filtering_and_Searching/",
+            "DocUrl": "Guide/UI_Components/DataGrid/Filtering_and_Searching/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridFilteringController.cs",
@@ -400,7 +400,7 @@
           {
             "Title": "Filtering API",
             "Name": "FilteringAPI",
-            "DocUrl": "Guide/Widgets/DataGrid/Filtering_and_Searching/#API",
+            "DocUrl": "Guide/UI_Components/DataGrid/Filtering_and_Searching/#API",
             "Widget": "DataGrid",
             "DemoType": "Web"
           },
@@ -408,7 +408,7 @@
             "Title": "Filter Panel",
             "Equivalents": "dxFilterBuilder, FilterBuilder, QueryBuilder, dxFilterPanel, FilterPanel",
             "Name": "FilterPanel",
-            "DocUrl": "ApiReference/UI_Widgets/dxDataGrid/Configuration/filterPanel/",
+            "DocUrl": "ApiReference/UI_Components/dxDataGrid/Configuration/filterPanel/",
             "Widget": "DataGrid",
             "DemoType": "Web",
             "MvcAdditionalFiles": [
@@ -427,7 +427,7 @@
           {
             "Title": "Focused Row",
             "Name": "FocusedRow",
-            "DocUrl": "ApiReference/UI_Widgets/dxDataGrid/Configuration/#focusedRowEnabled",
+            "DocUrl": "ApiReference/UI_Components/dxDataGrid/Configuration/#focusedRowEnabled",
             "Widget": "DataGrid",
             "DemoType": "Web",
             "Modules": "devextreme-aspnet-data-nojquery"
@@ -583,7 +583,7 @@
           {
             "Title": "State Persistence",
             "Name": "StatePersistence",
-            "DocUrl": "ApiReference/UI_Widgets/dxDataGrid/Configuration/stateStoring/",
+            "DocUrl": "ApiReference/UI_Components/dxDataGrid/Configuration/stateStoring/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Models/Order.cs",
@@ -611,7 +611,7 @@
             "Title": "Right-To-Left Support",
             "Equivalents": "RTL",
             "Name": "RightToLeftSupport",
-            "DocUrl": "ApiReference/UI_Widgets/dxDataGrid/Configuration/#rtlEnabled",
+            "DocUrl": "ApiReference/UI_Components/dxDataGrid/Configuration/#rtlEnabled",
             "Credits": "www.wikipedia.org",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
@@ -650,21 +650,21 @@
           {
             "Title": "Column 3rd Party Engine Template",
             "Name": "Column3RdPartyEngineTemplate",
-            "DocUrl": "Guide/Widgets/Common/Templates/#3rd-Party_Template_Engines",
+            "DocUrl": "Guide/UI_Components/Common/Templates/#3rd-Party_Template_Engines",
             "Widget": "DataGrid",
             "DemoType": "Web"
           },
           {
             "Title": "Row 3rd Party Engine Template",
             "Name": "Row3RdPartyEngineTemplate",
-            "DocUrl": "Guide/Widgets/Common/Templates/#3rd-Party_Template_Engines",
+            "DocUrl": "Guide/UI_Components/Common/Templates/#3rd-Party_Template_Engines",
             "Widget": "DataGrid",
             "DemoType": "Web"
           },
           {
             "Title": "Cell Customization",
             "Name": "CellCustomization",
-            "DocUrl": "Guide/Widgets/DataGrid/Columns/Customize_Cells/#Customize_the_Appearance",
+            "DocUrl": "Guide/UI_Components/DataGrid/Columns/Customize_Cells/#Customize_the_Appearance",
             "Widget": "DataGrid",
             "Modules": "globalize--vue&react",
             "MvcAdditionalFiles": [
@@ -690,9 +690,9 @@
         "Equivalents": "",
         "Demos": [
           {
-            "Title": "Grid Summaries",
+            "Title": "Total Summaries",
             "Name": "GridSummaries",
-            "DocUrl": "Guide/Widgets/DataGrid/Summaries/Total_Summary/",
+            "DocUrl": "Guide/UI_Components/DataGrid/Summaries/Total_Summary/",
             "Widget": "DataGrid",
             "Modules": "globalize--vue&react",
             "MvcAdditionalFiles": [
@@ -705,7 +705,7 @@
           {
             "Title": "Group Summaries",
             "Name": "GroupSummaries",
-            "DocUrl": "Guide/Widgets/DataGrid/Summaries/Group_Summary/",
+            "DocUrl": "Guide/UI_Components/DataGrid/Summaries/Group_Summary/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridSummariesController.cs",
@@ -717,7 +717,7 @@
           {
             "Title": "Custom Summaries",
             "Name": "CustomSummaries",
-            "DocUrl": "Guide/Widgets/DataGrid/Summaries/Custom_Aggregate_Function/",
+            "DocUrl": "Guide/UI_Components/DataGrid/Summaries/Custom_Aggregate_Function/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridCustomSummariesController.cs",
@@ -746,7 +746,6 @@
           {
             "Title": "Master-Detail View",
             "Name": "MasterDetailView",
-            "DocUrl": "Guide/Widgets/DataGrid/Master-Detail_Interface/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridMasterDetailViewController.cs",
@@ -759,7 +758,6 @@
           {
             "Title": "Master-Detail API",
             "Name": "MasterDetailAPI",
-            "DocUrl": "Guide/Widgets/DataGrid/Master-Detail_Interface/#API",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridMasterDetailAPIController.cs",
@@ -788,7 +786,7 @@
           {
             "Title": "Overview",
             "Name": "ExportToExcel",
-            "DocUrl": "Guide/Widgets/DataGrid/Client-Side_Exporting/",
+            "DocUrl": "Guide/UI_Components/DataGrid/Client-Side_Exporting/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Models/DataGrid/Employee.cs",
@@ -799,7 +797,7 @@
           {
             "Title": "Excel Cell Customization",
             "Name": "ExcelCellCustomization",
-            "DocUrl": "Guide/Widgets/DataGrid/Client-Side_Exporting/#API/Customize_Excel_Data",
+            "DocUrl": "Guide/UI_Components/DataGrid/Client-Side_Exporting/#API/Customize_Excel_Data",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Models/Order.cs",
@@ -929,7 +927,7 @@
           {
             "Title": "Keyboard Navigation",
             "Name": "KeyboardNavigation",
-            "DocUrl": "Guide/Widgets/DataGrid/Keyboard_Support/",
+            "DocUrl": "Guide/UI_Components/DataGrid/Keyboard_Support/",
             "Widget": "DataGrid",
             "DemoType": "Web"
           }
@@ -996,14 +994,14 @@
           {
             "Title": "Integrated Field Chooser",
             "Name": "IntegratedFieldChooser",
-            "DocUrl": "Guide/Widgets/PivotGrid/Visual_Elements/#Field_Chooser",
+            "DocUrl": "Guide/UI_Components/PivotGrid/Visual_Elements/#Field_Chooser",
             "Widget": "PivotGrid",
             "DemoType": "Web"
           },
           {
             "Title": "Standalone Field Chooser",
             "Name": "StandaloneFieldChooser",
-            "DocUrl": "Guide/Widgets/PivotGrid/Visual_Elements/#Field_Chooser",
+            "DocUrl": "Guide/UI_Components/PivotGrid/Visual_Elements/#Field_Chooser",
             "Widget": "PivotGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/PivotGridDataController.cs",
@@ -1023,7 +1021,7 @@
           {
             "Title": "Field Panel",
             "Name": "FieldPanel",
-            "DocUrl": "Guide/Widgets/PivotGrid/Visual_Elements/#Field_Panel",
+            "DocUrl": "Guide/UI_Components/PivotGrid/Visual_Elements/#Field_Panel",
             "Widget": "PivotGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/PivotGridDataController.cs",
@@ -1053,7 +1051,7 @@
           {
             "Title": "Summary Display Modes",
             "Name": "SummaryDisplayModes",
-            "DocUrl": "Guide/Widgets/PivotGrid/Summaries/#Runtime_Summary_Type_Selection",
+            "DocUrl": "Guide/UI_Components/PivotGrid/Summaries/#Runtime_Summary_Type_Selection",
             "Widget": "PivotGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/PivotGridDataController.cs",
@@ -1077,7 +1075,7 @@
           {
             "Title": "Virtual Scrolling",
             "Name": "VirtualScrolling",
-            "DocUrl": "ApiReference/UI_Widgets/dxPivotGrid/Configuration/scrolling/#mode",
+            "DocUrl": "ApiReference/UI_Components/dxPivotGrid/Configuration/scrolling/#mode",
             "Widget": "PivotGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/SalesDataController.cs",
@@ -1095,7 +1093,7 @@
           {
             "Title": "State Persistence",
             "Name": "StatePersistence",
-            "DocUrl": "ApiReference/UI_Widgets/dxPivotGrid/Configuration/stateStoring/",
+            "DocUrl": "ApiReference/UI_Components/dxPivotGrid/Configuration/stateStoring/",
             "Widget": "PivotGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/PivotGridDataController.cs",
@@ -1107,7 +1105,7 @@
           {
             "Title": "Chart Integration",
             "Name": "ChartIntegration",
-            "DocUrl": "Guide/Widgets/PivotGrid/Integration_with_Chart/",
+            "DocUrl": "Guide/UI_Components/PivotGrid/Integration_with_Chart/",
             "Widget": "PivotGrid",
             "Modules": "globalize--vue&react",
             "MvcAdditionalFiles": [
@@ -1120,7 +1118,7 @@
           {
             "Title": "Layout Customization",
             "Name": "LayoutCustomization",
-            "DocUrl": "Guide/Widgets/PivotGrid/Visual_Elements/#Headers",
+            "DocUrl": "Guide/UI_Components/PivotGrid/Visual_Elements/#Headers",
             "Widget": "PivotGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/PivotGridDataController.cs",
@@ -1207,7 +1205,7 @@
           {
             "Title": "Simple Array: Plain Structure",
             "Name": "SimpleArrayPlainStructure",
-            "DocUrl": "Guide/Widgets/TreeList/Data_Binding/Use_Plain_Data/",
+            "DocUrl": "Guide/UI_Components/TreeList/Data_Binding/Use_Plain_Data/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Scripts/data/employeesPS.js"
@@ -1217,7 +1215,7 @@
           {
             "Title": "Simple Array: Hierarchical Structure",
             "Name": "SimpleArrayHierarchicalStructure",
-            "DocUrl": "Guide/Widgets/TreeList/Data_Binding/Use_Hierarchical_Data/",
+            "DocUrl": "Guide/UI_Components/TreeList/Data_Binding/Use_Hierarchical_Data/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Scripts/data/employeesHS.js"
@@ -1261,7 +1259,7 @@
           {
             "Title": "Multiple Sorting",
             "Name": "MultipleSorting",
-            "DocUrl": "Guide/Widgets/TreeList/Sorting/",
+            "DocUrl": "Guide/UI_Components/TreeList/Sorting/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
@@ -1280,7 +1278,7 @@
           {
             "Title": "Paging",
             "Name": "Paging",
-            "DocUrl": "Guide/Widgets/TreeList/Paging/",
+            "DocUrl": "Guide/UI_Components/TreeList/Paging/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
@@ -1299,7 +1297,7 @@
           {
             "Title": "Row Editing",
             "Name": "RowEditing",
-            "DocUrl": "Guide/Widgets/TreeList/Editing/#User_Interaction/Row_Mode",
+            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Row_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListEmployeesController.cs",
@@ -1312,7 +1310,7 @@
           {
             "Title": "Cell Editing",
             "Name": "CellEditing",
-            "DocUrl": "Guide/Widgets/TreeList/Editing/#User_Interaction/Cell_Mode",
+            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Cell_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
@@ -1325,7 +1323,7 @@
           {
             "Title": "Batch Editing",
             "Name": "BatchEditing",
-            "DocUrl": "Guide/Widgets/TreeList/Editing/#User_Interaction/Batch_Mode",
+            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Batch_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
@@ -1338,7 +1336,7 @@
           {
             "Title": "Form Editing",
             "Name": "FormEditing",
-            "DocUrl": "Guide/Widgets/TreeList/Editing/#User_Interaction/Form_Mode",
+            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Form_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListEmployeesController.cs",
@@ -1351,7 +1349,7 @@
           {
             "Title": "Popup Editing",
             "Name": "PopupEditing",
-            "DocUrl": "Guide/Widgets/TreeList/Editing/#User_Interaction/Popup_Mode",
+            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Popup_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListEmployeesController.cs",
@@ -1397,7 +1395,7 @@
           {
             "Title": "Focused Row",
             "Name": "FocusedRow",
-            "DocUrl": "ApiReference/UI_Widgets/dxTreeList/Configuration/#focusedRowEnabled",
+            "DocUrl": "ApiReference/UI_Components/dxTreeList/Configuration/#focusedRowEnabled",
             "Widget": "TreeList",
             "DemoType": "Web",
             "Modules": "devextreme-aspnet-data-nojquery"
@@ -1411,7 +1409,7 @@
           {
             "Title": "Single Row Selection",
             "Name": "SingleRowSelection",
-            "DocUrl": "Guide/Widgets/TreeList/Selection/",
+            "DocUrl": "Guide/UI_Components/TreeList/Selection/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1422,7 +1420,7 @@
           {
             "Title": "Multiple Row Selection",
             "Name": "MultipleRowSelection",
-            "DocUrl": "Guide/Widgets/TreeList/Selection/",
+            "DocUrl": "Guide/UI_Components/TreeList/Selection/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListEmployeesController.cs",
@@ -1440,7 +1438,7 @@
           {
             "Title": "Using Search Panel",
             "Name": "UsingSearchPanel",
-            "DocUrl": "Guide/Widgets/TreeList/Filtering_and_Searching/#Search_Panel",
+            "DocUrl": "Guide/UI_Components/TreeList/Filtering_and_Searching/#Search_Panel",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
@@ -1453,7 +1451,7 @@
           {
             "Title": "Using Filter Row",
             "Name": "UsingFilterRow",
-            "DocUrl": "Guide/Widgets/TreeList/Filtering_and_Searching/#Filter_Row",
+            "DocUrl": "Guide/UI_Components/TreeList/Filtering_and_Searching/#Filter_Row",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1464,7 +1462,7 @@
           {
             "Title": "Using Header Filter",
             "Name": "UsingHeaderFilter",
-            "DocUrl": "Guide/Widgets/TreeList/Filtering_and_Searching/#Header_Filter",
+            "DocUrl": "Guide/UI_Components/TreeList/Filtering_and_Searching/#Header_Filter",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1476,7 +1474,7 @@
             "Title": "Filter Panel",
             "Equivalents": "dxFilterBuilder, FilterBuilder, QueryBuilder, dxFilterPanel, FilterPanel",
             "Name": "FilterPanel",
-            "DocUrl": "ApiReference/UI_Widgets/dxTreeList/Configuration/filterPanel/",
+            "DocUrl": "ApiReference/UI_Components/dxTreeList/Configuration/filterPanel/",
             "Widget": "TreeList",
             "DemoType": "Web",
             "MvcAdditionalFiles": [
@@ -1500,7 +1498,7 @@
           {
             "Title": "Column Chooser",
             "Name": "ColumnChooser",
-            "DocUrl": "Guide/Widgets/TreeList/Columns/Column_Chooser/",
+            "DocUrl": "Guide/UI_Components/TreeList/Columns/Column_Chooser/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1511,7 +1509,7 @@
           {
             "Title": "Column Reordering",
             "Name": "Reordering",
-            "DocUrl": "Guide/Widgets/TreeList/Columns/Column_Reordering/",
+            "DocUrl": "Guide/UI_Components/TreeList/Columns/Column_Reordering/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1522,7 +1520,7 @@
           {
             "Title": "Column Resizing",
             "Name": "Resizing",
-            "DocUrl": "Guide/Widgets/TreeList/Columns/Column_Sizing/",
+            "DocUrl": "Guide/UI_Components/TreeList/Columns/Column_Sizing/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1534,7 +1532,7 @@
             "Title": "Column Fixing",
             "Name": "ColumnFixing",
             "Equivalents": "fixed column, frozen column, pinned column",
-            "DocUrl": "Guide/Widgets/TreeList/Columns/Column_Fixing/",
+            "DocUrl": "Guide/UI_Components/TreeList/Columns/Column_Fixing/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1551,7 +1549,7 @@
           {
             "Title": "State Persistence",
             "Name": "StatePersistence",
-            "DocUrl": "ApiReference/UI_Widgets/dxTreeList/Configuration/stateStoring/",
+            "DocUrl": "ApiReference/UI_Components/dxTreeList/Configuration/stateStoring/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListEmployeesController.cs",
@@ -1569,7 +1567,7 @@
           {
             "Title": "Adaptability",
             "Name": "Adaptability",
-            "DocUrl": "Guide/Widgets/TreeList/Columns/Adaptability/",
+            "DocUrl": "Guide/UI_Components/TreeList/Columns/Adaptability/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1586,7 +1584,7 @@
           {
             "Title": "Keyboard Navigation",
             "Name": "KeyboardNavigation",
-            "DocUrl": "Guide/Widgets/TreeList/Keyboard_Support/",
+            "DocUrl": "Guide/UI_Components/TreeList/Keyboard_Support/",
             "Widget": "TreeList",
             "DemoType": "Web"
           }
@@ -1622,7 +1620,7 @@
           {
             "Title": "Simple Array",
             "Name": "SimpleArray",
-            "DocUrl": "Guide/Widgets/Scheduler/Overview/",
+            "DocUrl": "Guide/UI_Components/Scheduler/Overview/",
             "Widget": "Scheduler",
             "DemoType": "Web"
           },
@@ -1632,7 +1630,6 @@
             "Title": "Web API Service",
             "Name": "WebAPIService",
             "Equivalents": "webapi",
-            "DocUrl": "Guide/Data_Binding/Specify_a_Data_Source/Custom_Data_Sources/",
             "Widget": "Scheduler",
             "Modules": "devextreme-aspnet-data-nojquery",
             "MvcAdditionalFiles": [
@@ -1674,7 +1671,7 @@
           {
             "Title": "Basic Views",
             "Name": "BasicViews",
-            "DocUrl": "Guide/Widgets/Scheduler/Views/View_Types/",
+            "DocUrl": "Guide/UI_Components/Scheduler/Views/View_Types/",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/Appointment.cs",
@@ -1685,7 +1682,7 @@
           {
             "Title": "Timelines",
             "Name": "Timelines",
-            "DocUrl": "Guide/Widgets/Scheduler/Views/#Timeline_Views",
+            "DocUrl": "Guide/UI_Components/Scheduler/Views/#Timeline_Views",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/EmployeeTask.cs",
@@ -1696,7 +1693,7 @@
           {
             "Title": "Agenda",
             "Name": "Agenda",
-            "DocUrl": "Guide/Widgets/Scheduler/Views/View_Types/#Agenda_View",
+            "DocUrl": "Guide/UI_Components/Scheduler/Views/View_Types/#Agenda_View",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/SampleData/AgendaTasks.cs"
@@ -1712,7 +1709,7 @@
           {
             "Title": "Current Time Indicator",
             "Name": "CurrentTimeIndicator",
-            "DocUrl": "Guide/Widgets/Scheduler/Current_Time_Indication/",
+            "DocUrl": "Guide/UI_Components/Scheduler/Current_Time_Indication/",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/DynamicAppointment.cs",
@@ -1736,7 +1733,7 @@
           {
             "Title": "Recurring Appointments",
             "Name": "RecurringAppointments",
-            "DocUrl": "Guide/Widgets/Scheduler/Appointments/Appointment_Types/#Recurring_Appointments",
+            "DocUrl": "Guide/UI_Components/Scheduler/Appointments/Appointment_Types/#Recurring_Appointments",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/RecurringAppointment.cs",
@@ -1749,7 +1746,7 @@
           {
             "Title": "Editing",
             "Name": "Editing",
-            "DocUrl": "Guide/Widgets/Scheduler/Appointments/Add_Appointments/",
+            "DocUrl": "Guide/UI_Components/Scheduler/Appointments/Add_Appointments/",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/Appointment.cs",
@@ -1771,7 +1768,7 @@
           {
             "Title": "Resources",
             "Name": "Resources",
-            "DocUrl": "Guide/Widgets/Scheduler/Resources/Assign_Appointments_to_Resources/",
+            "DocUrl": "Guide/UI_Components/Scheduler/Resources/Assign_Appointments_to_Resources/",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/AppointmentWithResources.cs",
@@ -1803,7 +1800,7 @@
           {
             "Title": "Group Orientation",
             "Name": "GroupOrientation",
-            "DocUrl": "ApiReference/UI_Widgets/dxScheduler/Configuration/views/#groupOrientation",
+            "DocUrl": "ApiReference/UI_Components/dxScheduler/Configuration/views/#groupOrientation",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/EmployeeTask.cs",
@@ -1814,7 +1811,7 @@
           {
             "Title": "Grouping By Date",
             "Name": "GroupByDate",
-            "DocUrl": "ApiReference/UI_Widgets/dxScheduler/Configuration/views/#groupByDate",
+            "DocUrl": "ApiReference/UI_Components/dxScheduler/Configuration/views/#groupByDate",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/EmployeeTask.cs",
@@ -1831,7 +1828,7 @@
           {
             "Title": "Custom Templates",
             "Name": "CustomTemplates",
-            "DocUrl": "Guide/Widgets/Scheduler/Appointments/Customize_Appointment/",
+            "DocUrl": "Guide/UI_Components/Scheduler/Appointments/Customize_Appointment/",
             "Credits": "www.wikipedia.org",
             "Widget": "Scheduler",
             "Modules": "globalize--vue&react",
@@ -1854,14 +1851,14 @@
             "Equivalents": "customization, disable dates, work hours",
             "MvcAdditionalFiles": [
               "/Models/Appointment.cs",
-              "/Models/SampleData/Appointments.cs"
+              "/Models/SampleData/AppointmentsWorkHours.cs"
             ],
             "DemoType": "Web"
           },
           {
             "Title": "Customize Individual Views",
             "Name": "CustomizeIndividualViews",
-            "DocUrl": "Guide/Widgets/Scheduler/Views/Customize_Individual_Views/",
+            "DocUrl": "Guide/UI_Components/Scheduler/Views/Customize_Individual_Views/",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Views/Scheduler/_DateCellTemplate.cshtml",
@@ -1873,7 +1870,7 @@
           {
             "Title": "Increased View Duration",
             "Name": "IncreaseViewDuration",
-            "DocUrl": "ApiReference/UI_Widgets/dxScheduler/Configuration/views/#intervalCount",
+            "DocUrl": "ApiReference/UI_Components/dxScheduler/Configuration/views/#intervalCount",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/EmployeeTask.cs",
@@ -1885,7 +1882,6 @@
             "Title": "Limit the Appointment Count per Cell",
             "Name": "LimitAppointmentCountPerCell",
             "Widget": "Scheduler",
-            "Modules": "globalize--vue&react",
             "MvcAdditionalFiles": [
               "/Models/SampleData/LimitAppointmentCountPerCellAppointments.cs",
               "/Models/SampleData/AdaptiveAppointmentsResources.cs"
@@ -1895,7 +1891,7 @@
           {
             "Title": "Context Menu Integration",
             "Name": "ContextMenuIntegration",
-            "DocUrl": "ApiReference/UI_Widgets/dxScheduler/Configuration/#onAppointmentContextMenu",
+            "DocUrl": "ApiReference/UI_Components/dxScheduler/Configuration/#onAppointmentContextMenu",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/RecurringAppointment.cs",
@@ -1940,7 +1936,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/HtmlEditor/Overview/",
+            "DocUrl": "Guide/UI_Components/HtmlEditor/Overview/",
             "Widget": "HtmlEditor",
             "DemoType": "Web",
             "Badge": "Updated"
@@ -1954,7 +1950,7 @@
           {
             "Title": "Output Formats",
             "Name": "OutputFormats",
-            "DocUrl": "ApiReference/UI_Widgets/dxHtmlEditor/Configuration/#valueType",
+            "DocUrl": "ApiReference/UI_Components/dxHtmlEditor/Configuration/#valueType",
             "Widget": "HtmlEditor",
             "DemoType": "Web",
             "Modules": "showdown&turndown"
@@ -1968,7 +1964,7 @@
           {
             "Title": "Toolbar Customization",
             "Name": "ToolbarCustomization",
-            "DocUrl": "Guide/Widgets/HtmlEditor/Toolbar/Built-In_Controls/",
+            "DocUrl": "Guide/UI_Components/HtmlEditor/Toolbar/Built-In_Controls/",
             "Widget": "HtmlEditor",
             "DemoType": "Web"
           }
@@ -2035,7 +2031,7 @@
           {
             "Title": "Node and Edge Arrays",
             "Name": "NodesAndEdgesArrays",
-            "DocUrl": "Guide/Widgets/Diagram/Data_Binding/#Node_and_Edge_Arrays",
+            "DocUrl": "Guide/UI_Components/Diagram/Data_Binding/#Node_and_Edge_Arrays",
             "Widget": "Diagram",
             "DemoType": "Web",
             "WideDemo": true
@@ -2043,7 +2039,7 @@
           {
             "Title": "Node List: Linear Array",
             "Name": "NodesArrayPlainStructure",
-            "DocUrl": "Guide/Widgets/Diagram/Data_Binding/#Linear_Array",
+            "DocUrl": "Guide/UI_Components/Diagram/Data_Binding/#Linear_Array",
             "Widget": "Diagram",
             "MvcAdditionalFiles": [
               "/Scripts/data/employees.js"
@@ -2054,7 +2050,7 @@
           {
             "Title": "Node List: Hierarchical Array",
             "Name": "NodesArrayHierarchicalStructure",
-            "DocUrl": "Guide/Widgets/Diagram/Data_Binding/#Hierarchical_Array",
+            "DocUrl": "Guide/UI_Components/Diagram/Data_Binding/#Hierarchical_Array",
             "Widget": "Diagram",
             "MvcAdditionalFiles": [
               "/Scripts/data/employees.js"
@@ -2065,7 +2061,7 @@
           {
             "Title": "Advanced Data Binding",
             "Name": "AdvancedDataBinding",
-            "DocUrl": "Guide/Widgets/Diagram/Data_Binding/#Data_Binding_Options",
+            "DocUrl": "Guide/UI_Components/Diagram/Data_Binding/#Data_Binding_Options",
             "Widget": "Diagram",
             "DemoType": "Web",
             "WideDemo": true
@@ -2119,7 +2115,7 @@
           {
             "Title": "Background Images",
             "Name": "CustomShapesWithIcons",
-            "DocUrl": "Guide/Widgets/Diagram/Custom_Shapes/#Shapes_with_Custom_Background_Images​​​​​​​",
+            "DocUrl": "Guide/UI_Components/Diagram/Custom_Shapes/#Shapes_with_Custom_Background_Images​​​​​​​",
             "Widget": "Diagram",
             "DemoType": "Web",
             "WideDemo": true,
@@ -2128,7 +2124,7 @@
           {
             "Title": "Shapes with Base Type",
             "Name": "CustomShapesWithTexts",
-            "DocUrl": "Guide/Widgets/Diagram/Custom_Shapes/#Shapes_with_Base_Type​​​​​​​",
+            "DocUrl": "Guide/UI_Components/Diagram/Custom_Shapes/#Shapes_with_Base_Type​​​​​​​",
             "Widget": "Diagram",
             "DemoType": "Web",
             "WideDemo": true,
@@ -2208,7 +2204,7 @@
           {
             "Title": "UI Customization",
             "Name": "UICustomization",
-            "DocUrl": "Guide/Widgets/Diagram/Diagram_Tools/",
+            "DocUrl": "Guide/UI_Components/Diagram/Diagram_Tools/",
             "Widget": "Diagram",
             "DemoType": "Web",
             "WideDemo": true,
@@ -2303,7 +2299,7 @@
           {
             "Title": "Dynamic Series from the DataSource",
             "Name": "SeriesTemplates",
-            "DocUrl": "Guide/Widgets/Chart/Data_Binding/Bind_Series_to_Data/#Using_a_Series_Template",
+            "DocUrl": "Guide/UI_Components/Chart/Data_Binding/Bind_Series_to_Data/#Using_a_Series_Template",
             "Credits": "www.geohive.com",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
@@ -2351,7 +2347,7 @@
           {
             "Title": "Area",
             "Name": "Area",
-            "DocUrl": "Guide/Widgets/Chart/Series_Types/Area_Series/",
+            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Area_Series/",
             "Credits": "www.geohive.com",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2360,7 +2356,7 @@
           {
             "Title": "Spline Area",
             "Name": "SplineArea",
-            "DocUrl": "Guide/Widgets/Chart/Series_Types/Area_Series/",
+            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Area_Series/",
             "Credits": "www.geohive.com",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2369,7 +2365,7 @@
           {
             "Title": "Step Area",
             "Name": "StepArea",
-            "DocUrl": "Guide/Widgets/Chart/Series_Types/Area_Series/",
+            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Area_Series/",
             "Credits": "www.nytimes.com",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
@@ -2380,7 +2376,7 @@
           {
             "Title": "Step Area with Gaps",
             "Name": "NullPointSupport",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxChart/Configuration/series/#ignoreEmptyPoints",
+            "DocUrl": "ApiReference/UI_Components/dxChart/Configuration/series/#ignoreEmptyPoints",
             "Credits": "www.nytimes.com",
             "Widget": "Charts",
             "DemoType": "Viz"
@@ -2395,14 +2391,14 @@
           {
             "Title": "Standard Bar",
             "Name": "StandardBar",
-            "DocUrl": "Guide/Widgets/Chart/Series_Types/Bar_Series/",
+            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Bar_Series/",
             "Widget": "Charts",
             "DemoType": "Viz"
           },
           {
             "Title": "Side-by-Side Bar",
             "Name": "SideBySideBar",
-            "DocUrl": "Guide/Widgets/Chart/Series_Types/Bar_Series/",
+            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Bar_Series/",
             "Credits": "www.bea.gov",
             "Widget": "Charts",
             "DemoType": "Viz"
@@ -2410,7 +2406,7 @@
           {
             "Title": "Stacked Bar",
             "Name": "StackedBar",
-            "DocUrl": "Guide/Widgets/Chart/Series_Types/Bar_Series/",
+            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Bar_Series/",
             "Credits": "www.geohive.com",
             "Widget": "Charts",
             "DemoType": "Viz"
@@ -2418,7 +2414,7 @@
           {
             "Title": "Full Stacked Bar",
             "Name": "FullStackedBar",
-            "DocUrl": "Guide/Widgets/Chart/Series_Types/Bar_Series/",
+            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Bar_Series/",
             "Credits": "www.geohive.com",
             "Widget": "Charts",
             "DemoType": "Viz"
@@ -2426,7 +2422,7 @@
           {
             "Title": "Side-by-Side Stacked Bar",
             "Name": "SideBySideStackedBar",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxChart/Configuration/series/#stack",
+            "DocUrl": "ApiReference/UI_Components/dxChart/Configuration/series/#stack",
             "Credits": "www.geohive.com",
             "Widget": "Charts",
             "DemoType": "Viz"
@@ -2434,14 +2430,14 @@
           {
             "Title": "Drill-Down Chart",
             "Name": "ChartsDrillDown",
-            "DocUrl": "Guide/Widgets/Chart/Drill-Down_Chart/",
+            "DocUrl": "Guide/UI_Components/Chart/Drill-Down_Chart/",
             "Widget": "Charts",
             "DemoType": "Viz"
           },
           {
             "Title": "Side-by-Side Full-Stacked Bar",
             "Name": "SideBySideFullStackedBar",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxChart/Configuration/series/#stack",
+            "DocUrl": "ApiReference/UI_Components/dxChart/Configuration/series/#stack",
             "Credits": "www.geohive.com",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2450,7 +2446,7 @@
           {
             "Title": "Auto-Calculated Bar Width",
             "Name": "AutoCalculatedBarWidth",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxChart/Configuration/series/#ignoreEmptyPoints",
+            "DocUrl": "ApiReference/UI_Components/dxChart/Configuration/series/#ignoreEmptyPoints",
             "Credits": "www.geohive.com",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2459,7 +2455,7 @@
           {
             "Title": "Custom Bar Width",
             "Name": "CustomBarWidth",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxChart/Configuration/series/#barPadding",
+            "DocUrl": "ApiReference/UI_Components/dxChart/Configuration/series/#barPadding",
             "Credits": "www.geohive.com",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2468,7 +2464,7 @@
           {
             "Title": "Color Each Bar Differently",
             "Name": "ColorEachBar",
-            "DocUrl": "Guide/Widgets/Chart/Data_Binding/Bind_Series_to_Data/#Using_a_Series_Template",
+            "DocUrl": "Guide/UI_Components/Chart/Data_Binding/Bind_Series_to_Data/#Using_a_Series_Template",
             "Credits": "www.statista.com",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2477,7 +2473,7 @@
           {
             "Title": "Customize Points and Labels",
             "Name": "CustomizePointsAndLabels",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxChart/Configuration/#customizePoint",
+            "DocUrl": "ApiReference/UI_Components/dxChart/Configuration/#customizePoint",
             "Widget": "Charts",
             "DemoType": "Viz",
             "Equivalents": "customizePoint, customizeLabel, customizeText, constantLines"
@@ -2485,14 +2481,14 @@
           {
             "Title": "Scale Breaks",
             "Name": "ScaleBreaks",
-            "DocUrl": "Guide/Widgets/Chart/Axes/Scale_Breaks/",
+            "DocUrl": "Guide/UI_Components/Chart/Axes/Scale_Breaks/",
             "Widget": "Charts",
             "DemoType": "Viz"
           },
           {
             "Title": "Bi-Directional Bar Chart",
             "Name": "BiDirectionalBarChart",
-            "DocUrl": "Guide/Widgets/Chart/Bi-Directional_Bar_Chart/",
+            "DocUrl": "Guide/UI_Components/Chart/Bi-Directional_Bar_Chart/",
             "Widget": "Charts",
             "DemoType": "Viz",
             "Equivalents": "stackedbar"
@@ -2515,7 +2511,7 @@
           {
             "Title": "Bullets",
             "Name": "SimpleBullets",
-            "DocUrl": "Guide/Widgets/Bullet/Visual_Elements/",
+            "DocUrl": "Guide/UI_Components/Bullet/Visual_Elements/",
             "Widget": "Charts",
             "DemoType": "Viz",
             "Equivalents": "scaleValue"
@@ -2530,7 +2526,7 @@
           {
             "Title": "Doughnut",
             "Name": "Doughnut",
-            "DocUrl": "Guide/Widgets/PieChart/Series/Overview/",
+            "DocUrl": "Guide/UI_Components/PieChart/Series/Overview/",
             "Credits": "www.geohive.com",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2539,7 +2535,7 @@
           {
             "Title": "Doughnut Selection",
             "Name": "DoughnutSelection",
-            "DocUrl": "Guide/Widgets/PieChart/Series/Selection/",
+            "DocUrl": "Guide/UI_Components/PieChart/Series/Selection/",
             "Credits": "www.nytimes.com",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2548,7 +2544,7 @@
           {
             "Title": "Doughnut with Top N Series",
             "Name": "DoughnutWithTopNSeries",
-            "DocUrl": "Guide/Widgets/PieChart/Series/Group_Smaller_Points/",
+            "DocUrl": "Guide/UI_Components/PieChart/Series/Group_Smaller_Points/",
             "Credits": "www.wikipedia.org",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2557,7 +2553,7 @@
           {
             "Title": "Doughnut with Multiple Series",
             "Name": "PieWithMultipleSeries",
-            "DocUrl": "Guide/Widgets/PieChart/Series/Overview/",
+            "DocUrl": "Guide/UI_Components/PieChart/Series/Overview/",
             "Credits": "www.wto.org",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2584,7 +2580,7 @@
           {
             "Title": "Stock",
             "Name": "Stock",
-            "DocUrl": "Guide/Widgets/Chart/Series_Types/Financial_Series/",
+            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Financial_Series/",
             "Credits": "bigcharts.marketwatch.com",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
@@ -2596,7 +2592,7 @@
           {
             "Title": "Candlestick",
             "Name": "Candlestick",
-            "DocUrl": "Guide/Widgets/Chart/Series_Types/Financial_Series/",
+            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Financial_Series/",
             "Credits": "bigcharts.marketwatch.com",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
@@ -2637,7 +2633,7 @@
           {
             "Title": "Line",
             "Name": "Line",
-            "DocUrl": "Guide/Widgets/Chart/Series_Types/Line_Series/",
+            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Line_Series/",
             "Credits": "www.geohive.com",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2646,7 +2642,7 @@
           {
             "Title": "Spline",
             "Name": "Spline",
-            "DocUrl": "Guide/Widgets/Chart/Series_Types/Line_Series/",
+            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Line_Series/",
             "Credits": "www.top500.org",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2655,7 +2651,7 @@
           {
             "Title": "Resolved Axis Label Overlapping",
             "Name": "AxisLabelsOverlapping",
-            "DocUrl": "Guide/Widgets/Chart/Axes/Axis_Labels/",
+            "DocUrl": "Guide/UI_Components/Chart/Axes/Axis_Labels/",
             "Widget": "Charts",
             "DemoType": "Viz",
             "Equivalents": "overlappingBehavior"
@@ -2663,7 +2659,7 @@
           {
             "Title": "Hover Mode",
             "Name": "HoverMode",
-            "DocUrl": "Guide/Widgets/Chart/Series_Points/Hover/",
+            "DocUrl": "Guide/UI_Components/Chart/Series_Points/Hover/",
             "Credits": "www.bea.gov",
             "Widget": "Charts",
             "DemoType": "Viz"
@@ -2671,7 +2667,7 @@
           {
             "Title": "Step Line",
             "Name": "StepLine",
-            "DocUrl": "Guide/Widgets/Chart/Series_Types/Line_Series/",
+            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Line_Series/",
             "Credits": "www.nytimes.com",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
@@ -2683,7 +2679,7 @@
           {
             "Title": "Crosshair",
             "Name": "Crosshair",
-            "DocUrl": "Guide/Widgets/Chart/Crosshair/",
+            "DocUrl": "Guide/UI_Components/Chart/Crosshair/",
             "Credits": "www.geohive.com",
             "Widget": "Charts",
             "DemoType": "Viz"
@@ -2691,7 +2687,7 @@
           {
             "Title": "Point Image",
             "Name": "PointImage",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxChart/Configuration/series/point/image/",
+            "DocUrl": "ApiReference/UI_Components/dxChart/Configuration/series/point/image/",
             "Widget": "Charts",
             "DemoType": "Viz",
             "Equivalents": "customizePoint, allowDecimals"
@@ -2712,7 +2708,7 @@
           {
             "Title": "Pie",
             "Name": "Pie",
-            "DocUrl": "Guide/Widgets/PieChart/Series/Overview/",
+            "DocUrl": "Guide/UI_Components/PieChart/Series/Overview/",
             "Credits": "www.nationmaster.com",
             "Widget": "Charts",
             "DemoType": "Viz"
@@ -2720,7 +2716,7 @@
           {
             "Title": "Pies with Equal Sizes",
             "Name": "PiesWithEqualSize",
-            "DocUrl": "Guide/Widgets/PieChart/Equally-Sized_Pies/",
+            "DocUrl": "Guide/UI_Components/PieChart/Equally-Sized_Pies/",
             "Widget": "Charts",
             "DemoType": "Viz",
             "Equivalents": "sizeGroup"
@@ -2728,7 +2724,7 @@
           {
             "Title": "Pie with Custom Labels",
             "Name": "PieWithCustomLabels",
-            "DocUrl": "Guide/Widgets/PieChart/Point_Labels/Relocate_Labels/",
+            "DocUrl": "Guide/UI_Components/PieChart/Point_Labels/Relocate_Labels/",
             "Credits": "www.nytimes.com",
             "Widget": "Charts",
             "DemoType": "Viz"
@@ -2736,7 +2732,7 @@
           {
             "Title": "Pie with Small Values Grouped",
             "Name": "PieWithSmallValuesGrouped",
-            "DocUrl": "Guide/Widgets/PieChart/Series/Group_Smaller_Points/",
+            "DocUrl": "Guide/UI_Components/PieChart/Series/Group_Smaller_Points/",
             "Credits": "www.wikipedia.org",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
@@ -2748,7 +2744,7 @@
           {
             "Title": "Pie with Resolved Label Overlapping",
             "Name": "PieWithResolvedLabelOverlapping",
-            "DocUrl": "Guide/Widgets/PieChart/Point_Labels/Resolve_Overlapping/",
+            "DocUrl": "Guide/UI_Components/PieChart/Point_Labels/Resolve_Overlapping/",
             "Credits": "www.wikipedia.org",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2757,7 +2753,7 @@
           {
             "Title": "Palette",
             "Name": "Palette",
-            "DocUrl": "Guide/Widgets/PieChart/Series/Overview/",
+            "DocUrl": "Guide/UI_Components/PieChart/Series/Overview/",
             "Widget": "Charts",
             "DemoType": "Viz"
           },
@@ -2787,7 +2783,7 @@
           {
             "Title": "Scatter",
             "Name": "Scatter",
-            "DocUrl": "Guide/Widgets/Chart/Series_Types/Scatter_Series/",
+            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Scatter_Series/",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
               "/Models/SampleData/ScatterData.cs"
@@ -2797,7 +2793,7 @@
           {
             "Title": "Bubble",
             "Name": "Bubble",
-            "DocUrl": "Guide/Widgets/Chart/Series_Types/Bubble_Series/",
+            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Bubble_Series/",
             "Credits": "www.helpage.org",
             "Widget": "Charts",
             "DemoType": "Viz"
@@ -2805,7 +2801,7 @@
           {
             "Title": "Scatter Logarithmic Axis",
             "Name": "LogarithmicAxis",
-            "DocUrl": "Guide/Widgets/Chart/Axes/Overview/",
+            "DocUrl": "Guide/UI_Components/Chart/Axes/Overview/",
             "Widget": "Charts",
             "DemoType": "Viz"
           },
@@ -2829,14 +2825,14 @@
           {
             "Title": "Continuous Data",
             "Name": "ContinuousData",
-            "DocUrl": "Guide/Widgets/PolarChart/Series_Types/#Line",
+            "DocUrl": "Guide/UI_Components/PolarChart/Series_Types/#Line",
             "Widget": "Charts",
             "DemoType": "Viz"
           },
           {
             "Title": "Discrete Data",
             "Name": "DiscreteData",
-            "DocUrl": "Guide/Widgets/PolarChart/Series_Types/#Scatter",
+            "DocUrl": "Guide/UI_Components/PolarChart/Series_Types/#Scatter",
             "Credits": "www.weather.com",
             "Widget": "Charts",
             "DemoType": "Viz"
@@ -2844,14 +2840,14 @@
           {
             "Title": "Spider Web",
             "Name": "SpiderWeb",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/#useSpiderWeb",
+            "DocUrl": "ApiReference/UI_Components/dxPolarChart/Configuration/#useSpiderWeb",
             "Widget": "Charts",
             "DemoType": "Viz"
           },
           {
             "Title": "Wind Rose",
             "Name": "WindRose",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/argumentAxis/#discreteAxisDivisionMode",
+            "DocUrl": "ApiReference/UI_Components/dxPolarChart/Configuration/argumentAxis/#discreteAxisDivisionMode",
             "Credits": "www.wrcc.dri.edu",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
@@ -2863,14 +2859,14 @@
           {
             "Title": "Periodic Data",
             "Name": "PeriodicData",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/argumentAxis/#period",
+            "DocUrl": "ApiReference/UI_Components/dxPolarChart/Configuration/argumentAxis/#period",
             "Widget": "Charts",
             "DemoType": "Viz"
           },
           {
             "Title": "Inverted Chart",
             "Name": "InvertedChart",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxPolarChart/Configuration/valueAxis/#inverted",
+            "DocUrl": "ApiReference/UI_Components/dxPolarChart/Configuration/valueAxis/#inverted",
             "Widget": "Charts",
             "DemoType": "Viz",
             "Equivalents": "angle"
@@ -2897,7 +2893,7 @@
           {
             "Title": "Range Bar",
             "Name": "RangeBar",
-            "DocUrl": "Guide/Widgets/Chart/Series_Types/Range_Series/",
+            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Range_Series/",
             "Credits": "www.tax.state.ak.us",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2913,7 +2909,7 @@
           {
             "Title": "Range Area",
             "Name": "RangeArea",
-            "DocUrl": "Guide/Widgets/Chart/Series_Types/Range_Series/",
+            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Range_Series/",
             "Credits": "www.inflationdata.com",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2929,7 +2925,7 @@
           {
             "Title": "Sparklines",
             "Name": "SimpleSparklines",
-            "DocUrl": "Guide/Widgets/Sparkline/Series_Types/",
+            "DocUrl": "Guide/UI_Components/Sparkline/Series_Types/",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
               "/Models/MonthlyPrice.cs",
@@ -2940,7 +2936,7 @@
           {
             "Title": "Area Sparklines",
             "Name": "AreaSparklines",
-            "DocUrl": "Guide/Widgets/Sparkline/Series_Types/#Area",
+            "DocUrl": "Guide/UI_Components/Sparkline/Series_Types/#Area",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
               "/Models/MonthlyPrice.cs",
@@ -2951,7 +2947,7 @@
           {
             "Title": "Bar Sparklines",
             "Name": "BarSparklines",
-            "DocUrl": "Guide/Widgets/Sparkline/Series_Types/#Bar",
+            "DocUrl": "Guide/UI_Components/Sparkline/Series_Types/#Bar",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
               "/Models/MonthlyPrice.cs",
@@ -2962,7 +2958,7 @@
           {
             "Title": "Winloss Sparklines",
             "Name": "WinlossSparklines",
-            "DocUrl": "Guide/Widgets/Sparkline/Series_Types/#Win-Loss",
+            "DocUrl": "Guide/UI_Components/Sparkline/Series_Types/#Win-Loss",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
               "/Models/MonthlyPrice.cs",
@@ -2980,7 +2976,7 @@
           {
             "Title": "Hierarchical Data Structure",
             "Name": "HierarchicalDataStructure",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxTreeMap/Configuration/#dataSource",
+            "DocUrl": "ApiReference/UI_Components/dxTreeMap/Configuration/#dataSource",
             "Credits": "www.wikipedia.org",
             "Widget": "Charts",
             "DemoType": "Viz"
@@ -2988,7 +2984,7 @@
           {
             "Title": "Plain Data Structure",
             "Name": "FlatDataStructure",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxTreeMap/Configuration/#dataSource",
+            "DocUrl": "ApiReference/UI_Components/dxTreeMap/Configuration/#dataSource",
             "Credits": "www.wikipedia.org",
             "Widget": "Charts",
             "DemoType": "Viz"
@@ -2996,7 +2992,7 @@
           {
             "Title": "Tiling Algorithms",
             "Name": "TilingAlgorithms",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxTreeMap/Configuration/#layoutAlgorithm",
+            "DocUrl": "ApiReference/UI_Components/dxTreeMap/Configuration/#layoutAlgorithm",
             "Credits": "www.geohive.com",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -3005,7 +3001,7 @@
           {
             "Title": "Colorization",
             "Name": "Colorization",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxTreeMap/Configuration/colorizer/",
+            "DocUrl": "ApiReference/UI_Components/dxTreeMap/Configuration/colorizer/",
             "Widget": "Charts",
             "DemoType": "Viz",
             "Equivalents": "colorizeGroups, colorCode"
@@ -3013,7 +3009,7 @@
           {
             "Title": "Drill Down",
             "Name": "DrillDown",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxTreeMap/Node/Methods/#drillDown",
+            "DocUrl": "ApiReference/UI_Components/dxTreeMap/Node/Methods/#drillDown",
             "Credits": "www.wikipedia.org",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
@@ -3035,14 +3031,14 @@
           {
             "Title": "Funnel Chart",
             "Name": "FunnelChart",
-            "DocUrl": "Guide/Widgets/Funnel/Overview/",
+            "DocUrl": "Guide/UI_Components/Funnel/Overview/",
             "Widget": "Charts",
             "DemoType": "Viz"
           },
           {
             "Title": "Pyramid Chart",
             "Name": "PyramidChart",
-            "DocUrl": "Guide/Widgets/Funnel/Pyramid_Chart/",
+            "DocUrl": "Guide/UI_Components/Funnel/Pyramid_Chart/",
             "Widget": "Charts",
             "DemoType": "Viz"
           }
@@ -3056,7 +3052,7 @@
           {
             "Title": "Overview",
             "Name": "SankeyChart",
-            "DocUrl": "Guide/Widgets/Sankey/Overview/",
+            "DocUrl": "Guide/UI_Components/Sankey/Overview/",
             "Widget": "Charts",
             "DemoType": "Viz"
           }
@@ -3069,7 +3065,7 @@
           {
             "Title": "Multiple Axes",
             "Name": "MultipleAxes",
-            "DocUrl": "Guide/Widgets/Chart/Axes/Multi-Axis_Chart/",
+            "DocUrl": "Guide/UI_Components/Chart/Axes/Multi-Axis_Chart/",
             "Credits": "www.geohive.com",
             "Widget": "Charts",
             "DemoType": "Viz"
@@ -3077,7 +3073,7 @@
           {
             "Title": "Multiple Panes",
             "Name": "MultiplePanes",
-            "DocUrl": "Guide/Widgets/Chart/Panes/Multi-Pane_Chart/",
+            "DocUrl": "Guide/UI_Components/Chart/Panes/Multi-Pane_Chart/",
             "Credits": "www.weatherbase.com",
             "Widget": "Charts",
             "DemoType": "Viz"
@@ -3085,7 +3081,7 @@
           {
             "Title": "Points Aggregation",
             "Name": "PointsAggregation",
-            "DocUrl": "Guide/Widgets/Chart/Data_Aggregation/",
+            "DocUrl": "Guide/UI_Components/Chart/Data_Aggregation/",
             "Credits": "www.worldweatheronline.com",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
@@ -3098,7 +3094,7 @@
           {
             "Title": "Error Bars",
             "Name": "ErrorBars",
-            "DocUrl": "Guide/Widgets/Chart/Error_Bars/",
+            "DocUrl": "Guide/UI_Components/Chart/Error_Bars/",
             "Credits": "www.weatherbase.com",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -3145,7 +3141,7 @@
           {
             "Title": "Strips",
             "Name": "Strips",
-            "DocUrl": "Guide/Widgets/Chart/Strips/",
+            "DocUrl": "Guide/UI_Components/Chart/Strips/",
             "Widget": "Charts",
             "MvcDescription": "",
             "NetCoreDescription": "",
@@ -3166,7 +3162,7 @@
               {
                 "Title": "Export and Printing API",
                 "Name": "ExportAndPrintingAPI",
-                "DocUrl": "Guide/Widgets/Chart/Client-Side_Exporting_and_Printing/#API",
+                "DocUrl": "Guide/UI_Components/Chart/Client-Side_Exporting_and_Printing/#API",
                 "Credits": "en.wikipedia.org",
                 "Widget": "Charts",
                 "DemoType": "Viz"
@@ -3193,7 +3189,7 @@
               {
                 "Title": "Selection",
                 "Name": "Selection",
-                "DocUrl": "Guide/Widgets/Chart/Series_Points/Selection/",
+                "DocUrl": "Guide/UI_Components/Chart/Series_Points/Selection/",
                 "Credits": "www.geohive.com",
                 "Widget": "Charts",
                 "DemoType": "Viz"
@@ -3201,7 +3197,7 @@
               {
                 "Title": "Multiple Series Selection",
                 "Name": "MultipleSeriesSelection",
-                "DocUrl": "Guide/Widgets/Chart/Series/Selection/",
+                "DocUrl": "Guide/UI_Components/Chart/Series/Selection/",
                 "Credits": "www.w3schools.com",
                 "Widget": "Charts",
                 "DemoType": "Viz"
@@ -3209,7 +3205,7 @@
               {
                 "Title": "Multiple Point Selection",
                 "Name": "MultiplePointSelection",
-                "DocUrl": "Guide/Widgets/Chart/Series_Points/Selection/",
+                "DocUrl": "Guide/UI_Components/Chart/Series_Points/Selection/",
                 "Credits": "www.nytimes.com",
                 "Widget": "Charts",
                 "DemoType": "Viz"
@@ -3217,7 +3213,7 @@
               {
                 "Title": "API - Select a Point",
                 "Name": "APISelectAPoint",
-                "DocUrl": "Guide/Widgets/Chart/Series_Points/Selection/",
+                "DocUrl": "Guide/UI_Components/Chart/Series_Points/Selection/",
                 "Credits": "http://www.statisticbrain.com",
                 "Widget": "Charts",
                 "DemoType": "Viz",
@@ -3232,7 +3228,7 @@
               {
                 "Title": "API - Display a Tooltip",
                 "Name": "APIDisplayATooltip",
-                "DocUrl": "Guide/Widgets/Chart/Tooltips/Show_and_Hide_a_Tooltip/",
+                "DocUrl": "Guide/UI_Components/Chart/Tooltips/Show_and_Hide_a_Tooltip/",
                 "Credits": "www.geohive.com",
                 "Widget": "Charts",
                 "DemoType": "Viz"
@@ -3254,7 +3250,7 @@
               {
                 "Title": "Zooming on Area Selection",
                 "Name": "ZoomingOnAreaSelection",
-                "DocUrl": "Guide/Widgets/Chart/Zooming_and_Panning/",
+                "DocUrl": "Guide/UI_Components/Chart/Zooming_and_Panning/",
                 "Widget": "Charts",
                 "Credits": "The World Bank: World Development Indicators",
                 "DemoType": "Viz",
@@ -3266,7 +3262,7 @@
               {
                 "Title": "Zooming and Scrolling",
                 "Name": "ZoomingAndScrolling",
-                "DocUrl": "Guide/Widgets/Chart/Zooming_and_Panning/",
+                "DocUrl": "Guide/UI_Components/Chart/Zooming_and_Panning/",
                 "Widget": "Charts",
                 "MvcAdditionalFiles": [
                   "/Models/SampleData/PointsData.cs"
@@ -3277,7 +3273,7 @@
               {
                 "Title": "Zooming and Scrolling API",
                 "Name": "ZoomingAndScrollingAPI",
-                "DocUrl": "Guide/Widgets/Chart/Zooming_and_Panning/#Using_the_RangeSelector_Widget",
+                "DocUrl": "Guide/UI_Components/Chart/Zooming_and_Panning/#Using_the_RangeSelector_Widget",
                 "Widget": "Charts",
                 "MvcAdditionalFiles": [
                   "/Models/SampleData/PointsData.cs"
@@ -3288,7 +3284,7 @@
               {
                 "Title": "Discrete Axis Zooming and Scrolling",
                 "Name": "DiscreteAxisZoomingAndScrolling",
-                "DocUrl": "Guide/Widgets/Chart/Zooming_and_Panning/#Using_the_RangeSelector_Widget",
+                "DocUrl": "Guide/UI_Components/Chart/Zooming_and_Panning/#Using_the_RangeSelector_Widget",
                 "Widget": "Charts",
                 "DemoType": "Viz",
                 "Equivalents": "orientation, rangeSelector, visualRange, legend"
@@ -3320,12 +3316,16 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/Gantt/Getting_Started_with_Gantt/",
+            "DocUrl": "Guide/UI_Components/Gantt/Getting_Started_with_Gantt/",
             "Widget": "Gantt",
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           }
         ]
@@ -3341,7 +3341,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           },
           {
@@ -3351,7 +3355,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           }
         ]
@@ -3369,7 +3377,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           },
           {
@@ -3379,7 +3391,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           },
           {
@@ -3390,7 +3406,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           }
         ]
@@ -3406,7 +3426,11 @@
             "DemoType": "Web",
             "WideDemo": true,
             "MvcAdditionalFiles": [
-              "/Models/SampleData/GanttData.cs"
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
             ]
           }
         ]
@@ -3437,7 +3461,7 @@
           {
             "Title": "Update Circular Gauge Data at Runtime",
             "Name": "UpdateCircularGaugeDataAtRuntime",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxCircularGauge/",
+            "DocUrl": "ApiReference/UI_Components/dxCircularGauge/",
             "Widget": "Gauges",
             "MvcAdditionalFiles": [
               "/Models/Season.cs",
@@ -3448,7 +3472,7 @@
           {
             "Title": "Update Linear Gauge Data at Runtime",
             "Name": "UpdateLinearGaugeDataAtRuntime",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxLinearGauge/",
+            "DocUrl": "ApiReference/UI_Components/dxLinearGauge/",
             "Widget": "Gauges",
             "MvcAdditionalFiles": [
               "/Models/City.cs",
@@ -3460,7 +3484,7 @@
           {
             "Title": "Update Bar Gauge Data at Runtime",
             "Name": "UpdateBarGaugeDataAtRuntime",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxBarGauge/",
+            "DocUrl": "ApiReference/UI_Components/dxBarGauge/",
             "Widget": "Gauges",
             "MvcAdditionalFiles": [
               "/Models/Color.cs",
@@ -3478,28 +3502,28 @@
           {
             "Title": "Labels Customization",
             "Name": "LabelsCustomization",
-            "DocUrl": "Guide/Widgets/BarGauge/Visual_Elements/#Labels",
+            "DocUrl": "Guide/UI_Components/BarGauge/Visual_Elements/#Labels",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Palette",
             "Name": "Palette",
-            "DocUrl": "Guide/Widgets/LinearGauge/Visual_Elements/#Range_Container",
+            "DocUrl": "Guide/UI_Components/LinearGauge/Visual_Elements/#Range_Container",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Tooltip and Legend",
             "Name": "Tooltip",
-            "DocUrl": "Guide/Widgets/BarGauge/Visual_Elements/#Tooltips",
+            "DocUrl": "Guide/UI_Components/BarGauge/Visual_Elements/#Tooltips",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Variable Number of Bars",
             "Name": "VariableNumberOfBars",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxBarGauge/Methods/#valuesnewValues",
+            "DocUrl": "ApiReference/UI_Components/dxBarGauge/Methods/#valuesnewValues",
             "Widget": "Gauges",
             "MvcAdditionalFiles": [
               "/Models/GaugeProduct.cs",
@@ -3517,77 +3541,77 @@
           {
             "Title": "Palette for Ranges",
             "Name": "PaletteForRanges",
-            "DocUrl": "Guide/Widgets/CircularGauge/Visual_Elements/#Range_Container",
+            "DocUrl": "Guide/UI_Components/CircularGauge/Visual_Elements/#Range_Container",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Scale Minor Ticks",
             "Name": "ScaleMinorTicks",
-            "DocUrl": "Guide/Widgets/CircularGauge/Visual_Elements/#Scale_Ticks",
+            "DocUrl": "Guide/UI_Components/CircularGauge/Visual_Elements/#Scale_Ticks",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Scale Label Formatting",
             "Name": "ScaleLabelFormatting",
-            "DocUrl": "Guide/Widgets/CircularGauge/Visual_Elements/#Scale_Labels",
+            "DocUrl": "Guide/UI_Components/CircularGauge/Visual_Elements/#Scale_Labels",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Different Value Indicator Types",
             "Name": "DifferentValueIndicatorTypes",
-            "DocUrl": "Guide/Widgets/CircularGauge/Visual_Elements/#Value_Indicator",
+            "DocUrl": "Guide/UI_Components/CircularGauge/Visual_Elements/#Value_Indicator",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Different Subvalue Indicator Types",
             "Name": "DifferentSubvalueIndicatorTypes",
-            "DocUrl": "Guide/Widgets/CircularGauge/Visual_Elements/#Subvalue_Indicators",
+            "DocUrl": "Guide/UI_Components/CircularGauge/Visual_Elements/#Subvalue_Indicators",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Subvalue Indicator Text Formatting",
             "Name": "SubvalueIndicatorTextFormatting",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxCircularGauge/Indicator_Types/TextCloud/text/",
+            "DocUrl": "ApiReference/UI_Components/dxCircularGauge/Indicator_Types/TextCloud/text/",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Custom Layout",
             "Name": "CustomLayout",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxCircularGauge/",
+            "DocUrl": "ApiReference/UI_Components/dxCircularGauge/",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Angles Customization",
             "Name": "AnglesCustomization",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxCircularGauge/Configuration/geometry/",
+            "DocUrl": "ApiReference/UI_Components/dxCircularGauge/Configuration/geometry/",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Gauge Title Customized",
             "Name": "GaugeTitleCustomized",
-            "DocUrl": "Guide/Widgets/CircularGauge/Visual_Elements/#Title_and_Subtitle",
+            "DocUrl": "Guide/UI_Components/CircularGauge/Visual_Elements/#Title_and_Subtitle",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Gauge Tooltip",
             "Name": "GaugeTooltip",
-            "DocUrl": "Guide/Widgets/CircularGauge/Visual_Elements/#Tooltips",
+            "DocUrl": "Guide/UI_Components/CircularGauge/Visual_Elements/#Tooltips",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Value Indicators API",
             "Name": "ValueIndicatorsAPI",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxCircularGauge/Methods/",
+            "DocUrl": "ApiReference/UI_Components/dxCircularGauge/Methods/",
             "Widget": "Gauges",
             "DemoType": "Viz"
           }
@@ -3601,49 +3625,49 @@
           {
             "Title": "Scale Custom Tick Interval",
             "Name": "ScaleCustomTickInterval",
-            "DocUrl": "Guide/Widgets/LinearGauge/Visual_Elements/#Scale_Ticks",
+            "DocUrl": "Guide/UI_Components/LinearGauge/Visual_Elements/#Scale_Ticks",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Scale Custom Tick Values",
             "Name": "ScaleCustomTickValues",
-            "DocUrl": "Guide/Widgets/LinearGauge/Visual_Elements/#Scale_Ticks",
+            "DocUrl": "Guide/UI_Components/LinearGauge/Visual_Elements/#Scale_Ticks",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Different Value Indicator Types",
             "Name": "DifferentValueIndicatorTypesLinearGauge",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxLinearGauge/Indicator_Types/",
+            "DocUrl": "ApiReference/UI_Components/dxLinearGauge/Indicator_Types/",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Different Subvalue Indicator Types",
             "Name": "DifferentSubvalueIndicatorTypesLinearGauge",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxLinearGauge/Indicator_Types/",
+            "DocUrl": "ApiReference/UI_Components/dxLinearGauge/Indicator_Types/",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Base Value for Range Bar",
             "Name": "BaseValueForRangeBar",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxLinearGauge/Indicator_Types/RangeBar/#baseValue",
+            "DocUrl": "ApiReference/UI_Components/dxLinearGauge/Indicator_Types/RangeBar/#baseValue",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Custom Layout",
             "Name": "CustomLayoutLinearGauge",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxLinearGauge/",
+            "DocUrl": "ApiReference/UI_Components/dxLinearGauge/",
             "Widget": "Gauges",
             "DemoType": "Viz"
           },
           {
             "Title": "Variable Number of Subvalue Indicators",
             "Name": "VariableNumberOfSubvalueIndicators",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxLinearGauge/Methods/",
+            "DocUrl": "ApiReference/UI_Components/dxLinearGauge/Methods/",
             "Widget": "Gauges",
             "MvcAdditionalFiles": [
               "/Models/SubvalueIndicator.cs",
@@ -3688,7 +3712,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/Accordion/Overview/",
+            "DocUrl": "Guide/UI_Components/Accordion/Overview/",
             "Widget": "Accordion",
             "MvcAdditionalFiles": [
               "/Models/Company.cs",
@@ -3706,7 +3730,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/Menu/Overview/",
+            "DocUrl": "Guide/UI_Components/Menu/Overview/",
             "Widget": "Menu",
             "MvcAdditionalFiles": [
               "/Models/MenuItem.cs",
@@ -3724,7 +3748,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/MultiView/Overview/",
+            "DocUrl": "Guide/UI_Components/MultiView/Overview/",
             "Widget": "MultiView",
             "MvcAdditionalFiles": [
               "/Models/Store.cs",
@@ -3742,7 +3766,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/NavBar/Overview/",
+            "DocUrl": "Guide/UI_Components/NavBar/Overview/",
             "Widget": "NavBar",
             "DemoType": "Mobile"
           }
@@ -3757,7 +3781,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/SlideOut/Overview/",
+            "DocUrl": "Guide/UI_Components/SlideOut/Overview/",
             "Widget": "Slideout",
             "DemoType": "Mobile"
           }
@@ -3771,7 +3795,7 @@
           {
             "Title": "Left or Right Position",
             "Name": "LeftOrRightPosition",
-            "DocUrl": "ApiReference/UI_Widgets/dxDrawer/Configuration/#position",
+            "DocUrl": "ApiReference/UI_Components/dxDrawer/Configuration/#position",
             "Widget": "Drawer",
             "Modules": "html-react-parser",
             "MvcAdditionalFiles": [
@@ -3783,7 +3807,7 @@
           {
             "Title": "Top or Bottom Position",
             "Name": "TopOrBottomPosition",
-            "DocUrl": "ApiReference/UI_Widgets/dxDrawer/Configuration/#openedStateMode",
+            "DocUrl": "ApiReference/UI_Components/dxDrawer/Configuration/#openedStateMode",
             "Widget": "Drawer",
             "Modules": "html-react-parser",
             "MvcAdditionalFiles": [
@@ -3802,7 +3826,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/TabPanel/Overview/",
+            "DocUrl": "Guide/UI_Components/TabPanel/Overview/",
             "Widget": "TabPanel",
             "MvcAdditionalFiles": [
               "/Models/Company.cs",
@@ -3832,7 +3856,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/Tabs/Overview/",
+            "DocUrl": "Guide/UI_Components/Tabs/Overview/",
             "Widget": "Tabs"
           }
         ]
@@ -3845,7 +3869,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/Toolbar/Overview/",
+            "DocUrl": "Guide/UI_Components/Toolbar/Overview/",
             "Widget": "Toolbar",
             "MvcAdditionalFiles": [
               "/Models/Product.cs",
@@ -3865,7 +3889,7 @@
               {
                 "Title": "Hierarchical Data Structure",
                 "Name": "HierarchicalDataStructure",
-                "DocUrl": "Guide/Widgets/TreeView/Use_Hierarchical_Data/",
+                "DocUrl": "Guide/UI_Components/TreeView/Use_Hierarchical_Data/",
                 "Widget": "TreeView",
                 "MvcAdditionalFiles": [
                   "/Models/Product.cs",
@@ -3881,7 +3905,7 @@
               {
                 "Title": "Plain Data Structure",
                 "Name": "FlatDataStructure",
-                "DocUrl": "Guide/Widgets/TreeView/Use_Plain_Data/",
+                "DocUrl": "Guide/UI_Components/TreeView/Use_Plain_Data/",
                 "Widget": "TreeView",
                 "MvcAdditionalFiles": [
                   "/Models/Product.cs",
@@ -3898,7 +3922,7 @@
               {
                 "Title": "Node Selection and Customization",
                 "Name": "ItemSelectionAndCustomization",
-                "DocUrl": "Guide/Widgets/TreeView/Select_Nodes/",
+                "DocUrl": "Guide/UI_Components/TreeView/Select_Nodes/",
                 "Widget": "TreeView",
                 "MvcAdditionalFiles": [
                   "/Models/TreeView/Employee.cs",
@@ -3914,7 +3938,7 @@
               {
                 "Title": "Virtual Mode",
                 "Name": "VirtualMode",
-                "DocUrl": "Guide/Widgets/TreeView/Enhance_Performance_on_Large_Datasets/",
+                "DocUrl": "Guide/UI_Components/TreeView/Enhance_Performance_on_Large_Datasets/",
                 "Widget": "TreeView",
                 "DemoType": "Web"
               }
@@ -3926,7 +3950,7 @@
               {
                 "Title": "Load Data on Demand",
                 "Name": "LoadDataOnDemand",
-                "DocUrl": "ApiReference/UI_Widgets/dxTreeView/Configuration/#createChildren",
+                "DocUrl": "ApiReference/UI_Components/dxTreeView/Configuration/#createChildren",
                 "Widget": "TreeView",
                 "Modules": "whatwg-fetch",
                 "MvcAdditionalFiles": [
@@ -3942,7 +3966,7 @@
               {
                 "Title": "TreeView with Search Bar",
                 "Name": "TreeViewWithSearchBar",
-                "DocUrl": "Guide/Widgets/TreeView/Search_Nodes/",
+                "DocUrl": "Guide/UI_Components/TreeView/Search_Nodes/",
                 "Widget": "TreeView",
                 "MvcAdditionalFiles": [
                   "/Models/Product.cs",
@@ -4044,7 +4068,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/Autocomplete/Overview/",
+            "DocUrl": "Guide/UI_Components/Autocomplete/Overview/",
             "Widget": "Autocomplete",
             "MvcAdditionalFiles": [
               "/Models/SampleData/Names.cs",
@@ -4062,7 +4086,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/Calendar/Overview/",
+            "DocUrl": "Guide/UI_Components/Calendar/Overview/",
             "Widget": "Calendar"
           }
         ]
@@ -4075,7 +4099,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/CheckBox/Overview/",
+            "DocUrl": "Guide/UI_Components/CheckBox/Overview/",
             "Widget": "CheckBox"
           }
         ]
@@ -4088,7 +4112,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/ColorBox/Overview/",
+            "DocUrl": "Guide/UI_Components/ColorBox/Overview/",
             "Widget": "ColorBox",
             "DemoType": "Web"
           }
@@ -4102,14 +4126,13 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/DateBox/Overview/",
+            "DocUrl": "Guide/UI_Components/DateBox/Overview/",
             "Widget": "DateBox"
           },
           {
             "Title": "Formatting",
             "Name": "Formatting",
             "Equivalents": "mask",
-            "DocUrl": "ApiReference/UI_Widgets/dxDateBox/Configuration/#useMaskBehavior",
             "Widget": "DateBox"
           }
         ]
@@ -4157,14 +4180,14 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/NumberBox/Overview/",
+            "DocUrl": "Guide/UI_Components/NumberBox/Overview/",
             "Widget": "NumberBox"
           },
           {
             "Title": "Formatting",
             "Name": "Formatting",
             "Equivalents": "mask",
-            "DocUrl": "ApiReference/UI_Widgets/dxNumberBox/Configuration/#format",
+            "DocUrl": "ApiReference/UI_Components/dxNumberBox/Configuration/#format",
             "Widget": "NumberBox"
           }
         ]
@@ -4227,7 +4250,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/Switch/Overview/",
+            "DocUrl": "Guide/UI_Components/Switch/Overview/",
             "Widget": "Switch"
           }
         ]
@@ -4240,7 +4263,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/TagBox/Overview/",
+            "DocUrl": "Guide/UI_Components/TagBox/Overview/",
             "Widget": "TagBox",
             "MvcAdditionalFiles": [
               "/Models/ElectronicsItem.cs",
@@ -4251,7 +4274,7 @@
           {
             "Title": "Grouped Items",
             "Name": "GroupedItems",
-            "DocUrl": "Guide/Widgets/TagBox/Grouping/In_the_Data_Source/",
+            "DocUrl": "Guide/UI_Components/TagBox/Grouping/In_the_Data_Source/",
             "Widget": "TagBox",
             "MvcAdditionalFiles": [
               "/Models/ElectronicsItem.cs",
@@ -4261,7 +4284,7 @@
           {
             "Title": "Tag Count Limitation",
             "Name": "TagCountLimitation",
-            "DocUrl": "Guide/Widgets/TagBox/Limit_the_Tag_Count/#Displayed_Tags",
+            "DocUrl": "Guide/UI_Components/TagBox/Limit_the_Tag_Count/#Displayed_Tags",
             "Widget": "TagBox",
             "MvcAdditionalFiles": [
               "/Models/ElectronicsItem.cs",
@@ -4278,7 +4301,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/TextArea/Overview/",
+            "DocUrl": "Guide/UI_Components/TextArea/Overview/",
             "Widget": "TextArea"
           }
         ]
@@ -4291,7 +4314,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/TextBox/Overview/",
             "Widget": "TextBox"
           }
         ]
@@ -4304,7 +4326,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "ApiReference/UI_Widgets/dxValidator/",
+            "DocUrl": "ApiReference/UI_Components/dxValidator/",
             "Widget": "Validation",
             "MvcAdditionalFiles": [
               "/Views/Validation/SuccessValidation.cshtml",
@@ -4391,7 +4413,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/Box/Overview/",
+            "DocUrl": "Guide/UI_Components/Box/Overview/",
             "Widget": "Box",
             "DemoType": "Web"
           }
@@ -4405,7 +4427,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/ButtonGroup/Getting_Started_with_ButtonGroup/",
+            "DocUrl": "Guide/UI_Components/ButtonGroup/Getting_Started_with_ButtonGroup/",
             "Widget": "ButtonGroup",
             "DemoType": "Web"
           }
@@ -4418,7 +4440,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "ApiReference/UI_Widgets/CSS_Classes/#dx-fieldset",
+            "DocUrl": "ApiReference/UI_Components/CSS_Classes/#dx-fieldset",
             "Widget": "FieldSet"
           }
         ]
@@ -4431,14 +4453,14 @@
           {
             "Title": "With Data Grid",
             "Name": "WithDataGrid",
-            "DocUrl": "Guide/Widgets/FilterBuilder/Integrate_with_a_Widget/",
+            "DocUrl": "Guide/UI_Components/FilterBuilder/Integrate_with_a_Widget/",
             "Widget": "FilterBuilder",
             "DemoType": "Web"
           },
           {
             "Title": "With List",
             "Name": "WithList",
-            "DocUrl": "Guide/Widgets/FilterBuilder/Integrate_with_a_Widget/",
+            "DocUrl": "Guide/UI_Components/FilterBuilder/Integrate_with_a_Widget/",
             "Widget": "FilterBuilder",
             "DemoType": "Web",
             "MvcAdditionalFiles": [
@@ -4449,7 +4471,7 @@
           {
             "Title": "Customization",
             "Name": "Customization",
-            "DocUrl": "Guide/Widgets/FilterBuilder/Implement_a_Custom_Operation/",
+            "DocUrl": "Guide/UI_Components/FilterBuilder/Implement_a_Custom_Operation/",
             "Widget": "FilterBuilder",
             "DemoType": "Web"
           }
@@ -4463,7 +4485,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/Form/Overview/",
+            "DocUrl": "Guide/UI_Components/Form/Overview/",
             "Widget": "Form",
             "MvcAdditionalFiles": [
               "/Models/Company.cs",
@@ -4473,20 +4495,20 @@
           {
             "Title": "Customize Item",
             "Name": "CustomizeItem",
-            "DocUrl": "Guide/Widgets/Form/Configure_Simple_Items/#Create_a_Simple_Item",
+            "DocUrl": "Guide/UI_Components/Form/Configure_Simple_Items/#Create_a_Simple_Item",
             "Widget": "Form"
           },
           {
             "Title": "Grouped Fields",
             "Name": "GroupedFields",
-            "DocUrl": "Guide/Widgets/Form/Organize_Simple_Items/",
+            "DocUrl": "Guide/UI_Components/Form/Organize_Simple_Items/",
             "Widget": "Form"
           },
           {
             "Title": "Columns Adaptability",
             "Equivalents": "adaptive",
             "Name": "ColumnsAdaptability",
-            "DocUrl": "Guide/Widgets/Form/Organize_Simple_Items/In_Columns/#Layout_Depending_on_the_Screen_Width",
+            "DocUrl": "Guide/UI_Components/Form/Organize_Simple_Items/In_Columns/#Layout_Depending_on_the_Screen_Width",
             "Widget": "Form",
             "DemoType": "Adaptivity"
           },
@@ -4496,7 +4518,7 @@
             "Title": "Validation",
             "Equivalents": "Submit",
             "Name": "Validation",
-            "DocUrl": "Guide/Widgets/Form/Validate_and_Submit_the_Form/",
+            "DocUrl": "Guide/UI_Components/Form/Validate_and_Submit_the_Form/",
             "Widget": "Form",
             "MvcAdditionalFiles": [
               "/Views/Form/SuccessValidation.cshtml",
@@ -4523,7 +4545,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/RadioGroup/Overview/",
+            "DocUrl": "Guide/UI_Components/RadioGroup/Overview/",
             "Widget": "RadioGroup"
           }
         ]
@@ -4536,14 +4558,14 @@
           {
             "Title": "Numeric Scale (Lightweight)",
             "Name": "NumericScaleLightweight",
-            "DocUrl": "Guide/Widgets/RangeSelector/Visual_Elements/#Sliders",
+            "DocUrl": "Guide/UI_Components/RangeSelector/Visual_Elements/#Sliders",
             "Widget": "RangeSelector",
             "DemoType": "Viz"
           },
           {
             "Title": "Numeric Scale",
             "Name": "NumericScale",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxRangeSelector/Configuration/scale/#valueType",
+            "DocUrl": "ApiReference/UI_Components/dxRangeSelector/Configuration/scale/#valueType",
             "Widget": "RangeSelector",
             "MvcAdditionalFiles": [
               "/Models/NumericScaleProduct.cs",
@@ -4554,14 +4576,14 @@
           {
             "Title": "Date-Time Scale (Lightweight)",
             "Name": "DateTimeScaleLightweight",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxRangeSelector/Configuration/scale/",
+            "DocUrl": "ApiReference/UI_Components/dxRangeSelector/Configuration/scale/",
             "Widget": "RangeSelector",
             "DemoType": "Viz"
           },
           {
             "Title": "Date-Time Scale",
             "Name": "DateTimeScale",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxRangeSelector/Configuration/scale/#valueType",
+            "DocUrl": "ApiReference/UI_Components/dxRangeSelector/Configuration/scale/#valueType",
             "Widget": "RangeSelector",
             "MvcAdditionalFiles": [
               "/Models/DateTimeScaleTemperature.cs",
@@ -4572,14 +4594,14 @@
           {
             "Title": "Logarithmic Scale",
             "Name": "LogarithmicScale",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxRangeSelector/Configuration/scale/#type",
+            "DocUrl": "ApiReference/UI_Components/dxRangeSelector/Configuration/scale/#type",
             "Widget": "RangeSelector",
             "DemoType": "Viz"
           },
           {
             "Title": "Discrete scale",
             "Name": "DiscreteScale",
-            "DocUrl": "Guide/Widgets/RangeSelector/Visual_Elements/#Background/Displaying_a_Chart",
+            "DocUrl": "Guide/UI_Components/RangeSelector/Visual_Elements/#Background/Displaying_a_Chart",
             "Widget": "RangeSelector",
             "MvcAdditionalFiles": [
               "/Models/SampleData/CopperProductionData.cs"
@@ -4589,21 +4611,21 @@
           {
             "Title": "Custom Formatting",
             "Name": "CustomFormatting",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxRangeSelector/Configuration/sliderMarker/#format",
+            "DocUrl": "ApiReference/UI_Components/dxRangeSelector/Configuration/sliderMarker/#format",
             "Widget": "RangeSelector",
             "DemoType": "Viz"
           },
           {
             "Title": "Use Range Selection for Calculation",
             "Name": "UseRangeSelectionForCalculation",
-            "DocUrl": "Guide/Widgets/RangeSelector/Range_Changing/#Handle_the_Range_Changing_Event",
+            "DocUrl": "Guide/UI_Components/RangeSelector/Range_Changing/#Handle_the_Range_Changing_Event",
             "Widget": "RangeSelector",
             "DemoType": "Viz"
           },
           {
             "Title": "Use Range Selection for Filtering",
             "Name": "UseRangeSelectionForFiltering",
-            "DocUrl": "Guide/Widgets/RangeSelector/Range_Changing/#Handle_the_Range_Changing_Event",
+            "DocUrl": "Guide/UI_Components/RangeSelector/Range_Changing/#Handle_the_Range_Changing_Event",
             "Widget": "RangeSelector",
             "MvcAdditionalFiles": [
               "/Models/SelectedEmployee.cs",
@@ -4614,14 +4636,14 @@
           {
             "Title": "Image on Background",
             "Name": "ImageOnBackground",
-            "DocUrl": "Guide/Widgets/RangeSelector/Visual_Elements/#Background/Displaying_an_Image",
+            "DocUrl": "Guide/UI_Components/RangeSelector/Visual_Elements/#Background/Displaying_an_Image",
             "Widget": "RangeSelector",
             "DemoType": "Viz"
           },
           {
             "Title": "Chart on Background",
             "Name": "ChartOnBackground",
-            "DocUrl": "Guide/Widgets/RangeSelector/Visual_Elements/#Background/Displaying_a_Chart",
+            "DocUrl": "Guide/UI_Components/RangeSelector/Visual_Elements/#Background/Displaying_a_Chart",
             "Widget": "RangeSelector",
             "MvcAdditionalFiles": [
               "/Models/CostAndRevenue.cs",
@@ -4632,7 +4654,7 @@
           {
             "Title": "Customized Chart on Background",
             "Name": "CustomizedChartOnBackground",
-            "DocUrl": "Guide/Widgets/RangeSelector/Visual_Elements/#Background/Displaying_a_Chart",
+            "DocUrl": "Guide/UI_Components/RangeSelector/Visual_Elements/#Background/Displaying_a_Chart",
             "Widget": "RangeSelector",
             "MvcAdditionalFiles": [
               "/Models/SampleData/CpuPoints.cs"
@@ -4642,7 +4664,7 @@
           {
             "Title": "Chart on Background with Series Template",
             "Name": "ChartOnBackgroundWithSeriesTemplate",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxRangeSelector/Configuration/chart/",
+            "DocUrl": "ApiReference/UI_Components/dxRangeSelector/Configuration/chart/",
             "Credits": "www.geohive.com",
             "Widget": "RangeSelector",
             "MvcAdditionalFiles": [
@@ -4661,7 +4683,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/RangeSlider/Overview/",
+            "DocUrl": "Guide/UI_Components/RangeSlider/Overview/",
             "Widget": "RangeSlider"
           }
         ]
@@ -4674,7 +4696,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/ResponsiveBox/Overview/",
+            "DocUrl": "Guide/UI_Components/ResponsiveBox/Overview/",
             "Widget": "ResponsiveBox",
             "DemoType": "Adaptivity"
           }
@@ -4688,7 +4710,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/ScrollView/Overview/",
+            "DocUrl": "Guide/UI_Components/ScrollView/Overview/",
             "Widget": "ScrollView"
           }
         ]
@@ -4701,7 +4723,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/Slider/Customize_Widget_Appearance/",
+            "DocUrl": "Guide/UI_Components/Slider/Customize_Widget_Appearance/",
             "Widget": "Slider"
           }
         ]
@@ -4751,7 +4773,7 @@
               {
                 "Title": "Overview",
                 "Name": "Overview",
-                "DocUrl": "Guide/Widgets/FileManager/Getting_Started_with_File_Manager/",
+                "DocUrl": "Guide/UI_Components/FileManager/Getting_Started_with_File_Manager/",
                 "Widget": "FileManager",
                 "WideDemo": true,
                 "DemoType": "Web",
@@ -4768,7 +4790,7 @@
               {
                 "Title": "Physical File System",
                 "Name": "BindingToFileSystem",
-                "DocUrl": "ApiReference/UI_Widgets/dxFileManager/File_Providers/Remote/",
+                "DocUrl": "ApiReference/UI_Components/dxFileManager/File_Providers/Remote/",
                 "Widget": "FileManager",
                 "DemoType": "Web",
                 "MvcAdditionalFiles": [
@@ -4811,7 +4833,7 @@
               {
                 "Title": "Hierarchical JS Structure",
                 "Name": "BindingToHierarchicalStructure",
-                "DocUrl": "ApiReference/UI_Widgets/dxFileManager/File_Providers/Array/",
+                "DocUrl": "ApiReference/UI_Components/dxFileManager/File_Providers/Array/",
                 "Widget": "FileManager",
                 "DemoType": "Web",
                 "MvcAdditionalFiles": [
@@ -4827,7 +4849,7 @@
               {
                 "Title": "Custom Thumbnails",
                 "Name": "CustomThumbnails",
-                "DocUrl": "ApiReference/UI_Widgets/dxFileManager/Configuration/#customizeThumbnail",
+                "DocUrl": "ApiReference/UI_Components/dxFileManager/Configuration/#customizeThumbnail",
                 "Widget": "FileManager",
                 "DemoType": "Web",
                 "MvcAdditionalFiles": [
@@ -4863,7 +4885,7 @@
           {
             "Title": "Async Upload",
             "Name": "FileUploading",
-            "DocUrl": "Guide/Widgets/FileUploader/Upload_Files/Client-Side_Settings/",
+            "DocUrl": "Guide/UI_Components/FileUploader/Upload_Files/Client-Side_Settings/",
             "Widget": "FileUploader"
           },
           {
@@ -4927,14 +4949,14 @@
           {
             "Title": "Basics",
             "Name": "Basics",
-            "DocUrl": "Guide/Widgets/ActionSheet/Overview/",
+            "DocUrl": "Guide/UI_Components/ActionSheet/Overview/",
             "Widget": "ActionSheet",
             "DemoType": "Mobile"
           },
           {
             "Title": "Popover Mode",
             "Name": "PopoverMode",
-            "DocUrl": "Guide/Widgets/ActionSheet/Specify_Display_Mode/",
+            "DocUrl": "Guide/UI_Components/ActionSheet/Specify_Display_Mode/",
             "Widget": "ActionSheet",
             "DemoType": "Mobile"
           }
@@ -4948,13 +4970,11 @@
           {
             "Title": "Predefined Types",
             "Name": "PredefinedTypes",
-            "DocUrl": "Guide/Widgets/Button/Customize_the_Appearance/",
             "Widget": "Button"
           },
           {
             "Title": "Icons",
             "Name": "Icons",
-            "DocUrl": "Guide/Widgets/Button/Customize_the_Appearance/",
             "Widget": "Button"
           }
         ]
@@ -5010,14 +5030,14 @@
           {
             "Title": "Basics",
             "Name": "Basics",
-            "DocUrl": "Guide/Widgets/ContextMenu/Overview/",
+            "DocUrl": "Guide/UI_Components/ContextMenu/Overview/",
             "Widget": "ContextMenu",
             "DemoType": "Web"
           },
           {
             "Title": "Templates",
             "Name": "Templates",
-            "DocUrl": "Guide/Widgets/ContextMenu/Customize_Item_Appearance/",
+            "DocUrl": "Guide/UI_Components/ContextMenu/Customize_Item_Appearance/",
             "Widget": "ContextMenu",
             "DemoType": "Web"
           }
@@ -5031,7 +5051,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/Gallery/Overview/",
+            "DocUrl": "Guide/UI_Components/Gallery/Overview/",
             "Widget": "Gallery",
             "MvcAdditionalFiles": [
               "/ViewModels/GalleryViewModel.cs"
@@ -5040,7 +5060,7 @@
           {
             "Title": "Item Template",
             "Name": "ItemTemplate",
-            "DocUrl": "Guide/Widgets/Gallery/Customize_Item_Appearance/",
+            "DocUrl": "Guide/UI_Components/Gallery/Customize_Item_Appearance/",
             "Widget": "Gallery",
             "MvcAdditionalFiles": [
               "/Models/SampleData/GalleryItems.cs",
@@ -5050,7 +5070,7 @@
           {
             "Title": "Item 3rd Party Engine Template",
             "Name": "Item3RdPartyEngineTemplate",
-            "DocUrl": "Guide/Widgets/Common/Templates/#3rd-Party_Template_Engines",
+            "DocUrl": "Guide/UI_Components/Common/Templates/#3rd-Party_Template_Engines",
             "Widget": "Gallery"
           }
         ]
@@ -5061,9 +5081,8 @@
         "Equivalents": "ListView, TableView, ListBox, dxList, dx-list",
         "Demos": [
           {
-            "Title": "List Editing and API",
+            "Title": "Item Deletion UI",
             "Name": "ListEditingAndAPI",
-            "DocUrl": "Guide/Widgets/List/Item_Deletion/",
             "Widget": "List",
             "MvcAdditionalFiles": [
               "/Models/InMemoryListDataContext.cs",
@@ -5075,7 +5094,6 @@
           {
             "Title": "Grouped List",
             "Name": "GroupedList",
-            "DocUrl": "Guide/Widgets/List/Grouping/In_the_Data_Source/",
             "Widget": "List",
             "MvcAdditionalFiles": [
               "/Models/SampleData/ListGroupedData.cs"
@@ -5084,7 +5102,6 @@
           {
             "Title": "Item Template",
             "Name": "ItemTemplate",
-            "DocUrl": "Guide/Widgets/List/Customize_Item_Appearance/",
             "Widget": "List",
             "MvcAdditionalFiles": [
               "/Models/ListProduct.cs",
@@ -5094,13 +5111,12 @@
           {
             "Title": "Item 3rd Party Engine Template",
             "Name": "Item3RdPartyEngineTemplate",
-            "DocUrl": "Guide/Widgets/Common/Templates/#3rd-Party_Template_Engines",
+            "DocUrl": "Guide/UI_Components/Common/Templates/#3rd-Party_Template_Engines",
             "Widget": "List"
           },
           {
             "Title": "List with Search Bar",
             "Name": "ListWithSearchBar",
-            "DocUrl": "Guide/Widgets/List/Searching/",
             "Widget": "List",
             "MvcAdditionalFiles": [
               "/Models/ListProduct.cs",
@@ -5110,7 +5126,6 @@
           {
             "Title": "List Selection",
             "Name": "ListSelection",
-            "DocUrl": "Guide/Widgets/List/Selection/",
             "Widget": "List",
             "MvcAdditionalFiles": [
               "/Models/ListItem.cs",
@@ -5135,7 +5150,6 @@
           {
             "Title": "Web API Service",
             "Name": "WebApi",
-            "DocUrl": "Guide/Data_Binding/Specify_a_Data_Source/Web_API,_PHP,_MongoDB/",
             "MvcDocUrl": "https://docs.devexpress.com/DevExtremeAspNetMvc/400704/concepts/data-binding",
             "NetCoreDocUrl": "https://docs.devexpress.com/AspNetCore/400575/concepts/devextreme-based-controls/data-binding",
             "Equivalents": "webapi",
@@ -5156,7 +5170,7 @@
           {
             "Title": "Basics",
             "Name": "Basics",
-            "DocUrl": "Guide/Widgets/Lookup/Overview/",
+            "DocUrl": "Guide/UI_Components/Lookup/Overview/",
             "Widget": "Lookup",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/EmployeesTasksController.cs",
@@ -5168,7 +5182,7 @@
           {
             "Title": "Templates",
             "Name": "Templates",
-            "DocUrl": "Guide/Widgets/Lookup/Customize_the_Appearance/Customize_Item_Appearance/",
+            "DocUrl": "Guide/UI_Components/Lookup/Customize_the_Appearance/Customize_Item_Appearance/",
             "Widget": "Lookup",
             "MvcAdditionalFiles": [
               "/Models/DataGrid/Employee.cs",
@@ -5178,7 +5192,7 @@
           {
             "Title": "Event Handling",
             "Name": "EventHandling",
-            "DocUrl": "Guide/Widgets/Lookup/Handle_the_Value_Change_Event/",
+            "DocUrl": "Guide/UI_Components/Lookup/Handle_the_Value_Change_Event/",
             "Widget": "Lookup",
             "MvcAdditionalFiles": [
               "/Models/DataGrid/Employee.cs",
@@ -5195,25 +5209,25 @@
           {
             "Title": "Basics",
             "Name": "Basics",
-            "DocUrl": "Guide/Widgets/TileView/Overview/",
+            "DocUrl": "Guide/UI_Components/TileView/Overview/",
             "Widget": "TileView"
           },
           {
             "Title": "Directions",
             "Name": "Directions",
-            "DocUrl": "ApiReference/UI_Widgets/dxTileView/Configuration/#direction",
+            "DocUrl": "ApiReference/UI_Components/dxTileView/Configuration/#direction",
             "Widget": "TileView"
           },
           {
             "Title": "Item Template",
             "Name": "ItemTemplate",
-            "DocUrl": "Guide/Widgets/TileView/Customize_Tile_Appearance/",
+            "DocUrl": "Guide/UI_Components/TileView/Customize_Tile_Appearance/",
             "Widget": "TileView"
           },
           {
             "Title": "Item 3rd Party Engine Template",
             "Name": "Item3RdPartyEngineTemplate",
-            "DocUrl": "Guide/Widgets/Common/Templates/#3rd-Party_Template_Engines",
+            "DocUrl": "Guide/UI_Components/Common/Templates/#3rd-Party_Template_Engines",
             "Widget": "TileView"
           }
         ]
@@ -5255,13 +5269,13 @@
           {
             "Title": "Markers",
             "Name": "Markers",
-            "DocUrl": "Guide/Widgets/Map/Configure_Markers/",
+            "DocUrl": "Guide/UI_Components/Map/Configure_Markers/",
             "Widget": "Map"
           },
           {
             "Title": "Routes",
             "Name": "Routes",
-            "DocUrl": "Guide/Widgets/Map/Configure_Routes/",
+            "DocUrl": "Guide/UI_Components/Map/Configure_Routes/",
             "Widget": "Map"
           }
         ]
@@ -5274,7 +5288,7 @@
           {
             "Title": "Colors Customization",
             "Name": "ColorsCustomization",
-            "DocUrl": "Guide/Widgets/VectorMap/Visual_Elements/#Areas",
+            "DocUrl": "Guide/UI_Components/VectorMap/Visual_Elements/#Areas",
             "Widget": "VectorMap",
             "Modules": "vectormap",
             "MvcAdditionalFiles": [
@@ -5285,7 +5299,7 @@
           {
             "Title": "Zooming and Centering",
             "Name": "ZoomingAndCentering",
-            "DocUrl": "Guide/Widgets/VectorMap/End-User_Interaction/#Zooming",
+            "DocUrl": "Guide/UI_Components/VectorMap/End-User_Interaction/#Zooming",
             "Widget": "VectorMap",
             "Modules": "vectormap",
             "MvcAdditionalFiles": [
@@ -5298,7 +5312,7 @@
           {
             "Title": "Palette",
             "Name": "Palette",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxVectorMap/Configuration/layers/#palette",
+            "DocUrl": "ApiReference/UI_Components/dxVectorMap/Configuration/layers/#palette",
             "Widget": "VectorMap",
             "Modules": "vectormap",
             "MvcAdditionalFiles": [
@@ -5309,7 +5323,7 @@
           {
             "Title": "Image Markers",
             "Name": "ImageMarkers",
-            "DocUrl": "Guide/Widgets/VectorMap/Visual_Elements/#Markers",
+            "DocUrl": "Guide/UI_Components/VectorMap/Visual_Elements/#Markers",
             "Widget": "VectorMap",
             "Modules": "vectormap",
             "MvcAdditionalFiles": [
@@ -5320,7 +5334,7 @@
           {
             "Title": "Bubble Markers",
             "Name": "BubbleMarkers",
-            "DocUrl": "Guide/Widgets/VectorMap/Visual_Elements/#Markers",
+            "DocUrl": "Guide/UI_Components/VectorMap/Visual_Elements/#Markers",
             "Widget": "VectorMap",
             "Modules": "vectormap",
             "MvcAdditionalFiles": [
@@ -5331,7 +5345,7 @@
           {
             "Title": "Pie Markers",
             "Name": "PieMarkers",
-            "DocUrl": "Guide/Widgets/VectorMap/Visual_Elements/#Markers",
+            "DocUrl": "Guide/UI_Components/VectorMap/Visual_Elements/#Markers",
             "Widget": "VectorMap",
             "Modules": "vectormap",
             "MvcAdditionalFiles": [
@@ -5343,7 +5357,7 @@
           {
             "Title": "Dynamic Viewport",
             "Name": "DynamicViewport",
-            "DocUrl": "Guide/Widgets/VectorMap/End-User_Interaction/#Panning/Pan_in_Code",
+            "DocUrl": "Guide/UI_Components/VectorMap/End-User_Interaction/#Panning/Pan_in_Code",
             "Widget": "VectorMap",
             "Modules": "vectormap",
             "MvcAdditionalFiles": [
@@ -5355,7 +5369,7 @@
           {
             "Title": "Area with Labels and Two Legends",
             "Name": "AreaWithLabelsAndTwoLegends",
-            "DocUrl": "Guide/Widgets/VectorMap/Visual_Elements/#Legend",
+            "DocUrl": "Guide/UI_Components/VectorMap/Visual_Elements/#Legend",
             "Widget": "VectorMap",
             "Modules": "vectormap",
             "MvcAdditionalFiles": [
@@ -5391,7 +5405,7 @@
           {
             "Title": "Floor Plan",
             "Name": "FloorPlan",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxVectorMap/Configuration/#projection",
+            "DocUrl": "ApiReference/UI_Components/dxVectorMap/Configuration/#projection",
             "Widget": "VectorMap",
             "Modules": "vectormap",
             "MvcAdditionalFiles": [
@@ -5404,7 +5418,7 @@
           {
             "Title": "Multiple Layers",
             "Name": "MultipleLayers",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxVectorMap/Configuration/layers/",
+            "DocUrl": "ApiReference/UI_Components/dxVectorMap/Configuration/layers/",
             "Widget": "VectorMap",
             "Modules": "vectormap",
             "MvcAdditionalFiles": [
@@ -5415,7 +5429,7 @@
           {
             "Title": "Custom Map Data",
             "Name": "CustomMapData",
-            "DocUrl": "Guide/Widgets/VectorMap/Providing_Data/#Data_for_Areas",
+            "DocUrl": "Guide/UI_Components/VectorMap/Providing_Data/#Data_for_Areas",
             "Credits": "www.wikipedia.org",
             "Widget": "VectorMap",
             "Modules": "vectormap",
@@ -5429,7 +5443,7 @@
           {
             "Title": "Custom Annotations",
             "Name": "CustomAnnotations",
-            "DocUrl": "ApiReference/Data_Visualization_Widgets/dxVectorMap/Configuration/annotations",
+            "DocUrl": "ApiReference/UI_Components/dxVectorMap/Configuration/annotations",
             "Widget": "VectorMap",
             "Modules": "vectormap",
             "Badge": "New",
@@ -5474,7 +5488,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/LoadIndicator/Overview/",
+            "DocUrl": "Guide/UI_Components/LoadIndicator/Overview/",
             "Widget": "LoadIndicator"
           }
         ]
@@ -5487,7 +5501,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/LoadPanel/Overview/",
+            "DocUrl": "Guide/UI_Components/LoadPanel/Overview/",
             "Widget": "LoadPanel",
             "MvcAdditionalFiles": [
               "/Scripts/data/employee.js"
@@ -5503,7 +5517,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/Popover/Overview/",
+            "DocUrl": "Guide/UI_Components/Popover/Overview/",
             "Widget": "Popover"
           }
         ]
@@ -5516,7 +5530,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/Popup/Overview/",
             "Widget": "Popup",
             "MvcAdditionalFiles": [
               "/Models/DataGrid/Employee.cs",
@@ -5526,7 +5539,7 @@
           {
             "Title": "Scrolling",
             "Name": "Scrolling",
-            "DocUrl": "Guide/Widgets/ScrollView/Overview/",
+            "DocUrl": "Guide/UI_Components/ScrollView/Overview/",
             "Widget": "Popup"
           }
         ]
@@ -5539,7 +5552,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/ProgressBar/Overview/",
+            "DocUrl": "Guide/UI_Components/ProgressBar/Overview/",
             "Widget": "ProgressBar"
           }
         ]
@@ -5552,7 +5565,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/Toast/Overview/",
+            "DocUrl": "Guide/UI_Components/Toast/Overview/",
             "Widget": "Toast",
             "MvcAdditionalFiles": [
               "/Models/ListProduct.cs",
@@ -5569,7 +5582,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/Widgets/Tooltip/Overview/",
+            "DocUrl": "Guide/UI_Components/Tooltip/Overview/",
             "Widget": "Tooltip"
           }
         ]
@@ -5588,7 +5601,7 @@
           {
             "Title": "Using Intl",
             "Name": "UsingIntl",
-            "DocUrl": "Guide/Widgets/Common/UI_Widgets/Localization/",
+            "DocUrl": "Guide/UI_Components/Common/UI_Components/Localization/",
             "Widget": "Localization",
             "Modules": "devextreme-intl",
             "MvcAdditionalFiles": [
@@ -5608,7 +5621,7 @@
           {
             "Title": "Using Globalize",
             "Name": "UsingGlobalize",
-            "DocUrl": "Guide/Widgets/Common/UI_Widgets/Localization_-_Use_Globalize/",
+            "DocUrl": "Guide/UI_Components/Common/UI_Components/Localization_-_Use_Globalize/",
             "Widget": "Localization",
             "Modules": "globalize",
             "MvcAdditionalFiles": [

@@ -40,7 +40,7 @@ class App extends React.Component {
       <React.Fragment>
         <div className="widget-container">
           <List
-            items={tasks}
+            dataSource={tasks}
             height={400}
             allowItemDeleting={this.state.allowDeleting}
             itemDeleteMode={this.state.deleteType}
@@ -64,7 +64,7 @@ class App extends React.Component {
             </CheckBox>
           </div>
           <div className="option">
-            <span>Deleting type </span>
+            <span>Item delete mode </span>
             <SelectBox
               disabled={!this.state.allowDeleting}
               items={['static', 'toggle', 'slideButton', 'slideItem', 'swipe', 'context']}

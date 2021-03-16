@@ -1,5 +1,4 @@
 utils/templates/*
-utils/reposPaths.js
 node_modules/*
 MVCDemos/*
 NetCoreDemos/*

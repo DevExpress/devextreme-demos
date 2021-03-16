@@ -3,42 +3,25 @@
 @(Html.DevExtreme().Scheduler()
     .ID("scheduler")
     .DataSource(Model.Appointments)
-    .Views(new[] {
-        SchedulerViewType.Week,
-        SchedulerViewType.TimelineWeek
-    })
+    .Views(new[] { SchedulerViewType.Week, SchedulerViewType.TimelineWeek })
     .CurrentView(SchedulerViewType.Week)
     .CurrentDate(DateTime.Today)
     .ShowCurrentTimeIndicator(true)
     .ShadeUntilCurrentTime(true)
     .ShowAllDayPanel(false)
     .Editing(false)
-    .Resources(res => {
-        res.Add()
-            .FieldExpr("MovieId")
-            .ValueExpr("Id")
-            .DataSource(Model.Resources);
+    .Resources(res => { res.Add()
+        .FieldExpr("MovieId")
+        .ValueExpr("Id")
+        .DataSource(Model.Resources);
     })
     .Height(600)
     .StartDateExpr("StartDate")
     .EndDateExpr("EndDate")
     .RecurrenceRuleExpr("RecurrenceRule")
-    .OnContentReady(@<text>
-        function(e) {
-            var currentHour = new Date().getHours() - 1;
-            e.component.scrollToTime(currentHour, 30, new Date());
-        }
-    </text>)
-    .OnAppointmentClick(@<text>
-        function(e) {
-            e.cancel = true;
-        }
-    </text>)
-    .OnAppointmentDblClick(@<text>
-        function(e) {
-            e.cancel = true;
-        }
-    </text>)
+    .OnContentReady("onContentReady")
+    .OnAppointmentClick("onAppointmentClick")
+    .OnAppointmentDblClick("onAppointmentClick")
     .AppointmentTemplate(@<text>
         <% var movie = getMovieById(appointmentData.MovieId); %>
         <div class="movie">
@@ -56,11 +39,7 @@
                 @(Html.DevExtreme().Switch()
                     .ID("show-indicator")
                     .Value(true)
-                    .OnValueChanged(@<text>
-                        function(e) {
-                            getSchedulerInstance().option("showCurrentTimeIndicator", e.value);
-                        }
-                    </text>)
+                    .OnValueChanged("onCurrentTimeIndicatorChanged")
                 )
             </div>
         </div>
@@ -70,11 +49,7 @@
                 @(Html.DevExtreme().Switch()
                     .ID("allow-shading")
                     .Value(true)
-                    .OnValueChanged(@<text>
-                        function(e) {
-                            getSchedulerInstance().option("shadeUntilCurrentTime", e.value);
-                        }
-                    </text>)
+                    .OnValueChanged("onShadingChanged")
                 )
             </div>
         </div>
@@ -92,11 +67,7 @@
                     .ShowSpinButtons(true)
                     .Width("100px")
                     .Format("#0 s")
-                    .OnValueChanged(@<text>
-                        function(e) {
-                            getSchedulerInstance().option("indicatorUpdateInterval", e.value * 1000);
-                        }
-                    </text>)
+                    .OnValueChanged("onUpdateIntervalChanged")
                 )
             </div>
         </div>
@@ -104,7 +75,16 @@
 </div>
 
 <script>
-    var moviesData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Resources));
+    let moviesData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Resources));
+
+    function onContentReady(e) {
+        let currentHour = new Date().getHours() - 1;
+        e.component.scrollToTime(currentHour, 30, new Date());
+    }
+
+    function onAppointmentClick(e) {
+        e.cancel = true;
+    }
 
     function getSchedulerInstance() {
         return $("#scheduler").dxScheduler("instance");
@@ -112,7 +92,19 @@
 
     function getMovieById(id) {
         return DevExpress.data.query(moviesData)
-                .filter("Id", id)
-                .toArray()[0]
+            .filter("Id", id)
+            .toArray()[0]
+    }
+
+    function onCurrentTimeIndicatorChanged(e) {
+        getSchedulerInstance().option("showCurrentTimeIndicator", e.value);
+    }
+
+    function onShadingChanged(e) {
+        getSchedulerInstance().option("shadeUntilCurrentTime", e.value);
+    }
+
+    function onUpdateIntervalChanged(e) {
+        getSchedulerInstance().option("indicatorUpdateInterval", e.value * 1000);
     }
 </script>

@@ -13,10 +13,11 @@ NuGet
 *.ldf
 *proj.user
 package-lock.json
+repository.config.json
+coverage
 
 *d.ts
-
-utils/reposPaths.js
+gulpfile.js/.eslintrc.js
 
 JSDemos/Demos/**/config.js
 
