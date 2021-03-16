@@ -4,7 +4,7 @@ To add timeline views to your Scheduler, list them in the [views](/Documentation
 
 For information about all supported view types, refer to the [View Types](/Documentation/Guide/UI_Components/Scheduler/Views/View_Types/) help topic.
 
-In this demo, appointments are colored and grouped according to their resources. For information on how to configure resources and group appointments by them, view the following demos:
+This demo shows multiple calendars side-by-side (groups data by resources). For information on how to configure such a display, see the following demos:
 
 - [Resources](/Demos/WidgetsGallery/Demo/Scheduler/Resources/)
 - [Group Orientation](/Demos/WidgetsGallery/Demo/Scheduler/GroupOrientation/)
