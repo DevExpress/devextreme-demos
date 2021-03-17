@@ -7,7 +7,7 @@ import { cellContextMenuItems, appointmentContextMenuItems, setResource } from '
 
 import { AppointmentMenuTemplate } from './AppointmentTemplate.js';
 
-const currentDate = new Date(2021, 2, 25);
+const currentDate = new Date(2020, 10, 25);
 const views = ['day', 'month'];
 
 class App extends React.Component {
@@ -41,7 +41,6 @@ class App extends React.Component {
           views={views}
           defaultCurrentView="month"
           defaultCurrentDate={currentDate}
-          firstDayOfWeek={1}
           startDayHour={9}
           recurrenceEditMode="series"
           onAppointmentContextMenu={this.onAppointmentContextMenu}

@@ -7,8 +7,7 @@ DemoApp.controller('DemoController', function DemoController($scope) {
         views: ["day", "week", "month"],
         currentView: "month",
         startDayHour: 9,
-        currentDate: new Date(2021, 2, 25),
-        firstDayOfWeek: 1,
+        currentDate: new Date(2020, 10, 25),
         resources: [{
             fieldExpr: "roomId",
             dataSource: resourcesData,
