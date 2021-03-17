@@ -99,8 +99,8 @@ export default {
         e.itemData.Head_ID = targetData.ID;
         e.component.refresh();
       } else {
-        let sourceIndex = employees.indexOf(sourceData),
-          targetIndex = employees.indexOf(targetData);
+        let sourceIndex = this.employees.indexOf(sourceData),
+          targetIndex = this.employees.indexOf(targetData);
 
         if (sourceData.Head_ID !== targetData.Head_ID) {
           sourceData.Head_ID = targetData.Head_ID;
@@ -109,8 +109,9 @@ export default {
           }
         }
 
-        employees.splice(sourceIndex, 1);
-        employees.splice(targetIndex, 0, sourceData);
+        this.employees.splice(sourceIndex, 1);
+        this.employees.splice(targetIndex, 0, sourceData);
+        this.employees = this.employees.slice();
       }
     }
   },
