@@ -1679,7 +1679,6 @@
           {
             "Title": "Timelines",
             "Name": "Timelines",
-            "DocUrl": "Guide/UI_Components/Scheduler/Views/#Timeline_Views",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/EmployeeTask.cs",
