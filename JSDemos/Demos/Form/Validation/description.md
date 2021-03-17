@@ -1,8 +1,15 @@
-﻿This demo shows how to validate the Form editors in simple items. To apply validation rules to an item, specify them in the [validationRules[]](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/) array. Specify [type](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/RequiredRule/#type) and other properties for each rule. 
+This demo shows how to validate Form editors. To apply validation rules to an editor, declare them in the [validationRules[]](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/) array. Specify [type](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/RequiredRule/#type) and other properties for each rule. 
 
-To submit a Form, add a [Button Item](/Documentation/ApiReference/UI_Components/dxForm/Item_Types/ButtonItem/) and set its [useSubmitBehavior](/Documentation/ApiReference/UI_Components/dxButton/Configuration/#useSubmitBehavior) property to **true**. When users click the button, the Form validates all editors that belong to the same group. In this demo, all editors are wrapped into the `customerData` [validationGroup](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#validationGroup). The Form can be submitted to a server only if input validation is successful. Set the [showValidationSummary](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#showValidationSummary) property to **true** to display all validation errors at the bottom of the Form. 
+To submit form data, do the following:
 
-The **useSubmitBehavior** property requires that you wrap the dxForm in the HTML `<form>` element. You should also set the [preventDefault](/Documentation/ApiReference/Common/Object_Structures/dxEvent/Methods/#preventDefault) property to **true** to override the HTML form submit event. 
+1. Wrap the Form component in the HTML `<form>` element.
+
+1. Use the [Button Form Item](/Documentation/ApiReference/UI_Components/dxForm/Item_Types/ButtonItem/) to add a button to the form. This button will submit the form data.
+
+1. Enable the button's [useSubmitBehavior](/Documentation/ApiReference/UI_Components/dxButton/Configuration/#useSubmitBehavior) property.
+
+When users click the button, the Form validates editors that belong to the same [validationGroup](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#validationGroup). In this demo, all editors belong to the `customerData` group. Form data can be submitted to a server only if input validation is successful. Enable the [showValidationSummary](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#showValidationSummary) property to display all validation errors at the bottom of the Form.
+
 
 The following validation rules are shown in this demo:  
 - [RequiredRule](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/RequiredRule/)  
@@ -24,4 +31,4 @@ Demands that an editor value length is in a specified range.
 Demands that an editor value matches the Email pattern.
 
 - [AsyncRule](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/AsyncRule/)    
-Allows you to specify any conditions to be checked on the server. This check is performed last after all other rules pass validation checks. In this demo, it checks whether user input is equal to the `test@dx-email.com` string.
+Allows you to specify any conditions to be checked on the server. This check is performed last, after all other rules pass validation checks. In this demo, it checks whether user input is equal to the `test@dx-email.com` string.
