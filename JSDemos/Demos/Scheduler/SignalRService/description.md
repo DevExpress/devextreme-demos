@@ -2,7 +2,7 @@ This demo shows how you can use a <a href="https://dotnet.microsoft.com/apps/asp
 
 Follow the steps below to implement this functionality. Note again that this demo repeats all steps twice for the two Schedulers. Your project will have a single control and a single store.
 
-1. Configure a [CustomStore](/Documentation/ApiReference/Data_Layer/CustomStore/). In this demo, we use the <a href="https://github.com/DevExpress/DevExtreme.AspNet.Data/blob/master/docs/client-side-with-jquery.md#api-reference" target="_blank">createStore</a> method to do it (part of the <a href="https://github.com/DevExpress/DevExtreme.AspNet.Data" target="_blank">DevExtreme.AspNet.data</a> extension).
+1. Configure a [CustomStore](/Documentation/ApiReference/Data_Layer/CustomStore/). In this demo, we use the <a href="https://github.com/DevExpress/DevExtreme.AspNet.Data/blob/master/docs/client-side-with-jquery.md#api-reference" target="_blank">createStore</a> method (part of the <a href="https://github.com/DevExpress/DevExtreme.AspNet.Data" target="_blank">DevExtreme.AspNet.data</a> extension).
 
 1. Create the Scheduler and use its [dataSource](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/#dataSource) property to bind it to the store instance.
 
