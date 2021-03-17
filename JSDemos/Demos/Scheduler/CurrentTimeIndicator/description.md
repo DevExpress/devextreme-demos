@@ -2,4 +2,4 @@ The Scheduler indicates the current time if you enable the [showCurrentTimeIndic
 
 You can also shade the timetable up to the current time. To enable this feature, set the [shadeUntilCurrentTime](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/#shadeUntilCurrentTime) property to **true**.
 
-In this example, you can use controls under the Scheduler to change the abovementioned properties at runtime.
+In this example, you can use the controls under the Scheduler to change the above mentioned properties at runtime.
