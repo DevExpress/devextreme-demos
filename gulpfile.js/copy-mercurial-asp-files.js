@@ -6,8 +6,10 @@ const { existsSync, readFileSync } = require('fs');
 const { join } = require('path');
 const clean = require('gulp-clean');
 const replace = require('gulp-replace');
-const mercurialPath = require('../repository.config.json').hg;
 const { systemSync } = require('../utils/shared/child-process-utils');
+const { init } = require('../utils/shared/config-helper');
+
+const mercurialPath = init().hg;
 
 function checkMercurialPath(callback) {
     if(!mercurialPath) {

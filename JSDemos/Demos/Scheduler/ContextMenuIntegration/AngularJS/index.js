@@ -3,7 +3,7 @@
 DemoApp.controller('DemoController', function DemoController($scope) {
     $scope.groups = undefined;
     $scope.crossScrolling = false;
-    $scope.currentDate = new Date(2021, 2, 25);
+    $scope.currentDate = new Date(2020, 10, 25);
 
     $scope.dataSource = [];
     $scope.disabled = true;
@@ -36,7 +36,6 @@ DemoApp.controller('DemoController', function DemoController($scope) {
         dataSource: data,
         views: ["day", "month"],
         currentView: "month",
-        firstDayOfWeek: 1,
         startDayHour: 9,
         recurrenceEditMode: "series",
         onAppointmentContextMenu: function(e) {

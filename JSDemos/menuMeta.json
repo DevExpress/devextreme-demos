@@ -690,7 +690,7 @@
         "Equivalents": "",
         "Demos": [
           {
-            "Title": "Grid Summaries",
+            "Title": "Total Summaries",
             "Name": "GridSummaries",
             "DocUrl": "Guide/UI_Components/DataGrid/Summaries/Total_Summary/",
             "Widget": "DataGrid",
@@ -1620,7 +1620,6 @@
           {
             "Title": "Simple Array",
             "Name": "SimpleArray",
-            "DocUrl": "Guide/UI_Components/Scheduler/Overview/",
             "Widget": "Scheduler",
             "DemoType": "Web"
           },
@@ -1630,7 +1629,6 @@
             "Title": "Web API Service",
             "Name": "WebAPIService",
             "Equivalents": "webapi",
-            "DocUrl": "Guide/Data_Binding/Specify_a_Data_Source/Custom_Data_Sources/",
             "Widget": "Scheduler",
             "Modules": "devextreme-aspnet-data-nojquery",
             "MvcAdditionalFiles": [
