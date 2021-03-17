@@ -95,7 +95,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 EndDate = "2021-05-20T22:30:00.000Z"
             },
             new AdaptiveAppointment {
-                Text = "Review Training Course for any Ommissions",
+                Text = "Review Training Course for any Omissions",
                 RoomId = 4,
                 StartDate = "2021-05-17T21:00:00.000Z",
                 EndDate = "2021-05-17T19:00:00.000Z"
