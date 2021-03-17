@@ -4,4 +4,4 @@ To add the Agenda view to your Scheduler, declare it in the [views](/Documentati
 
 [note] The Agenda view does not allow a user to add appointments or modify them by dragging.
 
-For more information about Agenda and other supported views, refer to the [View Types](/Documentation/Guide/UI_Components/Scheduler/Views/View_Types/) help topic.
+For more information about Agenda and other supported views, refer to the following help topic: [View Types](/Documentation/Guide/UI_Components/Scheduler/Views/View_Types/).
