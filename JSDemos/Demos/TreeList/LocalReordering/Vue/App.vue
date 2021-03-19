@@ -93,14 +93,15 @@ export default {
     onReorder(e) {
       let visibleRows = e.component.getVisibleRows(),
         sourceData = e.itemData,
-        targetData = visibleRows[e.toIndex].data;
+        targetData = visibleRows[e.toIndex].data,
+        employees = [...this.employees];
 
       if (e.dropInsideItem) {
         e.itemData.Head_ID = targetData.ID;
         e.component.refresh();
       } else {
-        let sourceIndex = this.employees.indexOf(sourceData),
-          targetIndex = this.employees.indexOf(targetData);
+        let sourceIndex = employees.indexOf(sourceData),
+          targetIndex = employees.indexOf(targetData);
 
         if (sourceData.Head_ID !== targetData.Head_ID) {
           sourceData.Head_ID = targetData.Head_ID;
@@ -109,9 +110,9 @@ export default {
           }
         }
 
-        this.employees.splice(sourceIndex, 1);
-        this.employees.splice(targetIndex, 0, sourceData);
-        this.employees = this.employees.slice();
+        employees.splice(sourceIndex, 1);
+        employees.splice(targetIndex, 0, sourceData);
+        this.employees = employees;
       }
     }
   },
