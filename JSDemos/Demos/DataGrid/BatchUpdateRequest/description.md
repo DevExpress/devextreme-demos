@@ -15,3 +15,5 @@ Once changes are saved, call the [refresh(changesOnly)](/Documentation/ApiRefere
 
 4. **Reset edit state**           
 Use the [cancelEditData()](/Documentation/ApiReference/UI_Components/dxDataGrid/Methods/#cancelEditData) method to clear pending changes.
+
+Related demos: [Web API Service](/Demos/WidgetsGallery/Demo/DataGrid/WebAPIService/), [Batch Editing](/Demos/WidgetsGallery/Demo/DataGrid/BatchEditing/).
