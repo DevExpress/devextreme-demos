@@ -2,7 +2,7 @@ With the DevExtreme DataGrid, users can modify multiple records and submit all c
 
 If data is stored on a server, our DataGrid sends multiple requests to save edited objects - one request per object (this is because most servers only process one edit operation at a time). If your server supports batch update, you can configure the DataGrid to save all changes with a single request.
 
-To incorporate this functionality into your web app, implement the DataGrid's [onSaving](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/#onSaving) function. This function accepts an `e` object that contains fields used for batch update. The following is a summary of the steps you must follow to enable batch update:
+To incorporate this functionality into your web app, implement the DataGrid's [onSaving](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/#onSaving) function. This function accepts an `e` object that contains fields used for batch update. The following is a summary of the steps you must follow to enable batch update if your data is stored on the server:
 
 1. **Disable default save logic**                       
 Set the `e.cancel` field to `true`.
@@ -16,4 +16,4 @@ Once changes are saved, call the [refresh(changesOnly)](/Documentation/ApiRefere
 4. **Reset edit state**           
 Use the [cancelEditData()](/Documentation/ApiReference/UI_Components/dxDataGrid/Methods/#cancelEditData) method to clear pending changes.
 
-Related demos: [Web API Service](/Demos/WidgetsGallery/Demo/DataGrid/WebAPIService/), [Batch Editing](/Demos/WidgetsGallery/Demo/DataGrid/BatchEditing/).
+If your data is stored locally, see the [Batch Editing](/Demos/WidgetsGallery/Demo/DataGrid/BatchEditing/) demo. The [Web API Service](/Demos/WidgetsGallery/Demo/DataGrid/WebAPIService/) demo shows how to process remote data when the editing mode is *"row"*.
