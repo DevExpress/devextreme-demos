@@ -421,7 +421,8 @@ const dataSet: Appointment[] = [{
     startDate: new Date("2021-02-26T12:15:00.000Z"),
     endDate: new Date("2021-02-26T15:30:00.000Z"),
     humanId: 2
-  }];
+  }
+];
 
 @Injectable()
 export class Service {
