@@ -17,11 +17,11 @@ if(!/localhost/.test(document.location.host)) {
 export class AppComponent {
     resources: Resource[];
     appointments: Appointment[];
-    currentDate: Date = new Date(2021, 8, 6);
+    currentDate: Date = new Date(2021, 1, 2);
 
     constructor(service: Service) {
-        this.resources = service.generateResources();
         this.appointments = service.generateAppointments();
+        this.resources = service.resources;
     }
 }
 

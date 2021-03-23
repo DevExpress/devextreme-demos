@@ -6,11 +6,7 @@ $(function () {
         maxWidth: 800,
         currentDate: new Date(2021, 1, 2),
         dataSource: appointments,
-        views: [{
-            type: 'workWeek'
-        }, {
-            type: 'timelineWorkWeek'
-        }],
+        views: ['workWeek', 'timelineWorkWeek'],
         currentView: "timelineWorkWeek",
         firstDayOfWeek: 0,
         startDayHour: 8,
