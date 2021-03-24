@@ -21,7 +21,7 @@ Demands that an editor value length is in a specified range.
 Demands that an editor value matches the Email pattern.
 
 - [AsyncRule](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/AsyncRule/)    
-Allows you to specify any conditions to be checked on the server. This check is performed last, after all other rules pass validation checks. In this demo, this rule checks whether user input is equal to the `test@dx-email.com` string.
+Allows you to add custom server-side validation logic. Rules of this type run last, only if all other rules passed. In this demo, an AsyncRule checks whether user input matches `test@dx-email.com`.
 
 To submit form data, do the following:
 
@@ -32,4 +32,3 @@ To submit form data, do the following:
 1. Enable the button's [useSubmitBehavior](/Documentation/ApiReference/UI_Components/dxButton/Configuration/#useSubmitBehavior) property.
 
 When users click the button, the Form validates editors that belong to the same [validationGroup](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#validationGroup). In this demo, all editors belong to the `customerData` group. Form data can be submitted to a server only if input validation is successful. Enable the [showValidationSummary](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#showValidationSummary) property to display all validation errors at the bottom of the Form.
-
