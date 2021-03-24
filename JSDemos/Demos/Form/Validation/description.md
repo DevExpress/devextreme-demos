@@ -6,7 +6,7 @@ The following validation rules are shown in this demo:
 Demands that a validated editor has a value.
 
 - [CompareRule](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/CompareRule/)    
-Compares an editor value with a specified expression.
+Compares the editor's value to the specified expression.
 
 - [PatternRule](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/PatternRule/)    
 Checks whether an editor value matches a specified pattern.
@@ -32,5 +32,4 @@ To submit form data, do the following:
 1. Enable the button's [useSubmitBehavior](/Documentation/ApiReference/UI_Components/dxButton/Configuration/#useSubmitBehavior) property.
 
 When users click the button, the Form validates editors that belong to the same [validationGroup](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#validationGroup). In this demo, all editors belong to the `customerData` group. Form data can be submitted to a server only if input validation is successful. Enable the [showValidationSummary](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#showValidationSummary) property to display all validation errors at the bottom of the Form.
-
 
