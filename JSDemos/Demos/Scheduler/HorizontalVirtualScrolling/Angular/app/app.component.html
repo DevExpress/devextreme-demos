@@ -10,7 +10,10 @@
     [endDayHour]="20"
     [cellDuration]="60"
     [showAllDayPanel]="false"
-    [scrolling]="{ mode: 'virtual' }"
+    [scrolling]="{
+        mode: 'virtual',
+        orientation: 'both'
+    }"
     [groups]="['humanId']"
     [resources]="[{
         fieldExpr: 'humanId',

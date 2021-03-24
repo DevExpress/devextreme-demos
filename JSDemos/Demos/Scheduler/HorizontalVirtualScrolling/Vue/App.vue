@@ -4,7 +4,7 @@
     :current-date="currentDate"
     :views="views"
     :height="600"
-    :width="600"
+    :width="800"
     :first-day-of-week="0"
     :start-day-hour="8"
     :end-day-hour="20"
@@ -30,7 +30,7 @@ export default {
       currentDate: new Date(2021, 1, 2),
       views: ['workWeek', 'timelineWorkWeek'],
       currentView: 'timelineWorkWeek',
-      scrolling: { mode: 'virtual' },
+      scrolling: { mode: 'virtual', orientation: 'both' },
       groups: ['humanId'],
       resources: [{
         fieldExpr: 'humanId',
