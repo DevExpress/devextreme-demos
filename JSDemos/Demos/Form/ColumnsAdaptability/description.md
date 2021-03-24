@@ -1,4 +1,4 @@
-You can make the Form adapt to screens of different widths and orientations. To do it, configure the following properties:     
+The Form component can use different layouts depending on the screen width. To enable this feature, configure the following properties:     
 - Assign *"auto"* to the [colCount](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#colCount) property to make the number of columns adapt to any screen size.
 - Specify the minimum column width in the [minColWidth](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#minColWidth) property.
 
