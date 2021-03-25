@@ -22,9 +22,9 @@
       title="Information"
     >
       <DxPosition
-          at="bottom"
-          my="center"
-          v-model:of="positionOf"
+        at="bottom"
+        my="center"
+        v-model:of="positionOf"
       />
       <DxToolbarItem
         widget="dxButton"
@@ -78,23 +78,23 @@ export default {
       employees,
       currentEmployee: {},
       popupVisible: false,
-      positionOf: "",
+      positionOf: '',
       emailButtonOptions: {
-        icon: "email",
-        text: "Send",
+        icon: 'email',
+        text: 'Send',
         onClick: () => {
           const message = `Email is sent to ${this.currentEmployee.FirstName} ${this.currentEmployee.LastName}`;
           notify({
-              message: message,
-              position: {
-                my: "center top",
-                at: "center top"
-              }
-          }, "success", 3000);
+            message: message,
+            position: {
+              my: 'center top',
+              at: 'center top'
+            }
+          }, 'success', 3000);
         }
       },
       closeButtonOptions: {
-        text: "Close",
+        text: 'Close',
         onClick: () => {
           this.popupVisible = false;
         }
@@ -105,7 +105,7 @@ export default {
   methods: {
     showInfo(employee) {
       this.currentEmployee = employee;
-      this.positionOf = `#image${employee.ID}`
+      this.positionOf = `#image${employee.ID}`;
       this.popupVisible = true;
     }
   }

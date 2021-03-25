@@ -14,19 +14,19 @@ class App extends React.Component {
     this.state = {
       currentEmployee: {},
       popupVisible: false,
-      positionOf: ""
+      positionOf: ''
     };
     this.showInfo = this.showInfo.bind(this);
     this.hideInfo = this.hideInfo.bind(this);
     this.emailButtonOptions = {
-      icon: "email",
-      text: "Send",
+      icon: 'email',
+      text: 'Send',
       onClick: this.sendEmail.bind(this)
-    }
+    };
     this.closeButtonOptions = {
-      text: "Close",
+      text: 'Close',
       onClick: this.hideInfo
-    }
+    };
   }
 
   render() {
@@ -58,9 +58,9 @@ class App extends React.Component {
           height={280}
         >
           <Position
-              at="bottom"
-              my="center"
-              of={this.state.positionOf}
+            at="bottom"
+            my="center"
+            of={this.state.positionOf}
           />
           <ToolbarItem
             widget="dxButton"
@@ -114,12 +114,12 @@ class App extends React.Component {
   sendEmail() {
     const message = `Email is sent to ${this.state.currentEmployee.FirstName} ${this.state.currentEmployee.LastName}`;
     notify({
-        message: message,
-        position: {
-          my: "center top",
-          at: "center top"
-        }
-    }, "success", 3000);
+      message: message,
+      position: {
+        my: 'center top',
+        at: 'center top'
+      }
+    }, 'success', 3000);
   }
 }
 
