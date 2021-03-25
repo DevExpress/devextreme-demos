@@ -3,7 +3,7 @@ $(function () {
 
     $('#scheduler').dxScheduler({
         height: 600,
-        maxWidth: 800,
+        width: 800,
         currentDate: new Date(2021, 1, 2),
         dataSource: appointments,
         views: ['workWeek', 'timelineWorkWeek'],
