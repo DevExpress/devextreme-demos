@@ -3,7 +3,7 @@
 
 The following validation rules are shown in this demo:  
 - [RequiredRule](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/RequiredRule/)  
-Demands that a validated editor has a value.
+Requires that a validated editor has a value.
 
 - [CompareRule](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/CompareRule/)    
 Compares the editor's value to the specified expression.
@@ -15,10 +15,10 @@ Checks whether an editor value matches a specified pattern.
 Checks whether an editor value is in a specified range.
 
 - [StringLengthRule](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/StringLengthRule/)  
-Demands that an editor value length is in a specified range.
+Requires that an editor value length is in a specified range.
 
 - [EmailRule](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/EmailRule/)    
-Demands that an editor value matches the Email pattern.
+Requires that an editor value matches the Email pattern.
 
 - [AsyncRule](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/AsyncRule/)    
 Allows you to add custom server-side validation logic. Rules of this type run last, only if all other rules passed. In this demo, an AsyncRule checks whether user input matches `test@dx-email.com`.
