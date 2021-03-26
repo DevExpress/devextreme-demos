@@ -27,7 +27,7 @@ To submit form data, do the following:
 
 1. Wrap the Form component in the HTML `<form>` element.
 
-1. Use the [Button Form Item](/Documentation/ApiReference/UI_Components/dxForm/Item_Types/ButtonItem/) to add a button to the form. This button will submit the form data.
+1. Use the [Button Form Item](/Documentation/ApiReference/UI_Components/dxForm/Item_Types/ButtonItem/) to add a button to the form. This button submits the form data.
 
 1. Enable the button's [useSubmitBehavior](/Documentation/ApiReference/UI_Components/dxButton/Configuration/#useSubmitBehavior) property.
 
