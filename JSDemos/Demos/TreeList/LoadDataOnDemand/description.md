@@ -1,4 +1,4 @@
-If the TreeList uses a remote dataset, it can be loaded dynamically as a user expands nodes. Applies only if data has a [plain structure](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#dataStructure). To configure this feature on the client, do the following:
+If the TreeList uses a remote dataset with a a [plain structure](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#dataStructure), it can be loaded dynamically as a user expands nodes. To configure this feature on the client, do the following:
 
 1. Implement the [load](/Documentation/ApiReference/Data_Layer/CustomStore/Configuration/#load) property of the dataSource to send the expanded node's id.
 
