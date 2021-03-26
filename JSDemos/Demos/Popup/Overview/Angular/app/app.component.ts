@@ -21,8 +21,8 @@ export class AppComponent {
     currentEmployee: Employee = new Employee();
     employees: Employee[];
     popupVisible = false;
-	emailButtonOptions: any;
-	closeButtonOptions: any;
+    emailButtonOptions: any;
+    closeButtonOptions: any;
     positionOf: string;
 
     constructor(service: Service) {
@@ -34,11 +34,11 @@ export class AppComponent {
             onClick: function(e) {
             	const message = `Email is sent to ${that.currentEmployee.FirstName} ${that.currentEmployee.LastName}`;
             	notify({
-              		message: message,
-              		position: {
-                		my: "center top",
-                		at: "center top"
-              		}
+              	    message: message,
+              	    position: {
+                        my: "center top",
+                        at: "center top"
+                    }
             	}, "success", 3000);
             }
         };
