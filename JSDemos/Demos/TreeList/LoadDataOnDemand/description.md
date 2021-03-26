@@ -1,9 +1,14 @@
-If the TreeList uses a remote dataset with a a [plain structure](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#dataStructure), it can be loaded dynamically as a user expands nodes. To configure this feature on the client, do the following:
+The TreeList can load a remote dataset dynamically as a user expands nodes. The dataset must have a [plain structure](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#dataStructure).
 
-1. Implement the [load](/Documentation/ApiReference/Data_Layer/CustomStore/Configuration/#load) property of the dataSource to send the expanded node's id.
+This feature requires client- and server-side configuration. To configure the client-side part, do the following:
 
-2. Enable filtering on the server&mdash;set the **remoteOperations**.[filtering](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/remoteOperations/#filtering) to **true**.
+1. **Implement the [load](/Documentation/ApiReference/Data_Layer/CustomStore/Configuration/#load) property of the dataSource**         
+Assign this property a function that sends the expanded node's id.
 
-3. Use the [hasItemsExpr](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#hasItemsExpr) property to specify which data field defines whether the node has children.
+1. **Delegate filtering to the server**         
+Set the **remoteOperations**.[filtering](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/remoteOperations/#filtering) property to **true**.
 
-The server-side implementation is available under the `TreeListDataController.cs` tab in the ASP.NET versions of this demo.
+3. **Specify the data field that defines whether the node has children**           
+Use the [hasItemsExpr](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#hasItemsExpr) property to set this data field.
+
+Server-side implementation is available in the [ASP.NET Core](/Demos/WidgetsGallery/Demo/DataGrid/RemoteReordering/NetCore/Light/) and [ASP.NET MVC](/Demos/WidgetsGallery/Demo/DataGrid/RemoteReordering/Mvc/Light/) versions of this demo under the `TreeListDataController.cs` tab.
