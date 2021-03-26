@@ -1,1 +1,9 @@
-This example demonstrates how to&nbsp;load data on&nbsp;demand every time a&nbsp;user expands a&nbsp;TreeList node. For this purpose, filtering is&nbsp;delegated to&nbsp;the server, and IDs of&nbsp;expanded nodes are sent to&nbsp;the server with every request for data.
+If the TreeList uses a remote dataset, it can be loaded dynamically as a user expands nodes. Applies only if data has a [plain structure](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#dataStructure). To configure this feature on the client, do the following:
+
+1. Implement the [load](/Documentation/ApiReference/Data_Layer/CustomStore/Configuration/#load) property of the dataSource to send the expanded node's id.
+
+2. Enable filtering on the server&mdash;set the **remoteOperations**.[filtering](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/remoteOperations/#filtering) to **true**.
+
+3. Use the [hasItemsExpr](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#hasItemsExpr) property to specify which data field defines whether the node has children.
+
+The server-side implementation is available under the `TreeListDataController.cs` tab in the ASP.NET versions of this demo.
