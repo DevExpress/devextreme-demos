@@ -7,58 +7,99 @@
     @(Html.DevExtreme().Popup()
         .ID("employee-popup")
         .Width(300)
-        .Height(250)
+        .Height(280)
+        .Container(".dx-viewport")
         .ShowTitle(true)
         .Title("Information")
         .DragEnabled(false)
         .CloseOnOutsideClick(true)
+        .ToolbarItems(barItems => {
+            barItems.Add()
+                .Toolbar(Toolbar.Bottom)
+                .Location(ToolbarItemLocation.Before)
+                .Widget(widget => widget.Button()
+                    .Icon("email")
+                    .Text("Send")
+                    .OnClick(@<text>
+                        function showInfo(data) {
+                            const message = `Email is sent to ${currentEmployee.FirstName} ${currentEmployee.LastName}`;
+                            DevExpress.ui.notify({
+                              message: message,
+                              position: {
+                                my: "center top",
+                                at: "center top"
+                              }
+                            }, "success", 3000);
+                        }
+                    </text>)
+                );
+            barItems.Add()
+                .Toolbar(Toolbar.Bottom)
+                .Location(ToolbarItemLocation.After)
+                .Widget(widget => widget.Button()
+                    .Text("Close")
+                    .OnClick(@<text>
+                        function hideInfo(data) {
+                            const popup = $("#employee-popup").dxPopup("instance");
+                            popup.hide();
+                        }
+                    </text>)
+                );
+        })
     )
 
     <ul class="employees">
-        @foreach(var employee in Model) {
-            <li>
-                <img src="@employee.Picture" /><br />
-                <i>@employee.FirstName</i>
-                <i>@employee.LastName</i><br />
+        @foreach (var employee in Model) {
+        <li>
+            <img src="@employee.Picture" id="@("image" + employee.ID)" /><br />
+            <i>@employee.FirstName</i>
+            <i>@employee.LastName</i><br />
 
-                @(Html.DevExtreme().Button()
+            @(Html.DevExtreme().Button()
                     .ElementAttr("class", "button-info")
                     .Text("Details")
                     .OnClick(@<text>
                         function showInfo(data) {
-                            var popup = $("#employee-popup").dxPopup("instance");
-                            popup.option("contentTemplate", $("#popup-template-" + @employee.ID));
+                            const popup = $("#employee-popup").dxPopup("instance");
+                            currentEmployee = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(employee));
+                            popup.option({
+                                contentTemplate: $("#popup-template-" + @employee.ID),
+                                "position.of": `#image${@employee.ID}`,
+                            });
                             popup.show();
                         }
                     </text>)
                 )
 
-                @using(Html.DevExtreme().NamedTemplate("popup-template-" + employee.ID)) {
-                    <span>
-                        <p>
-                            Full Name:
-                            <span>@employee.FirstName</span>
-                            <span>@employee.LastName</span>
-                        </p>
-                        <p>
-                            Birth Date:
-                            <span>@employee.BirthDate.Value.ToString("yyyy/MM/dd")</span>
-                        </p>
-                        <p>
-                            Address:
-                            <span>@employee.Address</span>
-                        </p>
-                        <p>
-                            Hire Date:
-                            <span>@employee.HireDate.Value.ToString("yyyy/MM/dd")</span>
-                        </p>
-                        <p>
-                            Position:
-                            <span>@employee.Position</span>
-                        </p>
-                    </span>
-                }
-            </li>
+            @using (Html.DevExtreme().NamedTemplate("popup-template-" + employee.ID)) {
+                <span>
+                    <p>
+                        Full Name:
+                        <span>@employee.FirstName</span>
+                        <span>@employee.LastName</span>
+                    </p>
+                    <p>
+                        Birth Date:
+                        <span>@employee.BirthDate.Value.ToString("yyyy/MM/dd")</span>
+                    </p>
+                    <p>
+                        Address:
+                        <span>@employee.Address</span>
+                    </p>
+                    <p>
+                        Hire Date:
+                        <span>@employee.HireDate.Value.ToString("yyyy/MM/dd")</span>
+                    </p>
+                    <p>
+                        Position:
+                        <span>@employee.Position</span>
+                    </p>
+                </span>
+            }
+        </li>
         }
     </ul>
 </div>
+<script>
+    let currentEmployee = null;
+</script>
