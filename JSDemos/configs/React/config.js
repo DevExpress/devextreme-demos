@@ -61,6 +61,7 @@ System.config({
     /**/
 
     /** jspdf&jspdf-autotable */
+    'fflate': 'npm:fflate/esm/browser.js',
     'jspdf': 'npm:jspdf/dist/jspdf.es.min.js',
     'jspdf-autotable': 'npm:jspdf-autotable/dist/jspdf.plugin.autotable.min.js',
     /**/
@@ -94,7 +95,7 @@ System.config({
     'devextreme-quill': 'npm:devextreme-quill/dist/dx-quill.min.js',
     'devexpress-diagram': 'npm:devexpress-diagram/dist/dx-diagram.js',
     'devexpress-gantt': 'npm:devexpress-gantt/dist/dx-gantt.js',
-    'devextreme-generator': 'npm:devextreme-generator',
+    '@devextreme/vdom': 'npm:@devextreme/vdom',
     'inferno': 'npm:inferno/dist/inferno.min.js',
     'inferno-compat': 'npm:inferno-compat/dist/inferno-compat.min.js',
     'inferno-create-element': 'npm:inferno-create-element/dist/inferno-create-element.min.js',
@@ -112,7 +113,7 @@ System.config({
     'devextreme': {
       defaultExtension: 'js'
     },
-    'devextreme-generator': {
+    '@devextreme/vdom': {
       defaultExtension: 'js'
     },
     'devextreme-react': {

@@ -5,15 +5,14 @@ $(function () {
         height: 600,
         currentDate: new Date(2021, 1, 2),
         dataSource: appointments,
-        views: ['workWeek', 'timelineWorkWeek'],
+        views: ['workWeek', 'timelineWorkWeek', 'month'],
         currentView: "timelineWorkWeek",
         firstDayOfWeek: 0,
         startDayHour: 8,
         endDayHour: 20,
         cellDuration: 60,
         scrolling: {
-            mode: 'virtual',
-            orientation: 'both'
+            mode: 'virtual'
         },
         showAllDayPanel: false,
         groups: ["humanId"],
