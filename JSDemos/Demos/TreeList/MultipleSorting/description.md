@@ -4,8 +4,8 @@ The TreeList component can sort values by a single or multiple columns. Use the 
 A user can click the column header to sort by this column and click it again to change the sort order. An arrow icon in the column's header indicates the sort order.
 
 - **Multiple sort mode**         
-A user can hold the **Shift** key and click column headers in the order the user wants to apply sorting. To cancel a column's sort settings, a user should hold the **Ctrl** key and click the column header. A number next to the order icon in the column's header indicates the sort index.
+A user can hold the **Shift** key and click column headers in the order the user wants to apply sorting. To cancel a column's sort settings, a user should hold the **Ctrl** key and click the column header. Next to an arrow icon in the column's header is a number that indicates the sort index (sort priority).
 
 A user can also apply or cancel sort settings in the column header's context menu. To disallow a user to sort by a particular column, set the column's [allowSorting](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#allowSorting) property to **false**.
 
-To specify the initial sorting settings, use the column's [sortOrder](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#sortOrder) and [sortIndex](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#sortIndex) properties.
+To specify the initial sort settings, use the column's [sortOrder](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#sortOrder) and [sortIndex](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#sortIndex) properties.
