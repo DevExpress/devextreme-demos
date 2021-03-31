@@ -1,38 +1,28 @@
 <template>
   <li>
-    <img :src="product.ImageSrc"><br>
+    <img :src="product.ImageSrc" /><br />
     <div id="name">{{ product.Name }}</div>
-    <DxCheckBox
-      :on-value-changed="checkAvailability"
-      text="Available"
-    />
+    <DxCheckBox :on-value-changed="onValueChanged" text="Available" />
   </li>
 </template>
 <script>
-import notify from 'devextreme/ui/notify';
-import { DxCheckBox } from 'devextreme-vue/check-box';
+import { DxCheckBox } from "devextreme-vue/check-box";
 
 export default {
-  components: {
-    DxCheckBox
+  methods: {
+    onValueChanged(e) {
+      this.$emit("checked", e, this.product);
+    },
   },
-
+  components: {
+    DxCheckBox,
+  },
   props: {
     product: {
       type: Object,
       required: true,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
-
-  methods: {
-    checkAvailability(e) {
-      const type = e.value ? 'success' : 'error';
-      const text =
-        this.product.Name + (e.value ? ' is available' : ' is not available');
-
-      notify(text, type, 600);
-    }
-  }
 };
 </script>
