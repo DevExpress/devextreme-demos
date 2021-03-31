@@ -1257,7 +1257,6 @@
           {
             "Title": "Multiple Sorting",
             "Name": "MultipleSorting",
-            "DocUrl": "Guide/UI_Components/TreeList/Sorting/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
