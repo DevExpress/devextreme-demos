@@ -293,6 +293,10 @@
               "/Controllers/ApiControllers/DataGridCollaborativeEditingController.cs",
               "/Hubs/DataGridCollaborativeEditingHub.cs",
               "/Models/SampleData/DataGridEmployees.cs"
+            ],
+            "BackendFiles": [
+              "DataGridCollaborativeEditingController.cs",
+              "DataGridCollaborativeEditingHub.cs"
             ]
           },
           {
@@ -306,6 +310,10 @@
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridWebApiController.cs",
               "/Models/Northwind/InMemoryNorthwindContext.cs"
+            ],
+            "BackendFiles": [
+              "DataGridWebApiController.cs",
+              "InMemoryNorthwindContext.cs"
             ]
           },
           {
@@ -337,6 +345,10 @@
               "/Controllers/ApiControllers/DataGridBatchUpdateWebApiController.cs",
               "/Models/Northwind/InMemoryNorthwindContext.cs",
               "/Models/DataGrid/DataChange.cs"
+            ],
+            "BackendFiles": [
+              "DataGridBatchUpdateWebApiController.cs",
+              "InMemoryNorthwindContext.cs"
             ]
           },
           {
