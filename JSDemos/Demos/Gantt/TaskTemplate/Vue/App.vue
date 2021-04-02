@@ -5,7 +5,7 @@
         :task-list-width="300"
         :height="700"
         scale-type="days"
-        :task-content-template = "taskContentTemplate"
+        :task-content-template="taskContentTemplate"
       >
 
         <DxTasks :data-source="tasks"/>
@@ -31,16 +31,26 @@
           caption="End Date"
         />
         <template #taskContentTemplate="{ data: item }">
-          <div class="custom-task" :class="getTaskColor(item.taskData.id)" :style="{width: item.taskSize.width + 'px'}">
-                <div class="custom-task-img-wrapper">
-                    <img class="custom-task-img" :src="getImagePath(item.taskData.id)"/>
-                </div>
-                <div class="custom-task-wrapper">
-                    <div class="custom-task-title">{{ item.taskData.title }}</div>
-                    <div class="custom-task-row">{{ item.taskResources[0].text }}</div>
-                </div>
-                <div class="custom-task-progress" :style="{width: item.taskData.progress + '%'}"></div>
+          <div
+            class="custom-task"
+            :class="getTaskColor(item.taskData.id)"
+            :style="{width: item.taskSize.width + 'px'}"
+          >
+            <div class="custom-task-img-wrapper">
+              <img
+                class="custom-task-img"
+                :src="getImagePath(item.taskData.id)"
+              >
             </div>
+            <div class="custom-task-wrapper">
+              <div class="custom-task-title">{{ item.taskData.title }}</div>
+              <div class="custom-task-row">{{ item.taskResources[0].text }}</div>
+            </div>
+            <div
+              class="custom-task-progress"
+              :style="{width: item.taskData.progress + '%'}"
+            />
+          </div>
         </template>
       </DxGantt>
     </div>
@@ -84,14 +94,14 @@ export default {
   },
   methods: {
     getImagePath(taskId) {
-        const imgPath = "../../../../images/employees/";
-        let img = taskId < 10 ? "0" + taskId : taskId;
-        img = imgPath + img + ".png";
-        return img;
+      const imgPath = '../../../../images/employees';
+      let img = taskId < 10 ? `0${taskId}` : taskId;
+      img = `${imgPath}/${img}.png`;
+      return img;
     },
     getTaskColor(taskId) {
-        const color = taskId % 6;
-        return "custom-task-color-" + color;
+      const color = taskId % 6;
+      return `custom-task-color-${color}`;
     }
   }
 };

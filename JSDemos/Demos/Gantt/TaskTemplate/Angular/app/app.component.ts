@@ -31,15 +31,15 @@ export class AppComponent {
     }
 
     getImagePath(taskId) {
-        const imgPath = "../../../../images/employees/";
-        let img = taskId < 10 ? "0" + taskId : taskId;
-        img = imgPath + img + ".png";
+        const imgPath = '../../../../images/employees';
+        let img = taskId < 10 ? `0${taskId}` : taskId;
+        img = `${imgPath}/${img}.png`;
         return img;
     }
 
     getTaskColor(taskId) {
         const color = taskId % 6;
-        return "custom-task-color-" + color;
+        return `custom-task-color-${color}`;
     }
 }
 

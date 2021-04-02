@@ -62,7 +62,7 @@ export const tasks = [{
   'id': 9,
   'parentId': 1,
   'title': 'Secure required resources',
-  'start': new Date(year, month , 25),
+  'start': new Date(year, month, 25),
   'end': new Date(year, month, 28),
   'progress': 0,
 }];
@@ -128,7 +128,7 @@ export const resources = [{
 }, {
   'id': 8,
   'text': 'Cynthia Stanwick'
-},{
+}, {
   'id': 9,
   'text': 'Olivia Samuelson'
 }];
