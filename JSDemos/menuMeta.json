@@ -4812,7 +4812,7 @@
               {
                 "Title": "Physical File System",
                 "Name": "BindingToFileSystem",
-                "DocUrl": "ApiReference/UI_Components/dxFileManager/File_Providers/Remote/",
+                "DocUrl": "ApiReference/UI_Components/dxFileManager/File_System_Providers/Remote/",
                 "Widget": "FileManager",
                 "DemoType": "Web",
                 "MvcAdditionalFiles": [
@@ -4869,7 +4869,7 @@
               {
                 "Title": "Hierarchical JS Structure",
                 "Name": "BindingToHierarchicalStructure",
-                "DocUrl": "ApiReference/UI_Components/dxFileManager/File_Providers/Array/",
+                "DocUrl": "ApiReference/UI_Components/dxFileManager/File_System_Providers/Object/",
                 "Widget": "FileManager",
                 "DemoType": "Web",
                 "MvcAdditionalFiles": [
