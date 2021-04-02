@@ -1040,6 +1040,114 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
             new Dependency { ID =  6, PredecessorId =  21, SuccessorId = 22, Type =  0}
         };
 
+        public static readonly IEnumerable<Task> GanttTasksRequirements = new[] {
+            new Task {
+                ID = 1,
+                ParentId = 0,
+                Title = "Analysis/Software Requirements",
+                Start = new DateTime(year, month, 1),
+                End = new DateTime(year, month, 28),
+                Progress = 31
+            },
+            new Task {
+                ID =  2,
+                ParentId =  1,
+                Title =  "Conduct needs analysis",
+                Start =  new DateTime(year, month, 1),
+                End =  new DateTime(year, month, 3),
+                Progress =  15,
+            },
+            new Task {
+                ID =  3,
+                ParentId =  1,
+                Title =  "Draft preliminary software specifications",
+                Start =  new DateTime(year, month, 3),
+                End =  new DateTime(year, month, 5),
+                Progress =  30,
+            },
+            new Task {
+                ID =  4,
+                ParentId =  1,
+                Title =  "Review software specifications/budget with team",
+                Start =  new DateTime(year, month, 4),
+                End =  new DateTime(year, month, 6),
+                Progress =  60,
+            },
+            new Task {
+                ID =  5,
+                ParentId =  1,
+                Title =  "Incorporate feedback on software specifications",
+                Start =  new DateTime(year, month, 6),
+                End =  new DateTime(year, month, 8),
+                Progress =  45,
+            },
+            new Task {
+                ID =  6,
+                ParentId =  1,
+                Title =  "Develop delivery timeline",
+                Start =  new DateTime(year, month, 8),
+                End =  new DateTime(year, month, 14),
+                Progress =  15,
+            },
+            new Task {
+                ID =  7,
+                ParentId =  1,
+                Title =  "Obtain approvals to proceed (concept, timeline, budget)",
+                Start =  new DateTime(year, month, 14),
+                End =  new DateTime(year, month, 20),
+                Progress =  15,
+            },
+            new Task {
+                ID =  8,
+                ParentId =  1,
+                Title =  "Draft preliminary software specifications",
+                Start =  new DateTime(year, month, 20),
+                End =  new DateTime(year, month, 25),
+                Progress =  0,
+            },
+            new Task {
+                ID =  9,
+                ParentId =  1,
+                Title =  "Secure required resources",
+                Start =  new DateTime(year, month , 25),
+                End =  new DateTime(year, month, 28),
+                Progress =  0,
+            }};
+
+        public static readonly IEnumerable<Dependency> GanttDependenciesRequirements = new[] {
+            new Dependency { ID =  1, PredecessorId = 2, SuccessorId = 3, Type = 0 },
+            new Dependency { ID =  2, PredecessorId = 3, SuccessorId = 4, Type = 0 },
+            new Dependency { ID =  3, PredecessorId = 4, SuccessorId = 5, Type = 0 },
+            new Dependency { ID =  4, PredecessorId = 5, SuccessorId = 6, Type = 0 },
+            new Dependency { ID =  5, PredecessorId = 6, SuccessorId = 7, Type = 0 },
+            new Dependency { ID =  6, PredecessorId = 7, SuccessorId = 8, Type = 0 },
+            new Dependency { ID =  7, PredecessorId = 8, SuccessorId = 9, Type = 0 }
+        };
+
+        public static readonly IEnumerable<Resource> GanttResourcesRequirements = new[] {
+            new Resource { ID = 1, Text = "John Heart" },
+            new Resource { ID = 2, Text = "Paul Peyton" },
+            new Resource { ID = 3, Text = "Robert Reagan" },
+            new Resource { ID = 4, Text = "Greta Sims" },
+            new Resource { ID = 5, Text = "Brett Wade" },
+            new Resource { ID = 6, Text = "Sandra Johnson" },
+            new Resource { ID = 7, Text = "Kevin Carter" },
+            new Resource { ID = 8, Text = "Cynthia Stanwick" },
+            new Resource { ID = 9, Text = "Olivia Samuelson" }
+        };
+
+        public static readonly IEnumerable<ResourceAssignment> GanttResourceAssignmentsRequirements = new[] {
+            new ResourceAssignment { ID = 0, TaskId = 1, ResourceId = 1 },
+            new ResourceAssignment { ID = 1, TaskId = 2, ResourceId = 2 },
+            new ResourceAssignment { ID = 2, TaskId = 3, ResourceId = 3 },
+            new ResourceAssignment { ID = 3, TaskId = 4, ResourceId = 4 },
+            new ResourceAssignment { ID = 4, TaskId = 5, ResourceId = 5 },
+            new ResourceAssignment { ID = 5, TaskId = 6, ResourceId = 6 },
+            new ResourceAssignment { ID = 6, TaskId = 7, ResourceId = 7 },
+            new ResourceAssignment { ID = 7, TaskId = 8, ResourceId = 8 },
+            new ResourceAssignment { ID = 8, TaskId = 9, ResourceId = 9 }
+        };
+
         public static readonly IEnumerable<String> GanttScaleTypes = new[] {
             "auto",
             "minutes",
