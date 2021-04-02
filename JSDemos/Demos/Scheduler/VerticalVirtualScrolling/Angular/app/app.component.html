@@ -4,11 +4,6 @@
     [views]="[{
         type: 'day',
         groupOrientation: 'vertical',
-        name: '2 Days',
-        intervalCount: 2
-    }, {
-        type: 'day',
-        groupOrientation: 'vertical',
         name: '3 Days',
         intervalCount: 3
     }, {
@@ -25,9 +20,9 @@
     [endDayHour]="18"
     [scrolling]="{ mode: 'virtual' }"
     [showAllDayPanel]="false"
-    [groups]="['resourceId']"
+    [groups]="['humanId']"
     [resources]="[{
-        fieldExpr: 'resourceId',
+        fieldExpr: 'humanId',
         dataSource: resources
     }]"
     >

@@ -1,16 +1,9 @@
 $(function () {
-    var resources = generateResources();
     var appointments = generateAppointments();
-
     $("#scheduler").dxScheduler({
         height: 600,
         dataSource: appointments,
         views: [{
-            type: 'day',
-            groupOrientation: 'vertical',
-            name: '2 Days',
-            intervalCount: 2
-        }, {
             type: 'day',
             groupOrientation: 'vertical',
             name: '3 Days',
@@ -30,10 +23,10 @@ $(function () {
             mode: 'virtual'
         },
         showAllDayPanel: false,
-        currentDate: new Date(2021, 8, 6),
-        groups: ["resourceId"],
+        currentDate: new Date(2021, 1, 2),
+        groups: ["humanId"],
         resources: [{
-            fieldExpr: "resourceId",
+            fieldExpr: "humanId",
             dataSource: resources
         }]
     });

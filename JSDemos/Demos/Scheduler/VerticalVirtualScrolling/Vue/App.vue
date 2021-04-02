@@ -15,7 +15,7 @@
 </template>
 <script>
 import DxScheduler from 'devextreme-vue/scheduler';
-import { generateResources, generateAppointments } from './data.js';
+import { resources, generateAppointments } from './data.js';
 
 export default {
   components: {
@@ -24,14 +24,8 @@ export default {
   data() {
     return {
       dataSource: generateAppointments(),
-      currentDate: new Date(2021, 8, 6),
+      currentDate: new Date(2021, 1, 2),
       views: [
-        {
-          type: 'day',
-          groupOrientation: 'vertical',
-          name: '2 Days',
-          intervalCount: 2,
-        },
         {
           type: 'day',
           groupOrientation: 'vertical',
@@ -49,10 +43,10 @@ export default {
         }
       ],
       scrolling: { mode: 'virtual' },
-      groups: ['resourceId'],
+      groups: ['humanId'],
       resources: [{
-        fieldExpr: 'resourceId',
-        dataSource: generateResources()
+        fieldExpr: 'humanId',
+        dataSource: resources
       }]
     };
   },

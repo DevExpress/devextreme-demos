@@ -2,17 +2,12 @@ import React from 'react';
 
 import Scheduler from 'devextreme-react/scheduler';
 import {
-  generateResources,
+  resources,
   generateAppointments
 } from './data.js';
 
-const currentDate = new Date(2021, 8, 6);
+const currentDate = new Date(2021, 1, 2);
 const views = [{
-  type: 'day',
-  groupOrientation: 'vertical',
-  name: '2 Days',
-  intervalCount: 2
-}, {
   type: 'day',
   groupOrientation: 'vertical',
   name: '3 Days',
@@ -26,12 +21,11 @@ const views = [{
   groupOrientation: 'vertical'
 }];
 const scrolling = { mode: 'virtual' };
-const resourceData = generateResources();
-const resources = [{
-  fieldExpr: 'resourceId',
-  dataSource: resourceData
+const resourceData = [{
+  fieldExpr: 'humanId',
+  dataSource: resources
 }];
-const groups = ['resourceId'];
+const groups = ['humanId'];
 const appointments = generateAppointments();
 
 class App extends React.Component {
@@ -48,7 +42,7 @@ class App extends React.Component {
         scrolling={scrolling}
         showAllDayPanel={false}
         groups={groups}
-        resources={resources}
+        resources={resourceData}
       />
     );
   }
