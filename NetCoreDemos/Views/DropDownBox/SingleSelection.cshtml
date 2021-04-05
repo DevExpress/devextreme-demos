@@ -88,7 +88,7 @@
         .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
         .Height(345)
         .Selection(s => s.Mode(SelectionMode.Single))
-        .SelectedRowKeys(new JS(@"[component.option(""value"")]"))
+        .SelectedRowKeys(new JS(@"component.option(""value"") ? [component.option(""value"")] : []"))
         .OnSelectionChanged(@<text>
             function(selectedItems) {
                 var keys = selectedItems.selectedRowKeys;

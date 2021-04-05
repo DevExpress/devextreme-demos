@@ -331,7 +331,7 @@
             ]
           },
           {
-            "Title": "Edit State Management (CTP)",
+            "Title": "Edit State Management",
             "Name": "EditStateManagement",
             "DocUrl": "",
             "Widget": "DataGrid",
@@ -1929,7 +1929,7 @@
     ]
   },
   {
-    "Name": "Html Editor (CTP)",
+    "Name": "Html Editor",
     "Equivalents": "dxHtmlEditor, dx-htmleditor",
     "Groups": [
       {
@@ -1941,8 +1941,7 @@
             "Name": "Overview",
             "DocUrl": "Guide/UI_Components/HtmlEditor/Overview/",
             "Widget": "HtmlEditor",
-            "DemoType": "Web",
-            "Badge": "Updated"
+            "DemoType": "Web"
           }
         ]
       },
@@ -2000,8 +1999,7 @@
             "MvcDescription": "",
             "NetCoreDescription": "",
             "MvcAdditionalFiles": [],
-            "DemoType": "Web",
-            "Badge": "New"
+            "DemoType": "Web"
           }
         ]
       }
@@ -3375,7 +3373,21 @@
           {
             "Title": "Chart Appearance",
             "Name": "ChartAppearance",
-            "Badge": "Updated",
+            "Widget": "Gantt",
+            "DemoType": "Web",
+            "WideDemo": true,
+            "MvcAdditionalFiles": [
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
+            ]
+          },
+          {
+            "Title": "Task Template",
+            "Name": "TaskTemplate",
+            "Badge": "New",
             "Widget": "Gantt",
             "DemoType": "Web",
             "WideDemo": true,
@@ -3404,7 +3416,6 @@
           {
             "Title": "Context Menu",
             "Name": "ContextMenu",
-            "Badge": "New",
             "Widget": "Gantt",
             "DemoType": "Web",
             "WideDemo": true,
@@ -4793,7 +4804,7 @@
               {
                 "Title": "Physical File System",
                 "Name": "BindingToFileSystem",
-                "DocUrl": "ApiReference/UI_Components/dxFileManager/File_Providers/Remote/",
+                "DocUrl": "ApiReference/UI_Components/dxFileManager/File_System_Providers/Remote/",
                 "Widget": "FileManager",
                 "DemoType": "Web",
                 "MvcAdditionalFiles": [
@@ -4836,7 +4847,7 @@
               {
                 "Title": "Hierarchical JS Structure",
                 "Name": "BindingToHierarchicalStructure",
-                "DocUrl": "ApiReference/UI_Components/dxFileManager/File_Providers/Array/",
+                "DocUrl": "ApiReference/UI_Components/dxFileManager/File_System_Providers/Object/",
                 "Widget": "FileManager",
                 "DemoType": "Web",
                 "MvcAdditionalFiles": [
