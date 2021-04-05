@@ -1,14 +1,14 @@
-﻿import React from "react";
-import { Toast } from "devextreme-react/toast";
+﻿import React from 'react';
+import { Toast } from 'devextreme-react/toast';
 
-import { ProductItem } from "./ProductItem.js";
-import { products } from "./data.js";
+import { ProductItem } from './ProductItem.js';
+import { products } from './data.js';
 
 function App() {
   const [toastConfig, setToastConfig] = React.useState({
     isVisible: false,
-    type: "info",
-    message: ""
+    type: 'info',
+    message: ''
   });
 
   const items = products.map((product) => (
@@ -32,9 +32,9 @@ function App() {
   );
 
   function checkAvailability(e, product) {
-    const type = e.value ? "success" : "error";
+    const type = e.value ? 'success' : 'error';
     const message =
-      product.Name + (e.value ? " is available" : " is not available");
+      product.Name + (e.value ? ' is available' : ' is not available');
 
     setToastConfig({
       ...toastConfig,
@@ -44,7 +44,7 @@ function App() {
     });
   }
 
-  function onHiding(e) {
+  function onHiding() {
     setToastConfig({
       ...toastConfig,
       isVisible: false

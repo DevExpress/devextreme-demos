@@ -4,24 +4,24 @@
 
     <ul>
       <ProductItem
-          v-for="product in products"
-          :key="product.ID"
-          :product="product"
-          @checked="checkAvailability"
+        v-for="product in products"
+        :key="product.ID"
+        :product="product"
+        @checked="checkAvailability"
       />
     </ul>
 
     <DxToast
-        v-model:visible="isVisible"
-        v-model:message="message"
-        v-model:type="type"
+      v-model:visible="isVisible"
+      v-model:message="message"
+      v-model:type="type"
     />
   </div>
 </template>
 <script>
-import { products } from "./data.js";
-import ProductItem from "./ProductItem.vue";
-import { DxToast } from "devextreme-vue/toast";
+import { products } from './data.js';
+import ProductItem from './ProductItem.vue';
+import { DxToast } from 'devextreme-vue/toast';
 
 export default {
   components: {
@@ -33,14 +33,14 @@ export default {
     return {
       products,
       isVisible: false,
-      message: "",
-      type: "info",
+      message: '',
+      type: 'info',
     };
   },
   methods: {
     checkAvailability(e, product) {
-      this.type = e.value ? "success" : "error";
-      this.message = product.Name + (e.value ? " is available" : " is not available");
+      this.type = e.value ? 'success' : 'error';
+      this.message = product.Name + (e.value ? ' is available' : ' is not available');
       this.isVisible = true;
     },
   },
