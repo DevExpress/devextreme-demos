@@ -2,7 +2,7 @@ The DataGrid splits records into multiple pages. This technique helps optimize c
 
 The [pager](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/pager/) object is used to configure the pager. It has the full and compact display modes. Additionally, the adaptive (default) mode switches between these two values based on the DataGrid's width. Use the **pager**.[displayMode](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/pager/#displayMode) property to specify the mode. 
 
-Regardless of the mode, the pager contains the following elements:
+The pager contains the following elements:
 
 - **Page navigator**        
 Enables page navigation.
@@ -10,6 +10,7 @@ Enables page navigation.
 - **Page size selector**        
 Changes the page size. To display this element, enable the [showPageSizeSelector](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/pager/#showPageSizeSelector) property. You can also define the [allowedPageSizes](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/pager/#allowedPageSizes) and specify the initial [pageSize](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/paging/#pageSize) in the [paging](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/paging/) object.
 
-**Page information**, the third element, is available only in the full mode and displays the current page number and total record count. To display page information, enable the [showInfo](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/pager/#showInfo) property. You can also use the [infoText](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/pager/#infoText) property to customize the information text string.
+- **Page information**           
+Displays the current page number and total record count. Available only in the full mode. To display page information, enable the [showInfo](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/pager/#showInfo) property. You can also use the [infoText](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/pager/#infoText) property to customize the information text string.
 
 In this demo, you can use the SelectBox to switch between the display modes and see how the page navigator and page size selector change their appearance accordingly. You can also use the checkboxes to show or hide the page size selector and - if in the full display mode - page information and buttons in the page navigator.
