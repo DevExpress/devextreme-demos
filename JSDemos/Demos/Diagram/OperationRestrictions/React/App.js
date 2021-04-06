@@ -134,14 +134,18 @@ class App extends React.Component {
     }
   }
   itemStyleExpr(obj) {
-      if(obj.Type === "root")
-          return { "fill": "#ffcfc3"};
-      else
-          if(obj.Type === "team")
-              return { "fill": "#b7e3fe"};
-          else
-              return { "fill": "#bbefcb" };
-  }    
+    if(obj.Type === 'root') {
+      return { 'fill': '#ffcfc3'};
+    }
+    else {
+      if(obj.Type === "team") {
+        return { 'fill': '#b7e3fe' };
+      }
+      else {
+        return { 'fill': '#bbefcb' };
+      }
+    }
+  }
 }
 
 export default App;

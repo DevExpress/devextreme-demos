@@ -170,18 +170,18 @@ export default {
       }
     },
     itemStyleExpr(obj) {
-      if(obj.Type === "root") {
-          return { "fill": "#ffcfc3"};
+      if(obj.Type === 'root') {
+          return { 'fill': '#ffcfc3' };
       }
       else {
-        if(obj.Type === "team") {
-          return { "fill": "#b7e3fe"};
+        if(obj.Type === 'team') {
+          return { 'fill': '#b7e3fe' };
         }
         else {
-          return { "fill": "#bbefcb" };
+          return { 'fill': '#bbefcb' };
         }
       }
-    }    
+    }
   }
 };
 </script>
