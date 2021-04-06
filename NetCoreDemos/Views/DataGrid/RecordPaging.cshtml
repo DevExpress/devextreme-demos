@@ -1,22 +1,77 @@
-﻿@(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.Customer>()
+﻿@(Html.DevExtreme().DataGrid()
     .ID("gridContainer")
     .ShowBorders(true)
-    .Columns(columns => {
-        columns.AddFor(m => m.CompanyName);
-
-        columns.AddFor(m => m.City);
-
-        columns.AddFor(m => m.State);
-
-        columns.AddFor(m => m.Phone);
-
-        columns.AddFor(m => m.Fax);
-    })
+    .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
     .Paging(paging => paging.PageSize(10))
     .Pager(pager => {
+        pager.Visible(true);
+        pager.DisplayMode(GridPagerDisplayMode.Full);
         pager.ShowPageSizeSelector(true);
-        pager.AllowedPageSizes(new[] { 5, 10, 20 });
+        pager.AllowedPageSizes(new JS("[5, 10, 'all']"));
         pager.ShowInfo(true);
+        pager.ShowNavigationButtons(true);
     })
-    .DataSource(d => d.Mvc().Controller("DataGridCustomers").LoadAction("Get").Key("ID"))
+    .DataSource(d => d.Mvc().Controller("DataGridScrolling").LoadAction("Get").Key("Id"))
 )
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option-container">
+        <div class="option">
+            <span class="option-caption">Display Mode</span>
+                @(Html.DevExtreme().SelectBox()
+                    .ID("displayMode")
+                    .Items(new [] { "full", "compact" })
+                    .Value("full")
+                    .OnValueChanged(@<text>
+                        function(data) {
+                            var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                            var showInfo = $("#showInfo").dxCheckBox("instance");
+                            var navButtons = $("#showNavButtons").dxCheckBox("instance");
+                            dataGrid.option("pager.displayMode", data.value);
+                            showInfo.option("disabled", data.value === "compact");
+                            navButtons.option("disabled", data.value === "compact");
+                        }
+                    </text>)
+                )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+            .ID("showPageSizes")
+            .Text("Show Page Sizes Selector")
+            .Value(true)
+            .OnValueChanged(@<text>
+                    function(data) {
+                    var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                    dataGrid.option("pager.showPageSizeSelector", data.value);
+                    }
+                </text>)
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+            .ID("showInfo")
+            .Text("Show Info Text")
+            .Value(true)
+            .OnValueChanged(@<text>
+                    function(data) {
+                    var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                    dataGrid.option("pager.showInfo", data.value);
+                    }
+                </text>)
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+            .ID("showNavButtons")
+            .Text("Show Navigation Buttons")
+            .Value(true)
+            .OnValueChanged(@<text>
+                    function(data) {
+                    var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                    dataGrid.option("pager.showNavigationButtons", data.value);
+                    }
+                </text>)
+            )
+        </div>
+    </div>
+</div>
