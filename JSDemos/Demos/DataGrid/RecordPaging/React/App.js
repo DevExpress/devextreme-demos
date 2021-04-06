@@ -5,9 +5,7 @@ import { generateData } from './data.js';
 import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
 
-
-const displayModes = ["full", "compact"];
-
+const displayModes = ['full', 'compact'];
 class App extends React.Component {
   displayModeChange = (value) => {
     this.setState({ ...this.state, displayMode: value });
@@ -22,26 +20,26 @@ class App extends React.Component {
     this.setState({ ...this.state, showNavButtons: value });
   }
   isCompactMode() {
-    return this.state.displayMode === "compact";
+    return this.state.displayMode === 'compact';
   }
   constructor(props) {
     super(props);
     this.state = {
-      displayMode: "full",
+      displayMode: 'full',
       showPageSizeSelector: true,
       showInfo: true,
-      showNavButtons: true,
-    }
+      showNavButtons: true
+    };
   }
   render() {
     return (
       <div>
         <DataGrid
-          id={"gridContainer"}
+          id='gridContainer'
           dataSource={generateData(100000)}
           showBorders={true}
         >
-          <Scrolling rowRenderingMode={"virtual"} ></Scrolling>
+          <Scrolling rowRenderingMode='virtual'></Scrolling>
           <Paging defaultPageSize={10} />
           <Pager
             visible={true}
@@ -51,36 +49,36 @@ class App extends React.Component {
             showInfo={this.state.showInfo}
             showNavigationButtons={this.state.showNavButtons} />
         </DataGrid>
-        <div className="options">
-          <div className="caption">Options</div>
-          <div className="option-container">
-            <div className="option">
-              <span className="option-caption">Display Mode</span>
+        <div className='options'>
+          <div className='caption'>Options</div>
+          <div className='option-container'>
+            <div className='option'>
+              <span className='option-caption'>Display Mode</span>
               <SelectBox
-                id={"displayModes"}
+                id='displayModes'
                 items={displayModes}
                 value={this.state.displayMode}
                 onValueChange={this.displayModeChanged} />
             </div>
-            <div className="option">
+            <div className='option'>
               <CheckBox
-                id={"showPageSizes"}
-                text={"Show Page Sizes Selector"}
+                id='showPageSizes'
+                text='Show Page Sizes Selector'
                 value={this.state.showPageSizeSelector}
                 onValueChange={this.showPageSizeSelectorChange} />
             </div>
-            <div className="option">
+            <div className='option'>
               <CheckBox
-                id={"showInfo"}
-                text={"Show Info Text"}
+                id='showInfo'
+                text='Show Info Text'
                 value={this.state.showInfo}
                 onValueChange={this.showInfoChange}
                 disabled={this.isCompactMode()} />
             </div>
-            <div className="option">
+            <div className='option'>
               <CheckBox
-                id={"showNavButtons"}
-                text={"Show Navigation Buttons"}
+                id='showNavButtons'
+                text='Show Navigation Buttons'
                 value={this.state.showNavButtons}
                 onValueChange={this.showNavButtonsChange}
                 disabled={this.isCompactMode()} />
