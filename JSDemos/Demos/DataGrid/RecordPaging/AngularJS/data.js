@@ -4,23 +4,23 @@ function random() {
     return s % (10 - 1);
 }
 
-const generateData = function (count) {
-    var i;
-    var surnames = ['Smith', 'Johnson', 'Brown', 'Taylor', 'Anderson', 'Harris', 'Clark', 'Allen', 'Scott', 'Carter'];
-    var names = ['James', 'John', 'Robert', 'Christopher', 'George', 'Mary', 'Nancy', 'Sandra', 'Michelle', 'Betty'];
-    var gender = ['Male', 'Female'];
-    var items = [],
-        startBirthDate = Date.parse('1/1/1975'),
-        endBirthDate = Date.parse('1/1/1992');
+function generateData(count) {
+    let i;
+    const surnames = ['Smith', 'Johnson', 'Brown', 'Taylor', 'Anderson', 'Harris', 'Clark', 'Allen', 'Scott', 'Carter'];
+    const names = ['James', 'John', 'Robert', 'Christopher', 'George', 'Mary', 'Nancy', 'Sandra', 'Michelle', 'Betty'];
+    const gender = ['Male', 'Female'];
+    const items = [];
+    const startBirthDate = Date.parse('1/1/1975');
+    const endBirthDate = Date.parse('1/1/1992');
 
-    for (i = 0; i < count; i++) {
-        var birthDate = new Date(startBirthDate + Math.floor(
-                random() * 
-                (endBirthDate - startBirthDate) / 10));
+    for(i = 0; i < count; i++) {
+        const birthDate = new Date(startBirthDate + Math.floor(
+            random() *
+            (endBirthDate - startBirthDate) / 10));
         birthDate.setHours(12);
 
-        var nameIndex = random();
-        var item = {
+        const nameIndex = random();
+        const item = {
             id: i + 1,
             firstName: names[nameIndex],
             lastName: surnames[random()],
@@ -30,4 +30,4 @@ const generateData = function (count) {
         items.push(item);
     }
     return items;
-};
+}

@@ -58,7 +58,7 @@ class App extends React.Component {
                 id='displayModes'
                 items={displayModes}
                 value={this.state.displayMode}
-                onValueChange={this.displayModeChanged} />
+                onValueChange={this.displayModeChange} />
             </div>
             <div className='option'>
               <CheckBox

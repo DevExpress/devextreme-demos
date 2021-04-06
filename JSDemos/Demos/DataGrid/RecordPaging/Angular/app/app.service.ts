@@ -8,9 +8,9 @@ export class Employee {
     birthDate: Date;
 }
 
-let employees: Employee[] = [];
+const employees: Employee[] = [];
 
-let surnames: string[] = [
+const surnames: string[] = [
     "Smith",
     "Johnson",
     "Brown",
@@ -22,7 +22,7 @@ let surnames: string[] = [
     "Scott",
     "Carter"];
 
-let names: string[] = [
+const names: string[] = [
     "James",
     "John",
     "Robert",
@@ -34,7 +34,7 @@ let names: string[] = [
     "Michelle",
     "Betty"];
 
-let gender: string[] = ["Male", "Female"];
+const gender: string[] = ["Male", "Female"];
 
 let s: number = 123456789;
 
@@ -52,10 +52,10 @@ export class Service {
 
         for (i = 0; i < count; i++) {
             let birthDate = new Date(startBirthDate + Math.floor(
-                    this.random() * 
-                    (endBirthDate - startBirthDate) / 10));
+                this.random() *
+                (endBirthDate - startBirthDate) / 10));
             birthDate.setHours(12);
-            
+
             let nameIndex = this.random();
             let item = {
                 id: i + 1,
