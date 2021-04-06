@@ -1,5 +1,6 @@
 ﻿@(Html.DevExtreme().Diagram()
     .ID("diagram")
+    .OnContentReady("onContentReady")
     .OnSelectionChanged("onSelectionChanged")
     .PropertiesPanel(pp => pp
         .Visibility(DiagramPanelVisibility.Disabled)
@@ -28,6 +29,15 @@
 </div>
 
 <script type="text/javascript">
+    function onContentReady(e) {
+        // preselect some shapes
+        var items = e.component.getItems().filter(function (item) {
+            return item.itemType === "shape" && (item.text === "Greta Sims" || item.text === "Marcus Orbison");
+        })
+        e.component.setSelectedItems(items);
+        e.component.scrollToItems(items);
+        e.component.focus();
+    }
     function onSelectionChanged(e) {
         var items = e.items
             .filter(function(item) { return item.itemType === "shape"; })

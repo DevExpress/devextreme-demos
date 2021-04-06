@@ -12,6 +12,15 @@ $(function() {
                 type: "tree"
             }
         },
+        onContentReady: function(e) {
+            // preselect some shapes
+            var items = e.component.getItems().filter(function(item) {
+                return item.itemType === "shape" && (item.text === "Greta Sims" || item.text === "Marcus Orbison");
+            })
+            e.component.setSelectedItems(items);
+            e.component.scrollToItems(items);
+            e.component.focus();
+        },
         onSelectionChanged: function(e) {
             var items = e.items
                 .filter(function(item) { return item.itemType === "shape"; })

@@ -25,7 +25,7 @@ class App extends React.Component {
           title="Team" defaultText="Team Name" />
         <CustomShape category="items" type="employee" baseType="rectangle"
           title="Employee" defaultText="Employee Name" />
-        <Nodes dataSource={this.orgItemsDataSource} keyExpr="ID" textExpr="Name" typeExpr="Type" parentKeyExpr="ParentID">
+        <Nodes dataSource={this.orgItemsDataSource} keyExpr="ID" textExpr="Name" typeExpr="Type" parentKeyExpr="ParentID" styleExpr={this.itemStyleExpr}>
           <AutoLayout type="tree" />
         </Nodes>
         <ContextToolbox shapeIconsPerRow={2} width={100} shapes={['team', 'employee']}>
@@ -133,6 +133,15 @@ class App extends React.Component {
       e.allowed = false;
     }
   }
+  itemStyleExpr(obj) {
+      if(obj.Type === "root")
+          return { "fill": "#ffcfc3"};
+      else
+          if(obj.Type === "team")
+              return { "fill": "#b7e3fe"};
+          else
+              return { "fill": "#bbefcb" };
+  }    
 }
 
 export default App;

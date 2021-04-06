@@ -3,6 +3,7 @@
     <DxDiagram
       id="diagram"
       ref="diagram"
+      @content-ready="onContentReady"
       @selection-changed="onSelectionChanged"
     >
       <DxNodes
@@ -45,6 +46,15 @@ export default {
     };
   },
   methods: {
+    onContentReady(e) {
+      // preselect some shapes
+      var items = e.component.getItems().filter(function(item) {
+          return item.itemType === "shape" && (item.text === "Greta Sims" || item.text === "Marcus Orbison");
+      })
+      e.component.setSelectedItems(items);
+      e.component.scrollToItems(items);
+      e.component.focus();
+    },
     onSelectionChanged({ items }) {
       this.selectedItemNames = 'Nobody has been selected';
       items = items

@@ -31,6 +31,7 @@
       :text-expr="'Name'"
       :type-expr="'Type'"
       :parent-key-expr="'ParentID'"
+      :style-expr="itemStyleExpr"
     >
       <DxAutoLayout
         :type="'tree'"
@@ -167,7 +168,20 @@ export default {
       else if(e.operation === 'beforeChangeConnectorText') {
         e.allowed = false;
       }
-    }
+    },
+    itemStyleExpr(obj) {
+      if(obj.Type === "root") {
+          return { "fill": "#ffcfc3"};
+      }
+      else {
+        if(obj.Type === "team") {
+          return { "fill": "#b7e3fe"};
+        }
+        else {
+          return { "fill": "#bbefcb" };
+        }
+      }
+    }    
   }
 };
 </script>
