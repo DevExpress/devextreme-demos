@@ -35,11 +35,7 @@ export class AppComponent {
         DxDataGridModule,DxCheckBoxModule, DxSelectBoxModule
     ],
     declarations: [AppComponent],
-    bootstrap: [AppComponent],
-    schemas: [
-        CUSTOM_ELEMENTS_SCHEMA,
-        NO_ERRORS_SCHEMA
-      ]
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
 
