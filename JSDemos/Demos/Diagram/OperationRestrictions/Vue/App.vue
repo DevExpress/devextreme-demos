@@ -171,7 +171,7 @@ export default {
     },
     itemStyleExpr(obj) {
       if(obj.Type === 'root') {
-          return { 'fill': '#ffcfc3' };
+        return { 'fill': '#ffcfc3' };
       }
       else {
         if(obj.Type === 'team') {

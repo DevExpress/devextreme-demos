@@ -135,10 +135,10 @@ class App extends React.Component {
   }
   itemStyleExpr(obj) {
     if(obj.Type === 'root') {
-      return { 'fill': '#ffcfc3'};
+      return { 'fill': '#ffcfc3' };
     }
     else {
-      if(obj.Type === "team") {
+      if(obj.Type === 'team') {
         return { 'fill': '#b7e3fe' };
       }
       else {
