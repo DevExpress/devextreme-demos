@@ -33,7 +33,7 @@ const replace = (filePath, find, newVersion) => {
         throw new Error(`File not exist: ${fullPath}`);
     }
 
-    const versionReg = '(?<version>\\d{2}\.(1|2)(?<patch>\\.\\d+)?(?<next>-next)?)';
+    const versionReg = '(?<version>\\d{2}\\.(1|2)(?<patch>\\.\\d+)?(?<next>-next)?)';
     const oldVersionReg = `${find}${versionReg}`;
     let content = fs.readFileSync(fullPath, 'utf8');
 
@@ -56,10 +56,13 @@ const replace = (filePath, find, newVersion) => {
 };
 
 const mainRoutine = async() => {
-    const versionChoice = await prompts.askVersionUpdate();
+    const updateMinor = getUpdateMinor();
+    const updateMajor = getUpdateMajor();
+
+    const versionChoice = await prompts.askVersionUpdate(updateMinor, updateMajor);
     const newVersion = versionChoice.command === 'minor'
-        ? getUpdateMinor()
-        : getUpdateMajor();
+        ? updateMinor
+        : updateMajor;
 
     replace(
         '../../NetCoreDemos/DevExtreme.NETCore.Demos.csproj',

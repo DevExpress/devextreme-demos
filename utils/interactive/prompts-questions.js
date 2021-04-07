@@ -223,14 +223,14 @@ const askRepositoryPath = async(repositoryName) => {
     }, { onCancel });
 };
 
-const askVersionUpdate = async() => {
+const askVersionUpdate = async(minor, major) => {
     return prompts({
         type: 'select',
         name: 'command',
         message: 'Choice update version',
         choices: [
-            { title: 'Update minor version (etc x.x.3 -> x.x.4)', value: 'minor' },
-            { title: 'Update major version (etc 21.1.x -> 21.2.0 -> 22.1.0)', value: 'major' }
+            { title: `Update minor version (to ${minor})`, value: 'minor' },
+            { title: `Update major version (to ${major})`, value: 'major' }
         ]
     }, { onCancel });
 };
