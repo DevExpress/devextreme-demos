@@ -17,6 +17,7 @@
         .TextExpr("Name")
         .TypeExpr("Type")
         .ParentKeyExpr("ParentID")
+        .StyleExpr(new JS("itemStyleExpr"))
         .AutoLayout(al => al
             .Type(DiagramDataLayoutType.Tree)
         )
@@ -123,5 +124,14 @@
         else if(e.operation === "beforeChangeConnectorText") {
             e.allowed = false;
         }
+    }
+    function itemStyleExpr(obj) {
+        if(obj.Type === "root")
+            return { "fill": "#ffcfc3" };
+        else
+            if(obj.Type === "team")
+                return { "fill": "#b7e3fe" };
+            else
+                return { "fill": "#bbefcb" };
     }
 </script>
