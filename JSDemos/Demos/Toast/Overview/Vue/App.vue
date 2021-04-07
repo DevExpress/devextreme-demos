@@ -1,5 +1,5 @@
 <template>
-  <div id="productList">
+  <div id="product-list">
     <h1>Product List</h1>
 
     <ul>
@@ -47,23 +47,23 @@ export default {
 };
 </script>
 <style>
-#productList {
+#product-list {
   padding: 10px;
 }
 
-#productList ul {
+#product-list ul {
   text-align: center;
   list-style-type: none;
   margin: 20px 0;
 }
 
-#productList ul li {
+#product-list ul li {
   display: inline-block;
   width: 160px;
   margin: 10px;
 }
 
-#productList ul li img {
+#product-list ul li img {
   width: 100px;
 }
 
