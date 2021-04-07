@@ -31,7 +31,7 @@ DemoApp.controller('DemoController', function DemoController($scope) {
         }
     };
     $scope.showPageSizesOptions = {
-        text: "Show Page Sizes Selector",
+        text: "Show Page Size Selector",
         value: true,
         onValueChanged: function(data) {
             $scope.dataGrid.option("pager.showPageSizeSelector", data.value);

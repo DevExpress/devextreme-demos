@@ -27,7 +27,7 @@ $(function(){
         }
     });
     $("#showPageSizes").dxCheckBox({
-        text: "Show Page Sizes Selector",
+        text: "Show Page Size Selector",
         value: true,
         onValueChanged: function(data) {
             dataGrid.option("pager.showPageSizeSelector", data.value);

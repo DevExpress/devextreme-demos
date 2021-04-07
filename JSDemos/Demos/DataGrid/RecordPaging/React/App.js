@@ -64,7 +64,7 @@ class App extends React.Component {
             <div className='option'>
               <CheckBox
                 id='showPageSizes'
-                text='Show Page Sizes Selector'
+                text='Show Page Size Selector'
                 value={this.state.showPageSizeSelector}
                 onValueChange={this.showPageSizeSelectorChange} />
             </div>

@@ -30,7 +30,7 @@
         <div class="option">
           <DxCheckBox
             id="showPageSizes"
-            text="Show Page Sizes Selector"
+            text="Show Page Size Selector"
             v-model:value="showPageSizeSelector"
           />
         </div>
