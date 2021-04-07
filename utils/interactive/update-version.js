@@ -10,9 +10,8 @@ const currentVersion = require('../../package.json').version;
 const getUpdateMinor = () => {
     const versionInfo = semver.parse(currentVersion);
     versionInfo.patch += 1;
-    
-    return versionInfo.version;
-}
+    return versionInfo.format();
+};
 
 const getUpdateMajor = () => {
     const versionInfo = semver.parse(currentVersion);
@@ -25,60 +24,60 @@ const getUpdateMajor = () => {
     }
     versionInfo.patch = 0;
 
-    return versionInfo.version;
-}
+    return versionInfo.format();
+};
 
-const replace = (filePath, find, oldVersion, newVersion) => {
+const replace = (filePath, find, newVersion) => {
     const fullPath = path.join(__dirname, filePath);
     if(!fs.existsSync(fullPath)) {
         throw new Error(`File not exist: ${fullPath}`);
     }
 
-    const oldVersionReg = `${find}${oldVersion}`;
-    const content = fs.readFileSync(fullPath);
+    const versionReg = '(?<version>\\d{2}\.(1|2)(?<patch>\\.\\d+)?(?<next>-next)?)';
+    const oldVersionReg = `${find}${versionReg}`;
+    let content = fs.readFileSync(fullPath, 'utf8');
 
-    const foundContent = content.match(oldVersionReg);
-    if(foundContent === null) {
-        throw new Error(`Not found: ${oldVersionReg}`);
+    const matchContent = content.match(oldVersionReg);
+    if(matchContent === null) {
+        throw new Error(`Not found: ${find}`);
     }
+    console.log(newVersion);
 
-    const versionReg = /d{2}\.(1|2)(\.\d+)?(?<next>-next)?/;
-    const groups = foundContent.match(versionReg).groups;
-
-    if(groups.next !== undefined) {
+    if(matchContent.groups.patch === undefined) {
         const newVersionInfo = semver.parse(newVersion);
-        newVersion = `${newVersionInfo.major}.${newVersionInfo.minor}-next`;
+        newVersion = matchContent.groups.next === undefined
+            ? `${newVersionInfo.major}.${newVersionInfo.minor}`
+            : `${newVersionInfo.major}.${newVersionInfo.minor}-next`;
     }
 
-    const newVersionReg = `${find}${newVersion}`;
-    content = content.replace(oldVersionReg, newVersionReg);
+    content = content.replace(`${find}${matchContent.groups.version}`, `${find}${newVersion}`);
 
     fs.writeFileSync(fullPath, content);
-}
+};
 
-const mainRoutine = () => {
-    const versionChoise = prompts.askVersionUpdate();
-    const newVersion = versionChoise.command === 'minor'
+const mainRoutine = async() => {
+    const versionChoice = await prompts.askVersionUpdate();
+    const newVersion = versionChoice.command === 'minor'
         ? getUpdateMinor()
         : getUpdateMajor();
 
     replace(
         '../../NetCoreDemos/DevExtreme.NETCore.Demos.csproj',
         'Include="DevExtreme.AspNet.Core" Version="',
-        currentVersion, newVersion
+        newVersion
     );
 
     replace(
         '../../package.json',
         '"version": "',
-        currentVersion, newVersion
+        newVersion
     );
 
-    if(versionChoise.command === 'major') {
+    if(versionChoice.command === 'major') {
         replace(
             '../../package.json',
             '"devextreme": "',
-            currentVersion, newVersion
+            newVersion
         );
 
         ['angular', 'react', 'vue'].forEach(framework => {
@@ -87,10 +86,10 @@ const mainRoutine = () => {
             replace(
                 '../../package.json',
                 `"${dxFramework}": "`,
-                currentVersion, newVersion
+                newVersion
             );
         });
     }
-}
+};
 
 (async() => await mainRoutine())();

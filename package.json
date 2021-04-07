@@ -94,6 +94,7 @@
         "link-repos": "node utils/interactive/link-repos.js",
         "create-config": "node utils/internal/create-config.js",
         "launch-demo": "node utils/interactive/launch-demo.js",
+        "update-version": "node utils/interactive/update-version.js",
         "prepare-js": "gulp js",
         "prepare-mvc": "gulp mvc",
         "prepare-all": "npm run prepare-js && npm run prepare-mvc",
