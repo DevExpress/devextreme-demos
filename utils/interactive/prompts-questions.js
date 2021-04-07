@@ -223,6 +223,18 @@ const askRepositoryPath = async(repositoryName) => {
     }, { onCancel });
 };
 
+const askVersionUpdate = async() => {
+    return prompts({
+        type: 'select',
+        name: 'command',
+        message: 'Choice update version',
+        choices: [
+            { title: 'Update minor version (etc x.x.3 -> x.x.4)', value: 'minor' },
+            { title: 'Update major version (etc 21.1.x -> 21.2.0 -> 22.1.0)', value: 'major'  }
+        ]
+    }, { onCancel });
+}
+
 module.exports = {
     getCategoryQuestions,
     getGroupQuestions,
@@ -241,5 +253,6 @@ module.exports = {
     getApproachesFoldersQuestions,
     getDemoToUpdateQuestions,
     getNewOrExistingQuestions,
-    askLinkRepositories
+    askLinkRepositories,
+    askVersionUpdate
 };
