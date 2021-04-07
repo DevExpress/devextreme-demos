@@ -16,6 +16,7 @@ if(!/localhost/.test(document.location.host)) {
 })
 export class AppComponent {
     dataSource: Employee[];
+    readonly allowedPageSizes = [5, 10, 'all'];
     readonly displayModes = ["full", "compact"];
     displayMode = "full";
     showPageSizeSelector = true;

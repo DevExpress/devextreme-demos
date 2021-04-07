@@ -6,6 +6,7 @@ import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
 
 const displayModes = ['full', 'compact'];
+const allowedPageSizes = [5, 10, 'all'];
 class App extends React.Component {
   displayModeChange = (value) => {
     this.setState({ ...this.state, displayMode: value });
@@ -43,7 +44,7 @@ class App extends React.Component {
           <Paging defaultPageSize={10} />
           <Pager
             visible={true}
-            allowedPageSizes={[5, 10, 'all']}
+            allowedPageSizes={allowedPageSizes}
             displayMode={this.state.displayMode}
             showPageSizeSelector={this.state.showPageSizeSelector}
             showInfo={this.state.showInfo}
