@@ -31,13 +31,16 @@ export class AppComponent {
         });
     }
     contentReadyHandler(e) {
-        // preselect some shapes
-        var items = e.component.getItems().filter(function(item) {
-            return item.itemType === "shape" && (item.text === "Greta Sims" || item.text === "Marcus Orbison");
+        var diagram = e.component;
+        // preselect some shape
+        var items = diagram.getItems().filter(function(item) {
+            return item.itemType === "shape" && (item.text === "Greta Sims");
         });
-        e.component.setSelectedItems(items);
-        e.component.scrollToItems(items);
-        e.component.focus();
+        if(items.length > 0) {
+            diagram.setSelectedItems(items);
+            diagram.scrollToItem(items[0]);
+            diagram.focus();
+        }
     }
     selectionChangedHandler(e) {
         this.selectedItems = e.items.filter(item => item.itemType === "shape");
