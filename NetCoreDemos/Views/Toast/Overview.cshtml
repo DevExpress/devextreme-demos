@@ -6,7 +6,7 @@
         @foreach(var product in Model) {
             <li>
                 <img src="@product.ImageSrc" />
-                <div id="name">@product.Name</div>
+                <div>@product.Name</div>
                 @(Html.DevExtreme().CheckBox()
                     .Text("Available")
                     .OnValueChanged(@<text>
