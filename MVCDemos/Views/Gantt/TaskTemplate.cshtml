@@ -1,0 +1,99 @@
+﻿@using DevExtreme.MVC.Demos.Models.SampleData
+@using DevExtreme.MVC.Demos.Models.Gantt
+
+@(Html.DevExtreme().Gantt<Task>()
+    .ID("gantt")
+    .TaskTitlePosition(GanttTaskTitlePosition.Outside)
+    .ScaleType(GanttScaleType.Days)
+    .Tasks(t => t
+        .DataSource(ds => ds.Array().Data(SampleData.GanttTasksRequirements).Key("ID"))
+        .KeyExpr("ID")
+        .TitleExpr("Title")
+        .ParentIdExpr("ParentId")
+        .StartExpr("Start")
+        .EndExpr("End")
+        .ProgressExpr("Progress")
+    )
+    .Dependencies(d => d
+        .DataSource(ds => ds.Array().Data(SampleData.GanttDependenciesRequirements).Key("ID"))
+        .KeyExpr("ID")
+        .PredecessorIdExpr("PredecessorId")
+        .SuccessorIdExpr("SuccessorId")
+        .TypeExpr("Type")
+    )
+    .Resources(r => r
+        .DataSource(ds => ds.Array().Data(SampleData.GanttResourcesRequirements).Key("ID"))
+        .KeyExpr("ID")
+        .TextExpr("Text")
+    )
+    .ResourceAssignments(ra => ra
+        .DataSource(ds => ds.Array().Data(SampleData.GanttResourceAssignmentsRequirements).Key("ID"))
+        .KeyExpr("ID")
+        .TaskIdExpr("TaskId")
+        .ResourceIdExpr("ResourceId")
+    )
+    .Editing(e => e.Enabled(false))
+    .Columns(columns => {
+        columns.AddFor(m => m.Title)
+            .Caption("Subject")
+            .Width(200);
+        columns.AddFor(m => m.Start)
+            .Caption("Start Date")
+            .Width(50);
+        columns.AddFor(m => m.End)
+            .Caption("End Date")
+            .Width(50);
+    })
+    .TaskListWidth(300)
+    .TaskContentTemplate(new JS("getTaskContentTemplate"))
+)
+
+<script>
+    function getImagePath(taskId) {
+        var imgPath = "/Content/images/employees/";
+        var img = taskId < 10 ? "0" + taskId : taskId;
+        img = imgPath + img + ".png";
+        return img;
+    }
+
+    function getTaskContentTemplate(item, container) {
+        var resource = item.taskResources[0];
+        var img = getImagePath(item.taskData.ID);
+        var color = item.taskData.ID % 6;
+        var taskWidth = item.taskSize.width + "px;";
+        var $customContainer = $(document.createElement("div"))
+            .addClass("custom-task")
+            .attr("style", "width:" + taskWidth)
+            .addClass("custom-task-color-" + color);
+        var $imgWrapper = $(document.createElement("div"))
+            .addClass("custom-task-img-wrapper")
+            .appendTo($customContainer);
+        $(document.createElement("img"))
+            .addClass("custom-task-img")
+            .attr({
+                "src": resource ? img : "unknown.png",
+                "alt": "imageAlt"
+            })
+            .appendTo($imgWrapper);
+
+        var $wrapper = $(document.createElement("div"))
+            .addClass("custom-task-wrapper")
+            .appendTo($customContainer);
+
+        $(document.createElement("div"))
+            .addClass("custom-task-title")
+            .text(item.taskData.Title)
+            .appendTo($wrapper);
+        $(document.createElement("div"))
+            .addClass("custom-task-row")
+            .text(resource ? resource.text : "")
+            .appendTo($wrapper);
+
+        $(document.createElement("div"))
+            .addClass("custom-task-progress")
+            .attr("style", "width:" + (parseFloat(item.taskData.Progress)) + "%;")
+            .appendTo($customContainer);
+
+        return $customContainer;
+    }
+</script>

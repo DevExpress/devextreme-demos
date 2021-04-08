@@ -27,9 +27,11 @@ export default {
     return {
       dataSource: generateAppointments(),
       currentDate: new Date(2021, 1, 2),
-      views: ['workWeek', 'timelineWorkWeek'],
+      views: ['workWeek', 'timelineWorkWeek', 'month'],
       currentView: 'timelineWorkWeek',
-      scrolling: { mode: 'virtual', orientation: 'both' },
+      scrolling: {
+        mode: 'virtual'
+      },
       groups: ['humanId'],
       resources: [{
         fieldExpr: 'humanId',
