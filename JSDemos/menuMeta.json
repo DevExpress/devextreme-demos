@@ -100,10 +100,10 @@
             "Title": "Record Paging",
             "Name": "RecordPaging",
             "Widget": "DataGrid",
+            "Badge": "Updated",
             "MvcAdditionalFiles": [
-              "/Controllers/ApiControllers/DataGridCustomersController.cs",
-              "/Models/Customer.cs",
-              "/Models/SampleData/Customers.cs"
+              "/Controllers/ApiControllers/DataGridScrollingController.cs",
+              "/Models/User.cs"
             ],
             "DemoType": "Web"
           },
@@ -331,7 +331,7 @@
             ]
           },
           {
-            "Title": "Edit State Management (CTP)",
+            "Title": "Edit State Management",
             "Name": "EditStateManagement",
             "DocUrl": "",
             "Widget": "DataGrid",
@@ -437,46 +437,48 @@
       {
         "Name": "Row Drag & Drop",
         "Equivalents": "",
-        "Demos": [{
-          "Title": "Local Reordering",
-          "Name": "LocalReordering",
-          "Widget": "DataGrid",
-          "DemoType": "Web",
-          "MvcAdditionalFiles": [
-            "/Scripts/data/localReordering.js",
-            "/Models/RowReorderingTask.cs"
-          ]
-        },
-        {
-          "Title": "Remote Reordering",
-          "Name": "RemoteReordering",
-          "Badge": "Updated",
-          "Widget": "DataGrid",
-          "DemoType": "Web",
-          "Modules": "devextreme-aspnet-data-nojquery",
-          "MvcAdditionalFiles": [
-            "/Controllers/ApiControllers/DataGridRowReorderingController.cs",
-            "/Models/RowReorderingTask.cs",
-            "/Models/SampleData/RowReorderingTasks.cs",
-            "/Models/DataGrid/InMemoryRowReorderingTasksDataContext.cs"
-          ]
-        },
-        {
-          "Title": "Drag & Drop Between Two Grids",
-          "Name": "DnDBetweenGrids",
-          "Widget": "DataGrid",
-          "DemoType": "Web",
-          "Modules": "devextreme-aspnet-data-nojquery",
-          "Equivalents": "Drag and Drop Between Two Grids",
-          "MvcAdditionalFiles": [
-            "/Views/DataGrid/DnDBetweenGridsPartial.cshtml",
-            "/Controllers/ApiControllers/DnDBetweenGridsController.cs",
-            "/Models/RowReorderingTask.cs",
-            "/Models/SampleData/RowReorderingTasks.cs",
-            "/Models/DataGrid/InMemoryRowReorderingTasksDataContext.cs",
-	     "/Scripts/data/priorities.js"
-          ]
-        }]
+        "Demos": [
+          {
+            "Title": "Local Reordering",
+            "Name": "LocalReordering",
+            "Widget": "DataGrid",
+            "DemoType": "Web",
+            "MvcAdditionalFiles": [
+              "/Scripts/data/localReordering.js",
+              "/Models/RowReorderingTask.cs"
+            ]
+          },
+          {
+            "Title": "Remote Reordering",
+            "Name": "RemoteReordering",
+            "Badge": "Updated",
+            "Widget": "DataGrid",
+            "DemoType": "Web",
+            "Modules": "devextreme-aspnet-data-nojquery",
+            "MvcAdditionalFiles": [
+              "/Controllers/ApiControllers/DataGridRowReorderingController.cs",
+              "/Models/RowReorderingTask.cs",
+              "/Models/SampleData/RowReorderingTasks.cs",
+              "/Models/DataGrid/InMemoryRowReorderingTasksDataContext.cs"
+            ]
+          },
+          {
+            "Title": "Drag & Drop Between Two Grids",
+            "Name": "DnDBetweenGrids",
+            "Widget": "DataGrid",
+            "DemoType": "Web",
+            "Modules": "devextreme-aspnet-data-nojquery",
+            "Equivalents": "Drag and Drop Between Two Grids",
+            "MvcAdditionalFiles": [
+              "/Views/DataGrid/DnDBetweenGridsPartial.cshtml",
+              "/Controllers/ApiControllers/DnDBetweenGridsController.cs",
+              "/Models/RowReorderingTask.cs",
+              "/Models/SampleData/RowReorderingTasks.cs",
+              "/Models/DataGrid/InMemoryRowReorderingTasksDataContext.cs",
+              "/Scripts/data/priorities.js"
+            ]
+          }
+        ]
       },
       {
         "Name": "Selection",
@@ -810,7 +812,7 @@
           {
             "Title": "Overview",
             "Name": "ExportToPDF",
-            "Badge": "New",
+            "Badge": "Updated",
             "Widget": "DataGrid",
             "Modules": "jspdf&jspdf-autotable",
             "MvcAdditionalFiles": [
@@ -1128,7 +1130,6 @@
       {
         "Name": "Export to Excel",
         "Equivalents": "",
-        "Badge": "New",
         "Demos": [
           {
             "Title": "Overview",
@@ -1253,7 +1254,6 @@
           {
             "Title": "Multiple Sorting",
             "Name": "MultipleSorting",
-            "DocUrl": "Guide/UI_Components/TreeList/Sorting/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
@@ -1781,8 +1781,7 @@
             "Badge": "New",
             "Name": "HorizontalVirtualScrolling",
             "Widget": "Scheduler",
-            "MvcAdditionalFiles": [
-            ],
+            "MvcAdditionalFiles": [],
             "DemoType": "Web"
           },
           {
@@ -1790,8 +1789,7 @@
             "Badge": "Updated",
             "Name": "VerticalVirtualScrolling",
             "Widget": "Scheduler",
-            "MvcAdditionalFiles": [
-            ],
+            "MvcAdditionalFiles": [],
             "DemoType": "Web"
           }
         ]
@@ -1930,7 +1928,7 @@
     ]
   },
   {
-    "Name": "Html Editor (CTP)",
+    "Name": "Html Editor",
     "Equivalents": "dxHtmlEditor, dx-htmleditor",
     "Groups": [
       {
@@ -1942,8 +1940,7 @@
             "Name": "Overview",
             "DocUrl": "Guide/UI_Components/HtmlEditor/Overview/",
             "Widget": "HtmlEditor",
-            "DemoType": "Web",
-            "Badge": "Updated"
+            "DemoType": "Web"
           }
         ]
       },
@@ -2001,8 +1998,7 @@
             "MvcDescription": "",
             "NetCoreDescription": "",
             "MvcAdditionalFiles": [],
-            "DemoType": "Web",
-            "Badge": "New"
+            "DemoType": "Web"
           }
         ]
       }
@@ -2188,7 +2184,7 @@
             "DemoType": "Web",
             "WideDemo": true,
             "Modules": "whatwg-fetch",
-            "Badge": "New"
+            "Badge": "Updated"
           },
           {
             "Title": "Editing Restrictions",
@@ -2197,7 +2193,7 @@
             "Widget": "Diagram",
             "DemoType": "Web",
             "WideDemo": true,
-            "Badge": "New"
+            "Badge": "Updated"
           }
         ]
       },
@@ -3376,7 +3372,21 @@
           {
             "Title": "Chart Appearance",
             "Name": "ChartAppearance",
-            "Badge": "Updated",
+            "Widget": "Gantt",
+            "DemoType": "Web",
+            "WideDemo": true,
+            "MvcAdditionalFiles": [
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
+            ]
+          },
+          {
+            "Title": "Task Template",
+            "Name": "TaskTemplate",
+            "Badge": "New",
             "Widget": "Gantt",
             "DemoType": "Web",
             "WideDemo": true,
@@ -3405,7 +3415,6 @@
           {
             "Title": "Context Menu",
             "Name": "ContextMenu",
-            "Badge": "New",
             "Widget": "Gantt",
             "DemoType": "Web",
             "WideDemo": true,
@@ -4794,7 +4803,7 @@
               {
                 "Title": "Physical File System",
                 "Name": "BindingToFileSystem",
-                "DocUrl": "ApiReference/UI_Components/dxFileManager/File_Providers/Remote/",
+                "DocUrl": "ApiReference/UI_Components/dxFileManager/File_System_Providers/Remote/",
                 "Widget": "FileManager",
                 "DemoType": "Web",
                 "MvcAdditionalFiles": [
@@ -4837,7 +4846,7 @@
               {
                 "Title": "Hierarchical JS Structure",
                 "Name": "BindingToHierarchicalStructure",
-                "DocUrl": "ApiReference/UI_Components/dxFileManager/File_Providers/Array/",
+                "DocUrl": "ApiReference/UI_Components/dxFileManager/File_System_Providers/Object/",
                 "Widget": "FileManager",
                 "DemoType": "Web",
                 "MvcAdditionalFiles": [
@@ -4916,7 +4925,6 @@
           {
             "Title": "Custom Drop Zone",
             "Name": "CustomDropzone",
-            "Badge": "New",
             "DocUrl": "",
             "Widget": "FileUploader"
           }
