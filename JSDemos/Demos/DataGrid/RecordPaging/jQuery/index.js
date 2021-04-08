@@ -18,7 +18,9 @@ $(function(){
     }).dxDataGrid("instance");
 
     $("#displayMode").dxSelectBox({
-        items: ["full", "compact"],
+        items: [{ text: "Display Mode 'full'", value: "full" }, { text: "Display Mode 'compact'", value: "compact" }],
+        displayExpr: "text",
+        valueExpr: "value",
         value: "full",
         onValueChanged: function(data) {
             dataGrid.option("pager.displayMode", data.value);
