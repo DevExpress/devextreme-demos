@@ -4498,7 +4498,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "/Documentation/Guide/UI_Components/Form/Getting_Started_with_Form/",
             "Widget": "Form",
             "MvcAdditionalFiles": [
               "/Models/Company.cs",
