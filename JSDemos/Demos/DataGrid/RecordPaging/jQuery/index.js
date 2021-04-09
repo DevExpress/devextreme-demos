@@ -1,6 +1,6 @@
 $(function(){
     const dataGrid = $("#gridContainer").dxDataGrid({
-        dataSource: generateData(10000),
+        dataSource: generateData(100000),
         showBorders: true,
         scrolling: { 
             rowRenderingMode: 'virtual'
