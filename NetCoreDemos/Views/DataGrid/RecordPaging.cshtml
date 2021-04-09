@@ -20,7 +20,9 @@
             <span class="option-caption">Display Mode</span>
                 @(Html.DevExtreme().SelectBox()
                     .ID("displayMode")
-                    .Items(new [] { "full", "compact" })
+                    .DataSource(new[] { new { text= "Display Mode 'full'", value= "full" }, new { text= "Display Mode 'compact'", value= "compact" } })
+                    .DisplayExpr("text")
+                    .ValueExpr("value")
                     .Value("full")
                     .OnValueChanged(@<text>
                         function(data) {
