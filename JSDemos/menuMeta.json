@@ -1778,7 +1778,7 @@
         "Demos": [
           {
             "Title": "Virtual Scrolling",
-            "Badge": "New",
+            "Badge": "Updated",
             "Name": "VirtualScrolling",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [],
