@@ -1,9 +1,15 @@
-To enable the row editing mode, set the **editing**.[mode](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/editing/#mode) property to *"row"*.
+The TreeList allows users to edit data in multiple modes. This demo shows the *"row"* edit mode. To start editing any row, click Edit in it. Only one row can be in the edit state at a time.
 
-All edit operations are deactivated in the default configuration. To activate them, set the [allowAdding](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/editing/#allowAdding), [allowUpdating](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/editing/#allowUpdating), and [allowDeleting](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/editing/#allowDeleting) properties of the **editing** object to **true**. This will create the edit column with buttons for each allowed operation.
+To enable row edit mode, set the [mode](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/editing/#mode) property to *"row"* and enable the [editing](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/editing/#mode) object's [allowUpdating](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/editing/#allowUpdating), [allowAdding](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/editing/#allowAdding), and [allowDeleting](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/editing/#allowDeleting) properties to allow edit operations.
 
 To customize the edit column, declare a column of the buttons type and specify the button names as shown in this demo. See the following help topic for more details on the edit column customization: [Customize the Edit Column](/Documentation/Guide/UI_Components/TreeList/Columns/Column_Types/Command_Columns/#Customize_the_Edit_Column).
 
-Each edit operation raises events. The [onInitNewRow](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#onInitNewRow) handler populates an added row with data. In this demo, this handler assigns the CEO's `ID` to the `Head` field of a newly created row. Use the [onEditorPreparing](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#onEditorPreparing) handler to customize a cell's editor. In this demo, we use this handler to disable an editor for the `Head` field when users edit the row with the CEO.
+This demo also illustrates the following event handlers:
+
+- [onInitNewRow](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#onInitNewRow)        
+Populates cells of a new row with default values. In this demo, **onInitNewRow** sets John Heart as Head for new rows.
+
+- [onEditorPreparing](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#onEditorPreparing)         
+Customizes cell editors. In this demo, this handler disallows users to edit the Head value of John Heart.
 
 Refer to the following help topic to see the full list of the events raised by editing: [Editing Events](/Documentation/Guide/UI_Components/TreeList/Editing/#Events).
