@@ -7,17 +7,12 @@ $(function () {
         dataSource: appointments,
         views: [    
             {
-                type: 'day',
-                name: '3 days',
-                intervalCount: 3,
-                groupOrientation: 'horizontal'
-            },
-            {
-                type: 'workWeek',
+                type: 'timelineWorkWeek',
+                name: 'Timeline',
                 groupOrientation: 'vertical'
             },
             {
-                type: 'timelineWorkWeek',
+                type: 'workWeek',
                 groupOrientation: 'vertical'
             },
             {
@@ -25,7 +20,7 @@ $(function () {
                 groupOrientation: 'horizontal'
             }
         ],
-        currentView: "day",
+        currentView: "timelineWorkWeek",
         firstDayOfWeek: 0,
         startDayHour: 8,
         endDayHour: 20,

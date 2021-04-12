@@ -9,18 +9,13 @@ import {
 const currentDate = new Date(2021, 1, 2);
 const views = [
   {
-      type: 'day',
-      name: '3 days',
-      intervalCount: 3,
-      groupOrientation: 'horizontal'
+    type: 'timelineWorkWeek',
+    name: 'Timeline',
+    groupOrientation: 'vertical'
   },
   {
-      type: 'workWeek',
-      groupOrientation: 'vertical'
-  },
-  {
-      type: 'timelineWorkWeek',
-      groupOrientation: 'vertical'
+    type: 'workWeek',
+    groupOrientation: 'vertical'
   },
   {
       type: 'month',
@@ -41,7 +36,7 @@ class App extends React.Component {
         dataSource={appointments}
         height={600}
         views={views}
-        defaultCurrentView="day"
+        defaultCurrentView="timelineWorkWeek"
         defaultCurrentDate={currentDate}
         firstDayOfWeek={0}
         startDayHour={8}

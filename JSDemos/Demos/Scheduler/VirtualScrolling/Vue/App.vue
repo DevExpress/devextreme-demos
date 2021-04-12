@@ -29,17 +29,12 @@ export default {
       currentDate: new Date(2021, 1, 2),
       views: [
         {
-          type: 'day',
-          name: '3 days',
-          intervalCount: 3,
-          groupOrientation: 'horizontal'
-        },
-        {
-          type: 'workWeek',
+          type: 'timelineWorkWeek',
+          name: 'Timeline',
           groupOrientation: 'vertical'
         },
         {
-          type: 'timelineWorkWeek',
+          type: 'workWeek',
           groupOrientation: 'vertical'
         },
         {
@@ -47,7 +42,7 @@ export default {
           groupOrientation: 'horizontal'
         }
       ],
-      currentView: 'day',
+      currentView: 'timelineWorkWeek',
       scrolling: {
         mode: 'virtual'
       },
