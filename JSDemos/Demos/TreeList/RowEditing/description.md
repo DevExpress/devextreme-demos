@@ -13,4 +13,4 @@ Populates cells of a new row with default values. In this demo, **onInitNewRow**
 - [onEditorPreparing](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#onEditorPreparing)         
 Customizes cell editors. In this demo, this handler disallows users to edit the Head value of John Heart.
 
-Refer to the following help topic to see the full list of the events raised by edit operations: [Editing Events](/Documentation/Guide/UI_Components/TreeList/Editing/#Events).
+Refer to the following help topic to see the full list of the events that edit operations raise: [Editing Events](/Documentation/Guide/UI_Components/TreeList/Editing/#Events).
