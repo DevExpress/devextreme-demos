@@ -413,12 +413,12 @@ function generateAppointments() {
   var resourcesAmount = resources.length;
   for (var resourceId = 0; resourceId < resourcesAmount; resourceId += increment) {
 
-    if (++increment === 4) {
+    if (++increment === 3) {
       increment = 1;
     }
 
     dataSet.forEach(function (item) {
-      var humanId = (item.humanId + resourceId) % resourcesAmount;
+      var humanId = (item.humanId + resourceId + item.humanId) % resourcesAmount;
       data.push({
         text: item.text,
         startDate: item.startDate,

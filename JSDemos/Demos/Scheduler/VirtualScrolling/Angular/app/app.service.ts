@@ -433,12 +433,12 @@ export class Service {
 
         for (let resourceId = 0; resourceId < resourcesAmount; resourceId += increment) {
 
-            if (++increment === 4) {
+            if (++increment === 3) {
                 increment = 1;
             }
 
             dataSet.forEach(function(item) {
-                const humanId = (item.humanId + resourceId) % resourcesAmount;
+                const humanId = (item.humanId + resourceId + item.humanId) % resourcesAmount;
                 data.push({
                     text: item.text,
                     startDate: item.startDate,
