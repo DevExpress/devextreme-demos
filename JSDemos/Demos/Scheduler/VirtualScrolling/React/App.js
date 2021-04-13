@@ -18,8 +18,8 @@ const views = [
     groupOrientation: 'vertical'
   },
   {
-      type: 'month',
-      groupOrientation: 'horizontal'
+    type: 'month',
+    groupOrientation: 'horizontal'
   }
 ];
 const scrolling = { mode: 'virtual' };
