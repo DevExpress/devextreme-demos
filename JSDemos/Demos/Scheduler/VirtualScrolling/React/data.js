@@ -407,7 +407,7 @@ const dataSet = [{
   humanId: 1
 }];
 
-function generateAppointments() {
+export function generateAppointments() {
   const data = [];
   const resourcesAmount = resources.length;
   let increment = 1;
