@@ -1232,7 +1232,6 @@
             "Title": "Web API Service",
             "Name": "WebAPIService",
             "Equivalents": "webapi",
-            "DocUrl": "Guide/Data_Binding/Specify_a_Data_Source/Custom_Data_Sources/",
             "Widget": "TreeList",
             "Modules": "devextreme-aspnet-data-nojquery",
             "MvcAdditionalFiles": [
@@ -1998,7 +1997,6 @@
   },
   {
     "Name": "Diagram",
-    "Badge": "New",
     "Equivalents": "dxDiagram, dx-diagram, graph, flow, process, orgchart",
     "Groups": [
       {
@@ -2136,8 +2134,7 @@
             "DocUrl": "",
             "Widget": "Diagram",
             "DemoType": "Web",
-            "WideDemo": true,
-            "Badge": "New"
+            "WideDemo": true
           }
         ]
       },
@@ -2200,8 +2197,7 @@
             "Widget": "Diagram",
             "DemoType": "Web",
             "WideDemo": true,
-            "Modules": "whatwg-fetch",
-            "Badge": "Updated"
+            "Modules": "whatwg-fetch"
           }
         ]
       },
