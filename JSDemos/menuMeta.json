@@ -2005,7 +2005,6 @@
   },
   {
     "Name": "Diagram",
-    "Badge": "New",
     "Equivalents": "dxDiagram, dx-diagram, graph, flow, process, orgchart",
     "Groups": [
       {
@@ -2143,8 +2142,7 @@
             "DocUrl": "",
             "Widget": "Diagram",
             "DemoType": "Web",
-            "WideDemo": true,
-            "Badge": "New"
+            "WideDemo": true
           }
         ]
       },
@@ -2207,8 +2205,7 @@
             "Widget": "Diagram",
             "DemoType": "Web",
             "WideDemo": true,
-            "Modules": "whatwg-fetch",
-            "Badge": "Updated"
+            "Modules": "whatwg-fetch"
           }
         ]
       },
@@ -4497,7 +4494,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/Form/Overview/",
             "Widget": "Form",
             "MvcAdditionalFiles": [
               "/Models/Company.cs",
