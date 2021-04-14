@@ -647,6 +647,7 @@
     <Content Include="Content\DemosStyles\DataGrid\EditStateManagement.css" />
     <Content Include="Content\DemosStyles\DataGrid\LocalReordering.css" />
     <Content Include="Content\DemosStyles\DataGrid\ExportToPDF.css" />
+    <Content Include="Content\DemosStyles\DataGrid\RecordPaging.css" />
     <Content Include="Content\DemosStyles\Diagram\AdvancedDataBinding.css" />
     <Content Include="Content\DemosStyles\Diagram\Containers.css" />
     <Content Include="Content\DemosStyles\Diagram\CustomShapesWithIcons.css" />
