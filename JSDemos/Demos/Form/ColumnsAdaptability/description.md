@@ -1,4 +1,4 @@
-The Form component can use different layouts depending on the screen width. Click one of the buttons on the right from the demo title to switch between horizontal and vertical orientations. The number of columns in the layout can be specified in one of the following manners:
+The Form component can use different layouts depending on the screen width. Click one of the buttons on the right from the demo title to switch between horizontal and vertical orientations. You can determine the number of columns in the Form in one of the following manners:
 
 **Calculate the Number of Columns Automatically**         
 
@@ -18,4 +18,4 @@ In this case, screen sizes are classified into one of the following categories c
 
 1. Specify the [colCountByScreen](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#colCountByScreen) property to define how many columns the Form should contain depending on the available screen qualifiers. 
 
-In this demo, select the check box under the Form to enable this configuration.
+In this demo, mark the check box under the Form to enable this configuration.
