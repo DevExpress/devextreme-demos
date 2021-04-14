@@ -100,10 +100,10 @@
             "Title": "Record Paging",
             "Name": "RecordPaging",
             "Widget": "DataGrid",
+            "Badge": "Updated",
             "MvcAdditionalFiles": [
-              "/Controllers/ApiControllers/DataGridCustomersController.cs",
-              "/Models/Customer.cs",
-              "/Models/SampleData/Customers.cs"
+              "/Controllers/ApiControllers/DataGridScrollingController.cs",
+              "/Models/User.cs"
             ],
             "DemoType": "Web"
           },
@@ -437,46 +437,48 @@
       {
         "Name": "Row Drag & Drop",
         "Equivalents": "",
-        "Demos": [{
-          "Title": "Local Reordering",
-          "Name": "LocalReordering",
-          "Widget": "DataGrid",
-          "DemoType": "Web",
-          "MvcAdditionalFiles": [
-            "/Scripts/data/localReordering.js",
-            "/Models/RowReorderingTask.cs"
-          ]
-        },
-        {
-          "Title": "Remote Reordering",
-          "Name": "RemoteReordering",
-          "Badge": "Updated",
-          "Widget": "DataGrid",
-          "DemoType": "Web",
-          "Modules": "devextreme-aspnet-data-nojquery",
-          "MvcAdditionalFiles": [
-            "/Controllers/ApiControllers/DataGridRowReorderingController.cs",
-            "/Models/RowReorderingTask.cs",
-            "/Models/SampleData/RowReorderingTasks.cs",
-            "/Models/DataGrid/InMemoryRowReorderingTasksDataContext.cs"
-          ]
-        },
-        {
-          "Title": "Drag & Drop Between Two Grids",
-          "Name": "DnDBetweenGrids",
-          "Widget": "DataGrid",
-          "DemoType": "Web",
-          "Modules": "devextreme-aspnet-data-nojquery",
-          "Equivalents": "Drag and Drop Between Two Grids",
-          "MvcAdditionalFiles": [
-            "/Views/DataGrid/DnDBetweenGridsPartial.cshtml",
-            "/Controllers/ApiControllers/DnDBetweenGridsController.cs",
-            "/Models/RowReorderingTask.cs",
-            "/Models/SampleData/RowReorderingTasks.cs",
-            "/Models/DataGrid/InMemoryRowReorderingTasksDataContext.cs",
-	     "/Scripts/data/priorities.js"
-          ]
-        }]
+        "Demos": [
+          {
+            "Title": "Local Reordering",
+            "Name": "LocalReordering",
+            "Widget": "DataGrid",
+            "DemoType": "Web",
+            "MvcAdditionalFiles": [
+              "/Scripts/data/localReordering.js",
+              "/Models/RowReorderingTask.cs"
+            ]
+          },
+          {
+            "Title": "Remote Reordering",
+            "Name": "RemoteReordering",
+            "Badge": "Updated",
+            "Widget": "DataGrid",
+            "DemoType": "Web",
+            "Modules": "devextreme-aspnet-data-nojquery",
+            "MvcAdditionalFiles": [
+              "/Controllers/ApiControllers/DataGridRowReorderingController.cs",
+              "/Models/RowReorderingTask.cs",
+              "/Models/SampleData/RowReorderingTasks.cs",
+              "/Models/DataGrid/InMemoryRowReorderingTasksDataContext.cs"
+            ]
+          },
+          {
+            "Title": "Drag & Drop Between Two Grids",
+            "Name": "DnDBetweenGrids",
+            "Widget": "DataGrid",
+            "DemoType": "Web",
+            "Modules": "devextreme-aspnet-data-nojquery",
+            "Equivalents": "Drag and Drop Between Two Grids",
+            "MvcAdditionalFiles": [
+              "/Views/DataGrid/DnDBetweenGridsPartial.cshtml",
+              "/Controllers/ApiControllers/DnDBetweenGridsController.cs",
+              "/Models/RowReorderingTask.cs",
+              "/Models/SampleData/RowReorderingTasks.cs",
+              "/Models/DataGrid/InMemoryRowReorderingTasksDataContext.cs",
+              "/Scripts/data/priorities.js"
+            ]
+          }
+        ]
       },
       {
         "Name": "Selection",
@@ -1230,7 +1232,6 @@
             "Title": "Web API Service",
             "Name": "WebAPIService",
             "Equivalents": "webapi",
-            "DocUrl": "Guide/Data_Binding/Specify_a_Data_Source/Custom_Data_Sources/",
             "Widget": "TreeList",
             "Modules": "devextreme-aspnet-data-nojquery",
             "MvcAdditionalFiles": [
@@ -1775,21 +1776,11 @@
         "Equivalents": "",
         "Demos": [
           {
-            "Title": "Horizontal",
-            "Badge": "New",
-            "Name": "HorizontalVirtualScrolling",
-            "Widget": "Scheduler",
-            "MvcAdditionalFiles": [
-            ],
-            "DemoType": "Web"
-          },
-          {
-            "Title": "Vertical",
+            "Title": "Virtual Scrolling",
             "Badge": "Updated",
-            "Name": "VerticalVirtualScrolling",
+            "Name": "VirtualScrolling",
             "Widget": "Scheduler",
-            "MvcAdditionalFiles": [
-            ],
+            "MvcAdditionalFiles": [],
             "DemoType": "Web"
           }
         ]
@@ -2006,7 +1997,6 @@
   },
   {
     "Name": "Diagram",
-    "Badge": "New",
     "Equivalents": "dxDiagram, dx-diagram, graph, flow, process, orgchart",
     "Groups": [
       {
@@ -2144,8 +2134,7 @@
             "DocUrl": "",
             "Widget": "Diagram",
             "DemoType": "Web",
-            "WideDemo": true,
-            "Badge": "New"
+            "WideDemo": true
           }
         ]
       },
@@ -2208,8 +2197,7 @@
             "Widget": "Diagram",
             "DemoType": "Web",
             "WideDemo": true,
-            "Modules": "whatwg-fetch",
-            "Badge": "Updated"
+            "Modules": "whatwg-fetch"
           }
         ]
       },
@@ -4498,7 +4486,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/Form/Overview/",
             "Widget": "Form",
             "MvcAdditionalFiles": [
               "/Models/Company.cs",
