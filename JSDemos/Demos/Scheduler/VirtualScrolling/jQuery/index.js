@@ -20,7 +20,7 @@ $(function () {
                 groupOrientation: 'horizontal'
             }
         ],
-        currentView: "timelineWorkWeek",
+        currentView: 'timelineWorkWeek',
         firstDayOfWeek: 0,
         startDayHour: 8,
         endDayHour: 20,
@@ -29,9 +29,9 @@ $(function () {
             mode: 'virtual'
         },
         showAllDayPanel: false,
-        groups: ["humanId"],
+        groups: ['humanId'],
         resources: [{
-            fieldExpr: "humanId",
+            fieldExpr: 'humanId',
             allowMultiple: false,
             dataSource: resources
         }]
