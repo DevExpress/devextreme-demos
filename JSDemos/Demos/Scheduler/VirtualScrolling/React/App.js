@@ -2,7 +2,7 @@ import React from 'react';
 
 import Scheduler from 'devextreme-react/scheduler';
 import {
-  humans,
+  resources as resourcesData,
   generateAppointments
 } from './data.js';
 
@@ -25,7 +25,8 @@ const views = [
 const scrolling = { mode: 'virtual' };
 const resources = [{
   fieldExpr: 'humanId',
-  dataSource: humans
+  allowMultiple: false,
+  dataSource: resourcesData
 }];
 const groups = ['humanId'];
 const appointments = generateAppointments();
