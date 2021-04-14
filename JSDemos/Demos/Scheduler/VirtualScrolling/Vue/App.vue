@@ -17,7 +17,10 @@
 </template>
 <script>
 import DxScheduler from 'devextreme-vue/scheduler';
-import { humans, generateAppointments } from './data.js';
+import {
+  resources,
+  generateAppointments
+} from './data.js';
 
 export default {
   components: {
@@ -49,7 +52,8 @@ export default {
       groups: ['humanId'],
       resources: [{
         fieldExpr: 'humanId',
-        dataSource: humans
+        allowMultiple: false,
+        dataSource: resources
       }]
     };
   },
