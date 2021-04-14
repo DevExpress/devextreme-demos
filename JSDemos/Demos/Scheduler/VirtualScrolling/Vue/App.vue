@@ -52,7 +52,6 @@ export default {
       groups: ['humanId'],
       resources: [{
         fieldExpr: 'humanId',
-        allowMultiple: false,
         dataSource: resources
       }]
     };
