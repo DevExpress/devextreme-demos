@@ -7,31 +7,31 @@ $(function () {
         dataSource: appointments,
         views: [    
             {
-                type: 'timelineWorkWeek',
-                name: 'Timeline',
-                groupOrientation: 'vertical'
+                type: "timelineWorkWeek",
+                name: "Timeline",
+                groupOrientation: "vertical"
             },
             {
-                type: 'workWeek',
-                groupOrientation: 'vertical'
+                type: "workWeek",
+                groupOrientation: "vertical"
             },
             {
-                type: 'month',
-                groupOrientation: 'horizontal'
+                type: "month",
+                groupOrientation: "horizontal"
             }
         ],
-        currentView: 'timelineWorkWeek',
+        currentView: "timelineWorkWeek",
         firstDayOfWeek: 0,
         startDayHour: 8,
         endDayHour: 20,
         cellDuration: 60,
         scrolling: {
-            mode: 'virtual'
+            mode: "virtual"
         },
         showAllDayPanel: false,
-        groups: ['humanId'],
+        groups: ["humanId"],
         resources: [{
-            fieldExpr: 'humanId',
+            fieldExpr: "humanId",
             dataSource: resources
         }]
     });
