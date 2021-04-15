@@ -1323,7 +1323,6 @@
           {
             "Title": "Batch Editing",
             "Name": "BatchEditing",
-            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Batch_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
