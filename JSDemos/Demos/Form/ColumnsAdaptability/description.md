@@ -2,7 +2,7 @@ The Form component can use different layouts depending on the screen width. Clic
 
 **Calculate the Number of Columns Automatically**         
 
-To enable automatic calculation of the number of columns based on the screen width, follow these steps:
+To automatically calculate the number of columns based on the screen width, follow these steps:
 
 1. Assign *"auto"* to the [colCount](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#colCount) property to make the number of columns adapt to any screen size. 
 
