@@ -427,6 +427,7 @@
           {
             "Title": "Focused Row",
             "Name": "FocusedRow",
+            "DocUrl": "ApiReference/UI_Components/dxDataGrid/Configuration/#focusedRowEnabled",
             "Widget": "DataGrid",
             "DemoType": "Web",
             "Modules": "devextreme-aspnet-data-nojquery"
@@ -1387,6 +1388,7 @@
           {
             "Title": "Focused Row",
             "Name": "FocusedRow",
+            "DocUrl": "ApiReference/UI_Components/dxTreeList/Configuration/#focusedRowEnabled",
             "Widget": "TreeList",
             "DemoType": "Web",
             "Modules": "devextreme-aspnet-data-nojquery"
