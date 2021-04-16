@@ -11,6 +11,12 @@
         pager.ShowInfo(true);
         pager.ShowNavigationButtons(true);
     })
+    .CustomizeColumns(@<text>
+        function(columns) {
+            columns[0].width = 70;
+            columns[4].dataType = "date";
+        }
+    </text>)
     .DataSource(d => d.WebApi().Controller("DataGridScrolling").LoadAction("Get").Key("Id"))
 )
 <div class="options">

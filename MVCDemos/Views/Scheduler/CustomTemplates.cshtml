@@ -111,7 +111,7 @@
                 width: "100%",
                 type: "datetime",
                 onValueChanged: function(args) {
-                    startDate = args.value;
+                    startDate = new Date(args.value);
 
                     form.updateData("endDate", new Date(startDate.getTime() + 60 * 1000 * movie.Duration));
                 }
