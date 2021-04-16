@@ -25,7 +25,7 @@ The [TagBox](/Documentation/ApiReference/UI_Components/dxTagBox/) allows users t
   Customizes the TagBox placeholder.
 
 - [value](/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#value)  
-  Specifies items the TagBox displays.
+  Specifies items the TagBox currently displays.
 
 - [disabled](/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#disabled)  
   Defines whether the component responds to user interaction.
