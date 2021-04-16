@@ -2251,7 +2251,7 @@
             "Title": "Simple Array",
             "Name": "SimpleArray",
             "DocUrl": "Guide/Data_Binding/Specify_a_Data_Source/Local_Array/",
-            "Credits": "www.geohive.com",
+            "Credits": "www.datahub.io",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
               "/Scripts/data/populationData.js"
