@@ -2269,7 +2269,7 @@
             "Title": "Client-Side Data Processing",
             "Name": "ClientSideDataProcessing",
             "DocUrl": "Guide/Data_Binding/Specify_a_Data_Source/Custom_Data_Sources/",
-            "Credits": "weatherbase.com",
+            "Credits": "www.kaggle.com",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
               "/Scripts/data/palette.js",
