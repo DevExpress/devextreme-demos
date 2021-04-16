@@ -1287,7 +1287,6 @@
           {
             "Title": "Row Editing",
             "Name": "RowEditing",
-            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Row_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListEmployeesController.cs",
@@ -1339,7 +1338,6 @@
           {
             "Title": "Popup Editing",
             "Name": "PopupEditing",
-            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Popup_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListEmployeesController.cs",
