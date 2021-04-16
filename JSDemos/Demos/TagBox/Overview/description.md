@@ -4,22 +4,22 @@ The [TagBox](/Documentation/ApiReference/UI_Components/dxTagBox/) allows users t
   An array of items displayed by the TagBox.
 
 - [searchEnabled](/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#searchEnabled)  
-  Specifies whether the search is enabled
+  Specifies whether the search is enabled.
 
 - [showSelectionControls](/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#showSelectionControls)  
-  Defines whether selection controls are displayed
+  Defines whether to display the selection controls.
 
 - [applyValueMode](/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#applyValueMode)  
   Specifies whether selected values are applied instantly or when a user clicks the **OK** button.
 
 - [hideSelectedItems](/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#hideSelectedItems)  
-  Specifies whether items are removed from the drop-down list upon selection.
+  Specifies whether the selected items are removed from the drop-down list.
 
 - [multiline](/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#multiline)  
   Displays selected items on single or multiple lines.
 
 - [acceptCustomValue](/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#acceptCustomValue)  
-  Specifies whether users can enter custom values. Requires the [onCustomItemCreating](/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#onCustomItemCreating) implementation.
+  Specifies whether users can enter custom values. Requires that you also implement the [onCustomItemCreating](/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#onCustomItemCreating) handler.
 
 - [placeholder](/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#placeholder)  
   Customizes the TagBox placeholder.
@@ -28,7 +28,7 @@ The [TagBox](/Documentation/ApiReference/UI_Components/dxTagBox/) allows users t
   Specifies items the TagBox displays.
 
 - [disabled](/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#disabled)  
-  Defines whether the component resopnds to user interaction.
+  Defines whether the component responds to user interaction.
 
 - [dataSource](/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#dataSource)  
   Binds the TagBox to data. Unlike the **items** property, **dataSource** accepts the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) object that allows users to sort, filter, group, and shape data.
