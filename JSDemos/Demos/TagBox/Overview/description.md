@@ -31,6 +31,6 @@ The [TagBox](/Documentation/ApiReference/UI_Components/dxTagBox/) allows users t
   Defines whether the component responds to user interaction.
 
 - [dataSource](/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#dataSource)  
-  Binds the TagBox to data. Unlike the **items** property, **dataSource** accepts the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) object that allows users to sort, filter, group, and shape data.
+  Binds the TagBox to data. Unlike the **items** property, **dataSource** accepts the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) object that allows users to sort, filter, group, and shape data. Note that you cannot use **items** and **dataSource** simultaneously.
 - [itemTemplate](/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#itemTemplate)  
   Allows you to customize the text field and drop-down list items.
