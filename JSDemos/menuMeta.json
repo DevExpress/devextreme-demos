@@ -400,7 +400,6 @@
           {
             "Title": "Filtering API",
             "Name": "FilteringAPI",
-            "DocUrl": "Guide/UI_Components/DataGrid/Filtering_and_Searching/#API",
             "Widget": "DataGrid",
             "DemoType": "Web"
           },
@@ -1438,7 +1437,6 @@
           {
             "Title": "Using Search Panel",
             "Name": "UsingSearchPanel",
-            "DocUrl": "Guide/UI_Components/TreeList/Filtering_and_Searching/#Search_Panel",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
@@ -1451,7 +1449,6 @@
           {
             "Title": "Using Filter Row",
             "Name": "UsingFilterRow",
-            "DocUrl": "Guide/UI_Components/TreeList/Filtering_and_Searching/#Filter_Row",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1462,7 +1459,6 @@
           {
             "Title": "Using Header Filter",
             "Name": "UsingHeaderFilter",
-            "DocUrl": "Guide/UI_Components/TreeList/Filtering_and_Searching/#Header_Filter",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
