@@ -4370,7 +4370,7 @@
             "Name": "CustomTextEditorButtons",
             "Widget": "Common",
             "DemoType": "Web",
-            "Credits": "The USD/EUR rate is taken from https://www.x-rates.com/ and is relevant on 31 March 2019"
+            "Credits": "The USD/EUR rate is taken from www.wikipedia.org and is relevant on 14 April 2021"
           }
         ]
       },
