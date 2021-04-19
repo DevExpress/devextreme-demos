@@ -52,7 +52,8 @@ export default {
       groups: ['humanId'],
       resources: [{
         fieldExpr: 'humanId',
-        dataSource: resources
+        dataSource: resources,
+        label: 'Employee'
       }]
     };
   },

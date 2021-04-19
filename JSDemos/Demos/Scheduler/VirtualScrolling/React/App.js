@@ -27,7 +27,8 @@ const scrolling = { mode: 'virtual' };
 
 const resourcesData = [{
   fieldExpr: 'humanId',
-  dataSource: resources
+  dataSource: resources,
+  label: 'Employee'
 }];
 
 const groups = ['humanId'];
