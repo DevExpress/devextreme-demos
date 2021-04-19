@@ -408,7 +408,6 @@
             "Title": "Filter Panel",
             "Equivalents": "dxFilterBuilder, FilterBuilder, QueryBuilder, dxFilterPanel, FilterPanel",
             "Name": "FilterPanel",
-            "DocUrl": "ApiReference/UI_Components/dxDataGrid/Configuration/filterPanel/",
             "Widget": "DataGrid",
             "DemoType": "Web",
             "MvcAdditionalFiles": [
@@ -1474,7 +1473,6 @@
             "Title": "Filter Panel",
             "Equivalents": "dxFilterBuilder, FilterBuilder, QueryBuilder, dxFilterPanel, FilterPanel",
             "Name": "FilterPanel",
-            "DocUrl": "ApiReference/UI_Components/dxTreeList/Configuration/filterPanel/",
             "Widget": "TreeList",
             "DemoType": "Web",
             "MvcAdditionalFiles": [
