@@ -2364,7 +2364,7 @@
             "Title": "Step Area",
             "Name": "StepArea",
             "DocUrl": "Guide/UI_Components/Chart/Series_Types/Area_Series/",
-            "Credits": "www.nytimes.com",
+            "Credits": "www.wikipedia.org",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
               "/Models/SampleData/AustralianOlympicMedals.cs"
