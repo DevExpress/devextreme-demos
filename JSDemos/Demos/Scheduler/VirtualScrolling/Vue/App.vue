@@ -45,7 +45,7 @@ export default {
           groupOrientation: 'horizontal'
         }
       ],
-      currentView: 'timelineWorkWeek',
+      currentView: 'Timeline',
       scrolling: {
         mode: 'virtual'
       },

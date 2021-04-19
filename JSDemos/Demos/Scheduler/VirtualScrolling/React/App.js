@@ -40,7 +40,7 @@ class App extends React.Component {
         dataSource={appointments}
         height={600}
         views={views}
-        defaultCurrentView="timelineWorkWeek"
+        defaultCurrentView="Timeline"
         defaultCurrentDate={currentDate}
         firstDayOfWeek={0}
         startDayHour={8}

@@ -20,7 +20,7 @@ $(function () {
                 groupOrientation: "horizontal"
             }
         ],
-        currentView: "timelineWorkWeek",
+        currentView: "Timeline",
         firstDayOfWeek: 0,
         startDayHour: 8,
         endDayHour: 20,
