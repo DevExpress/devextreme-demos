@@ -1451,7 +1451,6 @@
           {
             "Title": "Using Filter Row",
             "Name": "UsingFilterRow",
-            "DocUrl": "Guide/UI_Components/TreeList/Filtering_and_Searching/#Filter_Row",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
