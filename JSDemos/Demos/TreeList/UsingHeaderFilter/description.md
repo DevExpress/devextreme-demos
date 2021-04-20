@@ -1,1 +1,7 @@
-This demo shows how to&nbsp;use the header filter for filtering data. The header filter contains a&nbsp;list of&nbsp;unique column values that you can select. To&nbsp;open this list, click the filter icon in&nbsp;a&nbsp;column header. Once you select a&nbsp;value from this list and click&nbsp;OK, the filter is&nbsp;applied, and the TreeList displays the full hierarchy down to&nbsp;matching rows, but not further.
+A header filter allows users to select column values from a predefined set and use the selection to filter rows. To enable this behavior, set **headerFilter**.[visible](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/headerFilter/#visible) to **true**. This feature can be combined with the [filter row](https://js.devexpress.com/Demos/WidgetsGallery/Demo/TreeList/UsingFilterRow).
+
+Once the header filter is enabled, a funnel icon is added to each column's header. To apply a filter, click this icon, choose value(s) and hit OK. You can use the **columns[]**.[headerFilter](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/headerFilter/) property to customize an individual filter. You can also disable it: for this, set **columns[]**.[allowHeaderFiltering](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#allowHeaderFiltering) to **false**.
+
+The default behavior is to display the matched rows and their ancestors. The [Filter Modes](https://js.devexpress.com/Demos/WidgetsGallery/Demo/TreeList/FilterModes) demo shows how to use other display modes.
+
+For details on header filters, see the [Header Filter](/Documentation/Guide/UI_Components/TreeList/Filtering_and_Searching/#Header_Filter) article.
