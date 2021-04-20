@@ -17,7 +17,10 @@
 </template>
 <script>
 import DxScheduler from 'devextreme-vue/scheduler';
-import { humans, generateAppointments } from './data.js';
+import {
+  resources,
+  generateAppointments
+} from './data.js';
 
 export default {
   components: {
@@ -42,14 +45,15 @@ export default {
           groupOrientation: 'horizontal'
         }
       ],
-      currentView: 'timelineWorkWeek',
+      currentView: 'Timeline',
       scrolling: {
         mode: 'virtual'
       },
       groups: ['humanId'],
       resources: [{
         fieldExpr: 'humanId',
-        dataSource: humans
+        dataSource: resources,
+        label: 'Employee'
       }]
     };
   },
