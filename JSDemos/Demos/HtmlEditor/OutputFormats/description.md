@@ -1,1 +1,3 @@
-Use the [valueType](/Documentation/ApiReference/UI_Components/dxHtmlEditor/Configuration/#valueType) property to set the output format to HTML or Markdown. Import the Markdown converter as specified in the **valueType** article if you are using Markdown. If you need to access the content of HtmlEditor, use the [value](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxHtmlEditor/Configuration/#value) property.
+Our HtmlEditor supports the HTML and Markdown output formats. To specify the format, use the [valueType] property. If you use Markdown, import the Markdown converter as described in the **valueType** article.
+
+The HtmlEditor stores the markup in the [value] property. In this demo, the value is displayed under the HtmlEditor. You can use the Html and Markdown buttons to switch between output formats.
