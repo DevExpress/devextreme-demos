@@ -36,21 +36,19 @@
     .Columns(columns => {
         columns.AddFor(m => m.Title)
             .Caption("Subject")
-            .Width(200);
+            .Width(300);
         columns.AddFor(m => m.Start)
-            .Caption("Start Date")
-            .Width(50);
+            .Caption("Start Date");
         columns.AddFor(m => m.End)
-            .Caption("End Date")
-            .Width(50);
+            .Caption("End Date");
     })
-    .TaskListWidth(300)
+    .TaskListWidth(500)
     .TaskContentTemplate(new JS("getTaskContentTemplate"))
 )
 
 <script>
     function getImagePath(taskId) {
-        var imgPath = "/Content/images/employees/";
+        var imgPath = "../../Content/images/employees/";
         var img = taskId < 10 ? "0" + taskId : taskId;
         img = imgPath + img + ".png";
         return img;
