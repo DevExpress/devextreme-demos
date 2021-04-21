@@ -156,7 +156,6 @@
             "Title": "Row Editing and Editing Events",
             "Name": "RowEditingAndEditingEvents",
             "Widget": "DataGrid",
-            "Badge": "Updated",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridStatesLookupController.cs",
               "/Controllers/ApiControllers/DataGridEmployeesController.cs",
@@ -322,7 +321,6 @@
             "Widget": "DataGrid",
             "DemoType": "Web",
             "Equivalents": "",
-            "Badge": "New",
             "Modules": "whatwg-fetch,devextreme-aspnet-data-nojquery",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridBatchUpdateWebApiController.cs",
@@ -337,7 +335,7 @@
             "Widget": "DataGrid",
             "DemoType": "Web",
             "Equivalents": "",
-            "Badge": "New",
+            "Badge": "Updated",
             "Modules": "whatwg-fetch,vuex",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridWebApiController.cs",
@@ -427,7 +425,6 @@
           {
             "Title": "Focused Row",
             "Name": "FocusedRow",
-            "DocUrl": "ApiReference/UI_Components/dxDataGrid/Configuration/#focusedRowEnabled",
             "Widget": "DataGrid",
             "DemoType": "Web",
             "Modules": "devextreme-aspnet-data-nojquery"
@@ -451,7 +448,6 @@
           {
             "Title": "Remote Reordering",
             "Name": "RemoteReordering",
-            "Badge": "Updated",
             "Widget": "DataGrid",
             "DemoType": "Web",
             "Modules": "devextreme-aspnet-data-nojquery",
@@ -1271,7 +1267,6 @@
           {
             "Title": "Paging",
             "Name": "Paging",
-            "DocUrl": "Guide/UI_Components/TreeList/Paging/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
@@ -1290,7 +1285,6 @@
           {
             "Title": "Row Editing",
             "Name": "RowEditing",
-            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Row_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListEmployeesController.cs",
@@ -1303,7 +1297,6 @@
           {
             "Title": "Cell Editing",
             "Name": "CellEditing",
-            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Cell_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
@@ -1342,7 +1335,6 @@
           {
             "Title": "Popup Editing",
             "Name": "PopupEditing",
-            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Popup_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListEmployeesController.cs",
@@ -1388,7 +1380,6 @@
           {
             "Title": "Focused Row",
             "Name": "FocusedRow",
-            "DocUrl": "ApiReference/UI_Components/dxTreeList/Configuration/#focusedRowEnabled",
             "Widget": "TreeList",
             "DemoType": "Web",
             "Modules": "devextreme-aspnet-data-nojquery"
@@ -1402,7 +1393,6 @@
           {
             "Title": "Single Row Selection",
             "Name": "SingleRowSelection",
-            "DocUrl": "Guide/UI_Components/TreeList/Selection/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1776,17 +1766,9 @@
         "Equivalents": "",
         "Demos": [
           {
-            "Title": "Horizontal",
-            "Badge": "New",
-            "Name": "HorizontalVirtualScrolling",
-            "Widget": "Scheduler",
-            "MvcAdditionalFiles": [],
-            "DemoType": "Web"
-          },
-          {
-            "Title": "Vertical",
+            "Title": "Virtual Scrolling",
             "Badge": "Updated",
-            "Name": "VerticalVirtualScrolling",
+            "Name": "VirtualScrolling",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [],
             "DemoType": "Web"
@@ -4503,20 +4485,17 @@
           {
             "Title": "Customize Item",
             "Name": "CustomizeItem",
-            "DocUrl": "Guide/UI_Components/Form/Configure_Simple_Items/#Create_a_Simple_Item",
             "Widget": "Form"
           },
           {
             "Title": "Grouped Fields",
             "Name": "GroupedFields",
-            "DocUrl": "Guide/UI_Components/Form/Organize_Simple_Items/",
             "Widget": "Form"
           },
           {
             "Title": "Columns Adaptability",
             "Equivalents": "adaptive",
             "Name": "ColumnsAdaptability",
-            "DocUrl": "Guide/UI_Components/Form/Organize_Simple_Items/In_Columns/#Layout_Depending_on_the_Screen_Width",
             "Widget": "Form",
             "DemoType": "Adaptivity"
           },
@@ -4526,7 +4505,6 @@
             "Title": "Validation",
             "Equivalents": "Submit",
             "Name": "Validation",
-            "DocUrl": "Guide/UI_Components/Form/Validate_and_Submit_the_Form/",
             "Widget": "Form",
             "MvcAdditionalFiles": [
               "/Views/Form/SuccessValidation.cshtml",
@@ -5608,7 +5586,7 @@
           {
             "Title": "Using Intl",
             "Name": "UsingIntl",
-            "DocUrl": "Guide/UI_Components/Common/UI_Components/Localization/",
+            "DocUrl": "Guide/Common/Localization/",
             "Widget": "Localization",
             "Modules": "devextreme-intl",
             "MvcAdditionalFiles": [
@@ -5628,7 +5606,7 @@
           {
             "Title": "Using Globalize",
             "Name": "UsingGlobalize",
-            "DocUrl": "Guide/UI_Components/Common/UI_Components/Localization_-_Use_Globalize/",
+            "DocUrl": "Guide/Common/Localization/",
             "Widget": "Localization",
             "Modules": "globalize",
             "MvcAdditionalFiles": [
