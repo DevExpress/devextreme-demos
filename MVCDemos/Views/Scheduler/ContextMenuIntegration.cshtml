@@ -65,7 +65,6 @@
     .ID("context-menu")
     .Disabled(true)
     .Width(200)
-    .OnHiding("onContextMenuHiding")
     .ItemTemplate(new JS("contextMenuItemTemplate"))
 )
 
@@ -88,13 +87,6 @@
             onItemClick: onItemClick(e),
             disabled: false,
         });
-    }
-
-    function onContextMenuHiding(e) {
-        e.component.option({
-            disabled: true,
-            dataSource: []
-        })
     }
 
     function onItemClick(contextMenuEvent) {
