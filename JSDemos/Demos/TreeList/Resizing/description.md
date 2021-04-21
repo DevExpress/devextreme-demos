@@ -1,1 +1,20 @@
-The TreeList allows a&nbsp;user to&nbsp;resize columns at&nbsp;runtime. They can be&nbsp;resized in&nbsp;two different modes: by&nbsp;changing the width of&nbsp;the next column or&nbsp;the width of&nbsp;the component. To&nbsp;switch the current mode, use the &laquo;Column resizing mode&raquo; select box.
+TreeList automatically sets equal widths for all columns. You can change this default behavior programmatically and allow users to resize columns.
+
+**Properties to resize column widths programmatically**
+
+* [columnAutoWidth](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#columnAutoWidth)
+Specifies whether columns should adjust their widths to the content
+
+* [columnWidth](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#columnWidth)
+Specifies the width for all data columns.
+
+* **columns[]**.[width](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#width)
+Specifies an individual column's width. Overrides the **columnWidth** value.
+
+**Properties that allow users to resize column widths**
+
+* [allowColumnResizing](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#allowColumnResizing)
+Specifies whether users can resize columns. To prevent an individial column's resize, set **columns[]**.[allowResizing](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#allowResizing) to **false**. You can also set [columnMinWidth](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#columnMinWidth) and **columns[]**.[minWidth](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#minWidth) to specify minimum width for all and individual columns.
+
+* [columnResizingMode](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#columnResizingMode)
+In the default mode (*"nextColumn"*), when a user resizes a column, the width of the next column changes. You can set this property to *"widget"* so that the width of the UI component would change instead. Use the drop-down list below this demo's TreeList to switch between these two modes.
