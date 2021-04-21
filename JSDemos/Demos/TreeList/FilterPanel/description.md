@@ -2,6 +2,6 @@ The [Filter panel](/Documentation/ApiReference/UI_Components/dxDataGrid/Configur
 
 To display the filter panel, set the **filterPanel**.[visible](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/filterPanel/#visible) property to **true**. 
 
-A click on the combined filter calls the integrated filter builder. You can configure it in the [filterBuilder](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/#filterBuilder) object. You can also click the check box to toggle the current filter. Note that filter values are always reflected in the filter row.
+A click on the combined filter calls the integrated filter builder. You can configure it in the [filterBuilder](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/#filterBuilder) object. You can also click the check box to toggle the current filter. The filter values are always reflected in the filter row.
 
-The intergrated filter builder is displayed in a pop-up window (the DevExtreme [Popup](/Documentation/ApiReference/UI_Components/dxPopup/) component). Its default configuration is defined automatically, but you can change it in the [filterBuilderPopup](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/#filterBuilderPopup) object.
+DataGrid uses the DevExtreme [Popup](/Documentation/ApiReference/UI_Components/dxPopup/) component to display the integrated filter builder. The popup's default configuration is defined automatically, but you can change it in the [filterBuilderPopup](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/#filterBuilderPopup) object.
