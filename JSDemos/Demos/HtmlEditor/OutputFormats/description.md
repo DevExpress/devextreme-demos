@@ -1,3 +1,3 @@
-Our HtmlEditor supports the HTML and Markdown output formats. To specify the format, use the [valueType] property. If you use Markdown, import the Markdown converter as described in the **valueType** article.
+Our HtmlEditor outputs the markup in HTML and Markdown formats. To specify the format, use the [valueType] property. If you use Markdown, import the Markdown converter as described in the **valueType** article.
 
 The HtmlEditor stores the markup in the [value] property. In this demo, the value is displayed under the HtmlEditor. You can use the Html and Markdown buttons to switch between output formats.

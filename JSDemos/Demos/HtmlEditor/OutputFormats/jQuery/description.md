@@ -1,3 +1,3 @@
-Our HtmlEditor supports the HTML and Markdown output formats. To specify the format, use the [valueType] property. If you use Markdown, link the <a href="https://www.npmjs.com/package/turndown" target="_blank" rel="noopener">turndown</a> and <a href="https://www.npmjs.com/package/showdown" target="_blank" rel="noopener">showdown</a> libraries before the DevExtreme scripts.
+Our HtmlEditor outputs the markup in HTML and Markdown formats. To specify the format, use the [valueType] property. If you use Markdown, link the <a href="https://www.npmjs.com/package/turndown" target="_blank" rel="noopener">turndown</a> and <a href="https://www.npmjs.com/package/showdown" target="_blank" rel="noopener">showdown</a> libraries before the DevExtreme scripts.
 
 The HtmlEditor stores the markup in the [value] property. In this demo, the value is displayed under the HtmlEditor. You can use the Html and Markdown buttons to switch between output formats.
