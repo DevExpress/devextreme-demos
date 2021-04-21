@@ -1,14 +1,1 @@
-The initial order of columns mirrors the order of fields in the first object from the [dataSource](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#dataSource). You can change that order programmatically and allow users to reorder columns in the TreeList's interface.
-
-**Properties to reorder columns programmatically:**
-
-* [columns[]](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/)           
-Configures columns. Arrange column names and objects in the desired order.
-
-* **columns[]**.[visibleIndex](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#visibleIndex)          
-Specifies the position of the column regarding other columns. For details, see the [Column Reordering](https://js.devexpress.com/Documentation/Guide/UI_Components/TreeList/Columns/Column_Reordering/) article.
-
-**Property that enables users to reorder columns:**
-
-* [allowColumnReordering](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#allowColumnReordering)        
-Specifies whether a user can reorder columns. If some column should never be reordered, set its [allowReordering](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#allowReordering) property to **false**.
+At&nbsp;first launch, the order of&nbsp;columns in&nbsp;TreeList is&nbsp;the same as&nbsp;the order of&nbsp;objects in&nbsp;the **columns** array. At&nbsp;runtime, a&nbsp;user may be&nbsp;able to&nbsp;reorder columns using drag and drop. To&nbsp;provide the user with this capability, set the **allowColumnReordering** property to _true_.
