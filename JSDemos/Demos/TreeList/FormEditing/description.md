@@ -8,12 +8,12 @@ A column's default editor is defined automatically based on this column's [dataT
 
 You can also set up the edit Form from scratch. The component's [configuration section](/Documentation/ApiReference/UI_Components/dxForm/) lists available settings. Specify these settings in the **editing**.[form](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/editing/#form) object. Refer to this object's description for more information about this edit mode's limitations.
 
-This demo uses form editing mode and illustrates the following event handlers:
+This demo also illustrates the following event handlers:
 
 - [onInitNewRow](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#onInitNewRow)        
-Populates form editors of a new row with default values. In this demo, **onInitNewRow** sets John Heart as the initial Head for new rows.
+Populates form editors of a new row with default values. In this demo, **onInitNewRow** sets *"John Heart"* as the initial `Head` for new rows.
 
 - [onEditorPreparing](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#onEditorPreparing)         
-Customizes form editors. In this demo, this handler disallows users to edit the Head value of John Heart.
+Customizes form editors. In this demo, this handler disallows users to edit the `Head` value of John Heart.
 
 Refer to the following help topic to see the full list of the events that edit operations raise: [Editing Events](/Documentation/Guide/UI_Components/TreeList/Editing/#Events).
