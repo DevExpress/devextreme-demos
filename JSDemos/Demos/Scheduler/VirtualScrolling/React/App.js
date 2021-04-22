@@ -33,9 +33,9 @@ const resourcesData = [{
 
 const groups = ['humanId'];
 const appointments = generateAppointments();
-class App extends React.Component {
-  render() {
-    return (
+
+function App() {
+      return (
       <Scheduler
         dataSource={appointments}
         height={600}
@@ -52,7 +52,6 @@ class App extends React.Component {
         resources={resourcesData}
       />
     );
-  }
-}
+};
 
 export default App;
