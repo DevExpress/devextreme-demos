@@ -20,7 +20,8 @@ export class AppComponent {
     currentDate: Date = new Date(2021, 1, 2);
 
     constructor(service: Service) {
-        this.appointments = service.generateAppointments();
+        this.appointments = service.generateAppointments(new Date(2021, 1, 1), new Date(2021, 1, 28), 8, 20);
+
         this.resources = service.resources;
     }
 }

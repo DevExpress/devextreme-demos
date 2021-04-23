@@ -32,26 +32,26 @@ const resourcesData = [{
 }];
 
 const groups = ['humanId'];
-const appointments = generateAppointments();
+const appointments = generateAppointments(new Date(2021, 1, 1), new Date(2021, 1, 28), 8, 20);
 
 function App() {
-      return (
-      <Scheduler
-        dataSource={appointments}
-        height={600}
-        views={views}
-        defaultCurrentView="Timeline"
-        defaultCurrentDate={currentDate}
-        firstDayOfWeek={0}
-        startDayHour={8}
-        endDayHour={20}
-        cellDuration={60}
-        showAllDayPanel={false}
-        scrolling={scrolling}
-        groups={groups}
-        resources={resourcesData}
-      />
-    );
-};
+  return (
+    <Scheduler
+      dataSource={appointments}
+      height={600}
+      views={views}
+      defaultCurrentView="Timeline"
+      defaultCurrentDate={currentDate}
+      firstDayOfWeek={0}
+      startDayHour={8}
+      endDayHour={20}
+      cellDuration={60}
+      showAllDayPanel={false}
+      scrolling={scrolling}
+      groups={groups}
+      resources={resourcesData}
+    />
+  );
+}
 
 export default App;
