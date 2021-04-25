@@ -1,6 +1,6 @@
-The column chooser allows users to hide or display columns at runtime. To enable it, assign **true** to the **columnChooser**.[enabled](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columnChooser/#enabled) property. 
+The column chooser allows users to hide and display columns at runtime. To enable it, assign **true** to the **columnChooser**.[enabled](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columnChooser/#enabled) property. 
 
-To open the column chooser, click the button in the toolbar above the TreeList component. The opened popup panel lists the headers of hidden columns. In this demo, you can specify the way users interact with this panel to hide/unhide columns. For this, use the drop-down list below the TreeList component to set the [mode](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columnChooser/#mode) property to one of the following values:
+To open the column chooser, users should click the button in the toolbar above the TreeList. The opened popup lists the headers of hidden columns. In this demo, you can specify the way users interact with this panel to hide and display columns. For this, use the drop-down list below the TreeList component to set the [mode](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columnChooser/#mode) property to one of the following values:
 
 * **"dragAndDrop"**
 Users drag and drop column headers to and from the column chooser panel.
