@@ -4,9 +4,9 @@ To use the Form as the row editor UI, specify the following properties:
 - **editing**.[mode](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/editing/#mode) to *"form"*
 - **editing**.[allowUpdating](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/editing/#allowUpdating) to **true**
 
-A column's default editor is defined automatically based on this column's [dataType](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#dataType). To customize this editor or replace it with another editor, use the column's [formItem](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#formItem) object. Refer to the [SimpleItem](/Documentation/ApiReference/UI_Components/dxForm/Item_Types/SimpleItem/) help topic for information on settings that you can define in the **formItem** object.
+A column's default editor is defined automatically based on this column's [dataType](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#dataType). To customize this editor or replace it with another editor, use the column's [formItem](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#formItem) object. For information on settings that you can define in the **formItem** object, refer to the [SimpleItem](/Documentation/ApiReference/UI_Components/dxForm/Item_Types/SimpleItem/) help topic.
 
-You can also set up the edit Form from scratch. The component's [configuration section](/Documentation/ApiReference/UI_Components/dxForm/) lists available settings. Specify these settings in the **editing**.[form](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/editing/#form) object. Refer to this object's description for more information about this edit mode's limitations.
+You can also set up the edit Form from scratch. The component's [configuration section](/Documentation/ApiReference/UI_Components/dxForm/) lists available settings. Specify these settings in the **editing**.[form](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/editing/#form) object. Refer to this object's description for information about form edit mode's limitations.
 
 This demo also illustrates the following event handlers:
 
