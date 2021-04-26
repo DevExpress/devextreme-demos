@@ -224,8 +224,7 @@ export class Service {
 
             if (startDate.getDay() === endDate.getDay() &&
                 startDate.getHours() >= startDayHour - 1 &&
-                endDate.getHours() <= endDayHour - 1
-            ) {
+                endDate.getHours() <= endDayHour - 1) {
               filteredAppointments.push(appointments[i]);
             }
         }
