@@ -1,1 +1,10 @@
-This example demonstrates appointment editing. You can add, update and delete appointments, as&nbsp;well as&nbsp;modify them by&nbsp;dragging or&nbsp;resizing. Toggle the check boxes under the Scheduler to&nbsp;define which editing features are enabled.
+Scheduler allows users to add, edit, resize, drag, and delete appointments. The editing object consists of properties that allow you to configure these operations. Below is a list of them and their default values:
+
+* allowAdding (true)
+* allowDeleting (true)
+* allowUpdating (true)
+* allowResizing (true, false (Android, iOS))
+* allowDragging (true, false (Android, iOS))
+* allowTimeZoneEditing (false).
+
+In this demo, the checkboxes below the Scheduler allow you to toggle these operations.

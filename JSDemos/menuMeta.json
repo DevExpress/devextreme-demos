@@ -1740,7 +1740,6 @@
           {
             "Title": "Editing",
             "Name": "Editing",
-            "DocUrl": "Guide/UI_Components/Scheduler/Appointments/Add_Appointments/",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/Appointment.cs",
