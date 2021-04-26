@@ -32,7 +32,13 @@ const resourcesData = [{
 }];
 
 const groups = ['humanId'];
-const appointments = generateAppointments(new Date(2021, 1, 1), new Date(2021, 1, 28), 8, 20);
+
+const startDay = new Date(2021, 1, 1);
+const endDay = new Date(2021, 1, 28);
+const startDayHour = 8;
+const endDayHour = 20;
+
+const appointments = generateAppointments(startDay, endDay, startDayHour, endDayHour);
 
 function App() {
   return (
@@ -43,8 +49,8 @@ function App() {
       defaultCurrentView="Timeline"
       defaultCurrentDate={currentDate}
       firstDayOfWeek={0}
-      startDayHour={8}
-      endDayHour={20}
+      startDayHour={startDayHour}
+      endDayHour={endDayHour}
       cellDuration={60}
       showAllDayPanel={false}
       scrolling={scrolling}
