@@ -10,7 +10,7 @@ To create a recurring appointment programmatically, do the following:
 
 To create a recurring appointment in the UI, users should do the following:
 
-1. Create or open an appointment
+1. Create or open an appointment.
 
 2. Toggle the *"Repeat"* switcher on the appointment details form.
 
