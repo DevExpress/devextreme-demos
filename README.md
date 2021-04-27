@@ -47,6 +47,10 @@ npm run prepare-all
 
 1. Use the built-in CLI to choose or enter the category, the demo name, and the technology for the new demo.
 
+### Bundle scripts
+
+You can launch demo with bundles for angular, react and vue approaches. To create bundles and replace the demos SystemJS configuration (`config.js`) run the following command `npm run prepare-bundles`. To return a run from `node_modules` run `npm run prepare-js`.
+
 ## ASP.NET Demos
 
 1. Open the `repository.config.json` file and set the `hg` property to a path where your clone of the `mobile` repository is located, for example:
