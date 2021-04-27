@@ -1,4 +1,4 @@
-You can use the batch edit mode to defer saving multiple changes. In this mode, users edit data one cell at a time. The changes are stored in a buffer and can be discarded before the **Save** button is clicked.
+You can use the batch edit mode to defer saving multiple cell changes. The changes are stored in a buffer and can be discarded before a user clicks the **Save** button.
 
 To enable the batch edit mode, configure the following properties:
 
