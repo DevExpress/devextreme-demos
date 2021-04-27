@@ -1,4 +1,4 @@
-export const data = [ 
+export const data = [
   {
     text: 'Google AdWords Strategy',
     roomId: 1,
