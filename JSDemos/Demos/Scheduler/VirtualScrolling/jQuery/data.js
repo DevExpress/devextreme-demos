@@ -180,17 +180,13 @@ var appointmentsText = [
    'Staff Productivity Report'
 ];
 
-var duration = 1;
-function getRandomDuration() {
-  duration += 19;
-  var durationMin = Math.floor((duration % 23) / 3 + 5) * 15;
+function getRandomDuration(durationState) {
+  var durationMin = Math.floor((durationState % 23) / 3 + 5) * 15;
 
   return durationMin * 60 * 1000;
 }
 
-var textIndex = 0;
-function getRandomText() {
-  textIndex++;
+function getAppointmentText(textIndex) {
   return appointmentsText[textIndex % appointmentsText.length];
 }
 
@@ -214,20 +210,28 @@ function filterAppointmentsByTime(appointments, startDayHour, endDayHour) {
 function generateAppointments(startDay, endDay, startDayHour, endDayHour) {
   var appointments = [];
 
+  var textIndex = 0;
+  var durationState = 1;
+  var durationIncrement = 19;
+
   for (var i = 0; i < resources.length; i++) {
     var startDate = startDay;
 
     while (startDate.getTime() < endDay.getTime()) {
-      var endDate = new Date(startDate.getTime() + getRandomDuration());
+      durationState += durationIncrement;
+      var endDate = new Date(startDate.getTime() + getRandomDuration(durationState));
 
       appointments.push({
-        text: getRandomText(),
+        text: getAppointmentText(textIndex),
         startDate: startDate,
         endDate: endDate,
         humanId: resources[i].id
       });
 
-      startDate = new Date(endDate.getTime() + getRandomDuration());
+      textIndex++;
+
+      durationState += durationIncrement;
+      startDate = new Date(endDate.getTime() + getRandomDuration(durationState));
     }
   }
 

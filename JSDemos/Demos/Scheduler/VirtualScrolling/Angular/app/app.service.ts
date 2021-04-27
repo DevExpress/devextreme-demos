@@ -201,18 +201,14 @@ export class Service {
     get resources() { return resources; }
     get appointmentsText() { return appointmentsText; }
 
-    duration = 1;
-    getRandomDuration(): number {
-        this.duration += 19;
-        const durationMin = Math.floor((this.duration % 23) / 3 + 5) * 15;
+    getRandomDuration(duratiuonState): number {
+        const durationMin = Math.floor((duratiuonState % 23) / 3 + 5) * 15;
 
         return durationMin * 60 * 1000;
     }
 
-    textIndex = 0;
-    getRandomText(): string {
-        this.textIndex++;
-        return appointmentsText[this.textIndex % appointmentsText.length];
+    getRandomText(textIndex): string {
+        return appointmentsText[textIndex % appointmentsText.length];
     }
 
     filterAppointmentsByTime(appointments, startDayHour, endDayHour): Appointment[] {
@@ -235,20 +231,28 @@ export class Service {
     generateAppointments(startDay, endDay, startDayHour, endDayHour): Appointment[] {
         const appointments = [];
 
+        let textIndex = 0;
+        let durationState = 1;
+        const durationIncrement = 19;
+
         for (let i = 0; i < resources.length; i++) {
             let startDate = startDay;
 
             while (startDate.getTime() < endDay.getTime()) {
-                const endDate = new Date(startDate.getTime() + this.getRandomDuration());
+                durationState += durationIncrement;
+                const endDate = new Date(startDate.getTime() + this.getRandomDuration(durationState));
 
                 appointments.push({
-                    text: this.getRandomText(),
+                    text: this.getRandomText(textIndex),
                     startDate: startDate,
                     endDate: endDate,
                     humanId: resources[i].id
                 });
 
-                startDate = new Date(endDate.getTime() + this.getRandomDuration());
+                textIndex++;
+
+                durationState += durationIncrement;
+                startDate = new Date(endDate.getTime() + this.getRandomDuration(durationState));
             }
         }
 
