@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "Name": "Data Grid",
     "Equivalents": "dxDataGrid, dx-data-grid",
@@ -64,6 +64,10 @@
               "/Controllers/ApiControllers/DataGridWebApiController.cs",
               "/Models/Northwind/InMemoryNorthwindContext.cs"
             ],
+            "BackendFiles": [
+              "DataGridWebApiController.cs",
+              "InMemoryNorthwindContext.cs"
+            ],
             "MvcDocUrl": "https://docs.devexpress.com/DevExtremeAspNetMvc/400704/concepts/data-binding",
             "NetCoreDocUrl": "https://docs.devexpress.com/AspNetCore/400575/concepts/devextreme-based-controls/data-binding",
             "DemoType": "Web"
@@ -78,6 +82,11 @@
               "/Hubs/LiveUpdateSignalRHub.cs",
               "/Models/SignalR/StockTicker.cs",
               "/Models/SignalR/Stock.cs"
+            ],
+            "BackendFiles": [
+              "LiveUpdateSignalRHub.cs",
+              "Stock.cs",
+              "StockTicker.cs"
             ],
             "DemoType": "Web"
           },
@@ -156,7 +165,6 @@
             "Title": "Row Editing and Editing Events",
             "Name": "RowEditingAndEditingEvents",
             "Widget": "DataGrid",
-            "Badge": "Updated",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridStatesLookupController.cs",
               "/Controllers/ApiControllers/DataGridEmployeesController.cs",
@@ -284,6 +292,10 @@
               "/Controllers/ApiControllers/DataGridCollaborativeEditingController.cs",
               "/Hubs/DataGridCollaborativeEditingHub.cs",
               "/Models/SampleData/DataGridEmployees.cs"
+            ],
+            "BackendFiles": [
+              "DataGridCollaborativeEditingController.cs",
+              "DataGridCollaborativeEditingHub.cs"
             ]
           },
           {
@@ -297,6 +309,10 @@
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridWebApiController.cs",
               "/Models/Northwind/InMemoryNorthwindContext.cs"
+            ],
+            "BackendFiles": [
+              "DataGridWebApiController.cs",
+              "InMemoryNorthwindContext.cs"
             ]
           },
           {
@@ -322,12 +338,15 @@
             "Widget": "DataGrid",
             "DemoType": "Web",
             "Equivalents": "",
-            "Badge": "New",
             "Modules": "whatwg-fetch,devextreme-aspnet-data-nojquery",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridBatchUpdateWebApiController.cs",
               "/Models/Northwind/InMemoryNorthwindContext.cs",
               "/Models/DataGrid/DataChange.cs"
+            ],
+            "BackendFiles": [
+              "DataGridBatchUpdateWebApiController.cs",
+              "InMemoryNorthwindContext.cs"
             ]
           },
           {
@@ -337,7 +356,7 @@
             "Widget": "DataGrid",
             "DemoType": "Web",
             "Equivalents": "",
-            "Badge": "New",
+            "Badge": "Updated",
             "Modules": "whatwg-fetch,vuex",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridWebApiController.cs",
@@ -427,7 +446,6 @@
           {
             "Title": "Focused Row",
             "Name": "FocusedRow",
-            "DocUrl": "ApiReference/UI_Components/dxDataGrid/Configuration/#focusedRowEnabled",
             "Widget": "DataGrid",
             "DemoType": "Web",
             "Modules": "devextreme-aspnet-data-nojquery"
@@ -451,7 +469,6 @@
           {
             "Title": "Remote Reordering",
             "Name": "RemoteReordering",
-            "Badge": "Updated",
             "Widget": "DataGrid",
             "DemoType": "Web",
             "Modules": "devextreme-aspnet-data-nojquery",
@@ -460,7 +477,11 @@
               "/Models/RowReorderingTask.cs",
               "/Models/SampleData/RowReorderingTasks.cs",
               "/Models/DataGrid/InMemoryRowReorderingTasksDataContext.cs"
-            ]
+            ],
+            "BackendFiles": [
+              "DataGridRowReorderingController.cs",
+              "InMemoryRowReorderingTasksDataContext.cs"
+            ]  
           },
           {
             "Title": "Drag & Drop Between Two Grids",
@@ -1240,6 +1261,11 @@
               "/Models/TreeList/EmployeeTask.cs",
               "/Models/SampleData/EmployeeTasks.cs"
             ],
+            "BackendFiles": [
+              "TreeListTasksController.cs",
+              "InMemoryTasksDataContext.cs",
+              "EmployeeTask.cs"
+            ],
             "MvcDocUrl": "https://docs.devexpress.com/DevExtremeAspNetMvc/400704/concepts/data-binding",
             "NetCoreDocUrl": "https://docs.devexpress.com/AspNetCore/400575/concepts/devextreme-based-controls/data-binding",
             "DemoType": "Web"
@@ -1271,7 +1297,6 @@
           {
             "Title": "Paging",
             "Name": "Paging",
-            "DocUrl": "Guide/UI_Components/TreeList/Paging/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
@@ -1290,7 +1315,6 @@
           {
             "Title": "Row Editing",
             "Name": "RowEditing",
-            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Row_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListEmployeesController.cs",
@@ -1303,7 +1327,6 @@
           {
             "Title": "Cell Editing",
             "Name": "CellEditing",
-            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Cell_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
@@ -1342,7 +1365,6 @@
           {
             "Title": "Popup Editing",
             "Name": "PopupEditing",
-            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Popup_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListEmployeesController.cs",
@@ -1388,7 +1410,6 @@
           {
             "Title": "Focused Row",
             "Name": "FocusedRow",
-            "DocUrl": "ApiReference/UI_Components/dxTreeList/Configuration/#focusedRowEnabled",
             "Widget": "TreeList",
             "DemoType": "Web",
             "Modules": "devextreme-aspnet-data-nojquery"
@@ -1402,7 +1423,6 @@
           {
             "Title": "Single Row Selection",
             "Name": "SingleRowSelection",
-            "DocUrl": "Guide/UI_Components/TreeList/Selection/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1413,7 +1433,6 @@
           {
             "Title": "Multiple Row Selection",
             "Name": "MultipleRowSelection",
-            "DocUrl": "Guide/UI_Components/TreeList/Selection/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListEmployeesController.cs",
@@ -1630,6 +1649,10 @@
               "/Models/InMemoryAppointmentsDataContext.cs",
               "/Controllers/ApiControllers/SchedulerDataController.cs"
             ],
+            "BackendFiles": [
+              "SchedulerDataController.cs",
+              "InMemoryAppointmentsDataContext"
+            ],
             "DemoType": "Web"
           },
           {
@@ -1644,6 +1667,10 @@
               "/Hubs/SchedulerSignalRHub.cs",
               "/Models/Appointment.cs",
               "/Models/SampleData/Appointments.cs"
+            ],
+            "BackendFiles": [
+              "SchedulerSignalRController.cs",
+              "SchedulerSignalRHub.cs"
             ]
           },
           {
@@ -1776,17 +1803,9 @@
         "Equivalents": "",
         "Demos": [
           {
-            "Title": "Horizontal",
-            "Badge": "New",
-            "Name": "HorizontalVirtualScrolling",
-            "Widget": "Scheduler",
-            "MvcAdditionalFiles": [],
-            "DemoType": "Web"
-          },
-          {
-            "Title": "Vertical",
+            "Title": "Virtual Scrolling",
             "Badge": "Updated",
-            "Name": "VerticalVirtualScrolling",
+            "Name": "VirtualScrolling",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [],
             "DemoType": "Web"
@@ -2077,6 +2096,10 @@
               "/Models/Diagram/Employee.cs",
               "/Models/Diagram/InMemoryEmployeesDataContext.cs",
               "/Controllers/ApiControllers/DiagramEmployeesController.cs"
+            ],
+            "BackendFiles": [
+              "DiagramEmployeesController.cs",
+              "InMemoryEmployeesDataContext.cs"
             ]
           }
         ]
@@ -2314,6 +2337,10 @@
               "/Hubs/StockTickDataHub.cs",
               "/Models/SignalRTickData/TickDataService.cs",
               "/Models/SignalRTickData/TickItem.cs"
+            ],
+            "BackendFiles": [
+              "TickDataService.cs",
+              "StockTickDataHub.cs"
             ],
             "DemoType": "Viz"
           },
@@ -4270,7 +4297,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/TagBox/Overview/",
             "Widget": "TagBox",
             "MvcAdditionalFiles": [
               "/Models/ElectronicsItem.cs",
@@ -4281,7 +4307,6 @@
           {
             "Title": "Grouped Items",
             "Name": "GroupedItems",
-            "DocUrl": "Guide/UI_Components/TagBox/Grouping/In_the_Data_Source/",
             "Widget": "TagBox",
             "MvcAdditionalFiles": [
               "/Models/ElectronicsItem.cs",
@@ -4501,20 +4526,17 @@
           {
             "Title": "Customize Item",
             "Name": "CustomizeItem",
-            "DocUrl": "Guide/UI_Components/Form/Configure_Simple_Items/#Create_a_Simple_Item",
             "Widget": "Form"
           },
           {
             "Title": "Grouped Fields",
             "Name": "GroupedFields",
-            "DocUrl": "Guide/UI_Components/Form/Organize_Simple_Items/",
             "Widget": "Form"
           },
           {
             "Title": "Columns Adaptability",
             "Equivalents": "adaptive",
             "Name": "ColumnsAdaptability",
-            "DocUrl": "Guide/UI_Components/Form/Organize_Simple_Items/In_Columns/#Layout_Depending_on_the_Screen_Width",
             "Widget": "Form",
             "DemoType": "Adaptivity"
           },
@@ -4524,7 +4546,6 @@
             "Title": "Validation",
             "Equivalents": "Submit",
             "Name": "Validation",
-            "DocUrl": "Guide/UI_Components/Form/Validate_and_Submit_the_Form/",
             "Widget": "Form",
             "MvcAdditionalFiles": [
               "/Views/Form/SuccessValidation.cshtml",
@@ -4785,6 +4806,9 @@
                 "DemoType": "Web",
                 "MvcAdditionalFiles": [
                   "/Controllers/ApiControllers/FileManagerImagesApiController.cs"
+                ],
+                "BackendFiles": [
+                  "FileManagerImagesApiController.cs"
                 ]
               }
             ]
@@ -4801,6 +4825,9 @@
                 "DemoType": "Web",
                 "MvcAdditionalFiles": [
                   "/Controllers/ApiControllers/FileManagerScriptsApiController.cs"
+                ],
+                "BackendFiles": [
+                  "FileManagerScriptsApiController.cs"
                 ]
               },
               {
@@ -4813,6 +4840,10 @@
                 "MvcAdditionalFiles": [
                   "/Controllers/ApiControllers/FileManagerDbProviderApiController.cs",
                   "/Models/FileManagement/DbFileProvider.cs"
+                ],
+                "BackendFiles": [
+                  "FileManagerDbProviderApiController.cs",
+                  "DbFileProvider.cs"
                 ]
               },
               {
@@ -4824,6 +4855,10 @@
                 "MvcAdditionalFiles": [
                   "/Controllers/ApiControllers/FileManagerAzureProviderApiController.cs",
                   "/Models/FileManagement/AzureBlobFileProvider.cs"
+                ],
+                "BackendFiles": [
+                  "FileManagerAzureProviderApiController.cs",
+                  "AzureBlobFileProvider.cs"
                 ]
               },
               {
@@ -4834,6 +4869,9 @@
                 "DemoType": "Web",
                 "MvcAdditionalFiles": [
                   "/Controllers/ApiControllers/FileManagerAzureAccessApiController.cs"
+                ],
+                "BackendFiles": [
+                  "FileManagerAzureAccessApiController.cs"
                 ]
               },
               {
@@ -4886,25 +4924,37 @@
             "Widget": "FileUploader",
             "MvcAdditionalFiles": [
               "/Views/FileUploader/SubmissionResult.cshtml"
+            ],
+            "BackendFiles": [
+              "FileUploaderController.cs"
             ]
           },
           {
             "Title": "Async Upload",
             "Name": "FileUploading",
             "DocUrl": "Guide/UI_Components/FileUploader/Upload_Files/Client-Side_Settings/",
-            "Widget": "FileUploader"
+            "Widget": "FileUploader",
+            "BackendFiles": [
+              "FileUploaderController.cs"
+            ]
           },
           {
             "Title": "Validation",
             "Name": "Validation",
             "DocUrl": "",
-            "Widget": "FileUploader"
+            "Widget": "FileUploader",
+            "BackendFiles": [
+              "FileUploaderController.cs"
+            ]
           },
           {
             "Title": "Chunk Uploading",
             "Name": "ChunkUploading",
             "DocUrl": "",
-            "Widget": "FileUploader"
+            "Widget": "FileUploader",
+            "BackendFiles": [
+              "FileUploaderController.cs"
+            ]
           },
           {
             "Title": "Direct Upload to Azure",
@@ -4913,6 +4963,9 @@
             "Widget": "FileUploader",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/FileUploaderAzureAccessApiController.cs"
+            ],
+            "BackendFiles": [
+              "FileUploaderAzureAccessApiController.cs"
             ]
           },
           {
@@ -5162,6 +5215,9 @@
             "Modules": "devextreme-aspnet-data-nojquery",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/ListDataController.cs"
+            ],
+            "BackendFiles": [
+              "ListDataController.cs"
             ],
             "DemoType": "Web"
           }
@@ -5606,7 +5662,7 @@
           {
             "Title": "Using Intl",
             "Name": "UsingIntl",
-            "DocUrl": "Guide/UI_Components/Common/UI_Components/Localization/",
+            "DocUrl": "Guide/Common/Localization/",
             "Widget": "Localization",
             "Modules": "devextreme-intl",
             "MvcAdditionalFiles": [
@@ -5626,7 +5682,7 @@
           {
             "Title": "Using Globalize",
             "Name": "UsingGlobalize",
-            "DocUrl": "Guide/UI_Components/Common/UI_Components/Localization_-_Use_Globalize/",
+            "DocUrl": "Guide/Common/Localization/",
             "Widget": "Localization",
             "Modules": "globalize",
             "MvcAdditionalFiles": [

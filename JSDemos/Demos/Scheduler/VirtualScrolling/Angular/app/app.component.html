@@ -2,8 +2,22 @@
     [height]="600"
     [currentDate]="currentDate"
     [dataSource]="appointments"
-    [views]="['workWeek', 'timelineWorkWeek', 'month']"
-    currentView="timelineWorkWeek"
+    [views]="[
+        {
+            type: 'timelineWorkWeek',
+            name: 'Timeline',
+            groupOrientation: 'vertical'
+        },
+        {
+            type: 'workWeek',
+            groupOrientation: 'vertical'
+        },
+        {
+            type: 'month',
+            groupOrientation: 'horizontal'
+        }
+    ]"
+    currentView="Timeline"
     [firstDayOfWeek]="0"
     [startDayHour]="8"
     [endDayHour]="20"
@@ -16,7 +30,7 @@
     [resources]="[{
         fieldExpr: 'humanId',
         dataSource: resources,
-        allowMultiple: false
+        label: 'Employee'
     }]"
 >
 </dx-scheduler>
