@@ -33,29 +33,20 @@ class CreateConfig {
 
     removeModulesIfBundle(content) {
         return content
-            //.replace(/main: '.\/[a-zA-Z]+.component.ts',/, '')
             .replace(/'rxjs(\/operators)?'.*?[,\n]/g, '')
             .replace(/'devextreme(?:-angular|-vue|-react)?'.*?[,\n]/g, '')
             .replace(/'devextreme\/bundles\/dx.all'.*?[,\n]/, '')
-            // .replace(/'?vue'?: 'npm:vue@\d+\.\d+\.\d+\/dist\/vue.esm.browser.js',?/, "") // vue not in bundle now
             .replace(/'react'.*?[,\n]/, '')
             .replace(/'react-dom'.*?[,\n]/, '')
-            //.replace(/'vue-loader'.*?[,\n]/, '')
-            //.replace(/'plugin-babel':.*?[,\n]/, '')
             .replace(/'systemjs-babel-build':.*?[,\n]/, '');
-            //.replace(/node_modules\//g, '../node_modules/')
-            //.replace(/'js\/vectormap-data'/, '\'../JSDemos/js/vectormap-data\'');
-
     }
 
     getConfigContent(approach, modulesString) {
         const modules = modulesString.replace(/\s/g, '').split(',');
         let baseContent = '';
-        
-        
+
         baseContent += fs.readFileSync(path.join(this.configDir, approach, 'config.js'), 'utf8');
         if(this.useBundles) {
-            // TODO почикать baseContent
             baseContent = this.removeModulesIfBundle(baseContent);
             baseContent += fs.readFileSync(path.join(this.configDir, approach, 'config.bundle.js'), 'utf8');
         }
