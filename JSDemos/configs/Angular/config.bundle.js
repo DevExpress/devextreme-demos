@@ -6,7 +6,7 @@ if(window.Promise && window.System) {
           }
         },
         bundles: {
-            'devextreme.systemjs.js': [
+            'devextreme.angular.systemjs.js': [
                 'devextreme/*',
                 'devextreme/animation/*',
                 'devextreme/core/*',
@@ -36,7 +36,7 @@ if(window.Promise && window.System) {
         },
         map: {
             'jquery': 'npm:jquery/dist/jquery.min.js',
-            'devextreme.systemjs.js': '../../../../../bundles/devextreme.angular.systemjs.js',
+            'devextreme.angular.systemjs.js': '../../../../../bundles/devextreme.angular.systemjs.js',
             'devextreme-quill': 'npm:devextreme-quill/dist/dx-quill.min.js'
 
         },

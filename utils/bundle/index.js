@@ -23,36 +23,6 @@ let additionPaths = {};
 let main = `devextreme-${framework}/index.js`;
 let minify = true;
 
-const defaultBuilderConfig = {
-    defaultExtension: false,
-    defaultJSExtensions: 'js',
-    packages: {
-        'devextreme/events/utils': {
-            main: 'index'
-        },
-        'devextreme/events': {
-            main: 'index'
-        },
-    },
-    meta: {
-        '*': {
-            build: false
-        },
-        'devextreme/*': {
-            build: true
-        },
-        [`devextreme-${framework}/*`]: {
-            build: true,
-            main: 'index.js'
-        }
-    },
-    paths: {
-        'devextreme/*': 'node_modules/devextreme/cjs/*',
-        [`devextreme-${framework}/*`]: `node_modules/devextreme-${framework}/*`,
-        ...additionPaths
-    }
-};
-
 if(framework === 'angular') {
     additionPackage = [{
         name: 'rxjs/*',
@@ -143,6 +113,36 @@ if(framework === 'vue') {
     ];
 }
 
+const defaultBuilderConfig = {
+    defaultExtension: false,
+    defaultJSExtensions: 'js',
+    packages: {
+        'devextreme/events/utils': {
+            main: 'index'
+        },
+        'devextreme/events': {
+            main: 'index'
+        },
+    },
+    meta: {
+        '*': {
+            build: false
+        },
+        'devextreme/*': {
+            build: true
+        },
+        [`devextreme-${framework}/*`]: {
+            build: true,
+            main: 'index.js'
+        }
+    },
+    paths: {
+        'devextreme/*': 'node_modules/devextreme/cjs/*',
+        [`devextreme-${framework}/*`]: `node_modules/devextreme-${framework}/*`,
+        ...additionPaths
+    }
+};
+
 const BUNDLE_PATH = `bundles/devextreme.${framework}.systemjs.js`;
 
 // https://stackoverflow.com/questions/42412965/how-to-load-named-exports-with-systemjs/47108328
@@ -178,7 +178,7 @@ function prepareModulesToNamedImport() {
     });
 }
 
-function copyCustomConfig() {
+function copyBundlesFolder() {
     const dxPath = path.join(process.cwd(), 'node_modules', 'devextreme');
     const dxBundlesPath = path.join(dxPath, 'bundles');
     const dxCjsBundlesPath = path.join(dxPath, 'cjs', 'bundles');
@@ -188,7 +188,7 @@ function copyCustomConfig() {
 
 function build() {
     const builder = new Builder();
-    copyCustomConfig();
+    copyBundlesFolder();
     prepareModulesToNamedImport();
     const builderConfig = defaultBuilderConfig;
 
