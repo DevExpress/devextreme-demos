@@ -24,6 +24,7 @@ let main = `devextreme-${framework}/index.js`;
 let minify = true;
 
 if(framework === 'angular') {
+    copyBundlesFolder();
     additionPackage = [{
         name: 'rxjs/*',
         metaValue: {
@@ -188,7 +189,6 @@ function copyBundlesFolder() {
 
 function build() {
     const builder = new Builder();
-    copyBundlesFolder();
     prepareModulesToNamedImport();
     const builderConfig = defaultBuilderConfig;
 
