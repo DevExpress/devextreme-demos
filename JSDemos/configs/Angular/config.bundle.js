@@ -1,4 +1,4 @@
-﻿if(window.Promise && window.System) {
+if(window.Promise && window.System) {
     System.config({
         meta: {
           'devextreme/localization.js': {
@@ -32,12 +32,13 @@
             ]
         },
         paths: {
-            'npm:': '../JSDemos/node_modules/'
+            'npm:': '../../../../../node_modules/'
         },
         map: {
             'jquery': 'npm:jquery/dist/jquery.min.js',
-            'devextreme.systemjs.js': '../JSDemos/js/devextreme.systemjs.js',
+            'devextreme.systemjs.js': '../../../../../bundles/devextreme.angular.systemjs.js',
             'devextreme-quill': 'npm:devextreme-quill/dist/dx-quill.min.js'
+
         },
         packages: {
             'devextreme': {

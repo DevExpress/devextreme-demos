@@ -25,11 +25,11 @@ if (window.Promise && window.System) {
             ]
         },
         paths: {
-            'npm:': '../JSDemos/node_modules/'
+            'npm:': '../../../../../node_modules/'
         },
         map: {
             'jquery': 'npm:jquery/dist/jquery.min.js',
-            'devextreme.react.systemjs.js': '../JSDemos/js/devextreme.react.systemjs.js',
+            'devextreme.react.systemjs.js': '../../../../../bundles/devextreme.react.systemjs.js',
             'devextreme-quill': 'npm:devextreme-quill/dist/dx-quill.min.js'
         },
         packages: {

@@ -212,7 +212,8 @@ function build() {
             'uglify': { 'mangle': true }
         }
     ).then(() => {
-        console.log(`Build complete (${framework}) ${console.timeEnd('build')}`);
+        console.timeEnd('build');
+        console.log(`Build complete (${framework})`);
     }).catch((err) => {
         console.log('Build error ', err);
     });

@@ -25,11 +25,11 @@ if (window.Promise && window.System) {
             ]
         },
         paths: {
-            'npm:': '../JSDemos/node_modules/'
+            'npm:': '../../../../../node_modules/'
         },
         map: {
             'jquery': 'npm:jquery/dist/jquery.min.js',
-            'devextreme.vue.systemjs.js': '../JSDemos/js/devextreme.vue.systemjs.js',
+            'devextreme.vue.systemjs.js': '../../../../../bundles/devextreme.vue.systemjs.js',
             'devextreme-quill': 'npm:devextreme-quill/dist/dx-quill.min.js',
             'plugin-babel': 'systemjs-plugin-babel/plugin-babel.js',
             'systemjs-babel-build': 'systemjs-plugin-babel/systemjs-babel-browser.js'
