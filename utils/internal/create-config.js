@@ -2,7 +2,6 @@
 
 const path = require('path');
 const fs = require('fs');
-const { basename } = require('path');
 class CreateConfig {
     configDir = path.join(__dirname, '..', '..', 'JSDemos/configs');
     approaches = ['Angular', 'React', 'Vue'];
@@ -123,4 +122,3 @@ class CreateConfig {
 }
 
 module.exports = new CreateConfig();
-
