@@ -18,7 +18,7 @@ npm run prepare-js
 npm run prepare-mvc
 ```
 
-Angular, Vue, and React demos can use bundles instead of separate files from `node_modules`. Bundles speed up test runs. Run the following command to create the bundles and replace the SystemJS configuration:
+Angular, Vue, and React demos can use bundles instead of separate files from `node_modules`. With bundles, demos launch faster but become harder to debug. Run the following command to create the bundles and replace the SystemJS configuration:
 
 ```
 npm run prepare-bundles
