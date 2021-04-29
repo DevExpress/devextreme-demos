@@ -1981,7 +1981,6 @@
           {
             "Title": "Toolbar Customization",
             "Name": "ToolbarCustomization",
-            "DocUrl": "Guide/UI_Components/HtmlEditor/Toolbar/Built-In_Controls/",
             "Widget": "HtmlEditor",
             "DemoType": "Web"
           }
