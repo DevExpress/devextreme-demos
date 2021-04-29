@@ -271,4 +271,25 @@ views.Add()
         return filterAppointmentsByTime(appointments, startDayHour, endDayHour);
     }
 
+    function getScheduler() {
+        return $("#scheduler").dxScheduler("instance");
+    }
+
+    var startDay = new Date(2021, 1, 1);
+    var endDay = new Date(2021, 1, 28);
+
+    var startDayHour = 8
+    var endDayHour = 20
+
+    var appointments = generateAppointments(startDay, endDay, startDayHour, endDayHour);
+
+    $(function () {
+        const scheduler = getScheduler();
+        scheduler.option("dataSource", appointments);
+        scheduler.option("resources", [{
+            fieldExpr: "humanId",
+            dataSource: resources,
+            label: "Employee"
+        }]);
+    })
 </script>
