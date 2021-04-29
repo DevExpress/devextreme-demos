@@ -1,6 +1,6 @@
-You can use the batch edit mode to defer saving multiple cell changes. The changes are stored in a buffer and can be discarded before a user clicks the **Save** button.
+You can use batch edit mode to defer saving multiple cell changes. Changes are stored in a buffer and can be discarded before a user clicks the **Save** button.
 
-To enable the batch edit mode, configure the following properties:
+To enable batch edit mode, configure the following properties:
 
 * Set **editing**.[mode](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/editing/#mode) to *"batch"*.
 * Assign **true**  to the [editing](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/editing/#mode) object's [allowUpdating](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/editing/#allowUpdating), [allowAdding](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/editing/#allowAdding), and [allowDeleting](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/editing/#allowDeleting) properties.
