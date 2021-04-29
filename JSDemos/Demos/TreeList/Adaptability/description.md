@@ -2,4 +2,4 @@ TreeList automatically adapts its layout to screens with different sizes. In thi
 
 To enable this feature, set the [columnHidingEnabled](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#columnHidingEnabled) property to **true**.
 
-You can also use the **columns[]**.[hidingPriority](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#hidingPriority) property to specify custom hiding priorities for those columns that you want to hide. Other columns will never be hidden. The values are zero-based; columns with lower values are hidden first. 
+The TreeList hides columns based on their hiding priorities. Columns with lower priority values are hidden first. You can use the **columns[]**.[hidingPriority](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#hidingPriority) property to specify custom hiding priorities for those columns that you want to hide. Other columns will never be hidden.
