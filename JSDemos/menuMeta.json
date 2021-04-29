@@ -1969,7 +1969,6 @@
           {
             "Title": "Output Formats",
             "Name": "OutputFormats",
-            "DocUrl": "ApiReference/UI_Components/dxHtmlEditor/Configuration/#valueType",
             "Widget": "HtmlEditor",
             "DemoType": "Web",
             "Modules": "showdown&turndown"
@@ -4299,7 +4298,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/TagBox/Overview/",
             "Widget": "TagBox",
             "MvcAdditionalFiles": [
               "/Models/ElectronicsItem.cs",
@@ -4310,7 +4308,6 @@
           {
             "Title": "Grouped Items",
             "Name": "GroupedItems",
-            "DocUrl": "Guide/UI_Components/TagBox/Grouping/In_the_Data_Source/",
             "Widget": "TagBox",
             "MvcAdditionalFiles": [
               "/Models/ElectronicsItem.cs",
