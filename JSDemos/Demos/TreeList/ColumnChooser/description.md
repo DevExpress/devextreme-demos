@@ -8,6 +8,6 @@ Users drag and drop column headers to and from the column chooser.
 * *"select"*         
 Users select and unselect checkboxes with column names.
 
-If the [allowSearch](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columnChooser/#allowSearch) property is set to **true**, users can search through the column chooser values. In this demo, use the checkbox below the TreeList to toggle this feature.
+If the [allowSearch](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columnChooser/#allowSearch) property is set to **true**, users can search through column names. In this demo, use the checkbox below the TreeList to toggle this feature.
 
-You can also hide specific columns programmatically. For this, set **columns[]**.[visible](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#visible) to **false**. If a column should never be hidden, assign **false** to **columns[]**.[allowHiding](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#allowHiding). 
+You can also hide specific columns programmatically. For this, set the **columns[]**.[visible](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#visible) property to **false**. If a column should never be hidden, assign **false** to the **columns[]**.[allowHiding](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#allowHiding) property. 
