@@ -1,4 +1,4 @@
-The TreeList can use the [Form](/Documentation/ApiReference/UI_Components/dxForm/) component to arrange cell editors when users modify a row. The Form displays both [visible and hidden](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#visible) columns.
+The TreeList can use the [Form](/Documentation/ApiReference/UI_Components/dxForm/) component to arrange cell editors when users modify a row. The Form allows users to edit values from both [visible and hidden](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#visible) columns.
 
 To use the Form as the row editor UI, specify the following properties:
 - **editing**.[mode](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/editing/#mode) to *"form"*
