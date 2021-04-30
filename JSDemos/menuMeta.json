@@ -1579,7 +1579,6 @@
           {
             "Title": "Adaptability",
             "Name": "Adaptability",
-            "DocUrl": "Guide/UI_Components/TreeList/Columns/Adaptability/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
