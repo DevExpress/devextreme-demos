@@ -3,7 +3,7 @@ The initial order of columns mirrors the order of fields in the first object fro
 Properties to reorder columns programmatically:
 
 * [columns[]](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/)           
-Configures columns. Arrange column names and objects in the desired order.
+Configures columns. Arrange objects and column names as strings in the desired order.
 
 * **columns[]**.[visibleIndex](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#visibleIndex)          
 Specifies the position of the column regarding other columns. For details, see the [Column Reordering](https://js.devexpress.com/Documentation/Guide/UI_Components/TreeList/Columns/Column_Reordering/) article.
