@@ -29,6 +29,7 @@ module.exports = {
                     'adrs',
                     'africa',
                     'ajax',
+                    'antialiasing',
                     'api',
                     'ar', // arabic
                     'arabic',
@@ -55,6 +56,7 @@ module.exports = {
                     'cluster',
                     'cnstl',
                     'colorizer',
+                    'comparer',
                     'concat',
                     'coord',
                     'coords',
@@ -82,6 +84,8 @@ module.exports = {
                     'emp',
                     'evt',
                     'english',
+                    'etalon',
+                    'etalons',
                     'eurasia',
                     'europe',
                     'european',
@@ -102,6 +106,7 @@ module.exports = {
                     'geolocation',
                     'getter',
                     'getters',
+                    'globals',
                     'mapGetters',
                     'gif',
                     'goto',
@@ -235,6 +240,7 @@ module.exports = {
                     'ui', // User Interface
                     'ul',
                     'ungrouped',
+                    'unlink',
                     'unordered',
                     'unselect', // unselectAll()
                     'unshift',
