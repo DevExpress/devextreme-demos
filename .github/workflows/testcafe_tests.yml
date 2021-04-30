@@ -24,8 +24,6 @@ jobs:
 
     - name: Run npm install
       run: |
-        BASE_BRANCH=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
-        echo $BASE_BRANCH
         sed -i -- 's/21.2-next/21.1-next/' ./package.json
         npm install --no-package-lock --no-audit --no-fund
 
