@@ -606,7 +606,6 @@
           {
             "Title": "State Persistence",
             "Name": "StatePersistence",
-            "DocUrl": "ApiReference/UI_Components/dxDataGrid/Configuration/stateStoring/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Models/Order.cs",
@@ -1339,7 +1338,6 @@
           {
             "Title": "Batch Editing",
             "Name": "BatchEditing",
-            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Batch_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
@@ -1560,7 +1558,6 @@
           {
             "Title": "State Persistence",
             "Name": "StatePersistence",
-            "DocUrl": "ApiReference/UI_Components/dxTreeList/Configuration/stateStoring/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListEmployeesController.cs",
@@ -1578,7 +1575,6 @@
           {
             "Title": "Adaptability",
             "Name": "Adaptability",
-            "DocUrl": "Guide/UI_Components/TreeList/Columns/Adaptability/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1981,7 +1977,6 @@
           {
             "Title": "Toolbar Customization",
             "Name": "ToolbarCustomization",
-            "DocUrl": "Guide/UI_Components/HtmlEditor/Toolbar/Built-In_Controls/",
             "Widget": "HtmlEditor",
             "DemoType": "Web"
           }
