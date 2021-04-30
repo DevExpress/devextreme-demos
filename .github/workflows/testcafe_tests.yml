@@ -24,9 +24,8 @@ jobs:
 
     - name: Run npm install
       run: |
-        echo ${{github.base_ref}}
-        echo ${{github.event.pull_request.base}}
-        echo ${{github.event.pull_request.base.ref}}
+        BASE_BRANCH=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
+        echo $BASE_BRANCH
         sed -i -- 's/21.2-next/21.1-next/' ./package.json
         npm install --no-package-lock --no-audit --no-fund
 
@@ -36,7 +35,9 @@ jobs:
       run: git clone -b ${{github.event.pull_request.head.ref}} https://github.com/${{github.event.pull_request.user.login}}/devextreme ../devextreme-repo
 
     - name: Clone devextreme repo
-      run: test -d ../devextreme-repo || git clone -b 21_2 https://github.com/devexpress/devextreme ../devextreme-repo
+      run: |
+        BASE_BRANCH=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
+        test -d ../devextreme-repo || git clone -b $BASE_BRANCH https://github.com/devexpress/devextreme ../devextreme-repo
 
     - name: Install packages in devextreme repo
       run: |
