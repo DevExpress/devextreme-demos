@@ -1338,7 +1338,6 @@
           {
             "Title": "Batch Editing",
             "Name": "BatchEditing",
-            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Batch_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
@@ -1980,7 +1979,6 @@
           {
             "Title": "Toolbar Customization",
             "Name": "ToolbarCustomization",
-            "DocUrl": "Guide/UI_Components/HtmlEditor/Toolbar/Built-In_Controls/",
             "Widget": "HtmlEditor",
             "DemoType": "Web"
           }
