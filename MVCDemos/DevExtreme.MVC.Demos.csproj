@@ -895,7 +895,6 @@
     <Content Include="Content\DemosStyles\Scheduler\CurrentTimeIndicator.css" />
     <Content Include="Content\DemosStyles\Scheduler\AdaptiveAppointments.css" />
     <Content Include="Content\DemosStyles\Scheduler\CellTemplates.css" />
-    <Content Include="Content\DemosStyles\Scheduler\VirtualScrolling.css" />
     <Content Include="Content\DemosStyles\Scheduler\CustomizeIndividualViews.css" />
     <Content Include="Content\DemosStyles\Scheduler\CustomTemplates.css" />
     <Content Include="Content\DemosStyles\Scheduler\GroupByDate.css" />
