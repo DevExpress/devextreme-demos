@@ -5,8 +5,8 @@
       Ticket Price: <strong>{{ '$' + templateModel.appointmentData.price }}</strong>
     </div>
     <div>
-      {{ formatDate(templateModel.appointmentData.startDate, "shortDate") }} -
-      {{ formatDate(templateModel.appointmentData.endDate, "shortDate") }}
+      {{ formatDate(templateModel.appointmentData.startDate) }} -
+      {{ formatDate(templateModel.appointmentData.endDate) }}
     </div>
   </div>
 </template>
@@ -38,6 +38,11 @@ export default {
     templateModel: {
       type: Object,
       default: () => { }
+    }
+  },
+  methods: {
+    formatDate(value) {
+      return formatDate(value, "shortDate")
     }
   },
   data() {
