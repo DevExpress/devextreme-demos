@@ -40,11 +40,6 @@ export default {
       default: () => { }
     }
   },
-  methods: {
-    formatDate(value) {
-      return formatDate(value, 'shortDate')
-    }
-  },
   data() {
     return {
       dayOfWeekNames: dayOfWeekNames,
