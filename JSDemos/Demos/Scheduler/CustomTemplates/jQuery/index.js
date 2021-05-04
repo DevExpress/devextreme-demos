@@ -34,8 +34,8 @@ $(function(){
                         "<div>" + movieInfo.text + "</div>" +
                         "<div>Ticket Price: <strong>$" + model.appointmentData.price + "</strong>" +
                         "</div>" + 
-                        "<div>" + DevExpress.localization.formatDate(model.appointmentData.startDate, "shortDate") +
-                            " - " + DevExpress.localization.formatDate(model.appointmentData.endDate, "shortDate") +
+                        "<div>" + DevExpress.localization.formatDate(model.appointmentData.startDate, "shortTime") +
+                            " - " + DevExpress.localization.formatDate(model.appointmentData.endDate, "shortTime") +
                         "</div>" + 
                     "</div>");
         },

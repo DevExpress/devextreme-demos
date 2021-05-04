@@ -19,9 +19,9 @@ export default function Appointment(model) {
         Ticket Price: <strong>${ appointmentData.price }</strong>
       </div>
       <div>
-        {formatDate(appointmentData.startDate, 'shortDate')}
+        {formatDate(appointmentData.startDate, 'shortTime')}
         {' - '}
-        {formatDate(appointmentData.endDate, 'shortDate')}
+        {formatDate(appointmentData.endDate, 'shortTime')}
       </div>
     </div>
   );

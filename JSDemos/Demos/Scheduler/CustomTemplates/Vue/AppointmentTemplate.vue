@@ -5,14 +5,14 @@
       Ticket Price: <strong>{{ '$' + templateModel.appointmentData.price }}</strong>
     </div>
     <div>
-      {{ formatDate(templateModel.appointmentData.startDate) }} -
-      {{ formatDate(templateModel.appointmentData.endDate) }}
+      {{ getFormatDate(templateModel.appointmentData.startDate) }} -
+      {{ getFormatDate(templateModel.appointmentData.endDate) }}
     </div>
   </div>
 </template>
 <script>
 
-import { localization } from 'devextreme';
+import { formatDate } from 'devextreme/localization';
 import DxButton from 'devextreme-vue/button';
 import Query from 'devextreme/data/query';
 
@@ -47,8 +47,8 @@ export default {
     };
   },
   methods: {
-    formatDate(value) {
-      return localization.formatDate(value, 'shortDate');
+    getFormatDate(value) {
+      return formatDate(value, 'shortTime');
     }
   }
 };
