@@ -12,7 +12,7 @@
 </template>
 <script>
 
-import { formatDate } from 'devextreme/localization';
+import { localization } from 'devextreme';
 import DxButton from 'devextreme-vue/button';
 import Query from 'devextreme/data/query';
 
@@ -38,6 +38,11 @@ export default {
     templateModel: {
       type: Object,
       default: () => { }
+    }
+  },
+  methods: {
+    formatDate(value) {
+      return localization.formatDate(value, "shortDate");
     }
   },
   data() {
