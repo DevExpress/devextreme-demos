@@ -5,13 +5,14 @@
       Ticket Price: <strong>{{ '$' + templateModel.appointmentData.price }}</strong>
     </div>
     <div>
-      {{ DevExpress.localization.formatDate(templateModel.appointmentData.startDate, "shortDate") }} -
-      {{ DevExpress.localization.formatDate(templateModel.appointmentData.endDate, "shortDate") }}
+      {{ formatDate(templateModel.appointmentData.startDate, "shortDate") }} -
+      {{ formatDate(templateModel.appointmentData.endDate, "shortDate") }}
     </div>
   </div>
 </template>
 <script>
 
+import { formatDate } from 'devextreme/localization';
 import DxButton from 'devextreme-vue/button';
 import Query from 'devextreme/data/query';
 

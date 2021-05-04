@@ -1,6 +1,7 @@
 import React from 'react';
 import Query from 'devextreme/data/query';
 import { moviesData } from './data.js';
+import { formatDate } from 'devextreme/localization';
 
 function getMovieById(id) {
   return Query(moviesData).filter(['id', id]).toArray()[0];
@@ -8,7 +9,6 @@ function getMovieById(id) {
 
 export default function Appointment(model) {
   const { appointmentData } = model.data;
-  const { formatDate } = DevExpress.localization;
 
   const movieData = getMovieById(appointmentData.movieId) || {};
 
