@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     formatDate(value) {
-      return formatDate(value, "shortDate")
+      return formatDate(value, 'shortDate')
     }
   },
   data() {
