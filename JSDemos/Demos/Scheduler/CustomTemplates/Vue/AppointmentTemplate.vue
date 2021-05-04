@@ -40,17 +40,17 @@ export default {
       default: () => { }
     }
   },
-  methods: {
-    formatDate(value) {
-      return localization.formatDate(value, "shortDate");
-    }
-  },
   data() {
     return {
       dayOfWeekNames: dayOfWeekNames,
       movieData: getMovieById(this.templateModel.appointmentData.movieId)
     };
   },
+  methods: {
+    formatDate(value) {
+      return localization.formatDate(value, 'shortDate');
+    }
+  }
 };
 </script>
 <style scoped>
