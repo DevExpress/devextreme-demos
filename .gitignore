@@ -15,6 +15,7 @@ NuGet
 package-lock.json
 repository.config.json
 coverage
+bundles
 
 *d.ts
 gulpfile.js/.eslintrc.js
