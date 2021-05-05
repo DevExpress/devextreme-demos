@@ -17,6 +17,7 @@ repository.config.json
 coverage
 artifacts
 screenshots
+bundles
 
 *d.ts
 gulpfile.js/.eslintrc.js
