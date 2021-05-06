@@ -1507,7 +1507,6 @@
           {
             "Title": "Column Chooser",
             "Name": "ColumnChooser",
-            "DocUrl": "Guide/UI_Components/TreeList/Columns/Column_Chooser/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
