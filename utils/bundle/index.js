@@ -34,7 +34,6 @@ if(framework === 'angular') {
     }];
 
     packages = [
-        'rxjs/rx.js',
         'rxjs/Rx.js',
         'rxjs/index.js',
         'rxjs/operators/index.js'

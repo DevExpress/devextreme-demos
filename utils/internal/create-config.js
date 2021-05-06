@@ -32,12 +32,12 @@ class CreateConfig {
 
     removeModulesIfBundle(content) {
         return content
-            .replace(/'rxjs(\/operators)?'.*?[,\n]/g, '')
-            .replace(/'devextreme(?:-angular|-vue|-react)?'.*?[,\n]/g, '')
-            .replace(/'devextreme\/bundles\/dx.all'.*?[,\n]/, '')
-            .replace(/'react'.*?[,\n]/, '')
-            .replace(/'react-dom'.*?[,\n]/, '')
-            .replace(/'systemjs-babel-build':.*?[,\n]/, '');
+            .replace(/'rxjs(\/operators)?'.*?,/g, '')
+            .replace(/'devextreme(?:-angular|-vue|-react)?'.*?,/g, '')
+            .replace(/'devextreme\/bundles\/dx.all'.*?,/, '')
+            .replace(/'react'.*?,/, '')
+            .replace(/'react-dom'.*?,/, '')
+            .replace(/'systemjs-babel-build':.*?,/, '');
     }
 
     getConfigContent(approach, modulesString) {
