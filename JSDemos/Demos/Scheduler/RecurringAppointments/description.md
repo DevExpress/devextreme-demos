@@ -5,7 +5,7 @@ To create a recurring appointment programmatically, do the following:
 1. Locate or create an appointment object in the [dataSource](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/#dataSource). 
 
 2. Specify the [recurrenceRule](/Documentation/ApiReference/Common/Object_Structures/dxSchedulerAppointment/#recurrenceRule) property to configure the appointment frequency.         
-Use the <a href="http://tools.ietf.org/html/rfc2445#section-4.3.10" target="_blank">iCalendar RFC 2445</a> specification to set this property. Note that a single object in the data source corresponds to an appointment series.
+Use the <a href="http://tools.ietf.org/html/rfc2445#section-4.3.10" target="_blank">iCalendar RFC 2445</a> specification to set this property. Note that an appointment series corresponds to a single object in the data source.
 
 1. Optionally, use the [recurrenceException](/Documentation/ApiReference/Common/Object_Structures/dxSchedulerAppointment/#recurrenceException) property to specify the start date and time of appointments to exclude from the series.
 
