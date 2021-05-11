@@ -18,8 +18,7 @@ if (window.Promise && window.System) {
                 'devextreme/ui/pivot_grid/*',
                 'devextreme/viz/*',
                 'devextreme/viz/vector_map/*',
-                'devextreme-vue/*',
-                'dx-systemjs-vue-browser/*'
+                'devextreme-vue/*'
             ]
         },
         paths: {
