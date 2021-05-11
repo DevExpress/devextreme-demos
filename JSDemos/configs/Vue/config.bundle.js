@@ -19,9 +19,7 @@ if (window.Promise && window.System) {
                 'devextreme/viz/*',
                 'devextreme/viz/vector_map/*',
                 'devextreme-vue/*',
-                'dx-systemjs-vue-browser/*',
-                'systemjs-plugin-babel/*',
-                'systemjs-plugin-babel/babel-helpers/*'
+                'dx-systemjs-vue-browser/*'
             ]
         },
         paths: {
@@ -31,8 +29,6 @@ if (window.Promise && window.System) {
             'jquery': 'npm:jquery/dist/jquery.min.js',
             'devextreme.vue.systemjs.js': '../../../../../bundles/devextreme.vue.systemjs.js',
             'devextreme-quill': 'npm:devextreme-quill/dist/dx-quill.min.js',
-            'plugin-babel': 'systemjs-plugin-babel/plugin-babel.js',
-            'systemjs-babel-build': 'systemjs-plugin-babel/systemjs-babel-browser.js'
         },
         packages: {
             'devextreme': {
