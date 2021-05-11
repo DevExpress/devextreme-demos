@@ -3472,7 +3472,14 @@
             "Widget": "Gantt",
             "DemoType": "Web",
             "Modules": "jspdf&jspdf-autotable",
-            "WideDemo": true            
+            "WideDemo": true,
+            "MvcAdditionalFiles": [
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
+            ]
           }
         ]
       }
