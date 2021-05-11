@@ -34,5 +34,8 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         public IActionResult TaskTemplate() {
             return View();
         }
+        public IActionResult ExportToPDF() {
+            return View();
+        }
     }
 }

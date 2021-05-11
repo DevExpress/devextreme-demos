@@ -802,6 +802,7 @@
     <Content Include="Content\DemosStyles\Form\UpdateItemsDynamically.css" />
     <Content Include="Content\DemosStyles\Form\Validation.css" />
     <Content Include="Content\DemosStyles\Gallery\ItemTemplate.css" />
+    <Content Include="Content\DemosStyles\Gantt\ExportToPDF.css" />
     <Content Include="Content\DemosStyles\Gantt\TaskTemplate.css" />
     <Content Include="Content\DemosStyles\Gantt\ContextMenu.css" />
     <Content Include="Content\DemosStyles\Gantt\ChartAppearance.css" />
@@ -2161,6 +2162,7 @@
     <Content Include="Views\Scheduler\VirtualScrolling.cshtml" />
     <Content Include="Views\Charts\Strips.cshtml" />
     <Content Include="Views\Gantt\TaskTemplate.cshtml" />
+    <Content Include="Views\Gantt\ExportToPDF.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
