@@ -1,4 +1,4 @@
-Scheduler allows users to add, edit, resize, drag, and delete appointments. The editing object consists of properties to configure these operations:
+Scheduler allows users to add, edit, resize, drag, and delete appointments. The [editing](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/editing/) object consists of properties to configure these operations:
 
 * [allowAdding](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/editing/#allowAdding)
 * [allowDeleting](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/editing/#allowDeleting)
@@ -17,6 +17,6 @@ Edit operations raise events that you can handle with the following functions:
 
 * [onAppointmentUpdating](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/#onAppointmentUpdating) / [onAppointmentUpdated](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/#onAppointmentUpdated)
 
-In this demo, we have configured these handlers to display a toast message after a user performes an edit operation.
+In this demo, we have configured the handlers to display a toast message after a user performs an edit operation.
 
 For details on the **allowTimeZoneEditing** property, see the [Time Zone Support](/Demos/WidgetsGallery/Demo/Scheduler/TimeZonesSupport/) demo.
