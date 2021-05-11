@@ -126,8 +126,8 @@ function prepareModulesToNamedImport() {
     ];
 
     const paths = [
-        '../npm-scripts/npm-devextreme',
-        'node_modules/devextreme'
+        '../npm-scripts/npm-devextreme/cjs',
+        'node_modules/devextreme/cjs'
     ];
 
     const esModuleExport = 'exports.__esModule = true;';
