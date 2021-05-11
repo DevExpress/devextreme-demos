@@ -81,38 +81,6 @@ if(framework === 'react') {
     ];
 }
 
-if(framework === 'vue') {
-    additionPackage = [
-        {
-            name: 'dx-systemjs-vue-browser/*',
-            metaValue: {
-                build: true
-            },
-            pathValue: 'node_modules/dx-systemjs-vue-browser/*'
-        },
-        {
-            name: 'systemjs-plugin-babel/*',
-            metaValue: {
-                build: true
-            },
-            pathValue: 'node_modules/systemjs-plugin-babel/*'
-        }];
-
-    packages = [
-        'dx-systemjs-vue-browser/index.js',
-        'systemjs-plugin-babel/plugin-babel.js',
-        'systemjs-plugin-babel/systemjs-babel-browser.js',
-        'systemjs-plugin-babel/babel-helpers/classCallCheck.js',
-        'systemjs-plugin-babel/babel-helpers/createClass.js',
-        'systemjs-plugin-babel/babel-helpers/slicedToArray.js',
-        'systemjs-plugin-babel/babel-helpers/extends.js',
-        'systemjs-plugin-babel/babel-helpers/toConsumableArray.js',
-        'systemjs-plugin-babel/babel-helpers/defineProperty.js',
-        'systemjs-plugin-babel/babel-helpers/asyncToGenerator.js',
-        'systemjs-plugin-babel/regenerator-runtime.js'
-    ];
-}
-
 const defaultBuilderConfig = {
     defaultExtension: false,
     defaultJSExtensions: 'js',
