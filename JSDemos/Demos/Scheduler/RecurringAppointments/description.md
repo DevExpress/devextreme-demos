@@ -14,6 +14,6 @@ To create a recurring appointment in the UI, users should do the following:
 
 2. Toggle the *"Repeat"* switcher on the appointment details form.
 
-3. Set the recurrence rules in the newly opened fields.
+3. Use the form's fields to set the recurrence rules.
 
 The recurrent appointment's rectangle will have a circular arrow glyph in the top right corner.
