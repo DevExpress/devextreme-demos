@@ -480,7 +480,7 @@
             "BackendFiles": [
               "DataGridRowReorderingController.cs",
               "InMemoryRowReorderingTasksDataContext.cs"
-            ]  
+            ]
           },
           {
             "Title": "Drag & Drop Between Two Grids",
@@ -3458,6 +3458,21 @@
               "/Models/Gantt/ResourceAssignment.cs",
               "/Models/Gantt/Task.cs"
             ]
+          }
+        ]
+      },
+      {
+        "Name": "Export to PDF (CTP)",
+        "Equivalents": "",
+        "Demos": [
+          {
+            "Title": "Export To PDF (CTP)",
+            "Badge": "New",
+            "Name": "ExportToPDF",
+            "Widget": "Gantt",
+            "DemoType": "Web",
+            "Modules": "jspdf&jspdf-autotable",
+            "WideDemo": true            
           }
         ]
       }
