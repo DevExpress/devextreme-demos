@@ -1,0 +1,238 @@
+﻿@using DevExtreme.NETCore.Demos.Models.SampleData
+@using Gantt = DevExtreme.NETCore.Demos.Models.Gantt
+
+@section ExternalDependencies {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.14/jspdf.plugin.autotable.min.js"></script>
+    <script>
+        window.jsPDF = window.jspdf.jsPDF;
+        applyPlugin(window.jsPDF);
+    </script>
+}
+
+<div class="widget-container">
+    @(Html.DevExtreme().Gantt<Gantt.Task>()
+        .ID("gantt")
+        .Tasks(t => t
+            .DataSource(ds => ds.Array().Data(SampleData.GanttTasks).Key("ID"))
+            .KeyExpr("ID")
+            .TitleExpr("Title")
+            .ParentIdExpr("ParentId")
+            .StartExpr("Start")
+            .EndExpr("End")
+            .ProgressExpr("Progress")
+        )
+        .Dependencies(d => d
+            .DataSource(ds => ds.Array().Data(SampleData.GanttDependencies).Key("ID"))
+            .KeyExpr("ID")
+            .PredecessorIdExpr("PredecessorId")
+            .SuccessorIdExpr("SuccessorId")
+            .TypeExpr("Type")
+        )
+        .Resources(r => r
+            .DataSource(ds => ds.Array().Data(SampleData.GanttResources).Key("ID"))
+            .KeyExpr("ID")
+            .TextExpr("Text")
+        )
+        .ResourceAssignments(ra => ra
+            .DataSource(ds => ds.Array().Data(SampleData.GanttResourceAssignments).Key("ID"))
+            .KeyExpr("ID")
+            .TaskIdExpr("TaskId")
+            .ResourceIdExpr("ResourceId")
+        )
+        .Editing(e => e.Enabled(true))
+        .Toolbar(t => {
+            t.Items(i => {
+                i.Add().Name(GanttToolbarItem.Undo);
+                i.Add().Name(GanttToolbarItem.Redo);
+                i.Add().Name(GanttToolbarItem.Separator);
+                i.Add().Name(GanttToolbarItem.ZoomIn);
+                i.Add().Name(GanttToolbarItem.ZoomOut);
+                i.Add().Name(GanttToolbarItem.Separator);
+                i.Add().Name("exportpdf")
+                   .Widget(widget => widget.Button()
+                   .OnClick("exportGantt")
+                   .Icon("exportpdf")
+                   .Hint("Export to PDF")
+                   .StylingMode(ButtonStylingMode.Text)
+                   );
+            });
+        })
+        .Columns(columns => {
+            columns.AddFor(m => m.Title)
+                .Caption("Subject")
+                .Width(300);
+            columns.AddFor(m => m.Start)
+                .Caption("Start Date");
+            columns.AddFor(m => m.End)
+                .Caption("End Date");
+        })
+        .ScaleType(GanttScaleType.Weeks)
+        .TaskListWidth(500)
+    )
+</div>
+
+<div class="options">
+    <div class="column">
+        <div class="option">
+            <div class="label">Document format:</div>
+            <div class="value">
+                @(Html.DevExtreme().DropDownBox()
+                    .ID("formatSelector")
+                    .DataSource(new[] {
+                        "A0", "A1", "A2", "A3", "A4"
+                    })
+                    .Value("A0")
+                    .ContentTemplate(new JS("getFormatSelectorContentTemplate"))
+                )
+            </div>
+        </div>
+        <div class="option">
+            <div class="label">Landscape orientation:</div>
+            <div class="value">
+                @(Html.DevExtreme().CheckBox()
+                    .ID("landscapeCheckBoxContainer")
+                    .Value(true)
+                )
+            </div>
+        </div>
+        <div class="option">
+            <div class="label">Export mode:</div>
+            <div class="value">
+                @(Html.DevExtreme().DropDownBox()
+                    .ID("exportModeSelector")
+                    .DataSource(new[] {
+                        "All", "Chart", "Tree List"
+                    })
+                    .Value("All")
+                    .ContentTemplate(new JS("getExportModeSelectorContentTemplate"))
+                )
+            </div>
+        </div>
+        <div class="option">
+            <div class="label">Date range:</div>
+            <div class="value">
+                @(Html.DevExtreme().DropDownBox()
+                    .ID("dataRangeSelector")
+                    .DataSource(new[] {
+                        "All", "Visible", "Custom"
+                    })
+                    .Value("Visible")
+                    .ContentTemplate(new JS("getDataRangeSelectorContentTemplate"))
+                )
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="option">
+            <div class="label">Start task (index):</div>
+            <div class="value">
+                @(Html.DevExtreme().NumberBox()
+                    .ID("startIndexContainer")
+                    .Value(0)
+                    .ShowSpinButtons(true)
+                )
+            </div>
+        </div>
+        <div class="option">
+            <div class="label">End task (index):</div>
+            <div class="value">
+                @(Html.DevExtreme().NumberBox()
+                    .ID("endIndexContainer")
+                    .Value(3)
+                    .ShowSpinButtons(true)
+                )
+            </div>
+        </div>
+        <div class="option">
+            <div class="label">Start date:</div>
+            <div class="value">
+                @(Html.DevExtreme().DateBox()
+                    .ID("startDateContainer")
+                    .Type(DateBoxType.Date)
+                    .Value(SampleData.GanttTasks.First().Start)
+                )
+            </div>
+        </div>
+        <div class="option">
+            <div class="label">End date:</div>
+            <div class="value">
+                @(Html.DevExtreme().DateBox()
+                    .ID("endDateContainer")
+                    .Type(DateBoxType.Date)
+                    .Value(SampleData.GanttTasks.First().End)
+                )
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function getGanttInstance() {
+        return $("#gantt").dxGantt("instance");
+    }
+    function getFormatSelectorContentTemplate(e) {
+        const $list = $("<div>").dxList({
+            dataSource: e.component.option("dataSource"),
+            selectionMode: "single",
+            onSelectionChanged: function (arg) {
+                e.component.option("value", arg.addedItems[0]);
+                e.component.close();
+            }
+        });
+        return $list;
+    }
+    function getExportModeSelectorContentTemplate(e) {
+        const $list = $("<div>").dxList({
+            dataSource: e.component.option("dataSource"),
+            selectionMode: "single",
+            onSelectionChanged: function (arg) {
+                e.component.option("value", arg.addedItems[0]);
+                e.component.close();
+            }
+        });
+        return $list;
+    }
+    function getDataRangeSelectorContentTemplate(e) {
+        const $list = $("<div>").dxList({
+            dataSource: e.component.option("dataSource"),
+            selectionMode: "single",
+            onSelectionChanged: function (arg) {
+                e.component.option("value", arg.addedItems[0]);
+                e.component.close();
+            }
+        });
+        return $list;
+    }
+    function exportGantt() {
+        var ganttInstance = getGanttInstance();
+        const format = $("#formatSelector").dxDropDownBox("option", "value").toLowerCase();
+        const isLandscape = $("#landscapeCheckBoxContainer").dxCheckBox("option", "value");
+        let exportMode = $("#exportModeSelector").dxDropDownBox("option", "value");
+        exportMode = exportMode === "Tree List" ? "treeList" : exportMode.toLowerCase();
+        const dataRangeMode = $("#dataRangeSelector").dxDropDownBox("option", "value").toLowerCase();
+        let dataRange;
+        if (dataRangeMode === 'custom') {
+            dataRange = {
+                startIndex: $("#startIndexContainer").dxNumberBox("option", "value"),
+                endIndex: $("#endIndexContainer").dxNumberBox("option", "value"),
+                startDate: $("#startDateContainer").dxDateBox("option", "value"),
+                endDate: $("#endDateContainer").dxDateBox("option", "value")
+            }
+        }
+        else {
+            dataRange = dataRangeMode
+        }
+        ganttInstance.exportToPdf(
+            {
+                format: format,
+                landscape: isLandscape,
+                exportMode: exportMode,
+                dateRange: dataRange
+            }
+        ).then(doc => {
+            doc.save('gantt.pdf');
+        });
+    }
+</script>
