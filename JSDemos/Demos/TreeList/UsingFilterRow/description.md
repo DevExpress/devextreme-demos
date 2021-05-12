@@ -1,6 +1,6 @@
-The filter row allows users to enter a query for each column and filter rows by that value. To display the filter row, set the **filterRow**.[visible](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/filterRow/#visible) property to **true**.
+The filter row allows users to enter a query for each column and filter rows by that value. To display the filter row, set the **filterRow**.[visible](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/filterRow/#visible) property to **true**. If you need to deactivate this feature for a certain column, set its [allowFiltering](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#allowFiltering) property to **false**.
 
-Depending on a column's [dataType](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#dataType), its filter row cell offers users different editors to enter a filter value:
+Depending on a column's [dataType](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#dataType), its filter row cell represents different editors:
 
 <table class="dx-table">
     <tr>
@@ -25,4 +25,6 @@ Depending on a column's [dataType](/Documentation/ApiReference/UI_Components/dxT
     </tr> 
 </table>
 
-Users can click a magnifying glass icon in the filter row cell to open a drop-down list with available filters. These filters and their initial setting are also defined by the column's data type. You can use the [selectedFilterOperation](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#selectedFilterOperation) property to specify a custom initial filter operation.
+Users can click a magnifying glass icon in the filter row cell to select a different filter type. These filters and their initial settings are also defined by the column's data type. If you need to restrict the available filters, specify them in the **columns[]**.[filterOperations](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#filterOperations) array. You can also use the [selectedFilterOperation](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#selectedFilterOperation) property to specify a custom initial filter operation.
+
+To set a filter value in code, use the **columns[]**.[filterValue](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#filterValue) property as done in the [Filter Panel](/Demos/WidgetsGallery/Demo/TreeList/FilterPanel/) demo.
