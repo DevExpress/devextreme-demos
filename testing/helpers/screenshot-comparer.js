@@ -87,7 +87,7 @@ async function getMaskedScreenshotBuffer({
   const etalonImg = getImage(etalonFileName);
   const screenshotImg = getImage(screenshotFileName);
   if (!isSizeEqual(etalonImg, screenshotImg)) {
-    throw new Error('Screenshot size does not match etalon size');
+    throw new Error(`The screenshot size (W:${screenshotImg.width}, H:${screenshotImg.height}) does not match the etalon size (W:${etalonImg.width}, H:${etalonImg.height}) for: ${screenshotFileName}`);
   }
 
   if (!fs.existsSync(maskFileName)) {
@@ -95,7 +95,7 @@ async function getMaskedScreenshotBuffer({
   }
   const maskImg = getImage(maskFileName);
   if (!isSizeEqual(etalonImg, maskImg)) {
-    throw new Error('Mask size does not match etalon size');
+    throw new Error(`Mask size does not match etalon size for screenshot: ${screenshotFileName}`);
   }
   const targetImageBuffer = applyMask(etalonImg, screenshotImg, maskImg);
   return targetImageBuffer;
@@ -163,8 +163,7 @@ async function tryGetValidScreenshot({
     await (element
       ? t.takeElementScreenshot(element, screenshotFileName)
       : t.takeScreenshot(screenshotFileName));
-    // eslint-disable-next-line no-console
-    console.log('takeScreenshot', screenshotFileName);
+
     screenshotBuffer = await getMaskedScreenshotBuffer({
       screenshotFileName, etalonFileName, maskFileName,
     });
