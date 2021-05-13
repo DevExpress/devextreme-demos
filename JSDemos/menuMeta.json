@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "Name": "Data Grid",
     "Equivalents": "dxDataGrid, dx-data-grid",
@@ -3874,7 +3874,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/TabPanel/Overview/",
             "Widget": "TabPanel",
             "MvcAdditionalFiles": [
               "/Models/Company.cs",
