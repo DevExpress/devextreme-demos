@@ -30,25 +30,16 @@ class CreateConfig {
         return content.replace(moduleRegex, handler);
     }
 
-    removeModulesIfBundle(content) {
-        return content
-            .replace(/'rxjs(\/operators)?'.*?,/g, '')
-            .replace(/'devextreme(?:-angular|-vue|-react)?'.*?,/g, '')
-            .replace(/'devextreme\/bundles\/dx.all'.*?,/, '')
-            .replace(/'react'.*?,/, '')
-            .replace(/'react-dom'.*?,/, '')
-            .replace(/'systemjs-babel-build':.*?,/, '');
-    }
-
     getConfigContent(approach, modulesString) {
         const modules = modulesString.replace(/\s/g, '').split(',');
         let baseContent = '';
 
         baseContent += fs.readFileSync(path.join(this.configDir, approach, 'config.js'), 'utf8');
         if(this.useBundles) {
-            baseContent = this.removeModulesIfBundle(baseContent);
+            baseContent = baseContent.replace('System.config(window.config);', '');
             baseContent += fs.readFileSync(path.join(this.configDir, approach, 'config.bundle.js'), 'utf8');
         }
+
         return this.removeEmptyLines(this.removeModules(baseContent, modules));
     }
 
