@@ -7,7 +7,7 @@ const dataSourceOptions = {
   store: {
     type: 'odata',
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Tasks',
-    key: "Task_ID"
+    key: 'Task_ID'
   },
   expand: 'ResponsibleEmployee',
   select: [
