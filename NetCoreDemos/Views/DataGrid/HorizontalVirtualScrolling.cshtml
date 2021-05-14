@@ -2,7 +2,7 @@
     .ID("grid")
     .Scrolling(scrolling => scrolling.ColumnRenderingMode(GridColumnRenderingMode.Virtual))
     .Paging(paging => paging.Enabled(false))
-    .DataSource(d => d.Mvc().Controller("DataGridHorizontalScrolling").LoadAction("Get"))
+    .DataSource(d => d.Mvc().Controller("DataGridHorizontalScrolling").LoadAction("Get").Key("field1"))
     .ColumnWidth(100)
     .ShowBorders(true)
 )
