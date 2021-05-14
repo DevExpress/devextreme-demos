@@ -13,7 +13,7 @@ const screenshotComparerDefault = {
   attemptTimeout: 500,
   looksSameComparisonOptions: {
     strict: false,
-    tolerance: 30,
+    tolerance: 5,
     ignoreAntialiasing: true,
     antialiasingTolerance: 10,
     ignoreCaret: true,
