@@ -9,7 +9,7 @@
 
 @(Html.DevExtreme().DataGrid<Employee>()
     .ID("gridContainer")
-    .DataSource(Model)
+    .DataSource(Model, "ID")
     .Selection(s => s.Mode(SelectionMode.Multiple))
     .Export(e => e.Enabled(true).AllowExportSelectedData(true))
     .ShowBorders(true)
