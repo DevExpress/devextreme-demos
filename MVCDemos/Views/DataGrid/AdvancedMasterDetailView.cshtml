@@ -1,6 +1,6 @@
 ﻿@(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.Northwind.Supplier>()
     .ID("gridContainer")
-    .DataSource(d => d.WebApi().Controller("DataGridAdvancedMasterDetailView").LoadAction("GetSuppliers"))
+    .DataSource(d => d.WebApi().Controller("DataGridAdvancedMasterDetailView").LoadAction("GetSuppliers").Key("SupplierID"))
     .Paging(p => p.PageSize(15))
     .ShowBorders(true)
     .Columns(columns => {
