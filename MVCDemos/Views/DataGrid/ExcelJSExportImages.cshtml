@@ -6,7 +6,8 @@
 
 @(Html.DevExtreme().DataGrid()
     .ID("gridContainer")
-    .DataSource(new JS("employees"), "ID")
+    .DataSource(new JS("employees"))
+    .KeyExpr("ID")
     .Export(e => e.Enabled(true))
     .ShowBorders(true)
     .ShowRowLines(true)
