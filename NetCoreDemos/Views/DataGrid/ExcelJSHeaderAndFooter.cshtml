@@ -11,7 +11,7 @@
 <div class="long-title"><h3>Country Area, Population, and GDP Structure</h3></div>
 @(Html.DevExtreme().DataGrid<CountryPopulationAndGDP>()
     .ID("gridContainer")
-    .DataSource(Model)
+    .DataSource(Model, "ID")
     .Export(e => e.Enabled(true))
     .ShowBorders(true)
     .OnExporting("exporting")
