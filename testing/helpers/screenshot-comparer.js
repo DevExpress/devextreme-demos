@@ -9,11 +9,12 @@ const artifactsPath = path.join(testRoot, '/artifacts');
 
 const screenshotComparerDefault = {
   highlightColor: { r: 0xff, g: 0, b: 0xff },
+  maskRadius: 5,
   attempts: 3,
   attemptTimeout: 500,
   looksSameComparisonOptions: {
     strict: false,
-    tolerance: 10,
+    tolerance: 5,
     ignoreAntialiasing: true,
     antialiasingTolerance: 10,
     ignoreCaret: true,
@@ -126,26 +127,85 @@ async function getDiff({
 }
 
 function getMask(diffBuffer, maskFileName, options) {
-  function makeTransparentExceptColor(image, maskImg, { r, g, b }) {
+  function transformImage(image, func) {
     for (let y = 0; y < image.height; y += 1) {
       for (let x = 0; x < image.width; x += 1) {
         // eslint-disable-next-line no-bitwise
         const index = (image.width * y + x) << 2;
-        const isHighlighted = (
-          image.data[index + 0] === r
-          && image.data[index + 1] === g
-          && image.data[index + 2] === b) || (maskImg && maskImg.data[index] === 0);
-        Array.from({ length: 3 }).forEach((_, i) => {
-          image.data[index + i] = isHighlighted ? 0 : 255;
-        });
+        func(image.data, index, x, y);
       }
     }
   }
+
+  function makeTransparentExceptColor(image, { r, g, b }) {
+    transformImage(image, (data, index) => {
+      const isHighlighted = (
+        data[index + 0] === r
+        && data[index + 1] === g
+        && data[index + 2] === b);
+      const color = isHighlighted ? 0 : 255;
+
+      data[index + 0] = color;
+      data[index + 1] = color;
+      data[index + 2] = color;
+    });
+  }
+
+  function applyMaskRadius(image, mr) {
+    const aroundColor = 7;
+    transformImage(image, (data, index, x, y) => {
+      const isHighlighted = data[index] === 0;
+
+      if (isHighlighted) {
+        const yBegin = Math.max(0, y - mr);
+        const xBegin = Math.max(0, x - mr);
+        const yEnd = Math.min(image.height, y + mr);
+        const xEnd = Math.min(image.width, x + mr);
+
+        for (let ry = yBegin; ry < yEnd; ry += 1) {
+          for (let rx = xBegin; rx < xEnd; rx += 1) {
+          // eslint-disable-next-line no-bitwise
+            const roundIndex = (image.width * ry + rx) << 2;
+            if (data[roundIndex] === 255) {
+              data[roundIndex] = aroundColor;
+            }
+          }
+        }
+      }
+    });
+
+    transformImage(image, (data, index) => {
+      if (data[index] === aroundColor) {
+        data[index + 0] = 0;
+        data[index + 1] = 0;
+        data[index + 2] = 0;
+      }
+    });
+  }
+
+  function applyPrevMask(image, prevMaskImage) {
+    transformImage(image, (data, index) => {
+      const isPrevHighlighted = prevMaskImage.data[index] === 0;
+
+      if (isPrevHighlighted) {
+        data[index + 0] = 0;
+        data[index + 1] = 0;
+        data[index + 2] = 0;
+      }
+    });
+  }
+
   const image = PNG.sync.read(diffBuffer);
   const maskBuffer = fs.existsSync(maskFileName) && fs.readFileSync(maskFileName);
   const maskImg = maskBuffer && PNG.sync.read(maskBuffer);
+  makeTransparentExceptColor(image, options.highlightColor);
+  if (options.maskRadius) {
+    applyMaskRadius(image, options.maskRadius);
+  }
+  if (maskImg) {
+    applyPrevMask(image, maskImg);
+  }
 
-  makeTransparentExceptColor(image, maskImg, options.highlightColor);
   return PNG.sync.write(image);
 }
 
