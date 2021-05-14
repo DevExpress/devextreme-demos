@@ -1,7 +1,7 @@
 <div id="data-grid-demo">
     @(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.RowReorderingTask>()
         .ID("gridContainer")
-        .DataSource(new JS("tasks"))
+        .DataSource(new JS("tasks"), "ID")
         .ShowBorders(true)
         .Height(440)
         .Sorting(sorting => sorting.Mode(GridSortingMode.None))
