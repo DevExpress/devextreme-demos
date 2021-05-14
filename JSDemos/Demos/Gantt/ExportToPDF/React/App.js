@@ -81,7 +81,7 @@ class App extends React.Component {
         <div className="options">
           <div className="column">
             <div className="option">
-              <div className="label">Document format</div>
+              <div className="label">Document format:</div>
               {' '}
               <div className="value">
                 <DropDownBox
@@ -93,14 +93,14 @@ class App extends React.Component {
               </div>
             </div>
             <div className="option">
-              <div className="label">Landscape orientation</div>
+              <div className="label">Landscape orientation:</div>
               {' '}
               <div className="value">
                 <CheckBox value={this.state.landscapeCheckBoxValue} onValueChanged={this.onLandscapeCheckBoxChanged} />
               </div>
             </div>
             <div className="option">
-              <div className="label">Export mode </div>
+              <div className="label">Export mode:</div>
               {' '}
               <div className="value">
                 <DropDownBox
@@ -112,7 +112,7 @@ class App extends React.Component {
               </div>
             </div>
             <div className="option">
-              <div className="label">Date range </div>
+              <div className="label">Date range:</div>
               {' '}
               <div className="value">
                 <DropDownBox
@@ -127,7 +127,7 @@ class App extends React.Component {
           {' '}
           <div className="column">
             <div className="option">
-              <div className="label">Start task (index) </div>
+              <div className="label">Start task (index):</div>
               {' '}
               <div className="value">
                 <NumberBox
@@ -140,7 +140,7 @@ class App extends React.Component {
               </div>
             </div>
             <div className="option">
-              <div className="label">End task (index) </div>
+              <div className="label">End task (index):</div>
               {' '}
               <div className="value">
                 <NumberBox
@@ -153,7 +153,7 @@ class App extends React.Component {
               </div>
             </div>
             <div className="option">
-              <div className="label">Start date </div>
+              <div className="label">Start date:</div>
               {' '}
               <div className="value">
                 <DateBox
@@ -165,7 +165,7 @@ class App extends React.Component {
               </div>
             </div>
             <div className="option">
-              <div className="label">End date </div>
+              <div className="label">End date:</div>
               {' '}
               <div className="value">
                 <DateBox
