@@ -1762,7 +1762,6 @@
           {
             "Title": "Resources",
             "Name": "Resources",
-            "DocUrl": "Guide/UI_Components/Scheduler/Resources/Assign_Appointments_to_Resources/",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/AppointmentWithResources.cs",
