@@ -15,9 +15,11 @@ In this demo, columns adjust their widths to the content. To enable this feature
 ### Allow Users to Resize Columns
 Users can resize columns if the [allowColumnResizing](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#allowColumnResizing) property is enabled. When a user resizes a column, the TreeList's behavior depends on the [columnResizingMode](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#columnResizingMode) property value:
 
-* *"nextColumn"*: the TreeList resizes the adjacent column; total component width stays the same.
+* *"nextColumn"*           
+The TreeList resizes the adjacent column; total component width stays the same.
 
-* *"widget"*: the total component width increases or decreases; all other columns maintain their widths.
+* *"widget"*            
+The total component width increases or decreases; all other columns maintain their widths.
 
 Use the drop-down list below the TreeList to try both values.
 
