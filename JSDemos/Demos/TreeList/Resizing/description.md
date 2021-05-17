@@ -6,7 +6,7 @@ You can set custom widths for all or individual columns. Individual settings ove
 * [columnWidth](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#columnWidth) / **columns[]**.[width](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#width)               
 Specify a width for all or individual columns.
 
-* [columnMinWidth](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#columnMinWidth) / *columns[]**.[minWidth](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#minWidth)                        
+* [columnMinWidth](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#columnMinWidth) / **columns[]**.[minWidth](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#minWidth)                        
 Specify a minimum width for all or individual columns.
 
 ### Auto-Adjust Column Widths to the Content
