@@ -1,18 +1,18 @@
-TreeList automatically sets equal widths for all columns. You can make column widths adjust to the content, set custom widths, and allow users to resize columns.
+The TreeList sets equal widths for all columns, but you can change the widths as described below:
 
-### Make column widths adjust to the content
+### Auto-Adjust Column Widths to the Content
 In this demo, columns adjust their widths to the content. To enable this feature, set the [columnAutoWidth](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#columnAutoWidth) property to **true**.
 
-### Set custom widths
-You can set custom width for all and individual columns. To do this, use the following properties:
+### Specify Custom Column Widths
+You can set custom widths for all or individual columns. Individual settings override common settings. Use the following properties to specify the widths:
 
-* [columnWidth](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#columnWidth)          
-Specifies the width for all data columns.
+* [columnWidth](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#columnWidth) / **columns[]**.[width](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#width)               
+Specify a width for all or individual columns.
 
-* **columns[]**.[width](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#width)           
-Specifies an individual column's width. Overrides the **columnWidth** value.
+* [columnMinWidth](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#columnMinWidth) / *columns[]**.[minWidth](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#minWidth)                        
+Specify a minimum width for all or individual columns.
 
-### Allow users to resize columns
+### Allow Users to Resize Columns
 Users can resize columns if the [allowColumnResizing](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#allowColumnResizing) property is enabled. When a user resizes a column, the TreeList's behavior depends on the [columnResizingMode](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#columnResizingMode) property value:
 
 * *"nextColumn"*: the TreeList resizes the adjacent column; total component width stays the same.
@@ -21,4 +21,4 @@ Users can resize columns if the [allowColumnResizing](/Documentation/ApiReferenc
 
 Use the drop-down list below the TreeList to try both values.
 
-If you need to prevent an individial column's resize, set **columns[]**.[allowResizing](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#allowResizing) to **false**. Сonfigure the [columnMinWidth](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#columnMinWidth) property to specify the minimal width for all columns as done in this demo. Use the **columns[]**.[minWidth](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#minWidth) to do this for an individual column.
+If you do not want users to resize a specific column, disable its [allowResizing](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#allowResizing) property.
