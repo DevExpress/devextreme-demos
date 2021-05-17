@@ -11,5 +11,3 @@ To create a recurring appointment, do the following:
 If your appointment data objects contain different fields that perform the functions of **recurrenceRule** and **recurrenceException**, specify their names in the Scheduler's [recurrenceRuleExpr](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/#recurrenceRuleExpr) and [recurrenceExceptionExpr](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/#recurrenceExceptionExpr) properties.
 
 Users also can create recurrent appointments. The appointment details form contains a Repeat switcher. When it is on, the form displays an additional set of fields that allow users to specify recurrence rules. Double-click an appointment and select Edit Series to view the appointment details form with the recurrence fields.
-
-The recurrent appointment's rectangle will have a circular arrow glyph in the top right corner.
