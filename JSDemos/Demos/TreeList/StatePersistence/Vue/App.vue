@@ -3,10 +3,12 @@
     <div id="descContainer">
       Sort and filter data, reorder and resize columns, select and expand rows. Once you are done,
       <a onclick="window.location.reload()">refresh</a>
-      the web page to see that the grid’s state is automatically persisted to continue working from where you stopped.
+      the web page to see that the grid’s state is automatically persisted to continue working from where you stopped
+      or you can <a @click="onStateResetClick">reset</a> the grid to its initial state.
     </div>
     <DxTreeList
       id="employees"
+      ref="treeList"
       :data-source="employees"
       :allow-column-reordering="true"
       :allow-column-resizing="true"
@@ -58,6 +60,11 @@ export default {
       employees: employees,
       expandedRowKeys: [1, 2, 10]
     };
+  },
+  methods: {
+    onStateResetClick() {
+      this.$refs['treeList'].instance.state(null);
+    }
   }
 };
 </script>
