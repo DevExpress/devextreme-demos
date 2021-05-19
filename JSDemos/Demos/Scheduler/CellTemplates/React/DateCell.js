@@ -7,7 +7,7 @@ export default function DateCell(props) {
 
   return (
     <div className={isWeekend ? 'disable-date' : null}>
-      <div>{text}</div>
+      <div />
     </div>
   );
 }

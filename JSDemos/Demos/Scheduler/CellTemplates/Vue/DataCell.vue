@@ -1,6 +1,5 @@
 <template>
   <div :class="markDataCell(cellData)">
-    {{ cellData.text }}
   </div>
 </template>
 <script>
