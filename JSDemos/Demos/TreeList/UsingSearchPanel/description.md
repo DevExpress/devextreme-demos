@@ -2,6 +2,6 @@ If you want users to search data, display the [searchPanel](/Documentation/ApiRe
 
 The TreeList searches in all columns, regardless of whether they are [visible](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#visible) or hidden. To exclude hidden columns from search, enable the **searchPanel**.[searchVisibleColumnsOnly](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/searchPanel/#searchVisibleColumnsOnly) property. You can also exclude any specific column. To do so, set its [allowSearch](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#allowSearch) property to **false**
 
-Search is case-insensitive. Numeric, date, and Boolean values match only if they are equal to the search query. String values match even if they contain only a part of the query.
+Numeric, date, and Boolean values match only if they are equal to the search query. String values match if they contain the query. Search for strings is case-insensitive.
 
 To specify a search query in code, set the **searchPanel**.[text](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/searchPanel/#text) property or call the [searchByText(text)](/Documentation/ApiReference/UI_Components/dxTreeList/Methods/#searchByTexttext) method.
