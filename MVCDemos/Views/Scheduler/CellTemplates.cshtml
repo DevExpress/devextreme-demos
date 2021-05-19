@@ -8,7 +8,7 @@
     .EndDateExpr("EndDate")
     .Views(new[] { SchedulerViewType.WorkWeek, SchedulerViewType.Month })
     .CurrentView(SchedulerViewType.WorkWeek)
-    .CurrentDate(new DateTime(2021, 5, 25))
+    .CurrentDate(new DateTime(2021, 4, 27))
     .FirstDayOfWeek(FirstDayOfWeek.Sunday)
     .StartDayHour(9)
     .EndDayHour(19)
@@ -25,8 +25,8 @@
 <script>
     var dinnerTime = { from: 12, to: 13 };
     var holidays = [
-        new Date(2021, 4, 27),
-        new Date(2021, 6, 4)
+        new Date(2021, 3, 29),
+        new Date(2021, 5, 6)
     ];
 
     function dataCellTemplate(itemData, itemIndex, itemElement) {
