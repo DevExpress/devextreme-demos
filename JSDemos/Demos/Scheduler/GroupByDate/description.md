@@ -1,1 +1,3 @@
-This example shows appointments grouped by&nbsp;date and then by&nbsp;resource. You can change this order by&nbsp;clicking "Group by&nbsp;Date First" under the <b>Scheduler</b>.
+If appointments are grouped by a resource, you can additionally group them by date first. To do this, set [groupByDate](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/#groupByDate) to **true**. Applies only when the view's [groupOrientation](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/views/#groupOrientation) is *"horizontal"*.
+
+In this demo, you can use the switch below the Scheduler to toggle the value of **groupByDate**.
