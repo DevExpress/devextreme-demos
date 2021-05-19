@@ -11,6 +11,7 @@
       v-model:selected-row-keys="selectedRowKeys"
       key-expr="ID"
       parent-id-expr="Head_ID"
+      @selection-changed="onSelectionChanged"
     >
       <DxSelection
         :recursive="recursive"
@@ -44,6 +45,10 @@
           @value-changed="onRecursiveChanged"
         />
       </div>
+      <div class="selected-data">
+        <span class="caption">Selected Records:</span>
+        <span id="selected-items-container">{{ selectedEmployeeNames }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -62,12 +67,21 @@ export default {
       employees: employees,
       expandedRowKeys: [1, 2, 10],
       selectedRowKeys: [],
-      recursive: false
+      recursive: false,
+      selectedEmployeeNames: 'Nobody has been selected'
     };
   },
   methods: {
     onRecursiveChanged() {
       this.selectedRowKeys = [];
+    },
+    onSelectionChanged({ component }) {
+      this.selectedEmployeeNames = this.getEmployeeNames(component.getSelectedRowsData('all'));
+    },
+    getEmployeeNames(selectedRowsData) {
+      const getEmployeeName = row => row.Full_Name;
+
+      return selectedRowsData.length ? selectedRowsData.map(getEmployeeName).join(', ') : 'Nobody has been selected';
     }
   }
 };
@@ -90,5 +104,13 @@ export default {
 
 .option {
     margin-top: 10px;
+}
+
+.selected-data {
+    margin-top: 20px;
+}
+
+.selected-data .caption {
+    margin-right: 4px;
 }
 </style>

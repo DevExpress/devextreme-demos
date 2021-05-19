@@ -1,6 +1,7 @@
 var DemoApp = angular.module('DemoApp', ['dx']);
 
 DemoApp.controller('DemoController', function DemoController($scope) {
+    $scope.selectedItemsText = "Nobody has been selected";
     $scope.recursiveSelectionEnabled = false;
     $scope.selectedRowKeys = [];
 
@@ -34,7 +35,17 @@ DemoApp.controller('DemoController', function DemoController($scope) {
                 width: 120
             }
         ],
-        expandedRowKeys: [1, 2, 10]
+        expandedRowKeys: [1, 2, 10],
+        onSelectionChanged: function(e) {
+            var data = e.component.getSelectedRowsData("all");
+    
+            if(data.length > 0)
+                $scope.selectedItemsText = $.map(data, function(value) {
+                    return value.Full_Name;
+                }).join(", ");
+            else 
+                $scope.selectedItemsText = "Nobody has been selected";
+        }
     };
 
     $scope.recursiveOptions = {

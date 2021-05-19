@@ -14,3 +14,7 @@
 ::ng-deep .option {
     margin-top: 10px;
 }
+
+::ng-deep .selected-data {
+    margin-top: 20px;
+}

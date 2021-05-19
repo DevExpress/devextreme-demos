@@ -22,7 +22,18 @@ $(function() {
                 width: 120
             }
         ],
-        expandedRowKeys: [1, 2, 10]
+        expandedRowKeys: [1, 2, 10],
+        onSelectionChanged: function(selectedItems) {
+            var data = treeList.getSelectedRowsData("all");
+            
+            if(data.length > 0)
+                $("#selected-items-container").text(
+                $.map(data, function(value) {
+                    return value.Full_Name
+                }).join(", "));
+            else 
+                $("#selected-items-container").text("Nobody has been selected");
+        }
     }).dxTreeList("instance");
 
     $("#recursive").dxCheckBox({
