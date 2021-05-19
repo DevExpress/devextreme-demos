@@ -11,7 +11,8 @@ class App extends React.Component {
 
     this.state = {
       selectedRowKeys: [],
-      recursive: false
+      recursive: false,
+      selectedEmployeeNames: 'Nobody has been selected'
     };
 
     this.onSelectionChanged = this.onSelectionChanged.bind(this);
@@ -50,6 +51,12 @@ class App extends React.Component {
               onValueChanged={this.onRecursiveChanged}
             />
           </div>
+          <div className="selected-data">
+            <span className="caption">Selected Records:</span>{' '}
+            <span>
+              { this.state.selectedEmployeeNames }
+            </span>
+          </div>
         </div>
       </div>
     );
@@ -57,7 +64,8 @@ class App extends React.Component {
 
   onSelectionChanged(e) {
     this.setState({
-      selectedRowKeys: e.selectedRowKeys
+      selectedRowKeys: e.selectedRowKeys,
+      selectedEmployeeNames: this.getEmployeeNames(e.component.getSelectedRowsData('all'))
     });
   }
 
@@ -66,6 +74,14 @@ class App extends React.Component {
       recursive: e.value,
       selectedRowKeys: []
     });
+  }
+
+  getEmployeeNames(selectedRowsData) {
+    if (selectedRowsData.length != 0) {
+      return selectedRowsData.map(employee => employee.Full_Name).join(', ');
+    } else {
+      return 'Nobody has been selected';
+    }
   }
 }
 

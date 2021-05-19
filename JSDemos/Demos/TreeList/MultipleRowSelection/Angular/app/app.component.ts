@@ -20,13 +20,27 @@ export class AppComponent {
     employees: Employee[];
     selectedRowKeys: any[] = [];
     recursiveSelectionEnabled = false;
+    selectedEmployeeNames: string = 'Nobody has been selected';
 
     constructor(service: Service) {
         this.employees = service.getEmployees();
     }
 
+    onSelectionChanged(e: any) {
+        const employees: Employee[] = e.component.getSelectedRowsData("all");
+        this.selectedEmployeeNames = this.getEmployeeNames(employees);
+    }
+
     onValueChanged(e: any) {
         this.selectedRowKeys = [];
+    }
+
+    getEmployeeNames(employees: Employee[]) {
+        if (employees.length > 0) {
+            return employees.map(employee => employee.Full_Name).join(", ");
+        } else {
+            return 'Nobody has been selected';
+        }
     }
 }
 

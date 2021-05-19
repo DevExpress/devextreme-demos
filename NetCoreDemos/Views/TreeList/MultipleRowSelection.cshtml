@@ -23,6 +23,7 @@
     })
     .ColumnAutoWidth(true)
     .ExpandedRowKeys(new[] { 1, 2, 10 })
+    .OnSelectionChanged("selection_changed")
 )
 
 <div class="options">
@@ -41,4 +42,21 @@
             )
         )
     </div>
+    <div class="selected-data">
+        <span class="caption">Selected Records:</span>
+        <span id="selectedItemsContainer">Nobody has been selected</span>
+    </div>
 </div>
+
+<script>
+    function selection_changed(e) {
+        var data = e.component.getSelectedRowsData("all");
+        if(data.length > 0)
+            $("#selectedItemsContainer").text(
+            $.map(data, function(value) {
+                return value.FullName;
+            }).join(", "));
+        else
+            $("#selectedItemsContainer").text("Nobody has been selected");
+    }
+</script>
