@@ -1,5 +1,5 @@
 <template>
-  <div :class="markDataCell(cellData)" />
+  <div :class="markDataCell(cellData)"/>
 </template>
 <script>
 import Utils from './utils.js';
