@@ -1792,9 +1792,8 @@
         "Equivalents": "",
         "Demos": [
           {
-            "Title": "Group Orientation",
+            "Title": "Grouping Overview",
             "Name": "GroupOrientation",
-            "DocUrl": "ApiReference/UI_Components/dxScheduler/Configuration/views/#groupOrientation",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/EmployeeTask.cs",
