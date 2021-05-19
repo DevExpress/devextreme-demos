@@ -1,5 +1,5 @@
 $(function(){
-    $("#gridContainer").dxDataGrid({
+    const dataGrid = $("#gridContainer").dxDataGrid({
         dataSource: orders,
         keyExpr: "ID",
         allowColumnReordering: true,
@@ -44,5 +44,9 @@ $(function(){
             dataField: "CustomerStoreState",
             groupIndex: 0
         }]
-    });
+    }).dxDataGrid("instance");
+
+    window.onStateResetClick = function() {
+        dataGrid.state(null);
+    };
 });
