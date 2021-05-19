@@ -33,6 +33,7 @@
         "devextreme-intl": "latest",
         "devextreme-react": "21.2-next",
         "devextreme-vue": "21.2-next",
+        "@devextreme/vdom": "2.1.1",
         "dx-systemjs-vue-browser": "latest",
         "exceljs": "1.7.0",
         "file-saver": "1.3.8",
