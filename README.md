@@ -6,21 +6,30 @@ To run the demos on your machine, clone this repository, run `npm install`, and 
 
 ## Prepare Demos for Development
 
-The following script prepares demos in all technologies for development. If you run it, you can skip step 1 in the other instructions and start at step 2.
- 
+To prepare demos for development, you can run a script for all technologies or scripts for JavaScript and ASP.NET individually:
+
 ```
 npm run prepare-all
 ```
+```
+npm run prepare-js
+```
+```
+npm run prepare-mvc
+```
+
+Angular, Vue, and React demos can use bundles instead of separate files from `node_modules`. With bundles, demos launch faster but become harder to debug. Run the following command to create the bundles and replace the SystemJS configuration:
+
+```
+npm run prepare-bundles
+```
+
+To return to using separate files from `node_modules`, run `npm run prepare-js`.
+
 
 ## JavaScript Demos
 
 ### Launch
-
-1. Prepare JavaScript demos for launch:
-
-    ```
-    npm run prepare-js
-    ```
 
 1. Run the launch script:
 
@@ -32,12 +41,6 @@ npm run prepare-all
 1. Navigate to http://localhost:3000/.
 
 ### Development
-
-1. Prepare JavaScript demos for development:
-
-    ```
-    npm run prepare-js
-    ```
 
 1. Run the following script to add a new demo:
 
