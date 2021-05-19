@@ -1788,11 +1788,11 @@
         ]
       },
       {
-        "Name": "Grouping",
+        "Name": "Group Appointments",
         "Equivalents": "",
         "Demos": [
           {
-            "Title": "Grouping Overview",
+            "Title": "Group Orientation",
             "Name": "GroupOrientation",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
@@ -1802,7 +1802,7 @@
             "DemoType": "Web"
           },
           {
-            "Title": "Grouping By Date",
+            "Title": "Group By Date",
             "Name": "GroupByDate",
             "DocUrl": "ApiReference/UI_Components/dxScheduler/Configuration/views/#groupByDate",
             "Widget": "Scheduler",
