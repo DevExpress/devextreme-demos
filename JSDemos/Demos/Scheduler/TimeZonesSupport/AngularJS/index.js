@@ -8,7 +8,7 @@ getLocations = function(date) {
 };
 
 DemoApp.controller('DemoController', function DemoController($scope) {
-    $scope.currentDate = new Date(2021, 4, 25);
+    $scope.currentDate = new Date(2021, 3, 27);
     $scope.demoLocations = getLocations(new Date(2021, 4, 25));
     $scope.currentLocation = $scope.demoLocations[0].id;
 
