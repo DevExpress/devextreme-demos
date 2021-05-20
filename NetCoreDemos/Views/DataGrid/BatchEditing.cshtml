@@ -6,6 +6,8 @@
         .Editing(editing => {
             editing.Mode(GridEditMode.Batch);
             editing.AllowUpdating(true);
+            editing.AllowAdding(true);
+            editing.AllowDeleting(true);
             editing.SelectTextOnEditStart(true);
             editing.StartEditAction(GridStartEditAction.Click);
         })
