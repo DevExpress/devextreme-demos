@@ -32,7 +32,7 @@
 
             columns.AddFor(m => m.BirthDate);
         })
-        .DataSource(d => d.WebApi().Controller("DataGridEmployees").UpdateAction(true).Key("ID"))
+        .DataSource(d => d.WebApi().Controller("DataGridEmployees").UpdateAction(true).InsertAction(true).DeleteAction(true).Key("ID"))
     )
 
     <div class="options">
