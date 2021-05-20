@@ -27,8 +27,8 @@ export class AppComponent {
     }
 
     onSelectionChanged(e: any) {
-        const employees: Employee[] = e.component.getSelectedRowsData("all");
-        this.selectedEmployeeNames = this.getEmployeeNames(employees);
+        const selectedData: Employee[] = e.component.getSelectedRowsData("all");
+        this.selectedEmployeeNames = this.getEmployeeNames(selectedData);
     }
 
     onValueChanged(e: any) {

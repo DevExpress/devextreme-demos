@@ -1,4 +1,12 @@
 $(function() {   
+    function getEmployeeNames(employees) {
+        if (employees.length > 0) {
+            return employees.map(employee => employee.Full_Name).join(", ");
+        } else {
+            return "Nobody has been selected";
+        }
+    }
+
     var treeList = $("#employees").dxTreeList({
         dataSource: employees,
         keyExpr: "ID",
@@ -24,15 +32,8 @@ $(function() {
         ],
         expandedRowKeys: [1, 2, 10],
         onSelectionChanged: function(selectedItems) {
-            var data = treeList.getSelectedRowsData("all");
-            
-            if(data.length > 0)
-                $("#selected-items-container").text(
-                $.map(data, function(value) {
-                    return value.Full_Name
-                }).join(", "));
-            else 
-                $("#selected-items-container").text("Nobody has been selected");
+            var selectedData = treeList.getSelectedRowsData("all");
+            $("#selected-items-container").text(getEmployeeNames(selectedData));
         }
     }).dxTreeList("instance");
 

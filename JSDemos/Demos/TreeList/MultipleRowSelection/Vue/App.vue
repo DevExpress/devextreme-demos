@@ -76,12 +76,15 @@ export default {
       this.selectedRowKeys = [];
     },
     onSelectionChanged({ component }) {
-      this.selectedEmployeeNames = this.getEmployeeNames(component.getSelectedRowsData('all'));
+      const selectedData = component.getSelectedRowsData('all');
+      this.selectedEmployeeNames = this.getEmployeeNames(selectedData);
     },
-    getEmployeeNames(selectedRowsData) {
-      const getEmployeeName = row => row.Full_Name;
-
-      return selectedRowsData.length ? selectedRowsData.map(getEmployeeName).join(', ') : 'Nobody has been selected';
+    getEmployeeNames(employees) {
+      if (employees.length > 0) {
+        return employees.map(employee => employee.Full_Name).join(', ');
+      } else {
+        return 'Nobody has been selected'; 
+      }
     }
   }
 };
