@@ -2,7 +2,7 @@
   <div>
     <div id="descContainer">
       Sort and filter data, reorder and resize columns, select and expand rows. Once you are done,
-      <a onclick="window.location.reload()">refresh</a>
+      <a @click="onRefreshClick">refresh</a>
       the web page to see that the grid’s state is automatically persisted to continue working from where you stopped
       or you can <a @click="onStateResetClick">reset</a> the grid to its initial state.
     </div>
@@ -62,6 +62,9 @@ export default {
     };
   },
   methods: {
+    onRefreshClick() {
+      window.location.reload();
+    },
     onStateResetClick() {
       this.$refs['treeList'].instance.state(null);
     }

@@ -40,4 +40,8 @@ DemoApp.controller('DemoController', function DemoController($scope) {
     $scope.onStateResetClick = function() {
         $scope.treeList.state(null);
     };
+
+    $scope.onRefreshClick = function() {
+        window.location.reload();
+    };
 });

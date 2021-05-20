@@ -26,6 +26,10 @@ export class AppComponent {
     onStateResetClick() {
         this.treeList.instance.state(null)
     }
+
+    onRefreshClick() {
+        window.location.reload();
+    }
 }
 
 @NgModule({

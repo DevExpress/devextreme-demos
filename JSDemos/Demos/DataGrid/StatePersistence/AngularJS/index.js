@@ -54,5 +54,9 @@ DemoApp.controller('DemoController', function DemoController($scope) {
     $scope.onStateResetClick = function() {
         $scope.dataGrid.state(null);
     };
+
+    $scope.onRefreshClick = function() {
+        window.location.reload();
+    };
     
 });
