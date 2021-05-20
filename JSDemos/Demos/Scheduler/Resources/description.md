@@ -15,8 +15,6 @@ The resource property is an array that stores resource kind objects. Each object
 
 To enable multiple category selection, set the object's [allowMultiple](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/resources/#allowMultiple) property to **true**. 
 
-By now, users should be able to select categories for the newly created appointment.
-
 ### Preset Appointments to Specific Categories
 To associate a specific appointment with the resource, include a field specified in the **fieldExpr** property into the appointment's data object. The field should be equal to an id of a resource instance. This step is optional.
 
