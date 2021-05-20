@@ -1,6 +1,7 @@
 ﻿@(Html.DevExtreme().DataGrid()
     .ID("orders")
     .DataSource(new JS("customers"))
+    .KeyExpr("ID")
     .AllowColumnResizing(true)
     .ColumnMinWidth(50)
     .ColumnAutoWidth(true)

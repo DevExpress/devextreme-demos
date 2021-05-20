@@ -4,7 +4,7 @@
 
 @(Html.DevExtreme().DataGrid<Intraday>()
     .ID("gridContainer")
-    .DataSource(Model)
+    .DataSource(Model, "Date")
     .ShowRowLines(true)
     .ShowBorders(true)
     .ShowColumnLines(false)

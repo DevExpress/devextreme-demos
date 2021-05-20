@@ -4,7 +4,7 @@
 
 @(Html.DevExtreme().DataGrid<EuropeanCountry>()
     .ID("gridContainer")
-    .DataSource(Model)
+    .DataSource(Model, "NameEn")
     .ShowBorders(true)
     .SearchPanel(p => p.Visible(true))
     .Paging(p => p.PageSize(15))

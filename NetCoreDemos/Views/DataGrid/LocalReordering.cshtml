@@ -2,6 +2,7 @@
     @(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.RowReorderingTask>()
         .ID("gridContainer")
         .DataSource(new JS("tasks"))
+        .KeyExpr("ID")
         .ShowBorders(true)
         .Height(440)
         .Sorting(sorting => sorting.Mode(GridSortingMode.None))
