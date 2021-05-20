@@ -83,7 +83,7 @@ export default {
       if (employees.length > 0) {
         return employees.map(employee => employee.Full_Name).join(', ');
       } else {
-        return 'Nobody has been selected'; 
+        return 'Nobody has been selected';
       }
     }
   }
