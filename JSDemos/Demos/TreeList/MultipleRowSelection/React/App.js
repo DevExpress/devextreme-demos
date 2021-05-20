@@ -63,9 +63,10 @@ class App extends React.Component {
   }
 
   onSelectionChanged(e) {
+    const selectedData = e.component.getSelectedRowsData('all');
     this.setState({
       selectedRowKeys: e.selectedRowKeys,
-      selectedEmployeeNames: this.getEmployeeNames(e.component.getSelectedRowsData('all'))
+      selectedEmployeeNames: this.getEmployeeNames(selectedData)
     });
   }
 
@@ -76,9 +77,9 @@ class App extends React.Component {
     });
   }
 
-  getEmployeeNames(selectedRowsData) {
-    if (selectedRowsData.length != 0) {
-      return selectedRowsData.map(employee => employee.Full_Name).join(', ');
+  getEmployeeNames(employees) {
+    if (employees.length > 0) {
+      return employees.map(employee => employee.Full_Name).join(', ');
     } else {
       return 'Nobody has been selected';
     }

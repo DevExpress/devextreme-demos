@@ -5,6 +5,14 @@ DemoApp.controller('DemoController', function DemoController($scope) {
     $scope.recursiveSelectionEnabled = false;
     $scope.selectedRowKeys = [];
 
+    function getEmployeeNames(employees) {
+        if (employees.length > 0) {
+            return employees.map(employee => employee.Full_Name).join(", ");
+        } else {
+            return "Nobody has been selected";
+        }
+    }
+
     $scope.$watch("recursiveSelectionEnabled", function(value) {
         $scope.selectedRowKeys = [];
     });
@@ -37,14 +45,8 @@ DemoApp.controller('DemoController', function DemoController($scope) {
         ],
         expandedRowKeys: [1, 2, 10],
         onSelectionChanged: function(e) {
-            var data = e.component.getSelectedRowsData("all");
-    
-            if(data.length > 0)
-                $scope.selectedItemsText = $.map(data, function(value) {
-                    return value.Full_Name;
-                }).join(", ");
-            else 
-                $scope.selectedItemsText = "Nobody has been selected";
+            var selectedData = e.component.getSelectedRowsData("all");
+            $scope.selectedItemsText = getEmployeeNames(selectedData);
         }
     };
 
