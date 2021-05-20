@@ -44,7 +44,7 @@
     }
 
     function dateCellTemplate(itemData, itemIndex, itemElement) {
-        var element = $('<div>' + itemData.text + '</div>');
+        var element = $('<div />');
 
         if (isWeekend(itemData.date)) {
             element.addClass('disable-date');
