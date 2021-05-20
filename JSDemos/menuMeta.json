@@ -427,7 +427,6 @@
             "Title": "Filter Panel",
             "Equivalents": "dxFilterBuilder, FilterBuilder, QueryBuilder, dxFilterPanel, FilterPanel",
             "Name": "FilterPanel",
-            "DocUrl": "ApiReference/UI_Components/dxDataGrid/Configuration/filterPanel/",
             "Widget": "DataGrid",
             "DemoType": "Web",
             "MvcAdditionalFiles": [
@@ -606,7 +605,6 @@
           {
             "Title": "State Persistence",
             "Name": "StatePersistence",
-            "DocUrl": "ApiReference/UI_Components/dxDataGrid/Configuration/stateStoring/",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Models/Order.cs",
@@ -1339,7 +1337,6 @@
           {
             "Title": "Batch Editing",
             "Name": "BatchEditing",
-            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Batch_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
@@ -1352,7 +1349,6 @@
           {
             "Title": "Form Editing",
             "Name": "FormEditing",
-            "DocUrl": "Guide/UI_Components/TreeList/Editing/#User_Interaction/Form_Mode",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListEmployeesController.cs",
@@ -1486,7 +1482,6 @@
             "Title": "Filter Panel",
             "Equivalents": "dxFilterBuilder, FilterBuilder, QueryBuilder, dxFilterPanel, FilterPanel",
             "Name": "FilterPanel",
-            "DocUrl": "ApiReference/UI_Components/dxTreeList/Configuration/filterPanel/",
             "Widget": "TreeList",
             "DemoType": "Web",
             "MvcAdditionalFiles": [
@@ -1510,7 +1505,6 @@
           {
             "Title": "Column Chooser",
             "Name": "ColumnChooser",
-            "DocUrl": "Guide/UI_Components/TreeList/Columns/Column_Chooser/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1561,7 +1555,6 @@
           {
             "Title": "State Persistence",
             "Name": "StatePersistence",
-            "DocUrl": "ApiReference/UI_Components/dxTreeList/Configuration/stateStoring/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListEmployeesController.cs",
@@ -1579,7 +1572,6 @@
           {
             "Title": "Adaptability",
             "Name": "Adaptability",
-            "DocUrl": "Guide/UI_Components/TreeList/Columns/Adaptability/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",

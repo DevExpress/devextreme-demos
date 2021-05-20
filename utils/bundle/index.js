@@ -34,7 +34,6 @@ if(framework === 'angular') {
     }];
 
     packages = [
-        'rxjs/rx.js',
         'rxjs/Rx.js',
         'rxjs/index.js',
         'rxjs/operators/index.js'
@@ -79,38 +78,6 @@ if(framework === 'react') {
     packages = [
         'react/umd/react.development.js',
         'react-dom/umd/react-dom.development.js'
-    ];
-}
-
-if(framework === 'vue') {
-    additionPackage = [
-        {
-            name: 'dx-systemjs-vue-browser/*',
-            metaValue: {
-                build: true
-            },
-            pathValue: 'node_modules/dx-systemjs-vue-browser/*'
-        },
-        {
-            name: 'systemjs-plugin-babel/*',
-            metaValue: {
-                build: true
-            },
-            pathValue: 'node_modules/systemjs-plugin-babel/*'
-        }];
-
-    packages = [
-        'dx-systemjs-vue-browser/index.js',
-        'systemjs-plugin-babel/plugin-babel.js',
-        'systemjs-plugin-babel/systemjs-babel-browser.js',
-        'systemjs-plugin-babel/babel-helpers/classCallCheck.js',
-        'systemjs-plugin-babel/babel-helpers/createClass.js',
-        'systemjs-plugin-babel/babel-helpers/slicedToArray.js',
-        'systemjs-plugin-babel/babel-helpers/extends.js',
-        'systemjs-plugin-babel/babel-helpers/toConsumableArray.js',
-        'systemjs-plugin-babel/babel-helpers/defineProperty.js',
-        'systemjs-plugin-babel/babel-helpers/asyncToGenerator.js',
-        'systemjs-plugin-babel/regenerator-runtime.js'
     ];
 }
 
@@ -159,8 +126,8 @@ function prepareModulesToNamedImport() {
     ];
 
     const paths = [
-        '../npm-scripts/npm-devextreme',
-        'node_modules/devextreme'
+        '../npm-scripts/npm-devextreme/cjs',
+        'node_modules/devextreme/cjs'
     ];
 
     const esModuleExport = 'exports.__esModule = true;';
