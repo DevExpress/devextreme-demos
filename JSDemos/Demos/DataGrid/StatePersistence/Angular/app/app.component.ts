@@ -24,7 +24,11 @@ export class AppComponent {
     }
 
     onStateResetClick() {
-        this.dataGrid.instance.state(null)
+        this.dataGrid.instance.state(null);
+    }
+
+    onRefreshClick() {
+        window.location.reload();
     }
 }
 

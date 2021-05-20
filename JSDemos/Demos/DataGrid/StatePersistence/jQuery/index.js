@@ -46,7 +46,7 @@ $(function(){
         }]
     }).dxDataGrid("instance");
 
-    window.onStateResetClick = function() {
+    $("#state-reset-link").on("click", function() {
         dataGrid.state(null);
-    };
+    });
 });
