@@ -6,7 +6,7 @@
 
 @(Html.DevExtreme().DataGrid<CountryPopulationAndGDP>()
     .ID("gridContainer")
-    .DataSource(Model)
+    .DataSource(Model, "ID")
     .ColumnAutoWidth(true)
     .AllowColumnReordering(true)
     .ShowBorders(true)

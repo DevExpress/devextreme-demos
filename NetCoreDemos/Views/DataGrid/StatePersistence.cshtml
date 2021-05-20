@@ -6,7 +6,7 @@
 
 @(Html.DevExtreme().DataGrid<Order>()
     .ID("gridContainer")
-    .DataSource(Model)
+    .DataSource(Model, "ID")
     .AllowColumnReordering(true)
     .AllowColumnResizing(true)
     .ShowBorders(true)
