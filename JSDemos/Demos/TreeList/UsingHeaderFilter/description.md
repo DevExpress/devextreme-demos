@@ -1,4 +1,4 @@
-A header filter allows users to select values from a predefined set and filter rows by them. The values are listed in a popup menu. To open this menu, users can click header filter icons in column headers.
+A header filter allows users to select values from a predefined set and filter rows by these values. The values are listed in a pop-up menu. To open this menu, users can click header filter icons in column headers.
 
 ### Display Header Filter Icons
 
