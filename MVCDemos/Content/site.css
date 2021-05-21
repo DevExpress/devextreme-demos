@@ -249,6 +249,60 @@ header.header .header-buttons {
     display: block;
 }
 
+.description .dx-table {
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.description .dx-table tr {
+    border: 2px solid white;
+    text-align: left;
+}
+
+.description .dx-table tr th {
+    background: #ededed;
+    font-weight: bold;
+}
+
+.description .dx-table tr th,
+.description .dx-table tr td {
+    padding: 5px 20px;
+    border: 2px solid white;
+}
+
+.description .dx-table tr .parameter-name {
+    width: 16%;
+}
+
+.description .dx-table tr .parameter-type {
+    width: 20%;
+}
+
+.description .dx-table tr .parameter-description {
+    position: relative;
+}
+
+.description .dx-table tr:nth-child(even) {
+    background: #ffffff;
+}
+
+.description .dx-table tr:nth-child(odd) {
+    background: #f8f8f8;
+}
+
+.description .dx-table.full-width {
+    width: 100%;
+}
+
+.description .dx-table.full-width tr > td:first-child {
+    width: 20%;
+}
+
+.description .dx-table p {
+    margin: 0;
+}
+
 .demo-wrapper .code {
     margin-top: 30px;
 }
