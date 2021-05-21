@@ -1,6 +1,7 @@
 {
   "src": "./testing/**/*.test.js",
   "browsers": "chrome:headless",
+  "quarantineMode": true,
   "screenshots": {
       "path": "./",
       "pathPattern": "${TEST}.png"
