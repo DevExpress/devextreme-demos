@@ -6,6 +6,8 @@
         .Editing(editing => {
             editing.Mode(GridEditMode.Batch);
             editing.AllowUpdating(true);
+            editing.AllowAdding(true);
+            editing.AllowDeleting(true);
             editing.SelectTextOnEditStart(true);
             editing.StartEditAction(GridStartEditAction.Click);
         })
@@ -30,7 +32,7 @@
 
             columns.AddFor(m => m.BirthDate);
         })
-        .DataSource(d => d.WebApi().Controller("DataGridEmployees").UpdateAction(true).Key("ID"))
+        .DataSource(d => d.WebApi().Controller("DataGridEmployees").UpdateAction(true).InsertAction(true).DeleteAction(true).Key("ID"))
     )
 
     <div class="options">
