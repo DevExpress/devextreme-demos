@@ -1,10 +1,10 @@
 {
   "src": "./testing/**/*.test.js",
-  "browsers": "chrome:headless",
+  "browsers": "chrome:headless --deterministic-mode --disable-partial-raster --disable-skia-runtime-opts",
   "quarantineMode": true,
   "screenshots": {
-      "path": "./",
-      "pathPattern": "${TEST}.png"
+    "path": "./",
+    "pathPattern": "${TEST}.png"
   },
   "concurrency": 4
 }
