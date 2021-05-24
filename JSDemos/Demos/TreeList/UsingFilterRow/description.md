@@ -27,6 +27,6 @@ Depending on a column's [dataType](/Documentation/ApiReference/UI_Components/dxT
 
 In this demo, the Hire Date column's filter row cell contains a date picker. Other filter row cells contain text boxes.
 
-Each data type supports its own set of filter operations. Users can click a magnifying glass icon in each filter row cell to specify the [selectedFilterOperation](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#selectedFilterOperation). If you need to restrict the available operations, specify the **columns[]**.[filterOperations](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#filterOperations) array.
+TreeList supports a specific set of filter operations for each data type. If you need to restrict the available operations, specify the **columns[]**.[filterOperations](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#filterOperations) array. Users can click a magnifying glass icon in each filter row cell to specify the [selectedFilterOperation](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#selectedFilterOperation).
 
 A column's filter value is stored in the [filterValue](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#filterValue) property. You can use this property to set the filter value in code.
