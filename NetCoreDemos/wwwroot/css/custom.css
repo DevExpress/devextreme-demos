@@ -1,0 +1,53 @@
+.dx-table {
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.dx-table tr {
+    border: 2px solid white;
+    text-align: left;
+}
+
+.dx-table tr th {
+    background: #ededed;
+    font-weight: bold;
+}
+
+.dx-table tr th,
+.dx-table tr td {
+    padding: 5px 20px;
+    border: 2px solid white;
+}
+
+.dx-table tr .parameter-name {
+    width: 16%;
+}
+
+.dx-table tr .parameter-type {
+    width: 20%;
+}
+
+.dx-table tr .parameter-description {
+    position: relative;
+}
+
+.dx-table tr:nth-child(even) {
+    background: #ffffff;
+}
+
+.dx-table tr:nth-child(odd) {
+    background: #f8f8f8;
+}
+
+.dx-table.full-width {
+    width: 100%;
+}
+
+.dx-table.full-width tr > td:first-child {
+    width: 20%;
+}
+
+.dx-table p {
+    margin: 0;
+}
