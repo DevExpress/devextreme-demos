@@ -35,7 +35,7 @@
       <DotnetPublishFiles Include="FileManagement.db">
           <DestinationRelativePath>%(RelativeDir)%(Filename)%(Extension)</DestinationRelativePath>
       </DotnetPublishFiles>
-    <DotnetPublishFiles Include="**/*.cs;**/*.cshtml;wwwroot/css/*.css;wwwroot/css/DemosStyles/**/*.css">
+    <DotnetPublishFiles Include="**/*.cs;**/*.cshtml;wwwroot/css/custom.css;wwwroot/css/DemosStyles/**/*.css">
         <DestinationRelativePath>Sources/%(RelativeDir)%(Filename)%(Extension).txt</DestinationRelativePath>
     </DotnetPublishFiles>
   </ItemGroup>

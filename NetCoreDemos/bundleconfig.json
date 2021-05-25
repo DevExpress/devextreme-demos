@@ -3,7 +3,6 @@
   {
     "outputFileName": "wwwroot/bundle.min.css",
     "inputFiles": [
-      "wwwroot/css/custom.css",
       "wwwroot/css/dx-diagram.min.css",
       "wwwroot/css/dx-gantt.min.css",
       "wwwroot/css/dx.common.css",
