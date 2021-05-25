@@ -404,7 +404,7 @@
     <Compile Include="Models\DataGrid\InMemoryEmployeesValidationDataContext.cs" />
     <Compile Include="Models\Demo.cs" />
     <Compile Include="Models\ContinentInfo.cs" />
-    <Compile Include="Models\OwnerResource.cs" />
+    <Compile Include="Models\AssigneeResource.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\PriorityResource.cs" />
     <Compile Include="Models\AdaptiveAppointment.cs" />
@@ -426,7 +426,7 @@
     <Compile Include="Models\SampleData\EuropeanUnion.cs" />
     <Compile Include="Models\GeoInfo.cs" />
     <Compile Include="Models\SampleData\OrdersWithCustomerInfo.cs" />
-    <Compile Include="Models\SampleData\OwnerResources.cs" />
+    <Compile Include="Models\SampleData\AssigneeResource.cs" />
     <Compile Include="Models\SampleData\ParetoChartData.cs" />
     <Compile Include="Models\ParetoChartData.cs" />
     <Compile Include="Models\SampleData\CitiesByState.cs" />

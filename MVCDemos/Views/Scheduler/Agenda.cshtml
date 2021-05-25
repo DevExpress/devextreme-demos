@@ -17,7 +17,7 @@
             .DisplayExpr("Text")
             .AllowMultiple(true)
             .UseColorAsDefault(true)
-            .DataSource(Model.Owners);
+            .DataSource(Model.Assignees);
 
         res.Add()
             .FieldExpr("PriorityId")
@@ -25,7 +25,6 @@
             .ColorExpr("Color")
             .Label("Priority")
             .DisplayExpr("Text")
-            .AllowMultiple(true)
             .DataSource(Model.Priorities);
     })
     .StartDayHour(9)
