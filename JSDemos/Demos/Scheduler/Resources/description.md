@@ -3,17 +3,15 @@ Users can categorize appointments by resources. To understand what resources are
 
 ### Define Resources
 
-1. **Add a resource object to the [resources](/api-reference/10%20UI%20Components/dxScheduler/1%20Configuration/resources '/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/resources/') array property.**        
-Each object should have at least the following fields:
+Use the [resources](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/resources/) array to define resource kinds. Each object in this array should contain at least the following fields:
 
 - [dataSource](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/resources/#dataSource)         
     Resource instances of this resource kind. Each instance should contain the `id`, `text`, and `color` fields. If your field names differ, specify them in the [valueExpr](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/resources/#valueExpr), [displayExpr](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/resources/#displayExpr), and [colorExpr](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/resources/#colorExpr) properties, respectively.
 
-- [fieldExpr](/api-reference/10%20UI%20Components/dxScheduler/1%20Configuration/resources/fieldExpr.md '/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/resources/#fieldExpr')             
-    Specifies the name of an appointment data field that sets a resource instance id.
+- [fieldExpr](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/resources/#fieldExpr)             
+    A data field used to assign instances of this resource kind to appointments. Add this field to appointment objects and set its value to resource instance `id`s.
 
-1. **Preset appointments to specific resource instances.**           
-Include a field specified in the **fieldExpr** property into appointment data objects. The field should be equal to a resource instance id. If you skip this step, users should specify resource instances in the UI.
+In this demo, the **resources** array contains three resource kinds: rooms, priorities, and owners. Their **fieldExpr** values are `roomId`, `priorityId`, and `ownerId`. Each appointment contains the same fields. Field values assign the appointments to different instances of these resource kinds.
 
 ### Color Appointments Based on Resource Kind
 
