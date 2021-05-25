@@ -66,6 +66,8 @@ import { DxTreeList, DxSelection, DxColumn } from 'devextreme-vue/tree-list';
 import { DxCheckBox } from 'devextreme-vue/check-box';
 import { DxSelectBox } from 'devextreme-vue/select-box';
 
+const emptySelectedText = 'Nobody has been selected';
+
 export default {
   components: {
     DxTreeList, DxSelection, DxColumn,
@@ -77,13 +79,14 @@ export default {
       expandedRowKeys: [1, 2, 10],
       selectedRowKeys: [],
       recursive: false,
-      selectedEmployeeNames: 'Nobody has been selected',
+      selectedEmployeeNames: emptySelectedText,
       selectionMode: 'all'
     };
   },
   methods: {
     onOptionsChanged() {
       this.selectedRowKeys = [];
+      this.selectedEmployeeNames = emptySelectedText;
     },
     onSelectionChanged({ component }) {
       const selectedData = component.getSelectedRowsData(this.selectionMode);
@@ -93,7 +96,7 @@ export default {
       if (employees.length > 0) {
         return employees.map(employee => employee.Full_Name).join(', ');
       } else {
-        return 'Nobody has been selected';
+        return emptySelectedText;
       }
     }
   }

@@ -5,6 +5,7 @@ import { SelectBox } from 'devextreme-react/select-box';
 import { employees } from './data.js';
 
 const expandedRowKeys = [1, 2, 10];
+const emptySelectedText = 'Nobody has been selected';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class App extends React.Component {
     this.state = {
       selectedRowKeys: [],
       recursive: false,
-      selectedEmployeeNames: 'Nobody has been selected',
+      selectedEmployeeNames: emptySelectedText,
       selectionMode: 'all'
     };
 
@@ -85,14 +86,16 @@ class App extends React.Component {
   onRecursiveChanged(e) {
     this.setState({
       recursive: e.value,
-      selectedRowKeys: []
+      selectedRowKeys: [],
+      selectedEmployeeNames: emptySelectedText
     });
   }
 
   onSelectionModeChanged(e) {
     this.setState({
       selectionMode: e.value,
-      selectedRowKeys: []
+      selectedRowKeys: [],
+      selectedEmployeeNames: emptySelectedText
     });
   }
 
@@ -100,7 +103,7 @@ class App extends React.Component {
     if (employees.length > 0) {
       return employees.map(employee => employee.Full_Name).join(', ');
     } else {
-      return 'Nobody has been selected';
+      return emptySelectedText;
     }
   }
 }
