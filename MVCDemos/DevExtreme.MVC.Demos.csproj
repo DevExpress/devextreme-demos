@@ -1630,6 +1630,7 @@
     <Content Include="Content\SampleData\SampleImages\Widescreen\woman-using-notebook.jpg" />
     <Content Include="Content\SampleData\TemperatureData.xml" />
     <Content Include="Content\site.css" />
+    <Content Include="Content\custom.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
