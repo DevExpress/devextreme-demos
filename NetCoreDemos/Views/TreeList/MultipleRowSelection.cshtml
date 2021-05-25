@@ -29,6 +29,22 @@
 <div class="options">
     <div class="caption">Options</div>
     <div class="option">
+        <span>Selection Mode</span>
+        @(Html.DevExtreme().SelectBox()
+            .Value("all")
+            .DataSource(new[] { "all", "excludeRecursive", "leavesOnly" })
+            .OnValueChanged(@<text>
+                function(e) {
+                    var treeList = $("#employees").dxTreeList("instance");
+                    treeList.clearSelection();
+
+                    selectionMode = e.value;
+                }
+            </text>
+            )
+        )
+    </div>
+    <div class="option">
         @(Html.DevExtreme().CheckBox()
             .Value(false)
             .Text("Recursive Selection")
@@ -49,6 +65,8 @@
 </div>
 
 <script>
+    var selectionMode = "all";
+
     function getEmployeeNames(employees) {
         if (employees.length > 0) {
             return employees.map(employee => employee.FullName).join(", ");
