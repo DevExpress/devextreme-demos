@@ -1,4 +1,6 @@
-$(function() {   
+$(function() {
+    let selectionMode = "all";
+    
     function getEmployeeNames(employees) {
         if (employees.length > 0) {
             return employees.map(employee => employee.Full_Name).join(", ");
@@ -32,7 +34,7 @@ $(function() {
         ],
         expandedRowKeys: [1, 2, 10],
         onSelectionChanged: function(selectedItems) {
-            var selectedData = treeList.getSelectedRowsData("all");
+            var selectedData = treeList.getSelectedRowsData(selectionMode);
             $("#selected-items-container").text(getEmployeeNames(selectedData));
         }
     }).dxTreeList("instance");
@@ -43,6 +45,15 @@ $(function() {
         onValueChanged: function(e) {
             treeList.clearSelection();
             treeList.option("selection.recursive", e.value);
+        }
+    });
+    
+    $("#selection-mode").dxSelectBox({
+        value: selectionMode,
+        items: ["all", "excludeRecursive", "leavesOnly"],
+        onValueChanged: function({ value }) {
+            treeList.clearSelection();
+            selectionMode = value;
         }
     });
 });

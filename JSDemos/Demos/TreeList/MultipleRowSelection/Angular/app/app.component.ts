@@ -2,7 +2,7 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { DxTreeListModule, DxCheckBoxModule } from 'devextreme-angular';
+import { DxTreeListModule, DxCheckBoxModule, DxSelectBoxModule } from 'devextreme-angular';
 
 import { Service, Employee } from './app.service';
 
@@ -21,17 +21,18 @@ export class AppComponent {
     selectedRowKeys: any[] = [];
     recursiveSelectionEnabled = false;
     selectedEmployeeNames: string = 'Nobody has been selected';
+    selectionMode: string = 'all';
 
     constructor(service: Service) {
         this.employees = service.getEmployees();
     }
 
     onSelectionChanged(e: any) {
-        const selectedData: Employee[] = e.component.getSelectedRowsData("all");
+        const selectedData: Employee[] = e.component.getSelectedRowsData(this.selectionMode);
         this.selectedEmployeeNames = this.getEmployeeNames(selectedData);
     }
 
-    onValueChanged(e: any) {
+    onOptionsChanged(e: any) {
         this.selectedRowKeys = [];
     }
 
@@ -48,7 +49,8 @@ export class AppComponent {
     imports: [
         BrowserModule,
         DxTreeListModule,
-        DxCheckBoxModule
+        DxCheckBoxModule,
+        DxSelectBoxModule
     ],
     declarations: [AppComponent],
     bootstrap: [AppComponent]

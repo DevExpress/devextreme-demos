@@ -39,10 +39,18 @@
     <div class="options">
       <div class="caption">Options</div>
       <div class="option">
+        <span>Selection Mode</span>{{ ' ' }}
+        <DxSelectBox
+          v-model:value="selectionMode"
+          :items="['all', 'excludeRecursive', 'leavesOnly']"
+          @value-changed="onOptionsChanged"
+        />
+      </div>
+      <div class="option">
         <DxCheckBox
           v-model:value="recursive"
           text="Recursive Selection"
-          @value-changed="onRecursiveChanged"
+          @value-changed="onOptionsChanged"
         />
       </div>
       <div class="selected-data">
@@ -56,11 +64,12 @@
 import { employees } from './data.js';
 import { DxTreeList, DxSelection, DxColumn } from 'devextreme-vue/tree-list';
 import { DxCheckBox } from 'devextreme-vue/check-box';
+import { DxSelectBox } from 'devextreme-vue/select-box';
 
 export default {
   components: {
     DxTreeList, DxSelection, DxColumn,
-    DxCheckBox
+    DxCheckBox, DxSelectBox
   },
   data() {
     return {
@@ -68,15 +77,16 @@ export default {
       expandedRowKeys: [1, 2, 10],
       selectedRowKeys: [],
       recursive: false,
-      selectedEmployeeNames: 'Nobody has been selected'
+      selectedEmployeeNames: 'Nobody has been selected',
+      selectionMode: 'all'
     };
   },
   methods: {
-    onRecursiveChanged() {
+    onOptionsChanged() {
       this.selectedRowKeys = [];
     },
     onSelectionChanged({ component }) {
-      const selectedData = component.getSelectedRowsData('all');
+      const selectedData = component.getSelectedRowsData(this.selectionMode);
       this.selectedEmployeeNames = this.getEmployeeNames(selectedData);
     },
     getEmployeeNames(employees) {
@@ -115,5 +125,17 @@ export default {
 
 .selected-data .caption {
     margin-right: 4px;
+}
+
+.option > span {
+    width: 120px;
+    display: inline-block;
+}
+
+.option > .dx-widget {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    max-width: 350px;
 }
 </style>

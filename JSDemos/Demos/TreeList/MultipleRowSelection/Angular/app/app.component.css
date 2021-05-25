@@ -18,3 +18,15 @@
 ::ng-deep .selected-data {
     margin-top: 20px;
 }
+
+::ng-deep .option > span {
+    width: 120px;
+    display: inline-block;
+}
+
+::ng-deep .option > .dx-widget {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    max-width: 350px;
+}
