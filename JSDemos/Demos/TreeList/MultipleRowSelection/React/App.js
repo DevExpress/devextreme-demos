@@ -52,7 +52,7 @@ class App extends React.Component {
             <span>Selection Mode</span>{' '}
             <SelectBox
               value={selectionMode}
-              items={["all", "excludeRecursive", "leavesOnly"]}
+              items={['all', 'excludeRecursive', 'leavesOnly']}
               text="Recursive Selection"
               onValueChanged={this.onSelectionModeChanged}
             />
@@ -62,7 +62,7 @@ class App extends React.Component {
               value={recursive}
               text="Recursive Selection"
               onValueChanged={this.onRecursiveChanged}
-              />
+            />
           </div>
           <div className="selected-data">
             <span className="caption">Selected Records:</span>{' '}
