@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "Name": "Data Grid",
     "Equivalents": "dxDataGrid, dx-data-grid",
@@ -2779,8 +2779,7 @@
               "/Models/SampleData/IceHockeyGoldMedalistsData.cs",
               "/Models/SampleData/MedalAnnotations.cs"
             ],
-            "DemoType": "Viz",
-            "Badge": "New"
+            "DemoType": "Viz"
           }
         ]
       },
@@ -3144,8 +3143,7 @@
             "MvcDescription": "",
             "NetCoreDescription": "",
             "MvcAdditionalFiles": [],
-            "DemoType": "Viz",
-            "Badge": "New"
+            "DemoType": "Viz"
           },
           {
             "Title": "Strips",
@@ -3155,8 +3153,7 @@
             "MvcDescription": "",
             "NetCoreDescription": "",
             "MvcAdditionalFiles": [],
-            "DemoType": "Viz",
-            "Badge": "New"
+            "DemoType": "Viz"
           }
         ]
       },
@@ -5517,7 +5514,6 @@
             "DocUrl": "ApiReference/UI_Components/dxVectorMap/Configuration/annotations",
             "Widget": "VectorMap",
             "Modules": "vectormap",
-            "Badge": "New",
             "MvcAdditionalFiles": [
               "/Models/StateData.cs",
               "/Models/SampleData/StatesData.cs"
