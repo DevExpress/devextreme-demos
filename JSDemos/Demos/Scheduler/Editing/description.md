@@ -8,6 +8,6 @@ These operations raise events that you can handle with the following functions:
 
 * [onAppointmentUpdating](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/#onAppointmentUpdating) / [onAppointmentUpdated](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/#onAppointmentUpdated)
 
-In this demo, we have configured the handlers to display a toast message after a user performs an edit operation.
+In this demo, we configured the handlers to display a toast message after a user performs an edit operation.
 
 Users can edit appointment data in the appointment details form. To open it, they need to double-click the appointment. You can use the [onAppointmentFormOpening](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/#onAppointmentFormOpening) function to customize the form.
