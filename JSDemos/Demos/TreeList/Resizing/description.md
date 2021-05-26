@@ -1,4 +1,4 @@
-The TreeList sets equal widths for all columns, but you can change the widths as described below:
+The TreeList sets the same width for all columns, but you can change column widths as described below:
 
 ### Specify Custom Column Widths
 You can set custom widths for all or individual columns. Individual settings override common settings. Use the following properties to specify the widths:
@@ -16,7 +16,7 @@ In this demo, columns adjust their widths to the content. To enable this feature
 Users can resize columns if the [allowColumnResizing](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#allowColumnResizing) property is enabled. When a user resizes a column, the TreeList's behavior depends on the [columnResizingMode](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#columnResizingMode) property value:
 
 * *"nextColumn"*           
-The TreeList resizes the adjacent column; total component width stays the same.
+The TreeList resizes the adjacent column; the total component width does not change.
 
 * *"widget"*            
 The total component width increases or decreases; all other columns maintain their widths.
