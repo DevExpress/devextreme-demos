@@ -1,4 +1,4 @@
-When the width of all columns exceeds the component's width, horizontal scrolling occurs. TreeList allows users to fix individual columns to the right or left so they would remain visible on scroll. To enable this feature, set the **columnFixing**.[enabled](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columnFixing/#enabled) property to **true**.
+A horizontal scrollbar appears when the sum width of all columns exceeds the TreeList component's width. The component allows users to fix individual columns at the right or left border so they would remain always visible. To enable this feature, set the **columnFixing**.[enabled](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columnFixing/#enabled) property to **true**.
 
 To fix/unfix a column, users should right-click the column's header and select the desired operation in the appeared context menu. If a column should never be fixed or unfixed, set its [allowFixing](/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/columns/#allowFixing) property to **false**.
 
