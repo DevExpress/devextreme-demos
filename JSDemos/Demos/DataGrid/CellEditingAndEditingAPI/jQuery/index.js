@@ -4,17 +4,7 @@ $(function(){
         data: employees
     });
     
-    var deleteButton = $("#gridDeleteSelected").dxButton({
-        text: "Delete Selected Records",
-        height: 34,
-        disabled: true,
-        onClick: function () {
-            $.each(dataGrid.getSelectedRowKeys(), function() {
-                employeesStore.remove(this);
-            });
-            dataGrid.refresh();
-        }
-    }).dxButton("instance");
+    var deleteButton;
     
     var dataGrid = $("#gridContainer").dxDataGrid({
         dataSource: employeesStore,
@@ -31,9 +21,6 @@ $(function(){
         selection: {
             mode: "multiple"
         },
-        onSelectionChanged: function(data) {
-            deleteButton.option("disabled", !data.selectedRowsData.length);
-        }, 
         columns: [
             {
                 dataField: "Prefix",
@@ -56,8 +43,35 @@ $(function(){
             }, {
                 dataField: "BirthDate",
                 dataType: "date"
-            }
-        ]
+            },
+        ],
+        onToolbarPreparing: function(e) {
+            var dataGrid = e.component;
+            
+            e.toolbarOptions.items[0].showText = 'always';
+
+            e.toolbarOptions.items.unshift({
+                location: "after",
+                widget: "dxButton",
+                options: {
+                    text: "Delete Selected Records",
+                    icon: "trash",
+                    disabled: true,
+                    onClick: function() {
+                        dataGrid.getSelectedRowKeys().forEach((key) => {
+                            employeesStore.remove(key);
+                        });
+                        dataGrid.refresh();
+                    },
+                    onInitialized: function(e) {
+                        deleteButton = e.component;
+                    }
+                }
+            });
+        },
+        onSelectionChanged: function(data) {
+            deleteButton.option("disabled", !data.selectedRowsData.length);
+        },
     }).dxDataGrid("instance");
     
     
