@@ -9,20 +9,6 @@ DemoApp.controller('DemoController', function DemoController($scope) {
     $scope.selectedItemKeys = [];
     $scope.disabled = true;
     
-    $scope.buttonOptions = {
-        text: "Delete Selected Records",
-        height: 34,
-        onClick: function () {
-            $.each($scope.selectedItemKeys, function() {
-                employeesStore.remove(this);
-            });
-            $("#gridContainer").dxDataGrid("instance").refresh();
-        },
-        bindingOptions: {
-            disabled: "disabled"
-        }
-    };
-    
     $scope.dataGridOptions = {
         dataSource: employeesStore,
         showBorders: true,
@@ -65,7 +51,31 @@ DemoApp.controller('DemoController', function DemoController($scope) {
                 dataField: "BirthDate",
                 dataType: "date"
             }
-        ]
+        ],
+        onToolbarPreparing: function(e) {
+            var dataGrid = e.component;
+            
+            e.toolbarOptions.items[0].showText = 'always';
+
+            e.toolbarOptions.items.unshift({
+                location: "after",
+                widget: "dxButton",
+                options: {
+                    text: "Delete Selected Records",
+                    icon: "trash",
+                    disabled: true,
+                    onClick: function() {
+                        dataGrid.getSelectedRowKeys().forEach((key) => {
+                            employeesStore.remove(key);
+                        });
+                        dataGrid.refresh();
+                    },
+                    bindingOptions: {
+                        disabled: "disabled"
+                    }
+                }
+            });
+        }
     };
     
 });
