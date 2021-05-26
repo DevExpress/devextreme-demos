@@ -1,4 +1,4 @@
-A recurring appointment repeats at a specified interval. A circular arrow glyph denotes a recurring appointment in the view.
+A recurring appointment repeats at a specified interval. A circular arrow glyph denotes such an appointment in the view.
 
 To create a recurring appointment, do the following:
 
