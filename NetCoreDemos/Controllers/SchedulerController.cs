@@ -37,7 +37,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         public ActionResult Agenda() {
             return View(new SchedulerResourcesViewModel {
                 Appointments = SampleData.AgendaTasks,
-                Owners = SampleData.OwnerResources,
+                Assignees = SampleData.AssigneeResources,
                 Priorities = SampleData.PriorityResources
             });
         }
@@ -80,7 +80,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         public ActionResult Resources() {
             return View(new SchedulerResourcesViewModel {
                 Appointments = SampleData.AppointmentsWithResources,
-                Owners = SampleData.OwnerResources,
+                Assignees = SampleData.AssigneeResources,
                 Rooms = SampleData.RoomResources,
                 Priorities = SampleData.PriorityResources
             });

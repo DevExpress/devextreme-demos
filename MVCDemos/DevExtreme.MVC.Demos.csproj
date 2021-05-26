@@ -426,7 +426,7 @@
     <Compile Include="Models\SampleData\EuropeanUnion.cs" />
     <Compile Include="Models\GeoInfo.cs" />
     <Compile Include="Models\SampleData\OrdersWithCustomerInfo.cs" />
-    <Compile Include="Models\SampleData\AssigneeResource.cs" />
+    <Compile Include="Models\SampleData\AssigneeResources.cs" />
     <Compile Include="Models\SampleData\ParetoChartData.cs" />
     <Compile Include="Models\ParetoChartData.cs" />
     <Compile Include="Models\SampleData\CitiesByState.cs" />

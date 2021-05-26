@@ -19,7 +19,6 @@
             .ColorExpr("Color")
             .Label("Room")
             .DisplayExpr("Text")
-            .AllowMultiple(true)
             .DataSource(Model.Rooms);
 
         res.Add()
@@ -28,17 +27,16 @@
             .ColorExpr("Color")
             .Label("Priority")
             .DisplayExpr("Text")
-            .AllowMultiple(true)
             .DataSource(Model.Priorities);
 
         res.Add()
-            .FieldExpr("OwnerId")
+            .FieldExpr("AssigneeId")
             .ValueExpr("Id")
             .ColorExpr("Color")
-            .Label("Owner")
+            .Label("Assignee")
             .DisplayExpr("Text")
             .AllowMultiple(true)
-            .DataSource(Model.Owners);
+            .DataSource(Model.Assignees);
     })
     .Height(600)
     .TextExpr("Text")
