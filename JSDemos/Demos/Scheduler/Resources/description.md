@@ -1,7 +1,7 @@
 Users can categorize appointments by resources. To understand what resources are, consider the following example: in an educational center lectures are held in several rooms. In Scheduler terms, room is a resource kind, individual rooms are resource instances, and lectures are appointments that use these resource instances.
 
 
-### Define Resources
+### Define Resource Kinds
 
 Use the [resources](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/resources/) array to define resource kinds. Each object in this array should contain at least the following fields:
 
