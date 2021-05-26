@@ -1,12 +1,4 @@
 ﻿<div id="data-grid-demo">
-    @(Html.DevExtreme().Button()
-        .ID("gridDeleteSelected")
-        .Text("Delete Selected Records")
-        .Height(34)
-        .Disabled(true)
-        .OnClick("onDeleteBtnClick")
-    )
-
     @(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.DataGrid.Employee>()
         .ID("gridContainer")
         .ShowBorders(true)
@@ -47,10 +39,33 @@
             .DeleteAction("Delete")
             .Key("ID")
         )
+        .OnToolbarPreparing("onToolbarPreparing")
     )
 </div>
 
 <script>
+    let deleteButton;
+
+    function onToolbarPreparing(e) {
+        var dataGrid = e.component;
+
+        e.toolbarOptions.items[0].showText = 'always';
+
+        e.toolbarOptions.items.unshift({
+            location: "after",
+            widget: "dxButton",
+            options: {
+                text: "Delete Selected Records",
+                icon: "trash",
+                disabled: true,
+                onClick: onDeleteBtnClick,
+                onInitialized: function(e) {
+                    deleteButton = e.component;
+                }
+            }
+        });
+    }
+
     function onDeleteBtnClick(){
         let dataGrid = $("#gridContainer").dxDataGrid("instance");
         $.when.apply($, dataGrid.getSelectedRowsData().map(function(data) {
@@ -61,7 +76,6 @@
     }
 
     function onSelectionChanged(data){
-        let deleteButton = $("#gridDeleteSelected").dxButton("instance");
         deleteButton.option("disabled", !data.selectedRowsData.length);
     }
 </script>

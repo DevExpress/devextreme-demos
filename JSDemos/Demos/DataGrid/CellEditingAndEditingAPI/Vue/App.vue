@@ -1,18 +1,12 @@
 <template>
   <div id="data-grid-demo">
-    <DxButton
-      id="gridDeleteSelected"
-      :height="34"
-      :disabled="!selectedItemKeys.length"
-      text="Delete Selected Records"
-      @click="deleteRecords"
-    />
     <DxDataGrid
       id="gridContainer"
       :data-source="dataSource"
       :show-borders="true"
       :selected-row-keys="selectedItemKeys"
       @selection-changed="selectionChanged"
+      @toolbar-preparing="onToolbarPreparing"
     >
       <DxEditing
         :allow-updating="true"
@@ -93,6 +87,7 @@ export default {
       states: states,
       selectionChanged: (data)=>{
         this.selectedItemKeys = data.selectedRowKeys;
+        this.deleteButton.option('disabled', !data.selectedRowsData.length);
       },
       deleteRecords:()=>{
         this.selectedItemKeys.forEach((key) => {
@@ -100,18 +95,34 @@ export default {
         });
         this.selectedItemKeys = [];
         this.dataSource.reload();
+        this.deleteButton.option('disabled', true);
       }
     };
+  },
+  methods: {
+    onToolbarPreparing(e) {
+      e.toolbarOptions.items[0].showText = 'always';
+
+      e.toolbarOptions.items.unshift({
+        location: 'after',
+        widget: 'dxButton',
+        options: {
+          text: 'Delete Selected Records',
+          icon: 'trash',
+          disabled: true,
+          onClick: this.deleteRecords.bind(this),
+          onInitialized: (e) => {
+            this.deleteButton = e.component;
+          }
+        }
+      });
+    }
   }
 };
 </script>
 <style>
 #data-grid-demo {
     min-height: 700px;
-}
-
-#gridContainer {
-    padding-top: 45px;
 }
 
 #gridDeleteSelected {

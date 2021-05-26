@@ -7,7 +7,6 @@ import DataGrid, {
   Selection,
   Lookup
 } from 'devextreme-react/data-grid';
-import { Button } from 'devextreme-react/button';
 
 import ArrayStore from 'devextreme/data/array_store';
 import DataSource from 'devextreme/data/data_source';
@@ -28,23 +27,19 @@ class App extends React.Component {
     };
     this.selectionChanged = this.selectionChanged.bind(this);
     this.deleteRecords = this.deleteRecords.bind(this);
+    this.onToolbarPreparing = this.onToolbarPreparing.bind(this);
   }
 
   render() {
 
     return (
       <div id="data-grid-demo">
-        <Button id="gridDeleteSelected"
-          text="Delete Selected Records"
-          height={34}
-          disabled={!this.state.selectedItemKeys.length}
-          onClick={this.deleteRecords} />
-
         <DataGrid id="gridContainer"
           dataSource={dataSource}
           showBorders={true}
           selectedRowKeys={this.state.selectedItemKeys}
           onSelectionChanged={this.selectionChanged}
+          onToolbarPreparing={this.onToolbarPreparing}
         >
           <Selection mode="multiple" />
           <Paging enabled={false} />
@@ -74,10 +69,29 @@ class App extends React.Component {
       selectedItemKeys: []
     });
     dataSource.reload();
+    this.deleteButton.option('disabled', true);
   }
   selectionChanged(data) {
     this.setState({
       selectedItemKeys: data.selectedRowKeys
+    });
+    this.deleteButton.option('disabled', !data.selectedRowsData.length);
+  }
+  onToolbarPreparing(e) {
+    e.toolbarOptions.items[0].showText = 'always';
+
+    e.toolbarOptions.items.unshift({
+      location: 'after',
+      widget: 'dxButton',
+      options: {
+        text: 'Delete Selected Records',
+        icon: 'trash',
+        disabled: true,
+        onClick: this.deleteRecords.bind(this),
+        onInitialized: (e) => {
+          this.deleteButton = e.component;
+        }
+      }
     });
   }
 }
