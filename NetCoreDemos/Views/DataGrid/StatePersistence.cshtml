@@ -2,11 +2,11 @@
 
 @model IEnumerable<Order>
 
-<div id="descContainer">Sort and filter data, group, reorder and resize columns, change page numbers and page size. Once you are done, <a onclick="window.location.reload()">refresh</a> the web page to see that the grid’s state is automatically persisted to continue working from where you stopped.</div>
+<div id="descContainer">Sort and filter data, group, reorder and resize columns, change page numbers and page size. Once you are done, <a onclick="window.location.reload()">refresh</a> the web page to see that the grid’s state is automatically persisted to continue working from where you stopped or you can <a onclick="onStateResetClick()">reset</a> the grid to its initial state.</div>
 
 @(Html.DevExtreme().DataGrid<Order>()
     .ID("gridContainer")
-    .DataSource(Model)
+    .DataSource(Model, "ID")
     .AllowColumnReordering(true)
     .AllowColumnResizing(true)
     .ShowBorders(true)
@@ -41,3 +41,10 @@
             .GroupIndex(0);
     })
 )
+
+<script>
+    function onStateResetClick() {
+        const dataGrid = $("#gridContainer").dxDataGrid("instance");
+        dataGrid.state(null);
+    }
+</script>

@@ -1,6 +1,7 @@
 ﻿@(Html.DevExtreme().DataGrid()
     .ID("gridContainer")
     .DataSource(new JS("customers"))
+    .KeyExpr("ID")
     .ShowBorders(true)
     .Columns(c => {
         c.Add().DataField("CompanyName");

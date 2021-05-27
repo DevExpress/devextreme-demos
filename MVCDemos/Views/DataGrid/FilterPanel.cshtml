@@ -16,7 +16,7 @@
     .FilterPanel(f => f.Visible(true))
     .HeaderFilter(h => h.Visible(true))
     .Scrolling(s => s.Mode(GridScrollingMode.Infinite))
-    .DataSource(Model)
+    .DataSource(Model, "ID")
     .FilterValue(filterValue)
     .FilterBuilder(f =>
         f.CustomOperations(co => {

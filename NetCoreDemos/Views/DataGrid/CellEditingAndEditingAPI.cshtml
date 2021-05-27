@@ -14,6 +14,8 @@
         .Editing(editing => {
             editing.Mode(GridEditMode.Cell);
             editing.AllowUpdating(true);
+            editing.AllowAdding(true);
+            editing.AllowDeleting(true);
         })
         .Selection(selection => selection.Mode(SelectionMode.Multiple))
         .OnSelectionChanged("onSelectionChanged")

@@ -6,6 +6,8 @@
         .Editing(editing => {
             editing.Mode(GridEditMode.Batch);
             editing.AllowUpdating(true);
+            editing.AllowAdding(true);
+            editing.AllowDeleting(true);
             editing.SelectTextOnEditStart(true);
             editing.StartEditAction(GridStartEditAction.Click);
         })
@@ -34,6 +36,8 @@
             .Controller("DataGridEmployees")
             .LoadAction("Get")
             .UpdateAction("Put")
+            .InsertAction("Post")
+            .DeleteAction("Delete")
             .Key("ID")
         )
     )

@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "Name": "Data Grid",
     "Equivalents": "dxDataGrid, dx-data-grid",
@@ -419,7 +419,6 @@
           {
             "Title": "Filtering API",
             "Name": "FilteringAPI",
-            "DocUrl": "Guide/UI_Components/DataGrid/Filtering_and_Searching/#API",
             "Widget": "DataGrid",
             "DemoType": "Web"
           },
@@ -1446,7 +1445,6 @@
           {
             "Title": "Using Search Panel",
             "Name": "UsingSearchPanel",
-            "DocUrl": "Guide/UI_Components/TreeList/Filtering_and_Searching/#Search_Panel",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
@@ -1459,7 +1457,6 @@
           {
             "Title": "Using Filter Row",
             "Name": "UsingFilterRow",
-            "DocUrl": "Guide/UI_Components/TreeList/Filtering_and_Searching/#Filter_Row",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1470,7 +1467,6 @@
           {
             "Title": "Using Header Filter",
             "Name": "UsingHeaderFilter",
-            "DocUrl": "Guide/UI_Components/TreeList/Filtering_and_Searching/#Header_Filter",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1515,7 +1511,6 @@
           {
             "Title": "Column Reordering",
             "Name": "Reordering",
-            "DocUrl": "Guide/UI_Components/TreeList/Columns/Column_Reordering/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1526,7 +1521,6 @@
           {
             "Title": "Column Resizing",
             "Name": "Resizing",
-            "DocUrl": "Guide/UI_Components/TreeList/Columns/Column_Sizing/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1538,7 +1532,6 @@
             "Title": "Column Fixing",
             "Name": "ColumnFixing",
             "Equivalents": "fixed column, frozen column, pinned column",
-            "DocUrl": "Guide/UI_Components/TreeList/Columns/Column_Fixing/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1739,7 +1732,6 @@
           {
             "Title": "Recurring Appointments",
             "Name": "RecurringAppointments",
-            "DocUrl": "Guide/UI_Components/Scheduler/Appointments/Appointment_Types/#Recurring_Appointments",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/RecurringAppointment.cs",
@@ -2784,8 +2776,7 @@
               "/Models/SampleData/IceHockeyGoldMedalistsData.cs",
               "/Models/SampleData/MedalAnnotations.cs"
             ],
-            "DemoType": "Viz",
-            "Badge": "New"
+            "DemoType": "Viz"
           }
         ]
       },
@@ -3149,8 +3140,7 @@
             "MvcDescription": "",
             "NetCoreDescription": "",
             "MvcAdditionalFiles": [],
-            "DemoType": "Viz",
-            "Badge": "New"
+            "DemoType": "Viz"
           },
           {
             "Title": "Strips",
@@ -3160,8 +3150,7 @@
             "MvcDescription": "",
             "NetCoreDescription": "",
             "MvcAdditionalFiles": [],
-            "DemoType": "Viz",
-            "Badge": "New"
+            "DemoType": "Viz"
           }
         ]
       },
@@ -5500,7 +5489,6 @@
             "DocUrl": "ApiReference/UI_Components/dxVectorMap/Configuration/annotations",
             "Widget": "VectorMap",
             "Modules": "vectormap",
-            "Badge": "New",
             "MvcAdditionalFiles": [
               "/Models/StateData.cs",
               "/Models/SampleData/StatesData.cs"
