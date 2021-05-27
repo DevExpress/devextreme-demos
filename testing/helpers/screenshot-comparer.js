@@ -14,9 +14,9 @@ const screenshotComparerDefault = {
   attemptTimeout: 500,
   looksSameComparisonOptions: {
     strict: false,
-    tolerance: 5,
+    tolerance: 0,
     ignoreAntialiasing: true,
-    antialiasingTolerance: 10,
+    antialiasingTolerance: 0,
     ignoreCaret: true,
   },
 };
