@@ -57,7 +57,7 @@ DemoApp.controller('DemoController', function DemoController($scope) {
             
             e.toolbarOptions.items[0].showText = 'always';
 
-            e.toolbarOptions.items.unshift({
+            e.toolbarOptions.items.push({
                 location: "after",
                 widget: "dxButton",
                 options: {
