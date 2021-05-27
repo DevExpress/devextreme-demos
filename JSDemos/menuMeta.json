@@ -1911,7 +1911,6 @@
           {
             "Title": "Context Menu Integration",
             "Name": "ContextMenuIntegration",
-            "DocUrl": "ApiReference/UI_Components/dxScheduler/Configuration/#onAppointmentContextMenu",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/RecurringAppointment.cs",
