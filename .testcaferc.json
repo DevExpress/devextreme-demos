@@ -1,6 +1,6 @@
 {
   "src": "./testing/**/*.test.js",
-  "browsers": "chrome --headless --disable-partial-raster --disable-skia-runtime-opts",
+  "browsers": "chrome --headless",
   "screenshots": {
     "path": "./",
     "pathPattern": "${TEST}.png"
