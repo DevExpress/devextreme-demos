@@ -41,10 +41,6 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
     const testCodePath = join(demoPath, '../test-code.js');
     const testCafeTestCodePath = join(demoPath, '../testcafe-test-code.js');
 
-    // if (widgetName !== 'DateBox' || demoName !== 'Overview') {
-    //   return;
-    // }
-
     test
       .page`http://127.0.0.1:8080/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`
       .clientScripts(
@@ -61,8 +57,6 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
           const code = readFileSync(testCafeTestCodePath, 'utf8');
           await execTestCafeCode(t, code);
         }
-
-        // await t.debug();
 
         await t.expect(
           await compareScreenshot(t, `${testName}.png`),
