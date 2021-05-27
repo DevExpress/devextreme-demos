@@ -1,6 +1,6 @@
 {
   "src": "./testing/**/*.test.js",
-  "browsers": "chrome --deterministic-mode --disable-partial-raster --disable-skia-runtime-opts",
+  "browsers": "chrome --headless --deterministic-mode",
   "screenshots": {
     "path": "./",
     "pathPattern": "${TEST}.png"
