@@ -51,8 +51,8 @@
           @click="deleteRecords()"
           :disabled="!selectedItemKeys.length"
           icon="trash"
-          text="Delete Selected Records">
-        </DxButton>
+          text="Delete Selected Records"
+        />
       </template>
     </DxDataGrid>
   </div>
