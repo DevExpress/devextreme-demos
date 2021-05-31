@@ -5,6 +5,20 @@ $(function(){
     });
     
     var deleteButton;
+    var deleteButtonOptions = {
+        text: "Delete Selected Records",
+        icon: "trash",
+        disabled: true,
+        onClick: function() {
+            dataGrid.getSelectedRowKeys().forEach((key) => {
+                employeesStore.remove(key);
+            });
+            dataGrid.refresh();
+        },
+        onInitialized: function(e) {
+            deleteButton = e.component;
+        }
+    };
     
     var dataGrid = $("#gridContainer").dxDataGrid({
         dataSource: employeesStore,
@@ -53,20 +67,7 @@ $(function(){
             e.toolbarOptions.items.push({
                 location: "after",
                 widget: "dxButton",
-                options: {
-                    text: "Delete Selected Records",
-                    icon: "trash",
-                    disabled: true,
-                    onClick: function() {
-                        dataGrid.getSelectedRowKeys().forEach((key) => {
-                            employeesStore.remove(key);
-                        });
-                        dataGrid.refresh();
-                    },
-                    onInitialized: function(e) {
-                        deleteButton = e.component;
-                    }
-                }
+                options: deleteButtonOptions
             });
         },
         onSelectionChanged: function(data) {
