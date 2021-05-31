@@ -33,6 +33,15 @@
             dataField="BirthDate"
             dataType="date">
         </dxi-column>
+
+        <dx-button
+            *dxTemplate="let data of 'deleteButton'"
+            (onClick)="deleteRecords()"
+            [disabled]="!selectedItemKeys.length"
+            icon="trash"
+            text="Delete Selected Records">
+        </dx-button>
+
     </dx-data-grid>
 </div>
 

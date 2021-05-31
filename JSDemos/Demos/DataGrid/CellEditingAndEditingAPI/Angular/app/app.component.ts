@@ -22,7 +22,6 @@ export class AppComponent {
     dataSource: ArrayStore;
     states: State[];
     selectedItemKeys: any[] = [];
-    deleteButton: any;
 
     constructor(service: Service) {
         this.dataSource = new ArrayStore({
@@ -34,7 +33,6 @@ export class AppComponent {
 
     selectionChanged(data: any) {
         this.selectedItemKeys = data.selectedRowKeys;
-        this.deleteButton.option("disabled", !data.selectedRowsData.length);
     }
 
     deleteRecords() {
@@ -42,7 +40,6 @@ export class AppComponent {
             this.dataSource.remove(key);
         });
         this.dataGrid.instance.refresh();
-        this.deleteButton.option("disabled", true);
     }
 
     onToolbarPreparing(e) {
@@ -50,16 +47,7 @@ export class AppComponent {
 
         e.toolbarOptions.items.push({
             location: "after",
-            widget: "dxButton",
-            options: {
-                text: "Delete Selected Records",
-                icon: "trash",
-                disabled: true,
-                onClick: this.deleteRecords.bind(this),
-                onInitialized: (e) => {
-                    this.deleteButton = e.component;
-                }
-            }
+            template: "deleteButton"
         });
     }
 }

@@ -8,6 +8,9 @@ import DataGrid, {
   Lookup
 } from 'devextreme-react/data-grid';
 
+import { Button } from 'devextreme-react/button';
+import { Template } from 'devextreme-react/core/template';
+
 import ArrayStore from 'devextreme/data/array_store';
 import DataSource from 'devextreme/data/data_source';
 import { employees, states } from './data.js';
@@ -27,6 +30,7 @@ class App extends React.Component {
     };
     this.selectionChanged = this.selectionChanged.bind(this);
     this.deleteRecords = this.deleteRecords.bind(this);
+    this.deleteButtonRender = this.deleteButtonRender.bind(this);
     this.onToolbarPreparing = this.onToolbarPreparing.bind(this);
   }
 
@@ -57,9 +61,18 @@ class App extends React.Component {
             <Lookup dataSource={states} valueExpr="ID" displayExpr="Name" />
           </Column>
           <Column dataField="BirthDate" dataType="date" />
+          <Template name="deleteButton" render={this.deleteButtonRender} />
         </DataGrid>
       </div>
     );
+  }
+  deleteButtonRender() {
+    return <Button
+      onClick={this.deleteRecords}
+      icon="trash"
+      disabled={!this.state.selectedItemKeys.length}
+      text="Delete Selected Records">
+    </Button>
   }
   deleteRecords() {
     this.state.selectedItemKeys.forEach((key) => {
@@ -69,29 +82,18 @@ class App extends React.Component {
       selectedItemKeys: []
     });
     dataSource.reload();
-    this.deleteButton.option('disabled', true);
   }
   selectionChanged(data) {
     this.setState({
       selectedItemKeys: data.selectedRowKeys
     });
-    this.deleteButton.option('disabled', !data.selectedRowsData.length);
   }
   onToolbarPreparing(e) {
     e.toolbarOptions.items[0].showText = 'always';
 
     e.toolbarOptions.items.push({
       location: 'after',
-      widget: 'dxButton',
-      options: {
-        text: 'Delete Selected Records',
-        icon: 'trash',
-        disabled: true,
-        onClick: this.deleteRecords.bind(this),
-        onInitialized: (e) => {
-          this.deleteButton = e.component;
-        }
-      }
+      template: 'deleteButton'
     });
   }
 }

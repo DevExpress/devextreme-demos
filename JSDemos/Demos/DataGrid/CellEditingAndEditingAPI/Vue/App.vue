@@ -46,6 +46,14 @@
         data-field="BirthDate"
         data-type="date"
       />
+      <template #deleteButton>
+        <DxButton
+          @click="deleteRecords()"
+          :disabled="!selectedItemKeys.length"
+          icon="trash"
+          text="Delete Selected Records">
+        </DxButton>
+      </template>
     </DxDataGrid>
   </div>
 </template>
@@ -87,7 +95,6 @@ export default {
       states: states,
       selectionChanged: (data)=>{
         this.selectedItemKeys = data.selectedRowKeys;
-        this.deleteButton.option('disabled', !data.selectedRowsData.length);
       },
       deleteRecords:()=>{
         this.selectedItemKeys.forEach((key) => {
@@ -95,7 +102,6 @@ export default {
         });
         this.selectedItemKeys = [];
         this.dataSource.reload();
-        this.deleteButton.option('disabled', true);
       }
     };
   },
@@ -105,16 +111,7 @@ export default {
 
       e.toolbarOptions.items.push({
         location: 'after',
-        widget: 'dxButton',
-        options: {
-          text: 'Delete Selected Records',
-          icon: 'trash',
-          disabled: true,
-          onClick: this.deleteRecords.bind(this),
-          onInitialized: (e) => {
-            this.deleteButton = e.component;
-          }
-        }
+        template: 'deleteButton'
       });
     }
   }
