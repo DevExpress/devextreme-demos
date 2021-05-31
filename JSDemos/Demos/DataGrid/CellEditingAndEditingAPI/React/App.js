@@ -72,7 +72,7 @@ class App extends React.Component {
       icon="trash"
       disabled={!this.state.selectedItemKeys.length}
       text="Delete Selected Records">
-    </Button>
+    </Button>;
   }
   deleteRecords() {
     this.state.selectedItemKeys.forEach((key) => {
