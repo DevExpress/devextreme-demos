@@ -1788,7 +1788,7 @@
         ]
       },
       {
-        "Name": "Group Appointments",
+        "Name": "Grouping",
         "Equivalents": "",
         "Demos": [
           {
@@ -1802,7 +1802,7 @@
             "DemoType": "Web"
           },
           {
-            "Title": "Group By Date",
+            "Title": "Grouping By Date",
             "Name": "GroupByDate",
             "DocUrl": "ApiReference/UI_Components/dxScheduler/Configuration/views/#groupByDate",
             "Widget": "Scheduler",
