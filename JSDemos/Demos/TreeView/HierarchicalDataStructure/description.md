@@ -1,4 +1,4 @@
-To bind the TreeView to a hierarchical array, assign it to the [items[]](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/) property. If you need to use a [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) object and its diverse API, specify the [dataSource](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#dataSource) property instead.
+To bind the TreeView to a hierarchical array, assign this array to the [items[]](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/) property. If you need to use a [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) object and its diverse API, specify the [dataSource](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#dataSource) property instead.
 
 No matter which property is used, each hierarchical node should include a `text`, a unique `id`, optional developer-defined fields, and an `items` array if a node nests others. If the **items[]** TreeView property is specified, fields from its API can also be included.
 
