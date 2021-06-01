@@ -1,7 +1,5 @@
-The [ContextMenu](/Documentation/Guide/UI_Components/ContextMenu/Overview/) component allows you to replace a browser context menu with your custom context menu. Use the following Scheduler properties to replace context menu for different Scheduler elements:
+The [ContextMenu](/Documentation/Guide/UI_Components/ContextMenu/Overview/) component allows you to replace a browser context menu with your custom context menu. Use the following Scheduler properties to specify a custom context menu for different Scheduler elements:
 
-* [onAppointmentContextMenu](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/#onAppointmentContextMenu)
-Sets a custom context menu for an appointment rectangle.
+* Appointment rectangle: [onAppointmentContextMenu](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/#onAppointmentContextMenu)
 
-* [onCellContextMenu](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/#onCellContextMenu)
-Sets a custom context menu for an empty grid cell.
+* Empty grid cell: [onCellContextMenu](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/#onCellContextMenu)
