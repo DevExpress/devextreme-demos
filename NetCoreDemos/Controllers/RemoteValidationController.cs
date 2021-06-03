@@ -15,7 +15,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         }
 
         [HttpPost]
-        public JsonResult CheckUniqueEmailAddress([FromBody]JObject data) {
+        public JsonResult CheckUniqueEmailAddress([FromBody] JObject data) {
             int? id = (int?)data["id"];
             string email = data["email"].ToString();
             bool isValid = !_db.Employees.Any(emp => {
