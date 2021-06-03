@@ -50,12 +50,12 @@
                 i.Add().Name(GanttToolbarItem.ZoomOut);
                 i.Add().Name(GanttToolbarItem.Separator);
                 i.Add().Name("exportpdf")
-                   .Widget(widget => widget.Button()
-                   .OnClick("exportGantt")
-                   .Icon("exportpdf")
-                   .Hint("Export to PDF")
-                   .StylingMode(ButtonStylingMode.Text)
-                   );
+                    .Widget(widget => widget.Button()
+                    .OnClick("exportGantt")
+                    .Icon("exportpdf")
+                    .Hint("Export to PDF")
+                    .StylingMode(ButtonStylingMode.Text)
+                    );
             });
         })
         .Columns(columns => {
