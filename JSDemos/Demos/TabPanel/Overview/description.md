@@ -1,4 +1,4 @@
-The [TabPanel](/Documentation/ApiReference/UI_Components/dxTabPanel/) UI component consists of the [Tabs](/Documentation/ApiReference/UI_Components/dxTabs/) and [MultiView](/Documentation/ApiReference/UI_Components/dxMultiView/) components. TabPanel automatically synchronizes the selected tab with the currently displayed view and vice versa. This demo shows the following TabPanel configuration::      
+The [TabPanel](/Documentation/ApiReference/UI_Components/dxTabPanel/) UI component consists of the [Tabs](/Documentation/ApiReference/UI_Components/dxTabs/) and [MultiView](/Documentation/ApiReference/UI_Components/dxMultiView/) components. TabPanel automatically synchronizes the selected tab with the currently displayed view and vice versa.
 
 ### Bind the TabPanel to Data       
 
@@ -8,6 +8,6 @@ The [dataSource](/Documentation/ApiReference/UI_Components/dxTabPanel/Configurat
 
 You can configure navigation between tabs. Specify the [swipeEnabled](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#swipeEnabled) to define whether to switch between views with the swipe gesture. You can also [loop](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#loop) views and use the [animationEnabled](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#animationEnabled) property to specify whether to animate the change of the selected view.
 
-To change the selected tab programmatically, use the [selectedIndex](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#swipeEnabled) property that is the index of the currently selected tab in the [dataSource](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#dataSource) or [items[]](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/items/) array. The [onSelectionChanged](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#onSelectionChanged) allows you to specify a function that is executed when the selected tab changes. 
+To switch between tabs programmatically, use the [selectedIndex](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#selectedIndex) property. It accepts the index of a tab in the **dataSource** or **items[]** array. The [onSelectionChanged](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#onSelectionChanged) function allows you perform desired actions when the selected tab changes.
 
 You can switch the checkboxes below the TabPanel to change the **loop**, **animationEnabled**, and **swipeEnabled** property values.
