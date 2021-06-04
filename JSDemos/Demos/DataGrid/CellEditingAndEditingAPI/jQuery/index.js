@@ -10,7 +10,7 @@ $(function(){
         icon: "trash",
         disabled: true,
         onClick: function() {
-            dataGrid.getSelectedRowKeys().forEach((key) => {
+            dataGrid.getSelectedRowKeys().forEach(function(key) {
                 employeesStore.remove(key);
             });
             dataGrid.refresh();
