@@ -9,7 +9,7 @@ Use the [resources](/Documentation/ApiReference/UI_Components/dxScheduler/Config
     Resource instances of this resource kind. Each instance should contain the `id`, `text`, and `color` fields. If your field names differ, specify them in the [valueExpr](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/resources/#valueExpr), [displayExpr](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/resources/#displayExpr), and [colorExpr](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/resources/#colorExpr) properties, respectively.
 
 - [fieldExpr](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/resources/#fieldExpr)             
-    A data field used to assign instances of this resource kind to appointments. Add this field to appointment objects and set its value to resource instance `id`s.
+    A data field used to assign instances of this resource kind to appointments. Add this field to appointment objects and set the field values to `id` values of resource instances.
 
 In this demo, the **resources** array contains three resource kinds: rooms, priorities, and owners. Their **fieldExpr** values are `roomId`, `priorityId`, and `ownerId`, respectively. Each appointment contains the same fields. Field values assign the appointments to different instances of these resource kinds.
 
