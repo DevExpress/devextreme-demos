@@ -1803,7 +1803,6 @@
           {
             "Title": "Group Orientation",
             "Name": "GroupOrientation",
-            "DocUrl": "ApiReference/UI_Components/dxScheduler/Configuration/views/#groupOrientation",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/EmployeeTask.cs",
