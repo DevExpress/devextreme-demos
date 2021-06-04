@@ -11,7 +11,7 @@ Use the [resources](/Documentation/ApiReference/UI_Components/dxScheduler/Config
 - [fieldExpr](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/resources/#fieldExpr)             
     A data field used to assign instances of this resource kind to appointments. Add this field to appointment objects and set the field values to `id` values of resource instances.
 
-In this demo, the **resources** array contains three resource kinds: rooms, priorities, and owners. Their **fieldExpr** values are `roomId`, `priorityId`, and `ownerId`, respectively. Each appointment contains the same fields. Field values assign the appointments to different instances of these resource kinds.
+In this demo, the **resources** array contains three resource kinds: rooms, priorities, and assignees. Their **fieldExpr** values are `roomId`, `priorityId`, and `assigneeId`, respectively. Each appointment contains the same fields. Field values assign the appointments to different instances of these resource kinds.
 
 ### Color Appointments Based on a Resource Kind
 
@@ -21,6 +21,6 @@ This demo enables you to change the **useColorAsDefault** property at runtime. C
 
 ### Assign Multiple Instances of a Resource Kind
 
-Each resource kind object can contain the [allowMultiple](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/resources/#allowMultiple) property. When this property is set to **true**, users can assign multiple instances of this kind to a single appointment. In this demo, the Owner resource kind allows multiple instances.
+Each resource kind object can contain the [allowMultiple](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/resources/#allowMultiple) property. When this property is set to **true**, users can assign multiple instances of this kind to a single appointment. In this demo, the Assignee resource kind allows multiple instances.
 
 You can also group appointments by resources as shown in the following demo: [Group Orientation](/Demos/WidgetsGallery/Demo/Scheduler/GroupOrientation/). 
