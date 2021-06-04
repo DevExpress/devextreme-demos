@@ -37,6 +37,8 @@ module.exports = {
                     'argb', // ExcelJS
                     'args',
                     'asia',
+                    'assignee',
+                    'assignees',
                     'async',
                     'attr',
                     'attrs',
