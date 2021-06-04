@@ -1,4 +1,4 @@
-Users can categorize appointments by resources. To understand what resources are, consider the following example: in an educational center lectures are held in several rooms. In Scheduler terms, room is a resource kind, individual rooms are resource instances, and lectures are appointments that use these resource instances.
+Users can categorize appointments by resources. The following example illustrates what resources are: in an educational center lectures are held in several rooms. In Scheduler terms, room is a resource kind, individual rooms are resource instances, and lectures are appointments that use these resource instances.
 
 
 ### Define Resource Kinds
