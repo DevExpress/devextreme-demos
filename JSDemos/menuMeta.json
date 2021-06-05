@@ -3942,7 +3942,6 @@
               {
                 "Title": "Plain Data Structure",
                 "Name": "FlatDataStructure",
-                "DocUrl": "Guide/UI_Components/TreeView/Use_Plain_Data/",
                 "Widget": "TreeView",
                 "MvcAdditionalFiles": [
                   "/Models/Product.cs",
