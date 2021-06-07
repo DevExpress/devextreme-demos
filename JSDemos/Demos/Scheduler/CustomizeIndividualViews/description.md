@@ -4,6 +4,6 @@ This demo customizes two views - Week and Work Week - in the following manner:
 
 * Both views [group appointments](/Demos/WidgetsGallery/Demo/Scheduler/GroupOrientation/) by [resources](/Demos/WidgetsGallery/Demo/Scheduler/Resources/).
 * Both views use the [dateCellTemplate](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/views/#dateCellTemplate) to change the appearance of date cells.
-* The Work Week view changes the [startDayHour](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/views/#startDayHour) and [endDayHour](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/views/#endDayHour) properties to limit the time range.
+* The Work Week view uses the [startDayHour](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/views/#startDayHour) and [endDayHour](/Documentation/ApiReference/UI_Components/dxScheduler/Configuration/views/#endDayHour) properties to set custom first and last hours on the time scale.
 
 Day and Month views use default settings.
