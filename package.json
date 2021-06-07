@@ -60,7 +60,7 @@
         "systemjs": "0.21.3",
         "systemjs-plugin-babel": "0",
         "systemjs-plugin-json": "latest",
-        "underscore": "1.5.1",
+        "underscore": "^1.9.2",
         "vue": "3.0.0",
         "vuex": "4.0.0-beta.4",
         "whatwg-fetch": "2.0.4",
