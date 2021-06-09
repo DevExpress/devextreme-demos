@@ -2,9 +2,11 @@ The [TabPanel](/Documentation/ApiReference/UI_Components/dxTabPanel/) UI compone
 
 ### Bind the TabPanel to Data       
 
-The [dataSource](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#dataSource) property binds the TabPanel to data. You can use the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) API to shape, group, and otherwise modify data. You can also assign an array of TabPanel items to the [items[]](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/items/) property instead of **dataSource** as shown in this demo. Specify tab and view settings in this array.  
+You can use the [dataSource](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#dataSource) property to bind the TabPanel to data. The [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) API allows you to shape, group, and otherwise modify data. 
 
-To specify a custom template for a tab or a view, use the [tabTemplate](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/items/#tabTemplate) or [template](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/items/#template) properties for an element in the **items[]** array.  To specify a custom template for all the TabPanel views, use the [itemTemplate](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#itemTemplate). To do the same for the tabs, use [itemTitleTemplate](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#itemTitleTemplate).
+You can also assign an array of TabPanel items to the [items[]](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/items/) property instead of **dataSource** as shown in this demo. Specify tab and view settings listed in the **items[]** description in this array. If these properties do not suit your needs, you can specify a custom template for a separate tab or a view. Assign this template to an element's [tabTemplate](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/items/#tabTemplate) or [template](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/items/#template) fields correspondingly. 
+
+If you need to specify a single template for all the TabPanel views, use the [itemTemplate](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#itemTemplate). To do the same for the tabs, use [itemTitleTemplate](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#itemTitleTemplate).
 
 ### Switch Between the Tabs     
 
