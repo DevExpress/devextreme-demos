@@ -10,11 +10,14 @@ To specify a custom template for a tab or a view, use the [tabTemplate](/Documen
 
 To switch between tabs programmatically, use the [selectedIndex](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#selectedIndex) property. It accepts the index of a tab in the **dataSource** or **items[]** array. The [onSelectionChanged](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#onSelectionChanged) function allows you perform desired actions when the selected tab changes.
 
-Use the following properties to configure navigation between tabs:       
+Use the following properties to configure user navigation between tabs:
+
 - [swipeEnabled](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#swipeEnabled)      
 Defines whether to switch between views with the swipe gesture.
+
 - [loop](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#loop)      
 Specifies whether to loop views.
+
 - [animationEnabled](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#animationEnabled)      
 Specifies whether to animate the change of the selected view.
 
