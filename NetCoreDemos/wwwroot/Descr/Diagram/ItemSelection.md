@@ -1,0 +1,1 @@
+You can access selected shape data via the [OnSelectionChanged](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DiagramBuilder.OnSelectionChanged.overloads) function. In this demo, the function fetches selected shape information and displays it under the Diagram component.

@@ -1,0 +1,3 @@
+This demo shows the Diagram's ability to load an external tree structure from a hierarchical object. 
+
+The component binds to a data object specified by the [DataSource](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DiagramNodesBuilder.DataSource.overloads) method. You should call the [ItemsExpr](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DiagramNodesBuilder.ItemsExpr.overloads) method with the name of the field that provides data for nested items due to the data's hierarchical structure.
