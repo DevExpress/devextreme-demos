@@ -1,4 +1,5 @@
 ﻿using System.Web;
+using System.Web.Helpers;
 using System.Web.Hosting;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -13,6 +14,8 @@ namespace DevExtreme.MVC.Demos {
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            AntiForgeryConfig.SuppressXFrameOptionsHeader = true;
         }
 
         public override void Init() {
