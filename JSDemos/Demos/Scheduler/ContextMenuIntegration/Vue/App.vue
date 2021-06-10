@@ -29,18 +29,18 @@
       item-template="itemTemplateSlot"
     >
       <template #itemTemplateSlot="{ data: itemData }">
-        <ItemTemplate :item-data="itemData" />
+        <ItemTemplate :item-data="itemData"/>
       </template>
     </DxContextMenu>
   </div>
 </template>
 
 <script>
-import DxScheduler, { DxResource } from "devextreme-vue/scheduler";
-import DxContextMenu from "devextreme-vue/context-menu";
+import DxScheduler, { DxResource } from 'devextreme-vue/scheduler';
+import DxContextMenu from 'devextreme-vue/context-menu';
 
-import ItemTemplate from "./ItemTemplate.vue";
-import { resourcesData, data } from "./data.js";
+import ItemTemplate from './ItemTemplate.vue';
+import { resourcesData, data } from './data.js';
 
 export default {
   components: {
@@ -51,7 +51,7 @@ export default {
   },
   data() {
     return {
-      views: ["day", "month"],
+      views: ['day', 'month'],
       currentDate: new Date(2020, 10, 25),
       dataSource: data,
       groups: null,
@@ -66,45 +66,45 @@ export default {
     onAppointmentContextMenu({ appointmentData, targetedAppointmentData }) {
       const scheduler = this.$refs.scheduler.instance;
       const resourceItems = resourcesData.map((item) => ({
-          ...item,
-          onItemClick: ({ itemData }) =>
-            scheduler.updateAppointment(appointmentData, {
-              ...appointmentData,
-              ...{ roomId: [itemData.id] },
-            }),
-        }));
-      this.target = ".dx-scheduler-appointment";
+        ...item,
+        onItemClick: ({ itemData }) =>
+          scheduler.updateAppointment(appointmentData, {
+            ...appointmentData,
+            ...{ roomId: [itemData.id] },
+          }),
+      }));
+      this.target = '.dx-scheduler-appointment';
       this.disabled = false;
       this.contextMenuItems = [
         {
-          text: "Open",
+          text: 'Open',
           onItemClick: () => scheduler.showAppointmentPopup(appointmentData),
         },
         {
-          text: "Delete",
+          text: 'Delete',
           onItemClick: () => scheduler.deleteAppointment(appointmentData),
         },
         {
-          text: "Repeat Weekly",
+          text: 'Repeat Weekly',
           beginGroup: true,
           onItemClick: () =>
             scheduler.updateAppointment(appointmentData, {
               startDate: targetedAppointmentData.startDate,
-              recurrenceRule: "FREQ=WEEKLY",
+              recurrenceRule: 'FREQ=WEEKLY',
             }),
         },
-        { text: "Set Room", beginGroup: true, disabled: true },
+        { text: 'Set Room', beginGroup: true, disabled: true },
         ...resourceItems,
       ];
     },
 
     onCellContextMenu({ cellData }) {
       const scheduler = this.$refs.scheduler.instance;
-      this.target = ".dx-scheduler-date-table-cell";
+      this.target = '.dx-scheduler-date-table-cell';
       this.disabled = false;
       this.contextMenuItems = [
         {
-          text: "New Appointment",
+          text: 'New Appointment',
           onItemClick: () =>
             scheduler.showAppointmentPopup(
               { startDate: cellData.startDate },
@@ -112,18 +112,18 @@ export default {
             ),
         },
         {
-          text: "New Recurring Appointment",
+          text: 'New Recurring Appointment',
           onItemClick: () =>
             scheduler.showAppointmentPopup(
               {
                 startDate: cellData.startDate,
-                recurrenceRule: "FREQ=DAILY",
+                recurrenceRule: 'FREQ=DAILY',
               },
               true
             ),
         },
         {
-          text: "Group by Room/Ungroup",
+          text: 'Group by Room/Ungroup',
           beginGroup: true,
           onItemClick: () => {
             if (this.groups) {
@@ -131,12 +131,12 @@ export default {
               this.groups = null;
             } else {
               this.crossScrollingEnabled = true;
-              this.groups = ["roomId"];
+              this.groups = ['roomId'];
             }
           },
         },
         {
-          text: "Go to Today",
+          text: 'Go to Today',
           onItemClick: () => {
             this.currentDate = new Date();
           },
