@@ -15,7 +15,7 @@
         "@angular/platform-browser": "latest",
         "@angular/platform-browser-dynamic": "latest",
         "@aspnet/signalr": "1.0.0",
-        "@devextreme/vdom": "1.2.1",
+        "@devextreme/vdom": "1.2.2",
         "angular": "^1.6.10",
         "angular-sanitize": "^1.6.10",
         "canvg": "2",
@@ -62,7 +62,7 @@
         "underscore": "^1.9.2",
         "vue": "3.0.0",
         "vuex": "4.0.0-beta.4",
-        "whatwg-fetch": "2.0.4",
+        "whatwg-fetch": "2.0.4".,
         "zone.js": "0.10.2"
     },
     "devDependencies": {
