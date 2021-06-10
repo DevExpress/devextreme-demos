@@ -111,6 +111,7 @@
         "lint-mvc": "cd MVCDemos && eclint check **/*.cshtml !{bin,obj}/** && dotnet format -w DevExtreme.MVC.Demos.sln --check && cd ../",
         "lint-netcore": "cd NetCoreDemos && eclint check **/*.cshtml !{bin,obj}/** !DemoShell/** && dotnet format -w DevExtreme.NETCore.Demos.sln --check && cd ../",
         "lint": "npm-run-all -p -c lint-js lint-react lint-vue lint-mvc lint-netcore",
+        "fix-lint": "npm-run-all -p -c \"lint-* -- --fix\"",
 
         "build": "node utils/bundle/index.js",
         "build-angular": "npm run build -- angular",
