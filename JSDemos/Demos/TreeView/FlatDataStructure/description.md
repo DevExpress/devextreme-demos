@@ -6,7 +6,7 @@ Regardless of the used property, each item object should include the following f
 Unique item identifier.
 
 * [parentId](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/#parentId)           
-Identifier of the parent item. If the TreeView has a single item on the highest level, this field should be omitted for the corresponding object as done in this demo. In case of numerous items, this field should be equal to **0**, **undefined** or a custom value specified in the [rootValue](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#rootValue) property.
+Identifier of the parent item. If you did not set a custom [rootValue](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#rootValue), you can omit this field for the top-level item objects.
 
 * [text](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/#text)         
 Text displayed by the item.
