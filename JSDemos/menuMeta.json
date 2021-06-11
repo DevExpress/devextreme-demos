@@ -1765,15 +1765,14 @@
           {
             "Title": "Resources",
             "Name": "Resources",
-            "DocUrl": "Guide/UI_Components/Scheduler/Resources/Assign_Appointments_to_Resources/",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/AppointmentWithResources.cs",
-              "/Models/OwnerResource.cs",
+              "/Models/AssigneeResource.cs",
               "/Models/RoomResource.cs",
               "/Models/PriorityResource.cs",
               "/Models/SampleData/AppointmentsWithResources.cs",
-              "/Models/SampleData/OwnerResources.cs",
+              "/Models/SampleData/AssigneeResources.cs",
               "/Models/SampleData/RoomResources.cs",
               "/Models/SampleData/PriorityResources.cs"
             ],
@@ -1802,7 +1801,6 @@
           {
             "Title": "Group Orientation",
             "Name": "GroupOrientation",
-            "DocUrl": "ApiReference/UI_Components/dxScheduler/Configuration/views/#groupOrientation",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/EmployeeTask.cs",
@@ -1830,7 +1828,6 @@
           {
             "Title": "Custom Templates",
             "Name": "CustomTemplates",
-            "DocUrl": "Guide/UI_Components/Scheduler/Appointments/Customize_Appointment/",
             "Credits": "www.wikipedia.org",
             "Widget": "Scheduler",
             "Modules": "globalize--vue&react",
@@ -1860,7 +1857,6 @@
           {
             "Title": "Customize Individual Views",
             "Name": "CustomizeIndividualViews",
-            "DocUrl": "Guide/UI_Components/Scheduler/Views/Customize_Individual_Views/",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Views/Scheduler/_DateCellTemplate.cshtml",
