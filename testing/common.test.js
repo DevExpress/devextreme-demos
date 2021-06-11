@@ -26,6 +26,40 @@ fixture`Getting Started`
     { module: 'mockdate' },
   ]);
 
+  const ensureDevExpressThemesInitialized = ClientFunction(() => 
+    new Promise((resolve, reject) => {
+
+      const onInitialized = () => setTimeout(resolve, 100);                
+      const trySubscribeInitialized = (callback) => {
+
+        const gbthis = globalThis || Window.globalThis;          
+        const initialized = gbthis?.DevExpress?.ui?.themes?.initialized;
+        if(initialized){
+          initialized(callback);
+          return true;
+        }
+        return false;
+      };
+
+      if(!trySubscribeInitialized(onInitialized)) {
+        const subscribeInitializedId = setInterval(() => {
+          if(trySubscribeInitialized(onInitialized)) {
+            clearInterval(subscribeInitializedId);
+            clearTimeout(subscribeInitializedWatcherId);
+            subscribeInitializedId = -1;
+          }
+        }, 100);
+
+        const subscribeInitializedWatcherId = setTimeout(() => {
+          if(subscribeInitializedId!=-1) {
+            clearInterval(subscribeInitializedId);
+            resolve();
+          }              
+        }, 10*1000);
+      }
+    })
+);
+
 const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
 
 ['jQuery'/* , 'React', 'Vue', 'Angular' */].forEach((approach) => {
@@ -41,26 +75,26 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
     const testCodePath = join(demoPath, '../test-code.js');
     const testCafeTestCodePath = join(demoPath, '../testcafe-test-code.js');
 
+    const preTestCodes = existsSync(preTestCodePath) ? [{ content: readFileSync(preTestCodePath, 'utf8') }] : [];
+    const testCodeSource = existsSync(testCodePath) ? readFileSync(testCodePath, 'utf8') : null;
+    const testCafeCodeSource = existsSync(testCafeTestCodePath) ? readFileSync(testCafeTestCodePath, 'utf8') : null;
+    
     test
       .page`http://127.0.0.1:8080/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`
-      .clientScripts(
-        existsSync(preTestCodePath)
-          ? [{ content: readFileSync(preTestCodePath, 'utf8') }]
-          : [],
-      )(testName, async (t) => {
-        if (existsSync(testCodePath)) {
-          const code = readFileSync(testCodePath, 'utf8');
-          await execCode(code);
+      .clientScripts(preTestCodes)(testName, async (t) => {
+        if (testCodeSource) {
+          await execCode(testCodeSource);
         }
 
-        if (existsSync(testCafeTestCodePath)) {
-          const code = readFileSync(testCafeTestCodePath, 'utf8');
-          await execTestCafeCode(t, code);
+        await ensureDevExpressThemesInitialized();
+
+        if (testCafeCodeSource) {
+          await execTestCafeCode(t, testCafeCodeSource);
         }
 
         await t.expect(
           await compareScreenshot(t, `${testName}.png`),
         ).ok();
-      });
+      });    
   });
 });
