@@ -26,39 +26,42 @@ fixture`Getting Started`
     { module: 'mockdate' },
   ]);
 
-  const ensureDevExpressThemesInitialized = ClientFunction(() => 
-    new Promise((resolve, reject) => {
+const ensureDevExpressThemesInitialized = ClientFunction(() => new Promise((resolve) => {
+  const onInitialized = () => setTimeout(resolve, 100);
+  const trySubscribeInitialized = (callback) => {
+    // eslint-disable-next-line no-undef
+    const globThis = globalThis || Window.globalThis;
+    const initialized = globThis
+        && globThis.DevExpress
+        && globThis.DevExpress.ui
+        && globThis.DevExpress.ui.themes
+        && globThis.DevExpress.ui.themes.initialized;
 
-      const onInitialized = () => setTimeout(resolve, 100);                
-      const trySubscribeInitialized = (callback) => {
+    if (initialized) {
+      initialized(callback);
+      return true;
+    }
+    return false;
+  };
 
-        const gbthis = globalThis || Window.globalThis;          
-        const initialized = gbthis?.DevExpress?.ui?.themes?.initialized;
-        if(initialized){
-          initialized(callback);
-          return true;
-        }
-        return false;
-      };
-
-      if(!trySubscribeInitialized(onInitialized)) {
-        const subscribeInitializedId = setInterval(() => {
-          if(trySubscribeInitialized(onInitialized)) {
-            clearInterval(subscribeInitializedId);
-            clearTimeout(subscribeInitializedWatcherId);
-            subscribeInitializedId = -1;
-          }
-        }, 100);
-
-        const subscribeInitializedWatcherId = setTimeout(() => {
-          if(subscribeInitializedId!=-1) {
-            clearInterval(subscribeInitializedId);
-            resolve();
-          }              
-        }, 10*1000);
+  if (!trySubscribeInitialized(onInitialized)) {
+    let subscribeInitializedWatcherId = -1;
+    let subscribeInitializedId = setInterval(() => {
+      if (trySubscribeInitialized(onInitialized)) {
+        clearInterval(subscribeInitializedId);
+        clearTimeout(subscribeInitializedWatcherId);
+        subscribeInitializedId = -1;
       }
-    })
-);
+    }, 100);
+
+    subscribeInitializedWatcherId = setTimeout(() => {
+      if (subscribeInitializedId !== -1) {
+        clearInterval(subscribeInitializedId);
+        resolve();
+      }
+    }, 10 * 1000);
+  }
+}));
 
 const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
 
@@ -78,7 +81,7 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
     const preTestCodes = existsSync(preTestCodePath) ? [{ content: readFileSync(preTestCodePath, 'utf8') }] : [];
     const testCodeSource = existsSync(testCodePath) ? readFileSync(testCodePath, 'utf8') : null;
     const testCafeCodeSource = existsSync(testCafeTestCodePath) ? readFileSync(testCafeTestCodePath, 'utf8') : null;
-    
+
     test
       .page`http://127.0.0.1:8080/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`
       .clientScripts(preTestCodes)(testName, async (t) => {
@@ -95,6 +98,6 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
         await t.expect(
           await compareScreenshot(t, `${testName}.png`),
         ).ok();
-      });    
+      });
   });
 });
