@@ -21,7 +21,7 @@ const execTestCafeCode = (t, code) => {
 };
 
 fixture`Getting Started`
-  .beforeEach((t) => t.resizeWindow(1000, 800))
+  // .beforeEach((t) => t.resizeWindow(1000, 800))
   .clientScripts([
     { module: 'mockdate' },
   ]);
@@ -90,6 +90,12 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
         }
 
         await ensureDevExpressThemesInitialized();
+
+        await t.resizeWindow(1000, 800);
+
+        await ClientFunction(() => new Promise((resolve) => {
+          Window.requestAnimationFrame(resolve);
+        }));
 
         if (testCafeCodeSource) {
           await execTestCafeCode(t, testCafeCodeSource);
