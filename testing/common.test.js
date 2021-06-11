@@ -20,11 +20,9 @@ const execTestCafeCode = (t, code) => {
   return testCafeFunction(t);
 };
 
-fixture`Getting Started`
-  // .beforeEach((t) => t.resizeWindow(1000, 800))
-  .clientScripts([
-    { module: 'mockdate' },
-  ]);
+const doEvents = ClientFunction(() => new Promise((resolve) => {
+  Window.requestAnimationFrame(resolve);
+}));
 
 const ensureDevExpressThemesInitialized = ClientFunction(() => new Promise((resolve) => {
   const onInitialized = () => setTimeout(resolve, 100);
@@ -63,6 +61,12 @@ const ensureDevExpressThemesInitialized = ClientFunction(() => new Promise((reso
   }
 }));
 
+fixture`Getting Started`
+  // .beforeEach((t) => t.resizeWindow(1000, 800))
+  .clientScripts([
+    { module: 'mockdate' },
+  ]);
+
 const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
 
 ['jQuery'/* , 'React', 'Vue', 'Angular' */].forEach((approach) => {
@@ -85,17 +89,14 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
     test
       .page`http://127.0.0.1:8080/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`
       .clientScripts(preTestCodes)(testName, async (t) => {
+        await ensureDevExpressThemesInitialized();
+        await t.resizeWindow(1000, 800);
+        await doEvents();
+
         if (testCodeSource) {
           await execCode(testCodeSource);
+          await doEvents();
         }
-
-        await ensureDevExpressThemesInitialized();
-
-        await t.resizeWindow(1000, 800);
-
-        await ClientFunction(() => new Promise((resolve) => {
-          Window.requestAnimationFrame(resolve);
-        }));
 
         if (testCafeCodeSource) {
           await execTestCafeCode(t, testCafeCodeSource);
