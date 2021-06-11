@@ -114,8 +114,6 @@
         "fix-lint-js": "eslint --fix .",
         "fix-lint-react": "eslint --fix JSDemos/Demos -c .react.eslintrc.json --ignore-path .react.eslintignore",
         "fix-lint-vue": "eslint --fix JSDemos/Demos -c .vue.eslintrc.json --ignore-path .vue.eslintignore --ext .vue,.js",
-        "fix-lint-mvc": "cd MVCDemos && eclint fix **/*.cshtml !{bin,obj}/** && dotnet format -w DevExtreme.MVC.Demos.sln --fix-style && cd ../",
-        "fix-lint-netcore": "cd NetCoreDemos && eclint fix **/*.cshtml !{bin,obj}/** !DemoShell/** && dotnet format -w DevExtreme.NETCore.Demos.sln --fix-style && cd ../",
         "fix-lint": "npm-run-all -p -c fix-lint-*",
 
         "build": "node utils/bundle/index.js",
