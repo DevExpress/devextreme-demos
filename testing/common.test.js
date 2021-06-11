@@ -21,7 +21,7 @@ const execTestCafeCode = (t, code) => {
 };
 
 const doEvents = ClientFunction(() => new Promise((resolve) => {
-  Window.requestAnimationFrame(resolve);
+  setTimeout(resolve, 17); // 17 = ceil(1/60) sec; ~1 frame
 }));
 
 const ensureDevExpressThemesInitialized = ClientFunction(() => new Promise((resolve) => {
