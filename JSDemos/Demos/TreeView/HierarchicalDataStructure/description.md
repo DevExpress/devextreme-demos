@@ -19,4 +19,4 @@ Nested objects (optional).
 
 You can respectively use the [keyExpr](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#keyExpr), [displayExpr](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#displayExpr), and [itemsExpr](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#itemsExpr) properties to specify custom names for the above-mentioned fields. Node objects can include developer-defined fields and custom properties from this help section: [items[]](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/).
 
-In this demo, nodes use the [expanded](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/#expanded) property that specifies whether a node is collapsed or expanded. They also include the developer-defined `price` and `image` fields.
+In this demo, nodes use the [expanded](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/#expanded) property, which specifies whether a node is collapsed or expanded. They also include the developer-defined `price` and `image` fields.
