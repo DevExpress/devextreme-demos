@@ -25,12 +25,11 @@ const waitForFrame = ClientFunction(() => new Promise((resolve) => {
 }));
 
 async function doEvents(requestLogger) {
+  await waitForFrame();
   if (!requestLogger) {
-    await waitForFrame();
     return;
   }
   do {
-    await waitForFrame();
     if (await requestLogger.count((x) => !x.response) === 0) break;
     await new Promise(((resolve) => setTimeout(resolve, 500)));
   // eslint-disable-next-line no-constant-condition
