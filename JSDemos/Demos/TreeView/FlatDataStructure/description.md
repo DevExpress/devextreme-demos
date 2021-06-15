@@ -1,4 +1,4 @@
-A plain (one-dimensional) array contains items each of which references its parent item. Use either of the following properties to bind the TreeView to plain data:
+The TreeView's plain (one-dimensional) array contains items each of which references its parent item. Use either of the following properties to bind the component to plain data:
 
 * [items[]](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/)        
 Assigns a local array as done in this demo.
