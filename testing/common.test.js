@@ -30,9 +30,11 @@ async function doEvents(requestLogger) {
     return;
   }
   do {
-    requestLogger.clear();
     await waitForFrame();
-  } while (requestLogger.requests && requestLogger.requests.length);
+    if (await requestLogger.count((x) => !x.response) === 0) break;
+    await new Promise(((resolve) => setTimeout(resolve, 500)));
+  // eslint-disable-next-line no-constant-condition
+  } while (true);
 }
 
 const ensureDevExpressThemesInitialized = ClientFunction(() => new Promise((resolve) => {
