@@ -1,14 +1,22 @@
-A plain (one-dimensional) array contains items each of which references its parent item. To bind the TreeView to a local plain array, assign it to the [items[]](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/) property and set [dataStructure](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#dataStructure) to *"plain"* as shown in this demo. If you want to process the array or bind the TreeView to remote data, use the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) object and specify the [dataSource](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#dataSource) property instead of **items[]**.
+A plain (one-dimensional) array contains items each of which references its parent item. Use either of the following properties to bind the TreeView to plain data:
 
-Regardless of the used property, each item object should include the following fields:
+* [items[]](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/)        
+Assigns a local array as done in this demo.
+
+* [dataSource](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#dataSource)            
+Assigns a DataSource object that allows you to perform data shaping operations and use a remote source.
+
+Each object in the TreeView's plain data structure should include the following fields:
 
 * [id](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/#id)             
 Unique item identifier.
 
 * [parentId](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/#parentId)           
-Identifier of the parent item. If you did not set a custom [rootValue](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#rootValue), you can omit this field for the top-level item objects.
+Identifier of the parent item.
 
 * [text](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/#text)         
 Text displayed by the item.
 
-You can respectively use the [keyExpr](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#keyExpr), [parentIdExpr](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#parentIdExpr), and [displayExpr](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#displayExpr) properties to specify custom names for the above-mentioned fields as done in this demo. Item objects can also include custom fields and properties described in the [items[]](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/) help section. In this demo, specific nodes include the custom `price` field and the [expanded](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/#expanded) and [icon](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/#icon) properties from the **items[]** API.
+You can respectively use the [keyExpr](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#keyExpr), [parentIdExpr](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#parentIdExpr), and [displayExpr](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#displayExpr) properties to specify custom names for the above-mentioned fields. Node objects can also include developer-defined fields and properties from this help section: [items[]](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/).
+
+In this demo, nodes use the [icon](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/#icon) and [expanded](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/items/#expanded)  properties, which respectively specify the used icon and whether a node is collapsed or expanded. Some nodes also include the developer-defined `price` field.
