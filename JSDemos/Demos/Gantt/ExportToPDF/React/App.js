@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { List, DropDownBox, CheckBox, NumberBox, DateBox } from 'devextreme-react';
+import { SelectBox, CheckBox, NumberBox, DateBox } from 'devextreme-react';
 import { Gantt, Tasks, Dependencies, Resources, ResourceAssignments, Column, Editing, Toolbar, Item } from 'devextreme-react/gantt';
 
 import { tasks, dependencies, resources, resourceAssignments } from './data.js';
@@ -8,7 +8,7 @@ import { tasks, dependencies, resources, resourceAssignments } from './data.js';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 
-const formats = ['A0', 'A1', 'A2', 'A3', 'A4'];
+const formats = ['A0', 'A1', 'A2', 'A3', 'A4', 'Auto'];
 const exportModes = ['All', 'Chart', 'Tree List' ];
 const dateRanges = [ 'All', 'Visible', 'Custom' ];
 
@@ -27,7 +27,8 @@ class App extends React.Component {
       startTaskIndex: 0,
       endTaskIndex: 3,
       startDate: tasks[0].start,
-      endDate: tasks[0].end
+      endDate: tasks[0].end,
+      customRangeDisabled: true
     };
     this.exportButtonOptions = {
       icon: 'exportpdf',
@@ -35,11 +36,8 @@ class App extends React.Component {
       stylingMode: 'text',
       onClick: this.exportButtonClick.bind(this)
     };
-    this.formatBoxRender = this.formatBoxRender.bind(this);
     this.formatBoxSelectionChanged = this.formatBoxSelectionChanged.bind(this);
-    this.exportModeBoxRender = this.exportModeBoxRender.bind(this);
     this.exportModeBoxSelectionChanged = this.exportModeBoxSelectionChanged.bind(this);
-    this.dateRangeBoxRender = this.dateRangeBoxRender.bind(this);
     this.dateRangeBoxSelectionChanged = this.dateRangeBoxSelectionChanged.bind(this);
     this.onLandscapeCheckBoxChanged = this.onLandscapeCheckBoxChanged.bind(this);
     this.startTaskIndexValueChanged = this.startTaskIndexValueChanged.bind(this);
@@ -80,16 +78,14 @@ class App extends React.Component {
         </Gantt>
         <div className="options">
           <div className="column">
+            <div className="caption">Export Options</div>
             <div className="option">
               <div className="label">Document format:</div>
               {' '}
               <div className="value">
-                <DropDownBox
+                <SelectBox items={formats}
                   value={this.state.formatBoxValue}
-                  ref={(ref) => this.formatBoxRef = ref}
-                  dataSource={formats}
-                  contentRender={this.formatBoxRender}
-                />
+                  onValueChanged={this.formatBoxSelectionChanged} />
               </div>
             </div>
             <div className="option">
@@ -103,29 +99,24 @@ class App extends React.Component {
               <div className="label">Export mode:</div>
               {' '}
               <div className="value">
-                <DropDownBox
+                <SelectBox items={exportModes}
                   value={this.state.exportModeBoxValue}
-                  ref={(ref) => this.exportModeBoxRef = ref}
-                  dataSource={exportModes}
-                  contentRender={this.exportModeBoxRender}
-                />
+                  onValueChanged={this.exportModeBoxSelectionChanged} />
               </div>
             </div>
             <div className="option">
               <div className="label">Date range:</div>
               {' '}
               <div className="value">
-                <DropDownBox
+                <SelectBox items={dateRanges}
                   value={this.state.dateRangeBoxValue}
-                  ref={(ref) => this.dateRangeBoxRef = ref}
-                  dataSource={dateRanges}
-                  contentRender={this.dateRangeBoxRender}
-                />
+                  onValueChanged={this.dateRangeBoxSelectionChanged} />
               </div>
             </div>
           </div>
           {' '}
           <div className="column">
+            <div className="caption">Task Filter Options</div>
             <div className="option">
               <div className="label">Start task (index):</div>
               {' '}
@@ -134,6 +125,7 @@ class App extends React.Component {
                   value={this.state.startTaskIndex}
                   min={0}
                   max={this.state.endTaskIndex}
+                  disabled={this.state.customRangeDisabled}
                   showSpinButtons={true}
                   onValueChanged={this.startTaskIndexValueChanged}
                 />
@@ -147,6 +139,7 @@ class App extends React.Component {
                   value={this.state.endTaskIndex}
                   min={this.state.startTaskIndex}
                   max={tasks.length - 1}
+                  disabled={this.state.customRangeDisabled}
                   showSpinButtons={true}
                   onValueChanged={this.endTaskIndexValueChanged}
                 />
@@ -159,6 +152,7 @@ class App extends React.Component {
                 <DateBox
                   value={this.state.startDate}
                   max={this.state.endDate}
+                  disabled={this.state.customRangeDisabled}
                   type="date"
                   onValueChanged={this.startDateValueChanged}
                 />
@@ -171,6 +165,7 @@ class App extends React.Component {
                 <DateBox
                   value={this.state.endDate}
                   min={this.state.startDate}
+                  disabled={this.state.customRangeDisabled}
                   type="date"
                   onValueChanged={this.endDateValueChanged}
                 />
@@ -208,41 +203,17 @@ class App extends React.Component {
         dateRange: dataRange
       }).then(doc => doc.save('gantt.pdf'));
   }
-  formatBoxRender(e) {
-    return (
-      <List dataSource={e.component.option('dataSource')}
-        selectionMode='single'
-        onSelectionChanged = {this.formatBoxSelectionChanged}
-      />
-    );
-  }
   formatBoxSelectionChanged(e) {
-    this.setState({ formatBoxValue: e.addedItems[0] });
-    this.formatBoxRef.instance.close();
-  }
-  exportModeBoxRender(e) {
-    return (
-      <List dataSource={e.component.option('dataSource')}
-        selectionMode='single'
-        onSelectionChanged = {this.exportModeBoxSelectionChanged}
-      />
-    );
+    this.setState({ formatBoxValue: e.value });
   }
   exportModeBoxSelectionChanged(e) {
-    this.setState({ exportModeBoxValue: e.addedItems[0] });
-    this.exportModeBoxRef.instance.close();
-  }
-  dateRangeBoxRender(e) {
-    return (
-      <List dataSource={e.component.option('dataSource')}
-        selectionMode='single'
-        onSelectionChanged = {this.dateRangeBoxSelectionChanged}
-      />
-    );
+    this.setState({ exportModeBoxValue: e.value });
   }
   dateRangeBoxSelectionChanged(e) {
-    this.setState({ dateRangeBoxValue: e.addedItems[0] });
-    this.dateRangeBoxRef.instance.close();
+    this.setState({
+      dateRangeBoxValue: e.value,
+      customRangeDisabled: e.value !== 'Custom'
+    });
   }
   onLandscapeCheckBoxChanged(e) {
     this.setState({ landscapeCheckBoxValue: e.value });
