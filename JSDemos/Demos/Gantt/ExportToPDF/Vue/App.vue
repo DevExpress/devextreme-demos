@@ -44,23 +44,15 @@
     </DxGantt>
     <div class="options">
       <div class="column">
+        <div class="caption">Export Options</div>
         <div class="option">
           <div class="label">Document format:
           </div>
           <div class="value">
-            <DxDropDownBox
-              :ref="formatBoxRefName"
+            <DxSelectBox
+              :items="formats"
               v-model:value="formatBoxValue"
-              :data-source="formats"
-            >
-              <template #content="{ data }">
-                <DxList
-                  :data-source="formats"
-                  :selection-mode="single"
-                  @selection-changed="formatBoxSelectionChanged($event)"
-                />
-              </template>
-            </DxDropDownBox>
+            />
           </div>
         </div>
         <div class="option">
@@ -72,45 +64,30 @@
         <div class="option">
           <div class="label">Export mode:</div>
           <div class="value">
-            <DxDropDownBox
-              :ref="exportModeBoxRefName"
+            <DxSelectBox
+              :items="exportModes"
               v-model:value="exportModeBoxValue"
-              :data-source="exportModes"
-            >
-              <template #content="{ data }">
-                <DxList
-                  :data-source="exportModes"
-                  :selection-mode="single"
-                  @selection-changed="exportModeBoxSelectionChanged($event)"
-                />
-              </template>
-            </DxDropDownBox>
+            />
           </div>
         </div>
         <div class="option">
           <div class="label">Date range:</div>
           <div class="value">
-            <DxDropDownBox
-              :ref="dateRangeBoxRefName"
+            <DxSelectBox
+              :items="dateRanges"
               v-model:value="dateRangeBoxValue"
-              :data-source="dateRanges"
-            >
-              <template #content="{ data }">
-                <DxList
-                  :data-source="dateRanges"
-                  :selection-mode="single"
-                  @selection-changed="dateRangeBoxSelectionChanged($event)"
-                />
-              </template>
-            </DxDropDownBox>
+              @value-changed="dateRangeBoxSelectionChanged($event)"
+            />
           </div>
         </div>
       </div>
       <div class="column">
+        <div class="caption">Task Filter Options</div>
         <div class="option">
           <div class="label">Start task (index):</div>
           <div class="value">
             <DxNumberBox
+              :disabled="customRangeDisabled"
               :value="startTaskIndex"
               :min="0"
               :max="endTaskIndex"
@@ -123,6 +100,7 @@
           <div class="label">End task (index):</div>
           <div class="value">
             <DxNumberBox
+              :disabled="customRangeDisabled"
               :value="endTaskIndex"
               :min="startTaskIndex"
               :max="tasks.length - 1"
@@ -135,6 +113,7 @@
           <div class="label">Start date:</div>
           <div class="value">
             <DxDateBox
+              :disabled="customRangeDisabled"
               v-model:value="startDate"
               :max="endDate"
               type="date"
@@ -146,6 +125,7 @@
           <div class="label">End date:</div>
           <div class="value">
             <DxDateBox
+              :disabled="customRangeDisabled"
               v-model:value="endDate"
               :min="startDate"
               type="date"
@@ -170,11 +150,10 @@ import {
   DxItem
 } from 'devextreme-vue/gantt';
 
-import DxDropDownBox from 'devextreme-vue/drop-down-box';
-import DxList from 'devextreme-vue/list';
 import DxCheckBox from 'devextreme-vue/check-box';
 import DxNumberBox from 'devextreme-vue/number-box';
 import DxDateBox from 'devextreme-vue/date-box';
+import DxSelectBox from 'devextreme-vue/select-box';
 
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
@@ -202,11 +181,10 @@ export default {
     DxEditing,
     DxToolbar,
     DxItem,
-    DxDropDownBox,
-    DxList,
     DxCheckBox,
     DxNumberBox,
-    DxDateBox
+    DxDateBox,
+    DxSelectBox
   },
   data() {
     return {
@@ -227,8 +205,6 @@ export default {
       exportModes: exportModes,
       dateRanges: dateRanges,
 
-      formatBoxRefName: 'format-box',
-      exportModeBoxRefName: 'export-mode-box',
       dateRangeBoxRefName: 'date-range-box',
 
       formatBoxValue: null,
@@ -239,7 +215,9 @@ export default {
       startTaskIndex: 0,
       endTaskIndex: 3,
       startDate: null,
-      endDate: null
+      endDate: null,
+
+      customRangeDisabled: true
     };
   },
   computed: {
@@ -253,6 +231,7 @@ export default {
     this.dateRangeBoxValue = dateRanges[1];
     this.startDate = tasks[0].start;
     this.endDate = tasks[0].end;
+
   },
   methods: {
     exportGantt() {
@@ -280,17 +259,8 @@ export default {
         dateRange: dataRange
       }).then(doc => doc.save('gantt.pdf'));
     },
-    formatBoxSelectionChanged(e) {
-      this.formatBoxValue = e.addedItems[0];
-      this.$refs[this.formatBoxRefName].instance.close();
-    },
-    exportModeBoxSelectionChanged(e) {
-      this.exportModeBoxValue = e.addedItems[0];
-      this.$refs[this.exportModeBoxRefName].instance.close();
-    },
     dateRangeBoxSelectionChanged(e) {
-      this.dateRangeBoxValue = e.addedItems[0];
-      this.$refs[this.dateRangeBoxRefName].instance.close();
+      this.customRangeDisabled = e.value !== 'Custom';
     },
     startTaskIndexChanged(e) {
       this.startTaskIndex = e.value;
@@ -337,5 +307,10 @@ export default {
 
   .value {
     width: 30%;
+  }
+
+  .caption {
+    font-size: 18px;
+    font-weight: 500;
   }
 </style>
