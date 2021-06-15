@@ -74,16 +74,14 @@
 
 <div class="options">
     <div class="column">
+        <div class="caption">Export Options</div>
         <div class="option">
             <div class="label">Document format:</div>
             <div class="value">
-                @(Html.DevExtreme().DropDownBox()
+                @(Html.DevExtreme().SelectBox()
                     .ID("formatSelector")
-                    .DataSource(new[] {
-                        "A0", "A1", "A2", "A3", "A4"
-                    })
+                    .DataSource(new[] { "A0", "A1", "A2", "A3", "A4", "Auto" })
                     .Value("A0")
-                    .ContentTemplate(new JS("getFormatSelectorContentTemplate"))
                 )
             </div>
         </div>
@@ -99,37 +97,38 @@
         <div class="option">
             <div class="label">Export mode:</div>
             <div class="value">
-                @(Html.DevExtreme().DropDownBox()
+                @(Html.DevExtreme().SelectBox()
                     .ID("exportModeSelector")
                     .DataSource(new[] {
                         "All", "Chart", "Tree List"
                     })
                     .Value("All")
-                    .ContentTemplate(new JS("getExportModeSelectorContentTemplate"))
                 )
             </div>
         </div>
         <div class="option">
             <div class="label">Date range:</div>
             <div class="value">
-                @(Html.DevExtreme().DropDownBox()
+                @(Html.DevExtreme().SelectBox()
                     .ID("dataRangeSelector")
                     .DataSource(new[] {
                         "All", "Visible", "Custom"
                     })
                     .Value("Visible")
-                    .ContentTemplate(new JS("getDataRangeSelectorContentTemplate"))
+                    .OnValueChanged("onDateRangeBoxValueChanged")
                 )
             </div>
         </div>
     </div>
     <div class="column">
+        <div class="caption">Task Filter Options</div>
         <div class="option">
             <div class="label">Start task (index):</div>
             <div class="value">
                 @(Html.DevExtreme().NumberBox()
                     .ID("startIndexContainer")
                     .Value(0)
+                    .Disabled(true)
                     .ShowSpinButtons(true)
                 )
             </div>
@@ -140,6 +139,7 @@
                 @(Html.DevExtreme().NumberBox()
                     .ID("endIndexContainer")
                     .Value(3)
+                    .Disabled(true)
                     .ShowSpinButtons(true)
                 )
             </div>
@@ -150,6 +150,7 @@
                 @(Html.DevExtreme().DateBox()
                     .ID("startDateContainer")
                     .Type(DateBoxType.Date)
+                    .Disabled(true)
                     .Value(SampleData.GanttTasks.First().Start)
                 )
             </div>
@@ -160,6 +161,7 @@
                 @(Html.DevExtreme().DateBox()
                     .ID("endDateContainer")
                     .Type(DateBoxType.Date)
+                    .Disabled(true)
                     .Value(SampleData.GanttTasks.First().End)
                 )
             </div>
@@ -172,46 +174,23 @@
     function getGanttInstance() {
         return $("#gantt").dxGantt("instance");
     }
-    function getFormatSelectorContentTemplate(e) {
-        const $list = $("<div>").dxList({
-            dataSource: e.component.option("dataSource"),
-            selectionMode: "single",
-            onSelectionChanged: function (arg) {
-                e.component.option("value", arg.addedItems[0]);
-                e.component.close();
-            }
-        });
-        return $list;
+    function onDateRangeBoxValueChanged(arg) {
+        const disabled = arg.value !== "Custom";
+        changeCustomRangeEditorsDisabled(disabled);
     }
-    function getExportModeSelectorContentTemplate(e) {
-        const $list = $("<div>").dxList({
-            dataSource: e.component.option("dataSource"),
-            selectionMode: "single",
-            onSelectionChanged: function (arg) {
-                e.component.option("value", arg.addedItems[0]);
-                e.component.close();
-            }
-        });
-        return $list;
-    }
-    function getDataRangeSelectorContentTemplate(e) {
-        const $list = $("<div>").dxList({
-            dataSource: e.component.option("dataSource"),
-            selectionMode: "single",
-            onSelectionChanged: function (arg) {
-                e.component.option("value", arg.addedItems[0]);
-                e.component.close();
-            }
-        });
-        return $list;
+    function changeCustomRangeEditorsDisabled(disabled) {
+        $("#startIndexContainer").dxNumberBox("instance").option("disabled", disabled);
+        $("#endIndexContainer").dxNumberBox("instance").option("disabled", disabled);
+        $("#startDateContainer").dxDateBox("instance").option("disabled", disabled);
+        $("#endDateContainer").dxDateBox("instance").option("disabled", disabled);
     }
     function exportGantt() {
         var ganttInstance = getGanttInstance();
-        const format = $("#formatSelector").dxDropDownBox("option", "value").toLowerCase();
+        const format = $("#formatSelector").dxSelectBox("option", "value").toLowerCase();
         const isLandscape = $("#landscapeCheckBoxContainer").dxCheckBox("option", "value");
-        let exportMode = $("#exportModeSelector").dxDropDownBox("option", "value");
+        let exportMode = $("#exportModeSelector").dxSelectBox("option", "value");
         exportMode = exportMode === "Tree List" ? "treeList" : exportMode.toLowerCase();
-        const dataRangeMode = $("#dataRangeSelector").dxDropDownBox("option", "value").toLowerCase();
+        const dataRangeMode = $("#dataRangeSelector").dxSelectBox("option", "value").toLowerCase();
         let dataRange;
         if (dataRangeMode === 'custom') {
             dataRange = {
