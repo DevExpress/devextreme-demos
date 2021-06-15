@@ -42,7 +42,6 @@ export default {
   data() {
     return {
       dayOfWeekNames: dayOfWeekNames,
-      Globalize: Globalize,
       movieData: getMovieById(this.templateTooltipModel.appointmentData.movieId)
     };
   },
