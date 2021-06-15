@@ -31,3 +31,8 @@
 .value {
     width: 30%;
 }
+
+.caption {
+    font-size: 18px;
+    font-weight: 500;
+}
