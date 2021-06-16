@@ -1,4 +1,4 @@
-The [TabPanel](/Documentation/ApiReference/UI_Components/dxTabPanel/) UI component consists of the [Tabs](/Documentation/ApiReference/UI_Components/dxTabs/) and [MultiView](/Documentation/ApiReference/UI_Components/dxMultiView/) components. TabPanel automatically synchronizes the selected tab with the currently displayed view and vice versa.
+The [TabPanel](/Documentation/ApiReference/UI_Components/dxTabPanel/) UI component consists of [Tabs](/Documentation/ApiReference/UI_Components/dxTabs/) and [MultiView](/Documentation/ApiReference/UI_Components/dxMultiView/) components. The TabPanel automatically synchronizes the selected tab with the currently displayed view and vice versa.
 
 ### Generate Similar Tabs Based on a Data Source       
 
@@ -12,7 +12,7 @@ If you want each tab and view to have differently structured content, define ind
 
 ### Switch Between Tabs
 
-To switch between tabs programmatically, use the [selectedIndex](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#selectedIndex) property. It accepts the index of a tab in the **dataSource** or **items[]** array. The [onSelectionChanged](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#onSelectionChanged) function allows you perform desired actions when the selected tab changes.
+To switch between tabs programmatically, use the [selectedIndex](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#selectedIndex) property. It accepts the index of a tab in the **dataSource** or **items[]** array. The [onSelectionChanged](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/#onSelectionChanged) function allows you to perform the desired actions when the selected tab changes.
 
 Use the following properties to configure user navigation between tabs:
 
