@@ -8,7 +8,7 @@ Each object in the **items[]** or **dataSource** array can contain predefined fi
 
 ### Create Individual Tabs
 
-If you want each tab and view to have differently structured content, define individual templates. To do this, assign an array of objects to the **items[]** or **dataSource** property and specify the [tabTemplate](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/items/#tabTemplate) and [template](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/items/#template) properties in each object. This use case is illustrated in the following tutorial: [Getting Started with TabPanel]().
+If you want each tab and view to have differently structured content, define individual templates. To do this, assign an array of objects to the **items[]** or **dataSource** property and specify the [tabTemplate](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/items/#tabTemplate) and [template](/Documentation/ApiReference/UI_Components/dxTabPanel/Configuration/items/#template) properties in each object. This use case is illustrated in the following tutorial: [Getting Started with TabPanel](/Documentation/Guide/UI_Components/TabPanel/Getting_Started_with_TabPanel/).
 
 ### Switch Between Tabs
 
