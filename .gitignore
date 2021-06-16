@@ -41,6 +41,7 @@ NetCoreDemos/wwwroot/bundle.min.css
 NetCoreDemos/wwwroot/bundle.min.js
 NetCoreDemos/wwwroot/js
 NetCoreDemos/wwwroot/css/*
+!NetCoreDemos/wwwroot/css/custom\.css
 !NetCoreDemos/wwwroot/css/DemosStyles
 NetCoreDemos/wwwroot/SampleData/SampleImages
 NetCoreDemos/menuMeta.json

@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "Name": "Data Grid",
     "Equivalents": "dxDataGrid, dx-data-grid",
@@ -419,7 +419,6 @@
           {
             "Title": "Filtering API",
             "Name": "FilteringAPI",
-            "DocUrl": "Guide/UI_Components/DataGrid/Filtering_and_Searching/#API",
             "Widget": "DataGrid",
             "DemoType": "Web"
           },
@@ -1446,7 +1445,6 @@
           {
             "Title": "Using Search Panel",
             "Name": "UsingSearchPanel",
-            "DocUrl": "Guide/UI_Components/TreeList/Filtering_and_Searching/#Search_Panel",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/TreeListTasksController.cs",
@@ -1459,7 +1457,6 @@
           {
             "Title": "Using Filter Row",
             "Name": "UsingFilterRow",
-            "DocUrl": "Guide/UI_Components/TreeList/Filtering_and_Searching/#Filter_Row",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1514,7 +1511,6 @@
           {
             "Title": "Column Reordering",
             "Name": "Reordering",
-            "DocUrl": "Guide/UI_Components/TreeList/Columns/Column_Reordering/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1525,7 +1521,6 @@
           {
             "Title": "Column Resizing",
             "Name": "Resizing",
-            "DocUrl": "Guide/UI_Components/TreeList/Columns/Column_Sizing/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1537,7 +1532,6 @@
             "Title": "Column Fixing",
             "Name": "ColumnFixing",
             "Equivalents": "fixed column, frozen column, pinned column",
-            "DocUrl": "Guide/UI_Components/TreeList/Columns/Column_Fixing/",
             "Widget": "TreeList",
             "MvcAdditionalFiles": [
               "/Models/TreeList/Employee.cs",
@@ -1738,7 +1732,6 @@
           {
             "Title": "Recurring Appointments",
             "Name": "RecurringAppointments",
-            "DocUrl": "Guide/UI_Components/Scheduler/Appointments/Appointment_Types/#Recurring_Appointments",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/RecurringAppointment.cs",
@@ -1751,7 +1744,6 @@
           {
             "Title": "Editing",
             "Name": "Editing",
-            "DocUrl": "Guide/UI_Components/Scheduler/Appointments/Add_Appointments/",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/Appointment.cs",
@@ -1773,15 +1765,14 @@
           {
             "Title": "Resources",
             "Name": "Resources",
-            "DocUrl": "Guide/UI_Components/Scheduler/Resources/Assign_Appointments_to_Resources/",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/AppointmentWithResources.cs",
-              "/Models/OwnerResource.cs",
+              "/Models/AssigneeResource.cs",
               "/Models/RoomResource.cs",
               "/Models/PriorityResource.cs",
               "/Models/SampleData/AppointmentsWithResources.cs",
-              "/Models/SampleData/OwnerResources.cs",
+              "/Models/SampleData/AssigneeResources.cs",
               "/Models/SampleData/RoomResources.cs",
               "/Models/SampleData/PriorityResources.cs"
             ],
@@ -1810,7 +1801,6 @@
           {
             "Title": "Group Orientation",
             "Name": "GroupOrientation",
-            "DocUrl": "ApiReference/UI_Components/dxScheduler/Configuration/views/#groupOrientation",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/EmployeeTask.cs",
@@ -1838,7 +1828,6 @@
           {
             "Title": "Custom Templates",
             "Name": "CustomTemplates",
-            "DocUrl": "Guide/UI_Components/Scheduler/Appointments/Customize_Appointment/",
             "Credits": "www.wikipedia.org",
             "Widget": "Scheduler",
             "Modules": "globalize--vue&react",
@@ -1868,7 +1857,6 @@
           {
             "Title": "Customize Individual Views",
             "Name": "CustomizeIndividualViews",
-            "DocUrl": "Guide/UI_Components/Scheduler/Views/Customize_Individual_Views/",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Views/Scheduler/_DateCellTemplate.cshtml",
@@ -2782,8 +2770,7 @@
               "/Models/SampleData/IceHockeyGoldMedalistsData.cs",
               "/Models/SampleData/MedalAnnotations.cs"
             ],
-            "DemoType": "Viz",
-            "Badge": "New"
+            "DemoType": "Viz"
           }
         ]
       },
@@ -3147,8 +3134,7 @@
             "MvcDescription": "",
             "NetCoreDescription": "",
             "MvcAdditionalFiles": [],
-            "DemoType": "Viz",
-            "Badge": "New"
+            "DemoType": "Viz"
           },
           {
             "Title": "Strips",
@@ -3158,8 +3144,7 @@
             "MvcDescription": "",
             "NetCoreDescription": "",
             "MvcAdditionalFiles": [],
-            "DemoType": "Viz",
-            "Badge": "New"
+            "DemoType": "Viz"
           }
         ]
       },
@@ -3935,7 +3920,6 @@
               {
                 "Title": "Hierarchical Data Structure",
                 "Name": "HierarchicalDataStructure",
-                "DocUrl": "Guide/UI_Components/TreeView/Use_Hierarchical_Data/",
                 "Widget": "TreeView",
                 "MvcAdditionalFiles": [
                   "/Models/Product.cs",
@@ -3951,7 +3935,6 @@
               {
                 "Title": "Plain Data Structure",
                 "Name": "FlatDataStructure",
-                "DocUrl": "Guide/UI_Components/TreeView/Use_Plain_Data/",
                 "Widget": "TreeView",
                 "MvcAdditionalFiles": [
                   "/Models/Product.cs",
@@ -5519,7 +5502,6 @@
             "DocUrl": "ApiReference/UI_Components/dxVectorMap/Configuration/annotations",
             "Widget": "VectorMap",
             "Modules": "vectormap",
-            "Badge": "New",
             "MvcAdditionalFiles": [
               "/Models/StateData.cs",
               "/Models/SampleData/StatesData.cs"

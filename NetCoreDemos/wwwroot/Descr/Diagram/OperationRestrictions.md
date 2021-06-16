@@ -1,0 +1,3 @@
+Our Diagram component allows you to restrict edit operations as needed. To prohibit a specific operation, set its corresponding method within the [Editing](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DiagramBuilder.Editing(System.Action-DevExtreme.AspNet.Mvc.Builders.DiagramEditingBuilder-)) method to **false**.
+
+In this demo, the [OnRequestEditOperation](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DiagramBuilder.OnRequestEditOperation.overloads) function implements complex logic to determine whether an operation is allowed. The **reason** event parameter indicates whether the event is raised by a user action or via a UI update. If a user tries to perform a prohibited action, an error message is displayed.

@@ -1205,6 +1205,6 @@ export const resourceAssignments = [{
   'resourceId': 2
 }];
 
-export const formats = ['A0', 'A1', 'A2', 'A3', 'A4'];
+export const formats = ['A0', 'A1', 'A2', 'A3', 'A4', 'Auto'];
 export const exportModes = [ 'All', 'Chart', 'TreeList' ];
 export const dateRanges = [ 'All', 'Visible', 'Custom' ];

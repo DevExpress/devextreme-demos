@@ -5,6 +5,8 @@
         .Paging(p => p.Enabled(false))
         .Editing(e => e.Mode(GridEditMode.Popup)
             .AllowUpdating(true)
+            .AllowAdding(true)
+            .AllowDeleting(true)
             .Popup(p => p
                 .Title("Employee Info")
                 .ShowTitle(true)

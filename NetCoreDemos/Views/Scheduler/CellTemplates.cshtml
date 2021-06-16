@@ -32,7 +32,7 @@
     function dataCellTemplate(itemData, itemIndex, itemElement) {
         var date = itemData.startDate;
         var isDisabled = isHoliday(date) || isWeekend(date);
-        var element = $('<div>' + itemData.text + '</div>');
+        var element = $('<div />');
 
         if (isDisabled) {
             element.addClass('disable-date');
@@ -44,7 +44,7 @@
     }
 
     function dateCellTemplate(itemData, itemIndex, itemElement) {
-        var element = $('<div />');
+        var element = $('<div>' + itemData.text + '</div>');
 
         if (isWeekend(itemData.date)) {
             element.addClass('disable-date');

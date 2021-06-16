@@ -1,0 +1,3 @@
+This demo shows the Diagram component's capability to load an external tree structure from a linear array.
+
+The component binds to a data object specified by the [DataSource](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DiagramNodesBuilder.DataSource.overloads) method. You should use the [KeyExpr](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DiagramNodesBuilder.KeyExpr.overloads) and [ParentKeyExpr](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DiagramNodesBuilder.ParentKeyExpr.overloads) methods because of the data's linear structure. The Diagram uses information from the key fields to transform linear data into a tree.

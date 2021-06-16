@@ -2,7 +2,7 @@ import { NgModule, Component, enableProdMode, ViewChild, QueryList, ViewChildren
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { DxGanttComponent, DxGanttModule, DxDropDownBoxModule, DxListModule, DxDropDownBoxComponent, DxCheckBoxModule, DxNumberBoxModule, DxDateBoxModule } from 'devextreme-angular';
+import { DxGanttComponent, DxGanttModule, DxSelectBoxModule, DxCheckBoxModule, DxNumberBoxModule, DxDateBoxModule } from 'devextreme-angular';
 
 import { Service, Task, Dependency, Resource, ResourceAssignment } from './app.service';
 
@@ -23,10 +23,8 @@ if (!/localhost/.test(document.location.host)) {
 })
 export class AppComponent {
     @ViewChild(DxGanttComponent, { static: false }) gantt: DxGanttComponent;
-    @ViewChildren(DxDropDownBoxComponent) dropDownBoxes!: QueryList<DxDropDownBoxComponent>;
-    
 
-    formats: string[] = ["A0", "A1", "A2", "A3", "A4"];
+    formats: string[] = ["A0", "A1", "A2", "A3", "A4", "Auto"];
     exportModes: string[] = [ "All", "Chart", "Tree List" ];
     dateRanges: string[] = [ "All", "Visible", "Custom" ];
 
@@ -38,6 +36,7 @@ export class AppComponent {
     endTaskIndex: number;
     startDate: Date;
     endDate: Date;
+    customRangeDisabled: boolean;
 
     tasks: Task[];
     dependencies: Dependency[];
@@ -66,6 +65,7 @@ export class AppComponent {
         this.endTaskIndex = 3;
         this.startDate = this.tasks[0].start;
         this.endDate = this.tasks[0].end;
+        this.customRangeDisabled = true;
     }
     exportButtonClick() {
         const gantt = this.gantt.instance;  
@@ -95,26 +95,9 @@ export class AppComponent {
             }            
         ).then(doc => doc.save('gantt.pdf'));
     }
-    onFormatBoxSelectionChanged(e) {
-        this.formatBoxValue = e.addedItems[0];
-        this.ref.detectChanges();
-        
-        const formatBox = this.dropDownBoxes.first.instance;
-        formatBox.close();
-    }
-    onExportModeBoxSelectionChanged(e) {
-        this.exportModeBoxValue = e.addedItems[0];
-        this.ref.detectChanges();
-
-        const exportModeBox = this.dropDownBoxes.toArray()[1].instance;
-        exportModeBox.close();
-    }
     onDateRangeBoxSelectionChanged(e) {
-        this.dateRangeBoxValue = e.addedItems[0];
+        this.customRangeDisabled = e.value !== "Custom";
         this.ref.detectChanges();
-
-        const dateRangeBox = this.dropDownBoxes.last.instance;
-        dateRangeBox.close();
     }
 }
 
@@ -122,11 +105,10 @@ export class AppComponent {
     imports: [
         BrowserModule,
         DxGanttModule,
-        DxDropDownBoxModule,
-        DxListModule,
         DxCheckBoxModule,
         DxNumberBoxModule,
-        DxDateBoxModule
+        DxDateBoxModule,
+        DxSelectBoxModule
     ],
     declarations: [AppComponent],
     bootstrap: [AppComponent]

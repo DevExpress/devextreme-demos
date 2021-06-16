@@ -30,6 +30,7 @@
     .DataSource(d => d.OData()
         .Url("https://js.devexpress.com/Demos/DevAV/odata/Tasks")
         .Expand("ResponsibleEmployee")
+        .Key("Task_ID")
     )
     .DataSourceOptions(d => d.Select(new[] {
         "Task_ID",

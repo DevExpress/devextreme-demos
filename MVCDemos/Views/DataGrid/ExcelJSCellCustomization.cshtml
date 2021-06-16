@@ -9,6 +9,7 @@
 @(Html.DevExtreme().DataGrid<Company>()
         .ID("gridContainer")
         .DataSource(new JS("companies"))
+        .KeyExpr("ID")
         .ShowBorders(true)
         .GroupPanel(groupPanel => groupPanel.Visible(true))
         .Grouping(grouping => grouping.AutoExpandAll(true))

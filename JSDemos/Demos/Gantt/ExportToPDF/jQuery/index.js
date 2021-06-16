@@ -57,87 +57,60 @@ $(function() {
         },
     }).dxGantt('instance');
 
-    const formats = ["A0", "A1", "A2", "A3", "A4"];
+    const formats = ["A0", "A1", "A2", "A3", "A4", "Auto"];
     const exportModes = [ "All", "Chart", "Tree List" ];
     const dataRanges = [ "All", "Visible", "Custom" ];
 
-    $("#formatSelector").dxDropDownBox({
-        value: formats[0],
-        dataSource: formats,
-        contentTemplate: function(e) {
-                const $list = $("<div>").dxList({
-                    dataSource: e.component.option("dataSource"),
-                    selectionMode: "single",
-                    onSelectionChanged: function(arg) {
-                        e.component.option("value", arg.addedItems[0]);
-                        e.component.close();
-                    } 
-                });
-                return $list;
-        }
+    $("#formatSelector").dxSelectBox({
+        items: formats,
+        value: formats[0]        
     });
     $("#landscapeCheckBoxContainer").dxCheckBox({
         value: true
     });
-    $("#exportModeSelector").dxDropDownBox({
-        value: exportModes[0],
-        dataSource: exportModes,
-        contentTemplate: function(e) {
-            const $list = $("<div>").dxList({
-                dataSource: e.component.option("dataSource"),
-                selectionMode: "single",
-                onSelectionChanged: function(arg) {
-                    e.component.option("value", arg.addedItems[0]);
-                    e.component.close();
-                } 
-            });
-            return $list;
-        }        
+    $("#exportModeSelector").dxSelectBox({
+        items: exportModes,
+        value: exportModes[0]        
     });
-    
-
-    $("#dataRangeSelector").dxDropDownBox({
+    $("#dataRangeSelector").dxSelectBox({
+        items: dataRanges,
         value: dataRanges[1],
-        dataSource: dataRanges,
-        contentTemplate: function(e) {
-            const $list = $("<div>").dxList({
-                dataSource: e.component.option("dataSource"),
-                selectionMode: "single",
-                onSelectionChanged: function(arg) {
-                    e.component.option("value", arg.addedItems[0]);
-                    e.component.close();
-                } 
-            });
-            return $list;
-        }        
+        onValueChanged: function (data) {
+            var disabled = data.value.toLowerCase() !== "custom";
+            changeCustomRangeEditorsDisabled(disabled);
+        }
     });
     $("#startIndexContainer").dxNumberBox({
+        disabled: true,
         value: 0,
         showSpinButtons: true,
     });
     $("#endIndexContainer").dxNumberBox({
+        disabled: true,
         value: 3,
         showSpinButtons: true,
     });
         
     $("#startDateContainer").dxDateBox({
+        disabled: true,
         type: "date",
         value:  tasks[0].start,
                     
     });
     
     $("#endDateContainer").dxDateBox({
+        disabled: true,
         type: "date",
         value: tasks[0].end
     });
 
 
     function exportGantt() {
-        const format = $("#formatSelector").dxDropDownBox("option", "value").toLowerCase();
+        const format = $("#formatSelector").dxSelectBox("option", "value").toLowerCase();
         const isLandscape = $("#landscapeCheckBoxContainer").dxCheckBox("option", "value");
-        let exportMode = $("#exportModeSelector").dxDropDownBox("option", "value");
+        let exportMode = $("#exportModeSelector").dxSelectBox("option", "value");
         exportMode = exportMode === "Tree List" ? "treeList" : exportMode.toLowerCase();
-        const dataRangeMode = $("#dataRangeSelector").dxDropDownBox("option", "value").toLowerCase();
+        const dataRangeMode = $("#dataRangeSelector").dxSelectBox("option", "value").toLowerCase();
         let dataRange;
         if(dataRangeMode === 'custom') {
             dataRange = { 
@@ -160,5 +133,11 @@ $(function() {
         ).then(doc => {
             doc.save('gantt.pdf');
         });
+    }
+    function changeCustomRangeEditorsDisabled(disabled) {
+        $("#startIndexContainer").dxNumberBox("instance").option("disabled", disabled);
+        $("#endIndexContainer").dxNumberBox("instance").option("disabled", disabled);
+        $("#startDateContainer").dxDateBox("instance").option("disabled", disabled);
+        $("#endDateContainer").dxDateBox("instance").option("disabled", disabled);
     }
 });
