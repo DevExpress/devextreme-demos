@@ -68,9 +68,9 @@ jobs:
     - name: Download devextreme sources
       uses: actions/checkout@v2
       uses: actions/download-artifact@v2
-        with:
-          name: devextreme-sources
-          path: ../devextreme
+      with:
+        name: devextreme-sources
+        path: ../devextreme
 
     - name: Install devextreme package
       run: |
