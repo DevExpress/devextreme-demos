@@ -66,7 +66,6 @@ jobs:
         npm install --no-package-lock --no-audit --no-fund
 
     - name: Download devextreme sources
-      uses: actions/checkout@v2
       uses: actions/download-artifact@v2
       with:
         name: devextreme-sources
