@@ -48,8 +48,9 @@ jobs:
   testcafe:
     needs: build
     strategy:
-      matrix:
-        CONSTEL: [jquery(1/4), jquery(2/4), jquery(3/4), jquery(4/4)]
+      fail-fast: false
+      matrix:      
+        CONSTEL: [jquery(1/2), jquery(2/2)]
 
     runs-on: ubuntu-latest
     name: Constel ${{ matrix.CONSTEL }}
