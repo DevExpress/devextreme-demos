@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import Diagram, { ContextMenu, ContextToolbox, PropertiesPanel, Group, Tab, HistoryToolbar, ViewToolbar, MainToolbar, Command, Toolbox } from 'devextreme-react/diagram';
-import dialog from 'devextreme/ui/dialog';
+import { confirm } from 'devextreme/ui/dialog';
 import 'whatwg-fetch';
 
 class App extends React.Component {
@@ -12,7 +12,7 @@ class App extends React.Component {
 
   onCustomCommand(e) {
     if(e.name === 'clear') {
-      var result = dialog.confirm('Are you sure you want to clear the diagram? This action cannot be undone.', 'Warning');
+      var result = confirm('Are you sure you want to clear the diagram? This action cannot be undone.', 'Warning');
       result.then(
         function(dialogResult) {
           if(dialogResult) {

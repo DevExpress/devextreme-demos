@@ -6,7 +6,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { DxDiagramModule, DxDiagramComponent } from 'devextreme-angular';
-import dialog from 'devextreme/ui/dialog';
+import { confirm } from 'devextreme/ui/dialog';
 
 if(!/localhost/.test(document.location.host)) {
     enableProdMode();
@@ -30,7 +30,7 @@ export class AppComponent {
     }
     onCustomCommand(e) {
         if(e.name === "clear") {
-            let result = dialog.confirm("Are you sure you want to clear the diagram? This action cannot be undone.", "Warning");
+            let result = confirm("Are you sure you want to clear the diagram? This action cannot be undone.", "Warning");
             result.then(
                 function(dialogResult) {
                     if(dialogResult) {
