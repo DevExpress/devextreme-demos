@@ -6,31 +6,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  testcafe:
-    strategy:
-      matrix:
-        CONSTEL: [jquery]
-
+  build:
     runs-on: ubuntu-latest
-    name: Constel ${{ matrix.CONSTEL }}
-    timeout-minutes: 60
-
+    name: Build DevExtreme
+    timeout-minutes: 30
+    
     steps:
-    - name: Get sources
-      uses: actions/checkout@v2
-
-    # - name: Restore npm cache
-    #   uses: actions/cache@v2
-    #   with:
-    #     path: ./node_modules
-    #     key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-    #     restore-keys: |
-    #       ${{ runner.os }}-node
-
-    - name: Run npm install
-      run: |
-        npm install --no-package-lock --no-audit --no-fund
-
     - name: Clone devextreme repo from PR author fork
       continue-on-error: true
       if: github.event_name == 'pull_request'
@@ -51,10 +32,50 @@ jobs:
         cd ../devextreme-repo
         npm run build
 
+    - name: Copy build artifacts      
+      uses: actions/upload-artifact@v2
+      with:
+        name: devextreme-sources
+        path: ../devextreme-repo/artifacts/npm/devextreme/
+    
+  testcafe:
+    needs: build
+    strategy:
+      matrix:
+        CONSTEL: [jquery]
+        #CONSTEL: [jquery(1/2), jquery(2/2)]
+
+    runs-on: ubuntu-latest
+    name: Constel ${{ matrix.CONSTEL }}
+    timeout-minutes: 60
+
+    steps:
+    - name: Get sources
+      uses: actions/checkout@v2    
+
+    # - name: Restore npm cache
+    #   uses: actions/cache@v2
+    #   with:
+    #     path: ./node_modules
+    #     key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
+    #     restore-keys: |
+    #       ${{ runner.os }}-node
+
+    - name: Run npm install
+      run: |
+        npm install --no-package-lock --no-audit --no-fund
+
+    - name: Download devextreme sources
+      uses: actions/checkout@v2
+      uses: actions/download-artifact@v2
+        with:
+          name: devextreme-sources
+          path: ../devextreme
+
     - name: Install devextreme package
       run: |
         rm -rf ./node_modules/devextreme 
-        npm install --no-package-lock ../devextreme-repo/artifacts/npm/devextreme
+        npm install --no-package-lock ../devextreme
 
     - name: Prepare JS
       run: npm run prepare-js
