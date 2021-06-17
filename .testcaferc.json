@@ -5,6 +5,6 @@
     "path": "./",
     "pathPattern": "${TEST}.png"
   },
-  "concurrency": 1,
+  "concurrency": 4,
   "pageLoadTimeout": 10000
 }
