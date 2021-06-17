@@ -36,14 +36,14 @@ jobs:
         npm run build
 
     - name: Build devextreme repo
-      run: cp -r ../devextreme-repo/artifacts/npm/devextreme/ ./devextreme-repo-artifacts/
+      run: tar -cvf devextreme-repo-artifacts.tar --directory=../devextreme-repo/artifacts/npm/devextreme/ .
 
     - name: Copy build artifacts      
       uses: actions/upload-artifact@v2
       with:
         name: devextreme-sources        
-        path: devextreme-repo-artifacts/
-        retention-days: 7
+        path: devextreme-repo-artifacts.tar
+        retention-days: 1
     
   testcafe:
     needs: build
@@ -78,10 +78,15 @@ jobs:
         name: devextreme-sources
         path: ../devextreme-artifacts
 
+    - name: Unpack artifacts
+      run: |
+        mkdir ../devextreme-artifacts-unpacked/
+        tar -xf ../devextreme-artifacts/devextreme-repo-artifacts.tar -C ../devextreme-artifacts-unpacked/        
+
     - name: Install devextreme package
       run: |
         rm -rf ./node_modules/devextreme
-        npm install --no-package-lock ../devextreme-artifacts
+        npm install --no-package-lock ../devextreme-artifacts-unpacked
 
     - name: Prepare JS
       run: npm run prepare-js
