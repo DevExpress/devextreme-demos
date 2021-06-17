@@ -35,8 +35,8 @@ jobs:
         cd ../devextreme-repo
         npm run build
 
-      - name: Build devextreme repo
-        run: cp -r ../devextreme-repo/artifacts/npm/devextreme/ ./devextreme-repo-artifacts/
+    - name: Build devextreme repo
+      run: cp -r ../devextreme-repo/artifacts/npm/devextreme/ ./devextreme-repo-artifacts/
 
     - name: Copy build artifacts      
       uses: actions/upload-artifact@v2
