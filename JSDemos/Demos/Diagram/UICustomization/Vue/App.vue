@@ -101,7 +101,7 @@
 </template>
 <script>
 import { DxDiagram, DxContextMenu, DxContextToolbox, DxPropertiesPanel, DxGroup, DxTab, DxHistoryToolbar, DxViewToolbar, DxMainToolbar, DxCommand, DxToolbox } from 'devextreme-vue/diagram';
-import dialog from 'devextreme/ui/dialog';
+import { confirm } from 'devextreme/ui/dialog';
 import 'whatwg-fetch';
 
 export default {
@@ -124,7 +124,7 @@ export default {
   methods: {
     onCustomCommand(e) {
       if(e.name === 'clear') {
-        var result = dialog.confirm('Are you sure you want to clear the diagram? This action cannot be undone.', 'Warning');
+        var result = confirm('Are you sure you want to clear the diagram? This action cannot be undone.', 'Warning');
         result.then(
           function(dialogResult) {
             if(dialogResult) {
