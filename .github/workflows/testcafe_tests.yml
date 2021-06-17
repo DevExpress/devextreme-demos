@@ -7,7 +7,12 @@ on:
 
 jobs:
   testcafe:
+    strategy:
+      matrix:
+        CONSTEL: [jquery]
+
     runs-on: ubuntu-latest
+    name: Constel ${{ matrix.CONSTEL }}
     timeout-minutes: 60
 
     steps:
@@ -58,6 +63,8 @@ jobs:
       run: npm run webserver &
 
     - name: Run TestCafe tests
+      env:
+        CONSTEL: ${{ matrix.CONSTEL }}
       run: npm run test-testcafe
 
     - name: Copy screenshots artifacts

@@ -1,4 +1,5 @@
 import { createScreenshotsComparer } from '../../helpers/screenshot-comparer';
+import MatrixTestHelper from '../../helpers/matrix-test-helper';
 
 fixture('DataGrid.Columns')
   .page('http://localhost:8080/')
@@ -6,32 +7,35 @@ fixture('DataGrid.Columns')
     await t
       .resizeWindow(900, 600);
   });
-test('ColumnCustomization', async (t) => {
-  const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
-  await t
-    .navigateTo('/JSDemos/Demos/DataGrid/ColumnCustomization/jQuery/');
+if (new MatrixTestHelper().shouldRunTest('jquery', 0)) {
+  test('ColumnCustomization', async (t) => {
+    const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
-  await takeScreenshot('datagrid_column_customization_1');
+    await t
+      .navigateTo('/JSDemos/Demos/DataGrid/ColumnCustomization/jQuery/');
 
-  await t
-    .click('.dx-icon-column-chooser');
+    await takeScreenshot('datagrid_column_customization_1');
 
-  await takeScreenshot('datagrid_column_customization_2');
+    await t
+      .click('.dx-icon-column-chooser');
 
-  await t
-    .drag("td[aria-label='Column Birth Date']",
-      500, 200,
-      { offsetX: 5, offsetY: 5 });
+    await takeScreenshot('datagrid_column_customization_2');
 
-  await takeScreenshot('datagrid_column_customization_3');
+    await t
+      .drag("td[aria-label='Column Birth Date']",
+        500, 200,
+        { offsetX: 5, offsetY: 5 });
 
-  await t
-    .click('.dx-closebutton');
+    await takeScreenshot('datagrid_column_customization_3');
 
-  await takeScreenshot('datagrid_column_customization_4');
+    await t
+      .click('.dx-closebutton');
 
-  await t
-    .expect(compareResults.isValid())
-    .ok(compareResults.errorMessages());
-});
+    await takeScreenshot('datagrid_column_customization_4');
+
+    await t
+      .expect(compareResults.isValid())
+      .ok(compareResults.errorMessages());
+  });
+}
