@@ -6,13 +6,13 @@ export default class MatrixTestHelper {
     if (currentCriteria) {
       const match = currentCriteria.match(/(?<name>\w+)(?<parallel>\((?<current>\d+)\/(?<total>\d+)\))?/);
       if (match) {
-        const frameworkName = match.name;
+        const frameworkName = match.groups.name;
         this.checkFrameworkInternal = (x) => !x || x.toLowerCase() === frameworkName.toLowerCase();
-        const parallelFilter = match.parallel;
+        const parallelFilter = match.groups.parallel;
         if (parallelFilter) {
-          const total = +match.total;
-          const current = +match.current;
-          this.checkTestIndexInternal = (x) => ((x + 1) % total) === current;
+          const total = +match.groups.total;
+          const current = +match.groups.current;
+          this.checkTestIndexInternal = (x) => (x % total) === (current - 1);
         }
       }
     }
