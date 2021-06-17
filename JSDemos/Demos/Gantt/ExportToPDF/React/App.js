@@ -196,7 +196,7 @@ class App extends React.Component {
     }
     gantt.exportToPdf(
       {
-        docCreateMethod: jsPDF,
+        createDocumentMethod: jsPDF,
         format: format,
         landscape: isLandscape,
         exportMode: exportMode,
