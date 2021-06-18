@@ -110,3 +110,19 @@ jobs:
         name: screenshots
         path: ${{ github.workspace }}/testing/artifacts/*
         if-no-files-found: ignore
+
+  cleanup:
+    needs: test
+    runs-on: ubuntu-latest
+    name: Cleanup artifacts
+    timeout-minutes: 10
+    steps:
+    - name: Prepare delete artifact
+      run: touch devextreme-repo-artifacts.tar
+
+    - name: Cleanup artifact      
+      uses: actions/upload-artifact@v2
+      with:
+        name: sources
+        path: devextreme-repo-artifacts.tar
+        retention-days: 1
