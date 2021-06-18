@@ -3,7 +3,7 @@ import { ClientFunction, RequestLogger } from 'testcafe';
 import { join } from 'path';
 import { existsSync, readFileSync } from 'fs';
 import { compareScreenshot } from './helpers/screenshot-comparer';
-import MatrixTestHelper from './helpers/matrix-test-helper';
+import { shouldRunFramework, shouldRunTestAtIndex } from './helpers/matrix-test-helper';
 
 const execCode = ClientFunction((code) => {
   // eslint-disable-next-line no-eval
@@ -81,14 +81,13 @@ fixture`Getting Started`
   ]);
 
 const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
-const matrixHelper = new MatrixTestHelper();
 
 ['jQuery', 'React', 'Vue', 'Angular'].forEach((approach) => {
   const demoPaths = getDemoPaths(approach);
-  if (!matrixHelper.shouldRunFramework(approach)) return;
+  if (!shouldRunFramework(approach)) return;
 
   demoPaths.forEach((demoPath, index) => {
-    if (!matrixHelper.shouldRunTestAtIndex(index)) return;
+    if (!shouldRunTestAtIndex(index)) return;
 
     const testParts = demoPath.split('/');
     const widgetName = testParts[2];

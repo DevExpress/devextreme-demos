@@ -1,32 +1,28 @@
-export default class MatrixTestHelper {
-  constructor() {
-    this.checkFrameworkInternal = (x) => !x || x.toLowerCase() === 'jquery';
-    this.checkTestIndexInternal = () => true;
-    const currentCriteria = process.env.CONSTEL;
-    if (currentCriteria) {
-      const match = currentCriteria.match(/(?<name>\w+)(?<parallel>\((?<current>\d+)\/(?<total>\d+)\))?/);
-      if (match) {
-        const frameworkName = match.groups.name;
-        this.checkFrameworkInternal = (x) => !x || x.toLowerCase() === frameworkName.toLowerCase();
-        const parallelFilter = match.groups.parallel;
-        if (parallelFilter) {
-          const total = +match.groups.total;
-          const current = +match.groups.current;
-          this.checkTestIndexInternal = (x) => (x % total) === (current - 1);
-        }
-      }
+let targetFramework = 'jquery';
+let total = 1;
+let current = 1;
+
+const currentCriteria = process.env.CONSTEL;
+if (currentCriteria) {
+  const match = currentCriteria.match(/(?<name>\w+)(?<parallel>\((?<current>\d+)\/(?<total>\d+)\))?/);
+  if (match) {
+    targetFramework = match.groups.name;
+    const parallelFilter = match.groups.parallel;
+    if (parallelFilter) {
+      total = +match.groups.total;
+      current = +match.groups.current;
     }
   }
+}
 
-  shouldRunTest(frameworkName, testIndex) {
-    return this.checkFrameworkInternal(frameworkName) && this.checkTestIndexInternal(testIndex);
-  }
+export function shouldRunFramework(currentFramework) {
+  return !currentFramework || currentFramework.toLowerCase() === targetFramework.toLowerCase();
+}
 
-  shouldRunFramework(frameworkName) {
-    return this.checkFrameworkInternal(frameworkName);
-  }
+export function shouldRunTestAtIndex(testIndex) {
+  return (testIndex % total) === (current - 1);
+}
 
-  shouldRunTestAtIndex(testIndex) {
-    return this.checkTestIndexInternal(testIndex);
-  }
+export function shouldRunTest(currentFramework, testIndex) {
+  return shouldRunFramework(currentFramework) && shouldRunTestAtIndex(testIndex);
 }

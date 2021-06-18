@@ -1,5 +1,5 @@
 import { createScreenshotsComparer } from '../../helpers/screenshot-comparer';
-import MatrixTestHelper from '../../helpers/matrix-test-helper';
+import { shouldRunTest } from '../../helpers/matrix-test-helper';
 
 fixture('DataGrid.Columns')
   .page('http://localhost:8080/')
@@ -8,7 +8,7 @@ fixture('DataGrid.Columns')
       .resizeWindow(900, 600);
   });
 
-if (new MatrixTestHelper().shouldRunTest('jquery', 0)) {
+if (shouldRunTest('jquery', 0)) {
   test('ColumnCustomization', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
