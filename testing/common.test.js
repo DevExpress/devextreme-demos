@@ -1,5 +1,5 @@
 import glob from 'glob';
-import { ClientFunction, RequestLogger } from 'testcafe';
+import { ClientFunction } from 'testcafe';
 import { join } from 'path';
 import { existsSync, readFileSync } from 'fs';
 import { compareScreenshot } from './helpers/screenshot-comparer';
@@ -21,61 +21,8 @@ const execTestCafeCode = (t, code) => {
   return testCafeFunction(t);
 };
 
-const waitForFrame = ClientFunction(() => new Promise((resolve) => {
-  setTimeout(resolve, 17); // 17 = ceil(1/60) sec; ~1 frame
-}));
-
-async function doEvents(requestLogger) {
-  await waitForFrame();
-  if (!requestLogger) {
-    return;
-  }
-  do {
-    if (await requestLogger.count((x) => !x.response) === 0) break;
-    await new Promise(((resolve) => setTimeout(resolve, 500)));
-  // eslint-disable-next-line no-constant-condition
-  } while (true);
-}
-
-const ensureDevExpressThemesInitialized = ClientFunction(() => new Promise((resolve) => {
-  const onInitialized = () => setTimeout(resolve, 100);
-  const trySubscribeInitialized = (callback) => {
-    // eslint-disable-next-line no-undef
-    const globThis = globalThis || Window.globalThis;
-    const initialized = globThis
-        && globThis.DevExpress
-        && globThis.DevExpress.ui
-        && globThis.DevExpress.ui.themes
-        && globThis.DevExpress.ui.themes.initialized;
-
-    if (initialized) {
-      initialized(callback);
-      return true;
-    }
-    return false;
-  };
-
-  if (!trySubscribeInitialized(onInitialized)) {
-    let subscribeInitializedWatcherId = -1;
-    let subscribeInitializedId = setInterval(() => {
-      if (trySubscribeInitialized(onInitialized)) {
-        clearInterval(subscribeInitializedId);
-        clearTimeout(subscribeInitializedWatcherId);
-        subscribeInitializedId = -1;
-      }
-    }, 100);
-
-    subscribeInitializedWatcherId = setTimeout(() => {
-      if (subscribeInitializedId !== -1) {
-        clearInterval(subscribeInitializedId);
-        resolve();
-      }
-    }, 10 * 1000);
-  }
-}));
-
 fixture`Getting Started`
-  // .beforeEach((t) => t.resizeWindow(1000, 800))
+  .beforeEach((t) => t.resizeWindow(1000, 800))
   .clientScripts([
     { module: 'mockdate' },
   ]);
@@ -105,17 +52,8 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
     test
       .page`http://127.0.0.1:8080/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`
       .clientScripts(preTestCodes)(testName, async (t) => {
-        const requestLogger = new RequestLogger();
-        await t.addRequestHooks(requestLogger);
-
-        await ensureDevExpressThemesInitialized();
-        await doEvents(requestLogger);
-        await t.resizeWindow(1000, 800);
-        await doEvents(requestLogger);
-
         if (testCodeSource) {
           await execCode(testCodeSource);
-          await doEvents(requestLogger);
         }
 
         if (testCafeCodeSource) {
