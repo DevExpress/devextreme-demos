@@ -123,6 +123,6 @@ jobs:
     - name: Cleanup artifact      
       uses: actions/upload-artifact@v2
       with:
-        name: sources
+        name: devextreme-sources
         path: devextreme-repo-artifacts.tar
         retention-days: 1
