@@ -112,7 +112,7 @@ jobs:
         if-no-files-found: ignore
 
   cleanup:
-    needs: test
+    needs: testcafe
     runs-on: ubuntu-latest
     name: Cleanup artifacts
     timeout-minutes: 10
