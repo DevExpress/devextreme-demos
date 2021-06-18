@@ -74,7 +74,7 @@ jobs:
 
     - name: Run npm install
       run: |
-        npm ci --no-package-lock --no-audit --no-fund
+        test -d node_modules || npm ci --no-audit --no-fund
 
     - name: Download devextreme sources
       uses: actions/download-artifact@v2
