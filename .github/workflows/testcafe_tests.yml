@@ -58,19 +58,23 @@ jobs:
 
     steps:
     - name: Get sources
-      uses: actions/checkout@v2    
+      uses: actions/checkout@v2
 
-    # - name: Restore npm cache
-    #   uses: actions/cache@v2
-    #   with:
-    #     path: ./node_modules
-    #     key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-    #     restore-keys: |
-    #       ${{ runner.os }}-node
+    - name: Generate package-lock.json
+      run: |
+        test -f package-lock.json || npm i --package-lock-only
+
+    - name: Restore npm cache
+      uses: actions/cache@v2
+      with:
+        path: ./node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node
 
     - name: Run npm install
       run: |
-        npm install --no-package-lock --no-audit --no-fund
+        npm ci --no-package-lock --no-audit --no-fund
 
     - name: Download devextreme sources
       uses: actions/download-artifact@v2
