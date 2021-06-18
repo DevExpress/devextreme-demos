@@ -53,7 +53,7 @@ jobs:
         CONSTEL: [jquery(1/2), jquery(2/2)]
 
     runs-on: ubuntu-latest
-    name: Constel ${{ matrix.CONSTEL }}
+    name: ${{ matrix.CONSTEL }}
     timeout-minutes: 60
 
     steps:
