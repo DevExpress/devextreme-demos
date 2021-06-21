@@ -42,8 +42,8 @@ import ItemTemplate from './ItemTemplate.vue';
 import { resourcesData, data } from './data.js';
 import { cellContextMenuItems, appointmentContextMenuItems, setResource } from './MenuItems.js';
 
-const appointmentClassName = ".dx-scheduler-appointment";
-const cellClassName = ".dx-scheduler-date-table-cell";
+const appointmentClassName = '.dx-scheduler-appointment';
+const cellClassName = '.dx-scheduler-date-table-cell';
 
 export default {
   components: {
