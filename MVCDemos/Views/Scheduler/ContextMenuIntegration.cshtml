@@ -63,17 +63,21 @@
 
 @(Html.DevExtreme().ContextMenu()
     .ID("context-menu")
+    .Target(".dx-scheduler-appointment")
     .Disabled(true)
     .Width(200)
     .ItemTemplate(new JS("contextMenuItemTemplate"))
 )
 
 <script>
+    var appointmentClassName = ".dx-scheduler-appointment";
+    var cellClassName = ".dx-scheduler-date-table-cell";
+
     function onAppointmentContextMenu(e) {
         var contextMenuInstance = $("#context-menu").dxContextMenu("instance");
         contextMenuInstance.option({
             dataSource: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(appointmentContextMenuItems)),
-            target: ".dx-scheduler-appointment",
+            target: appointmentClassName,
             onItemClick: onItemClick(e),
             disabled: false,
         });
@@ -83,7 +87,7 @@
         var contextMenuInstance = $("#context-menu").dxContextMenu("instance");
         contextMenuInstance.option({
             dataSource: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(cellContextMenuItems)),
-            target: ".dx-scheduler-date-table-cell",
+            target: cellClassName,
             onItemClick: onItemClick(e),
             disabled: false,
         });
