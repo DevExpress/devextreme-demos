@@ -29,7 +29,7 @@ $(function() {
         width: 200,
         dataSource: [],
         disabled: true,
-        //target: appointmentClassName,
+        target: appointmentClassName,
     }).dxContextMenu("instance");
 
     var updateContextMenu = function (disable, dataSource, target, itemTemplate, onItemClick) {
