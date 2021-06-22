@@ -81,8 +81,7 @@ jobs:
 #Publish artifacts
     - name: Zip node_modules
       run: |
-        tar -cvf node_modules.tar --directory=./node_modules/ .
-        gzip -9 node_modules.tar
+        tar -cvf node_modules.tar --directory=./node_modules/ .        
 
     - name: Copy build artifacts      
       uses: actions/upload-artifact@v2
