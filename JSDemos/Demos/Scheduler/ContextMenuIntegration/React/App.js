@@ -10,8 +10,8 @@ import { AppointmentMenuTemplate } from './AppointmentTemplate.js';
 const currentDate = new Date(2020, 10, 25);
 const views = ['day', 'month'];
 
-const appointmentClassName = ".dx-scheduler-appointment";
-const cellClassName = ".dx-scheduler-date-table-cell";
+const appointmentClassName = '.dx-scheduler-appointment';
+const cellClassName = '.dx-scheduler-date-table-cell';
 
 class App extends React.Component {
   constructor(props) {
