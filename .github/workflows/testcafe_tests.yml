@@ -78,7 +78,7 @@ jobs:
     - name: Demos - Prepare bundles
       run: npm run prepare-bundles
 
-      #Publish artifacts
+#Publish artifacts
     - name: Zip node_modules
       run: |
         tar -cvf node_modules.tar --directory=./node_modules/ .
