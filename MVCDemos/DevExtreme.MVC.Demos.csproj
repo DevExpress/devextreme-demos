@@ -1987,6 +1987,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_DocumentDomain.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\DataGrid\WebAPIService.cshtml" />
     <Content Include="Views\DataGrid\ODataService.cshtml" />
