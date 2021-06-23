@@ -6,4 +6,4 @@ When the data source is remote, the TreeView requests data for each expanded nod
 
 This demo enables virtual mode with a remote data source and uses the [hasItemsExpr](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#hasItemsExpr) property to specify a custom name for the `hasItems` field.
 
-As an alternative to virtual mode, you can use the [createChildren](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#createChildren) function to gain full control over data load. To see this approach in action, refer to the [Load Data on Demand](/Demos/WidgetsGallery/Demo/TreeView/LoadDataOnDemand) demo.
+As an alternative to virtual mode, you can use a custom logic to process requested data. To do this, specify the [createChildren](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#createChildren) function as shown in the [Load Data on Demand](/Demos/WidgetsGallery/Demo/TreeView/LoadDataOnDemand) demo.
