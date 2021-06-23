@@ -1,4 +1,4 @@
-In virtual mode, the TreeView loads a node’s children when the node is expanded for the first time. This enhances performance on large datasets.
+In virtual mode, the TreeView loads a node's children when the node is expanded for the first time. This enhances performance on large datasets.
 
 To enable this feature, set the [virtualModeEnabled](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#virtualModeEnabled) property to **true**. Note that this mode is only available when the TreeView's [dataStructure](/Documentation/ApiReference/UI_Components/dxTreeView/Configuration/#dataStructure) is plain.
 
