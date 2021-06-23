@@ -26,4 +26,4 @@ After a user finishes moving fields between sections, the changes are applied im
 
 ### Enable Search
 
-Users can search the All Fields section if you enable the **fieldChooser**.[allowSearch](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldChooser/#allowSearch) property as shown in this demo. In addition, you can specify the [searchTimeout](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldChooser/#searchTimeout) property to delay the search.
+Users can search in the All Fields section if you enable the **fieldChooser**.[allowSearch](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldChooser/#allowSearch) property as shown in this demo. In addition, you can specify the [searchTimeout](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldChooser/#searchTimeout) property to delay the search.
