@@ -5,7 +5,7 @@ on:
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * 6,0'
+    - cron: '0 * * * *'
 
 jobs:
   build:
@@ -79,16 +79,15 @@ jobs:
       run: npm run prepare-bundles
 
 #Publish artifacts
-    - name: Zip node_modules
-      run: |
-        tar -cvf node_modules.tar --directory=./node_modules/ .        
+    - name: Zip node_modules    
+      run: 7z a -t7z -mx3 -mmt2 node_modules.7z node_modules
 
     - name: Copy build artifacts      
       uses: actions/upload-artifact@v2
       with:
         name: devextreme-sources        
         path: |
-          node_modules.tar
+          node_modules.7z
           bundles/
         retention-days: 1
 
@@ -117,9 +116,7 @@ jobs:
         name: devextreme-sources
 
     - name: Unpack artifacts
-      run: |
-        mkdir ./node_modules/
-        tar -xf ./node_modules.tar -C ./node_modules/
+      run: 7z x node_modules.7z
 
     - name: Prepare JS
       run: npm run prepare-js
