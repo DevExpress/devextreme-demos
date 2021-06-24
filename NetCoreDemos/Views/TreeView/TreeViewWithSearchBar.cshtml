@@ -14,7 +14,7 @@
         <span>Search mode</span>
         @(Html.DevExtreme().SelectBox()
             .ID("searchMode")
-            .DataSource(new[] { "contains", "startsWith" })
+            .DataSource(new[] { "contains", "startsWith", "equals" })
             .Value("contains")
             .OnValueChanged("selectBox_valueChanged")
         )
