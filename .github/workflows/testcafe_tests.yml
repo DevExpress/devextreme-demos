@@ -105,7 +105,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:      
-        CONSTEL: [jquery(1/2), jquery(2/2), react(1/2), react(2/2), vue(1/2), vue(2/2), angular(1/2), angular(2/2)]
+        CONSTEL: [jquery(1/2), jquery(2/2), react(1/4), react(2/4), react(3/4), react(4/4), vue(1/4), vue(2/4), vue(3/4), vue(4/4), angular(1/4), angular(2/4), angular(3/4), angular(4/4)]
 
     runs-on: ubuntu-latest
     name: ${{ matrix.CONSTEL }}
