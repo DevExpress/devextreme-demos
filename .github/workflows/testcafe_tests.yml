@@ -53,6 +53,11 @@ jobs:
         cd ../devextreme-repo
         npm run build
 
+    - name: DevExtreme - Pack
+      run: |
+        cd ../devextreme-repo/artifacts/npm/devextreme
+        npm pack
+
 #Build Demos
     - name: Demos - Generate package-lock
       run: |
@@ -73,7 +78,7 @@ jobs:
     - name: Demos - Install devextreme package
       run: |
         rm -rf ./node_modules/devextreme
-        npm install --no-package-lock ../devextreme-repo/artifacts/npm/devextreme
+        npm install --no-package-lock $(find ../devextreme-repo/artifacts/npm/devextreme/ -maxdepth 1 -name "devextreme-*.tgz")
 
     - name: Demos - Prepare bundles
       run: npm run prepare-bundles
