@@ -130,7 +130,11 @@ jobs:
       run: npx gulp bundles
 
     - name: Run Web Server
-      run: python -m http.server 8080 &
+      run: |
+        python -m http.server 8080 &
+        python -m http.server 8081 &
+        python -m http.server 8082 &
+        python -m http.server 8083 &
 
     - name: Run TestCafe tests
       env:
