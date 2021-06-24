@@ -15,7 +15,7 @@ jobs:
     
     steps:
 
-#Git
+    #Git
     - name: Get sources
       uses: actions/checkout@v2   
 
@@ -29,7 +29,7 @@ jobs:
         BASE_BRANCH=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
         test -d ../devextreme-repo || git clone -b $BASE_BRANCH https://github.com/devexpress/devextreme ../devextreme-repo
 
-#Build Devextreme
+    #Build Devextreme
     - name: DevExtreme - Generate package-lock
       run: |
         cd ../devextreme-repo
@@ -58,7 +58,7 @@ jobs:
         cd ../devextreme-repo/artifacts/npm/devextreme
         npm pack
 
-#Build Demos
+    #Build Demos
     - name: Demos - Generate package-lock
       run: |
         test -f package-lock.json || npm i --package-lock-only
@@ -83,7 +83,7 @@ jobs:
     - name: Demos - Prepare bundles
       run: npm run prepare-bundles
 
-#Publish artifacts
+    #Publish artifacts
     - name: Zip node_modules    
       run: 7z a -t7z -mx3 -mmt2 node_modules.7z node_modules
 
@@ -96,7 +96,7 @@ jobs:
           bundles/
         retention-days: 1
 
-#Teardown
+    #Teardown
     - name: Cleanup devextreme package
       run: rm -rf ./node_modules/devextreme
     
@@ -105,7 +105,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:      
-        CONSTEL: [jquery(1/2), jquery(2/2)]
+        CONSTEL: [jquery(1/2), jquery(2/2), react(1/2), react(2/2), vue(1/2), vue(2/2), angular(1/2), angular(2/2)]
 
     runs-on: ubuntu-latest
     name: ${{ matrix.CONSTEL }}
