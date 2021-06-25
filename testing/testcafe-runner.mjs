@@ -54,6 +54,19 @@ function reporter() {
           .newline();
       });
     },
+    dateTimeNow() {
+      const toString = ((value, count) => `${value}`.padStart(count, '0'));
+      const now = new Date();
+      const result = `${toString(now.getHours(), 2)}:${toString(now.getMinutes(), 2)}:${toString(now.getSeconds(), 2)}.${toString(now.getMilliseconds(), 3)}`;
+      return result;
+    },
+
+    reportTestStart(name) {
+      this
+        .setIndent(1)
+        .write(`[${this.dateTimeNow()}] start   ${name}`)
+        .newline();
+    },
 
     reportTestDone(name, testRunInfo) {
       const hasErr = !!testRunInfo.errs.length;
@@ -74,7 +87,7 @@ function reporter() {
         nameStyle = this.chalk.grey;
       }
 
-      let title = `${symbol} ${nameStyle(name)} [${testRunInfo.durationMs} ms]`;
+      let title = `[${this.dateTimeNow()}]  done ${symbol} ${nameStyle(name)} [${testRunInfo.durationMs} ms]`;
 
       this.setIndent(1)
         .useWordWrap(true);
