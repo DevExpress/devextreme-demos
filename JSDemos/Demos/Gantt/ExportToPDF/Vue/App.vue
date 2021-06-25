@@ -288,8 +288,9 @@ export default {
     vertical-align: top;
   }
 
-  .column:last-child .option {
-      margin-left: 4px;
+  .column:last-child .option,
+  .column:last-child .caption {
+    margin-left: 4px;
   }
 
   .option {
