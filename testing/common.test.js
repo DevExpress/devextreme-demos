@@ -62,7 +62,7 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
 
         await t.expect(
           await compareScreenshot(t, `${testName}.png`),
-        ).ok();
+        ).ok('INVALID_SCREENSHOT');
       });
   });
 });
