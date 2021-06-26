@@ -1,4 +1,4 @@
-Along with a field chooser [integrated into the PivotGrid](https://js.devexpress.com/Demos/WidgetsGallery/Demo/PivotGrid/IntegratedFieldChooser/), DevExtreme includes a standalone [PivotGridFieldChooser](/Documentation/ApiReference/UI_Components/dxPivotGridFieldChooser/) component. Unlike its integrated counterpart, the standalone field chooser can be displayed on a page permanently.
+Along with a field chooser [integrated into the PivotGrid](https://js.devexpress.com/Demos/WidgetsGallery/Demo/PivotGrid/IntegratedFieldChooser/), DevExtreme includes a standalone [PivotGridFieldChooser](/Documentation/ApiReference/UI_Components/dxPivotGridFieldChooser/) component. Unlike its integrated counterpart, the standalone field chooser can remain visible on the page at all times.
 
 Follow the steps below to connect the PivotGridFieldChooser with the PivotGrid:
 
