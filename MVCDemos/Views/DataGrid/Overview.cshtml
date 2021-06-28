@@ -3,6 +3,7 @@
     .DataSource(d => d
         .OData()
         .Url("https://js.devexpress.com/Demos/SalesViewer/odata/DaySaleDtoes")
+        .Key("Id")
         .BeforeSend(@<text>
             function(request) {
                 request.params.startDate = "2020-05-10";
