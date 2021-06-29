@@ -152,11 +152,12 @@ function reporter() {
 async function main() {
   const tester = await createTestCafe();
   const runner = tester.createRunner();
+  const concurrency = (process.env.CONCURRENCY && (+process.env.CONCURRENCY)) || 1;
 
   await runner
     .reporter(reporter)
     .browsers(process.env.BROWSERS || 'chrome')
-    .concurrency(process.env.CONCURRENCY || 1)
+    .concurrency(concurrency || 1)
     .clientScripts({ module: 'mockdate' }, 'testing/helpers/test-utils.js')
     .run();
 
