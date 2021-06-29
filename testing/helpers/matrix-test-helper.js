@@ -26,3 +26,7 @@ export function shouldRunTestAtIndex(testIndex) {
 export function shouldRunTest(currentFramework, testIndex) {
   return shouldRunFramework(currentFramework) && shouldRunTestAtIndex(testIndex);
 }
+
+export function getPortByIndex(testIndex) {
+  return (testIndex / total) % (process.env.CONCURRENCY || 1);
+}

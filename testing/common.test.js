@@ -3,13 +3,13 @@ import { ClientFunction } from 'testcafe';
 import { join } from 'path';
 import { existsSync, readFileSync } from 'fs';
 import { compareScreenshot } from './helpers/screenshot-comparer';
-import { shouldRunFramework, shouldRunTestAtIndex } from './helpers/matrix-test-helper';
+import { shouldRunFramework, shouldRunTestAtIndex, getPortByIndex } from './helpers/matrix-test-helper';
 
 const execCode = ClientFunction((code) => {
   // eslint-disable-next-line no-eval
   const result = eval(code);
   if (result && typeof result.then === 'function') {
-    return Promise.race([result, new Promise((resolve) => setTimeout(30000, resolve))]);
+    return Promise.race([result, new Promise((resolve) => setTimeout(60000, resolve))]);
   }
 
   return Promise.resolve();
@@ -22,10 +22,7 @@ const execTestCafeCode = (t, code) => {
 };
 
 fixture`Getting Started`
-  .beforeEach((t) => t.resizeWindow(1000, 800))
-  .clientScripts([
-    { module: 'mockdate' },
-  ]);
+  .beforeEach((t) => t.resizeWindow(1000, 800));
 
 const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
 
@@ -50,7 +47,7 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
     const testCafeCodeSource = existsSync(testCafeTestCodePath) ? readFileSync(testCafeTestCodePath, 'utf8') : null;
 
     test
-      .page`http://127.0.0.1:808${index % 4}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`
+      .page`http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`
       .clientScripts(preTestCodes)(testName, async (t) => {
         if (testCodeSource) {
           await execCode(testCodeSource);

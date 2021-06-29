@@ -1,10 +1,8 @@
 {
   "src": "./testing/**/*.test.js",
-  "browsers": "chrome:headless",
   "screenshots": {
     "path": "./",
     "pathPattern": "${TEST}.png"
   },
-  "concurrency": 4,
   "pageLoadTimeout": 10000
 }

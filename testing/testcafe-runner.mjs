@@ -104,12 +104,13 @@ function reporter() {
     },
 
     renderWarnings(warnings) {
+      const filteredWarnings = warnings.filter((x) => x.indexOf('It has just been rewritten with a recent screenshot.') === -1);
       this.newline()
         .setIndent(1)
-        .write(this.chalk.bold.yellow(`Warnings (${warnings.length}):`))
+        .write(this.chalk.bold.yellow(`Warnings (${filteredWarnings.length}):`))
         .newline();
 
-      warnings.forEach((msg) => {
+      filteredWarnings.forEach((msg) => {
         this.setIndent(1)
           .write(this.chalk.bold.yellow('--'))
           .newline()
@@ -154,6 +155,9 @@ async function main() {
 
   await runner
     .reporter(reporter)
+    .browsers(process.env.BROWSERS || 'chrome')
+    .concurrency(process.env.CONCURRENCY || 1)
+    .clientScripts({ module: 'mockdate' }, 'testing/helpers/test-utils.js')
     .run();
 
   await tester.close();
