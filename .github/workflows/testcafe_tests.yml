@@ -139,7 +139,7 @@ jobs:
     - name: Run TestCafe tests
       env:
         BROWSERS: chrome:headless
-        DEBUG: hammerhead:*,testcafe:*
+        #DEBUG: hammerhead:*,testcafe:*
         CONCURRENCY: 4
         CONSTEL: ${{ matrix.CONSTEL }}
       run: npm run test-testcafe
