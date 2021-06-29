@@ -154,7 +154,7 @@ async function main() {
   const runner = tester.createRunner();
   const concurrency = (process.env.CONCURRENCY && (+process.env.CONCURRENCY)) || 1;
 
-  await runner
+  const failedCount = await runner
     .reporter(reporter)
     .browsers(process.env.BROWSERS || 'chrome')
     .concurrency(concurrency || 1)
@@ -162,6 +162,7 @@ async function main() {
     .run();
 
   await tester.close();
+  process.exit(+!!failedCount);
 }
 
 main();

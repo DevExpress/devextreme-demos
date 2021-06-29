@@ -57,3 +57,5 @@ const testUtils = {
   postponeUntilNotFound,
   importAnd,
 };
+
+window.testUtils = testUtils;
