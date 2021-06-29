@@ -95,6 +95,7 @@ import { DxDataGrid, DxColumn, DxExport, DxSelection, DxSummary, DxGroupPanel, D
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver';
 import { exportDataGrid } from 'devextreme/excel_exporter';
+import service from './data.js';
 
 export default {
   components: {
