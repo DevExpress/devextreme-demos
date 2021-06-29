@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     onExporting(e) {
-      const workbook = new ExcelJS.Workbook();
+      const workbook = new Workbook();
       const worksheet = workbook.addWorksheet('Employees');
 
       exportDataGrid({
