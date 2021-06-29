@@ -1,5 +1,5 @@
 ﻿testUtils.importAnd(()=>"devextreme/viz/chart", ()=>DevExpress.viz.dxChart, function (dxChart) {
-    const i = 0;
+    let i = 0;
     return new Promise((resolve) => {
         var intervalId = setInterval(() => {
             i += 1;

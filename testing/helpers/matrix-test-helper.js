@@ -1,6 +1,6 @@
-let targetFramework = 'react';
+let targetFramework = 'vue';
 let total = 4;
-let current = 1;
+let current = 3;
 const concurrency = (process.env.CONCURRENCY && (+process.env.CONCURRENCY)) || 1;
 
 const currentCriteria = process.env.CONSTEL;
@@ -29,5 +29,5 @@ export function shouldRunTest(currentFramework, testIndex) {
 }
 
 export function getPortByIndex(testIndex) {
-  return Math.floor(testIndex / total) % concurrency;
+  return Math.floor(testIndex / total) % 1;
 }
