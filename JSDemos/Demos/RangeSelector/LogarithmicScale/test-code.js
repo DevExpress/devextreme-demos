@@ -4,7 +4,7 @@ testUtils.importAnd(() => ['devextreme/viz/chart', 'devextreme/viz/range_selecto
     var chart = dxChart.getInstance(document.getElementById("zoomed-chart")),
         rangeSelector = dxRangeSelector.getInstance(document.getElementById("range-selector"))
 
-    chart.option("series.point.visible", false);
+    chart.option("autoHidePointMarkers", false);
     chart.option("dataSource", ds);
     rangeSelector.option("dataSource", ds);
     chart.option = function(){};
