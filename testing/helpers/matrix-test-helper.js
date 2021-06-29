@@ -29,5 +29,5 @@ export function shouldRunTest(currentFramework, testIndex) {
 }
 
 export function getPortByIndex(testIndex) {
-  return (testIndex / total) % concurrency;
+  return Math.floor(testIndex / total) % concurrency;
 }
