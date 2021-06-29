@@ -1,1 +1,1 @@
-﻿testUtils.postponeUntilFound('div:contains("Chai")', 200, 20000);
+﻿testUtils.postponeUntil(() => testUtils.findElements('div').some(x=>x.innerHTML.indexOf('Chai') != -1), 200, 20000);

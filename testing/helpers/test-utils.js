@@ -1,5 +1,5 @@
 function findElements(selector) {
-  return document.querySelectorAll(selector);
+  return [...document.querySelectorAll(selector)];
 }
 
 function postpone(duration) {

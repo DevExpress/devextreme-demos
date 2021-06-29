@@ -1,1 +1,1 @@
-﻿testUtils.postponeUntilFound('#tasks-count:contains("0")', 200, 20000);
+﻿testUtils.postponeUntil(() => testUtils.findElements('#tasks-count').some(x=>x.innerHTML.indexOf('0') != -1), 200, 20000);

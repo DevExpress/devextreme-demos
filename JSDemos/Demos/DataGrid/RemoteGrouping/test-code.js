@@ -1,1 +1,1 @@
-﻿testUtils.postponeUntilFound('td:contains("Store:")', 200, 20000);
+﻿testUtils.postponeUntil(() => testUtils.findElements('td').some(x=>x.innerHTML.indexOf('Store:') != -1), 200, 20000);
