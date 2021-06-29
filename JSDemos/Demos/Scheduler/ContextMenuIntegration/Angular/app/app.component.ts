@@ -6,14 +6,14 @@ import { Appointment, Resource, Service } from './app.service';
 import { DxContextMenuModule } from 'devextreme-angular';
 import { DxSchedulerModule, DxSchedulerComponent } from 'devextreme-angular';
 import { AppointmentContextMenuEvent, CellContextMenuEvent } from 'devextreme/ui/scheduler';
-import { ContextMenuItemClickEvent } from 'devextreme/ui/file_manager';
 import { dxContextMenuItem } from 'devextreme/ui/context_menu';
+import { ItemInfo } from 'devextreme/events';
 
 if (!/localhost/.test(document.location.host)) {
     enableProdMode();
 }
 
-type ContextMenuItem = dxContextMenuItem & { onItemClick?: ({ itemData }: ContextMenuItemClickEvent) => void; }
+type ContextMenuItem = dxContextMenuItem & { onItemClick?: (e: ItemInfo) => void; }
 
 @Component({
     selector: 'demo-app',
@@ -118,7 +118,7 @@ export class AppComponent {
         ];
     }
 
-    onContextMenuItemClick(e: ContextMenuItemClickEvent) {
+    onContextMenuItemClick(e: ItemInfo) {
         e.itemData.onItemClick(e);
     }
 }
