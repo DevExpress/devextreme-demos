@@ -18,7 +18,7 @@
     ></dxi-resource>
 </dx-scheduler>
 <dx-context-menu #contextMenu
-                 [dataSource]="dataSource"
+                 [items]="contextMenuItems"
                  [disabled]="disabled"
                  [target]="target"
                  (onItemClick)="onContextMenuItemClick($event)"

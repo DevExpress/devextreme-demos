@@ -7,6 +7,7 @@
       :data-source="dataSource"
       :views="views"
       :current-date="currentDate"
+      :cross-scrolling-enabled="crossScrollingEnabled"
       :start-day-hour="9"
       :height="600"
       :on-appointment-context-menu="onAppointmentContextMenu"
@@ -55,10 +56,10 @@ export default {
       currentDate: new Date(2020, 10, 25),
       dataSource: data,
       groups: null,
+      crossScrollingEnabled: false,
       resourcesData: resourcesData,
       disabled: true,
       contextMenuItems: [],
-      contextMenuEvent: null,
       target: undefined,
     };
   },
