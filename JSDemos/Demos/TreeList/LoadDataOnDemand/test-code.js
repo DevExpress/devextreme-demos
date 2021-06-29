@@ -1,17 +1,9 @@
-(function (factory) {
-    if (window.Promise && window.System) {
-        return Promise.all([
-            System.import("devextreme/ui/tree_list")
-        ]).then(function (args) {
-            return factory(args[0]);
-        });
-    } else {
-        return factory(DevExpress.ui.dxTreeList);
-    }
-})(function (dxTreeList) {
+testUtils.importAnd(()=>'devextreme/ui/tree_list', ()=>DevExpress.ui.dxTreeList, function (dxTreeList) {    
     return new Promise(function(resolve){
         var instance = dxTreeList.getInstance(document.getElementById("treelist"));
+        let timeoutId = setTimeout(resolve, 30000);
         instance.option("onContentReady", function() {
+            clearTimeout(timeoutId);
             resolve();
         });
 
