@@ -2,13 +2,18 @@ import { NgModule, Component, enableProdMode, ViewChild, ViewChildren, QueryList
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { Appointment, Resource, ResourceMenuItem, Service } from './app.service';
-import { DxContextMenuModule, DxContextMenuComponent } from 'devextreme-angular';
+import { Appointment, Resource, Service } from './app.service';
+import { DxContextMenuModule } from 'devextreme-angular';
 import { DxSchedulerModule, DxSchedulerComponent } from 'devextreme-angular';
+import { AppointmentContextMenuEvent, CellContextMenuEvent } from 'devextreme/ui/scheduler';
+import { ContextMenuItemClickEvent } from 'devextreme/ui/file_manager';
+import { dxContextMenuItem } from 'devextreme/ui/context_menu';
 
 if (!/localhost/.test(document.location.host)) {
     enableProdMode();
 }
+
+type ContextMenuItem = dxContextMenuItem & { onItemClick?: ({ itemData }: ContextMenuItemClickEvent) => void; }
 
 @Component({
     selector: 'demo-app',
@@ -25,23 +30,24 @@ export class AppComponent {
     groups: any;
     crossScrollingEnabled: boolean = false;
 
-    contextMenuItems: any[] = [];
+    contextMenuItems: ContextMenuItem[] = [];
     disabled: boolean = true;
     target: any;
     constructor(service: Service) {
         this.resourcesData = service.getResources();
         this.appointmentsData = service.getAppointments();
     }
-    onAppointmentContextMenu({ appointmentData, targetedAppointmentData }) {
+    onAppointmentContextMenu({ appointmentData, targetedAppointmentData }: AppointmentContextMenuEvent) {
         const scheduler = this.scheduler.instance;
-        const resourceItems = this.resourcesData.map((item) => ({
-            ...item,
-            onItemClick: ({ itemData }) =>
-                scheduler.updateAppointment(appointmentData, {
-                    ...appointmentData,
-                    ...{ roomId: [itemData.id] },
-                }),
-        }));
+        const resourceItems: ContextMenuItem[] = this.resourcesData
+            .map((item) => ({
+                ...item,
+                onItemClick: ({ itemData }) =>
+                    scheduler.updateAppointment(appointmentData, {
+                        ...appointmentData,
+                        ...{ roomId: [itemData.id] },
+                    }),
+            }));
         this.target = '.dx-scheduler-appointment';
         this.disabled = false;
         this.contextMenuItems = [
@@ -66,7 +72,7 @@ export class AppComponent {
             ...resourceItems,
         ];
     }
-    onCellContextMenu({ cellData }) {
+    onCellContextMenu({ cellData }: CellContextMenuEvent) {
         const scheduler = this.scheduler.instance;
         this.target = '.dx-scheduler-date-table-cell';
         this.disabled = false;
@@ -112,7 +118,7 @@ export class AppComponent {
         ];
     }
 
-    onContextMenuItemClick(e) {
+    onContextMenuItemClick(e: ContextMenuItemClickEvent) {
         e.itemData.onItemClick(e);
     }
 }
