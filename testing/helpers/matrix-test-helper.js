@@ -1,5 +1,5 @@
-let targetFramework = 'jquery';
-let total = 1;
+let targetFramework = 'react';
+let total = 4;
 let current = 1;
 const concurrency = (process.env.CONCURRENCY && (+process.env.CONCURRENCY)) || 1;
 

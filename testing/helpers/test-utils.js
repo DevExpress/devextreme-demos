@@ -1,3 +1,7 @@
+function findElements(selector) {
+  return document.querySelectorAll(selector);
+}
+
 function postpone(duration) {
   return new Promise((resolve) => setTimeout(resolve, duration || 5000));
 }
@@ -23,8 +27,8 @@ function postponeUntil(condition, interval, timeout) {
 
 function postponeUntilFoundInternal(selector, interval, timeout, inverseCondition) {
   const condition = Array.isArray(selector)
-    ? (() => selector.every((x) => $(x).length))
-    : (() => $(selector).length);
+    ? (() => selector.every((x) => findElements(x).length))
+    : (() => findElements(selector).length);
   return postponeUntilInternal(condition, interval, timeout, inverseCondition);
 }
 function postponeUntilFound(selector, interval, timeout) {
@@ -56,6 +60,7 @@ const testUtils = {
   postponeUntilFound,
   postponeUntilNotFound,
   importAnd,
+  findElements,
 };
 
 window.testUtils = testUtils;

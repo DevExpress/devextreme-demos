@@ -1,14 +1,4 @@
-﻿(function (factory) {
-    if (window.Promise && window.System) {
-        Promise.all([
-            System.import("devextreme/viz/chart")
-        ]).then(function (args) {
-            factory(args[0]);
-        });
-    } else {
-        factory(DevExpress.viz.dxChart);
-    }
-})(function (dxChart) {
+﻿testUtils.importAnd(() => 'devextreme/viz/chart', () => DevExpress.viz.dxChart, function (dxChart) {
     var dataSource = [
         {
             monarch: "Anne",
@@ -126,4 +116,3 @@
     instance.option("dataSource", dataSource);
     instance.option = function () { };
 });
-
