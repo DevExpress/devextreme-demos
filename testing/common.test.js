@@ -5,6 +5,7 @@ import { existsSync, readFileSync } from 'fs';
 import { compareScreenshot } from './helpers/screenshot-comparer';
 import { shouldRunFramework, shouldRunTestAtIndex, getPortByIndex } from './helpers/matrix-test-helper';
 
+const singleTestName = undefined;
 const execCode = ClientFunction((code) => {
   // eslint-disable-next-line no-eval
   const result = eval(code);
@@ -52,9 +53,23 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
     const testCodeSource = existsSync(testCodePath) ? readFileSync(testCodePath, 'utf8') : null;
     const testCafeCodeSource = existsSync(testCafeTestCodePath) ? readFileSync(testCafeTestCodePath, 'utf8') : null;
 
-    test
+    if (testName !== singleTestName) return;
+    (singleTestName ? test.only : test)
       .page`http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`
       .clientScripts(preTestCodes)(testName, async (t) => {
+        if (approach === 'Angular') {
+          await ClientFunction(() => new Promise((resolve) => {
+            let demoAppCounter = 0;
+            const demoAppIntervalHandle = setInterval(() => {
+              const demoApp = document.querySelector('demo-app');
+              if (!demoApp || demoApp.innerText !== 'Loading...' || demoAppCounter === 200) {
+                resolve();
+                clearInterval(demoAppIntervalHandle);
+              }
+              demoAppCounter += 1;
+            }, 100);
+          }))();
+        }
         if (testCodeSource) {
           await execCode(testCodeSource);
         }
