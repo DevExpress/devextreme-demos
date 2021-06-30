@@ -144,11 +144,16 @@ jobs:
         CONSTEL: ${{ matrix.CONSTEL }}
       run: npm run test-testcafe
 
+    - name: Get screenshots artifacts name
+      if: ${{ failure() }}
+      id: screenshotname
+      run: echo ::set-output name=value::$(echo "${{ matrix.CONSTEL }}" | grep -oP "^\w+")
+
     - name: Copy screenshots artifacts
       if: ${{ failure() }}
       uses: actions/upload-artifact@v2
       with:
-        name: screenshots
+        name: screenshots-${{ steps.screenshotname.outputs.value }}
         path: ${{ github.workspace }}/testing/artifacts/*
         if-no-files-found: ignore
 
