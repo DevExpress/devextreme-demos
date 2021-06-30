@@ -15,7 +15,7 @@ function postponeUntilInternal(condition, interval, timeout, inverseCondition) {
       const result = condition();
       if (i * theInterval >= theTimeout || (inverseCondition ? !result : result)) {
         clearInterval(id);
-        resolve(result);
+        resolve();
       }
       i += 1;
     }, theInterval);

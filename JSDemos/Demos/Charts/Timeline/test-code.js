@@ -112,7 +112,12 @@
         item.Monarch = item.monarch;
     });
 
-    var instance = dxChart.getInstance(document.getElementById("chart"));
-    instance.option("dataSource", dataSource);
-    instance.option = function () { };
+    return testUtils
+        .postponeUntilFound('#chart', 100, 10000)
+        .then(() => {
+            const instance = dxChart.getInstance(document.querySelector('#chart'));
+            instance.option("dataSource", dataSource);
+            instance.option = function() { };
+        })
+        .then(testUtils.postpone(2000));
 });
