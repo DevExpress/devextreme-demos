@@ -12,7 +12,7 @@ $(function(){
         width: 660,
         height: 540,
         contentTemplate: function() {
-            var result = $(_.template($("#property-details").html(), currentHouse));
+            var result = $(_.template($("#property-details").html())(currentHouse));
             var button = result.find("#favorites")
                 .dxButton(buttonOptions)
                 .dxButton("instance");
