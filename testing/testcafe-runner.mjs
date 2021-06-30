@@ -159,7 +159,7 @@ async function main() {
     .browsers(process.env.BROWSERS || 'chrome')
     .concurrency(concurrency || 1)
     .clientScripts({ module: 'mockdate' }, 'testing/helpers/test-utils.js')
-    .run();
+    .run({ quarantineMode: true });
 
   await tester.close();
   process.exit(+!!failedCount);
