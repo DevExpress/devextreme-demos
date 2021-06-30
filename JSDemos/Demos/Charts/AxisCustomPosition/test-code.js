@@ -82,7 +82,10 @@ testUtils.importAnd(() => 'devextreme/viz/chart', () => DevExpress.viz.dxChart, 
     { x1: -11, y1: -6, x2: -8, y2: 8 },
   ];
   
-    var instance = dxChart.getInstance(document.getElementById("chart"));
-    instance.option("dataSource", dataSource);
-    instance.option = function() { };
+  return testUtils.postponeUntilFound('#chart', 100, 10000)
+    .then(x=>x.forEach(host=>{
+      var instance = dxChart.getInstance(host);
+      instance.option("dataSource", dataSource);
+      instance.option = function() { };
+    })).then(testUtils.postpone(2000));
 });
