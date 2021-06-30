@@ -19,7 +19,7 @@
         var useSLD = String.Equals(GetDomain(), "demos", StringComparison.OrdinalIgnoreCase)
             || Request.QueryString.AllKeys.Contains("sld");
         if(useSLD) {
-            <script>document.domain = @GetSld();</script>
+            <script>document.domain = "@GetSld()"</script>
         }
     }
 }
