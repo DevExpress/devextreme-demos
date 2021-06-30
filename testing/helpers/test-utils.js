@@ -12,9 +12,10 @@ function postponeUntilInternal(condition, interval, timeout, inverseCondition) {
   const theTimeout = timeout || 10000;
   return new Promise((resolve) => {
     const id = setInterval(() => {
-      if (i * theInterval >= theTimeout || (inverseCondition ? !condition() : condition())) {
+      const result = condition();
+      if (i * theInterval >= theTimeout || (inverseCondition ? !result : result)) {
         clearInterval(id);
-        resolve();
+        resolve(result);
       }
       i += 1;
     }, theInterval);
@@ -25,10 +26,14 @@ function postponeUntil(condition, interval, timeout) {
   return postponeUntilInternal(condition, interval, timeout, false);
 }
 
+function ifAny(array) {
+  return array.length && array;
+}
+
 function postponeUntilFoundInternal(selector, interval, timeout, inverseCondition) {
   const condition = Array.isArray(selector)
-    ? (() => selector.every((x) => findElements(x).length))
-    : (() => findElements(selector).length);
+    ? (() => ifAny(selector.flatMap(findElements)))
+    : (() => ifAny(findElements(selector)));
   return postponeUntilInternal(condition, interval, timeout, inverseCondition);
 }
 function postponeUntilFound(selector, interval, timeout) {
