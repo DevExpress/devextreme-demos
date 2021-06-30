@@ -1,5 +1,5 @@
-let targetFramework = 'vue';
-let total = 1;
+let targetFramework = 'jquery';
+let total = 2;
 let current = 1;
 const concurrency = (process.env.CONCURRENCY && (+process.env.CONCURRENCY)) || 1;
 
