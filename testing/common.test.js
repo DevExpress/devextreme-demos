@@ -9,7 +9,7 @@ const execCode = ClientFunction((code) => {
   // eslint-disable-next-line no-eval
   const result = eval(code);
   if (result && typeof result.then === 'function') {
-    return Promise.race([result, new Promise((resolve) => setTimeout(60000, resolve))]);
+    return Promise.race([result, new Promise((resolve) => setTimeout(resolve, 60000))]);
   }
 
   return Promise.resolve();
@@ -22,7 +22,13 @@ const execTestCafeCode = (t, code) => {
 };
 
 fixture`Getting Started`
-  .beforeEach((t) => t.resizeWindow(1000, 800));
+  .beforeEach((t) => {
+    t.resizeWindow(1000, 800);
+    // eslint-disable-next-line spellcheck/spell-checker
+    t.ctx.watchDogHandle = setTimeout(() => { throw new Error('test timeout exceeded'); }, 3 * 60 * 1000);
+  })
+  // eslint-disable-next-line spellcheck/spell-checker
+  .afterEach((t) => clearTimeout(t.ctx.watchDogHandle));
 
 const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
 
