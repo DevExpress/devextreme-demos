@@ -8,6 +8,6 @@ testUtils.importAnd(() => 'devextreme/ui/scheduler', () => DevExpress.ui.dxSched
         const indicatorTime = new Date(today.setDate(today.getDate() - today.getDay() + 3));
         instance.option('indicatorTime', indicatorTime);
     }).then(testUtils.postpone(1000)).then(()=>{
-        instance.scrollTo(indicatorTime);
+        dxScheduler.getInstance(document.querySelector('.dx-scheduler')).scrollTo(indicatorTime);
     }).then(testUtils.postpone(1000));
 });
