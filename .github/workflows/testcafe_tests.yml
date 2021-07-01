@@ -141,6 +141,7 @@ jobs:
         BROWSERS: chrome:headless
         #DEBUG: hammerhead:*,testcafe:*
         CONCURRENCY: 4
+        TCQUARANTINE: true
         CONSTEL: ${{ matrix.CONSTEL }}
       run: npm run test-testcafe
 
