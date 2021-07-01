@@ -8,12 +8,13 @@ testUtils.importAnd(()=>'devextreme/ui/tree_list', ()=>DevExpress.ui.dxTreeList,
         });
 
         instance.option("dataSource", {
-            load: function (options) {
-                return $.ajax({
-                    url: "https://js.devexpress.com/Demos/Mvc/api/treeListData",
-                    data: { parentIds: options.parentIds.join(",") }
-                })
+            load: function(loadOptions) {
+              let parentIdsParam = loadOptions.parentIds;
+    
+              return fetch(`https://js.devexpress.com/Demos/Mvc/api/treeListData?parentIds=${parentIdsParam}`)
+                .then(response => response.json())
+                .catch(() => { throw 'Data Loading Error'; });
             }
-        });
+          });
     });
 });
