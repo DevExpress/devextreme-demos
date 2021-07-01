@@ -162,7 +162,7 @@ async function main() {
     .run({ quarantineMode: !!process.env.TCQUARANTINE });
 
   await tester.close();
-  process.exit(+!!failedCount);
+  process.exit(failedCount);
 }
 
 main();
