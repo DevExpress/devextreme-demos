@@ -1,17 +1,17 @@
-name: TestCafe tests
+name: Visual Tests (Frameworks)
 
 on:
   push:
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * 6,0'
+    - cron: '0 */2 * * 6,0'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     name: Build DevExtreme
-    timeout-minutes: 30
+    timeout-minutes: 20
     
     steps:
 
@@ -104,8 +104,8 @@ jobs:
     needs: build
     strategy:
       fail-fast: false
-      matrix:      
-        CONSTEL: [jquery(1/2), jquery(2/2), react(1/4), react(2/4), react(3/4), react(4/4), vue(1/4), vue(2/4), vue(3/4), vue(4/4), angular(1/4), angular(2/4), angular(3/4), angular(4/4)]
+      matrix:
+        CONSTEL: [react(1/4), react(2/4), react(3/4), react(4/4), vue(1/4), vue(2/4), vue(3/4), vue(4/4), angular(1/4), angular(2/4), angular(3/4), angular(4/4)]
 
     runs-on: ubuntu-latest
     name: ${{ matrix.CONSTEL }}
