@@ -62,7 +62,7 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
             let demoAppCounter = 0;
             const demoAppIntervalHandle = setInterval(() => {
               const demoApp = document.querySelector('demo-app');
-              if (!demoApp || demoApp.innerText !== 'Loading...' || demoAppCounter === 200) {
+              if ((demoApp && demoApp.innerText !== 'Loading...') || demoAppCounter === 200) {
                 resolve();
                 clearInterval(demoAppIntervalHandle);
               }
