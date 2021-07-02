@@ -2,14 +2,10 @@ import { NgModule, Component, ViewChild, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxButtonModule, DxTabPanelModule, DxDataGridModule, DxDataGridComponent } from 'devextreme-angular';
+import { Workbook } from 'exceljs';
+import { saveAs } from 'file-saver-es';
+// Our demo infrastructure requires us to use 'file-saver-es'. We recommend that you use the official 'file-saver' package in your applications.
 import { exportDataGrid } from 'devextreme/excel_exporter';
-import ExcelJS from 'exceljs';
-import saveAs from 'file-saver';
-/*
-  // Use this import for codeSandBox
-  import * as ExcelJS from 'exceljs/dist/exceljs.min.js';
-  import * as FileSaver from 'file-saver';
-*/
 import DataGrid from 'devextreme/ui/data_grid';
 import 'devextreme/data/odata/store';
 
@@ -53,7 +49,7 @@ export class AppComponent {
 
   exportGrids(e) {
     const context = this;
-    const workbook = new ExcelJS.Workbook();
+    const workbook = new Workbook();
     const priceSheet = workbook.addWorksheet('Price');
     const ratingSheet = workbook.addWorksheet('Rating');
 

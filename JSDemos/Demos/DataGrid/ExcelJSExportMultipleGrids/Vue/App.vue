@@ -83,13 +83,10 @@
 import DxButton from 'devextreme-vue/button';
 import DxTabPanel, { DxItem } from 'devextreme-vue/tab-panel';
 import { DxDataGrid, DxColumn } from 'devextreme-vue/data-grid';
+import { Workbook } from 'exceljs';
+import { saveAs } from 'file-saver-es';
+// Our demo infrastructure requires us to use 'file-saver-es'. We recommend that you use the official 'file-saver' package in your applications.
 import { exportDataGrid } from 'devextreme/excel_exporter';
-import ExcelJS from 'exceljs';
-import saveAs from 'file-saver';
-/*
-  // Use this import for codeSandBox
-  import FileSaver from 'file-saver';
-*/
 import 'devextreme/data/odata/store';
 
 const priceGridRefKey = 'priceDataGrid';
@@ -138,7 +135,7 @@ export default {
   methods: {
     exportGrids() {
       const context = this;
-      const workbook = new ExcelJS.Workbook();
+      const workbook = new Workbook();
       const priceSheet = workbook.addWorksheet('Price');
       const ratingSheet = workbook.addWorksheet('Rating');
 
