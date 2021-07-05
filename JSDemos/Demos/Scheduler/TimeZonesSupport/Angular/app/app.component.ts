@@ -36,10 +36,6 @@ export class AppComponent {
             return service.getLocations().indexOf(timeZone.id) !== -1;
         });
     };
-
-    onValueChanged(e: any) {
-        this.timezone = e.value;
-    }
     
     onAppointmentFormOpening(e: any) {
         const form = e.form;
