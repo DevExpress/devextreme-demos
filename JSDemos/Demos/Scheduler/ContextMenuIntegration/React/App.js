@@ -15,14 +15,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.scheduler = React.createRef();
-    
     this.state = {
       currentDate: new Date(2020, 10, 25),
       contextMenuItems: [],
       target: appointmentClassName,
       disabled: true,
     };
-
     this.onAppointmentContextMenu = this.onAppointmentContextMenu.bind(this);
     this.onContextMenuItemClick = this.onContextMenuItemClick.bind(this);
     this.onCellContextMenu = this.onCellContextMenu.bind(this);
@@ -100,7 +98,6 @@ class App extends React.Component {
         { text: 'Set Room', beginGroup: true, disabled: true },
         ...resourceItems,
       ]
-  
     }));
   }
 
