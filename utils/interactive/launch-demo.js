@@ -9,12 +9,14 @@ const menuMetaData = require('../../JSDemos/menuMeta.json');
 const baseDemosDir = 'JSDemos/Demos';
 
 const mainRoutine = async(menuMetaData) => {
+    const port = process.argv[2] ?? '3000';
+    console.log(`Launch server on the port:${port}`);
     const demo = await promptsQuestions.askDemoToUpdate(menuMetaData);
     const demoPath = fileSystemUtils.getDemoPathByMeta(demo.category, demo.group, demo.demo, baseDemosDir, menuMetaData);
     const approaches = fileSystemUtils.getApproachesList(demoPath);
     const demoApproach = await promptsQuestions.askApproachesFolder(approaches);
     const openUrl = path.join(demoPath, demoApproach.approach).replace(/\\/g, '/');
-    const args = ['-a', 'localhost', '-p', '3000', '-c-1', '-d', '--cors', '--o', openUrl];
+    const args = ['-a', 'localhost', '-p', port, '-c-1', '-d', '--cors', '--o', openUrl];
     const server = spawn('http-server', args, { shell: true });
 
     server.stdout.on('data', (data) => console.log(data.toString()));

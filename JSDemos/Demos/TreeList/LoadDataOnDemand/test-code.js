@@ -9,8 +9,6 @@
         return factory(DevExpress.ui.dxTreeList);
     }
 })(function (dxTreeList) {
-    if(!window.$) return;
-
     return new Promise(function(resolve){
         var instance = dxTreeList.getInstance(document.getElementById("treelist"));
         instance.option("onContentReady", function() {
@@ -20,7 +18,7 @@
         instance.option("dataSource", {
             load: function (options) {
                 return $.ajax({
-                    url: "http://localhost:5002/api/TreeListData",
+                    url: "https://js.devexpress.com/Demos/Mvc/api/treeListData",
                     data: { parentIds: options.parentIds.join(",") }
                 })
             }

@@ -1010,14 +1010,12 @@
           {
             "Title": "Integrated Field Chooser",
             "Name": "IntegratedFieldChooser",
-            "DocUrl": "Guide/UI_Components/PivotGrid/Visual_Elements/#Field_Chooser",
             "Widget": "PivotGrid",
             "DemoType": "Web"
           },
           {
             "Title": "Standalone Field Chooser",
             "Name": "StandaloneFieldChooser",
-            "DocUrl": "Guide/UI_Components/PivotGrid/Visual_Elements/#Field_Chooser",
             "Widget": "PivotGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/PivotGridDataController.cs",
@@ -1811,7 +1809,6 @@
           {
             "Title": "Grouping By Date",
             "Name": "GroupByDate",
-            "DocUrl": "ApiReference/UI_Components/dxScheduler/Configuration/views/#groupByDate",
             "Widget": "Scheduler",
             "MvcAdditionalFiles": [
               "/Models/EmployeeTask.cs",
@@ -3445,6 +3442,28 @@
             ]
           }
         ]
+      },
+      {
+        "Name": "Export to PDF (CTP)",
+        "Equivalents": "",
+        "Demos": [
+          {
+            "Title": "Export To PDF (CTP)",
+            "Badge": "New",
+            "Name": "ExportToPDF",
+            "Widget": "Gantt",
+            "DemoType": "Web",
+            "Modules": "jspdf&jspdf-autotable",
+            "WideDemo": true,
+            "MvcAdditionalFiles": [
+              "/Models/SampleData/GanttData.cs",
+              "/Models/Gantt/Dependency.cs",
+              "/Models/Gantt/Resource.cs",
+              "/Models/Gantt/ResourceAssignment.cs",
+              "/Models/Gantt/Task.cs"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -3777,7 +3796,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/NavBar/Overview/",
             "Widget": "NavBar",
             "DemoType": "Mobile"
           }
@@ -3792,7 +3810,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/SlideOut/Overview/",
             "Widget": "Slideout",
             "DemoType": "Mobile"
           }
@@ -3837,7 +3854,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/TabPanel/Overview/",
             "Widget": "TabPanel",
             "MvcAdditionalFiles": [
               "/Models/Company.cs",
@@ -3900,7 +3916,6 @@
               {
                 "Title": "Hierarchical Data Structure",
                 "Name": "HierarchicalDataStructure",
-                "DocUrl": "Guide/UI_Components/TreeView/Use_Hierarchical_Data/",
                 "Widget": "TreeView",
                 "MvcAdditionalFiles": [
                   "/Models/Product.cs",
@@ -3949,7 +3964,6 @@
               {
                 "Title": "Virtual Mode",
                 "Name": "VirtualMode",
-                "DocUrl": "Guide/UI_Components/TreeView/Enhance_Performance_on_Large_Datasets/",
                 "Widget": "TreeView",
                 "DemoType": "Web"
               }
@@ -3961,7 +3975,6 @@
               {
                 "Title": "Load Data on Demand",
                 "Name": "LoadDataOnDemand",
-                "DocUrl": "ApiReference/UI_Components/dxTreeView/Configuration/#createChildren",
                 "Widget": "TreeView",
                 "Modules": "whatwg-fetch",
                 "MvcAdditionalFiles": [

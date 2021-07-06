@@ -8,6 +8,9 @@ import { AppointmentMenuTemplate } from './AppointmentTemplate.js';
 
 const views = ['day', 'month'];
 
+const appointmentClassName = '.dx-scheduler-appointment';
+const cellClassName = '.dx-scheduler-date-table-cell';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +19,7 @@ class App extends React.Component {
     this.state = {
       currentDate: new Date(2020, 10, 25),
       contextMenuItems: [],
-      target: null,
+      target: appointmentClassName,
       disabled: true,
     };
 
@@ -74,7 +77,7 @@ class App extends React.Component {
     }));
     this.setState((state) => ({
       ...state,
-      target: '.dx-scheduler-appointment',
+      target: appointmentClassName,
       disabled: false,
       contextMenuItems: [
         {
@@ -109,7 +112,7 @@ class App extends React.Component {
     const scheduler = this.scheduler.current.instance;
     this.setState((state) => ({
       ...state,
-      target: '.dx-scheduler-date-table-cell',
+      target: cellClassName,
       disabled: false,
       contextMenuItems: [
         {

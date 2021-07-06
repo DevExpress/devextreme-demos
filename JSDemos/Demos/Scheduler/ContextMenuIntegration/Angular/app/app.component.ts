@@ -14,6 +14,8 @@ if (!/localhost/.test(document.location.host)) {
 }
 
 type ContextMenuItem = dxContextMenuItem & { onItemClick?: (e: ItemInfo) => void; }
+const appointmentClassName = ".dx-scheduler-appointment";
+const cellClassName = ".dx-scheduler-date-table-cell";
 
 @Component({
     selector: 'demo-app',
@@ -32,7 +34,7 @@ export class AppComponent {
 
     contextMenuItems: ContextMenuItem[] = [];
     disabled: boolean = true;
-    target: any;
+    target: string = appointmentClassName;
     constructor(service: Service) {
         this.resourcesData = service.getResources();
         this.appointmentsData = service.getAppointments();
@@ -48,7 +50,7 @@ export class AppComponent {
                         ...{ roomId: [itemData.id] },
                     }),
             }));
-        this.target = '.dx-scheduler-appointment';
+        this.target = appointmentClassName;
         this.disabled = false;
         this.contextMenuItems = [
             {
@@ -74,7 +76,7 @@ export class AppComponent {
     }
     onCellContextMenu({ cellData }: CellContextMenuEvent) {
         const scheduler = this.scheduler.instance;
-        this.target = '.dx-scheduler-date-table-cell';
+        this.target = cellClassName;
         this.disabled = false;
         this.contextMenuItems = [
             {

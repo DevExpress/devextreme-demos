@@ -43,6 +43,9 @@ import DxContextMenu from 'devextreme-vue/context-menu';
 import ItemTemplate from './ItemTemplate.vue';
 import { resourcesData, data } from './data.js';
 
+const appointmentClassName = '.dx-scheduler-appointment';
+const cellClassName = '.dx-scheduler-date-table-cell';
+
 export default {
   components: {
     DxScheduler,
@@ -60,7 +63,7 @@ export default {
       resourcesData: resourcesData,
       disabled: true,
       contextMenuItems: [],
-      target: undefined,
+      target: appointmentClassName,
     };
   },
   methods: {
@@ -74,7 +77,7 @@ export default {
             ...{ roomId: [itemData.id] },
           }),
       }));
-      this.target = '.dx-scheduler-appointment';
+      this.target = appointmentClassName;
       this.disabled = false;
       this.contextMenuItems = [
         {
@@ -98,10 +101,9 @@ export default {
         ...resourceItems,
       ];
     },
-
     onCellContextMenu({ cellData }) {
       const scheduler = this.$refs.scheduler.instance;
-      this.target = '.dx-scheduler-date-table-cell';
+      this.target = cellClassName;
       this.disabled = false;
       this.contextMenuItems = [
         {
