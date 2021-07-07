@@ -3,7 +3,7 @@
         "ignore": false
     },
     "react": {
-        "ignore": true
+        "ignore": false
     },
     "vue": {
         "ignore": true

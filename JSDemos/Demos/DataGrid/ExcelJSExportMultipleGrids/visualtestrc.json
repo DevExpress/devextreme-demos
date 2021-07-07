@@ -6,7 +6,7 @@
         "ignore": true
     },
     "vue": {
-        "ignore": false
+        "ignore": true
     },
     "angular": {
         "ignore": false
