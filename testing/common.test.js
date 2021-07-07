@@ -48,10 +48,17 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
     const preTestCodePath = join(demoPath, '../pre-test-code.js');
     const testCodePath = join(demoPath, '../test-code.js');
     const testCafeTestCodePath = join(demoPath, '../testcafe-test-code.js');
+    const visualTestSettingsPath = join(demoPath, '../visualtestrc.json');
 
     const preTestCodes = existsSync(preTestCodePath) ? [{ content: readFileSync(preTestCodePath, 'utf8') }] : [];
     const testCodeSource = existsSync(testCodePath) ? readFileSync(testCodePath, 'utf8') : null;
     const testCafeCodeSource = existsSync(testCafeTestCodePath) ? readFileSync(testCafeTestCodePath, 'utf8') : null;
+
+    const visualTestSettings = existsSync(visualTestSettingsPath) ? JSON.parse(readFileSync(visualTestSettingsPath, 'utf8')) : null;
+
+    const ignoreApproach = approach in visualTestSettings && visualTestSettings[approach].ignore;
+
+    if (ignoreApproach) return;
 
     if (singleTestName && (testName !== singleTestName)) return;
     (singleTestName ? test.only : test)
