@@ -55,7 +55,7 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
     const testCafeCodeSource = existsSync(testCafeTestCodePath) ? readFileSync(testCafeTestCodePath, 'utf8') : null;
     const visualTestSettings = existsSync(visualTestSettingsPath) ? JSON.parse(readFileSync(visualTestSettingsPath, 'utf8')) : null;
 
-    const ignoreApproach = approach in visualTestSettings && visualTestSettings[approach].ignore;
+    const ignoreApproach = visualTestSettings && visualTestSettings[approach] && visualTestSettings[approach].ignore;
     if (ignoreApproach) return;
 
     if (singleTestName && (testName !== singleTestName)) return;
