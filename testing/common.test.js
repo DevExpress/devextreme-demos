@@ -33,7 +33,7 @@ fixture`Getting Started`
 
 const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
 
-['jquery', 'react', 'vue', 'angular'].forEach((approach) => {
+['jQuery', 'React', 'Vue', 'Angular'].forEach((approach) => {
   const demoPaths = getDemoPaths(approach);
   if (!shouldRunFramework(approach)) return;
 
@@ -55,7 +55,9 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
     const testCafeCodeSource = existsSync(testCafeTestCodePath) ? readFileSync(testCafeTestCodePath, 'utf8') : null;
     const visualTestSettings = existsSync(visualTestSettingsPath) ? JSON.parse(readFileSync(visualTestSettingsPath, 'utf8')) : null;
 
-    const ignoreApproach = approach in visualTestSettings && visualTestSettings[approach].ignore;
+    const approachLowerCase = approach.toLowerCase();
+
+    const ignoreApproach = visualTestSettings && visualTestSettings[approachLowerCase] && visualTestSettings[approachLowerCase].ignore;
     if (ignoreApproach) return;
 
     if (singleTestName && (testName !== singleTestName)) return;
