@@ -1,0 +1,14 @@
+{
+    "jquery": {
+        "ignore": false
+    },
+    "react": {
+        "ignore": true
+    },
+    "vue": {
+        "ignore": false
+    },
+    "angular": {
+        "ignore": false
+    }
+}
