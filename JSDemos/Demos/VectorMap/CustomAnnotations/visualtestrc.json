@@ -9,6 +9,6 @@
         "ignore": true
     },
     "angular": {
-        "ignore": false
+        "ignore": true
     }
 }
