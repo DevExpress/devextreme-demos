@@ -59,7 +59,6 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
     const ignoreApproach = visualTestSettings && visualTestSettings[approachLowerCase] && visualTestSettings[approachLowerCase].ignore;
 
     if (ignoreApproach) return;
-
     if (singleTestName && (testName !== singleTestName)) return;
     (singleTestName ? test.only : test)
       .page`http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`
