@@ -1,7 +1,4 @@
 {
-    "jquery": {
-        "ignore": false
-    },
     "react": {
         "ignore": true
     },
