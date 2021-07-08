@@ -15,6 +15,17 @@ const execCode = ClientFunction((code) => {
 
   return Promise.resolve();
 });
+const waitForAngularLoading = ClientFunction(() => new Promise((resolve) => {
+  let demoAppCounter = 0;
+  const demoAppIntervalHandle = setInterval(() => {
+    const demoApp = document.querySelector('demo-app');
+    if ((demoApp && demoApp.innerText !== 'Loading...') || demoAppCounter === 200) {
+      setTimeout(resolve, 1000);
+      clearInterval(demoAppIntervalHandle);
+    }
+    demoAppCounter += 1;
+  }, 100);
+}));
 
 const execTestCafeCode = (t, code) => {
   // eslint-disable-next-line no-eval
@@ -66,17 +77,7 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
       .page`http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`
       .clientScripts(preTestCodes)(testName, async (t) => {
         if (approach === 'Angular') {
-          await ClientFunction(() => new Promise((resolve) => {
-            let demoAppCounter = 0;
-            const demoAppIntervalHandle = setInterval(() => {
-              const demoApp = document.querySelector('demo-app');
-              if ((demoApp && demoApp.innerText !== 'Loading...') || demoAppCounter === 200) {
-                setTimeout(resolve, 1000);
-                clearInterval(demoAppIntervalHandle);
-              }
-              demoAppCounter += 1;
-            }, 100);
-          }))();
+          await waitForAngularLoading();
         }
         if (testCodeSource) {
           await execCode(testCodeSource);
