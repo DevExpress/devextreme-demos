@@ -3,13 +3,13 @@ The [PivotGrid](/Documentation/Guide/UI_Components/PivotGrid) component supports
 **Configure Store**
 To connect your component to an OLAP storage, use [XmlaStore](/Documentation/ApiReference/Data_Layer/XmlaStore/) as an underlying store of the PivotGrid's [dataSource](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#dataSource). The **dataSource** property uses the [PivotGridDataSource](/Documentation/ApiReference/Data_Layer/PivotGridDataSource/) component to process data under the hood. Specify the following properties to configure the **XmlaStore**:    
 
-- [url](/Documentation/ApiReference/Data_Layer/XmlaStore/Configuration/#url)
+- [url](/Documentation/ApiReference/Data_Layer/XmlaStore/Configuration/#url)        
 The OLAP server's URL.
 
-- [catalog](/Documentation/ApiReference/Data_Layer/XmlaStore/Configuration/#catalog)
+- [catalog](/Documentation/ApiReference/Data_Layer/XmlaStore/Configuration/#catalog)        
 The initial catalog that contains the OLAP cube.
 
-- [cube](/Documentation/ApiReference/Data_Layer/XmlaStore/Configuration/#catalog)
+- [cube](/Documentation/ApiReference/Data_Layer/XmlaStore/Configuration/#catalog)       
 The name of the OLAP cube to use from the catalog.
 
 **Configure PivotGrid Fields**
