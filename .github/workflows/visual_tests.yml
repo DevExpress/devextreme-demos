@@ -84,7 +84,6 @@ jobs:
     - name: Get sources
       uses: actions/checkout@v2
 
-      run: npm install --no-audit --no-fund
     - name: Download devextreme sources
       uses: actions/download-artifact@v2
       with:
