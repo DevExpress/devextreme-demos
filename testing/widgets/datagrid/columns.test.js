@@ -15,24 +15,24 @@ if (shouldRunTest('jquery', 0)) {
     await t
       .navigateTo('/JSDemos/Demos/DataGrid/ColumnCustomization/jQuery/');
 
-    await takeScreenshot('datagrid_column_customization_1');
+    await takeScreenshot('datagrid_column_customization_1.png');
 
     await t
       .click('.dx-icon-column-chooser');
 
-    await takeScreenshot('datagrid_column_customization_2');
+    await takeScreenshot('datagrid_column_customization_2.png');
 
     await t
       .drag("td[aria-label='Column Birth Date']",
         500, 200,
         { offsetX: 5, offsetY: 5 });
 
-    await takeScreenshot('datagrid_column_customization_3');
+    await takeScreenshot('datagrid_column_customization_3.png');
 
     await t
       .click('.dx-closebutton');
 
-    await takeScreenshot('datagrid_column_customization_4');
+    await takeScreenshot('datagrid_column_customization_4.png');
 
     await t
       .expect(compareResults.isValid())
