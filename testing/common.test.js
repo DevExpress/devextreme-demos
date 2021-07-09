@@ -3,17 +3,29 @@ import { ClientFunction } from 'testcafe';
 import { join } from 'path';
 import { existsSync, readFileSync } from 'fs';
 import { compareScreenshot } from 'devextreme-screenshot-comparer';
-import { shouldRunFramework, shouldRunTestAtIndex } from './helpers/matrix-test-helper';
+import { shouldRunFramework, shouldRunTestAtIndex, getPortByIndex } from './helpers/matrix-test-helper';
 
+const singleTestName = undefined;
 const execCode = ClientFunction((code) => {
   // eslint-disable-next-line no-eval
   const result = eval(code);
   if (result && typeof result.then === 'function') {
-    return Promise.race([result, new Promise((resolve) => setTimeout(30000, resolve))]);
+    return Promise.race([result, new Promise((resolve) => setTimeout(resolve, 60000))]);
   }
 
   return Promise.resolve();
 });
+const waitForAngularLoading = ClientFunction(() => new Promise((resolve) => {
+  let demoAppCounter = 0;
+  const demoAppIntervalHandle = setInterval(() => {
+    const demoApp = document.querySelector('demo-app');
+    if ((demoApp && demoApp.innerText !== 'Loading...') || demoAppCounter === 200) {
+      setTimeout(resolve, 1000);
+      clearInterval(demoAppIntervalHandle);
+    }
+    demoAppCounter += 1;
+  }, 100);
+}));
 
 const execTestCafeCode = (t, code) => {
   // eslint-disable-next-line no-eval
@@ -22,10 +34,13 @@ const execTestCafeCode = (t, code) => {
 };
 
 fixture`Getting Started`
-  .beforeEach((t) => t.resizeWindow(1000, 800))
-  .clientScripts([
-    { module: 'mockdate' },
-  ]);
+  .beforeEach(async (t) => {
+    // eslint-disable-next-line spellcheck/spell-checker
+    t.ctx.watchDogHandle = setTimeout(() => { throw new Error('test timeout exceeded'); }, 3 * 60 * 1000);
+    await t.resizeWindow(1000, 800);
+  })
+  // eslint-disable-next-line spellcheck/spell-checker
+  .afterEach((t) => clearTimeout(t.ctx.watchDogHandle));
 
 const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
 
@@ -44,14 +59,26 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
     const preTestCodePath = join(demoPath, '../pre-test-code.js');
     const testCodePath = join(demoPath, '../test-code.js');
     const testCafeTestCodePath = join(demoPath, '../testcafe-test-code.js');
+    const visualTestSettingsPath = join(demoPath, '../visualtestrc.json');
 
     const preTestCodes = existsSync(preTestCodePath) ? [{ content: readFileSync(preTestCodePath, 'utf8') }] : [];
     const testCodeSource = existsSync(testCodePath) ? readFileSync(testCodePath, 'utf8') : null;
     const testCafeCodeSource = existsSync(testCafeTestCodePath) ? readFileSync(testCafeTestCodePath, 'utf8') : null;
+    const visualTestSettings = existsSync(visualTestSettingsPath) ? JSON.parse(readFileSync(visualTestSettingsPath, 'utf8')) : null;
 
-    test
-      .page`http://127.0.0.1:8080/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`
+    const approachLowerCase = approach.toLowerCase();
+    const ignoreApproach = visualTestSettings
+      && visualTestSettings[approachLowerCase]
+      && visualTestSettings[approachLowerCase].ignore;
+
+    if (ignoreApproach) return;
+    if (singleTestName && (testName !== singleTestName)) return;
+    (singleTestName ? test.only : test)
+      .page`http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`
       .clientScripts(preTestCodes)(testName, async (t) => {
+        if (approach === 'Angular') {
+          await waitForAngularLoading();
+        }
         if (testCodeSource) {
           await execCode(testCodeSource);
         }
@@ -62,7 +89,7 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
 
         await t.expect(
           await compareScreenshot(t, `${testName}.png`),
-        ).ok();
+        ).ok('INVALID_SCREENSHOT');
       });
   });
 });

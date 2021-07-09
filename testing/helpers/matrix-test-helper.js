@@ -1,6 +1,7 @@
 let targetFramework = 'jquery';
-let total = 1;
+let total = 2;
 let current = 1;
+const concurrency = (process.env.CONCURRENCY && (+process.env.CONCURRENCY)) || 1;
 
 const currentCriteria = process.env.CONSTEL;
 if (currentCriteria) {
@@ -25,4 +26,8 @@ export function shouldRunTestAtIndex(testIndex) {
 
 export function shouldRunTest(currentFramework, testIndex) {
   return shouldRunFramework(currentFramework) && shouldRunTestAtIndex(testIndex);
+}
+
+export function getPortByIndex(testIndex) {
+  return Math.floor(testIndex / total) % concurrency;
 }
