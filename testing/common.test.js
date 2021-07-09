@@ -2,7 +2,7 @@ import glob from 'glob';
 import { ClientFunction } from 'testcafe';
 import { join } from 'path';
 import { existsSync, readFileSync } from 'fs';
-import { compareScreenshot } from './helpers/screenshot-comparer';
+import { compareScreenshot } from 'devextreme-screenshot-comparer';
 import { shouldRunFramework, shouldRunTestAtIndex, getPortByIndex } from './helpers/matrix-test-helper';
 
 const singleTestName = undefined;

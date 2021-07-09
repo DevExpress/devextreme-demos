@@ -1,5 +1,5 @@
 import { Selector } from 'testcafe';
-import { createScreenshotsComparer } from '../../helpers/screenshot-comparer';
+import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
 import { shouldRunTest } from '../../helpers/matrix-test-helper';
 
 fixture('Scheduler.ContextMenuIntegration')
@@ -16,19 +16,19 @@ if (shouldRunTest('jquery', 0)) {
     await t
       .navigateTo('/JSDemos/Demos/Scheduler/ContextMenuIntegration/jQuery/');
 
-    await takeScreenshot('scheduler_contextMenu_init');
+    await takeScreenshot('scheduler_contextMenu_init.png');
 
     await t
       .rightClick('.dx-scheduler-appointment');
-    await takeScreenshot('scheduler_contextMenu_click');
+    await takeScreenshot('scheduler_contextMenu_click.png');
 
     await t
       .rightClick(Selector('.dx-scheduler-date-table-cell').nth(6));
-    await takeScreenshot('scheduler_contextMenu_cell_click');
+    await takeScreenshot('scheduler_contextMenu_cell_click.png');
 
     await t
       .rightClick(Selector('.dx-scheduler-header-panel-cell').nth(2));
-    await takeScreenshot('scheduler_contextMenu_header_click');
+    await takeScreenshot('scheduler_contextMenu_header_click.png');
 
     await t
       .expect(compareResults.isValid())
