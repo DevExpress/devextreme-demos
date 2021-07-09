@@ -2,7 +2,7 @@ import glob from 'glob';
 import { ClientFunction } from 'testcafe';
 import { join } from 'path';
 import { existsSync, readFileSync } from 'fs';
-import { compareScreenshot } from './helpers/screenshot-comparer';
+import { compareScreenshot } from 'devextreme-screenshot-comparer';
 import { shouldRunFramework, shouldRunTestAtIndex } from './helpers/matrix-test-helper';
 
 const execCode = ClientFunction((code) => {

@@ -1,4 +1,4 @@
-import { createScreenshotsComparer } from '../../helpers/screenshot-comparer';
+import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
 import { shouldRunTest } from '../../helpers/matrix-test-helper';
 
 fixture('DataGrid.Columns')
