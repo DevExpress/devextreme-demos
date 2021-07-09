@@ -30,15 +30,10 @@ jobs:
         test -d ../devextreme-repo || git clone -b $BASE_BRANCH https://github.com/devexpress/devextreme ../devextreme-repo
 
     #Build Devextreme
-    - name: DevExtreme - Generate package-lock
-      run: |
-        cd ../devextreme-repo
-        test -f package-lock.json || npm i --package-lock-only
-
     - name: DevExtreme - Install packages
       run: |
         cd ../devextreme-repo
-        npm ci --no-audit --no-fund
+        npm install --no-audit --no-fund
 
     - name: DevExtreme - Build
       run: |
@@ -51,21 +46,8 @@ jobs:
         npm pack
 
     #Build Demos
-    - name: Demos - Generate package-lock
-      run: |
-        test -f package-lock.json || npm i --package-lock-only
-
-    - name: Demos - Restore npm cache
-      uses: actions/cache@v2
-      with:
-        path: ./node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node
-
     - name: Demos - Install packages
-      run: |
-        test -d node_modules || npm ci --no-audit --no-fund
+      run: npm install --no-audit --no-fund
 
     - name: Demos - Install devextreme package
       run: |
@@ -137,19 +119,3 @@ jobs:
         name: screenshots
         path: ${{ github.workspace }}/testing/artifacts/*
         if-no-files-found: ignore
-
-  cleanup:
-    needs: testcafe
-    runs-on: ubuntu-latest
-    name: Cleanup artifacts
-    timeout-minutes: 10
-    steps:
-    - name: Prepare delete artifact
-      run: touch devextreme-repo-artifacts.tar
-
-    - name: Cleanup artifact      
-      uses: actions/upload-artifact@v2
-      with:
-        name: devextreme-sources
-        path: devextreme-repo-artifacts.tar
-        retention-days: 1
