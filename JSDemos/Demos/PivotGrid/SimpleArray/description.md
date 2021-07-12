@@ -4,6 +4,5 @@ To display data in the PivotGrid, assign an array to the [fields[]](/Documentati
 
 Fields can belong to four different areas: row, column, filter, and data. To specify the area, set the [area](/Documentation/ApiReference/Data_Layer/PivotGridDataSource/Configuration/fields/#area) property. Fields that do not belong to any area are displayed in the [field chooser](https://js.devexpress.com/Demos/WidgetsGallery/Demo/PivotGrid/IntegratedFieldChooser/).
 
-In this demo, the `Region` and `City` fields are in the same *"row"* area. We use the [selector](/Documentation/ApiReference/Data_Layer/PivotGridDataSource/Configuration/fields/#selector) function to group these field values. 
 
 For more information on fields and areas, refer to the following article: [Fields and Areas](/Documentation/Guide/UI_Components/PivotGrid/Fields_and_Areas/).
