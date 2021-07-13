@@ -10,24 +10,15 @@
             )
             .AllowItemDeleting(false)
             .ItemDeleteMode(ListItemDeleteMode.Toggle)
-            .ShowSelectionControls(true)
-            .SelectionMode(ListSelectionMode.Multiple)
-            .OnSelectionChanged("list_updateSelection")
-            .OnItemDeleted("list_updateSelection")
             .ItemTemplate(@<text><%- Text %></text>)
         )
-
-        <div class="selected-data">
-            <span class="caption">Selected Tasks:</span>
-            <span id="selectedItems"></span>
-        </div>
     </div>
     <div class="options">
         <div class="caption">Options</div>
         <div class="option">
             @(Html.DevExtreme().CheckBox()
                 .Value(false)
-                .Text("Allow deleting")
+                .Text("Allow deletion")
                 .OnValueChanged("checkBox_valueChanged")
             )
         </div>
@@ -52,13 +43,5 @@
 
     var selectBox_valueChanged = function(e) {
         $("#simpleList").dxList("option", "itemDeleteMode", e.value);
-    };
-
-    var list_updateSelection = function(e) {
-        var selectedItems = e.component.option("selectedItems");
-        var selectedTexts = $.map(selectedItems, function(item) {
-            return item.Text;
-        });
-        $("#selectedItems").text(selectedTexts.join(", "));
     };
 </script>

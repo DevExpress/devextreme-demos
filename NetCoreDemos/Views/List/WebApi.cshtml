@@ -3,7 +3,7 @@
         <div><%- ProductName %></div>
         <div><b><%- formatCurrency(UnitPrice) %></b></div>
     </text>)
-    .DataSource(d => d.Mvc().Controller("ListData").LoadAction("Get"))
+    .DataSource(d => d.Mvc().Controller("ListData").LoadAction("Get").Key("ProductID"))
     .DataSourceOptions(d => d
         .PageSize(1)
         .Sort("ProductName")
