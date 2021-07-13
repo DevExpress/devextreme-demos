@@ -2619,7 +2619,7 @@
             "MvcAdditionalFiles": [
               "/Models/SampleData/AnnotationData.cs"
             ],
-            "Credits": "https://finance.yahoo.com, https://www.wikipedia.org/"
+            "Credits": "https://www.wikipedia.org/"
           }
         ]
       },
