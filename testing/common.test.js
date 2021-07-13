@@ -40,7 +40,8 @@ fixture`Getting Started`
     await t.resizeWindow(1000, 800);
   })
   // eslint-disable-next-line spellcheck/spell-checker
-  .afterEach((t) => clearTimeout(t.ctx.watchDogHandle));
+  .afterEach((t) => clearTimeout(t.ctx.watchDogHandle))
+  .clientScripts({ module: 'mockdate' }, './helpers/test-utils.js');
 
 const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
 

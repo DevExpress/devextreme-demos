@@ -158,7 +158,6 @@ async function main() {
     .reporter(reporter)
     .browsers(process.env.BROWSERS || 'chrome')
     .concurrency(concurrency || 1)
-    .clientScripts({ module: 'mockdate' }, 'testing/helpers/test-utils.js')
     .run({ quarantineMode: !!process.env.TCQUARANTINE });
 
   await tester.close();
