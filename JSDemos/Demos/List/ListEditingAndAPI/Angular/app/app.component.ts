@@ -17,8 +17,7 @@ if(!/localhost/.test(document.location.host)) {
     preserveWhitespaces: true
 })
 export class AppComponent {
-    selectedItems: any[] = [];
-    allowDeleting: boolean = false;
+    allowDeletion: boolean = false;
     deleteType: string = "toggle";
     tasks: string[];
 
