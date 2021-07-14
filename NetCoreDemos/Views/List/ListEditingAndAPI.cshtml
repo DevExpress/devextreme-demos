@@ -26,7 +26,7 @@
         <div class="option">
             <span>Item delete mode</span>
             @(Html.DevExtreme().SelectBox()
-                .ID("deleteType")
+                .ID("itemDeleteMode")
                 .Disabled(true)
                 .DataSource(Enum.GetValues(typeof(ListItemDeleteMode)))
                 .Value(ListItemDeleteMode.Toggle)
@@ -39,7 +39,7 @@
 <script>
     var checkBox_valueChanged = function(e) {
         $("#simpleList").dxList("option", "allowItemDeleting", e.value);
-        $("#deleteType").dxSelectBox("option", "disabled", !e.value);
+        $("#itemDeleteMode").dxSelectBox("option", "disabled", !e.value);
     };
 
     var selectBox_valueChanged = function(e) {

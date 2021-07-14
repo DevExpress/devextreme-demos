@@ -18,7 +18,7 @@ if(!/localhost/.test(document.location.host)) {
 })
 export class AppComponent {
     allowDeletion: boolean = false;
-    deleteType: string = "toggle";
+    itemDeleteMode: string = "toggle";
     tasks: string[];
 
     constructor(service: Service) {

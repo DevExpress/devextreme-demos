@@ -5,7 +5,7 @@
         :data-source="tasks"
         :height="400"
         :allow-item-deleting="allowDeletion"
-        :item-delete-mode="deleteType"
+        :item-delete-mode="itemDeleteMode"
       />
     </div>
     <div class="options">
@@ -21,7 +21,7 @@
         <DxSelectBox
           :disabled="!allowDeletion"
           :items="['static', 'toggle', 'slideButton', 'slideItem', 'swipe', 'context']"
-          v-model:value="deleteType"
+          v-model:value="itemDeleteMode"
         />
       </div>
     </div>
@@ -45,7 +45,7 @@ export default {
     return {
       tasks,
       allowDeletion: false,
-      deleteType: 'toggle'
+      itemDeleteMode: 'toggle'
     };
   }
 };
