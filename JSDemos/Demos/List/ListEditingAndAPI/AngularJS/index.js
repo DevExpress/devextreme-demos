@@ -1,7 +1,7 @@
 var DemoApp = angular.module('DemoApp', ['dx']);
 
 DemoApp.controller('DemoController', function DemoController($scope) {
-    $scope.deleteType = "toggle";
+    $scope.itemDeleteMode = "toggle";
     $scope.allowDeletion = false;
 
     $scope.listOptions = {
@@ -9,15 +9,15 @@ DemoApp.controller('DemoController', function DemoController($scope) {
         height: 400,
         bindingOptions: {
             allowItemDeleting: "allowDeletion",
-            itemDeleteMode: "deleteType"
+            itemDeleteMode: "itemDeleteMode"
         }
     };
 
-    $scope.deleteTypeOptions = {
+    $scope.itemDeleteModeOptions = {
         dataSource: ["static", "toggle", "slideButton", "slideItem", "swipe", "context"],
         bindingOptions: {
             disabled: "!allowDeletion",
-            value: "deleteType"
+            value: "itemDeleteMode"
         }
     };
 

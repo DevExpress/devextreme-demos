@@ -11,11 +11,11 @@ $(function() {
         text: "Allow deletion",
         onValueChanged: function(data) {
             listWidget.option("allowItemDeleting", data.value);
-            deleteTypeChooser.option("disabled", !data.value);
+            itemDeleteModeChooser.option("disabled", !data.value);
         }
     });
 
-    var deleteTypeChooser = $("#deleteType").dxSelectBox({
+    var itemDeleteModeChooser = $("#itemDeleteMode").dxSelectBox({
         disabled: true,
         dataSource: ["static", "toggle", "slideButton", "slideItem", "swipe", "context"],
         value: "toggle",

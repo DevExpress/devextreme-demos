@@ -1,7 +1,6 @@
 $(function() {
-
     function createList(selector, tasks) {
-        var list = $(selector).dxList({
+        $(selector).dxList({
             dataSource: tasks,
             repaintChangesOnly: true,
             keyExpr: "id",
@@ -21,7 +20,7 @@ $(function() {
                     e.component.reload();
                 }
             }
-        }).dxList("instance");
+        });
     }
 
     createList("#plannedList", plannedTasks);

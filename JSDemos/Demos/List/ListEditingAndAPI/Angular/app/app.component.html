@@ -4,7 +4,7 @@
             [dataSource]="tasks"
             [height]="400"
             [allowItemDeleting]="allowDeletion"
-            [itemDeleteMode]="deleteType">
+            [itemDeleteMode]="itemDeleteMode">
         </dx-list>
     </div>
     <div class="options">
@@ -20,7 +20,7 @@
             <dx-select-box
                 [disabled]="!allowDeletion"
                 [items]="['static', 'toggle', 'slideButton', 'slideItem', 'swipe', 'context']"
-                [(value)]="deleteType">
+                [(value)]="itemDeleteMode">
             </dx-select-box>
         </div>
     </div>
