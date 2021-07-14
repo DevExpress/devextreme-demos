@@ -1,5 +1,5 @@
 window.onload = function() {
-    var deleteType = ko.observable("toggle"),
+    var itemDeleteMode = ko.observable("toggle"),
         allowDeletion = ko.observable(false);
 
     var viewModel = {
@@ -7,14 +7,14 @@ window.onload = function() {
             dataSource: tasks,
             height: 400,
             allowItemDeleting: allowDeletion,
-            itemDeleteMode: deleteType,
+            itemDeleteMode: itemDeleteMode,
         },
-        deleteTypeOptions: {
+        itemDeleteModeOptions: {
             dataSource: ["static", "toggle", "slideButton", "slideItem", "swipe", "context"],
             disabled: ko.computed(function() {
                 return !allowDeletion();
             }),
-            value: deleteType
+            value: itemDeleteMode
         },
         allowDeletionOptions: {
             value: allowDeletion,

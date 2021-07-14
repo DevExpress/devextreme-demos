@@ -11,19 +11,19 @@ class App extends React.Component {
     super();
     this.state = {
       allowDeletion: false,
-      deleteType: 'toggle',
+      itemDeleteMode: 'toggle',
     };
     this.onAllowDeletionChange = this.onAllowDeletionChange.bind(this);
-    this.onDeleteTypeChange = this.onDeleteTypeChange.bind(this);
+    this.onItemDeleteModeChange = this.onItemDeleteModeChange.bind(this);
   }
   onAllowDeletionChange(args) {
     this.setState({
       allowDeletion: args.value
     });
   }
-  onDeleteTypeChange(args) {
+  onItemDeleteModeChange(args) {
     this.setState({
-      deleteType: args.value
+      itemDeleteMode: args.value
     });
   }
   render() {
@@ -34,7 +34,7 @@ class App extends React.Component {
             dataSource={tasks}
             height={400}
             allowItemDeleting={this.state.allowDeletion}
-            itemDeleteMode={this.state.deleteType}>
+            itemDeleteMode={this.state.itemDeleteMode}>
           </List>
         </div>
         <div className="options">
@@ -51,8 +51,8 @@ class App extends React.Component {
             <SelectBox
               disabled={!this.state.allowDeletion}
               items={['static', 'toggle', 'slideButton', 'slideItem', 'swipe', 'context']}
-              value={this.state.deleteType}
-              onValueChanged={this.onDeleteTypeChange}>
+              value={this.state.itemDeleteMode}
+              onValueChanged={this.onItemDeleteModeChange}>
             </SelectBox>
           </div>
         </div>
