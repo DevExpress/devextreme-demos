@@ -23,55 +23,43 @@ export class AppComponent {
     orders: Order[];
     expanded = true;
     totalCount: number;
+    selectBoxOptions: any;
+    collapseButtonOptions: any;
+    refreshButtonOptions: any;
 
     constructor(service: Service) {
         this.orders = service.getOrders();
         this.totalCount = this.getGroupCount('CustomerStoreState');
+
+        this.selectBoxOptions = {
+            width: 200,
+            items: [{
+              value: 'CustomerStoreState',
+              text: 'Grouping by State'
+            }, {
+              value: 'Employee',
+              text: 'Grouping by Employee'
+            }],
+            displayExpr: 'text',
+            valueExpr: 'value',
+            value: 'CustomerStoreState',
+            onValueChanged: this.groupChanged.bind(this)
+        };
+        this.collapseButtonOptions = {
+            width: 136,
+            text: 'Collapse All',
+            onClick: this.collapseAllClick.bind(this)
+        };
+        this.refreshButtonOptions = {
+            icon: 'refresh',
+            onClick: this.refreshDataGrid.bind(this)
+        };
     }
 
     getGroupCount(groupField) {
         return query(this.orders)
             .groupBy(groupField)
             .toArray().length;
-    }
-
-    onToolbarPreparing(e) {
-        e.toolbarOptions.items.unshift({
-            location: 'before',
-            template: 'totalGroupCount'
-        }, {
-                location: 'before',
-                widget: 'dxSelectBox',
-                options: {
-                    width: 200,
-                    items: [{
-                        value: 'CustomerStoreState',
-                        text: 'Grouping by State'
-                    }, {
-                        value: 'Employee',
-                        text: 'Grouping by Employee'
-                    }],
-                    displayExpr: 'text',
-                    valueExpr: 'value',
-                    value: 'CustomerStoreState',
-                    onValueChanged: this.groupChanged.bind(this)
-                }
-            }, {
-                location: 'before',
-                widget: 'dxButton',
-                options: {
-                    width: 136,
-                    text: 'Collapse All',
-                    onClick: this.collapseAllClick.bind(this)
-                }
-            }, {
-                location: 'after',
-                widget: 'dxButton',
-                options: {
-                    icon: 'refresh',
-                    onClick: this.refreshDataGrid.bind(this)
-                }
-            });
     }
 
     groupChanged(e) {

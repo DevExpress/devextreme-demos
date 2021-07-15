@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import DataGrid, { Grouping, Column, ColumnChooser, LoadPanel } from 'devextreme-react/data-grid';
+import DataGrid, { Grouping, Column, ColumnChooser, LoadPanel, Toolbar, Item } from 'devextreme-react/data-grid';
 import { Template } from 'devextreme-react/core/template';
 
 import query from 'devextreme/data/query';
@@ -13,7 +13,6 @@ class App extends React.Component {
       expanded: true,
       totalCount: this.getGroupCount('CustomerStoreState')
     };
-    this.onToolbarPreparing = this.onToolbarPreparing.bind(this);
     this.toolbarItemRender = this.toolbarItemRender.bind(this);
     this.dataGrid = null;
   }
@@ -29,44 +28,6 @@ class App extends React.Component {
         <span className="name">Total Count</span>
       </div>
     );
-  }
-  onToolbarPreparing(e) {
-    e.toolbarOptions.items.unshift({
-      location: 'before',
-      template: 'totalGroupCount'
-    }, {
-      location: 'before',
-      widget: 'dxSelectBox',
-      options: {
-        width: 200,
-        items: [{
-          value: 'CustomerStoreState',
-          text: 'Grouping by State'
-        }, {
-          value: 'Employee',
-          text: 'Grouping by Employee'
-        }],
-        displayExpr: 'text',
-        valueExpr: 'value',
-        value: 'CustomerStoreState',
-        onValueChanged: this.groupChanged.bind(this)
-      }
-    }, {
-      location: 'before',
-      widget: 'dxButton',
-      options: {
-        width: 136,
-        text: 'Collapse All',
-        onClick: this.collapseAllClick.bind(this)
-      }
-    }, {
-      location: 'after',
-      widget: 'dxButton',
-      options: {
-        icon: 'refresh',
-        onClick: this.refreshDataGrid.bind(this)
-      }
-    });
   }
   groupChanged(e) {
     this.dataGrid.instance.clearGrouping();
@@ -85,10 +46,39 @@ class App extends React.Component {
   refreshDataGrid() {
     this.dataGrid.instance.refresh();
   }
+  getSelectBoxOptions() {
+    return  {
+      width: 200,
+      items: [{
+        value: 'CustomerStoreState',
+        text: 'Grouping by State'
+      }, {
+        value: 'Employee',
+        text: 'Grouping by Employee'
+      }],
+      displayExpr: 'text',
+      valueExpr: 'value',
+      value: 'CustomerStoreState',
+      onValueChanged: this.groupChanged.bind(this)
+    }
+  }
+  getCollapseButtonOptions() {
+    return {
+      width: 136,
+      text: 'Collapse All',
+      onClick: this.collapseAllClick.bind(this)
+    }
+  }
+  getRefreshButtonOptions() {
+    return {
+      icon: 'refresh',
+      onClick: this.refreshDataGrid.bind(this)
+    }
+  }
   render() {
     return (
       <DataGrid id="gridContainer"
-        ref={(ref) => this.dataGrid = ref}
+        ref={(ref) => window.dataGrid = this.dataGrid = ref}
         dataSource={this.orders}
         keyExpr="ID"
         showBorders={true}
@@ -102,6 +92,27 @@ class App extends React.Component {
         <Column dataField="CustomerStoreCity" caption="City" />
         <Column dataField="CustomerStoreState" caption="State" groupIndex={0} />
         <Column dataField="SaleAmount" alignment="right" format="currency" />
+        <Toolbar>
+          <Item template="totalGroupCount" location="before"/>
+          <Item 
+            location="before"
+            widget="dxSelectBox"
+            options={this.getSelectBoxOptions()}
+          />
+          <Item 
+            location="before"
+            widget="dxButton"
+            options={this.getCollapseButtonOptions()}
+          />
+          <Item 
+            location="after"
+            widget="dxButton"
+            options={this.getRefreshButtonOptions()}
+          />
+          <Item
+            name="columnChooserButton"
+          />
+        </Toolbar>
         <Template name="totalGroupCount" render={this.toolbarItemRender} />
       </DataGrid>
     );
