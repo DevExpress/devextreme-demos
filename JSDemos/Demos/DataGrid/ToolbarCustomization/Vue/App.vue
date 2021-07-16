@@ -30,23 +30,26 @@
       format="currency"
     />
     <DxToolbar>
-      <DxItem template="totalGroupCount" location="before">
+      <DxItem
+        template="totalGroupCount"
+        location="before"
+      >
         <div class="informer">
           <h2 class="count">{{ totalCount }}</h2>
           <span class="name">Total Count</span>
         </div>
       </DxItem>
-      <DxItem 
+      <DxItem
         location="before"
         widget="dxSelectBox"
         :options="selectBoxOptions"
       />
-      <DxItem 
-        location="before" 
+      <DxItem
+        location="before"
         widget="dxButton"
         :options="collapseButtonOptions"
       />
-      <DxItem 
+      <DxItem
         location="after"
         widget="dxButton"
         :options="refreshButtonOptions"

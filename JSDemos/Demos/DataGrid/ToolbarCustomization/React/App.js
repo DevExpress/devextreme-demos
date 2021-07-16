@@ -47,7 +47,7 @@ class App extends React.Component {
     this.dataGrid.instance.refresh();
   }
   getSelectBoxOptions() {
-    return  {
+    return {
       width: 200,
       items: [{
         value: 'CustomerStoreState',
@@ -60,20 +60,20 @@ class App extends React.Component {
       valueExpr: 'value',
       value: 'CustomerStoreState',
       onValueChanged: this.groupChanged.bind(this)
-    }
+    };
   }
   getCollapseButtonOptions() {
     return {
       width: 136,
       text: 'Collapse All',
       onClick: this.collapseAllClick.bind(this)
-    }
+    };
   }
   getRefreshButtonOptions() {
     return {
       icon: 'refresh',
       onClick: this.refreshDataGrid.bind(this)
-    }
+    };
   }
   render() {
     return (
@@ -93,18 +93,18 @@ class App extends React.Component {
         <Column dataField="CustomerStoreState" caption="State" groupIndex={0} />
         <Column dataField="SaleAmount" alignment="right" format="currency" />
         <Toolbar>
-          <Item template="totalGroupCount" location="before"/>
-          <Item 
+          <Item template="totalGroupCount" location="before" />
+          <Item
             location="before"
             widget="dxSelectBox"
             options={this.getSelectBoxOptions()}
           />
-          <Item 
+          <Item
             location="before"
             widget="dxButton"
             options={this.getCollapseButtonOptions()}
           />
-          <Item 
+          <Item
             location="after"
             widget="dxButton"
             options={this.getRefreshButtonOptions()}
