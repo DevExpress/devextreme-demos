@@ -104,8 +104,8 @@ export default {
           targetIndex = employees.indexOf(targetData);
 
         if (e.component.isRowExpanded(targetData.ID)) {
-            sourceData.Head_ID = targetData.ID;
-            targetIndex = 0;
+          sourceData.Head_ID = targetData.ID;
+          targetIndex = 0;
         }
         else if (sourceData.Head_ID !== targetData.Head_ID) {
           sourceData.Head_ID = targetData.Head_ID;
