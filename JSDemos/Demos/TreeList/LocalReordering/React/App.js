@@ -107,7 +107,11 @@ class App extends React.Component {
       sourceData = { ...sourceData, Head_ID: targetData.ID };
       employees = [...employees.slice(0, sourceIndex), sourceData, ...employees.slice(sourceIndex + 1)];
     } else {
-      if (sourceData.Head_ID !== targetData.Head_ID) {
+      if (e.component.isRowExpanded(targetData.ID)) {
+        sourceData = { ...sourceData, Head_ID: targetData.ID };
+        targetIndex = 0;
+      }
+      else if (sourceData.Head_ID !== targetData.Head_ID) {
         sourceData = { ...sourceData, Head_ID: targetData.Head_ID };
         if (e.toIndex > e.fromIndex) {
           targetIndex++;

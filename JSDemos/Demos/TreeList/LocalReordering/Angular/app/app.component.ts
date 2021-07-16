@@ -55,7 +55,11 @@ export class AppComponent {
             let sourceIndex = this.employees.indexOf(sourceData),
                 targetIndex = this.employees.indexOf(targetData);
 
-            if (sourceData.Head_ID !== targetData.Head_ID) {
+            if (e.component.isRowExpanded(targetData.ID)) {
+                sourceData.Head_ID = targetData.ID;
+                targetIndex = 0;
+            }
+            else if (sourceData.Head_ID !== targetData.Head_ID) {
                 sourceData.Head_ID = targetData.Head_ID;
                 if (e.toIndex > e.fromIndex) {
                     targetIndex++;
