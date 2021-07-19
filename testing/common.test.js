@@ -44,7 +44,7 @@ fixture`Getting Started`
   .clientScripts([{ module: 'mockdate' }, './helpers/test-utils.js']);
 
 const getDemoPaths = (platform) => glob.sync('JSDemos/Demos/*/*')
-  .map((path) => path.join(path, platform));
+  .map((path) => join(path, platform));
 
 ['jQuery', 'React', 'Vue', 'Angular'].forEach((approach) => {
   const demoPaths = getDemoPaths(approach);
