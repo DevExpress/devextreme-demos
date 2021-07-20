@@ -1,71 +1,71 @@
 ﻿<div id="treeListDemo">
     @(Html.DevExtreme().TreeList()
-        .ID("treeList")
-        .DataSource(new JS("employees"))
-        .KeyExpr("ID")
-        .ParentIdExpr("Head_ID")
-        .ExpandedRowKeys(new[] { 1 })
-        .ShowRowLines(true)
-        .ShowBorders(true)
-        .ColumnAutoWidth(true)
-        .RowDragging(rd => rd
-            .AllowDropInsideItem(true)
-            .AllowReordering(true)
-            .OnDragChange("onDragChange")
-            .OnReorder("onReorder")
-            .ShowDragIcons(true)
-        )
-        .Columns(columns => {
-            columns.Add().DataField("Title")
-                .Caption("Position");
+    .ID("treeList")
+    .DataSource(new JS("employees"))
+    .KeyExpr("ID")
+    .ParentIdExpr("Head_ID")
+    .ExpandedRowKeys(new[] { 1 })
+    .ShowRowLines(true)
+    .ShowBorders(true)
+    .ColumnAutoWidth(true)
+    .RowDragging(rd => rd
+    .AllowDropInsideItem(true)
+    .AllowReordering(true)
+    .OnDragChange("onDragChange")
+    .OnReorder("onReorder")
+    .ShowDragIcons(true)
+    )
+    .Columns(columns => {
+    columns.Add().DataField("Title")
+    .Caption("Position");
 
-            columns.Add().DataField("Full_Name");
+    columns.Add().DataField("Full_Name");
 
-            columns.Add().DataField("City");
+    columns.Add().DataField("City");
 
-            columns.Add().DataField("State");
+    columns.Add().DataField("State");
 
-            columns.Add().DataField("Mobile_Phone");
+    columns.Add().DataField("Mobile_Phone");
 
-            columns.Add().DataField("Hire_Date")
-                .DataType(GridColumnDataType.Date);
-        })
+    columns.Add().DataField("Hire_Date")
+    .DataType(GridColumnDataType.Date);
+    })
     )
 
     <div class="options">
         <div class="caption">Options</div>
         <div class="option">
             @(Html.DevExtreme().CheckBox()
-                .ID("allowDropInside")
-                .Text("Allow Drop Inside Item")
-                .Value(true)
-                .OnValueChanged(@<text>
+            .ID("allowDropInside")
+            .Text("Allow Drop Inside Item")
+            .Value(true)
+            .OnValueChanged(@<text>
                     function(e) {
-                        getTreeList().option("rowDragging.allowDropInsideItem", e.value);
+                    getTreeList().option("rowDragging.allowDropInsideItem", e.value);
                     }
                 </text>)
             )
         </div>
         <div class="option">
             @(Html.DevExtreme().CheckBox()
-                .ID("allowReordering")
-                .Text("Allow Reordering")
-                .Value(true)
-                .OnValueChanged(@<text>
+            .ID("allowReordering")
+            .Text("Allow Reordering")
+            .Value(true)
+            .OnValueChanged(@<text>
                     function(e) {
-                        getTreeList().option("rowDragging.allowReordering", e.value);
+                    getTreeList().option("rowDragging.allowReordering", e.value);
                     }
                 </text>)
             )
         </div>
         <div class="option">
             @(Html.DevExtreme().CheckBox()
-                .ID("showDragIcons")
-                .Text("Show Drag Icons")
-                .Value(true)
-                .OnValueChanged(@<text>
+            .ID("showDragIcons")
+            .Text("Show Drag Icons")
+            .Value(true)
+            .OnValueChanged(@<text>
                     function(e) {
-                        getTreeList().option("rowDragging.showDragIcons", e.value);
+                    getTreeList().option("rowDragging.showDragIcons", e.value);
                     }
                 </text>)
             )
@@ -80,8 +80,8 @@
             sourceNode = treeList.getNodeByKey(e.itemData.ID),
             targetNode = visibleRows[e.toIndex].node;
 
-        while(targetNode && targetNode.data) {
-            if(targetNode.data.ID === sourceNode.data.ID) {
+        while (targetNode && targetNode.data) {
+            if (targetNode.data.ID === sourceNode.data.ID) {
                 e.cancel = true;
                 break;
             }
@@ -90,20 +90,26 @@
     }
 
     function onReorder(e) {
-        var visibleRows = e.component.getVisibleRows(),
-            sourceData = e.itemData,
-            toIndex = e.toIndex > e.fromIndex ? e.toIndex + 1 : e.toIndex,
-            targetData = visibleRows[toIndex].node.data;
+        var visibleRows = e.component.getVisibleRows();
 
         if (e.dropInsideItem) {
-            e.itemData.Head_ID = targetData.ID;
+            e.itemData.Head_ID = visibleRows[e.toIndex].key;
         } else {
-            sourceData.Head_ID = targetData.Head_ID;
+            var sourceData = e.itemData,
+                toIndex = e.fromIndex > e.toIndex ? e.toIndex - 1 : e.toIndex,
+                targetData = toIndex >= 0 ? visibleRows[toIndex].node.data : null;
+
+            if (targetData && e.component.isRowExpanded(targetData.ID)) {
+                sourceData.Head_ID = targetData.ID;
+                targetData = null;
+            } else {
+                sourceData.Head_ID = targetData ? targetData.Head_ID : e.component.option('rootValue');
+            }
 
             var sourceIndex = employees.indexOf(sourceData);
             employees.splice(sourceIndex, 1);
-            
-            var targetIndex = employees.indexOf(targetData)
+
+            var targetIndex = employees.indexOf(targetData) + 1;
             employees.splice(targetIndex, 0, sourceData);
         }
 
