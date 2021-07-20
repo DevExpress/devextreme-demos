@@ -98,26 +98,22 @@ class App extends React.Component {
   onReorder(e) {
     let visibleRows = e.component.getVisibleRows(),
       sourceData = e.itemData,
-      targetData = visibleRows[e.toIndex].node.data,
+      toIndex = e.toIndex > e.fromIndex ? e.toIndex + 1 : e.toIndex,
+      targetData = visibleRows[toIndex].node.data,
       employees = this.state.employees,
-      sourceIndex = employees.indexOf(sourceData),
-      targetIndex = employees.indexOf(targetData);
+      sourceIndex = employees.indexOf(sourceData);
 
     if (e.dropInsideItem) {
       sourceData = { ...sourceData, Head_ID: targetData.ID };
       employees = [...employees.slice(0, sourceIndex), sourceData, ...employees.slice(sourceIndex + 1)];
     } else {
-      if (e.component.isRowExpanded(targetData.ID)) {
-        sourceData = { ...sourceData, Head_ID: targetData.ID };
-        targetIndex = 0;
-      }
-      else if (sourceData.Head_ID !== targetData.Head_ID) {
+      if (sourceData.Head_ID !== targetData.Head_ID) {
         sourceData = { ...sourceData, Head_ID: targetData.Head_ID };
-        if (e.toIndex > e.fromIndex) {
-          targetIndex++;
-        }
       }
+
       employees = [...employees.slice(0, sourceIndex), ...employees.slice(sourceIndex + 1)];
+
+      targetIndex = employees.indexOf(targetData);
       employees = [...employees.slice(0, targetIndex), sourceData, ...employees.slice(targetIndex)];
     }
 
