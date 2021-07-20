@@ -1,0 +1,107 @@
+@model IEnumerable<DevExtreme.NETCore.Demos.Models.Appointment>
+
+@(Html.DevExtreme().ScrollView()
+    .ID("scroll")
+    .Content(
+        Html.DevExtreme().Draggable()
+            .ID("list")
+            .Group("appointmentsGroup")
+            .OnDragStart(
+                @<text>
+                function(e) {
+                    e.cancel = true;
+                }
+                </text>
+            )
+            .OnInitialized(
+                @<text>
+                    addTasks
+                </text>
+            )
+            .ToString()
+    )
+)
+
+@(Html.DevExtreme().Scheduler()
+    .ID("scheduler")
+    .DataSource(Model)
+    .TimeZone("America/Los_Angeles")
+    .TextExpr("Text")
+    .StartDateExpr("StartDate")
+    .EndDateExpr("EndDate")
+    .Views(views =>
+        views.Add()
+            .Type(SchedulerViewType.Day)
+            .IntervalCount(3)
+    )
+    .CurrentDate(new DateTime(2021, 4, 26))
+    .StartDayHour(9)
+    .Height(600)
+    .AppointmentDragging(dragging => {
+        dragging.Group("appointmentsGroup");
+        dragging.OnRemove(@<text>
+           function(e) {
+                e.component.deleteAppointment(e.itemData);
+                createItemElement(e.itemData);
+            }
+        </text>);
+        dragging.OnAdd(@<text>
+           function(e) {
+                e.component.addAppointment(e.itemData);
+                e.itemElement.remove();
+            }
+        </text>);
+    })
+)
+
+<script>
+    var createItemElement = function(data) {
+        $("<div>")
+            .text(data.Text)
+            .addClass("item dx-card dx-theme-background-color dx-theme-text-color")
+            .appendTo("#list")
+            .dxDraggable({
+                group: "appointmentsGroup",
+                data: data,
+                clone: true,
+                onDragEnd: function(e) {
+                    if (e.toData) {
+                        e.cancel = true;
+                    }
+                },
+                onDragStart: function(e) {
+                    e.itemData = e.fromData;
+                }
+            })
+    }
+
+    var addTasks = function() {
+        tasks.forEach(function (task) {
+            createItemElement(task);
+        })
+    }
+
+    var tasks = [
+        {
+            Text: "New Brochures"
+        }, {
+            Text: "Brochure Design Review"
+        }, {
+            Text: "Upgrade Personal Computers"
+        }, {
+            Text: "Install New Router in Dev Room"
+        }, {
+            Text: "Upgrade Server Hardware"
+        }, {
+            Text: "Install New Database"
+        }, {
+            Text: "Website Re-Design Plan"
+        }, {
+            Text: "Create Icons for Website"
+        }, {
+            Text: "Submit New Website Design"
+        }, {
+            Text: "Launch New Website"
+        },
+    ];
+</script>
