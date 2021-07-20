@@ -22,26 +22,18 @@ $(function() {
             onReorder: function(e) {
                 var visibleRows = e.component.getVisibleRows(),
                     sourceData = e.itemData,
-                    targetData = visibleRows[e.toIndex].node.data;
+                    toIndex = e.toIndex > e.fromIndex ? e.toIndex + 1 : e.toIndex,
+                    targetData = visibleRows[toIndex].node.data;
 
                 if (e.dropInsideItem) {
                     e.itemData.Head_ID = targetData.ID;
                 } else {
-                    var sourceIndex = employees.indexOf(sourceData),
-                        targetIndex = employees.indexOf(targetData);
+                    sourceData.Head_ID = targetData.Head_ID;
 
-                    if (e.component.isRowExpanded(targetData.ID)) {
-                        sourceData.Head_ID = targetData.ID;
-                        targetIndex = 0;
-                    }
-                    else if (sourceData.Head_ID !== targetData.Head_ID) {
-                        sourceData.Head_ID = targetData.Head_ID;
-                        if (e.toIndex > e.fromIndex) {
-                            targetIndex++;
-                        }
-                    }
-
+                    var sourceIndex = employees.indexOf(sourceData);
                     employees.splice(sourceIndex, 1);
+                    
+                    var targetIndex = employees.indexOf(targetData)
                     employees.splice(targetIndex, 0, sourceData);
                 }
 
