@@ -112,11 +112,10 @@ class App extends React.Component {
         sourceData = { ...sourceData, Head_ID: targetData.ID };
         targetData = null;
       } else {
-        const headId = targetData ? targetData.Head_ID : -1;  
+        const headId = targetData ? targetData.Head_ID : -1;
         if(sourceData.Head_ID !== headId) {
           sourceData = { ...sourceData, Head_ID: headId };
-
-        } 
+        }
       }
 
       employees = [...employees.slice(0, sourceIndex), ...employees.slice(sourceIndex + 1)];
