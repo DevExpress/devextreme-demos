@@ -62,10 +62,10 @@ export class AppComponent {
                 sourceData.Head_ID = targetData ? targetData.Head_ID : -1;
             }
 
-            var sourceIndex = this.employees.indexOf(sourceData);
+            const sourceIndex = this.employees.indexOf(sourceData);
             this.employees.splice(sourceIndex, 1);
 
-            var targetIndex = this.employees.indexOf(targetData) + 1;
+            const targetIndex = this.employees.indexOf(targetData) + 1;
             this.employees.splice(targetIndex, 0, sourceData);
         }
     }
