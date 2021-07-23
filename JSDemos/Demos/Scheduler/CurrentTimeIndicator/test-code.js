@@ -11,5 +11,6 @@ testUtils.importAnd(() => 'devextreme/ui/scheduler', () => DevExpress.ui.dxSched
     })
     .then(testUtils.postpone(2000).then(() => {
         dxScheduler.getInstance(document.querySelector('.dx-scheduler')).scrollTo(indicatorTime);
-    }));
+    }))
+    .then(testUtils.postpone(2000));
 });
