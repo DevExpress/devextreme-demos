@@ -41,3 +41,14 @@ describe('All demos has corresponding folders', () => {
         });
     });
 });
+
+describe('All folders has corresponding demos', () => {
+    for(const widgetFolder in folders) {
+        for(const demoFolder in folders[widgetFolder]) {
+            test(`Folder: ${widgetFolder}/${demoFolder} has demo`, () => {
+                const demosWithFolder = demos.filter(d => d.Widget === widgetFolder && d.Name === demoFolder);
+                expect(demosWithFolder).toHaveLength(1);
+            });
+        }
+    }
+});
