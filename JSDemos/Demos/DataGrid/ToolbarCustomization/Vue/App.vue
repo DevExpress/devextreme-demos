@@ -30,30 +30,35 @@
       format="currency"
     />
     <DxToolbar>
-      <DxItem
-        template="totalGroupCount"
-        location="before"
-      >
+      <DxItem location="before">
         <div class="informer">
           <h2 class="count">{{ totalCount }}</h2>
           <span class="name">Total Count</span>
         </div>
       </DxItem>
-      <DxItem
-        location="before"
-        widget="dxSelectBox"
-        :options="selectBoxOptions"
-      />
-      <DxItem
-        location="before"
-        widget="dxButton"
-        :options="collapseButtonOptions"
-      />
-      <DxItem
-        location="after"
-        widget="dxButton"
-        :options="refreshButtonOptions"
-      />
+      <DxItem location="before">
+        <DxSelectBox
+          width="200"
+          :items="groupingValues"
+          display-expr="text"
+          value-expr="value"
+          value="CustomerStoreState"
+          @value-changed="groupChanged"
+        />
+      </DxItem>
+      <DxItem location="before">
+        <DxButton
+          text="Collapse All"
+          width="136"
+          @click="collapseAllClick"
+        />
+      </DxItem>
+      <DxItem location="after">
+        <DxButton
+          icon="refresh"
+          @click="refreshDataGrid"
+        />
+      </DxItem>
       <DxItem
         name="columnChooserButton"
       />
@@ -62,12 +67,14 @@
 </template>
 <script>
 import { DxDataGrid, DxColumn, DxGrouping, DxColumnChooser, DxLoadPanel, DxToolbar, DxItem } from 'devextreme-vue/data-grid';
+import { DxSelectBox } from 'devextreme-vue/select-box';
+import { DxButton } from 'devextreme-vue/button';
 import query from 'devextreme/data/query';
 import service from './data.js';
 
 export default {
   components: {
-    DxDataGrid, DxColumn, DxGrouping, DxColumnChooser, DxLoadPanel, DxToolbar, DxItem
+    DxDataGrid, DxColumn, DxGrouping, DxColumnChooser, DxLoadPanel, DxToolbar, DxItem, DxSelectBox, DxButton
   },
   data() {
     return {
@@ -75,29 +82,13 @@ export default {
       gridRefName: 'dataGrid',
       expanded: true,
       totalCount: 0,
-      selectBoxOptions: {
-        width: 200,
-        items: [{
-          value: 'CustomerStoreState',
-          text: 'Grouping by State'
-        }, {
-          value: 'Employee',
-          text: 'Grouping by Employee'
-        }],
-        displayExpr: 'text',
-        valueExpr: 'value',
+      groupingValues: [{
         value: 'CustomerStoreState',
-        onValueChanged: this.groupChanged.bind(this)
-      },
-      collapseButtonOptions: {
-        width: 136,
-        text: 'Collapse All',
-        onClick: this.collapseAllClick.bind(this)
-      },
-      refreshButtonOptions: {
-        icon: 'refresh',
-        onClick: this.refreshDataGrid.bind(this)
-      }
+        text: 'Grouping by State'
+      }, {
+        value: 'Employee',
+        text: 'Grouping by Employee'
+      }],
     };
   },
   created() {

@@ -1,6 +1,7 @@
 ﻿import React from 'react';
+import Button from 'devextreme-react/button';
+import SelectBox from 'devextreme-react/select-box';
 import DataGrid, { Grouping, Column, ColumnChooser, LoadPanel, Toolbar, Item } from 'devextreme-react/data-grid';
-import { Template } from 'devextreme-react/core/template';
 
 import query from 'devextreme/data/query';
 import service from './data.js';
@@ -11,29 +12,34 @@ class App extends React.Component {
     this.orders = service.getOrders();
     this.state = {
       expanded: true,
-      totalCount: this.getGroupCount('CustomerStoreState')
+      totalCount: this.getGroupCount('CustomerStoreState'),
+      grouping: 'CustomerStoreState'
     };
-    this.toolbarItemRender = this.toolbarItemRender.bind(this);
+    this.groupingValues = [{
+      value: 'CustomerStoreState',
+      text: 'Grouping by State'
+    }, {
+      value: 'Employee',
+      text: 'Grouping by Employee'
+    }];
     this.dataGrid = null;
+
+    this.groupChanged = this.groupChanged.bind(this);
+    this.collapseAllClick = this.collapseAllClick.bind(this);
+    this.refreshDataGrid = this.refreshDataGrid.bind(this);
   }
   getGroupCount(groupField) {
     return query(this.orders)
       .groupBy(groupField)
       .toArray().length;
   }
-  toolbarItemRender() {
-    return (
-      <div className="informer">
-        <h2 className="count">{this.state.totalCount}</h2>
-        <span className="name">Total Count</span>
-      </div>
-    );
-  }
   groupChanged(e) {
+    const grouping = e.value;
     this.dataGrid.instance.clearGrouping();
-    this.dataGrid.instance.columnOption(e.value, 'groupIndex', 0);
+    this.dataGrid.instance.columnOption(grouping, 'groupIndex', 0);
     this.setState({
-      totalCount: this.getGroupCount(e.value)
+      totalCount: this.getGroupCount(grouping),
+      grouping
     });
   }
   collapseAllClick(e) {
@@ -45,35 +51,6 @@ class App extends React.Component {
   }
   refreshDataGrid() {
     this.dataGrid.instance.refresh();
-  }
-  getSelectBoxOptions() {
-    return {
-      width: 200,
-      items: [{
-        value: 'CustomerStoreState',
-        text: 'Grouping by State'
-      }, {
-        value: 'Employee',
-        text: 'Grouping by Employee'
-      }],
-      displayExpr: 'text',
-      valueExpr: 'value',
-      value: 'CustomerStoreState',
-      onValueChanged: this.groupChanged.bind(this)
-    };
-  }
-  getCollapseButtonOptions() {
-    return {
-      width: 136,
-      text: 'Collapse All',
-      onClick: this.collapseAllClick.bind(this)
-    };
-  }
-  getRefreshButtonOptions() {
-    return {
-      icon: 'refresh',
-      onClick: this.refreshDataGrid.bind(this)
-    };
   }
   render() {
     return (
@@ -93,27 +70,36 @@ class App extends React.Component {
         <Column dataField="CustomerStoreState" caption="State" groupIndex={0} />
         <Column dataField="SaleAmount" alignment="right" format="currency" />
         <Toolbar>
-          <Item template="totalGroupCount" location="before" />
-          <Item
-            location="before"
-            widget="dxSelectBox"
-            options={this.getSelectBoxOptions()}
-          />
-          <Item
-            location="before"
-            widget="dxButton"
-            options={this.getCollapseButtonOptions()}
-          />
-          <Item
-            location="after"
-            widget="dxButton"
-            options={this.getRefreshButtonOptions()}
-          />
+          <Item location="before">
+            <div className="informer">
+              <h2 className="count">{this.state.totalCount}</h2>
+              <span className="name">Total Count</span>
+            </div>
+          </Item>
+          <Item location="before">
+            <SelectBox
+              width="200"
+              items={this.groupingValues}
+              displayExpr="text"
+              valueExpr="value"
+              value={this.state.grouping}
+              onValueChanged={this.groupChanged} />
+          </Item>
+          <Item location="before">
+            <Button
+              text='Collapse All'
+              width='136'
+              onClick={this.collapseAllClick} />
+          </Item>
+          <Item location="after">
+            <Button
+              icon='refresh'
+              onClick={this.refreshDataGrid} />
+          </Item>
           <Item
             name="columnChooserButton"
           />
         </Toolbar>
-        <Template name="totalGroupCount" render={this.toolbarItemRender} />
       </DataGrid>
     );
   }

@@ -15,26 +15,34 @@
     <dxi-column dataField="SaleAmount" alignment="right" format="currency"></dxi-column>
 
     <dxo-toolbar>
-        <dxi-item location="before"
-                 [options]="selectBoxOptions">
-            <div *dxTemplate>
-                <div class="informer">
-                    <h2 class="count">{{totalCount}}</h2>
-                    <span class="name">Total Count</span>
-                </div>
+        <dxi-item location="before">
+            <div class="informer">
+                <h2 class="count">{{totalCount}}</h2>
+                <span class="name">Total Count</span>
             </div>
         </dxi-item>
-        <dxi-item location="before"
-                  widget="dxSelectBox"
-                  [options]="selectBoxOptions">
+        <dxi-item location="before">
+            <dx-select-box
+                width="200"
+                [items]="groupingValues"
+                displayExpr="text"
+                valueExpr="value"
+                value="CustomerStoreState"
+                (onValueChanged)="groupChanged($event)">
+            </dx-select-box>
         </dxi-item>
-        <dxi-item location="before"
-                  widget="dxButton"
-                  [options]="collapseButtonOptions">
+        <dxi-item location="before">
+            <dx-button
+                text="Collapse All"
+                width="136"
+                (onClick)="collapseAllClick($event)">
+            </dx-button>
         </dxi-item>
-        <dxi-item location="after"
-                  widget="dxButton"
-                  [options]="refreshButtonOptions">
+        <dxi-item location="after">
+            <dx-button
+                icon="refresh"
+                (onClick)="refreshDataGrid($event)">
+            </dx-button>
         </dxi-item>
         <dxi-item name="columnChooserButton"></dxi-item>
     </dxo-toolbar>
