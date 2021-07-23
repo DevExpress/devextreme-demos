@@ -94,6 +94,10 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View(SampleData.AppointmentsWorkHours);
         }
 
+        public ActionResult CustomDragAndDrop() {
+            return View(SampleData.DragAndDropAppointments);
+        }
+
         public ActionResult CustomizeIndividualViews() {
             return View(SampleData.Jobs);
         }
