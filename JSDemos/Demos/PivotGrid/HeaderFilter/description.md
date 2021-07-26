@@ -3,7 +3,7 @@ A [header filter](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configur
 Use the following properties to configure the header filter:
 
 - [allowFiltering](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#allowFiltering)        
-Allows users to toggle the checkbox in the popup window to filter fields. Set this property to **true** to display the filter icon in the header filter.
+Allows users to toggle the checkbox in the popup window to filter fields. Set this property to **true** to display filter icons.
 
 - [allowSearch](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/headerFilter/#allowSearch)     
 Allows users to search through field values.
