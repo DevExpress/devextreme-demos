@@ -9,8 +9,8 @@ testUtils.importAnd(() => 'devextreme/ui/scheduler', () => DevExpress.ui.dxSched
         var instance = dxScheduler.getInstance(document.querySelector('.dx-scheduler'));
         instance.option('indicatorTime', indicatorTime);
     })
-    .then(testUtils.postpone(1000).then(() => {
+    .then(testUtils.postpone(3000).then(() => {
         dxScheduler.getInstance(document.querySelector('.dx-scheduler')).scrollTo(indicatorTime);
     }))
-    .then(testUtils.postpone(1000));
+    .then(testUtils.postpone(3000));
 });
