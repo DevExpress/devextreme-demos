@@ -1,5 +1,5 @@
 $(function(){
-    $("#gridContainer").dxDataGrid({
+    var dataGrid = $("#gridContainer").dxDataGrid({
         dataSource: orders,
         keyExpr: 'ID',
         showBorders: true,
@@ -24,21 +24,18 @@ $(function(){
             alignment: "right",
             format: "currency"
         }],
-        onInitialized: function(e) {
-            this.dataGrid = e.component;
-        },
         toolbar: {
             items: [
                 {
                     location: "before",
                     template: function(){
-                        return $("<div/>")
+                        return $("<div>")
                             .addClass("informer")
                             .append(
-                            $("<h2 />")
+                            $("<h2>")
                                 .addClass("count")
                                 .text(getGroupCount("CustomerStoreState")),
-                            $("<span />")
+                            $("<span>")
                                 .addClass("name")
                                 .text("Total Count")
                             );
@@ -89,7 +86,7 @@ $(function(){
                 "columnChooserButton"
             ]
         }
-    });
+    }).dxDataGrid("instance");
     
     function getGroupCount(groupField) {
         return DevExpress.data.query(orders)
