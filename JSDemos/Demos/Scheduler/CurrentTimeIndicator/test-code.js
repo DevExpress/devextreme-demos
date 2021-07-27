@@ -5,7 +5,7 @@ testUtils.importAnd(() => 'devextreme/ui/scheduler', () => DevExpress.ui.dxSched
     const indicatorTime = new Date(today.setDate(today.getDate() - today.getDay() + 3));
 
     return testUtils.postponeUntilFound('.dx-scheduler')
-    .then(x => {
+    .then(() => {
         var instance = dxScheduler.getInstance(document.querySelector('.dx-scheduler'));
         instance.option('indicatorTime', indicatorTime);
     })
