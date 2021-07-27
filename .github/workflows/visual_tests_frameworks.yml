@@ -87,6 +87,7 @@ jobs:
         path: |
           node_modules.7z
           bundles/
+          package-lock.json
         retention-days: 1
 
     #Teardown
