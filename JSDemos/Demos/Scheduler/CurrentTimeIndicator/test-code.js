@@ -4,10 +4,13 @@ testUtils.importAnd(() => 'devextreme/ui/scheduler', () => DevExpress.ui.dxSched
 
     const indicatorTime = new Date(today.setDate(today.getDate() - today.getDay() + 3));
 
-    return testUtils.postponeUntilFound('.dx-scheduler').then(x => {
+    return testUtils.postponeUntilFound('.dx-scheduler')
+    .then(x => {
         var instance = dxScheduler.getInstance(document.querySelector('.dx-scheduler'));
         instance.option('indicatorTime', indicatorTime);
-    }).then(testUtils.postpone(2000)).then(()=>{
+    })
+    .then(testUtils.postpone(3000).then(() => {
         dxScheduler.getInstance(document.querySelector('.dx-scheduler')).scrollTo(indicatorTime);
-    }).then(testUtils.postpone(2000));
+    }))
+    .then(testUtils.postpone(3000));
 });
