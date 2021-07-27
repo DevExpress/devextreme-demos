@@ -1,8 +1,5 @@
 {
-    "react": {
-        "ignore": false
-    },
     "vue": {
-        "ignore": false
+        "ignore": true
     }
 }
