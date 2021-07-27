@@ -1,9 +1,6 @@
-A [header filter](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/headerFilter/) allows a user to filter field values by including or excluding them from the applied filter. Click a header filter icon in the field chooser or on the field panel to open a popup menu that displays all unique field values.
+A header filter allows a user to filter field values by including or excluding them from the applied filter. Click a header filter icon in the field chooser or on the field panel to open a popup menu that displays all unique field values. To display header filter icons, enable the [allowFiltering](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#allowFiltering) property.
 
-Use the following properties to configure the header filter:
-
-- [allowFiltering](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#allowFiltering)        
-Allows users to toggle the checkbox in the popup window to filter fields. Set this property to **true** to display filter icons.
+To configure a header filter, use the global [headerFilter](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/headerFilter/) object or a field's [headerFilter](/Documentation/ApiReference/Data_Layer/PivotGridDataSource/Configuration/fields/headerFilter/) object. This demo specifies the following properties in the global **headerFilter** object:
 
 - [allowSearch](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/headerFilter/#allowSearch)     
 Allows users to search through field values.
