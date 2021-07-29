@@ -19,9 +19,11 @@ if(!/localhost/.test(document.location.host)) {
 
 export class AppComponent {
     products: Product[];
+    slicedProducts: Product[];
 
     constructor(service: Service) {
-        this.products = service.getProducts().slice(0, 5);
+        this.products = service.getProducts();
+        this.slicedProducts = service.getProducts().slice(0, 5);
     }
 
     onMultiTagPreparing(args){
