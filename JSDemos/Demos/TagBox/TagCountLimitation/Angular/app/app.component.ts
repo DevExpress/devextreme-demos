@@ -21,7 +21,7 @@ export class AppComponent {
     products: Product[];
 
     constructor(service: Service) {
-        this.products = service.getProducts();
+        this.products = service.getProducts().slice(0, 5);
     }
 
     onMultiTagPreparing(args){
