@@ -16,5 +16,5 @@ testUtils.importAnd(() => 'devextreme/viz/polar_chart', () => DevExpress.viz.dxP
             instance.option("valueAxis.visualRange", [0, 8]);
             instance.option = function () { };
         })
-        .then(testUtils.postpone(2000));
+        .then(() => testUtils.postpone(2000));
 });

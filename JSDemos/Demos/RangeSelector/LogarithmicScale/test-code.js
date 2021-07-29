@@ -10,5 +10,5 @@ testUtils.importAnd(() => ['devextreme/viz/chart', 'devextreme/viz/range_selecto
         rangeSelector.option("dataSource", ds);
         chart.option = function(){};
         rangeSelector.option = function(){};
-    }).then(testUtils.postpone(2000));
+    }).then(() => testUtils.postpone(2000));
 });

@@ -89,5 +89,5 @@ testUtils.importAnd(() => 'devextreme/viz/chart', () => DevExpress.viz.dxChart, 
         instance.option("dataSource", dataSource);
         instance.option = function() { };
     })
-    .then(testUtils.postpone(2000));
+    .then(() => testUtils.postpone(2000));
 });
