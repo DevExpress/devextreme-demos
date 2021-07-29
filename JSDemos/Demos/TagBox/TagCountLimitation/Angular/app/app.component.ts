@@ -23,7 +23,7 @@ export class AppComponent {
 
     constructor(service: Service) {
         this.products = service.getProducts();
-        this.slicedProducts = service.getProducts().slice(0, 5);
+        this.slicedProducts = this.products.slice(0, 5);
     }
 
     onMultiTagPreparing(args){
