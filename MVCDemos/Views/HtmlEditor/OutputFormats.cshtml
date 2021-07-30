@@ -7,17 +7,7 @@
 @(Html.DevExtreme().HtmlEditor()
     .ID("html_editor")
     .Height(300)
-    .Content(@<text>
-        <h2>
-            <img src="../../Content/images/widgets/HtmlEditor.svg" alt="HtmlEditor" />
-            Formatted Text Editor (HTML Editor)
-        </h2>
-        <br>
-        <p>
-            DevExtreme JavaScript HTML Editor is a client-side WYSIWYG text editor that allows its users to format
-            textual and visual content and store it as HTML or Markdown.
-        </p>
-    </text>)
+    .Value(new JS("markup"))
     .OnValueChanged("valueChanged")
     .Toolbar(toolbar => toolbar.Items(
         items => {
@@ -86,4 +76,18 @@
         editorInstance.option("valueType", e.addedItems[0].text.toLowerCase());
         $(".value-content").text(editorInstance.option("value"));
     }
+
+    var markup = `
+        <h2>
+            <img src="../../Content/images/widgets/HtmlEditor.svg" alt="HtmlEditor" />
+            Formatted Text Editor (HTML Editor)
+        </h2>
+        <br>
+        <p>
+            DevExtreme JavaScript HTML Editor is a client-side WYSIWYG text editor that allows its users to format
+            textual and visual content and store it as HTML or Markdown.
+        </p>
+    `;
+
+    $(".value-content").text(markup);
 </script>
