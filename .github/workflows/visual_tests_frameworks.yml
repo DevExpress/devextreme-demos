@@ -44,7 +44,7 @@ jobs:
     - name: DevExtreme - Build
       run: |
         cd ../devextreme-repo
-        npm run build
+        npm run build-npm-devextreme
 
     - name: DevExtreme - Pack
       run: |
