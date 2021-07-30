@@ -1,4 +1,7 @@
 {
+    "angular": {
+        "ignore": true
+    },
     "react": {
         "ignore": true
     },
