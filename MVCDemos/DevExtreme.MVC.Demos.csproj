@@ -526,6 +526,7 @@
     <Compile Include="Models\SampleData\ContinentsPopulation.cs" />
     <Compile Include="Models\SampleData\CountriesPopulationAndGDP.cs" />
     <Compile Include="Models\SampleData\AppointmentsWorkHours.cs" />
+    <Compile Include="Models\SampleData\DragAndDropAppointments.cs" />
     <Compile Include="Models\SampleData\IntradayData.cs" />
     <Compile Include="Models\SampleData\EuropeanCountries.cs" />
     <Compile Include="Models\SampleData\MonthlyPrices.cs" />
@@ -1828,6 +1829,7 @@
     <Content Include="Views\Scheduler\TimeZonesSupport.cshtml" />
     <Content Include="Views\Scheduler\CellTemplates.cshtml" />
     <Content Include="Views\Scheduler\CustomizeIndividualViews.cshtml" />
+    <Content Include="Views\Scheduler\CustomDragAndDrop.cshtml" />
     <Content Include="Views\RangeSelector\NumericScaleLightweight.cshtml" />
     <Content Include="Views\RangeSelector\NumericScale.cshtml" />
     <Content Include="Views\RangeSelector\DateTimeScaleLightweight.cshtml" />
