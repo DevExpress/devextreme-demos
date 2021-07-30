@@ -18,6 +18,7 @@ const bundleConfig = {
             'devextreme/viz/*',
             'devextreme/viz/vector_map/*',
             'devextreme-vue/*',
+            'devextreme-quill',
             'devexpress-gantt',
             'devexpress-diagram',
         ]
@@ -33,6 +34,7 @@ if(window.config) {
     [
         'devextreme',
         'devextreme-vue',
+        'devextreme-quill',
         'devexpress-gantt',
         'devexpress-diagram',
     ].forEach(pkg => delete window.config.map[pkg]);
