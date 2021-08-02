@@ -99,6 +99,15 @@ const defaultBuilderConfig = {
         'devextreme/*': {
             build: true
         },
+        'devextreme-quill': {
+            build: true
+        },
+        'devexpress-gantt': {
+            build: true
+        },
+        'devexpress-diagram': {
+            build: true
+        },
         [`devextreme-${framework}/*`]: {
             build: true,
             main: 'index.js'
@@ -106,6 +115,9 @@ const defaultBuilderConfig = {
     },
     paths: {
         'devextreme/*': 'node_modules/devextreme/cjs/*',
+        'devextreme-quill': 'node_modules/devextreme-quill/dist/dx-quill.min.js',
+        'devexpress-gantt': 'node_modules/devexpress-gantt/dist/dx-gantt.min.js',
+        'devexpress-diagram': 'node_modules/devexpress-diagram/dist/dx-diagram.min.js',
         [`devextreme-${framework}/*`]: `node_modules/devextreme-${framework}/*`,
         ...additionPaths
     }
