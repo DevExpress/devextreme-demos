@@ -2,27 +2,27 @@ import { Injectable } from '@angular/core';
 
 export class Task {
     subject: string;
-    priority: string
+    priority: number;
 }
 
 let tasks: Task[] = [{
     subject: "Choose between PPO and HMO Health Plan",
-    priority: "High"
+    priority: 3
 }, {
     subject: "Non-Compete Agreements",
-    priority: "Low"
+    priority: 0
 }, {
     subject: "Comment on Revenue Projections",
-    priority: "Normal"
+    priority: 1
 }, {
     subject: "Sign Updated NDA",
-    priority: "Urgent"
+    priority: 2
 }, {
     subject: "Submit Questions Regarding New NDA",
-    priority: "High"
+    priority: 3
 }, {
     subject: "Rollout of New Website and Marketing Brochures",
-    priority: "High"
+    priority: 3
 }];
 
 @Injectable()
