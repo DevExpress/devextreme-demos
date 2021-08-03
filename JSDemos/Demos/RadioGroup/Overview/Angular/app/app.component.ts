@@ -20,7 +20,8 @@ export class AppComponent {
     @ViewChild("eventRadioGroup") eventRadioGroup: DxRadioGroupComponent;
   
     priorities: string[];
-    priority: string;
+    priorityEntities: any[];
+    colorPriority: string;
     tasks: Task[];
     data: any;
     currentData: string[] = [];
@@ -33,7 +34,13 @@ export class AppComponent {
             "Urgent", 
             "High"
         ];
-        this.priority = this.priorities[2];
+        this.priorityEntities = [
+            { id: 0, text: "Low" },
+            { id: 1, text: "Normal" },
+            { id: 2, text: "Urgent" },
+            { id: 3, text: "High" },
+        ];
+        this.colorPriority = this.priorities[2];
         this.currentData[0] = this.tasks[1].subject;
     }
   
@@ -43,8 +50,8 @@ export class AppComponent {
             key: "ID"
         });
     }
-    ngAfterViewInit(){
-        this.eventRadioGroup.instance.option("value", this.priorities[0]);
+    ngAfterViewInit() {
+        this.eventRadioGroup.instance.option("value", this.priorityEntities[0].id);
     }
   
     onValueChanged($event){
