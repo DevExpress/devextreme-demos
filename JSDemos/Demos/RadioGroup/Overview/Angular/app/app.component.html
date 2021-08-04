@@ -45,11 +45,11 @@
         <div class="dx-field">
             <div class="dx-field-label">Event handling</div>
             <div class="dx-field-value">
-                <dx-radio-group #eventRadioGroup
-                    id="radio-group-with-selection"
+                <dx-radio-group
                     [items]="priorityEntities"
                     valueExpr="id"
                     displayExpr="text"
+                    [(value)]="selectionPriorityId"
                     (onValueChanged)="onValueChanged($event)">
                 </dx-radio-group>
             </div>
