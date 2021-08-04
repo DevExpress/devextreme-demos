@@ -1,8 +1,7 @@
-import { NgModule, Component, ViewChild, enableProdMode } from '@angular/core';
+import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxRadioGroupModule, DxRadioGroupComponent, DxTemplateModule } from 'devextreme-angular';
-import data from "devextreme/data/array_store";
+import { DxRadioGroupModule, DxTemplateModule } from 'devextreme-angular';
 
 import { PriorityEntity, Service, Task } from './app.service';
 
@@ -17,13 +16,11 @@ if(!/localhost/.test(document.location.host)) {
     styleUrls: ['app/app.component.css']
 })
 export class AppComponent {
-    @ViewChild("eventRadioGroup") eventRadioGroup: DxRadioGroupComponent;
-  
     priorities: string[];
     priorityEntities: PriorityEntity[];
+    selectionPriorityId: number;
     colorPriority: string;
     tasks: Task[];
-    data: any;
     currentData: string[] = [];
   
     constructor(service: Service) {
@@ -37,16 +34,7 @@ export class AppComponent {
         this.priorityEntities = service.getPriorityEntities();
         this.colorPriority = this.priorities[2];
         this.currentData[0] = this.tasks[1].subject;
-    }
-  
-    ngOnInit() {
-        this.data = new data({ 
-            data: this.tasks,
-            key: "ID"
-        });
-    }
-    ngAfterViewInit() {
-        this.eventRadioGroup.instance.option("value", this.priorityEntities[0].id);
+        this.selectionPriorityId = this.priorityEntities[0].id;
     }
   
     onValueChanged($event){
