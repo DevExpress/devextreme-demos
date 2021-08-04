@@ -4,7 +4,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxRadioGroupModule, DxRadioGroupComponent, DxTemplateModule } from 'devextreme-angular';
 import data from "devextreme/data/array_store";
 
-import { Service, Task } from './app.service';
+import { PriorityEntity, Service, Task } from './app.service';
 
 if(!/localhost/.test(document.location.host)) {
     enableProdMode();
@@ -20,7 +20,7 @@ export class AppComponent {
     @ViewChild("eventRadioGroup") eventRadioGroup: DxRadioGroupComponent;
   
     priorities: string[];
-    priorityEntities: any[];
+    priorityEntities: PriorityEntity[];
     colorPriority: string;
     tasks: Task[];
     data: any;
@@ -34,12 +34,7 @@ export class AppComponent {
             "Urgent", 
             "High"
         ];
-        this.priorityEntities = [
-            { id: 0, text: "Low" },
-            { id: 1, text: "Normal" },
-            { id: 2, text: "Urgent" },
-            { id: 3, text: "High" },
-        ];
+        this.priorityEntities = service.getPriorityEntities();
         this.colorPriority = this.priorities[2];
         this.currentData[0] = this.tasks[1].subject;
     }

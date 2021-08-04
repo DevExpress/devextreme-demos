@@ -5,6 +5,18 @@ export class Task {
     priority: number;
 }
 
+export class PriorityEntity {
+    id: number;
+    text: string;
+}
+
+const priorityEntities: PriorityEntity[] = [
+    { id: 0, text: "Low" },
+    { id: 1, text: "Normal" },
+    { id: 2, text: "Urgent" },
+    { id: 3, text: "High" },
+];
+
 let tasks: Task[] = [{
     subject: "Choose between PPO and HMO Health Plan",
     priority: 3
@@ -29,5 +41,8 @@ let tasks: Task[] = [{
 export class Service {
     getTasks(): Task[] {
         return tasks;
+    }
+    getPriorityEntities(): PriorityEntity[] {
+        return priorityEntities;
     }
 }
