@@ -43,7 +43,8 @@ fixture`Getting Started`
   .afterEach((t) => clearTimeout(t.ctx.watchDogHandle))
   .clientScripts([{ module: 'mockdate' }, './helpers/test-utils.js']);
 
-const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
+const getDemoPaths = (platform) => glob.sync('JSDemos/Demos/*/*')
+  .map((path) => join(path, platform));
 
 ['jQuery', 'React', 'Vue', 'Angular'].forEach((approach) => {
   const demoPaths = getDemoPaths(approach);
@@ -51,6 +52,7 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
 
   demoPaths.forEach((demoPath, index) => {
     if (!shouldRunTestAtIndex(index)) return;
+    if (!existsSync(demoPath)) return;
 
     const testParts = demoPath.split('/');
     const widgetName = testParts[2];
