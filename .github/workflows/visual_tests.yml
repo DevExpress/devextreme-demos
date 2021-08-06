@@ -34,7 +34,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ../devextreme-repo/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('../devextreme-repo/**/package-lock.json') }}
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('../devextreme-repo/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
     - name: DevExtreme - Install packages
