@@ -38,7 +38,7 @@ jobs:
     - name: DevExtreme - Install packages
       run: |
         cd ../devextreme-repo
-        npm ci --no-audit --no-fund
+        npm install --no-audit --no-fund
 
     - name: DevExtreme - Build
       run: |
@@ -65,7 +65,7 @@ jobs:
 
     - name: Demos - Install packages
       run: |
-        test -d node_modules || npm ci --no-audit --no-fund
+        npm install --no-audit --no-fund
 
     - name: Demos - Install devextreme package
       run: |
