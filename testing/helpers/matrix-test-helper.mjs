@@ -4,8 +4,6 @@
 import { readFileSync, existsSync } from 'fs';
 import * as path from 'path';
 
-process.env.CHANGEDFILEINFOSPATH = 'changedfiles.json';
-
 let targetFramework;
 let total;
 let current;
@@ -16,10 +14,9 @@ const ignoreChangesPathPatterns = [
   /jsdemos\/menumeta.json/i,
 ];
 
-const explicitTests = getExplicitTests();
+let explicitTests = getExplicitTests();
 
 const concurrency = (process.env.CONCURRENCY && (+process.env.CONCURRENCY)) || 1;
-
 const currentCriteria = process.env.CONSTEL;
 if (currentCriteria) {
   const match = currentCriteria.match(/(?<name>\w+)(?<parallel>\((?<current>\d+)\/(?<total>\d+)\))?/);
@@ -74,24 +71,31 @@ function patternGroupFromValues(product, demo, framework, screenshot) {
   };
 }
 
-function getExplicitTestsFromArgs() {
-  const result = { masks: [] };
+function getInterestProcessArgs() {
   // eslint-disable-next-line spellcheck/spell-checker
-  process.argv.slice(2).forEach((argument) => {
+  return process.argv.slice(2);
+}
+
+export function getExplicitTestsFromArgs() {
+  const result = { masks: [] };
+  getInterestProcessArgs().forEach((argument) => {
     const parts = argument.split('-');
     result.masks.push(patternGroupFromValues(...parts));
   });
   return result.masks.length ? result : undefined;
 }
 
-function getExplicitTestsInternal() {
+export function getChangedFiles() {
   const changedFilesPath = process.env.CHANGEDFILEINFOSPATH;
-  if (!changedFilesPath || !existsSync(changedFilesPath)) return getExplicitTestsFromArgs();
+  return changedFilesPath
+    && existsSync(changedFilesPath)
+    && JSON.parse(readFileSync(changedFilesPath));
+}
 
-  const changedFiles = JSON.parse(readFileSync(changedFilesPath));
-  if (!changedFiles) {
-    return undefined;
-  }
+function getExplicitTestsInternal() {
+  const changedFiles = getChangedFiles();
+
+  if (!changedFiles) return getExplicitTestsFromArgs();
 
   const result = { masks: [], traceTree: undefined };
 
@@ -220,4 +224,8 @@ export function runTest(testObject, framework, product, demo, index, callback) {
 
 export function getPortByIndex(testIndex) {
   return (total && (Math.floor(testIndex / total) % concurrency)) || 0;
+}
+
+export function updateExplicitTests() {
+  explicitTests = getExplicitTests();
 }
