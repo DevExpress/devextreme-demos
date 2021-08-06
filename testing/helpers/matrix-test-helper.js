@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-continue */
 import { readFileSync, existsSync } from 'fs';
+import * as path from 'path';
 
 process.env.CHANGEDFILEINFOSPATH = 'changedfiles.json';
 
@@ -22,6 +23,31 @@ if (currentCriteria) {
       current = +match.groups.current;
     }
   }
+}
+
+function getCallStack() {
+  const orig = Error.prepareStackTrace;
+  try {
+    Error.prepareStackTrace = (_, stack) => stack;
+    const err = new Error();
+    Error.captureStackTrace(err, getCallStack);
+    const { stack } = err;
+    return stack;
+  } finally {
+    Error.prepareStackTrace = orig;
+  }
+}
+function getCallStackInterestPoints() {
+  const basePath = path.resolve(__dirname, '../../');
+
+  return getCallStack()
+    .map((x) => x.getFileName())
+    .filter((x) => x
+      && (x.indexOf('node_modules') === -1)
+      && (x.indexOf('internal/modules/cjs') === -1))
+    .map((x) => path.relative(basePath, path.dirname(x)))
+    .filter((x) => x[0] !== '.')
+    .slice(3);
 }
 
 function shouldRunTestExplicitlyInternal(framework, product, demo) {
@@ -52,6 +78,7 @@ function getExplicitTestsFromArgs() {
 
 function getExplicitTests() {
   debugger;
+
   const changedFilesPath = process.env.CHANGEDFILEINFOSPATH;
   if (!changedFilesPath || !existsSync(changedFilesPath)) return getExplicitTestsFromArgs();
 
@@ -65,7 +92,7 @@ function getExplicitTests() {
   const demoExpr = /JSDemos\/Demos\/(?<product>\w+)\/(?<demo>\w+)\/(?<framework>angular|angularjs|jquery|knockout|react|vue)\/.*/i;
   const demoFilesExpr = /JSDemos\/Demos\/(?<product>\w+)\/(?<demo>\w+)\/(?<data>.*)/i;
   const commonEtalonsExpr = /testing\/etalons\/(?<product>\w+)-(?<demo>\w+)(?<suffix>.*).png/i;
-  const manualEtalonsExpr = /testing\/widgets\/.*\/(?<screenshot>.*)(mask)?.png/i;
+  const manualEtalonsExpr = /testing\/widgets\/.*/i;
 
   // eslint-disable-next-line no-restricted-syntax
   for (const changedFile of changedFiles) {
@@ -80,13 +107,14 @@ function getExplicitTests() {
       || manualEtalonsExpr.exec(fileName);
 
     if (parseResult) {
+      parseResult.groups = parseResult.groups || {};
       if (parseResult.groups.data && parseResult.groups.data === 'description.md') continue;
 
       result.push(patternGroupFromValues(
         parseResult.groups.product,
         parseResult.groups.demo,
         parseResult.groups.framework,
-        parseResult.groups.screenshot,
+        fileName.split('/'),
       ));
     } else {
       return undefined;
@@ -127,13 +155,14 @@ export function runTestAt(test, demoUrl) {
   return (shouldRunTestExplicitly(demoUrl) ? test.only : test).page(demoUrl);
 }
 
-export function runTest(testObject, framework, product, demo, index, callback, knownScreenshots) {
+export function runTest(testObject, framework, product, demo, index, callback) {
   if (explicitTests) {
     if (shouldRunTestExplicitlyInternal(framework, product, demo)) {
       callback(testObject.only);
       return;
     }
 
+    const stackInterestPoints = getCallStackInterestPoints();
     if (knownScreenshots) {
       const screenshotObject = knownScreenshots.reduce(
         (accumulator, value) => {
