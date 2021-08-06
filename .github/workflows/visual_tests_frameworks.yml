@@ -31,11 +31,10 @@ jobs:
 
     #Build Devextreme
     - name: DevExtreme - Restore npm cache
-      working-directory: ../devextreme-repo
       uses: actions/cache@v2
       with:
-        path: ./node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('**/package-lock.json') }}
+        path: ../devextreme-repo/node_modules
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('../devextreme-repo/**/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
     - name: DevExtreme - Install packages
