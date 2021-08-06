@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-continue */
 import { readFileSync, existsSync } from 'fs';
@@ -8,6 +9,13 @@ process.env.CHANGEDFILEINFOSPATH = 'changedfiles.json';
 let targetFramework;
 let total;
 let current;
+
+const ignoreChangesPathPatterns = [
+  /mvcdemos.*/i,
+  /netcoredemos.*/i,
+  /jsdemos\/menumeta.json/i,
+];
+
 const explicitTests = getExplicitTests();
 
 const concurrency = (process.env.CONCURRENCY && (+process.env.CONCURRENCY)) || 1;
@@ -47,11 +55,11 @@ function getCallStackInterestPoints() {
       && (x.indexOf('internal/modules/cjs') === -1))
     .map((x) => path.relative(basePath, path.dirname(x)))
     .filter((x) => x[0] !== '.')
-    .slice(3);
+    .slice(2);
 }
 
 function shouldRunTestExplicitlyInternal(framework, product, demo) {
-  return explicitTests.some((x) => x.framework.test(framework)
+  return explicitTests.masks.some((x) => x.framework.test(framework)
     && x.demo.test(demo)
     && x.product.test(product));
 }
@@ -67,18 +75,16 @@ function patternGroupFromValues(product, demo, framework, screenshot) {
 }
 
 function getExplicitTestsFromArgs() {
-  const result = [];
+  const result = { masks: [] };
   // eslint-disable-next-line spellcheck/spell-checker
   process.argv.slice(2).forEach((argument) => {
     const parts = argument.split('-');
-    result.push(patternGroupFromValues(...parts));
+    result.masks.push(patternGroupFromValues(...parts));
   });
-  return result.length ? result : undefined;
+  return result.masks.length ? result : undefined;
 }
 
-function getExplicitTests() {
-  debugger;
-
+function getExplicitTestsInternal() {
   const changedFilesPath = process.env.CHANGEDFILEINFOSPATH;
   if (!changedFilesPath || !existsSync(changedFilesPath)) return getExplicitTestsFromArgs();
 
@@ -87,7 +93,7 @@ function getExplicitTests() {
     return undefined;
   }
 
-  const result = [];
+  const result = { masks: [], traceTree: undefined };
 
   const demoExpr = /JSDemos\/Demos\/(?<product>\w+)\/(?<demo>\w+)\/(?<framework>angular|angularjs|jquery|knockout|react|vue)\/.*/i;
   const demoFilesExpr = /JSDemos\/Demos\/(?<product>\w+)\/(?<demo>\w+)\/(?<data>.*)/i;
@@ -98,27 +104,48 @@ function getExplicitTests() {
   for (const changedFile of changedFiles) {
     const fileName = changedFile.filename;
 
-    if (/mvcdemos.*/i.test(fileName)
-      || /netcoredemos.*/i.test(fileName)) continue;
+    if (ignoreChangesPathPatterns.some((x) => x.test(fileName))) continue;
 
-    const parseResult = demoExpr.exec(fileName)
+    let parseResult = demoExpr.exec(fileName)
       || demoFilesExpr.exec(fileName)
-      || commonEtalonsExpr.exec(fileName)
-      || manualEtalonsExpr.exec(fileName);
+      || commonEtalonsExpr.exec(fileName);
+    // eslint-disable-next-line no-cond-assign
+    if (!parseResult && (parseResult = manualEtalonsExpr.exec(fileName))) {
+      if (result.traceTree == null) result.traceTree = {};
+      let currentNamePart = result.traceTree;
+      // eslint-disable-next-line no-restricted-syntax
+      for (const fileNamePart of fileName.split('/')) {
+        const nextNamePart = currentNamePart[fileNamePart] || {};
+        currentNamePart[fileNamePart] = nextNamePart;
+        currentNamePart = nextNamePart;
+      }
+      continue;
+    }
 
     if (parseResult) {
       parseResult.groups = parseResult.groups || {};
       if (parseResult.groups.data && parseResult.groups.data === 'description.md') continue;
 
-      result.push(patternGroupFromValues(
+      result.masks.push(patternGroupFromValues(
         parseResult.groups.product,
         parseResult.groups.demo,
         parseResult.groups.framework,
         fileName.split('/'),
       ));
     } else {
+      console.log('Unable to parse changed file, running all tests: ', fileName);
       return undefined;
     }
+  }
+
+  return result;
+}
+function getExplicitTests() {
+  const result = getExplicitTestsInternal();
+  if (result) {
+    // eslint-disable-next-line no-extend-native
+    RegExp.prototype.toJSON = RegExp.prototype.toString;
+    console.log('Test filters: \r\n', JSON.stringify(result, null, 2));
   }
 
   return result;
@@ -152,7 +179,12 @@ export function shouldRunTestExplicitly(demoUrl) {
 }
 
 export function runTestAt(test, demoUrl) {
-  return (shouldRunTestExplicitly(demoUrl) ? test.only : test).page(demoUrl);
+  let executor = test;
+  if (explicitTests) {
+    if (shouldRunTestExplicitly(demoUrl)) executor = test.only;
+    else executor = test.skip;
+  }
+  return executor.page(demoUrl);
 }
 
 export function runTest(testObject, framework, product, demo, index, callback) {
@@ -162,25 +194,24 @@ export function runTest(testObject, framework, product, demo, index, callback) {
       return;
     }
 
-    const stackInterestPoints = getCallStackInterestPoints();
-    if (knownScreenshots) {
-      const screenshotObject = knownScreenshots.reduce(
-        (accumulator, value) => {
-          accumulator[value] = true;
-          return accumulator;
-        },
-        {},
-      );
-      const explicitScreenshot = explicitTests
-        .map((x) => x.screenshot)
-        .filter((x) => x)
-        .some((x) => screenshotObject[x]);
-
-      if (explicitScreenshot) {
-        callback(testObject.only);
-        return;
+    if (explicitTests.traceTree) {
+      const stackInterestPoints = getCallStackInterestPoints();
+      // eslint-disable-next-line no-restricted-syntax
+      for (const point of stackInterestPoints) {
+        let currentTracePart = explicitTests.traceTree;
+        // eslint-disable-next-line no-restricted-syntax
+        for (const pointPart of point.split('/')) {
+          if (!currentTracePart) break;
+          currentTracePart = currentTracePart[pointPart];
+        }
+        if (currentTracePart) {
+          callback(testObject.only);
+          return;
+        }
       }
     }
+
+    return;
   }
 
   if (!shouldRunTest(framework, index)) return;

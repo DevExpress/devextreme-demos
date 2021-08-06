@@ -87,7 +87,11 @@ function reporter() {
         nameStyle = this.chalk.grey;
       }
 
-      let title = `[${this.dateTimeNow()}]  done ${symbol} ${nameStyle(name)} [${testRunInfo.durationMs} ms]`;
+      let doneMessage = 'done';
+      if (testRunInfo.skipped) doneMessage = 'skip';
+      if (hasErr) doneMessage = 'fail';
+
+      let title = `[${this.dateTimeNow()}]  ${doneMessage} ${symbol} ${nameStyle(name)} [${testRunInfo.durationMs} ms]`;
 
       this.setIndent(1)
         .useWordWrap(true);
