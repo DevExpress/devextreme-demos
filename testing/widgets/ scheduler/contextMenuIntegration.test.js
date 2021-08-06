@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 import { createScreenshotsComparer } from '../../helpers/screenshot-comparer';
-import { shouldRunTest } from '../../helpers/matrix-test-helper';
+import { runTest } from '../../helpers/matrix-test-helper';
 
 fixture('Scheduler.ContextMenuIntegration')
   .page('http://localhost:8080/')
@@ -9,7 +9,7 @@ fixture('Scheduler.ContextMenuIntegration')
       .resizeWindow(900, 600);
   });
 
-if (shouldRunTest('jquery', 0)) {
+runTest(test, 'jQuery', 'Scheduler', 'ContextMenuIntegration', 0, test =>
   test('ContextMenuIntegration', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
@@ -33,5 +33,10 @@ if (shouldRunTest('jquery', 0)) {
     await t
       .expect(compareResults.isValid())
       .ok(compareResults.errorMessages());
-  });
-}
+  }), [
+  'scheduler_contextMenu_init',
+  'scheduler_contextMenu_click',
+  'scheduler_contextMenu_cell_click',
+  'scheduler_contextMenu_header_click'
+]
+);

@@ -1,5 +1,9 @@
 name: Visual Tests (Frameworks)
 
+concurrency:
+  group: wf-${{github.repository}}-${{github.event.pull_request.number}}-${{github.workflow}}
+  cancel-in-progress: true
+
 on:
   push:
   pull_request:
@@ -129,13 +133,19 @@ jobs:
         python -m http.server 8082 &
         python -m http.server 8083 &
 
+    - name: Get changed files
+      if: ${{ github.event_name == 'pull_request }}
+      run: curl -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/${{github.repository}}/pulls/${{github.event.pull_request.number}}/files > changedfiles.json
+
     - name: Run TestCafe tests
       env:
+        CHANGEDFILEINFOSPATH: ${{ github.workspace }}/changedfiles.json
         BROWSERS: chrome:headless
         #DEBUG: hammerhead:*,testcafe:*
         CONCURRENCY: 4
         TCQUARANTINE: true
         CONSTEL: ${{ matrix.CONSTEL }}
+        GITHUB_CI: true
       run: npm run test-testcafe
 
     - name: Get screenshots artifacts name
@@ -150,19 +160,3 @@ jobs:
         name: screenshots-${{ steps.screenshotname.outputs.value }}
         path: ${{ github.workspace }}/testing/artifacts/*
         if-no-files-found: ignore
-
-  cleanup:
-    needs: testcafe
-    runs-on: ubuntu-latest
-    name: Cleanup artifacts
-    timeout-minutes: 10
-    steps:
-    - name: Prepare delete artifact
-      run: touch devextreme-repo-artifacts.tar
-
-    - name: Cleanup artifact      
-      uses: actions/upload-artifact@v2
-      with:
-        name: devextreme-sources
-        path: devextreme-repo-artifacts.tar
-        retention-days: 1

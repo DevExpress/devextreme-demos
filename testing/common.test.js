@@ -3,9 +3,8 @@ import { ClientFunction } from 'testcafe';
 import { join } from 'path';
 import { existsSync, readFileSync } from 'fs';
 import { compareScreenshot } from './helpers/screenshot-comparer';
-import { shouldRunFramework, shouldRunTestAtIndex, getPortByIndex } from './helpers/matrix-test-helper';
+import * as matrixTestHelper from './helpers/matrix-test-helper';
 
-const singleTestName = undefined;
 const execCode = ClientFunction((code) => {
   // eslint-disable-next-line no-eval
   const result = eval(code);
@@ -33,51 +32,54 @@ const execTestCafeCode = (t, code) => {
   return testCafeFunction(t);
 };
 
-fixture`Getting Started`
-  .beforeEach(async (t) => {
-    // eslint-disable-next-line spellcheck/spell-checker
-    t.ctx.watchDogHandle = setTimeout(() => { throw new Error('test timeout exceeded'); }, 3 * 60 * 1000);
-    await t.resizeWindow(1000, 800);
-  })
-  // eslint-disable-next-line spellcheck/spell-checker
-  .afterEach((t) => clearTimeout(t.ctx.watchDogHandle))
-  .clientScripts([{ module: 'mockdate' }, './helpers/test-utils.js']);
-
-const getDemoPaths = (platform) => glob.sync('JSDemos/Demos/*/*')
-  .map((path) => join(path, platform));
-
 ['jQuery', 'React', 'Vue', 'Angular'].forEach((approach) => {
-  const demoPaths = getDemoPaths(approach);
-  if (!shouldRunFramework(approach)) return;
+  if (!matrixTestHelper.shouldRunFramework(approach)) return;
 
-  demoPaths.forEach((demoPath, index) => {
-    if (!shouldRunTestAtIndex(index)) return;
-    if (!existsSync(demoPath)) return;
+  fixture(approach)
+    .beforeEach(async (t) => {
+      // eslint-disable-next-line spellcheck/spell-checker
+      t.ctx.watchDogHandle = setTimeout(() => { throw new Error('test timeout exceeded'); }, 3 * 60 * 1000);
+      await t.resizeWindow(1000, 800);
+    })
+    // eslint-disable-next-line spellcheck/spell-checker
+    .afterEach((t) => clearTimeout(t.ctx.watchDogHandle))
+    .clientScripts([{ module: 'mockdate' }, './helpers/test-utils.js']);
+
+  const getDemoPaths = (platform) => glob.sync('JSDemos/Demos/*/*')
+    .map((path) => join(path, platform));
+
+  getDemoPaths(approach).forEach((demoPath, index) => {
+    if (!matrixTestHelper.shouldRunTestAtIndex(index) || !existsSync(demoPath)) return;
+
+    function readFrom(relativePath, mapCallback) {
+      const absolute = join(demoPath, relativePath);
+      if (existsSync(absolute)) {
+        const result = readFileSync(absolute, 'utf8');
+        return (mapCallback && result && mapCallback(result)) || result;
+      }
+      return null;
+    }
 
     const testParts = demoPath.split('/');
     const widgetName = testParts[2];
     const demoName = testParts[3];
     const testName = `${widgetName}-${demoName}`;
 
-    const preTestCodePath = join(demoPath, '../pre-test-code.js');
-    const testCodePath = join(demoPath, '../test-code.js');
-    const testCafeTestCodePath = join(demoPath, '../testcafe-test-code.js');
-    const visualTestSettingsPath = join(demoPath, '../visualtestrc.json');
+    const preTestCodes = readFrom('../pre-test-code.js', (x) => [{ content: x }]) || [];
+    const testCodeSource = readFrom('../test-code.js');
+    const testCafeCodeSource = readFrom('../testcafe-test-code.js');
+    const visualTestSettings = readFrom('../visualtestrc.json', (x) => JSON.parse(x));
 
-    const preTestCodes = existsSync(preTestCodePath) ? [{ content: readFileSync(preTestCodePath, 'utf8') }] : [];
-    const testCodeSource = existsSync(testCodePath) ? readFileSync(testCodePath, 'utf8') : null;
-    const testCafeCodeSource = existsSync(testCafeTestCodePath) ? readFileSync(testCafeTestCodePath, 'utf8') : null;
-    const visualTestSettings = existsSync(visualTestSettingsPath) ? JSON.parse(readFileSync(visualTestSettingsPath, 'utf8')) : null;
+    if (process.env.GITHUB_CI) {
+      const approachLowerCase = approach.toLowerCase();
+      const ignoreApproach = visualTestSettings
+        && visualTestSettings[approachLowerCase]
+        && visualTestSettings[approachLowerCase].ignore;
 
-    const approachLowerCase = approach.toLowerCase();
-    const ignoreApproach = visualTestSettings
-      && visualTestSettings[approachLowerCase]
-      && visualTestSettings[approachLowerCase].ignore;
+      if (ignoreApproach) return;
+    }
 
-    if (ignoreApproach) return;
-    if (singleTestName && (testName !== singleTestName)) return;
-    (singleTestName ? test.only : test)
-      .page`http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`
+    matrixTestHelper.runTestAt(test, `http://127.0.0.1:808${matrixTestHelper.getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`)
       .clientScripts(preTestCodes)(testName, async (t) => {
         if (approach === 'Angular') {
           await waitForAngularLoading();

@@ -1,5 +1,5 @@
 import { createScreenshotsComparer } from '../../helpers/screenshot-comparer';
-import { shouldRunTest } from '../../helpers/matrix-test-helper';
+import { runTest } from '../../helpers/matrix-test-helper';
 
 fixture('DataGrid.Columns')
   .page('http://localhost:8080/')
@@ -8,7 +8,7 @@ fixture('DataGrid.Columns')
       .resizeWindow(900, 600);
   });
 
-if (shouldRunTest('jquery', 0)) {
+runTest(test, 'jQuery', 'DataGrid', 'ColumnCustomization', 0, test =>
   test('ColumnCustomization', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
@@ -37,5 +37,10 @@ if (shouldRunTest('jquery', 0)) {
     await t
       .expect(compareResults.isValid())
       .ok(compareResults.errorMessages());
-  });
-}
+  }), [
+  'datagrid_column_customization_1',
+  'datagrid_column_customization_2',
+  'datagrid_column_customization_3',
+  'datagrid_column_customization_4'
+]
+);

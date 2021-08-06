@@ -156,7 +156,7 @@ async function main() {
 
   const failedCount = await runner
     .reporter(reporter)
-    .browsers(process.env.BROWSERS || 'chrome')
+    .browsers(process.env.BROWSERS || 'chrome:headless')
     .concurrency(concurrency || 1)
     .run({ quarantineMode: !!process.env.TCQUARANTINE });
 
