@@ -39,7 +39,7 @@ jobs:
     - name: DevExtreme - Install packages
       run: |
         cd ../devextreme-repo
-        npm install --no-audit --no-fund
+        npm ci --no-audit --no-fund
 
     - name: DevExtreme - Build
       run: |
@@ -62,11 +62,11 @@ jobs:
         path: ./node_modules
         key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
         restore-keys: |
-          ${{ runner.os }}-node
+          ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
 
     - name: Demos - Install packages
       run: |
-        npm install --no-audit --no-fund
+        npm ci --no-audit --no-fund
 
     - name: Demos - Install devextreme package
       run: |
@@ -87,6 +87,7 @@ jobs:
         path: |
           node_modules.7z
           bundles/
+          package-lock.json
         retention-days: 1
 
     #Teardown
