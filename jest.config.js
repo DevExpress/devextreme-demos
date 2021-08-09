@@ -3,6 +3,9 @@ module.exports = {
     testMatch: [
         '**/tests/**/*.test.js',
     ],
+    modulePathIgnorePatterns: [
+        'testing/helpers/tests/.*test.js$'
+    ],
     coverageThreshold: {
         global: {
             branches: 100,
