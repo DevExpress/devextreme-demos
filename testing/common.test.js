@@ -43,7 +43,8 @@ fixture`Getting Started`
   .afterEach((t) => clearTimeout(t.ctx.watchDogHandle))
   .clientScripts([{ module: 'mockdate' }, './helpers/test-utils.js']);
 
-const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
+const getDemoPaths = (platform) => glob.sync('JSDemos/Demos/*/*')
+  .map((path) => join(path, platform));
 
 ['jQuery', 'React', 'Vue', 'Angular'].forEach((approach) => {
   const demoPaths = getDemoPaths(approach);
@@ -51,18 +52,19 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
 
   demoPaths.forEach((demoPath, index) => {
     if (!shouldRunTestAtIndex(index)) return;
+    if (!existsSync(demoPath)) return;
 
     const testParts = demoPath.split('/');
     const widgetName = testParts[2];
     const demoName = testParts[3];
     const testName = `${widgetName}-${demoName}`;
 
-    const preTestCodePath = join(demoPath, '../pre-test-code.js');
+    const clientScriptPath = join(demoPath, '../client-script.js');
     const testCodePath = join(demoPath, '../test-code.js');
     const testCafeTestCodePath = join(demoPath, '../testcafe-test-code.js');
     const visualTestSettingsPath = join(demoPath, '../visualtestrc.json');
 
-    const preTestCodes = existsSync(preTestCodePath) ? [{ content: readFileSync(preTestCodePath, 'utf8') }] : [];
+    const clientScriptSource = existsSync(clientScriptPath) ? [{ content: readFileSync(clientScriptPath, 'utf8') }] : [];
     const testCodeSource = existsSync(testCodePath) ? readFileSync(testCodePath, 'utf8') : null;
     const testCafeCodeSource = existsSync(testCafeTestCodePath) ? readFileSync(testCafeTestCodePath, 'utf8') : null;
     const visualTestSettings = existsSync(visualTestSettingsPath) ? JSON.parse(readFileSync(visualTestSettingsPath, 'utf8')) : null;
@@ -76,7 +78,7 @@ const getDemoPaths = (platform) => glob.sync(`JSDemos/Demos/**/${platform}`);
     if (singleTestName && (testName !== singleTestName)) return;
     (singleTestName ? test.only : test)
       .page`http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`
-      .clientScripts(preTestCodes)(testName, async (t) => {
+      .clientScripts(clientScriptSource)(testName, async (t) => {
         if (approach === 'Angular') {
           await waitForAngularLoading();
         }
