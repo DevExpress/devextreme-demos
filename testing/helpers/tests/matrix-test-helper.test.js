@@ -57,9 +57,7 @@ describe('Matrix test helper tests', () => {
     test('Callstack identification test', () => {
         try {
             updateChanges(customScreenPath, {
-                expressions: {
-                    manualEtalonsExpr: /.*/,
-                },
+                manualEtalonsExpr: /.*/,
             });
             let value;
             helper.runTest(testStub, '', '', '', (x) => { value = x.name; });

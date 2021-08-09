@@ -102,7 +102,7 @@ function getExplicitTestsInternal() {
             if(result.traceTree == null) { result.traceTree = {}; }
             let currentNamePart = result.traceTree;
             // eslint-disable-next-line no-restricted-syntax
-            for(const fileNamePart of fileName.split('/')) {
+            for(const fileNamePart of fileName.split(/[/\\]/)) {
                 const nextNamePart = currentNamePart[fileNamePart] || {};
                 currentNamePart[fileNamePart] = nextNamePart;
                 currentNamePart = nextNamePart;
@@ -199,7 +199,7 @@ export function runTest(testObject, framework, product, demo, callback) {
             for(const point of stackInterestPoints) {
                 let currentTracePart = settings.explicitTests.traceTree;
                 // eslint-disable-next-line no-restricted-syntax
-                for(const pointPart of point.split('/')) {
+                for(const pointPart of point.split(/[/\\]/)) {
                     if(!currentTracePart) { break; }
                     currentTracePart = currentTracePart[pointPart];
                 }
@@ -240,7 +240,6 @@ export function updateConfig(customSettings) {
             }
         }
     }
-    settings.explicitTests = getExplicitTests();
     settings.ignoreChangesPathPatterns = [
         /mvcdemos.*/i,
         /netcoredemos.*/i,
@@ -250,4 +249,6 @@ export function updateConfig(customSettings) {
     if(customSettings) {
         Object.assign(settings, customSettings);
     }
+
+    settings.explicitTests = getExplicitTests();
 }
