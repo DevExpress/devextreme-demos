@@ -9,7 +9,7 @@ fixture('Scheduler.ContextMenuIntegration')
       .resizeWindow(900, 600);
   });
 
-runTest(test, 'jQuery', 'Scheduler', 'ContextMenuIntegration', 0, test =>
+runTest(test, 'jQuery', 'Scheduler', 'ContextMenuIntegration', 0, (test) => {
   test('ContextMenuIntegration', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
@@ -33,10 +33,5 @@ runTest(test, 'jQuery', 'Scheduler', 'ContextMenuIntegration', 0, test =>
     await t
       .expect(compareResults.isValid())
       .ok(compareResults.errorMessages());
-  }), [
-  'scheduler_contextMenu_init',
-  'scheduler_contextMenu_click',
-  'scheduler_contextMenu_cell_click',
-  'scheduler_contextMenu_header_click'
-]
-);
+  });
+});
