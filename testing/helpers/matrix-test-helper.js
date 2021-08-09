@@ -3,21 +3,17 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-continue */
 import { readFileSync, existsSync } from 'fs';
-import { fileURLToPath } from 'url';
 import * as path from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 let targetFramework;
 let total;
 let current;
+let verbose;
 let demoExpr;
 let demoFilesExpr;
 let commonEtalonsExpr;
 let manualEtalonsExpr;
-
-assignExpressions();
+let explicitTests;
 
 const ignoreChangesPathPatterns = [
   /mvcdemos.*/i,
@@ -25,7 +21,7 @@ const ignoreChangesPathPatterns = [
   /jsdemos\/menumeta.json/i,
 ];
 
-let explicitTests = getExplicitTests();
+updateConfig();
 
 const concurrency = (process.env.CONCURRENCY && (+process.env.CONCURRENCY)) || 1;
 const currentCriteria = process.env.CONSTEL;
@@ -72,13 +68,12 @@ function shouldRunTestExplicitlyInternal(framework, product, demo) {
     && x.product.test(product));
 }
 
-function patternGroupFromValues(product, demo, framework, screenshot) {
+function patternGroupFromValues(product, demo, framework) {
   const wrap = (x) => RegExp(x || '.*', 'i');
   return {
     product: wrap(product),
     demo: wrap(demo),
     framework: wrap(framework),
-    screenshot: wrap(screenshot),
   };
 }
 
@@ -140,10 +135,9 @@ function getExplicitTestsInternal() {
         parseResult.groups.product,
         parseResult.groups.demo,
         parseResult.groups.framework,
-        fileName.split('/'),
       ));
     } else {
-      console.log('Unable to parse changed file, running all tests: ', fileName);
+      if (verbose) console.log('Unable to parse changed file, running all tests: ', fileName);
       return undefined;
     }
   }
@@ -155,7 +149,7 @@ function getExplicitTests() {
   if (result) {
     // eslint-disable-next-line no-extend-native
     RegExp.prototype.toJSON = RegExp.prototype.toString;
-    console.log('Test filters: \r\n', JSON.stringify(result, null, 2));
+    if (verbose) console.log('Test filters: \r\n', JSON.stringify(result, null, 2));
   }
 
   return result;
@@ -203,7 +197,6 @@ export function runTest(testObject, framework, product, demo, index, callback) {
       callback(testObject.only);
       return;
     }
-debugger;
     if (explicitTests.traceTree) {
       const stackInterestPoints = getCallStackInterestPoints();
       // eslint-disable-next-line no-restricted-syntax
@@ -232,11 +225,15 @@ export function getPortByIndex(testIndex) {
   return (total && (Math.floor(testIndex / total) % concurrency)) || 0;
 }
 
-export function updateExplicitTests() {
+export function updateConfig(switches) {
+  const switchSource = switches || {};
+
+  verbose = switchSource.verbose || true;
+  assignExpressions(switchSource.expressions || {});
   explicitTests = getExplicitTests();
 }
 
-export function assignExpressions(source) {
+function assignExpressions(source) {
   const exprSource = {
     ...{
       demoExpr: /JSDemos\/Demos\/(?<product>\w+)\/(?<demo>\w+)\/(?<framework>angular|angularjs|jquery|knockout|react|vue)\/.*/i,

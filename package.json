@@ -66,9 +66,12 @@
         "zone.js": "0.10.3"
     },
     "devDependencies": {
+        "@babel/core": "^7.15.0",
+        "@babel/preset-env": "^7.15.0",
         "@typescript-eslint/eslint-plugin": "^4.8.0",
         "@typescript-eslint/parser": "^4.8.0",
         "babel-eslint": "^10.1.0",
+        "babel-jest": "^27.0.6",
         "cross-env": "^7.0.3",
         "eclint": "2.8.1",
         "eslint": "^7.13.0",
@@ -115,7 +118,7 @@
         "lint": "npm-run-all -p -c lint-js lint-react lint-vue lint-mvc lint-netcore",
         "webserver": "http-server --port 8080 -c-1",
         "test-testcafe": "node --inspect testing/helpers/testcafe-runner.mjs",
-        "test-testcafe-utils": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --config=visualtestutils.jest.config.js",
+        "test-testcafe-utils": "cross-env NODE_ENV=testing jest --config=visualtestutils.jest.config.js",
         "fix-lint-js": "eslint --fix .",
         "fix-lint-react": "eslint --fix JSDemos/Demos -c .react.eslintrc.json --ignore-path .react.eslintignore",
         "fix-lint-vue": "eslint --fix JSDemos/Demos -c .vue.eslintrc.json --ignore-path .vue.eslintignore --ext .vue,.js",

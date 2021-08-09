@@ -18,6 +18,7 @@ coverage
 artifacts
 screenshots
 bundles
+changedfiles.json
 
 *d.ts
 gulpfile.js/.eslintrc.js

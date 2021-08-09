@@ -1,9 +1,8 @@
 module.exports = {
-    testRegex: "testing/helpers/tests/.*test.mjs$",
-    transform: {},
-    //     "^.+\\.jsx?$": "babel-jest",
-    //     "^.+\\.mjs$": "babel-jest",
-    // },
-    testPathIgnorePatterns: ["<rootDir>/build/", "<rootDir>/node_modules/"],
-    moduleFileExtensions: ["js", "jsx", "mjs"]
+    testEnvironment: "node",
+    testRegex: "testing/helpers/tests/.*test.js$",
+    transform: {
+        "\\.[jt]sx?$": "babel-jest"
+    },
+    transformIgnorePatterns: ["<rootDir>/build/", "<rootDir>/node_modules/"],
 }

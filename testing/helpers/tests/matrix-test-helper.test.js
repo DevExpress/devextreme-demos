@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 /* eslint-disable no-undef */
-import fs from 'fs';
-import * as helper from '../matrix-test-helper';
+const fs = require('fs');
+const helper = require('../matrix-test-helper');
 
 const productDemoFramework = [{ filename: 'JSDemos/Demos/Accordion/Overview/Angular/index.json' }];
 const productDemo = [{ filename: 'JSDemos/Demos/Accordion/Overview/visualtestrc.json' }];
@@ -21,9 +21,12 @@ const testStub = {
     page() { return this; },
 };
 
-function updateChanges(value) {
+function updateChanges(value, options) {
     fs.writeFileSync('changedfiles.json', JSON.stringify(value));
-    helper.updateExplicitTests();
+    helper.updateConfig({
+        ...options,
+        verbose: false,
+    });
 }
 
 describe('Matrix test helper tests', () => {
@@ -54,17 +57,17 @@ describe('Matrix test helper tests', () => {
         expect(helper.runTestAt(testStub, 'http://127.0.0.1:8080/JSDemos/Demos/Accordion/Overview/Jquery/').name).toBe('test');
     });
     test('Callstack identification test', () => {
-        helper.assignExpressions({
-            manualEtalonsExpr: /.*/,
-        });
         try {
-            updateChanges(customScreenPath);
+            updateChanges(customScreenPath, {
+                expressions: {
+                    manualEtalonsExpr: /.*/,
+                },
+            });
             let value;
-            debugger;
             helper.runTest(testStub, '', '', '', 0, (x) => { value = x.name; });
             expect(value).toBe('only');
         } finally {
-            helper.assignExpressions();
+            helper.updateConfig();
         }
     });
 });
