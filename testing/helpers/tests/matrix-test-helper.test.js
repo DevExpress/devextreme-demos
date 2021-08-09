@@ -1,5 +1,3 @@
-/* eslint-disable indent */
-/* eslint-disable no-undef */
 const fs = require('fs');
 const helper = require('../matrix-test-helper');
 
@@ -22,7 +20,7 @@ const testStub = {
 };
 
 function updateChanges(value, options) {
-    fs.writeFileSync('changedfiles.json', JSON.stringify(value));
+    fs.writeFileSync('changed-files.json', JSON.stringify(value));
     helper.updateConfig({
         ...options,
         verbose: false,
@@ -32,7 +30,7 @@ function updateChanges(value, options) {
 describe('Matrix test helper tests', () => {
     beforeAll(() => {
         process.env.GITHUB_CI = true;
-        process.env.CHANGEDFILEINFOSPATH = 'changedfiles.json';
+        process.env.CHANGEDFILEINFOSPATH = 'changed-files.json';
     });
 
     test('Product-Demo-Framework change test', () => {
@@ -64,7 +62,7 @@ describe('Matrix test helper tests', () => {
                 },
             });
             let value;
-            helper.runTest(testStub, '', '', '', 0, (x) => { value = x.name; });
+            helper.runTest(testStub, '', '', '', (x) => { value = x.name; });
             expect(value).toBe('only');
         } finally {
             helper.updateConfig();

@@ -1,9 +1,182 @@
 module.exports = {
-  extends: ['devextreme/javascript', 'devextreme/testcafe'],
-  parser: 'babel-eslint',
-  parserOptions: {
-    sourceType: 'module',
-    allowImportExportEverywhere: true,
-  },
-
+    'extends': [
+        'devextreme/spell-check',
+        'devextreme/testcafe'
+    ],
+    'plugins': [
+        'jest'
+    ],
+    'root': true,
+    'parserOptions': {
+        'createDefaultProgram': true,
+        'ecmaVersion': 6,
+        'sourceType': 'module',
+        'ecmaFeatures': {
+            'globalReturn': true,
+            'jsx': true
+        }
+    },
+    'overrides': [
+        {
+            'files': [
+                '*.js',
+                '*.mjs'
+            ],
+            'parser': 'babel-eslint',
+            'extends': [
+                'eslint:recommended'
+            ],
+            'env': {
+                'es6': true,
+                'node': true,
+                'jest/globals': true
+            },
+            'globals': {
+                'setInterval': true,
+                'setTimeout': true,
+                'clearInterval': true,
+                'clearTimeout': true,
+                'require': true,
+                'module': true,
+                'exports': true
+            },
+            'rules': {
+                'block-spacing': 'error',
+                'comma-spacing': 'error',
+                'computed-property-spacing': 'error',
+                'comma-style': [
+                    'error',
+                    'last'
+                ],
+                'eqeqeq': [
+                    'error',
+                    'allow-null'
+                ],
+                'strict': 'error',
+                'func-call-spacing': 'error',
+                'key-spacing': 'error',
+                'keyword-spacing': [
+                    'error',
+                    {
+                        'overrides': {
+                            'catch': {
+                                'after': false
+                            },
+                            'for': {
+                                'after': false
+                            },
+                            'if': {
+                                'after': false
+                            },
+                            'switch': {
+                                'after': false
+                            },
+                            'while': {
+                                'after': false
+                            }
+                        }
+                    }
+                ],
+                'no-multiple-empty-lines': [
+                    'error',
+                    {
+                        'max': 2
+                    }
+                ],
+                'no-multi-spaces': 'error',
+                'no-trailing-spaces': 'error',
+                'no-empty': [
+                    'error',
+                    {
+                        'allowEmptyCatch': true
+                    }
+                ],
+                'no-new-func': 'error',
+                'no-eval': 'error',
+                'no-undef-init': 'error',
+                'no-unused-vars': [
+                    'error',
+                    {
+                        'args': 'none',
+                        'ignoreRestSiblings': true
+                    }
+                ],
+                'no-extend-native': 'error',
+                'no-alert': 'error',
+                'no-console': 'error',
+                'no-restricted-syntax': [
+                    'error',
+                    'ForOfStatement'
+                ],
+                'no-var': 'error',
+                'no-whitespace-before-property': 'error',
+                'object-curly-spacing': [
+                    'error',
+                    'always'
+                ],
+                'one-var': [
+                    'error',
+                    'never'
+                ],
+                'prefer-const': 'error',
+                'semi-spacing': 'error',
+                'semi': 'error',
+                'space-before-blocks': 'error',
+                'space-before-function-paren': [
+                    'error',
+                    'never'
+                ],
+                'space-in-parens': 'error',
+                'space-infix-ops': 'error',
+                'space-unary-ops': 'error',
+                'spaced-comment': [
+                    'error',
+                    'always',
+                    {
+                        'exceptions': [
+                            '#DEBUG',
+                            '#ENDDEBUG'
+                        ],
+                        'markers': [
+                            '/'
+                        ]
+                    }
+                ],
+                'brace-style': [
+                    'error',
+                    '1tbs',
+                    {
+                        'allowSingleLine': true
+                    }
+                ],
+                'curly': [
+                    'error',
+                    'multi-line'
+                ],
+                'unicode-bom': [
+                    'error',
+                    'never'
+                ],
+                'eol-last': [
+                    'error',
+                    'always'
+                ],
+                'indent': [
+                    'error',
+                    4,
+                    {
+                        'SwitchCase': 1,
+                        'MemberExpression': 1,
+                        'CallExpression': {
+                            'arguments': 1
+                        }
+                    }
+                ],
+                'quotes': [
+                    'error',
+                    'single'
+                ]
+            }
+        }
+    ]
 };
