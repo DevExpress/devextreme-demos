@@ -1,12 +1,23 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-continue */
 import { readFileSync, existsSync } from 'fs';
+import { fileURLToPath } from 'url';
 import * as path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 let targetFramework;
 let total;
 let current;
+let demoExpr;
+let demoFilesExpr;
+let commonEtalonsExpr;
+let manualEtalonsExpr;
+
+assignExpressions();
 
 const ignoreChangesPathPatterns = [
   /mvcdemos.*/i,
@@ -98,11 +109,6 @@ function getExplicitTestsInternal() {
   if (!changedFiles) return getExplicitTestsFromArgs();
 
   const result = { masks: [], traceTree: undefined };
-
-  const demoExpr = /JSDemos\/Demos\/(?<product>\w+)\/(?<demo>\w+)\/(?<framework>angular|angularjs|jquery|knockout|react|vue)\/.*/i;
-  const demoFilesExpr = /JSDemos\/Demos\/(?<product>\w+)\/(?<demo>\w+)\/(?<data>.*)/i;
-  const commonEtalonsExpr = /testing\/etalons\/(?<product>\w+)-(?<demo>\w+)(?<suffix>.*).png/i;
-  const manualEtalonsExpr = /testing\/widgets\/.*/i;
 
   // eslint-disable-next-line no-restricted-syntax
   for (const changedFile of changedFiles) {
@@ -197,7 +203,7 @@ export function runTest(testObject, framework, product, demo, index, callback) {
       callback(testObject.only);
       return;
     }
-
+debugger;
     if (explicitTests.traceTree) {
       const stackInterestPoints = getCallStackInterestPoints();
       // eslint-disable-next-line no-restricted-syntax
@@ -228,4 +234,20 @@ export function getPortByIndex(testIndex) {
 
 export function updateExplicitTests() {
   explicitTests = getExplicitTests();
+}
+
+export function assignExpressions(source) {
+  const exprSource = {
+    ...{
+      demoExpr: /JSDemos\/Demos\/(?<product>\w+)\/(?<demo>\w+)\/(?<framework>angular|angularjs|jquery|knockout|react|vue)\/.*/i,
+      demoFilesExpr: /JSDemos\/Demos\/(?<product>\w+)\/(?<demo>\w+)\/(?<data>.*)/i,
+      commonEtalonsExpr: /testing\/etalons\/(?<product>\w+)-(?<demo>\w+)(?<suffix>.*).png/i,
+      manualEtalonsExpr: /testing\/widgets\/.*/i,
+    },
+    ...source,
+  };
+  demoExpr = exprSource.demoExpr;
+  demoFilesExpr = exprSource.demoFilesExpr;
+  commonEtalonsExpr = exprSource.commonEtalonsExpr;
+  manualEtalonsExpr = exprSource.manualEtalonsExpr;
 }

@@ -1,7 +1,9 @@
 module.exports = {
   extends: ['devextreme/javascript', 'devextreme/testcafe'],
-  env: {
-    es6: true,
-    node: true,
+  parser: 'babel-eslint',
+  parserOptions: {
+    sourceType: 'module',
+    allowImportExportEverywhere: true,
   },
+
 };
