@@ -21,60 +21,52 @@ jobs:
 
     #Git
     - name: Get sources
-      uses: actions/checkout@v2   
+      uses: actions/checkout@v2
 
     - name: Clone devextreme repo from PR author fork
       continue-on-error: true
       if: github.event_name == 'pull_request'
-      run: git clone -b ${{github.event.pull_request.head.ref}} https://github.com/${{github.event.pull_request.user.login}}/devextreme ../devextreme-repo
+      run: git clone -b ${{github.event.pull_request.head.ref}} https://github.com/${{github.event.pull_request.user.login}}/devextreme ./devextreme-repo
 
     - name: Clone devextreme repo
       run: |
         BASE_BRANCH=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
-        test -d ../devextreme-repo || git clone -b $BASE_BRANCH https://github.com/devexpress/devextreme ../devextreme-repo
+        test -d ./devextreme-repo || git clone -b $BASE_BRANCH https://github.com/devexpress/devextreme ./devextreme-repo
 
     #Build Devextreme
-    - name: DevExtreme - Generate package-lock
-      run: |
-        cd ../devextreme-repo
-        test -f package-lock.json || npm i --package-lock-only
+    - name: DevExtreme - Restore npm cache
+      uses: actions/cache@v2
+      with:
+        path: ./devextreme-repo/node_modules
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme-repo/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-devextreme-node-modules
 
     - name: DevExtreme - Install packages
-      run: |
-        cd ../devextreme-repo
-        npm ci --no-audit --no-fund
+      working-directory: ./devextreme-repo
+      run: npm install --no-audit --no-fund
 
     - name: DevExtreme - Build
-      run: |
-        cd ../devextreme-repo
-        npm run build-npm-devextreme
+      working-directory: ./devextreme-repo
+      run: npm run build-npm-devextreme
 
     - name: DevExtreme - Pack
-      run: |
-        cd ../devextreme-repo/artifacts/npm/devextreme
-        npm pack
+      working-directory: ./devextreme-repo/artifacts/npm/devextreme
+      run: npm pack
 
     #Build Demos
-    - name: Demos - Generate package-lock
-      run: |
-        test -f package-lock.json || npm i --package-lock-only
-
     - name: Demos - Restore npm cache
       uses: actions/cache@v2
       with:
         path: ./node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node
+        key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
+        restore-keys: ${{ runner.os }}-node-modules
 
     - name: Demos - Install packages
       run: |
-        test -d node_modules || npm ci --no-audit --no-fund
+        npm install --no-audit --no-fund
 
     - name: Demos - Install devextreme package
-      run: |
-        rm -rf ./node_modules/devextreme
-        npm install --no-package-lock $(find ../devextreme-repo/artifacts/npm/devextreme/ -maxdepth 1 -name "devextreme-*.tgz")
+      run: npm install $(find ./devextreme-repo/artifacts/npm/devextreme/ -maxdepth 1 -name "devextreme-*.tgz")
 
     #Publish artifacts
     - name: Zip node_modules    
@@ -87,10 +79,6 @@ jobs:
         path: node_modules.7z
         retention-days: 1
 
-    #Teardown
-    - name: Cleanup devextreme package
-      run: rm -rf ./node_modules/devextreme
-    
   testcafe:
     needs: build
     strategy:

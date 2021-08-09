@@ -65,7 +65,7 @@ const execTestCafeCode = (t, code) => {
     const demoName = testParts[3];
     const testName = `${widgetName}-${demoName}`;
 
-    const preTestCodes = readFrom('../pre-test-code.js', (x) => [{ content: x }]) || [];
+    const clientScriptSource = readFrom('../client-script.js', (x) => [{ content: x }]) || [];
     const testCodeSource = readFrom('../test-code.js');
     const testCafeCodeSource = readFrom('../testcafe-test-code.js');
     const visualTestSettings = readFrom('../visualtestrc.json', (x) => JSON.parse(x));
@@ -80,7 +80,7 @@ const execTestCafeCode = (t, code) => {
     }
 
     matrixTestHelper.runTestAt(test, `http://127.0.0.1:808${matrixTestHelper.getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`)
-      .clientScripts(preTestCodes)(testName, async (t) => {
+      .clientScripts(clientScriptSource)(testName, async (t) => {
         if (approach === 'Angular') {
           await waitForAngularLoading();
         }

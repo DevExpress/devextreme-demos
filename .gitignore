@@ -12,7 +12,6 @@ NuGet
 *.rej
 *.ldf
 *proj.user
-package-lock.json
 repository.config.json
 coverage
 artifacts
