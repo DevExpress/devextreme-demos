@@ -31,6 +31,10 @@ const waitForAngularLoading = ClientFunction(() => new Promise((resolve) => {
   }, 100);
 }));
 
+const setOverflowClip = ClientFunction(() => {
+  [...document.getElementsByTagName('body')].forEach((x) => { x.style.overflow = 'clip'; });
+});
+
 const execTestCafeCode = (t, code) => {
   // eslint-disable-next-line no-eval
   const testCafeFunction = eval(code);
@@ -86,6 +90,8 @@ const execTestCafeCode = (t, code) => {
 
     runTestAtPage(test, `http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`)
       .clientScripts(clientScriptSource)(testName, async (t) => {
+        await setOverflowClip();
+
         if (approach === 'Angular') {
           await waitForAngularLoading();
         }
