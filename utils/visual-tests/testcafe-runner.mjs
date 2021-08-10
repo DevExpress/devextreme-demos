@@ -37,6 +37,7 @@ function reporter() {
 
     renderErrors(errs) {
       const filteredErrors = errs.filter((x) => {
+        // eslint-disable-next-line spellcheck/spell-checker
         if (x && x.errMsg && x.errMsg.indexOf('INVALID_SCREENSHOT') !== -1) return false;
         return true;
       });
@@ -87,7 +88,11 @@ function reporter() {
         nameStyle = this.chalk.grey;
       }
 
-      let title = `[${this.dateTimeNow()}]  done ${symbol} ${nameStyle(name)} [${testRunInfo.durationMs} ms]`;
+      let doneMessage = 'done';
+      if (testRunInfo.skipped) doneMessage = 'skip';
+      if (hasErr) doneMessage = 'fail';
+
+      let title = `[${this.dateTimeNow()}]  ${doneMessage} ${symbol} ${nameStyle(name)} [${testRunInfo.durationMs} ms]`;
 
       this.setIndent(1)
         .useWordWrap(true);
@@ -110,12 +115,12 @@ function reporter() {
         .write(this.chalk.bold.yellow(`Warnings (${filteredWarnings.length}):`))
         .newline();
 
-      filteredWarnings.forEach((msg) => {
+      filteredWarnings.forEach((message) => {
         this.setIndent(1)
           .write(this.chalk.bold.yellow('--'))
           .newline()
           .setIndent(2)
-          .write(msg)
+          .write(message)
           .newline();
       });
     },
@@ -156,7 +161,7 @@ async function main() {
 
   const failedCount = await runner
     .reporter(reporter)
-    .browsers(process.env.BROWSERS || 'chrome')
+    .browsers(process.env.BROWSERS || 'chrome:headless')
     .concurrency(concurrency || 1)
     .run({ quarantineMode: !!process.env.TCQUARANTINE });
 
