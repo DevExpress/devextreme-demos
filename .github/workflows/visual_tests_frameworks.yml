@@ -127,7 +127,7 @@ jobs:
     - name: Run TestCafe tests
       env:
         CHANGEDFILEINFOSPATH: ${{ github.workspace }}/changed-files.json
-        BROWSERS: chrome:headless --deterministic-mode --disable-partial-raster --disable-skia-runtime-opts
+        BROWSERS: chrome:headless --disable-partial-raster --disable-skia-runtime-opts --run-all-compositor-stages-before-draw --disable-new-content-rendering-timeout --disable-threaded-animation --disable-threaded-scrolling --disable-checker-imaging --disable-image-animation-resync --use-gl="swiftshader" --disable-features=PaintHolding
         #DEBUG: hammerhead:*,testcafe:*
         CONCURRENCY: 4
         TCQUARANTINE: true
