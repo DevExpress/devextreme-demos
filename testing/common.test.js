@@ -32,7 +32,7 @@ const waitForAngularLoading = ClientFunction(() => new Promise((resolve) => {
 }));
 
 const setOverflowClip = ClientFunction(() => {
-  [...document.getElementsByTagName('body')].forEach((x) => { x.style.overflow = 'clip'; });
+  testUtils.postponeUntilFound('body').then(() => testUtils.findElements('body').forEach((x) => { x.style.overflow = 'clip'; }));
 });
 
 const execTestCafeCode = (t, code) => {
