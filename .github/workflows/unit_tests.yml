@@ -25,6 +25,3 @@ jobs:
 
       - name: Run unit tests
         run: npm run test
-
-      - name: Run unit tests for visual test utils
-        run: npm run test-testcafe-utils
