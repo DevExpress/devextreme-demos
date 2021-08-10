@@ -118,7 +118,7 @@ jobs:
 
     - name: Run TestCafe tests
       env:
-        BROWSERS: chrome:headless
+        BROWSERS: chrome:headless --deterministic-mode --disable-partial-raster --disable-skia-runtime-opts
         #DEBUG: hammerhead:*,testcafe:*
         CONCURRENCY: 4
         TCQUARANTINE: true
