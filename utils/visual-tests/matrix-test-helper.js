@@ -138,6 +138,7 @@ function getExplicitTests() {
   if (result) {
     const oldToJSON = RegExp.prototype.toJSON;
     try {
+      // Necessary for JSON.stringify call: by default RegExps will produce an empty string.
       // eslint-disable-next-line no-extend-native
       RegExp.prototype.toJSON = RegExp.prototype.toString;
       // eslint-disable-next-line no-console
