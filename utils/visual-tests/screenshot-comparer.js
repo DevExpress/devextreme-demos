@@ -15,7 +15,9 @@ const screenshotComparerDefault = {
   looksSameComparisonOptions: {
     strict: false,
     tolerance: 5,
+    // eslint-disable-next-line spellcheck/spell-checker
     ignoreAntialiasing: true,
+    // eslint-disable-next-line spellcheck/spell-checker
     antialiasingTolerance: 5,
     ignoreCaret: true,
   },
@@ -164,7 +166,7 @@ function getMask(diffBuffer, maskFileName, options) {
 
         for (let ry = yBegin; ry < yEnd; ry += 1) {
           for (let rx = xBegin; rx < xEnd; rx += 1) {
-          // eslint-disable-next-line no-bitwise
+            // eslint-disable-next-line no-bitwise
             const roundIndex = (image.width * ry + rx) << 2;
             if (data[roundIndex] === 255) {
               data[roundIndex] = aroundColor;

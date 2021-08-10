@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   extends: [
     'devextreme/spell-check',
     'devextreme/javascript',
