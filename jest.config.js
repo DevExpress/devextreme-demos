@@ -3,9 +3,9 @@ module.exports = {
     testMatch: [
         '**/tests/**/*.test.js',
     ],
-    modulePathIgnorePatterns: [
-        'testing/helpers/tests/.*test.js$'
-    ],
+    transform: {
+        '\\.[jt]sx?$': 'babel-jest'
+    },
     coverageThreshold: {
         global: {
             branches: 100,
@@ -13,5 +13,9 @@ module.exports = {
             lines: 100,
             statements: 100,
         },
-    }
+    },
+    coveragePathIgnorePatterns: [
+        '<rootDir>/node_modules/',
+        '.*visual-tests.*'
+    ]
 };

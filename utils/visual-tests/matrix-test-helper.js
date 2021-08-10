@@ -178,10 +178,10 @@ export function shouldRunTestExplicitly(demoUrl) {
   );
 }
 
-export function runTestAt(test, demoUrl) {
+export function runTestAtPage(test, demoUrl) {
   let executor = test;
   if (settings.explicitTests) {
-    if (shouldRunTestExplicitly(demoUrl)) { executor = test.only; } else { executor = test.skip; }
+    executor = shouldRunTestExplicitly(demoUrl) ? test.only : executor = test.skip;
   }
   return executor.page(demoUrl);
 }

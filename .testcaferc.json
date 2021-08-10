@@ -1,7 +1,6 @@
 {
   "src": [
-    "./testing/**/*.test.js",
-    "!./testing/**/tests/*.test.js"
+    "./testing/**/*.test.js"
   ],
   "screenshots": {
     "path": "./",

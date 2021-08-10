@@ -2,13 +2,13 @@ import glob from 'glob';
 import { ClientFunction } from 'testcafe';
 import { join } from 'path';
 import { existsSync, readFileSync } from 'fs';
-import { compareScreenshot } from './helpers/screenshot-comparer';
+import { compareScreenshot } from '../utils/visual-tests/screenshot-comparer';
 import {
   getPortByIndex,
-  runTestAt,
+  runTestAtPage,
   shouldRunFramework,
   shouldRunTestAtIndex,
-} from './helpers/matrix-test-helper';
+} from '../utils/visual-tests/matrix-test-helper';
 
 const execCode = ClientFunction((code) => {
   // eslint-disable-next-line no-eval
@@ -48,7 +48,7 @@ const execTestCafeCode = (t, code) => {
     })
     // eslint-disable-next-line spellcheck/spell-checker
     .afterEach((t) => clearTimeout(t.ctx.watchDogHandle))
-    .clientScripts([{ module: 'mockdate' }, './helpers/test-utils.js']);
+    .clientScripts([{ module: 'mockdate' }, join(__dirname, '../utils/visual-tests/test-utils.js')]);
 
   const getDemoPaths = (platform) => glob.sync('JSDemos/Demos/*/*')
     .map((path) => join(path, platform));
@@ -65,7 +65,7 @@ const execTestCafeCode = (t, code) => {
       return null;
     }
 
-    const testParts = demoPath.split('/');
+    const testParts = demoPath.split(/[/\\]/);
     const widgetName = testParts[2];
     const demoName = testParts[3];
     const testName = `${widgetName}-${demoName}`;
@@ -84,7 +84,7 @@ const execTestCafeCode = (t, code) => {
       if (ignoreApproach) { return; }
     }
 
-    runTestAt(test, `http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`)
+    runTestAtPage(test, `http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`)
       .clientScripts(clientScriptSource)(testName, async (t) => {
         if (approach === 'Angular') {
           await waitForAngularLoading();

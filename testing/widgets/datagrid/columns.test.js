@@ -1,5 +1,5 @@
-import { createScreenshotsComparer } from '../../helpers/screenshot-comparer';
-import { runTest } from '../../helpers/matrix-test-helper';
+import { createScreenshotsComparer } from '../../../utils/visual-tests/screenshot-comparer';
+import { runTest } from '../../../utils/visual-tests/matrix-test-helper';
 
 fixture('DataGrid.Columns')
   .page('http://localhost:8080/')
