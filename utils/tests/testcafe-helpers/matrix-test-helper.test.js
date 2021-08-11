@@ -8,7 +8,8 @@ const productDemoFramework = [{ filename: 'JSDemos/Demos/Accordion/Overview/Angu
 const productDemo = [{ filename: 'JSDemos/Demos/Accordion/Overview/visualtestrc.json' }];
 const productDemoDescription = [{ filename: 'JSDemos/Demos/Accordion/Overview/description.md' }];
 const stubPath = [{ filename: 'stub' }];
-const customScreenPath = [{ filename: 'utils/tests/testcafe-helpers/magic/image.png' }];
+const manualScreenPath = [{ filename: 'testing/widgets/datagrid/etalons/image.png' }];
+const manualTestPath = [{ filename: 'testing/widgets/datagrid/sometest.test.js' }];
 const testStub = {
     name: 'test',
     only: {
@@ -61,13 +62,55 @@ describe('Matrix test helper tests', () => {
         expect(helper.runTestAtPage(testStub, 'http://127.0.0.1:8080/JSDemos/Demos/Accordion/Overview/Jquery/').name).toBe('test');
     });
 
-    test('Callstack identification test', () => {
+    test('Run manual test on manual etalon change', () => {
         try {
-            updateChanges(customScreenPath, {
-                manualEtalonsExpr: /.*/,
-            });
+            updateChanges(manualScreenPath);
             let value;
-            helper.runTest(testStub, '', '', '', (x) => { value = x.name; });
+            helper.runManualTest(testStub, 'DataGrid', 'SomeDemo', 'jQuery', (x) => { value = x.name; });
+            expect(value).toBe('only');
+        } finally {
+            helper.updateConfig();
+        }
+    });
+
+    test('Not run manual test on manual etalon change for another widget', () => {
+        try {
+            updateChanges(manualScreenPath);
+            let value;
+            helper.runManualTest(testStub, 'Scheduler', 'SomeDemo', 'jQuery', (x) => { value = x.name; });
+            expect(value).toBeUndefined();
+        } finally {
+            helper.updateConfig();
+        }
+    });
+
+    test('Run manual test on demo change', () => {
+        try {
+            updateChanges(productDemo);
+            let value;
+            helper.runManualTest(testStub, 'Accordion', 'Overview', 'jQuery', (x) => { value = x.name; });
+            expect(value).toBe('only');
+        } finally {
+            helper.updateConfig();
+        }
+    });
+
+    test('Not run manual test on another demo change', () => {
+        try {
+            updateChanges(productDemo);
+            let value;
+            helper.runManualTest(testStub, 'Accordion', 'AnotherDemo', 'jQuery', (x) => { value = x.name; });
+            expect(value).toBeUndefined();
+        } finally {
+            helper.updateConfig();
+        }
+    });
+
+    test('Run manual test on manual test change', () => {
+        try {
+            updateChanges(manualTestPath);
+            let value;
+            helper.runManualTest(testStub, 'DataGrid', 'SomeDemo', 'jQuery', (x) => { value = x.name; });
             expect(value).toBe('only');
         } finally {
             helper.updateConfig();
