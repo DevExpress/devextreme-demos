@@ -8,37 +8,16 @@
       :column-auto-width="true"
       :show-borders="true"
     >
+      <DxPaging :page-size="10" />
 
-      <DxPaging :page-size="10"/>
-
-      <DxColumn
-        data-field="ProductName"
-        data-type="string"
-      />
-      <DxColumn
-        data-field="UnitPrice"
-        data-type="number"
-        format="currency"
-      />
-      <DxColumn
-        data-field="OrderCount"
-        data-type="number"
-      />
-      <DxColumn
-        data-field="Quantity"
-        data-type="number"
-      />
-      <DxColumn
-        data-field="Amount"
-        data-type="number"
-        format="currency"
-      />
+      <DxColumn data-field="ProductName" data-type="string" />
+      <DxColumn data-field="UnitPrice" data-type="number" format="currency" />
+      <DxColumn data-field="OrderCount" data-type="number" />
+      <DxColumn data-field="Quantity" data-type="number" />
+      <DxColumn data-field="Amount" data-type="number" format="currency" />
 
       <DxSummary>
-        <DxTotalItem
-          column="ProductName"
-          summary-type="count"
-        />
+        <DxTotalItem column="ProductName" summary-type="count" />
         <DxTotalItem
           column="Amount"
           summary-type="sum"
@@ -52,10 +31,7 @@
         />
       </DxSummary>
 
-      <DxMasterDetail
-        :enabled="true"
-        template="productDetail"
-      />
+      <DxMasterDetail :enabled="true" template="productDetail" />
 
       <template #productDetail="{ data: detail }">
         <DxDataGrid
@@ -65,17 +41,10 @@
           :two-way-binding-enabled="false"
           :show-borders="true"
         >
+          <DxPaging :page-size="5" />
 
-          <DxPaging :page-size="5"/>
-
-          <DxColumn
-            data-field="OrderID"
-            data-type="number"
-          />
-          <DxColumn
-            data-field="ShipCity"
-            data-type="string"
-          />
+          <DxColumn data-field="OrderID" data-type="number" />
+          <DxColumn data-field="ShipCity" data-type="string" />
           <DxColumn
             data-field="OrderDate"
             data-type="datetime"
@@ -86,10 +55,7 @@
             data-type="number"
             format="currency"
           />
-          <DxColumn
-            data-field="Quantity"
-            data-type="number"
-          />
+          <DxColumn data-field="Quantity" data-type="number" />
           <DxColumn
             :allow-sorting="true"
             :calculate-cell-value="getAmount"
@@ -99,10 +65,7 @@
           />
 
           <DxSummary>
-            <DxTotalItem
-              column="OrderID"
-              summary-type="count"
-            />
+            <DxTotalItem column="OrderID" summary-type="count" />
             <DxTotalItem
               column="Quantity"
               summary-type="sum"
@@ -117,7 +80,6 @@
           </DxSummary>
         </DxDataGrid>
       </template>
-
     </DxDataGrid>
     <div class="options">
       <div class="caption">Options</div>
@@ -147,10 +109,10 @@ import {
   DxSummary,
   DxTotalItem,
   DxMasterDetail,
-  DxPaging
-} from 'devextreme-vue/data-grid';
-import { DxSlider, DxTooltip } from 'devextreme-vue/slider';
-import { productsStore, ordersStore, getOrderCount, addOrder } from './data.js';
+  DxPaging,
+} from "devextreme-vue/data-grid";
+import { DxSlider, DxTooltip } from "devextreme-vue/slider";
+import { productsStore, ordersStore, getOrderCount, addOrder } from "./data.js";
 
 export default {
   components: {
@@ -161,25 +123,25 @@ export default {
     DxMasterDetail,
     DxPaging,
     DxSlider,
-    DxTooltip
+    DxTooltip,
   },
   data() {
     return {
       updatesPerSecond: 100,
-      dataGridRefName: 'dataGrid',
+      dataGridRefName: "dataGrid",
       productsDataSource: {
         store: productsStore,
-        reshapeOnPush: true
-      }
+        reshapeOnPush: true,
+      },
     };
   },
   created() {
     setInterval(() => {
-      if(getOrderCount() > 500000) {
+      if (getOrderCount() > 500000) {
         return;
       }
 
-      for(var i = 0; i < this.updatesPerSecond / 20; i++) {
+      for (var i = 0; i < this.updatesPerSecond / 20; i++) {
         addOrder();
       }
     }, 50);
@@ -189,13 +151,13 @@ export default {
       return {
         store: ordersStore,
         reshapeOnPush: true,
-        filter: ['ProductID', '=', product.ProductID]
+        filter: ["ProductID", "=", product.ProductID],
       };
     },
     getAmount(order) {
       return order.UnitPrice * order.Quantity;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
@@ -211,18 +173,20 @@ export default {
 }
 
 .option {
-    margin-top: 10px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .option > span {
-    position: relative;
-    top: 2px;
-    margin-right: 10px;
+  position: relative;
+  top: 2px;
+  margin-right: 10px;
 }
 
 .option > .dx-widget {
-    width: 500px;
-    display: inline-block;
-    vertical-align: middle;
+  width: 500px;
+  display: inline-block;
+  vertical-align: middle;
 }
 </style>
