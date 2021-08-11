@@ -79,7 +79,7 @@ const execTestCafeCode = (t, code) => {
     const testCafeCodeSource = readFrom('../testcafe-test-code.js');
     const visualTestSettings = readFrom('../visualtestrc.json', (x) => JSON.parse(x));
 
-    if (process.env.GITHUB_CI) {
+    if (process.env.ENABLE_DEMO_TEST_SETTINGS) {
       const approachLowerCase = approach.toLowerCase();
       const ignoreApproach = visualTestSettings
         && visualTestSettings[approachLowerCase]
@@ -98,8 +98,6 @@ const execTestCafeCode = (t, code) => {
         if (testCodeSource) {
           await execCode(testCodeSource);
         }
-        await t.resizeWindow(1010, 810);
-        await t.resizeWindow(1000, 800);
 
         if (testCafeCodeSource) {
           await execTestCafeCode(t, testCafeCodeSource);
