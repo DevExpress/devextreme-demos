@@ -98,6 +98,8 @@ const execTestCafeCode = (t, code) => {
         if (testCodeSource) {
           await execCode(testCodeSource);
         }
+        await t.resizeWindow(1010, 810);
+        await t.resizeWindow(1000, 800);
 
         if (testCafeCodeSource) {
           await execTestCafeCode(t, testCafeCodeSource);
