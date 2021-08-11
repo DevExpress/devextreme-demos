@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css"
+        href="../../node_modules/devextreme/dist/css/dx.material.teal.dark.compact.css" />
+    <script src="../../node_modules/devextreme/dist/js/dx.all.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body class='dx-viewport'>
+    <div id="toolbar"></div>
+    <div id="drawer" style="height: calc(100% - 56px);">
+        <div id="content" style="height: 100%">
+            <iframe id="frame" style="width: 100%;height: calc(100% - 56px);;resize: both;"></iframe>
+            <br>
+            <div>
+                <a id='demolink' target="_blank" href="">open in separate tab</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const ui = DevExpress.ui;
+
+        let widget = "DataGrid";
+        let name = "Overview";
+        let approach = "jQuery";
+        let theme = "";
+
+        const updateDemo = () => {
+            const frame = document.getElementById('frame');
+            const demoLink = document.getElementById('demolink');
+            const link = `../../JSDemos/Demos/${widget}/${name}/${approach}/`
+            frame.src = link;
+            demoLink.href = link;
+        };
+
+        const treeViewTemplate = (data, index, element) => {
+            const container = document.createElement('div');
+            const nameContainer = document.createElement('div');
+
+            nameContainer.innerText = data.Name;
+            container.appendChild(nameContainer);
+
+            if (data.Demos && data.Demos.length > 0) {
+                const demosContainer = document.createElement('div');
+                new ui.dxList(demosContainer, {
+                    dataSource: data.Demos.map(demo => {
+                        demo.badge = demo.Badge;
+                        return demo;
+                    }),
+                    displayExpr: 'Title',
+                    onItemClick: (e) => {
+                        widget = e.itemData.Widget;
+                        name = e.itemData.Name;
+                        updateDemo();
+                    }
+                });
+
+                container.appendChild(demosContainer);
+            }
+
+            return container;
+        };
+
+        const drawerTemplate = () => {
+            const treeViewElement = document.createElement('div');
+
+            const treeView = new ui.dxTreeView(treeViewElement, {
+                dataStructure: 'tree',
+                dataSource: '../../JSDemos/menuMeta.json',
+                displayExpr: 'Name',
+                itemsExpr: 'Groups',
+                width: 250,
+                //height: 600,
+                itemTemplate: treeViewTemplate
+            });
+
+            return treeViewElement;
+
+        };
+        document.addEventListener("DOMContentLoaded", function () {
+            const drawerElement = document.getElementById('drawer');
+            const toolbarElement = document.getElementById('toolbar');
+
+            const drawer = new ui.dxDrawer(drawerElement, {
+                opened: true,
+                closeOnOutsideClick: false,
+                template: drawerTemplate
+            });
+
+            const hamburger = new ui.dxToolbar(toolbarElement, {
+                items: [{
+                    location: 'before',
+                    widget: 'dxButton',
+                    options: {
+                        icon: 'menu',
+                        onClick: () => drawer.toggle()
+                    }
+                },{
+                    location: 'after',
+                    widget: 'dxSelectBox',
+                    options: {
+                        items: ['jQuery', 'Angular', 'Vue', 'React'],
+                        value: approach,
+                        onValueChanged: () => updateDemo()
+                    }
+                }, {
+                    location: 'after',
+                    widget: 'dxButton',
+                    options: {
+                        icon: 'refresh',
+                        onClick: () => updateDemo()
+                    }
+                }],
+            });
+
+            updateDemo();
+        })
+    </script>
+</body>
+
+</html>
