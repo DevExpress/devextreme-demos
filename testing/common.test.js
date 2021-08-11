@@ -10,6 +10,14 @@ import {
   shouldRunTestAtIndex,
 } from '../utils/visual-tests/matrix-test-helper';
 
+const globalReadFrom = (basePath, relativePath, mapCallback) => {
+  const absolute = join(basePath, relativePath);
+  if (existsSync(absolute)) {
+    const result = readFileSync(absolute, 'utf8');
+    return (mapCallback && result && mapCallback(result)) || result;
+  }
+  return null;
+};
 const execCode = ClientFunction((code) => {
   // eslint-disable-next-line no-eval
   const result = eval(code);
@@ -31,9 +39,11 @@ const waitForAngularLoading = ClientFunction(() => new Promise((resolve) => {
   }, 100);
 }));
 
-const setOverflowClip = ClientFunction(() => {
-  testUtils.postponeUntilFound('body').then(() => testUtils.findElements('body').forEach((x) => { x.style.overflow = 'clip'; }));
-});
+const injectStyle = (style) => `
+    var style = document.createElement('style'); 
+    style.innerHTML = \`${style}\`;
+    document.getElementsByTagName('head')[0].appendChild(style);
+  `;
 
 const execTestCafeCode = (t, code) => {
   // eslint-disable-next-line no-eval
@@ -43,7 +53,6 @@ const execTestCafeCode = (t, code) => {
 
 ['jQuery', 'React', 'Vue', 'Angular'].forEach((approach) => {
   if (!shouldRunFramework(approach)) { return; }
-
   fixture(approach)
     .beforeEach(async (t) => {
       // eslint-disable-next-line spellcheck/spell-checker
@@ -52,7 +61,11 @@ const execTestCafeCode = (t, code) => {
     })
     // eslint-disable-next-line spellcheck/spell-checker
     .afterEach((t) => clearTimeout(t.ctx.watchDogHandle))
-    .clientScripts([{ module: 'mockdate' }, join(__dirname, '../utils/visual-tests/test-utils.js')]);
+    .clientScripts([
+      { module: 'mockdate' },
+      join(__dirname, '../utils/visual-tests/inject/test-utils.js'),
+      { content: injectStyle(globalReadFrom(__dirname, '../utils/visual-tests/inject/test-styles.css')) },
+    ]);
 
   const getDemoPaths = (platform) => glob.sync('JSDemos/Demos/*/*')
     .map((path) => join(path, platform));
@@ -60,14 +73,8 @@ const execTestCafeCode = (t, code) => {
   getDemoPaths(approach).forEach((demoPath, index) => {
     if (!shouldRunTestAtIndex(index) || !existsSync(demoPath)) { return; }
 
-    function readFrom(relativePath, mapCallback) {
-      const absolute = join(demoPath, relativePath);
-      if (existsSync(absolute)) {
-        const result = readFileSync(absolute, 'utf8');
-        return (mapCallback && result && mapCallback(result)) || result;
-      }
-      return null;
-    }
+    // eslint-disable-next-line max-len
+    const readFrom = (relativePath, mapCallback) => globalReadFrom(demoPath, relativePath, mapCallback);
 
     const testParts = demoPath.split(/[/\\]/);
     const widgetName = testParts[2];
@@ -78,6 +85,7 @@ const execTestCafeCode = (t, code) => {
     const testCodeSource = readFrom('../test-code.js');
     const testCafeCodeSource = readFrom('../testcafe-test-code.js');
     const visualTestSettings = readFrom('../visualtestrc.json', (x) => JSON.parse(x));
+    const visualTestStyles = readFrom('../test-styles.css', (x) => injectStyle(x));
 
     if (process.env.ENABLE_DEMO_TEST_SETTINGS) {
       const approachLowerCase = approach.toLowerCase();
@@ -90,7 +98,9 @@ const execTestCafeCode = (t, code) => {
 
     runTestAtPage(test, `http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`)
       .clientScripts(clientScriptSource)(testName, async (t) => {
-        await setOverflowClip();
+        if (visualTestStyles) {
+          await execCode(visualTestStyles);
+        }
 
         if (approach === 'Angular') {
           await waitForAngularLoading();
