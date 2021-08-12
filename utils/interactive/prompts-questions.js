@@ -224,7 +224,6 @@ module.exports = {
     getGroupQuestions,
     askGroup,
     askNewOrExisting,
-    askApproachesFolder,
     askCategory,
     askDemo,
     askDemoToUpdate,
