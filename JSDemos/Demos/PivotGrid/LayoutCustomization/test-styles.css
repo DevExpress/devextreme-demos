@@ -1,0 +1,9 @@
+.dx-pivotgrid:first-of-type {
+    height: 100vh !important;
+}
+
+.options {
+    position: absolute;
+    top: 0px;
+    background-color: white;
+}
