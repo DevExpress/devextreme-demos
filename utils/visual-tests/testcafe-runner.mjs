@@ -161,7 +161,7 @@ async function main() {
 
   const failedCount = await runner
     .reporter(reporter)
-    .browsers(process.env.BROWSERS || 'chrome:headless')
+    .browsers(process.env.BROWSERS || 'chrome:headless --disable-partial-raster --disable-skia-runtime-opts --run-all-compositor-stages-before-draw --disable-new-content-rendering-timeout --disable-threaded-animation --disable-threaded-scrolling --disable-checker-imaging --disable-image-animation-resync --use-gl="swiftshader" --disable-features=PaintHolding --js-flags=--random-seed=2147483647 --font-render-hinting=none --disable-font-subpixel-positioning')
     .concurrency(concurrency || 1)
     .run({ quarantineMode: !!process.env.TCQUARANTINE });
 
