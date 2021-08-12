@@ -206,10 +206,6 @@ const askDemoToUpdate = async(menuMetaData) => {
     return prompts(getDemoToUpdateQuestions(menuMetaData), { onCancel });
 };
 
-const askApproachesFolder = async(approaches) => {
-    return prompts(getApproachesFoldersQuestions(approaches), { onCancel });
-};
-
 const askLinkRepositories = async() => {
     return prompts(getLinkRepositoriesQuestions(), { onCancel });
 };

@@ -26,16 +26,27 @@
     </div>
     <script>
         const ui = DevExpress.ui;
+        const themeCookieName = 'dx-demo-theme';
 
-        let widget = "DataGrid";
-        let name = "Overview";
-        let approach = "jQuery";
-        let theme = "";
+        let widget = localStorage.getItem('dx-demos-widget') || 'DataGrid';
+        let name = localStorage.getItem('dx-demos-name') || 'Overview';
+        let approach = localStorage.getItem('dx-demos-approach') || 'jQuery';
+        let theme = localStorage.getItem('dx-demos-theme') || 'dx.light.css';
 
         const updateDemo = () => {
+            const now = new Date();
             const frame = document.getElementById('frame');
             const demoLink = document.getElementById('demolink');
-            const link = `../../JSDemos/Demos/${widget}/${name}/${approach}/`
+            const link = `../../JSDemos/Demos/${widget}/${name}/${approach}/`;
+            // expires in a month
+            now.setTime(now.getTime() + 1000*60*60*24*30);
+            document.cookie = `dx-demo-theme=${theme};path=/;expires=${now.toUTCString()}`;
+
+            localStorage.setItem('dx-demos-widget', widget);
+            localStorage.setItem('dx-demos-name', name);
+            localStorage.setItem('dx-demos-approach', approach);
+            localStorage.setItem('dx-demos-theme', theme);
+
             frame.src = link;
             demoLink.href = link;
         };
@@ -77,14 +88,13 @@
                 displayExpr: 'Name',
                 itemsExpr: 'Groups',
                 width: 250,
-                //height: 600,
                 itemTemplate: treeViewTemplate
             });
 
             return treeViewElement;
 
         };
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener('DOMContentLoaded', function () {
             const drawerElement = document.getElementById('drawer');
             const toolbarElement = document.getElementById('toolbar');
 
@@ -102,13 +112,24 @@
                         icon: 'menu',
                         onClick: () => drawer.toggle()
                     }
-                },{
+                }, {
                     location: 'after',
                     widget: 'dxSelectBox',
                     options: {
                         items: ['jQuery', 'Angular', 'Vue', 'React'],
                         value: approach,
-                        onValueChanged: () => updateDemo()
+                        width: 100,
+                        onValueChanged: (e) => { approach = e.value; updateDemo();}
+                    }
+                }, {
+                    location: 'after',
+                    widget: 'dxSelectBox',
+                    options: {
+                        dataSource: '/themes',
+                        value: theme,
+                        width: 250,
+                        searchEnabled: true,
+                        onValueChanged: (e) => { theme = e.value; updateDemo(); }
                     }
                 }, {
                     location: 'after',
