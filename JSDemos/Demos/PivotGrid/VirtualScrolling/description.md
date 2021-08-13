@@ -4,4 +4,4 @@ To allow users to scroll the PivotGrid virtually, set the scrolling.[mode](/Docu
 
 In this demo, the PivotGrid contains approximately 4000 cells. To see virtual scrolling in action, scroll the PivotGrid horizontally.
 
-This demo shows the PivotGrid bound to the local storage. To see virtual scrolling combined with a remote store, see the [Remote Virtual Scrolling](https://js.devexpress.com/Demos/WidgetsGallery/Demo/PivotGrid/RemoteVirtualScrolling) demo.
+This demo shows the PivotGrid bound to the local storage. To see virtual scrolling when cells display data from a server, refer to the [Remote Virtual Scrolling](https://js.devexpress.com/Demos/WidgetsGallery/Demo/PivotGrid/RemoteVirtualScrolling) demo.
