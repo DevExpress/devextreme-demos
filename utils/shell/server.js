@@ -49,4 +49,4 @@ app.use(
 
 app.listen(port);
 
-open(`http://localhost:${port}/utils/shell`);
+open(`http://localhost:${port}/`);
