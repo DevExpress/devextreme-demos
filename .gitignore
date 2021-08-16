@@ -12,12 +12,12 @@ NuGet
 *.rej
 *.ldf
 *proj.user
-package-lock.json
 repository.config.json
 coverage
 artifacts
 screenshots
 bundles
+changed-files.json
 
 *d.ts
 gulpfile.js/.eslintrc.js
