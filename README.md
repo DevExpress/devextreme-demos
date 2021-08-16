@@ -37,7 +37,6 @@ To return to using separate files from `node_modules`, run `npm run prepare-js`.
     npm run launch-demo
     ```
 
-1. Use the built-in CLI to choose the category, the demo that you want to launch, and the technology.
 1. Navigate to http://localhost:3000/.
 
 You can pass additional parameter to specify port. It can be useful when you need to fast switching beatween one demo on different frameworks:
