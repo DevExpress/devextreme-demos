@@ -1,4 +1,8 @@
 {
-    "angular": true,
-    "react": true
+    "angular": {
+        "ignore": true
+    },
+    "react": {
+        "ignore": true
+    }
 }

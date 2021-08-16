@@ -1,3 +1,5 @@
 {
-    "vue": true
+    "vue": {
+        "ignore": true
+    }
 }

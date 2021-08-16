@@ -1,3 +1,5 @@
 {
-    "react": true
+    "react": {
+        "ignore": true
+    }
 }

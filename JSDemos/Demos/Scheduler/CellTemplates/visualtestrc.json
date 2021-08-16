@@ -1,4 +1,8 @@
 {
-    "angular": true,
-    "vue": true
+    "angular": {
+        "ignore": true
+    },
+    "vue": {
+        "ignore": true
+    }
 }
