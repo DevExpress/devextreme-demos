@@ -1,5 +1,3 @@
 {
-    "angular": {
-        "ignore": true
-    }
+    "angular": true
 }
