@@ -1,3 +1,7 @@
 body {
     overflow: clip;
 }
+
+* {
+    text-rendering: geometricPrecision !important;
+}

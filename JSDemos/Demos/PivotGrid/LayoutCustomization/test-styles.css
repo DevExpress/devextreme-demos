@@ -5,5 +5,5 @@
 .options {
     position: absolute;
     top: 0px;
-    background-color: white;
+    background-color: white !important;
 }
