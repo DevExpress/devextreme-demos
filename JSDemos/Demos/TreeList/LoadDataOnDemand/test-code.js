@@ -9,7 +9,7 @@ testUtils.importAnd(()=>'devextreme/ui/tree_list', ()=>DevExpress.ui.dxTreeList,
 
         instance.option("dataSource", {
             load: function() {
-              return [
+                return new Promise((resolve) => setTimeout(() => resolve([
                     {
                         "id": "App_Data",
                         "parentId": "",
@@ -230,7 +230,7 @@ testUtils.importAnd(()=>'devextreme/ui/tree_list', ()=>DevExpress.ui.dxTreeList,
                         "isDirectory": false,
                         "hasItems": false
                     }
-                ]
+                ])), 100);
             }
           });
     });
