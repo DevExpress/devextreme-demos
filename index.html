@@ -102,12 +102,8 @@
 
                     const selectedItemKey = parseInt(localStorage.getItem('dx-demos-selected'));
 
-                    e.component.expandItem(selectedItemKey).then(() => {
-                        e.component.selectItem(selectedItemKey);
-                        setTimeout(() => {
-                            e.component.scrollToItem(selectedItemKey);
-                        }, 400);
-                    });
+                    e.component.scrollToItem(selectedItemKey);
+                    e.component.selectItem(selectedItemKey);
                 }
             });
 
