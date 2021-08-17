@@ -5226,7 +5226,6 @@
           {
             "Title": "Templates",
             "Name": "Templates",
-            "DocUrl": "Guide/UI_Components/Lookup/Customize_the_Appearance/Customize_Item_Appearance/",
             "Widget": "Lookup",
             "MvcAdditionalFiles": [
               "/Models/DataGrid/Employee.cs",
