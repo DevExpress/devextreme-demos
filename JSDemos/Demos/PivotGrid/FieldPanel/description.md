@@ -1,14 +1,16 @@
-A field panel is a component that displays pivot grid fields involved in summaries calculation. It consists of four field areas: column, row, data and filter. Field panel allows users to manage fields which makes this component similar to the [field chooser](https://js.devexpress.com/Demos/WidgetsGallery/Demo/PivotGrid/IntegratedFieldChooser). You can use these components simultaneously as shown in this demo.
+A field panel is an element that displays pivot grid fields involved in summary calculation. The field panel consists of four field areas: column, row, data, and filter. Users can drag and drop fields between these areas, much like in the [field chooser](https://js.devexpress.com/Demos/WidgetsGallery/Demo/PivotGrid/IntegratedFieldChooser). You can use the field panel and the field chooser simultaneously, as shown in this demo.
 
-To configure a field panel, use the [fieldPanel](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldPanel) object. Assign **true** to this object's [visible](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldPanel/#visible) property to display the fields panel. The [allowFieldDragging](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldPanel/#allowFieldDragging) property defines whether users can drag and drop fields in the field panel. The following properties specify the visibility of fields from various areas in the field panel:
+To display the field panel, enable the [fieldPanel](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldPanel/).[visible](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldPanel/#visible) property. If want to specify the visibility of fields from specific areas, set the following properties in the **fieldPanel** object:
 
 - [showColumnFields](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldPanel/#showColumnFields)
 - [showRowFields](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldPanel/#showRowFields)
 - [showDataFields](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldPanel/#showDataFields)
 - [showFilterFields](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldPanel/#showFilterFields)
 
-Use the checkboxes below the pivot grid to show or hide the corresponding fields.
+In this demo, you can click the checkboxes below the PivotGrid to enable or disable these properties.
 
-If the field panel is visible and the [allowSorting](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#allowSorting) and [allowFiltering](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#allowFiltering) properties are set to **true**, users can click icons to sort or filter pivot grid fields.
+If you do not want users to drag and drop fields, disable the **fieldPanel**.[allowFieldDragging](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldPanel/#allowFieldDragging) property. In this case, the users can only use the field chooser to reorganize the fields.
 
-This demo also shows how to use the [onContextMenuPreparing](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#onContextMenuPreparing) to manage fields displayed in the field panel at runtime. Invoke that menu to hide fields, change summary types, or display field chooser.
+The field panel also allows users to sort and filter pivot grid fields. Click a field to change the sort order. Click a funnel icon to open the filter popup. To enable these features, set the [allowSorting](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#allowSorting) and [allowFiltering](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#allowFiltering) to **true**.
+
+This demo also shows how to add custom commands to a field's context menu. For instance, right-click the Sales (Sum) field, and you will see three commands. Two of them (Hide field and Summary Type) are custom. Review the **onContextMenuPreparing** handler implemenation to see how these commands are added to the context menu. For more information, refer to the [onContextMenuPreparing](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#onContextMenuPreparing) help topic.
