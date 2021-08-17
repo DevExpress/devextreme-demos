@@ -33,7 +33,7 @@ function updateChanges(value, options) {
 
 describe('Matrix test helper tests', () => {
     beforeAll(() => {
-        process.env.GITHUB_CI = true;
+        process.env.ENABLE_DEMO_TEST_SETTINGS = true;
         process.env.CHANGEDFILEINFOSPATH = 'changed-files.json';
     });
 
