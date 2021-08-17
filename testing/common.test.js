@@ -90,8 +90,11 @@ const execTestCafeCode = (t, code) => {
     if (process.env.ENABLE_DEMO_TEST_SETTINGS) {
       const approachLowerCase = approach.toLowerCase();
       const ignoreApproach = visualTestSettings
-        && visualTestSettings[approachLowerCase]
-        && visualTestSettings[approachLowerCase].ignore;
+        && (visualTestSettings.ignore
+          || (visualTestSettings[approachLowerCase]
+            && visualTestSettings[approachLowerCase].ignore
+          )
+        );
 
       if (ignoreApproach) { return; }
     }
