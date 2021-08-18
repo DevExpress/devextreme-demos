@@ -20,6 +20,6 @@
     align-items: center;
     justify-content: space-between;
 }
-::ng-deep #edit {
+::ng-deep .dx-button {
     margin-left: auto;
 }
