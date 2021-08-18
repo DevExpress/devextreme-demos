@@ -53,7 +53,7 @@ class App extends React.Component {
             </tbody>
           </table>
           <div className="action">
-          <div className="label">Choose a number of months:
+            <div className="label">Choose a number of months:
             </div>
             <SelectBox
               id="choose-months"
