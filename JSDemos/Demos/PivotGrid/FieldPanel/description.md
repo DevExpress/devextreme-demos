@@ -1,6 +1,6 @@
 A field panel is an element that displays pivot grid fields involved in summary calculation. The field panel consists of four field areas: column, row, data, and filter. Users can drag and drop fields between these areas, much like in the [field chooser](https://js.devexpress.com/Demos/WidgetsGallery/Demo/PivotGrid/IntegratedFieldChooser). You can use the field panel and the field chooser simultaneously, as shown in this demo.
 
-To display the field panel, enable the [fieldPanel](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldPanel/).[visible](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldPanel/#visible) property. If want to specify the visibility of fields from specific areas, set the following properties in the **fieldPanel** object:
+To display the field panel, enable the [fieldPanel](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldPanel/).[visible](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldPanel/#visible) property. If want to hide fields from specific areas, disable the corresponding properties in the **fieldPanel** object:
 
 - [showColumnFields](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldPanel/#showColumnFields)
 - [showRowFields](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/fieldPanel/#showRowFields)
