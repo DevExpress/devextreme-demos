@@ -42,7 +42,7 @@ class App extends React.Component {
         <div id="widget-area">
           <FileManager id="file-manager" fileSystemProvider={this.fileSystemProvider} allowedFileExtensions={allowedFileExtensions}>
             {/* uncomment the code below to enable file/directory management */}
-            <Permissions
+            {/* <Permissions
               create={true}
               copy={true}
               move={true}
@@ -50,7 +50,7 @@ class App extends React.Component {
               rename={true}
               upload={true}
               download={true}>
-            </Permissions>
+            </Permissions> */}
           </FileManager>
           <div id="request-panel">
             {
