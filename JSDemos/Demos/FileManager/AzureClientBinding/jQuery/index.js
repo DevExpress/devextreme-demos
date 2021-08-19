@@ -34,9 +34,9 @@ $(function() {
             maxFileSize: 1048576
         },
         permissions: {
+            download: true
             // uncomment the code below to enable file/directory management
             /* create: true,
-            download: true
             copy: true,
             move: true,
             delete: true,
