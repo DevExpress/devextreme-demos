@@ -1,0 +1,5 @@
+/* use same title style for all frameworks */
+
+.demo-container .long-title h3 {
+    margin-top: 0px;
+}
