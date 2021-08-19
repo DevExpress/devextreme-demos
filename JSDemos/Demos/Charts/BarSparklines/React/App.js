@@ -32,7 +32,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div class="long-title"><h3>Monthly Prices of Aluminium, Nickel and Copper</h3></div>
+        <div className="long-title"><h3>Monthly Prices of Aluminium, Nickel and Copper</h3></div>
         <div id="chart-demo">
           <table
             className="demo-table"
