@@ -81,7 +81,7 @@ var AzureFileSystem = function(azureGateway) {
 
     var downloadFile = function(path) {
         gateway.getBlobUrl(path)
-            .done(function(accessUrl) {
+            .then(function(accessUrl) {
                 window.location.href = accessUrl;
             });
     };

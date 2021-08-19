@@ -41,6 +41,9 @@ class App extends React.Component {
         <LoadPanel visible={this.state.loadPanelVisible} position={loadPanelPosition} />
         <div id="widget-area">
           <FileManager id="file-manager" fileSystemProvider={this.fileSystemProvider} allowedFileExtensions={allowedFileExtensions}>
+            <Permissions
+              download={true}>
+            </Permissions>
             {/* uncomment the code below to enable file/directory management */}
             {/* <Permissions
               create={true}
