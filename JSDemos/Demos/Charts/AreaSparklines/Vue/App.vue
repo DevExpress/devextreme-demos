@@ -64,4 +64,8 @@ h3.long-title {
     text-align: center;
     margin-bottom: 20px;
 }
+
+.demo-container .long-title h3 {
+    margin-top: 0px;
+}
 </style>
