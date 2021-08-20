@@ -12,48 +12,48 @@
       text="Clear Selection"
       @click="clearSelection"
     />
-    <DxDataGrid
-      id="grid-container"
-      :data-source="employees"
-      :ref="dataGridRefName"
-      :selected-row-keys="selectedRowKeys"
-      :show-borders="true"
-      key-expr="ID"
-      @selection-changed="onSelectionChanged"
-    >
-      <DxSelection mode="multiple"/>
-      <DxColumn
-        :width="70"
-        data-field="Prefix"
-        caption="Title"
-      />
-      <DxColumn
-        data-field="FirstName"
-      />
-      <DxColumn
-        data-field="LastName"
-      />
-      <DxColumn
-        :width="180"
-        data-field="Position"
-      />
-      <DxColumn
-        :width="125"
-        data-field="BirthDate"
-        data-type="date"
-      />
-      <DxColumn
-        :width="125"
-        data-field="HireDate"
-        data-type="date"
-      />
-    </DxDataGrid>
-    <div class="selected-data">
-      <span class="caption">Selected Records:</span>
-      <span>
-        {{ selectedEmployeeNames }}
-      </span>
-    </div>
+  </div>
+  <DxDataGrid
+    id="grid-container"
+    :data-source="employees"
+    :ref="dataGridRefName"
+    :selected-row-keys="selectedRowKeys"
+    :show-borders="true"
+    key-expr="ID"
+    @selection-changed="onSelectionChanged"
+  >
+    <DxSelection mode="multiple"/>
+    <DxColumn
+      :width="70"
+      data-field="Prefix"
+      caption="Title"
+    />
+    <DxColumn
+      data-field="FirstName"
+    />
+    <DxColumn
+      data-field="LastName"
+    />
+    <DxColumn
+      :width="180"
+      data-field="Position"
+    />
+    <DxColumn
+      :width="125"
+      data-field="BirthDate"
+      data-type="date"
+    />
+    <DxColumn
+      :width="125"
+      data-field="HireDate"
+      data-type="date"
+    />
+  </DxDataGrid>
+  <div class="selected-data">
+    <span class="caption">Selected Records:</span>{{' '}}
+    <span>
+      {{ selectedEmployeeNames }}
+    </span>
   </div>
 </template>
 <script>
@@ -125,18 +125,14 @@ export default {
 </script>
 <style scoped>
 #grid {
-  position: relative;
-}
-
-#grid-container {
-  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 #select-prefix {
   width: 150px;
-  margin-right: 4px;
-  display: inline-block;
-  vertical-align: middle;
+  margin-right: 8px;
 }
 
 .selected-data {
