@@ -77,9 +77,7 @@
             }
 
             if(item.Groups && item.Groups.length) {
-                item.Groups.forEach(g => {
-                    processDataSourceItem(g);
-                });
+                item.Groups.forEach(processDataSourceItem);
             }
 
             return item;
@@ -108,7 +106,7 @@
                 url:'JSDemos/menuMeta.json',
                 dataType:'json'
             }).then(data => {
-                treeView.option('dataSource', data.map(g => processDataSourceItem(g)));
+                treeView.option('dataSource', data.map(processDataSourceItem));
                 const selectedItemKey = parseInt(localStorage.getItem('dx-demos-selected'));
                 treeView.scrollToItem(selectedItemKey);
                 treeView.selectItem(selectedItemKey);
