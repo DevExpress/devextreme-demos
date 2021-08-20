@@ -1,59 +1,61 @@
 <template>
-  <div id="grid">
-    <DxSelectBox
-      id="select-prefix"
-      :data-source="['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.']"
-      :value="prefix"
-      placeholder="Select title"
-      @value-changed="filterSelection"
-    />
-    <DxButton
-      :disabled="!selectedRowKeys.length"
-      text="Clear Selection"
-      @click="clearSelection"
-    />
-  </div>
-  <DxDataGrid
-    id="grid-container"
-    :data-source="employees"
-    :ref="dataGridRefName"
-    :selected-row-keys="selectedRowKeys"
-    :show-borders="true"
-    key-expr="ID"
-    @selection-changed="onSelectionChanged"
-  >
-    <DxSelection mode="multiple"/>
-    <DxColumn
-      :width="70"
-      data-field="Prefix"
-      caption="Title"
-    />
-    <DxColumn
-      data-field="FirstName"
-    />
-    <DxColumn
-      data-field="LastName"
-    />
-    <DxColumn
-      :width="180"
-      data-field="Position"
-    />
-    <DxColumn
-      :width="125"
-      data-field="BirthDate"
-      data-type="date"
-    />
-    <DxColumn
-      :width="125"
-      data-field="HireDate"
-      data-type="date"
-    />
-  </DxDataGrid>
-  <div class="selected-data">
-    <span class="caption">Selected Records:</span>{{' '}}
-    <span>
-      {{ selectedEmployeeNames }}
-    </span>
+  <div>
+    <div id="grid">
+      <DxSelectBox
+        id="select-prefix"
+        :data-source="['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.']"
+        :value="prefix"
+        placeholder="Select title"
+        @value-changed="filterSelection"
+      />
+      <DxButton
+        :disabled="!selectedRowKeys.length"
+        text="Clear Selection"
+        @click="clearSelection"
+      />
+    </div>
+    <DxDataGrid
+      id="grid-container"
+      :data-source="employees"
+      :ref="dataGridRefName"
+      :selected-row-keys="selectedRowKeys"
+      :show-borders="true"
+      key-expr="ID"
+      @selection-changed="onSelectionChanged"
+    >
+      <DxSelection mode="multiple"/>
+      <DxColumn
+        :width="70"
+        data-field="Prefix"
+        caption="Title"
+      />
+      <DxColumn
+        data-field="FirstName"
+      />
+      <DxColumn
+        data-field="LastName"
+      />
+      <DxColumn
+        :width="180"
+        data-field="Position"
+      />
+      <DxColumn
+        :width="125"
+        data-field="BirthDate"
+        data-type="date"
+      />
+      <DxColumn
+        :width="125"
+        data-field="HireDate"
+        data-type="date"
+      />
+    </DxDataGrid>
+    <div class="selected-data">
+      <span class="caption">Selected Records:</span>{{ ' ' }}
+      <span>
+        {{ selectedEmployeeNames }}
+      </span>
+    </div>
   </div>
 </template>
 <script>
