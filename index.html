@@ -3,7 +3,7 @@
 
 <head>
     <link rel="stylesheet" type="text/css"
-        href="../../node_modules/devextreme/dist/css/dx.material.teal.dark.compact.css" />
+        href="../../node_modules/devextreme/dist/css/dx.dark.css" />
     <script src="../../node_modules/devextreme/dist/js/dx.all.js"></script>
     <style>
         body, html {
@@ -34,6 +34,7 @@
 
         let approach = localStorage.getItem('dx-demos-approach') || 'jQuery';
         let theme = localStorage.getItem('dx-demos-theme') || 'dx.light.css';
+        let treeList;
 
         const setThemeCookie = () => {
             const now = new Date();
@@ -47,7 +48,7 @@
             localStorage.setItem('dx-demos-theme', theme);
         };
 
-        const updateDemo = (widget, name) => {
+        const updateDemo = () => {
             setThemeCookie();
             updateLocalStore();
 
@@ -57,8 +58,12 @@
                 .split('/')
                 .filter(s => s !== '');
 
-            if(widget) pathParts[2] = widget;
-            if(name) pathParts[3] = name;
+            const selectedData = treeList.getSelectedRowsData('leavesOnly');
+            if(selectedData.length) {
+                pathParts[2] = selectedData[0].Widget;
+                pathParts[3] = selectedData[0].Name;
+            }
+
             pathParts[4] = approach;
 
             const link = pathParts.join('/') + '/';
@@ -84,35 +89,43 @@
         };
 
         const drawerTemplate = () => {
-            const treeViewElement = document.createElement('div');
+            const treeListElement = document.createElement('div');
 
-            const treeView = new ui.dxTreeView(treeViewElement, {
+            treeList = new ui.dxTreeList(treeListElement, {
                 dataStructure: 'tree',
-                displayExpr: 'Title',
                 itemsExpr: 'Groups',
-                searchEnabled: true,
                 width: 250,
-                onItemSelectionChanged: (e) => {
-                    if(e.itemData.selected && e.itemData.Widget) {
-                        localStorage.setItem('dx-demos-selected', e.node.key);
-                        updateDemo(e.itemData.Widget, e.itemData.Name);
-                    }
+                height: "100%",
+                selection: {
+                    mode: 'single'
                 },
-                selectByClick: true,
-                selectionMode: 'single',
+                stateStoring: {
+                    enabled: true,
+                    type: 'localStorage',
+                    storageKey: 'treeListStorage'
+                },
+                onSelectionChanged: updateDemo,
+                columns: [{
+                    dataField: 'Title',
+                    dataType: 'string',
+                    filterOperations: ['contains']
+                }],
+                showColumnHeaders: false,
+                filterMode: 'fullBranch',
+                filterRow: {
+                    visible: true
+                }
             });
 
             DevExpress.utils.ajax.sendRequest({
                 url:'JSDemos/menuMeta.json',
                 dataType:'json'
             }).then(data => {
-                treeView.option('dataSource', data.map(processDataSourceItem));
-                const selectedItemKey = parseInt(localStorage.getItem('dx-demos-selected'));
-                treeView.scrollToItem(selectedItemKey);
-                treeView.selectItem(selectedItemKey);
+                treeList.option('dataSource', data.map(processDataSourceItem));
+                updateDemo();
             });
 
-            return treeViewElement;
+            return treeListElement;
         };
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -161,7 +174,7 @@
                     }
                 }],
             });
-        })
+        });
     </script>
 </body>
 
