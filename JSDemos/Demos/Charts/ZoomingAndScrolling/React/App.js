@@ -9,6 +9,8 @@ import Chart, {
   ScrollBar
 } from 'devextreme-react/chart';
 
+const visualRange = { startValue: 300, endValue: 500 };
+
 class App extends React.Component {
   render() {
     return (
@@ -18,7 +20,7 @@ class App extends React.Component {
         dataSource={zoomingData}>
         <Series argumentField="arg" valueField="y1" />
         <Series argumentField="arg" valueField="y2" />
-        <ArgumentAxis defaultVisualRange={{ startValue: 300, endValue: 500 }} />
+        <ArgumentAxis defaultVisualRange={visualRange} />
         <ScrollBar visible={true} />
         <ZoomAndPan argumentAxis="both" />
         <Legend visible={false} />
