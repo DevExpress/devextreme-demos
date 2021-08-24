@@ -10,11 +10,16 @@ import Chart, {
   LoadingIndicator,
   Pane,
   Tooltip,
-  Crosshair
+  Crosshair,
+  Margin,
+  HorizontalLine
 } from 'devextreme-react/chart';
 import CustomStore from 'devextreme/data/custom_store';
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
 import TooltipTemplate from './TooltipTemplate.js';
+
+const minVisualRangeLength = { minutes: 10 };
+const defaultVisualRange = { length: 'hour' };
 
 class App extends React.Component {
 
@@ -67,9 +72,9 @@ class App extends React.Component {
           id="chart"
           ref={this.storeChartRef}
           dataSource={this.state.dataSource}
-          margin={{ right: 30 }}
           title="Stock Price"
           customizePoint={this.customizePoint}>
+          <Margin right={30} />
           <Series
             pane="Price"
             argumentField="date"
@@ -95,8 +100,8 @@ class App extends React.Component {
           <Legend visible={false} />
           <ArgumentAxis
             argumentType="datetime"
-            minVisualRangeLength={{ minutes: 10 }}
-            defaultVisualRange={{ length: 'hour' }} />
+            minVisualRangeLength={minVisualRangeLength}
+            defaultVisualRange={defaultVisualRange} />
           <ValueAxis placeholderSize={50} />
           <ZoomAndPan argumentAxis="both" />
           <ScrollBar visible={true} />
@@ -108,9 +113,9 @@ class App extends React.Component {
             contentRender={TooltipTemplate}
           />
           <Crosshair
-            enabled={true}
-            horizontalLine={{ visible: false }}
-          />
+            enabled={true}>
+            <HorizontalLine visible={false} />
+          </Crosshair>
         </Chart>
       </div>
     );

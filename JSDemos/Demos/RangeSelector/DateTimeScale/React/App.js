@@ -2,13 +2,15 @@ import React from 'react';
 import RangeSelector, { Margin, Chart, CommonSeriesSettings, Series, Scale, TickInterval, MinorTickInterval, SliderMarker } from 'devextreme-react/range-selector';
 import { dataSource } from './data.js';
 
+const defaultValue = ['2013/03/01', '2013/03/07'];
+
 function App() {
   return (
     <RangeSelector
       id="range-selector"
       dataSource={dataSource}
       title="Select a Month Period"
-      defaultValue={['2013/03/01', '2013/03/07']}
+      defaultValue={defaultValue}
     >
       <Margin top={50} />
       <Chart>
