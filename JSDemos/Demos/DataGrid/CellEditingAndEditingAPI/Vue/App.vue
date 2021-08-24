@@ -6,7 +6,6 @@
       :show-borders="true"
       :selected-row-keys="selectedItemKeys"
       @selection-changed="selectionChanged"
-      @toolbar-preparing="onToolbarPreparing"
     >
       <DxEditing
         :allow-updating="true"
@@ -17,7 +16,7 @@
       <DxPaging :enabled="false"/>
       <DxSelection mode="multiple"/>
       <DxColumn
-        :width="55"
+        width="55"
         data-field="Prefix"
         caption="Title"
       />
@@ -28,11 +27,11 @@
         data-field="LastName"
       />
       <DxColumn
-        :width="170"
+        width="170"
         data-field="Position"
       />
       <DxColumn
-        :width="125"
+        width="125"
         data-field="StateID"
         caption="State"
       >
@@ -46,14 +45,17 @@
         data-field="BirthDate"
         data-type="date"
       />
-      <template #deleteButton>
-        <DxButton
-          @click="deleteRecords()"
-          :disabled="!selectedItemKeys.length"
-          icon="trash"
-          text="Delete Selected Records"
-        />
-      </template>
+      <DxToolbar>
+        <DxItem name="addRowButton" show-text="always"/>
+        <DxItem location="after">
+          <DxButton
+            @click="deleteRecords()"
+            :disabled="!selectedItemKeys.length"
+            icon="trash"
+            text="Delete Selected Records"
+          />
+        </DxItem>
+      </DxToolbar>
     </DxDataGrid>
   </div>
 </template>
@@ -64,7 +66,9 @@ import {
   DxPaging,
   DxEditing,
   DxSelection,
-  DxLookup
+  DxLookup,
+  DxToolbar,
+  DxItem
 } from 'devextreme-vue/data-grid';
 
 import { DxButton } from 'devextreme-vue/button';
@@ -81,7 +85,9 @@ export default {
     DxEditing,
     DxSelection,
     DxLookup,
-    DxButton
+    DxButton,
+    DxToolbar,
+    DxItem
   },
   data() {
     return {
@@ -104,16 +110,6 @@ export default {
         this.dataSource.reload();
       }
     };
-  },
-  methods: {
-    onToolbarPreparing(e) {
-      e.toolbarOptions.items[0].showText = 'always';
-
-      e.toolbarOptions.items.push({
-        location: 'after',
-        template: 'deleteButton'
-      });
-    }
   }
 };
 </script>
