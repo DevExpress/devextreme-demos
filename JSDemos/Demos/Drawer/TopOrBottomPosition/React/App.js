@@ -8,6 +8,10 @@ import HTMLReactParser from 'html-react-parser';
 import { text } from './data.js';
 import NavigationList from './NavigationList.js';
 
+const openedStateModes = ['push', 'shrink', 'overlap'];
+const positions = ['top', 'bottom'];
+const revealModes = ['slide', 'expand'];
+
 class App extends React.Component {
   constructor() {
     super();
@@ -69,7 +73,7 @@ class App extends React.Component {
           <div className="option">
             <label>Opened state mode</label>
             <RadioGroup
-              items={['push', 'shrink', 'overlap']}
+              items={openedStateModes}
               layout="horizontal"
               value={openedStateMode}
               onValueChanged={this.onOpenedStateModeChanged}
@@ -79,7 +83,7 @@ class App extends React.Component {
           <div className="option">
             <label>Position</label>
             <RadioGroup
-              items={['top', 'bottom']}
+              items={positions}
               layout="horizontal"
               value={position}
               onValueChanged={this.onPositionChanged}
@@ -89,7 +93,7 @@ class App extends React.Component {
           {openedStateMode !== 'push' && (<div className="option">
             <label>Reveal mode</label>
             <RadioGroup
-              items={['slide', 'expand']}
+              items={revealModes}
               layout="horizontal"
               value={revealMode}
               onValueChanged={this.onRevealModeChanged}

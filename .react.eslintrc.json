@@ -102,6 +102,18 @@
             { 
                 "enforceDynamicLinks": "never" 
             }
+        ],
+        "react-perf/jsx-no-new-object-as-prop": [
+            "error",
+            {
+              "nativeAllowList": "all"
+            }
+        ],
+        "react-perf/jsx-no-new-array-as-prop": [
+            "error",
+            {
+              "nativeAllowList": "all"
+            }
         ]
     }
 }

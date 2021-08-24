@@ -9,6 +9,8 @@ import DataGrid, {
   Scrolling
 } from 'devextreme-react/data-grid';
 
+const saleAmountEditorOptions = { format: 'currency', showClearButton: true };
+
 class App extends React.Component {
   render() {
     return (
@@ -35,7 +37,7 @@ class App extends React.Component {
         </Column>
         <Column dataField="OrderDate" dataType="date" />
         <Column
-          editorOptions={{ format: 'currency', showClearButton: true }}
+          editorOptions={saleAmountEditorOptions}
           dataField="SaleAmount"
           dataType="number"
           format="currency"

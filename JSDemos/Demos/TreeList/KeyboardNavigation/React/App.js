@@ -11,6 +11,7 @@ import TreeList, {
 import { employees } from './data.js';
 
 const allowedPageSizes = [5, 10];
+const expandedRowKeys = [1, 2, 3, 5];
 
 class App extends React.Component {
   render() {
@@ -21,7 +22,7 @@ class App extends React.Component {
         parentIdExpr="Head_ID"
         showBorders={true}
         focusedRowEnabled={true}
-        defaultExpandedRowKeys={[1, 2, 3, 5]}
+        defaultExpandedRowKeys={expandedRowKeys}
       >
         <Editing
           allowUpdating={true}

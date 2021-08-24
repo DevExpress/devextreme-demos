@@ -4,6 +4,8 @@ import notify from 'devextreme/ui/notify';
 import ArrayStore from 'devextreme/data/array_store';
 import service from './data.js';
 
+const shapes = ['team', 'employee'];
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -28,10 +30,10 @@ class App extends React.Component {
         <Nodes dataSource={this.orgItemsDataSource} keyExpr="ID" textExpr="Name" typeExpr="Type" parentKeyExpr="ParentID">
           <AutoLayout type="tree" />
         </Nodes>
-        <ContextToolbox shapeIconsPerRow={2} width={100} shapes={['team', 'employee']}>
+        <ContextToolbox shapeIconsPerRow={2} width={100} shapes={shapes}>
         </ContextToolbox>
         <Toolbox shapeIconsPerRow={2}>
-          <Group title="Items" shapes={['team', 'employee']} />
+          <Group title="Items" shapes={shapes} />
         </Toolbox>
         <PropertiesPanel visibility="disabled">
         </PropertiesPanel>

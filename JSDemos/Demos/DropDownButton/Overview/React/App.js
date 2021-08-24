@@ -6,6 +6,8 @@ import service from './data.js';
 import notify from 'devextreme/ui/notify';
 import 'whatwg-fetch';
 
+const buttonDropDownOptions = { width: 230 };
+
 class ColorIcon extends React.Component {
   constructor(props) {
     super(props);
@@ -147,7 +149,7 @@ class App extends React.Component {
               <DropDownButton
                 text="Download Trial"
                 icon="save"
-                dropDownOptions={{ width: 230 }}
+                dropDownOptions={buttonDropDownOptions}
                 items={this.data.downloads}
                 onItemClick={this.onItemClick}
               />

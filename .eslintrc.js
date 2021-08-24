@@ -9,7 +9,8 @@ module.exports = {
         'sourceType': 'module'
     },
     plugins: [
-        'spellcheck'
+        'spellcheck',
+        "react-perf"
     ],
     rules: {
         'spellcheck/spell-checker': [
