@@ -1,4 +1,4 @@
-The PivotGrid can persist the current component and store it in various storage types. The state includes fields configuration, filters, sort orders, expanded headers, and summary display modes.
+The PivotGrid can persist the current state and save it to a storage. The state includes fields configuration, filters, sort orders, expanded headers, and summary display modes.
 
 To configure state persistence, use the [stateStoring](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/stateStoring/) object. Set this object's [enabled](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/stateStoring/#enabled) field to **true** to enable this feature. Specify the [type](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/stateStoring/#type) property to select a storage type to keep the component's state and [storageKey](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/stateStoring/#storageKey) to access the storage. In this demo, we use `localStorage` and the `dx-widget-gallery-pivotgrid-storing` key.
 
