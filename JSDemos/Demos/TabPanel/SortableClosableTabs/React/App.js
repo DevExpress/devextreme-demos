@@ -91,7 +91,7 @@ function App() {
       >
         <TabPanel
           dataSource={employees}
-          height={410}
+          height={472}
           itemTitleRender={renderTitle}
           deferRendering={false}
           showNavButtons={true}
