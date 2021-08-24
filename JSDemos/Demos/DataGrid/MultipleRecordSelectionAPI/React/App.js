@@ -2,7 +2,9 @@
 
 import DataGrid, {
   Column,
-  Selection
+  Selection,
+  Toolbar,
+  Item
 } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
 import Button from 'devextreme-react/button';
@@ -31,20 +33,6 @@ class App extends React.Component {
 
     return (
       <div>
-        <div id="grid">
-          <SelectBox
-            id="select-prefix"
-            dataSource={['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.']}
-            onValueChanged={this.onSelectionFilterChanged}
-            placeholder="Select title"
-            value={prefix}
-          />{' '}
-          <Button
-            disabled={!selectedRowKeys.length}
-            onClick={this.onClearButtonClicked}
-            text="Clear Selection"
-          />
-        </div>
         <DataGrid
           id="grid-container"
           dataSource={employees}
@@ -61,6 +49,23 @@ class App extends React.Component {
           <Column dataField="Position" width={180} />
           <Column dataField="BirthDate" dataType="date" width={125} />
           <Column dataField="HireDate" dataType="date" width={125} />
+          <Toolbar>
+            <Item location="before">
+              <SelectBox
+                dataSource={['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.']}
+                onValueChanged={this.onSelectionFilterChanged}
+                placeholder="Select title"
+                value={prefix}
+              />
+            </Item>
+            <Item location="before">
+              <Button
+                disabled={!selectedRowKeys.length}
+                onClick={this.onClearButtonClicked}
+                text="Clear Selection"
+              />
+            </Item>
+          </Toolbar>
         </DataGrid>
         <div className="selected-data">
           <span className="caption">Selected Records:</span>{' '}
