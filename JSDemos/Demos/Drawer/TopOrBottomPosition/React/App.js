@@ -11,9 +11,9 @@ import NavigationList from './NavigationList.js';
 class App extends React.Component {
   constructor() {
     super();
+    this.drawerRef = React.createRef();
 
     this.state = {
-      opened: false,
       openedStateMode: 'shrink',
       revealMode: 'expand',
       position: 'top'
@@ -24,7 +24,7 @@ class App extends React.Component {
       location: 'before',
       options: {
         icon: 'menu',
-        onClick: () => this.setState({ opened: !this.state.opened })
+        onClick: () => this.drawer.toggle()
       }
     }];
 
@@ -46,13 +46,15 @@ class App extends React.Component {
   }
 
   render() {
-    const { opened, openedStateMode, position, revealMode } = this.state;
-
+    const { openedStateMode, position, revealMode } = this.state;
+    const openedStateRadioButtons = ['push', 'shrink', 'overlap'];
+    const positionRadioButtons = ['top', 'bottom'];
+    const revealModeRadioButtons = ['slide', 'expand'];
     return (
       <React.Fragment>
         <Toolbar items={this.toolbarItems} />
         <Drawer
-          opened={opened}
+          ref={this.drawerRef}
           openedStateMode={openedStateMode}
           position={position}
           component={NavigationList}
@@ -69,7 +71,7 @@ class App extends React.Component {
           <div className="option">
             <label>Opened state mode</label>
             <RadioGroup
-              items={['push', 'shrink', 'overlap']}
+              items={openedStateRadioButtons}
               layout="horizontal"
               value={openedStateMode}
               onValueChanged={this.onOpenedStateModeChanged}
@@ -79,7 +81,7 @@ class App extends React.Component {
           <div className="option">
             <label>Position</label>
             <RadioGroup
-              items={['top', 'bottom']}
+              items={positionRadioButtons}
               layout="horizontal"
               value={position}
               onValueChanged={this.onPositionChanged}
@@ -89,7 +91,7 @@ class App extends React.Component {
           {openedStateMode !== 'push' && (<div className="option">
             <label>Reveal mode</label>
             <RadioGroup
-              items={['slide', 'expand']}
+              items={revealModeRadioButtons}
               layout="horizontal"
               value={revealMode}
               onValueChanged={this.onRevealModeChanged}
@@ -98,6 +100,10 @@ class App extends React.Component {
         </div>
       </React.Fragment>
     );
+  }
+
+  get drawer() {
+    return this.drawerRef.current.instance;
   }
 }
 
