@@ -32,7 +32,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h3 className="long-title">Monthly Prices of Aluminium, Nickel and Copper</h3>
+        <div className="long-title"><h3>Monthly Prices of Aluminium, Nickel and Copper</h3></div>
         <div id="chart-demo">
           <table
             className="demo-table"
@@ -53,15 +53,14 @@ class App extends React.Component {
             </tbody>
           </table>
           <div className="action">
+            <div className="label">Choose a number of months:
+            </div>
             <SelectBox
               id="choose-months"
               dataSource={months}
-              width={70}
               defaultValue={months[0]}
               onValueChanged={this.onValueChanged}
             />
-            <div className="label">Choose a number of months:
-            </div>
           </div>
         </div>
       </React.Fragment>

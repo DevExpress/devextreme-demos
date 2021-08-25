@@ -4,7 +4,7 @@
         .StaticJson()
         .Url(Url.Action("GetMonthWeatherData"))
     )
-    .DataSourceOptions(dso => dso.Filter("['Temperature', '>', 6]"))
+    .DataSourceOptions(dso => dso.Filter("['Temperature', '>', 2]"))
     .Series(s => s.Add()
         .ArgumentField("Day")
         .ValueField("Temperature")
@@ -30,7 +30,7 @@
         )
     )
     .ArgumentAxis(a => a.ArgumentType(ChartDataType.String))
-    .Title("Temperature in Barcelona: January 2012")
+    .Title("Temperature in Seattle: October 2017")
     .Size(s => s.Height(420))
     .Legend(l => l.Visible(false))
     .LoadingIndicator(l => l.Enabled(true))
@@ -38,11 +38,13 @@
 )
 
 <div class="action">
+    <div class="templabel">
+        Choose a temperature threshold, &deg;C:
+    </div>
     @(Html.DevExtreme().SelectBox()
         .ID("choose-temperature")
-        .DataSource(new[] { 6, 7, 8, 9, 10, 11, 12 })
-        .Width(70)
-        .Value(6)
+        .DataSource(new[] { 2, 4, 6, 8, 9, 10, 11 })
+        .Value(2)
         .OnValueChanged(@<text>
             function(data) {
                 var source = $("#chart").dxChart("getDataSource");
@@ -51,9 +53,6 @@
             }
         </text>)
     )
-    <div class="templabel">
-        Choose a temperature threshold, &deg;C:
-    </div>
 </div>
 
 <script src="~/data/palette.js"></script>

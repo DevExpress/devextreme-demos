@@ -1,5 +1,11 @@
 ﻿@{
     var priorities = new[] { "Low", "Normal", "Urgent", "High" };
+    var priorityEntities = new[] {
+        new { id = 0, text = "Low" },
+        new { id = 1, text = "Normal" },
+        new { id = 2, text = "Urgent" },
+        new { id = 3, text = "High" },
+    };
 }
 <div class="form">
     <div class="dx-fieldset">
@@ -47,8 +53,10 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().RadioGroup()
                     .ID("radio-group-with-selection")
-                    .Items(priorities)
-                    .Value("Low")
+                    .DataSource(priorityEntities)
+                    .ValueExpr("id")
+                    .DisplayExpr("text")
+                    .Value(0)
                     .OnValueChanged("radioGroup_valueChanged")
                 )
             </div>
@@ -71,27 +79,26 @@
 
     function radioGroup_valueChanged(e) {
         $("#list").children().remove();
-        var priorities = e.component.option("items");
 
         $.each([{
             subject: "Choose between PPO and HMO Health Plan",
-            priority: "High"
+            priority: 3
         }, {
             subject: "Non-Compete Agreements",
-            priority: "Low"
+            priority: 0
         }, {
             subject: "Comment on Revenue Projections",
-            priority: "Normal"
+            priority: 1
         }, {
             subject: "Sign Updated NDA",
-            priority: "Urgent"
+            priority: 2
         }, {
             subject: "Submit Questions Regarding New NDA",
-            priority: "High"
+            priority: 3
         }, {
             subject: "Rollout of New Website and Marketing Brochures",
-            priority: "High"
-        }], function(_, item) {
+            priority: 3
+        }], function (_, item) {
             if(item.priority === e.value) {
                 $("#list").append($("<li/>").text(item.subject));
             }

@@ -5,7 +5,7 @@
     .DataSource(Model.Appointments)
     .Views(new[] { SchedulerViewType.Week, SchedulerViewType.TimelineWeek })
     .CurrentView(SchedulerViewType.Week)
-    .CurrentDate(DateTime.Today)
+    .CurrentDate(new JS("new Date()"))
     .ShowCurrentTimeIndicator(true)
     .ShadeUntilCurrentTime(true)
     .ShowAllDayPanel(false)

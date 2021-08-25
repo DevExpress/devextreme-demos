@@ -48,7 +48,7 @@ class App extends React.Component {
     return (
       <div id="chart-demo">
         <Chart
-          title="Temperature in Barcelona, 2012"
+          title="Temperature in Seattle , 2017"
           dataSource={this.chartDataSource}>
           <Size height={420} />
           <ValueAxis
@@ -82,6 +82,8 @@ class App extends React.Component {
         </Chart>
 
         <div className="action">
+          <div className="label">Choose a month:
+          </div>
           <SelectBox
             id="selectbox"
             width={150}
@@ -90,8 +92,6 @@ class App extends React.Component {
             items={months}
             defaultValue={1}
             onValueChanged={this.onValueChanged} />
-          <div className="label">Choose a month:
-          </div>
         </div>
       </div>
     );

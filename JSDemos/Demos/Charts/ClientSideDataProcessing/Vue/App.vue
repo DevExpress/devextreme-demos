@@ -3,7 +3,7 @@
     <DxChart
       :data-source="monthWeather"
       :customize-point="customizePoint"
-      title="Temperature in Barcelona: January 2012"
+      title="Temperature in Seattle: October 2017"
     >
       <DxSize :height="420"/>
       <DxValueAxis>
@@ -22,15 +22,14 @@
       <DxLoadingIndicator :enabled="true"/>
     </DxChart>
     <div class="action">
+      <div class="label">Choose a temperature threshold, &deg;C:
+      </div>
       <DxSelectBox
         id="choose-temperature"
         :data-source="temperature"
-        :width="70"
-        :value="6"
+        :value="2"
         :on-value-changed="changeTemperature"
       />
-      <div class="label">Choose a temperature threshold, &deg;C:
-      </div>
     </div>
   </div>
 </template>
@@ -78,12 +77,12 @@ export default {
         },
         loadMode: 'raw'
       }),
-      filter: ['t', '>', '6'],
+      filter: ['t', '>', '2'],
       paginate: false
     });
 
     return {
-      temperature: [6, 7, 8, 9, 10, 11, 12],
+      temperature: [2, 4, 6, 8, 9, 10, 11],
       monthWeather,
       paletteIndex
     };
@@ -106,14 +105,15 @@ export default {
 };
 </script>
 <style>
-#choose-temperature {
-    float: right;
-}
 .action {
-    width: 320px;
+    width: 330px;
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.label {
-    padding-top: 9px;
+
+.action .dx-selectbox {
+    width: 90px;
 }
 </style>

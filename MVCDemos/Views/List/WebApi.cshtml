@@ -3,7 +3,7 @@
         <div><%- ProductName %></div>
         <div><b><%- formatCurrency(UnitPrice) %></b></div>
     </text>)
-    .DataSource(d => d.WebApi().Controller("ListData"))
+    .DataSource(d => d.WebApi().Controller("ListData").Key("ProductID"))
     .DataSourceOptions(d => d
         .PageSize(1)
         .Sort("ProductName")

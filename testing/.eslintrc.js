@@ -1,7 +1,21 @@
 module.exports = {
-  extends: ['devextreme/javascript', 'devextreme/testcafe'],
-  env: {
-    es6: true,
-    node: true,
+  extends: [
+    'devextreme/spell-check',
+    'devextreme/javascript',
+    'devextreme/testcafe',
+  ],
+  // eslint-disable-next-line spellcheck/spell-checker
+  globals: {
+    testUtils: true,
+  },
+  rules: {
+    curly: [
+      'error',
+      'multi-line',
+    ],
+    indent: [
+      'error',
+      2,
+    ],
   },
 };
