@@ -11,6 +11,9 @@ import NavigationList from './NavigationList.js';
 class App extends React.Component {
   constructor() {
     super();
+    this.openedStateRadioButtons = ['push', 'shrink', 'overlap'];
+    this.positionRadioButtons = ['top', 'bottom'];
+    this.revealModeRadioButtons = ['slide', 'expand'];
 
     this.state = {
       opened: false,
@@ -73,7 +76,7 @@ class App extends React.Component {
           <div className="option">
             <label>Opened state mode</label>
             <RadioGroup
-              items={['push', 'shrink', 'overlap']}
+              items={this.openedStateRadioButtons}
               layout="horizontal"
               value={openedStateMode}
               onValueChanged={this.onOpenedStateModeChanged}
@@ -83,7 +86,7 @@ class App extends React.Component {
           <div className="option">
             <label>Position</label>
             <RadioGroup
-              items={['top', 'bottom']}
+              items={this.positionRadioButtons}
               layout="horizontal"
               value={position}
               onValueChanged={this.onPositionChanged}
@@ -93,7 +96,7 @@ class App extends React.Component {
           {openedStateMode !== 'push' && (<div className="option">
             <label>Reveal mode</label>
             <RadioGroup
-              items={['slide', 'expand']}
+              items={this.revealModeRadioButtons}
               layout="horizontal"
               value={revealMode}
               onValueChanged={this.onRevealModeChanged}
