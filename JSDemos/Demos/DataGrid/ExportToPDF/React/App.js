@@ -51,7 +51,7 @@ export default function App() {
       <Column dataField='City' dataType='string' />
       <Column dataField='State' dataType='string' groupIndex={0} />
       <Toolbar>
-        <Item name="groupPanel"/>
+        <Item name="groupPanel" />
         <Item location="after">
           <Button
             icon='exportpdf'
@@ -59,7 +59,7 @@ export default function App() {
             onClick={exportGrid}
           />
         </Item>
-        <Item name="searchPanel"/>
+        <Item name="searchPanel" />
       </Toolbar>
     </DataGrid>
   );

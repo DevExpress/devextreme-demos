@@ -37,7 +37,7 @@
       />
       <DxToolbar>
         <DxItem location="before">
-           <DxSelectBox
+          <DxSelectBox
             id="select-prefix"
             :data-source="['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.']"
             :value="prefix"

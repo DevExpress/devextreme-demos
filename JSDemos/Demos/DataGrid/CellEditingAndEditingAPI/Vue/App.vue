@@ -46,7 +46,10 @@
         data-type="date"
       />
       <DxToolbar>
-        <DxItem name="addRowButton" show-text="always"/>
+        <DxItem
+          name="addRowButton"
+          show-text="always"
+        />
         <DxItem location="after">
           <DxButton
             @click="deleteRecords()"

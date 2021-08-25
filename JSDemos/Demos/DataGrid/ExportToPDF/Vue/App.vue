@@ -25,9 +25,10 @@
         <DxItem name="groupPanel"/>
         <DxItem location="after">
           <DxButton
-              icon="exportpdf"
-              text="Export to PDF"
-              @click="exportGrid()"/>
+            icon="exportpdf"
+            text="Export to PDF"
+            @click="exportGrid()"
+          />
         </DxItem>
         <DxItem name="searchPanel"/>
       </DxToolbar>

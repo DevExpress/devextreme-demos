@@ -11,7 +11,6 @@ import DataGrid, {
 } from 'devextreme-react/data-grid';
 
 import { Button } from 'devextreme-react/button';
-import { Template } from 'devextreme-react/core/template';
 
 import ArrayStore from 'devextreme/data/array_store';
 import DataSource from 'devextreme/data/data_source';
@@ -61,13 +60,13 @@ class App extends React.Component {
           </Column>
           <Column dataField="BirthDate" dataType="date" />
           <Toolbar>
-            <Item name="addRowButton" showText="always"/>
+            <Item name="addRowButton" showText="always" />
             <Item location="after">
               <Button
                 onClick={this.deleteRecords}
                 icon="trash"
                 disabled={!this.state.selectedItemKeys.length}
-                text="Delete Selected Records"/>
+                text="Delete Selected Records" />
             </Item>
           </Toolbar>
         </DataGrid>
