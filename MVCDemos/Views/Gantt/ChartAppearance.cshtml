@@ -3,41 +3,73 @@
 
 <div class="options">
     <div class="caption">Options</div>
-    <div class="option">
-        <span>Scale Type</span>
-        @(Html.DevExtreme().SelectBox()
-            .ID("scaleType")
-            .DataSource(d => d.Array().Data(SampleData.GanttScaleTypes))
-            .Value("months")
-            .OnValueChanged("ganttScaleType_valueChanged")
-        )
+    <div class="column">
+        <div class="option">
+            <div class="label">Scale Type:</div>
+            <div class="value">
+                @(Html.DevExtreme().SelectBox()
+                    .ID("scaleType")
+                    .DataSource(d => d.Array().Data(SampleData.GanttScaleTypes))
+                    .Value("months")
+                    .OnValueChanged("ganttScaleType_valueChanged")
+                )
+            </div>
+        </div>
+        <div class="option">
+            <div class="label">Title Position:</div>
+            <div class="value">
+                @(Html.DevExtreme().SelectBox()
+                    .ID("titlePosition")
+                    .DataSource(new[] {
+                        "inside",
+                        "outside",
+                        "none"
+                    })
+                    .Value("outside")
+                    .OnValueChanged("ganttTitlePosition_valueChanged")
+                )
+            </div>
+        </div>
+        <div class="option">
+            <div class="label">Show Resources:</div>
+            <div class="value">
+                @(Html.DevExtreme().CheckBox()
+                    .Value(true)
+                    .OnValueChanged("ganttShowResources_changed")
+                )
+            </div>
+        </div>
     </div>
-    <div class="option">
-        <span>Title Position</span>
-        @(Html.DevExtreme().SelectBox()
-            .ID("titlePosition")
-            .DataSource(new[] {
-                "inside",
-                "outside",
-                "none"
-            })
-            .Value("outside")
-            .OnValueChanged("ganttTitlePosition_valueChanged")
-        )
-    </div>
-    <div class="option">
-        @(Html.DevExtreme().CheckBox()
-            .Value(true)
-            .Text("Show Resources")
-            .OnValueChanged("ganttShowResources_changed")
-        )
-    </div>
-    <div class="option">
-        @(Html.DevExtreme().CheckBox()
-            .Value(true)
-            .Text("Customize Task Tooltip")
-            .OnValueChanged("ganttShowCustomTaskTooltip_changed")
-        )
+    <div class="column">
+        <div class="option">
+            <div class="label">Start Date Range:</div>
+            <div class="value">
+                @(Html.DevExtreme().DateBox()
+                    .Type(DateBoxType.Date)
+                    .Value(new DateTime(2018, 11, 1))
+                    .OnValueChanged("ganttStartDateRange_changed")
+                )
+            </div>
+        </div>
+        <div class="option">
+            <div class="label">End Date Range:</div>
+            <div class="value">
+                @(Html.DevExtreme().DateBox()
+                    .Type(DateBoxType.Date)
+                    .Value(new DateTime(2019, 11, 1))
+                    .OnValueChanged("ganttEndDateRange_changed")
+                )
+            </div>
+        </div>
+        <div class="option">
+            <div class="label">Customize Task Tooltip:</div>
+            <div class="value">
+                @(Html.DevExtreme().CheckBox()
+                    .Value(true)
+                    .OnValueChanged("ganttShowCustomTaskTooltip_changed")
+                )
+            </div>
+        </div>
     </div>
 </div>
 
@@ -45,6 +77,8 @@
     .ID("gantt")
     .TaskTitlePosition(GanttTaskTitlePosition.Outside)
     .ScaleType(GanttScaleType.Months)
+    .StartDateRange(new DateTime(2018, 11, 1))
+    .EndDateRange(new DateTime(2019, 11, 1))
     .Tasks(t => t
         .DataSource(ds => ds.Array().Data(SampleData.GanttTasks).Key("ID"))
         .KeyExpr("ID")
@@ -134,5 +168,13 @@
         var ganttInstance = getGanttInstance();
         e.value ? ganttInstance.option("taskTooltipContentTemplate", getTaskTooltipContentTemplate)
             : ganttInstance.option("taskTooltipContentTemplate", undefined);
+    }
+    function ganttStartDateRange_changed(e) {
+        var ganttInstance = getGanttInstance();
+        ganttInstance.option("startDateRange", e.value);
+    }
+    function ganttEndDateRange_changed(e) {
+        var ganttInstance = getGanttInstance();
+        ganttInstance.option("endDateRange", e.value);
     }
 </script>
