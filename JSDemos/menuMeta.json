@@ -3361,6 +3361,7 @@
           {
             "Title": "Chart Appearance",
             "Name": "ChartAppearance",
+            "Badge": "Updated",
             "Widget": "Gantt",
             "DemoType": "Web",
             "WideDemo": true,
