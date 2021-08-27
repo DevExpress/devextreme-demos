@@ -74,7 +74,7 @@
         "babel-jest": "^27.0.6",
         "cookie-parser": "^1.4.5",
         "cross-env": "^7.0.3",
-        "devextreme-screenshot-comparer": "^2.0.1",
+        "devextreme-screenshot-comparer": "^2.0.2",
         "eclint": "2.8.1",
         "eslint": "^7.13.0",
         "eslint-config-airbnb-base": "^14.2.0",
