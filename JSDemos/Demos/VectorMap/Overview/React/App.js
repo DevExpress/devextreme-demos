@@ -8,7 +8,8 @@ import Map, {
   Source,
   Subtitle,
   Title,
-  Tooltip
+  Tooltip,
+  Size
 } from 'devextreme-react/vector-map';
 
 import * as mapsData from 'devextreme/dist/js/vectormap-data/world.js';
@@ -34,7 +35,8 @@ function customizeLegendText(arg) {
 
 function App() {
   return (
-    <Map height={500} bounds={mapBounds}>
+    <Map bounds={mapBounds}>
+      <Size height={500} />
       <Layer
         name="areas"
         dataSource={mapsData.world}

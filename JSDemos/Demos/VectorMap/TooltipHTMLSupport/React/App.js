@@ -8,7 +8,8 @@ import VectorMap, {
   Source,
   Subtitle,
   Title,
-  Tooltip
+  Tooltip,
+  Size
 } from 'devextreme-react/vector-map';
 
 import * as mapsData from 'devextreme/dist/js/vectormap-data/world.js';
@@ -26,8 +27,8 @@ export default function App() {
   return (
     <VectorMap
       palette="Violet"
-      height={700}
       bounds={mapBounds}>
+      <Size height={500} />
       <Layer
         name="areas"
         dataSource={mapsData.world}
