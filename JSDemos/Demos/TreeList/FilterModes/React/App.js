@@ -57,7 +57,6 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <span>Filter Mode</span>
-                &nbsp;
             <SelectBox
               items={this.filterModes}
               value={this.state.filterMode}
