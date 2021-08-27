@@ -38,7 +38,6 @@
       <DxToolbar>
         <DxItem location="before">
           <DxSelectBox
-            id="select-prefix"
             :data-source="['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.']"
             :value="prefix"
             placeholder="Select title"
@@ -138,11 +137,6 @@ export default {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-}
-
-#select-prefix {
-  width: 150px;
-  margin-right: 8px;
 }
 
 .selected-data {
