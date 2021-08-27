@@ -51,6 +51,7 @@ $(function(){
                     options: {
                         dataSource: ["All", "Dr.", "Mr.", "Mrs.", "Ms."],
                         placeholder: "Select title",
+                        width: "150px",
                         onValueChanged: function (data) {
                             if(!data.value)
                                 return;

@@ -41,6 +41,7 @@
             :data-source="['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.']"
             :value="prefix"
             placeholder="Select title"
+            width="150px"
             @value-changed="filterSelection"
           />
         </DxItem>

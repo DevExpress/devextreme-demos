@@ -55,6 +55,7 @@ class App extends React.Component {
                 dataSource={['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.']}
                 onValueChanged={this.onSelectionFilterChanged}
                 placeholder="Select title"
+                width="150px"
                 value={prefix}
               />
             </Item>

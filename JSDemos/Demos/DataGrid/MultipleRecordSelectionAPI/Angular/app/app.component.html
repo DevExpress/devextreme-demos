@@ -21,6 +21,7 @@
             <dx-select-box
                 [dataSource]="['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.']"
                 placeholder= "Select title"
+                width="150px"
                 [value]="prefix"
                 (onValueChanged)="filterSelected($event)">
             </dx-select-box>
