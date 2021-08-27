@@ -150,16 +150,15 @@
         </tr>
     </table>
     <div class="action">
-        @(Html.DevExtreme().SelectBox()
-            .ID("choose-months")
-            .DataSource(new[] { 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 })
-            .Width(70)
-            .Value(12)
-            .OnValueChanged("selectBox_valueChanged")
-        )
         <div class="selectBox-label">
             Choose a number of months:
         </div>
+        @(Html.DevExtreme().SelectBox()
+            .ID("choose-months")
+            .DataSource(new[] { 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 })
+            .Value(12)
+            .OnValueChanged("selectBox_valueChanged")
+        )
     </div>
 </div>
 

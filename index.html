@@ -3,7 +3,7 @@
 
 <head>
     <link rel="stylesheet" type="text/css"
-        href="../../node_modules/devextreme/dist/css/dx.material.teal.dark.compact.css" />
+        href="../../node_modules/devextreme/dist/css/dx.dark.css" />
     <script src="../../node_modules/devextreme/dist/js/dx.all.js"></script>
     <style>
         body, html {
@@ -17,7 +17,11 @@
     <div id="toolbar"></div>
     <div id="drawer" style="height: calc(100% - 56px);">
         <div id="content" style="height: 100%">
-            <iframe id="frame" style="width: 100%;height: calc(100% - 56px);;resize: both;"></iframe>
+            <iframe
+                id="frame"
+                style="width: 100%;height: calc(100% - 56px);resize: both;"
+                src="JSDemos/Demos/DataGrid/Overview/jQuery/"
+                ></iframe>
             <br>
             <div>
                 <a id='demolink' target="_blank" href="">open in separate tab</a>
@@ -28,90 +32,100 @@
         const ui = DevExpress.ui;
         const themeCookieName = 'dx-demo-theme';
 
-        let widget = localStorage.getItem('dx-demos-widget') || 'DataGrid';
-        let name = localStorage.getItem('dx-demos-name') || 'Overview';
         let approach = localStorage.getItem('dx-demos-approach') || 'jQuery';
         let theme = localStorage.getItem('dx-demos-theme') || 'dx.light.css';
+        let treeList;
 
-        let inited = false;
-
-        const updateDemo = () => {
+        const setThemeCookie = () => {
             const now = new Date();
-            const frame = document.getElementById('frame');
-            const demoLink = document.getElementById('demolink');
-            const link = `../../JSDemos/Demos/${widget}/${name}/${approach}/`;
             // expires in a month
             now.setTime(now.getTime() + 1000*60*60*24*30);
             document.cookie = `dx-demo-theme=${theme};path=/;expires=${now.toUTCString()}`;
+        };
 
-            localStorage.setItem('dx-demos-widget', widget);
-            localStorage.setItem('dx-demos-name', name);
+        const updateLocalStore = () => {
             localStorage.setItem('dx-demos-approach', approach);
             localStorage.setItem('dx-demos-theme', theme);
+        };
+
+        const updateDemo = () => {
+            setThemeCookie();
+            updateLocalStore();
+
+            const frame = document.getElementById('frame');
+            const demoLink = document.getElementById('demolink');
+            const pathParts = frame.contentWindow.location.pathname
+                .split('/')
+                .filter(s => s !== '');
+
+            const selectedData = treeList.getSelectedRowsData('leavesOnly');
+            if(selectedData.length) {
+                pathParts[2] = selectedData[0].Widget;
+                pathParts[3] = selectedData[0].Name;
+            }
+
+            pathParts[4] = approach;
+
+            const link = pathParts.join('/') + '/';
 
             frame.src = link;
             demoLink.href = link;
         };
 
-        const treeViewTemplate = (data, index, element) => {
-            const container = document.createElement('div');
-            const nameContainer = document.createElement('div');
-
-            nameContainer.innerText = data.Name;
-            container.appendChild(nameContainer);
-
-            if(data.Demos && data.Demos.length > 0) {
-                const demosContainer = document.createElement('div');
-                new ui.dxList(demosContainer, {
-                    dataSource: data.Demos.map(demo => {
-                        demo.badge = demo.Badge;
-                        return demo;
-                    }),
-                    displayExpr: 'Title',
-                    onItemClick: (e) => {
-                        widget = e.itemData.Widget;
-                        name = e.itemData.Name;
-                        updateDemo();
-                    }
-                });
-
-                container.appendChild(demosContainer);
+        const processDataSourceItem = (item) => {
+            if(!item.Widget) {
+                item.Title = item.Name;
             }
 
-            return container;
+            if(item.Demos && item.Demos.length && !item.Groups) {
+                item.Groups = item.Demos;
+            }
+
+            if(item.Groups && item.Groups.length) {
+                item.Groups.forEach(processDataSourceItem);
+            }
+
+            return item;
         };
 
         const drawerTemplate = () => {
-            const treeViewElement = document.createElement('div');
+            const treeListElement = document.createElement('div');
 
-            new ui.dxTreeView(treeViewElement, {
+            treeList = new ui.dxTreeList(treeListElement, {
                 dataStructure: 'tree',
-                dataSource: 'JSDemos/menuMeta.json',
-                displayExpr: 'Name',
                 itemsExpr: 'Groups',
                 width: 250,
-                itemTemplate: treeViewTemplate,
-                onItemSelectionChanged: (e) => {
-                    localStorage.setItem('dx-demos-selected', e.node.key);
+                height: "100%",
+                selection: {
+                    mode: 'single'
                 },
-                selectByClick: true,
-                selectionMode: 'single',
-                onContentReady: (e) => {
-                    if(inited) return;
-                    inited = true;
-
-                    const selectedItemKey = parseInt(localStorage.getItem('dx-demos-selected'));
-
-                    e.component.expandItem(selectedItemKey).then(() => {
-                        e.component.selectItem(selectedItemKey);
-                        setTimeout(() => {
-                            e.component.scrollToItem(selectedItemKey);
-                        }, 400);
-                    });
+                stateStoring: {
+                    enabled: true,
+                    type: 'localStorage',
+                    storageKey: 'treeListStorage'
+                },
+                onSelectionChanged: updateDemo,
+                columns: [{
+                    dataField: 'Title',
+                    dataType: 'string',
+                    filterOperations: ['contains']
+                }],
+                showColumnHeaders: false,
+                filterMode: 'fullBranch',
+                filterRow: {
+                    visible: true
                 }
             });
 
-            return treeViewElement;
+            DevExpress.utils.ajax.sendRequest({
+                url:'JSDemos/menuMeta.json',
+                dataType:'json'
+            }).then(data => {
+                treeList.option('dataSource', data.map(processDataSourceItem));
+                updateDemo();
+            });
+
+            return treeListElement;
         };
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -160,9 +174,7 @@
                     }
                 }],
             });
-
-            updateDemo();
-        })
+        });
     </script>
 </body>
 
