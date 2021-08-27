@@ -5,8 +5,6 @@ import { continents } from './data.js';
 import TreeView from 'devextreme-react/tree-view';
 import TabPanel from 'devextreme-react/tab-panel';
 
-const tabPanelAttributes = { id: 'tabpanel' };
-
 class App extends React.Component {
 
   constructor(props) {
@@ -67,7 +65,7 @@ class App extends React.Component {
             onSelectionChanged={this.handleTabPanelSelectionChange}
             dataSource={this.state.citiesData}
             animationEnabled={true}
-            elementAttr={tabPanelAttributes}
+            id="tabpanel"
           />
         </div>
       </div>
