@@ -63,7 +63,7 @@
             text="Alternating Row Color"
           />
         </div>
-      </div>  
+      </div>
     </div>
   </div>
 </template>
