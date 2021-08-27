@@ -5,6 +5,7 @@ import CheckBox from 'devextreme-react/check-box';
 import service from './data.js';
 
 const orientations = ['horizontal', 'vertical'];
+const submenuDirections = ['auto', 'rightOrBottom', 'leftOrTop'];
 
 class App extends React.Component {
   constructor(props) {
@@ -75,7 +76,7 @@ class App extends React.Component {
           <div className="option">
             <div>Submenu Direction</div>
             <SelectBox
-              items={['auto', 'rightOrBottom', 'leftOrTop']}
+              items={submenuDirections}
               value={submenuDirection}
               onValueChanged={this.submenuDirectionChanged}
             />
