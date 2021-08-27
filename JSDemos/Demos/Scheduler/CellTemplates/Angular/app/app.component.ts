@@ -57,7 +57,7 @@ export class AppComponent {
     notifyDisableDate() {
         notify("Cannot create or move an appointment/event to disabled time/date regions.", "warning", 1000);
     }
-    
+
     isHoliday(date: Date) {
         const localeDate = date.toLocaleDateString();
         const holidays = this.dataService.getHolidays();
