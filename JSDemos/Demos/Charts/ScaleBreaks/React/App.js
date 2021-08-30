@@ -90,7 +90,7 @@ class App extends React.Component {
                 width={120}>
               </SelectBox>
             </div>
-          </div>  
+          </div>
         </div>
       </div>
     );
