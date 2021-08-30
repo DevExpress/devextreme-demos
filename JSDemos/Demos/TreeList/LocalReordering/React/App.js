@@ -53,7 +53,7 @@ class App extends React.Component {
 
         <div className="options">
           <div className="caption">Options</div>
-          <div className="options-container">  
+          <div className="options-container">
             <div className="option">
               <CheckBox
                 value={this.state.allowDropInsideItem}
