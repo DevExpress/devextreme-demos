@@ -52,8 +52,8 @@ class App extends React.Component {
         </TreeList>
 
         <div className="options">
-        <div calssName="options-container">  
           <div className="caption">Options</div>
+          <div className="options-container">  
             <div className="option">
               <CheckBox
                 value={this.state.allowDropInsideItem}
