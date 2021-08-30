@@ -52,29 +52,29 @@ class App extends React.Component {
         </TreeList>
 
         <div className="options">
+        <div calssName="options-container">  
           <div className="caption">Options</div>
-          <div className="option">
-            <CheckBox
-              value={this.state.allowDropInsideItem}
-              text="Allow Drop Inside Item"
-              onValueChanged={this.onAllowDropInsideItemChanged}
-            />
-          </div>
-          &nbsp;
-          <div className="option">
-            <CheckBox
-              value={this.state.allowReordering}
-              text="Allow Reordering"
-              onValueChanged={this.onAllowReorderingChanged}
-            />
-          </div>
-          &nbsp;
-          <div className="option">
-            <CheckBox
-              value={this.state.showDragIcons}
-              text="Show Drag Icons"
-              onValueChanged={this.onShowDragIconsChanged}
-            />
+            <div className="option">
+              <CheckBox
+                value={this.state.allowDropInsideItem}
+                text="Allow Drop Inside Item"
+                onValueChanged={this.onAllowDropInsideItemChanged}
+              />
+            </div>
+            <div className="option">
+              <CheckBox
+                value={this.state.allowReordering}
+                text="Allow Reordering"
+                onValueChanged={this.onAllowReorderingChanged}
+              />
+            </div>
+            <div className="option">
+              <CheckBox
+                value={this.state.showDragIcons}
+                text="Show Drag Icons"
+                onValueChanged={this.onShowDragIconsChanged}
+              />
+            </div>
           </div>
         </div>
       </div>
