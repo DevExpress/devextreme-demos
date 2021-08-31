@@ -16,7 +16,7 @@
       <DxPaging :enabled="false"/>
       <DxSelection mode="multiple"/>
       <DxColumn
-        width="55"
+        :width="55"
         data-field="Prefix"
         caption="Title"
       />
@@ -27,11 +27,11 @@
         data-field="LastName"
       />
       <DxColumn
-        width="170"
+        :width="170"
         data-field="Position"
       />
       <DxColumn
-        width="125"
+        :width="125"
         data-field="StateID"
         caption="State"
       >

@@ -19,9 +19,9 @@
     <dxo-toolbar>
         <dxi-item location="before">
             <dx-select-box
-                [dataSource]="['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.']"
+                [dataSource]="prefixOptions"
                 placeholder= "Select title"
-                width="150px"
+                [width]="150"
                 [value]="prefix"
                 (onValueChanged)="filterSelected($event)">
             </dx-select-box>

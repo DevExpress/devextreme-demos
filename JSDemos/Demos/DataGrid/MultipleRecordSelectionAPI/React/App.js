@@ -19,6 +19,7 @@ class App extends React.Component {
 
     this.state = {
       prefix: '',
+      prefixOptions: ['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.'],
       selectedEmployeeNames: 'Nobody has been selected',
       selectedRowKeys: []
     };
@@ -29,7 +30,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { prefix, selectedRowKeys, selectedEmployeeNames } = this.state;
+    const { prefix, selectedRowKeys, selectedEmployeeNames, prefixOptions } = this.state;
 
     return (
       <div>
@@ -52,10 +53,10 @@ class App extends React.Component {
           <Toolbar>
             <Item location="before">
               <SelectBox
-                dataSource={['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.']}
+                dataSource={prefixOptions}
                 onValueChanged={this.onSelectionFilterChanged}
                 placeholder="Select title"
-                width="150px"
+                width={150}
                 value={prefix}
               />
             </Item>

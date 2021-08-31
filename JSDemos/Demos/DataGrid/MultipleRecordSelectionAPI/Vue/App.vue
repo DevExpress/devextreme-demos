@@ -38,7 +38,7 @@
       <DxToolbar>
         <DxItem location="before">
           <DxSelectBox
-            :data-source="['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.']"
+            :data-source="prefixOptions"
             :value="prefix"
             placeholder="Select title"
             width="150px"
@@ -95,6 +95,7 @@ export default {
       dataGridRefName: 'dataGrid',
       employees,
       prefix: '',
+      prefixOptions: ['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.'],
       selectedEmployeeNames: 'Nobody has been selected',
       selectedRowKeys: [],
       selectionChangedBySelectBox: false

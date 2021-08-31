@@ -8,7 +8,7 @@ DemoApp.controller('DemoController', function DemoController($scope) {
     $scope.selectPrefixOptions = {
         dataSource: ["All", "Dr.", "Mr.", "Mrs.", "Ms."],
         placeholder: "Select title",
-        width: "150px",
+        width: 150,
         bindingOptions: {
             value: "selectedPrefix"
         },
