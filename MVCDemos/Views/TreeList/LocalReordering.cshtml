@@ -34,41 +34,43 @@
 
     <div class="options">
         <div class="caption">Options</div>
-        <div class="option">
-            @(Html.DevExtreme().CheckBox()
-                .ID("allowDropInside")
-                .Text("Allow Drop Inside Item")
-                .Value(true)
-                .OnValueChanged(@<text>
-                    function(e) {
-                        getTreeList().option("rowDragging.allowDropInsideItem", e.value);
-                    }
-                </text>)
-            )
-        </div>
-        <div class="option">
-            @(Html.DevExtreme().CheckBox()
-                .ID("allowReordering")
-                .Text("Allow Reordering")
-                .Value(true)
-                .OnValueChanged(@<text>
-                    function(e) {
-                        getTreeList().option("rowDragging.allowReordering", e.value);
-                    }
-                </text>)
-            )
-        </div>
-        <div class="option">
-            @(Html.DevExtreme().CheckBox()
-                .ID("showDragIcons")
-                .Text("Show Drag Icons")
-                .Value(true)
-                .OnValueChanged(@<text>
-                    function(e) {
-                        getTreeList().option("rowDragging.showDragIcons", e.value);
-                    }
-                </text>)
-            )
+        <div class="options-container">
+            <div class="option">
+                @(Html.DevExtreme().CheckBox()
+                    .ID("allowDropInside")
+                    .Text("Allow Drop Inside Item")
+                    .Value(true)
+                    .OnValueChanged(@<text>
+                        function(e) {
+                            getTreeList().option("rowDragging.allowDropInsideItem", e.value);
+                        }
+                    </text>)
+                )
+            </div>
+            <div class="option">
+                @(Html.DevExtreme().CheckBox()
+                    .ID("allowReordering")
+                    .Text("Allow Reordering")
+                    .Value(true)
+                    .OnValueChanged(@<text>
+                        function(e) {
+                            getTreeList().option("rowDragging.allowReordering", e.value);
+                        }
+                    </text>)
+                )
+            </div>
+            <div class="option">
+                @(Html.DevExtreme().CheckBox()
+                    .ID("showDragIcons")
+                    .Text("Show Drag Icons")
+                    .Value(true)
+                    .OnValueChanged(@<text>
+                        function(e) {
+                            getTreeList().option("rowDragging.showDragIcons", e.value);
+                        }
+                    </text>)
+                )
+            </div>
         </div>
     </div>
 </div>
