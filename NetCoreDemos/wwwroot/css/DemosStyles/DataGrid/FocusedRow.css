@@ -58,16 +58,21 @@
     display: inline-block;
 }
 
-    .option:last-child {
-        margin-right: 0;
-    }
+.option:last-child {
+    margin-right: 0;
+}
 
-    .option > .dx-numberbox {
-        width: 200px;
-        display: inline-block;
-        vertical-align: middle;
-    }
+.option > .dx-numberbox {
+    width: 200px;
+    display: inline-block;
+    vertical-align: middle;
+}
 
-    .option > span {
-        margin-right: 10px;
-    }
+.option > span {
+    margin-right: 10px;
+}
+
+.options-container {
+    display: flex;
+    align-items: center;
+}
