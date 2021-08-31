@@ -144,7 +144,7 @@ class App extends React.Component {
                 onValueChanged={this.onAutoNavigateToFocusedRowChanged}>
               </CheckBox>
             </div>
-          </div>  
+          </div>
         </div>
       </div>
     );
