@@ -31,10 +31,11 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="header-container">
-          <h1>John Heart</h1>
-          <Button text="Load Data" onClick={this.onClick}></Button>
-        </div>
+
+        <h1>John Heart</h1>
+        &nbsp;
+        <Button text="Load Data" onClick={this.onClick}></Button>
+
         <div id="employee">
 
           <p>

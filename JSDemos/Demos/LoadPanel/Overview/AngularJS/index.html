@@ -17,13 +17,11 @@
 <body class="dx-viewport">
     <div class="demo-container" ng-app="DemoApp" ng-controller="DemoController">
         <div id="container">
-            <div class="header-container">
-                <h1>John Heart</h1>
-                <div dx-button="{
-                    text: 'Load Data', 
-                    onClick: showLoadPanel 
-                }"></div>
-            </div>    
+            <h1>John Heart</h1>
+            <div dx-button="{
+                text: 'Load Data', 
+                onClick: showLoadPanel 
+            }"></div>    
             <div id="employee" ng-init="employeeInfo">
                 <p>
                     Birth date: <b>{{employeeInfo.Birth_Date}}</b>
