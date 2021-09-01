@@ -22,7 +22,6 @@
     </DxPivotGrid>
     <div class="options">
       <div class="caption">Options</div>
-      <div class="options-container">
         <div class="option">
           <DxCheckBox
             id="show-data-fields"
@@ -31,6 +30,7 @@
             text="Show Data Fields"
           />
         </div>
+        {{ ' ' }}
         <div class="option">
           <DxCheckBox
             id="show-row-fields"
@@ -39,6 +39,7 @@
             text="Show Row Fields"
           />
         </div>
+        {{ ' ' }}
         <div class="option">
           <DxCheckBox
             id="show-column-fields"
@@ -47,6 +48,7 @@
             text="Show Column Fields"
           />
         </div>
+        {{ ' ' }}
         <div class="option">
           <DxCheckBox
             id="show-filter-fields"
@@ -55,7 +57,7 @@
             text="Show Filter Fields"
           />
         </div>
-      </div>
+
     </div>
   </div>
 </template>
@@ -197,11 +199,5 @@ export default {
     width: 24%;
     display: inline-block;
     margin-top: 10px;
-    margin-right: 4px;
-}
-
-.options-container {
-  display: flex;
-  align-items: center;
 }
 </style>
