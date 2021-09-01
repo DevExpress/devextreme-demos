@@ -31,7 +31,6 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-
         <h1>John Heart</h1>
         &nbsp;
         <Button text="Load Data" onClick={this.onClick}></Button>
