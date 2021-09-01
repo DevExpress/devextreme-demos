@@ -61,22 +61,24 @@
 
 <div class="options">
     <div class="caption">Options</div>
-    <div class="option">
-        <span>Focused Row Key</span>
-        @(Html.DevExtreme().NumberBox()
-            .Min(1)
-            .Max(183)
-            .Step(0)
-            .OnInitialized("onTaskIdEditorInitialized")
-            .OnValueChanged("onTaskIdEditorValueChanged")
-        )
-    </div>
-    <div class="option">
-        @(Html.DevExtreme().CheckBox()
-            .Text("Auto Navigate To Focused Row")
-            .Value(true)
-            .OnValueChanged("autoNavigateToFocusedRowChanged")
-        )
+    <div class="options-container">
+        <div class="option">
+            <span>Focused Row Key</span>
+            @(Html.DevExtreme().NumberBox()
+                .Min(1)
+                .Max(183)
+                .Step(0)
+                .OnInitialized("onTaskIdEditorInitialized")
+                .OnValueChanged("onTaskIdEditorValueChanged")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Auto Navigate To Focused Row")
+                .Value(true)
+                .OnValueChanged("autoNavigateToFocusedRowChanged")
+            )
+        </div>
     </div>
 </div>
 
