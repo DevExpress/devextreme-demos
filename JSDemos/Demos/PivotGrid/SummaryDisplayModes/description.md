@@ -3,7 +3,26 @@ Summary display modes are post-processing functions that allow you perform addit
 ## Apply a Summary Display Mode
 DevExtreme PivotGrid supports predefined summary display modes decribed below. To apply one of them, set the [summaryDisplayMode](/Documentation/ApiReference/Data_Layer/PivotGridDataSource/Configuration/fields/#summaryDisplayMode) property. 
 
-.. copy the list from the reference article ...
+- *"absoluteVariation"*            
+    Calculates the absolute difference between the current and previous value in a row. Starts from the second value in the row because the first does not have a previous value.
+
+- *"percentVariation"*            
+    Same as the absolute variation, but the difference is calculated as a percentage.
+
+- *"percentOfColumnTotal"*            
+    Calculates the current value as a percentage in one of the column's intermediate totals or the column's grand total when there are no expanded rows.
+
+- *"percentOfRowTotal"*        
+    Calculates the current value as a percentage in one of the row's intermediate totals or the row's grand total when there are no expanded columns.
+
+- *"percentOfColumnGrandTotal"*        
+    Calculates the current value as a percentage in the column's grand total.
+
+- *"percentOfRowGrandTotal"*        
+    Calculates the current value as a percentage in the row's grand total.
+
+- *"percentOfGrandTotal"*        
+    Calculates the current value as a percentage in the grand total of the entire pivot grid.
 
 If the predefined modes do not suit your needs, you can implement a custom post-processing function&mdash;[calculateSummaryValue](/Documentation/ApiReference/Data_Layer/PivotGridDataSource/Configuration/fields/#calculateSummaryValue). Note that the PivotGrid ignores the **summaryDisplayMode** property if the **calculateSummaryValue** function is defined.
 
