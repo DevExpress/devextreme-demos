@@ -3,5 +3,3 @@ If the PivotGrid is bound to a large dataset, you can enable the virtual scrolli
 To allow users to scroll the PivotGrid virtually, set the scrolling.[mode](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/scrolling/#mode) to _"virtual"_.
 
 In this demo, the PivotGrid stores approximately 4000 values locally. To see virtual scrolling in action, scroll the PivotGrid horizontally.
-
-To see virtual scrolling when the PivotGrid is bound to a remote storage, refer to the [Remote Virtual Scrolling](https://js.devexpress.com/Demos/WidgetsGallery/Demo/PivotGrid/RemoteVirtualScrolling) demo.
