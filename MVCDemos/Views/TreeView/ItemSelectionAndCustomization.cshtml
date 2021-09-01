@@ -53,14 +53,14 @@
                 .Value("multiple")
                 .OnValueChanged("selectionModeValueChanged"))
         </div>
-        <div class="option recursive-option">
+        <div class="option option-checkbox">
             @(Html.DevExtreme().CheckBox()
                 .ID("selectNodesRecursive")
                 .Text("Select Nodes Recursive")
                 .Value(true)
                 .OnValueChanged("selectNodesRecursiveValueChanged"))
         </div>
-        <div class="option">
+        <div class="option option-checkbox">
             @(Html.DevExtreme().CheckBox()
                 .ID("selectByClick")
                 .Text("Select By Click")
