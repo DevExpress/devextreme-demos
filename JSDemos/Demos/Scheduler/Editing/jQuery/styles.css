@@ -14,3 +14,8 @@
     display: inline-block;
     width: 19%;
 }
+
+.option-container {
+    display: flex;
+    align-items: center;
+}
