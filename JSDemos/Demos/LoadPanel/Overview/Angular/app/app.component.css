@@ -1,7 +1,7 @@
 h1 {
     display: inline-block;
     vertical-align: middle;
-    padding: 10px;
+    padding: 10px 14px 10px 10px;
     margin: 0;    
 }
 ::ng-deep #employee {
@@ -33,4 +33,8 @@ h1 {
 }
 ::ng-deep .option {
     margin-top: 10px;
+}
+::ng-deep .header-container {
+    display: flex;
+    align-items: center;
 }

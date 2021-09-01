@@ -1,11 +1,11 @@
 ﻿<div id="container">
-    <h1>John Heart</h1>
-
-    @(Html.DevExtreme().Button()
-        .Text("Load Data")
-        .OnClick("button_click")
-    )
-
+    <div class="header-container">
+        <h1>John Heart</h1>
+        @(Html.DevExtreme().Button()
+            .Text("Load Data")
+            .OnClick("button_click")
+        )
+    </div>
     <div id="employee">
         <p>
             Birth date: <b class="birth-date"></b>
