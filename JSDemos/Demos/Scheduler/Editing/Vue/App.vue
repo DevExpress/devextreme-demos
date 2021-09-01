@@ -129,7 +129,7 @@ export default {
     width: 19%;
   }
 
-  .option-container {
+  .options-container {
     display: flex;
     align-items: center;
   }
