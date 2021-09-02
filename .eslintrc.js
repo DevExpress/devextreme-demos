@@ -273,6 +273,28 @@ module.exports = {
         ]
     },
     overrides: [{
+        files: ['JSDemos/Demos/**/jQuery/*.*'],
+        extends: [
+            'eslint:recommended'
+        ],
+        env: {
+            jquery: true
+        },
+        globals: {
+            'DevExpress': true
+        },
+        overrides: [{
+            files: '**/data.js',
+            rules: {
+                'no-unused-vars': 0
+            }
+        },{
+            files: '**/index.js',
+            rules: {
+                'no-undef': 0
+            }
+        }]
+    },{
         files: 'JSDemos/Demos/**/React/*.*',
         parser: 'babel-eslint',
         extends: [

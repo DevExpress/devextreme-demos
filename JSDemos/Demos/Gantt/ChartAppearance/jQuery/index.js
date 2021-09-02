@@ -78,7 +78,7 @@ $(function() {
         }
     });
 
-    function getTaskTooltipContentTemplate(task, container) {
+    function getTaskTooltipContentTemplate(task) {
         var timeEstimate = Math.abs(task.start - task.end) / 36e5;
         var timeLeft = Math.floor((100 - task.progress) / 100 * timeEstimate);
 
