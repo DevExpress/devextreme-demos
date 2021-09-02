@@ -39,14 +39,20 @@
     width: 24%;
     display: inline-block;
     margin-top: 10px;
-    margin-right: 5px;
     box-sizing: border-box;
 }
 
-.recursive-option {
-    padding-left: 10px;
+.option-checkbox {
+    margin-bottom: 5px;
 }
 
-.option:last-of-type {
-    margin-right: 0px;
+.options-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.options-container {
+    display: flex;
+    align-items: center;
 }
