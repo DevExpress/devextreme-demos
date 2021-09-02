@@ -8,6 +8,10 @@
     vertical-align: top;
 }
 
+#selected-employees {
+    margin-top: 20px;
+}
+
 .selected-container {
     padding: 20px;
     margin-left: 20px;    
@@ -16,14 +20,9 @@
     font-weight: bold;
 }
 
-#selected-employees {
-    margin-top: 20px;
-}
-
 .dx-list-item-content {
     padding-left: 0;
 }
-
 .options {
     padding: 20px;
     background-color: rgba(191, 191, 191, 0.15);
