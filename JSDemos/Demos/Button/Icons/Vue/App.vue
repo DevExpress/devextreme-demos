@@ -12,7 +12,6 @@
           />
         </div>
       </div>
-      {{ &nbsp; }}
       <div class="dx-field">
         <div class="dx-field-label">Image icon</div>
         <div class="dx-field-value">
@@ -23,7 +22,6 @@
           />
         </div>
       </div>
-      {{ &nbsp; }}
       <div class="dx-field">
         <div class="dx-field-label">External icon</div>
         <div class="dx-field-value">
@@ -35,7 +33,6 @@
           />
         </div>
       </div>
-      {{ &nbsp; }}
       <div class="dx-field">
         <div class="dx-field-label">Icon only</div>
         <div class="dx-field-value">
@@ -63,7 +60,6 @@
           />
         </div>
       </div>
-      {{ &nbsp; }}
       <div class="dx-field">
         <div class="dx-field-value">
           <DxButton
@@ -73,7 +69,6 @@
           />
         </div>
       </div>
-      {{ &nbsp; }}
       <div class="dx-field">
         <div class="dx-field-value">
           <DxButton
@@ -84,7 +79,6 @@
           />
         </div>
       </div>
-      <div>&nbsp;</div>
       <div class="dx-field">
         <div class="dx-field-value">
           <DxButton
@@ -147,7 +141,7 @@ export default {
 
 .dx-viewport:not(.dx-theme-ios7) .dx-field {
     display: inline-block;
-    margin-right: 20px;
+    margin-right: 24px;
 }
 
 .dx-viewport:not(.dx-theme-ios7) .dx-field-value:not(.dx-widget) > .dx-button {
