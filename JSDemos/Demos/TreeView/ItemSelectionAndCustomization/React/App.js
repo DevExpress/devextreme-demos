@@ -69,7 +69,7 @@ class App extends React.Component {
           <div className="options-container">
             <div className="option">
               <span>Show Check Boxes Mode:</span>
-              <div class="editor-container">
+              <div classNamelint="editor-container">
                 <SelectBox
                   items={this.state.showCheckBoxesModes}
                   value={this.state.showCheckBoxesMode}
@@ -78,7 +78,7 @@ class App extends React.Component {
             </div>
             <div className="option">
               <span>Selection Mode:</span>
-              <div class="editor-container">
+              <div className="editor-container">
                 <SelectBox
                   items={this.state.selectionModes}
                   value={this.state.selectionMode}
@@ -87,8 +87,8 @@ class App extends React.Component {
               </div>
             </div>
             <div className="option">
-              <div class="caption-placeholder">&nbsp;</div>
-              <div class="editor-container">
+              <div className="caption-placeholder">&nbsp;</div>
+              <div className="editor-container">
                 <CheckBox
                   text="Select Nodes Recursive"
                   value={this.state.selectNodesRecursive}
@@ -97,8 +97,8 @@ class App extends React.Component {
               </div>
             </div>
             <div className="option">
-              <div class="caption-placeholder">&nbsp;</div>
-              <div class="editor-container">
+              <div className="caption-placeholder">&nbsp;</div>
+              <div className="editor-container">
                 <CheckBox
                   text="Select By Click"
                   value={this.state.selectByClick}
