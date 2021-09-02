@@ -17,10 +17,6 @@ $(function(){
             allowAdding: false
         },
         resources: [{ 
-            fieldExpr: "movieId",
-            dataSource: moviesData,
-            useColorAsDefault: true
-        }, { 
             fieldExpr: "theatreId", 
             dataSource: theatreData
         }],
