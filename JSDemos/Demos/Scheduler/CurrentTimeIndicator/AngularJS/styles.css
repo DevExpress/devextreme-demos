@@ -11,8 +11,6 @@
 .options {
     background-color: rgba(191, 191, 191, 0.15);
     margin-top: 20px;
-    display: flex; 
-    align-items: flex-start;
 }
 
 .column {
