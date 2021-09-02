@@ -1,1 +1,1 @@
-testUtils.postponeUntilFound('.grid-header');
+testUtils.postpone(1000);
