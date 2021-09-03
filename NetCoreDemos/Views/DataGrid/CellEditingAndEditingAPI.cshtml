@@ -39,33 +39,27 @@
             .DeleteAction("Delete")
             .Key("ID")
         )
-        .OnToolbarPreparing("onToolbarPreparing")
+        .Toolbar(toolbar => {
+            toolbar.Items(items => {
+                items.Add()
+                    .Name("addRowButton")
+                    .ShowText(ToolbarItemShowTextMode.Always);
+
+                items.Add()
+                    .Location(ToolbarItemLocation.After)
+                    .Widget(w =>
+                        w.Button()
+                            .Text("Delete Selected Records")
+                            .Icon("trash")
+                            .Disabled(true)
+                            .OnClick("onDeleteBtnClick")
+                    );
+            });
+        })
     )
 </div>
 
 <script>
-    let deleteButton;
-
-    function onToolbarPreparing(e) {
-        var dataGrid = e.component;
-
-        e.toolbarOptions.items[0].showText = 'always';
-
-        e.toolbarOptions.items.push({
-            location: "after",
-            widget: "dxButton",
-            options: {
-                text: "Delete Selected Records",
-                icon: "trash",
-                disabled: true,
-                onClick: onDeleteBtnClick,
-                onInitialized: function(e) {
-                    deleteButton = e.component;
-                }
-            }
-        });
-    }
-
     function onDeleteBtnClick(){
         let dataGrid = $("#gridContainer").dxDataGrid("instance");
         $.when.apply($, dataGrid.getSelectedRowsData().map(function(data) {
@@ -75,7 +69,8 @@
         });
     }
 
-    function onSelectionChanged(data){
-        deleteButton.option("disabled", !data.selectedRowsData.length);
+    function onSelectionChanged(data) {
+        let dataGrid = $("#gridContainer").dxDataGrid("instance");
+        dataGrid.option("toolbar.items[1].options.disabled", !data.selectedRowsData.length);
     }
 </script>
