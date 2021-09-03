@@ -15,6 +15,7 @@
                         .OnValueChanged("ganttScaleType_valueChanged")
                     )
                 </div>
+            </div>
             <div class="option">
                 <div class="label">Title Position:</div>
                 <div class="value">
@@ -47,7 +48,7 @@
                 <div class="value">
                     @(Html.DevExtreme().DateBox()
                         .Type(DateBoxType.Date)
-                        .Value(new DateTime(2018, 11, 1))
+                        .Value(new DateTime(2018, 12, 1))
                         .OnValueChanged("ganttStartDateRange_changed")
                     )
                 </div>
@@ -57,7 +58,7 @@
                 <div class="value">
                     @(Html.DevExtreme().DateBox()
                         .Type(DateBoxType.Date)
-                        .Value(new DateTime(2019, 11, 1))
+                        .Value(new DateTime(2019, 12, 1))
                         .OnValueChanged("ganttEndDateRange_changed")
                     )
                 </div>
@@ -77,8 +78,8 @@
         .ID("gantt")
         .TaskTitlePosition(GanttTaskTitlePosition.Outside)
         .ScaleType(GanttScaleType.Months)
-        .StartDateRange(new DateTime(2018, 11, 1))
-        .EndDateRange(new DateTime(2019, 11, 1))
+        .StartDateRange(new DateTime(2018, 12, 1))
+        .EndDateRange(new DateTime(2019, 12, 1))
         .Tasks(t => t
             .DataSource(ds => ds.Array().Data(SampleData.GanttTasks).Key("ID"))
             .KeyExpr("ID")
