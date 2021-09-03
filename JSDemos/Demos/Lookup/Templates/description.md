@@ -19,4 +19,4 @@ You can use the following properties to specify custom templates for these Looku
     </tr> 
 </table>
 
-To customize elements, you can also define specific fields in data objects. Refer to the [items](/Documentation/ApiReference/UI_Components/dxLookup/Configuration/items/) documentation for a full list of such fields. See the [Default Templates](/Documentation/Guide/UI_Components/Common/Templates/#Default_Templates) help topic for details on customization.
+To customize elements, you can also define specific fields in data objects. Visit the [items](/Documentation/ApiReference/UI_Components/dxLookup/Configuration/items/) documentation for a full list of such fields. Refer to the [Default Templates](/Documentation/Guide/UI_Components/Common/Templates/#Default_Templates) help topic for more information about this feature.
