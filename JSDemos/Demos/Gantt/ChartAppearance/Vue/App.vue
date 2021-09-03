@@ -1,10 +1,10 @@
 <template>
   <div id="form-demo">
-    <div class='options'>
+    <div class="options">
       <div class="caption">Options</div>
       <div class="column">
         <div class="option">
-          <div class="label">Scale Type:</div>
+          <div class="label">Scale Type:</div>&nbsp;
           <div class="value">
             <DxSelectBox
               :items="['auto', 'minutes', 'hours', 'days', 'weeks', 'months', 'quarters', 'years']"
@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="option">
-          <div class="label">Title Position:</div>
+          <div class="label">Title Position:</div>&nbsp;
           <div class="value">
             <DxSelectBox
               :items="['inside', 'outside', 'none']"
@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="option">
-          <div class="label">Show Resources:</div>
+          <div class="label">Show Resources:</div>&nbsp;
           <div class="value">
             <DxCheckBox
               v-model:value="showResources"
@@ -32,7 +32,7 @@
       </div>
       <div class="column">
         <div class="option">
-          <div class="label">Start Date Range:</div>
+          <div class="label">Start Date Range:</div>&nbsp;
           <div class="value">
             <DxDateBox
               v-model:value="startDateRange"
@@ -42,7 +42,7 @@
           </div>
         </div>
         <div class="option">
-          <div class="label">End Date Range:</div>
+          <div class="label">End Date Range:</div>&nbsp;
           <div class="value">
             <DxDateBox
               v-model:value="endDateRange"
@@ -51,13 +51,13 @@
             />
           </div>
         </div>
-          <div class="option">
-            <div class="label">Customize Task Tooltip:</div>
-            <div class="value">
-              <DxCheckBox
-                v-model:value="showCustomTaskTooltip"
-              />
-            </div>
+        <div class="option">
+          <div class="label">Customize Task Tooltip:</div>&nbsp;
+          <div class="value">
+            <DxCheckBox
+              v-model:value="showCustomTaskTooltip"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -71,7 +71,7 @@
         :start-date-range="startDateRange"
         :end-date-range="endDateRange"
         :task-tooltip-content-template="showCustomTaskTooltip ? 'taskTooltipContentTemplate' : ''"
-        >
+      >
 
         <DxTasks :data-source="tasks"/>
         <DxDependencies :data-source="dependencies"/>
@@ -165,7 +165,7 @@ export default {
 </script>
 <style>
   #gantt {
-    height: 700px;
+      height: 700px;
   }
 
   .options {
