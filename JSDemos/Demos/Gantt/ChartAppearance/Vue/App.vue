@@ -4,7 +4,7 @@
       <div class="caption">Options</div>
       <div class="column">
         <div class="option">
-          <div class="label">Scale Type:</div>&nbsp;
+          <div class="label">Scale Type:</div>{{ ' ' }}
           <div class="value">
             <DxSelectBox
               :items="['auto', 'minutes', 'hours', 'days', 'weeks', 'months', 'quarters', 'years']"
@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="option">
-          <div class="label">Title Position:</div>&nbsp;
+          <div class="label">Title Position:</div>{{ ' ' }}
           <div class="value">
             <DxSelectBox
               :items="['inside', 'outside', 'none']"
@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="option">
-          <div class="label">Show Resources:</div>&nbsp;
+          <div class="label">Show Resources:</div>{{ ' ' }}
           <div class="value">
             <DxCheckBox
               v-model:value="showResources"
@@ -32,7 +32,7 @@
       </div>
       <div class="column">
         <div class="option">
-          <div class="label">Start Date Range:</div>&nbsp;
+          <div class="label">Start Date Range:</div>{{ ' ' }}
           <div class="value">
             <DxDateBox
               v-model:value="startDateRange"
@@ -42,7 +42,7 @@
           </div>
         </div>
         <div class="option">
-          <div class="label">End Date Range:</div>&nbsp;
+          <div class="label">End Date Range:</div>{{ ' ' }}
           <div class="value">
             <DxDateBox
               v-model:value="endDateRange"
@@ -52,7 +52,7 @@
           </div>
         </div>
         <div class="option">
-          <div class="label">Customize Task Tooltip:</div>&nbsp;
+          <div class="label">Customize Task Tooltip:</div>{{ ' ' }}
           <div class="value">
             <DxCheckBox
               v-model:value="showCustomTaskTooltip"
