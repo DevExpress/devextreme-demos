@@ -5,6 +5,8 @@ $(function() {
         tasks: {
             dataSource: tasks
         },
+        startDateRange: new Date(2018, 11, 1),
+        endDateRange: new Date(2019, 11, 1),
         dependencies: {
             dataSource: dependencies
         },
@@ -62,7 +64,6 @@ $(function() {
     });
 
     $("#showResources").dxCheckBox({
-        text: "Show Resources",
         value: true,
         onValueChanged: function (e) {
             gantt.option("showResources", e.value);
@@ -70,15 +71,29 @@ $(function() {
     });
 
     $("#customizeTaskTooltip").dxCheckBox({
-        text: "Customize Task Tooltip",
         value: true,
         onValueChanged: function (e) {
             e.value ? gantt.option("taskTooltipContentTemplate", getTaskTooltipContentTemplate) 
                     : gantt.option("taskTooltipContentTemplate", undefined);
         }
     });
+    $("#startDateContainer").dxDateBox({
+        type: "date",
+        value: new Date(2018, 11, 1),
+        onValueChanged: function (e) {
+            gantt.option("startDateRange", e.value);
+        }
+    });
+    
+    $("#endDateContainer").dxDateBox({
+        type: "date",
+        value: new Date(2019, 11, 1),
+        onValueChanged: function (e) {
+            gantt.option("endDateRange", e.value);
+        }
+    });
 
-    function getTaskTooltipContentTemplate(task, container) {
+    function getTaskTooltipContentTemplate(task) {
         var timeEstimate = Math.abs(task.start - task.end) / 36e5;
         var timeLeft = Math.floor((100 - task.progress) / 100 * timeEstimate);
 

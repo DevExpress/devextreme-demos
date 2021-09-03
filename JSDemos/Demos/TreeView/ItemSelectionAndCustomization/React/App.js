@@ -66,36 +66,45 @@ class App extends React.Component {
         </div>
         <div className="options">
           <div className="caption">Options</div>
-          <div className="option">
-            <span>Show Check Boxes Mode:</span>
-            <SelectBox
-              items={this.state.showCheckBoxesModes}
-              value={this.state.showCheckBoxesMode}
-              onValueChanged={this.showCheckBoxesModeValueChanged} />
-          </div>
-          &nbsp;
-          <div className="option">
-            <span>Selection Mode:</span>
-            <SelectBox
-              items={this.state.selectionModes}
-              value={this.state.selectionMode}
-              disabled={this.state.isSelectionModeDisabled}
-              onValueChanged={this.selectionModeValueChanged} />
-          </div>
-          &nbsp;
-          <div className="option recursive-option">
-            <CheckBox
-              text="Select Nodes Recursive"
-              value={this.state.selectNodesRecursive}
-              disabled={this.state.isRecursiveDisabled}
-              onValueChanged={this.selectNodesRecursiveValueChanged} />
-          </div>
-          &nbsp;
-          <div className="option">
-            <CheckBox
-              text="Select By Click"
-              value={this.state.selectByClick}
-              onValueChanged={this.selectByClickValueChanged} />
+          <div className="options-container">
+            <div className="option">
+              <span>Show Check Boxes Mode:</span>
+              <div classNamelint="editor-container">
+                <SelectBox
+                  items={this.state.showCheckBoxesModes}
+                  value={this.state.showCheckBoxesMode}
+                  onValueChanged={this.showCheckBoxesModeValueChanged} />
+              </div>
+            </div>
+            <div className="option">
+              <span>Selection Mode:</span>
+              <div className="editor-container">
+                <SelectBox
+                  items={this.state.selectionModes}
+                  value={this.state.selectionMode}
+                  disabled={this.state.isSelectionModeDisabled}
+                  onValueChanged={this.selectionModeValueChanged} />
+              </div>
+            </div>
+            <div className="option">
+              <div className="caption-placeholder">&nbsp;</div>
+              <div className="editor-container">
+                <CheckBox
+                  text="Select Nodes Recursive"
+                  value={this.state.selectNodesRecursive}
+                  disabled={this.state.isRecursiveDisabled}
+                  onValueChanged={this.selectNodesRecursiveValueChanged} />
+              </div>
+            </div>
+            <div className="option">
+              <div className="caption-placeholder">&nbsp;</div>
+              <div className="editor-container">
+                <CheckBox
+                  text="Select By Click"
+                  value={this.state.selectByClick}
+                  onValueChanged={this.selectByClickValueChanged} />
+              </div>
+            </div>
           </div>
         </div>
       </div>

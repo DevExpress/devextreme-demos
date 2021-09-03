@@ -2,7 +2,7 @@ import glob from 'glob';
 import { ClientFunction } from 'testcafe';
 import { join } from 'path';
 import { existsSync, readFileSync } from 'fs';
-import { compareScreenshot } from '../utils/visual-tests/screenshot-comparer';
+import { compareScreenshot } from 'devextreme-screenshot-comparer';
 import {
   getPortByIndex,
   runTestAtPage,

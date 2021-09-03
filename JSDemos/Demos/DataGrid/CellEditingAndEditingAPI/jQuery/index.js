@@ -69,6 +69,4 @@ $(function(){
             dataGrid.option("toolbar.items[1].options.disabled", !data.selectedRowsData.length);
         },
     }).dxDataGrid("instance");
-    
-    
 });
