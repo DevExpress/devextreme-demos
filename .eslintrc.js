@@ -275,7 +275,8 @@ module.exports = {
     overrides: [{
         files: [
             'JSDemos/Demos/**/jQuery/*.*',
-            'JSDemos/Demos/**/AngularJS/*.*'
+            'JSDemos/Demos/**/AngularJS/*.*',
+            'JSDemos/Demos/**/Knockout/*.*'
         ],
         extends: [
             'eslint:recommended'
