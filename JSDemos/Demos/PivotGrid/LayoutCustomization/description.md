@@ -3,10 +3,9 @@ PivotGrid allows users to customize layout and orientation of elements that anno
 - [rowHeaderLayout](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#rowHeaderLayout)            
 Allows you to specify layout type for the row header items. The *"standard"* layout displays child items on the right from the parent items. Assign "*tree*" to this property to display items more compactly as a hierarchical structure. 
 
-- [showTotalsPrior](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#showTotalsPrior)        
-Specifies whether to show the total rows and columns before or after data. Applies only if **rowHeaderLayout** is *"standard"*.
-
 - [dataFieldArea](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#dataFieldArea)     
 Specifies the [area](/Documentation/ApiReference/Data_Layer/PivotGridDataSource/Configuration/fields/#area) to which data headers belong: *"column"* or *"row"*. Data headers appear only when pivot grid has more than one data field (`Sales` and `Percent` in this demo). 
+
+You can change position of total rows and columns. The PivotGrid displays them after data. Use the [showTotalsPrior](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#showTotalsPrior) property to specify whether to show the totals after data. This property does not affect row totals when **rowHeaderLayout** is *"tree"*.
 
 Toggle the check boxes below the PivotGrid to change values of the **showTotalsPrior**, **dataFieldArea**, and **rowHeaderLayout** properties.
