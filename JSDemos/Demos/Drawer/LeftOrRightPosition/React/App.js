@@ -81,7 +81,6 @@ class App extends React.Component {
                 onValueChanged={this.onOpenedStateModeChanged}
               />
             </div>
-            {' '}
             <div className="option">
               <label>Position</label>
               <RadioGroup
@@ -91,7 +90,6 @@ class App extends React.Component {
                 onValueChanged={this.onPositionChanged}
               />
             </div>
-            {' '}
             {openedStateMode !== 'push' && (<div className="option">
               <label>Reveal mode</label>
               <RadioGroup
