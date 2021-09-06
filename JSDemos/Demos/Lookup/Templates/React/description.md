@@ -1,4 +1,4 @@
-You can use the following properties to specify custom templates for these Lookup elements:
+You can use the following properties to specify custom templates for Lookup elements:
 
 <table class="dx-table">
     <tr>
