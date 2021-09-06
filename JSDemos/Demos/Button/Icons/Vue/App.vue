@@ -38,7 +38,7 @@
       {{ ' ' }}
       <div class="dx-field">
         <div class="dx-field-label">Icon only</div>
-        <div class="dx-field-value buttons-container">
+        <div class="dx-field-value">
           <DxButton
             icon="plus"
             @click="plusClick()"
@@ -86,7 +86,7 @@
       </div>
       {{ ' ' }}
       <div class="dx-field">
-        <div class="dx-field-value buttons-container">
+        <div class="dx-field-value">
           <DxButton
             :disabled="true"
             icon="plus"
@@ -166,9 +166,5 @@ export default {
 
 .send .dx-button-content .dx-icon {
     font-size: 18px;
-}
-
-.buttons-container {
-  display: flex;
 }
 </style>
