@@ -12,6 +12,7 @@
           />
         </div>
       </div>
+      {{ ' ' }}
       <div class="dx-field">
         <div class="dx-field-label">Image icon</div>
         <div class="dx-field-value">
@@ -22,6 +23,7 @@
           />
         </div>
       </div>
+      {{ ' ' }}
       <div class="dx-field">
         <div class="dx-field-label">External icon</div>
         <div class="dx-field-value">
@@ -33,9 +35,10 @@
           />
         </div>
       </div>
+      {{ ' ' }}
       <div class="dx-field">
         <div class="dx-field-label">Icon only</div>
-        <div class="dx-field-value">
+        <div class="dx-field-value buttons-container">
           <DxButton
             icon="plus"
             @click="plusClick()"
@@ -60,6 +63,7 @@
           />
         </div>
       </div>
+      {{ ' ' }}
       <div class="dx-field">
         <div class="dx-field-value">
           <DxButton
@@ -69,6 +73,7 @@
           />
         </div>
       </div>
+      {{ ' ' }}
       <div class="dx-field">
         <div class="dx-field-value">
           <DxButton
@@ -79,8 +84,9 @@
           />
         </div>
       </div>
+      {{ ' ' }}
       <div class="dx-field">
-        <div class="dx-field-value">
+        <div class="dx-field-value buttons-container">
           <DxButton
             :disabled="true"
             icon="plus"
@@ -124,7 +130,7 @@ export default {
 </script>
 <style scoped>
 #back, #back-disabled {
- margin-left: 4px;
+    margin-left: 3px;
 }
 .dx-viewport:not(.dx-theme-ios7) .dx-fieldset {
     width: 520px;
@@ -141,7 +147,7 @@ export default {
 
 .dx-viewport:not(.dx-theme-ios7) .dx-field {
     display: inline-block;
-    margin-right: 24px;
+    margin-right: 20px;
 }
 
 .dx-viewport:not(.dx-theme-ios7) .dx-field-value:not(.dx-widget) > .dx-button {
@@ -160,5 +166,9 @@ export default {
 
 .send .dx-button-content .dx-icon {
     font-size: 18px;
+}
+
+.buttons-container {
+  display: flex;
 }
 </style>
