@@ -2,7 +2,7 @@ testUtils.importAnd(()=>'devextreme/ui/tree_view', ()=>DevExpress.ui.dxTreeView,
     
     var treeView = dxTreeView.getInstance(document.getElementById("simple-treeview"));
     function changeCreateChildren(treeView) {
-        treeView.option("createChildren", function (parentNode) {
+        treeView.option("createChildren", function () {
           return [
             { text: "Video Players", hasItems: false },
             { text: "Televisions" },

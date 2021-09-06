@@ -1,3 +1,4 @@
+/* eslint-env node */
 'use strict';
 
 module.exports = {
@@ -272,14 +273,25 @@ module.exports = {
             }
         ]
     },
+    extends: [
+        'eslint:recommended',
+        //'devextreme/javascript'
+    ],
     overrides: [{
+        files: [
+            '**/test-code.js',
+            '**/client-script.js'
+        ],
+        globals: {
+            'DevExpress': true,
+            'testUtils': true,
+            'MockDate': true
+        },
+    },{
         files: [
             'JSDemos/Demos/**/jQuery/*.*',
             'JSDemos/Demos/**/AngularJS/*.*',
             'JSDemos/Demos/**/Knockout/*.*'
-        ],
-        extends: [
-            'eslint:recommended'
         ],
         env: {
             jquery: true
@@ -302,7 +314,6 @@ module.exports = {
         files: 'JSDemos/Demos/**/React/*.*',
         parser: 'babel-eslint',
         extends: [
-            'eslint:recommended',
             'plugin:react/recommended'
         ],
         globals: {
@@ -399,7 +410,6 @@ module.exports = {
     },{
         files: ['JSDemos/Demos/**/Vue/*.vue', 'JSDemos/Demos/**/Vue/*.js'],
         'extends': [
-            'eslint:recommended',
             'plugin:vue/recommended'
         ],
         'globals': {

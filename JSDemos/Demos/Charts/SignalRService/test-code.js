@@ -2,11 +2,10 @@
     let isReady = false;
     return testUtils
         .postponeUntilFound('#chart', 100, 3000)
-        .then(x => {
+        .then(() => {
             var chart = dxChart.getInstance(document.querySelector("#chart"));
 
-            var dataSourceItems = getData(),
-                keyField = "Date";
+            var dataSourceItems = getData();
 
             if (window.$ && window.$.connection && window.$.connection.stockTickDataHub) {
                 window.$.connection.liveUpdateSignalRHub.client.updateStockPrice = function () { };
@@ -14,7 +13,6 @@
                 dataSourceItems.forEach(function (item) { for (var key in item) { item[key.charAt(0).toLowerCase() + key.slice(1)] = item[key]; delete item[key]; } });
                 if (window.connection && window.connection.methods)
                     window.connection.methods["updatestockprice"].splice(0, 1);
-                keyField = keyField.toLowerCase();
             }
 
 
