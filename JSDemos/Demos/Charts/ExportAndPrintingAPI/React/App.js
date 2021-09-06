@@ -1,5 +1,4 @@
 import React from 'react';
-import { mountains } from './data.js';
 
 import Chart, {
   Series,
@@ -8,10 +7,11 @@ import Chart, {
   ArgumentAxis,
   Label,
   ValueAxis,
-  VisualRange
+  VisualRange,
 } from 'devextreme-react/chart';
 import PrintButton from 'devextreme-react/button';
 import ExportButton from 'devextreme-react/button';
+import { mountains } from './data.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -75,7 +75,7 @@ function customizeTooltipText(pointInfo) {
   return {
     text: `<span class='title'>${pointInfo.argumentText
     }</span><br />&nbsp;<br />System: ${pointInfo.point.data.system
-    }<br />Height: ${pointInfo.valueText} m`
+    }<br />Height: ${pointInfo.valueText} m`,
   };
 }
 

@@ -1,20 +1,20 @@
-$(function() {
-    var generatedID = 100;
-    var store = new DevExpress.data.ArrayStore({
-        key: "ID",
+$(function () {
+    let generatedID = 100;
+    let store = new DevExpress.data.ArrayStore({
+        key: 'ID',
         data: employees,
-        onInserting: function(values) {
+        onInserting(values) {
             values.ID = values.ID || generatedID++;
             values.Full_Name = values.Full_Name || "Employee's Name";
             values.Title = values.Title || "Employee's Title";
         }
-    });
-    $("#diagram").dxDiagram({
+  });
+    $('#diagram').dxDiagram({
         customShapes: [{
-            type: "employee",
-            category: "employee",
-            baseType: "rectangle",
-            title: "New Employee",
+            type: 'employee',
+            category: 'employee',
+            baseType: 'rectangle',
+            title: 'New Employee',
             defaultWidth: 1.5,
             defaultHeight: 1,
             toolboxWidthToHeightRatio: 2,
@@ -22,9 +22,9 @@ $(function() {
             minHeight: 1,
             maxWidth: 3,
             maxHeight: 2,
-            allowEditText: false
-        }],
-        customShapeTemplate: function(item, $container) {
+            allowEditText: false,
+    }],
+        customShapeTemplate(item, $container) {
             var employee = item.dataItem;
             var svgNS = "http://www.w3.org/2000/svg";
             var $content = $(document.createElementNS(svgNS, "svg")).addClass("template");
@@ -52,7 +52,7 @@ $(function() {
                 .appendTo($content);                       
             $container.append($content); 
         },
-        customShapeToolboxTemplate: function(item, $container) {
+        customShapeToolboxTemplate(item, $container) {
             var $content = $("<svg class='template'>" +
                 "<text x='50%' y='40%'>New</text>" +
                 "<text x='50%' y='70%'>Employee</text>" +
@@ -61,10 +61,10 @@ $(function() {
         },
         nodes: {
             dataSource: store,
-            keyExpr: "ID",
-            typeExpr: function() { return "employee"; },
-            parentKeyExpr: "Head_ID",
-            customDataExpr: function(obj, value) {
+            keyExpr: 'ID',
+            typeExpr() { return "employee"; },
+            parentKeyExpr: 'Head_ID',
+            customDataExpr(obj, value) {
                 if(value === undefined) {
                     return {
                         "Full_Name": obj.Full_Name,
@@ -88,10 +88,10 @@ $(function() {
                 }
             },
             autoLayout: {
-                type: "tree"
-            }
-        },
-        onRequestLayoutUpdate: function(e) {
+                type: 'tree'
+      },
+    },
+        onRequestLayoutUpdate(e) {
             for(var i = 0; i < e.changes.length; i++) {
                 if(e.changes[i].type === 'remove')
                     e.allowed = true;
@@ -101,104 +101,104 @@ $(function() {
         },
         contextToolbox: {
             shapeIconsPerRow: 1,
-            width: 100
-        },
+            width: 100,
+    },
         toolbox: {
             shapeIconsPerRow: 1,
             showSearch: false,
             groups: [
-                { category: "employee", title: "Employee", expanded: true }
-            ]
-        },
+                { category: 'employee', title: 'Employee', expanded: true },
+      ],
+    },
         propertiesPanel: {
             tabs: [
                 {
-                    groups: [ { title: "Page Properties", commands: ["pageSize", "pageOrientation", "pageColor"] } ]
-                }
-            ]
-        }
-    }).dxDiagram("instance");
+                    groups: [{ title: 'Page Properties', commands: ['pageSize', 'pageOrientation', 'pageColor'] }],
+        },
+      ],
+    },
+  }).dxDiagram('instance');
 
-    var popupContentTemplate = function($container) {
-        var $editorsContainer = $("<div class=\"dx-fieldset\" />").appendTo($container);
-        var $nameField = $("<div class=\"dx-field\"><div class=\"dx-field-label\">Name</div><div class=\"dx-field-value\" data-field=\"Full_Name\" /></div>");
-        $nameField.find(".dx-field-value").append("<div />").dxTextBox();
-        var $titleField = $("<div class=\"dx-field\"><div class=\"dx-field-label\">Title</div><div class=\"dx-field-value\" data-field=\"Title\" /></div>");
-        $titleField.find(".dx-field-value").append("<div /").dxTextBox();
-        var $cityField = $("<div class=\"dx-field\"><div class=\"dx-field-label\">City</div><div class=\"dx-field-value\" data-field=\"City\" /></div>");
-        $cityField.find(".dx-field-value").append("<div /").dxTextBox();
-        var $stateField = $("<div class=\"dx-field\"><div class=\"dx-field-label\">State</div><div class=\"dx-field-value\" data-field=\"State\" /></div>");
-        $stateField.find(".dx-field-value").append("<div /").dxTextBox();
-        var $emailField = $("<div class=\"dx-field\"><div class=\"dx-field-label\">Email</div><div class=\"dx-field-value\" data-field=\"Email\" /></div>");
-        $emailField.find(".dx-field-value").append("<div /").dxTextBox();
-        var $skypeField = $("<div class=\"dx-field\"><div class=\"dx-field-label\">Skype</div><div class=\"dx-field-value\" data-field=\"Skype\" /></div>");
-        $skypeField.find(".dx-field-value").append("<div /").dxTextBox();
-        var $phoneField = $("<div class=\"dx-field\"><div class=\"dx-field-label\">Phone</div><div class=\"dx-field-value\" data-field=\"Mobile_Phone\" /></div>");
-        $phoneField.find(".dx-field-value").append("<div /").dxTextBox();
+  var popupContentTemplate = function ($container) {
+        let $editorsContainer = $('<div class="dx-fieldset" />').appendTo($container);
+        let $nameField = $('<div class="dx-field"><div class="dx-field-label">Name</div><div class="dx-field-value" data-field="Full_Name" /></div>');
+        $nameField.find('.dx-field-value').append('<div />').dxTextBox();
+        let $titleField = $('<div class="dx-field"><div class="dx-field-label">Title</div><div class="dx-field-value" data-field="Title" /></div>');
+        $titleField.find('.dx-field-value').append('<div /').dxTextBox();
+        let $cityField = $('<div class="dx-field"><div class="dx-field-label">City</div><div class="dx-field-value" data-field="City" /></div>');
+        $cityField.find('.dx-field-value').append('<div /').dxTextBox();
+        let $stateField = $('<div class="dx-field"><div class="dx-field-label">State</div><div class="dx-field-value" data-field="State" /></div>');
+        $stateField.find('.dx-field-value').append('<div /').dxTextBox();
+        let $emailField = $('<div class="dx-field"><div class="dx-field-label">Email</div><div class="dx-field-value" data-field="Email" /></div>');
+        $emailField.find('.dx-field-value').append('<div /').dxTextBox();
+        let $skypeField = $('<div class="dx-field"><div class="dx-field-label">Skype</div><div class="dx-field-value" data-field="Skype" /></div>');
+        $skypeField.find('.dx-field-value').append('<div /').dxTextBox();
+        let $phoneField = $('<div class="dx-field"><div class="dx-field-label">Phone</div><div class="dx-field-value" data-field="Mobile_Phone" /></div>');
+        $phoneField.find('.dx-field-value').append('<div /').dxTextBox();
 
-        $editorsContainer.append($nameField, $titleField, $cityField, $stateField, $emailField, $skypeField, $phoneField);
-        var $buttonsContainer = $("<div class=\"dx-fieldset buttons\" />").appendTo($container);
+    $editorsContainer.append($nameField, $titleField, $cityField, $stateField, $emailField, $skypeField, $phoneField);
+        let $buttonsContainer = $('<div class="dx-fieldset buttons" />').appendTo($container);
         $buttonsContainer.append(
-            $("<button />").dxButton({
-                text: "Update",
-                type: "default",
-                onClick: updateEmployee
-            }),
-            $("<button />").dxButton({
-                text: "Cancel",
-                onClick: cancelEditEmployee
-            })
-        );
+            $('<button />').dxButton({
+                text: 'Update',
+                type: 'default',
+                onClick: updateEmployee,
+      }),
+            $('<button />').dxButton({
+                text: 'Cancel',
+                onClick: cancelEditEmployee,
+      }),
+    );
     };
-    var popup = $("#popup").dxPopup({
+    let popup = $('#popup').dxPopup({
         width: 400,
         height: 480,
         showTitle: true,
-        title: "Edit Employee",
+        title: 'Edit Employee',
         visible: false,
         dragEnabled: false,
-        contentTemplate: popupContentTemplate.bind(this)
-    }).dxPopup("instance");
+        contentTemplate: popupContentTemplate.bind(this),
+  }).dxPopup('instance');
 
-    var currentEmployee = {};
+  var currentEmployee = {};
 
-    var editEmployee = function(employee) {
-        currentEmployee = Object.assign({}, employee);
+  var editEmployee = function (employee) {
+        currentEmployee = { ...employee};
 
-        popup.show();
-        popup.content().find(".dx-field-value").each(function() {
-            var field = $(this).attr("data-field");
-            var edit = $(this).dxTextBox("instance");
+    popup.show();
+        popup.content().find('.dx-field-value').each(function () {
+            let field = $(this).attr('data-field');
+            let edit = $(this).dxTextBox('instance');
             edit.option({
                 value: currentEmployee[field],
-                onValueChanged: function(e) { handleChange(field, e.value); }
-            });
+                onValueChanged(e) { handleChange(field, e.value); }
+      });
         });
     };
-    var deleteEmployee = function(employee) {
+    var deleteEmployee = function (employee) {
         store.push([{ type: 'remove', key: employee.ID }]);
     };
-    var updateEmployee = function() {
-        store.push([{ 
-            type: 'update',
-            key: currentEmployee.ID, 
-            data: {
-                "Full_Name": currentEmployee.Full_Name,
-                "Title": currentEmployee.Title,
-                "City": currentEmployee.City,
-                "State": currentEmployee.State,
-                "Email": currentEmployee.Email,
-                "Skype": currentEmployee.Skype,
-                "Mobile_Phone": currentEmployee.Mobile_Phone
-            }
-        }]);
+    var updateEmployee = function () {
+        store.push([{
+      type: 'update',
+            key: currentEmployee.ID,
+      data: {
+                Full_Name: currentEmployee.Full_Name,
+                Title: currentEmployee.Title,
+                City: currentEmployee.City,
+                State: currentEmployee.State,
+                Email: currentEmployee.Email,
+                Skype: currentEmployee.Skype,
+                Mobile_Phone: currentEmployee.Mobile_Phone,
+      },
+    }]);
         popup.hide();
     };
-    var cancelEditEmployee = function() {
+    var cancelEditEmployee = function () {
         currentEmployee = {};
         popup.hide();
-    }
-    var handleChange = function(field, value) {
+    };
+  var handleChange = function (field, value) {
         currentEmployee[field] = value;
-    }
+    };
 });

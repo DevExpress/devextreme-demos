@@ -42,7 +42,7 @@ import {
   DxPolarChart,
   DxCommonSeriesSettings,
   DxSeries,
-  DxMargin
+  DxMargin,
 } from 'devextreme-vue/polar-chart';
 import DxSelectBox from 'devextreme-vue/select-box';
 
@@ -55,16 +55,16 @@ export default {
     DxPolarChart,
     DxCommonSeriesSettings,
     DxSeries,
-    DxMargin
+    DxMargin,
   },
 
   data() {
     return {
       types,
       dataSource,
-      currentType: types[0]
+      currentType: types[0],
     };
-  }
+  },
 };
 </script>
 <style>

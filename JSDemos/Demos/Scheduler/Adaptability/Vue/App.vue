@@ -35,7 +35,7 @@ export default {
   components: {
     DxScheduler,
     DxResource,
-    DxSpeedDialAction
+    DxSpeedDialAction,
   },
   data() {
     return {
@@ -43,18 +43,18 @@ export default {
       currentDate: new Date(2021, 2, 25),
       cellDuration: 30,
       dataSource: data,
-      priorities: priorities,
-      scheduler: null
+      priorities,
+      scheduler: null,
     };
   },
   methods: {
-    onContentReady: function(e) {
+    onContentReady(e) {
       this.scheduler = e.component;
     },
 
-    showPopup: function() {
+    showPopup() {
       this.scheduler.showAppointmentPopup();
-    }
-  }
+    },
+  },
 };
 </script>

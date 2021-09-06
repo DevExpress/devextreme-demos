@@ -54,7 +54,7 @@ import { DxProgressBar } from 'devextreme-vue/progress-bar';
 export default {
   components: {
     DxFileUploader,
-    DxProgressBar
+    DxProgressBar,
   },
   data() {
     return {
@@ -63,22 +63,22 @@ export default {
       textVisible: true,
       progressVisible: false,
       progressValue: 0,
-      allowedFileExtensions: ['.jpg', '.jpeg', '.gif', '.png']
+      allowedFileExtensions: ['.jpg', '.jpeg', '.gif', '.png'],
     };
   },
   methods: {
     onDropZoneEnter(e) {
-      if(e.dropZoneElement.id === 'dropzone-external') {
+      if (e.dropZoneElement.id === 'dropzone-external') {
         this.isDropZoneActive = true;
       }
     },
     onDropZoneLeave(e) {
-      if(e.dropZoneElement.id === 'dropzone-external') {
+      if (e.dropZoneElement.id === 'dropzone-external') {
         this.isDropZoneActive = false;
       }
     },
     onUploaded(e) {
-      const file = e.file;
+      const { file } = e;
       const fileReader = new FileReader();
       fileReader.onload = () => {
         this.isDropZoneActive = false;
@@ -95,8 +95,8 @@ export default {
     onUploadStarted() {
       this.imageSource = '';
       this.progressVisible = true;
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

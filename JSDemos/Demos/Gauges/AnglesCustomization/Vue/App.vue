@@ -73,8 +73,8 @@ import { DxCircularGauge, DxScale, DxGeometry } from 'devextreme-vue/circular-ga
 
 export default {
   components: {
-    DxCircularGauge, DxScale, DxGeometry
-  }
+    DxCircularGauge, DxScale, DxGeometry,
+  },
 };
 </script>
 <style scoped>

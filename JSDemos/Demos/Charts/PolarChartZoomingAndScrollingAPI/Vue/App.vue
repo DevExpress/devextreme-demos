@@ -65,7 +65,7 @@ import DxPolarChart, {
   DxArgumentAxis,
   DxValueAxis,
   DxExport,
-  DxLegend
+  DxLegend,
 } from 'devextreme-vue/polar-chart';
 
 import DxRangeSelector, {
@@ -73,7 +73,7 @@ import DxRangeSelector, {
   DxMargin,
   DxScale,
   DxMinorTick,
-  DxBehavior
+  DxBehavior,
 } from 'devextreme-vue/range-selector';
 
 import { dataSource } from './data.js';
@@ -93,17 +93,17 @@ export default {
     DxMargin,
     DxScale,
     DxMinorTick,
-    DxBehavior
+    DxBehavior,
   },
   data() {
     return {
       dataSource,
       visualRange: {
         startValue: 0,
-        endValue: 8
-      }
+        endValue: 8,
+      },
     };
-  }
+  },
 };
 </script>
 <style>
