@@ -1,6 +1,7 @@
 <template>
   <div>
     <DxScheduler
+      :ref="schedulerRef"
       time-zone="America/Los_Angeles"
       :data-source="dataSource"
       v-model:current-date="currentDate"
@@ -31,6 +32,8 @@ import DxSpeedDialAction from 'devextreme-vue/speed-dial-action';
 
 import { data, priorities } from './data.js';
 
+const schedulerRef = 'scheduler-ref';
+
 export default {
   components: {
     DxScheduler,
@@ -43,18 +46,14 @@ export default {
       currentDate: new Date(2021, 2, 25),
       cellDuration: 30,
       dataSource: data,
-      priorities,
-      scheduler: null,
+      priorities: priorities,
+      schedulerRef
     };
   },
   methods: {
-    onContentReady(e) {
-      this.scheduler = e.component;
-    },
-
-    showPopup() {
-      this.scheduler.showAppointmentPopup();
-    },
-  },
+    showPopup: function() {
+      this.$refs[schedulerRef].instance.showAppointmentPopup();
+    }
+  }
 };
 </script>
