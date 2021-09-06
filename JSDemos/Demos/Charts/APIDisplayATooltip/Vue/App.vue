@@ -81,12 +81,12 @@ export default {
 </script>
 <style>
 .controls-pane {
-	margin-top: 20px;
-	text-align: center;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .dx-selectbox {
-	display: inline-block;
+  display: inline-block;
 }
 </style>
 

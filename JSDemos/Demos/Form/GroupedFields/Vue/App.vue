@@ -112,7 +112,7 @@ export default {
 </script>
 <style scoped>
 #form-container {
-	margin: 10px;
+  margin: 10px;
 }
 
 .long-title h3 {

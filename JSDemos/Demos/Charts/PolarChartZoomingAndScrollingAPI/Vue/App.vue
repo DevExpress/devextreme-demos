@@ -108,7 +108,7 @@ export default {
 </script>
 <style>
 #zoomedChart {
-	height: 440px;
-	width: 100%;
+  height: 440px;
+  width: 100%;
 }
 </style>

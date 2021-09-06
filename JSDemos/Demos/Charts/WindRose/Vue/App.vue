@@ -93,7 +93,7 @@ export default {
 }
 
 #chart-demo > .center {
-	text-align: center;
+  text-align: center;
 }
 
 #chart-demo > .center > .dx-widget {

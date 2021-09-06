@@ -79,14 +79,14 @@ export default {
 </script>
 <style scoped>
 #gauge-demo {
-    height: 440px;
-    width: 100%;
+  height: 440px;
+  width: 100%;
 }
 
 .gauge {
-	width: 50%;
-	height: 50%;
-	float: left;
+  width: 50%;
+  height: 50%;
+  float: left;
 }
 
 .long-title h3 {

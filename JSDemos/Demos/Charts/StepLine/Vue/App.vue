@@ -68,6 +68,6 @@ export default {
 </script>
 <style>
 #container {
-	height: 440px;
+  height: 440px;
 }
 </style>

@@ -88,15 +88,15 @@ export default {
 }
 
 #c1 {
-	width: 70%;
-	height: 100%;
-	float: left;
+  width: 70%;
+  height: 100%;
+  float: left;
 }
 
 #c2 {
-	width: 30%;
-	height: 100%;
-	float: left;
+  width: 30%;
+  height: 100%;
+  float: left;
 }
 
 .long-title h3 {

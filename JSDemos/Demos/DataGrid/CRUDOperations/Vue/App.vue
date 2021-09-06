@@ -204,8 +204,8 @@ export default {
 
 .caption {
     margin-bottom: 10px;
-	font-weight: 500;
-	font-size: 18px;
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .option {

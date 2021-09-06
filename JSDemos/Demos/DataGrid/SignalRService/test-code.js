@@ -42,7 +42,13 @@ testUtils.importAnd(() => ['devextreme/ui/data_grid', 'devextreme/data/data_sour
     if (window.$ && window.$.connection && window.$.connection.liveUpdateSignalRHub) {
       window.$.connection.liveUpdateSignalRHub.client.updateStockPrice = function () { };
     } else {
-      dataSourceItems.forEach((item) => { for (const key in item) { item[key.charAt(0).toLowerCase() + key.slice(1)] = item[key]; delete item[key]; } });
+      dataSourceItems.forEach((item) => {
+        for (const key in item) {
+          item[key.charAt(0).toLowerCase() + key.slice(1)] = item[key];
+          delete item[key];
+        }
+      });
+      // eslint-disable-next-line spellcheck/spell-checker
       if (window.connection && window.connection.methods) { window.connection.methods.updatestockprice.splice(0, 1); }
     }
 
