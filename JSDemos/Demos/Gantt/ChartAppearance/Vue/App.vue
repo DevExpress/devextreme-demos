@@ -29,7 +29,7 @@
             />
           </div>
         </div>
-      </div>
+      </div>{{ ' ' }}
       <div class="column">
         <div class="option">
           <div class="label">Start Date Range:</div>{{ ' ' }}
