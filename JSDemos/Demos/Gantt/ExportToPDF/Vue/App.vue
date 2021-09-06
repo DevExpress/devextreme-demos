@@ -278,23 +278,23 @@ export default {
   .options {
     background-color: rgba(191, 191, 191, 0.15);
     margin-top: 20px;
+    display: flex;
   }
 
   .column {
-    width: 40%;
-    display: inline-block;
-    margin: 15px 3%;
-    text-align: left;
-    vertical-align: top;
-  }
-
-  .column:last-child .option,
-  .column:last-child .caption {
-    margin-left: 4px;
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 15px 3%;
+      text-align: left;
+      vertical-align: top;
   }
 
   .option {
-    padding: 5px 0;
+      padding: 5px 0;
+      display: flex;
+      align-items: center;
   }
 
   .label, .value {
@@ -303,7 +303,7 @@ export default {
   }
 
   .label {
-    width: 184px;
+    width: 180px;
   }
 
   .value {
