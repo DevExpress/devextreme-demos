@@ -303,8 +303,6 @@ module.exports = {
     'no-useless-constructor': 0, // TODO error (was error)
     'import/order': 0, // TODO error (was error)
     'no-restricted-properties': 0,
-    'no-useless-concat': 0,
-    'no-underscore-dangle': 0,
     'import/no-webpack-loader-syntax': 0,
     'import/no-unresolved': 0,
   },
