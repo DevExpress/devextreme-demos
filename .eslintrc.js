@@ -311,7 +311,6 @@ module.exports = {
     'import/no-unresolved': 0,
     'no-bitwise': 0,
     'max-classes-per-file': 0,
-    'no-multi-str': 0,
   },
   extends: [
     'eslint:recommended',
