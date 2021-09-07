@@ -305,7 +305,6 @@ module.exports = {
     'no-restricted-syntax': 0, // TODO error (was error)
     'no-restricted-properties': 0,
     'guard-for-in': 0, // TODO error (was error)
-    'no-underscore-dangle': 0,
     'import/no-webpack-loader-syntax': 0,
     'import/no-unresolved': 0,
   },
