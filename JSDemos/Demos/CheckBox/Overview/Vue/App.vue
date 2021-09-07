@@ -44,6 +44,16 @@
           />
         </div>
       </div>
+      <div class="dx-field">
+        <div class="dx-field-label">Custom size</div>
+        <div class="dx-field-value">
+          <DxCheckBox
+            v-model:value="undefined"
+            :icon-size="50"
+            text="Centered label"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>

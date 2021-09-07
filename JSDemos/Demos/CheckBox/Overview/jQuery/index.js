@@ -28,4 +28,10 @@ $(() => {
     width: 80,
     text: 'Check',
   });
+
+  $('#customSize').dxCheckBox({
+    value: undefined,
+    iconSize: 50,
+    text: 'Centered label',
+  });
 });

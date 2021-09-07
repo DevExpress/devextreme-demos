@@ -63,6 +63,16 @@ class App extends React.Component {
               />
             </div>
           </div>
+          <div className="dx-field">
+            <div className="dx-field-label">Custom size</div>
+            <div className="dx-field-value">
+              <CheckBox
+                defaultValue={undefined}
+                iconSize={50}
+                text="Centered label"
+              />
+            </div>
+          </div>
         </div>
       </div>
     );

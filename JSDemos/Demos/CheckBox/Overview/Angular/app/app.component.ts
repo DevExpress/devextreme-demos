@@ -15,6 +15,7 @@ if(!/localhost/.test(document.location.host)) {
 export class AppComponent {
     checkBoxValue: boolean;
     indeterminateValue: boolean;
+    customSizeCheckBoxValue: boolean;
 }
 
 @NgModule({
