@@ -310,7 +310,6 @@ module.exports = {
     'import/no-webpack-loader-syntax': 0,
     'import/no-unresolved': 0,
     'no-bitwise': 0,
-    'max-classes-per-file': 0,
   },
   extends: [
     'eslint:recommended',
