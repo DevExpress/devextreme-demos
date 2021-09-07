@@ -306,7 +306,6 @@ module.exports = {
     'no-restricted-properties': 0,
     'guard-for-in': 0, // TODO error (was error)
     'no-useless-concat': 0,
-    'no-underscore-dangle': 0,
     'import/no-webpack-loader-syntax': 0,
     'import/no-unresolved': 0,
   },
