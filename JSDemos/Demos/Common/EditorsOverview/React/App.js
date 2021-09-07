@@ -14,8 +14,8 @@ const transformations = [
     key: 'Flip',
     items: [
       { name: '0 degrees', value: noFlipTransform },
-      { name: '180 degrees', value: 'scaleX(-1)' }
-    ]
+      { name: '180 degrees', value: 'scaleX(-1)' },
+    ],
   },
   {
     key: 'Rotate',
@@ -24,13 +24,12 @@ const transformations = [
       { name: '15 degrees', value: 'rotate(15deg)' },
       { name: '30 degrees', value: 'rotate(30deg)' },
       { name: '-15 degrees', value: 'rotate(-15deg)' },
-      { name: '-30 degrees', value: 'rotate(-30deg)' }
-    ]
-  }
+      { name: '-30 degrees', value: 'rotate(-30deg)' },
+    ],
+  },
 ];
 
 class App extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -40,7 +39,7 @@ class App extends React.Component {
       height: 260,
       color: '#f05b41',
       transform: noFlipTransform,
-      border: false
+      border: false,
     };
 
     this.handleTextChange = this.handleTextChange.bind(this);
@@ -58,7 +57,6 @@ class App extends React.Component {
           <div className="column">
             <div className="field">
               <div className="label">Title</div>
-              &nbsp;
               <div className="value">
                 <TextBox
                   value={this.state.text}
@@ -70,7 +68,6 @@ class App extends React.Component {
             </div>
             <div className="field">
               <div className="label">Color</div>
-              &nbsp;
               <div className="value">
                 <ColorBox
                   value={this.state.color}
@@ -80,11 +77,9 @@ class App extends React.Component {
               </div>
             </div>
           </div>
-          &nbsp;
           <div className="column">
             <div className="field">
               <div className="label">Width</div>
-              &nbsp;
               <div className="value">
                 <NumberBox
                   value={this.state.width}
@@ -98,7 +93,6 @@ class App extends React.Component {
             </div>
             <div className="field">
               <div className="label">Height</div>
-              &nbsp;
               <div className="value">
                 <NumberBox
                   value={this.state.height}
@@ -111,11 +105,9 @@ class App extends React.Component {
               </div>
             </div>
           </div>
-          &nbsp;
           <div className="column">
             <div className="field">
               <div className="label">Transform</div>
-              &nbsp;
               <div className="value">
                 <SelectBox
                   value={this.state.transform}
@@ -130,7 +122,6 @@ class App extends React.Component {
 
             <div className="field">
               <div className="label">Border</div>
-              &nbsp;
               <div className="value">
                 <Switch
                   value={this.state.border}
@@ -155,39 +146,39 @@ class App extends React.Component {
 
   handleTextChange(e) {
     this.setState({
-      text: e.value
+      text: e.value,
     });
   }
 
   handleColorChange(e) {
     this.setState({
-      color: e.value
+      color: e.value,
     });
   }
 
   handleHeightChange(e) {
     this.setState({
       width: e.value * 37 / 26,
-      height: e.value
+      height: e.value,
     });
   }
 
   handleWidthChange(e) {
     this.setState({
       width: e.value,
-      height: e.value * 26 / 37
+      height: e.value * 26 / 37,
     });
   }
 
   handleTransformChange(e) {
     this.setState({
-      transform: e.value
+      transform: e.value,
     });
   }
 
   handleBorderChange(e) {
     this.setState({
-      border: e.value
+      border: e.value,
     });
   }
 }

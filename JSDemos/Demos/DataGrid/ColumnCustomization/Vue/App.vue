@@ -3,6 +3,7 @@
     <DxDataGrid
       id="gridContainer"
       :data-source="employees"
+      key-expr="ID"
       :allow-column-reordering="true"
       :allow-column-resizing="true"
       :column-auto-width="true"
@@ -50,7 +51,7 @@ import {
   DxDataGrid,
   DxColumn,
   DxColumnChooser,
-  DxColumnFixing
+  DxColumnFixing,
 } from 'devextreme-vue/data-grid';
 
 import service from './data.js';
@@ -60,18 +61,18 @@ export default {
     DxDataGrid,
     DxColumn,
     DxColumnChooser,
-    DxColumnFixing
+    DxColumnFixing,
   },
   data() {
     return {
-      employees: service.getEmployees()
+      employees: service.getEmployees(),
     };
   },
   methods: {
     calculateCellValue(data) {
       return [data.Title, data.FirstName, data.LastName].join(' ');
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

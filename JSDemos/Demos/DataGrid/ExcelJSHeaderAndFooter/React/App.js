@@ -1,19 +1,16 @@
-﻿import React from 'react';
+import React from 'react';
 
 import DataGrid, { Column, Export } from 'devextreme-react/data-grid';
-import ExcelJS from 'exceljs';
-import saveAs from 'file-saver';
-/*
-  // Use this import for codeSandBox
-  import FileSaver from "file-saver";
-*/
+import { Workbook } from 'exceljs';
+import { saveAs } from 'file-saver-es';
+// Our demo infrastructure requires us to use 'file-saver-es'. We recommend that you use the official 'file-saver' package in your applications.
 import { exportDataGrid } from 'devextreme/excel_exporter';
 
 import { countries } from './data.js';
 
 const gdpFormat = {
   type: 'percent',
-  precision: 1
+  precision: 1,
 };
 
 class App extends React.Component {
@@ -26,6 +23,7 @@ class App extends React.Component {
     return (
       <DataGrid
         dataSource={countries}
+        keyExpr="ID"
         showBorders={true}
         onExporting={this.onExporting}
       >
@@ -78,13 +76,13 @@ class App extends React.Component {
   }
 
   onExporting(e) {
-    const workbook = new ExcelJS.Workbook();
+    const workbook = new Workbook();
     const worksheet = workbook.addWorksheet('CountriesPopulation');
 
     exportDataGrid({
       component: e.component,
-      worksheet: worksheet,
-      topLeftCell: { row: 4, column: 1 }
+      worksheet,
+      topLeftCell: { row: 4, column: 1 },
     }).then((cellRange) => {
       // header
       const headerRow = worksheet.getRow(2);

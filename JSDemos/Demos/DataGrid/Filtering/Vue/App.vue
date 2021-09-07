@@ -4,6 +4,7 @@
       id="gridContainer"
       :ref="dataGridRefName"
       :data-source="orders"
+      key-expr="ID"
       :show-borders="true"
     >
       <DxFilterRow
@@ -20,18 +21,20 @@
       />
       <DxColumn
         :width="140"
-        :header-filter="{ groupInterval: 10000 }"
         data-field="OrderNumber"
         caption="Invoice Number"
-      />
+      >
+        <DxHeaderFilter :group-interval="10000"/>
+      </DxColumn>
       <DxColumn
         :width="120"
         :calculate-filter-expression="calculateFilterExpression"
-        :header-filter="{ dataSource: orderHeaderFilter }"
         data-field="OrderDate"
         alignment="right"
         data-type="date"
-      />
+      >
+        <DxHeaderFilter :data-source="orderDateHeaderFilter"/>
+      </DxColumn>
       <DxColumn
         :width="180"
         data-field="DeliveryDate"
@@ -40,18 +43,20 @@
         format="M/d/yyyy, HH:mm"
       />
       <DxColumn
-        :header-filter="{ dataSource: saleAmountHeaderFilter }"
-        :editor-options="{ format: 'currency', showClearButton: true }"
+        :editor-options="saleAmountEditorOptions"
         data-field="SaleAmount"
         alignment="right"
         format="currency"
-      />
+      >
+        <DxHeaderFilter :data-source="saleAmountHeaderFilter"/>
+      </DxColumn>
       <DxColumn data-field="Employee"/>
       <DxColumn
-        :header-filter="{ allowSearch: true }"
         data-field="CustomerStoreCity"
         caption="City"
-      />
+      >
+        <DxHeaderFilter :allow-search="true"/>
+      </DxColumn>
     </DxDataGrid>
     <div class="options">
       <div class="caption">Options</div>
@@ -89,16 +94,14 @@ import {
   DxColumn,
   DxHeaderFilter,
   DxSearchPanel,
-  DxFilterRow
+  DxFilterRow,
 } from 'devextreme-vue/data-grid';
 import DxSelectBox from 'devextreme-vue/select-box';
 import DxCheckBox from 'devextreme-vue/check-box';
 
 import service from './data.js';
 
-const getOrderDay = (rowData) => {
-  return (new Date(rowData.OrderDate)).getDay();
-};
+const getOrderDay = (rowData) => (new Date(rowData.OrderDate)).getDay();
 
 export default {
   components: {
@@ -108,73 +111,75 @@ export default {
     DxColumn,
     DxHeaderFilter,
     DxSearchPanel,
-    DxFilterRow
+    DxFilterRow,
   },
   data() {
     const applyFilterTypes = [
-        {
-          key: 'auto',
-          name: 'Immediately'
-        },
-        {
-          key: 'onClick',
-          name: 'On Button Click'
-        }], currentFilter = applyFilterTypes[0].key;
+      {
+        key: 'auto',
+        name: 'Immediately',
+      },
+      {
+        key: 'onClick',
+        name: 'On Button Click',
+      }]; const
+      currentFilter = applyFilterTypes[0].key;
     return {
       orders: service.getOrders(),
       showFilterRow: true,
       showHeaderFilter: true,
       applyFilterTypes,
-      saleAmountHeaderFilter:  [{
+      saleAmountEditorOptions: { format: 'currency', showClearButton: true },
+      saleAmountHeaderFilter: [{
         text: 'Less than $3000',
-        value: ['SaleAmount', '<', 3000]
+        value: ['SaleAmount', '<', 3000],
       }, {
         text: '$3000 - $5000',
         value: [
           ['SaleAmount', '>=', 3000],
-          ['SaleAmount', '<', 5000]
-        ]
+          ['SaleAmount', '<', 5000],
+        ],
       }, {
         text: '$5000 - $10000',
         value: [
           ['SaleAmount', '>=', 5000],
-          ['SaleAmount', '<', 10000]
-        ]
+          ['SaleAmount', '<', 10000],
+        ],
       }, {
         text: '$10000 - $20000',
         value: [
           ['SaleAmount', '>=', 10000],
-          ['SaleAmount', '<', 20000]
-        ]
+          ['SaleAmount', '<', 20000],
+        ],
       }, {
         text: 'Greater than $20000',
-        value: ['SaleAmount', '>=', 20000]
+        value: ['SaleAmount', '>=', 20000],
       }],
       calculateFilterExpression(value, selectedFilterOperations, target) {
-        let column = this;
-        if(target === 'headerFilter' && value === 'weekends') {
+        const column = this;
+        if (target === 'headerFilter' && value === 'weekends') {
           return [[getOrderDay, '=', 0], 'or', [getOrderDay, '=', 6]];
         }
         return column.defaultCalculateFilterExpression.apply(this, arguments);
       },
       currentFilter,
-      dataGridRefName: 'dataGrid'
+      dataGridRefName: 'dataGrid',
     };
   },
   methods: {
-    orderHeaderFilter(data) {
+    orderDateHeaderFilter(data) {
       data.dataSource.postProcess = (results) => {
         results.push({
           text: 'Weekends',
-          value: 'weekends'
+          value: 'weekends',
         });
         return results;
       };
     },
     clearFilter() {
       this.$refs[this.dataGridRefName].instance.clearFilter();
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

@@ -1,30 +1,42 @@
-﻿import React from 'react';
+import React from 'react';
 
-import { Popup } from 'devextreme-react/popup';
+import { Popup, Position, ToolbarItem } from 'devextreme-react/popup';
+import notify from 'devextreme/ui/notify';
 import { EmployeeItem } from './EmployeeItem.js';
 import { employees } from './data.js';
 
 class App extends React.Component {
+  emailButtonOptions = null;
+
+  closeButtonOptions = null;
+
   constructor(props) {
     super(props);
     this.state = {
       currentEmployee: {},
-      popupVisible: false
+      popupVisible: false,
+      positionOf: '',
     };
-
     this.showInfo = this.showInfo.bind(this);
     this.hideInfo = this.hideInfo.bind(this);
+    this.emailButtonOptions = {
+      icon: 'email',
+      text: 'Send',
+      onClick: this.sendEmail.bind(this),
+    };
+    this.closeButtonOptions = {
+      text: 'Close',
+      onClick: this.hideInfo,
+    };
   }
 
   render() {
-    const items = employees.map((employee) =>
-      <li key={employee.ID}>
-        <EmployeeItem
-          employee={employee}
-          showInfo={this.showInfo}
-        />
-      </li>
-    );
+    const items = employees.map((employee) => <li key={employee.ID}>
+      <EmployeeItem
+        employee={employee}
+        showInfo={this.showInfo}
+      />
+    </li>);
 
     return (
       <div id="container">
@@ -38,11 +50,30 @@ class App extends React.Component {
           onHiding={this.hideInfo}
           dragEnabled={false}
           closeOnOutsideClick={true}
+          showCloseButton={false}
           showTitle={true}
           title="Information"
+          container=".dx-viewport"
           width={300}
-          height={250}
+          height={280}
         >
+          <Position
+            at="bottom"
+            my="center"
+            of={this.state.positionOf}
+          />
+          <ToolbarItem
+            widget="dxButton"
+            toolbar="bottom"
+            location="before"
+            options={this.emailButtonOptions}
+          />
+          <ToolbarItem
+            widget="dxButton"
+            toolbar="bottom"
+            location="after"
+            options={this.closeButtonOptions}
+          />
           <p>
             Full Name:&nbsp;
             <span>{this.state.currentEmployee.FirstName}</span>&nbsp;
@@ -68,15 +99,27 @@ class App extends React.Component {
   showInfo(employee) {
     this.setState({
       currentEmployee: employee,
-      popupVisible: true
+      positionOf: `#image${employee.ID}`,
+      popupVisible: true,
     });
   }
 
   hideInfo() {
     this.setState({
       currentEmployee: {},
-      popupVisible: false
+      popupVisible: false,
     });
+  }
+
+  sendEmail() {
+    const message = `Email is sent to ${this.state.currentEmployee.FirstName} ${this.state.currentEmployee.LastName}`;
+    notify({
+      message,
+      position: {
+        my: 'center top',
+        at: 'center top',
+      },
+    }, 'success', 3000);
   }
 }
 

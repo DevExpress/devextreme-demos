@@ -1,0 +1,7 @@
+In this demo, the [CustomShapeTemplate](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DiagramBuilder.CustomShapeTemplate.overloads) method defines a common shape template and adds the **Edit** and **Delete** links to a shape. These links allow users to modify and remove employee data from the data source. The Diagram component reloads modified diagram data whenever the data source changes.
+
+The [OnRequestLayoutUpdate](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DiagramBuilder.OnRequestLayoutUpdate.overloads) function specifies whether the component must reapply its auto layout once the diagram is reloaded.
+
+The [CustomDataExpr](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DiagramNodesBuilder.CustomDataExpr.overloads) method links custom employee information from the data source to diagram nodes. Changes made to data are reflected in the diagram's history. Undo and redo actions (available within the control's UI) allow users to rollback/reapply changes.
+
+The [CustomShapeToolboxTemplate](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DiagramBuilder.CustomShapeToolboxTemplate.overloads) method specifies the template used for a shape within the toolbox.

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css"
+        href="../../node_modules/devextreme/dist/css/dx.dark.css" />
+    <script src="../../node_modules/devextreme/dist/js/dx.all.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body class='dx-viewport'>
+    <div id="toolbar"></div>
+    <div id="drawer" style="height: calc(100% - 56px);">
+        <div id="content" style="height: 100%">
+            <iframe
+                id="frame"
+                style="width: 100%;height: calc(100% - 56px);resize: both;"
+                src="JSDemos/Demos/DataGrid/Overview/jQuery/"
+                ></iframe>
+            <br>
+            <div>
+                <a id='demolink' target="_blank" href="">open in separate tab</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const ui = DevExpress.ui;
+        const themeCookieName = 'dx-demo-theme';
+
+        let approach = localStorage.getItem('dx-demos-approach') || 'jQuery';
+        let theme = localStorage.getItem('dx-demos-theme') || 'dx.light.css';
+        let treeList;
+
+        const setThemeCookie = () => {
+            const now = new Date();
+            // expires in a month
+            now.setTime(now.getTime() + 1000*60*60*24*30);
+            document.cookie = `dx-demo-theme=${theme};path=/;expires=${now.toUTCString()}`;
+        };
+
+        const updateLocalStore = () => {
+            localStorage.setItem('dx-demos-approach', approach);
+            localStorage.setItem('dx-demos-theme', theme);
+        };
+
+        const updateDemo = () => {
+            setThemeCookie();
+            updateLocalStore();
+
+            const frame = document.getElementById('frame');
+            const demoLink = document.getElementById('demolink');
+            const pathParts = frame.contentWindow.location.pathname
+                .split('/')
+                .filter(s => s !== '');
+
+            const selectedData = treeList.getSelectedRowsData('leavesOnly');
+            if(selectedData.length) {
+                pathParts[2] = selectedData[0].Widget;
+                pathParts[3] = selectedData[0].Name;
+            }
+
+            pathParts[4] = approach;
+
+            const link = pathParts.join('/') + '/';
+
+            frame.src = link;
+            demoLink.href = link;
+        };
+
+        const processDataSourceItem = (item) => {
+            if(!item.Widget) {
+                item.Title = item.Name;
+            }
+
+            if(item.Demos && item.Demos.length && !item.Groups) {
+                item.Groups = item.Demos;
+            }
+
+            if(item.Groups && item.Groups.length) {
+                item.Groups.forEach(processDataSourceItem);
+            }
+
+            return item;
+        };
+
+        const drawerTemplate = () => {
+            const treeListElement = document.createElement('div');
+
+            treeList = new ui.dxTreeList(treeListElement, {
+                dataStructure: 'tree',
+                itemsExpr: 'Groups',
+                width: 250,
+                height: "100%",
+                selection: {
+                    mode: 'single'
+                },
+                stateStoring: {
+                    enabled: true,
+                    type: 'localStorage',
+                    storageKey: 'treeListStorage'
+                },
+                onSelectionChanged: updateDemo,
+                columns: [{
+                    dataField: 'Title',
+                    dataType: 'string',
+                    filterOperations: ['contains']
+                }],
+                showColumnHeaders: false,
+                filterMode: 'fullBranch',
+                filterRow: {
+                    visible: true
+                }
+            });
+
+            DevExpress.utils.ajax.sendRequest({
+                url:'JSDemos/menuMeta.json',
+                dataType:'json'
+            }).then(data => {
+                treeList.option('dataSource', data.map(processDataSourceItem));
+                updateDemo();
+            });
+
+            return treeListElement;
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const drawerElement = document.getElementById('drawer');
+            const toolbarElement = document.getElementById('toolbar');
+
+            const drawer = new ui.dxDrawer(drawerElement, {
+                opened: true,
+                closeOnOutsideClick: false,
+                template: drawerTemplate
+            });
+
+            new ui.dxToolbar(toolbarElement, {
+                items: [{
+                    location: 'before',
+                    widget: 'dxButton',
+                    options: {
+                        icon: 'menu',
+                        onClick: () => drawer.toggle()
+                    }
+                }, {
+                    location: 'after',
+                    widget: 'dxSelectBox',
+                    options: {
+                        items: ['jQuery', 'Angular', 'Vue', 'React'],
+                        value: approach,
+                        width: 100,
+                        onValueChanged: (e) => { approach = e.value; updateDemo();}
+                    }
+                }, {
+                    location: 'after',
+                    widget: 'dxSelectBox',
+                    options: {
+                        dataSource: '/themes',
+                        value: theme,
+                        width: 250,
+                        searchEnabled: true,
+                        onValueChanged: (e) => { theme = e.value; updateDemo(); }
+                    }
+                }, {
+                    location: 'after',
+                    widget: 'dxButton',
+                    options: {
+                        icon: 'refresh',
+                        onClick: () => updateDemo()
+                    }
+                }],
+            });
+        });
+    </script>
+</body>
+
+</html>

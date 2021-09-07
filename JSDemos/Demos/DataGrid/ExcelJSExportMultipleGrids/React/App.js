@@ -1,31 +1,30 @@
-﻿import React from 'react';
+import React from 'react';
 import Button from 'devextreme-react/button';
 import TabPanel, { Item } from 'devextreme-react/tab-panel';
 import DataGrid, { Column } from 'devextreme-react/data-grid';
-import ExcelJS from 'exceljs';
-import saveAs from 'file-saver';
-/*
-  // Use this import for codeSandBox
-  import FileSaver from 'file-saver';
-*/
+import { Workbook } from 'exceljs';
+import { saveAs } from 'file-saver-es';
+// Our demo infrastructure requires us to use 'file-saver-es'. We recommend that you use the official 'file-saver' package in your applications.
 import { exportDataGrid } from 'devextreme/excel_exporter';
 import 'devextreme/data/odata/store';
 
 const priceDataSource = {
   store: {
     type: 'odata',
-    url: 'https://js.devexpress.com/Demos/DevAV/odata/Products'
+    url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
+    key: 'Product_ID',
   },
   select: ['Product_ID', 'Product_Name', 'Product_Sale_Price', 'Product_Retail_Price'],
-  filter: ['Product_ID', '<', 10]
+  filter: ['Product_ID', '<', 10],
 };
 const ratingDataSource = {
   store: {
     type: 'odata',
-    url: 'https://js.devexpress.com/Demos/DevAV/odata/Products'
+    url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
+    key: 'Product_ID',
   },
   select: ['Product_ID', 'Product_Name', 'Product_Consumer_Rating', 'Product_Category'],
-  filter: ['Product_ID', '<', 10]
+  filter: ['Product_ID', '<', 10],
 };
 
 class App extends React.Component {
@@ -70,7 +69,7 @@ class App extends React.Component {
 
   exportGrids = () => {
     const context = this;
-    const workbook = new ExcelJS.Workbook();
+    const workbook = new Workbook();
     const priceSheet = workbook.addWorksheet('Price');
     const ratingSheet = workbook.addWorksheet('Rating');
 
@@ -86,17 +85,15 @@ class App extends React.Component {
       topLeftCell: { row: 4, column: 2 },
       customizeCell: ({ gridCell, excelCell }) => {
         context.setAlternatingRowsBackground(gridCell, excelCell);
-      }
-    }).then(() => {
-      return exportDataGrid({
-        worksheet: ratingSheet,
-        component: context.ratingDataGrid,
-        topLeftCell: { row: 4, column: 2 },
-        customizeCell: ({ gridCell, excelCell }) => {
-          context.setAlternatingRowsBackground(gridCell, excelCell);
-        }
-      });
-    }).then(() => {
+      },
+    }).then(() => exportDataGrid({
+      worksheet: ratingSheet,
+      component: context.ratingDataGrid,
+      topLeftCell: { row: 4, column: 2 },
+      customizeCell: ({ gridCell, excelCell }) => {
+        context.setAlternatingRowsBackground(gridCell, excelCell);
+      },
+    })).then(() => {
       workbook.xlsx.writeBuffer().then((buffer) => {
         saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'MultipleGrids.xlsx');
       });
@@ -104,9 +101,11 @@ class App extends React.Component {
   }
 
   setAlternatingRowsBackground(gridCell, excelCell) {
-    if(gridCell.rowType === 'header' || gridCell.rowType === 'data') {
-      if(excelCell.fullAddress.row % 2 === 0) {
-        excelCell.fill = { type: 'pattern', pattern : 'solid', fgColor: { argb: 'D3D3D3' }, bgColor: { argb: 'D3D3D3' } };
+    if (gridCell.rowType === 'header' || gridCell.rowType === 'data') {
+      if (excelCell.fullAddress.row % 2 === 0) {
+        excelCell.fill = {
+          type: 'pattern', pattern: 'solid', fgColor: { argb: 'D3D3D3' }, bgColor: { argb: 'D3D3D3' },
+        };
       }
     }
   }

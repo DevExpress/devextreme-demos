@@ -1,15 +1,14 @@
-﻿import React from 'react';
+import React from 'react';
 
 import { Button } from 'devextreme-react/button';
 import { LoadIndicator } from 'devextreme-react/load-indicator';
 
 class App extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
       loadIndicatorVisible: false,
-      buttonText: 'Send'
+      buttonText: 'Send',
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -19,11 +18,11 @@ class App extends React.Component {
     return (
       <div className="form">
         <div className="label">Custom size</div>
-
-        <LoadIndicator id="small-indicator" height={20} width={20} />
-        <LoadIndicator id="medium-indicator" height={40} width={40} />
-        <LoadIndicator id="large-indicator" height={60} width={60} />
-
+        <div className="indicators">
+          <LoadIndicator id="small-indicator" height={20} width={20} />
+          <LoadIndicator id="medium-indicator" height={40} width={40} />
+          <LoadIndicator id="large-indicator" height={60} width={60} />
+        </div>
         <div className="label">Custom image</div>
 
         <LoadIndicator id="image-indicator" indicatorSrc="../../../../images/Loading.gif" />
@@ -47,16 +46,16 @@ class App extends React.Component {
     this.setState(
       {
         loadIndicatorVisible: true,
-        buttonText: 'Sending'
+        buttonText: 'Sending',
       },
       () => {
         setTimeout(() => {
           this.setState({
             loadIndicatorVisible: false,
-            buttonText: 'Send'
+            buttonText: 'Send',
           });
         }, 2000);
-      }
+      },
     );
   }
 }

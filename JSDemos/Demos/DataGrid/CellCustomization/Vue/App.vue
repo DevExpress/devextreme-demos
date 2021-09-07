@@ -3,6 +3,7 @@
     <DxDataGrid
       id="gridContainer"
       :data-source="dataSource"
+      key-expr="date"
       :show-row-lines="true"
       :show-column-lines="false"
       :show-borders="true"
@@ -49,7 +50,7 @@ import {
   DxDataGrid,
   DxColumn,
   DxSorting,
-  DxPaging
+  DxPaging,
 } from 'devextreme-vue/data-grid';
 
 import service from './data.js';
@@ -63,13 +64,13 @@ export default {
     DxSorting,
     DxPaging,
     DiffCell,
-    ChartCell
+    ChartCell,
   },
   data() {
     return {
-      dataSource: service.getWeekData()
+      dataSource: service.getWeekData(),
     };
-  }
+  },
 };
 </script>
 <style scoped>

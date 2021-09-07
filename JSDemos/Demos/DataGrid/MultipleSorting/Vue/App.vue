@@ -3,6 +3,7 @@
     <DxDataGrid
       :ref="dataGridRefName"
       :data-source="employees"
+      key-expr="ID"
       :show-borders="true"
     >
       <DxColumn
@@ -48,7 +49,7 @@
 import {
   DxColumn,
   DxDataGrid,
-  DxSorting
+  DxSorting,
 } from 'devextreme-vue/data-grid';
 import DxCheckBox from 'devextreme-vue/check-box';
 import { employees } from './data.js';
@@ -58,13 +59,13 @@ export default {
     DxCheckBox,
     DxColumn,
     DxDataGrid,
-    DxSorting
+    DxSorting,
   },
   data() {
     return {
       positionDisableSorting: false,
       dataGridRefName: 'dataGrid',
-      employees
+      employees,
     };
   },
   methods: {
@@ -72,8 +73,8 @@ export default {
       const dataGrid = this.$refs[this.dataGridRefName].instance;
 
       dataGrid.columnOption(5, 'sortOrder', void 0);
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

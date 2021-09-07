@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import DataGrid, { Column, ColumnChooser, ColumnFixing } from 'devextreme-react/data-grid';
 
 import service from './data.js';
@@ -8,14 +8,17 @@ class App extends React.Component {
     super(props);
     this.employees = service.getEmployees();
   }
+
   calculateCellValue(data) {
     return [data.Title, data.FirstName, data.LastName].join(' ');
   }
+
   render() {
     return (
       <DataGrid
         id="gridContainer"
         dataSource={this.employees}
+        keyExpr="ID"
         allowColumnReordering={true}
         allowColumnResizing={true}
         columnAutoWidth={true}

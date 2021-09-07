@@ -35,7 +35,11 @@ namespace DevExtreme.MVC.Demos.Controllers {
         }
 
         public ActionResult Agenda() {
-            return View(SampleData.AgendaTasks);
+            return View(new SchedulerResourcesViewModel {
+                Appointments = SampleData.AgendaTasks,
+                Assignees = SampleData.AssigneeResources,
+                Priorities = SampleData.PriorityResources
+            });
         }
 
         public ActionResult RecurringAppointments() {
@@ -76,7 +80,7 @@ namespace DevExtreme.MVC.Demos.Controllers {
         public ActionResult Resources() {
             return View(new SchedulerResourcesViewModel {
                 Appointments = SampleData.AppointmentsWithResources,
-                Owners = SampleData.OwnerResources,
+                Assignees = SampleData.AssigneeResources,
                 Rooms = SampleData.RoomResources,
                 Priorities = SampleData.PriorityResources
             });
@@ -88,6 +92,10 @@ namespace DevExtreme.MVC.Demos.Controllers {
 
         public ActionResult CellTemplates() {
             return View(SampleData.AppointmentsWorkHours);
+        }
+
+        public ActionResult CustomDragAndDrop() {
+            return View(SampleData.DragAndDropAppointments);
         }
 
         public ActionResult CustomizeIndividualViews() {

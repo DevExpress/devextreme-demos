@@ -33,7 +33,7 @@ import {
   DxSeries,
   DxArgumentAxis,
   DxLegend,
-  DxLabel
+  DxLabel,
 } from 'devextreme-vue/chart';
 import DxSelectBox from 'devextreme-vue/select-box';
 
@@ -47,21 +47,23 @@ export default {
     DxSeries,
     DxArgumentAxis,
     DxLegend,
-    DxLabel
+    DxLabel,
   },
 
   data() {
     return {
       population,
       overlappingModes,
-      currentMode: overlappingModes[0]
+      currentMode: overlappingModes[0],
     };
-  }
+  },
 };
 </script>
 <style>
 #chart {
     height: 330px;
+    max-width: 900px;
+    margin: auto;
 }
 
 .options {

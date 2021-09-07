@@ -2,6 +2,7 @@
     .ID("gridContainer")
     .ShowBorders(true)
     .DataSource(new JS("customers"))
+    .KeyExpr("ID")
     .Columns(c => {
         c.Add().DataField("CompanyName");
         c.Add().DataField("City");

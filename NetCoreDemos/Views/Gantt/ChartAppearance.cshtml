@@ -4,49 +4,82 @@
 <div class="widget-container">
     <div class="options">
         <div class="caption">Options</div>
-        <div class="option">
-            <span>Scale Type</span>
-            @(Html.DevExtreme().SelectBox()
-            .ID("scaleType")
-            .DataSource(d => d.Array().Data(SampleData.GanttScaleTypes))
-            .Value("months")
-            .OnValueChanged("ganttScaleType_valueChanged")
-        )
+        <div class="column">
+            <div class="option">
+                <div class="label">Scale Type:</div>
+                <div class="value">
+                    @(Html.DevExtreme().SelectBox()
+                        .ID("scaleType")
+                        .DataSource(d => d.Array().Data(SampleData.GanttScaleTypes))
+                        .Value("months")
+                        .OnValueChanged("ganttScaleType_valueChanged")
+                    )
+                </div>
+            </div>
+            <div class="option">
+                <div class="label">Title Position:</div>
+                <div class="value">
+                    @(Html.DevExtreme().SelectBox()
+                        .ID("titlePosition")
+                        .DataSource(new[]
+                        {
+                            "inside",
+                            "outside",
+                            "none"
+                        })
+                        .Value("outside")
+                        .OnValueChanged("ganttTitlePosition_valueChanged")
+                    )
+                </div>
+            </div>
+            <div class="option">
+                <div class="label">Show Resources:</div>
+                <div class="value">
+                    @(Html.DevExtreme().CheckBox()
+                        .Value(true)
+                        .OnValueChanged("ganttShowResources_changed")
+                    )
+                </div>
+            </div>
         </div>
-        <div class="option">
-            <span>Title Position</span>
-            @(Html.DevExtreme().SelectBox()
-            .ID("titlePosition")
-            .DataSource(new[]
-            {
-                "inside",
-                "outside",
-                "none"
-            })
-            .Value("outside")
-            .OnValueChanged("ganttTitlePosition_valueChanged")
-        )
-        </div>
-        <div class="option">
-            @(Html.DevExtreme().CheckBox()
-            .Value(true)
-            .Text("Show Resources")
-            .OnValueChanged("ganttShowResources_changed")
-        )
-        </div>
-        <div class="option">
-            @(Html.DevExtreme().CheckBox()
-            .Value(true)
-            .Text("Customize Task Tooltip")
-            .OnValueChanged("ganttShowCustomTaskTooltip_changed")
-        )
+        <div class="column">
+            <div class="option">
+                <div class="label">Start Date Range:</div>
+                <div class="value">
+                    @(Html.DevExtreme().DateBox()
+                        .Type(DateBoxType.Date)
+                        .Value(new DateTime(2018, 12, 1))
+                        .OnValueChanged("ganttStartDateRange_changed")
+                    )
+                </div>
+            </div>
+            <div class="option">
+                <div class="label">End Date Range:</div>
+                <div class="value">
+                    @(Html.DevExtreme().DateBox()
+                        .Type(DateBoxType.Date)
+                        .Value(new DateTime(2019, 12, 1))
+                        .OnValueChanged("ganttEndDateRange_changed")
+                    )
+                </div>
+            </div>
+            <div class="option">
+                <div class="label">Customize Task Tooltip:</div>
+                <div class="value">
+                    @(Html.DevExtreme().CheckBox()
+                        .Value(true)
+                        .OnValueChanged("ganttShowCustomTaskTooltip_changed")
+                    )
+                </div>
+            </div>
         </div>
     </div>
-
     @(Html.DevExtreme().Gantt<Gantt.Task>()
         .ID("gantt")
         .TaskTitlePosition(GanttTaskTitlePosition.Outside)
         .ScaleType(GanttScaleType.Months)
+        .StartDateRange(new DateTime(2018, 12, 1))
+        .EndDateRange(new DateTime(2019, 12, 1))
         .Tasks(t => t
             .DataSource(ds => ds.Array().Data(SampleData.GanttTasks).Key("ID"))
             .KeyExpr("ID")
@@ -91,15 +124,26 @@
 
 <script>
     function getTaskTooltipContentTemplate(task, container) {
-        container[0].innerHTML = "";
-        const parentElement = document.getElementsByClassName('dx-gantt-task-edit-tooltip')[0];
-        parentElement.className = 'dx-gantt-task-edit-tooltip custom-task-edit-tooltip';
-        const timeEstimate = Math.abs(task.Start - task.End) / 36e5;
-        const timeLeft = Math.floor((100 - task.Progress) / 100 * timeEstimate);
+        var timeEstimate = Math.abs(task.Start - task.End) / 36e5;
+        var timeLeft = Math.floor((100 - task.Progress) / 100 * timeEstimate);
 
-        return "<div class='custom-tooltip-title'>" + task.Title + "</div>"
-            + "<div class='custom-tooltip-row'>" + "<span> Estimate: </span>" + timeEstimate + "<span> hours </span>" + "</div>"
-            + "<div class='custom-tooltip-row'>" + "<span> Left: </span>" + timeLeft + "<span> hours </span>" + "</div>";
+        var $customTooltip = $(document.createElement("div"))
+            .addClass("custom-task-edit-tooltip");
+
+        $(document.createElement("div"))
+            .addClass("custom-tooltip-title")
+            .text(task.Title)
+            .appendTo($customTooltip);
+        $(document.createElement("div"))
+            .addClass("custom-tooltip-row")
+            .text("Estimate: " + timeEstimate + " hours")
+            .appendTo($customTooltip);
+        $(document.createElement("div"))
+            .addClass("custom-tooltip-row")
+            .text("Left: " + timeLeft + " hours")
+            .appendTo($customTooltip);
+
+        return $customTooltip;
     }
 
     function getGanttInstance() {
@@ -123,10 +167,16 @@
     }
 
     function ganttShowCustomTaskTooltip_changed(e) {
-        const parentELemnt = document.getElementsByClassName('dx-gantt-task-edit-tooltip')[0];
-        parentELemnt.className = 'dx-gantt-task-edit-tooltip';
         var ganttInstance = getGanttInstance();
         e.value ? ganttInstance.option("taskTooltipContentTemplate", getTaskTooltipContentTemplate)
             : ganttInstance.option("taskTooltipContentTemplate", undefined);
+    }
+    function ganttStartDateRange_changed(e) {
+        var ganttInstance = getGanttInstance();
+        ganttInstance.option("startDateRange", e.value);
+    }
+    function ganttEndDateRange_changed(e) {
+        var ganttInstance = getGanttInstance();
+        ganttInstance.option("endDateRange", e.value);
     }
 </script>

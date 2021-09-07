@@ -2,23 +2,23 @@
   <div class="form">
 
     <div class="label">Custom size</div>
-
-    <DxLoadIndicator
-      id="small-indicator"
-      :height="20"
-      :width="20"
-    />
-    <DxLoadIndicator
-      id="medium-indicator"
-      :height="40"
-      :width="40"
-    />
-    <DxLoadIndicator
-      id="large-indicator"
-      :height="60"
-      :width="60"
-    />
-
+    <div class="indicators">
+      <DxLoadIndicator
+        id="small-indicator"
+        :height="20"
+        :width="20"
+      />
+      <DxLoadIndicator
+        id="medium-indicator"
+        :height="40"
+        :width="40"
+      />
+      <DxLoadIndicator
+        id="large-indicator"
+        :height="60"
+        :width="60"
+      />
+    </div>
     <div class="label">Custom image</div>
 
     <DxLoadIndicator
@@ -53,12 +53,12 @@ import { DxLoadIndicator } from 'devextreme-vue/load-indicator';
 export default {
   components: {
     DxButton,
-    DxLoadIndicator
+    DxLoadIndicator,
   },
   data() {
     return {
       loadIndicatorVisible: false,
-      buttonText: 'Send'
+      buttonText: 'Send',
     };
   },
   methods: {
@@ -70,8 +70,8 @@ export default {
         this.loadIndicatorVisible = false;
         this.buttonText = 'Send';
       }, 2000);
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
@@ -106,5 +106,10 @@ export default {
   display: inline-block;
   vertical-align: middle;
   margin-right: 5px;
+}
+
+.indicators {
+  display: flex;
+  align-items: center;
 }
 </style>

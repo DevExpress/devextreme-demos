@@ -36,35 +36,47 @@
 
 <div class="options">
     <div class="caption">Options</div>
-    <div class="option">
-        <span>Show Check Boxes Mode:</span>
-        @(Html.DevExtreme().SelectBox()
-            .ID("showCheckBoxesMode")
-            .Items(new List<string> { "selectAll", "normal", "none" })
-            .Value("normal")
-            .OnValueChanged("showCheckBoxesModeValueChanged"))
-    </div>
-    <div class="option">
-        <span>Selection Mode:</span>
-        @(Html.DevExtreme().SelectBox()
-            .ID("selectionMode")
-            .Items(new List<string> { "multiple", "single" })
-            .Value("multiple")
-            .OnValueChanged("selectionModeValueChanged"))
-    </div>
-    <div class="option recursive-option">
-        @(Html.DevExtreme().CheckBox()
-            .ID("selectNodesRecursive")
-            .Text("Select Nodes Recursive")
-            .Value(true)
-            .OnValueChanged("selectNodesRecursiveValueChanged"))
-    </div>
-    <div class="option">
-        @(Html.DevExtreme().CheckBox()
-            .ID("selectByClick")
-            .Text("Select By Click")
-            .Value(false)
-            .OnValueChanged("selectByClickValueChanged"))
+    <div class="options-container">
+        <div class="option">
+            <span>Show Check Boxes Mode:</span>
+            <div class="editor-container">
+                @(Html.DevExtreme().SelectBox()
+                    .ID("showCheckBoxesMode")
+                    .Items(new List<string> { "selectAll", "normal", "none" })
+                    .Value("normal")
+                    .OnValueChanged("showCheckBoxesModeValueChanged"))
+            </div>
+        </div>
+        <div class="option">
+            <span>Selection Mode:</span>
+            <div class="editor-container">
+                @(Html.DevExtreme().SelectBox()
+                    .ID("selectionMode")
+                    .Items(new List<string> { "multiple", "single" })
+                    .Value("multiple")
+                    .OnValueChanged("selectionModeValueChanged"))
+            </div>
+        </div>
+        <div class="option">
+            <div class="caption-placeholder">&nbsp;</div>
+            <div class="editor-container">
+                @(Html.DevExtreme().CheckBox()
+                    .ID("selectNodesRecursive")
+                    .Text("Select Nodes Recursive")
+                    .Value(true)
+                    .OnValueChanged("selectNodesRecursiveValueChanged"))
+            </div>
+        </div>
+        <div class="option">
+            <div class="caption-placeholder">&nbsp;</div>
+            <div class="editor-container">
+                @(Html.DevExtreme().CheckBox()
+                    .ID("selectByClick")
+                    .Text("Select By Click")
+                    .Value(false)
+                    .OnValueChanged("selectByClickValueChanged"))
+            </div>
+        </div>
     </div>
 </div>
 

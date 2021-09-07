@@ -41,17 +41,17 @@ export default {
   components: {
     DxScheduler,
     DxResource,
-    DxView
+    DxView,
   },
   data() {
     return {
       currentView: 'Vertical Grouping',
       groups: ['priorityId'],
-      currentDate: new Date(2021, 4, 21),
+      currentDate: new Date(2021, 3, 21),
       dataSource: data,
-      priorityData: priorityData
+      priorityData,
     };
-  }
+  },
 };
 </script>
 

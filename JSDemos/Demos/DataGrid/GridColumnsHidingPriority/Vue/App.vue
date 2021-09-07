@@ -3,6 +3,7 @@
     <DxDataGrid
       id="gridContainer"
       :data-source="dataSource"
+      key-expr="ID"
       :column-hiding-enabled="true"
       :show-borders="true"
     >
@@ -40,13 +41,13 @@ import service from './data.js';
 
 export default {
   components: {
-    DxDataGrid, DxColumn
+    DxDataGrid, DxColumn,
   },
   data() {
     return {
-      dataSource: service.getOrders()
+      dataSource: service.getOrders(),
     };
-  }
+  },
 };
 </script>
 <style scoped>

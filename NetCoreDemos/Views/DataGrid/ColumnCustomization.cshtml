@@ -2,7 +2,7 @@
 
 @(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.DataGrid.Employee>()
     .ID("gridContainer")
-    .DataSource(Model)
+    .DataSource(Model, "ID")
     .AllowColumnReordering(true)
     .AllowColumnResizing(true)
     .ColumnAutoWidth(true)

@@ -13,7 +13,7 @@
         SchedulerViewType.TimelineDay
     })
     .CurrentView(SchedulerViewType.Day)
-    .CurrentDate(new DateTime(2021, 5, 25))
+    .CurrentDate(new DateTime(2021, 4, 27))
     .FirstDayOfWeek(FirstDayOfWeek.Sunday)
     .StartDayHour(9)
     .EndDayHour(23)
@@ -90,12 +90,8 @@
                 onValueChanged: function(args) {
                     movie = getMovieById(args.value);
 
-                    form.getEditor("Director")
-                        .option("value", movie.Director);
-
-                    form.getEditor("EndDate")
-                        .option("value", new Date(startDate.getTime() +
-                            60 * 1000 * movie.Duration));
+                    form.updateData("director", movie.Director);
+                    form.updateData("endDate", new Date(startDate.getTime() + 60 * 1000 * movie.Duration));
                 }
             },
         }, {
@@ -115,10 +111,9 @@
                 width: "100%",
                 type: "datetime",
                 onValueChanged: function(args) {
-                    startDate = args.value;
-                    form.getEditor("EndDate")
-                        .option("value", new Date(startDate.getTime() +
-                            60 * 1000 * movie.Duration));
+                    startDate = new Date(args.value);
+
+                    form.updateData("endDate", new Date(startDate.getTime() + 60 * 1000 * movie.Duration));
                 }
             }
         }, {

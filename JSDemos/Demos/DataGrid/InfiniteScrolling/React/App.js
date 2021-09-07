@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import DataGrid, { Scrolling, Sorting, LoadPanel } from 'devextreme-react/data-grid';
 import { generateData } from './data.js';
@@ -10,9 +10,10 @@ class App extends React.Component {
     return (
       <DataGrid
         elementAttr ={{
-          id: 'gridContainer'
+          id: 'gridContainer',
         }}
         dataSource={dataSource}
+        keyExpr="id"
         showBorders={true}
         customizeColumns={customizeColumns}
       >

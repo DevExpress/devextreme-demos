@@ -1,5 +1,6 @@
 ﻿@(Html.DevExtreme().Diagram()
     .ID("diagram")
+    .OnContentReady("onContentReady")
     .OnSelectionChanged("onSelectionChanged")
     .PropertiesPanel(pp => pp
         .Visibility(DiagramPanelVisibility.Disabled)
@@ -28,6 +29,18 @@
 </div>
 
 <script type="text/javascript">
+    function onContentReady(e) {
+        var diagram = e.component;
+        // preselect some shape
+        var items = diagram.getItems().filter(function (item) {
+            return item.itemType === "shape" && (item.text === "Greta Sims");
+        });
+        if(items.length > 0) {
+            diagram.setSelectedItems(items);
+            diagram.scrollToItem(items[0]);
+            diagram.focus();
+        }
+    }
     function onSelectionChanged(e) {
         var items = e.items
             .filter(function(item) { return item.itemType === "shape"; })

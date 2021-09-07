@@ -1,20 +1,21 @@
 import React from 'react';
 
 import List from 'devextreme-react/list';
-import ProductInfo from './ProductInfo.js';
 
 import DataSource from 'devextreme/data/data_source';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
+import ProductInfo from './ProductInfo.js';
 
 const dataSource = new DataSource({
   store: createStore({
-    loadUrl: 'https://js.devexpress.com/Demos/Mvc/api/ListData/Orders'
+    key: 'ProductID',
+    loadUrl: 'https://js.devexpress.com/Demos/Mvc/api/ListData/Orders',
   }),
   sort: 'ProductName',
   group: 'Category.CategoryName',
   paginate: true,
   pageSize: 1,
-  filter: ['UnitPrice', '>', 15]
+  filter: ['UnitPrice', '>', 15],
 });
 
 class App extends React.Component {

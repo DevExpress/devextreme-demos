@@ -2,6 +2,7 @@
   <DxDataGrid
     id="grid"
     :data-source="dataSource"
+    key-expr="OrderNumber"
     :show-borders="true"
   />
 </template>
@@ -12,13 +13,13 @@ import { orders } from './data.js';
 
 export default {
   components: {
-    DxDataGrid
+    DxDataGrid,
   },
   data() {
     return {
-      dataSource: orders
+      dataSource: orders,
     };
-  }
+  },
 };
 </script>
 <style>

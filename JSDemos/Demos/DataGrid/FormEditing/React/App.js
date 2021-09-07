@@ -1,15 +1,17 @@
-﻿import React from 'react';
+import React from 'react';
 
 import DataGrid, {
   Column,
   FormItem,
   Editing,
   Paging,
-  Lookup
+  Lookup,
 } from 'devextreme-react/data-grid';
 import 'devextreme-react/text-area';
 
 import { employees, states } from './data.js';
+
+const notesEditorOptions = { height: 100 };
 
 class App extends React.Component {
   render() {
@@ -23,7 +25,9 @@ class App extends React.Component {
           <Paging enabled={false} />
           <Editing
             mode="form"
-            allowUpdating={true} />
+            allowUpdating={true}
+            allowAdding={true}
+            allowDeleting={true} />
           <Column dataField="Prefix" caption="Title" width={70} />
           <Column dataField="FirstName" />
           <Column dataField="LastName" />
@@ -33,7 +37,7 @@ class App extends React.Component {
           </Column>
           <Column dataField="BirthDate" dataType="date" />
           <Column dataField="Notes" visible={false}>
-            <FormItem colSpan={2} editorType="dxTextArea" editorOptions={{ height: 100 }} />
+            <FormItem colSpan={2} editorType="dxTextArea" editorOptions={notesEditorOptions} />
           </Column>
         </DataGrid>
       </div>

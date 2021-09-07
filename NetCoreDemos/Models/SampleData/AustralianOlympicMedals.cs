@@ -31,7 +31,9 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
             new { Year = 1996, Gold = 9, Silver = 9, Bronze = 23 },
             new { Year = 2000, Gold = 16, Silver = 25, Bronze = 17 },
             new { Year = 2004, Gold = 17, Silver = 16, Bronze = 16 },
-            new { Year = 2008, Gold = 14, Silver = 15, Bronze = 17 }
+            new { Year = 2008, Gold = 14, Silver = 15, Bronze = 17 },
+            new { Year = 2012, Gold = 8, Silver = 15, Bronze = 12 },
+            new { Year = 2016, Gold = 8, Silver = 11, Bronze = 10 }
         };
     }
 }

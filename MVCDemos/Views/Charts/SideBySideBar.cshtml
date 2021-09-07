@@ -14,9 +14,9 @@
         )
     )
     .Series(s => {
-        s.Add().ValueField("Year2004").Name("2004");
-        s.Add().ValueField("Year2001").Name("2001");
-        s.Add().ValueField("Year1998").Name("1998");
+        s.Add().ValueField("Year2018").Name("2018");
+        s.Add().ValueField("Year2017").Name("2017");
+        s.Add().ValueField("Year2016").Name("2016");
     })
     .Title("Gross State Product within the Great Lakes Region")
     .Legend(l => l
@@ -30,10 +30,10 @@
         }
     </text>)
     .DataSource(new[] {
-        new { State = "Illinois", Year1998 = 423.721, Year2001 = 476.851, Year2004 = 528.904 },
-        new { State = "Indiana", Year1998 = 178.719, Year2001 = 195.769, Year2004 = 227.271 },
-        new { State = "Michigan", Year1998 = 308.845, Year2001 = 335.793, Year2004 = 372.576 },
-        new { State = "Ohio", Year1998 = 348.555, Year2001 = 374.771, Year2004 = 418.258 },
-        new { State = "Wisconsin", Year1998 = 160.274, Year2001 = 182.373, Year2004 = 211.727 }
+        new { State = "Illinois", Year2016 = 803, Year2017 = 823, Year2018 = 863 },
+        new { State = "Indiana", Year2016 = 316, Year2017 = 332, Year2018 = 332 },
+        new { State = "Michigan", Year2016 = 452, Year2017 = 459, Year2018 = 470 },
+        new { State = "Ohio", Year2016 = 621, Year2017 = 642, Year2018 = 675 },
+        new { State = "Wisconsin", Year2016 = 290, Year2017 = 294, Year2018 = 301 }
     })
 )

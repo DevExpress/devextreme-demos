@@ -5,6 +5,7 @@
       <div class="dx-field-value">
         <DxDropDownBox
           v-model:value="treeBoxValue"
+          v-model:opened="isTreeBoxOpened"
           :show-clear-button="true"
           :data-source="treeDataSource"
           value-expr="ID"
@@ -24,6 +25,7 @@
               display-expr="name"
               @content-ready="$event.component.selectItem(treeBoxValue)"
               @item-selection-changed="treeView_itemSelectionChanged($event)"
+              @item-click="onTreeItemClick($event)"
             />
           </template>
         </DxDropDownBox>
@@ -34,6 +36,7 @@
       <div class="dx-field-value">
         <DxDropDownBox
           v-model:value="gridBoxValue"
+          v-model:opened="isGridBoxOpened"
           :defer-rendering="false"
           :display-expr="gridBoxDisplayExpr"
           :show-clear-button="true"
@@ -47,6 +50,7 @@
               :columns="gridColumns"
               :hover-state-enabled="true"
               v-model:selected-row-keys="gridBoxValue"
+              @selection-changed="onGridSelectionChanged($event)"
               height="100%"
             >
               <DxSelection mode="single"/>
@@ -55,7 +59,7 @@
                 :page-size="10"
               />
               <DxFilterRow :visible="true"/>
-              <DxScrolling mode="infinite"/>
+              <DxScrolling mode="virtual"/>
             </DxDataGrid>
           </template>
         </DxDropDownBox>
@@ -66,7 +70,9 @@
 <script>
 import DxDropDownBox from 'devextreme-vue/drop-down-box';
 import DxTreeView from 'devextreme-vue/tree-view';
-import { DxDataGrid, DxSelection, DxPaging, DxFilterRow, DxScrolling } from 'devextreme-vue/data-grid';
+import {
+  DxDataGrid, DxSelection, DxPaging, DxFilterRow, DxScrolling,
+} from 'devextreme-vue/data-grid';
 import CustomStore from 'devextreme/data/custom_store';
 import 'whatwg-fetch';
 
@@ -78,16 +84,18 @@ export default {
     DxSelection,
     DxPaging,
     DxFilterRow,
-    DxScrolling
+    DxScrolling,
   },
   data() {
     return {
       treeDataSource: null,
       treeBoxValue: null,
       gridDataSource: null,
+      isGridBoxOpened: false,
+      isTreeBoxOpened: false,
       gridBoxValue: [3],
       treeViewRefName: 'tree-view',
-      gridColumns: ['CompanyName', 'City', 'Phone']
+      gridColumns: ['CompanyName', 'City', 'Phone'],
     };
   },
   created() {
@@ -100,10 +108,10 @@ export default {
       return new CustomStore({
         loadMode: 'raw',
         key: 'ID',
-        load: function() {
-          return fetch(`../../../../data/${ jsonFile}`)
-            .then(response => response.json());
-        }
+        load() {
+          return fetch(`../../../../data/${jsonFile}`)
+            .then((response) => response.json());
+        },
       });
     },
     syncTreeViewSelection() {
@@ -118,9 +126,15 @@ export default {
       this.treeBoxValue = e.component.getSelectedNodeKeys();
     },
     gridBoxDisplayExpr(item) {
-      return item && `${item.CompanyName } <${ item.Phone }>`;
-    }
-  }
+      return item && `${item.CompanyName} <${item.Phone}>`;
+    },
+    onTreeItemClick() {
+      this.isTreeBoxOpened = false;
+    },
+    onGridSelectionChanged() {
+      this.isGridBoxOpened = false;
+    },
+  },
 };
 </script>
 <style scoped>

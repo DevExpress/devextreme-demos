@@ -2,8 +2,6 @@ import React from 'react';
 import Query from 'devextreme/data/query';
 import 'devextreme/localization/globalize/date';
 
-import Globalize from 'globalize';
-
 import { moviesData } from './data.js';
 
 function getMovieById(id) {
@@ -14,9 +12,8 @@ export default class AppointmentTooltip extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movieData: getMovieById(props.data.appointmentData.movieId)
+      movieData: getMovieById(props.data.appointmentData.movieId),
     };
-    Globalize.locale('en');
   }
 
   render() {
