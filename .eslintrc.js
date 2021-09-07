@@ -302,9 +302,7 @@ module.exports = {
     'new-cap': 0, // TODO error (was error)
     'no-useless-constructor': 0, // TODO error (was error)
     'import/order': 0, // TODO error (was error)
-    'no-restricted-syntax': 0, // TODO error (was error)
     'no-restricted-properties': 0,
-    'guard-for-in': 0, // TODO error (was error)
     'no-useless-concat': 0,
     'no-underscore-dangle': 0,
     'import/no-webpack-loader-syntax': 0,
