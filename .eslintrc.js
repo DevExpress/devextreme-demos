@@ -281,7 +281,6 @@ module.exports = {
     'no-var': 0, // TODO error (was error)
     'vars-on-top': 0, // TODO error (was error)
     'no-unused-expressions': 0, // TODO error (was error)
-    'eqeqeq': 0, // TODO error (was error)
     'no-plusplus': 0, // TODO error (was error)
     'no-param-reassign': 0, // TODO error (was error)
     'no-return-assign': 0, // TODO error (was error)
