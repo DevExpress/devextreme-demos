@@ -52,11 +52,11 @@ DemoApp.controller('DemoController', ($scope) => {
       inverted: true,
       label: {
         customizeText() {
-          if (this.valueText === 1) {
+          if (this.valueText === '1') {
             return `${this.valueText}st place`;
-          } if (this.valueText === 2) {
+          } if (this.valueText === '2') {
             return `${this.valueText}nd place`;
-          } if (this.valueText === 3) {
+          } if (this.valueText === '3') {
             return `${this.valueText}rd place`;
           }
           return `${this.valueText}th place`;

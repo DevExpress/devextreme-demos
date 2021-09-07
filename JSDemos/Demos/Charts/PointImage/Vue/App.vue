@@ -86,11 +86,11 @@ export default {
     },
 
     customizeText({ valueText }) {
-      if (valueText === 1) {
+      if (valueText === '1') {
         return `${valueText}st place`;
-      } if (valueText === 2) {
+      } if (valueText === '2') {
         return `${valueText}nd place`;
-      } if (valueText === 3) {
+      } if (valueText === '3') {
         return `${valueText}rd place`;
       }
       return `${valueText}th place`;
