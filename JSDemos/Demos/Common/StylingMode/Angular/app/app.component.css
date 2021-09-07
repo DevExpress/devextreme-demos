@@ -45,3 +45,9 @@
 ::ng-deep .option {
     margin-top: 20px;
 }
+
+::ng-deep .editors-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -45,3 +45,10 @@
 .option {
     margin-top: 20px;
 }
+
+.editors-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
