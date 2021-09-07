@@ -24,7 +24,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {/* <div className="flex-container">
+        <div className="flex-container">
           <PieChart
             id="pie"
             dataSource={dataSource}
@@ -44,7 +44,7 @@ class App extends React.Component {
               />
             ))}
           </div>
-        </div> */}
+        </div>
 
         <div className="options">
           <div className="caption">Options</div>

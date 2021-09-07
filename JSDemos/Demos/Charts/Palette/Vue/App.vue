@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <div class="flex-container">
+    <div class="flex-container">
       <DxPieChart
         id="pie"
         :data-source="dataSource"
@@ -19,7 +19,7 @@
           class="palette-item"
         />
       </div>
-    </div> -->
+    </div>
 
     <div class="options">
       <div class="caption">Options</div>
