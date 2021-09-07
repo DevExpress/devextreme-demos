@@ -233,5 +233,5 @@ testUtils.importAnd(() => 'devextreme/ui/tree_list', () => DevExpress.ui.dxTreeL
     },
   });
 
-  instance.option = function () {return []};
+  instance.option = function () {};
 }));
