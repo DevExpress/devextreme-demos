@@ -1,1 +1,0 @@
-testUtils.postponeUntilFound('svg').then(() => testUtils.postpone())
