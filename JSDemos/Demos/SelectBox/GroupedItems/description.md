@@ -25,7 +25,7 @@ Regardless of the data source structure, enable the [grouped](/Documentation/Api
 If the data source contains objects, specify the following SelectBox properties:
 
 * [valueExpr](/Documentation/ApiReference/UI_Components/dxSelectBox/Configuration/#valueExpr)            
-A data field that contains unique values used to identify items. As an alternative, you can set the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/).[store](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/store/).[key](/Documentation/ApiReference/Data_Layer/ArrayStore/Configuration/#key) property.
+A data field that contains unique values used to identify items.
 
 * [displayExpr](/Documentation/ApiReference/UI_Components/dxSelectBox/Configuration/#displayExpr)             
 A data field whose values should be displayed in the drop-down list.
