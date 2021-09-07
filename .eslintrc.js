@@ -312,7 +312,6 @@ module.exports = {
     'no-bitwise': 0,
     'camelcase': 0,
     'max-classes-per-file': 0,
-    'operator-assignment': 0,
   },
   extends: [
     'eslint:recommended',
