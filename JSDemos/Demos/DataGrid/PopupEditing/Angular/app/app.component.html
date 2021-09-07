@@ -8,13 +8,14 @@
         <dxo-paging [enabled]="false"></dxo-paging>
         <dxo-editing 
             mode="popup"
-            [allowUpdating]="true">
+            [allowUpdating]="true"
+            [allowAdding]="true"
+            [allowDeleting]="true">
             <dxo-popup
                 title="Employee Info"
                 [showTitle]="true"
                 [width]="700"
-                [height]="525"
-                [position]="{ my: 'top', at: 'top', of: window }">
+                [height]="525">
             </dxo-popup>
             <dxo-form>
                 <dxi-item itemType="group" [colCount]="2" [colSpan]="2">

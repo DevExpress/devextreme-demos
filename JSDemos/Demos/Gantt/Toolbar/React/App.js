@@ -1,23 +1,28 @@
 import React from 'react';
 
-import Gantt, { Tasks, Dependencies, Resources, ResourceAssignments, Column, Editing, Toolbar, Item } from 'devextreme-react/gantt';
+import Gantt, {
+  Tasks, Dependencies, Resources, ResourceAssignments, Column, Editing, Toolbar, Item,
+} from 'devextreme-react/gantt';
 import { Popup } from 'devextreme-react/popup';
 
-import { tasks, dependencies, resources, resourceAssignments } from './data.js';
+import {
+  tasks, dependencies, resources, resourceAssignments,
+} from './data.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      popupVisible: false
+      popupVisible: false,
     };
     this.aboutButtonOptions = {
       text: 'About',
       icon: 'info',
       stylingMode: 'text',
-      onClick: this.aboutButtonClick.bind(this)
+      onClick: this.aboutButtonClick.bind(this),
     };
   }
+
   render() {
     return (
       <React.Fragment>
@@ -61,7 +66,7 @@ class App extends React.Component {
           height="auto"
         >
           <div>
-            The DevExtreme HTML5 JavaScript <b>Gantt</b> allows you to display the task flow and dependencies between tasks over a certain period.
+            The DevExtreme JavaScript <b>Gantt</b> allows you to display the task flow and dependencies between tasks over a certain period.
             <br />
             <br />
             You can move and modify tasks (a task name, duration or progress, for example) directly from the chart.
@@ -72,9 +77,10 @@ class App extends React.Component {
       </React.Fragment>
     );
   }
+
   aboutButtonClick() {
     this.setState({
-      popupVisible: true
+      popupVisible: true,
     });
   }
 }

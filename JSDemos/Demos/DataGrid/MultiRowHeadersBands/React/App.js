@@ -1,20 +1,20 @@
-﻿import React from 'react';
+import React from 'react';
 
 import DataGrid, { Column, ColumnChooser } from 'devextreme-react/data-grid';
 import { countries } from './data.js';
 
 const gdpFormat = {
   type: 'percent',
-  precision: 1
+  precision: 1,
 };
 
 class App extends React.Component {
-
   render() {
     return (
       <DataGrid
         id="grid"
         dataSource={countries}
+        keyExpr="ID"
         columnAutoWidth={true}
         allowColumnReordering={true}
         showBorders={true}

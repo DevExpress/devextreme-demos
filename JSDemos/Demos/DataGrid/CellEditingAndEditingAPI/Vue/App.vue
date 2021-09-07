@@ -1,22 +1,16 @@
 <template>
   <div id="data-grid-demo">
-    <DxButton
-      id="gridDeleteSelected"
-      :height="34"
-      :disabled="!selectedItemKeys.length"
-      text="Delete Selected Records"
-      @click="deleteRecords"
-    />
     <DxDataGrid
       id="gridContainer"
       :data-source="dataSource"
       :show-borders="true"
       :selected-row-keys="selectedItemKeys"
-      key-expr="ID"
       @selection-changed="selectionChanged"
     >
       <DxEditing
         :allow-updating="true"
+        :allow-adding="true"
+        :allow-deleting="true"
         mode="cell"
       />
       <DxPaging :enabled="false"/>
@@ -51,6 +45,20 @@
         data-field="BirthDate"
         data-type="date"
       />
+      <DxToolbar>
+        <DxItem
+          name="addRowButton"
+          show-text="always"
+        />
+        <DxItem location="after">
+          <DxButton
+            @click="deleteRecords()"
+            :disabled="!selectedItemKeys.length"
+            icon="trash"
+            text="Delete Selected Records"
+          />
+        </DxItem>
+      </DxToolbar>
     </DxDataGrid>
   </div>
 </template>
@@ -61,7 +69,9 @@ import {
   DxPaging,
   DxEditing,
   DxSelection,
-  DxLookup
+  DxLookup,
+  DxToolbar,
+  DxItem,
 } from 'devextreme-vue/data-grid';
 
 import { DxButton } from 'devextreme-vue/button';
@@ -78,39 +88,37 @@ export default {
     DxEditing,
     DxSelection,
     DxLookup,
-    DxButton
+    DxButton,
+    DxToolbar,
+    DxItem,
   },
   data() {
     return {
       dataSource: new DataSource({
         store: new ArrayStore({
           data: employees,
-          key: 'ID'
-        })
+          key: 'ID',
+        }),
       }),
       selectedItemKeys: [],
-      states: states,
-      selectionChanged: (data)=>{
+      states,
+      selectionChanged: (data) => {
         this.selectedItemKeys = data.selectedRowKeys;
       },
-      deleteRecords:()=>{
+      deleteRecords: () => {
         this.selectedItemKeys.forEach((key) => {
           this.dataSource.store().remove(key);
         });
         this.selectedItemKeys = [];
         this.dataSource.reload();
-      }
+      },
     };
-  }
+  },
 };
 </script>
 <style>
 #data-grid-demo {
     min-height: 700px;
-}
-
-#gridContainer {
-    padding-top: 45px;
 }
 
 #gridDeleteSelected {

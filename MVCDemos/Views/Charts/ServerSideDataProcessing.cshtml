@@ -10,7 +10,7 @@
         .PostProcess("function(d) { return d[0].DayItems; }")
         .Filter(@"[""Id"", ""="", 1]")
     )
-    .Title("Temperature in Barcelona, 2012")
+    .Title("Temperature in Seattle , 2017")
     .Size(s => s.Height(420))
     .Series(s => s.Add()
         .ArgumentField("Number")
@@ -60,6 +60,7 @@
 )
 
 <div class="action">
+    <div class="monthlabel">Choose a month:</div>
 
     @(Html.DevExtreme().SelectBox()
         .ID("selectbox")
@@ -76,6 +77,4 @@
             }
         </text>)
     )
-
-    <div class="monthlabel">Choose a month:</div>
 </div>

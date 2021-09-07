@@ -1,5 +1,1 @@
-﻿new Promise(resolve => {
-    const interval = setInterval(() => {
-        resolve();
-    }, 1000);
-});
+testUtils.postpone(1000);

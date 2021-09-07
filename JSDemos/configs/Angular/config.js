@@ -1,7 +1,7 @@
 // In real applications, you should not transpile code in the browser. You can see how to create your own application with Angular and DevExtreme here:
 // https://js.devexpress.com/Documentation/Guide/Angular_Components/Getting_Started/Create_a_DevExtreme_Application/
 
-System.config({
+window.config = {
     transpiler: 'ts',
     typescriptOptions: {
         module: "system",
@@ -17,17 +17,19 @@ System.config({
             "esModule": true
         },
         /**/
-
         /** vectormap */
         'devextreme/dist/js/vectormap-data/*': {
             'esModule': true
         },
-		
         /**/
-		
         'devextreme/localization.js': {
             "esModule": true
-        }
+        },
+        /** exceljs&file-saver */
+        'exceljs': {
+            "esModule": true
+        },
+        /**/
     },
     paths: {
         'npm:': '../../../../../node_modules/'
@@ -59,17 +61,17 @@ System.config({
         /**/
 
         /** exceljs&file-saver */
-        'exceljs': 'npm:exceljs/dist/exceljs.js',
-        'file-saver': 'npm:file-saver/FileSaver.js',
+        'exceljs': 'npm:exceljs/dist/exceljs.min.js',
+        'file-saver-es': 'npm:file-saver-es/dist/FileSaver.min.js',
         /**/
 
         /** jspdf&jspdf-autotable */
+        'fflate': 'npm:fflate/esm/browser.js',
         'jspdf': 'npm:jspdf/dist/jspdf.es.min.js',
         'jspdf-autotable': 'npm:jspdf-autotable/dist/jspdf.plugin.autotable.min.js',
         /**/
 
         /** devextreme-intl */
-        'devextreme-intl': 'npm:devextreme-intl',
         'json': 'npm:systemjs-plugin-json/json.js',
         /**/
 
@@ -87,14 +89,22 @@ System.config({
         'luxon': 'npm:luxon/build/global/luxon.min.js',
         'es6-object-assign': 'npm:es6-object-assign',
 
-        'devextreme': 'npm:devextreme',
+        'devextreme': 'npm:devextreme/cjs',
+        'devextreme/bundles/dx.all': 'npm:devextreme/bundles/dx.all.js',
         'jszip': 'npm:jszip/dist/jszip.min.js',
         'devextreme-quill': 'npm:devextreme-quill/dist/dx-quill.min.js',
         'devexpress-diagram': 'npm:devexpress-diagram',
         'devexpress-gantt': 'npm:devexpress-gantt',
         'devextreme-angular': 'npm:devextreme-angular',
-        'preact': 'npm:preact/dist/preact.js',
-        'preact/hooks': 'npm:preact/hooks/dist/hooks.js'
+        '@devextreme/vdom': 'npm:@devextreme/vdom',
+        'inferno': 'npm:inferno/dist/inferno.min.js',
+        'inferno-compat': 'npm:inferno-compat/dist/inferno-compat.min.js',
+        'inferno-create-element': 'npm:inferno-create-element/dist/inferno-create-element.min.js',
+        'inferno-dom': 'npm:inferno-dom/dist/inferno-dom.min.js',
+        'inferno-hydrate': 'npm:inferno-hydrate/dist/inferno-hydrate.min.js',
+        'inferno-clone-vnode': 'npm:inferno-clone-vnode/dist/inferno-clone-vnode.min.js',
+        'inferno-create-class': 'npm:inferno-create-class/dist/inferno-create-class.min.js',
+        'inferno-extras': 'npm:inferno-extras/dist/inferno-extras.min.js'
     },
     packages: {
         'app': {
@@ -102,6 +112,9 @@ System.config({
             defaultExtension: 'ts'
         },
         'devextreme': {
+            defaultExtension: 'js'
+        },
+        '@devextreme/vdom': {
             defaultExtension: 'js'
         },
         'devextreme/events/utils': {
@@ -124,6 +137,7 @@ System.config({
         }
     },
     packageConfigPaths: [
+        "npm:@devextreme/*/package.json",
         "npm:@angular/*/package.json",
         "npm:@angular/common/*/package.json",
         "npm:rxjs/package.json",
@@ -138,4 +152,6 @@ System.config({
         "npm:@aspnet/*/package.json",
         /**/
     ]
-});
+};
+
+System.config(window.config);

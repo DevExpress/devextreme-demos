@@ -6,6 +6,8 @@
         .Editing(editing => {
             editing.Mode(GridEditMode.Form);
             editing.AllowUpdating(true);
+            editing.AllowAdding(true);
+            editing.AllowDeleting(true);
         })
         .Columns(columns => {
             columns.AddFor(m => m.Prefix)

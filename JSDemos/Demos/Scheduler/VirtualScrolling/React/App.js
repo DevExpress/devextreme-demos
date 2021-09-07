@@ -1,54 +1,57 @@
 import React from 'react';
 
-import Scheduler from 'devextreme-react/scheduler';
+import Scheduler, { Resource, View, Scrolling } from 'devextreme-react/scheduler';
 import {
-  generateResources,
-  generateAppointments
+  resources,
+  generateAppointments,
 } from './data.js';
 
-const currentDate = new Date(2021, 8, 6);
-const views = [{
-  type: 'day',
-  groupOrientation: 'vertical',
-  name: '2 Days',
-  intervalCount: 2
-}, {
-  type: 'day',
-  groupOrientation: 'vertical',
-  name: '3 Days',
-  intervalCount: 3
-}, {
-  type: 'workWeek',
-  name: 'Work Week',
-  groupOrientation: 'vertical'
-}];
-const scrolling = { mode: 'virtual' };
-const resourceData = generateResources();
-const resources = [{
-  fieldExpr: 'resourceId',
-  dataSource: resourceData
-}];
-const groups = ['resourceId'];
-const appointments = generateAppointments();
+const currentDate = new Date(2021, 1, 2);
 
-class App extends React.Component {
-  render() {
-    return (
-      <Scheduler
-        dataSource={appointments}
-        height={600}
-        views={views}
-        defaultCurrentView="3 Days"
-        defaultCurrentDate={currentDate}
-        startDayHour={9}
-        endDayHour={18}
-        scrolling={scrolling}
-        showAllDayPanel={false}
-        groups={groups}
-        resources={resources}
+const groups = ['humanId'];
+
+const startDay = new Date(2021, 1, 1);
+const endDay = new Date(2021, 1, 28);
+const startDayHour = 8;
+const endDayHour = 20;
+
+const appointments = generateAppointments(startDay, endDay, startDayHour, endDayHour);
+
+function App() {
+  return (
+    <Scheduler
+      dataSource={appointments}
+      height={600}
+      defaultCurrentView='Timeline'
+      defaultCurrentDate={currentDate}
+      startDayHour={startDayHour}
+      endDayHour={endDayHour}
+      cellDuration={60}
+      showAllDayPanel={false}
+      groups={groups}>
+      <View
+        type='timelineWorkWeek'
+        name='Timeline'
+        groupOrientation='vertical'
       />
-    );
-  }
+      <View
+        type='workWeek'
+        groupOrientation='vertical'
+      />
+      <View
+        type='month'
+        groupOrientation='horizontal'
+      />
+      <Resource
+        fieldExpr='humanId'
+        dataSource={resources}
+        label='Employee'
+      />
+      <Scrolling
+        mode='virtual'
+      />
+    </Scheduler>
+  );
 }
 
 export default App;

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { markup } from './data.js';
 import HtmlEditor, { Toolbar, Item } from 'devextreme-react/html-editor';
 import Popup from 'devextreme-react/popup';
+import { markup } from './data.js';
 
 const headerValues = [false, 1, 2, 3, 4, 5];
 
@@ -12,20 +12,21 @@ class App extends React.Component {
 
     this.state = {
       value: markup,
-      popupVisible: false
+      popupVisible: false,
     };
 
     this.toolbarButtonOptions = {
       text: 'Show markup',
       stylingMode: 'text',
-      onClick: this.customButtonClick.bind(this)
+      onClick: this.customButtonClick.bind(this),
     };
 
     this.valueChanged = this.valueChanged.bind(this);
     this.popupHiding = this.popupHiding.bind(this);
   }
+
   render() {
-    let { value, popupVisible } = this.state;
+    const { value, popupVisible } = this.state;
 
     return (
       <div className="widget-container">
@@ -34,24 +35,24 @@ class App extends React.Component {
           onValueChanged={this.valueChanged}
         >
           <Toolbar>
-            <Item formatName="undo" />
-            <Item formatName="redo" />
-            <Item formatName="separator" />
+            <Item name="undo" />
+            <Item name="redo" />
+            <Item name="separator" />
             <Item
-              formatName="header"
-              formatValues={headerValues}
+              name="header"
+              acceptedValues={headerValues}
             />
-            <Item formatName="separator" />
-            <Item formatName="bold" />
-            <Item formatName="italic" />
-            <Item formatName="strike" />
-            <Item formatName="underline" />
-            <Item formatName="separator" />
-            <Item formatName="alignLeft" />
-            <Item formatName="alignCenter" />
-            <Item formatName="alignRight" />
-            <Item formatName="alignJustify" />
-            <Item formatName="separator" />
+            <Item name="separator" />
+            <Item name="bold" />
+            <Item name="italic" />
+            <Item name="strike" />
+            <Item name="underline" />
+            <Item name="separator" />
+            <Item name="alignLeft" />
+            <Item name="alignCenter" />
+            <Item name="alignRight" />
+            <Item name="alignJustify" />
+            <Item name="separator" />
             <Item
               widget="dxButton"
               options={this.toolbarButtonOptions}
@@ -69,19 +70,22 @@ class App extends React.Component {
       </div>
     );
   }
+
   valueChanged(e) {
     this.setState({
-      value: e.value
+      value: e.value,
     });
   }
+
   popupHiding() {
     this.setState({
-      popupVisible: false
+      popupVisible: false,
     });
   }
+
   customButtonClick() {
     this.setState({
-      popupVisible: true
+      popupVisible: true,
     });
   }
 }

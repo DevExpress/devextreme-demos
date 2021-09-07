@@ -6,7 +6,6 @@
         :data-source="products"
         :show-first-submenu-mode="showFirstSubmenuModes"
         :orientation="orientation"
-        :submenu-direction="submenuDirection"
         :hide-submenu-on-mouse-leave="hideSubmenuOnMouseLeave"
         display-expr="name"
         @item-click="itemClick"
@@ -38,13 +37,6 @@
         />
       </div>
       <div class="option">
-        <div>Submenu Direction</div>
-        <DxSelectBox
-          :items="['auto', 'rightOrBottom', 'leftOrTop']"
-          v-model:value="submenuDirection"
-        />
-      </div>
-      <div class="option">
         <DxCheckBox
           v-model:value="hideSubmenuOnMouseLeave"
           text="Hide Submenu on Mouse Leave"
@@ -61,33 +53,32 @@ import service from './data.js';
 
 export default {
   components: {
-    DxMenu, DxSelectBox, DxCheckBox
+    DxMenu, DxSelectBox, DxCheckBox,
   },
   data() {
     const showSubmenuModes = [{
       name: 'onHover',
-      delay: { show: 0, hide: 500 }
+      delay: { show: 0, hide: 500 },
     }, {
       name: 'onClick',
-      delay: { show: 0, hide: 300 }
+      delay: { show: 0, hide: 300 },
     }];
     return {
       products: service.getProducts(),
       showSubmenuModes,
       showFirstSubmenuModes: showSubmenuModes[1],
       orientation: 'horizontal',
-      submenuDirection: 'auto',
       hideSubmenuOnMouseLeave: false,
-      currentProduct: null
+      currentProduct: null,
     };
   },
   methods: {
     itemClick(e) {
-      if(e.itemData.price) {
+      if (e.itemData.price) {
         this.currentProduct = e.itemData;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

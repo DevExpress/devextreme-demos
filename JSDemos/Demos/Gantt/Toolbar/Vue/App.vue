@@ -54,7 +54,7 @@
       :close-on-outside-click="true"
     >
       <div>
-        The DevExtreme HTML5 JavaScript <b>Gantt</b> allows you to display the task flow and dependencies between tasks over a certain period.
+        The DevExtreme JavaScript <b>Gantt</b> allows you to display the task flow and dependencies between tasks over a certain period.
         <br>
         <br>
         You can move and modify tasks (a task name, duration or progress, for example) directly from the chart.
@@ -74,7 +74,7 @@ import {
   DxColumn,
   DxEditing,
   DxToolbar,
-  DxItem
+  DxItem,
 } from 'devextreme-vue/gantt';
 import { DxPopup } from 'devextreme-vue/popup';
 
@@ -82,7 +82,7 @@ import {
   tasks,
   dependencies,
   resources,
-  resourceAssignments
+  resourceAssignments,
 } from './data.js';
 
 export default {
@@ -96,14 +96,14 @@ export default {
     DxEditing,
     DxToolbar,
     DxItem,
-    DxPopup
+    DxPopup,
   },
   data() {
     return {
-      tasks: tasks,
-      dependencies: dependencies,
-      resources: resources,
-      resourceAssignments: resourceAssignments,
+      tasks,
+      dependencies,
+      resources,
+      resourceAssignments,
       popupVisible: false,
       aboutButtonOptions: {
         text: 'About',
@@ -111,10 +111,10 @@ export default {
         stylingMode: 'text',
         onClick: () => {
           this.popupVisible = true;
-        }
-      }
+        },
+      },
     };
-  }
+  },
 };
 </script>
 <style>

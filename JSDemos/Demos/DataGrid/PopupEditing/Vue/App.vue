@@ -8,6 +8,8 @@
       <DxPaging :enabled="false"/>
       <DxEditing
         :allow-updating="true"
+        :allow-adding="true"
+        :allow-deleting="true"
         mode="popup"
       >
         <DxPopup
@@ -15,13 +17,7 @@
           :width="700"
           :height="525"
           title="Employee Info"
-        >
-          <DxPosition
-            my="top"
-            at="top"
-            of="window"
-          />
-        </DxPopup>
+        />
         <DxForm>
           <DxItem
             :col-count="2"
@@ -103,8 +99,7 @@ import {
   DxEditing,
   DxPopup,
   DxLookup,
-  DxPosition,
-  DxForm
+  DxForm,
 } from 'devextreme-vue/data-grid';
 import { DxTextArea } from 'devextreme-vue/text-area';
 import { DxItem } from 'devextreme-vue/form';
@@ -118,17 +113,16 @@ export default {
     DxEditing,
     DxPopup,
     DxLookup,
-    DxPosition,
     DxForm,
     DxItem,
-    DxTextArea
+    DxTextArea,
   },
   data() {
     return {
       dataSource: employees,
-      states: states
+      states,
     };
-  }
+  },
 };
 </script>
 <style>

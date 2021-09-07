@@ -2,6 +2,7 @@
   <div>
     <DxDataGrid
       :data-source="employees"
+      key-expr="ID"
       :show-column-lines="showColumnLines"
       :show-row-lines="showRowLines"
       :show-borders="showBorders"
@@ -34,29 +35,34 @@
 
     <div class="options">
       <div class="caption">Options</div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="showColumnLines"
-          text="Show Column Lines"
-        />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="showRowLines"
-          text="Show Row Lines"
-        />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="showBorders"
-          text="Show Borders"
-        />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="rowAlternationEnabled"
-          text="Alternating Row Color"
-        />
+      <div class="options-container">
+        <div class="option">
+          <DxCheckBox
+            v-model:value="showColumnLines"
+            text="Show Column Lines"
+          />
+        </div>
+        &nbsp;
+        <div class="option">
+          <DxCheckBox
+            v-model:value="showRowLines"
+            text="Show Row Lines"
+          />
+        </div>
+        &nbsp;
+        <div class="option">
+          <DxCheckBox
+            v-model:value="showBorders"
+            text="Show Borders"
+          />
+        </div>
+        &nbsp;
+        <div class="option">
+          <DxCheckBox
+            v-model:value="rowAlternationEnabled"
+            text="Alternating Row Color"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -70,7 +76,7 @@ export default {
   components: {
     DxDataGrid,
     DxColumn,
-    DxCheckBox
+    DxCheckBox,
   },
   data() {
     return {
@@ -78,9 +84,9 @@ export default {
       showColumnLines: false,
       showRowLines: true,
       showBorders: true,
-      rowAlternationEnabled: true
+      rowAlternationEnabled: true,
     };
-  }
+  },
 };
 </script>
 <style scoped>
@@ -99,6 +105,10 @@ export default {
   width: 24%;
   display: inline-block;
   margin-top: 10px;
-  margin-right: 4px;
+}
+
+.options-container {
+    display: flex;
+    align-items: center;
 }
 </style>

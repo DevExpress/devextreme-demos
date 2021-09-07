@@ -3,8 +3,8 @@
     id="gridContainer"
     :ref="gridRefName"
     :data-source="orders"
+    key-expr="ID"
     :show-borders="true"
-    @toolbar-preparing="onToolbarPreparing($event)"
   >
     <DxGrouping :auto-expand-all="expanded"/>
     <DxColumnChooser :enabled="true"/>
@@ -29,29 +29,68 @@
       alignment="right"
       format="currency"
     />
-    <template #totalGroupCount="{ data }">
-      <div class="informer">
-        <h2 class="count">{{ totalCount }}</h2>
-        <span class="name">Total Count</span>
-      </div>
-    </template>
+    <DxToolbar>
+      <DxItem location="before">
+        <div class="informer">
+          <h2 class="count">{{ totalCount }}</h2>
+          <span class="name">Total Count</span>
+        </div>
+      </DxItem>
+      <DxItem location="before">
+        <DxSelectBox
+          width="225"
+          :items="groupingValues"
+          display-expr="text"
+          value-expr="value"
+          value="CustomerStoreState"
+          @value-changed="groupChanged"
+        />
+      </DxItem>
+      <DxItem location="before">
+        <DxButton
+          text="Collapse All"
+          width="136"
+          @click="collapseAllClick"
+        />
+      </DxItem>
+      <DxItem location="after">
+        <DxButton
+          icon="refresh"
+          @click="refreshDataGrid"
+        />
+      </DxItem>
+      <DxItem
+        name="columnChooserButton"
+      />
+    </DxToolbar>
   </DxDataGrid>
 </template>
 <script>
-import { DxDataGrid, DxColumn, DxGrouping, DxColumnChooser, DxLoadPanel } from 'devextreme-vue/data-grid';
+import {
+  DxDataGrid, DxColumn, DxGrouping, DxColumnChooser, DxLoadPanel, DxToolbar, DxItem,
+} from 'devextreme-vue/data-grid';
+import { DxSelectBox } from 'devextreme-vue/select-box';
+import { DxButton } from 'devextreme-vue/button';
 import query from 'devextreme/data/query';
 import service from './data.js';
 
 export default {
   components: {
-    DxDataGrid, DxColumn, DxGrouping, DxColumnChooser, DxLoadPanel
+    DxDataGrid, DxColumn, DxGrouping, DxColumnChooser, DxLoadPanel, DxToolbar, DxItem, DxSelectBox, DxButton,
   },
   data() {
     return {
       orders: service.getOrders(),
       gridRefName: 'dataGrid',
       expanded: true,
-      totalCount: 0
+      totalCount: 0,
+      groupingValues: [{
+        value: 'CustomerStoreState',
+        text: 'Grouping by State',
+      }, {
+        value: 'Employee',
+        text: 'Grouping by Employee',
+      }],
     };
   },
   created() {
@@ -63,44 +102,6 @@ export default {
         .groupBy(groupField)
         .toArray().length;
     },
-    onToolbarPreparing(e) {
-      e.toolbarOptions.items.unshift({
-        location: 'before',
-        template: 'totalGroupCount'
-      }, {
-        location: 'before',
-        widget: 'dxSelectBox',
-        options: {
-          width: 200,
-          items: [{
-            value: 'CustomerStoreState',
-            text: 'Grouping by State'
-          }, {
-            value: 'Employee',
-            text: 'Grouping by Employee'
-          }],
-          displayExpr: 'text',
-          valueExpr: 'value',
-          value: 'CustomerStoreState',
-          onValueChanged: this.groupChanged.bind(this)
-        }
-      }, {
-        location: 'before',
-        widget: 'dxButton',
-        options: {
-          width: 136,
-          text: 'Collapse All',
-          onClick: this.collapseAllClick.bind(this)
-        }
-      }, {
-        location: 'after',
-        widget: 'dxButton',
-        options: {
-          icon: 'refresh',
-          onClick: this.refreshDataGrid.bind(this)
-        }
-      });
-    },
     groupChanged(e) {
       this.$refs[this.gridRefName].instance.clearGrouping();
       this.$refs[this.gridRefName].instance.columnOption(e.value, 'groupIndex', 0);
@@ -109,13 +110,13 @@ export default {
     collapseAllClick(e) {
       this.expanded = !this.expanded;
       e.component.option({
-        text: this.expanded ? 'Collapse All' : 'Expand All'
+        text: this.expanded ? 'Collapse All' : 'Expand All',
       });
     },
     refreshDataGrid() {
       this.$refs[this.gridRefName].instance.refresh();
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
@@ -144,11 +145,11 @@ export default {
 }
 
 .dx-datagrid-header-panel .dx-selectbox {
-    margin: 17px 10px;
+    margin: auto 10px;
 }
 
 .dx-datagrid-header-panel .dx-button {
-     margin: 17px 0;
+     margin: auto 0;
 }
 
 .informer {
@@ -161,6 +162,7 @@ export default {
 .count {
     padding-top: 15px;
     line-height: 27px;
-	margin: 0;
+    font-size: 28px;
+    margin: 0;
 }
 </style>

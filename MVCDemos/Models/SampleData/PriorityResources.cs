@@ -6,12 +6,12 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
         public static readonly IEnumerable<PriorityResource> PriorityResources = new[] {
             new PriorityResource {
                 Id = 1,
-                Text = "High priority",
+                Text = "High",
                 Color = "#cc5c53"
             },
             new PriorityResource {
                 Id = 2,
-                Text = "Low priority",
+                Text = "Low",
                 Color = "#ff9747"
             }
         };

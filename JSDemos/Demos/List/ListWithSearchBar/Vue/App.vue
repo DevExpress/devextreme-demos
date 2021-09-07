@@ -20,7 +20,7 @@
       <div class="option">
         <span>Search mode </span>
         <DxSelectBox
-          :items="['contains', 'startsWith']"
+          :items="['contains', 'startsWith', 'equals']"
           v-model:value="searchMode"
         />
       </div>
@@ -36,14 +36,14 @@ import { products } from './data.js';
 export default {
   components: {
     DxSelectBox,
-    DxList
+    DxList,
   },
   data() {
     return {
       products,
-      searchMode: 'contains'
+      searchMode: 'contains',
     };
-  }
+  },
 };
 </script>
 <style>

@@ -12,9 +12,11 @@
     .Scrolling( scrolling => scrolling.Mode(GridScrollingMode.Virtual))
     .Sorting(sorting => sorting.Mode(GridSortingMode.None))
     .DataSource(d => d.WebApi().Controller("DataGridScrolling").Key("Id"))
-    .OnContentReady(@<text>
-        function(e) {
-            e.component.option("loadPanel.enabled", false);
-        }
-    </text>)
+    .OnContentReady("onContentReady")
 )
+
+<script>
+    function onContentReady(e) {
+        e.component.option("loadPanel.enabled", false);
+    }
+</script>

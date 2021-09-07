@@ -52,26 +52,28 @@
 
 <div class="options">
     <div class="caption">Options</div>
-    <div class="option">
-        @(Html.DevExtreme().CheckBox()
-            .Text("Allow Search")
-            .Value(true)
-            .OnValueChanged(@<text>
-                function(data) {
-                    $("#pivotgrid").dxPivotGrid("instance").option("headerFilter.allowSearch", data.value);
-                }
-            </text>)
-        )
-    </div>
-    <div class="option">
-        @(Html.DevExtreme().CheckBox()
-            .Text("Show Relevant Values")
-            .Value(true)
-            .OnValueChanged(@<text>
-                function(data) {
-                    $("#pivotgrid").dxPivotGrid("instance").option("headerFilter.showRelevantValues", data.value);
-                }
-            </text>)
-        )
+    <div class="options-container">
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Allow Search")
+                .Value(true)
+                .OnValueChanged(@<text>
+                    function(data) {
+                        $("#pivotgrid").dxPivotGrid("instance").option("headerFilter.allowSearch", data.value);
+                    }
+                </text>)
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Show Relevant Values")
+                .Value(true)
+                .OnValueChanged(@<text>
+                    function(data) {
+                        $("#pivotgrid").dxPivotGrid("instance").option("headerFilter.showRelevantValues", data.value);
+                    }
+                </text>)
+            )
+        </div>
     </div>
 </div>

@@ -1,5 +1,4 @@
 <dx-scheduler
-  timeZone="America/Los_Angeles"
   [dataSource]="dataSource"
   [views]="views"
   [currentView]="currentView"
@@ -18,10 +17,9 @@
 
     <div *dxTemplate="let dataCell of 'dataCellTemplate'"
       [ngClass]="{
-        'disable-date': isHoliday(dataCell.startDate) || isWeekend(dataCell.startDate),
-        'dinner': isDinner(dataCell.startDate)
+        'disable-date': isDisableDate(dataCell.startDate),
+        'dinner': !isDisableDate(dataCell.startDate) && isDinner(dataCell.startDate)
       }">
-      {{dataCell.text}}
     </div>
 
     <div *dxTemplate="let dateCell of 'dateCellTemplate'"

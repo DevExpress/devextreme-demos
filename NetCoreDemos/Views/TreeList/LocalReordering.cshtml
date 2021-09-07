@@ -34,41 +34,43 @@
 
     <div class="options">
         <div class="caption">Options</div>
-        <div class="option">
-            @(Html.DevExtreme().CheckBox()
-                .ID("allowDropInside")
-                .Text("Allow Drop Inside Item")
-                .Value(true)
-                .OnValueChanged(@<text>
-                    function(e) {
-                        getTreeList().option("rowDragging.allowDropInsideItem", e.value);
-                    }
-                </text>)
-            )
-        </div>
-        <div class="option">
-            @(Html.DevExtreme().CheckBox()
-                .ID("allowReordering")
-                .Text("Allow Reordering")
-                .Value(true)
-                .OnValueChanged(@<text>
-                    function(e) {
-                        getTreeList().option("rowDragging.allowReordering", e.value);
-                    }
-                </text>)
-            )
-        </div>
-        <div class="option">
-            @(Html.DevExtreme().CheckBox()
-                .ID("showDragIcons")
-                .Text("Show Drag Icons")
-                .Value(true)
-                .OnValueChanged(@<text>
-                    function(e) {
-                        getTreeList().option("rowDragging.showDragIcons", e.value);
-                    }
-                </text>)
-            )
+        <div class="options-container">
+            <div class="option">
+                @(Html.DevExtreme().CheckBox()
+                    .ID("allowDropInside")
+                    .Text("Allow Drop Inside Item")
+                    .Value(true)
+                    .OnValueChanged(@<text>
+                        function(e) {
+                            getTreeList().option("rowDragging.allowDropInsideItem", e.value);
+                        }
+                    </text>)
+                )
+            </div>
+            <div class="option">
+                @(Html.DevExtreme().CheckBox()
+                    .ID("allowReordering")
+                    .Text("Allow Reordering")
+                    .Value(true)
+                    .OnValueChanged(@<text>
+                        function(e) {
+                            getTreeList().option("rowDragging.allowReordering", e.value);
+                        }
+                    </text>)
+                )
+            </div>
+            <div class="option">
+                @(Html.DevExtreme().CheckBox()
+                    .ID("showDragIcons")
+                    .Text("Show Drag Icons")
+                    .Value(true)
+                    .OnValueChanged(@<text>
+                        function(e) {
+                            getTreeList().option("rowDragging.showDragIcons", e.value);
+                        }
+                    </text>)
+                )
+            </div>
         </div>
     </div>
 </div>
@@ -80,8 +82,8 @@
             sourceNode = treeList.getNodeByKey(e.itemData.ID),
             targetNode = visibleRows[e.toIndex].node;
 
-        while(targetNode && targetNode.data) {
-            if(targetNode.data.ID === sourceNode.data.ID) {
+        while (targetNode && targetNode.data) {
+            if (targetNode.data.ID === sourceNode.data.ID) {
                 e.cancel = true;
                 break;
             }
@@ -90,29 +92,30 @@
     }
 
     function onReorder(e) {
-        var treeList = e.component,
-            visibleRows = treeList.getVisibleRows(),
-            sourceData = e.itemData,
-            targetData = visibleRows[e.toIndex].data;
+        var visibleRows = e.component.getVisibleRows();
 
         if (e.dropInsideItem) {
-            e.itemData.Head_ID = targetData.ID;
+            e.itemData.Head_ID = visibleRows[e.toIndex].key;
         } else {
-            var sourceIndex = employees.indexOf(sourceData),
-                targetIndex = employees.indexOf(targetData);
+            var sourceData = e.itemData,
+                toIndex = e.fromIndex > e.toIndex ? e.toIndex - 1 : e.toIndex,
+                targetData = toIndex >= 0 ? visibleRows[toIndex].node.data : null;
 
-            if (sourceData.Head_ID !== targetData.Head_ID) {
-                sourceData.Head_ID = targetData.Head_ID;
-                if (e.toIndex > e.fromIndex) {
-                    targetIndex++;
-                }
+            if (targetData && e.component.isRowExpanded(targetData.ID)) {
+                sourceData.Head_ID = targetData.ID;
+                targetData = null;
+            } else {
+                sourceData.Head_ID = targetData ? targetData.Head_ID : e.component.option('rootValue');
             }
 
+            var sourceIndex = employees.indexOf(sourceData);
             employees.splice(sourceIndex, 1);
+
+            var targetIndex = employees.indexOf(targetData) + 1;
             employees.splice(targetIndex, 0, sourceData);
         }
 
-        treeList.refresh();
+        e.component.refresh();
     }
 
     function getTreeList() {

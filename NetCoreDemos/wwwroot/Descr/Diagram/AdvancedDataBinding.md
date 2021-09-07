@@ -1,0 +1,4 @@
+The Diagram component accepts functions as expression property values.  It allows you to implement custom logic when you bind a diagram to a data source.
+In this demo, the [Nodes](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DiagramBuilder.Nodes%28System.Action-DevExtreme.AspNet.Mvc.Builders.DiagramNodesBuilder-%29) and [Edges](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DiagramBuilder.Edges%28System.Action-DevExtreme.AspNet.Mvc.Builders.DiagramEdgesBuilder-%29) collections are bound to a data source. Custom functions are used to get different shape types and font styles for items based on additional data source information.
+
+The [AutoLayout](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DiagramNodesBuilder.AutoLayout.overloads) method specifies an auto-layout algorithm type and orientation that the component uses to build diagrams.

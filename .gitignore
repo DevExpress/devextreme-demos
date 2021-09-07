@@ -12,11 +12,15 @@ NuGet
 *.rej
 *.ldf
 *proj.user
-package-lock.json
+repository.config.json
+coverage
+artifacts
+screenshots
+bundles
+changed-files.json
 
 *d.ts
-
-utils/reposPaths.js
+gulpfile.js/.eslintrc.js
 
 JSDemos/Demos/**/config.js
 
@@ -39,6 +43,7 @@ NetCoreDemos/wwwroot/bundle.min.css
 NetCoreDemos/wwwroot/bundle.min.js
 NetCoreDemos/wwwroot/js
 NetCoreDemos/wwwroot/css/*
+!NetCoreDemos/wwwroot/css/custom\.css
 !NetCoreDemos/wwwroot/css/DemosStyles
 NetCoreDemos/wwwroot/SampleData/SampleImages
 NetCoreDemos/menuMeta.json

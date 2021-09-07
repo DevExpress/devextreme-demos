@@ -5,16 +5,14 @@
       Ticket Price: <strong>{{ '$' + templateModel.appointmentData.price }}</strong>
     </div>
     <div>
-      {{ Globalize.formatDate(templateModel.appointmentData.startDate, { time: "short" }) }} -
-      {{ Globalize.formatDate(templateModel.appointmentData.endDate, { time: "short" }) }}
+      {{ getFormatDate(templateModel.appointmentData.startDate) }} -
+      {{ getFormatDate(templateModel.appointmentData.endDate) }}
     </div>
   </div>
 </template>
 <script>
-import 'devextreme/localization/globalize/date';
 
-import Globalize from 'globalize';
-
+import localization from 'devextreme/localization';
 import DxButton from 'devextreme-vue/button';
 import Query from 'devextreme/data/query';
 
@@ -30,27 +28,28 @@ const getMovieById = function(resourceId) {
 
 export default {
   components: {
-    DxButton
+    DxButton,
   },
   props: {
     scheduler: {
       type: Object,
-      default: () => { }
+      default: () => { },
     },
     templateModel: {
       type: Object,
-      default: () => { }
-    }
+      default: () => { },
+    },
   },
   data() {
     return {
-      dayOfWeekNames: dayOfWeekNames,
-      Globalize: Globalize,
-      movieData: getMovieById(this.templateModel.appointmentData.movieId)
+      dayOfWeekNames,
+      movieData: getMovieById(this.templateModel.appointmentData.movieId),
     };
   },
-  mounted() {
-    Globalize.locale('en');
+  methods: {
+    getFormatDate(value) {
+      return localization.formatDate(value, 'shortTime');
+    },
   },
 };
 </script>

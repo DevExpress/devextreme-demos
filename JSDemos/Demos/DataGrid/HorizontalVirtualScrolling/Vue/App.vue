@@ -2,6 +2,7 @@
   <DxDataGrid
     id="gridContainer"
     :data-source="dataSource"
+    key-expr="field1"
     :show-borders="true"
     :column-width="100"
   >
@@ -17,13 +18,13 @@ export default {
   components: {
     DxDataGrid,
     DxScrolling,
-    DxPaging
+    DxPaging,
   },
   computed: {
     dataSource() {
       return generateData(50, 500);
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

@@ -3,6 +3,7 @@
     <DxDataGrid
       id="gridContainer"
       :data-source="employees"
+      key-expr="ID"
       :show-borders="true"
       @exporting="onExporting"
     >
@@ -38,42 +39,41 @@
   </div>
 </template>
 <script>
-import { DxDataGrid, DxColumn, DxExport, DxSelection, DxGroupPanel, DxGrouping } from 'devextreme-vue/data-grid';
+import {
+  DxDataGrid, DxColumn, DxExport, DxSelection, DxGroupPanel, DxGrouping,
+} from 'devextreme-vue/data-grid';
+import { Workbook } from 'exceljs';
+import { saveAs } from 'file-saver-es';
+// Our demo infrastructure requires us to use 'file-saver-es'. We recommend that you use the official 'file-saver' package in your applications.
 import { exportDataGrid } from 'devextreme/excel_exporter';
-import ExcelJS from 'exceljs';
-import saveAs from 'file-saver';
-/*
-  // Use this import for codeSandBox
-  import FileSaver from 'file-saver';
-*/
 import service from './data.js';
 
 export default {
   components: {
-    DxDataGrid, DxColumn, DxExport, DxSelection, DxGroupPanel, DxGrouping
+    DxDataGrid, DxColumn, DxExport, DxSelection, DxGroupPanel, DxGrouping,
   },
   data() {
     return {
-      employees: service.getEmployees()
+      employees: service.getEmployees(),
     };
   },
   methods: {
     onExporting(e) {
-      const workbook = new ExcelJS.Workbook();
+      const workbook = new Workbook();
       const worksheet = workbook.addWorksheet('Employees');
 
       exportDataGrid({
         component: e.component,
-        worksheet: worksheet,
-        autoFilterEnabled: true
+        worksheet,
+        autoFilterEnabled: true,
       }).then(() => {
         workbook.xlsx.writeBuffer().then((buffer) => {
           saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'DataGrid.xlsx');
         });
       });
       e.cancel = true;
-    }
-  }
+    },
+  },
 };
 </script>
 

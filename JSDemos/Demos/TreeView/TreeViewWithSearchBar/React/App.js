@@ -1,18 +1,18 @@
-﻿import React from 'react';
+import React from 'react';
 
 import TreeView from 'devextreme-react/tree-view';
 import SelectBox from 'devextreme-react/select-box';
 
 import { products } from './data.js';
 
-const options = ['contains', 'startswith'];
+const options = ['contains', 'startswith', 'equals'];
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      value: 'contains'
+      value: 'contains',
     };
     this.valueChanged = this.valueChanged.bind(this);
   }
@@ -41,6 +41,7 @@ class App extends React.Component {
       </React.Fragment>
     );
   }
+
   valueChanged(e) {
     this.setState({ value: e.value });
   }

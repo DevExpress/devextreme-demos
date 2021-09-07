@@ -1,28 +1,57 @@
 <div id="demo-container">
-    <div class="options">
+    <div class='options'>
         <div class="caption">Options</div>
-        <div class="option">
-            <span>Scale Type</span>
-            <dx-select-box
-                [items]="['auto', 'minutes', 'hours', 'days', 'weeks', 'months', 'quarters', 'years']"
-                [(value)]="scaleType"></dx-select-box>
+        <div class="column">
+            <div class="option">
+                <div class="label">Scale Type:</div>
+                <div class="value">
+                    <dx-select-box
+                    [items]="['auto', 'minutes', 'hours', 'days', 'weeks', 'months', 'quarters', 'years']"
+                    [(value)]="scaleType"></dx-select-box>
+                </div>
+            </div>
+            <div class="option">
+                <div class="label">Title Position:</div>
+                <div class="value">
+                    <dx-select-box
+                    [items]="['inside', 'outside', 'none']"
+                    [(value)]="titlePosition"></dx-select-box>
+                </div>
+            </div>
+            <div class="option">
+                <div class="label">Show Resources:</div>
+                <div class="value">
+                    <dx-check-box                
+                    [(value)]="showResources"></dx-check-box>
+                </div>
+            </div>
         </div>
-        <div class="option">
-            <span>Title Position</span>
-            <dx-select-box
-                [items]="['inside', 'outside', 'none']"
-                [(value)]="titlePosition"></dx-select-box>
-        </div>
-        <div class="option">
-            <dx-check-box
-                text="Show Resources"
-                [(value)]="showResources"></dx-check-box>
-        </div>
-        <div class="option">
-            <dx-check-box
-                text="Customize Task Tooltip"
-                [value]="true"
-                (onValueChanged)="onShowCustomTaskTooltip($event)"></dx-check-box>
+        <div class="column">
+            <div class="option">
+                <div class="label">Start Date Range:</div>
+                <div class="value">
+                    <dx-date-box
+                        [(value)]="startDateRange"
+                        type="date">
+                    </dx-date-box>
+                </div>
+            </div>
+            <div class="option">
+                <div class="label">End Date Range:</div>
+                <div class="value">
+                    <dx-date-box
+                        [(value)]="endDateRange"
+                        type="date">
+                    </dx-date-box>
+                </div>
+            </div>
+            <div class="option">
+                <div class="label">Customize Task Tooltip:</div>
+                <div class="value">
+                    <dx-check-box
+                    [(value)]="showCustomTaskTooltip"></dx-check-box>
+                </div>
+            </div>  
         </div>
     </div>
     <div class="widget-container">
@@ -32,8 +61,11 @@
             [taskTitlePosition]="titlePosition"
             [scaleType]="scaleType"
             [showResources]="showResources"
-            [taskTooltipContentTemplate]="taskTooltipContentTemplate">
-
+            [taskTooltipContentTemplate]="showCustomTaskTooltip ? 'taskTooltipContentTemplate' : undefined"
+            [startDateRange]="startDateRange"
+            [endDateRange]="endDateRange"
+            >
+            
             <dxo-tasks [dataSource]="tasks"></dxo-tasks>
             <dxo-dependencies [dataSource]="dependencies"></dxo-dependencies>
             <dxo-resources [dataSource]="resources"></dxo-resources>
@@ -44,6 +76,11 @@
             <dxi-column dataField="end" caption="End Date" dataType="date"></dxi-column>
 
             <dxo-editing [enabled]="true"></dxo-editing>
+            <div *dxTemplate="let task of 'taskTooltipContentTemplate'" class="custom-task-edit-tooltip">
+                <div class="custom-tooltip-title">{{task.title}}</div>
+                <div class="custom-tooltip-row"><span> Estimate: </span>{{getTimeEstimate(task)}}<span> hours </span></div>
+                <div class="custom-tooltip-row"><span> Left: </span>{{getTimeLeft(task)}}<span> hours </span></div>
+            </div>
         </dx-gantt>
     </div>
 </div>

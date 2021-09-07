@@ -1,7 +1,5 @@
 <template>
-  <div :class="markDataCell(cellData)">
-    {{ cellData.text }}
-  </div>
+  <div :class="markDataCell(cellData)"/>
 </template>
 <script>
 import Utils from './utils.js';
@@ -10,20 +8,20 @@ export default {
   props: {
     cellData: {
       type: Object,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
   methods: {
     markDataCell(cellData) {
       const date = cellData.startDate;
       const isDisableDate = Utils.isHoliday(date) || Utils.isWeekend(date);
-      const isDinner = Utils.isDinner(date);
+      const isDinner = !isDisableDate && Utils.isDinner(date);
 
       return {
         'disable-date': isDisableDate,
-        'dinner': isDinner
+        dinner: isDinner,
       };
-    }
-  }
+    },
+  },
 };
 </script>

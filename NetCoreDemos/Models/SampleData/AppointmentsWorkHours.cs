@@ -4,86 +4,76 @@ using System.Linq;
 
 namespace DevExtreme.NETCore.Demos.Models.SampleData {
     public partial class SampleData {
-        public static readonly IEnumerable<Appointment> AppointmentsWorkHours = new[] {
-            new Appointment {
+        public static readonly IEnumerable<DisableDatesAppointment> AppointmentsWorkHours = new[] {
+            new DisableDatesAppointment {
                 Text = "Website Re-Design Plan",
-                StartDate = "2021-05-24T16:30:00.000Z",
-                EndDate = "2021-05-24T18:30:00.000Z"
+                StartDate = new DateTime(2021, 4, 26, 9, 30, 0),
+                EndDate = new DateTime(2021, 4, 26, 11, 30, 0)
             },
-            new Appointment {
+            new DisableDatesAppointment {
                 Text = "Install New Router in Dev Room",
-                StartDate = "2021-05-24T20:00:00.000Z",
-                EndDate = "2021-05-24T21:00:00.000Z",
-                AllDay = false
+                StartDate = new DateTime(2021, 4, 26, 13, 0, 0),
+                EndDate = new DateTime(2021, 4, 26, 14, 0, 0)
             },
-            new Appointment {
+            new DisableDatesAppointment {
                 Text = "Approve Personal Computer Upgrade Plan",
-                StartDate = "2021-05-25T17:00:00.000Z",
-                EndDate = "2021-05-25T18:00:00.000Z"
+                StartDate = new DateTime(2021, 4, 27, 10, 0, 0),
+                EndDate = new DateTime(2021, 4, 27, 11, 0, 0)
             },
-            new Appointment {
+            new DisableDatesAppointment {
                 Text = "Final Budget Review",
-                StartDate = "2021-05-25T20:30:00.000Z",
-                EndDate = "2021-05-25T22:00:00.000Z",
-                AllDay = false
+                StartDate = new DateTime(2021, 4, 27, 13, 30, 0),
+                EndDate = new DateTime(2021, 4, 27, 15, 0, 0)
             },
-            new Appointment {
+            new DisableDatesAppointment {
                 Text = "New Brochures",
-                StartDate = "2021-05-24T22:00:00.000Z",
-                EndDate = "2021-05-24T23:15:00.000Z",
-                AllDay = false
+                StartDate = new DateTime(2021, 4, 26, 15, 0, 0),
+                EndDate = new DateTime(2021, 4, 26, 16, 15, 0)
             },
-            new Appointment {
+            new DisableDatesAppointment {
                 Text = "Install New Database",
-                StartDate = "2021-05-26T16:45:00.000Z",
-                EndDate = "2021-05-26T19:00:00.000Z"
+                StartDate = new DateTime(2021, 4, 28, 9, 45, 0),
+                EndDate = new DateTime(2021, 4, 28, 12, 0, 0)
             },
-            new Appointment {
+            new DisableDatesAppointment {
                 Text = "Approve New Online Marketing Strategy",
-                StartDate = "2021-05-26T21:30:00.000Z",
-                EndDate = "2021-05-26T23:30:00.000Z",
-                AllDay = false
+                StartDate = new DateTime(2021, 4, 28, 14, 30, 0),
+                EndDate = new DateTime(2021, 4, 28, 16, 30, 0)
             },
-            new Appointment {
+            new DisableDatesAppointment {
                 Text = "Upgrade Personal Computers",
-                StartDate = "2021-05-25T22:30:00.000Z",
-                EndDate = "2021-05-25T23:45:00.000Z",
-                AllDay = false
+                StartDate = new DateTime(2021, 4, 27, 15, 30, 0),
+                EndDate = new DateTime(2021, 4, 27, 16, 45, 0)
             },
-            new Appointment {
+            new DisableDatesAppointment {
                 Text = "Prepare 2021 Marketing Plan",
-                StartDate = "2021-05-31T20:00:00.000Z",
-                EndDate = "2021-05-31T22:00:00.000Z",
-                AllDay = false
+                StartDate = new DateTime(2021, 5, 3, 13, 0, 0),
+                EndDate = new DateTime(2021, 5, 3, 15, 0, 0)
             },
-            new Appointment {
+            new DisableDatesAppointment {
                 Text = "Brochure Design Review",
-                StartDate = "2021-06-01T22:30:00.000Z",
-                EndDate = "2021-06-02T00:00:00.000Z",
-                AllDay = false
+                StartDate = new DateTime(2021, 5, 4, 15, 30, 0),
+                EndDate = new DateTime(2021, 5, 5, 0, 0, 0)
             },
-            new Appointment {
+            new DisableDatesAppointment {
                 Text = "Create Icons for Website",
-                StartDate = "2021-05-28T17:00:00.000Z",
-                EndDate = "2021-05-28T19:00:00.000Z"
+                StartDate = new DateTime(2021, 4, 30, 10, 0, 0),
+                EndDate = new DateTime(2021, 4, 30, 12, 0, 0)
             },
-            new Appointment {
+            new DisableDatesAppointment {
                 Text = "Upgrade Server Hardware",
-                StartDate = "2021-05-28T23:30:00.000Z",
-                EndDate = "2021-05-29T01:00:00.000Z",
-                AllDay = false
+                StartDate = new DateTime(2021, 4, 30, 16, 30, 0),
+                EndDate = new DateTime(2021, 4, 30, 18, 0, 0)
             },
-            new Appointment {
+            new DisableDatesAppointment {
                 Text = "Submit New Website Design",
-                StartDate = "2021-06-02T17:00:00.000Z",
-                EndDate = "2021-06-02T18:30:00.000Z",
-                AllDay = false
+                StartDate = new DateTime(2021, 5, 5, 10, 0, 0),
+                EndDate = new DateTime(2021, 5, 5, 11, 30, 0)
             },
-            new Appointment {
+            new DisableDatesAppointment {
                 Text = "Launch New Website",
-                StartDate = "2021-05-28T21:30:00.000Z",
-                EndDate = "2021-05-28T23:10:00.000Z",
-                AllDay = false
+                StartDate = new DateTime(2021, 4, 30, 14, 30, 0),
+                EndDate = new DateTime(2021, 4, 30, 16, 10, 0)
             }
         };
     }

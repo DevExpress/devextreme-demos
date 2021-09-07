@@ -1,5 +1,7 @@
-﻿import React from 'react';
-import DataGrid, { Column, Editing, Grouping, GroupPanel, Pager, Paging, ColumnChooser } from 'devextreme-react/data-grid';
+import React from 'react';
+import DataGrid, {
+  Column, Editing, Grouping, GroupPanel, Pager, Paging, ColumnChooser,
+} from 'devextreme-react/data-grid';
 
 import service from './data.js';
 
@@ -8,12 +10,14 @@ class App extends React.Component {
     super(props);
     this.dataSource = service.getOrders();
   }
+
   render() {
     return (
       <div>
         <DataGrid
           id="gridContainer"
           dataSource={this.dataSource}
+          keyExpr="ID"
           columnHidingEnabled={true}
           showBorders={true}>
           <Editing allowAdding={true} allowUpdating={true} mode="batch" />

@@ -51,21 +51,21 @@ import DxScheduler, { DxResource, DxView } from 'devextreme-vue/scheduler';
 import DateCell from './DateCell.vue';
 import { data, priorityData, typeData } from './data.js';
 
-const currentDate = new Date(2021, 4, 25);
+const currentDate = new Date(2021, 3, 27);
 
 export default {
   components: {
     DxScheduler,
     DxResource,
     DateCell,
-    DxView
+    DxView,
   },
   data() {
     return {
-      currentDate: currentDate,
+      currentDate,
       dataSource: data,
-      priorityData: priorityData,
-      typeData: typeData,
+      priorityData,
+      typeData,
       typeGroups: ['typeId'],
       priorityGroups: ['priorityId'],
     };

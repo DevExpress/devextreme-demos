@@ -2,6 +2,7 @@
   <DxDataGrid
     id="grid"
     :data-source="countries"
+    key-expr="ID"
     :column-auto-width="true"
     :allow-column-reordering="true"
     :show-borders="true"
@@ -67,17 +68,17 @@ export default {
   components: {
     DxDataGrid,
     DxColumn,
-    DxColumnChooser
+    DxColumnChooser,
   },
   data() {
     return {
-      countries: countries,
+      countries,
       gdpFormat: {
         type: 'percent',
-        precision: 1
-      }
+        precision: 1,
+      },
     };
-  }
+  },
 };
 </script>
 

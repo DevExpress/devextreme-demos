@@ -7,6 +7,8 @@
     >
       <DxEditing
         :allow-updating="true"
+        :allow-adding="true"
+        :allow-deleting="true"
         :select-text-on-edit-start="selectTextOnEditStart"
         :start-edit-action="startEditAction"
         mode="batch"
@@ -67,7 +69,7 @@ import {
   DxColumn,
   DxPaging,
   DxEditing,
-  DxLookup
+  DxLookup,
 } from 'devextreme-vue/data-grid';
 import DxSelectBox from 'devextreme-vue/select-box';
 import DxCheckBox from 'devextreme-vue/check-box';
@@ -81,16 +83,16 @@ export default {
     DxEditing,
     DxLookup,
     DxCheckBox,
-    DxSelectBox
+    DxSelectBox,
   },
   data() {
     return {
       dataSource: employees,
-      states: states,
+      states,
       selectTextOnEditStart: true,
-      startEditAction: 'click'
+      startEditAction: 'click',
     };
-  }
+  },
 };
 </script>
 <style>
@@ -111,6 +113,8 @@ export default {
 
 .option {
     margin-top: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .option > span {

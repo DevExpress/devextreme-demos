@@ -1,9 +1,9 @@
-﻿import React from 'react';
+import React from 'react';
 
 import DataGrid, {
   Column,
   Sorting,
-  Paging
+  Paging,
 } from 'devextreme-react/data-grid';
 import service from './data.js';
 import DiffCell from './DiffCell.js';
@@ -14,10 +14,12 @@ class App extends React.Component {
     super(props);
     this.dataSource = service.getWeekData();
   }
+
   render() {
     return (
       <DataGrid id="gridContainer"
         dataSource={this.dataSource}
+        keyExpr="date"
         showRowLines={true}
         showColumnLines={false}
         showBorders={true}>

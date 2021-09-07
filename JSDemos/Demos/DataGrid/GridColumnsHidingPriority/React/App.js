@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import DataGrid, { Column } from 'devextreme-react/data-grid';
 
 import service from './data.js';
@@ -8,12 +8,14 @@ class App extends React.Component {
     super(props);
     this.dataSource = service.getOrders();
   }
+
   render() {
     return (
       <div>
         <DataGrid
           id="gridContainer"
           dataSource={this.dataSource}
+          keyExpr="ID"
           showBorders={true}>
           <Column dataField="OrderNumber" width={130} caption="Invoice Number" />
           <Column dataField="CustomerStoreCity" caption="City" hidingPriority={0} />

@@ -1,5 +1,5 @@
 ﻿@(Html.DevExtreme().DataGrid()
     .ID("gridContainer")
-    .DataSource(d => d.WebApi().Controller("DataGridColumns"))
+    .DataSource(d => d.WebApi().Controller("DataGridColumns").Key("OrderNumber"))
     .ShowBorders(true)
 )

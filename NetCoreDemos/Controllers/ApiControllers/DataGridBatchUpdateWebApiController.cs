@@ -25,7 +25,7 @@ namespace DevExtreme.NETCore.Demos.Controllers.ApiControllers {
         }
 
         [HttpPost]
-        public object Batch(List<DataChange> changes) {
+        public object Batch([FromBody] List<DataChange> changes) {
             foreach(var change in changes) {
                 Order order;
 

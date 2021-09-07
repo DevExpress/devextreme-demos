@@ -80,7 +80,7 @@
         .HoverStateEnabled(true)
         .Paging(p => p.PageSize(10))
         .FilterRow(f => f.Visible(true))
-        .Scrolling(s => s.Mode(GridScrollingMode.Infinite))
+        .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
         .Height(345)
         .Selection(s => s.Mode(SelectionMode.Multiple))
         .SelectedRowKeys(new JS(@"component.option(""value"")"))

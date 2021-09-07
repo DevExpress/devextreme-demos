@@ -33,14 +33,6 @@
             )
         </div>
         <div class="option">
-            <div>Submenu Direction</div>
-            @(Html.DevExtreme().SelectBox()
-                .DataSource(new[] { "auto", "rightOrBottom", "leftOrTop" })
-                .Value("auto")
-                .OnValueChanged("menuDirection_changed")
-            )
-        </div>
-        <div class="option">
             @(Html.DevExtreme().CheckBox()
                 .Value(false)
                 .Text("Hide Submenu on Mouse Leave")
@@ -79,10 +71,6 @@
 
     function menuOrientation_changed(data) {
         getMenuInstance().option("orientation", data.value);
-    }
-
-    function menuDirection_changed(data) {
-        getMenuInstance().option("submenuDirection", data.value);
     }
 
     function checkBoxValue_changed(data) {

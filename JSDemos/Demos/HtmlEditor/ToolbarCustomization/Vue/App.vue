@@ -4,24 +4,24 @@
       v-model:value="value"
     >
       <DxToolbar>
-        <DxItem format-name="undo"/>
-        <DxItem format-name="redo"/>
-        <DxItem format-name="separator"/>
+        <DxItem name="undo"/>
+        <DxItem name="redo"/>
+        <DxItem name="separator"/>
         <DxItem
-          :format-values="headerValues"
-          format-name="header"
+          :accepted-values="headerValues"
+          name="header"
         />
-        <DxItem format-name="separator"/>
-        <DxItem format-name="bold"/>
-        <DxItem format-name="italic"/>
-        <DxItem format-name="strike"/>
-        <DxItem format-name="underline"/>
-        <DxItem format-name="separator"/>
-        <DxItem format-name="alignLeft"/>
-        <DxItem format-name="alignCenter"/>
-        <DxItem format-name="alignRight"/>
-        <DxItem format-name="alignJustify"/>
-        <DxItem format-name="separator"/>
+        <DxItem name="separator"/>
+        <DxItem name="bold"/>
+        <DxItem name="italic"/>
+        <DxItem name="strike"/>
+        <DxItem name="underline"/>
+        <DxItem name="separator"/>
+        <DxItem name="alignLeft"/>
+        <DxItem name="alignCenter"/>
+        <DxItem name="alignRight"/>
+        <DxItem name="alignJustify"/>
+        <DxItem name="separator"/>
         <DxItem
           :options="toolbarButtonOptions"
           widget="dxButton"
@@ -42,7 +42,7 @@
 import {
   DxHtmlEditor,
   DxToolbar,
-  DxItem
+  DxItem,
 } from 'devextreme-vue/html-editor';
 import { DxPopup } from './devextreme-vue/popup';
 import { markup } from './data.js';
@@ -52,7 +52,7 @@ export default {
     DxHtmlEditor,
     DxToolbar,
     DxItem,
-    DxPopup
+    DxPopup,
   },
   data() {
     return {
@@ -66,10 +66,10 @@ export default {
         stylingMode: 'text',
         onClick: () => {
           this.popupVisible = true;
-        }
-      }
+        },
+      },
     };
-  }
+  },
 };
 </script>
 <style>

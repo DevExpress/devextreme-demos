@@ -19,7 +19,7 @@ if(!/localhost/.test(document.location.host)) {
 })
 export class AppComponent {
     dataSource: DataSource;
-    currentDate = new Date(2021, 4, 25);
+    currentDate = new Date(2021, 3, 27);
     views = ["workWeek", "month"];
     currentView = this.views[0];
 
@@ -69,6 +69,10 @@ export class AppComponent {
     isWeekend(date: Date) {
         const day = date.getDay();
         return day === 0 || day === 6;
+    }
+
+    isDisableDate(date: Date) {
+        return this.isHoliday(date) || this.isWeekend(date);
     }
 
     isDinner(date: Date) {
