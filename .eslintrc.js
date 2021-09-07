@@ -309,7 +309,6 @@ module.exports = {
     'no-underscore-dangle': 0,
     'import/no-webpack-loader-syntax': 0,
     'import/no-unresolved': 0,
-    'no-bitwise': 0,
   },
   extends: [
     'eslint:recommended',
@@ -518,6 +517,11 @@ module.exports = {
         'singleline': 'never',
         multiline: 'always',
       }],
+    },
+  }, {
+    files: ['**/UpdateBarGaugeDataAtRuntime/**/*.*'],
+    rules: {
+      'no-bitwise': 0,
     },
   }],
 };
