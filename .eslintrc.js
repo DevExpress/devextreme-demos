@@ -281,7 +281,6 @@ module.exports = {
     'no-var': 0, // TODO error (was error)
     'vars-on-top': 0, // TODO error (was error)
     'no-unused-expressions': 0, // TODO error (was error)
-    'eqeqeq': 0, // TODO error (was error)
     'no-plusplus': 0, // TODO error (was error)
     'no-param-reassign': 0, // TODO error (was error)
     'no-return-assign': 0, // TODO error (was error)
@@ -300,7 +299,6 @@ module.exports = {
     'prefer-rest-params': 0, // TODO error (was error)
     'prefer-spread': 0, // TODO error (was error)
     'import/order': 0, // TODO error (was error)
-    'no-restricted-properties': 0,
     'import/no-webpack-loader-syntax': 0,
     'import/no-unresolved': 0,
   },
