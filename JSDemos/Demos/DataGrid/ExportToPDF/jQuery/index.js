@@ -56,6 +56,7 @@ $(() => {
             icon: 'exportpdf',
             text: 'Export to PDF',
             onClick() {
+              // eslint-disable-next-line new-cap
               const doc = new jsPDF();
               DevExpress.pdfExporter.exportDataGrid({
                 jsPDFDocument: doc,
