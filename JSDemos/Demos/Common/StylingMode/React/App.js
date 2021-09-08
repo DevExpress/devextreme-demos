@@ -34,7 +34,7 @@ class App extends React.Component {
       <React.Fragment>
         <div className="title">Edit Task</div>
         <div className="editors">
-          <div class="editors-container">
+          <div className="editors-container">
             <div className="left">
               <TextBox
                 stylingMode={this.state.stylingMode}
