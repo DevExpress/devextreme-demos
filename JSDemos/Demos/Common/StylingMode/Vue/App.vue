@@ -125,10 +125,17 @@ export default {
     margin-right: 320px;
 }
 
-.editors .left, .editors .right {
+.editors .left {
     display: inline-block;
     width: 49%;
     padding-right: 20px;
+    box-sizing: border-box;
+}
+
+.editors .right {
+    display: inline-block;
+    width: 49%;
+    padding-right: 27px;
     box-sizing: border-box;
 }
 
@@ -166,6 +173,6 @@ export default {
 .editors-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 </style>
