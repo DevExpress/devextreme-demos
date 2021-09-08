@@ -293,7 +293,6 @@ module.exports = {
     'no-throw-literal': 0, // TODO error (was error)
     'prefer-const': 0, // TODO error (was error)
     'no-mixed-operators': 0, // TODO error (was error)
-    'radix': 0, // TODO error (was error)
     'no-void': 0, // TODO error (was error)
     'prefer-rest-params': 0, // TODO error (was error)
     'import/order': 0, // TODO error (was error)
