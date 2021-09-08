@@ -233,7 +233,7 @@ testUtils.importAnd(() => 'devextreme/ui/tree_list', () => DevExpress.ui.dxTreeL
     },
   });
 
-  let option = instance.option;
+  const option = instance.option;
   instance.option = function () {
     if (arguments.length === 1) {
       return option.apply(this, arguments);
