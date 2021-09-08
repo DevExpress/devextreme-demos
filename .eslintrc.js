@@ -344,6 +344,9 @@ module.exports = {
     extends: [
       'plugin:react/recommended',
     ],
+    plugins: [
+      'react-perf',
+    ],
     globals: {
       System: false,
       AzureGateway: false,
@@ -434,6 +437,18 @@ module.exports = {
         'error',
         {
           enforceDynamicLinks: 'never',
+        },
+      ],
+      'react-perf/jsx-no-new-object-as-prop': [
+        'error',
+        {
+          nativeAllowList: 'all',
+        },
+      ],
+      'react-perf/jsx-no-new-array-as-prop': [
+        'error',
+        {
+          nativeAllowList: 'all',
         },
       ],
     },
