@@ -1,11 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
 import DataGrid, { Column, Editing, Paging, RequiredRule, RangeRule, Lookup } from 'devextreme-react/data-grid';
-=======
-import DataGrid, {
-  Column, Editing, Paging, RequiredRule, RangeRule,
-} from 'devextreme-react/data-grid';
->>>>>>> d49217665d389c609302de8080af2870fad3d12b
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
 class Grid extends React.Component {

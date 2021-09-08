@@ -9,13 +9,7 @@ class App extends React.Component {
   render() {
     return (
       <DataGrid
-<<<<<<< HEAD
         height={440}
-=======
-        elementAttr ={{
-          id: 'gridContainer',
-        }}
->>>>>>> d49217665d389c609302de8080af2870fad3d12b
         dataSource={dataSource}
         keyExpr="id"
         showBorders={true}
