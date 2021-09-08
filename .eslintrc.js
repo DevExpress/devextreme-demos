@@ -288,7 +288,6 @@ module.exports = {
     'no-shadow': 0, // TODO error (was error)
     'prefer-destructuring': 0, // TODO error (was error)
     'default-case': 0, // TODO error (was error)
-    'no-sequences': 0, // TODO error (was error)
     'consistent-return': 0, // TODO error (was error)
     'no-throw-literal': 0, // TODO error (was error)
     'prefer-const': 0, // TODO error (was error)
