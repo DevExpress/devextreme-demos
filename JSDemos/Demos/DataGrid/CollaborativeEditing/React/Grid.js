@@ -1,6 +1,6 @@
 import React from 'react';
 import DataGrid, {
-  Column, Editing, Paging, RequiredRule, RangeRule, Lookup
+  Column, Editing, Paging, RequiredRule, RangeRule, Lookup,
 } from 'devextreme-react/data-grid';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
