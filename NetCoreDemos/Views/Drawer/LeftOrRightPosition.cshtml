@@ -47,32 +47,34 @@
 </div>
 <div class="options">
     <div class="caption">Options</div>
-    <div class="option">
-        <label>Opened state mode</label>
-        @(Html.DevExtreme().RadioGroup()
-            .Items(showModes)
-            .Value(showModes[1])
-            .Layout(Orientation.Horizontal)
-            .OnValueChanged("showMode_valueChanged")
-        )
-    </div>
-    <div class="option">
-        <label>Position</label>
-        @(Html.DevExtreme().RadioGroup()
-            .Items(positionModes)
-            .Value(positionModes[0])
-            .Layout(Orientation.Horizontal)
-            .OnValueChanged("position_valueChanged")
-        )
-    </div>
-    <div id="revealMode" class="option">
-        <label>Reveal mode</label>
-        @(Html.DevExtreme().RadioGroup()
-            .Items(showSubmenuModes)
-            .Value(showSubmenuModes[0])
-            .Layout(Orientation.Horizontal)
-            .OnValueChanged("submenuMode_valueChanged")
-        )
+    <div class="options-container">
+        <div class="option">
+            <label>Opened state mode</label>
+            @(Html.DevExtreme().RadioGroup()
+                .Items(showModes)
+                .Value(showModes[1])
+                .Layout(Orientation.Horizontal)
+                .OnValueChanged("showMode_valueChanged")
+            )
+        </div>
+        <div class="option">
+            <label>Position</label>
+            @(Html.DevExtreme().RadioGroup()
+                .Items(positionModes)
+                .Value(positionModes[0])
+                .Layout(Orientation.Horizontal)
+                .OnValueChanged("position_valueChanged")
+            )
+        </div>
+        <div id="revealMode" class="option">
+            <label>Reveal mode</label>
+            @(Html.DevExtreme().RadioGroup()
+                .Items(showSubmenuModes)
+                .Value(showSubmenuModes[0])
+                .Layout(Orientation.Horizontal)
+                .OnValueChanged("submenuMode_valueChanged")
+            )
+        </div>
     </div>
 </div>
 

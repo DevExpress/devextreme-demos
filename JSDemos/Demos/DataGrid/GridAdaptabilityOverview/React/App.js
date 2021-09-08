@@ -1,13 +1,18 @@
-﻿import React from 'react';
-import DataGrid, { Column, Editing, Grouping, GroupPanel, Pager, Paging, ColumnChooser } from 'devextreme-react/data-grid';
+import React from 'react';
+import DataGrid, {
+  Column, Editing, Grouping, GroupPanel, Pager, Paging, ColumnChooser,
+} from 'devextreme-react/data-grid';
 
 import service from './data.js';
+
+const allowedPageSizes = [5, 8, 15, 30];
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.dataSource = service.getOrders();
   }
+
   render() {
     return (
       <div>
@@ -21,7 +26,7 @@ class App extends React.Component {
           <Grouping contextMenuEnabled={true} expandMode="rowClick" />
           <GroupPanel visible={true} emptyPanelText="Use the context menu of header columns to group data" />
           <Pager
-            allowedPageSizes={[5, 8, 15, 30]}
+            allowedPageSizes={allowedPageSizes}
             showInfo={true}
             showNavigationButtons={true}
             showPageSizeSelector={true}

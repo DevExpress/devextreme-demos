@@ -38,33 +38,43 @@
       <div class="options-container">
         <div class="option">
           <span>Show Check Boxes Mode:</span>
-          <DxSelectBox
-            :items="showCheckBoxesModes"
-            v-model:value="showCheckBoxesModeValue"
-            @value-changed="showCheckBoxesModeValueChanged"
-          />
+          <div class="editor-container">
+            <DxSelectBox
+              :items="showCheckBoxesModes"
+              v-model:value="showCheckBoxesModeValue"
+              @value-changed="showCheckBoxesModeValueChanged"
+            />
+          </div>
         </div>
         <div class="option">
           <span>Selection Mode:</span>
-          <DxSelectBox
-            :items="selectionModes"
-            v-model:value="selectionModeValue"
-            :disabled="isSelectionModeDisabled"
-            @value-changed="selectionModeValueChanged"
-          />
+          <div class="editor-container">
+            <DxSelectBox
+              :items="selectionModes"
+              v-model:value="selectionModeValue"
+              :disabled="isSelectionModeDisabled"
+              @value-changed="selectionModeValueChanged"
+            />
+          </div>
         </div>
-        <div class="option option-checkbox">
-          <DxCheckBox
-            text="Select Nodes Recursive"
-            :disabled="isRecursiveDisabled"
-            v-model:value="selectNodesRecursiveValue"
-          />
+        <div class="option">
+          <div class="caption-placeholder">&nbsp;</div>
+          <div class="editor-container">
+            <DxCheckBox
+              text="Select Nodes Recursive"
+              :disabled="isRecursiveDisabled"
+              v-model:value="selectNodesRecursiveValue"
+            />
+          </div>
         </div>
-        <div class="option option-checkbox">
-          <DxCheckBox
-            text="Select By Click"
-            v-model:value="selectByClickValue"
-          />
+        <div class="option">
+          <div class="caption-placeholder">&nbsp;</div>
+          <div class="editor-container">
+            <DxCheckBox
+              text="Select By Click"
+              v-model:value="selectByClickValue"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -85,7 +95,7 @@ export default {
     DxTreeView,
     DxList,
     DxSelectBox,
-    DxCheckBox
+    DxCheckBox,
   },
   data() {
     const selectionModes = ['multiple', 'single'];
@@ -101,13 +111,13 @@ export default {
       isRecursiveDisabled: false,
       selectNodesRecursiveValue: true,
       selectByClickValue: false,
-      treeViewRef
+      treeViewRef,
     };
   },
   computed: {
-    treeView: function() {
+    treeView() {
       return this.$refs[treeViewRef].instance;
-    }
+    },
   },
   methods: {
     treeViewSelectionChanged(e) {
@@ -126,7 +136,7 @@ export default {
     },
 
     showCheckBoxesModeValueChanged(e) {
-      if(e.value === 'selectAll') {
+      if (e.value === 'selectAll') {
         this.selectionModeValue = 'multiple';
         this.isRecursiveDisabled = false;
       }
@@ -134,13 +144,13 @@ export default {
     },
 
     selectionModeValueChanged(e) {
-      if(e.value === 'single') {
+      if (e.value === 'single') {
         this.selectNodesRecursiveValue = false;
         this.treeView.unselectAll();
       }
       this.isRecursiveDisabled = e.value === 'single';
     },
-  }
+  },
 };
 </script>
 <style scoped>
@@ -184,18 +194,31 @@ export default {
 
 .option {
     width: 24%;
-    display: inline-block;
     margin-top: 10px;
+    margin-right: 9px;
     box-sizing: border-box;
-}
-
-.option-checkbox {
-    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .options-container {
     display: flex;
-    align-items: flex-end;
     justify-content: space-between;
+    align-items: stretch;
+}
+
+.editor-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.editor-container>*{
+  width: 100%;
+}
+
+.option:last-of-type {
+    margin-right: 0px;
 }
 </style>

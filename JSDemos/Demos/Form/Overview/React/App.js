@@ -1,9 +1,13 @@
-﻿import React from 'react';
+import React from 'react';
 import CheckBox from 'devextreme-react/check-box';
 import SelectBox from 'devextreme-react/select-box';
 import NumberBox from 'devextreme-react/number-box';
 import Form from 'devextreme-react/form';
 import service from './data.js';
+
+const labelLocations = ['left', 'top'];
+const columnsCount = ['auto', 1, 2, 3];
+const minColumnWidths = [150, 200, 300];
 
 class App extends React.Component {
   constructor() {
@@ -15,7 +19,7 @@ class App extends React.Component {
       showColon: true,
       minColWidth: 300,
       colCount: 2,
-      company: this.companies[0]
+      company: this.companies[0],
     };
     this.onCompanyChanged = this.onCompanyChanged.bind(this);
     this.onLabelLocationChanged = this.onLabelLocationChanged.bind(this);
@@ -34,7 +38,7 @@ class App extends React.Component {
       minColWidth,
       colCount,
       company,
-      width
+      width,
     } = this.state;
     return (
       <div id="form-demo">
@@ -62,7 +66,7 @@ class App extends React.Component {
           <div className="option">
             <span>Label location:</span>
             <SelectBox
-              items={['left', 'top']}
+              items={labelLocations}
               value={labelLocation}
               onValueChanged={this.onLabelLocationChanged}
             />
@@ -70,7 +74,7 @@ class App extends React.Component {
           <div className="option">
             <span>Columns count:</span>
             <SelectBox
-              items={['auto', 1, 2, 3]}
+              items={columnsCount}
               value={colCount}
               onValueChanged={this.onColumnsCountChanged}
             />
@@ -78,7 +82,7 @@ class App extends React.Component {
           <div className="option">
             <span>Min column width:</span>
             <SelectBox
-              items={[150, 200, 300]}
+              items={minColumnWidths}
               value={minColWidth}
               onValueChanged={this.onMinColWidthChanged}
             />
@@ -112,43 +116,43 @@ class App extends React.Component {
 
   onCompanyChanged(e) {
     this.setState({
-      company: e.value
+      company: e.value,
     });
   }
 
   onLabelLocationChanged(e) {
     this.setState({
-      labelLocation: e.value
+      labelLocation: e.value,
     });
   }
 
   onReadOnlyChanged(e) {
     this.setState({
-      readOnly: e.value
+      readOnly: e.value,
     });
   }
 
   onShowColonChanged(e) {
     this.setState({
-      showColon: e.value
+      showColon: e.value,
     });
   }
 
   onMinColWidthChanged(e) {
     this.setState({
-      minColWidth: e.value
+      minColWidth: e.value,
     });
   }
 
   onColumnsCountChanged(e) {
     this.setState({
-      colCount: e.value
+      colCount: e.value,
     });
   }
 
   onFormWidthChanged(e) {
     this.setState({
-      width: e.value
+      width: e.value,
     });
   }
 }

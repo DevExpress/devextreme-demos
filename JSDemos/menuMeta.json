@@ -180,6 +180,7 @@
             "Title": "Cell Editing and Editing API",
             "Name": "CellEditingAndEditingAPI",
             "Widget": "DataGrid",
+            "Badge": "Updated",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/DataGridStatesLookupController.cs",
               "/Controllers/ApiControllers/DataGridEmployeesController.cs",
@@ -526,6 +527,7 @@
           {
             "Title": "Multiple Record Selection API",
             "Name": "MultipleRecordSelectionAPI",
+            "Badge": "Updated",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Models/SampleData/DataGridEmployees.cs"
@@ -696,6 +698,7 @@
           {
             "Title": "Toolbar Customization",
             "Name": "ToolbarCustomization",
+            "Badge": "Updated",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Models/Order.cs",
@@ -1103,7 +1106,6 @@
           {
             "Title": "State Persistence",
             "Name": "StatePersistence",
-            "DocUrl": "ApiReference/UI_Components/dxPivotGrid/Configuration/stateStoring/",
             "Widget": "PivotGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/PivotGridDataController.cs",
@@ -3361,6 +3363,7 @@
           {
             "Title": "Chart Appearance",
             "Name": "ChartAppearance",
+            "Badge": "Updated",
             "Widget": "Gantt",
             "DemoType": "Web",
             "WideDemo": true,
@@ -5226,7 +5229,6 @@
           {
             "Title": "Templates",
             "Name": "Templates",
-            "DocUrl": "Guide/UI_Components/Lookup/Customize_the_Appearance/Customize_Item_Appearance/",
             "Widget": "Lookup",
             "MvcAdditionalFiles": [
               "/Models/DataGrid/Employee.cs",

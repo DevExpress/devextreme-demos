@@ -1,13 +1,17 @@
-﻿import React from 'react';
+import React from 'react';
 
-import { Chart, CommonSeriesSettings, Legend, SeriesTemplate, Animation, ArgumentAxis, Tick, Title } from 'devextreme-react/chart';
+import {
+  Chart, CommonSeriesSettings, Legend, SeriesTemplate, Animation, ArgumentAxis, Tick, Title,
+} from 'devextreme-react/chart';
 import dataSource from './data.js';
+
+const axisCategories = ['Royal Houses'];
 
 class App extends React.Component {
   render() {
     return (
       <Chart id="chart" dataSource={dataSource} barGroupPadding={0.2} rotated={true}>
-        <ArgumentAxis categories={['Royal Houses']}>
+        <ArgumentAxis categories={axisCategories}>
           <Tick visible={false} />
         </ArgumentAxis>
         <Title text="The British Monarchy"

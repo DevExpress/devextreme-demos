@@ -1,7 +1,9 @@
-﻿import React from 'react';
+import React from 'react';
 import DropDownBox from 'devextreme-react/drop-down-box';
 import TreeView from 'devextreme-react/tree-view';
-import DataGrid, { Selection, Paging, FilterRow, Scrolling } from 'devextreme-react/data-grid';
+import DataGrid, {
+  Selection, Paging, FilterRow, Scrolling,
+} from 'devextreme-react/data-grid';
 import CustomStore from 'devextreme/data/custom_store';
 import 'whatwg-fetch';
 
@@ -17,14 +19,14 @@ class App extends React.Component {
       treeBoxValue: '1_1',
       gridBoxValue: [3],
       isGridBoxOpened: false,
-      isTreeBoxOpened: false
+      isTreeBoxOpened: false,
     };
-    this.treeView_itemSelectionChanged = this.treeView_itemSelectionChanged.bind(this);
+    this.treeViewItemSelectionChanged = this.treeViewItemSelectionChanged.bind(this);
     this.syncTreeViewSelection = this.syncTreeViewSelection.bind(this);
     this.syncDataGridSelection = this.syncDataGridSelection.bind(this);
-    this.dataGrid_onSelectionChanged = this.dataGrid_onSelectionChanged.bind(this);
+    this.dataGridOnSelectionChanged = this.dataGridOnSelectionChanged.bind(this);
     this.treeViewRender = this.treeViewRender.bind(this);
-    this.treeView_onContentReady = this.treeView_onContentReady.bind(this);
+    this.treeViewOnContentReady = this.treeViewOnContentReady.bind(this);
     this.dataGridRender = this.dataGridRender.bind(this);
     this.onGridBoxOpened = this.onGridBoxOpened.bind(this);
     this.onTreeBoxOpened = this.onTreeBoxOpened.bind(this);
@@ -35,10 +37,10 @@ class App extends React.Component {
     return new CustomStore({
       loadMode: 'raw',
       key: 'ID',
-      load: function() {
-        return fetch(`../../../../data/${ jsonFile}`)
-          .then(response => response.json());
-      }
+      load() {
+        return fetch(`../../../../data/${jsonFile}`)
+          .then((response) => response.json());
+      },
     });
   }
 
@@ -70,7 +72,7 @@ class App extends React.Component {
               opened={this.state.isGridBoxOpened}
               valueExpr="ID"
               deferRendering={false}
-              displayExpr={this.gridBox_displayExpr}
+              displayExpr={this.gridBoxDisplayExpr}
               placeholder="Select a value..."
               showClearButton={true}
               dataSource={this.gridDataSource}
@@ -94,9 +96,9 @@ class App extends React.Component {
         selectionMode="single"
         displayExpr="name"
         selectByClick={true}
-        onContentReady={this.treeView_onContentReady}
+        onContentReady={this.treeViewOnContentReady}
         onItemClick={this.onTreeItemClick}
-        onItemSelectionChanged={this.treeView_itemSelectionChanged}
+        onItemSelectionChanged={this.treeViewItemSelectionChanged}
       />
     );
   }
@@ -108,7 +110,7 @@ class App extends React.Component {
         columns={gridColumns}
         hoverStateEnabled={true}
         selectedRowKeys={this.state.gridBoxValue}
-        onSelectionChanged={this.dataGrid_onSelectionChanged}
+        onSelectionChanged={this.dataGridOnSelectionChanged}
         height="100%">
         <Selection mode="single" />
         <Scrolling mode="virtual" />
@@ -120,7 +122,7 @@ class App extends React.Component {
 
   syncTreeViewSelection(e) {
     this.setState({
-      treeBoxValue: e.value
+      treeBoxValue: e.value,
     });
     if (!this.treeView) return;
 
@@ -133,53 +135,52 @@ class App extends React.Component {
 
   syncDataGridSelection(e) {
     this.setState({
-      gridBoxValue: e.value
+      gridBoxValue: e.value,
     });
   }
 
-  treeView_itemSelectionChanged(e) {
+  treeViewItemSelectionChanged(e) {
     this.setState({
-      treeBoxValue: e.component.getSelectedNodeKeys()
+      treeBoxValue: e.component.getSelectedNodeKeys(),
     });
   }
 
-  dataGrid_onSelectionChanged(e) {
+  dataGridOnSelectionChanged(e) {
     this.setState({
       gridBoxValue: e.selectedRowKeys,
-      isGridBoxOpened: false
+      isGridBoxOpened: false,
     });
   }
 
-  gridBox_displayExpr(item) {
-    return item && `${item.CompanyName } <${ item.Phone }>`;
+  gridBoxDisplayExpr(item) {
+    return item && `${item.CompanyName} <${item.Phone}>`;
   }
 
-  treeView_onContentReady(e) {
+  treeViewOnContentReady(e) {
     e.component.selectItem(this.state.treeBoxValue);
   }
 
   onTreeItemClick() {
     this.setState({
-      isTreeBoxOpened: false
+      isTreeBoxOpened: false,
     });
   }
 
   onGridBoxOpened(e) {
-    if(e.name === 'opened') {
+    if (e.name === 'opened') {
       this.setState({
-        isGridBoxOpened: e.value
+        isGridBoxOpened: e.value,
       });
     }
   }
 
   onTreeBoxOpened(e) {
-    if(e.name === 'opened') {
+    if (e.name === 'opened') {
       this.setState({
-        isTreeBoxOpened: e.value
+        isTreeBoxOpened: e.value,
       });
     }
   }
-
 }
 
 export default App;

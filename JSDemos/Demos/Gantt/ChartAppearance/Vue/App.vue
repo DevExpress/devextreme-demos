@@ -2,31 +2,63 @@
   <div id="form-demo">
     <div class="options">
       <div class="caption">Options</div>
-      <div class="option">
-        <span>Scale Type</span>
-        <DxSelectBox
-          :items="['auto', 'minutes', 'hours', 'days', 'weeks', 'months', 'quarters', 'years']"
-          v-model:value="scaleType"
-        />
-      </div>
-      <div class="option">
-        <span>Title Position</span>
-        <DxSelectBox
-          :items="['inside', 'outside', 'none']"
-          v-model:value="taskTitlePosition"
-        />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="showResources"
-          text="Show Resources"
-        />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          text="Customize Task Tooltip"
-          v-model:value="showCustomTaskTooltip"
-        />
+      <div class="column">
+        <div class="option">
+          <div class="label">Scale Type:</div>{{ ' ' }}
+          <div class="value">
+            <DxSelectBox
+              :items="['auto', 'minutes', 'hours', 'days', 'weeks', 'months', 'quarters', 'years']"
+              v-model:value="scaleType"
+            />
+          </div>
+        </div>
+        <div class="option">
+          <div class="label">Title Position:</div>{{ ' ' }}
+          <div class="value">
+            <DxSelectBox
+              :items="['inside', 'outside', 'none']"
+              v-model:value="taskTitlePosition"
+            />
+          </div>
+        </div>
+        <div class="option">
+          <div class="label">Show Resources:</div>{{ ' ' }}
+          <div class="value">
+            <DxCheckBox
+              v-model:value="showResources"
+            />
+          </div>
+        </div>
+      </div>{{ ' ' }}
+      <div class="column">
+        <div class="option">
+          <div class="label">Start Date Range:</div>{{ ' ' }}
+          <div class="value">
+            <DxDateBox
+              v-model:value="startDateRange"
+              type="date"
+              apply-value-mode="useButtons"
+            />
+          </div>
+        </div>
+        <div class="option">
+          <div class="label">End Date Range:</div>{{ ' ' }}
+          <div class="value">
+            <DxDateBox
+              v-model:value="endDateRange"
+              type="date"
+              apply-value-mode="useButtons"
+            />
+          </div>
+        </div>
+        <div class="option">
+          <div class="label">Customize Task Tooltip:</div>{{ ' ' }}
+          <div class="value">
+            <DxCheckBox
+              v-model:value="showCustomTaskTooltip"
+            />
+          </div>
+        </div>
       </div>
     </div>
     <div class="widget-container">
@@ -36,6 +68,8 @@
         :task-title-position="taskTitlePosition"
         :scale-type="scaleType"
         :show-resources="showResources"
+        :start-date-range="startDateRange"
+        :end-date-range="endDateRange"
         :task-tooltip-content-template="showCustomTaskTooltip ? 'taskTooltipContentTemplate' : ''"
       >
 
@@ -78,16 +112,17 @@ import {
   DxResources,
   DxResourceAssignments,
   DxColumn,
-  DxEditing
+  DxEditing,
 } from 'devextreme-vue/gantt';
 import DxCheckBox from 'devextreme-vue/check-box';
 import DxSelectBox from 'devextreme-vue/select-box';
+import DxDateBox from 'devextreme-vue/date-box';
 
 import {
   tasks,
   dependencies,
   resources,
-  resourceAssignments
+  resourceAssignments,
 } from './data.js';
 
 export default {
@@ -100,18 +135,21 @@ export default {
     DxColumn,
     DxEditing,
     DxCheckBox,
-    DxSelectBox
+    DxSelectBox,
+    DxDateBox,
   },
   data() {
     return {
-      tasks: tasks,
-      dependencies: dependencies,
-      resources: resources,
-      resourceAssignments: resourceAssignments,
+      tasks,
+      dependencies,
+      resources,
+      resourceAssignments,
       scaleType: 'months',
       taskTitlePosition: 'outside',
       showResources: true,
-      showCustomTaskTooltip: true
+      showCustomTaskTooltip: true,
+      startDateRange: new Date(2018, 11, 1),
+      endDateRange: new Date(2019, 11, 1),
     };
   },
   methods: {
@@ -121,35 +159,48 @@ export default {
     getTimeLeft(task) {
       const timeEstimate = Math.abs(task.start - task.end) / 36e5;
       return Math.floor((100 - task.progress) / 100 * timeEstimate);
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
   #gantt {
-    height: 700px;
+      height: 700px;
   }
 
   .options {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: rgba(191, 191, 191, 0.15);
-    position: relative;
+      margin-bottom: 20px;
+      background-color: rgba(191, 191, 191, 0.15);
   }
 
   .caption {
-    font-size: 18px;
-    font-weight: 500;
+      font-size: 18px;
+      font-weight: 500;
+  }
+
+  .column {
+      width: 40%;
+      display: inline-block;
+      margin: 15px 3%;
+      text-align: left;
+      vertical-align: top;
   }
 
   .option {
-    margin-top: 10px;
-    margin-right: 44px;
-    display: inline-block;
+      padding: 5px 0;
   }
 
-  .option:last-child {
-    margin-right: 0;
+  .label, .value {
+      display: inline-block;
+      vertical-align: middle;
+  }
+
+  .label {
+      width: 180px;
+  }
+
+  .value {
+      width: 45%;
   }
 
   .custom-task-edit-tooltip {

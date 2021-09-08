@@ -1,19 +1,5 @@
 <template>
   <div>
-    <div id="grid">
-      <DxSelectBox
-        id="select-prefix"
-        :data-source="['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.']"
-        :value="prefix"
-        placeholder="Select title"
-        @value-changed="filterSelection"
-      />
-      <DxButton
-        :disabled="!selectedRowKeys.length"
-        text="Clear Selection"
-        @click="clearSelection"
-      />
-    </div>
     <DxDataGrid
       id="grid-container"
       :data-source="employees"
@@ -49,6 +35,24 @@
         data-field="HireDate"
         data-type="date"
       />
+      <DxToolbar>
+        <DxItem location="before">
+          <DxSelectBox
+            :data-source="prefixOptions"
+            :value="prefix"
+            placeholder="Select title"
+            width="150px"
+            @value-changed="filterSelection"
+          />
+        </DxItem>
+        <DxItem location="before">
+          <DxButton
+            :disabled="!selectedRowKeys.length"
+            text="Clear Selection"
+            @click="clearSelection"
+          />
+        </DxItem>
+      </DxToolbar>
     </DxDataGrid>
     <div class="selected-data">
       <span class="caption">Selected Records:</span>{{ ' ' }}
@@ -62,14 +66,16 @@
 import {
   DxColumn,
   DxDataGrid,
-  DxSelection
+  DxSelection,
+  DxToolbar,
+  DxItem,
 } from 'devextreme-vue/data-grid';
 import DxButton from 'devextreme-vue/button';
 import DxSelectBox from 'devextreme-vue/select-box';
 import { employees } from './data.js';
 
 function getEmployeeNames(selectedRowsData) {
-  const getEmployeeName = row => `${row.FirstName} ${row.LastName}`;
+  const getEmployeeName = (row) => `${row.FirstName} ${row.LastName}`;
 
   return selectedRowsData.length ? selectedRowsData.map(getEmployeeName).join(', ') : 'Nobody has been selected';
 }
@@ -80,16 +86,19 @@ export default {
     DxColumn,
     DxDataGrid,
     DxSelectBox,
-    DxSelection
+    DxSelection,
+    DxToolbar,
+    DxItem,
   },
   data() {
     return {
       dataGridRefName: 'dataGrid',
       employees,
       prefix: '',
+      prefixOptions: ['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.'],
       selectedEmployeeNames: 'Nobody has been selected',
       selectedRowKeys: [],
-      selectionChangedBySelectBox: false
+      selectionChangedBySelectBox: false,
     };
   },
   methods: {
@@ -101,14 +110,14 @@ export default {
     filterSelection({ value }) {
       this.selectionChangedBySelectBox = true;
 
-      let prefix = value;
+      const prefix = value;
 
-      if(!prefix) {
+      if (!prefix) {
         return;
-      } else if(prefix === 'All') {
-        this.selectedRowKeys = this.employees.map(employee => employee.ID);
+      } if (prefix === 'All') {
+        this.selectedRowKeys = this.employees.map((employee) => employee.ID);
       } else {
-        this.selectedRowKeys = this.employees.filter(employee => employee.Prefix === prefix).map(employee => employee.ID);
+        this.selectedRowKeys = this.employees.filter((employee) => employee.Prefix === prefix).map((employee) => employee.ID);
       }
 
       this.prefix = prefix;
@@ -121,8 +130,8 @@ export default {
       this.selectedEmployeeNames = getEmployeeNames(selectedRowsData);
       this.selectedRowKeys = selectedRowKeys;
       this.selectionChangedBySelectBox = false;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
@@ -130,11 +139,6 @@ export default {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-}
-
-#select-prefix {
-  width: 150px;
-  margin-right: 8px;
 }
 
 .selected-data {
