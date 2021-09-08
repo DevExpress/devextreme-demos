@@ -277,12 +277,9 @@ module.exports = {
     'class-methods-use-this': 0, // TODO warn (was error)
     'func-names': 0, // TODO warn (was warn)
     'import/extensions': 0, // TODO does not work if remove extension (was error)
-    'no-use-before-define': 0, // TODO warn (was error)
-    'no-var': 0, // TODO error (was error)
+    'no-use-before-define': 0, // keep this
     'vars-on-top': 0, // TODO error (was error)
     'no-unused-expressions': 0, // TODO error (was error)
-    'eqeqeq': 0, // TODO error (was error)
-    'no-plusplus': 0, // TODO error (was error)
     'no-param-reassign': 0, // TODO error (was error)
     'no-return-assign': 0, // TODO error (was error)
     'no-multi-assign': 0, // TODO error (was error)
@@ -293,27 +290,13 @@ module.exports = {
     'no-sequences': 0, // TODO error (was error)
     'consistent-return': 0, // TODO error (was error)
     'no-throw-literal': 0, // TODO error (was error)
-    'prefer-const': 0, // TODO error (was error)
     'no-mixed-operators': 0, // TODO error (was error)
     'radix': 0, // TODO error (was error)
     'no-void': 0, // TODO error (was error)
     'prefer-rest-params': 0, // TODO error (was error)
-    'prefer-spread': 0, // TODO error (was error)
-    'new-cap': 0, // TODO error (was error)
-    'no-useless-constructor': 0, // TODO error (was error)
     'import/order': 0, // TODO error (was error)
-    'no-restricted-syntax': 0, // TODO error (was error)
-    'no-restricted-properties': 0,
-    'guard-for-in': 0, // TODO error (was error)
-    'no-useless-concat': 0,
-    'no-underscore-dangle': 0,
     'import/no-webpack-loader-syntax': 0,
     'import/no-unresolved': 0,
-    'no-bitwise': 0,
-    'camelcase': 0,
-    'max-classes-per-file': 0,
-    'no-multi-str': 0,
-    'operator-assignment': 0,
   },
   extends: [
     'eslint:recommended',
@@ -522,6 +505,11 @@ module.exports = {
         'singleline': 'never',
         multiline: 'always',
       }],
+    },
+  }, {
+    files: ['**/UpdateBarGaugeDataAtRuntime/**/*.*'],
+    rules: {
+      'no-bitwise': 0,
     },
   }],
 };

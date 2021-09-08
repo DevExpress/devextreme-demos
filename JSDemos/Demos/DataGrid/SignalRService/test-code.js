@@ -1,6 +1,6 @@
 testUtils.importAnd(() => ['devextreme/ui/data_grid', 'devextreme/data/data_source'], () => [DevExpress.ui.dxDataGrid, DevExpress.data.DataSource], (dxDataGrid, DataSource) => new Promise((resolve) => {
   let i = 0;
-  var intervalId = setInterval(() => {
+  const intervalId = setInterval(() => {
     i += 1;
     if (i === 200) {
       clearInterval(intervalId);
@@ -43,10 +43,10 @@ testUtils.importAnd(() => ['devextreme/ui/data_grid', 'devextreme/data/data_sour
       window.$.connection.liveUpdateSignalRHub.client.updateStockPrice = function () { };
     } else {
       dataSourceItems.forEach((item) => {
-        for (const key in item) {
+        Object.keys(item).forEach((key) => {
           item[key.charAt(0).toLowerCase() + key.slice(1)] = item[key];
           delete item[key];
-        }
+        });
       });
       // eslint-disable-next-line spellcheck/spell-checker
       if (window.connection && window.connection.methods) { window.connection.methods.updatestockprice.splice(0, 1); }

@@ -1,5 +1,5 @@
 window.onload = function () {
-  var viewModel = {
+  const viewModel = {
     chart: null,
     chartOptions: {
       commonSeriesSettings: {
@@ -8,7 +8,7 @@ window.onload = function () {
       tooltip: {
         enabled: true,
         customizeTooltip(args) {
-          const valueText = (args.seriesName.indexOf('Total') != -1)
+          const valueText = (args.seriesName.indexOf('Total') !== -1)
             ? Globalize.formatCurrency(args.originalValue,
               'USD', { maximumFractionDigits: 0 })
             : args.originalValue;

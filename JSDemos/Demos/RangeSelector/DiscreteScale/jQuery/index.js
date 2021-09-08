@@ -18,7 +18,7 @@ $(() => {
       let endIndex;
 
       $.each(data, (i, item) => {
-        if (item.country == e.value[0]) { startIndex = i; } else if (item.country == e.value[1]) { endIndex = i; }
+        if (item.country === e.value[0]) { startIndex = i; } else if (item.country === e.value[1]) { endIndex = i; }
       });
 
       if (endIndex) {
@@ -35,7 +35,7 @@ $(() => {
     },
   };
 
-  var formatNumber = new Intl.NumberFormat('en-US', { minimumFractionDigits: 0 }).format;
+  const formatNumber = new Intl.NumberFormat('en-US', { minimumFractionDigits: 0 }).format;
 
   $('#range-selector').dxRangeSelector(rangeOptions);
 

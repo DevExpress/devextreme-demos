@@ -39,7 +39,7 @@ window.onload = function () {
       value: currentAlgorithmName,
       width: 200,
       onValueChanged(data) {
-        if (data.value == 'custom') {
+        if (data.value === 'custom') {
           currentAlgorithm(customAlgorithm);
         } else {
           currentAlgorithm(data.value);
@@ -59,7 +59,7 @@ window.onload = function () {
       const rect = totalRect.slice();
 
       totalSum -= item.value;
-      rect[side + 2] = totalRect[side] = totalRect[side] + size;
+      rect[side + 2] = totalRect[side] += size;
       item.rect = rect;
       side = 1 - side;
     });

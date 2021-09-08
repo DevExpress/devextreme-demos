@@ -11,7 +11,7 @@ $(() => {
       selectedDate.option('value', data.value);
     },
     onOptionChanged(data) {
-      if (data.name == 'zoomLevel') {
+      if (data.name === 'zoomLevel') {
         zoomLevel.option('value', data.value);
       }
     },
@@ -76,7 +76,7 @@ $(() => {
     },
   });
 
-  var zoomLevel = $('#zoom-level').dxSelectBox({
+  const zoomLevel = $('#zoom-level').dxSelectBox({
     dataSource: zoomLevels,
     value: zoomLevels[0],
     onValueChanged(data) {
@@ -84,7 +84,7 @@ $(() => {
     },
   }).dxSelectBox('instance');
 
-  var selectedDate = $('#selected-date').dxDateBox({
+  const selectedDate = $('#selected-date').dxDateBox({
     value: new Date(),
     width: '100%',
     onValueChanged(data) {

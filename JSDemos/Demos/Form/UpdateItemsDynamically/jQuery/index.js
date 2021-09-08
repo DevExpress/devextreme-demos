@@ -1,5 +1,5 @@
 $(() => {
-  var form = $('#form').dxForm({
+  const form = $('#form').dxForm({
     colCount: 2,
     formData: employee,
     items: [
@@ -62,7 +62,7 @@ $(() => {
 
   function getPhonesOptions(phones) {
     const options = [];
-    for (let i = 0; i < phones.length; i++) {
+    for (let i = 0; i < phones.length; i += 1) {
       options.push(generateNewPhoneOptions(i));
     }
     return options;
