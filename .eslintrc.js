@@ -291,7 +291,6 @@ module.exports = {
     'no-sequences': 0, // TODO error (was error)
     'consistent-return': 0, // TODO error (was error)
     'no-throw-literal': 0, // TODO error (was error)
-    'prefer-const': 0, // TODO error (was error)
     'no-mixed-operators': 0, // TODO error (was error)
     'radix': 0, // TODO error (was error)
     'no-void': 0, // TODO error (was error)
