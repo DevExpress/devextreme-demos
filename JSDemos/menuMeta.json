@@ -5236,7 +5236,6 @@
           {
             "Title": "Event Handling",
             "Name": "EventHandling",
-            "DocUrl": "Guide/UI_Components/Lookup/Handle_the_Value_Change_Event/",
             "Widget": "Lookup",
             "MvcAdditionalFiles": [
               "/Models/DataGrid/Employee.cs",
