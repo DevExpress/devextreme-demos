@@ -5,7 +5,7 @@ window.onload = function () {
     const updateContentText = `<br /><div>Content has been updated on the ${eventName} event.</div><br />`;
     if (updateContentTimer) { clearTimeout(updateContentTimer); }
     updateContentTimer = setTimeout(() => {
-      viewModel.content((eventName == 'PullDown' ? updateContentText + viewModel.content() : viewModel.content() + updateContentText));
+      viewModel.content((eventName === 'PullDown' ? updateContentText + viewModel.content() : viewModel.content() + updateContentText));
       args.component.release();
     }, 500);
   }
@@ -14,7 +14,7 @@ window.onload = function () {
     updateContent(e, 'ReachBottom');
   };
 
-  var viewModel = {
+  const viewModel = {
     content: ko.observable(longText),
 
     updateTopContent(e) {

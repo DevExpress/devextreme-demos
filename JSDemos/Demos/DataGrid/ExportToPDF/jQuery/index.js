@@ -8,6 +8,7 @@ $(() => {
     icon: 'exportpdf',
     text: 'Export to PDF',
     onClick() {
+      // eslint-disable-next-line new-cap
       const doc = new jsPDF();
       DevExpress.pdfExporter.exportDataGrid({
         jsPDFDocument: doc,
@@ -18,7 +19,7 @@ $(() => {
     },
   });
 
-  var dataGrid = $('#gridContainer').dxDataGrid({
+  const dataGrid = $('#gridContainer').dxDataGrid({
     dataSource: customers,
     keyExpr: 'ID',
     allowColumnReordering: true,
@@ -55,6 +56,7 @@ $(() => {
             icon: 'exportpdf',
             text: 'Export to PDF',
             onClick() {
+              // eslint-disable-next-line new-cap
               const doc = new jsPDF();
               DevExpress.pdfExporter.exportDataGrid({
                 jsPDFDocument: doc,

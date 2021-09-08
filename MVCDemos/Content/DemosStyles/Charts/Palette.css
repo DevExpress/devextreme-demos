@@ -37,11 +37,21 @@
     margin-top: 5px;
 }
 
-    .option > span {
-        margin: 0 10px 0 0;
-    }
+.option > span {
+    margin: 0 10px 0 0;
+}
 
-    .option > .dx-widget {
-        display: inline-block;
-        vertical-align: middle;
-    }
+.option > .dx-widget {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.options-container {
+    display: flex;
+    align-items: center;
+}
+
+.options-container > .option {
+    display: flex;
+    align-items: center;
+}

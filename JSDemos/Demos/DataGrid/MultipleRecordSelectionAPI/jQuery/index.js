@@ -1,8 +1,7 @@
 $(() => {
-  let dataGrid;
   let changedBySelectBox;
 
-  dataGrid = $('#grid-container').dxDataGrid({
+  const dataGrid = $('#grid-container').dxDataGrid({
     dataSource: employees,
     keyExpr: 'ID',
     showBorders: true,
@@ -52,7 +51,7 @@ $(() => {
             onValueChanged(data) {
               if (!data.value) { return; }
               changedBySelectBox = true;
-              if (data.value == 'All') {
+              if (data.value === 'All') {
                 dataGrid.selectAll();
               } else {
                 const employeesToSelect = $.map($.grep(dataGrid.option('dataSource'), (item) => item.Prefix === data.value), (item) => item.ID);

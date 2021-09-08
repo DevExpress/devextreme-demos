@@ -1,6 +1,6 @@
 window.onload = function () {
   const MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
-  var viewModel = {
+  const viewModel = {
     gridOptions: {
       dataSource: {
         store: {
@@ -75,7 +75,7 @@ window.onload = function () {
       let commonDuration = 0;
       const { statistic } = viewModel;
 
-      for (let i = 0; i < rowData.length; i++) {
+      for (let i = 0; i < rowData.length; i += 1) {
         commonDuration += rowData[i].Task_Due_Date - rowData[i].Task_Start_Date;
       }
       commonDuration /= MILLISECONDS_IN_DAY;
