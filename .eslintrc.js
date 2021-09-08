@@ -298,7 +298,6 @@ module.exports = {
     'no-void': 0, // TODO error (was error)
     'prefer-rest-params': 0, // TODO error (was error)
     'prefer-spread': 0, // TODO error (was error)
-    'no-useless-constructor': 0, // TODO error (was error)
     'import/order': 0, // TODO error (was error)
     'import/no-webpack-loader-syntax': 0,
     'import/no-unresolved': 0,
