@@ -3,7 +3,7 @@ $(() => {
     slideOut.option('menuVisible', !slideOut.option('menuVisible'));
   }
 
-  var slideOut = $('#slideout').dxSlideOut({
+  const slideOut = $('#slideout').dxSlideOut({
     dataSource: products,
     onItemClick: showMenu,
     menuVisible: true,

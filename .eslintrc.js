@@ -277,8 +277,7 @@ module.exports = {
     'class-methods-use-this': 0, // TODO warn (was error)
     'func-names': 0, // TODO warn (was warn)
     'import/extensions': 0, // TODO does not work if remove extension (was error)
-    'no-use-before-define': 0, // TODO warn (was error)
-    'no-var': 0, // TODO error (was error)
+    'no-use-before-define': 0, // keep this
     'vars-on-top': 0, // TODO error (was error)
     'no-unused-expressions': 0, // TODO error (was error)
     'no-plusplus': 0, // TODO error (was error)
