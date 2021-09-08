@@ -11,6 +11,8 @@ const dataSource = new ArrayStore({
   key: 'id',
   data: tasks
 });
+const selectionModes = ['none', 'single', 'multiple', 'all'];
+const selectAllModes = ['page', 'allPages'];
 
 class App extends React.Component {
   constructor() {
@@ -65,7 +67,7 @@ class App extends React.Component {
             <span>Selection Mode</span>
             &nbsp;
             <SelectBox
-              items={['none', 'single', 'multiple', 'all']}
+              items={selectionModes}
               value={this.state.selectionMode}
               onValueChanged={this.onSelectionModeChange}>
             </SelectBox>
@@ -75,7 +77,7 @@ class App extends React.Component {
             &nbsp;
             <SelectBox
               disabled={this.state.selectionMode !== 'all'}
-              items={['page', 'allPages']}
+              items={selectAllModes}
               value={this.state.selectAllMode}
               onValueChanged={this.onSelectAllModeChange}>
             </SelectBox>
