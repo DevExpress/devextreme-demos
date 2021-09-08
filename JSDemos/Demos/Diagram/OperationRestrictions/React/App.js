@@ -6,8 +6,6 @@ import notify from 'devextreme/ui/notify';
 import ArrayStore from 'devextreme/data/array_store';
 import service from './data.js';
 
-const shapes = ['team', 'employee'];
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -32,10 +30,10 @@ class App extends React.Component {
         <Nodes dataSource={this.orgItemsDataSource} keyExpr="ID" textExpr="Name" typeExpr="Type" parentKeyExpr="ParentID" styleExpr={this.itemStyleExpr}>
           <AutoLayout type="tree" />
         </Nodes>
-        <ContextToolbox shapeIconsPerRow={2} width={100} shapes={shapes}>
+        <ContextToolbox shapeIconsPerRow={2} width={100} shapes={['team', 'employee']}>
         </ContextToolbox>
         <Toolbox shapeIconsPerRow={2}>
-          <Group title="Items" shapes={shapes} />
+          <Group title="Items" shapes={['team', 'employee']} />
         </Toolbox>
         <PropertiesPanel visibility="disabled">
         </PropertiesPanel>
@@ -55,7 +53,7 @@ class App extends React.Component {
   }
 
   onRequestLayoutUpdate(e) {
-    for (let i = 0; i < e.changes.length; i++) {
+    for (let i = 0; i < e.changes.length; i += 1) {
       if (e.changes[i].type === 'remove') {
         e.allowed = true;
       } else if (e.changes[i].data.ParentID !== undefined && e.changes[i].data.ParentID !== null) {
@@ -81,7 +79,7 @@ class App extends React.Component {
         e.allowed = false;
       }
       if (e.args.shape.type === 'team') {
-        for (let i = 0; i < e.args.shape.attachedConnectorIds.length; i++) {
+        for (let i = 0; i < e.args.shape.attachedConnectorIds.length; i += 1) {
           if (diagram.getItemById(e.args.shape.attachedConnectorIds[i]).toId !== e.args.shape.id) {
             if (e.reason !== 'checkUIElementAvailability') {
               this.showToast('You cannot delete a \'Team\' shape that has a child shape.');

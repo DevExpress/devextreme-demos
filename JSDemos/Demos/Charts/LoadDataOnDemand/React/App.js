@@ -16,11 +16,6 @@ import {
   LoadingIndicator,
 } from 'devextreme-react/chart';
 
-const wholeRange = {
-  startValue: new Date(2017, 0, 1),
-  endValue: new Date(2017, 11, 31),
-};
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -54,7 +49,10 @@ class App extends React.Component {
           argumentType="datetime"
           visualRangeUpdateMode="keep"
           visualRange={this.state.visualRange}
-          wholeRange={wholeRange} />
+          wholeRange={{
+            startValue: new Date(2017, 0, 1),
+            endValue: new Date(2017, 11, 31),
+          }} />
         <ValueAxis
           name="temperature"
           allowDecimals={false}
@@ -116,12 +114,12 @@ class App extends React.Component {
 
     if (ajaxArgs.startVisible !== ajaxArgs.startBound
       && ajaxArgs.endVisible !== ajaxArgs.endBound && !this.packetsLock) {
-      this.packetsLock++;
+      this.packetsLock += 1;
       component.showLoadingIndicator();
 
       getDataFrame(ajaxArgs)
         .then((dataFrame) => {
-          this.packetsLock--;
+          this.packetsLock -= 1;
           dataFrame = dataFrame.map((i) => ({
             date: new Date(i.Date),
             minTemp: i.MinTemp,
@@ -135,7 +133,7 @@ class App extends React.Component {
           this.onVisualRangeChanged(component);
         })
         .catch(() => {
-          this.packetsLock--;
+          this.packetsLock -= 1;
           dataSource.reload();
         });
     }
