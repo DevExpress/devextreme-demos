@@ -34,23 +34,25 @@
 
     <div class="options">
       <div class="caption">Options</div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="allowDropInsideItem"
-          text="Allow Drop Inside Item"
-        />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="allowReordering"
-          text="Allow Reordering"
-        />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="showDragIcons"
-          text="Show Drag Icons"
-        />
+      <div class="options-container">
+        <div class="option">
+          <DxCheckBox
+            v-model:value="allowDropInsideItem"
+            text="Allow Drop Inside Item"
+          />
+        </div>
+        <div class="option">
+          <DxCheckBox
+            v-model:value="allowReordering"
+            text="Allow Reordering"
+          />
+        </div>
+        <div class="option">
+          <DxCheckBox
+            v-model:value="showDragIcons"
+            text="Show Drag Icons"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -65,7 +67,7 @@ export default {
     DxTreeList,
     DxColumn,
     DxRowDragging,
-    DxCheckBox
+    DxCheckBox,
   },
   data() {
     return {
@@ -73,14 +75,14 @@ export default {
       allowDropInsideItem: true,
       allowReordering: true,
       showDragIcons: true,
-      expandedRowKeys: [1]
+      expandedRowKeys: [1],
     };
   },
   methods: {
     onDragChange(e) {
-      let visibleRows = e.component.getVisibleRows(),
-        sourceNode = e.component.getNodeByKey(e.itemData.ID),
-        targetNode = visibleRows[e.toIndex].node;
+      const visibleRows = e.component.getVisibleRows();
+      const sourceNode = e.component.getNodeByKey(e.itemData.ID);
+      let targetNode = visibleRows[e.toIndex].node;
 
       while (targetNode && targetNode.data) {
         if (targetNode.data.ID === sourceNode.data.ID) {
@@ -118,7 +120,7 @@ export default {
 
         this.employees = employees;
       }
-    }
+    },
   },
 };
 </script>
@@ -146,11 +148,16 @@ export default {
 
 .option {
    margin-top: 10px;
-   margin-right: 44px;
+   margin-right: 40px;
    display: inline-block;
 }
 
 .option:last-child {
     margin-right: 0;
+}
+
+.options-container {
+    display: flex;
+    align-items: center;
 }
 </style>

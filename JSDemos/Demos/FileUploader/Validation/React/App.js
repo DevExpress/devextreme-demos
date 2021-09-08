@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import FileUploader from 'devextreme-react/file-uploader';
 
 const fileExtensions = ['.jpg', '.jpeg', '.gif', '.png'];

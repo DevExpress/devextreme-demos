@@ -1,37 +1,15 @@
-﻿import React from 'react';
+import React from 'react';
 import DropDownButton from 'devextreme-react/drop-down-button';
 import Toolbar from 'devextreme-react/toolbar';
 import { Template } from 'devextreme-react/core/template';
-import service from './data.js';
 import notify from 'devextreme/ui/notify';
+import service from './data.js';
+import ColorIcon from './ColorIcon.js';
 import 'whatwg-fetch';
-
-const buttonDropDownOptions = { width: 230 };
-
-class ColorIcon extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onClick = this.onClick.bind(this);
-  }
-
-  onClick() {
-    this.props.onClick(this.props.color);
-  }
-
-  render() {
-    return (
-      <i
-        onClick={this.onClick}
-        className={this.props.color ? 'color dx-icon dx-icon-square' : 'color dx-icon dx-icon-square dx-theme-text-color'}
-        style={{ color: this.props.color }}
-      />
-    );
-  }
-}
 
 class App extends React.Component {
   onButtonClick(e) {
-    notify(`Go to ${ e.component.option('text') }'s profile`, 'success', 600);
+    notify(`Go to ${e.component.option('text')}'s profile`, 'success', 600);
   }
 
   onItemClick(e) {
@@ -40,14 +18,14 @@ class App extends React.Component {
 
   onColorClick(color) {
     this.setState({
-      color: color
+      color,
     });
     this.colorPicker.element().getElementsByClassName('dx-icon-square')[0].style.color = color;
     this.colorPicker.close();
   }
 
   itemTemplateRender(item) {
-    return (<div style={{ fontSize: `${item.size }px` }}>
+    return (<div style={{ fontSize: `${item.size}px` }}>
       {item.text}
     </div>);
   }
@@ -61,7 +39,7 @@ class App extends React.Component {
       alignment: 'left',
       color: null,
       fontSize: 14,
-      lineHeight: 1.35
+      lineHeight: 1.35,
     };
 
     this.toolbarItems = [
@@ -77,11 +55,11 @@ class App extends React.Component {
           useSelectMode: true,
           onSelectionChanged: (e) => {
             this.setState({
-              alignment: e.item.name.toLowerCase()
+              alignment: e.item.name.toLowerCase(),
             });
           },
-          items: this.data.alignments
-        }
+          items: this.data.alignments,
+        },
       },
       {
         location: 'before',
@@ -94,8 +72,8 @@ class App extends React.Component {
           onInitialized: ({ component }) => {
             this.colorPicker = component;
           },
-          dropDownContentTemplate: 'colorpicker'
-        }
+          dropDownContentTemplate: 'colorpicker',
+        },
       },
       {
         location: 'before',
@@ -107,13 +85,13 @@ class App extends React.Component {
           useSelectMode: true,
           items: this.data.fontSizes,
           selectedItemKey: 14,
-          onSelectionChanged:(e) => {
+          onSelectionChanged: (e) => {
             this.setState({
-              fontSize: e.item.size
+              fontSize: e.item.size,
             });
           },
-          itemTemplate: 'fontItem'
-        }
+          itemTemplate: 'fontItem',
+        },
       },
       {
         location: 'before',
@@ -128,11 +106,11 @@ class App extends React.Component {
           selectedItemKey: 1.35,
           onSelectionChanged: (e) => {
             this.setState({
-              lineHeight: e.item.lineHeight
+              lineHeight: e.item.lineHeight,
             });
-          }
-        }
-      }
+          },
+        },
+      },
     ];
   }
 
@@ -195,7 +173,7 @@ class App extends React.Component {
             color: this.state.color,
             textAlign: this.state.alignment,
             lineHeight: this.state.lineHeight,
-            fontSize: `${this.state.fontSize }px`
+            fontSize: `${this.state.fontSize}px`,
           }}>
             <p id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>

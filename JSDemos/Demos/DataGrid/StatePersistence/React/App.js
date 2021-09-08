@@ -1,5 +1,7 @@
-﻿import React from 'react';
-import DataGrid, { Selection, FilterRow, GroupPanel, StateStoring, Pager, Column } from 'devextreme-react/data-grid';
+import React from 'react';
+import DataGrid, {
+  Selection, FilterRow, GroupPanel, StateStoring, Pager, Column,
+} from 'devextreme-react/data-grid';
 
 import service from './data.js';
 
@@ -12,12 +14,15 @@ class App extends React.Component {
     this.dataGrid = React.createRef();
     this.onStateResetClick = this.onStateResetClick.bind(this);
   }
+
   onRefreshClick() {
     window.location.reload();
   }
+
   onStateResetClick() {
     this.dataGrid.current.instance.state(null);
   }
+
   render() {
     return (
       <React.Fragment>

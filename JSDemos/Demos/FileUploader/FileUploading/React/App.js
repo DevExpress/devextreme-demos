@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import FileUploader from 'devextreme-react/file-uploader';
 import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
@@ -13,13 +13,13 @@ class App extends React.Component {
       multiple: false,
       uploadMode: 'instantly',
       accept: '*',
-      selectedFiles: []
+      selectedFiles: [],
     };
 
     this.fileTypesSource = [
       { name: 'All types', value: '*' },
       { name: 'Images', value: 'image/*' },
-      { name: 'Videos', value: 'video/*' }
+      { name: 'Videos', value: 'video/*' },
     ];
 
     this.onSelectedFilesChanged = this.onSelectedFilesChanged.bind(this);
@@ -38,14 +38,12 @@ class App extends React.Component {
             <div>
               <h4>Selected Files</h4>
               {
-                this.state.selectedFiles.map((file, i) => {
-                  return <div className="selected-item" key={i}>
-                    <span>{`Name: ${file.name}`}<br /></span>
-                    <span>{`Size ${file.size}`}<br /></span>
-                    <span>{`Type ${file.size}`}<br /></span>
-                    <span>{`Last Modified Date: ${file.lastModifiedDate}`}</span>
-                  </div>;
-                })
+                this.state.selectedFiles.map((file, i) => <div className="selected-item" key={i}>
+                  <span>{`Name: ${file.name}`}<br /></span>
+                  <span>{`Size ${file.size}`}<br /></span>
+                  <span>{`Type ${file.size}`}<br /></span>
+                  <span>{`Last Modified Date: ${file.lastModifiedDate}`}</span>
+                </div>)
               }
             </div>
           </div>
@@ -83,7 +81,6 @@ class App extends React.Component {
   onMultipleChanged(e) {
     this.setState({ multiple: e.value });
   }
-
 }
 
 export default App;

@@ -1,13 +1,13 @@
 import React from 'react';
-import Gantt, { Tasks, Dependencies, Resources, ResourceAssignments, Column, Editing } from 'devextreme-react/gantt';
-import { tasks, dependencies, resources, resourceAssignments } from './data.js';
+import Gantt, {
+  Tasks, Dependencies, Resources, ResourceAssignments, Column, Editing,
+} from 'devextreme-react/gantt';
+import {
+  tasks, dependencies, resources, resourceAssignments,
+} from './data.js';
 import TaskTemplate from './TaskTemplate.js';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div id="form-demo">

@@ -20,7 +20,7 @@ class App extends React.Component {
       opened: true,
       openedStateMode: 'shrink',
       revealMode: 'slide',
-      position: 'left'
+      position: 'left',
     };
 
     this.toolbarItems = [{
@@ -28,8 +28,8 @@ class App extends React.Component {
       location: 'before',
       options: {
         icon: 'menu',
-        onClick: () => this.setState({ opened: !this.state.opened })
-      }
+        onClick: () => this.setState({ opened: !this.state.opened }),
+      },
     }];
 
     this.onOpenedStateModeChanged = this.onOpenedStateModeChanged.bind(this);
@@ -56,7 +56,9 @@ class App extends React.Component {
   }
 
   render() {
-    const { opened, openedStateMode, position, revealMode } = this.state;
+    const {
+      opened, openedStateMode, position, revealMode,
+    } = this.state;
 
     return (
       <React.Fragment>
@@ -75,35 +77,35 @@ class App extends React.Component {
         </Drawer>
         <div className="options">
           <div className="caption">Options</div>
-          <div className="option">
-            <label>Opened state mode</label>
-            <RadioGroup
-              items={openedStateModes}
-              layout="horizontal"
-              value={openedStateMode}
-              onValueChanged={this.onOpenedStateModeChanged}
-            />
+          <div className="options-container">
+            <div className="option">
+              <label>Opened state mode</label>
+              <RadioGroup
+                items={openedStateModes}
+                layout="horizontal"
+                value={openedStateMode}
+                onValueChanged={this.onOpenedStateModeChanged}
+              />
+            </div>
+            <div className="option">
+              <label>Position</label>
+              <RadioGroup
+                items={positions}
+                layout="horizontal"
+                value={position}
+                onValueChanged={this.onPositionChanged}
+              />
+            </div>
+            {openedStateMode !== 'push' && (<div className="option">
+              <label>Reveal mode</label>
+              <RadioGroup
+                items={revealModes}
+                layout="horizontal"
+                value={revealMode}
+                onValueChanged={this.onRevealModeChanged}
+              />
+            </div>)}
           </div>
-          {' '}
-          <div className="option">
-            <label>Position</label>
-            <RadioGroup
-              items={positions}
-              layout="horizontal"
-              value={position}
-              onValueChanged={this.onPositionChanged}
-            />
-          </div>
-          {' '}
-          {openedStateMode !== 'push' && (<div className="option">
-            <label>Reveal mode</label>
-            <RadioGroup
-              items={revealModes}
-              layout="horizontal"
-              value={revealMode}
-              onValueChanged={this.onRevealModeChanged}
-            />
-          </div>)}
         </div>
       </React.Fragment>
     );

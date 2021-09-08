@@ -13,7 +13,6 @@ import Chart, {
 import { dataSource } from './data.js';
 
 class App extends React.Component {
-
   render() {
     return (
       <Chart

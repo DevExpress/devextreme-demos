@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import TreeView from 'devextreme-react/tree-view';
 import List from 'devextreme-react/list';
 import SelectBox from 'devextreme-react/select-box';
@@ -24,7 +24,7 @@ class App extends React.Component {
       selectionModes,
       selectionMode,
       isSelectionModeDisabled: false,
-      isRecursiveDisabled: false
+      isRecursiveDisabled: false,
     };
     this.treeViewSelectionChanged = this.treeViewSelectionChanged.bind(this);
     this.treeViewContentReady = this.treeViewContentReady.bind(this);
@@ -33,6 +33,7 @@ class App extends React.Component {
     this.selectNodesRecursiveValueChanged = this.selectNodesRecursiveValueChanged.bind(this);
     this.selectByClickValueChanged = this.selectByClickValueChanged.bind(this);
   }
+
   render() {
     return (
       <div>
@@ -66,36 +67,45 @@ class App extends React.Component {
         </div>
         <div className="options">
           <div className="caption">Options</div>
-          <div className="option">
-            <span>Show Check Boxes Mode:</span>
-            <SelectBox
-              items={this.state.showCheckBoxesModes}
-              value={this.state.showCheckBoxesMode}
-              onValueChanged={this.showCheckBoxesModeValueChanged} />
-          </div>
-          &nbsp;
-          <div className="option">
-            <span>Selection Mode:</span>
-            <SelectBox
-              items={this.state.selectionModes}
-              value={this.state.selectionMode}
-              disabled={this.state.isSelectionModeDisabled}
-              onValueChanged={this.selectionModeValueChanged} />
-          </div>
-          &nbsp;
-          <div className="option recursive-option">
-            <CheckBox
-              text="Select Nodes Recursive"
-              value={this.state.selectNodesRecursive}
-              disabled={this.state.isRecursiveDisabled}
-              onValueChanged={this.selectNodesRecursiveValueChanged} />
-          </div>
-          &nbsp;
-          <div className="option">
-            <CheckBox
-              text="Select By Click"
-              value={this.state.selectByClick}
-              onValueChanged={this.selectByClickValueChanged} />
+          <div className="options-container">
+            <div className="option">
+              <span>Show Check Boxes Mode:</span>
+              <div classNamelint="editor-container">
+                <SelectBox
+                  items={this.state.showCheckBoxesModes}
+                  value={this.state.showCheckBoxesMode}
+                  onValueChanged={this.showCheckBoxesModeValueChanged} />
+              </div>
+            </div>
+            <div className="option">
+              <span>Selection Mode:</span>
+              <div className="editor-container">
+                <SelectBox
+                  items={this.state.selectionModes}
+                  value={this.state.selectionMode}
+                  disabled={this.state.isSelectionModeDisabled}
+                  onValueChanged={this.selectionModeValueChanged} />
+              </div>
+            </div>
+            <div className="option">
+              <div className="caption-placeholder">&nbsp;</div>
+              <div className="editor-container">
+                <CheckBox
+                  text="Select Nodes Recursive"
+                  value={this.state.selectNodesRecursive}
+                  disabled={this.state.isRecursiveDisabled}
+                  onValueChanged={this.selectNodesRecursiveValueChanged} />
+              </div>
+            </div>
+            <div className="option">
+              <div className="caption-placeholder">&nbsp;</div>
+              <div className="editor-container">
+                <CheckBox
+                  text="Select By Click"
+                  value={this.state.selectByClick}
+                  onValueChanged={this.selectByClickValueChanged} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -114,15 +124,13 @@ class App extends React.Component {
     const selectedEmployees = treeView.getSelectedNodes()
       .map((node) => node.itemData);
 
-    this.setState(() => {
-      return { selectedEmployees: selectedEmployees };
-    });
+    this.setState(() => ({ selectedEmployees }));
   }
 
   showCheckBoxesModeValueChanged(e) {
-    let state = { showCheckBoxesMode: e.value };
+    const state = { showCheckBoxesMode: e.value };
 
-    if(e.value === 'selectAll') {
+    if (e.value === 'selectAll') {
       state.selectionMode = 'multiple';
       state.isRecursiveDisabled = false;
     }
@@ -132,9 +140,9 @@ class App extends React.Component {
   }
 
   selectionModeValueChanged(e) {
-    let state = { selectionMode: e.value };
+    const state = { selectionMode: e.value };
 
-    if(e.value === 'single') {
+    if (e.value === 'single') {
       state.selectNodesRecursive = false;
       this.treeView.unselectAll();
     }

@@ -16,12 +16,13 @@ class App extends React.Component {
     super(props);
     this.state = {
       startValue: 10,
-      endValue: 90
+      endValue: 90,
     };
     this.onRangeChanged = this.onRangeChanged.bind(this);
     this.onStartChanged = this.onStartChanged.bind(this);
     this.onEndChanged = this.onEndChanged.bind(this);
   }
+
   render() {
     return (
       <div className="form">
@@ -90,20 +91,23 @@ class App extends React.Component {
       </div>
     );
   }
+
   onRangeChanged(data) {
     this.setState({
       startValue: data.start,
-      endValue: data.end
+      endValue: data.end,
     });
   }
+
   onStartChanged(data) {
     this.setState({
-      startValue: data.value
+      startValue: data.value,
     });
   }
+
   onEndChanged(data) {
     this.setState({
-      endValue: data.value
+      endValue: data.value,
     });
   }
 }

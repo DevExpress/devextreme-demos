@@ -9,7 +9,7 @@ class App extends React.Component {
     this.state = {
       showEmployeeInfo: false,
       selectedRowPicture: '',
-      selectedRowNotes: ''
+      selectedRowNotes: '',
     };
 
     this.onSelectionChanged = this.onSelectionChanged.bind(this);
@@ -34,8 +34,8 @@ class App extends React.Component {
           <Column dataField="HireDate" dataType="date" />
         </DataGrid>
         {
-          this.state.showEmployeeInfo &&
-          <div id="employee-info">
+          this.state.showEmployeeInfo
+          && <div id="employee-info">
             <img src={this.state.selectedRowPicture} className="employee-photo" />
             <p className="employee-notes">{this.state.selectedRowNotes}</p>
           </div>
@@ -50,10 +50,9 @@ class App extends React.Component {
     this.setState({
       showEmployeeInfo: !!data,
       selectedRowNotes: data && data.Notes,
-      selectedRowPicture: data && data.Picture
+      selectedRowPicture: data && data.Picture,
     });
   }
-
 }
 
 export default App;

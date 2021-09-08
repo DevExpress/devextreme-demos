@@ -1,14 +1,11 @@
-﻿import React from 'react';
+import React from 'react';
 import { ButtonGroup } from 'devextreme-react/button-group';
-import { alignments, fontStyles } from './data.js';
 import notify from 'devextreme/ui/notify';
+import { alignments, fontStyles } from './data.js';
 
 const selectedItemKeys = ['left'];
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div>
@@ -51,7 +48,7 @@ class App extends React.Component {
 }
 
 function itemClick(e) {
-  notify({ message: `The "${ e.itemData.hint }" button was clicked`, width: 320 }, 'success', 1000);
+  notify({ message: `The "${e.itemData.hint}" button was clicked`, width: 320 }, 'success', 1000);
 }
 
 export default App;

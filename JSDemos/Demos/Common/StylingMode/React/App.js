@@ -21,7 +21,7 @@ class App extends React.Component {
 
     this.state = {
       date: new Date(2020, 4, 3),
-      stylingMode: 'filled'
+      stylingMode: 'filled',
     };
 
     this.validateClick = this.validateClick.bind(this);
@@ -108,7 +108,7 @@ class App extends React.Component {
   }
 
   validateClick(e) {
-    var result = e.validationGroup.validate();
+    const result = e.validationGroup.validate();
     if (result.isValid) {
       notify('The task was saved successfully.', 'success');
     } else {
@@ -118,7 +118,7 @@ class App extends React.Component {
 
   stylingModeChange(e) {
     this.setState({
-      stylingMode: e.value
+      stylingMode: e.value,
     });
   }
 }

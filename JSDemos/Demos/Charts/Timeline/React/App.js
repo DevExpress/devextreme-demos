@@ -1,6 +1,8 @@
-﻿import React from 'react';
+import React from 'react';
 
-import { Chart, CommonSeriesSettings, Legend, SeriesTemplate, Animation, ArgumentAxis, Tick, Title } from 'devextreme-react/chart';
+import {
+  Chart, CommonSeriesSettings, Legend, SeriesTemplate, Animation, ArgumentAxis, Tick, Title,
+} from 'devextreme-react/chart';
 import dataSource from './data.js';
 
 const axisCategories = ['Royal Houses'];

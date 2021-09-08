@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      routes: routesData
+      routes: routesData,
     };
     this.updateRouteMode = this.updateRouteMode.bind(this);
     this.updateRouteColor = this.updateRouteColor.bind(this);
@@ -33,7 +33,7 @@ class App extends React.Component {
         <div className="options">
           <div className="caption">Options</div>
           <div className="option">
-            <span>Set mode</span>&nbsp;
+            <span>Set mode</span>
             <SelectBox
               defaultValue="driving"
               items={modes}
@@ -41,7 +41,7 @@ class App extends React.Component {
             />
           </div>
           <div className="option">
-            <span>Route color</span>&nbsp;
+            <span>Route color</span>
             <SelectBox
               defaultValue="blue"
               items={routeColors}
@@ -58,7 +58,7 @@ class App extends React.Component {
       routes: this.state.routes.map((item) => {
         item.mode = e.value;
         return item;
-      })
+      }),
     });
   }
 
@@ -67,7 +67,7 @@ class App extends React.Component {
       routes: this.state.routes.map((item) => {
         item.color = e.value;
         return item;
-      })
+      }),
     });
   }
 }

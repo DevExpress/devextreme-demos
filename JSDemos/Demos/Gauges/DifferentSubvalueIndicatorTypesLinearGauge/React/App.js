@@ -1,14 +1,11 @@
 import React from 'react';
-import { LinearGauge, Scale, Label, SubvalueIndicator } from 'devextreme-react/linear-gauge';
+import {
+  LinearGauge, Scale, Label, SubvalueIndicator,
+} from 'devextreme-react/linear-gauge';
 
 const subValues = [18, 43];
 
 class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>

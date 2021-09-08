@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import NumberBox from 'devextreme-react/number-box';
 import {
   Chart,
@@ -21,7 +21,7 @@ class App extends React.Component {
       argumentCustomPosition: 0,
       argumentOffset: 0,
       valueCustomPosition: 0,
-      valueOffset: 0
+      valueOffset: 0,
     };
     this.changeArgumentPosition = (e) => {
       this.setState({ argumentCustomPosition: e.value });
@@ -42,7 +42,7 @@ class App extends React.Component {
       argumentCustomPosition,
       argumentOffset,
       valueCustomPosition,
-      valueOffset
+      valueOffset,
     } = this.state;
     return (
       <div>

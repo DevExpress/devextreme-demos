@@ -26,9 +26,9 @@ function customizeLayer(elements) {
   });
 }
 
-const format = new Intl.NumberFormat('en-US', {
-  minimumFractionDigits: 0
-}).format;
+const { format } = new Intl.NumberFormat('en-US', {
+  minimumFractionDigits: 0,
+});
 
 function customizeLegendText(arg) {
   return `${format(arg.start)} to ${format(arg.end)}`;

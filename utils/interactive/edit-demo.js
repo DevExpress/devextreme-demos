@@ -10,17 +10,18 @@ const menuMetaFileName = 'menuMeta.json';
 const menuMetaFilePath = path.join('.', menuMetaFileName);
 // const baseDemosDir = 'Demos'; // TODO remove this line
 
-fs.readFile(menuMetaFilePath, (err, data) => {
-    if(err) {
-        console.error('Error reading menuMeta.json file.');
-        throw err;
-    }
-
-    const menuMetaData = JSON.parse(data);
-    (async() => await mainRoutine(menuMetaData))();
-});
-
-const mainRoutine = async(menuMetaData) => {
-    const demo = await promptsQuestions.askDemoToUpdate(menuMetaData);
-    console.log('Not implemented', demo);
+const mainRoutine = async (menuMetaData) => {
+  const demo = await promptsQuestions.askDemoToUpdate(menuMetaData);
+  console.log('Not implemented', demo);
 };
+
+fs.readFile(menuMetaFilePath, (err, data) => {
+  if (err) {
+    console.error('Error reading menuMeta.json file.');
+    throw err;
+  }
+
+  const menuMetaData = JSON.parse(data);
+  // eslint-disable-next-line no-return-await
+  (async () => await mainRoutine(menuMetaData))();
+});

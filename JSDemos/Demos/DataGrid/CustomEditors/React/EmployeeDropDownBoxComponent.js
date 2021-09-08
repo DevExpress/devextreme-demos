@@ -3,7 +3,7 @@ import DataGrid, {
   Column,
   Paging,
   Scrolling,
-  Selection
+  Selection,
 } from 'devextreme-react/data-grid';
 import DropDownBox from 'devextreme-react/drop-down-box';
 

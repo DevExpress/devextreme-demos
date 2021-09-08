@@ -8,6 +8,7 @@ class App extends React.Component {
     this.state = { sliderValue: 10 };
     this.setSliderValue = this.setSliderValue.bind(this);
   }
+
   render() {
     return (
       <div className="form">
@@ -77,6 +78,7 @@ class App extends React.Component {
       </div>
     );
   }
+
   setSliderValue({ value }) {
     this.setState({ sliderValue: value });
   }
