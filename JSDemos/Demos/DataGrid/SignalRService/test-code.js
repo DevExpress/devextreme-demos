@@ -55,6 +55,8 @@ testUtils.importAnd(() => ['devextreme/ui/data_grid', 'devextreme/data/data_sour
     const dataSource = new DataSource(dataSourceItems);
     const dataGrid = dxDataGrid.getInstance(document.querySelector('#gridContainer'));
     dataGrid.option('dataSource', dataSource);
+
+    // ensure, that 'React' can't restore `DataSourse`.
     dataGrid.option = function () {};
     resolve();
   }, 100);
