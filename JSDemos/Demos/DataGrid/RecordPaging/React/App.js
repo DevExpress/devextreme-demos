@@ -3,6 +3,8 @@
 import DataGrid, { Column, Pager, Paging } from 'devextreme-react/data-grid';
 import { customers } from './data.js';
 
+const allowedPageSizes = [5, 10, 20];
+
 class App extends React.Component {
   render() {
     return (
@@ -13,7 +15,7 @@ class App extends React.Component {
         <Paging defaultPageSize={10} />
         <Pager
           showPageSizeSelector={true}
-          allowedPageSizes={[5, 10, 20]}
+          allowedPageSizes={allowedPageSizes}
           showInfo={true} />
 
         <Column dataField="CompanyName" />
