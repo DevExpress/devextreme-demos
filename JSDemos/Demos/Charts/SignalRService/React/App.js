@@ -12,7 +12,7 @@ import Chart, {
   Tooltip,
   Crosshair,
   Margin,
-  HorizontalLine
+  HorizontalLine,
 } from 'devextreme-react/chart';
 import CustomStore from 'devextreme/data/custom_store';
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';

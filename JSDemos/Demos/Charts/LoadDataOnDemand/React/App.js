@@ -18,7 +18,7 @@ import {
 
 const wholeRange = {
   startValue: new Date(2017, 0, 1),
-  endValue: new Date(2017, 11, 31)
+  endValue: new Date(2017, 11, 31),
 };
 
 class App extends React.Component {

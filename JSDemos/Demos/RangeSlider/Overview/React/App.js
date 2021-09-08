@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import RangeSlider, { Tooltip, Label } from 'devextreme-react/range-slider';
 import NumberBox from 'devextreme-react/number-box';
 
@@ -8,7 +8,7 @@ const defaultValues = {
   tooltips: [15, 65],
   withoutRangeHighlighting: [20, 80],
   discreteStep: [20, 70],
-  disabled: [25, 75]
+  disabled: [25, 75],
 };
 
 class App extends React.Component {

@@ -4,7 +4,7 @@ import Item from './Item.js';
 const itemStyle = {
   width: 200,
   padding: 10,
-  fontWeight: 'bold'
+  fontWeight: 'bold',
 };
 
 export default function DragItem({ data }) {

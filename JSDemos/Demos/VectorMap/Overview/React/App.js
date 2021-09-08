@@ -9,7 +9,7 @@ import Map, {
   Subtitle,
   Title,
   Tooltip,
-  Size
+  Size,
 } from 'devextreme-react/vector-map';
 
 import * as mapsData from 'devextreme/dist/js/vectormap-data/world.js';

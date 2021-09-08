@@ -5,7 +5,7 @@ import { products } from './data.js';
 const defaultValues = {
   severalItems: [1, 2, 3, 4],
   allItems: [1, 2, 3, 4, 5],
-  ordinaryTags: [1, 2, 3, 4, 5, 6, 7]
+  ordinaryTags: [1, 2, 3, 4, 5, 6, 7],
 };
 
 class App extends React.Component {

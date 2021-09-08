@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Slider, Label, Tooltip } from 'devextreme-react/slider';
 import { NumberBox } from 'devextreme-react/number-box';
 

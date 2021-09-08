@@ -347,7 +347,7 @@ module.exports = {
       'plugin:react/recommended',
     ],
     plugins: [
-      "react-perf",
+      'react-perf',
     ],
     globals: {
       System: false,
@@ -444,15 +444,15 @@ module.exports = {
       'react-perf/jsx-no-new-object-as-prop': [
         'error',
         {
-          nativeAllowList: 'all'
-        }
+          nativeAllowList: 'all',
+        },
       ],
       'react-perf/jsx-no-new-array-as-prop': [
         'error',
         {
-          nativeAllowList: 'all'
-        }
-      ]
+          nativeAllowList: 'all',
+        },
+      ],
     },
   }, {
     files: ['JSDemos/Demos/**/Vue/*.vue', 'JSDemos/Demos/**/Vue/*.js'],

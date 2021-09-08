@@ -7,7 +7,7 @@ import Chart, {
   Legend,
   Series,
   Tooltip,
-  Margin
+  Margin,
 } from 'devextreme-react/chart';
 
 import { dataSource } from './data.js';

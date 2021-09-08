@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import DataGrid, { Column, Selection } from 'devextreme-react/data-grid';
 import { employees } from './data.js';
 

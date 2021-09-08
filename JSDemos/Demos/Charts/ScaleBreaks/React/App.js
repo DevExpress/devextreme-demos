@@ -5,7 +5,7 @@ import Chart, {
   Series,
   Tooltip,
   ValueAxis,
-  BreakStyle
+  BreakStyle,
 } from 'devextreme-react/chart';
 
 import SelectBox from 'devextreme-react/select-box';

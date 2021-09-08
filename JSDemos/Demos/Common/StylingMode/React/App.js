@@ -10,10 +10,10 @@ import Validator, { RequiredRule } from 'devextreme-react/validator';
 import notify from 'devextreme/ui/notify';
 import validationEngine from 'devextreme/ui/validation_engine';
 
-const stylingModes = [ 'outlined', 'filled', 'underlined' ];
-const statuses = [ 'Not Started', 'Need Assistance', 'In Progress', 'Deferred', 'Completed' ];
+const stylingModes = ['outlined', 'filled', 'underlined'];
+const statuses = ['Not Started', 'Need Assistance', 'In Progress', 'Deferred', 'Completed'];
 const defaultStatus = [statuses[0]];
-const priorities = [ 'High', 'Urgent', 'Normal', 'Low' ];
+const priorities = ['High', 'Urgent', 'Normal', 'Low'];
 
 class App extends React.Component {
   constructor(props) {

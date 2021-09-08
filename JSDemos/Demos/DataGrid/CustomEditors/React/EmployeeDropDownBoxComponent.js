@@ -14,7 +14,7 @@ export default class EmployeeDropDownBoxComponent extends React.Component {
     super(props);
     this.state = {
       selectedRowKeys: [props.data.value],
-      isDropDownOpened: false
+      isDropDownOpened: false,
     };
     this.onSelectionChanged = this.onSelectionChanged.bind(this);
     this.contentRender = this.contentRender.bind(this);
@@ -24,7 +24,7 @@ export default class EmployeeDropDownBoxComponent extends React.Component {
   boxOptionChanged(e) {
     if (e.name === 'opened') {
       this.setState({
-        isDropDownOpened: e.value
+        isDropDownOpened: e.value,
       });
     }
   }
@@ -54,7 +54,7 @@ export default class EmployeeDropDownBoxComponent extends React.Component {
   onSelectionChanged(selectionChangedArgs) {
     this.setState({
       selectedRowKeys: selectionChangedArgs.selectedRowKeys,
-      isDropDownOpened: false
+      isDropDownOpened: false,
     });
     this.props.data.setValue(this.state.selectedRowKeys[0]);
   }

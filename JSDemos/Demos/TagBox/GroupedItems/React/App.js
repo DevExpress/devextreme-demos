@@ -8,7 +8,7 @@ import productsData from './data.js';
 const defaultValues = {
   grouped: [17, 19],
   search: [17, 19],
-  template: [18]
+  template: [18],
 };
 
 class App extends React.Component {
