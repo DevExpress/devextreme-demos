@@ -284,7 +284,6 @@ module.exports = {
     'prefer-destructuring': 0, // keep this
     'consistent-return': 0, // TODO error (was error)
     'no-void': 0, // TODO error (was error)
-    'prefer-rest-params': 0, // TODO error (was error)
     'import/order': 0, // TODO error (was error)
     'import/no-webpack-loader-syntax': 0,
     'import/no-unresolved': 0,
