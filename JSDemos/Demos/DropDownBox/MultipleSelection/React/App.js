@@ -79,7 +79,7 @@ class App extends React.Component {
   treeViewRender() {
     return (
       <TreeView dataSource={this.treeDataSource}
-        ref={(ref) => this.treeView = ref}
+        ref={(ref) => { this.treeView = ref; }}
         dataStructure="plain"
         keyExpr="ID"
         parentIdExpr="categoryId"
@@ -145,7 +145,7 @@ class App extends React.Component {
 
   dataGridOnSelectionChanged(e) {
     this.setState({
-      gridBoxValue: e.selectedRowKeys.length && e.selectedRowKeys || [],
+      gridBoxValue: (e.selectedRowKeys.length && e.selectedRowKeys) || [],
     });
   }
 }

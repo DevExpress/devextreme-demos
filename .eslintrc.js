@@ -275,23 +275,16 @@ module.exports = {
       return spellcheckRule;
     })(),
     'class-methods-use-this': 0, // TODO warn (was error)
-    'func-names': 0, // TODO warn (was warn)
+    'func-names': 0, // TODO warn (was warn) >500
     'import/extensions': 0, // TODO does not work if remove extension (was error)
     'no-use-before-define': 0, // keep this
     'vars-on-top': 0, // TODO error (was error)
-    'no-unused-expressions': 0, // TODO error (was error)
-    'no-param-reassign': 0, // TODO error (was error)
-    'no-return-assign': 0, // TODO error (was error)
-    'no-multi-assign': 0, // TODO error (was error)
+    'no-param-reassign': 0, // TODO error (was error) >430
     'max-len': 0, // TODO error (was error)
-    'no-shadow': 0, // TODO error (was error)
     'prefer-destructuring': 0, // TODO error (was error)
     'default-case': 0, // TODO error (was error)
-    'no-sequences': 0, // TODO error (was error)
     'consistent-return': 0, // TODO error (was error)
     'no-throw-literal': 0, // TODO error (was error)
-    'no-mixed-operators': 0, // TODO error (was error)
-    'radix': 0, // TODO error (was error)
     'no-void': 0, // TODO error (was error)
     'prefer-rest-params': 0, // TODO error (was error)
     'import/order': 0, // TODO error (was error)
