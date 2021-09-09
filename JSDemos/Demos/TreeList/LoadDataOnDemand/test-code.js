@@ -1,4 +1,4 @@
-testUtils.importAnd(() => 'devextreme/ui/tree_list', () => DevExpress.ui.dxTreeList, (dxTreeList) => testUtils.postponeUntilFound().then(() => new Promise((resolve) => {
+testUtils.importAnd(() => 'devextreme/ui/tree_list', () => DevExpress.ui.dxTreeList, (dxTreeList) => testUtils.postponeUntilFound('#treelist').then(() => new Promise((resolve) => {
   const instance = dxTreeList.getInstance(document.getElementById('treelist'));
   const timeoutId = setTimeout(resolve, 30000);
   instance.option('onContentReady', () => {
