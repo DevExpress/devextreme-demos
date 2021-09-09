@@ -136,7 +136,6 @@ class App extends React.Component {
       eventName === 'PullDown'
         ? this.state.content.unshift(updateContentText)
         : this.state.content.push(updateContentText);
-        console.log(this.state.content)
       this.setState({
         content: this.state.content,
       });
