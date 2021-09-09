@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import DataGrid, {
   Column,
@@ -7,7 +7,7 @@ import DataGrid, {
   Paging,
   SearchPanel,
   Toolbar,
-  Item
+  Item,
 } from 'devextreme-react/data-grid';
 import Button from 'devextreme-react/button';
 import { customers } from './data.js';
@@ -21,12 +21,13 @@ export default function App() {
   const dataGridRef = React.createRef();
 
   const exportGrid = React.useCallback(() => {
+    // eslint-disable-next-line new-cap
     const doc = new jsPDF();
     const dataGrid = dataGridRef.current.instance;
 
     exportDataGridToPdf({
       jsPDFDocument: doc,
-      component: dataGrid
+      component: dataGrid,
     }).then(() => {
       doc.save('Customers.pdf');
     });

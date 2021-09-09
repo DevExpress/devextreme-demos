@@ -1,5 +1,5 @@
-﻿import React from 'react';
-import DataGrid, { Column } from 'devextreme-react/data-grid';
+import React from 'react';
+import DataGrid, { Column, Selection } from 'devextreme-react/data-grid';
 import { employees } from './data.js';
 
 class App extends React.Component {
@@ -9,7 +9,7 @@ class App extends React.Component {
     this.state = {
       showEmployeeInfo: false,
       selectedRowPicture: '',
-      selectedRowNotes: ''
+      selectedRowNotes: '',
     };
 
     this.onSelectionChanged = this.onSelectionChanged.bind(this);
@@ -20,12 +20,12 @@ class App extends React.Component {
       <React.Fragment>
         <DataGrid
           dataSource={employees}
-          selection={{ mode: 'single' }}
           showBorders={true}
           hoverStateEnabled={true}
           keyExpr="ID"
           onSelectionChanged={this.onSelectionChanged}
         >
+          <Selection mode="single" />
           <Column dataField="Prefix" caption="Title" width={70} />
           <Column dataField="FirstName" />
           <Column dataField="LastName" />
@@ -34,8 +34,8 @@ class App extends React.Component {
           <Column dataField="HireDate" dataType="date" />
         </DataGrid>
         {
-          this.state.showEmployeeInfo &&
-          <div id="employee-info">
+          this.state.showEmployeeInfo
+          && <div id="employee-info">
             <img src={this.state.selectedRowPicture} className="employee-photo" />
             <p className="employee-notes">{this.state.selectedRowNotes}</p>
           </div>
@@ -50,10 +50,9 @@ class App extends React.Component {
     this.setState({
       showEmployeeInfo: !!data,
       selectedRowNotes: data && data.Notes,
-      selectedRowPicture: data && data.Picture
+      selectedRowPicture: data && data.Picture,
     });
   }
-
 }
 
 export default App;

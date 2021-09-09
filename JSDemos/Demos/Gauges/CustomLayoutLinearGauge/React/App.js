@@ -1,14 +1,17 @@
 import React from 'react';
-import { LinearGauge, Scale, Tick, Label, RangeContainer, Range, ValueIndicator, SubvalueIndicator, Export, Title, Font } from 'devextreme-react/linear-gauge';
+import {
+  LinearGauge, Scale, Tick, Label, RangeContainer, Range, ValueIndicator, SubvalueIndicator, Export, Title, Font,
+} from 'devextreme-react/linear-gauge';
+
+const subValues = [5, 25];
 
 class App extends React.Component {
-
   render() {
     return (
       <LinearGauge
         id="gauge"
         value={17}
-        subvalues={[5, 25]}
+        subvalues={subValues}
       >
         <Scale startValue={0} endValue={30} tickInterval={5}>
           <Tick color="#536878" />
