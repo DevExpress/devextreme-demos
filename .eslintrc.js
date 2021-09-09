@@ -278,7 +278,6 @@ module.exports = {
     'func-names': 0, // TODO warn (was warn) >500
     'import/extensions': 0, // TODO does not work if remove extension (was error)
     'no-use-before-define': 0, // keep this
-    'vars-on-top': 0, // TODO error (was error)
     'no-param-reassign': 0, // TODO error (was error) >430
     'max-len': 0, // TODO error (was error)
     'prefer-destructuring': 0, // keep this
