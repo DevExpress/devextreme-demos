@@ -278,15 +278,10 @@ module.exports = {
     'func-names': 0, // TODO warn (was warn) >500
     'import/extensions': 0, // TODO does not work if remove extension (was error)
     'no-use-before-define': 0, // keep this
-    'vars-on-top': 0, // TODO error (was error)
     'no-param-reassign': 0, // TODO error (was error) >430
     'max-len': 0, // TODO error (was error)
     'prefer-destructuring': 0, // keep this
-    'consistent-return': 0, // TODO error (was error)
-    'prefer-rest-params': 0, // TODO error (was error)
     'import/order': 0, // TODO error (was error)
-    'import/no-webpack-loader-syntax': 0,
-    'import/no-unresolved': 0,
   },
   extends: [
     'eslint:recommended',
