@@ -236,8 +236,8 @@ testUtils.importAnd(() => 'devextreme/ui/tree_list', () => DevExpress.ui.dxTreeL
 
   // NOTE: Ensure, that 'React' can't restore `DataSourse`.
   const option = instance.option;
-  instance.option = function () {
-    if (arguments[0] !== 'dataSource') {
+  instance.option = function (...args) {
+    if (args[0] !== 'dataSource') {
       return option.apply(this, arguments);
     }
   };
