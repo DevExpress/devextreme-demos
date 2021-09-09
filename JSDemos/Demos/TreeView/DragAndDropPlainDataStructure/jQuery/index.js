@@ -70,7 +70,7 @@ function getTreeView(driveName) {
 }
 
 function calculateToIndex(e) {
-  if (e.fromComponent != e.toComponent || e.dropInsideItem) {
+  if (e.fromComponent !== e.toComponent || e.dropInsideItem) {
     return e.toIndex;
   }
 
@@ -88,8 +88,8 @@ function findNode(treeView, index) {
 }
 
 function findNodeById(nodes, id) {
-  for (let i = 0; i < nodes.length; i++) {
-    if (nodes[i].itemData.id == id) {
+  for (let i = 0; i < nodes.length; i += 1) {
+    if (nodes[i].itemData.id === id) {
       return nodes[i];
     }
     if (nodes[i].children) {
@@ -146,7 +146,7 @@ function getTopVisibleNode(component) {
   const treeViewElement = component.element().get(0);
   const treeViewTopPosition = treeViewElement.getBoundingClientRect().top;
   const nodes = treeViewElement.querySelectorAll('.dx-treeview-node');
-  for (let i = 0; i < nodes.length; i++) {
+  for (let i = 0; i < nodes.length; i += 1) {
     const nodeTopPosition = nodes[i].getBoundingClientRect().top;
     if (nodeTopPosition >= treeViewTopPosition) {
       return nodes[i];

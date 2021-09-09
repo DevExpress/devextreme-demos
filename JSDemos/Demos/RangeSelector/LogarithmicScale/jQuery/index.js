@@ -2,8 +2,8 @@ $(() => {
   const dataSource = [];
   const max = 100;
 
-  for (let i = 0; i < max; i++) {
-    dataSource.push({ arg: Math.pow(10, i * 0.1), val: Math.log(i + 1) / Math.log(0.5) + (Math.random() - 0.5) * (100 / (i + 1)) + 10 });
+  for (let i = 0; i < max; i += 1) {
+    dataSource.push({ arg: 10 ** i * 0.1, val: Math.log(i + 1) / Math.log(0.5) + (Math.random() - 0.5) * (100 / (i + 1)) + 10 });
   }
 
   $('#zoomed-chart').dxChart({

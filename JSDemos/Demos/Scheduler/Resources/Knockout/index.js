@@ -20,8 +20,8 @@ window.onload = function () {
   const changeMainColor = function () {
     const resourcesData = resources();
 
-    for (let i = 0; i < resourcesData.length; i++) {
-      resourcesData[i].useColorAsDefault = resourcesData[i].label == selectedResource();
+    for (let i = 0; i < resourcesData.length; i += 1) {
+      resourcesData[i].useColorAsDefault = resourcesData[i].label === selectedResource();
     }
     resources(resourcesData);
   };

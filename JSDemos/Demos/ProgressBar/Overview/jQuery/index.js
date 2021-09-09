@@ -17,7 +17,7 @@ $(() => {
     },
   }).dxProgressBar('instance');
 
-  var progressButton = $('#progress-button').dxButton({
+  const progressButton = $('#progress-button').dxButton({
     text: 'Start progress',
     width: 200,
     onClick() {
@@ -40,7 +40,7 @@ $(() => {
   }
 
   function timer() {
-    seconds--;
+    seconds -= 1;
     setCurrentStatus();
     if (seconds === 0) {
       clearInterval(intervalId);
