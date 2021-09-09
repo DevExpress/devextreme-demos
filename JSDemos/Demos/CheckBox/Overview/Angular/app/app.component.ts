@@ -13,9 +13,7 @@ if(!/localhost/.test(document.location.host)) {
     styleUrls: ['app/app.component.css']
 })
 export class AppComponent {
-    checkBoxValue: boolean;
-    indeterminateValue: boolean;
-    customSizeCheckBoxValue: boolean;
+    checkBoxValue: boolean | null = null;
 }
 
 @NgModule({

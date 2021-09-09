@@ -8,30 +8,28 @@ $(() => {
   });
 
   $('#indeterminate').dxCheckBox({
-    value: undefined,
+    value: null,
   });
 
   $('#handler').dxCheckBox({
-    value: undefined,
+    value: null,
     onValueChanged(data) {
       disabledCheckbox.option('value', data.value);
     },
   });
 
   var disabledCheckbox = $('#disabled').dxCheckBox({
-    value: undefined,
+    value: null,
     disabled: true,
   }).dxCheckBox('instance');
 
-  $('#withText').dxCheckBox({
-    value: true,
-    width: 80,
-    text: 'Check',
+  $('#customSize').dxCheckBox({
+    value: null,
+    iconSize: 30,
   });
 
-  $('#customSize').dxCheckBox({
-    value: undefined,
-    iconSize: 50,
-    text: 'Centered label',
+  $('#withText').dxCheckBox({
+    value: true,
+    text: 'Label',
   });
 });

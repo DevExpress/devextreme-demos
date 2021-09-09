@@ -16,11 +16,11 @@
       <div class="dx-field">
         <div class="dx-field-label">Indeterminate</div>
         <div class="dx-field-value">
-          <DxCheckBox v-model:value="undefined"/>
+          <DxCheckBox :value="null"/>
         </div>
       </div>
       <div class="dx-field">
-        <div class="dx-field-label">Value change handling</div>
+        <div class="dx-field-label">Handle value change</div>
         <div class="dx-field-value">
           <DxCheckBox v-model:value="checkBoxValue"/>
         </div>
@@ -35,22 +35,20 @@
         </div>
       </div>
       <div class="dx-field">
-        <div class="dx-field-label">With label</div>
+        <div class="dx-field-label">Custom size</div>
         <div class="dx-field-value">
           <DxCheckBox
-            :value="true"
-            :width="80"
-            text="Check"
+            :value="null"
+            :icon-size="30"
           />
         </div>
       </div>
       <div class="dx-field">
-        <div class="dx-field-label">Custom size</div>
+        <div class="dx-field-label">With label</div>
         <div class="dx-field-value">
           <DxCheckBox
-            v-model:value="undefined"
-            :icon-size="50"
-            text="Centered label"
+            :value="true"
+            text="Label"
           />
         </div>
       </div>
@@ -66,7 +64,7 @@ export default {
   },
   data() {
     return {
-      checkBoxValue: undefined,
+      checkBoxValue: null,
     };
   },
 };
