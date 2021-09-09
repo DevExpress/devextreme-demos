@@ -281,8 +281,7 @@ module.exports = {
     'vars-on-top': 0, // TODO error (was error)
     'no-param-reassign': 0, // TODO error (was error) >430
     'max-len': 0, // TODO error (was error)
-    'prefer-destructuring': 0, // TODO error (was error)
-    'default-case': 0, // TODO error (was error)
+    'prefer-destructuring': 0, // keep this
     'consistent-return': 0, // TODO error (was error)
     'no-void': 0, // TODO error (was error)
     'prefer-rest-params': 0, // TODO error (was error)
