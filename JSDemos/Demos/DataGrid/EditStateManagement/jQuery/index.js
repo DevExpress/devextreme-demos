@@ -96,6 +96,7 @@ $(() => {
       case 'remove':
         return sendRequest(`${url}/DeleteOrder`, 'DELETE', { key: change.key });
       default:
+        break;
     }
   }
 
