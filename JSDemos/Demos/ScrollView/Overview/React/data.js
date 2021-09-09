@@ -5,11 +5,6 @@ for (let i = 0; i < 10; i += 1) {
 
 export default {
   getContent() {
-    return {
-      longText,
-      top: [],
-      bottom: [],
-    };
+    return longText;
   },
 };
-
