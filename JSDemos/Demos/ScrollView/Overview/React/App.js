@@ -43,6 +43,7 @@ class App extends React.Component {
           <div className="text-content">
             <TextParagraph textArray={content.top} />
             <TextParagraph textArray={content.longText} />
+            <br />
             <TextParagraph textArray={content.bottom} />
           </div>
         </ScrollView>
