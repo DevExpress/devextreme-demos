@@ -11,7 +11,7 @@ $(() => {
       enabled: false,
     },
     onCellClick(e) {
-      if (e.area == 'data') {
+      if (e.area === 'data') {
         const pivotGridDataSource = e.component.getDataSource();
         const rowPathLength = e.cell.rowPath.length;
         const rowPathName = e.cell.rowPath[rowPathLength - 1];
@@ -49,7 +49,7 @@ $(() => {
     },
   });
 
-  var salesPopup = $('#sales-popup').dxPopup({
+  const salesPopup = $('#sales-popup').dxPopup({
     width: 600,
     height: 400,
     contentTemplate(contentElement) {

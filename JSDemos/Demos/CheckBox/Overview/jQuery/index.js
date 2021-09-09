@@ -18,7 +18,7 @@ $(() => {
     },
   });
 
-  var disabledCheckbox = $('#disabled').dxCheckBox({
+  const disabledCheckbox = $('#disabled').dxCheckBox({
     value: null,
     disabled: true,
   }).dxCheckBox('instance');

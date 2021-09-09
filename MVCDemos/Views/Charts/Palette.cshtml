@@ -34,33 +34,35 @@
 
 <div class="options">
     <div class="caption">Options</div>
-    <div class="option">
-        <span>Palette</span>
-        @(Html.DevExtreme().SelectBox()
-            .Value("Material")
-            .Items(new[] { "Material", "Soft Pastel", "Harmony Light", "Pastel", "Bright", "Soft", "Ocean", "Office", "Vintage", "Violet", "Carmine", "Dark Moon", "Soft Blue", "Dark Violet", "Green Mist" })
-            .OnValueChanged(@<text>
-                function(e) {
-                    $("#pie").dxPieChart({
-                        palette: e.value
-                    });
-                }
-            </text>)
-        )
-    </div>
-    <div class="option">
-        <span>Palette Extension Mode</span>
-        @(Html.DevExtreme()
-            .SelectBox()
-            .Value("Blend")
-            .Items(Enum.GetNames(typeof(VizPaletteExtensionMode)))
-            .OnValueChanged(@<text>
-                function(e) {
-                    $("#pie").dxPieChart({
-                        paletteExtensionMode: e.value.toLowerCase()
-                    });
-                }
-            </text>)
-        )
+    <div class="options-container">
+        <div class="option">
+            <span>Palette</span>
+            @(Html.DevExtreme().SelectBox()
+                .Value("Material")
+                .Items(new[] { "Material", "Soft Pastel", "Harmony Light", "Pastel", "Bright", "Soft", "Ocean", "Office", "Vintage", "Violet", "Carmine", "Dark Moon", "Soft Blue", "Dark Violet", "Green Mist" })
+                .OnValueChanged(@<text>
+                    function(e) {
+                        $("#pie").dxPieChart({
+                            palette: e.value
+                        });
+                    }
+                </text>)
+            )
+        </div>
+        <div class="option">
+            <span>Palette Extension Mode</span>
+            @(Html.DevExtreme()
+                .SelectBox()
+                .Value("Blend")
+                .Items(Enum.GetNames(typeof(VizPaletteExtensionMode)))
+                .OnValueChanged(@<text>
+                    function(e) {
+                        $("#pie").dxPieChart({
+                            paletteExtensionMode: e.value.toLowerCase()
+                        });
+                    }
+                </text>)
+            )
+        </div>
     </div>
 </div>
