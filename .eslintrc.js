@@ -279,7 +279,6 @@ module.exports = {
     'import/extensions': 0, // TODO does not work if remove extension (was error)
     'no-use-before-define': 0, // keep this
     'vars-on-top': 0, // TODO error (was error)
-    'no-unused-expressions': 0, // TODO error (was error)
     'no-param-reassign': 0, // TODO error (was error)
     'no-return-assign': 0, // TODO error (was error)
     'no-multi-assign': 0, // TODO error (was error)
