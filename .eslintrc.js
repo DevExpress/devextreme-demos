@@ -283,8 +283,6 @@ module.exports = {
     'prefer-destructuring': 0, // keep this
     'no-void': 0, // TODO error (was error)
     'import/order': 0, // TODO error (was error)
-    'import/no-webpack-loader-syntax': 0,
-    'import/no-unresolved': 0,
   },
   extends: [
     'eslint:recommended',
