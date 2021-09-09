@@ -282,7 +282,6 @@ module.exports = {
     'no-param-reassign': 0, // TODO error (was error)
     'no-return-assign': 0, // TODO error (was error)
     'max-len': 0, // TODO error (was error)
-    'no-shadow': 0, // TODO error (was error)
     'prefer-destructuring': 0, // TODO error (was error)
     'default-case': 0, // TODO error (was error)
     'consistent-return': 0, // TODO error (was error)
