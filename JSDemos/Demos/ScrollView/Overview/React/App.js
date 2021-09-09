@@ -41,10 +41,9 @@ class App extends React.Component {
           showScrollbar={showScrollBarMode}
           scrollByThumb={scrollByThumb}>
           <div className="text-content">
-            {content.top.map((updateContentText, index) => <p key={index}>{updateContentText}</p>)}
-            {content.longText.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-            <br />
-            {content.bottom.map((updateContentText, index) => <p key={index}>{updateContentText}</p>)}
+            <TextParagraph textArray={content.top} />
+            <TextParagraph textArray={content.longText} />
+            <TextParagraph textArray={content.bottom} />
           </div>
         </ScrollView>
         <div className="options">
@@ -160,5 +159,11 @@ const showScrollbarModes = [{
   text: 'Never',
   value: 'never',
 }];
+
+function TextParagraph(content) {
+  const textArray = content.textArray;
+  const res = textArray.map((text, index) => <p key={index}>{text}</p>);
+  return (<div>{res}</div>);
+}
 
 export default App;
