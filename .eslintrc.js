@@ -282,7 +282,6 @@ module.exports = {
     'no-unused-expressions': 0, // TODO error (was error)
     'no-param-reassign': 0, // TODO error (was error)
     'no-return-assign': 0, // TODO error (was error)
-    'no-multi-assign': 0, // TODO error (was error)
     'max-len': 0, // TODO error (was error)
     'no-shadow': 0, // TODO error (was error)
     'prefer-destructuring': 0, // TODO error (was error)
