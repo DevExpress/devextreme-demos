@@ -41,8 +41,11 @@ $(() => {
       },
     },
     onLegendClick(e) {
-      if (e.target.isVisible()) e.target.hide();
-      else e.target.show();
+      if (e.target.isVisible()) {
+        e.target.hide();
+      } else {
+        e.target.show();
+      }
     },
   });
 });
