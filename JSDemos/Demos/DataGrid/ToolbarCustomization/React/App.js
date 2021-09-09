@@ -29,6 +29,7 @@ class App extends React.Component {
     this.groupChanged = this.groupChanged.bind(this);
     this.collapseAllClick = this.collapseAllClick.bind(this);
     this.refreshDataGrid = this.refreshDataGrid.bind(this);
+    this.getRef = this.getRef.bind(this);
   }
 
   getGroupCount(groupField) {
