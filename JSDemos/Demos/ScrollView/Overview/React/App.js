@@ -41,7 +41,10 @@ class App extends React.Component {
           showScrollbar={showScrollBarMode}
           scrollByThumb={scrollByThumb}>
           <div className="text-content">
-            {content}
+            {content.top.map((updateContentText, index) => <p key={index}>{updateContentText}</p>)}
+            {content.longText.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+            <br />
+            {content.bottom.map((updateContentText, index) => <p key={index}>{updateContentText}</p>)}
           </div>
         </ScrollView>
         <div className="options">
@@ -133,8 +136,11 @@ class App extends React.Component {
     const updateContentText = `\n Content has been updated on the ${eventName} event.\n\n`;
     if (this.updateContentTimer) { clearTimeout(this.updateContentTimer); }
     this.updateContentTimer = setTimeout(() => {
+      eventName === 'PullDown'
+        ? this.state.content.top.push(updateContentText)
+        : this.state.content.bottom.push(updateContentText);
       this.setState({
-        content: eventName === 'PullDown' ? updateContentText + this.state.content : this.state.content + updateContentText,
+        content: this.state.content,
       });
       args.component.release();
     }, 500);
