@@ -3,11 +3,9 @@ import {
   LinearGauge, Scale, Label, SubvalueIndicator,
 } from 'devextreme-react/linear-gauge';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const subValues = [18, 43];
 
+class App extends React.Component {
   render() {
     return (
       <div>
@@ -18,7 +16,7 @@ class App extends React.Component {
           <LinearGauge
             id="c1"
             value={24}
-            subvalues={[18, 43]}
+            subvalues={subValues}
           >
             <Scale
               startValue={10}
@@ -35,7 +33,7 @@ class App extends React.Component {
           <LinearGauge
             id="c2"
             value={38}
-            subvalues={[18, 43]}
+            subvalues={subValues}
           >
             <Scale
               startValue={10}
@@ -52,7 +50,7 @@ class App extends React.Component {
           <LinearGauge
             id="c3"
             value={21}
-            subvalues={[18, 43]}
+            subvalues={subValues}
           >
             <Scale
               startValue={10}
@@ -69,7 +67,7 @@ class App extends React.Component {
           <LinearGauge
             id="c4"
             value={42}
-            subvalues={[18, 43]}
+            subvalues={subValues}
           >
             <Scale
               startValue={10}
@@ -85,7 +83,7 @@ class App extends React.Component {
           </LinearGauge>
           <LinearGauge id="c5"
             value={28}
-            subvalues={[18, 43]}
+            subvalues={subValues}
           >
             <Scale
               startValue={10}
