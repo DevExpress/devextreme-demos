@@ -235,7 +235,7 @@ testUtils.importAnd(() => 'devextreme/ui/tree_list', () => DevExpress.ui.dxTreeL
 
   const option = instance.option;
   instance.option = function () {
-    if (arguments.length === 1) {
+    if (arguments[0] !== 'dataSource' && arguments.length !== 2) {
       return option.apply(this, arguments);
     }
   };
