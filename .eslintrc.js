@@ -284,7 +284,6 @@ module.exports = {
     'prefer-destructuring': 0, // TODO error (was error)
     'default-case': 0, // TODO error (was error)
     'consistent-return': 0, // TODO error (was error)
-    'no-throw-literal': 0, // TODO error (was error)
     'no-void': 0, // TODO error (was error)
     'prefer-rest-params': 0, // TODO error (was error)
     'import/order': 0, // TODO error (was error)
