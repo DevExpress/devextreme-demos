@@ -281,7 +281,6 @@ module.exports = {
     'no-param-reassign': 0, // TODO error (was error) >430
     'max-len': 0, // TODO error (was error)
     'prefer-destructuring': 0, // keep this
-    'no-void': 0, // TODO error (was error)
   },
   extends: [
     'eslint:recommended',
