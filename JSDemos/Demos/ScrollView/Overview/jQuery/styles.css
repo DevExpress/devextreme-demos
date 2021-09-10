@@ -10,7 +10,7 @@
     padding: 20px;  
 }
 
-#scrollview-content > div {
+#scrollview-content {
     white-space: pre-wrap;
 }
 
