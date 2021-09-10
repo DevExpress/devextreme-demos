@@ -8,7 +8,7 @@
     margin-right: 320px;
 }
 
-.editors .left {
+.editors .left, .editors .right {
     display: inline-block;
     width: 49%;
     padding-right: 20px;
@@ -16,10 +16,7 @@
 }
 
 .editors .right {
-    display: inline-block;
-    width: 49%;
     padding-right: 27px;
-    box-sizing: border-box;
 }
 
 .editors .left > div, .editors .right > div, .editors .center > div {

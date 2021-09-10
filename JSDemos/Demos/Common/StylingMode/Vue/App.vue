@@ -125,7 +125,7 @@ export default {
     margin-right: 320px;
 }
 
-.editors .left {
+.editors .left, .editors .right {
     display: inline-block;
     width: 49%;
     padding-right: 20px;
@@ -133,10 +133,7 @@ export default {
 }
 
 .editors .right {
-    display: inline-block;
-    width: 49%;
     padding-right: 27px;
-    box-sizing: border-box;
 }
 
 .editors .left > *, .editors .right > *, .editors .center > * {
