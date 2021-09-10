@@ -37,17 +37,18 @@ function App() {
     }
   }
 
+  const closeHandler = React.useCallback((data) => {
+    return () => closeButtonHandler(data);
+  });
+
   const renderTitle = React.useCallback((data) => {
-    const closeHandler = React.useCallback((data) => {
-      closeButtonHandler(data);
-    });
     return (
       <React.Fragment>
         <div>
           <span>
             {data.FirstName} {data.LastName}
           </span>
-          {employees.length >= 2 && <i className="dx-icon dx-icon-close" onClick={closeHandler} />}
+          {employees.length >= 2 && <i className="dx-icon dx-icon-close" onClick={closeHandler(data)} />}
         </div>
       </React.Fragment>
     );
