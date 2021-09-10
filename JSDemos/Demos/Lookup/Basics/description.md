@@ -42,6 +42,8 @@ The Lookup can also work with initially grouped data items. In this case, the da
 
 If data objects are grouped but use other field names, implement the **DataSource**'s [map](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#map) function to create **key** + **items** field mappings.
 
+[note]Only one-level grouping is supported.
+
 Regardless of the data source structure, enable the [grouped](/Documentation/ApiReference/UI_Components/dxSelectBox/Configuration/#grouped) property.
 
 ### Configure the Drop-Down List

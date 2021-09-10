@@ -20,6 +20,8 @@ The SelectBox can also work with initially grouped data items. In this case, the
 
 If data objects are grouped but use other field names, implement the **DataSource**'s [map](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#map) function to create **key** + **items** field mappings as in this demo's second SelectBox.
 
+[note]Only one-level grouping is supported.
+
 Regardless of the data source structure, enable the [grouped](/Documentation/ApiReference/UI_Components/dxSelectBox/Configuration/#grouped) property.
 
 If the data source contains objects, specify the following SelectBox properties:
@@ -31,5 +33,3 @@ A data field that contains unique values used to identify items.
 A data field whose values should be displayed in the drop-down list.
 
 If you need to specify a custom template for group captions, use the [groupTemplate](/Documentation/ApiReference/UI_Components/dxSelectBox/Configuration/#groupTemplate) property. In this demo, each caption contains an icon and a text.
-
-[note]Only one-level grouping is supported.
