@@ -34,7 +34,7 @@ function updateChanges(value, options) {
 
 describe('Matrix test helper tests', () => {
   beforeAll(() => {
-    process.env.ENABLE_DEMO_TEST_SETTINGS = true;
+    process.env.CI_ENV = 'true';
     process.env.CHANGEDFILEINFOSPATH = 'changed-files.json';
   });
 

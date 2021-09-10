@@ -4,7 +4,7 @@ testUtils.importAnd(() => ['devextreme/ui/data_grid', 'devextreme/data/data_sour
     i += 1;
     if (i === 200) {
       clearInterval(intervalId);
-      throw 'timeout';
+      throw new Error('timeout');
     }
     if (!dxDataGrid.getInstance(document.querySelector('#gridContainer'))) return;
 
@@ -53,7 +53,11 @@ testUtils.importAnd(() => ['devextreme/ui/data_grid', 'devextreme/data/data_sour
     }
 
     const dataSource = new DataSource(dataSourceItems);
-    dxDataGrid.getInstance(document.querySelector('#gridContainer')).option('dataSource', dataSource);
+    const dataGrid = dxDataGrid.getInstance(document.querySelector('#gridContainer'));
+    dataGrid.option('dataSource', dataSource);
+
+    // NOTE: Ensure, that 'React' can't restore `DataSourse`.
+    dataGrid.option = function () {};
     resolve();
   }, 100);
 }));

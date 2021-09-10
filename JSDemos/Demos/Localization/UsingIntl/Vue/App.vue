@@ -58,7 +58,8 @@
   </div>
 </template>
 <script>
-
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-webpack-loader-syntax */
 import {
   DxDataGrid, DxColumn, DxEditing, DxFilterRow,
 } from 'devextreme-vue/data-grid';
@@ -96,11 +97,11 @@ export default {
   },
   methods: {
     getLocale() {
-      const locale = sessionStorage.getItem('locale');
-      return locale != null ? locale : 'en';
+      const storageLocale = sessionStorage.getItem('locale');
+      return storageLocale != null ? storageLocale : 'en';
     },
-    setLocale(locale) {
-      sessionStorage.setItem('locale', locale);
+    setLocale(savingLocale) {
+      sessionStorage.setItem('locale', savingLocale);
     },
     initMessages() {
       loadMessages(deMessages);

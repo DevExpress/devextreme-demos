@@ -64,11 +64,12 @@ function customAlgorithm(arg) {
   let side = 0;
 
   arg.items.forEach((item) => {
-    const size = Math.round((totalRect[side + 2] - totalRect[side]) * item.value / totalSum);
+    const size = Math.round(((totalRect[side + 2] - totalRect[side]) * item.value) / totalSum);
     const rect = totalRect.slice();
 
     totalSum -= item.value;
-    rect[side + 2] = totalRect[side] += size;
+    totalRect[side] += size;
+    rect[side + 2] = totalRect[side];
     item.rect = rect;
     side = 1 - side;
   });
@@ -89,7 +90,7 @@ function customizeTooltip(arg) {
 
   return {
     text: arg.node.isLeaf()
-      ? `<span class='country'>${parentData.name}</span><br />${data.name}<br />${arg.valueText}(${(100 * data.value / parentData.total).toFixed(1)}%)`
+      ? `<span class='country'>${parentData.name}</span><br />${data.name}<br />${arg.valueText}(${((100 * data.value) / parentData.total).toFixed(1)}%)`
       : `<span class='country'>${data.name}</span>`,
   };
 }

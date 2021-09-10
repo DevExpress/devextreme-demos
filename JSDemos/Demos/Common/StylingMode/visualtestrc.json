@@ -1,6 +1,8 @@
 {
     "$schema": "../../../../testing/visualtestrc-schema.json",
-    "angular": {
+    "vue": {
         "ignore": true
+    },
+    "comparison-options": {
     }
 }
