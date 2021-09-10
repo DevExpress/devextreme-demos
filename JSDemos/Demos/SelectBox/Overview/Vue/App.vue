@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <div class="dx-fieldset">
@@ -117,6 +118,7 @@ export default {
 };
 </script>
 <style scoped>
+/* eslint-disable-next-line max-len */
 .dx-dropdownlist-popup-wrapper .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item-content {
     padding-left: 7px;
     padding-right: 7px;
