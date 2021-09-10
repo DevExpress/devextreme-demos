@@ -13,13 +13,13 @@ function App() {
   const [employees, setEmployees] = React.useState(allEmployees.slice(0, 3));
   const [selectedItem, setSelectedItem] = React.useState(allEmployees[0]);
 
-  function addButtonHandler() {
+  const addButtonHandler = React.useCallback(() => {
     const newItem = allEmployees
       .filter((employee) => employees.indexOf(employee) === -1)[0];
 
     setEmployees([...employees, newItem]);
     setSelectedItem(newItem);
-  }
+  });
 
   function disableButton() {
     return employees.length === allEmployees.length;
@@ -37,10 +37,10 @@ function App() {
     }
   }
 
-  function renderTitle(data) {
-    function closeHandler() {
+  const renderTitle = React.useCallback((data) => {
+    const closeHandler = React.useCallback((data) => {
       closeButtonHandler(data);
-    }
+    });
     return (
       <React.Fragment>
         <div>
@@ -51,24 +51,24 @@ function App() {
         </div>
       </React.Fragment>
     );
-  }
+  });
 
-  function onSelectionChanged(args) {
+  const onSelectionChanged = React.useCallback((args) => {
     setSelectedItem(args.addedItems[0]);
-  }
+  });
 
-  function onTabDragStart(e) {
+  const onTabDragStart = React.useCallback((e) => {
     e.itemData = e.fromData[e.fromIndex];
-  }
+  });
 
-  function onTabDrop(e) {
+  const onTabDrop = React.useCallback((e) => {
     const newEmployees = [...employees];
 
     newEmployees.splice(e.fromIndex, 1);
     newEmployees.splice(e.toIndex, 0, e.itemData);
 
     setEmployees(newEmployees);
-  }
+  });
 
   return (
     <React.Fragment>

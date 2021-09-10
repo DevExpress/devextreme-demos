@@ -42,7 +42,7 @@ const dataSource = new PivotGridDataSource({
 });
 
 export default function App() {
-  function onExporting(e) {
+  const onExporting = React.useCallback((e) => {
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Sales');
 
@@ -69,16 +69,16 @@ export default function App() {
       });
     });
     e.cancel = true;
-  }
+  });
 
-  function onCellPrepared({ cell, area, cellElement }) {
+  const onCellPrepared = React.useCallback(({ cell, area, cellElement }) => {
     cell.area = area;
 
     if(isDataCell(cell) || isTotalCell(cell)) {
       const appearance = getConditionalAppearance(cell);
       Object.assign(cellElement.style, getCssStyles(appearance));
     }
-  }
+  });
 
   function isDataCell(cell) {
     return (cell.area === 'data' && cell.rowType === 'D' && cell.columnType === 'D');

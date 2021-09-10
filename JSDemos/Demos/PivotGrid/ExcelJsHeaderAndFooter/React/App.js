@@ -46,7 +46,7 @@ const dataSource = new PivotGridDataSource({
 });
 
 export default function App() {
-  function onExporting(e) {
+  const onExporting = React.useCallback((e) => {
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Sales');
 
@@ -85,7 +85,7 @@ export default function App() {
       });
     });
     e.cancel = true;
-  }
+  });
 
   return (
     <React.Fragment>
