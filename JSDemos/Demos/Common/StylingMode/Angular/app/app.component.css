@@ -16,10 +16,7 @@
 }
 
 ::ng-deep .editors .right {
-    display: inline-block;
-    width: 49%;
     padding-right: 27px;
-    box-sizing: border-box;
 }
 
 ::ng-deep .editors .left > *, ::ng-deep .editors .right > *, ::ng-deep .editors .center > * {
