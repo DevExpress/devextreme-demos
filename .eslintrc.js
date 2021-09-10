@@ -494,6 +494,8 @@ module.exports = {
       'vue/no-v-html': 'off',
       'vue/no-v-model-argument': 'off',
       'vue/valid-v-model': 'off',
+      'max-len': 0,
+      'vue/max-len': ['error', { code: 100 }],
       'vue/html-closing-bracket-spacing': ['error', {
         startTag: 'never',
         endTag: 'never',
