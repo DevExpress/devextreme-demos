@@ -1,12 +1,9 @@
 import React from 'react';
 import { TreeList, Selection, Column } from 'devextreme-react/tree-list';
 import { CheckBox } from 'devextreme-react/check-box';
-import { SelectBox } from 'devextreme-react/select-box';
 import { employees } from './data.js';
 
 const expandedRowKeys = [1, 2, 10];
-const emptySelectedText = 'Nobody has been selected';
-const selectionModes = ['all', 'excludeRecursive', 'leavesOnly'];
 
 class App extends React.Component {
   constructor(props) {
@@ -14,18 +11,15 @@ class App extends React.Component {
 
     this.state = {
       selectedRowKeys: [],
-      recursive: false,
-      selectedEmployeeNames: emptySelectedText,
-      selectionMode: 'all'
+      recursive: false
     };
 
     this.onSelectionChanged = this.onSelectionChanged.bind(this);
     this.onRecursiveChanged = this.onRecursiveChanged.bind(this);
-    this.onSelectionModeChanged = this.onSelectionModeChanged.bind(this);
   }
 
   render() {
-    const { selectedRowKeys, recursive, selectionMode, selectedEmployeeNames } = this.state;
+    const { selectedRowKeys, recursive } = this.state;
     return (
       <div>
         <TreeList
@@ -50,26 +44,11 @@ class App extends React.Component {
         <div className="options">
           <div className="caption">Options</div>
           <div className="option">
-            <span>Selection Mode</span>{' '}
-            <SelectBox
-              value={selectionMode}
-              items={selectionModes}
-              text="Recursive Selection"
-              onValueChanged={this.onSelectionModeChanged}
-            />
-          </div>
-          <div className="option">
             <CheckBox
               value={recursive}
               text="Recursive Selection"
               onValueChanged={this.onRecursiveChanged}
             />
-          </div>
-          <div className="selected-data">
-            <span className="caption">Selected Records:</span>{' '}
-            <span>
-              { selectedEmployeeNames }
-            </span>
           </div>
         </div>
       </div>
@@ -77,35 +56,16 @@ class App extends React.Component {
   }
 
   onSelectionChanged(e) {
-    const selectedData = e.component.getSelectedRowsData(this.state.selectionMode);
     this.setState({
-      selectedRowKeys: e.selectedRowKeys,
-      selectedEmployeeNames: this.getEmployeeNames(selectedData)
+      selectedRowKeys: e.selectedRowKeys
     });
   }
 
   onRecursiveChanged(e) {
     this.setState({
       recursive: e.value,
-      selectedRowKeys: [],
-      selectedEmployeeNames: emptySelectedText
+      selectedRowKeys: []
     });
-  }
-
-  onSelectionModeChanged(e) {
-    this.setState({
-      selectionMode: e.value,
-      selectedRowKeys: [],
-      selectedEmployeeNames: emptySelectedText
-    });
-  }
-
-  getEmployeeNames(employees) {
-    if (employees.length > 0) {
-      return employees.map(employee => employee.Full_Name).join(', ');
-    } else {
-      return emptySelectedText;
-    }
   }
 }
 
