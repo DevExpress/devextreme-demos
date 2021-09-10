@@ -29,6 +29,8 @@ const statusesData = [
   'Completed'
 ];
 
+const expandedKeys = [1, 2];
+
 class App extends React.Component {
   render() {
     return (
@@ -38,7 +40,7 @@ class App extends React.Component {
         keyExpr="Task_ID"
         parentIdExpr="Task_Parent_ID"
         hasItemsExpr="Has_Items"
-        defaultExpandedRowKeys={[1, 2]}
+        defaultExpandedRowKeys={expandedKeys}
         showRowLines={true}
         showBorders={true}
         columnAutoWidth={true}

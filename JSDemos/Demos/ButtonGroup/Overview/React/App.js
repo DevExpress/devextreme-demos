@@ -3,6 +3,8 @@ import { ButtonGroup } from 'devextreme-react/button-group';
 import { alignments, fontStyles } from './data.js';
 import notify from 'devextreme/ui/notify';
 
+const selectedItemKeys = ['left'];
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +17,7 @@ class App extends React.Component {
             items={alignments}
             keyExpr="alignment"
             stylingMode="outlined"
-            selectedItemKeys={['left']}
+            selectedItemKeys={selectedItemKeys}
             onItemClick={itemClick}
           />
           <ButtonGroup
@@ -31,7 +33,7 @@ class App extends React.Component {
             items={alignments}
             keyExpr="alignment"
             stylingMode="text"
-            selectedItemKeys={['left']}
+            selectedItemKeys={selectedItemKeys}
             onItemClick={itemClick}
           />
           <ButtonGroup
