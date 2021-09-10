@@ -1,0 +1,9 @@
+{
+    "$schema": "../../../../testing/visualtestrc-schema.json",
+    "vue": {
+        "comparison-options": {
+            "foregroundMaskRadius": 3,
+            "debug": "failure"
+        }
+    }
+}
