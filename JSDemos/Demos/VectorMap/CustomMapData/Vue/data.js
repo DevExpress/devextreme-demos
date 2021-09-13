@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+/* eslint-disable vue/max-len */
 export const pangaeaBorders = {
   type: 'FeatureCollection',
   features: [{

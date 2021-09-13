@@ -1,4 +1,4 @@
-<!-- eslint-disable max-len -->
+<!-- eslint-disable vue/max-len -->
 <template>
   <div
     :style="{ 'outline-style': border ? 'solid' : 'none', 'outline-color': color }"

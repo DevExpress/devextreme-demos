@@ -1,4 +1,4 @@
-<!-- eslint-disable max-len -->
+<!-- eslint-disable vue/max-len -->
 
 <template>
   <div class="custom_markup_container">
