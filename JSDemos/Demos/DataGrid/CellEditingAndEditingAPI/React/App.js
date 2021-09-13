@@ -1,15 +1,16 @@
-﻿import React from 'react';
+import React from 'react';
 
 import DataGrid, {
   Column,
   Editing,
   Paging,
   Selection,
-  Lookup
+  Lookup,
+  Toolbar,
+  Item,
 } from 'devextreme-react/data-grid';
 
 import { Button } from 'devextreme-react/button';
-import { Template } from 'devextreme-react/core/template';
 
 import ArrayStore from 'devextreme/data/array_store';
 import DataSource from 'devextreme/data/data_source';
@@ -18,24 +19,21 @@ import { employees, states } from './data.js';
 const dataSource = new DataSource({
   store: new ArrayStore({
     data: employees,
-    key: 'ID'
-  })
+    key: 'ID',
+  }),
 });
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedItemKeys: []
+      selectedItemKeys: [],
     };
     this.selectionChanged = this.selectionChanged.bind(this);
     this.deleteRecords = this.deleteRecords.bind(this);
-    this.deleteButtonRender = this.deleteButtonRender.bind(this);
-    this.onToolbarPreparing = this.onToolbarPreparing.bind(this);
   }
 
   render() {
-
     return (
       <div id="data-grid-demo">
         <DataGrid id="gridContainer"
@@ -43,7 +41,6 @@ class App extends React.Component {
           showBorders={true}
           selectedRowKeys={this.state.selectedItemKeys}
           onSelectionChanged={this.selectionChanged}
-          onToolbarPreparing={this.onToolbarPreparing}
         >
           <Selection mode="multiple" />
           <Paging enabled={false} />
@@ -61,39 +58,34 @@ class App extends React.Component {
             <Lookup dataSource={states} valueExpr="ID" displayExpr="Name" />
           </Column>
           <Column dataField="BirthDate" dataType="date" />
-          <Template name="deleteButton" render={this.deleteButtonRender} />
+          <Toolbar>
+            <Item name="addRowButton" showText="always" />
+            <Item location="after">
+              <Button
+                onClick={this.deleteRecords}
+                icon="trash"
+                disabled={!this.state.selectedItemKeys.length}
+                text="Delete Selected Records" />
+            </Item>
+          </Toolbar>
         </DataGrid>
       </div>
     );
   }
-  deleteButtonRender() {
-    return <Button
-      onClick={this.deleteRecords}
-      icon="trash"
-      disabled={!this.state.selectedItemKeys.length}
-      text="Delete Selected Records">
-    </Button>;
-  }
+
   deleteRecords() {
     this.state.selectedItemKeys.forEach((key) => {
       dataSource.store().remove(key);
     });
     this.setState({
-      selectedItemKeys: []
+      selectedItemKeys: [],
     });
     dataSource.reload();
   }
+
   selectionChanged(data) {
     this.setState({
-      selectedItemKeys: data.selectedRowKeys
-    });
-  }
-  onToolbarPreparing(e) {
-    e.toolbarOptions.items[0].showText = 'always';
-
-    e.toolbarOptions.items.push({
-      location: 'after',
-      template: 'deleteButton'
+      selectedItemKeys: data.selectedRowKeys,
     });
   }
 }

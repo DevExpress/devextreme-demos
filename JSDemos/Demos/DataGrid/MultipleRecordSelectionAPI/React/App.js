@@ -1,12 +1,16 @@
-﻿import React from 'react';
+import React from 'react';
 
 import DataGrid, {
   Column,
-  Selection
+  Selection,
+  Toolbar,
+  Item,
 } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
 import Button from 'devextreme-react/button';
 import { employees } from './data.js';
+
+const titles = ['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.'];
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +22,7 @@ class App extends React.Component {
     this.state = {
       prefix: '',
       selectedEmployeeNames: 'Nobody has been selected',
-      selectedRowKeys: []
+      selectedRowKeys: [],
     };
 
     this.onClearButtonClicked = this.onClearButtonClicked.bind(this);
@@ -27,30 +31,18 @@ class App extends React.Component {
   }
 
   render() {
-    const { prefix, selectedRowKeys, selectedEmployeeNames } = this.state;
+    const {
+      prefix, selectedRowKeys, selectedEmployeeNames,
+    } = this.state;
 
     return (
       <div>
-        <div id="grid">
-          <SelectBox
-            id="select-prefix"
-            dataSource={['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.']}
-            onValueChanged={this.onSelectionFilterChanged}
-            placeholder="Select title"
-            value={prefix}
-          />{' '}
-          <Button
-            disabled={!selectedRowKeys.length}
-            onClick={this.onClearButtonClicked}
-            text="Clear Selection"
-          />
-        </div>
         <DataGrid
           id="grid-container"
           dataSource={employees}
           keyExpr="ID"
           onSelectionChanged={this.onSelectionChanged}
-          ref={ref => this.dataGrid = ref}
+          ref={(ref) => { this.dataGrid = ref; }}
           selectedRowKeys={selectedRowKeys}
           showBorders={true}
         >
@@ -61,6 +53,24 @@ class App extends React.Component {
           <Column dataField="Position" width={180} />
           <Column dataField="BirthDate" dataType="date" width={125} />
           <Column dataField="HireDate" dataType="date" width={125} />
+          <Toolbar>
+            <Item location="before">
+              <SelectBox
+                dataSource={titles}
+                onValueChanged={this.onSelectionFilterChanged}
+                placeholder="Select title"
+                width={150}
+                value={prefix}
+              />
+            </Item>
+            <Item location="before">
+              <Button
+                disabled={!selectedRowKeys.length}
+                onClick={this.onClearButtonClicked}
+                text="Clear Selection"
+              />
+            </Item>
+          </Toolbar>
         </DataGrid>
         <div className="selected-data">
           <span className="caption">Selected Records:</span>{' '}
@@ -78,7 +88,7 @@ class App extends React.Component {
     this.setState({
       prefix: null,
       selectedEmployeeNames: getEmployeeNames(selectedRowsData),
-      selectedRowKeys
+      selectedRowKeys,
     });
   }
 
@@ -89,18 +99,18 @@ class App extends React.Component {
   async onSelectionFilterChanged({ value }) {
     this.selectionChangedBySelectBox = true;
 
-    let prefix = value;
+    const prefix = value;
 
-    if(prefix) {
-      let filteredEmployees = prefix === 'All' ? employees : employees.filter(employee => employee.Prefix === prefix);
+    if (prefix) {
+      const filteredEmployees = prefix === 'All' ? employees : employees.filter((employee) => employee.Prefix === prefix);
 
-      const selectedRowKeys = filteredEmployees.map(employee => employee.ID);
+      const selectedRowKeys = filteredEmployees.map((employee) => employee.ID);
       const selectedRowsData = await this.dataGrid.instance.getDataByKeys(selectedRowKeys);
 
       this.setState({
         prefix,
         selectedRowKeys,
-        selectedEmployeeNames: getEmployeeNames(selectedRowsData)
+        selectedEmployeeNames: getEmployeeNames(selectedRowsData),
       });
     }
   }

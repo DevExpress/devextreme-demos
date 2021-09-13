@@ -6,15 +6,17 @@ import ArrayStore from 'devextreme/data/array_store';
 import Item from './Item.js';
 import { simpleProducts, products } from './data.js';
 
+const disabledValue = [simpleProducts[0]];
+
 class App extends React.Component {
   constructor() {
     super();
     this.dataSource = new ArrayStore({
       data: products,
-      key: 'Id'
+      key: 'Id',
     });
     this.state = {
-      editableProducts: [...simpleProducts]
+      editableProducts: [...simpleProducts],
     };
     this.onCustomItemCreating = this.onCustomItemCreating.bind(this);
   }
@@ -24,7 +26,7 @@ class App extends React.Component {
 
     args.customItem = newValue;
     this.setState({
-      editableProducts: [newValue, ...this.state.editableProducts]
+      editableProducts: [newValue, ...this.state.editableProducts],
     });
   }
 
@@ -86,7 +88,7 @@ class App extends React.Component {
             <div className="dx-field-label">Disabled</div>
             <div className="dx-field-value">
               <TagBox items={simpleProducts}
-                value={[simpleProducts[0]]}
+                value={disabledValue}
                 disabled={true} />
             </div>
           </div>

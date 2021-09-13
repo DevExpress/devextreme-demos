@@ -27,7 +27,7 @@ import {
   DxSource,
   DxTooltip,
   DxBorder,
-  DxFont
+  DxFont,
 } from 'devextreme-vue/vector-map';
 
 import { countries } from './data.js';
@@ -39,12 +39,12 @@ export default {
     DxSource,
     DxTooltip,
     DxBorder,
-    DxFont
+    DxFont,
   },
   data() {
     return {
       worldData: mapsData.world,
-      bounds: [-180, 85, 180, -60]
+      bounds: [-180, 85, 180, -60],
     };
   },
   methods: {
@@ -54,9 +54,10 @@ export default {
       if (country) {
         return {
           text: `${name}: ${country.totalArea}M km&#178`,
-          color: country.color
+          color: country.color,
         };
       }
+      return null;
     },
 
     click({ target }) {
@@ -72,12 +73,12 @@ export default {
           element.applySettings({
             color: country.color,
             hoveredColor: '#e0e000',
-            selectedColor: '#008f00'
+            selectedColor: '#008f00',
           });
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

@@ -42,9 +42,9 @@
 import {
   DxHtmlEditor,
   DxToolbar,
-  DxItem
+  DxItem,
 } from 'devextreme-vue/html-editor';
-import { DxPopup } from './devextreme-vue/popup';
+import { DxPopup } from 'devextreme-vue/popup';
 import { markup } from './data.js';
 
 export default {
@@ -52,7 +52,7 @@ export default {
     DxHtmlEditor,
     DxToolbar,
     DxItem,
-    DxPopup
+    DxPopup,
   },
   data() {
     return {
@@ -66,10 +66,10 @@ export default {
         stylingMode: 'text',
         onClick: () => {
           this.popupVisible = true;
-        }
-      }
+        },
+      },
     };
-  }
+  },
 };
 </script>
 <style>

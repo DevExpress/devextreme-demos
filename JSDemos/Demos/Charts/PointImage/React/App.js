@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import {
   Chart,
   CommonSeriesSettings,
@@ -10,14 +10,13 @@ import {
   ValueAxis,
   Export,
   Legend,
-  Point
+  Point,
 } from 'devextreme-react/chart';
 import { iceHockeyStatistics } from './data.js';
 
 const exportFormats = ['PNG', 'PDF', 'JPEG', 'GIF', 'SVG'];
 
 class App extends React.Component {
-
   render() {
     return (
       <Chart
@@ -57,25 +56,27 @@ class App extends React.Component {
   }
 
   customizePoint() {
-    if (this.value == 1) {
+    if (this.value === 1) {
       return { image: { url: '../../../../images/Charts/PointImage/icon-medal-gold.png', width: 20, height: 20 }, visible: true };
-    } else if (this.value == 2) {
+    }
+    if (this.value === 2) {
       return { image: { url: '../../../../images/Charts/PointImage/icon-medal-silver.png', width: 20, height: 20 }, visible: true };
-    } else if (this.value == 3) {
+    }
+    if (this.value === 3) {
       return { image: { url: '../../../../images/Charts/PointImage/icon-medal-bronse.png', width: 20, height: 20 }, visible: true };
     }
+    return null;
   }
 
   customizeText() {
-    if (this.valueText == 1) {
+    if (this.valueText === '1') {
       return `${this.valueText}st place`;
-    } else if (this.valueText == 2) {
+    } if (this.valueText === '2') {
       return `${this.valueText}nd place`;
-    } else if (this.valueText == 3) {
+    } if (this.valueText === '3') {
       return `${this.valueText}rd place`;
-    } else {
-      return `${this.valueText}th place`;
     }
+    return `${this.valueText}th place`;
   }
 }
 

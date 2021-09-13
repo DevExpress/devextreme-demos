@@ -96,9 +96,9 @@ export default {
     DxNumberBox,
     DxSwitch,
     DxSelectBox,
-    SuperheroLogo
+    SuperheroLogo,
   },
-  data: function() {
+  data() {
     return {
       color: '#f05b41',
       text: 'UI Superhero',
@@ -111,8 +111,8 @@ export default {
           key: 'Flip',
           items: [
             { name: '0 degrees', value: 'scaleX(1)' },
-            { name: '180 degrees', value: 'scaleX(-1)' }
-          ]
+            { name: '180 degrees', value: 'scaleX(-1)' },
+          ],
         },
         {
           key: 'Rotate',
@@ -121,20 +121,20 @@ export default {
             { name: '15 degrees', value: 'rotate(15deg)' },
             { name: '30 degrees', value: 'rotate(30deg)' },
             { name: '-15 degrees', value: 'rotate(-15deg)' },
-            { name: '-30 degrees', value: 'rotate(-30deg)' }
-          ]
-        }
-      ]
+            { name: '-30 degrees', value: 'rotate(-30deg)' },
+          ],
+        },
+      ],
     };
   },
   watch: {
     height(val) {
-      this.width = val * 37 / 26;
+      this.width = (val * 37) / 26;
     },
     width(val) {
-      this.height = val * 26 / 37;
-    }
-  }
+      this.height = (val * 26) / 37;
+    },
+  },
 };
 </script>
 <style>
@@ -149,14 +149,15 @@ export default {
     padding: 5px 0;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .settings .column .field .label {
-    width: 75px;
+    padding-right: 10px;
 }
 
 .settings .column .field .value {
-    width: 200px;
+    width: 155px;
 }
 
 .dx-theme-generic .settings .column .field .value .dx-switch {

@@ -6,9 +6,14 @@ import TextBox from 'devextreme-react/text-box';
 import DateBox from 'devextreme-react/date-box';
 import TextArea from 'devextreme-react/text-area';
 import Button from 'devextreme-react/button';
-import Validator from 'devextreme-react/validator';
+import Validator, { RequiredRule } from 'devextreme-react/validator';
 import notify from 'devextreme/ui/notify';
 import validationEngine from 'devextreme/ui/validation_engine';
+
+const stylingModes = ['outlined', 'filled', 'underlined'];
+const statuses = ['Not Started', 'Need Assistance', 'In Progress', 'Deferred', 'Completed'];
+const defaultStatus = [statuses[0]];
+const priorities = ['High', 'Urgent', 'Normal', 'Low'];
 
 class App extends React.Component {
   constructor(props) {
@@ -16,7 +21,7 @@ class App extends React.Component {
 
     this.state = {
       date: new Date(2020, 4, 3),
-      stylingMode: 'filled'
+      stylingMode: 'filled',
     };
 
     this.validateClick = this.validateClick.bind(this);
@@ -29,43 +34,45 @@ class App extends React.Component {
       <React.Fragment>
         <div className="title">Edit Task</div>
         <div className="editors">
-          <div className="left">
-            <TextBox
-              stylingMode={this.state.stylingMode}
-              defaultValue="Samantha Bright"
-              width="100%"
-              placeholder="Owner"
-            />
-            <TextBox
-              stylingMode={this.state.stylingMode}
-              defaultValue=""
-              width="100%"
-              placeholder="Subject"
-            >
-              <Validator
-                validationRules={[{ type: 'required' }]} />
-            </TextBox>
-          </div>
-          &nbsp;
-          <div className="right">
-            <DateBox
-              defaultValue={this.state.date}
-              stylingMode={this.state.stylingMode}
-              width="100%"
-              placeholder="Start Date"
-            />
-            <SelectBox
-              items={[ 'High', 'Urgent', 'Normal', 'Low' ]}
-              stylingMode={this.state.stylingMode}
-              defaultValue="High"
-              width="100%"
-              placeholder="Priority"
-            />
+          <div className="editors-container">
+            <div className="left">
+              <TextBox
+                stylingMode={this.state.stylingMode}
+                defaultValue="Samantha Bright"
+                width="100%"
+                placeholder="Owner"
+              />
+              <TextBox
+                stylingMode={this.state.stylingMode}
+                defaultValue=""
+                width="100%"
+                placeholder="Subject"
+              >
+                <Validator>
+                  <RequiredRule />
+                </Validator>
+              </TextBox>
+            </div>
+            <div className="right">
+              <DateBox
+                defaultValue={this.state.date}
+                stylingMode={this.state.stylingMode}
+                width="100%"
+                placeholder="Start Date"
+              />
+              <SelectBox
+                items={priorities}
+                stylingMode={this.state.stylingMode}
+                defaultValue="High"
+                width="100%"
+                placeholder="Priority"
+              />
+            </div>
           </div>
           <div className="center">
             <TagBox
-              items={[ 'Not Started', 'Need Assistance', 'In Progress', 'Deferred', 'Completed' ]}
-              defaultValue={[ 'Not Started' ]}
+              items={statuses}
+              defaultValue={defaultStatus}
               multiline={false}
               stylingMode={this.state.stylingMode}
               width="100%"
@@ -91,7 +98,7 @@ class App extends React.Component {
           <div className="caption">Styling Mode</div>
           <div className="option">
             <SelectBox
-              items={[ 'outlined', 'filled', 'underlined' ]}
+              items={stylingModes}
               value={this.state.stylingMode}
               onValueChanged={this.stylingModeChange}
             />
@@ -102,7 +109,7 @@ class App extends React.Component {
   }
 
   validateClick(e) {
-    var result = e.validationGroup.validate();
+    const result = e.validationGroup.validate();
     if (result.isValid) {
       notify('The task was saved successfully.', 'success');
     } else {
@@ -112,7 +119,7 @@ class App extends React.Component {
 
   stylingModeChange(e) {
     this.setState({
-      stylingMode: e.value
+      stylingMode: e.value,
     });
   }
 }

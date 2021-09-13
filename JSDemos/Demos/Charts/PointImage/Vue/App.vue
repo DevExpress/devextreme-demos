@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <DxChart
     id="chart"
     :data-source="iceHockeyStatistics"
@@ -46,7 +46,7 @@ import {
   DxValueAxis,
   DxExport,
   DxLegend,
-  DxPoint
+  DxPoint,
 } from 'devextreme-vue/chart';
 
 import { iceHockeyStatistics } from './data.js';
@@ -64,43 +64,45 @@ export default {
     DxValueAxis,
     DxExport,
     DxLegend,
-    DxPoint
+    DxPoint,
   },
 
   data() {
     return {
       iceHockeyStatistics,
-      exportFormats: ['PNG', 'PDF', 'JPEG', 'GIF', 'SVG']
+      exportFormats: ['PNG', 'PDF', 'JPEG', 'GIF', 'SVG'],
     };
   },
 
   methods: {
     customizePoint({ value }) {
-      if (value == 1) {
+      if (value === 1) {
         return { image: { url: '../../../../images/Charts/PointImage/icon-medal-gold.png', width: 20, height: 20 }, visible: true };
-      } else if (value == 2) {
+      }
+      if (value === 2) {
         return { image: { url: '../../../../images/Charts/PointImage/icon-medal-silver.png', width: 20, height: 20 }, visible: true };
-      } else if (value == 3) {
+      }
+      if (value === 3) {
         return { image: { url: '../../../../images/Charts/PointImage/icon-medal-bronse.png', width: 20, height: 20 }, visible: true };
       }
+      return null;
     },
 
     customizeText({ valueText }) {
-      if (valueText == 1) {
+      if (valueText === '1') {
         return `${valueText}st place`;
-      } else if (valueText == 2) {
+      } if (valueText === '2') {
         return `${valueText}nd place`;
-      } else if (valueText == 3) {
+      } if (valueText === '3') {
         return `${valueText}rd place`;
-      } else {
-        return `${valueText}th place`;
       }
-    }
-  }
+      return `${valueText}th place`;
+    },
+  },
 };
 </script>
 <style>
 #chart {
-	height: 440px;
+  height: 440px;
 }
 </style>

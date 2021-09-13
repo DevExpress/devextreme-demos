@@ -1,12 +1,17 @@
-﻿import React from 'react';
-import DataGrid, { Column, Editing, Summary, TotalItem } from 'devextreme-react/data-grid';
+import React from 'react';
+import DataGrid, {
+  Column, Editing, Summary, TotalItem,
+} from 'devextreme-react/data-grid';
 import service from './data.js';
+
+const saleAmountEditorOptions = { format: 'currency' };
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.orders = service.getOrders();
   }
+
   render() {
     return (
       <React.Fragment>
@@ -27,7 +32,7 @@ class App extends React.Component {
           <Column dataField="Employee" />
           <Column dataField="CustomerStoreCity" caption="City" />
           <Column dataField="CustomerStoreState" caption="State" />
-          <Column dataField="SaleAmount" alignment="right" format="currency" editorOptions={{ format: 'currency' }} />
+          <Column dataField="SaleAmount" alignment="right" format="currency" editorOptions={saleAmountEditorOptions} />
           <Summary recalculateWhileEditing={true}>
             <TotalItem
               column="OrderNumber"

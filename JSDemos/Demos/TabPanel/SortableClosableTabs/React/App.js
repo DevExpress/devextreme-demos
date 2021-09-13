@@ -1,4 +1,5 @@
-﻿import React from 'react';
+/* eslint react/jsx-no-bind: off */
+import React from 'react';
 import { Button } from 'devextreme-react/button';
 import { Sortable } from 'devextreme-react/sortable';
 import TabPanel from 'devextreme-react/tab-panel';
@@ -91,7 +92,7 @@ function App() {
       >
         <TabPanel
           dataSource={employees}
-          height={472}
+          height={410}
           itemTitleRender={renderTitle}
           deferRendering={false}
           showNavButtons={true}

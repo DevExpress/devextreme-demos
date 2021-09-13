@@ -34,23 +34,25 @@
 
     <div class="options">
       <div class="caption">Options</div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="allowDropInsideItem"
-          text="Allow Drop Inside Item"
-        />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="allowReordering"
-          text="Allow Reordering"
-        />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="showDragIcons"
-          text="Show Drag Icons"
-        />
+      <div class="options-container">
+        <div class="option">
+          <DxCheckBox
+            v-model:value="allowDropInsideItem"
+            text="Allow Drop Inside Item"
+          />
+        </div>
+        <div class="option">
+          <DxCheckBox
+            v-model:value="allowReordering"
+            text="Allow Reordering"
+          />
+        </div>
+        <div class="option">
+          <DxCheckBox
+            v-model:value="showDragIcons"
+            text="Show Drag Icons"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -65,7 +67,7 @@ export default {
     DxTreeList,
     DxColumn,
     DxRowDragging,
-    DxCheckBox
+    DxCheckBox,
   },
   data() {
     return {
@@ -73,14 +75,14 @@ export default {
       allowDropInsideItem: true,
       allowReordering: true,
       showDragIcons: true,
-      expandedRowKeys: [1]
+      expandedRowKeys: [1],
     };
   },
   methods: {
     onDragChange(e) {
-      let visibleRows = e.component.getVisibleRows(),
-        sourceNode = e.component.getNodeByKey(e.itemData.ID),
-        targetNode = visibleRows[e.toIndex].node;
+      const visibleRows = e.component.getVisibleRows();
+      const sourceNode = e.component.getNodeByKey(e.itemData.ID);
+      let targetNode = visibleRows[e.toIndex].node;
 
       while (targetNode && targetNode.data) {
         if (targetNode.data.ID === sourceNode.data.ID) {
@@ -98,7 +100,7 @@ export default {
 
         e.component.refresh();
       } else {
-        const employees = this.employees.slice();
+        const employeeList = this.employees.slice();
         const sourceData = e.itemData;
         const toIndex = e.fromIndex > e.toIndex ? e.toIndex - 1 : e.toIndex;
         let targetData = toIndex >= 0 ? visibleRows[toIndex].node.data : null;
@@ -111,14 +113,14 @@ export default {
         }
 
         const sourceIndex = this.employees.indexOf(sourceData);
-        employees.splice(sourceIndex, 1);
+        employeeList.splice(sourceIndex, 1);
 
         const targetIndex = this.employees.indexOf(targetData) + 1;
-        employees.splice(targetIndex, 0, sourceData);
+        employeeList.splice(targetIndex, 0, sourceData);
 
-        this.employees = employees;
+        this.employees = employeeList;
       }
-    }
+    },
   },
 };
 </script>
@@ -146,11 +148,16 @@ export default {
 
 .option {
    margin-top: 10px;
-   margin-right: 44px;
+   margin-right: 40px;
    display: inline-block;
 }
 
 .option:last-child {
     margin-right: 0;
+}
+
+.options-container {
+    display: flex;
+    align-items: center;
 }
 </style>

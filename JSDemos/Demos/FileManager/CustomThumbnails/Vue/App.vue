@@ -25,30 +25,32 @@ export default {
   components: {
     DxFileManager,
     DxPermissions,
-    DxItemView
+    DxItemView,
   },
 
   data() {
     return {
-      fileItems
+      fileItems,
     };
   },
   methods: {
-    customizeIcon: function(fileSystemItem) {
-      if(fileSystemItem.isDirectory) {
+    customizeIcon(fileSystemItem) {
+      if (fileSystemItem.isDirectory) {
         return '../../../../images/thumbnails/folder.svg';
       }
 
       const fileExtension = fileSystemItem.getFileExtension();
-      switch(fileExtension) {
+      switch (fileExtension) {
         case '.txt':
           return '../../../../images/thumbnails/doc-txt.svg';
         case '.rtf':
           return '../../../../images/thumbnails/doc-rtf.svg';
         case '.xml':
           return '../../../../images/thumbnails/doc-xml.svg';
+        default:
+          return '../../../../images/thumbnails/doc-txt.svg';
       }
-    }
-  }
+    },
+  },
 };
 </script>

@@ -1,7 +1,11 @@
-﻿import React from 'react';
-import DataGrid, { Selection, FilterRow, GroupPanel, StateStoring, Pager, Column } from 'devextreme-react/data-grid';
+import React from 'react';
+import DataGrid, {
+  Selection, FilterRow, GroupPanel, StateStoring, Pager, Column,
+} from 'devextreme-react/data-grid';
 
 import service from './data.js';
+
+const allowedPageSizes = [5, 10, 20];
 
 class App extends React.Component {
   constructor(props) {
@@ -10,12 +14,15 @@ class App extends React.Component {
     this.dataGrid = React.createRef();
     this.onStateResetClick = this.onStateResetClick.bind(this);
   }
+
   onRefreshClick() {
     window.location.reload();
   }
+
   onStateResetClick() {
     this.dataGrid.current.instance.state(null);
   }
+
   render() {
     return (
       <React.Fragment>
@@ -32,7 +39,7 @@ class App extends React.Component {
           <FilterRow visible={true} />
           <GroupPanel visible={true} />
           <StateStoring enabled={true} type="localStorage" storageKey="storage" />
-          <Pager showPageSizeSelector={true} allowedPageSizes={[5, 10, 20]} />
+          <Pager showPageSizeSelector={true} allowedPageSizes={allowedPageSizes} />
           <Column dataField="OrderNumber" caption="Invoice Number" width={130} />
           <Column dataField="OrderDate" sortOrder="desc" dataType="date" />
           <Column dataField="SaleAmount" alignment="right" format="currency" />

@@ -1,20 +1,20 @@
-﻿import React from 'react';
+import React from 'react';
 
-import DataGrid, { Scrolling, Paging, Column, HeaderFilter } from 'devextreme-react/data-grid';
+import DataGrid, {
+  Scrolling, Paging, Column, HeaderFilter,
+} from 'devextreme-react/data-grid';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
 const dataSource = AspNetData.createStore({
   key: 'Id',
-  loadUrl: 'https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/Sales'
+  loadUrl: 'https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/Sales',
 });
 
 class App extends React.Component {
   render() {
     return (
       <DataGrid
-        elementAttr ={{
-          id: 'gridContainer'
-        }}
+        height={440}
         dataSource={dataSource}
         showBorders={true}
         remoteOperations={true}

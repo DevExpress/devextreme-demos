@@ -1,7 +1,7 @@
-﻿import React from 'react';
+import React from 'react';
 import TreeList, { Column, RowDragging } from 'devextreme-react/tree-list';
 import CheckBox from 'devextreme-react/check-box';
-import { employees } from './data.js';
+import { employees as employeeList } from './data.js';
 
 const expandedRowKeys = [1];
 
@@ -15,10 +15,10 @@ class App extends React.Component {
     this.onShowDragIconsChanged = this.onShowDragIconsChanged.bind(this);
 
     this.state = {
-      employees,
+      employees: employeeList,
       allowDropInsideItem: true,
       allowReordering: true,
-      showDragIcons: true
+      showDragIcons: true,
     };
   }
 
@@ -53,28 +53,28 @@ class App extends React.Component {
 
         <div className="options">
           <div className="caption">Options</div>
-          <div className="option">
-            <CheckBox
-              value={this.state.allowDropInsideItem}
-              text="Allow Drop Inside Item"
-              onValueChanged={this.onAllowDropInsideItemChanged}
-            />
-          </div>
-          &nbsp;
-          <div className="option">
-            <CheckBox
-              value={this.state.allowReordering}
-              text="Allow Reordering"
-              onValueChanged={this.onAllowReorderingChanged}
-            />
-          </div>
-          &nbsp;
-          <div className="option">
-            <CheckBox
-              value={this.state.showDragIcons}
-              text="Show Drag Icons"
-              onValueChanged={this.onShowDragIconsChanged}
-            />
+          <div className="options-container">
+            <div className="option">
+              <CheckBox
+                value={this.state.allowDropInsideItem}
+                text="Allow Drop Inside Item"
+                onValueChanged={this.onAllowDropInsideItemChanged}
+              />
+            </div>
+            <div className="option">
+              <CheckBox
+                value={this.state.allowReordering}
+                text="Allow Reordering"
+                onValueChanged={this.onAllowReorderingChanged}
+              />
+            </div>
+            <div className="option">
+              <CheckBox
+                value={this.state.showDragIcons}
+                text="Show Drag Icons"
+                onValueChanged={this.onShowDragIconsChanged}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -82,9 +82,9 @@ class App extends React.Component {
   }
 
   onDragChange(e) {
-    let visibleRows = e.component.getVisibleRows(),
-      sourceNode = e.component.getNodeByKey(e.itemData.ID),
-      targetNode = visibleRows[e.toIndex].node;
+    const visibleRows = e.component.getVisibleRows();
+    const sourceNode = e.component.getNodeByKey(e.itemData.ID);
+    let targetNode = visibleRows[e.toIndex].node;
 
     while (targetNode && targetNode.data) {
       if (targetNode.data.ID === sourceNode.data.ID) {
@@ -98,7 +98,7 @@ class App extends React.Component {
   onReorder(e) {
     const visibleRows = e.component.getVisibleRows();
     let sourceData = e.itemData;
-    let employees = this.state.employees;
+    let { employees } = this.state;
     const sourceIndex = employees.indexOf(sourceData);
 
     if (e.dropInsideItem) {
@@ -113,7 +113,7 @@ class App extends React.Component {
         targetData = null;
       } else {
         const headId = targetData ? targetData.Head_ID : -1;
-        if(sourceData.Head_ID !== headId) {
+        if (sourceData.Head_ID !== headId) {
           sourceData = { ...sourceData, Head_ID: headId };
         }
       }
@@ -125,25 +125,25 @@ class App extends React.Component {
     }
 
     this.setState({
-      employees
+      employees,
     });
   }
 
   onAllowDropInsideItemChanged(args) {
     this.setState({
-      allowDropInsideItem: args.value
+      allowDropInsideItem: args.value,
     });
   }
 
   onAllowReorderingChanged(args) {
     this.setState({
-      allowReordering: args.value
+      allowReordering: args.value,
     });
   }
 
   onShowDragIconsChanged(args) {
     this.setState({
-      showDragIcons: args.value
+      showDragIcons: args.value,
     });
   }
 }

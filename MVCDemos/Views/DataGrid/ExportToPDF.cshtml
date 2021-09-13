@@ -7,13 +7,6 @@
     </script>
 }
 
-@(Html.DevExtreme().Button()
-    .ID("exportButton")
-    .Icon("exportpdf")
-    .Text("Export to PDF")
-    .OnClick("exportToPDF")
-)
-
 @(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.Customer>()
     .ID("gridContainer")
     .Columns(columns => {
@@ -38,6 +31,20 @@
         .Controller("DataGridCustomers")
         .Key("ID")
     )
+    .Toolbar(toolbar => {
+        toolbar.Items(items => {
+            items.Add().Name("groupPanel");
+            items.Add()
+                .Location(ToolbarItemLocation.After)
+                .Widget(w =>
+                    w.Button()
+                        .Icon("exportpdf")
+                        .Text("Export to PDF")
+                        .OnClick("exportToPDF")
+                );
+            items.Add().Name("searchPanel");
+        });
+    })
 )
 
 <script>

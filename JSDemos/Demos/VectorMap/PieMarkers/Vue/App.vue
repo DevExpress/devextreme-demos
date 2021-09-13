@@ -49,28 +49,29 @@ export default {
     DxLayer,
     DxLegend,
     DxSource,
-    DxTooltip
+    DxTooltip,
   },
   data() {
     return {
       markers,
       mapsWorld: mapsData.world,
-      bounds: [-180, 85, 180, -60]
+      bounds: [-180, 85, 180, -60],
     };
   },
   methods: {
     customizeTooltip(info) {
-      if(info.layer.type === 'marker') {
+      if (info.layer.type === 'marker') {
         return {
-          text: info.attribute('tooltip')
+          text: info.attribute('tooltip'),
         };
       }
+      return null;
     },
 
     customizeText({ index }) {
       return names[index];
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

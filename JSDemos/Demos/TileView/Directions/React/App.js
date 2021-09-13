@@ -6,12 +6,14 @@ import SelectBox from 'devextreme-react/select-box';
 import RenderHomeItem from './HomeItem.js';
 import { homes } from './data.js';
 
+const directions = ['horizontal', 'vertical'];
+
 class App extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      direction: 'horizontal'
+      direction: 'horizontal',
     };
 
     this.directionChanged = this.directionChanged.bind(this);
@@ -35,7 +37,7 @@ class App extends React.Component {
           <div className='option'>
             <span>Direction</span>&nbsp;
             <SelectBox
-              items={['horizontal', 'vertical']}
+              items={directions}
               value={this.state.direction}
               onValueChanged={this.directionChanged}>
             </SelectBox>
@@ -47,7 +49,7 @@ class App extends React.Component {
 
   directionChanged(e) {
     this.setState({
-      direction: e.value
+      direction: e.value,
     });
   }
 }

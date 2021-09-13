@@ -1,12 +1,5 @@
 <template>
   <div>
-    <DxButton
-      id="exportButton"
-      icon="exportpdf"
-      text="Export to PDF"
-      @click="exportGrid()"
-    />
-
     <DxDataGrid
       :ref="dataGridRef"
       :allow-column-reordering="true"
@@ -28,11 +21,21 @@
       <DxGrouping :auto-expand-all="true"/>
       <DxPaging :page-size="10"/>
       <DxSearchPanel :visible="true"/>
+      <DxToolbar>
+        <DxItem name="groupPanel"/>
+        <DxItem location="after">
+          <DxButton
+            icon="exportpdf"
+            text="Export to PDF"
+            @click="exportGrid()"
+          />
+        </DxItem>
+        <DxItem name="searchPanel"/>
+      </DxToolbar>
     </DxDataGrid>
   </div>
 </template>
 <script>
-import { customers } from './data.js';
 import DxButton from 'devextreme-vue/button';
 import {
   DxDataGrid,
@@ -40,12 +43,16 @@ import {
   DxGrouping,
   DxGroupPanel,
   DxSearchPanel,
-  DxPaging
+  DxPaging,
+  DxToolbar,
+  DxItem,
 } from 'devextreme-vue/data-grid';
 
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
+
+import { customers } from './data.js';
 
 const dataGridRef = 'dataGrid';
 
@@ -57,30 +64,33 @@ export default {
     DxGrouping,
     DxPaging,
     DxSearchPanel,
-    DxDataGrid
+    DxDataGrid,
+    DxToolbar,
+    DxItem,
   },
   data() {
     return {
       customers,
-      dataGridRef
+      dataGridRef,
     };
   },
   computed: {
-    dataGrid: function() {
+    dataGrid() {
       return this.$refs[dataGridRef].instance;
-    }
+    },
   },
   methods: {
     exportGrid() {
+      // eslint-disable-next-line new-cap
       const doc = new jsPDF();
       exportDataGridToPdf({
         jsPDFDocument: doc,
-        component: this.dataGrid
+        component: this.dataGrid,
       }).then(() => {
         doc.save('Customers.pdf');
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

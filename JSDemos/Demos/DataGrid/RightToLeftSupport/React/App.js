@@ -1,8 +1,11 @@
-﻿import React from 'react';
+import React from 'react';
 import DataGrid, { Column, Paging, SearchPanel } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
 
 import service from './data.js';
+
+const populationFormat = { type: 'fixedPoint', precision: 0 };
+const areaFormat = { type: 'fixedPoint', precision: 0 };
 
 class App extends React.Component {
   constructor(props) {
@@ -12,19 +15,21 @@ class App extends React.Component {
     this.state = {
       placeholder: 'Search...',
       rtlEnabled: false,
-      selectedValue: this.languages[1]
+      selectedValue: this.languages[1],
     };
     this.selectLanguage = this.selectLanguage.bind(this);
     this.headerCellRender = this.headerCellRender.bind(this);
   }
+
   selectLanguage(e) {
-    let newRtlEnabled = e.value === this.languages[0];
+    const newRtlEnabled = e.value === this.languages[0];
     this.setState({
       rtlEnabled: newRtlEnabled,
       placeholder: newRtlEnabled ? 'بحث' : 'Search...',
-      selectedValue: e.value
+      selectedValue: e.value,
     });
   }
+
   headerCellRender() {
     return (
       <div>
@@ -36,6 +41,7 @@ class App extends React.Component {
       </div>
     );
   }
+
   render() {
     const { rtlEnabled, placeholder, selectedValue } = this.state;
     return (
@@ -53,10 +59,10 @@ class App extends React.Component {
             caption={rtlEnabled ? 'عاصمة' : 'Capital'} />
           <Column dataField="population"
             caption={rtlEnabled ? 'عدد السكان (نسمة) 2013' : 'Population'}
-            format={{ type: 'fixedPoint', precision: 0 }} />
+            format={populationFormat} />
           <Column dataField="area"
             headerCellRender={this.headerCellRender}
-            format={{ type: 'fixedPoint', precision: 0 }} />
+            format={areaFormat} />
           <Column dataField="accession" visible={false} />
         </DataGrid>
         <div className="options">

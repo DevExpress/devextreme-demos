@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import Chart, {
   ArgumentAxis,
   ValueAxis,
@@ -10,14 +10,18 @@ import Chart, {
   LoadingIndicator,
   Pane,
   Tooltip,
-  Crosshair
+  Crosshair,
+  Margin,
+  HorizontalLine,
 } from 'devextreme-react/chart';
 import CustomStore from 'devextreme/data/custom_store';
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
 import TooltipTemplate from './TooltipTemplate.js';
 
-class App extends React.Component {
+const minVisualRangeLength = { minutes: 10 };
+const defaultVisualRange = { length: 'hour' };
 
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { dataSource: null };
@@ -25,20 +29,20 @@ class App extends React.Component {
     const hubConnection = new HubConnectionBuilder()
       .withUrl('https://js.devexpress.com/Demos/NetCore/stockTickDataHub', {
         skipNegotiation: true,
-        transport: HttpTransportType.WebSockets
+        transport: HttpTransportType.WebSockets,
       })
       .build();
 
     const store = new CustomStore({
       load: () => hubConnection.invoke('getAllData'),
-      key: 'date'
+      key: 'date',
     });
 
     hubConnection
       .start()
       .then(() => {
         hubConnection.on('updateStockPrice', (data) => {
-          store.push([{ type: 'insert', key: data.date, data: data }]);
+          store.push([{ type: 'insert', key: data.date, data }]);
         });
         this.setState({ dataSource: store });
       });
@@ -48,16 +52,17 @@ class App extends React.Component {
   }
 
   calculateCandle(e) {
-    const prices = e.data.map(d => d.price);
+    const prices = e.data.map((d) => d.price);
     if (prices.length) {
       return {
         date: new Date((e.intervalStart.valueOf() + e.intervalEnd.valueOf()) / 2),
         open: prices[0],
         high: Math.max.apply(null, prices),
         low: Math.min.apply(null, prices),
-        close: prices[prices.length - 1]
+        close: prices[prices.length - 1],
       };
     }
+    return null;
   }
 
   render() {
@@ -67,9 +72,9 @@ class App extends React.Component {
           id="chart"
           ref={this.storeChartRef}
           dataSource={this.state.dataSource}
-          margin={{ right: 30 }}
           title="Stock Price"
           customizePoint={this.customizePoint}>
+          <Margin right={30} />
           <Series
             pane="Price"
             argumentField="date"
@@ -95,8 +100,8 @@ class App extends React.Component {
           <Legend visible={false} />
           <ArgumentAxis
             argumentType="datetime"
-            minVisualRangeLength={{ minutes: 10 }}
-            defaultVisualRange={{ length: 'hour' }} />
+            minVisualRangeLength={minVisualRangeLength}
+            defaultVisualRange={defaultVisualRange} />
           <ValueAxis placeholderSize={50} />
           <ZoomAndPan argumentAxis="both" />
           <ScrollBar visible={true} />
@@ -108,21 +113,22 @@ class App extends React.Component {
             contentRender={TooltipTemplate}
           />
           <Crosshair
-            enabled={true}
-            horizontalLine={{ visible: false }}
-          />
+            enabled={true}>
+            <HorizontalLine visible={false} />
+          </Crosshair>
         </Chart>
       </div>
     );
   }
 
   customizePoint(arg) {
-    if(arg.seriesName === 'Volume') {
-      var point = this.chartRef.instance.getAllSeries()[0].getPointsByArg(arg.argument)[0].data;
-      if(point && point.close >= point.open) {
+    if (arg.seriesName === 'Volume') {
+      const point = this.chartRef.instance.getAllSeries()[0].getPointsByArg(arg.argument)[0].data;
+      if (point && point.close >= point.open) {
         return { color: '#1db2f5' };
       }
     }
+    return null;
   }
 }
 

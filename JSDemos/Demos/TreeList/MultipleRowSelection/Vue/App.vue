@@ -61,26 +61,29 @@
   </div>
 </template>
 <script>
-import { employees } from './data.js';
 import { DxTreeList, DxSelection, DxColumn } from 'devextreme-vue/tree-list';
 import { DxCheckBox } from 'devextreme-vue/check-box';
 import { DxSelectBox } from 'devextreme-vue/select-box';
+import { employees } from './data.js';
 
 const emptySelectedText = 'Nobody has been selected';
 
 export default {
   components: {
-    DxTreeList, DxSelection, DxColumn,
-    DxCheckBox, DxSelectBox
+    DxTreeList,
+    DxSelection,
+    DxColumn,
+    DxCheckBox,
+    DxSelectBox,
   },
   data() {
     return {
-      employees: employees,
+      employees,
       expandedRowKeys: [1, 2, 10],
       selectedRowKeys: [],
       recursive: false,
       selectedEmployeeNames: emptySelectedText,
-      selectionMode: 'all'
+      selectionMode: 'all',
     };
   },
   methods: {
@@ -92,14 +95,13 @@ export default {
       const selectedData = component.getSelectedRowsData(this.selectionMode);
       this.selectedEmployeeNames = this.getEmployeeNames(selectedData);
     },
-    getEmployeeNames(employees) {
-      if (employees.length > 0) {
-        return employees.map(employee => employee.Full_Name).join(', ');
-      } else {
-        return emptySelectedText;
+    getEmployeeNames(employeeList) {
+      if (employeeList.length > 0) {
+        return employeeList.map((employee) => employee.Full_Name).join(', ');
       }
-    }
-  }
+      return emptySelectedText;
+    },
+  },
 };
 </script>
 <style scoped>

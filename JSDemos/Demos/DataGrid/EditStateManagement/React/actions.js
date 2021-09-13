@@ -21,10 +21,10 @@ export async function loadOrders(dispatch) {
     dispatch({
       type: FETCH_SUCCESS,
       payload: {
-        data: data
-      }
+        data,
+      },
     });
-  } catch(err) {
+  } catch (err) {
     dispatch({ type: FETCH_ERROR });
     throw err;
   }
@@ -43,17 +43,18 @@ export async function saveChange(dispatch, change) {
       dispatch({
         type: SAVING_SUCCESS,
         payload: {
-          change: change
-        }
+          change,
+        },
       });
 
       return data;
-    } catch(err) {
+    } catch (err) {
       dispatch({ type: SAVING_ERROR });
       throw err;
     }
   } else {
     dispatch({ type: SAVING_CANCEL });
+    return null;
   }
 }
 
@@ -61,30 +62,30 @@ async function sendChange(url, change) {
   switch (change.type) {
     case 'insert':
       return sendRequest(`${url}/InsertOrder`, 'POST', {
-        values: JSON.stringify(change.data)
+        values: JSON.stringify(change.data),
       });
     case 'update':
       return sendRequest(`${url}/UpdateOrder`, 'PUT', {
         key: change.key,
-        values: JSON.stringify(change.data)
+        values: JSON.stringify(change.data),
       });
     case 'remove':
       return sendRequest(`${url}/DeleteOrder`, 'DELETE', { key: change.key });
     default:
-      break;
+      return null;
   }
 }
 
 export function setChanges(dispatch, changes) {
   dispatch({
     type: SET_CHANGES,
-    payload: changes
+    payload: changes,
   });
 }
 
 export function setEditRowKey(dispatch, editRowKey) {
   dispatch({
     type: SET_EDIT_ROW_KEY,
-    payload: editRowKey
+    payload: editRowKey,
   });
 }

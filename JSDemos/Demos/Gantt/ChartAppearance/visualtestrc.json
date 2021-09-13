@@ -1,5 +1,9 @@
 {
-    "vue": {
+    "$schema": "../../../../testing/visualtestrc-schema.json",
+    "angular": {
+        "ignore": true
+    },
+    "react": {
         "ignore": true
     }
 }

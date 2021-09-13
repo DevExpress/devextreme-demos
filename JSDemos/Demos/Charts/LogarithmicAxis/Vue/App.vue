@@ -45,7 +45,7 @@ import {
   DxCommonPaneSettings,
   DxBorder,
   DxTitle,
-  DxPoint
+  DxPoint,
 } from 'devextreme-vue/chart';
 
 import { dataSource } from './data.js';
@@ -65,7 +65,7 @@ export default {
     DxCommonPaneSettings,
     DxBorder,
     DxTitle,
-    DxPoint
+    DxPoint,
   },
 
   data() {
@@ -74,7 +74,8 @@ export default {
 
   methods: {
     customizePoint({ data }) {
-      let color, hoverStyle;
+      let color; let
+        hoverStyle;
       switch (data.type) {
         case 'Star':
           color = 'red';
@@ -83,10 +84,13 @@ export default {
         case 'Satellite':
           color = 'gray';
           hoverStyle = { border: { color: 'gray' } };
+          break;
+        default:
+          break;
       }
       return { color, hoverStyle };
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

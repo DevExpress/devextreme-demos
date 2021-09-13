@@ -1,7 +1,12 @@
-﻿import React from 'react';
-import Diagram, { ContextMenu, ContextToolbox, PropertiesPanel, Group, Tab, HistoryToolbar, ViewToolbar, MainToolbar, Command, Toolbox } from 'devextreme-react/diagram';
+import React from 'react';
+import Diagram, {
+  ContextMenu, ContextToolbox, PropertiesPanel, Group, Tab, HistoryToolbar, ViewToolbar, MainToolbar, Command, Toolbox,
+} from 'devextreme-react/diagram';
 import dialog from 'devextreme/ui/dialog';
 import 'whatwg-fetch';
+
+const pageCommands = ['pageSize', 'pageOrientation', 'pageColor'];
+const menuCommands = ['bringToFront', 'sendToBack', 'lock', 'unlock'];
 
 class App extends React.Component {
   constructor(props) {
@@ -11,38 +16,38 @@ class App extends React.Component {
   }
 
   onCustomCommand(e) {
-    if(e.name === 'clear') {
-      var result = dialog.confirm('Are you sure you want to clear the diagram? This action cannot be undone.', 'Warning');
+    if (e.name === 'clear') {
+      const result = dialog.confirm('Are you sure you want to clear the diagram? This action cannot be undone.', 'Warning');
       result.then(
-        function(dialogResult) {
-          if(dialogResult) {
+        (dialogResult) => {
+          if (dialogResult) {
             e.component.import('');
           }
-        }
+        },
       );
     }
   }
+
   componentDidMount() {
-    var diagram = this.diagramRef.current.instance;
+    const diagram = this.diagramRef.current.instance;
     fetch('../../../../data/diagram-flow.json')
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(json) {
+      .then((response) => response.json())
+      .then((json) => {
         diagram.import(JSON.stringify(json));
       })
-      .catch(function() {
-        throw 'Data Loading Error';
+      .catch(() => {
+        throw new Error('Data Loading Error');
       });
   }
+
   render() {
     return (
       <Diagram id="diagram" ref={this.diagramRef} onCustomCommand={this.onCustomCommand}>
-        <ContextMenu enabled={true} commands={['bringToFront', 'sendToBack', 'lock', 'unlock']} />
+        <ContextMenu enabled={true} commands={menuCommands} />
         <ContextToolbox enabled={true} category="flowchart" shapeIconsPerRow={5} width={200} />
         <PropertiesPanel visibility="visible">
           <Tab>
-            <Group title="Page Properties" commands={['pageSize', 'pageOrientation', 'pageColor']} />
+            <Group title="Page Properties" commands={pageCommands} />
           </Tab>
         </PropertiesPanel>
         <HistoryToolbar visible={false} />

@@ -1,7 +1,9 @@
-﻿import React from 'react';
+import React from 'react';
 import Button from 'devextreme-react/button';
 import SelectBox from 'devextreme-react/select-box';
-import DataGrid, { Grouping, Column, ColumnChooser, LoadPanel, Toolbar, Item } from 'devextreme-react/data-grid';
+import DataGrid, {
+  Grouping, Column, ColumnChooser, LoadPanel, Toolbar, Item,
+} from 'devextreme-react/data-grid';
 
 import query from 'devextreme/data/query';
 import service from './data.js';
@@ -13,53 +15,63 @@ class App extends React.Component {
     this.state = {
       expanded: true,
       totalCount: this.getGroupCount('CustomerStoreState'),
-      grouping: 'CustomerStoreState'
+      grouping: 'CustomerStoreState',
     };
     this.groupingValues = [{
       value: 'CustomerStoreState',
-      text: 'Grouping by State'
+      text: 'Grouping by State',
     }, {
       value: 'Employee',
-      text: 'Grouping by Employee'
+      text: 'Grouping by Employee',
     }];
     this.dataGrid = null;
 
     this.groupChanged = this.groupChanged.bind(this);
     this.collapseAllClick = this.collapseAllClick.bind(this);
     this.refreshDataGrid = this.refreshDataGrid.bind(this);
+    this.getRef = this.getRef.bind(this);
   }
+
   getGroupCount(groupField) {
     return query(this.orders)
       .groupBy(groupField)
       .toArray().length;
   }
+
   groupChanged(e) {
     const grouping = e.value;
     this.dataGrid.instance.clearGrouping();
     this.dataGrid.instance.columnOption(grouping, 'groupIndex', 0);
     this.setState({
       totalCount: this.getGroupCount(grouping),
-      grouping
+      grouping,
     });
   }
+
   collapseAllClick(e) {
-    let newValue = !this.state.expanded;
+    const newValue = !this.state.expanded;
     e.component.option('text', newValue ? 'Collapse All' : 'Expand All');
     this.setState({
-      expanded: newValue
+      expanded: newValue,
     });
   }
+
   refreshDataGrid() {
     this.dataGrid.instance.refresh();
   }
+
+  getRef(ref) {
+    this.dataGrid = ref;
+    window.dataGrid = this.dataGrid;
+  }
+
   render() {
     return (
       <DataGrid id="gridContainer"
-        ref={(ref) => window.dataGrid = this.dataGrid = ref}
+        ref={this.getRef}
         dataSource={this.orders}
         keyExpr="ID"
-        showBorders={true}
-        onToolbarPreparing={this.onToolbarPreparing}>
+        showBorders={true}>
         <Grouping autoExpandAll={this.state.expanded} />
         <ColumnChooser enabled={true} />
         <LoadPanel enabled={true} />
@@ -78,7 +90,7 @@ class App extends React.Component {
           </Item>
           <Item location="before">
             <SelectBox
-              width="200"
+              width="225"
               items={this.groupingValues}
               displayExpr="text"
               valueExpr="value"

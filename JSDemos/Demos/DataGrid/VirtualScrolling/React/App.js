@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import DataGrid, { Scrolling, Sorting, LoadPanel } from 'devextreme-react/data-grid';
 import { generateData } from './data.js';
@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loadPanelEnabled: true
+      loadPanelEnabled: true,
     };
     this.onContentReady = this.onContentReady.bind(this);
   }
@@ -17,9 +17,7 @@ class App extends React.Component {
   render() {
     return (
       <DataGrid
-        elementAttr={{
-          id: 'gridContainer'
-        }}
+        height={440}
         dataSource={dataSource}
         keyExpr="id"
         showBorders={true}
@@ -39,7 +37,7 @@ class App extends React.Component {
 
   onContentReady() {
     this.setState({
-      loadPanelEnabled: false
+      loadPanelEnabled: false,
     });
   }
 }
