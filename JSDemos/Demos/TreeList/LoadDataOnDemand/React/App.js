@@ -8,7 +8,7 @@ const dataSource = {
 
     return fetch(`https://js.devexpress.com/Demos/Mvc/api/treeListData?parentIds=${parentIdsParam}`)
       .then((response) => response.json())
-      .catch(() => { throw 'Data Loading Error'; });
+      .catch(() => { throw new Error('Data Loading Error'); });
   },
 };
 
@@ -37,6 +37,7 @@ class App extends React.Component {
     if (e.value !== null) {
       return `${Math.ceil(e.value / 1024)} KB`;
     }
+    return null;
   }
 }
 
