@@ -17,6 +17,7 @@
       :width="300"
       data-field="title"
       caption="Subject"
+      sort-order="asc"
     />
     <DxColumn
       data-field="start"

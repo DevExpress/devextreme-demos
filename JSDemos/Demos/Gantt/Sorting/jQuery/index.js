@@ -20,6 +20,7 @@ $(() => {
       dataField: 'title',
       caption: 'Subject',
       width: 300,
+      sortOrder: 'asc',
     }, {
       dataField: 'start',
       caption: 'Start Date',

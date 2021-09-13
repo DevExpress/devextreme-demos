@@ -22,7 +22,7 @@ class App extends React.Component {
         <Resources dataSource={resources} />
         <ResourceAssignments dataSource={resourceAssignments} />
 
-        <Column dataField="title" caption="Subject" width={300} />
+        <Column dataField="title" caption="Subject" width={300} sortOrder="asc" />
         <Column dataField="start" caption="Start Date" />
         <Column dataField="end" caption="End Date" />
 
