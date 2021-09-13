@@ -18,4 +18,7 @@
     margin: initial;
 }
 
+#app[data-r-app] {
+    margin: initial;
+}
 /*END: use flex-box to arrange inner elements (stable results for all frameworks)*/
