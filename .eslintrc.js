@@ -276,11 +276,10 @@ module.exports = {
     })(),
     'class-methods-use-this': 0, // TODO warn (was error)
     'func-names': 0, // TODO warn (was warn) >500
-    'import/extensions': 0, // TODO does not work if remove extension (was error)
-    'no-use-before-define': 0, // keep this
+    'import/extensions': 0,
+    'no-use-before-define': 0,
     'no-param-reassign': 0, // TODO error (was error) >430
-    'max-len': 0, // TODO error (was error)
-    'prefer-destructuring': 0, // keep this
+    'prefer-destructuring': 0,
   },
   extends: [
     'eslint:recommended',
@@ -495,6 +494,15 @@ module.exports = {
       'vue/no-v-html': 'off',
       'vue/no-v-model-argument': 'off',
       'vue/valid-v-model': 'off',
+      'max-len': 0,
+      'vue/max-len': ['error', 100, 2, {
+        // eslint-disable-next-line spellcheck/spell-checker
+        ignoreUrls: true,
+        ignoreComments: false,
+        ignoreRegExpLiterals: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+      }],
       'vue/html-closing-bracket-spacing': ['error', {
         startTag: 'never',
         endTag: 'never',
