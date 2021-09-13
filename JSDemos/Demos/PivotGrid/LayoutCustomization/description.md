@@ -1,4 +1,4 @@
-PivotGrid allows users to customize layout and orientation of elements that annotate data. These elements are called [headers](/Documentation/Guide/UI_Components/PivotGrid/Visual_Elements/#Headers). They can be row, column, or data headers. You can customize row and data headers. Use the following properties to configure headers: 
+PivotGrid allows you to customize layout and orientation of elements that annotate data. These elements are called [headers](/Documentation/Guide/UI_Components/PivotGrid/Visual_Elements/#Headers). They can be of one of the following types: row, column, or data. Use the following properties to configure header settings: 
 
 - [rowHeaderLayout](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#rowHeaderLayout)            
 Allows you to specify layout type for the row header items. The *"standard"* layout displays child items on the right from the parent items. Assign "*tree*" to this property to display items more compactly as a hierarchical structure. 
