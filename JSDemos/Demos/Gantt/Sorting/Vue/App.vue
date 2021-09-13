@@ -17,7 +17,6 @@
       :width="300"
       data-field="title"
       caption="Subject"
-      sort-order="asc"
     />
     <DxColumn
       data-field="start"
@@ -37,14 +36,14 @@ import {
   DxResources,
   DxResourceAssignments,
   DxColumn,
-  DxEditing
+  DxEditing,
 } from 'devextreme-vue/gantt';
 
 import {
   tasks,
   dependencies,
   resources,
-  resourceAssignments
+  resourceAssignments,
 } from './data.js';
 
 export default {
@@ -55,16 +54,16 @@ export default {
     DxResources,
     DxResourceAssignments,
     DxColumn,
-    DxEditing
+    DxEditing,
   },
   data() {
     return {
-      tasks: tasks,
-      dependencies: dependencies,
-      resources: resources,
-      resourceAssignments: resourceAssignments
+      tasks,
+      dependencies,
+      resources,
+      resourceAssignments,
     };
-  }
+  },
 };
 </script>
 <style>

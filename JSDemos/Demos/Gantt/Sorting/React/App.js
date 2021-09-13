@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Gantt, {
-  Tasks, Dependencies, Resources, ResourceAssignments, Column, Editing, Sorting,
+  Tasks, Dependencies, Resources, ResourceAssignments, Column, Editing,
 } from 'devextreme-react/gantt';
 
 import {
@@ -22,12 +22,11 @@ class App extends React.Component {
         <Resources dataSource={resources} />
         <ResourceAssignments dataSource={resourceAssignments} />
 
-        <Column dataField="title" caption="Subject" width={300} defaultSortOrder="asc" />
+        <Column dataField="title" caption="Subject" width={300} />
         <Column dataField="start" caption="Start Date" />
         <Column dataField="end" caption="End Date" />
 
         <Editing enabled={true} />
-
       </Gantt>
     );
   }
