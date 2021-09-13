@@ -73,8 +73,10 @@ $(() => {
   $('#customizeTaskTooltip').dxCheckBox({
     value: true,
     onValueChanged(e) {
-      e.value ? gantt.option('taskTooltipContentTemplate', getTaskTooltipContentTemplate)
-        : gantt.option('taskTooltipContentTemplate', undefined);
+      gantt.option(
+        'taskTooltipContentTemplate',
+        e.value ? getTaskTooltipContentTemplate : undefined,
+      );
     },
   });
   $('#startDateContainer').dxDateBox({
@@ -95,7 +97,7 @@ $(() => {
 
   function getTaskTooltipContentTemplate(task) {
     const timeEstimate = Math.abs(task.start - task.end) / 36e5;
-    const timeLeft = Math.floor((100 - task.progress) / 100 * timeEstimate);
+    const timeLeft = Math.floor(((100 - task.progress) / 100) * timeEstimate);
 
     const $customTooltip = $(document.createElement('div'))
       .addClass('custom-task-edit-tooltip');

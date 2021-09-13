@@ -5,6 +5,9 @@ import Diagram, {
 import dialog from 'devextreme/ui/dialog';
 import 'whatwg-fetch';
 
+const pageCommands = ['pageSize', 'pageOrientation', 'pageColor'];
+const menuCommands = ['bringToFront', 'sendToBack', 'lock', 'unlock'];
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -33,18 +36,18 @@ class App extends React.Component {
         diagram.import(JSON.stringify(json));
       })
       .catch(() => {
-        throw 'Data Loading Error';
+        throw new Error('Data Loading Error');
       });
   }
 
   render() {
     return (
       <Diagram id="diagram" ref={this.diagramRef} onCustomCommand={this.onCustomCommand}>
-        <ContextMenu enabled={true} commands={['bringToFront', 'sendToBack', 'lock', 'unlock']} />
+        <ContextMenu enabled={true} commands={menuCommands} />
         <ContextToolbox enabled={true} category="flowchart" shapeIconsPerRow={5} width={200} />
         <PropertiesPanel visibility="visible">
           <Tab>
-            <Group title="Page Properties" commands={['pageSize', 'pageOrientation', 'pageColor']} />
+            <Group title="Page Properties" commands={pageCommands} />
           </Tab>
         </PropertiesPanel>
         <HistoryToolbar visible={false} />

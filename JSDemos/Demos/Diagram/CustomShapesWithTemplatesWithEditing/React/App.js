@@ -10,6 +10,8 @@ import CustomShapeTemplate from './CustomShapeTemplate.js';
 import CustomShapeToolboxTemplate from './CustomShapeToolboxTemplate.js';
 import service from './data.js';
 
+const pageCommands = ['pageSize', 'pageOrientation', 'pageColor'];
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +25,7 @@ class App extends React.Component {
       data: this.employees,
       onInserting(values, key) {
         this.update(key, {
-          ID: values.ID || that.generatedID++,
+          ID: values.ID || (that.generatedID += 1),
           Full_Name: values.Full_Name || "Employee's Name",
           Title: values.Title || "Employee's Title",
         });
@@ -77,10 +79,11 @@ class App extends React.Component {
     obj.Email = value.Email;
     obj.Skype = value.Skype;
     obj.Mobile_Phone = value.Mobile_Phone;
+    return null;
   }
 
   onRequestLayoutUpdate(e) {
-    for (let i = 0; i < e.changes.length; i++) {
+    for (let i = 0; i < e.changes.length; i += 1) {
       if (e.changes[i].type === 'remove') {
         e.allowed = true;
       } else if (e.changes[i].data.Head_ID !== undefined && e.changes[i].data.Head_ID !== null) {
@@ -204,7 +207,7 @@ class App extends React.Component {
           </Toolbox>
           <PropertiesPanel>
             <Tab>
-              <Group title="Page Properties" commands={['pageSize', 'pageOrientation', 'pageColor']} />
+              <Group title="Page Properties" commands={pageCommands} />
             </Tab>
           </PropertiesPanel>
         </Diagram>

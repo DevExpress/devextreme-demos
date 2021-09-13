@@ -35,9 +35,11 @@ const store = new CustomStore({
         summary: data.summary,
         groupCount: data.groupCount,
       }))
-      .catch(() => { throw 'Data Loading Error'; });
+      .catch(() => { throw new Error('Data Loading Error'); });
   },
 });
+
+const allowedPageSizes = [8, 12, 20];
 
 class App extends React.Component {
   render() {
@@ -75,7 +77,7 @@ class App extends React.Component {
         <Paging defaultPageSize={12} />
         <Pager
           showPageSizeSelector={true}
-          allowedPageSizes={[8, 12, 20]}
+          allowedPageSizes={allowedPageSizes}
         />
       </DataGrid>
     );

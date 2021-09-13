@@ -55,12 +55,12 @@ window.onload = function () {
   }
 
   function getLocale() {
-    const locale = sessionStorage.getItem('locale');
-    return locale != null ? locale : 'en';
+    const storageLocale = sessionStorage.getItem('locale');
+    return storageLocale != null ? storageLocale : 'en';
   }
 
-  function setLocale(locale) {
-    sessionStorage.setItem('locale', locale);
+  function setLocale(savingLocale) {
+    sessionStorage.setItem('locale', savingLocale);
   }
 
   $.when(
@@ -75,12 +75,11 @@ window.onload = function () {
     $.getJSON('../../../../../node_modules/cldr-core/supplemental/weekData.json'),
     $.getJSON('../../../../../node_modules/cldr-core/supplemental/currencyData.json'),
     $.getJSON('../../../../../node_modules/cldr-core/supplemental/numberingSystems.json'),
-  ).then(function () {
-    return [].slice.apply(arguments, [0]).map((result) => result[0]);
-  }).then(
-    Globalize.load,
-  ).then(() => {
-    Globalize.locale(getLocale());
-    ko.applyBindings(viewModel, $('#demo-container')[0]);
-  });
+  )
+    .then((...args) => [].slice.apply(args, [0]).map((result) => result[0]))
+    .then(Globalize.load)
+    .then(() => {
+      Globalize.locale(getLocale());
+      ko.applyBindings(viewModel, $('#demo-container')[0]);
+    });
 };

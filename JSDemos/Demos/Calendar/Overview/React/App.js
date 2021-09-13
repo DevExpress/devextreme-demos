@@ -4,6 +4,8 @@ import SelectBox from 'devextreme-react/select-box';
 import DateBox from 'devextreme-react/date-box';
 import Calendar from 'devextreme-react/calendar';
 
+const zoomLevels = ['month', 'year', 'decade', 'century'];
+
 class App extends React.Component {
   constructor() {
     super();
@@ -97,7 +99,7 @@ class App extends React.Component {
             <span>Zoom level</span>
             <SelectBox
               id="zoom-level"
-              dataSource={['month', 'year', 'decade', 'century']}
+              dataSource={zoomLevels}
               value={zoomLevel}
               onValueChanged={this.onZoomLevelValueChanged} />
           </div>
@@ -188,7 +190,6 @@ function getCellCssClass(date) {
   holydays.forEach((item) => {
     if (date.getDate() === item[0] && date.getMonth() === item[1]) {
       cssClass = 'holyday';
-      return false;
     }
   });
 

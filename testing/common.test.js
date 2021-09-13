@@ -87,16 +87,20 @@ const execTestCafeCode = (t, code) => {
     const visualTestSettings = readFrom('../visualtestrc.json', (x) => JSON.parse(x));
     const visualTestStyles = readFrom('../test-styles.css', (x) => injectStyle(x));
 
-    if (process.env.ENABLE_DEMO_TEST_SETTINGS) {
+    let comparisonOptions;
+    if (process.env.DISABLE_DEMO_TEST_SETTINGS !== 'all') {
       const approachLowerCase = approach.toLowerCase();
-      const ignoreApproach = visualTestSettings
-        && (visualTestSettings.ignore
-          || (visualTestSettings[approachLowerCase]
-            && visualTestSettings[approachLowerCase].ignore
-          )
-        );
+      const mergedTestSettings = (visualTestSettings && {
+        ...visualTestSettings,
+        ...visualTestSettings[approachLowerCase],
+      }) || {};
 
-      if (ignoreApproach) { return; }
+      if (process.env.CI_ENV && process.env.DISABLE_DEMO_TEST_SETTINGS !== 'ignore') {
+        if (mergedTestSettings.ignore) { return; }
+      }
+      if (process.env.DISABLE_DEMO_TEST_SETTINGS !== 'comparison-options') {
+        comparisonOptions = mergedTestSettings['comparison-options'];
+      }
     }
 
     runTestAtPage(test, `http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`)
@@ -117,7 +121,7 @@ const execTestCafeCode = (t, code) => {
         }
 
         await t.expect(
-          await compareScreenshot(t, `${testName}.png`),
+          await compareScreenshot(t, `${testName}.png`, undefined, comparisonOptions),
         ).ok('INVALID_SCREENSHOT');
       });
   });

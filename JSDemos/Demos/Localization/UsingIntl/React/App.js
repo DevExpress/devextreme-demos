@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-webpack-loader-syntax */
 import React from 'react';
 import DataGrid, { Column, Editing, FilterRow } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
@@ -33,12 +35,12 @@ class App extends React.Component {
   }
 
   getLocale() {
-    const locale = sessionStorage.getItem('locale');
-    return locale != null ? locale : 'en';
+    const storageLocale = sessionStorage.getItem('locale');
+    return storageLocale != null ? storageLocale : 'en';
   }
 
-  setLocale(locale) {
-    sessionStorage.setItem('locale', locale);
+  setLocale(savingLocale) {
+    sessionStorage.setItem('locale', savingLocale);
   }
 
   initMessages() {

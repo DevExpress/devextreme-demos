@@ -20,15 +20,15 @@
             <div class="dx-field-label">Indeterminate</div>
             <div class="dx-field-value">
                 @(Html.DevExtreme().CheckBox()
-                    .Value(new JS("undefined"))
+                    .Value(null)
                 )
             </div>
         </div>
         <div class="dx-field">
-            <div class="dx-field-label">Value change handling</div>
+            <div class="dx-field-label">Handle value change</div>
             <div class="dx-field-value">
                 @(Html.DevExtreme().CheckBox()
-                    .Value(new JS("undefined"))
+                    .Value(null)
                     .OnValueChanged("checkBox_valueChanged")
                 )
             </div>
@@ -38,8 +38,17 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().CheckBox()
                     .ID("disabled")
-                    .Value(new JS("undefined"))
+                    .Value(null)
                     .Disabled(true)
+                )
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Custom size</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().CheckBox()
+                    .Value(null)
+                    .IconSize(30)
                 )
             </div>
         </div>
@@ -48,8 +57,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().CheckBox()
                     .Value(true)
-                    .Width(80)
-                    .Text("Check")
+                    .Text("Label")
                 )
             </div>
         </div>
