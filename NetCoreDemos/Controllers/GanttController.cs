@@ -37,5 +37,9 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         public IActionResult ExportToPDF() {
             return View();
         }
+
+        public IActionResult Sorting() {
+            return View();
+        }
     }
 }
