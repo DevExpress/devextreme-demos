@@ -1,3 +1,6 @@
 {
-    "$schema": "../../../../testing/visualtestrc-schema.json"
+    "$schema": "../../../../testing/visualtestrc-schema.json",
+    "react": {
+        "ignore": true
+    }
 }
