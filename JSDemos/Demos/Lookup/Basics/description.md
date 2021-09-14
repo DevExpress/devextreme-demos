@@ -7,7 +7,7 @@ To bind the Lookup to data, use one of these properties:
 Accepts a local data array (see the Simple Lookup code below).
 
 * [dataSource](/Documentation/ApiReference/UI_Components/dxLookup/Configuration/#dataSource)             
-Accepts a local data array or a [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) object. DataSource works with local and remote arrays and allows you to shape data. In this demo, it is used to group a local array of objects (see the Grouped Lookup code below).
+Accepts a local data array or a [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) object. This object works with local and remote arrays and allows you to shape data. In this demo, a DataSource instance is configured to group a local array of objects (see the Grouped Lookup code below).
 
 Both properties work with arrays of primitives or objects. If you use objects, specify the following Lookup properties:
 
@@ -22,7 +22,7 @@ When a user selects an item, the Lookup saves the corresponding value from the *
 ### Group Data
 You can group data items in the drop-down list.
 
-If the data source provides data items ungrouped, use the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/)'s [group](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#group) property to specify the data field to group by.
+If the data source contains ungrouped data items, use the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/)'s [group](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#group) property to specify the data field to group by.
 
 The Lookup can also work with initially grouped data items. In this case, the data array should contain objects with the **key** and **items** fields:
 
@@ -40,7 +40,7 @@ The Lookup can also work with initially grouped data items. In this case, the da
         ]
     }];
 
-If data objects are grouped but use other field names, implement the **DataSource**'s [map](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#map) function to create **key** + **items** field mappings.
+If data objects are grouped but use other field names, implement the **DataSource**'s [map](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#map) function to create **key** and **items** field mappings.
 
 [note]Only one-level grouping is supported.
 
