@@ -5210,7 +5210,6 @@
           {
             "Title": "Basics",
             "Name": "Basics",
-            "DocUrl": "Guide/UI_Components/Lookup/Overview/",
             "Widget": "Lookup",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/EmployeesTasksController.cs",
