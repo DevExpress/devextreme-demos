@@ -11,13 +11,14 @@
 .editors .left, .editors .right {
     display: inline-block;
     width: 49%;
-    padding-right: 20px;
+    /* padding-right: 5px; */
     box-sizing: border-box;
 }
 
-.editors .right {
-    padding-right: 27px;
-}
+/* .editors .right {
+    padding-left: 5px;
+    padding-right: 0px;
+} */
 
 .editors .left > div, .editors .right > div, .editors .center > div {
     margin-bottom: 20px;
@@ -54,4 +55,5 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-right: 27px;
 }

@@ -11,13 +11,13 @@
 ::ng-deep .editors .left, ::ng-deep .editors .right {
     display: inline-block;
     width: 49%;
-    padding-right: 20px;
+    /* padding-right: 20px; */
     box-sizing: border-box;
 }
 
-::ng-deep .editors .right {
+/* ::ng-deep .editors .right {
     padding-right: 27px;
-}
+} */
 
 ::ng-deep .editors .left > *, ::ng-deep .editors .right > *, ::ng-deep .editors .center > * {
     margin-bottom: 20px;
@@ -54,4 +54,5 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-right: 27px;
 }

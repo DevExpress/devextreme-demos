@@ -129,13 +129,13 @@ export default {
 .editors .left, .editors .right {
     display: inline-block;
     width: 49%;
-    padding-right: 20px;
+    /* padding-right: 20px; */
     box-sizing: border-box;
 }
 
-.editors .right {
+/* .editors .right {
     padding-right: 27px;
-}
+} */
 
 .editors .left > *, .editors .right > *, .editors .center > * {
     margin-bottom: 20px;
@@ -172,5 +172,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-right: 27px;
 }
 </style>
