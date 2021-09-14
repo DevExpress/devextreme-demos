@@ -58,8 +58,11 @@
   </div>
 </template>
 <script>
-
-import { DxDataGrid, DxColumn, DxEditing, DxFilterRow } from 'devextreme-vue/data-grid';
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-webpack-loader-syntax */
+import {
+  DxDataGrid, DxColumn, DxEditing, DxFilterRow,
+} from 'devextreme-vue/data-grid';
 import DxSelectBox from 'devextreme-vue/select-box';
 
 import deMessages from 'npm:devextreme/localization/messages/de.json!json';
@@ -75,16 +78,16 @@ export default {
     DxDataGrid,
     DxColumn,
     DxEditing,
-    DxFilterRow
+    DxFilterRow,
   },
   data() {
     return {
       locale: null,
       locales: service.getLocales(),
       payments: service.getPayments(),
-      editPopupOptions: { width:700, height:345 },
+      editPopupOptions: { width: 700, height: 345 },
       amountEditorOptions: { format: 'currency', showClearButton: true },
-      selectBoxInputAttr: { id: 'selectInput' }
+      selectBoxInputAttr: { id: 'selectInput' },
     };
   },
   created() {
@@ -94,11 +97,11 @@ export default {
   },
   methods: {
     getLocale() {
-      const locale = sessionStorage.getItem('locale');
-      return locale != null ? locale : 'en';
+      const storageLocale = sessionStorage.getItem('locale');
+      return storageLocale != null ? storageLocale : 'en';
     },
-    setLocale(locale) {
-      sessionStorage.setItem('locale', locale);
+    setLocale(savingLocale) {
+      sessionStorage.setItem('locale', savingLocale);
     },
     initMessages() {
       loadMessages(deMessages);
@@ -109,8 +112,8 @@ export default {
       this.setLocale(e.value);
       document.location.reload();
     },
-    formatMessage: formatMessage
-  }
+    formatMessage,
+  },
 };
 </script>
 <style scoped>

@@ -40,14 +40,17 @@
           </div>
           <div class="parameter-info">
             <div class="parameter-name">Query string:</div>
-            <div class="parameter-value dx-theme-accent-as-text-color">{{ request.queryString }}</div>
+            <div
+              class="parameter-value dx-theme-accent-as-text-color"
+            >{{ request.queryString }}</div>
           </div>
           <br>
         </div>
       </div>
     </div>
     <div id="message-box">
-      To run the demo locally, specify your Azure storage account name, access key and container name in the web.config file.
+      To run the demo locally, specify your Azure storage account name,
+      access key and container name in the web.config file.
       Refer to the
       <a
         href="https://js.devexpress.com/Demos/WidgetsGallery/Demo/FileManager/AzureClientBinding/Vue/Light/"
@@ -71,7 +74,7 @@ export default {
   components: {
     DxFileManager,
     DxPermissions,
-    DxLoadPanel
+    DxLoadPanel,
   },
 
   data() {
@@ -84,13 +87,13 @@ export default {
         copyItem,
         moveItem,
         uploadFileChunk,
-        downloadItems
+        downloadItems,
       }),
       allowedFileExtensions: [],
       loadPanelPosition: { of: '#file-manager' },
       loadPanelVisible: true,
       wrapperClassName: '',
-      requests: []
+      requests: [],
     };
   },
 
@@ -103,12 +106,12 @@ export default {
     azure = new AzureFileSystem(gateway);
 
     fetch('https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-status?widgetType=fileManager')
-      .then(response => response.json())
-      .then(result => {
+      .then((response) => response.json())
+      .then((result) => {
         this.wrapperClassName = result.active ? 'show-widget' : 'show-message';
         this.loadPanelVisible = false;
       });
-  }
+  },
 };
 
 function getItems(parentDirectory) {
@@ -120,7 +123,9 @@ function createDirectory(parentDirectory, name) {
 }
 
 function renameItem(item, name) {
-  return item.isDirectory ? azure.renameDirectory(item.path, name) : azure.renameFile(item.path, name);
+  return item.isDirectory
+    ? azure.renameDirectory(item.path, name)
+    : azure.renameFile(item.path, name);
 }
 
 function deleteItem(item) {
@@ -129,30 +134,41 @@ function deleteItem(item) {
 
 function copyItem(item, destinationDirectory) {
   const destinationPath = destinationDirectory.path ? `${destinationDirectory.path}/${item.name}` : item.name;
-  return item.isDirectory ? azure.copyDirectory(item.path, destinationPath) : azure.copyFile(item.path, destinationPath);
+  return item.isDirectory
+    ? azure.copyDirectory(item.path, destinationPath)
+    : azure.copyFile(item.path, destinationPath);
 }
 
 function moveItem(item, destinationDirectory) {
   const destinationPath = destinationDirectory.path ? `${destinationDirectory.path}/${item.name}` : item.name;
-  return item.isDirectory ? azure.moveDirectory(item.path, destinationPath) : azure.moveFile(item.path, destinationPath);
+  return item.isDirectory
+    ? azure.moveDirectory(item.path, destinationPath)
+    : azure.moveFile(item.path, destinationPath);
 }
 
 function uploadFileChunk(fileData, uploadInfo, destinationDirectory) {
   let promise = null;
 
-  if(uploadInfo.chunkIndex === 0) {
+  if (uploadInfo.chunkIndex === 0) {
     const filePath = destinationDirectory.path ? `${destinationDirectory.path}/${fileData.name}` : fileData.name;
-    promise = gateway.getUploadAccessUrl(filePath).done(accessUrl => {
+    promise = gateway.getUploadAccessUrl(filePath).done((accessUrl) => {
       uploadInfo.customData.accessUrl = accessUrl;
     });
   } else {
     promise = Promise.resolve();
   }
 
-  promise = promise.then(() => gateway.putBlock(uploadInfo.customData.accessUrl, uploadInfo.chunkIndex, uploadInfo.chunkBlob));
+  promise = promise.then(() => gateway.putBlock(
+    uploadInfo.customData.accessUrl,
+    uploadInfo.chunkIndex,
+    uploadInfo.chunkBlob,
+  ));
 
-  if(uploadInfo.chunkIndex === uploadInfo.chunkCount - 1) {
-    promise = promise.then(() => gateway.putBlockList(uploadInfo.customData.accessUrl, uploadInfo.chunkCount));
+  if (uploadInfo.chunkIndex === uploadInfo.chunkCount - 1) {
+    promise = promise.then(() => gateway.putBlockList(
+      uploadInfo.customData.accessUrl,
+      uploadInfo.chunkCount,
+    ));
   }
 
   return promise;

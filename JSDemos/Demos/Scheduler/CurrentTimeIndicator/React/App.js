@@ -15,7 +15,7 @@ class App extends React.Component {
     this.state = {
       showCurrentTimeIndicator: true,
       shadeUntilCurrentTime: true,
-      updateInterval: 10
+      updateInterval: 10,
     };
     this.onShowCurrentTimeIndicatorChanged = this.onShowCurrentTimeIndicatorChanged.bind(this);
     this.onShadeUntilCurrentTimeChanged = this.onShadeUntilCurrentTimeChanged.bind(this);
@@ -96,8 +96,7 @@ class App extends React.Component {
   }
 
   onContentReady(e) {
-    const currentHour = new Date().getHours() - 1;
-    e.component.scrollToTime(currentHour, 30, new Date());
+    e.component.scrollTo(new Date());
   }
 
   onAppointmentClick(e) {

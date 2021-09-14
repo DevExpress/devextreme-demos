@@ -56,11 +56,9 @@ import {
   DxColumn,
   DxSelection,
   DxSummary,
-  DxTotalItem
+  DxTotalItem,
 } from 'devextreme-vue/data-grid';
-import Globalize from 'globalize';
-import 'devextreme/localization/globalize/date';
-import 'devextreme/localization/globalize/currency';
+import { formatDate } from 'devextreme/localization';
 
 import service from './data.js';
 
@@ -70,18 +68,19 @@ export default {
     DxColumn,
     DxSelection,
     DxSummary,
-    DxTotalItem
+    DxTotalItem,
   },
   data() {
     return {
-      orders: service.getOrders()
+      orders: service.getOrders(),
     };
   },
   methods: {
+    formatDate,
     customizeDate(data) {
-      return `First: ${ Globalize.formatDate(data.value, { date: 'medium' })}`;
-    }
-  }
+      return `First: ${formatDate(data.value, 'MMM dd, yyyy')}`;
+    },
+  },
 };
 </script>
 <style scoped>

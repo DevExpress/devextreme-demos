@@ -50,12 +50,15 @@
   </div>
 </template>
 <script>
-import { DxCircularGauge, DxGeometry, DxScale, DxLabel, DxValueIndicator } from 'devextreme-vue/circular-gauge';
-import { DxLinearGauge,
+import {
+  DxCircularGauge, DxGeometry, DxScale, DxLabel, DxValueIndicator,
+} from 'devextreme-vue/circular-gauge';
+import {
+  DxLinearGauge,
   DxGeometry as DxLinearGeometry,
   DxScale as DxLinearScale,
   DxLabel as DxLinearLabel,
-  DxValueIndicator as DxLinearValueIndicator
+  DxValueIndicator as DxLinearValueIndicator,
 } from 'devextreme-vue/linear-gauge';
 
 export default {
@@ -69,13 +72,13 @@ export default {
     'dx-linear-geometry': DxLinearGeometry,
     'dx-linear-scale': DxLinearScale,
     'dx-linear-label': DxLinearLabel,
-    'dx-linear-value-indicator': DxLinearValueIndicator
+    'dx-linear-value-indicator': DxLinearValueIndicator,
   },
   methods: {
     customizeText({ valueText }) {
       return `${valueText}°`;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
@@ -85,19 +88,25 @@ export default {
 }
 
 #c1 {
-	width: 70%;
-	height: 100%;
-	float: left;
+  width: 70%;
+  height: 100%;
+  float: left;
 }
 
 #c2 {
-	width: 30%;
-	height: 100%;
-	float: left;
+  width: 30%;
+  height: 100%;
+  float: left;
 }
 
 .long-title h3 {
-    font-family: 'Segoe UI Light', 'Helvetica Neue Light', 'Segoe UI', 'Helvetica Neue', 'Trebuchet MS', Verdana;
+    font-family:
+      'Segoe UI Light',
+      'Helvetica Neue Light',
+      'Segoe UI',
+      'Helvetica Neue',
+      'Trebuchet MS',
+      Verdana;
     font-weight: 200;
     font-size: 28px;
     text-align: center;

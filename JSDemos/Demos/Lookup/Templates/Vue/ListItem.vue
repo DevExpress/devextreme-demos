@@ -1,6 +1,7 @@
 <template>
   <div class="custom-item">
-    <img :src="itemData.Picture"><div>{{ itemData.Prefix }} {{ itemData.FirstName }} {{ itemData.LastName }}</div>
+    <img :src="itemData.Picture"><div>{{ itemData.Prefix }}
+      {{ itemData.FirstName }} {{ itemData.LastName }}</div>
   </div>
 </template>
 <script>
@@ -8,9 +9,9 @@ export default {
   props: {
     itemData: {
       type: Object,
-      default: () => {}
-    }
-  }
+      default: () => {},
+    },
+  },
 };
 </script>
 <style scoped>

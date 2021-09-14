@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import DataGrid, {
   Column,
@@ -6,12 +6,13 @@ import DataGrid, {
   Popup,
   Paging,
   Lookup,
-  Position,
-  Form
+  Form,
 } from 'devextreme-react/data-grid';
 import 'devextreme-react/text-area';
 import { Item } from 'devextreme-react/form';
 import { employees, states } from './data.js';
+
+const notesEditorOptions = { height: 100 };
 
 class App extends React.Component {
   render() {
@@ -25,10 +26,10 @@ class App extends React.Component {
           <Paging enabled={false} />
           <Editing
             mode="popup"
-            allowUpdating={true}>
-            <Popup title="Employee Info" showTitle={true} width={700} height={525}>
-              <Position my="top" at="top" of={window} />
-            </Popup>
+            allowUpdating={true}
+            allowAdding={true}
+            allowDeleting={true}>
+            <Popup title="Employee Info" showTitle={true} width={700} height={525} />
             <Form>
               <Item itemType="group" colCount={2} colSpan={2}>
                 <Item dataField="FirstName" />
@@ -41,7 +42,7 @@ class App extends React.Component {
                   dataField="Notes"
                   editorType="dxTextArea"
                   colSpan={2}
-                  editorOptions={{ height: 100 }} />
+                  editorOptions={notesEditorOptions} />
               </Item>
 
               <Item itemType="group" caption="Home Address" colCount={2} colSpan={2}>

@@ -16,7 +16,14 @@
           class="center"
         >
         <div id="textBlock">
-          The <b>ScrollView</b> allows users to scroll its content vertically. To enable horizontal and vertical scrolling, set the <b>direction</b> option to <i>&quot;both&quot;</i>. Horizontal scrolling is available only if the content is wider than the <b>ScrollView</b>. Otherwise, the content adapts to the widget&apos;s width.<br><br>The <b>ScrollView</b> uses native scrolling on most platforms, except desktops. To use it on all platforms, assign <b>true</b> to the <b>useNative</b> option. If you assign <b>false</b>, scrolling is simulated on all platforms.
+          The <b>ScrollView</b> allows users to scroll its content vertically.
+          To enable horizontal and vertical scrolling, set the <b>direction</b>
+          option to <i>&quot;both&quot;</i>. Horizontal scrolling is available
+          only if the content is wider than the <b>ScrollView</b>. Otherwise,
+          the content adapts to the widget&apos;s width.<br><br>The <b>ScrollView</b>
+          uses native scrolling on most platforms, except desktops. To use it on all
+          platforms, assign <b>true</b> to the <b>useNative</b> option. If you assign
+          <b>false</b>, scrolling is simulated on all platforms.
         </div>
       </DxScrollView>
     </template>
@@ -29,7 +36,7 @@ import { DxScrollView } from 'devextreme-vue/scroll-view';
 export default {
   components: {
     DxPopup,
-    DxScrollView
+    DxScrollView,
   },
   data() {
     return {
@@ -38,7 +45,7 @@ export default {
   },
   methods: {
 
-  }
+  },
 };
 </script>
 <style>

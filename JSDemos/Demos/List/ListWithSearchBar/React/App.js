@@ -1,27 +1,28 @@
 import React from 'react';
-
 import SelectBox from 'devextreme-react/select-box';
 import List from 'devextreme-react/list';
-
 import { products } from './data.js';
 
 function ItemTemplate(data) {
   return <div>{data.Name}</div>;
 }
+const searchModes = ['contains', 'startsWith', 'equals'];
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      searchMode: 'contains'
+      searchMode: 'contains',
     };
     this.onSearchModeChange = this.onSearchModeChange.bind(this);
   }
+
   onSearchModeChange(args) {
     this.setState({
-      searchMode: args.value
+      searchMode: args.value,
     });
   }
+
   render() {
     return (
       <React.Fragment>
@@ -39,7 +40,7 @@ class App extends React.Component {
           <div className="option">
             <span>Search mode </span>
             <SelectBox
-              items={['contains', 'startsWith']}
+              items={searchModes}
               value={this.state.searchMode}
               onValueChanged={this.onSearchModeChange} />
           </div>

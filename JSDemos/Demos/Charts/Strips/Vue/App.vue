@@ -53,7 +53,7 @@ import {
   DxLabel,
   DxLegend,
   DxExport,
-  DxFont
+  DxFont,
 } from 'devextreme-vue/chart';
 
 import { temperaturesData, highAverage, lowAverage } from './data.js';
@@ -68,7 +68,7 @@ export default {
     DxLabel,
     DxLegend,
     DxExport,
-    DxFont
+    DxFont,
   },
 
   data() {
@@ -85,23 +85,27 @@ export default {
     customizePoint(arg) {
       if (arg.value > this.highAverage) {
         return { color: this.highAverageColor };
-      } else if (arg.value < this.lowAverage) {
+      }
+      if (arg.value < this.lowAverage) {
         return { color: this.lowAverageColor };
       }
+      return null;
     },
 
     customizeLabel(arg) {
       if (arg.value > this.highAverage) {
         return this.getLabelsSettings(this.highAverageColor);
-      } else if (arg.value < this.lowAverage) {
+      }
+      if (arg.value < this.lowAverage) {
         return this.getLabelsSettings(this.lowAverageColor);
       }
+      return null;
     },
 
     getLabelsSettings(backgroundColor) {
       return {
         visible: true,
-        backgroundColor: backgroundColor,
+        backgroundColor,
         customizeText: this.customizeText,
       };
     },

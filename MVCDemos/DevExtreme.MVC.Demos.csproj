@@ -55,8 +55,8 @@
     <Reference Include="CommonMark, Version=0.1.0.0, Culture=neutral, PublicKeyToken=001ef8810438905d, processorArchitecture=MSIL">
       <HintPath>packages\CommonMark.NET.0.15.1\lib\net45\CommonMark.dll</HintPath>
     </Reference>
-    <Reference Include="DevExtreme.AspNet.Data, Version=2.8.0.0, Culture=neutral, PublicKeyToken=982f5dab1439d0f7, processorArchitecture=MSIL">
-      <HintPath>packages\DevExtreme.AspNet.Data.2.8.0\lib\net452\DevExtreme.AspNet.Data.dll</HintPath>
+    <Reference Include="DevExtreme.AspNet.Data, Version=2.8.4.0, Culture=neutral, PublicKeyToken=982f5dab1439d0f7, processorArchitecture=MSIL">
+      <HintPath>packages\DevExtreme.AspNet.Data.2.8.4\lib\net452\DevExtreme.AspNet.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="DevExtreme.AspNet.Mvc">
@@ -404,7 +404,7 @@
     <Compile Include="Models\DataGrid\InMemoryEmployeesValidationDataContext.cs" />
     <Compile Include="Models\Demo.cs" />
     <Compile Include="Models\ContinentInfo.cs" />
-    <Compile Include="Models\OwnerResource.cs" />
+    <Compile Include="Models\AssigneeResource.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\PriorityResource.cs" />
     <Compile Include="Models\AdaptiveAppointment.cs" />
@@ -426,7 +426,7 @@
     <Compile Include="Models\SampleData\EuropeanUnion.cs" />
     <Compile Include="Models\GeoInfo.cs" />
     <Compile Include="Models\SampleData\OrdersWithCustomerInfo.cs" />
-    <Compile Include="Models\SampleData\OwnerResources.cs" />
+    <Compile Include="Models\SampleData\AssigneeResources.cs" />
     <Compile Include="Models\SampleData\ParetoChartData.cs" />
     <Compile Include="Models\ParetoChartData.cs" />
     <Compile Include="Models\SampleData\CitiesByState.cs" />
@@ -526,6 +526,7 @@
     <Compile Include="Models\SampleData\ContinentsPopulation.cs" />
     <Compile Include="Models\SampleData\CountriesPopulationAndGDP.cs" />
     <Compile Include="Models\SampleData\AppointmentsWorkHours.cs" />
+    <Compile Include="Models\SampleData\DragAndDropAppointments.cs" />
     <Compile Include="Models\SampleData\IntradayData.cs" />
     <Compile Include="Models\SampleData\EuropeanCountries.cs" />
     <Compile Include="Models\SampleData\MonthlyPrices.cs" />
@@ -647,6 +648,7 @@
     <Content Include="Content\DemosStyles\DataGrid\EditStateManagement.css" />
     <Content Include="Content\DemosStyles\DataGrid\LocalReordering.css" />
     <Content Include="Content\DemosStyles\DataGrid\ExportToPDF.css" />
+    <Content Include="Content\DemosStyles\DataGrid\RecordPaging.css" />
     <Content Include="Content\DemosStyles\Diagram\AdvancedDataBinding.css" />
     <Content Include="Content\DemosStyles\Diagram\Containers.css" />
     <Content Include="Content\DemosStyles\Diagram\CustomShapesWithIcons.css" />
@@ -801,6 +803,8 @@
     <Content Include="Content\DemosStyles\Form\UpdateItemsDynamically.css" />
     <Content Include="Content\DemosStyles\Form\Validation.css" />
     <Content Include="Content\DemosStyles\Gallery\ItemTemplate.css" />
+    <Content Include="Content\DemosStyles\Gantt\Sorting.css" />
+    <Content Include="Content\DemosStyles\Gantt\TaskTemplate.css" />
     <Content Include="Content\DemosStyles\Gantt\ContextMenu.css" />
     <Content Include="Content\DemosStyles\Gantt\ChartAppearance.css" />
     <Content Include="Content\DemosStyles\Gantt\DataBinding.css" />
@@ -893,6 +897,7 @@
     <Content Include="Content\DemosStyles\Scheduler\CurrentTimeIndicator.css" />
     <Content Include="Content\DemosStyles\Scheduler\AdaptiveAppointments.css" />
     <Content Include="Content\DemosStyles\Scheduler\CellTemplates.css" />
+    <Content Include="Content\DemosStyles\Scheduler\VirtualScrolling.css" />
     <Content Include="Content\DemosStyles\Scheduler\CustomizeIndividualViews.css" />
     <Content Include="Content\DemosStyles\Scheduler\CustomTemplates.css" />
     <Content Include="Content\DemosStyles\Scheduler\GroupByDate.css" />
@@ -1627,6 +1632,7 @@
     <Content Include="Content\SampleData\SampleImages\Widescreen\woman-using-notebook.jpg" />
     <Content Include="Content\SampleData\TemperatureData.xml" />
     <Content Include="Content\site.css" />
+    <Content Include="Content\custom.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1824,6 +1830,7 @@
     <Content Include="Views\Scheduler\TimeZonesSupport.cshtml" />
     <Content Include="Views\Scheduler\CellTemplates.cshtml" />
     <Content Include="Views\Scheduler\CustomizeIndividualViews.cshtml" />
+    <Content Include="Views\Scheduler\CustomDragAndDrop.cshtml" />
     <Content Include="Views\RangeSelector\NumericScaleLightweight.cshtml" />
     <Content Include="Views\RangeSelector\NumericScale.cshtml" />
     <Content Include="Views\RangeSelector\DateTimeScaleLightweight.cshtml" />
@@ -1982,6 +1989,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_DocumentDomain.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\DataGrid\WebAPIService.cshtml" />
     <Content Include="Views\DataGrid\ODataService.cshtml" />
@@ -2157,6 +2165,8 @@
     <Content Include="Views\DataGrid\EditStateManagement.cshtml" />
     <Content Include="Views\Scheduler\VirtualScrolling.cshtml" />
     <Content Include="Views\Charts\Strips.cshtml" />
+    <Content Include="Views\Gantt\TaskTemplate.cshtml" />
+    <Content Include="Views\Gantt\Sorting.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

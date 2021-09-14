@@ -1,12 +1,12 @@
 import React from 'react';
-import { employees } from './data.js';
 import HtmlEditor from 'devextreme-react/html-editor';
+import { employees } from './data.js';
 
 const mentionsConfig = [{
   dataSource: employees,
   searchExpr: 'text',
   displayExpr: 'text',
-  valueExpr: 'text'
+  valueExpr: 'text',
 }];
 
 class App extends React.Component {
@@ -40,7 +40,8 @@ class App extends React.Component {
               07/03/19 - 12:25AM
             </div>
             <div className="text">
-              I&apos;ve been in the audio/video industry since 2001, and I&apos;ve been the CEO of DevAv since 2009.
+              I&apos;ve been in the audio/video industry since 2001,
+              and I&apos;ve been the CEO of DevAv since 2009.
             </div>
           </div>
           <br />

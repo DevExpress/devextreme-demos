@@ -5,7 +5,7 @@ import RemoteFileSystemProvider from 'devextreme/file_management/remote_provider
 import { LoadPanel } from 'devextreme-react/load-panel';
 
 const fileSystemProvider = new RemoteFileSystemProvider({
-  endpointUrl: 'https://js.devexpress.com/Demos/Mvc/api/file-manager-azure'
+  endpointUrl: 'https://js.devexpress.com/Demos/Mvc/api/file-manager-azure',
 });
 
 const allowedFileExtensions = [];
@@ -16,7 +16,7 @@ class App extends React.Component {
     super();
     this.state = {
       loadPanelVisible: true,
-      wrapperClassName: ''
+      wrapperClassName: '',
     };
 
     this.checkAzureStatus();
@@ -39,7 +39,8 @@ class App extends React.Component {
           </Permissions>
         </FileManager>
         <div id="message-box">
-          To run the demo locally, specify your Azure storage account name, access key and container name in the web.config file.
+          To run the demo locally, specify your Azure storage account name,
+          access key and container name in the web.config file.
           Refer to the <a href="https://js.devexpress.com/Demos/WidgetsGallery/Demo/FileManager/AzureServerBinding/React/Light/"
             target="_blank" rel="noopener noreferrer">
             https://js.devexpress.com/Demos/WidgetsGallery/Demo/FileManager/AzureServerBinding/React/Light/</a>
@@ -51,12 +52,12 @@ class App extends React.Component {
 
   checkAzureStatus() {
     fetch('https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-status?widgetType=fileManager')
-      .then(response => response.json())
-      .then(result => {
+      .then((response) => response.json())
+      .then((result) => {
         const className = result.active ? 'show-widget' : 'show-message';
         this.setState({
           wrapperClassName: className,
-          loadPanelVisible: false
+          loadPanelVisible: false,
         });
       });
   }

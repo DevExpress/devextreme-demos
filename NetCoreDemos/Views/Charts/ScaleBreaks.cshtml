@@ -29,45 +29,47 @@
 
 <div class="options">
     <div class="caption">Options</div>
-    <div class="option">
-        @(Html.DevExtreme().CheckBox()
-            .Text("Enable Breaks")
-            .Value(true)
-            .ElementAttr("class", "checkbox")
-            .OnValueChanged(@<text>
-                function(data) {
-                    var chart = $("#chart").dxChart("instance");
-                    chart.option("valueAxis[0].autoBreaksEnabled", data.value);
-                }
-            </text>)
-        )
-    </div>
-    <div class="option">
-        <span>Max Count</span>
-        @(Html.DevExtreme().SelectBox()
-            .DataSource(new[] { 1, 2, 3, 4 })
-            .Value(3)
-            .Width(60)
-            .OnValueChanged(@<text>
-                function(data) {
-                    var chart = $("#chart").dxChart("instance");
-                    chart.option("valueAxis[0].maxAutoBreakCount", data.value);
-                }
-            </text>)
-        )
-    </div>
-    <div class="option">
-        <span>Style</span>
-        @(Html.DevExtreme().SelectBox()
-            .DataSource(new[] { ScaleBreakLineStyle.Waved, ScaleBreakLineStyle.Straight })
-            .Value(ScaleBreakLineStyle.Waved)
-            .Width(120)
-            .OnValueChanged(@<text>
-                function(data) {
-                    var chart = $("#chart").dxChart("instance");
-                    chart.option("valueAxis[0].breakStyle.line", data.value);
-                }
-            </text>)
-        )
+    <div class="options-container">
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Enable Breaks")
+                .Value(true)
+                .ElementAttr("class", "checkbox")
+                .OnValueChanged(@<text>
+                    function(data) {
+                        var chart = $("#chart").dxChart("instance");
+                        chart.option("valueAxis[0].autoBreaksEnabled", data.value);
+                    }
+                </text>)
+            )
+        </div>
+        <div class="option">
+            <span>Max Count</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new[] { 1, 2, 3, 4 })
+                .Value(3)
+                .Width(80)
+                .OnValueChanged(@<text>
+                    function(data) {
+                        var chart = $("#chart").dxChart("instance");
+                        chart.option("valueAxis[0].maxAutoBreakCount", data.value);
+                    }
+                </text>)
+            )
+        </div>
+        <div class="option">
+            <span>Style</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new[] { ScaleBreakLineStyle.Waved, ScaleBreakLineStyle.Straight })
+                .Value(ScaleBreakLineStyle.Waved)
+                .Width(120)
+                .OnValueChanged(@<text>
+                    function(data) {
+                        var chart = $("#chart").dxChart("instance");
+                        chart.option("valueAxis[0].breakStyle.line", data.value);
+                    }
+                </text>)
+            )
+        </div>
     </div>
 </div>

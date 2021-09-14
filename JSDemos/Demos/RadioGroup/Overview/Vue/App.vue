@@ -48,7 +48,9 @@
         <div class="dx-field-value">
           <div id="radio-group-with-selection">
             <DxRadioGroup
-              :items="priorities"
+              :items="priorityEntities"
+              value-expr="id"
+              display-expr="text"
               :value="selectionPriority"
               @valueChanged="changeSelectionPriority"
             />
@@ -69,30 +71,31 @@
 </template>
 <script>
 import DxRadioGroup from 'devextreme-vue/radio-group';
-import { priorities, tasks } from './data.js';
+import { priorities, priorityEntities, tasks } from './data.js';
 
 export default {
   components: {
-    DxRadioGroup
+    DxRadioGroup,
   },
   data() {
     return {
       priorities,
       tasks,
+      priorityEntities,
       colorPriority: priorities[2],
-      selectionPriority: priorities[0]
+      selectionPriority: priorityEntities[0].id,
     };
   },
   computed: {
     selectedTasks() {
-      return tasks.filter(task => task.priority == this.selectionPriority);
-    }
+      return tasks.filter((task) => task.priority === this.selectionPriority);
+    },
   },
   methods: {
     changeSelectionPriority(e) {
       this.selectionPriority = e.value;
-    }
-  }
+    },
+  },
 };
 </script>
 

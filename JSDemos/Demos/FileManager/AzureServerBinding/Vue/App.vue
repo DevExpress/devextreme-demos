@@ -24,7 +24,8 @@
       /> -->
     </DxFileManager>
     <div id="message-box">
-      To run the demo locally, specify your Azure storage account name, access key and container name in the web.config file.
+      To run the demo locally, specify your Azure storage account name,
+      access key and container name in the web.config file.
       Refer to the
       <a
         href="https://js.devexpress.com/Demos/WidgetsGallery/Demo/FileManager/AzureServerBinding/Vue/Light/"
@@ -43,7 +44,7 @@ import RemoteFileSystemProvider from 'devextreme/file_management/remote_provider
 import { DxLoadPanel } from 'devextreme-vue/load-panel';
 
 const fileSystemProvider = new RemoteFileSystemProvider({
-  endpointUrl: 'https://js.devexpress.com/Demos/Mvc/api/file-manager-azure'
+  endpointUrl: 'https://js.devexpress.com/Demos/Mvc/api/file-manager-azure',
 });
 
 const allowedFileExtensions = [];
@@ -52,7 +53,7 @@ export default {
   components: {
     DxFileManager,
     DxPermissions,
-    DxLoadPanel
+    DxLoadPanel,
   },
 
   data() {
@@ -61,18 +62,18 @@ export default {
       allowedFileExtensions,
       loadPanelPosition: { of: '#file-manager' },
       loadPanelVisible: true,
-      wrapperClassName: ''
+      wrapperClassName: '',
     };
   },
 
   created() {
     fetch('https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-status?widgetType=fileManager')
-      .then(response => response.json())
-      .then(result => {
+      .then((response) => response.json())
+      .then((result) => {
         this.wrapperClassName = result.active ? 'show-widget' : 'show-message';
         this.loadPanelVisible = false;
       });
-  }
+  },
 };
 </script>
 <style>

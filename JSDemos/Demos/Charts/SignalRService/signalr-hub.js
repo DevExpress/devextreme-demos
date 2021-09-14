@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*!
  * ASP.NET SignalR JavaScript Library v2.2.2
  * http://signalr.net/

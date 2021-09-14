@@ -1,35 +1,40 @@
-﻿import React from 'react';
+import React from 'react';
 
 import DataGrid, {
   Column,
   Editing,
   Paging,
-  Lookup
+  Lookup,
 } from 'devextreme-react/data-grid';
 import CheckBox from 'devextreme-react/check-box';
 import SelectBox from 'devextreme-react/select-box';
 import { employees, states } from './data.js';
+
+const startEditActions = ['click', 'dblClick'];
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       selectTextOnEditStart: true,
-      startEditAction: 'click'
+      startEditAction: 'click',
     };
     this.onSelectTextOnEditStartChanged = this.onSelectTextOnEditStartChanged.bind(this);
     this.onStartEditActionChanged = this.onStartEditActionChanged.bind(this);
   }
+
   onSelectTextOnEditStartChanged(args) {
     this.setState({
-      selectTextOnEditStart: args.value
+      selectTextOnEditStart: args.value,
     });
   }
+
   onStartEditActionChanged(args) {
     this.setState({
-      startEditAction: args.value
+      startEditAction: args.value,
     });
   }
+
   render() {
     return (
       <div id="data-grid-demo">
@@ -42,6 +47,8 @@ class App extends React.Component {
           <Editing
             mode="batch"
             allowUpdating={true}
+            allowAdding={true}
+            allowDeleting={true}
             selectTextOnEditStart={this.state.selectTextOnEditStart}
             startEditAction={this.state.startEditAction} />
           <Column dataField="Prefix" caption="Title" width={70} />
@@ -64,9 +71,8 @@ class App extends React.Component {
           </div>
           <div className="option">
             <span>Start Edit Action</span>
-                &nbsp;
             <SelectBox
-              items={['click', 'dblClick']}
+              items={startEditActions}
               value={this.state.startEditAction}
               onValueChanged={this.onStartEditActionChanged}>
             </SelectBox>

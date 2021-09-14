@@ -1,6 +1,5 @@
 <template>
   <DxScheduler
-    time-zone="America/Los_Angeles"
     :data-source="dataSource"
     :current-date="currentDate"
     :views="views"
@@ -35,8 +34,8 @@
 <script>
 
 import { DxScheduler } from 'devextreme-vue/scheduler';
-import { data, holidays } from './data.js';
 import notify from 'devextreme/ui/notify';
+import { data, holidays } from './data.js';
 import Utils from './utils.js';
 
 import DataCell from './DataCell.vue';
@@ -48,29 +47,29 @@ export default {
     DxScheduler,
     DataCell,
     DateCell,
-    TimeCell
+    TimeCell,
   },
   data() {
     return {
       views: ['workWeek', 'month'],
       currentView: 'workWeek',
-      currentDate: new Date(2021, 4, 25),
-      dataSource: data
+      currentDate: new Date(2021, 3, 27),
+      dataSource: data,
     };
   },
   methods: {
-    onAppointmentFormOpening: function(e) {
+    onAppointmentFormOpening(e) {
       const startDate = new Date(e.appointmentData.startDate);
-      if(!Utils.isValidAppointmentDate(startDate)) {
+      if (!Utils.isValidAppointmentDate(startDate)) {
         e.cancel = true;
         this.notifyDisableDate();
       }
       this.applyDisableDatesToDateEditors(e.form);
     },
 
-    onAppointmentAdding: function(e) {
+    onAppointmentAdding(e) {
       const isValidAppointment = Utils.isValidAppointment(e.component, e.appointmentData);
-      if(!isValidAppointment) {
+      if (!isValidAppointment) {
         e.cancel = true;
         this.notifyDisableDate();
       }
@@ -78,7 +77,7 @@ export default {
 
     onAppointmentUpdating(e) {
       const isValidAppointment = Utils.isValidAppointment(e.component, e.newData);
-      if(!isValidAppointment) {
+      if (!isValidAppointment) {
         e.cancel = true;
         this.notifyDisableDate();
       }
@@ -94,7 +93,7 @@ export default {
 
       const endDateEditor = form.getEditor('endDate');
       endDateEditor.option('disabledDates', holidays);
-    }
-  }
+    },
+  },
 };
 </script>

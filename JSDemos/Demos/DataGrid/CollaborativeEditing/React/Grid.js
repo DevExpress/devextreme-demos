@@ -1,5 +1,7 @@
 import React from 'react';
-import DataGrid, { Column, Editing, Paging, RequiredRule, RangeRule } from 'devextreme-react/data-grid';
+import DataGrid, {
+  Column, Editing, Paging, RequiredRule, RangeRule, Lookup,
+} from 'devextreme-react/data-grid';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
 class Grid extends React.Component {
@@ -9,7 +11,7 @@ class Grid extends React.Component {
     this.maxDate = new Date(3000, 0);
     this.statesStore = AspNetData.createStore({
       key: 'ID',
-      loadUrl: 'https://js.devexpress.com/Demos/NetCore/api/DataGridStatesLookup'
+      loadUrl: 'https://js.devexpress.com/Demos/NetCore/api/DataGridStatesLookup',
     });
   }
 
@@ -52,12 +54,12 @@ class Grid extends React.Component {
         <Column
           dataField="StateID"
           caption="State"
-          lookup={{
-            dataSource: this.statesStore,
-            displayExpr: 'Name',
-            valueExpr: 'ID'
-          }}
         >
+          <Lookup
+            dataSource={this.statesStore}
+            displayExpr="Name"
+            valueExpr="ID"
+          />
           <RequiredRule />
         </Column>
 

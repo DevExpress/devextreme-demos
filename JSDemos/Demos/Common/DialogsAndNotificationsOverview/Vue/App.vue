@@ -54,7 +54,11 @@
       <template #content="{ data }">
         <div class="popup-property-details">
           <div class="large-text">{{ currency(currentHouse.Price) }}</div>
-          <div class="opacity">{{ currentHouse.Address }}, {{ currentHouse.City }}, {{ currentHouse.State }}</div>
+          <div class="opacity">
+            {{ currentHouse.Address }},
+            {{ currentHouse.City }},
+            {{ currentHouse.State }}
+          </div>
           <DxButton
             :text="favoriteText"
             :width="210"
@@ -88,18 +92,18 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
   minimumFractionDigits: 0,
-  maximumFractionDigits: 2
+  maximumFractionDigits: 2,
 });
 
 const
-  ADD_TO_FAVORITES = 'Add to Favorites',
-  REMOVE_FROM_FAVORITES = 'Remove from Favorites';
+  ADD_TO_FAVORITES = 'Add to Favorites';
+const REMOVE_FROM_FAVORITES = 'Remove from Favorites';
 
 export default {
   components: {
-    DxButton, DxPopup, DxPopover
+    DxButton, DxPopup, DxPopover,
   },
-  data: function() {
+  data() {
     return {
       houses: housesSource,
       currentHouse: housesSource[0],
@@ -108,14 +112,14 @@ export default {
         offset: '0, 2',
         at: 'bottom',
         my: 'top',
-        collision: 'fit flip'
-      }
+        collision: 'fit flip',
+      },
     };
   },
   computed: {
     favoriteText() {
       return this.currentHouse.Favorite ? REMOVE_FROM_FAVORITES : ADD_TO_FAVORITES;
-    }
+    },
   },
   methods: {
     currency(val) {
@@ -126,19 +130,18 @@ export default {
       this.popupVisible = true;
     },
     changeFavoriteState() {
-      let favoriteState = !this.currentHouse.Favorite;
-      let message = `This item has been ${
+      const favoriteState = !this.currentHouse.Favorite;
+      const message = `This item has been ${
         favoriteState ? 'added to' : 'removed from'
       } the Favorites list!`;
       this.currentHouse.Favorite = favoriteState;
       notify({
-        message: message,
-        width: 450
+        message,
+        width: 450,
       },
-      favoriteState ? 'success' : 'error', 2000
-      );
-    }
-  }
+      favoriteState ? 'success' : 'error', 2000);
+    },
+  },
 };
 </script>
 <style src="./styles.css"></style>

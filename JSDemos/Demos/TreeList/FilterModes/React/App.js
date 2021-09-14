@@ -8,16 +8,18 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      filterMode: 'matchOnly'
+      filterMode: 'matchOnly',
     };
     this.filterModes = ['matchOnly', 'withAncestors', 'fullBranch'];
     this.onFilterModeChange = this.onFilterModeChange.bind(this);
   }
+
   onFilterModeChange(args) {
     this.setState({
-      filterMode: args.value
+      filterMode: args.value,
     });
   }
+
   render() {
     return (
       <React.Fragment>
@@ -56,8 +58,7 @@ class App extends React.Component {
         <div className="options">
           <div className="caption">Options</div>
           <div className="option">
-            <span>Filter Mode</span>
-                &nbsp;
+            <span>Filter Mode </span>
             <SelectBox
               items={this.filterModes}
               value={this.state.filterMode}

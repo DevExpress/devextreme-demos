@@ -16,11 +16,11 @@
       <div class="dx-field">
         <div class="dx-field-label">Indeterminate</div>
         <div class="dx-field-value">
-          <DxCheckBox v-model:value="undefined"/>
+          <DxCheckBox :value="null"/>
         </div>
       </div>
       <div class="dx-field">
-        <div class="dx-field-label">Value change handling</div>
+        <div class="dx-field-label">Handle value change</div>
         <div class="dx-field-value">
           <DxCheckBox v-model:value="checkBoxValue"/>
         </div>
@@ -35,12 +35,20 @@
         </div>
       </div>
       <div class="dx-field">
+        <div class="dx-field-label">Custom size</div>
+        <div class="dx-field-value">
+          <DxCheckBox
+            :value="null"
+            :icon-size="30"
+          />
+        </div>
+      </div>
+      <div class="dx-field">
         <div class="dx-field-label">With label</div>
         <div class="dx-field-value">
           <DxCheckBox
             :value="true"
-            :width="80"
-            text="Check"
+            text="Label"
           />
         </div>
       </div>
@@ -52,12 +60,12 @@ import { DxCheckBox } from 'devextreme-vue/check-box';
 
 export default {
   components: {
-    DxCheckBox
+    DxCheckBox,
   },
   data() {
     return {
-      checkBoxValue: undefined
+      checkBoxValue: null,
     };
-  }
+  },
 };
 </script>

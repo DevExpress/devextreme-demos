@@ -1,6 +1,10 @@
 import React from 'react';
-import RangeSelector, { Margin, Background, Scale, Label, SliderMarker, Chart, Series } from 'devextreme-react/range-selector';
+import RangeSelector, {
+  Margin, Background, Scale, Label, SliderMarker, Chart, Series,
+} from 'devextreme-react/range-selector';
 import { dataSource } from './data.js';
+
+const defaultValue = [0, 5];
 
 function App() {
   return (
@@ -8,7 +12,7 @@ function App() {
       id="range-selector"
       title="Select a Range in the CPU Usage History"
       dataSource={dataSource}
-      defaultValue={[0, 5]}
+      defaultValue={defaultValue}
     >
       <Margin left={15} right={15} top={50} />
       <Background color="#808080" />

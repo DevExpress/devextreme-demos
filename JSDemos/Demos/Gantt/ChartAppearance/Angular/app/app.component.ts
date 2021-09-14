@@ -2,7 +2,7 @@ import { ViewEncapsulation } from '@angular/compiler/src/core';
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxGanttModule, DxCheckBoxModule, DxSelectBoxModule } from 'devextreme-angular';
+import { DxGanttModule, DxCheckBoxModule, DxSelectBoxModule, DxDateBoxModule } from 'devextreme-angular';
 import { Service, Task, Dependency, Resource, ResourceAssignment } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -25,7 +25,9 @@ export class AppComponent {
     scaleType: string;
     titlePosition: string;
     showResources: boolean;
-    taskTooltipContentTemplate: (model: any, container: HTMLElement) => string;
+    showCustomTaskTooltip: boolean;
+    startDateRange: Date;
+    endDateRange: Date;
 
     constructor(service: Service) {
         this.tasks = service.getTasks();
@@ -35,26 +37,18 @@ export class AppComponent {
         this.scaleType = "months";
         this.titlePosition = "outside";
         this.showResources = true;
-        this.taskTooltipContentTemplate = this.getTaskTooltipContentTemplate;
+        this.showCustomTaskTooltip = true;
+        this.startDateRange = new Date(2018, 11, 1);
+        this.endDateRange = new Date(2019, 11, 1);
     }
 
-    getTaskTooltipContentTemplate(model, container) {
-        container.innerHTML = '';
-        const parentElement = document.getElementsByClassName('dx-gantt-task-edit-tooltip')[0];
-        parentElement.className = 'dx-gantt-task-edit-tooltip custom-task-edit-tooltip';
-        const timeEstimate = Math.abs(model.start - model.end) / 36e5;
-        const timeLeft = Math.floor((100 - model.progress) / 100 * timeEstimate);
-
-        return `<div class="custom-tooltip-title"> ${model.title} </div>`
-        + `<div class="custom-tooltip-row"> <span> Estimate: </span> ${timeEstimate} <span> hours </span> </div>`
-        + `<div class="custom-tooltip-row"> <span> Left: </span> ${timeLeft} <span> hours </span> </div>`;
+    getTimeEstimate(task) {
+        return  Math.abs(task.start - task.end) / 36e5;
     }
 
-    onShowCustomTaskTooltip(e) {
-        const parentElement = document.getElementsByClassName('dx-gantt-task-edit-tooltip')[0];
-        parentElement.className = 'dx-gantt-task-edit-tooltip';
-        e.value ? this.taskTooltipContentTemplate = this.getTaskTooltipContentTemplate 
-                : this.taskTooltipContentTemplate = undefined;
+    getTimeLeft(task) {
+        const timeEstimate = Math.abs(task.start - task.end) / 36e5;
+        return Math.floor((100 - task.progress) / 100 * timeEstimate);
     }
 }
 
@@ -63,7 +57,8 @@ export class AppComponent {
         BrowserModule,
         DxGanttModule,
         DxCheckBoxModule,
-        DxSelectBoxModule
+        DxSelectBoxModule,
+        DxDateBoxModule
     ],
     declarations: [AppComponent],
     bootstrap: [AppComponent]

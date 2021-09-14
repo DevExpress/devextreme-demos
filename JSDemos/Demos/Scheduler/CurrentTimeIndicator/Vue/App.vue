@@ -6,9 +6,9 @@
       :views="views"
       :show-current-time-indicator="showCurrentTimeIndicator"
       :shade-until-current-time="shadeUntilCurrentTime"
-      :on-content-ready="onContentReady"
-      :on-appointment-click="onAppointmentClick"
-      :on-appointment-dbl-click="onAppointmentDblClick"
+      @content-ready="onContentReady"
+      @appointment-click="onAppointmentClick"
+      @appointment-dbl-click="onAppointmentDblClick"
       :editing="false"
       :show-all-day-panel="false"
       appointment-template="AppointmentTemplateSlot"
@@ -78,7 +78,7 @@ export default {
     DxResource,
     DxSwitch,
     DxNumberBox,
-    AppointmentTemplate
+    AppointmentTemplate,
   },
   data() {
     return {
@@ -88,35 +88,22 @@ export default {
       shadeUntilCurrentTime: true,
       updateInterval: 10,
       dataSource: data,
-      moviesData: moviesData,
+      moviesData,
     };
   },
   methods: {
-    onContentReady: function(e) {
-      const currentHour = new Date().getHours() - 1;
-      e.component.scrollToTime(currentHour, 30, new Date());
+    onContentReady(e) {
+      e.component.scrollTo(new Date());
     },
 
-    onAppointmentClick: function(e) {
+    onAppointmentClick(e) {
       e.cancel = true;
     },
 
-    onAppointmentDblClick: function(e) {
+    onAppointmentDblClick(e) {
       e.cancel = true;
     },
-
-    onShowCurrentTimeIndicatorChanged: function(e) {
-      this.setState({ showCurrentTimeIndicator: e.value });
-    },
-
-    onShadeUntilCurrentTimeChanged: function(e) {
-      this.setState({ shadeUntilCurrentTime: e.value });
-    },
-
-    onUpdateIntervalChanged: function(args) {
-      this.setState({ updateInterval: args.value });
-    }
-  }
+  },
 };
 </script>
 
@@ -134,6 +121,8 @@ export default {
   .options {
     background-color: rgba(191, 191, 191, 0.15);
     margin-top: 20px;
+    display:flex;
+    align-items: flex-start;
   }
 
   .column {
@@ -144,13 +133,11 @@ export default {
     vertical-align: top;
   }
 
-  .column:last-child .option {
-      margin-left: 4px;
-  }
-
   .option {
     padding: 5px 0;
-  }
+    display: flex;
+    align-items: center;
+}
 
   .label, .value {
     display: inline-block;
@@ -158,7 +145,7 @@ export default {
   }
 
   .label {
-    width: 184px;
+    width: 180px;
   }
 
   .value {

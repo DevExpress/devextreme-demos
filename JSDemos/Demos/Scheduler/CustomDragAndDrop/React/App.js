@@ -6,7 +6,7 @@ import ScrollView from 'devextreme-react/scroll-view';
 
 import { appointments, tasks } from './data.js';
 
-const currentDate = new Date(2021, 4, 24);
+const currentDate = new Date(2021, 3, 26);
 const views = [{ type: 'day', intervalCount: 3 }];
 const draggingGroupName = 'appointmentsGroup';
 
@@ -14,14 +14,14 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: tasks,
-      appointments: appointments
+      tasks,
+      appointments,
     };
     this.onAppointmentRemove = this.onAppointmentRemove.bind(this);
     this.onAppointmentAdd = this.onAppointmentAdd.bind(this);
   }
+
   render() {
-    const { tasks, appointments } = this.state;
     return (
       <React.Fragment>
         <ScrollView id="scroll">
@@ -30,24 +30,22 @@ class App extends React.Component {
             data="dropArea"
             group={draggingGroupName}
             onDragStart={this.onListDragStart}>
-            {tasks.map((task) => {
-              return <Draggable
-                key={task.text}
-                className="item dx-card dx-theme-text-color dx-theme-background-color"
-                clone={true}
-                group={draggingGroupName}
-                data={task}
-                onDragStart={this.onItemDragStart}
-                onDragEnd={this.onItemDragEnd}>
-                {task.text}
-              </Draggable>;
-            })}
+            {this.state.tasks.map((task) => <Draggable
+              key={task.text}
+              className="item dx-card dx-theme-text-color dx-theme-background-color"
+              clone={true}
+              group={draggingGroupName}
+              data={task}
+              onDragStart={this.onItemDragStart}
+              onDragEnd={this.onItemDragEnd}>
+              {task.text}
+            </Draggable>)}
           </Draggable>
         </ScrollView>
         <Scheduler
           timeZone="America/Los_Angeles"
           id="scheduler"
-          dataSource={appointments}
+          dataSource={this.state.appointments}
           views={views}
           defaultCurrentDate={currentDate}
           height={600}
@@ -72,7 +70,7 @@ class App extends React.Component {
 
       this.setState({
         tasks: [...this.state.tasks],
-        appointments: [...this.state.appointments]
+        appointments: [...this.state.appointments],
       });
     }
   }
@@ -86,7 +84,7 @@ class App extends React.Component {
 
       this.setState({
         tasks: [...this.state.tasks],
-        appointments: [...this.state.appointments]
+        appointments: [...this.state.appointments],
       });
     }
   }

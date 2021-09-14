@@ -28,16 +28,14 @@
 import DxPivotGrid, {
   DxExport,
   DxFieldChooser,
-  DxFieldPanel
+  DxFieldPanel,
 } from 'devextreme-vue/pivot-grid';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
+import { Workbook } from 'exceljs';
+import { saveAs } from 'file-saver-es';
+// Our demo infrastructure requires us to use 'file-saver-es'.
+// We recommend that you use the official 'file-saver' package in your applications.
 import { exportPivotGrid } from 'devextreme/excel_exporter';
-import ExcelJS from 'exceljs';
-import saveAs from 'file-saver';
-/*
-  // Use this import for codeSandBox
-  import FileSaver from 'file-saver';
-*/
 import { sales } from './data.js';
 
 export default {
@@ -45,7 +43,7 @@ export default {
     DxPivotGrid,
     DxExport,
     DxFieldChooser,
-    DxFieldPanel
+    DxFieldPanel,
   },
   data() {
     return {
@@ -55,12 +53,12 @@ export default {
           width: 120,
           dataField: 'region',
           area: 'row',
-          expanded: true
+          expanded: true,
         }, {
           caption: 'City',
           dataField: 'city',
           width: 150,
-          area: 'row'
+          area: 'row',
         }, {
           dataField: 'date',
           dataType: 'date',
@@ -73,26 +71,26 @@ export default {
           dataType: 'number',
           summaryType: 'sum',
           format: 'currency',
-          area: 'data'
+          area: 'data',
         }],
-        store: sales
-      })
+        store: sales,
+      }),
     };
   },
   methods: {
     onExporting(e) {
-      const workbook = new ExcelJS.Workbook();
+      const workbook = new Workbook();
       const worksheet = workbook.addWorksheet('Sales');
 
       worksheet.columns = [
-        { width: 30 }, { width: 20 }, { width: 30 }, { width: 30 }, { width: 30 }, { width: 30 }
+        { width: 30 }, { width: 20 }, { width: 30 }, { width: 30 }, { width: 30 }, { width: 30 },
       ];
 
       exportPivotGrid({
         component: e.component,
-        worksheet: worksheet,
+        worksheet,
         topLeftCell: { row: 4, column: 1 },
-        keepColumnWidths: false
+        keepColumnWidths: false,
       }).then((cellRange) => {
         // Header
         const headerRow = worksheet.getRow(2);
@@ -119,13 +117,19 @@ export default {
         });
       });
       e.cancel = true;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
 .long-title h3 {
-  font-family: "Segoe UI Light", "Helvetica Neue Light", "Segoe UI", "Helvetica Neue", "Trebuchet MS", Verdana;
+  font-family:
+    "Segoe UI Light",
+    "Helvetica Neue Light",
+    "Segoe UI",
+    "Helvetica Neue",
+    "Trebuchet MS",
+    Verdana;
   font-weight: 200;
   font-size: 28px;
   text-align: center;

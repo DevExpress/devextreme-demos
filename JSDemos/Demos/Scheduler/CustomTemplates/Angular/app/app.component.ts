@@ -1,9 +1,7 @@
 import { NgModule, Component, ViewChild, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxSchedulerModule,
-         DxSchedulerComponent,
-         DxTemplateModule } from 'devextreme-angular';
+import { DxSchedulerModule, DxSchedulerComponent, DxTemplateModule } from 'devextreme-angular';
 import { Service, MovieData, TheatreData, Data } from './app.service';
 import Query from 'devextreme/data/query';
 
@@ -21,7 +19,7 @@ export class AppComponent {
     @ViewChild(DxSchedulerComponent, { static: false }) scheduler: DxSchedulerComponent;
 
     data: Data[];
-    currentDate: Date = new Date(2021, 4, 25);
+    currentDate: Date = new Date(2021, 3, 27);
     moviesData: MovieData[];
     theatreData: TheatreData[];
 
@@ -49,10 +47,9 @@ export class AppComponent {
                 valueExpr: "id",
                 onValueChanged: function(args) {
                     movieInfo = that.getMovieById(args.value);
-                    form.getEditor("director")
-                        .option("value", movieInfo.director);
-                    form.getEditor("endDate")
-                        .option("value", new Date (startDate.getTime() + 60 * 1000 * movieInfo.duration));
+
+                    form.updateData("director", movieInfo.director);
+                    form.updateData("endDate", new Date(startDate.getTime() + 60 * 1000 * movieInfo.duration));
                 }.bind(this)
             }
         }, {
@@ -73,8 +70,7 @@ export class AppComponent {
                 type: "datetime",
                 onValueChanged: function(args) {
                     startDate = args.value;
-                    form.getEditor("endDate")
-                        .option("value", new Date (startDate.getTime() + 60 * 1000 * movieInfo.duration));
+                    form.updateData("endDate", new Date(startDate.getTime() + 60 * 1000 * movieInfo.duration));
                 }
             }
         }, {

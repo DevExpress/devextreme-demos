@@ -8,7 +8,8 @@ import VectorMap, {
   Source,
   Subtitle,
   Title,
-  Tooltip
+  Tooltip,
+  Size,
 } from 'devextreme-react/vector-map';
 
 import * as mapsData from 'devextreme/dist/js/vectormap-data/world.js';
@@ -16,16 +17,18 @@ import { countriesGDP } from './data.js';
 import TooltipTemplate from './TooltipTemplate.js';
 
 const colorGroups = [0, 10000, 50000, 100000, 500000, 1000000, 10000000, 50000000];
+const mapBounds = [-180, 85, 180, -60];
 
-const format = new Intl.NumberFormat('en-US', {
-  minimumFractionDigits: 0
-}).format;
+const { format } = new Intl.NumberFormat('en-US', {
+  minimumFractionDigits: 0,
+});
 
 export default function App() {
   return (
     <VectorMap
       palette="Violet"
-      elementAttr={{ id: 'vector-map' }} bounds={[-180, 85, 180, -60]}>
+      bounds={mapBounds}>
+      <Size height={700} />
       <Layer
         name="areas"
         dataSource={mapsData.world}
@@ -55,7 +58,7 @@ export default function App() {
 function customizeLayer(elements) {
   elements.forEach((element) => {
     const countryGDPData = countriesGDP[element.attribute('name')];
-    element.attribute('total', countryGDPData && countryGDPData.total || 0);
+    element.attribute('total', (countryGDPData && countryGDPData.total) || 0);
   });
 }
 

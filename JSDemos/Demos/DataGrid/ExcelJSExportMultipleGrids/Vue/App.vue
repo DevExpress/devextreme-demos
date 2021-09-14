@@ -83,13 +83,11 @@
 import DxButton from 'devextreme-vue/button';
 import DxTabPanel, { DxItem } from 'devextreme-vue/tab-panel';
 import { DxDataGrid, DxColumn } from 'devextreme-vue/data-grid';
+import { Workbook } from 'exceljs';
+import { saveAs } from 'file-saver-es';
+// Our demo infrastructure requires us to use 'file-saver-es'.
+// We recommend that you use the official 'file-saver' package in your applications.
 import { exportDataGrid } from 'devextreme/excel_exporter';
-import ExcelJS from 'exceljs';
-import saveAs from 'file-saver';
-/*
-  // Use this import for codeSandBox
-  import FileSaver from 'file-saver';
-*/
 import 'devextreme/data/odata/store';
 
 const priceGridRefKey = 'priceDataGrid';
@@ -101,7 +99,7 @@ export default {
     DxTabPanel,
     DxItem,
     DxDataGrid,
-    DxColumn
+    DxColumn,
   },
   data() {
     return {
@@ -110,33 +108,35 @@ export default {
       priceDataSource: {
         store: {
           type: 'odata',
-          url: 'https://js.devexpress.com/Demos/DevAV/odata/Products'
+          url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
+          key: 'Product_ID',
         },
         select: ['Product_ID', 'Product_Name', 'Product_Sale_Price', 'Product_Retail_Price'],
-        filter: ['Product_ID', '<', 10]
+        filter: ['Product_ID', '<', 10],
       },
-      ratingDataSource:{
+      ratingDataSource: {
         store: {
           type: 'odata',
-          url: 'https://js.devexpress.com/Demos/DevAV/odata/Products'
+          url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
+          key: 'Product_ID',
         },
         select: ['Product_ID', 'Product_Name', 'Product_Consumer_Rating', 'Product_Category'],
-        filter: ['Product_ID', '<', 10]
-      }
+        filter: ['Product_ID', '<', 10],
+      },
     };
   },
   computed: {
-    priceGridInstance: function() {
+    priceGridInstance() {
       return this.$refs[priceGridRefKey].instance;
     },
-    ratingGridInstance: function() {
+    ratingGridInstance() {
       return this.$refs[ratingGridRefKey].instance;
-    }
+    },
   },
   methods: {
     exportGrids() {
       const context = this;
-      const workbook = new ExcelJS.Workbook();
+      const workbook = new Workbook();
       const priceSheet = workbook.addWorksheet('Price');
       const ratingSheet = workbook.addWorksheet('Rating');
 
@@ -152,29 +152,29 @@ export default {
         topLeftCell: { row: 4, column: 2 },
         customizeCell: ({ gridCell, excelCell }) => {
           setAlternatingRowsBackground(gridCell, excelCell);
-        }
-      }).then(() => {
-        return exportDataGrid({
-          worksheet: ratingSheet,
-          component: context.ratingGridInstance,
-          topLeftCell: { row: 4, column: 2 },
-          customizeCell: ({ gridCell, excelCell }) => {
-            setAlternatingRowsBackground(gridCell, excelCell);
-          }
-        });
-      }).then(() => {
+        },
+      }).then(() => exportDataGrid({
+        worksheet: ratingSheet,
+        component: context.ratingGridInstance,
+        topLeftCell: { row: 4, column: 2 },
+        customizeCell: ({ gridCell, excelCell }) => {
+          setAlternatingRowsBackground(gridCell, excelCell);
+        },
+      })).then(() => {
         workbook.xlsx.writeBuffer().then((buffer) => {
           saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'MultipleGrids.xlsx');
         });
       });
-    }
-  }
+    },
+  },
 };
 
 function setAlternatingRowsBackground(gridCell, excelCell) {
-  if(gridCell.rowType === 'header' || gridCell.rowType === 'data') {
-    if(excelCell.fullAddress.row % 2 === 0) {
-      excelCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'D3D3D3' }, bgColor: { argb: 'D3D3D3' } };
+  if (gridCell.rowType === 'header' || gridCell.rowType === 'data') {
+    if (excelCell.fullAddress.row % 2 === 0) {
+      excelCell.fill = {
+        type: 'pattern', pattern: 'solid', fgColor: { argb: 'D3D3D3' }, bgColor: { argb: 'D3D3D3' },
+      };
     }
   }
 }

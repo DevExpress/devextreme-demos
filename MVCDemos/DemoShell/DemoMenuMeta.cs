@@ -169,15 +169,18 @@ namespace DevExtreme.MVC.Demos.DemoShell {
         string ReadDemoDescriptionFile(Demo demo) {
             var server = _http.Server;
 
-            var path = server.MapPath(Path.Combine("~", "wwwroot", "Descr", demo.Controller, demo.Action + ".md"));
+            var path = server.MapPath(Path.Combine("~", "Content", "Descr", demo.Controller, demo.Action + ".md"));
 
             if(!File.Exists(path))
-                path = server.MapPath(Path.Combine("~", "wwwroot", "Descr", "Temp", demo.Controller, demo.Action + ".md"));
+                path = server.MapPath(Path.Combine("~", "Content", "Descr", "Temp", demo.Controller, demo.Action + ".md"));
 
-            if(File.Exists(path))
-                return File.ReadAllText(path);
+            if(!File.Exists(path))
+                return null;
 
-            return null;
+            var content = File.ReadAllText(path);
+            content = ReplaceDocLinks(content);
+
+            return content;
         }
 
         void PopulateFiles(Demo demo) {
@@ -219,6 +222,13 @@ namespace DevExtreme.MVC.Demos.DemoShell {
             });
         }
 
+        private readonly Regex _htmlLinks = new Regex(
+            @"\]\(\/Documentation(.+?)\)",
+            RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private string ReplaceDocLinks(string content) {
+            var updateLinksContent = _htmlLinks.Replace(content, @"](https://js.devexpress.com/DevExtreme$1)");
+            return updateLinksContent;
+        }
     }
 
 }

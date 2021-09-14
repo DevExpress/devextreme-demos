@@ -1,7 +1,7 @@
-$(function(){
-    $("#gridContainer").dxDataGrid({
-        dataSource: orders,
-        showBorders: true
-    });
-    
+$(() => {
+  $('#gridContainer').dxDataGrid({
+    dataSource: orders,
+    keyExpr: 'OrderNumber',
+    showBorders: true,
+  });
 });

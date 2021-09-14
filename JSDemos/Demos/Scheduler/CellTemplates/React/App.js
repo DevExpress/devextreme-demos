@@ -9,7 +9,7 @@ import DataCell from './DataCell.js';
 import DateCell from './DateCell.js';
 import TimeCell from './TimeCell.js';
 
-const currentDate = new Date(2021, 4, 25);
+const currentDate = new Date(2021, 3, 27);
 const views = ['workWeek', 'month'];
 const currentView = views[0];
 
@@ -24,7 +24,7 @@ class App extends React.Component {
 
   onAppointmentFormOpening(e) {
     const startDate = new Date(e.appointmentData.startDate);
-    if(!Utils.isValidAppointmentDate(startDate)) {
+    if (!Utils.isValidAppointmentDate(startDate)) {
       e.cancel = true;
       this.notifyDisableDate();
     }
@@ -33,7 +33,7 @@ class App extends React.Component {
 
   onAppointmentAdding(e) {
     const isValidAppointment = Utils.isValidAppointment(e.component, e.appointmentData);
-    if(!isValidAppointment) {
+    if (!isValidAppointment) {
       e.cancel = true;
       this.notifyDisableDate();
     }
@@ -41,7 +41,7 @@ class App extends React.Component {
 
   onAppointmentUpdating(e) {
     const isValidAppointment = Utils.isValidAppointment(e.component, e.newData);
-    if(!isValidAppointment) {
+    if (!isValidAppointment) {
       e.cancel = true;
       this.notifyDisableDate();
     }
@@ -74,7 +74,6 @@ class App extends React.Component {
   render() {
     return (
       <Scheduler
-        timeZone="America/Los_Angeles"
         dataSource={data}
         views={views}
         defaultCurrentView={currentView}

@@ -30,5 +30,16 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         public IActionResult Validation() {
             return View();
         }
+
+        public IActionResult TaskTemplate() {
+            return View();
+        }
+        public IActionResult ExportToPDF() {
+            return View();
+        }
+
+        public IActionResult Sorting() {
+            return View();
+        }
     }
 }

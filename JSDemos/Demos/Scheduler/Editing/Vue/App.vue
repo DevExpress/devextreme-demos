@@ -16,37 +16,39 @@
     />
     <div class="options">
       <div class="caption">Options</div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="allowAdding"
-          text="Allow adding"
-        />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="allowDeleting"
-          text="Allow deleting"
-        />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="allowUpdating"
-          text="Allow updating"
-        />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          :disabled="!allowUpdating"
-          v-model:value="allowResizing"
-          text="Allow resizing"
-        />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          :disabled="!allowUpdating"
-          v-model:value="allowDragging"
-          text="Allow dragging"
-        />
+      <div class="options-container">
+        <div class="option">
+          <DxCheckBox
+            v-model:value="allowAdding"
+            text="Allow adding"
+          />
+        </div>
+        <div class="option">
+          <DxCheckBox
+            v-model:value="allowDeleting"
+            text="Allow deleting"
+          />
+        </div>
+        <div class="option">
+          <DxCheckBox
+            v-model:value="allowUpdating"
+            text="Allow updating"
+          />
+        </div>
+        <div class="option">
+          <DxCheckBox
+            :disabled="!allowUpdating"
+            v-model:value="allowResizing"
+            text="Allow resizing"
+          />
+        </div>
+        <div class="option">
+          <DxCheckBox
+            :disabled="!allowUpdating"
+            v-model:value="allowDragging"
+            text="Allow dragging"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -64,18 +66,18 @@ import { data } from './data.js';
 export default {
   components: {
     DxScheduler,
-    DxCheckBox
+    DxCheckBox,
   },
   data() {
     return {
       views: ['day', 'week'],
-      currentDate: new Date(2021, 4, 27),
+      currentDate: new Date(2021, 3, 29),
       dataSource: data,
       allowAdding: true,
       allowDeleting: true,
       allowUpdating: true,
       allowResizing: true,
-      allowDragging: true
+      allowDragging: true,
     };
   },
   computed: {
@@ -85,24 +87,24 @@ export default {
         allowDeleting: this.allowDeleting,
         allowUpdating: this.allowUpdating,
         allowResizing: this.allowResizing,
-        allowDragging: this.allowDragging
+        allowDragging: this.allowDragging,
       };
-    }
+    },
   },
   methods: {
-    showToast: function(event, value, type) {
+    showToast(event, value, type) {
       notify(`${event} "${value}" task`, type, 800);
     },
 
-    showAddedToast: function(e) {
+    showAddedToast(e) {
       this.showToast('Added', e.appointmentData.text, 'success');
     },
 
-    showUpdatedToast: function(e) {
+    showUpdatedToast(e) {
       this.showToast('Updated', e.appointmentData.text, 'info');
     },
 
-    showDeletedToast: function(e) {
+    showDeletedToast(e) {
       this.showToast('Deleted', e.appointmentData.text, 'warning');
     },
   },
@@ -123,8 +125,12 @@ export default {
 
   .option {
     margin-top: 10px;
-    margin-right: 4px;
     display: inline-block;
     width: 19%;
+  }
+
+  .options-container {
+    display: flex;
+    align-items: center;
   }
 </style>

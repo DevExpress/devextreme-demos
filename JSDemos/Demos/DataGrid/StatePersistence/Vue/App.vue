@@ -1,8 +1,13 @@
 <template>
   <div>
-    <div id="descContainer">Sort and filter data, group, reorder and resize columns, change page numbers and page size. Once you are done, <a @click="onRefreshClick">refresh</a> the web page to see that the grid’s state is automatically persisted to continue working from where you stopped.</div>
+    <div id="descContainer">Sort and filter data, group, reorder and resize columns,
+      change page numbers and page size. Once you are done, <a @click="onRefreshClick">refresh</a>
+      the web page to see that the grid’s state is automatically persisted to continue working from
+      where you stopped or you can <a @click="onStateResetClick">reset</a>
+      the grid to its initial state.</div>
     <DxDataGrid
       id="gridContainer"
+      ref="dataGrid"
       :data-source="orders"
       :allow-column-resizing="true"
       :allow-column-reordering="true"
@@ -50,23 +55,28 @@
   </div>
 </template>
 <script>
-import { DxDataGrid, DxSelection, DxFilterRow, DxGroupPanel, DxStateStoring, DxPager, DxColumn } from 'devextreme-vue/data-grid';
+import {
+  DxDataGrid, DxSelection, DxFilterRow, DxGroupPanel, DxStateStoring, DxPager, DxColumn,
+} from 'devextreme-vue/data-grid';
 import service from './data.js';
 
 export default {
   components: {
-    DxDataGrid, DxSelection, DxFilterRow, DxGroupPanel, DxStateStoring, DxPager, DxColumn
+    DxDataGrid, DxSelection, DxFilterRow, DxGroupPanel, DxStateStoring, DxPager, DxColumn,
   },
   data() {
     return {
-      orders: service.getOrders()
+      orders: service.getOrders(),
     };
   },
   methods: {
     onRefreshClick() {
       window.location.reload();
-    }
-  }
+    },
+    onStateResetClick() {
+      this.$refs.dataGrid.instance.state(null);
+    },
+  },
 };
 </script>
 <style scoped>

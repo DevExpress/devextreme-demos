@@ -3,6 +3,7 @@
     <DxDataGrid
       id="gridContainer"
       :data-source="orders"
+      key-expr="ID"
       :show-borders="true"
       @exporting="exporting"
       @cell-prepared="cellPrepared"
@@ -90,28 +91,46 @@
   </div>
 </template>
 <script>
-import { DxDataGrid, DxColumn, DxExport, DxSelection, DxSummary, DxGroupPanel, DxGrouping, DxGroupItem, DxSortByGroupSummaryInfo, DxTotalItem } from 'devextreme-vue/data-grid';
+import {
+  DxDataGrid,
+  DxColumn,
+  DxExport,
+  DxSelection,
+  DxSummary,
+  DxGroupPanel,
+  DxGrouping,
+  DxGroupItem,
+  DxSortByGroupSummaryInfo,
+  DxTotalItem,
+} from 'devextreme-vue/data-grid';
+import { Workbook } from 'exceljs';
+import { saveAs } from 'file-saver-es';
+// Our demo infrastructure requires us to use 'file-saver-es'.
+// We recommend that you use the official 'file-saver' package in your applications.
 import { exportDataGrid } from 'devextreme/excel_exporter';
-import ExcelJS from 'exceljs';
-import saveAs from 'file-saver';
-/*
-  // Use this import for codeSandBox
-  import FileSaver from "file-saver";
-*/
 import service from './data.js';
 
 export default {
   components: {
-    DxDataGrid, DxColumn, DxExport, DxSelection, DxSummary, DxGroupPanel, DxGrouping, DxGroupItem, DxSortByGroupSummaryInfo, DxTotalItem
+    DxDataGrid,
+    DxColumn,
+    DxExport,
+    DxSelection,
+    DxSummary,
+    DxGroupPanel,
+    DxGrouping,
+    DxGroupItem,
+    DxSortByGroupSummaryInfo,
+    DxTotalItem,
   },
   data() {
     return {
-      orders: service.getOrders()
+      orders: service.getOrders(),
     };
   },
   methods: {
     exporting(e) {
-      const workbook = new ExcelJS.Workbook();
+      const workbook = new Workbook();
       const worksheet = workbook.addWorksheet('Main sheet');
 
       /*
@@ -123,10 +142,9 @@ export default {
 
       exportDataGrid({
         component: e.component,
-        worksheet: worksheet,
+        worksheet,
         topLeftCell: { row: 4, column: 1 },
-        customizeCell: options => {
-
+        customizeCell: (options) => {
           /*
             The 'options.excelCell' field contains an ExcelJS object that describes an Excel cell.
             Refer to the following topics for more details about its members:
@@ -139,45 +157,45 @@ export default {
             The 'options.gridCell' object fields are described in https://js.devexpress.com/Documentation/ApiReference/Common/Object_Structures/ExcelDataGridCell/
           */
 
-          const gridCell = options.gridCell;
-          const excelCell = options.excelCell;
-          if(gridCell.rowType === 'data') {
-            if(gridCell.data.OrderDate < new Date(2014, 2, 3)) {
+          const { gridCell } = options;
+          const { excelCell } = options;
+          if (gridCell.rowType === 'data') {
+            if (gridCell.data.OrderDate < new Date(2014, 2, 3)) {
               excelCell.font = { color: { argb: 'AAAAAA' } };
             }
-            if(gridCell.data.SaleAmount > 15000) {
-              if(gridCell.column.dataField === 'SaleAmount') {
+            if (gridCell.data.SaleAmount > 15000) {
+              if (gridCell.column.dataField === 'SaleAmount') {
                 Object.assign(excelCell, {
                   font: { color: { argb: '000000' } },
-                  fill: { type: 'pattern', pattern:'solid', fgColor: { argb:'FFBB00' } }
+                  fill: { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFBB00' } },
                 });
               }
             }
-            if(gridCell.column.dataField === 'CustomerStoreState') {
+            if (gridCell.column.dataField === 'CustomerStoreState') {
               Object.assign(excelCell, {
                 value: { text: gridCell.value, hyperlink: 'http://example.com' },
-                font: { color: { argb: 'FF0000FF' }, underline: true }
+                font: { color: { argb: 'FF0000FF' }, underline: true },
               });
             }
           }
-          if(gridCell.rowType === 'group') {
-            const nodeColors = [ 'BEDFE6', 'C9ECD7'];
+          if (gridCell.rowType === 'group') {
+            const nodeColors = ['BEDFE6', 'C9ECD7'];
             Object.assign(excelCell, {
-              fill: { type: 'pattern', pattern:'solid', fgColor: { argb: nodeColors[gridCell.groupIndex] } }
+              fill: { type: 'pattern', pattern: 'solid', fgColor: { argb: nodeColors[gridCell.groupIndex] } },
             });
           }
-          if(gridCell.rowType === 'groupFooter' && excelCell.value) {
+          if (gridCell.rowType === 'groupFooter' && excelCell.value) {
             Object.assign(excelCell.font, { italic: true });
           }
-        }
-      }).then(function(cellRange) {
+        },
+      }).then((cellRange) => {
         // header
         worksheet.getRow(2).height = 20;
         worksheet.mergeCells(2, 1, 2, 4);
         Object.assign(worksheet.getRow(2).getCell(1), {
           value: 'Sales amounts report',
           font: { bold: true, size: 16 },
-          alignment: { horizontal: 'center' }
+          alignment: { horizontal: 'center' },
         });
         // footer
         const currentRowIndex = cellRange.to.row + 2;
@@ -185,41 +203,41 @@ export default {
         worksheet.getRow(currentRowIndex).getCell(1).value = 'For demonstration purposes only';
         Object.assign(worksheet.getRow(currentRowIndex).getCell(1), {
           font: { italic: true },
-          alignment: { horizontal: 'right' }
+          alignment: { horizontal: 'right' },
         });
-      }).then(function() {
-        workbook.xlsx.writeBuffer().then(function(buffer) {
+      }).then(() => {
+        workbook.xlsx.writeBuffer().then((buffer) => {
           saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'DataGrid.xlsx');
         });
       });
       e.cancel = true;
     },
     cellPrepared(e) {
-      if(e.rowType === 'data') {
-        if(e.data.OrderDate < new Date(2014, 2, 3)) {
+      if (e.rowType === 'data') {
+        if (e.data.OrderDate < new Date(2014, 2, 3)) {
           e.cellElement.style.color = '#AAAAAA';
         }
-        if(e.data.SaleAmount > 15000) {
-          if(e.column.dataField === 'OrderNumber') {
+        if (e.data.SaleAmount > 15000) {
+          if (e.column.dataField === 'OrderNumber') {
             e.cellElement.style.fontWeight = 'bold';
           }
-          if(e.column.dataField === 'SaleAmount') {
+          if (e.column.dataField === 'SaleAmount') {
             e.cellElement.style.backgroundColor = '#FFBB00';
             e.cellElement.style.color = '#000000';
           }
         }
       }
-      if(e.rowType === 'group') {
-        const nodeColors = [ '#BEDFE6', '#C9ECD7'];
+      if (e.rowType === 'group') {
+        const nodeColors = ['#BEDFE6', '#C9ECD7'];
         e.cellElement.style.backgroundColor = nodeColors[e.row.groupIndex];
         e.cellElement.style.color = '#000';
-        if(e.cellElement.firstChild && e.cellElement.firstChild.style) e.cellElement.firstChild.style.color = '#000';
+        if (e.cellElement.firstChild && e.cellElement.firstChild.style) e.cellElement.firstChild.style.color = '#000';
       }
-      if(e.rowType === 'groupFooter') {
+      if (e.rowType === 'groupFooter') {
         e.cellElement.style.fontStyle = 'italic';
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

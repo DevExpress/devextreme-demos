@@ -2,11 +2,14 @@
   <div>
     <div id="descContainer">
       Sort and filter data, reorder and resize columns, select and expand rows. Once you are done,
-      <a onclick="window.location.reload()">refresh</a>
-      the web page to see that the grid’s state is automatically persisted to continue working from where you stopped.
+      <a @click="onRefreshClick">refresh</a>
+      the web page to see that the grid’s state is automatically
+      persisted to continue working from where you stopped
+      or you can <a @click="onStateResetClick">reset</a> the grid to its initial state.
     </div>
     <DxTreeList
       id="employees"
+      ref="treeList"
       :data-source="employees"
       :allow-column-reordering="true"
       :allow-column-resizing="true"
@@ -46,19 +49,29 @@
   </div>
 </template>
 <script>
+import {
+  DxTreeList, DxSelection, DxFilterRow, DxStateStoring, DxColumn,
+} from 'devextreme-vue/tree-list';
 import { employees } from './data.js';
-import { DxTreeList, DxSelection, DxFilterRow, DxStateStoring, DxColumn } from 'devextreme-vue/tree-list';
 
 export default {
   components: {
-    DxTreeList, DxSelection, DxFilterRow, DxStateStoring, DxColumn
+    DxTreeList, DxSelection, DxFilterRow, DxStateStoring, DxColumn,
   },
   data() {
     return {
-      employees: employees,
-      expandedRowKeys: [1, 2, 10]
+      employees,
+      expandedRowKeys: [1, 2, 10],
     };
-  }
+  },
+  methods: {
+    onRefreshClick() {
+      window.location.reload();
+    },
+    onStateResetClick() {
+      this.$refs.treeList.instance.state(null);
+    },
+  },
 };
 </script>
 <style scoped>

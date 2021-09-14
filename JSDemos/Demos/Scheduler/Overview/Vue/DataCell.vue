@@ -12,8 +12,8 @@ export default {
   props: {
     cellData: {
       type: Object,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
   methods: {
     markWeekEnd(cellData) {
@@ -29,20 +29,22 @@ export default {
 
     markTraining(cellData) {
       const classObject = {
-        'day-cell': true
+        'day-cell': true,
       };
 
-      classObject[this.getCurrentTraining(cellData.startDate.getDate(), cellData.groups.employeeID)] = true;
+      classObject[
+        this.getCurrentTraining(cellData.startDate.getDate(), cellData.groups.employeeID)
+      ] = true;
       return classObject;
     },
 
     getCurrentTraining(date, employeeID) {
-      var result = (date + employeeID) % 3,
-        currentTraining = `training-background-${result}`;
+      const result = (date + employeeID) % 3;
+      const currentTraining = `training-background-${result}`;
 
       return currentTraining;
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

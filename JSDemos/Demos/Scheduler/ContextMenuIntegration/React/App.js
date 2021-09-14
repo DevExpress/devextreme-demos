@@ -3,45 +3,44 @@ import Scheduler, { Resource } from 'devextreme-react/scheduler';
 import ContextMenu from 'devextreme-react/context-menu';
 
 import { data, resourcesData } from './data.js';
-import { cellContextMenuItems, appointmentContextMenuItems, setResource } from './MenuItems.js';
 
 import { AppointmentMenuTemplate } from './AppointmentTemplate.js';
 
-const currentDate = new Date(2021, 2, 25);
 const views = ['day', 'month'];
+
+const appointmentClassName = '.dx-scheduler-appointment';
+const cellClassName = '.dx-scheduler-date-table-cell';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    resourcesData.map(function(item) {
-      item.onItemClick = setResource;
-    });
-    this.appointmentContextMenuItems = appointmentContextMenuItems.concat(resourcesData);
-
+    this.scheduler = React.createRef();
     this.state = {
+      currentDate: new Date(2020, 10, 25),
       contextMenuItems: [],
-      target: null,
+      target: appointmentClassName,
       disabled: true,
-      contextMenuEvent: null
     };
-
     this.onAppointmentContextMenu = this.onAppointmentContextMenu.bind(this);
     this.onContextMenuItemClick = this.onContextMenuItemClick.bind(this);
     this.onCellContextMenu = this.onCellContextMenu.bind(this);
-    this.onContextMenuHiding = this.onContextMenuHiding.bind(this);
   }
 
   render() {
-    const { contextMenuItems, target, disabled } = this.state;
+    const {
+      contextMenuItems, target, disabled, currentDate, groups, crossScrollingEnabled,
+    } = this.state;
     return (
       <React.Fragment>
         <Scheduler
+          ref={this.scheduler}
           timeZone="America/Los_Angeles"
           dataSource={data}
           views={views}
+          groups={groups}
+          crossScrollingEnabled={crossScrollingEnabled}
           defaultCurrentView="month"
-          defaultCurrentDate={currentDate}
-          firstDayOfWeek={1}
+          currentDate={currentDate}
           startDayHour={9}
           recurrenceEditMode="series"
           onAppointmentContextMenu={this.onAppointmentContextMenu}
@@ -61,40 +60,105 @@ class App extends React.Component {
           disabled={disabled}
           onItemClick={this.onContextMenuItemClick}
           itemRender={AppointmentMenuTemplate}
-          onHiding={this.onContextMenuHiding}
         />
       </React.Fragment>
     );
   }
 
-  onAppointmentContextMenu(e) {
-    this.setState({
-      target: '.dx-scheduler-appointment',
+  onAppointmentContextMenu({ appointmentData, targetedAppointmentData }) {
+    const scheduler = this.scheduler.current.instance;
+    const resourceItems = resourcesData.map((item) => ({
+      ...item,
+      onItemClick: ({ itemData }) => scheduler.updateAppointment(appointmentData, {
+        ...appointmentData,
+        ...{ roomId: [itemData.id] },
+      }),
+    }));
+    this.setState((state) => ({
+      ...state,
+      target: appointmentClassName,
       disabled: false,
-      contextMenuItems: this.appointmentContextMenuItems,
-      contextMenuEvent: e
-    });
+      contextMenuItems: [
+        {
+          text: 'Open',
+          onItemClick: () => scheduler.showAppointmentPopup(appointmentData),
+        },
+        {
+          text: 'Delete',
+          onItemClick: () => scheduler.deleteAppointment(appointmentData),
+        },
+        {
+          text: 'Repeat Weekly',
+          beginGroup: true,
+          onItemClick: () => scheduler.updateAppointment(appointmentData, {
+            startDate: targetedAppointmentData.startDate,
+            recurrenceRule: 'FREQ=WEEKLY',
+          }),
+        },
+        { text: 'Set Room', beginGroup: true, disabled: true },
+        ...resourceItems,
+      ],
+    }));
   }
 
   onContextMenuItemClick(e) {
-    const { contextMenuEvent } = this.state;
-    e.itemData.onItemClick(contextMenuEvent, e);
+    e.itemData.onItemClick(e);
   }
 
-  onCellContextMenu(e) {
-    this.setState({
-      target: '.dx-scheduler-date-table-cell',
+  onCellContextMenu({ cellData }) {
+    const scheduler = this.scheduler.current.instance;
+    this.setState((state) => ({
+      ...state,
+      target: cellClassName,
       disabled: false,
-      contextMenuItems: cellContextMenuItems,
-      contextMenuEvent: e
-    });
-  }
-
-  onContextMenuHiding() {
-    this.setState({
-      disabled: true,
-      contextMenuItems: []
-    });
+      contextMenuItems: [
+        {
+          text: 'New Appointment',
+          onItemClick: () => scheduler.showAppointmentPopup(
+            { startDate: cellData.startDate },
+            true,
+          ),
+        },
+        {
+          text: 'New Recurring Appointment',
+          onItemClick: () => scheduler.showAppointmentPopup(
+            {
+              startDate: cellData.startDate,
+              recurrenceRule: 'FREQ=DAILY',
+            },
+            true,
+          ),
+        },
+        {
+          text: 'Group by Room/Ungroup',
+          beginGroup: true,
+          onItemClick: () => {
+            if (this.groups) {
+              this.setState((currentState) => ({
+                ...currentState,
+                crossScrollingEnabled: false,
+                groups: null,
+              }));
+            } else {
+              this.setState((currentState) => ({
+                ...currentState,
+                crossScrollingEnabled: true,
+                groups: ['roomId'],
+              }));
+            }
+          },
+        },
+        {
+          text: 'Go to Today',
+          onItemClick: () => {
+            this.setState((currentState) => ({
+              ...currentState,
+              currentDate: new Date(),
+            }));
+          },
+        },
+      ],
+    }));
   }
 }
 

@@ -1,13 +1,14 @@
 import React from 'react';
 
-import { markup } from './data.js';
 import HtmlEditor, { Toolbar, Item } from 'devextreme-react/html-editor';
 import ButtonGroup, { Item as ButtonItem } from 'devextreme-react/button-group';
+import { markup } from './data.js';
 
 import 'devextreme/ui/html_editor/converters/markdown';
 
 const sizeValues = ['8pt', '10pt', '12pt', '14pt', '18pt', '24pt', '36pt'];
 const fontValues = ['Arial', 'Courier New', 'Georgia', 'Impact', 'Lucida Console', 'Tahoma', 'Times New Roman', 'Verdana'];
+const defaultSelectedItemKeys = ['Html'];
 
 class App extends React.Component {
   constructor() {
@@ -15,14 +16,15 @@ class App extends React.Component {
 
     this.state = {
       valueContent: markup,
-      editorValueType: 'html'
+      editorValueType: 'html',
     };
 
     this.valueChanged = this.valueChanged.bind(this);
     this.valueTypeChanged = this.valueTypeChanged.bind(this);
   }
+
   render() {
-    let { valueContent, editorValueType } = this.state;
+    const { valueContent, editorValueType } = this.state;
 
     return (
       <div className="widget-container">
@@ -33,37 +35,37 @@ class App extends React.Component {
           onValueChanged={this.valueChanged}
         >
           <Toolbar>
-            <Item formatName="undo" />
-            <Item formatName="redo" />
-            <Item formatName="separator" />
+            <Item name="undo" />
+            <Item name="redo" />
+            <Item name="separator" />
             <Item
-              formatName="size"
-              formatValues={sizeValues}
+              name="size"
+              acceptedValues={sizeValues}
             />
             <Item
-              formatName="font"
-              formatValues={fontValues}
+              name="font"
+              acceptedValues={fontValues}
             />
-            <Item formatName="separator" />
-            <Item formatName="bold" />
-            <Item formatName="italic" />
-            <Item formatName="strike" />
-            <Item formatName="underline" />
-            <Item formatName="separator" />
-            <Item formatName="alignLeft" />
-            <Item formatName="alignCenter" />
-            <Item formatName="alignRight" />
-            <Item formatName="alignJustify" />
-            <Item formatName="separator" />
-            <Item formatName="color" />
-            <Item formatName="background" />
+            <Item name="separator" />
+            <Item name="bold" />
+            <Item name="italic" />
+            <Item name="strike" />
+            <Item name="underline" />
+            <Item name="separator" />
+            <Item name="alignLeft" />
+            <Item name="alignCenter" />
+            <Item name="alignRight" />
+            <Item name="alignJustify" />
+            <Item name="separator" />
+            <Item name="color" />
+            <Item name="background" />
           </Toolbar>
         </HtmlEditor>
 
         <div className="options">
           <ButtonGroup
             onSelectionChanged={this.valueTypeChanged}
-            defaultSelectedItemKeys={['Html']}
+            defaultSelectedItemKeys={defaultSelectedItemKeys}
           >
             <ButtonItem text="Html" />
             <ButtonItem text="Markdown" />
@@ -75,14 +77,16 @@ class App extends React.Component {
       </div>
     );
   }
+
   valueChanged(e) {
     this.setState({
-      valueContent: e.value
+      valueContent: e.value,
     });
   }
+
   valueTypeChanged(e) {
     this.setState({
-      editorValueType: e.addedItems[0].text.toLowerCase()
+      editorValueType: e.addedItems[0].text.toLowerCase(),
     });
   }
 }

@@ -1,9 +1,9 @@
-﻿import React from 'react';
+import React from 'react';
 import ActionSheet from 'devextreme-react/action-sheet';
 import Button from 'devextreme-react/button';
 import Switch from 'devextreme-react/switch';
-import { actionSheetItems } from './data.js';
 import notify from 'devextreme/ui/notify';
+import { actionSheetItems } from './data.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class App extends React.Component {
     this.state = {
       isActionSheetVisible: false,
       showTitle: true,
-      showCancelButton: true
+      showCancelButton: true,
     };
 
     this.showActionSheet = this.showActionSheet.bind(this);
@@ -25,8 +25,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <ActionSheet dataSource={actionSheetItems} title="Choose action" showTitle={this.state.showTitle} showCancelButton={this.state.showCancelButton}
-          visible={this.state.isActionSheetVisible} onItemClick={this.onActionSheetItemClick} onCancelClick={this.onActionSheetCancelClick} />
+        <ActionSheet
+          dataSource={actionSheetItems}
+          title="Choose action"
+          showTitle={this.state.showTitle}
+          showCancelButton={this.state.showCancelButton}
+          visible={this.state.isActionSheetVisible}
+          onItemClick={this.onActionSheetItemClick}
+          onCancelClick={this.onActionSheetCancelClick} />
         <div className="button">
           <Button width="100%" text="Click to show Action Sheet" onClick={this.showActionSheet} />
         </div>
@@ -47,7 +53,7 @@ class App extends React.Component {
 
   showActionSheet() {
     this.setState({
-      isActionSheetVisible: true
+      isActionSheetVisible: true,
     });
   }
 
@@ -61,20 +67,20 @@ class App extends React.Component {
 
   onActionSheetButtonClick(buttonName) {
     this.setState({
-      isActionSheetVisible: false
+      isActionSheetVisible: false,
     });
     notify(`The "${buttonName}" button is clicked.`);
   }
 
   changeTitle(e) {
     this.setState({
-      showTitle: e.value
+      showTitle: e.value,
     });
   }
 
   changeCancelButton(e) {
     this.setState({
-      showCancelButton: e.value
+      showCancelButton: e.value,
     });
   }
 }

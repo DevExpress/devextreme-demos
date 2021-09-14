@@ -1,7 +1,7 @@
 ﻿@(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.Northwind.Supplier>()
     .ID("gridContainer")
     .ShowBorders(true)
-    .DataSource(d => d.Mvc().Controller("DataGridAdvancedMasterDetailView").LoadAction("GetSuppliers"))
+    .DataSource(d => d.Mvc().Controller("DataGridAdvancedMasterDetailView").LoadAction("GetSuppliers").Key("SupplierID"))
     .Paging(p => p.PageSize(15))
     .Columns(columns => {
         columns.AddFor(m => m.ContactName);

@@ -7,16 +7,16 @@ import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 const url = 'https://js.devexpress.com/Demos/Mvc/api/SchedulerData';
 const dataSource = AspNetData.createStore({
   key: 'AppointmentId',
-  loadUrl: `${url }/Get`,
-  insertUrl: `${url }/Post`,
-  updateUrl: `${url }/Put`,
-  deleteUrl: `${url }/Delete`,
+  loadUrl: `${url}/Get`,
+  insertUrl: `${url}/Post`,
+  updateUrl: `${url}/Put`,
+  deleteUrl: `${url}/Delete`,
   onBeforeSend(_, ajaxOptions) {
     ajaxOptions.xhrFields = { withCredentials: true };
-  }
+  },
 });
 
-const currentDate = new Date(2021, 4, 25);
+const currentDate = new Date(2021, 3, 27);
 const views = ['day', 'workWeek', 'month'];
 
 class App extends React.Component {
@@ -36,7 +36,9 @@ class App extends React.Component {
         textExpr="Text"
         startDateExpr="StartDate"
         endDateExpr="EndDate"
-        allDayExpr="AllDay" />
+        allDayExpr="AllDay"
+        recurrenceRuleExpr="RecurrenceRule"
+        recurrenceExceptionExpr="RecurrenceException" />
     );
   }
 }

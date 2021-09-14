@@ -2,7 +2,7 @@
   <div id="chart-demo">
     <DxChart
       :data-source="chartDataSource"
-      title="Temperature in Barcelona, 2012"
+      title="Temperature in Seattle , 2017"
     >
       <DxSize :height="420"/>
       <DxValueAxis
@@ -39,6 +39,7 @@
       <DxLoadingIndicator :enabled="true"/>
     </DxChart>
     <div class="action">
+      <div class="label">Choose a month:</div>
       <DxSelectBox
         id="selectbox"
         :width="150"
@@ -48,7 +49,6 @@
         value-expr="id"
         display-expr="name"
       />
-      <div class="label">Choose a month:</div>
     </div>
   </div>
 </template>
@@ -66,7 +66,7 @@ import DxChart, {
   DxLabel,
   DxTooltip,
   DxExport,
-  DxLoadingIndicator
+  DxLoadingIndicator,
 } from 'devextreme-vue/chart';
 
 import DxSelectBox from 'devextreme-vue/select-box';
@@ -92,27 +92,27 @@ export default {
     DxExport,
     DxLoadingIndicator,
 
-    DxSelectBox
+    DxSelectBox,
   },
 
   data() {
     const chartDataSource = new DataSource({
       store: {
         type: 'odata',
-        url: 'https://js.devexpress.com/Demos/WidgetsGallery/odata/WeatherItems'
+        url: 'https://js.devexpress.com/Demos/WidgetsGallery/odata/WeatherItems',
       },
-      postProcess: function(results) {
+      postProcess(results) {
         return results[0].DayItems;
       },
       expand: 'DayItems',
       filter: ['Id', '=', 1],
-      paginate: false
+      paginate: false,
     });
 
     return {
       temperature: [6, 7, 8, 9, 10, 11, 12],
       months,
-      chartDataSource
+      chartDataSource,
     };
   },
 
@@ -128,21 +128,18 @@ export default {
 
     customizeTooltip({ valueText }) {
       return {
-        text: `${valueText}${'&#176C'}`
+        text: `${valueText}${'&#176C'}`,
       };
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
-#selectbox {
-    float: right;
-}
 .action {
     width: 270px;
     margin-top: 20px;
-}
-.label {
-    padding-top: 9px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 </style>

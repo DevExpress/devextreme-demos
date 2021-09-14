@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/max-len -->
 
 <template>
   <div class="custom_markup_container">
@@ -76,7 +77,7 @@ export default {
   methods: {
     getMarkup() {
       return this.$el.innerHTML;
-    }
-  }
+    },
+  },
 };
 </script>

@@ -13,8 +13,13 @@ import {
   Legend,
   Series,
   Animation,
-  LoadingIndicator
+  LoadingIndicator,
 } from 'devextreme-react/chart';
+
+const wholeRange = {
+  startValue: new Date(2017, 0, 1),
+  endValue: new Date(2017, 11, 31),
+};
 
 class App extends React.Component {
   constructor(props) {
@@ -24,16 +29,17 @@ class App extends React.Component {
     this.chartDataSource = new DataSource({
       store: [],
       sort: 'date',
-      paginate: false
+      paginate: false,
     });
     this.state = {
       visualRange: {
         startValue: new Date(2017, 3, 1),
-        endValue: new Date(2017, 3, 15)
-      }
+        endValue: new Date(2017, 3, 15),
+      },
     };
     this.handleChange = this.handleChange.bind(this);
   }
+
   render() {
     return (
       <Chart
@@ -48,10 +54,7 @@ class App extends React.Component {
           argumentType="datetime"
           visualRangeUpdateMode="keep"
           visualRange={this.state.visualRange}
-          wholeRange={{
-            startValue: new Date(2017, 0, 1),
-            endValue: new Date(2017, 11, 31)
-          }} />
+          wholeRange={wholeRange} />
         <ValueAxis
           name="temperature"
           allowDecimals={false}
@@ -80,10 +83,10 @@ class App extends React.Component {
   }
 
   handleChange(e) {
-    if(e.fullName === 'argumentAxis.visualRange') {
+    if (e.fullName === 'argumentAxis.visualRange') {
       const stateStart = this.state.visualRange.startValue;
       const currentStart = e.value.startValue;
-      if(stateStart.valueOf() !== currentStart.valueOf()) {
+      if (stateStart.valueOf() !== currentStart.valueOf()) {
         this.setState({ visualRange: e.value });
       }
       this.onVisualRangeChanged(e.component);
@@ -92,10 +95,10 @@ class App extends React.Component {
 
   onVisualRangeChanged(component) {
     const items = component.getDataSource().items();
-    const visualRange = this.state.visualRange;
-    if(!items.length ||
-      items[0].date - visualRange.startValue >= this.HALFDAY ||
-      visualRange.endValue - items[items.length - 1].date >= this.HALFDAY) {
+    const { visualRange } = this.state;
+    if (!items.length
+      || items[0].date - visualRange.startValue >= this.HALFDAY
+      || visualRange.endValue - items[items.length - 1].date >= this.HALFDAY) {
       this.uploadDataByVisualRange(visualRange, component);
     }
   }
@@ -107,34 +110,32 @@ class App extends React.Component {
       startVisible: getDateString(visualRange.startValue),
       endVisible: getDateString(visualRange.endValue),
       startBound: getDateString(storage.length ? storage[0].date : null),
-      endBound: getDateString(storage.length ?
-        storage[storage.length - 1].date : null)
+      endBound: getDateString(storage.length
+        ? storage[storage.length - 1].date : null),
     };
 
-    if(ajaxArgs.startVisible !== ajaxArgs.startBound &&
-      ajaxArgs.endVisible !== ajaxArgs.endBound && !this.packetsLock) {
-      this.packetsLock++;
+    if (ajaxArgs.startVisible !== ajaxArgs.startBound
+      && ajaxArgs.endVisible !== ajaxArgs.endBound && !this.packetsLock) {
+      this.packetsLock += 1;
       component.showLoadingIndicator();
 
       getDataFrame(ajaxArgs)
-        .then(dataFrame => {
-          this.packetsLock--;
-          dataFrame = dataFrame.map(i => {
-            return {
-              date: new Date(i.Date),
-              minTemp: i.MinTemp,
-              maxTemp: i.MaxTemp
-            };
-          });
+        .then((dataFrame) => {
+          this.packetsLock -= 1;
+          dataFrame = dataFrame.map((i) => ({
+            date: new Date(i.Date),
+            minTemp: i.MinTemp,
+            maxTemp: i.MaxTemp,
+          }));
 
           const componentStorage = dataSource.store();
-          dataFrame.forEach(item => componentStorage.insert(item));
+          dataFrame.forEach((item) => componentStorage.insert(item));
           dataSource.reload();
 
           this.onVisualRangeChanged(component);
         })
         .catch(() => {
-          this.packetsLock--;
+          this.packetsLock -= 1;
           dataSource.reload();
         });
     }
@@ -150,7 +151,7 @@ function getDataFrame(args) {
     &endBound=${args.endBound}`;
 
   return fetch(`https://js.devexpress.com/Demos/WidgetsGallery/data/temperatureData${params}`)
-    .then(response => response.json());
+    .then((response) => response.json());
 }
 
 function getDateString(dateTime) {

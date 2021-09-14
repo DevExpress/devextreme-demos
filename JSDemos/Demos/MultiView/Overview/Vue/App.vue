@@ -1,7 +1,8 @@
 <template>
   <div id="multiview">
     <div>
-      Item <span>{{ selectedIndex + 1 }}</span> of <span>{{ companies.length }}</span>: <i>Swipe the view horizontally to switch to the next view.</i>
+      Item <span>{{ selectedIndex + 1 }}</span> of <span>{{ companies.length }}</span>:
+      <i>Swipe the view horizontally to switch to the next view.</i>
     </div>
     <DxMultiView
       :height="300"
@@ -20,7 +21,7 @@
                 (<span>{{ company.State }}</span>)
               </p>
               <p>
-                <span>{{ company.Zipcode }}</span>
+                <span>{{ company.Zipcode }}&nbsp;</span>
                 <span>{{ company.Address }}</span>
               </p>
             </div>
@@ -72,16 +73,16 @@ import { multiViewItems } from './data.js';
 export default {
   components: {
     DxCheckBox,
-    DxMultiView
+    DxMultiView,
   },
   data() {
     return {
       selectedIndex: 0,
       loop: false,
       animationEnabled: true,
-      companies: multiViewItems
+      companies: multiViewItems,
     };
-  }
+  },
 };
 </script>
 <style>

@@ -1,13 +1,13 @@
-﻿import React from 'react';
+import React from 'react';
 import RadioGroup from 'devextreme-react/radio-group';
-import { priorities, tasks } from './data.js';
+import { priorities, priorityEntities, tasks } from './data.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       colorPriority: priorities[2],
-      selectionPriority: priorities[0]
+      selectionPriority: priorityEntities[0].id,
     };
 
     this.changeColorPriority = this.changeColorPriority.bind(this);
@@ -39,21 +39,25 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Custom item template</div>
             <div className="dx-field-value">
-              <RadioGroup className={this.state.colorPriority.toLowerCase()} items={priorities} value={this.state.colorPriority}
+              <RadioGroup
+                className={this.state.colorPriority.toLowerCase()}
+                items={priorities} value={this.state.colorPriority}
                 itemRender={renderCustomItem} onValueChanged={this.changeColorPriority} />
             </div>
           </div>
           <div className="dx-field">
             <div className="dx-field-label">Event handling</div>
             <div className="dx-field-value">
-              <RadioGroup id="radio-group-with-selection" items={priorities} value={this.state.selectionPriority} onValueChanged={this.changeSelectionPriority} />
+              <RadioGroup id="radio-group-with-selection" items={priorityEntities} value={this.state.selectionPriority}
+                valueExpr="id" displayExpr="text" onValueChanged={this.changeSelectionPriority} />
             </div>
           </div>
         </div>
         <div id="tasks-list">
           Tasks by selected priority:
           <ul id="list">
-            {tasks.filter(task => task.priority == this.state.selectionPriority).map(task => <li key={task.id}>{task.subject}</li>)}
+            {tasks.filter((task) => task.priority === this.state.selectionPriority)
+              .map((task) => <li key={task.id}>{task.subject}</li>)}
           </ul>
         </div>
       </div>
@@ -62,13 +66,13 @@ class App extends React.Component {
 
   changeColorPriority(e) {
     this.setState({
-      colorPriority: e.value
+      colorPriority: e.value,
     });
   }
 
   changeSelectionPriority(e) {
     this.setState({
-      selectionPriority: e.value
+      selectionPriority: e.value,
     });
   }
 }

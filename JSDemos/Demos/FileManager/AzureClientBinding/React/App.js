@@ -14,7 +14,7 @@ class App extends React.Component {
     this.state = {
       requests: [],
       loadPanelVisible: true,
-      wrapperClassName: ''
+      wrapperClassName: '',
     };
     this.onRequestExecuted = this.onRequestExecuted.bind(this);
 
@@ -29,7 +29,7 @@ class App extends React.Component {
       copyItem,
       moveItem,
       uploadFileChunk,
-      downloadItems
+      downloadItems,
     });
 
     this.checkAzureStatus();
@@ -41,8 +41,11 @@ class App extends React.Component {
         <LoadPanel visible={this.state.loadPanelVisible} position={loadPanelPosition} />
         <div id="widget-area">
           <FileManager id="file-manager" fileSystemProvider={this.fileSystemProvider} allowedFileExtensions={allowedFileExtensions}>
-            {/* uncomment the code below to enable file/directory management */}
             <Permissions
+              download={true}>
+            </Permissions>
+            {/* uncomment the code below to enable file/directory management */}
+            {/* <Permissions
               create={true}
               copy={true}
               move={true}
@@ -50,32 +53,31 @@ class App extends React.Component {
               rename={true}
               upload={true}
               download={true}>
-            </Permissions>
+            </Permissions> */}
           </FileManager>
           <div id="request-panel">
             {
-              this.state.requests.map((r, i) => {
-                return <div key={i} className="request-info">
-                  <div className="parameter-info">
-                    <div className="parameter-name">Method:</div>
-                    <div className="parameter-value dx-theme-accent-as-text-color">{r.method}</div>
-                  </div>
-                  <div className="parameter-info">
-                    <div className="parameter-name">Url path:</div>
-                    <div className="parameter-value dx-theme-accent-as-text-color">{r.urlPath}</div>
-                  </div>
-                  <div className="parameter-info">
-                    <div className="parameter-name">Query string:</div>
-                    <div className="parameter-value dx-theme-accent-as-text-color">{r.queryString}</div>
-                  </div>
-                  <br />
-                </div>;
-              })
+              this.state.requests.map((r, i) => <div key={i} className="request-info">
+                <div className="parameter-info">
+                  <div className="parameter-name">Method:</div>
+                  <div className="parameter-value dx-theme-accent-as-text-color">{r.method}</div>
+                </div>
+                <div className="parameter-info">
+                  <div className="parameter-name">Url path:</div>
+                  <div className="parameter-value dx-theme-accent-as-text-color">{r.urlPath}</div>
+                </div>
+                <div className="parameter-info">
+                  <div className="parameter-name">Query string:</div>
+                  <div className="parameter-value dx-theme-accent-as-text-color">{r.queryString}</div>
+                </div>
+                <br />
+              </div>)
             }
           </div>
         </div>
         <div id="message-box">
-          To run the demo locally, specify your Azure storage account name, access key and container name in the web.config file.
+          To run the demo locally, specify your Azure storage account name,
+          access key and container name in the web.config file.
           Refer to the <a href="https://js.devexpress.com/Demos/WidgetsGallery/Demo/FileManager/AzureClientBinding/React/Light/"
             target="_blank" rel="noopener noreferrer">
             https://js.devexpress.com/Demos/WidgetsGallery/Demo/FileManager/AzureClientBinding/React/Light/</a>
@@ -87,12 +89,12 @@ class App extends React.Component {
 
   checkAzureStatus() {
     fetch('https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-status?widgetType=fileManager')
-      .then(response => response.json())
-      .then(result => {
+      .then((response) => response.json())
+      .then((result) => {
         const className = result.active ? 'show-widget' : 'show-message';
         this.setState({
           wrapperClassName: className,
-          loadPanelVisible: false
+          loadPanelVisible: false,
         });
       });
   }
@@ -112,7 +114,9 @@ function createDirectory(parentDirectory, name) {
 }
 
 function renameItem(item, name) {
-  return item.isDirectory ? azure.renameDirectory(item.path, name) : azure.renameFile(item.path, name);
+  return item.isDirectory
+    ? azure.renameDirectory(item.path, name)
+    : azure.renameFile(item.path, name);
 }
 
 function deleteItem(item) {
@@ -121,30 +125,41 @@ function deleteItem(item) {
 
 function copyItem(item, destinationDirectory) {
   const destinationPath = destinationDirectory.path ? `${destinationDirectory.path}/${item.name}` : item.name;
-  return item.isDirectory ? azure.copyDirectory(item.path, destinationPath) : azure.copyFile(item.path, destinationPath);
+  return item.isDirectory
+    ? azure.copyDirectory(item.path, destinationPath)
+    : azure.copyFile(item.path, destinationPath);
 }
 
 function moveItem(item, destinationDirectory) {
   const destinationPath = destinationDirectory.path ? `${destinationDirectory.path}/${item.name}` : item.name;
-  return item.isDirectory ? azure.moveDirectory(item.path, destinationPath) : azure.moveFile(item.path, destinationPath);
+  return item.isDirectory
+    ? azure.moveDirectory(item.path, destinationPath)
+    : azure.moveFile(item.path, destinationPath);
 }
 
 function uploadFileChunk(fileData, uploadInfo, destinationDirectory) {
   let promise = null;
 
-  if(uploadInfo.chunkIndex === 0) {
+  if (uploadInfo.chunkIndex === 0) {
     const filePath = destinationDirectory.path ? `${destinationDirectory.path}/${fileData.name}` : fileData.name;
-    promise = gateway.getUploadAccessUrl(filePath).done(accessUrl => {
+    promise = gateway.getUploadAccessUrl(filePath).done((accessUrl) => {
       uploadInfo.customData.accessUrl = accessUrl;
     });
   } else {
     promise = Promise.resolve();
   }
 
-  promise = promise.then(() => gateway.putBlock(uploadInfo.customData.accessUrl, uploadInfo.chunkIndex, uploadInfo.chunkBlob));
+  promise = promise.then(() => gateway.putBlock(
+    uploadInfo.customData.accessUrl,
+    uploadInfo.chunkIndex,
+    uploadInfo.chunkBlob,
+  ));
 
-  if(uploadInfo.chunkIndex === uploadInfo.chunkCount - 1) {
-    promise = promise.then(() => gateway.putBlockList(uploadInfo.customData.accessUrl, uploadInfo.chunkCount));
+  if (uploadInfo.chunkIndex === uploadInfo.chunkCount - 1) {
+    promise = promise.then(() => gateway.putBlockList(
+      uploadInfo.customData.accessUrl,
+      uploadInfo.chunkCount,
+    ));
   }
 
   return promise;

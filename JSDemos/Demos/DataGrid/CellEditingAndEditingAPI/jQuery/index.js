@@ -1,62 +1,72 @@
-$(function(){
-    var employeesStore = new DevExpress.data.ArrayStore({
-        key: "ID",
-        data: employees
-    });
-    
-    var deleteButton = $("#gridDeleteSelected").dxButton({
-        text: "Delete Selected Records",
-        height: 34,
-        disabled: true,
-        onClick: function () {
-            $.each(dataGrid.getSelectedRowKeys(), function() {
-                employeesStore.remove(this);
-            });
-            dataGrid.refresh();
-        }
-    }).dxButton("instance");
-    
-    var dataGrid = $("#gridContainer").dxDataGrid({
-        dataSource: employeesStore,
-        showBorders: true,
-        paging: {
-            enabled: false
+$(() => {
+  const employeesStore = new DevExpress.data.ArrayStore({
+    key: 'ID',
+    data: employees,
+  });
+
+  const dataGrid = $('#gridContainer').dxDataGrid({
+    dataSource: employeesStore,
+    showBorders: true,
+    paging: {
+      enabled: false,
+    },
+    editing: {
+      mode: 'cell',
+      allowUpdating: true,
+      allowAdding: true,
+      allowDeleting: true,
+    },
+    selection: {
+      mode: 'multiple',
+    },
+    columns: [
+      {
+        dataField: 'Prefix',
+        caption: 'Title',
+        width: 55,
+      },
+      'FirstName',
+      'LastName', {
+        dataField: 'Position',
+        width: 170,
+      }, {
+        dataField: 'StateID',
+        caption: 'State',
+        width: 125,
+        lookup: {
+          dataSource: states,
+          displayExpr: 'Name',
+          valueExpr: 'ID',
         },
-        editing: {
-            mode: "cell",
-            allowUpdating: true
-        },
-        selection: {
-            mode: "multiple"
-        },
-        onSelectionChanged: function(data) {
-            deleteButton.option("disabled", !data.selectedRowsData.length);
-        }, 
-        columns: [
-            {
-                dataField: "Prefix",
-                caption: "Title",
-                width: 55
+      }, {
+        dataField: 'BirthDate',
+        dataType: 'date',
+      },
+    ],
+    toolbar: {
+      items: [
+        {
+          name: 'addRowButton',
+          showText: 'always',
+        }, {
+          location: 'after',
+          widget: 'dxButton',
+          options: {
+            text: 'Delete Selected Records',
+            icon: 'trash',
+            disabled: true,
+            onClick() {
+              dataGrid.getSelectedRowKeys().forEach((key) => {
+                employeesStore.remove(key);
+              });
+              dataGrid.refresh();
             },
-            "FirstName",
-            "LastName", {
-                dataField: "Position",
-                width: 170
-            }, {
-                dataField: "StateID",
-                caption: "State",
-                width: 125,
-                lookup: {
-                    dataSource: states,
-                    displayExpr: "Name",
-                    valueExpr: "ID"
-                }
-            }, {
-                dataField: "BirthDate",
-                dataType: "date"
-            }
-        ]
-    }).dxDataGrid("instance");
-    
-    
+          },
+        },
+      ],
+    },
+    onSelectionChanged(data) {
+      dataGrid.option('toolbar.items[1].options.disabled', !data.selectedRowsData.length);
+    },
+  }).dxDataGrid('instance');
 });

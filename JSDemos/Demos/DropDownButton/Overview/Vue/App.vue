@@ -51,7 +51,9 @@
               <i
                 v-for="(itemColor, i) in data"
                 :key="i"
-                :class="itemColor ? 'color dx-icon dx-icon-square' : 'color dx-icon dx-icon-square dx-theme-text-color'"
+                :class="itemColor ?
+                  'color dx-icon dx-icon-square' :
+                  'color dx-icon dx-icon-square dx-theme-text-color'"
                 :style="{ color: itemColor }"
                 @click="onColorClick(itemColor)"
               />
@@ -62,8 +64,19 @@
       <div class="dx-field">
         <p
           id="text"
-          :style="{ textAlign: alignment, fontSize: fontSize, color: color, lineHeight: lineHeight }"
-        >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          :style="{
+            textAlign: alignment,
+            fontSize: fontSize,
+            color: color,
+            lineHeight: lineHeight
+          }"
+        >Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          Excepteur sint occaecat cupidatat non proident,
+          sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
     </div>
   </div>
@@ -71,14 +84,14 @@
 <script>
 import DxDropDownButton from 'devextreme-vue/drop-down-button';
 import DxToolbar from 'devextreme-vue/toolbar';
-import service from './data.js';
 import notify from 'devextreme/ui/notify';
+import service from './data.js';
 import 'whatwg-fetch';
 
 export default {
   components: {
     DxDropDownButton,
-    DxToolbar
+    DxToolbar,
   },
   data() {
     const data = service.getData();
@@ -103,8 +116,8 @@ export default {
             onSelectionChanged: (e) => {
               this.alignment = e.item.name.toLowerCase();
             },
-            items: data.alignments
-          }
+            items: data.alignments,
+          },
         },
         {
           location: 'before',
@@ -117,8 +130,8 @@ export default {
             icon: 'square',
             stylingMode: 'text',
             dropDownOptions: { width: 'auto' },
-            dropDownContentTemplate: 'colorpicker'
-          }
+            dropDownContentTemplate: 'colorpicker',
+          },
         },
         {
           location: 'before',
@@ -130,11 +143,11 @@ export default {
             useSelectMode: true,
             items: data.fontSizes,
             selectedItemKey: 14,
-            onSelectionChanged:(e) => {
-              this.fontSize = `${e.item.size }px`;
+            onSelectionChanged: (e) => {
+              this.fontSize = `${e.item.size}px`;
             },
-            itemTemplate: 'fontItem'
-          }
+            itemTemplate: 'fontItem',
+          },
         },
         {
           location: 'before',
@@ -149,15 +162,15 @@ export default {
             selectedItemKey: 1.35,
             onSelectionChanged: (e) => {
               this.lineHeight = e.item.lineHeight;
-            }
-          }
-        }
-      ]
+            },
+          },
+        },
+      ],
     };
   },
   methods: {
     onButtonClick(e) {
-      notify(`Go to ${ e.component.option('text') }'s profile`, 'success', 600);
+      notify(`Go to ${e.component.option('text')}'s profile`, 'success', 600);
     },
 
     onItemClick(e) {
@@ -168,8 +181,8 @@ export default {
       this.color = color;
       this.colorPicker.element().getElementsByClassName('dx-icon-square')[0].style.color = color;
       this.colorPicker.close();
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

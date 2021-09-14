@@ -1,12 +1,12 @@
 import React from 'react';
-import Scheduler, { Resource } from 'devextreme-react/scheduler';
+import Scheduler, { Editing, Resource } from 'devextreme-react/scheduler';
 import Query from 'devextreme/data/query';
 
 import Appointment from './Appointment.js';
 import AppointmentTooltip from './AppointmentTooltip.js';
 import { data, moviesData, theatreData } from './data.js';
 
-const currentDate = new Date(2021, 4, 25);
+const currentDate = new Date(2021, 3, 27);
 const views = ['day', 'week', 'timelineDay'];
 const groups = ['theatreId'];
 
@@ -15,6 +15,7 @@ class App extends React.Component {
     super(props);
     this.onAppointmentFormOpening = this.onAppointmentFormOpening.bind(this);
   }
+
   render() {
     return (
       <Scheduler
@@ -31,11 +32,11 @@ class App extends React.Component {
         showAllDayPanel={false}
         crossScrollingEnabled={true}
         cellDuration={20}
-        editing={{ allowAdding: false }}
         appointmentComponent={Appointment}
         appointmentTooltipComponent={AppointmentTooltip}
         onAppointmentFormOpening={this.onAppointmentFormOpening}
       >
+        <Editing allowAdding={false} />
         <Resource
           dataSource={moviesData}
           fieldExpr="movieId"
@@ -49,14 +50,14 @@ class App extends React.Component {
     );
   }
 
-  onAppointmentFormOpening(data) {
-    let form = data.form,
-      movieInfo = getMovieById(data.appointmentData.movieId) || {},
-      startDate = data.appointmentData.startDate;
+  onAppointmentFormOpening(e) {
+    const { form } = e;
+    let movieInfo = getMovieById(e.appointmentData.movieId) || {};
+    let { startDate } = e.appointmentData;
 
     form.option('items', [{
       label: {
-        text: 'Movie'
+        text: 'Movie',
       },
       editorType: 'dxSelectBox',
       dataField: 'movieId',
@@ -64,38 +65,34 @@ class App extends React.Component {
         items: moviesData,
         displayExpr: 'text',
         valueExpr: 'id',
-        onValueChanged: function(args) {
+        onValueChanged(args) {
           movieInfo = getMovieById(args.value);
-          form.getEditor('director')
-            .option('value', movieInfo.director);
-          form.getEditor('endDate')
-            .option('value', new Date(startDate.getTime() +
-              60 * 1000 * movieInfo.duration));
-        }
+
+          form.updateData('director', movieInfo.director);
+          form.updateData('endDate', new Date(startDate.getTime() + 60 * 1000 * movieInfo.duration));
+        },
       },
     }, {
       label: {
-        text: 'Director'
+        text: 'Director',
       },
       name: 'director',
       editorType: 'dxTextBox',
       editorOptions: {
         value: movieInfo.director,
-        readOnly: true
-      }
+        readOnly: true,
+      },
     }, {
       dataField: 'startDate',
       editorType: 'dxDateBox',
       editorOptions: {
         width: '100%',
         type: 'datetime',
-        onValueChanged: function(args) {
+        onValueChanged(args) {
           startDate = args.value;
-          form.getEditor('endDate')
-            .option('value', new Date(startDate.getTime() +
-              60 * 1000 * movieInfo.duration));
-        }
-      }
+          form.updateData('endDate', new Date(startDate.getTime() + 60 * 1000 * movieInfo.duration));
+        },
+      },
     }, {
       name: 'endDate',
       dataField: 'endDate',
@@ -103,18 +100,18 @@ class App extends React.Component {
       editorOptions: {
         width: '100%',
         type: 'datetime',
-        readOnly: true
-      }
+        readOnly: true,
+      },
     }, {
       dataField: 'price',
       editorType: 'dxRadioGroup',
       editorOptions: {
         dataSource: [5, 10, 15, 20],
-        itemTemplate: function(itemData) {
+        itemTemplate(itemData) {
           return `$${itemData}`;
-        }
-      }
-    }
+        },
+      },
+    },
     ]);
   }
 }

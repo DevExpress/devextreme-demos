@@ -25,8 +25,8 @@ import {
   DxExport,
 } from 'devextreme-vue/vector-map';
 
-import { coordLinesData } from './data.js';
 import * as mapsData from 'devextreme/dist/js/vectormap-data/world.js';
+import { coordLinesData } from './data.js';
 
 const RADIANS = Math.PI / 180;
 const WAGNER_6_P_LAT = Math.PI / Math.sqrt(3);
@@ -36,7 +36,7 @@ export default {
   components: {
     DxVectorMap,
     DxLayer,
-    DxExport
+    DxExport,
   },
   data() {
     return {
@@ -49,21 +49,21 @@ export default {
           const y = Math.min(Math.max(lt * RADIANS, -WAGNER_6_P_LAT), +WAGNER_6_P_LAT);
           const t = y / Math.PI;
           return [
-            x / Math.PI * Math.sqrt(1 - 3 * t * t),
-            y * 2 / Math.PI
+            (x / Math.PI) * Math.sqrt(1 - 3 * t * t),
+            (y * 2) / Math.PI,
           ];
         },
         from([x, y]) {
           y = Math.min(Math.max(y, -WAGNER_6_U_LAT), +WAGNER_6_U_LAT);
           const t = y / 2;
           return [
-            x * Math.PI / Math.sqrt(1 - 3 * t * t) / RADIANS,
-            y * Math.PI / 2 / RADIANS
+            (x * Math.PI) / Math.sqrt(1 - 3 * t * t) / RADIANS,
+            (y * Math.PI) / 2 / RADIANS,
           ];
-        }
-      }
+        },
+      },
     };
-  }
+  },
 };
 </script>
 <style>

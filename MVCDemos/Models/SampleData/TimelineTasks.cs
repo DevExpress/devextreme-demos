@@ -117,7 +117,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Priority = Priority.Low
             },
             new EmployeeAppointment{
-                Text = "Review Training Course for any Ommissions",
+                Text = "Review Training Course for any Omissions",
                 OwnerId = new[] { 2 },
                 StartDate = "2021-02-08T21:00:00.000Z",
                 EndDate = "2021-02-09T19:00:00.000Z",

@@ -104,17 +104,19 @@
   </div>
 </template>
 <script>
-import { DxLinearGauge, DxScale, DxLabel, DxValueIndicator } from 'devextreme-vue/linear-gauge';
+import {
+  DxLinearGauge, DxScale, DxLabel, DxValueIndicator,
+} from 'devextreme-vue/linear-gauge';
 
 export default {
   components: {
-    DxLinearGauge, DxScale, DxLabel, DxValueIndicator
+    DxLinearGauge, DxScale, DxLabel, DxValueIndicator,
   },
   methods: {
     customizeText({ valueText }) {
       return `${valueText} %`;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
@@ -126,13 +128,14 @@ export default {
     height: 110px;
 }
 
-#c5 {
-    width: 107%;
-    margin-left: -40px;
-}
-
 .long-title h3 {
-    font-family: 'Segoe UI Light', 'Helvetica Neue Light', 'Segoe UI', 'Helvetica Neue', 'Trebuchet MS', Verdana;
+    font-family:
+      'Segoe UI Light',
+      'Helvetica Neue Light',
+      'Segoe UI',
+      'Helvetica Neue',
+      'Trebuchet MS',
+      Verdana;
     font-weight: 200;
     font-size: 28px;
     text-align: center;

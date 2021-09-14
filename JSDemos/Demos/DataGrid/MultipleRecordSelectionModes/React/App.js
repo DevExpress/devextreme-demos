@@ -1,13 +1,16 @@
-﻿import React from 'react';
+import React from 'react';
 
 import DataGrid, {
   Column,
   Selection,
   FilterRow,
-  Paging
+  Paging,
 } from 'devextreme-react/data-grid';
 import { SelectBox } from 'devextreme-react/select-box';
 import { sales } from './data.js';
+
+const showCheckBoxesModes = ['none', 'onClick', 'onLongTap', 'always'];
+const selectAllModes = ['allPages', 'page'];
 
 class App extends React.Component {
   constructor(props) {
@@ -15,7 +18,7 @@ class App extends React.Component {
 
     this.state = {
       allMode: 'allPages',
-      checkBoxesMode: 'onClick'
+      checkBoxesMode: 'onClick',
     };
 
     this.onCheckBoxesModeChanged = this.onCheckBoxesModeChanged.bind(this);
@@ -54,7 +57,7 @@ class App extends React.Component {
             <span>Select All Mode </span>
             <SelectBox
               id="select-all-mode"
-              dataSource={['allPages', 'page']}
+              dataSource={selectAllModes}
               value={allMode}
               disabled={checkBoxesMode === 'none'}
               onValueChanged={this.onAllModeChanged}
@@ -64,7 +67,7 @@ class App extends React.Component {
             <span>Show Checkboxes Mode </span>
             <SelectBox
               id="show-checkboxes-mode"
-              dataSource={['none', 'onClick', 'onLongTap', 'always']}
+              dataSource={showCheckBoxesModes}
               value={checkBoxesMode}
               onValueChanged={this.onCheckBoxesModeChanged}
             />

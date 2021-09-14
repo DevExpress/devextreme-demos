@@ -30,7 +30,8 @@
           07/03/19 - 12:25AM
         </div>
         <div class="text">
-          I've been in the audio/video industry since 2001, and I've been the CEO of DevAv since 2009.
+          I've been in the audio/video industry since 2001,
+          and I've been the CEO of DevAv since 2009.
         </div>
       </div>
       <br>
@@ -61,7 +62,8 @@
           spellcheck="false"
           data-marker="@"
           data-mention-value="Kevin Carter"
-        ><span><span>@</span>Kevin Carter</span></span> I think John's expertise can be very valuable in our startup.
+        ><span><span>@</span>Kevin Carter</span></span>
+        I think John's expertise can be very valuable in our startup.
       </p>
     </DxHtmlEditor>
   </div>
@@ -69,13 +71,13 @@
 <script>
 
 import {
-  DxHtmlEditor
+  DxHtmlEditor,
 } from 'devextreme-vue/html-editor';
 import { employees } from './data.js';
 
 export default {
   components: {
-    DxHtmlEditor
+    DxHtmlEditor,
   },
   data() {
     return {
@@ -83,10 +85,10 @@ export default {
         dataSource: employees,
         searchExpr: 'text',
         displayExpr: 'text',
-        valueExpr: 'text'
-      }]
+        valueExpr: 'text',
+      }],
     };
-  }
+  },
 };
 </script>
 <style>

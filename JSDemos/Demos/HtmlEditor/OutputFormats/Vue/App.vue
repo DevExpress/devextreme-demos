@@ -6,30 +6,30 @@
       :height="300"
     >
       <DxToolbar>
-        <DxItem format-name="undo"/>
-        <DxItem format-name="redo"/>
-        <DxItem format-name="separator"/>
+        <DxItem name="undo"/>
+        <DxItem name="redo"/>
+        <DxItem name="separator"/>
         <DxItem
-          :format-values="sizeValues"
-          format-name="size"
+          :accepted-values="sizeValues"
+          name="size"
         />
         <DxItem
-          :format-values="fontValues"
-          format-name="font"
+          :accepted-values="fontValues"
+          name="font"
         />
-        <DxItem format-name="separator"/>
-        <DxItem format-name="bold"/>
-        <DxItem format-name="italic"/>
-        <DxItem format-name="strike"/>
-        <DxItem format-name="underline"/>
-        <DxItem format-name="separator"/>
-        <DxItem format-name="alignLeft"/>
-        <DxItem format-name="alignCenter"/>
-        <DxItem format-name="alignRight"/>
-        <DxItem format-name="alignJustify"/>
-        <DxItem format-name="separator"/>
-        <DxItem format-name="color"/>
-        <DxItem format-name="background"/>
+        <DxItem name="separator"/>
+        <DxItem name="bold"/>
+        <DxItem name="italic"/>
+        <DxItem name="strike"/>
+        <DxItem name="underline"/>
+        <DxItem name="separator"/>
+        <DxItem name="alignLeft"/>
+        <DxItem name="alignCenter"/>
+        <DxItem name="alignRight"/>
+        <DxItem name="alignJustify"/>
+        <DxItem name="separator"/>
+        <DxItem name="color"/>
+        <DxItem name="background"/>
       </DxToolbar>
     </DxHtmlEditor>
 
@@ -47,11 +47,11 @@
 import {
   DxHtmlEditor,
   DxToolbar,
-  DxItem
+  DxItem,
 } from 'devextreme-vue/html-editor';
 import {
   DxButtonGroup,
-  DxItem as DxButtonGroupItem
+  DxItem as DxButtonGroupItem,
 } from 'devextreme-vue/button-group';
 
 import { markup } from './data.js';
@@ -64,21 +64,21 @@ export default {
     DxToolbar,
     DxItem,
     DxButtonGroup,
-    DxButtonGroupItem
+    DxButtonGroupItem,
   },
   data() {
     return {
       valueContent: markup,
       selectedItems: [{ text: 'Html' }],
       sizeValues: ['8pt', '10pt', '12pt', '14pt', '18pt', '24pt', '36pt'],
-      fontValues: ['Arial', 'Courier New', 'Georgia', 'Impact', 'Lucida Console', 'Tahoma', 'Times New Roman', 'Verdana']
+      fontValues: ['Arial', 'Courier New', 'Georgia', 'Impact', 'Lucida Console', 'Tahoma', 'Times New Roman', 'Verdana'],
     };
   },
   computed: {
-    editorValueType: function() {
+    editorValueType() {
       return this.selectedItems[0].text.toLowerCase();
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

@@ -1,6 +1,6 @@
 <template>
   <div :class="className(cellData)">
-    <div class="current-value">{{ formatCurrency(cellData, 'USD') }}</div>
+    <div class="current-value">{{ formatCurrency(cellData) }}</div>
     <div class="diff">{{ fixed(abs(cellData), 2) }}</div>
   </div>
 </template>
@@ -8,11 +8,9 @@
 import {
   DxSparkline,
   DxSize,
-  DxTooltip
+  DxTooltip,
 } from 'devextreme-vue/sparkline';
-
-import Globalize from 'globalize';
-import 'devextreme/localization/globalize/currency';
+import { formatNumber } from 'devextreme/localization';
 
 const gridCellData = function(value) {
   return value.data[value.column.caption.toLowerCase()];
@@ -22,27 +20,27 @@ export default {
   components: {
     DxSparkline,
     DxSize,
-    DxTooltip
+    DxTooltip,
   },
   props: {
     cellData: {
       type: Object,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
   methods: {
     className(value) {
       return gridCellData(value).diff > 0 ? 'inc' : 'dec';
     },
-    formatCurrency(value, currency) {
-      return Globalize.formatCurrency(gridCellData(value).value, currency);
+    formatCurrency(value) {
+      return formatNumber(gridCellData(value).value, { type: 'currency', currency: 'USD', precision: 2 });
     },
     abs(value) {
       return Math.abs(gridCellData(value).diff);
     },
     fixed(value, precision) {
       return value.toFixed(precision);
-    }
-  }
+    },
+  },
 };
 </script>

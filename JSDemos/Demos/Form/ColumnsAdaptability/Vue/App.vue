@@ -13,8 +13,8 @@
       <div class="caption">Options</div>
       <div class="option">
         <DxCheckBox
-          :text="'Set the count of columns regardless of screen size'"
-          v-model:value="useColCountByScreen"
+          :text="'Calculate the number of columns automatically'"
+          v-model:value="calculateColCountAutomatically"
         />
       </div>
     </div>
@@ -28,29 +28,29 @@ import employee from './data.js';
 export default {
   components: {
     DxCheckBox,
-    DxForm
+    DxForm,
   },
   data() {
     return {
       employee,
-      useColCountByScreen: true
+      calculateColCountAutomatically: false,
     };
   },
   computed: {
     colCountByScreen() {
-      return this.useColCountByScreen
-        ? {
+      return this.calculateColCountAutomatically
+        ? null
+        : {
           sm: 2,
-          md: 3
-        }
-        : null;
-    }
+          md: 4,
+        };
+    },
   },
   methods: {
     screenByWidth(width) {
       return width < 720 ? 'sm' : 'md';
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import NumberBox from 'devextreme-react/number-box';
 import {
   Chart,
@@ -12,6 +12,7 @@ import {
 import { generateDataSource } from './data.js';
 
 const dataSource = generateDataSource();
+const defaultVisualRange = [-20, 20];
 
 class App extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class App extends React.Component {
       argumentCustomPosition: 0,
       argumentOffset: 0,
       valueCustomPosition: 0,
-      valueOffset: 0
+      valueOffset: 0,
     };
     this.changeArgumentPosition = (e) => {
       this.setState({ argumentCustomPosition: e.value });
@@ -41,7 +42,7 @@ class App extends React.Component {
       argumentCustomPosition,
       argumentOffset,
       valueCustomPosition,
-      valueOffset
+      valueOffset,
     } = this.state;
     return (
       <div>
@@ -55,12 +56,12 @@ class App extends React.Component {
             <Point symbol='triangleDown' />
           </Series>
           <ArgumentAxis
-            defaultVisualRange={[-20, 20]}
+            defaultVisualRange={defaultVisualRange}
             customPosition={argumentCustomPosition}
             offset={argumentOffset}
           />
           <ValueAxis
-            defaultVisualRange={[-20, 20]}
+            defaultVisualRange={defaultVisualRange}
             customPosition={valueCustomPosition}
             offset={valueOffset}
             endOnTick={false}

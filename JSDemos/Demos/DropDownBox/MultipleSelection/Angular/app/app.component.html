@@ -9,7 +9,7 @@
                 placeholder="Select a value..."
                 [showClearButton]="true"
                 [dataSource]="treeDataSource"
-                (onValueChanged)="syncTreeViewSelection()"
+                (onValueChanged)="onDropDownBoxValueChanged($event)"
             >
 
                 <div *dxTemplate="let data of 'content'">
@@ -23,8 +23,8 @@
                         [selectNodesRecursive]="false"
                         displayExpr="name"
                         [selectByClick]="true"
-                        (onContentReady)="syncTreeViewSelection($event)"
-                        (onItemSelectionChanged)="treeView_itemSelectionChanged($event)"
+                        (onContentReady)="onTreeViewReady($event)"
+                        (onItemSelectionChanged)="onTreeViewSelectionChanged($event)"
                     >
                     </dx-tree-view>
                 </div>
@@ -51,7 +51,7 @@
                             [hoverStateEnabled]="true"
                             [paging]="{ enabled: true, pageSize: 10 }"
                             [filterRow]="{ visible: true }"
-                            [scrolling]="{ mode: 'infinite' }"
+                            [scrolling]="{ mode: 'virtual' }"
                             [height]="345"
                             [(selectedRowKeys)]="gridBoxValue"
                     >

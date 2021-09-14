@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <div class="dx-fieldset">
@@ -99,21 +100,21 @@ export default {
   components: {
     DxSelectBox,
     Field,
-    Item
+    Item,
   },
   data() {
-    const products = service.getProducts(),
-      simpleProducts = service.getSimpleProducts();
+    const products = service.getProducts();
+    const simpleProducts = service.getSimpleProducts();
     return {
       products,
       simpleProducts,
       data: new ArrayStore({
         data: products,
-        key: 'ID'
+        key: 'ID',
       }),
-      value: simpleProducts[0]
+      value: simpleProducts[0],
     };
-  }
+  },
 };
 </script>
 <style scoped>

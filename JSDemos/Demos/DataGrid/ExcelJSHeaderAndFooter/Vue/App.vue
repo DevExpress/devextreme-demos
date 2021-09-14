@@ -2,6 +2,7 @@
   <DxDataGrid
     id="grid"
     :data-source="countries"
+    key-expr="ID"
     :show-borders="true"
     @exporting="onExporting"
   >
@@ -54,12 +55,10 @@
 <script>
 
 import DxDataGrid, { DxColumn, DxExport } from 'devextreme-vue/data-grid';
-import ExcelJS from 'exceljs';
-import saveAs from 'file-saver';
-/*
-  // Use this import for codeSandBox
-  import FileSaver from 'file-saver';
-*/
+import { Workbook } from 'exceljs';
+import { saveAs } from 'file-saver-es';
+// Our demo infrastructure requires us to use 'file-saver-es'.
+// We recommend that you use the official 'file-saver' package in your applications.
 import { exportDataGrid } from 'devextreme/excel_exporter';
 import { countries } from './data.js';
 
@@ -67,26 +66,26 @@ export default {
   components: {
     DxDataGrid,
     DxColumn,
-    DxExport
+    DxExport,
   },
   data() {
     return {
-      countries: countries,
+      countries,
       gdpFormat: {
         type: 'percent',
-        precision: 1
-      }
+        precision: 1,
+      },
     };
   },
   methods: {
     onExporting(e) {
-      const workbook = new ExcelJS.Workbook();
+      const workbook = new Workbook();
       const worksheet = workbook.addWorksheet('CountriesPopulation');
 
       exportDataGrid({
         component: e.component,
-        worksheet: worksheet,
-        topLeftCell: { row: 4, column: 1 }
+        worksheet,
+        topLeftCell: { row: 4, column: 1 },
       }).then((cellRange) => {
         // header
         const headerRow = worksheet.getRow(2);
@@ -111,8 +110,8 @@ export default {
         });
       });
       e.cancel = true;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -124,7 +123,13 @@ export default {
 }
 
 .long-title h3 {
-  font-family: 'Segoe UI Light', 'Helvetica Neue Light', 'Segoe UI', 'Helvetica Neue', 'Trebuchet MS', Verdana;
+  font-family:
+    'Segoe UI Light',
+    'Helvetica Neue Light',
+    'Segoe UI',
+    'Helvetica Neue',
+    'Trebuchet MS',
+    Verdana;
   font-weight: 200;
   font-size: 28px;
   text-align: center;

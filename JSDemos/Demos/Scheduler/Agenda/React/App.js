@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Scheduler from 'devextreme-react/scheduler';
+import Scheduler, { Resource } from 'devextreme-react/scheduler';
 
-import { data } from './data.js';
+import { assignees, data, priorities } from './data.js';
 
 const currentDate = new Date(2021, 4, 11);
 const views = ['agenda'];
@@ -17,7 +17,20 @@ class App extends React.Component {
         currentView="agenda"
         defaultCurrentDate={currentDate}
         height={600}
-        startDayHour={9} />
+        startDayHour={9}>
+        <Resource
+          dataSource={assignees}
+          allowMultiple={true}
+          fieldExpr="assigneeId"
+          label="Assignee"
+          useColorAsDefault={true}
+        />
+        <Resource
+          dataSource={priorities}
+          fieldExpr="priorityId"
+          label="Priority"
+        />
+      </Scheduler>
     );
   }
 }

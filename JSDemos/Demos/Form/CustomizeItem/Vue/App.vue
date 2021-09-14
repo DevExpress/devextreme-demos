@@ -61,7 +61,7 @@ import 'devextreme-vue/text-area';
 export default {
   components: {
     DxForm,
-    DxItem
+    DxItem,
   },
   data() {
     const employee = service.getEmployee();
@@ -74,16 +74,16 @@ export default {
           { type: 'required', message: 'Position is required.' },
         ],
         hireDate: [
-          { type: 'required', message: 'Hire Date is required.' }
-        ]
-      }
+          { type: 'required', message: 'Hire Date is required.' },
+        ],
+      },
     };
   },
   methods: {
     validateForm(e) {
       e.component.validate();
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
@@ -92,7 +92,13 @@ export default {
 }
 
 .long-title h3 {
-    font-family: 'Segoe UI Light', 'Helvetica Neue Light', 'Segoe UI', 'Helvetica Neue', 'Trebuchet MS', Verdana;
+    font-family:
+      'Segoe UI Light',
+      'Helvetica Neue Light',
+      'Segoe UI',
+      'Helvetica Neue',
+      'Trebuchet MS',
+      Verdana;
     font-weight: 200;
     font-size: 28px;
     text-align: center;

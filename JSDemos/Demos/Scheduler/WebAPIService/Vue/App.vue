@@ -14,6 +14,8 @@
     start-date-expr="StartDate"
     end-date-expr="EndDate"
     all-day-expr="AllDay"
+    recurrence-rule-expr="RecurrenceRule"
+    recurrence-exception-expr="RecurrenceException"
   />
 </template>
 <script>
@@ -24,23 +26,23 @@ const url = 'https://js.devexpress.com/Demos/Mvc/api/SchedulerData';
 
 export default {
   components: {
-    DxScheduler
+    DxScheduler,
   },
   data() {
     return {
       views: ['day', 'workWeek', 'month'],
-      currentDate: new Date(2021, 4, 25),
+      currentDate: new Date(2021, 3, 27),
       dataSource: AspNetData.createStore({
         key: 'AppointmentId',
-        loadUrl: `${url }/Get`,
-        insertUrl: `${url }/Post`,
-        updateUrl: `${url }/Put`,
-        deleteUrl: `${url }/Delete`,
+        loadUrl: `${url}/Get`,
+        insertUrl: `${url}/Post`,
+        updateUrl: `${url}/Put`,
+        deleteUrl: `${url}/Delete`,
         onBeforeSend(_, ajaxOptions) {
           ajaxOptions.xhrFields = { withCredentials: true };
-        }
-      })
+        },
+      }),
     };
-  }
+  },
 };
 </script>

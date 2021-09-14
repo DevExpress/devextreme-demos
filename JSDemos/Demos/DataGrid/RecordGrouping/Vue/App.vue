@@ -3,6 +3,7 @@
     <DxDataGrid
       :allow-column-reordering="true"
       :data-source="customers"
+      key-expr="ID"
       :show-borders="true"
     >
 
@@ -33,7 +34,6 @@
   </div>
 </template>
 <script>
-import { customers } from './data.js';
 import DxCheckBox from 'devextreme-vue/check-box';
 import {
   DxDataGrid,
@@ -41,8 +41,9 @@ import {
   DxGrouping,
   DxGroupPanel,
   DxSearchPanel,
-  DxPaging
+  DxPaging,
 } from 'devextreme-vue/data-grid';
+import { customers } from './data.js';
 
 export default {
   components: {
@@ -52,14 +53,14 @@ export default {
     DxGrouping,
     DxPaging,
     DxSearchPanel,
-    DxDataGrid
+    DxDataGrid,
   },
   data() {
     return {
       autoExpandAll: true,
-      customers
+      customers,
     };
-  }
+  },
 };
 </script>
 <style scoped>

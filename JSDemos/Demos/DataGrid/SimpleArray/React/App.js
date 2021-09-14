@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import DataGrid from 'devextreme-react/data-grid';
 import { customers } from './data.js';
 
@@ -9,6 +9,7 @@ class App extends React.Component {
     return (
       <DataGrid
         dataSource={customers}
+        keyExpr="ID"
         defaultColumns={columns}
         showBorders={true}
       />

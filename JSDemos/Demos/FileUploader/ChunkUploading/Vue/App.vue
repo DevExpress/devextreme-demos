@@ -16,11 +16,17 @@
         :key="index"
       >
         <span>Chunk size:</span>
-        <span class="segment-size dx-theme-accent-as-text-color">{{ getValueInKb(chunk.segmentSize) }}</span>
+        <span
+          class="segment-size dx-theme-accent-as-text-color"
+        >{{ getValueInKb(chunk.segmentSize) }}</span>
         <span>, Uploaded:'</span>
-        <span class="loaded-size dx-theme-accent-as-text-color">{{ getValueInKb(chunk.bytesLoaded) }}</span>
+        <span
+          class="loaded-size dx-theme-accent-as-text-color"
+        >{{ getValueInKb(chunk.bytesLoaded) }}</span>
         <span>/</span>
-        <span class="total-size dx-theme-accent-as-text-color">{{ getValueInKb(chunk.bytesTotal) }}</span>
+        <span
+          class="total-size dx-theme-accent-as-text-color"
+        >{{ getValueInKb(chunk.bytesTotal) }}</span>
       </div>
     </div>
   </div>
@@ -30,11 +36,11 @@ import DxFileUploader from 'devextreme-vue/file-uploader';
 
 export default {
   components: {
-    DxFileUploader
+    DxFileUploader,
   },
   data() {
     return {
-      chunks: []
+      chunks: [],
     };
   },
   methods: {
@@ -45,10 +51,10 @@ export default {
       this.chunks.push({
         segmentSize: e.segmentSize,
         bytesLoaded: e.bytesLoaded,
-        bytesTotal: e.bytesTotal
+        bytesTotal: e.bytesTotal,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

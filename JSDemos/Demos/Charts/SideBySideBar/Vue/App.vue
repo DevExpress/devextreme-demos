@@ -19,16 +19,16 @@
       </DxLabel>
     </DxCommonSeriesSettings>
     <DxSeries
-      value-field="year2004"
-      name="2004"
+      value-field="year2018"
+      name="2018"
     />
     <DxSeries
-      value-field="year2001"
-      name="2001"
+      value-field="year2017"
+      name="2017"
     />
     <DxSeries
-      value-field="year1998"
-      name="1998"
+      value-field="year2016"
+      name="2016"
     />
     <DxLegend
       vertical-alignment="bottom"
@@ -45,7 +45,7 @@ import {
   DxLabel,
   DxFormat,
   DxLegend,
-  DxExport
+  DxExport,
 } from 'devextreme-vue/chart';
 import { grossProductData } from './data.js';
 
@@ -57,18 +57,18 @@ export default {
     DxLabel,
     DxFormat,
     DxLegend,
-    DxExport
+    DxExport,
   },
   data() {
     return {
-      dataSource: grossProductData
+      dataSource: grossProductData,
     };
   },
   methods: {
     onPointClick({ target }) {
       target.select();
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

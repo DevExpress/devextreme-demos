@@ -130,18 +130,20 @@
 </template>
 <script>
 
-import { DxCircularGauge, DxScale, DxLabel, DxGeometry, DxValueIndicator } from 'devextreme-vue/circular-gauge';
+import {
+  DxCircularGauge, DxScale, DxLabel, DxGeometry, DxValueIndicator,
+} from 'devextreme-vue/circular-gauge';
 
 export default {
   components: {
-    DxCircularGauge, DxScale, DxLabel, DxGeometry, DxValueIndicator
+    DxCircularGauge, DxScale, DxLabel, DxGeometry, DxValueIndicator,
   },
 
   methods: {
     customizeText({ valueText }) {
       return `${valueText} %`;
-    }
-  }
+    },
+  },
 };
 
 </script>
@@ -172,7 +174,13 @@ export default {
 }
 
 .long-title h3 {
-    font-family: 'Segoe UI Light', 'Helvetica Neue Light', 'Segoe UI', 'Helvetica Neue', 'Trebuchet MS', Verdana;
+    font-family:
+      'Segoe UI Light',
+      'Helvetica Neue Light',
+      'Segoe UI',
+      'Helvetica Neue',
+      'Trebuchet MS',
+      Verdana;
     font-weight: 200;
     font-size: 28px;
     text-align: center;

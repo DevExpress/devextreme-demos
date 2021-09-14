@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/max-len -->
 <template>
   <div
     :style="{ 'outline-style': border ? 'solid' : 'none', 'outline-color': color }"
@@ -174,29 +175,29 @@ export default {
   props: {
     color: {
       type: String,
-      default: '#000000'
+      default: '#000000',
     },
     text: {
       type: String,
-      default: ''
+      default: '',
     },
     width: {
       type: Number,
-      default: 100
+      default: 100,
     },
     height: {
       type: Number,
-      default: 100
+      default: 100,
     },
     transform: {
       type: String,
-      default: ''
+      default: '',
     },
     border: {
       type: Boolean,
-      default: false
-    }
-  }
+      default: false,
+    },
+  },
 };
 </script>
 <style>
@@ -226,7 +227,9 @@ export default {
     text-overflow: ellipsis;
     overflow: hidden;
 }
-.dx-color-scheme-light .base-color, .dx-color-scheme-carmine .base-color, .dx-color-scheme-softblue .base-color {
+.dx-color-scheme-light .base-color,
+.dx-color-scheme-carmine .base-color,
+.dx-color-scheme-softblue .base-color {
     fill: #333;
 }
 .dx-color-scheme-contrast .base-color, .dx-color-scheme-darkmoon .base-color {

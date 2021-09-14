@@ -6,6 +6,8 @@
         .Editing(editing => {
             editing.Mode(GridEditMode.Batch);
             editing.AllowUpdating(true);
+            editing.AllowAdding(true);
+            editing.AllowDeleting(true);
             editing.SelectTextOnEditStart(true);
             editing.StartEditAction(GridStartEditAction.Click);
         })
@@ -34,6 +36,8 @@
             .Controller("DataGridEmployees")
             .LoadAction("Get")
             .UpdateAction("Put")
+            .InsertAction("Post")
+            .DeleteAction("Delete")
             .Key("ID")
         )
     )
@@ -45,12 +49,7 @@
                 .ID("select-text-on-edit-start")
                 .Text("Select Text on Edit Start")
                 .Value(true)
-                .OnValueChanged(@<text>
-                    function(data) {
-                        var dataGrid = $("#gridContainer").dxDataGrid("instance");
-                        dataGrid.option("editing.selectTextOnEditStart", data.value);
-                    }
-                </text>)
+                .OnValueChanged("onOptionsValueChanged")
             )
         </div>
         <div class="option">
@@ -59,13 +58,20 @@
                 .ID("start-edit-action")
                 .DataSource(new[] { "click", "dblClick" })
                 .Value("click")
-                .OnValueChanged(@<text>
-                    function(data) {
-                        var dataGrid = $("#gridContainer").dxDataGrid("instance");
-                        dataGrid.option("editing.startEditAction", data.value);
-                    }
-                </text>)
+                .OnValueChanged("onStartEditActionValueChanged")
             )
         </div>
     </div>
 </div>
+
+<script>
+    function onOptionsValueChanged(data) {
+        let dataGrid = $("#gridContainer").dxDataGrid("instance");
+        dataGrid.option("editing.selectTextOnEditStart", data.value);
+    }
+
+    function onStartEditActionValueChanged(data) {
+        let dataGrid = $("#gridContainer").dxDataGrid("instance");
+        dataGrid.option("editing.startEditAction", data.value);
+    }
+</script>

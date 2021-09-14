@@ -1,11 +1,6 @@
-<dx-button id="exportButton"
-    icon="exportpdf"
-    text="Export to PDF"
-    (onClick)="exportGrid($event)">
-</dx-button>
-
 <dx-data-grid 
     [dataSource]="customers"
+    keyExpr="ID"
     [allowColumnReordering]="true"
     [showBorders]="true">    
     
@@ -19,4 +14,15 @@
     <dxo-paging [pageSize]="10"></dxo-paging>
     <dxo-group-panel [visible]="true"></dxo-group-panel>
     <dxo-grouping [autoExpandAll]="true"></dxo-grouping>
+    <dxo-toolbar>
+        <dxi-item name="groupPanel"></dxi-item>
+        <dxi-item location="after">
+            <dx-button
+                icon="exportpdf"
+                text="Export to PDF"
+                (onClick)="exportGrid($event)">
+            </dx-button>
+        </dxi-item>
+        <dxi-item name="searchPanel"></dxi-item>
+    </dxo-toolbar>
 </dx-data-grid>
