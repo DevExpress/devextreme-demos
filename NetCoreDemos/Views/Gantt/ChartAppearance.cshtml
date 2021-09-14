@@ -41,6 +41,15 @@
                     )
                 </div>
             </div>
+            <div class="option">
+                <div class="label">Show Dependencies:</div>
+                <div class="value">
+                    @(Html.DevExtreme().CheckBox()
+                        .Value(true)
+                        .OnValueChanged("ganttShowDependencies_changed")
+                    )
+                </div>
+            </div>
         </div>
         <div class="column">
             <div class="option">
@@ -119,6 +128,8 @@
         })
         .TaskListWidth(500)
         .TaskTooltipContentTemplate(new JS("getTaskTooltipContentTemplate"))
+        .TaskTimeTooltipContentTemplate(new JS("getTaskTimeTooltipContentTemplate"))
+        .TaskProgressTooltipContentTemplate(new JS("getTaskProgressTooltipContentTemplate"))
     )
 </div>
 
@@ -146,6 +157,37 @@
         return $customTooltip;
     }
 
+    function getTaskProgressTooltipContentTemplate(task, container) {
+        var $customTooltip = $(document.createElement("div"))
+            .addClass("custom-task-edit-tooltip");
+
+        $(document.createElement("div"))
+            .addClass("custom-tooltip-title")
+            .text(task.progress + "%")
+            .appendTo($customTooltip);
+
+        return $customTooltip;
+    }
+
+    function getTaskTimeTooltipContentTemplate(task, container) {
+        var start = task.start.toLocaleString();
+        var end = task.end.toLocaleString();
+
+        var $customTooltip = $(document.createElement("div"))
+            .addClass("custom-task-edit-tooltip");
+
+        $(document.createElement("div"))
+            .addClass("custom-tooltip-title")
+            .text("Start: " + start)
+            .appendTo($customTooltip);
+        $(document.createElement("div"))
+            .addClass("custom-tooltip-title")
+            .text("End: " + end)
+            .appendTo($customTooltip);
+
+        return $customTooltip;
+    }
+
     function getGanttInstance() {
         return $("#gantt").dxGantt("instance");
     }
@@ -166,11 +208,18 @@
         ganttInstance.option("showResources", e.value);
     }
 
+    function ganttShowDependencies_changed(e) {
+        var ganttInstance = getGanttInstance();
+        ganttInstance.option("showDependencies", e.value);
+    }
+
     function ganttShowCustomTaskTooltip_changed(e) {
         var ganttInstance = getGanttInstance();
-        e.value ? ganttInstance.option("taskTooltipContentTemplate", getTaskTooltipContentTemplate)
-            : ganttInstance.option("taskTooltipContentTemplate", undefined);
+        ganttInstance.option("taskTooltipContentTemplate", e.value ? getTaskTooltipContentTemplate : undefined);
+        ganttInstance.option("taskTimeTooltipContentTemplate", e.value ? getTaskTimeTooltipContentTemplate : undefined);
+        ganttInstance.option("taskProgressTooltipContentTemplate", e.value ? getTaskProgressTooltipContentTemplate : undefined);
     }
+
     function ganttStartDateRange_changed(e) {
         var ganttInstance = getGanttInstance();
         ganttInstance.option("startDateRange", e.value);
