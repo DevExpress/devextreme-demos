@@ -5156,7 +5156,10 @@
           {
             "Title": "Basics",
             "Name": "Basics",
+<<<<<<< HEAD
             "DocUrl": "Guide/Widgets/Lookup/Overview/",
+=======
+>>>>>>> fc83b0bd (Lookup Basics: rewrite (#1136))
             "Widget": "Lookup",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/EmployeesTasksController.cs",
