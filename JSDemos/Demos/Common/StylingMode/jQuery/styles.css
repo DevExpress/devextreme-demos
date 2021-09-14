@@ -11,14 +11,8 @@
 .editors .left, .editors .right {
     display: inline-block;
     width: 49%;
-    /* padding-right: 5px; */
     box-sizing: border-box;
 }
-
-/* .editors .right {
-    padding-left: 5px;
-    padding-right: 0px;
-} */
 
 .editors .left > div, .editors .right > div, .editors .center > div {
     margin-bottom: 20px;
