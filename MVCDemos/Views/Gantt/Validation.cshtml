@@ -17,12 +17,20 @@
             .OnValueChanged("ganttEnableDependencyValidation_changed")
         )
     </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Value(true)
+            .Text("Enable Predecessor Gap")
+            .OnValueChanged("ganttEnablePredecessorGap_changed")
+        )
+    </div>
 </div>
 
 @(Html.DevExtreme().Gantt<Task>()
     .ID("gantt")
     .Validation(v => v.AutoUpdateParentTasks(true)
-                    .ValidateDependencies(true))
+                    .ValidateDependencies(true)
+                    .EnablePredecessorGap(true))
     .Tasks(t => t
         .DataSource(ds => ds.Array().Data(SampleData.GanttTasksJohnsonResidence).Key("ID"))
         .KeyExpr("ID")
@@ -66,5 +74,10 @@
     function ganttEnableDependencyValidation_changed(e) {
         var ganttInstance = getGanttInstance();
         ganttInstance.option("validation.validateDependencies", e.value);
+    }
+
+    function ganttEnablePredecessorGap_changed(e) {
+        var ganttInstance = getGanttInstance();
+        ganttInstance.option("validation.enablePredecessorGap", e.value);
     }
 </script>

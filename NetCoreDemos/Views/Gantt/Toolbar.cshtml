@@ -18,6 +18,9 @@
                 i.Add().Name(GanttToolbarItem.ZoomIn);
                 i.Add().Name(GanttToolbarItem.ZoomOut);
                 i.Add().Name(GanttToolbarItem.Separator);
+                i.Add().Name(GanttToolbarItem.ShowResources);
+                i.Add().Name(GanttToolbarItem.ShowDependencies);
+                i.Add().Name(GanttToolbarItem.Separator);
                 i.Add().Name("About")
                     .Widget(widget => widget.Button()
                     .OnClick("showInfo")

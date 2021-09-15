@@ -32,7 +32,7 @@
         .TaskIdExpr("TaskId")
         .ResourceIdExpr("ResourceId")
     )
-    .Editing(e => e.Enabled(false))
+    .Editing(e => e.Enabled(true))
     .Columns(columns => {
         columns.AddFor(m => m.Title)
             .Caption("Subject")
