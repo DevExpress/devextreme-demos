@@ -2,6 +2,33 @@
 @using Gantt = DevExtreme.NETCore.Demos.Models.Gantt
 
 <div class="widget-container">
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            <div class="label">Sorting Mode:</div>
+            <div class="value">
+                @(Html.DevExtreme().SelectBox()
+                    .ID("sortingMode")
+                    .DataSource(new[] {
+                        "single",
+                        "multiple",
+                        "none"
+                    })
+                    .Value("single")
+                    .OnValueChanged("ganttSortingMode_valueChanged")
+                )
+            </div>
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+            .ID("showSortIndexes")
+            .Value(false)
+            .Text("Show Sort Indexes")
+            .Disabled(true)
+            .OnValueChanged("ganttShowSortIndexes_changed")
+        )
+        </div>
+    </div>
     @(Html.DevExtreme().Gantt<Gantt.Task>()
         .ID("gantt")
         .Tasks(t => t
@@ -46,3 +73,21 @@
         .TaskListWidth(500)
     )
 </div>
+
+<script>
+    function getGanttInstance() {
+        return $("#gantt").dxGantt("instance");
+    }
+
+    function ganttSortingMode_valueChanged(e) {
+        var ganttInstance = getGanttInstance();
+        ganttInstance.option("sorting", { mode: e.value });
+        var disabled = e.value !== "multiple";
+        $("#showSortIndexes").dxCheckBox("instance").option("disabled", disabled);
+    }
+
+    function ganttShowSortIndexes_changed(e) {
+        var ganttInstance = getGanttInstance();
+        ganttInstance.option("sorting", { showSortIndexes: e.value });
+    }
+</script>
