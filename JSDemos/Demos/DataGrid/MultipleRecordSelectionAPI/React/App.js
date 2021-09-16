@@ -8,6 +8,8 @@ import SelectBox from 'devextreme-react/select-box';
 import Button from 'devextreme-react/button';
 import { employees } from './data.js';
 
+const titles = ['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.'];
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -33,7 +35,7 @@ class App extends React.Component {
       <div id="grid">
         <SelectBox
           id="select-prefix"
-          dataSource={['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.']}
+          dataSource={titles}
           onValueChanged={this.onSelectionFilterChanged}
           placeholder="Select title"
           value={prefix}

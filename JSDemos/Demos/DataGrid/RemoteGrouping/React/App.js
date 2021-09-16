@@ -12,9 +12,8 @@ class App extends React.Component {
   render() {
     return (
       <DataGrid
-        elementAttr ={{
-          id: 'gridContainer'
-        }}
+        height={420}
+        width="100%"
         dataSource={dataSource}
         showBorders={true}
         wordWrapEnabled={true}

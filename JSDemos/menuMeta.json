@@ -1061,7 +1061,6 @@
           {
             "Title": "Summary Display Modes",
             "Name": "SummaryDisplayModes",
-            "DocUrl": "Guide/UI_Components/PivotGrid/Summaries/#Runtime_Summary_Type_Selection",
             "Widget": "PivotGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/PivotGridDataController.cs",
@@ -1073,7 +1072,6 @@
           {
             "Title": "Drill Down",
             "Name": "DrillDown",
-            "DocUrl": "ApiReference/Data_Layer/PivotGridDataSource/Methods/#createDrillDownDataSourceoptions",
             "Widget": "PivotGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/PivotGridDataController.cs",
@@ -1085,7 +1083,6 @@
           {
             "Title": "Virtual Scrolling",
             "Name": "VirtualScrolling",
-            "DocUrl": "ApiReference/UI_Components/dxPivotGrid/Configuration/scrolling/#mode",
             "Widget": "PivotGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/SalesDataController.cs",
@@ -1103,7 +1100,6 @@
           {
             "Title": "State Persistence",
             "Name": "StatePersistence",
-            "DocUrl": "ApiReference/UI_Components/dxPivotGrid/Configuration/stateStoring/",
             "Widget": "PivotGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/PivotGridDataController.cs",
@@ -5214,7 +5210,6 @@
           {
             "Title": "Basics",
             "Name": "Basics",
-            "DocUrl": "Guide/UI_Components/Lookup/Overview/",
             "Widget": "Lookup",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/EmployeesTasksController.cs",
@@ -5226,7 +5221,6 @@
           {
             "Title": "Templates",
             "Name": "Templates",
-            "DocUrl": "Guide/UI_Components/Lookup/Customize_the_Appearance/Customize_Item_Appearance/",
             "Widget": "Lookup",
             "MvcAdditionalFiles": [
               "/Models/DataGrid/Employee.cs",
