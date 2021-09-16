@@ -49,6 +49,7 @@ $(() => {
             placeholder: 'Select title',
             width: '150px',
             onValueChanged(data) {
+              dataGrid.option('toolbar.items[0].options.value', data.value);
               if (!data.value) { return; }
               changedBySelectBox = true;
               if (data.value === 'All') {

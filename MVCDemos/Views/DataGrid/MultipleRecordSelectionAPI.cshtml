@@ -79,10 +79,11 @@
     }
 
     function selectBox_valueChanged(data) {
+        var dataGrid = getDataGridInstance();
+        dataGrid.option('toolbar.items[0].options.value', data.value);
+
         if(!data.value)
             return;
-
-        var dataGrid = getDataGridInstance();
 
         changedBySelectBox = true;
         if(data.value == "All") {
