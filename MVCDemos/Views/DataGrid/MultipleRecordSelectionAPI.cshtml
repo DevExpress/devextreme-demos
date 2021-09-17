@@ -34,6 +34,7 @@
                         .DataSource(new[] { "All", "Dr.", "Mr.", "Mrs.", "Ms." })
                         .Placeholder("Select title")
                         .OnValueChanged("selectBox_valueChanged")
+                        .onInitialized("selectBox_onInitialized")
                 );
 
             items.Add()
@@ -56,6 +57,7 @@
 
 <script>
     var changedBySelectBox;
+    var titleSelectBox;
 
     function getDataGridInstance() {
         return $("#grid-container").dxDataGrid("instance");
@@ -72,7 +74,7 @@
         else
             $("#selectedItemsContainer").text("Nobody has been selected");
         if (!changedBySelectBox)
-            dataGrid.option("toolbar.items[0].options.value", null);
+            titleSelectBox.option('value', null);
 
         changedBySelectBox = false;
         dataGrid.option("toolbar.items[1].options.disabled", !data.length);
@@ -96,6 +98,10 @@
 
             dataGrid.selectRows(employeesToSelect);
         }
+    }
+
+    function selectBox_onInitialized(e) {
+        titleSelectBox = e.component;
     }
 
     function button_click() {

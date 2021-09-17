@@ -1,5 +1,6 @@
 $(() => {
   let changedBySelectBox;
+  let titleSelectBox;
 
   const dataGrid = $('#grid-container').dxDataGrid({
     dataSource: employees,
@@ -33,8 +34,12 @@ $(() => {
         $('#selected-items-container').text(
           $.map(data, (value) => `${value.FirstName} ${value.LastName}`).join(', '),
         );
-      } else { $('#selected-items-container').text('Nobody has been selected'); }
-      if (!changedBySelectBox) { dataGrid.option('toolbar.items[0].options.value', null); }
+      } else {
+        $('#selected-items-container').text('Nobody has been selected'); 
+      }
+      if (!changedBySelectBox) {
+        titleSelectBox.option('value', null);
+      }
 
       changedBySelectBox = false;
       dataGrid.option('toolbar.items[1].options.disabled', !data.length);
@@ -58,6 +63,9 @@ $(() => {
                 dataGrid.selectRows(employeesToSelect);
               }
             },
+            onInitialize(e) {
+              titleSelectBox = e.component;
+            }
           },
         },
         {
