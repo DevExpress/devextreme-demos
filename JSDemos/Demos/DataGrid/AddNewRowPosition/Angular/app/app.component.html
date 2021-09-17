@@ -1,0 +1,52 @@
+<dx-data-grid
+    id="gridContainer"
+    [dataSource]="dataSource"
+    [showBorders]="true">
+
+    <dxo-editing
+        [allowAdding]="true"
+        [allowDeleting]="true"
+        [useIcons]="true"
+        [newRowPosition]="newRowPosition"
+        [changes]="changes">
+    </dxo-editing>
+
+    <dxo-scrolling
+        [mode]="scrollingMode"
+    ></dxo-scrolling>
+    
+    <dxi-column dataField="id"></dxi-column>
+    <dxi-column dataField="firstName"></dxi-column>
+    <dxi-column dataField="lastName"></dxi-column>
+    <dxi-column dataField="gender"></dxi-column>
+    <dxi-column dataField="birthData"></dxi-column>
+    <dxi-column type="buttons">
+        <dxi-button icon="add" [onClick]="addButtonClick"></dxi-button>
+        <dxi-button name="delete"></dxi-button>
+    </dxi-column>
+
+    <dxo-toolbar>
+        <dxi-item name="addRowButton" showText="always"></dxi-item>
+    </dxo-toolbar>
+
+</dx-data-grid>
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option-container">
+        <div class="option">
+            <span>New Row Position</span>
+            <dx-select-box
+                [items]="newRowPositionOptions"
+                [(value)]="newRowPosition">
+            </dx-select-box>
+        </div>
+        <div class="option">
+            <span>Scrolling mode</span>
+            <dx-select-box
+                [items]="scrollingModeOptions"
+                [(value)]="scrollingMode">
+            </dx-select-box>
+        </div>
+  </div>
+</div>
