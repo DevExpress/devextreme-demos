@@ -1,3 +1,3 @@
-To handle the Lookup's value change, specify the [onValueChanged](/Documentation/ApiReference/UI_Components/dxLookup/Configuration/#onValueChanged) function. This demo uses it to display the picture and text for the selected item.
+To handle the Lookup component's value change, specify the [onValueChanged](/Documentation/ApiReference/UI_Components/dxLookup/Configuration/#onValueChanged) function. This demo uses it to display the picture and text for the selected item.
 
-The Lookup applies the selected value instantly. If you want users to click the Apply button instead, set the [applyValueMode](/Documentation/ApiReference/UI_Components/dxLookup/Configuration/#applyValueMode) property to *"useButtons"*. This functionality is not used in this demo.
+The Lookup component applies the selected value instantly. If you want users to click the Apply button instead, set the [applyValueMode](/Documentation/ApiReference/UI_Components/dxLookup/Configuration/#applyValueMode) property to *"useButtons"*. It adds the Apply button to the component's drop-down menu. This demo does not show this functionality.
