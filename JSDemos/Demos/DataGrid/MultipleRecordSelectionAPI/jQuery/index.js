@@ -35,7 +35,7 @@ $(() => {
           $.map(data, (value) => `${value.FirstName} ${value.LastName}`).join(', '),
         );
       } else {
-        $('#selected-items-container').text('Nobody has been selected'); 
+        $('#selected-items-container').text('Nobody has been selected');
       }
       if (!changedBySelectBox) {
         titleSelectBox.option('value', null);
@@ -65,7 +65,7 @@ $(() => {
             },
             onInitialized(e) {
               titleSelectBox = e.component;
-            }
+            },
           },
         },
         {
