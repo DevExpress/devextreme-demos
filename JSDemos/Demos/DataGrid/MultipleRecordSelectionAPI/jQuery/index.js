@@ -63,7 +63,7 @@ $(() => {
                 dataGrid.selectRows(employeesToSelect);
               }
             },
-            onInitialize(e) {
+            onInitialized(e) {
               titleSelectBox = e.component;
             }
           },
