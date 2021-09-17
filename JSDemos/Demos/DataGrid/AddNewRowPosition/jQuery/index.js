@@ -11,7 +11,6 @@ $(() => {
       useIcons: true,
       newRowPosition: 'viewportTop',
     },
-    columnAutoWidth: true,
     columns: ['id', 'firstName', 'lastName', 'gender', 'birthDate', {
       type: 'buttons',
       buttons: [{
