@@ -201,8 +201,9 @@
         else {
             dataRange = dataRangeMode
         }
-        ganttInstance.exportToPdf(
-            {
+        DevExpress.pdfExporter.exportGantt({
+                component: ganttInstance,
+                createDocumentMethod: (args) => new jsPDF(args),
                 format: format,
                 landscape: isLandscape,
                 exportMode: exportMode,

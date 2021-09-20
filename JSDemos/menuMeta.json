@@ -3438,11 +3438,11 @@
         ]
       },
       {
-        "Name": "Export to PDF (CTP)",
+        "Name": "Export to PDF",
         "Equivalents": "",
         "Demos": [
           {
-            "Title": "Export To PDF (CTP)",
+            "Title": "Export To PDF",
             "Badge": "New",
             "Name": "ExportToPDF",
             "Widget": "Gantt",
@@ -5235,7 +5235,6 @@
           {
             "Title": "Basics",
             "Name": "Basics",
-            "DocUrl": "Guide/UI_Components/Lookup/Overview/",
             "Widget": "Lookup",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/EmployeesTasksController.cs",
