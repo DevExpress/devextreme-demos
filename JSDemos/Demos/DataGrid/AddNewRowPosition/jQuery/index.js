@@ -3,7 +3,11 @@ $(() => {
   const scrollingModeOptions = ['infinite', 'standard', 'virtual'];
 
   const dataGrid = $('#gridContainer').dxDataGrid({
-    dataSource: generateData(100000),
+    dataSource: DevExpress.data.AspNet.createStore({
+      key: 'Id',
+      loadUrl: 'https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/Sales',
+    }),
+    remoteOperations: true,
     showBorders: true,
     editing: {
       allowAdding: true,
@@ -11,7 +15,7 @@ $(() => {
       useIcons: true,
       newRowPosition: 'viewportTop',
     },
-    columns: ['id', 'firstName', 'lastName', 'gender', 'birthDate', {
+    columns: ['Id', 'StoreName', 'ProductCategoryName', 'ProductName', 'DateKey', 'SalesAmount', {
       type: 'buttons',
       buttons: [{
         icon: 'add',
@@ -23,7 +27,7 @@ $(() => {
           });
           dataGrid.option('editing.changes', changes);
         },
-      }, 'delete'],
+      }],
     }],
     toolbar: {
       items: [{

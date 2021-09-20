@@ -3,14 +3,18 @@ import DataGrid, {
   Editing, Scrolling, Column, Button, Toolbar, Item,
 } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
-import { generateData } from './data.js';
+
+import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      dataSource: generateData(100000),
+      dataSource: AspNetData.createStore({
+        key: 'Id',
+        loadUrl: 'https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/Sales',
+      }),
       newRowPositionOptions: ['first', 'last', 'pageBottom', 'pageTop', 'viewportBottom', 'viewportTop'],
       newRowPosition: 'viewportTop',
       changes: [],
@@ -64,14 +68,14 @@ class App extends React.Component {
             mode={this.state.scrollingMode}
           />
 
-          <Column dataField="id" />
-          <Column dataField="firstName" />
-          <Column dataField="lastName" />
-          <Column dataField="gender" />
-          <Column dataField="birthDate" />
+          <Column dataField="Id" />
+          <Column dataField="StoreName" />
+          <Column dataField="ProductCategoryName" />
+          <Column dataField="ProductName" />
+          <Column dataField="DateKey" />
+          <Column dataField="SalesAmount" />
           <Column type="buttons">
             <Button icon="add" onClick={this.addButtonClick} />
-            <Button name="delete" />
           </Column>
 
           <Toolbar>
