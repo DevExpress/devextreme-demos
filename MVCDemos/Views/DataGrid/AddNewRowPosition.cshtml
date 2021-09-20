@@ -1,0 +1,84 @@
+@(Html.DevExtreme().DataGrid<DevExtreme.MVC.Demos.Models.DataService.Sale>()
+    .ID("gridContainer")
+    .DataSource(d => d.RemoteController()
+        .LoadUrl("https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/Sales")
+        .Key("Id")
+    )
+    .RemoteOperations(true)
+    .ShowBorders(true)
+    .Editing(editing => {
+        editing.AllowAdding(true);
+        editing.UseIcons(true);
+        // editing.newRowPosition('viewportTop');
+    })
+    .Columns(columns => {
+        columns.AddFor(m => m.Id);
+        columns.AddFor(m => m.StoreName);
+        columns.AddFor(m => m.ProductCategoryName);
+        columns.AddFor(m => m.ProductName);
+        columns.AddFor(m => m.DateKey);
+        columns.AddFor(m => m.SalesAmount);
+        columns.Add()
+            .Type(GridCommandColumnType.Buttons)
+            .Buttons(b => {
+                b.Add()
+                    .Icon("add")
+                    .OnClick("addButtonClick");
+                b.Add()
+                    .Name("delete");
+            });
+    })
+    .Toolbar(t => {
+        t.Items(items => {
+            items.Add()
+                .Name(DataGridToolbarItem.AddRowButton)
+                .ShowText(ToolbarItemShowTextMode.Always);
+        });
+    })
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option-container">
+        <div class="option">
+            <span>New Row Position</span>
+            @(Html.DevExtreme().SelectBox()
+                .ID("newRowPositionSelectBox")
+                .Value("viewportTop")
+                .DataSource(new[] { "first", "last", "pageBottom", "pageTop", "viewportBottom", "viewportTop" })
+                .OnValueChanged("newRowPositionChanged")
+            )
+        </div>
+        <div class="option">
+            <span>Scrolling mode</span>
+            @(Html.DevExtreme().SelectBox()
+                .ID("scrollingModeSelectBox")
+                .Value("standard")
+                .DataSource(new[] { "infinite", "standard", "virtual" })
+                .OnValueChanged("scrollingModeChanged")
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    function addButtonClick(e) {
+        var dataGrid = e.component;
+        var changes = dataGrid.option("editing.changes");
+        changes.push({
+            type: 'insert',
+            insertAfterKey: e.row.key,
+        });
+        dataGrid.option("editing.changes", changes);
+    }
+
+    function newRowPositionChanged(e) {
+        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+        dataGrid.option("editing.newRowPosition", e.value);
+    }
+
+    function scrollingModeChanged(e) {
+        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+        dataGrid.option("scrolling.mode", e.value);
+    }
+</script>
