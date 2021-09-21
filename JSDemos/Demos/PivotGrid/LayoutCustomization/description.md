@@ -1,7 +1,7 @@
 PivotGrid allows you to customize its layout. This demo illustrates the following properties:
 
 - [rowHeaderLayout](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#rowHeaderLayout)            
-Allows you to specify layout type for the row header items. The *"standard"* layout displays child items on the right from the parent items. Assign "*tree*" to this property to display items more compactly as a hierarchical structure. 
+Allows you to specify the layout type for row header items. The *"standard"* layout displays child items to the right of the parent items. Assign "*tree*" to this property to display items more densely as a hierarchical structure. 
 
 - [showTotalsPrior](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#showTotalsPrior)        
 Specifies whether to show the total rows and columns before or after data. Applies only if **rowHeaderLayout** is *"standard"*.
