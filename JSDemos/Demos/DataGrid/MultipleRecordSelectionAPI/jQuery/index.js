@@ -1,6 +1,7 @@
 $(() => {
   let changedBySelectBox;
   let titleSelectBox;
+  let clearSelectionButton;
 
   const dataGrid = $('#grid-container').dxDataGrid({
     dataSource: employees,
@@ -26,13 +27,14 @@ $(() => {
       dataField: 'HireDate',
       dataType: 'date',
       width: 125,
-    },
-    ],
+    }],
     onSelectionChanged(selectedItems) {
       const data = selectedItems.selectedRowsData;
       if (data.length > 0) {
         $('#selected-items-container').text(
-          $.map(data, (value) => `${value.FirstName} ${value.LastName}`).join(', '),
+          data
+            .map((value) => `${value.FirstName} ${value.LastName}`)
+            .join(', '),
         );
       } else {
         $('#selected-items-container').text('Nobody has been selected');
@@ -42,7 +44,7 @@ $(() => {
       }
 
       changedBySelectBox = false;
-      dataGrid.option('toolbar.items[1].options.disabled', !data.length);
+      clearSelectionButton.option('disabled', !data.length);
     },
     toolbar: {
       items: [
@@ -54,12 +56,17 @@ $(() => {
             placeholder: 'Select title',
             width: '150px',
             onValueChanged(data) {
-              if (!data.value) { return; }
+              if (!data.value) {
+                return;
+              }
+
               changedBySelectBox = true;
               if (data.value === 'All') {
                 dataGrid.selectAll();
               } else {
-                const employeesToSelect = $.map($.grep(dataGrid.option('dataSource'), (item) => item.Prefix === data.value), (item) => item.ID);
+                const employeesToSelect = employees
+                  .filter((employee) => employee.Prefix === data.value)
+                  .map((employee) => employee.ID);
                 dataGrid.selectRows(employeesToSelect);
               }
             },
@@ -74,6 +81,9 @@ $(() => {
           options: {
             text: 'Clear Selection',
             disabled: true,
+            onInitialized(e) {
+              clearSelectionButton = e.component;
+            },
             onClick() {
               dataGrid.clearSelection();
             },
