@@ -11,7 +11,7 @@ The second argument of the **bindChart(chart, integrationOptions)** method allow
 Specifies whether to to group data field values in the chart's legend.
 
 - **dataFieldsDisplayMode**     
-Specifies how to display data fields - on value axes or panes.
+Specifies whether to display data on a single value axis, multiple axes, or on separate panes.
 
 - **inverted**      
 Specifies whether row field values form chart [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/), and column field values form [arguments](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/) (if **true**) or vice versa.
