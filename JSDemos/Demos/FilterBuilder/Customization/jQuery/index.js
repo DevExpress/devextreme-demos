@@ -27,8 +27,6 @@ $(() => {
     }],
   });
 
-  const TAB_SIZE = 4;
-
   function updateTexts(e) {
     $('#filterText').text(formatValue(e.component.option('value')));
     $('#dataSourceText').text(formatValue(e.component.getFilterExpression()));
