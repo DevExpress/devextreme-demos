@@ -9,18 +9,25 @@ If you use only the first argument and omit **integrationOptions**, default sett
 You can use the following **integrationOptions** to specify how PivotGrid fields should be converted to chart series:
 
 - **alternateDataFields**: Boolean       
-Specifies whether to alternate data fields in the resulting chart.
+Specifies whether to alternate data fields in the resulting chart. This demo sets the **alternateDataFields** field to **false**.
 
 - **dataFieldsDisplayMode**: *"singleAxis"* | *"splitAxes"* | *"splitPanes"*     
-Specifies whether to display data on a single value axis, multiple axes, or on separate panes.
+Accepts one of the following values.   
+
+    - *"singleAxis"* - values of all data fields are displayed on a single [value axis](/Documentation/ApiReference/UI_Components/dxChart/Configuration/valueAxis/).  
+    - *"splitAxes"* - each data field gets an individual value axis. Applies only if **putDataFieldsInto** is *"series"*.  
+    - *"splitPanes"* - each data field gets an individual [pane](/Documentation/ApiReference/UI_Components/dxChart/Configuration/panes/). Applies only if **putDataFieldsInto** is *"series"*.    
+
+    Applies only if the PivotGrid contains several [data fields](/Documentation/ApiReference/Data_Layer/PivotGridDataSource/Configuration/fields/). In this demo, the **dataFieldsDisplayMode** property's value is *"splitPanes"*.
 
 - **inverted**: Boolean      
-Specifies whether row field values form chart [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/), and column field values form [arguments](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/) (if **true**) or vice versa.
+If **true**, [row field](/Documentation/Guide/UI_Components/PivotGrid/Visual_Elements/#Headers) values go to the [chart arguments](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/) and [column field](/Documentation/Guide/UI_Components/PivotGrid/Visual_Elements/#Headers) values form [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/). If **false** - vice versa..
 
 - **putDataFieldsInto**: *"series"* | *"args"*     
-Specifies whether data fields go to the chart arguments or series.
+Accepts one of the following values.
 
-This demo sets the **alternateDataFields** field to **false** and **dataFieldsDisplayMode** to *"splitPanes"*.
+    - *"args"* - data fields go to the Chart arguments.  
+    - *"series"* - data fields go to the Chart series.
 
 ## Advanced Customization
 The **integrationOptions** object also can contain the following functions that allow you to process PivotGrid data before visualization and customize the Chart and its series:
