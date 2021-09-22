@@ -278,8 +278,8 @@ module.exports = {
     'func-names': 0, // TODO warn (was warn) >500
     'import/extensions': 0,
     'no-use-before-define': 0,
-    'no-param-reassign': 0, // TODO error (was error) >430
     'prefer-destructuring': 0,
+    'no-param-reassign': ['error', { 'props': false }],
   },
   extends: [
     'eslint:recommended',
@@ -287,6 +287,13 @@ module.exports = {
     'devextreme/spell-check',
   ],
   overrides: [{
+    files: [
+      'JSDemos/Demos/**/Knockout/*.*',
+    ],
+    rules: {
+      'no-param-reassign': 0,
+    },
+  }, {
     files: [
       '**/test-code.js',
       '**/client-script.js',
