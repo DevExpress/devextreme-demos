@@ -1,7 +1,7 @@
 PivotGrid allows you to integrate the [Chart](/Documentation/ApiReference/UI_Components/dxChart/) component to visualize data. The Chart is synchronized with the PivotGrid and visualizes currently displayed total summary values. Expand a row or column header in the PivotGrid below to see how it works.
 
 ## Bind the Chart to the PivotGrid
-To bind these two components, create a Chart and pass its instance as the first agument to the [bindChart(chart, integrationOptions)](/Documentation/ApiReference/UI_Components/dxPivotGrid/Methods/#bindChartchart_integrationOptions) method. You can call this method at any point of your application. In this demo, we call this method in the <a href="https://angular.io/api/core/AfterViewInit" target="_blank">ngAfterViewInit</a> lifecycle hook and use instances to bind the components.
+To bind these two components, create a Chart and pass its instance as the first argument to the [bindChart(chart, integrationOptions)](/Documentation/ApiReference/UI_Components/dxPivotGrid/Methods/#bindChartchart_integrationOptions) method. You can call this method at any point of your application. In this demo, we call this method in the <a href="https://angular.io/api/core/AfterViewInit" target="_blank">ngAfterViewInit</a> lifecycle hook and use instances to bind the components.
 
 If you use only the first argument and omit **integrationOptions**, default settings are used: row field values form chart [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/), and column field values form [arguments](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/). The Chart displays values of each data field on a separate [value axis](/Documentation/ApiReference/UI_Components/dxChart/Configuration/valueAxis/). If you need to customize the resulting chart, specify the **integrationOptions** argument.  
 
@@ -21,7 +21,7 @@ Accepts one of the following values.
     Applies only if the PivotGrid contains several [data fields](/Documentation/ApiReference/Data_Layer/PivotGridDataSource/Configuration/fields/). In this demo, the **dataFieldsDisplayMode** property's value is *"splitPanes"*.
 
 - **inverted**: Boolean      
-If **true**, [row field](/Documentation/Guide/UI_Components/PivotGrid/Visual_Elements/#Headers) values go to the [chart arguments](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/) and [column field](/Documentation/Guide/UI_Components/PivotGrid/Visual_Elements/#Headers) values form [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/). If **false** - vice versa..
+If **true**, [row field](/Documentation/Guide/UI_Components/PivotGrid/Visual_Elements/#Headers) values go to the [chart arguments](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/) and [column field](/Documentation/Guide/UI_Components/PivotGrid/Visual_Elements/#Headers) values form [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/). If **false** - vice versa.
 
 - **putDataFieldsInto**: *"series"* | *"args"*     
 Accepts one of the following values.
