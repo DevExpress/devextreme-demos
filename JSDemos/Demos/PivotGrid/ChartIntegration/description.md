@@ -1,7 +1,9 @@
 PivotGrid allows you to integrate the [Chart](/Documentation/ApiReference/UI_Components/dxChart/) component to visualize data. Do the following to configure components integration:
 
 ## Bind the Chart to the PivotGrid
-To bind these two components, create a Chart and pass its instance as the first agument to the [bindChart(chart, integrationOptions)](/Documentation/ApiReference/UI_Components/dxPivotGrid/Methods/#bindChartchart_integrationOptions) method. In this case, PivotGrid passes all field data to the Chart. Row field values form chart [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/), and column field values form [arguments](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/). The Chart displays values of each data field on a separate [value axis](/Documentation/ApiReference/UI_Components/dxChart/Configuration/valueAxis/). If you need to customize the resulting chart, use  the second argument of the **bindChart(chart, integrationOptions)**.  
+To bind these two components, create a Chart and pass its instance as the first agument to the [bindChart(chart, integrationOptions)](/Documentation/ApiReference/UI_Components/dxPivotGrid/Methods/#bindChartchart_integrationOptions) method. You can call the **bindChart(chart, integrationOptions)** method at any point of your application. In this demo, we call this method in the main function and use [instances](/Documentation/ApiReference/UI_Components/dxChart/Methods/#instance) to bind the components.
+
+If you use only the first argument and omit **integrationOtpionss**, PivotGrid passes all field data to the Chart. Row field values form chart [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/), and column field values form [arguments](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/). The Chart displays values of each data field on a separate [value axis](/Documentation/ApiReference/UI_Components/dxChart/Configuration/valueAxis/). If you need to customize the resulting chart, use  the second argument of the **bindChart(chart, integrationOptions)**.  
 
 ## Convert PivotGrid Fields to Chart Series
 The second argument of the **bindChart(chart, integrationOptions)** method allows you to customize the Chart. Use the fields of the **integrationOptions** object to configure chart's content, behavior, and appearance. The following fields allow you to customize the behavior:
@@ -32,5 +34,3 @@ Allows you to customize the Chart's appearance. Accepts fields listed in the Cha
 Allows you to customize the Chart's series. Accepts [series properties](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/), except [seriesTemplate](Documentation/ApiReference/UI_Components/dxChart/Configuration/seriesTemplate/).
 
 Refer to the **bindChart(chart, integrationOptions)** method's [description](/Documentation/ApiReference/UI_Components/dxPivotGrid/Methods/#bindChartchart_integrationOptions) to see the structure of arguments these functions accept. 
-
-You can call the **bindChart(chart, integrationOptions)** method at any point of your application. In this demo, we call this method in the main function and use [instances](/Documentation/ApiReference/UI_Components/dxChart/Methods/#instance) to bind the components.
