@@ -41,5 +41,13 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         public IActionResult Sorting() {
             return View();
         }
+
+        public IActionResult FilterRow() {
+            return View();
+        }
+
+        public IActionResult HeaderFilter() {
+            return View();
+        }
     }
 }
