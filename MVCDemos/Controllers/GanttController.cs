@@ -41,5 +41,13 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View();
         }
 
+        public ActionResult HeaderFilter() {
+            return View();
+        }
+
+        public ActionResult FilterRow() {
+            return View();
+        }
+
     }
 }
