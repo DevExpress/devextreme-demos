@@ -1127,7 +1127,6 @@
           {
             "Title": "Layout Customization",
             "Name": "LayoutCustomization",
-            "DocUrl": "Guide/UI_Components/PivotGrid/Visual_Elements/#Headers",
             "Widget": "PivotGrid",
             "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/PivotGridDataController.cs",
@@ -3443,7 +3442,7 @@
         "Demos": [
           {
             "Title": "Export To PDF",
-            "Badge": "New",
+            "Badge": "Updated",
             "Name": "ExportToPDF",
             "Widget": "Gantt",
             "DemoType": "Web",
@@ -5291,9 +5290,8 @@
             ]
           },
           {
-            "Title": "Event Handling",
+            "Title": "Handle Value Change",
             "Name": "EventHandling",
-            "DocUrl": "Guide/UI_Components/Lookup/Handle_the_Value_Change_Event/",
             "Widget": "Lookup",
             "MvcAdditionalFiles": [
               "/Models/DataGrid/Employee.cs",
