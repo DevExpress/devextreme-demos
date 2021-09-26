@@ -373,8 +373,7 @@
             "NetCoreDescription": "",
             "MvcAdditionalFiles": [],
             "DemoType": "",
-            "Badge": "New",
-            "Modules": "devextreme-aspnet-data-nojquery"
+            "Badge": "New"
           }
         ]
       },

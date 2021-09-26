@@ -17,17 +17,17 @@
         :mode="scrollingMode"
       />
 
-      <DxColumn data-field="Id"/>
-      <DxColumn data-field="StoreName"/>
-      <DxColumn data-field="ProductCategoryName"/>
-      <DxColumn data-field="ProductName"/>
-      <DxColumn data-field="DateKey"/>
-      <DxColumn data-field="SalesAmount"/>
+      <DxColumn data-field="id"/>
+      <DxColumn data-field="firstName"/>
+      <DxColumn data-field="lastName"/>
+      <DxColumn data-field="gender"/>
+      <DxColumn data-field="birthDate"/>
       <DxColumn type="buttons">
         <DxButton
           icon="add"
           @click="addButtonClick"
         />
+        <DxButton name="delete"/>
       </DxColumn>
 
       <DxToolbar>
@@ -65,7 +65,7 @@ import DxDataGrid, {
   DxEditing, DxScrolling, DxColumn, DxButton, DxToolbar, DxItem,
 } from 'devextreme-vue/data-grid';
 import DxSelectBox from 'devextreme-vue/select-box';
-import * as AspNetData from 'devextreme-aspnet-data-nojquery';
+import { generateData } from './data.js';
 
 export default {
   components: {
@@ -73,10 +73,7 @@ export default {
   },
   data() {
     return {
-      dataSource: AspNetData.createStore({
-        key: 'Id',
-        loadUrl: 'https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/Sales',
-      }),
+      dataSource: generateData(100000),
       newRowPositionOptions: ['first', 'last', 'pageBottom', 'pageTop', 'viewportBottom', 'viewportTop'],
       newRowPosition: 'viewportTop',
       changes: [],
