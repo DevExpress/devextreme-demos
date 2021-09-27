@@ -8,6 +8,9 @@ $(() => {
     editing: {
       allowAdding: true,
       allowDeleting: true,
+      allowUpdating: true,
+      mode: 'cell',
+      confirmDelete: false,
       useIcons: true,
       newRowPosition: 'viewportTop',
     },
@@ -22,6 +25,10 @@ $(() => {
             insertAfterKey: e.row.key,
           });
           dataGrid.option('editing.changes', changes);
+          dataGrid.editCell(e.row.rowIndex + 1, 'id');
+        },
+        visible({ row }) {
+          return !row.isEditing;
         },
       }, 'delete'],
     }],

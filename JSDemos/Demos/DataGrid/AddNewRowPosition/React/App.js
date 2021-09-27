@@ -5,12 +5,15 @@ import DataGrid, {
 import SelectBox from 'devextreme-react/select-box';
 import { generateData } from './data.js';
 
+const dataSource = generateData(100000);
+
 class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.dataGrid = React.createRef();
+
     this.state = {
-      dataSource: generateData(100000),
       newRowPositionOptions: ['first', 'last', 'pageBottom', 'pageTop', 'viewportBottom', 'viewportTop'],
       newRowPosition: 'viewportTop',
       changes: [],
@@ -21,6 +24,7 @@ class App extends React.Component {
     this.addButtonClick = this.addButtonClick.bind(this);
     this.newRowPositionChanged = this.newRowPositionChanged.bind(this);
     this.scrollingModeChanged = this.scrollingModeChanged.bind(this);
+    this.onOptionChanged = this.onOptionChanged.bind(this);
   }
 
   newRowPositionChanged(e) {
@@ -42,6 +46,14 @@ class App extends React.Component {
         insertAfterKey: e.row.key,
       }],
     });
+    this.dataGrid.current.instance.editCell(e.row.rowIndex + 1, 'id');
+  }
+
+  onOptionChanged(e) {
+    if (e.fullName === 'editing.changes') {
+      const changes = e.value;
+      this.setState({ changes });
+    }
   }
 
   render() {
@@ -49,12 +61,17 @@ class App extends React.Component {
       <React.Fragment>
         <DataGrid
           id="gridContainer"
-          dataSource={this.state.dataSource}
+          ref={this.dataGrid}
+          dataSource={dataSource}
           showBorders={true}
+          onOptionChanged={this.onOptionChanged}
         >
           <Editing
             allowAdding={true}
             allowDeleting={true}
+            allowUpdating={true}
+            confirmDelete={false}
+            mode="cell"
             useIcons={true}
             newRowPosition={this.state.newRowPosition}
             changes={this.state.changes}

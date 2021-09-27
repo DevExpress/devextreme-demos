@@ -8,6 +8,8 @@
       <DxEditing
         :allow-adding="true"
         :allow-deleting="true"
+        :allow-updating="true"
+        mode="cell"
         :use-icons="true"
         :new-row-position="newRowPosition"
         :changes="changes"
@@ -87,6 +89,7 @@ export default {
         type: 'insert',
         insertAfterKey: e.row.key,
       });
+      dataGrid.editCell(e.row.rowIndex + 1, 'id');
     },
   },
 };

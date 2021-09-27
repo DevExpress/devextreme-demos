@@ -30,6 +30,7 @@ export class AppComponent {
             type: 'insert',
             insertAfterKey: e.row.key,
         });
+        dataGrid.editCell(e.row.rowIndex + 1, 'id');
     }
 }
 
