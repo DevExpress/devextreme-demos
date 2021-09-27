@@ -1,10 +1,11 @@
 $(() => {
   const newRowPositionOptions = ['first', 'last', 'pageBottom', 'pageTop', 'viewportBottom', 'viewportTop'];
-  const scrollingModeOptions = ['infinite', 'standard', 'virtual'];
+  const scrollingModeOptions = ['standard', 'virtual'];
 
   const dataGrid = $('#gridContainer').dxDataGrid({
     dataSource: generateData(100000),
     showBorders: true,
+    columnAutoWidth: true,
     editing: {
       allowAdding: true,
       allowDeleting: true,
@@ -20,12 +21,17 @@ $(() => {
         icon: 'add',
         onClick(e) {
           const changes = dataGrid.option('editing.changes');
+          const key = new DevExpress.data.Guid().toString();
           changes.push({
+            key,
             type: 'insert',
             insertAfterKey: e.row.key,
           });
           dataGrid.option('editing.changes', changes);
-          dataGrid.editCell(e.row.rowIndex + 1, 'id');
+          dataGrid.option('editing', {
+            editColumnName: 'id',
+            editRowKey: key,
+          });
         },
         visible({ row }) {
           return !row.isEditing;
