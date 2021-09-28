@@ -34,7 +34,7 @@
                         .DataSource(new[] { "All", "Dr.", "Mr.", "Mrs.", "Ms." })
                         .Placeholder("Select title")
                         .OnValueChanged("selectBox_valueChanged")
-                        .onInitialized("selectBox_onInitialized")
+                        .OnInitialized("selectBox_onInitialized")
                 );
 
             items.Add()
@@ -44,7 +44,7 @@
                         .Text("Clear Selection")
                         .Disabled(true)
                         .OnClick("button_click")
-                        .OnClick("button_onInitialized")
+                        .OnInitialized("button_onInitialized")
                 );
         });
     })
@@ -95,11 +95,9 @@
         if(data.value == "All") {
             dataGrid.selectAll();
         } else {
-            var employeesToSelect = dataGrid.getDataSource().items().map(function(item) {
-                if(item.Prefix === data.value) {
-                    return item.ID;
-                }
-            });
+            var employeesToSelect = dataGrid.getDataSource().items()
+                  .filter((employee) => employee.Prefix === data.value)
+                  .map((employee) => employee.ID);
 
             dataGrid.selectRows(employeesToSelect);
         }
