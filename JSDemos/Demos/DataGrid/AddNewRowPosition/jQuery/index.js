@@ -19,7 +19,7 @@ $(() => {
       'OrderID', {
         dataField: 'OrderDate',
         dataType: 'date',
-      }, 'Freight', 'ShipName', 'ShipAddress', 'ShipCity', 'ShipPostalCode', 'ShipCountry', {
+      }, 'Freight', 'ShipName', 'ShipCity', 'ShipPostalCode', 'ShipCountry', {
         type: 'buttons',
         buttons: [{
           icon: 'add',
