@@ -81,7 +81,7 @@ export default {
         store: sales
       })
     };
-  }
+  },
 };
 </script>
 <style scoped>
