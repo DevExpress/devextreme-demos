@@ -82,7 +82,7 @@ export default {
 
       newEmployees.splice(e.fromIndex, 1);
       newEmployees.splice(e.toIndex, 0, e.itemData);
-      
+
       this.employees = newEmployees;
     },
 
