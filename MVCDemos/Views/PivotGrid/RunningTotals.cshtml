@@ -31,6 +31,11 @@
 
             fields.Add()
                 .GroupName("Date")
+                .GroupInterval(PivotGridGroupInterval.Quarter)
+                .Expanded(true);
+
+            fields.Add()
+                .GroupName("Date")
                 .GroupInterval(PivotGridGroupInterval.Month)
                 .Visible(false);
 
@@ -49,18 +54,3 @@
         })
     )
 )
-
-@(Html.DevExtreme().CheckBox()
-    .Value(true)
-    .Text("Allow cross-group running totals accumulation")
-    .OnValueChanged("selectBox_valueChanged")
-)
-
-<script>
-    function selectBox_valueChanged(e) {
-        var pivotGridDataSource = $("#sales").dxPivotGrid("instance").getDataSource();
-
-        pivotGridDataSource.field(6, { allowCrossGroupCalculation: e.value });
-        pivotGridDataSource.load();
-    }
-</script>
