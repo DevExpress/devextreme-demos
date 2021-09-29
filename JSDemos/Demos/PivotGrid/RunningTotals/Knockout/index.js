@@ -57,7 +57,7 @@ window.onload = function () {
         }],
         store: sales,
       },
-    }
+    },
   };
 
   ko.applyBindings(viewModel, document.getElementById('pivotgrid'));
