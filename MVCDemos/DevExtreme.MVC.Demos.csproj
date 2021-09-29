@@ -764,7 +764,6 @@
     <Content Include="Content\DemosStyles\DataGrid\ColumnTemplate.css" />
     <Content Include="Content\DemosStyles\DataGrid\CustomizeCommandColumns.css" />
     <Content Include="Content\DemosStyles\DataGrid\CustomSummaries.css" />
-    <Content Include="Content\DemosStyles\DataGrid\ExcelCellCustomization.css" />
     <Content Include="Content\DemosStyles\DataGrid\FilterPanel.css" />
     <Content Include="Content\DemosStyles\DataGrid\FocusedRow.css" />
     <Content Include="Content\DemosStyles\DataGrid\FormEditing.css" />
@@ -1793,7 +1792,6 @@
     <Content Include="Views\DataGrid\ColumnsBasedOnADataSource.cshtml" />
     <Content Include="Views\DataGrid\MasterDetailView.cshtml" />
     <Content Include="Views\DataGrid\ToolbarCustomization.cshtml" />
-    <Content Include="Views\DataGrid\ExportToExcel.cshtml" />
     <Content Include="Views\DataGrid\GridAdaptabilityOverview.cshtml" />
     <Content Include="Views\DataGrid\GridColumnsHidingPriority.cshtml" />
     <Content Include="Views\Gauges\ScaleMinorTicks.cshtml" />
@@ -2056,7 +2054,6 @@
     <Content Include="Views\Charts\ZoomingOnAreaSelection.cshtml" />
     <Content Include="Content\SampleData\Birthlife.json" />
     <Content Include="Views\Charts\LoadDataOnDemand.cshtml" />
-    <Content Include="Views\DataGrid\ExcelCellCustomization.cshtml" />
     <Content Include="Views\Drawer\LeftOrRightPosition.cshtml" />
     <Content Include="Views\Drawer\TopOrBottomPosition.cshtml" />
     <Content Include="Views\DataGrid\RecalculateWhileEditing.cshtml" />
