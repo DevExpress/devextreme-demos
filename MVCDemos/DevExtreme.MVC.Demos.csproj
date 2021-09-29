@@ -896,6 +896,7 @@
     <Content Include="Content\DemosStyles\Scheduler\Adaptability.css" />
     <Content Include="Content\DemosStyles\Scheduler\ContextMenuIntegration.css" />
     <Content Include="Content\DemosStyles\Scheduler\CurrentTimeIndicator.css" />
+    <Content Include="Content\DemosStyles\Scheduler\CustomDragAndDrop.css" />
     <Content Include="Content\DemosStyles\Scheduler\AdaptiveAppointments.css" />
     <Content Include="Content\DemosStyles\Scheduler\CellTemplates.css" />
     <Content Include="Content\DemosStyles\Scheduler\VirtualScrolling.css" />
