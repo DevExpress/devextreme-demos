@@ -28,7 +28,7 @@ export default function App() {
     <VectorMap
       palette="Violet"
       bounds={mapBounds}>
-      <Size height={500} />
+      <Size height={700} />
       <Layer
         name="areas"
         dataSource={mapsData.world}
