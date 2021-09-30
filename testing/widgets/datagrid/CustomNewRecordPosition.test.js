@@ -2,15 +2,15 @@ import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
 import { Selector } from 'testcafe';
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
-fixture('DataGrid.AddNewRowPosition')
+fixture('DataGrid.CustomNewRecordPosition')
   .page('http://localhost:8080/')
   .beforeEach(async (t) => {
     await t
       .resizeWindow(900, 600);
   });
 
-runManualTest(test, 'DataGrid', 'AddNewRowPosition', 'jQuery', (test) => {
-  test('addNewRowPosition', async (t) => {
+runManualTest(test, 'DataGrid', 'CustomNewRecordPosition', 'jQuery', (test) => {
+  test('newRowPosition', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
     const newRowPositionOptions = ['first', 'last', 'pageBottom', 'pageTop', 'viewportBottom', 'viewportTop'];
 
@@ -26,7 +26,7 @@ runManualTest(test, 'DataGrid', 'AddNewRowPosition', 'jQuery', (test) => {
       await setNewRowPosition(newRowPosition);
       await t.click('.dx-datagrid-addrow-button');
 
-      await takeScreenshot(`datagrid_addNewRowPosition_${newRowPosition}_added.png`);
+      await takeScreenshot(`datagrid_CustomNewRecordPosition_${newRowPosition}_added.png`);
     }
 
     await t
@@ -35,14 +35,14 @@ runManualTest(test, 'DataGrid', 'AddNewRowPosition', 'jQuery', (test) => {
   });
 });
 
-runManualTest(test, 'DataGrid', 'AddNewRowPosition', 'jQuery', (test) => {
+runManualTest(test, 'DataGrid', 'CustomNewRecordPosition', 'jQuery', (test) => {
   test('insertAfterKey', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t
       .click('.dx-command-edit .dx-link.dx-icon-add');
 
-    await takeScreenshot('datagrid_addNewRowPosition_insertAfterKey_clicked.png');
+    await takeScreenshot('datagrid_CustomNewRecordPosition_insertAfterKey_clicked.png');
 
     await t
       .expect(compareResults.isValid())

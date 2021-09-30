@@ -365,8 +365,8 @@
             ]
           },
           {
-            "Title": "Add New Row Position",
-            "Name": "AddNewRowPosition",
+            "Title": "Custom New Record Position",
+            "Name": "CustomNewRecordPosition",
             "DocUrl": "",
             "Widget": "DataGrid",
             "MvcDescription": "",

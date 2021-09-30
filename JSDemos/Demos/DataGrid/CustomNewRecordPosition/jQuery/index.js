@@ -33,7 +33,7 @@ $(() => {
             });
             dataGrid.option('editing.changes', changes);
             dataGrid.option('editing', {
-              editColumnName: 'OrderID',
+              editColumnName: 'OrderDate',
               editRowKey: key,
             });
           },
