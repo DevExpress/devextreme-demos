@@ -27,7 +27,6 @@ class App extends React.Component {
     this.countries = service.getCountries();
     this.cityPattern = '^[^0-9]+$';
     this.namePattern = /^[^0-9]+$/;
-    this.phonePattern = /^\+\s*1\s*\(\s*[02-9]\d{2}\)\s*\d{3}\s*-\s*\d{4}$/;
     this.phoneRules = {
       X: /[02-9]/,
     };
@@ -149,11 +148,7 @@ class App extends React.Component {
               <TextBox
                 mask="+1 (X00) 000-0000"
                 maskRules={this.phoneRules}
-                maskInvalidMessage="The phone must have a correct USA phone format"
-                useMaskedValue={true}>
-                <Validator>
-                  <PatternRule message="The phone must have a correct USA phone format" pattern={this.phonePattern} />
-                </Validator>
+                maskInvalidMessage="The phone must have a correct USA phone format">
               </TextBox>
             </div>
           </div>
