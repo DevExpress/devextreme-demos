@@ -10,7 +10,6 @@ $(() => {
       allowAdding: true,
       allowDeleting: true,
       allowUpdating: true,
-      mode: 'cell',
       confirmDelete: false,
       useIcons: true,
       newRowPosition: 'viewportTop',
@@ -44,7 +43,7 @@ $(() => {
           visible({ row }) {
             return !row.isEditing;
           },
-        }, 'delete'],
+        }, 'delete', 'cancel'],
       }],
     toolbar: {
       items: [{

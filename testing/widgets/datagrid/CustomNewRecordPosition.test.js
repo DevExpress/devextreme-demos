@@ -27,6 +27,8 @@ runManualTest(test, 'DataGrid', 'CustomNewRecordPosition', 'jQuery', (test) => {
       await t.click('.dx-datagrid-addrow-button');
 
       await takeScreenshot(`datagrid_CustomNewRecordPosition_${newRowPosition}_added.png`);
+
+      await t.click('.dx-command-edit .dx-link-cancel');
     }
 
     await t
