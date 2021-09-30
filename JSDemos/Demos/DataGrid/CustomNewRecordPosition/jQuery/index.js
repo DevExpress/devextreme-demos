@@ -16,9 +16,13 @@ $(() => {
       newRowPosition: 'viewportTop',
     },
     columns: [
-      'OrderID', {
+      {
+        dataField: 'OrderID',
+        allowEditing: false,
+      }, {
         dataField: 'OrderDate',
         dataType: 'date',
+        validationRules: [{ type: 'required' }],
       }, 'ShipName', 'ShipCity', 'ShipPostalCode', 'ShipCountry', {
         type: 'buttons',
         buttons: [{
