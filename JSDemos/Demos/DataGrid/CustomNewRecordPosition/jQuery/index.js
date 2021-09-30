@@ -43,7 +43,7 @@ $(() => {
           visible({ row }) {
             return !row.isEditing;
           },
-        }, 'delete', 'cancel'],
+        }, 'delete', 'cancel', 'save'],
       }],
     toolbar: {
       items: [{
