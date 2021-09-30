@@ -36,7 +36,7 @@ function customizeLegendText(arg) {
 function App() {
   return (
     <Map bounds={mapBounds}>
-      <Size height={700} />
+      <Size height={500} />
       <Layer
         name="areas"
         dataSource={mapsData.world}
