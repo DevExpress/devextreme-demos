@@ -7,6 +7,7 @@ $(() => {
     showBorders: true,
     columnAutoWidth: true,
     editing: {
+      mode: 'row',
       allowAdding: true,
       allowDeleting: true,
       allowUpdating: true,
@@ -35,10 +36,7 @@ $(() => {
               insertAfterKey: e.row.key,
             });
             dataGrid.option('editing.changes', changes);
-            dataGrid.option('editing', {
-              editColumnName: 'OrderDate',
-              editRowKey: key,
-            });
+            dataGrid.option('editing.editRowKey', key);
           },
           visible({ row }) {
             return !row.isEditing;
