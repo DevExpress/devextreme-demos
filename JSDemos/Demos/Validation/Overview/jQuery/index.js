@@ -129,6 +129,12 @@ $(() => {
       X: /[02-9]/,
     },
     maskInvalidMessage: 'The phone must have a correct USA phone format',
+  }).dxValidator({
+    validationRules: [{
+        type: "pattern",
+        pattern: /^[02-9]\d{9}$/,
+        message: "The phone must have a correct USA phone format"
+    }]
   });
 
   $('#check').dxCheckBox({

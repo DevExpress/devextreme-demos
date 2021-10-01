@@ -133,6 +133,12 @@
             mask="+1 (X00) 000-0000"
             mask-invalid-message="The phone must have a correct USA phone format"
           >
+            <DxValidator>
+              <DxPatternRule
+                :pattern="phonePattern"
+                message="The phone must have a correct USA phone format"
+              />
+            </DxValidator>
           </DxTextBox>
         </div>
       </div>
@@ -219,6 +225,7 @@ export default {
       },
       password: '',
       namePattern: /^[^0-9]+$/,
+      phonePattern: /^[02-9]\d{9}$/,
       maxDate: new Date(currentDate.setFullYear(currentDate.getFullYear() - 21)),
     };
   },

@@ -37,6 +37,7 @@ export class AppComponent {
     maxDate: Date = new Date();
     cityPattern = "^[^0-9]+$";
     namePattern: any = /^[^0-9]+$/;
+    phonePattern: any = /^[02-9]\d{9}$/;
     countries: string[];
     phoneRules: any = {
         X: /[02-9]/
