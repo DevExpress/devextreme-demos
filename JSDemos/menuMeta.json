@@ -372,7 +372,7 @@
             "MvcDescription": "",
             "NetCoreDescription": "",
             "MvcAdditionalFiles": [],
-            "DemoType": "",
+            "DemoType": "Web",
             "Badge": "New"
           }
         ]
@@ -603,6 +603,7 @@
             "Name": "CommandColumnCustomization",
             "Widget": "DataGrid",
             "Equivalents": "button column",
+            "Badge": "Updated",
             "MvcAdditionalFiles": [
               "/Scripts/data/employeeData.js"
             ],
