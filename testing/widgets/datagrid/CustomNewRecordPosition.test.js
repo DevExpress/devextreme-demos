@@ -12,7 +12,7 @@ fixture('DataGrid.CustomNewRecordPosition')
 runManualTest(test, 'DataGrid', 'CustomNewRecordPosition', 'jQuery', (test) => {
   test('newRowPosition', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
-    const newRowPositionOptions = ['first', 'last', 'pageBottom', 'pageTop', 'viewportBottom', 'viewportTop'];
+    const newRowPositionOptions = ['first', /* 'last', */ 'pageBottom', 'pageTop', 'viewportBottom', 'viewportTop'];
 
     const setNewRowPosition = async (newRowPosition) => {
       const index = newRowPositionOptions.indexOf(newRowPosition);
