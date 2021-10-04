@@ -20,7 +20,7 @@ const addDemo = (menuMetaData, categoryName, groupName, demoName, widgetName) =>
     MvcDescription: '',
     NetCoreDescription: '',
     MvcAdditionalFiles: [],
-    DemoType: '',
+    DemoType: 'Web',
     Badge: 'New',
   };
   const categoryIndex = menuMetaData.findIndex((x) => x.Name === categoryName);
