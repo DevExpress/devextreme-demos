@@ -1,5 +1,5 @@
 import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
-import { Selector } from 'testcafe';
+import { ClientFunction, Selector } from 'testcafe';
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
 fixture('DataGrid.CustomNewRecordPosition')
@@ -25,6 +25,12 @@ runManualTest(test, 'DataGrid', 'CustomNewRecordPosition', 'jQuery', (test) => {
 
       await setNewRowPosition(newRowPosition);
       await t.click('.dx-datagrid-addrow-button');
+
+      if (newRowPosition === 'last') {
+        await ClientFunction(() => {
+          $('#gridContainer').dxDataGrid('instance').getScrollable().scrollBy(1);
+        });
+      }
 
       await takeScreenshot(`datagrid_CustomNewRecordPosition_${newRowPosition}_added.png`);
 
