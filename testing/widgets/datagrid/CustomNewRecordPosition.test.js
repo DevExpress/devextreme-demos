@@ -26,12 +26,6 @@ runManualTest(test, 'DataGrid', 'CustomNewRecordPosition', 'jQuery', (test) => {
       await setNewRowPosition(newRowPosition);
       await t.click('.dx-datagrid-addrow-button');
 
-      if (newRowPosition === 'last') {
-        await ClientFunction(() => {
-          $('#gridContainer').dxDataGrid('instance').getScrollable().scrollBy(1);
-        });
-      }
-
       await takeScreenshot(`datagrid_CustomNewRecordPosition_${newRowPosition}_added.png`);
 
       await t.click('.dx-command-edit .dx-link-cancel');
