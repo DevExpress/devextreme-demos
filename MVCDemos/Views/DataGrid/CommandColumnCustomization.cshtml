@@ -21,6 +21,7 @@
                     .Hint("Clone")
                     .Icon("repeat")
                     .Visible(new JS("isCloneIconVisible"))
+                    .Disabled(new JS("isCloneIconDisabled"))
                     .OnClick("onCloneIconClick");
             });
 
@@ -67,7 +68,11 @@
     }
 
     function isCloneIconVisible(e) {
-        return !e.row.isEditing && !isChief(e.row.data.Position);
+        return !e.row.isEditing;
+    }
+
+    function isCloneIconDisabled(e) {
+        return isChief(e.row.data.Position);
     }
 
     function onCloneIconClick(e) {
