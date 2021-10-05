@@ -28,20 +28,19 @@ $(() => {
         buttons: [{
           icon: 'add',
           onClick(e) {
-            const changes = dataGrid.option('editing.changes');
             const key = new DevExpress.data.Guid().toString();
-            changes.push({
+            dataGrid.option('editing.changes', []);
+            dataGrid.option('editing.changes', [{
               key,
               type: 'insert',
               insertAfterKey: e.row.key,
-            });
-            dataGrid.option('editing.changes', changes);
+            }]);
             dataGrid.option('editing.editRowKey', key);
           },
           visible({ row }) {
             return !row.isEditing;
           },
-        }, 'delete', 'cancel', 'save'],
+        }, 'delete', 'save', 'cancel'],
       }],
     toolbar: {
       items: [{
