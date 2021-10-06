@@ -288,6 +288,17 @@ module.exports = {
   ],
   overrides: [{
     files: [
+      'JSDemos/configs/**/*.js',
+    ],
+    globals: {
+      System: true,
+    },
+    rules: {
+      'quote-props': ['error', 'consistent'],
+      'no-dupe-keys': 0,
+    },
+  }, {
+    files: [
       'JSDemos/Demos/**/Knockout/*.*',
     ],
     rules: {
