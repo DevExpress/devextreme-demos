@@ -1,5 +1,5 @@
 $(() => {
-  const newRowPositionOptions = ['first', 'last', 'pageBottom', 'pageTop', 'viewportBottom', 'viewportTop'];
+  const newRowPositionOptions = ['first', 'last', 'pageTop', 'pageBottom', 'viewportTop', 'viewportBottom'];
   const scrollingModeOptions = ['standard', 'virtual'];
 
   const dataGrid = $('#gridContainer').dxDataGrid({
@@ -15,6 +15,7 @@ $(() => {
       useIcons: true,
       newRowPosition: 'viewportTop',
     },
+    remoteOperations: true,
     columns: [
       {
         dataField: 'OrderID',
