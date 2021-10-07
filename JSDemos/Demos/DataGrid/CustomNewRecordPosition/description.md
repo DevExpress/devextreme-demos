@@ -18,7 +18,7 @@ Navigate to the beginning of the dataset and insert a new row at the top.
 - *"last"*            
 Navigate to the end of the dataset and insert a new row at the bottom. Does not apply in infinite scrolling mode.
 
-In this demo, you can use a drop-down menu to change the **newRowPosition** property value at runtime. This demo also allows you to switch between the standard and virtual scrolling modes and see how the **newRowPosition** property works with them.
+In this demo, you can use a drop-down menu to change the **newRowPosition** property value at runtime. To see how your choice affects the new record position, click the "Add a row" button in the toolbar. This demo also allows you to switch between the standard and virtual scrolling modes and see how the **newRowPosition** property works with them.
 
 If you want to position new records with more flexibility, you can specify a key before/after which a new record should be inserted. To do this, set the [insertBeforeKey](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/editing/changes/#insertBeforeKey) or [insertAfterKey](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/editing/changes/#insertAfterKey) property in the array of pending [changes](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/editing/changes/). In this demo, each row contains an "Add row" button that inserts a new row after the current row. The **insertAfterKey** property is used to implement this functionality. Review the button's **onClick** event handler for more information.
 
