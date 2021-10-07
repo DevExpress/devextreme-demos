@@ -4160,7 +4160,8 @@
             "Widget": "CheckBox",
             "Badge": "Updated",
             "MvcAdditionalFiles": [
-              "/Controllers/CheckBoxController.cs"
+              "/Controllers/CheckBoxController.cs",
+              "/Views/CheckBox/Overview.cshtml"
             ]
           }
         ]
