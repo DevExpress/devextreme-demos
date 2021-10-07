@@ -37,14 +37,14 @@ export class AppComponent {
       icon: 'email',
       text: 'Send',
       onClick(e) {
-            	const message = `Email is sent to ${that.currentEmployee.FirstName} ${that.currentEmployee.LastName}`;
-            	notify({
-              	    message,
-              	    position: {
+        const message = `Email is sent to ${that.currentEmployee.FirstName} ${that.currentEmployee.LastName}`;
+        notify({
+          message,
+          position: {
             my: 'center top',
             at: 'center top',
           },
-            	}, 'success', 3000);
+        }, 'success', 3000);
       },
     };
     this.closeButtonOptions = {
