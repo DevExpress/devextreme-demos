@@ -287,6 +287,16 @@ module.exports = {
     'devextreme/spell-check',
   ],
   overrides: [{
+    'files': [
+      '*.ts',
+    ],
+    extends: ['devextreme/typescript'],
+    parserOptions: {
+      project: './tsconfig.eslint.json',
+      'createDefaultProgram': true,
+      'ecmaVersion': 6,
+    },
+  }, {
     files: [
       'JSDemos/configs/**/*.js',
     ],
