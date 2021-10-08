@@ -74,31 +74,32 @@ export default {
 </script>
 <style scoped>
 #gridContainer {
-    height: 450px;
+  height: 450px;
 }
 
 .dx-row img {
-    height: 100px;
+  height: 100px;
 }
 
 #gridContainer tr.main-row td:not(:first-child) {
-    height: 21px;
+  height: 21px;
 }
 
 #gridContainer tr.notes-row {
-    white-space: normal;
-    vertical-align: top;
+  white-space: normal;
+  vertical-align: top;
 }
 
 #gridContainer tr.notes-row td {
-    height: 70px;
-    color: #999;
+  height: 70px;
+  color: #999;
 }
 
 .dark #gridContainer tr.notes-row td {
-    color: #777;
+  color: #777;
 }
 
+<<<<<<< HEAD
 #gridContainer tbody.dx-state-hover {
     background-color: #EBEBEB;
 }
@@ -117,5 +118,25 @@ export default {
 
 #gridContainer tbody.dx-state-hover tr.notes-row td {
     color: #888;
+=======
+#gridContainer tbody.employee:hover {
+  background-color: #ebebeb;
+}
+
+.dark #gridContainer tbody.employee:hover {
+  background-color: #484848;
+}
+
+#gridContainer tbody.employee:hover tr.main-row td {
+  color: #000;
+}
+
+.dark #gridContainer tbody.employee:hover tr.main-row td {
+  color: #ccc;
+}
+
+#gridContainer tbody.employee:hover tr.notes-row td {
+  color: #888;
+>>>>>>> 67b7001abd52f2b659d8ecc27b453389ee3265bf
 }
 </style>
