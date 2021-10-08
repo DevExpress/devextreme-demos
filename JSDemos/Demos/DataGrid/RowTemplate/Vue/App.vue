@@ -74,48 +74,48 @@ export default {
 </script>
 <style scoped>
 #gridContainer {
-    height: 450px;
+  height: 450px;
 }
 
 .dx-row img {
-    height: 100px;
+  height: 100px;
 }
 
 #gridContainer tr.main-row td:not(:first-child) {
-    height: 21px;
+  height: 21px;
 }
 
 #gridContainer tr.notes-row {
-    white-space: normal;
-    vertical-align: top;
+  white-space: normal;
+  vertical-align: top;
 }
 
 #gridContainer tr.notes-row td {
-    height: 70px;
-    color: #999;
+  height: 70px;
+  color: #999;
 }
 
 .dark #gridContainer tr.notes-row td {
-    color: #777;
+  color: #777;
 }
 
 #gridContainer tbody.dx-state-hover {
-    background-color: #EBEBEB;
+  background-color: #ebebeb;
 }
 
 .dark #gridContainer tbody.dx-state-hover {
-    background-color: #484848;
+  background-color: #484848;
 }
 
 #gridContainer tbody.dx-state-hover tr.main-row td {
-    color: #000;
+  color: #000;
 }
 
 .dark #gridContainer tbody.dx-state-hover tr.main-row td {
-    color: #CCC;
+  color: #ccc;
 }
 
 #gridContainer tbody.dx-state-hover tr.notes-row td {
-    color: #888;
+  color: #888;
 }
 </style>
