@@ -53,6 +53,29 @@ jobs:
       working-directory: ./devextreme-repo/artifacts/npm/devextreme
       run: npm pack
 
+    #Build devextreme-angular
+    - name: Clone devextreme-angular repo
+      run: git clone -b master https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
+
+    - name: Copy devextreme package
+      run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-angular-repo/packages/devextreme-angular
+   
+    - name: Install devextreme package
+      working-directory: ./devextreme-angular-repo/packages/devextreme-angular
+      run: npm install --save-dev $(ls *.tgz)
+
+    - name: Install packages for devextreme-angular
+      working-directory: ./devextreme-angular-repo
+      run: npm install --no-audit --no-fund
+      
+    - name: Update angular metadata
+      working-directory: ./devextreme-repo
+      run: npm run internal-tool -- update-meta --output-path ../devextreme-angular-repo/packages/devextreme-angular/metadata/NGMetaData.json --version 21_2 --js-scripts ./js
+
+    - name: Build and Pack
+      working-directory: ./devextreme-angular-repo
+      run: npm run pack
+
     #Build Demos
     - name: Demos - Restore npm cache
       uses: actions/cache@v2
@@ -67,6 +90,9 @@ jobs:
 
     - name: Demos - Install devextreme package
       run: npm install $(find ./devextreme-repo/artifacts/npm/devextreme/ -maxdepth 1 -name "devextreme-*.tgz")
+
+    - name: Demos - Install devextreme-angular package
+      run: npm install $(find ./devextreme-angular-repo/packages/devextreme-angular/npm/dist/ -maxdepth 1 -name "devextreme-*.tgz")
 
     - name: Demos - Prepare bundles
       run: npm run prepare-bundles
