@@ -16,7 +16,7 @@
     <dxi-column dataField="HireDate" dataType="date"></dxi-column>
 
     <ng-container *dxTemplate="let employee of 'dataRowTemplateName'" >
-        <tr class="main-row" *dxTemplate="let employee of 'rowTemplateName'" >
+        <tr class="main-row" >
             <td rowspan="2"><img [src]="employee.data.Picture"/></td>
             <td>{{employee.data.Prefix}}</td>
             <td>{{employee.data.FirstName}}</td>
