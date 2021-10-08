@@ -81,7 +81,7 @@ jobs:
       run: git clone -b master https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
 
     - name: Copy devextreme package
-      run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-react-repo/packages/devextreme-vue
+      run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-vue-repo/packages/devextreme-vue
    
     - name: Install devextreme package
       working-directory: ./devextreme-vue-repo/packages/devextreme-vue
