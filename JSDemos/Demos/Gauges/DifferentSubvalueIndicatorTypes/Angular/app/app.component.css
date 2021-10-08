@@ -4,22 +4,22 @@
 }
 
 ::ng-deep #triangleMarker,
-#rectangleNeedle,
-#triangleNeedle,
-#textCloud,
-#twoColorNeedle {
+::ng-deep #rectangleNeedle,
+::ng-deep #triangleNeedle,
+::ng-deep #textCloud,
+::ng-deep #twoColorNeedle {
   display: inline-block;
 }
 
 ::ng-deep #triangleMarker,
-#rectangleNeedle,
-#textCloud {
+::ng-deep #rectangleNeedle,
+::ng-deep #textCloud {
   margin-right: 4px;
 }
 
 ::ng-deep #triangleMarker,
-#rectangleNeedle,
-#triangleNeedle {
+::ng-deep #rectangleNeedle,
+::ng-deep #triangleNeedle {
   width: 33%;
 }
 
