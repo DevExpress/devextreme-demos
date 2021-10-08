@@ -12,6 +12,7 @@
 #textCloud,
 #twoColorNeedle {
   margin: 0 !important;
+  width: initial !important;
 }
 
 #app {
