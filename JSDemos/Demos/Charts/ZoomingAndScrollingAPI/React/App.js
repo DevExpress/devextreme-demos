@@ -16,8 +16,7 @@ import RangeSelector, {
   Scale,
   Behavior
 
-}
-  from 'devextreme-react/range-selector';
+} from 'devextreme-react/range-selector';
 
 class App extends React.Component {
 
