@@ -57,6 +57,10 @@ jobs:
     - name: Clone devextreme-react repo
       run: git clone -b master https://github.com/devexpress/devextreme-react ./devextreme-react-repo
 
+    - name: Update react metadata
+      working-directory: ./devextreme-repo
+      run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-react-repo/packages/devextreme-react/metadata/integration-data.json --version 21_2 --js-scripts ./js
+
     - name: Copy devextreme package
       run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-react-repo/packages/devextreme-react
    
@@ -68,13 +72,12 @@ jobs:
       working-directory: ./devextreme-react-repo
       run: npm install --no-audit --no-fund
       
-    - name: Update react metadata
-      working-directory: ./devextreme-repo
-      run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-angular-repo/packages/devextreme-react/metadata/integration-data.json --version 21_2 --js-scripts ./js
-
     - name: Build and Pack
       working-directory: ./devextreme-react-repo
       run: npm run pack
+
+    # - name: Copy devextreme-react package
+    #   run: cp ./devextreme-react-repo/packages/devextreme-react/npm/*.tgz .
 
     #Build devextreme-vue
     - name: Clone devextreme-vue repo
@@ -93,7 +96,7 @@ jobs:
       
     - name: Update react metadata
       working-directory: ./devextreme-repo
-      run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-angular-repo/packages/devextreme-vue/metadata/integration-data.json --version 21_2 --js-scripts ./js
+      run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-react-repo/packages/devextreme-vue/metadata/integration-data.json --version 21_2 --js-scripts ./js
 
     - name: Build and Pack
       working-directory: ./devextreme-vue-repo
