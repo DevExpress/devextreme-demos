@@ -1,0 +1,11 @@
+*.js
+*.ts
+*.vue
+*.css
+*.md
+*.json
+MVCDemos
+NetCoreDemos
+utils
+**/Knockout/**
+.github
