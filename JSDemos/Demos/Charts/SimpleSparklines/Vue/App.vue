@@ -51,8 +51,6 @@ export default {
   width: 200px;
   padding: 25px 10px 5px 10px;
   border: 1px solid #c2c2c2;
-  padding: 25px 15px 20px 15px;
-  border: 1px solid #c2c2c2;
 }
 
 .long-title h3 {
