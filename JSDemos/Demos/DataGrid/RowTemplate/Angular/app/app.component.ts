@@ -20,6 +20,10 @@ export class AppComponent {
     constructor(service: Service) {
         this.employees = service.getEmployees();
     }
+
+    onRowPrepared(e) {
+        e.rowElemenent.addClass('employee');
+    }
 }
 
 @NgModule({

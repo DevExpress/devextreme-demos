@@ -3,7 +3,9 @@
     keyExpr="ID"
     [columnAutoWidth]="true"
     [showBorders]="true"
-    rowTemplate="rowTemplateName">
+    [rowAlternationEnabled]="true"
+    [hoverStateEnabled]="true"
+    dataRowTemplate="dataRowTemplateName">
 
     <dxi-column caption="Photo" [width]="100" [allowFiltering]="false" [allowSorting]="false"></dxi-column>
     <dxi-column dataField="Prefix" [width]="70" caption="Title"></dxi-column>
@@ -13,8 +15,8 @@
     <dxi-column dataField="BirthDate" dataType="date"></dxi-column>
     <dxi-column dataField="HireDate" dataType="date"></dxi-column>
 
-    <tbody class="employee dx-row" [ngClass]="{'dx-row-alt': employee.rowIndex % 2}" *dxTemplate="let employee of 'rowTemplateName'" >
-        <tr class="main-row">
+    <ng-container *dxTemplate="let employee of 'dataRowTemplateName'" >
+        <tr class="main-row" *dxTemplate="let employee of 'rowTemplateName'" >
             <td rowspan="2"><img [src]="employee.data.Picture"/></td>
             <td>{{employee.data.Prefix}}</td>
             <td>{{employee.data.FirstName}}</td>
@@ -26,5 +28,5 @@
         <tr class="notes-row">
             <td colspan="6"><div>{{employee.data.Notes}}</div></td>
         </tr>
-    </tbody>
+    </ng-container>
 </dx-data-grid>
