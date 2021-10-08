@@ -23,7 +23,6 @@
 ::ng-deep .dark #gridContainer tr.notes-row td {
   color: #777;
 }
-<<<<<<< HEAD
 ::ng-deep #gridContainer tbody.dx-state-hover {
     background-color: #EBEBEB;
 }
@@ -38,25 +37,4 @@
 }
 ::ng-deep #gridContainer tbody.dx-state-hover tr.notes-row td {
     color: #888;
-=======
-
-::ng-deep #gridContainer tbody.employee:hover {
-  background-color: #ebebeb;
-}
-
-::ng-deep .dark #gridContainer tbody.employee:hover {
-  background-color: #484848;
-}
-
-::ng-deep #gridContainer tbody.employee:hover tr.main-row td {
-  color: #000;
-}
-
-::ng-deep .dark #gridContainer tbody.employee:hover tr.main-row td {
-  color: #ccc;
-}
-
-::ng-deep #gridContainer tbody.employee:hover tr.notes-row td {
-  color: #888;
->>>>>>> 67b7001abd52f2b659d8ecc27b453389ee3265bf
 }

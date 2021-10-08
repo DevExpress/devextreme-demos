@@ -17,19 +17,9 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   employees: Employee[];
 
-<<<<<<< HEAD
-    constructor(service: Service) {
-        this.employees = service.getEmployees();
-    }
-
-    onRowPrepared(e) {
-        e.rowElemenent.addClass('employee');
-    }
-=======
   constructor(service: Service) {
     this.employees = service.getEmployees();
   }
->>>>>>> 67b7001abd52f2b659d8ecc27b453389ee3265bf
 }
 
 @NgModule({

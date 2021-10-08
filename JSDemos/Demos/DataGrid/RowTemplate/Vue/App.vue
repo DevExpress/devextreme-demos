@@ -99,7 +99,6 @@ export default {
   color: #777;
 }
 
-<<<<<<< HEAD
 #gridContainer tbody.dx-state-hover {
     background-color: #EBEBEB;
 }
@@ -118,25 +117,5 @@ export default {
 
 #gridContainer tbody.dx-state-hover tr.notes-row td {
     color: #888;
-=======
-#gridContainer tbody.employee:hover {
-  background-color: #ebebeb;
-}
-
-.dark #gridContainer tbody.employee:hover {
-  background-color: #484848;
-}
-
-#gridContainer tbody.employee:hover tr.main-row td {
-  color: #000;
-}
-
-.dark #gridContainer tbody.employee:hover tr.main-row td {
-  color: #ccc;
-}
-
-#gridContainer tbody.employee:hover tr.notes-row td {
-  color: #888;
->>>>>>> 67b7001abd52f2b659d8ecc27b453389ee3265bf
 }
 </style>
