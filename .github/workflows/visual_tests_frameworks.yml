@@ -77,22 +77,22 @@ jobs:
         key: devextreme-react-package-${{ steps.devextreme-react-ref.outputs.head }}-${{ hashFiles('devextreme-react-repo/packages/devextreme-react/metadata/integration-data.json') }}
 
     - name: DevExtreme React - Install devextreme package
-      if: steps.devextreme-react-cache.outputs.cache-hit !== 'true'
+      if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-react-repo/packages/devextreme-react
       run: npm install --save-dev $(ls *.tgz)
 
     - name: DevExtreme React - Install packages for devextreme-react
-      if: steps.devextreme-react-cache.outputs.cache-hit !== 'true'
+      if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-react-repo
       run: npm install --no-audit --no-fund
       
     - name: DevExtreme React - Build and Pack
-      if: steps.devextreme-react-cache.outputs.cache-hit !== 'true'
+      if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-react-repo
       run: npm run pack
 
     - name: DevExtreme React - Copy devextreme-react package
-      if: steps.devextreme-react-cache.outputs.cache-hit !== 'true'
+      if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
       run: cp ./devextreme-react-repo/packages/devextreme-react/npm/*.tgz .
 
     #Build devextreme-vue
@@ -119,22 +119,22 @@ jobs:
         key: devextreme-vue-package-${{ steps.devextreme-vue-ref.outputs.head }}-${{ hashFiles('devextreme-vue-repo/packages/devextreme-vue/metadata/integration-data.json') }}
 
     - name: DevExtreme Vue - Install devextreme package
-      if: steps.devextreme-vue-cache.outputs.cache-hit !== 'true'
+      if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-vue-repo/packages/devextreme-vue
       run: npm install --save-dev $(ls *.tgz)
 
     - name: DevExtreme Vue - Install packages for devextreme-vue
-      if: steps.devextreme-vue-cache.outputs.cache-hit !== 'true'
+      if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-vue-repo
       run: npm install --no-audit --no-fund
       
     - name: DevExtreme Vue - Build and Pack
-      if: steps.devextreme-vue-cache.outputs.cache-hit !== 'true'
+      if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-vue-repo
       run: npm run pack
 
     - name: DevExtreme Vue - Copy devextreme-vue package
-      if: steps.devextreme-vue-cache.outputs.cache-hit !== 'true'
+      if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
       run: cp ./devextreme-vue-repo/packages/devextreme-vue/npm/*.tgz .
 
     #Build devextreme-angular
@@ -161,22 +161,22 @@ jobs:
         key: devextreme-angular-package-${{ steps.devextreme-angular-ref.outputs.head }}-${{ hashFiles('devextreme-angular-repo/packages/devextreme-angular/metadata/NGMetaData.json') }}
 
     - name: DevExtreme Angular - Install devextreme package
-      if: steps.devextreme-angular-cache.outputs.cache-hit !== 'true'
+      if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-angular-repo/packages/devextreme-angular
       run: npm install --save-dev $(ls *.tgz)
 
     - name: DevExtreme Angular - Install packages for devextreme-angular
-      if: steps.devextreme-angular-cache.outputs.cache-hit !== 'true'
+      if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-angular-repo
       run: npm install --no-audit --no-fund
       
     - name: DevExtreme Angular - Build and Pack
-      if: steps.devextreme-angular-cache.outputs.cache-hit !== 'true'
+      if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-angular-repo
       run: npm run pack
 
     - name: DevExtreme Angular - Copy devextreme-angular package
-      if: steps.devextreme-angular-cache.outputs.cache-hit !== 'true'
+      if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
       run: cp ./devextreme-angular-repo/packages/devextreme-angular/npm/dist/*.tgz .
 
     #Build Demos
