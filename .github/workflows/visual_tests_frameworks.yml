@@ -63,21 +63,32 @@ jobs:
 
     - name: DevExtreme React - Copy devextreme package
       run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-react-repo/packages/devextreme-react
+
+    - name: DevExtreme React - Get devextreme-react ref
+      working-directory: ./devextreme-react-repo/packages/devextreme-react
+      id: devextreme-react-ref
+      run: echo "::set-output name=head::$(git rev-parse HEAD)"
    
+    - name: DevExtreme React - Restore package cache
+      uses: actions/cache@v2
+      with:
+        path: ./devextreme-react-*.tgz
+        key: devextreme-react-package-${{ steps.devextreme-react-ref.outputs.head }}-${{ hashFiles('devextreme-react-repo/packages/devextreme-react/metadata/integration-data.json') }}
+
     - name: DevExtreme React - Install devextreme package
       working-directory: ./devextreme-react-repo/packages/devextreme-react
-      run: npm install --save-dev $(ls *.tgz)
+      run: test -f ./devextreme-react-*.tgz || npm install --save-dev $(ls *.tgz)
 
     - name: DevExtreme React - Install packages for devextreme-react
       working-directory: ./devextreme-react-repo
-      run: npm install --no-audit --no-fund
+      run: test -f ./devextreme-react-*.tgz || npm install --no-audit --no-fund
       
     - name: DevExtreme React - Build and Pack
       working-directory: ./devextreme-react-repo
-      run: npm run pack
+      run: test -f ./devextreme-react-*.tgz || npm run pack
 
     - name: DevExtreme React - Copy devextreme-react package
-      run: cp ./devextreme-react-repo/packages/devextreme-react/npm/*.tgz .
+      run: test -f ./devextreme-react-*.tgz || cp ./devextreme-react-repo/packages/devextreme-react/npm/*.tgz .
 
     #Build devextreme-vue
     - name: DevExtreme Vue - Clone devextreme-vue repo
