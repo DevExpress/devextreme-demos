@@ -14,8 +14,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Build DevExtreme
-    timeout-minutes: 60
+    name: Build
+    timeout-minutes: 30
     
     steps:
 
@@ -54,74 +54,71 @@ jobs:
       run: npm pack
 
     #Build devextreme-react
-    - name: Clone devextreme-react repo
+    - name: DevExtreme React - Clone devextreme-react repo
       run: git clone -b master https://github.com/devexpress/devextreme-react ./devextreme-react-repo
 
-    - name: Update react metadata
+    - name: DevExtreme React - Update react metadata
       working-directory: ./devextreme-repo
       run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-react-repo/packages/devextreme-react/metadata/integration-data.json --version 21_2 --js-scripts ./js
 
-    - name: Copy devextreme package
+    - name: DevExtreme React - Copy devextreme package
       run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-react-repo/packages/devextreme-react
    
-    - name: Install devextreme package
+    - name: DevExtreme React - Install devextreme package
       working-directory: ./devextreme-react-repo/packages/devextreme-react
       run: npm install --save-dev $(ls *.tgz)
 
-    - name: Install packages for devextreme-react
+    - name: DevExtreme React - Install packages for devextreme-react
       working-directory: ./devextreme-react-repo
       run: npm install --no-audit --no-fund
       
-    - name: Build and Pack
+    - name: DevExtreme React - Build and Pack
       working-directory: ./devextreme-react-repo
       run: npm run pack
 
-    # - name: Copy devextreme-react package
-    #   run: cp ./devextreme-react-repo/packages/devextreme-react/npm/*.tgz .
-
     #Build devextreme-vue
-    - name: Clone devextreme-vue repo
+    - name: DevExtreme Vue - Clone devextreme-vue repo
       run: git clone -b master https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
 
-    - name: Copy devextreme package
-      run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-vue-repo/packages/devextreme-vue
-   
-    - name: Install devextreme package
-      working-directory: ./devextreme-vue-repo/packages/devextreme-vue
-      run: npm install --save-dev $(ls *.tgz)
-
-    - name: Install packages for devextreme-vue
-      working-directory: ./devextreme-vue-repo
-      run: npm install --no-audit --no-fund
-      
-    - name: Update react metadata
+    - name: DevExtreme Vue - Update vue metadata
       working-directory: ./devextreme-repo
       run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-react-repo/packages/devextreme-vue/metadata/integration-data.json --version 21_2 --js-scripts ./js
 
-    - name: Build and Pack
+    - name: DevExtreme Vue - Copy devextreme package
+      run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-vue-repo/packages/devextreme-vue
+   
+    - name: DevExtreme Vue - Install devextreme package
+      working-directory: ./devextreme-vue-repo/packages/devextreme-vue
+      run: npm install --save-dev $(ls *.tgz)
+
+    - name: DevExtreme Vue - Install packages for devextreme-vue
+      working-directory: ./devextreme-vue-repo
+      run: npm install --no-audit --no-fund
+      
+    - name: DevExtreme Vue - Build and Pack
       working-directory: ./devextreme-vue-repo
       run: npm run pack
 
     #Build devextreme-angular
-    - name: Clone devextreme-angular repo
+    - name: DevExtreme Angular - Clone devextreme-angular repo
       run: git clone -b master https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
 
-    - name: Copy devextreme package
-      run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-angular-repo/packages/devextreme-angular
-   
-    - name: Install devextreme package
-      working-directory: ./devextreme-angular-repo/packages/devextreme-angular
-      run: npm install --save-dev $(ls *.tgz)
-
-    - name: Install packages for devextreme-angular
-      working-directory: ./devextreme-angular-repo
-      run: npm install --no-audit --no-fund
-      
-    - name: Update angular metadata
+    - name: DevExtreme Angular - Update angular metadata
       working-directory: ./devextreme-repo
       run: npm run internal-tool -- update-meta --output-path ../devextreme-angular-repo/packages/devextreme-angular/metadata/NGMetaData.json --version 21_2 --js-scripts ./js
 
-    - name: Build and Pack
+    - name: DevExtreme Angular - Copy devextreme package
+      run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-angular-repo/packages/devextreme-angular
+   
+    - name: DevExtreme Angular - Install devextreme package
+      working-directory: ./devextreme-angular-repo/packages/devextreme-angular
+      run: npm install --save-dev $(ls *.tgz)
+
+    - name: DevExtreme Angular - Install packages for devextreme-angular
+      working-directory: ./devextreme-angular-repo
+      run: npm install --no-audit --no-fund
+      
+    - name: DevExtreme Angular - Build and Pack
       working-directory: ./devextreme-angular-repo
       run: npm run pack
 
