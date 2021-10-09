@@ -76,6 +76,9 @@ jobs:
       working-directory: ./devextreme-react-repo
       run: npm run pack
 
+    - name: DevExtreme React - Copy devextreme-react package
+      run: cp ./devextreme-react-repo/packages/devextreme-react/npm/*.tgz .
+
     #Build devextreme-vue
     - name: DevExtreme Vue - Clone devextreme-vue repo
       run: git clone -b master https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
@@ -98,6 +101,9 @@ jobs:
     - name: DevExtreme Vue - Build and Pack
       working-directory: ./devextreme-vue-repo
       run: npm run pack
+
+    - name: DevExtreme Vue - Copy devextreme-vue package
+      run: cp ./devextreme-vue-repo/packages/devextreme-vue/npm/*.tgz .
 
     #Build devextreme-angular
     - name: DevExtreme Angular - Clone devextreme-angular repo
@@ -122,6 +128,9 @@ jobs:
       working-directory: ./devextreme-angular-repo
       run: npm run pack
 
+    - name: DevExtreme Angular - Copy devextreme-angular package
+      run: cp ./devextreme-angular-repo/packages/devextreme-angular/npm/dist/*.tgz .
+
     #Build Demos
     - name: Demos - Restore npm cache
       uses: actions/cache@v2
@@ -138,13 +147,13 @@ jobs:
       run: npm install $(find ./devextreme-repo/artifacts/npm/devextreme/ -maxdepth 1 -name "devextreme-*.tgz")
 
     - name: Demos - Install devextreme-react package
-      run: npm install $(find ./devextreme-react-repo/packages/devextreme-react/npm/ -maxdepth 1 -name "devextreme-*.tgz")
+      run: npm install $(ls devextreme-react-*.tgz)
 
     - name: Demos - Install devextreme-vue package
-      run: npm install $(find ./devextreme-vue-repo/packages/devextreme-vue/npm/ -maxdepth 1 -name "devextreme-*.tgz")
+      run: npm install $(ls devextreme-vue-*.tgz)
 
     - name: Demos - Install devextreme-angular package
-      run: npm install $(find ./devextreme-angular-repo/packages/devextreme-angular/npm/dist/ -maxdepth 1 -name "devextreme-*.tgz")
+      run: npm install $(ls devextreme-angular-*.tgz)
 
     - name: Demos - Prepare bundles
       run: npm run prepare-bundles
