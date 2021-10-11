@@ -45,9 +45,10 @@
           fill="#494949"
         >
           <tspan x="100">{{ country }}</tspan>
-          <tspan x="100" dy="20px" style="font-weight: 600">
-            {{ calculateTotal(pieChart) }}
-          </tspan>
+          <!-- display: inline -->
+          <tspan x="100" dy="20px" style="font-weight: 600">{{
+            calculateTotal(pieChart)
+          }}</tspan>
         </text>
       </svg>
     </dx-pie-chart>
