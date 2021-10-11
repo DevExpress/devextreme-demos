@@ -1,6 +1,7 @@
 ::ng-deep #gauge-demo {
-  width: 100%;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 ::ng-deep #triangleMarker,
@@ -9,27 +10,11 @@
 ::ng-deep #textCloud,
 ::ng-deep #twoColorNeedle {
   display: inline-block;
-}
-
-::ng-deep #triangleMarker,
-::ng-deep #rectangleNeedle,
-::ng-deep #textCloud {
-  margin-right: 4px;
-}
-
-::ng-deep #triangleMarker,
-::ng-deep #rectangleNeedle,
-::ng-deep #triangleNeedle {
   width: 33%;
 }
 
-::ng-deep #twoColorNeedle {
-  width: 31%;
-}
-
 ::ng-deep #textCloud {
-  width: 37%;
-  vertical-align: bottom;
+  width: 42%;
 }
 
 ::ng-deep .long-title h3 {
