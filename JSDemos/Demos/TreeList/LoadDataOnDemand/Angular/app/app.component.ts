@@ -1,7 +1,7 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 
 import { DxTreeListModule } from 'devextreme-angular';
 
@@ -19,11 +19,18 @@ export class AppComponent {
 
     constructor(http: HttpClient) {
         this.dataSource = {
-            load: function(loadOptions) {
-                return http.get("https://js.devexpress.com/Demos/Mvc/api/treeListData?parentIds=" + loadOptions.parentIds)
-                           .toPromise();
+            load: function (loadOptions) {
+                let params = new HttpParams();
+                if (loadOptions.parentIds) {
+                    loadOptions.parentIds.forEach((id) => {
+                        params = params.append("parentIds", id);
+                    });
+                }
+                return http
+                    .get("https://js.devexpress.com/Demos/Mvc/api/treeListData", { params })
+                    .toPromise();
             }
-        }
+        };
     }
 
     customizeSizeText(e) {
