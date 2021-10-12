@@ -4,19 +4,19 @@
     (onSelectedFileOpened)="displayImagePopup($event)">
 
     <dxo-permissions 
-        create="true"
-        copy="true"
-        move="true"
-        delete="true"
-        rename="true"
-        upload="true"
-        download="true">
+        [create]="true"
+        [copy]="true"
+        [move]="true"
+        [delete]="true"
+        [rename]="true"
+        [upload]="true"
+        [download]="true">
     </dxo-permissions>
 </dx-file-manager>
 
 <dx-popup id="photo-popup"
     maxHeight="600"
-    closeOnOutsideClick="true"
+    [closeOnOutsideClick]="true"
     [(title)]="imageItemToDisplay.name"
     [(visible)]="popupVisible">
     <div *dxTemplate="let data of 'content'" class="photo-popup-content">

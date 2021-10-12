@@ -3,10 +3,10 @@
     (onContextMenuItemClick)="onItemClick($event)"
     height="450">
     <dxo-permissions
-        create="true"
-        delete="true"
-        rename="true"
-        download="true">
+        [create]="true"
+        [delete]="true"
+        [rename]="true"
+        [download]="true">
     </dxo-permissions>
     <dxo-item-view [showParentFolder]="false">
         <dxo-details>
@@ -18,7 +18,7 @@
         </dxo-details>
     </dxo-item-view>
     <dxo-toolbar>
-        <dxi-item name="showNavPane" visible="true"></dxi-item>
+        <dxi-item name="showNavPane" [visible]="true"></dxi-item>
         <dxi-item name="separator"></dxi-item>
         <dxi-item name="create"></dxi-item>
         <dxi-item widget="dxMenu" location="before" [options]="newFileMenuOptions"></dxi-item>
@@ -41,9 +41,9 @@
             <dxi-item text="RTF Document" [options]="{ extension: '.rtf' }"></dxi-item>
             <dxi-item text="Spreadsheet" [options]="{ extension: '.xls' }"></dxi-item>
         </dxi-item>
-        <dxi-item name="rename" beginGroup="true"></dxi-item>
+        <dxi-item name="rename" [beginGroup]="true"></dxi-item>
         <dxi-item name="delete"></dxi-item>
-        <dxi-item text="Category" icon="tags" beginGroup="true">
+        <dxi-item text="Category" icon="tags" [beginGroup]="true">
             <dxi-item text="Work" [options]="{ category: 'Work' }"></dxi-item>
             <dxi-item text="Important" [options]="{ category: 'Important' }"></dxi-item>
             <dxi-item text="Home" [options]="{ category: 'Home' }"></dxi-item>
