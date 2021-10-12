@@ -112,10 +112,10 @@ DemoApp.controller('DemoController', ($scope) => {
 
   $scope.phoneValidationRules = {
     validationRules: [{
-        type: "pattern",
-        pattern: /^[02-9]\d{9}$/,
-        message: "The phone must have a correct USA phone format"
-    }]
+      type: 'pattern',
+      pattern: /^[02-9]\d{9}$/,
+      message: 'The phone must have a correct USA phone format',
+    }],
   };
 
   $scope.phoneTextBoxOptions = {

@@ -113,10 +113,10 @@ window.onload = function () {
 
     that.phoneValidationRules = {
       validationRules: [{
-          type: "pattern",
-          pattern: /^[02-9]\d{9}$/,
-          message: "The phone must have a correct USA phone format"
-      }]
+        type: 'pattern',
+        pattern: /^[02-9]\d{9}$/,
+        message: 'The phone must have a correct USA phone format',
+      }],
     };
 
     that.phoneTextBoxOptions = {
