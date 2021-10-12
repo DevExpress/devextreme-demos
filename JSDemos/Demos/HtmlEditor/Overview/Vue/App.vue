@@ -1,6 +1,9 @@
 <template>
   <div>
-    <DxHtmlEditor height="725px">
+    <DxHtmlEditor
+      :value="markup"
+      height="725px"
+    >
       <DxMediaResizing :enabled="true"/>
       <DxToolbar :multiline="isMultiline">
         <DxItem name="undo"/>
@@ -52,8 +55,6 @@
         <DxItem name="insertColumnRight"/>
         <DxItem name="deleteColumn"/>
       </DxToolbar>
-
-      <div v-html="markup"/>
     </DxHtmlEditor>
     <div class="options">
       <div class="caption">Options</div>
@@ -100,26 +101,26 @@ export default {
 </script>
 <style>
 .dx-htmleditor-content img {
-    vertical-align: middle;
-    padding-right: 10px;
+  vertical-align: middle;
+  padding-right: 10px;
 }
 
 .dx-htmleditor-content table {
-    width: 50%;
+  width: 50%;
 }
 
 .options {
-    padding: 20px;
-    background-color: rgba(191, 191, 191, 0.15);
-    margin-top: 20px;
+  padding: 20px;
+  background-color: rgba(191, 191, 191, 0.15);
+  margin-top: 20px;
 }
 
 .caption {
-    font-size: 18px;
-    font-weight: 500;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .option {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 </style>

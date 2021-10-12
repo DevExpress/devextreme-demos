@@ -1,11 +1,11 @@
-/*hide scrollbars*/
+/* hide scrollbars */
 
 body {
-    overflow: clip;
+  overflow: clip;
 }
 
-/*trying to achieve more predictable results of rendered text*/
+/* trying to achieve more predictable results of rendered text */
 
 * {
-    text-rendering: geometricPrecision !important;
+  text-rendering: geometricPrecision !important;
 }

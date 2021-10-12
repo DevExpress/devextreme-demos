@@ -5,21 +5,21 @@ import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 
 import { DxTreeListModule } from 'devextreme-angular';
 
-if(!/localhost/.test(document.location.host)) {
-    enableProdMode();
+if (!/localhost/.test(document.location.host)) {
+  enableProdMode();
 }
 
 @Component({
-    selector: 'demo-app',
-    templateUrl: 'app/app.component.html',
-    styleUrls: ['app/app.component.css'],
+  selector: 'demo-app',
+  templateUrl: 'app/app.component.html',
+  styleUrls: ['app/app.component.css'],
 })
 export class AppComponent {
-    dataSource: any;
+  dataSource: any;
 
     constructor(http: HttpClient) {
         this.dataSource = {
-            load: function (loadOptions) {
+            load(loadOptions) {
                 let params = new HttpParams();
                 if (loadOptions.parentIds) {
                     loadOptions.parentIds.forEach((id) => {
@@ -33,21 +33,21 @@ export class AppComponent {
         };
     }
 
-    customizeSizeText(e) {
-        if(e.value !== null) {
-            return Math.ceil(e.value / 1024) + " KB";
-        }
+  customizeSizeText(e) {
+    if (e.value !== null) {
+      return `${Math.ceil(e.value / 1024)} KB`;
     }
+  }
 }
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        DxTreeListModule,
-        HttpClientModule
-    ],
-    declarations: [AppComponent],
-    bootstrap: [AppComponent]
+  imports: [
+    BrowserModule,
+    DxTreeListModule,
+    HttpClientModule,
+  ],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
 
