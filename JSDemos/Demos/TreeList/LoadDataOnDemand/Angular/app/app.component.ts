@@ -17,21 +17,21 @@ if(!/localhost/.test(document.location.host)) {
 export class AppComponent {
     dataSource: any;
 
-    constructor(http: HttpClient) {
-        this.dataSource = {
-            load: function (loadOptions) {
-                let params = new HttpParams();
-                if (loadOptions.parentIds) {
-                    loadOptions.parentIds.forEach((id) => {
-                        params = params.append("parentIds", id);
-                    });
-                }
-                return http
-                    .get("https://js.devexpress.com/Demos/Mvc/api/treeListData", { params })
-                    .toPromise();
-            }
-        };
-    }
+  constructor(http: HttpClient) {
+    this.dataSource = {
+      load: function(loadOptions) {
+        let params = new HttpParams();
+        if (loadOptions.parentIds) {
+          loadOptions.parentIds.forEach((id) => {
+            params = params.append('parentIds', id);
+          });
+        }
+        return http
+          .get('https://js.devexpress.com/Demos/Mvc/api/treeListData', { params })
+          .toPromise();
+      },
+    };
+  }
 
     customizeSizeText(e) {
         if(e.value !== null) {
