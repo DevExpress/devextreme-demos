@@ -2,38 +2,62 @@ import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
 import { Selector } from 'testcafe';
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
-fixture('DataGrid.CustomNewRecordPosition')
+fixture.disablePageReloads('DataGrid.CustomNewRecordPosition')
   .page('http://localhost:8080/')
   .beforeEach(async (t) => {
     await t
       .resizeWindow(900, 600);
   });
 
+const newRowPositionOptions = ['first', 'last', 'pageTop', 'pageBottom', 'viewportTop', 'viewportBottom'];
+
+const setNewRowPosition = async (t, newRowPosition) => {
+  const index = newRowPositionOptions.indexOf(newRowPosition);
+  await t.click('#newRowPositionSelectBox');
+  await t.click(Selector('.dx-dropdownlist-popup-wrapper .dx-list-item').nth(index));
+};
+
+const clickAddButton = async (t) => {
+  await t.click('.dx-datagrid-addrow-button');
+};
+
+const clickCancelButton = async (t) => {
+  await t.click('.dx-command-edit .dx-link-cancel');
+};
+
+const selectPage = async (t, number) => {
+  await t.click(`[aria-label="Page ${number}"]`);
+};
+
+const newRowPositionTestTemplate = ({ newRowPosition, pageNumber }) => async (t) => {
+  const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
+
+  await selectPage(t, pageNumber);
+  await setNewRowPosition(t, newRowPosition);
+  await clickAddButton(t);
+
+  await takeScreenshot(`datagrid_CustomNewRecordPosition_${newRowPosition}_added.png`);
+
+  await clickCancelButton(t);
+
+  await t
+    .expect(compareResults.isValid())
+    .ok(compareResults.errorMessages());
+};
+
 runManualTest(test, 'DataGrid', 'CustomNewRecordPosition', 'jQuery', (test) => {
-  test('newRowPosition', async (t) => {
-    const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
-    const newRowPositionOptions = ['first', 'last', 'pageTop', 'pageBottom', 'viewportTop', 'viewportBottom'];
+  newRowPositionOptions.forEach((newRowPosition) => {
+    test(`newRowPosition - ${newRowPosition}`, newRowPositionTestTemplate({
+      newRowPosition,
+      pageNumber: 1,
+    }));
+  });
 
-    const setNewRowPosition = async (newRowPosition) => {
-      const index = newRowPositionOptions.indexOf(newRowPosition);
-      await t.click('#newRowPositionSelectBox');
-      await t.click(Selector('.dx-dropdownlist-popup-wrapper .dx-list-item').nth(index));
-    };
-
-    for (let i = newRowPositionOptions.length - 1; i >= 0; i -= 1) {
-      const newRowPosition = newRowPositionOptions[i];
-
-      await setNewRowPosition(newRowPosition);
-      await t.click('.dx-datagrid-addrow-button');
-
-      await takeScreenshot(`datagrid_CustomNewRecordPosition_${newRowPosition}_added.png`);
-
-      await t.click('.dx-command-edit .dx-link-cancel');
-    }
-
-    await t
-      .expect(compareResults.isValid())
-      .ok(compareResults.errorMessages());
+  ['first', 'last'].forEach((newRowPosition) => {
+    test(`newRowPosition - ${newRowPosition} - last page`, newRowPositionTestTemplate({
+      newRowPosition,
+      pageNumber: 42,
+    }));
   });
 });
 
