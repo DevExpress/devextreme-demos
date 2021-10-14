@@ -1,6 +1,14 @@
 ﻿<script>
     var highAverage = 77,
         lowAverage = 58;
+
+    function customizePoint() {
+        if(this.value > highAverage) {
+            return { color: "#ff7c7c", hoverStyle: { color: "#ff7c7c" } };
+        } else if(this.value < lowAverage) {
+            return { color: "#8c8cff", hoverStyle: { color: "#8c8cff" } };
+        }
+    }
 </script>
 
 @(Html.DevExtreme().Chart()
@@ -11,15 +19,7 @@
         .Type(SeriesType.Bar)
         .Color("#e7d19a")
     )
-    .CustomizePoint(@<text>
-        function() {
-            if(this.value > highAverage) {
-                return { color: "#ff7c7c", hoverStyle: { color: "#ff7c7c" } };
-            } else if(this.value < lowAverage) {
-                return { color: "#8c8cff", hoverStyle: { color: "#8c8cff" } };
-            }
-        }
-    </text>)
+    .CustomizePoint(new JS("customizePoint"))
     .CustomizeLabel(@<text>
         function() {
             if (this.value > highAverage) {
