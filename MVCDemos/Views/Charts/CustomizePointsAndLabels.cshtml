@@ -30,8 +30,8 @@
         .Type(SeriesType.Bar)
         .Color("#e7d19a")
     )
-    .CustomizePoint(new JS("customizePoint"))
-    .CustomizeLabel(new JS("customizeLabel"))
+    .CustomizePoint("customizePoint")
+    .CustomizeLabel("customizeLabel")
     .Export(e => e.Enabled(true))
     .ValueAxis(a => a
         .Add()
