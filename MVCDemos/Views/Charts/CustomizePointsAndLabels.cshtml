@@ -9,6 +9,17 @@
             return { color: "#8c8cff", hoverStyle: { color: "#8c8cff" } };
         }
     }
+    function customizeLabel() {
+        if(this.value > highAverage) {
+            return {
+                visible: true,
+                backgroundColor: "#ff7c7c",
+                customizeText: function () {
+                    return this.valueText + "&#176F";
+                }
+            };
+        }
+    }
 </script>
 
 @(Html.DevExtreme().Chart()
@@ -20,19 +31,7 @@
         .Color("#e7d19a")
     )
     .CustomizePoint(new JS("customizePoint"))
-    .CustomizeLabel(@<text>
-        function() {
-            if (this.value > highAverage) {
-                return {
-                    visible: true,
-                    backgroundColor: "#ff7c7c",
-                    customizeText: function () {
-                        return this.valueText + "&#176F";
-                    }
-                };
-            }
-        }
-    </text>)
+    .CustomizeLabel(new JS("customizeLabel"))
     .Export(e => e.Enabled(true))
     .ValueAxis(a => a
         .Add()
