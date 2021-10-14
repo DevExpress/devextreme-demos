@@ -19,7 +19,7 @@
         .Type(SeriesType.Bar)
         .Color("#e7d19a")
     )
-    .CustomizePoint(new JS("customizePoint"))
+    .CustomizePoint("customizePoint")
     .CustomizeLabel(@<text>
         function() {
             if (this.value > highAverage) {
