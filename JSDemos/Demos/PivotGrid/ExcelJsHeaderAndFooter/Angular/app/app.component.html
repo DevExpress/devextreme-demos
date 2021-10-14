@@ -7,14 +7,16 @@
   [height]="440"
   [showBorders]="true"
   [dataSource]="dataSource"
-  (onExporting)="onExporting($event)">
+  (onExporting)="onExporting($event)"
+>
   <dxo-field-panel
     [showDataFields]="true"
     [showRowFields]="true"
     [showColumnFields]="true"
     [showFilterFields]="false"
     [allowFieldDragging]="false"
-    [visible]="true">
+    [visible]="true"
+  >
   </dxo-field-panel>
   <dxo-field-chooser [enabled]="false"></dxo-field-chooser>
   <dxo-export [enabled]="true"></dxo-export>

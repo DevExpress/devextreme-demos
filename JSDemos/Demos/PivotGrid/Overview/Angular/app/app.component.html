@@ -3,10 +3,15 @@
     <dxo-common-series-settings type="bar"></dxo-common-series-settings>
     <dxo-size [height]="200"></dxo-size>
     <dxo-adaptive-layout [width]="450"></dxo-adaptive-layout>
-    <dxo-tooltip [enabled]="true" format="currency" [customizeTooltip]="customizeTooltip"></dxo-tooltip>
+    <dxo-tooltip
+      [enabled]="true"
+      format="currency"
+      [customizeTooltip]="customizeTooltip"
+    ></dxo-tooltip>
   </dx-chart>
 
-  <dx-pivot-grid id="pivotgrid"
+  <dx-pivot-grid
+    id="pivotgrid"
     [allowSortingBySummary]="true"
     [allowFiltering]="true"
     [showBorders]="true"
@@ -15,7 +20,8 @@
     [showRowGrandTotals]="false"
     [showRowTotals]="false"
     [showColumnTotals]="false"
-    [dataSource]="pivotGridDataSource">
+    [dataSource]="pivotGridDataSource"
+  >
     <dxo-field-chooser [enabled]="true" [height]="400"></dxo-field-chooser>
     <dxo-scrolling mode="virtual"></dxo-scrolling>
   </dx-pivot-grid>

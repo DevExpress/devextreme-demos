@@ -193,14 +193,6 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View(SampleData.Orders.Take(12));
         }
 
-        public ActionResult ExportToExcel() {
-            return View(SampleData.DataGridEmployees.Take(10));
-        }
-
-        public ActionResult ExcelCellCustomization() {
-            return View(SampleData.Orders);
-        }
-
         public ActionResult ExcelJS() {
             return View(SampleData.Orders);
         }

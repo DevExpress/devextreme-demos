@@ -6,7 +6,9 @@
       key-expr="ID"
       :column-auto-width="true"
       :show-borders="true"
-      row-template="dataRowTemplate"
+      :row-alternatin-enabled="true"
+      :hover-state-enabled="true"
+      data-row-template="dataRowTemplate"
     >
       <DxColumn
         :width="100"
@@ -31,23 +33,18 @@
         data-type="date"
       />
       <template #dataRowTemplate="{ data: rowInfo }">
-        <tbody
-          :class="{'dx-row-alt': rowInfo.rowIndex % 2}"
-          class="employee dx-row"
-        >
-          <tr class="main-row">
-            <td rowspan="2"><img :src="rowInfo.data.Picture"></td>
-            <td>{{ rowInfo.data.Prefix }}</td>
-            <td>{{ rowInfo.data.FirstName }}</td>
-            <td>{{ rowInfo.data.LastName }}</td>
-            <td>{{ rowInfo.data.Position }}</td>
-            <td>{{ formatDate(new Date(rowInfo.data.BirthDate)) }}</td>
-            <td>{{ formatDate(new Date(rowInfo.data.HireDate)) }}</td>
-          </tr>
-          <tr class="notes-row">
-            <td colspan="6"><div>{{ rowInfo.data.Notes }}</div></td>
-          </tr>
-        </tbody>
+        <tr class="main-row">
+          <td rowspan="2"><img :src="rowInfo.data.Picture"></td>
+          <td>{{ rowInfo.data.Prefix }}</td>
+          <td>{{ rowInfo.data.FirstName }}</td>
+          <td>{{ rowInfo.data.LastName }}</td>
+          <td>{{ rowInfo.data.Position }}</td>
+          <td>{{ formatDate(new Date(rowInfo.data.BirthDate)) }}</td>
+          <td>{{ formatDate(new Date(rowInfo.data.HireDate)) }}</td>
+        </tr>
+        <tr class="notes-row">
+          <td colspan="6"><div>{{ rowInfo.data.Notes }}</div></td>
+        </tr>
       </template>
     </DxDataGrid>
   </div>
@@ -77,48 +74,48 @@ export default {
 </script>
 <style scoped>
 #gridContainer {
-    height: 450px;
+  height: 450px;
 }
 
 .dx-row img {
-    height: 100px;
+  height: 100px;
 }
 
 #gridContainer tr.main-row td:not(:first-child) {
-    height: 21px;
+  height: 21px;
 }
 
 #gridContainer tr.notes-row {
-    white-space: normal;
-    vertical-align: top;
+  white-space: normal;
+  vertical-align: top;
 }
 
 #gridContainer tr.notes-row td {
-    height: 70px;
-    color: #999;
+  height: 70px;
+  color: #999;
 }
 
 .dark #gridContainer tr.notes-row td {
-    color: #777;
+  color: #777;
 }
 
-#gridContainer tbody.employee:hover {
-    background-color: #EBEBEB;
+#gridContainer tbody.dx-state-hover {
+  background-color: #ebebeb;
 }
 
-.dark #gridContainer tbody.employee:hover {
-    background-color: #484848;
+.dark #gridContainer tbody.dx-state-hover {
+  background-color: #484848;
 }
 
-#gridContainer tbody.employee:hover tr.main-row td {
-    color: #000;
+#gridContainer tbody.dx-state-hover tr.main-row td {
+  color: #000;
 }
 
-.dark #gridContainer tbody.employee:hover tr.main-row td {
-    color: #CCC;
+.dark #gridContainer tbody.dx-state-hover tr.main-row td {
+  color: #ccc;
 }
 
-#gridContainer tbody.employee:hover tr.notes-row td {
-    color: #888;
+#gridContainer tbody.dx-state-hover tr.notes-row td {
+  color: #888;
 }
 </style>

@@ -6,26 +6,25 @@
     .ID("gridContainer")
     .ShowBorders(true)
     .DataSource(Model, new[] { "ID" })
-    .RowTemplate(@<text>
-        <% var rowClass = "employee dx-row " + ((rowIndex % 2) ? "dx-row-alt" : ""); %>
-        <tbody class="<%- rowClass %>">
-            <tr class="main-row">
-                <td rowspan="2">
-                    <img src="<%- data.Picture %>" alt=""/>
-                </td>
-                <td><%- data.Prefix %></td>
-                <td><%- data.FirstName %></td>
-                <td><%- data.LastName %></td>
-                <td><%- data.Position %></td>
-                <td><%- formatDate(new Date(data.BirthDate)) %></td>
-                <td><%- formatDate(new Date(data.HireDate)) %></td>
-            </tr>
-            <tr class="notes-row">
-                <td colspan="6">
-                    <div><%- data.Notes %></div>
-                </td>
-            </tr>
-        </tbody>
+    .RowAlternationEnabled(true)
+    .HoverStateEnabled(true)
+    .DataRowTemplate(@<text>
+        <tr class="main-row">
+            <td rowspan="2">
+                <img src="<%- data.Picture %>" alt=""/>
+            </td>
+            <td><%- data.Prefix %></td>
+            <td><%- data.FirstName %></td>
+            <td><%- data.LastName %></td>
+            <td><%- data.Position %></td>
+            <td><%- formatDate(new Date(data.BirthDate)) %></td>
+            <td><%- formatDate(new Date(data.HireDate)) %></td>
+        </tr>
+        <tr class="notes-row">
+            <td colspan="6">
+                <div><%- data.Notes %></div>
+            </td>
+        </tr>
     </text>)
     .ColumnAutoWidth(true)
     .Columns(columns => {

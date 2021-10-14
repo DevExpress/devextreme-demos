@@ -38,9 +38,12 @@ $(() => {
         width: 110,
         buttons: ['edit', 'delete', {
           hint: 'Clone',
-          icon: 'repeat',
+          icon: 'copy',
           visible(e) {
-            return !e.row.isEditing && !isChief(e.row.data.Position);
+            return !e.row.isEditing;
+          },
+          disabled(e) {
+            return isChief(e.row.data.Position);
           },
           onClick(e) {
             const clonedItem = $.extend({}, e.row.data, { ID: maxID += 1 });
