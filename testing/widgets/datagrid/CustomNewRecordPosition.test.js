@@ -65,6 +65,8 @@ runManualTest(test, 'DataGrid', 'CustomNewRecordPosition', 'jQuery', (test) => {
   test('insertAfterKey', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
+    await selectPage(t, 1);
+
     await t
       .click('.dx-command-edit .dx-link.dx-icon-add');
 
