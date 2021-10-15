@@ -26,7 +26,7 @@ const clickCancelButton = async (t) => {
 };
 
 const selectPage = async (t, number) => {
-  await t.click(Selector('.dx-page').withText(number));
+  await t.click(Selector('.dx-page').withText(`${number}`));
 };
 
 const newRowPositionTestTemplate = ({ newRowPosition, pageNumber }) => async (t) => {
