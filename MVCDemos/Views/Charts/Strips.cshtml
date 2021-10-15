@@ -14,6 +14,24 @@
     function customizeText() {
         return this.valueText + "&#176F";
     }
+    function customizePoint() {
+        if (this.value > highAverage) {
+            return {
+                color: highAverageColor
+            };
+        } else if (this.value < lowAverage) {
+            return {
+                color: lowAverageColor
+            };
+        }
+    }
+    function customizeLabel () {
+        if (this.value > highAverage) {
+            return getLabelsSettings(highAverageColor);
+        } else if (this.value < lowAverage) {
+            return getLabelsSettings(lowAverageColor);
+        }
+    }
 </script>
 
 @(Html.DevExtreme().Chart()
@@ -48,28 +66,8 @@
         .Type(SeriesType.Spline)
         .Color("#a3aaaa")
     )
-    .CustomizePoint(@<text>
-        function() {
-            if (this.value > highAverage) {
-                return {
-                    color: highAverageColor
-                };
-            } else if (this.value < lowAverage) {
-                return {
-                    color: lowAverageColor
-                };
-            }
-        }
-    </text>)
-    .CustomizeLabel(@<text>
-        function() {
-            if (this.value > highAverage) {
-                return getLabelsSettings(highAverageColor);
-            } else if (this.value < lowAverage) {
-                return getLabelsSettings(lowAverageColor);
-            }
-        }
-    </text>)
+    .CustomizePoint("customizePoint")
+    .CustomizeLabel("customizeLabel")
     .Title("Temperature in September")
     .Legend(l => l.Visible(false))
     .Export(e => e.Enabled(true))
