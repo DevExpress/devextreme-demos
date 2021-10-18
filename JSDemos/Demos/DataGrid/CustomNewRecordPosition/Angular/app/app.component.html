@@ -6,9 +6,7 @@
   [remoteOperations]="true"
   (onRowInserted)="onRowInserted($event)"
 >
-  <dxo-scrolling
-    [mode]="scrollingMode"
-  ></dxo-scrolling>
+  <dxo-scrolling [mode]="scrollingMode"></dxo-scrolling>
   <dxo-editing
     mode="row"
     [allowAdding]="true"
@@ -21,14 +19,8 @@
     [(editRowKey)]="editRowKey"
   ></dxo-editing>
 
-  <dxi-column
-    dataField="OrderID"
-    [allowEditing]="false"
-  ></dxi-column>
-  <dxi-column
-    dataField="OrderDate"
-    dataType="date"
-  >
+  <dxi-column dataField="OrderID" [allowEditing]="false"></dxi-column>
+  <dxi-column dataField="OrderDate" dataType="date">
     <dxi-validation-rule type="required"></dxi-validation-rule>
   </dxi-column>
   <dxi-column dataField="ShipName"></dxi-column>
@@ -47,10 +39,7 @@
   </dxi-column>
 
   <dxo-toolbar>
-    <dxi-item
-      name="addRowButton"
-      showText="always"
-    ></dxi-item>
+    <dxi-item name="addRowButton" showText="always"></dxi-item>
   </dxo-toolbar>
 </dx-data-grid>
 
