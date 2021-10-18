@@ -5,7 +5,7 @@
       :data-source="dataSource"
       :show-borders="true"
       :column-auto-width="true"
-      :remote-operation="true"
+      :remote-operations="true"
       :on-row-inserted="onRowInserted"
     >
       <DxScrolling

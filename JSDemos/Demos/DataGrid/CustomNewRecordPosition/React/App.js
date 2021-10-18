@@ -74,7 +74,7 @@ class App extends React.Component {
           dataSource={dataSource}
           showBorders={true}
           columnAutoWidth={true}
-          remoteOperation={true}
+          remoteOperations={true}
           onRowInserted={this.onRowInserted}
           onOptionChanged={this.onOptionChanged}
         >
