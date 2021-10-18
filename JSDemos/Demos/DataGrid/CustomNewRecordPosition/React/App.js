@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import DataGrid, {
   Column, Editing, ValidationRule, Button, Toolbar, Item, Scrolling,
 } from 'devextreme-react/data-grid';
