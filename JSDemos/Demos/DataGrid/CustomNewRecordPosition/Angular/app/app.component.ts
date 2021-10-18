@@ -7,9 +7,9 @@ import { DxDataGridModule, DxSelectBoxModule } from 'devextreme-angular';
 import Guid from 'devextreme/core/guid';
 import { Service } from './app.service';
 
-// if (!/localhost/.test(document.location.host)) {
-enableProdMode();
-// }
+if (!/localhost/.test(document.location.host)) {
+  enableProdMode();
+}
 
 @Component({
   selector: 'demo-app',
