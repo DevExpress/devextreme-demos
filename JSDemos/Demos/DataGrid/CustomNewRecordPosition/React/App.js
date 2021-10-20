@@ -111,6 +111,6 @@ function App() {
       </div>
     </div>
   </React.Fragment>;
-};
+}
 
 export default App;
