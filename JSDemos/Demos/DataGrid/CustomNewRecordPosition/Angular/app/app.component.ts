@@ -43,7 +43,7 @@ export class AppComponent {
       type: 'insert',
       insertAfterKey: e.row.key,
     }];
-    // this.editRowKey = key;
+    this.editRowKey = key;
   }
 
   isAddButtonVisible({ row }) {

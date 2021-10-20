@@ -15,14 +15,6 @@ function App() {
   const [changes, setChanges] = React.useState([]);
   const [editRowKey, setEditRowKey] = React.useState(null);
 
-  const onOptionChanged = React.useCallback((e) => {
-    if (e.fullName === 'editing.changes') {
-      setChanges(e.value);
-    } else if (e.fullName === 'editing.editRowKey') {
-      setEditRowKey(e.value);
-    }
-  });
-
   const onAddButtonClick = React.useCallback((e) => {
     const key = new Guid().toString();
     setChanges([{
@@ -31,13 +23,13 @@ function App() {
       insertAfterKey: e.row.key,
     }]);
     setEditRowKey(key);
-  });
+  }, []);
 
-  const isAddButtonVisible = React.useCallback(({ row }) => !row.isEditing);
+  const isAddButtonVisible = React.useCallback(({ row }) => !row.isEditing, []);
 
   const onRowInserted = React.useCallback((e) => {
     e.component.navigateToRow(e.key);
-  });
+  }, []);
 
   return <React.Fragment>
     <DataGrid
@@ -47,7 +39,6 @@ function App() {
       columnAutoWidth={true}
       remoteOperations={true}
       onRowInserted={onRowInserted}
-      onOptionChanged={onOptionChanged}
     >
       <Scrolling
         mode={scrollingMode}
@@ -61,7 +52,9 @@ function App() {
         useIcons={true}
         newRowPosition={newRowPosition}
         changes={changes}
+        onChangesChange={setChanges}
         editRowKey={editRowKey}
+        onEditRowKeyChange={setEditRowKey}
       />
 
       <Column dataField='OrderID' allowEditing={false} />
