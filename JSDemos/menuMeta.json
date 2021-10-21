@@ -4444,6 +4444,20 @@
             "DemoType": "Web"
           }
         ]
+      },
+      {
+        "Name": "Label Mode",
+        "Equivalents": "label, floating, static, hidden",
+        "Demos": [
+          {
+            "Title": "Label Mode",
+            "Name": "LabelMode",
+            "Badge": "New",
+            "DocUrl": "",
+            "Widget": "Common",
+            "DemoType": "Web"
+          }
+        ]
       }
     ]
   },
