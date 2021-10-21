@@ -17,7 +17,7 @@ $(() => {
   }).dxHtmlEditor('instance');
 
   $('#resizing').dxCheckBox({
-    text: 'Allow table resizing',
+    text: 'Allow Table Resizing',
     value: true,
     onValueChanged(e) {
       editor.option('tableResizing.enabled', e.value);
@@ -25,7 +25,7 @@ $(() => {
   });
 
   $('#contextMenu').dxCheckBox({
-    text: 'Enable table context menu',
+    text: 'Enable Table Context Menu',
     value: true,
     onValueChanged(e) {
       editor.option('tableContextMenu.enabled', e.value);

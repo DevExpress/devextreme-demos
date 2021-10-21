@@ -14,32 +14,32 @@ const markup = `
         <tbody>
             <tr style="text-align: center;">
                 <td style="text-align: left; width: 320px;">Approve Personal Computer Upgrade Plan</td>
-                <td style="text-align: center; color: lime;">
-                    <p>☑️</p>
+                <td style="text-align: center; color: #5cb85c;">
+                    <p style="font-size: 1.15em;">✓</p>
                     <p>Completed</p>
                 </td>
                 <td style="text-align: right;">100%</td>
             </tr>
             <tr style="text-align: center;">
-                <td style="text-align: left;">Prepare workspaces</td>
-                <td style="text-align: center; color: lime;">
-                    <p>☑️</p>
+                <td style="text-align: left; width: 320px;">Prepare workspaces</td>
+                <td style="text-align: center; color: #5cb85c;">
+                    <p style="font-size: 1.15em;">✓</p>
                     <p>Completed</p>
                 </td>
                 <td style="text-align: right;">100%</td>
             </tr>
             <tr style="text-align: center;">
-                <td style="text-align: left;">Upgrade Server Hardware</td>
+                <td style="text-align: left; width: 320px;">Upgrade Server Hardware</td>
                 <td style="text-align: center;">
-                    <p>⌛</p>
+                    <p style="font-size: 1.15em;">⟳</p>
                     <p>In Progress</p>
                 </td>
                 <td style="text-align: right;">45%</td>
             </tr>     
             <tr style="text-align: center;">
-                <td style="text-align: left;">Upgrade Personal Computers</td>
-                <td style="text-align: center; color: red;">
-                    <p>⏸️</p>
+                <td style="text-align: left; width: 320px;">Upgrade Personal Computers</td>
+                <td style="text-align: center; color: #f0ad4e;">
+                    <p style="font-size: 1.15em;">‖</p>
                     <p>Need Assistance</p>
                 </td>
                 <td style="text-align: right;">80%</td>
@@ -47,47 +47,47 @@ const markup = `
             <tr style="text-align: center;">
                 <td style="text-align: left;">Replace HDD with SSD</td>
                 <td style="text-align: center;">
-                    <p>⌛</p>
+                    <p style="font-size: 1.15em;">⟳</p>
                     <p>In Progress</p>
                 </td>
                 <td style="text-align: right;">80%</td>
             </tr>
             <tr style="text-align: center;">
                 <td style="text-align: left;">Purchase a New Server</td>
-                <td style="text-align: center; color: red;">
-                    <p>❌</p>
+                <td style="text-align: center; color: #d9534f;">
+                    <p style="font-size: 1.15em;">✖</p>
                     <p>Canceled</p>
                 </td>
                 <td style="text-align: right;">15%</td>
             </tr>
             <tr style="text-align: center;">
                 <td style="text-align: left;">Purchase Laptops</td>
-                <td style="text-align: center; color: lime;">
-                    <p>☑️</p>
+                <td style="text-align: center; color: #5cb85c;">
+                    <p style="font-size: 1.15em;">✓</p>
                     <p>Completed</p>
                 </td>
                 <td style="text-align: right;">100%</td>
             </tr>
             <tr style="text-align: center;">
                 <td style="text-align: left;">Prepare a list of necessary devices for testing</td>
-                <td style="text-align: center; color: lime;">
-                    <p>☑️</p>
+                <td style="text-align: center; color: #5cb85c;">
+                    <p style="font-size: 1.15em;">✓</p>
                     <p>Completed</p>
                 </td>
                 <td style="text-align: right;">100%</td>
             </tr>
             <tr style="text-align: center;">
                 <td style="text-align: left;">Purchase devices for testing</td>
-                <td style="text-align: center; color: red;">
-                    <p>⏸️</p>
+                <td style="text-align: center; color: #f0ad4e;">
+                    <p style="font-size: 1.15em;">‖</p>
                     <p>Need Assistance</p>
                 </td>
                 <td style="text-align: right;">25%</td>
             </tr>
             <tr style="text-align: center;">
                 <td style="text-align: left;">Recycle Broken Hardware</td>
-                <td style="text-align: center; color: lime;">
-                    <p>☑️</p>
+                <td style="text-align: center; color: #5cb85c;">
+                    <p style="font-size: 1.15em;">✓</p>
                     <p>Completed</p>
                 </td>
                 <td style="text-align: right;">100%</td>
