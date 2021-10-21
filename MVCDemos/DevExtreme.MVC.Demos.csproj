@@ -841,6 +841,7 @@
     <Content Include="Content\DemosStyles\HtmlEditor\Mentions.css" />
     <Content Include="Content\DemosStyles\HtmlEditor\Overview.css" />
     <Content Include="Content\DemosStyles\HtmlEditor\ToolbarCustomization.css" />
+    <Content Include="Content\DemosStyles\HtmlEditor\Tables.css" />
     <Content Include="Content\DemosStyles\Localization\UsingIntl.css" />
     <Content Include="Content\DemosStyles\Localization\UsingGlobalize.css" />
     <Content Include="Content\DemosStyles\List\GroupedList.css" />

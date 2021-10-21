@@ -4,16 +4,12 @@
 
 @(Html.DevExtreme().HtmlEditor()
     .ID("html-editor")
-    .Height(350)
+    .Height(750)
     .Value(new JS("markup"))
+    .TableContextMenu(t => t.Enabled(true))
+    .TableResizing(t => t.Enabled(true))
     .Toolbar(toolbar => toolbar.Items(
         items => {
-            items.Add()
-                .Name("header")
-                .AcceptedValues(new JS("[false, 1, 2, 3, 4, 5]"));
-
-            items.Add().Name(HtmlEditorToolbarItem.Separator);
-
             items.Add().Name(HtmlEditorToolbarItem.Bold);
 
             items.Add().Name(HtmlEditorToolbarItem.Color);
@@ -30,50 +26,162 @@
 
             items.Add().Name(HtmlEditorToolbarItem.InsertTable);
 
-            items.Add().Name(HtmlEditorToolbarItem.DeleteTable);
+            items.Add().Name(HtmlEditorToolbarItem.InsertHeaderRow);
 
             items.Add().Name(HtmlEditorToolbarItem.InsertRowAbove);
 
             items.Add().Name(HtmlEditorToolbarItem.InsertRowBelow);
 
-            items.Add().Name(HtmlEditorToolbarItem.DeleteRow);
+            items.Add().Name(HtmlEditorToolbarItem.Separator);
 
             items.Add().Name(HtmlEditorToolbarItem.InsertColumnLeft);
 
             items.Add().Name(HtmlEditorToolbarItem.InsertColumnRight);
 
+            items.Add().Name(HtmlEditorToolbarItem.Separator);
+
             items.Add().Name(HtmlEditorToolbarItem.DeleteColumn);
+
+            items.Add().Name(HtmlEditorToolbarItem.DeleteRow);
+
+            items.Add().Name(HtmlEditorToolbarItem.DeleteTable);
+
+            items.Add().Name(HtmlEditorToolbarItem.Separator);
+
+            items.Add().Name(HtmlEditorToolbarItem.CellProperties);
+
+            items.Add().Name(HtmlEditorToolbarItem.TableProperties);
         })
     )
 )
 
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Value(true)
+            .Text("Allow Table Resizing")
+            .OnValueChanged("change_tableResizing")
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Value(true)
+            .Text("Enable Table Context Menu")
+            .OnValueChanged("change_tableContextMenu")
+        )
+    </div>
+</div>
+
 <script>
+    function change_tableResizing(e) {
+        $("#html-editor")
+            .dxHtmlEditor("instance")
+            .option("tableResizing.enabled", e.value);
+    }
+
+    function change_tableContextMenu(e) {
+        $("#html-editor")
+            .dxHtmlEditor("instance")
+            .option("tableContextMenu.enabled", e.value);
+    }
+
     var markup = `
         <h2>
             Hardware Upgrade
         </h2>
         <br>
         <table>
-            <tr style="font-weight: bold;">
-                <td style="text-align: left;">Task Subject</td>
-                <td style="text-align: center;">Status</td>
-                <td style="text-align: right;">Progress</td>
-            </tr>
-            <tr style="text-align: center;">
-                <td style="text-align: left;">Upgrade Server Hardware</td>
-                <td style="text-align: center;">In Progress</td>
-                <td style="text-align: right;">45%</td>
-            </tr>
-            <tr style="text-align: center;">
-                <td style="text-align: left;">Upgrade Personal Computers</td>
-                <td style="text-align: center; color: red;">Need Assistance</td>
-                <td style="text-align: right;">80%</td>
-            </tr>
-            <tr style="text-align: center;">
-                <td style="text-align: left;">Approve Personal Computer Upgrade Plan</td>
-                <td style="text-align: center; color: lime;">Completed</td>
-                <td style="text-align: right;">100%</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th style="text-align: left; width: 320px;">Task Subject</th>
+                    <th style="text-align: center;">Status</th>
+                    <th style="text-align: right;">Progress</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="text-align: center;">
+                    <td style="text-align: left; width: 320px;">Approve Personal Computer Upgrade Plan</td>
+                    <td style="text-align: center; color: #5cb85c;">
+                        <p style="font-size: 1.15em;">✓</p>
+                        <p>Completed</p>
+                    </td>
+                    <td style="text-align: right;">100%</td>
+                </tr>
+                <tr style="text-align: center;">
+                    <td style="text-align: left; width: 320px;">Prepare workspaces</td>
+                    <td style="text-align: center; color: #5cb85c;">
+                        <p style="font-size: 1.15em;">✓</p>
+                        <p>Completed</p>
+                    </td>
+                    <td style="text-align: right;">100%</td>
+                </tr>
+                <tr style="text-align: center;">
+                    <td style="text-align: left; width: 320px;">Upgrade Server Hardware</td>
+                    <td style="text-align: center;">
+                        <p style="font-size: 1.15em;">⟳</p>
+                        <p>In Progress</p>
+                    </td>
+                    <td style="text-align: right;">45%</td>
+                </tr>     
+                <tr style="text-align: center;">
+                    <td style="text-align: left; width: 320px;">Upgrade Personal Computers</td>
+                    <td style="text-align: center; color: #f0ad4e;">
+                        <p style="font-size: 1.15em;">‖</p>
+                        <p>Need Assistance</p>
+                    </td>
+                    <td style="text-align: right;">80%</td>
+                </tr>
+                <tr style="text-align: center;">
+                    <td style="text-align: left; width: 320px;">Replace HDD with SSD</td>
+                    <td style="text-align: center;">
+                        <p style="font-size: 1.15em;">⟳</p>
+                        <p>In Progress</p>
+                    </td>
+                    <td style="text-align: right;">80%</td>
+                </tr>
+                <tr style="text-align: center;">
+                    <td style="text-align: left; width: 320px;">Purchase a New Server</td>
+                    <td style="text-align: center; color: #d9534f;">
+                        <p style="font-size: 1.15em;">✖</p>
+                        <p>Canceled</p>
+                    </td>
+                    <td style="text-align: right;">15%</td>
+                </tr>
+                <tr style="text-align: center;">
+                    <td style="text-align: left; width: 320px;">Purchase Laptops</td>
+                    <td style="text-align: center; color: #5cb85c;">
+                        <p style="font-size: 1.15em;">✓</p>
+                        <p>Completed</p>
+                    </td>
+                    <td style="text-align: right;">100%</td>
+                </tr>
+                <tr style="text-align: center;">
+                    <td style="text-align: left; width: 320px;">Prepare a list of necessary devices for testing</td>
+                    <td style="text-align: center; color: #5cb85c;">
+                        <p style="font-size: 1.15em;">✓</p>
+                        <p>Completed</p>
+                    </td>
+                    <td style="text-align: right;">100%</td>
+                </tr>
+                <tr style="text-align: center;">
+                    <td style="text-align: left; width: 320px;">Purchase devices for testing</td>
+                    <td style="text-align: center; color: #f0ad4e;">
+                        <p style="font-size: 1.15em;">‖</p>
+                        <p>Need Assistance</p>
+                    </td>
+                    <td style="text-align: right;">25%</td>
+                </tr>
+                <tr style="text-align: center;">
+                    <td style="text-align: left; width: 320px;">Recycle Broken Hardware</td>
+                    <td style="text-align: center; color: #5cb85c;">
+                        <p style="font-size: 1.15em;">✓</p>
+                        <p>Completed</p>
+                    </td>
+                    <td style="text-align: right;">100%</td>
+                </tr>
+            </tbody>
         </table>
+        <br>
     `;
 </script>
