@@ -6,7 +6,7 @@ const markup = `
     <table>
         <thead>
             <tr>
-                <th style="text-align: left;">Task Subject</th>
+                <th style="text-align: left; width: 320px;">Task Subject</th>
                 <th style="text-align: center;">Status</th>
                 <th style="text-align: right;">Progress</th>
             </tr>
@@ -45,7 +45,7 @@ const markup = `
                 <td style="text-align: right;">80%</td>
             </tr>
             <tr style="text-align: center;">
-                <td style="text-align: left;">Replace HDD with SSD</td>
+                <td style="text-align: left; width: 320px;">Replace HDD with SSD</td>
                 <td style="text-align: center;">
                     <p style="font-size: 1.15em;">⟳</p>
                     <p>In Progress</p>
@@ -53,7 +53,7 @@ const markup = `
                 <td style="text-align: right;">80%</td>
             </tr>
             <tr style="text-align: center;">
-                <td style="text-align: left;">Purchase a New Server</td>
+                <td style="text-align: left; width: 320px;">Purchase a New Server</td>
                 <td style="text-align: center; color: #d9534f;">
                     <p style="font-size: 1.15em;">✖</p>
                     <p>Canceled</p>
@@ -61,7 +61,7 @@ const markup = `
                 <td style="text-align: right;">15%</td>
             </tr>
             <tr style="text-align: center;">
-                <td style="text-align: left;">Purchase Laptops</td>
+                <td style="text-align: left; width: 320px;">Purchase Laptops</td>
                 <td style="text-align: center; color: #5cb85c;">
                     <p style="font-size: 1.15em;">✓</p>
                     <p>Completed</p>
@@ -69,7 +69,7 @@ const markup = `
                 <td style="text-align: right;">100%</td>
             </tr>
             <tr style="text-align: center;">
-                <td style="text-align: left;">Prepare a list of necessary devices for testing</td>
+                <td style="text-align: left; width: 320px;">Prepare a list of necessary devices for testing</td>
                 <td style="text-align: center; color: #5cb85c;">
                     <p style="font-size: 1.15em;">✓</p>
                     <p>Completed</p>
@@ -77,7 +77,7 @@ const markup = `
                 <td style="text-align: right;">100%</td>
             </tr>
             <tr style="text-align: center;">
-                <td style="text-align: left;">Purchase devices for testing</td>
+                <td style="text-align: left; width: 320px;">Purchase devices for testing</td>
                 <td style="text-align: center; color: #f0ad4e;">
                     <p style="font-size: 1.15em;">‖</p>
                     <p>Need Assistance</p>
@@ -85,7 +85,7 @@ const markup = `
                 <td style="text-align: right;">25%</td>
             </tr>
             <tr style="text-align: center;">
-                <td style="text-align: left;">Recycle Broken Hardware</td>
+                <td style="text-align: left; width: 320px;">Recycle Broken Hardware</td>
                 <td style="text-align: center; color: #5cb85c;">
                     <p style="font-size: 1.15em;">✓</p>
                     <p>Completed</p>
