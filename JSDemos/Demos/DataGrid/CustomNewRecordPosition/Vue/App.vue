@@ -133,7 +133,7 @@ export default {
 
 <style>
 #gridContainer {
-  max-height: 440px;
+  height: 440px;
 }
 
 .options {
