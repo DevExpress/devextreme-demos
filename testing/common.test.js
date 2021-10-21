@@ -108,7 +108,7 @@ const execTestCafeCode = (t, code) => {
         if (visualTestStyles) {
           await execCode(visualTestStyles);
         }
-
+debugger;
         if (approach === 'Angular') {
           await waitForAngularLoading();
         }
