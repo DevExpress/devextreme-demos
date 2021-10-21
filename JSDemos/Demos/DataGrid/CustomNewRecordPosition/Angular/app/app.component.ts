@@ -34,6 +34,7 @@ export class AppComponent {
 
   constructor(service: Service) {
     this.dataSource = service.getDataSource();
+    this.onAddButtonClick = this.onAddButtonClick.bind(this);
   }
 
   onAddButtonClick(e) {
