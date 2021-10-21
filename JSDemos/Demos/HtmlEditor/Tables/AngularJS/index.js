@@ -1,6 +1,9 @@
 const DemoApp = angular.module('DemoApp', ['dx']);
 
 DemoApp.controller('DemoController', ($scope) => {
+  $scope.isContextMenuEnabled = true;
+  $scope.isResizingAllowed = true;
+
   $scope.htmlEditorOptions = {
     value: markup,
     height: 350,
@@ -16,6 +19,24 @@ DemoApp.controller('DemoController', ($scope) => {
         'insertRowAbove', 'insertRowBelow', 'deleteRow',
         'insertColumnLeft', 'insertColumnRight', 'deleteColumn',
       ],
+    },
+    bindingOptions: {
+      'tableContextMenu.enabled': 'isContextMenuEnabled',
+      'tableResizing.enabled': 'isResizingAllowed',
+    },
+  };
+
+  $scope.tableResizingSwitcher = {
+    text: 'Allow Table Resizing',
+    bindingOptions: {
+      value: 'isResizingAllowed',
+    },
+  };
+
+  $scope.tableContextMenuSwitcher = {
+    text: 'Enable Table Context Menu',
+    bindingOptions: {
+      value: 'isContextMenuEnabled',
     },
   };
 });
