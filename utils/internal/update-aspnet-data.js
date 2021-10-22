@@ -1,7 +1,4 @@
-'use strict';
-
-/* eslint node/no-unsupported-features/es-syntax: [ warn, { version: ">=10" } ] */
-
+/* eslint-disable no-console */
 const path = require('path');
 const fs = require('fs');
 

@@ -1,5 +1,4 @@
-'use strict';
-
+/* eslint-disable no-console */
 const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');
@@ -34,10 +33,22 @@ const addDemo = async (category, group, meta) => {
     } else {
       demoPath = path.join(baseDemosDir, widget.name, demo.newName.replace(/ /g, ''));
     }
-    menuMetaUtils.addDemo(meta, category.name, group.name, demo.newName, widget.newName ? widget.newName : widget.name);
+    menuMetaUtils.addDemo(
+      meta,
+      category.name,
+      group.name,
+      demo.newName,
+      widget.newName ? widget.newName : widget.name,
+    );
     missingApproaches = existingApproaches;
   } else {
-    demoPath = fileSystemUtils.getDemoPathByMeta(category.name, group.name, demo.name, baseDemosDir, meta);
+    demoPath = fileSystemUtils.getDemoPathByMeta(
+      category.name,
+      group.name,
+      demo.name,
+      baseDemosDir,
+      meta,
+    );
     missingApproaches = fileSystemUtils.getMissingApproaches(demoPath, existingApproaches);
   }
   if (missingApproaches.length === 0) {
@@ -47,9 +58,21 @@ const addDemo = async (category, group, meta) => {
   const approaches = await promptsQuestions.askApproaches(missingApproaches);
   const newOrExisting = await promptsQuestions.askNewOrExisting(meta);
   if (newOrExisting.choice === 'existing') {
-    menuMetaUtils.updateDemoProperties(meta, category.name, group.name, demo.newName, newOrExisting);
+    menuMetaUtils.updateDemoProperties(
+      meta,
+      category.name,
+      group.name,
+      demo.newName,
+      newOrExisting,
+    );
   }
-  fileSystemUtils.copyDemos(demoPath, approaches.selectedApproaches, newOrExisting, meta, baseDemosDir);
+  fileSystemUtils.copyDemos(
+    demoPath,
+    approaches.selectedApproaches,
+    newOrExisting,
+    meta,
+    baseDemosDir,
+  );
   fileSystemUtils.saveMetaDataFile(menuMetaFilePath, meta);
   console.log(demoPath);
   openDemoInEditor(demoPath);

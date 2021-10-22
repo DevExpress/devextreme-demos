@@ -10,6 +10,7 @@ module.exports = {
     browser: true,
     es6: true,
   },
+  parser: 'babel-eslint',
   parserOptions: {
     sourceType: 'module',
     'ecmaVersion': 2018,
@@ -373,6 +374,9 @@ module.exports = {
       'JSDemos/Demos/**/jQuery/*.*',
       'JSDemos/Demos/**/AngularJS/*.*',
       'JSDemos/Demos/**/Knockout/*.*',
+      'utils/templates/jQuery/**/*.*',
+      'utils/templates/AngularJS/**/*.*',
+      'utils/templates/Knockout/**/*.*',
     ],
     env: {
       jquery: true,
@@ -392,8 +396,10 @@ module.exports = {
       },
     }],
   }, {
-    files: 'JSDemos/Demos/**/React/*.*',
-    parser: 'babel-eslint',
+    files: [
+      'JSDemos/Demos/**/React/*.*',
+      'utils/templates/React/*.*',
+    ],
     extends: [
       'plugin:react/recommended',
     ],
@@ -506,7 +512,12 @@ module.exports = {
       ],
     },
   }, {
-    files: ['JSDemos/Demos/**/Vue/*.vue', 'JSDemos/Demos/**/Vue/*.js'],
+    files: [
+      'JSDemos/Demos/**/Vue/*.vue',
+      'JSDemos/Demos/**/Vue/*.js',
+      'utils/templates/Vue/*.vue',
+      'utils/templates/Vue/*.js',
+    ],
     extends: [
       'plugin:vue/recommended',
     ],

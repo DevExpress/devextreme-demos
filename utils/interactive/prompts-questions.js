@@ -1,5 +1,4 @@
-'use strict';
-
+/* eslint-disable no-console */
 const path = require('path');
 const prompts = require('prompts');
 
@@ -161,18 +160,33 @@ const getLinkRepositoriesQuestions = () => [
   },
 ];
 
-const askCategory = async (menuMetaData) => prompts(getCategoryQuestions(menuMetaData), { onCancel });
-const askGroup = async (menuMetaData, category) => prompts(getGroupQuestions(menuMetaData, category), { onCancel });
+const askCategory = async (menuMetaData) => prompts(
+  getCategoryQuestions(menuMetaData), { onCancel },
+);
 
-const askDemo = async (menuMetaData, category, group) => prompts(getDemoQuestions(menuMetaData, category, group), { onCancel });
+const askGroup = async (menuMetaData, category) => prompts(
+  getGroupQuestions(menuMetaData, category), { onCancel },
+);
 
-const askWidget = async (baseDemosDir) => prompts(getWidgetQuestions(baseDemosDir), { onCancel });
+const askDemo = async (menuMetaData, category, group) => prompts(
+  getDemoQuestions(menuMetaData, category, group), { onCancel },
+);
 
-const askApproaches = async (missingApproaches) => prompts(getApproachesQuestions(missingApproaches), { onCancel });
+const askWidget = async (baseDemosDir) => prompts(
+  getWidgetQuestions(baseDemosDir), { onCancel },
+);
 
-const askNewOrExisting = async (menuMetaData) => prompts(getNewOrExistingQuestions(menuMetaData), { onCancel });
+const askApproaches = async (missingApproaches) => prompts(
+  getApproachesQuestions(missingApproaches), { onCancel },
+);
 
-const askDemoToUpdate = async (menuMetaData) => prompts(getDemoToUpdateQuestions(menuMetaData), { onCancel });
+const askNewOrExisting = async (menuMetaData) => prompts(
+  getNewOrExistingQuestions(menuMetaData), { onCancel },
+);
+
+const askDemoToUpdate = async (menuMetaData) => prompts(
+  getDemoToUpdateQuestions(menuMetaData), { onCancel },
+);
 
 const askLinkRepositories = async () => prompts(getLinkRepositoriesQuestions(), { onCancel });
 
