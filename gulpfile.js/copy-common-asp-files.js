@@ -1,4 +1,4 @@
-'use strict';
+/* eslint-disable import/no-extraneous-dependencies */
 
 const { src, dest, parallel } = require('gulp');
 const minify = require('gulp-minify');

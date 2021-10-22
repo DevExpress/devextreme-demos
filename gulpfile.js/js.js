@@ -1,7 +1,4 @@
-'use strict';
-
 const { join } = require('path');
-const { series, src, dest } = require('gulp');
 const { init } = require('../utils/shared/config-helper');
 const createConfig = require('../utils/internal/create-config');
 
@@ -14,11 +11,7 @@ function prepareJs(callback) {
   callback();
 }
 
-exports.js = series(
-  prepareJs,
-  () => src('utils/.eslintrc.js')
-    .pipe(dest('gulpfile.js')),
-);
+exports.js = prepareJs;
 
 exports.bundles = function bundles(callback) {
   createConfig.useBundles = true;
