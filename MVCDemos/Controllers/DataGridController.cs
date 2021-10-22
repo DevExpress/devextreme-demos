@@ -275,5 +275,9 @@ namespace DevExtreme.MVC.Demos.Controllers {
         public ActionResult EditStateManagement() {
             return View();
         }
+
+        public ActionResult CustomNewRecordPosition() {
+            return View();
+        }
     }
 }

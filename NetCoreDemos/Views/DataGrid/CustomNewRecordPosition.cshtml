@@ -1,0 +1,109 @@
+@(Html.DevExtreme().DataGrid()
+    .ID("gridContainer")
+    .DataSource(d => d.Mvc()
+        .Controller("DataGridWebApi")
+        .LoadAction("Orders")
+        .InsertAction("InsertOrder")
+        .UpdateAction("UpdateOrder")
+        .DeleteAction("DeleteOrder")
+        .Key("OrderID")
+    )
+    .ShowBorders(true)
+    .ColumnAutoWidth(true)
+       .Editing(editing => {
+           editing.Mode(GridEditMode.Row);
+           editing.AllowAdding(true);
+           editing.AllowDeleting(true);
+           editing.AllowUpdating(true);
+           editing.ConfirmDelete(false);
+           editing.UseIcons(true);
+           editing.NewRowPosition(GridNewRowPosition.ViewportTop);
+       })
+    .RemoteOperations(true)
+    .Columns(columns => {
+        columns.Add()
+            .DataField("OrderID")
+            .AllowEditing(false);
+        columns.Add()
+            .DataField("OrderDate")
+            .DataType(GridColumnDataType.Date)
+            .ValidationRules(v => v.AddRequired());
+        columns.Add().DataField("ShipName");
+        columns.Add().DataField("ShipCity");
+        columns.Add().DataField("ShipPostalCode");
+        columns.Add().DataField("ShipCountry");
+        columns.Add()
+            .Type(GridCommandColumnType.Buttons)
+            .Buttons(b => {
+                b.Add()
+                    .Icon("add")
+                    .OnClick("addButtonClicked")
+                    .Visible(new JS("addButtonVisible"));
+                b.Add().Name("delete");
+                b.Add().Name("save");
+                b.Add().Name("cancel");
+            });
+    })
+    .Toolbar(toolbar => {
+        toolbar.Items(i => {
+            i.Add()
+                .Name(DataGridToolbarItem.AddRowButton)
+                .ShowText(ToolbarItemShowTextMode.Always);
+        });
+    })
+    .OnRowInserted("onRowInserted")
+)
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option-container">
+        <div class="option">
+            <span>New Row Position</span>
+            @(Html.DevExtreme().SelectBox()
+                .ID("newRowPositionSelectBox")
+                .Value("viewportTop")
+                .Items(new[] { "first", "last", "pageTop", "pageBottom", "viewportTop", "viewportBottom" })
+                .OnValueChanged("newRowPositionChanged")
+            )
+        </div>
+        <div class="option">
+            <span>Scrolling Mode</span>
+            @(Html.DevExtreme().SelectBox()
+                .ID("scrollingModeSelectBox")
+                .Value("standard")
+                .Items(new[] { "standard", "virtual" })
+                .OnValueChanged("scrollingModeChanged")
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    function addButtonClicked(e) {
+        var dataGrid = e.component;
+        var key = new DevExpress.data.Guid().toString();
+        dataGrid.option('editing.changes', [{
+            key,
+            type: 'insert',
+            insertAfterKey: e.row.key,
+        }]);
+        dataGrid.option('editing.editRowKey', key);
+    }
+
+    function addButtonVisible(e) {
+        return !e.row.isEditing;
+    }
+
+    function newRowPositionChanged(e) {
+        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+        dataGrid.option('editing.newRowPosition', e.value);
+    }
+
+    function scrollingModeChanged(e) {
+        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+        dataGrid.option('scrolling.mode', e.value);
+    }
+
+    function onRowInserted(e) {
+        e.component.navigateToRow(e.key);
+    }
+</script>

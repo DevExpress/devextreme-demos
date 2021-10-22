@@ -763,6 +763,7 @@
     <Content Include="Content\DemosStyles\DataGrid\ColumnsBasedOnADataSource.css" />
     <Content Include="Content\DemosStyles\DataGrid\ColumnTemplate.css" />
     <Content Include="Content\DemosStyles\DataGrid\CustomizeCommandColumns.css" />
+    <Content Include="Content\DemosStyles\DataGrid\CustomNewRecordPosition.css" />
     <Content Include="Content\DemosStyles\DataGrid\CustomSummaries.css" />
     <Content Include="Content\DemosStyles\DataGrid\FilterPanel.css" />
     <Content Include="Content\DemosStyles\DataGrid\FocusedRow.css" />
@@ -841,6 +842,7 @@
     <Content Include="Content\DemosStyles\HtmlEditor\Mentions.css" />
     <Content Include="Content\DemosStyles\HtmlEditor\Overview.css" />
     <Content Include="Content\DemosStyles\HtmlEditor\ToolbarCustomization.css" />
+    <Content Include="Content\DemosStyles\HtmlEditor\Tables.css" />
     <Content Include="Content\DemosStyles\Localization\UsingIntl.css" />
     <Content Include="Content\DemosStyles\Localization\UsingGlobalize.css" />
     <Content Include="Content\DemosStyles\List\GroupedList.css" />
@@ -2169,6 +2171,7 @@
     <Content Include="Views\Gantt\Sorting.cshtml" />
     <Content Include="Views\Gantt\FilterRow.cshtml" />
     <Content Include="Views\Gantt\HeaderFilter.cshtml" />
+    <Content Include="Views\DataGrid\CustomNewRecordPosition.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
