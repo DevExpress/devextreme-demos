@@ -16,8 +16,8 @@
               type: 'required'
             }
           ]"
-      ></dx-validator>
-    </dx-text-box>
+        ></dx-validator>
+      </dx-text-box>
       <dx-text-box
         value=""
         width="100%"
@@ -25,15 +25,15 @@
         placeholder="Type.."
         [stylingMode]="stylingMode"
         [labelMode]="labelMode"
-    >
-      <dx-validator
-        [validationRules]="[
-          {
-            type: 'required'
-          }
-        ]"
-      ></dx-validator>
-    </dx-text-box>
+      >
+        <dx-validator
+          [validationRules]="[
+            {
+              type: 'required'
+            }
+          ]"
+        ></dx-validator>
+      </dx-text-box>
     </div>
     <div class="right">
       <dx-date-box
@@ -93,13 +93,13 @@
   <div class="editors-container">
     <div class="left">
       <dx-text-box
-          value=""
-          width="100%"
-          label="Phone"
-          mask="+1 (000) 000-0000"
-          [maskRules]="phoneRules"
-          [stylingMode]="stylingMode"
-          [labelMode]="labelMode"
+        value=""
+        width="100%"
+        label="Phone"
+        mask="+1 (000) 000-0000"
+        [maskRules]="phoneRules"
+        [stylingMode]="stylingMode"
+        [labelMode]="labelMode"
       >
         <dx-validator
           [validationRules]="[
@@ -112,11 +112,11 @@
     </div>
     <div class="right">
       <dx-date-box
-          width="100%"
-          label="Hire Date"
-          placeholder="Select.."
-          [stylingMode]="stylingMode"
-          [labelMode]="labelMode"
+        width="100%"
+        label="Hire Date"
+        placeholder="Select.."
+        [stylingMode]="stylingMode"
+        [labelMode]="labelMode"
       >
         <dx-validator
           [validationRules]="[
