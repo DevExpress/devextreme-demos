@@ -16,6 +16,8 @@ if (!/localhost/.test(document.location.host)) {
 })
 
 export class AppComponent {
+  notADate: { asd: number } = 'asd';
+
   value: Date = new Date(1981, 3, 27);
 
   now: Date = new Date();
