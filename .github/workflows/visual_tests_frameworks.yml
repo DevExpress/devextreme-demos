@@ -205,6 +205,9 @@ jobs:
 
     - name: Demos - Prepare bundles
       run: npm run prepare-bundles
+    
+    - name: Demos - Run tsc
+      run: tsc
 
     #Publish artifacts
     - name: Zip node_modules    
@@ -218,7 +221,7 @@ jobs:
           node_modules.7z
           bundles/
         retention-days: 1
-
+  
   testcafe:
     needs: build
     strategy:
