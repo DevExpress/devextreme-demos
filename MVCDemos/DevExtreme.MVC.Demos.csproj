@@ -763,6 +763,7 @@
     <Content Include="Content\DemosStyles\DataGrid\ColumnsBasedOnADataSource.css" />
     <Content Include="Content\DemosStyles\DataGrid\ColumnTemplate.css" />
     <Content Include="Content\DemosStyles\DataGrid\CustomizeCommandColumns.css" />
+    <Content Include="Content\DemosStyles\DataGrid\CustomNewRecordPosition.css" />
     <Content Include="Content\DemosStyles\DataGrid\CustomSummaries.css" />
     <Content Include="Content\DemosStyles\DataGrid\FilterPanel.css" />
     <Content Include="Content\DemosStyles\DataGrid\FocusedRow.css" />
