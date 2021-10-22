@@ -1,5 +1,5 @@
-'use strict';
-
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-console */
 const fs = require('fs');
 const { copySync } = require('fs-extra');
 const path = require('path');
@@ -12,7 +12,13 @@ class FileSystemUtils {
     if (newOrExisting.choice === 'new') {
       this.copyFilesFromBlankDemos(approaches, demoPath);
     } else {
-      this.copyFilesFromExistingDemos(approaches, demoPath, newOrExisting, menuMetaData, baseDemosDir);
+      this.copyFilesFromExistingDemos(
+        approaches,
+        demoPath,
+        newOrExisting,
+        menuMetaData,
+        baseDemosDir,
+      );
     }
     console.log('files for selected approaches were copied');
   }
@@ -52,7 +58,9 @@ class FileSystemUtils {
   getDemoPathByMeta(categoryName, groupName, demoName, baseDemosDir, menuMetaData) {
     const categoryIndex = menuMetaData.findIndex((x) => x.Name === categoryName);
     const groupIndex = menuMetaData[categoryIndex].Groups.findIndex((x) => x.Name === groupName);
-    const demo = menuMetaData[categoryIndex].Groups[groupIndex].Demos.find((x) => x.Name === demoName);
+    const demo = menuMetaData[categoryIndex]
+      .Groups[groupIndex]
+      .Demos.find((x) => x.Name === demoName);
     const result = path.join(baseDemosDir, demo.Widget, demo.Name);
     return result;
   }
