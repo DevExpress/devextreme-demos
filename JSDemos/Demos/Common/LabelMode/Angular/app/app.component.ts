@@ -32,7 +32,7 @@ export class AppComponent {
 
   labelMode = 'static';
 
-  birthDate = new Date(1981, 6, 3);
+  birthDate = new Date(1981, 5, 3);
 
   positions: string[];
 

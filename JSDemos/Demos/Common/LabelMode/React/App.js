@@ -20,7 +20,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      birthDate: new Date(1981, 6, 3),
+      birthDate: new Date(1981, 5, 3),
       stylingMode: 'filled',
       labelMode: 'static',
     };

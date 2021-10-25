@@ -12,9 +12,9 @@
             placeholder="Type..."
             label="Name"
           >
-            <DxValidator
-              :validation-rules="[{ type: 'required' }]"
-            />
+            <DxValidator>
+              <DxRequiredRule/>
+            </DxValidator>
           </DxTextBox>
           <DxTextBox
             :styling-mode="stylingMode"
@@ -23,23 +23,23 @@
             placeholder="Type..."
             label="Address"
           >
-            <DxValidator
-              :validation-rules="[{ type: 'required' }]"
-            />
+            <DxValidator>
+              <DxRequiredRule/>
+            </DxValidator>
           </DxTextBox>
         </div>
         <div class="right">
           <DxDateBox
-            :value="birtDate"
+            :value="birthDate"
             :styling-mode="stylingMode"
             :label-mode="labelMode"
             width="100%"
             placeholder="Select..."
             label="Birth Date"
           >
-            <DxValidator
-              :validation-rules="[{ type: 'required' }]"
-            />
+            <DxValidator>
+              <DxRequiredRule/>
+            </DxValidator>
           </DxDateBox>
           <DxSelectBox
             :items="states"
@@ -49,9 +49,9 @@
             placeholder="Select..."
             label="State"
           >
-            <DxValidator
-              :validation-rules="[{ type: 'required' }]"
-            />
+            <DxValidator>
+              <DxRequiredRule/>
+            </DxValidator>
           </DxSelectBox>
         </div>
       </div>
@@ -66,9 +66,9 @@
           placeholder="Select..."
           label="Position"
         >
-          <DxValidator
-            :validation-rules="[{ type: 'required' }]"
-          />
+          <DxValidator>
+            <DxRequiredRule/>
+          </DxValidator>
         </DxTagBox>
       </div>
       <div class="editors-container">
@@ -81,9 +81,9 @@
             mask="+1 (000) 000-0000"
             label="Phone"
           >
-            <DxValidator
-              :validation-rules="[{ type: 'required' }]"
-            />
+            <DxValidator>
+              <DxRequiredRule/>
+            </DxValidator>
           </DxTextBox>
         </div>
         <div class="right">
@@ -94,9 +94,9 @@
             placeholder="Select..."
             label="Hire Date"
           >
-            <DxValidator
-              :validation-rules="[{ type: 'required' }]"
-            />
+            <DxValidator>
+              <DxRequiredRule/>
+            </DxValidator>
           </DxDateBox>
         </div>
       </div>
@@ -146,7 +146,10 @@ import DxTextArea from 'devextreme-vue/text-area';
 import DxTagBox from 'devextreme-vue/tag-box';
 import DxDateBox from 'devextreme-vue/date-box';
 import DxButton from 'devextreme-vue/button';
-import DxValidator from 'devextreme-vue/validator';
+import {
+  DxValidator,
+  DxRequiredRule,
+} from 'devextreme-vue/validator';
 import validationEngine from 'devextreme/ui/validation_engine';
 import notify from 'devextreme/ui/notify';
 
@@ -161,11 +164,12 @@ export default {
     DxDateBox,
     DxButton,
     DxValidator,
+    DxRequiredRule,
   },
   data() {
     setTimeout(() => validationEngine.validateGroup());
     return {
-      birthDate: new Date(1981, 6, 3),
+      birthDate: new Date(1981, 5, 3),
       stylingMode: 'filled',
       labelMode: 'static',
       text: 'Olivia loves to sell. She has been selling DevAV products since 2012.',
