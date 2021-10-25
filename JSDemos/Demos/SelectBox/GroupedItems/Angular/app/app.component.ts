@@ -28,7 +28,6 @@ export class AppComponent {
   constructor(service: Service) {
     this.fromUngroupedData = new DataSource({
       store: new ArrayStore({
-        type: 'array',
         data: service.getUngroupedData(),
         key: 'ID',
       }),
@@ -37,7 +36,6 @@ export class AppComponent {
 
     this.fromPregroupedData = new DataSource({
       store: new ArrayStore({
-        type: 'array',
         data: service.getPregroupedData(),
         key: 'ID',
       }),
