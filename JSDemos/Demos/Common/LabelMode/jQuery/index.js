@@ -16,7 +16,6 @@ $(() => {
   }).dxTextBox('instance');
 
   const place = $('#address').dxTextBox({
-    value: '',
     width: '100%',
     placeholder: 'Type...',
     label: 'Address',
@@ -49,7 +48,6 @@ $(() => {
 
   const state = $('#state').dxSelectBox({
     items: states,
-    value: '',
     width: '100%',
     placeholder: 'Select...',
     label: 'State',

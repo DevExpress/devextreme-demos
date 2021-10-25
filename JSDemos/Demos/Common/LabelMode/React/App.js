@@ -61,7 +61,6 @@ class App extends React.Component {
               </TextBox>
               <TextBox
                 stylingMode={this.state.stylingMode}
-                defaultValue=""
                 width="100%"
                 placeholder="Type..."
                 label="Address"
@@ -87,7 +86,6 @@ class App extends React.Component {
               <SelectBox
                 items={this.states}
                 stylingMode={this.state.stylingMode}
-                defaultValue=""
                 width="100%"
                 placeholder="Select..."
                 label="State"
@@ -132,7 +130,6 @@ class App extends React.Component {
               </TextBox>
               <DateBox
                 stylingMode={this.state.stylingMode}
-                defaultValue=""
                 width="100%"
                 placeholder="Select..."
                 label="Hire Date"
@@ -158,7 +155,6 @@ class App extends React.Component {
               <SelectBox
                 items={this.states}
                 stylingMode={this.state.stylingMode}
-                defaultValue=""
                 width="100%"
                 placeholder="Select..."
                 label="State"

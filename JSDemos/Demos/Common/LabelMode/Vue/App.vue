@@ -19,7 +19,6 @@
           <DxTextBox
             :styling-mode="stylingMode"
             :label-mode="labelMode"
-            value=""
             width="100%"
             placeholder="Type..."
             label="Address"
@@ -46,7 +45,6 @@
             :items="states"
             :styling-mode="stylingMode"
             :label-mode="labelMode"
-            value=""
             width="100%"
             placeholder="Select..."
             label="State"
@@ -72,71 +70,70 @@
             :validation-rules="[{ type: 'required' }]"
           />
         </DxTagBox>
-        <div class="editors-container">
-          <div class="left">
-            <DxTextBox
-              :styling-mode="stylingMode"
-              :label-mode="labelMode"
-              :mask-rules="phoneRules"
-              value=""
-              width="100%"
-              mask="+1 (000) 000-0000"
-              label="Phone"
-            >
-              <DxValidator
-                :validation-rules="[{ type: 'required' }]"
-              />
-            </DxTextBox>
-          </div>
-          <div class="right">
-            <DxDateBox
-              :styling-mode="stylingMode"
-              :label-mode="labelMode"
-              width="100%"
-              placeholder="Select..."
-              label="Hire Date"
-            >
-              <DxValidator
-                :validation-rules="[{ type: 'required' }]"
-              />
-            </DxDateBox>
-          </div>
-        </div>
-        <div class="center">
-          <DxTextArea
+      </div>
+      <div class="editors-container">
+        <div class="left">
+          <DxTextBox
             :styling-mode="stylingMode"
             :label-mode="labelMode"
-            :value="text"
+            :mask-rules="phoneRules"
             width="100%"
-            placeholder="Type..."
-            label="Notes"
-          />
+            mask="+1 (000) 000-0000"
+            label="Phone"
+          >
+            <DxValidator
+              :validation-rules="[{ type: 'required' }]"
+            />
+          </DxTextBox>
         </div>
-        <div class="center">
-          <DxButton
-            :on-click="validateClick"
-            text="Save"
-            type="default"
-            class="validate"
-          />
+        <div class="right">
+          <DxDateBox
+            :styling-mode="stylingMode"
+            :label-mode="labelMode"
+            width="100%"
+            placeholder="Select..."
+            label="Hire Date"
+          >
+            <DxValidator
+              :validation-rules="[{ type: 'required' }]"
+            />
+          </DxDateBox>
         </div>
       </div>
-      <div class="options">
-        <div class="caption">Options</div>
-        <div class="option">
-          <label>Styling Mode</label>
-          <DxSelectBox
-            :items="[ 'outlined', 'filled', 'underlined' ]"
-            v-model:value="stylingMode"
-          />
-        </div>
-        <div class="option">
-          <label>Label Mode</label>
-          <DxSelectBox
-            :items="[ 'static', 'floating', 'hidden' ]"
-            v-model:value="labelMode"
-          />
-        </div>
+      <div class="center">
+        <DxTextArea
+          :styling-mode="stylingMode"
+          :label-mode="labelMode"
+          :value="text"
+          width="100%"
+          placeholder="Type..."
+          label="Notes"
+        />
+      </div>
+      <div class="center">
+        <DxButton
+          :on-click="validateClick"
+          text="Save"
+          type="default"
+          class="validate"
+        />
+      </div>
+    </div>
+    <div class="options">
+      <div class="caption">Options</div>
+      <div class="option">
+        <label>Styling Mode</label>
+        <DxSelectBox
+          :items="[ 'outlined', 'filled', 'underlined' ]"
+          v-model:value="stylingMode"
+        />
+      </div>
+      <div class="option">
+        <label>Label Mode</label>
+        <DxSelectBox
+          :items="[ 'static', 'floating', 'hidden' ]"
+          v-model:value="labelMode"
+        />
       </div>
     </div>
   </div>
