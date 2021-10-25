@@ -1,4 +1,4 @@
-DevExtreme HTML/Markdown Editor allows users to work with tables. This demo illustrates table resize support and table management with the toolbar, context menu, and in code.
+DevExtreme HTML/Markdown Editor allows users to create and manage tables. This demo illustrates table resize support and table management with the toolbar, context menu, and in code.
 
 ## Manage Tables with the Toolbar
 
@@ -32,4 +32,4 @@ You can perform table-related actions in code. Use the [getModules](/Documentati
 
 If you want to allow users to resize table rows and columns, set the [tableResizing](/Documentation/ApiReference/UI_Components/dxHtmlEditor/Configuration/tableResizing/).[enabled](/Documentation/ApiReference/UI_Components/dxHtmlEditor/Configuration/tableResizing/#enabled) property to **true**. In this demo, you can use the Allow Table Resizing check box to change the property value.
 
-You can also set the **tableResizing**.[minColumnWidth](/Documentation/ApiReference/UI_Components/dxHtmlEditor/Configuration/tableResizing/#minColumnWidth) and **tableResizing**.[minRowHeight](/Documentation/ApiReference/UI_Components/dxHtmlEditor/Configuration/tableResizing/#minRowHeight) properties to limit the minimum column width and row height. If you do not specify these properties, the width and height are limited by the cell content. You can test the latter behavior in this demo if you reduce column width or row height to small values.
+You can also set the **tableResizing**.[minColumnWidth](/Documentation/ApiReference/UI_Components/dxHtmlEditor/Configuration/tableResizing/#minColumnWidth) and **tableResizing**.[minRowHeight](/Documentation/ApiReference/UI_Components/dxHtmlEditor/Configuration/tableResizing/#minRowHeight) properties to specify the minimum column width and row height. If you do not set these properties, the width and height are determined by the cell content. This demo illustrates the latter behavior when you reduce column width or row height to small values.
