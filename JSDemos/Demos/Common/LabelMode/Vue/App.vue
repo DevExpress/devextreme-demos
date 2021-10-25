@@ -9,7 +9,7 @@
             :label-mode="labelMode"
             value="Olivia Peyton"
             width="100%"
-            placeholder="Type.."
+            placeholder="Type..."
             label="Name"
           >
             <DxValidator
@@ -21,8 +21,8 @@
             :label-mode="labelMode"
             value=""
             width="100%"
-            placeholder="Type.."
-            label="Adress"
+            placeholder="Type..."
+            label="Address"
           >
             <DxValidator
               :validation-rules="[{ type: 'required' }]"
@@ -35,7 +35,7 @@
             :styling-mode="stylingMode"
             :label-mode="labelMode"
             width="100%"
-            placeholder="Select.."
+            placeholder="Select..."
             label="Birth Date"
           >
             <DxValidator
@@ -48,7 +48,7 @@
             :label-mode="labelMode"
             value=""
             width="100%"
-            placeholder="Select.."
+            placeholder="Select..."
             label="State"
           >
             <DxValidator
@@ -65,7 +65,7 @@
           :styling-mode="stylingMode"
           :label-mode="labelMode"
           width="100%"
-          placeholder="Select.."
+          placeholder="Select..."
           label="Position"
         >
           <DxValidator
@@ -93,7 +93,7 @@
               :styling-mode="stylingMode"
               :label-mode="labelMode"
               width="100%"
-              placeholder="Select.."
+              placeholder="Select..."
               label="Hire Date"
             >
               <DxValidator
@@ -108,7 +108,7 @@
             :label-mode="labelMode"
             :value="text"
             width="100%"
-            placeholder="Type.."
+            placeholder="Type..."
             label="Notes"
           />
         </div>

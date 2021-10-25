@@ -7,7 +7,7 @@ $(() => {
   const name = $('#name').dxTextBox({
     value: 'Olivia Peyton',
     width: '100%',
-    placeholder: 'Type..',
+    placeholder: 'Type...',
     label: 'Name',
   }).dxValidator({
     validationRules: [{
@@ -15,11 +15,11 @@ $(() => {
     }],
   }).dxTextBox('instance');
 
-  const place = $('#adress').dxTextBox({
+  const place = $('#address').dxTextBox({
     value: '',
     width: '100%',
-    placeholder: 'Type..',
-    label: 'Adress',
+    placeholder: 'Type...',
+    label: 'Address',
   }).dxValidator({
     validationRules: [{
       type: 'required',
@@ -29,7 +29,7 @@ $(() => {
   const birthDate = $('#birthDate').dxDateBox({
     width: '100%',
     label: 'Birth Date',
-    placeholder: 'Select..',
+    placeholder: 'Select...',
     value: '6/3/1981',
   }).dxValidator({
     validationRules: [{
@@ -40,7 +40,7 @@ $(() => {
   const hireDate = $('#hireDate').dxDateBox({
     width: '100%',
     label: 'Hire Date',
-    placeholder: 'Select..',
+    placeholder: 'Select...',
   }).dxValidator({
     validationRules: [{
       type: 'required',
@@ -51,7 +51,7 @@ $(() => {
     items: states,
     value: '',
     width: '100%',
-    placeholder: 'Select..',
+    placeholder: 'Select...',
     label: 'State',
   }).dxValidator({
     validationRules: [{
@@ -62,7 +62,7 @@ $(() => {
   const position = $('#position').dxTagBox({
     items: positions,
     value: ['Sales Manager'],
-    placeholder: 'Select..',
+    placeholder: 'Select...',
     multiline: false,
     width: '100%',
     label: 'Position',
@@ -88,7 +88,7 @@ $(() => {
   const notes = $('#notes').dxTextArea({
     value: 'Olivia loves to sell. She has been selling DevAV products since 2012.',
     width: '100%',
-    placeholder: 'Type..',
+    placeholder: 'Type...',
     label: 'Notes',
   }).dxTextArea('instance');
 

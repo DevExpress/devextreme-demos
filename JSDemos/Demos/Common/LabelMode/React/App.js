@@ -51,7 +51,7 @@ class App extends React.Component {
                 stylingMode={this.state.stylingMode}
                 defaultValue="Olivia Peyton"
                 width="100%"
-                placeholder="Type.."
+                placeholder="Type..."
                 label="Name"
                 labelMode={this.state.labelMode}
               >
@@ -63,8 +63,8 @@ class App extends React.Component {
                 stylingMode={this.state.stylingMode}
                 defaultValue=""
                 width="100%"
-                placeholder="Type.."
-                label="Adress"
+                placeholder="Type..."
+                label="Address"
                 labelMode={this.state.labelMode}
               >
                 <Validator>
@@ -89,7 +89,7 @@ class App extends React.Component {
                 stylingMode={this.state.stylingMode}
                 defaultValue=""
                 width="100%"
-                placeholder="Select.."
+                placeholder="Select..."
                 label="State"
                 labelMode={this.state.labelMode}
               >
@@ -106,7 +106,7 @@ class App extends React.Component {
               multiline={false}
               stylingMode={this.state.stylingMode}
               width="100%"
-              placeholder="Select.."
+              placeholder="Select..."
               label="Position"
               labelMode={this.state.labelMode}
             >
@@ -134,7 +134,7 @@ class App extends React.Component {
                 stylingMode={this.state.stylingMode}
                 defaultValue=""
                 width="100%"
-                placeholder="Select.."
+                placeholder="Select..."
                 label="Hire Date"
                 labelMode={this.state.labelMode}
               >
@@ -160,7 +160,7 @@ class App extends React.Component {
                 stylingMode={this.state.stylingMode}
                 defaultValue=""
                 width="100%"
-                placeholder="Select.."
+                placeholder="Select..."
                 label="State"
                 labelMode={this.state.labelMode}
               >
@@ -175,7 +175,7 @@ class App extends React.Component {
               stylingMode={this.state.stylingMode}
               defaultValue='Olivia loves to sell. She has been selling DevAV products since 2012.'
               width="100%"
-              placeholder="Type.."
+              placeholder="Type..."
               label="Notes"
               labelMode={this.state.labelMode}
             />
