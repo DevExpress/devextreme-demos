@@ -20,7 +20,7 @@ Open a pop-up window with table or cell customization options.
 
 To enable table management with the context menu, set the [tableContextMenu](/Documentation/ApiReference/UI_Components/dxHtmlEditor/Configuration/tableContextMenu/).[enabled](/Documentation/ApiReference/UI_Components/dxHtmlEditor/Configuration/tableContextMenu/#enabled) property to **true**. In this demo, you can click the Enable Table Context Menu check box under the HtmlEditor to enable or disable the property. When it is enabled, right-click a table cell to open the context menu.
 
-[note] The context menu cannot be used to create new tables because it is only available within table boundaries. If you want users to create tables, make sure to add the *"insertTable"* item to the toolbar.
+[note] The context menu cannot be used to create new tables because it is only available within table boundaries. If you want users to create tables, add the *"insertTable"* item to the toolbar.
 
 If you need to customize menu commands, override the **tableContextMenu**.[items](/Documentation/ApiReference/UI_Components/dxHtmlEditor/Configuration/tableContextMenu/items/) array. Refer to its description for a code example.
 
@@ -30,6 +30,6 @@ You can perform table-related actions in code. Use the [getModules](/Documentati
 
 ## Resize Tables
 
-If users should be able to resize table rows and columns, set the [tableResizing](/Documentation/ApiReference/UI_Components/dxHtmlEditor/Configuration/tableResizing/).[enabled](/Documentation/ApiReference/UI_Components/dxHtmlEditor/Configuration/tableResizing/#enabled) property to **true**. In this demo, you can use the Allow Table Resizing check box to change the property value.
+If you want to allow users to resize table rows and columns, set the [tableResizing](/Documentation/ApiReference/UI_Components/dxHtmlEditor/Configuration/tableResizing/).[enabled](/Documentation/ApiReference/UI_Components/dxHtmlEditor/Configuration/tableResizing/#enabled) property to **true**. In this demo, you can use the Allow Table Resizing check box to change the property value.
 
 You can also set the **tableResizing**.[minColumnWidth](/Documentation/ApiReference/UI_Components/dxHtmlEditor/Configuration/tableResizing/#minColumnWidth) and **tableResizing**.[minRowHeight](/Documentation/ApiReference/UI_Components/dxHtmlEditor/Configuration/tableResizing/#minRowHeight) properties to limit the minimum column width and row height. If you do not specify these properties, the width and height are limited by the cell content. You can test the latter behavior in this demo if you reduce column width or row height to small values.
