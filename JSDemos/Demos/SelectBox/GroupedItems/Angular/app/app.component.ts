@@ -28,16 +28,18 @@ export class AppComponent {
   constructor(service: Service) {
     this.fromUngroupedData = new DataSource({
       store: new ArrayStore({
+        type: 'array',
         data: service.getUngroupedData(),
-        key: 'id',
+        key: 'ID',
       }),
       group: 'Category',
     });
 
     this.fromPregroupedData = new DataSource({
       store: new ArrayStore({
+        type: 'array',
         data: service.getPregroupedData(),
-        key: 'id',
+        key: 'ID',
       }),
       map(item) {
         item.key = item.Category;
