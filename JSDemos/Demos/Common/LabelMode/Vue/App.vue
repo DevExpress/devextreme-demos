@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="title">Edit Employee Info</div>
+    <div class="title">Edit Profile</div>
     <div class="editors">
       <div class="editors-container">
         <div class="left">

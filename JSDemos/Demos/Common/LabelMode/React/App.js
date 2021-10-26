@@ -43,7 +43,7 @@ class App extends React.Component {
     setTimeout(() => validationEngine.validateGroup());
     return (
       <React.Fragment>
-        <div className="title">Edit Employee Info</div>
+        <div className="title">Edit Profile</div>
         <div className="editors">
           <div className="editors-container">
             <div className="left">
