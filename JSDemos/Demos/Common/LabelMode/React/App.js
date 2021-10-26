@@ -128,6 +128,8 @@ class App extends React.Component {
                   <RequiredRule />
                 </Validator>
               </TextBox>
+            </div>
+            <div className="right">
               <DateBox
                 stylingMode={this.state.stylingMode}
                 width="100%"
@@ -139,31 +141,6 @@ class App extends React.Component {
                   <RequiredRule />
                 </Validator>
               </DateBox>
-            </div>
-            <div className="right">
-              <DateBox
-                defaultValue={this.state.birthDate}
-                stylingMode={this.state.stylingMode}
-                width="100%"
-                placeholder="Birth Date"
-                labelMode={this.state.labelMode}
-              >
-                <Validator>
-                  <RequiredRule />
-                </Validator>
-              </DateBox>
-              <SelectBox
-                items={this.states}
-                stylingMode={this.state.stylingMode}
-                width="100%"
-                placeholder="Select..."
-                label="State"
-                labelMode={this.state.labelMode}
-              >
-                <Validator>
-                  <RequiredRule />
-                </Validator>
-              </SelectBox>
             </div>
           </div>
           <div className="center">
