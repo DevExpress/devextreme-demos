@@ -1,7 +1,5 @@
 /* istanbul ignore file */
 
-'use strict';
-
 const fs = require('fs');
 const helper = require('../../visual-tests/matrix-test-helper');
 

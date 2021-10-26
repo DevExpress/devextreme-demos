@@ -1,5 +1,3 @@
-'use strict';
-
 const fs = require('fs');
 const { join } = require('path');
 const { init, updateConfig } = require('../../shared/config-helper');
