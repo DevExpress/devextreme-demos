@@ -1,4 +1,5 @@
 *.js
+*.mjs
 *.ts
 *.vue
 *.css
@@ -6,6 +7,5 @@
 *.json
 MVCDemos
 NetCoreDemos
-utils
 **/Knockout/**
 .github

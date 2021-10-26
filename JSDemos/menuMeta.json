@@ -370,6 +370,7 @@
             "MvcDescription": "",
             "NetCoreDescription": "",
             "MvcAdditionalFiles": [],
+            "Modules": "devextreme-aspnet-data-nojquery",
             "DemoType": "Web",
             "Badge": "New"
           }
@@ -1962,6 +1963,7 @@
           {
             "Title": "Tables",
             "Name": "Tables",
+            "Badge": "Updated",
             "Widget": "HtmlEditor",
             "MvcDescription": "",
             "NetCoreDescription": "",

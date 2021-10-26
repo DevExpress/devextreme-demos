@@ -1,5 +1,3 @@
-'use strict';
-
 const { readdirSync } = require('fs');
 const { join } = require('path');
 
@@ -48,7 +46,8 @@ describe('All folders has corresponding demos', () => {
   Object.keys(folders).forEach((widgetFolder) => {
     Object.keys(folders[widgetFolder]).forEach((demoFolder) => {
       test(`Folder: ${widgetFolder}/${demoFolder} has demo`, () => {
-        const demosWithFolder = demos.filter((d) => d.Widget === widgetFolder && d.Name === demoFolder);
+        const demosWithFolder = demos
+          .filter((d) => d.Widget === widgetFolder && d.Name === demoFolder);
         expect(demosWithFolder).toHaveLength(1);
       });
     });

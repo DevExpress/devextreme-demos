@@ -1,5 +1,4 @@
-'use strict';
-
+/* eslint-disable import/no-extraneous-dependencies */
 const { series } = require('gulp');
 
 const { copyCommonAspFiles } = require('./copy-common-asp-files');

@@ -1,5 +1,3 @@
-'use strict';
-
 const fs = require('fs');
 const fileSystemExtra = require('fs-extra');
 const path = require('path');
@@ -33,7 +31,9 @@ describe('common functions', () => {
     const directoryName = 'directory';
     const fileName = 'file';
     const nonExistentFile = 'non-existent-file';
-    fs.existsSync.mockImplementation((directory) => directory === directoryName || directory === fileName);
+    fs.existsSync.mockImplementation(
+      (directory) => directory === directoryName || directory === fileName,
+    );
     fs.lstatSync.mockImplementation((directory) => ({
       isDirectory: () => directory === directoryName,
     }));
@@ -117,8 +117,13 @@ describe('common functions', () => {
 
     const expectedPath = path.join(baseDemosDir, 'Widget2', demoName);
 
-    expect(fileSystemUtils.getDemoPathByMeta(categoryName, groupName, demoName, baseDemosDir, menuMetaData))
-      .toBe(expectedPath);
+    expect(fileSystemUtils.getDemoPathByMeta(
+      categoryName,
+      groupName,
+      demoName,
+      baseDemosDir,
+      menuMetaData,
+    )).toBe(expectedPath);
   });
 });
 
