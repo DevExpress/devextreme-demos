@@ -112,7 +112,7 @@
       </div>
       <div class="center">
         <DxButton
-          :on-click="validateClick"
+          @click="validateClick"
           text="Save"
           type="default"
           class="validate"
@@ -150,7 +150,6 @@ import {
   DxValidator,
   DxRequiredRule,
 } from 'devextreme-vue/validator';
-import validationEngine from 'devextreme/ui/validation_engine';
 import notify from 'devextreme/ui/notify';
 
 import service from './data.js';
@@ -167,7 +166,6 @@ export default {
     DxRequiredRule,
   },
   data() {
-    setTimeout(() => validationEngine.validateGroup());
     return {
       birthDate: new Date(1981, 5, 3),
       stylingMode: 'filled',

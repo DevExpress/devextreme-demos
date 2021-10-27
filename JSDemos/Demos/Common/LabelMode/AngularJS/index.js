@@ -15,8 +15,4 @@ DemoApp.controller('DemoController', ($scope) => {
   $scope.stylingMode = 'filled';
   $scope.labelMode = 'static';
   $scope.phoneRules = { X: /[02-9]/ };
-
-  setTimeout(() => {
-    DevExpress.validationEngine.validateGroup($scope);
-  });
 });

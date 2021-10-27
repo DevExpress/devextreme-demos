@@ -120,8 +120,6 @@ $(() => {
       });
     },
   });
-
-  DevExpress.validationEngine.validateGroup();
 });
 
 const storageKey = 'editorStylingMode';

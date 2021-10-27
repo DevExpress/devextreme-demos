@@ -8,7 +8,6 @@ import TextArea from 'devextreme-react/text-area';
 import Button from 'devextreme-react/button';
 import Validator, { RequiredRule } from 'devextreme-react/validator';
 import notify from 'devextreme/ui/notify';
-import validationEngine from 'devextreme/ui/validation_engine';
 
 import service from './data.js';
 
@@ -40,7 +39,6 @@ class App extends React.Component {
   }
 
   render() {
-    setTimeout(() => validationEngine.validateGroup());
     return (
       <React.Fragment>
         <div className="title">Edit Profile</div>
@@ -118,7 +116,6 @@ class App extends React.Component {
             <div className="left">
               <TextBox
                 stylingMode={this.state.stylingMode}
-                defaultValue=""
                 width="100%"
                 mask="+1 (000) 000-0000"
                 maskRules={this.phoneRules}

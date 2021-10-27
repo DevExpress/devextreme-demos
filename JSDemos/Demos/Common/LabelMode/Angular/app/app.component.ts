@@ -11,7 +11,6 @@ import {
   DxValidatorModule,
 } from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
-import validationEngine from 'devextreme/ui/validation_engine';
 
 import { Service } from './app.service';
 
@@ -54,8 +53,6 @@ export class AppComponent {
   constructor(service: Service) {
     this.positions = service.getPositions();
     this.states = service.getStates();
-
-    setTimeout(() => validationEngine.validateGroup());
   }
 }
 
