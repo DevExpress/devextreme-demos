@@ -141,5 +141,11 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View();
         }
         #endregion
+
+        #region LabelMode
+        public ActionResult LabelMode() {
+            return View();
+        }
+        #endregion
     }
 }
