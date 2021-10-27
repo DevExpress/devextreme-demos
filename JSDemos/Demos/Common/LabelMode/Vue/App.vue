@@ -58,7 +58,7 @@
       <div class="center">
         <DxTagBox
           :items="positions"
-          :value="[ 'Sales Manager' ]"
+          :value="[ 'Support Manager' ]"
           :multiline="false"
           :styling-mode="stylingMode"
           :label-mode="labelMode"

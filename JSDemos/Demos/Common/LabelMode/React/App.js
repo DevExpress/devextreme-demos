@@ -30,7 +30,7 @@ class App extends React.Component {
     };
 
     this.positions = service.getPositions();
-    this.defaultPosition = ['Sales Manager'];
+    this.defaultPosition = ['Support Manager'];
 
     this.states = service.getStates();
 

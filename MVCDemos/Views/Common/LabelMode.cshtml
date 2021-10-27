@@ -51,7 +51,7 @@
                 "Support Manager",
                 "Shipping Manager" 
             })
-            .Value(new[] { "Sales Manager" })
+            .Value(new[] { "Support Manager" })
             .Multiline(false)
             .Width("100%")
             .Placeholder("Select...")
@@ -145,6 +145,15 @@
     }
 
     function labelModeChanged(e) {
+        const name = $("#name").dxTextBox("instance");
+        const place = $("#place").dxTextBox("instance");
+        const phone = $("#phone").dxTextBox("instance");
+        const birthDate = $("#birthDate").dxDateBox("instance");
+        const hireDate = $("#hireDate").dxDateBox("instance");
+        const position = $("#position").dxTagBox("instance");
+        const state = $("#state").dxSelectBox("instance");
+        const notes = $("#textArea").dxTextArea("instance");
+
         [name, place, birthDate, position, hireDate, state, phone, notes].forEach((editor) => {
             editor.option("labelMode", e.value);
         });
@@ -153,19 +162,10 @@
 
     $(function() {
         ["name", "place", "birthDate", "position", "hireDate", "state", "phone"].forEach((editorId) => {
-            $("#" + editor).dxValidator({
+            $("#" + editorId).dxValidator({
                 validationRules: [{ type: "required" }]
             });
         });
-
-
-        const name = $("#name").dxTextBox("instance");
-        const place = $("#place").dxTextBox("instance");
-        const phone = $("#phone").dxTextBox("instance");
-        const birthDate = $("#birthDate").dxDateBox("instance");
-        const hireDate = $("#hireDate").dxDateBox("instance");
-        const state = $("#state").dxSelectBox("instance");
-        const notes = $("#textArea").dxTextArea("instance");
 
         DevExpress.validationEngine.validateGroup();
     });

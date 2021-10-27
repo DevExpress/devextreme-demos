@@ -59,7 +59,7 @@ $(() => {
 
   const position = $('#position').dxTagBox({
     items: positions,
-    value: ['Sales Manager'],
+    value: ['Support Manager'],
     placeholder: 'Select...',
     multiline: false,
     width: '100%',
