@@ -77,6 +77,7 @@ class App extends React.Component {
                 stylingMode={this.state.stylingMode}
                 width="100%"
                 placeholder="Birth Date"
+                label="Birth Date"
                 labelMode={this.state.labelMode}
               >
                 <Validator>
