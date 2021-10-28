@@ -1,4 +1,5 @@
 import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
+import { Selector as $ } from 'testcafe';
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
 fixture('DataGrid.BatchEditing')
@@ -9,41 +10,33 @@ fixture('DataGrid.BatchEditing')
   });
 
 runManualTest(test, 'DataGrid', 'BatchEditing', 'jQuery', (test) => {
-  test('ColumnCustomization', async (t) => {
+  test.only('BatchEditing', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
-    await t
-      .click('.dx-datagrid-rowsview td:eq(1)');
-
+    await t.click($('.dx-datagrid-rowsview').find('td').nth(1));
     await takeScreenshot('datagrid_batch_editing_2_desktop');
 
     await t
-      .typeText('.dx-datagrid-rowsview input:eq(0)', 'Bob', {
+      .typeText($('.dx-datagrid-rowsview').find('input').nth(0), 'Bob', {
         replace: true,
       })
       .pressKey('enter');
-
     await takeScreenshot('datagrid_batch_editing_3_desktop');
 
-    await t
-      .click('.dx-icon-edit-button-save');
-
+    await t.click('.dx-icon-edit-button-save');
     await takeScreenshot('datagrid_batch_editing_4_desktop');
 
     await t
-      .click('.dx-datagrid-rowsview td:eq(4)')
-      .click('.dx-dropdowneditor-icon:eq(0)')
-      .click('.dx-list-item:eq(0)')
+      .click($('.dx-datagrid-rowsview').find('td').nth(4))
+      .click($('.dx-dropdowneditor-icon').nth(0))
+      .click($('.dx-list-item').nth(0))
       .click('body', {
         offsetX: 0,
         offsetY: 0,
       });
-
     await takeScreenshot('datagrid_batch_editing_5_desktop');
 
-    await t
-      .click('.dx-icon-edit-button-cancel');
-
+    await t.click('.dx-icon-edit-button-cancel');
     await takeScreenshot('datagrid_batch_editing_6_desktop');
 
     await t

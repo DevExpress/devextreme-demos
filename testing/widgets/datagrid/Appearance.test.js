@@ -1,4 +1,5 @@
 import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
+import { Selector as $ } from 'testcafe';
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
 fixture('DataGrid.Appearance')
@@ -9,28 +10,20 @@ fixture('DataGrid.Appearance')
   });
 
 runManualTest(test, 'DataGrid', 'Appearance', 'jQuery', (test) => {
-  test('ColumnCustomization', async (t) => {
+  test.only('Appearance', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
-    await t
-      .click('.dx-checkbox-icon:eq(0)');
+    await t.click($('.dx-checkbox-icon').nth(0));
+    await takeScreenshot('datagrid_appearance_2_desktop');
 
-    await takeScreenshot('datagrid_appearance_2_desktop', 3000);
+    await t.click($('.dx-checkbox-icon').nth(1));
+    await takeScreenshot('datagrid_appearance_3_desktop');
 
-    await t
-      .click('.dx-checkbox-icon:eq(1)');
+    await t.click($('.dx-checkbox-icon').nth(3));
+    await takeScreenshot('datagrid_appearance_4_desktop');
 
-    await takeScreenshot('datagrid_appearance_3_desktop', 3000);
-
-    await t
-      .click('.dx-checkbox-icon:eq(3)');
-
-    await takeScreenshot('datagrid_appearance_4_desktop', 3000);
-
-    await t
-      .click('.dx-checkbox-icon:eq(0)');
-
-    await takeScreenshot('datagrid_appearance_5_desktop', 3000);
+    await t.click($('.dx-checkbox-icon').nth(0));
+    await takeScreenshot('datagrid_appearance_5_desktop');
 
     await t
       .expect(compareResults.isValid())

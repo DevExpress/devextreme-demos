@@ -1,4 +1,5 @@
 import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
+import { Selector as $ } from 'testcafe';
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
 fixture('DataGrid.GroupSummaries')
@@ -9,17 +10,17 @@ fixture('DataGrid.GroupSummaries')
   });
 
 runManualTest(test, 'DataGrid', 'GroupSummaries', 'jQuery', (test) => {
-  test('ColumnCustomization', async (t) => {
+  test.only('GroupSummaries', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t
-      .click('.dx-page:last()')
+      .click($('.dx-page').nth(-1))
       .click('body', {
         offsetX: 0,
         offsetY: 0,
       });
 
-    await takeScreenshot('datagrid_group_summaries_2_desktop', 3000);
+    await takeScreenshot('datagrid_group_summaries_2_desktop');
 
     await t
       .expect(compareResults.isValid())
