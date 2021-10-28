@@ -12,8 +12,6 @@ runManualTest(test, 'DataGrid', 'ColumnCustomization', 'jQuery', (test) => {
   test('ColumnCustomization', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
-    await takeScreenshot('datagrid_column_customization_1.png');
-
     await t
       .click('.dx-icon-column-chooser');
 
