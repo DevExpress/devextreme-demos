@@ -14,16 +14,16 @@ runManualTest(test, 'DataGrid', 'Appearance', 'jQuery', (test) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click($('.dx-checkbox-icon').nth(0));
-    await takeScreenshot('datagrid_appearance_2_desktop');
+    await takeScreenshot('datagrid_appearance_2_desktop.png');
 
     await t.click($('.dx-checkbox-icon').nth(1));
-    await takeScreenshot('datagrid_appearance_3_desktop');
+    await takeScreenshot('datagrid_appearance_3_desktop.png');
 
     await t.click($('.dx-checkbox-icon').nth(3));
-    await takeScreenshot('datagrid_appearance_4_desktop');
+    await takeScreenshot('datagrid_appearance_4_desktop.png');
 
     await t.click($('.dx-checkbox-icon').nth(0));
-    await takeScreenshot('datagrid_appearance_5_desktop');
+    await takeScreenshot('datagrid_appearance_5_desktop.png');
 
     await t
       .expect(compareResults.isValid())

@@ -20,7 +20,7 @@ runManualTest(test, 'DataGrid', 'GroupSummaries', 'jQuery', (test) => {
         offsetY: 0,
       });
 
-    await takeScreenshot('datagrid_group_summaries_2_desktop');
+    await takeScreenshot('datagrid_group_summaries_2_desktop.png');
 
     await t
       .expect(compareResults.isValid())
