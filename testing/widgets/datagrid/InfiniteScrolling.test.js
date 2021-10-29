@@ -1,0 +1,28 @@
+import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
+import { Selector as $ } from 'testcafe';
+import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
+
+fixture('DataGrid.InfiniteScrolling')
+  .page('http://localhost:8080/')
+  .beforeEach(async (t) => {
+    await t
+      .resizeWindow(900, 600);
+  });
+
+runManualTest(test, 'DataGrid', 'InfiniteScrolling', 'jQuery', (test) => {
+  test.only('InfiniteScrolling', async (t) => {
+    const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
+
+    await t.hover($('.dx-datagrid-rowsview'));
+    await takeScreenshot('datagrid_infinite_scrolling_2_desktop');
+
+    await t
+      .hover($('.dx-scrollbar-vertical .dx-scrollable-scroll'))
+      .drag($('.dx-scrollbar-vertical .dx-scrollable-scroll'), 0, 250);
+    await takeScreenshot('datagrid_infinite_scrolling_3_desktop');
+
+    await t
+      .expect(compareResults.isValid())
+      .ok(compareResults.errorMessages());
+  });
+});
