@@ -17,23 +17,30 @@ runManualTest(test, 'DataGrid', 'DataValidation', 'jQuery', (test) => {
       .click($('.dx-icon-edit-button-addrow'))
       .click($('.dx-icon-edit-button-addrow'))
       .click($('.dx-datagrid-save-button'));
-    await takeScreenshot('datagrid_data_validation_2_desktop');
+    await takeScreenshot('datagrid_data_validation_2_desktop.png');
 
     await t.click($('.dx-datagrid-cancel-button'));
-    await takeScreenshot('datagrid_data_validation_3_desktop');
+    await takeScreenshot('datagrid_data_validation_3_desktop.png');
 
     await t
-      .click($('.dx-datagrid-rowsview td:eq(3)'))
-      .typeText($('.dx-datagrid-rowsview td:eq(3) input:eq(0)'), '12345', {
-        replace: true,
-      }).click($('body'), {
+      .click($('.dx-datagrid-rowsview').find('td').nth(3))
+      .typeText(
+        $('.dx-datagrid-rowsview')
+          .find('td')
+          .nth(3)
+          .find('input')
+          .nth(0),
+        '12345', {
+          replace: true,
+        },
+      ).click($('body'), {
         offsetX: 0,
         offsetY: 0,
       });
-    await takeScreenshot('datagrid_data_validation_4_desktop');
+    await takeScreenshot('datagrid_data_validation_4_desktop.png');
 
-    await t.click($('.dx-datagrid-rowsview td:eq(3)'));
-    await takeScreenshot('datagrid_data_validation_5_desktop');
+    await t.click($('.dx-datagrid-rowsview').find('td').nth(3));
+    await takeScreenshot('datagrid_data_validation_5_desktop.png');
 
     await t
       .expect(compareResults.isValid())

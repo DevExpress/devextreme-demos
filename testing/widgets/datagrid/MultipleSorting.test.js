@@ -14,37 +14,37 @@ runManualTest(test, 'DataGrid', 'MultipleSorting', 'jQuery', (test) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t
-      .click($('.dx-datagrid-headers .dx-datagrid-action:eq(3)'), {
+      .click($('.dx-datagrid-headers .dx-datagrid-action').nth(3), {
         modifiers: {
           shift: true,
         },
       })
-      .click($('.dx-datagrid-headers .dx-datagrid-action:eq(4)'), {
+      .click($('.dx-datagrid-headers .dx-datagrid-action').nth(4), {
         modifiers: {
           shift: true,
         },
       });
 
-    await takeScreenshot('datagrid_multiple_sorting_2_desktop');
+    await takeScreenshot('datagrid_multiple_sorting_2_desktop.png');
 
     await t
-      .click($('.dx-datagrid-headers .dx-datagrid-action:eq(5)'));
+      .click($('.dx-datagrid-headers .dx-datagrid-action').nth(5));
 
-    await takeScreenshot('datagrid_multiple_sorting_3_desktop');
+    await takeScreenshot('datagrid_multiple_sorting_3_desktop.png');
 
     await t
-      .click($('.dx-datagrid-headers .dx-datagrid-action:eq(5)'), {
+      .click($('.dx-datagrid-headers .dx-datagrid-action').nth(5), {
         modifiers: {
           ctrl: true,
         },
       });
 
-    await takeScreenshot('datagrid_multiple_sorting_4_desktop');
+    await takeScreenshot('datagrid_multiple_sorting_4_desktop.png');
 
     await t
-      .rightClick($('.dx-header-row .dx-datagrid-action:eq(0)'));
+      .rightClick($('.dx-header-row .dx-datagrid-action').nth(0));
 
-    await takeScreenshot('datagrid_multiple_sorting_5_desktop');
+    await takeScreenshot('datagrid_multiple_sorting_5_desktop.png');
 
     await t
       .expect(compareResults.isValid())

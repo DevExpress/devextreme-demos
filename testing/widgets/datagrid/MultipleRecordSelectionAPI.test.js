@@ -14,43 +14,43 @@ runManualTest(test, 'DataGrid', 'MultipleRecordSelectionAPI', 'jQuery', (test) =
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t
-      .click($('.dx-selectbox-container:eq(0)'))
-      .click($('.dx-list-item:eq(2)'))
+      .click($('.dx-selectbox-container').nth(0))
+      .click($('.dx-list-item').nth(2))
       .click($('body'), {
         offsetX: 0,
         offsetY: 0,
       });
 
-    await takeScreenshot('datagrid_multiple_record_selection_and_API_2_desktop');
+    await takeScreenshot('datagrid_multiple_record_selection_and_API_2_desktop.png');
 
     await t
-      .click($('.dx-button-text:contains(Clear Selection)'));
+      .click($('.dx-button-text').withText('Clear Selection'));
 
-    await takeScreenshot('datagrid_multiple_record_selection_and_API_3_desktop');
-
-    await t
-      .click($('.dx-checkbox-icon:eq(0)'));
-
-    await takeScreenshot('datagrid_multiple_record_selection_and_API_4_desktop');
+    await takeScreenshot('datagrid_multiple_record_selection_and_API_3_desktop.png');
 
     await t
-      .click($('.dx-checkbox-icon:eq(0)'));
+      .click($('.dx-checkbox-icon').nth(0));
 
-    await takeScreenshot('datagrid_multiple_record_selection_and_API_5_desktop');
-
-    await t
-      .click($('.dx-datagrid-rowsview tr:eq(1)'));
-
-    await takeScreenshot('datagrid_multiple_record_selection_and_API_6_desktop');
+    await takeScreenshot('datagrid_multiple_record_selection_and_API_4_desktop.png');
 
     await t
-      .click($('.dx-datagrid-rowsview tr:eq(6)'), {
+      .click($('.dx-checkbox-icon').nth(0));
+
+    await takeScreenshot('datagrid_multiple_record_selection_and_API_5_desktop.png');
+
+    await t
+      .click($('.dx-datagrid-rowsview tr').nth(1));
+
+    await takeScreenshot('datagrid_multiple_record_selection_and_API_6_desktop.png');
+
+    await t
+      .click($('.dx-datagrid-rowsview tr').nth(6), {
         modifiers: {
           shift: true,
         },
       });
 
-    await takeScreenshot('datagrid_multiple_record_selection_and_API_7_desktop');
+    await takeScreenshot('datagrid_multiple_record_selection_and_API_7_desktop.png');
 
     await t
       .expect(compareResults.isValid())

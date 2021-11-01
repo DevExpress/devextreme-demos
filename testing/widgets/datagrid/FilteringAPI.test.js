@@ -15,9 +15,9 @@ runManualTest(test, 'DataGrid', 'FilteringAPI', 'jQuery', (test) => {
 
     await t
       .click($('.dx-selectbox-container'))
-      .click($('.dx-list-item:eq(1)'));
+      .click($('.dx-list-item').nth(1));
 
-    await takeScreenshot('datagrid_filtering_API_2_desktop');
+    await takeScreenshot('datagrid_filtering_API_2_desktop.png');
 
     await t
       .expect(compareResults.isValid())

@@ -20,7 +20,7 @@ runManualTest(test, 'DataGrid', 'MasterDetailView', 'jQuery', (test) => {
         .nth(1),
     );
 
-    await takeScreenshot('datagrid_master_detail_api_2_desktop');
+    await takeScreenshot('datagrid_master_detail_api_2_desktop.png');
 
     await t
       .expect(compareResults.isValid())

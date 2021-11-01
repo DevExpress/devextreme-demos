@@ -14,12 +14,12 @@ runManualTest(test, 'DataGrid', 'InfiniteScrolling', 'jQuery', (test) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.hover($('.dx-datagrid-rowsview'));
-    await takeScreenshot('datagrid_infinite_scrolling_2_desktop');
+    await takeScreenshot('datagrid_infinite_scrolling_2_desktop.png');
 
     await t
       .hover($('.dx-scrollbar-vertical .dx-scrollable-scroll'))
       .drag($('.dx-scrollbar-vertical .dx-scrollable-scroll'), 0, 250);
-    await takeScreenshot('datagrid_infinite_scrolling_3_desktop');
+    await takeScreenshot('datagrid_infinite_scrolling_3_desktop.png');
 
     await t
       .expect(compareResults.isValid())

@@ -14,17 +14,17 @@ runManualTest(test, 'DataGrid', 'ColumnCustomization', 'jQuery', (test) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click('.dx-icon-column-chooser');
-    await takeScreenshot('datagrid_column_customization_2.png.png');
+    await takeScreenshot('datagrid_column_customization_2.png');
 
     await t.drag(
       $('td').withAttribute('aria-label', 'Column Birth Date'),
       500, 200,
       { offsetX: 5, offsetY: 5 },
     );
-    await takeScreenshot('datagrid_column_customization_3.png.png');
+    await takeScreenshot('datagrid_column_customization_3.png');
 
     await t.click('.dx-closebutton');
-    await takeScreenshot('datagrid_column_customization_4.png.png');
+    await takeScreenshot('datagrid_column_customization_4.png');
 
     await t
       .expect(compareResults.isValid())

@@ -15,7 +15,7 @@ runManualTest(test, 'DataGrid', 'RowEditingAndEditingEvents', 'jQuery', (test) =
 
     await t.click($('a').withText('Edit').nth(0));
 
-    await takeScreenshot('datagrid_row_editing_and_editing_events_2_desktop');
+    await takeScreenshot('datagrid_row_editing_and_editing_events_2_desktop.png');
 
     await t
       .typeText(
@@ -24,17 +24,17 @@ runManualTest(test, 'DataGrid', 'RowEditingAndEditingEvents', 'jQuery', (test) =
         { replace: true },
       );
 
-    await takeScreenshot('datagrid_row_editing_and_editing_events_3_desktop');
+    await takeScreenshot('datagrid_row_editing_and_editing_events_3_desktop.png');
 
     await t.click($('a').withText('Save').nth(0));
 
-    await takeScreenshot('datagrid_row_editing_and_editing_events_4_desktop');
+    await takeScreenshot('datagrid_row_editing_and_editing_events_4_desktop.png');
 
     await t
       .click('#clear')
       .click('.dx-icon-edit-button-addrow');
 
-    await takeScreenshot('datagrid_row_editing_and_editing_events_5_desktop');
+    await takeScreenshot('datagrid_row_editing_and_editing_events_5_desktop.png');
 
     await t
       .typeText(
@@ -44,17 +44,17 @@ runManualTest(test, 'DataGrid', 'RowEditingAndEditingEvents', 'jQuery', (test) =
       )
       .click($('a').withText('Save').nth(0));
 
-    await takeScreenshot('datagrid_row_editing_and_editing_events_6_desktop.png');
+    await takeScreenshot('datagrid_row_editing_and_editing_events_6_desktop.png.png');
 
     await t
       .click('#clear')
       .click($('a').withText('Delete').nth(2));
 
-    await takeScreenshot('datagrid_row_editing_and_editing_events_7_desktop.png');
+    await takeScreenshot('datagrid_row_editing_and_editing_events_7_desktop.png.png');
 
     await t.click($('.dx-dialog-buttons').find('.dx-dialog-button').nth(0));
 
-    await takeScreenshot('datagrid_row_editing_and_editing_events_8_desktop.png');
+    await takeScreenshot('datagrid_row_editing_and_editing_events_8_desktop.png.png');
 
     await t
       .expect(compareResults.isValid())

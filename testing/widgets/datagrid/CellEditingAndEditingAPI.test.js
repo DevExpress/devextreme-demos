@@ -18,7 +18,7 @@ runManualTest(test, 'DataGrid', 'CellEditingAndEditingAPI', 'jQuery', (test) => 
 
     await t
       .typeText(
-        $('.dx-datagrid-rowsview').find('td').eq(2).find('input')
+        $('.dx-datagrid-rowsview').find('td').nth(2).find('input')
           .nth(0),
         'Bob',
         { replace: true },
