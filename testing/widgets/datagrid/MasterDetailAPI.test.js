@@ -15,8 +15,7 @@ runManualTest(test, 'DataGrid', 'MasterDetailView', 'jQuery', (test) => {
 
     await t.click(
       $('.dx-datagrid-rowsview')
-        .find('.dx-row')
-        .not('.dx-master-detail-row')
+        .find('.dx-row:not(.dx-master-detail-row)')
         .nth(1),
     );
 

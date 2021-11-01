@@ -13,27 +13,13 @@ runManualTest(test, 'DataGrid', 'MasterDetailView', 'jQuery', (test) => {
   test.only('MasterDetailView', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
-    await t
-      .click($('.dx-icon-edit-button-addrow'))
-      .click($('.dx-icon-edit-button-addrow'))
-      .click($('.dx-datagrid-save-button'));
-    await takeScreenshot('datagrid_data_validation_2_desktop.png');
+    await t.click(
+      $('.dx-datagrid-rowsview')
+        .find('.dx-row:not(.dx-master-detail-row)')
+        .nth(1),
+    );
 
-    await t.click($('.dx-datagrid-cancel-button'));
-    await takeScreenshot('datagrid_data_validation_3_desktop.png');
-
-    await t
-      .click($('.dx-datagrid-rowsview td').nth(3))
-      .typeText($('.dx-datagrid-rowsview td').nth(3).find('input').nth(0), '12345', {
-        replace: true,
-      }).click($('body'), {
-        offsetX: 0,
-        offsetY: 0,
-      });
-    await takeScreenshot('datagrid_data_validation_4_desktop.png');
-
-    await t.click($('.dx-datagrid-rowsview td').nth(3));
-    await takeScreenshot('datagrid_data_validation_5_desktop.png');
+    await takeScreenshot('datagrid_master_detail_api_2_desktop.png');
 
     await t
       .expect(compareResults.isValid())

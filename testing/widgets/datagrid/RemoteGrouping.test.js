@@ -10,7 +10,7 @@ fixture('DataGrid.RemoteGrouping')
   });
 
 const scroll = ClientFunction((pixels) => {
-  $('.dx-scrollable-container')[0].scrollTop = pixels;
+  document.querySelector('.dx-scrollable-container').scrollTop = pixels;
 });
 
 runManualTest(test, 'DataGrid', 'RemoteGrouping', 'jQuery', (test) => {
