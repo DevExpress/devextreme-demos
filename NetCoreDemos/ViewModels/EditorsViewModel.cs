@@ -24,7 +24,7 @@ namespace DevExtreme.NETCore.Demos.ViewModels {
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "'Password' and 'Confirm Password' do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [RegularExpression(@"^\+\s*1\s*\(\s*[02-9]\d{2}\)\s*\d{3}\s*-\s*\d{4}$", ErrorMessage = "The phone must have a correct USA phone format")]
+        [RegularExpression(@"^[02-9]\d{9}$", ErrorMessage = "The phone must have a correct USA phone format")]
         public string Phone { get; set; }
 
         public string Extension { get; set; }
