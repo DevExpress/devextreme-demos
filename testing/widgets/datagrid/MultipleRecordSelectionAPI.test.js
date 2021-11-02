@@ -10,7 +10,7 @@ fixture('DataGrid.MultipleRecordSelectionAPI')
   });
 
 runManualTest(test, 'DataGrid', 'MultipleRecordSelectionAPI', 'jQuery', (test) => {
-  test.only('MultipleRecordSelectionAPI', async (t) => {
+  test('MultipleRecordSelectionAPI', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t

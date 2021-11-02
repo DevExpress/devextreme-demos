@@ -10,7 +10,7 @@ fixture('DataGrid.StatePersistence')
   });
 
 runManualTest(test, 'DataGrid', 'StatePersistence', 'jQuery', (test) => {
-  test.only('StatePersistence', async (t) => {
+  test('StatePersistence', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t

@@ -10,7 +10,7 @@ fixture('DataGrid.RowSelection')
   });
 
 runManualTest(test, 'DataGrid', 'RowSelection', 'jQuery', (test) => {
-  test.only('RowSelection', async (t) => {
+  test('RowSelection', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click($('.dx-datagrid-rowsview tr').nth(0));

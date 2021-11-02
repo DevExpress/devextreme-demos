@@ -10,7 +10,7 @@ fixture('DataGrid.RecordPaging')
   });
 
 runManualTest(test, 'DataGrid', 'RecordPaging', 'jQuery', (test) => {
-  test.only('RecordPaging', async (t) => {
+  test('RecordPaging', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click($('.dx-page-size').withText('5'));

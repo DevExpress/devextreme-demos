@@ -10,7 +10,7 @@ fixture('DataGrid.RowEditingAndEditingEvents')
   });
 
 runManualTest(test, 'DataGrid', 'RowEditingAndEditingEvents', 'jQuery', (test) => {
-  test.only('RowEditingAndEditingEvents', async (t) => {
+  test('RowEditingAndEditingEvents', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click($('a').withText('Edit').nth(0));

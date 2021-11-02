@@ -10,7 +10,7 @@ fixture('DataGrid.CellEditingAndEditingAPI')
   });
 
 runManualTest(test, 'DataGrid', 'CellEditingAndEditingAPI', 'jQuery', (test) => {
-  test.only('CellEditingAndEditingAPI', async (t) => {
+  test('CellEditingAndEditingAPI', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click($('.dx-datagrid-rowsview').find('td').nth(2));

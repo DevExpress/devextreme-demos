@@ -10,7 +10,7 @@ fixture('DataGrid.EditStateManagement')
   });
 
 runManualTest(test, 'DataGrid', 'EditStateManagement', 'jQuery', (test) => {
-  test.only('EditStateManagement - update row', async (t) => {
+  test('EditStateManagement - update row', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     // edit row
@@ -48,7 +48,7 @@ runManualTest(test, 'DataGrid', 'EditStateManagement', 'jQuery', (test) => {
 });
 
 runManualTest(test, 'DataGrid', 'EditStateManagement', 'jQuery', (test) => {
-  test.only('EditStateManagement - insert row', async (t) => {
+  test('EditStateManagement - insert row', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t
@@ -99,7 +99,7 @@ runManualTest(test, 'DataGrid', 'EditStateManagement', 'jQuery', (test) => {
 });
 
 runManualTest(test, 'DataGrid', 'EditStateManagement', 'jQuery', (test) => {
-  test.only('EditStateManagement - remove row', async (t) => {
+  test('EditStateManagement - remove row', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     // remove row

@@ -10,7 +10,7 @@ fixture('DataGrid.ColumnCustomization')
   });
 
 runManualTest(test, 'DataGrid', 'ColumnCustomization', 'jQuery', (test) => {
-  test.only('ColumnCustomization', async (t) => {
+  test('ColumnCustomization', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click('.dx-icon-column-chooser');

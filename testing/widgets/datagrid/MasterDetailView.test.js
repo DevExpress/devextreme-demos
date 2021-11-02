@@ -10,7 +10,7 @@ fixture('DataGrid.MasterDetailView')
   });
 
 runManualTest(test, 'DataGrid', 'MasterDetailView', 'jQuery', (test) => {
-  test.only('MasterDetailView', async (t) => {
+  test('MasterDetailView', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click(

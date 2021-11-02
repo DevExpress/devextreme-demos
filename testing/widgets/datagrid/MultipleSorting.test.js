@@ -10,7 +10,7 @@ fixture('DataGrid.MultipleSorting')
   });
 
 runManualTest(test, 'DataGrid', 'MultipleSorting', 'jQuery', (test) => {
-  test.only('MultipleSorting', async (t) => {
+  test('MultipleSorting', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t

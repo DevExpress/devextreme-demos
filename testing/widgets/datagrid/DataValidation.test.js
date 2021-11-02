@@ -10,7 +10,7 @@ fixture('DataGrid.DataValidation')
   });
 
 runManualTest(test, 'DataGrid', 'DataValidation', 'jQuery', (test) => {
-  test.only('DataValidation', async (t) => {
+  test('DataValidation', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t

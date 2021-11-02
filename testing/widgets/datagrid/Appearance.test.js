@@ -10,7 +10,7 @@ fixture('DataGrid.Appearance')
   });
 
 runManualTest(test, 'DataGrid', 'Appearance', 'jQuery', (test) => {
-  test.only('Appearance', async (t) => {
+  test('Appearance', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click($('.dx-checkbox-icon').nth(0));

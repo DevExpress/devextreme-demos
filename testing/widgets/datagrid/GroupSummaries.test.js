@@ -10,7 +10,7 @@ fixture('DataGrid.GroupSummaries')
   });
 
 runManualTest(test, 'DataGrid', 'GroupSummaries', 'jQuery', (test) => {
-  test.only('GroupSummaries', async (t) => {
+  test('GroupSummaries', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t

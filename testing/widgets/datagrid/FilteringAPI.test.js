@@ -10,7 +10,7 @@ fixture('DataGrid.FilteringAPI')
   });
 
 runManualTest(test, 'DataGrid', 'FilteringAPI', 'jQuery', (test) => {
-  test.only('FilteringAPI', async (t) => {
+  test('FilteringAPI', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t

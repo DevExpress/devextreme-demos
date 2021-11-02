@@ -14,7 +14,7 @@ const scroll = ClientFunction((pixels) => {
 });
 
 runManualTest(test, 'DataGrid', 'RemoteGrouping', 'jQuery', (test) => {
-  test.only('RemoteGrouping', async (t) => {
+  test('RemoteGrouping', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await scroll(5000);

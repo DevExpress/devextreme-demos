@@ -1,5 +1,5 @@
 import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
-import { Selector as $, ClientFunction } from 'testcafe';
+import { Selector as $ } from 'testcafe';
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
 fixture('DataGrid.InfiniteScrolling')
@@ -9,12 +9,6 @@ fixture('DataGrid.InfiniteScrolling')
       .resizeWindow(900, 600);
   });
 
-const roundScrollPosition = ClientFunction((divider) => {
-  const currentScrollPosition = document.querySelector('.dx-scrollable-container').scrollTop;
-  const newScrollPosition = Math.round(currentScrollPosition / divider) * divider;
-  document.querySelector('.dx-scrollable-container').scrollTop = newScrollPosition;
-});
-
 runManualTest(test, 'DataGrid', 'InfiniteScrolling', 'jQuery', (test) => {
   test.only('InfiniteScrolling', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
@@ -22,13 +16,7 @@ runManualTest(test, 'DataGrid', 'InfiniteScrolling', 'jQuery', (test) => {
     await t.hover($('.dx-datagrid-rowsview'));
     await takeScreenshot('datagrid_infinite_scrolling_2_desktop.png');
 
-    await t
-      .hover($('.dx-scrollbar-vertical .dx-scrollable-scroll'))
-      .drag($('.dx-scrollbar-vertical .dx-scrollable-scroll'), 0, 250)
-      .wait(1000);
-
-    await roundScrollPosition(50);
-    await t.wait(1000);
+    await t.scrollBy('.dx-scrollable-container', 0, 250);
 
     await takeScreenshot('datagrid_infinite_scrolling_3_desktop.png');
 
