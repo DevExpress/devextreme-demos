@@ -27,7 +27,8 @@ runManualTest(test, 'DataGrid', 'InfiniteScrolling', 'jQuery', (test) => {
       .drag($('.dx-scrollbar-vertical .dx-scrollable-scroll'), 0, 250)
       .wait(1000);
 
-    await roundScrollPosition(50).wait(1000);
+    await roundScrollPosition(50);
+    await t.wait(1000);
 
     await takeScreenshot('datagrid_infinite_scrolling_3_desktop.png');
 

@@ -26,7 +26,8 @@ runManualTest(test, 'DataGrid', 'VirtualScrolling', 'jQuery', (test) => {
       .drag($('.dx-scrollbar-vertical .dx-scrollable-scroll'), 0, 250)
       .wait(1000);
 
-    await roundScrollPosition(50).wait(1000);
+    await roundScrollPosition(50);
+    await t.wait(1000);
     await takeScreenshot('datagrid_virtual_scrolling_3_desktop.png');
 
     await t
