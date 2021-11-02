@@ -29,8 +29,7 @@
         }
     ],
     "reviewers": [
-        "alexserov",
-        "jacksonrr3"
+        "team:devextreme-core"
     ],
     "ignorePaths": [
         ".github"
