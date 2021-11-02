@@ -22,8 +22,7 @@ runManualTest(test, 'DataGrid', 'StatePersistence', 'jQuery', (test) => {
 
     await takeScreenshot('datagrid_state_persistence_2_desktop.png');
 
-    await t.navigateTo('/');
-    await t.navigateTo('/JSDemos/Demos/DataGrid/StatePersistence/jQuery/');
+    await t.eval(() => location.reload(true));
 
     await takeScreenshot('datagrid_state_persistence_3_desktop.png');
 
