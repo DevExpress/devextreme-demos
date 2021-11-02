@@ -10,7 +10,7 @@ fixture('DataGrid.InfiniteScrolling')
   });
 
 runManualTest(test, 'DataGrid', 'InfiniteScrolling', 'jQuery', (test) => {
-  test.only('InfiniteScrolling', async (t) => {
+  test('InfiniteScrolling', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.hover($('.dx-datagrid-rowsview'));
