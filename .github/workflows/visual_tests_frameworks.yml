@@ -425,7 +425,8 @@ jobs:
       run: npm run prepare-bundles
     
     - name: Demos - Run tsc
-      run: tsc --noEmit --skipLibCheck
+      working-directory: ./JSDemos
+      run: tsc --noEmit
 
     #Publish artifacts
     - name: Zip node_modules    
