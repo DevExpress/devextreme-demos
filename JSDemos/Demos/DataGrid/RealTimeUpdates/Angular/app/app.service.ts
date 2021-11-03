@@ -49,7 +49,7 @@ const productsStore: ArrayStore = new ArrayStore({
   key: 'ProductID',
 });
 
-const orders = [];
+const orders: Order[] = [];
 
 const ordersStore = new ArrayStore({
   key: 'OrderID',
