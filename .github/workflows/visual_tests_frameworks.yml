@@ -207,7 +207,7 @@ jobs:
       run: npm run prepare-bundles
     
     - name: Demos - Run tsc
-      run: tsc
+      run: tsc --noEmit --skipLibCheck
 
     #Publish artifacts
     - name: Zip node_modules    
