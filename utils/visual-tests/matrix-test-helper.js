@@ -59,6 +59,7 @@ function getExplicitTestsInternal() {
 
 	console.log(`ChangedFiles: ${changedFiles}`);
 	console.log(`Changed files type: ${typeof changedFiles}`)
+	console.log(`Changed files type: ${Array.isArray(changedFiles)}`)
 
   if (!changedFiles) { return getExplicitTestsFromArgs(); }
 
