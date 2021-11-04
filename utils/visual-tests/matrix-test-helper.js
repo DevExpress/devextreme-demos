@@ -55,7 +55,10 @@ export function getChangedFiles() {
 }
 
 function getExplicitTestsInternal() {
-  const changedFiles = getChangedFiles();
+	const changedFiles = getChangedFiles();
+
+	console.log(`ChangedFiles: ${changedFiles}`);
+	console.log(`Changed files type: ${typeof changedFiles}`)
 
   if (!changedFiles) { return getExplicitTestsFromArgs(); }
 
