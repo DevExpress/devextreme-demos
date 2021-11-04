@@ -57,14 +57,13 @@ export function getChangedFiles() {
 function getExplicitTestsInternal() {
   const changedFiles = getChangedFiles();
 
-  console.log(`ChangedFiles: ${changedFiles}`);
-  console.log(`Changed files type: ${typeof changedFiles}`);
-  console.log(`Changed files type: ${Array.isArray(changedFiles)}`);
-	
-  for (const [key, value] of Object.entries(changedFiles)) {
-    console.log(`${key}: ${value}`);
-  }
   if (!changedFiles) { return getExplicitTestsFromArgs(); }
+
+  if (!Array.isArray(changedFiles)) {
+    for (const [key, value] of Object.entries(changedFiles)) {
+      console.log(`${key}: ${value}`);
+    }
+  }
 
   const result = { masks: [], traceTree: undefined };
 
