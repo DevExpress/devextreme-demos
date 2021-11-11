@@ -13,7 +13,7 @@ fixture('Scheduler.Templates')
     test(`Overview cell selection (T1041269) in ${framework}`, async (t) => {
       const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
-      await t.click('.dx-scheduler-date-table-cell');
+      await t.click('.dx-scheduler-date-table-cell', { speed: 0.1 });
 
       await takeScreenshot('scheduler_overview_selection.png');
 
