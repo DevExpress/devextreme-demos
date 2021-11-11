@@ -23,17 +23,17 @@ fixture('Scheduler.Templates')
     });
   });
 
-  runManualTest(test, 'Scheduler', 'CellTemplates', framework, (test) => {
-    test(`CellTemplates cell selection (T1041269) in ${framework}`, async (t) => {
-      const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
+//   runManualTest(test, 'Scheduler', 'CellTemplates', framework, (test) => {
+//     test(`CellTemplates cell selection (T1041269) in ${framework}`, async (t) => {
+//       const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
-      await t.click('.dx-scheduler-date-table-cell');
+//       await t.click('.dx-scheduler-date-table-cell');
 
-      await takeScreenshot('scheduler_CellTemplates_selection.png');
+//       await takeScreenshot('scheduler_CellTemplates_selection.png');
 
-      await t
-        .expect(compareResults.isValid())
-        .ok(compareResults.errorMessages());
-    });
-  });
+//       await t
+//         .expect(compareResults.isValid())
+//         .ok(compareResults.errorMessages());
+//     });
+//   });
 });
