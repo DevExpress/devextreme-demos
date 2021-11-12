@@ -271,6 +271,7 @@ jobs:
 
   lint:
     name: Lint code base
+    needs: build
 
     runs-on: ubuntu-latest
     timeout-minutes: 60
