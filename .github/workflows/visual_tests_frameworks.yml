@@ -60,7 +60,7 @@ jobs:
 
     #Build devextreme-react
     - name: DevExtreme React - Clone devextreme-react repo
-      run: git clone -b 21_2 https://github.com/devexpress/devextreme-react ./devextreme-react-repo
+      run: git clone -b 21.2 https://github.com/devexpress/devextreme-react ./devextreme-react-repo
 
     - name: DevExtreme React - Update react metadata
       working-directory: ./devextreme-repo
@@ -102,7 +102,7 @@ jobs:
 
     #Build devextreme-vue
     - name: DevExtreme Vue - Clone devextreme-vue repo
-      run: git clone -b 21_2 https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
+      run: git clone -b 21.2 https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
 
     - name: DevExtreme Vue - Update vue metadata
       working-directory: ./devextreme-repo
@@ -144,7 +144,7 @@ jobs:
 
     #Build devextreme-angular
     - name: DevExtreme Angular - Clone devextreme-angular repo
-      run: git clone -b 21_2 https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
+      run: git clone -b 21.2 https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
 
     - name: DevExtreme Angular - Update angular metadata
       working-directory: ./devextreme-repo
