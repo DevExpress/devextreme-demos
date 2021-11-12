@@ -16,7 +16,7 @@ runManualTest(test, 'DataGrid', 'VirtualScrolling', 'jQuery', (test) => {
     await t.hover($('.dx-scrollbar-vertical .dx-scrollable-scroll'));
     await takeScreenshot('datagrid_virtual_scrolling_2_desktop.png');
 
-    await t.scrollBy('.dx-scrollable-container', 0, 250);
+    await t.scrollBy('.dx-scrollable-container', 0, 2000000);
 
     await takeScreenshot('datagrid_virtual_scrolling_3_desktop.png');
 
