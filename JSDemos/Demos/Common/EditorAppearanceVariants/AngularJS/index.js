@@ -1,7 +1,7 @@
 const DemoApp = angular.module('DemoApp', ['dx']);
 
 DemoApp.controller('DemoController', ($scope) => {
-  $scope.date = new Date(2020, 4, 3);
+  $scope.date = new Date(1981, 5, 3);
 
   $scope.validateClick = function (e) {
     const result = e.validationGroup.validate();
@@ -13,8 +13,6 @@ DemoApp.controller('DemoController', ($scope) => {
   };
 
   $scope.stylingMode = 'filled';
-
-  setTimeout(() => {
-    DevExpress.validationEngine.validateGroup($scope);
-  });
+  $scope.labelMode = 'static';
+  $scope.phoneRules = { X: /[02-9]/ };
 });

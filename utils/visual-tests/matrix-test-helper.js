@@ -58,6 +58,10 @@ function getExplicitTestsInternal() {
   const changedFiles = getChangedFiles();
 
   if (!changedFiles) { return getExplicitTestsFromArgs(); }
+  if (!Array.isArray(changedFiles)) {
+    // eslint-disable-next-line no-console
+    console.log('Running all tests. Changed files are not iterable: ', JSON.stringify(changedFiles));
+  }
 
   const result = { masks: [], traceTree: undefined };
 

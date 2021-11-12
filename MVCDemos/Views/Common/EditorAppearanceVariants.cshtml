@@ -19,7 +19,7 @@
         <div class="right">
             @(Html.DevExtreme().DateBox()
                 .ID("birthDate")
-                .Value(new DateTime(1981, 5, 3))
+                .Value(new DateTime(1981, 6, 3))
                 .Width("100%")
                 .Placeholder("Select...")
                 .Label("Birth Date")
@@ -149,8 +149,8 @@
         const place = $("#place").dxTextBox("instance");
         const phone = $("#phone").dxTextBox("instance");
         const birthDate = $("#birthDate").dxDateBox("instance");
-        const position = $("#position").dxTagBox("instance");
         const hireDate = $("#hireDate").dxDateBox("instance");
+        const position = $("#position").dxTagBox("instance");
         const state = $("#state").dxSelectBox("instance");
         const notes = $("#textArea").dxTextArea("instance");
 

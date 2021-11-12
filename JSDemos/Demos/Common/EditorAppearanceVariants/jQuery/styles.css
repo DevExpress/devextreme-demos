@@ -1,35 +1,41 @@
-::ng-deep .title {
+.title {
   padding: 20px 0 20px 0;
   font-size: 18px;
   font-weight: 500;
 }
 
-::ng-deep .editors {
+.editors {
   margin-right: 320px;
 }
 
-::ng-deep .editors .left,
-::ng-deep .editors .right {
-  display: inline-block;
-  width: 49%;
-  box-sizing: border-box;
+.editors .left {
+  padding: 0 10px 0 0;
 }
 
-::ng-deep .editors .left > *,
-::ng-deep .editors .right > *,
-::ng-deep .editors .center > * {
+.editors .right {
+  padding: 0 0 0 10px;
+}
+
+.editors .left,
+.editors .right {
+  flex-grow: 1;
+}
+
+.editors .left > div,
+.editors .right > div,
+.editors .center > div {
   margin-bottom: 20px;
 }
 
-::ng-deep .editors .center {
-  padding: 20px 27px 0 0;
+.editors .center {
+  padding: 0 27px 0 0;
 }
 
-::ng-deep .validate {
+.validate {
   float: right;
 }
 
-::ng-deep .options {
+.options {
   padding: 20px;
   position: absolute;
   bottom: 0;
@@ -39,16 +45,16 @@
   background-color: rgba(191, 191, 191, 0.15);
 }
 
-::ng-deep .caption {
+.caption {
   font-size: 18px;
   font-weight: 500;
 }
 
-::ng-deep .option {
+.option {
   margin-top: 20px;
 }
 
-::ng-deep .editors-container {
+.editors-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
