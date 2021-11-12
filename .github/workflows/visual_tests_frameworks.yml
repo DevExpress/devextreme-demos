@@ -285,7 +285,7 @@ jobs:
     - name: Download devextreme sources
       uses: actions/download-artifact@v2
       with:
-      name: devextreme-sources
+        name: devextreme-sources
 
     - name: Unpack artifacts
       run: 7z x node_modules.7z
