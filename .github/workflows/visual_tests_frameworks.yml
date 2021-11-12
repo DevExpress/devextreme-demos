@@ -198,6 +198,10 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-modules
 
+
+    - name: Delete DX packages
+      run:  sed -i '/22.1-next/d' ./package.json
+
     - name: Demos - Install packages
       run: npm install --no-audit --no-fund
 
@@ -243,6 +247,9 @@ jobs:
     steps:
     - name: Get sources
       uses: actions/checkout@v2
+
+    - name: Delete DX packages
+      run:  sed -i '/22.1-next/d' ./package.json
 
     - name: Download devextreme sources
       uses: actions/download-artifact@v2
