@@ -1,4 +1,4 @@
-name: Visual Tests (Frameworks)
+name: Frameworks
 
 concurrency:
   group: wf-${{github.event.pull_request.number}}-${{github.workflow}}
@@ -72,7 +72,7 @@ jobs:
       run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-react-repo/packages/devextreme-react/metadata/integration-data.json --version 22_1 --js-scripts ./js
 
     - name: DevExtreme React - Copy devextreme package
-      run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-react-repo/packages/devextreme-react
+      run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-react-repo/devextreme-setup
 
     - name: DevExtreme React - Get devextreme-react ref
       working-directory: ./devextreme-react-repo
@@ -88,8 +88,17 @@ jobs:
 
     - name: DevExtreme React - Install devextreme package
       if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
-      working-directory: ./devextreme-react-repo/packages/devextreme-react
-      run: npm install --save-dev $(ls *.tgz)
+      working-directory: ./devextreme-react-repo
+      run: |
+        pushd devextreme-setup
+        installerName=$(realpath .)/$(ls *.tgz)
+        popd
+        cd ./packages/devextreme-react
+        npm install --save-dev $installerName
+        cd ../sandbox
+        npm install --save-dev $installerName
+        cd ../../
+        npm install --save-dev $installerName
 
     - name: DevExtreme React - Install packages for devextreme-react
       if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
@@ -114,7 +123,7 @@ jobs:
       run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-react-repo/packages/devextreme-vue/metadata/integration-data.json --version 22_1 --js-scripts ./js
 
     - name: DevExtreme Vue - Copy devextreme package
-      run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-vue-repo/packages/devextreme-vue
+      run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-vue-repo/devextreme-setup
    
     - name: DevExtreme Vue - Get devextreme-vue ref
       working-directory: ./devextreme-vue-repo
@@ -130,8 +139,19 @@ jobs:
 
     - name: DevExtreme Vue - Install devextreme package
       if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
-      working-directory: ./devextreme-vue-repo/packages/devextreme-vue
-      run: npm install --save-dev $(ls *.tgz)
+      working-directory: ./devextreme-vue-repo
+      run: |
+        pushd devextreme-setup
+        installerName=$(realpath .)/$(ls *.tgz)
+        popd
+        cd ./packages/devextreme-vue
+        npm install --save-dev $installerName
+        cd ../sandbox
+        npm install --save-dev $installerName
+        cd ../vue2-strategy
+        npm install --save-dev $installerName
+        cd ../../
+        npm install --save-dev $installerName
 
     - name: DevExtreme Vue - Install packages for devextreme-vue
       if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
@@ -156,7 +176,7 @@ jobs:
       run: npm run internal-tool -- update-meta --output-path ../devextreme-angular-repo/packages/devextreme-angular/metadata/NGMetaData.json --version 22_1 --js-scripts ./js
 
     - name: DevExtreme Angular - Copy devextreme package
-      run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-angular-repo/packages/devextreme-angular
+      run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-angular-repo/devextreme-setup
    
     - name: DevExtreme Angular - Get devextreme-angular ref
       working-directory: ./devextreme-angular-repo
@@ -173,7 +193,16 @@ jobs:
     - name: DevExtreme Angular - Install devextreme package
       if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-angular-repo/packages/devextreme-angular
-      run: npm install --save-dev $(ls *.tgz)
+      run: |
+        pushd devextreme-setup
+        installerName=$(realpath .)/$(ls *.tgz)
+        popd
+        cd ./packages/devextreme-angular
+        npm install --save-dev $installerName
+        cd ../sandbox
+        npm install --save-dev $installerName
+        cd ../../
+        npm install --save-dev $installerName
 
     - name: DevExtreme Angular - Install packages for devextreme-angular
       if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
@@ -205,17 +234,20 @@ jobs:
     - name: Demos - Install packages
       run: npm install --no-audit --no-fund
 
-    - name: Demos - Install devextreme package
-      run: npm install $(find ./devextreme-repo/artifacts/npm/devextreme/ -maxdepth 1 -name "devextreme-*.tgz")
-
-    - name: Demos - Install devextreme-react package
-      run: npm install $(ls devextreme-react-*.tgz)
-
-    - name: Demos - Install devextreme-vue package
-      run: npm install $(ls devextreme-vue-*.tgz)
-
-    - name: Demos - Install devextreme-angular package
-      run: npm install $(ls devextreme-angular-*.tgz)
+    - name: Demos - Install package
+      run: |
+        devextremePath=$(find ./devextreme-repo/artifacts/npm/devextreme/ -maxdepth 1 -name "devextreme-*.tgz");
+        reactPath=$(ls devextreme-react-*.tgz)
+        vuePath=$(ls devextreme-vue-*.tgz)
+        angularPath=$(ls devextreme-angular-*.tgz)
+        npm install $devextremePath
+        npm install $reactPath
+        npm install $vuePath
+        npm install $angularPath
+        cp $devextremePath devextreme-installer.tgz
+        cp $reactPath devextreme-react-installer.tgz
+        cp $vuePath devextreme-vue-installer.tgz
+        cp $angularPath devextreme-angular-installer.tgz
 
     - name: Demos - Prepare bundles
       run: npm run prepare-bundles
@@ -230,8 +262,49 @@ jobs:
         name: devextreme-sources        
         path: |
           node_modules.7z
+          devextreme-installer.tgz
+          devextreme-react-installer.tgz
+          devextreme-vue-installer.tgz
+          devextreme-angular-installer.tgz
           bundles/
         retention-days: 1
+
+  lint:
+    name: Lint code base
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+    - name: Get sources
+      uses: actions/checkout@v2
+
+    - name: Delete DX packages
+      run:  sed -i '/22.1-next/d' ./package.json
+    
+    - name: Download devextreme sources
+      uses: actions/download-artifact@v2
+      with:
+      name: devextreme-sources
+
+    - name: Unpack artifacts
+      run: 7z x node_modules.7z
+
+    - name: Install packages
+      run: |
+        npm install devextreme-installer.tgz
+        npm install devextreme-react-installer.tgz
+        npm install devextreme-vue-installer.tgz
+        npm install devextreme-angular-installer.tgz
+
+    - name: Run npm install
+      run: npm install --no-audit --no-fund
+
+    - name: Run dotnet format install
+      run: dotnet tool install -g dotnet-format --version 5.1.225507
+
+    - name: Run lint
+      run: npm run lint
 
   testcafe:
     needs: build
