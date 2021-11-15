@@ -59,9 +59,7 @@ runManualTest(test, 'DataGrid', 'CustomNewRecordPosition', 'jQuery', (test) => {
       pageNumber: 42,
     }));
   });
-});
 
-runManualTest(test, 'DataGrid', 'CustomNewRecordPosition', 'jQuery', (test) => {
   test('insertAfterKey', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
