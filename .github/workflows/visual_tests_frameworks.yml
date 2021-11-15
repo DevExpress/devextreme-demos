@@ -377,7 +377,7 @@ jobs:
 
   lint:
     name: Lint code base
-    needs: build
+    needs: build-demos
 
     runs-on: ubuntu-latest
     timeout-minutes: 60
@@ -414,7 +414,7 @@ jobs:
       run: npm run lint
 
   testcafe:
-    needs: build
+    needs: build-demos
     strategy:
       fail-fast: false
       matrix:
