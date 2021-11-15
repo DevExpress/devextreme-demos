@@ -198,7 +198,7 @@ jobs:
 
     - name: DevExtreme Angular - Install devextreme package
       if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
-      working-directory: ./devextreme-angular-repo/packages/devextreme-angular
+      working-directory: ./devextreme-angular-repo
       run: |
         pushd devextreme-setup
         installerName=$(realpath .)/$(ls *.tgz)
