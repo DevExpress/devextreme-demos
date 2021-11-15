@@ -58,6 +58,11 @@ jobs:
       working-directory: ./devextreme-repo/artifacts/npm/devextreme
       run: npm pack
 
+    - name: Use Node.js 14
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
     #Build devextreme-react
     - name: DevExtreme React - Clone devextreme-react repo
       run: git clone -b 21.2 https://github.com/devexpress/devextreme-react ./devextreme-react-repo
