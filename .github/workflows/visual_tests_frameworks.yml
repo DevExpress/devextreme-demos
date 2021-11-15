@@ -125,7 +125,9 @@ jobs:
       run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-react-repo/packages/devextreme-vue/metadata/integration-data.json --version 22_1 --js-scripts ./js
 
     - name: DevExtreme Vue - Copy devextreme package
-      run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-vue-repo/devextreme-setup
+      run: |
+        mkdir ./devextreme-vue-repo/devextreme-setup
+        cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-vue-repo/devextreme-setup
    
     - name: DevExtreme Vue - Get devextreme-vue ref
       working-directory: ./devextreme-vue-repo
@@ -178,7 +180,9 @@ jobs:
       run: npm run internal-tool -- update-meta --output-path ../devextreme-angular-repo/packages/devextreme-angular/metadata/NGMetaData.json --version 22_1 --js-scripts ./js
 
     - name: DevExtreme Angular - Copy devextreme package
-      run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-angular-repo/devextreme-setup
+      run: |
+        mkdir ./devextreme-angular-repo/devextreme-setup
+        cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-angular-repo/devextreme-setup
    
     - name: DevExtreme Angular - Get devextreme-angular ref
       working-directory: ./devextreme-angular-repo
