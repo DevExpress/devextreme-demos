@@ -113,7 +113,7 @@ jobs:
         key: devextreme-react-package-${{ steps.devextreme-react-ref.outputs.head }}-${{ hashFiles('devextreme-react-repo/packages/devextreme-react/metadata/integration-data.json') }}
 
     - name: Install devextreme package
-      if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
+      # if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-react-repo
       run: |
         pushd devextreme-setup
@@ -127,17 +127,17 @@ jobs:
         npm install --save-dev $installerName
 
     - name: Install packages for devextreme-react
-      if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
+      # if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-react-repo
       run: npm install --no-audit --no-fund
       
     - name: Build and Pack
-      if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
+      # if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-react-repo
       run: npm run pack
 
     - name: Copy devextreme-react package
-      if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
+      # if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
       run: cp ./devextreme-react-repo/packages/devextreme-react/npm/*.tgz ./devextreme-react-installer.tgz
 
     - name: Copy build artifacts
@@ -192,7 +192,7 @@ jobs:
         key: devextreme-vue-package-${{ steps.devextreme-vue-ref.outputs.head }}-${{ hashFiles('devextreme-vue-repo/packages/devextreme-vue/metadata/integration-data.json') }}
 
     - name: Install devextreme package
-      if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
+      # if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-vue-repo
       run: |
         pushd devextreme-setup
@@ -208,17 +208,17 @@ jobs:
         npm install --save-dev $installerName
 
     - name: Install packages for devextreme-vue
-      if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
+      # if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-vue-repo
       run: npm install --no-audit --no-fund
       
     - name: Build and Pack
-      if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
+      # if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-vue-repo
       run: npm run pack
 
     - name: Copy devextreme-vue package
-      if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
+      # if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
       run: cp ./devextreme-vue-repo/packages/devextreme-vue/npm/*.tgz ./devextreme-vue-installer.tgz
 
     - name: Copy build artifacts
@@ -272,7 +272,7 @@ jobs:
         key: devextreme-angular-package-${{ steps.devextreme-angular-ref.outputs.head }}-${{ hashFiles('devextreme-angular-repo/packages/devextreme-angular/metadata/NGMetaData.json') }}
 
     - name: Install devextreme package
-      if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
+      # if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-angular-repo
       run: |
         pushd devextreme-setup
@@ -286,17 +286,17 @@ jobs:
         npm install --save-dev $installerName
 
     - name: Install packages for devextreme-angular
-      if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
+      # if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-angular-repo
       run: npm install --no-audit --no-fund
       
     - name: Build and Pack
-      if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
+      # if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-angular-repo
       run: npm run pack
 
     - name: Copy devextreme-angular package
-      if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
+      # if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
       run: cp ./devextreme-angular-repo/packages/devextreme-angular/npm/dist/*.tgz ./devextreme-angular-installer.tgz
 
     - name: Copy build artifacts
