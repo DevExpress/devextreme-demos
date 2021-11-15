@@ -72,7 +72,9 @@ jobs:
       run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-react-repo/packages/devextreme-react/metadata/integration-data.json --version 22_1 --js-scripts ./js
 
     - name: DevExtreme React - Copy devextreme package
-      run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-react-repo/devextreme-setup
+      run: |
+        mkdir ./devextreme-react-repo/devextreme-setup
+        cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-react-repo/devextreme-setup
 
     - name: DevExtreme React - Get devextreme-react ref
       working-directory: ./devextreme-react-repo
