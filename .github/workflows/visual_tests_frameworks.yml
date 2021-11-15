@@ -41,11 +41,6 @@ jobs:
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme-repo/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
-    - name: Use Node.js 15
-      uses: actions/setup-node@v2
-      with:
-        node-version: '15'
-
     - name: DevExtreme - Install packages
       working-directory: ./devextreme-repo
       run: npm install --no-audit --no-fund
@@ -58,14 +53,9 @@ jobs:
       working-directory: ./devextreme-repo/artifacts/npm/devextreme
       run: npm pack
 
-    - name: Use Node.js 14
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-
     #Build devextreme-react
     - name: DevExtreme React - Clone devextreme-react repo
-      run: git clone -b 21.2 https://github.com/devexpress/devextreme-react ./devextreme-react-repo
+      run: git clone -b master https://github.com/devexpress/devextreme-react ./devextreme-react-repo
 
     - name: DevExtreme React - Update react metadata
       working-directory: ./devextreme-repo
@@ -107,7 +97,7 @@ jobs:
 
     #Build devextreme-vue
     - name: DevExtreme Vue - Clone devextreme-vue repo
-      run: git clone -b 21.2 https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
+      run: git clone -b master https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
 
     - name: DevExtreme Vue - Update vue metadata
       working-directory: ./devextreme-repo
@@ -149,7 +139,7 @@ jobs:
 
     #Build devextreme-angular
     - name: DevExtreme Angular - Clone devextreme-angular repo
-      run: git clone -b 21.2 https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
+      run: git clone -b master https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
 
     - name: DevExtreme Angular - Update angular metadata
       working-directory: ./devextreme-repo
