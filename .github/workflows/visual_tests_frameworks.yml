@@ -73,6 +73,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build
     timeout-minutes: 20
+    needs: build-devextreme
 
     steps:
 
@@ -151,6 +152,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build
     timeout-minutes: 20
+    needs: build-devextreme
 
     steps:
 
@@ -231,6 +233,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build
     timeout-minutes: 20
+    needs: build-devextreme
 
     steps:
 
@@ -308,6 +311,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build
     timeout-minutes: 20
+    needs: [build-angular, build-react, build-vue]
 
     steps:
 
