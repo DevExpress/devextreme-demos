@@ -17,6 +17,7 @@ module.exports = {
   },
   plugins: [
     'spellcheck',
+    'no-only-tests',
   ],
   rules: {
     'spellcheck/spell-checker': (() => {
@@ -281,6 +282,7 @@ module.exports = {
     'no-use-before-define': 0,
     'prefer-destructuring': 0,
     'no-param-reassign': ['error', { 'props': false }],
+    'no-only-tests/no-only-tests': 'error',
   },
   extends: [
     'eslint:recommended',

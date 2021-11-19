@@ -38,7 +38,12 @@ window.config = {
   map: {
     'ts': 'npm:plugin-typescript/lib/plugin.js',
     'typescript': 'npm:typescript/lib/typescript.js',
-    '@angular': 'npm:@angular',
+    '@angular/core': 'npm:@angular/core',
+    '@angular/platform-browser': 'npm:@angular/platform-browser',
+    '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic',
+    '@angular/forms': 'npm:@angular/forms',
+    '@angular/common': 'npm:@angular/common',
+    '@angular/compiler': 'npm:@angular/compiler',
     'tslib': 'npm:tslib/tslib.js',
     'rxjs': 'npm:rxjs',
 
@@ -97,7 +102,6 @@ window.config = {
     'devexpress-diagram': 'npm:devexpress-diagram',
     'devexpress-gantt': 'npm:devexpress-gantt',
     'devextreme-angular': 'npm:devextreme-angular',
-    '@devextreme/vdom': 'npm:@devextreme/vdom',
     '@devextreme/runtime': 'npm:@devextreme/runtime',
     'inferno': 'npm:inferno/dist/inferno.min.js',
     'inferno-compat': 'npm:inferno-compat/dist/inferno-compat.min.js',
@@ -114,9 +118,6 @@ window.config = {
       defaultExtension: 'ts',
     },
     'devextreme': {
-      defaultExtension: 'js',
-    },
-    '@devextreme/vdom': {
       defaultExtension: 'js',
     },
     'devextreme/events/utils': {
