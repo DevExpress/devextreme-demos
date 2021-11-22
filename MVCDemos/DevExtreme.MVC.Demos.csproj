@@ -642,6 +642,7 @@
     <Content Include="Content\DemosStyles\Charts\PolarChartAnnotations.css" />
     <Content Include="Content\DemosStyles\Charts\PolarChartZoomingAndScrollingAPI.css" />
     <Content Include="Content\DemosStyles\Charts\Strips.css" />
+    <Content Include="Content\DemosStyles\Common\EditorAppearanceVariants.css" />
     <Content Include="Content\DemosStyles\DataGrid\BatchUpdateRequest.css" />
     <Content Include="Content\DemosStyles\DataGrid\CustomEditors.css" />
     <Content Include="Content\DemosStyles\DataGrid\DnDBetweenGrids.css" />
@@ -752,7 +753,6 @@
     <Content Include="Content\DemosStyles\Common\ActionAndListsOverview.css" />
     <Content Include="Content\DemosStyles\Common\NavigationOverview.css" />
     <Content Include="Content\DemosStyles\Common\NavigationRightToLeftSupport.css" />
-    <Content Include="Content\DemosStyles\Common\StylingMode.css" />
     <Content Include="Content\DemosStyles\ContextMenu\Basics.css" />
     <Content Include="Content\DemosStyles\ContextMenu\Templates.css" />
     <Content Include="Content\DemosStyles\DataGrid\BatchEditing.css" />
@@ -2052,7 +2052,6 @@
     <Content Include="Views\DataGrid\FocusedRow.cshtml" />
     <Content Include="Views\Charts\SignalRService.cshtml" />
     <Content Include="Views\ButtonGroup\Overview.cshtml" />
-    <Content Include="Views\Common\StylingMode.cshtml" />
     <Content Include="Views\Charts\ZoomingOnAreaSelection.cshtml" />
     <Content Include="Content\SampleData\Birthlife.json" />
     <Content Include="Views\Charts\LoadDataOnDemand.cshtml" />
@@ -2171,6 +2170,7 @@
     <Content Include="Views\Gantt\FilterRow.cshtml" />
     <Content Include="Views\Gantt\HeaderFilter.cshtml" />
     <Content Include="Views\DataGrid\CustomNewRecordPosition.cshtml" />
+    <Content Include="Views\Common\EditorAppearanceVariants.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

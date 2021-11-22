@@ -1,14 +1,10 @@
-'use strict';
-
+/* eslint-disable no-console */
 const fs = require('fs');
 const path = require('path');
 const promptsQuestions = require('./prompts-questions');
 
-// const existingApproaches = ['jQuery', 'Knockout', 'AngularJS', 'Angular', 'React', 'Vue']; // TODO remove this line
-
 const menuMetaFileName = 'menuMeta.json';
 const menuMetaFilePath = path.join('.', menuMetaFileName);
-// const baseDemosDir = 'Demos'; // TODO remove this line
 
 const mainRoutine = async (menuMetaData) => {
   const demo = await promptsQuestions.askDemoToUpdate(menuMetaData);

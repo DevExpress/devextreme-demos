@@ -129,14 +129,14 @@ namespace DevExtreme.MVC.Demos.Controllers {
             }));
         }
 
-        #region StylingMode
-        public ActionResult Stylingmode() {
+        #region CustomTextEditorButtons
+        public ActionResult CustomTextEditorButtons() {
             return View();
         }
         #endregion
 
-        #region CustomTextEditorButtons
-        public ActionResult CustomTextEditorButtons() {
+        #region EditorAppearanceVariants
+        public ActionResult EditorAppearanceVariants() {
             return View();
         }
         #endregion

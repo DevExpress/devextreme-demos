@@ -4435,12 +4435,13 @@
         ]
       },
       {
-        "Name": "Styling Mode",
-        "Equivalents": "stylingMode, filled, outlined, underlined",
+        "Name": "Editor Appearance Variants",
+        "Equivalents": "editor, label, labelMode, floating, static, hidden, stylingMode, filled, outlined, underlined",
         "Demos": [
           {
-            "Title": "Styling Mode",
-            "Name": "StylingMode",
+            "Title": "Editor Appearance Variants",
+            "Name": "EditorAppearanceVariants",
+            "Badge": "New",
             "DocUrl": "",
             "Widget": "Common",
             "DemoType": "Web"

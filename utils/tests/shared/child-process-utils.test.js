@@ -1,5 +1,3 @@
-'use strict';
-
 const childProcess = require('child_process');
 const childProcessUtils = require('../../shared/child-process-utils');
 

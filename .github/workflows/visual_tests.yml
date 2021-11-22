@@ -41,6 +41,11 @@ jobs:
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme-repo/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
+    - name: Use Node.js 15
+      uses: actions/setup-node@v2
+      with:
+        node-version: '15'
+
     - name: DevExtreme - Install packages
       working-directory: ./devextreme-repo
       run: npm install --no-audit --no-fund
@@ -114,7 +119,9 @@ jobs:
 
     - name: Get changed files
       if: github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'force all tests')
-      run: curl https://api.github.com/repos/${{github.repository}}/pulls/${{github.event.pull_request.number}}/files > changed-files.json
+      run: |
+        curl --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --url https://api.github.com/repos/${{github.repository}}/pulls/${{github.event.pull_request.number}}/files > changed-files.json
 
     - name: Run TestCafe tests
       env:

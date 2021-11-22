@@ -1,8 +1,9 @@
-$(function(){
-    $("#button").dxButton({
-        text: "Click me",
-        onClick: function(e) {
-            alert("Test!");
-        }
-    });
+$(() => {
+  $('#button').dxButton({
+    text: 'Click me',
+    onClick() {
+      // eslint-disable-next-line no-alert
+      alert('Test!');
+    },
+  });
 });

@@ -1,4 +1,4 @@
-'use strict';
+/* eslint-disable import/no-extraneous-dependencies */
 
 const express = require('express');
 const serveStatic = require('serve-static');
