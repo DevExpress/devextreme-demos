@@ -34,51 +34,51 @@
         location="before"
         template="totalCountTemplate"
       />
-      <template #totalCountTemplate>
-        <div class="informer">
-          <h2 class="count">{{ totalCount }}</h2>
-          <span class="name">Total Count</span>
-        </div>
-      </template>
       <DxItem
         location="before"
         template="groupingTemplate"
       />
-      <template #groupingTemplate>
-        <DxSelectBox
-          width="225"
-          :items="groupingValues"
-          display-expr="text"
-          value-expr="value"
-          value="CustomerStoreState"
-          @value-changed="groupChanged"
-        />
-      </template>
       <DxItem
         location="before"
         template="collapseTemplate"
       />
-      <template #collapseTemplate>
-        <DxButton
-          :text="expanded ? 'Collapse All' : 'Expand All'"
-          width="136"
-          @click="collapseAllClick"
-        />
-      </template>
       <DxItem
         location="after"
         template="refreshTemplate"
       />
-      <template #refreshTemplate>
-        <DxButton
-          icon="refresh"
-          @click="refreshDataGrid"
-        />
-      </template>
       <DxItem
         name="columnChooserButton"
       />
     </DxToolbar>
+    <template #totalCountTemplate>
+      <div class="informer">
+        <h2 class="count">{{ totalCount }}</h2>
+        <span class="name">Total Count</span>
+      </div>
+    </template>
+    <template #groupingTemplate>
+      <DxSelectBox
+        width="225"
+        :items="groupingValues"
+        display-expr="text"
+        value-expr="value"
+        value="CustomerStoreState"
+        @value-changed="groupChanged"
+      />
+    </template>
+    <template #collapseTemplate>
+      <DxButton
+        :text="expanded ? 'Collapse All' : 'Expand All'"
+        width="136"
+        @click="collapseAllClick"
+      />
+    </template>
+    <template #refreshTemplate>
+      <DxButton
+        icon="refresh"
+        @click="refreshDataGrid"
+      />
+    </template>
   </DxDataGrid>
 </template>
 <script>
