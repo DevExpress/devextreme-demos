@@ -150,7 +150,7 @@ export function runTestAtPage(test, demoUrl) {
   return executor.page(demoUrl);
 }
 
-export function runManualTest(testObject, product, demo, framework, callback) {
+function runOneManualTest(testObject, product, demo, framework, callback) {
   const test = testObject.page(`http://localhost:8080/JSDemos/Demos/${product}/${demo}/${framework}/`);
   const index = settings.manualTestIndex;
   settings.manualTestIndex += 1;
@@ -166,6 +166,27 @@ export function runManualTest(testObject, product, demo, framework, callback) {
     return;
   }
   callback(test);
+}
+
+export function runManualTest(testObject, product, demo, frameworkOrCallback, callbackOrUndefined) {
+  let framework;
+  let callback;
+
+  if (typeof frameworkOrCallback === 'function') {
+    framework = ['Jquery', 'Angular', 'Vue', 'React'];
+    callback = frameworkOrCallback;
+  } else {
+    framework = frameworkOrCallback;
+    callback = callbackOrUndefined;
+  }
+
+  if (Array.isArray(framework)) {
+    framework.forEach((i) => {
+      runOneManualTest(testObject, product, demo, i, callback);
+    });
+  } else {
+    runOneManualTest(testObject, product, demo, framework, callback);
+  }
 }
 
 export function getPortByIndex(testIndex) {
