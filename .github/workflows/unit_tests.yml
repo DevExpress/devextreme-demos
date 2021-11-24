@@ -20,6 +20,9 @@ jobs:
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: ${{ runner.os }}-node-modules
 
+      - name: Delete DX packages
+        run:  sed -i '/22.1-next/d' ./package.json
+
       - name: Run npm install
         run: npm install --no-audit --no-fund
 
