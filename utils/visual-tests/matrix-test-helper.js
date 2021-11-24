@@ -173,7 +173,7 @@ export function runManualTest(testObject, product, demo, frameworkOrCallback, ca
   let callback;
 
   if (typeof frameworkOrCallback === 'function') {
-    framework = ['Jquery', 'Angular', 'Vue', 'React'];
+    framework = ['jQuery', 'Angular', 'Vue', 'React'];
     callback = frameworkOrCallback;
   } else {
     framework = frameworkOrCallback;

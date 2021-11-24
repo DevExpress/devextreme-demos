@@ -8,7 +8,7 @@ fixture('Scheduler.Templates')
       .resizeWindow(900, 600);
   });
 
-runManualTest(test, 'Scheduler', 'Overview', 'React', (test) => {
+runManualTest(test, 'Scheduler', 'Overview', (test) => {
   test('Overview cell selection (T1041269)', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 

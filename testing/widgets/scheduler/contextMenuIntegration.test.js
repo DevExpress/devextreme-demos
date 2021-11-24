@@ -9,7 +9,7 @@ fixture('Scheduler.ContextMenuIntegration')
       .resizeWindow(900, 600);
   });
 
-runManualTest(test, 'Scheduler', 'ContextMenuIntegration', 'jQuery', (test) => {
+runManualTest(test, 'Scheduler', 'ContextMenuIntegration', (test) => {
   test('ContextMenuIntegration', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 

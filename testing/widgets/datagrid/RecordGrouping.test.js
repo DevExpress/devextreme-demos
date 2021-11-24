@@ -9,7 +9,7 @@ fixture('DataGrid.RecordGrouping')
       .resizeWindow(900, 600);
   });
 
-runManualTest(test, 'DataGrid', 'RecordGrouping', 'jQuery', (test) => {
+runManualTest(test, 'DataGrid', 'RecordGrouping', (test) => {
   test('RecordGrouping', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
