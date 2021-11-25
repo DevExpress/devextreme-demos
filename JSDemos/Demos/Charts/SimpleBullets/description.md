@@ -2,7 +2,7 @@ Bullet charts are useful when you need to compare a single measure to a target v
 
 ## Configure the Bullet Bar
 
-Specify the [value](/Documentation/ApiReference/UI_Components/dxBullet/Configuration/#value) property to set the length of the bullet bar. The value should lay between [startScaleValue](/Documentation/ApiReference/UI_Components/dxBullet/Configuration/#startScaleValue) and [endScaleValue](/Documentation/ApiReference/UI_Components/dxBullet/Configuration/#endScaleValue). If you do not specify the scale range, the **startScaleValue** is 0 and the **endScaleValue** is calculated automatically based on measure and target values. 
+Specify the [value](/Documentation/ApiReference/UI_Components/dxBullet/Configuration/#value) property to set the length of the bullet bar. The value should be between the [startScaleValue](/Documentation/ApiReference/UI_Components/dxBullet/Configuration/#startScaleValue) and [endScaleValue](/Documentation/ApiReference/UI_Components/dxBullet/Configuration/#endScaleValue). If you do not specify the scale range, the **startScaleValue** is 0 and the **endScaleValue** is calculated automatically based on measure and target values. 
 
 When you arrange several bullets in a column, set the same scale range for them so that their bullet bars can be compared visually. 
 
