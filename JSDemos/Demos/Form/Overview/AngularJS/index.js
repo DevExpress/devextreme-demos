@@ -9,7 +9,7 @@ DemoApp.controller('DemoController', ($scope) => {
   $scope.minColWidth = 300;
   $scope.colCount = 2;
   $scope.widthValue = undefined;
-  $scope.companySelectorlabelMode = () => $scope.labelMode === 'outside'
+  $scope.getCompanySelectorLabelMode = () => $scope.labelMode === 'outside'
     ? 'hidden'
   	: $scope.labelMode;
 
@@ -30,7 +30,7 @@ DemoApp.controller('DemoController', ($scope) => {
     label: 'Select company',
     dataSource: companies,
     bindingOptions: {
-      labelMode: 'companySelectorlabelMode()',
+      labelMode: 'getCompanySelectorLabelMode()',
       value: 'data',
     },
   };
