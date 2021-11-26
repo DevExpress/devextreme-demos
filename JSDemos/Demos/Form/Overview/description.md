@@ -1,6 +1,9 @@
 The Form component builds a data entry UI for an object assigned to the [formData](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#formData) property. The component displays and aligns label-editor pairs for each field in the bound object.
 
 You can use the editors on the right to modify the following properties:     
+- [labelMode](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#labelMode)    
+Specifies the display mode of the labels.
+
 - [labelLocation](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#labelLocation)    
 Specifies whether to display labels above or to the left of corresponding editors.
 
