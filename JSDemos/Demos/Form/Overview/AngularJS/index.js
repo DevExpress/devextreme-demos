@@ -10,7 +10,7 @@ DemoApp.controller('DemoController', ($scope) => {
   $scope.colCount = 2;
   $scope.widthValue = undefined;
   $scope.getCompanySelectorLabelMode = () => {
-    if($scope.labelMode === 'outside') {
+    if ($scope.labelMode === 'outside') {
       return 'hidden';
     }
     return $scope.labelMode;

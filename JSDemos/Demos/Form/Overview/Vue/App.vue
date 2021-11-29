@@ -102,8 +102,8 @@ export default {
     };
   },
   computed: {
-    companySelectorLabelMode: function() {
-      if(this.labelMode === 'outside'){
+    companySelectorLabelMode() {
+      if (this.labelMode === 'outside') {
         return 'hidden';
       }
       return this.labelMode;
