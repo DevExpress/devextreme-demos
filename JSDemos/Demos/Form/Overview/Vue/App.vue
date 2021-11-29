@@ -102,12 +102,13 @@ export default {
     };
   },
   computed: {
-    companySelectorLabelMode: function () {
-      return this.labelMode === 'outside'
-        ? 'hidden'
-        : this.labelMode;
-    }
-  }
+    companySelectorLabelMode: function() {
+      if(this.labelMode === 'outside'){
+        return 'hidden';
+      }
+      return this.labelMode;
+    },
+  },
 };
 </script>
 <style scoped>

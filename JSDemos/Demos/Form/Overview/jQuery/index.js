@@ -13,13 +13,13 @@ $(() => {
     displayExpr: 'Name',
     dataSource: companies,
     labelMode: 'hidden',
-    label: 'Select company',    
+    label: 'Select company',
     value: companies[0],
     onValueChanged(data) {
       form.option('formData', data.value);
     },
   }).dxSelectBox('instance');
-  
+
   const companySelectorText = $('#select-company-text');
 
   $('#label-mode').dxSelectBox({
@@ -27,15 +27,15 @@ $(() => {
     value: 'outside',
     onValueChanged(data) {
       form.option('labelMode', data.value);
-      
+
       if(data.value === 'outside') {
-        companySelectorSelectBox.option('labelMode', 'hidden');        
+        companySelectorSelectBox.option('labelMode', 'hidden');
         companySelectorText.show();
       } else {
         companySelectorSelectBox.option('labelMode', data.value);
-        companySelectorText.hide();        
+        companySelectorText.hide();
       }
-    }
+    },
   });
 
   $('#label-location').dxSelectBox({

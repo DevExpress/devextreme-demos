@@ -45,7 +45,7 @@ class App extends React.Component {
       width,
     } = this.state;
 
-    const companeSelectorLabelMode = labelMode === 'outside'
+    const companySelectorLabelMode = labelMode === 'outside'
       ? 'hidden'
       : labelMode;
 
@@ -56,8 +56,8 @@ class App extends React.Component {
           <SelectBox
             displayExpr="Name"
             dataSource={this.companies}
-            labelMode={companeSelectorLabelMode}
-            label={'Select company'}            
+            labelMode={companySelectorLabelMode}
+            label='Select company'
             value={company}
             onValueChanged={this.onCompanyChanged}
           />

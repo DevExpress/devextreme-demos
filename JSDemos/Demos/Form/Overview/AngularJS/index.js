@@ -9,9 +9,12 @@ DemoApp.controller('DemoController', ($scope) => {
   $scope.minColWidth = 300;
   $scope.colCount = 2;
   $scope.widthValue = undefined;
-  $scope.getCompanySelectorLabelMode = () => $scope.labelMode === 'outside'
-    ? 'hidden'
-  	: $scope.labelMode;
+  $scope.getCompanySelectorLabelMode = () => {
+    if($scope.labelMode === 'outside') {
+      return 'hidden';
+    }
+    return $scope.labelMode;
+  };
 
   $scope.formOptions = {
     bindingOptions: {

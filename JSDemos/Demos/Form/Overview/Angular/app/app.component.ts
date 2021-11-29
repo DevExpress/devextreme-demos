@@ -47,7 +47,7 @@ export class AppComponent {
     this.companies = service.getCompanies();
   }
 
-  getCompanySelectorLabelMode(){
+  getCompanySelectorLabelMode() {
     return this.labelMode === 'outside'
       ? 'hidden'
       : this.labelMode;
