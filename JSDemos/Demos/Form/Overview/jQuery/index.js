@@ -28,7 +28,7 @@ $(() => {
     onValueChanged(data) {
       form.option('labelMode', data.value);
 
-      if(data.value === 'outside') {
+      if (data.value === 'outside') {
         companySelectorSelectBox.option('labelMode', 'hidden');
         companySelectorText.show();
       } else {
