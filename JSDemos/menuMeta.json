@@ -4551,8 +4551,8 @@
             "Name": "Overview",
             "Widget": "Form",
             "MvcAdditionalFiles": [
-              "/Models/Company.cs",
-              "/Models/SampleData/Companies.cs"
+              "/Models/ActiveCompany.cs",
+              "/Models/SampleData/ActiveCompanies.cs"
             ]
           },
           {
