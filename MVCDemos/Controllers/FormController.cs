@@ -12,12 +12,12 @@ namespace DevExtreme.MVC.Demos.Controllers {
     public class FormController : Controller {
         #region Overview
         public ActionResult Overview() {
-            return View(SampleData.Companies.First());
+            return View(SampleData.ActiveCompanies.First());
         }
 
         [HttpGet]
         public ActionResult GetCompanies(DataSourceLoadOptions loadOptions) {
-            return Content(JsonConvert.SerializeObject(DataSourceLoader.Load(SampleData.Companies, loadOptions)), "application/json");
+            return Content(JsonConvert.SerializeObject(DataSourceLoader.Load(SampleData.ActiveCompanies, loadOptions)), "application/json");
         }
         #endregion
 
