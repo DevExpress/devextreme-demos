@@ -1,10 +1,13 @@
-﻿@model DevExtreme.MVC.Demos.Models.Company
+﻿@model DevExtreme.MVC.Demos.Models.ActiveCompany
 
 <div id="form-demo">
     <div class="widget-container">
-        <div>Select company:</div>
+        <div id="selectCompanyText">Select company:</div>
         @(Html.DevExtreme().SelectBox()
+            .ID("companySelector")
             .DisplayExpr("Name")
+            .Label("Select company")
+            .LabelMode(EditorLabelMode.Hidden)
             .DataSource(d => d.Mvc().LoadAction("GetCompanies").Key("ID"))
             .Value(1)
             .OnValueChanged("selectBox_valueChanged")
@@ -22,10 +25,18 @@
     <div class="options">
         <div class="caption">Options</div>
         <div class="option">
+            <span>Label mode:</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new[] { "outside", "static", "floating", "hidden" })
+                .Value("outside")
+                .OnValueChanged("labelMode_changed")
+            )
+        </div>
+        <div class="option">
             <span>Label location:</span>
             @(Html.DevExtreme().SelectBox()
                 .DataSource(new[] { "left", "top" })
-                .Value("top")
+                .Value("left")
                 .OnValueChanged("labelLocation_changed")
             )
         </div>
@@ -77,6 +88,20 @@
 
     function selectBox_valueChanged(data) {
         getFormInstance().option("formData", data.value);
+    }
+
+    function labelMode_changed(data) {
+        getFormInstance().option("labelMode", data.value);
+
+        const companySelectorText = $("#selectCompanyText");
+        const companySelector = $("#companySelector");
+        if(data.value === "outside") {
+            companySelectorSelectBox.option("labelMode", "hidden");
+            companySelectorText.show();
+        } else {
+            companySelectorSelectBox.option("labelMode", data.value);
+            companySelectorText.hide();
+        }
     }
 
     function labelLocation_changed(data) {
