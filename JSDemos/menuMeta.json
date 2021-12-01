@@ -4549,6 +4549,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
+            "Badge": "Updated",
             "Widget": "Form",
             "MvcAdditionalFiles": [
               "/Models/ActiveCompany.cs",
