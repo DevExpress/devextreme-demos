@@ -4,7 +4,7 @@
     <div class="widget-container">
         <div id="selectCompanyText">Select company:</div>
         @(Html.DevExtreme().SelectBox()
-            .ID("companySelector")
+            .ID("companySelectBox")
             .DisplayExpr("Name")
             .Label("Select company")
             .LabelMode(EditorLabelMode.Hidden)
@@ -93,14 +93,14 @@
     function labelMode_changed(data) {
         getFormInstance().option("labelMode", data.value);
 
-        const companySelectorText = $("#selectCompanyText");
-        const companySelector = $("#companySelector").dxSelectBox("instance");
+        const $companySelectText = $("#selectCompanyText");
+        const companySelectBox = $("#companySelectBox").dxSelectBox("instance");
         if(data.value === "outside") {
-            companySelector.option("labelMode", "hidden");
-            companySelectorText.show();
+            companySelectBox.option("labelMode", "hidden");
+            $companySelectText.show();
         } else {
-            companySelector.option("labelMode", data.value);
-            companySelectorText.hide();
+            companySelectBox.option("labelMode", data.value);
+            $companySelectText.hide();
         }
     }
 
