@@ -1,6 +1,6 @@
 When you add a CheckBox to an application, set its [value](/Documentation/ApiReference/UI_Components/dxCheckBox/Configuration/#value) property. The CheckBox can have the following states: 
 
-- Checked (the **value** property is **true**).
+- Checked (**value** is **true**).
 - Unchecked (**value** is **false**).
 - Undetermined (**value** is **undefined**).
 
