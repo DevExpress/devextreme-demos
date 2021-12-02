@@ -94,12 +94,12 @@
         getFormInstance().option("labelMode", data.value);
 
         const companySelectorText = $("#selectCompanyText");
-        const companySelector = $("#companySelector");
+        const companySelector = $("#companySelector").dxSelectBox("instance");
         if(data.value === "outside") {
-            companySelectorSelectBox.option("labelMode", "hidden");
+            companySelector.option("labelMode", "hidden");
             companySelectorText.show();
         } else {
-            companySelectorSelectBox.option("labelMode", data.value);
+            companySelector.option("labelMode", data.value);
             companySelectorText.hide();
         }
     }
