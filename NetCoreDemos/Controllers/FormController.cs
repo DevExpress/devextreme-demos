@@ -11,12 +11,12 @@ namespace DevExtreme.NETCore.Demos.Controllers {
     public class FormController : Controller {
         #region Overview
         public ActionResult Overview() {
-            return View(SampleData.Companies.First());
+            return View(SampleData.ActiveCompanies.First());
         }
 
         [HttpGet]
         public object GetCompanies(DataSourceLoadOptions loadOptions) {
-            return DataSourceLoader.Load(SampleData.Companies, loadOptions);
+            return DataSourceLoader.Load(SampleData.ActiveCompanies, loadOptions);
         }
         #endregion
 
