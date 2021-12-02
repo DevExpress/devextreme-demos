@@ -1,10 +1,13 @@
-﻿@model DevExtreme.NETCore.Demos.Models.Company
+﻿@model DevExtreme.NETCore.Demos.Models.ActiveCompany
 
 <div id="form-demo">
     <div class="widget-container">
-        <div>Select company:</div>
+        <div id="companySelectText">Select company:</div>
         @(Html.DevExtreme().SelectBox()
+            .ID("companySelectBox")
             .DisplayExpr("Name")
+            .Label("Select company")
+            .LabelMode(EditorLabelMode.Hidden)
             .DataSource(d => d.Mvc().LoadAction("GetCompanies").Key("ID"))
             .Value(1)
             .OnValueChanged("selectBox_valueChanged")
@@ -13,7 +16,7 @@
             .ID("form")
             .ColCount(2)
             .FormData(Model)
-            .LabelLocation(FormLabelLocation.Top)
+            .LabelLocation(FormLabelLocation.Left)
             .MinColWidth(300)
             .ReadOnly(false)
             .ShowColonAfterLabel(true)
@@ -22,10 +25,18 @@
     <div class="options">
         <div class="caption">Options</div>
         <div class="option">
+            <span>Label mode:</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new[] { "outside", "static", "floating", "hidden" })
+                .Value("outside")
+                .OnValueChanged("labelMode_changed")
+            )
+        </div>
+        <div class="option">
             <span>Label location:</span>
             @(Html.DevExtreme().SelectBox()
                 .DataSource(new[] { "left", "top" })
-                .Value("top")
+                .Value("left")
                 .OnValueChanged("labelLocation_changed")
             )
         </div>
@@ -77,6 +88,20 @@
 
     function selectBox_valueChanged(data) {
         getFormInstance().option("formData", data.value);
+    }
+
+    function labelMode_changed(data) {
+        getFormInstance().option("labelMode", data.value);
+
+        const $companySelectText = $("#companySelectText");
+        const companySelectBox = $("#companySelectBox").dxSelectBox("instance");
+        if(data.value === "outside") {
+            companySelectBox.option("labelMode", "hidden");
+            $companySelectText.show();
+        } else {
+            companySelectBox.option("labelMode", data.value);
+            $companySelectText.hide();
+        }
     }
 
     function labelLocation_changed(data) {
