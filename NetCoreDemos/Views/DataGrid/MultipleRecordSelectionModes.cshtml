@@ -42,7 +42,7 @@
             @(Html.DevExtreme().SelectBox()
                 .ID("show-checkboxes-mode")
                 .DataSource(new[] { "none", "onClick", "onLongTap", "always" })
-                .Value("onClick")
+                .Value(new JS("defaultMode"))
                 .OnValueChanged("showCheckBoxesMode_changed")
             )
         </div>
@@ -50,6 +50,7 @@
 </div>
 
 <script>
+    const defaultMode = DevExpress.ui.themes.current().startsWith('material') ? 'always' : 'onClick';
 
     function getDataGridInstance() {
         return $("#grid-container").dxDataGrid("instance");
