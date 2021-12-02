@@ -2,9 +2,9 @@
 
 <div id="form-demo">
     <div class="widget-container">
-        <div id="selectCompanyText">Select company:</div>
+        <div id="companySelectText">Select company:</div>
         @(Html.DevExtreme().SelectBox()
-            .ID("companySelector")
+            .ID("companySelectBox")
             .DisplayExpr("Name")
             .Label("Select company")
             .LabelMode(EditorLabelMode.Hidden)
@@ -16,7 +16,7 @@
             .ID("form")
             .ColCount(2)
             .FormData(Model)
-            .LabelLocation(FormLabelLocation.Top)
+            .LabelLocation(FormLabelLocation.Left)
             .MinColWidth(300)
             .ReadOnly(false)
             .ShowColonAfterLabel(true)
@@ -93,14 +93,14 @@
     function labelMode_changed(data) {
         getFormInstance().option("labelMode", data.value);
 
-        const companySelectorText = $("#selectCompanyText");
-        const companySelector = $("#companySelector");
+        const $companySelectText = $("#companySelectText");
+        const companySelectBox = $("#companySelectBox").dxSelectBox("instance");
         if(data.value === "outside") {
-            companySelectorSelectBox.option("labelMode", "hidden");
-            companySelectorText.show();
+            companySelectBox.option("labelMode", "hidden");
+            $companySelectText.show();
         } else {
-            companySelectorSelectBox.option("labelMode", data.value);
-            companySelectorText.hide();
+            companySelectBox.option("labelMode", data.value);
+            $companySelectText.hide();
         }
     }
 
