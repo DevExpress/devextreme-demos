@@ -14,6 +14,6 @@ Use the [node](/Documentation/ApiReference/UI_Components/dxSankey/Configuration/
 
 ## Configure the Tooltip
 
-The tooltip content differs for nodes and links. When you hover over a node, the tooltip shows the node's title, its incoming and outgoing weights. When you hover over a link, the tooltip shows the link's direction and weight. 
+The tooltip content differs for nodes and links. When you hover over a node, the tooltip shows the node's title, and its incoming and outgoing weights. When you hover over a link, the tooltip shows the link's direction and weight. 
 
 To customize the tooltip content, use the [customizeNodeTooltip](/Documentation/ApiReference/UI_Components/dxSankey/Configuration/tooltip/#customizeNodeTooltip) and [customizeLinkTooltip](/Documentation/ApiReference/UI_Components/dxSankey/Configuration/tooltip/#customizeLinkTooltip) functions. In this demo, you can see an example of the **customizeLinkTooltip** function.
