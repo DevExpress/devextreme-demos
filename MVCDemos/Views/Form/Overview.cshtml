@@ -7,7 +7,7 @@
             .ID("companySelectBox")
             .DisplayExpr("Name")
             .Label("Select company")
-            .LabelMode(EditorLabelMode.Hidden)
+            .LabelMode(EditorLabelMode.Floating)
             .DataSource(d => d.Mvc().LoadAction("GetCompanies").Key("ID"))
             .Value(1)
             .OnValueChanged("selectBox_valueChanged")
@@ -16,6 +16,7 @@
             .ID("form")
             .ColCount(2)
             .FormData(Model)
+            .LabelMode(FormLabelMode.Floating)
             .LabelLocation(FormLabelLocation.Left)
             .MinColWidth(300)
             .ReadOnly(false)
@@ -28,7 +29,7 @@
             <span>Label mode:</span>
             @(Html.DevExtreme().SelectBox()
                 .DataSource(new[] { "outside", "static", "floating", "hidden" })
-                .Value("outside")
+                .Value("floating")
                 .OnValueChanged("labelMode_changed")
             )
         </div>
