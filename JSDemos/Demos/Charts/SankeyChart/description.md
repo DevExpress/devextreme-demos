@@ -1,4 +1,4 @@
-The Sankey chart visualizes the flow magnitude between value sets. Flow values are nodes, the connections between nodes are links. The higher the flow magnitude, the wider the link is.
+The Sankey chart visualizes the flow magnitude between value sets. Flow values are nodes, and the connections between nodes are links. The higher the flow magnitude, the wider the link is.
 
 ## Bind Sankey to Data
 
