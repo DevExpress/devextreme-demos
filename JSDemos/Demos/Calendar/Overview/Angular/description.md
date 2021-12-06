@@ -21,9 +21,10 @@ If you need to disable specific dates, use the [disabledDates](/Documentation/Ap
 ## Set the Beginning of the Week
 
 To specify which day should be considered the beginning of the week, pass its index (0 - for Sunday, 1 - for Monday, and so on) to the [firstDayOfWeek](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#firstDayOfWeek) property.
+
 ## Handle Value Change
 
-Set the [onValueChanged](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#onValueChanged) property to handle the **value** change. In this demo, the [DateBox](/Documentation/Guide/UI_Components/DateBox/Getting_Started_with_DateBox/) and the Calendar both use this property to pass values between each other. You can use one of these components to change the date. See how it affects the other.
+To handle value change, use two-way binding to bind the **value** properties of different components together. In this demo, the **value** properties of the [DateBox](/Documentation/Guide/UI_Components/DateBox/Getting_Started_with_DateBox/) and the Calendar are bound together. You can use one of these components to change the date. See how it affects the other.
 
 ## Customize Cell Appearance
 
