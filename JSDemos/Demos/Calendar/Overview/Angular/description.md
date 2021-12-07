@@ -2,7 +2,7 @@ When you add a Calendar to an application, you need to specify its [value](/Docu
 
 - Date objects.
 
-- Numeric values that specify the number of milliseconds since January 1, 1970, 00:00:00.
+- The number of milliseconds since 00:00:00 on January 1, 1970.
 
 - Strings that match the following patterns: 
     - 'yyyy-MM-dd'
