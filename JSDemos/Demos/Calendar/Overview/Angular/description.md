@@ -10,7 +10,7 @@ When you add a Calendar to an application, you need to specify its [value](/Docu
     - 'yyyy-MM-ddTHH:mm:ssZ'
     - 'yyyy-MM-ddTHH:mm:ssx' 
 
-This demo shows how to use additional properties to customize your Calendar. Toggle the checkboxes on the right to change the Calendar in real time.
+This demo shows how to use additional properties to customize your Calendar. You can toggle the checkboxes on the right to change the Calendar in real time.
 
 ## Disable Dates
 
