@@ -1,8 +1,8 @@
 When you add a Calendar to an application, you need to specify its [value](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#value) in one of the following formats: 
 
-- Date objects.
+- Date objects
 
-- The number of milliseconds since 00:00:00 on January 1, 1970.
+- The number of milliseconds since 00:00:00 on January 1, 1970
 
 - Strings that match the following patterns: 
     - 'yyyy-MM-dd'
