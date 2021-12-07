@@ -34,4 +34,4 @@ Use the [cellTemplate](/Documentation/ApiReference/UI_Components/dxCalendar/Conf
 
 Set the [disabled](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#disabled) property to disable the Calendar.
 
-To specify which calendar view (month, year, decade or century) to display at first, set the [zoomLevel](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#zoomLevel) property.
+To specify the initial calendar view (month, year, decade, or century), set the [zoomLevel](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#zoomLevel) property.
