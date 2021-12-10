@@ -22,7 +22,7 @@ Usually, the data field that supplies Autocomplete with suggestions (**valueExpr
 
 ## Handle Value Change
 
-To handle value changes, implement the [onValueChanged](/Documentation/ApiReference/UI_Components/dxAutocomplete/Configuration/#onValueChanged) function. In this demo, we use **onValueChanged** to display values of all Autocomplete components.
+To handle value changes, implement the [onValueChanged](/Documentation/ApiReference/UI_Components/dxAutocomplete/Configuration/#onValueChanged) function. In this demo, we use **onValueChanged** to display the values of all Autocomplete components.
 
 ## Appearance Customization
 
