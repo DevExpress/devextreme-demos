@@ -2,7 +2,7 @@ Autocomplete is a text box that displays suggestions while a user types. This de
 
 ## Bind Autocomplete to Data
 
-Use one of the following properties to supply data for the component:
+Use one of the following properties to supply data to the component:
 
 * [items[]](/Documentation/ApiReference/UI_Components/dxAutocomplete/Configuration/items/)             
 Accepts a local data array.
