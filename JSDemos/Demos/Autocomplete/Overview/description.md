@@ -12,7 +12,7 @@ Accepts a local data array, [DataSource](/Documentation/ApiReference/Data_Layer/
 
 The [value](/Documentation/ApiReference/UI_Components/dxAutocomplete/Configuration/#value) property stores the selected item. You can use the same property to select an item programmatically, as shown in the "Disabled" Autocomplete component.
 
-If the data source contains objects, you should set the [valueExpr](/Documentation/ApiReference/UI_Components/dxAutocomplete/Configuration/#valueExpr) property. It accepts a data field name that uniquely identifies each data object. In this demo, **valueExpr** is set only for the "Custom Item Template and Data Source Usage" Autocomplete because others are bound to arrays of primitive values.
+If the data source contains objects, you should specify the [valueExpr](/Documentation/ApiReference/UI_Components/dxAutocomplete/Configuration/#valueExpr) property. It accepts a data field name that uniquely identifies each data object. In this demo, **valueExpr** is set only for the "Custom Item Template and Data Source Usage" Autocomplete because others are bound to arrays of primitive values.
 
 ## Configure Search Parameters
 
