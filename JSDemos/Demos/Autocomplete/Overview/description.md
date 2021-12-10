@@ -18,7 +18,7 @@ If the data source contains objects, you should set the [valueExpr](/Documentati
 
 When a user types the first character, Autocomplete displays suggestions. To increase the number of characters that triggers suggestions, use the [minSearchLength](/Documentation/ApiReference/UI_Components/dxAutocomplete/Configuration/#minSearchLength) property. You can also specify the time interval Autocomplete should wait before it displays suggestions. Assign this time interval in milliseconds to the [searchTimeout](/Documentation/ApiReference/UI_Components/dxAutocomplete/Configuration/#searchTimeout) property. See the "With Custom Search Options" Autocomplete component for an example.
 
-Usually, the data field that supplies Autocomplete with suggestions (**valueExpr**) is the same data field that is searched for the typed text. If in your case they are two different fields, assign the field that supplies Autocomplete with suggestions to the **valueExpr** property and the field to be searched - to the [searchExpr](/Documentation/ApiReference/UI_Components/dxAutocomplete/Configuration/#searchExpr) property. Note that **searchExpr** also accepts arrays in case you need several fields to search in.
+Usually, the data field that supplies Autocomplete with suggestions (**valueExpr**) is the same data field that is searched for the typed text. If you use two different fields, assign the field that supplies Autocomplete with suggestions to the **valueExpr** property and the field to be searched to the [searchExpr](/Documentation/ApiReference/UI_Components/dxAutocomplete/Configuration/#searchExpr) property. Note that **searchExpr** also accepts arrays if you want to search multiple fields.
 
 ## Handle Value Change
 
