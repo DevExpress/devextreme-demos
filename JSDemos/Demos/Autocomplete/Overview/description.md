@@ -8,7 +8,7 @@ Use one of the following properties to supply data to the component:
 Accepts a local data array.
 
 * [dataSource](/Documentation/ApiReference/UI_Components/dxAutocomplete/Configuration/#dataSource)            
-Accepts a local data array, a [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) object, or one of DevExtreme data stores. In this demo, every Autocomplete component is bound to a local array, except the "Custom Item Template and Data Source Usage" component that uses an [ODataStore](/Documentation/ApiReference/Data_Layer/ODataStore/).
+Accepts a local data array, [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) object, or DevExtreme data store. In this demo, every Autocomplete component is bound to a local array, except the "Custom Item Template and Data Source Usage" component that uses an [ODataStore](/Documentation/ApiReference/Data_Layer/ODataStore/).
 
 The [value](/Documentation/ApiReference/UI_Components/dxAutocomplete/Configuration/#value) property stores the selected item. You can use the same property to select an item programmatically, as shown in the "Disabled" Autocomplete component.
 
