@@ -1,4 +1,4 @@
-Autocomplete is a text box that displays suggestions while a user types into it. This demo shows how you can customize the Autocomplete component and how to handle its value change.
+Autocomplete is a text box that displays suggestions while a user types. This demo shows how to customize the Autocomplete component and handle value changes.
 
 ## Bind Autocomplete to Data
 
