@@ -29,7 +29,7 @@ To handle value changes, implement the [onValueChanged](/Documentation/ApiRefere
 You can specify the following properties to customize the Autocomplete component's appearance:
 
 * [placeholder](/Documentation/ApiReference/UI_Components/dxAutocomplete/Configuration/#placeholder)             
-Sets a text string displayed when Autocomplete is empty. 
+The text that is displayed when Autocomplete is empty. 
 
 * [showClearButton](/Documentation/ApiReference/UI_Components/dxAutocomplete/Configuration/#showClearButton)            
 Adds a Clear button that empties the Autocomplete value as shown in the "With Clear Button" Autocomplete component. 
