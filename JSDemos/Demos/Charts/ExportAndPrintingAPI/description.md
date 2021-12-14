@@ -2,7 +2,7 @@ You can use two approaches to print and export the Chart: call methods, or add a
 
 ## Use Methods to Export and Print Chart
 
-Use the [exportTo(fileName, format)](/Documentation/ApiReference/UI_Components/dxChart/Methods/#exportTofileName_format) and [print()](/Documentation/ApiReference/UI_Components/dxChart/Methods/#print) methods to export and print the Chart. In this demo, two buttons below the chart implement the print and export functionality. A click on the "Print" button calls the Print dialog window, and a click on the "Export" button saves a file with the component to your local storage. You can specify file name and format in the **exportTo(fileName, format)** method.
+Use the [exportTo(fileName, format)](/Documentation/ApiReference/UI_Components/dxChart/Methods/#exportTofileName_format) and [print()](/Documentation/ApiReference/UI_Components/dxChart/Methods/#print) methods to export and print the Chart. In this demo, two buttons below the chart implement the print and export functionality. A click on the "Print" button calls the Print dialog window, and a click on the "Export" button saves a file with the component to your local storage. You can specify the file name and format in the **exportTo(fileName, format)** method.
 
 ## Export and Print Chart with a Built-in Menu
 
