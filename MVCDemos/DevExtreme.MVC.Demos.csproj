@@ -305,6 +305,7 @@
     <Compile Include="Hubs\SchedulerSignalRHub.cs" />
     <Compile Include="Hubs\LiveUpdateSignalRHub.cs" />
     <Compile Include="Hubs\StockTickDataHub.cs" />
+    <Compile Include="Models\ActiveCompany.cs" />
     <Compile Include="Models\AdaptabilityAppointment.cs" />
     <Compile Include="Models\AdaptabilityAppointmentsResource.cs" />
     <Compile Include="Models\CustomEditorsEmployee.cs" />
@@ -345,6 +346,7 @@
     <Compile Include="Models\OrgItems.cs" />
     <Compile Include="Models\ContextMenuItem.cs" />
     <Compile Include="Models\RowReorderingTask.cs" />
+    <Compile Include="Models\SampleData\ActiveCompanies.cs" />
     <Compile Include="Models\SampleData\AdaptabilityAppointments.cs" />
     <Compile Include="Models\SampleData\AgendaTasks.cs" />
     <Compile Include="Models\SampleData\AnnotationData.cs" />

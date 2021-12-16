@@ -7,6 +7,9 @@
 #form {
     margin-top: 25px;
 }
+#companySelectText {
+    display: none;
+}
 .options {
     padding: 20px;
     position: absolute;
