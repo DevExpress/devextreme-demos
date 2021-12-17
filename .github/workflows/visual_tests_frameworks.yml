@@ -319,7 +319,7 @@ jobs:
 
     - name: Update angular metadata
       working-directory: ./devextreme-repo
-      run: npm run internal-tool -- update-meta --output-path ../devextreme-angular-repo/packages/devextreme-angular/metadata/NGMetaData.json --version 22_1 --js-scripts ./js
+      run: npm run internal-tool -- update-meta --output-path ../devextreme-angular-repo/packages/devextreme-angular/metadata/NGMetaData.json --version 22_1 --js-scripts ./js --exclude js/renovation/
 
     - name: Copy devextreme package
       run: |
