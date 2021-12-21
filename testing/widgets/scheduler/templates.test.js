@@ -1,5 +1,5 @@
 import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
-import { runManualTest2 } from '../../../utils/visual-tests/matrix-test-helper';
+import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
 fixture('Scheduler.Templates')
   .page('http://localhost:8080/')
@@ -8,7 +8,7 @@ fixture('Scheduler.Templates')
       .resizeWindow(900, 600);
   });
 
-runManualTest2('Scheduler', 'Overview', 'React', (test) => {
+runManualTest('Scheduler', 'Overview', 'React', (test) => {
   test('Overview cell selection (T1041269)', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 

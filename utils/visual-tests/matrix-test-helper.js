@@ -150,7 +150,7 @@ export function runTestAtPage(test, demoUrl) {
   return executor.page(demoUrl);
 }
 
-export function runManualTest2(product, demo, framework, callback) {
+export function runManualTest(product, demo, framework, callback) {
   const test2 = test.page(`http://localhost:8080/JSDemos/Demos/${product}/${demo}/${framework}/`);
   const index = settings.manualTestIndex;
   settings.manualTestIndex += 1;
@@ -166,24 +166,6 @@ export function runManualTest2(product, demo, framework, callback) {
     return;
   }
   callback(test2);
-}
-
-export function runManualTest(testObject, product, demo, framework, callback) {
-  const test = testObject.page(`http://localhost:8080/JSDemos/Demos/${product}/${demo}/${framework}/`);
-  const index = settings.manualTestIndex;
-  settings.manualTestIndex += 1;
-  if (settings.explicitTests) {
-    if (shouldRunTestExplicitlyInternal(framework, product, demo)) {
-      callback(test.only);
-    }
-
-    return;
-  }
-
-  if (!shouldRunTest(framework, index)) {
-    return;
-  }
-  callback(test);
 }
 
 export function getPortByIndex(testIndex) {
