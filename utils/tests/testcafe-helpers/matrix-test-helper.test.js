@@ -1,14 +1,7 @@
 /* istanbul ignore file */
-
 const fs = require('fs');
 const helper = require('../../visual-tests/matrix-test-helper');
 
-const productDemoFramework = [{ filename: 'JSDemos/Demos/Accordion/Overview/Angular/index.json' }];
-const productDemo = [{ filename: 'JSDemos/Demos/Accordion/Overview/visualtestrc.json' }];
-const productDemoDescription = [{ filename: 'JSDemos/Demos/Accordion/Overview/description.md' }];
-const stubPath = [{ filename: 'stub' }];
-const manualScreenPath = [{ filename: 'testing/widgets/datagrid/etalons/image.png' }];
-const manualTestPath = [{ filename: 'testing/widgets/datagrid/sometest.test.js' }];
 const testStub = {
   name: 'test',
   only: {
@@ -21,6 +14,13 @@ const testStub = {
   },
   page() { return this; },
 };
+
+const productDemoFramework = [{ filename: 'JSDemos/Demos/Accordion/Overview/Angular/index.json' }];
+const productDemo = [{ filename: 'JSDemos/Demos/Accordion/Overview/visualtestrc.json' }];
+const productDemoDescription = [{ filename: 'JSDemos/Demos/Accordion/Overview/description.md' }];
+const stubPath = [{ filename: 'stub' }];
+const manualScreenPath = [{ filename: 'testing/widgets/datagrid/etalons/image.png' }];
+const manualTestPath = [{ filename: 'testing/widgets/datagrid/sometest.test.js' }];
 
 function updateChanges(value, options) {
   fs.writeFileSync('changed-files.json', JSON.stringify(value));
@@ -65,7 +65,7 @@ describe('Matrix test helper tests', () => {
     try {
       updateChanges(manualScreenPath);
       let value;
-      helper.runManualTest(testStub, 'DataGrid', 'SomeDemo', 'jQuery', (x) => { value = x.name; });
+      helper.runManualTestCore(testStub, 'DataGrid', 'SomeDemo', 'jQuery', (x) => { value = x.name; });
       expect(value).toBe('only');
     } finally {
       helper.updateConfig();
@@ -76,7 +76,7 @@ describe('Matrix test helper tests', () => {
     try {
       updateChanges(manualScreenPath);
       let value;
-      helper.runManualTest(testStub, 'Scheduler', 'SomeDemo', 'jQuery', (x) => { value = x.name; });
+      helper.runManualTestCore(testStub, 'Scheduler', 'SomeDemo', 'jQuery', (x) => { value = x.name; });
       expect(value).toBeUndefined();
     } finally {
       helper.updateConfig();
@@ -87,7 +87,7 @@ describe('Matrix test helper tests', () => {
     try {
       updateChanges(productDemo);
       let value;
-      helper.runManualTest(testStub, 'Accordion', 'Overview', 'jQuery', (x) => { value = x.name; });
+      helper.runManualTestCore(testStub, 'Accordion', 'Overview', 'jQuery', (x) => { value = x.name; });
       expect(value).toBe('only');
     } finally {
       helper.updateConfig();
@@ -98,7 +98,7 @@ describe('Matrix test helper tests', () => {
     try {
       updateChanges(productDemo);
       let value;
-      helper.runManualTest(testStub, 'Accordion', 'AnotherDemo', 'jQuery', (x) => { value = x.name; });
+      helper.runManualTestCore(testStub, 'Accordion', 'AnotherDemo', 'jQuery', (x) => { value = x.name; });
       expect(value).toBeUndefined();
     } finally {
       helper.updateConfig();
@@ -109,7 +109,7 @@ describe('Matrix test helper tests', () => {
     try {
       updateChanges(manualTestPath);
       let value;
-      helper.runManualTest(testStub, 'DataGrid', 'SomeDemo', 'jQuery', (x) => { value = x.name; });
+      helper.runManualTestCore(testStub, 'DataGrid', 'SomeDemo', 'jQuery', (x) => { value = x.name; });
       expect(value).toBe('only');
     } finally {
       helper.updateConfig();
