@@ -150,7 +150,7 @@ export function runTestAtPage(test, demoUrl) {
   return executor.page(demoUrl);
 }
 
-function runOneManualTest(testObject, product, demo, framework, callback) {
+export function runManualTestCore(testObject, product, demo, framework, callback) {
   const test = testObject.page(`http://localhost:8080/JSDemos/Demos/${product}/${demo}/${framework}/`);
   const index = settings.manualTestIndex;
   settings.manualTestIndex += 1;
@@ -168,24 +168,13 @@ function runOneManualTest(testObject, product, demo, framework, callback) {
   callback(test);
 }
 
-export function runManualTest(testObject, product, demo, frameworkOrCallback, callbackOrUndefined) {
-  let framework;
-  let callback;
-
-  if (typeof frameworkOrCallback === 'function') {
-    framework = ['Jquery', 'Angular', 'Vue', 'React'];
-    callback = frameworkOrCallback;
-  } else {
-    framework = frameworkOrCallback;
-    callback = callbackOrUndefined;
-  }
-
+export function runManualTest(product, demo, framework, callback) {
   if (Array.isArray(framework)) {
     framework.forEach((i) => {
-      runOneManualTest(testObject, product, demo, i, callback);
+      runManualTestCore(test, product, demo, i, callback);
     });
   } else {
-    runOneManualTest(testObject, product, demo, framework, callback);
+    runManualTestCore(test, product, demo, framework, callback);
   }
 }
 

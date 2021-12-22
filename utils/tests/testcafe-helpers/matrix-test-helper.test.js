@@ -65,7 +65,7 @@ describe('Matrix test helper tests', () => {
     try {
       updateChanges(manualScreenPath);
       let value;
-      helper.runManualTest(testStub, 'DataGrid', 'SomeDemo', 'jQuery', (x) => { value = x.name; });
+      helper.runManualTestCore(testStub, 'DataGrid', 'SomeDemo', 'jQuery', (x) => { value = x.name; });
       expect(value).toBe('only');
     } finally {
       helper.updateConfig();
@@ -76,7 +76,7 @@ describe('Matrix test helper tests', () => {
     try {
       updateChanges(manualScreenPath);
       let value;
-      helper.runManualTest(testStub, 'Scheduler', 'SomeDemo', 'jQuery', (x) => { value = x.name; });
+      helper.runManualTestCore(testStub, 'Scheduler', 'SomeDemo', 'jQuery', (x) => { value = x.name; });
       expect(value).toBeUndefined();
     } finally {
       helper.updateConfig();
@@ -87,7 +87,7 @@ describe('Matrix test helper tests', () => {
     try {
       updateChanges(productDemo);
       let value;
-      helper.runManualTest(testStub, 'Accordion', 'Overview', 'jQuery', (x) => { value = x.name; });
+      helper.runManualTestCore(testStub, 'Accordion', 'Overview', 'jQuery', (x) => { value = x.name; });
       expect(value).toBe('only');
     } finally {
       helper.updateConfig();
@@ -98,7 +98,7 @@ describe('Matrix test helper tests', () => {
     try {
       updateChanges(productDemo);
       let value;
-      helper.runManualTest(testStub, 'Accordion', 'AnotherDemo', 'jQuery', (x) => { value = x.name; });
+      helper.runManualTestCore(testStub, 'Accordion', 'AnotherDemo', 'jQuery', (x) => { value = x.name; });
       expect(value).toBeUndefined();
     } finally {
       helper.updateConfig();
@@ -109,7 +109,7 @@ describe('Matrix test helper tests', () => {
     try {
       updateChanges(manualTestPath);
       let value;
-      helper.runManualTest(testStub, 'DataGrid', 'SomeDemo', 'jQuery', (x) => { value = x.name; });
+      helper.runManualTestCore(testStub, 'DataGrid', 'SomeDemo', 'jQuery', (x) => { value = x.name; });
       expect(value).toBe('only');
     } finally {
       helper.updateConfig();
