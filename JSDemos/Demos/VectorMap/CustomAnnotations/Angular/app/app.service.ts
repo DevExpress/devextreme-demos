@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 
 export class StatesCollection {
   coordinates: number[];
-
+  offsetX?: number;
+  offsetY?: number;
   data: object;
 }
 
