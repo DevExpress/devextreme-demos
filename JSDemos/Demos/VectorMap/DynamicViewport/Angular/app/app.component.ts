@@ -31,7 +31,7 @@ export class AppComponent {
 
   viewportData: ViewportCoordinate[];
 
-  @ViewChild('vectorMap', { static: false }) map: DxVectorMapComponent;
+  @ViewChild(DxVectorMapComponent, { static: false }) map: DxVectorMapComponent;
 
   constructor(service: Service) {
     this.centerValue = '0.000, 46.036';
