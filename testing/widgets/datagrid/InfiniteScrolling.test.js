@@ -9,7 +9,7 @@ fixture('DataGrid.InfiniteScrolling')
       .resizeWindow(900, 600);
   });
 
-runManualTest('DataGrid', 'InfiniteScrolling', ['jQuery', 'Angular', 'Vue', 'React'], (test) => {
+runManualTest('DataGrid', 'InfiniteScrolling', 'jQuery', (test) => {
   test('InfiniteScrolling', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 

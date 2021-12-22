@@ -9,7 +9,7 @@ fixture('DataGrid.MultipleSorting')
       .resizeWindow(900, 600);
   });
 
-runManualTest('DataGrid', 'MultipleSorting', ['jQuery', 'Angular', 'Vue', 'React'], (test) => {
+runManualTest('DataGrid', 'MultipleSorting', 'jQuery', (test) => {
   test('MultipleSorting', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 

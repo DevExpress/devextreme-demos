@@ -9,7 +9,7 @@ fixture('DataGrid.MasterDetailView')
       .resizeWindow(900, 600);
   });
 
-runManualTest('DataGrid', 'MasterDetailView', ['jQuery', 'Angular', 'Vue', 'React'], (test) => {
+runManualTest('DataGrid', 'MasterDetailView', 'jQuery', (test) => {
   test('MasterDetailView', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
