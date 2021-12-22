@@ -9,7 +9,7 @@ fixture('DataGrid.BatchUpdateRequest')
       .resizeWindow(900, 600);
   });
 
-runManualTest(test, 'DataGrid', 'BatchUpdateRequest', (test) => {
+runManualTest(test, 'DataGrid', 'BatchUpdateRequest', 'jQuery', (test) => {
   test('BatchUpdateRequest', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
