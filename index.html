@@ -34,11 +34,14 @@
       let treeList = null;
 
       const processLink = () => {
-        if(window.location.hash === "") {
+        if (window.location.hash === "") {
           window.location.hash = "#JSDemos/Demos/DataGrid/Overview/jQuery/dx.light.css";
         }
 
-        const pathParts = window.location.hash.substring(1).split("/").filter((s) => s !== "");
+        const pathParts = window.location.hash
+          .substring(1)
+          .split("/")
+          .filter((s) => s !== "");
 
         const selectedData = treeList?.getSelectedRowsData("leavesOnly");
         if (selectedData?.length) {
@@ -71,9 +74,7 @@
       const updateDemo = () => {
         setThemeCookie();
 
-        document.getElementById("frame").src
-          = document.getElementById("demolink").href
-          = processLink();
+        document.getElementById("frame").src = document.getElementById("demolink").href = processLink();
       };
 
       const processDataSourceItem = (item) => {
