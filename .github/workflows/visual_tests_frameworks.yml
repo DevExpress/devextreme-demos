@@ -15,7 +15,7 @@ jobs:
   build-devextreme:
     runs-on: ubuntu-latest
     name: Build DevExtreme
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
 
