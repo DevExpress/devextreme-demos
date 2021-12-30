@@ -4,9 +4,8 @@ In this demo, the [dropZone](/Documentation/ApiReference/UI_Components/dxFileUpl
 
 [note]
 
-</br>
 Allowed file extensions: .jpg, .jpeg, .gif, .png
-</br>
+
 Maximum file size: 4 MB
 
 [/note]
