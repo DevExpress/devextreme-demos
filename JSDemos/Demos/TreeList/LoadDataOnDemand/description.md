@@ -13,13 +13,13 @@ Use the [hasItemsExpr](/Documentation/ApiReference/UI_Components/dxTreeList/Conf
 
 Server-side implementation is available in the [ASP.NET Core](/Demos/WidgetsGallery/Demo/DataGrid/RemoteReordering/NetCore/Light/) and [ASP.NET MVC](/Demos/WidgetsGallery/Demo/DataGrid/RemoteReordering/Mvc/Light/) versions of this demo under the `TreeListDataController.cs` tab.
 
-[note] 
+[note]
 
 This demo uses a simple data bind technique that is useful for data display purposes only. When a user clicks a node, TreeList receives a JSON object from the server, which is based on the parentIds property value. This technique does not support the built-in data process operations in TreeList.
 
 If your project needs to process data, do one of the following instead:
 
 - Implement a custom data source ([Web API Service](https://js.devexpress.com/Demos/WidgetsGallery/Demo/TreeList/WebAPIService/)).
-- Use the [DevExtreme.AspNet.Data](https://github.com/DevExpress/DevExtreme.AspNet.Data#devextreme-aspnet-data) extension.
+- Use the <a href="https://github.com/DevExpress/DevExtreme.AspNet.Data#devextreme-aspnet-data" target="_blank">DevExtreme.AspNet.Data</a> extension.
 
 [/note]
