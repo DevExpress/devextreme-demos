@@ -69,7 +69,7 @@ jobs:
 
     - name: DevExtreme React - Update react metadata
       working-directory: ./devextreme-repo
-      run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-react-repo/packages/devextreme-react/metadata/integration-data.json --version 21_2 --js-scripts ./js
+      run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-react-repo/packages/devextreme-react/metadata/integration-data.json --version 21_2 --js-scripts ./js --exclude js/renovation/
 
     - name: DevExtreme React - Copy devextreme package
       run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-react-repo/packages/devextreme-react
@@ -111,7 +111,7 @@ jobs:
 
     - name: DevExtreme Vue - Update vue metadata
       working-directory: ./devextreme-repo
-      run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-react-repo/packages/devextreme-vue/metadata/integration-data.json --version 21_2 --js-scripts ./js
+      run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-react-repo/packages/devextreme-vue/metadata/integration-data.json --version 21_2 --js-scripts ./js --exclude js/renovation/
 
     - name: DevExtreme Vue - Copy devextreme package
       run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-vue-repo/packages/devextreme-vue
@@ -153,7 +153,7 @@ jobs:
 
     - name: DevExtreme Angular - Update angular metadata
       working-directory: ./devextreme-repo
-      run: npm run internal-tool -- update-meta --output-path ../devextreme-angular-repo/packages/devextreme-angular/metadata/NGMetaData.json --version 21_2 --js-scripts ./js
+      run: npm run internal-tool -- update-meta --output-path ../devextreme-angular-repo/packages/devextreme-angular/metadata/NGMetaData.json --version 21_2 --js-scripts ./js --exclude js/renovation/
 
     - name: DevExtreme Angular - Copy devextreme package
       run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-angular-repo/packages/devextreme-angular

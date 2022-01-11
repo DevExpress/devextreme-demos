@@ -9,7 +9,7 @@ fixture('DataGrid.Appearance')
       .resizeWindow(900, 600);
   });
 
-runManualTest(test, 'DataGrid', 'Appearance', 'jQuery', (test) => {
+runManualTest('DataGrid', 'Appearance', 'jQuery', (test) => {
   test('Appearance', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
