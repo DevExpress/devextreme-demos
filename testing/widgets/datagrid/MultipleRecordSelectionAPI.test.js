@@ -9,7 +9,11 @@ fixture('DataGrid.MultipleRecordSelectionAPI')
       .resizeWindow(900, 600);
   });
 
-runManualTest(test, 'DataGrid', 'MultipleRecordSelectionAPI', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
+<<<<<<< HEAD
+runManualTest('DataGrid', 'MultipleRecordSelectionAPI', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
+=======
+runManualTest('DataGrid', 'MultipleRecordSelectionAPI', 'jQuery', (test) => {
+>>>>>>> 22_1
   test('MultipleRecordSelectionAPI', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 

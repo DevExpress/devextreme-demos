@@ -9,7 +9,11 @@ fixture('DataGrid.RecordPaging')
       .resizeWindow(900, 600);
   });
 
-runManualTest(test, 'DataGrid', 'RecordPaging', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
+<<<<<<< HEAD
+runManualTest('DataGrid', 'RecordPaging', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
+=======
+runManualTest('DataGrid', 'RecordPaging', 'jQuery', (test) => {
+>>>>>>> 22_1
   test('RecordPaging', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 

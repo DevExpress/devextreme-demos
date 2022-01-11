@@ -9,7 +9,11 @@ fixture('DataGrid.BatchEditing')
       .resizeWindow(900, 600);
   });
 
-runManualTest(test, 'DataGrid', 'BatchEditing', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
+<<<<<<< HEAD
+runManualTest('DataGrid', 'BatchEditing', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
+=======
+runManualTest('DataGrid', 'BatchEditing', 'jQuery', (test) => {
+>>>>>>> 22_1
   test('BatchEditing', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 

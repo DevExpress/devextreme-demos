@@ -9,7 +9,11 @@ fixture('DataGrid.FilteringAPI')
       .resizeWindow(900, 600);
   });
 
-runManualTest(test, 'DataGrid', 'FilteringAPI', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
+<<<<<<< HEAD
+runManualTest('DataGrid', 'FilteringAPI', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
+=======
+runManualTest('DataGrid', 'FilteringAPI', 'jQuery', (test) => {
+>>>>>>> 22_1
   test('FilteringAPI', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
