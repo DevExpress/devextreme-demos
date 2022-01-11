@@ -9,11 +9,7 @@ fixture('DataGrid.CellEditingAndEditingAPI')
       .resizeWindow(900, 600);
   });
 
-<<<<<<< HEAD
 runManualTest('DataGrid', 'CellEditingAndEditingAPI', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
-=======
-runManualTest('DataGrid', 'CellEditingAndEditingAPI', 'jQuery', (test) => {
->>>>>>> 22_1
   test('CellEditingAndEditingAPI', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
