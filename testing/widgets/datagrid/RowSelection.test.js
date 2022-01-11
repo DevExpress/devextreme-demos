@@ -9,7 +9,7 @@ fixture('DataGrid.RowSelection')
       .resizeWindow(900, 600);
   });
 
-runManualTest(test, 'DataGrid', 'RowSelection', 'jQuery', (test) => {
+runManualTest(test, 'DataGrid', 'RowSelection', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
   test('RowSelection', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 

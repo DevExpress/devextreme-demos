@@ -9,7 +9,7 @@ fixture('DataGrid.ColumnCustomization')
       .resizeWindow(900, 600);
   });
 
-runManualTest(test, 'DataGrid', 'ColumnCustomization', 'jQuery', (test) => {
+runManualTest(test, 'DataGrid', 'ColumnCustomization', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
   test('ColumnCustomization', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
