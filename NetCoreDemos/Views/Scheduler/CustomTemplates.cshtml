@@ -44,15 +44,15 @@
             @(await Html.PartialAsync("_AppointmentTooltipTemplate"))
         </text>)
             .AppointmentTemplate(@<text>
-                <% var movie = getMovieById(appointmentData.MovieId); %>
+                <% var movie = getMovieById(targetedAppointmentData.MovieId); %>
                 <div class="showtime-preview">
                     <div><%- movie.Text %></div>
                     <div>
-                        Ticket Price: <strong>$<%- appointmentData.Price %></strong>
+                        Ticket Price: <strong>$<%- targetedAppointmentData.Price %></strong>
                     </div>
                     <div>
-                        <%- formatTime(new Date(appointmentData.StartDate)) %> -
-                        <%- formatTime(new Date(appointmentData.EndDate)) %>
+                        <%- formatTime(new Date(targetedAppointmentData.displayStartDate)) %> -
+                        <%- formatTime(new Date(targetedAppointmentData.displayEndDate)) %>
                     </div>
                 </div>
             </text>)
