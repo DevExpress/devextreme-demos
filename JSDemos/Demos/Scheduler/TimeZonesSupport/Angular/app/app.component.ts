@@ -37,10 +37,10 @@ export class AppComponent {
     this.currentDate = this.currentDate;
   }
 
-  getLocations (date: Date) {
+  getLocations(date: Date) {
     const timeZones = getTimeZones(date);
     return timeZones.filter((timeZone) => this.service.getLocations().indexOf(timeZone.id) !== -1);
-  };
+  }
 
   onValueChanged(e: any) {
     this.timezone = e.value;

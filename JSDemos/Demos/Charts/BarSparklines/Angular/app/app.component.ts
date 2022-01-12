@@ -29,7 +29,7 @@ export class AppComponent {
       store: new CustomStore({
         load: () => http.get('../../../../data/resourceData.json')
           .toPromise()
-          .catch((error) => { throw 'Data Loading Error'; }),
+          .catch((error) => { throw 'Data Loading Error'; }) as Promise<any[]>,
         loadMode: 'raw',
       }),
       filter: ['month', '<=', '12'],
