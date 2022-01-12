@@ -3,7 +3,9 @@ import {
 } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxVectorMapModule, DxSelectBoxModule, DxTextBoxModule } from 'devextreme-angular';
+import {
+  DxVectorMapModule, DxSelectBoxModule, DxTextBoxModule, DxVectorMapComponent,
+} from 'devextreme-angular';
 
 import * as mapsData from 'devextreme/dist/js/vectormap-data/world.js';
 import { ViewportCoordinate, Service } from './app.service';

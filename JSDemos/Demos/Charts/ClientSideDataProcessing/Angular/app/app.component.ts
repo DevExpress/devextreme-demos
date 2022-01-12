@@ -35,7 +35,7 @@ export class AppComponent implements AfterViewInit {
       store: new CustomStore({
         load: () => this.http.get('../../../../data/monthWeather.json')
           .toPromise()
-          .catch((error) => { throw 'Data Loading Error'; }),
+          .catch((error) => { throw 'Data Loading Error'; }) as Promise<any[]>,
         loadMode: 'raw',
       }),
       filter: ['t', '>', '2'],
