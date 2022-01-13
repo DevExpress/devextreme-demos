@@ -33,9 +33,9 @@ export class AppComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.monthWeather = new DataSource({
       store: new CustomStore({
-        load: () => this.http.get('../../../../data/monthWeather.json')
+        load: () => this.http.get<any[]>('../../../../data/monthWeather.json')
           .toPromise()
-          .catch((error) => { throw 'Data Loading Error'; }) as Promise<any[]>,
+          .catch((error) => { throw 'Data Loading Error'; }),
         loadMode: 'raw',
       }),
       filter: ['t', '>', '2'],
