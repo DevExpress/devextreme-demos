@@ -27,9 +27,9 @@ export class AppComponent {
   constructor(http: HttpClient) {
     this.source = new DataSource({
       store: new CustomStore({
-        load: () => http.get('../../../../data/resourceData.json')
+        load: () => http.get<any[]>('../../../../data/resourceData.json')
           .toPromise()
-          .catch((error) => { throw 'Data Loading Error'; }) as Promise<any[]>,
+          .catch((error) => { throw 'Data Loading Error'; }),
         loadMode: 'raw',
       }),
       filter: ['month', '<=', '12'],
