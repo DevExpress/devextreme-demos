@@ -2,9 +2,10 @@
   "compilerOptions": {
     "target": "es5",
     "experimentalDecorators": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "moduleResolution": "node",
   },
   "include": [
-    "JSDemos/**/*.ts"
+    "JSDemos/Demos/**/*.ts"
   ]
 }
