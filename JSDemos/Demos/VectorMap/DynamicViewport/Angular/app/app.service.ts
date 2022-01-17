@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 export class ViewportCoordinate {
   continent: string;
 
-  coordinates: number[];
+  coordinates: number[] | 'null';
 }
 
 const viewportCoordinates: ViewportCoordinate[] = [{
   continent: 'all',
-  coordinates: null,
+  coordinates: 'null',
 }, {
   continent: 'NorthAmerica',
   coordinates: [-180, 84.52, -22.11, -1.57],

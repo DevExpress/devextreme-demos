@@ -54,7 +54,7 @@ export class AppComponent {
   }
 
   itemStyleExpr(obj) {
-    const style = { stroke: '#444444', fill: undefined };
+    const style: Record<string, string> = { stroke: '#444444' };
     if (obj.Type === 'group') { style.fill = '#f3f3f3'; }
     return style;
   }
