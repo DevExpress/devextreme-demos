@@ -27,7 +27,7 @@ export class AppComponent {
   constructor(http: HttpClient) {
     this.source = new DataSource({
       store: new CustomStore({
-        load: () => http.get<any[]>('../../../../data/resourceData.json')
+        load: () => http.get('../../../../data/resourceData.json')
           .toPromise()
           .catch((error) => { throw 'Data Loading Error'; }),
         loadMode: 'raw',
