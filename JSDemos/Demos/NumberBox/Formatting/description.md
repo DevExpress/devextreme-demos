@@ -6,7 +6,7 @@ The format property can accept the following value types:
 See the [type](/Documentation/ApiReference/Common/Object_Structures/format/#type) property description for a list of accepted values.
 
 - Custom format string    
-Use a LDML pattern to specify a custom format. Refer to the following article for more information: [Custom Format String](/Documentation/Guide/Common/Value_Formatting/#Format_UI_Component_Values/Custom_Format_String).
+Use an LDML pattern to specify a custom format. Refer to the following article for more information: [Custom Format String](/Documentation/Guide/Common/Value_Formatting/#Format_UI_Component_Values/Custom_Format_String).
 
 - Function    
 A function should apply a custom format to a value and return the formatted value as a string. Functions are useful for advanced formatting.
