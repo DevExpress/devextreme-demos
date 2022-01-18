@@ -31,7 +31,7 @@
         .ShowIndicator(true)
         .ShowPane(true)
         .Shading(true)
-        .CloseOnOutsideClick(false)
+        .HideOnOutsideClick(false)
         .OnShown("loadPanel_shown")
         .OnHidden("loadPanel_hidden")
     )
@@ -62,8 +62,8 @@
         <div class="option">
             @(Html.DevExtreme().CheckBox()
                 .Value(false)
-                .Text("Close on outside click")
-                .OnValueChanged("closeOnOutsideClick_checkBox_valueChanged")
+                .Text("Hide on outside click")
+                .OnValueChanged("hideOnOutsideClick_checkBox_valueChanged")
             )
         </div>
     </div>
@@ -113,8 +113,8 @@
         getLoadPanelInstance().option("showPane", e.value);
     }
 
-    function closeOnOutsideClick_checkBox_valueChanged(e) {
-        getLoadPanelInstance().option("closeOnOutsideClick", e.value);
+    function hideOnOutsideClick_checkBox_valueChanged(e) {
+        getLoadPanelInstance().option("hideOnOutsideClick", e.value);
     }
 
 </script>

@@ -15,7 +15,7 @@ jobs:
   build-devextreme:
     runs-on: ubuntu-latest
     name: Build DevExtreme
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
 
@@ -115,7 +115,7 @@ jobs:
 
     - name: Update react metadata
       working-directory: ./devextreme-repo
-      run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-react-repo/packages/devextreme-react/metadata/integration-data.json --version 22_1 --js-scripts ./js
+      run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-react-repo/packages/devextreme-react/metadata/integration-data.json --version 22_1 --js-scripts ./js --exclude js/renovation/
 
     - name: Copy devextreme package
       run: |
@@ -216,7 +216,7 @@ jobs:
 
     - name: Update vue metadata
       working-directory: ./devextreme-repo
-      run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-vue-repo/packages/devextreme-vue/metadata/integration-data.json --version 22_1 --js-scripts ./js
+      run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-vue-repo/packages/devextreme-vue/metadata/integration-data.json --version 22_1 --js-scripts ./js --exclude js/renovation/
 
     - name: Copy devextreme package
       run: |
@@ -319,7 +319,7 @@ jobs:
 
     - name: Update angular metadata
       working-directory: ./devextreme-repo
-      run: npm run internal-tool -- update-meta --output-path ../devextreme-angular-repo/packages/devextreme-angular/metadata/NGMetaData.json --version 22_1 --js-scripts ./js
+      run: npm run internal-tool -- update-meta --output-path ../devextreme-angular-repo/packages/devextreme-angular/metadata/NGMetaData.json --version 22_1 --js-scripts ./js --exclude js/renovation/
 
     - name: Copy devextreme package
       run: |
@@ -423,6 +423,9 @@ jobs:
 
     - name: Prepare bundles
       run: npm run prepare-bundles
+    
+    - name: Demos - Run tsc
+      run: tsc --noEmit
 
     #Publish artifacts
     - name: Zip node_modules    
