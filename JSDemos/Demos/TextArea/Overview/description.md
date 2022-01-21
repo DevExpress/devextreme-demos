@@ -1,1 +1,7 @@
-The TextArea is&nbsp;a&nbsp;UI component that enables a&nbsp;user to&nbsp;enter and edit a&nbsp;multi-line text.
+The TextArea enables users to enter and edit a multi-line text. The component can have fixed or resizable height. The component with the fixed [height](/Documentation/ApiReference/UI_Components/dxTextArea/Configuration/#height) displays a scroll bar if the entered text exceeds the physical space of the text area. If you set the [autoResizeEnabled](/Documentation/ApiReference/UI_Components/dxTextArea/Configuration/#autoResizeEnabled) property to **true**, the TextArea automatically resizes its height to fit the text.
+
+You can also specify the [maxLength](/Documentation/ApiReference/UI_Components/dxTextArea/Configuration/#maxLength) property to deny users to enter more than allowed number of characters. Note that this property only limits the number of characters for users, you can still set the text of the desired length programmatically.
+
+The TextArea stores the text in the [value](/Documentation/ApiReference/UI_Components/dxTextArea/Configuration/#value) property and updates it after the DOM event occurs. To specify which DOM event to use instead of the default *"change"* event, use the [valueChangeEvent](/Documentation/ApiReference/UI_Components/dxTextArea/Configuration/#valueChangeEvent) property. To handle the value change, use the TextArea's [onValueChanged](/Documentation/ApiReference/UI_Components/dxTextArea/Configuration/#onValueChanged) function.
+
+Try the functionality under the Event Handling and API demo section to see how it works in action. Use the "Synchronize text areas" drop-down menu to select which event updates the read-only component's value: *"change"* or *"keyup"*.
