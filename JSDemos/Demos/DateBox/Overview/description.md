@@ -10,7 +10,7 @@ Specifies whether the DateBox allows users to select one of the following types:
   Users can select the date from the calendar, or they can type in their own date value (in the required format).
 
   - *"time"*    
-  Users can select from the time slots that lay in range from 12 AM to 11:30 PM with a step of 30 minutes, or they can type in their own values. Specify the [interval](/Documentation/ApiReference/UI_Components/dxDateBox/Configuration/#interval) property to set the different time step.
+  Users can select a time from a range between 12:00 AM and 11:30 PM at 30-minute intervals, or they can type in their own time value (in the required format). Specify the [interval](/Documentation/ApiReference/UI_Components/dxDateBox/Configuration/#interval) property to set the time interval.
 
   - *"datetime"*    
   Users can select the date from the calendar and the time from the spin and dropdown editors. They can also choose the **Today** button.
