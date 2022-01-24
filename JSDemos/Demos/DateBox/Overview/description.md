@@ -7,19 +7,19 @@ A value the DateBox displays.
 Specifies whether the DateBox allows users to select one of the following types:
 
   - *"date"*    
-  Users can select the date from the calendar, or they can type in their own values.
+  Users can select the date from the calendar, or they can type in their own date value (in the required format).
 
   - *"time"*    
   Users can select from the time slots that lay in range from 12 AM to 11:30 PM with a step of 30 minutes, or they can type in their own values. Specify the [interval](/Documentation/ApiReference/UI_Components/dxDateBox/Configuration/#interval) property to set the different time step.
 
   - *"datetime"*    
-  Users can select both the date from the calendar and the time. The **Today** button is available in the date picker.
+  Users can select the date from the calendar and the time from the spin and dropdown editors. They can also choose the **Today** button.
 
 - [displayFormat](/Documentation/ApiReference/UI_Components/dxDateBox/Configuration/#displayFormat)        
 A date/time display format. You can use one of the [predefined formats](/Documentation/ApiReference/Common/Object_Structures/format/#type) or specify a [custom format](/Documentation/Guide/Common/Value_Formatting/#Format_Widget_Values/Custom_Format_String). This demo illustrates the latter.
 
 - [pickerType](/Documentation/ApiReference/UI_Components/dxDateBox/Configuration/#pickerType)        
-Specifies the type of UI used to select date or time. This demo shows how to change calendar to roller date picker. 
+Specifies the type of UI used to select a date or time. This demo shows how to change a calendar to a roller date picker. 
 
 - [showClearButton](/Documentation/ApiReference/UI_Components/dxDateBox/Configuration/#showClearButton)        
 Specifies whether to display the button that clears the DateBox **value**.
