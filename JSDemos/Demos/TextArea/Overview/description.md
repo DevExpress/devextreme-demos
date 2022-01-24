@@ -4,4 +4,4 @@ You can also specify the [maxLength](/Documentation/ApiReference/UI_Components/d
 
 The TextArea stores the text in the [value](/Documentation/ApiReference/UI_Components/dxTextArea/Configuration/#value) property and updates it after the DOM event occurs. To specify which DOM event to use instead of the default *"change"* event, use the [valueChangeEvent](/Documentation/ApiReference/UI_Components/dxTextArea/Configuration/#valueChangeEvent) property. To handle the value change, use the TextArea's [onValueChanged](/Documentation/ApiReference/UI_Components/dxTextArea/Configuration/#onValueChanged) function.
 
-Try the functionality under the Event Handling and API demo section to see how it works in action. Use the "Synchronize text areas" drop-down menu to select which event updates the read-only component's value: *"change"* or *"keyup"*.
+Change the text in the Event Handling and API section below to see how this feature works. Use the "Synchronize text areas" drop-down menu to select which event updates the read-only component's value: *"change"* or *"keyup"*.
