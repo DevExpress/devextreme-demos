@@ -1,7 +1,9 @@
-﻿@(Html.DevExtreme().DataGrid()
+﻿@model IEnumerable<DevExtreme.NETCore.Demos.Models.Customer>
+
+@(Html.DevExtreme().DataGrid()
     .ID("gridContainer")
     .ShowBorders(true)
-    .DataSource(new JS("customers"))
+    .DataSource(Model)
     .KeyExpr("ID")
     .Columns(c => {
         c.Add().DataField("CompanyName");
@@ -11,5 +13,3 @@
         c.Add().DataField("Fax");
     })
 )
-
-<script src="~/data/customers.js"></script>
