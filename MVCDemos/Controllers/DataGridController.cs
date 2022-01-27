@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace DevExtreme.MVC.Demos.Controllers {
     public class DataGridController : Controller {
         public ActionResult SimpleArray() {
-            return View();
+            return View(SampleData.SimpleArrayCustomers);
         }
 
         public ActionResult AjaxRequest() {
