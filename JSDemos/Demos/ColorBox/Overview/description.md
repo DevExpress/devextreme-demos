@@ -4,7 +4,7 @@ You can hide the editor's drop-down button to allow users to only type in a colo
 
 ## Configure the ColorBox
 
-Use the following properties to control the component interactivity:
+Use the following properties to specify the component's interactivity:
 
 - [readOnly]()    
 Specifies whether the ColorBox is read-only.
