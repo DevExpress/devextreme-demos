@@ -14,7 +14,7 @@ Specifies whether the ColorBox responds to user interaction.
 
 You can specify the following properties to add custom buttons into the input field, or configure the drop-down editor's buttons:
 
-- [buttons[]](/Documentation/ApiReference/UI_Components/dxColorBox/Configuration/buttons/)    
+- [buttons](/Documentation/ApiReference/UI_Components/dxColorBox/Configuration/buttons/)    
 Allows you to add custom buttons to the input text field.
 
 - [showClearButton](/Documentation/ApiReference/UI_Components/dxColorBox/Configuration/#showClearButton)    
