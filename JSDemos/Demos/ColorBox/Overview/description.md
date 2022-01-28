@@ -28,4 +28,4 @@ Specifies the text for the button that cancels changes and closes the drop-down 
 
 ## Handle Value Change
 
-Implement the [onValueChanged]() function to handle the value change when users pick a color out of the drop-down editor. To handle the input value change, use the [onInput]() function.
+Implement the [onValueChanged]() function to handle the value change when users select a color in the drop-down editor. To handle the input value change, use the [onInput]() function.
