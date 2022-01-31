@@ -183,11 +183,11 @@ function CustomCell(cell) {
 
 function getCellCssClass({ date, view }) {
   let cssClass = '';
+  const holydays = [[1, 0], [4, 6], [25, 11]];
 
   if (view === 'month') {
     if (isWeekend(date)) { cssClass = 'weekend'; }
 
-    const holydays = [[1, 0], [4, 6], [25, 11]];
     holydays.forEach((item) => {
       if (date.getDate() === item[0] && date.getMonth() === item[1]) {
         cssClass = 'holyday';
