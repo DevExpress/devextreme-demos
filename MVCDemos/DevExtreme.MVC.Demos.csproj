@@ -416,6 +416,7 @@
     <Compile Include="Models\RoomResource.cs" />
     <Compile Include="Models\SampleData\DynamicAppointmentsResources.cs" />
     <Compile Include="Models\SampleData\SimpleArrayAppointments.cs" />
+    <Compile Include="Models\SampleData\SimpleArrayCustomers.cs" />
     <Compile Include="Models\SampleData\DynamicAppointments.cs" />
     <Compile Include="Models\SampleData\AppointmentsWithResources.cs" />
     <Compile Include="Models\SampleData\ContinentsInfo.cs" />
