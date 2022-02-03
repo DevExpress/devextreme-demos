@@ -1,12 +1,12 @@
-The Toolbar contains items that manage the page content: other components and screen view. In this demo, the Toolbar manages the [List](/Documentation/ApiReference/UI_Components/dxList/).
+The Toolbar contains items that manage the page content. In this demo, the Toolbar manages the [List](/Documentation/ApiReference/UI_Components/dxList/).
 
 ## Configure Toolbar Items
 
-You can store Toolbar items in the [items](/Documentation/ApiReference/UI_Components/dxToolbar/Configuration/items/) array or specify the [dataSource](/Documentation/ApiReference/UI_Components/dxToolbar/Configuration/#dataSource). A Toolbar item may be plain text or a UI component. You should specify the [text](/Documentation/ApiReference/UI_Components/dxToolbar/Configuration/items/#text) or the [widget](/Documentation/ApiReference/UI_Components/dxToolbar/Configuration/items/#widget) property depending on the item. If the item is a UI component, declare its [options](/Documentation/ApiReference/UI_Components/dxToolbar/Configuration/items/#options).
+You can display Toolbar items from an [items](/Documentation/ApiReference/UI_Components/dxToolbar/Configuration/items/) array or a [dataSource](/Documentation/ApiReference/UI_Components/dxToolbar/Configuration/#dataSource). A Toolbar item may be plain text or a UI component. You should specify the [text](/Documentation/ApiReference/UI_Components/dxToolbar/Configuration/items/#text) or the [widget](/Documentation/ApiReference/UI_Components/dxToolbar/Configuration/items/#widget) property depending on the item. If the item is a UI component, declare its [options](/Documentation/ApiReference/UI_Components/dxToolbar/Configuration/items/#options).
 
 ## Specify Item Location
 
-You can set the **dataSource** with **location** fields or specify the [location](/Documentation/ApiReference/UI_Components/dxToolbar/Configuration/items/#location) property for each item. The **location** value can be on of the following:
+You can set the **dataSource** with **location** fields or specify the [location](/Documentation/ApiReference/UI_Components/dxToolbar/Configuration/items/#location) property for each item. The **location** value can be one of the following:
 
 - *"center"*  
  Places the item in the center of the toolbar.
@@ -26,7 +26,7 @@ Additionally, the Toolbar can render its items in the overflow menu. Specify the
  Places the item outside of the overflow menu.
 
 - *"auto"*  
- Places the item outside of the overflow menu. If the width of the Toolbar is not enough to store all the items, the Toolbar renders this item in the overflow menu.
+ Places the item outside of the overflow menu. If all items cannot fit within the width of the Toolbar, it renders this item in the overflow menu.
 
 Note that you cannot specify the order of the items with `locateinMenu="auto"` placed in the overflow menu.
 
