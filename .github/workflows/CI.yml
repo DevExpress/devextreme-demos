@@ -22,7 +22,9 @@ jobs:
         run: npm install --no-package-lock --no-audit --no-fund
 
       - name: Run dotnet format install
-        run: dotnet tool install -g dotnet-format --version 5.1.225507
+        run: |
+          dotnet new globaljson --sdk-version 5.0.0 --roll-forward latestFeature
+          dotnet tool install -g dotnet-format --version 5.1.225507
 
       - name: Run lint
         run: npm run lint
