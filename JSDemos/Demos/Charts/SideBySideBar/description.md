@@ -1,4 +1,4 @@
-This demo shows the standard _bar_ series type that displays rectangular bars side by side. The side by side bar series help you compare values across different categories.  Follow the steps below to create and configure the side by side bar chart:
+This demo shows the standard _bar_ series type that displays rectangular bars side by side. The side by side bar series help you compare values across different categories.  Follow the steps below to create and configure the bar chart:
 
 ## Bind to Data
 
@@ -17,7 +17,7 @@ You can configure the following series settings:
 
 ## Customize Chart
 
-Use the verticalAlignment](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/#verticalAlignment) and [horizontalAlignment](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/#horizontalAlignment) properties of the legend object to specify the legend position in the chart. 
+Use the [verticalAlignment](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/#verticalAlignment) and [horizontalAlignment](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/#horizontalAlignment) properties of the legend object to specify the legend position in the chart. 
 
 You can also handle a series point selection in the [pointClick](/Documentation/ApiReference/UI_Components/dxChart/Events/#pointClick) event. 
 
