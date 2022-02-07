@@ -98,6 +98,10 @@ jobs:
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
+    - name: Discover declarations
+      working-directory: ./devextreme
+      run: npm run discover-declarations
+
     #Build devextreme-react
 
     - name: Use Node.js 14
@@ -144,7 +148,7 @@ jobs:
     - name: Install packages for devextreme-react
       working-directory: ./devextreme-react-repo
       run: npm install --no-audit --no-fund
-      
+
     - name: Build and Pack
       working-directory: ./devextreme-react-repo
       run: npm run pack
@@ -188,6 +192,10 @@ jobs:
         path: ./devextreme/node_modules
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
+
+    - name: Discover declarations
+      working-directory: ./devextreme
+      run: npm run discover-declarations
 
     #Build devextreme-vue
 
@@ -281,6 +289,10 @@ jobs:
         path: ./devextreme/node_modules
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
+
+    - name: Discover declarations
+      working-directory: ./devextreme
+      run: npm run discover-declarations
 
     #Build devextreme-angular
 
