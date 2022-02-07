@@ -18,6 +18,7 @@ Assign one or several series to the [series](/Documentation/ApiReference/UI_Comp
 - the series [type](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#type)
 
 - data source fields
+
    Assign the corresponding field name to the [argumentField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#argumentField) and [valueField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#valueField) properties if you want to bind a series to data directly. 
  
    Alternatively, you can [use a series template](/Documentation/Guide/UI_Components/Chart/Data_Binding/Bind_Series_to_Data/#Using_a_Series_Template) to bind series to data, if a data source field provides names for series. 
