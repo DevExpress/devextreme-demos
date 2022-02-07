@@ -31,12 +31,12 @@ const waitForAngularLoading = ClientFunction(() => new Promise((resolve) => {
   let demoAppCounter = 0;
   const demoAppIntervalHandle = setInterval(() => {
     const demoApp = document.querySelector('demo-app');
-    if ((demoApp && demoApp.innerText !== 'Loading...') || demoAppCounter === 200) {
+    if ((demoApp && demoApp.innerText !== 'Loading...') || demoAppCounter === 120) {
       setTimeout(resolve, 1000);
       clearInterval(demoAppIntervalHandle);
     }
     demoAppCounter += 1;
-  }, 100);
+  }, 1000);
 }));
 
 const injectStyle = (style) => `
@@ -65,6 +65,12 @@ const execTestCafeCode = (t, code) => {
       { module: 'mockdate' },
       join(__dirname, '../utils/visual-tests/inject/test-utils.js'),
       { content: injectStyle(globalReadFrom(__dirname, '../utils/visual-tests/inject/test-styles.css')) },
+      {
+        content: `
+          window.addEventListener('error', function (e) {
+              console.error(e.message); 
+          });`,
+      },
     ]);
 
   const getDemoPaths = (platform) => glob.sync('JSDemos/Demos/*/*')
@@ -120,9 +126,12 @@ const execTestCafeCode = (t, code) => {
           await execTestCafeCode(t, testCafeCodeSource);
         }
 
-        await t.expect(
-          await compareScreenshot(t, `${testName}.png`, undefined, comparisonOptions),
-        ).ok('INVALID_SCREENSHOT');
+        const comparisonResult = await compareScreenshot(t, `${testName}.png`, undefined, comparisonOptions);
+        if (!comparisonResult) {
+          // eslint-disable-next-line no-console
+          console.log(await t.getBrowserConsoleMessages());
+        }
+        await t.expect(comparisonResult).ok('INVALID_SCREENSHOT');
       });
   });
 });
