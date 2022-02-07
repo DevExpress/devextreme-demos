@@ -1,6 +1,6 @@
 This demo shows the standard _bar_ series type that displays rectangular bars side by side. The side by side bar series help you compare values across different categories.
 
-You can specify each series individually in the [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series) array.
+You can specify each series in the [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series) property that accepts an array of series objects.
 
 To configure settings for all series in the chart (for example, the series type, selection mode, and hover mode), use the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings) object.  
 
