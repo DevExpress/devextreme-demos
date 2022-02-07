@@ -1,11 +1,24 @@
-This demo shows the standard _bar_ series type that displays rectangular bars side by side. The side by side bar series help you compare values across different categories.
+This demo shows the standard _bar_ series type that displays rectangular bars side by side. The side by side bar series help you compare values across different categories.  Follow the steps below to create and configure the side by side bar chart:
 
-You can specify each series in the [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series) property that accepts an array of series objects.
+## Bind to Data
 
-To configure settings for all series in the chart (for example, the series type, selection mode, and hover mode), use the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings) object.  
+In this demo, series is bound to data directly. See the [Bind Series to Data](/Documentation/Guide/UI_Components/Chart/Data_Binding/Bind_Series_to_Data) article for information.   The "state" field name is assigned to the [argumentField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/#argumentField) property of the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/) object since the bar chart contains series with the same argument field.
 
-You can also add [legend](Documentation/Guide/UI_Components/Chart/Legend/Overview) and [point labels](/Documentation/Guide/UI_Components/Chart/Point_Labels/Overview/) elements to make the bar chart more informative.
+## Specify Common Series Settings
 
-Use the [pointClick](/Documentation/ApiReference/UI_Components/dxChart/Events/#pointClick) event to implement a series point selection. 
+To configure settings for all series in the chart, use the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings) object.  
 
-To allow a user to export your bar chart into the PNG, JPEG, and SVG file or print the chart, set the [export](Documentation/ApiReference/UI_Components/dxChart/Configuration/export/).enabled property to **true**. In this demo, the exporting is enabled, and you can click the "Exporting/Printing" button in the bar chart. This button invokes a drop-down menu with exporting and printing commands.
+You can configure the following series settings:
+
+- [series type](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/#type)
+-  [selection mode](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/#selectionMode)
+-  [hover mode](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/#hoverMode)
+-  change [point labels](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/label/)' [visibility](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/label/#visible) and [format](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/label/#format).
+
+## Customize Chart
+
+Use the verticalAlignment](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/#verticalAlignment) and [horizontalAlignment](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/#horizontalAlignment) properties of the legend object to specify the legend position in the chart. 
+
+You can also handle a series point selection in the [pointClick](/Documentation/ApiReference/UI_Components/dxChart/Events/#pointClick) event. 
+
+To allow a user to export your bar chart into the PNG, JPEG, and SVG file or print the chart, set the [export](Documentation/ApiReference/UI_Components/dxChart/Configuration/export/).[enabled](/Documentation/ApiReference/UI_Components/dxChart/Configuration/export/#enabled) property to **true**. In this demo, the exporting is enabled, and you can click the "Exporting/Printing" button in the bar chart. This button invokes a drop-down menu with export and print commands.
