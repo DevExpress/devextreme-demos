@@ -17,6 +17,7 @@ runManualTest('DataGrid', 'RemoteGrouping', ['jQuery', 'React', 'Vue', 'Angular'
   test('RemoteGrouping', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
+    await $('.dx-scrollable-container')();
     await scroll(5000);
 
     await takeScreenshot('datagrid_remote_grouping_2_desktop.png');
