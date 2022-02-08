@@ -7,7 +7,7 @@ using System.Linq;
 namespace DevExtreme.NETCore.Demos.Controllers {
     public class DataGridController : Controller {
         public ActionResult SimpleArray() {
-            return View();
+            return View(SampleData.SimpleArrayCustomers);
         }
 
         public ActionResult AjaxRequest() {

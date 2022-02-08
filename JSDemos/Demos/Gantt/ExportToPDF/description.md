@@ -22,11 +22,11 @@ Start date (task)- Restricts data output by start date.
 End date (task) – Restricts data output by end date. 
 
 
-Click the “Export” toolbar item to call the [exportToPdf](/Documentation/ApiReference/UI_Components/dxGantt/Methods/#exportToPdfoptions) method (exports Gantt data with specified export options).
+Click the “Export” toolbar item to call the [exportGantt(options)](/Documentation/ApiReference/Common/Utils/pdfExporter/#exportGanttoptions) method (exports Gantt data with specified export options).
  
 
 To enable PDF export operations, you must reference or import the following:
-- <a href="https://github.com/MrRio/jsPDF" target="_blank">jsPDF</a>        
+- <a href="https://github.com/parallax/jsPDF" target="_blank">jsPDF</a>        
 A library that creates and manages PDF documents.
 
 - <a href="https://github.com/simonbengtsson/jsPDF-AutoTable" target="_blank">jsPDF-AutoTable</a>        
