@@ -9,7 +9,7 @@ fixture('DataGrid.StatePersistence')
       .resizeWindow(900, 600);
   });
 
-runManualTest('DataGrid', 'StatePersistence', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
+runManualTest('DataGrid', 'StatePersistence', 'jQuery', (test) => {
   test('StatePersistence', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 

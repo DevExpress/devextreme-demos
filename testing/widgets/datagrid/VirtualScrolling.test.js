@@ -9,7 +9,7 @@ fixture('DataGrid.VirtualScrolling')
       .resizeWindow(900, 600);
   });
 
-runManualTest('DataGrid', 'VirtualScrolling', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
+runManualTest('DataGrid', 'VirtualScrolling', 'jQuery', (test) => {
   test('VirtualScrolling', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
