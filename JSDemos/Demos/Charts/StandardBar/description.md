@@ -21,16 +21,18 @@ Assign one or several series to the [series](/Documentation/ApiReference/UI_Comp
 
    Assign the corresponding field name to the [argumentField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#argumentField) and [valueField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#valueField) properties if you want to bind a series to data directly. 
  
-   Alternatively, you can [use a series template](/Documentation/Guide/UI_Components/Chart/Data_Binding/Bind_Series_to_Data/#Using_a_Series_Template) to bind series to data, if a data source field provides names for series. 
+  Alternatively, you can [use a series template](/Documentation/Guide/UI_Components/Chart/Data_Binding/Bind_Series_to_Data/#Using_a_Series_Template) to bind series to data, if a data source field contains names for series. 
 
-- series [color](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#color) and series [name](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#name) (optional) 
-
+- the [barWidth](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#barWidth) property (optional) to specify individual series' bar width 
+   
+  See the [Specify the Bar Width](/Documentation/Guide/UI_Components/Chart/Series_Types/Bar_Series/#Specify_the_Bar_Width) article for more information.
 
 You can also use the [commonSeriesSettings](Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/) object to configure all series in the bar chart.
-
 
 ## Customize Bar Chart
 
 You can show [point labels](/Documentation/Guide/UI_Components/Chart/Point_Labels/Overview/) to make the bar chart more informative. 
 
-The [barWidth](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#barWidth) property allows you to specify individual series' bar width. See the [Specify the Bar Width](/Documentation/Guide/UI_Components/Chart/Series_Types/Bar_Series/#Specify_the_Bar_Width) article for more information.
+To help a user identify a series among others on the chart legend, specify its [name](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#name).
+
+If you want to change the default series color, use the [color](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#color) property. 
