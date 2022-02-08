@@ -1,8 +1,8 @@
-This demo shows the standard bar series type that visualizes data as a collection of bars. Follow the steps below to create and configure the bar chart:
+This demo shows the standard bar series type that visualizes data as a collection of bars. Follow the steps below to create and configure the Bar chart:
 
 ## Bind to Data
 
-You can bind the bar chart to one of the following data sources: 
+You can bind the Bar chart to one of the following data sources: 
 
 * [Simple Array](/Documentation/Guide/Data_Binding/Specify_a_Data_Source/Local_Array/)
 * [JSON Data](/Documentation/Guide/Data_Binding/Specify_a_Data_Source/Read-Only_Data_in_JSON_Format/)
@@ -15,9 +15,9 @@ In this demo, the Bar chart is populated with data taken from a simple JavaScrip
 
 Assign one or several series to the [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/) property and specify the following settings:
 
-- the series [type](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#type)
+- The series [type](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#type)
 
-- data source fields
+- Data source fields
 
    Assign the corresponding field name to the [argumentField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#argumentField) and [valueField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#valueField) properties if you want to bind a series to data directly. 
  
@@ -27,11 +27,11 @@ Assign one or several series to the [series](/Documentation/ApiReference/UI_Comp
    
   See the [Specify the Bar Width](/Documentation/Guide/UI_Components/Chart/Series_Types/Bar_Series/#Specify_the_Bar_Width) article for more information.
 
-You can also use the [commonSeriesSettings](Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/) object to configure all series in the bar chart.
+You can also use the [commonSeriesSettings](Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/) object to configure all series in the Bar chart.
 
 ## Customize Bar Chart
 
-You can show [point labels](/Documentation/Guide/UI_Components/Chart/Point_Labels/Overview/) to make the bar chart more informative. 
+You can show [point labels](/Documentation/Guide/UI_Components/Chart/Point_Labels/Overview/) to make the Bar chart more informative. 
 
 To help a user identify a series among others on the chart legend, specify its [name](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#name).
 
