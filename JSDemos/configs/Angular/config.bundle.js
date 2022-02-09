@@ -32,8 +32,8 @@ const bundleConfig = {
     'devextreme.angular.systemjs.js': '../../../../../bundles/devextreme.angular.systemjs.js',
   },
   packages: {
-    'rxjs': { main: 'index.js', defaultExtension: 'js' },
-    'rxjs/operators': { main: 'index.js', defaultExtension: 'js' },
+    'rxjs': { main: 'dist/esm5/index.js', defaultExtension: 'js' },
+    'rxjs/operators': { main: 'dist/esm5/operators/index.js', defaultExtension: 'js' },
   },
 };
 
