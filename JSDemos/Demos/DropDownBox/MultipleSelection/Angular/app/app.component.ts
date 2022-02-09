@@ -46,7 +46,7 @@ export class AppComponent {
       loadMode: 'raw',
       key: 'ID',
       load() {
-        return lastValueFrom(http.get(`../../../../data/${jsonFile}`))
+        return lastValueFrom(http.get(`../../../../data/${jsonFile}`));
       },
     });
   }
