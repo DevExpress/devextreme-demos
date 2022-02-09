@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-This demo illustrates the ease with which you can create a _bar_ chart.
-=======
 This demo shows the standard bar series type that visualizes data as a collection of bars. Follow the steps below to create and configure the Bar chart:
 
 ## Bind to Data
@@ -33,4 +30,3 @@ You can show [point labels](/Documentation/Guide/UI_Components/Chart/Point_Label
 To help a user identify a series among others on the chart legend, specify its [name](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#name).
 
 If you want to change the default series color, use the [color](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#color) property. 
->>>>>>> 3e86dd02d (fix-typo)
