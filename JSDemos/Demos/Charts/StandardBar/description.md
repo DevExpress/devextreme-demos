@@ -17,7 +17,7 @@ Assign one or several series to the [series](/Documentation/ApiReference/UI_Comp
 
 - The series [type](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#type)
 
-- Data source fields. Assign an approproate field name to the [argumentField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#argumentField) and [valueField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#valueField) properties if you want to bind a series to data directly.  Alternatively, you can [use a series template](/Documentation/Guide/UI_Components/Chart/Data_Binding/Bind_Series_to_Data/#Using_a_Series_Template) to bind series to data if a data source field contains names for series. 
+- Data source fields. Assign an appropriate field name to the [argumentField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#argumentField) and [valueField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#valueField) properties if you want to bind a series to data directly.  Alternatively, you can [use a series template](/Documentation/Guide/UI_Components/Chart/Data_Binding/Bind_Series_to_Data/#Using_a_Series_Template) to bind series to data if a data source field contains names for series. 
 
 - Optional. The [barWidth](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#barWidth) property to specify individual series' bar width. See the [Specify the Bar Width](/Documentation/Guide/UI_Components/Chart/Series_Types/Bar_Series/#Specify_the_Bar_Width) article for more information.
 
