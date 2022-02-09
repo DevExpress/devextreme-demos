@@ -27,7 +27,11 @@ jobs:
       continue-on-error: true
       if: github.event_name == 'pull_request'
 <<<<<<< HEAD
+<<<<<<< HEAD
       run: git clone -b ${{github.event.pull_request.head.ref}} https://github.com/${{github.event.pull_request.user.login}}/devextreme ./devextreme-repo
+=======
+      run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme ./devextreme
+>>>>>>> ddf5b96ff (Merge branch '22_1' of https://github.com/DevExpress/devextreme-demos into update-standard-bar-description)
 =======
       run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme ./devextreme
 >>>>>>> ddf5b96ff (Merge branch '22_1' of https://github.com/DevExpress/devextreme-demos into update-standard-bar-description)
@@ -36,7 +40,11 @@ jobs:
       run: |
         BASE_BRANCH=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
 <<<<<<< HEAD
+<<<<<<< HEAD
         test -d ./devextreme-repo || git clone -b $BASE_BRANCH https://github.com/devexpress/devextreme ./devextreme-repo
+=======
+        test -d ./devextreme || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme
+>>>>>>> ddf5b96ff (Merge branch '22_1' of https://github.com/DevExpress/devextreme-demos into update-standard-bar-description)
 =======
         test -d ./devextreme || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme
 >>>>>>> ddf5b96ff (Merge branch '22_1' of https://github.com/DevExpress/devextreme-demos into update-standard-bar-description)
@@ -55,6 +63,7 @@ jobs:
         node-version: '15'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     - name: DevExtreme - Install packages
       working-directory: ./devextreme-repo
       run: npm install --no-audit --no-fund
@@ -65,6 +74,18 @@ jobs:
 
     - name: DevExtreme - Pack
       working-directory: ./devextreme-repo/artifacts/npm/devextreme
+=======
+    - name: Install packages
+      working-directory: ./devextreme
+      run: npm install --no-audit --no-fund
+
+    - name: Build
+      working-directory: ./devextreme
+      run: npm run build-npm-devextreme
+
+    - name: Pack
+      working-directory: ./devextreme/artifacts/npm/devextreme
+>>>>>>> ddf5b96ff (Merge branch '22_1' of https://github.com/DevExpress/devextreme-demos into update-standard-bar-description)
       run: npm pack
 
 =======
@@ -153,6 +174,9 @@ jobs:
 
     - name: Clone devextreme-react repo
       run: test -d ./devextreme-react-repo || git clone -b master https://github.com/devexpress/devextreme-react ./devextreme-react-repo
+<<<<<<< HEAD
+>>>>>>> ddf5b96ff (Merge branch '22_1' of https://github.com/DevExpress/devextreme-demos into update-standard-bar-description)
+=======
 >>>>>>> ddf5b96ff (Merge branch '22_1' of https://github.com/DevExpress/devextreme-demos into update-standard-bar-description)
 
     - name: DevExtreme React - Copy devextreme package
@@ -163,6 +187,7 @@ jobs:
       id: devextreme-react-ref
       run: echo "::set-output name=head::$(git rev-parse HEAD)"
 <<<<<<< HEAD
+<<<<<<< HEAD
    
     - name: DevExtreme React - Restore package cache
       id: devextreme-react-cache
@@ -170,6 +195,8 @@ jobs:
       with:
         path: ./devextreme-react-*.tgz
         key: devextreme-react-package-${{ steps.devextreme-react-ref.outputs.head }}-${{ hashFiles('devextreme-react-repo/packages/devextreme-react/metadata/integration-data.json') }}
+=======
+>>>>>>> ddf5b96ff (Merge branch '22_1' of https://github.com/DevExpress/devextreme-demos into update-standard-bar-description)
 
     - name: DevExtreme React - Install devextreme package
       if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
@@ -257,6 +284,10 @@ jobs:
       working-directory: ./devextreme
       run: npm run discover-declarations
 
+    - name: Discover declarations
+      working-directory: ./devextreme
+      run: npm run discover-declarations
+
     #Build devextreme-vue
     - name: DevExtreme Vue - Clone devextreme-vue repo
       run: git clone -b 21.2 https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
@@ -283,6 +314,9 @@ jobs:
 
     - name: Clone devextreme-vue repo
       run: test -d ./devextreme-vue-repo || git clone -b master https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
+<<<<<<< HEAD
+>>>>>>> ddf5b96ff (Merge branch '22_1' of https://github.com/DevExpress/devextreme-demos into update-standard-bar-description)
+=======
 >>>>>>> ddf5b96ff (Merge branch '22_1' of https://github.com/DevExpress/devextreme-demos into update-standard-bar-description)
 
     - name: DevExtreme Vue - Copy devextreme package
@@ -293,6 +327,7 @@ jobs:
       id: devextreme-vue-ref
       run: echo "::set-output name=head::$(git rev-parse HEAD)"
 <<<<<<< HEAD
+<<<<<<< HEAD
    
     - name: DevExtreme Vue - Restore package cache
       id: devextreme-vue-cache
@@ -300,6 +335,8 @@ jobs:
       with:
         path: ./devextreme-vue-*.tgz
         key: devextreme-vue-package-${{ steps.devextreme-vue-ref.outputs.head }}-${{ hashFiles('devextreme-vue-repo/packages/devextreme-vue/metadata/integration-data.json') }}
+=======
+>>>>>>> ddf5b96ff (Merge branch '22_1' of https://github.com/DevExpress/devextreme-demos into update-standard-bar-description)
 
     - name: DevExtreme Vue - Install devextreme package
       if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
@@ -389,6 +426,10 @@ jobs:
       working-directory: ./devextreme
       run: npm run discover-declarations
 
+    - name: Discover declarations
+      working-directory: ./devextreme
+      run: npm run discover-declarations
+
     #Build devextreme-angular
     - name: DevExtreme Angular - Clone devextreme-angular repo
       run: git clone -b 21.2 https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
@@ -415,6 +456,9 @@ jobs:
 
     - name: Clone devextreme-angular repo
       run: test -d ./devextreme-angular-repo || git clone -b master https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
+<<<<<<< HEAD
+>>>>>>> ddf5b96ff (Merge branch '22_1' of https://github.com/DevExpress/devextreme-demos into update-standard-bar-description)
+=======
 >>>>>>> ddf5b96ff (Merge branch '22_1' of https://github.com/DevExpress/devextreme-demos into update-standard-bar-description)
 
     - name: DevExtreme Angular - Copy devextreme package
@@ -425,6 +469,7 @@ jobs:
       id: devextreme-angular-ref
       run: echo "::set-output name=head::$(git rev-parse HEAD)"
 <<<<<<< HEAD
+<<<<<<< HEAD
    
     - name: DevExtreme Angular - Restore package cache
       id: devextreme-angular-cache
@@ -432,6 +477,8 @@ jobs:
       with:
         path: ./devextreme-angular-*.tgz
         key: devextreme-angular-package-${{ steps.devextreme-angular-ref.outputs.head }}-${{ hashFiles('devextreme-angular-repo/packages/devextreme-angular/metadata/NGMetaData.json') }}
+=======
+>>>>>>> ddf5b96ff (Merge branch '22_1' of https://github.com/DevExpress/devextreme-demos into update-standard-bar-description)
 
     - name: DevExtreme Angular - Install devextreme package
       if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
