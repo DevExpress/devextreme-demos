@@ -26,19 +26,19 @@ jobs:
     - name: Clone devextreme repo from PR author fork
       continue-on-error: true
       if: github.event_name == 'pull_request'
-      run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme ./devextreme-repo
+      run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme ./devextreme
 
     - name: Clone devextreme repo
       run: |
         BASE_BRANCH=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
-        test -d ./devextreme-repo || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme-repo
+        test -d ./devextreme || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme
 
     #Build Devextreme
     - name: Restore npm cache
       uses: actions/cache@v2
       with:
-        path: ./devextreme-repo/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme-repo/package-lock.json') }}
+        path: ./devextreme/node_modules
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
     - name: Use Node.js 15
@@ -47,19 +47,19 @@ jobs:
         node-version: '15'
 
     - name: Install packages
-      working-directory: ./devextreme-repo
+      working-directory: ./devextreme
       run: npm install --no-audit --no-fund
 
     - name: Build
-      working-directory: ./devextreme-repo
+      working-directory: ./devextreme
       run: npm run build-npm-devextreme
 
     - name: Pack
-      working-directory: ./devextreme-repo/artifacts/npm/devextreme
+      working-directory: ./devextreme/artifacts/npm/devextreme
       run: npm pack
 
     - name: Copy package
-      run: cp ./devextreme-repo/artifacts/npm/devextreme/*.tgz ./devextreme-installer.tgz
+      run: cp ./devextreme/artifacts/npm/devextreme/*.tgz ./devextreme-installer.tgz
 
     - name: Copy build artifacts
       uses: actions/upload-artifact@v2
@@ -84,19 +84,23 @@ jobs:
     - name: Clone devextreme repo from PR author fork
       continue-on-error: true
       if: github.event_name == 'pull_request'
-      run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme ./devextreme-repo
+      run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme ./devextreme
 
     - name: Clone devextreme repo
       run: |
         BASE_BRANCH=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
-        test -d ./devextreme-repo || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme-repo
+        test -d ./devextreme || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme
 
     - name: Restore npm cache
       uses: actions/cache@v2
       with:
-        path: ./devextreme-repo/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme-repo/package-lock.json') }}
+        path: ./devextreme/node_modules
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
+
+    - name: Discover declarations
+      working-directory: ./devextreme
+      run: npm run discover-declarations
 
     #Build devextreme-react
 
@@ -110,12 +114,13 @@ jobs:
       with:
         name: devextreme-sources
 
-    - name: Clone devextreme-react repo
-      run: git clone -b master https://github.com/devexpress/devextreme-react ./devextreme-react-repo
+    - name: Clone devextreme-react repo from PR author fork
+      continue-on-error: true
+      if: github.event_name == 'pull_request'
+      run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme-react ./devextreme-react-repo
 
-    - name: Update react metadata
-      working-directory: ./devextreme-repo
-      run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-react-repo/packages/devextreme-react/metadata/integration-data.json --version 22_1 --js-scripts ./js --exclude js/renovation/
+    - name: Clone devextreme-react repo
+      run: test -d ./devextreme-react-repo || git clone -b master https://github.com/devexpress/devextreme-react ./devextreme-react-repo
 
     - name: Copy devextreme package
       run: |
@@ -126,16 +131,8 @@ jobs:
       working-directory: ./devextreme-react-repo
       id: devextreme-react-ref
       run: echo "::set-output name=head::$(git rev-parse HEAD)"
-   
-    - name: Restore package cache
-      id: devextreme-react-cache
-      uses: actions/cache@v2
-      with:
-        path: ./devextreme-react-*.tgz
-        key: devextreme-react-package-${{ steps.devextreme-react-ref.outputs.head }}-${{ hashFiles('devextreme-react-repo/packages/devextreme-react/metadata/integration-data.json') }}
 
     - name: Install devextreme package
-      # if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-react-repo
       run: |
         pushd devextreme-setup
@@ -149,17 +146,14 @@ jobs:
         npm install --save-dev $installerName
 
     - name: Install packages for devextreme-react
-      # if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-react-repo
       run: npm install --no-audit --no-fund
-      
+
     - name: Build and Pack
-      # if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-react-repo
       run: npm run pack
 
     - name: Copy devextreme-react package
-      # if: steps.devextreme-react-cache.outputs.cache-hit != 'true'
       run: cp ./devextreme-react-repo/packages/devextreme-react/npm/*.tgz ./devextreme-react-installer.tgz
 
     - name: Copy build artifacts
@@ -185,19 +179,23 @@ jobs:
     - name: Clone devextreme repo from PR author fork
       continue-on-error: true
       if: github.event_name == 'pull_request'
-      run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme ./devextreme-repo
+      run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme ./devextreme
 
     - name: Clone devextreme repo
       run: |
         BASE_BRANCH=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
-        test -d ./devextreme-repo || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme-repo
+        test -d ./devextreme || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme
 
     - name: Restore npm cache
       uses: actions/cache@v2
       with:
-        path: ./devextreme-repo/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme-repo/package-lock.json') }}
+        path: ./devextreme/node_modules
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
+
+    - name: Discover declarations
+      working-directory: ./devextreme
+      run: npm run discover-declarations
 
     #Build devextreme-vue
 
@@ -211,12 +209,13 @@ jobs:
       with:
         name: devextreme-sources
 
-    - name: Clone devextreme-vue repo
-      run: git clone -b master https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
+    - name: Clone devextreme-vue repo from PR author fork
+      continue-on-error: true
+      if: github.event_name == 'pull_request'
+      run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme-vue ./devextreme-vue-repo
 
-    - name: Update vue metadata
-      working-directory: ./devextreme-repo
-      run: npm run internal-tool -- update-integration-meta --output-path ../devextreme-vue-repo/packages/devextreme-vue/metadata/integration-data.json --version 22_1 --js-scripts ./js --exclude js/renovation/
+    - name: Clone devextreme-vue repo
+      run: test -d ./devextreme-vue-repo || git clone -b master https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
 
     - name: Copy devextreme package
       run: |
@@ -227,16 +226,8 @@ jobs:
       working-directory: ./devextreme-vue-repo
       id: devextreme-vue-ref
       run: echo "::set-output name=head::$(git rev-parse HEAD)"
-   
-    - name: Restore package cache
-      id: devextreme-vue-cache
-      uses: actions/cache@v2
-      with:
-        path: ./devextreme-vue-*.tgz
-        key: devextreme-vue-package-${{ steps.devextreme-vue-ref.outputs.head }}-${{ hashFiles('devextreme-vue-repo/packages/devextreme-vue/metadata/integration-data.json') }}
 
     - name: Install devextreme package
-      # if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-vue-repo
       run: |
         pushd devextreme-setup
@@ -252,17 +243,14 @@ jobs:
         npm install --save-dev $installerName
 
     - name: Install packages for devextreme-vue
-      # if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-vue-repo
       run: npm install --no-audit --no-fund
       
     - name: Build and Pack
-      # if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-vue-repo
       run: npm run pack
 
     - name: Copy devextreme-vue package
-      # if: steps.devextreme-vue-cache.outputs.cache-hit != 'true'
       run: cp ./devextreme-vue-repo/packages/devextreme-vue/npm/*.tgz ./devextreme-vue-installer.tgz
 
     - name: Copy build artifacts
@@ -288,19 +276,23 @@ jobs:
     - name: Clone devextreme repo from PR author fork
       continue-on-error: true
       if: github.event_name == 'pull_request'
-      run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme ./devextreme-repo
+      run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme ./devextreme
 
     - name: Clone devextreme repo
       run: |
         BASE_BRANCH=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
-        test -d ./devextreme-repo || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme-repo
+        test -d ./devextreme || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme
 
     - name: Restore npm cache
       uses: actions/cache@v2
       with:
-        path: ./devextreme-repo/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme-repo/package-lock.json') }}
+        path: ./devextreme/node_modules
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
+
+    - name: Discover declarations
+      working-directory: ./devextreme
+      run: npm run discover-declarations
 
     #Build devextreme-angular
 
@@ -314,12 +306,13 @@ jobs:
       with:
         name: devextreme-sources
 
-    - name: Clone devextreme-angular repo
-      run: git clone -b master https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
+    - name: Clone devextreme-angular repo from PR author fork
+      continue-on-error: true
+      if: github.event_name == 'pull_request'
+      run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme-angular ./devextreme-angular-repo
 
-    - name: Update angular metadata
-      working-directory: ./devextreme-repo
-      run: npm run internal-tool -- update-meta --output-path ../devextreme-angular-repo/packages/devextreme-angular/metadata/NGMetaData.json --version 22_1 --js-scripts ./js --exclude js/renovation/
+    - name: Clone devextreme-angular repo
+      run: test -d ./devextreme-angular-repo || git clone -b master https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
 
     - name: Copy devextreme package
       run: |
@@ -330,16 +323,8 @@ jobs:
       working-directory: ./devextreme-angular-repo
       id: devextreme-angular-ref
       run: echo "::set-output name=head::$(git rev-parse HEAD)"
-   
-    - name: Restore package cache
-      id: devextreme-angular-cache
-      uses: actions/cache@v2
-      with:
-        path: ./devextreme-angular-*.tgz
-        key: devextreme-angular-package-${{ steps.devextreme-angular-ref.outputs.head }}-${{ hashFiles('devextreme-angular-repo/packages/devextreme-angular/metadata/NGMetaData.json') }}
 
     - name: Install devextreme package
-      # if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-angular-repo
       run: |
         pushd devextreme-setup
@@ -353,17 +338,14 @@ jobs:
         npm install --save-dev $installerName
 
     - name: Install packages for devextreme-angular
-      # if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-angular-repo
       run: npm install --no-audit --no-fund
       
     - name: Build and Pack
-      # if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
       working-directory: ./devextreme-angular-repo
       run: npm run pack
 
     - name: Copy devextreme-angular package
-      # if: steps.devextreme-angular-cache.outputs.cache-hit != 'true'
       run: cp ./devextreme-angular-repo/packages/devextreme-angular/npm/dist/*.tgz ./devextreme-angular-installer.tgz
 
     - name: Copy build artifacts
@@ -472,8 +454,10 @@ jobs:
     - name: Run npm install
       run: npm install --no-audit --no-fund
 
-    - name: Run dotnet format install
-      run: dotnet tool install -g dotnet-format --version 5.1.225507
+    - name: Prepare dotnet
+      run: |
+        dotnet new globaljson --sdk-version 5.0.0 --roll-forward latestFeature
+        dotnet tool install -g dotnet-format --version 5.1.225507
 
     - name: Run lint
       run: npm run lint
