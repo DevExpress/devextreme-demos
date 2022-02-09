@@ -138,6 +138,9 @@ window.config = {
       main: './index.js',
       defaultExtension: 'js',
     },
+    'rxjs': {
+      main: './dist/esm5/index.js',
+    },
   },
   packageConfigPaths: [
     'npm:@devextreme/*/package.json',
