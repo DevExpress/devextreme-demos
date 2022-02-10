@@ -36,9 +36,8 @@ if (framework === 'angular') {
   }];
 
   packages = [
-    'rxjs/Rx.js',
-    'rxjs/index.js',
-    'rxjs/operators/index.js',
+    'rxjs/dist/cjs/index.js',
+    'rxjs/dist/cjs/operators/index.js',
   ];
 
   // eslint-disable-next-line spellcheck/spell-checker
