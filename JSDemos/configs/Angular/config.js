@@ -45,7 +45,8 @@ window.config = {
     '@angular/common': 'npm:@angular/common',
     '@angular/compiler': 'npm:@angular/compiler',
     'tslib': 'npm:tslib/tslib.js',
-    'rxjs': 'npm:rxjs',
+    'rxjs': 'npm:rxjs/dist/bundles/rxjs.umd.js',
+    'rxjs/operators': 'npm:rxjs/dist/cjs/operators/index.js',
 
     /** signalr */
     '@aspnet/signalr': 'npm:@aspnet/signalr/dist/cjs/index.js',
@@ -139,7 +140,10 @@ window.config = {
       defaultExtension: 'js',
     },
     'rxjs': {
-      main: './dist/esm5/index.js',
+      defaultExtension: 'js',
+    },
+    'rxjs/operators': {
+      defaultExtension: 'js',
     },
   },
   packageConfigPaths: [
