@@ -4,12 +4,12 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
     public partial class SampleData {
         public static readonly IEnumerable<GaugeProduct> GaugeProducts = new[] {
             new GaugeProduct {
-                Name = "Hummers",
+                Name = "Hammers",
                 Count = 41,
                 Active = true
             },
             new GaugeProduct {
-                Name = "Shovers",
+                Name = "Shovels",
                 Count = 32,
                 Active = true
             },
