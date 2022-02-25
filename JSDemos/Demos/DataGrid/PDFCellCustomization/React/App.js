@@ -1,7 +1,9 @@
 import React from 'react';
 import DataGrid, {
-  Column, Summary, GroupPanel, Grouping, SortByGroupSummaryInfo, TotalItem,
+  Column, Summary, GroupPanel, Grouping, SortByGroupSummaryInfo, TotalItem, Toolbar,
+  Item,
 } from 'devextreme-react/data-grid';
+import Button from 'devextreme-react/button';
 import { jsPDF } from 'jspdf';
 import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
 
@@ -85,6 +87,17 @@ export default function App() {
             displayFormat="Total count: {0}"
           />
         </Summary>
+
+        <Toolbar>
+          <Item name="groupPanel" />
+          <Item location="after">
+            <Button
+              icon='exportpdf'
+              text='Export to PDF'
+              onClick={exportGrid}
+            />
+          </Item>
+        </Toolbar>
       </DataGrid>
     </div>
   );

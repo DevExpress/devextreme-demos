@@ -1,43 +1,57 @@
+// This code is used for backwards compatibility with the older jsPDF variable name
+// Read more: https://github.com/MrRio/jsPDF/releases/tag/v2.0.0
+window.jsPDF = window.jspdf.jsPDF;
+
 $(() => {
-  $('#gridContainer').dxDataGrid({
+  const lastPoint = { x: 0, y: 0 };
+  const dataGrid = $('#gridContainer').dxDataGrid({
     dataSource: countries,
     keyExpr: 'ID',
     showBorders: true,
-    export: {
-      enabled: true,
-    },
-    onExporting(e) {
-      const workbook = new ExcelJS.Workbook();
-      const worksheet = workbook.addWorksheet('CountriesPopulation');
+    toolbar: {
+      items: [
+        'groupPanel',
+        {
+          widget: 'dxButton',
+          location: 'after',
+          options: {
+            icon: 'exportpdf',
+            text: 'Export to PDF',
+            onClick() {
+              const doc = new jsPDF();
+              DevExpress.pdfExporter.exportDataGrid({
+                jsPDFDocument: doc,
+                component: dataGrid,
+                topLeft: { x: 1, y: 15 },
+                columnWidths: [30, 20, 30, 15, 22, 22, 20, 20],
+                customDrawCell({ rect }) {
+                  if(lastPoint.x < rect.x + rect.w) {
+                    lastPoint.x = rect.x + rect.w;
+                  }
+                  if(lastPoint.y < rect.y + rect.h) {
+                    lastPoint.y = rect.y + rect.h;
+                  }
+                },
+              }).then(() => {
+                const header = 'Country Area, Population, and GDP Structure';
+                const pageWidth = doc.internal.pageSize.getWidth();
+                doc.setFontSize(15);
+                const headerWidth = doc.getTextDimensions(header).w;
+                doc.text((pageWidth - headerWidth) / 2, 20, header);
 
-      DevExpress.excelExporter.exportDataGrid({
-        component: e.component,
-        worksheet,
-        topLeftCell: { row: 4, column: 1 },
-      }).then((cellRange) => {
-        // header
-        const headerRow = worksheet.getRow(2);
-        headerRow.height = 30;
-        worksheet.mergeCells(2, 1, 2, 8);
+                const footer = 'www.wikipedia.org';
+                doc.setFontSize(9);
+                doc.setTextColor('#cccccc');
+                const footerWidth = doc.getTextDimensions(footer).w;
+                doc.text((lastPoint.x - footerWidth), lastPoint.y + 5, footer);
 
-        headerRow.getCell(1).value = 'Country Area, Population, and GDP Structure';
-        headerRow.getCell(1).font = { name: 'Segoe UI Light', size: 22 };
-        headerRow.getCell(1).alignment = { horizontal: 'center' };
-
-        // footer
-        const footerRowIndex = cellRange.to.row + 2;
-        const footerRow = worksheet.getRow(footerRowIndex);
-        worksheet.mergeCells(footerRowIndex, 1, footerRowIndex, 8);
-
-        footerRow.getCell(1).value = 'www.wikipedia.org';
-        footerRow.getCell(1).font = { color: { argb: 'BFBFBF' }, italic: true };
-        footerRow.getCell(1).alignment = { horizontal: 'right' };
-      }).then(() => {
-        workbook.xlsx.writeBuffer().then((buffer) => {
-          saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'CountriesPopulation.xlsx');
-        });
-      });
-      e.cancel = true;
+                doc.save('Companies.pdf');
+              });
+            },
+          },
+        },
+        'searchPanel',
+      ],
     },
     columns: [
       'Country',
@@ -91,5 +105,5 @@ $(() => {
         }],
       },
     ],
-  });
+  }).dxDataGrid('instance');
 });

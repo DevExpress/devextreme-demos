@@ -42,17 +42,6 @@
           Website
         </a>
       </template>
-
-      <DxToolbar>
-        <DxItem name="groupPanel"/>
-        <DxItem location="after">
-          <DxButton
-            icon="exportpdf"
-            text="Export to PDF"
-            @click="exportGrid()"
-          />
-        </DxItem>
-      </DxToolbar>
       />
 
       <DxSummary>
@@ -62,6 +51,17 @@
           display-format="Total count: {0} companies"
         />
       </DxSummary>
+
+            <DxToolbar>
+        <DxItem name="groupPanel"/>
+        <DxItem location="after">
+          <DxButton
+            icon="exportpdf"
+            text="Export to PDF"
+            @click="exportGrid()"
+          />
+        </DxItem>
+      </DxToolbar>
     </DxDataGrid>
   </div>
 </template>
@@ -72,7 +72,6 @@ import {
   DxColumn,
   DxGrouping,
   DxGroupPanel,
-  DxSearchPanel,
   DxPaging,
   DxToolbar,
   DxItem,
@@ -92,7 +91,6 @@ export default {
     DxGroupPanel,
     DxGrouping,
     DxPaging,
-    DxSearchPanel,
     DxDataGrid,
     DxToolbar,
     DxItem,

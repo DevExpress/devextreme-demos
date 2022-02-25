@@ -49,24 +49,39 @@
         />
       </DxColumn>
     </DxColumn>
+
+          <DxToolbar>
+        <DxItem name="groupPanel"/>
+        <DxItem location="after">
+          <DxButton
+            icon="exportpdf"
+            text="Export to PDF"
+            @click="exportGrid()"
+          />
+        </DxItem>
+      </DxToolbar>
   </DxDataGrid>
 </template>
 
 <script>
 
-import DxDataGrid, { DxColumn, DxExport } from 'devextreme-vue/data-grid';
-import { Workbook } from 'exceljs';
-import { saveAs } from 'file-saver-es';
-// Our demo infrastructure requires us to use 'file-saver-es'.
-// We recommend that you use the official 'file-saver' package in your applications.
-import { exportDataGrid } from 'devextreme/excel_exporter';
+import DxButton from 'devextreme-vue/button';
+import DxDataGrid, { DxColumn, DxToolbar, DxItem } from 'devextreme-vue/data-grid';
+
+import { jsPDF } from 'jspdf';
+import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
+
 import { countries } from './data.js';
+
+const dataGridRef = 'dataGrid';
 
 export default {
   components: {
+    DxButton,
     DxDataGrid,
     DxColumn,
-    DxExport,
+    DxToolbar,
+    DxItem,
   },
   data() {
     return {
@@ -77,39 +92,43 @@ export default {
       },
     };
   },
+  computed: {
+    dataGrid() {
+      return this.$refs[dataGridRef].instance;
+    },
+  },
   methods: {
-    onExporting(e) {
-      const workbook = new Workbook();
-      const worksheet = workbook.addWorksheet('CountriesPopulation');
+    exportGrid() {
+           // eslint-disable-next-line new-cap
+      const doc = new jsPDF();
+      const lastPoint = { x: 0, y: 0 };
+    exportDataGridToPdf({
+      jsPDFDocument: doc,
+      component: this.dataGrid,
+      columnWidths: [30, 20, 30, 15, 22, 22, 20, 20],
+      customDrawCell({ rect }) {
+        if(lastPoint.x < rect.x + rect.w) {
+          lastPoint.x = rect.x + rect.w;
+        }
+        if(lastPoint.y < rect.y + rect.h) {
+          lastPoint.y = rect.y + rect.h;
+        }
+      },
+    }).then(() => {
+      const header = 'Country Area, Population, and GDP Structure';
+      const pageWidth = doc.internal.pageSize.getWidth();
+      doc.setFontSize(15);
+      const headerWidth = doc.getTextDimensions(header).w;
+      doc.text((pageWidth - headerWidth) / 2, 20, header);
 
-      exportDataGrid({
-        component: e.component,
-        worksheet,
-        topLeftCell: { row: 4, column: 1 },
-      }).then((cellRange) => {
-        // header
-        const headerRow = worksheet.getRow(2);
-        headerRow.height = 30;
-        worksheet.mergeCells(2, 1, 2, 8);
+      const footer = 'www.wikipedia.org';
+      doc.setFontSize(9);
+      doc.setTextColor('#cccccc');
+      const footerWidth = doc.getTextDimensions(footer).w;
+      doc.text((lastPoint.x - footerWidth), lastPoint.y + 5, footer);
 
-        headerRow.getCell(1).value = 'Country Area, Population, and GDP Structure';
-        headerRow.getCell(1).font = { name: 'Segoe UI Light', size: 22 };
-        headerRow.getCell(1).alignment = { horizontal: 'center' };
-
-        // footer
-        const footerRowIndex = cellRange.to.row + 2;
-        const footerRow = worksheet.getRow(footerRowIndex);
-        worksheet.mergeCells(footerRowIndex, 1, footerRowIndex, 8);
-
-        footerRow.getCell(1).value = 'www.wikipedia.org';
-        footerRow.getCell(1).font = { color: { argb: 'BFBFBF' }, italic: true };
-        footerRow.getCell(1).alignment = { horizontal: 'right' };
-      }).then(() => {
-        workbook.xlsx.writeBuffer().then((buffer) => {
-          saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'CountriesPopulation.xlsx');
-        });
-      });
-      e.cancel = true;
+      doc.save('Companies.pdf');
+    });
     },
   },
 };

@@ -1,12 +1,14 @@
-import { NgModule, Component, enableProdMode } from '@angular/core';
+import {
+  NgModule, Component, enableProdMode, ViewChild,
+} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { DxDataGridModule, DxTemplateModule } from 'devextreme-angular';
-import { Workbook } from 'exceljs';
-import { saveAs } from 'file-saver-es';
-// Our demo infrastructure requires us to use 'file-saver-es'. We recommend that you use the official 'file-saver' package in your applications.
-import { exportDataGrid } from 'devextreme/excel_exporter';
+import {
+  DxDataGridModule, DxTemplateModule, DxButtonModule, DxDataGridComponent,
+} from 'devextreme-angular';
+import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
+import { jsPDF } from 'jspdf';
 import { Service, Country } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -20,44 +22,44 @@ if (!/localhost/.test(document.location.host)) {
   providers: [Service],
 })
 export class AppComponent {
+  @ViewChild(DxDataGridComponent, { static: false }) dataGrid: DxDataGridComponent;
+
   countries: Country[];
 
   constructor(service: Service) {
     this.countries = service.getCountries();
   }
 
-  onExporting(e) {
-    const workbook = new Workbook();
-    const worksheet = workbook.addWorksheet('CountriesPopulation');
-
-    exportDataGrid({
-      component: e.component,
-      worksheet,
-      topLeftCell: { row: 4, column: 1 },
-    }).then((cellRange) => {
-      // header
-      const headerRow = worksheet.getRow(2);
-      headerRow.height = 30;
-      worksheet.mergeCells(2, 1, 2, 8);
-
-      headerRow.getCell(1).value = 'Country Area, Population, and GDP Structure';
-      headerRow.getCell(1).font = { name: 'Segoe UI Light', size: 22 };
-      headerRow.getCell(1).alignment = { horizontal: 'center' };
-
-      // footer
-      const footerRowIndex = cellRange.to.row + 2;
-      const footerRow = worksheet.getRow(footerRowIndex);
-      worksheet.mergeCells(footerRowIndex, 1, footerRowIndex, 8);
-
-      footerRow.getCell(1).value = 'www.wikipedia.org';
-      footerRow.getCell(1).font = { color: { argb: 'BFBFBF' }, italic: true };
-      footerRow.getCell(1).alignment = { horizontal: 'right' };
+  exportGrid() {
+    const doc = new jsPDF();
+    const lastPoint = { x: 0, y: 0 };
+    exportDataGridToPdf({
+      jsPDFDocument: doc,
+      component: this.dataGrid.instance,
+      columnWidths: [30, 20, 30, 15, 22, 22, 20, 20],
+      customDrawCell({ rect }) {
+        if(lastPoint.x < rect.x + rect.w) {
+          lastPoint.x = rect.x + rect.w;
+        }
+        if(lastPoint.y < rect.y + rect.h) {
+          lastPoint.y = rect.y + rect.h;
+        }
+      },
     }).then(() => {
-      workbook.xlsx.writeBuffer().then((buffer) => {
-        saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'CountriesPopulation.xlsx');
-      });
+      const header = 'Country Area, Population, and GDP Structure';
+      const pageWidth = doc.internal.pageSize.getWidth();
+      doc.setFontSize(15);
+      const headerWidth = doc.getTextDimensions(header).w;
+      doc.text((pageWidth - headerWidth) / 2, 20, header);
+
+      const footer = 'www.wikipedia.org';
+      doc.setFontSize(9);
+      doc.setTextColor('#cccccc');
+      const footerWidth = doc.getTextDimensions(footer).w;
+      doc.text((lastPoint.x - footerWidth), lastPoint.y + 5, footer);
+
+      doc.save('Companies.pdf');
     });
-    e.cancel = true;
   }
 }
 
@@ -66,6 +68,7 @@ export class AppComponent {
     BrowserModule,
     DxDataGridModule,
     DxTemplateModule,
+    DxButtonModule,
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
