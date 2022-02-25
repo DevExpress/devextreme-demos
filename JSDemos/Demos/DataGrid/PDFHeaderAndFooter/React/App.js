@@ -25,10 +25,10 @@ export default function App() {
       component: dataGrid,
       columnWidths: [30, 20, 30, 15, 22, 22, 20, 20],
       customDrawCell({ rect }) {
-        if(lastPoint.x < rect.x + rect.w) {
+        if (lastPoint.x < rect.x + rect.w) {
           lastPoint.x = rect.x + rect.w;
         }
-        if(lastPoint.y < rect.y + rect.h) {
+        if (lastPoint.y < rect.y + rect.h) {
           lastPoint.y = rect.y + rect.h;
         }
       },
@@ -37,78 +37,77 @@ export default function App() {
       const pageWidth = doc.internal.pageSize.getWidth();
       doc.setFontSize(15);
       const headerWidth = doc.getTextDimensions(header).w;
-      doc.text((pageWidth - headerWidth) / 2, 20, header);
+      doc.text(header, (pageWidth - headerWidth) / 2, 20);
 
       const footer = 'www.wikipedia.org';
       doc.setFontSize(9);
       doc.setTextColor('#cccccc');
       const footerWidth = doc.getTextDimensions(footer).w;
-      doc.text((lastPoint.x - footerWidth), lastPoint.y + 5, footer);
+      doc.text(footer, (lastPoint.x - footerWidth), lastPoint.y + 5);
 
       doc.save('Companies.pdf');
     });
   });
 
+  return (
+    <DataGrid
+      dataSource={countries}
+      keyExpr="ID"
+      showBorders={true}>
 
-    return (
-      <DataGrid
-        dataSource={countries}
-        keyExpr="ID"
-        showBorders={true}>
-
-        <Column dataField="Country" />
-        <Column dataField="Area" />
-        <Column caption="Population">
+      <Column dataField="Country" />
+      <Column dataField="Area" />
+      <Column caption="Population">
+        <Column
+          dataField="Population_Total"
+          caption="Total"
+          format="fixedPoint"
+        />
+        <Column
+          dataField="Population_Urban"
+          caption="Urban"
+          format="percent"
+        />
+      </Column>
+      <Column caption="Nominal GDP">
+        <Column
+          dataField="GDP_Total"
+          caption="Total, mln $"
+          format="fixedPoint"
+          sortOrder="desc"
+        />
+        <Column caption="By Sector">
           <Column
-            dataField="Population_Total"
-            caption="Total"
-            format="fixedPoint"
+            dataField="GDP_Agriculture"
+            caption="Agriculture"
+            format={gdpFormat}
+            width={95}
           />
           <Column
-            dataField="Population_Urban"
-            caption="Urban"
-            format="percent"
+            dataField="GDP_Industry"
+            caption="Industry"
+            format={gdpFormat}
+            width={80}
+          />
+          <Column
+            dataField="GDP_Services"
+            caption="Services"
+            format={gdpFormat}
+            width={85}
           />
         </Column>
-        <Column caption="Nominal GDP">
-          <Column
-            dataField="GDP_Total"
-            caption="Total, mln $"
-            format="fixedPoint"
-            sortOrder="desc"
-          />
-          <Column caption="By Sector">
-            <Column
-              dataField="GDP_Agriculture"
-              caption="Agriculture"
-              format={gdpFormat}
-              width={95}
-            />
-            <Column
-              dataField="GDP_Industry"
-              caption="Industry"
-              format={gdpFormat}
-              width={80}
-            />
-            <Column
-              dataField="GDP_Services"
-              caption="Services"
-              format={gdpFormat}
-              width={85}
-            />
-          </Column>
-        </Column>
+      </Column>
 
-        <Toolbar>
-          <Item name="groupPanel" />
-          <Item location="after">
-            <Button
-              icon='exportpdf'
-              text='Export to PDF'
-              onClick={exportGrid}
-            />
-          </Item>
-        </Toolbar>
-      </DataGrid>
-    );
+      <Toolbar>
+        <Item name="groupPanel" />
+        <Item location="after">
+          <Button
+            icon='exportpdf'
+            text='Export to PDF'
+            onClick={exportGrid}
+          />
+        </Item>
+      </Toolbar>
+    </DataGrid>
+  );
 }

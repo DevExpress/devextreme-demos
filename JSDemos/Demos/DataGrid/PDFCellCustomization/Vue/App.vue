@@ -52,7 +52,7 @@
         />
       </DxSummary>
 
-            <DxToolbar>
+      <DxToolbar>
         <DxItem name="groupPanel"/>
         <DxItem location="after">
           <DxButton
@@ -113,34 +113,34 @@ export default {
       exportDataGridToPdf({
         jsPDFDocument: doc,
         component: this.dataGrid,
-      columnWidths: [40, 40, 30, 30, 40],
-      customizeCell(options) {
-        const { gridCell } = options;
-        const { pdfCell } = options;
+        columnWidths: [40, 40, 30, 30, 40],
+        customizeCell(options) {
+          const { gridCell } = options;
+          const { pdfCell } = options;
 
-        if (gridCell.rowType === 'data' && gridCell.column.dataField === 'Phone') {
-          pdfCell.text = pdfCell.text.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
-        } else if (gridCell.rowType === 'group') {
-          pdfCell.backgroundColor = '#BEDFE6';
-        } else if (gridCell.rowType === 'totalFooter') {
-          pdfCell.font.style = 'italic';
-        }
-      },
-      customDrawCell(options) {
-        const { gridCell } = options;
-        const { pdfCell } = options;
+          if (gridCell.rowType === 'data' && gridCell.column.dataField === 'Phone') {
+            pdfCell.text = pdfCell.text.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+          } else if (gridCell.rowType === 'group') {
+            pdfCell.backgroundColor = '#BEDFE6';
+          } else if (gridCell.rowType === 'totalFooter') {
+            pdfCell.font.style = 'italic';
+          }
+        },
+        customDrawCell(options) {
+          const { gridCell } = options;
+          const { pdfCell } = options;
 
-        if (gridCell.rowType === 'data' && gridCell.column.dataField === 'Website') {
-          options.cancel = true;
-          doc.setFontSize(11);
-          doc.setTextColor('#0000FF');
+          if (gridCell.rowType === 'data' && gridCell.column.dataField === 'Website') {
+            options.cancel = true;
+            doc.setFontSize(11);
+            doc.setTextColor('#0000FF');
 
-          const textHeight = doc.getTextDimensions(pdfCell.text).h;
-          doc.textWithLink('website',
-            options.rect.x + pdfCell.padding.left,
-            options.rect.y + options.rect.h / 2 + textHeight / 2, { url: pdfCell.text });
-        }
-      },
+            const textHeight = doc.getTextDimensions(pdfCell.text).h;
+            doc.textWithLink('website',
+              options.rect.x + pdfCell.padding.left,
+              options.rect.y + options.rect.h / 2 + textHeight / 2, { url: pdfCell.text });
+          }
+        },
       }).then(() => {
         doc.save('Companies.pdf');
       });

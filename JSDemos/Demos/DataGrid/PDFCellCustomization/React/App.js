@@ -59,7 +59,7 @@ export default function App() {
   function phoneNumberFormat(value) {
     const USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);
     return `(${USNumber[1]}) ${USNumber[2]}-${USNumber[3]}`;
-  }  
+  }
 
   return (
     <div>
