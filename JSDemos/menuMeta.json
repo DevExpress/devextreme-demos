@@ -814,15 +814,19 @@
         "Equivalents": "",
         "Demos": [
           {
-            "Title": "Overview",
-            "Name": "ExportToPDF",
-            "Badge": "Updated",
+            "Title": "Export Multiple Grids",
+            "Name": "PDFExportMultipleGrids",
             "Widget": "DataGrid",
-            "Modules": "jspdf&jspdf-autotable",
+            "Modules": "jspdf",
+            "DemoType": "Web"
+          },
+          {
+            "Title": "Export Images",
+            "Name": "PDFExportImages",
+            "Widget": "DataGrid",
+            "Modules": "jspdf",
             "MvcAdditionalFiles": [
-              "/Controllers/ApiControllers/DataGridCustomersController.cs",
-              "/Models/Customer.cs",
-              "/Models/SampleData/Customers.cs"
+              "/Scripts/data/employeesEI.js"
             ],
             "DemoType": "Web"
           }

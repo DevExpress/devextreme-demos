@@ -217,8 +217,12 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         public ActionResult ExcelJSHeaderAndFooter() {
             return View(SampleData.CountriesPopulationAndGDP);
         }
-
-        public ActionResult ExportToPDF() {
+        
+        public ActionResult PDFExportMultipleGrids() {
+            return View();
+        }
+        
+        public ActionResult PDFExportImages() {
             return View();
         }
 
