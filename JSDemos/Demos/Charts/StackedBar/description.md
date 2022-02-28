@@ -7,7 +7,7 @@ In this demo, series is bound to data directly. See the [Bind Series to Data](/D
 
 ## Specify Common Series Settings
 
-To configure settings for all series in the chart, use the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings) object. For example, specify the [series type](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/#type)
+To configure settings for all series in the chart, use the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings) object. For example, specify the [series type](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/#type).
 
 
 ## Customize Stacked Bar Chart
