@@ -1,8 +1,14 @@
-Our [DataGrid](/Documentation/ApiReference/UI_Components/dxDataGrid/) allows you to easily and accurately export its contents to a PDF document. To enable PDF export operations, you must reference or import the following:
+The [customizeCell](/Documentation/ApiReference/Common/Object_Structures/ExportDataGridProps/#customizeCell) function allows you to modify your pdf cell appearence. You can access and change the following attributes:
 
-- <a href="https://github.com/parallax/jsPDF" target="_blank">jsPDF</a>        
-A library that creates and manages PDF documents.
+- gridCell. A DataGrid cell
+- pdfCell. An exporting pdf cell
 
-Once you have referenced/imported all required resources, call the [exportDataGrid(options)](/Documentation/ApiReference/Common/Utils/pdfExporter/#exportDataGridoptions) method that belongs to the [pdfExporter](/Documentation/ApiReference/Common/Utils/pdfExporter/) module to export DataGrid content to a PDF document.
+The [customDrawCell](/Documentation/ApiReference/Common/Object_Structures/ExportDataGridProps/#customizeCell) function allows you to draw any custom content in the cell. This function accepts the object with following fields:
 
-In this demo, the **exportDataGrid(options)** method is called when you click the Export to PDF button. Review the export code in the button's [onClick](/Documentation/ApiReference/UI_Components/dxButton/Configuration/#onClick) handler to learn more.
+- doc. Instance of the [jsPDFDocument](/api-reference/50%20Common/Object%20Structures/PdfExportDataGridProps/jsPDFDocument.md '/Documentation/ApiReference/Common/Object_Structures/PdfExportDataGridProps/#jsPDFDocument') used for exporting.
+- rect. Object containign information about location of the cell and it's dimensions.
+- gridCell. A DataGrid cell
+- pdfCell. An exporting pdf cell
+- cancel. Allows you to prevent default drawing logic.
+
+For example, this demo changes the background color and font weight for cells with the "group" [rowType](/Documentation/ApiReference/UI_Components/dxDataGrid/Row/#rowType).
