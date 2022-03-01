@@ -222,6 +222,18 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View();
         }
 
+        public ActionResult PDFOverview() {
+            return View(SampleData.DataGridEmployees.Take(10));
+        }
+
+        public ActionResult PDFCellCustomization() {
+            return View();
+        }
+
+        public ActionResult PDFHeaderAndFooter() {
+            return View(SampleData.CountriesPopulationAndGDP);
+        }
+
         public ActionResult GridAdaptabilityOverview() {
             return View(SampleData.Orders);
         }

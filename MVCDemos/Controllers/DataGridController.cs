@@ -217,6 +217,18 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View(SampleData.CountriesPopulationAndGDP);
         }
 
+        public ActionResult PDFSOverview() {
+            return View(SampleData.DataGridEmployees.Take(10));
+        }
+
+        public ActionResult PDFCellCustomization() {
+            return View();
+        }
+
+        public ActionResult PDFHeaderAndFooter() {
+            return View(SampleData.CountriesPopulationAndGDP);
+        }
+
         public ActionResult ExportToPDF() {
             return View();
         }

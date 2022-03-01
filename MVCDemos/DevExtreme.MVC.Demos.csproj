@@ -652,6 +652,9 @@
     <Content Include="Content\DemosStyles\DataGrid\EditStateManagement.css" />
     <Content Include="Content\DemosStyles\DataGrid\LocalReordering.css" />
     <Content Include="Content\DemosStyles\DataGrid\ExportToPDF.css" />
+    <Content Include="Content\DemosStyles\DataGrid\PDFCellCustomization.css" />
+    <Content Include="Content\DemosStyles\DataGrid\PDFHeaderAndFooter.css" />
+    <Content Include="Content\DemosStyles\DataGrid\PDFOverview.css" />
     <Content Include="Content\DemosStyles\DataGrid\RecordPaging.css" />
     <Content Include="Content\DemosStyles\Diagram\AdvancedDataBinding.css" />
     <Content Include="Content\DemosStyles\Diagram\Containers.css" />
@@ -2174,6 +2177,9 @@
     <Content Include="Views\Gantt\HeaderFilter.cshtml" />
     <Content Include="Views\DataGrid\CustomNewRecordPosition.cshtml" />
     <Content Include="Views\Common\EditorAppearanceVariants.cshtml" />
+    <Content Include="Views\DataGrid\PDFCellCustomization.cshtml" />
+    <Content Include="Views\DataGrid\PDFHeaderAndFooter.cshtml" />
+    <Content Include="Views\DataGrid\PDFOverview.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
