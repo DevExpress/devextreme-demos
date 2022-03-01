@@ -1,7 +1,7 @@
-import { NgModule, Component, enableProdMode } from '@angular/core';
+import { NgModule, Component, enableProdMode, ViewChild } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxDataGridModule } from 'devextreme-angular';
+import { DxDataGridModule, DxDataGridComponent } from 'devextreme-angular';
 import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';import { Service, Employees } from './app.service';
 
@@ -17,6 +17,8 @@ if (!/localhost/.test(document.location.host)) {
 })
 
 export class AppComponent {
+  @ViewChild(DxDataGridComponent, { static: false }) dataGrid: DxDataGridComponent;
+
   employees: Employees[];
 
   constructor(private service: Service) {
@@ -28,7 +30,7 @@ export class AppComponent {
 
     exportDataGridToPdf({
       jsPDFDocument: doc,
-      component: dataGrid,
+      component: this.dataGrid.instance,
       margin: 10,
       topLeft: { x: 0, y: 5 },
       columnWidths: [30, 30, 30, 30, 30, 30],

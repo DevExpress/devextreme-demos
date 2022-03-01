@@ -46,7 +46,7 @@
 <script src="~/data/employeesEI.js"></script>
 <script>
     function exportGrid() {
-        const dataGrid = $('#gridContainer').dxDataGrid('instance')
+        const dataGrid = $('#gridContainer').dxDataGrid('instance');
         const doc = new jsPDF();
 
         DevExpress.pdfExporter.exportDataGrid({
@@ -61,7 +61,7 @@
                 arg.cancel = true;
               }
             }
-          },
+          }
         }).then(() => {
           doc.save('DataGrid.pdf');
         });

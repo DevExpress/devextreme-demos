@@ -46,24 +46,24 @@
 <script src="~/Scripts/data/employeesEI.js"></script>
 <script>
     function exportGrid() {
-        const dataGrid = $('#gridContainer').dxDataGrid('instance')
+        const dataGrid = $('#gridContainer').dxDataGrid('instance');
         const doc = new jsPDF();
 
         DevExpress.pdfExporter.exportDataGrid({
-          jsPDFDocument: doc,
-          component: dataGrid,
-          topLeft: { x: 10, y: 15 },
-          onRowExporting: (arg) => { arg.rowHeight = 100; },
-          customDrawCell: (arg) => {
-            if (arg.gridCell.rowType === 'data') {
-              if (arg.gridCell.column.dataField === 'Picture') {
-                doc.addImage(gridCell.value, 'PNG', rect.x, rect.y, rect.w, rect.h);
-                arg.cancel = true;
-              }
+            jsPDFDocument: doc,
+            component: dataGrid,
+            topLeft: { x: 10, y: 15 },
+            onRowExporting: (arg) => { arg.rowHeight = 100; },
+            customDrawCell: (arg) => {
+                if (arg.gridCell.rowType === 'data') {
+                    if (arg.gridCell.column.dataField === 'Picture') {
+                        doc.addImage(gridCell.value, 'PNG', rect.x, rect.y, rect.w, rect.h);
+                        arg.cancel = true;
+                    }
+                }
             }
-          },
         }).then(() => {
-          doc.save('DataGrid.pdf');
+            doc.save('DataGrid.pdf');
         });
     }
 </script>

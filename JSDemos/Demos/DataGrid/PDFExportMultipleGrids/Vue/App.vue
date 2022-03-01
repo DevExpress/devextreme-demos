@@ -133,7 +133,9 @@ export default {
   methods: {
     exportGrids() {
       const context = this;
+      // eslint-disable-next-line new-cap
       const doc = new jsPDF();
+
       exportDataGridToPdf({
         jsPDFDocument: doc,
         component: context.priceGridInstance,
@@ -142,22 +144,22 @@ export default {
         customizeCell: ({ gridCell, pdfCell }) => {
           setAlternatingRowsBackground(gridCell, pdfCell);
         },
-        onRowExporting: (e) => { rowIndex++; },
+        onRowExporting: () => { rowIndex += 1; },
       }).then(() => {
-          doc.addPage();
-          rowIndex = -1;
-          exportDataGridToPdf({
-            jsPDFDocument: doc,
-            component: ratingGridInstance,
-            topLeft: { x: 0, y: 5 },
-            columnWidths: [20, 40, 40, 40],
-            customizeCell: ({ gridCell, pdfCell }) => {
-              setAlternatingRowsBackground(gridCell, pdfCell);
-            },
-            onRowExporting: (e) => { rowIndex++; },
-          }).then(() => {
-            doc.save('MultipleGrids.pdf');
-          })
+        doc.addPage();
+        rowIndex = -1;
+        exportDataGridToPdf({
+          jsPDFDocument: doc,
+          component: context.ratingGridInstance,
+          topLeft: { x: 0, y: 5 },
+          columnWidths: [20, 40, 40, 40],
+          customizeCell: ({ gridCell, pdfCell }) => {
+            setAlternatingRowsBackground(gridCell, pdfCell);
+          },
+          onRowExporting: () => { rowIndex += 1; },
+        }).then(() => {
+          doc.save('MultipleGrids.pdf');
+        });
       });
     },
   },

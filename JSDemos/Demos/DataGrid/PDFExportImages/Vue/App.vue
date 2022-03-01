@@ -45,27 +45,36 @@
   </div>
 </template>
 <script>
-import { DxDataGrid, DxColumn, DxExport } from 'devextreme-vue/data-grid';
+import { DxDataGrid, DxColumn, DxExport, DxToolbar, DxItem } from 'devextreme-vue/data-grid';
 import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
 import service from './data.js';
 
+const dataGridRef = 'dataGrid';
+
 export default {
   components: {
-    DxDataGrid, DxColumn, DxExport,
+    DxDataGrid, DxColumn, DxExport, DxToolbar, DxItem,
   },
   data() {
     return {
       employees: service.getEmployees(),
+      dataGridRef,
     };
+  },
+  computed: {
+    dataGrid() {
+      return this.$refs[dataGridRef].instance;
+    },
   },
   methods: {
     exportGrid() {
+      // eslint-disable-next-line new-cap
       const doc = new jsPDF();
 
       exportDataGridToPdf({
         jsPDFDocument: doc,
-        component: dataGrid,
+        component: this.dataGrid,
         margin: 10,
         topLeft: { x: 0, y: 5 },
         columnWidths: [30, 30, 30, 30, 30, 30],

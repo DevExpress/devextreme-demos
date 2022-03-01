@@ -11,6 +11,7 @@ DemoApp.controller('DemoController', ($scope) => {
       const dataGrid1 = $('#priceDataGrid').dxDataGrid('instance');
       const dataGrid2 = $('#ratingDataGrid').dxDataGrid('instance');
 
+      // eslint-disable-next-line new-cap
       const doc = new jsPDF();
 
       let rowIndex = -1;
@@ -30,7 +31,7 @@ DemoApp.controller('DemoController', ($scope) => {
         customizeCell: ({ gridCell, pdfCell }) => {
           setAlternatingRowsBackground(gridCell, pdfCell);
         },
-        onRowExporting: (e) => { rowIndex++; },
+        onRowExporting: () => { rowIndex += 1; },
       }).then(() => {
         doc.addPage();
         rowIndex = -1;
@@ -42,7 +43,7 @@ DemoApp.controller('DemoController', ($scope) => {
           customizeCell: ({ gridCell, pdfCell }) => {
             setAlternatingRowsBackground(gridCell, pdfCell);
           },
-          onRowExporting: (e) => { rowIndex++; },
+          onRowExporting: () => { rowIndex += 1; },
         }).then(() => {
           doc.save('MultipleGrids.pdf');
         });

@@ -94,25 +94,25 @@
         var dataGrid2 = $("#ratingDataGrid").dxDataGrid("instance");
 
         const doc = new jsPDF();
-        exportDataGridToPdf({
+        DevExpress.pdfExporter.exportDataGrid({
             jsPDFDocument: doc,
             component: dataGrid1,
             topLeft: { x: 10, y: 15 },
             customizeCell: ({ gridCell, pdfCell }) => {
                 setAlternatingRowsBackground(gridCell, pdfCell);
             },
-            onRowExporting: (e) => { rowIndex++; },
+            onRowExporting: () => { rowIndex += 1; },
         }).then(() => {
             doc.addPage();
             rowIndex = -1;
-            exportDataGridToPdf({
+            DevExpress.pdfExporter.exportDataGrid({
                 jsPDFDocument: doc,
                 component: dataGrid2,
                 topLeft: { x: 10, y: 15 },
                 customizeCell: ({ gridCell, pdfCell }) => {
                     setAlternatingRowsBackground(gridCell, pdfCell);
                 },
-                onRowExporting: (e) => { rowIndex++; },
+                onRowExporting: () => { rowIndex += 1; },
             }).then(() => {
               doc.save('MultipleGrids.pdf');
             });

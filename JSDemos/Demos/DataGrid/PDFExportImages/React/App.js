@@ -1,5 +1,6 @@
 import React from 'react';
-import DataGrid, { Column, Export } from 'devextreme-react/data-grid';
+import DataGrid, { Column, Toolbar, Item } from 'devextreme-react/data-grid';
+import Button from 'devextreme-react/button';
 import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
 import service from './data.js';
@@ -31,12 +32,12 @@ class App extends React.Component {
           <Column dataField="Position" />
           <Column dataField="BirthDate" dataType="date" />
           <Column dataField="HireDate" dataType="date" />
-          
+
           <Toolbar>
             <Item location="after">
               <Button
                 icon='exportpdf'
-                onClick={exportGrid}
+                onClick={this.exportGrid}
               />
             </Item>
           </Toolbar>
@@ -45,8 +46,10 @@ class App extends React.Component {
     );
   }
 
-exportGrids = () => {
+  exportGrids() {
+    // eslint-disable-next-line new-cap
     const doc = new jsPDF();
+    const dataGrid = this.dataGridRef.current.instance;
 
     exportDataGridToPdf({
       jsPDFDocument: doc,
