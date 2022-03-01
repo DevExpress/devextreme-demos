@@ -3,18 +3,17 @@
 @model IEnumerable<CountryPopulationAndGDP>
 
 @section ExternalDependencies {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.10.1/polyfill.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/3.8.0/exceljs.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script>
+        window.jsPDF = window.jspdf.jsPDF;
+    </script>
 }
 
 <div class="long-title"><h3>Country Area, Population, and GDP Structure</h3></div>
 @(Html.DevExtreme().DataGrid<CountryPopulationAndGDP>()
     .ID("gridContainer")
     .DataSource(Model, "ID")
-    .Export(e => e.Enabled(true))
     .ShowBorders(true)
-    .OnExporting("exporting")
     .Columns(c =>
     {
         c.AddFor(m => m.Country);
@@ -22,74 +21,86 @@
         c.Add()
             .Caption("Population")
             .Columns(a =>
-                    {
-                        a.AddFor(m => m.Population_Total)
-                            .Format(Format.FixedPoint);
+            {
+                a.AddFor(m => m.Population_Total)
+                    .Format(Format.FixedPoint);
 
-                        a.AddFor(m => m.Population_Urban)
-                            .Format(Format.Percent);
-                    });
+                a.AddFor(m => m.Population_Urban)
+                    .Format(Format.Percent);
+            });
 
-            c.Add()
-            .Caption("Nominal GDP")
-            .Columns(a =>
-                    {
-                        a.AddFor(m => m.GDP_Total)
-                            .Format(Format.FixedPoint)
-                            .SortOrder(SortOrder.Desc);
+        c.Add()
+        .Caption("Nominal GDP")
+        .Columns(a =>
+        {
+            a.AddFor(m => m.GDP_Total)
+                    .Format(Format.FixedPoint)
+                    .SortOrder(SortOrder.Desc);
 
-                        a.Add()
-                            .Caption("By Sector")
-                            .Columns(b =>
-                            {
-                                b.AddFor(m => m.GDP_Agriculture)
-                                    .Width(95)
-                                    .Format(f => f.Type(Format.Percent).Precision(1));
+            a.Add()
+                    .Caption("By Sector")
+                    .Columns(b =>
+                        {
+                            b.AddFor(m => m.GDP_Agriculture)
+                                .Width(95)
+                                .Format(f => f.Type(Format.Percent).Precision(1));
 
-                                b.AddFor(m => m.GDP_Industry)
-                                    .Width(80)
-                                    .Format(f => f.Type(Format.Percent).Precision(1));
+                            b.AddFor(m => m.GDP_Industry)
+                                .Width(80)
+                                .Format(f => f.Type(Format.Percent).Precision(1));
 
-                                b.AddFor(m => m.GDP_Services)
-                                    .Width(85)
-                                    .Format(f => f.Type(Format.Percent).Precision(1));
-                            });
-                    });
-        })
+                            b.AddFor(m => m.GDP_Services)
+                                .Width(85)
+                                .Format(f => f.Type(Format.Percent).Precision(1));
+                        });
+        });
+    })
+    .Toolbar(toolbar => {
+        toolbar.Items(items => {
+            items.Add().Name("groupPanel");
+            items.Add()
+                .Location(ToolbarItemLocation.After)
+                .Widget(w =>
+                    w.Button()
+                        .Icon("exportpdf")
+                        .Text("Export to PDF")
+                        .OnClick("exportToPDF")
+                );
+        });
+    })
 )
 
 <script>
-    function exporting(e) {
-        var workbook = new ExcelJS.Workbook();
-        var worksheet = workbook.addWorksheet('CountriesPopulation');
+    function exportToPDF() {
+        const doc = new jsPDF();
+        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+        DevExpress.pdfExporter.exportDataGrid({
+            jsPDFDocument: doc,
+            component: dataGrid,
+            topLeft: { x: 1, y: 15 },
+            columnWidths: [30, 20, 30, 15, 22, 22, 20, 20],
+            customDrawCell({ rect }) {
+                if (lastPoint.x < rect.x + rect.w) {
+                    lastPoint.x = rect.x + rect.w;
+                }
+                if (lastPoint.y < rect.y + rect.h) {
+                    lastPoint.y = rect.y + rect.h;
+                }
+            },
+        }).then(() => {
+            const header = 'Country Area, Population, and GDP Structure';
+            const pageWidth = doc.internal.pageSize.getWidth();
+            doc.setFontSize(15);
+            const headerWidth = doc.getTextDimensions(header).w;
+            doc.text(header, (pageWidth - headerWidth) / 2, 20);
 
-        DevExpress.excelExporter.exportDataGrid({
-            component: e.component,
-            worksheet: worksheet,
-            topLeftCell: { row: 4, column: 1 }
-        }).then(function (dataGridRange) {
-            // header
-            var headerRow = worksheet.getRow(2);
-            headerRow.height = 30;
-            worksheet.mergeCells(2, 1, 2, 8);
+            const footer = 'www.wikipedia.org';
+            doc.setFontSize(9);
+            doc.setTextColor('#cccccc');
+            const footerWidth = doc.getTextDimensions(footer).w;
+            doc.text(footer, (lastPoint.x - footerWidth), lastPoint.y + 5);
 
-            headerRow.getCell(1).value = 'Country Area, Population, and GDP Structure';
-            headerRow.getCell(1).font = { name: 'Segoe UI Light', size: 22 };
-            headerRow.getCell(1).alignment = { horizontal: 'center' };
-
-            // footer
-            var footerRowIndex = dataGridRange.to.row + 2;
-            var footerRow = worksheet.getRow(footerRowIndex);
-            worksheet.mergeCells(footerRowIndex, 1, footerRowIndex, 8);
-
-            footerRow.getCell(1).value = 'www.wikipedia.org';
-            footerRow.getCell(1).font = { color: { argb: 'BFBFBF' }, italic: true };
-            footerRow.getCell(1).alignment = { horizontal: 'right' };
-        }).then(function () {
-            workbook.xlsx.writeBuffer().then(function (buffer) {
-                saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'CountriesPopulation.xlsx');
-            });
+            doc.save('Companies.pdf');
         });
-        e.cancel = true;
     }
 </script>

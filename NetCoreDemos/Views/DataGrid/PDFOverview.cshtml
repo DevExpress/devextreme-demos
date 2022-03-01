@@ -1,55 +1,60 @@
-﻿@using DevExtreme.NETCore.Demos.Models.DataGrid
-@model IEnumerable<Employee>
-
-@section ExternalDependencies {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.10.1/polyfill.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/3.8.0/exceljs.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+﻿@section ExternalDependencies {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script>
+        window.jsPDF = window.jspdf.jsPDF;
+    </script>
 }
 
-@(Html.DevExtreme().DataGrid<Employee>()
-        .ID("gridContainer")
-        .DataSource(Model, "ID")
-        .Selection(s => s.Mode(SelectionMode.Multiple))
-        .Export(e => e.Enabled(true).AllowExportSelectedData(true))
-        .ShowBorders(true)
-        .GroupPanel(groupPanel => groupPanel.Visible(true))
-        .Grouping(grouping => grouping.AutoExpandAll(true))
-        .OnExporting("exporting")
-        .Columns(columns =>
-        {
-            columns.AddFor(m => m.FirstName);
-            columns.AddFor(m => m.LastName);
-            columns.AddFor(m => m.City);
+@(Html.DevExtreme().DataGrid<DevExtreme.NETCore.Demos.Models.Customer>()
+    .ID("gridContainer")
+    .Columns(columns => {
+        columns.AddFor(m => m.CompanyName);
 
-            columns.AddFor(m => m.State)
-                .GroupIndex(0);
+        columns.AddFor(m => m.Phone);
 
-            columns.AddFor(m => m.Position)
-                .Width(130);
+        columns.AddFor(m => m.Fax);
 
-            columns.AddFor(m => m.BirthDate)
-                .DataType(GridColumnDataType.Date).Width(100);
+        columns.AddFor(m => m.City);
 
-            columns.AddFor(m => m.HireDate)
-                .DataType(GridColumnDataType.Date).Width(100);
-        })
+        columns.AddFor(m => m.State)
+            .GroupIndex(0);
+    })
+    .AllowColumnReordering(true)
+    .ShowBorders(true)
+    .Grouping(grouping => grouping.AutoExpandAll(true))
+    .SearchPanel(searchPanel => searchPanel.Visible(true))
+    .GroupPanel(groupPanel => groupPanel.Visible(true))
+    .Paging(paging => paging.PageSize(10))
+    .DataSource(d => d.Mvc()
+        .Controller("DataGridCustomers")
+        .LoadAction("Get")
+        .Key("ID")
+    )
+    .Toolbar(toolbar => {
+        toolbar.Items(items => {
+            items.Add().Name("groupPanel");
+            items.Add()
+                .Location(ToolbarItemLocation.After)
+                .Widget(w =>
+                    w.Button()
+                        .Icon("exportpdf")
+                        .Text("Export to PDF")
+                        .OnClick("exportToPDF")
+                );
+            items.Add().Name("searchPanel");
+        });
+    })
 )
 
 <script>
-    function exporting(e) {
-        var workbook = new ExcelJS.Workbook();
-        var worksheet = workbook.addWorksheet('Employees');
-
-        DevExpress.excelExporter.exportDataGrid({
-            component: e.component,
-            worksheet: worksheet,
-            autoFilterEnabled: true
+    function exportToPDF() {
+        var doc = new jsPDF();
+        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+        DevExpress.pdfExporter.exportDataGrid({
+            jsPDFDocument: doc,
+            component: dataGrid
         }).then(function () {
-            workbook.xlsx.writeBuffer().then(function (buffer) {
-                saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Employees.xlsx');
-            });
+            doc.save("Companies.pdf");
         });
-        e.cancel = true;
     }
 </script>

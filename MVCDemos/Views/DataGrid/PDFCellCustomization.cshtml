@@ -1,9 +1,10 @@
 ﻿@using DevExtreme.MVC.Demos.Models
 
 @section ExternalDependencies {
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.10.1/polyfill.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/3.8.0/exceljs.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script>
+        window.jsPDF = window.jspdf.jsPDF;
+    </script>
 }
 
 @(Html.DevExtreme().DataGrid<Company>()
@@ -14,8 +15,6 @@
         .GroupPanel(groupPanel => groupPanel.Visible(true))
         .Grouping(grouping => grouping.AutoExpandAll(true))
         .SortByGroupSummaryInfo(i => i.Add().SummaryItem("count"))
-        .Export(e => e.Enabled(true))
-        .OnExporting("exporting")
         .Columns(columns =>
         {
             columns.Add().DataField("Name").Width(190);
@@ -43,50 +42,62 @@
                     .DisplayFormat("Total count: {0} companies");
             })
         )
+        .Toolbar(toolbar =>
+            {
+                toolbar.Items(items =>
+                {
+                    items.Add().Name("groupPanel");
+                    items.Add()
+                        .Location(ToolbarItemLocation.After)
+                        .Widget(w =>
+                            w.Button()
+                                .Icon("exportpdf")
+                                .Text("Export to PDF")
+                                .OnClick("exportToPDF")
+                        );
+                    items.Add().Name("searchPanel");
+                });
+            })
 )
 <script src="~/Scripts/data/companies.js"></script>
 <script>
-    function exporting(e) {
-        var workbook = new ExcelJS.Workbook();
-        var worksheet = workbook.addWorksheet('Companies');
+    function exportToPDF() {
+        var doc = new jsPDF();
+        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+        DevExpress.pdfExporter.exportDataGrid({
+            jsPDFDocument: doc,
+            component: dataGrid,
+            columnWidths: [40, 40, 30, 30, 40],
+            customizeCell(options) {
+                const { gridCell } = options;
+                const { pdfCell } = options;
 
-        worksheet.columns = [
-            { width: 5 }, { width: 30 }, { width: 25 }, { width: 15 }, { width: 25 }, { width: 40 }
-        ];
+                if (gridCell.rowType === 'data' && gridCell.column.dataField === 'Phone') {
+                    pdfCell.text = pdfCell.text.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+                } else if (gridCell.rowType === 'group') {
+                    pdfCell.backgroundColor = '#BEDFE6';
+                } else if (gridCell.rowType === 'totalFooter') {
+                    pdfCell.font.style = 'italic';
+                }
+            },
+            customDrawCell(options) {
+                const { gridCell } = options;
+                const { pdfCell } = options;
 
-        DevExpress.excelExporter.exportDataGrid({
-            component: e.component,
-            worksheet: worksheet,
-            keepColumnWidths: false,
-            topLeftCell: { row: 2, column: 2 },
-            customizeCell: function (options) {
-                var gridCell = options.gridCell;
-                var excelCell = options.excelCell;
+                if (gridCell.rowType === 'data' && gridCell.column.dataField === 'Website') {
+                    options.cancel = true;
+                    doc.setFontSize(11);
+                    doc.setTextColor('#0000FF');
 
-                if (gridCell.rowType === "data") {
-                    if (gridCell.column.dataField === 'Phone') {
-                        excelCell.value = parseInt(gridCell.value);
-                        excelCell.numFmt = '[<=9999999]###-####;(###) ###-####';
-                    }
-                    if (gridCell.column.dataField === 'Website') {
-                        excelCell.value = { text: gridCell.value, hyperlink: gridCell.value };
-                        excelCell.font = { color: { argb: 'FF0000FF' }, underline: true }
-                        excelCell.alignment = { horizontal: 'left' };
-                    }
+                    const textHeight = doc.getTextDimensions(pdfCell.text).h;
+                    doc.textWithLink('website',
+                        options.rect.x + pdfCell.padding.left,
+                        options.rect.y + options.rect.h / 2 + textHeight / 2, { url: pdfCell.text });
                 }
-                if (gridCell.rowType === "group") {
-                    excelCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: "BEDFE6" } };
-                }
-                if (gridCell.rowType === "totalFooter" && excelCell.value) {
-                    excelCell.font.italic = true;
-                }
-            }
-        }).then(function () {
-            workbook.xlsx.writeBuffer().then(function (buffer) {
-                saveAs(new Blob([buffer], { type: "application/octet-stream" }), "Companies.xlsx");
-            });
+            },
+        }).then(() => {
+            doc.save('Companies.pdf');
         });
-        e.cancel = true;
     }
 
     function phoneNumberFormat(value) {

@@ -217,8 +217,8 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View(SampleData.CountriesPopulationAndGDP);
         }
 
-        public ActionResult PDFSOverview() {
-            return View(SampleData.DataGridEmployees.Take(10));
+        public ActionResult PDFOverview() {
+            return View();
         }
 
         public ActionResult PDFCellCustomization() {

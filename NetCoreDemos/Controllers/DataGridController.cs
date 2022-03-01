@@ -223,7 +223,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         }
 
         public ActionResult PDFOverview() {
-            return View(SampleData.DataGridEmployees.Take(10));
+            return View();
         }
 
         public ActionResult PDFCellCustomization() {
