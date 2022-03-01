@@ -38,11 +38,6 @@ export class AppComponent {
           arg.rowHeight = 40;
         }
       },
-      customizeCell: (arg) => {
-        if (arg.gridCell.rowType === 'data' && arg.gridCell.column.dataField === 'Picture') {
-          arg.pdfCell.text = '';
-        }
-      },
       customDrawCell: (arg) => {
         if (arg.gridCell.rowType === 'data' && arg.gridCell.column.dataField === 'Picture') {
           doc.addImage(arg.gridCell.value, 'PNG', arg.rect.x, arg.rect.y, arg.rect.w, arg.rect.h);
