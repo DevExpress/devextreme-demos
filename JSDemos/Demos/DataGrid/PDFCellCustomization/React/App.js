@@ -20,10 +20,7 @@ export default function App() {
       jsPDFDocument: doc,
       component: dataGrid,
       columnWidths: [40, 40, 30, 30, 40],
-      customizeCell(options) {
-        const { gridCell } = options;
-        const { pdfCell } = options;
-
+      customizeCell({ gridCell, pdfCell }) {
         if (gridCell.rowType === 'data' && gridCell.column.dataField === 'Phone') {
           pdfCell.text = pdfCell.text.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
         } else if (gridCell.rowType === 'group') {
@@ -33,8 +30,7 @@ export default function App() {
         }
       },
       customDrawCell(options) {
-        const { gridCell } = options;
-        const { pdfCell } = options;
+        const { gridCell, pdfCell } = options;
 
         if (gridCell.rowType === 'data' && gridCell.column.dataField === 'Website') {
           options.cancel = true;
