@@ -829,7 +829,7 @@
             "Title": "Cell Customization",
             "Name": "PDFCellCustomization",
             "Widget": "DataGrid",
-			"Badge": "New",
+            "Badge": "New",
             "Modules": "jspdf&file-saver",
             "MvcAdditionalFiles": [
               "/Scripts/data/companies.js",
@@ -841,7 +841,7 @@
             "Title": "Header and Footer",
             "Name": "PDFHeaderAndFooter",
             "Widget": "DataGrid",
-			"Badge": "New",
+            "Badge": "New",
             "Modules": "jspdf&file-saver",
             "Credits": "www.wikipedia.org",
             "MvcAdditionalFiles": [
