@@ -45,6 +45,7 @@
   </div>
 </template>
 <script>
+import DxButton from 'devextreme-vue/button';
 import {
   DxDataGrid, DxColumn, DxExport, DxToolbar, DxItem,
 } from 'devextreme-vue/data-grid';
@@ -56,7 +57,7 @@ const dataGridRef = 'dataGrid';
 
 export default {
   components: {
-    DxDataGrid, DxColumn, DxExport, DxToolbar, DxItem,
+    DxButton, DxDataGrid, DxColumn, DxExport, DxToolbar, DxItem,
   },
   data() {
     return {

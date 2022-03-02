@@ -11,7 +11,6 @@ class App extends React.Component {
 
     this.dataGridRef = React.createRef();
     this.employees = service.getEmployees();
-    this.onExporting = this.onExporting.bind(this);
   }
 
   render() {
