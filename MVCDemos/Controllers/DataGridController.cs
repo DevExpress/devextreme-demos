@@ -217,7 +217,11 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View(SampleData.CountriesPopulationAndGDP);
         }
 
-        public ActionResult ExportToPDF() {
+        public ActionResult PDFExportMultipleGrids() {
+            return View();
+        }
+        
+        public ActionResult PDFExportImages() {
             return View();
         }
 
