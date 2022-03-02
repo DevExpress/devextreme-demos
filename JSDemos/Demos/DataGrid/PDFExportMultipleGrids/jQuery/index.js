@@ -89,7 +89,7 @@ $(() => {
         customizeCell: ({ gridCell, pdfCell }) => {
           setAlternatingRowsBackground(gridCell, pdfCell);
         },
-        onRowExporting: (e) => { rowIndex += 1; },
+        onRowExporting: () => { rowIndex += 1; },
       }).then(() => {
         doc.addPage();
         rowIndex = -1;
@@ -101,7 +101,7 @@ $(() => {
           customizeCell: ({ gridCell, pdfCell }) => {
             setAlternatingRowsBackground(gridCell, pdfCell);
           },
-          onRowExporting: (e) => { rowIndex += 1; },
+          onRowExporting: () => { rowIndex += 1; },
         }).then(() => {
           doc.save('MultipleGrids.pdf');
         });

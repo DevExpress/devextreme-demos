@@ -45,7 +45,9 @@
   </div>
 </template>
 <script>
-import { DxDataGrid, DxColumn, DxExport, DxToolbar, DxItem } from 'devextreme-vue/data-grid';
+import {
+  DxDataGrid, DxColumn, DxExport, DxToolbar, DxItem,
+} from 'devextreme-vue/data-grid';
 import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
 import service from './data.js';

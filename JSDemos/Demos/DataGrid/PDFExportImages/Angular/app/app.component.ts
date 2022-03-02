@@ -1,9 +1,12 @@
-import { NgModule, Component, enableProdMode, ViewChild } from '@angular/core';
+import {
+  NgModule, Component, enableProdMode, ViewChild,
+} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxDataGridModule, DxDataGridComponent } from 'devextreme-angular';
 import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
-import { jsPDF } from 'jspdf';import { Service, Employees } from './app.service';
+import { jsPDF } from 'jspdf';
+import { Service, Employees } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
