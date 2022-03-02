@@ -1,16 +1,16 @@
 ## Populate Menu with Data and Configure the Access to It
 
-You can display Menu items from the [items](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/items/) array or a [dataSource](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/#dataSource). Look for the example of the data structure in this demo. If you use a **dataSource**, specify the [displayExpr](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/#displayExpr) property.
+You can display Menu items from the [items](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/items/) array or a [dataSource](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/#dataSource). This demo contains an example of a data structure. If you use a **dataSource**, specify the [displayExpr](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/#displayExpr) property.
 
 To access the clicked item, use the [onItemClick](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/#onItemClick) event handler function.
 
 ## Configure the Menu
 
-Use the [orientation](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/#orientation) property to specify whether the Menu has horizontal or vertical orientation. Specify the [animation](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/animation/) property to control type, delay, duration and other options of [show](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/animation/#show) and [hide](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/animation/#hide) menu actions.
+Use the [orientation](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/#orientation) property to specify whether the Menu has horizontal or vertical orientation. Use the [animation](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/animation/) property to specify the type, delay, duration, and other options of [show](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/animation/#show) and [hide](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/animation/#hide) menu actions.
 
 ## Configure the Submenus
 
-A click or a hover on a Menu item opens a drop-down menu, which can contain several submenus. To specify the drop-down menu mode (*"onClick"* or *"onHover"*) use the [showSubmenuMode](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/showSubmenuMode/) property. If you need only to control the first level of drop-down menus, use the [showFirstSubmenuMode](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/showFirstSubmenuMode/) property.
+Clicking or a hovering a Menu item opens a drop-down menu that can contain several submenus. To specify the drop-down menu mode (*"onClick"* or *"onHover"*), use the [showSubmenuMode](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/showSubmenuMode/) property. If you need only to specify the first level of drop-down menus, use the [showFirstSubmenuMode](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/showFirstSubmenuMode/) property.
 
 If you want to hide the submenu when the mouse pointer leaves it, set the [hideSubmenuOnMouseLeave](/Documentation/ApiReference/UI_Components/dxMenu/Configuration/#hideSubmenuOnMouseLeave) property to **true**.
 
