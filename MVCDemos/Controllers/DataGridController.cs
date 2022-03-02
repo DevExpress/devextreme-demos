@@ -228,6 +228,14 @@ namespace DevExtreme.MVC.Demos.Controllers {
         public ActionResult PDFHeaderAndFooter() {
             return View(SampleData.CountriesPopulationAndGDP);
         }
+      
+        public ActionResult PDFExportMultipleGrids() {
+            return View();
+        }
+  
+        public ActionResult PDFExportImages() {
+            return View();
+        }
 
         public ActionResult GridAdaptabilityOverview() {
             return View(SampleData.Orders);

@@ -2175,9 +2175,11 @@
     <Content Include="Views\Gantt\HeaderFilter.cshtml" />
     <Content Include="Views\DataGrid\CustomNewRecordPosition.cshtml" />
     <Content Include="Views\Common\EditorAppearanceVariants.cshtml" />
+    <Content Include="Views\DataGrid\PDFOverview.cshtml" />    
     <Content Include="Views\DataGrid\PDFCellCustomization.cshtml" />
     <Content Include="Views\DataGrid\PDFHeaderAndFooter.cshtml" />
-    <Content Include="Views\DataGrid\PDFOverview.cshtml" />
+    <Content Include="Views\DataGrid\PDFExportImages.cshtml" />
+    <Content Include="Views\DataGrid\PDFExportMultipleGrids.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

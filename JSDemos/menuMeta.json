@@ -846,6 +846,23 @@
             "Credits": "www.wikipedia.org",
             "MvcAdditionalFiles": [
               "/Models/SampleData/CountriesPopulationAndGDP.cs"
+          },
+          {
+            "Title": "Export Multiple Grids",
+            "Name": "PDFExportMultipleGrids",
+            "Widget": "DataGrid",
+            "Badge": "New",
+            "Modules": "jspdf",
+            "DemoType": "Web"
+          },
+          {
+            "Title": "Export Images",
+            "Name": "PDFExportImages",
+            "Widget": "DataGrid",
+            "Badge": "New",
+            "Modules": "jspdf",
+            "MvcAdditionalFiles": [
+              "/Scripts/data/employeesEI.js"
             ],
             "DemoType": "Web"
           }
