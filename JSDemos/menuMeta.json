@@ -846,6 +846,8 @@
             "Credits": "www.wikipedia.org",
             "MvcAdditionalFiles": [
               "/Models/SampleData/CountriesPopulationAndGDP.cs"
+            ],
+            "DemoType": "Web"
           },
           {
             "Title": "Export Multiple Grids",
