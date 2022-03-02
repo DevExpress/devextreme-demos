@@ -810,13 +810,14 @@
         ]
       },
       {
-        "Name": "Export to PDF (CTP)",
+        "Name": "Export to PDF",
         "Equivalents": "",
         "Demos": [
           {
             "Title": "Export Multiple Grids",
             "Name": "PDFExportMultipleGrids",
             "Widget": "DataGrid",
+            "Badge": "New",
             "Modules": "jspdf",
             "DemoType": "Web"
           },
@@ -824,6 +825,7 @@
             "Title": "Export Images",
             "Name": "PDFExportImages",
             "Widget": "DataGrid",
+            "Badge": "New",
             "Modules": "jspdf",
             "MvcAdditionalFiles": [
               "/Scripts/data/employeesEI.js"
