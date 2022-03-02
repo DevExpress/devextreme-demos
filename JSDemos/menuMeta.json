@@ -848,25 +848,6 @@
               "/Models/SampleData/CountriesPopulationAndGDP.cs"
             ],
             "DemoType": "Web"
-          },
-          {
-            "Title": "Export Multiple Grids",
-            "Name": "PDFExportMultipleGrids",
-            "Widget": "DataGrid",
-			"Badge": "Updated",
-            "Modules": "jspdf&file-saver",
-            "DemoType": "Web"
-          },
-          {
-            "Title": "Export Images",
-            "Name": "PDFExportImages",
-            "Widget": "DataGrid",
-			"Badge": "Updated",
-            "Modules": "jspdf&file-saver",
-            "MvcAdditionalFiles": [
-              "/Scripts/data/employeesEI.js"
-            ],
-            "DemoType": "Web"
           }
         ]
       },
