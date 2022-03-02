@@ -817,7 +817,7 @@
             "Title": "Overview",
             "Name": "PDFOverview",
             "Widget": "DataGrid",
-            "Badge": "Updated",
+            "Badge": "New",
             "Modules": "jspdf&file-saver",
             "MvcAdditionalFiles": [
               "/Models/DataGrid/Employee.cs",
@@ -829,7 +829,7 @@
             "Title": "Cell Customization",
             "Name": "PDFCellCustomization",
             "Widget": "DataGrid",
-			"Badge": "Updated",
+			"Badge": "New",
             "Modules": "jspdf&file-saver",
             "MvcAdditionalFiles": [
               "/Scripts/data/companies.js",
@@ -841,7 +841,7 @@
             "Title": "Header and Footer",
             "Name": "PDFHeaderAndFooter",
             "Widget": "DataGrid",
-			"Badge": "Updated",
+			"Badge": "New",
             "Modules": "jspdf&file-saver",
             "Credits": "www.wikipedia.org",
             "MvcAdditionalFiles": [
@@ -871,7 +871,6 @@
             "Title": "Overview",
             "Name": "ExcelJSOverview",
             "Widget": "DataGrid",
-            "Badge": "Updated",
             "Modules": "exceljs&file-saver",
             "MvcAdditionalFiles": [
               "/Models/DataGrid/Employee.cs",
