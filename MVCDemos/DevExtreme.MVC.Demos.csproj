@@ -2160,7 +2160,6 @@
     <Content Include="Views\VectorMap\CustomAnnotations.cshtml" />
     <Content Include="Views\Diagram\ItemSelection.cshtml" />
     <Content Include="Views\Diagram\OperationRestrictions.cshtml" />
-    <Content Include="Views\DataGrid\ExportToPDF.cshtml" />
     <Content Include="Views\Gantt\ContextMenu.cshtml" />
     <Content Include="Views\Charts\AxisLabelsTemplates.cshtml" />
     <Content Include="Views\DataGrid\BatchUpdateRequest.cshtml" />
@@ -2174,6 +2173,8 @@
     <Content Include="Views\Gantt\HeaderFilter.cshtml" />
     <Content Include="Views\DataGrid\CustomNewRecordPosition.cshtml" />
     <Content Include="Views\Common\EditorAppearanceVariants.cshtml" />
+    <Content Include="Views\DataGrid\PDFExportImages.cshtml" />
+    <Content Include="Views\DataGrid\PDFExportMultipleGrids.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
