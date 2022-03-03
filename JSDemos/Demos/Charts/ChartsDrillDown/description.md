@@ -7,7 +7,7 @@ The drill-down chart is bound to an array of plain objects. To visualize hierarc
 
 ## Implement View Navigation
 
-To navigate from the main view to the detailed view, filter the data source by a different **parentID** in the [onPointClick](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#onPointClick) event handler. To navigate back, click the **Back** button. This action resets the data source filter. The **isFirstLevel** flag is used to distinguish between views. 
+To navigate from the main view to a detailed view, filter the data source by a different **parentID** in the [onPointClick](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#onPointClick) event handler. To navigate back, click the **Back** button. This action resets the data source filter. The **isFirstLevel** flag is used to distinguish between views. 
 
 
 ## Customize the Appearance
