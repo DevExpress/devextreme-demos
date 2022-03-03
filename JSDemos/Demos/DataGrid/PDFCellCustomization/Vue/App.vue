@@ -48,7 +48,7 @@
         <DxTotalItem
           column="Name"
           summary-type="count"
-          display-format="Total count: {0} companies"
+          display-format="Total count: {0}"
         />
       </DxSummary>
 
@@ -75,9 +75,12 @@ import {
   DxPaging,
   DxToolbar,
   DxItem,
+  DxSummary,
+  DxSortByGroupSummaryInfo,
+  DxTotalItem,
 } from 'devextreme-vue/data-grid';
 
-import { jsPDF } from 'jspdf';
+// import { jsPDF } from 'jspdf';
 import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
 
 import service from './data.js';
@@ -94,6 +97,9 @@ export default {
     DxDataGrid,
     DxToolbar,
     DxItem,
+    DxSummary,
+    DxSortByGroupSummaryInfo,
+    DxTotalItem,
   },
   data() {
     return {
@@ -141,11 +147,20 @@ export default {
         doc.save('Companies.pdf');
       });
     },
+    phoneNumberFormat(value) {
+      const USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);
+
+      return `(${USNumber[1]}) ${USNumber[2]}-${USNumber[3]}`;
+    },
   },
 };
 </script>
 
 <style scoped>
+#gridContainer {
+  height: 436px;
+}
+
 #exportButton {
   margin-bottom: 10px;
 }

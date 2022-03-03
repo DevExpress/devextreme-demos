@@ -232,8 +232,8 @@ namespace DevExtreme.NETCore.Demos.Controllers {
 
         public ActionResult PDFExportImages() {
             return View();
-        }     
-      
+        }
+
         public ActionResult PDFExportMultipleGrids() {
             return View();
         }
