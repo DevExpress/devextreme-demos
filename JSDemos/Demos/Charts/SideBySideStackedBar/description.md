@@ -1,4 +1,4 @@
-This demo shows the _side-by-side stacked bar_ series that allows you to visualize data as bars stacked in different groups. This series type is useful when you compare an individual series' values with groups' total values.
+This demo shows the _side-by-side stacked bar_ series that allows you to visualize data as bars stacked in different groups. This series type is useful when you compare an individual series' values with the total values of groups.
 
 ## Bind to Data
 
