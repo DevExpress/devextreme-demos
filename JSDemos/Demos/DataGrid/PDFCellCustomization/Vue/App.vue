@@ -80,7 +80,7 @@ import {
   DxTotalItem,
 } from 'devextreme-vue/data-grid';
 
-// import { jsPDF } from 'jspdf';
+import { jsPDF } from 'jspdf';
 import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
 
 import service from './data.js';
