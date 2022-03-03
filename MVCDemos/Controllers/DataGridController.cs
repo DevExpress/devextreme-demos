@@ -217,10 +217,22 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View(SampleData.CountriesPopulationAndGDP);
         }
 
+        public ActionResult PDFOverview() {
+            return View();
+        }
+
+        public ActionResult PDFCellCustomization() {
+            return View();
+        }
+
+        public ActionResult PDFHeaderAndFooter() {
+            return View(SampleData.CountriesPopulationAndGDP);
+        }
+      
         public ActionResult PDFExportMultipleGrids() {
             return View();
         }
-        
+  
         public ActionResult PDFExportImages() {
             return View();
         }
