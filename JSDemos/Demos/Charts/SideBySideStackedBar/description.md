@@ -20,4 +20,4 @@ To configure tooltips in the chart, use the [tooltip](/Documentation/ApiReferenc
 
 ### Export Chart
 
-To allow a user to export your side-by-side stacked bar chart into the PNG, JPEG, PDF, and SVG file or print the chart, set the [export.enabled](/Documentation/ApiReference/UI_Components/dxChart/Configuration/export/#enabled) property to **true**. In this demo, the exporting is enabled and you can click the "Exporting/Printing" button in the chart. This button invokes a drop-down menu with export and print commands.
+To allow a user to export your side-by-side stacked bar chart into the PNG, JPEG, PDF, and SVG file or print the chart, set the [export.enabled](/Documentation/ApiReference/UI_Components/dxChart/Configuration/export/#enabled) property to **true**. In this demo, exporting is enabled and you can click the "Exporting/Printing" button in the chart. This button invokes a drop-down menu with export and print commands.
