@@ -12,7 +12,7 @@ Use the [verticalAlignment](/Documentation/ApiReference/UI_Components/dxChart/Co
 
 The [customizeLegend](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/#customizeItems) function allows you to change the order, text, and visibility of legend items. In this demo, the **array.splice** method is used in the **customizeItems** function to sort the legend items. If you want to customize the legend's border, use properties collected in the [border](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/border) object. 
 
-To distribute all legend items between several columns (in a vertically-oriented legend) or rows (in a horizontally-oriented legend), set the [columnCount](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/#columnCount) or [rowCount](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/#rowCount) property respectively.
+To distribute all legend items between several columns (in a vertically-oriented legend) or rows (in a horizontally-oriented legend), specify the [columnCount](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/#columnCount) or [rowCount](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/#rowCount) property respectively.
 
 ### Configure Tooltips
 
