@@ -218,11 +218,23 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View(SampleData.CountriesPopulationAndGDP);
         }
 
-        public ActionResult PDFExportMultipleGrids() {
+        public ActionResult PDFOverview() {
             return View();
         }
 
+        public ActionResult PDFCellCustomization() {
+            return View();
+        }
+
+        public ActionResult PDFHeaderAndFooter() {
+            return View(SampleData.CountriesPopulationAndGDP);
+        }
+
         public ActionResult PDFExportImages() {
+            return View();
+        }
+
+        public ActionResult PDFExportMultipleGrids() {
             return View();
         }
 
