@@ -6,7 +6,7 @@ In this demo, series is bound to data directly. See the [Bind Series to Data](/D
 
 ## Specify Common Series Settings
 
-To configure settings for all series in the chart, use the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/) object. Specify the [barPadding](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#barPadding) property to control the padding and consequently the width of all bars in a series. In this demo, the **barPadding** is set to 0.5. This property value means that 50% of the available space is left empty giving the rest to the bar.
+To configure settings for all series in the chart, use the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/) object. Specify the [barPadding](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#barPadding) property to control the padding and the width of all bars in a series. In this demo, the **barPadding** is set to 0.5. This property value means that 50% of the available space is left empty giving the rest to the bar.
 
 ## Customize Chart Legend 
 
