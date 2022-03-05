@@ -80,9 +80,9 @@
         }
     }
 
-    var rowIndex = -1;
-    function setAlternatingRowsBackground(gridCell, pdfCell) {
-        if (gridCell.rowType === 'header' || gridCell.rowType === 'data') {
+    function setAlternatingRowsBackground(dataGrid, gridCell, pdfCell) {
+        if (gridCell.rowType === 'data') {
+            const rowIndex = dataGrid.getRowIndexByKey(gridCell.data.Product_ID);
             if (rowIndex % 2 === 0) {
                 pdfCell.backgroundColor = '#D3D3D3';
             }
@@ -99,20 +99,17 @@
             component: dataGrid1,
             topLeft: { x: 10, y: 15 },
             customizeCell: ({ gridCell, pdfCell }) => {
-                setAlternatingRowsBackground(gridCell, pdfCell);
+                setAlternatingRowsBackground(dataGrid1, gridCell, pdfCell);
             },
-            onRowExporting: () => { rowIndex += 1; }
         }).then(() => {
             doc.addPage();
-            rowIndex = -1;
             DevExpress.pdfExporter.exportDataGrid({
                 jsPDFDocument: doc,
                 component: dataGrid2,
                 topLeft: { x: 10, y: 15 },
                 customizeCell: ({ gridCell, pdfCell }) => {
-                    setAlternatingRowsBackground(gridCell, pdfCell);
+                    setAlternatingRowsBackground(dataGrid2, gridCell, pdfCell);
                 },
-                onRowExporting: () => { rowIndex += 1; },
             }).then(() => {
                 doc.save('MultipleGrids.pdf');
             });
