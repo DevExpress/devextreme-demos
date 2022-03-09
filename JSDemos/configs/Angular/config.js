@@ -103,6 +103,8 @@ window.config = {
     'devexpress-gantt': 'npm:devexpress-gantt',
     'devextreme-angular': 'npm:devextreme-angular',
     '@devextreme/runtime': 'npm:@devextreme/runtime',
+    '@devextreme/runtime/angular': 'npm:@devextreme/runtime/angular',
+    '@devextreme/angular': 'npm:@devextreme/angular',
     'inferno': 'npm:inferno/dist/inferno.min.js',
     'inferno-compat': 'npm:inferno-compat/dist/inferno-compat.min.js',
     'inferno-create-element': 'npm:inferno-create-element/dist/inferno-create-element.min.js',
@@ -151,6 +153,8 @@ window.config = {
     'npm:devextreme-angular/package.json',
     'npm:devexpress-diagram/package.json',
     'npm:devexpress-gantt/package.json',
+    'npm:@devextreme/runtime/angular/package.json',
+    'npm:@devextreme/angular/package.json',
 
     /** signalr */
     'npm:@aspnet/*/package.json',

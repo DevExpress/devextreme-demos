@@ -939,6 +939,28 @@
     ]
   },
   {
+    "Name": "Data Grid Next",
+    "Equivalents": "dxDataGridNext, dx-data-grid-next",
+    "Groups": [
+      {
+        "Name": "Paging and Scrolling",
+        "Equivalents": "",
+        "Demos": [
+          {
+            "Title": "Record Paging",
+            "Name": "RecordPaging",
+            "Widget": "DataGridNext",
+            "MvcAdditionalFiles": [
+              "/Controllers/ApiControllers/DataGridScrollingController.cs",
+              "/Models/User.cs"
+            ],
+            "DemoType": "Web"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "Name": "Pivot Grid",
     "Equivalents": "dxPivotGrid, dx-pivot-grid",
     "Groups": [

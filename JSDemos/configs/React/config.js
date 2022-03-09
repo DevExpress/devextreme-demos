@@ -92,13 +92,15 @@ window.config = {
     'luxon': 'npm:luxon/build/global/luxon.min.js',
     'es6-object-assign': 'npm:es6-object-assign',
 
-    'devextreme': 'npm:devextreme/cjs',
+    'devextreme': 'npm:devextreme',
     'devextreme-react': 'npm:devextreme-react',
     'jszip': 'npm:jszip/dist/jszip.min.js',
     'devextreme-quill': 'npm:devextreme-quill/dist/dx-quill.min.js',
     'devexpress-diagram': 'npm:devexpress-diagram/dist/dx-diagram.js',
     'devexpress-gantt': 'npm:devexpress-gantt/dist/dx-gantt.js',
+    '@babel/runtime': 'npm:@babel/runtime',
     '@devextreme/runtime': 'npm:@devextreme/runtime',
+    '@devextreme/react': 'npm:@devextreme/react',
     'inferno': 'npm:inferno/dist/inferno.min.js',
     'inferno-compat': 'npm:inferno-compat/dist/inferno-compat.min.js',
     'inferno-create-element': 'npm:inferno-create-element/dist/inferno-create-element.min.js',
@@ -153,6 +155,8 @@ window.config = {
   packageConfigPaths: [
     'npm:@devextreme/*/package.json',
     'npm:@devextreme/runtime/inferno/package.json',
+    'npm:@devextreme/runtime/react/package.json',
+    'npm:@babel/runtime/package.json',
   ],
   babelOptions: {
     sourceMaps: false,
