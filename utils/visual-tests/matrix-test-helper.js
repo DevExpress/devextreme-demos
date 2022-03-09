@@ -154,17 +154,18 @@ export function runManualTestCore(testObject, product, demo, framework, callback
   const test = testObject.page(`http://localhost:8080/JSDemos/Demos/${product}/${demo}/${framework}/`);
   const index = settings.manualTestIndex;
   settings.manualTestIndex += 1;
-  if (settings.explicitTests) {
-    if (shouldRunTestExplicitlyInternal(framework, product, demo)) {
-      callback(test.only);
-    }
-
-    return;
-  }
 
   if (!shouldRunTest(framework, index)) {
     return;
   }
+
+  if (settings.explicitTests) {
+    if (shouldRunTestExplicitlyInternal(framework, product, demo)) {
+      callback(test.only);
+    }
+    return;
+  }
+
   callback(test);
 }
 

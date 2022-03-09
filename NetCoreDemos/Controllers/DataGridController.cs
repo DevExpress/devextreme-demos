@@ -7,7 +7,7 @@ using System.Linq;
 namespace DevExtreme.NETCore.Demos.Controllers {
     public class DataGridController : Controller {
         public ActionResult SimpleArray() {
-            return View();
+            return View(SampleData.SimpleArrayCustomers);
         }
 
         public ActionResult AjaxRequest() {
@@ -218,7 +218,23 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View(SampleData.CountriesPopulationAndGDP);
         }
 
-        public ActionResult ExportToPDF() {
+        public ActionResult PDFOverview() {
+            return View();
+        }
+
+        public ActionResult PDFCellCustomization() {
+            return View();
+        }
+
+        public ActionResult PDFHeaderAndFooter() {
+            return View(SampleData.CountriesPopulationAndGDP);
+        }
+
+        public ActionResult PDFExportImages() {
+            return View();
+        }
+
+        public ActionResult PDFExportMultipleGrids() {
             return View();
         }
 

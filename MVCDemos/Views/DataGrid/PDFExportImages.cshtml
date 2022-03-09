@@ -1,0 +1,70 @@
+﻿@section ExternalDependencies {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script>
+        window.jsPDF = window.jspdf.jsPDF;
+    </script>
+}
+
+@(Html.DevExtreme().DataGrid()
+    .ID("gridContainer")
+    .DataSource(new JS("employees"))
+    .KeyExpr("ID")
+    .Export(e => e.Enabled(true))
+    .ShowBorders(true)
+    .ShowRowLines(true)
+    .ShowColumnLines(false)
+    .Columns(columns =>
+    {
+        columns.Add().DataField("Picture")
+            .Width(90)
+            .CellTemplate(@<text>
+                <div>
+                    <img src="<%- value %>" alt="" />
+                </div>
+            </text>);
+
+        columns.Add().DataField("FirstName");
+        columns.Add().DataField("LastName");
+        columns.Add().DataField("Position");
+        columns.Add().DataField("BirthDate").DataType(GridColumnDataType.Date);
+        columns.Add().DataField("HireDate").DataType(GridColumnDataType.Date);
+    })
+    .Toolbar(toolbar => {
+        toolbar.Items(items => {
+            items.Add().Name("groupPanel");
+            items.Add()
+                .Location(ToolbarItemLocation.After)
+                .Widget(w =>
+                    w.Button()
+                        .Icon("exportpdf")
+                        .Text("Export to PDF")
+                        .OnClick("exportGrid")
+                );
+            items.Add().Name("searchPanel");
+        });
+    })
+)
+<script src="~/Scripts/data/employeesEI.js"></script>
+<script>
+    function exportGrid() {
+        const dataGrid = $('#gridContainer').dxDataGrid('instance');
+        const doc = new jsPDF();
+
+        DevExpress.pdfExporter.exportDataGrid({
+            jsPDFDocument: doc,
+            component: dataGrid,
+            topLeft: { x: 10, y: 15 },
+            onRowExporting: (arg) => { arg.rowHeight = 100; },
+            customDrawCell: (arg) => {
+                if (arg.gridCell.rowType === 'data') {
+                    if (arg.gridCell.column.dataField === 'Picture') {
+                        doc.addImage(gridCell.value, 'PNG', rect.x, rect.y, rect.w, rect.h);
+                        arg.cancel = true;
+                    }
+                }
+            }
+        }).then(() => {
+            doc.save('DataGrid.pdf');
+        });
+    }
+</script>

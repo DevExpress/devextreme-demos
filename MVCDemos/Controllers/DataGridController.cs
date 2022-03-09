@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace DevExtreme.MVC.Demos.Controllers {
     public class DataGridController : Controller {
         public ActionResult SimpleArray() {
-            return View();
+            return View(SampleData.SimpleArrayCustomers);
         }
 
         public ActionResult AjaxRequest() {
@@ -217,7 +217,23 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View(SampleData.CountriesPopulationAndGDP);
         }
 
-        public ActionResult ExportToPDF() {
+        public ActionResult PDFOverview() {
+            return View();
+        }
+
+        public ActionResult PDFCellCustomization() {
+            return View();
+        }
+
+        public ActionResult PDFHeaderAndFooter() {
+            return View(SampleData.CountriesPopulationAndGDP);
+        }
+      
+        public ActionResult PDFExportMultipleGrids() {
+            return View();
+        }
+  
+        public ActionResult PDFExportImages() {
             return View();
         }
 

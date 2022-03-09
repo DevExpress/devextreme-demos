@@ -416,6 +416,7 @@
     <Compile Include="Models\RoomResource.cs" />
     <Compile Include="Models\SampleData\DynamicAppointmentsResources.cs" />
     <Compile Include="Models\SampleData\SimpleArrayAppointments.cs" />
+    <Compile Include="Models\SampleData\SimpleArrayCustomers.cs" />
     <Compile Include="Models\SampleData\DynamicAppointments.cs" />
     <Compile Include="Models\SampleData\AppointmentsWithResources.cs" />
     <Compile Include="Models\SampleData\ContinentsInfo.cs" />
@@ -650,7 +651,9 @@
     <Content Include="Content\DemosStyles\DataGrid\DnDBetweenGrids.css" />
     <Content Include="Content\DemosStyles\DataGrid\EditStateManagement.css" />
     <Content Include="Content\DemosStyles\DataGrid\LocalReordering.css" />
-    <Content Include="Content\DemosStyles\DataGrid\ExportToPDF.css" />
+    <Content Include="Content\DemosStyles\DataGrid\PDFCellCustomization.css" />
+    <Content Include="Content\DemosStyles\DataGrid\PDFHeaderAndFooter.css" />
+    <Content Include="Content\DemosStyles\DataGrid\PDFOverview.css" />
     <Content Include="Content\DemosStyles\DataGrid\RecordPaging.css" />
     <Content Include="Content\DemosStyles\Diagram\AdvancedDataBinding.css" />
     <Content Include="Content\DemosStyles\Diagram\Containers.css" />
@@ -2159,7 +2162,6 @@
     <Content Include="Views\VectorMap\CustomAnnotations.cshtml" />
     <Content Include="Views\Diagram\ItemSelection.cshtml" />
     <Content Include="Views\Diagram\OperationRestrictions.cshtml" />
-    <Content Include="Views\DataGrid\ExportToPDF.cshtml" />
     <Content Include="Views\Gantt\ContextMenu.cshtml" />
     <Content Include="Views\Charts\AxisLabelsTemplates.cshtml" />
     <Content Include="Views\DataGrid\BatchUpdateRequest.cshtml" />
@@ -2173,6 +2175,11 @@
     <Content Include="Views\Gantt\HeaderFilter.cshtml" />
     <Content Include="Views\DataGrid\CustomNewRecordPosition.cshtml" />
     <Content Include="Views\Common\EditorAppearanceVariants.cshtml" />
+    <Content Include="Views\DataGrid\PDFOverview.cshtml" />    
+    <Content Include="Views\DataGrid\PDFCellCustomization.cshtml" />
+    <Content Include="Views\DataGrid\PDFHeaderAndFooter.cshtml" />
+    <Content Include="Views\DataGrid\PDFExportImages.cshtml" />
+    <Content Include="Views\DataGrid\PDFExportMultipleGrids.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

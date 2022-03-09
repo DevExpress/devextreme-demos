@@ -810,19 +810,61 @@
         ]
       },
       {
-        "Name": "Export to PDF (CTP)",
+        "Name": "Export to PDF",
         "Equivalents": "",
         "Demos": [
           {
             "Title": "Overview",
-            "Name": "ExportToPDF",
-            "Badge": "Updated",
+            "Name": "PDFOverview",
             "Widget": "DataGrid",
-            "Modules": "jspdf&jspdf-autotable",
+            "Badge": "New",
+            "Modules": "jspdf",
             "MvcAdditionalFiles": [
-              "/Controllers/ApiControllers/DataGridCustomersController.cs",
-              "/Models/Customer.cs",
-              "/Models/SampleData/Customers.cs"
+              "/Models/DataGrid/Employee.cs",
+              "/Models/SampleData/DataGridEmployees.cs"
+            ],
+            "DemoType": "Web"
+          },
+          {
+            "Title": "Cell Customization",
+            "Name": "PDFCellCustomization",
+            "Widget": "DataGrid",
+            "Badge": "New",
+            "Modules": "jspdf",
+            "MvcAdditionalFiles": [
+              "/Scripts/data/companies.js",
+              "/Models/Company.cs"
+            ],
+            "DemoType": "Web"
+          },
+          {
+            "Title": "Header and Footer",
+            "Name": "PDFHeaderAndFooter",
+            "Widget": "DataGrid",
+            "Badge": "New",
+            "Modules": "jspdf",
+            "Credits": "www.wikipedia.org",
+            "MvcAdditionalFiles": [
+              "/Models/SampleData/CountriesPopulationAndGDP.cs"
+            ],
+            "DemoType": "Web"
+          },
+          {
+            "Title": "Export Multiple Grids",
+            "Name": "PDFExportMultipleGrids",
+            "Widget": "DataGrid",
+            "Badge": "New",
+            "Modules": "jspdf",
+            "DemoType": "Web"
+          },
+          {
+            "Title": "Export Images",
+            "Name": "PDFExportImages",
+            "Widget": "DataGrid",
+            "Badge": "New",
+            "Modules": "jspdf",
+            "MvcAdditionalFiles": [
+              "/Scripts/data/employeesEI.js"
             ],
             "DemoType": "Web"
           }
@@ -848,7 +890,6 @@
             "Title": "Overview",
             "Name": "ExcelJSOverview",
             "Widget": "DataGrid",
-            "Badge": "Updated",
             "Modules": "exceljs&file-saver",
             "MvcAdditionalFiles": [
               "/Models/DataGrid/Employee.cs",
@@ -3816,7 +3857,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/Menu/Overview/",
             "Widget": "Menu",
             "MvcAdditionalFiles": [
               "/Models/MenuItem.cs",
@@ -3952,7 +3992,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/Toolbar/Overview/",
             "Widget": "Toolbar",
             "MvcAdditionalFiles": [
               "/Models/Product.cs",
@@ -4193,7 +4232,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/ColorBox/Overview/",
             "Widget": "ColorBox",
             "DemoType": "Web"
           }
@@ -4207,7 +4245,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/DateBox/Overview/",
             "Widget": "DateBox"
           },
           {
@@ -4261,14 +4298,12 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/NumberBox/Overview/",
             "Widget": "NumberBox"
           },
           {
             "Title": "Formatting",
             "Name": "Formatting",
             "Equivalents": "mask",
-            "DocUrl": "ApiReference/UI_Components/dxNumberBox/Configuration/#format",
             "Widget": "NumberBox"
           }
         ]
@@ -4380,7 +4415,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/TextArea/Overview/",
             "Widget": "TextArea"
           }
         ]

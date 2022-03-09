@@ -9,7 +9,7 @@ fixture('DataGrid.RowEditingAndEditingEvents')
       .resizeWindow(900, 600);
   });
 
-runManualTest('DataGrid', 'RowEditingAndEditingEvents', 'jQuery', (test) => {
+runManualTest('DataGrid', 'RowEditingAndEditingEvents', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
   test('RowEditingAndEditingEvents', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 

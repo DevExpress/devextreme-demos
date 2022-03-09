@@ -1,0 +1,108 @@
+﻿@using DevExtreme.MVC.Demos.Models
+
+@section ExternalDependencies {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script>
+        window.jsPDF = window.jspdf.jsPDF;
+    </script>
+}
+
+@(Html.DevExtreme().DataGrid<Company>()
+        .ID("gridContainer")
+        .DataSource(new JS("companies"))
+        .KeyExpr("ID")
+        .ShowBorders(true)
+        .GroupPanel(groupPanel => groupPanel.Visible(true))
+        .Grouping(grouping => grouping.AutoExpandAll(true))
+        .SortByGroupSummaryInfo(i => i.Add().SummaryItem("count"))
+        .Columns(columns =>
+        {
+            columns.Add().DataField("Name").Width(190);
+            columns.Add().DataField("Address").Width(200);
+            columns.Add().DataField("City");
+            columns.Add().DataField("State")
+                .GroupIndex(0);
+            columns.Add().DataField("Phone")
+                .Format(new JS("phoneNumberFormat"));
+            columns.Add().DataField("Website")
+                .Caption("")
+                .Alignment(HorizontalAlignment.Center)
+                .Width(100)
+                .CellTemplate(@<text>
+                    <a href="<%- value %>" target="_blank">
+                        Website
+                    </a>
+                </text>);
+        })
+        .Summary(s => s
+            .TotalItems(totalItems =>
+            {
+                totalItems.AddFor(m => m.Name)
+                    .SummaryType(SummaryType.Count)
+                    .DisplayFormat("Total count: {0} companies");
+            })
+        )
+        .Toolbar(toolbar =>
+            {
+                toolbar.Items(items =>
+                {
+                    items.Add().Name("groupPanel");
+                    items.Add()
+                        .Location(ToolbarItemLocation.After)
+                        .Widget(w =>
+                            w.Button()
+                                .Icon("exportpdf")
+                                .Text("Export to PDF")
+                                .OnClick("exportToPDF")
+                        );
+                    items.Add().Name("searchPanel");
+                });
+            })
+)
+<script src="~/Scripts/data/companies.js"></script>
+<script>
+    function exportToPDF() {
+        var doc = new jsPDF();
+        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+        DevExpress.pdfExporter.exportDataGrid({
+            jsPDFDocument: doc,
+            component: dataGrid,
+            columnWidths: [40, 40, 30, 30, 40],
+            customizeCell(options) {
+                const { gridCell } = options;
+                const { pdfCell } = options;
+
+                if (gridCell.rowType === 'data' && gridCell.column.dataField === 'Phone') {
+                    pdfCell.text = pdfCell.text.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+                } else if (gridCell.rowType === 'group') {
+                    pdfCell.backgroundColor = '#BEDFE6';
+                } else if (gridCell.rowType === 'totalFooter') {
+                    pdfCell.font.style = 'italic';
+                }
+            },
+            customDrawCell(options) {
+                const { gridCell } = options;
+                const { pdfCell } = options;
+
+                if (gridCell.rowType === 'data' && gridCell.column.dataField === 'Website') {
+                    options.cancel = true;
+                    doc.setFontSize(11);
+                    doc.setTextColor('#0000FF');
+
+                    const textHeight = doc.getTextDimensions(pdfCell.text).h;
+                    doc.textWithLink('website',
+                        options.rect.x + pdfCell.padding.left,
+                        options.rect.y + options.rect.h / 2 + textHeight / 2, { url: pdfCell.text });
+                }
+            },
+        }).then(() => {
+            doc.save('Companies.pdf');
+        });
+    }
+
+    function phoneNumberFormat(value) {
+        var USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);
+
+        return "(" + USNumber[1] + ") " + USNumber[2] + "-" + USNumber[3];
+    }
+</script>
