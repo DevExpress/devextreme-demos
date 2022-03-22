@@ -900,6 +900,7 @@
     <Content Include="Content\DemosStyles\RangeSelector\NumericScaleLightweight.css" />
     <Content Include="Content\DemosStyles\RangeSelector\UseRangeSelectionForFiltering.css" />
     <Content Include="Content\DemosStyles\RangeSlider\Overview.css" />
+    <Content Include="Content\DemosStyles\Resizable\Overview.css" />
     <Content Include="Content\DemosStyles\Scheduler\Adaptability.css" />
     <Content Include="Content\DemosStyles\Scheduler\ContextMenuIntegration.css" />
     <Content Include="Content\DemosStyles\Scheduler\CurrentTimeIndicator.css" />
@@ -2180,6 +2181,7 @@
     <Content Include="Views\DataGrid\PDFHeaderAndFooter.cshtml" />
     <Content Include="Views\DataGrid\PDFExportImages.cshtml" />
     <Content Include="Views\DataGrid\PDFExportMultipleGrids.cshtml" />
+    <Content Include="Views\Resizable\ResizableOverview.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

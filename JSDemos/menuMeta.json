@@ -5362,6 +5362,10 @@
             "Badge": "New",
             "DocUrl": "",
             "Widget": "Resizable",
+            "MvcAdditionalFiles": [
+              "/Models/Order.cs",
+              "/Models/SampleData/Orders.cs"
+            ],
             "DemoType": "Web"
           }
         ]
