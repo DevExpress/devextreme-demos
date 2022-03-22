@@ -4,7 +4,7 @@ import Resizable from 'devextreme-react/resizable';
 import CheckBox from 'devextreme-react/check-box';
 import TagBox from 'devextreme-react/tag-box';
 
-import { orders } from './data';
+import { orders } from './data.js';
 
 const handleValues = ['left', 'top', 'right', 'bottom'];
 
