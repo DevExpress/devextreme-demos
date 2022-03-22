@@ -37,15 +37,15 @@ function App() {
             <DataGrid
               id='grid'
               dataSource={orders}
-              keyExpr='ID'ß
+              keyExpr='ID'
               showBorders={true}
               height='100%'
             >
               <Paging pageSize={8} />
               <Scrolling mode='virtual' />
-              <Column allowGrouping={false} dataField='OrderNumber' width={130} caption='Invoice Number'ß />
+              <Column allowGrouping={false} dataField='OrderNumber' width={130} caption='Invoice Number' />
               <Column dataField='CustomerStoreCity' caption='City' />
-              <Column dataField='CustomerStoreState' caption='State'ß />
+              <Column dataField='CustomerStoreState' caption='State' />
               <Column dataField='Employee' />
               <Column dataField='OrderDate' dataType='date' />
               <Column dataField='SaleAmount' format='currency' />
