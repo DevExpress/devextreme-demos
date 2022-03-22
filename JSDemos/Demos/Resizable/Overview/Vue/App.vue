@@ -74,8 +74,6 @@ import DxResizable from 'devextreme-vue/resizable';
 import DxTagBox from 'devextreme-vue/tag-box';
 import DxCheckBox from 'devextreme-vue/check-box';
 
-import './styles.css';
-
 import service from './data.js';
 
 export default {
@@ -98,3 +96,4 @@ export default {
   },
 };
 </script>
+<style src="./styles.css"></style>
