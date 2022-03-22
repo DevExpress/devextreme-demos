@@ -5350,6 +5350,20 @@
             "Widget": "TileView"
           }
         ]
+      },
+      {
+        "Name": "Resizable",
+        "Breadcrumb": false,
+        "Equivalents": "dxResizable, dx-resizable",
+        "Demos": [
+          {
+            "Title": "Overview",
+            "Name": "Overview",
+            "DocUrl": "",
+            "Widget": "Resizable",
+            "DemoType": "Web"
+          }
+        ]
       }
     ]
   },
