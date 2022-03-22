@@ -13,24 +13,24 @@
       >
         <dx-data-grid
           id='grid'
-          [dataSource]="orders"
+          [dataSource]='orders'
           keyExpr='ID'
           [showBorders]='true'
           height='100%'
         >
-          <dxo-paging [pageSize]="8"></dxo-paging>
-          <dxo-scrolling mode="virtual"></dxo-scrolling>
+          <dxo-paging [pageSize]='8'></dxo-paging>
+          <dxo-scrolling mode='virtual'></dxo-scrolling>
           <dxi-column
-            [allowGrouping]="false"
-            dataField="OrderNumber"
-            [width]="130"
-            caption="Invoice Number"
+            [allowGrouping]='false'
+            dataField='OrderNumber'
+            [width]='130'
+            caption='Invoice Number'
           ></dxi-column>
-          <dxi-column dataField="CustomerStoreCity" caption="City"></dxi-column>
-          <dxi-column dataField="CustomerStoreState" caption="State"></dxi-column>
-          <dxi-column dataField="Employee"></dxi-column>
-          <dxi-column dataField="OrderDate" dataType="date"></dxi-column>
-          <dxi-column dataField="SaleAmount" format="currency"></dxi-column>
+          <dxi-column dataField='CustomerStoreCity' caption='City'></dxi-column>
+          <dxi-column dataField='CustomerStoreState' caption='State'></dxi-column>
+          <dxi-column dataField='Employee'></dxi-column>
+          <dxi-column dataField='OrderDate' dataType='date'></dxi-column>
+          <dxi-column dataField='SaleAmount' format='currency'></dxi-column>
         </dx-data-grid>
       </dx-resizable>
     </div>
@@ -48,7 +48,7 @@
   <div class='option'>
     <dx-check-box
       text='Keep aspect ratio'
-      [(value)]="keepAspectRatio"
+      [(value)]='keepAspectRatio'
     ></dx-check-box>
   </div>
 </div>
