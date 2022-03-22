@@ -5359,6 +5359,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
+            "Badge": "New",
             "DocUrl": "",
             "Widget": "Resizable",
             "DemoType": "Web"
