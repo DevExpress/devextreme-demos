@@ -6,7 +6,7 @@ You can display Accordion items from the [items](/Documentation/ApiReference/UI_
 
 ## Configure Item Selection and Collapsibility
 
-Enable the [multiple](/Documentation/ApiReference/UI_Components/dxAccordion/Configuration/#multiple) property if you want to allow users to select multiple panels. Use [selectedItems](/Documentation/ApiReference/UI_Components/dxAccordion/Configuration/#selectedItems) array to store selected items. Toggle the "Multiple enabled" checkbox in the Options demo section to see how it affects the selection.
+Enable the [multiple](/Documentation/ApiReference/UI_Components/dxAccordion/Configuration/#multiple) property to allow users to select multiple panels. Use the [selectedItems](/Documentation/ApiReference/UI_Components/dxAccordion/Configuration/#selectedItems) array to store selected items. Toggle the "Multiple enabled" checkbox in the Options demo section to see how it affects the selection.
 
 If you want to allow users to close panels on click, set the [collapsible](/Documentation/ApiReference/UI_Components/dxAccordion/Configuration/#collapsible) property to **true**. Check the "Collapsible enabled" checkbox in the Options demo section to enable this feature.
 
