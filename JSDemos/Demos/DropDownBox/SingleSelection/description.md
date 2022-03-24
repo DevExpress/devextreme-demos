@@ -1,4 +1,4 @@
-The DropDownBox component is an editor that consists of a text field and drop-down content. In this demo, the content is the TreeView and the DataGrid in the single selection mode. 
+The DropDownBox component consists of a text field and drop-down content. In this demo, the content is the TreeView and the DataGrid in the single selection mode. 
 
 The following instructions show how to synchronize the DropDownBox with any other embedded DevExtreme component:
 
@@ -10,6 +10,6 @@ Assign the field's name to the DropDownBox's [valueExpr](/Documentation/ApiRefer
 
 3. **Synchronize the DropDownBox's value and the embedded component's selection**
 
-    1.  Select data items according to the DropDownBox's initial value. To do this, assign the value to the embedded component's **selectedRowKeys**/**selectedItemKeys** property (see the example with the DataGrid below). If the embedded component does not have such properties, implement the **onContentReady** handler (the example with the TreeView).
+    1.  Assign DropDownBox's initial value to the embedded component's **selectedRowKeys**/**selectedItemKeys** property (see the example with the DataGrid below). If the embedded component does not have such properties, implement the **onContentReady** handler (the example with the TreeView).
     2.  Implement the DropDownBox's [onValueChanged](/Documentation/ApiReference/UI_Components/dxDropDownBox/Configuration/#onValueChanged) handler to update the selection when the value changes.
     3.  Implement the embedded component's **onSelectionChanged** handler to update the DropDownBox's value when the selection changes.
