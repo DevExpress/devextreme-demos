@@ -3,7 +3,7 @@ The DropDownBox component is an editor that consists of a text field and drop-do
 The following instructions show how to synchronize the DropDownBox with any other embedded DevExtreme component:
 
 1. **Specify data sources**    
-The DropDownBox's and embedded component's data sources can be the same or different. If they are different, the embedded component's key field should be present in the DropDownBox's data source.        
+The DropDownBox and its embedded component can use the same or different data sources. If the data sources are different, you need to specify the embedded component's key field in the DropDownBox's data source. If the DropDownBox contains a DataGrid, bind the DataGrid to a store instead of a simple array. For example, an [ArrayStore](/Documentation/ApiReference/Data_Layer/ArrayStore/).     
 
 2. **Specify which data field provides the DropDownBox's values and the embedded component's keys**       
 Assign the field's name to the DropDownBox's [valueExpr](/Documentation/ApiReference/UI_Components/dxDropDownBox/Configuration/#valueExpr) property and to the [key](/Documentation/ApiReference/Data_Layer/ArrayStore/Configuration/#key) property of the embedded component's store.
