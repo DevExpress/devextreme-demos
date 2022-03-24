@@ -12,31 +12,25 @@
             .MaxWidth(1050)
             .MinHeight(150)
             .MaxHeight(370)
-            .Content(
-                Html.DevExtreme().DataGrid<Order>()
-                    .ID("grid")
-                    .DataSource(Model, new[] { "ID" })
-                    .ShowBorders(true)
-                    .Height('100%')
-                    .Paging(p => p.PageSize(8))
-                    .Scrolling(s => s.Mode("virtual"))
-                    .Columns(columns => {
-                        columns.AddFor(m => m.OrderNumber)
-                            .AllowGrouping(false)
-                            .Width(130);
-
-                        columns.AddFor(m => m.CustomerStoreCity);
-
-                        columns.AddFor(m => m.CustomerStoreState);
-
-                        columns.AddFor(m => m.Employee);
-
-                        columns.AddFor(m => m.OrderDate);
-
-                        columns.AddFor(m => m.SaleAmount)
-                            .Format(Format.Currency);
-                    })
-                )
+            .Content(Html.DevExtreme().DataGrid<Order>()
+                .ID("grid")
+                .DataSource(Model, new[] { "ID" })
+                .ShowBorders(true)
+                .Height('100%')
+                .Paging(p => p.PageSize(8))
+                .Scrolling(s => s.Mode("virtual"))
+                .Columns(columns => {
+                    columns.AddFor(m => m.OrderNumber)
+                        .AllowGrouping(false)
+                        .Width(130);
+                    columns.AddFor(m => m.CustomerStoreCity);
+                    columns.AddFor(m => m.CustomerStoreState);
+                    columns.AddFor(m => m.Employee);
+                    columns.AddFor(m => m.OrderDate);
+                    columns.AddFor(m => m.SaleAmount)
+                        .Format(Format.Currency);
+                })
+            )
         )
     </div>
 </div>
