@@ -13,7 +13,7 @@
             .MinHeight(150)
             .MaxHeight(370)
             .Content(
-                @(Html.DevExtreme().DataGrid<Order>()
+                Html.DevExtreme().DataGrid<Order>()
                     .ID("grid")
                     .DataSource(Model, new[] { "ID" })
                     .ShowBorders(true)
@@ -36,7 +36,6 @@
                         columns.AddFor(m => m.SaleAmount)
                             .Format(Format.Currency);
                     })
-                )
             )
         )
     </div>
