@@ -18,7 +18,7 @@
                 .ShowBorders(true)
                 .Height("100%")
                 .Paging(p => p.PageSize(8))
-                .Scrolling(s => s.Mode("virtual"))
+                .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
                 .Columns(columns => {
                     columns.AddFor(m => m.OrderNumber)
                         .AllowGrouping(false)
@@ -30,6 +30,7 @@
                     columns.AddFor(m => m.SaleAmount)
                         .Format(Format.Currency);
                 })
+                .ToString()
             )
         )
     </div>
