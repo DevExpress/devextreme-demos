@@ -4,7 +4,7 @@
 
 1. Call the [exportDataGrid(options)](/Documentation/ApiReference/Common/Utils/pdfExporter/#exportDataGridoptions) method.
 
-2. Specify the [topLeft](/Documentation/ApiReference/Common/Object_Structures/PdfExportDataGridProps/topLeft/topLeft.md) object to set a starting position for DataGrid export. This position needs to be below the header.
+2. Use the [topLeft](/Documentation/ApiReference/Common/Object_Structures/PdfExportDataGridProps/topLeft/topLeft.md) object to specify a start position for DataGrid export. This position should be below the header.
 
 3. Execute a promise after the **exportDataGrid(options)** method. In this promise, specify position and appearance of the header.
 
