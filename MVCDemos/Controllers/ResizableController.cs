@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web.Mvc;
 
 namespace DevExtreme.MVC.Demos.Controllers {
-    public class DataGridController : Controller {
+    public class ResizableController : Controller {
         public ActionResult ResizableOverview() {
             return View(SampleData.Orders);
         }
