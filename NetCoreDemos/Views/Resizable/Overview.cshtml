@@ -1,4 +1,4 @@
-@using DevExtreme.MVC.Demos.Models
+@using DevExtreme.NETCore.Demos.Models
 
 @model IEnumerable<Order>
 
@@ -9,9 +9,9 @@
         @(Html.DevExtreme().Resizable()
             .ID("gridContainer")
             .MinWidth(400)
-            .MaxWidth(1050)
             .MinHeight(150)
             .MaxHeight(370)
+            .Area(".widget-container .dx-field")
             .Content(Html.DevExtreme().DataGrid<Order>()
                 .ID("grid")
                 .DataSource(Model, new[] { "ID" })

@@ -2182,7 +2182,7 @@
     <Content Include="Views\DataGrid\PDFHeaderAndFooter.cshtml" />
     <Content Include="Views\DataGrid\PDFExportImages.cshtml" />
     <Content Include="Views\DataGrid\PDFExportMultipleGrids.cshtml" />
-    <Content Include="Views\Resizable\ResizableOverview.cshtml" />
+    <Content Include="Views\Resizable\Overview.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

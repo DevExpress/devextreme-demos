@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace DevExtreme.NETCore.Demos.Controllers {
     public class ResizableController : Controller {
-        public ActionResult ResizableOverview() {
+        public ActionResult Overview() {
             return View(SampleData.Orders);
         }
     }
