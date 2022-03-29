@@ -1,6 +1,6 @@
 The [DataGrid](/Documentation/ApiReference/UI_Components/dxDataGrid/) allows you to export its contents to a PDF document. To enable PDF export operations, import the <a href="https://github.com/parallax/jsPDF" target="_blank">jsPDF</a> library.
 
-Call the [exportDataGrid(options)](/Documentation/ApiReference/Common/Utils/pdfExporter/#exportDataGridoptions) method that belongs to the [pdfExporter](/Documentation/ApiReference/Common/Utils/pdfExporter/) module to export DataGrid content to a PDF document. Specify at least two required properties:
+Call the [exportDataGrid(options)](/Documentation/ApiReference/Common/Utils/pdfExporter/#exportDataGridoptions) method that belongs to the [pdfExporter](/Documentation/ApiReference/Common/Utils/pdfExporter/) module. Specify at least two required properties:
 
 - [jsPDFDocument](/Documentation/ApiReference/Common/Object_Structures/PdfExportDataGridProps/#jsPDFDocument)    
 Specifies the **jsPDF** instance.
@@ -9,4 +9,4 @@ Specifies the **jsPDF** instance.
 Specifies the DataGrid's instance.
 
 
-In this demo, click the **Export to PDF** button to call the **exportDataGrid(options)** method in the button's [onClick](/Documentation/ApiReference/UI_Components/dxButton/Configuration/#onClick) handler.
+In this demo, click the **Export to PDF** button to initiate export. To review implementation, see the **exportDataGrid(options)** method call in the button's **onClick** handler.
