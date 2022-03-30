@@ -11,4 +11,4 @@ Specifies the **jsPDF** instance.
 Specifies the DataGrid's instance.
 
 
-In this demo, click the **Export to PDF** button to initiate export. To review implementation, see the **exportDataGrid(options)** method call in the button's **onClick** handler.
+In this demo, click the **Export to PDF** button to initiate export. To review implementation details, see the **exportDataGrid(options)** method call in the button's **onClick** handler.
