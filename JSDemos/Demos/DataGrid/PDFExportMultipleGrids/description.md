@@ -1,5 +1,5 @@
-The [exportDataGrid()](/Documentation/ApiReference/Common/Utils/pdfExporter/#exportDataGridoptions) method allows users to export multiple grids to one PDF document. Grids are exported consequently in a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then" target="_blank">chain of Promises</a>. 
+This demo shows two DataGrids in different tabs. The export system arranges these DataGrids on different pages of the PDF document. 
 
-In this demo, this functionality is used to export two DataGrids into separate pages in the same PDF document. In this demo we export different grids on separated pages. For this we use **jspdf**.<a href="https://raw.githack.com/parallax/jsPDF/master/docs/jsPDF.html#addPage" target="_blank">addPage()</a> method.
+To implement this functionality, execute a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then" target="_blank">chain of Promises</a>. Call the [exportDataGrid(options)](/Documentation/ApiReference/Common/Utils/pdfExporter/#exportDataGridoptions) methods in a chain one after another. Use the **jsPDF**.<a href="https://raw.githack.com/parallax/jsPDF/master/docs/jsPDF.html#addPage" target="_blank">addPage()</a> method to add a page in the PDF document.
 
-Use the [customizeCell](/Documentation/ApiReference/Common/Object_Structures/PdfExportDataGridProps/#customizeCell) method to customize the exported appearance of grids.
+You can use the [customizeCell](/Documentation/ApiReference/Common/Object_Structures/PdfExportDataGridProps/#customizeCell) function to customize cell appearance after export. In this demo, the **customizeCell** function sets the alternating backgrounds for rows.
