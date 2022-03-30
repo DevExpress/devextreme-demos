@@ -17,3 +17,5 @@ The upper height boundary.
 You can specify four types of handles: *top*, *bottom*, *left* and *right*. Separate handles by a space in the [handles](/Documentation/ApiReference/UI_Components/dxResizable/Configuration/#handles) property to specify the handles that you want to show to users. Combine nearest handles (for example, "bottom left") to get corner handles.
 
 The [keepAspectRatio](/Documentation/ApiReference/UI_Components/dxResizable/Configuration/#keepAspectRatio) property specifies whether to resize the Resizable's content proportionally with corner handles. If you need to disable propotional resize, set this property to **false**.
+
+Use the [area](/Documentation/ApiReference/UI_Components/dxResizable/Configuration/#area) property to keep the component's resize in a specific area.
