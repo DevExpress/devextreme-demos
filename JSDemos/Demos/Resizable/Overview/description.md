@@ -1,6 +1,6 @@
-The Resizable enables you to resize its content. In this demo you can drag [handles](/Documentation/ApiReference/UI_Components/dxResizable/Configuration/#handles) to resize the DataGrid.
+If you want to enable live resize operations for a UI element, wrap that elements into a Resizable widget. In this demo, you can resize the DataGrid. Try to drag the [handles](/Documentation/ApiReference/UI_Components/dxResizable/Configuration/#handles) on the grid's edges.
 
-Configure the following properties to specify the boundaries to which you can drag the handles:
+Configure the following properties to specify resize operation constraints:
 
 - [minWidth](/Documentation/ApiReference/UI_Components/dxResizable/Configuration/#minWidth)    
 The lower width boundary.
@@ -14,8 +14,8 @@ The lower height boundary.
 - [maxHeight](/Documentation/ApiReference/UI_Components/dxResizable/Configuration/#maxHeight)    
 The upper height boundary.
 
-You can specify four types of handles: *top*, *bottom*, *left* and *right*. Separate handles by a space in the [handles](/Documentation/ApiReference/UI_Components/dxResizable/Configuration/#handles) property to specify which handles to display in the UI. Combine nearest handles (for example, "bottom left") to show corner handles.
+You can display resize handles on edges or corners. Use the following keywords to set up the [handles](/Documentation/ApiReference/UI_Components/dxResizable/Configuration/#handles) property: *top*, *bottom*, *left* and *right*. If you specify two adjacent sides (for example, "bottom right"), the control displays a single handle in the corner.
 
-The [keepAspectRatio](/Documentation/ApiReference/UI_Components/dxResizable/Configuration/#keepAspectRatio) property specifies whether to resize the Resizable's content proportionally with corner handles. If you need to disable propotional resize, set this property to **false**.
+The [keepAspectRatio](/Documentation/ApiReference/UI_Components/dxResizable/Configuration/#keepAspectRatio) property specifies whether a corner handle resizes content proportionally. If you need to allow free-form resize operations, set this property to **false**.
 
 Use the [area](/Documentation/ApiReference/UI_Components/dxResizable/Configuration/#area) property to enable users to resize the component within a specific area.
