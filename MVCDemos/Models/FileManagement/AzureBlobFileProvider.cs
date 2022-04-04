@@ -84,13 +84,11 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             return oneLevelItemsList != null && oneLevelItemsList.Any(bItem => bItem.IsPrefix);
         }
         public void CreateDirectory(FileSystemCreateDirectoryOptions options) {
-            throw new NotImplementedException();
-            //string path = GetFileItemPath(options.ParentDirectory);
-            //string blobKey = $"{options.DirectoryName}/{EmptyDirectoryDummyBlobName}";
-            //if(!string.IsNullOrEmpty(path))
-            //    blobKey = $"{path}/{blobKey}";
-            //CloudBlockBlob dirBlob = Container.GetBlockBlobReference(blobKey);
-            //dirBlob.UploadText("");
+            string path = GetFileItemPath(options.ParentDirectory);
+            string blobKey = $"{options.DirectoryName}/{EmptyDirectoryDummyBlobName}";
+            if(!string.IsNullOrEmpty(path))
+                blobKey = $"{path}/{blobKey}";
+            Container.UploadBlob(blobKey, BinaryData.Empty);
         }
 
         public void RenameItem(FileSystemRenameItemOptions options) {
