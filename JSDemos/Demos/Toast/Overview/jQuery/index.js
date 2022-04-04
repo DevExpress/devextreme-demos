@@ -1,5 +1,5 @@
 $(() => {
-  const toast = $('#toast').dxToast({ displayTime: 600 }).dxToast('instance')
+  const toast = $('#toast').dxToast({ displayTime: 600 }).dxToast('instance');
 
   const checkAvailable = function (data) {
     const type = data.value ? 'success' : 'error';
