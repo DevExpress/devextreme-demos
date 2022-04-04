@@ -6,7 +6,7 @@
         @foreach(var product in Model) {
             <li>
                 <img src="@product.ImageSrc" />
-                <div>@product.Name</div>
+                <div class="name">@product.Name</div>
                 @(Html.DevExtreme().CheckBox()
                     .Text("Available")
                     .OnValueChanged("checkAvailable")
@@ -22,8 +22,9 @@
 
 <script>
     function checkAvailable(data) {
-        var type = data.value ? "success" : "error",
-            message = "@product.Name" + (data.value ? " is available" : " is not available");
+        const type = data.value ? "success" : "error";
+        const productName = data.element.parent().find(".name").text();
+        const message = productName + (data.value ? " is available" : " is not available");
         
         $("#toast").dxToast("instance").option({
             type,

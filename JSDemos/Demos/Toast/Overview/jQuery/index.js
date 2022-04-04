@@ -4,8 +4,7 @@ $(() => {
   const checkAvailable = function (data) {
     const type = data.value ? 'success' : 'error';
     const productName = data.element.parent().find('.name').text();
-    const message = productName
-                + (data.value ? ' is available' : ' is not available');
+    const message = productName + (data.value ? ' is available' : ' is not available');
 
     toast.option({ message, type });
     toast.show();
