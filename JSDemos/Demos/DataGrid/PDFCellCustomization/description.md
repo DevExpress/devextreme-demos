@@ -20,6 +20,4 @@ Specifies DataGrid cell appeareance after export.
 - cancel   
 Allows you to prevent default painting logic.
 
-This demo uses the **customDrawCell** function to repaint the "Website" column content.
-
-If you use the **customizeCell** function and the properties that you specify affect the size of the cell, the export system changes the size automatically. If you use the **customDrawCell** function, the export system fixes the sizes of the cells and you cannot affect them.
+In this demo, the **customDrawCell** function repaints the "Website" column content.
