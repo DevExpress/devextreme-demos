@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 
 namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
     public class FileManagerAzureProviderApiController : ApiController {
@@ -17,6 +18,7 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
 
         [System.Web.Http.AcceptVerbs("GET", "POST")]
         [System.Web.Http.Route("api/file-manager-azure", Name = "FileManagementAzureApi")]
+        //public async Task<HttpResponseMessage> Process() {
         public HttpResponseMessage Process() {
             FileSystemCommand command;
             Enum.TryParse(CurrentContext.Request["command"], out command);
@@ -42,6 +44,7 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
                 TempDirectory = TempDirectoryPath
             };
             var processor = new FileSystemCommandProcessor(config);
+            //var commandResult = await processor.Execute_v1(command, arguments);
             var commandResult = processor.Execute(command, arguments);
             var result = commandResult.GetClientCommandResult();
             return command == FileSystemCommand.Download && commandResult.Success ? CreateDownloadResponse(result) : Request.CreateResponse(result);

@@ -1,15 +1,21 @@
 ﻿using DevExtreme.MVC.Demos.Models.FileManagement;
-using Microsoft.Azure.Storage;
-using Microsoft.Azure.Storage.Auth;
-using Microsoft.Azure.Storage.Blob;
+using Azure;
+using Azure.Core;
+using Azure.Storage;
+//using Azure.Storage.Auth;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using Azure.Storage.Blobs.Specialized;
 using System;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Azure.Storage.Sas;
 
 namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
     public class FileManagerAzureAccessApiController : ApiController {
         const string EmptyDirDummyBlobName = "aspxAzureEmptyFolderBlob";
+        const string ServiceUri = "https://{0}.blob.core.windows.net";
         const long MaxBlobSize = 1048576;
 
         public FileManagerAzureAccessApiController() {
@@ -27,27 +33,30 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
         bool AllowUpload { get; }
         bool AllowDownload { get; }
 
-        CloudBlobClient _client;
-        CloudBlobClient Client {
+        BlobServiceClient _serviceClient;
+        BlobServiceClient ServiceClient {
             get {
-                if(this._client == null) {
+                if(_serviceClient == null) {
                     AzureStorageAccount accountModel = AzureStorageAccount.FileManager.Value;
-                    var credentials = new StorageCredentials(accountModel.AccountName, accountModel.AccessKey);
-                    var account = new CloudStorageAccount(credentials, true);
-                    this._client = account.CreateCloudBlobClient();
+                    //var credentials = new StorageCredentials(accountModel.AccountName, accountModel.AccessKey);
+                    StorageSharedKeyCredential credential = new StorageSharedKeyCredential(accountModel.AccountName, accountModel.AccessKey);
+                    //var account = new CloudStorageAccount(credentials, true);
+                    //_client = account.CreateCloudBlobClient();
+                    _serviceClient = new BlobServiceClient(new Uri(string.Format(ServiceUri, accountModel.AccountName)), credential);
                 }
-                return this._client;
+                return _serviceClient;
             }
         }
 
-        CloudBlobContainer _container;
-        CloudBlobContainer Container {
+        BlobContainerClient _containerClient; // CloudBlobContainer 
+        BlobContainerClient ContainerClient { // CloudBlobContainer 
             get {
-                if(this._container == null) {
+                if(_containerClient == null) {
                     AzureStorageAccount accountModel = AzureStorageAccount.FileManager.Value;
-                    this._container = Client.GetContainerReference(accountModel.ContainerName);
+                    //_container = Client.GetContainerReference(accountModel.ContainerName);
+                    _containerClient = _serviceClient.GetBlobContainerClient(accountModel.ContainerName); // TODO
                 }
-                return this._container;
+                return _containerClient;
             }
         }
 
@@ -91,71 +100,95 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
             return null;
         }
         object GetBlobList() {
-            var policy = CreateSharedAccessBlobPolicy(SharedAccessBlobPermissions.List);
-            string url = Container.Uri + Container.GetSharedAccessSignature(policy, null, SharedAccessProtocol.HttpsOnly, null);
-            return CreateSuccessResult(url);
+            SharedAccessBlobPermissions permissions = SharedAccessBlobPermissions.List;
+            BlobSignedIdentifier policy = CreateSharedAccessBlobPolicy(permissions);
+            //var sasBlobToken = ContainerClient.GetSharedAccessSignature(policy, null, SharedAccessProtocol.HttpsOnly, null);
+            Uri sasUri = new Uri(string.Empty);
+            if (ContainerClient.CanGenerateSasUri) {
+                sasUri = ContainerClient.GenerateSasUri(BlobContainerSasPermissions.List, DateTimeOffset.UtcNow.AddHours(1));
+            }
+            //string url = ContainerClient.Uri + sasBlobToken;
+            //return CreateSuccessResult(url);
+            return sasUri.AbsolutePath != string.Empty
+                ? CreateSuccessResult(sasUri.AbsolutePath)
+                : CreateErrorResult("BlobContainerClient cannot generate SasUri");
         }
 
         object CreateDirectory(string directoryName) {
-            string blobName = $"{directoryName}/{EmptyDirDummyBlobName}";
+            throw new NotImplementedException();
+            //string blobName = $"{directoryName}/{EmptyDirDummyBlobName}";
 
-            CloudBlockBlob blob = Container.GetBlockBlobReference(blobName);
-            if(blob.Exists()) {
-                if(blob.Properties.Length > 0) {
-                    blob.Delete();
-                }
-                return CreateErrorResult();
-            }
+            //CloudBlockBlob blob = Container.GetBlockBlobReference(blobName);
+            //if(blob.Exists()) {
+            //    if(blob.Properties.Length > 0) {
+            //        blob.Delete();
+            //    }
+            //    return CreateErrorResult();
+            //}
 
-            string url = GetSharedAccessSignature(blob, SharedAccessBlobPermissions.Write);
-            return CreateSuccessResult(url);
+            //string url = GetSharedAccessSignature(blob, SharedAccessBlobPermissions.Write);
+            //return CreateSuccessResult(url);
         }
 
         object DeleteBlob(string blobName) {
-            string url = GetSharedAccessSignature(blobName, SharedAccessBlobPermissions.Delete);
-            return CreateSuccessResult(url);
+            throw new NotImplementedException();
+            //string url = GetSharedAccessSignature(blobName, SharedAccessBlobPermissions.Delete);
+            //return CreateSuccessResult(url);
         }
 
         object CopyBlob(string sourceBlobName, string destinationBlobName) {
-            string sourceUrl = GetSharedAccessSignature(sourceBlobName, SharedAccessBlobPermissions.Read);
-            string destinationUrl = GetSharedAccessSignature(destinationBlobName, SharedAccessBlobPermissions.Create);
-            return CreateSuccessResult(sourceUrl, destinationUrl);
+            throw new NotImplementedException();
+            //string sourceUrl = GetSharedAccessSignature(sourceBlobName, SharedAccessBlobPermissions.Read);
+            //string destinationUrl = GetSharedAccessSignature(destinationBlobName, SharedAccessBlobPermissions.Create);
+            //return CreateSuccessResult(sourceUrl, destinationUrl);
         }
 
         object UploadBlob(string blobName) {
-            if(blobName.EndsWith("/"))
-                return CreateErrorResult("Invalid blob name.");
+            throw new NotImplementedException();
+            //if(blobName.EndsWith("/"))
+            //    return CreateErrorResult("Invalid blob name.");
 
-            CloudBlockBlob blob = Container.GetBlockBlobReference(blobName);
-            if(blob.Exists() && blob.Properties.Length > MaxBlobSize) {
-                blob.Delete();
-                return CreateErrorResult();
-            }
+            //CloudBlockBlob blob = Container.GetBlockBlobReference(blobName);
+            //if(blob.Exists() && blob.Properties.Length > MaxBlobSize) {
+            //    blob.Delete();
+            //    return CreateErrorResult();
+            //}
 
-            string url = GetSharedAccessSignature(blob, SharedAccessBlobPermissions.Write);
-            return CreateSuccessResult(url);
+            //string url = GetSharedAccessSignature(blob, SharedAccessBlobPermissions.Write);
+            //return CreateSuccessResult(url);
         }
 
         object GetBlob(string blobName) {
-            var headers = new SharedAccessBlobHeaders {
-                ContentType = "application/octet-stream"
-            };
-            string url = GetSharedAccessSignature(blobName, SharedAccessBlobPermissions.Read, headers);
-            return CreateSuccessResult(url);
+            throw new NotImplementedException();
+            //var headers = new SharedAccessBlobHeaders {
+            //    ContentType = "application/octet-stream"
+            //};
+            //string url = GetSharedAccessSignature(blobName, SharedAccessBlobPermissions.Read, headers);
+            //return CreateSuccessResult(url);
         }
 
-        string GetSharedAccessSignature(string blobName, SharedAccessBlobPermissions permissions, SharedAccessBlobHeaders headers = null) {
-            CloudBlockBlob blob = Container.GetBlockBlobReference(blobName);
-            return GetSharedAccessSignature(blob, permissions, headers);
-        }
-        string GetSharedAccessSignature(CloudBlockBlob blob, SharedAccessBlobPermissions permissions, SharedAccessBlobHeaders headers = null) {
-            SharedAccessBlobPolicy policy = CreateSharedAccessBlobPolicy(permissions);
-            return blob.Uri + blob.GetSharedAccessSignature(policy, headers, null, SharedAccessProtocol.HttpsOnly, null);
-        }
-        SharedAccessBlobPolicy CreateSharedAccessBlobPolicy(SharedAccessBlobPermissions permissions) {
-            return new SharedAccessBlobPolicy {
-                SharedAccessExpiryTime = DateTime.UtcNow.AddMinutes(1),
-                Permissions = permissions
+        //string GetSharedAccessSignature(string blobName, SharedAccessBlobPermissions permissions, SharedAccessBlobHeaders headers = null) {
+        //    throw new NotImplementedException();
+        //    //CloudBlockBlob blob = Container.GetBlockBlobReference(blobName);
+        //    //return GetSharedAccessSignature(blob, permissions, headers);
+        //}
+        //string GetSharedAccessSignature(CloudBlockBlob blob, SharedAccessBlobPermissions permissions, SharedAccessBlobHeaders headers = null) {
+        //    throw new NotImplementedException();
+        //    //SharedAccessBlobPolicy policy = CreateSharedAccessBlobPolicy(permissions);
+        //    //return blob.Uri + blob.GetSharedAccessSignature(policy, headers, null, SharedAccessProtocol.HttpsOnly, null);
+        //}
+        BlobSignedIdentifier CreateSharedAccessBlobPolicy(SharedAccessBlobPermissions permissions) {
+            //return new SharedAccessBlobPolicy {
+            //    SharedAccessExpiryTime = DateTime.UtcNow.AddMinutes(1),
+            //    Permissions = permissions
+            //};
+            return new BlobSignedIdentifier {
+                Id = "tempSignedIdentifier", // TODO
+                AccessPolicy = new BlobAccessPolicy {
+                    PolicyStartsOn = DateTimeOffset.UtcNow.AddHours(-1),
+                    PolicyExpiresOn = DateTimeOffset.UtcNow.AddDays(1),
+                    Permissions = SharedAccessBlobPermissionsHelper.GetPermissionString(permissions)
+                }
             };
         }
 
