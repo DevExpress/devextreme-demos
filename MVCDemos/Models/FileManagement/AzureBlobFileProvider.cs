@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
 using Azure.Storage;
-//using Azure.Storage.Auth;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs.Specialized;
@@ -31,60 +30,16 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
         string ContainerName { get; set; }
         string TempDirectoryPath { get; set; }
 
-        BlobContainerClient _container; // CloudBlobContainer 
-        BlobContainerClient Container { // CloudBlobContainer 
+        BlobContainerClient _container;
+        BlobContainerClient Container {
             get {
                 if(_container == null) {
-                    //var credentials = new StorageCredentials(StorageAccountName, StorageAccessKey);
                     StorageSharedKeyCredential credential = new StorageSharedKeyCredential(StorageAccountName, StorageAccessKey);
-                    //var account = new CloudStorageAccount(credentials, true);
-                    //var client = account.CreateCloudBlobClient();
                     BlobServiceClient client = new BlobServiceClient(new Uri(string.Format(ServiceUri, StorageAccountName)), credential);
-                    //_container = client.GetContainerReference(ContainerName);
-                    _container = client.GetBlobContainerClient(ContainerName); // TODO
+                    _container = client.GetBlobContainerClient(ContainerName);
                 }
                 return _container;
             }
-        }
-
-        public IEnumerable<FileSystemItem> GetItemsOld(FileSystemLoadItemOptions options) {
-            var result = new List<FileSystemItem>();
-            //BlobContinuationToken continuationToken = null;
-            //string dirKey = GetFileItemPath(options.Directory);
-            //if(!string.IsNullOrEmpty(dirKey))
-            //    dirKey = dirKey + PathSeparator;
-            //CloudBlobDirectory dir = Container.GetDirectoryReference(dirKey);
-
-            //do {
-            //    BlobResultSegment segmentResult = dir.ListBlobsSegmented(continuationToken);
-            //    continuationToken = segmentResult.ContinuationToken;
-            //    foreach(IListBlobItem blob in segmentResult.Results) {
-            //        var item = new FileSystemItem();
-            //        string name = GetFileItemName(blob);
-            //        if(name == EmptyDirectoryDummyBlobName)
-            //            continue;
-
-            //        if(blob is BlobBaseClient /*CloudBlob*/) {
-            //            var blockBlob = (BlobBaseClient /*CloudBlob*/)blob;
-            //            item.Name = name;
-            //            item.DateModified = blockBlob.Properties.LastModified.GetValueOrDefault().DateTime;
-            //            item.Size = blockBlob.Properties.Length;
-            //        } else if(blob is CloudBlobDirectory) {
-            //            var subDir = (CloudBlobDirectory)blob;
-            //            item.Name = name.Substring(0, name.Length - 1);
-            //            item.IsDirectory = true;
-            //            item.HasSubDirectories = GetHasDirectories(subDir);
-            //            item.DateModified = DateTime.UtcNow;
-            //        } else {
-            //            throw new Exception("Unsupported blob type");
-            //        }
-            //        result.Add(item);
-            //    }
-            //} while(continuationToken != null);
-
-            return result.OrderByDescending(item => item.IsDirectory)
-                .ThenBy(item => item.Name)
-                .ToList();
         }
         public IEnumerable<FileSystemItem> GetItems(FileSystemLoadItemOptions options) {
             string dirKey = GetFileItemPath(options.Directory);
@@ -102,41 +57,32 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
                 .ThenBy(item => item.Name)
                 .ToList();
         }
-
         FileSystemItem GetFileSystemItem(BlobHierarchyItem hierarchyItem) {
             var item = new FileSystemItem();
             string name = GetBlobName(hierarchyItem);
             if(name == EmptyDirectoryDummyBlobName)
                 return null;
+            item.Name = name;
             if(hierarchyItem.IsBlob) {
                 var blobItem = hierarchyItem.Blob;
-                item.Name = name;
                 item.DateModified = blobItem.Properties.LastModified.GetValueOrDefault().DateTime;
                 item.Size = blobItem.Properties.ContentLength ?? 0; // TODO: review
-                return item;
             } else if(hierarchyItem.IsPrefix) {
-                item.Name = name;
                 item.IsDirectory = true;
                 item.HasSubDirectories = GetHasDirectories(hierarchyItem);
                 item.DateModified = DateTime.UtcNow;
-                return item;
             } else {
                 throw new Exception("Unsupported blob type");
             }
+            return item;
         }
-
-            bool GetHasDirectories(BlobHierarchyItem dir) {
-            return false; // TODO
-            //bool result;
-            //BlobContinuationToken continuationToken = null;
-            //do {
-            //    BlobResultSegment segmentResult = dir.ListBlobsSegmented(continuationToken);
-            //    continuationToken = segmentResult.ContinuationToken;
-            //    result = segmentResult.Results.Any(blob => blob is CloudBlobDirectory);
-            //} while(!result && continuationToken != null);
-            //return result;
+        bool GetHasDirectories(BlobHierarchyItem dir) {
+            string dirKey = GetBlobName(dir);
+            if(!string.IsNullOrEmpty(dirKey))
+                dirKey = dirKey + PathSeparator;
+            var oneLevelItemsList = Container.GetBlobsByHierarchy(prefix: dirKey, delimiter: PathSeparator);
+            return oneLevelItemsList != null && oneLevelItemsList.Any(bItem => bItem.IsPrefix);
         }
-
         public void CreateDirectory(FileSystemCreateDirectoryOptions options) {
             throw new NotImplementedException();
             //string path = GetFileItemPath(options.ParentDirectory);
@@ -277,7 +223,6 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             //    }
             //}
         }
-
         string GetBlobName(BlobHierarchyItem hierarchyItem) {
             if(hierarchyItem.IsBlob) {
                 return GetFileItemName(hierarchyItem.Blob.Name);
@@ -297,11 +242,9 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
         string GetFileItemPath(FileSystemItemInfo item) {
             return item.Path.Replace('\\', '/');
         }
-
         public void RemoveUploadedFile(FileInfo file) {
             file.Delete();
         }
-
         public Stream GetFileContent(FileSystemLoadFileContentOptions options) {
             throw new NotImplementedException();
             //if(!Directory.Exists(TempDirectoryPath))
