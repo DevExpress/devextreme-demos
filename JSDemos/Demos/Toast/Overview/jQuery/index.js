@@ -1,11 +1,14 @@
 $(() => {
+  const toast = $('#toast').dxToast({ displayTime: 600 }).dxToast('instance')
+
   const checkAvailable = function (data) {
     const type = data.value ? 'success' : 'error';
     const productName = data.element.parent().find('.name').text();
-    const text = productName
+    const message = productName
                 + (data.value ? ' is available' : ' is not available');
 
-    DevExpress.ui.notify(text, type, 600);
+    toast.option({ message, type });
+    toast.show();
   };
 
   $.each(products, (i, product) => {

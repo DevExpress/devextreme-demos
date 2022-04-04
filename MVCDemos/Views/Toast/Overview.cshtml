@@ -9,16 +9,26 @@
                 <div>@product.Name</div>
                 @(Html.DevExtreme().CheckBox()
                     .Text("Available")
-                    .OnValueChanged(@<text>
-                        function checkAvailable(data) {
-                            var type = data.value ? "success" : "error",
-                                text = "@product.Name" + (data.value ? " is available" : " is not available");
-
-                            DevExpress.ui.notify(text, type, 600);
-                        }
-                    </text>)
+                    .OnValueChanged("checkAvailable")
                 )
             </li>
         }
     </ul>
+    @(Html.DevExtreme().Toast()
+        .ID("toast")
+        .DisplayTime(600)
+    )
 </div>
+
+<script>
+    function checkAvailable(data) {
+        var type = data.value ? "success" : "error",
+            message = "@product.Name" + (data.value ? " is available" : " is not available");
+        
+        $("#toast").dxToast("instance").option({
+            type,
+            message,
+            visible: true
+        });
+    }
+</script>
