@@ -200,20 +200,19 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             file.Delete();
         }
         public Stream GetFileContent(FileSystemLoadFileContentOptions options) {
-            throw new NotImplementedException();
-            //if(!Directory.Exists(TempDirectoryPath))
-            //    Directory.CreateDirectory(TempDirectoryPath);
+            if(!Directory.Exists(TempDirectoryPath))
+                Directory.CreateDirectory(TempDirectoryPath);
 
-            //CleanUpDownloadedFiles();
+            CleanUpDownloadedFiles();
 
-            //string tempFileName = string.Format("{0}{1}.tmp", TempFilePrefix, Guid.NewGuid().ToString("N"));
-            //string tempFilePath = Path.Combine(TempDirectoryPath, tempFileName);
+            string tempFileName = string.Format("{0}{1}.tmp", TempFilePrefix, Guid.NewGuid().ToString("N"));
+            string tempFilePath = Path.Combine(TempDirectoryPath, tempFileName);
 
-            //string key = GetFileItemPath(options.File);
-            //CloudBlockBlob blob = Container.GetBlockBlobReference(key);
-            //blob.DownloadToFile(tempFilePath, FileMode.Create);
+            string key = GetFileItemPath(options.File);
+            var blob = Container.GetBlobClient(key);
+            blob.DownloadTo(tempFilePath);
 
-            //return File.Open(tempFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+            return File.Open(tempFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
         }
 
         void CleanUpDownloadedFiles() {
