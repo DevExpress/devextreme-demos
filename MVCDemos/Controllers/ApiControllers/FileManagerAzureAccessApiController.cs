@@ -95,7 +95,7 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
             }
             return null;
         }
-        object GetBlobList() {
+        object GetBlobList() { // TODO: add sorting
             SharedAccessBlobPermissions permissions = SharedAccessBlobPermissions.List;
             BlobSignedIdentifier policy = CreateSharedAccessBlobPolicy(permissions);
             if (Container.CanGenerateSasUri) {
@@ -107,19 +107,21 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
         }
 
         object CreateDirectory(string directoryName) {
-            throw new NotImplementedException();
-            //string blobName = $"{directoryName}/{EmptyDirDummyBlobName}";
+            string blobName = $"{directoryName}/{EmptyDirDummyBlobName}";
 
-            //CloudBlockBlob blob = Container.GetBlockBlobReference(blobName);
-            //if(blob.Exists()) {
-            //    if(blob.Properties.Length > 0) {
-            //        blob.Delete();
-            //    }
-            //    return CreateErrorResult();
-            //}
-
-            //string url = GetSharedAccessSignature(blob, SharedAccessBlobPermissions.Write);
-            //return CreateSuccessResult(url);
+            var blob = Container.GetBlobClient(blobName);
+            if(blob.Exists()) {
+                //if(blob.Properties.Length > 0) { // TODO: start here
+                //    blob.Delete();
+                //}
+                return CreateErrorResult();
+            }
+            if (Container.CanGenerateSasUri) {
+                var sasUri = blob.GenerateSasUri(BlobSasPermissions.Write, DateTimeOffset.UtcNow.AddHours(1));
+                return CreateSuccessResult(sasUri.AbsoluteUri);
+            } else {
+                return CreateErrorResult("BlobContainerClient cannot generate SasUri");
+            }
         }
 
         object DeleteBlob(string blobName) {
