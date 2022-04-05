@@ -1,3 +1,5 @@
+DataGrid allows you to custom paint cells and configure cell's style settings in a PDF document.
+
 Use the [customizeCell](/Documentation/ApiReference/Common/Object_Structures/ExportDataGridProps/#customizeCell) function to customize DataGrid cell apperance in a PDF document. For example, you can change the text alignment and the background color of the cell. Use the following function parameters:
 
 - gridCell     
@@ -10,7 +12,7 @@ In this demo, the **customizeCell** function changes the following elements:
 - Font weight of the group row cells
 - Font style of the footer cell
 
-The [customDrawCell](/Documentation/ApiReference/Common/Object_Structures/ExportDataGridProps/#customDrawCell) function allows you to cancel default cell painting in a PDF document. You can call this function to custom paint DataGrid cells. It accepts an object with the following fields:
+The [customDrawCell](/Documentation/ApiReference/Common/Object_Structures/ExportDataGridProps/#customDrawCell) function allows you to cancel default cell painting in a PDF document. Call this function and use the following parameters to custom paint DataGrid cells:
 
 - doc    
 Instance of the [jsPDFDocument](/api-reference/50%20Common/Object%20Structures/PdfExportDataGridProps/jsPDFDocument.md '/Documentation/ApiReference/Common/Object_Structures/PdfExportDataGridProps/#jsPDFDocument').
