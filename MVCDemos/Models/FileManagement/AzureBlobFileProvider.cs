@@ -86,9 +86,9 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
         }
         public void CreateDirectory(FileSystemCreateDirectoryOptions options) {
             string path = GetFileItemPath(options.ParentDirectory);
-            string blobKey = $"{options.DirectoryName}/{EmptyDirectoryDummyBlobName}";
+            string blobKey = $"{options.DirectoryName}{PathSeparator}{EmptyDirectoryDummyBlobName}";
             if(!string.IsNullOrEmpty(path))
-                blobKey = $"{path}/{blobKey}";
+                blobKey = $"{path}{PathSeparator}{blobKey}";
             Container.UploadBlob(blobKey, BinaryData.Empty);
         }
         public void RenameItem(FileSystemRenameItemOptions options) { // TODO: start from here
@@ -132,10 +132,9 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
                 RemoveDirectory(key);
         }
         public void UploadFile(FileSystemUploadFileOptions options) {
-            throw new NotImplementedException();
-            //string destinationKey = $"{options.DestinationDirectory.Path}/{options.FileName}";
-            //CloudBlockBlob newBlob = Container.GetBlockBlobReference(destinationKey);
-            //newBlob.UploadFromFile(options.TempFile.FullName);
+            string destinationKey = $"{options.DestinationDirectory.Path}{PathSeparator}{options.FileName}";
+            var blobClient = Container.GetBlobClient(destinationKey);
+            blobClient.Upload(options.TempFile.FullName, overwrite: true);
         }
         void RemoveFile(BlobClient blob) {
             blob.Delete();
