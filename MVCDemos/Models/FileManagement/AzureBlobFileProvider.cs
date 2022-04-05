@@ -104,18 +104,15 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             Copy(key, newKey, true);
         }
         public void MoveItem(FileSystemMoveItemOptions options) {
-            throw new NotImplementedException();
-            //Copy(options.Item, options.DestinationDirectory, true);
+            Copy(options.Item, options.DestinationDirectory, true);
         }
         public void CopyItem(FileSystemCopyItemOptions options) {
-            throw new NotImplementedException();
-            //Copy(options.Item, options.DestinationDirectory, false);
+            Copy(options.Item, options.DestinationDirectory, false);
         }
         void Copy(FileSystemItemInfo sourceItem, FileSystemItemInfo destinationItem, bool deleteSource = false) {
-            throw new NotImplementedException();
-            //string sourceKey = GetFileItemPath(sourceItem);
-            //string destinationKey = GetFileItemPath(destinationItem) + PathSeparator + sourceItem.Name;
-            //Copy(sourceKey, destinationKey, deleteSource);
+            string sourceKey = GetFileItemPath(sourceItem);
+            string destinationKey = GetFileItemPath(destinationItem) + PathSeparator + sourceItem.Name;
+            Copy(sourceKey, destinationKey, deleteSource);
         }
         void Copy(string sourceKey, string destinationKey, bool deleteSource) {
             var blobClient = Container.GetBlobClient(sourceKey);
