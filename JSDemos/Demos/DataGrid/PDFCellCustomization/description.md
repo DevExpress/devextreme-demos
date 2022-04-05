@@ -5,7 +5,10 @@ Contains information about the DataGrid cell.
 - pdfCell     
 Specifies DataGrid cell appearance after export.
 
-In this demo, the **customizeCell** function changes the background color and font weight of group row cells and the font style of footer cells.
+In this demo, the **customizeCell** function changes the following elements:
+- Background color of the group row cells 
+- Font weight of the group row cells
+- Font style of the footer cell
 
 The [customDrawCell](/Documentation/ApiReference/Common/Object_Structures/ExportDataGridProps/#customDrawCell) function allows you to cancel default cell painting in a PDF document. You can call this function to custom paint DataGrid cells. It accepts an object with the following fields:
 
