@@ -123,14 +123,13 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
                 CopyDirectory(sourceKey, destinationKey, deleteSource);
         }
         public void DeleteItem(FileSystemDeleteItemOptions options) {
-            throw new NotImplementedException();
-            //string key = GetFileItemPath(options.Item);
-            //BlobBaseClient /*CloudBlob*/ blob = Container.GetBlobReference(key);
-            //bool isFile = blob.Exists();
-            //if(isFile)
-            //    RemoveFile(blob);
-            //else
-            //    RemoveDirectory(key + PathSeparator);
+            string key = GetFileItemPath(options.Item);
+            var blobClient = Container.GetBlobClient(key);
+            bool isFile = blobClient.Exists();
+            if(isFile)
+                RemoveFile(blobClient);
+            else
+                RemoveDirectory(key + PathSeparator);
         }
         public void UploadFile(FileSystemUploadFileOptions options) {
             throw new NotImplementedException();
@@ -138,35 +137,21 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             //CloudBlockBlob newBlob = Container.GetBlockBlobReference(destinationKey);
             //newBlob.UploadFromFile(options.TempFile.FullName);
         }
-        void RemoveFile(BlobBaseClient /*CloudBlob*/ blob) {
-            throw new NotImplementedException();
-            //blob.Delete();
+        void RemoveFile(BlobClient blob) {
+            blob.Delete();
         }
-        void RemoveDirectory(string key) {
-            throw new NotImplementedException();
-            //CloudBlobDirectory dir = Container.GetDirectoryReference(key);
-            //RemoveDirectory(dir);
-        }
-        void RemoveDirectory(object /*CloudBlobDirectory*/ dir) {
-            throw new NotImplementedException();
-            //var children = new List<IListBlobItem>();
-            //BlobContinuationToken continuationToken = null;
-
-            //do {
-            //    BlobResultSegment segmentResult = dir.ListBlobsSegmented(continuationToken);
-            //    continuationToken = segmentResult.ContinuationToken;
-            //    children.AddRange(segmentResult.Results);
-            //} while(continuationToken != null);
-
-            //foreach(IListBlobItem blob in children) {
-            //    if(blob is BlobBaseClient /*CloudBlob*/) {
-            //        RemoveFile((BlobBaseClient /*CloudBlob*/)blob);
-            //    } else if(blob is CloudBlobDirectory) {
-            //        RemoveDirectory((CloudBlobDirectory)blob);
-            //    } else {
-            //        throw new Exception("Unsupported blob type");
-            //    }
-            //}
+        void RemoveDirectory(string dirKey) {
+            var children = GetOneLevelHierarchyBlobs(dirKey);
+            foreach(var blob in children) {
+                string childRelativePath = GetBlobRelativePath(blob);
+                if(blob.IsBlob) {
+                    RemoveFile(Container.GetBlobClient(childRelativePath));
+                } else if(blob.IsPrefix) {
+                    RemoveDirectory(childRelativePath);
+                } else {
+                    throw new Exception("Unsupported blob type");
+                }
+            }
         }
         void CopyFile(BlobClient blob, string destinationKey, bool deleteSource = false) {
             var blobCopy = Container.GetBlobClient(destinationKey);
