@@ -80,7 +80,7 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             return item;
         }
         bool GetHasDirectories(BlobHierarchyItem dir) { // TODO: try change to BlobClient
-            string dirKey = GetBlobName(dir);
+            string dirKey = GetBlobRelativePath(dir);
             var oneLevelItemsList = GetOneLevelHierarchyBlobs(dirKey);
             return oneLevelItemsList != null && oneLevelItemsList.Any(bItem => bItem.IsPrefix);
         }
