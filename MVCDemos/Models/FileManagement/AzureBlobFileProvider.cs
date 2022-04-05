@@ -129,7 +129,7 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             if(isFile)
                 RemoveFile(blobClient);
             else
-                RemoveDirectory(key + PathSeparator);
+                RemoveDirectory(key);
         }
         public void UploadFile(FileSystemUploadFileOptions options) {
             throw new NotImplementedException();
