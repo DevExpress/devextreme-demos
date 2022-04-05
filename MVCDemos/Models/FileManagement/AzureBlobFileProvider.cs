@@ -135,6 +135,7 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             string destinationKey = $"{options.DestinationDirectory.Path}{PathSeparator}{options.FileName}";
             var blobClient = Container.GetBlobClient(destinationKey);
             blobClient.Upload(options.TempFile.FullName, overwrite: true);
+            RemoveUploadedFile(options.TempFile.FullName);
         }
         void RemoveFile(BlobClient blob) {
             blob.Delete();
@@ -196,7 +197,8 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
         string GetFileItemPath(FileSystemItemInfo item) {
             return item.Path.Replace("\\", PathSeparator);
         }
-        public void RemoveUploadedFile(FileInfo file) {
+        public void RemoveUploadedFile(string fileFullPath) {
+            FileInfo file = new FileInfo(fileFullPath);
             file.Delete();
         }
         public Stream GetFileContent(FileSystemLoadFileContentOptions options) {
@@ -214,7 +216,6 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
 
             return File.Open(tempFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
         }
-
         void CleanUpDownloadedFiles() {
             var timeout = TimeSpan.FromMinutes(10);
             try {
