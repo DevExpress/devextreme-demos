@@ -42,11 +42,9 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             }
         }
         public IEnumerable<FileSystemItem> GetItems(FileSystemLoadItemOptions options) {
-            string dirKey = GetFileItemPath(options.Directory);
-            if(!string.IsNullOrEmpty(dirKey))
-                dirKey = dirKey + PathSeparator;
             var result = new List<FileSystemItem>();
-            var oneLevelItemsList = Container.GetBlobsByHierarchy(prefix: dirKey, delimiter: PathSeparator);
+            string dirKey = GetFileItemPath(options.Directory);
+            var oneLevelItemsList = GetOneLevelHierarchyBlobs(dirKey);
             foreach(BlobHierarchyItem hierarchyItem in oneLevelItemsList) {
                 var fileItem = GetFileSystemItem(hierarchyItem);
                 if(fileItem != null) {
@@ -56,6 +54,11 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             return result.OrderByDescending(item => item.IsDirectory)
                 .ThenBy(item => item.Name)
                 .ToList();
+        }
+        Pageable<BlobHierarchyItem> GetOneLevelHierarchyBlobs(string prefix) {
+            if(!string.IsNullOrEmpty(prefix) && !prefix.EndsWith(PathSeparator))
+                prefix = prefix + PathSeparator;
+            return Container.GetBlobsByHierarchy(prefix: prefix, delimiter: PathSeparator);
         }
         FileSystemItem GetFileSystemItem(BlobHierarchyItem hierarchyItem) {
             var item = new FileSystemItem();
@@ -76,11 +79,9 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             }
             return item;
         }
-        bool GetHasDirectories(BlobHierarchyItem dir) {
+        bool GetHasDirectories(BlobHierarchyItem dir) { // TODO: try change to BlobClient
             string dirKey = GetBlobName(dir);
-            if(!string.IsNullOrEmpty(dirKey))
-                dirKey = dirKey + PathSeparator;
-            var oneLevelItemsList = Container.GetBlobsByHierarchy(prefix: dirKey, delimiter: PathSeparator);
+            var oneLevelItemsList = GetOneLevelHierarchyBlobs(dirKey);
             return oneLevelItemsList != null && oneLevelItemsList.Any(bItem => bItem.IsPrefix);
         }
         public void CreateDirectory(FileSystemCreateDirectoryOptions options) {
@@ -90,49 +91,40 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
                 blobKey = $"{path}/{blobKey}";
             Container.UploadBlob(blobKey, BinaryData.Empty);
         }
-
-        public void RenameItem(FileSystemRenameItemOptions options) {
-            throw new NotImplementedException();
-            //string newName = options.ItemNewName;
-            //string key = GetFileItemPath(options.Item);
-            //int index = key.LastIndexOf('/');
-            //string newKey;
-            //if(index >= 0) {
-            //    string parentKey = key.Substring(0, index + 1);
-            //    newKey = parentKey + newName;
-            //} else
-            //    newKey = newName;
-
-            //Copy(key, newKey, true);
+        public void RenameItem(FileSystemRenameItemOptions options) { // TODO: start from here
+            string newName = options.ItemNewName;
+            string key = GetFileItemPath(options.Item);
+            int index = key.LastIndexOf(PathSeparator);
+            string newKey;
+            if(index >= 0) {
+                string parentKey = key.Substring(0, index + 1);
+                newKey = parentKey + newName;
+            } else
+                newKey = newName;
+            Copy(key, newKey, true);
         }
-
         public void MoveItem(FileSystemMoveItemOptions options) {
             throw new NotImplementedException();
             //Copy(options.Item, options.DestinationDirectory, true);
         }
-
         public void CopyItem(FileSystemCopyItemOptions options) {
             throw new NotImplementedException();
             //Copy(options.Item, options.DestinationDirectory, false);
         }
-
         void Copy(FileSystemItemInfo sourceItem, FileSystemItemInfo destinationItem, bool deleteSource = false) {
             throw new NotImplementedException();
             //string sourceKey = GetFileItemPath(sourceItem);
             //string destinationKey = GetFileItemPath(destinationItem) + PathSeparator + sourceItem.Name;
             //Copy(sourceKey, destinationKey, deleteSource);
         }
-
         void Copy(string sourceKey, string destinationKey, bool deleteSource) {
-            throw new NotImplementedException();
-            //BlobBaseClient /*CloudBlob*/ blob = Container.GetBlobReference(sourceKey);
-            //bool isFile = blob.Exists();
-            //if(isFile)
-            //    CopyFile(blob, destinationKey, deleteSource);
-            //else
-            //    CopyDirectory(sourceKey, destinationKey + PathSeparator, deleteSource);
+            var blobClient = Container.GetBlobClient(sourceKey);
+            bool isFile = blobClient.Exists();
+            if(isFile)
+                CopyFile(blobClient, destinationKey, deleteSource);
+            else
+                CopyDirectory(sourceKey, destinationKey, deleteSource);
         }
-
         public void DeleteItem(FileSystemDeleteItemOptions options) {
             throw new NotImplementedException();
             //string key = GetFileItemPath(options.Item);
@@ -143,25 +135,21 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             //else
             //    RemoveDirectory(key + PathSeparator);
         }
-
         public void UploadFile(FileSystemUploadFileOptions options) {
             throw new NotImplementedException();
             //string destinationKey = $"{options.DestinationDirectory.Path}/{options.FileName}";
             //CloudBlockBlob newBlob = Container.GetBlockBlobReference(destinationKey);
             //newBlob.UploadFromFile(options.TempFile.FullName);
         }
-
         void RemoveFile(BlobBaseClient /*CloudBlob*/ blob) {
             throw new NotImplementedException();
             //blob.Delete();
         }
-
         void RemoveDirectory(string key) {
             throw new NotImplementedException();
             //CloudBlobDirectory dir = Container.GetDirectoryReference(key);
             //RemoveDirectory(dir);
         }
-
         void RemoveDirectory(object /*CloudBlobDirectory*/ dir) {
             throw new NotImplementedException();
             //var children = new List<IListBlobItem>();
@@ -183,50 +171,37 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             //    }
             //}
         }
-
-        void CopyFile(BlobBaseClient /*CloudBlob*/ blob, string destinationKey, bool deleteSource = false) {
-            throw new NotImplementedException();
-            //BlobBaseClient /*CloudBlob*/ blobCopy = Container.GetBlobReference(destinationKey);
-            //blobCopy.StartCopy(blob.Uri);
-            //if(deleteSource)
-            //    blob.Delete();
+        void CopyFile(BlobClient blob, string destinationKey, bool deleteSource = false) {
+            var blobCopy = Container.GetBlobClient(destinationKey);
+            blobCopy.StartCopyFromUri(blob.Uri);
+            var props = blobCopy.GetProperties();
+            if(deleteSource)
+                blob.Delete();
         }
-
         void CopyDirectory(string sourceKey, string destinationKey, bool deleteSource = false) {
-            throw new NotImplementedException();
-            //CloudBlobDirectory dir = Container.GetDirectoryReference(sourceKey);
-            //CopyDirectory(dir, destinationKey, deleteSource);
-        }
-
-        void CopyDirectory(object /*CloudBlobDirectory*/ dir, string destinationKey, bool deleteSource = false) {
-            throw new NotImplementedException();
-            //var children = new List<IListBlobItem>();
-            //BlobContinuationToken continuationToken = null;
-
-            //do {
-            //    BlobResultSegment segmentResult = dir.ListBlobsSegmented(continuationToken);
-            //    continuationToken = segmentResult.ContinuationToken;
-            //    children.AddRange(segmentResult.Results);
-            //} while(continuationToken != null);
-
-            //foreach(IListBlobItem blob in children) {
-            //    string childCopyName = GetFileItemName(blob);
-            //    string childCopyKey = $"{destinationKey}{childCopyName}";
-            //    if(blob is BlobBaseClient /*CloudBlob*/) {
-            //        CopyFile((BlobBaseClient /*CloudBlob*/)blob, childCopyKey, deleteSource);
-            //    } else if(blob is CloudBlobDirectory) {
-            //        CopyDirectory((CloudBlobDirectory)blob, childCopyKey, deleteSource);
-            //    } else {
-            //        throw new Exception("Unsupported blob type");
-            //    }
-            //}
+            var children = GetOneLevelHierarchyBlobs(sourceKey);
+            foreach(var blob in children) {
+                string childSourceRelativePath = GetBlobRelativePath(blob);
+                string childName = GetBlobName(blob);
+                string childDestinationRelativePath = $"{destinationKey}{PathSeparator}{childName}";
+                if(blob.IsBlob) {
+                    CopyFile(Container.GetBlobClient(childSourceRelativePath), childDestinationRelativePath, deleteSource);
+                } else if(blob.IsPrefix) {
+                    CopyDirectory(GetBlobRelativePath(blob), childDestinationRelativePath, deleteSource);
+                } else {
+                    throw new Exception("Unsupported blob type");
+                }
+            }
         }
         string GetBlobName(BlobHierarchyItem hierarchyItem) {
+            var relativePath = GetBlobRelativePath(hierarchyItem);
+            return relativePath != null ? GetFileItemName(relativePath) : null;
+        }
+        string GetBlobRelativePath(BlobHierarchyItem hierarchyItem) {
             if(hierarchyItem.IsBlob) {
-                return GetFileItemName(hierarchyItem.Blob.Name);
+                return hierarchyItem.Blob.Name;
             } else if(hierarchyItem.IsPrefix) {
-                string escapedName = hierarchyItem.Prefix;
-                return GetFileItemName(escapedName.Substring(0, escapedName.Length - 1));
+                return hierarchyItem.Prefix.Substring(0, hierarchyItem.Prefix.Length - 1);
             } else {
                 return null;
             }
@@ -238,7 +213,7 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             return relativeName.Substring(lastDelimiterIndex);
         }
         string GetFileItemPath(FileSystemItemInfo item) {
-            return item.Path.Replace('\\', '/');
+            return item.Path.Replace("\\", PathSeparator);
         }
         public void RemoveUploadedFile(FileInfo file) {
             file.Delete();
