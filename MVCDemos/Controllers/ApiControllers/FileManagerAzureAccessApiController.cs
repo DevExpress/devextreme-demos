@@ -38,25 +38,21 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
             get {
                 if(_serviceClient == null) {
                     AzureStorageAccount accountModel = AzureStorageAccount.FileManager.Value;
-                    //var credentials = new StorageCredentials(accountModel.AccountName, accountModel.AccessKey);
                     StorageSharedKeyCredential credential = new StorageSharedKeyCredential(accountModel.AccountName, accountModel.AccessKey);
-                    //var account = new CloudStorageAccount(credentials, true);
-                    //_client = account.CreateCloudBlobClient();
                     _serviceClient = new BlobServiceClient(new Uri(string.Format(ServiceUri, accountModel.AccountName)), credential);
                 }
                 return _serviceClient;
             }
         }
 
-        BlobContainerClient _containerClient; // CloudBlobContainer 
-        BlobContainerClient ContainerClient { // CloudBlobContainer 
+        BlobContainerClient _container;
+        BlobContainerClient Container {
             get {
-                if(_containerClient == null) {
+                if(_container == null) {
                     AzureStorageAccount accountModel = AzureStorageAccount.FileManager.Value;
-                    //_container = Client.GetContainerReference(accountModel.ContainerName);
-                    _containerClient = _serviceClient.GetBlobContainerClient(accountModel.ContainerName); // TODO
+                    _container = ServiceClient.GetBlobContainerClient(accountModel.ContainerName); // TODO
                 }
-                return _containerClient;
+                return _container;
             }
         }
 
@@ -102,16 +98,12 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
         object GetBlobList() {
             SharedAccessBlobPermissions permissions = SharedAccessBlobPermissions.List;
             BlobSignedIdentifier policy = CreateSharedAccessBlobPolicy(permissions);
-            //var sasBlobToken = ContainerClient.GetSharedAccessSignature(policy, null, SharedAccessProtocol.HttpsOnly, null);
-            Uri sasUri = new Uri(string.Empty);
-            if (ContainerClient.CanGenerateSasUri) {
-                sasUri = ContainerClient.GenerateSasUri(BlobContainerSasPermissions.List, DateTimeOffset.UtcNow.AddHours(1));
+            if (Container.CanGenerateSasUri) {
+                var sasUri = Container.GenerateSasUri(BlobContainerSasPermissions.List, DateTimeOffset.UtcNow.AddHours(1));
+                return CreateSuccessResult(sasUri.AbsoluteUri);
+            } else {
+                return CreateErrorResult("BlobContainerClient cannot generate SasUri");
             }
-            //string url = ContainerClient.Uri + sasBlobToken;
-            //return CreateSuccessResult(url);
-            return sasUri.AbsolutePath != string.Empty
-                ? CreateSuccessResult(sasUri.AbsolutePath)
-                : CreateErrorResult("BlobContainerClient cannot generate SasUri");
         }
 
         object CreateDirectory(string directoryName) {
@@ -178,15 +170,11 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
         //    //return blob.Uri + blob.GetSharedAccessSignature(policy, headers, null, SharedAccessProtocol.HttpsOnly, null);
         //}
         BlobSignedIdentifier CreateSharedAccessBlobPolicy(SharedAccessBlobPermissions permissions) {
-            //return new SharedAccessBlobPolicy {
-            //    SharedAccessExpiryTime = DateTime.UtcNow.AddMinutes(1),
-            //    Permissions = permissions
-            //};
             return new BlobSignedIdentifier {
                 Id = "tempSignedIdentifier", // TODO
                 AccessPolicy = new BlobAccessPolicy {
                     PolicyStartsOn = DateTimeOffset.UtcNow.AddHours(-1),
-                    PolicyExpiresOn = DateTimeOffset.UtcNow.AddDays(1),
+                    PolicyExpiresOn = DateTimeOffset.UtcNow.AddMinutes(1), // TODO: in doc AddDays(1)
                     Permissions = SharedAccessBlobPermissionsHelper.GetPermissionString(permissions)
                 }
             };
