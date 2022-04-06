@@ -91,7 +91,7 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
         object GetBlobList() { // TODO: fix request after renaming
             if(Container.CanGenerateSasUri) {
                 var sasUri = Container.GenerateSasUri(BlobContainerSasPermissions.List, DateTimeOffset.UtcNow.AddHours(1));
-                return CreateSuccessResult(sasUri.AbsoluteUri);
+                return CreateSuccessResult(sasUri);
             } else {
                 return CreateErrorResult("BlobContainerClient cannot generate SasUri");
             }
@@ -101,14 +101,11 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
 
             var blob = Container.GetBlobClient(blobName);
             if(blob.Exists()) {
-                //if(blob.GetProperties().ContentLength > 0) { // TODO: check necessity
-                //    blob.Delete();
-                //}
                 return CreateErrorResult();
             }
             var sasUri = TryGetBlobUri(blob, BlobSasPermissions.Write);
             if(sasUri != null) {
-                return CreateSuccessResult(sasUri.AbsoluteUri);
+                return CreateSuccessResult(sasUri);
             } else {
                 return CreateErrorResult("BlobClient cannot generate SasUri");
             }
@@ -116,7 +113,7 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
         object DeleteBlob(string blobName) {
             var sasUri = TryGetBlobUri(blobName, BlobSasPermissions.Delete);
             if(sasUri != null) {
-                return CreateSuccessResult(sasUri.AbsoluteUri);
+                return CreateSuccessResult(sasUri);
             } else {
                 return CreateErrorResult("BlobClient cannot generate SasUri");
             }
@@ -125,7 +122,7 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
             var sourceSasUri = TryGetBlobUri(sourceBlobName, BlobSasPermissions.Read);
             var destinationSasUri = TryGetBlobUri(destinationBlobName, BlobSasPermissions.Create);
             if(sourceSasUri != null && destinationSasUri != null) {
-                return CreateSuccessResult(sourceSasUri.AbsoluteUri, destinationSasUri.AbsoluteUri);
+                return CreateSuccessResult(sourceSasUri, destinationSasUri);
             } else {
                 return CreateErrorResult("BlobClient cannot generate SasUri");
             }
@@ -135,14 +132,12 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
                 return CreateErrorResult("Invalid blob name.");
 
             var blob = Container.GetBlockBlobClient(blobName);
-            // TODO: check necessity
-            //if(blob.Exists() && blob.GetProperties().Value.ContentLength > MaxBlobSize) {
-            //    blob.Delete();
-            //    return CreateErrorResult();
-            //}
+            if(blob.Exists() && blob.GetProperties().Value.ContentLength > MaxBlobSize) {
+                return CreateErrorResult();
+            }
 
             var sasUri = TryGetBlobUri(blobName, BlobSasPermissions.Write);
-            return CreateSuccessResult(sasUri.AbsoluteUri);
+            return CreateSuccessResult(sasUri);
         }
         object GetBlob(string blobName) {
             var headers = new BlobHttpHeaders {
@@ -150,8 +145,8 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
             };
             var blob = Container.GetBlobClient(blobName);
             blob.SetHttpHeaders(headers);
-            var blobUri = TryGetBlobUri(blob, BlobSasPermissions.Read);
-            return CreateSuccessResult(blobUri.AbsoluteUri);
+            var sasUri = TryGetBlobUri(blob, BlobSasPermissions.Read);
+            return CreateSuccessResult(sasUri);
         }
         Uri TryGetBlobUri(string blobName, BlobSasPermissions permissions) {
             if(!string.IsNullOrEmpty(blobName)) {
@@ -167,11 +162,11 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
                 return null;
             }
         }
-        object CreateSuccessResult(string url, string url2 = null) {
+        object CreateSuccessResult(Uri uri, Uri uri2 = null) {
             return new {
                 success = true,
-                accessUrl = url,
-                accessUrl2 = url2
+                accessUrl = uri.AbsoluteUri,
+                accessUrl2 = uri2 != null ? uri2.AbsoluteUri : null
             };
         }
         object CreateErrorResult(string error = null) {
