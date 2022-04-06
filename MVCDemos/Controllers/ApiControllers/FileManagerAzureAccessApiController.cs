@@ -116,8 +116,8 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
                 //}
                 return CreateErrorResult();
             }
-            if(blob.CanGenerateSasUri) {
-                var sasUri = blob.GenerateSasUri(BlobSasPermissions.Write, DateTimeOffset.UtcNow.AddHours(1));
+            var sasUri = TryGetBlobUri(blob, BlobSasPermissions.Write);
+            if(sasUri != null) {
                 return CreateSuccessResult(sasUri.AbsoluteUri);
             } else {
                 return CreateErrorResult("BlobClient cannot generate SasUri");
@@ -125,16 +125,22 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
         }
 
         object DeleteBlob(string blobName) {
-            throw new NotImplementedException();
-            //string url = GetSharedAccessSignature(blobName, SharedAccessBlobPermissions.Delete);
-            //return CreateSuccessResult(url);
+            var sasUri = TryGetBlobUri(blobName, BlobSasPermissions.Delete);
+            if(sasUri != null) {
+                return CreateSuccessResult(sasUri.AbsoluteUri);
+            } else {
+                return CreateErrorResult("BlobClient cannot generate SasUri");
+            }
         }
 
         object CopyBlob(string sourceBlobName, string destinationBlobName) {
-            throw new NotImplementedException();
-            //string sourceUrl = GetSharedAccessSignature(sourceBlobName, SharedAccessBlobPermissions.Read);
-            //string destinationUrl = GetSharedAccessSignature(destinationBlobName, SharedAccessBlobPermissions.Create);
-            //return CreateSuccessResult(sourceUrl, destinationUrl);
+            var sourceSasUri = TryGetBlobUri(sourceBlobName, BlobSasPermissions.Read);
+            var destinationSasUri = TryGetBlobUri(destinationBlobName, BlobSasPermissions.Create);
+            if(sourceSasUri != null && destinationSasUri != null) {
+                return CreateSuccessResult(sourceSasUri.AbsoluteUri, destinationSasUri.AbsoluteUri);
+            } else {
+                return CreateErrorResult("BlobClient cannot generate SasUri");
+            }
         }
 
         object UploadBlob(string blobName) {
@@ -151,7 +157,20 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
             //string url = GetSharedAccessSignature(blob, SharedAccessBlobPermissions.Write);
             //return CreateSuccessResult(url);
         }
-
+        Uri TryGetBlobUri(string blobName, BlobSasPermissions permissions) {
+            if(!string.IsNullOrEmpty(blobName)) {
+                return TryGetBlobUri(Container.GetBlobClient(blobName), permissions);
+            } else {
+                return null;
+            }
+        }
+        Uri TryGetBlobUri(BlobClient blob, BlobSasPermissions permissions) {
+            if(blob.CanGenerateSasUri) {
+                return blob.GenerateSasUri(permissions, DateTimeOffset.UtcNow.AddHours(1));
+            } else {
+                return null;
+            }
+        }
         object GetBlob(string blobName) {
             throw new NotImplementedException();
             //var headers = new SharedAccessBlobHeaders {
