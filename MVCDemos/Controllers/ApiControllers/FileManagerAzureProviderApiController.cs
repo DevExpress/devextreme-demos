@@ -44,7 +44,6 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
                 TempDirectory = TempDirectoryPath
             };
             var processor = new FileSystemCommandProcessor(config);
-            //var commandResult = await processor.Execute_v1(command, arguments);
             var commandResult = processor.Execute(command, arguments);
             var result = commandResult.GetClientCommandResult();
             return command == FileSystemCommand.Download && commandResult.Success ? CreateDownloadResponse(result) : Request.CreateResponse(result);

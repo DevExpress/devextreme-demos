@@ -44,18 +44,16 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
                 return _serviceClient;
             }
         }
-
         BlobContainerClient _container;
         BlobContainerClient Container {
             get {
                 if(_container == null) {
                     AzureStorageAccount accountModel = AzureStorageAccount.FileManager.Value;
-                    _container = ServiceClient.GetBlobContainerClient(accountModel.ContainerName); // TODO
+                    _container = ServiceClient.GetBlobContainerClient(accountModel.ContainerName);
                 }
                 return _container;
             }
         }
-
         [HttpGet]
         [Route("api/file-manager-azure-access", Name = "FileManagerAzureAccessApi")]
         public HttpResponseMessage Process(string command, string blobName = null, string blobName2 = null) {
@@ -67,7 +65,6 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
             }
             return Request.CreateResponse(result);
         }
-
         object ProcessCommand(string command, string blobName, string blobName2) {
             switch(command) {
                 case "BlobList":
@@ -96,8 +93,6 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
             return null;
         }
         object GetBlobList() { // TODO: fix request after renaming
-            SharedAccessBlobPermissions permissions = SharedAccessBlobPermissions.List;
-            BlobSignedIdentifier policy = CreateSharedAccessBlobPolicy(permissions);
             if(Container.CanGenerateSasUri) {
                 var sasUri = Container.GenerateSasUri(BlobContainerSasPermissions.List, DateTimeOffset.UtcNow.AddHours(1));
                 return CreateSuccessResult(sasUri.AbsoluteUri);
@@ -105,13 +100,12 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
                 return CreateErrorResult("BlobContainerClient cannot generate SasUri");
             }
         }
-
         object CreateDirectory(string directoryName) {
             string blobName = $"{directoryName}/{EmptyDirDummyBlobName}";
 
             var blob = Container.GetBlobClient(blobName);
             if(blob.Exists()) {
-                //if(blob.Properties.Length > 0) { // TODO: check necessity
+                //if(blob.GetProperties().ContentLength > 0) { // TODO: check necessity
                 //    blob.Delete();
                 //}
                 return CreateErrorResult();
@@ -123,7 +117,6 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
                 return CreateErrorResult("BlobClient cannot generate SasUri");
             }
         }
-
         object DeleteBlob(string blobName) {
             var sasUri = TryGetBlobUri(blobName, BlobSasPermissions.Delete);
             if(sasUri != null) {
@@ -132,7 +125,6 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
                 return CreateErrorResult("BlobClient cannot generate SasUri");
             }
         }
-
         object CopyBlob(string sourceBlobName, string destinationBlobName) {
             var sourceSasUri = TryGetBlobUri(sourceBlobName, BlobSasPermissions.Read);
             var destinationSasUri = TryGetBlobUri(destinationBlobName, BlobSasPermissions.Create);
@@ -142,7 +134,6 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
                 return CreateErrorResult("BlobClient cannot generate SasUri");
             }
         }
-
         object UploadBlob(string blobName) {
             if(blobName.EndsWith("/"))
                 return CreateErrorResult("Invalid blob name.");
@@ -180,17 +171,6 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
                 return null;
             }
         }
-        BlobSignedIdentifier CreateSharedAccessBlobPolicy(SharedAccessBlobPermissions permissions) {
-            return new BlobSignedIdentifier {
-                Id = "tempSignedIdentifier", // TODO
-                AccessPolicy = new BlobAccessPolicy {
-                    PolicyStartsOn = DateTimeOffset.UtcNow.AddHours(-1),
-                    PolicyExpiresOn = DateTimeOffset.UtcNow.AddMinutes(1), // TODO: in doc AddDays(1)
-                    Permissions = SharedAccessBlobPermissionsHelper.GetPermissionString(permissions)
-                }
-            };
-        }
-
         object CreateSuccessResult(string url, string url2 = null) {
             return new {
                 success = true,
@@ -198,7 +178,6 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
                 accessUrl2 = url2
             };
         }
-
         object CreateErrorResult(string error = null) {
             if(string.IsNullOrEmpty(error))
                 error = "Unspecified error.";

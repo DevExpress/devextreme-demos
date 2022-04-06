@@ -91,7 +91,7 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
                 blobKey = $"{path}{PathSeparator}{blobKey}";
             Container.UploadBlob(blobKey, BinaryData.Empty);
         }
-        public void RenameItem(FileSystemRenameItemOptions options) { // TODO: start from here
+        public void RenameItem(FileSystemRenameItemOptions options) {
             string newName = options.ItemNewName;
             string key = GetFileItemPath(options.Item);
             int index = key.LastIndexOf(PathSeparator);
@@ -228,54 +228,6 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
                     } catch { }
                 }
             } catch { }
-        }
-    }
-
-    [Flags]
-    public enum SharedAccessBlobPermissions {
-        Read = 1,
-        Add = 2,
-        Create = 4,
-        Write = 8,
-        Delete = 16,
-        Delete_Version = 32,
-        Permanent_Delete = 64,
-        List = 128,
-        Tags = 256,
-        Find = 512,
-        Move = 1024,
-        Execute = 2048,
-        Ownership = 4096,
-        Permissions = 8192,
-        Set_Immutability_Policy = 16384
-    }
-
-    public static class SharedAccessBlobPermissionsHelper {
-        private static Dictionary<SharedAccessBlobPermissions, string> PermissionAbbriviations = new Dictionary<SharedAccessBlobPermissions, string>() {
-            { SharedAccessBlobPermissions.Read, "r" },
-            { SharedAccessBlobPermissions.Add, "a" },
-            { SharedAccessBlobPermissions.Create, "c" },
-            { SharedAccessBlobPermissions.Write, "w" },
-            { SharedAccessBlobPermissions.Delete, "d" },
-            { SharedAccessBlobPermissions.Delete_Version, "x" },
-            { SharedAccessBlobPermissions.Permanent_Delete, "y" },
-            { SharedAccessBlobPermissions.List, "l" },
-            { SharedAccessBlobPermissions.Tags, "t" },
-            { SharedAccessBlobPermissions.Find, "f" },
-            { SharedAccessBlobPermissions.Move, "m" },
-            { SharedAccessBlobPermissions.Execute, "e" },
-            { SharedAccessBlobPermissions.Ownership, "o" },
-            { SharedAccessBlobPermissions.Permissions, "p" },
-            { SharedAccessBlobPermissions.Set_Immutability_Policy, "i" },
-        };
-        public static string GetPermissionString(SharedAccessBlobPermissions blobPermissions) {
-            return string.Concat(blobPermissions.GetActiveFlags().Select(permission => PermissionAbbriviations[permission]));
-        }
-        public static IEnumerable<SharedAccessBlobPermissions> GetActiveFlags(this SharedAccessBlobPermissions permissions) {
-            return Enum.GetValues(typeof(SharedAccessBlobPermissions))
-                .Cast<SharedAccessBlobPermissions>()
-                .Select(p => permissions & p)
-                .Where(p => p != 0);
         }
     }
 }
