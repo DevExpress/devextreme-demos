@@ -98,7 +98,7 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
         object GetBlobList() { // TODO: add sorting
             SharedAccessBlobPermissions permissions = SharedAccessBlobPermissions.List;
             BlobSignedIdentifier policy = CreateSharedAccessBlobPolicy(permissions);
-            if (Container.CanGenerateSasUri) {
+            if(Container.CanGenerateSasUri) {
                 var sasUri = Container.GenerateSasUri(BlobContainerSasPermissions.List, DateTimeOffset.UtcNow.AddHours(1));
                 return CreateSuccessResult(sasUri.AbsoluteUri);
             } else {
@@ -111,16 +111,16 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
 
             var blob = Container.GetBlobClient(blobName);
             if(blob.Exists()) {
-                //if(blob.Properties.Length > 0) { // TODO: start here
+                //if(blob.Properties.Length > 0) { // TODO: check necessity
                 //    blob.Delete();
                 //}
                 return CreateErrorResult();
             }
-            if (Container.CanGenerateSasUri) {
+            if(blob.CanGenerateSasUri) {
                 var sasUri = blob.GenerateSasUri(BlobSasPermissions.Write, DateTimeOffset.UtcNow.AddHours(1));
                 return CreateSuccessResult(sasUri.AbsoluteUri);
             } else {
-                return CreateErrorResult("BlobContainerClient cannot generate SasUri");
+                return CreateErrorResult("BlobClient cannot generate SasUri");
             }
         }
 
