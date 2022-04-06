@@ -50,6 +50,9 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
             string fullBlobName = $"{prefix}_{blobName}";
             var blob = Container.GetBlockBlobClient(fullBlobName);
 
+            if(blob.Exists() && blob.GetProperties().Value.ContentLength > MaxBlobSize) {
+                return CreateErrorResult();
+            }
             if(blob.CanGenerateSasUri) {
                 var sasUri =  blob.GenerateSasUri(BlobSasPermissions.Write, DateTimeOffset.UtcNow.AddHours(1));
                 return CreateSuccessResult(sasUri.AbsoluteUri);
