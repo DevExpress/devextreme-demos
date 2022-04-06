@@ -157,6 +157,15 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
             var sasUri = TryGetBlobUri(blobName, BlobSasPermissions.Write);
             return CreateSuccessResult(sasUri.AbsoluteUri);
         }
+        object GetBlob(string blobName) {
+            var headers = new BlobHttpHeaders {
+                ContentType = "application/octet-stream"
+            };
+            var blob = Container.GetBlobClient(blobName);
+            blob.SetHttpHeaders(headers);
+            var blobUri = TryGetBlobUri(blob, BlobSasPermissions.Read);
+            return CreateSuccessResult(blobUri.AbsoluteUri);
+        }
         Uri TryGetBlobUri(string blobName, BlobSasPermissions permissions) {
             if(!string.IsNullOrEmpty(blobName)) {
                 return TryGetBlobUri(Container.GetBlobClient(blobName), permissions);
@@ -171,25 +180,6 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
                 return null;
             }
         }
-        object GetBlob(string blobName) {
-            throw new NotImplementedException();
-            //var headers = new SharedAccessBlobHeaders {
-            //    ContentType = "application/octet-stream"
-            //};
-            //string url = GetSharedAccessSignature(blobName, SharedAccessBlobPermissions.Read, headers);
-            //return CreateSuccessResult(url);
-        }
-
-        //string GetSharedAccessSignature(string blobName, SharedAccessBlobPermissions permissions, SharedAccessBlobHeaders headers = null) {
-        //    throw new NotImplementedException();
-        //    //CloudBlockBlob blob = Container.GetBlockBlobReference(blobName);
-        //    //return GetSharedAccessSignature(blob, permissions, headers);
-        //}
-        //string GetSharedAccessSignature(CloudBlockBlob blob, SharedAccessBlobPermissions permissions, SharedAccessBlobHeaders headers = null) {
-        //    throw new NotImplementedException();
-        //    //SharedAccessBlobPolicy policy = CreateSharedAccessBlobPolicy(permissions);
-        //    //return blob.Uri + blob.GetSharedAccessSignature(policy, headers, null, SharedAccessProtocol.HttpsOnly, null);
-        //}
         BlobSignedIdentifier CreateSharedAccessBlobPolicy(SharedAccessBlobPermissions permissions) {
             return new BlobSignedIdentifier {
                 Id = "tempSignedIdentifier", // TODO
