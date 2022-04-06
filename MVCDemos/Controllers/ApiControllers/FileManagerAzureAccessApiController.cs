@@ -95,7 +95,7 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
             }
             return null;
         }
-        object GetBlobList() { // TODO: add sorting // TODO: fix request after renaming
+        object GetBlobList() { // TODO: fix request after renaming
             SharedAccessBlobPermissions permissions = SharedAccessBlobPermissions.List;
             BlobSignedIdentifier policy = CreateSharedAccessBlobPolicy(permissions);
             if(Container.CanGenerateSasUri) {

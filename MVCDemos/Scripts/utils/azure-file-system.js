@@ -140,7 +140,7 @@
     var compareDataObjects = function(obj1, obj2) {
         if(obj1.isDirectory === obj2.isDirectory) {
             var name1 = obj1.name.toLowerCase();
-            var name2 = obj1.name.toLowerCase();
+            var name2 = obj2.name.toLowerCase();
             if(name1 < name2) {
                 return -1;
             } else {
