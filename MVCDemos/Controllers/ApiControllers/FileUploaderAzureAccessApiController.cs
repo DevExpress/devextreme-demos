@@ -9,8 +9,8 @@ using Azure.Storage.Blobs.Specialized;
 
 namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
     public class FileUploaderAzureAccessApiController : ApiController {
+        const long MaxBlobSize = 1048576;
         const string ServiceUri = "https://{0}.blob.core.windows.net";
-        const long MaxBlobSize = 104857600;
 
         BlobServiceClient _client;
         BlobServiceClient Client {
