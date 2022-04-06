@@ -1,28 +1,27 @@
-DataGrid allows you to custom paint cells and configure cell's style settings in a PDF document.
+DataGrid allows you to modify cell style settings and custom paint cells in a PDF document.
 
-Use the [customizeCell](/Documentation/ApiReference/Common/Object_Structures/ExportDataGridProps/#customizeCell) function to customize DataGrid cell apperance in a PDF document. For example, you can change the text alignment and the background color of the cell. Use the following function parameters:
+Use the [customizeCell](/Documentation/ApiReference/Common/Object_Structures/ExportDataGridProps/#customizeCell) function to customize the appearance settings of DataGrid cells in a PDF document. For example, you can change the text alignment and the background color of cells. The following function parameters are available:
 
 - gridCell     
-Contains information about the DataGrid cell.
+Contains information about the source DataGrid cell.
 - pdfCell     
-Specifies DataGrid cell appearance after export.
+Contains settings applied to a cell in a PDF document.
 
 In this demo, the **customizeCell** function changes the following elements:
-- Background color of the group row cells 
-- Font weight of the group row cells
-- Font style of the footer cell
+- Background color and font weight of group row cells 
+- Font style of a footer cell
 
-The [customDrawCell](/Documentation/ApiReference/Common/Object_Structures/ExportDataGridProps/#customDrawCell) function allows you to cancel default cell painting in a PDF document. Call this function and use the following parameters to custom paint DataGrid cells:
+The [customDrawCell](/Documentation/ApiReference/Common/Object_Structures/ExportDataGridProps/#customDrawCell) function allows you to draw cells in a PDF document. The following parameters are available when you use this function:
 
 - doc    
-Instance of the [jsPDFDocument](/api-reference/50%20Common/Object%20Structures/PdfExportDataGridProps/jsPDFDocument.md '/Documentation/ApiReference/Common/Object_Structures/PdfExportDataGridProps/#jsPDFDocument').
+An instance of the [jsPDFDocument](/api-reference/50%20Common/Object%20Structures/PdfExportDataGridProps/jsPDFDocument.md '/Documentation/ApiReference/Common/Object_Structures/PdfExportDataGridProps/#jsPDFDocument') object.
 - rect    
-Object that contains information about the location of the cell and its dimensions.
+A cell’s bounds.
 - gridCell    
-Contains information about the DataGrid cell.   
+Contains information about the source DataGrid cell.   
 - pdfCell    
-Specifies DataGrid cell appeareance after export.
+Contains settings applied to a cell in a PDF document.
 - cancel   
-Allows you to prevent default painting logic.
+Set this parameter to **true** to prevent default painting logic.
 
-In this demo, the **customDrawCell** function repaints the "Website" column content.
+This demo uses the **customDrawCell** function to paint cells in the "Website" column.
