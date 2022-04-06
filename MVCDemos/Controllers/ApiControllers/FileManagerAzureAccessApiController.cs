@@ -144,18 +144,18 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
         }
 
         object UploadBlob(string blobName) {
-            throw new NotImplementedException();
-            //if(blobName.EndsWith("/"))
-            //    return CreateErrorResult("Invalid blob name.");
+            if(blobName.EndsWith("/"))
+                return CreateErrorResult("Invalid blob name.");
 
-            //CloudBlockBlob blob = Container.GetBlockBlobReference(blobName);
-            //if(blob.Exists() && blob.Properties.Length > MaxBlobSize) {
+            var blob = Container.GetBlockBlobClient(blobName);
+            // TODO: check necessity
+            //if(blob.Exists() && blob.GetProperties().Value.ContentLength > MaxBlobSize) {
             //    blob.Delete();
             //    return CreateErrorResult();
             //}
 
-            //string url = GetSharedAccessSignature(blob, SharedAccessBlobPermissions.Write);
-            //return CreateSuccessResult(url);
+            var sasUri = TryGetBlobUri(blobName, BlobSasPermissions.Write);
+            return CreateSuccessResult(sasUri.AbsoluteUri);
         }
         Uri TryGetBlobUri(string blobName, BlobSasPermissions permissions) {
             if(!string.IsNullOrEmpty(blobName)) {
