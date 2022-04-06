@@ -69,7 +69,7 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             if(hierarchyItem.IsBlob) {
                 var blobItem = hierarchyItem.Blob;
                 item.DateModified = blobItem.Properties.LastModified.GetValueOrDefault().DateTime;
-                item.Size = blobItem.Properties.ContentLength ?? 0; // TODO: review
+                item.Size = blobItem.Properties.ContentLength ?? 0;
             } else if(hierarchyItem.IsPrefix) {
                 item.IsDirectory = true;
                 item.HasSubDirectories = GetHasDirectories(hierarchyItem);
@@ -79,7 +79,7 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             }
             return item;
         }
-        bool GetHasDirectories(BlobHierarchyItem dir) { // TODO: try change to BlobClient
+        bool GetHasDirectories(BlobHierarchyItem dir) {
             string dirKey = GetBlobRelativePath(dir);
             var oneLevelItemsList = GetOneLevelHierarchyBlobs(dirKey);
             return oneLevelItemsList != null && oneLevelItemsList.Any(bItem => bItem.IsPrefix);
