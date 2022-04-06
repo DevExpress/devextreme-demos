@@ -93,7 +93,7 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
                 var sasUri = Container.GenerateSasUri(BlobContainerSasPermissions.List, DateTimeOffset.UtcNow.AddHours(1));
                 return CreateSuccessResult(sasUri);
             } else {
-                return CreateErrorResult("BlobContainerClient cannot generate SasUri"); // TODO: try to separate into a method
+                return CreateErrorResult("BlobContainerClient cannot generate SasUri");
             }
         }
         object CreateDirectory(string directoryName) {
