@@ -88,12 +88,12 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
             }
             return null;
         }
-        object GetBlobList() { // TODO: fix request after renaming
+        object GetBlobList() {
             if(Container.CanGenerateSasUri) {
                 var sasUri = Container.GenerateSasUri(BlobContainerSasPermissions.List, DateTimeOffset.UtcNow.AddHours(1));
                 return CreateSuccessResult(sasUri);
             } else {
-                return CreateErrorResult("BlobContainerClient cannot generate SasUri");
+                return CreateErrorResult("BlobContainerClient cannot generate SasUri"); // TODO: try to separate into a method
             }
         }
         object CreateDirectory(string directoryName) {

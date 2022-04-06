@@ -64,7 +64,7 @@
     var moveFile = function(sourcePath, destinationPath) {
         return gateway.copyBlob(sourcePath, destinationPath)
             .then(function() {
-                gateway.deleteBlob(sourcePath);
+                return gateway.deleteBlob(sourcePath);
             });
     };
 
@@ -74,7 +74,7 @@
         return executeActionForEachEntry(prefix, function(entry) {
             return copyEntry(entry, prefix, destinationKey)
                 .then(function() {
-                    gateway.deleteBlob(entry.name);
+                    return gateway.deleteBlob(entry.name);
                 });
         });
     };
