@@ -29,15 +29,15 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
         bool AllowUpload { get; }
         bool AllowDownload { get; }
 
-        BlobServiceClient _serviceClient;
-        BlobServiceClient ServiceClient {
+        BlobServiceClient _client;
+        BlobServiceClient Client {
             get {
-                if(_serviceClient == null) {
+                if(_client == null) {
                     AzureStorageAccount accountModel = AzureStorageAccount.FileManager.Value;
                     StorageSharedKeyCredential credential = new StorageSharedKeyCredential(accountModel.AccountName, accountModel.AccessKey);
-                    _serviceClient = new BlobServiceClient(new Uri(string.Format(ServiceUri, accountModel.AccountName)), credential);
+                    _client = new BlobServiceClient(new Uri(string.Format(ServiceUri, accountModel.AccountName)), credential);
                 }
-                return _serviceClient;
+                return _client;
             }
         }
         BlobContainerClient _container;
@@ -45,7 +45,7 @@ namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
             get {
                 if(_container == null) {
                     AzureStorageAccount accountModel = AzureStorageAccount.FileManager.Value;
-                    _container = ServiceClient.GetBlobContainerClient(accountModel.ContainerName);
+                    _container = Client.GetBlobContainerClient(accountModel.ContainerName);
                 }
                 return _container;
             }
