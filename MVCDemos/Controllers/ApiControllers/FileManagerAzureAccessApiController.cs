@@ -1,16 +1,12 @@
 ﻿using DevExtreme.MVC.Demos.Models.FileManagement;
-using Azure;
-using Azure.Core;
+using System;
+using System.Net.Http;
+using System.Web.Http;
 using Azure.Storage;
-//using Azure.Storage.Auth;
+using Azure.Storage.Sas;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs.Specialized;
-using System;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using Azure.Storage.Sas;
 
 namespace DevExtreme.MVC.Demos.Controllers.ApiControllers {
     public class FileManagerAzureAccessApiController : ApiController {
