@@ -1,106 +1,106 @@
-﻿var AzureFileSystem = function (azureGateway) {
+﻿var AzureFileSystem = function(azureGateway) {
     var EMPTY_DIR_DUMMY_BLOB_NAME = "aspxAzureEmptyFolderBlob";
 
     var gateway = azureGateway;
 
-    var getItems = function (path) {
+    var getItems = function(path) {
         var prefix = getDirectoryBlobName(path);
         return gateway.getBlobList(prefix)
-            .then(function (entries) {
+            .then(function(entries) {
                 return getDataObjectsFromEntries(entries, prefix);
             });
     };
 
-    var createDirectory = function (path, name) {
+    var createDirectory = function(path, name) {
         var blobName = path ? path + "/" + name : name;
         return gateway.createDirectoryBlob(blobName);
     };
 
-    var renameFile = function (path, name) {
+    var renameFile = function(path, name) {
         var newPath = getPathWithNewName(path, name);
         return moveFile(path, newPath);
     };
 
-    var renameDirectory = function (path, name) {
+    var renameDirectory = function(path, name) {
         var newPath = getPathWithNewName(path, name);
         return moveDirectory(path, newPath);
     };
 
-    var getPathWithNewName = function (path, name) {
+    var getPathWithNewName = function(path, name) {
         var parts = path.split("/");
         parts[parts.length - 1] = name;
         return parts.join("/");
     };
 
-    var deleteFile = function (path) {
+    var deleteFile = function(path) {
         return gateway.deleteBlob(path);
     };
 
-    var deleteDirectory = function (path) {
+    var deleteDirectory = function(path) {
         var prefix = getDirectoryBlobName(path);
-        return executeActionForEachEntry(prefix, function (entry) {
+        return executeActionForEachEntry(prefix, function(entry) {
             return gateway.deleteBlob(entry.name);
         });
     };
 
-    var copyFile = function (sourcePath, destinationPath) {
+    var copyFile = function(sourcePath, destinationPath) {
         return gateway.copyBlob(sourcePath, destinationPath);
     };
 
-    var copyDirectory = function (sourcePath, destinationPath) {
+    var copyDirectory = function(sourcePath, destinationPath) {
         var prefix = getDirectoryBlobName(sourcePath);
         var destinationKey = getDirectoryBlobName(destinationPath);
-        return executeActionForEachEntry(prefix, function (entry) {
+        return executeActionForEachEntry(prefix, function(entry) {
             return copyEntry(entry, prefix, destinationKey);
         });
     };
 
-    var copyEntry = function (entry, sourceKey, destinationKey) {
+    var copyEntry = function(entry, sourceKey, destinationKey) {
         var restName = entry.name.substr(sourceKey.length);
         var newDestinationKey = destinationKey + restName;
         return gateway.copyBlob(entry.name, newDestinationKey);
     };
 
-    var moveFile = function (sourcePath, destinationPath) {
+    var moveFile = function(sourcePath, destinationPath) {
         return gateway.copyBlob(sourcePath, destinationPath)
-            .then(function () {
+            .then(function() {
                 return gateway.deleteBlob(sourcePath);
             });
     };
 
-    var moveDirectory = function (sourcePath, destinationPath) {
+    var moveDirectory = function(sourcePath, destinationPath) {
         var prefix = getDirectoryBlobName(sourcePath);
         var destinationKey = getDirectoryBlobName(destinationPath);
-        return executeActionForEachEntry(prefix, function (entry) {
+        return executeActionForEachEntry(prefix, function(entry) {
             return copyEntry(entry, prefix, destinationKey)
-                .then(function () {
+                .then(function() {
                     return gateway.deleteBlob(entry.name);
                 });
         });
     };
 
-    var downloadFile = function (path) {
+    var downloadFile = function(path) {
         gateway.getBlobUrl(path)
-            .done(function (accessUrl) {
+            .done(function(accessUrl) {
                 window.location.href = accessUrl;
             });
     };
 
-    var executeActionForEachEntry = function (prefix, action) {
+    var executeActionForEachEntry = function(prefix, action) {
         return gateway.getBlobList(prefix)
-            .then(function (entries) {
-                var deferreds = entries.map(function (entry) {
+            .then(function(entries) {
+                var deferreds = entries.map(function(entry) {
                     return action(entry);
                 });
                 return $.when.apply(null, deferreds);
             });
     };
 
-    var getDataObjectsFromEntries = function (entries, prefix) {
+    var getDataObjectsFromEntries = function(entries, prefix) {
         var result = [];
         var directories = {};
 
-        entries.forEach(function (entry) {
+        entries.forEach(function(entry) {
             var restName = entry.name.substr(prefix.length);
             var parts = restName.split("/");
 
@@ -137,7 +137,7 @@
         return result;
     };
 
-    var compareDataObjects = function (obj1, obj2) {
+    var compareDataObjects = function(obj1, obj2) {
         if (obj1.isDirectory === obj2.isDirectory) {
             var name1 = obj1.name.toLowerCase();
             var name2 = obj2.name.toLowerCase();
@@ -151,7 +151,7 @@
         return obj1.isDirectory ? -1 : 1;
     };
 
-    var getDirectoryBlobName = function (path) {
+    var getDirectoryBlobName = function(path) {
         return path ? path + "/" : path;
     };
 
@@ -170,20 +170,20 @@
     };
 };
 
-var AzureGateway = function (endpointUrl, onRequestExecuted) {
+var AzureGateway = function(endpointUrl, onRequestExecuted) {
 
-    var getBlobList = function (prefix) {
+    var getBlobList = function(prefix) {
         return getAccessUrl("BlobList")
-            .then(function (accessUrl) {
+            .then(function(accessUrl) {
                 return executeBlobListRequest(accessUrl, prefix);
-            }).then(function (xml) {
+            }).then(function(xml) {
                 return parseEntryListResult(xml);
             });
     };
 
-    var parseEntryListResult = function (xml) {
+    var parseEntryListResult = function(xml) {
         return $(xml).find("Blob")
-            .map(function (i, xmlEntry) {
+            .map(function(i, xmlEntry) {
                 var entry = {};
                 parseEntry($(xmlEntry), entry);
                 return entry;
@@ -191,7 +191,7 @@ var AzureGateway = function (endpointUrl, onRequestExecuted) {
             .get();
     };
 
-    var parseEntry = function ($xmlEntry, entry) {
+    var parseEntry = function($xmlEntry, entry) {
         entry.etag = $xmlEntry.find("Etag").text();
         entry.name = $xmlEntry.find("Name").text();
 
@@ -202,7 +202,7 @@ var AzureGateway = function (endpointUrl, onRequestExecuted) {
         entry.length = parseInt(lengthStr);
     };
 
-    var executeBlobListRequest = function (accessUrl, prefix) {
+    var executeBlobListRequest = function(accessUrl, prefix) {
         var params = {
             "restype": "container",
             "comp": "list"
@@ -213,9 +213,9 @@ var AzureGateway = function (endpointUrl, onRequestExecuted) {
         return executeRequest(accessUrl, params);
     };
 
-    var createDirectoryBlob = function (name) {
+    var createDirectoryBlob = function(name) {
         return getAccessUrl("CreateDirectory", name)
-            .then(function (accessUrl) {
+            .then(function(accessUrl) {
                 return executeRequest({
                     url: accessUrl,
                     method: "PUT",
@@ -228,9 +228,9 @@ var AzureGateway = function (endpointUrl, onRequestExecuted) {
             });
     };
 
-    var deleteBlob = function (name) {
+    var deleteBlob = function(name) {
         return getAccessUrl("DeleteBlob", name)
-            .then(function (accessUrl) {
+            .then(function(accessUrl) {
                 return executeRequest({
                     url: accessUrl,
                     method: "DELETE"
@@ -238,9 +238,9 @@ var AzureGateway = function (endpointUrl, onRequestExecuted) {
             });
     };
 
-    var copyBlob = function (sourceName, destinationName) {
+    var copyBlob = function(sourceName, destinationName) {
         return getAccessUrl("CopyBlob", sourceName, destinationName)
-            .then(function (accessUrl, accessUrl2) {
+            .then(function(accessUrl, accessUrl2) {
                 return executeRequest({
                     url: accessUrl2,
                     method: "PUT",
@@ -251,7 +251,7 @@ var AzureGateway = function (endpointUrl, onRequestExecuted) {
             });
     };
 
-    var putBlock = function (uploadUrl, blockIndex, blockBlob) {
+    var putBlock = function(uploadUrl, blockIndex, blockBlob) {
         var blockId = getBlockId(blockIndex);
         var params = {
             "comp": "block",
@@ -266,7 +266,7 @@ var AzureGateway = function (endpointUrl, onRequestExecuted) {
         }, params);
     };
 
-    var putBlockList = function (uploadUrl, blockCount) {
+    var putBlockList = function(uploadUrl, blockCount) {
         var content = getBlockListContent(blockCount);
         var params = {
             "comp": "blocklist"
@@ -278,7 +278,7 @@ var AzureGateway = function (endpointUrl, onRequestExecuted) {
         }, params);
     };
 
-    var getBlockListContent = function (blockCount) {
+    var getBlockListContent = function(blockCount) {
         var contentParts = [
             '<?xml version="1.0" encoding="utf-8"?>',
             '<BlockList>'
@@ -293,7 +293,7 @@ var AzureGateway = function (endpointUrl, onRequestExecuted) {
         return contentParts.join('\n');
     };
 
-    var getBlockId = function (blockIndex) {
+    var getBlockId = function(blockIndex) {
         var res = blockIndex + "";
         while (res.length < 10) {
             res = "0" + res;
@@ -301,15 +301,15 @@ var AzureGateway = function (endpointUrl, onRequestExecuted) {
         return btoa(res);
     };
 
-    var getUploadAccessUrl = function (blobName) {
+    var getUploadAccessUrl = function(blobName) {
         return getAccessUrl("UploadBlob", blobName);
     };
 
-    var getBlobUrl = function (blobName) {
+    var getBlobUrl = function(blobName) {
         return getAccessUrl("GetBlob", blobName);
     };
 
-    var getAccessUrl = function (command, blobName, blobName2) {
+    var getAccessUrl = function(command, blobName, blobName2) {
         var deferred = $.Deferred();
         var url = endpointUrl + "?command=" + command;
         if (blobName) {
@@ -320,7 +320,7 @@ var AzureGateway = function (endpointUrl, onRequestExecuted) {
         }
 
         executeRequest(url)
-            .done(function (result) {
+            .done(function(result) {
                 if (result.success) {
                     deferred.resolve(result.accessUrl, result.accessUrl2);
                 } else {
@@ -332,7 +332,7 @@ var AzureGateway = function (endpointUrl, onRequestExecuted) {
         return deferred.promise();
     };
 
-    var executeRequest = function (args, commandParams) {
+    var executeRequest = function(args, commandParams) {
         var ajaxArgs = typeof args === "string" ? { url: args } : args;
 
         var method = ajaxArgs.method || "GET";
@@ -350,7 +350,7 @@ var AzureGateway = function (endpointUrl, onRequestExecuted) {
         ajaxArgs.url = queryString ? urlPath + "?" + queryString : urlPath;
 
         return $.ajax(ajaxArgs)
-            .done(function () {
+            .done(function() {
                 var eventArgs = {
                     method: method,
                     urlPath: urlPath,
@@ -362,9 +362,9 @@ var AzureGateway = function (endpointUrl, onRequestExecuted) {
             });
     };
 
-    var getQueryString = function (params) {
+    var getQueryString = function(params) {
         return Object.keys(params)
-            .map(function (key) {
+            .map(function(key) {
                 return key + "=" + encodeURIComponent(params[key]);
             })
             .join("&");
