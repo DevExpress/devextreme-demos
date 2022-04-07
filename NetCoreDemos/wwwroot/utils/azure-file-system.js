@@ -104,8 +104,8 @@
             var restName = entry.name.substr(prefix.length);
             var parts = restName.split("/");
 
-            if (parts.length === 1) {
-                if (restName !== EMPTY_DIR_DUMMY_BLOB_NAME) {
+            if(parts.length === 1) {
+                if(restName !== EMPTY_DIR_DUMMY_BLOB_NAME) {
                     var obj = {
                         name: restName,
                         isDirectory: false,
@@ -117,7 +117,7 @@
             } else {
                 var dirName = parts[0];
                 var directory = directories[dirName];
-                if (!directory) {
+                if(!directory) {
                     directory = {
                         name: dirName,
                         isDirectory: true
@@ -126,7 +126,7 @@
                     result.push(directory);
                 }
 
-                if (!directory.hasSubDirectories) {
+                if(!directory.hasSubDirectories) {
                     directory.hasSubDirectories = parts.length > 2;
                 }
             }
@@ -138,10 +138,10 @@
     };
 
     var compareDataObjects = function(obj1, obj2) {
-        if (obj1.isDirectory === obj2.isDirectory) {
+        if(obj1.isDirectory === obj2.isDirectory) {
             var name1 = obj1.name.toLowerCase();
             var name2 = obj2.name.toLowerCase();
-            if (name1 < name2) {
+            if(name1 < name2) {
                 return -1;
             } else {
                 return name1 > name2 ? 1 : 0;
@@ -207,7 +207,7 @@ var AzureGateway = function(endpointUrl, onRequestExecuted) {
             "restype": "container",
             "comp": "list"
         };
-        if (prefix) {
+        if(prefix) {
             params.prefix = prefix;
         }
         return executeRequest(accessUrl, params);
@@ -284,7 +284,7 @@ var AzureGateway = function(endpointUrl, onRequestExecuted) {
             '<BlockList>'
         ];
 
-        for (var i = 0; i < blockCount; i++) {
+        for(var i = 0; i < blockCount; i++) {
             var blockContent = '  <Latest>' + getBlockId(i) + '</Latest>';
             contentParts.push(blockContent);
         }
@@ -295,7 +295,7 @@ var AzureGateway = function(endpointUrl, onRequestExecuted) {
 
     var getBlockId = function(blockIndex) {
         var res = blockIndex + "";
-        while (res.length < 10) {
+        while(res.length < 10) {
             res = "0" + res;
         }
         return btoa(res);
@@ -312,16 +312,16 @@ var AzureGateway = function(endpointUrl, onRequestExecuted) {
     var getAccessUrl = function(command, blobName, blobName2) {
         var deferred = $.Deferred();
         var url = endpointUrl + "?command=" + command;
-        if (blobName) {
+        if(blobName) {
             url += "&blobName=" + encodeURIComponent(blobName);
         }
-        if (blobName2) {
+        if(blobName2) {
             url += "&blobName2=" + encodeURIComponent(blobName2);
         }
 
         executeRequest(url)
             .done(function(result) {
-                if (result.success) {
+                if(result.success) {
                     deferred.resolve(result.accessUrl, result.accessUrl2);
                 } else {
                     deferred.reject(result.error);
@@ -343,7 +343,7 @@ var AzureGateway = function(endpointUrl, onRequestExecuted) {
         var commandQueryString = commandParams ? getQueryString(commandParams) : "";
 
         var queryString = commandQueryString || "";
-        if (restQueryString) {
+        if(restQueryString) {
             queryString += queryString ? "&" + restQueryString : restQueryString;
         }
 
@@ -356,7 +356,7 @@ var AzureGateway = function(endpointUrl, onRequestExecuted) {
                     urlPath: urlPath,
                     queryString: queryString
                 };
-                if (onRequestExecuted) {
+                if(onRequestExecuted) {
                     onRequestExecuted(eventArgs);
                 }
             });
