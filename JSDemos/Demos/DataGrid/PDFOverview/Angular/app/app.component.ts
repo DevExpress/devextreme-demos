@@ -32,6 +32,7 @@ export class AppComponent {
     exportDataGridToPdf({
       jsPDFDocument: doc,
       component: this.dataGrid.instance,
+      indent: 5,
     }).then(() => {
       doc.save('Companies.pdf');
     });

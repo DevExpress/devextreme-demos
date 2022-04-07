@@ -85,6 +85,7 @@ export default {
       exportDataGridToPdf({
         jsPDFDocument: doc,
         component: this.dataGrid,
+        indent: 5,
       }).then(() => {
         doc.save('Companies.pdf');
       });
