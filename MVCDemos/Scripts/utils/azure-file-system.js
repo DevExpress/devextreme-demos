@@ -64,7 +64,7 @@
     var moveFile = function(sourcePath, destinationPath) {
         return gateway.copyBlob(sourcePath, destinationPath)
             .then(function() {
-                gateway.deleteBlob(sourcePath);
+                return gateway.deleteBlob(sourcePath);
             });
     };
 
@@ -74,7 +74,7 @@
         return executeActionForEachEntry(prefix, function(entry) {
             return copyEntry(entry, prefix, destinationKey)
                 .then(function() {
-                    gateway.deleteBlob(entry.name);
+                    return gateway.deleteBlob(entry.name);
                 });
         });
     };
@@ -140,7 +140,7 @@
     var compareDataObjects = function(obj1, obj2) {
         if(obj1.isDirectory === obj2.isDirectory) {
             var name1 = obj1.name.toLowerCase();
-            var name2 = obj1.name.toLowerCase();
+            var name2 = obj2.name.toLowerCase();
             if(name1 < name2) {
                 return -1;
             } else {
