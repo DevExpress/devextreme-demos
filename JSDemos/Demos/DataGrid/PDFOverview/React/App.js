@@ -13,7 +13,7 @@ import Button from 'devextreme-react/button';
 
 import { jsPDF } from 'jspdf';
 
-import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
+import { exportDataGrid } from 'devextreme/pdf_exporter';
 
 import { customers } from './data.js';
 
@@ -25,7 +25,7 @@ export default function App() {
     const doc = new jsPDF();
     const dataGrid = dataGridRef.current.instance;
 
-    exportDataGridToPdf({
+    exportDataGrid({
       jsPDFDocument: doc,
       component: dataGrid,
       indent: 5,
