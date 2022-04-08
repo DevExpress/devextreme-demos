@@ -86,7 +86,7 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             string blobKey = $"{options.DirectoryName}{PathSeparator}{EmptyDirectoryDummyBlobName}";
             if(!string.IsNullOrEmpty(path))
                 blobKey = $"{path}{PathSeparator}{blobKey}";
-            Container.UploadBlob(blobKey, BinaryData.Empty);
+            Container.UploadBlob(blobKey, BinaryData.FromString(string.Empty));
         }
         public void RenameItem(FileSystemRenameItemOptions options) {
             string newName = options.ItemNewName;
