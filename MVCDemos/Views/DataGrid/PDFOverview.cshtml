@@ -51,7 +51,8 @@
         var dataGrid = $("#gridContainer").dxDataGrid("instance");
         DevExpress.pdfExporter.exportDataGrid({
             jsPDFDocument: doc,
-            component: dataGrid
+            component: dataGrid,
+            indent: 5,
         }).then(function () {
             doc.save("Companies.pdf");
         });
