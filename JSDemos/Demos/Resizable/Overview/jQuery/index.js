@@ -52,10 +52,8 @@ $(() => {
     value: allHandles,
     onValueChanged: ({ value }) => {
       const resizableClasses = allHandles.reduce((classes, handle) => {
-        if (!value.includes(handle)) {
-          return `${classes} no-${handle}-handle`;
-        }
-        return classes;
+        const newClass = value.includes(handle) ? '' : ` no-${handle}-handle`;
+        return classes + newClass;
       }, '');
 
       resizable.option({
