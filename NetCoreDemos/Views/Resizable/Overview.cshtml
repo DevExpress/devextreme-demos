@@ -56,12 +56,25 @@
 </div>
 
 <script>
+   const allHandles = ["left", "top", "right", "bottom"];
+
     function keepAspectRatioChanged(e) {
         const resizable = $("#gridContainer").dxResizable('instance');
         resizable.option('keepAspectRatio', e.value);
     }
-    function handlesChanged(e) {
+    function handlesChanged({ value }) {
         const resizable = $("#gridContainer").dxResizable('instance');
-        resizable.option('handles', e.component.option('selectedItems').join(" "));
+
+        const resizableClasses = allHandles.reduce((classes, handle) => {
+            const newClass = value.includes(handle) ? '' : ` no-${handle}-handle`;
+            return classes + newClass;
+        }, '');
+
+        resizable.option({
+            handles: value.join(" "),
+            elementAttr: {
+                class: resizableClasses
+            }
+        });
     }
 </script>
