@@ -46,11 +46,24 @@ $(() => {
     },
   });
 
+  const allHandles = ['left', 'top', 'right', 'bottom'];
   $('#handles').dxTagBox({
-    items: ['left', 'top', 'right', 'bottom'],
-    value: ['left', 'top', 'right', 'bottom'],
+    items: allHandles,
+    value: allHandles,
     onValueChanged: ({ value }) => {
-      resizable.option('handles', value.join(' '));
+      const resizableClasses = allHandles.reduce((classes, handle) => {
+        if (!value.includes(handle)) {
+          return `${classes} no-${handle}-handle`;
+        }
+        return classes;
+      }, '');
+
+      resizable.option({
+        handles: value.join(' '),
+        elementAttr: {
+          class: resizableClasses,
+        },
+      });
     },
   });
 });
