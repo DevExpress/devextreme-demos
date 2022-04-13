@@ -5710,7 +5710,7 @@
             ]
           },
           {
-            "Title": "Notify with Stack",
+            "Title": "Stack",
             "Name": "Stack",
             "DocUrl": "Guide/UI_Components/Toast/Stack/",
             "Widget": "Toast"
