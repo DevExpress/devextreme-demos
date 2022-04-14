@@ -1,4 +1,4 @@
-const directions = [
+export const directions = [
     "down",
     "down-reverse",
     "up",
@@ -9,7 +9,7 @@ const directions = [
     "right-reverse"
 ];
 
-const positions = [
+export const positions = [
     "top left",
     "top center",
     "top right",
@@ -21,4 +21,4 @@ const positions = [
     "right center"
 ];
 
-const types = ["error", "info", "success", "warning"];
+export const types = ["error", "info", "success", "warning"];
