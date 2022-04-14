@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="dx-field">
-        <div class="dx-field-label">With label</div>
+        <div class="dx-field-label">With blue label</div>
         <div class="dx-field-value">
           <DxCheckBox
             :value="true"
