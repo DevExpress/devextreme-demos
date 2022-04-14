@@ -153,7 +153,6 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
         void CopyFile(BlobClient blob, string destinationKey, bool deleteSource = false) {
             var blobCopy = Container.GetBlobClient(destinationKey);
             blobCopy.StartCopyFromUri(blob.Uri);
-            var props = blobCopy.GetProperties();
             if(deleteSource)
                 blob.Delete();
         }
