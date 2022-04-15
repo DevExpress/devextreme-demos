@@ -10,7 +10,7 @@ import {
   DxNumberBoxModule
 } from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
-import hideToasts from 'devextreme/ui/hideToasts';
+import hideToasts from 'devextreme/ui/toast/hide_toasts';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

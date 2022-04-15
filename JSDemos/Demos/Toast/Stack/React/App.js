@@ -4,7 +4,7 @@ import RadioGroup from 'devextreme-react/radio-group';
 import SelectBox from 'devextreme-react/select-box';
 import NumberBox from 'devextreme-react/number-box';
 import Notify from 'devextreme/ui/notify';
-import HideToasts from 'devextreme/ui/hideToasts';
+import HideToasts from 'devextreme/ui/toast/hide_toasts';
 
 import { directions, positions, types } from './data.js';
 

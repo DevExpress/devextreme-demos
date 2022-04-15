@@ -61,7 +61,7 @@ import DxRadioGroup from 'devextreme-vue/radio-group';
 import DxSelectBox from 'devextreme-vue/select-box';
 import DxNumberBox from 'devextreme-vue/number-box';
 import notify from 'devextreme/ui/notify';
-import hideToasts from 'devextreme/ui/hideToasts';
+import hideToasts from 'devextreme/ui/toast/hide_toasts';
 
 import service from './data.js';
 
