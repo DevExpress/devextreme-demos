@@ -23,12 +23,12 @@ if (!/localhost/.test(document.location.host)) {
 })
 export class AppComponent {
     types: string[] = ['error', 'info', 'success', 'warning'];
-    positions: any[] = [
+    positions: string[] = [
         'top left', 'top center', 'top right',
         'bottom left', 'bottom center', 'bottom right',
         'left center', 'center', 'right center'
     ];
-    directions: any[] =  [
+    directions: string[] =  [
         'down', 'down-reverse', 'up', 'up-reverse',
         'left', 'left-reverse', 'right', 'right-reverse'
     ];
@@ -44,8 +44,8 @@ export class AppComponent {
     direction: string = 'up';
 
     showNotify() {
-        const position = this.isAlias ? this.aliasPosition : this.coordinatePosition;
-        const direction = this.direction;
+        const position: any = this.isAlias ? this.aliasPosition : this.coordinatePosition;
+        const direction: any = this.direction;
 
         notify({
             message: `Toast ${this.id}`,
