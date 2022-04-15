@@ -1,56 +1,71 @@
 <template>
   <div>
-    <div class='options'>
-      <div class='caption'>Notify stack</div>
+    <div class="options">
+      <div class="caption">Notify stack</div>
       <div>position by</div>
-      <DxRadioGroup 
+      <DxRadioGroup
         layout="horizontal"
         :items="['alias', 'coordinates']"
         value="alias"
-        @value-changed="radioGroupValueChanged($event)" />
+        @value-changed="radioGroupValueChanged($event)"
+      />
       <DxSelectBox
         :items="positions"
         v-model:value="aliasPosition"
-        :visible="isAlias" />
-      <div class='section'>
+        :visible="isAlias"
+      />
+      <div class="section">
         <DxNumberBox
           :visible="!isAlias"
           label="top"
           v-model:value="coordinatePosition.top"
           width="48%"
-          valueChangeEvent="keyup"
-          :disabled="!!coordinatePosition.bottom" />
+          value-change-event="keyup"
+          :disabled="!!coordinatePosition.bottom"
+        />
         <DxNumberBox
           :visible="!isAlias"
           label="bottom"
           v-model:value="coordinatePosition.bottom"
           width="48%"
-          valueChangeEvent="keyup"
-          :disabled="!!coordinatePosition.top" />
+          value-change-event="keyup"
+          :disabled="!!coordinatePosition.top"
+        />
       </div>
-      <div class='section'>
+      <div class="section">
         <DxNumberBox
           :visible="!isAlias"
           label="left"
           v-model:value="coordinatePosition.left"
           width="48%"
-          valueChangeEvent="keyup"
-          :disabled="!!coordinatePosition.right" />
+          value-change-event="keyup"
+          :disabled="!!coordinatePosition.right"
+        />
         <DxNumberBox
           :visible="!isAlias"
           label="right"
           v-model:value="coordinatePosition.right"
           width="48%"
-          valueChangeEvent="keyup"
-          :disabled="!!coordinatePosition.left" />
+          value-change-event="keyup"
+          :disabled="!!coordinatePosition.left"
+        />
       </div>
       <div>direction</div>
       <DxSelectBox
         :items="directions"
-        v-model:value="direction" />
-      <div class='section'>
-          <DxButton text="Show" width="48%" @click="showNotify()" />
-          <DxButton text="Hide all" width="48%" @click="hideAll()" />
+        v-model:value="direction"
+      />
+      <div class="section">
+        <DxButton
+          text="Show"
+          width="48%"
+          @click="showNotify()"
+        />
+        <DxButton
+          text="Hide all"
+          width="48%"
+          @click="hideAll()"
+        />
       </div>
     </div>
   </div>
@@ -68,7 +83,7 @@ export default {
     DxButton,
     DxRadioGroup,
     DxSelectBox,
-    DxNumberBox
+    DxNumberBox,
   },
   data() {
     return {
@@ -76,76 +91,78 @@ export default {
       positions: [
         'top left', 'top center', 'top right',
         'bottom left', 'bottom center', 'bottom right',
-        'left center', 'center', 'right center'
+        'left center', 'center', 'right center',
       ],
       directions: [
         'down', 'down-reverse', 'up', 'up-reverse',
-        'left', 'left-reverse', 'right', 'right-reverse'
+        'left', 'left-reverse', 'right', 'right-reverse',
       ],
       id: 1,
       isAlias: true,
       aliasPosition: 'bottom center',
-      coordinatePosition:  {
+      coordinatePosition: {
         top: '',
         bottom: '',
         left: '',
-        right: ''
+        right: '',
       },
-      direction: 'up'
+      direction: 'up',
     };
   },
   methods: {
     showNotify() {
-        const position = this.isAlias ? this.aliasPosition : this.coordinatePosition;
-        const direction = this.direction;
+      const position = this.isAlias ? this.aliasPosition : this.coordinatePosition;
+      const direction = this.direction;
 
-        notify({
-            message: `Toast ${this.id}`,
-            height: 45,
-            width: 150,
-            type: this.types[Math.floor(Math.random() * 4)],
-            displayTime: 3500,
-            animation: {
-                show: { type: 'fade', duration: 400, from: 0, to: 1 },
-                hide: { type: 'fade', duration: 40, to: 0 }
-            }
-        }, 
-        { position, direction });
-        this.id += 1;
+      notify({
+        message: `Toast ${this.id}`,
+        height: 45,
+        width: 150,
+        type: this.types[Math.floor(Math.random() * 4)],
+        displayTime: 3500,
+        animation: {
+          show: {
+            type: 'fade', duration: 400, from: 0, to: 1,
+          },
+          hide: { type: 'fade', duration: 40, to: 0 },
+        },
+      },
+      { position, direction });
+      this.id += 1;
     },
 
     hideAll() {
-        hideToasts();
+      hideToasts();
     },
 
     radioGroupValueChanged({ value }) {
-        this.isAlias = value === 'alias';
-    }
+      this.isAlias = value === 'alias';
+    },
   },
 };
 </script>
 <style>
 .options {
-    padding: 20px;
-    background-color: rgba(191, 191, 191, 0.15);
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 260px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  padding: 20px;
+  background-color: rgba(191, 191, 191, 0.15);
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .caption {
-    font-weight: 600;
-    font-size: 22px;
-    text-align: center;
+  font-weight: 600;
+  font-size: 22px;
+  text-align: center;
 }
 
 .section {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 </style>
