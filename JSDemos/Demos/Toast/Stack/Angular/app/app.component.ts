@@ -23,12 +23,12 @@ if (!/localhost/.test(document.location.host)) {
 })
 export class AppComponent {
     types: string[] = ['error', 'info', 'success', 'warning'];
-    positions: string[] = [
+    positions: any[] = [
         'top left', 'top center', 'top right',
         'bottom left', 'bottom center', 'bottom right',
         'left center', 'center', 'right center'
     ];
-    directions: string[] =  [
+    directions: any[] =  [
         'down', 'down-reverse', 'up', 'up-reverse',
         'left', 'left-reverse', 'right', 'right-reverse'
     ];

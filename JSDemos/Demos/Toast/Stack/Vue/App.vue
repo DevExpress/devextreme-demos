@@ -63,8 +63,6 @@ import DxNumberBox from 'devextreme-vue/number-box';
 import notify from 'devextreme/ui/notify';
 import hideToasts from 'devextreme/ui/toast/hide_toasts';
 
-import service from './data.js';
-
 export default {
   components: {
     DxButton,
