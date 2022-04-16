@@ -22,3 +22,5 @@ export const positions = [
 ];
 
 export const types = ['error', 'info', 'success', 'warning'];
+
+export const radioGroupItems = ['alias', 'coordinates'];
