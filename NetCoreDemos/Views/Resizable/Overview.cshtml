@@ -1,0 +1,80 @@
+@using DevExtreme.NETCore.Demos.Models
+
+@model IEnumerable<Order>
+
+<div class="widget-container">
+<div class="dx-fieldset">
+    <div class="dx-fieldset-header">Resizable DataGrid</div>
+    <div class="dx-field">
+        @(Html.DevExtreme().Resizable()
+            .ID("gridContainer")
+            .MinWidth(400)
+            .MinHeight(150)
+            .MaxHeight(370)
+            .Area(".widget-container .dx-field")
+            .Content(Html.DevExtreme().DataGrid<Order>()
+                .ID("grid")
+                .DataSource(Model, new[] { "ID" })
+                .ShowBorders(true)
+                .Height("100%")
+                .Paging(p => p.PageSize(8))
+                .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
+                .Columns(columns => {
+                    columns.AddFor(m => m.OrderNumber)
+                        .AllowGrouping(false)
+                        .Width(130);
+                    columns.AddFor(m => m.CustomerStoreCity);
+                    columns.AddFor(m => m.CustomerStoreState);
+                    columns.AddFor(m => m.Employee);
+                    columns.AddFor(m => m.OrderDate);
+                    columns.AddFor(m => m.SaleAmount)
+                        .Format(Format.Currency);
+                })
+                .ToString()
+            )
+        )
+    </div>
+</div>
+</div>
+<div class="options">
+    <div class="caption">Resizable Options</div>
+    <div class="option">
+        <div>Handles</div>
+        @(Html.DevExtreme().TagBox()
+            .Items(new[] { "left", "top", "right", "bottom" })
+            .Value(new[] { "left", "top", "right", "bottom" })
+            .OnValueChanged("handlesChanged")
+        )
+    </div>
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Keep aspect ratio")
+            .Value(true)
+            .OnValueChanged("keepAspectRatioChanged")
+        )
+    </div>
+</div>
+
+<script>
+   const allHandles = ["left", "top", "right", "bottom"];
+
+    function keepAspectRatioChanged(e) {
+        const resizable = $("#gridContainer").dxResizable('instance');
+        resizable.option('keepAspectRatio', e.value);
+    }
+    function handlesChanged({ value }) {
+        const resizable = $("#gridContainer").dxResizable('instance');
+
+        const resizableClasses = allHandles.reduce((classes, handle) => {
+            const newClass = value.includes(handle) ? '' : ` no-${handle}-handle`;
+            return classes + newClass;
+        }, '');
+
+        resizable.option({
+            handles: value.join(" "),
+            elementAttr: {
+                class: resizableClasses
+            }
+        });
+    }
+</script>

@@ -41,14 +41,14 @@ if (framework === 'angular') {
   ];
 
   // eslint-disable-next-line spellcheck/spell-checker
-  if (currentPackage.fesm5) {
+  if (currentPackage.fesm2015) {
     main = `devextreme-${framework}`;
     minify = false;
     const bundlesRoot = 'node_modules/devextreme-angular/bundles';
     const componentNames = fs.readdirSync(bundlesRoot)
-      .filter((fileName) => fileName.indexOf('umd.min.js.map') !== -1)
+      .filter((fileName) => fileName.indexOf('umd.js.map') !== -1)
       .filter((fileName) => fileName.indexOf('devextreme-angular-ui') === 0)
-      .map((fileName) => fileName.replace('devextreme-angular-ui-', '').replace('.umd.min.js.map', ''));
+      .map((fileName) => fileName.replace('devextreme-angular-ui-', '').replace('.umd.js.map', ''));
 
     additionPaths = {
       'devextreme-angular': `${bundlesRoot}/devextreme-angular.umd.js`,

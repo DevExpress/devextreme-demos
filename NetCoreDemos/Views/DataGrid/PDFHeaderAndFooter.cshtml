@@ -1,0 +1,106 @@
+﻿@using DevExtreme.NETCore.Demos.Models
+
+@model IEnumerable<CountryPopulationAndGDP>
+
+@section ExternalDependencies {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script>
+        window.jsPDF = window.jspdf.jsPDF;
+    </script>
+}
+
+<div class="long-title"><h3>Country Area, Population, and GDP Structure</h3></div>
+@(Html.DevExtreme().DataGrid<CountryPopulationAndGDP>()
+    .ID("gridContainer")
+    .DataSource(Model, "ID")
+    .ShowBorders(true)
+    .Columns(c =>
+    {
+        c.AddFor(m => m.Country);
+        c.AddFor(m => m.Area);
+        c.Add()
+            .Caption("Population")
+            .Columns(a =>
+            {
+                a.AddFor(m => m.Population_Total)
+                    .Format(Format.FixedPoint);
+
+                a.AddFor(m => m.Population_Urban)
+                    .Format(Format.Percent);
+            });
+
+        c.Add()
+        .Caption("Nominal GDP")
+        .Columns(a =>
+        {
+            a.AddFor(m => m.GDP_Total)
+                    .Format(Format.FixedPoint)
+                    .SortOrder(SortOrder.Desc);
+
+            a.Add()
+                    .Caption("By Sector")
+                    .Columns(b =>
+                        {
+                            b.AddFor(m => m.GDP_Agriculture)
+                                .Width(95)
+                                .Format(f => f.Type(Format.Percent).Precision(1));
+
+                            b.AddFor(m => m.GDP_Industry)
+                                .Width(80)
+                                .Format(f => f.Type(Format.Percent).Precision(1));
+
+                            b.AddFor(m => m.GDP_Services)
+                                .Width(85)
+                                .Format(f => f.Type(Format.Percent).Precision(1));
+                        });
+        });
+    })
+    .Toolbar(toolbar => {
+        toolbar.Items(items => {
+            items.Add().Name("groupPanel");
+            items.Add()
+                .Location(ToolbarItemLocation.After)
+                .Widget(w =>
+                    w.Button()
+                        .Icon("exportpdf")
+                        .Text("Export to PDF")
+                        .OnClick("exportToPDF")
+                );
+        });
+    })
+)
+
+<script>
+    function exportToPDF() {
+        const doc = new jsPDF();
+        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+        DevExpress.pdfExporter.exportDataGrid({
+            jsPDFDocument: doc,
+            component: dataGrid,
+            topLeft: { x: 1, y: 15 },
+            columnWidths: [30, 20, 30, 15, 22, 22, 20, 20],
+            customDrawCell({ rect }) {
+                if (lastPoint.x < rect.x + rect.w) {
+                    lastPoint.x = rect.x + rect.w;
+                }
+                if (lastPoint.y < rect.y + rect.h) {
+                    lastPoint.y = rect.y + rect.h;
+                }
+            },
+        }).then(() => {
+            const header = 'Country Area, Population, and GDP Structure';
+            const pageWidth = doc.internal.pageSize.getWidth();
+            doc.setFontSize(15);
+            const headerWidth = doc.getTextDimensions(header).w;
+            doc.text(header, (pageWidth - headerWidth) / 2, 20);
+
+            const footer = 'www.wikipedia.org';
+            doc.setFontSize(9);
+            doc.setTextColor('#cccccc');
+            const footerWidth = doc.getTextDimensions(footer).w;
+            doc.text(footer, (lastPoint.x - footerWidth), lastPoint.y + 5);
+
+            doc.save('Companies.pdf');
+        });
+    }
+</script>
