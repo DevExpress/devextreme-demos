@@ -29,6 +29,8 @@
         .Controller("DataGridCustomers")
         .Key("ID")
     )
+    .Export(e => e.Enabled(true))
+    .OnExporting("exporting")
     .Toolbar(toolbar => {
         toolbar.Items(items => {
             items.Add().Name("groupPanel");
@@ -46,12 +48,11 @@
 )
 
 <script>
-    function exportToPDF() {
+    function exportToPDF(e) {
         var doc = new jsPDF();
-        var dataGrid = $("#gridContainer").dxDataGrid("instance");
         DevExpress.pdfExporter.exportDataGrid({
             jsPDFDocument: doc,
-            component: dataGrid,
+            component: e.component,
             indent: 5,
         }).then(function () {
             doc.save("Companies.pdf");

@@ -1,6 +1,5 @@
 import React from 'react';
-import DataGrid, { Column, Toolbar, Item } from 'devextreme-react/data-grid';
-import Button from 'devextreme-react/button';
+import DataGrid, { Column, Export } from 'devextreme-react/data-grid';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
 import service from './data.js';
@@ -9,7 +8,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.dataGridRef = React.createRef();
     this.employees = service.getEmployees();
   }
 
@@ -18,42 +16,32 @@ class App extends React.Component {
       <div>
         <DataGrid
           id="gridContainer"
-          ref={this.dataGridRef}
           dataSource={this.employees}
           keyExpr="ID"
           showBorders={true}
           showRowLines={true}
-          showColumnLines={false}>
+          showColumnLines={false}
+          onExporting={this.onExporting}>
 
+          <Export enabled={true} />
           <Column dataField="Picture" width={90} cellRender={this.renderGridCell} />
           <Column dataField="FirstName" />
           <Column dataField="LastName" />
           <Column dataField="Position" />
           <Column dataField="BirthDate" dataType="date" />
           <Column dataField="HireDate" dataType="date" />
-
-          <Toolbar>
-            <Item location="after">
-              <Button
-                text='Export to PDF'
-                icon='exportpdf'
-                onClick={this.exportGrid}
-              />
-            </Item>
-          </Toolbar>
         </DataGrid>
       </div>
     );
   }
 
-  exportGrids() {
+  onExporting(e) {
     // eslint-disable-next-line new-cap
     const doc = new jsPDF();
-    const dataGrid = this.dataGridRef.current.instance;
 
     exportDataGrid({
       jsPDFDocument: doc,
-      component: dataGrid,
+      component: e.component,
       margin: {
         top: 10,
         right: 10,
