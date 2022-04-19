@@ -3776,7 +3776,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/Accordion/Overview/",
             "Widget": "Accordion",
             "MvcAdditionalFiles": [
               "/Models/Company.cs",
@@ -3794,7 +3793,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/Menu/Overview/",
             "Widget": "Menu",
             "MvcAdditionalFiles": [
               "/Models/MenuItem.cs",
