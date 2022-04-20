@@ -10,5 +10,9 @@ namespace DevExtreme.MVC.Demos.Controllers {
         public ActionResult Overview() {
             return View(SampleData.ListProducts.Where(e => e.ID > 3 && e.ID < 8));
         }
+
+        public ActionResult Stack() {
+            return View();
+        }
     }
 }
