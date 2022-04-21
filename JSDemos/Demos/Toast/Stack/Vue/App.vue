@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class="options">
-      <div class="caption">Notify stack</div>
-      <div>position by</div>
+      <div>Position by</div>
       <DxRadioGroup
         layout="horizontal"
         :items="['alias', 'coordinates']"
@@ -50,7 +49,7 @@
           :disabled="!!coordinatePosition.left"
         />
       </div>
-      <div>direction</div>
+      <div>Direction</div>
       <DxSelectBox
         :items="directions"
         v-model:value="direction"
@@ -152,12 +151,6 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 5px;
-}
-
-.caption {
-  font-weight: 600;
-  font-size: 22px;
-  text-align: center;
 }
 
 .section {

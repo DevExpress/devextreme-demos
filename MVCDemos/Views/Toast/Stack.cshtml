@@ -11,8 +11,7 @@
     var radioGroupItems = new[] { "alias", "coordinates" };
 }
 <div class="options">
-    <div class="caption">Notify stack</div>
-    <div>position by</div>
+    <div>Position by</div>
     @(Html.DevExtreme().RadioGroup()
         .Items(radioGroupItems)
         .Value("alias")
@@ -65,7 +64,7 @@
             .OnValueChanged("rightNumberBoxValueChanged")
         )
     </div>
-    <div>direction</div>
+    <div>Direction</div>
     @(Html.DevExtreme().SelectBox()
         .ID("direction")
         .Items(directions)

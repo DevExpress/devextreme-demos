@@ -24,8 +24,7 @@ function App() {
 
   return <React.Fragment>
     <div className='options'>
-      <div className='caption'>Notify stack</div>
-      <div>position by</div>
+      <div>Position by</div>
       <RadioGroup
         layout='horizontal'
         defaultValue='alias'
@@ -68,7 +67,7 @@ function App() {
           disabled={!!coordinatePosition.left}
           onValueChange={rightNumberBoxValueChanged} />
       </div>
-      <div>direction</div>
+      <div>Direction</div>
       <SelectBox
         items={directions}
         value={direction}
