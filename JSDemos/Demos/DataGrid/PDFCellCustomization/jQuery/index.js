@@ -18,6 +18,7 @@ $(() => {
     }],
     export: {
       enabled: true,
+      formats: ['pdf'],
     },
     onExporting(e) {
       // eslint-disable-next-line new-cap

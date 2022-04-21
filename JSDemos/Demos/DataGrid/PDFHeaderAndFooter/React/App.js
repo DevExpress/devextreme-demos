@@ -11,6 +11,8 @@ const gdpFormat = {
   precision: 1,
 };
 
+const exportFormats = ['pdf'];
+
 export default function App() {
   const onExporting = React.useCallback((e) => {
     // eslint-disable-next-line new-cap
@@ -54,7 +56,7 @@ export default function App() {
       showBorders={true}
       onExporting={onExporting}>
 
-      <Export enabled={true} />
+      <Export enabled={true} formats={exportFormats} />
       <Column dataField="Country" />
       <Column dataField="Area" />
       <Column caption="Population">

@@ -9,7 +9,10 @@
       :show-column-lines="false"
       @exporting="onExporting"
     >
-      <DxExport :enabled="true"/>
+      <DxExport
+        :enabled="true"
+        :formats="['pdf']"
+      />
       <DxColumn
         data-field="Picture"
         :width="90"

@@ -7,7 +7,10 @@
       :show-borders="true"
       @exporting="onExporting"
     >
-      <DxExport :enabled="true"/>
+      <DxExport
+        :enabled="true"
+        :formats="['pdf']"
+      />
       <DxGroupPanel :visible="true"/>
       <DxGrouping :auto-expand-all="true"/>
       <DxSortByGroupSummaryInfo summary-item="count"/>

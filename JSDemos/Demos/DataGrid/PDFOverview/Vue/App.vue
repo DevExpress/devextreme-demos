@@ -22,6 +22,7 @@
       <DxSelection mode="multiple"/>
       <DxExport
         :enabled="true"
+        :formats="['pdf']"
         :allow-export-selected-data="true"
       />
     </DxDataGrid>

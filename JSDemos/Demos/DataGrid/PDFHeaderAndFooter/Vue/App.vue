@@ -6,7 +6,10 @@
     :show-borders="true"
     @exporting="onExporting"
   >
-    <DxExport :enabled="true"/>
+    <DxExport
+      :enabled="true"
+      :formats="['pdf']"
+    />
     <DxColumn data-field="Country"/>
     <DxColumn data-field="Area"/>
     <DxColumn caption="Population">

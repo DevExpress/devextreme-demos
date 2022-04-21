@@ -29,6 +29,7 @@ $(() => {
     ],
     export: {
       enabled: true,
+      formats: ['pdf'],
       allowExportSelectedData: true,
     },
     onExporting(e) {

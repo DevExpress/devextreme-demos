@@ -11,6 +11,8 @@ import { exportDataGrid } from 'devextreme/pdf_exporter';
 
 import { customers } from './data.js';
 
+const exportFormats = ['pdf'];
+
 export default function App() {
   const onExporting = React.useCallback((e) => {
     // eslint-disable-next-line new-cap
@@ -36,7 +38,7 @@ export default function App() {
       <Selection mode="multiple" />
       <Grouping autoExpandAll={true} />
       <Paging defaultPageSize={10} />
-      <Export enabled={true} allowExportSelectedData={true} />
+      <Export enabled={true} formats={exportFormats} allowExportSelectedData={true} />
 
       <Column dataField='CompanyName' dataType='string' />
       <Column dataField='Phone' dataType='string' />

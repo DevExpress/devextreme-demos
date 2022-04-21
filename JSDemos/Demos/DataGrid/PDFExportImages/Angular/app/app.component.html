@@ -7,7 +7,7 @@
   [showColumnLines]="false"
   (onExporting)="onExporting($event)"
 >
-  <dxo-export [enabled]="true"></dxo-export>
+  <dxo-export [enabled]="true" [formats]="['pdf']"></dxo-export>
   <dxi-column
     dataField="Picture"
     cellTemplate="cellTemplate"

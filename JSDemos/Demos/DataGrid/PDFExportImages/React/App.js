@@ -4,38 +4,12 @@ import { exportDataGrid } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
 import service from './data.js';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+const exportFormats = ['pdf'];
 
-    this.employees = service.getEmployees();
-  }
+export default function App() {
+  const employees = service.getEmployees();
 
-  render() {
-    return (
-      <div>
-        <DataGrid
-          id="gridContainer"
-          dataSource={this.employees}
-          keyExpr="ID"
-          showBorders={true}
-          showRowLines={true}
-          showColumnLines={false}
-          onExporting={this.onExporting}>
-
-          <Export enabled={true} />
-          <Column dataField="Picture" width={90} cellRender={this.renderGridCell} />
-          <Column dataField="FirstName" />
-          <Column dataField="LastName" />
-          <Column dataField="Position" />
-          <Column dataField="BirthDate" dataType="date" />
-          <Column dataField="HireDate" dataType="date" />
-        </DataGrid>
-      </div>
-    );
-  }
-
-  onExporting(e) {
+  const onExporting = React.useCallback((e) => {
     // eslint-disable-next-line new-cap
     const doc = new jsPDF();
 
@@ -65,11 +39,33 @@ class App extends React.Component {
     }).then(() => {
       doc.save('DataGrid.pdf');
     });
-  }
+  }, []);
 
-  renderGridCell(cellData) {
-    return (<div><img src={cellData.value}></img></div>);
-  }
+  const renderGridCell = React.useCallback((cellData) => (
+    <div>
+      <img src={cellData.value}></img>
+    </div>
+  ));
+
+  return (
+    <div>
+      <DataGrid
+        id="gridContainer"
+        dataSource={employees}
+        keyExpr="ID"
+        showBorders={true}
+        showRowLines={true}
+        showColumnLines={false}
+        onExporting={onExporting}>
+
+        <Export enabled={true} formats={exportFormats} />
+        <Column dataField="Picture" width={90} cellRender={renderGridCell} />
+        <Column dataField="FirstName" />
+        <Column dataField="LastName" />
+        <Column dataField="Position" />
+        <Column dataField="BirthDate" dataType="date" />
+        <Column dataField="HireDate" dataType="date" />
+      </DataGrid>
+    </div>
+  );
 }
-
-export default App;

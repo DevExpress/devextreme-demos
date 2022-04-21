@@ -7,6 +7,8 @@ import { exportDataGrid } from 'devextreme/pdf_exporter';
 
 import { companies } from './data.js';
 
+const exportFormats = ['pdf'];
+
 export default function App() {
   const onExporting = React.useCallback((e) => {
     // eslint-disable-next-line new-cap
@@ -44,14 +46,14 @@ export default function App() {
     });
   });
 
-  function renderGridCell(data) {
-    return <a href={ data.text } target='_blank' rel='noopener noreferrer'>Website</a>;
-  }
+  const renderGridCell = React.useCallback((data) => (
+    <a href={ data.text } target='_blank' rel='noopener noreferrer'>Website</a>
+  ), []);
 
-  function phoneNumberFormat(value) {
+  const phoneNumberFormat = React.useCallback((value) => {
     const USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);
     return `(${USNumber[1]}) ${USNumber[2]}-${USNumber[3]}`;
-  }
+  }, []);
 
   return (
     <div>
@@ -62,7 +64,7 @@ export default function App() {
         showBorders={true}
         onExporting={onExporting}>
 
-        <Export enabled={true} />
+        <Export enabled={true} formats={exportFormats} />
         <GroupPanel visible={true} />
         <Grouping autoExpandAll={true} />
         <SortByGroupSummaryInfo summaryItem="count" />
