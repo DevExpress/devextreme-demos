@@ -38,14 +38,14 @@ function App() {
       <div className='section'>
         <NumberBox
           visible={!isAlias}
-          label='top'
+          placeholder='top'
           defaultValue=''
           valueChangeEvent='keyup'
           disabled={!!coordinatePosition.bottom}
           onValueChange={topNumberBoxValueChanged} />
         <NumberBox
           visible={!isAlias}
-          label='bottom'
+          placeholder='bottom'
           defaultValue=''
           valueChangeEvent='keyup'
           disabled={!!coordinatePosition.top}
@@ -54,14 +54,14 @@ function App() {
       <div className='section'>
         <NumberBox
           visible={!isAlias}
-          label='left'
+          placeholder='left'
           defaultValue=''
           valueChangeEvent='keyup'
           disabled={!!coordinatePosition.right}
           onValueChange={leftNumberBoxValueChanged} />
         <NumberBox
           visible={!isAlias}
-          label='right'
+          placeholder='right'
           defaultValue=''
           valueChangeEvent='keyup'
           disabled={!!coordinatePosition.left}

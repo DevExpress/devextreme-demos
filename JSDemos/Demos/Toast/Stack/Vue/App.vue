@@ -16,7 +16,7 @@
       <div class="section">
         <DxNumberBox
           :visible="!isAlias"
-          label="top"
+          placeholder="top"
           v-model:value="coordinatePosition.top"
           width="48%"
           value-change-event="keyup"
@@ -24,7 +24,7 @@
         />
         <DxNumberBox
           :visible="!isAlias"
-          label="bottom"
+          placeholder="bottom"
           v-model:value="coordinatePosition.bottom"
           width="48%"
           value-change-event="keyup"
@@ -34,7 +34,7 @@
       <div class="section">
         <DxNumberBox
           :visible="!isAlias"
-          label="left"
+          placeholder="left"
           v-model:value="coordinatePosition.left"
           width="48%"
           value-change-event="keyup"
@@ -42,7 +42,7 @@
         />
         <DxNumberBox
           :visible="!isAlias"
-          label="right"
+          placeholder="right"
           v-model:value="coordinatePosition.right"
           width="48%"
           value-change-event="keyup"
