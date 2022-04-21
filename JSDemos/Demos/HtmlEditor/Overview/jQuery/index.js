@@ -2,6 +2,10 @@ $(() => {
   const editor = $('.html-editor').dxHtmlEditor({
     height: 725,
     value: markup,
+    imageUpload: {
+      tabs: ['file', 'url'],
+      fileUploadMode: 'base64',
+    },
     toolbar: {
       items: [
         'undo', 'redo', 'separator',
@@ -40,4 +44,15 @@ $(() => {
       editor.option('toolbar.multiline', e.value);
     },
   });
+
+  $("#image-uploader-tabs").dxSelectBox({
+      items: tabs,
+      value: tabs[2].value,
+      valueExpr: 'value',
+      displayExpr: 'name',
+      onValueChanged: (e) => {
+          editor.option('imageUpload.tabs', e.value);
+      }
+  });
+
 });

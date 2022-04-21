@@ -5,6 +5,12 @@
 @(Html.DevExtreme().HtmlEditor()
     .ID("html-editor")
     .Height(725)
+    .ImageUpload(imageUpload => imageUpload.Tabs(
+        tabs => {
+            tabs.Add().Name(HtmlEditorImageUploadTab.File);
+            tabs.Add().Name(HtmlEditorImageUploadTab.Url);
+        })
+    )
     .Value(new JS("markup"))
     .Toolbar(toolbar => toolbar.Items(
         items => {
@@ -105,6 +111,17 @@
             .OnValueChanged("change_multiline")
         )
     </div>
+    <div class="option">
+        <div class="label">Image upload tabs:</div>
+        @(Html.DevExtreme().SelectBox()
+            .ID("html-editor-sb")
+            .DataSource(new JS("tabs"))
+            .Value(new JS("tabs[2].Value"))
+            .OnValueChanged("change_tabs")
+            .ValueExpr("Value")
+            .DisplayExpr("Name")
+        )
+    </div>
 </div>
 
 <script>
@@ -113,6 +130,18 @@
             .dxHtmlEditor("instance")
             .option("toolbar.multiline", e.value);
     }
+
+    function change_tabs(e) {
+        $("#html-editor")
+            .dxHtmlEditor("instance")
+            .option("imageUpload.tabs", e.value);
+    }
+
+    var tabs = [
+        { Name: 'From Your Device', Value: ['file'] },
+        { Name: 'From the Web', Value: ['url'] },
+        { Name: 'Both', Value: ['file', 'url'] },
+    ];
 
     var markup = `
          <h2>
