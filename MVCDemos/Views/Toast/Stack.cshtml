@@ -1,17 +1,15 @@
 @{
-    const directions = new[] {
+    var directions = new[] {
         "down", "down-reverse",  "up", "up-reverse",
         "left", "left-reverse", "right", "right-reverse"
     };
-    const positions = new[] {
+    var positions = new[] {
         "top left", "top center", "top right",
         "bottom left", "bottom center", "bottom right",
         "left center", "center", "right center"
     };
-    const types = new[] {"error", "info", "success", "warning"};
-    const radioGroupItems = new[] {"alias", "coordinates"};
+    var radioGroupItems = new[] { "alias", "coordinates" };
 }
-
 <div class="options">
     <div class="caption">Notify stack</div>
     <div>position by</div>
@@ -30,7 +28,7 @@
     <div class="section">
         @(Html.DevExtreme().NumberBox()
             .ID("positionTop")
-            .Value("")
+            .Value(null)
             .Width("48%")
             .Visible(false)
             .ValueChangeEvent("keyup")
@@ -39,7 +37,7 @@
         )
         @(Html.DevExtreme().NumberBox()
             .ID("positionBottom")
-            .Value("")
+            .Value(null)
             .Width("48%")
             .Visible(false)
             .ValueChangeEvent("keyup")
@@ -50,7 +48,7 @@
     <div class="section">
         @(Html.DevExtreme().NumberBox()
             .ID("positionLeft")
-            .Value("")
+            .Value(null)
             .Width("48%")
             .Visible(false)
             .ValueChangeEvent("keyup")
@@ -59,7 +57,7 @@
         )
         @(Html.DevExtreme().NumberBox()
             .ID("positionRight")
-            .Value("")
+            .Value(null)
             .Width("48%")
             .Visible(false)
             .ValueChangeEvent("keyup")
@@ -92,6 +90,7 @@
     let id = 1;
     let position = "bottom center";
     let direction = "up";
+    const types = ["error", "info", "success", "warning"];
 
     const onRadioGroupValueChanged = ({ value }) => {
         const aliasSelected = value === "alias";
