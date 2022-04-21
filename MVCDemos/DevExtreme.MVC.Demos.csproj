@@ -999,6 +999,7 @@
     <Content Include="Content\DemosStyles\TagBox\GroupedItems.css" />
     <Content Include="Content\DemosStyles\TagBox\TagCountLimitation.css" />
     <Content Include="Content\DemosStyles\Toast\Overview.css" />
+    <Content Include="Content\DemosStyles\Toast\Stack.css" />
     <Content Include="Content\DemosStyles\Tooltip\Overview.css" />
     <Content Include="Content\DemosStyles\Slider\Overview.css" />
     <Content Include="Content\DemosStyles\TreeList\Adaptability.css" />
@@ -2104,6 +2105,7 @@
     <Content Include="Views\TreeList\FormEditing.cshtml" />
     <Content Include="Views\TreeList\MultipleRowSelection.cshtml" />
     <Content Include="Views\Toast\Overview.cshtml" />
+    <Content Include="Views\Toast\Stack.cshtml" />
     <Content Include="Views\TreeList\LoadDataOnDemand.cshtml" />
     <Content Include="Views\Tooltip\Overview.cshtml" />
     <Content Include="Views\TreeList\WebAPIService.cshtml" />
