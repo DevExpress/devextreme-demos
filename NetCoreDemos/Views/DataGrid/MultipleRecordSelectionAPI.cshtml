@@ -96,8 +96,8 @@
             dataGrid.selectAll();
         } else {
             var employeesToSelect = dataGrid.getDataSource().items()
-                  .filter((employee) => employee.Prefix === data.value)
-                  .map((employee) => employee.ID);
+                    .filter((employee) => employee.Prefix === data.value)
+                    .map((employee) => employee.ID);
 
             dataGrid.selectRows(employeesToSelect);
         }

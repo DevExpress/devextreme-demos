@@ -29,7 +29,10 @@
         .Controller("DataGridCustomers")
         .Key("ID")
     )
-    .Export(e => e.Enabled(true))
+    .Export(e => e.Enabled(true)
+        .AllowExportSelectedData(true)
+        .Formats(new[] { "pdf" })
+    )
     .OnExporting("exporting")
     .Toolbar(toolbar => {
         toolbar.Items(items => {

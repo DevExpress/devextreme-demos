@@ -55,7 +55,7 @@
                         });
         });
     })
-    .Export(e => e.Enabled(true))
+    .Export(e => e.Enabled(true).Formats(new[] { "pdf" }))
     .OnExporting("exportToPDF")
 )
 

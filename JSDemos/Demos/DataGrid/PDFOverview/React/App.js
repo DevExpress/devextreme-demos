@@ -4,6 +4,7 @@ import DataGrid, {
   Column,
   Grouping,
   Export,
+  Selection,
   Paging,
 } from 'devextreme-react/data-grid';
 import { jsPDF } from 'jspdf';
@@ -40,11 +41,11 @@ export default function App() {
       <Paging defaultPageSize={10} />
       <Export enabled={true} formats={exportFormats} allowExportSelectedData={true} />
 
-      <Column dataField='CompanyName' dataType='string' />
-      <Column dataField='Phone' dataType='string' />
-      <Column dataField='Fax' dataType='string' />
-      <Column dataField='City' dataType='string' />
-      <Column dataField='State' dataType='string' groupIndex={0} />
+      <Column dataField="CompanyName" dataType="string" />
+      <Column dataField="Phone" dataType="string" />
+      <Column dataField="Fax" dataType="string" />
+      <Column dataField="City" dataType="string" />
+      <Column dataField="State" dataType="string" groupIndex={0} />
     </DataGrid>
   );
 }

@@ -28,7 +28,10 @@
         .LoadAction("Get")
         .Key("ID")
     )
-    .Export(e => e.Enabled(true))
+    .Export(e => e.Enabled(true)
+        .AllowExportSelectedData(true)
+        .Formats(new[] { "pdf" })
+    )
     .OnExporting("exportToPDF")
 )
 
