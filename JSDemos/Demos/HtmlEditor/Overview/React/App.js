@@ -1,6 +1,8 @@
 import React from 'react';
 
-import HtmlEditor, { Toolbar, MediaResizing, ImageUpload, Item } from 'devextreme-react/html-editor';
+import HtmlEditor, {
+  Toolbar, MediaResizing, ImageUpload, Item,
+} from 'devextreme-react/html-editor';
 import CheckBox from 'devextreme-react/check-box';
 import SelectBox from 'devextreme-react/select-box';
 

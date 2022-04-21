@@ -45,14 +45,13 @@ $(() => {
     },
   });
 
-  $("#image-uploader-tabs").dxSelectBox({
-      items: tabs,
-      value: tabs[2].value,
-      valueExpr: 'value',
-      displayExpr: 'name',
-      onValueChanged: (e) => {
-          editor.option('imageUpload.tabs', e.value);
-      }
+  $('#image-uploader-tabs').dxSelectBox({
+    items: tabs,
+    value: tabs[2].value,
+    valueExpr: 'value',
+    displayExpr: 'name',
+    onValueChanged: (e) => {
+      editor.option('imageUpload.tabs', e.value);
+    },
   });
-
 });
