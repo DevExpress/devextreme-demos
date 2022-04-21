@@ -98,15 +98,15 @@
         const bottomNumberBox = $("#positionBottom").dxNumberBox("instance");
         const leftNumberBox = $("#positionLeft").dxNumberBox("instance");
         const rightNumberBox = $("#positionRight").dxNumberBox("instance");
-        
+
         positionSelectBox.option("visible", aliasSelected);
         topNumberBox.option("visible", !aliasSelected);
         bottomNumberBox.option("visible", !aliasSelected);
         leftNumberBox.option("visible", !aliasSelected);
         rightNumberBox.option("visible", !aliasSelected);
-        
-        position = aliasSelected 
-            ? positionSelectBox.option("value") 
+
+        position = aliasSelected
+            ? positionSelectBox.option("value")
             : {
                 top: topNumberBox.option("value") || undefined,
                 left: leftNumberBox.option("value") || undefined,

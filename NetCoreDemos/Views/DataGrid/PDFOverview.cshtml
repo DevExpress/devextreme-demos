@@ -22,37 +22,26 @@
     .AllowColumnReordering(true)
     .ShowBorders(true)
     .Grouping(grouping => grouping.AutoExpandAll(true))
-    .SearchPanel(searchPanel => searchPanel.Visible(true))
-    .GroupPanel(groupPanel => groupPanel.Visible(true))
     .Paging(paging => paging.PageSize(10))
     .DataSource(d => d.Mvc()
         .Controller("DataGridCustomers")
         .LoadAction("Get")
         .Key("ID")
     )
-    .Toolbar(toolbar => {
-        toolbar.Items(items => {
-            items.Add().Name("groupPanel");
-            items.Add()
-                .Location(ToolbarItemLocation.After)
-                .Widget(w =>
-                    w.Button()
-                        .Icon("exportpdf")
-                        .Text("Export to PDF")
-                        .OnClick("exportToPDF")
-                );
-            items.Add().Name("searchPanel");
-        });
-    })
+    .Export(e => e.Enabled(true)
+        .AllowExportSelectedData(true)
+        .Formats(new[] { "pdf" })
+    )
+    .OnExporting("exportToPDF")
 )
 
 <script>
-    function exportToPDF() {
+    function exportToPDF(e) {
         var doc = new jsPDF();
-        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+
         DevExpress.pdfExporter.exportDataGrid({
             jsPDFDocument: doc,
-            component: dataGrid,
+            component: e.component,
             indent: 5,
         }).then(function () {
             doc.save("Companies.pdf");

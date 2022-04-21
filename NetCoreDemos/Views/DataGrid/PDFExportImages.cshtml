@@ -29,42 +29,29 @@
         columns.Add().DataField("BirthDate").DataType(GridColumnDataType.Date);
         columns.Add().DataField("HireDate").DataType(GridColumnDataType.Date);
     })
-    .Toolbar(toolbar => {
-        toolbar.Items(items => {
-            items.Add().Name("groupPanel");
-            items.Add()
-                .Location(ToolbarItemLocation.After)
-                .Widget(w =>
-                    w.Button()
-                        .Icon("exportpdf")
-                        .Text("Export to PDF")
-                        .OnClick("exportGrid")
-                );
-            items.Add().Name("searchPanel");
-        });
-    })
+    .Export(e => e.Enabled(true).Formats(new[] { "pdf" }))
+    .OnExporting("exportToPDF")
 )
 <script src="~/data/employeesEI.js"></script>
 <script>
-    function exportGrid() {
-        const dataGrid = $('#gridContainer').dxDataGrid('instance');
+    function exportToPDF(e) {
         const doc = new jsPDF();
 
         DevExpress.pdfExporter.exportDataGrid({
-          jsPDFDocument: doc,
-          component: dataGrid,
-          topLeft: { x: 10, y: 15 },
-          onRowExporting: (arg) => { arg.rowHeight = 100; },
-          customDrawCell: (arg) => {
-            if (arg.gridCell.rowType === 'data') {
-              if (arg.gridCell.column.dataField === 'Picture') {
-                doc.addImage(gridCell.value, 'PNG', rect.x, rect.y, rect.w, rect.h);
-                arg.cancel = true;
-              }
+            jsPDFDocument: doc,
+            component: e.component,
+            topLeft: { x: 10, y: 15 },
+            onRowExporting: (arg) => { arg.rowHeight = 100; },
+            customDrawCell: (arg) => {
+                if (arg.gridCell.rowType === 'data') {
+                    if (arg.gridCell.column.dataField === 'Picture') {
+                        doc.addImage(gridCell.value, 'PNG', rect.x, rect.y, rect.w, rect.h);
+                        arg.cancel = true;
+                    }
+                }
             }
-          }
         }).then(() => {
-          doc.save('DataGrid.pdf');
+            doc.save('DataGrid.pdf');
         });
     }
 </script>

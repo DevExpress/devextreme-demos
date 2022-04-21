@@ -10,15 +10,15 @@
     )
     .ShowBorders(true)
     .ColumnAutoWidth(true)
-       .Editing(editing => {
-           editing.Mode(GridEditMode.Row);
-           editing.AllowAdding(true);
-           editing.AllowDeleting(true);
-           editing.AllowUpdating(true);
-           editing.ConfirmDelete(false);
-           editing.UseIcons(true);
-           editing.NewRowPosition(GridNewRowPosition.ViewportTop);
-       })
+        .Editing(editing => {
+            editing.Mode(GridEditMode.Row);
+            editing.AllowAdding(true);
+            editing.AllowDeleting(true);
+            editing.AllowUpdating(true);
+            editing.ConfirmDelete(false);
+            editing.UseIcons(true);
+            editing.NewRowPosition(GridNewRowPosition.ViewportTop);
+        })
     .RemoteOperations(true)
     .Columns(columns => {
         columns.Add()
