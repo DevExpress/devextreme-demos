@@ -1,13 +1,15 @@
-The Tabs component contains items that you can use to switch between pages or views. You can display Tabs items from an [items](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/items/) array or a [dataSource](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#dataSource). 
+The Tabs component allows you to create a tabbed UI to navigate between pages or views. You can create tab items in the [items](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/items/) array, or populate tab items from a [dataSource](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#dataSource).
 
-## Configure Tabs with Overflow
+## Configure Overflow Behavior
 
-The Tabs component outstretches to fit the container, if you do not specify the component's [width](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#width). When the overflow happens, the navigation buttons appear, and users can scroll through the items. You can specify [showNavButtons](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#showNavButtons) and [scrollByContent](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#scrollByContent) properties to control this behavior.
+The Tabs component stretches to fit its container if you do not specify the component's [width](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#width). When the total tab width exceeds the component’s width, navigation buttons appear. A user can click these buttons to scroll through the tabs. Use the [showNavButtons](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#showNavButtons) and [scrollByContent](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#scrollByContent) properties to control this behavior.
 
-## Customize Item Appearance
+## Customize Tab Contents and Appearance
 
-You can define the [itemTemplate](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#itemTemplate) to customize item appearance. If you use the **items** array, you can define specific fields in item data objects. For example, you can add an [icon](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/items/#icon) or a [badge](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/items/#badge).
+You can initialize a tab’s contents (text, icons and badges) with values from underlying data objects. This example demonstrates this technique.
+You can also specify an item template ([itemTemplate](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#itemTemplate)) to customize tabs.
 
-## Process Clicked Items
+## Process Tab Selection
 
-Specify the [selectedIndex](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#selectedIndex) property to select a specific item. Use the [onItemClick](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#onItemClick) function to process clicked items.
+Specify the [selectedIndex](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#selectedIndex) property to select a specific tab. Use the [onItemClick](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#onItemClick) function to process clicks on tabs.
+
