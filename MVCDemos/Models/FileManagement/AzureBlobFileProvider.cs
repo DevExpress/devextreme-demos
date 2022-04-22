@@ -1,19 +1,16 @@
-﻿using DevExtreme.AspNet.Mvc.FileManagement;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Azure;
-using Azure.Storage;
-using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Auth;
+using Microsoft.Azure.Storage.Blob;
+using DevExtreme.AspNet.Mvc.FileManagement;
 
 namespace DevExtreme.MVC.Demos.Models.FileManagement {
     public class AzureBlobFileProvider : IFileSystemItemLoader, IFileSystemItemEditor, IFileUploader, IFileContentProvider {
         const string EmptyDirectoryDummyBlobName = "aspxAzureEmptyFolderBlob";
         const string TempFilePrefix = "azuredownload_";
-        const string ServiceUri = "https://{0}.blob.core.windows.net";
-        const string PathSeparator = "/";
 
         public AzureBlobFileProvider(string storageAccountName, string storageAccessKey, string containerName, string tempDirPath) {
             StorageAccountName = storageAccountName;
@@ -27,176 +24,210 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
         string ContainerName { get; set; }
         string TempDirectoryPath { get; set; }
 
-        BlobContainerClient _container;
-        BlobContainerClient Container {
+        CloudBlobContainer _container;
+        CloudBlobContainer Container {
             get {
-                if(_container == null) {
-                    StorageSharedKeyCredential credential = new StorageSharedKeyCredential(StorageAccountName, StorageAccessKey);
-                    BlobServiceClient client = new BlobServiceClient(new Uri(string.Format(ServiceUri, StorageAccountName)), credential);
-                    _container = client.GetBlobContainerClient(ContainerName);
+                if(this._container == null) {
+                    var credentials = new StorageCredentials(StorageAccountName, StorageAccessKey);
+                    var account = new CloudStorageAccount(credentials, true);
+                    var client = account.CreateCloudBlobClient();
+                    this._container = client.GetContainerReference(ContainerName);
                 }
-                return _container;
+                return this._container;
             }
         }
+
         public IEnumerable<FileSystemItem> GetItems(FileSystemLoadItemOptions options) {
             var result = new List<FileSystemItem>();
+            BlobContinuationToken continuationToken = null;
             string dirKey = GetFileItemPath(options.Directory);
-            var oneLevelItemsList = GetOneLevelHierarchyBlobs(dirKey);
-            foreach(BlobHierarchyItem hierarchyItem in oneLevelItemsList) {
-                var fileItem = GetFileSystemItem(hierarchyItem);
-                if(fileItem != null) {
-                    result.Add(fileItem);
+            if(!string.IsNullOrEmpty(dirKey))
+                dirKey = dirKey + "/";
+            CloudBlobDirectory dir = Container.GetDirectoryReference(dirKey);
+
+            do {
+                BlobResultSegment segmentResult = dir.ListBlobsSegmented(continuationToken);
+                continuationToken = segmentResult.ContinuationToken;
+                foreach(IListBlobItem blob in segmentResult.Results) {
+                    var item = new FileSystemItem();
+                    string name = GetFileItemName(blob);
+                    if(name == EmptyDirectoryDummyBlobName)
+                        continue;
+
+                    if(blob is CloudBlob) {
+                        var blockBlob = (CloudBlob)blob;
+                        item.Name = name;
+                        item.DateModified = blockBlob.Properties.LastModified.GetValueOrDefault().DateTime;
+                        item.Size = blockBlob.Properties.Length;
+                    } else if(blob is CloudBlobDirectory) {
+                        var subDir = (CloudBlobDirectory)blob;
+                        item.Name = name.Substring(0, name.Length - 1);
+                        item.IsDirectory = true;
+                        item.HasSubDirectories = GetHasDirectories(subDir);
+                        item.DateModified = DateTime.UtcNow;
+                    } else {
+                        throw new Exception("Unsupported blob type");
+                    }
+                    result.Add(item);
                 }
-            }
+            } while(continuationToken != null);
+
             return result.OrderByDescending(item => item.IsDirectory)
                 .ThenBy(item => item.Name)
                 .ToList();
         }
-        Pageable<BlobHierarchyItem> GetOneLevelHierarchyBlobs(string prefix) {
-            if(!string.IsNullOrEmpty(prefix) && !prefix.EndsWith(PathSeparator))
-                prefix = prefix + PathSeparator;
-            return Container.GetBlobsByHierarchy(prefix: prefix, delimiter: PathSeparator);
+
+        bool GetHasDirectories(CloudBlobDirectory dir) {
+            bool result;
+            BlobContinuationToken continuationToken = null;
+            do {
+                BlobResultSegment segmentResult = dir.ListBlobsSegmented(continuationToken);
+                continuationToken = segmentResult.ContinuationToken;
+                result = segmentResult.Results.Any(blob => blob is CloudBlobDirectory);
+            } while(!result && continuationToken != null);
+            return result;
         }
-        FileSystemItem GetFileSystemItem(BlobHierarchyItem hierarchyItem) {
-            var item = new FileSystemItem();
-            string name = GetBlobName(hierarchyItem);
-            if(name == EmptyDirectoryDummyBlobName)
-                return null;
-            item.Name = name;
-            if(hierarchyItem.IsBlob) {
-                var blobItem = hierarchyItem.Blob;
-                item.DateModified = blobItem.Properties.LastModified.GetValueOrDefault().DateTime;
-                item.Size = blobItem.Properties.ContentLength ?? 0;
-            } else if(hierarchyItem.IsPrefix) {
-                item.IsDirectory = true;
-                item.HasSubDirectories = GetHasDirectories(hierarchyItem);
-                item.DateModified = DateTime.UtcNow;
-            } else {
-                throw new Exception("Unsupported blob type");
-            }
-            return item;
-        }
-        bool GetHasDirectories(BlobHierarchyItem dir) {
-            string dirKey = GetBlobRelativePath(dir);
-            var oneLevelItemsList = GetOneLevelHierarchyBlobs(dirKey);
-            return oneLevelItemsList != null && oneLevelItemsList.Any(bItem => bItem.IsPrefix);
-        }
+
         public void CreateDirectory(FileSystemCreateDirectoryOptions options) {
             string path = GetFileItemPath(options.ParentDirectory);
-            string blobKey = $"{options.DirectoryName}{PathSeparator}{EmptyDirectoryDummyBlobName}";
+            string blobKey = $"{options.DirectoryName}/{EmptyDirectoryDummyBlobName}";
             if(!string.IsNullOrEmpty(path))
-                blobKey = $"{path}{PathSeparator}{blobKey}";
-            Container.UploadBlob(blobKey, BinaryData.FromString(string.Empty));
+                blobKey = $"{path}/{blobKey}";
+            CloudBlockBlob dirBlob = Container.GetBlockBlobReference(blobKey);
+            dirBlob.UploadText("");
         }
+
         public void RenameItem(FileSystemRenameItemOptions options) {
             string newName = options.ItemNewName;
             string key = GetFileItemPath(options.Item);
-            int index = key.LastIndexOf(PathSeparator);
+            int index = key.LastIndexOf('/');
             string newKey;
             if(index >= 0) {
                 string parentKey = key.Substring(0, index + 1);
                 newKey = parentKey + newName;
             } else
                 newKey = newName;
+
             Copy(key, newKey, true);
         }
+
         public void MoveItem(FileSystemMoveItemOptions options) {
             Copy(options.Item, options.DestinationDirectory, true);
         }
+
         public void CopyItem(FileSystemCopyItemOptions options) {
             Copy(options.Item, options.DestinationDirectory, false);
         }
+
         void Copy(FileSystemItemInfo sourceItem, FileSystemItemInfo destinationItem, bool deleteSource = false) {
             string sourceKey = GetFileItemPath(sourceItem);
-            string destinationKey = GetFileItemPath(destinationItem) + PathSeparator + sourceItem.Name;
+            string destinationKey = GetFileItemPath(destinationItem) + "/" + sourceItem.Name;
             Copy(sourceKey, destinationKey, deleteSource);
         }
+
         void Copy(string sourceKey, string destinationKey, bool deleteSource) {
-            var blobClient = Container.GetBlobClient(sourceKey);
-            bool isFile = blobClient.Exists();
+            CloudBlob blob = Container.GetBlobReference(sourceKey);
+            bool isFile = blob.Exists();
             if(isFile)
-                CopyFile(blobClient, destinationKey, deleteSource);
+                CopyFile(blob, destinationKey, deleteSource);
             else
-                CopyDirectory(sourceKey, destinationKey, deleteSource);
+                CopyDirectory(sourceKey, destinationKey + "/", deleteSource);
         }
+
         public void DeleteItem(FileSystemDeleteItemOptions options) {
             string key = GetFileItemPath(options.Item);
-            var blobClient = Container.GetBlobClient(key);
-            bool isFile = blobClient.Exists();
+            CloudBlob blob = Container.GetBlobReference(key);
+            bool isFile = blob.Exists();
             if(isFile)
-                RemoveFile(blobClient);
+                RemoveFile(blob);
             else
-                RemoveDirectory(key);
+                RemoveDirectory(key + "/");
         }
+
         public void UploadFile(FileSystemUploadFileOptions options) {
-            string destinationKey = $"{options.DestinationDirectory.Path}{PathSeparator}{options.FileName}";
-            var blobClient = Container.GetBlobClient(destinationKey);
-            blobClient.Upload(options.TempFile.FullName, overwrite: true);
-            RemoveUploadedFile(options.TempFile.FullName);
+            string destinationKey = $"{options.DestinationDirectory.Path}/{options.FileName}";
+            CloudBlockBlob newBlob = Container.GetBlockBlobReference(destinationKey);
+            newBlob.UploadFromFile(options.TempFile.FullName);
         }
-        void RemoveFile(BlobClient blob) {
+
+        void RemoveFile(CloudBlob blob) {
             blob.Delete();
         }
-        void RemoveDirectory(string dirKey) {
-            var children = GetOneLevelHierarchyBlobs(dirKey);
-            foreach(var blob in children) {
-                string childRelativePath = GetBlobRelativePath(blob);
-                if(blob.IsBlob) {
-                    RemoveFile(Container.GetBlobClient(childRelativePath));
-                } else if(blob.IsPrefix) {
-                    RemoveDirectory(childRelativePath);
+
+        void RemoveDirectory(string key) {
+            CloudBlobDirectory dir = Container.GetDirectoryReference(key);
+            RemoveDirectory(dir);
+        }
+
+        void RemoveDirectory(CloudBlobDirectory dir) {
+            var children = new List<IListBlobItem>();
+            BlobContinuationToken continuationToken = null;
+
+            do {
+                BlobResultSegment segmentResult = dir.ListBlobsSegmented(continuationToken);
+                continuationToken = segmentResult.ContinuationToken;
+                children.AddRange(segmentResult.Results);
+            } while(continuationToken != null);
+
+            foreach(IListBlobItem blob in children) {
+                if(blob is CloudBlob) {
+                    RemoveFile((CloudBlob)blob);
+                } else if(blob is CloudBlobDirectory) {
+                    RemoveDirectory((CloudBlobDirectory)blob);
                 } else {
                     throw new Exception("Unsupported blob type");
                 }
             }
         }
-        void CopyFile(BlobClient blob, string destinationKey, bool deleteSource = false) {
-            var blobCopy = Container.GetBlobClient(destinationKey);
-            blobCopy.StartCopyFromUri(blob.Uri);
+
+        void CopyFile(CloudBlob blob, string destinationKey, bool deleteSource = false) {
+            CloudBlob blobCopy = Container.GetBlobReference(destinationKey);
+            blobCopy.StartCopy(blob.Uri);
             if(deleteSource)
                 blob.Delete();
         }
+
         void CopyDirectory(string sourceKey, string destinationKey, bool deleteSource = false) {
-            var children = GetOneLevelHierarchyBlobs(sourceKey);
-            foreach(var blob in children) {
-                string childSourceRelativePath = GetBlobRelativePath(blob);
-                string childName = GetBlobName(blob);
-                string childDestinationRelativePath = $"{destinationKey}{PathSeparator}{childName}";
-                if(blob.IsBlob) {
-                    CopyFile(Container.GetBlobClient(childSourceRelativePath), childDestinationRelativePath, deleteSource);
-                } else if(blob.IsPrefix) {
-                    CopyDirectory(GetBlobRelativePath(blob), childDestinationRelativePath, deleteSource);
+            CloudBlobDirectory dir = Container.GetDirectoryReference(sourceKey);
+            CopyDirectory(dir, destinationKey, deleteSource);
+        }
+
+        void CopyDirectory(CloudBlobDirectory dir, string destinationKey, bool deleteSource = false) {
+            var children = new List<IListBlobItem>();
+            BlobContinuationToken continuationToken = null;
+
+            do {
+                BlobResultSegment segmentResult = dir.ListBlobsSegmented(continuationToken);
+                continuationToken = segmentResult.ContinuationToken;
+                children.AddRange(segmentResult.Results);
+            } while(continuationToken != null);
+
+            foreach(IListBlobItem blob in children) {
+                string childCopyName = GetFileItemName(blob);
+                string childCopyKey = $"{destinationKey}{childCopyName}";
+                if(blob is CloudBlob) {
+                    CopyFile((CloudBlob)blob, childCopyKey, deleteSource);
+                } else if(blob is CloudBlobDirectory) {
+                    CopyDirectory((CloudBlobDirectory)blob, childCopyKey, deleteSource);
                 } else {
                     throw new Exception("Unsupported blob type");
                 }
             }
         }
-        string GetBlobName(BlobHierarchyItem hierarchyItem) {
-            var relativePath = GetBlobRelativePath(hierarchyItem);
-            return relativePath != null ? GetFileItemName(relativePath) : null;
+
+        string GetFileItemName(IListBlobItem blob) {
+            string escapedName = blob.Uri.Segments.Last();
+            return Uri.UnescapeDataString(escapedName);
         }
-        string GetBlobRelativePath(BlobHierarchyItem hierarchyItem) {
-            if(hierarchyItem.IsBlob) {
-                return hierarchyItem.Blob.Name;
-            } else if(hierarchyItem.IsPrefix) {
-                return hierarchyItem.Prefix.Substring(0, hierarchyItem.Prefix.Length - 1);
-            } else {
-                return null;
-            }
-        }
-        string GetFileItemName(string relativeName) {
-            var lastDelimiterIndex = relativeName.LastIndexOf(PathSeparator) == -1
-                ? 0
-                : relativeName.LastIndexOf(PathSeparator) + 1;
-            return relativeName.Substring(lastDelimiterIndex);
-        }
+
         string GetFileItemPath(FileSystemItemInfo item) {
-            return item.Path.Replace("\\", PathSeparator);
+            return item.Path.Replace('\\', '/');
         }
-        public void RemoveUploadedFile(string fileFullPath) {
-            FileInfo file = new FileInfo(fileFullPath);
+
+        public void RemoveUploadedFile(FileInfo file) {
             file.Delete();
         }
+
         public Stream GetFileContent(FileSystemLoadFileContentOptions options) {
             if(!Directory.Exists(TempDirectoryPath))
                 Directory.CreateDirectory(TempDirectoryPath);
@@ -207,11 +238,12 @@ namespace DevExtreme.MVC.Demos.Models.FileManagement {
             string tempFilePath = Path.Combine(TempDirectoryPath, tempFileName);
 
             string key = GetFileItemPath(options.File);
-            var blob = Container.GetBlobClient(key);
-            blob.DownloadTo(tempFilePath);
+            CloudBlockBlob blob = Container.GetBlockBlobReference(key);
+            blob.DownloadToFile(tempFilePath, FileMode.Create);
 
             return File.Open(tempFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
         }
+
         void CleanUpDownloadedFiles() {
             var timeout = TimeSpan.FromMinutes(10);
             try {
