@@ -114,8 +114,8 @@
                 right: rightNumberBox.option("value") || undefined
             };
     }
-    const positionSelectionChanged = (value) => position = value;
-    const directionSelectionChanged = (value) => direction = value;
+    const positionSelectionChanged = ({ selectedItem }) => position = selectedItem;
+    const directionSelectionChanged = ({ selectedItem }) => direction = selectedItem;
 
     const numberBoxValueChange = (value, pos, componentToDisable) => {
         position[pos] = value || undefined;
