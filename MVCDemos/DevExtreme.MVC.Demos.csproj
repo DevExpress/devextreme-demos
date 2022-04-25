@@ -655,6 +655,8 @@
     <Content Include="Content\DemosStyles\DataGrid\PDFCellCustomization.css" />
     <Content Include="Content\DemosStyles\DataGrid\PDFHeaderAndFooter.css" />
     <Content Include="Content\DemosStyles\DataGrid\PDFOverview.css" />
+    <Content Include="Content\DemosStyles\DataGrid\PDFExportImages.css" />
+    <Content Include="Content\DemosStyles\DataGrid\PDFExportMultipleGrids.css" />
     <Content Include="Content\DemosStyles\DataGrid\RecordPaging.css" />
     <Content Include="Content\DemosStyles\Diagram\AdvancedDataBinding.css" />
     <Content Include="Content\DemosStyles\Diagram\Containers.css" />

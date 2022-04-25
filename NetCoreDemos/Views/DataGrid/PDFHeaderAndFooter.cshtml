@@ -62,6 +62,7 @@
 <script>
     function exportToPDF(e) {
         const doc = new jsPDF();
+        const lastPoint = { x: 0, y: 0};
 
         DevExpress.pdfExporter.exportDataGrid({
             jsPDFDocument: doc,
