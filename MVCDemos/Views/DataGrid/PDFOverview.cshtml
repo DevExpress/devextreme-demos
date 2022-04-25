@@ -29,25 +29,12 @@
         .Controller("DataGridCustomers")
         .Key("ID")
     )
+    .Selection(s => s.Mode(SelectionMode.Multiple))
     .Export(e => e.Enabled(true)
         .AllowExportSelectedData(true)
         .Formats(new[] { "pdf" })
     )
-    .OnExporting("exporting")
-    .Toolbar(toolbar => {
-        toolbar.Items(items => {
-            items.Add().Name("groupPanel");
-            items.Add()
-                .Location(ToolbarItemLocation.After)
-                .Widget(w =>
-                    w.Button()
-                        .Icon("exportpdf")
-                        .Text("Export to PDF")
-                        .OnClick("exportToPDF")
-                );
-            items.Add().Name("searchPanel");
-        });
-    })
+    .OnExporting("exportToPDF")
 )
 
 <script>

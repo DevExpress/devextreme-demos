@@ -28,6 +28,7 @@
         .LoadAction("Get")
         .Key("ID")
     )
+    .Selection(s => s.Mode(SelectionMode.Multiple))
     .Export(e => e.Enabled(true)
         .AllowExportSelectedData(true)
         .Formats(new[] { "pdf" })

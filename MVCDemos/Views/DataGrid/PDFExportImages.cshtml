@@ -34,20 +34,23 @@
 )
 <script src="~/Scripts/data/employeesEI.js"></script>
 <script>
-    function exportToPDF(e) {
+    function exportToPDF({ component }) {
         const doc = new jsPDF();
 
         DevExpress.pdfExporter.exportDataGrid({
             jsPDFDocument: doc,
-            component: e.component,
+            component,
             topLeft: { x: 10, y: 15 },
-            onRowExporting: (arg) => { arg.rowHeight = 100; },
-            customDrawCell: (arg) => {
-                if (arg.gridCell.rowType === 'data') {
-                    if (arg.gridCell.column.dataField === 'Picture') {
-                        doc.addImage(gridCell.value, 'PNG', rect.x, rect.y, rect.w, rect.h);
-                        arg.cancel = true;
-                    }
+            onRowExporting: (e) => {
+                const isHeader = e.rowCells[0].text === 'Picture';
+                if (!isHeader) {
+                    e.rowHeight = 40;
+                }
+            },
+            customDrawCell: (e) => {
+                if (e.gridCell.rowType === 'data' && e.gridCell.column.dataField === 'Picture') {
+                    doc.addImage(e.gridCell.value, 'PNG', e.rect.x, e.rect.y, e.rect.w, e.rect.h);
+                    e.cancel = true;
                 }
             }
         }).then(() => {
