@@ -39,7 +39,7 @@
             {
                 totalItems.AddFor(m => m.Name)
                     .SummaryType(SummaryType.Count)
-                    .DisplayFormat("Total count: {0} companies");
+                    .DisplayFormat("Total count: {0}");
             })
         )
         .Export(e => e.Enabled(true).Formats(new[] { "pdf" }) )
