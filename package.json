@@ -100,8 +100,8 @@
         "lint-js": "eslint .",
         "lint-react": "eslint JSDemos/Demos -c .react.eslintrc.json --ignore-path .react.eslintignore",
         "lint-vue": "eslint JSDemos/Demos -c .vue.eslintrc.json --ignore-path .vue.eslintignore --ext .vue,.js",
-        "lint-mvc": "cd MVCDemos && eclint check **/*.cshtml !{bin,obj}/** && dotnet format ./DevExtreme.MVC.Demos.sln --verify-no-changes && cd ../",
-        "lint-netcore": "cd NetCoreDemos && eclint check **/*.cshtml !{bin,obj}/** !DemoShell/** && dotnet format ./DevExtreme.NETCore.Demos.sln --verify-no-changes && cd ../",
+        "lint-mvc": "cd MVCDemos && eclint check **/*.cshtml !{bin,obj}/** && dotnet format -w DevExtreme.MVC.Demos.sln --check && cd ../",
+        "lint-netcore": "cd NetCoreDemos && eclint check **/*.cshtml !{bin,obj}/** !DemoShell/** && dotnet format -w DevExtreme.NETCore.Demos.sln --check && cd ../",
         "lint": "npm-run-all -p -c lint-js lint-react lint-vue lint-mvc lint-netcore"
     },
     "license": "SEE LICENSE IN README.md",
