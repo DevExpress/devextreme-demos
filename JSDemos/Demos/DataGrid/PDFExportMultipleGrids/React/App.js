@@ -66,7 +66,7 @@ class App extends React.Component {
     );
   }
 
-  setAlternatingRowsBackground = () => (dataGrid, gridCell, pdfCell) {
+  setAlternatingRowsBackground = (dataGrid, gridCell, pdfCell) => {
     if (gridCell.rowType === 'data') {
       const rowIndex = dataGrid.getRowIndexByKey(gridCell.data.Product_ID);
       if (rowIndex % 2 === 0) {
