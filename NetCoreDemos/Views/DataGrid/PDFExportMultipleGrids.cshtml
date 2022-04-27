@@ -71,7 +71,8 @@
                 dataSource: {
                     store: {
                         type: "odata",
-                        url: "https://js.devexpress.com/Demos/DevAV/odata/Products"
+                        url: "https://js.devexpress.com/Demos/DevAV/odata/Products",
+                        key: 'Product_ID',
                     },
                     select: ["Product_ID", "Product_Name", "Product_Consumer_Rating", "Product_Category"],
                     filter: ["Product_ID", "<", 10]
@@ -90,25 +91,28 @@
     }
 
     function exportGrids() {
-        var dataGrid1 = $("#priceDataGrid").dxDataGrid("instance");
-        var dataGrid2 = $("#ratingDataGrid").dxDataGrid("instance");
-
         const doc = new jsPDF();
+
+        const priceDataGrid = $("#priceDataGrid").dxDataGrid("instance");
         DevExpress.pdfExporter.exportDataGrid({
             jsPDFDocument: doc,
-            component: dataGrid1,
-            topLeft: { x: 10, y: 15 },
+            component: priceDataGrid,
+            topLeft: { x: 7, y: 5 },
+            columnWidths: [20, 50, 50, 50],
             customizeCell: ({ gridCell, pdfCell }) => {
-                setAlternatingRowsBackground(dataGrid1, gridCell, pdfCell);
+                setAlternatingRowsBackground(priceDataGrid, gridCell, pdfCell);
             },
         }).then(() => {
             doc.addPage();
+            
+            const ratingDataGrid = $("#ratingDataGrid").dxDataGrid("instance");
             DevExpress.pdfExporter.exportDataGrid({
                 jsPDFDocument: doc,
-                component: dataGrid2,
-                topLeft: { x: 10, y: 15 },
+                component: ratingDataGrid,
+                topLeft: { x: 7, y: 5 },
+                columnWidths: [20, 50, 50, 50],
                 customizeCell: ({ gridCell, pdfCell }) => {
-                    setAlternatingRowsBackground(dataGrid2, gridCell, pdfCell);
+                    setAlternatingRowsBackground(ratingDataGrid, gridCell, pdfCell);
                 },
             }).then(() => {
                 doc.save('MultipleGrids.pdf');

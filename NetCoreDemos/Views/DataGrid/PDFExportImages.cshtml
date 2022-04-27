@@ -40,7 +40,14 @@
         DevExpress.pdfExporter.exportDataGrid({
             jsPDFDocument: doc,
             component,
-            topLeft: { x: 10, y: 15 },
+            margin: {
+                top: 10,
+                right: 10,
+                bottom: 10,
+                left: 10,
+            },
+            topLeft: { x: 5, y: 5 },
+            columnWidths: [30, 30, 30, 30, 30, 30],
             onRowExporting: (e) => {
                 const isHeader = e.rowCells[0].text === 'Picture';
                 if (!isHeader) {
