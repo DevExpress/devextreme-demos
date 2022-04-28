@@ -1,6 +1,6 @@
 The DevExtreme Toast components support stacking. Use the [notify(message, stack)]() or [notify(options, stack)]() method to enable this feature.
 
-Within these methods, **stack** is an object with the following structure: *{position, direction}*.
+These methods use a **stack** object that have the following structure: *{position, direction}*.
 
 ## Specify Position
 
