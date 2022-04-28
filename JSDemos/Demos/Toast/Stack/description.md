@@ -8,10 +8,10 @@ You can set the `position` field to a string (see *'alias'* tab in the demo) or 
 
 ## Specify Direction
 
-Choose between regular options or options with a 'reverse' postfix, to specify the `direction` field. The difference between these options is the following: 
+The `direction` field values can be regular and reverse. For example, *'up'* and *'up-reverse'*.
 
-- *'up'*    
-The second and subsequent toasts push the first toast upwards. 
+- *'up'*   
+Subsequent toasts push the previous toast upwards.
 
 - *'up-reverse'*    
 Toasts stack on top of each other. 
