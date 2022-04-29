@@ -1,17 +1,17 @@
-The DevExtreme Toast components support stacking. Use the [notify(message, stack)](/Documentation/ApiReference/Common/Utils/ui/#notifymessage_stack) or [notify(options, stack)](/Documentation/ApiReference/Common/Utils/ui/#notifyoptions_stack) method to enable this feature.
+The DevExtreme Toast components can stack multiple notifications. Use the [notify(message, stack)](/Documentation/ApiReference/Common/Utils/ui/#notifymessage_stack) or [notify(options, stack)](/Documentation/ApiReference/Common/Utils/ui/#notifyoptions_stack) method to display stacked messages.
 
 These methods use a **stack** object that has the following structure: *{position, direction}*.
 
 ## Specify Position
 
-You can set the `position` field to a string (see *'alias'* tab in the demo) or an object (see *'coordinates'* tab in the demo). Note that if you use coordinates for the `position` field, you need to specify one vertical and one horizontal coordinate only. For example, if you specify *'top'*, you do not need to specify *' bottom'*.
+You can set the `position` field to a string (select *'alignment'* in the radio group) or an object (select *'coordinates'* in the radio group). Note that if you use coordinates for the `position` field, you need to specify one vertical and one horizontal coordinate only. For example, if you specify *'top'*, the demo disables the *'bottom'* field, and vice versa.
 
 ## Specify Direction
 
-The `direction` field values can be regular and reverse. For example, *'up'* and *'up-reverse'*.
+The `direction` field specifies two options: which way the notification stack grows and whether new notifications appear at the end or in the beginning of the line. That's why you'll see pairs of values such as *'up'* and *'up-reverse'*.
 
 - *'up'*   
-Subsequent toasts push the previous toast upwards.
+New toasts push the previous toasts upwards.
 
 - *'up-reverse'*    
 Toasts stack on top of each other. 
