@@ -1,8 +1,6 @@
 {
     "$schema": "../../../../testing/visualtestrc-schema.json",
     "comparison-options": {
-        "textComparisonOptions": {
-            "strict": true
-        }
+        "enableTextMask": false
     }
 }
