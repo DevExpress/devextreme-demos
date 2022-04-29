@@ -1,7 +1,7 @@
 @{
     var directions = new[] {
-        "down", "down-reverse",  "up", "up-reverse",
-        "left", "left-reverse", "right", "right-reverse"
+        "down-push", "down-reverse",  "up-push", "up-reverse",
+        "left-push", "left-reverse", "right-push", "right-reverse"
     };
     var positions = new[] {
         "top left", "top center", "top right",
@@ -68,7 +68,7 @@
     @(Html.DevExtreme().SelectBox()
         .ID("direction")
         .Items(directions)
-        .Value("up")
+        .Value("up-push")
         .OnSelectionChanged("directionSelectionChanged")
     )
     <div class="section">
@@ -88,7 +88,7 @@
 <script>
     let id = 1;
     let position = "bottom center";
-    let direction = "up";
+    let direction = "up-push";
     const types = ["error", "info", "success", "warning"];
 
     const onRadioGroupValueChanged = ({ value }) => {
