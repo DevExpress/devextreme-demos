@@ -16,8 +16,6 @@ New toasts push the previous toasts upwards.
 - *'up-reverse'*    
 Toasts stack on top of each other. 
 
-This behavior applies to other directions.
-
 ## Hide Toasts
 
 To hide all toast messages, use the [hideToasts](/Documentation/ApiReference/Common/Utils/ui/Methods/#hideToasts) method.
