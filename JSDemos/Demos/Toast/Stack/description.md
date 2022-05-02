@@ -4,7 +4,7 @@ These methods use a **stack** object that has the following structure: *{positio
 
 ## Specify Position
 
-You can set the `position` field to a string (select *'alignment'* in the radio group) or an object (select *'coordinates'* in the radio group). Note that if you use coordinates for the `position` field, you need to specify one vertical and one horizontal coordinate only. For example, if you specify *'top'*, the demo disables the *'bottom'* field, and vice versa.
+You can set the `position` field to a string (select *'predefined'* in the radio group) or an object (select *'coordinates'* in the radio group). Note that if you use coordinates for the `position` field, you need to specify one vertical and one horizontal coordinate only. For example, if you specify *'top'*, the demo disables the *'bottom'* field, and vice versa.
 
 ## Specify Direction
 
