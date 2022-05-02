@@ -8,13 +8,13 @@
         "bottom left", "bottom center", "bottom right",
         "left center", "center", "right center"
     };
-    var radioGroupItems = new[] { "alias", "coordinates" };
+    var radioGroupItems = new[] { "predefined", "coordinates" };
 }
 <div class="options">
-    <div>Position by</div>
+    <div>Position</div>
     @(Html.DevExtreme().RadioGroup()
         .Items(radioGroupItems)
-        .Value("alias")
+        .Value("predefined")
         .Layout(Orientation.Horizontal)
         .OnValueChanged("onRadioGroupValueChanged")
     )
@@ -92,20 +92,20 @@
     const types = ["error", "info", "success", "warning"];
 
     const onRadioGroupValueChanged = ({ value }) => {
-        const aliasSelected = value === "alias";
+        const predefinedSelected = value === "predefined";
         const positionSelectBox = $("#position").dxSelectBox("instance");
         const topNumberBox = $("#positionTop").dxNumberBox("instance");
         const bottomNumberBox = $("#positionBottom").dxNumberBox("instance");
         const leftNumberBox = $("#positionLeft").dxNumberBox("instance");
         const rightNumberBox = $("#positionRight").dxNumberBox("instance");
 
-        positionSelectBox.option("visible", aliasSelected);
-        topNumberBox.option("visible", !aliasSelected);
-        bottomNumberBox.option("visible", !aliasSelected);
-        leftNumberBox.option("visible", !aliasSelected);
-        rightNumberBox.option("visible", !aliasSelected);
+        positionSelectBox.option("visible", predefinedSelected);
+        topNumberBox.option("visible", !predefinedSelected);
+        bottomNumberBox.option("visible", !predefinedSelected);
+        leftNumberBox.option("visible", !predefinedSelected);
+        rightNumberBox.option("visible", !predefinedSelected);
 
-        position = aliasSelected
+        position = predefinedSelected
             ? positionSelectBox.option("value")
             : {
                 top: topNumberBox.option("value") || undefined,
