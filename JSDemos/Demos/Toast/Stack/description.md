@@ -8,7 +8,7 @@ You can set the `position` field to a string (select *'predefined'* in the radio
 
 ## Specify Direction
 
-The `direction` field specifies two options: which way the notification stack grows and whether new notifications appear at the end or in the beginning of the line. That's why you'll see pairs of values such as *'up-push'* and *'up-stack'*.
+The `direction` field specifies two options: which way the notification stack grows and whether new notifications appear at the end or at the beginning of the line. For this reason, the field's pull-down menu choices show pairs of values such as *'up-push'* and *'up-stack'*.
 
 - *'up-push'*   
 New toasts push the previous toasts upwards.
