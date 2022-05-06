@@ -1,22 +1,22 @@
-The Toast is a UI component that provides pop-up notifications. 
+The Toast is a UI component that displays pop-up notifications. 
 
 When you need to display a notification, call the [notify(message, type, displayTime)](/Documentation/ApiReference/Common/Utils/ui/#notifymessage_type_displayTime) method with values for the [message](/Documentation/ApiReference/UI_Components/dxToast/Configuration/#message), [type](/Documentation/ApiReference/UI_Components/dxToast/Configuration/#type) and [displayTime](/Documentation/ApiReference/UI_Components/dxToast/Configuration/#displayTime) properties passed as the arguments.
 
 You can specify one of the four predefined types of notifications, depending on the mood of the message:
 
 - *'info'*   
-Blue toast with a message bubble icon.
+A blue toast with a message bubble icon.
 
 - *'warning'*   
-Yellow toast with an exclamation mark icon.
+A yellow toast with an exclamation mark icon.
 
 - *'error'*   
-Red toast with an **X** icon.
+A red toast with an **X** icon.
 
 - *'success'*   
-Green toast with a check mark icon.
+A green toast with a check mark icon.
 
-In this demo, toggle the checkboxes to see the *'success'* and *'error'* types of notifications.
+In this demo, toggle check boxes to see the *'success'* and *'error'* notification types.
 
 You can also customize the Toast appearance. Set the [type](/Documentation/ApiReference/UI_Components/dxToast/Configuration/#type) property to *'custom'* and use a [contentTemplate](/Documentation/ApiReference/UI_Components/dxToast/Configuration/#contentTemplate). Refer to the following topic for more information: [Customize the Content](/Documentation/Guide/UI_Components/Toast/Customize_the_Content/).
 
