@@ -4460,7 +4460,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/Box/Overview/",
             "Widget": "Box",
             "DemoType": "Web"
           }
