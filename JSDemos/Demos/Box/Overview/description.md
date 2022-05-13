@@ -4,7 +4,6 @@ You can arrange Box items in the different directions. Set the [direction](/Docu
 
 The item size along the main axis can be relative or absolute. To specify relative size, use the [ratio](/Documentation/ApiReference/UI_Components/dxBox/Configuration/items/#ratio) property. For absolute size, use the [baseSize](/Documentation/ApiReference/UI_Components/dxBox/Configuration/items/#baseSize) property. If you want to change the size of the Box, specify [width](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#width) and [height](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#height) properties.
 
-
 In this demo, you can see three layouts that use boxes for arrangement.
 
 The first layout shows how you can use [direction](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#direction) and [ratio](/Documentation/ApiReference/UI_Components/dxBox/Configuration/items/#ratio) properties. 
