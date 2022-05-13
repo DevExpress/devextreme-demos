@@ -3810,7 +3810,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/MultiView/Overview/",
             "Widget": "MultiView",
             "MvcAdditionalFiles": [
               "/Models/Store.cs",
