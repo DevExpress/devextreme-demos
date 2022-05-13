@@ -8,6 +8,6 @@ In this demo, you can see three layouts that use boxes for arrangement.
 
 The first layout shows how you can use [direction](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#direction) and [ratio](/Documentation/ApiReference/UI_Components/dxBox/Configuration/items/#ratio) properties. 
 
-The second layout consists of a box with three items, but the second item has a box within it. The component aligns the items in the inner box by center. Specify [align](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#align) and [crossAlign](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#crossAlign) to align items along the horizontal and vertical axes respectively.
+The second layout consists of a box with three items, but the second item has a box within it. The component aligns the items in the inner box by center. Specify the [align](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#align) and [crossAlign](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#crossAlign) properties to align items along the horizontal and vertical axes respectively.
 
 The third layout shows how to arrange items on the page. Use a box with the [direction](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#direction) set to `col` and arrange items within it.
