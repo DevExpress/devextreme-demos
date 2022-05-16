@@ -1,10 +1,16 @@
 ButtonGroup displays a set of toggleable buttons and allows users to select one or several of them. This demo illustrates how to configure the ButtonGroup: bind ButtonGroup to data, enable or disable multiple selection and customize the ButtonGroup appearance.
 
+## Bind ButtonGroup to Data
+
 Use the [items](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/items/) array to populate ButtonGroup with data. You can specify the following fields in the data objects: [hint](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/items/#hint), [icon](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/items/#icon), [text](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/items/#text), [type](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/items/#type) and others.
+
+## Process Button Selection
 
 Set the [keyExpr](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/#keyExpr) property to the data field that supplies keys used to distinguish between the selected buttons. In this demo, the [selectedItemKeys](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/#selectedItemKeys) property contains the keys of the selected buttons and allows component to select buttons initially. To enable multiple selection, set the [selectionMode](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/#selectionMode) property to `multiple`.
 
-Use [onItemClick](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/#onItemClick) function to process clicks on buttons.
+Use the [onItemClick](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/#onItemClick) function to process clicks on buttons.
+
+## Customize the Buttongroup Appearance
 
 Specify the [stylingMode](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/#stylingMode) property and select one of the three predefined styles. In this demo, ButtonGroups in the first row have the `outlined` style, while the others have the `text` style.
 
