@@ -1,13 +1,14 @@
-The Box component allows you to arrange various items within it. To display the items, you can use an [items](/Documentation/ApiReference/UI_Components/dxBox/Configuration/items/) array, a [dataSource](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#dataSource), or specify dxItems in the markup. 
+The Box component allows you to easily create layouts of any complexity. You can arrange multiple blocks (items) either horizontally or vertically, specify relative or absolute block sizes, and nest layouts within each other. 
 
-You can arrange Box items in the different directions. Set the [direction](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#direction) property to `row` to arrange items in a row, or use `col` for the column.
+Set the Box's [width](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#width) and [height](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#height) properties to specify the layout's overall dimensions. To add blocks, use the [items](/Documentation/ApiReference/UI_Components/dxBox/Configuration/items/) array, the [dataSource](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#dataSource) property, or specify dxItems in the markup.
 
-The item size along the main axis can be relative or absolute. To specify relative size, use the [ratio](/Documentation/ApiReference/UI_Components/dxBox/Configuration/items/#ratio) property. For absolute size, use the [baseSize](/Documentation/ApiReference/UI_Components/dxBox/Configuration/items/#baseSize) property. If you want to change the size of the Box, specify [width](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#width) and [height](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#height) properties.
+This demo shows how you can use the Box component to create three different layouts.
 
-In this demo, you can see three layouts that use boxes for arrangement.
+The first Box sets [direction](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#direction) to `row` and thus arranges items horizontally. Items use the [ratio](/Documentation/ApiReference/UI_Components/dxBox/Configuration/items/#ratio) property to set their width in relative units. 
 
-The first layout shows how you can use [direction](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#direction) and [ratio](/Documentation/ApiReference/UI_Components/dxBox/Configuration/items/#ratio) properties. 
+The second Box shows two additional features:
 
-The second layout consists of a box with three items, but the second item has a box within it. The component aligns the items in the inner box by center. Specify the [align](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#align) and [crossAlign](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#crossAlign) properties to align items along the horizontal and vertical axes respectively.
+- Items now use the [baseSize](/Documentation/ApiReference/UI_Components/dxBox/Configuration/items/#baseSize) property to set their width in pixels or percent. 
+- The middle item contains a nested Box. The [align](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#align) and [crossAlign](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#crossAlign) properties make sure that the nested layout is centered within its container.
 
-The third layout shows how to arrange items on the page. Use a box with the [direction](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#direction) set to `col` and arrange items within it.
+The third Box demonstrates a layout similar to a basic web page structure. The root layout sets [direction](/Documentation/ApiReference/UI_Components/dxBox/Configuration/#direction) to `col` and thus arranges its items vertically. The nested layout uses horizontal arrangement. 
