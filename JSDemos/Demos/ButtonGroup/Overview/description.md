@@ -12,6 +12,6 @@ Use the [onItemClick](/Documentation/ApiReference/UI_Components/dxButtonGroup/Co
 
 ## Customize the Buttongroup Appearance
 
-Specify the [stylingMode](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/#stylingMode) property and select one of the three predefined styles. In this demo, ButtonGroups in the first row have the `outlined` style, while the others have the `text` style.
+Specify the [stylingMode](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/#stylingMode) property and select one of the three predefined styles. In this demo, ButtonGroups in the first row have the `outlined` style, while the others have the `text` style. You can specify the [buttonTemplate]() property to customize the apperance of each button.
 
 To get started with the DevExtreme ButtonGroup component, refer to the following tutorial for step-by-step instructions: [Getting Started with ButtonGroup](/Documentation/Guide/UI_Components/ButtonGroup/Getting_Started_with_ButtonGroup/).
