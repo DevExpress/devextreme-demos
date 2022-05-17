@@ -8,7 +8,7 @@ ButtonGroup displays a set of two-state buttons and allows users to select one o
 
 ## Bind ButtonGroup to Data
 
-Use the [items](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/items/) array to populate ButtonGroup with data. You can specify the following fields in the data objects: 
+Use the [items](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/items/) array to populate ButtonGroup with data. You can specify the following fields in data objects: 
 
 - [hint](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/items/#hint)
 
