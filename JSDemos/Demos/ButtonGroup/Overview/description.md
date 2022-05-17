@@ -1,4 +1,8 @@
-ButtonGroup displays a set of toggleable buttons and allows users to select one or several of them. This demo illustrates how to configure the ButtonGroup: bind ButtonGroup to data, enable or disable multiple selection and customize the ButtonGroup appearance.
+ButtonGroup displays a set of two-state buttons and allows users to select one or multiple buttons. This demo illustrates how to configure the ButtonGroup in the following steps:
+
+* Bind ButtonGroup to data
+* Enable or disable multiple selection
+* Customize the ButtonGroup appearance
 
 ## Bind ButtonGroup to Data
 
