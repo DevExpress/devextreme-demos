@@ -20,7 +20,7 @@ Use the [items](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configur
 
 ## Process Button Selection
 
-Set the [keyExpr](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/#keyExpr) property to the data field that supplies keys used to distinguish the selected buttons. In this demo, the [selectedItemKeys](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/#selectedItemKeys) property contains the keys of the selected buttons. This property allows you to predefine selected buttons.To enable multiple selection, set the [selectionMode](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/#selectionMode) property to `multiple`.
+Set the [keyExpr](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/#keyExpr) property to the data field that supplies keys used to distinguish the selected buttons. In this demo, the [selectedItemKeys](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/#selectedItemKeys) property contains the keys of the selected buttons. This property allows you to predefine selected buttons. To enable multiple selection, set the [selectionMode](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/#selectionMode) property to `multiple`.
 
 Use the [onItemClick](/Documentation/ApiReference/UI_Components/dxButtonGroup/Configuration/#onItemClick) function to process clicks on buttons.
 
