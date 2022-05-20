@@ -75,7 +75,7 @@
         @(Html.DevExtreme().Button()
             .Text("Show")
             .Width("48%")
-            .OnClick("showNotify")
+            .OnClick("show")
         )
         @(Html.DevExtreme().Button()
             .Text("Hide all")
@@ -134,7 +134,7 @@
         numberBoxValueChange(value, 'right', $('#positionLeft').dxNumberBox('instance'));
     };
 
-    const showNotify = () => {
+    const show = () => {
         DevExpress.ui.notify({
                 message: `Toast ${id}`,
                 height: 45,
