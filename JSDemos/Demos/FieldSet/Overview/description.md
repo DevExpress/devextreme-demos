@@ -1,15 +1,15 @@
-DevExtreme comes with CSS classes that allow you to define the appearance of list-like structures that contain multiple field items - field sets.
+DevExtreme ships with CSS classes that allow you to define the appearance of list-like structures that contain multiple field items -- field sets.
 
 ## A Simple Field Set
 
-To create a basic field set, use the [dx-fieldset](/Documentation/ApiReference/UI_Components/CSS_Classes/#dx-fieldset) CSS class for the main container element. Next, use the [dx-fieldset-header](/Documentation/ApiReference/UI_Components/CSS_Classes/#dx-fieldset-header) class to specify the field set header. The header element can hold plain text, UI components, or custom markup. 
+To create a basic field set, use the [dx-fieldset](/Documentation/ApiReference/UI_Components/CSS_Classes/#dx-fieldset) CSS class for the main container element. Then, use the [dx-fieldset-header](/Documentation/ApiReference/UI_Components/CSS_Classes/#dx-fieldset-header) class to specify the field set header. The header element can contain plain text, UI components, or custom markup. 
 
 Create field set items as separate elements with the [dx-field](/Documentation/ApiReference/UI_Components/CSS_Classes/#dx-field) class. The field element may include label and value elements. Define the label element by the [dx-field-label](/Documentation/ApiReference/UI_Components/CSS_Classes/#dx-field-label) class. The value element uses the [dx-field-value-static](/Documentation/ApiReference/UI_Components/CSS_Classes/#dx-field-value-static) class and can display plain text or custom markup. 
 
 ## A Field Set with DevExtreme Widgets
 
-You can also use DevExtreme UI components as the value elements. Specify the [dx-field-value](/Documentation/ApiReference/UI_Components/CSS_Classes/#dx-field-value) class in the component's HTML markup.
+You can also use DevExtreme UI components as value elements. Specify the [dx-field-value](/Documentation/ApiReference/UI_Components/CSS_Classes/#dx-field-value) class in the component's HTML markup.
 
 ## A Field Set with Custom Value Width
 
-To align all the values in the field set by width, attach a custom id to the element with the [dx-fieldset](/Documentation/ApiReference/UI_Components/CSS_Classes/#dx-fieldset) class and apply CSS rules according to the rules in the demo.
+To align all values in the field set by width, attach a custom id to the element with the [dx-fieldset](/Documentation/ApiReference/UI_Components/CSS_Classes/#dx-fieldset) class and apply CSS rules according to the rules in the demo.
