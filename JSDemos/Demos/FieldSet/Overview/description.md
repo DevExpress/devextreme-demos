@@ -12,4 +12,4 @@ You can also use DevExtreme UI components as value elements. Specify the [dx-fie
 
 ## A Field Set with Custom Value Width
 
-To align all values in the field set by width, attach a custom id to the element with the [dx-fieldset](/Documentation/ApiReference/UI_Components/CSS_Classes/#dx-fieldset) class and apply CSS rules according to the rules in the demo.
+To align all field set elements by width, attach a custom id to the element with the [dx-fieldset](/Documentation/ApiReference/UI_Components/CSS_Classes/#dx-fieldset) class and apply CSS rules according to the rules in the demo.
