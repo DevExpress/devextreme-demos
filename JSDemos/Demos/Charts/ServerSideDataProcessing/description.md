@@ -1,11 +1,9 @@
-In many cases, you need to process data on the server before displaying it in the chart. The Chart component supports this scenario. 
+In many cases, you need to process data on the server before the chart displays it. The Chart component supports this scenario. 
 
-In this demo, the data source of the Chart component loads weather data for a selected month from an OData service. Each time you select a different month in the drop-down menu, the data source sends a new query to the service. To implement this functionality, assign a [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) object to the Chart [dataSource](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#dataSource) property. 
+In this demo, the data source of the Chart loads weather data for a selected month from an OData service. Each time you select a different month in the drop-down menu, the data source sends a new query to the service. To implement this functionality, assign a [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) object to the Chart [dataSource](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#dataSource) property. 
 
-In the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/), implement an [ODataStore](/Documentation/ApiReference/Data_Layer/ODataStore/). 
+In the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/), implement an [ODataStore](/Documentation/ApiReference/Data_Layer/ODataStore/). This demo shows how to [expand]() used values and how to [postProcess]() them.
 
-1. OData Store
-enable
-postProcess
-2. paginate
-3. filter
+Set the [paginate](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#paginate) property to **false** to prevent data from partitioning. You can also apply [filter](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#filter) to the received values.
+
+Once you load the data, specify the [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/) type and its nested options: [argumentField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#argumentField) and [valueField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#valueField), so the component can determine which object fields in the data source indicate Chart arguments and values.
