@@ -42,15 +42,6 @@ class App extends React.Component {
           itemRender={CustomItem}
           id="accordion-container"
         />
-        <div className="selected-data">
-          <span className="caption">Selected Items</span>
-          <TagBox dataSource={this.companies}
-            displayExpr="CompanyName"
-            value={selectedItems}
-            onValueChanged={this.selectedItemsChanged}
-            disabled={!multiple}
-          />
-        </div>
         <div className="options">
           <div className="caption">Options</div>
           <div className="option">
