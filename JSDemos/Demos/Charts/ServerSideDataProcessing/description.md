@@ -4,6 +4,6 @@ In this demo, the data source of the Chart loads weather data for a selected mon
 
 In the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/), implement an [ODataStore](/Documentation/ApiReference/Data_Layer/ODataStore/). This demo shows how to [expand](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#expand) used values and how to [postProcess](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#postProcess) them.
 
-Set the [paginate](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#paginate) property to **false** to prevent data from partitioning. You can also apply [filter](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#filter) to the received values.
+Set the [paginate](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#paginate) property to **false** to prevent data from partitioning. You can also apply a [filter](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#filter) to the received values.
 
 Once you load the data, specify the [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/) type and its nested options: [argumentField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#argumentField) and [valueField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#valueField), so the component can determine which object fields in the data source indicate Chart arguments and values.
