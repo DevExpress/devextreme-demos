@@ -28,19 +28,6 @@
         </text>)
     )
 
-    <div class="selected-data">
-        <span class="caption">Selected Items</span>
-        @(Html.DevExtreme().TagBox()
-            .ID("tagbox")
-            .DisplayExpr("Name")
-            .ValueExpr("ID")
-            .Value(new[] { 1 })
-            .DataSource(d => d.Mvc().LoadAction("GetData").Key("ID"))
-            .Disabled(true)
-            .OnValueChanged("tagBox_valueChanged")
-        )
-    </div>
-
     <div class="options">
         <div class="caption">Options</div>
         <div class="option">
@@ -67,6 +54,18 @@
                     .Position(VerticalEdge.Bottom)
                 )
                 .OnValueChanged("slider_valueChanged")
+            )
+        </div>
+        <div class="option">
+            <span class="caption">Selected Items</span>
+            @(Html.DevExtreme().TagBox()
+                .ID("tagbox")
+                .DisplayExpr("Name")
+                .ValueExpr("ID")
+                .Value(new[] { 1 })
+                .DataSource(d => d.Mvc().LoadAction("GetData").Key("ID"))
+                .Disabled(true)
+                .OnValueChanged("tagBox_valueChanged")
             )
         </div>
     </div>
