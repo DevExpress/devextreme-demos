@@ -2,7 +2,7 @@ In many cases, you need to process data on the server before the chart displays 
 
 In this demo, the data source of the Chart loads weather data for a selected month from an OData service. Each time you select a different month in the drop-down menu, the data source sends a new query to the service. To implement this functionality, assign a [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) object to the Chart [dataSource](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#dataSource) property. 
 
-In the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/), implement an [ODataStore](/Documentation/ApiReference/Data_Layer/ODataStore/). This demo shows how to [expand]() used values and how to [postProcess]() them.
+In the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/), implement an [ODataStore](/Documentation/ApiReference/Data_Layer/ODataStore/). This demo shows how to [expand](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#expand) used values and how to [postProcess](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#postProcess) them.
 
 Set the [paginate](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#paginate) property to **false** to prevent data from partitioning. You can also apply [filter](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#filter) to the received values.
 
