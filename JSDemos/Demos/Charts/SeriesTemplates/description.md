@@ -1,1 +1,26 @@
-In&nbsp;this example, data for series is&nbsp;provided in&nbsp;a&nbsp;peculiar manner. Each object in&nbsp;the data source represents a&nbsp;point in&nbsp;a&nbsp;single series. To&nbsp;define series in&nbsp;this case, use the **seriesTemplate** object where you need to&nbsp;specify the data field providing series names and custom settings for a&nbsp;given series. Settings common to&nbsp;all series must be&nbsp;set within the **commonSeriesSettings** object. Providing data in&nbsp;this manner is&nbsp;useful when the number of&nbsp;points within a&nbsp;single series changes over time.
+In some scenarios, you need to add more series to the data source after you created the Chart. In this case, organize your data source structure as follows:
+
+    [
+        {seriesName: series1, arg: arg11Value, val: value11 }
+        {seriesName: series1, arg: arg12Value, val: value12 }
+        ...
+        {seriesName: seriesM, arg: argM1Value, val: valueM1 }
+        {seriesName: seriesM, arg: argM2Value, val: valueM2 }
+        ...
+    ]
+
+Each object in the data source must represent a point in a single series.
+
+This demo uses the structure displayed above to organize the data:
+
+    {
+        year: 1970,
+        country: 'Saudi Arabia',
+        oil: 192.2,
+    }
+
+To define series, use the [commonSeriesSettings]() object to specify common settings for all series: the [argumentField](), the [valueField]() and the Chart [type]().
+
+Then, use the [seriesTemplate]() configuration object to define a template for the series. Within this object, assign the data source field that specifies the series name to the [nameField]() property.
+
+If you need to specify individual values for properties of a particular series, assign a callback function to the [customizeSeries]() property of the [seriesTemplate]() object. This demo uses the [customizeSeries]() function to display a line instead of a bar for the `year: 2009`.
