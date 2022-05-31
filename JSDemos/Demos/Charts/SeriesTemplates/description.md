@@ -1,4 +1,4 @@
-In some scenarios, you need to add more series to the data source after you created the Chart. In this case, organize your data source structure as follows:
+In certain scenarios, you may need to add more series to the data source after you created the Chart. In this case, arrange your data source structure as follows:
 
     [
         {seriesName: series1, arg: arg11Value, val: value11 }
@@ -9,9 +9,9 @@ In some scenarios, you need to add more series to the data source after you crea
         ...
     ]
 
-Each object in the data source must represent a point in a single series.
+Every object in the data source should correspond to a point in a single series.
 
-This demo uses the structure displayed above to organize the data:
+This demo uses the structure displayed above to organize data:
 
     {
         year: 1970,
@@ -19,7 +19,7 @@ This demo uses the structure displayed above to organize the data:
         oil: 192.2,
     }
 
-To define series, use the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/) object to specify common settings for all series: the [argumentField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/#argumentField), the [valueField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/#valueField) and the [type](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/#type).
+To define series, use the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/) object to specify common settings for all series: the [argumentField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/#argumentField), the [valueField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/#valueField), and the [type](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/#type).
 
 Then, use the [seriesTemplate](/Documentation/ApiReference/UI_Components/dxChart/Configuration/seriesTemplate/) configuration object to define a template for the series. Within this object, assign the data source field that specifies the series name to the [nameField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/seriesTemplate/#nameField) property.
 
