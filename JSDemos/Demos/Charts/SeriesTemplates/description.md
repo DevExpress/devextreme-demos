@@ -19,8 +19,8 @@ This demo uses the structure displayed above to organize the data:
         oil: 192.2,
     }
 
-To define series, use the [commonSeriesSettings]() object to specify common settings for all series: the [argumentField](), the [valueField]() and the Chart [type]().
+To define series, use the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/) object to specify common settings for all series: the [argumentField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/#argumentField), the [valueField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/#valueField) and the [type](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/#type).
 
-Then, use the [seriesTemplate]() configuration object to define a template for the series. Within this object, assign the data source field that specifies the series name to the [nameField]() property.
+Then, use the [seriesTemplate](/Documentation/ApiReference/UI_Components/dxChart/Configuration/seriesTemplate/) configuration object to define a template for the series. Within this object, assign the data source field that specifies the series name to the [nameField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/seriesTemplate/#nameField) property.
 
-If you need to specify individual values for properties of a particular series, assign a callback function to the [customizeSeries]() property of the [seriesTemplate]() object. This demo uses the [customizeSeries]() function to display a line instead of a bar for the `year: 2009`.
+If you need to specify individual values for properties of a particular series, assign a callback function to the [customizeSeries](/Documentation/ApiReference/UI_Components/dxChart/Configuration/seriesTemplate/#customizeSeries) property of the [seriesTemplate](/Documentation/ApiReference/UI_Components/dxChart/Configuration/seriesTemplate/) object. This demo uses the [customizeSeries](/Documentation/ApiReference/UI_Components/dxChart/Configuration/seriesTemplate/#customizeSeries) function to display a line instead of a bar for the `year: 2009`.
