@@ -37,7 +37,7 @@
         "globalize": "^1.3.0",
         "html-react-parser": "latest",
         "jquery": "3.5.1",
-        "jspdf": "2.3.1",
+        "jspdf": "2.5.1",
         "jspdf-autotable": "3.5.14",
         "knockout": "^3.4.2",
         "plugin-typescript": "8.0.0",
