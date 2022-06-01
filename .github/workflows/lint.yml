@@ -28,19 +28,3 @@ jobs:
         npm -v
         npm install --no-audit --no-fund --ignore-scripts
         git diff --exit-code package-lock.json
-
-  notify:
-    runs-on: ubuntu-latest
-    name: Send notifications
-    needs: [package_lock]
-    if: always() && contains(needs.*.result, 'failure')
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ./.github/actions/send-teams-notification
-        with:
-          hook_url: ${{secrets.TEAMS_ALERT}}
-          run_id: ${{github.run_id}}
-          bearer_token: ${{secrets.GITHUB_TOKEN}}
-          specific_repo: DevExpress/devextreme-demos
-          specific_branch: 22_1
