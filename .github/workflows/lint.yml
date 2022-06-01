@@ -1,0 +1,46 @@
+name: Lint
+
+concurrency:
+  group: wf-${{github.event.pull_request.number || github.sha}}-${{github.workflow}}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+  push:
+    branches: [22_1]
+
+jobs:
+  package_lock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - name: Get sources
+      uses: actions/checkout@v2
+
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+
+    - name: Check package-lock
+      run: |
+        node -v
+        npm -v
+        npm install --no-audit --no-fund --ignore-scripts
+        git diff --exit-code package-lock.json
+
+  notify:
+    runs-on: ubuntu-latest
+    name: Send notifications
+    needs: [package_lock]
+    if: always() && contains(needs.*.result, 'failure')
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/send-teams-notification
+        with:
+          hook_url: ${{secrets.TEAMS_ALERT}}
+          run_id: ${{github.run_id}}
+          bearer_token: ${{secrets.GITHUB_TOKEN}}
+          specific_repo: DevExpress/devextreme-demos
+          specific_branch: 22_1
