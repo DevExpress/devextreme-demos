@@ -1,13 +1,18 @@
 ﻿using DevExtreme.NETCore.Demos.Models.FileManagement;
-using Microsoft.Azure.Storage;
-using Microsoft.Azure.Storage.Auth;
-using Microsoft.Azure.Storage.Blob;
-using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Net.Http;
+using System.Web.Http;
+using Azure.Storage;
+using Azure.Storage.Sas;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using Azure.Storage.Blobs.Specialized;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DevExtreme.NETCore.Demos.Controllers {
     public class FileManagerAzureAccessApiController : Controller {
         const string EmptyDirDummyBlobName = "aspxAzureEmptyFolderBlob";
+        const string ServiceUri = "https://{0}.blob.core.windows.net";
         const long MaxBlobSize = 1048576;
 
         public FileManagerAzureAccessApiController() {
@@ -25,27 +30,25 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         bool AllowUpload { get; }
         bool AllowDownload { get; }
 
-        CloudBlobClient _client;
-        CloudBlobClient Client {
+        BlobServiceClient _client;
+        BlobServiceClient Client {
             get {
-                if(this._client == null) {
+                if(_client == null) {
                     AzureStorageAccount accountModel = AzureStorageAccount.FileManager;
-                    var credentials = new StorageCredentials(accountModel.AccountName, accountModel.AccessKey);
-                    var account = new CloudStorageAccount(credentials, true);
-                    this._client = account.CreateCloudBlobClient();
+                    StorageSharedKeyCredential credential = new StorageSharedKeyCredential(accountModel.AccountName, accountModel.AccessKey);
+                    _client = new BlobServiceClient(new Uri(string.Format(ServiceUri, accountModel.AccountName)), credential);
                 }
-                return this._client;
+                return _client;
             }
         }
-
-        CloudBlobContainer _container;
-        CloudBlobContainer Container {
+        BlobContainerClient _container;
+        BlobContainerClient Container {
             get {
-                if(this._container == null) {
+                if(_container == null) {
                     AzureStorageAccount accountModel = AzureStorageAccount.FileManager;
-                    this._container = Client.GetContainerReference(accountModel.ContainerName);
+                    _container = Client.GetBlobContainerClient(accountModel.ContainerName);
                 }
-                return this._container;
+                return _container;
             }
         }
 
@@ -57,7 +60,6 @@ namespace DevExtreme.NETCore.Demos.Controllers {
                 return CreateErrorResult();
             }
         }
-
         object ProcessCommand(string command, string blobName, string blobName2) {
             switch(command) {
                 case "BlobList":
@@ -86,82 +88,86 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return null;
         }
         object GetBlobList() {
-            var policy = CreateSharedAccessBlobPolicy(SharedAccessBlobPermissions.List);
-            string url = Container.Uri + Container.GetSharedAccessSignature(policy, null, SharedAccessProtocol.HttpsOnly, null);
-            return CreateSuccessResult(url);
+            if(Container.CanGenerateSasUri) {
+                var sasUri = Container.GenerateSasUri(BlobContainerSasPermissions.List, DateTimeOffset.UtcNow.AddHours(1));
+                return CreateSuccessResult(sasUri);
+            } else {
+                return CreateErrorResult("BlobContainerClient cannot generate SasUri");
+            }
         }
-
         object CreateDirectory(string directoryName) {
             string blobName = $"{directoryName}/{EmptyDirDummyBlobName}";
 
-            CloudBlockBlob blob = Container.GetBlockBlobReference(blobName);
+            var blob = Container.GetBlobClient(blobName);
             if(blob.Exists()) {
-                if(blob.Properties.Length > 0) {
-                    blob.Delete();
-                }
                 return CreateErrorResult();
             }
-
-            string url = GetSharedAccessSignature(blob, SharedAccessBlobPermissions.Write);
-            return CreateSuccessResult(url);
+            var sasUri = TryGetBlobUri(blob, BlobSasPermissions.Write);
+            if(sasUri != null) {
+                return CreateSuccessResult(sasUri);
+            } else {
+                return CreateErrorResult("BlobClient cannot generate SasUri");
+            }
         }
-
         object DeleteBlob(string blobName) {
-            string url = GetSharedAccessSignature(blobName, SharedAccessBlobPermissions.Delete);
-            return CreateSuccessResult(url);
+            var sasUri = TryGetBlobUri(blobName, BlobSasPermissions.Delete);
+            if(sasUri != null) {
+                return CreateSuccessResult(sasUri);
+            } else {
+                return CreateErrorResult("BlobClient cannot generate SasUri");
+            }
         }
-
         object CopyBlob(string sourceBlobName, string destinationBlobName) {
-            string sourceUrl = GetSharedAccessSignature(sourceBlobName, SharedAccessBlobPermissions.Read);
-            string destinationUrl = GetSharedAccessSignature(destinationBlobName, SharedAccessBlobPermissions.Create);
-            return CreateSuccessResult(sourceUrl, destinationUrl);
+            var sourceSasUri = TryGetBlobUri(sourceBlobName, BlobSasPermissions.Read);
+            var destinationSasUri = TryGetBlobUri(destinationBlobName, BlobSasPermissions.Create);
+            if(sourceSasUri != null && destinationSasUri != null) {
+                return CreateSuccessResult(sourceSasUri, destinationSasUri);
+            } else {
+                return CreateErrorResult("BlobClient cannot generate SasUri");
+            }
         }
-
         object UploadBlob(string blobName) {
             if(blobName.EndsWith("/"))
                 return CreateErrorResult("Invalid blob name.");
 
-            CloudBlockBlob blob = Container.GetBlockBlobReference(blobName);
-            if(blob.Exists() && blob.Properties.Length > MaxBlobSize) {
-                blob.Delete();
+            var blob = Container.GetBlockBlobClient(blobName);
+            if(blob.Exists() && blob.GetProperties().Value.ContentLength > MaxBlobSize) {
                 return CreateErrorResult();
             }
 
-            string url = GetSharedAccessSignature(blob, SharedAccessBlobPermissions.Write);
-            return CreateSuccessResult(url);
+            var sasUri = TryGetBlobUri(blobName, BlobSasPermissions.Write);
+            return CreateSuccessResult(sasUri);
         }
-
         object GetBlob(string blobName) {
-            var headers = new SharedAccessBlobHeaders {
+            var headers = new BlobHttpHeaders {
                 ContentType = "application/octet-stream"
             };
-            string url = GetSharedAccessSignature(blobName, SharedAccessBlobPermissions.Read, headers);
-            return CreateSuccessResult(url);
+            var blob = Container.GetBlobClient(blobName);
+            blob.SetHttpHeaders(headers);
+            var sasUri = TryGetBlobUri(blob, BlobSasPermissions.Read);
+            return CreateSuccessResult(sasUri);
         }
-
-        string GetSharedAccessSignature(string blobName, SharedAccessBlobPermissions permissions, SharedAccessBlobHeaders headers = null) {
-            CloudBlockBlob blob = Container.GetBlockBlobReference(blobName);
-            return GetSharedAccessSignature(blob, permissions, headers);
+        Uri TryGetBlobUri(string blobName, BlobSasPermissions permissions) {
+            if(!string.IsNullOrEmpty(blobName)) {
+                return TryGetBlobUri(Container.GetBlobClient(blobName), permissions);
+            } else {
+                return null;
+            }
         }
-        string GetSharedAccessSignature(CloudBlockBlob blob, SharedAccessBlobPermissions permissions, SharedAccessBlobHeaders headers = null) {
-            SharedAccessBlobPolicy policy = CreateSharedAccessBlobPolicy(permissions);
-            return blob.Uri + blob.GetSharedAccessSignature(policy, headers, null, SharedAccessProtocol.HttpsOnly, null);
+        Uri TryGetBlobUri(BlobClient blob, BlobSasPermissions permissions) {
+            if(blob.CanGenerateSasUri) {
+                return blob.GenerateSasUri(permissions, DateTimeOffset.UtcNow.AddHours(1));
+            } else {
+                return null;
+            }
         }
-        SharedAccessBlobPolicy CreateSharedAccessBlobPolicy(SharedAccessBlobPermissions permissions) {
-            return new SharedAccessBlobPolicy {
-                SharedAccessExpiryTime = DateTime.UtcNow.AddMinutes(1),
-                Permissions = permissions
-            };
-        }
-
-        object CreateSuccessResult(string url, string url2 = null) {
+        object CreateSuccessResult(Uri uri, Uri uri2 = null) {
             return new {
                 success = true,
-                accessUrl = url,
-                accessUrl2 = url2
+                accessUrl = uri.AbsoluteUri,
+                accessUrl2 = uri2 != null ? uri2.AbsoluteUri : null
             };
         }
-
         object CreateErrorResult(string error = null) {
             if(string.IsNullOrEmpty(error))
                 error = "Unspecified error.";
