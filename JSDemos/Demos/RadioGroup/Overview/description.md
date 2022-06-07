@@ -12,6 +12,6 @@ The RadioGroup supports horizontal (default for tablets) and vertical (default f
 
 Define the [itemTemplate](/Documentation/ApiReference/UI_Components/dxRadioGroup/Configuration/#itemTemplate) to customize the item appearance. To customize an individual item, specify its [template](/Documentation/ApiReference/UI_Components/dxRadioGroup/Configuration/items/#template) property.
 
-## Handle the Value Change 
+## Handle the Value Change Event
 
 You can set the [value](/Documentation/ApiReference/UI_Components/dxRadioGroup/Configuration/#value) property to one of the data source items to specify a predefined selection. Implement the [onValueChanged](/Documentation/ApiReference/UI_Components/dxRadioGroup/Configuration/#onValueChanged) function to handle [value](/Documentation/ApiReference/UI_Components/dxRadioGroup/Configuration/#value) changes.
