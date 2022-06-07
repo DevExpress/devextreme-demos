@@ -8,7 +8,7 @@ You can display RadioGroup items from the [items](/Documentation/ApiReference/UI
 
 The RadioGroup supports horizontal (default for tablets) and vertical (default for other devices) layouts. To change the layout for all device types, specify the [layout](/Documentation/ApiReference/UI_Components/dxRadioGroup/Configuration/#layout) property.
 
-## Customize Item Appearance
+## Customize the Item Appearance
 
 Define the [itemTemplate](/Documentation/ApiReference/UI_Components/dxRadioGroup/Configuration/#itemTemplate) to customize the item appearance. To customize an individual item, specify its [template](/Documentation/ApiReference/UI_Components/dxRadioGroup/Configuration/items/#template) property.
 
