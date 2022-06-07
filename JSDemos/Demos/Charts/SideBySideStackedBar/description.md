@@ -1,4 +1,4 @@
-This demo shows the _side-by-side stacked bar_ series that allows you to visualize data as bars stacked in different groups. This series type is useful when you compare an individual series' values with the total values of groups.
+This demo shows the _side-by-side stacked bar_ series that allows you to visualize data as bars stacked in different groups. This series type is useful when you compare values of an individual series with the total values of groups.
 
 ## Bind Chart to Data
 
@@ -12,7 +12,7 @@ Use the [verticalAlignment](/Documentation/ApiReference/UI_Components/dxChart/Co
 
 The [customizeLegend](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/#customizeItems) function allows you to change the order, text, and visibility of legend items. This demo uses the [array.splice](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method in the [customizeItems]() function to sort the legend items. If you want to customize the legend border, use properties collected in the [border](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/border) object. 
 
-To distribute all legend items between several columns (in a vertically-oriented legend) or rows (in a horizontally-oriented legend), specify the [columnCount](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/#columnCount) or [rowCount](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/#rowCount) property respectively.
+To distribute all legend items between multiple columns (in a vertically-oriented legend) or rows (in a horizontally-oriented legend), specify the [columnCount](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/#columnCount) or [rowCount](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/#rowCount) property, respectively.
 
 ### Configure Tooltips
 
@@ -20,4 +20,4 @@ To configure tooltips in the chart, use the [tooltip](/Documentation/ApiReferenc
 
 ### Export Chart
 
-To allow users to export your side-by-side stacked bar chart into the PNG, JPEG, PDF, and SVG file or print the chart, set the [export.enabled](/Documentation/ApiReference/UI_Components/dxChart/Configuration/export/#enabled) property to **true**. In this demo, exporting is enabled and you can click the hamburger button in the chart. This button invokes a drop-down menu with export and print commands.
+To allow users to export your side-by-side stacked bar chart into a PNG, JPEG, PDF, and SVG file or print the chart, set the [export.enabled](/Documentation/ApiReference/UI_Components/dxChart/Configuration/export/#enabled) property to **true**. Since the export functionality is enabled in this demo, you can click the hamburger button in the chart to invoke a drop-down menu with export and print commands.
