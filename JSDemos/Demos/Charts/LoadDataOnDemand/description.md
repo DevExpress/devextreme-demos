@@ -1,16 +1,16 @@
-In this demo, the [range area](https://js.devexpress.com/Demos/WidgetsGallery/Demo/Charts/RangeArea/) Chart loads data as you pan it. Once the component loads a data block, data stays in memory to reduce requests to the server. To implement this functionality, do the following:
+In this demo, the [range area](https://js.devexpress.com/Demos/WidgetsGallery/Demo/Charts/RangeArea/) Chart loads data as you pan it. Once the component loads a data block, this data stays in memory to reduce requests to the server. To implement this functionality, do the following:
 
-1. Specify a starting data source.
+1. Configure a data source.
 
     - Assign a [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) with an empty [store](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/store/) to the [dataSource](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#dataSource) Chart property.
 
-    - Set the DataSource [sort](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#sort) property to `date` (the argument).
+    - Set the DataSource [sort](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#sort) property to `date`.
 
     - Disable the DataSource [paginate](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#paginate) property to prevent data from partitioning.
 
-2. Specify Chart properties to support the data loading in parts.
+2. Configure Chart to support the data load on demand.
 
-    - Set the [visualRangeUpdateMode](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/#visualRangeUpdateMode property to the `keep` mode.
+    - Set the [visualRangeUpdateMode](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/#visualRangeUpdateMode) property to `keep`.
 
     - Add a [loadingIndicator](/Documentation/ApiReference/UI_Components/dxChart/Configuration/loadingIndicator/).
 
