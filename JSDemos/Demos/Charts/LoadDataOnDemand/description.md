@@ -14,7 +14,7 @@ In this demo, the [range area](https://js.devexpress.com/Demos/WidgetsGallery/De
 
     - Add a [loadingIndicator](/Documentation/ApiReference/UI_Components/dxChart/Configuration/loadingIndicator/).
 
-    - Specify the starting [visualRange](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/visualRange/).
+    - Specify the initial [visualRange](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/visualRange/).
     
     - Implement function that computes the Chart current [visualRange](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/visualRange/). In this function, call the method that checks whether a user changed the visual range.
 
