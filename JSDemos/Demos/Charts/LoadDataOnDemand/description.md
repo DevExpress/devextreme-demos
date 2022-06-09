@@ -2,21 +2,21 @@ In this demo, the [range area](https://js.devexpress.com/Demos/WidgetsGallery/De
 
 1. Configure a data source.
 
-    - Assign a [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) with an empty [store](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/store/) to the [dataSource](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#dataSource) Chart property.
+    - Assign a [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) with an empty [store](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/store/) to the Chart [dataSource](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#dataSource) property.
 
-    - Set the DataSource [sort](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#sort) property to `date`.
+    - Set the [sort](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#sort) property to `date`.
 
-    - Disable the DataSource [paginate](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#paginate) property to prevent data from partitioning.
+    - Disable the [paginate](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#paginate) property to prevent data from partitioning.
 
-2. Configure Chart to support the data load on demand.
+2. Configure the Chart to support the data load on demand.
 
     - Set the [visualRangeUpdateMode](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/#visualRangeUpdateMode) property to `keep`.
 
-    - Add a [loadingIndicator](/Documentation/ApiReference/UI_Components/dxChart/Configuration/loadingIndicator/).
+    - Specify a [loadingIndicator](/Documentation/ApiReference/UI_Components/dxChart/Configuration/loadingIndicator/).
 
     - Specify the initial [visualRange](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/visualRange/).
     
-    - Implement function that computes the Chart current [visualRange](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/visualRange/). In this function, call the method that checks whether a user changed the visual range.
+    - Implement a function that computes the Chart current [visualRange](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/visualRange/). In this function, call a method that checks whether a user changed the visual range.
 
 3. Implement functions that load the data.
 
