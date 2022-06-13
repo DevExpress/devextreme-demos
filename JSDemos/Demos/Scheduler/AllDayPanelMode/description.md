@@ -4,7 +4,7 @@ The **All day** Scheduler panel displays appointments that last over 24 hours or
 Displays all appointments that have the [allDay](/Documentation/ApiReference/Common/Object_Structures/dxSchedulerAppointment/#allDay) property set to **true** and the ones that last 24 hours or longer. The Scheduler does not display these appointments in the view.
 
 - *'allDay'* (default)   
-Displays only appointments that have the [allDay](/Documentation/ApiReference/Common/Object_Structures/dxSchedulerAppointment/#allDay) property set to **true**. The Scheduler shows other appointments on the view.
+Displays only appointments that have the [allDay](/Documentation/ApiReference/Common/Object_Structures/dxSchedulerAppointment/#allDay) property set to **true**. The Scheduler shows other appointments in the view.
 
 - *'hidden'*    
 Hides the **All day** panel. The Scheduler shows all appointments on the view.
