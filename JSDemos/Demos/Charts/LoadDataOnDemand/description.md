@@ -8,7 +8,7 @@ In this demo, the [range area](https://js.devexpress.com/Demos/WidgetsGallery/De
 
     - Disable the [paginate](/Documentation/ApiReference/Data_Layer/DataSource/Configuration/#paginate) property to prevent data from partitioning.
 
-2. Configure the Chart to support the data load on demand.
+2. Configure the Chart to support on-demand data loading.
 
     - Set the [visualRangeUpdateMode](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/#visualRangeUpdateMode) property to `keep`.
 
@@ -16,14 +16,14 @@ In this demo, the [range area](https://js.devexpress.com/Demos/WidgetsGallery/De
 
     - Specify the initial [visualRange](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/visualRange/).
     
-    - Implement a function that computes the Chart current [visualRange](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/visualRange/). In this function, call a method that checks whether a user changed the visual range.
+    - Implement a function that respond to user pan operations and tracks [visualRange](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/visualRange/) changes. If a user changed the visual range, initiate a request for additional data.
 
 3. Implement functions that load the data.
 
-    - The Chart argument data is days. If users pan the Chart left or right more than half a day, the data starts to load. The `onVisualRangeChanged` method checks this condition, and if the condition is true, the method calls the uploading function.
+    - In this demo, Chart displays daily information. If a user pan the Chart left or right more than half a day, additional data starts to load. The `onVisualRangeChanged` initiates this procedure.
 
     - The `getDataFrame` Ajax request gets the new data frame from the server.
 
-    - The `uploadDataByVisualRange` function takes two arguments: current visual range and the component's instance. This function gets the starting and ending points of the visual range and the bounds of already loaded data and calls the `getDataFrame` function. Then, the `uploadDataByVisualRange` function reloads the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) and updates the visual range.
+    - The `uploadDataByVisualRange` function analyzes the starting and ending points of the visual range and the bounds of already loaded data. If necessary, it calls the `getDataFrame` function to obtain new data points. Finally, it reloads the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) and saves the current visual range.
 
     
