@@ -22,8 +22,6 @@ In this demo, the [range area](https://js.devexpress.com/Demos/WidgetsGallery/De
 
     - In this demo, Chart displays daily information. If a user pan the Chart left or right more than half a day, additional data starts to load. The `onVisualRangeChanged` initiates this procedure.
 
-    - The `getDataFrame` Ajax request gets the new data frame from the server.
-
     - The `uploadDataByVisualRange` function analyzes the starting and ending points of the visual range and the bounds of already loaded data. If necessary, it calls the `getDataFrame` function to obtain new data points. Finally, it reloads the [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) and saves the current visual range.
 
-    
+    - The `getDataFrame` Ajax request gets the new data frame from the server.
