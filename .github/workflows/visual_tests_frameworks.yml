@@ -456,7 +456,7 @@ jobs:
 
     - name: Prepare dotnet
       run: |
-        dotnet new globaljson --sdk-version 5.0.0 --roll-forward latestFeature
+        dotnet new globaljson --sdk-version 5.0.408
         dotnet tool install -g dotnet-format --version 5.1.225507
 
     - name: Run lint
