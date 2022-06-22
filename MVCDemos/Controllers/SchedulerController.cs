@@ -130,5 +130,9 @@ namespace DevExtreme.MVC.Demos.Controllers {
         public ActionResult SignalRService() {
             return View();
         }
+
+        public ActionResult AllDayPanelMode() {
+            return View();
+        }
     }
 }

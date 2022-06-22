@@ -1,0 +1,57 @@
+@(Html.DevExtreme().Scheduler()
+    .ID("scheduler")
+    .TimeZone("America/Los_Angeles")
+    .Views(views => {
+        views.Add()
+            .Name("4 Days")
+            .Type(SchedulerViewType.Day)
+            .IntervalCount(4);
+
+        views.Add()
+            .Type(SchedulerViewType.Week);
+    })
+    .CurrentView(SchedulerViewType.Week)
+    .CurrentDate(new DateTime(2021, 3, 28))
+    .AllDayPanelMode(AllDayPanelMode.AllDay)
+    .StartDayHour(9)
+    .Height(600)
+)
+
+<div class="options">
+    <div class="option">
+        <div class="label">All day panel mode</div>
+        <div class="value">
+            @(Html.DevExtreme().RadioGroup()
+                .Items(new [] { "all", "allDay", "hidden" })
+                .Value("allDay")
+                .Layout(Orientation.Horizontal)
+                .OnValueChanged("onChangeAllDayPanelMode")
+            )
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function getScheduler() {
+        return $("#scheduler").dxScheduler("instance");
+    }
+
+    function onChangeAllDayPanelMode(e) {
+        getScheduler().option('allDayPanelMode', e.value);
+    }
+
+    $(function () {
+        const scheduler = getScheduler();
+        scheduler.option("dataSource", [{
+            text: 'Book Flights to San Fran for Sales Trip',
+            startDate: new Date('2021-03-28T17:00:00.000Z'),
+            endDate: new Date('2021-03-28T18:00:00.000Z'),
+            allDay: true,
+        }, {
+            text: 'Customer Workshop',
+            startDate: new Date('2021-03-29T17:30:00.000Z'),
+            endDate: new Date('2021-04-03T19:00:00.000Z'),
+        }]);
+    })
+</script>
