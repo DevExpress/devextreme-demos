@@ -17,7 +17,7 @@ namespace DevExtreme.NETCore.Demos.Controllers.ApiControllers {
         BlobServiceClient Client {
             get {
                 if(_client == null) {
-                    AzureStorageAccount accountModel = AzureStorageAccount.FileManager;
+                    AzureStorageAccount accountModel = AzureStorageAccount.FileUploader;
                     StorageSharedKeyCredential credential = new StorageSharedKeyCredential(accountModel.AccountName, accountModel.AccessKey);
                     _client = new BlobServiceClient(new Uri(string.Format(ServiceUri, accountModel.AccountName)), credential);
                 }
@@ -28,7 +28,7 @@ namespace DevExtreme.NETCore.Demos.Controllers.ApiControllers {
         BlobContainerClient Container {
             get {
                 if(_container == null) {
-                    AzureStorageAccount accountModel = AzureStorageAccount.FileManager;
+                    AzureStorageAccount accountModel = AzureStorageAccount.FileUploader;
                     _container = Client.GetBlobContainerClient(accountModel.ContainerName);
                 }
                 return _container;
