@@ -37,26 +37,20 @@ function App() {
     }
   }, [employees, setEmployees, setSelectedItem]);
 
-  const renderTitle = React.useCallback((data) => {
-    function closeHandler() {
-      closeButtonHandler(data);
-    }
-
-    return (
-      <React.Fragment>
-        <div>
-          <span>
-            {data.FirstName} {data.LastName}
-          </span>
-          {employees.length >= 2 && <i className="dx-icon dx-icon-close" onClick={() => { closeHandler(); }} />}
-        </div>
-      </React.Fragment>
-    );
-  }, [closeButtonHandler]);
+  const renderTitle = React.useCallback((data) => (
+    <React.Fragment>
+      <div>
+        <span>
+          {data.FirstName} {data.LastName}
+        </span>
+        {employees.length >= 2 && <i className="dx-icon dx-icon-close" onClick={() => { closeButtonHandler(data); }} />}
+      </div>
+    </React.Fragment>
+  ), [closeButtonHandler]);
 
   const onSelectionChanged = React.useCallback((args) => {
     setSelectedItem(args.addedItems[0]);
-  }, [setSelectedItem]);
+  }, [employees, setSelectedItem]);
 
   const onTabDragStart = React.useCallback((e) => {
     e.itemData = e.fromData[e.fromIndex];
