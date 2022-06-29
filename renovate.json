@@ -4,7 +4,8 @@
     ],
     "baseBranches": [
         "21_2",
-        "22_1"
+        "22_1",
+        "22_2"
     ],
     "labels": [
         "dependencies"
