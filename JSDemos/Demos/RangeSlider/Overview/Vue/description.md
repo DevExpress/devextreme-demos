@@ -24,7 +24,7 @@ The RangeSlider can also display a tooltip for slider handles. To display toolti
 
 - Specify the [format](/Documentation/ApiReference/UI_Components/dxRangeSlider/Configuration/tooltip/#format) property.
 
-- Assign *'onHover'* or *'always'* to the [showMode](/Documentation/ApiReference/UI_Components/dxRangeSlider/Configuration/tooltip/#showMode) property to change the how the component shows tooltips.
+- Assign *'onHover'* or *'always'* to the [showMode](/Documentation/ApiReference/UI_Components/dxRangeSlider/Configuration/tooltip/#showMode) property to change how the component shows tooltips.
 
 Use the [showRange](/Documentation/ApiReference/UI_Components/dxRangeSlider/Configuration/#showRange) property to specify if the selected range should be highlighted. You can also use the [step](/Documentation/ApiReference/UI_Components/dxRangeSlider/Configuration/#step) property to specify the value change step for the RangeSlider.
 
