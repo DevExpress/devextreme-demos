@@ -46,11 +46,11 @@ function App() {
         {employees.length >= 2 && <i className="dx-icon dx-icon-close" onClick={() => { closeButtonHandler(data); }} />}
       </div>
     </React.Fragment>
-  ), [closeButtonHandler]);
+  ), [employees, closeButtonHandler]);
 
   const onSelectionChanged = React.useCallback((args) => {
     setSelectedItem(args.addedItems[0]);
-  }, [employees, setSelectedItem]);
+  }, [setSelectedItem]);
 
   const onTabDragStart = React.useCallback((e) => {
     e.itemData = e.fromData[e.fromIndex];
