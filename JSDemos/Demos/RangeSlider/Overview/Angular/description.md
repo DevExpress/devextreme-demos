@@ -2,7 +2,7 @@ The RangeSlider component allows users to choose a range of numeric values. This
 
 ## Create a RangeSlider
 
-To create a RangeSlider, declare it in markup and specify the four properties:
+To create a RangeSlider, declare it in markup and specify the following four properties:
 
 - [start](/Documentation/ApiReference/UI_Components/dxRangeSlider/Configuration/#start) and [end](/Documentation/ApiReference/UI_Components/dxRangeSlider/Configuration/#end)    
 Specify the selected interval.
