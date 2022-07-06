@@ -97,7 +97,6 @@ class App extends React.Component {
   dataGridRender() {
     return (
       <DataGrid
-        height={345}
         dataSource={this.gridDataSource}
         columns={gridColumns}
         hoverStateEnabled={true}
