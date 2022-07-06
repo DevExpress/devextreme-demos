@@ -221,7 +221,7 @@ jobs:
       run: |
         mkdir ./devextreme-vue-repo/devextreme-setup
         cp ./devextreme-installer.tgz ./devextreme-vue-repo/devextreme-setup
-   
+
     - name: Get devextreme-vue ref
       working-directory: ./devextreme-vue-repo
       id: devextreme-vue-ref
@@ -245,7 +245,7 @@ jobs:
     - name: Install packages for devextreme-vue
       working-directory: ./devextreme-vue-repo
       run: npm install --no-audit --no-fund
-      
+
     - name: Build and Pack
       working-directory: ./devextreme-vue-repo
       run: npm run pack
@@ -318,7 +318,7 @@ jobs:
       run: |
         mkdir ./devextreme-angular-repo/devextreme-setup
         cp ./devextreme-installer.tgz ./devextreme-angular-repo/devextreme-setup
-   
+
     - name: Get devextreme-angular ref
       working-directory: ./devextreme-angular-repo
       id: devextreme-angular-ref
@@ -340,7 +340,7 @@ jobs:
     - name: Install packages for devextreme-angular
       working-directory: ./devextreme-angular-repo
       run: npm install --no-audit --no-fund
-      
+
     - name: Build and Pack
       working-directory: ./devextreme-angular-repo
       run: npm run pack
@@ -386,7 +386,7 @@ jobs:
           ${{ runner.os }}-node-modules
 
     - name: Delete DX packages
-      run:  sed -i '/22.1-next/d' ./package.json
+      run:  sed -i '/22.2-next/d' ./package.json
 
     - name: Use Node.js 15
       uses: actions/setup-node@v2
@@ -405,12 +405,12 @@ jobs:
 
     - name: Prepare bundles
       run: npm run prepare-bundles
-    
+
     - name: Demos - Run tsc
       run: tsc --noEmit
 
     #Publish artifacts
-    - name: Zip node_modules    
+    - name: Zip node_modules
       run: 7z a -t7z -mx3 -mmt2 node_modules.7z node_modules
 
     - name: Copy build artifacts
@@ -434,8 +434,8 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Delete DX packages
-      run:  sed -i '/22.1-next/d' ./package.json
-    
+      run:  sed -i '/22.2-next/d' ./package.json
+
     - name: Download devextreme sources
       uses: actions/download-artifact@v2
       with:
@@ -478,7 +478,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Delete DX packages
-      run:  sed -i '/22.1-next/d' ./package.json
+      run:  sed -i '/22.2-next/d' ./package.json
 
     - name: Download devextreme sources
       uses: actions/download-artifact@v2
@@ -490,7 +490,7 @@ jobs:
 
     - name: Prepare JS
       run: npm run prepare-js
-    
+
     - name: Prepare Bundles
       run: npx gulp bundles
 
