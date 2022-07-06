@@ -32,7 +32,7 @@
         "devextreme-react": "22.2-next",
         "devextreme-vue": "22.2-next",
         "dx-systemjs-vue-browser": "latest",
-        "exceljs": "3.8.0",
+        "exceljs": "3.10.0",
         "file-saver-es": "2.0.5",
         "globalize": "^1.3.0",
         "html-react-parser": "latest",
