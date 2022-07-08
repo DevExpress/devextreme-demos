@@ -1,13 +1,9 @@
-This demo shows a drill-down chart that visualizes data on two hierarchical views. The main view displays the population breakdown by continent. When you click the bar, a detailed view reveals the most populated countries on the selected continent.
+When the data source has several hierarchical levels, you may want to enable users to navigate between them. The movement from the higher to the lower hierarchical level is called *"drilling down"*. The movement backwards is called *"drilling up"*.
 
-## Bind to Data
+In this demo, when a user clicks a group of tiles in the TreeMap, the component drills down. To implement this technique, follow the steps below:
 
-This demo bounds the drill-down chart to an array of objects. To visualize hierarchical data in the drill-down chart, filter the data source by the `parentID` for different drill-down views in the `filterData` function.
+1. Set the [interactWithGroup](/Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/#interactWithGroup) property to `true` to enable users to click on groups of items.
 
-## Implement View Navigation
+2. Call the [node](/Documentation/ApiReference/UI_Components/dxTreeMap/Node/).[drillDown](/Documentation/ApiReference/UI_Components/dxTreeMap/Node/Methods/#drillDown) method in the TreeMap [onClick](/Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/#onClick) handler.
 
-To navigate from the main view to a detailed view, filter the data source by a different `parentID` in the [onPointClick](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#onPointClick) event handler. To navigate back, click the **Back** button. This action resets the data source filter. Use the `isFirstLevel` flag to distinguish views. 
-
-## Customize the Appearance
-
-Use the [customizePoint](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#customizePoint) function to change the individual point properties. This function returns an object with properties that should be changed for a certain point. In this demo, this function changes the [color](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/point/#color) and [hoverStyle](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/point/hoverStyle/) properties. 
+3. To be able to get back to another level, you need to create a clickable UI component or a link. This demo generates links in the markup in the [onDrill](/Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/#onDrill) handler that also call the [node](/Documentation/ApiReference/UI_Components/dxTreeMap/Node/).[drillDown](/Documentation/ApiReference/UI_Components/dxTreeMap/Node/Methods/#drillDown) method on click. Inspect the code below for the implementation details.
