@@ -6,7 +6,7 @@ Use the [customizePoint](/Documentation/ApiReference/UI_Components/dxChart/Confi
 
 ## Customize Labels
 
-To customize the appearance of individual point labels, implement the [customizeLabel](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#customizeLabel) function. This function also should return an object with properties that need to be changed for a certain [label](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/label/). This demo specifies custom labels for the red points.
+To customize the appearance of individual point labels, implement the [customizeLabel](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#customizeLabel) function. This function should also return an object with properties that need to be changed for a certain [label](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/label/). This demo specifies custom labels for the red points.
 
 ## Create Constant Lines
 
