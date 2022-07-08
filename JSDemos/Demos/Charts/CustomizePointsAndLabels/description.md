@@ -2,7 +2,7 @@ This demo shows how you can customize individual points and labels in the Chart 
 
 ## Customize Points
 
-Use the [customizePoint](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#customizePoint) function to change the appearance of individual series points. This function should return an object with properties that you want to change in a [point](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/point/) configuration. This demo uses this function to color all the points above the high average red, and the points below the low average blue.
+Use the [customizePoint](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#customizePoint) function to change the appearance of individual series points. This function should return an object with properties that you want to change in a [point](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/point/) configuration. This demo uses this function to color all the points with value above the high average number red, and the points with value below the low average number blue.
 
 ## Customize Labels
 
