@@ -1,4 +1,4 @@
-A scale break is a wavy stripe on a chart plotting area. It is used to display the break in continuity between too low and too high values on an axis. Scale breaks improve the readability of chart sections with large gaps in their ranges.
+Scale breaks (wavy stripes you see on the chart) cut out ranges from the value axis.  This technique may enhance chart readability if values differ greatly. As you can see in this demo, you can easily compare smaller values if scale breaks are enabled. If you disable scale breaks, the smaller values are indistinguishable. 
 
 The Chart component can generate scale breaks of the [valueAxis](/Documentation/ApiReference/UI_Components/dxChart/Configuration/valueAxis/). The Chart detects large gaps between side-by-side points, cuts them out, and puts scale breaks instead. Scale breaks are available for *'continuous'* or *'logarithmic'* [type](/Documentation/ApiReference/UI_Components/dxChart/Configuration/valueAxis/#type) axes only.
 
