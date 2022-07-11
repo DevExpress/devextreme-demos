@@ -2,7 +2,7 @@ Annotations are designed to show additional information about visualized data. Y
 
 ## annotations[]
 
-The [annotations](/Documentation/ApiReference/UI_Components/dxChart/Configuration/annotations/) array specifies a collection of annotations. This demo uses the data source array to create this collection. Each object has an [argument](/Documentation/ApiReference/UI_Components/dxChart/Configuration/annotations/#argument) to make the component display annotations relative to specific arguments and a [data](/Documentation/ApiReference/UI_Components/dxChart/Configuration/annotations/#data) object that stores data from data source.
+The [annotations](/Documentation/ApiReference/UI_Components/dxChart/Configuration/annotations/) array specifies a collection of annotations. This demo uses a data source array to create this collection. Each object has an [argument](/Documentation/ApiReference/UI_Components/dxChart/Configuration/annotations/#argument) to make the component display annotations relative to specific arguments and a [data](/Documentation/ApiReference/UI_Components/dxChart/Configuration/annotations/#data) object that stores data from a data source.
 
 You can use the [annotations](/Documentation/ApiReference/UI_Components/dxChart/Configuration/annotations/) array to configure each annotation individually.
 
@@ -14,4 +14,4 @@ Note that individual [annotation settings](/Documentation/ApiReference/UI_Compon
 
 ## customizeAnnotation
 
-You can also use the [customizeAnnotation](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#customizeAnnotation) function to customize an individual chart annotation.
+You can also implement the [customizeAnnotation](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#customizeAnnotation) function to customize an individual chart annotation.
