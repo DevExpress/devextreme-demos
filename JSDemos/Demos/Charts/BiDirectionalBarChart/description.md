@@ -8,4 +8,4 @@ To create a bi-directional bar chart, follow the steps below:
 
 4. Change the [label](/Documentation/ApiReference/UI_Components/dxChart/Configuration/valueAxis/label/) text of the [valueAxis](/Documentation/ApiReference/UI_Components/dxChart/Configuration/valueAxis/) so that the negative values appear as positive. To implement this technique, use the [customizeText](/Documentation/ApiReference/UI_Components/dxChart/Configuration/valueAxis/label/#customizeText) function.
 
-To further customize your bi-directional bar chart, implement the [tooltip](/Documentation/ApiReference/UI_Components/dxChart/Configuration/tooltip/) and change the [legend](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/).
+To further customize your bi-directional bar chart, implement [tooltips](/Documentation/ApiReference/UI_Components/dxChart/Configuration/tooltip/) and change the [legend](/Documentation/ApiReference/UI_Components/dxChart/Configuration/legend/)'s alignment.
