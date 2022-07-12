@@ -2,7 +2,7 @@ Annotations are designed to show additional information about visualized data. Y
 
 ## annotations[]
 
-The [annotations](/Documentation/ApiReference/UI_Components/dxChart/Configuration/annotations/) array specifies a collection of annotations. This demo uses a data source array to create this collection. Each object has an [argument](/Documentation/ApiReference/UI_Components/dxChart/Configuration/annotations/#argument) to make the component display annotations relative to specific arguments and a [data](/Documentation/ApiReference/UI_Components/dxChart/Configuration/annotations/#data) object that stores data from a data source.
+The [annotations](/Documentation/ApiReference/UI_Components/dxChart/Configuration/annotations/) array specifies a collection of annotations. This demo uses a data source array to create this collection. Each object has the [argument](/Documentation/ApiReference/UI_Components/dxChart/Configuration/annotations/#argument) property and a [data](/Documentation/ApiReference/UI_Components/dxChart/Configuration/annotations/#data) object. The [argument](/Documentation/ApiReference/UI_Components/dxChart/Configuration/annotations/#argument) property positions an annotation at a specific argument value, and the [data](/Documentation/ApiReference/UI_Components/dxChart/Configuration/annotations/#data) object stores data from a data source.
 
 You can use the [annotations](/Documentation/ApiReference/UI_Components/dxChart/Configuration/annotations/) array to configure each annotation individually.
 
