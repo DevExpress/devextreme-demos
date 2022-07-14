@@ -2,7 +2,7 @@ This demo shows a drill-down chart that visualizes data on two hierarchical view
 
 ## Bind to Data
 
-This demo bounds the drill-down chart to an array of objects. To visualize hierarchical data in the drill-down chart, filter the data source by the `parentID` for different drill-down views in the `filterData` function.
+This demo binds the drill-down chart to an array of objects. To visualize hierarchical data in the drill-down chart, filter the data source by the `parentID` for different drill-down views in the `filterData` function.
 
 ## Implement View Navigation
 
