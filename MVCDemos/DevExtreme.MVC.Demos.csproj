@@ -514,6 +514,7 @@
     <Compile Include="Models\SampleData\RoomResources.cs" />
     <Compile Include="Models\SampleData\StatesWithCities.cs" />
     <Compile Include="Models\SampleData\TreeViewHierarchicalDataForSearch.cs" />
+    <Compile Include="Models\SampleData\TreeViewHierarchicalDataForSelection.cs" />
     <Compile Include="Models\SignalR\Stock.cs" />
     <Compile Include="Models\SignalR\StockTicker.cs" />
     <Compile Include="Models\TreeList\EmployeeTask.cs" />

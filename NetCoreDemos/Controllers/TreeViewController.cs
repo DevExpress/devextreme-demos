@@ -38,19 +38,8 @@ namespace DevExtreme.NETCore.Demos.Controllers {
 
         [HttpGet]
         public ActionResult Employees(DataSourceLoadOptions loadOptions) {
-            var serializedEmployees = JsonConvert.SerializeObject(DataSourceLoader.Load(TreeViewHierarchicalData.Employees, loadOptions));
+            var serializedEmployees = JsonConvert.SerializeObject(DataSourceLoader.Load(TreeViewHierarchicalDataForSelection.Employees, loadOptions));
             return Content(serializedEmployees, "application/json");
-        }
-
-        [HttpGet]
-        public object SuperMartOfTheWest(DataSourceLoadOptions loadOptions) {
-            var superMartProducts = TreeViewHierarchicalData.SuperMartOfTheWest.Items.ToArray();
-
-            return DataSourceLoader.Load(new[] {
-                superMartProducts[0],
-                superMartProducts[1],
-                superMartProducts[3]
-            }, loadOptions);
         }
 
         #endregion
@@ -74,9 +63,17 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         }
         #endregion
 
+        #region ContextMenuIntegration
         public ActionResult ContextMenuIntegration() {
             return View();
         }
+
+        [HttpGet]
+        public object GetHierarchicalData(DataSourceLoadOptions loadOptions) {
+            return DataSourceLoader.Load(TreeViewHierarchicalData.Products, loadOptions);
+        }
+        #endregion
+
 
         #region DragAndDropPlainDataStructure
         public ActionResult DragAndDropPlainDataStructure() {
