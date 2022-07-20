@@ -30,19 +30,8 @@ namespace DevExtreme.MVC.Demos.Controllers {
         }
 
         [HttpGet]
-        public ActionResult SuperMartOfTheWest(DataSourceLoadOptions loadOptions) {
-            var superMartProducts = TreeViewHierarchicalData.SuperMartOfTheWest.Items.ToArray();
-
-            return Content(JsonConvert.SerializeObject(DataSourceLoader.Load(new[] {
-                superMartProducts[0],
-                superMartProducts[1],
-                superMartProducts[3]
-            }, loadOptions)), "application/json");
-        }
-
-        [HttpGet]
         public ActionResult Employees(DataSourceLoadOptions loadOptions) {
-            var serializedEmployees = JsonConvert.SerializeObject(DataSourceLoader.Load(TreeViewHierarchicalData.Employees, loadOptions));
+            var serializedEmployees = JsonConvert.SerializeObject(DataSourceLoader.Load(TreeViewHierarchicalDataForSelection.Employees, loadOptions));
             return Content(serializedEmployees, "application/json");
         }
 
