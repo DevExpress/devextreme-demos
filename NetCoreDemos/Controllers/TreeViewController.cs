@@ -69,8 +69,8 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         }
 
         [HttpGet]
-        public object GetHierarchicalData(DataSourceLoadOptions loadOptions) {
-            return DataSourceLoader.Load(TreeViewHierarchicalData.Products, loadOptions);
+        public object GetHierarchicalDataForContextMenu(DataSourceLoadOptions loadOptions) {
+            return DataSourceLoader.Load(TreeViewHierarchicalDataForContextMenu.Products, loadOptions);
         }
         #endregion
 
