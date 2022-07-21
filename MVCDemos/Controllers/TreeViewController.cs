@@ -56,9 +56,16 @@ namespace DevExtreme.MVC.Demos.Controllers {
         }
         #endregion
 
+        #region ContextMenuIntegration
         public ActionResult ContextMenuIntegration() {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult GetHierarchicalDataForContextMenu(DataSourceLoadOptions loadOptions) {
+            return Content(JsonConvert.SerializeObject(DataSourceLoader.Load(TreeViewHierarchicalDataForContextMenu.Products, loadOptions)), "application/json");
+        }
+        #endregion
 
         #region DragAndDropPlainDataStructure
         public ActionResult DragAndDropPlainDataStructure() {
