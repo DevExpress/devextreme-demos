@@ -6,9 +6,9 @@ To bind data to the component, assign the collection of objects to the TreeMap's
 
 Once you assign the data source, specify the [valueField](/Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/#valueField) and [labelField](/Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/#labelField) properties. If you specify these properties, the component can determine the object fields that indicate TreeMap labels and values in the collection. The default values for these properties are `value` and `name`, respectively. This demo uses default values, so there is no need to explicitly specify value and label fields.
 
-You can simulate the [hierarchical data structure](https://js.devexpress.com/Demos/WidgetsGallery/Demo/Charts/HierarchicalDataStructure) with plain data structure as shown in this demo. To implement this technique, specify the [idField](/Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/#idField) and [parentField](/Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/#parentField) properties. This demo specifies `idField: 'id'` and `parentField: 'parentId'` respectively.
+You can simulate a [hierarchical data structure](https://js.devexpress.com/Demos/WidgetsGallery/Demo/Charts/HierarchicalDataStructure) with a plain data structure as shown in this demo. To implement this technique, specify the [idField](/Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/#idField) and [parentField](/Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/#parentField) properties. This demo specifies `idField: 'id'` and `parentField: 'parentId'`, respectively.
 
-For example, one of the groups of objects in the demo data looks as follows:
+For example, one group of objects in the demo data appears as follows:
 
     {
         id: '3',
