@@ -106,7 +106,10 @@
     <div class="dx-field">
       <div class="dx-field-label">Country</div>
       <div class="dx-field-value">
-        <dx-select-box [dataSource]="countries" validationMessagePosition="left">
+        <dx-select-box
+          [dataSource]="countries"
+          validationMessagePosition="left"
+        >
           <dx-validator>
             <dxi-validation-rule
               type="required"
