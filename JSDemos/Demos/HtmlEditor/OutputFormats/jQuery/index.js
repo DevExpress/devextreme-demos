@@ -1,4 +1,9 @@
 $(() => {
+  const updateOutput = (value, valueType) => {
+    const formattedValue = valueType === 'html' ? format(value) : value;
+    $('.value-content').text(formattedValue);
+  };
+
   const editorInstance = $('.html-editor').dxHtmlEditor({
     height: 300,
     value: markup,
@@ -19,8 +24,8 @@ $(() => {
         'color', 'background',
       ],
     },
-    onValueChanged(e) {
-      $('.value-content').text(e.component.option('value'));
+    onValueChanged({ component, value }) {
+      updateOutput(value, component.option('valueType'));
     },
   }).dxHtmlEditor('instance');
 
@@ -28,10 +33,19 @@ $(() => {
     items: [{ text: 'Html' }, { text: 'Markdown' }],
     selectedItemKeys: ['Html'],
     onSelectionChanged(e) {
-      editorInstance.option('valueType', e.addedItems[0].text.toLowerCase());
-      $('.value-content').text(editorInstance.option('value'));
+      const valueType = e.addedItems[0].text.toLowerCase();
+      editorInstance.option({ valueType });
+      const value = editorInstance.option('value');
+      updateOutput(value, valueType);
     },
   });
 
-  $('.value-content').text(markup);
+  updateOutput(markup, 'html');
 });
+
+function format(markup) {
+  return prettier.format(markup, {
+    parser: 'html',
+    plugins: prettierPlugins,
+  });
+}
