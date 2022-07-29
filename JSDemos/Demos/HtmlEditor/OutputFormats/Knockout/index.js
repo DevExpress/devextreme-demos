@@ -1,6 +1,13 @@
 window.onload = function () {
   const editorValueType = ko.observable('html');
 
+  function format(markup) {
+    return prettier.format(markup, {
+      parser: 'html',
+      plugins: prettierPlugins,
+    });
+  }
+
   const viewModel = {
     valueContent: ko.observable(),
     htmlEditorOptions: {
@@ -24,7 +31,7 @@ window.onload = function () {
         ],
       },
       onValueChanged(e) {
-        this.valueContent(e.value);
+        this.valueContent(format(e.value));
       },
     },
     buttonGroupOptions: {
