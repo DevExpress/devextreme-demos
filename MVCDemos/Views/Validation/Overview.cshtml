@@ -68,7 +68,7 @@
                 <div class="dx-field-value">
                     @(Html.DevExtreme().SelectBoxFor(m => m.Country)
                         .DataSource(d => d.WebApi().RouteName("GeoNames").LoadAction("Countries").Key("this"))
-                        .ValidationMessagePosition("left")
+                        .ValidationMessagePosition(Position.Left)
                     )
                 </div>
             </div>
