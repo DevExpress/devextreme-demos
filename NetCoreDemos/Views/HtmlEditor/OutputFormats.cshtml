@@ -69,13 +69,13 @@
 </div>
 
 <script>
-    function updateOutput(value, valueType) {
-        const formattedValue = valueType === 'html' ? format(value) : value;
+    function formatOutput(value, valueType) {
+        const formattedValue = valueType === 'html' ? prettierFormat(value) : value;
         $('.value-content').text(formattedValue);
     }
 
     function valueChanged({ component, value }) {
-        updateOutput(value, component.option('valueType'));
+        formatOutput(value, component.option('valueType'));
     }
 
     function selectionChanged(e) {
@@ -85,10 +85,10 @@
         editorInstance.option({ valueType });
         var value = editorInstance.option("value");
 
-        updateOutput(value, valueType)
+        formatOutput(value, valueType)
     }
 
-    function format(markup) {
+    function prettierFormat(markup) {
         return prettier.format(markup, {
             parser: "html",
             plugins: prettierPlugins
@@ -97,5 +97,5 @@
 
     var markup = '<h2><img src="../../images/widgets/HtmlEditor.svg" alt="HtmlEditor"> Formatted Text Editor (HTML Editor)</h2><p><br></p><p>DevExtreme JavaScript HTML Editor is a client-side WYSIWYG text editor that allows its users to format textual and visual content and store it as HTML or Markdown.</p>';
 
-    updateOutput(markup, 'html');
+    formatOutput(markup, 'html');
 </script>

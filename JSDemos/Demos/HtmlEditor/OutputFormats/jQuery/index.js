@@ -1,6 +1,6 @@
 $(() => {
-  const updateOutput = (value, valueType) => {
-    const formattedValue = valueType === 'html' ? format(value) : value;
+  const formatOutput = (value, valueType) => {
+    const formattedValue = valueType === 'html' ? prettierFormat(value) : value;
     $('.value-content').text(formattedValue);
   };
 
@@ -25,7 +25,7 @@ $(() => {
       ],
     },
     onValueChanged({ component, value }) {
-      updateOutput(value, component.option('valueType'));
+      formatOutput(value, component.option('valueType'));
     },
   }).dxHtmlEditor('instance');
 
@@ -36,14 +36,14 @@ $(() => {
       const valueType = e.addedItems[0].text.toLowerCase();
       editorInstance.option({ valueType });
       const value = editorInstance.option('value');
-      updateOutput(value, valueType);
+      formatOutput(value, valueType);
     },
   });
 
-  updateOutput(markup, 'html');
+  formatOutput(markup, 'html');
 });
 
-function format(markup) {
+function prettierFormat(markup) {
   return prettier.format(markup, {
     parser: 'html',
     plugins: prettierPlugins,
