@@ -1,7 +1,7 @@
 window.onload = function () {
   const editorValueType = ko.observable('html');
 
-  function format(markup) {
+  function prettierFormat(markup) {
     return prettier.format(markup, {
       parser: 'html',
       plugins: prettierPlugins,
@@ -31,7 +31,7 @@ window.onload = function () {
         ],
       },
       onValueChanged(e) {
-        this.valueContent(format(e.value));
+        this.valueContent(prettierFormat(e.value));
       },
     },
     buttonGroupOptions: {

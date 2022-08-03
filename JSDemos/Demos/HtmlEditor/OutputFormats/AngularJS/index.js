@@ -2,7 +2,7 @@ const DemoApp = angular.module('DemoApp', ['dx']);
 
 DemoApp.controller('DemoController', ($scope) => {
   $scope.editorValue = markup;
-  $scope.format = function (markup) {
+  $scope.prettierFormat = function (markup) {
     return prettier.format(markup, {
       parser: 'html',
       plugins: prettierPlugins,
@@ -30,7 +30,7 @@ DemoApp.controller('DemoController', ($scope) => {
     bindingOptions: {
       value: 'editorValue',
       valueType: 'editorValueType',
-      format: 'format',
+      prettierFormat: 'prettierFormat',
     },
   };
 
