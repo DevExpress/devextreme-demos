@@ -78,7 +78,7 @@
                 </div>
                 <div class="dx-field-value">
                     @Html.DevExtreme().TextBoxFor(m => m.City)
-                        .ValidationMessagePosition("left")
+                        .ValidationMessagePosition(Position.Left)
                 </div>
             </div>
             <div class="dx-field">
@@ -87,7 +87,7 @@
                 </div>
                 <div class="dx-field-value">
                     @Html.DevExtreme().TextBoxFor(m => m.Address)
-                        .ValidationMessagePosition("left")
+                        .ValidationMessagePosition(Position.Left)
                 </div>
             </div>
             <div class="dx-field">
@@ -99,7 +99,7 @@
                         .Mask("+1 (X00) 000-0000")
                         .MaskRules(new { X = new JS("/[02-9]/") })
                         .MaskInvalidMessage("The phone must have a correct USA phone format")
-                        .ValidationMessagePosition("left")
+                        .ValidationMessagePosition(Position.Left)
                     )
                 </div>
             </div>
