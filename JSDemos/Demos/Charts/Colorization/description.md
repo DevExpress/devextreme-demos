@@ -3,7 +3,13 @@ This demo shows options that you can use to colorize TreeMap tiles. To see each 
 To colorize the TreeMap tiles, you can use the [colorizer](/Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/colorizer/) object. This object allows you to specify the colorization [type](/Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/colorizer/#type):
 
 - *"discrete"* (default)    
-This colorization algorithm paints each tile within a group in a color taken from the [palette](/Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/colorizer/#palette). When there are multiple groups, colorization begins from scratch in each group. Alternatively, you can force the UI component to continue colorization across groups. For this purpose, set the [colorizeGroups](//Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/colorizer/#colorizeGroups) property to `true`. It colorizes not each tile, but each group of tiles in a single color taken from the palette. This demo shows these two techniques in **Discrete** and **Grouped** modes.
+This colorization algorithm paints each tile within a group in a color from the [palette](/Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/colorizer/#palette). When there are multiple groups, the way in which groups are colorized depends on the [colorizeGroups](/Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/colorizer/#colorizeGroups) property setting: 
+
+    - If [colorizeGroups](/Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/colorizer/#colorizeGroups) is set to `false` (**Discrete** mode in the demo):     
+    Each group is painted independently - regardless of the colors used in other groups.
+
+    - If [colorizeGroups](/Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/colorizer/#colorizeGroups) is set to `true` (**Grouped** mode in the demo):     
+    Each group is painted with a different color from the palette.
 
 - *"gradient"*    
 If you choose this algorithm, the palette should contain only two colors that the component uses to colorize the smallest and the largest tile, respectively. The other tiles will have a tint of either the first or the second color depending on their size. In order to use the *"gradient"* algorithm, you need to set the [range](/Documentation/ApiReference/UI_Components/dxTreeMap/Configuration/colorizer/#range) property to an array of only two values.
