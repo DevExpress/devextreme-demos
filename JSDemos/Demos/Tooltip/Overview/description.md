@@ -1,1 +1,4 @@
-The Tooltip component displays a&nbsp;tooltip for a&nbsp;specified element on&nbsp;the page. This demo shows how you can customize the tooltip and animate its appearance on&nbsp;the page.
+The Tooltip component displays a tooltip for a specified element on the page.
+
+
+
