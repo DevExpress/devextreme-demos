@@ -2,7 +2,7 @@ The Tooltip component can display a tooltip for an element on the page. To bind 
 
 ## Show and Hide the Tooltip
 
-Specify [DOM events](https://developer.mozilla.org/en-US/docs/Web/Events#event_listing) in the target element's markup that needs to be triggered to change the Tooltip's visibility. Bind the [visible](/Documentation/ApiReference/UI_Components/dxTooltip/Configuration/#visible) property of the Tooltip to a variable and use event handlers to toggle this variable.
+Specify [DOM events](https://developer.mozilla.org/en-US/docs/Web/Events#event_listing) in the target element's markup that need to be triggered to change the Tooltip's visibility. Bind the [visible](/Documentation/ApiReference/UI_Components/dxTooltip/Configuration/#visible) property of the Tooltip to a variable and use event handlers to toggle this variable.
 
 To hide the Tooltip when a user clicks outside its borders, use the [hideOnOutsideClick](/Documentation/ApiReference/UI_Components/dxTooltip/Configuration/#hideOnOutsideClick) property.
 
