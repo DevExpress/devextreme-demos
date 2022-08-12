@@ -8,3 +8,5 @@ In stacked area series, the value of each next point is counted off from the pre
 
 - *fullstackedarea*    
 Full-stacked area series are stacked series, but the sum of all point values by a given argument is considered 100%, and each individual point value is recalculated to be a share of these 100%. The full-stacked area series fully cover the Chart's pane. 
+
+To create multiple area series, use the [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/) array to declare each series and the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/) object to specify common series type.
