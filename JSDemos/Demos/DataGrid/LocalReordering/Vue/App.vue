@@ -80,8 +80,8 @@ export default {
   methods: {
     onReorder(e) {
       const visibleRows = e.component.getVisibleRows();
-      const toIndex = tasks.findIndex((item) => item.ID === visibleRows[e.toIndex].data.ID);
-      const fromIndex = tasks.findIndex((item) => item.ID === e.itemData.ID);
+      const toIndex = this.tasks.findIndex((item) => item.ID === visibleRows[e.toIndex].data.ID);
+      const fromIndex = this.tasks.findIndex((item) => item.ID === e.itemData.ID);
       const newTasks = [...this.tasks];
 
       newTasks.splice(fromIndex, 1);
