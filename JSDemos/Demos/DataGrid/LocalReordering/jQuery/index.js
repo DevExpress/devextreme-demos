@@ -9,10 +9,6 @@ $(() => {
     sorting: {
       mode: 'none',
     },
-    editing: {
-    	mode: 'cell',
-      allowUpdating: true
-  	},
     rowDragging: {
       allowReordering: true,
       onReorder(e) {
