@@ -1,6 +1,6 @@
 import React from 'react';
 import DataGrid, {
-  Column, RowDragging, Scrolling, Lookup, Sorting, Editing
+  Column, RowDragging, Scrolling, Lookup, Sorting
 } from 'devextreme-react/data-grid';
 import { CheckBox } from 'devextreme-react/check-box';
 import { tasks, employees } from './data.js';
