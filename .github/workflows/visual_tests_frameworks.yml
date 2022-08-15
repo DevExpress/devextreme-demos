@@ -1,7 +1,7 @@
 name: Frameworks
 
 concurrency:
-  group: wf-${{github.event.pull_request.number}}-${{github.workflow}}
+  group: wf-${{github.event.pull_request.number || github.sha}}-${{github.workflow}}
   cancel-in-progress: true
 
 on:
@@ -474,6 +474,12 @@ jobs:
     timeout-minutes: 60
 
     steps:
+    - name: Pin Chrome version
+      run: |
+        CHROME_VERSION=103.0.5060.134-1
+        wget "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb"
+        sudo dpkg -i "google-chrome-stable_${CHROME_VERSION}_amd64.deb"
+
     - name: Get sources
       uses: actions/checkout@v2
 
