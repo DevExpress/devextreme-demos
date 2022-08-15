@@ -1,12 +1,12 @@
-The Chart component can display various [series types](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#type). This demo shows the following series types (use a drop-down editor below the Chart to select the type):
+This demo shows different Area [series types](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#type). Use a drop-down editor below the Chart to select the type.
 
 - *area*    
-Area series visualize data as an area filled with color. If the Chart contains multiple area series, they overlap each other.
+The Area series draws the line between neighboring data points and fills the area under that line. If the Chart contains multiple area series, they overlap each other.
 
 - *stackedarea*    
-In stacked area series, the value of each next point is counted off from the previous point with the same argument. As a result, The Chart displays areas stacked on top of each other without overlapping. This type of Chart is useful when you need to show a ratio between different areas.
+The Chart displays areas stacked on top of each other without overlapping. This type of Chart is useful if you need to compare contributions of each series to the overall value.
 
 - *fullstackedarea*    
-Full-stacked area series are stacked series, but the sum of all point values by a given argument is considered 100%, and each individual point value is recalculated to be a share of these 100%. The full-stacked area series fully cover the Chart's pane. 
+The Chart stacks the areas. For each argument, it displays values as percentages of total, as opposed to absolute values. The topmost series points are always plotted at 100%, and thus the graph fully covers the Chart's pane. 
 
-To create multiple area series, use the [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/) array to declare each series and the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/) object to specify common series type.
+To create multiple area series, use the [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/) array to declare each series and the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/) object to specify the common series type.
