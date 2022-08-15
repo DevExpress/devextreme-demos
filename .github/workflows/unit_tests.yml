@@ -1,5 +1,9 @@
 name: Unit tests
 
+concurrency:
+  group: wf-${{github.event.pull_request.number || github.sha}}-${{github.workflow}}
+  cancel-in-progress: true
+
 on: [push, pull_request]
 
 jobs:
