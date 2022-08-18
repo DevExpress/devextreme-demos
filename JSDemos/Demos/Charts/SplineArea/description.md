@@ -1,1 +1,12 @@
-Spline area series, like area series, are used to&nbsp;clearly emphasize change in&nbsp;values. However, spline area series help &laquo;smooth&raquo; individual lines that connect data points. In&nbsp;this example, you can switch between the _spline area_, _stacked spline area_ and _full-stacked spline area_ series types. _Stacked spline area_ series help visualize multiple series and compare the manner in&nbsp;which each series contributes to&nbsp;the total aggregate value for specific arguments. _Full-stacked spline area_ series help compare the percentage value of&nbsp;multiple spline area series for each argument.
+Spline area series unlike area series display smooth lines that connect data points. This demo shows different spline area [series types](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#type). Use the drop-down editor below the Chart to select the type.
+
+- *splinearea*    
+The spline area series draws the line between neighboring data points and fills the area under that line. If the Chart contains multiple area series, they overlap each other.
+
+- *stackedsplinearea*    
+The Chart displays areas stacked on top of each other without overlapping. This type of Chart is useful if you need to compare contributions of each series to the overall value.
+
+- *fullstackedsplinearea*    
+The Chart stacks the areas. For each argument, it displays values as percentages of the total, as opposed to absolute values. The topmost series points are always plotted at 100%, and the graph fully covers the Chart's pane. 
+
+To create multiple spline area series, use the [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/) array to declare each series and the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/) object to specify the common series type.
