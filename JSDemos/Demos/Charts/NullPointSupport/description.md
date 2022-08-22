@@ -1,1 +1,3 @@
-This demo illustrates how the Chart component treats points with _null_ value.
+This demo illustrates how the Chart component supports *null* points. In this demo, the [step area](https://js.devexpress.com/Demos/WidgetsGallery/Demo/Charts/StepArea/jQuery/Light/) Chart displays the *null* points as gaps in the areas.
+
+To create multiple step area series, use the [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/) array to declare each series and the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/) object to specify the common series type. In that object you can implement specific parameters to configure [step area](/Documentation/ApiReference/UI_Components/dxChart/Series_Types/StepAreaSeries/) specifically. For example, in this demo Chart displays [points](/Documentation/ApiReference/UI_Components/dxChart/Series_Types/StepAreaSeries/point/) for all series.
