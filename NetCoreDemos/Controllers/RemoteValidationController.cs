@@ -27,8 +27,8 @@ namespace DevExtreme.NETCore.Demos.Controllers {
 
         [HttpPost]
         public JsonResult CheckEmailAddress(string email) {
-            bool isValid = string.Equals(email, "test@dx-email.com", StringComparison.OrdinalIgnoreCase);
-            return Json(isValid);
+            bool isInvalid = string.Equals(email, "test@dx-email.com", StringComparison.OrdinalIgnoreCase);
+            return Json(!isInvalid);
         }
     }
 }
