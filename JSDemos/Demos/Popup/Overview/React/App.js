@@ -23,7 +23,7 @@ class App extends React.Component {
     this.hideInfo = this.hideInfo.bind(this);
     this.moreInfoButtonOptions = {
       text: 'More info',
-      onClick: this.lookMoreInfo.bind(this),
+      onClick: this.showMoreInfo.bind(this),
     };
     this.emailButtonOptions = {
       icon: 'email',
