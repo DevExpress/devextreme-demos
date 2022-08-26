@@ -134,7 +134,7 @@ class App extends React.Component {
     }, 'success', 3000);
   }
 
-  lookMoreInfo() {
+  showMoreInfo() {
     const message = `More info about ${this.state.currentEmployee.FirstName} ${this.state.currentEmployee.LastName}`;
     notify({
       message,
