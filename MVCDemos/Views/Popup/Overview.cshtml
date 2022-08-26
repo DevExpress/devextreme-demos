@@ -16,6 +16,24 @@
         .ShowCloseButton(false)
         .ToolbarItems(barItems => {
             barItems.Add()
+                .Toolbar(Toolbar.Top)
+                .LocateInMenu(ToolbarItemLocateInMenuMode.Always)
+                .Widget(widget => widget.Button()
+                    .Text("More info")
+                    .OnClick(@<text>
+                        function showInfo(data) {
+                            const message = `More info about ${currentEmployee.FirstName} ${currentEmployee.LastName}`;
+                            DevExpress.ui.notify({
+                                message: message,
+                                position: {
+                                    my: "center top",
+                                    at: "center top"
+                                }
+                            }, "success", 3000);
+                        }
+                    </text>)
+                );
+            barItems.Add()
                 .Toolbar(Toolbar.Bottom)
                 .Location(ToolbarItemLocation.Before)
                 .Widget(widget => widget.Button()
