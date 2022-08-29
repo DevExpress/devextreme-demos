@@ -10,6 +10,6 @@ To reflect changes on the market, the Chart component compares the price of ever
 
 The following settings may help you make your chart more user-friendly:
 
-- [tooltip](/Documentation/ApiReference/UI_Components/dxChart/Configuration/tooltip/).[contentTemplate](/Documentation/ApiReference/UI_Components/dxChart/Configuration/tooltip/#contentTemplate) - specifies a  custom tooltip template so you can display additional information, such as price values. 
+- [tooltip](/Documentation/ApiReference/UI_Components/dxChart/Configuration/tooltip/).[contentTemplate](/Documentation/ApiReference/UI_Components/dxChart/Configuration/tooltip/#contentTemplate) - specifies a custom tooltip template so you can display additional information, such as price values. 
 - [argumentAxis](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/).[workdaysOnly](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/#workdaysOnly) - displays only work days on the argument axis.
 
