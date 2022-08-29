@@ -1,6 +1,4 @@
-This demo illustrates the Popup component. To get started with the DevExtreme Popup component, refer to the following tutorial for step-by-step instructions: [Getting Started with Popup](/Documentation/Guide/UI_Components/Popup/Getting_Started_with_Popup/).
-
-Click the **Details** button under an employee picture to see what the Popup looks like.
+This demo shows how to show and hide the Popup component, how to fill it with content, specify its position and other configurations. To get started with the DevExtreme Popup component, refer to the following tutorial for step-by-step instructions: [Getting Started with Popup](/Documentation/Guide/UI_Components/Popup/Getting_Started_with_Popup/).
 
 ## Show and Hide the Popup
 
