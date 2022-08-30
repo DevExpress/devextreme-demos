@@ -2,13 +2,13 @@ This demo shows how to show and hide the Popup component, how to fill it with co
 
 ## Show and Hide the Popup
 
-Call the [show()](/Documentation/ApiReference/UI_Components/dxPopup/Methods/#show) method to make the Popup visible. You can close the Popup in multiple ways:
+Call the [show()](/Documentation/ApiReference/UI_Components/dxPopup/Methods/#show) method to display the Popup. You can close the Popup in multiple ways:
 
 - Built-in close button    
 Enable the [showCloseButton](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#showCloseButton) property to display the close button in the Popup's [title area](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#showTitle).
 
 - Custom close button    
-This demo shows how to add custom buttons to the Popup. One of them uses an [onClick](/Documentation/ApiReference/UI_Components/dxButton/Configuration/#onClick) handler to call the [hide()](/Documentation/ApiReference/UI_Components/dxPopup/Methods/#hide) method, and the Popup becomes invisible. To learn more, follow the **Configure the Popup** topic below.
+This demo shows how to add custom buttons to the Popup. One of them uses an [onClick](/Documentation/ApiReference/UI_Components/dxButton/Configuration/#onClick) handler to call the [hide()](/Documentation/ApiReference/UI_Components/dxPopup/Methods/#hide) method that closes the Popup. Refer to the next section (**Configure the Popup**) to learn how you can populate the popup with custom controls.
 
 - On outside click    
 Users can also hide the Popup on outside clicks, if you enable the [hideOnOutsideClick](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#hideOnOutsideClick) property.
@@ -18,7 +18,7 @@ Users can also hide the Popup on outside clicks, if you enable the [hideOnOutsid
 The Popup inner area is divided into two parts: title area and content area.
 
 - Content area       
-To fill the Popup with content, Use the [contentTemplate](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#contentTemplate) property. You can also specify a toolbar at the bottom of the content area. To do this, declare the [toolbarItems](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/toolbarItems/) in the markup as shown in this demo. Set each item's [toolbar](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/toolbarItems/#toolbar) property to `bottom`. To learn more about toolbar configuration, refer to the following tutorial: [Getting Started with Toolbar](/Documentation/Guide/UI_Components/Toolbar/Getting_Started_with_Toolbar/)
+To populate the Popup with content, Use the [contentTemplate](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#contentTemplate) property. You can also display a toolbar at the bottom of the content area. Declare a [toolbarItems](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/toolbarItems/) element in the markup as shown in this demo. Set each item's [toolbar](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/toolbarItems/#toolbar) property to `bottom`. To learn more about toolbar configuration, refer to the following tutorial: [Getting Started with Toolbar](/Documentation/Guide/UI_Components/Toolbar/Getting_Started_with_Toolbar/)
 
 - Title area       
 Set [showTitle](Documentation/ApiReference/UI_Components/dxPopup/Configuration/#showTitle) to `true` and use the [title](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#title) property to specify the caption. You can also add a toolbar in the title area. Set each [toolbarItems](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/toolbarItems/) item's [toolbar](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/toolbarItems/#toolbar) property to `top`. If you want to add an item to the overflow menu as shown in this demo, set its [locateInMenu](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/toolbarItems/#locateInMenu) to `always`.
