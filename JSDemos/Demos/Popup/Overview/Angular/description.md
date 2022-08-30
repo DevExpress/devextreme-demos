@@ -31,4 +31,4 @@ In this demo, each Popup's location is relative to the image. The code sets the 
 
 Use the [container](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#container) property to specify the container to render the Popup in. If you set the [container](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#container) property to a specific element on the page, the [shading](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#shading) applies to this element.
 
-Enable the [dragEnabled](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#dragEnabled) property to allow users to move the Popup around the page.
+Turn on the [dragEnabled](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#dragEnabled) option to allow users to move the Popup around the page.
