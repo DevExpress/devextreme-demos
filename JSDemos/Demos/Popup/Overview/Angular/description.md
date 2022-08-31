@@ -7,7 +7,7 @@ To see step-by-step instructions on how to get started with the DevExtreme Popup
 Use two-way binding between the [visible](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#visible) property and a Boolean variable (`popupVisible` in this demo). The `showInfo(employee)` method sets `popupVisible` to `true` and the Popup appears. You can close the Popup in multiple ways:
 
 - Built-in close button    
-Enable the [showCloseButton](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#showCloseButton) property to display the close button in the Popup's [title area](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#showTitle).
+Enable the [showCloseButton](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#showCloseButton) property to display the Close button in a Popup's [title area](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#showTitle).
 
 - Custom close button    
 This demo shows how to add custom buttons to a Popup. One of these buttons uses an [onClick](/Documentation/ApiReference/UI_Components/dxButton/Configuration/#onClick) handler to set the `popupVisible` variable to `false`, causing the Popup to disappear. Refer to the next section (**Configure the Popup**) to learn how you can populate a popup with custom controls.
@@ -27,10 +27,10 @@ Set [showTitle](Documentation/ApiReference/UI_Components/dxPopup/Configuration/#
 
 ## Resize and Position
 
-To specify the Popup's size, use the [height](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#height) and [width](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#width) properties.
+To specify Popup size, use the [height](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#height) and [width](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#width) properties.
 
 In this demo, each Popup's location is relative to the image. The code sets the **my**, **at**, and **of** properties of the [position](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#position) object. The configuration in the demo reads as follows: "place **my** `center` side **at** the `bottom` side **of** the `#image${employee.ID}` element."
 
 Use the [container](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#container) property to specify the container to render the Popup in. If you set the [container](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#container) property to a specific element on the page, the [shading](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#shading) applies to this element.
 
-Turn on the [dragEnabled](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#dragEnabled) option to allow users to move the Popup around the page.
+Turn on the [dragEnabled](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#dragEnabled) option to allow users to move a Popup around the page.
