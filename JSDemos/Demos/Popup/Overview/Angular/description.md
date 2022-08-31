@@ -10,7 +10,7 @@ Use two-way binding between the [visible](/Documentation/ApiReference/UI_Compone
 Enable the [showCloseButton](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#showCloseButton) property to display the close button in the Popup's [title area](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#showTitle).
 
 - Custom close button    
-This demo shows how to add custom buttons to the Popup. One of them uses an [onClick](/Documentation/ApiReference/UI_Components/dxButton/Configuration/#onClick) handler to set the `popupVisible` variable to `false`, and the Popup disappears. Refer to the next section (**Configure the Popup**) to learn how you can populate the popup with custom controls.
+This demo shows how to add custom buttons to a Popup. One of these buttons uses an [onClick](/Documentation/ApiReference/UI_Components/dxButton/Configuration/#onClick) handler to set the `popupVisible` variable to `false`, causing the Popup to disappear. Refer to the next section (**Configure the Popup**) to learn how you can populate a popup with custom controls.
 
 - On outside click    
 Users can also hide the Popup on outside clicks, if you enable the [hideOnOutsideClick](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#hideOnOutsideClick) property.
