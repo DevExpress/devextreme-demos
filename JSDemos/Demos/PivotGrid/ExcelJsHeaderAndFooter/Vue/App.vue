@@ -15,13 +15,52 @@
         :show-data-fields="true"
         :show-row-fields="true"
         :show-column-fields="true"
-        :show-filter-fields="false"
-        :allow-field-dragging="false"
+        :show-filter-fields="true"
+        :allow-field-dragging="true"
         :visible="true"
       />
       <DxFieldChooser :enabled="false"/>
       <DxExport :enabled="true"/>
     </DxPivotGrid>
+    <div class="options">
+      <div class="caption">Export Headers</div>
+      <div class="option">
+        <DxCheckBox
+          id="export-data-field-headers"
+          :value="exportDataFieldHeaders"
+          :on-value-changed="onExportDataFieldHeadersChanged"
+          text="Data Field"
+        />
+      </div>
+      {{ ' ' }}
+      <div class="option">
+        <DxCheckBox
+          id="export-row-field-headers"
+          :value="exportRowFieldHeaders"
+          :on-value-changed="onExportRowFieldHeadersChanged"
+          text="Row Field"
+        />
+      </div>
+      {{ ' ' }}
+      <div class="option">
+        <DxCheckBox
+          id="export-column-field-headers"
+          :value="exportColumnFieldHeaders"
+          :on-value-changed="onExportColumnFieldHeadersChanged"
+          text="Column Field"
+        />
+      </div>
+      {{ ' ' }}
+      <div class="option">
+        <DxCheckBox
+          id="export-filter-field-headers"
+          :value="exportFilterFieldHeaders"
+          :on-value-changed="onExportFilterFieldHeadersChanged"
+          text="Filter Field"
+        />
+      </div>
+
+    </div>
   </div>
 </template>
 <script>
@@ -30,6 +69,7 @@ import DxPivotGrid, {
   DxFieldChooser,
   DxFieldPanel,
 } from 'devextreme-vue/pivot-grid';
+import DxCheckBox from 'devextreme-vue/check-box';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
@@ -44,9 +84,14 @@ export default {
     DxExport,
     DxFieldChooser,
     DxFieldPanel,
+    DxCheckBox,
   },
   data() {
     return {
+      exportDataFieldHeaders: false,
+      exportRowFieldHeaders: false,
+      exportColumnFieldHeaders: false,
+      exportFilterFieldHeaders: false,
       dataSource: new PivotGridDataSource({
         fields: [{
           caption: 'Region',
@@ -72,12 +117,28 @@ export default {
           summaryType: 'sum',
           format: 'currency',
           area: 'data',
+        }, {
+          caption: 'Country',
+          dataField: 'country',
+          area: 'filter',
         }],
         store: sales,
       }),
     };
   },
   methods: {
+    onExportDataFieldHeadersChanged({ value }) {
+      this.exportDataFieldHeaders = value;
+    },
+    onExportRowFieldHeadersChanged({ value }) {
+      this.exportRowFieldHeaders = value;
+    },
+    onExportColumnFieldHeadersChanged({ value }) {
+      this.exportColumnFieldHeaders = value;
+    },
+    onExportFilterFieldHeadersChanged({ value }) {
+      this.exportFilterFieldHeaders = value;
+    },
     onExporting(e) {
       const workbook = new Workbook();
       const worksheet = workbook.addWorksheet('Sales');
@@ -91,6 +152,10 @@ export default {
         worksheet,
         topLeftCell: { row: 4, column: 1 },
         keepColumnWidths: false,
+        exportDataFieldHeaders: this.exportDataFieldHeaders,
+        exportRowFieldHeaders: this.exportRowFieldHeaders,
+        exportColumnFieldHeaders: this.exportColumnFieldHeaders,
+        exportFilterFieldHeaders: this.exportFilterFieldHeaders,
       }).then((cellRange) => {
         // Header
         const headerRow = worksheet.getRow(2);
@@ -134,5 +199,22 @@ export default {
   font-size: 28px;
   text-align: center;
   margin-bottom: 20px;
+}
+
+.options {
+  padding: 20px;
+  margin-top: 20px;
+  background-color: rgba(191, 191, 191, 0.15);
+}
+
+.caption {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.option {
+  width: 24%;
+  display: inline-block;
+  margin-top: 10px;
 }
 </style>

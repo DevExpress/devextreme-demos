@@ -1,7 +1,8 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxPivotGridModule } from 'devextreme-angular';
+import { DxPivotGridModule, DxCheckBoxModule } from 'devextreme-angular';
+
 import { Workbook, WorksheetViewFrozen } from 'exceljs';
 import { saveAs } from 'file-saver-es';
 // Our demo infrastructure requires us to use 'file-saver-es'. We recommend that you use the official 'file-saver' package in your applications.
@@ -22,6 +23,14 @@ export class AppComponent {
   sales: Sale[];
 
   dataSource: any;
+
+  exportDataFieldHeaders = false;
+
+  exportRowFieldHeaders = false;
+
+  exportColumnFieldHeaders = false;
+
+  exportFilterFieldHeaders = false;
 
   constructor(service: Service) {
     this.dataSource = {
@@ -49,6 +58,10 @@ export class AppComponent {
         summaryType: 'sum',
         format: 'currency',
         area: 'data',
+      }, {
+        caption: 'Country',
+        dataField: 'country',
+        area: 'filter',
       }],
       store: service.getSales(),
     };
@@ -67,6 +80,10 @@ export class AppComponent {
       worksheet,
       topLeftCell: { row: 4, column: 1 },
       keepColumnWidths: false,
+      exportDataFieldHeaders: this.exportDataFieldHeaders,
+      exportRowFieldHeaders: this.exportRowFieldHeaders,
+      exportColumnFieldHeaders: this.exportColumnFieldHeaders,
+      exportFilterFieldHeaders: this.exportFilterFieldHeaders,
     }).then((cellRange) => {
       // Header
       const headerRow = worksheet.getRow(2);
@@ -93,12 +110,29 @@ export class AppComponent {
     });
     e.cancel = true;
   }
+
+  onExportDataFieldHeadersChanged({ value }) {
+    this.exportDataFieldHeaders = value;
+  }
+
+  onExportRowFieldHeadersChanged({ value }) {
+    this.exportRowFieldHeaders = value;
+  }
+
+  onExportColumnFieldHeadersChanged({ value }) {
+    this.exportColumnFieldHeaders = value;
+  }
+
+  onExportFilterFieldHeadersChanged({ value }) {
+    this.exportFilterFieldHeaders = value;
+  }
 }
 
 @NgModule({
   imports: [
     BrowserModule,
     DxPivotGridModule,
+    DxCheckBoxModule,
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
