@@ -119,7 +119,7 @@ export default {
   },
   methods: {
     onValueChanged(e) {
-      notify(`The "${e.value}" item was clicked`);
+      notify(`The value is changed to: "${e.value}"`);
     },
   },
 };

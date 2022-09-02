@@ -41,7 +41,7 @@ window.onload = function () {
       items: simpleProducts,
       value: currentProduct,
       onValueChanged(data) {
-        DevExpress.ui.notify(`The "${data.value}" item was clicked`);
+        DevExpress.ui.notify(`The value is changed to: "${data.value}"`);
       },
     },
   };
