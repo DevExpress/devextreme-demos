@@ -35,7 +35,7 @@ To enable bottom toolbar, declare the [toolbarItems](/Documentation/ApiReference
 
 ## Resize and Position
 
-To specify the Popup's size, use the [height](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#height) and [width](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#width) properties.
+To specify Popup size, use the [height](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#height) and [width](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#width) properties.
 
 In this demo, each Popup's location is relative to the image. The code specifies the **my**, **at**, and **of** properties of the [position](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#position) object. The configuration in the demo reads as follows: "place **my** `center` side **at** the `bottom` side **of** the `#image${employee.ID}` element."
 
