@@ -6,26 +6,25 @@ To enable data validation for an editor, you need to declare the [Validator](/Do
 A validation rule that requires the validated field to have a value.
 
 - [email](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/EmailRule/)    
-A validation rule that demands that the validated field matches the Email pattern.
+A validation rule that requires the validated field to match the Email pattern.
 
 - [async](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/AsyncRule/)    
 A custom validation rule used for server-side validation. Implement the [validationCallback](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/AsyncRule/#validationCallback) function to validate the target value.
 
 - [compare](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/CompareRule/)    
-A validation rule that requires the validated editor's value to equal 
-the value of the specified expression. To apply this rule, implement the [comparisonTarget](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/CompareRule/#comparisonTarget) function to specify the value against which this component compares the validated value.
+A validation rule that requires the validated editor's value to equal the value of the specified expression. To apply this rule, implement the [comparisonTarget](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/CompareRule/#comparisonTarget) function to specify the value against which this component compares the validated value.
 
 - [pattern](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/PatternRule/)    
-A validation rule that demands that the validated field matches a specified [pattern](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/PatternRule/#pattern). 
+A validation rule that requires the validated field to match a specified [pattern](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/PatternRule/#pattern). 
 
 - [stringLength](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/StringLengthRule/)   
 A validation rule that requires the target value length to fall within the range of the specified [minimum](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/StringLengthRule/#min) and [maximum](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/StringLengthRule/#max) values. This property only accepts string values.
 
 - [range](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/RangeRule/)  
-A validation rule that demands the that target value length is within the range between the specified [minimum](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/RangeRule/#min) and [maximum](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/RangeRule/#max) values. This property accepts only date-time and numeric values.  
+A validation rule that requires the target value length to fall within the range of the specified [minimum](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/RangeRule/#min) and [maximum](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/RangeRule/#max) values. This property only accepts date-time and numeric values.  
 
 - [numeric](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/NumericRule/)    
-A validation rule that demands that the validated field has a numeric value.
+A validation rule that requires the validated field to have a numeric value.
 
 - [custom](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/CustomRule/)    
 A rule with custom validation logic. Implement the [validationCallback](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/AsyncRule/#validationCallback) function to validate the target value.
