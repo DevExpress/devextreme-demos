@@ -26,7 +26,7 @@ class App extends React.Component {
     this.setState({
       value: e.value,
     });
-    notify(`The "${e.value}" item was clicked`);
+    notify(`The value is changed to: "${e.value}"`);
   }
 
   render() {

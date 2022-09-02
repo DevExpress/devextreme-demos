@@ -39,7 +39,7 @@ export class AppComponent {
   }
 
   onValueChanged(e: any) {
-    notify(`The "${e.value}" item was clicked`);
+    notify(`The value is changed to: "${e.value}"`);
   }
 }
 
