@@ -17,6 +17,7 @@ if (!/localhost/.test(document.location.host)) {
   templateUrl: 'app/app.component.html',
   styleUrls: ['app/app.component.css'],
   providers: [Service],
+  preserveWhitespaces: true,
 })
 
 export class AppComponent {
@@ -109,22 +110,6 @@ export class AppComponent {
       });
     });
     e.cancel = true;
-  }
-
-  onExportDataFieldHeadersChanged({ value }) {
-    this.exportDataFieldHeaders = value;
-  }
-
-  onExportRowFieldHeadersChanged({ value }) {
-    this.exportRowFieldHeaders = value;
-  }
-
-  onExportColumnFieldHeadersChanged({ value }) {
-    this.exportColumnFieldHeaders = value;
-  }
-
-  onExportFilterFieldHeadersChanged({ value }) {
-    this.exportFilterFieldHeaders = value;
   }
 }
 

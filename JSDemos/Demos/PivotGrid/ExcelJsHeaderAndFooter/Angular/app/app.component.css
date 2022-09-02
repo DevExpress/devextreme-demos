@@ -6,18 +6,18 @@
   margin-bottom: 20px;
 }
 
-.options {
+::ng-deep .options {
   padding: 20px;
   margin-top: 20px;
   background-color: rgba(191, 191, 191, 0.15);
 }
 
-.caption {
+::ng-deep .caption {
   font-size: 18px;
   font-weight: 500;
 }
 
-.option {
+::ng-deep .option {
   width: 24%;
   display: inline-block;
   margin-top: 10px;

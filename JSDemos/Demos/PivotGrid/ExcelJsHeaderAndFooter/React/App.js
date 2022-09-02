@@ -99,19 +99,19 @@ export default function App() {
     e.cancel = true;
   });
 
-  this.onExportDataFieldHeadersChanged = React.useCallback(({ value }) => {
+  const onExportDataFieldHeadersChanged = React.useCallback(({ value }) => {
     setExportDataFieldHeaders(value);
   }, [exportDataFieldHeaders, setExportDataFieldHeaders]);
 
-  this.onExportRowFieldHeadersChanged = React.useCallback(({ value }) => {
+  const onExportRowFieldHeadersChanged = React.useCallback(({ value }) => {
     setExportRowFieldHeaders(value);
   }, [exportRowFieldHeaders, setExportRowFieldHeaders]);
 
-  this.onExportColumnFieldHeadersChanged = React.useCallback(({ value }) => {
+  const onExportColumnFieldHeadersChanged = React.useCallback(({ value }) => {
     setExportColumnFieldHeaders(value);
   }, [exportColumnFieldHeaders, setExportColumnFieldHeaders]);
 
-  this.onExportFilterFieldHeadersChanged = React.useCallback(({ value }) => {
+  const onExportFilterFieldHeadersChanged = React.useCallback(({ value }) => {
     setExportFilterFieldHeaders(value);
   }, [exportFilterFieldHeaders, setExportFilterFieldHeaders]);
 
@@ -143,29 +143,29 @@ export default function App() {
         <div className="caption">Export Headers</div>
         <div className="option">
           <CheckBox id="export-data-field-headers"
-            value={false}
-            onValueChanged={this.onExportDataFieldHeadersChanged}
+            value={exportDataFieldHeaders}
+            onValueChanged={onExportDataFieldHeadersChanged}
             text="Data Field" />
         </div>
           &nbsp;
         <div className="option">
           <CheckBox id="export-row-field-headers"
-            value={false}
-            onValueChanged={this.onExportRowFieldHeadersChanged}
+            value={exportRowFieldHeaders}
+            onValueChanged={onExportRowFieldHeadersChanged}
             text="Row Field" />
         </div>
           &nbsp;
         <div className="option">
           <CheckBox id="export-column-field-headers"
-            value={false}
-            onValueChanged={this.onExportColumnFieldHeadersChanged}
+            value={exportColumnFieldHeaders}
+            onValueChanged={onExportColumnFieldHeadersChanged}
             text="Column Field" />
         </div>
           &nbsp;
         <div className="option">
           <CheckBox id="export-filter-field-headers"
-            value={false}
-            onValueChanged={this.onExportFilterFieldHeadersChanged}
+            value={exportFilterFieldHeaders}
+            onValueChanged={onExportFilterFieldHeadersChanged}
             text="Filter Field" />
         </div>
       </div>
