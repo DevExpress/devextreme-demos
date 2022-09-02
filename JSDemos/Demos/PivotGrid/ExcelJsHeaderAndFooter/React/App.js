@@ -139,34 +139,25 @@ export default function App() {
         <FieldChooser enabled={false} />
         <Export enabled={true} />
       </PivotGrid>
-      <div className="options">
-        <div className="caption">Export Headers</div>
-        <div className="option">
+      <div className="export-options">
+        <div className="caption">Export Options</div>
+        <div className="options">
           <CheckBox id="export-data-field-headers"
             value={exportDataFieldHeaders}
             onValueChanged={onExportDataFieldHeadersChanged}
-            text="Data Field" />
-        </div>
-          &nbsp;
-        <div className="option">
+            text="Export Data Field Headers" />
           <CheckBox id="export-row-field-headers"
             value={exportRowFieldHeaders}
             onValueChanged={onExportRowFieldHeadersChanged}
-            text="Row Field" />
-        </div>
-          &nbsp;
-        <div className="option">
+            text="Export Row Field Headers" />
           <CheckBox id="export-column-field-headers"
             value={exportColumnFieldHeaders}
             onValueChanged={onExportColumnFieldHeadersChanged}
-            text="Column Field" />
-        </div>
-          &nbsp;
-        <div className="option">
+            text="Export Column Field Headers" />
           <CheckBox id="export-filter-field-headers"
             value={exportFilterFieldHeaders}
             onValueChanged={onExportFilterFieldHeadersChanged}
-            text="Filter Field" />
+            text="Export Filter Field Headers" />
         </div>
       </div>
     </React.Fragment>

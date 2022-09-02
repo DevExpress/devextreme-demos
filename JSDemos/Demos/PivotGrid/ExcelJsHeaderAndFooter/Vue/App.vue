@@ -22,44 +22,34 @@
       <DxFieldChooser :enabled="false"/>
       <DxExport :enabled="true"/>
     </DxPivotGrid>
-    <div class="options">
-      <div class="caption">Export Headers</div>
-      <div class="option">
+    <div class="export-options">
+      <div class="caption">Export Options</div>
+      <div class="options">
         <DxCheckBox
           id="export-data-field-headers"
           :value="exportDataFieldHeaders"
           :on-value-changed="onExportDataFieldHeadersChanged"
-          text="Data Field"
+          text="Export Data Field Headers"
         />
-      </div>
-      {{ ' ' }}
-      <div class="option">
         <DxCheckBox
           id="export-row-field-headers"
           :value="exportRowFieldHeaders"
           :on-value-changed="onExportRowFieldHeadersChanged"
-          text="Row Field"
+          text="Export Row Field Headers"
         />
-      </div>
-      {{ ' ' }}
-      <div class="option">
         <DxCheckBox
           id="export-column-field-headers"
           :value="exportColumnFieldHeaders"
           :on-value-changed="onExportColumnFieldHeadersChanged"
-          text="Column Field"
+          text="Export Column Field Headers"
         />
-      </div>
-      {{ ' ' }}
-      <div class="option">
         <DxCheckBox
           id="export-filter-field-headers"
           :value="exportFilterFieldHeaders"
           :on-value-changed="onExportFilterFieldHeadersChanged"
-          text="Filter Field"
+          text="Export Filter Field Headers"
         />
       </div>
-
     </div>
   </div>
 </template>
@@ -201,7 +191,7 @@ export default {
   margin-bottom: 20px;
 }
 
-.options {
+.export-options {
   padding: 20px;
   margin-top: 20px;
   background-color: rgba(191, 191, 191, 0.15);
@@ -212,9 +202,9 @@ export default {
   font-weight: 500;
 }
 
-.option {
-  width: 24%;
-  display: inline-block;
+.options {
+  display: flex;
+  justify-content: space-between;
   margin-top: 10px;
 }
 </style>

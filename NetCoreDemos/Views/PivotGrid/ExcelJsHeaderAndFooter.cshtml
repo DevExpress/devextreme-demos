@@ -62,32 +62,26 @@
     )
 )
 
-<div class="options">
-    <div class="caption">Export Headers</div>
-    <div class="option">
+<div class="export-options">
+    <div class="caption">Export Options</div>
+    <div class="options">
         @(Html.DevExtreme().CheckBox()
-            .Text("Data Field")
+            .Text("Export Data Field Headers")
             .Value(false)
             .OnValueChanged("onExportDataFieldHeadersChanged")
         )
-    </div>
-    <div class="option">
         @(Html.DevExtreme().CheckBox()
-            .Text("Row Field")
+            .Text("Export Row Field Headers")
             .Value(false)
             .OnValueChanged("onExportRowFieldHeadersChanged")
         )
-    </div>
-    <div class="option">
         @(Html.DevExtreme().CheckBox()
-            .Text("Column Field")
+            .Text("Export Column Field Headers")
             .Value(false)
             .OnValueChanged("onExportColumnFieldHeadersChanged")
         )
-    </div>
-    <div class="option">
         @(Html.DevExtreme().CheckBox()
-            .Text("Filter Field")
+            .Text("Export Filter Field Headers")
             .Value(false)
             .OnValueChanged("onExportFilterFieldHeadersChanged")
         )

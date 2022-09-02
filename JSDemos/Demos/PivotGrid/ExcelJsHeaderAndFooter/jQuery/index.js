@@ -101,7 +101,7 @@ $(() => {
   });
 
   $('#export-data-field-headers').dxCheckBox({
-    text: 'Data Field',
+    text: 'Export Data Field Headers',
     value: false,
     onValueChanged({ value }) {
       exportHeaderOptions.exportDataFieldHeaders = value;
@@ -109,7 +109,7 @@ $(() => {
   });
 
   $('#export-row-field-headers').dxCheckBox({
-    text: 'Row Field',
+    text: 'Export Row Field Headers',
     value: false,
     onValueChanged({ value }) {
       exportHeaderOptions.exportRowFieldHeaders = value;
@@ -117,7 +117,7 @@ $(() => {
   });
 
   $('#export-column-field-headers').dxCheckBox({
-    text: 'Column Field',
+    text: 'Export Column Field Headers',
     value: false,
     onValueChanged({ value }) {
       exportHeaderOptions.exportColumnFieldHeaders = value;
@@ -125,7 +125,7 @@ $(() => {
   });
 
   $('#export-filter-field-headers').dxCheckBox({
-    text: 'Filter Field',
+    text: 'Export Filter Field Headers',
     value: false,
     onValueChanged({ value }) {
       exportHeaderOptions.exportFilterFieldHeaders = value;

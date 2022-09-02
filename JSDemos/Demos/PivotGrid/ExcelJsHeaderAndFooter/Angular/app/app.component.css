@@ -6,7 +6,7 @@
   margin-bottom: 20px;
 }
 
-::ng-deep .options {
+::ng-deep .export-options {
   padding: 20px;
   margin-top: 20px;
   background-color: rgba(191, 191, 191, 0.15);
@@ -17,8 +17,8 @@
   font-weight: 500;
 }
 
-::ng-deep .option {
-  width: 24%;
-  display: inline-block;
+::ng-deep .options {
+  display: flex;
+  justify-content: space-between;
   margin-top: 10px;
 }

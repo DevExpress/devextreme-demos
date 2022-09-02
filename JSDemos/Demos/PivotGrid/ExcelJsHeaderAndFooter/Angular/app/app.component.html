@@ -22,29 +22,23 @@
   <dxo-export [enabled]="true"></dxo-export>
 </dx-pivot-grid>
 
-<div class="options">
-  <div class="caption">Export Headers</div>
-  <div class="option">
+<div class="export-options">
+  <div class="caption">Export Options</div>
+  <div class="options">
     <dx-check-box
-      text="Data Fields"
+      text="Export Data Field Headers"
       [(value)]="exportDataFieldHeaders"
     ></dx-check-box>
-  </div>
-  <div class="option">
     <dx-check-box
-      text="Row Fields"
+      text="Export Row Field Headers"
       [(value)]="exportRowFieldHeaders"
     ></dx-check-box>
-  </div>
-  <div class="option">
     <dx-check-box
-      text="Column Fields"
+      text="Export Column Field Headers"
       [(value)]="exportColumnFieldHeaders"
     ></dx-check-box>
-  </div>
-  <div class="option">
     <dx-check-box
-      text="Filter Fields"
+      text="Export Filter Field Headers"
       [(value)]="exportFilterFieldHeaders"
     ></dx-check-box>
   </div>
