@@ -60,6 +60,7 @@ $(() => {
     value: simpleProducts[0],
     onValueChanged(data) {
       $('.current-value > span').text(data.value);
+      DevExpress.ui.notify(`The "${data.value}" item was clicked`);
     },
   });
 });

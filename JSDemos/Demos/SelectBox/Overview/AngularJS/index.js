@@ -42,6 +42,9 @@ DemoApp.controller('DemoController', ($scope) => {
       bindingOptions: {
         value: 'currentProduct',
       },
+      onValueChanged(data) {
+        DevExpress.ui.notify(`The "${data.value}" item was clicked`);
+      },
     },
   };
 });
