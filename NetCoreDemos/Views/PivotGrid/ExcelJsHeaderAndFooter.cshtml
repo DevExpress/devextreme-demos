@@ -16,9 +16,9 @@
     .ShowBorders(true)
     .FieldPanel(p => p.ShowColumnFields(true)
         .ShowDataFields(true)
-        .ShowFilterFields(false)
+        .ShowFilterFields(true)
         .ShowRowFields(true)
-        .AllowFieldDragging(false)
+        .AllowFieldDragging(true)
         .Visible(true))
     .FieldChooser(c => c.Enabled(false))
     .Export(e => e.Enabled(true))
@@ -53,11 +53,49 @@
                 .SummaryType(SummaryType.Sum)
                 .Format(Format.Currency)
                 .Area(PivotGridArea.Data);
+
+            fields.Add()
+                .Caption("Country")
+                .DataField("country")
+                .Area(PivotGridArea.Filter);
         })
     )
 )
 
+<div class="export-options">
+    <div class="caption">Export Options</div>
+    <div class="options">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Export Data Field Headers")
+            .Value(false)
+            .OnValueChanged("onExportDataFieldHeadersChanged")
+        )
+        @(Html.DevExtreme().CheckBox()
+            .Text("Export Row Field Headers")
+            .Value(false)
+            .OnValueChanged("onExportRowFieldHeadersChanged")
+        )
+        @(Html.DevExtreme().CheckBox()
+            .Text("Export Column Field Headers")
+            .Value(false)
+            .OnValueChanged("onExportColumnFieldHeadersChanged")
+        )
+        @(Html.DevExtreme().CheckBox()
+            .Text("Export Filter Field Headers")
+            .Value(false)
+            .OnValueChanged("onExportFilterFieldHeadersChanged")
+        )
+    </div>
+</div>
+
 <script>
+    var exportHeaderOptions = {
+        exportRowFieldHeaders: false,
+        exportColumnFieldHeaders: false,
+        exportDataFieldHeaders: false,
+        exportFilterFieldHeaders: false,
+    };
+
     function onExporting(e) {
         var workbook = new ExcelJS.Workbook();
         var worksheet = workbook.addWorksheet('Sales');
@@ -66,12 +104,12 @@
             { width: 30 }, { width: 20 }, { width: 30 }, { width: 30 }, { width: 30 }, { width: 30 }
         ];
 
-        var grid = e.component;
         DevExpress.excelExporter.exportPivotGrid({
-            component: grid,
+            component: e.component,
             worksheet: worksheet,
             topLeftCell: { row: 4, column: 1 },
-            keepColumnWidths: false
+            keepColumnWidths: false,
+            ...exportHeaderOptions,
         }).then(function (cellRange) {
             // Header
             var headerRow = worksheet.getRow(2);
@@ -98,6 +136,22 @@
             });
         });
         e.cancel = true;
+    }
+
+    function onExportDataFieldHeadersChanged(e) {
+        exportHeaderOptions.exportDataFieldHeaders = e.value;
+    }
+
+    function onExportRowFieldHeadersChanged(e) {
+        exportHeaderOptions.exportRowFieldHeaders = e.value;
+    }
+
+    function onExportColumnFieldHeadersChanged(e) {
+        exportHeaderOptions.exportColumnFieldHeaders = e.value;
+    }
+
+    function onExportFilterFieldHeadersChanged(e) {
+        exportHeaderOptions.exportFilterFieldHeaders = e.value;
     }
 </script>
 
