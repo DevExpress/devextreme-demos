@@ -2,7 +2,7 @@ The PivotGrid allows you to customize a header and a footer in the exported Exce
 
 1. Set the [export](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/export/).[enabled](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/export/#enabled) property to `true`.
 
-2. In the [onExporting](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#onExporting) event handler call the [exportPivotGrid(options)](/Documentation/ApiReference/Common/Utils/excelExporter/#exportPivotGridoptions) method.
+2. In the [onExporting](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/#onExporting) event handler, call the [exportPivotGrid(options)](/Documentation/ApiReference/Common/Utils/excelExporter/#exportPivotGridoptions) method.
 
 3. Enable one or multiple options to export headers of the fields in the [field panel](/Documentation/Guide/UI_Components/PivotGrid/Visual_Elements/#Field_Panel):
 
@@ -14,7 +14,7 @@ The PivotGrid allows you to customize a header and a footer in the exported Exce
 
     - [exportRowFieldHeaders](/Documentation/ApiReference/Common/Object_Structures/ExcelExportPivotGridProps/#exportColumnFieldHeaders)
 
-4. Execute a promise after the [exportPivotGrid(options)](/Documentation/ApiReference/Common/Utils/excelExporter/#exportPivotGridoptions) method. In this promise, specify position and appearance of the header/footer. The functions used to generate header and footer sections utilize the following PivotGrid customization features:
+4. Execute a promise after the [exportPivotGrid(options)](/Documentation/ApiReference/Common/Utils/excelExporter/#exportPivotGridoptions) method. In this promise, specify the position, appearance, and content of the header/footer. The functions used to generate header and footer sections utilize the following PivotGrid customization features:
 
     - <a href="https://github.com/exceljs/exceljs#merged-cells" target="_blank">Merged cells</a>
 
