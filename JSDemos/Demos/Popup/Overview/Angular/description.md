@@ -4,7 +4,7 @@ To see step-by-step instructions on how to get started with the DevExtreme Popup
 
 ## Show and Hide the Popup
 
-Bind the [visible](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#visible) property to a Boolean variable (`popupVisible` in this demo). Then, implement a method that sets this Boolean variable to `true` (the `showInfo(employee)` method in this demo). This causes the Popup to appear. To close a Popup, choose one of the following options:
+Bind the [visible](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#visible) property to a Boolean variable (`popupVisible` in this demo). Next, implement the `showInfo(employee)` method to set this Boolean variable to `true`. This causes the Popup to appear. To close a Popup, choose one of the following options:
 
 - Built-in close button    
 Enable the [showCloseButton](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#showCloseButton) property to display the Close button in a Popup's [top toolbar](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#showTitle).
