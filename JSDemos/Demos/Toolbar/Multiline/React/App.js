@@ -15,13 +15,13 @@ import {
   fontSizes,
   lineHeights,
   fonts,
-  fontWeights,
+  fontStyles,
   textAligns,
   listTypes,
 } from './data.js';
 
 function getTextAlignItems(isExtended) {
-  return isExtended
+  return !isExtended
     ? textAligns.map(({ icon, alignment, hint }) => ({ icon, alignment, hint }))
     : textAligns;
 }
@@ -217,9 +217,8 @@ function App() {
               keyExpr="style"
               stylingMode="outlined"
               selectionMode="multiple"
-              items={fontWeights}
-              onItemClick={(e) => notify(`The "${e.itemData.hint}" button was clicked`)
-              }
+              items={fontStyles}
+              onItemClick={(e) => notify(`The "${e.itemData.hint}" button was clicked`)}
             ></ButtonGroup>
           </Item>
 

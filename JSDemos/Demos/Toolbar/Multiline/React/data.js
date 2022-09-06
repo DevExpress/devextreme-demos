@@ -38,7 +38,7 @@ export const fonts = [
   { text: 'Times New Roman' },
 ];
 
-export const fontWeights = [
+export const fontStyles = [
   {
     icon: 'bold',
     style: 'bold',

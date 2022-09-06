@@ -1,196 +1,253 @@
 <template>
   <div>
-    <!-- Todo. Add resizable -->
-    <DxToolbar>
-      <DxItem
-        :options="undoButtonOptions"
-        location="before"
-        locate-in-menu="never"
-        widget="dxButton"
-      />
-      <DxItem
-        :options="redoButtonOptions"
-        location="before"
-        locate-in-menu="never"
-        widget="dxButton"
-      />
-      <DxItem
-        location="before"
-        locate-in-menu="never"
-        template="separatorTemplate"
-      />
-      <!-- Добавить внутрь DxItem template dxDropDownButton -->
-      <DxItem
-        :options="colorPickerOptions"
-        location="before"
-        widget="dxDropDownButton"
-      />
-      <DxItem
-        :options="fontSizeOptions"
-        location="before"
-        widget="dxDropDownButton"
-      />
-      <DxItem
-        :style="{ lineHeight: lineHeight }"
-        :options="lineHeightOptions"
-        location="before"
-        widget="dxDropDownButton"
-      />
-      <DxItem
-        location="before"
-        locate-in-menu="never"
-        template="separatorTemplate"
-      />
-      <DxItem
-        :options="fontSelectorOptions"
-        location="before"
-        locate-in-menu="auto"
-        widget="dxSelectBox"
-      />
-      <DxItem
-        :options="menuSeparatorOptions"
-        location="before"
-        locate-in-menu="auto"
-      />
-      <DxItem
-        :options="fontStyleOptions"
-        location="before"
-        locate-in-menu="never"
-        widget="dxButtonGroup"
-      />
-      <DxItem
-        location="before"
-        locate-in-menu="never"
-        template="separatorTemplate"
-      />
-      <DxItem
-        :options="textAlignOptions"
-        location="before"
-        locate-in-menu="auto"
-      />
-      <DxItem
-        :options="listOptions"
-        location="before"
-        locate-in-menu="never"
-        widget="dxButtonGroup"
-        display-expr="text"
-      />
-      <DxItem
-        :options="menuSeparatorOptions"
-        location="before"
-        locate-in-menu="auto"
-      />
-      <DxItem
-        :options="dateBoxOptions"
-        location="before"
-        locate-in-menu="auto"
-        widget="dxDateBox"
-      />
-      <DxItem
-        :options="menuSeparatorOptions"
-        location="before"
-        locate-in-menu="auto"
-      />
-      <DxItem
-        :options="checkBoxOptions"
-        location="before"
-        locate-in-menu="auto"
-        widget="dxCheckBox"
-        show-text="inMenu"
-      />
-      <DxItem
-        :options="dateBoxOptions"
-        location="after"
-        locate-in-menu="never"
-        widget="dxButton"
-        show-text="inMenu"
-      />
-      <DxItem
-        :options="removeButtonOptions"
-        location="after"
-        locate-in-menu="auto"
-        widget="dxButton"
-        show-text="inMenu"
-      />
-      <DxItem
-        :options="removeButtonOptions"
-        locate-in-menu="always"
-        widget="dxButton"
-        show-text="inMenu"
-      />
+    <DxResizable
+      class="resizable-container"
+      :min-width="655"
+      :min-height="150"
+      :max-height="370"
+      handles="right"
+    >
+      <DxToolbar :multiline="multiline">
+        <DxItem
+          location="before"
+          locate-in-menu="never"
+          widget="dxButton"
+          :options="undoButtonOptions"
+        />
+        <DxItem
+          location="before"
+          locate-in-menu="never"
+          widget="dxButton"
+          :options="redoButtonOptions"
+        />
+        <DxItem
+          location="before"
+          locate-in-menu="never"
+          template="separatorTemplate"
+        />
+        <DxItem
+          location="before"
+          widget="dxDropDownButton"
+          :options="colorPickerOptions"
+        />
+        <DxItem
+          location="before"
+          widget="dxDropDownButton"
+          :options="fontSizeOptions"
+        />
+        <DxItem
+          location="before"
+          widget="dxDropDownButton"
+          :style="{ lineHeight }"
+          :options="lineHeightOptions"
+        />
+        <DxItem
+          location="before"
+          locate-in-menu="never"
+          template="separatorTemplate"
+        />
+        <DxItem
+          :options="fontSelectorOptions"
+          location="before"
+          locate-in-menu="auto"
+          widget="dxSelectBox"
+        />
+        <DxItem
+          location="before"
+          locate-in-menu="auto"
+          template="separatorTemplate"
+          menu-item-template="menuSeparatorTemplate"
+        />
+        <DxItem
+          location="before"
+          locate-in-menu="never"
+          widget="dxButtonGroup"
+          :options="fontStyleOptions"
+        />
+        <DxItem
+          location="before"
+          locate-in-menu="never"
+          template="separatorTemplate"
+        />
+        <DxItem
+          location="before"
+          locate-in-menu="auto"
+          template="textAlignTemplate"
+          menu-item-template="textAlignMenuTemplate"
+        />
+        <DxItem
+          location="before"
+          locate-in-menu="never"
+          widget="dxButtonGroup"
+          display-expr="text"
+          :options="listOptions"
+        />
+        <DxItem
+          location="before"
+          locate-in-menu="auto"
+          widget="dxDateBox"
+          :options="dateBoxOptions"
+        />
+        <DxItem
+          location="before"
+          locate-in-menu="auto"
+          template="separatorTemplate"
+          menu-item-template="menuSeparatorTemplate"
+        />
+        <DxItem
+          location="before"
+          locate-in-menu="auto"
+          widget="dxCheckBox"
+          show-text="inMenu"
+          :options="checkBoxOptions"
+        />
+        <DxItem
+          location="after"
+          locate-in-menu="never"
+          widget="dxButton"
+          show-text="inMenu"
+          :options="attachOptions"
+        />
+        <DxItem
+          location="after"
+          locate-in-menu="auto"
+          widget="dxButton"
+          show-text="inMenu"
+          :options="addButtonOptions"
+        />
+        <DxItem
+          location="after"
+          locate-in-menu="auto"
+          widget="dxButton"
+          show-text="inMenu"
+          :options="removeButtonOptions"
+        />
+        <DxItem
+          location="after"
+          locate-in-menu="auto"
+          widget="dxButton"
+          show-text="inMenu"
+          :options="aboutButtonOptions"
+        />
 
-      <template #separatorTemplate>
-        <div class="separator"/>
-      </template>
+        <template #separatorTemplate>
+          <div class="separator"/>
+        </template>
 
-      <template #menuSeparatorTemplate>
-        <div class="menu-separator"/>
-      </template>
+        <template #menuSeparatorTemplate>
+          <div class="menu-separator"/>
+        </template>
 
-      <template #colorpickerTemplate="{ data }">
-        <div class="custom-color-picker">
-          <i
-            v-for="(itemColor, i) in data"
-            :key="i"
-            :class="itemColor ?
-              'color dx-icon dx-icon-square' :
-              'color dx-icon dx-icon-square dx-theme-text-color'"
-            :style="{ color: itemColor }"
-            @click="onColorClick(itemColor)"
+        <template #colorpicker="{ data }">
+          <div class="custom-color-picker">
+            <i
+              v-for="(itemColor, i) in data"
+              :key="i"
+              :class="
+                itemColor
+                  ? 'color dx-icon dx-icon-square'
+                  : 'color dx-icon dx-icon-square dx-theme-text-color'
+              "
+              :style="{ color: itemColor }"
+              @click="onColorClick(itemColor)"
+            />
+          </div>
+        </template>
+
+        <template #fontSizeTemplate="{ data }">
+          <div :style="{ fonstSize: `${data.size}px` }">{{ data.text }}</div>
+        </template>
+
+        <template #textAlignTemplate>
+          <DxButtonGroup
+            key-expr="alignment"
+            styling-mode="outlined"
+            :items="getTextAlignItems(false)"
+            :selected-item-keys="textAlign"
+            @item-click="onTextAlignItemClick"
           />
-        </div>
-      </template>
+        </template>
 
-      <template #fontSizeTemplate="{ data }">
-        <div :style="{ fonstSize: `${itemData.size}px` }">{{ data.text }}</div>
-      </template>
+        <template #textAlignMenuTemplate>
+          <DxButtonGroup
+            :items="getTextAlignItems(true)"
+            display-expr="text"
+            :selected-item-keys="textAlign"
+            key-expr="alignment"
+            styling-mode="outlined"
+            @item-click="onTextAlignItemClick"
+          />
+        </template>
+      </DxToolbar>
+    </DxResizable>
 
-      <template #textAlignTemplate>
-        <DxButtonGroup
-          :items="getTextAlignItems"
-          display-expr="text"
-          :selected-item-keys="['left']"
-          key-expr="alignment"
-          styling-mode="outlined"
-          @item-click="onTextAlignItemClick"
-        />
-      </template>
+    <div class="options-container">
+      <div class="caption">Options</div>
 
-      <template #textAlignMenuTemplate>
-        <DxButtonGroup
-          :items="getTextAlignItems(true)"
-          display-expr="text"
-          :selected-item-keys="['left']"
-          key-expr="alignment"
-          styling-mode="outlined"
-          @item-click="onTextAlignItemClick"
-        />
-      </template>
-    </DxToolbar>
+      <DxRadioGroup
+        layout="horizontal"
+        :items="reactivePriorities"
+        :value="priority"
+        :on-value-changed="onChangeHandler"
+      />
+    </div>
   </div>
 </template>
+
 <script>
 import DxToolbar, { DxItem } from 'devextreme-vue/toolbar';
 import DxButtonGroup from 'devextreme-vue/button-group';
+import DxResizable from 'devextreme-vue/resizable';
+import DxDropDownButton from 'devextreme-vue/drop-down-button';
+import DxDateBox from 'devextreme-vue/date-box';
+import DxSelectBox from 'devextreme-vue/select-box';
+import DxRadioGroup from 'devextreme-vue/radio-group';
 import notify from 'devextreme/ui/notify';
-import { colors, fontSizes, lineHeights } from './data.js';
+import {
+  colors,
+  fontSizes,
+  lineHeights,
+  fonts,
+  fontStyles,
+  textAligns,
+  listTypes,
+} from './data.js';
 import 'devextreme/ui/select_box';
+
+const priorities = ['Multiline mode', 'Singleline mode'];
 
 export default {
   components: {
     DxToolbar,
     DxButtonGroup,
     DxItem,
+    DxResizable,
+    DxRadioGroup,
+    DxDropDownButton,
+    DxDateBox,
+    DxSelectBox,
   },
 
   data() {
     return {
+      multiline: true,
       colorPicker: null,
-      lineHeight: this.lineHeightOptions.selectedItemKey,
+      color: null,
+      priority: priorities[0],
+      lineHeight: lineHeights[1].lineHeight,
+      textAlign: [textAligns[0].alignment],
     };
   },
 
   computed: {
+    reactiveColors() {
+      return colors;
+    },
+
+    reactivePriorities() {
+      return priorities;
+    },
+
     undoButtonOptions() {
       return {
         icon: 'undo',
@@ -214,10 +271,10 @@ export default {
         items: colors,
         icon: 'square',
         dropDownOptions: { width: 'auto' },
+        dropDownContentTemplate: 'colorpicker',
         onInitialized: ({ component }) => {
           this.colorPicker = component;
         },
-        dropDownContentTemplate: 'colorpickerTemplate',
       };
     },
 
@@ -227,7 +284,7 @@ export default {
         keyExpr: 'size',
         useSelectMode: true,
         items: fontSizes,
-        selectedItemKey: 14,
+        selectedItemKey: fontSizes[2].size,
         itemTemplate: 'fontSizeTemplate',
       };
     },
@@ -239,17 +296,10 @@ export default {
         keyExpr: 'lineHeight',
         useSelectMode: true,
         items: lineHeights,
-        selectedItemKey: 1.35,
+        selectedItemKey: this.lineHeight,
         onSelectionChanged: (e) => {
           this.lineHeight = e.item.lineHeight;
         },
-      };
-    },
-
-    menuSeparatorOptions() {
-      return {
-        template: 'separatorTemplate',
-        menuItemTemplate: 'menuSeparatorTemplate',
       };
     },
 
@@ -257,43 +307,14 @@ export default {
       return {
         placeholder: 'Font',
         displayExpr: 'text',
-        dataSource: [
-          { text: 'Arial' },
-          { text: 'Courier New' },
-          { text: 'Georgia' },
-          { text: 'Impact' },
-          { text: 'Lucida Console' },
-          { text: 'Tahoma' },
-          { text: 'Times New Roman' },
-        ],
+        dataSource: fonts,
       };
     },
 
     fontStyleOptions() {
       return {
         displayExpr: 'text',
-        items: [
-          {
-            icon: 'bold',
-            style: 'bold',
-            hint: 'Bold',
-          },
-          {
-            icon: 'italic',
-            style: 'italic',
-            hint: 'Italic',
-          },
-          {
-            icon: 'underline',
-            style: 'underline',
-            hint: 'Underlined',
-          },
-          {
-            icon: 'strike',
-            style: 'strike',
-            hint: 'Strikethrough',
-          },
-        ],
+        items: fontStyles,
         keyExpr: 'style',
         stylingMode: 'outlined',
         selectionMode: 'multiple',
@@ -303,27 +324,9 @@ export default {
       };
     },
 
-    textAlignOptions() {
-      return {
-        template: 'textAlignTemplate',
-        menuItemTemplate: 'textAlignMenuTemplate',
-      };
-    },
-
     listOptions() {
       return {
-        items: [
-          {
-            icon: 'orderedlist',
-            alignment: 'orderedlist',
-            hint: 'Ordered',
-          },
-          {
-            icon: 'bulletlist',
-            alignment: 'bulletlist',
-            hint: 'Bullet',
-          },
-        ],
+        items: listTypes,
         keyExpr: 'alignment',
         stylingMode: 'outlined',
         onItemClick(e) {
@@ -393,7 +396,10 @@ export default {
 
   methods: {
     onColorClick(color) {
-      this.colorPicker.element().getElementsByClassName('dx-icon-square')[0].style.color = color;
+      this.color = color;
+      this.colorPicker
+        .element()
+        .getElementsByClassName('dx-icon-square')[0].style.color = color;
       this.colorPicker.close();
     },
 
@@ -401,37 +407,19 @@ export default {
       notify(`The "${e.itemData.hint}" button was clicked`);
     },
 
-    getTextAlignItems(isExtended = false) {
-      const items = [
-        {
-          icon: 'alignleft',
-          alignment: 'left',
-          hint: 'Align left',
-          text: 'Align left',
-        },
-        {
-          icon: 'aligncenter',
-          alignment: 'center',
-          hint: 'Center',
-          text: 'Center',
-        },
-        {
-          icon: 'alignright',
-          alignment: 'right',
-          hint: 'Align right',
-          text: 'Align right',
-        },
-        {
-          icon: 'alignjustify',
-          alignment: 'justify',
-          hint: 'Justify',
-          text: 'Justify',
-        },
-      ];
+    onChangeHandler({ value }) {
+      this.multiline = value === priorities[0];
+      this.priority = value;
+    },
 
-      return isExtended
-        ? items.map(({ icon, alignment, hint }) => ({ icon, alignment, hint }))
-        : items;
+    getTextAlignItems(isExtended) {
+      return !isExtended
+        ? textAligns.map(({ icon, alignment, hint }) => ({
+          icon,
+          alignment,
+          hint,
+        }))
+        : textAligns;
     },
   },
 };

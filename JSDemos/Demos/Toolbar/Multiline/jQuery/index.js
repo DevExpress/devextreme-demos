@@ -47,7 +47,7 @@ const toolbarDataDefault = [
 
         data.forEach((color) => {
           const $button = $('<i>')
-            .addClass('dx-icon dx-icon-square')
+            .addClass('color dx-icon dx-icon-square')
             .on('dxclick', () => {
               applyColor(dropDownButton.$element().find('.dx-dropdownbutton-action .dx-icon').first(), color);
               dropDownButton.close();
@@ -180,7 +180,6 @@ const toolbarDataDefault = [
     widget: 'dxButtonGroup',
     template(itemData, itemIndex, element) {
       const $buttonGroup = $('<div>').dxButtonGroup({
-        // displayExpr: 'text',
         items: [
           {
             icon: 'alignleft',

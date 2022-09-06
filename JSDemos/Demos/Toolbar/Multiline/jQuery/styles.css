@@ -16,6 +16,11 @@
   margin-bottom: 5px;
 }
 
+.dx-popup-content > .dx-template-wrapper.custom-color-picker {
+  width: 82px;
+  padding: 5px;
+}
+
 .demo-container {
   width: 895px;
 }
@@ -49,6 +54,11 @@
 .menu-separator {
   height: 1px;
   border-bottom: 1px solid #ddd;
+}
+
+.color {
+  cursor: pointer;
+  font-size: 18px;
 }
 
 .dx-toolbar-menu-section .dx-toolbar-menu-custom:first-child > .menu-separator {
