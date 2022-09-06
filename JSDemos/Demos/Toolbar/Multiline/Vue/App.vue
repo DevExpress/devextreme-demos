@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- Todo. Add resizable -->
     <DxToolbar>
       <DxItem
         :options="undoButtonOptions"
@@ -18,6 +19,7 @@
         locate-in-menu="never"
         template="separatorTemplate"
       />
+      <!-- Добавить внутрь DxItem template dxDropDownButton -->
       <DxItem
         :options="colorPickerOptions"
         location="before"
@@ -373,7 +375,7 @@ export default {
         icon: 'trash',
         text: 'Remove',
         onClick() {
-          notify('Trash button has been clicked!');
+          notify('Remove button has been clicked!');
         },
       };
     },

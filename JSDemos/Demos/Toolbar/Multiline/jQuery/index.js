@@ -180,7 +180,7 @@ const toolbarDataDefault = [
     widget: 'dxButtonGroup',
     template(itemData, itemIndex, element) {
       const $buttonGroup = $('<div>').dxButtonGroup({
-        displayExpr: 'text',
+        // displayExpr: 'text',
         items: [
           {
             icon: 'alignleft',
@@ -355,7 +355,7 @@ const toolbarDataDefault = [
       icon: 'trash',
       text: 'Remove',
       onClick() {
-        DevExpress.ui.notify('Trash button has been clicked!');
+        DevExpress.ui.notify('Remove button has been clicked!');
       },
     },
   },
