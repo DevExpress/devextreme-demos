@@ -46,11 +46,11 @@
           locate-in-menu="never"
           template="separatorTemplate"
         />
-        <DxItem
-          :options="fontSelectorOptions"
+        <Item
           location="before"
           locate-in-menu="auto"
           widget="dxSelectBox"
+          :options="fontSelectorOptions"
         />
         <DxItem
           location="before"
@@ -105,7 +105,6 @@
           location="after"
           locate-in-menu="never"
           widget="dxButton"
-          show-text="inMenu"
           :options="attachOptions"
         />
         <DxItem
@@ -155,7 +154,7 @@
         </template>
 
         <template #fontSizeTemplate="{ data }">
-          <div :style="{ fonstSize: `${data.size}px` }">{{ data.text }}</div>
+          <div :style="{ fontSize: `${data.size}px` }">{{ data.text }}</div>
         </template>
 
         <template #textAlignTemplate>
@@ -195,6 +194,7 @@
 </template>
 
 <script>
+import DxCheckBox from 'devextreme-vue/check-box';
 import DxToolbar, { DxItem } from 'devextreme-vue/toolbar';
 import DxButtonGroup from 'devextreme-vue/button-group';
 import DxResizable from 'devextreme-vue/resizable';
@@ -203,6 +203,7 @@ import DxDateBox from 'devextreme-vue/date-box';
 import DxSelectBox from 'devextreme-vue/select-box';
 import DxRadioGroup from 'devextreme-vue/radio-group';
 import notify from 'devextreme/ui/notify';
+
 import {
   colors,
   fontSizes,
@@ -218,6 +219,7 @@ const priorities = ['Multiline mode', 'Singleline mode'];
 
 export default {
   components: {
+    DxCheckBox,
     DxToolbar,
     DxButtonGroup,
     DxItem,
@@ -404,6 +406,7 @@ export default {
     },
 
     onTextAlignItemClick(e) {
+      this.textAlign = e.itemData.alignment;
       notify(`The "${e.itemData.hint}" button was clicked`);
     },
 

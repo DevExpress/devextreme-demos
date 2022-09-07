@@ -1,0 +1,210 @@
+<div>
+  <dx-resizable
+    class="resizable-container"
+    [minWidth]="655"
+    [minHeight]="150"
+    [maxHeight]="370"
+    handles="right"
+  >
+    <dx-toolbar [multiline]="multiline">
+      <dxi-item
+        location="before"
+        locateInMenu="never"
+        widget="dxButton"
+        [options]="undoButtonOptions"
+      ></dxi-item>
+
+      <dxi-item
+        location="before"
+        locateInMenu="never"
+        widget="dxButton"
+        [options]="redoButtonOptions"
+      ></dxi-item>
+
+      <dxi-item
+        location="before"
+        locateInMenu="never"
+      >
+        <div *dxTemplate>
+          <div class="separator"></div>
+        </div>
+      </dxi-item>
+
+      <dxi-item
+        location="before"
+        widget="dxDropDownButton"
+        [options]="colorPickerOptions"
+      ></dxi-item>
+
+      <dxi-item
+        location="before"
+        widget="dxDropDownButton"
+        [options]="fontSizeOptions"
+      ></dxi-item>
+
+      <dxi-item
+        location="before"
+        widget="dxDropDownButton"
+        [style.line-height]="lineHeight"
+        [options]="lineHeightOptions"
+      ></dxi-item>
+
+      <dxi-item
+        location="before"
+        locateInMenu="never"
+      >
+        <div *dxTemplate>
+          <div class="separator"></div>
+        </div>
+      </dxi-item>
+
+      <dxi-item
+        location="before"
+        locateInMenu="auto"
+        widget="dxSelectBox"
+        [options]="fontSelectorOptions"
+      ></dxi-item>
+
+      <dxi-item
+        location="before"
+        locateInMenu="auto"
+        menuTemplate='menuSeparatorTemplate'
+      >
+        <div *dxTemplate>
+          <div class="separator"></div>
+        </div>
+
+        <div *dxTemplate="'menuSeparatorTemplate'">
+          <div class="menu-separator"></div>
+        </div>
+      </dxi-item>
+
+      <dxi-item
+        location="before"
+        locateInMenu="never"
+        widget="dxButtonGroup"
+        [options]="fontStyleOptions"
+      ></dxi-item>
+
+      <dxi-item
+        location="before"
+        locateInMenu="never"
+      >
+        <div *dxTemplate>
+          <div class="separator"></div>
+        </div>
+      </dxi-item>
+
+      <dxi-item
+        location="before"
+        locateInMenu="auto"
+        template="textAlignTemplate"
+        menuTemplate='textAlignMenuTemplate'
+      >
+        <div *dxTemplate="let data of 'textAlignTemplate'">
+          <dx-button-group
+            keyExpr="alignment"
+            stylingMode="outlined"
+            [items]="getTextAlignItems(false)"
+            [selectedItemKeys]="textAlign"
+            (onItemClick)="itemClick($event)"
+          ></dx-button-group>
+        </div>
+
+        <div *dxTemplate="'textAlignMenuTemplate'">
+          <dx-button-group
+            keyExpr="alignment"
+            stylingMode="outlined"
+            [items]="getTextAlignItems(true)"
+            [selectedItemKeys]="textAlign"
+            (onItemClick)="itemClick($event)"
+          ></dx-button-group>
+        </div>
+      </dxi-item>
+
+      <dxi-item
+        location="before"
+        locateInMenu="never"
+        widget="dxButtonGroup"
+        displayExpr="text"
+        [options]="listOptions"
+      ></dxi-item>
+
+      <dxi-item
+        location="before"
+        locateInMenu="auto"
+        widget="dxDateBox"
+        [options]="dateBoxOptions"
+      ></dxi-item>
+
+      <dxi-item
+        location="before"
+        locateInMenu="auto"
+        menuTemplate='menuSeparatorTemplate'
+      >
+        <div *dxTemplate>
+          <div class="separator"></div>
+        </div>
+
+        <div *dxTemplate="'menuSeparatorTemplate'">
+          <div class="menu-separator"></div>
+        </div>
+      </dxi-item>
+
+      <dxi-item
+        location="before"
+        locateInMenu="auto"
+        widget="dxCheckBox"
+        showText="inMenu"
+        [options]="checkBoxOptions"
+      ></dxi-item>
+
+      <dxi-item
+        location="after"
+        locateInMenu="never"
+        widget="dxButton"
+        [options]="attachOptions"
+      ></dxi-item>
+
+      <dxi-item
+        location="after"
+        locateInMenu="auto"
+        widget="dxButton"
+        showText="inMenu"
+        [options]="addButtonOptions"
+      ></dxi-item>
+
+      <dxi-item
+        location="after"
+        locateInMenu="auto"
+        widget="dxButton"
+        showText="inMenu"
+        [options]="removeButtonOptions"
+      ></dxi-item>
+
+      <dxi-item
+        location="after"
+        locateInMenu="auto"
+        widget="dxButton"
+        showText="inMenu"
+        [options]="aboutButtonOptions"
+      ></dxi-item>
+
+      <div *dxTemplate="let data of 'colorpicker'">
+        <div class="custom-color-picker">
+          <i
+            *ngFor="let iconColor of colors"
+            class="color dx-icon dx-icon-square"
+            [ngClass]="{ 'dx-theme-text-color': !iconColor }"
+            [style.color]="iconColor"
+            (click)="onColorClick(iconColor)"
+          ></i>
+        </div>
+      </div>
+
+      <div *dxTemplate="let data of 'fontSizeTemplate'">
+        <div [style.fontSize]="`${data.size}px`">{{ data.text }}</div>
+      </div>
+    </dx-toolbar>
+  </dx-resizable>
+</div>
