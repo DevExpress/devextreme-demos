@@ -10,6 +10,7 @@ import {
   DxDropDownButtonModule,
   DxButtonGroupModule,
   DxCheckBoxModule,
+  DxRadioGroupModule,
 } from 'devextreme-angular';
 import DataSource from 'devextreme/data/data_source';
 import notify from 'devextreme/ui/notify';
@@ -24,24 +25,22 @@ import {
   ListType,
 } from './app.service';
 
-// if (!/localhost/.test(document.location.host)) {
-//   enableProdMode();
-// }
-
-// @Component({
-//   selector: 'demo-app',
-//   templateUrl: 'app/app.component.html',
-//   styleUrls: ['app/app.component.css'],
-//   providers: [Service],
-// })
+if (!/localhost/.test(document.location.host)) {
+  enableProdMode();
+}
 
 @Component({
   selector: 'demo-app',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  templateUrl: 'app/app.component.html',
+  styleUrls: ['app/app.component.css'],
   providers: [Service],
 })
+
 export class AppComponent {
+  priorities = ['Multiline mode', 'Singleline mode'];
+
+  priority = this.priorities[0];
+
   multiline: boolean;
 
   colorPicker: any;
@@ -226,6 +225,11 @@ export class AppComponent {
       .getElementsByClassName('dx-icon-square')[0].style.color = color;
     this.colorPicker.close();
   }
+
+  onChangeHandler({ value }) {
+    this.multiline = value === this.priorities[0];
+    this.priority = value;
+  }
 }
 
 @NgModule({
@@ -238,6 +242,7 @@ export class AppComponent {
     DxDropDownButtonModule,
     DxButtonGroupModule,
     DxCheckBoxModule,
+    DxRadioGroupModule,
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],

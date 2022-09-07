@@ -6,8 +6,7 @@
     [maxHeight]="370"
     handles="right"
   >
-    <!-- <dx-toolbar [multiline]="multiline"> -->
-    <dx-toolbar>
+    <dx-toolbar [multiline]="multiline">
       <dxi-item
         location="before"
         locateInMenu="never"
@@ -200,4 +199,15 @@
       </div>
     </dx-toolbar>
   </dx-resizable>
+
+  <div class="options-container">
+    <div class="caption">Options</div>
+
+    <dx-radio-group
+      layout="horizontal"
+      [items]="priorities"
+      [value]="priority"
+      onValueChanged="onChangeHandler"
+    ></dx-radio-group>
+  </div>
 </div>
