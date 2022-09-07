@@ -24,19 +24,29 @@ import {
   ListType,
 } from './app.service';
 
-if (!/localhost/.test(document.location.host)) {
-  enableProdMode();
-}
+// if (!/localhost/.test(document.location.host)) {
+//   enableProdMode();
+// }
+
+// @Component({
+//   selector: 'demo-app',
+//   templateUrl: 'app/app.component.html',
+//   styleUrls: ['app/app.component.css'],
+//   providers: [Service],
+// })
 
 @Component({
   selector: 'demo-app',
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css'],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
   providers: [Service],
 })
-
 export class AppComponent {
+  multiline: boolean;
+
   colorPicker: any;
+
+  color: string;
 
   lineHeight: number;
 
@@ -83,6 +93,7 @@ export class AppComponent {
   aboutButtonOptions: any;
 
   constructor(service: Service) {
+    this.multiline = true;
     this.colors = service.getColors();
     this.fontSizes = service.getFontSizes();
     this.lineHeights = service.getLineHeights();
@@ -208,6 +219,13 @@ export class AppComponent {
       },
     };
   }
+
+  onColorClick(color) {
+    this.colorPicker
+      .element()
+      .getElementsByClassName('dx-icon-square')[0].style.color = color;
+    this.colorPicker.close();
+  }
 }
 
 @NgModule({
@@ -224,7 +242,6 @@ export class AppComponent {
   declarations: [AppComponent],
   bootstrap: [AppComponent],
 })
-
-export class AppModule { }
+export class AppModule {}
 
 platformBrowserDynamic().bootstrapModule(AppModule);

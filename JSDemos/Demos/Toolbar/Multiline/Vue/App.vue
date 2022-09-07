@@ -105,6 +105,7 @@
           location="after"
           locate-in-menu="never"
           widget="dxButton"
+          show-text="inMenu"
           :options="attachOptions"
         />
         <DxItem

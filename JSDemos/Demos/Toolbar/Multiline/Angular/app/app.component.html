@@ -6,7 +6,8 @@
     [maxHeight]="370"
     handles="right"
   >
-    <dx-toolbar [multiline]="multiline">
+    <!-- <dx-toolbar [multiline]="multiline"> -->
+    <dx-toolbar>
       <dxi-item
         location="before"
         locateInMenu="never"
@@ -21,10 +22,7 @@
         [options]="redoButtonOptions"
       ></dxi-item>
 
-      <dxi-item
-        location="before"
-        locateInMenu="never"
-      >
+      <dxi-item location="before" locateInMenu="never">
         <div *dxTemplate>
           <div class="separator"></div>
         </div>
@@ -49,10 +47,7 @@
         [options]="lineHeightOptions"
       ></dxi-item>
 
-      <dxi-item
-        location="before"
-        locateInMenu="never"
-      >
+      <dxi-item location="before" locateInMenu="never">
         <div *dxTemplate>
           <div class="separator"></div>
         </div>
@@ -68,13 +63,13 @@
       <dxi-item
         location="before"
         locateInMenu="auto"
-        menuTemplate='menuSeparatorTemplate'
+        menuTemplate="menuSeparatorTemplate"
       >
         <div *dxTemplate>
           <div class="separator"></div>
         </div>
 
-        <div *dxTemplate="'menuSeparatorTemplate'">
+        <div *dxTemplate="let data of 'menuSeparatorTemplate'">
           <div class="menu-separator"></div>
         </div>
       </dxi-item>
@@ -86,10 +81,7 @@
         [options]="fontStyleOptions"
       ></dxi-item>
 
-      <dxi-item
-        location="before"
-        locateInMenu="never"
-      >
+      <dxi-item location="before" locateInMenu="never">
         <div *dxTemplate>
           <div class="separator"></div>
         </div>
@@ -99,7 +91,7 @@
         location="before"
         locateInMenu="auto"
         template="textAlignTemplate"
-        menuTemplate='textAlignMenuTemplate'
+        menuTemplate="textAlignMenuTemplate"
       >
         <div *dxTemplate="let data of 'textAlignTemplate'">
           <dx-button-group
@@ -111,7 +103,7 @@
           ></dx-button-group>
         </div>
 
-        <div *dxTemplate="'textAlignMenuTemplate'">
+        <div *dxTemplate="let data of 'textAlignMenuTemplate'">
           <dx-button-group
             keyExpr="alignment"
             stylingMode="outlined"
@@ -140,13 +132,13 @@
       <dxi-item
         location="before"
         locateInMenu="auto"
-        menuTemplate='menuSeparatorTemplate'
+        menuTemplate="menuSeparatorTemplate"
       >
         <div *dxTemplate>
           <div class="separator"></div>
         </div>
 
-        <div *dxTemplate="'menuSeparatorTemplate'">
+        <div *dxTemplate="let data of 'menuSeparatorTemplate'">
           <div class="menu-separator"></div>
         </div>
       </dxi-item>
@@ -163,6 +155,7 @@
         location="after"
         locateInMenu="never"
         widget="dxButton"
+        showText="inMenu"
         [options]="attachOptions"
       ></dxi-item>
 
@@ -203,7 +196,7 @@
       </div>
 
       <div *dxTemplate="let data of 'fontSizeTemplate'">
-        <div [style.fontSize]="`${data.size}px`">{{ data.text }}</div>
+        <div [style.fontSize]="data.size + 'px'">{{ data.text }}</div>
       </div>
     </dx-toolbar>
   </dx-resizable>
