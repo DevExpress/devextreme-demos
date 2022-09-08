@@ -175,7 +175,7 @@ export class AppComponent {
     this.dateBoxOptions = {
       width: 200,
       type: 'date',
-      value: new Date(),
+      value: new Date(2022, 9, 7),
     };
 
     this.checkBoxOptions = {

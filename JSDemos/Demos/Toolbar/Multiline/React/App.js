@@ -250,7 +250,7 @@ function App() {
           ></Item>
 
           <Item location="before" locate-in-menu="auto">
-            <DateBox width={200} type="date" value={new Date()}></DateBox>
+            <DateBox width={200} type="date" value={new Date(2022, 9, 7)}></DateBox>
           </Item>
 
           <Item

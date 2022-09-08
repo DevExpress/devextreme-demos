@@ -302,7 +302,7 @@ const toolbarDataDefault = [
     options: {
       width: 200,
       type: 'date',
-      value: new Date(),
+      value: new Date(2022, 9, 7),
     },
   },
   {
