@@ -11,6 +11,10 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View();
         }
 
+        public ActionResult Multiline() {
+            return View();
+        }
+
         [HttpGet]
         public ActionResult GetProducts(DataSourceLoadOptions loadOptions) {
             return Content(JsonConvert.SerializeObject(DataSourceLoader.Load(SampleData.Products, loadOptions)), "application/json");

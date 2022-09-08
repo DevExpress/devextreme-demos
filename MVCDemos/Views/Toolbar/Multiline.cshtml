@@ -1,0 +1,354 @@
+﻿@model DevExtreme.MVC.Demos.ViewModels.DropDownButtonViewModel
+
+@{
+    var toolbarModes = new [] { "Multiline mode", "Singleline mode" };
+    var listTypes = new [] {
+        new { icon = "orderedlist", alignment = "orderedlist", hint = "Ordered" },
+        new { icon = "bulletlist", alignment = "bulletlist", hint = "Bullet" }
+    };
+}
+
+<div>
+    @(Html.DevExtreme().Sortable()
+        .MinWidth(655)
+        .MinHeight(150)
+        .MaxHeight(370)
+        .Handles("right")
+        .Content(
+            Html.DevExtreme().Toolbar()
+                .ID("toolbar")
+                .Multiline(false)
+                .Items(items => {
+                    items
+                        .Add()
+                        .Widget(w => w
+                            .Button()
+                            .Icon("undo")
+                            .OnClick("undoButton_click")
+                        )
+                        .Location(ToolbarItemLocation.Before)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
+                    
+                    items
+                        .Add()
+                        .Widget(w => w
+                            .Button()
+                            .Icon("redo")
+                            .OnClick("redoButton_click")
+                        )
+                        .Location(ToolbarItemLocation.Before)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
+                    
+                    items
+                        .Add()
+                        .Template(@<text><div class="separator"></div></text>)
+                        .Location(ToolbarItemLocation.Before)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
+                    
+                    items
+                        .Add()
+                        .Widget(w => w
+                            .DropDownButton()
+                            .DataSource(Model.Colors)
+                            .Icon("square")
+                            .DropDownOptions(options => options.Width("auto"))
+                            .OnInitialized("init_colorpicker")
+                            .DropDownContentTemplate(new TemplateName("colorpicker-template"))
+                        )
+                        .Location(ToolbarItemLocation.Before)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
+
+                    items
+                        .Add()
+                        .Widget(w => w
+                            .DropDownButton()
+                            .DisplayExpr("Text")
+                            .KeyExpr("Size")
+                            .SelectedItemKey("14")
+                            .UseSelectMode(true)
+                            .DataSource(Model.FontSizes)
+                            .OnSelectionChanged("change_size")
+                            .ItemTemplate(@<text><div style="font-size: <%- Text %>;"><%- Text %></div></text>)
+                        )
+                        .Location(ToolbarItemLocation.Before);
+
+                    items
+                        .Add()
+                        .Widget(w => w
+                            .DropDownButton()
+                            .DisplayExpr("Text")
+                            .KeyExpr("LineHeight")
+                            .SelectedItemKey("1.35")
+                            .StylingMode(ButtonStylingMode.Text)
+                            .UseSelectMode(true)
+                            .DataSource(Model.LineHeights)
+                            .Icon("indent")
+                            .OnSelectionChanged("change_lineHeight")
+                        )
+                        .Location(ToolbarItemLocation.Before);
+
+                    items
+                        .Add()
+                        .Template(@<text><div class="separator"></div></text>)
+                        .Location(ToolbarItemLocation.Before)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
+
+                    items
+                        .Add()
+                        .Widget(w => w
+                            .SelectBox()
+                            .Placeholder("Font")
+                            .DisplayExpr("Text")
+                            .DataSource(new[] {
+                                new { text = "Arial" },
+                                new { text = "Courier New" },
+                                new { text = "Georgia" },
+                                new { text = "Impact" },
+                                new { text = "Lucida Console" },
+                                new { text = "Tahoma" },
+                                new { text = "Times New Roman" },
+                            })
+                        )
+                        .Location(ToolbarItemLocation.Before);
+                    
+                    items
+                        .Add()
+                        .Template(@<text><div class="separator"></div></text>)
+                        .MenuItemTemplate(@<text><div class="menu-separator"></div></text>)
+                        .Location(ToolbarItemLocation.Before)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                    items
+                        .Add()
+                        .Widget(w => w
+                            .ButtonGroup()
+                            .DisplayExpr("Text")
+                            .KeyExpr("Style")
+                            .StylingMode(EditorStylingMode.Outlined)
+                            .SelectionMode(ListSelectionMode.Multiple)
+                            .Items(items => {
+                                items.Add().Icon("bold").Hint("Bold").Option("style", "bold");
+                                items.Add().Icon("italic").Hint("Italic").Option("style", "italic");
+                                items.Add().Icon("underline").Hint("Underlined").Option("style", "underline");
+                                items.Add().Icon("strike").Hint("Strikethrough").Option("style", "strike");
+                            })
+                            .OnItemClick("buttonGroup_ItemClick")
+                        )
+                        .Location(ToolbarItemLocation.Before)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                    items
+                        .Add()
+                        .Template(@<text><div class="separator"></div></text>)
+                        .Location(ToolbarItemLocation.Before)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
+
+                    items
+                        .Add()
+                        .Widget(w => w
+                            .ButtonGroup()
+                            .Items(listTypes)
+                            .KeyExpr("alignment")
+                            .StylingMode(EditorStylingMode.Outlined)                            
+                            .OnItemClick("buttonGroup_ItemClick")
+                        )
+                        .DisplayExpr("Text")
+                        .Location(ToolbarItemLocation.Before)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
+
+                    items
+                        .Add()
+                        .Widget(w => w
+                            .DateBox()
+                            .Type(DateBoxType.Date)
+                            .Width(200)
+                            .Value(new DateTime(2022, 9, 17))
+                        )
+                        .Location(ToolbarItemLocation.Before)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                    items
+                        .Add()
+                        .Template(@<text><div class="separator"></div></text>)
+                        .MenuItemTemplate(@<text><div class="menu-separator"></div></text>)
+                        .Location(ToolbarItemLocation.Before)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                    items
+                        .Add()
+                        .Widget(w => w
+                            .CheckBox()
+                            .Value(true)
+                            .Text("Private")
+                            .OnOptionChanged("onOptionChanged")
+                        )
+                        .ShowText(ToolbarItemShowTextMode.InMenu)
+                        .Location(ToolbarItemLocation.Before)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+                        
+                    items
+                        .Add()
+                        .Widget(w => w
+                            .Button()
+                            .Icon("attach")
+                            .Text("Attach")
+                            .OnClick("attachButton_click")
+                        )
+                        .ShowText(ToolbarItemShowTextMode.InMenu)
+                        .Location(ToolbarItemLocation.After)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
+                        
+                    items
+                        .Add()
+                        .Widget(w => w
+                            .Button()
+                            .Icon("add")
+                            .Text("Add")
+                            .OnClick("addButton_click")
+                        )
+                        .ShowText(ToolbarItemShowTextMode.InMenu)
+                        .Location(ToolbarItemLocation.After)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+                        
+                    items
+                        .Add()
+                        .Widget(w => w
+                            .Button()
+                            .Icon("trash")
+                            .Text("Remove")
+                            .OnClick("removeButton_click")
+                        )
+                        .ShowText(ToolbarItemShowTextMode.InMenu)
+                        .Location(ToolbarItemLocation.After)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+                        
+                    items
+                        .Add()
+                        .Widget(w => w
+                            .Button()
+                            .Icon("help")
+                            .Text("About")
+                            .OnClick("aboutButton_click")
+                        )
+                        .ShowText(ToolbarItemShowTextMode.InMenu)
+                        .Location(ToolbarItemLocation.After)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+                }
+            )
+        )
+    )
+
+    <div class="options-container">
+        <div class="caption">Options</div>
+
+        @(Html.DevExtreme().RadioGroup()
+            .ID("options")
+            .Layout(Orientation.Horizontal)
+            .Items(toolbarModes)
+            .Value(toolbarModes[1])
+            .OnValueChanged("toolbarModes_valueChanged"))
+    </div>
+</div>
+
+@using (Html.DevExtreme().NamedTemplate("colorpicker-template")) {
+    <div class="custom-color-picker">
+        @foreach (var color in Model.Colors)
+        {<i style="color: @color" class="color dx-icon dx-icon-square" onclick="onColorClick('@color')"></i>}
+    </div>
+}
+
+@using (Html.DevExtreme().NamedTemplate("text-align-template")) {
+    @(Html.DevExtreme().ButtonGroup()
+        .KeyExpr("Style")
+        .StylingMode(ButtonStylingMode.Text)
+        .Items(new [] {
+            new { icon = "alignleft", alignment = "left", hint = "Align left" },
+            new { icon = "aligncenter", alignment = "center", hint = "Center" },
+            new { icon = "alignright", alignment = "right", hint = "Align right" },
+            new { icon = "alignjustify", alignment = "justify", hint = "Justify" },
+        })
+        .SelectedItemKeys(new[] { "left" })
+        .OnItemClick("buttonGroup_ItemClick"));
+}
+
+@using (Html.DevExtreme().NamedTemplate("text-align-menu-template")) {
+    @(Html.DevExtreme().ButtonGroup()
+        .KeyExpr("Style")
+        .StylingMode(ButtonStylingMode.Text)
+        .Items(new [] {
+            new { icon = "alignleft", alignment = "left", hint = "Align left", text = "Align left" },
+            new { icon = "aligncenter", alignment = "center", hint = "Center", text = "Center" },
+            new { icon = "alignright", alignment = "right", hint = "Align right", text = "Align right" },
+            new { icon = "alignjustify", alignment = "justify", hint = "Justify", text = "Justify" },
+        })
+        .SelectedItemKeys(new[] { "left" })
+        .OnItemClick("buttonGroup_ItemClick"));
+}
+
+<script>
+    function toolbarModes_valueChanged(data) {
+        var toolbar = $("#toolbar").dxToolbar("instance");
+        toolbar.option("multiline", data.value === toolbarModes[0]);
+
+        var options = $("#options").RadioGroup("instance");
+        options.option("value", data.value);
+    }
+
+    function change_size(e) {
+        $("#text").css("font-size", e.item.Text);
+    }
+
+    function change_lineHeight(e) {
+        $("#text").css("line-height", e.item.Value);
+    }
+
+    var dropDownButton;
+    function init_colorpicker(e) {
+        dropDownButton = e.component;
+    }
+
+    function onColorClick(color) {
+        var $colorIcon = dropDownButton.$element().find(".dx-dropdownbutton-action .dx-icon").first();
+
+        applyColor($("#text"), color);
+        applyColor($colorIcon, color);
+        dropDownButton.close();
+    }
+
+    function applyColor($element, color) {
+        if (color) {
+            $element.removeClass("dx-theme-text-color");
+            $element.css("color", color);
+        } else {
+            $element.addClass("dx-theme-text-color");
+        }
+    }
+
+    function buttonGroup_ItemClick(e) {
+        DevExpress.ui.notify({ message: 'The "' + e.itemData.hint + '" button was clicked', width: 320 }, "success", 1000);
+    }
+
+    function undoButton_click() {
+        DevExpress.ui.notify("Undo button has been clicked!");
+    }
+
+    function attachButton_click() {
+        DevExpress.ui.notify("Attach button has been clicked!");
+    }
+
+    function addButton_click() {
+        DevExpress.ui.notify("Add button has been clicked!");
+    }
+
+    function removeButton_click() {
+        DevExpress.ui.notify("Remove button has been clicked!");
+    }
+
+    function aboutButton_click() {
+        DevExpress.ui.notify("About button has been clicked!");
+    }
+
+    function onOptionChanged() {
+        DevExpress.ui.notify("Private option has been changed!");
+    }
+</script>
