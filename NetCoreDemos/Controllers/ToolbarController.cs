@@ -11,6 +11,10 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View();
         }
 
+        public ActionResult Multiline() {
+            return View();
+        }
+
         [HttpGet]
         public object GetProducts(DataSourceLoadOptions loadOptions) {
             return DataSourceLoader.Load(SampleData.Products, loadOptions);

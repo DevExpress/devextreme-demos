@@ -3932,6 +3932,11 @@
               "/Models/Product.cs",
               "/Models/SampleData/Products.cs"
             ]
+          },
+          {
+            "Title": "Multiline",
+            "Name": "Multiline",
+            "Widget": "Toolbar"
           }
         ]
       },

@@ -1,5 +1,14 @@
 let dropDownButton;
 
+const applyColor = ($element, color) => {
+  if (color) {
+    $element.removeClass('dx-theme-text-color');
+    $element.css('color', color);
+  } else {
+    $element.addClass('dx-theme-text-color');
+  }
+};
+
 const toolbarDataDefault = [
   {
     locateInMenu: 'never',
