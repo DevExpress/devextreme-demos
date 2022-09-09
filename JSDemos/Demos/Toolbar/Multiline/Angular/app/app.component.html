@@ -186,7 +186,7 @@
       layout="horizontal"
       [items]="priorities"
       [value]="priority"
-      onValueChanged="onChangeHandler"
+      (onValueChanged)="onChangeHandler($event)"
     ></dx-radio-group>
   </div>
 </div>
