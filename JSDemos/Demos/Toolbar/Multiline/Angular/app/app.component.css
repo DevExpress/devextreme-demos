@@ -1,3 +1,15 @@
+::ng-deep .dx-toolbar-before .dx-toolbar-button .dx-button-text {
+  display: none;
+}
+
+::ng-deep .dx-toolbar-before .dx-toolbar-button .dx-button-has-text .dx-icon {
+  margin-right: 0;
+}
+
+::ng-deep .dx-toolbar-before .dx-toolbar-button .dx-button-has-text .dx-button-content {
+  padding: 8px;
+}
+
 ::ng-deep .dx-resizable-handle::after {
   content: "";
   background-color: #337ab7;

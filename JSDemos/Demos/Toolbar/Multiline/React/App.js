@@ -103,8 +103,8 @@ function App() {
     return (
       <ButtonGroup
         items={getTextAlignItems(isMenu)}
-        keyExpr='alignment'
-        stylingMode='outlined'
+        keyExpr="alignment"
+        stylingMode="outlined"
         selectedItemKeys={textAlign}
         onSelectionChanged={onTextAlignChangedHandler}
       ></ButtonGroup>
@@ -117,9 +117,9 @@ function App() {
     return (
       <ButtonGroup
         items={getTextAlignItems(isMenu)}
-        displayExpr='text'
-        keyExpr='alignment'
-        stylingMode='outlined'
+        displayExpr="text"
+        keyExpr="alignment"
+        stylingMode="outlined"
         selectedItemKeys={textAlign}
         onSelectionChanged={onTextAlignChangedHandler}
       ></ButtonGroup>
@@ -136,7 +136,7 @@ function App() {
         handles="right"
       >
         <Toolbar multiline={multiline}>
-          <Item location="before" locate-in-menu="never">
+          <Item location="before" locateInMenu="never">
             <Button
               icon="undo"
               onClick={() => {
@@ -145,7 +145,7 @@ function App() {
             ></Button>
           </Item>
 
-          <Item location="before" locate-in-menu="never">
+          <Item location="before" locateInMenu="never">
             <Button
               icon="redo"
               onClick={() => {
@@ -154,7 +154,7 @@ function App() {
             ></Button>
           </Item>
 
-          <Item location="before" locate-in-menu="never">
+          <Item location="before" locateInMenu="never">
             <div className="separator"></div>
           </Item>
 
@@ -192,11 +192,11 @@ function App() {
             ></DropDownButton>
           </Item>
 
-          <Item location="before" locate-in-menu="never">
+          <Item location="before" locateInMenu="never">
             <div className="separator"></div>
           </Item>
 
-          <Item location="before" locate-in-menu="auto">
+          <Item location="before" locateInMenu="auto">
             <SelectBox
               placeholder="Font"
               displayExpr="text"
@@ -206,12 +206,12 @@ function App() {
 
           <Item
             location="before"
-            locate-in-menu="auto"
+            locateInMenu="auto"
             template='<div class="separator"></div>'
             menuItemTemplate='<div class="menu-separator"></div>'
           ></Item>
 
-          <Item location="before" locate-in-menu="never">
+          <Item location="before" locateInMenu="never">
             <ButtonGroup
               displayExpr="text"
               keyExpr="style"
@@ -222,18 +222,18 @@ function App() {
             ></ButtonGroup>
           </Item>
 
-          <Item location="before" locate-in-menu="never">
+          <Item location="before" locateInMenu="never">
             <div className="separator"></div>
           </Item>
 
           <Item
             location="before"
-            locate-in-menu="auto"
+            locateInMenu="auto"
             render={renderTextAlign}
             menuItemRender={renderTextAlignMenu}
           ></Item>
 
-          <Item location="before" locate-in-menu="never" display-expr="text">
+          <Item location="before" locateInMenu="never" displayExpr="text">
             <ButtonGroup
               keyExpr="alignment"
               stylingMode="outlined"
@@ -244,23 +244,23 @@ function App() {
 
           <Item
             location="before"
-            locate-in-menu="auto"
+            locateInMenu="auto"
             template='<div class="separator"></div>'
             menuItemTemplate='<div class="menu-separator"></div>'
           ></Item>
 
-          <Item location="before" locate-in-menu="auto">
+          <Item location="before" locateInMenu="auto">
             <DateBox width={200} type="date" value={new Date(2022, 9, 7)}></DateBox>
           </Item>
 
           <Item
             location="before"
-            locate-in-menu="auto"
+            locateInMenu="auto"
             template='<div class="separator"></div>'
             menuItemTemplate='<div class="menu-separator"></div>'
           ></Item>
 
-          <Item location="before" locate-in-menu="auto" show-text="inMenu">
+          <Item location="before" locateInMenu="auto" showText="inMenu">
             <CheckBox
               value={checkBoxValue}
               text="Private"
@@ -268,7 +268,7 @@ function App() {
             ></CheckBox>
           </Item>
 
-          <Item location="after" locate-in-menu="never" show-text="inMenu">
+          <Item location="after" locateInMenu="never" showText="inMenu">
             <Button
               icon="attach"
               text="Attach"
@@ -276,7 +276,7 @@ function App() {
             ></Button>
           </Item>
 
-          <Item location="after" locate-in-menu="auto" show-text="inMenu">
+          <Item location="after" locateInMenu="auto" showText="inMenu">
             <Button
               icon="add"
               text="Add"
@@ -284,7 +284,7 @@ function App() {
             ></Button>
           </Item>
 
-          <Item location="after" locate-in-menu="auto" show-text="inMenu">
+          <Item location="after" locateInMenu="auto" showText="inMenu">
             <Button
               icon="trash"
               text="Remove"
@@ -292,7 +292,7 @@ function App() {
             ></Button>
           </Item>
 
-          <Item location="after" locate-in-menu="auto" show-text="inMenu">
+          <Item location="after" locateInMenu="auto" showText="inMenu">
             <Button
               icon="help"
               text="About"

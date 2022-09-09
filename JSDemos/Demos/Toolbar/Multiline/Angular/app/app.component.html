@@ -89,26 +89,15 @@
       <dxi-item
         location="before"
         locateInMenu="auto"
-        template="textAlignTemplate"
-        menuTemplate="textAlignMenuTemplate"
       >
-        <div *dxTemplate="let data of 'textAlignTemplate'">
+        <div *dxTemplate>
           <dx-button-group
-            keyExpr="alignment"
-            stylingMode="outlined"
-            [items]="getTextAlignItems(false)"
-            [selectedItemKeys]="textAlign"
-            (onItemClick)="itemClick($event)"
-          ></dx-button-group>
-        </div>
-
-        <div *dxTemplate="let data of 'textAlignMenuTemplate'">
-          <dx-button-group
+            class="text-align-group"
             keyExpr="alignment"
             stylingMode="outlined"
             [items]="getTextAlignItems(true)"
             [selectedItemKeys]="textAlign"
-            (onItemClick)="itemClick($event)"
+            (onItemClick)="onItemClick($event)"
           ></dx-button-group>
         </div>
       </dxi-item>

@@ -155,7 +155,7 @@
         </template>
 
         <template #fontSizeTemplate="{ data }">
-          <div :style="{ fontSize: `${data.size}px` }">{{ data.text }}</div>
+          <div :style="{ fontSize: data.size + 'px' }">{{ data.text }}</div>
         </template>
 
         <template #textAlignTemplate>

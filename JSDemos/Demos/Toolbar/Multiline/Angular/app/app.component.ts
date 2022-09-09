@@ -219,7 +219,7 @@ export class AppComponent {
     };
   }
 
-  onColorClick(color) {
+  onColorClick(color: any) {
     this.colorPicker
       .element()
       .getElementsByClassName('dx-icon-square')[0].style.color = color;
@@ -229,6 +229,16 @@ export class AppComponent {
   onChangeHandler({ value }) {
     this.multiline = value === this.priorities[0];
     this.priority = value;
+  }
+
+  getTextAlignItems(isExtended: boolean) {
+    return !isExtended
+      ? this.textAligns.map(({ icon, alignment, hint }) => ({ icon, alignment, hint }))
+      : this.textAligns;
+  }
+
+  onItemClick(e: { itemData: { hint: string } }): void {
+    notify(`The "${e.itemData.hint}" button was clicked`);
   }
 }
 
