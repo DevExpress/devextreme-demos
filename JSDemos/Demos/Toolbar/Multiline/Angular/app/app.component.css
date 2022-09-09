@@ -10,6 +10,10 @@
   padding: 8px;
 }
 
+::ng-deep .dx-list:not(.dx-list-select-decorator-enabled) .dx-toolbar-menu-section .dx-list-item.dx-state-active {
+  background-color: unset;
+}
+
 ::ng-deep .dx-resizable-handle::after {
   content: "";
   background-color: #337ab7;

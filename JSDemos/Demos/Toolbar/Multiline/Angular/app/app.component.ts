@@ -61,6 +61,8 @@ export class AppComponent {
 
   textAligns: TextAlign[];
 
+  selectedTextAlign: string[];
+
   listTypes: ListType[];
 
   undoButtonOptions: any;
@@ -91,6 +93,8 @@ export class AppComponent {
 
   aboutButtonOptions: any;
 
+  textAlignOptions: any;
+
   constructor(service: Service) {
     this.multiline = true;
     this.colors = service.getColors();
@@ -99,6 +103,7 @@ export class AppComponent {
     this.fonts = service.getFonts();
     this.fontStyles = service.getFontStyles();
     this.textAligns = service.getTextAligns();
+    this.selectedTextAlign = [this.textAligns[0].alignment];
     this.listTypes = service.getListType();
 
     this.undoButtonOptions = {
@@ -217,6 +222,17 @@ export class AppComponent {
         notify('About button has been clicked!');
       },
     };
+
+    this.textAlignOptions = {
+      cssClass: 'text-align-group',
+      keyExpr: 'alignment',
+      stylingMode: 'outlined',
+      items: this.getTextAlignItems(true),
+      selectedItemKeys: this.selectedTextAlign,
+      onItemClick: (e: { itemData: { hint: string } }): void => {
+        notify(`The "${e.itemData.hint}" button was clicked`);
+      },
+    };
   }
 
   onColorClick(color: any) {
@@ -235,10 +251,6 @@ export class AppComponent {
     return !isExtended
       ? this.textAligns.map(({ icon, alignment, hint }) => ({ icon, alignment, hint }))
       : this.textAligns;
-  }
-
-  onItemClick(e: { itemData: { hint: string } }): void {
-    notify(`The "${e.itemData.hint}" button was clicked`);
   }
 }
 

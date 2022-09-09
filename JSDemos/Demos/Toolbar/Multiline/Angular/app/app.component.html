@@ -89,18 +89,9 @@
       <dxi-item
         location="before"
         locateInMenu="auto"
-      >
-        <div *dxTemplate>
-          <dx-button-group
-            class="text-align-group"
-            keyExpr="alignment"
-            stylingMode="outlined"
-            [items]="getTextAlignItems(true)"
-            [selectedItemKeys]="textAlign"
-            (onItemClick)="onItemClick($event)"
-          ></dx-button-group>
-        </div>
-      </dxi-item>
+        widget="dxButtonGroup"
+        [options]="textAlignOptions"
+      ></dxi-item>
 
       <dxi-item
         location="before"
