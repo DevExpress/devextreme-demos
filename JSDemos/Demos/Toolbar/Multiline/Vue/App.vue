@@ -46,7 +46,7 @@
           locate-in-menu="never"
           template="separatorTemplate"
         />
-        <Item
+        <DxItem
           location="before"
           locate-in-menu="auto"
           widget="dxSelectBox"
