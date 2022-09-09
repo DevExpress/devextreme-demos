@@ -29,6 +29,38 @@ function getTextAlignItems(isExtended) {
 const dropDownOptions = { width: 'auto' };
 const priorities = ['Multiline mode', 'Singleline mode'];
 
+const attachButtonOptions = {
+  icon: 'attach',
+  text: 'Attach',
+  onClick: () => {
+    notify('Attach button has been clicked!');
+  },
+};
+
+const addButtonOptions = {
+  icon: 'add',
+  text: 'Add',
+  onClick: () => {
+    notify('Add button has been clicked!');
+  },
+};
+
+const removeButtonOptions = {
+  icon: 'trash',
+  text: 'Remove',
+  onClick: () => {
+    notify('Remove button has been clicked!');
+  },
+};
+
+const aboutButtonOptions = {
+  icon: 'help',
+  text: 'About',
+  onClick: () => {
+    notify('About button has been clicked!');
+  },
+};
+
 function App() {
   const colorPicker = React.useRef(null);
 
@@ -39,10 +71,13 @@ function App() {
   const [multiline, setMultiline] = React.useState(true);
   const [checkBoxValue, setCheckBox] = React.useState(false);
 
-  const onCheckBoxChangedHandler = React.useCallback(({ value }) => {
-    setCheckBox(value);
-    notify('Private option has been changed!');
-  }, [checkBoxValue, setCheckBox]);
+  const onCheckBoxChangedHandler = React.useCallback(
+    ({ value }) => {
+      setCheckBox(value);
+      notify('Private option has been changed!');
+    },
+    [checkBoxValue, setCheckBox],
+  );
 
   const onSelectionChangedHandler = React.useCallback(
     (e) => {
@@ -250,7 +285,11 @@ function App() {
           ></Item>
 
           <Item location="before" locateInMenu="auto">
-            <DateBox width={200} type="date" value={new Date(2022, 9, 7)}></DateBox>
+            <DateBox
+              width={200}
+              type="date"
+              value={new Date(2022, 9, 7)}
+            ></DateBox>
           </Item>
 
           <Item
@@ -260,7 +299,7 @@ function App() {
             menuItemTemplate='<div class="menu-separator"></div>'
           ></Item>
 
-          <Item location="before" locateInMenu="auto" showText="inMenu">
+          <Item location="before" locateInMenu="auto">
             <CheckBox
               value={checkBoxValue}
               text="Private"
@@ -268,37 +307,37 @@ function App() {
             ></CheckBox>
           </Item>
 
-          <Item location="after" locateInMenu="never" showText="inMenu">
-            <Button
-              icon="attach"
-              text="Attach"
-              onClick={() => notify('Attach button has been clicked!')}
-            ></Button>
-          </Item>
+          <Item
+            location="after"
+            locateInMenu="never"
+            showText="inMenu"
+            widget="dxButton"
+            options={attachButtonOptions}
+          ></Item>
 
-          <Item location="after" locateInMenu="auto" showText="inMenu">
-            <Button
-              icon="add"
-              text="Add"
-              onClick={() => notify('Add button has been clicked!')}
-            ></Button>
-          </Item>
+          <Item
+            location="after"
+            locateInMenu="auto"
+            showText="inMenu"
+            widget="dxButton"
+            options={addButtonOptions}
+          ></Item>
 
-          <Item location="after" locateInMenu="auto" showText="inMenu">
-            <Button
-              icon="trash"
-              text="Remove"
-              onClick={() => notify('Remove button has been clicked!')}
-            ></Button>
-          </Item>
+          <Item
+            location="after"
+            locateInMenu="auto"
+            showText="inMenu"
+            widget="dxButton"
+            options={removeButtonOptions}
+          ></Item>
 
-          <Item location="after" locateInMenu="auto" showText="inMenu">
-            <Button
-              icon="help"
-              text="About"
-              onClick={() => notify('About button has been clicked!')}
-            ></Button>
-          </Item>
+          <Item
+            location="after"
+            locateInMenu="auto"
+            showText="inMenu"
+            widget="dxButton"
+            options={aboutButtonOptions}
+          ></Item>
         </Toolbar>
       </Resizable>
 

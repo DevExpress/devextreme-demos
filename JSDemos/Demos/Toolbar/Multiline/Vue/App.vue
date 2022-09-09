@@ -98,7 +98,6 @@
           location="before"
           locate-in-menu="auto"
           widget="dxCheckBox"
-          show-text="inMenu"
           :options="checkBoxOptions"
         />
         <DxItem

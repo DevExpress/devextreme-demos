@@ -319,7 +319,6 @@ const toolbarDataDefault = [
     locateInMenu: 'auto',
     location: 'before',
     widget: 'dxCheckBox',
-    showText: 'inMenu',
     options: {
       value: false,
       text: 'Private',
