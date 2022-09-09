@@ -1,12 +1,12 @@
-::ng-deep .dx-toolbar .dx-toolbar-button .dx-button-text {
+::ng-deep .dx-toolbar .text-align-group.dx-toolbar-button .dx-button-text {
   display: none;
 }
 
-::ng-deep .dx-toolbar .dx-toolbar-button .dx-button-has-text .dx-icon {
+::ng-deep .dx-toolbar .text-align-group.dx-toolbar-button .dx-button-has-text .dx-icon {
   margin-right: 0;
 }
 
-::ng-deep .dx-toolbar .dx-toolbar-button .dx-button-has-text .dx-button-content {
+::ng-deep .dx-toolbar .text-align-group.dx-toolbar-button .dx-button-has-text .dx-button-content {
   padding: 8px;
 }
 

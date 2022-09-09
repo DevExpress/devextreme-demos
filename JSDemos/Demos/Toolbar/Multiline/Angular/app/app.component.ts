@@ -12,9 +12,9 @@ import {
   DxCheckBoxModule,
   DxRadioGroupModule,
 } from 'devextreme-angular';
+
 import DataSource from 'devextreme/data/data_source';
 import notify from 'devextreme/ui/notify';
-
 import {
   Service,
   FontSize,
@@ -31,11 +31,10 @@ if (!/localhost/.test(document.location.host)) {
 
 @Component({
   selector: 'demo-app',
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css'],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
   providers: [Service],
 })
-
 export class AppComponent {
   priorities = ['Multiline mode', 'Singleline mode'];
 
@@ -47,7 +46,7 @@ export class AppComponent {
 
   color: string;
 
-  lineHeight: number;
+  lineHeight: number[];
 
   colors: string[];
 
@@ -100,6 +99,7 @@ export class AppComponent {
     this.colors = service.getColors();
     this.fontSizes = service.getFontSizes();
     this.lineHeights = service.getLineHeights();
+    this.lineHeight = [this.lineHeights[1].lineHeight];
     this.fonts = service.getFonts();
     this.fontStyles = service.getFontStyles();
     this.textAligns = service.getTextAligns();
@@ -147,7 +147,7 @@ export class AppComponent {
       items: this.lineHeights,
       selectedItemKey: this.lineHeight,
       onSelectionChanged: (e: { item: { lineHeight: number } }): void => {
-        this.lineHeight = e.item.lineHeight;
+        this.lineHeight = [e.item.lineHeight];
       },
     };
 
@@ -224,7 +224,6 @@ export class AppComponent {
     };
 
     this.textAlignOptions = {
-      cssClass: 'text-align-group',
       keyExpr: 'alignment',
       stylingMode: 'outlined',
       items: this.getTextAlignItems(true),
@@ -249,7 +248,11 @@ export class AppComponent {
 
   getTextAlignItems(isExtended: boolean) {
     return !isExtended
-      ? this.textAligns.map(({ icon, alignment, hint }) => ({ icon, alignment, hint }))
+      ? this.textAligns.map(({ icon, alignment, hint }) => ({
+        icon,
+        alignment,
+        hint,
+      }))
       : this.textAligns;
   }
 }
