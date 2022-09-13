@@ -2,7 +2,7 @@
   <div>
     <DxResizable
       class="resizable-container"
-      :min-width="655"
+      :min-width="500"
       :min-height="150"
       :max-height="370"
       handles="right"
@@ -453,15 +453,13 @@ export default {
   margin-bottom: 5px;
 }
 
-.demo-container {
-  width: 895px;
-}
-
 .resizable-container {
+  width: calc(100% - 6px);
   padding: 10px;
   height: 300px;
   border: 1px dashed #dbdbdb;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .options-container {

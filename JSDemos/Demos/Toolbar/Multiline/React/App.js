@@ -165,7 +165,7 @@ function App() {
     <React.Fragment>
       <Resizable
         className="resizable-container"
-        minWidth={655}
+        minWidth={500}
         minHeight={150}
         maxHeight={370}
         handles="right"
