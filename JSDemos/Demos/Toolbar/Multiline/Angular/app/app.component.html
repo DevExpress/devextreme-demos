@@ -24,9 +24,12 @@
       <dxi-item
         location="before"
         locateInMenu="auto"
-        template="<div class='separator'></div>"
-        menuItemTemplate="<div class='menu-separator'></div>"
-      ></dxi-item>
+        menuItemTemplate="menuSeparatorTemplate"
+      >
+        <div *dxTemplate>
+          <div class="separator"></div>
+        </div>
+      </dxi-item>
 
       <dxi-item
         location="before"
@@ -49,11 +52,11 @@
         [options]="lineHeightOptions"
       ></dxi-item>
 
-      <dxi-item
-        location="before"
-        locateInMenu="never"
-        template="<div class='separator'></div>"
-      ></dxi-item>
+      <dxi-item location="before" locateInMenu="never">
+        <div *dxTemplate>
+          <div class="separator"></div>
+        </div>
+      </dxi-item>
 
       <dxi-item
         location="before"
@@ -65,9 +68,12 @@
       <dxi-item
         location="before"
         locateInMenu="auto"
-        template="<div class='separator'></div>"
-        menuItemTemplate="<div class='menu-separator'></div>"
-      ></dxi-item>
+        menuItemTemplate="menuSeparatorTemplate"
+      >
+        <div *dxTemplate>
+          <div class="separator"></div>
+        </div>
+      </dxi-item>
 
       <dxi-item
         location="before"
@@ -76,11 +82,11 @@
         [options]="fontStyleOptions"
       ></dxi-item>
 
-      <dxi-item
-        location="before"
-        locateInMenu="never"
-        template="<div class='separator'></div>"
-      ></dxi-item>
+      <dxi-item location="before" locateInMenu="never">
+        <div *dxTemplate>
+          <div class="separator"></div>
+        </div>
+      </dxi-item>
 
       <dxi-item
         cssClass="text-align-group"
@@ -101,9 +107,12 @@
       <dxi-item
         location="before"
         locateInMenu="auto"
-        template="<div class='separator'></div>"
-        menuItemTemplate="<div class='menu-separator'></div>"
-      ></dxi-item>
+        menuItemTemplate="menuSeparatorTemplate"
+      >
+        <div *dxTemplate>
+          <div class="separator"></div>
+        </div>
+      </dxi-item>
 
       <dxi-item
         location="before"
@@ -115,9 +124,12 @@
       <dxi-item
         location="before"
         locateInMenu="auto"
-        template="<div class='separator'></div>"
-        menuItemTemplate="<div class='menu-separator'></div>"
-      ></dxi-item>
+        menuItemTemplate="menuSeparatorTemplate"
+      >
+        <div *dxTemplate>
+          <div class="separator"></div>
+        </div>
+      </dxi-item>
 
       <dxi-item
         location="before"
@@ -158,6 +170,10 @@
         showText="inMenu"
         [options]="aboutButtonOptions"
       ></dxi-item>
+
+      <div *dxTemplate="let data of 'menuSeparatorTemplate'">
+        <div class="menu-separator"></div>
+      </div>
 
       <div *dxTemplate="let data of 'colorpicker'">
         <div class="custom-color-picker">
