@@ -16,11 +16,6 @@
   margin-bottom: 5px;
 }
 
-.dx-popup-content > .dx-template-wrapper.custom-color-picker {
-  width: 82px;
-  padding: 5px;
-}
-
 .resizable-container {
   width: calc(100% - 6px);
   padding: 10px;
@@ -56,9 +51,4 @@
 
 .dx-toolbar-menu-section .dx-toolbar-menu-custom .dx-list-item-content:first-child > .menu-separator {
   display: none;
-}
-
-.color {
-  cursor: pointer;
-  font-size: 18px;
 }
