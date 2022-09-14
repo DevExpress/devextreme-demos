@@ -223,6 +223,7 @@ export default {
       toolbarLineMode: toolbarLineModes[0],
       lineHeight: lineHeights[1].lineHeight,
       textAlign: [textAligns[0].alignment],
+      fontSize: fontSizes[2].size,
     };
   },
 
@@ -255,8 +256,11 @@ export default {
         keyExpr: 'size',
         useSelectMode: true,
         items: fontSizes,
-        selectedItemKey: fontSizes[2].size,
         itemTemplate: 'fontSizeTemplate',
+        selectedItemKey: this.fontSize,
+        onSelectionChanged: (e) => {
+          this.fontSize = e.item.size;
+        },
       };
     },
 
