@@ -33,10 +33,13 @@ const toolbarDataDefault = [
     },
   },
   {
-    locateInMenu: 'never',
+    locateInMenu: 'auto',
     location: 'before',
     template(itemData, itemIndex, element) {
       $(element).addClass('separator');
+    },
+    menuItemTemplate(itemData, itemIndex, element) {
+      $(element).addClass('menu-separator');
     },
   },
   {
@@ -70,6 +73,7 @@ const toolbarDataDefault = [
   },
   {
     location: 'before',
+    locateInMenu: 'auto',
     widget: 'dxDropDownButton',
     options: {
       displayExpr: 'text',
@@ -86,6 +90,7 @@ const toolbarDataDefault = [
   },
   {
     location: 'before',
+    locateInMenu: 'auto',
     widget: 'dxDropDownButton',
     options: {
       icon: 'indent',
@@ -178,9 +183,6 @@ const toolbarDataDefault = [
     location: 'before',
     template(itemData, itemIndex, element) {
       $(element).addClass('separator');
-    },
-    menuItemTemplate(itemData, itemIndex, element) {
-      $(element).addClass('menu-separator');
     },
   },
   {

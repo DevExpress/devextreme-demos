@@ -23,8 +23,9 @@
 
       <dxi-item
         location="before"
-        locateInMenu="never"
+        locateInMenu="auto"
         template="<div class='separator'></div>"
+        menuItemTemplate="<div class='menu-separator'></div>"
       ></dxi-item>
 
       <dxi-item
@@ -35,12 +36,14 @@
 
       <dxi-item
         location="before"
+        locateInMenu="auto"
         widget="dxDropDownButton"
         [options]="fontSizeOptions"
       ></dxi-item>
 
       <dxi-item
         location="before"
+        locateInMenu="auto"
         widget="dxDropDownButton"
         [style.line-height]="lineHeight"
         [options]="lineHeightOptions"

@@ -189,9 +189,12 @@ function App() {
             ></Button>
           </Item>
 
-          <Item location="before" locateInMenu="never">
-            <div className="separator"></div>
-          </Item>
+          <Item
+            location="before"
+            locateInMenu="auto"
+            template='<div class="separator"></div>'
+            menuItemTemplate='<div class="menu-separator"></div>'
+          ></Item>
 
           <Item location="before">
             <DropDownButton
@@ -203,7 +206,7 @@ function App() {
             ></DropDownButton>
           </Item>
 
-          <Item location="before">
+          <Item location="before" locateInMenu="auto">
             <DropDownButton
               displayExpr="text"
               keyExpr="size"
@@ -215,7 +218,7 @@ function App() {
             ></DropDownButton>
           </Item>
 
-          <Item location="before">
+          <Item location="before" locateInMenu="auto">
             <DropDownButton
               icon="indent"
               displayExpr="text"

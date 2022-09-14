@@ -22,8 +22,9 @@
         />
         <DxItem
           location="before"
-          locate-in-menu="never"
+          locate-in-menu="auto"
           template="separatorTemplate"
+          menu-item-template="menuSeparatorTemplate"
         />
         <DxItem
           location="before"
@@ -32,11 +33,13 @@
         />
         <DxItem
           location="before"
+          locate-in-menu="auto"
           widget="dxDropDownButton"
           :options="fontSizeOptions"
         />
         <DxItem
           location="before"
+          locate-in-menu="auto"
           widget="dxDropDownButton"
           :style="{ lineHeight }"
           :options="lineHeightOptions"

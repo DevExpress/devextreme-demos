@@ -42,8 +42,9 @@
                     items
                         .Add()
                         .Template(@<text><div class="separator"></div></text>)
+                        .MenuItemTemplate(@<text><div class="menu-separator"></div></text>)
                         .Location(ToolbarItemLocation.Before)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
                     
                     items
                         .Add()
@@ -70,7 +71,8 @@
                             .OnSelectionChanged("change_size")
                             .ItemTemplate(@<text><div style="font-size: <%- Text %>;"><%- Text %></div></text>)
                         )
-                        .Location(ToolbarItemLocation.Before);
+                        .Location(ToolbarItemLocation.Before)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
 
                     items
                         .Add()
@@ -85,7 +87,8 @@
                             .Icon("indent")
                             .OnSelectionChanged("change_lineHeight")
                         )
-                        .Location(ToolbarItemLocation.Before);
+                        .Location(ToolbarItemLocation.Before)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
 
                     items
                         .Add()
