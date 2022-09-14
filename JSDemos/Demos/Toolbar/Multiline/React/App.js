@@ -11,7 +11,6 @@ import SelectBox from 'devextreme-react/select-box';
 import notify from 'devextreme/ui/notify';
 import 'devextreme/ui/select_box';
 import {
-  colors,
   fontSizes,
   lineHeights,
   fonts,
@@ -26,8 +25,7 @@ function getTextAlignItems(isExtended) {
     : textAligns;
 }
 
-const dropDownOptions = { width: 'auto' };
-const priorities = ['Multiline mode', 'Singleline mode'];
+const toolbarLineModes = ['Multiline mode', 'Singleline mode'];
 
 const attachButtonOptions = {
   icon: 'attach',
@@ -62,68 +60,36 @@ const aboutButtonOptions = {
 };
 
 function App() {
-  const colorPicker = React.useRef(null);
-
   const [lineHeight, setLineHeight] = React.useState(lineHeights[1].lineHeight);
   const [fontSize, setFontSize] = React.useState(fontSizes[2].size);
   const [textAlign, setTextAlign] = React.useState([textAligns[0].alignment]);
-  const [priority, setPriority] = React.useState(priorities[0]);
+  const [toolbarLineMode, setToolbarLineMode] = React.useState(toolbarLineModes[0]);
   const [multiline, setMultiline] = React.useState(true);
-  const [checkBoxValue, setCheckBox] = React.useState(false);
+  const [checkBoxValue, setCheckBoxValue] = React.useState(false);
 
-  const onCheckBoxChangedHandler = React.useCallback(
+  const onCheckBoxChange = React.useCallback(
     ({ value }) => {
-      setCheckBox(value);
+      setCheckBoxValue(value);
       notify('Private option has been changed!');
-    },
-    [checkBoxValue, setCheckBox],
+    }, [],
   );
 
-  const onSelectionChangedHandler = React.useCallback(
-    (e) => {
-      setLineHeight(e.item.lineHeight);
-    },
-    [lineHeight, setLineHeight],
+  const onLineHeightChange = React.useCallback(
+    (e) => setLineHeight(e.item.lineHeight), [],
   );
 
-  const onFontSizeChangedHandler = React.useCallback(
-    (e) => setFontSize(e.item.size),
-    [fontSize, setFontSize],
+  const onFontSizeChange = React.useCallback(
+    (e) => setFontSize(e.item.size), [],
   );
 
-  const onTextAlignChangedHandler = React.useCallback(
-    (e) => setTextAlign([e.item.alignment]),
-    [textAlign, setTextAlign],
+  const onTextAlignChange = React.useCallback(
+    (e) => setTextAlign([e.item.alignment]), [],
   );
 
-  const onChangeHandler = React.useCallback(({ value }) => {
-    setMultiline(value === priorities[0]);
-    setPriority(value);
+  const onToolbarLineModeChange = React.useCallback(({ value }) => {
+    setMultiline(value === toolbarLineModes[0]);
+    setToolbarLineMode(value);
   }, []);
-
-  const onColorClick = React.useCallback((colorCode) => {
-    const instance = colorPicker.current.instance;
-
-    instance.element().getElementsByClassName('dx-icon-square')[0].style.color = colorCode.target.style.color;
-    instance.close();
-  });
-
-  const renderColorPicker = React.useCallback(() => (
-    <div className="custom-color-picker">
-      {colors.map((colorCode, i) => (
-        <i
-          key={i}
-          style={{ color: colorCode }}
-          className={
-            colorCode
-              ? 'color dx-icon dx-icon-square'
-              : 'color dx-icon dx-icon-square dx-theme-text-color'
-          }
-          onClick={onColorClick}
-        ></i>
-      ))}
-    </div>
-  ));
 
   const renderFontSize = React.useCallback(
     (itemData) => (
@@ -141,7 +107,7 @@ function App() {
         keyExpr="alignment"
         stylingMode="outlined"
         selectedItemKeys={textAlign}
-        onSelectionChanged={onTextAlignChangedHandler}
+        onSelectionChanged={onTextAlignChange}
       ></ButtonGroup>
     );
   }, [textAlign]);
@@ -156,7 +122,7 @@ function App() {
         keyExpr="alignment"
         stylingMode="outlined"
         selectedItemKeys={textAlign}
-        onSelectionChanged={onTextAlignChangedHandler}
+        onSelectionChanged={onTextAlignChange}
       ></ButtonGroup>
     );
   }, [textAlign]);
@@ -196,16 +162,6 @@ function App() {
             menuItemTemplate='<div class="menu-separator"></div>'
           ></Item>
 
-          <Item location="before">
-            <DropDownButton
-              ref={colorPicker}
-              icon="square"
-              items={colors}
-              dropDownOptions={dropDownOptions}
-              dropDownContentRender={renderColorPicker}
-            ></DropDownButton>
-          </Item>
-
           <Item location="before" locateInMenu="auto">
             <DropDownButton
               displayExpr="text"
@@ -214,7 +170,7 @@ function App() {
               items={fontSizes}
               selectedItemKey={fontSize}
               itemRender={renderFontSize}
-              onSelectionChanged={onFontSizeChangedHandler}
+              onSelectionChanged={onFontSizeChange}
             ></DropDownButton>
           </Item>
 
@@ -226,7 +182,7 @@ function App() {
               useSelectMode={true}
               items={lineHeights}
               selectedItemKey={lineHeight}
-              onSelectionChanged={onSelectionChangedHandler}
+              onSelectionChanged={onLineHeightChange}
             ></DropDownButton>
           </Item>
 
@@ -306,7 +262,7 @@ function App() {
             <CheckBox
               value={checkBoxValue}
               text="Private"
-              onValueChanged={onCheckBoxChangedHandler}
+              onValueChanged={onCheckBoxChange}
             ></CheckBox>
           </Item>
 
@@ -348,10 +304,10 @@ function App() {
         <div className="caption">Options</div>
 
         <RadioGroup
-          items={priorities}
-          value={priority}
+          items={toolbarLineModes}
+          value={toolbarLineMode}
           layout="horizontal"
-          onValueChanged={onChangeHandler}
+          onValueChanged={onToolbarLineModeChange}
         ></RadioGroup>
       </div>
     </React.Fragment>

@@ -24,7 +24,7 @@
                         .Widget(w => w
                             .Button()
                             .Icon("undo")
-                            .OnClick("undoButton_click")
+                            .OnClick("undoButtonClick")
                         )
                         .Location(ToolbarItemLocation.Before)
                         .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
@@ -34,7 +34,7 @@
                         .Widget(w => w
                             .Button()
                             .Icon("redo")
-                            .OnClick("redoButton_click")
+                            .OnClick("redoButtonClick")
                         )
                         .Location(ToolbarItemLocation.Before)
                         .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
@@ -45,19 +45,6 @@
                         .MenuItemTemplate(@<text><div class="menu-separator"></div></text>)
                         .Location(ToolbarItemLocation.Before)
                         .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-                    
-                    items
-                        .Add()
-                        .Widget(w => w
-                            .DropDownButton()
-                            .DataSource(Model.Colors)
-                            .Icon("square")
-                            .DropDownOptions(options => options.Width("auto"))
-                            .OnInitialized("init_colorpicker")
-                            .DropDownContentTemplate(new TemplateName("colorpicker-template"))
-                        )
-                        .Location(ToolbarItemLocation.Before)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
 
                     items
                         .Add()
@@ -68,7 +55,7 @@
                             .SelectedItemKey("14")
                             .UseSelectMode(true)
                             .DataSource(Model.FontSizes)
-                            .OnSelectionChanged("change_size")
+                            .OnSelectionChanged("changeSize")
                             .ItemTemplate(@<text><div style="font-size: <%- Text %>;"><%- Text %></div></text>)
                         )
                         .Location(ToolbarItemLocation.Before)
@@ -85,7 +72,7 @@
                             .UseSelectMode(true)
                             .DataSource(Model.LineHeights)
                             .Icon("indent")
-                            .OnSelectionChanged("change_lineHeight")
+                            .OnSelectionChanged("changeLineHeight")
                         )
                         .Location(ToolbarItemLocation.Before)
                         .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
@@ -135,7 +122,7 @@
                                 items.Add().Icon("underline").Hint("Underlined").Option("style", "underline");
                                 items.Add().Icon("strike").Hint("Strikethrough").Option("style", "strike");
                             })
-                            .OnItemClick("buttonGroup_ItemClick")
+                            .OnItemClick("buttonGroupItemClick")
                         )
                         .Location(ToolbarItemLocation.Before)
                         .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
@@ -153,7 +140,7 @@
                             .Items(listTypes)
                             .KeyExpr("alignment")
                             .StylingMode(EditorStylingMode.Outlined)                            
-                            .OnItemClick("buttonGroup_ItemClick")
+                            .OnItemClick("buttonGroupItemClick")
                         )
                         .DisplayExpr("Text")
                         .Location(ToolbarItemLocation.Before)
@@ -195,7 +182,7 @@
                             .Button()
                             .Icon("attach")
                             .Text("Attach")
-                            .OnClick("attachButton_click")
+                            .OnClick("attachButtonClick")
                         )
                         .ShowText(ToolbarItemShowTextMode.InMenu)
                         .Location(ToolbarItemLocation.After)
@@ -207,7 +194,7 @@
                             .Button()
                             .Icon("add")
                             .Text("Add")
-                            .OnClick("addButton_click")
+                            .OnClick("addButtonClick")
                         )
                         .ShowText(ToolbarItemShowTextMode.InMenu)
                         .Location(ToolbarItemLocation.After)
@@ -219,7 +206,7 @@
                             .Button()
                             .Icon("trash")
                             .Text("Remove")
-                            .OnClick("removeButton_click")
+                            .OnClick("removeButtonClick")
                         )
                         .ShowText(ToolbarItemShowTextMode.InMenu)
                         .Location(ToolbarItemLocation.After)
@@ -231,7 +218,7 @@
                             .Button()
                             .Icon("help")
                             .Text("About")
-                            .OnClick("aboutButton_click")
+                            .OnClick("aboutButtonClick")
                         )
                         .ShowText(ToolbarItemShowTextMode.InMenu)
                         .Location(ToolbarItemLocation.After)
@@ -249,16 +236,9 @@
             .Layout(Orientation.Horizontal)
             .Items(toolbarModes)
             .Value(toolbarModes[1])
-            .OnValueChanged("toolbarModes_valueChanged"))
+            .OnValueChanged("toolbarModesValueChanged"))
     </div>
 </div>
-
-@using (Html.DevExtreme().NamedTemplate("colorpicker-template")) {
-    <div class="custom-color-picker">
-        @foreach (var color in Model.Colors)
-        {<i style="color: @color" class="color dx-icon dx-icon-square" onclick="onColorClick('@color')"></i>}
-    </div>
-}
 
 @using (Html.DevExtreme().NamedTemplate("text-align-template")) {
     @(Html.DevExtreme().ButtonGroup()
@@ -271,7 +251,7 @@
             new { icon = "alignjustify", alignment = "justify", hint = "Justify" },
         })
         .SelectedItemKeys(new[] { "left" })
-        .OnItemClick("buttonGroup_ItemClick"));
+        .OnItemClick("buttonGroupItemClick"));
 }
 
 @using (Html.DevExtreme().NamedTemplate("text-align-menu-template")) {
@@ -285,11 +265,11 @@
             new { icon = "alignjustify", alignment = "justify", hint = "Justify", text = "Justify" },
         })
         .SelectedItemKeys(new[] { "left" })
-        .OnItemClick("buttonGroup_ItemClick"));
+        .OnItemClick("buttonGroupItemClick"));
 }
 
 <script>
-    function toolbarModes_valueChanged(data) {
+    function toolbarModesValueChanged(data) {
         var toolbar = $("#toolbar").dxToolbar("instance");
         toolbar.option("multiline", data.value === toolbarModes[0]);
 
@@ -297,57 +277,35 @@
         options.option("value", data.value);
     }
 
-    function change_size(e) {
+    function changeSize(e) {
         $("#text").css("font-size", e.item.Text);
     }
 
-    function change_lineHeight(e) {
+    function changeLineHeight(e) {
         $("#text").css("line-height", e.item.Value);
     }
 
-    var dropDownButton;
-    function init_colorpicker(e) {
-        dropDownButton = e.component;
-    }
-
-    function onColorClick(color) {
-        var $colorIcon = dropDownButton.$element().find(".dx-dropdownbutton-action .dx-icon").first();
-
-        applyColor($("#text"), color);
-        applyColor($colorIcon, color);
-        dropDownButton.close();
-    }
-
-    function applyColor($element, color) {
-        if (color) {
-            $element.removeClass("dx-theme-text-color");
-            $element.css("color", color);
-        } else {
-            $element.addClass("dx-theme-text-color");
-        }
-    }
-
-    function buttonGroup_ItemClick(e) {
+    function buttonGroupItemClick(e) {
         DevExpress.ui.notify({ message: 'The "' + e.itemData.hint + '" button was clicked', width: 320 }, "success", 1000);
     }
 
-    function undoButton_click() {
+    function undoButtonClick() {
         DevExpress.ui.notify("Undo button has been clicked!");
     }
 
-    function attachButton_click() {
+    function attachButtonClick() {
         DevExpress.ui.notify("Attach button has been clicked!");
     }
 
-    function addButton_click() {
+    function addButtonClick() {
         DevExpress.ui.notify("Add button has been clicked!");
     }
 
-    function removeButton_click() {
+    function removeButtonClick() {
         DevExpress.ui.notify("Remove button has been clicked!");
     }
 
-    function aboutButton_click() {
+    function aboutButtonClick() {
         DevExpress.ui.notify("About button has been clicked!");
     }
 

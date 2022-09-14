@@ -32,11 +32,6 @@
   margin-bottom: 5px;
 }
 
-::ng-deep .dx-popup-content > .dx-template-wrapper.custom-color-picker {
-  width: 82px;
-  padding: 5px;
-}
-
 ::ng-deep .resizable-container {
   width: calc(100% - 6px);
   padding: 10px;
@@ -72,9 +67,4 @@
 
 ::ng-deep .dx-toolbar-menu-section .dx-toolbar-menu-custom .dx-list-item-content:first-child > .menu-separator {
   display: none;
-}
-
-::ng-deep .color {
-  cursor: pointer;
-  font-size: 18px;
 }

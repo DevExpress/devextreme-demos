@@ -42,21 +42,6 @@ export class ListType {
   hint: string;
 }
 
-const colors: string[] = [
-  null,
-  '#980000',
-  '#ff0000',
-  '#ff9900',
-  '#ffff00',
-  '#00ff00',
-  '#00ffff',
-  '#4a86e8',
-  '#0000ff',
-  '#9900ff',
-  '#ff00ff',
-  '#ff3466',
-];
-
 const fontSizes: FontSize[] = [
   { size: 10, text: '10px' },
   { size: 12, text: '12px' },
@@ -147,10 +132,6 @@ const listTypes: ListType[] = [
 
 @Injectable()
 export class Service {
-  getColors(): string[] {
-    return colors;
-  }
-
   getFontSizes(): FontSize[] {
     return fontSizes;
   }

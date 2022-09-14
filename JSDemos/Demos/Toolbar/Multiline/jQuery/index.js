@@ -1,14 +1,3 @@
-let dropDownButton;
-
-const applyColor = ($element, color) => {
-  if (color) {
-    $element.removeClass('dx-theme-text-color');
-    $element.css('color', color);
-  } else {
-    $element.addClass('dx-theme-text-color');
-  }
-};
-
 const toolbarDataDefault = [
   {
     locateInMenu: 'never',
@@ -40,35 +29,6 @@ const toolbarDataDefault = [
     },
     menuItemTemplate(itemData, itemIndex, element) {
       $(element).addClass('menu-separator');
-    },
-  },
-  {
-    location: 'before',
-    widget: 'dxDropDownButton',
-    options: {
-      items: colors,
-      icon: 'square',
-      dropDownOptions: { width: 'auto' },
-      onInitialized(e) {
-        dropDownButton = e.component;
-      },
-      dropDownContentTemplate(data, $container) {
-        const $colorPicker = $('<div>')
-          .addClass('custom-color-picker')
-          .appendTo($container);
-
-        data.forEach((color) => {
-          const $button = $('<i>')
-            .addClass('color dx-icon dx-icon-square')
-            .on('dxclick', () => {
-              applyColor(dropDownButton.$element().find('.dx-dropdownbutton-action .dx-icon').first(), color);
-              dropDownButton.close();
-            });
-
-          applyColor($button, color);
-          $colorPicker.append($button);
-        });
-      },
     },
   },
   {
@@ -395,16 +355,16 @@ $(() => {
     multiline: true,
   }).dxToolbar('instance');
 
-  const priorities = ['Multiline mode', 'Singleline mode'];
+  const toolbarLineModes = ['Multiline mode', 'Singleline mode'];
 
   $('#options').dxRadioGroup({
-    items: priorities,
-    value: priorities[0],
+    items: toolbarLineModes,
+    value: toolbarLineModes[0],
     layout: 'horizontal',
     onValueChanged(e) {
       const { value } = e;
 
-      toolbar.option('multiline', value === priorities[0]);
+      toolbar.option('multiline', value === toolbarLineModes[0]);
     },
   });
 });

@@ -37,19 +37,13 @@ if (!/localhost/.test(document.location.host)) {
 })
 
 export class AppComponent {
-  priorities = ['Multiline mode', 'Singleline mode'];
+  toolbarLineModes = ['Multiline mode', 'Singleline mode'];
 
-  priority = this.priorities[0];
+  toolbarLineMode = this.toolbarLineModes[0];
 
   multiline: boolean;
 
-  colorPicker: any;
-
-  color: string;
-
   lineHeight: number[];
-
-  colors: string[];
 
   fontSizes: FontSize[];
 
@@ -69,8 +63,6 @@ export class AppComponent {
 
   redoButtonOptions: any;
 
-  colorPickerOptions: any;
-
   fontSizeOptions: any;
 
   lineHeightOptions: any;
@@ -85,7 +77,7 @@ export class AppComponent {
 
   checkBoxOptions: any;
 
-  attachOptions: any;
+  attachButtonOptions: any;
 
   addButtonOptions: any;
 
@@ -97,7 +89,6 @@ export class AppComponent {
 
   constructor(service: Service) {
     this.multiline = true;
-    this.colors = service.getColors();
     this.fontSizes = service.getFontSizes();
     this.lineHeights = service.getLineHeights();
     this.lineHeight = [this.lineHeights[1].lineHeight];
@@ -118,16 +109,6 @@ export class AppComponent {
       icon: 'redo',
       onClick: () => {
         notify('Redo button has been clicked!');
-      },
-    };
-
-    this.colorPickerOptions = {
-      items: this.colors,
-      icon: 'square',
-      dropDownOptions: { width: 'auto' },
-      dropDownContentTemplate: 'colorpicker',
-      onInitialized: ({ component }): void => {
-        this.colorPicker = component;
       },
     };
 
@@ -192,7 +173,7 @@ export class AppComponent {
       },
     };
 
-    this.attachOptions = {
+    this.attachButtonOptions = {
       icon: 'attach',
       text: 'Attach',
       onClick: (): void => {
@@ -235,16 +216,9 @@ export class AppComponent {
     };
   }
 
-  onColorClick(color: any) {
-    this.colorPicker
-      .element()
-      .getElementsByClassName('dx-icon-square')[0].style.color = color;
-    this.colorPicker.close();
-  }
-
-  onChangeHandler({ value }) {
-    this.multiline = value === this.priorities[0];
-    this.priority = value;
+  onToolbarLineModeChange({ value }) {
+    this.multiline = value === this.toolbarLineModes[0];
+    this.toolbarLineMode = value;
   }
 
   getTextAlignItems(isExtended: boolean) {

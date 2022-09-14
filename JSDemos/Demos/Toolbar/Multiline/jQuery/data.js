@@ -1,18 +1,3 @@
-const colors = [
-  null,
-  '#980000',
-  '#ff0000',
-  '#ff9900',
-  '#ffff00',
-  '#00ff00',
-  '#00ffff',
-  '#4a86e8',
-  '#0000ff',
-  '#9900ff',
-  '#ff00ff',
-  '#ff3466',
-];
-
 const fontSizes = [
   { size: 10, text: '10px' },
   { size: 12, text: '12px' },

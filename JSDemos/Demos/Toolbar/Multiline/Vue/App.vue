@@ -28,11 +28,6 @@
         />
         <DxItem
           location="before"
-          widget="dxDropDownButton"
-          :options="colorPickerOptions"
-        />
-        <DxItem
-          location="before"
           locate-in-menu="auto"
           widget="dxDropDownButton"
           :options="fontSizeOptions"
@@ -114,7 +109,7 @@
           locate-in-menu="never"
           widget="dxButton"
           show-text="inMenu"
-          :options="attachOptions"
+          :options="attachButtonOptions"
         />
         <DxItem
           location="after"
@@ -144,22 +139,6 @@
 
         <template #menuSeparatorTemplate>
           <div class="menu-separator"/>
-        </template>
-
-        <template #colorpicker="{ data }">
-          <div class="custom-color-picker">
-            <i
-              v-for="(itemColor, i) in data"
-              :key="i"
-              :class="
-                itemColor
-                  ? 'color dx-icon dx-icon-square'
-                  : 'color dx-icon dx-icon-square dx-theme-text-color'
-              "
-              :style="{ color: itemColor }"
-              @click="onColorClick(itemColor)"
-            />
-          </div>
         </template>
 
         <template #fontSizeTemplate="{ data }">
@@ -194,9 +173,9 @@
 
       <DxRadioGroup
         layout="horizontal"
-        :items="reactivePriorities"
-        :value="priority"
-        :on-value-changed="onChangeHandler"
+        :items="toolbarLineModes"
+        :value="toolbarLineMode"
+        :on-value-changed="onToolbarLineModeChange"
       />
     </div>
   </div>
@@ -214,7 +193,6 @@ import DxRadioGroup from 'devextreme-vue/radio-group';
 import notify from 'devextreme/ui/notify';
 
 import {
-  colors,
   fontSizes,
   lineHeights,
   fonts,
@@ -224,7 +202,7 @@ import {
 } from './data.js';
 import 'devextreme/ui/select_box';
 
-const priorities = ['Multiline mode', 'Singleline mode'];
+const toolbarLineModes = ['Multiline mode', 'Singleline mode'];
 
 export default {
   components: {
@@ -242,21 +220,15 @@ export default {
   data() {
     return {
       multiline: true,
-      colorPicker: null,
-      color: null,
-      priority: priorities[0],
+      toolbarLineMode: toolbarLineModes[0],
       lineHeight: lineHeights[1].lineHeight,
       textAlign: [textAligns[0].alignment],
     };
   },
 
   computed: {
-    reactiveColors() {
-      return colors;
-    },
-
-    reactivePriorities() {
-      return priorities;
+    toolbarLineModes() {
+      return toolbarLineModes;
     },
 
     undoButtonOptions() {
@@ -273,18 +245,6 @@ export default {
         icon: 'redo',
         onClick() {
           notify('Redo button has been clicked!');
-        },
-      };
-    },
-
-    colorPickerOptions() {
-      return {
-        items: colors,
-        icon: 'square',
-        dropDownOptions: { width: 'auto' },
-        dropDownContentTemplate: 'colorpicker',
-        onInitialized: ({ component }) => {
-          this.colorPicker = component;
         },
       };
     },
@@ -364,7 +324,7 @@ export default {
       };
     },
 
-    attachOptions() {
+    attachButtonOptions() {
       return {
         icon: 'attach',
         text: 'Attach',
@@ -406,22 +366,14 @@ export default {
   },
 
   methods: {
-    onColorClick(color) {
-      this.color = color;
-      this.colorPicker
-        .element()
-        .getElementsByClassName('dx-icon-square')[0].style.color = color;
-      this.colorPicker.close();
-    },
-
     onTextAlignItemClick(e) {
       this.textAlign = e.itemData.alignment;
       notify(`The "${e.itemData.hint}" button was clicked`);
     },
 
-    onChangeHandler({ value }) {
-      this.multiline = value === priorities[0];
-      this.priority = value;
+    onToolbarLineModeChange({ value }) {
+      this.multiline = value === toolbarLineModes[0];
+      this.toolbarLineMode = value;
     },
 
     getTextAlignItems(isExtended) {

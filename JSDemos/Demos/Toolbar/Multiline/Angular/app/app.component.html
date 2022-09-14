@@ -33,12 +33,6 @@
 
       <dxi-item
         location="before"
-        widget="dxDropDownButton"
-        [options]="colorPickerOptions"
-      ></dxi-item>
-
-      <dxi-item
-        location="before"
         locateInMenu="auto"
         widget="dxDropDownButton"
         [options]="fontSizeOptions"
@@ -175,18 +169,6 @@
         <div class="menu-separator"></div>
       </div>
 
-      <div *dxTemplate="let data of 'colorpicker'">
-        <div class="custom-color-picker">
-          <i
-            *ngFor="let iconColor of colors"
-            class="color dx-icon dx-icon-square"
-            [ngClass]="{ 'dx-theme-text-color': !iconColor }"
-            [style.color]="iconColor"
-            (click)="onColorClick(iconColor)"
-          ></i>
-        </div>
-      </div>
-
       <div *dxTemplate="let data of 'fontSizeTemplate'">
         <div [style.fontSize]="data.size + 'px'">{{ data.text }}</div>
       </div>
@@ -198,9 +180,9 @@
 
     <dx-radio-group
       layout="horizontal"
-      [items]="priorities"
-      [value]="priority"
-      (onValueChanged)="onChangeHandler($event)"
+      [items]="toolbarLineModes"
+      [value]="toolbarLineMode"
+      (onValueChanged)="onToolbarLineModeChange($event)"
     ></dx-radio-group>
   </div>
 </div>
