@@ -59,6 +59,6 @@
   font-size: 18px;
 }
 
-.dx-toolbar-menu-section .dx-toolbar-menu-custom:first-child > .menu-separator {
+.dx-toolbar-menu-section .dx-toolbar-menu-custom .dx-list-item-content:first-child > .menu-separator {
   display: none;
 }

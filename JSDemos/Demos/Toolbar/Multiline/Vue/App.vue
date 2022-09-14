@@ -489,7 +489,7 @@ export default {
   border-bottom: 1px solid #ddd;
 }
 
-.dx-toolbar-menu-section .dx-toolbar-menu-custom:first-child > .menu-separator {
+.dx-toolbar-menu-section .dx-toolbar-menu-custom .dx-list-item-content:first-child > .menu-separator {
   display: none;
 }
 </style>
