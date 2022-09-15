@@ -363,7 +363,7 @@ $(() => {
 
   const toolbarLineModes = ['Multiline mode', 'Singleline mode'];
 
-  $('#options').dxRadioGroup({
+  $('#toolbarModeRadioGroup').dxRadioGroup({
     items: toolbarLineModes,
     value: toolbarLineModes[0],
     layout: 'horizontal',
