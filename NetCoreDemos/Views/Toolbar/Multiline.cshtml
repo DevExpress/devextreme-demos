@@ -298,7 +298,7 @@
     }
 
     function buttonGroupItemClick(e) {
-        DevExpress.ui.notify({ message: 'The "' + e.itemData.hint + '" button was clicked', width: 320 }, "success", 1000);
+        DevExpress.ui.notify({ message: `The "${e.itemData.hint}" button was clicked`, width: 320 }, "success", 1000);
     }
 
     function undoButtonClick() {

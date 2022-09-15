@@ -244,7 +244,7 @@
         <div class="caption">Options</div>
 
         @(Html.DevExtreme().RadioGroup()
-            .ID("options")
+            .ID("toolbarModeRadioGroup")
             .Layout(Orientation.Horizontal)
             .Items(toolbarModes)
             .Value(toolbarModes[1])
@@ -285,8 +285,8 @@
         var toolbar = $("#toolbar").dxToolbar("instance");
         toolbar.option("multiline", data.value === toolbarModes[0]);
 
-        var options = $("#options").RadioGroup("instance");
-        options.option("value", data.value);
+        var toolbarModeRadioGroupInstance = $("#toolbarModeRadioGroup").RadioGroup("instance");
+        toolbarModeRadioGroupInstance.option("value", data.value);
     }
 
     function changeSize(e) {
@@ -298,7 +298,7 @@
     }
 
     function buttonGroupItemClick(e) {
-        DevExpress.ui.notify({ message: 'The "' + e.itemData.hint + '" button was clicked', width: 320 }, "success", 1000);
+        DevExpress.ui.notify({ message: `The "${e.itemData.hint}" button was clicked`, width: 320 }, "success", 1000);
     }
 
     function undoButtonClick() {
