@@ -30,7 +30,9 @@ export class TextAlign {
   alignment: string;
 
   hint: string;
+}
 
+export class TextAlignExtended extends TextAlign {
   text: string;
 }
 
@@ -90,7 +92,7 @@ const fontStyles: FontStyle[] = [
   },
 ];
 
-const textAligns: TextAlign[] = [
+const textAligns: TextAlignExtended[] = [
   {
     icon: 'alignleft',
     alignment: 'left',
@@ -148,7 +150,7 @@ export class Service {
     return fontStyles;
   }
 
-  getTextAligns(): TextAlign[] {
+  getTextAligns(): TextAlignExtended[] {
     return textAligns;
   }
 

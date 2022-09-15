@@ -16,13 +16,14 @@ import {
 import DataSource from 'devextreme/data/data_source';
 import notify from 'devextreme/ui/notify';
 import {
-  Service,
-  FontSize,
-  LineHeight,
   Font,
+  FontSize,
   FontStyle,
-  TextAlign,
+  LineHeight,
   ListType,
+  Service,
+  TextAlign,
+  TextAlignExtended,
 } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -53,7 +54,9 @@ export class AppComponent {
 
   fontStyles: FontStyle[];
 
-  textAligns: TextAlign[];
+  textAlignItems: TextAlign[];
+
+  textAlignItemsExtended: TextAlignExtended[];
 
   selectedTextAlign: string[];
 
@@ -92,8 +95,11 @@ export class AppComponent {
     this.lineHeight = [this.lineHeights[1].lineHeight];
     this.fonts = service.getFonts();
     this.fontStyles = service.getFontStyles();
-    this.textAligns = service.getTextAligns();
-    this.selectedTextAlign = [this.textAligns[0].alignment];
+    this.textAlignItemsExtended = service.getTextAligns();
+    this.textAlignItems = this.textAlignItemsExtended.map(
+      ({ icon, alignment, hint }) => ({ icon, alignment, hint }),
+    );
+    this.selectedTextAlign = [this.textAlignItems[0].alignment];
     this.listTypes = service.getListType();
 
     this.undoButtonOptions = {
@@ -143,18 +149,14 @@ export class AppComponent {
       keyExpr: 'style',
       stylingMode: 'outlined',
       selectionMode: 'multiple',
-      onItemClick: (e: { itemData: { hint: string } }): void => {
-        notify(`The "${e.itemData.hint}" button was clicked`);
-      },
+      onItemClick: this.onItemClick,
     };
 
     this.listOptions = {
       items: this.listTypes,
       keyExpr: 'alignment',
       stylingMode: 'outlined',
-      onItemClick: (e: { itemData: { hint: string } }): void => {
-        notify(`The "${e.itemData.hint}" button was clicked`);
-      },
+      onItemClick: this.onItemClick,
     };
 
     this.dateBoxOptions = {
@@ -204,26 +206,13 @@ export class AppComponent {
     };
   }
 
-  onTextAlignClick(e: { itemData: { hint: string } }) {
-    const { hint } = e.itemData;
-
-    this.selectedTextAlign = [hint];
-    notify(`The "${hint}" button was clicked`);
+  onItemClick(e: { itemData: { hint: string } }): void {
+    notify(`The "${e.itemData.hint}" button was clicked`);
   }
 
-  onToolbarLineModeChange({ value }) {
+  onToolbarLineModeChange({ value }): void {
     this.multiline = value === this.toolbarLineModes[0];
     this.toolbarLineMode = value;
-  }
-
-  getTextAlignItems(isExtended: boolean) {
-    return !isExtended
-      ? this.textAligns.map(({ icon, alignment, hint }) => ({
-        icon,
-        alignment,
-        hint,
-      }))
-      : this.textAligns;
   }
 }
 
