@@ -85,8 +85,6 @@ export class AppComponent {
 
   aboutButtonOptions: any;
 
-  textAlignOptions: any;
-
   constructor(service: Service) {
     this.multiline = true;
     this.fontSizes = service.getFontSizes();
@@ -204,16 +202,13 @@ export class AppComponent {
         notify('About button has been clicked!');
       },
     };
+  }
 
-    this.textAlignOptions = {
-      keyExpr: 'alignment',
-      stylingMode: 'outlined',
-      items: this.getTextAlignItems(true),
-      selectedItemKeys: this.selectedTextAlign,
-      onItemClick: (e: { itemData: { hint: string } }): void => {
-        notify(`The "${e.itemData.hint}" button was clicked`);
-      },
-    };
+  onTextAlignClick(e: { itemData: { hint: string } }) {
+    const { hint } = e.itemData;
+
+    this.selectedTextAlign = [hint];
+    notify(`The "${hint}" button was clicked`);
   }
 
   onToolbarLineModeChange({ value }) {

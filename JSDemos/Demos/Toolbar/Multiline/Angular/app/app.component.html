@@ -83,12 +83,20 @@
       </dxi-item>
 
       <dxi-item
-        cssClass="text-align-group"
         location="before"
         locateInMenu="auto"
-        widget="dxButtonGroup"
-        [options]="textAlignOptions"
-      ></dxi-item>
+        menuItemTemplate="menuTextAlignTemplate"
+      >
+        <div *dxTemplate>
+          <dx-button-group
+            keyExpr="alignment"
+            stylingMode="outlined"
+            [items]="getTextAlignItems(false)"
+            [selectedItemKeys]="selectedTextAlign"
+            (onItemClick)="onTextAlignClick($event)"
+          ></dx-button-group>
+        </div>
+      </dxi-item>
 
       <dxi-item
         location="before"
@@ -171,6 +179,16 @@
 
       <div *dxTemplate="let data of 'fontSizeTemplate'">
         <div [style.fontSize]="data.size + 'px'">{{ data.text }}</div>
+      </div>
+
+      <div *dxTemplate="let data of 'menuTextAlignTemplate'">
+        <dx-button-group
+          keyExpr="alignment"
+          stylingMode="outlined"
+          [items]="getTextAlignItems(true)"
+          [selectedItemKeys]="selectedTextAlign"
+          (onItemClick)="onTextAlignClick($event)"
+        ></dx-button-group>
       </div>
     </dx-toolbar>
   </dx-resizable>
