@@ -46,7 +46,7 @@
         [options]="lineHeightOptions"
       ></dxi-item>
 
-      <dxi-item location="before" locateInMenu="never">
+      <dxi-item location="before" locateInMenu="auto">
         <div *dxTemplate>
           <div class="separator"></div>
         </div>
@@ -83,6 +83,7 @@
       </dxi-item>
 
       <dxi-item
+        cssClass="dx-toolbar-hidden-button-group"
         location="before"
         locateInMenu="auto"
         menuItemTemplate="menuTextAlignTemplate"

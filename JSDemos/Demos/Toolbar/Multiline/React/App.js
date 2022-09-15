@@ -186,9 +186,12 @@ function App() {
             ></DropDownButton>
           </Item>
 
-          <Item location="before" locateInMenu="never">
-            <div className="separator"></div>
-          </Item>
+          <Item
+            location="before"
+            locateInMenu="auto"
+            template='<div class="separator"></div>'
+            menuItemTemplate='<div class="menu-separator"></div>'
+          ></Item>
 
           <Item location="before" locateInMenu="auto">
             <SelectBox
@@ -221,6 +224,7 @@ function App() {
           </Item>
 
           <Item
+            cssClass="dx-toolbar-hidden-button-group"
             location="before"
             locateInMenu="auto"
             render={renderTextAlign}

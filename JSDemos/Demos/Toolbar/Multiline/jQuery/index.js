@@ -65,7 +65,7 @@ const toolbarDataDefault = [
     },
   },
   {
-    locateInMenu: 'never',
+    locateInMenu: 'auto',
     location: 'before',
     template(itemData, itemIndex, element) {
       $(element).addClass('separator');

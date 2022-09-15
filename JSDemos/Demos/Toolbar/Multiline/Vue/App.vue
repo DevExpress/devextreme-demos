@@ -41,8 +41,9 @@
         />
         <DxItem
           location="before"
-          locate-in-menu="never"
+          locate-in-menu="auto"
           template="separatorTemplate"
+          menu-item-template="menuSeparatorTemplate"
         />
         <DxItem
           location="before"
@@ -68,6 +69,7 @@
           template="separatorTemplate"
         />
         <DxItem
+          css-class="dx-toolbar-hidden-button-group"
           location="before"
           locate-in-menu="auto"
           template="textAlignTemplate"
