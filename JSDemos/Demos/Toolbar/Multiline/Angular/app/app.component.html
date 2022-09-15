@@ -91,9 +91,9 @@
           <dx-button-group
             keyExpr="alignment"
             stylingMode="outlined"
-            [items]="getTextAlignItems(false)"
-            [selectedItemKeys]="selectedTextAlign"
-            (onItemClick)="onTextAlignClick($event)"
+            [items]="textAlignItems"
+            [(selectedItemKeys)]="selectedTextAlign"
+            (onItemClick)="onItemClick($event)"
           ></dx-button-group>
         </div>
       </dxi-item>
@@ -185,9 +185,9 @@
         <dx-button-group
           keyExpr="alignment"
           stylingMode="outlined"
-          [items]="getTextAlignItems(true)"
+          [items]="textAlignItemsExtended"
           [selectedItemKeys]="selectedTextAlign"
-          (onItemClick)="onTextAlignClick($event)"
+          (onItemClick)="onItemClick($event)"
         ></dx-button-group>
       </div>
     </dx-toolbar>
