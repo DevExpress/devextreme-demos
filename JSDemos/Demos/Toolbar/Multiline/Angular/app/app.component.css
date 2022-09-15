@@ -1,7 +1,3 @@
-::ng-deep .dx-list:not(.dx-list-select-decorator-enabled) .dx-toolbar-menu-section .dx-list-item.dx-state-active {
-  background-color: unset;
-}
-
 ::ng-deep .dx-resizable-handle::after {
   content: "";
   background-color: #337ab7;
@@ -18,6 +14,10 @@
 
 ::ng-deep .dx-toolbar.dx-toolbar-multiline .dx-toolbar-item {
   margin-bottom: 5px;
+}
+
+::ng-deep .dx-toolbar-menu-section .menu-separator-container {
+  height: 1px;
 }
 
 ::ng-deep .resizable-container {
@@ -51,8 +51,4 @@
 ::ng-deep .menu-separator {
   height: 1px;
   border-bottom: 1px solid #ddd;
-}
-
-::ng-deep .dx-toolbar-menu-section .dx-toolbar-menu-custom .dx-list-item-content:first-child > .menu-separator {
-  display: none;
 }

@@ -41,6 +41,7 @@
                     
                     items
                         .Add()
+                        .CssClass("menu-separator-container")
                         .Template(@<text><div class="separator"></div></text>)
                         .MenuItemTemplate(@<text><div class="menu-separator"></div></text>)
                         .Location(ToolbarItemLocation.Before)
@@ -79,6 +80,7 @@
 
                     items
                         .Add()
+                        .CssClass("menu-separator-container")
                         .Template(@<text><div class="separator"></div></text>)
                         .Location(ToolbarItemLocation.Before)
                         .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
@@ -103,6 +105,7 @@
                     
                     items
                         .Add()
+                        .CssClass("menu-separator-container")
                         .Template(@<text><div class="separator"></div></text>)
                         .MenuItemTemplate(@<text><div class="menu-separator"></div></text>)
                         .Location(ToolbarItemLocation.Before)
@@ -145,6 +148,14 @@
                         .DisplayExpr("Text")
                         .Location(ToolbarItemLocation.Before)
                         .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
+                    
+                    items
+                        .Add()
+                        .CssClass("menu-separator-container")
+                        .Template(@<text><div class="separator"></div></text>)
+                        .MenuItemTemplate(@<text><div class="menu-separator"></div></text>)
+                        .Location(ToolbarItemLocation.Before)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
 
                     items
                         .Add()
@@ -156,9 +167,10 @@
                         )
                         .Location(ToolbarItemLocation.Before)
                         .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-
+                    
                     items
                         .Add()
+                        .CssClass("menu-separator-container")
                         .Template(@<text><div class="separator"></div></text>)
                         .MenuItemTemplate(@<text><div class="menu-separator"></div></text>)
                         .Location(ToolbarItemLocation.Before)

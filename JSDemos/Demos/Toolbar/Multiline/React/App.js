@@ -156,6 +156,7 @@ function App() {
           </Item>
 
           <Item
+            cssClass="menu-separator-container"
             location="before"
             locateInMenu="auto"
             template='<div class="separator"></div>'
@@ -187,6 +188,7 @@ function App() {
           </Item>
 
           <Item
+            cssClass="menu-separator-container"
             location="before"
             locateInMenu="auto"
             template='<div class="separator"></div>'
@@ -202,6 +204,7 @@ function App() {
           </Item>
 
           <Item
+            cssClass="menu-separator-container"
             location="before"
             locateInMenu="auto"
             template='<div class="separator"></div>'
@@ -241,6 +244,7 @@ function App() {
           </Item>
 
           <Item
+            cssClass="menu-separator-container"
             location="before"
             locateInMenu="auto"
             template='<div class="separator"></div>'
@@ -256,6 +260,7 @@ function App() {
           </Item>
 
           <Item
+            cssClass="menu-separator-container"
             location="before"
             locateInMenu="auto"
             template='<div class="separator"></div>'

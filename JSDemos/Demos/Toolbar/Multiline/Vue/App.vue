@@ -21,6 +21,7 @@
           :options="redoButtonOptions"
         />
         <DxItem
+          css-class="menu-separator-container"
           location="before"
           locate-in-menu="auto"
           template="separatorTemplate"
@@ -40,6 +41,7 @@
           :options="lineHeightOptions"
         />
         <DxItem
+          css-class="menu-separator-container"
           location="before"
           locate-in-menu="auto"
           template="separatorTemplate"
@@ -52,6 +54,7 @@
           :options="fontSelectorOptions"
         />
         <DxItem
+          css-class="menu-separator-container"
           location="before"
           locate-in-menu="auto"
           template="separatorTemplate"
@@ -83,6 +86,7 @@
           :options="listOptions"
         />
         <DxItem
+          css-class="menu-separator-container"
           location="before"
           locate-in-menu="auto"
           template="separatorTemplate"
@@ -95,6 +99,7 @@
           :options="dateBoxOptions"
         />
         <DxItem
+          css-class="menu-separator-container"
           location="before"
           locate-in-menu="auto"
           template="separatorTemplate"
@@ -445,9 +450,5 @@ export default {
 .menu-separator {
   height: 1px;
   border-bottom: 1px solid #ddd;
-}
-
-.dx-toolbar-menu-section .dx-toolbar-menu-custom .dx-list-item-content:first-child > .menu-separator {
-  display: none;
 }
 </style>

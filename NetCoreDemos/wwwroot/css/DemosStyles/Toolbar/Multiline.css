@@ -1,4 +1,3 @@
-
 .dx-resizable-handle::after {
   content: "";
   background-color: #337ab7;
@@ -15,6 +14,10 @@
 
 .dx-toolbar.dx-toolbar-multiline .dx-toolbar-item {
   margin-bottom: 5px;
+}
+
+.dx-toolbar-menu-section .menu-separator-container {
+  height: 1px;
 }
 
 .resizable-container {
@@ -48,8 +51,4 @@
 .menu-separator {
   height: 1px;
   border-bottom: 1px solid #ddd;
-}
-
-.dx-toolbar-menu-section .dx-toolbar-menu-custom .dx-list-item-content:first-child > .menu-separator {
-  display: none;
 }

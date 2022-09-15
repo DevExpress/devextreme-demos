@@ -22,6 +22,7 @@ const toolbarDataDefault = [
     },
   },
   {
+    cssClass: 'menu-separator-container',
     locateInMenu: 'auto',
     location: 'before',
     template(itemData, itemIndex, element) {
@@ -65,6 +66,7 @@ const toolbarDataDefault = [
     },
   },
   {
+    cssClass: 'menu-separator-container',
     locateInMenu: 'auto',
     location: 'before',
     template(itemData, itemIndex, element) {
@@ -93,6 +95,7 @@ const toolbarDataDefault = [
     },
   },
   {
+    cssClass: 'menu-separator-container',
     locateInMenu: 'auto',
     location: 'before',
     template(itemData, itemIndex, element) {
@@ -214,6 +217,7 @@ const toolbarDataDefault = [
         ],
         keyExpr: 'alignment',
         stylingMode: 'outlined',
+        selectedItemKeys: ['left'],
         onItemClick(e) {
           DevExpress.ui.notify(`The "${e.itemData.hint}" button was clicked`);
         },
@@ -248,6 +252,7 @@ const toolbarDataDefault = [
     },
   },
   {
+    cssClass: 'menu-separator-container',
     locateInMenu: 'auto',
     location: 'before',
     template(itemData, itemIndex, element) {
@@ -268,6 +273,7 @@ const toolbarDataDefault = [
     },
   },
   {
+    cssClass: 'menu-separator-container',
     locateInMenu: 'auto',
     location: 'before',
     template(itemData, itemIndex, element) {
