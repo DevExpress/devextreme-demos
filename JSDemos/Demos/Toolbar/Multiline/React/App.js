@@ -63,28 +63,30 @@ function App() {
   const [lineHeight, setLineHeight] = React.useState(lineHeights[1].lineHeight);
   const [fontSize, setFontSize] = React.useState(fontSizes[2].size);
   const [textAlign, setTextAlign] = React.useState([textAligns[0].alignment]);
-  const [toolbarLineMode, setToolbarLineMode] = React.useState(toolbarLineModes[0]);
+  const [toolbarLineMode, setToolbarLineMode] = React.useState(
+    toolbarLineModes[0],
+  );
   const [multiline, setMultiline] = React.useState(true);
   const [checkBoxValue, setCheckBoxValue] = React.useState(false);
 
-  const onCheckBoxChange = React.useCallback(
-    ({ value }) => {
-      setCheckBoxValue(value);
-      notify('Private option has been changed!');
-    }, [],
-  );
+  const onCheckBoxChange = React.useCallback(({ value }) => {
+    setCheckBoxValue(value);
+    notify('Private option has been changed!');
+  }, []);
 
   const onLineHeightChange = React.useCallback(
-    (e) => setLineHeight(e.item.lineHeight), [],
+    (e) => setLineHeight(e.item.lineHeight),
+    [],
   );
 
   const onFontSizeChange = React.useCallback(
-    (e) => setFontSize(e.item.size), [],
+    (e) => setFontSize(e.item.size),
+    [],
   );
 
-  const onTextAlignChange = React.useCallback(
-    (e) => setTextAlign([e.item.alignment]), [],
-  );
+  const onTextAlignChange = React.useCallback((e) => {
+    setTextAlign([e.itemData.alignment]);
+  }, []);
 
   const onToolbarLineModeChange = React.useCallback(({ value }) => {
     setMultiline(value === toolbarLineModes[0]);
@@ -107,7 +109,7 @@ function App() {
         keyExpr="alignment"
         stylingMode="outlined"
         selectedItemKeys={textAlign}
-        onSelectionChanged={onTextAlignChange}
+        onItemClick={onTextAlignChange}
       ></ButtonGroup>
     );
   }, [textAlign]);
@@ -122,10 +124,12 @@ function App() {
         keyExpr="alignment"
         stylingMode="outlined"
         selectedItemKeys={textAlign}
-        onSelectionChanged={onTextAlignChange}
+        onItemClick={onTextAlignChange}
       ></ButtonGroup>
     );
   }, [textAlign]);
+
+  const renderTextAlignMenuItem = React.useCallback(() => <div className="menu-separator"></div>, []);
 
   return (
     <React.Fragment>
@@ -136,6 +140,7 @@ function App() {
         maxHeight={370}
         handles="right"
       >
+        <div>{textAlign}</div>
         <Toolbar multiline={multiline}>
           <Item location="before" locateInMenu="never">
             <Button
@@ -159,9 +164,10 @@ function App() {
             cssClass="menu-separator-container"
             location="before"
             locateInMenu="auto"
-            template='<div class="separator"></div>'
-            menuItemTemplate='<div class="menu-separator"></div>'
-          ></Item>
+            menuItemRender={renderTextAlignMenuItem}
+          >
+            <div className="separator"></div>
+          </Item>
 
           <Item location="before" locateInMenu="auto">
             <DropDownButton
@@ -191,9 +197,10 @@ function App() {
             cssClass="menu-separator-container"
             location="before"
             locateInMenu="auto"
-            template='<div class="separator"></div>'
-            menuItemTemplate='<div class="menu-separator"></div>'
-          ></Item>
+            menuItemRender={renderTextAlignMenuItem}
+          >
+            <div className="separator"></div>
+          </Item>
 
           <Item location="before" locateInMenu="auto">
             <SelectBox
@@ -207,9 +214,10 @@ function App() {
             cssClass="menu-separator-container"
             location="before"
             locateInMenu="auto"
-            template='<div class="separator"></div>'
-            menuItemTemplate='<div class="menu-separator"></div>'
-          ></Item>
+            menuItemRender={renderTextAlignMenuItem}
+          >
+            <div className="separator"></div>
+          </Item>
 
           <Item location="before" locateInMenu="never">
             <ButtonGroup
@@ -218,7 +226,8 @@ function App() {
               stylingMode="outlined"
               selectionMode="multiple"
               items={fontStyles}
-              onItemClick={(e) => notify(`The "${e.itemData.hint}" button was clicked`)}
+              onItemClick={(e) => notify(`The "${e.itemData.hint}" button was clicked`)
+              }
             ></ButtonGroup>
           </Item>
 
@@ -239,7 +248,8 @@ function App() {
               keyExpr="alignment"
               stylingMode="outlined"
               items={listTypes}
-              onItemClick={(e) => notify(`The "${e.itemData.hint}" button was clicked`)}
+              onItemClick={(e) => notify(`The "${e.itemData.hint}" button was clicked`)
+              }
             ></ButtonGroup>
           </Item>
 
@@ -247,9 +257,10 @@ function App() {
             cssClass="menu-separator-container"
             location="before"
             locateInMenu="auto"
-            template='<div class="separator"></div>'
-            menuItemTemplate='<div class="menu-separator"></div>'
-          ></Item>
+            menuItemRender={renderTextAlignMenuItem}
+          >
+            <div className="separator"></div>
+          </Item>
 
           <Item location="before" locateInMenu="auto">
             <DateBox
@@ -263,9 +274,10 @@ function App() {
             cssClass="menu-separator-container"
             location="before"
             locateInMenu="auto"
-            template='<div class="separator"></div>'
-            menuItemTemplate='<div class="menu-separator"></div>'
-          ></Item>
+            menuItemRender={renderTextAlignMenuItem}
+          >
+            <div className="separator"></div>
+          </Item>
 
           <Item location="before" locateInMenu="auto">
             <CheckBox
