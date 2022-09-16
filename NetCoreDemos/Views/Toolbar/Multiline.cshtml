@@ -189,7 +189,7 @@
                         .Widget(w => w
                             .CheckBox()
                             .Value(true)
-                            .Text("Private")
+                            .Text("Checkbox text")
                             .OnOptionChanged("onOptionChanged")
                         )
                         .ShowText(ToolbarItemShowTextMode.InMenu)
@@ -338,6 +338,6 @@
     }
 
     function onOptionChanged() {
-        DevExpress.ui.notify("Private option has been changed!");
+        DevExpress.ui.notify("Checkbox option has been changed!");
     }
 </script>

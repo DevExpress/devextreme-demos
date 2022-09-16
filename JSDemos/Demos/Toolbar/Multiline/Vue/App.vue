@@ -133,8 +133,7 @@
           :options="removeButtonOptions"
         />
         <DxItem
-          location="after"
-          locate-in-menu="auto"
+          locate-in-menu="always"
           widget="dxButton"
           show-text="inMenu"
           :options="aboutButtonOptions"
@@ -328,9 +327,9 @@ export default {
     checkBoxOptions() {
       return {
         value: false,
-        text: 'Private',
+        text: 'Checkbox text',
         onOptionChanged() {
-          notify('Private option has been changed!');
+          notify('Checkbox option has been changed!');
         },
       };
     },

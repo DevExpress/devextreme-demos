@@ -167,9 +167,9 @@ export class AppComponent {
 
     this.checkBoxOptions = {
       value: false,
-      text: 'Private',
+      text: 'Checkbox text',
       onOptionChanged: (): void => {
-        notify('Private option has been changed!');
+        notify('Checkbox option has been changed!');
       },
     };
 

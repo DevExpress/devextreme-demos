@@ -71,7 +71,7 @@ function App() {
 
   const onCheckBoxChange = React.useCallback(({ value }) => {
     setCheckBoxValue(value);
-    notify('Private option has been changed!');
+    notify('Checkbox option has been changed!');
   }, []);
 
   const onLineHeightChange = React.useCallback(
@@ -140,7 +140,6 @@ function App() {
         maxHeight={370}
         handles="right"
       >
-        <div>{textAlign}</div>
         <Toolbar multiline={multiline}>
           <Item location="before" locateInMenu="never">
             <Button
@@ -282,7 +281,7 @@ function App() {
           <Item location="before" locateInMenu="auto">
             <CheckBox
               value={checkBoxValue}
-              text="Private"
+              text="Checkbox text"
               onValueChanged={onCheckBoxChange}
             ></CheckBox>
           </Item>
@@ -312,8 +311,7 @@ function App() {
           ></Item>
 
           <Item
-            location="after"
-            locateInMenu="auto"
+            locateInMenu="always"
             showText="inMenu"
             widget="dxButton"
             options={aboutButtonOptions}

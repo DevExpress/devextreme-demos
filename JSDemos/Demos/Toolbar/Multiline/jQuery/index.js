@@ -289,9 +289,9 @@ const toolbarDataDefault = [
     widget: 'dxCheckBox',
     options: {
       value: false,
-      text: 'Private',
+      text: 'Checkbox text',
       onOptionChanged() {
-        DevExpress.ui.notify('Private option has been changed!');
+        DevExpress.ui.notify('Checkbox option has been changed!');
       },
     },
   },
