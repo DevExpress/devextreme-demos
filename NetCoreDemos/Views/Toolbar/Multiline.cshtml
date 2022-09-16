@@ -42,8 +42,8 @@
                     items
                         .Add()
                         .CssClass("menu-separator-container")
-                        .Template(@<text><div class="separator"></div></text>)
-                        .MenuItemTemplate(@<text><div class="menu-separator"></div></text>)
+                        .Template(new TemplateName("separator-template"))
+                        .MenuItemTemplate(new TemplateName("menu-separator-template"))
                         .Location(ToolbarItemLocation.Before)
                         .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
 
@@ -81,7 +81,7 @@
                     items
                         .Add()
                         .CssClass("menu-separator-container")
-                        .Template(@<text><div class="separator"></div></text>)
+                        .Template(new TemplateName("separator-template"))
                         .Location(ToolbarItemLocation.Before)
                         .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
 
@@ -106,8 +106,8 @@
                     items
                         .Add()
                         .CssClass("menu-separator-container")
-                        .Template(@<text><div class="separator"></div></text>)
-                        .MenuItemTemplate(@<text><div class="menu-separator"></div></text>)
+                        .Template(new TemplateName("separator-template"))
+                        .MenuItemTemplate(new TemplateName("menu-separator-template"))
                         .Location(ToolbarItemLocation.Before)
                         .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
 
@@ -132,9 +132,17 @@
 
                     items
                         .Add()
-                        .Template(@<text><div class="separator"></div></text>)
+                        .Template(new TemplateName("separator-template"))
                         .Location(ToolbarItemLocation.Before)
                         .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
+                    
+                    items
+                        .Add()
+                        .CssClass("dx-toolbar-hidden-button-group")
+                        .Template(new TemplateName("text-align-template"))
+                        .MenuItemTemplate(new TemplateName("text-align-menu-template"))
+                        .Location(ToolbarItemLocation.Before)
+                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
 
                     items
                         .Add()
@@ -152,8 +160,8 @@
                     items
                         .Add()
                         .CssClass("menu-separator-container")
-                        .Template(@<text><div class="separator"></div></text>)
-                        .MenuItemTemplate(@<text><div class="menu-separator"></div></text>)
+                        .Template(new TemplateName("separator-template"))
+                        .MenuItemTemplate(new TemplateName("menu-separator-template"))
                         .Location(ToolbarItemLocation.Before)
                         .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
 
@@ -171,8 +179,8 @@
                     items
                         .Add()
                         .CssClass("menu-separator-container")
-                        .Template(@<text><div class="separator"></div></text>)
-                        .MenuItemTemplate(@<text><div class="menu-separator"></div></text>)
+                        .Template(new TemplateName("separator-template"))
+                        .MenuItemTemplate(new TemplateName("menu-separator-template"))
                         .Location(ToolbarItemLocation.Before)
                         .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
 
@@ -244,13 +252,21 @@
         <div class="caption">Options</div>
 
         @(Html.DevExtreme().RadioGroup()
-            .ID("options")
+            .ID("toolbarModeRadioGroup")
             .Layout(Orientation.Horizontal)
             .Items(toolbarModes)
             .Value(toolbarModes[1])
             .OnValueChanged("toolbarModesValueChanged"))
     </div>
 </div>
+
+@using (Html.DevExtreme().NamedTemplate("separator-template")) {
+    <div class="separator"></div>
+}
+
+@using (Html.DevExtreme().NamedTemplate("menu-separator-template")) {
+    <div class="menu-separator"></div>
+}
 
 @using (Html.DevExtreme().NamedTemplate("text-align-template")) {
     @(Html.DevExtreme().ButtonGroup()
@@ -285,8 +301,8 @@
         var toolbar = $("#toolbar").dxToolbar("instance");
         toolbar.option("multiline", data.value === toolbarModes[0]);
 
-        var options = $("#options").RadioGroup("instance");
-        options.option("value", data.value);
+        var toolbarModeRadioGroupInstance = $("#toolbarModeRadioGroup").RadioGroup("instance");
+        toolbarModeRadioGroupInstance.option("value", data.value);
     }
 
     function changeSize(e) {

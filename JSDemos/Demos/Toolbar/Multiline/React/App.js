@@ -129,7 +129,7 @@ function App() {
     );
   }, [textAlign]);
 
-  const renderTextAlignMenuItem = React.useCallback(() => <div className="menu-separator"></div>, []);
+  const renderMenuSeparator = React.useCallback(() => <div className="menu-separator"></div>, []);
 
   return (
     <React.Fragment>
@@ -164,7 +164,7 @@ function App() {
             cssClass="menu-separator-container"
             location="before"
             locateInMenu="auto"
-            menuItemRender={renderTextAlignMenuItem}
+            menuItemRender={renderMenuSeparator}
           >
             <div className="separator"></div>
           </Item>
@@ -197,7 +197,7 @@ function App() {
             cssClass="menu-separator-container"
             location="before"
             locateInMenu="auto"
-            menuItemRender={renderTextAlignMenuItem}
+            menuItemRender={renderMenuSeparator}
           >
             <div className="separator"></div>
           </Item>
@@ -214,7 +214,7 @@ function App() {
             cssClass="menu-separator-container"
             location="before"
             locateInMenu="auto"
-            menuItemRender={renderTextAlignMenuItem}
+            menuItemRender={renderMenuSeparator}
           >
             <div className="separator"></div>
           </Item>
@@ -257,7 +257,7 @@ function App() {
             cssClass="menu-separator-container"
             location="before"
             locateInMenu="auto"
-            menuItemRender={renderTextAlignMenuItem}
+            menuItemRender={renderMenuSeparator}
           >
             <div className="separator"></div>
           </Item>
@@ -274,7 +274,7 @@ function App() {
             cssClass="menu-separator-container"
             location="before"
             locateInMenu="auto"
-            menuItemRender={renderTextAlignMenuItem}
+            menuItemRender={renderMenuSeparator}
           >
             <div className="separator"></div>
           </Item>
