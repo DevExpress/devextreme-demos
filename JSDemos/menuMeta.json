@@ -3937,7 +3937,8 @@
             "Title": "Multiline",
             "Name": "Multiline",
             "Widget": "Toolbar",
-            "Badge": "New"
+            "Badge": "New",
+            "DemoType": "Web"
           }
         ]
       },

@@ -39,7 +39,7 @@
                     
                     items
                         .Add()
-                        .CssClass("menu-separator-container")
+                        .CssClass("toolbar-separator-container")
                         .Template(new TemplateName("separator-template"))
                         .MenuItemTemplate(new TemplateName("menu-separator-template"))
                         .Location(ToolbarItemLocation.Before)
@@ -78,7 +78,7 @@
 
                     items
                         .Add()
-                        .CssClass("menu-separator-container")
+                        .CssClass("toolbar-separator-container")
                         .Template(new TemplateName("separator-template"))
                         .Location(ToolbarItemLocation.Before);
 
@@ -102,7 +102,7 @@
                     
                     items
                         .Add()
-                        .CssClass("menu-separator-container")
+                        .CssClass("toolbar-separator-container")
                         .Template(new TemplateName("separator-template"))
                         .MenuItemTemplate(new TemplateName("menu-separator-template"))
                         .Location(ToolbarItemLocation.Before)
@@ -154,7 +154,7 @@
                     
                     items
                         .Add()
-                        .CssClass("menu-separator-container")
+                        .CssClass("toolbar-separator-container")
                         .Template(new TemplateName("separator-template"))
                         .MenuItemTemplate(new TemplateName("menu-separator-template"))
                         .Location(ToolbarItemLocation.Before)
@@ -173,7 +173,7 @@
                     
                     items
                         .Add()
-                        .CssClass("menu-separator-container")
+                        .CssClass("toolbar-separator-container")
                         .Template(new TemplateName("separator-template"))
                         .MenuItemTemplate(new TemplateName("menu-separator-template"))
                         .Location(ToolbarItemLocation.Before)
@@ -255,11 +255,11 @@
 </div>
 
 @using (Html.DevExtreme().NamedTemplate("separator-template")) {
-    <div class="separator"></div>
+    <div class="toolbar-separator"></div>
 }
 
 @using (Html.DevExtreme().NamedTemplate("menu-separator-template")) {
-    <div class="menu-separator"></div>
+    <div class="toolbar-menu-separator"></div>
 }
 
 @using (Html.DevExtreme().NamedTemplate("text-align-template")) {

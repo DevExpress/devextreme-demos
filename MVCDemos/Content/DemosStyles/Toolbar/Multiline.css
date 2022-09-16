@@ -16,7 +16,7 @@
   margin-bottom: 5px;
 }
 
-.dx-toolbar-menu-section .menu-separator-container {
+.dx-toolbar-menu-section .toolbar-separator-container {
   height: 1px;
 }
 
@@ -42,13 +42,13 @@
   margin-bottom: 10px;
 }
 
-.separator {
+.toolbar-separator {
   height: 36px;
   margin: 0 5px;
   border-left: 1px solid #ddd;
 }
 
-.menu-separator {
+.toolbar-menu-separator {
   height: 1px;
   border-bottom: 1px solid #ddd;
 }

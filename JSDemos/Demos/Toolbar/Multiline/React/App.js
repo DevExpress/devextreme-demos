@@ -129,7 +129,7 @@ function App() {
     );
   }, [textAlign]);
 
-  const renderMenuSeparator = React.useCallback(() => <div className="menu-separator"></div>, []);
+  const renderMenuSeparator = React.useCallback(() => <div className="toolbar-menu-separator"></div>, []);
 
   return (
     <React.Fragment>
@@ -160,12 +160,12 @@ function App() {
           </Item>
 
           <Item
-            cssClass="menu-separator-container"
+            cssClass="toolbar-separator-container"
             location="before"
             locateInMenu="auto"
             menuItemRender={renderMenuSeparator}
           >
-            <div className="separator"></div>
+            <div className="toolbar-separator"></div>
           </Item>
 
           <Item location="before" locateInMenu="auto">
@@ -193,12 +193,12 @@ function App() {
           </Item>
 
           <Item
-            cssClass="menu-separator-container"
+            cssClass="toolbar-separator-container"
             location="before"
             locateInMenu="auto"
             menuItemRender={renderMenuSeparator}
           >
-            <div className="separator"></div>
+            <div className="toolbar-separator"></div>
           </Item>
 
           <Item location="before" locateInMenu="auto">
@@ -210,12 +210,12 @@ function App() {
           </Item>
 
           <Item
-            cssClass="menu-separator-container"
+            cssClass="toolbar-separator-container"
             location="before"
             locateInMenu="auto"
             menuItemRender={renderMenuSeparator}
           >
-            <div className="separator"></div>
+            <div className="toolbar-separator"></div>
           </Item>
 
           <Item location="before">
@@ -231,7 +231,7 @@ function App() {
           </Item>
 
           <Item location="before">
-            <div className="separator"></div>
+            <div className="toolbar-separator"></div>
           </Item>
 
           <Item
@@ -253,12 +253,12 @@ function App() {
           </Item>
 
           <Item
-            cssClass="menu-separator-container"
+            cssClass="toolbar-separator-container"
             location="before"
             locateInMenu="auto"
             menuItemRender={renderMenuSeparator}
           >
-            <div className="separator"></div>
+            <div className="toolbar-separator"></div>
           </Item>
 
           <Item location="before" locateInMenu="auto">
@@ -270,12 +270,12 @@ function App() {
           </Item>
 
           <Item
-            cssClass="menu-separator-container"
+            cssClass="toolbar-separator-container"
             location="before"
             locateInMenu="auto"
             menuItemRender={renderMenuSeparator}
           >
-            <div className="separator"></div>
+            <div className="toolbar-separator"></div>
           </Item>
 
           <Item location="before" locateInMenu="auto">

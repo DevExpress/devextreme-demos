@@ -20,14 +20,18 @@ const toolbarDataDefault = [
     },
   },
   {
-    cssClass: 'menu-separator-container',
+    cssClass: 'toolbar-separator-container',
     locateInMenu: 'auto',
     location: 'before',
     template(itemData, itemIndex, element) {
-      $(element).addClass('separator');
+      $('<div>')
+        .addClass('toolbar-separator')
+        .appendTo(element);
     },
     menuItemTemplate(itemData, itemIndex, element) {
-      $(element).addClass('menu-separator');
+      $('<div>')
+        .addClass('toolbar-menu-separator')
+        .appendTo(element);
     },
   },
   {
@@ -64,14 +68,18 @@ const toolbarDataDefault = [
     },
   },
   {
-    cssClass: 'menu-separator-container',
+    cssClass: 'toolbar-separator-container',
     locateInMenu: 'auto',
     location: 'before',
     template(itemData, itemIndex, element) {
-      $(element).addClass('separator');
+      $('<div>')
+        .addClass('toolbar-separator')
+        .appendTo(element);
     },
     menuItemTemplate(itemData, itemIndex, element) {
-      $(element).addClass('menu-separator');
+      $('<div>')
+        .addClass('toolbar-menu-separator')
+        .appendTo(element);
     },
   },
   {
@@ -93,14 +101,18 @@ const toolbarDataDefault = [
     },
   },
   {
-    cssClass: 'menu-separator-container',
+    cssClass: 'toolbar-separator-container',
     locateInMenu: 'auto',
     location: 'before',
     template(itemData, itemIndex, element) {
-      $(element).addClass('separator');
+      $('<div>')
+        .addClass('toolbar-separator')
+        .appendTo(element);
     },
     menuItemTemplate(itemData, itemIndex, element) {
-      $(element).addClass('menu-separator');
+      $('<div>')
+        .addClass('toolbar-menu-separator')
+        .appendTo(element);
     },
   },
   {
@@ -141,7 +153,7 @@ const toolbarDataDefault = [
   {
     location: 'before',
     template(itemData, itemIndex, element) {
-      $(element).addClass('separator');
+      $(element).addClass('toolbar-separator');
     },
   },
   {
@@ -247,14 +259,18 @@ const toolbarDataDefault = [
     },
   },
   {
-    cssClass: 'menu-separator-container',
+    cssClass: 'toolbar-separator-container',
     locateInMenu: 'auto',
     location: 'before',
     template(itemData, itemIndex, element) {
-      $(element).addClass('separator');
+      $('<div>')
+        .addClass('toolbar-separator')
+        .appendTo(element);
     },
     menuItemTemplate(itemData, itemIndex, element) {
-      $(element).addClass('menu-separator');
+      $('<div>')
+        .addClass('toolbar-menu-separator')
+        .appendTo(element);
     },
   },
   {
@@ -268,14 +284,18 @@ const toolbarDataDefault = [
     },
   },
   {
-    cssClass: 'menu-separator-container',
+    cssClass: 'toolbar-separator-container',
     locateInMenu: 'auto',
     location: 'before',
     template(itemData, itemIndex, element) {
-      $(element).addClass('separator');
+      $('<div>')
+        .addClass('toolbar-separator')
+        .appendTo(element);
     },
     menuItemTemplate(itemData, itemIndex, element) {
-      $(element).addClass('menu-separator');
+      $('<div>')
+        .addClass('toolbar-menu-separator')
+        .appendTo(element);
     },
   },
   {
