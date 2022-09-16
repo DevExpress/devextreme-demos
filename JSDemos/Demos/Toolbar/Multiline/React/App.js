@@ -141,7 +141,7 @@ function App() {
         handles="right"
       >
         <Toolbar multiline={multiline}>
-          <Item location="before" locateInMenu="never">
+          <Item location="before">
             <Button
               icon="undo"
               onClick={() => {
@@ -150,7 +150,7 @@ function App() {
             ></Button>
           </Item>
 
-          <Item location="before" locateInMenu="never">
+          <Item location="before">
             <Button
               icon="redo"
               onClick={() => {
@@ -218,7 +218,7 @@ function App() {
             <div className="separator"></div>
           </Item>
 
-          <Item location="before" locateInMenu="never">
+          <Item location="before">
             <ButtonGroup
               displayExpr="text"
               keyExpr="style"
@@ -230,7 +230,7 @@ function App() {
             ></ButtonGroup>
           </Item>
 
-          <Item location="before" locateInMenu="never">
+          <Item location="before">
             <div className="separator"></div>
           </Item>
 
@@ -242,7 +242,7 @@ function App() {
             menuItemRender={renderTextAlignMenu}
           ></Item>
 
-          <Item location="before" locateInMenu="never" displayExpr="text">
+          <Item location="before" displayExpr="text">
             <ButtonGroup
               keyExpr="alignment"
               stylingMode="outlined"
@@ -288,7 +288,6 @@ function App() {
 
           <Item
             location="after"
-            locateInMenu="never"
             showText="inMenu"
             widget="dxButton"
             options={attachButtonOptions}

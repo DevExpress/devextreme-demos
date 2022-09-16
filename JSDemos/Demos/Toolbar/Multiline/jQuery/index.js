@@ -1,6 +1,5 @@
 const toolbarDataDefault = [
   {
-    locateInMenu: 'never',
     location: 'before',
     widget: 'dxButton',
     options: {
@@ -11,7 +10,6 @@ const toolbarDataDefault = [
     },
   },
   {
-    locateInMenu: 'never',
     location: 'before',
     widget: 'dxButton',
     options: {
@@ -106,7 +104,6 @@ const toolbarDataDefault = [
     },
   },
   {
-    locateInMenu: 'never',
     location: 'before',
     widget: 'dxButtonGroup',
     options: {
@@ -142,7 +139,6 @@ const toolbarDataDefault = [
     },
   },
   {
-    locateInMenu: 'never',
     location: 'before',
     template(itemData, itemIndex, element) {
       $(element).addClass('separator');
@@ -227,7 +223,6 @@ const toolbarDataDefault = [
     },
   },
   {
-    locateInMenu: 'never',
     location: 'before',
     widget: 'dxButtonGroup',
     displayExpr: 'text',
@@ -296,7 +291,6 @@ const toolbarDataDefault = [
     },
   },
   {
-    locateInMenu: 'never',
     location: 'after',
     widget: 'dxButton',
     showText: 'inMenu',

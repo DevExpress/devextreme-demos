@@ -10,13 +10,11 @@
       <DxToolbar :multiline="multiline">
         <DxItem
           location="before"
-          locate-in-menu="never"
           widget="dxButton"
           :options="undoButtonOptions"
         />
         <DxItem
           location="before"
-          locate-in-menu="never"
           widget="dxButton"
           :options="redoButtonOptions"
         />
@@ -62,13 +60,11 @@
         />
         <DxItem
           location="before"
-          locate-in-menu="never"
           widget="dxButtonGroup"
           :options="fontStyleOptions"
         />
         <DxItem
           location="before"
-          locate-in-menu="never"
           template="separatorTemplate"
         />
         <DxItem
@@ -80,7 +76,6 @@
         />
         <DxItem
           location="before"
-          locate-in-menu="never"
           widget="dxButtonGroup"
           display-expr="text"
           :options="listOptions"
@@ -113,7 +108,6 @@
         />
         <DxItem
           location="after"
-          locate-in-menu="never"
           widget="dxButton"
           show-text="inMenu"
           :options="attachButtonOptions"

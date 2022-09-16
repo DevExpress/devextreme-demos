@@ -26,8 +26,7 @@
                             .Icon("undo")
                             .OnClick("undoButtonClick")
                         )
-                        .Location(ToolbarItemLocation.Before)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
+                        .Location(ToolbarItemLocation.Before);
                     
                     items
                         .Add()
@@ -36,8 +35,7 @@
                             .Icon("redo")
                             .OnClick("redoButtonClick")
                         )
-                        .Location(ToolbarItemLocation.Before)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
+                        .Location(ToolbarItemLocation.Before);
                     
                     items
                         .Add()
@@ -82,8 +80,7 @@
                         .Add()
                         .CssClass("menu-separator-container")
                         .Template(new TemplateName("separator-template"))
-                        .Location(ToolbarItemLocation.Before)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
+                        .Location(ToolbarItemLocation.Before);
 
                     items
                         .Add()
@@ -133,8 +130,7 @@
                     items
                         .Add()
                         .Template(new TemplateName("separator-template"))
-                        .Location(ToolbarItemLocation.Before)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
+                        .Location(ToolbarItemLocation.Before);
                     
                     items
                         .Add()
@@ -154,8 +150,7 @@
                             .OnItemClick("buttonGroupItemClick")
                         )
                         .DisplayExpr("Text")
-                        .Location(ToolbarItemLocation.Before)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
+                        .Location(ToolbarItemLocation.Before);
                     
                     items
                         .Add()
@@ -205,8 +200,7 @@
                             .OnClick("attachButtonClick")
                         )
                         .ShowText(ToolbarItemShowTextMode.InMenu)
-                        .Location(ToolbarItemLocation.After)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Never);
+                        .Location(ToolbarItemLocation.After);
                         
                     items
                         .Add()
