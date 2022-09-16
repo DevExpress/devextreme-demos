@@ -246,7 +246,7 @@
         <div class="caption">Options</div>
 
         @(Html.DevExtreme().RadioGroup()
-            .ID("toolbarModeRadioGroup")
+            .ID("toolbar-modes")
             .Layout(Orientation.Horizontal)
             .Items(toolbarModes)
             .Value(toolbarModes[1])
@@ -295,8 +295,8 @@
         var toolbar = $("#toolbar").dxToolbar("instance");
         toolbar.option("multiline", data.value === toolbarModes[0]);
 
-        var toolbarModeRadioGroupInstance = $("#toolbarModeRadioGroup").RadioGroup("instance");
-        toolbarModeRadioGroupInstance.option("value", data.value);
+        var toolbar-modesInstance = $("#toolbar-modes").RadioGroup("instance");
+        toolbar-modesInstance.option("value", data.value);
     }
 
     function changeSize(e) {
