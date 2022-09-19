@@ -36,7 +36,6 @@
             location="before"
             locate-in-menu="auto"
             widget="dxDropDownButton"
-            :style="{ lineHeight }"
             :options="lineHeightOptions"
           />
           <DxItem
