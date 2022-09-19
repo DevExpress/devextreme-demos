@@ -80,12 +80,6 @@
 
                         items
                             .Add()
-                            .CssClass("toolbar-separator-container")
-                            .Template(new TemplateName("separator-template"))
-                            .Location(ToolbarItemLocation.Before);
-
-                        items
-                            .Add()
                             .Widget(w => w
                                 .SelectBox()
                                 .Placeholder("Font")

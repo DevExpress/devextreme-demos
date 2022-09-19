@@ -194,15 +194,6 @@ function App() {
               ></DropDownButton>
             </Item>
 
-            <Item
-              cssClass="toolbar-separator-container"
-              location="before"
-              locateInMenu="auto"
-              menuItemRender={renderMenuSeparator}
-            >
-              <div className="toolbar-separator"></div>
-            </Item>
-
             <Item location="before" locateInMenu="auto">
               <SelectBox
                 placeholder="Font"

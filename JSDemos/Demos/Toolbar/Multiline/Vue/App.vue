@@ -41,12 +41,6 @@
           <DxItem
             location="before"
             locate-in-menu="auto"
-            template="separatorTemplate"
-            menu-item-template="menuSeparatorTemplate"
-          />
-          <DxItem
-            location="before"
-            locate-in-menu="auto"
             widget="dxSelectBox"
             :options="fontSelectorOptions"
           />

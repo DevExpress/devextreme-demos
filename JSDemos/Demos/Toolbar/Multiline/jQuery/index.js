@@ -68,21 +68,6 @@ const toolbarDataDefault = [
     },
   },
   {
-    cssClass: 'toolbar-separator-container',
-    locateInMenu: 'auto',
-    location: 'before',
-    template(itemData, itemIndex, element) {
-      $('<div>')
-        .addClass('toolbar-separator')
-        .appendTo(element);
-    },
-    menuItemTemplate(itemData, itemIndex, element) {
-      $('<div>')
-        .addClass('toolbar-menu-separator')
-        .appendTo(element);
-    },
-  },
-  {
     locateInMenu: 'auto',
     location: 'before',
     widget: 'dxSelectBox',
