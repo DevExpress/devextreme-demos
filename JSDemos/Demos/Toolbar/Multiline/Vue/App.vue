@@ -1,167 +1,170 @@
 <template>
   <div>
-    <DxResizable
-      class="resizable-container"
-      :min-width="500"
-      :min-height="150"
-      :max-height="370"
-      handles="right"
-    >
-      <DxToolbar :multiline="multiline">
-        <DxItem
-          location="before"
-          widget="dxButton"
-          :options="undoButtonOptions"
-        />
-        <DxItem
-          location="before"
-          widget="dxButton"
-          :options="redoButtonOptions"
-        />
-        <DxItem
-          location="before"
-          locate-in-menu="auto"
-          template="separatorTemplate"
-          menu-item-template="menuSeparatorTemplate"
-        />
-        <DxItem
-          location="before"
-          locate-in-menu="auto"
-          widget="dxDropDownButton"
-          :options="fontSizeOptions"
-        />
-        <DxItem
-          location="before"
-          locate-in-menu="auto"
-          widget="dxDropDownButton"
-          :style="{ lineHeight }"
-          :options="lineHeightOptions"
-        />
-        <DxItem
-          location="before"
-          locate-in-menu="auto"
-          template="separatorTemplate"
-          menu-item-template="menuSeparatorTemplate"
-        />
-        <DxItem
-          location="before"
-          locate-in-menu="auto"
-          widget="dxSelectBox"
-          :options="fontSelectorOptions"
-        />
-        <DxItem
-          location="before"
-          locate-in-menu="auto"
-          template="separatorTemplate"
-          menu-item-template="menuSeparatorTemplate"
-        />
-        <DxItem
-          location="before"
-          widget="dxButtonGroup"
-          :options="fontStyleOptions"
-        />
-        <DxItem
-          location="before"
-          template="separatorTemplate"
-        />
-        <DxItem
-          css-class="dx-toolbar-hidden-button-group"
-          location="before"
-          locate-in-menu="auto"
-          template="textAlignTemplate"
-          menu-item-template="textAlignMenuTemplate"
-        />
-        <DxItem
-          location="before"
-          widget="dxButtonGroup"
-          display-expr="text"
-          :options="listOptions"
-        />
-        <DxItem
-          location="before"
-          locate-in-menu="auto"
-          template="separatorTemplate"
-          menu-item-template="menuSeparatorTemplate"
-        />
-        <DxItem
-          location="before"
-          locate-in-menu="auto"
-          widget="dxDateBox"
-          :options="dateBoxOptions"
-        />
-        <DxItem
-          location="before"
-          locate-in-menu="auto"
-          template="separatorTemplate"
-          menu-item-template="menuSeparatorTemplate"
-        />
-        <DxItem
-          location="before"
-          locate-in-menu="auto"
-          widget="dxCheckBox"
-          :options="checkBoxOptions"
-        />
-        <DxItem
-          location="after"
-          widget="dxButton"
-          show-text="inMenu"
-          :options="attachButtonOptions"
-        />
-        <DxItem
-          location="after"
-          locate-in-menu="auto"
-          widget="dxButton"
-          show-text="inMenu"
-          :options="addButtonOptions"
-        />
-        <DxItem
-          location="after"
-          locate-in-menu="auto"
-          widget="dxButton"
-          show-text="inMenu"
-          :options="removeButtonOptions"
-        />
-        <DxItem
-          locate-in-menu="always"
-          widget="dxButton"
-          show-text="inMenu"
-          :options="aboutButtonOptions"
-        />
-
-        <template #separatorTemplate>
-          <div class="toolbar-separator"/>
-        </template>
-
-        <template #menuSeparatorTemplate>
-          <div class="toolbar-menu-separator"/>
-        </template>
-
-        <template #fontSizeTemplate="{ data }">
-          <div :style="{ fontSize: data.size + 'px' }">{{ data.text }}</div>
-        </template>
-
-        <template #textAlignTemplate>
-          <DxButtonGroup
-            key-expr="alignment"
-            styling-mode="outlined"
-            :items="getTextAlignItems(false)"
-            :selected-item-keys="textAlign"
-            @item-click="onTextAlignItemClick"
+    <div class="widget-container">
+      <DxResizable
+        class="resizable-container"
+        :min-width="500"
+        :min-height="150"
+        :max-height="370"
+        handles="right"
+        area=".widget-container"
+      >
+        <DxToolbar :multiline="multiline">
+          <DxItem
+            location="before"
+            widget="dxButton"
+            :options="undoButtonOptions"
           />
-        </template>
-
-        <template #textAlignMenuTemplate>
-          <DxButtonGroup
-            :items="getTextAlignItems(true)"
+          <DxItem
+            location="before"
+            widget="dxButton"
+            :options="redoButtonOptions"
+          />
+          <DxItem
+            location="before"
+            locate-in-menu="auto"
+            template="separatorTemplate"
+            menu-item-template="menuSeparatorTemplate"
+          />
+          <DxItem
+            location="before"
+            locate-in-menu="auto"
+            widget="dxDropDownButton"
+            :options="fontSizeOptions"
+          />
+          <DxItem
+            location="before"
+            locate-in-menu="auto"
+            widget="dxDropDownButton"
+            :style="{ lineHeight }"
+            :options="lineHeightOptions"
+          />
+          <DxItem
+            location="before"
+            locate-in-menu="auto"
+            template="separatorTemplate"
+            menu-item-template="menuSeparatorTemplate"
+          />
+          <DxItem
+            location="before"
+            locate-in-menu="auto"
+            widget="dxSelectBox"
+            :options="fontSelectorOptions"
+          />
+          <DxItem
+            location="before"
+            locate-in-menu="auto"
+            template="separatorTemplate"
+            menu-item-template="menuSeparatorTemplate"
+          />
+          <DxItem
+            location="before"
+            widget="dxButtonGroup"
+            :options="fontStyleOptions"
+          />
+          <DxItem
+            location="before"
+            template="separatorTemplate"
+          />
+          <DxItem
+            css-class="dx-toolbar-hidden-button-group"
+            location="before"
+            locate-in-menu="auto"
+            template="textAlignTemplate"
+            menu-item-template="textAlignMenuTemplate"
+          />
+          <DxItem
+            location="before"
+            widget="dxButtonGroup"
             display-expr="text"
-            :selected-item-keys="textAlign"
-            key-expr="alignment"
-            styling-mode="outlined"
-            @item-click="onTextAlignItemClick"
+            :options="listOptions"
           />
-        </template>
-      </DxToolbar>
-    </DxResizable>
+          <DxItem
+            location="before"
+            locate-in-menu="auto"
+            template="separatorTemplate"
+            menu-item-template="menuSeparatorTemplate"
+          />
+          <DxItem
+            location="before"
+            locate-in-menu="auto"
+            widget="dxDateBox"
+            :options="dateBoxOptions"
+          />
+          <DxItem
+            location="before"
+            locate-in-menu="auto"
+            template="separatorTemplate"
+            menu-item-template="menuSeparatorTemplate"
+          />
+          <DxItem
+            location="before"
+            locate-in-menu="auto"
+            widget="dxCheckBox"
+            :options="checkBoxOptions"
+          />
+          <DxItem
+            location="after"
+            widget="dxButton"
+            show-text="inMenu"
+            :options="attachButtonOptions"
+          />
+          <DxItem
+            location="after"
+            locate-in-menu="auto"
+            widget="dxButton"
+            show-text="inMenu"
+            :options="addButtonOptions"
+          />
+          <DxItem
+            location="after"
+            locate-in-menu="auto"
+            widget="dxButton"
+            show-text="inMenu"
+            :options="removeButtonOptions"
+          />
+          <DxItem
+            locate-in-menu="always"
+            widget="dxButton"
+            show-text="inMenu"
+            :options="aboutButtonOptions"
+          />
+
+          <template #separatorTemplate>
+            <div class="toolbar-separator"/>
+          </template>
+
+          <template #menuSeparatorTemplate>
+            <div class="toolbar-menu-separator"/>
+          </template>
+
+          <template #fontSizeTemplate="{ data }">
+            <div :style="{ fontSize: data.size + 'px' }">{{ data.text }}</div>
+          </template>
+
+          <template #textAlignTemplate>
+            <DxButtonGroup
+              key-expr="alignment"
+              styling-mode="outlined"
+              :items="getTextAlignItems(false)"
+              :selected-item-keys="textAlign"
+              @item-click="onTextAlignItemClick"
+            />
+          </template>
+
+          <template #textAlignMenuTemplate>
+            <DxButtonGroup
+              :items="getTextAlignItems(true)"
+              display-expr="text"
+              :selected-item-keys="textAlign"
+              key-expr="alignment"
+              styling-mode="outlined"
+              @item-click="onTextAlignItemClick"
+            />
+          </template>
+        </DxToolbar>
+      </DxResizable>
+    </div>
 
     <div class="options-container">
       <div class="caption">Options</div>
@@ -407,8 +410,11 @@ export default {
   margin-bottom: 5px;
 }
 
-.resizable-container {
+.widget-container {
   width: calc(100% - 6px);
+}
+
+.resizable-container {
   padding: 10px;
   height: 300px;
   border: 1px dashed #dbdbdb;

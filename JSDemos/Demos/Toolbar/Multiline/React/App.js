@@ -133,190 +133,193 @@ function App() {
 
   return (
     <React.Fragment>
-      <Resizable
-        className="resizable-container"
-        minWidth={500}
-        minHeight={150}
-        maxHeight={370}
-        handles="right"
-      >
-        <Toolbar multiline={multiline}>
-          <Item location="before">
-            <Button
-              icon="undo"
-              onClick={() => {
-                notify('Undo button has been clicked!');
-              }}
-            ></Button>
-          </Item>
+      <div className='widget-container'>
+        <Resizable
+          className="resizable-container"
+          minWidth={500}
+          minHeight={150}
+          maxHeight={370}
+          handles="right"
+          area=".widget-container"
+        >
+          <Toolbar multiline={multiline}>
+            <Item location="before">
+              <Button
+                icon="undo"
+                onClick={() => {
+                  notify('Undo button has been clicked!');
+                }}
+              ></Button>
+            </Item>
 
-          <Item location="before">
-            <Button
-              icon="redo"
-              onClick={() => {
-                notify('Redo button has been clicked!');
-              }}
-            ></Button>
-          </Item>
+            <Item location="before">
+              <Button
+                icon="redo"
+                onClick={() => {
+                  notify('Redo button has been clicked!');
+                }}
+              ></Button>
+            </Item>
 
-          <Item
-            cssClass="toolbar-separator-container"
-            location="before"
-            locateInMenu="auto"
-            menuItemRender={renderMenuSeparator}
-          >
-            <div className="toolbar-separator"></div>
-          </Item>
+            <Item
+              cssClass="toolbar-separator-container"
+              location="before"
+              locateInMenu="auto"
+              menuItemRender={renderMenuSeparator}
+            >
+              <div className="toolbar-separator"></div>
+            </Item>
 
-          <Item location="before" locateInMenu="auto">
-            <DropDownButton
-              displayExpr="text"
-              keyExpr="size"
-              useSelectMode={true}
-              items={fontSizes}
-              selectedItemKey={fontSize}
-              itemRender={renderFontSize}
-              onSelectionChanged={onFontSizeChange}
-            ></DropDownButton>
-          </Item>
+            <Item location="before" locateInMenu="auto">
+              <DropDownButton
+                displayExpr="text"
+                keyExpr="size"
+                useSelectMode={true}
+                items={fontSizes}
+                selectedItemKey={fontSize}
+                itemRender={renderFontSize}
+                onSelectionChanged={onFontSizeChange}
+              ></DropDownButton>
+            </Item>
 
-          <Item location="before" locateInMenu="auto">
-            <DropDownButton
-              icon="indent"
-              displayExpr="text"
-              keyExpr="lineHeight"
-              useSelectMode={true}
-              items={lineHeights}
-              selectedItemKey={lineHeight}
-              onSelectionChanged={onLineHeightChange}
-            ></DropDownButton>
-          </Item>
+            <Item location="before" locateInMenu="auto">
+              <DropDownButton
+                icon="indent"
+                displayExpr="text"
+                keyExpr="lineHeight"
+                useSelectMode={true}
+                items={lineHeights}
+                selectedItemKey={lineHeight}
+                onSelectionChanged={onLineHeightChange}
+              ></DropDownButton>
+            </Item>
 
-          <Item
-            cssClass="toolbar-separator-container"
-            location="before"
-            locateInMenu="auto"
-            menuItemRender={renderMenuSeparator}
-          >
-            <div className="toolbar-separator"></div>
-          </Item>
+            <Item
+              cssClass="toolbar-separator-container"
+              location="before"
+              locateInMenu="auto"
+              menuItemRender={renderMenuSeparator}
+            >
+              <div className="toolbar-separator"></div>
+            </Item>
 
-          <Item location="before" locateInMenu="auto">
-            <SelectBox
-              placeholder="Font"
-              displayExpr="text"
-              dataSource={fonts}
-            ></SelectBox>
-          </Item>
+            <Item location="before" locateInMenu="auto">
+              <SelectBox
+                placeholder="Font"
+                displayExpr="text"
+                dataSource={fonts}
+              ></SelectBox>
+            </Item>
 
-          <Item
-            cssClass="toolbar-separator-container"
-            location="before"
-            locateInMenu="auto"
-            menuItemRender={renderMenuSeparator}
-          >
-            <div className="toolbar-separator"></div>
-          </Item>
+            <Item
+              cssClass="toolbar-separator-container"
+              location="before"
+              locateInMenu="auto"
+              menuItemRender={renderMenuSeparator}
+            >
+              <div className="toolbar-separator"></div>
+            </Item>
 
-          <Item location="before">
-            <ButtonGroup
-              displayExpr="text"
-              keyExpr="style"
-              stylingMode="outlined"
-              selectionMode="multiple"
-              items={fontStyles}
-              onItemClick={(e) => notify(`The "${e.itemData.hint}" button was clicked`)
-              }
-            ></ButtonGroup>
-          </Item>
+            <Item location="before">
+              <ButtonGroup
+                displayExpr="text"
+                keyExpr="style"
+                stylingMode="outlined"
+                selectionMode="multiple"
+                items={fontStyles}
+                onItemClick={(e) => notify(`The "${e.itemData.hint}" button was clicked`)
+                }
+              ></ButtonGroup>
+            </Item>
 
-          <Item location="before">
-            <div className="toolbar-separator"></div>
-          </Item>
+            <Item location="before">
+              <div className="toolbar-separator"></div>
+            </Item>
 
-          <Item
-            cssClass="dx-toolbar-hidden-button-group"
-            location="before"
-            locateInMenu="auto"
-            render={renderTextAlign}
-            menuItemRender={renderTextAlignMenu}
-          ></Item>
+            <Item
+              cssClass="dx-toolbar-hidden-button-group"
+              location="before"
+              locateInMenu="auto"
+              render={renderTextAlign}
+              menuItemRender={renderTextAlignMenu}
+            ></Item>
 
-          <Item location="before" displayExpr="text">
-            <ButtonGroup
-              keyExpr="alignment"
-              stylingMode="outlined"
-              items={listTypes}
-              onItemClick={(e) => notify(`The "${e.itemData.hint}" button was clicked`)
-              }
-            ></ButtonGroup>
-          </Item>
+            <Item location="before" displayExpr="text">
+              <ButtonGroup
+                keyExpr="alignment"
+                stylingMode="outlined"
+                items={listTypes}
+                onItemClick={(e) => notify(`The "${e.itemData.hint}" button was clicked`)
+                }
+              ></ButtonGroup>
+            </Item>
 
-          <Item
-            cssClass="toolbar-separator-container"
-            location="before"
-            locateInMenu="auto"
-            menuItemRender={renderMenuSeparator}
-          >
-            <div className="toolbar-separator"></div>
-          </Item>
+            <Item
+              cssClass="toolbar-separator-container"
+              location="before"
+              locateInMenu="auto"
+              menuItemRender={renderMenuSeparator}
+            >
+              <div className="toolbar-separator"></div>
+            </Item>
 
-          <Item location="before" locateInMenu="auto">
-            <DateBox
-              width={200}
-              type="date"
-              value={new Date(2022, 9, 7)}
-            ></DateBox>
-          </Item>
+            <Item location="before" locateInMenu="auto">
+              <DateBox
+                width={200}
+                type="date"
+                value={new Date(2022, 9, 7)}
+              ></DateBox>
+            </Item>
 
-          <Item
-            cssClass="toolbar-separator-container"
-            location="before"
-            locateInMenu="auto"
-            menuItemRender={renderMenuSeparator}
-          >
-            <div className="toolbar-separator"></div>
-          </Item>
+            <Item
+              cssClass="toolbar-separator-container"
+              location="before"
+              locateInMenu="auto"
+              menuItemRender={renderMenuSeparator}
+            >
+              <div className="toolbar-separator"></div>
+            </Item>
 
-          <Item location="before" locateInMenu="auto">
-            <CheckBox
-              value={checkBoxValue}
-              text="Checkbox text"
-              onValueChanged={onCheckBoxChange}
-            ></CheckBox>
-          </Item>
+            <Item location="before" locateInMenu="auto">
+              <CheckBox
+                value={checkBoxValue}
+                text="Checkbox text"
+                onValueChanged={onCheckBoxChange}
+              ></CheckBox>
+            </Item>
 
-          <Item
-            location="after"
-            showText="inMenu"
-            widget="dxButton"
-            options={attachButtonOptions}
-          ></Item>
+            <Item
+              location="after"
+              showText="inMenu"
+              widget="dxButton"
+              options={attachButtonOptions}
+            ></Item>
 
-          <Item
-            location="after"
-            locateInMenu="auto"
-            showText="inMenu"
-            widget="dxButton"
-            options={addButtonOptions}
-          ></Item>
+            <Item
+              location="after"
+              locateInMenu="auto"
+              showText="inMenu"
+              widget="dxButton"
+              options={addButtonOptions}
+            ></Item>
 
-          <Item
-            location="after"
-            locateInMenu="auto"
-            showText="inMenu"
-            widget="dxButton"
-            options={removeButtonOptions}
-          ></Item>
+            <Item
+              location="after"
+              locateInMenu="auto"
+              showText="inMenu"
+              widget="dxButton"
+              options={removeButtonOptions}
+            ></Item>
 
-          <Item
-            locateInMenu="always"
-            showText="inMenu"
-            widget="dxButton"
-            options={aboutButtonOptions}
-          ></Item>
-        </Toolbar>
-      </Resizable>
+            <Item
+              locateInMenu="always"
+              showText="inMenu"
+              widget="dxButton"
+              options={aboutButtonOptions}
+            ></Item>
+          </Toolbar>
+        </Resizable>
+      </div>
 
       <div className="options-container">
         <div className="caption">Options</div>

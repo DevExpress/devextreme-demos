@@ -368,6 +368,7 @@ $(() => {
     minHeight: 150,
     maxHeight: 370,
     handles: 'right',
+    area: '.widget-container',
   });
 
   const toolbar = $('#toolbar').dxToolbar({

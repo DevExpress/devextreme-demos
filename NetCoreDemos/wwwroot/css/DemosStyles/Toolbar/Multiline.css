@@ -20,8 +20,11 @@
   height: 1px;
 }
 
-.resizable-container {
+.widget-container {
   width: calc(100% - 6px);
+}
+
+.resizable-container {
   padding: 10px;
   height: 300px;
   border: 1px dashed #dbdbdb;

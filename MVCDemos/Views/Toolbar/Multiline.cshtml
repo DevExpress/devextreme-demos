@@ -9,238 +9,241 @@
 }
 
 <div>
-    @(Html.DevExtreme().Sortable()
-        .MinWidth(500)
-        .MinHeight(150)
-        .MaxHeight(370)
-        .Handles("right")
-        .Content(
-            Html.DevExtreme().Toolbar()
-                .ID("toolbar")
-                .Multiline(false)
-                .Items(items => {
-                    items
-                        .Add()
-                        .Widget(w => w
-                            .Button()
-                            .Icon("undo")
-                            .OnClick("undoButtonClick")
-                        )
-                        .Location(ToolbarItemLocation.Before);
-                    
-                    items
-                        .Add()
-                        .Widget(w => w
-                            .Button()
-                            .Icon("redo")
-                            .OnClick("redoButtonClick")
-                        )
-                        .Location(ToolbarItemLocation.Before);
-                    
-                    items
-                        .Add()
-                        .CssClass("toolbar-separator-container")
-                        .Template(new TemplateName("separator-template"))
-                        .MenuItemTemplate(new TemplateName("menu-separator-template"))
-                        .Location(ToolbarItemLocation.Before)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-
-                    items
-                        .Add()
-                        .Widget(w => w
-                            .DropDownButton()
-                            .DisplayExpr("Text")
-                            .KeyExpr("Size")
-                            .SelectedItemKey("14")
-                            .UseSelectMode(true)
-                            .DataSource(Model.FontSizes)
-                            .OnSelectionChanged("changeSize")
-                            .ItemTemplate(@<text><div style="font-size: <%- Text %>;"><%- Text %></div></text>)
-                        )
-                        .Location(ToolbarItemLocation.Before)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-
-                    items
-                        .Add()
-                        .Widget(w => w
-                            .DropDownButton()
-                            .DisplayExpr("Text")
-                            .KeyExpr("LineHeight")
-                            .SelectedItemKey("1.35")
-                            .StylingMode(ButtonStylingMode.Text)
-                            .UseSelectMode(true)
-                            .DataSource(Model.LineHeights)
-                            .Icon("indent")
-                            .OnSelectionChanged("changeLineHeight")
-                        )
-                        .Location(ToolbarItemLocation.Before)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-
-                    items
-                        .Add()
-                        .CssClass("toolbar-separator-container")
-                        .Template(new TemplateName("separator-template"))
-                        .Location(ToolbarItemLocation.Before);
-
-                    items
-                        .Add()
-                        .Widget(w => w
-                            .SelectBox()
-                            .Placeholder("Font")
-                            .DisplayExpr("Text")
-                            .DataSource(new[] {
-                                new { text = "Arial" },
-                                new { text = "Courier New" },
-                                new { text = "Georgia" },
-                                new { text = "Impact" },
-                                new { text = "Lucida Console" },
-                                new { text = "Tahoma" },
-                                new { text = "Times New Roman" },
-                            })
-                        )
-                        .Location(ToolbarItemLocation.Before);
-                    
-                    items
-                        .Add()
-                        .CssClass("toolbar-separator-container")
-                        .Template(new TemplateName("separator-template"))
-                        .MenuItemTemplate(new TemplateName("menu-separator-template"))
-                        .Location(ToolbarItemLocation.Before)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-
-                    items
-                        .Add()
-                        .Widget(w => w
-                            .ButtonGroup()
-                            .DisplayExpr("Text")
-                            .KeyExpr("Style")
-                            .StylingMode(EditorStylingMode.Outlined)
-                            .SelectionMode(ListSelectionMode.Multiple)
-                            .Items(items => {
-                                items.Add().Icon("bold").Hint("Bold").Option("style", "bold");
-                                items.Add().Icon("italic").Hint("Italic").Option("style", "italic");
-                                items.Add().Icon("underline").Hint("Underlined").Option("style", "underline");
-                                items.Add().Icon("strike").Hint("Strikethrough").Option("style", "strike");
-                            })
-                            .OnItemClick("buttonGroupItemClick")
-                        )
-                        .Location(ToolbarItemLocation.Before)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-
-                    items
-                        .Add()
-                        .Template(new TemplateName("separator-template"))
-                        .Location(ToolbarItemLocation.Before);
-                    
-                    items
-                        .Add()
-                        .CssClass("dx-toolbar-hidden-button-group")
-                        .Template(new TemplateName("text-align-template"))
-                        .MenuItemTemplate(new TemplateName("text-align-menu-template"))
-                        .Location(ToolbarItemLocation.Before)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-
-                    items
-                        .Add()
-                        .Widget(w => w
-                            .ButtonGroup()
-                            .Items(listTypes)
-                            .KeyExpr("alignment")
-                            .StylingMode(EditorStylingMode.Outlined)                            
-                            .OnItemClick("buttonGroupItemClick")
-                        )
-                        .DisplayExpr("Text")
-                        .Location(ToolbarItemLocation.Before);
-                    
-                    items
-                        .Add()
-                        .CssClass("toolbar-separator-container")
-                        .Template(new TemplateName("separator-template"))
-                        .MenuItemTemplate(new TemplateName("menu-separator-template"))
-                        .Location(ToolbarItemLocation.Before)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-
-                    items
-                        .Add()
-                        .Widget(w => w
-                            .DateBox()
-                            .Type(DateBoxType.Date)
-                            .Width(200)
-                            .Value(new DateTime(2022, 9, 7))
-                        )
-                        .Location(ToolbarItemLocation.Before)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-                    
-                    items
-                        .Add()
-                        .CssClass("toolbar-separator-container")
-                        .Template(new TemplateName("separator-template"))
-                        .MenuItemTemplate(new TemplateName("menu-separator-template"))
-                        .Location(ToolbarItemLocation.Before)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-
-                    items
-                        .Add()
-                        .Widget(w => w
-                            .CheckBox()
-                            .Value(true)
-                            .Text("Checkbox text")
-                            .OnOptionChanged("onOptionChanged")
-                        )
-                        .ShowText(ToolbarItemShowTextMode.InMenu)
-                        .Location(ToolbarItemLocation.Before)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+    <div class="widget-container">
+        @(Html.DevExtreme().Sortable()
+            .MinWidth(500)
+            .MinHeight(150)
+            .MaxHeight(370)
+            .Handles("right")
+            .Area(".widget-container")
+            .Content(
+                Html.DevExtreme().Toolbar()
+                    .ID("toolbar")
+                    .Multiline(false)
+                    .Items(items => {
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
+                                .Icon("undo")
+                                .OnClick("undoButtonClick")
+                            )
+                            .Location(ToolbarItemLocation.Before);
                         
-                    items
-                        .Add()
-                        .Widget(w => w
-                            .Button()
-                            .Icon("attach")
-                            .Text("Attach")
-                            .OnClick("attachButtonClick")
-                        )
-                        .ShowText(ToolbarItemShowTextMode.InMenu)
-                        .Location(ToolbarItemLocation.After);
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
+                                .Icon("redo")
+                                .OnClick("redoButtonClick")
+                            )
+                            .Location(ToolbarItemLocation.Before);
                         
-                    items
-                        .Add()
-                        .Widget(w => w
-                            .Button()
-                            .Icon("add")
-                            .Text("Add")
-                            .OnClick("addButtonClick")
-                        )
-                        .ShowText(ToolbarItemShowTextMode.InMenu)
-                        .Location(ToolbarItemLocation.After)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+                        items
+                            .Add()
+                            .CssClass("toolbar-separator-container")
+                            .Template(new TemplateName("separator-template"))
+                            .MenuItemTemplate(new TemplateName("menu-separator-template"))
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .DropDownButton()
+                                .DisplayExpr("Text")
+                                .KeyExpr("Size")
+                                .SelectedItemKey("14")
+                                .UseSelectMode(true)
+                                .DataSource(Model.FontSizes)
+                                .OnSelectionChanged("changeSize")
+                                .ItemTemplate(@<text><div style="font-size: <%- Text %>;"><%- Text %></div></text>)
+                            )
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .DropDownButton()
+                                .DisplayExpr("Text")
+                                .KeyExpr("LineHeight")
+                                .SelectedItemKey("1.35")
+                                .StylingMode(ButtonStylingMode.Text)
+                                .UseSelectMode(true)
+                                .DataSource(Model.LineHeights)
+                                .Icon("indent")
+                                .OnSelectionChanged("changeLineHeight")
+                            )
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .CssClass("toolbar-separator-container")
+                            .Template(new TemplateName("separator-template"))
+                            .Location(ToolbarItemLocation.Before);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .SelectBox()
+                                .Placeholder("Font")
+                                .DisplayExpr("Text")
+                                .DataSource(new[] {
+                                    new { text = "Arial" },
+                                    new { text = "Courier New" },
+                                    new { text = "Georgia" },
+                                    new { text = "Impact" },
+                                    new { text = "Lucida Console" },
+                                    new { text = "Tahoma" },
+                                    new { text = "Times New Roman" },
+                                })
+                            )
+                            .Location(ToolbarItemLocation.Before);
                         
-                    items
-                        .Add()
-                        .Widget(w => w
-                            .Button()
-                            .Icon("trash")
-                            .Text("Remove")
-                            .OnClick("removeButtonClick")
-                        )
-                        .ShowText(ToolbarItemShowTextMode.InMenu)
-                        .Location(ToolbarItemLocation.After)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+                        items
+                            .Add()
+                            .CssClass("toolbar-separator-container")
+                            .Template(new TemplateName("separator-template"))
+                            .MenuItemTemplate(new TemplateName("menu-separator-template"))
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .ButtonGroup()
+                                .DisplayExpr("Text")
+                                .KeyExpr("Style")
+                                .StylingMode(EditorStylingMode.Outlined)
+                                .SelectionMode(ListSelectionMode.Multiple)
+                                .Items(items => {
+                                    items.Add().Icon("bold").Hint("Bold").Option("style", "bold");
+                                    items.Add().Icon("italic").Hint("Italic").Option("style", "italic");
+                                    items.Add().Icon("underline").Hint("Underlined").Option("style", "underline");
+                                    items.Add().Icon("strike").Hint("Strikethrough").Option("style", "strike");
+                                })
+                                .OnItemClick("buttonGroupItemClick")
+                            )
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Template(new TemplateName("separator-template"))
+                            .Location(ToolbarItemLocation.Before);
                         
-                    items
-                        .Add()
-                        .Widget(w => w
-                            .Button()
-                            .Icon("help")
-                            .Text("About")
-                            .OnClick("aboutButtonClick")
-                        )
-                        .ShowText(ToolbarItemShowTextMode.InMenu)
-                        .Location(ToolbarItemLocation.After)
-                        .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-                }
+                        items
+                            .Add()
+                            .CssClass("dx-toolbar-hidden-button-group")
+                            .Template(new TemplateName("text-align-template"))
+                            .MenuItemTemplate(new TemplateName("text-align-menu-template"))
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .ButtonGroup()
+                                .Items(listTypes)
+                                .KeyExpr("alignment")
+                                .StylingMode(EditorStylingMode.Outlined)                            
+                                .OnItemClick("buttonGroupItemClick")
+                            )
+                            .DisplayExpr("Text")
+                            .Location(ToolbarItemLocation.Before);
+                        
+                        items
+                            .Add()
+                            .CssClass("toolbar-separator-container")
+                            .Template(new TemplateName("separator-template"))
+                            .MenuItemTemplate(new TemplateName("menu-separator-template"))
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .DateBox()
+                                .Type(DateBoxType.Date)
+                                .Width(200)
+                                .Value(new DateTime(2022, 9, 7))
+                            )
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+                        
+                        items
+                            .Add()
+                            .CssClass("toolbar-separator-container")
+                            .Template(new TemplateName("separator-template"))
+                            .MenuItemTemplate(new TemplateName("menu-separator-template"))
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .CheckBox()
+                                .Value(true)
+                                .Text("Checkbox text")
+                                .OnOptionChanged("onOptionChanged")
+                            )
+                            .ShowText(ToolbarItemShowTextMode.InMenu)
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+                            
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
+                                .Icon("attach")
+                                .Text("Attach")
+                                .OnClick("attachButtonClick")
+                            )
+                            .ShowText(ToolbarItemShowTextMode.InMenu)
+                            .Location(ToolbarItemLocation.After);
+                            
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
+                                .Icon("add")
+                                .Text("Add")
+                                .OnClick("addButtonClick")
+                            )
+                            .ShowText(ToolbarItemShowTextMode.InMenu)
+                            .Location(ToolbarItemLocation.After)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+                            
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
+                                .Icon("trash")
+                                .Text("Remove")
+                                .OnClick("removeButtonClick")
+                            )
+                            .ShowText(ToolbarItemShowTextMode.InMenu)
+                            .Location(ToolbarItemLocation.After)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+                            
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
+                                .Icon("help")
+                                .Text("About")
+                                .OnClick("aboutButtonClick")
+                            )
+                            .ShowText(ToolbarItemShowTextMode.InMenu)
+                            .Location(ToolbarItemLocation.After)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+                    }
+                )
             )
         )
-    )
+    </div>
 
     <div class="options-container">
         <div class="caption">Options</div>
