@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DevExtreme.MVC.Demos.Models {
+namespace DevExtreme.NETCore.Demos.Models {
     public class ListType {
         public string Icon { get; set; }
         public string Alignment { get; set; }
