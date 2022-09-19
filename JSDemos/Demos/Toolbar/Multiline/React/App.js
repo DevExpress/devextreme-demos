@@ -71,7 +71,7 @@ function App() {
 
   const onCheckBoxChange = React.useCallback(({ value }) => {
     setCheckBoxValue(value);
-    notify('Checkbox option has been changed!');
+    notify('Checkbox value has been changed!');
   }, []);
 
   const onLineHeightChange = React.useCallback(

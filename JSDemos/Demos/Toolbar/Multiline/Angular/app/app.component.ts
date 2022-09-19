@@ -171,7 +171,7 @@ export class AppComponent {
       value: false,
       text: 'Checkbox text',
       onOptionChanged: (): void => {
-        notify('Checkbox option has been changed!');
+        notify('Checkbox value has been changed!');
       },
     };
 

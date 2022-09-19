@@ -13,7 +13,7 @@ export const lineHeights = [
   { lineHeight: 2, text: '2' },
 ];
 
-export const fonts = [
+export const fontFamilies = [
   { text: 'Arial' },
   { text: 'Courier New' },
   { text: 'Georgia' },

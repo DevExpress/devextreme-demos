@@ -1,4 +1,20 @@
-const toolbarDataDefault = [
+const toolbarSeparator = {
+  cssClass: 'toolbar-separator-container',
+  locateInMenu: 'auto',
+  location: 'before',
+  template(itemData, itemIndex, element) {
+    $('<div>')
+      .addClass('toolbar-separator')
+      .appendTo(element);
+  },
+  menuItemTemplate(itemData, itemIndex, element) {
+    $('<div>')
+      .addClass('toolbar-menu-separator')
+      .appendTo(element);
+  },
+};
+
+const toolbarItems = [
   {
     location: 'before',
     widget: 'dxButton',
@@ -19,21 +35,7 @@ const toolbarDataDefault = [
       },
     },
   },
-  {
-    cssClass: 'toolbar-separator-container',
-    locateInMenu: 'auto',
-    location: 'before',
-    template(itemData, itemIndex, element) {
-      $('<div>')
-        .addClass('toolbar-separator')
-        .appendTo(element);
-    },
-    menuItemTemplate(itemData, itemIndex, element) {
-      $('<div>')
-        .addClass('toolbar-menu-separator')
-        .appendTo(element);
-    },
-  },
+  toolbarSeparator,
   {
     location: 'before',
     locateInMenu: 'auto',
@@ -76,59 +78,16 @@ const toolbarDataDefault = [
     options: {
       placeholder: 'Font',
       displayExpr: 'text',
-      dataSource: [
-        { text: 'Arial' },
-        { text: 'Courier New' },
-        { text: 'Georgia' },
-        { text: 'Impact' },
-        { text: 'Lucida Console' },
-        { text: 'Tahoma' },
-        { text: 'Times New Roman' },
-      ],
+      dataSource: fontFamilies,
     },
   },
-  {
-    cssClass: 'toolbar-separator-container',
-    locateInMenu: 'auto',
-    location: 'before',
-    template(itemData, itemIndex, element) {
-      $('<div>')
-        .addClass('toolbar-separator')
-        .appendTo(element);
-    },
-    menuItemTemplate(itemData, itemIndex, element) {
-      $('<div>')
-        .addClass('toolbar-menu-separator')
-        .appendTo(element);
-    },
-  },
+  toolbarSeparator,
   {
     location: 'before',
     widget: 'dxButtonGroup',
     options: {
       displayExpr: 'text',
-      items: [
-        {
-          icon: 'bold',
-          style: 'bold',
-          hint: 'Bold',
-        },
-        {
-          icon: 'italic',
-          style: 'italic',
-          hint: 'Italic',
-        },
-        {
-          icon: 'underline',
-          style: 'underline',
-          hint: 'Underlined',
-        },
-        {
-          icon: 'strike',
-          style: 'strike',
-          hint: 'Strikethrough',
-        },
-      ],
+      items: fontStyles,
       keyExpr: 'style',
       stylingMode: 'outlined',
       selectionMode: 'multiple',
@@ -149,28 +108,7 @@ const toolbarDataDefault = [
     widget: 'dxButtonGroup',
     template(itemData, itemIndex, element) {
       const $buttonGroup = $('<div>').dxButtonGroup({
-        items: [
-          {
-            icon: 'alignleft',
-            alignment: 'left',
-            hint: 'Align left',
-          },
-          {
-            icon: 'aligncenter',
-            alignment: 'center',
-            hint: 'Center',
-          },
-          {
-            icon: 'alignright',
-            alignment: 'right',
-            hint: 'Align right',
-          },
-          {
-            icon: 'alignjustify',
-            alignment: 'justify',
-            hint: 'Justify',
-          },
-        ],
+        items: textAligns.map(({ icon, alignment, hint }) => ({ icon, alignment, hint })),
         keyExpr: 'alignment',
         stylingMode: 'outlined',
         selectedItemKeys: ['left'],
@@ -184,32 +122,7 @@ const toolbarDataDefault = [
     menuItemTemplate(itemData, itemIndex, element) {
       const $buttonGroup = $('<div>').dxButtonGroup({
         displayExpr: 'text',
-        items: [
-          {
-            icon: 'alignleft',
-            alignment: 'left',
-            hint: 'Align left',
-            text: 'Align left',
-          },
-          {
-            icon: 'aligncenter',
-            alignment: 'center',
-            hint: 'Center',
-            text: 'Center',
-          },
-          {
-            icon: 'alignright',
-            alignment: 'right',
-            hint: 'Align right',
-            text: 'Align right',
-          },
-          {
-            icon: 'alignjustify',
-            alignment: 'justify',
-            hint: 'Justify',
-            text: 'Justify',
-          },
-        ],
+        items: textAligns,
         keyExpr: 'alignment',
         stylingMode: 'outlined',
         selectedItemKeys: ['left'],
@@ -226,18 +139,7 @@ const toolbarDataDefault = [
     widget: 'dxButtonGroup',
     displayExpr: 'text',
     options: {
-      items: [
-        {
-          icon: 'orderedlist',
-          alignment: 'orderedlist',
-          hint: 'Ordered',
-        },
-        {
-          icon: 'bulletlist',
-          alignment: 'bulletlist',
-          hint: 'Bullet',
-        },
-      ],
+      items: listTypes,
       keyExpr: 'alignment',
       stylingMode: 'outlined',
       onItemClick(e) {
@@ -245,21 +147,7 @@ const toolbarDataDefault = [
       },
     },
   },
-  {
-    cssClass: 'toolbar-separator-container',
-    locateInMenu: 'auto',
-    location: 'before',
-    template(itemData, itemIndex, element) {
-      $('<div>')
-        .addClass('toolbar-separator')
-        .appendTo(element);
-    },
-    menuItemTemplate(itemData, itemIndex, element) {
-      $('<div>')
-        .addClass('toolbar-menu-separator')
-        .appendTo(element);
-    },
-  },
+  toolbarSeparator,
   {
     locateInMenu: 'auto',
     location: 'before',
@@ -270,21 +158,7 @@ const toolbarDataDefault = [
       value: new Date(2022, 9, 7),
     },
   },
-  {
-    cssClass: 'toolbar-separator-container',
-    locateInMenu: 'auto',
-    location: 'before',
-    template(itemData, itemIndex, element) {
-      $('<div>')
-        .addClass('toolbar-separator')
-        .appendTo(element);
-    },
-    menuItemTemplate(itemData, itemIndex, element) {
-      $('<div>')
-        .addClass('toolbar-menu-separator')
-        .appendTo(element);
-    },
-  },
+  toolbarSeparator,
   {
     locateInMenu: 'auto',
     location: 'before',
@@ -293,7 +167,7 @@ const toolbarDataDefault = [
       value: false,
       text: 'Checkbox text',
       onOptionChanged() {
-        DevExpress.ui.notify('Checkbox option has been changed!');
+        DevExpress.ui.notify('Checkbox value has been changed!');
       },
     },
   },
@@ -359,7 +233,7 @@ $(() => {
   });
 
   const toolbar = $('#toolbar').dxToolbar({
-    dataSource: toolbarDataDefault,
+    dataSource: toolbarItems,
     multiline: true,
   }).dxToolbar('instance');
 
@@ -370,9 +244,7 @@ $(() => {
     value: toolbarLineModes[0],
     layout: 'horizontal',
     onValueChanged(e) {
-      const { value } = e;
-
-      toolbar.option('multiline', value === toolbarLineModes[0]);
+      toolbar.option('multiline', e.value === toolbarLineModes[0]);
     },
   });
 });

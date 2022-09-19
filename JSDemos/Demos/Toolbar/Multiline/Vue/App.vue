@@ -42,7 +42,7 @@
             location="before"
             locate-in-menu="auto"
             widget="dxSelectBox"
-            :options="fontSelectorOptions"
+            :options="fontFamilyOptions"
           />
           <DxItem
             location="before"
@@ -186,7 +186,7 @@ import notify from 'devextreme/ui/notify';
 import {
   fontSizes,
   lineHeights,
-  fonts,
+  fontFamilies,
   fontStyles,
   textAligns,
   listTypes,
@@ -271,11 +271,11 @@ export default {
       };
     },
 
-    fontSelectorOptions() {
+    fontFamilyOptions() {
       return {
         placeholder: 'Font',
         displayExpr: 'text',
-        dataSource: fonts,
+        dataSource: fontFamilies,
       };
     },
 
@@ -316,7 +316,7 @@ export default {
         value: false,
         text: 'Checkbox text',
         onOptionChanged() {
-          notify('Checkbox option has been changed!');
+          notify('Checkbox value has been changed!');
         },
       };
     },

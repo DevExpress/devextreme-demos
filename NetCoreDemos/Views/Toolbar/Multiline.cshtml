@@ -1,13 +1,5 @@
 ﻿@model DevExtreme.NETCore.Demos.ViewModels.DropDownButtonViewModel
 
-@{
-    var toolbarModes = new [] { "Multiline mode", "Singleline mode" };
-    var listTypes = new [] {
-        new { icon = "orderedlist", alignment = "orderedlist", hint = "Ordered" },
-        new { icon = "bulletlist", alignment = "bulletlist", hint = "Bullet" }
-    };
-}
-
 <div>
     <div class="widget-container">
         @(Html.DevExtreme().Sortable()
@@ -86,15 +78,7 @@
                                 .SelectBox()
                                 .Placeholder("Font")
                                 .DisplayExpr("Text")
-                                .DataSource(new[] {
-                                    new { text = "Arial" },
-                                    new { text = "Courier New" },
-                                    new { text = "Georgia" },
-                                    new { text = "Impact" },
-                                    new { text = "Lucida Console" },
-                                    new { text = "Tahoma" },
-                                    new { text = "Times New Roman" },
-                                })
+                                .DataSource(Model.FontFamilies)
                             )
                             .Location(ToolbarItemLocation.Before);
                         
@@ -110,16 +94,10 @@
                             .Add()
                             .Widget(w => w
                                 .ButtonGroup()
-                                .DisplayExpr("Text")
                                 .KeyExpr("Style")
                                 .StylingMode(EditorStylingMode.Outlined)
                                 .SelectionMode(ListSelectionMode.Multiple)
-                                .Items(items => {
-                                    items.Add().Icon("bold").Hint("Bold").Option("style", "bold");
-                                    items.Add().Icon("italic").Hint("Italic").Option("style", "italic");
-                                    items.Add().Icon("underline").Hint("Underlined").Option("style", "underline");
-                                    items.Add().Icon("strike").Hint("Strikethrough").Option("style", "strike");
-                                })
+                                .Items(Model.FontStyles)
                                 .OnItemClick("buttonGroupItemClick")
                             )
                             .Location(ToolbarItemLocation.Before)
@@ -142,7 +120,7 @@
                             .Add()
                             .Widget(w => w
                                 .ButtonGroup()
-                                .Items(listTypes)
+                                .Items(Model.ListTypes)
                                 .KeyExpr("alignment")
                                 .StylingMode(EditorStylingMode.Outlined)                            
                                 .OnItemClick("buttonGroupItemClick")
@@ -247,8 +225,8 @@
         @(Html.DevExtreme().RadioGroup()
             .ID("toolbar-modes")
             .Layout(Orientation.Horizontal)
-            .Items(toolbarModes)
-            .Value(toolbarModes[1])
+            .Items(Model.ToolbarModes)
+            .Value(Model.ToolbarModes[0])
             .OnValueChanged("toolbarModesValueChanged"))
     </div>
 </div>
@@ -263,28 +241,18 @@
 
 @using (Html.DevExtreme().NamedTemplate("text-align-template")) {
     @(Html.DevExtreme().ButtonGroup()
-        .KeyExpr("Style")
+        .KeyExpr("Alignment")
         .StylingMode(ButtonStylingMode.Text)
-        .Items(new [] {
-            new { icon = "alignleft", alignment = "left", hint = "Align left" },
-            new { icon = "aligncenter", alignment = "center", hint = "Center" },
-            new { icon = "alignright", alignment = "right", hint = "Align right" },
-            new { icon = "alignjustify", alignment = "justify", hint = "Justify" },
-        })
+        .Items(Model.TextAligns)
         .SelectedItemKeys(new[] { "left" })
         .OnItemClick("buttonGroupItemClick"));
 }
 
 @using (Html.DevExtreme().NamedTemplate("text-align-menu-template")) {
     @(Html.DevExtreme().ButtonGroup()
-        .KeyExpr("Style")
+        .KeyExpr("Alignment")
         .StylingMode(ButtonStylingMode.Text)
-        .Items(new [] {
-            new { icon = "alignleft", alignment = "left", hint = "Align left", text = "Align left" },
-            new { icon = "aligncenter", alignment = "center", hint = "Center", text = "Center" },
-            new { icon = "alignright", alignment = "right", hint = "Align right", text = "Align right" },
-            new { icon = "alignjustify", alignment = "justify", hint = "Justify", text = "Justify" },
-        })
+        .Items(Model.TextAlignsExtended)
         .SelectedItemKeys(new[] { "left" })
         .OnItemClick("buttonGroupItemClick"));
 }
@@ -292,10 +260,10 @@
 <script>
     function toolbarModesValueChanged(data) {
         var toolbar = $("#toolbar").dxToolbar("instance");
-        toolbar.option("multiline", data.value === toolbarModes[0]);
+        toolbar.option("multiline", data.value === Model.ToolbarModes[0]);
 
-        var toolbar-modesInstance = $("#toolbar-modes").RadioGroup("instance");
-        toolbar-modesInstance.option("value", data.value);
+        var toolbarModesInstance = $("#toolbar-modes").RadioGroup("instance");
+        toolbarModesInstance.option("value", data.value);
     }
 
     function changeSize(e) {
