@@ -27,47 +27,61 @@ function getTextAlignItems(isExtended) {
 
 const toolbarLineModes = ['Multiline mode', 'Singleline mode'];
 
-const attachButtonOptions = {
-  icon: 'attach',
-  text: 'Attach',
-  onClick: () => {
-    notify('Attach button has been clicked!');
-  },
-};
-
-const addButtonOptions = {
-  icon: 'add',
-  text: 'Add',
-  onClick: () => {
-    notify('Add button has been clicked!');
-  },
-};
-
-const removeButtonOptions = {
-  icon: 'trash',
-  text: 'Remove',
-  onClick: () => {
-    notify('Remove button has been clicked!');
-  },
-};
-
-const aboutButtonOptions = {
-  icon: 'help',
-  text: 'About',
-  onClick: () => {
-    notify('About button has been clicked!');
-  },
-};
-
 function App() {
+  const onAttachButtonClick = React.useCallback(() => {
+    notify('Attach button has been clicked!');
+  }, []);
+
+  const onAddButtonClick = React.useCallback(() => {
+    notify('Add button has been clicked!');
+  }, []);
+
+  const onRemoveButtonClick = React.useCallback(() => {
+    notify('Remove button has been clicked!');
+  }, []);
+
+  const onAboutButtonClick = React.useCallback(() => {
+    notify('About button has been clicked!');
+  }, []);
+
+  const [attachButtonOptions] = React.useState({
+    icon: 'attach',
+    text: 'Attach',
+    onClick: onAttachButtonClick,
+  });
+  const [addButtonOptions] = React.useState({
+    icon: 'add',
+    text: 'Add',
+    onClick: onAddButtonClick,
+  });
+  const [removeButtonOptions] = React.useState({
+    icon: 'trash',
+    text: 'Remove',
+    onClick: onRemoveButtonClick,
+  });
+  const [aboutButtonOptions] = React.useState({
+    icon: 'help',
+    text: 'About',
+    onClick: onAboutButtonClick,
+  });
   const [lineHeight, setLineHeight] = React.useState(lineHeights[1].lineHeight);
   const [fontSize, setFontSize] = React.useState(fontSizes[2].size);
   const [textAlign, setTextAlign] = React.useState([textAligns[0].alignment]);
-  const [toolbarLineMode, setToolbarLineMode] = React.useState(
-    toolbarLineModes[0],
-  );
+  const [toolbarLineMode, setToolbarLineMode] = React.useState(toolbarLineModes[0]);
   const [multiline, setMultiline] = React.useState(true);
   const [checkBoxValue, setCheckBoxValue] = React.useState(false);
+
+  const onItemClick = React.useCallback((e) => {
+    notify(`The "${e.itemData.hint}" button was clicked`);
+  }, []);
+
+  const onUndoButtonClick = React.useCallback(() => {
+    notify('Undo button has been clicked!');
+  }, []);
+
+  const onRedoButtonClick = React.useCallback(() => {
+    notify('Redo button has been clicked!');
+  }, []);
 
   const onCheckBoxChange = React.useCallback(({ value }) => {
     setCheckBoxValue(value);
@@ -93,12 +107,9 @@ function App() {
     setToolbarLineMode(value);
   }, []);
 
-  const renderFontSize = React.useCallback(
-    (itemData) => (
-      <div style={{ fontSize: `${itemData.size}px` }}>{itemData.text}</div>
-    ),
-    [],
-  );
+  const renderFontSize = React.useCallback((itemData) => (
+    <div style={{ fontSize: `${itemData.size}px` }}>{itemData.text}</div>
+  ), []);
 
   const renderTextAlign = React.useCallback(() => {
     const isMenu = false;
@@ -146,18 +157,14 @@ function App() {
             <Item location="before">
               <Button
                 icon="undo"
-                onClick={() => {
-                  notify('Undo button has been clicked!');
-                }}
+                onClick={onUndoButtonClick}
               ></Button>
             </Item>
 
             <Item location="before">
               <Button
                 icon="redo"
-                onClick={() => {
-                  notify('Redo button has been clicked!');
-                }}
+                onClick={onRedoButtonClick}
               ></Button>
             </Item>
 
@@ -220,7 +227,7 @@ function App() {
                 stylingMode="outlined"
                 selectionMode="multiple"
                 items={fontStyles}
-                onItemClick={(e) => notify(`The "${e.itemData.hint}" button was clicked`)}
+                onItemClick={onItemClick}
               ></ButtonGroup>
             </Item>
 
@@ -241,7 +248,7 @@ function App() {
                 keyExpr="alignment"
                 stylingMode="outlined"
                 items={listTypes}
-                onItemClick={(e) => notify(`The "${e.itemData.hint}" button was clicked`)}
+                onItemClick={onItemClick}
               ></ButtonGroup>
             </Item>
 
