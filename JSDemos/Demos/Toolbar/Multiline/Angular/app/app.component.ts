@@ -38,9 +38,16 @@ if (!/localhost/.test(document.location.host)) {
 })
 
 export class AppComponent {
-  toolbarLineModes = ['Multiline mode', 'Singleline mode'];
-
-  toolbarLineMode = this.toolbarLineModes[0];
+  toolbarLineModes = [
+    {
+      text: 'Multiline mode',
+      value: true,
+    },
+    {
+      text: 'Singleline mode',
+      value: false,
+    },
+  ];
 
   multiline: boolean;
 
@@ -213,11 +220,6 @@ export class AppComponent {
 
   onItemClick(e: { itemData: { hint: string } }): void {
     notify(`The "${e.itemData.hint}" button was clicked`);
-  }
-
-  onToolbarLineModeChange({ value }): void {
-    this.multiline = value === this.toolbarLineModes[0];
-    this.toolbarLineMode = value;
   }
 }
 

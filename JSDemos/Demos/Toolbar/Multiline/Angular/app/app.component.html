@@ -193,9 +193,9 @@
 
     <dx-radio-group
       layout="horizontal"
+      [(value)]="multiline"
+      valueExpr="value"
       [items]="toolbarLineModes"
-      [value]="toolbarLineMode"
-      (onValueChanged)="onToolbarLineModeChange($event)"
     ></dx-radio-group>
   </div>
 </div>

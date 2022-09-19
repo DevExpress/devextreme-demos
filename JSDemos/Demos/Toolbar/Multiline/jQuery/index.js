@@ -240,14 +240,22 @@ $(() => {
     multiline: true,
   }).dxToolbar('instance');
 
-  const toolbarLineModes = ['Multiline mode', 'Singleline mode'];
-
   $('#toolbar-modes').dxRadioGroup({
-    items: toolbarLineModes,
-    value: toolbarLineModes[0],
+    items: [
+      {
+        text: 'Multiline mode',
+        value: true,
+      },
+      {
+        text: 'Singleline mode',
+        value: false,
+      },
+    ],
+    value: true,
     layout: 'horizontal',
+    valueExpr: 'value',
     onValueChanged(e) {
-      toolbar.option('multiline', e.value === toolbarLineModes[0]);
+      toolbar.option('multiline', e.value);
     },
   });
 });

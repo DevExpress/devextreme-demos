@@ -33,7 +33,10 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
             new ListType{ Icon = "orderedlist", Alignment = "orderedlist", Hint = "Ordered" },
             new ListType{ Icon = "bulletlist", Alignment = "bulletlist", Hint = "Bullet" }
         };
-        public static readonly IEnumerable<string> ToolbarModes = new[] { "Multiline mode", "Singleline mode" };
+        public static readonly IEnumerable<SimpleData> ToolbarModes = new[] {
+            new SimpleData{ Text = "Multiline mode", Value = true },
+            new SimpleData{ Text = "Singleline mode", Value = false }
+        };
         public static readonly IEnumerable<SimpleData> FontFamilies = new[] {
             new SimpleData{ Text = "Arial", Value = "arial" },
             new SimpleData{ Text = "Courier New", Value = "courier_new" },

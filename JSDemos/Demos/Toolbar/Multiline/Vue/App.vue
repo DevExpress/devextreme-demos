@@ -163,10 +163,10 @@
       <div class="caption">Options</div>
 
       <DxRadioGroup
+        v-model="multiline"
         layout="horizontal"
+        value-expr="value"
         :items="toolbarLineModes"
-        :value="toolbarLineMode"
-        :on-value-changed="onToolbarLineModeChange"
       />
     </div>
   </div>
@@ -193,8 +193,6 @@ import {
 } from './data.js';
 import 'devextreme/ui/select_box';
 
-const toolbarLineModes = ['Multiline mode', 'Singleline mode'];
-
 export default {
   components: {
     DxCheckBox,
@@ -211,7 +209,6 @@ export default {
   data() {
     return {
       multiline: true,
-      toolbarLineMode: toolbarLineModes[0],
       lineHeight: lineHeights[1].lineHeight,
       textAlign: [textAligns[0].alignment],
       fontSize: fontSizes[2].size,
@@ -220,7 +217,16 @@ export default {
 
   computed: {
     toolbarLineModes() {
-      return toolbarLineModes;
+      return [
+        {
+          text: 'Multiline mode',
+          value: true,
+        },
+        {
+          text: 'Singleline mode',
+          value: false,
+        },
+      ];
     },
 
     undoButtonOptions() {
@@ -366,11 +372,6 @@ export default {
     onTextAlignItemClick(e) {
       this.textAlign = e.itemData.alignment;
       notify(`The "${e.itemData.hint}" button was clicked`);
-    },
-
-    onToolbarLineModeChange({ value }) {
-      this.multiline = value === toolbarLineModes[0];
-      this.toolbarLineMode = value;
     },
 
     getTextAlignItems(isExtended) {

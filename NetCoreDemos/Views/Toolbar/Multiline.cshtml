@@ -11,7 +11,7 @@
             .Content(
                 Html.DevExtreme().Toolbar()
                     .ID("toolbar")
-                    .Multiline(false)
+                    .Multiline(true)
                     .Items(items => {
                         items
                             .Add()
@@ -226,7 +226,8 @@
             .ID("toolbar-modes")
             .Layout(Orientation.Horizontal)
             .Items(Model.ToolbarModes)
-            .Value(Model.ToolbarModes[0])
+            .Value(true)
+            .ValueExpr("Value")
             .OnValueChanged("toolbarModesValueChanged"))
     </div>
 </div>
@@ -266,7 +267,7 @@
 
     function toolbarModesValueChanged(data) {
         var toolbar = $("#toolbar").dxToolbar("instance");
-        toolbar.option("multiline", data.value === Model.ToolbarModes[0]);
+        toolbar.option("multiline", data.value);
 
         var toolbarModesInstance = $("#toolbar-modes").RadioGroup("instance");
         toolbarModesInstance.option("value", data.value);

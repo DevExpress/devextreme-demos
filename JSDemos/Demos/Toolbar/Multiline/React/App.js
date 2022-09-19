@@ -25,7 +25,16 @@ function getTextAlignItems(isExtended) {
     : textAligns;
 }
 
-const toolbarLineModes = ['Multiline mode', 'Singleline mode'];
+const toolbarLineModes = [
+  {
+    text: 'Multiline mode',
+    value: true,
+  },
+  {
+    text: 'Singleline mode',
+    value: false,
+  },
+];
 
 function App() {
   const onAttachButtonClick = React.useCallback(() => {
@@ -67,7 +76,6 @@ function App() {
   const [lineHeight, setLineHeight] = React.useState(lineHeights[1].lineHeight);
   const [fontSize, setFontSize] = React.useState(fontSizes[2].size);
   const [textAlign, setTextAlign] = React.useState([textAligns[0].alignment]);
-  const [toolbarLineMode, setToolbarLineMode] = React.useState(toolbarLineModes[0]);
   const [multiline, setMultiline] = React.useState(true);
   const [checkBoxValue, setCheckBoxValue] = React.useState(false);
 
@@ -103,8 +111,7 @@ function App() {
   }, []);
 
   const onToolbarLineModeChange = React.useCallback(({ value }) => {
-    setMultiline(value === toolbarLineModes[0]);
-    setToolbarLineMode(value);
+    setMultiline(value);
   }, []);
 
   const renderFontSize = React.useCallback((itemData) => (
@@ -324,8 +331,9 @@ function App() {
 
         <RadioGroup
           items={toolbarLineModes}
-          value={toolbarLineMode}
+          value={multiline}
           layout="horizontal"
+          valueExpr="value"
           onValueChanged={onToolbarLineModeChange}
         ></RadioGroup>
       </div>
