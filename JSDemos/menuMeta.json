@@ -3938,7 +3938,14 @@
             "Name": "Multiline",
             "Widget": "Toolbar",
             "Badge": "New",
-            "DemoType": "Web"
+            "DemoType": "Web",
+            "MvcAdditionalFiles": [
+              "/ViewModels/DropDownButtonViewModel.cs",
+              "/Models/FontStyle.cs",
+              "/Models/ListType.cs",
+              "/Models/TextAlign.cs",
+              "/Models/SampleData/DropDownButtonData.cs"
+            ]
           }
         ]
       },
