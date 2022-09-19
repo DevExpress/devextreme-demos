@@ -39,6 +39,7 @@ const toolbarDataDefault = [
     locateInMenu: 'auto',
     widget: 'dxDropDownButton',
     options: {
+      width: '100%',
       displayExpr: 'text',
       keyExpr: 'size',
       useSelectMode: true,
@@ -56,6 +57,7 @@ const toolbarDataDefault = [
     locateInMenu: 'auto',
     widget: 'dxDropDownButton',
     options: {
+      width: '100%',
       icon: 'indent',
       displayExpr: 'text',
       keyExpr: 'lineHeight',

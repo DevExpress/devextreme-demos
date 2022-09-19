@@ -243,6 +243,7 @@ export default {
 
     fontSizeOptions() {
       return {
+        width: '100%',
         displayExpr: 'text',
         keyExpr: 'size',
         useSelectMode: true,
@@ -257,6 +258,7 @@ export default {
 
     lineHeightOptions() {
       return {
+        width: '100%',
         icon: 'indent',
         displayExpr: 'text',
         keyExpr: 'lineHeight',

@@ -172,6 +172,7 @@ function App() {
 
             <Item location="before" locateInMenu="auto">
               <DropDownButton
+                width="100%"
                 displayExpr="text"
                 keyExpr="size"
                 useSelectMode={true}
@@ -184,6 +185,7 @@ function App() {
 
             <Item location="before" locateInMenu="auto">
               <DropDownButton
+                width="100%"
                 icon="indent"
                 displayExpr="text"
                 keyExpr="lineHeight"

@@ -117,6 +117,7 @@ export class AppComponent {
     };
 
     this.fontSizeOptions = {
+      width: '100%',
       displayExpr: 'text',
       keyExpr: 'size',
       useSelectMode: true,
@@ -126,6 +127,7 @@ export class AppComponent {
     };
 
     this.lineHeightOptions = {
+      width: '100%',
       icon: 'indent',
       displayExpr: 'text',
       keyExpr: 'lineHeight',
