@@ -266,12 +266,12 @@
         toolbarModesInstance.option("value", data.value);
     }
 
-    function changeSize(e) {
-        $("#text").css("font-size", e.item.Text);
+    function changeSize() {
+        DevExpress.ui.notify('Font size value has been changed!');
     }
 
-    function changeLineHeight(e) {
-        $("#text").css("line-height", e.item.Value);
+    function changeLineHeight() {
+        DevExpress.ui.notify('Line height value has been changed!');
     }
 
     function buttonGroupItemClick(e) {

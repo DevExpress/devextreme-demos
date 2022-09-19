@@ -250,8 +250,8 @@ export default {
         items: fontSizes,
         itemTemplate: 'fontSizeTemplate',
         selectedItemKey: this.fontSize,
-        onSelectionChanged: (e) => {
-          this.fontSize = e.item.size;
+        onSelectionChanged: () => {
+          notify('Font size value has been changed!');
         },
       };
     },
@@ -265,8 +265,8 @@ export default {
         useSelectMode: true,
         items: lineHeights,
         selectedItemKey: this.lineHeight,
-        onSelectionChanged: (e) => {
-          this.lineHeight = e.item.lineHeight;
+        onSelectionChanged: () => {
+          notify('Line height value has been changed!');
         },
       };
     },

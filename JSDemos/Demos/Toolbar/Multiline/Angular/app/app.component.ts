@@ -70,7 +70,7 @@ export class AppComponent {
 
   lineHeightOptions: any;
 
-  fontSelectorOptions: any;
+  fontFamilyOptions: any;
 
   fontStyleOptions: any;
 
@@ -124,6 +124,9 @@ export class AppComponent {
       items: this.fontSizes,
       selectedItemKey: this.fontSizes[2].size,
       itemTemplate: 'fontSizeTemplate',
+      onSelectionChanged: (): void => {
+        notify('Font size value has been changed!');
+      },
     };
 
     this.lineHeightOptions = {
@@ -134,12 +137,12 @@ export class AppComponent {
       useSelectMode: true,
       items: this.lineHeights,
       selectedItemKey: this.lineHeight,
-      onSelectionChanged: (e: { item: { lineHeight: number } }): void => {
-        this.lineHeight = [e.item.lineHeight];
+      onSelectionChanged: (): void => {
+        notify('Line height value has been changed!');
       },
     };
 
-    this.fontSelectorOptions = {
+    this.fontFamilyOptions = {
       placeholder: 'Font',
       displayExpr: 'text',
       dataSource: new DataSource(this.fonts),

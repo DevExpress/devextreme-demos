@@ -74,15 +74,15 @@ function App() {
     notify('Checkbox value has been changed!');
   }, []);
 
-  const onLineHeightChange = React.useCallback(
-    (e) => setLineHeight(e.item.lineHeight),
-    [],
-  );
+  const onLineHeightChange = React.useCallback((e) => {
+    setLineHeight(e.item.lineHeight);
+    notify('Line height value has been changed!');
+  }, []);
 
-  const onFontSizeChange = React.useCallback(
-    (e) => setFontSize(e.item.size),
-    [],
-  );
+  const onFontSizeChange = React.useCallback((e) => {
+    setFontSize(e.item.size);
+    notify('Font size value has been changed!');
+  }, []);
 
   const onTextAlignChange = React.useCallback((e) => {
     setTextAlign([e.itemData.alignment]);
@@ -220,8 +220,7 @@ function App() {
                 stylingMode="outlined"
                 selectionMode="multiple"
                 items={fontStyles}
-                onItemClick={(e) => notify(`The "${e.itemData.hint}" button was clicked`)
-                }
+                onItemClick={(e) => notify(`The "${e.itemData.hint}" button was clicked`)}
               ></ButtonGroup>
             </Item>
 
@@ -242,8 +241,7 @@ function App() {
                 keyExpr="alignment"
                 stylingMode="outlined"
                 items={listTypes}
-                onItemClick={(e) => notify(`The "${e.itemData.hint}" button was clicked`)
-                }
+                onItemClick={(e) => notify(`The "${e.itemData.hint}" button was clicked`)}
               ></ButtonGroup>
             </Item>
 

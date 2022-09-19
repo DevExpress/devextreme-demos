@@ -52,6 +52,9 @@ const toolbarItems = [
           .text(itemData.text)
           .css('font-size', `${itemData.size}px`);
       },
+      onSelectionChanged() {
+        DevExpress.ui.notify('Font size value has been changed!');
+      },
     },
   },
   {
@@ -66,8 +69,8 @@ const toolbarItems = [
       useSelectMode: true,
       items: lineHeights,
       selectedItemKey: 1.35,
-      onSelectionChanged(e) {
-        $('#text').css('line-height', e.item.lineHeight);
+      onSelectionChanged() {
+        DevExpress.ui.notify('Line height value has been changed!');
       },
     },
   },
