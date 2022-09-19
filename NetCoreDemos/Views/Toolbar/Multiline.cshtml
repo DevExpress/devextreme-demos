@@ -50,7 +50,7 @@
                                 .UseSelectMode(true)
                                 .DataSource(Model.FontSizes)
                                 .OnSelectionChanged("changeSize")
-                                .ItemTemplate(@<text><div style="font-size: <%- Text %>;"><%- Text %></div></text>)
+                                .ItemTemplate(new JS("fontSizeItemTemplate"))
                             )
                             .Location(ToolbarItemLocation.Before)
                             .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
@@ -258,6 +258,12 @@
 }
 
 <script>
+    function fontSizeItemTemplate(itemData, itemIndex, itemElement) {
+        itemElement.append(
+            $("<div>").css({ fontSize: itemData.text }).text(itemData.text)
+        )
+    }
+
     function toolbarModesValueChanged(data) {
         var toolbar = $("#toolbar").dxToolbar("instance");
         toolbar.option("multiline", data.value === Model.ToolbarModes[0]);
