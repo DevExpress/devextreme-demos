@@ -15,15 +15,10 @@ import {
   lineHeights,
   fontFamilies,
   fontStyles,
-  textAligns,
+  textAlignItems,
+  textAlignItemsExtended,
   listTypes,
 } from './data.js';
-
-function getTextAlignItems(isExtended) {
-  return !isExtended
-    ? textAligns.map(({ icon, alignment, hint }) => ({ icon, alignment, hint }))
-    : textAligns;
-}
 
 const toolbarLineModes = [
   {
@@ -75,7 +70,7 @@ function App() {
   });
   const [lineHeight, setLineHeight] = React.useState(lineHeights[1].lineHeight);
   const [fontSize, setFontSize] = React.useState(fontSizes[2].size);
-  const [textAlign, setTextAlign] = React.useState([textAligns[0].alignment]);
+  const [textAlign, setTextAlign] = React.useState([textAlignItems[0].alignment]);
   const [multiline, setMultiline] = React.useState(true);
   const [checkBoxValue, setCheckBoxValue] = React.useState(false);
 
@@ -118,34 +113,26 @@ function App() {
     <div style={{ fontSize: `${itemData.size}px` }}>{itemData.text}</div>
   ), []);
 
-  const renderTextAlign = React.useCallback(() => {
-    const isMenu = false;
+  const renderTextAlign = React.useCallback(() => (
+    <ButtonGroup
+      keyExpr="alignment"
+      stylingMode="outlined"
+      items={textAlignItems}
+      selectedItemKeys={textAlign}
+      onItemClick={onTextAlignChange}
+    ></ButtonGroup>
+  ), [textAlign]);
 
-    return (
-      <ButtonGroup
-        items={getTextAlignItems(isMenu)}
-        keyExpr="alignment"
-        stylingMode="outlined"
-        selectedItemKeys={textAlign}
-        onItemClick={onTextAlignChange}
-      ></ButtonGroup>
-    );
-  }, [textAlign]);
-
-  const renderTextAlignMenu = React.useCallback(() => {
-    const isMenu = true;
-
-    return (
-      <ButtonGroup
-        items={getTextAlignItems(isMenu)}
-        displayExpr="text"
-        keyExpr="alignment"
-        stylingMode="outlined"
-        selectedItemKeys={textAlign}
-        onItemClick={onTextAlignChange}
-      ></ButtonGroup>
-    );
-  }, [textAlign]);
+  const renderTextAlignMenu = React.useCallback(() => (
+    <ButtonGroup
+      displayExpr="text"
+      keyExpr="alignment"
+      stylingMode="outlined"
+      items={textAlignItemsExtended}
+      selectedItemKeys={textAlign}
+      onItemClick={onTextAlignChange}
+    ></ButtonGroup>
+  ), [textAlign]);
 
   const renderMenuSeparator = React.useCallback(() => <div className="toolbar-menu-separator"></div>, []);
 

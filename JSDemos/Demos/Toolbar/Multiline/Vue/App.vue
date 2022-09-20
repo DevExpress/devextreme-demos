@@ -3,11 +3,11 @@
     <div class="widget-container">
       <DxResizable
         class="resizable-container"
+        area=".widget-container"
+        handles="right"
         :min-width="500"
         :min-height="150"
         :max-height="370"
-        handles="right"
-        area=".widget-container"
       >
         <DxToolbar :multiline="multiline">
           <DxItem
@@ -139,7 +139,7 @@
             <DxButtonGroup
               key-expr="alignment"
               styling-mode="outlined"
-              :items="getTextAlignItems(false)"
+              :items="textAlignItems"
               :selected-item-keys="textAlign"
               @item-click="onTextAlignItemClick"
             />
@@ -147,7 +147,7 @@
 
           <template #textAlignMenuTemplate>
             <DxButtonGroup
-              :items="getTextAlignItems(true)"
+              :items="textAlignItemsExtended"
               display-expr="text"
               :selected-item-keys="textAlign"
               key-expr="alignment"
@@ -182,16 +182,20 @@ import DxDateBox from 'devextreme-vue/date-box';
 import DxSelectBox from 'devextreme-vue/select-box';
 import DxRadioGroup from 'devextreme-vue/radio-group';
 import notify from 'devextreme/ui/notify';
-
 import {
   fontSizes,
   lineHeights,
   fontFamilies,
   fontStyles,
-  textAligns,
+  textAlignItems,
+  textAlignItemsExtended,
   listTypes,
 } from './data.js';
 import 'devextreme/ui/select_box';
+
+const lineHeightDefault = lineHeights[1].lineHeight;
+const textAlignDefault = [textAlignItems[0].alignment];
+const fontSizeDefault = fontSizes[2].size;
 
 export default {
   components: {
@@ -209,9 +213,9 @@ export default {
   data() {
     return {
       multiline: true,
-      lineHeight: lineHeights[1].lineHeight,
-      textAlign: [textAligns[0].alignment],
-      fontSize: fontSizes[2].size,
+      lineHeight: lineHeightDefault,
+      textAlign: textAlignDefault,
+      fontSize: fontSizeDefault,
     };
   },
 
@@ -227,6 +231,14 @@ export default {
           value: false,
         },
       ];
+    },
+
+    textAlignItems() {
+      return textAlignItems;
+    },
+
+    textAlignItemsExtended() {
+      return textAlignItemsExtended;
     },
 
     undoButtonOptions() {
@@ -370,18 +382,11 @@ export default {
 
   methods: {
     onTextAlignItemClick(e) {
-      this.textAlign = e.itemData.alignment;
-      notify(`The "${e.itemData.hint}" button was clicked`);
-    },
+      const { alignment, hint } = e.itemData;
 
-    getTextAlignItems(isExtended) {
-      return !isExtended
-        ? textAligns.map(({ icon, alignment, hint }) => ({
-          icon,
-          alignment,
-          hint,
-        }))
-        : textAligns;
+      this.textAlign = alignment;
+
+      notify(`The "${hint}" button was clicked`);
     },
   },
 };

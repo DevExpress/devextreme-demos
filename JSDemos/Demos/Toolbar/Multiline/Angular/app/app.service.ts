@@ -92,7 +92,7 @@ const fontStyles: FontStyle[] = [
   },
 ];
 
-const textAligns: TextAlignExtended[] = [
+const textAlignsExtended: TextAlignExtended[] = [
   {
     icon: 'alignleft',
     alignment: 'left',
@@ -150,8 +150,14 @@ export class Service {
     return fontStyles;
   }
 
-  getTextAligns(): TextAlignExtended[] {
-    return textAligns;
+  getTextAlignExtended(): TextAlignExtended[] {
+    return textAlignsExtended;
+  }
+
+  getTextAlign(): TextAlign[] {
+    return textAlignsExtended.map(
+      ({ icon, alignment, hint }) => ({ icon, alignment, hint }),
+    );
   }
 
   getListType(): ListType[] {

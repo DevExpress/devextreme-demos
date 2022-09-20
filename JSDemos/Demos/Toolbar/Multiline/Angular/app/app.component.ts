@@ -102,10 +102,8 @@ export class AppComponent {
     this.lineHeight = [this.lineHeights[1].lineHeight];
     this.fonts = service.getFonts();
     this.fontStyles = service.getFontStyles();
-    this.textAlignItemsExtended = service.getTextAligns();
-    this.textAlignItems = this.textAlignItemsExtended.map(
-      ({ icon, alignment, hint }) => ({ icon, alignment, hint }),
-    );
+    this.textAlignItems = service.getTextAlign();
+    this.textAlignItemsExtended = service.getTextAlignExtended();
     this.selectedTextAlign = [this.textAlignItems[0].alignment];
     this.listTypes = service.getListType();
 
