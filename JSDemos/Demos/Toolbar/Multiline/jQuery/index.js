@@ -111,7 +111,7 @@ const toolbarItems = [
     widget: 'dxButtonGroup',
     template(itemData, itemIndex, element) {
       const $buttonGroup = $('<div>').dxButtonGroup({
-        items: textAligns.map(({ icon, alignment, hint }) => ({ icon, alignment, hint })),
+        items: textAlignItems,
         keyExpr: 'alignment',
         stylingMode: 'outlined',
         selectedItemKeys: ['left'],
@@ -125,7 +125,7 @@ const toolbarItems = [
     menuItemTemplate(itemData, itemIndex, element) {
       const $buttonGroup = $('<div>').dxButtonGroup({
         displayExpr: 'text',
-        items: textAligns,
+        items: textAlignItemsExtended,
         keyExpr: 'alignment',
         stylingMode: 'outlined',
         selectedItemKeys: ['left'],

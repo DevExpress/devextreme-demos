@@ -46,7 +46,7 @@ const fontStyles = [
   },
 ];
 
-const textAligns = [
+const textAlignItemsExtended = [
   {
     icon: 'alignleft',
     alignment: 'left',
@@ -72,6 +72,16 @@ const textAligns = [
     text: 'Justify',
   },
 ];
+
+const textAlignItems = textAlignItemsExtended.map((item) => {
+  const { icon, alignment, hint } = item;
+
+  return {
+    icon,
+    alignment,
+    hint,
+  };
+});
 
 const listTypes = [
   {
