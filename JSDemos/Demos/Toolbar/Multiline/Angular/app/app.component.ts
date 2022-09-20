@@ -16,7 +16,7 @@ import {
 import DataSource from 'devextreme/data/data_source';
 import notify from 'devextreme/ui/notify';
 import {
-  Font,
+  FontFamilies,
   FontSize,
   FontStyle,
   LineHeight,
@@ -57,7 +57,7 @@ export class AppComponent {
 
   lineHeights: LineHeight[];
 
-  fonts: Font[];
+  fontFamilies: FontFamilies[];
 
   fontStyles: FontStyle[];
 
@@ -100,7 +100,7 @@ export class AppComponent {
     this.fontSizes = service.getFontSizes();
     this.lineHeights = service.getLineHeights();
     this.lineHeight = [this.lineHeights[1].lineHeight];
-    this.fonts = service.getFonts();
+    this.fontFamilies = service.getFontFamilies();
     this.fontStyles = service.getFontStyles();
     this.textAlignItems = service.getTextAlign();
     this.textAlignItemsExtended = service.getTextAlignExtended();
@@ -150,7 +150,7 @@ export class AppComponent {
     this.fontFamilyOptions = {
       placeholder: 'Font',
       displayExpr: 'text',
-      dataSource: new DataSource(this.fonts),
+      dataSource: new DataSource(this.fontFamilies),
     };
 
     this.fontStyleOptions = {

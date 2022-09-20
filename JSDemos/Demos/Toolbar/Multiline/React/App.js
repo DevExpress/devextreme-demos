@@ -20,6 +20,10 @@ import {
   listTypes,
 } from './data.js';
 
+const lineHeightDefault = lineHeights[1].lineHeight;
+const textAlignDefault = [textAlignItems[0].alignment];
+const fontSizeDefault = fontSizes[2].size;
+
 const toolbarLineModes = [
   {
     text: 'Multiline mode',
@@ -53,24 +57,28 @@ function App() {
     text: 'Attach',
     onClick: onAttachButtonClick,
   });
+
   const [addButtonOptions] = React.useState({
     icon: 'add',
     text: 'Add',
     onClick: onAddButtonClick,
   });
+
   const [removeButtonOptions] = React.useState({
     icon: 'trash',
     text: 'Remove',
     onClick: onRemoveButtonClick,
   });
+
   const [aboutButtonOptions] = React.useState({
     icon: 'help',
     text: 'About',
     onClick: onAboutButtonClick,
   });
-  const [lineHeight, setLineHeight] = React.useState(lineHeights[1].lineHeight);
-  const [fontSize, setFontSize] = React.useState(fontSizes[2].size);
-  const [textAlign, setTextAlign] = React.useState([textAlignItems[0].alignment]);
+
+  const [lineHeight, setLineHeight] = React.useState(lineHeightDefault);
+  const [textAlign, setTextAlign] = React.useState(textAlignDefault);
+  const [fontSize, setFontSize] = React.useState(fontSizeDefault);
   const [multiline, setMultiline] = React.useState(true);
   const [checkBoxValue, setCheckBoxValue] = React.useState(false);
 

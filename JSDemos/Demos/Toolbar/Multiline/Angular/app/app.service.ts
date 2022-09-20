@@ -12,7 +12,7 @@ export class LineHeight {
   text: string;
 }
 
-export class Font {
+export class FontFamilies {
   text: string;
 }
 
@@ -59,7 +59,7 @@ const lineHeights: LineHeight[] = [
   { lineHeight: 2, text: '2' },
 ];
 
-const fonts: Font[] = [
+const fontFamilies: FontFamilies[] = [
   { text: 'Arial' },
   { text: 'Courier New' },
   { text: 'Georgia' },
@@ -142,22 +142,22 @@ export class Service {
     return lineHeights;
   }
 
-  getFonts(): Font[] {
-    return fonts;
+  getFontFamilies(): FontFamilies[] {
+    return fontFamilies;
   }
 
   getFontStyles(): FontStyle[] {
     return fontStyles;
   }
 
-  getTextAlignExtended(): TextAlignExtended[] {
-    return textAlignsExtended;
-  }
-
   getTextAlign(): TextAlign[] {
     return textAlignsExtended.map(
       ({ icon, alignment, hint }) => ({ icon, alignment, hint }),
     );
+  }
+
+  getTextAlignExtended(): TextAlignExtended[] {
+    return textAlignsExtended;
   }
 
   getListType(): ListType[] {
