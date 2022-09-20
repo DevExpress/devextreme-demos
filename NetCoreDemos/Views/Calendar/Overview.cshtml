@@ -36,6 +36,12 @@
         </div>
         <div class="option">
             @(Html.DevExtreme().CheckBox()
+                .Text("Show week numbers")
+                .OnValueChanged("showWeekNumbers_changed")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
                 .Text("Use the Custom Cell Template")
                 .Value(false)
                 .OnValueChanged("useCustomTemplate")
@@ -143,6 +149,11 @@
         } else {
             calendar.option("firstDayOfWeek", 0);
         }
+    }
+
+    function showWeekNumbers_changed(data) {
+        var calendar = getCalendarInstance();
+        calendar.option("showWeekNumbers", data.value);
     }
 
     function useCustomTemplate(data) {

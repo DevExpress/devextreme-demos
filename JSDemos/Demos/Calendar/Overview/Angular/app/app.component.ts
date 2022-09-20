@@ -26,6 +26,8 @@ export class AppComponent {
 
   firstDay = 0;
 
+  showWeekNumbers = false;
+
   minDateValue: Date | null = null;
 
   maxDateValue: Date | null = null;
@@ -79,6 +81,10 @@ export class AppComponent {
     } else {
       this.firstDay = 0;
     }
+  }
+
+  setShowWeekNumbers(e) {
+    this.showWeekNumbers = e.value;
   }
 
   useCellTemplate(e) {

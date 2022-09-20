@@ -6,6 +6,7 @@ $(() => {
     value: new Date(),
     disabled: false,
     firstDayOfWeek: 0,
+    showWeekNumbers: false,
     zoomLevel: zoomLevels[0],
     onValueChanged(data) {
       selectedDate.option('value', data.value);
@@ -58,6 +59,13 @@ $(() => {
       } else {
         calendar.option('firstDayOfWeek', 0);
       }
+    },
+  });
+
+  $('#week-numbers').dxCheckBox({
+    text: 'Show week numbers',
+    onValueChanged(data) {
+      calendar.option('showWeekNumbers', data.value);
     },
   });
 

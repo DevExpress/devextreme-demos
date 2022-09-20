@@ -8,6 +8,7 @@
         :max="maxDateValue"
         :disabled-dates="disabledDates"
         :first-day-of-week="firstDay"
+        :show-week-numbers="showWeekNumbers"
         :disabled="disabled"
         :zoom-level="zoomLevel"
         :cell-template="cellTemplate"
@@ -47,6 +48,13 @@
           :value="false"
           text="Monday as the first day of a week"
           @value-changed="setFirstDay"
+        />
+      </div>
+      <div class="option">
+        <DxCheckBox
+          :value="false"
+          text="Show week numbers"
+          @value-changed="setShowWeekNumbers"
         />
       </div>
       <div class="option">
@@ -100,6 +108,7 @@ export default {
       maxDateValue: null,
       disabledDates: null,
       firstDay: 0,
+      showWeekNumbers: false,
       currentValue: new Date(),
       zoomLevels: ['month', 'year', 'decade', 'century'],
       cellTemplate: 'cell',
@@ -139,6 +148,9 @@ export default {
       } else {
         this.firstDay = 0;
       }
+    },
+    setShowWeekNumbers(e) {
+      this.showWeekNumbers = e.value;
     },
     useCellTemplate(e) {
       if (e.value) {

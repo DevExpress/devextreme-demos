@@ -14,6 +14,7 @@ class App extends React.Component {
       maxDateValue: null,
       disabledDates: null,
       firstDay: 0,
+      showWeekNumbers: false,
       currentValue: new Date(),
       cellTemplate: null,
       disabled: false,
@@ -27,6 +28,7 @@ class App extends React.Component {
     this.setMaxDate = this.setMaxDate.bind(this);
     this.disableWeekend = this.disableWeekend.bind(this);
     this.setFirstDay = this.setFirstDay.bind(this);
+    this.setShowWeekNumbers = this.setShowWeekNumbers.bind(this);
     this.useCellTemplate = this.useCellTemplate.bind(this);
   }
 
@@ -37,6 +39,7 @@ class App extends React.Component {
       maxDateValue,
       disabledDates,
       firstDay,
+      showWeekNumbers,
       disabled,
       zoomLevel,
       cellTemplate,
@@ -53,6 +56,7 @@ class App extends React.Component {
             max={maxDateValue}
             disabledDates={disabledDates}
             firstDayOfWeek={firstDay}
+            showWeekNumbers={showWeekNumbers}
             disabled={disabled}
             zoomLevel={zoomLevel}
             cellRender={cellTemplate} />
@@ -82,6 +86,12 @@ class App extends React.Component {
               defaultValue={false}
               text="Monday as the first day of a week"
               onValueChanged={this.setFirstDay} />
+          </div>
+          <div className="option">
+            <CheckBox
+              defaultValue={false}
+              text="Show week numbers"
+              onValueChanged={this.setShowWeekNumbers} />
           </div>
           <div className="option">
             <CheckBox
@@ -163,6 +173,12 @@ class App extends React.Component {
   setFirstDay(e) {
     this.setState({
       firstDay: e.value ? 1 : 0,
+    });
+  }
+
+  setShowWeekNumbers(e) {
+    this.setState({
+      showWeekNumbers: e.value,
     });
   }
 
