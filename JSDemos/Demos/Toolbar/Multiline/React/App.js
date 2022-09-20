@@ -13,7 +13,7 @@ import 'devextreme/ui/select_box';
 import {
   fontSizes,
   lineHeights,
-  fonts,
+  fontFamilies,
   fontStyles,
   textAligns,
   listTypes,
@@ -214,7 +214,7 @@ function App() {
               <SelectBox
                 placeholder="Font"
                 displayExpr="text"
-                dataSource={fonts}
+                dataSource={fontFamilies}
               ></SelectBox>
             </Item>
 

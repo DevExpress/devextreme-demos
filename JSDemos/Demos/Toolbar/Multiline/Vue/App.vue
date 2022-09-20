@@ -406,6 +406,10 @@ export default {
   margin-bottom: 5px;
 }
 
+.dx-toolbar-menu-section .dx-selectbox {
+  width: auto;
+}
+
 .widget-container {
   width: calc(100% - 6px);
 }
