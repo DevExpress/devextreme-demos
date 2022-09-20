@@ -10,6 +10,7 @@ const menuMetaData = require('../../JSDemos/menuMeta.json');
 const existingApproaches = ['jQuery', 'Knockout', 'AngularJS', 'Angular', 'React', 'Vue'];
 
 // const descriptionFileName = 'description.md';
+// const descriptionFileName = 'description.md';
 
 const menuMetaFilePath = './JSDemos/menuMeta.json';
 
