@@ -1194,7 +1194,8 @@
               "/Models/Sale.cs",
               "/Models/SampleData/Sales.cs"
             ],
-            "DemoType": "Web"
+            "DemoType": "Web",
+            "Badge": "Updated"
           }
         ]
       }
@@ -4153,7 +4154,8 @@
             "MvcAdditionalFiles": [
               "/Controllers/CheckBoxController.cs",
               "/Views/CheckBox/Overview.cshtml"
-            ]
+            ],
+            "Badge": "Updated"
           }
         ]
       },
