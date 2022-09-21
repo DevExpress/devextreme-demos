@@ -113,7 +113,7 @@ $(() => {
 
     if (data.view === 'month') {
       if (!data.date) {
-        cssClass = 'weeknumber';
+        cssClass = 'week-number';
       } else {
         if (isWeekend(data.date)) { cssClass = 'weekend'; }
 

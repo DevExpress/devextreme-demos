@@ -165,7 +165,7 @@ export default {
 
       if (view === 'month') {
         if (!date) {
-          cssClass = 'weeknumber';
+          cssClass = 'week-number';
         } else {
           if (this.isWeekend(date)) { cssClass = 'weekend'; }
 
@@ -213,7 +213,7 @@ export default {
   color: #ff8080;
 }
 
-.dx-calendar-week-number-cell .weeknumber {
+.dx-calendar-week-number-cell .week-number {
   font-style: italic;
 }
 

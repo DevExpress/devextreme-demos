@@ -203,7 +203,7 @@ function getCellCssClass({ date, view }) {
 
   if (view === 'month') {
     if (!date) {
-      cssClass = 'weeknumber';
+      cssClass = 'week-number';
     } else {
       if (isWeekend(date)) { cssClass = 'weekend'; }
 

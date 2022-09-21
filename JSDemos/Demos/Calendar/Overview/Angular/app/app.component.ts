@@ -100,7 +100,7 @@ export class AppComponent {
 
     if (view === 'month') {
       if (!date) {
-        cssClass = 'weeknumber';
+        cssClass = 'week-number';
       } else {
         if (this.isWeekend(date)) { cssClass = 'weekend'; }
 
