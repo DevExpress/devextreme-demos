@@ -202,13 +202,17 @@ function getCellCssClass({ date, view }) {
   const holydays = [[1, 0], [4, 6], [25, 11]];
 
   if (view === 'month') {
-    if (isWeekend(date)) { cssClass = 'weekend'; }
+    if (!date) {
+      cssClass = 'weeknumber';
+    } else {
+      if (isWeekend(date)) { cssClass = 'weekend'; }
 
-    holydays.forEach((item) => {
-      if (date.getDate() === item[0] && date.getMonth() === item[1]) {
-        cssClass = 'holyday';
-      }
-    });
+      holydays.forEach((item) => {
+        if (date.getDate() === item[0] && date.getMonth() === item[1]) {
+          cssClass = 'holyday';
+        }
+      });
+    }
   }
 
   return cssClass;

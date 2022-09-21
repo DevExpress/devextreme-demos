@@ -164,13 +164,17 @@ export default {
       const holydays = [[1, 0], [4, 6], [25, 11]];
 
       if (view === 'month') {
-        if (this.isWeekend(date)) { cssClass = 'weekend'; }
+        if (!date) {
+          cssClass = 'weeknumber';
+        } else {
+          if (this.isWeekend(date)) { cssClass = 'weekend'; }
 
-        holydays.forEach((item) => {
-          if (date.getDate() === item[0] && date.getMonth() === item[1]) {
-            cssClass = 'holyday';
-          }
-        });
+          holydays.forEach((item) => {
+            if (date.getDate() === item[0] && date.getMonth() === item[1]) {
+              cssClass = 'holyday';
+            }
+          });
+        }
       }
 
       return cssClass;
@@ -207,6 +211,10 @@ export default {
 
 .dx-state-disabled.dx-calendar .dx-calendar-cell:not(.dx-calendar-other-month) .holyday {
   color: #ff8080;
+}
+
+.dx-calendar-week-number-cell .weeknumber {
+  font-style: italic;
 }
 
 .options {

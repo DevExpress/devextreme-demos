@@ -95,15 +95,19 @@
         var cssClass = "";
 
         if (data.view === 'month') {
-            if (isWeekend(data.date))
-                cssClass = "weekend";
+            if (!data.date) {
+                cssClass = "weeknumber";
+            } else {
+                if (isWeekend(data.date))
+                    cssClass = "weekend";
 
-            $.each([[1, 0], [4, 6], [25, 11]], function (_, item) {
-                if(data.date.getDate() === item[0] && data.date.getMonth() === item[1]) {
-                    cssClass = "holyday";
-                    return false;
-                }
-            });
+                $.each([[1, 0], [4, 6], [25, 11]], function (_, item) {
+                    if(data.date.getDate() === item[0] && data.date.getMonth() === item[1]) {
+                        cssClass = "holyday";
+                        return false;
+                    }
+                });
+            }
         }
 
         return "<span class='" + cssClass + "'>" + data.text + "</span>";
