@@ -96,9 +96,9 @@ window.onload = function () {
   function updateEmployeeInfo() {
     let result = '';
     result += $.trim(`${firstName || ''} ${lastName || ''}`);
-    result += (result && position) ? (`, ${position}`) : position || '';
-    result += (result && state) ? (`, ${state}`) : state || '';
-    result += (result && currentClient) ? (`, ${currentClient}`) : currentClient || '';
+    result += (result && position) ? (`, ${position}`) : position ?? '';
+    result += (result && state) ? (`, ${state}`) : state ?? '';
+    result += (result && currentClient) ? (`, ${currentClient}`) : currentClient ?? '';
 
     viewModel.fullInfo(result);
   }
