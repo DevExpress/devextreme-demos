@@ -35,47 +35,31 @@ const toolbarLineModes = [
   },
 ];
 
+const attachButtonOptions = {
+  icon: 'attach',
+  text: 'Attach',
+  onClick: () => notify('Attach button has been clicked!'),
+};
+
+const addButtonOptions = {
+  icon: 'add',
+  text: 'Add',
+  onClick: () => notify('Add button has been clicked!'),
+};
+
+const removeButtonOptions = {
+  icon: 'trash',
+  text: 'Remove',
+  onClick: () => notify('Remove button has been clicked!'),
+};
+
+const aboutButtonOptions = {
+  icon: 'help',
+  text: 'About',
+  onClick: () => notify('About button has been clicked!'),
+};
+
 function App() {
-  const onAttachButtonClick = React.useCallback(() => {
-    notify('Attach button has been clicked!');
-  }, []);
-
-  const onAddButtonClick = React.useCallback(() => {
-    notify('Add button has been clicked!');
-  }, []);
-
-  const onRemoveButtonClick = React.useCallback(() => {
-    notify('Remove button has been clicked!');
-  }, []);
-
-  const onAboutButtonClick = React.useCallback(() => {
-    notify('About button has been clicked!');
-  }, []);
-
-  const [attachButtonOptions] = React.useState({
-    icon: 'attach',
-    text: 'Attach',
-    onClick: onAttachButtonClick,
-  });
-
-  const [addButtonOptions] = React.useState({
-    icon: 'add',
-    text: 'Add',
-    onClick: onAddButtonClick,
-  });
-
-  const [removeButtonOptions] = React.useState({
-    icon: 'trash',
-    text: 'Remove',
-    onClick: onRemoveButtonClick,
-  });
-
-  const [aboutButtonOptions] = React.useState({
-    icon: 'help',
-    text: 'About',
-    onClick: onAboutButtonClick,
-  });
-
   const [lineHeight, setLineHeight] = React.useState(lineHeightDefault);
   const [textAlign, setTextAlign] = React.useState(textAlignDefault);
   const [fontSize, setFontSize] = React.useState(fontSizeDefault);
