@@ -75,7 +75,7 @@
           [minSearchLength]="2"
           [searchTimeout]="500"
           valueExpr="Text"
-          [dataSource]="clients"
+          [dataSource]="clientsStore"
           [(value)]="currentClient"
           (onValueChanged)="updateEmployeeInfo($event)"
         >

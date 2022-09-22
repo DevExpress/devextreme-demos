@@ -67,7 +67,7 @@
             <div class="dx-field-label">Current Client</div>
             <div class="dx-field-value">
                 @(Html.DevExtreme().Autocomplete()
-                    .DataSource(new JS("autoComplete_customStore"))
+                    .DataSource(new JS("clientsStore"))
                     .MinSearchLength(2)
                     .SearchTimeout(500)
                     .Placeholder("Type client name...")
@@ -92,7 +92,7 @@
         state = "",
         currentClient = "";
 
-    var autoComplete_customStore = new DevExpress.data.CustomStore({
+    var clientsStore = new DevExpress.data.CustomStore({
         key: "Value",
         useDefaultSearch: true,
         load(loadOptions) {

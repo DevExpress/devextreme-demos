@@ -73,7 +73,7 @@
         <div class="dx-field-label">Current Client</div>
         <div class="dx-field-value">
           <DxAutocomplete
-            :data-source="clients"
+            :data-source="clientsStore"
             v-model:value="currentClient"
             :min-search-length="2"
             :search-timeout="500"
@@ -112,7 +112,7 @@ const states = new ODataStore({
   keyType: 'Int32',
 });
 
-const clients = new CustomStore({
+const clientsStore = new CustomStore({
   key: 'Value',
   useDefaultSearch: true,
   load(loadOptions) {
@@ -151,7 +151,7 @@ export default {
       surnames,
       positions,
       states,
-      clients,
+      clientsStore,
     };
   },
   methods: {

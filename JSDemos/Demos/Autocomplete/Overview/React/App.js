@@ -19,7 +19,7 @@ const states = new OData({
   keyType: 'Int32',
 });
 
-const clients = new CustomStore({
+const clientsStore = new CustomStore({
   key: 'Value',
   useDefaultSearch: true,
   load(loadOptions) {
@@ -136,7 +136,7 @@ class App extends React.Component {
             <div className="dx-field-label">Current Client</div>
             <div className="dx-field-value">
               <Autocomplete
-                dataSource={clients}
+                dataSource={clientsStore}
                 value={this.state.currentClient}
                 valueExpr="Text"
                 onValueChanged={this.handleCurrentClientChange}

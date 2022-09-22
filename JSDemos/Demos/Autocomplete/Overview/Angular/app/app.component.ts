@@ -30,7 +30,7 @@ export class AppComponent {
 
   states: any;
 
-  clients: CustomStore;
+  clientsStore: CustomStore;
 
   firstName = '';
 
@@ -48,7 +48,7 @@ export class AppComponent {
     function isNotEmpty(value: any): boolean {
       return value !== undefined && value !== null && value !== '';
     }
-    this.clients = new CustomStore({
+    this.clientsStore = new CustomStore({
       key: 'Value',
       useDefaultSearch: true,
       load(loadOptions: any) {
