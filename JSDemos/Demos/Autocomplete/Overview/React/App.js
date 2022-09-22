@@ -28,8 +28,10 @@ const clientsStore = new CustomStore({
       'skip',
       'take',
       'filter',
-    ].forEach((i) => {
-      if (i in loadOptions && isNotEmpty(loadOptions[i])) { params += `${i}=${JSON.stringify(loadOptions[i])}&`; }
+    ].forEach((option) => {
+      if (Object.hasOwn(loadOptions) && isNotEmpty(loadOptions[option])) {
+        params += `${option}=${JSON.stringify(loadOptions[option])}&`;
+      }
     });
     params = params.slice(0, -1);
     return fetch(`https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi/CustomersLookup${params}`)

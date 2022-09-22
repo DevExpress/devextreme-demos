@@ -55,8 +55,10 @@ window.onload = function () {
             'skip',
             'take',
             'filter',
-          ].forEach((i) => {
-            if (i in loadOptions && isNotEmpty(loadOptions[i])) { params += `${i}=${JSON.stringify(loadOptions[i])}&`; }
+          ].forEach((option) => {
+            if (Object.hasOwn(loadOptions, option) && isNotEmpty(loadOptions[option])) {
+              params += `${option}=${JSON.stringify(loadOptions[option])}&`;
+            }
           });
           params = params.slice(0, -1);
 

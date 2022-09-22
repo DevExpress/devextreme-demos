@@ -57,8 +57,10 @@ export class AppComponent {
           'skip',
           'take',
           'filter',
-        ].forEach((i) => {
-          if (i in loadOptions && isNotEmpty(loadOptions[i])) { params = params.set(i, JSON.stringify(loadOptions[i])); }
+        ].forEach((option) => {
+          if (Object.hasOwn(loadOptions, option) && isNotEmpty(loadOptions[option])) {
+            params = params.set(option, JSON.stringify(loadOptions[option]));
+          }
         });
         return lastValueFrom(httpClient.get('https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi/CustomersLookup', { params }))
           .then((data: any) => ({
