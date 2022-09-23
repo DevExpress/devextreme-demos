@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 ::ng-deep .dx-resizable-handle::after {
   content: "";
   background-color: #337ab7;
