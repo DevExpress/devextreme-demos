@@ -3940,11 +3940,11 @@
             "Badge": "New",
             "DemoType": "Web",
             "MvcAdditionalFiles": [
-              "/ViewModels/DropDownButtonViewModel.cs",
+              "/ViewModels/ToolbarViewModel.cs",
               "/Models/FontStyle.cs",
               "/Models/ListType.cs",
               "/Models/TextAlign.cs",
-              "/Models/SampleData/DropDownButtonData.cs"
+              "/Models/SampleData/ToolbarData.cs"
             ]
           }
         ]
