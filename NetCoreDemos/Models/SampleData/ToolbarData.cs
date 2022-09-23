@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace DevExtreme.MVC.Demos.Models.SampleData {
+namespace DevExtreme.NETCore.Demos.Models.SampleData {
     public partial class ToolbarData {
         public static readonly IEnumerable<SimpleData> FontFamilies = new[] {
             new SimpleData{ Text = "Arial", Value = "arial" },
