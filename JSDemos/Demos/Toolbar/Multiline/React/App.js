@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import Toolbar, { Item } from 'devextreme-react/toolbar';
 import { Button } from 'devextreme-react/button';
 import { ButtonGroup } from 'devextreme-react/button-group';
@@ -23,6 +23,7 @@ import {
 const lineHeightDefault = lineHeights[1].lineHeight;
 const textAlignDefault = [textAlignItems[0].alignment];
 const fontSizeDefault = fontSizes[2].size;
+const dateBoxValue = new Date(2022, 9, 7);
 
 const toolbarLineModes = [
   {
@@ -60,52 +61,52 @@ const aboutButtonOptions = {
 };
 
 function App() {
-  const [lineHeight, setLineHeight] = React.useState(lineHeightDefault);
-  const [textAlign, setTextAlign] = React.useState(textAlignDefault);
-  const [fontSize, setFontSize] = React.useState(fontSizeDefault);
-  const [multiline, setMultiline] = React.useState(true);
-  const [checkBoxValue, setCheckBoxValue] = React.useState(false);
+  const [lineHeight, setLineHeight] = useState(lineHeightDefault);
+  const [textAlign, setTextAlign] = useState(textAlignDefault);
+  const [fontSize, setFontSize] = useState(fontSizeDefault);
+  const [multiline, setMultiline] = useState(true);
+  const [checkBoxValue, setCheckBoxValue] = useState(false);
 
-  const onItemClick = React.useCallback((e) => {
+  const onItemClick = useCallback((e) => {
     notify(`The "${e.itemData.hint}" button was clicked`);
   }, []);
 
-  const onUndoButtonClick = React.useCallback(() => {
+  const onUndoButtonClick = useCallback(() => {
     notify('Undo button has been clicked!');
   }, []);
 
-  const onRedoButtonClick = React.useCallback(() => {
+  const onRedoButtonClick = useCallback(() => {
     notify('Redo button has been clicked!');
   }, []);
 
-  const onCheckBoxChange = React.useCallback(({ value }) => {
+  const onCheckBoxChange = useCallback(({ value }) => {
     setCheckBoxValue(value);
     notify('Checkbox value has been changed!');
-  }, []);
+  }, [setCheckBoxValue]);
 
-  const onLineHeightChange = React.useCallback((e) => {
+  const onLineHeightChange = useCallback((e) => {
     setLineHeight(e.item.lineHeight);
     notify('Line height value has been changed!');
-  }, []);
+  }, [setLineHeight]);
 
-  const onFontSizeChange = React.useCallback((e) => {
+  const onFontSizeChange = useCallback((e) => {
     setFontSize(e.item.size);
     notify('Font size value has been changed!');
   }, []);
 
-  const onTextAlignChange = React.useCallback((e) => {
+  const onTextAlignChange = useCallback((e) => {
     setTextAlign([e.itemData.alignment]);
-  }, []);
+  }, [setFontSize]);
 
-  const onToolbarLineModeChange = React.useCallback(({ value }) => {
+  const onToolbarLineModeChange = useCallback(({ value }) => {
     setMultiline(value);
-  }, []);
+  }, [setMultiline]);
 
-  const renderFontSize = React.useCallback((itemData) => (
+  const renderFontSize = useCallback((itemData) => (
     <div style={{ fontSize: `${itemData.size}px` }}>{itemData.text}</div>
   ), []);
 
-  const renderTextAlign = React.useCallback(() => (
+  const renderTextAlign = useCallback(() => (
     <ButtonGroup
       keyExpr="alignment"
       stylingMode="outlined"
@@ -115,7 +116,7 @@ function App() {
     ></ButtonGroup>
   ), [textAlign]);
 
-  const renderTextAlignMenu = React.useCallback(() => (
+  const renderTextAlignMenu = useCallback(() => (
     <ButtonGroup
       displayExpr="text"
       keyExpr="alignment"
@@ -126,7 +127,7 @@ function App() {
     ></ButtonGroup>
   ), [textAlign]);
 
-  const renderMenuSeparator = React.useCallback(() => <div className="toolbar-menu-separator"></div>, []);
+  const renderMenuSeparator = useCallback(() => <div className="toolbar-menu-separator"></div>, []);
 
   return (
     <React.Fragment>
@@ -251,7 +252,7 @@ function App() {
               <DateBox
                 width={200}
                 type="date"
-                value={new Date(2022, 9, 7)}
+                value={dateBoxValue}
               ></DateBox>
             </Item>
 
