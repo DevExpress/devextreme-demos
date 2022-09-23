@@ -49,172 +49,135 @@ export class AppComponent {
     },
   ];
 
-  multiline: boolean;
+  multiline = true;
 
-  lineHeight: number[];
+  fontSizes: FontSize[] = this.service.getFontSizes();
 
-  fontSizes: FontSize[];
+  lineHeights: LineHeight[] = this.service.getLineHeights();
 
-  lineHeights: LineHeight[];
+  lineHeight: number[] = [this.lineHeights[1].lineHeight];
 
-  fontFamilies: FontFamilies[];
+  fontFamilies: FontFamilies[] = this.service.getFontFamilies();
 
-  fontStyles: FontStyle[];
+  fontStyles: FontStyle[] = this.service.getFontStyles();
 
-  textAlignItems: TextAlign[];
+  textAlignItems: TextAlign[] = this.service.getTextAlign();
 
-  textAlignItemsExtended: TextAlignExtended[];
+  textAlignItemsExtended: TextAlignExtended[] = this.service.getTextAlignExtended();
 
-  selectedTextAlign: string[];
+  selectedTextAlign: string[] = [this.textAlignItems[0].alignment];
 
-  listTypes: ListType[];
+  listTypes: ListType[] = this.service.getListType();
 
-  undoButtonOptions: any;
+  undoButtonOptions = {
+    icon: 'undo',
+    onClick: () => {
+      notify('Undo button has been clicked!');
+    },
+  };
 
-  redoButtonOptions: any;
+  redoButtonOptions = {
+    icon: 'redo',
+    onClick: () => {
+      notify('Redo button has been clicked!');
+    },
+  };
 
-  fontSizeOptions: any;
+  fontSizeOptions = {
+    width: '100%',
+    displayExpr: 'text',
+    keyExpr: 'size',
+    useSelectMode: true,
+    items: this.fontSizes,
+    selectedItemKey: this.fontSizes[2].size,
+    itemTemplate: 'fontSizeTemplate',
+    onSelectionChanged: (): void => {
+      notify('Font size value has been changed!');
+    },
+  };
 
-  lineHeightOptions: any;
+  lineHeightOptions = {
+    width: '100%',
+    icon: 'indent',
+    displayExpr: 'text',
+    keyExpr: 'lineHeight',
+    useSelectMode: true,
+    items: this.lineHeights,
+    selectedItemKey: this.lineHeight,
+    onSelectionChanged: (): void => {
+      notify('Line height value has been changed!');
+    },
+  };
 
-  fontFamilyOptions: any;
+  fontFamilyOptions = {
+    placeholder: 'Font',
+    displayExpr: 'text',
+    dataSource: new DataSource(this.fontFamilies),
+  };
 
-  fontStyleOptions: any;
+  fontStyleOptions = {
+    displayExpr: 'text',
+    items: this.fontStyles,
+    keyExpr: 'style',
+    stylingMode: 'outlined',
+    selectionMode: 'multiple',
+    onItemClick: this.onItemClick,
+  };
 
-  listOptions: any;
+  listOptions = {
+    items: this.listTypes,
+    keyExpr: 'alignment',
+    stylingMode: 'outlined',
+    onItemClick: this.onItemClick,
+  };
 
-  dateBoxOptions: any;
+  dateBoxOptions = {
+    width: 200,
+    type: 'date',
+    value: new Date(2022, 9, 7),
+  };
 
-  checkBoxOptions: any;
+  checkBoxOptions = {
+    value: false,
+    text: 'Checkbox text',
+    onOptionChanged: (): void => {
+      notify('Checkbox value has been changed!');
+    },
+  };
 
-  attachButtonOptions: any;
+  attachButtonOptions = {
+    icon: 'attach',
+    text: 'Attach',
+    onClick: (): void => {
+      notify('Attach button has been clicked!');
+    },
+  };
 
-  addButtonOptions: any;
+  addButtonOptions = {
+    icon: 'add',
+    text: 'Add',
+    onClick: (): void => {
+      notify('Add button has been clicked!');
+    },
+  };
 
-  removeButtonOptions: any;
+  removeButtonOptions = {
+    icon: 'trash',
+    text: 'Remove',
+    onClick: (): void => {
+      notify('Remove button has been clicked!');
+    },
+  };
 
-  aboutButtonOptions: any;
+  aboutButtonOptions = {
+    icon: 'help',
+    text: 'About',
+    onClick: (): void => {
+      notify('About button has been clicked!');
+    },
+  };
 
-  constructor(service: Service) {
-    this.multiline = true;
-    this.fontSizes = service.getFontSizes();
-    this.lineHeights = service.getLineHeights();
-    this.lineHeight = [this.lineHeights[1].lineHeight];
-    this.fontFamilies = service.getFontFamilies();
-    this.fontStyles = service.getFontStyles();
-    this.textAlignItems = service.getTextAlign();
-    this.textAlignItemsExtended = service.getTextAlignExtended();
-    this.selectedTextAlign = [this.textAlignItems[0].alignment];
-    this.listTypes = service.getListType();
-
-    this.undoButtonOptions = {
-      icon: 'undo',
-      onClick: () => {
-        notify('Undo button has been clicked!');
-      },
-    };
-
-    this.redoButtonOptions = {
-      icon: 'redo',
-      onClick: () => {
-        notify('Redo button has been clicked!');
-      },
-    };
-
-    this.fontSizeOptions = {
-      width: '100%',
-      displayExpr: 'text',
-      keyExpr: 'size',
-      useSelectMode: true,
-      items: this.fontSizes,
-      selectedItemKey: this.fontSizes[2].size,
-      itemTemplate: 'fontSizeTemplate',
-      onSelectionChanged: (): void => {
-        notify('Font size value has been changed!');
-      },
-    };
-
-    this.lineHeightOptions = {
-      width: '100%',
-      icon: 'indent',
-      displayExpr: 'text',
-      keyExpr: 'lineHeight',
-      useSelectMode: true,
-      items: this.lineHeights,
-      selectedItemKey: this.lineHeight,
-      onSelectionChanged: (): void => {
-        notify('Line height value has been changed!');
-      },
-    };
-
-    this.fontFamilyOptions = {
-      placeholder: 'Font',
-      displayExpr: 'text',
-      dataSource: new DataSource(this.fontFamilies),
-    };
-
-    this.fontStyleOptions = {
-      displayExpr: 'text',
-      items: this.fontStyles,
-      keyExpr: 'style',
-      stylingMode: 'outlined',
-      selectionMode: 'multiple',
-      onItemClick: this.onItemClick,
-    };
-
-    this.listOptions = {
-      items: this.listTypes,
-      keyExpr: 'alignment',
-      stylingMode: 'outlined',
-      onItemClick: this.onItemClick,
-    };
-
-    this.dateBoxOptions = {
-      width: 200,
-      type: 'date',
-      value: new Date(2022, 9, 7),
-    };
-
-    this.checkBoxOptions = {
-      value: false,
-      text: 'Checkbox text',
-      onOptionChanged: (): void => {
-        notify('Checkbox value has been changed!');
-      },
-    };
-
-    this.attachButtonOptions = {
-      icon: 'attach',
-      text: 'Attach',
-      onClick: (): void => {
-        notify('Attach button has been clicked!');
-      },
-    };
-
-    this.addButtonOptions = {
-      icon: 'add',
-      text: 'Add',
-      onClick: (): void => {
-        notify('Add button has been clicked!');
-      },
-    };
-
-    this.removeButtonOptions = {
-      icon: 'trash',
-      text: 'Remove',
-      onClick: (): void => {
-        notify('Remove button has been clicked!');
-      },
-    };
-
-    this.aboutButtonOptions = {
-      icon: 'help',
-      text: 'About',
-      onClick: (): void => {
-        notify('About button has been clicked!');
-      },
-    };
-  }
+  constructor(private service: Service) {}
 
   onItemClick(e: { itemData: { hint: string } }): void {
     notify(`The "${e.itemData.hint}" button was clicked`);
