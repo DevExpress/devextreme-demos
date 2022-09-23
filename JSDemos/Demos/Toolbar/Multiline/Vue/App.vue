@@ -400,7 +400,8 @@ export default {
   width: 12px;
   height: 12px;
   border: 1px solid #337ab7;
-  top: calc(50% - 7px);
+  top: 50%;
+  transform: translateY(-7px);
 }
 
 .dx-resizable-handle-right::after {
@@ -416,7 +417,7 @@ export default {
 }
 
 .widget-container {
-  width: calc(100% - 6px);
+  margin-right: 6px;
 }
 
 .resizable-container {
