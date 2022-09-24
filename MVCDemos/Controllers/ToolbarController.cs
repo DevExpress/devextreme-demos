@@ -22,7 +22,6 @@ namespace DevExtreme.MVC.Demos.Controllers {
         }
         #endregion
 
-        #region Multiline
         public ActionResult Multiline() {
             return View(new ToolbarViewModel() {
                 FontFamilies = ToolbarViewModel.FontFamilies,
@@ -35,6 +34,5 @@ namespace DevExtreme.MVC.Demos.Controllers {
                 ToolbarModes = ToolbarViewModel.ToolbarModes,
             });
         }
-        #endregion
     }
 }
