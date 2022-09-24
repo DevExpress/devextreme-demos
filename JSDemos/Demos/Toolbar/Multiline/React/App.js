@@ -92,11 +92,11 @@ function App() {
   const onFontSizeChange = useCallback((e) => {
     setFontSize(e.item.size);
     notify('Font size value has been changed!');
-  }, []);
+  }, [setFontSize]);
 
   const onTextAlignChange = useCallback((e) => {
     setTextAlign([e.itemData.alignment]);
-  }, [setFontSize]);
+  }, [setTextAlign]);
 
   const onToolbarLineModeChange = useCallback(({ value }) => {
     setMultiline(value);
