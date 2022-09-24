@@ -114,7 +114,7 @@ function App() {
       selectedItemKeys={textAlign}
       onItemClick={onTextAlignChange}
     ></ButtonGroup>
-  ), [textAlign]);
+  ), [textAlign, textAlignItems, onTextAlignChange]);
 
   const renderTextAlignMenu = useCallback(() => (
     <ButtonGroup
@@ -125,7 +125,7 @@ function App() {
       selectedItemKeys={textAlign}
       onItemClick={onTextAlignChange}
     ></ButtonGroup>
-  ), [textAlign]);
+  ), [textAlign, textAlignItemsExtended, onTextAlignChange]);
 
   const renderMenuSeparator = useCallback(() => <div className="toolbar-menu-separator"></div>, []);
 
