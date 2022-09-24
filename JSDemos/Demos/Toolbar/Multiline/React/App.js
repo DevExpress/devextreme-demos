@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import Toolbar, { Item } from 'devextreme-react/toolbar';
 import { Button } from 'devextreme-react/button';
 import { ButtonGroup } from 'devextreme-react/button-group';
@@ -61,52 +61,52 @@ const aboutButtonOptions = {
 };
 
 function App() {
-  const [lineHeight, setLineHeight] = useState(lineHeightDefault);
-  const [textAlign, setTextAlign] = useState(textAlignDefault);
-  const [fontSize, setFontSize] = useState(fontSizeDefault);
-  const [multiline, setMultiline] = useState(true);
-  const [checkBoxValue, setCheckBoxValue] = useState(false);
+  const [lineHeight, setLineHeight] = React.useState(lineHeightDefault);
+  const [textAlign, setTextAlign] = React.useState(textAlignDefault);
+  const [fontSize, setFontSize] = React.useState(fontSizeDefault);
+  const [multiline, setMultiline] = React.useState(true);
+  const [checkBoxValue, setCheckBoxValue] = React.useState(false);
 
-  const onItemClick = useCallback((e) => {
+  const onItemClick = React.useCallback((e) => {
     notify(`The "${e.itemData.hint}" button was clicked`);
   }, []);
 
-  const onUndoButtonClick = useCallback(() => {
+  const onUndoButtonClick = React.useCallback(() => {
     notify('Undo button has been clicked!');
   }, []);
 
-  const onRedoButtonClick = useCallback(() => {
+  const onRedoButtonClick = React.useCallback(() => {
     notify('Redo button has been clicked!');
   }, []);
 
-  const onCheckBoxChange = useCallback(({ value }) => {
+  const onCheckBoxChange = React.useCallback(({ value }) => {
     setCheckBoxValue(value);
     notify('Checkbox value has been changed!');
   }, [setCheckBoxValue]);
 
-  const onLineHeightChange = useCallback((e) => {
+  const onLineHeightChange = React.useCallback((e) => {
     setLineHeight(e.item.lineHeight);
     notify('Line height value has been changed!');
   }, [setLineHeight]);
 
-  const onFontSizeChange = useCallback((e) => {
+  const onFontSizeChange = React.useCallback((e) => {
     setFontSize(e.item.size);
     notify('Font size value has been changed!');
   }, [setFontSize]);
 
-  const onTextAlignChange = useCallback((e) => {
+  const onTextAlignChange = React.useCallback((e) => {
     setTextAlign([e.itemData.alignment]);
   }, [setTextAlign]);
 
-  const onToolbarLineModeChange = useCallback(({ value }) => {
+  const onToolbarLineModeChange = React.useCallback(({ value }) => {
     setMultiline(value);
   }, [setMultiline]);
 
-  const renderFontSize = useCallback((itemData) => (
+  const renderFontSize = React.useCallback((itemData) => (
     <div style={{ fontSize: `${itemData.size}px` }}>{itemData.text}</div>
   ), []);
 
-  const renderTextAlign = useCallback(() => (
+  const renderTextAlign = React.useCallback(() => (
     <ButtonGroup
       keyExpr="alignment"
       stylingMode="outlined"
@@ -116,7 +116,7 @@ function App() {
     ></ButtonGroup>
   ), [textAlign, textAlignItems, onTextAlignChange]);
 
-  const renderTextAlignMenu = useCallback(() => (
+  const renderTextAlignMenu = React.useCallback(() => (
     <ButtonGroup
       displayExpr="text"
       keyExpr="alignment"
@@ -127,7 +127,7 @@ function App() {
     ></ButtonGroup>
   ), [textAlign, textAlignItemsExtended, onTextAlignChange]);
 
-  const renderMenuSeparator = useCallback(() => <div className="toolbar-menu-separator"></div>, []);
+  const renderMenuSeparator = React.useCallback(() => <div className="toolbar-menu-separator"></div>, []);
 
   return (
     <React.Fragment>
