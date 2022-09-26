@@ -10,28 +10,43 @@ When you add a Calendar to an application, you need to specify its [value](/Docu
     - 'yyyy-MM-ddTHH:mm:ssZ'
     - 'yyyy-MM-ddTHH:mm:ssx' 
 
-This demo shows how to use additional properties to customize your Calendar. You can toggle the checkboxes on the right to change the Calendar in real time.
+This demo shows how to use the component's properties to customize its appearance and behavior. 
+You can toggle the checkboxes on the right to change the Calendar configuration in real time.
 
 ## Disable Dates
 
-Use the [min](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#min) and [max](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#max) properties to specify the range of available dates. In this demo, these properties limit the range to three days before and after the current date. Enable the "Specified min value" and "Specified max value" checkboxes to apply the properties.
+To specify the range of available dates, use the [min](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#min) and [max](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#max) properties. 
+In the demo, these properties limit the range to three days before and after the current date. 
+Check the "Specified min value" and "Specified max value" checkboxes to display the range of available dates.
 
-If you need to disable specific dates, use the [disabledDates](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#disabledDates) property. Toggle the "Disable weekend" checkbox to see how this setting affects the component's behavior. You can specify either an array of predefined dates or a function that determines whether a date is available.
+If you need to disable specific dates, use the [disabledDates](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#disabledDates) property. 
+Toggle the "Disable weekend" checkbox to see how this setting affects the component's behavior. 
+You can specify either an array of predefined dates or a function that determines whether a date is available.
 
 ## Set the Beginning of the Week
 
-To specify the first day of the week, pass its index (0 - for Sunday, 1 - for Monday, and so on) to the [firstDayOfWeek](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#firstDayOfWeek) property.
+To specify the first day of the week, set the [firstDayOfWeek](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#firstDayOfWeek) property to its index (0 - for Sunday, 1 - for Monday, and so on).
+
+## Display Week Numbers 
+
+To display a column of the week numbers, set the [showWeekNumbers](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#showWeekNumbers) property to `true`. 
 
 ## Handle Value Change
 
-Set the [onValueChanged](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#onValueChanged) property to handle the **value** change. In this demo, the [DateBox](/Documentation/Guide/UI_Components/DateBox/Getting_Started_with_DateBox/) and the Calendar both use this property to pass values between each other. You can use one of these components to change the date. See how it affects the other.
+You can handle the [value](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#value) change. 
+For this, use the [onValueChanged](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#onValueChanged) property. 
+In the demo, the [DateBox](/Documentation/Guide/UI_Components/DateBox/Getting_Started_with_DateBox/) and the Calendar both use the **onValueChanged** property to pass values between each other. 
+Use one of these components to change the date. 
+See how it affects the other.
 
 ## Customize Cell Appearance
 
-Use the [cellTemplate](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#cellTemplate) property to customize cell appearance. In this demo, when you toggle the "Use the Custom Cell Template" checkbox, all the weekends on the Calendar become blue, and all the holidays become red. You can set your own function that changes the class of the span element that contains cell text.
+To customize cell appearance, you can use the [cellTemplate](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#cellTemplate) property. 
+In this demo, when you toggle the "Use the Custom Cell Template" checkbox, all the weekends on the Calendar become blue, and all the holidays become red. 
+You can implement a custom function that changes the class of the span element that contains cell text.
 
 ## Other Customizations
 
-Set the [disabled](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#disabled) property to disable the Calendar.
+To disable the Calendar, set the [disabled](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#disabled) property to `true`.
 
-To specify the initial calendar view (month, year, decade, or century), set the [zoomLevel](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#zoomLevel) property.
+To specify the initial Calendar view (month, year, decade, or century), use the [zoomLevel](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#zoomLevel) property.
