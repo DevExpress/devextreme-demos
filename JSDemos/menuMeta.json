@@ -4722,7 +4722,8 @@
             "Name": "Overview",
             "Widget": "RangeSlider"
           }
-        ]
+        ],
+        "Badge": "Updated"
       },
       {
         "Name": "Responsive Box",
@@ -4762,7 +4763,8 @@
             "DocUrl": "Guide/UI_Components/Slider/Customize_Widget_Appearance/",
             "Widget": "Slider"
           }
-        ]
+        ],
+        "Badge": "Updated"
       },
       {
         "Name": "Sortable",

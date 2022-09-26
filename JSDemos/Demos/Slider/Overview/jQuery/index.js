@@ -57,22 +57,36 @@ $(() => {
     disabled: true,
   });
 
-  const handlerSlider = $('#handler-slider').dxSlider({
+  const handleOnMovingSlider = $('#slider-on-moving').dxSlider({
     min: 0,
     max: 100,
     value: 10,
-    onValueChanged(data) {
-      sliderValue.option('value', data.value);
+    onValueChanged({ value }) {
+      handleOnMovingCompleteSlider.option('value', value);
+      sliderValue.option('value', value);
     },
   }).dxSlider('instance');
+
+  const handleOnMovingCompleteSlider = $('#slider-on-moving-complete').dxSlider({
+    min: 0,
+    max: 100,
+    value: 10,
+    callValueChange: 'onMovingComplete',
+    onValueChanged({ value }) {
+      handleOnMovingSlider.option('value', value);
+      sliderValue.option('value', value);
+    },
+  }).dxSlider('instance');
+
 
   const sliderValue = $('#slider-value').dxNumberBox({
     value: 10,
     min: 0,
     max: 100,
     showSpinButtons: true,
-    onValueChanged(data) {
-      handlerSlider.option('value', data.value);
+    onValueChanged({ value }) {
+      handleOnMovingSlider.option('value', value);
+      handleOnMovingCompleteSlider.option('value', value);
     },
   }).dxNumberBox('instance');
 });
