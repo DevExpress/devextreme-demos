@@ -46,9 +46,9 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
             new TextAlign{ Icon = "alignright", Hint = "Align right", Alignment = "right", Text = "Align right" },
             new TextAlign{ Icon = "alignjustify", Hint = "Justify", Alignment = "justify", Text = "Justify" }
         };
-        public static readonly IEnumerable<SimpleData> ToolbarModes = new[] {
-            new SimpleData{ Text = "Multiline mode", Value = true },
-            new SimpleData{ Text = "Singleline mode", Value = false }
+        public static readonly IEnumerable<ToolbarMode> ToolbarModes = new[] {
+            new ToolbarMode{ Text = "Multiline mode", Value = true },
+            new ToolbarMode{ Text = "Singleline mode", Value = false }
         };
     }
 }

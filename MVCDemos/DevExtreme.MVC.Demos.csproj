@@ -456,6 +456,7 @@
     <Compile Include="Models\StateData.cs" />
     <Compile Include="Models\TemperatureItem.cs" />
     <Compile Include="Models\TextAlign.cs" />
+    <Compile Include="Models\ToolbarMode.cs" />
     <Compile Include="Models\SampleData\WeatherIndicators.cs" />
     <Compile Include="Models\SignalRTickData\TickDataService.cs" />
     <Compile Include="Models\SignalRTickData\TickItem.cs" />

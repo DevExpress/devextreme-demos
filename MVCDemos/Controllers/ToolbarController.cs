@@ -24,14 +24,14 @@ namespace DevExtreme.MVC.Demos.Controllers {
 
         public ActionResult Multiline() {
             return View(new ToolbarViewModel() {
-                FontFamilies = ToolbarViewModel.FontFamilies,
-                FontSizes = ToolbarViewModel.FontSizes,
-                FontStyles = ToolbarViewModel.FontStyles,
-                LineHeights = ToolbarViewModel.LineHeights,
-                ListTypes = ToolbarViewModel.ListTypes,
-                TextAligns = ToolbarViewModel.TextAligns,
-                TextAlignsExtended = ToolbarViewModel.TextAlignsExtended,
-                ToolbarModes = ToolbarViewModel.ToolbarModes,
+                FontFamilies = ToolbarData.FontFamilies,
+                FontSizes = ToolbarData.FontSizes,
+                FontStyles = ToolbarData.FontStyles,
+                LineHeights = ToolbarData.LineHeights,
+                ListTypes = ToolbarData.ListTypes,
+                TextAligns = ToolbarData.TextAligns,
+                TextAlignsExtended = ToolbarData.TextAlignsExtended,
+                ToolbarModes = ToolbarData.ToolbarModes
             });
         }
     }
