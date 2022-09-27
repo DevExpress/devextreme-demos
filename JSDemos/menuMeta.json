@@ -4121,6 +4121,7 @@
             "Title": "Overview",
             "Name": "Overview",
             "Widget": "Autocomplete",
+            "Badge": "Updated",
             "MvcAdditionalFiles": [
               "/Models/SampleData/Names.cs",
               "/Models/SampleData/Surnames.cs",
