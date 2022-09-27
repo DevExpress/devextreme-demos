@@ -14,6 +14,10 @@ if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
 
+function isNotEmpty(value: any): boolean {
+  return value !== undefined && value !== null && value !== '';
+}
+
 @Component({
   selector: 'demo-app',
   providers: [Service],
@@ -45,9 +49,6 @@ export class AppComponent {
   fullInfo = '';
 
   constructor(httpClient: HttpClient, service: Service) {
-    function isNotEmpty(value: any): boolean {
-      return value !== undefined && value !== null && value !== '';
-    }
     this.clientsStore = new CustomStore({
       key: 'Value',
       useDefaultSearch: true,
