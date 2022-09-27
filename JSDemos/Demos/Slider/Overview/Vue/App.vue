@@ -87,7 +87,7 @@
             v-model:value="sliderValue"
             :min="0"
             :max="100"
-            callValueChange="onMovingComplete"
+            call-value-change="onMovingComplete"
           />
         </div>
       </div>
