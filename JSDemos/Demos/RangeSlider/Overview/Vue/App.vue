@@ -95,12 +95,9 @@
             v-model:end="end"
             :min="0"
             :max="100"
-            callValueChange='onMovingComplete'
+            call-value-change="onMovingComplete"
           />
         </div>
-      </div>
-      <div class="dx-field">
-        
       </div>
       <div class="dx-field">
         <div class="dx-field-label">Start value</div>

@@ -70,7 +70,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">On moving complete</div>
             <div className="dx-field-value">
-            <Slider min={0}
+              <Slider min={0}
                 max={100}
                 value={this.state.sliderValue}
                 callValueChange='onMovingComplete'

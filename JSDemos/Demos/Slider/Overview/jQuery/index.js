@@ -78,7 +78,6 @@ $(() => {
     },
   }).dxSlider('instance');
 
-
   const sliderValue = $('#slider-value').dxNumberBox({
     value: 10,
     min: 0,

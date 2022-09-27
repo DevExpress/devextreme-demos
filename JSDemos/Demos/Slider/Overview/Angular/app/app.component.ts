@@ -15,7 +15,7 @@ if (!/localhost/.test(document.location.host)) {
 })
 
 export class AppComponent {
-  value: number = 10;
+  value = 10;
 
   format(value) {
     return `${value}%`;

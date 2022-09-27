@@ -67,8 +67,8 @@ $(() => {
     max: 100,
     start: 10,
     end: 90,
-    onValueChanged({ value, start, end}) {
-      handleOnMovingCompleteSlider.option('value', value)
+    onValueChanged({ value, start, end }) {
+      handleOnMovingCompleteSlider.option('value', value);
       startValue.option('value', start);
       endValue.option('value', end);
     },
@@ -81,7 +81,7 @@ $(() => {
     end: 90,
     callValueChange: 'onMovingComplete',
     onValueChanged({ value, start, end }) {
-      handleOnMovingSlider.option('value', value)
+      handleOnMovingSlider.option('value', value);
       startValue.option('value', start);
       endValue.option('value', end);
     },
