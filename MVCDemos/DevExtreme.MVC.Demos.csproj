@@ -447,6 +447,7 @@
     <Compile Include="Models\SampleData\StatesData.cs" />
     <Compile Include="Models\SampleData\StochasticData.cs" />
     <Compile Include="Models\SampleData\DiagramEmployees.cs" />
+    <Compile Include="Models\SampleData\ToolbarData.cs" />
     <Compile Include="Models\SampleData\TreeViewHierarchicalDataForDragAndDrop.cs" />
     <Compile Include="Models\SampleData\TreeViewPlainDataForDragAndDrop.cs" />
     <Compile Include="Models\SimpleData.cs" />
@@ -695,6 +696,7 @@
     <Compile Include="ViewModels\SchedulerResourcesViewModel.cs" />
     <Compile Include="ViewModels\SchedulerViewModel.cs" />
     <Compile Include="ViewModels\TagBoxViewModel.cs" />
+    <Compile Include="ViewModels\ToolbarViewModel.cs" />
     <Compile Include="ViewModels\SelectBoxViewModel.cs" />
     <Compile Include="ViewModels\GalleryViewModel.cs" />
   </ItemGroup>
