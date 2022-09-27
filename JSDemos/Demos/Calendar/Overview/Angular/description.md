@@ -24,7 +24,7 @@ To specify the first day of the week, assign its index (0 - for Sunday, 1 - for 
 
 ## Handle Value Change
 
-To handle value changes, use two-way binding to bind the **value** properties of different components . In this demo, you can use the [DateBox](/Documentation/Guide/UI_Components/DateBox/Getting_Started_with_DateBox/) or Calendar component to change the date because their **value** properties are bound.
+To handle value changes, use two-way binding to bind the **value** properties of different components. In this demo, you can use the [DateBox](/Documentation/Guide/UI_Components/DateBox/Getting_Started_with_DateBox/) or Calendar component to change the date because their **value** properties are bound.
 
 ## Customize Cell Appearance
 
