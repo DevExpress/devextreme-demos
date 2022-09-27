@@ -397,6 +397,7 @@
     <Compile Include="Models\FileManagement\InMemoryFileManagementDataContext.cs" />
     <Compile Include="Models\FileManagement\User.cs" />
     <Compile Include="Models\Flow.cs" />
+    <Compile Include="Models\FontStyle.cs" />
     <Compile Include="Models\Gantt\Resource.cs" />
     <Compile Include="Models\Gantt\ResourceAssignment.cs" />
     <Compile Include="Models\Gantt\Dependency.cs" />
@@ -407,6 +408,7 @@
     <Compile Include="Models\InMemoryListTasksDataContext.cs" />
     <Compile Include="Models\InMemorySelectBoxDataContext.cs" />
     <Compile Include="Models\ListTaskItem.cs" />
+    <Compile Include="Models\ListType.cs" />
     <Compile Include="Models\MedalAnnotationInfo.cs" />
     <Compile Include="Models\MedalistData.cs" />
     <Compile Include="Models\NavigationItem.cs" />
@@ -453,6 +455,7 @@
     <Compile Include="Models\SimpleData.cs" />
     <Compile Include="Models\StateData.cs" />
     <Compile Include="Models\TemperatureItem.cs" />
+    <Compile Include="Models\TextAlign.cs" />
     <Compile Include="Models\SampleData\WeatherIndicators.cs" />
     <Compile Include="Models\SignalRTickData\TickDataService.cs" />
     <Compile Include="Models\SignalRTickData\TickItem.cs" />
