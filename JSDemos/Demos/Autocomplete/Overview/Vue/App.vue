@@ -122,7 +122,7 @@ const clientsStore = new CustomStore({
       'take',
       'filter',
     ].forEach((option) => {
-      if (Object.hasOwn(loadOptions) && isNotEmpty(loadOptions[option])) {
+      if (option in loadOptions && isNotEmpty(loadOptions[option])) {
         params += `${option}=${JSON.stringify(loadOptions[option])}&`;
       }
     });
@@ -160,9 +160,9 @@ export default {
     updateEmployeeInfo() {
       let fullInfo = '';
       fullInfo += `${this.firstName || ''} ${this.lastName || ''}`.trim();
-      fullInfo += (fullInfo && this.position) ? `, ${this.position}` : this.position ?? '';
-      fullInfo += (fullInfo && this.state) ? `, ${this.state}` : this.state ?? '';
-      fullInfo += (fullInfo && this.currentClient) ? `, ${this.currentClient}` : this.currentClient ?? '';
+      fullInfo += (fullInfo && this.position) ? `, ${this.position}` : this.position || '';
+      fullInfo += (fullInfo && this.state) ? `, ${this.state}` : this.state || '';
+      fullInfo += (fullInfo && this.currentClient) ? `, ${this.currentClient}` : this.currentClient || '';
       this.fullInfo = fullInfo;
     },
   },

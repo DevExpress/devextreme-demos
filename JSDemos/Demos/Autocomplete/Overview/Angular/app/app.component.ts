@@ -58,7 +58,7 @@ export class AppComponent {
           'take',
           'filter',
         ].forEach((option) => {
-          if (Object.hasOwn(loadOptions, option) && isNotEmpty(loadOptions[option])) {
+          if (option in loadOptions && isNotEmpty(loadOptions[option])) {
             params = params.set(option, JSON.stringify(loadOptions[option]));
           }
         });
@@ -83,9 +83,9 @@ export class AppComponent {
   updateEmployeeInfo() {
     let result = '';
     result += (`${this.firstName || ''} ${this.lastName || ''}`).trim();
-    result += (result && this.position) ? (`, ${this.position}`) : this.position ?? '';
-    result += (result && this.state) ? (`, ${this.state}`) : this.state ?? '';
-    result += (result && this.currentClient) ? (`, ${this.currentClient}`) : this.currentClient ?? '';
+    result += (result && this.position) ? (`, ${this.position}`) : this.position || '';
+    result += (result && this.state) ? (`, ${this.state}`) : this.state || '';
+    result += (result && this.currentClient) ? (`, ${this.currentClient}`) : this.currentClient || '';
     this.fullInfo = result;
   }
 }

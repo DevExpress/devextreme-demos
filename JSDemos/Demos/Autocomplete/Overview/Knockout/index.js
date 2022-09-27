@@ -56,7 +56,7 @@ window.onload = function () {
             'take',
             'filter',
           ].forEach((option) => {
-            if (Object.hasOwn(loadOptions, option) && isNotEmpty(loadOptions[option])) {
+            if (option in loadOptions && isNotEmpty(loadOptions[option])) {
               params += `${option}=${JSON.stringify(loadOptions[option])}&`;
             }
           });
@@ -96,9 +96,9 @@ window.onload = function () {
   function updateEmployeeInfo() {
     let result = '';
     result += $.trim(`${firstName || ''} ${lastName || ''}`);
-    result += (result && position) ? (`, ${position}`) : position ?? '';
-    result += (result && state) ? (`, ${state}`) : state ?? '';
-    result += (result && currentClient) ? (`, ${currentClient}`) : currentClient ?? '';
+    result += (result && position) ? (`, ${position}`) : position || '';
+    result += (result && state) ? (`, ${state}`) : state || '';
+    result += (result && currentClient) ? (`, ${currentClient}`) : currentClient || '';
 
     viewModel.fullInfo(result);
   }

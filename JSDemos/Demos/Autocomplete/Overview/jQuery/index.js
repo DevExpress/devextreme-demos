@@ -60,7 +60,7 @@ $(() => {
           'take',
           'filter',
         ].forEach((option) => {
-          if (Object.hasOwn(loadOptions, option) && isNotEmpty(loadOptions[option])) {
+          if (option in loadOptions && isNotEmpty(loadOptions[option])) {
             args[option] = JSON.stringify(loadOptions[option]);
           }
         });
@@ -94,9 +94,9 @@ $(() => {
   function updateEmployeeInfo() {
     let result = $.trim(`${firstName || ''} ${lastName || ''}`);
 
-    result += (result && position) ? (`, ${position}`) : position ?? '';
-    result += (result && state) ? (`, ${state}`) : state ?? '';
-    result += (result && currentClient) ? (`, ${currentClient}`) : currentClient ?? '';
+    result += (result && position) ? (`, ${position}`) : position || '';
+    result += (result && state) ? (`, ${state}`) : state || '';
+    result += (result && currentClient) ? (`, ${currentClient}`) : currentClient || '';
 
     $('#employee-data').text(result);
   }

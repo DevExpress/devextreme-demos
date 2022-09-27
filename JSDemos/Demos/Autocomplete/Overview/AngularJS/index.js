@@ -59,7 +59,7 @@ DemoApp.controller('DemoController', ($scope, $http, $q) => {
             'take',
             'filter',
           ].forEach((option) => {
-            if (Object.hasOwn(loadOptions, option) && isNotEmpty(loadOptions[option])) {
+            if (option in loadOptions && isNotEmpty(loadOptions[option])) {
               params[option] = JSON.stringify(loadOptions[option]);
             }
           });
@@ -83,9 +83,9 @@ DemoApp.controller('DemoController', ($scope, $http, $q) => {
   function updateEmployeeInfo() {
     let result = '';
     result += $.trim(`${firstName || ''} ${lastName || ''}`);
-    result += (result && position) ? (`, ${position}`) : position ?? '';
-    result += (result && state) ? (`, ${state}`) : state ?? '';
-    result += (result && currentClient) ? (`, ${currentClient}`) : currentClient ?? '';
+    result += (result && position) ? (`, ${position}`) : position || '';
+    result += (result && state) ? (`, ${state}`) : state || '';
+    result += (result && currentClient) ? (`, ${currentClient}`) : currentClient || '';
 
     $scope.fullInfo = result;
   }

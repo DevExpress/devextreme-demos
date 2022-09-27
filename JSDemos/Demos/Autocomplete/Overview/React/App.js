@@ -29,7 +29,7 @@ const clientsStore = new CustomStore({
       'take',
       'filter',
     ].forEach((option) => {
-      if (Object.hasOwn(loadOptions) && isNotEmpty(loadOptions[option])) {
+      if (option in loadOptions && isNotEmpty(loadOptions[option])) {
         params += `${option}=${JSON.stringify(loadOptions[option])}&`;
       }
     });
@@ -63,9 +63,9 @@ class App extends React.Component {
   render() {
     let fullInfo = '';
     fullInfo += (`${this.state.firstName || ''} ${this.state.lastName || ''}`).trim();
-    fullInfo += (fullInfo && this.state.position) ? (`, ${this.state.position}`) : this.state.position ?? '';
-    fullInfo += (fullInfo && this.state.state) ? (`, ${this.state.state}`) : this.state.state ?? '';
-    fullInfo += (fullInfo && this.state.currentClient) ? (`, ${this.state.currentClient}`) : this.state.currentClient ?? '';
+    fullInfo += (fullInfo && this.state.position) ? (`, ${this.state.position}`) : this.state.position || '';
+    fullInfo += (fullInfo && this.state.state) ? (`, ${this.state.state}`) : this.state.state || '';
+    fullInfo += (fullInfo && this.state.currentClient) ? (`, ${this.state.currentClient}`) : this.state.currentClient || '';
 
     return (
       <div className="form">
