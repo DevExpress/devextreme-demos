@@ -15,6 +15,6 @@ namespace DevExtreme.MVC.Demos.ViewModels {
         public IEnumerable<ListType> ListTypes { get; set; }
         public IEnumerable<TextAlign> TextAligns { get; set; }
         public IEnumerable<TextAlign> TextAlignsExtended { get; set; }
-        public IEnumerable<SimpleData> ToolbarModes { get; set; }
+        public IEnumerable<ToolbarMode> ToolbarModes { get; set; }
     }
 }
