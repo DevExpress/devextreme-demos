@@ -7,7 +7,7 @@
 }
 
 .dx-calendar-cell:not(.dx-calendar-other-month) .weekend,
-.dx-calendar-cell:not(.dx-calendar-other-month) .holyday {
+.dx-calendar-cell:not(.dx-calendar-other-month) .holiday {
     text-shadow: none;
     font-weight: bold;
 }
@@ -20,11 +20,11 @@
     color: #8080FF;
 }
 
-.dx-calendar-cell:not(.dx-calendar-other-month) .holyday {
+.dx-calendar-cell:not(.dx-calendar-other-month) .holiday {
     color: #FF3030;
 }
 
-.dx-state-disabled.dx-calendar .dx-calendar-cell:not(.dx-calendar-other-month) .holyday {
+.dx-state-disabled.dx-calendar .dx-calendar-cell:not(.dx-calendar-other-month) .holiday {
     color: #FF8080;
 }
 
