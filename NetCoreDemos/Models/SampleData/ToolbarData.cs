@@ -30,25 +30,5 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
             new SimpleData{ Text = "1.5", Value = "1.5" },
             new SimpleData{ Text = "2", Value = "2" }
         };
-        public static readonly IEnumerable<ListType> ListTypes = new[] {
-            new ListType{ Icon = "orderedlist", Alignment = "orderedlist", Hint = "Ordered" },
-            new ListType{ Icon = "bulletlist", Alignment = "bulletlist", Hint = "Bullet" }
-        };
-        public static readonly IEnumerable<TextAlign> TextAligns = new[] {
-            new TextAlign{ Icon = "alignleft", Hint = "Align left", Alignment = "left" },
-            new TextAlign{ Icon = "aligncenter", Hint = "Center", Alignment = "center" },
-            new TextAlign{ Icon = "alignright", Hint = "Align right", Alignment = "right" },
-            new TextAlign{ Icon = "alignjustify", Hint = "Justify", Alignment = "justify" }
-        };
-        public static readonly IEnumerable<TextAlign> TextAlignsExtended = new[] {
-            new TextAlign{ Icon = "alignleft", Hint = "Align left", Alignment = "left", Text = "Align left" },
-            new TextAlign{ Icon = "aligncenter", Hint = "Center", Alignment = "center", Text = "Center" },
-            new TextAlign{ Icon = "alignright", Hint = "Align right", Alignment = "right", Text = "Align right" },
-            new TextAlign{ Icon = "alignjustify", Hint = "Justify", Alignment = "justify", Text = "Justify" }
-        };
-        public static readonly IEnumerable<SimpleData> ToolbarModes = new[] {
-            new SimpleData{ Text = "Multiline mode", Value = true },
-            new SimpleData{ Text = "Singleline mode", Value = false }
-        };
     }
 }

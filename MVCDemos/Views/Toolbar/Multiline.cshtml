@@ -1,8 +1,31 @@
 ﻿@model DevExtreme.MVC.Demos.ViewModels.ToolbarViewModel
 
+@{
+    var listTypes = new[] {
+        new { Icon = "orderedlist", Alignment = "orderedlist", Hint = "Ordered" },
+        new { Icon = "bulletlist", Alignment = "bulletlist", Hint = "Bullet" }
+    };
+    var toolbarModes = new[] {
+        new { Text = "Multiline mode", Value = true },
+        new { Text = "Singleline mode", Value = false }
+    };
+    var textAligns = new[] {
+        new { Icon = "alignleft", Hint = "Align left", Alignment = "left" },
+        new { Icon = "aligncenter", Hint = "Center", Alignment = "center" },
+        new { Icon = "alignright", Hint = "Align right", Alignment = "right" },
+        new { Icon = "alignjustify", Hint = "Justify", Alignment = "justify" }
+    };
+    var textAlignsExtended = new[] {
+        new { Icon = "alignleft", Hint = "Align left", Alignment = "left", Text = "Align left" },
+        new { Icon = "aligncenter", Hint = "Center", Alignment = "center", Text = "Center" },
+        new { Icon = "alignright", Hint = "Align right", Alignment = "right", Text = "Align right" },
+        new { Icon = "alignjustify", Hint = "Justify", Alignment = "justify", Text = "Justify" }
+    };
+}
+
 <div>
     <div class="widget-container">
-        @(Html.DevExtreme().Sortable()
+        @(Html.DevExtreme().Resizable()
             .MinWidth(500)
             .MinHeight(150)
             .MaxHeight(370)
@@ -95,7 +118,7 @@
                             .Widget(w => w
                                 .ButtonGroup()
                                 .KeyExpr("Style")
-                                .StylingMode(EditorStylingMode.Outlined)
+                                .StylingMode(ButtonStylingMode.Outlined)
                                 .SelectionMode(ListSelectionMode.Multiple)
                                 .Items(Model.FontStyles)
                                 .OnItemClick("buttonGroupItemClick")
@@ -120,9 +143,9 @@
                             .Add()
                             .Widget(w => w
                                 .ButtonGroup()
-                                .Items(Model.ListTypes)
+                                .Items(listTypes)
                                 .KeyExpr("alignment")
-                                .StylingMode(EditorStylingMode.Outlined)                            
+                                .StylingMode(ButtonStylingMode.Outlined)                            
                                 .OnItemClick("buttonGroupItemClick")
                             )
                             .DisplayExpr("Text")
@@ -225,7 +248,7 @@
         @(Html.DevExtreme().RadioGroup()
             .ID("toolbar-modes")
             .Layout(Orientation.Horizontal)
-            .Items(Model.ToolbarModes)
+            .Items(toolbarModes)
             .Value(true)
             .ValueExpr("Value")
             .OnValueChanged("toolbarModesValueChanged"))
@@ -244,7 +267,7 @@
     @(Html.DevExtreme().ButtonGroup()
         .KeyExpr("Alignment")
         .StylingMode(ButtonStylingMode.Text)
-        .Items(Model.TextAligns)
+        .Items(textAligns)
         .SelectedItemKeys(new[] { "left" })
         .OnItemClick("buttonGroupItemClick"));
 }
@@ -253,7 +276,7 @@
     @(Html.DevExtreme().ButtonGroup()
         .KeyExpr("Alignment")
         .StylingMode(ButtonStylingMode.Text)
-        .Items(Model.TextAlignsExtended)
+        .Items(textAlignsExtended)
         .SelectedItemKeys(new[] { "left" })
         .OnItemClick("buttonGroupItemClick"));
 }

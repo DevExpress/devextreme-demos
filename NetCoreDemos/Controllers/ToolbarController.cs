@@ -25,10 +25,6 @@ namespace DevExtreme.NETCore.Demos.Controllers {
                 FontSizes = ToolbarViewModel.FontSizes,
                 FontStyles = ToolbarViewModel.FontStyles,
                 LineHeights = ToolbarViewModel.LineHeights,
-                ListTypes = ToolbarViewModel.ListTypes,
-                TextAligns = ToolbarViewModel.TextAligns,
-                TextAlignsExtended = ToolbarViewModel.TextAlignsExtended,
-                ToolbarModes = ToolbarViewModel.ToolbarModes,
             });
         }
     }
