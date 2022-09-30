@@ -5,7 +5,10 @@
         new { Icon = "orderedlist", Alignment = "orderedlist", Hint = "Ordered" },
         new { Icon = "bulletlist", Alignment = "bulletlist", Hint = "Bullet" }
     };
-    var toolbarModes = new[] { "Multiline mode", "Singleline mode" };
+    var toolbarModes = new[] {
+        new { Text = "Multiline mode", Value = true },
+        new { Text = "Singleline mode", Value = false }
+    };
     var textAligns = new[] {
         new { Icon = "alignleft", Hint = "Align left", Alignment = "left" },
         new { Icon = "aligncenter", Hint = "Center", Alignment = "center" },
@@ -246,7 +249,8 @@
             .ID("toolbar-modes")
             .Layout(Orientation.Horizontal)
             .Items(toolbarModes)
-            .Value("Multiline mode")
+            .Value(true)
+            .ValueExpr("Value")
             .OnValueChanged("toolbarModesValueChanged"))
     </div>
 </div>
@@ -286,10 +290,10 @@
 
     function toolbarModesValueChanged(data) {
         var toolbar = $("#toolbar").dxToolbar("instance");
-        toolbar.option("multiline", data === "Multiline mode");
+        toolbar.option("multiline", data.value);
 
         var toolbarModesInstance = $("#toolbar-modes").RadioGroup("instance");
-        toolbarModesInstance.option("value", data);
+        toolbarModesInstance.option("value", data.value);
     }
 
     function changeSize() {
