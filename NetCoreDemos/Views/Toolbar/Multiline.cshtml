@@ -1,26 +1,7 @@
 ﻿@model DevExtreme.NETCore.Demos.ViewModels.ToolbarViewModel
 
 @{
-    var listTypes = new[] {
-        new { Icon = "orderedlist", Alignment = "orderedlist", Hint = "Ordered" },
-        new { Icon = "bulletlist", Alignment = "bulletlist", Hint = "Bullet" }
-    };
-    var toolbarModes = new[] {
-        new { Text = "Multiline mode", Value = true },
-        new { Text = "Singleline mode", Value = false }
-    };
-    var textAligns = new[] {
-        new { Icon = "alignleft", Hint = "Align left", Alignment = "left" },
-        new { Icon = "aligncenter", Hint = "Center", Alignment = "center" },
-        new { Icon = "alignright", Hint = "Align right", Alignment = "right" },
-        new { Icon = "alignjustify", Hint = "Justify", Alignment = "justify" }
-    };
-    var textAlignsExtended = new[] {
-        new { Icon = "alignleft", Hint = "Align left", Alignment = "left", Text = "Align left" },
-        new { Icon = "aligncenter", Hint = "Center", Alignment = "center", Text = "Center" },
-        new { Icon = "alignright", Hint = "Align right", Alignment = "right", Text = "Align right" },
-        new { Icon = "alignjustify", Hint = "Justify", Alignment = "justify", Text = "Justify" }
-    };
+    var toolbarModes = new[] { "Multiline mode", "Singleline mode" };
 }
 
 <div>
@@ -119,7 +100,7 @@
                                 .ButtonGroup()
                                 .KeyExpr("Style")
                                 .StylingMode(ButtonStylingMode.Outlined)
-                                .SelectionMode(ListSelectionMode.Multiple)
+                                .SelectionMode(ButtonGroupSelectionMode.Multiple)
                                 .Items(Model.FontStyles)
                                 .OnItemClick("buttonGroupItemClick")
                             )
@@ -143,7 +124,10 @@
                             .Add()
                             .Widget(w => w
                                 .ButtonGroup()
-                                .Items(listTypes)
+                                .Items(items => {
+                                    items.Add().Icon("orderedlist").Hint("Ordered").Option("alignment", "orderedlist");
+                                    items.Add().Icon("bulletlist").Hint("Bullet").Option("alignment", "bulletlist");
+                                })
                                 .KeyExpr("alignment")
                                 .StylingMode(ButtonStylingMode.Outlined)                            
                                 .OnItemClick("buttonGroupItemClick")
@@ -267,7 +251,12 @@
     @(Html.DevExtreme().ButtonGroup()
         .KeyExpr("Alignment")
         .StylingMode(ButtonStylingMode.Text)
-        .Items(textAligns)
+        .Items(items => {
+            items.Add().Icon("alignleft").Hint("Align left").Option("alignment", "left");
+            items.Add().Icon("aligncenter").Hint("Center").Option("alignment", "center");
+            items.Add().Icon("alignright").Hint("Align right").Option("alignment", "right");
+            items.Add().Icon("alignjustify").Hint("Justify").Option("alignment", "justify");
+        })
         .SelectedItemKeys(new[] { "left" })
         .OnItemClick("buttonGroupItemClick"));
 }
@@ -276,7 +265,12 @@
     @(Html.DevExtreme().ButtonGroup()
         .KeyExpr("Alignment")
         .StylingMode(ButtonStylingMode.Text)
-        .Items(textAlignsExtended)
+        .Items(items => {
+            items.Add().Icon("alignleft").Hint("Align left").Option("alignment", "left").Option("text", "Align left");
+            items.Add().Icon("aligncenter").Hint("Center").Option("alignment", "center").Option("text", "Center");
+            items.Add().Icon("alignright").Hint("Align right").Option("alignment", "right").Option("text", "Align right");
+            items.Add().Icon("alignjustify").Hint("Justify").Option("alignment", "justify").Option("text", "Justify");
+        })
         .SelectedItemKeys(new[] { "left" })
         .OnItemClick("buttonGroupItemClick"));
 }
@@ -288,12 +282,12 @@
         )
     }
 
-    function toolbarModesValueChanged(data) {
+    function toolbarModesValueChanged(value) {
         var toolbar = $("#toolbar").dxToolbar("instance");
-        toolbar.option("multiline", data.value);
+        toolbar.option("multiline", value === "Multiline mode");
 
         var toolbarModesInstance = $("#toolbar-modes").RadioGroup("instance");
-        toolbarModesInstance.option("value", data.value);
+        toolbarModesInstance.option("value", value);
     }
 
     function changeSize() {
