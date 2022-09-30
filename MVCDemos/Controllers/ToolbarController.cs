@@ -28,10 +28,6 @@ namespace DevExtreme.MVC.Demos.Controllers {
                 FontSizes = ToolbarData.FontSizes,
                 FontStyles = ToolbarData.FontStyles,
                 LineHeights = ToolbarData.LineHeights,
-                ListTypes = ToolbarData.ListTypes,
-                TextAligns = ToolbarData.TextAligns,
-                TextAlignsExtended = ToolbarData.TextAlignsExtended,
-                ToolbarModes = ToolbarData.ToolbarModes
             });
         }
     }
