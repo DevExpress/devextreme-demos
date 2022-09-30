@@ -2,11 +2,11 @@ The Popover component shows notifications within a box with an arrow pointing to
 
 ## Bind and Arrange the Popover
 
-Use the [target](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#target) property to bind the Popover to an element. To arrange the Popover at a certain side of the target element, specify the [position](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#position) property.  
+Use the [target](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#target) property to bind the Popover to an element. To arrange the Popover at a certain side of the target element, specify the [position](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#position) property.
 
 ## Show and Hide the Popover
 
-Specify [DOM events](https://developer.mozilla.org/en-US/docs/Web/Events#event_listing) in the target element's markup that need to be triggered to change the Popover's visibility. Bind the [visible](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#visible) property of the Popover to a variable and use event handlers to toggle this variable.
+To show and hide the Popover in response to certain events, specify the [showEvent](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/showEvent/) and [hideEvent](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/hideEvent/) properties. These properties can accept multiple events at once as well as an object with the following parameters: [name](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/showEvent/#name) and [delay](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/showEvent/#delay).
 
 ## Customize Content
 
@@ -21,5 +21,4 @@ If you want to animate the Popover, specify the [animation](/Documentation/ApiRe
 ## Shade Background
 
 In some cases, you may need to shade the Popover's background. To do this, enable the [shading](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#shading) property. Use the [shadingColor]() property to specify the desired color. 
-
 
