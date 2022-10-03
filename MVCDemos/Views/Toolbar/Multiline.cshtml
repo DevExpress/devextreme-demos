@@ -101,12 +101,7 @@
                                 .KeyExpr("Icon")
                                 .StylingMode(ButtonStylingMode.Outlined)
                                 .SelectionMode(ButtonGroupSelectionMode.Multiple)
-                                .Items(fontStyles => {
-                                    fontStyles.Add().Icon("bold").Hint("Bold");
-                                    fontStyles.Add().Icon("italic").Hint("Italic");
-                                    fontStyles.Add().Icon("underline").Hint("Underlined");
-                                    fontStyles.Add().Icon("strike").Hint("Strikethrough");
-                                })
+                                .Items(Model.FontStyles)
                                 .OnItemClick("buttonGroupItemClick")
                             )
                             .Location(ToolbarItemLocation.Before)

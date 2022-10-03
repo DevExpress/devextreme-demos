@@ -10,6 +10,7 @@ namespace DevExtreme.MVC.Demos.ViewModels {
     public class ToolbarViewModel {
         public IEnumerable<SimpleData> FontFamilies { get; set; }
         public IEnumerable<SimpleData> FontSizes { get; set; }
+        public IEnumerable<FontStyle> FontStyles { get; set; }
         public IEnumerable<SimpleData> LineHeights { get; set; }
     }
 }
