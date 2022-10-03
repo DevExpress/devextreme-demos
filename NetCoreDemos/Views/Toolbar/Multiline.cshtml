@@ -10,7 +10,7 @@
             .MinWidth(500)
             .MinHeight(150)
             .MaxHeight(370)
-            .Handles("right")
+            .Handles(ResizeHandle.Right)
             .Area(".widget-container")
             .Content(
                 Html.DevExtreme().Toolbar()
@@ -98,7 +98,7 @@
                             .Add()
                             .Widget(w => w
                                 .ButtonGroup()
-                                .KeyExpr("Style")
+                                .KeyExpr("Icon")
                                 .StylingMode(ButtonStylingMode.Outlined)
                                 .SelectionMode(ButtonGroupSelectionMode.Multiple)
                                 .Items(Model.FontStyles)
@@ -124,9 +124,9 @@
                             .Add()
                             .Widget(w => w
                                 .ButtonGroup()
-                                .Items(items => {
-                                    items.Add().Icon("orderedlist").Hint("Ordered").Option("alignment", "orderedlist");
-                                    items.Add().Icon("bulletlist").Hint("Bullet").Option("alignment", "bulletlist");
+                                .Items(listTypes => {
+                                    listTypes.Add().Icon("orderedlist").Hint("Ordered").Option("alignment", "orderedlist");
+                                    listTypes.Add().Icon("bulletlist").Hint("Bullet").Option("alignment", "bulletlist");
                                 })
                                 .KeyExpr("alignment")
                                 .StylingMode(ButtonStylingMode.Outlined)                            

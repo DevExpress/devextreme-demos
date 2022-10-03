@@ -19,10 +19,10 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
             new SimpleData{ Text = "18px", Value = "18" }
         };
         public static readonly IEnumerable<FontStyle> FontStyles = new[] {
-            new FontStyle{ Icon = "bold", Hint = "Bold", Style = "bold" },
-            new FontStyle{ Icon = "italic", Hint = "Italic", Style = "italic" },
-            new FontStyle{ Icon = "underline", Hint = "Underlined", Style = "underline" },
-            new FontStyle{ Icon = "strike", Hint = "Strikethrough", Style = "strike" }
+            new FontStyle{ Icon = "bold", Hint = "Bold" },
+            new FontStyle{ Icon = "italic", Hint = "Italic" },
+            new FontStyle{ Icon = "underline", Hint = "Underlined" },
+            new FontStyle{ Icon = "strike", Hint = "Strikethrough" }
         };
         public static readonly IEnumerable<SimpleData> LineHeights = new[] {
             new SimpleData{ Text = "1", Value = "1" },
