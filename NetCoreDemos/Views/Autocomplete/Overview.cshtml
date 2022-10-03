@@ -41,21 +41,6 @@
         </div>
     </div>
     <div class="dx-fieldset">
-        <div class="dx-fieldset-header">With Custom Search Options</div>
-        <div class="dx-field">
-            <div class="dx-field-label">City</div>
-            <div class="dx-field-value">
-                @(Html.DevExtreme().Autocomplete()
-                    .DataSource(d => d.Mvc().LoadAction("GetCities"))
-                    .MinSearchLength(2)
-                    .SearchTimeout(500)
-                    .Placeholder("Type two symbols to search...")
-                    .OnValueChanged("city_changed")
-                )
-            </div>
-        </div>
-    </div>
-    <div class="dx-fieldset">
         <div class="dx-fieldset-header">Custom Item Template and Data Source Usage</div>
         <div class="dx-field">
             <div class="dx-field-label">State</div>
@@ -77,6 +62,22 @@
         </div>
     </div>
     <div class="dx-fieldset">
+        <div class="dx-fieldset-header">With Custom Store and Search Options</div>
+        <div class="dx-field">
+            <div class="dx-field-label">Current Client</div>
+            <div class="dx-field-value">
+                @(Html.DevExtreme().Autocomplete()
+                    .DataSource(new JS("clientsStore"))
+                    .MinSearchLength(2)
+                    .SearchTimeout(500)
+                    .Placeholder("Type client name...")
+                    .ValueExpr("Text")
+                    .OnValueChanged("client_changed")
+                )
+            </div>
+        </div>
+    </div>
+    <div class="dx-fieldset">
         <div class="dx-fieldset-header">Event Handling</div>
         <div class="employees-data">
             Employee data: <span id="employee-data"></span>
@@ -88,15 +89,53 @@
     var firstName = "",
         lastName = "",
         position = "CEO",
-        city = "",
-        state = "";
+        state = "",
+        currentClient = "";
 
+    var clientsStore = new DevExpress.data.CustomStore({
+        key: "Value",
+        useDefaultSearch: true,
+        load(loadOptions) {
+            const deferred = $.Deferred();
+            const args = {};
+
+            [
+                'skip',
+                'take',
+                'filter'
+            ].forEach((option) => {
+                if (option in loadOptions && isNotEmpty(loadOptions[option])) {
+                    args[option] = JSON.stringify(loadOptions[option]);
+                }
+            });
+
+            $.ajax({
+                url: 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi/CustomersLookup',
+                dataType: 'json',
+                data: args,
+                success(result) {
+                    deferred.resolve(result.data);
+                },
+                error() {
+                    deferred.reject('Data Loading Error');
+                },
+                timeout: 5000,
+            });
+    
+            return deferred.promise();
+        }
+    });
+
+    function isNotEmpty(value) {
+        return value !== undefined && value !== null && value !== '';
+    }
+    
     function updateEmployeeInfo() {
         var result = $.trim((firstName || "") + " " + (lastName || ""));
 
-        result += (result && position) ? (", " + position) : position;
-        result += (result && city) ? (", " + city) : city;
-        result += (result && state) ? (", " + state) : state;
+        result += (result && position) ? (", " + position) : position || "";
+        result += (result && state) ? (", " + state) : state || "";
+        result += (result && currentClient) ? (", " + currentClient) : currentClient || "";
 
         $("#employee-data").text(result);
     }
@@ -116,13 +155,13 @@
         updateEmployeeInfo();
     }
 
-    function city_changed(data) {
-        city = data.value;
+    function state_changed(data) {
+        state = data.value;
         updateEmployeeInfo();
     }
 
-    function state_changed(data) {
-        state = data.value;
+    function client_changed(data) {
+        currentClient = data.value;
         updateEmployeeInfo();
     }
 </script>
