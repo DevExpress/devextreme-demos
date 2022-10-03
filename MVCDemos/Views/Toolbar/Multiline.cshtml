@@ -25,7 +25,7 @@
                                 .OnClick("undoButtonClick")
                             )
                             .Location(ToolbarItemLocation.Before);
-                        
+
                         items
                             .Add()
                             .Widget(w => w
@@ -34,7 +34,7 @@
                                 .OnClick("redoButtonClick")
                             )
                             .Location(ToolbarItemLocation.Before);
-                        
+
                         items
                             .Add()
                             .CssClass("toolbar-separator-container")
@@ -85,7 +85,7 @@
                                 .DataSource(Model.FontFamilies)
                             )
                             .Location(ToolbarItemLocation.Before);
-                        
+
                         items
                             .Add()
                             .CssClass("toolbar-separator-container")
@@ -101,7 +101,12 @@
                                 .KeyExpr("Icon")
                                 .StylingMode(ButtonStylingMode.Outlined)
                                 .SelectionMode(ButtonGroupSelectionMode.Multiple)
-                                .Items(Model.FontStyles)
+                                .Items(fontStyles => {
+                                    fontStyles.Add().Icon("bold").Hint("Bold");
+                                    fontStyles.Add().Icon("italic").Hint("Italic");
+                                    fontStyles.Add().Icon("underline").Hint("Underlined");
+                                    fontStyles.Add().Icon("strike").Hint("Strikethrough");
+                                })
                                 .OnItemClick("buttonGroupItemClick")
                             )
                             .Location(ToolbarItemLocation.Before)
@@ -111,7 +116,7 @@
                             .Add()
                             .Template(new TemplateName("separator-template"))
                             .Location(ToolbarItemLocation.Before);
-                        
+
                         items
                             .Add()
                             .CssClass("dx-toolbar-hidden-button-group")
@@ -129,12 +134,11 @@
                                     listTypes.Add().Icon("bulletlist").Hint("Bullet").Option("alignment", "bulletlist");
                                 })
                                 .KeyExpr("alignment")
-                                .StylingMode(ButtonStylingMode.Outlined)                            
+                                .StylingMode(ButtonStylingMode.Outlined)
                                 .OnItemClick("buttonGroupItemClick")
                             )
-                            .DisplayExpr("Text")
                             .Location(ToolbarItemLocation.Before);
-                        
+
                         items
                             .Add()
                             .CssClass("toolbar-separator-container")
@@ -153,7 +157,7 @@
                             )
                             .Location(ToolbarItemLocation.Before)
                             .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-                        
+
                         items
                             .Add()
                             .CssClass("toolbar-separator-container")
@@ -173,7 +177,7 @@
                             .ShowText(ToolbarItemShowTextMode.InMenu)
                             .Location(ToolbarItemLocation.Before)
                             .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-                            
+
                         items
                             .Add()
                             .Widget(w => w
@@ -184,7 +188,7 @@
                             )
                             .ShowText(ToolbarItemShowTextMode.InMenu)
                             .Location(ToolbarItemLocation.After);
-                            
+
                         items
                             .Add()
                             .Widget(w => w
@@ -196,7 +200,7 @@
                             .ShowText(ToolbarItemShowTextMode.InMenu)
                             .Location(ToolbarItemLocation.After)
                             .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-                            
+
                         items
                             .Add()
                             .Widget(w => w
@@ -208,7 +212,7 @@
                             .ShowText(ToolbarItemShowTextMode.InMenu)
                             .Location(ToolbarItemLocation.After)
                             .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-                            
+
                         items
                             .Add()
                             .Widget(w => w
@@ -221,7 +225,7 @@
                             .Location(ToolbarItemLocation.After)
                             .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
                     }
-                )
+                ).ToString()
             )
         )
     </div>

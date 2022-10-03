@@ -18,12 +18,6 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
             new SimpleData{ Text = "16px", Value = "16" },
             new SimpleData{ Text = "18px", Value = "18" }
         };
-        public static readonly IEnumerable<FontStyle> FontStyles = new[] {
-            new FontStyle{ Icon = "bold", Hint = "Bold" },
-            new FontStyle{ Icon = "italic", Hint = "Italic" },
-            new FontStyle{ Icon = "underline", Hint = "Underlined" },
-            new FontStyle{ Icon = "strike", Hint = "Strikethrough" }
-        };
         public static readonly IEnumerable<SimpleData> LineHeights = new[] {
             new SimpleData{ Text = "1", Value = "1" },
             new SimpleData{ Text = "1.35", Value = "1.35" },
