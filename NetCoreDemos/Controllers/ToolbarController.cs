@@ -21,9 +21,9 @@ namespace DevExtreme.NETCore.Demos.Controllers {
 
         public ActionResult Multiline() {
             return View(new ToolbarViewModel() {
-                FontFamilies = ToolbarViewModel.FontFamilies,
-                FontSizes = ToolbarViewModel.FontSizes,
-                LineHeights = ToolbarViewModel.LineHeights,
+                FontFamilies = ToolbarData.FontFamilies,
+                FontSizes = ToolbarData.FontSizes,
+                LineHeights = ToolbarData.LineHeights,
             });
         }
     }
