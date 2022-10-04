@@ -397,7 +397,6 @@
     <Compile Include="Models\FileManagement\InMemoryFileManagementDataContext.cs" />
     <Compile Include="Models\FileManagement\User.cs" />
     <Compile Include="Models\Flow.cs" />
-    <Compile Include="Models\FontStyle.cs" />
     <Compile Include="Models\Gantt\Resource.cs" />
     <Compile Include="Models\Gantt\ResourceAssignment.cs" />
     <Compile Include="Models\Gantt\Dependency.cs" />
