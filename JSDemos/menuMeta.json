@@ -5603,7 +5603,7 @@
             "Name": "Overview",
             "Widget": "Popover"
           }
-        ]
+        ] 
       },
       {
         "Name": "Popup",
