@@ -77,8 +77,9 @@
                     @Html.LabelFor(m => m.City)
                 </div>
                 <div class="dx-field-value">
-                    @Html.DevExtreme().TextBoxFor(m => m.City)
+                    @(Html.DevExtreme().TextBoxFor(m => m.City)
                         .ValidationMessagePosition(Position.Left)
+                    )
                 </div>
             </div>
             <div class="dx-field">
@@ -86,8 +87,9 @@
                     @Html.LabelFor(m => m.Address)
                 </div>
                 <div class="dx-field-value">
-                    @Html.DevExtreme().TextBoxFor(m => m.Address)
+                    @(Html.DevExtreme().TextBoxFor(m => m.Address)
                         .ValidationMessagePosition(Position.Left)
+                    )
                 </div>
             </div>
             <div class="dx-field">
