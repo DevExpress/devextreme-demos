@@ -23,7 +23,6 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View(new ToolbarViewModel() {
                 FontFamilies = ToolbarViewModel.FontFamilies,
                 FontSizes = ToolbarViewModel.FontSizes,
-                FontStyles = ToolbarViewModel.FontStyles,
                 LineHeights = ToolbarViewModel.LineHeights,
             });
         }
