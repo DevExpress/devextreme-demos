@@ -26,7 +26,6 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View(new ToolbarViewModel() {
                 FontFamilies = ToolbarData.FontFamilies,
                 FontSizes = ToolbarData.FontSizes,
-                FontStyles = ToolbarData.FontStyles,
                 LineHeights = ToolbarData.LineHeights,
             });
         }
