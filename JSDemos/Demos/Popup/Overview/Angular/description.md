@@ -22,10 +22,10 @@ The Popup inner area is divided into three parts:
 - **Top toolbar**  
 
     - **Predefined**    
-    Set [showTitle](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#showTitle) to `true` and use the [title](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#title) property to specify the caption. If you do not disable the [showCloseButton](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#showCloseButton) property, the Close button appears.
+    Set [showTitle](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#showTitle) to `true` and use the [title](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#title) property to specify the caption. The Close button will appear if you do not disable the [showCloseButton](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#showCloseButton) property.
     
     - **Custom**   
-    Add [toolbarItems](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/toolbarItems/) markup and set each item's [toolbar](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/toolbarItems/#toolbar) property to `top`. If you want to display an item in the overflow menu, as shown in this demo, set the item's [locateInMenu](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/toolbarItems/#locateInMenu) property to `always`. You can also assign `never` to this property to keep the item outside the overflow menu, or `auto` to hide the item in the menu if the Popup's width decreases.
+    Add [toolbarItems](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/toolbarItems/) markup and set each item's [toolbar](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/toolbarItems/#toolbar) property to `top`. If you want to display an item in the overflow menu, as shown in this demo, set the item's [locateInMenu](/Documentation/ApiReference/UI_Components/dxPopup/Configuration/toolbarItems/#locateInMenu) property to `always`. You can also assign `never` to this property to keep the item outside the overflow menu, or you can assign `auto` to hide the item in the menu if the Popup's width decreases.
 
 - **Content**   
 To populate the Popup with content, add markup inside the component.
