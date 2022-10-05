@@ -290,6 +290,8 @@
 
         var toolbarModesInstance = $("#toolbar-modes").dxRadioGroup("instance");
         toolbarModesInstance.option("value", value);
+
+        toolbar.repaint()
     }
 
     function changeSize() {
