@@ -20,7 +20,7 @@ Popover consists of content area and a title. You can specify static content in 
 
 ##  Animate Popover
 
-If you want to show and hide Popover with animation effects, assign an object with the **show** and **hide** fields to the [animation](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/animation/) property. Each of these fields accepts an object that configures the animation [type](/Documentation/ApiReference/Common/Object_Structures/animationConfig/#type) and [other properties](/Documentation/ApiReference/Common/Object_Structures/animationConfig/). In this demo, Popover appears with a pop animation and fades away when it disappears.
+If you want to show and hide Popover with animation effects, assign an object with the **show** and **hide** fields to the [animation](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/animation/) property. Each of these fields accepts an object that configures the animation [type](/Documentation/ApiReference/Common/Object_Structures/animationConfig/#type) and [other properties](/Documentation/ApiReference/Common/Object_Structures/animationConfig/). In this demo, Popover appears with a pop-up animation and fades away when it disappears.
 
 ## Shade the Background
 
