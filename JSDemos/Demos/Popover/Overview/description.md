@@ -1,25 +1,29 @@
-The Popover component shows notifications within a box with an arrow pointing to a specified UI element. In this demo, the Popover appears when you hover the cursor over the *details* label or click the *more* link. 
+The Popover component shows pop-up notifications within a box with an arrow that points to a specified UI element. In this demo, you can hover the mouse pointer over one of the *details* labels or click the *more* link to display Popover.
 
-## Bind and Arrange the Popover
+## Attach Popover to a Page Element
 
-Use the [target](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#target) property to bind the Popover to an element. To arrange the Popover at a certain side of the target element, specify the [position](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#position) property.  
+Popover displays an arrow that points to a page element. To specify the element, set the [target](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#target) property to a CSS selector. In this demo, target elements are selected by `id`.
 
-## Show and Hide the Popover
+You can use the [position](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#position) property to position Popover relative to the target element. If you do not specify this property, Popover is displayed under the element.
 
-Specify [DOM events](https://developer.mozilla.org/en-US/docs/Web/Events#event_listing) in the target element's markup that need to be triggered to change the Popover's visibility. Bind the [visible](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#visible) property of the Popover to a variable and use event handlers to toggle this variable.
+## Show and Hide Popover
 
-## Customize Content
+The [showEvent](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/showEvent/) and [hideEvent](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/hideEvent/) properties allow you to show and hide Popover in response to certain events. These properties can accept one or multiple names of DOM events or DevExtreme UI events separated by a space character.
 
-You can specify the Popover's content in the HTML markup. Alternatively, use the [contentTemplate](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#contentTemplate) property to customize the content.
+You can also specify a delay before the events occur. Set the **showEvent** and **hideEvent** properties to an object with the [name](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/showEvent/#name) (one or multiple event names) and [delay](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/showEvent/#delay) properties.
 
-Enable the [showTitle](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#showTitle) property to display the Popover's title. To specify the title text, use the [title](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#title) property.
+In this demo, the last Popover appears when you click its target element because its **showEvent** property is set to the DevExtreme *dxclick* event. Other Popover components appear and disappear on the *mouseenter* and *mouseleave* DOM events.
 
-##  Animate the Popover
+## Specify Content
 
-If you want to animate the Popover, specify the [animation](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/animation/) property. In the object of this property, configure the [show](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/animation/#show) and [hide](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/animation/#hide) fields.
+Popover consists of content area and a title. You can specify static content in the HTML markup as shown in this demo. If Popover should display dynamic content, use the [contentTemplate](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#contentTemplate) property to specify a template. To display the title, enable the [showTitle](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#showTitle) property and set the [title](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#title) property to the title text.
 
-## Shade Background
+##  Animate Popover
 
-In some cases, you may need to shade the Popover's background. To do this, enable the [shading](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#shading) property. Use the [shadingColor]() property to specify the desired color. 
+If you want to show and hide Popover with animation effects, assign an object with the **show** and **hide** fields to the [animation](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/animation/) property. Each of these fields accepts an object that configures the animation [type](/Documentation/ApiReference/Common/Object_Structures/animationConfig/#type) and [other properties](/Documentation/ApiReference/Common/Object_Structures/animationConfig/). In this demo, Popover appears with a pop-up animation and fades away when it disappears.
+
+## Shade the Background
+
+You can show Popover with a shaded background. To do this, enable the [shading](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#shading) property and specify a [shadingColor](/Documentation/ApiReference/UI_Components/dxPopover/Configuration/#shadingColor).
 
 
