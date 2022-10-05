@@ -65,6 +65,8 @@ npm run fix-lint
 
 ## ASP.NET Demos
 
+0. If you use Windows, you should switch it to `Developer Mode` in `For developers` section of settings to be able to create `symlink` with no `Admin rights` required.
+
 1. Open the `repository.config.json` file and set the `hg` property to a path where your clone of the `mobile` repository is located, for example:
 
     ````
