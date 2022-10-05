@@ -16,10 +16,11 @@ runManualTest('DataGrid', 'MasterDetailView', ['jQuery', 'React', 'Vue', 'Angula
     await t.click(
       $('.dx-datagrid-rowsview')
         .find('.dx-row:not(.dx-master-detail-row)')
-        .nth(1),
+        .nth(1)
+        .find('.dx-command-expand'),
     );
 
-    await takeScreenshot('datagrid_master_detail_api_2_desktop.png');
+    await takeScreenshot('datagrid_master_detail_view_2_desktop.png');
 
     await t
       .expect(compareResults.isValid())
