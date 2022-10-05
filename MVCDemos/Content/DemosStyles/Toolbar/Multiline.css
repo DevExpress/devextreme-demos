@@ -25,16 +25,16 @@
   height: 1px;
 }
 
-.widget-container {
-  margin-right: 6px;
-}
-
-.resizable-container {
+.dx-resizable {
   padding: 10px;
   height: 300px;
   border: 1px dashed #dbdbdb;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+.widget-container {
+  margin-right: 6px;
 }
 
 .options-container {
