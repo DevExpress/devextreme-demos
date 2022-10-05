@@ -7,6 +7,7 @@
 <div>
     <div class="widget-container">
         @(Html.DevExtreme().Resizable()
+            .ElementAttr("class", "resizable-container")
             .MinWidth(500)
             .MinHeight(150)
             .MaxHeight(370)
@@ -49,7 +50,7 @@
                                 .DropDownButton()
                                 .Width("100%")
                                 .DisplayExpr("Text")
-                                .KeyExpr("Size")
+                                .KeyExpr("Value")
                                 .SelectedItemKey("14")
                                 .UseSelectMode(true)
                                 .DataSource(Model.FontSizes)
@@ -65,7 +66,7 @@
                                 .DropDownButton()
                                 .Width("100%")
                                 .DisplayExpr("Text")
-                                .KeyExpr("LineHeight")
+                                .KeyExpr("Value")
                                 .SelectedItemKey("1.35")
                                 .StylingMode(ButtonStylingMode.Text)
                                 .UseSelectMode(true)
@@ -237,8 +238,7 @@
             .ID("toolbar-modes")
             .Layout(Orientation.Horizontal)
             .Items(toolbarModes)
-            .Value(true)
-            .ValueExpr("Value")
+            .Value(toolbarModes[0])
             .OnValueChanged("toolbarModesValueChanged"))
     </div>
 </div>
@@ -253,7 +253,7 @@
 
 @using (Html.DevExtreme().NamedTemplate("text-align-template")) {
     @(Html.DevExtreme().ButtonGroup()
-        .KeyExpr("Alignment")
+        .KeyExpr("alignment")
         .StylingMode(ButtonStylingMode.Text)
         .Items(items => {
             items.Add().Icon("alignleft").Hint("Align left").Option("alignment", "left");
@@ -267,7 +267,7 @@
 
 @using (Html.DevExtreme().NamedTemplate("text-align-menu-template")) {
     @(Html.DevExtreme().ButtonGroup()
-        .KeyExpr("Alignment")
+        .KeyExpr("alignment")
         .StylingMode(ButtonStylingMode.Text)
         .Items(items => {
             items.Add().Icon("alignleft").Hint("Align left").Option("alignment", "left").Option("text", "Align left");
@@ -282,7 +282,7 @@
 <script>
     function fontSizeItemTemplate(itemData, itemIndex, itemElement) {
         itemElement.append(
-            $("<div>").css({ fontSize: itemData.text }).text(itemData.text)
+            $("<div>").css({ fontSize: itemData.Text }).text(itemData.Text)
         )
     }
 
@@ -303,7 +303,7 @@
     }
 
     function buttonGroupItemClick(e) {
-        DevExpress.ui.notify({ message: `The "${e.itemData.hint}" button was clicked`, width: 320 }, "success", 1000);
+        DevExpress.ui.notify({ message: `The "${e.itemData.Hint}" button was clicked`, width: 320 }, "success", 1000);
     }
 
     function undoButtonClick() {
