@@ -6,7 +6,7 @@ LoadIndicator allows you to specify its dimensions. Set the [height](/Documentat
 
 ## Apply a Custom Indicator
 
-If you want to apply a custom indicator, assign the path to a new image to the [indicatorSrc](/Documentation/ApiReference/UI_Components/dxLoadIndicator/Configuration/#indicatorSrc) property. In this demo, the fourth LoadIndicator displays the custom horizontal indicator.
+If you want to apply a custom indicator, assign the path to a new image to the [indicatorSrc](/Documentation/ApiReference/UI_Components/dxLoadIndicator/Configuration/#indicatorSrc) property. In this demo, the fourth LoadIndicator displays a custom animated GIF.
 
 ## Use within Other Components
 
