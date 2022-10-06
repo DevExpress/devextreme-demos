@@ -1,7 +1,7 @@
 ﻿@model DevExtreme.NETCore.Demos.ViewModels.ToolbarViewModel
 
 @{
-    var toolbarModes = new[] { "Multiline mode", "Singleline mode" };
+    var toolbarModes = new[] { "Multiline mode", "Single-line mode" };
 }
 
 <div>
@@ -54,7 +54,7 @@
                                 .SelectedItemKey("14")
                                 .UseSelectMode(true)
                                 .DataSource(Model.FontSizes)
-                                .OnSelectionChanged("changeSize")
+                                .OnSelectionChanged("changeFontSize")
                                 .ItemTemplate(new JS("fontSizeItemTemplate"))
                             )
                             .Location(ToolbarItemLocation.Before)
@@ -83,6 +83,7 @@
                                 .Placeholder("Font")
                                 .DisplayExpr("Text")
                                 .DataSource(Model.FontFamilies)
+                                .OnItemClick("fontFamilyClick")
                             )
                             .Location(ToolbarItemLocation.Before)
                             .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
@@ -154,6 +155,7 @@
                                 .Type(DateBoxType.Date)
                                 .Width(200)
                                 .Value(new DateTime(2022, 9, 7))
+                                .OnValueChanged("dateBoxClick")
                             )
                             .Location(ToolbarItemLocation.Before)
                             .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
@@ -171,7 +173,7 @@
                             .Widget(w => w
                                 .CheckBox()
                                 .Value(false)
-                                .Text("Checkbox text")
+                                .Text("Navigation Pane")
                                 .OnOptionChanged("onOptionChanged")
                             )
                             .ShowText(ToolbarItemShowTextMode.InMenu)
@@ -254,9 +256,9 @@
         .KeyExpr("alignment")
         .StylingMode(ButtonStylingMode.Outlined)
         .Items(items => {
-            items.Add().Icon("alignleft").Hint("Align left").Option("alignment", "left");
+            items.Add().Icon("alignleft").Hint("Align Left").Option("alignment", "left");
             items.Add().Icon("aligncenter").Hint("Center").Option("alignment", "center");
-            items.Add().Icon("alignright").Hint("Align right").Option("alignment", "right");
+            items.Add().Icon("alignright").Hint("Align Right").Option("alignment", "right");
             items.Add().Icon("alignjustify").Hint("Justify").Option("alignment", "justify");
         })
         .SelectedItemKeys(new[] { "left" })
@@ -268,9 +270,9 @@
         .KeyExpr("alignment")
         .StylingMode(ButtonStylingMode.Text)
         .Items(items => {
-            items.Add().Icon("alignleft").Hint("Align left").Option("alignment", "left").Option("text", "Align left");
+            items.Add().Icon("alignleft").Hint("Align Left").Option("alignment", "left").Option("text", "Align left");
             items.Add().Icon("aligncenter").Hint("Center").Option("alignment", "center").Option("text", "Center");
-            items.Add().Icon("alignright").Hint("Align right").Option("alignment", "right").Option("text", "Align right");
+            items.Add().Icon("alignright").Hint("Align Right").Option("alignment", "right").Option("text", "Align right");
             items.Add().Icon("alignjustify").Hint("Justify").Option("alignment", "justify").Option("text", "Justify");
         })
         .SelectedItemKeys(new[] { "left" })
@@ -294,44 +296,51 @@
         toolbar.repaint()
     }
 
-    function changeSize() {
-        DevExpress.ui.notify('Font size value has been changed!');
+    function dateBoxClick() {
+        DevExpress.ui.notify('The "DateBox" value was changed');
     }
 
-    function changeLineHeight() {
-        DevExpress.ui.notify('Line height value has been changed!');
+    function fontFamilyClick() {
+        DevExpress.ui.notify('The "Font Family" value was changed');
     }
 
     function buttonGroupItemClick(e) {
-        DevExpress.ui.notify({ message: `The "${e.itemData.Hint}" button was clicked`, width: 320 }, "success", 1000);
+        DevExpress.ui.notify(`The "${e.itemData.Hint}" button was clicked`);
+    }
+
+    function changeFontSize() {
+        DevExpress.ui.notify('The "Font Size" value was changed');
+    }
+
+    function changeLineHeight() {
+        DevExpress.ui.notify('The "Line Height" value was changed');
     }
 
     function undoButtonClick() {
-        DevExpress.ui.notify("Undo button has been clicked!");
+        DevExpress.ui.notify('The "Undo" button was clicked');
     }
 
     function redoButtonClick() {
-        DevExpress.ui.notify("Redo button has been clicked!");
+        DevExpress.ui.notify('The "Redo" button was clicked');
     }
 
     function attachButtonClick() {
-        DevExpress.ui.notify("Attach button has been clicked!");
+        DevExpress.ui.notify('The "Attach" button was clicked');
     }
 
     function addButtonClick() {
-        DevExpress.ui.notify("Add button has been clicked!");
+        DevExpress.ui.notify('The "Add" button was clicked');
     }
 
     function removeButtonClick() {
-        DevExpress.ui.notify("Remove button has been clicked!");
+        DevExpress.ui.notify('The "Remove" button was clicked');
     }
 
     function aboutButtonClick() {
-        DevExpress.ui.notify("About button has been clicked!");
+        DevExpress.ui.notify('The "About" button was clicked');
     }
 
     function onOptionChanged() {
-        DevExpress.ui.notify("Checkbox option has been changed!");
+        DevExpress.ui.notify('The "Navigation Pane" checkbox value was changed');
     }
 </script>
-
