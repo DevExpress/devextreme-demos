@@ -76,11 +76,11 @@ function App() {
   const [checkBoxValue, setCheckBoxValue] = React.useState(false);
 
   const onDateBoxClick = React.useCallback(() => {
-    notify('The datebox value was changed');
+    notify('The Datebox value was changed');
   }, []);
 
-  const onItemClick = React.useCallback((e) => {
-    onSelectionClick(e.itemData.text);
+  const onFontFamilyClick = React.useCallback(() => {
+    notify('The Font Family value was changed');
   }, []);
 
   const onUndoButtonClick = React.useCallback(() => {
@@ -111,7 +111,10 @@ function App() {
   }, [setFontSize]);
 
   const onTextAlignChange = React.useCallback((e) => {
-    setTextAlign([e.itemData.alignment]);
+    const { alignment, hint } = e.itemData;
+
+    setTextAlign([alignment]);
+    onButtonClick(hint);
   }, [setTextAlign]);
 
   const onToolbarLineModeChange = React.useCallback(({ value }) => {
@@ -211,7 +214,7 @@ function App() {
                 placeholder="Font"
                 displayExpr="text"
                 dataSource={fontFamilies}
-                onItemClick={onItemClick}
+                onItemClick={onFontFamilyClick}
               ></SelectBox>
             </Item>
 

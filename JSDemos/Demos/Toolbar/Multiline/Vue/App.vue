@@ -403,7 +403,11 @@ export default {
     },
 
     onDateBoxClick() {
-      notify('The datebox value was changed');
+      notify('The DateBox value was changed');
+    },
+
+    onFontFamilyClick() {
+      notify('The Font Family value was changed');
     },
   },
 };
