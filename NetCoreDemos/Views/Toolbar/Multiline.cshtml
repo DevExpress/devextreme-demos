@@ -7,6 +7,7 @@
 <div>
     <div class="widget-container">
         @(Html.DevExtreme().Resizable()
+            .ElementAttr("class", "resizable-container")
             .MinWidth(500)
             .MinHeight(150)
             .MaxHeight(370)
@@ -49,7 +50,7 @@
                                 .DropDownButton()
                                 .Width("100%")
                                 .DisplayExpr("Text")
-                                .KeyExpr("Size")
+                                .KeyExpr("Value")
                                 .SelectedItemKey("14")
                                 .UseSelectMode(true)
                                 .DataSource(Model.FontSizes)
@@ -65,9 +66,8 @@
                                 .DropDownButton()
                                 .Width("100%")
                                 .DisplayExpr("Text")
-                                .KeyExpr("LineHeight")
+                                .KeyExpr("Value")
                                 .SelectedItemKey("1.35")
-                                .StylingMode(ButtonStylingMode.Text)
                                 .UseSelectMode(true)
                                 .DataSource(Model.LineHeights)
                                 .Icon("indent")
@@ -84,7 +84,8 @@
                                 .DisplayExpr("Text")
                                 .DataSource(Model.FontFamilies)
                             )
-                            .Location(ToolbarItemLocation.Before);
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
 
                         items
                             .Add()
@@ -98,7 +99,7 @@
                             .Add()
                             .Widget(w => w
                                 .ButtonGroup()
-                                .KeyExpr("Icon")
+                                .KeyExpr("icon")
                                 .StylingMode(ButtonStylingMode.Outlined)
                                 .SelectionMode(ButtonGroupSelectionMode.Multiple)
                                 .Items(fontStyles => {
@@ -109,8 +110,7 @@
                                 })
                                 .OnItemClick("buttonGroupItemClick")
                             )
-                            .Location(ToolbarItemLocation.Before)
-                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+                            .Location(ToolbarItemLocation.Before);
 
                         items
                             .Add()
@@ -129,12 +129,12 @@
                             .Add()
                             .Widget(w => w
                                 .ButtonGroup()
+                                .KeyExpr("alignment")
+                                .StylingMode(ButtonStylingMode.Outlined)
                                 .Items(listTypes => {
                                     listTypes.Add().Icon("orderedlist").Hint("Ordered").Option("alignment", "orderedlist");
                                     listTypes.Add().Icon("bulletlist").Hint("Bullet").Option("alignment", "bulletlist");
                                 })
-                                .KeyExpr("alignment")
-                                .StylingMode(ButtonStylingMode.Outlined)
                                 .OnItemClick("buttonGroupItemClick")
                             )
                             .Location(ToolbarItemLocation.Before);
@@ -170,7 +170,7 @@
                             .Add()
                             .Widget(w => w
                                 .CheckBox()
-                                .Value(true)
+                                .Value(false)
                                 .Text("Checkbox text")
                                 .OnOptionChanged("onOptionChanged")
                             )
@@ -222,8 +222,7 @@
                                 .OnClick("aboutButtonClick")
                             )
                             .ShowText(ToolbarItemShowTextMode.InMenu)
-                            .Location(ToolbarItemLocation.After)
-                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Always);
                     }
                 ).ToString()
             )
@@ -237,8 +236,7 @@
             .ID("toolbar-modes")
             .Layout(Orientation.Horizontal)
             .Items(toolbarModes)
-            .Value(true)
-            .ValueExpr("Value")
+            .Value(toolbarModes[0])
             .OnValueChanged("toolbarModesValueChanged"))
     </div>
 </div>
@@ -253,8 +251,8 @@
 
 @using (Html.DevExtreme().NamedTemplate("text-align-template")) {
     @(Html.DevExtreme().ButtonGroup()
-        .KeyExpr("Alignment")
-        .StylingMode(ButtonStylingMode.Text)
+        .KeyExpr("alignment")
+        .StylingMode(ButtonStylingMode.Outlined)
         .Items(items => {
             items.Add().Icon("alignleft").Hint("Align left").Option("alignment", "left");
             items.Add().Icon("aligncenter").Hint("Center").Option("alignment", "center");
@@ -262,12 +260,12 @@
             items.Add().Icon("alignjustify").Hint("Justify").Option("alignment", "justify");
         })
         .SelectedItemKeys(new[] { "left" })
-        .OnItemClick("buttonGroupItemClick"));
+        .OnItemClick("buttonGroupItemClick"))
 }
 
 @using (Html.DevExtreme().NamedTemplate("text-align-menu-template")) {
     @(Html.DevExtreme().ButtonGroup()
-        .KeyExpr("Alignment")
+        .KeyExpr("alignment")
         .StylingMode(ButtonStylingMode.Text)
         .Items(items => {
             items.Add().Icon("alignleft").Hint("Align left").Option("alignment", "left").Option("text", "Align left");
@@ -276,22 +274,24 @@
             items.Add().Icon("alignjustify").Hint("Justify").Option("alignment", "justify").Option("text", "Justify");
         })
         .SelectedItemKeys(new[] { "left" })
-        .OnItemClick("buttonGroupItemClick"));
+        .OnItemClick("buttonGroupItemClick"))
 }
 
 <script>
     function fontSizeItemTemplate(itemData, itemIndex, itemElement) {
         itemElement.append(
-            $("<div>").css({ fontSize: itemData.text }).text(itemData.text)
+            $("<div>").css({ fontSize: itemData.Text }).text(itemData.Text)
         )
     }
 
-    function toolbarModesValueChanged(value) {
+    function toolbarModesValueChanged({ value }) {
         var toolbar = $("#toolbar").dxToolbar("instance");
         toolbar.option("multiline", value === "Multiline mode");
 
-        var toolbarModesInstance = $("#toolbar-modes").RadioGroup("instance");
+        var toolbarModesInstance = $("#toolbar-modes").dxRadioGroup("instance");
         toolbarModesInstance.option("value", value);
+
+        toolbar.repaint()
     }
 
     function changeSize() {
@@ -303,11 +303,15 @@
     }
 
     function buttonGroupItemClick(e) {
-        DevExpress.ui.notify({ message: `The "${e.itemData.hint}" button was clicked`, width: 320 }, "success", 1000);
+        DevExpress.ui.notify({ message: `The "${e.itemData.Hint}" button was clicked`, width: 320 }, "success", 1000);
     }
 
     function undoButtonClick() {
         DevExpress.ui.notify("Undo button has been clicked!");
+    }
+
+    function redoButtonClick() {
+        DevExpress.ui.notify("Redo button has been clicked!");
     }
 
     function attachButtonClick() {
@@ -330,3 +334,4 @@
         DevExpress.ui.notify("Checkbox option has been changed!");
     }
 </script>
+

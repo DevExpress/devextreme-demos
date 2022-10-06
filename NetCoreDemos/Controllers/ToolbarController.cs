@@ -19,6 +19,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         }
         #endregion
 
+        #region Multiline
         public ActionResult Multiline() {
             return View(new ToolbarViewModel() {
                 FontFamilies = ToolbarData.FontFamilies,
@@ -26,5 +27,6 @@ namespace DevExtreme.NETCore.Demos.Controllers {
                 LineHeights = ToolbarData.LineHeights,
             });
         }
+        #endregion
     }
 }
