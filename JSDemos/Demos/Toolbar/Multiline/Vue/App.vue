@@ -226,7 +226,7 @@ export default {
           value: true,
         },
         {
-          text: 'Singleline mode',
+          text: 'Single-line mode',
           value: false,
         },
       ];
@@ -243,8 +243,8 @@ export default {
     undoButtonOptions() {
       return {
         icon: 'undo',
-        onClick() {
-          notify('Undo button has been clicked!');
+        onClick: () => {
+          this.onButtonClick('Undo');
         },
       };
     },
@@ -252,8 +252,8 @@ export default {
     redoButtonOptions() {
       return {
         icon: 'redo',
-        onClick() {
-          notify('Redo button has been clicked!');
+        onClick: () => {
+          this.onButtonClick('Redo');
         },
       };
     },
@@ -268,7 +268,7 @@ export default {
         itemTemplate: 'fontSizeTemplate',
         selectedItemKey: this.fontSize,
         onSelectionChanged: () => {
-          notify('Font size value has been changed!');
+          this.onSelectionClick('Font Size');
         },
       };
     },
@@ -283,7 +283,7 @@ export default {
         items: lineHeights,
         selectedItemKey: this.lineHeight,
         onSelectionChanged: () => {
-          notify('Line height value has been changed!');
+          this.onSelectionClick('Line Height');
         },
       };
     },
@@ -293,6 +293,9 @@ export default {
         placeholder: 'Font',
         displayExpr: 'text',
         dataSource: fontFamilies,
+        onItemClick: (e) => {
+          this.onSelectionClick(e.itemData.text);
+        },
       };
     },
 
@@ -303,8 +306,8 @@ export default {
         keyExpr: 'icon',
         stylingMode: 'outlined',
         selectionMode: 'multiple',
-        onItemClick(e) {
-          notify(`The "${e.itemData.hint}" button was clicked`);
+        onItemClick: (e) => {
+          this.onButtonClick(e.itemData.hint);
         },
       };
     },
@@ -314,8 +317,8 @@ export default {
         items: listTypes,
         keyExpr: 'alignment',
         stylingMode: 'outlined',
-        onItemClick(e) {
-          notify(`The "${e.itemData.hint}" button was clicked`);
+        onItemClick: (e) => {
+          this.onButtonClick(e.itemData.hint);
         },
       };
     },
@@ -325,16 +328,15 @@ export default {
         width: 200,
         type: 'date',
         value: new Date(2022, 9, 7),
+        onValueChanged: this.onDateBoxClick,
       };
     },
 
     checkBoxOptions() {
       return {
         value: false,
-        text: 'Checkbox text',
-        onOptionChanged() {
-          notify('Checkbox value has been changed!');
-        },
+        text: 'Navigation Pane',
+        onOptionChanged: this.onCheckBoxClick,
       };
     },
 
@@ -342,8 +344,8 @@ export default {
       return {
         icon: 'attach',
         text: 'Attach',
-        onClick() {
-          notify('Attach button has been clicked!');
+        onClick: () => {
+          this.onButtonClick('Attach');
         },
       };
     },
@@ -352,8 +354,8 @@ export default {
       return {
         icon: 'add',
         text: 'Add',
-        onClick() {
-          notify('Add button has been clicked!');
+        onClick: () => {
+          this.onButtonClick('Add');
         },
       };
     },
@@ -362,8 +364,8 @@ export default {
       return {
         icon: 'trash',
         text: 'Remove',
-        onClick() {
-          notify('Remove button has been clicked!');
+        onClick: () => {
+          this.onButtonClick('Remove');
         },
       };
     },
@@ -372,8 +374,8 @@ export default {
       return {
         icon: 'help',
         text: 'About',
-        onClick() {
-          notify('About button has been clicked!');
+        onClick: () => {
+          this.onButtonClick('About');
         },
       };
     },
@@ -385,7 +387,23 @@ export default {
 
       this.textAlign = alignment;
 
-      notify(`The "${hint}" button was clicked`);
+      this.onButtonClick(hint);
+    },
+
+    onButtonClick(name) {
+      notify(`The "${name}" button was clicked`);
+    },
+
+    onSelectionClick(name) {
+      notify(`The "${name}" value was changed`);
+    },
+
+    onCheckBoxClick() {
+      notify('The "Navigation Pane" checkbox value was changed');
+    },
+
+    onDateBoxClick() {
+      notify('The datebox value was changed');
     },
   },
 };
