@@ -293,9 +293,7 @@ export default {
         placeholder: 'Font',
         displayExpr: 'text',
         dataSource: fontFamilies,
-        onItemClick: (e) => {
-          this.onSelectionClick(e.itemData.text);
-        },
+        onItemClick: this.onFontFamilyClick,
       };
     },
 
@@ -403,11 +401,11 @@ export default {
     },
 
     onDateBoxClick() {
-      notify('The DateBox value was changed');
+      notify('The "DateBox" value was changed');
     },
 
     onFontFamilyClick() {
-      notify('The Font Family value was changed');
+      notify('The "Font Family" value was changed');
     },
   },
 };

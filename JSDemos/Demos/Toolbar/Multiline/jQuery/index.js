@@ -11,7 +11,11 @@ const onCheckBoxClick = () => {
 };
 
 const onDateBoxClick = () => {
-  DevExpress.ui.notify('The datebox value was changed');
+  DevExpress.ui.notify('The "DateBox" value was changed');
+};
+
+const onFontFamilyClick = () => {
+  DevExpress.ui.notify('The "Font Family" value was changed');
 };
 
 const toolbarSeparator = {
@@ -98,9 +102,7 @@ const toolbarItems = [
       placeholder: 'Font',
       displayExpr: 'text',
       dataSource: fontFamilies,
-      onItemClick(e) {
-        onSelectionClick(e.itemData.text);
-      },
+      onItemClick: onFontFamilyClick,
     },
   },
   toolbarSeparator,

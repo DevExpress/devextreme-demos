@@ -47,25 +47,33 @@ function onSelectionClick(name) {
 const attachButtonOptions = {
   icon: 'attach',
   text: 'Attach',
-  onClick: onButtonClick('Attach'),
+  onClick: () => {
+    onButtonClick('Attach');
+  },
 };
 
 const addButtonOptions = {
   icon: 'add',
   text: 'Add',
-  onClick: onButtonClick('Add'),
+  onClick: () => {
+    onButtonClick('Add');
+  },
 };
 
 const removeButtonOptions = {
   icon: 'trash',
   text: 'Remove',
-  onClick: onButtonClick('Remove'),
+  onClick: () => {
+    onButtonClick('Remove');
+  },
 };
 
 const aboutButtonOptions = {
   icon: 'help',
   text: 'About',
-  onClick: onButtonClick('About'),
+  onClick: () => {
+    onButtonClick('About');
+  },
 };
 
 function App() {
@@ -76,11 +84,11 @@ function App() {
   const [checkBoxValue, setCheckBoxValue] = React.useState(false);
 
   const onDateBoxClick = React.useCallback(() => {
-    notify('The Datebox value was changed');
+    notify('The "DateBox" value was changed');
   }, []);
 
   const onFontFamilyClick = React.useCallback(() => {
-    notify('The Font Family value was changed');
+    notify('The "Font Family" value was changed');
   }, []);
 
   const onUndoButtonClick = React.useCallback(() => {
