@@ -2,7 +2,7 @@ The LoadIndicator component notifies users that a process is in progress. In thi
 
 ## Specify Dimensions
 
-LoadIndicator allows you to specify the indicator's dimensions. Set the [height](/Documentation/ApiReference/UI_Components/dxLoadIndicator/Configuration/#height) and [width](/Documentation/ApiReference/UI_Components/dxLoadIndicator/Configuration/#width) properties to the size you need. In this demo, the first three components have different sizes.
+LoadIndicator allows you to specify its dimensions. Set the [height](/Documentation/ApiReference/UI_Components/dxLoadIndicator/Configuration/#height) and [width](/Documentation/ApiReference/UI_Components/dxLoadIndicator/Configuration/#width) properties to the size you need. In this demo, the first three components have different sizes.
 
 ## Apply a Custom Indicator
 
