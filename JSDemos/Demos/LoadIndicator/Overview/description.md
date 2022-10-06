@@ -8,6 +8,6 @@ LoadIndicator allows you to specify its dimensions. Set the [height](/Documentat
 
 If you want to apply a custom indicator, assign the path to a new image to the [indicatorSrc](/Documentation/ApiReference/UI_Components/dxLoadIndicator/Configuration/#indicatorSrc) property. In this demo, the fourth LoadIndicator displays a custom animated GIF.
 
-## Use within Other Components
+## Integrate LoadIndicator into Other Components
 
 You can use LoadIndicator within other UI components. In this demo, the indicator appears in the [Button](/Documentation/ApiReference/UI_Components/dxButton/) component when a user clicks the button. To show and hide LoadIndicator, use the [visible](/Documentation/ApiReference/UI_Components/dxLoadIndicator/Configuration/#visible) property. 
