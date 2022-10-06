@@ -99,14 +99,14 @@
                             .Add()
                             .Widget(w => w
                                 .ButtonGroup()
-                                .KeyExpr("style")
+                                .KeyExpr("icon")
                                 .StylingMode(ButtonStylingMode.Outlined)
                                 .SelectionMode(ButtonGroupSelectionMode.Multiple)
                                 .Items(fontStyles => {
-                                    fontStyles.Add().Icon("bold").Hint("Bold").Option("style", "bold");
-                                    fontStyles.Add().Icon("italic").Hint("Italic").Option("style", "italic");
-                                    fontStyles.Add().Icon("underline").Hint("Underlined").Option("style", "underline");
-                                    fontStyles.Add().Icon("strike").Hint("Strikethrough").Option("style", "strike");
+                                    fontStyles.Add().Icon("bold").Hint("Bold");
+                                    fontStyles.Add().Icon("italic").Hint("Italic");
+                                    fontStyles.Add().Icon("underline").Hint("Underlined");
+                                    fontStyles.Add().Icon("strike").Hint("Strikethrough");
                                 })
                                 .OnItemClick("buttonGroupItemClick")
                             )
@@ -334,3 +334,4 @@
         DevExpress.ui.notify("Checkbox option has been changed!");
     }
 </script>
+
