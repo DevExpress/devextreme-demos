@@ -31,33 +31,41 @@ const toolbarLineModes = [
     value: true,
   },
   {
-    text: 'Singleline mode',
+    text: 'Single-line mode',
     value: false,
   },
 ];
 
+function onButtonClick(name) {
+  notify(`The "${name}" button was clicked`);
+}
+
+function onSelectionClick(name) {
+  notify(`The "${name}" value was changed`);
+}
+
 const attachButtonOptions = {
   icon: 'attach',
   text: 'Attach',
-  onClick: () => notify('Attach button has been clicked!'),
+  onClick: onButtonClick('Attach'),
 };
 
 const addButtonOptions = {
   icon: 'add',
   text: 'Add',
-  onClick: () => notify('Add button has been clicked!'),
+  onClick: onButtonClick('Add'),
 };
 
 const removeButtonOptions = {
   icon: 'trash',
   text: 'Remove',
-  onClick: () => notify('Remove button has been clicked!'),
+  onClick: onButtonClick('Remove'),
 };
 
 const aboutButtonOptions = {
   icon: 'help',
   text: 'About',
-  onClick: () => notify('About button has been clicked!'),
+  onClick: onButtonClick('About'),
 };
 
 function App() {
@@ -67,31 +75,39 @@ function App() {
   const [multiline, setMultiline] = React.useState(true);
   const [checkBoxValue, setCheckBoxValue] = React.useState(false);
 
+  const onDateBoxClick = React.useCallback(() => {
+    notify('The datebox value was changed');
+  }, []);
+
   const onItemClick = React.useCallback((e) => {
-    notify(`The "${e.itemData.hint}" button was clicked`);
+    onSelectionClick(e.itemData.text);
   }, []);
 
   const onUndoButtonClick = React.useCallback(() => {
-    notify('Undo button has been clicked!');
+    onButtonClick('Undo');
+  }, []);
+
+  const onButtonGroupClick = React.useCallback((e) => {
+    onButtonClick(e.itemData.hint);
   }, []);
 
   const onRedoButtonClick = React.useCallback(() => {
-    notify('Redo button has been clicked!');
+    onButtonClick('Redo');
   }, []);
 
   const onCheckBoxChange = React.useCallback(({ value }) => {
     setCheckBoxValue(value);
-    notify('Checkbox value has been changed!');
+    notify('The "Navigation Pane" checkbox value was changed');
   }, [setCheckBoxValue]);
 
   const onLineHeightChange = React.useCallback((e) => {
     setLineHeight(e.item.lineHeight);
-    notify('Line height value has been changed!');
+    onSelectionClick('Line Height');
   }, [setLineHeight]);
 
   const onFontSizeChange = React.useCallback((e) => {
     setFontSize(e.item.size);
-    notify('Font size value has been changed!');
+    onSelectionClick('Font Size');
   }, [setFontSize]);
 
   const onTextAlignChange = React.useCallback((e) => {
@@ -195,6 +211,7 @@ function App() {
                 placeholder="Font"
                 displayExpr="text"
                 dataSource={fontFamilies}
+                onItemClick={onItemClick}
               ></SelectBox>
             </Item>
 
@@ -213,7 +230,7 @@ function App() {
                 stylingMode="outlined"
                 selectionMode="multiple"
                 items={fontStyles}
-                onItemClick={onItemClick}
+                onItemClick={onButtonGroupClick}
               ></ButtonGroup>
             </Item>
 
@@ -234,7 +251,7 @@ function App() {
                 keyExpr="alignment"
                 stylingMode="outlined"
                 items={listTypes}
-                onItemClick={onItemClick}
+                onItemClick={onButtonGroupClick}
               ></ButtonGroup>
             </Item>
 
@@ -252,6 +269,7 @@ function App() {
                 width={200}
                 type="date"
                 value={dateBoxValue}
+                onValueChanged={onDateBoxClick}
               ></DateBox>
             </Item>
 
@@ -267,7 +285,7 @@ function App() {
             <Item location="before" locateInMenu="auto">
               <CheckBox
                 value={checkBoxValue}
-                text="Checkbox text"
+                text="Navigation Pane"
                 onValueChanged={onCheckBoxChange}
               ></CheckBox>
             </Item>
