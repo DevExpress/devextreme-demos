@@ -183,15 +183,15 @@ export class AppComponent {
 
   constructor(private service: Service) {}
 
-  onItemClick(e: { itemData: { hint: string } }): void {
-    notify(`The "${e.itemData.hint}" button was clicked`);
+  onTextAlignChange(e: { itemData: { hint: string } }): void {
+    this.onButtonClick(e.itemData.hint);
   }
 
-  onButtonClick(name) {
+  onButtonClick(name: string) {
     notify(`The "${name}" button was clicked`);
   }
 
-  onSelectionClick(name) {
+  onSelectionClick(name: string) {
     notify(`The "${name}" value was changed`);
   }
 
