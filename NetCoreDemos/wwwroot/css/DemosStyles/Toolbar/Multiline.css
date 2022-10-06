@@ -25,15 +25,6 @@
   height: 1px;
 }
 
-.dx-toolbar-menu-section .dx-toolbar-item-auto-hide,
-.dx-toolbar-hidden-button-group .dx-buttongroup-wrapper .dx-buttongroup-item.dx-button .dx-button-content {
-  padding: 10px;
-}
-
-.dx-toolbar-menu-section .dx-item-content .dx-toolbar-item-auto-hide .dx-button-has-text {
-  padding: 7px 9px 8px;
-}
-
 .widget-container {
   margin-right: 6px;
 }
