@@ -14,7 +14,7 @@
         "@angular/forms": "12.2.16",
         "@angular/platform-browser": "12.2.16",
         "@angular/platform-browser-dynamic": "12.2.16",
-        "@aspnet/signalr": "1.0.0",
+        "@aspnet/signalr": "1.0.27",
         "angular": "1.8.3",
         "angular-sanitize": "1.8.3",
         "canvg": "2.0.0",
