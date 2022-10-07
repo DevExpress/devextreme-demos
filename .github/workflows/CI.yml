@@ -1,6 +1,10 @@
 name: Linter
 
-on: [push, pull_request]
+on:
+  pull_request:
+  push:
+    branches:
+      - "[0-9][0-9]_[0-9]"
 
 jobs:
   lint:
