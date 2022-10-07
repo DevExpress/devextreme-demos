@@ -2,15 +2,15 @@ const onButtonClick = (name) => {
   DevExpress.ui.notify(`The "${name}" button was clicked`);
 };
 
-const onSelectionClick = (name) => {
+const onSelectionChanged = (name) => {
   DevExpress.ui.notify(`The "${name}" value was changed`);
 };
 
-const onCheckBoxClick = () => {
+const onCheckBoxValueChanged = () => {
   DevExpress.ui.notify('The "Navigation Pane" checkbox value was changed');
 };
 
-const onDateBoxClick = () => {
+const onDateBoxValueChanged = () => {
   DevExpress.ui.notify('The "DateBox" value was changed');
 };
 
@@ -73,7 +73,7 @@ const toolbarItems = [
           .css('font-size', `${itemData.size}px`);
       },
       onSelectionChanged() {
-        onSelectionClick('Font Size');
+        onSelectionChanged('Font Size');
       },
     },
   },
@@ -90,7 +90,7 @@ const toolbarItems = [
       items: lineHeights,
       selectedItemKey: 1.35,
       onSelectionChanged() {
-        onSelectionClick('Line Height');
+        onSelectionChanged('Line Height');
       },
     },
   },
@@ -179,7 +179,7 @@ const toolbarItems = [
       width: 200,
       type: 'date',
       value: new Date(2022, 9, 7),
-      onValueChanged: onDateBoxClick,
+      onValueChanged: onDateBoxValueChanged,
     },
   },
   toolbarSeparator,
@@ -190,7 +190,7 @@ const toolbarItems = [
     options: {
       value: false,
       text: 'Navigation Pane',
-      onOptionChanged: onCheckBoxClick,
+      onOptionChanged: onCheckBoxValueChanged,
     },
   },
   {

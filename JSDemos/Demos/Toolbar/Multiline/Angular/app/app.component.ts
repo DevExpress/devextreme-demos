@@ -92,7 +92,7 @@ export class AppComponent {
     selectedItemKey: this.fontSizes[2].size,
     itemTemplate: 'fontSizeTemplate',
     onSelectionChanged: (): void => {
-      this.onSelectionClick('Font Size');
+      this.onSelectionChanged('Font Size');
     },
   };
 
@@ -105,7 +105,7 @@ export class AppComponent {
     items: this.lineHeights,
     selectedItemKey: this.lineHeight,
     onSelectionChanged: (): void => {
-      this.onSelectionClick('Line Height');
+      this.onSelectionChanged('Line Height');
     },
   };
 
@@ -140,13 +140,13 @@ export class AppComponent {
     width: 200,
     type: 'date',
     value: new Date(2022, 9, 7),
-    onValueChanged: this.onDateBoxClick,
+    onValueChanged: this.onDateBoxValueChanged,
   };
 
   checkBoxOptions = {
     value: false,
     text: 'Navigation Pane',
-    onOptionChanged: this.onCheckBoxClick,
+    onOptionChanged: this.onCheckBoxValueChanged,
   };
 
   attachButtonOptions = {
@@ -183,7 +183,7 @@ export class AppComponent {
 
   constructor(private service: Service) {}
 
-  onTextAlignChange(e: { itemData: { hint: string } }): void {
+  onTextAlignChanged(e: { itemData: { hint: string } }): void {
     this.onButtonClick(e.itemData.hint);
   }
 
@@ -191,15 +191,15 @@ export class AppComponent {
     notify(`The "${name}" button was clicked`);
   }
 
-  onSelectionClick(name: string) {
+  onSelectionChanged(name: string) {
     notify(`The "${name}" value was changed`);
   }
 
-  onCheckBoxClick() {
+  onCheckBoxValueChanged() {
     notify('The "Navigation Pane" checkbox value was changed');
   }
 
-  onDateBoxClick() {
+  onDateBoxValueChanged() {
     notify('The "DateBox" value was changed');
   }
 

@@ -268,7 +268,7 @@ export default {
         itemTemplate: 'fontSizeTemplate',
         selectedItemKey: this.fontSize,
         onSelectionChanged: () => {
-          this.onSelectionClick('Font Size');
+          this.onSelectionChanged('Font Size');
         },
       };
     },
@@ -283,7 +283,7 @@ export default {
         items: lineHeights,
         selectedItemKey: this.lineHeight,
         onSelectionChanged: () => {
-          this.onSelectionClick('Line Height');
+          this.onSelectionChanged('Line Height');
         },
       };
     },
@@ -326,7 +326,7 @@ export default {
         width: 200,
         type: 'date',
         value: new Date(2022, 9, 7),
-        onValueChanged: this.onDateBoxClick,
+        onValueChanged: this.onDateBoxValueChanged,
       };
     },
 
@@ -334,7 +334,7 @@ export default {
       return {
         value: false,
         text: 'Navigation Pane',
-        onOptionChanged: this.onCheckBoxClick,
+        onOptionChanged: this.onCheckBoxValueChanged,
       };
     },
 
@@ -392,15 +392,15 @@ export default {
       notify(`The "${name}" button was clicked`);
     },
 
-    onSelectionClick(name) {
+    onSelectionChanged(name) {
       notify(`The "${name}" value was changed`);
     },
 
-    onCheckBoxClick() {
+    onCheckBoxValueChanged() {
       notify('The "Navigation Pane" checkbox value was changed');
     },
 
-    onDateBoxClick() {
+    onDateBoxValueChanged() {
       notify('The "DateBox" value was changed');
     },
 

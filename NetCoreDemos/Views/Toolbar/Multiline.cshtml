@@ -23,7 +23,7 @@
                             .Widget(w => w
                                 .Button()
                                 .Icon("undo")
-                                .OnClick("undoButtonClick")
+                                .OnClick("onUndoButtonClick")
                             )
                             .Location(ToolbarItemLocation.Before);
 
@@ -32,7 +32,7 @@
                             .Widget(w => w
                                 .Button()
                                 .Icon("redo")
-                                .OnClick("redoButtonClick")
+                                .OnClick("onRedoButtonClick")
                             )
                             .Location(ToolbarItemLocation.Before);
 
@@ -54,7 +54,7 @@
                                 .SelectedItemKey("14")
                                 .UseSelectMode(true)
                                 .DataSource(Model.FontSizes)
-                                .OnSelectionChanged("changeFontSize")
+                                .OnSelectionChanged("onFontSizeChanged")
                                 .ItemTemplate(new JS("fontSizeItemTemplate"))
                             )
                             .Location(ToolbarItemLocation.Before)
@@ -71,7 +71,7 @@
                                 .UseSelectMode(true)
                                 .DataSource(Model.LineHeights)
                                 .Icon("indent")
-                                .OnSelectionChanged("changeLineHeight")
+                                .OnSelectionChanged("onLineHeightChanged")
                             )
                             .Location(ToolbarItemLocation.Before)
                             .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
@@ -83,7 +83,7 @@
                                 .Placeholder("Font")
                                 .DisplayExpr("Text")
                                 .DataSource(Model.FontFamilies)
-                                .OnItemClick("fontFamilyClick")
+                                .OnItemClick("onFontFamilyClick")
                             )
                             .Location(ToolbarItemLocation.Before)
                             .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
@@ -109,7 +109,7 @@
                                     fontStyles.Add().Icon("underline").Hint("Underlined");
                                     fontStyles.Add().Icon("strike").Hint("Strikethrough");
                                 })
-                                .OnItemClick("buttonGroupItemClick")
+                                .OnItemClick("onButtonGroupItemClick")
                             )
                             .Location(ToolbarItemLocation.Before);
 
@@ -136,7 +136,7 @@
                                     listTypes.Add().Icon("orderedlist").Hint("Ordered").Option("alignment", "orderedlist");
                                     listTypes.Add().Icon("bulletlist").Hint("Bullet").Option("alignment", "bulletlist");
                                 })
-                                .OnItemClick("buttonGroupItemClick")
+                                .OnItemClick("onButtonGroupItemClick")
                             )
                             .Location(ToolbarItemLocation.Before);
 
@@ -155,7 +155,7 @@
                                 .Type(DateBoxType.Date)
                                 .Width(200)
                                 .Value(new DateTime(2022, 9, 7))
-                                .OnValueChanged("dateBoxClick")
+                                .OnValueChanged("onDateBoxValueChanged")
                             )
                             .Location(ToolbarItemLocation.Before)
                             .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
@@ -174,7 +174,7 @@
                                 .CheckBox()
                                 .Value(false)
                                 .Text("Navigation Pane")
-                                .OnOptionChanged("onOptionChanged")
+                                .OnOptionChanged("onCheckBoxValueChanged")
                             )
                             .ShowText(ToolbarItemShowTextMode.InMenu)
                             .Location(ToolbarItemLocation.Before)
@@ -197,7 +197,7 @@
                                 .Button()
                                 .Icon("add")
                                 .Text("Add")
-                                .OnClick("addButtonClick")
+                                .OnClick("onAddButtonClick")
                             )
                             .ShowText(ToolbarItemShowTextMode.InMenu)
                             .Location(ToolbarItemLocation.After)
@@ -209,7 +209,7 @@
                                 .Button()
                                 .Icon("trash")
                                 .Text("Remove")
-                                .OnClick("removeButtonClick")
+                                .OnClick("onRemoveButtonClick")
                             )
                             .ShowText(ToolbarItemShowTextMode.InMenu)
                             .Location(ToolbarItemLocation.After)
@@ -221,7 +221,7 @@
                                 .Button()
                                 .Icon("help")
                                 .Text("About")
-                                .OnClick("aboutButtonClick")
+                                .OnClick("onAboutButtonClick")
                             )
                             .ShowText(ToolbarItemShowTextMode.InMenu)
                             .LocateInMenu(ToolbarItemLocateInMenuMode.Always);
@@ -239,7 +239,7 @@
             .Layout(Orientation.Horizontal)
             .Items(toolbarModes)
             .Value(toolbarModes[0])
-            .OnValueChanged("toolbarModesValueChanged"))
+            .OnValueChanged("onToolbarModesValueChanged"))
     </div>
 </div>
 
@@ -262,7 +262,7 @@
             items.Add().Icon("alignjustify").Hint("Justify").Option("alignment", "justify");
         })
         .SelectedItemKeys(new[] { "left" })
-        .OnItemClick("buttonGroupItemClick"))
+        .OnItemClick("onButtonGroupItemClick"))
 }
 
 @using (Html.DevExtreme().NamedTemplate("text-align-menu-template")) {
@@ -276,7 +276,7 @@
             items.Add().Icon("alignjustify").Hint("Justify").Option("alignment", "justify").Option("text", "Justify");
         })
         .SelectedItemKeys(new[] { "left" })
-        .OnItemClick("buttonGroupItemClick"))
+        .OnItemClick("onButtonGroupItemClick"))
 }
 
 <script>
@@ -286,7 +286,7 @@
         )
     }
 
-    function toolbarModesValueChanged({ value }) {
+    function onToolbarModesValueChanged({ value }) {
         var toolbar = $("#toolbar").dxToolbar("instance");
         toolbar.option("multiline", value === "Multiline mode");
 
@@ -296,31 +296,31 @@
         toolbar.repaint()
     }
 
-    function dateBoxClick() {
+    function onDateBoxValueChanged() {
         DevExpress.ui.notify('The "DateBox" value was changed');
     }
 
-    function fontFamilyClick() {
+    function onFontFamilyClick() {
         DevExpress.ui.notify('The "Font Family" value was changed');
     }
 
-    function buttonGroupItemClick(e) {
+    function onButtonGroupItemClick(e) {
         DevExpress.ui.notify(`The "${e.itemData.Hint}" button was clicked`);
     }
 
-    function changeFontSize() {
+    function onFontSizeChanged() {
         DevExpress.ui.notify('The "Font Size" value was changed');
     }
 
-    function changeLineHeight() {
+    function onLineHeightChanged() {
         DevExpress.ui.notify('The "Line Height" value was changed');
     }
 
-    function undoButtonClick() {
+    function onUndoButtonClick() {
         DevExpress.ui.notify('The "Undo" button was clicked');
     }
 
-    function redoButtonClick() {
+    function onRedoButtonClick() {
         DevExpress.ui.notify('The "Redo" button was clicked');
     }
 
@@ -328,19 +328,19 @@
         DevExpress.ui.notify('The "Attach" button was clicked');
     }
 
-    function addButtonClick() {
+    function onAddButtonClick() {
         DevExpress.ui.notify('The "Add" button was clicked');
     }
 
-    function removeButtonClick() {
+    function onRemoveButtonClick() {
         DevExpress.ui.notify('The "Remove" button was clicked');
     }
 
-    function aboutButtonClick() {
+    function onAboutButtonClick() {
         DevExpress.ui.notify('The "About" button was clicked');
     }
 
-    function onOptionChanged() {
+    function onCheckBoxValueChanged() {
         DevExpress.ui.notify('The "Navigation Pane" checkbox value was changed');
     }
 </script>
