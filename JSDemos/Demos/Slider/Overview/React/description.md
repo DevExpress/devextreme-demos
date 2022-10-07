@@ -28,6 +28,6 @@ If you want to disable the Slider, set the [disabled](/Documentation/ApiReferenc
 
 ## Handle the Value Change Event
 
-Specify the [onValueChanged](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#onValueChanged) function to handle the [value](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#value) change. In this demo, the [NumberBox](/Documentation/ApiReference/UI_Components/dxNumberBox/) component and the Sliders use this property to exchange values.
+Specify the [onValueChanged](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#onValueChanged) function to handle the [value](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#value) change. In this demo, the [NumberBox](/Documentation/ApiReference/UI_Components/dxNumberBox/) component and the Sliders exchange values through the variable bound to all the components. The state of this variable changes in the [onValueChanged](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#onValueChanged) function.
 
 The [callValueChange](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#callValueChange) property allows you to choose when to change the Slider value and supports the `onMoving` and `onMovingComplete` modes. You can see the property's effect in the **Process Value Changes** section. The first Slider changes its value every time a user slides the handle. The second Slider changes its value only when the handle is released.
