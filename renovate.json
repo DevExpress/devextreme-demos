@@ -1,7 +1,9 @@
 {
     "extends": [
-        "config:base"
+        "config:js-app"
     ],
+    "prConcurrentLimit": 2,
+    "semanticCommits": "enabled",
     "baseBranches": [
         "22_1",
         "22_2"
@@ -9,28 +11,23 @@
     "labels": [
         "dependencies"
     ],
-    "lockFileMaintenance": {
-        "enabled": true,
-        "schedule": [
-            "every 1 day"
-        ],
-        "automerge": true
-    },
     "vulnerabilityAlerts": {
         "enabled": true,
         "automerge": true
     },
     "packageRules": [
         {
-            "packagePatterns": [
-                "*"
+            "matchPackageNames": [
+              "devextreme",
+              "devextreme-angular",
+              "devextreme-react",
+              "devextreme-vue"
             ],
             "enabled": false
         }
     ],
-    "assignAutomerge": true,
     "reviewers": [
-        "team:devextreme-core"
+        "team:devextreme-devops"
     ],
     "ignorePaths": [
         ".github"
