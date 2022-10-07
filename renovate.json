@@ -24,6 +24,16 @@
               "devextreme-vue"
             ],
             "enabled": false
+        },
+        {
+            "matchPackagePatterns": [ "*" ],
+            "matchUpdateTypes": [ "minor", "patch" ],
+            "automerge": true
+        },
+        {
+            "matchPackagePatterns": [ "*" ],
+            "matchUpdateTypes": [ "major" ],
+            "enabled": false
         }
     ],
     "reviewers": [
