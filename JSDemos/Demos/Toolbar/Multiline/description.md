@@ -1,4 +1,6 @@
-This demo demonstrates the multiline mode in the Toolbar component. To see step-by-step instructions on how to get started with the DevExtreme Toolbar component, refer to the following tutorial: [Getting Started with Toolbar](/Documentation/Guide/UI_Components/Toolbar/Getting_Started_with_Toolbar/). 
+This demo demonstrates the multiline mode in the Toolbar component. 
+
+To see step-by-step instructions on how to get started with the DevExtreme Toolbar component, refer to the following tutorial: [Getting Started with Toolbar](/Documentation/Guide/UI_Components/Toolbar/Getting_Started_with_Toolbar/). 
 
 In this demo, you can drag the Toolbar container's resize handle. If you enable the [multiline](/Documentation/ApiReference/UI_Components/dxToolbar/Configuration/#multiline) property, you'll see how the Toolbar wraps onto multiple lines. 
 
