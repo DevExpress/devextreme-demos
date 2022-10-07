@@ -40,6 +40,8 @@
         "team:devextreme-devops"
     ],
     "ignorePaths": [
-        ".github"
+        ".github",
+        "MVCDemos",
+        "NetCoreDemos"
     ]
 }
