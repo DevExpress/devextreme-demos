@@ -102,7 +102,9 @@ const toolbarItems = [
       placeholder: 'Font',
       displayExpr: 'text',
       dataSource: fontFamilies,
-      onItemClick: onFontFamilyClick,
+      onItemClick() {
+        onFontFamilyClick();
+      },
     },
   },
   toolbarSeparator,
@@ -179,7 +181,9 @@ const toolbarItems = [
       width: 200,
       type: 'date',
       value: new Date(2022, 9, 7),
-      onValueChanged: onDateBoxValueChanged,
+      onValueChanged() {
+        onDateBoxValueChanged();
+      },
     },
   },
   toolbarSeparator,
@@ -190,7 +194,9 @@ const toolbarItems = [
     options: {
       value: false,
       text: 'Navigation Pane',
-      onOptionChanged: onCheckBoxValueChanged,
+      onOptionChanged() {
+        onCheckBoxValueChanged();
+      },
     },
   },
   {

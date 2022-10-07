@@ -293,7 +293,9 @@ export default {
         placeholder: 'Font',
         displayExpr: 'text',
         dataSource: fontFamilies,
-        onItemClick: this.onFontFamilyClick,
+        onItemClick: () => {
+          this.onFontFamilyClick();
+        },
       };
     },
 
@@ -326,7 +328,9 @@ export default {
         width: 200,
         type: 'date',
         value: new Date(2022, 9, 7),
-        onValueChanged: this.onDateBoxValueChanged,
+        onValueChanged: () => {
+          this.onDateBoxValueChanged();
+        },
       };
     },
 
@@ -334,7 +338,9 @@ export default {
       return {
         value: false,
         text: 'Navigation Pane',
-        onOptionChanged: this.onCheckBoxValueChanged,
+        onOptionChanged: () => {
+          this.onCheckBoxValueChanged();
+        },
       };
     },
 

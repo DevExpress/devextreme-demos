@@ -71,14 +71,14 @@ export class AppComponent {
 
   undoButtonOptions = {
     icon: 'undo',
-    onClick: () => {
+    onClick: (): void => {
       this.onButtonClick('Undo');
     },
   };
 
   redoButtonOptions = {
     icon: 'redo',
-    onClick: () => {
+    onClick: (): void => {
       this.onButtonClick('Redo');
     },
   };
@@ -113,7 +113,9 @@ export class AppComponent {
     placeholder: 'Font',
     displayExpr: 'text',
     dataSource: new DataSource(this.fontFamilies),
-    onItemClick: this.onFontFamilyClick,
+    onItemClick: (): void => {
+      this.onFontFamilyClick();
+    },
   };
 
   fontStyleOptions = {
@@ -140,13 +142,17 @@ export class AppComponent {
     width: 200,
     type: 'date',
     value: new Date(2022, 9, 7),
-    onValueChanged: this.onDateBoxValueChanged,
+    onValueChanged: (): void => {
+      this.onDateBoxValueChanged();
+    },
   };
 
   checkBoxOptions = {
     value: false,
     text: 'Navigation Pane',
-    onOptionChanged: this.onCheckBoxValueChanged,
+    onOptionChanged: (): void => {
+      this.onCheckBoxValueChanged();
+    },
   };
 
   attachButtonOptions = {
