@@ -21,7 +21,9 @@
               "devextreme",
               "devextreme-angular",
               "devextreme-react",
-              "devextreme-vue"
+              "devextreme-vue",
+              "eslint-config-devextreme",
+              "rrule"
             ],
             "enabled": false
         },
