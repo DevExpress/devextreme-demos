@@ -48,7 +48,7 @@
         "react-dom": "17.0.2",
         "reflect-metadata": "0.1.3",
         "rrule": "2.6.4",
-        "rxjs": "7.5.3",
+        "rxjs": "7.5.7",
         "signalr": "2.2.2",
         "systemjs": "0.21.3",
         "systemjs-plugin-babel": "0.0.25",
