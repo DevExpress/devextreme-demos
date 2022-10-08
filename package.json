@@ -57,7 +57,7 @@
         "vue": "3.0.0",
         "vuex": "4.0.0-beta.4",
         "whatwg-fetch": "2.0.4",
-        "zone.js": "0.11.4"
+        "zone.js": "0.11.8"
     },
     "devDependencies": {
         "@babel/core": "7.17.2",
