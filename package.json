@@ -50,7 +50,7 @@
         "rrule": "2.6.4",
         "rxjs": "7.5.3",
         "signalr": "2.2.2",
-        "systemjs": "0.21.3",
+        "systemjs": "0.21.6",
         "systemjs-plugin-babel": "0.0.25",
         "systemjs-plugin-json": "0.3.0",
         "underscore": "1.13.2",
