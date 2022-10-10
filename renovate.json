@@ -23,7 +23,8 @@
               "devextreme-react",
               "devextreme-vue",
               "eslint-config-devextreme",
-              "rrule"
+              "rrule",
+              "vuex"
             ],
             "enabled": false
         },
