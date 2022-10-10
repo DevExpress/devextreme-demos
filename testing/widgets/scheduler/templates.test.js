@@ -1,5 +1,8 @@
 import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
+import { ClientFunction } from 'testcafe';
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
+
+const resetScroll = ClientFunction(() => window.scrollTo(0, 0));
 
 fixture('Scheduler.Templates')
   .page('http://localhost:8080/')
@@ -13,6 +16,7 @@ runManualTest('Scheduler', 'Overview', 'React', (test) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click('.dx-scheduler-date-table-cell');
+    await resetScroll();
 
     await takeScreenshot('scheduler_overview_selection.png');
 
