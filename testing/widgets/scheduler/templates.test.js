@@ -13,6 +13,7 @@ runManualTest('Scheduler', 'Overview', 'React', (test) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click('.dx-scheduler-date-table-cell');
+    await t.scroll(0, 0);
 
     await takeScreenshot('scheduler_overview_selection.png');
 
