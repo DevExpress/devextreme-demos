@@ -1,4 +1,4 @@
-The Slider component allows users to set a numeric value on a continuous range of possible values. This demo shows how you can create and configure a Slider.
+This demo shows how you can create and configure a Slider.
 
 ## Create a Slider
 
@@ -6,28 +6,40 @@ To create a Slider, declare it in markup and use the [min](/Documentation/ApiRef
 
 You can also specify the [value](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#value) property to change the initial value.
 
-You can see the resulting Slider in the **Default mode** section of this demo.
+The **Default mode** section shows a Slider with such a basic setup.
 
 ## Customize Slider Appearance
 
-The Slider can display labels for the [min](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#min) and [max](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#max) values. To configure the labels, use the [label](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/label/) object. In this object, enable the [visible](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/label/#visible) property to display the labels. You can also specify the [position](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/label/#position) and [format](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/label/#format) properties.
+### Max and min labels
 
-The Slider can also display a tooltip for a handle. To display a tooltip, you need to configure the [tooltip](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/tooltip/) object:
+The Slider can display labels for the [min](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#min) and [max](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#max) values. To configure the labels, use the [label](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/label/) object. In this object, specify the [visible](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/label/#visible), [position](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/label/#position), and [format](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/label/#format) properties.
+
+### Handle tooltip
+
+To display a handle tooltip, you need to configure the [tooltip](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/tooltip/) object:
 
 - Set the [enabled](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/tooltip/#enabled) property to `true` to display a tooltip. 
 
-- Specify the tooltip [position](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/tooltip/#position), over or under a Slider.
+- Specify the tooltip [position](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/tooltip/#position): over or under the Slider.
 
 - Specify the [format](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/tooltip/#format) property.
 
 - Assign *'onHover'* or *'always'* to the [showMode](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/tooltip/#showMode) property to change how the component shows a tooltip.
 
-Use the [showRange](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#showRange) property to specify if the selected range should be highlighted. You can also use the [step](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#step) property to specify the value change step for the Slider.
+### No range highlight
+
+Use the [showRange](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#showRange) property to specify if the component should highlight the range between [min](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#min) and [value](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#value). 
+
+### Discrete step
+
+Use the [step](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#step) property to specify the value change step for the Slider.
+
+### Disabled state
 
 If you want to disable the Slider, set the [disabled](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#disabled) property to `true`.
 
 ## Handle the Value Change Event
 
-To handle value changes, use two-way binding to bind the [value](/Documentation/ApiReference/UI_Components/dxNumberBox/Configuration/#value) property of the [NumberBox](/Documentation/ApiReference/UI_Components/dxNumberBox/) component to the [value](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#value) property of the RangeSlider.
+To handle value changes, use two-way binding for the [value](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#value) property. In this demo, two sliders are bound to a [NumberBox](/Documentation/ApiReference/UI_Components/dxNumberBox/) component.
 
-The [callValueChange](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#callValueChange) property allows you to choose when to change the Slider value and supports the `onMoving` and `onMovingComplete` modes. You can see the property's effect in the **Process Value Changes** section. The first Slider changes its value every time a user slides the handle. The second Slider changes its value only when the handle is released.
+The [callValueChange](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#callValueChange) property allows you to choose when the Slider changes its value. Available modes include `onMoving` and `onMovingComplete`. You can see the property's effect in the **Process Value Changes** section. The first Slider changes its value while a user slides the handle. The second Slider changes its value only after the user releases the handle.
