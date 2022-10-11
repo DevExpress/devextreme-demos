@@ -1,1 +1,16 @@
-The ProgressBar is&nbsp;a&nbsp;UI component that shows current progress.
+This demo shows how to configure the ProgressBar component.
+
+To create a ProgressBar, declare it in markup. You can specify the following properties to change the ProgressBar numeric scale:
+
+- [min](/Documentation/ApiReference/UI_Components/dxProgressBar/Configuration/#min) and [max](/Documentation/ApiReference/UI_Components/dxProgressBar/Configuration/#max)    
+The min and max properties limit the range of accepted values. 
+
+- [value](/Documentation/ApiReference/UI_Components/dxProgressBar/Configuration/#value)    
+This property specifies the current value. If you want to switch the ProgressBar to an indeterminate state, set the [value](/Documentation/ApiReference/UI_Components/dxProgressBar/Configuration/#value) property to `false`.
+
+This demo uses the custom timer function to increase the ProgressBar value.
+
+When the ProgressBar reaches the maximum value, the [complete](/Documentation/ApiReference/UI_Components/dxProgressBar/Events/#complete) event is raised. Use the [onComplete](/Documentation/ApiReference/UI_Components/dxProgressBar/Configuration/#onComplete) function to handle it.
+
+The progress status displays a ratio between the current value and current value that indicates the made progress. Use the [showStatus](/Documentation/ApiReference/UI_Components/dxProgressBar/Configuration/#showStatus) property to change the status visibility. To format the status string, use the [statusFormat](/Documentation/ApiReference/UI_Components/dxProgressBar/Configuration/#statusFormat) function.
+
