@@ -13,7 +13,7 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [ "22_1", [2-9][0-9]_[1-2] ]
+    branches: [ "22_1", "[2-9][0-9]_[1-2]" ]
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "22_1" ]
