@@ -13,10 +13,10 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [ "21_2", "22_1", "22_2", "23_1", "23_2" ]
+    branches: [ "[0-9][0-9]_[0-9]" ]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ "21_2", "22_1", "22_2", "23_1", "23_2" ]
+    branches: [ "[0-9][0-9]_[0-9]" ]
   schedule:
     - cron: '27 17 * * 2'
 
