@@ -1,4 +1,4 @@
 name: "devextreme-demos CodeQL config"
 
-paths-ignore:
-  - "MVCDemos/**"
+#paths-ignore:
+#  - "MVCDemos/**"
