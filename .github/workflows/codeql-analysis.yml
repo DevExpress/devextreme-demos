@@ -15,10 +15,8 @@ on:
   push:
     branches: [ "[0-9][0-9]_[0-9]" ]
   pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ "[0-9][0-9]_[0-9]" ]
   schedule:
-    - cron: '27 17 * * 2'
+    - cron: '0 0 * * 6'
 
 jobs:
   analyze:
