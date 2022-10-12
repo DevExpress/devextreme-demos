@@ -12,7 +12,7 @@ $(() => {
   const weekNumberRules = ['auto', 'firstDay', 'firstFourDays', 'fullWeek'];
   const date = new Date().getTime();
 
-  const calendar = $('#calendar-container').dxCalendar({
+  const calendar = $('#calendar').dxCalendar({
     value: new Date(),
     disabled: false,
     firstDayOfWeek: 0,

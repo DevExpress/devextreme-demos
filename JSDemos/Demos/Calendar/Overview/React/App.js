@@ -82,8 +82,8 @@ export default function App() {
   }, [onZoomLevelChange]);
 
   return (
-    <React.Fragment>
-      <div className="widget-container">
+    <div id="container">
+      <div className="calendar-container">
         <Calendar
           value={currentValue}
           onValueChanged={onCurrentValueChange}
@@ -179,7 +179,7 @@ export default function App() {
           />
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 }
 

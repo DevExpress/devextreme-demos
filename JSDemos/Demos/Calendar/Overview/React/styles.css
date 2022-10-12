@@ -1,8 +1,8 @@
-.demo-container {
+#container {
   display: flex;
 }
 
-.widget-container {
+.calendar-container {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -36,14 +36,14 @@
   font-style: italic;
 }
 
-.options {
-  padding: 20px;
-  background-color: rgba(191, 191, 191, 0.15);
-}
-
 .caption {
   font-weight: 500;
   font-size: 18px;
+}
+
+.options {
+  padding: 20px;
+  background-color: rgba(191, 191, 191, 0.15);
 }
 
 .option {

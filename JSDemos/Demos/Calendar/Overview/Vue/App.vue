@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="widget-container">
+  <div id="container">
+    <div class="calendar-container">
       <DxCalendar
         v-model:value="currentValue"
         v-model:zoom-level="zoomLevel"
@@ -190,11 +190,11 @@ export default {
 };
 </script>
 <style scoped>
-.demo-container {
+#container {
   display: flex;
 }
 
-.widget-container {
+.calendar-container {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -228,14 +228,14 @@ export default {
   font-style: italic;
 }
 
-.options {
-  padding: 20px;
-  background-color: rgba(191, 191, 191, 0.15);
-}
-
 .caption {
   font-weight: 500;
   font-size: 18px;
+}
+
+.options {
+  padding: 20px;
+  background-color: rgba(191, 191, 191, 0.15);
 }
 
 .option {

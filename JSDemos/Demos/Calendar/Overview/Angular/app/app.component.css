@@ -1,12 +1,8 @@
-:host {
-  display: block;
-}
-
-::ng-deep .demo-container {
+::ng-deep #container {
   display: flex;
 }
 
-::ng-deep .widget-container {
+::ng-deep .calendar-container {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -40,14 +36,14 @@
   font-style: italic;
 }
 
-::ng-deep .options {
-  padding: 20px;
-  background-color: rgba(191, 191, 191, 0.15);
-}
-
 ::ng-deep .caption {
   font-weight: 500;
   font-size: 18px;
+}
+
+::ng-deep .options {
+  padding: 20px;
+  background-color: rgba(191, 191, 191, 0.15);
 }
 
 ::ng-deep .option {

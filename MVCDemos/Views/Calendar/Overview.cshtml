@@ -12,89 +12,91 @@
     };
 }
 
-<div class="widget-container">
-    @(Html.DevExtreme().Calendar()
-        .ID("calendar-container")
-        .Value(DateTime.Now)
-        .Disabled(false)
-        .FirstDayOfWeek(FirstDayOfWeek.Sunday)
-        .ZoomLevel(CalendarZoomLevel.Month)
-        .OnValueChanged("calendar_valueChanged")
-    )
-</div>
-<div class="options">
-    <div class="caption">Options</div>
-    <div class="option">
-        @(Html.DevExtreme().CheckBox()
-            .Text("Specified min value")
-            .OnValueChanged("minValue_changed")
-        )
-    </div>
-    <div class="option">
-        @(Html.DevExtreme().CheckBox()
-            .Text("Specified max value")
-            .OnValueChanged("maxValue_changed")
-        )
-    </div>
-    <div class="option">
-        @(Html.DevExtreme().CheckBox()
-            .Text("Disable weekend")
-            .OnValueChanged("disabledDates_changed")
-        )
-    </div>
-    <div class="option">
-        @(Html.DevExtreme().CheckBox()
-            .Text("Show week numbers")
-            .OnValueChanged("showWeekNumbers_changed")
-        )
-    </div>
-    <div class="option">
-        @(Html.DevExtreme().CheckBox()
-            .Text("Use the Custom Cell Template")
-            .Value(false)
-            .OnValueChanged("useCustomTemplate")
-        )
-    </div>
-    <div class="option">
-        @(Html.DevExtreme().CheckBox()
-            .Text("Disabled")
-            .OnValueChanged("disabledState_changed")
-        )
-    </div>
-    <div class="option">
-        <span>Zoom level</span>
-        @(Html.DevExtreme().SelectBox()
-            .DataSource(zoomLevels)
-            .Value(zoomLevels[0])
-            .OnValueChanged("zoomLevel_changed")
-        )
-    </div>
-    <div class="option">
-        <span>Selected date</span>
-        @(Html.DevExtreme().DateBox()
-            .ID("selected-date")
+<div id="container">
+    <div class="widget-container">
+        @(Html.DevExtreme().Calendar()
+            .ID("calendar-container")
             .Value(DateTime.Now)
-            .Width("100%")
-            .OnValueChanged("selectedDate_changed")
+            .Disabled(false)
+            .FirstDayOfWeek(FirstDayOfWeek.Sunday)
+            .ZoomLevel(CalendarZoomLevel.Month)
+            .OnValueChanged("calendar_valueChanged")
         )
     </div>
-    <div class="option">
-        <span>First day of week</span>
-        @(Html.DevExtreme().SelectBox()
-            .DataSource(weekDays)
-            .Value(FirstDayOfWeek.Sunday)
-            .ValueExpr("Id")
-            .DisplayExpr("Text")
-            .OnValueChanged("firstDayOfWeek_changed")
-        )
-    </div>
-    <div class="option">
-        <span>Week number rule</span>
-        @(Html.DevExtreme().SelectBox()
-            .DataSource(weekNumberRules)
-            .Value(WeekNumberRule.Auto)
-            .OnValueChanged("weekNumberRule_changed")
-        )
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Specified min value")
+                .OnValueChanged("minValue_changed")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Specified max value")
+                .OnValueChanged("maxValue_changed")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Disable weekend")
+                .OnValueChanged("disabledDates_changed")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Show week numbers")
+                .OnValueChanged("showWeekNumbers_changed")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Use the Custom Cell Template")
+                .Value(false)
+                .OnValueChanged("useCustomTemplate")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Disabled")
+                .OnValueChanged("disabledState_changed")
+            )
+        </div>
+        <div class="option">
+            <span>Zoom level</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(zoomLevels)
+                .Value(zoomLevels[0])
+                .OnValueChanged("zoomLevel_changed")
+            )
+        </div>
+        <div class="option">
+            <span>Selected date</span>
+            @(Html.DevExtreme().DateBox()
+                .ID("selected-date")
+                .Value(DateTime.Now)
+                .Width("100%")
+                .OnValueChanged("selectedDate_changed")
+            )
+        </div>
+        <div class="option">
+            <span>First day of week</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(weekDays)
+                .Value(FirstDayOfWeek.Sunday)
+                .ValueExpr("Id")
+                .DisplayExpr("Text")
+                .OnValueChanged("firstDayOfWeek_changed")
+            )
+        </div>
+        <div class="option">
+            <span>Week number rule</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(weekNumberRules)
+                .Value(WeekNumberRule.Auto)
+                .OnValueChanged("weekNumberRule_changed")
+            )
+        </div>
     </div>
 </div>
 
