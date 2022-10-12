@@ -1,13 +1,12 @@
 <div class="widget-container">
   <dx-calendar
     #calendar
-    id="calendar-container"
     [min]="minDateValue"
     [max]="maxDateValue"
     [disabledDates]="disabledDates"
-    [firstDayOfWeek]="firstDay"
-    [showWeekNumbers]="showWeekNumbers"
+    [showWeekNumbers]="false"
     [disabled]="false"
+    [firstDayOfWeek]="0"
     [(value)]="currentValue"
     [zoomLevel]="zoomLevels[0]"
     [cellTemplate]="cellTemplate"
@@ -45,17 +44,8 @@
   </div>
   <div class="option">
     <dx-check-box
-      text="Monday as the first day of a week"
-      [value]="false"
-      (onValueChanged)="setFirstDay($event)"
-    >
-    </dx-check-box>
-  </div>
-  <div class="option">
-    <dx-check-box
       text="Show week numbers"
-      [value]="false"
-      (onValueChanged)="setShowWeekNumbers($event)"
+      [(value)]="showWeekNumbers"
     >
     </dx-check-box>
   </div>
@@ -69,7 +59,6 @@
   </div>
   <div class="option">
     <dx-check-box
-      #calendarDisabled
       [(value)]="calendar.disabled"
       text="Disabled"
     >
@@ -84,5 +73,14 @@
     <span>Selected date</span>
     <dx-date-box id="selected-date" width="100%" [(value)]="currentValue">
     </dx-date-box>
+  </div>
+  <div class="option">
+    <span>First day of week</span>
+    <dx-select-box [dataSource]="weekDays" [(value)]="calendar.firstDayOfWeek" valueExpr="id" displayExpr="text"></dx-select-box>
+  </div>
+
+  <div class="option">
+    <span>Week number rule</span>
+    <dx-select-box [dataSource]="weekNumberRules" [(value)]="calendar.weekNumberRule"></dx-select-box>
   </div>
 </div>
