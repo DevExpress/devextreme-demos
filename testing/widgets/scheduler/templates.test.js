@@ -25,3 +25,18 @@ runManualTest('Scheduler', 'Overview', 'React', (test) => {
       .ok(compareResults.errorMessages());
   });
 });
+
+runManualTest('Scheduler', 'CellTemplates', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
+  test('CellTemplates', async (t) => {
+    const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
+
+    await takeScreenshot('scheduler_cell_templates_work_week.png');
+
+    await t.click('.dx-buttongroup-last-item');
+    await takeScreenshot('scheduler_cell_templates_month.png');
+
+    await t
+      .expect(compareResults.isValid())
+      .ok(compareResults.errorMessages());
+  });
+});
