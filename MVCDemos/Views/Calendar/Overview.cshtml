@@ -1,8 +1,23 @@
-﻿<div class="widget-container">
+﻿@{
+    var zoomLevels = new[] { "month", "year", "decade", "century" };
+    var weekNumberRules = new[] { "auto", "firstDay", "firstFourDays", "fullWeek" };
+    var weekDays = new[] {
+        new { Id = 0, Text = "Sunday" },
+        new { Id = 1, Text = "Monday" },
+        new { Id = 2, Text = "Tuesday" },
+        new { Id = 3, Text = "Wednesday" },
+        new { Id = 4, Text = "Thursday" },
+        new { Id = 5, Text = "Friday" },
+        new { Id = 6, Text = "Saturday" },
+    };
+}
+
+<div class="widget-container">
     @(Html.DevExtreme().Calendar()
         .ID("calendar-container")
         .Value(DateTime.Now)
         .Disabled(false)
+        .FirstDayOfWeek(FirstDayOfWeek.Sunday)
         .ZoomLevel(CalendarZoomLevel.Month)
         .OnValueChanged("calendar_valueChanged")
     )
@@ -29,12 +44,6 @@
     </div>
     <div class="option">
         @(Html.DevExtreme().CheckBox()
-            .Text("Monday as the first day of a week")
-            .OnValueChanged("firstDayOfWeek_changed")
-        )
-    </div>
-    <div class="option">
-        @(Html.DevExtreme().CheckBox()
             .Text("Show week numbers")
             .OnValueChanged("showWeekNumbers_changed")
         )
@@ -55,13 +64,8 @@
     <div class="option">
         <span>Zoom level</span>
         @(Html.DevExtreme().SelectBox()
-            .DataSource(new[] {
-                "month",
-                "year",
-                "decade",
-                "century"
-            })
-            .Value("month")
+            .DataSource(zoomLevels)
+            .Value(zoomLevels[0])
             .OnValueChanged("zoomLevel_changed")
         )
     </div>
@@ -72,6 +76,24 @@
             .Value(DateTime.Now)
             .Width("100%")
             .OnValueChanged("selectedDate_changed")
+        )
+    </div>
+    <div class="option">
+        <span>First day of week</span>
+        @(Html.DevExtreme().SelectBox()
+            .DataSource(weekDays)
+            .Value(FirstDayOfWeek.Sunday)
+            .ValueExpr("Id")
+            .DisplayExpr("Text")
+            .OnValueChanged("firstDayOfWeek_changed")
+        )
+    </div>
+    <div class="option">
+        <span>Week number rule</span>
+        @(Html.DevExtreme().SelectBox()
+            .DataSource(weekNumberRules)
+            .Value(WeekNumberRule.Auto)
+            .OnValueChanged("weekNumberRule_changed")
         )
     </div>
 </div>
@@ -145,17 +167,15 @@
     }
 
     function firstDayOfWeek_changed(data) {
-        var calendar = getCalendarInstance();
-        if(data.value) {
-            calendar.option("firstDayOfWeek", 1);
-        } else {
-            calendar.option("firstDayOfWeek", 0);
-        }
+        getCalendarInstance().option("firstDayOfWeek", data.value);
+    }
+
+    function weekNumberRule_changed(data) {
+        getCalendarInstance().option("weekNumberRule", data.value);
     }
 
     function showWeekNumbers_changed(data) {
-        var calendar = getCalendarInstance();
-        calendar.option("showWeekNumbers", data.value);
+        getCalendarInstance().option("showWeekNumbers", data.value);
     }
 
     function useCustomTemplate(data) {

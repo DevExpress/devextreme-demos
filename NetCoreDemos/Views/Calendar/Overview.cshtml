@@ -17,6 +17,7 @@
         .ID("calendar-container")
         .Value(DateTime.Now)
         .Disabled(false)
+        .FirstDayOfWeek(FirstDayOfWeek.Sunday)
         .ZoomLevel(CalendarZoomLevel.Month)
         .OnValueChanged("calendar_valueChanged")
     )
@@ -91,7 +92,7 @@
         <span>Week number rule</span>
         @(Html.DevExtreme().SelectBox()
             .DataSource(weekNumberRules)
-            .Value(FirstDayOfWeek.Sunday)
+            .Value(WeekNumberRule.Auto)
             .OnValueChanged("weekNumberRule_changed")
         )
     </div>
