@@ -32,7 +32,7 @@ $(() => {
     valueExpr: 'name',
     displayExpr: 'title',
     onValueChanged(data) {
-      editingTextArea.option('onCustomItemCreating', data.value);
+      editingTextArea.option('customItemCreateEvent', data.value);
     },
   });
 
