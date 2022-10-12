@@ -37,7 +37,7 @@ namespace DevExtreme.NETCore.Demos {
             // Add framework services.
             services
                 .AddMvc()
-                .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+                .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
             services.Configure<RouteOptions>(options => options.AppendTrailingSlash = true);
 
@@ -60,12 +60,11 @@ namespace DevExtreme.NETCore.Demos {
                 builder
                     .AllowAnyMethod()
                     .AllowAnyHeader()
-                    .AllowAnyOrigin()
-                    .AllowCredentials();
+                    .AllowAnyOrigin();
             }));
 
             services.AddSignalR()
-                .AddJsonProtocol(options => { options.PayloadSerializerSettings.ContractResolver = new CamelCaseContractResolver(); });
+                .AddNewtonsoftJsonProtocol(options => { options.PayloadSerializerSettings.ContractResolver = new CamelCaseContractResolver(); });
             services.AddScoped<LiveUpdateSignalRHub>();
             services.AddScoped<StockTickDataHub>();
             services.AddScoped<DataGridCollaborativeEditingHub>();
@@ -129,23 +128,21 @@ namespace DevExtreme.NETCore.Demos {
             }
 
             app.UseStaticFiles();
-
+            app.UseRouting();
             app.UseSession();
             app.UseCors("CorsPolicy");
 
-            app.UseMvc(routes => {
-                routes.MapRoute(
+            app.UseEndpoints(endpoints => {
+                endpoints.MapControllerRoute(
                     name: "Default",
-                    template: "{controller}/{action}/{id?}",
+                    pattern: "{controller}/{action}/{id?}",
                     defaults: new { controller = "Default", action = "Index" }
                 );
-            });
 
-            app.UseSignalR(routes => {
-                routes.MapHub<LiveUpdateSignalRHub>("/liveUpdateSignalRHub");
-                routes.MapHub<StockTickDataHub>("/stockTickDataHub");
-                routes.MapHub<DataGridCollaborativeEditingHub>("/dataGridCollaborativeEditingHub");
-                routes.MapHub<SchedulerSignalRHub>("/schedulerSignalRHub");
+                endpoints.MapHub<LiveUpdateSignalRHub>("/liveUpdateSignalRHub");
+                endpoints.MapHub<StockTickDataHub>("/stockTickDataHub");
+                endpoints.MapHub<DataGridCollaborativeEditingHub>("/dataGridCollaborativeEditingHub");
+                endpoints.MapHub<SchedulerSignalRHub>("/schedulerSignalRHub");
             });
 
             Models.SampleData.SampleData.RootPath = env.WebRootPath;

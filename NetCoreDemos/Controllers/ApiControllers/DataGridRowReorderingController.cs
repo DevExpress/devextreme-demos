@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 using System.Linq;
-using System.Web.Http;
 using DevExtreme.NETCore.Demos.Models.SampleData;
 using DevExtreme.NETCore.Demos.Models;
 using DevExtreme.NETCore.Demos.Models.DataGrid;
