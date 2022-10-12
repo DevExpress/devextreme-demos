@@ -32,7 +32,7 @@ runManualTest('Scheduler', 'CellTemplates', ['jQuery', 'React', 'Vue', 'Angular'
 
     await takeScreenshot('scheduler_cell_templates_work_week.png');
 
-    await t.click('.dx-buttongroup-last-item');
+    await t.click('[aria-label="Month"]');
     await takeScreenshot('scheduler_cell_templates_month.png');
 
     await t
