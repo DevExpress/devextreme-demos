@@ -12,5 +12,5 @@ This demo uses the custom timer function to increase the ProgressBar value.
 
 When the ProgressBar reaches the maximum value, the [complete](/Documentation/ApiReference/UI_Components/dxProgressBar/Events/#complete) event occurs. Use the [onComplete](/Documentation/ApiReference/UI_Components/dxProgressBar/Configuration/#onComplete) function to handle it.
 
-The progress status displays a ratio between the current value and current value that indicates the made progress. Use the [showStatus](/Documentation/ApiReference/UI_Components/dxProgressBar/Configuration/#showStatus) property to change the status visibility. To format the status string, use the [statusFormat](/Documentation/ApiReference/UI_Components/dxProgressBar/Configuration/#statusFormat) function.
+The progress status displays a ratio between the current value and maximum value and indicates the made progress. Use the [showStatus](/Documentation/ApiReference/UI_Components/dxProgressBar/Configuration/#showStatus) property to display or hide the status string. To format the status string, use the [statusFormat](/Documentation/ApiReference/UI_Components/dxProgressBar/Configuration/#statusFormat) function.
 
