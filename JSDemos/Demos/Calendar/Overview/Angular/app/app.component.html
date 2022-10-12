@@ -2,15 +2,16 @@
   <div class="calendar-container">
     <dx-calendar
       #calendar
+      [(value)]="currentValue"
       [min]="minDateValue"
       [max]="maxDateValue"
       [disabledDates]="disabledDates"
       [showWeekNumbers]="false"
       [disabled]="false"
       [firstDayOfWeek]="0"
-      [(value)]="currentValue"
       [zoomLevel]="zoomLevels[0]"
       [cellTemplate]="cellTemplate"
+      weekNumberRule="auto"
     >
       <span *dxTemplate="let cell of 'custom'" [ngClass]="getCellCssClass(cell)">
         {{ cell.text }}
@@ -44,7 +45,7 @@
       </dx-check-box>
     </div>
     <div class="option">
-      <dx-check-box text="Show week numbers" [(value)]="showWeekNumbers">
+      <dx-check-box text="Show week numbers" [(value)]="calendar.showWeekNumbers">
       </dx-check-box>
     </div>
     <div class="option">

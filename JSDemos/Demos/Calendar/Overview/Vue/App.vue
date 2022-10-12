@@ -86,7 +86,7 @@
         />
       </div>
       <div class="option">
-        <span>First day of week</span>
+        <span>Week number rule</span>
         <DxSelectBox
           v-model:value="weekNumberRule"
           :data-source="weekNumberRules"
