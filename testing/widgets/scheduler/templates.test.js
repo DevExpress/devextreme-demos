@@ -1,5 +1,5 @@
 import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
-import { ClientFunction } from 'testcafe';
+import { ClientFunction, Selector } from 'testcafe';
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
 const resetScroll = ClientFunction(() => window.scrollTo(0, 0));
@@ -29,10 +29,11 @@ runManualTest('Scheduler', 'Overview', 'React', (test) => {
 runManualTest('Scheduler', 'CellTemplates', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
   test('CellTemplates', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
+    const monthButtonElement = await Selector('[aria-label="Month"]'); // for waiting Angular rendering
 
     await takeScreenshot('scheduler_cell_templates_work_week.png');
 
-    await t.click('[aria-label="Month"]');
+    await t.click(monthButtonElement);
     await takeScreenshot('scheduler_cell_templates_month.png');
 
     await t
