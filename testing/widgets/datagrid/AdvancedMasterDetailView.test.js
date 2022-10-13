@@ -21,7 +21,7 @@ runManualTest('DataGrid', 'AdvancedMasterDetailView', ['jQuery', 'React', 'Vue',
 
     await takeScreenshot('datagrid_advanced_master_detail_view_1_desktop.png');
 
-    // Expand the second master row
+    // Expand the first master row
     await t.click(
       $('.dx-datagrid-rowsview')
         .find('.dx-row:not(.dx-master-detail-row)')
