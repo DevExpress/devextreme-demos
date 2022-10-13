@@ -23,7 +23,7 @@ jobs:
 
     #Git
     - name: Get sources
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Clone devextreme repo from PR author fork
       continue-on-error: true
@@ -37,14 +37,14 @@ jobs:
 
     #Build Devextreme
     - name: DevExtreme - Restore npm cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ./devextreme-repo/node_modules
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme-repo/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
     - name: Use Node.js 16
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: '16'
 
@@ -62,7 +62,7 @@ jobs:
 
     #Build Demos
     - name: Demos - Restore npm cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ./node_modules
         key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
@@ -83,7 +83,7 @@ jobs:
       run: 7z a -t7z -mx3 -mmt2 node_modules.7z node_modules
 
     - name: Copy build artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: devextreme-sources
         path: node_modules.7z
@@ -108,14 +108,14 @@ jobs:
 #        sudo dpkg -i "google-chrome-stable_${CHROME_VERSION}_amd64.deb"
 
     - name: Get sources
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
 
     - name: Delete DX packages
       run:  sed -i '/22.2-next/d' ./package.json
 
     - name: Download devextreme sources
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: devextreme-sources
 
@@ -154,7 +154,7 @@ jobs:
 
     - name: Copy screenshots artifacts
       if: ${{ failure() }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: screenshots
         path: ${{ github.workspace }}/testing/artifacts/compared-screenshots/*
