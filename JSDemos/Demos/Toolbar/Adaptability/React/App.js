@@ -2,7 +2,6 @@ import React from 'react';
 import Toolbar, { Item } from 'devextreme-react/toolbar';
 import { Button } from 'devextreme-react/button';
 import { ButtonGroup } from 'devextreme-react/button-group';
-import RadioGroup from 'devextreme-react/radio-group';
 import Resizable from 'devextreme-react/resizable';
 import CheckBox from 'devextreme-react/check-box';
 import DateBox from 'devextreme-react/date-box';
@@ -24,17 +23,6 @@ const lineHeightDefault = lineHeights[1].lineHeight;
 const textAlignDefault = [textAlignItems[0].alignment];
 const fontSizeDefault = fontSizes[2].size;
 const dateBoxValue = new Date(2022, 9, 7);
-
-const toolbarLineModes = [
-  {
-    text: 'Multiline mode',
-    value: true,
-  },
-  {
-    text: 'Single-line mode',
-    value: false,
-  },
-];
 
 function onButtonClick(name) {
   notify(`The "${name}" button was clicked`);
@@ -337,13 +325,11 @@ function App() {
       <div className="options-container">
         <div className="caption">Options</div>
 
-        <RadioGroup
-          items={toolbarLineModes}
+        <CheckBox
+          text="Multiline mode"
           value={multiline}
-          layout="horizontal"
-          valueExpr="value"
           onValueChanged={onToolbarLineModeChanged}
-        ></RadioGroup>
+        />
       </div>
     </React.Fragment>
   );

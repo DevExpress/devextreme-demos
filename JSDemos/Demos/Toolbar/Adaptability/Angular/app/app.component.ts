@@ -38,17 +38,6 @@ if (!/localhost/.test(document.location.host)) {
 })
 
 export class AppComponent {
-  toolbarLineModes = [
-    {
-      text: 'Multiline mode',
-      value: true,
-    },
-    {
-      text: 'Single-line mode',
-      value: false,
-    },
-  ];
-
   multiline = true;
 
   fontSizes: FontSize[] = this.service.getFontSizes();

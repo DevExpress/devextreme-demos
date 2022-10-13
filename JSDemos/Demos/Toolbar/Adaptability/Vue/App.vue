@@ -161,11 +161,9 @@
     <div class="options-container">
       <div class="caption">Options</div>
 
-      <DxRadioGroup
+      <DxCheckBox
         v-model="multiline"
-        layout="horizontal"
-        value-expr="value"
-        :items="toolbarLineModes"
+        text="Multiline mode"
       />
     </div>
   </div>
@@ -219,19 +217,6 @@ export default {
   },
 
   computed: {
-    toolbarLineModes() {
-      return [
-        {
-          text: 'Multiline mode',
-          value: true,
-        },
-        {
-          text: 'Single-line mode',
-          value: false,
-        },
-      ];
-    },
-
     textAlignItems() {
       return textAlignItems;
     },

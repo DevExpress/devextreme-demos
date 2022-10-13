@@ -265,20 +265,9 @@ $(() => {
     multiline: true,
   }).dxToolbar('instance');
 
-  $('#toolbar-modes').dxRadioGroup({
-    items: [
-      {
-        text: 'Multiline mode',
-        value: true,
-      },
-      {
-        text: 'Single-line mode',
-        value: false,
-      },
-    ],
+  $('#toolbar-mode').dxCheckBox({
     value: true,
-    layout: 'horizontal',
-    valueExpr: 'value',
+    text: 'Multiline mode',
     onValueChanged(e) {
       toolbar.option('multiline', e.value);
     },
