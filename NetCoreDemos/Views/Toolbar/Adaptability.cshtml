@@ -1,9 +1,5 @@
 ﻿@model DevExtreme.NETCore.Demos.ViewModels.ToolbarViewModel
 
-@{
-    var toolbarModes = new[] { "Multiline mode", "Single-line mode" };
-}
-
 <div>
     <div class="widget-container">
         @(Html.DevExtreme().Resizable()
@@ -174,7 +170,7 @@
                                 .CheckBox()
                                 .Value(false)
                                 .Text("Navigation Pane")
-                                .OnOptionChanged("onCheckBoxValueChanged")
+                                .OnValueChanged("onCheckBoxValueChanged")
                             )
                             .ShowText(ToolbarItemShowTextMode.InMenu)
                             .Location(ToolbarItemLocation.Before)
@@ -234,12 +230,12 @@
     <div class="options-container">
         <div class="caption">Options</div>
 
-        @(Html.DevExtreme().RadioGroup()
-            .ID("toolbar-modes")
-            .Layout(Orientation.Horizontal)
-            .Items(toolbarModes)
-            .Value(toolbarModes[0])
-            .OnValueChanged("onToolbarModesValueChanged"))
+        @(Html.DevExtreme().CheckBox()
+                .ID("toolbar-mode")
+                .Text("Multiline mode")
+                .Value(true)
+                .OnValueChanged("onToolbarModesValueChanged")
+            )
     </div>
 </div>
 
@@ -288,10 +284,7 @@
 
     function onToolbarModesValueChanged({ value }) {
         var toolbar = $("#toolbar").dxToolbar("instance");
-        toolbar.option("multiline", value === "Multiline mode");
-
-        var toolbarModesInstance = $("#toolbar-modes").dxRadioGroup("instance");
-        toolbarModesInstance.option("value", value);
+        toolbar.option("multiline", value);
 
         toolbar.repaint()
     }

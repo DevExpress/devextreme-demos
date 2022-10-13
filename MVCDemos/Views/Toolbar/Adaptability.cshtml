@@ -232,7 +232,7 @@
 
         @(Html.DevExtreme().CheckBox()
                 .ID("toolbar-mode")
-                .Text("Label")
+                .Text("Multiline mode")
                 .Value(true)
                 .OnValueChanged("onToolbarModesValueChanged")
             )
@@ -285,9 +285,6 @@
     function onToolbarModesValueChanged({ value }) {
         var toolbar = $("#toolbar").dxToolbar("instance");
         toolbar.option("multiline", value);
-
-        @* var toolbarModesInstance = $("#toolbar-mode").dxCheckBox("instance");
-        toolbarModesInstance.option("value", value); *@
 
         toolbar.repaint()
     }
