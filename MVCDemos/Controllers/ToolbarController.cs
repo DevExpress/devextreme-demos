@@ -22,8 +22,8 @@ namespace DevExtreme.MVC.Demos.Controllers {
         }
         #endregion
 
-        #region Multiline
-        public ActionResult Multiline() {
+        #region Adaptability
+        public ActionResult Adaptability() {
             return View(new ToolbarViewModel() {
                 FontFamilies = ToolbarData.FontFamilies,
                 FontSizes = ToolbarData.FontSizes,

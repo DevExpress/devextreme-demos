@@ -8,15 +8,15 @@ const OPTIONS_CONTAINER_CLASS = 'options-container';
 const TOOLBAR_CLASS = 'dx-toolbar';
 const DROP_DOWN_MENU_BUTTON_CLASS = 'dx-dropdownmenu-button';
 
-fixture('Toolbar.Multiline')
+fixture('Toolbar.Adaptability')
   .page('http://localhost:8080/')
   .beforeEach(async (t) => {
     await t
       .resizeWindow(900, 600);
   });
 
-runManualTest('Toolbar', 'Multiline', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
-  test('Multiline', async (t) => {
+runManualTest('Toolbar', 'Adaptability', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
+  test('Adaptability', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.drag($(`.${RESIZABLE_HANDLE_RIGHT_CLASS}`), -400, 0);
