@@ -16,7 +16,7 @@ runManualTest('DataGrid', 'AdvancedMasterDetailView', ['jQuery', 'React', 'Vue',
     // Navigate to the second page
     await t.click(
       $('.dx-page')
-        .nth(1)
+        .nth(1),
     );
 
     await takeScreenshot('datagrid_advanced_master_detail_view_1_desktop.png');
@@ -25,15 +25,17 @@ runManualTest('DataGrid', 'AdvancedMasterDetailView', ['jQuery', 'React', 'Vue',
     await t.click(
       $('.dx-datagrid-rowsview')
         .find('.dx-row:not(.dx-master-detail-row)')
-        .nth(1)
+        .nth(0)
         .find('.dx-command-expand'),
     );
+
+    await t.wait(200);
 
     await takeScreenshot('datagrid_advanced_master_detail_view_2_desktop.png');
 
     // Open the Product SelectBox
     await t.click(
-        $('.dx-dropdowneditor-field-clickable')
+      $('.dx-dropdowneditor-field-clickable'),
     );
 
     await takeScreenshot('datagrid_advanced_master_detail_view_3_desktop.png');
@@ -41,15 +43,17 @@ runManualTest('DataGrid', 'AdvancedMasterDetailView', ['jQuery', 'React', 'Vue',
     // Select the second item
     await t.click(
       $('.dx-list-item')
-        .nth(1)
+        .nth(1),
     );
+
+    await t.wait(200);
 
     await takeScreenshot('datagrid_advanced_master_detail_view_4_desktop.png');
 
     // Navigate to the second page of the details grid
     await t.click(
       $('.dx-master-detail-row .dx-page')
-        .nth(1)
+        .nth(1),
     );
 
     await takeScreenshot('datagrid_advanced_master_detail_view_5_desktop.png');
@@ -57,7 +61,7 @@ runManualTest('DataGrid', 'AdvancedMasterDetailView', ['jQuery', 'React', 'Vue',
     // Switch to the second tab
     await t.click(
       $('.dx-tab')
-        .nth(1)
+        .nth(1),
     );
 
     await takeScreenshot('datagrid_advanced_master_detail_view_6_desktop.png');
