@@ -13,7 +13,10 @@
       [cellTemplate]="cellTemplate"
       weekNumberRule="auto"
     >
-      <span *dxTemplate="let cell of 'custom'" [ngClass]="getCellCssClass(cell)">
+      <span
+        *dxTemplate="let cell of 'custom'"
+        [ngClass]="getCellCssClass(cell)"
+      >
         {{ cell.text }}
       </span>
     </dx-calendar>
@@ -45,7 +48,10 @@
       </dx-check-box>
     </div>
     <div class="option">
-      <dx-check-box text="Show week numbers" [(value)]="calendar.showWeekNumbers">
+      <dx-check-box
+        text="Show week numbers"
+        [(value)]="calendar.showWeekNumbers"
+      >
       </dx-check-box>
     </div>
     <div class="option">
@@ -57,7 +63,8 @@
       </dx-check-box>
     </div>
     <div class="option">
-      <dx-check-box [(value)]="calendar.disabled" text="Disabled"> </dx-check-box>
+      <dx-check-box [(value)]="calendar.disabled" text="Disabled">
+      </dx-check-box>
     </div>
     <div class="option">
       <span>Zoom level</span>
