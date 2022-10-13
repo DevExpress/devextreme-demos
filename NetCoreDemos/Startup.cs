@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.IO;
@@ -17,7 +18,7 @@ using DevExtreme.NETCore.Demos.Models.FileManagement;
 
 namespace DevExtreme.NETCore.Demos {
     public class Startup {
-        public Startup(IHostingEnvironment env) {
+        public Startup(IWebHostEnvironment env) {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json");
@@ -93,34 +94,34 @@ namespace DevExtreme.NETCore.Demos {
         }
 
         static void ConfigureNorthwindContext(IServiceProvider serviceProvider, DbContextOptionsBuilder options) {
-            var hosting = serviceProvider.GetRequiredService<IHostingEnvironment>();
+            var env = serviceProvider.GetRequiredService<IWebHostEnvironment>();
 #if DB_LOCALDB
-            var dbPath = Path.Combine(hosting.ContentRootPath, "Northwind.mdf");
+            var dbPath = Path.Combine(env.ContentRootPath, "Northwind.mdf");
             var connectionString = $@"Data Source=(localdb)\devextreme; AttachDbFileName={dbPath}; Integrated Security=True; MultipleActiveResultSets=True; App=EntityFramework";
             options.UseSqlServer(connectionString);
 #endif
 
 #if DB_SQLITE
-            var dbPath = Path.Combine(hosting.ContentRootPath, "Northwind.sqlite");
+            var dbPath = Path.Combine(env.ContentRootPath, "Northwind.sqlite");
             options.UseSqlite("Data Source=" + dbPath);
 #endif
         }
 
         static void ConfigureFileManagementContext(IServiceProvider serviceProvider, DbContextOptionsBuilder options) {
-            var hosting = serviceProvider.GetRequiredService<IHostingEnvironment>();
-            var dbPath = Path.Combine(hosting.ContentRootPath, "FileManagement.db");
+            var env = serviceProvider.GetRequiredService<IWebHostEnvironment>();
+            var dbPath = Path.Combine(env.ContentRootPath, "FileManagement.db");
             options.UseSqlite("Data Source=" + dbPath);
         }
 
         static AzureBlobFileProvider CreateAzureBlobFileProvider(IServiceProvider serviceProvider) {
-            var hosting = serviceProvider.GetRequiredService<IHostingEnvironment>();
-            string tempDirPath = Path.Combine(hosting.ContentRootPath, "UploadTemp");
-            AzureStorageAccount account = AzureStorageAccount.FileManager;
+            var env = serviceProvider.GetRequiredService<IWebHostEnvironment>();
+            var tempDirPath = Path.Combine(env.ContentRootPath, "UploadTemp");
+            var account = AzureStorageAccount.FileManager;
             return new AzureBlobFileProvider(account.AccountName, account.AccessKey, account.ContainerName, tempDirPath);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
             if(env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             } else {

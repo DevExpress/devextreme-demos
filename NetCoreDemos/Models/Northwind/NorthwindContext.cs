@@ -20,24 +20,24 @@ namespace DevExtreme.NETCore.Demos.Models.Northwind {
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Customer>(entity => {
                 entity.HasIndex(e => e.City)
-                    .HasName("City");
+                    .HasDatabaseName("City");
 
                 entity.HasIndex(e => e.CompanyName)
-                    .HasName("CompanyName");
+                    .HasDatabaseName("CompanyName");
 
                 entity.HasIndex(e => e.PostalCode)
-                    .HasName("PostalCode");
+                    .HasDatabaseName("PostalCode");
 
                 entity.HasIndex(e => e.Region)
-                    .HasName("Region");
+                    .HasDatabaseName("Region");
             });
 
             modelBuilder.Entity<Employee>(entity => {
                 entity.HasIndex(e => e.LastName)
-                    .HasName("LastName");
+                    .HasDatabaseName("LastName");
 
                 entity.HasIndex(e => e.PostalCode)
-                    .HasName("PostalCode");
+                    .HasDatabaseName("PostalCode");
             });
 
             modelBuilder.Entity<Order_Detail>(entity => {
@@ -45,10 +45,10 @@ namespace DevExtreme.NETCore.Demos.Models.Northwind {
                     .HasName("PK_Order_Details");
 
                 entity.HasIndex(e => e.OrderID)
-                    .HasName("OrdersOrder_Details");
+                    .HasDatabaseName("OrdersOrder_Details");
 
                 entity.HasIndex(e => e.ProductID)
-                    .HasName("ProductsOrder_Details");
+                    .HasDatabaseName("ProductsOrder_Details");
 
                 entity.Property(e => e.Discount).HasDefaultValueSql("0");
 
@@ -59,40 +59,40 @@ namespace DevExtreme.NETCore.Demos.Models.Northwind {
 
             modelBuilder.Entity<Order>(entity => {
                 entity.HasIndex(e => e.CustomerID)
-                    .HasName("CustomersOrders");
+                    .HasDatabaseName("CustomersOrders");
 
                 entity.HasIndex(e => e.EmployeeID)
-                    .HasName("EmployeesOrders");
+                    .HasDatabaseName("EmployeesOrders");
 
                 entity.HasIndex(e => e.OrderDate)
-                    .HasName("OrderDate");
+                    .HasDatabaseName("OrderDate");
 
                 entity.HasIndex(e => e.ShipPostalCode)
-                    .HasName("ShipPostalCode");
+                    .HasDatabaseName("ShipPostalCode");
 
                 entity.HasIndex(e => e.ShipVia)
-                    .HasName("ShippersOrders");
+                    .HasDatabaseName("ShippersOrders");
 
                 entity.HasIndex(e => e.ShippedDate)
-                    .HasName("ShippedDate");
+                    .HasDatabaseName("ShippedDate");
 
                 entity.Property(e => e.Freight).HasDefaultValueSql("0");
             });
 
             modelBuilder.Entity<Category>(entity => {
                 entity.HasIndex(e => e.CategoryName)
-                    .HasName("CategoryName");
+                    .HasDatabaseName("CategoryName");
             });
 
             modelBuilder.Entity<Product>(entity => {
                 entity.HasIndex(e => e.CategoryID)
-                    .HasName("CategoryID");
+                    .HasDatabaseName("CategoryID");
 
                 entity.HasIndex(e => e.ProductName)
-                    .HasName("ProductName");
+                    .HasDatabaseName("ProductName");
 
                 entity.HasIndex(e => e.SupplierID)
-                    .HasName("SuppliersProducts");
+                    .HasDatabaseName("SuppliersProducts");
 
                 entity.Property(e => e.Discontinued).HasDefaultValueSql("0");
 
@@ -107,10 +107,10 @@ namespace DevExtreme.NETCore.Demos.Models.Northwind {
 
             modelBuilder.Entity<Supplier>(entity => {
                 entity.HasIndex(e => e.CompanyName)
-                    .HasName("CompanyName");
+                    .HasDatabaseName("CompanyName");
 
                 entity.HasIndex(e => e.PostalCode)
-                    .HasName("PostalCode");
+                    .HasDatabaseName("PostalCode");
             });
         }
     }
