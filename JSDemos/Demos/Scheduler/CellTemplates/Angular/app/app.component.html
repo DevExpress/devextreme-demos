@@ -17,6 +17,7 @@
 >
   <div
     *dxTemplate="let dataCell of 'dataCellTemplate'"
+    class="dx-scheduler-date-table-cell-text"
     [ngClass]="{
       'disable-date': isDisableDate(dataCell.startDate),
       dinner: !isDisableDate(dataCell.startDate) && isDinner(dataCell.startDate)
