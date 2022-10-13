@@ -139,7 +139,7 @@ export class AppComponent {
   checkBoxOptions = {
     value: false,
     text: 'Navigation Pane',
-    onOptionChanged: (): void => {
+    onValueChanged: (): void => {
       this.onCheckBoxValueChanged();
     },
   };

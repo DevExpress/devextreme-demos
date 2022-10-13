@@ -194,7 +194,7 @@ const toolbarItems = [
     options: {
       value: false,
       text: 'Navigation Pane',
-      onOptionChanged() {
+      onValueChanged() {
         onCheckBoxValueChanged();
       },
     },
