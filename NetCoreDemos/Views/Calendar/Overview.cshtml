@@ -13,7 +13,7 @@
 }
 
 <div id="container">
-    <div class="widget-container">
+    <div class="calendar-container">
         @(Html.DevExtreme().Calendar()
             .ID("calendar-container")
             .Value(DateTime.Now)
@@ -21,6 +21,7 @@
             .FirstDayOfWeek(FirstDayOfWeek.Sunday)
             .ZoomLevel(CalendarZoomLevel.Month)
             .OnValueChanged("calendar_valueChanged")
+            .OnOptionChanged("calendar_optionChanged")
         )
     </div>
     <div class="options">
@@ -65,6 +66,7 @@
         <div class="option">
             <span>Zoom Level</span>
             @(Html.DevExtreme().SelectBox()
+                .ID("zoom-level")
                 .DataSource(zoomLevels)
                 .Value(zoomLevels[0])
                 .OnValueChanged("zoomLevel_changed")
@@ -139,6 +141,12 @@
         $("#selected-date").dxDateBox("instance").option("value", data.value);
     }
 
+    function calendar_valueChanged(data) {
+        if (data.name === 'zoomLevel') {
+            $("#zoom-level").dxSelectBox("instance").option('value', data.value);
+        }
+    }
+
     function minValue_changed(data) {
         var calendar = getCalendarInstance();
         if(data.value) {
@@ -169,11 +177,11 @@
     }
 
     function firstDayOfWeek_changed(data) {
-        etCalendarInstance().option("firstDayOfWeek", data.value);
+        getCalendarInstance().option("firstDayOfWeek", data.value);
     }
 
     function weekNumberRule_changed(data) {
-        etCalendarInstance().option("weekNumberRule", data.value);
+        getCalendarInstance().option("weekNumberRule", data.value);
     }
 
     function showWeekNumbers_changed(data) {
