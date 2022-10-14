@@ -251,7 +251,7 @@ function App() {
             </Item>
 
             <Item
-              cssClass="dx-toolbar-hidden-button-group"
+              widget="dxButtonGroup"
               location="before"
               locateInMenu="auto"
               render={renderTextAlign}

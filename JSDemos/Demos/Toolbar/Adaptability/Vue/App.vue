@@ -111,11 +111,11 @@
           />
 
           <DxItem
-            css-class="dx-toolbar-hidden-button-group"
             location="before"
             locate-in-menu="auto"
             template="textAlignTemplate"
             menu-item-template="textAlignMenuTemplate"
+            widget="dxButtonGroup"
           />
 
           <DxItem location="before">

@@ -116,7 +116,7 @@
 
                         items
                             .Add()
-                            .CssClass("dx-toolbar-hidden-button-group")
+                            .Widget(w => w.ButtonGroup())
                             .Template(new TemplateName("text-align-template"))
                             .MenuItemTemplate(new TemplateName("text-align-menu-template"))
                             .Location(ToolbarItemLocation.Before)
