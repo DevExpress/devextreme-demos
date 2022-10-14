@@ -309,10 +309,10 @@ function App() {
             </Item>
 
             <Item
-              widget="dxButton"
               location="before"
               locateInMenu="auto"
               showText="inMenu"
+              widget="dxButton"
             >
               <Button
                 icon="image"
