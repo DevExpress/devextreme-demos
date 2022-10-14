@@ -1,6 +1,6 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio 17
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevExtreme.NETCore.Demos", "DevExtreme.NETCore.Demos.csproj", "{750E54AC-26E0-4DA1-A71F-7FA438BB8541}"
 EndProject
 Global
