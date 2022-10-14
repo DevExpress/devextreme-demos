@@ -151,7 +151,7 @@
                                 .DisplayExpr("Text")
                                 .ValueExpr("Text")
                                 .DataSource(Model.Headings)
-                                .Value(Model.Headings[0].Text)
+                                .Value(Model.Headings.First().Text)
                                 .OnItemClick("onHeadingClick")
                             )
                             .Location(ToolbarItemLocation.Before)
@@ -334,7 +334,8 @@
     }
 
     function onButtonGroupItemClick(e) {
-        DevExpress.ui.notify(`The "${e.itemData.Hint}" button was clicked`);
+        console.log(e)
+        DevExpress.ui.notify(`The "${e.itemData.hint}" button was clicked`);
     }
 
     function onFontSizeChanged() {
