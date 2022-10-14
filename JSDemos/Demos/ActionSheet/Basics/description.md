@@ -1,6 +1,6 @@
 The ActionSheet component is a pop-up sheet that contains a set of buttons. These buttons allow users to perform custom actions related to a single task (call, send a message, delete, or edit a selected contact). This demo shows how to create a simple ActionSheet and handle button clicks.
 
-## Specify Controls and Title
+## Specify Buttons and Title
 
 ActionSheet can contain multiple buttons. Use either the [dataSource](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/#dataSource) or [items](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/) properties to add buttons and configure them. For each button you can specify a [text](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#text), [type](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#type), [icon](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#icon), [template](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#template) and other properties. In this demo, the ActionSheet buttons are configured in a simple array assigned to the **dataSource** property. Each button includes the **text** property only.
 
