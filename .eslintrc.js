@@ -113,7 +113,6 @@ module.exports = {
         'gif',
         'goto',
         'guid',
-        'holydays',
         'hotelid',
         'href',
         'html',
