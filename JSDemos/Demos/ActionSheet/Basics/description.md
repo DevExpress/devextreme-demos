@@ -6,7 +6,7 @@ ActionSheet can contain multiple buttons. Use either the [dataSource](/Documenta
 
 If you want to display a title, assign the needed text to the [title](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/#title) property.
 
-## Handle the Item Clicks
+## Handle Button Clicks
 
 The component can perform a custom action when the user clicks the button. Use the [onItemClick](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/#onItemClick) property to handle a custom item click.
 
