@@ -279,8 +279,8 @@ function App() {
             <Item location="before" locateInMenu="auto">
               <SelectBox
                 displayExpr="text"
-                dataSource={headings}
                 valueExpr="text"
+                dataSource={headings}
                 defaultValue={heading}
                 onItemClick={onHeadingClick}
               ></SelectBox>

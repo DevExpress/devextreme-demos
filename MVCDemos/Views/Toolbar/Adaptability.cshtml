@@ -147,11 +147,12 @@
                         items
                             .Add()
                             .Widget(w => w
-                                .DateBox()
-                                .Type(DateBoxType.Date)
-                                .Width(200)
-                                .Value(new DateTime(2022, 9, 7))
-                                .OnValueChanged("onDateBoxValueChanged")
+                                .SelectBox()
+                                .DisplayExpr("Text")
+                                .ValueExpr("Text")
+                                .DataSource(Model.Headings)
+                                .Value(Model.Headings[0].Text)
+                                .OnItemClick("onHeadingClick")
                             )
                             .Location(ToolbarItemLocation.Before)
                             .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
@@ -167,12 +168,71 @@
                         items
                             .Add()
                             .Widget(w => w
-                                .CheckBox()
-                                .Value(false)
-                                .Text("Navigation Pane")
-                                .OnValueChanged("onCheckBoxValueChanged")
+                                .Button()
+                                .Icon("link")
+                                .Text("Link")
+                                .OnClick("onLinkButtonClick")
                             )
-                            .ShowText(ToolbarItemShowTextMode.InMenu)
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
+                                .Icon("image")
+                                .Text("Add image")
+                                .OnClick("onAddImageButtonClick")
+                            )
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .CssClass("toolbar-separator-container")
+                            .Template(new TemplateName("separator-template"))
+                            .MenuItemTemplate(new TemplateName("menu-separator-template"))
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
+                                .Icon("clearformat")
+                                .Text("Clear formating")
+                                .OnClick("onClearButtonClick")
+                            )
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
+                                .Icon("codeblock")
+                                .Text("Code block")
+                                .OnClick("onCodeBlockButtonClick")
+                            )
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
+                                .Icon("blockquote")
+                                .Text("Blockquote")
+                                .OnClick("onQuoteButtonClick")
+                            )
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .CssClass("toolbar-separator-container")
+                            .Template(new TemplateName("separator-template"))
+                            .MenuItemTemplate(new TemplateName("menu-separator-template"))
                             .Location(ToolbarItemLocation.Before)
                             .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
 
@@ -186,30 +246,6 @@
                             )
                             .ShowText(ToolbarItemShowTextMode.InMenu)
                             .Location(ToolbarItemLocation.After);
-
-                        items
-                            .Add()
-                            .Widget(w => w
-                                .Button()
-                                .Icon("add")
-                                .Text("Add")
-                                .OnClick("onAddButtonClick")
-                            )
-                            .ShowText(ToolbarItemShowTextMode.InMenu)
-                            .Location(ToolbarItemLocation.After)
-                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-
-                        items
-                            .Add()
-                            .Widget(w => w
-                                .Button()
-                                .Icon("trash")
-                                .Text("Remove")
-                                .OnClick("onRemoveButtonClick")
-                            )
-                            .ShowText(ToolbarItemShowTextMode.InMenu)
-                            .Location(ToolbarItemLocation.After)
-                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
 
                         items
                             .Add()
@@ -289,12 +325,12 @@
         toolbar.repaint()
     }
 
-    function onDateBoxValueChanged() {
-        DevExpress.ui.notify('The "DateBox" value was changed');
-    }
-
     function onFontFamilyClick() {
         DevExpress.ui.notify('The "Font Family" value was changed');
+    }
+
+    function onHeadingClick() {
+        DevExpress.ui.notify('The "Heading" value was changed');
     }
 
     function onButtonGroupItemClick(e) {
@@ -317,23 +353,31 @@
         DevExpress.ui.notify('The "Redo" button was clicked');
     }
 
+    function onLinkButtonClick() {
+        DevExpress.ui.notify('The "Link" button was clicked');
+    }
+
+    function onAddImageButtonClick() {
+        DevExpress.ui.notify('The "Add Image" button was clicked');
+    }
+
+    function onClearButtonClick() {
+        DevExpress.ui.notify('The "Clear Formating" button was clicked');
+    }
+
+    function onCodeBlockButtonClick() {
+        DevExpress.ui.notify('The "Code Block" button was clicked');
+    }
+
+    function onQuoteButtonClick() {
+        DevExpress.ui.notify('The "Blockquote" button was clicked');
+    }
+
     function attachButtonClick() {
         DevExpress.ui.notify('The "Attach" button was clicked');
     }
 
-    function onAddButtonClick() {
-        DevExpress.ui.notify('The "Add" button was clicked');
-    }
-
-    function onRemoveButtonClick() {
-        DevExpress.ui.notify('The "Remove" button was clicked');
-    }
-
     function onAboutButtonClick() {
         DevExpress.ui.notify('The "About" button was clicked');
-    }
-
-    function onCheckBoxValueChanged() {
-        DevExpress.ui.notify('The "Navigation Pane" checkbox value was changed');
     }
 </script>
