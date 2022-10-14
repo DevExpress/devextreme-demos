@@ -2,7 +2,14 @@ The ActionSheet component is a pop-up sheet that contains a set of buttons. Thes
 
 ## Specify Buttons and Title
 
-ActionSheet can contain multiple buttons. Use either the [dataSource](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/#dataSource) or [items](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/) properties to add buttons and configure them. For each button you can specify a [text](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#text), [type](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#type), [icon](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#icon), [template](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#template) and other properties. In this demo, the ActionSheet buttons are configured in a simple array assigned to the **dataSource** property. Each button includes the **text** property only.
+ActionSheet can contain multiple buttons. To specify buttons and configure them, use one of these properties:
+- [items[]](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/) 
+Accepts a local data array.
+
+- [dataSource](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/#dataSource)
+Accepts a local data array or a [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) object. This object works with local and remote arrays and allows you to shape data. 
+
+For each button you can specify a [text](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#text), [type](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#type), [icon](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#icon), [template](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#template) and other properties. In this demo, the ActionSheet buttons are configured in a simple array assigned to the **dataSource** property. Each button includes the **text** property only.
 
 If you want to display a title, assign the needed text to the [title](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/#title) property.
 
