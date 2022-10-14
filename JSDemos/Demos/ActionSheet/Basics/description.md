@@ -12,7 +12,7 @@ Accepts a local data array or a [DataSource](/Documentation/ApiReference/Data_La
 
 For each button, you can specify a [text](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#text), [type](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#type), [icon](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#icon), [template](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#template), and other properties. In this demo, the ActionSheet buttons are configured in a local array assigned to the **dataSource** property. Each button includes the **text** property only.
 
-If you want to display a title, assign the needed text to the [title](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/#title) property.
+If you want to display a title, assign the text to the [title](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/#title) property.
 
 ## Handle Button Clicks
 
