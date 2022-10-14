@@ -2,8 +2,9 @@ The ActionSheet component is a pop-up sheet that contains a set of buttons. Thes
 
 ## Specify Buttons and Title
 
-ActionSheet can contain multiple buttons. To specify buttons and configure them, use one of these properties:
-- [items[]](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/) 
+ActionSheet can contain multiple buttons. To specify and configure them, use one of these properties:
+
+- [items[]](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/)     
 Accepts a local data array.
 
 - [dataSource](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/#dataSource)
