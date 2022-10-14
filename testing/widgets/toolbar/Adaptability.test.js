@@ -22,7 +22,7 @@ runManualTest('Toolbar', 'Adaptability', ['jQuery', 'React', 'Vue', 'Angular'], 
     await t.drag($(`.${RESIZABLE_HANDLE_RIGHT_CLASS}`), -400, 0);
     await takeScreenshot('toolbar_multiline_mode_minimize.png');
 
-    await t.click($(`.${OPTIONS_CONTAINER_CLASS} .${CHECKBOX_CLASS}`).nth(1));
+    await t.click($(`.${OPTIONS_CONTAINER_CLASS} .${CHECKBOX_CLASS}`));
     await takeScreenshot('toolbar_singleline_mode_init.png');
 
     await t.click($(`.${TOOLBAR_CLASS} .${DROP_DOWN_MENU_BUTTON_CLASS}`));
