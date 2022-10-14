@@ -23,6 +23,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         public ActionResult Adaptability() {
             return View(new ToolbarViewModel() {
                 FontFamilies = ToolbarData.FontFamilies,
+                Headings = ToolbarData.Headings,
                 FontSizes = ToolbarData.FontSizes,
                 LineHeights = ToolbarData.LineHeights,
             });
