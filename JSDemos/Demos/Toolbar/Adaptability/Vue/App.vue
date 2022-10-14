@@ -464,7 +464,7 @@ export default {
   margin-bottom: 5px;
 }
 
-.dx-toolbar-item-content > .dx-texteditor {
+.dx-texteditor {
   width: 150px;
 }
 
