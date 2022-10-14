@@ -4,17 +4,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DevExtreme.NETCore.Demos.Controllers {
     public class FileManagerScriptsApiController : Controller {
-        IHostingEnvironment _hostingEnvironment;
+        IWebHostEnvironment _webHostEnvironment;
 
-        public FileManagerScriptsApiController(IHostingEnvironment hostingEnvironment) {
-            _hostingEnvironment = hostingEnvironment;
+        public FileManagerScriptsApiController(IWebHostEnvironment webHostEnvironment) {
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [Route("api/file-manager-file-system", Name = "FileManagementFileSystemApi")]
         public object FileSystem(FileSystemCommand command, string arguments) {
             var config = new FileSystemConfiguration {
                 Request = Request,
-                FileSystemProvider = new PhysicalFileSystemProvider(_hostingEnvironment.ContentRootPath + "/wwwroot"),
+                FileSystemProvider = new PhysicalFileSystemProvider(_webHostEnvironment.ContentRootPath + "/wwwroot"),
                 //uncomment the code below to enable file/folder management
                 //AllowCopy = true,
                 //AllowCreate = true,

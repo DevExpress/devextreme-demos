@@ -15,3 +15,8 @@
 *.dbf   binary
 *.shp   binary
 *.shx   binary
+
+# databases
+*.mdf    binary
+*.db     binary
+*.sqlite binary

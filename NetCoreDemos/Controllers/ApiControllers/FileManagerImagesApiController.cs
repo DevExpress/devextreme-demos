@@ -8,17 +8,17 @@ namespace DevExtreme.NETCore.Demos.Controllers {
     public class FileManagerImagesApiController : Controller {
         static readonly string SampleImagesRelativePath = Path.Combine("SampleData", "SampleImages");
 
-        public FileManagerImagesApiController(IHostingEnvironment hostingEnvironment) {
-            HostingEnvironment = hostingEnvironment;
+        public FileManagerImagesApiController(IWebHostEnvironment webHostEnvironment) {
+            WebHostEnvironment = webHostEnvironment;
         }
-        public IHostingEnvironment HostingEnvironment { get; }
+        public IWebHostEnvironment WebHostEnvironment { get; }
 
         [Route("api/file-manager-file-system-images", Name = "FileManagementImagesApi")]
         public object FileSystem(FileSystemCommand command, string arguments) {
             var config = new FileSystemConfiguration {
                 Request = Request,
                 FileSystemProvider = new PhysicalFileSystemProvider(
-                    Path.Combine(HostingEnvironment.WebRootPath, SampleImagesRelativePath),
+                    Path.Combine(WebHostEnvironment.WebRootPath, SampleImagesRelativePath),
                     (fileSystemItem, clientItem) => {
                         if(!clientItem.IsDirectory)
                             clientItem.CustomFields["url"] = GetFileItemUrl(fileSystemItem);
@@ -40,7 +40,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
 
         string GetFileItemUrl(FileSystemInfo fileSystemItem) {
             var relativeUrl = fileSystemItem.FullName
-                .Replace(HostingEnvironment.WebRootPath, "")
+                .Replace(WebHostEnvironment.WebRootPath, "")
                 .Replace(Path.DirectorySeparatorChar, '/');
             return $"{Request.Scheme}://{Request.Host}{Request.PathBase}{relativeUrl}";
         }

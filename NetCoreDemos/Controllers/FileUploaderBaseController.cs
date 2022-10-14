@@ -6,10 +6,10 @@ using System.Linq;
 
 namespace DevExtreme.NETCore.Demos.Controllers {
     public partial class FileUploaderController : Controller {
-        IHostingEnvironment _hostingEnvironment;
+        IWebHostEnvironment _webHostEnvironment;
 
-        public FileUploaderController(IHostingEnvironment hostingEnvironment) {
-            _hostingEnvironment = hostingEnvironment;
+        public FileUploaderController(IWebHostEnvironment webHostEnvironment) {
+            _webHostEnvironment = webHostEnvironment;
         }
     }
 }
