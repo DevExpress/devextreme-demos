@@ -9,6 +9,7 @@ $(() => {
     },
   });
 
+
   $('#normal-outlined').dxButton({
     stylingMode: 'outlined',
     text: 'Outlined',
