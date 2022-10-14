@@ -7,7 +7,7 @@ ActionSheet can contain multiple buttons. To specify and configure them, use one
 - [items[]](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/)     
 Accepts a local data array.
 
-- [dataSource](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/#dataSource)
+- [dataSource](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/#dataSource)     
 Accepts a local data array or a [DataSource](/Documentation/ApiReference/Data_Layer/DataSource/) object. This object works with local and remote arrays and allows you to shape data. 
 
 For each button you can specify a [text](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#text), [type](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#type), [icon](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#icon), [template](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/items/#template) and other properties. In this demo, the ActionSheet buttons are configured in a simple array assigned to the **dataSource** property. Each button includes the **text** property only.
