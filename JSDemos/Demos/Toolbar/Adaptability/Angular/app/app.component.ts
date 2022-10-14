@@ -8,17 +8,17 @@ import {
   DxTemplateModule,
   DxResizableModule,
   DxDropDownButtonModule,
+  DxButtonModule,
   DxButtonGroupModule,
   DxCheckBoxModule,
-  DxRadioGroupModule,
 } from 'devextreme-angular';
 
-import DataSource from 'devextreme/data/data_source';
 import notify from 'devextreme/ui/notify';
 import {
-  FontFamilies,
+  FontFamily,
   FontSize,
   FontStyle,
+  Heading,
   LineHeight,
   ListType,
   Service,
@@ -46,7 +46,11 @@ export class AppComponent {
 
   lineHeight: number[] = [this.lineHeights[1].lineHeight];
 
-  fontFamilies: FontFamilies[] = this.service.getFontFamilies();
+  fontFamilies: FontFamily[] = this.service.getFontFamilies();
+
+  headings: Heading[] = this.service.getHeadings();
+
+  heading: string = this.headings[0].text;
 
   fontStyles: FontStyle[] = this.service.getFontStyles();
 
@@ -57,124 +61,6 @@ export class AppComponent {
   selectedTextAlign: string[] = [this.textAlignItems[0].alignment];
 
   listTypes: ListType[] = this.service.getListType();
-
-  undoButtonOptions = {
-    icon: 'undo',
-    onClick: (): void => {
-      this.onButtonClick('Undo');
-    },
-  };
-
-  redoButtonOptions = {
-    icon: 'redo',
-    onClick: (): void => {
-      this.onButtonClick('Redo');
-    },
-  };
-
-  fontSizeOptions = {
-    width: '100%',
-    displayExpr: 'text',
-    keyExpr: 'size',
-    useSelectMode: true,
-    items: this.fontSizes,
-    selectedItemKey: this.fontSizes[2].size,
-    itemTemplate: 'fontSizeTemplate',
-    onSelectionChanged: (): void => {
-      this.onSelectionChanged('Font Size');
-    },
-  };
-
-  lineHeightOptions = {
-    width: '100%',
-    icon: 'indent',
-    displayExpr: 'text',
-    keyExpr: 'lineHeight',
-    useSelectMode: true,
-    items: this.lineHeights,
-    selectedItemKey: this.lineHeight,
-    onSelectionChanged: (): void => {
-      this.onSelectionChanged('Line Height');
-    },
-  };
-
-  fontFamilyOptions = {
-    placeholder: 'Font',
-    displayExpr: 'text',
-    dataSource: new DataSource(this.fontFamilies),
-    onItemClick: (): void => {
-      this.onFontFamilyClick();
-    },
-  };
-
-  fontStyleOptions = {
-    displayExpr: 'text',
-    items: this.fontStyles,
-    keyExpr: 'icon',
-    stylingMode: 'outlined',
-    selectionMode: 'multiple',
-    onItemClick: (e: { itemData: { hint: string } }) => {
-      this.onButtonClick(e.itemData.hint);
-    },
-  };
-
-  listOptions = {
-    items: this.listTypes,
-    keyExpr: 'alignment',
-    stylingMode: 'outlined',
-    onItemClick: (e: { itemData: { hint: string } }) => {
-      this.onButtonClick(e.itemData.hint);
-    },
-  };
-
-  dateBoxOptions = {
-    width: 200,
-    type: 'date',
-    value: new Date(2022, 9, 7),
-    onValueChanged: (): void => {
-      this.onDateBoxValueChanged();
-    },
-  };
-
-  checkBoxOptions = {
-    value: false,
-    text: 'Navigation Pane',
-    onValueChanged: (): void => {
-      this.onCheckBoxValueChanged();
-    },
-  };
-
-  attachButtonOptions = {
-    icon: 'attach',
-    text: 'Attach',
-    onClick: (): void => {
-      this.onButtonClick('Attach');
-    },
-  };
-
-  addButtonOptions = {
-    icon: 'add',
-    text: 'Add',
-    onClick: (): void => {
-      this.onButtonClick('Add');
-    },
-  };
-
-  removeButtonOptions = {
-    icon: 'trash',
-    text: 'Remove',
-    onClick: (): void => {
-      this.onButtonClick('Remove');
-    },
-  };
-
-  aboutButtonOptions = {
-    icon: 'help',
-    text: 'About',
-    onClick: (): void => {
-      this.onButtonClick('About');
-    },
-  };
 
   constructor(private service: Service) {}
 
@@ -201,6 +87,10 @@ export class AppComponent {
   onFontFamilyClick() {
     notify('The "Font Family" value was changed');
   }
+
+  onHeadingClick() {
+    notify('The "Heading" value was changed');
+  }
 }
 
 @NgModule({
@@ -211,9 +101,9 @@ export class AppComponent {
     DxTemplateModule,
     DxResizableModule,
     DxDropDownButtonModule,
+    DxButtonModule,
     DxButtonGroupModule,
     DxCheckBoxModule,
-    DxRadioGroupModule,
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
