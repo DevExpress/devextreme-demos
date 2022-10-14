@@ -8,10 +8,4 @@ If you want to display a title, assign the needed text to the [title](/Documenta
 
 ## Handle Button Clicks
 
-The component can perform a custom action when the user clicks the button. Use the [onItemClick](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/#onItemClick) property to handle a custom item click.
-
-You can also handle the click on the default **Cancel** button. For this, assign a custom handler to the [onCancelClick](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/#onCancelClick) property. 
-
-In this demo, the ActionSheet component displays notification with a button name, when you click the button. 
-
-
+You can assign a function to the [onItemClick](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/#onItemClick) property to handle button clicks. Use the `e.itemData` field within the function to determine which button was clicked. You can also use the [onCancelClick](/Documentation/ApiReference/UI_Components/dxActionSheet/Configuration/#onCancelClick) property handle a click on the built-in **Cancel** button. In this demo, the ActionSheet component displays a notification with a button name when you click a button. 
