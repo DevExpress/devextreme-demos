@@ -173,7 +173,66 @@
                                 .Text("Link")
                                 .OnClick("onLinkButtonClick")
                             )
-                            .ShowText(ToolbarItemShowTextMode.InMenu)
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
+                                .Icon("image")
+                                .Text("Add image")
+                                .OnClick("onAddImageButtonClick")
+                            )
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .CssClass("toolbar-separator-container")
+                            .Template(new TemplateName("separator-template"))
+                            .MenuItemTemplate(new TemplateName("menu-separator-template"))
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
+                                .Icon("clearformat")
+                                .Text("Clear formating")
+                                .OnClick("onClearButtonClick")
+                            )
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
+                                .Icon("codeblock")
+                                .Text("Code block")
+                                .OnClick("onCodeBlockButtonClick")
+                            )
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
+                                .Icon("blockquote")
+                                .Text("Blockquote")
+                                .OnClick("onQuoteButtonClick")
+                            )
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .CssClass("toolbar-separator-container")
+                            .Template(new TemplateName("separator-template"))
+                            .MenuItemTemplate(new TemplateName("menu-separator-template"))
                             .Location(ToolbarItemLocation.Before)
                             .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
 
