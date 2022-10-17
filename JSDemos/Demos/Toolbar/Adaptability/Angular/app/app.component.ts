@@ -38,8 +38,6 @@ if (!/localhost/.test(document.location.host)) {
 })
 
 export class AppComponent {
-  multiline = true;
-
   fontSizes: FontSize[] = this.service.getFontSizes();
 
   lineHeights: LineHeight[] = this.service.getLineHeights();
