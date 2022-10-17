@@ -1028,7 +1028,7 @@
     <Content Include="Content\DemosStyles\TreeView\DragAndDropPlainDataStructure.css" />
     <Content Include="Content\DemosStyles\TreeView\FlatDataStructure.css" />
     <Content Include="Content\DemosStyles\Toolbar\Overview.css" />
-    <Content Include="Content\DemosStyles\Toolbar\Multiline.css" />
+    <Content Include="Content\DemosStyles\Toolbar\Adaptability.css" />
     <Content Include="Content\DemosStyles\TextArea\Overview.css" />
     <Content Include="Content\DemosStyles\TagBox\Overview.css" />
     <Content Include="Content\DemosStyles\TabPanel\Overview.css" />
@@ -2291,7 +2291,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Toolbar\Overview.cshtml" />
-    <Content Include="Views\Toolbar\Multiline.cshtml" />
+    <Content Include="Views\Toolbar\Adaptability.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Menu\Overview.cshtml" />

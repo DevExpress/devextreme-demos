@@ -11,6 +11,14 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
             new SimpleData{ Text = "Tahoma", Value = "tahoma" },
             new SimpleData{ Text = "Times New Roman", Value = "times_new_roman" }
         };
+        public static readonly IEnumerable<SimpleData> Headings = new[] {
+            new SimpleData{ Text = "Normal text", Value = "normal_text" },
+            new SimpleData{ Text = "Heading 1", Value = "heading_1" },
+            new SimpleData{ Text = "Heading 2", Value = "heading_2" },
+            new SimpleData{ Text = "Heading 3", Value = "heading_3" },
+            new SimpleData{ Text = "Heading 4", Value = "heading_4" },
+            new SimpleData{ Text = "Heading 5", Value = "heading_5" }
+        };
         public static readonly IEnumerable<SimpleData> FontSizes = new[] {
             new SimpleData{ Text = "10px", Value = "10" },
             new SimpleData{ Text = "12px", Value = "12" },
