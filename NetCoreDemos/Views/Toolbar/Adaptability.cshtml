@@ -242,7 +242,7 @@
                                 .Button()
                                 .Icon("attach")
                                 .Text("Attach")
-                                .OnClick("attachButtonClick")
+                                .OnClick("onAttachButtonClick")
                             )
                             .ShowText(ToolbarItemShowTextMode.InMenu)
                             .Location(ToolbarItemLocation.After);
@@ -374,7 +374,7 @@
         DevExpress.ui.notify('The "Blockquote" button was clicked');
     }
 
-    function attachButtonClick() {
+    function onAttachButtonClick() {
         DevExpress.ui.notify('The "Attach" button was clicked');
     }
 
