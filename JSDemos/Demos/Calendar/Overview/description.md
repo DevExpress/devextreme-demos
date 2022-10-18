@@ -22,7 +22,7 @@ If you need to disable specific dates, use the [disabledDates](/Documentation/Ap
 
 To specify the first day of the week, assign its index (0 - for Sunday, 1 - for Monday, and so on) to the [firstDayOfWeek](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#firstDayOfWeek) property. You can also display a column with week numbers. For this, enable the [showWeekNumbers](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#showWeekNumbers) property.
 
-The beginning of the first week of year depends on the locale. If you want to apply a specific calculation rule, use the [weekNumberRule](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#weekNumberRule) property.
+The start of the first week of the year depends on the locale. If you want to apply a specific rule, use the [weekNumberRule](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#weekNumberRule) property.
 
 ## Handle Value Change
 
