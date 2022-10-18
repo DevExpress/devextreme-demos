@@ -26,7 +26,7 @@ The start of the first week of the year depends on the locale. If you want to ap
 
 ## Handle Value Change
 
-Set the [onValueChanged](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#onValueChanged) property to handle the **value** change. In this demo, the [DateBox](/Documentation/Guide/UI_Components/DateBox/Getting_Started_with_DateBox/) and the Calendar both use this property to pass values between each other. You can use one of these components to change the date. See how it affects the other.
+Set the [onValueChanged](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#onValueChanged) property to handle the **value** change. In this demo, the [DateBox](/Documentation/Guide/UI_Components/DateBox/Getting_Started_with_DateBox/) and the Calendar both use this property to pass values between each other, and you can use one of these components to change the date.
 
 ## Customize Cell Appearance
 
