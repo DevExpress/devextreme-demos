@@ -1,57 +1,55 @@
 <template>
-  <div>
-    <div class="long-title"><h3>Employee Details</h3></div>
-    <div id="form-container">
-      <DxForm
-        id="form"
-        :on-content-ready="validateForm"
-        :col-count="2"
-        :form-data="employee"
-      >
-        <DxItem
-          :editor-options="{disabled: true}"
-          data-field="FirstName"
-        />
-        <DxItem
-          :editor-options="{value: '', searchEnabled: true, items: positions}"
-          :validation-rules="validationRules.position"
-          data-field="Position"
-          editor-type="dxSelectBox"
-        />
-        <DxItem
-          :editor-options="{disabled: true}"
-          data-field="LastName"
-        />
-        <DxItem
-          :editor-options="{value: null, width: '100%'}"
-          :validation-rules="validationRules.hireDate"
-          data-field="HireDate"
-          editor-type="dxDateBox"
-        />
-        <DxItem
-          :editor-options="{disabled: true, width: '100%'}"
-          data-field="BirthDate"
-          editor-type="dxDateBox"
-        />
-        <DxItem
-          data-field="Address"
-        />
-        <DxItem
-          :col-span="2"
-          :editor-options="{height: 90}"
-          data-field="Notes"
-          editor-type="dxTextArea"
-        />
-        <DxItem
-          :editor-options="{mask: '+1 (X00) 000-0000', maskRules: { 'X': /[02-9]/ } }"
-          data-field="Phone"
-        />
-        <DxItem
-          data-field="Email"
-        />
-      </DxForm>
-    </div>
-  </div>
+  <DxForm
+    :on-content-ready="validateForm"
+    :form-data="employee"
+  >
+    <DxGroupItem
+      :col-count="2"
+      caption="Employee Details"
+    >
+      <DxItem
+        :editor-options="nameEditorOptions"
+        data-field="FirstName"
+      />
+      <DxItem
+        :editor-options="positionEditorOptions"
+        :validation-rules="validationRules.position"
+        data-field="Position"
+        editor-type="dxSelectBox"
+      />
+      <DxItem
+        :editor-options="nameEditorOptions"
+        data-field="LastName"
+      />
+      <DxItem
+        :editor-options="hireDateEditorOptions"
+        :validation-rules="validationRules.hireDate"
+        data-field="HireDate"
+        editor-type="dxDateBox"
+      />
+      <DxItem
+        :editor-options="birthDateEditorOptions"
+        data-field="BirthDate"
+        editor-type="dxDateBox"
+      />
+      <DxItem
+        data-field="Address"
+      />
+      <DxItem
+        :col-span="2"
+        :editor-options="notesEditorOptions"
+        data-field="Notes"
+        editor-type="dxTextArea"
+      />
+      <DxItem
+        :editor-options="phonesEditorOptions"
+        data-field="Phone"
+      />
+      <DxItem
+        data-field="Email"
+      />
+    </DxGroupItem>
+  </DxForm>
 </template>
 <script>
 import { DxForm, DxItem } from 'devextreme-vue/form';
@@ -77,6 +75,12 @@ export default {
           { type: 'required', message: 'Hire Date is required.' },
         ],
       },
+      nameEditorOptions: { disabled: true },
+      positionEditorOptions: { items: positions, searchEnabled: true, value: '' },
+      hireDateEditorOptions: { width: '100%', value: null },
+      birthDateEditorOptions: { width: '100%', disabled: true },
+      notesEditorOptions: { height: 90, maxLength: 200 },
+      phonesEditorOptions: { mask: '+1 (X00) 000-0000', maskRules: { X: /[02-9]/ } },
     };
   },
   methods: {
@@ -89,19 +93,5 @@ export default {
 <style scoped>
 #form-container {
   margin: 10px 10px 30px;
-}
-
-.long-title h3 {
-  font-family:
-    'Segoe UI Light',
-    'Helvetica Neue Light',
-    'Segoe UI',
-    'Helvetica Neue',
-    'Trebuchet MS',
-    Verdana;
-  font-weight: 200;
-  font-size: 28px;
-  text-align: center;
-  margin-bottom: 20px;
 }
 </style>
