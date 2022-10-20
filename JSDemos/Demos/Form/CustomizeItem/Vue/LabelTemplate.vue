@@ -4,7 +4,6 @@
   />{ data.text }</span>
 </template>
 <script>
-
 export default {
   props: {
     data: {
@@ -22,3 +21,4 @@ export default {
     };
   },
 };
+</script>

@@ -111,7 +111,9 @@
   </DxForm>
 </template>
 <script>
-import { DxForm, DxItem, DxLabel } from 'devextreme-vue/form';
+import {
+  DxForm, DxItem, DxLabel, DxGroupItem,
+} from 'devextreme-vue/form';
 import { DxTooltip } from 'devextreme-vue/tooltip';
 import service from './data.js';
 import 'devextreme-vue/text-area';
@@ -125,6 +127,7 @@ export default {
     DxItem,
     DxLabel,
     DxTooltip,
+    DxGroupItem,
     LabelTemplate,
     LabelNotesTemplate,
   },
@@ -157,8 +160,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-#helpedInfo {
-  color: #42a5f5;
-}
-</style>

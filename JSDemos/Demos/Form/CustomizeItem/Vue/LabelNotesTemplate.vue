@@ -21,7 +21,6 @@
   </div>
 </template>
 <script>
-
 import { DxTooltip } from 'devextreme-vue/tooltip';
 
 export default {
@@ -35,3 +34,9 @@ export default {
     },
   },
 };
+</script>
+<style scoped>
+#helpedInfo {
+  color: #42a5f5;
+}
+</style>

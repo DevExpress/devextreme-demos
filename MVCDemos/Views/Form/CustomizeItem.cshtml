@@ -9,12 +9,14 @@
             .ColCount(2)
             .Items(groupItems => {
                 groupItems.AddSimpleFor(m => m.FirstName)
+                    .Label(l => l.Template(new JS("nameLabel")))
                     .Editor(e => e
                         .TextBox()
                         .Disabled(true)
                     );
 
                 groupItems.AddSimpleFor(m => m.Position)
+                    .Label(l => l.Template(new JS("positionLabel")))
                     .Editor(e => e
                         .SelectBox()
                         .DataSource(new[] {
@@ -35,12 +37,14 @@
                     );
 
                 groupItems.AddSimpleFor(m => m.LastName)
+                    .Label(l => l.Template(new JS("nameLabel")))
                     .Editor(e => e
                         .TextBox()
                         .Disabled(true)
                     );
 
                 groupItems.AddSimpleFor(m => m.HireDate)
+                    .Label(l => l.Template(new JS("eventLabel")))
                     .Editor(e => e
                         .DateBox()
                         .Value(new JS("null"))
@@ -52,6 +56,7 @@
                     );
 
                 groupItems.AddSimpleFor(m => m.BirthDate)
+                    .Label(l => l.Template(new JS("eventLabel")))
                     .Editor(e => e
                         .DateBox()
                         .Disabled(true)
@@ -60,9 +65,11 @@
                     .IsRequired(false);
 
 
-                groupItems.AddSimpleFor(m => m.Address);
+                groupItems.AddSimpleFor(m => m.Address)
+                    .Label(l => l.Template(new JS("addressLabel")));
 
                 groupItems.AddSimpleFor(m => m.Notes)
+                    .Label(l => l.Template("notesTemplate"))
                     .ColSpan(2)
                     .Editor(e => e
                         .TextArea()
@@ -71,13 +78,15 @@
                     );
 
                 groupItems.AddSimpleFor(m => m.Phone)
+                    .Label(l => l.Template(new JS("phoneLabel")))
                     .Editor(e => e
                         .TextBox()
                         .Mask("+1 (X00) 000-0000")
                         .MaskRules(new { X = new JS("/[02-9]/") })
                     );
 
-                groupItems.AddSimpleFor(m => m.Email);
+                groupItems.AddSimpleFor(m => m.Email)
+                     .Label(l => l.Template(new JS("emailLabel")));;
             });
     })
     .OnContentReady(@<text>
@@ -86,4 +95,50 @@
         }
     </text>)
 )
+
+@using (Html.DevExtreme().NamedTemplate("notesTemplate")) {
+    <span>
+        <i class="dx-icon dx-icon-comment"/>
+        Additional
+        <br>
+        <i
+            id="helpedInfo"
+            class="dx-icon dx-icon-info"
+        />
+        Notes:
+    </span>
+
+    @(Html.DevExtreme().Tooltip()
+        .Target("#helpedInfo")
+        .ShowEvent("mouseenter")
+        .HideEvent("mouseleave")
+        .ContentTemplate(@<text><b>This field must not exceed 200 characters</b></text>)
+    )
+}
+
+<script>
+function nameLabel(data) {
+    return $(`<span><i class='dx-icon dx-icon-user'}></i>${data.text}</span>`);
+}
+
+function positionLabel(data) {
+    return $(`<span><i class='dx-icon dx-icon-info'}></i>${data.text}</span>`);
+}
+
+function eventLabel(data) {
+    return $(`<span><i class='dx-icon dx-icon-event'}></i>${data.text}</span>`);
+}
+
+function phoneLabel(data) {
+    return $(`<span><i class='dx-icon dx-icon-tel'}></i>${data.text}</span>`);
+}
+
+function addressLabel(data) {
+    return $(`<span><i class='dx-icon dx-icon-home'}></i>${data.text}</span>`);
+}
+
+function emailLabel(data) {
+    return $(`<span><i class='dx-icon dx-icon-email'}></i>${data.text}</span>`);
+}
+</script>
 
