@@ -66,48 +66,49 @@
       >
         <DxLabel template="emailLabel"/>
       </DxItem>
-      <template #nameLabel="{ data }">
-        <LabelTemplate
-          :data="data"
-          icon="user"
-        />
-      </template>
-      <template #positionLabel="{ data }">
-        <LabelTemplate
-          :data="data"
-          icon="info"
-        />
-      </template>
-      <template #dateLabel="{ data }">
-        <LabelTemplate
-          :data="data"
-          icon="event"
-        />
-      </template>
-      <template #addressLabel="{ data }">
-        <LabelTemplate
-          :data="data"
-          icon="home"
-        />
-      </template>
-      <template #notesLabel="{ data }">
-        <LabelNotesTemplate
-          :data="data"
-        />
-      </template>
-      <template #phoneLabel="{ data }">
-        <LabelTemplate
-          :data="data"
-          icon="phone"
-        />
-      </template>
-      <template #emailLabel="{ data }">
-        <LabelTemplate
-          :data="data"
-          icon="email"
-        />
-      </template>
     </DxGroupItem>
+
+    <template #nameLabel="{ data }">
+      <LabelTemplate
+        :data="data"
+        icon="user"
+      />
+    </template>
+    <template #positionLabel="{ data }">
+      <LabelTemplate
+        :data="data"
+        icon="info"
+      />
+    </template>
+    <template #dateLabel="{ data }">
+      <LabelTemplate
+        :data="data"
+        icon="event"
+      />
+    </template>
+    <template #addressLabel="{ data }">
+      <LabelTemplate
+        :data="data"
+        icon="home"
+      />
+    </template>
+    <template #notesLabel="{ data }">
+      <LabelNotesTemplate
+        :data="data"
+      />
+    </template>
+    <template #phoneLabel="{ data }">
+      <LabelTemplate
+        :data="data"
+        icon="phone"
+      />
+    </template>
+    <template #emailLabel="{ data }">
+      <LabelTemplate
+        :data="data"
+        icon="email"
+      />
+    </template>
   </DxForm>
 </template>
 <script>
