@@ -91,7 +91,7 @@ export default {
 };
 </script>
 <style scoped>
-#form-container {
-  margin: 10px 10px 30px;
+#helpedInfo {
+  color: #42a5f5;
 }
 </style>
