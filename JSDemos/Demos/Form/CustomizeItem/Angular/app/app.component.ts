@@ -8,6 +8,7 @@ import {
   DxTextAreaModule,
   DxFormModule,
   DxFormComponent,
+  DxTooltipModule,
 } from 'devextreme-angular';
 
 import { Employee, Service } from './app.service';
@@ -74,6 +75,7 @@ export class AppComponent implements AfterViewInit {
     DxSelectBoxModule,
     DxTextAreaModule,
     DxFormModule,
+    DxTooltipModule,
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
