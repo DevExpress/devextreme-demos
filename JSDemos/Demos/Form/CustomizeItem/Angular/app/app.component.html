@@ -91,7 +91,7 @@
         showEvent="mouseenter"
         hideEvent="mouseleave"
       >
-        <div *dxTemplate>
+        <div *dxTemplate="let data = data; of: 'content'">
           <b>This field must not exceed 200 characters</b>
         </div>
       </dx-tooltip>
