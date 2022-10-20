@@ -1,16 +1,13 @@
 <template>
-  <div>
-    <span>
-      <i class="dx-icon dx-icon-comment"/>
-      Additional
-      <br>
-      <i
-        id="helpedInfo"
-        class="dx-icon dx-icon-info"
-      />
-      { data.text }
-    </span>
-
+  <span>
+    <i class="dx-icon dx-icon-comment"/>
+    Additional
+    <br>
+    <i
+      id="helpedInfo"
+      class="dx-icon dx-icon-info"
+    />
+    {{ data.text }}
     <DxTooltip
       target="#helpedInfo"
       show-event="mouseenter"
@@ -18,7 +15,7 @@
     >
       <b>This field must not exceed 200 characters</b>
     </DxTooltip>
-  </div>
+  </span>
 </template>
 <script>
 import { DxTooltip } from 'devextreme-vue/tooltip';

@@ -100,7 +100,7 @@
     <template #phoneLabel="{ data }">
       <LabelTemplate
         :data="data"
-        icon="phone"
+        icon="tel"
       />
     </template>
     <template #emailLabel="{ data }">

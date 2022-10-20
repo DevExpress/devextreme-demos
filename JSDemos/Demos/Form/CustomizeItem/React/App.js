@@ -35,13 +35,13 @@ export default function App() {
       formData={employee}>
       <GroupItem colCount={2} caption="Employee Details">
         <Item dataField="FirstName" editorOptions={nameEditorOptions}>
-          <Label render={LabelTemplate('name')} />
+          <Label render={LabelTemplate('user')} />
         </Item>
         <Item dataField="Position" editorType="dxSelectBox" editorOptions={positionEditorOptions} validationRules={validationRules.position}>
           <Label render={LabelTemplate('info')} />
         </Item>
         <Item dataField="LastName" editorOptions={nameEditorOptions}>
-          <Label render={LabelTemplate('name')} />
+          <Label render={LabelTemplate('user')} />
         </Item>
         <Item dataField="HireDate" editorType="dxDateBox" editorOptions={hireDateEditorOptions} validationRules={validationRules.hireDate}>
           <Label render={LabelTemplate('event')} />
