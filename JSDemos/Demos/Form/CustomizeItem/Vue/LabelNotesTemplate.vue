@@ -13,7 +13,9 @@
       show-event="mouseenter"
       hide-event="mouseleave"
     >
-      <b>This field must not exceed 200 characters</b>
+      <template #content>
+        <b>This field must not exceed 200 characters</b>
+      </template>
     </DxTooltip>
   </span>
 </template>
