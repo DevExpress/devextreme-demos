@@ -69,7 +69,7 @@
                     .Label(l => l.Template(new JS("addressLabel")));
 
                 groupItems.AddSimpleFor(m => m.Notes)
-                    .Label(l => l.Template("notesTemplate"))
+                    .Label(l => l.Template(new TemplateName("notesTemplate")))
                     .ColSpan(2)
                     .Editor(e => e
                         .TextArea()

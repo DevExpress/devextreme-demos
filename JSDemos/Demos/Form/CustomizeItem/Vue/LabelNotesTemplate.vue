@@ -1,13 +1,11 @@
 <template>
   <span>
-    <i class="dx-icon dx-icon-comment"/>
-    Additional
+    <i class="dx-icon dx-icon-comment"/>Additional
     <br>
     <i
       id="helpedInfo"
       class="dx-icon dx-icon-info"
-    />
-    {{ data.text }}
+    />{{ data.text }}
     <DxTooltip
       target="#helpedInfo"
       show-event="mouseenter"
