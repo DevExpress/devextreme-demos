@@ -18,9 +18,6 @@ namespace DevExtreme.MVC.Demos.Controllers {
 
         [HttpPost]
         public ActionResult Upload() {
-            // Learn to use the entire functionality of the dxFileUploader widget.
-            // http://js.devexpress.com/Documentation/Guide/UI_Widgets/UI_Widgets_-_Deep_Dive/dxFileUploader/
-
             var myFile = Request.Files["myFile"];
             var targetLocation = Server.MapPath("~/Content/Files/");
 
@@ -44,9 +41,6 @@ namespace DevExtreme.MVC.Demos.Controllers {
 
         [HttpPost]
         public ActionResult FileSelection(string firstName, string lastName, HttpPostedFileBase photo) {
-            // Learn to use the entire functionality of the dxFileUploader widget.
-            // http://js.devexpress.com/Documentation/Guide/UI_Widgets/UI_Widgets_-_Deep_Dive/dxFileUploader/
-
             ViewBag.FirstName = firstName;
             ViewBag.LastName = lastName;
             ViewBag.Photo = "[No photo]";
