@@ -1,7 +1,7 @@
 <template>
-  <span><i
-    :class="iconClass"
-  />{{ data.text }}</span>
+  <span>
+    <i :class="iconClass"/>{{ data.text }}
+  </span>
 </template>
 <script>
 export default {

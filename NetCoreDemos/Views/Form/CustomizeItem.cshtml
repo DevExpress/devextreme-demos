@@ -86,14 +86,10 @@
                     );
 
                 groupItems.AddSimpleFor(m => m.Email)
-                     .Label(l => l.Template(new JS("emailLabel")));;
+                     .Label(l => l.Template(new JS("emailLabel")));
             });
     })
-    .OnContentReady(@<text>
-        function(e) {
-            e.component.validate();
-        }
-    </text>)
+    .OnContentReady(new JS("validateForm"));
 )
 
 @using (Html.DevExtreme().NamedTemplate("notesTemplate")) {
@@ -139,5 +135,9 @@ function addressLabel(data) {
 
 function emailLabel(data) {
     return $(`<span><i class='dx-icon dx-icon-email'}></i>${data.text}</span>`);
+}
+
+function validateForm(e) {
+    e.component.validate();
 }
 </script>

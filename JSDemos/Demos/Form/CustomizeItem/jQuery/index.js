@@ -75,7 +75,11 @@ $(() => {
         },
         label: {
           template: (data, element) => {
-            element.append(`<span><i class='dx-icon dx-icon-comment'></i>Additional<br><i id="helpedInfo" class='dx-icon dx-icon-info'></i>${data.text}</span>`);
+            const lineBreak = '<br>';
+            const commentIcon = '<i class="dx-icon dx-icon-comment"></i>';
+            const infoIcon = '<i id="helpedInfo class="dx-icon dx-icon-info"></i>';
+
+            element.append(`<span>${commentIcon}Additional${lineBreak}${infoIcon}${data.text}</span>`);
 
             $('<div>').dxTooltip({
               target: '#helpedInfo',
