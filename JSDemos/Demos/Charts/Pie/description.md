@@ -2,7 +2,7 @@ This example demonstrates the PieChart component that visualizes data as a circl
 
 To get started with the DevExtreme PieChart component, refer to the following tutorial for step-by-step instructions: [Getting Started with PieChart](/Documentation/Guide/UI_Components/PieChart/Getting_Started_with_PieChart/).
 
-## Bind the PieChart to Data
+## Bind PieChart to Data
 
 This demo uses an array as a PieChart data source. To bind the PieChart to data, pass the array to the PieChart's [dataSource](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/#dataSource) property.
 
