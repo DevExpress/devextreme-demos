@@ -77,7 +77,7 @@ $(() => {
           template: (data, element) => {
             const lineBreak = '<br>';
             const commentIcon = '<i class="dx-icon dx-icon-comment"></i>';
-            const infoIcon = '<i id="helpedInfo class="dx-icon dx-icon-info"></i>';
+            const infoIcon = '<i id="helpedInfo" class="dx-icon dx-icon-info"></i>';
 
             element.append(`<span>${commentIcon}Additional${lineBreak}${infoIcon}${data.text}</span>`);
 
