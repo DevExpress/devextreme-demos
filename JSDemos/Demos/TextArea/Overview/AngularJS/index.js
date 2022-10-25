@@ -13,12 +13,15 @@ DemoApp.controller('DemoController', ($scope) => {
   $scope.value = longText;
   $scope.eventValue = valueChangeEvents[0].name;
   $scope.valueForEditableTextArea = longText;
+  $scope.height = 90;
+  $scope.autoResizeEnabled = false;
 
   $scope.textAreaWithMaxLength = {
     height: 90,
     bindingOptions: {
       maxLength: 'maxLength',
       value: 'value',
+      autoResizeEnabled: 'autoResizeEnabled'
     },
   };
 
@@ -34,6 +37,22 @@ DemoApp.controller('DemoController', ($scope) => {
       }
     },
     text: 'Limit text length',
+  };
+
+  $scope.autoResizeCheckBoxOptions = {
+    text: 'Enable auto resize',
+    onValueChanged(e) {
+      if (e.value) {
+        $scope.autoResizeEnabled = true;
+        $scope.height = undefined;
+      } else {
+        $scope.autoResizeEnabled = false;
+        $scope.height = 90;
+      }
+    },
+    bindingOptions: {
+      value: 'autoResizeEnabled'
+    }
   };
 
   $scope.selectBoxOptions = {

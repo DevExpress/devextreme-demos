@@ -18,6 +18,20 @@ $(() => {
     text: 'Limit text length',
   });
 
+  $("#set-resize").dxCheckBox({
+    value: false,
+    onValueChanged(e) {
+      if (e.value) {
+        exampleTextArea.option("autoResizeEnabled", true);
+        exampleTextArea.option("height", undefined);
+      } else {
+        exampleTextArea.option("autoResizeEnabled", false);
+        exampleTextArea.option("height", 90);
+      }
+    },
+    text: "Enable auto resize"
+  });
+
   const valueChangeEvents = [{
     title: 'On Blur',
     name: 'change',

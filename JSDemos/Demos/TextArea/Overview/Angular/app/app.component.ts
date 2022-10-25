@@ -27,6 +27,10 @@ export class AppComponent {
 
   valueForEditableTextArea: string;
 
+  height = 90;
+
+  autoResizeEnabled: boolean;
+
   constructor(private service: Service) {
     this.valueForEditableTextArea = this.service.getContent();
     this.value = this.service.getContent();
@@ -38,6 +42,7 @@ export class AppComponent {
       name: 'keyup',
     }];
     this.eventValue = this.valueChangeEvents[0].name;
+    this.autoResizeEnabled = false;
   }
 
   onCheckboxValueChanged(e) {
@@ -47,6 +52,16 @@ export class AppComponent {
     } else {
       this.value = this.service.getContent();
       this.maxLength = null;
+    }
+  }
+
+  onAutoResizeChanged(e) {
+    if (e.value) {
+      this.autoResizeEnabled = true;
+      this.height = undefined;
+    } else {
+      this.autoResizeEnabled = false;
+      this.height = 90;
     }
   }
 }

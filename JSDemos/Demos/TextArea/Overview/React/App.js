@@ -15,10 +15,13 @@ class App extends React.Component {
       valueForEditableTestArea: service.getContent(),
       maxLength: null,
       eventValue: valueChangeEvents[0].name,
+      autoResizeEnabled: false,
+      height: 90
     };
     this.onCheckboxValueChanged = this.onCheckboxValueChanged.bind(this);
     this.onSelectBoxValueChanged = this.onSelectBoxValueChanged.bind(this);
     this.onTextAreaValueChanged = this.onTextAreaValueChanged.bind(this);
+    this.onAutoResizeChanged = this.onAutoResizeChanged.bind(this);
   }
 
   render() {
@@ -32,12 +35,19 @@ class App extends React.Component {
               onValueChanged={this.onCheckboxValueChanged}
               text="Limit text length"></CheckBox>
           </div>
+          <div className="dx-field">
+            <CheckBox
+              value={this.state.autoResizeEnabled}
+              onValueChanged={this.onAutoResizeChanged}
+              text="Enable auto resize"></CheckBox>
+          </div>
         </div>
         <div className="left-content">
           <TextArea
-            height={90}
+            height={this.state.height}
             maxLength={this.state.maxLength}
-            defaultValue={this.state.value} />
+            defaultValue={this.state.value}
+            autoResizeEnabled={this.state.autoResizeEnabled} />
         </div>
         <div className="full-width-content">
           <div className="dx-fieldset">
@@ -81,6 +91,20 @@ class App extends React.Component {
       this.setState({
         value: service.getContent(),
         maxLength: null,
+      });
+    }
+  }
+
+  onAutoResizeChanged(e) {
+    if (e.value) {
+      this.setState({
+        autoResizeEnabled: true,
+        height: null
+      });
+    } else {
+      this.setState({
+        autoResizeEnabled: false,
+        height: 90
       });
     }
   }
