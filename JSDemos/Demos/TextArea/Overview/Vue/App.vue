@@ -3,19 +3,14 @@
     <div class="dx-fieldset">
       <div class="dx-fieldset-header">Default Mode</div>
       <div class="dx-field">
-        <DxCheckBox
-          :value="false"
-          text="Limit text length"
-          @value-changed="onCheckboxValueChanged"
-        />
+        <DxCheckBox :value="false" text="Limit text length" @value-changed="onCheckboxValueChanged" />
+      </div>
+      <div class="dx-field">
+        <DxCheckBox v-model:value="autoResizeEnabled" text="Enable auto resize" @value-changed="onAutoResizeChanged" />
       </div>
     </div>
     <div class="left-content">
-      <DxTextArea
-        :height="90"
-        :max-length="maxLength"
-        v-model:value="value"
-      />
+      <DxTextArea v-model:height="height" :max-length="maxLength" v-model:value="value" v-model:auto-resize-enabled="autoResizeEnabled" />
     </div>
     <div class="full-width-content">
       <div class="dx-fieldset">
@@ -23,34 +18,21 @@
         <div class="dx-field">
           <div class="dx-field-label">Synchronize text areas </div>
           <div class="dx-field-value">
-            <DxSelectBox
-              :items="valueChangeEvents"
-              v-model:value="eventValue"
-              value-expr="name"
-              display-expr="title"
-            />
+            <DxSelectBox :items="valueChangeEvents" v-model:value="eventValue" value-expr="name" display-expr="title" />
           </div>
         </div>
       </div>
-      <DxTextArea
-        :height="90"
-        v-model:value="valueForEditableTextArea"
-        :value-change-event="eventValue"
-      />
-      <DxTextArea
-        :height="90"
-        :read-only="true"
-        :value="valueForEditableTextArea"
-      />
+      <DxTextArea :height="90" v-model:value="valueForEditableTextArea" :value-change-event="eventValue" />
+      <DxTextArea :height="90" :read-only="true" :value="valueForEditableTextArea" />
     </div>
   </div>
 </template>
 <script>
-import DxTextArea from 'devextreme-vue/text-area';
-import DxCheckBox from 'devextreme-vue/check-box';
-import DxSelectBox from 'devextreme-vue/select-box';
+import DxTextArea from "devextreme-vue/text-area";
+import DxCheckBox from "devextreme-vue/check-box";
+import DxSelectBox from "devextreme-vue/select-box";
 
-import service from './data.js';
+import service from "./data.js";
 
 export default {
   components: {
@@ -65,6 +47,8 @@ export default {
       value: service.getContent(),
       valueForEditableTextArea: service.getContent(),
       valueChangeEvents: service.valueChangeEvents,
+      autoResizeEnabled: false,
+      height: 90,
     };
   },
   methods: {
@@ -75,6 +59,15 @@ export default {
       } else {
         this.value = service.getContent();
         this.maxLength = null;
+      }
+    },
+    onAutoResizeChanged(e) {
+      if (e.value) {
+        this.autoResizeEnabled = true;
+        this.height = undefined;
+      } else {
+        this.autoResizeEnabled = false;
+        this.height = 90;
       }
     },
   },

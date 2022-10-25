@@ -7,6 +7,13 @@
             .Text("Limit text length")
         )
     </div>
+    <div class="dx-field">
+        @(Html.DevExtreme().CheckBox()
+            .Value(false)
+            .OnValueChanged("resize_valueChanged")
+            .Text("Enable auto resize")
+        )
+    </div>
 </div>
 
 <div class="left-content">
@@ -62,6 +69,17 @@
         } else {
             exampleTextArea.option("maxLength", null);
             exampleTextArea.option("value", text);
+        }
+    }
+
+    function resize_valueChanged(e) {
+        var exampleTextArea = $("#example-textarea").dxTextArea("instance");
+        if (e.value) {
+            exampleTextArea.option("autoResizeEnabled", true);
+            exampleTextArea.option("height", undefined);
+        } else {
+            exampleTextArea.option("autoResizeEnabled", false);
+            exampleTextArea.option("height", 90);
         }
     }
 
