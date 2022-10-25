@@ -6,12 +6,12 @@ using System;
 
 namespace DevExtreme.NETCore.Demos.Controllers {
     public class FileManagerAzureProviderApiController : Controller {
-        public FileManagerAzureProviderApiController(IHostingEnvironment hostingEnvironment, AzureBlobFileProvider azureFileProvider) {
-            HostingEnvironment = hostingEnvironment;
+        public FileManagerAzureProviderApiController(IWebHostEnvironment webHostEnvironment, AzureBlobFileProvider azureFileProvider) {
+            WebHostEnvironment = webHostEnvironment;
             AzureFileProvider = azureFileProvider ?? throw new ArgumentNullException(nameof(azureFileProvider));
         }
 
-        IHostingEnvironment HostingEnvironment { get; }
+        IWebHostEnvironment WebHostEnvironment { get; }
         AzureBlobFileProvider AzureFileProvider { get; }
 
         [Route("api/file-manager-azure", Name = "FileManagerAzureProviderApi")]
@@ -30,7 +30,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
                 UploadConfiguration = new UploadConfiguration {
                     MaxFileSize = 1048576
                 },
-                TempDirectory = HostingEnvironment.ContentRootPath + "/UploadTemp"
+                TempDirectory = WebHostEnvironment.ContentRootPath + "/UploadTemp"
             };
             var processor = new FileSystemCommandProcessor(config);
             var result = processor.Execute(command, arguments);

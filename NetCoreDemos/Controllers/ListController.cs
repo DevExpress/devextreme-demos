@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace DevExtreme.NETCore.Demos.Controllers {
     public class ListController : Controller {
-        public ActionResult WebApi() {
+        public ActionResult WebAPI() {
             return View();
         }
 

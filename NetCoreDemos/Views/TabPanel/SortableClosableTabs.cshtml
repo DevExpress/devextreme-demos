@@ -15,7 +15,7 @@
     .ItemOrientation(Orientation.Horizontal)
     .DragDirection(DragDirection.Horizontal)
     .OnReorder("onReorder")
-    .Content(@<text>@Html.Partial("_SortableTabPanel")</text>)
+    .Content(@<text>@await Html.PartialAsync("_SortableTabPanel")</text>)
 )
 
 <script>

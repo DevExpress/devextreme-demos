@@ -11,15 +11,15 @@ namespace DevExtreme.NETCore.Demos.Controllers.ApiControllers {
     [Route("api/[controller]")]
     public class TreeViewDataController : Controller {
 
-        IHostingEnvironment _hostingEnvironment;
+        IWebHostEnvironment _webHostEnvironment;
 
-        public TreeViewDataController(IHostingEnvironment hostingEnvironment) {
-            _hostingEnvironment = hostingEnvironment;
+        public TreeViewDataController(IWebHostEnvironment webHostEnvironment) {
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [HttpGet]
         public object Get(string parentId) {
-            var rootPath = _hostingEnvironment.ContentRootPath;
+            var rootPath = _webHostEnvironment.ContentRootPath;
             var parentPath = String.IsNullOrEmpty(parentId) ? rootPath : Path.Combine(rootPath, parentId);
 
             var childNodes = Directory.EnumerateFileSystemEntries(parentPath)

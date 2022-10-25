@@ -18,7 +18,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View();
         }
 
-        public ActionResult ODataService() {
+        public ActionResult OdataService() {
             return View();
         }
 

@@ -18,11 +18,9 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         [HttpPost]
         [EnableCors("CorsPolicy")]
         public ActionResult Upload() {
-            // Learn more on the functionality of the dxFileUploader widget at:
-            // http://js.devexpress.com/Documentation/Guide/UI_Widgets/UI_Widgets_-_Deep_Dive/dxFileUploader/
             try {
                 var myFile = Request.Form.Files["myFile"];
-                var path = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+                var path = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
                 // Uncomment to save the file
                 //if(!Directory.Exists(path))
                 //    Directory.CreateDirectory(path);
@@ -45,9 +43,6 @@ namespace DevExtreme.NETCore.Demos.Controllers {
 
         [HttpPost]
         public ActionResult FileSelection(string firstName, string lastName, IFormFile photo) {
-            // Learn to use the entire functionality of the dxFileUploader widget.
-            // http://js.devexpress.com/Documentation/Guide/UI_Widgets/UI_Widgets_-_Deep_Dive/dxFileUploader/
-
             ViewBag.FirstName = firstName;
             ViewBag.LastName = lastName;
             ViewBag.Photo = "[No photo]";
@@ -62,7 +57,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
 
         void SaveFile(IFormFile file) {
             try {
-                var path = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+                var path = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
                 // Uncomment to save the file
                 //if(!Directory.Exists(path))
                 //    Directory.CreateDirectory(path);
@@ -92,7 +87,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
 
                 if(isValidExtenstion) {
                     // Uncomment to save the file
-                    //var path = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+                    //var path = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
                     //if(!Directory.Exists(path))
                     //    Directory.CreateDirectory(path);
 
@@ -112,7 +107,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
                 var maxFileSize = 4000000;
                 if(smallFile.Length < maxFileSize) {
                     // Uncomment to save the file
-                    //var path = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+                    //var path = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
                     //if(!Directory.Exists(path))
                     //    Directory.CreateDirectory(path);
 
@@ -145,7 +140,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
 
         [HttpPost]
         public ActionResult UploadChunk(IFormFile file, string chunkMetadata) {
-            var tempPath = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+            var tempPath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
             // Removes temporary files
             //RemoveTempFilesAfterDelay(tempPath, new TimeSpan(0, 5, 0));
 
@@ -191,7 +186,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         }
         void ProcessUploadedFile(string tempFilePath, string fileName) {
             // Check if the uploaded file is a valid image
-            var path = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+            var path = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
             System.IO.File.Copy(tempFilePath, Path.Combine(path, fileName));
         }
         void AppendContentToFile(string path, IFormFile content) {

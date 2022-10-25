@@ -1,87 +1,144 @@
 ﻿@using DevExtreme.MVC.Demos.ViewModels
 @model FormViewModel
 
-<div class="long-title"><h3>Employee Details</h3></div>
-<div id="form-container">
-    @(Html.DevExtreme().Form<FormViewModel>()
-        .ID("form")
-        .ColCount(2)
-        .Items(items => {
-            items.AddSimpleFor(m => m.FirstName)
-                .Editor(e => e
-                    .TextBox()
-                    .Disabled(true)
-                );
+@(Html.DevExtreme().Form<FormViewModel>()
+    .FormData(Model)
+    .Items(items => {
+        items.AddGroup()
+            .Caption("Employee Details")
+            .ColCount(2)
+            .Items(groupItems => {
+                groupItems.AddSimpleFor(m => m.FirstName)
+                    .Label(l => l.Template(new JS("nameLabel")))
+                    .Editor(e => e
+                        .TextBox()
+                        .Disabled(true)
+                    );
 
-            items.AddSimpleFor(m => m.Position)
-                .Editor(e => e
-                    .SelectBox()
-                    .DataSource(new[] {
-                        "HR Manager",
-                        "IT Manager",
-                        "CEO",
-                        "Controller",
-                        "Sales Manager",
-                        "Support Manager",
-                        "Shipping Manager"
-                    })
-                    .SearchEnabled(true)
-                    .Value("")
-                )
-                .ValidationRules(r => r
-                    .AddRequired()
-                    .Message("Position is required")
-                );
+                groupItems.AddSimpleFor(m => m.Position)
+                    .Label(l => l.Template(new JS("positionLabel")))
+                    .Editor(e => e
+                        .SelectBox()
+                        .DataSource(new[] {
+                            "HR Manager",
+                            "IT Manager",
+                            "CEO",
+                            "Controller",
+                            "Sales Manager",
+                            "Support Manager",
+                            "Shipping Manager"
+                        })
+                        .SearchEnabled(true)
+                        .Value("")
+                    )
+                    .ValidationRules(r => r
+                        .AddRequired()
+                        .Message("Position is required")
+                    );
 
-            items.AddSimpleFor(m => m.LastName)
-                .Editor(e => e
-                    .TextBox()
-                    .Disabled(true)
-                );
+                groupItems.AddSimpleFor(m => m.LastName)
+                    .Label(l => l.Template(new JS("nameLabel")))
+                    .Editor(e => e
+                        .TextBox()
+                        .Disabled(true)
+                    );
 
-            items.AddSimpleFor(m => m.HireDate)
-                .Editor(e => e
-                    .DateBox()
-                    .Value(new JS("null"))
-                    .Width("100%")
-                )
-                .ValidationRules(r => r
-                    .AddRequired()
-                    .Message("Hire date is required")
-                );
+                groupItems.AddSimpleFor(m => m.HireDate)
+                    .Label(l => l.Template(new JS("eventLabel")))
+                    .Editor(e => e
+                        .DateBox()
+                        .Value(new JS("null"))
+                        .Width("100%")
+                    )
+                    .ValidationRules(r => r
+                        .AddRequired()
+                        .Message("Hire date is required")
+                    );
 
-            items.AddSimpleFor(m => m.BirthDate)
-                .Editor(e => e
-                    .DateBox()
-                    .Disabled(true)
-                    .Width("100%")
-                )
-                .IsRequired(false);
+                groupItems.AddSimpleFor(m => m.BirthDate)
+                    .Label(l => l.Template(new JS("eventLabel")))
+                    .Editor(e => e
+                        .DateBox()
+                        .Disabled(true)
+                        .Width("100%")
+                    )
+                    .IsRequired(false);
 
 
-            items.AddSimpleFor(m => m.Address);
+                groupItems.AddSimpleFor(m => m.Address)
+                    .Label(l => l.Template(new JS("addressLabel")));
 
-            items.AddSimpleFor(m => m.Notes)
-                .ColSpan(2)
-                .Editor(e => e
-                    .TextArea()
-                    .Height(90)
-                );
+                groupItems.AddSimpleFor(m => m.Notes)
+                    .Label(l => l.Template(new TemplateName("notesTemplate")))
+                    .ColSpan(2)
+                    .Editor(e => e
+                        .TextArea()
+                        .Height(90)
+                        .MaxLength(200)
+                    );
 
-            items.AddSimpleFor(m => m.Phone)
-                .Editor(e => e
-                    .TextBox()
-                    .Mask("+1 (X00) 000-0000")
-                    .MaskRules(new { X = new JS("/[02-9]/") })
-                );
+                groupItems.AddSimpleFor(m => m.Phone)
+                    .Label(l => l.Template(new JS("phoneLabel")))
+                    .Editor(e => e
+                        .TextBox()
+                        .Mask("+1 (X00) 000-0000")
+                        .MaskRules(new { X = new JS("/[02-9]/") })
+                    );
 
-            items.AddSimpleFor(m => m.Email);
-        })
-        .OnContentReady(@<text>
-            function(e) {
-                e.component.validate();
-            }
-        </text>)
-        .FormData(Model)
+                groupItems.AddSimpleFor(m => m.Email)
+                     .Label(l => l.Template(new JS("emailLabel")));;
+            });
+    })
+    .OnContentReady(new JS("validateForm"));
+)
+
+@using (Html.DevExtreme().NamedTemplate("notesTemplate")) {
+    <span>
+        <i class="dx-icon dx-icon-comment"/>
+        Additional
+        <br>
+        <i
+            id="helpedInfo"
+            class="dx-icon dx-icon-info"
+        />
+        Notes:
+    </span>
+
+    @(Html.DevExtreme().Tooltip()
+        .Target("#helpedInfo")
+        .ShowEvent("mouseenter")
+        .HideEvent("mouseleave")
+        .ContentTemplate(@<text><b>This field must not exceed 200 characters</b></text>)
     )
-</div>
+}
+
+<script>
+function nameLabel(data) {
+    return $(`<span><i class='dx-icon dx-icon-user'}></i>${data.text}</span>`);
+}
+
+function positionLabel(data) {
+    return $(`<span><i class='dx-icon dx-icon-info'}></i>${data.text}</span>`);
+}
+
+function eventLabel(data) {
+    return $(`<span><i class='dx-icon dx-icon-event'}></i>${data.text}</span>`);
+}
+
+function phoneLabel(data) {
+    return $(`<span><i class='dx-icon dx-icon-tel'}></i>${data.text}</span>`);
+}
+
+function addressLabel(data) {
+    return $(`<span><i class='dx-icon dx-icon-home'}></i>${data.text}</span>`);
+}
+
+function emailLabel(data) {
+    return $(`<span><i class='dx-icon dx-icon-email'}></i>${data.text}</span>`);
+}
+
+function validateForm(e) {
+    e.component.validate();
+}
+</script>
+

@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Net.Http;
 using System.IO;
-using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
 
@@ -10,16 +9,16 @@ namespace DevExtreme.NETCore.Demos.Controllers.ApiControllers {
 
     [Route("api/[controller]")]
     public class TreeListDataController : Controller {
-        IHostingEnvironment _hostingEnvironment;
+        IWebHostEnvironment _webHostEnvironment;
 
-        public TreeListDataController(IHostingEnvironment hostingEnvironment) {
-            _hostingEnvironment = hostingEnvironment;
+        public TreeListDataController(IWebHostEnvironment webHostEnvironment) {
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [HttpGet]
         public object Get(string parentIds) {
             var parents = string.IsNullOrEmpty(parentIds) ? new[] { "" } : parentIds.Split(',');
-            var rootPath = _hostingEnvironment.ContentRootPath;
+            var rootPath = _webHostEnvironment.ContentRootPath;
 
             var childNodes = parents.SelectMany(parentId => {
                 var parentPath = String.IsNullOrEmpty(parentId) ? rootPath : Path.Combine(rootPath, parentId);

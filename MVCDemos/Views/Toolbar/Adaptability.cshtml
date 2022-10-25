@@ -1,9 +1,5 @@
 ﻿@model DevExtreme.MVC.Demos.ViewModels.ToolbarViewModel
 
-@{
-    var toolbarModes = new[] { "Multiline mode", "Single-line mode" };
-}
-
 <div>
     <div class="widget-container">
         @(Html.DevExtreme().Resizable()
@@ -120,7 +116,7 @@
 
                         items
                             .Add()
-                            .CssClass("dx-toolbar-hidden-button-group")
+                            .Widget(w => w.ButtonGroup())
                             .Template(new TemplateName("text-align-template"))
                             .MenuItemTemplate(new TemplateName("text-align-menu-template"))
                             .Location(ToolbarItemLocation.Before)
@@ -151,11 +147,12 @@
                         items
                             .Add()
                             .Widget(w => w
-                                .DateBox()
-                                .Type(DateBoxType.Date)
-                                .Width(200)
-                                .Value(new DateTime(2022, 9, 7))
-                                .OnValueChanged("onDateBoxValueChanged")
+                                .SelectBox()
+                                .DisplayExpr("Text")
+                                .ValueExpr("Text")
+                                .DataSource(Model.Headings)
+                                .Value(Model.Headings.First().Text)
+                                .OnItemClick("onHeadingClick")
                             )
                             .Location(ToolbarItemLocation.Before)
                             .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
@@ -171,10 +168,10 @@
                         items
                             .Add()
                             .Widget(w => w
-                                .CheckBox()
-                                .Value(false)
-                                .Text("Navigation Pane")
-                                .OnOptionChanged("onCheckBoxValueChanged")
+                                .Button()
+                                .Icon("link")
+                                .Text("Link")
+                                .OnClick("onLinkButtonClick")
                             )
                             .ShowText(ToolbarItemShowTextMode.InMenu)
                             .Location(ToolbarItemLocation.Before)
@@ -184,36 +181,76 @@
                             .Add()
                             .Widget(w => w
                                 .Button()
+                                .Icon("image")
+                                .Text("Add image")
+                                .OnClick("onAddImageButtonClick")
+                            )
+                            .ShowText(ToolbarItemShowTextMode.InMenu)
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .CssClass("toolbar-separator-container")
+                            .Template(new TemplateName("separator-template"))
+                            .MenuItemTemplate(new TemplateName("menu-separator-template"))
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
+                                .Icon("clearformat")
+                                .Text("Clear formating")
+                                .OnClick("onClearButtonClick")
+                            )
+                            .ShowText(ToolbarItemShowTextMode.InMenu)
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
+                                .Icon("codeblock")
+                                .Text("Code block")
+                                .OnClick("onCodeBlockButtonClick")
+                            )
+                            .ShowText(ToolbarItemShowTextMode.InMenu)
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
+                                .Icon("blockquote")
+                                .Text("Blockquote")
+                                .OnClick("onQuoteButtonClick")
+                            )
+                            .ShowText(ToolbarItemShowTextMode.InMenu)
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .CssClass("toolbar-separator-container")
+                            .Template(new TemplateName("separator-template"))
+                            .MenuItemTemplate(new TemplateName("menu-separator-template"))
+                            .Location(ToolbarItemLocation.Before)
+                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
+
+                        items
+                            .Add()
+                            .Widget(w => w
+                                .Button()
                                 .Icon("attach")
                                 .Text("Attach")
-                                .OnClick("attachButtonClick")
+                                .OnClick("onAttachButtonClick")
                             )
                             .ShowText(ToolbarItemShowTextMode.InMenu)
                             .Location(ToolbarItemLocation.After);
-
-                        items
-                            .Add()
-                            .Widget(w => w
-                                .Button()
-                                .Icon("add")
-                                .Text("Add")
-                                .OnClick("onAddButtonClick")
-                            )
-                            .ShowText(ToolbarItemShowTextMode.InMenu)
-                            .Location(ToolbarItemLocation.After)
-                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
-
-                        items
-                            .Add()
-                            .Widget(w => w
-                                .Button()
-                                .Icon("trash")
-                                .Text("Remove")
-                                .OnClick("onRemoveButtonClick")
-                            )
-                            .ShowText(ToolbarItemShowTextMode.InMenu)
-                            .Location(ToolbarItemLocation.After)
-                            .LocateInMenu(ToolbarItemLocateInMenuMode.Auto);
 
                         items
                             .Add()
@@ -234,12 +271,12 @@
     <div class="options-container">
         <div class="caption">Options</div>
 
-        @(Html.DevExtreme().RadioGroup()
-            .ID("toolbar-modes")
-            .Layout(Orientation.Horizontal)
-            .Items(toolbarModes)
-            .Value(toolbarModes[0])
-            .OnValueChanged("onToolbarModesValueChanged"))
+        @(Html.DevExtreme().CheckBox()
+                .ID("toolbar-mode")
+                .Text("Multiline mode")
+                .Value(true)
+                .OnValueChanged("onToolbarModesValueChanged")
+            )
     </div>
 </div>
 
@@ -288,59 +325,65 @@
 
     function onToolbarModesValueChanged({ value }) {
         var toolbar = $("#toolbar").dxToolbar("instance");
-        toolbar.option("multiline", value === "Multiline mode");
-
-        var toolbarModesInstance = $("#toolbar-modes").dxRadioGroup("instance");
-        toolbarModesInstance.option("value", value);
+        toolbar.option("multiline", value);
 
         toolbar.repaint()
     }
 
-    function onDateBoxValueChanged() {
-        DevExpress.ui.notify('The "DateBox" value was changed');
+    function onFontFamilyClick() {
+        DevExpress.ui.notify('The "Font Family" value has been changed');
     }
 
-    function onFontFamilyClick() {
-        DevExpress.ui.notify('The "Font Family" value was changed');
+    function onHeadingClick() {
+        DevExpress.ui.notify('The "Heading" value has been changed');
     }
 
     function onButtonGroupItemClick(e) {
-        DevExpress.ui.notify(`The "${e.itemData.Hint}" button was clicked`);
+        console.log(e)
+        DevExpress.ui.notify(`The "${e.itemData.hint}" button has been clicked`);
     }
 
     function onFontSizeChanged() {
-        DevExpress.ui.notify('The "Font Size" value was changed');
+        DevExpress.ui.notify('The "Font Size" value has been changed');
     }
 
     function onLineHeightChanged() {
-        DevExpress.ui.notify('The "Line Height" value was changed');
+        DevExpress.ui.notify('The "Line Height" value has been changed');
     }
 
     function onUndoButtonClick() {
-        DevExpress.ui.notify('The "Undo" button was clicked');
+        DevExpress.ui.notify('The "Undo" button has been clicked');
     }
 
     function onRedoButtonClick() {
-        DevExpress.ui.notify('The "Redo" button was clicked');
+        DevExpress.ui.notify('The "Redo" button has been clicked');
     }
 
-    function attachButtonClick() {
-        DevExpress.ui.notify('The "Attach" button was clicked');
+    function onLinkButtonClick() {
+        DevExpress.ui.notify('The "Link" button has been clicked');
     }
 
-    function onAddButtonClick() {
-        DevExpress.ui.notify('The "Add" button was clicked');
+    function onAddImageButtonClick() {
+        DevExpress.ui.notify('The "Add Image" button has been clicked');
     }
 
-    function onRemoveButtonClick() {
-        DevExpress.ui.notify('The "Remove" button was clicked');
+    function onClearButtonClick() {
+        DevExpress.ui.notify('The "Clear Formating" button has been clicked');
+    }
+
+    function onCodeBlockButtonClick() {
+        DevExpress.ui.notify('The "Code Block" button has been clicked');
+    }
+
+    function onQuoteButtonClick() {
+        DevExpress.ui.notify('The "Blockquote" button has been clicked');
+    }
+
+    function onAttachButtonClick() {
+        DevExpress.ui.notify('The "Attach" button has been clicked');
     }
 
     function onAboutButtonClick() {
-        DevExpress.ui.notify('The "About" button was clicked');
-    }
-
-    function onCheckBoxValueChanged() {
-        DevExpress.ui.notify('The "Navigation Pane" checkbox value was changed');
+        DevExpress.ui.notify('The "About" button has been clicked');
     }
 </script>

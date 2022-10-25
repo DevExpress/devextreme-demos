@@ -19,10 +19,11 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         }
         #endregion
 
-        #region Multiline
-        public ActionResult Multiline() {
+        #region Adaptability
+        public ActionResult Adaptability() {
             return View(new ToolbarViewModel() {
                 FontFamilies = ToolbarData.FontFamilies,
+                Headings = ToolbarData.Headings,
                 FontSizes = ToolbarData.FontSizes,
                 LineHeights = ToolbarData.LineHeights,
             });
