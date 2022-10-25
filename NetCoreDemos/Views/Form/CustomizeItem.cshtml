@@ -89,7 +89,7 @@
                      .Label(l => l.Template(new JS("emailLabel")));
             });
     })
-    .OnContentReady(new JS("validateForm"));
+    .OnContentReady("validateForm");
 )
 
 @using (Html.DevExtreme().NamedTemplate("notesTemplate")) {
