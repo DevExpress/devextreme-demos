@@ -14,7 +14,7 @@ The **Default mode** section shows a Slider with such a basic setup.
 
 The Slider can display labels for the [min](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#min) and [max](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#max) values. To configure the labels, use the [label](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/label/) object. In this object, specify the [visible](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/label/#visible), [position](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/label/#position), and [format](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/label/#format) properties.
 
-### Handle tooltip
+### Tooltip
 
 To display a handle tooltip, you need to configure the [tooltip](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/tooltip/) object:
 
@@ -26,7 +26,7 @@ To display a handle tooltip, you need to configure the [tooltip](/Documentation/
 
 - Assign *'onHover'* or *'always'* to the [showMode](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/tooltip/#showMode) property to change how the component shows a tooltip.
 
-### No range highlight
+### Range highlight
 
 Use the [showRange](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#showRange) property to specify if the component should highlight the range between [min](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#min) and [value](/Documentation/ApiReference/UI_Components/dxSlider/Configuration/#value). 
 
