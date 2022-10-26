@@ -1,0 +1,1 @@
+DevExtreme Navigation components help to navigate through your application. DevExtreme provides a whole range of navigation controls: Accordion, Menu, Drawer, TabPanel, Toolbar and others. They suit any design and can be easily customized. This example demonstrates the TreeView and TabPanel controls. View other demos in this section to explore other navigation components.
