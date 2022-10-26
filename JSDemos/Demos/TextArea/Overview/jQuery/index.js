@@ -18,18 +18,18 @@ $(() => {
     text: 'Limit text length',
   });
 
-  $("#set-resize").dxCheckBox({
+  $('#set-resize').dxCheckBox({
     value: false,
     onValueChanged(e) {
       if (e.value) {
-        exampleTextArea.option("autoResizeEnabled", true);
-        exampleTextArea.option("height", undefined);
+        exampleTextArea.option('autoResizeEnabled', true);
+        exampleTextArea.option('height', undefined);
       } else {
-        exampleTextArea.option("autoResizeEnabled", false);
-        exampleTextArea.option("height", 90);
+        exampleTextArea.option('autoResizeEnabled', false);
+        exampleTextArea.option('height', 90);
       }
     },
-    text: "Enable auto resize"
+    text: 'Enable auto resize',
   });
 
   const valueChangeEvents = [{

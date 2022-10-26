@@ -21,7 +21,7 @@ DemoApp.controller('DemoController', ($scope) => {
     bindingOptions: {
       maxLength: 'maxLength',
       value: 'value',
-      autoResizeEnabled: 'autoResizeEnabled'
+      autoResizeEnabled: 'autoResizeEnabled',
     },
   };
 
@@ -51,8 +51,8 @@ DemoApp.controller('DemoController', ($scope) => {
       }
     },
     bindingOptions: {
-      value: 'autoResizeEnabled'
-    }
+      value: 'autoResizeEnabled',
+    },
   };
 
   $scope.selectBoxOptions = {

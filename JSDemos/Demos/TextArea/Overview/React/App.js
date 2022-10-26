@@ -16,7 +16,7 @@ class App extends React.Component {
       maxLength: null,
       eventValue: valueChangeEvents[0].name,
       autoResizeEnabled: false,
-      height: 90
+      height: 90,
     };
     this.onCheckboxValueChanged = this.onCheckboxValueChanged.bind(this);
     this.onSelectBoxValueChanged = this.onSelectBoxValueChanged.bind(this);
@@ -99,12 +99,12 @@ class App extends React.Component {
     if (e.value) {
       this.setState({
         autoResizeEnabled: true,
-        height: null
+        height: null,
       });
     } else {
       this.setState({
         autoResizeEnabled: false,
-        height: 90
+        height: 90,
       });
     }
   }
