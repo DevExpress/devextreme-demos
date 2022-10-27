@@ -4,12 +4,12 @@ A doughnut chart is a variation of pie charts. It displays data as a circle divi
 
 You can bind the component to one of the following data sources: 
 
-* [Simple Array](/Documentation/Guide/Data_Binding/Specify_a_Data_Source/Local_Array/)
+* [Local Array](/Documentation/Guide/Data_Binding/Specify_a_Data_Source/Local_Array/)
 * [JSON Data](/Documentation/Guide/Data_Binding/Specify_a_Data_Source/Read-Only_Data_in_JSON_Format/)
 * [OData Service](/Documentation/Guide/Data_Binding/Specify_a_Data_Source/OData/)
-* [Custom Sources](/Documentation/Guide/Data_Binding/Specify_a_Data_Source/Custom_Data_Sources/)
+* [Custom Data Source](/Documentation/Guide/Data_Binding/Specify_a_Data_Source/Custom_Data_Sources/)
 
-In this demo, the PieChart is populated with data taken from a simple JavaScript array.
+In this demo, the PieChart is populated with data taken from a local JavaScript array.
 
 ## Configure Series
 
