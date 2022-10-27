@@ -1,4 +1,4 @@
-A doughnut chart is a variation of pie charts. It displays data as a circle divided into portions (slices) and includes a space in the center. To create a doughnut chart, use the DevExtreme [PieChart](/Documentation/ApiReference/UI_Components/dxPieChart/) component. In this demo, you can see how to initialize and configure it.
+The doughnut chart is a variation of the pie chart. It displays data as a circle divided into portions (slices) with a space in the center. To create a doughnut chart, use the DevExtreme [PieChart](/Documentation/ApiReference/UI_Components/dxPieChart/) component. In this demo, you can see how to initialize and configure it.
 
 ## Bind to Data
 
@@ -17,18 +17,18 @@ A series defines the look of your chart. The PieChart component includes the Pie
 
 You need to bind the series to data. Set the [argumentField](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/#argumentField) and [valueField](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/#valueField) properties to data fields that contain arguments and values for your series. You can specify these properties in an object in the [series](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/) array or include it in the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/commonSeriesSettings/) object. In the latter case, your setting applies to all chart series.
 
-Series points can have labels that display point values. Use the [label](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/label/) object to configure them. Enable the [label.visible](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/label/#visible) property to show the labels. If want to format values that labels display, specify the [label.format](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/label/#format) property. You can also connect labels with their series points. To do this, enable the [label.connector.visible](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/label/connector/) property. As with the **argumentField** and **valueField** properties, you can specify label settings for an individual series (in the **series** array) or for all series (in the **commonSeriesSettings** object).
+Series points can have labels that display point values. Use the [label](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/label/) object to configure them. Enable the [label.visible](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/label/#visible) property to show the labels. If you want to format values that labels display, specify the [label.format](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/label/#format) property. You can also connect labels with their series points. To do this, enable the [label.connector.visible](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/label/connector/) property. As with the **argumentField** and **valueField** properties, you can specify label settings for an individual series (in the **series** array) or for all series (in the **commonSeriesSettings** object).
 
 ## Enable Tooltips
 
 
 When you hover the mouse pointer over a series point or its label, you can see a tooltip with information about the series point. 
 
-To configure a tooltip, you need to specify its properties in the [tooltip](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/tooltip/) object. For example, to enable the tooltips, assign *true* to the [enabled](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/tooltip/#enabled) property of this object.
+To configure a tooltip, you need to specify its properties in the [tooltip](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/tooltip/) object. For example, to enable tooltips, assign *true* to the [enabled](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/tooltip/#enabled) property of this object.
 
 A tooltip displays information stored in the point value. If you want to customize a specific tooltip, assign a function to the [tooltip.customizeTooltip](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/tooltip/#customizeTooltip) property.
 
-You can also specify a format of the tooltip values to be displayed. To do this, assign the format you need to the [tooltip.format](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/tooltip/#format) property.
+You can also specify the format of the tooltip values to be displayed. To do this, assign the format you need to the [tooltip.format](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/tooltip/#format) property.
 
 ## Export Chart to Image
 
