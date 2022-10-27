@@ -1,4 +1,4 @@
-The PieChart displays data as a circle divided into portions (slices) to illustrate data proportions. In this demo, you can see how to initialize and configure the component with the *doughnut* series type.
+A doughnut chart is a variation of pie charts. It displays data as a circle divided into portions (slices) and includes a space in the center. To create a doughnut chart, use the DevExtreme [PieChart](/Documentation/ApiReference/UI_Components/dxPieChart/) component. In this demo, you can see how to initialize and configure it.
 
 ## Bind to Data
 
@@ -11,21 +11,26 @@ You can bind the component to one of the following data sources:
 
 In this demo, the PieChart is populated with data taken from a simple JavaScript array.
 
-The PieChart allows you to specify the [type](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/#type) of the pie chart series. In this demo you can see the component with the *doughnut* series type.
+## Configure Series
 
-You can use the [series](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/) property to configure one or several series or apply the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/commonSeriesSettings/) object to configure all series in the PieChart.
+A series defines the look of your chart. The PieChart component includes the Pie and Doughnut series types. To use the Doughnut type, set the [type](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/#type) property to "doughnut". 
 
-If you want to bind a series to data directly, set an appropriate field name to the [argumentField](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/#argumentField) and [valueField](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/#valueField) properties.  Alternatively, you can [use a series template](/Documentation/Guide/UI_Components/Chart/Data_Binding/Bind_Series_to_Data/#Using_a_Series_Template) to bind series to data if a data source field contains names for series. 
+You need to bind the series to data. Set the [argumentField](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/#argumentField) and [valueField](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/#valueField) properties to data fields that contain arguments and values for your series. You can specify these properties in an object in the [series](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/) array or include it in the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/commonSeriesSettings/) object. In the latter case, your setting applies to all chart series.
 
-## Display Point Labels
-
-PieChart allows you to display and configure labels for series. Use the [label](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/label/) property to make the labels [visible](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/label/#visible), specify [format](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/label/#format) and show [connectors](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/label/connector/).
+Series points can have labels that display point values. Use the [label](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/label/) object to configure them. Enable the [label.visible](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/label/#visible) property to show the labels. If want to format values that labels display, specify the [label.format](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/label/#format) property. You can also connect labels with their series points. To do this, enable the [label.connector.visible](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/label/connector/) property. As with the **argumentField** and **valueField** properties, you can specify label settings for an individual series (in the **series** array) or for all series (in the **commonSeriesSettings** object).
 
 ## Enable Tooltips
 
-For each series you can add a [tooltip](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/tooltip/), specify its [format](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/tooltip/#format) and apply a [custom template](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/tooltip/#customizeTooltip). In this demo, you can see the tooltip when you hover a series or its label.
+
+When you hover the mouse pointer over a series point or its label, you can see a tooltip with information about the series point. 
+
+To configure a tooltip, you need to specify its properties in the [tooltip](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/tooltip/) object. For example, to enable the tooltips, assign *true* to the [enabled](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/tooltip/#enabled) property of this object.
+
+A tooltip displays information stored in the point value. If you want to customize a specific tooltip, assign a function to the [tooltip.customizeTooltip](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/tooltip/#customizeTooltip) property.
+
+You can also specify a format of the tooltip values to be displayed. To do this, assign the format you need to the [tooltip.format](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/tooltip/#format) property.
 
 ## Export Chart to Image
 
-To allow a user to export PieChart into the PNG, JPEG, and SVG file or print the chart, set the [export.enabled](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/export/#enabled) property to true. In this demo, the exporting is enabled and you can click the "Exporting/Printing" button in the chart. This button invokes a drop-down menu with export and print commands.
+To allow a user to print the chart or export it to a PNG, JPEG, or SVG file, set the [export.enabled](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/export/#enabled) property to *true*. This setting adds a button that opens a drop-down menu with export and print commands. In this demo, you can find this button in the upper-right corner.
 
