@@ -28,13 +28,8 @@ DemoApp.controller('DemoController', ($scope) => {
   $scope.checkBoxOptions = {
     value: false,
     onValueChanged(data) {
-      if (data.value) {
-        $scope.value = longText.substring(0, 100);
-        $scope.maxLength = 100;
-      } else {
-        $scope.value = longText;
-        $scope.maxLength = null;
-      }
+      $scope.value = data.value ? longText.substring(0, 100) : longText;
+      $scope.maxLength = data.value ? 100 : null;
     },
     text: 'Limit text length',
   };
@@ -42,13 +37,8 @@ DemoApp.controller('DemoController', ($scope) => {
   $scope.autoResizeCheckBoxOptions = {
     text: 'Enable auto resize',
     onValueChanged(e) {
-      if (e.value) {
-        $scope.autoResizeEnabled = true;
-        $scope.height = undefined;
-      } else {
-        $scope.autoResizeEnabled = false;
-        $scope.height = 90;
-      }
+      $scope.autoResizeEnabled = e.value;
+      $scope.height = e.value ? undefined : 90;
     },
     bindingOptions: {
       value: 'autoResizeEnabled',

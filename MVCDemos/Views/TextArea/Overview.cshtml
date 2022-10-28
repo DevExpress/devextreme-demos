@@ -63,24 +63,16 @@
 
     function checkBox_valueChanged(data) {
         var exampleTextArea = $("#example-textarea").dxTextArea("instance");
-        if(data.value) {
-            exampleTextArea.option("value", (exampleTextArea.option("value")).substring(0, 100));
-            exampleTextArea.option("maxLength", 100);
-        } else {
-            exampleTextArea.option("maxLength", null);
-            exampleTextArea.option("value", text);
-        }
+
+        exampleTextArea.option("value", data.value ? (exampleTextArea.option("value")).substring(0, 100) : null);
+        exampleTextArea.option("maxLength", data.value ? 100 : null);
     }
 
     function resize_valueChanged(e) {
         var exampleTextArea = $("#example-textarea").dxTextArea("instance");
-        if (e.value) {
-            exampleTextArea.option("autoResizeEnabled", true);
-            exampleTextArea.option("height", undefined);
-        } else {
-            exampleTextArea.option("autoResizeEnabled", false);
-            exampleTextArea.option("height", 90);
-        }
+
+        exampleTextArea.option("autoResizeEnabled", e.value);
+        exampleTextArea.option("height", e.value ? undefined : 90);
     }
 
     function selectBox_valueChanged(data) {

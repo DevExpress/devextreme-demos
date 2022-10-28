@@ -82,31 +82,18 @@ class App extends React.Component {
   }
 
   onCheckboxValueChanged(e) {
-    if (e.value) {
-      this.setState({
-        value: service.getContent().substring(0, 100),
-        maxLength: 100,
-      });
-    } else {
-      this.setState({
-        value: service.getContent(),
-        maxLength: null,
-      });
-    }
+    const str = service.getContent();
+    this.setState({
+      value: e.value ? str.substring(0, 100) : str,
+      maxLength: e.value ? 100 : null,
+    });
   }
 
   onAutoResizeChanged(e) {
-    if (e.value) {
-      this.setState({
-        autoResizeEnabled: true,
-        height: null,
-      });
-    } else {
-      this.setState({
-        autoResizeEnabled: false,
-        height: 90,
-      });
-    }
+    this.setState({
+      autoResizeEnabled: e.value,
+      height: e.value ? undefined : 90,
+    });
   }
 
   onSelectBoxValueChanged(e) {
