@@ -2518,6 +2518,7 @@
           {
             "Title": "Doughnut",
             "Name": "Doughnut",
+            "DocUrl": "Guide/UI_Components/PieChart/Series/Overview/",
             "Credits": "www.wikipedia.org",
             "Widget": "Charts",
             "DemoType": "Viz",
