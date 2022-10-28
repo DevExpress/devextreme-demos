@@ -21,7 +21,6 @@ Series points can have labels that display point values. Use the [label](/Docume
 
 ## Enable Tooltips
 
-
 When you hover the mouse pointer over a series point or its label, you can see a tooltip with information about the series point. 
 
 To configure a tooltip, you need to specify its properties in the [tooltip](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/tooltip/) object. For example, to enable tooltips, assign *true* to the [enabled](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/tooltip/#enabled) property of this object.
