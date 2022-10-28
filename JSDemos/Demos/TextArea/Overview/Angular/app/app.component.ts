@@ -46,23 +46,14 @@ export class AppComponent {
   }
 
   onCheckboxValueChanged(e) {
-    if (e.value) {
-      this.value = this.service.getContent().substring(0, 100);
-      this.maxLength = 100;
-    } else {
-      this.value = this.service.getContent();
-      this.maxLength = null;
-    }
+    let str = this.service.getContent();
+    this.value = e.value ? str.substring(0, 100) : str;
+    this.maxLength = e.value ? 100 : null;
   }
 
   onAutoResizeChanged(e) {
-    if (e.value) {
-      this.autoResizeEnabled = true;
-      this.height = undefined;
-    } else {
-      this.autoResizeEnabled = false;
-      this.height = 90;
-    }
+    this.autoResizeEnabled = e.value;
+    this.height = e.value ? undefined : 90;
   }
 }
 

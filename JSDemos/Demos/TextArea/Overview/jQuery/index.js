@@ -7,13 +7,9 @@ $(() => {
   $('#set-max-length').dxCheckBox({
     value: false,
     onValueChanged(data) {
-      if (data.value) {
-        exampleTextArea.option('value', (exampleTextArea.option('value')).substring(0, 100));
-        exampleTextArea.option('maxLength', 100);
-      } else {
-        exampleTextArea.option('maxLength', null);
-        exampleTextArea.option('value', longText);
-      }
+      const str = data.value ? (exampleTextArea.option('value')).substring(0, 100) : longText;
+      exampleTextArea.option('value', str);
+      exampleTextArea.option('maxLength', data.value ? 100 : null);
     },
     text: 'Limit text length',
   });
@@ -21,13 +17,8 @@ $(() => {
   $('#set-resize').dxCheckBox({
     value: false,
     onValueChanged(e) {
-      if (e.value) {
-        exampleTextArea.option('autoResizeEnabled', true);
-        exampleTextArea.option('height', undefined);
-      } else {
-        exampleTextArea.option('autoResizeEnabled', false);
-        exampleTextArea.option('height', 90);
-      }
+      exampleTextArea.option('autoResizeEnabled', e.value);
+      exampleTextArea.option('height', e.value ? undefined : 90);
     },
     text: 'Enable auto resize',
   });
