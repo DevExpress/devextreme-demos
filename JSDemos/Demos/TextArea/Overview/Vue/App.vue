@@ -11,7 +11,7 @@
       </div>
       <div class="dx-field">
         <DxCheckBox
-          v-model:value="autoResizedEnabled"
+          v-model:value="autoResizeEnabled"
           text="Enable auto resize"
           @value-changed="onAutoResizeChanged"
         />
