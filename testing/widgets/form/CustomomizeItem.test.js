@@ -9,8 +9,8 @@ fixture('Form.CustomizeItem')
       .resizeWindow(900, 600);
   });
 
-runManualTest('Form', 'CustomizeItem', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
-  test.skip('CustomizeItem', async (t) => {
+runManualTest('Form', 'CustomizeItem', ['jQuery', 'Vue', 'Angular'], (test) => {
+  test('CustomizeItem', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.hover($('#helpedInfo'));
