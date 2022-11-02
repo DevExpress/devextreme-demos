@@ -31,7 +31,7 @@ $(() => {
   }).dxCalendar('instance');
 
   $('#min-date').dxCheckBox({
-    text: 'Specified min value',
+    text: 'Specify min value',
     onValueChanged(data) {
       const minDate = new Date(date - msInDay * 3);
 
@@ -41,7 +41,7 @@ $(() => {
   });
 
   $('#max-date').dxCheckBox({
-    text: 'Specified max value',
+    text: 'Specify max value',
     onValueChanged(data) {
       const maxDate = new Date(date + msInDay * 3);
 
@@ -76,7 +76,7 @@ $(() => {
   });
 
   $('#custom-cell').dxCheckBox({
-    text: 'Use the Custom Cell Template',
+    text: 'Use Custom Cell Template',
     value: false,
     onValueChanged(data) {
       calendar.option('cellTemplate', data.value ? getCellTemplate : 'cell');

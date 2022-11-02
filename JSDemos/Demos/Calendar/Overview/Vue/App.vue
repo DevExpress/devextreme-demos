@@ -25,14 +25,14 @@
       <div class="option">
         <DxCheckBox
           :value="false"
-          text="Specified min value"
+          text="Specify min value"
           @value-changed="setMinDate"
         />
       </div>
       <div class="option">
         <DxCheckBox
           :value="false"
-          text="Specified max value"
+          text="Specify max value"
           @value-changed="setMaxDate"
         />
       </div>
@@ -52,7 +52,7 @@
       <div class="option">
         <DxCheckBox
           :value="false"
-          text="Use the Custom Cell Template"
+          text="Use Custom Cell Template"
           @value-changed="useCellTemplate"
         />
       </div>

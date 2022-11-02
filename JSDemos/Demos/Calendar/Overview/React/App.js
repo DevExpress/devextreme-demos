@@ -104,14 +104,14 @@ export default function App() {
         <div className="option">
           <CheckBox
             defaultValue={false}
-            text="Specified min value"
+            text="Specify min value"
             onValueChanged={onMinDateChange}
           />
         </div>
         <div className="option">
           <CheckBox
             defaultValue={false}
-            text="Specified max value"
+            text="Specify max value"
             onValueChanged={onMaxDateChange}
           />
         </div>
@@ -132,7 +132,7 @@ export default function App() {
         <div className="option">
           <CheckBox
             defaultValue={false}
-            text="Use the Custom Cell Template"
+            text="Use Custom Cell Template"
             onValueChanged={onUseCellTemplateChange}
           />
         </div>
