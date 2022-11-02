@@ -17,10 +17,6 @@ A series type defines the look of your chart. To display a Line, Stacked Line, o
 
 You also need to bind the series to data. Set the [argumentField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#argumentField) and [valueField](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/#valueField) properties to data fields that contain arguments and values for your series. You can specify these properties in an object in the [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/) array or include them in the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/) object. In this demo, the **argumentField** and **type** properties are specified for all series in the **commonSeriesSettings** object.
 
-## Configure Axes
-
-Line chart allows you to configure the horizontal and vertical axes. To specify settings individually, you can use the [argumentAxis](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/) and [valueAxis](/Documentation/ApiReference/UI_Components/dxChart/Configuration/valueAxis/) objects. You can also specify common settings for all axes in a chart, use the [commonAxisSettings](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonAxisSettings/) object. Axis-specific settings override common settings.
-
 ## Enable Tooltips
 
 When you hover the mouse pointer over a series point, you can see a tooltip with information about the series point. To display tooltips, you need to enable the [tooltip.enabled](/Documentation/ApiReference/UI_Components/dxChart/Configuration/tooltip/#enabled) property. 
