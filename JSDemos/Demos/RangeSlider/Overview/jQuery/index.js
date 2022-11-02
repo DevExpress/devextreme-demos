@@ -79,7 +79,7 @@ $(() => {
     max: 100,
     start: 10,
     end: 90,
-    callValueChange: 'onMovingComplete',
+    valueChangeMode: 'onHandleRelease',
     onValueChanged({ value, start, end }) {
       handleOnMovingSlider.option('value', value);
       startValue.option('value', start);

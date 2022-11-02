@@ -71,7 +71,7 @@ $(() => {
     min: 0,
     max: 100,
     value: 10,
-    callValueChange: 'onMovingComplete',
+    valueChangeMode: 'onHandleRelease',
     onValueChanged({ value }) {
       handleOnMovingSlider.option('value', value);
       sliderValue.option('value', value);

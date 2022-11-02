@@ -90,7 +90,7 @@ DemoApp.controller('DemoController', ($scope) => {
     onMovingCompleteOptions: {
       min: 0,
       max: 100,
-      callValueChange: 'onMovingComplete',
+      valueChangeMode: 'onHandleRelease',
       bindingOptions: {
         start: 'startValue',
         end: 'endValue',
