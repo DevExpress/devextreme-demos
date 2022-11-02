@@ -93,7 +93,6 @@ $(() => {
 
   const selectedDate = $('#selected-date').dxDateBox({
     value: new Date(),
-    width: '100%',
     onValueChanged(data) {
       calendar.option('value', data.value);
     },
