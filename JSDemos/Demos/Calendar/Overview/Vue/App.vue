@@ -63,20 +63,6 @@
         />
       </div>
       <div class="option">
-        <span>Zoom level</span>
-        <DxSelectBox
-          v-model:value="zoomLevel"
-          :data-source="zoomLevels"
-        />
-      </div>
-      <div class="option">
-        <span>Selected date</span>
-        <DxDateBox
-          v-model:value="currentValue"
-          width="100%"
-        />
-      </div>
-      <div class="option">
         <span>First day of week</span>
         <DxSelectBox
           v-model:value="firstDay"
@@ -90,6 +76,21 @@
         <DxSelectBox
           v-model:value="weekNumberRule"
           :data-source="weekNumberRules"
+        />
+      </div>
+      <div class="option">
+        <span>Zoom level</span>
+        <DxSelectBox
+          v-model:value="zoomLevel"
+          :data-source="zoomLevels"
+        />
+      </div>
+      <div class="option">
+        <span>Selected date</span>
+        <DxDateBox
+          v-model:value="currentValue"
+          :min="minDateValue"
+          :max="maxDateValue"
         />
       </div>
     </div>
@@ -138,33 +139,23 @@ export default {
       const day = date.getDay();
       return day === 0 || day === 6;
     },
-    setMinDate(e) {
-      if (e.value) {
-        this.minDateValue = new Date((new Date()).getTime() - 1000 * 60 * 60 * 24 * 3);
-      } else {
-        this.minDateValue = null;
-      }
+    setMinDate({ value }) {
+      this.minDateValue = value
+        ? new Date((new Date()).getTime() - 1000 * 60 * 60 * 24 * 3)
+        : null;
     },
-    setMaxDate(e) {
-      if (e.value) {
-        this.maxDateValue = new Date((new Date()).getTime() + 1000 * 60 * 60 * 24 * 3);
-      } else {
-        this.maxDateValue = null;
-      }
+    setMaxDate({ value }) {
+      this.maxDateValue = value
+        ? new Date((new Date()).getTime() + 1000 * 60 * 60 * 24 * 3)
+        : null;
     },
-    disableWeekend(e) {
-      if (e.value) {
-        this.disabledDates = (data) => data.view === 'month' && this.isWeekend(data.date);
-      } else {
-        this.disabledDates = null;
-      }
+    disableWeekend({ value }) {
+      this.disabledDates = value
+        ? (data) => data.view === 'month' && this.isWeekend(data.date)
+        : null;
     },
-    useCellTemplate(e) {
-      if (e.value) {
-        this.cellTemplate = 'custom';
-      } else {
-        this.cellTemplate = 'cell';
-      }
+    useCellTemplate({ value }) {
+      this.cellTemplate = value ? 'custom' : 'cell';
     },
     getCellCssClass({ date, view }) {
       let cssClass = '';

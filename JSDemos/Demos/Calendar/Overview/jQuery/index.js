@@ -1,4 +1,5 @@
 $(() => {
+  const msInDay = 1000 * 60 * 60 * 24;
   const zoomLevels = ['month', 'year', 'decade', 'century'];
   const weekDays = [
     { id: 0, text: 'Sunday' },
@@ -32,22 +33,20 @@ $(() => {
   $('#min-date').dxCheckBox({
     text: 'Specified min value',
     onValueChanged(data) {
-      if (data.value) {
-        calendar.option('min', new Date(date - 1000 * 60 * 60 * 24 * 3));
-      } else {
-        calendar.option('min', null);
-      }
+      const minDate = new Date(date - msInDay * 3);
+
+      calendar.option('min', data.value ? minDate : null);
+      selectedDate.option('min', data.value ? minDate : null);
     },
   });
 
   $('#max-date').dxCheckBox({
     text: 'Specified max value',
     onValueChanged(data) {
-      if (data.value) {
-        calendar.option('max', new Date(date + 1000 * 60 * 60 * 24 * 3));
-      } else {
-        calendar.option('max', null);
-      }
+      const maxDate = new Date(date + msInDay * 3);
+
+      calendar.option('max', data.value ? maxDate : null);
+      selectedDate.option('max', data.value ? maxDate : null);
     },
   });
 

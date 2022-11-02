@@ -144,23 +144,6 @@ export default function App() {
           />
         </div>
         <div className="option">
-          <span>Zoom level</span>
-          <SelectBox
-            dataSource={zoomLevels}
-            value={zoomLevel}
-            onValueChanged={onZoomLevelChange}
-          />
-        </div>
-        <div className="option">
-          <span>Selected date</span>
-          <DateBox
-            id="selected-date"
-            value={currentValue}
-            width="100%"
-            onValueChanged={onCurrentValueChange}
-          />
-        </div>
-        <div className="option">
           <span>First day of week</span>
           <SelectBox
             dataSource={weekDays}
@@ -176,6 +159,24 @@ export default function App() {
             dataSource={weekNumberRules}
             value={weekNumberRule}
             onValueChanged={onWeekNumberRuleChange}
+          />
+        </div>
+        <div className="option">
+          <span>Zoom level</span>
+          <SelectBox
+            dataSource={zoomLevels}
+            value={zoomLevel}
+            onValueChanged={onZoomLevelChange}
+          />
+        </div>
+        <div className="option">
+          <span>Selected date</span>
+          <DateBox
+            id="selected-date"
+            value={currentValue}
+            onValueChanged={onCurrentValueChange}
+            min={minDateValue}
+            max={maxDateValue}
           />
         </div>
       </div>

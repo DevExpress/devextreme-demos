@@ -64,24 +64,6 @@
             )
         </div>
         <div class="option">
-            <span>Zoom level</span>
-            @(Html.DevExtreme().SelectBox()
-                .ID("zoom-level")
-                .DataSource(zoomLevels)
-                .Value(zoomLevels[0])
-                .OnValueChanged("zoomLevel_changed")
-            )
-        </div>
-        <div class="option">
-            <span>Selected date</span>
-            @(Html.DevExtreme().DateBox()
-                .ID("selected-date")
-                .Value(DateTime.Now)
-                .Width("100%")
-                .OnValueChanged("selectedDate_changed")
-            )
-        </div>
-        <div class="option">
             <span>First day of week</span>
             @(Html.DevExtreme().SelectBox()
                 .DataSource(weekDays)
@@ -99,14 +81,37 @@
                 .OnValueChanged("weekNumberRule_changed")
             )
         </div>
+        <div class="option">
+            <span>Zoom level</span>
+            @(Html.DevExtreme().SelectBox()
+                .ID("zoom-level")
+                .DataSource(zoomLevels)
+                .Value(zoomLevels[0])
+                .OnValueChanged("zoomLevel_changed")
+            )
+        </div>
+        <div class="option">
+            <span>Selected date</span>
+            @(Html.DevExtreme().DateBox()
+                .ID("selected-date")
+                .Value(DateTime.Now)
+                .Width("100%")
+                .OnValueChanged("selectedDate_changed")
+            )
+        </div>
     </div>
 </div>
 
 <script>
     var date = new Date().getTime();
+    var msInDay = 1000 * 60 * 60 * 24;
 
     function getCalendarInstance() {
         return $("#calendar-container").dxCalendar("instance");
+    }
+
+    function getDateBoxInstance() {
+        return $("#selected-date").dxDateBox("instance");
     }
 
     function isWeekend(date) {
@@ -138,7 +143,7 @@
     }
 
     function calendar_valueChanged(data) {
-        $("#selected-date").dxDateBox("instance").option("value", data.value);
+        getDateBoxInstance().option("value", data.value);
     }
 
     function calendar_valueChanged(data) {
@@ -148,21 +153,17 @@
     }
 
     function minValue_changed(data) {
-        var calendar = getCalendarInstance();
-        if(data.value) {
-            calendar.option("min", new Date(date - 1000 * 60 * 60 * 24 * 3));
-        } else {
-            calendar.option("min", null);
-        }
+        const minDate = new Date(date - msInDay * 3);
+
+        getCalendarInstance().option("min", data.value ? minDate : null);
+        getDateBoxInstance().option("min", data.value ? minDate : null);
     }
 
     function maxValue_changed(data) {
-        var calendar = getCalendarInstance();
-        if(data.value) {
-            calendar.option("max", new Date(date + 1000 * 60 * 60 * 24 * 3));
-        } else {
-            calendar.option("max", null);
-        }
+        const maxDate = new Date(date + msInDay * 3);
+
+        getCalendarInstance().option("max", data.value ? maxDate : null);
+        getDateBoxInstance().option("max", data.value ? maxDate : null);
     }
 
     function disabledDates_changed(data) {
