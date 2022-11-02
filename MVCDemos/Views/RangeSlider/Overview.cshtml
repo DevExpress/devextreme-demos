@@ -88,7 +88,7 @@
             <div class="dx-field-label">On handle movement</div>
             <div class="dx-field-value">
                 @(Html.DevExtreme().RangeSlider()
-                    .ID("slider-on-moving")
+                    .ID("slider-on-handle-move")
                     .Min(0)
                     .Max(100)
                     .Start(10)
@@ -101,12 +101,12 @@
             <div class="dx-field-label">On handle release</div>
             <div class="dx-field-value">
                 @(Html.DevExtreme().RangeSlider()
-                    .ID("slider-on-moving")
+                    .ID("slider-on-handle-move")
                     .Min(0)
                     .Max(100)
                     .Start(10)
                     .End(90)
-                    .CallValueChange(ValueChangedCallMode.OnMovingComplete)
+                    .ValueChangeMode(ValueChangeMode.OnHandleRelease)
                     .OnValueChanged("rangeSlider_valueChanged")
                 )
             </div>
@@ -146,12 +146,12 @@
         return value + "%";
     }
 
-    function getOnMovingSliderInstance() {
-        return $("#slider-on-moving").dxRangeSlider("instance");
+    function getOnHandleMoveSliderInstance() {
+        return $("#slider-on-handle-move").dxRangeSlider("instance");
     }
 
-    function getOnMovingCompleteSliderInstance() {
-        return $("#slider-on-moving-complete").dxRangeSlider("instance");
+    function getOnHandleReleaseSliderInstance() {
+        return $("#slider-on-handle-release").dxRangeSlider("instance");
     }
 
     function rangeSlider_valueChanged(data) {
@@ -160,12 +160,12 @@
     }
 
     function startValue_changed(data) {
-        getOnMovingSliderInstance().option("start", data.value);
-        getOnMovingCompleteSliderInstance().option("start", data.value);
+        getOnHandleMoveSliderInstance().option("start", data.value);
+        getOnHandleReleaseSliderInstance().option("start", data.value);
     }
 
     function endValue_changed(data) {
-        getOnMovingSliderInstance().option("end", data.value);
-        getOnMovingCompleteSliderInstance().option("end", data.value);
+        getOnHandleMoveSliderInstance().option("end", data.value);
+        getOnHandleReleaseSliderInstance().option("end", data.value);
     }
 </script>

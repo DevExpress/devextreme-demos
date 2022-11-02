@@ -94,18 +94,18 @@
             <div class="dx-field-label">On handle release</div>
             <div class="dx-field-value">
                 @(Html.DevExtreme().Slider()
-                    .ID("slider-on-moving")
+                    .ID("slider-on-handle-move")
                     .Min(0)
                     .Max(100)
                     .Value(10)
-                    .CallValueChange(ValueChangedCallMode.OnMovingComplete)
+                    .ValueChangeMode(ValueChangeMode.OnHandleRelease)
                     .OnValueChanged("slider_valueChanged")
                 )
             </div>
         </div>
         <div class="dx-field">
                 @(Html.DevExtreme().Slider()
-                    .ID("slider-on-moving-complete")
+                    .ID("slider-on-handle-release")
                     .Min(0)
                     .Max(100)
                     .Value(10)
@@ -138,7 +138,7 @@
     }
 
     function numberBox_valueChanged(data) {
-        $("#slider-on-moving").dxSlider("instance").option("value", data.value);
-        $("#slider-on-moving-complete").dxSlider("instance").option("value", data.value);
+        $("#slider-on-handle-move").dxSlider("instance").option("value", data.value);
+        $("#slider-on-handle-release").dxSlider("instance").option("value", data.value);
     }
 </script>
