@@ -99,7 +99,7 @@ class App extends React.Component {
                 max={100}
                 start={this.state.startValue}
                 end={this.state.endValue}
-                valueChangeMode='onHandleRelease'
+                valueChangeMode="onHandleRelease"
                 onValueChanged={this.onRangeChanged} />
             </div>
           </div>
