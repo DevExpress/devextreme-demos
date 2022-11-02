@@ -132,7 +132,7 @@ export default function App() {
         <div className="option">
           <CheckBox
             defaultValue={false}
-            text="Use Custom Cell Template"
+            text="Use custom cell template"
             onValueChanged={onUseCellTemplateChange}
           />
         </div>

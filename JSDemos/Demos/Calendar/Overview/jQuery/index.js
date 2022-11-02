@@ -76,7 +76,7 @@ $(() => {
   });
 
   $('#custom-cell').dxCheckBox({
-    text: 'Use Custom Cell Template',
+    text: 'Use custom cell template',
     value: false,
     onValueChanged(data) {
       calendar.option('cellTemplate', data.value ? getCellTemplate : 'cell');

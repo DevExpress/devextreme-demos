@@ -52,7 +52,7 @@
       <div class="option">
         <DxCheckBox
           :value="false"
-          text="Use Custom Cell Template"
+          text="Use custom cell template"
           @value-changed="useCellTemplate"
         />
       </div>

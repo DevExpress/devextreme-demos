@@ -30,7 +30,7 @@ Set the [onValueChanged](/Documentation/ApiReference/UI_Components/dxCalendar/Co
 
 ## Customize Cell Appearance
 
-Use the [cellTemplate](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#cellTemplate) property to customize cell appearance. In this demo, when you toggle the "Use Custom Cell Template" checkbox, all the weekends on the Calendar become blue, and all the holidays become red. You can set your own function that changes the class of the span element that contains cell text.
+Use the [cellTemplate](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#cellTemplate) property to customize cell appearance. In this demo, when you toggle the "Use custom cell template" checkbox, all the weekends on the Calendar become blue, and all the holidays become red. You can set your own function that changes the class of the span element that contains cell text.
 
 ## Other Customizations
 
