@@ -22,7 +22,10 @@ testUtils.importAnd(() => 'devextreme/viz/chart', () => DevExpress.viz.dxChart, 
         }
       }
 
-      chart.option('adjustAxesOnZoom', true);
+      chart.option({
+        adjustAxesOnZoom: true,
+        size: { width: 800 }
+      });
       chart.on('done', () => {
         isReady = true;
       });
