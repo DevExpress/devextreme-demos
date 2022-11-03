@@ -28,19 +28,19 @@
         <div class="caption">Options</div>
         <div class="option">
             @(Html.DevExtreme().CheckBox()
-                .Text("Specify min value")
+                .Text("Set minimum date")
                 .OnValueChanged("minValue_changed")
             )
         </div>
         <div class="option">
             @(Html.DevExtreme().CheckBox()
-                .Text("Specify max value")
+                .Text("Set maximum date")
                 .OnValueChanged("maxValue_changed")
             )
         </div>
         <div class="option">
             @(Html.DevExtreme().CheckBox()
-                .Text("Disable weekend")
+                .Text("Disable weekends")
                 .OnValueChanged("disabledDates_changed")
             )
         </div>
@@ -59,7 +59,7 @@
         </div>
         <div class="option">
             @(Html.DevExtreme().CheckBox()
-                .Text("Disabled")
+                .Text("Disable the calendar")
                 .OnValueChanged("disabledState_changed")
             )
         </div>
