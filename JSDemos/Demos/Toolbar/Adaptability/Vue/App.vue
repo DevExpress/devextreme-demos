@@ -448,18 +448,18 @@ export default {
 .dx-resizable-handle::after {
   content: "";
   position: absolute;
-  top: 50%;
   width: 9px;
   height: 36px;
   border: none;
   border-radius: 50px;
   background-color: #fff;
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16);
-  transform: translateY(-50%);
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.24);
 }
 
 .dx-resizable-handle-right::after {
+  top: 50%;
   right: -5px;
+  transform: translateY(-50%);
 }
 
 .dx-toolbar.dx-toolbar-multiline .dx-toolbar-item {
@@ -481,7 +481,7 @@ export default {
 .resizable-container {
   padding: 10px;
   height: 300px;
-  border: 1px dashed #dbdbdb;
+  border: 1px dotted #999;
   border-radius: 4px;
   box-sizing: border-box;
 }
