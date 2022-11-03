@@ -10,13 +10,13 @@
   width: 9px;
   height: 36px;
   top: 50%;
+  border-radius: 50px;
   transform: translateY(-18px);
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16);
 }
 
 ::ng-deep .dx-resizable-handle-right::after {
   right: -5px;
-  border-radius: 50px;
 }
 
 ::ng-deep .dx-toolbar.dx-toolbar-multiline .dx-toolbar-item {
