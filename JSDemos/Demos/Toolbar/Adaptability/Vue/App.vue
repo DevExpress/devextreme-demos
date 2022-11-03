@@ -447,17 +447,19 @@ export default {
 <style>
 .dx-resizable-handle::after {
   content: "";
-  background-color: #337ab7;
+  background-color: #fff;
+  border: none;
   position: absolute;
-  width: 12px;
-  height: 12px;
-  border: 1px solid #337ab7;
+  width: 9px;
+  height: 36px;
   top: 50%;
-  transform: translateY(-7px);
+  transform: translateY(-18px);
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16);
 }
 
 .dx-resizable-handle-right::after {
-  right: -7px;
+  right: -5px;
+  border-radius: 50px;
 }
 
 .dx-toolbar.dx-toolbar-multiline .dx-toolbar-item {
