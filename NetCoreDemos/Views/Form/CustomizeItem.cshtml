@@ -93,48 +93,47 @@
 )
 
 @using (Html.DevExtreme().NamedTemplate("notesTemplate")) {
-    <span>
-        <i class="dx-icon dx-icon-comment"></i>
-        Additional
-        <br>
+    <div id='template-content'>
         <i
             id="helpedInfo"
             class="dx-icon dx-icon-info"
         ></i>
+        Additional
+        <br>
         Notes:
-    </span>
+    </div>
 
     @(Html.DevExtreme().Tooltip()
         .Target("#helpedInfo")
         .ShowEvent("mouseenter")
         .HideEvent("mouseleave")
-        .ContentTemplate(@<text><div id='tooltip-content'>This field must not exceed 200 characters</div></text>)
+        .ContentTemplate(@<text><div id='tooltip-content'>TThis field must not exceed 200 characters</div></text>)
     )
 }
 
 <script>
 function nameLabel(data) {
-    return $(`<span><i class='dx-icon dx-icon-user'}></i>${data.text}</span>`);
+    return $(`<div><i class='dx-icon dx-icon-user'}></i>${data.text}</div>`);
 }
 
 function positionLabel(data) {
-    return $(`<span><i class='dx-icon dx-icon-info'}></i>${data.text}</span>`);
+    return $(`<div><i class='dx-icon dx-icon-info'}></i>${data.text}</div>`);
 }
 
 function eventLabel(data) {
-    return $(`<span><i class='dx-icon dx-icon-event'}></i>${data.text}</span>`);
+    return $(`<div><i class='dx-icon dx-icon-event'}></i>${data.text}</div>`);
 }
 
 function phoneLabel(data) {
-    return $(`<span><i class='dx-icon dx-icon-tel'}></i>${data.text}</span>`);
+    return $(`<div><i class='dx-icon dx-icon-tel'}></i>${data.text}</div>`);
 }
 
 function addressLabel(data) {
-    return $(`<span><i class='dx-icon dx-icon-home'}></i>${data.text}</span>`);
+    return $(`<div><i class='dx-icon dx-icon-home'}></i>${data.text}</div>`);
 }
 
 function emailLabel(data) {
-    return $(`<span><i class='dx-icon dx-icon-email'}></i>${data.text}</span>`);
+    return $(`<div><i class='dx-icon dx-icon-email'}></i>${data.text}</div>`);
 }
 
 function validateForm(e) {
