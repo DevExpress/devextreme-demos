@@ -6,3 +6,8 @@
     font-size: 14px;
     font-weight: bold;
 }
+
+#template-content {
+    display: inline-flex;
+}
+
