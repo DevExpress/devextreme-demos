@@ -1,14 +1,14 @@
 .dx-resizable-handle::after {
   content: "";
-  background-color: #fff;
-  border: none;
   position: absolute;
+  top: 50%;
   width: 9px;
   height: 36px;
-  top: 50%;
+  border: none;
   border-radius: 50px;
-  transform: translateY(-18px);
+  background-color: #fff;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16);
+  transform: translateY(-50%);
 }
 
 .dx-resizable-handle-right::after {
