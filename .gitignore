@@ -50,3 +50,4 @@ NetCoreDemos/wwwroot/DemoShell
 NetCoreDemos/DemoShell
 NetCoreDemos/wwwroot/bundle.min.css
 NetCoreDemos/wwwroot/bundle.min.js
+.DS_Store
