@@ -248,16 +248,7 @@ testUtils.importAnd(() => 'devextreme/viz/chart', () => DevExpress.viz.dxChart, 
       const instance = dxChart.getInstance(document.querySelector('#chart'));
       instance.option('dataSource', dataSource);
 
-      const option = instance.option;
-      instance.option = function (name) {
-        if (arguments.length === 0) {
-          return option.call(this);
-        }
-        if (arguments.length === 1 && typeof name === 'string') {
-          return option.call(this, name);
-        }
-        return undefined;
-      };
+      testUtils.mockOptionMethod(instance);
     })
     .then(() => testUtils.postpone(2000));
 });
