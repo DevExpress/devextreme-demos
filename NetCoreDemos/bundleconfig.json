@@ -5,7 +5,6 @@
     "inputFiles": [
       "wwwroot/css/dx-diagram.min.css",
       "wwwroot/css/dx-gantt.min.css",
-      "wwwroot/css/dx.common.css",
       "wwwroot/DemoShell/hljs/highlightjs.gh.css"
     ]
   },

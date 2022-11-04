@@ -1108,7 +1108,6 @@
     <Content Include="Content\DevExtreme\dx-gantt.css" />
     <Content Include="Content\DevExtreme\dx-gantt.min.css" />
     <Content Include="Content\DevExtreme\dx.carmine.css" />
-    <Content Include="Content\DevExtreme\dx.common.css" />
     <Content Include="Content\DevExtreme\dx.contrast.compact.css" />
     <Content Include="Content\DevExtreme\dx.contrast.css" />
     <Content Include="Content\DevExtreme\dx.dark.compact.css" />
