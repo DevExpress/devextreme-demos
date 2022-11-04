@@ -2,9 +2,11 @@
     .ID("chart")
     .Palette(VizPalette.Violet)
     .Title("Crude Oil Prices in 2005")
+    .Tooltip(t => t.Enabled(true))
     .CommonSeriesSettings(s => s
         .ArgumentField("Date")
         .Type(SeriesType.RangeBar)
+        .MinBarSize(2)
     )
     .Series(s => {
         s.Add().RangeValue1Field("AVal1").RangeValue2Field("AVal2").Name("ANS West Coast");
@@ -32,6 +34,6 @@
         new { Date = new DateTime(2005, 9, 1), AVal1 = 61.0, AVal2 = 66.72, TVal1 = 63.0,  TVal2 = 69.47 },
         new { Date = new DateTime(2005, 10, 1), AVal1 = 57.86, AVal2 = 63.47, TVal1 = 59.76, TVal2 = 65.47 },
         new { Date = new DateTime(2005, 11, 1), AVal1 = 54.24, AVal2 = 59.98, TVal1 = 56.14, TVal2 = 61.78 },
-        new { Date = new DateTime(2005, 12, 1), AVal1 = 55.22, AVal2 = 59.22, TVal1 = 57.34, TVal2 = 61.37 }
+        new { Date = new DateTime(2005, 12, 1), AVal1 = 55.22, AVal2 = 55.22, TVal1 = 57.34, TVal2 = 57.37 }
     })
 )
