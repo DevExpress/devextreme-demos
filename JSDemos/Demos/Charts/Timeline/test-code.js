@@ -117,7 +117,17 @@ testUtils.importAnd(() => 'devextreme/viz/chart', () => DevExpress.viz.dxChart, 
     .then(() => {
       const instance = dxChart.getInstance(document.querySelector('#chart'));
       instance.option('dataSource', dataSource);
-      instance.option = function () { };
+
+      const option = instance.option;
+      instance.option = function (name) {
+        if (arguments.length === 0) {
+          return option.call(this);
+        }
+        if (arguments.length === 1 && typeof name === 'string') {
+          return option.call(this, name);
+        }
+        return undefined;
+      };
     })
     .then(() => testUtils.postpone(2000));
 });
