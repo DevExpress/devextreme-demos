@@ -22,7 +22,6 @@ namespace DevExtreme.MVC.Demos {
             var bundle = new StyleBundle(StyleBundlePath);
             bundle.Include("~/Content/DevExtreme/dx-diagram.min.css");
             bundle.Include("~/Content/DevExtreme/dx-gantt.min.css");
-            bundle.Include("~/Content/DevExtreme/dx.common.css");
             return bundle;
         }
 
