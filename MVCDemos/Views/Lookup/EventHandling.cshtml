@@ -4,17 +4,32 @@
 <div class="dx-fieldset">
     <div class="dx-field">
         @(Html.DevExtreme().Lookup()
-            .DataSource(Model)
+            .ID("lookup")
+            .DataSource(new JS("employees"))
             .DisplayExpr(new JS("lookup_displayExpr"))
             .DropDownOptions(p => p.ShowTitle(false))
             .Placeholder("Select employee")
             .OnValueChanged("lookup_valueChanged")
+            .ApplyValueMode(EditorApplyValueMode.Instantly)
         )
     </div>
 </div>
 <div class="selected" display="none">
-    <img id="selected-employee-img" src="" alt="">
-    <span id="selected-employee-notes"></span>
+    <div class="frame">
+        <img id="selected-employee-img" src="" alt="">
+    </div>
+    <div id="selected-employee-notes"></div>
+</div>
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <div class="label">Apply Value Mode</div>
+        @(Html.DevExtreme().SelectBox()
+            .Items(new[] { "instantly", "useButtons" })
+            .Value("instantly")
+            .OnValueChanged("selectBox_valueChanged")
+        )
+    </div>
 </div>
 
 <script>
@@ -30,5 +45,10 @@
         }
 
         return item.FirstName + " " + item.LastName;
+    }
+
+    function selectBox_valueChanged(e) {
+        const lookup = $("#lookup").dxLookup("instance");
+        lookup.option("applyValueMode", e.value);
     }
 </script>
