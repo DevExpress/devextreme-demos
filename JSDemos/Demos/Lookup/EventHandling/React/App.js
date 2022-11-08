@@ -47,7 +47,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <div className="label">Apply Value Mode</div>
-            <SelectBox 
+            <SelectBox
               items={applyValueModes}
               value={applyValueMode}
               onValueChanged={this.changeApplyValueMode} />

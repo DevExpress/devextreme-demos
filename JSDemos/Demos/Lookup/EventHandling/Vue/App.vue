@@ -28,8 +28,10 @@
       <div class="caption">Options</div>
       <div class="option">
         <div class="label">Apply Value Mode</div>
-        <DxSelectBox :items="applyValueModes"
-          v-model:value="applyValueMode"/>
+        <DxSelectBox
+          :items="applyValueModes"
+          v-model:value="applyValueMode"
+        />
       </div>
     </div>
   </div>
