@@ -34,8 +34,8 @@ class App extends React.Component {
             </Lookup>
           </div>
         </div>
-        {selectedValue && 
-          <div className="selected">
+        {selectedValue
+          && <div className="selected">
             <div className="frame">
               <img src={selectedValue.Picture} />
             </div>
@@ -47,7 +47,10 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <div className="label">Apply Value Mode</div>
-            <SelectBox items={applyValueModes} value={applyValueMode} onValueChanged={this.changeApplyValueMode} />
+            <SelectBox 
+              items={applyValueModes}
+              value={applyValueMode}
+              onValueChanged={this.changeApplyValueMode} />
           </div>
         </div>
       </div>

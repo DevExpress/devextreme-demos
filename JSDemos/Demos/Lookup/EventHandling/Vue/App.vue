@@ -5,7 +5,7 @@
         <DxLookup
           :items="items"
           :display-expr="getDisplayExpr"
-          :applyValueMode="applyValueMode"
+          :apply-value-mode="applyValueMode"
           placeholder="Select employee"
           @value-changed="setSelectedValue"
         >
@@ -28,7 +28,8 @@
       <div class="caption">Options</div>
       <div class="option">
         <div class="label">Apply Value Mode</div>
-        <DxSelectBox :items="applyValueModes" v-model:value="applyValueMode" />
+        <DxSelectBox :items="applyValueModes"
+          v-model:value="applyValueMode"/>
       </div>
     </div>
   </div>
@@ -42,7 +43,7 @@ export default {
   components: {
     DxLookup,
     DxDropDownOptions,
-    DxSelectBox
+    DxSelectBox,
   },
   data() {
     return {

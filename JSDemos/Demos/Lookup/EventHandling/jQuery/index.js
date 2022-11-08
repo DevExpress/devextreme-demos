@@ -19,12 +19,12 @@ $(() => {
       $('#selected-employee-notes').text(e.value.Notes);
     },
   }).dxLookup('instance');
-  
+
   $('#applyValueMode').dxSelectBox({
     items: ['instantly', 'useButtons'],
     value: applyValueMode,
     onValueChanged(e) {
       lookup.option('applyValueMode', e.value);
-    }
-  })
+    },
+  });
 });
