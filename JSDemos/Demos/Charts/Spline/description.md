@@ -4,4 +4,4 @@ In this example, you can use the drop-down menu under the chart to switch betwee
 
 ## Configure Spline Charts
 
-You can configure the appearance of your chart and its functionality. For this, refer to the [Line](/Demos/WidgetsGallery/Demo/Charts/Line/) demo description. To display a Spline, Stacked Spline, or Full-Stacked Spline series, set the [type](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#type) property to one of these types. 
+The functionality of spline charts is very similar to that of line charts. You can use instructions from the [Line](/Demos/WidgetsGallery/Demo/Charts/Line/) demo description to configure spline charts. To display a Spline, Stacked Spline, or Full-Stacked Spline series, set the [type](/Documentation/ApiReference/UI_Components/dxChart/Configuration/#type) property to one of these types. 
