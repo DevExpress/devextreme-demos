@@ -22,7 +22,7 @@ $(() => {
 
   $('#applyValueMode').dxSelectBox({
     items: ['instantly', 'useButtons'],
-    value: applyValueMode,
+    value: 'instantly',
     onValueChanged(e) {
       lookup.option('applyValueMode', e.value);
     },
