@@ -18,9 +18,10 @@ runManualTest('PivotGrid', 'IntegratedFieldChooser', ['jQuery', 'React', 'Vue', 
   test('IntegratedFieldChooser', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
+    await t.wait(500);
     await t.click(Selector(`.${PIVOTGRID_FIELD_CHOOSER_BUTTON}`));
 
-    await takeScreenshot('Integrated field chooser.png');
+    await takeScreenshot('Integrated field chooser.png', `.${FIELD_CHOOSER_CONTENT}`);
 
     const textEditorInput = Selector(`.${TREEVIEW_SEARCH_FIELD} .${TEXTEDITOR_INPUT}`);
     await t
