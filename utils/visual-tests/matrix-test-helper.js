@@ -166,9 +166,7 @@ export function runManualTestCore(testObject, product, demo, framework, callback
     return;
   }
 
-  callback(test).before(() => {
-    window.DevExpress.ui.themes.current('dx.material.blue.light.css');
-  });
+  callback(test);
 }
 
 export function runManualTest(product, demo, framework, callback) {
