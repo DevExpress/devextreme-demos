@@ -2299,7 +2299,6 @@
           {
             "Title": "Dynamic Series from the DataSource",
             "Name": "SeriesTemplates",
-            "Credits": "www.geohive.com",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
               "/Models/OilProduction.cs",
