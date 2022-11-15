@@ -151,7 +151,7 @@ export function runTestAtPage(test, demoUrl) {
 }
 
 export function runManualTestCore(testObject, product, demo, framework, callback) {
-  const test = testObject.page(`http://localhost:8080/JSDemos/Demos/${product}/${demo}/${framework}/dx.material.blue.light.css/`);
+  const test = testObject.page(`http://localhost:8080/JSDemos/Demos/${product}/${demo}/${framework}/`);
   const index = settings.manualTestIndex;
   settings.manualTestIndex += 1;
 
@@ -166,7 +166,9 @@ export function runManualTestCore(testObject, product, demo, framework, callback
     return;
   }
 
-  callback(test);
+  callback(test).before(() => {
+    window.DevExpress.ui.themes.current('dx.material.blue.light.css');
+  });
 }
 
 export function runManualTest(product, demo, framework, callback) {
