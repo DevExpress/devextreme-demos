@@ -5,7 +5,7 @@ import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 const PIVOTGRID_FIELD_CHOOSER_BUTTON = 'dx-pivotgrid-field-chooser-button';
 const TREEVIEW_SEARCH_FIELD = 'dx-treeview-search';
 const TEXTEDITOR_INPUT = 'dx-texteditor-input';
-const FIELD_CHOOSER_CONTENT = 'dx-overlay-content';
+const FIELD_CHOOSER_CONTENT = 'dx-popup-normal';
 
 fixture('PivotGrid.IntegratedFieldChooser')
   .page('http://localhost:8080/')
