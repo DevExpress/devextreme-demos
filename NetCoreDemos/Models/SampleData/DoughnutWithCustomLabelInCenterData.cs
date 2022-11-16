@@ -13,15 +13,15 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
     public partial class SampleData {
         public static readonly IEnumerable<DoughnutWithCustomLabelInCenterDataItem>
             DoughnutWithCustomLabelInCenterData = new DoughnutWithCustomLabelInCenterDataItem[] {
-           new DoughnutWithCustomLabelInCenterDataItem() { Country = "France", Commodity ="Nuclear", Total = 403195 },
-           new DoughnutWithCustomLabelInCenterDataItem() { Country = "Germany", Commodity = "Nuclear", Total = 84634 },
-           new DoughnutWithCustomLabelInCenterDataItem() { Country = "France", Commodity = "Thermal", Total = 57471 },
-           new DoughnutWithCustomLabelInCenterDataItem() { Country = "Germany", Commodity = "Thermal", Total = 419591 },
-           new DoughnutWithCustomLabelInCenterDataItem() { Country = "France", Commodity = "Wind", Total = 21400 },
-           new DoughnutWithCustomLabelInCenterDataItem() { Country = "Germany", Commodity = "Wind", Total = 78598 },
-           new DoughnutWithCustomLabelInCenterDataItem() { Country = "France", Commodity = "Solar", Total = 8160 },
-           new DoughnutWithCustomLabelInCenterDataItem() { Country = "Germany", Commodity = "Solar", Total = 38098 },
-           new DoughnutWithCustomLabelInCenterDataItem() { Country = "France", Commodity = "Tidal, Wave", Total = 501 }
+           new DoughnutWithCustomLabelInCenterDataItem() { Country = "France", Commodity = "Nuclear", Total = 413278 },
+           new DoughnutWithCustomLabelInCenterDataItem() { Country = "Germany", Commodity = "Nuclear", Total = 76536 },
+           new DoughnutWithCustomLabelInCenterDataItem() { Country = "France", Commodity = "Thermal", Total = 47594 },
+           new DoughnutWithCustomLabelInCenterDataItem() { Country = "Germany", Commodity = "Thermal", Total = 375809 },
+           new DoughnutWithCustomLabelInCenterDataItem() { Country = "France", Commodity = "Wind", Total = 21033 },
+           new DoughnutWithCustomLabelInCenterDataItem() { Country = "Germany", Commodity = "Wind", Total = 58228 },
+           new DoughnutWithCustomLabelInCenterDataItem() { Country = "France", Commodity = "Solar", Total = 7274 },
+           new DoughnutWithCustomLabelInCenterDataItem() { Country = "Germany", Commodity = "Solar", Total = 37520 },
+           new DoughnutWithCustomLabelInCenterDataItem() { Country = "France", Commodity = "Tidal, Wave", Total = 618 }
         };
     }
 }
