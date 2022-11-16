@@ -2444,7 +2444,6 @@
           {
             "Title": "Custom Bar Width",
             "Name": "CustomBarWidth",
-            "Credits": "www.geohive.com",
             "Widget": "Charts",
             "DemoType": "Viz",
             "Equivalents": "barPadding"
