@@ -2634,7 +2634,6 @@
             "Title": "Hover Mode",
             "Name": "HoverMode",
             "DocUrl": "Guide/UI_Components/Chart/Series_Points/Hover/",
-            "Credits": "www.bea.gov",
             "Widget": "Charts",
             "DemoType": "Viz"
           },
