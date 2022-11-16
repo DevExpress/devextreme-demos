@@ -2452,7 +2452,6 @@
             "Title": "Color Each Bar Differently",
             "Name": "ColorEachBar",
             "DocUrl": "Guide/UI_Components/Chart/Data_Binding/Bind_Series_to_Data/#Using_a_Series_Template",
-            "Credits": "www.statista.com",
             "Widget": "Charts",
             "DemoType": "Viz",
             "Equivalents": "seriesTemplate, ignoreEmptyPoints"
