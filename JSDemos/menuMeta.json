@@ -2543,7 +2543,6 @@
           {
             "Title": "Custom Label in the Center",
             "Name": "DoughnutWithCustomLabelInCenter",
-            "Credits": "UNdata",
             "MvcAdditionalFiles": [
               "/Models/SampleData/DoughnutWithCustomLabelInCenterData.cs"
             ],
