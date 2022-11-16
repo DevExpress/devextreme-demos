@@ -2611,7 +2611,6 @@
           {
             "Title": "Line",
             "Name": "Line",
-            "Credits": "www.geohive.com",
             "Widget": "Charts",
             "DemoType": "Viz",
             "Equivalents": "stackedline, fullstackedline"
