@@ -2536,7 +2536,6 @@
             "Title": "Doughnut with Multiple Series",
             "Name": "PieWithMultipleSeries",
             "DocUrl": "Guide/UI_Components/PieChart/Series/Overview/",
-            "Credits": "www.wto.org",
             "Widget": "Charts",
             "DemoType": "Viz",
             "Equivalents": "innerRadius"
