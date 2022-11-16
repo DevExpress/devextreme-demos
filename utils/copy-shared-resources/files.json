@@ -1,0 +1,13 @@
+{
+   "files":[
+      {
+         "filePath":"./JSDemos/Demos/FileUploader/AzureDirectUploading/azure-file-system.js",
+         "paths":[
+            "./JSDemos/Demos/FileUploader/AzureDirectUploading/Angular/app",
+            "./JSDemos/Demos/FileUploader/AzureDirectUploading/jQuery",
+            "./JSDemos/Demos/FileUploader/AzureDirectUploading/React",
+            "./JSDemos/Demos/FileUploader/AzureDirectUploading/Vue"
+         ]
+      }
+   ]
+}
