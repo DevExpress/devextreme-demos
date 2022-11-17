@@ -2818,7 +2818,6 @@
             "Title": "Wind Rose",
             "Name": "WindRose",
             "DocUrl": "ApiReference/UI_Components/dxPolarChart/Configuration/argumentAxis/#discreteAxisDivisionMode",
-            "Credits": "www.wrcc.dri.edu",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
               "/Models/WindRoseItem.cs",
