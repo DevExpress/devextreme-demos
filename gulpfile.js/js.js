@@ -7,7 +7,7 @@ const demosDir = join(__dirname, '..', 'JSDemos/Demos');
 
 function prepareJs(callback) {
   init();
-  copySharedResources();
+  copySharedResources(callback);
   createConfig.useBundles = false;
   createConfig.run(demosDir);
   callback();

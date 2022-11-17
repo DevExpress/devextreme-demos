@@ -1,21 +1,22 @@
 var json = require('./files.json');
 const fs = require('fs');
 const path = require('node:path');
+const { join } = require('path');
 
-function copySharedResources() {
-	console.log(json);
+function copySharedResources(callback) {
+	//console.log(json);
 	
 	for(let i = 0; i < json.files.length; i++) {
 		const fileInfo = json.files[i];
 		const fileName = path.basename(fileInfo.filePath);
-		console.log('- filePath: ' + fileInfo.filePath);
-		console.log('- fileName: ' + fileName);
+		//console.log('- filePath: ' + fileInfo.filePath);
+		//console.log('- fileName: ' + fileName);
 		
 		for(let j = 0; j < fileInfo.paths.length; j++) {
 			const copyPath = fileInfo.paths[j];
-			const filePathTo = copyPath + '/' + fileName;
-			console.log('+ copyPath: ' + copyPath);
-			console.log('+ filePathTo: ' + filePathTo);
+			const filePathTo = join(copyPath, fileName);
+			//console.log('+ copyPath: ' + copyPath);
+			//console.log('+ filePathTo: ' + filePathTo);
 			
 			if (!fs.existsSync(copyPath)){
 				fs.mkdirSync(copyPath);
@@ -27,6 +28,8 @@ function copySharedResources() {
 			});
 		}
 	}
+	
+	callback();
 }
 
 //copySharedResources();
