@@ -3178,7 +3178,6 @@
                 "Title": "API - Select a Point",
                 "Name": "APISelectAPoint",
                 "DocUrl": "Guide/UI_Components/Chart/Series_Points/Selection/",
-                "Credits": "http://www.statisticbrain.com",
                 "Widget": "Charts",
                 "DemoType": "Viz",
                 "Equivalents": "hatching, rotated"
