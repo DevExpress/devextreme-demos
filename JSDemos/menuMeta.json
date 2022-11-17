@@ -2862,7 +2862,6 @@
           {
             "Title": "Range Bar",
             "Name": "RangeBar",
-            "Credits": "www.tax.state.ak.us",
             "Widget": "Charts",
             "DemoType": "Viz",
             "Equivalents": "rangeBar",
