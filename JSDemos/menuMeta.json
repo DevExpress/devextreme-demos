@@ -3163,7 +3163,6 @@
                 "Title": "Multiple Series Selection",
                 "Name": "MultipleSeriesSelection",
                 "DocUrl": "Guide/UI_Components/Chart/Series/Selection/",
-                "Credits": "www.w3schools.com",
                 "Widget": "Charts",
                 "DemoType": "Viz"
               },
@@ -3217,7 +3216,6 @@
                 "Name": "ZoomingOnAreaSelection",
                 "DocUrl": "Guide/UI_Components/Chart/Zooming_and_Panning/",
                 "Widget": "Charts",
-                "Credits": "The World Bank: World Development Indicators",
                 "DemoType": "Viz",
                 "Equivalents": "zoomAndPan, seriesTemplate, resetVisualRange",
                 "MvcAdditionalFiles": [
