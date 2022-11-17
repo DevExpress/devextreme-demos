@@ -4677,7 +4677,6 @@
             "Title": "Chart on Background with Series Template",
             "Name": "ChartOnBackgroundWithSeriesTemplate",
             "DocUrl": "ApiReference/UI_Components/dxRangeSelector/Configuration/chart/",
-            "Credits": "www.geohive.com",
             "Widget": "RangeSelector",
             "MvcAdditionalFiles": [
               "/Models/OilProduction.cs",
