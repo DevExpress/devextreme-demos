@@ -1,0 +1,11 @@
+{
+   "files":[
+      {
+         "filePath":"./utils/shared/azure-file-system.js",
+         "paths":[
+            "./NetCoreDemos/wwwroot/utils",
+            "./MVCDemos/Scripts/utils"
+         ]
+      }
+   ]
+}

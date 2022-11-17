@@ -1,9 +1,18 @@
-var json = require('./files.json');
+var jsonJs = require('./files-js.json');
+var jsonMvc = require('./files-mvc.json');
 const fs = require('fs');
 const path = require('node:path');
 const { join } = require('path');
 
-function copySharedResources(callback) {
+function copyJsSharedResources(callback) {
+	copySharedResources(callback, jsonJs);
+}
+
+function copyMvcSharedResources(callback) {
+	copySharedResources(callback, jsonMvc);
+}
+
+function copySharedResources(callback, json) {
 	//console.log(json);
 	
 	for(let i = 0; i < json.files.length; i++) {
@@ -32,8 +41,7 @@ function copySharedResources(callback) {
 	callback();
 }
 
-//copySharedResources();
-
 module.exports = {
-  copySharedResources,
+  copyJsSharedResources,
+  copyMvcSharedResources,
 };

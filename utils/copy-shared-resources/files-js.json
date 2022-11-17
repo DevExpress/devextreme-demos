@@ -11,11 +11,7 @@
             "./JSDemos/Demos/FileManager/AzureClientBinding/Angular/app",
             "./JSDemos/Demos/FileManager/AzureClientBinding/jQuery",
             "./JSDemos/Demos/FileManager/AzureClientBinding/React",
-            "./JSDemos/Demos/FileManager/AzureClientBinding/Vue",
-			
-            "./NetCoreDemos/wwwroot/utils",
-			
-            "./MVCDemos/Scripts/utils"
+            "./JSDemos/Demos/FileManager/AzureClientBinding/Vue"
          ]
       }
    ]
