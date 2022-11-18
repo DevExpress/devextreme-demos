@@ -2566,7 +2566,6 @@
           {
             "Title": "Stock",
             "Name": "Stock",
-            "Credits": "bigcharts.marketwatch.com",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
               "/Models/SampleData/FinancialData.cs"
@@ -2577,7 +2576,6 @@
           {
             "Title": "Candlestick",
             "Name": "Candlestick",
-            "Credits": "bigcharts.marketwatch.com",
             "Widget": "Charts",
             "MvcAdditionalFiles": [
               "/Models/SampleData/FinancialData.cs"
