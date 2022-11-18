@@ -1,8 +1,7 @@
 var jsonJs = require('./files-js.json');
 var jsonMvc = require('./files-mvc.json');
 const fs = require('fs');
-const path = require('node:path');
-const { join } = require('path');
+const path = require('path');
 
 function copyJsSharedResources(callback) {
 	copySharedResources(callback, jsonJs);
@@ -23,7 +22,7 @@ function copySharedResources(callback, json) {
 		
 		for(let j = 0; j < fileInfo.paths.length; j++) {
 			const copyPath = fileInfo.paths[j];
-			const filePathTo = join(copyPath, fileName);
+			const filePathTo = path.join(copyPath, fileName);
 			//console.log('+ copyPath: ' + copyPath);
 			//console.log('+ filePathTo: ' + filePathTo);
 			
