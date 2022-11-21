@@ -2,7 +2,7 @@ import React from 'react';
 
 import FileUploader from 'devextreme-react/file-uploader';
 import { LoadPanel } from 'devextreme-react/load-panel';
-import { AzureGateway } from './azure-file-system.js';
+import { AzureGateway } from './azure-file-system.js'; // eslint-disable-line no-use-before-define
 
 const endpointUrl = 'https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-access';
 const loadPanelPosition = { of: '#file-uploader' };

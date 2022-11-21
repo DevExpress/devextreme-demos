@@ -67,7 +67,7 @@
 import { DxFileManager, DxPermissions } from 'devextreme-vue/file-manager';
 import CustomFileSystemProvider from 'devextreme/file_management/custom_provider';
 import { DxLoadPanel } from 'devextreme-vue/load-panel';
-import { AzureGateway, AzureFileSystem } from './azure-file-system.js';
+import { AzureGateway, AzureFileSystem } from './azure-file-system.js'; // eslint-disable-line no-use-before-define
 
 const endpointUrl = 'https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-access';
 
