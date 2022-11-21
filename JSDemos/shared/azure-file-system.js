@@ -1,4 +1,6 @@
-var AzureFileSystem = function(azureGateway) {
+import $ from "jquery";
+
+export function AzureFileSystem(azureGateway) {
     var EMPTY_DIR_DUMMY_BLOB_NAME = "aspxAzureEmptyFolderBlob";
 
     var gateway = azureGateway;
@@ -64,7 +66,7 @@ var AzureFileSystem = function(azureGateway) {
     var moveFile = function(sourcePath, destinationPath) {
         return gateway.copyBlob(sourcePath, destinationPath)
             .then(function() {
-                gateway.deleteBlob(sourcePath);
+                return gateway.deleteBlob(sourcePath);
             });
     };
 
@@ -74,7 +76,7 @@ var AzureFileSystem = function(azureGateway) {
         return executeActionForEachEntry(prefix, function(entry) {
             return copyEntry(entry, prefix, destinationKey)
                 .then(function() {
-                    gateway.deleteBlob(entry.name);
+                    return gateway.deleteBlob(entry.name);
                 });
         });
     };
@@ -140,7 +142,7 @@ var AzureFileSystem = function(azureGateway) {
     var compareDataObjects = function(obj1, obj2) {
         if(obj1.isDirectory === obj2.isDirectory) {
             var name1 = obj1.name.toLowerCase();
-            var name2 = obj1.name.toLowerCase();
+            var name2 = obj2.name.toLowerCase();
             if(name1 < name2) {
                 return -1;
             } else {
@@ -170,7 +172,7 @@ var AzureFileSystem = function(azureGateway) {
     };
 };
 
-var AzureGateway = function(endpointUrl, onRequestExecuted) {
+export function AzureGateway(endpointUrl, onRequestExecuted) {
 
     var getBlobList = function(prefix) {
         return getAccessUrl("BlobList")
@@ -284,7 +286,7 @@ var AzureGateway = function(endpointUrl, onRequestExecuted) {
             '<BlockList>'
         ];
 
-        for(var i = 0; i < blockCount; i += 1) {
+        for(var i = 0; i < blockCount; i++) {
             var blockContent = '  <Latest>' + getBlockId(i) + '</Latest>';
             contentParts.push(blockContent);
         }
@@ -344,7 +346,7 @@ var AzureGateway = function(endpointUrl, onRequestExecuted) {
 
         var queryString = commandQueryString || "";
         if(restQueryString) {
-            queryString += queryString ? "&" + restQueryString : restQueryString;    
+            queryString += queryString ? "&" + restQueryString : restQueryString;
         }
 
         ajaxArgs.url = queryString ? urlPath + "?" + queryString : urlPath;
