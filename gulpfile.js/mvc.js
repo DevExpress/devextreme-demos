@@ -8,5 +8,5 @@ const { copyMvcSharedResources } = require('../utils/copy-shared-resources/copy'
 exports.mvc = series(
   copyCommonAspFiles,
   copyMercurialAspFiles,
-  copyMvcSharedResources
+  copyMvcSharedResources,
 );
