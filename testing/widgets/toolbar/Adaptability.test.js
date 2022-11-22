@@ -26,7 +26,7 @@ runManualTest('Toolbar', 'Adaptability', ['jQuery', 'React', 'Vue', 'Angular'], 
     await takeScreenshot('toolbar_singleline_mode_init.png');
 
     await t.click($(`.${TOOLBAR_CLASS} .${DROP_DOWN_MENU_BUTTON_CLASS}`));
-    // await takeScreenshot('toolbar_singleline_mode_menu_open.png');
+    await takeScreenshot('toolbar_singleline_mode_menu_open.png');
 
     await t
       .expect(compareResults.isValid())
