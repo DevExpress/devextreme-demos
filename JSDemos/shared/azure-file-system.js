@@ -1,4 +1,4 @@
-﻿var AzureFileSystem = function(azureGateway) {
+﻿export function AzureFileSystem(azureGateway) {
     var EMPTY_DIR_DUMMY_BLOB_NAME = "aspxAzureEmptyFolderBlob";
 
     var gateway = azureGateway;
@@ -170,7 +170,7 @@
     };
 };
 
-var AzureGateway = function(endpointUrl, onRequestExecuted) {
+export function AzureGateway(endpointUrl, onRequestExecuted) {
 
     var getBlobList = function(prefix) {
         return getAccessUrl("BlobList")
