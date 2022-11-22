@@ -6,6 +6,13 @@
             "./NetCoreDemos/wwwroot/utils",
             "./MVCDemos/Scripts/utils"
          ]
+      },
+      {
+         "filePath":"./JSDemos/shared/azure-file-system.d.ts",
+         "paths":[
+            "./NetCoreDemos/wwwroot/utils",
+            "./MVCDemos/Scripts/utils"
+         ]
       }
    ]
 }

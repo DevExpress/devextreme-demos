@@ -13,6 +13,20 @@
             "./JSDemos/Demos/FileManager/AzureClientBinding/React",
             "./JSDemos/Demos/FileManager/AzureClientBinding/Vue"
          ]
+      },
+      {
+         "filePath":"./JSDemos/shared/azure-file-system.d.ts",
+         "paths":[
+            "./JSDemos/Demos/FileUploader/AzureDirectUploading/Angular/app",
+            "./JSDemos/Demos/FileUploader/AzureDirectUploading/jQuery",
+            "./JSDemos/Demos/FileUploader/AzureDirectUploading/React",
+            "./JSDemos/Demos/FileUploader/AzureDirectUploading/Vue",  
+			
+            "./JSDemos/Demos/FileManager/AzureClientBinding/Angular/app",
+            "./JSDemos/Demos/FileManager/AzureClientBinding/jQuery",
+            "./JSDemos/Demos/FileManager/AzureClientBinding/React",
+            "./JSDemos/Demos/FileManager/AzureClientBinding/Vue"
+         ]
       }
    ]
 }
