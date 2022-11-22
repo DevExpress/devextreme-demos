@@ -13,6 +13,13 @@
          ]
       },
       {
+         "filePath":"./JSDemos/shared/azure-file-system.js.ts",
+         "paths":[
+            "./JSDemos/Demos/FileUploader/AzureDirectUploading/Angular/app",
+            "./JSDemos/Demos/FileManager/AzureClientBinding/Angular/app"
+         ]
+      },
+      {
          "filePath":"./JSDemos/shared/azure-file-system-for-jQuery/azure-file-system.js",
          "paths":[
             "./JSDemos/Demos/FileUploader/AzureDirectUploading/jQuery",
