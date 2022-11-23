@@ -61,6 +61,7 @@ class App extends React.Component {
             at="bottom"
             my="center"
             of={this.state.positionOf}
+            collision="fit"
           />
           <ToolbarItem
             widget="dxButton"
