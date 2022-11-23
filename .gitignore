@@ -22,6 +22,8 @@ changed-files.json
 gulpfile.js/.eslintrc.js
 
 JSDemos/Demos/**/config.js
+JSDemos/Demos/**/azure-file-system.js
+JSDemos/Demos/**/azure-file-system.ts
 
 MVCDemos/App_Data/Northwind.mdf
 MVCDemos/Content/icons

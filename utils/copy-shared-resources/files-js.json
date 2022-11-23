@@ -3,11 +3,11 @@
       {
          "filePath":"./JSDemos/shared/azure-file-system.js",
          "paths":[
-            "./JSDemos/Demos/FileUploader/AzureDirectUploading/Angular/app",
+            "./JSDemos/Demos/FileUploader/AzureDirectUploading/Angular/app/azure-file-system.ts",
             "./JSDemos/Demos/FileUploader/AzureDirectUploading/React",
             "./JSDemos/Demos/FileUploader/AzureDirectUploading/Vue",  
 
-            "./JSDemos/Demos/FileManager/AzureClientBinding/Angular/app",
+            "./JSDemos/Demos/FileManager/AzureClientBinding/Angular/app/azure-file-system.ts",
             "./JSDemos/Demos/FileManager/AzureClientBinding/React",
             "./JSDemos/Demos/FileManager/AzureClientBinding/Vue"
          ]

@@ -18,15 +18,14 @@ function copySharedResources(callback, json) {
 
     for (let j = 0; j < fileInfo.paths.length; j += 1) {
       const copyPath = fileInfo.paths[j];
-      const filePathTo = path.join(copyPath, fileName);
+      const isFile = !!path.extname(copyPath);
+      const filePathTo = isFile ? copyPath : path.join(copyPath, fileName);
 
-      if (!fs.existsSync(copyPath)) {
+      if (!isFile && !fs.existsSync(copyPath)) {
         fs.mkdirSync(copyPath);
       }
 
-      fs.copyFile(fileInfo.filePath, filePathTo, (err) => {
-        if (err) throw err;
-      });
+      fs.copyFileSync(fileInfo.filePath, filePathTo);
     }
   }
 
