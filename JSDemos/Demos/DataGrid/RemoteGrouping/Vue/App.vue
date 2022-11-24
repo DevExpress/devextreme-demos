@@ -5,7 +5,7 @@
     :data-source="dataSource"
     :show-borders="true"
   >
-    <DxRemoteOperations :remote-grouping="true"/>
+    <DxRemoteOperations :group-paging="true"/>
     <DxScrolling
       mode="virtual"
     />
