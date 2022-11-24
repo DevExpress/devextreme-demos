@@ -1,11 +1,11 @@
 <template>
   <DxDataGrid
     id="gridContainer"
-    :remote-operations="{ groupPaging: true }"
     :word-wrap-enabled="true"
     :data-source="dataSource"
     :show-borders="true"
   >
+    <DxRemoteOperations :remote-grouping="true"/>
     <DxScrolling
       mode="virtual"
     />
@@ -62,7 +62,7 @@
 </template>
 <script>
 import {
-  DxDataGrid, DxScrolling, DxColumn, DxGrouping, DxGroupPanel, DxSummary, DxGroupItem,
+  DxDataGrid, DxScrolling, DxColumn, DxGrouping, DxGroupPanel, DxSummary, DxGroupItem, DxRemoteOperations,
 } from 'devextreme-vue/data-grid';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
@@ -70,6 +70,7 @@ export default {
   components: {
     DxDataGrid,
     DxColumn,
+    DxRemoteOperations,
     DxScrolling,
     DxGrouping,
     DxGroupPanel,
