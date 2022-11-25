@@ -6,7 +6,7 @@ fixture('VectorMap.TooltipHTMLSupport')
   .page('http://localhost:8080/')
   .beforeEach(async (t) => {
     await t
-      .resizeWindow(900, 600);
+      .resizeWindow(900, 900);
   });
 
 runManualTest('VectorMap', 'TooltipHTMLSupport', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
@@ -16,7 +16,7 @@ runManualTest('VectorMap', 'TooltipHTMLSupport', ['jQuery', 'React', 'Vue', 'Ang
     const label = $(() => Array.from(document.querySelectorAll('#vector-map tspan')).filter((s) => s.textContent === 'Canada')[0]);
 
     await t.hover(label);
-    await takeScreenshot('vectormap_tooltip.png', '#vector-map');
+    await takeScreenshot('vectormap_tooltip.png');
 
     await t
       .expect(compareResults.isValid())
