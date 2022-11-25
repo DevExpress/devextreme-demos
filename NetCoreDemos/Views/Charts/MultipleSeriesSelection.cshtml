@@ -7,7 +7,7 @@
     )
     .CommonAxisSettings(s => s.ValueMarginsEnabled(false))
     .ArgumentAxis(a => a.Type(AxisScaleType.Discrete))
-    .ValueAxis(a => a.Add().Label(l => l.Format(f => f.Type(Format.Percent).Precision(2))))
+    .ValueAxis(a => a.Add().Label(l => l.Format(f => f.Type(Format.Percent))))
     .Series(s => {
         s.Add().ValueField("IE7").Name("Internet Explorer 7");
         s.Add().ValueField("IE8").Name("Internet Explorer 8");
