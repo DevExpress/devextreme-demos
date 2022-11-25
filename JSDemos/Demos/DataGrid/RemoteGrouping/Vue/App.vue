@@ -62,7 +62,8 @@
 </template>
 <script>
 import {
-  DxDataGrid, DxScrolling, DxColumn, DxGrouping, DxGroupPanel, DxSummary, DxGroupItem, DxRemoteOperations,
+  DxDataGrid, DxScrolling, DxColumn, DxGrouping, DxGroupPanel, 
+  DxSummary, DxGroupItem, DxRemoteOperations,
 } from 'devextreme-vue/data-grid';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
