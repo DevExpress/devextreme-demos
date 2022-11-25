@@ -16,7 +16,7 @@ runManualTest('VectorMap', 'TooltipHTMLSupport', ['jQuery', 'React', 'Vue', 'Ang
     const label = $(() => Array.from(document.querySelectorAll('#vector-map tspan')).filter((s) => s.textContent === 'Canada')[0]);
 
     await t.hover(label);
-    await takeScreenshot('vectormap_tooltip.png');
+    await takeScreenshot('vectormap_tooltip.png', '#vector-map');
 
     await t
       .expect(compareResults.isValid())
