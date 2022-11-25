@@ -6,7 +6,7 @@ fixture('VectorMap.TooltipHTMLSupport')
   .page('http://localhost:8080/')
   .beforeEach(async (t) => {
     await t
-      .resizeWindow(900, 900);
+      .resizeWindow(900, 700);
   });
 
 runManualTest('VectorMap', 'TooltipHTMLSupport', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
