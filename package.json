@@ -27,7 +27,7 @@
         "devextreme": "22.2-next",
         "devextreme-angular": "22.2-next",
         "devextreme-aspnet-data": "2.8.6",
-        "devextreme-aspnet-data-nojquery": "2.8.6",
+        "devextreme-aspnet-data-nojquery": "2.9.0",
         "devextreme-cldr-data": "1.0.3",
         "devextreme-react": "22.2-next",
         "devextreme-vue": "22.2-next",
