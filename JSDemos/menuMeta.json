@@ -3043,7 +3043,6 @@
           {
             "Title": "Multiple Axes",
             "Name": "MultipleAxes",
-            "DocUrl": "Guide/UI_Components/Chart/Axes/Multi-Axis_Chart/",
             "Credits": "www.wikipedia.org",
             "Widget": "Charts",
             "DemoType": "Viz"
