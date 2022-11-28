@@ -13,7 +13,7 @@ runManualTest('Charts', 'PolarChartZoomingAndScrollingAPI', ['jQuery', 'React', 
   test('PolarChartZoomingAndScrollingAPI. RangeSelector drag', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
-    await t.drag($('.slider-marker').nth(1), 500, 0);
+    await t.drag($('.slider-marker-tracker').nth(1), 500, 0);
     await t.wait(1000);
     await takeScreenshot('zoom_polar_chart.png');
 
