@@ -15,7 +15,7 @@ runManualTest('Charts', 'ZoomingAndScrollingAPI', ['jQuery', 'React', 'Vue', 'An
 
     await t.drag($('.slider-marker').nth(1), 500, 0);
     await t.wait(1000);
-    await takeScreenshot('range_selector_skider_drag.png');
+    await takeScreenshot('range_selector_slider_drag.png');
 
     await t.click($('.area-tracker'), { offsetX: 400 });
     await t.wait(1000);
