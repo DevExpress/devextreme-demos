@@ -15,11 +15,11 @@ runManualTest('Charts', 'PieWithResolvedLabelOverlapping', ['jQuery', 'React', '
     const showSelectBoxItems = () => t.click($('.options .dx-dropdowneditor-input-wrapper input.dx-texteditor-input'));
     const selectItem = (index) => $('.dx-dropdowneditor-overlay .dx-list-item-content').nth(index);
 
-    showSelectBoxItems();
+    await showSelectBoxItems();
     await t.click(selectItem(1));
     await takeScreenshot('pie_resolve_labels_overlapping_hide.png');
 
-    showSelectBoxItems();
+    await showSelectBoxItems();
     await t.click(selectItem(2));
     await takeScreenshot('pie_resolve_labels_overlapping_none.png');
 
