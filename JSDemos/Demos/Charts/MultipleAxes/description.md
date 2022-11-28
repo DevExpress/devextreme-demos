@@ -1,4 +1,4 @@
-With the Chart component, you can display charts with multiple axes for better data visualization. For example, in a single-axis chart, you have to choose which values to indicate - absolute or percentage. With a multi-axis chart, you can indicate both absolute and percentage values on two separate axes, as you can see in this demo.
+You can display the Chart component with multiple axes for better data visualization. This demo demonstrates two separate axes with percentage and absolute values.
 
 To configure a multi-axis chart, follow the steps below:
 
