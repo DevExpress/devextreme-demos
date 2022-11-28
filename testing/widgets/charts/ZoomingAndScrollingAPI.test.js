@@ -13,7 +13,7 @@ runManualTest('Charts', 'ZoomingAndScrollingAPI', ['jQuery', 'React', 'Vue', 'An
   test('ZoomingAndScrollingAPI. RangeSelector drag', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
-    await t.drag($('.slider').nth(1), 500, 0, { offsetX: 10, offsetY: 10 });
+    await t.drag($('.slider').nth(0), 500, 0, { offsetX: 10, offsetY: 10 });
     await t.wait(1000);
     await takeScreenshot('range_selector_slider_drag.png');
 
