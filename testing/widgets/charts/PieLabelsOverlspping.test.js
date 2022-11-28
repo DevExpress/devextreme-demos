@@ -12,13 +12,15 @@ fixture('PieWithResolvedLabelOverlapping')
 runManualTest('Charts', 'PieWithResolvedLabelOverlapping', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
   test('PieWithResolvedLabelOverlapping', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
-    const selectBoxItems = $('.dx-dropdowneditor-overlay .dx-list-item-content');
+    const showSelectBoxItems = () => t.click($('.options .dx-dropdowneditor-input-wrapper input.dx-texteditor-input'));
+    const selectItem = (index) => $('.dx-dropdowneditor-overlay .dx-list-item-content').nth(index);
 
-
-    await t.click(selectBoxItems.nth(1));
+    showSelectBoxItems();
+    await t.click(selectItem(1));
     await takeScreenshot('pie_resolve_labels_overlapping_hide.png');
 
-    await t.click(selectBoxItems.nth(2));
+    showSelectBoxItems();
+    await t.click(selectItem(2));
     await takeScreenshot('pie_resolve_labels_overlapping_none.png');
 
     await t
