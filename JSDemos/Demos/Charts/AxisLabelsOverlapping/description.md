@@ -10,7 +10,7 @@ Hides certain axis labels and leaves more space for the others.
 Rotates axis labels at the angle specified by the [rotationAngle](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/label/#rotationAngle) property.
 
 - `stagger`      
-Arranges axis labels in two rows in a staggered manner. Use the [staggeringSpacing](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/label/#staggeringSpacing) property to specify an empty space between rows.
+Arranges axis labels into two staggered rows. Use the [staggeringSpacing](/Documentation/ApiReference/UI_Components/dxChart/Configuration/argumentAxis/label/#staggeringSpacing) property to specify an empty space between rows.
 
 All of the values above can be applied to a horizontal axis, but only `none` and `hide` can be specified for a vertical axis.
 
