@@ -1,4 +1,4 @@
-This demo illustrates how to customize the PieChart component  labels.
+This demo illustrates how to customize the PieChart component labels.
 
 The [series](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/).[label](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/label/) object allows you to specify the following settings:
 
