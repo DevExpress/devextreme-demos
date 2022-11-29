@@ -1,3 +1,3 @@
 To display multiple PieChart components that share [series](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/) and [legend](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/legend/) settings, you can declare an object with options and use this object in every PieChart.
 
-When you display PieChart components side by side, their pies may differ in size. To eliminate these differences, you can collect all charts in a single size group. To do this, set the charts [sizeGroup](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/#sizeGroup) property to identical values.
+When you display PieChart components side by side, their pies may differ in size. make their sizes identical, you can join all charts in a size group. To do it, set the [sizeGroup](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/#sizeGroup) property of every chart to the same value.
