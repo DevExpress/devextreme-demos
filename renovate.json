@@ -19,6 +19,8 @@
         {
             "matchPackageNames": [
               "devextreme",
+              "devextreme-aspnet-data",
+              "devextreme-aspnet-data-nojquery",
               "devextreme-angular",
               "devextreme-react",
               "devextreme-vue",
