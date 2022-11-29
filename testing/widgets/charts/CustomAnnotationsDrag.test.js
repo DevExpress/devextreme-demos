@@ -13,9 +13,7 @@ runManualTest('Charts', 'CustomAnnotations', ['jQuery', 'React', 'Vue', 'Angular
   test('CustomAnnotations. Drag', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
-    await t.wait(10000);
     await t.drag($('#chart .dxc-annotations g').nth(0), 90, 40);
-
     await takeScreenshot('annotations_drag.png');
 
     await t
