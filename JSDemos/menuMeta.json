@@ -2710,7 +2710,6 @@
           {
             "Title": "Pie with Custom Labels",
             "Name": "PieWithCustomLabels",
-            "DocUrl": "Guide/UI_Components/PieChart/Point_Labels/Relocate_Labels/",
             "Credits": "www.wikipedia.org",
             "Widget": "Charts",
             "DemoType": "Viz"
