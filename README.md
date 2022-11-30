@@ -65,7 +65,26 @@ npm run fix-lint
 
 ## ASP.NET Demos
 
-0. You will need Windows. Enable Developer Mode so that the `mklink` command doesn't require elevation. Refer to https://blogs.windows.com/windowsdeveloper/2016/12/02/symlinks-windows-10/.
+1. You will need Windows. Enable Developer Mode so that the `mklink` command doesn't require elevation. Refer to https://blogs.windows.com/windowsdeveloper/2016/12/02/symlinks-windows-10/.
+
+1. In `mobile` repository run 
+
+    ```
+    PrepareWorkspace.cmd
+    ```
+    
+    After it run
+
+    ```
+    cd ./GitHub
+    npm run build
+    ```
+
+    or
+
+    ```
+    Packer.cmd
+    ```
 
 1. Open the `repository.config.json` file and set the `hg` property to a path where your clone of the `mobile` repository is located, for example:
 
