@@ -746,7 +746,6 @@
     <Content Include="Content\DemosStyles\Charts\Annotation.css" />
     <Content Include="Content\DemosStyles\Common\CustomTextEditorButtons.css" />
     <Content Include="Content\DemosStyles\DataGrid\CustomizeKeyboardNavigation.css" />
-    <Content Include="Content\DemosStyles\DataGrid\ExcelJS.css" />
     <Content Include="Content\DemosStyles\DataGrid\ExcelJSCellCustomization.css" />
     <Content Include="Content\DemosStyles\DataGrid\ExcelJSHeaderAndFooter.css" />
     <Content Include="Content\DemosStyles\DataGrid\ExcelJSOverview.css" />
@@ -2146,7 +2145,6 @@
     <Content Include="Views\FileManager\BindingToFileSystem.cshtml" />
     <Content Include="Views\FileManager\CustomThumbnails.cshtml" />
     <Content Include="Views\FileManager\BindingToHierarchicalStructure.cshtml" />
-    <Content Include="Views\DataGrid\ExcelJS.cshtml" />
     <Content Include="Views\DataGrid\ExcelJSCellCustomization.cshtml" />
     <Content Include="Views\DataGrid\ExcelJSHeaderAndFooter.cshtml" />
     <Content Include="Views\DataGrid\ExcelJSOverview.cshtml" />
