@@ -194,10 +194,6 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View(SampleData.Orders.Take(12).ToList<Order>());
         }
 
-        public ActionResult ExcelJS() {
-            return View(SampleData.Orders);
-        }
-
         public ActionResult ExcelJSOverview() {
             return View(SampleData.DataGridEmployees.Take(10));
         }
