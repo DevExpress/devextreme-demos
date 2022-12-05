@@ -468,6 +468,10 @@ jobs:
     - name: Run npm install
       run: npm install --no-audit --no-fund
 
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 5.0.408
+
     - name: Prepare dotnet
       run: |
         dotnet new globaljson --sdk-version 5.0.408
