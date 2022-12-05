@@ -78,6 +78,12 @@ jobs:
     needs: build-devextreme
 
     steps:
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-quality: ga
+        dotnet-version: |
+          3.1
+          6.0
 
     #Git
     - name: Get sources
@@ -173,6 +179,12 @@ jobs:
     needs: build-devextreme
 
     steps:
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-quality: ga
+        dotnet-version: |
+          3.1
+          6.0
 
     #Git
     - name: Get sources
