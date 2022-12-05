@@ -492,11 +492,11 @@ jobs:
     timeout-minutes: 60
 
     steps:
-#    - name: Pin Chrome version
-#      run: |
-#        CHROME_VERSION=103.0.5060.134-1
-#        wget "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb"
-#        sudo dpkg -i "google-chrome-stable_${CHROME_VERSION}_amd64.deb"
+    - name: Pin Chrome version
+      run: |
+        CHROME_VERSION=106.0.5249.103-1
+        wget "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb"
+        sudo dpkg -i "google-chrome-stable_${CHROME_VERSION}_amd64.deb"
 
     - name: Get sources
       uses: actions/checkout@v3
