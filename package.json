@@ -54,7 +54,7 @@
         "systemjs-plugin-babel": "0.0.25",
         "systemjs-plugin-json": "0.3.0",
         "underscore": "1.13.6",
-        "vue": "3.2.41",
+        "vue": "3.2.45",
         "vuex": "4.0.0-beta.4",
         "whatwg-fetch": "2.0.4",
         "zone.js": "0.12.0"
