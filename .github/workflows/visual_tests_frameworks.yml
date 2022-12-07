@@ -512,8 +512,11 @@ jobs:
     - name: Get changed files
       if: github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'force all tests')
       run: |
-        curl --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-          --url https://api.github.com/repos/${{github.repository}}/pulls/${{github.event.pull_request.number}}/files > changed-files.json
+        gh api \
+          -H "Accept: application/vnd.github+json" \
+          "/repos/{owner}/{repo}/pulls/${{github.event.pull_request.number}}/files?per_page=100" --paginate --jq 'map({filename})' >> changed-files.json
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Run TestCafe tests
       env:
