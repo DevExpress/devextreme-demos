@@ -32,6 +32,12 @@ export class AppComponent {
     });
   }
 
+  onOptionChanged(e: any) {
+    if (e.name === 'currentView') {
+      this.currentView = e.value;
+    }
+  }
+
   onAppointmentFormOpening(e: any) {
     const startDate = e.appointmentData.startDate;
     if (!this.isValidAppointmentDate(startDate)) {
@@ -94,6 +100,10 @@ export class AppComponent {
     const dinnerTime = this.dataService.getDinnerTime();
 
     return hours === dinnerTime.from && minutes === 0;
+  }
+
+  isMonthView() {
+    return this.currentView === 'month';
   }
 
   isValidAppointment(component: any, appointmentData: any) {
