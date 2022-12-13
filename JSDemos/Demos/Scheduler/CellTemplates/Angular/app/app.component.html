@@ -14,16 +14,18 @@
   (onAppointmentFormOpening)="onAppointmentFormOpening($event)"
   (onAppointmentAdding)="onAppointmentAdding($event)"
   (onAppointmentUpdating)="onAppointmentUpdating($event)"
+  (onOptionChanged)="onOptionChanged($event)"
 >
   <div
-    *dxTemplate="let dataCell of 'dataCellTemplate'"
-    [ngClass]="{
-      'disable-date': isDisableDate(dataCell.startDate),
-      dinner: !isDisableDate(dataCell.startDate) && isDinner(dataCell.startDate)
-    }"
+      *dxTemplate="let dataCell of 'dataCellTemplate'"
+      [ngClass]="{
+        'disable-date': isDisableDate(dataCell.startDate),
+        'dinner': !isDisableDate(dataCell.startDate) && isDinner(dataCell.startDate),
+        'dx-scheduler-date-table-cell-text': isMonthView()
+     }"
   >
+    {{ isMonthView() ? dataCell.startDate.getDate() : '' }}
   </div>
-
   <div
     *dxTemplate="let dateCell of 'dateCellTemplate'"
     [ngClass]="{ 'disable-date': isDisabledDateCell(dateCell.date) }"
