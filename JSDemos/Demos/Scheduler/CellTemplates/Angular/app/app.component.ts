@@ -83,7 +83,6 @@ export class AppComponent {
   }
 
   isDisabledDateCell(date: Date) {
-    console.log()
     return this.isMonthView()
       ? this.isWeekend(date)
       : this.isDisableDate(date);
