@@ -79,7 +79,7 @@ namespace DevExtreme.NETCore.Demos.Controllers.ApiControllers {
 
         string GetGroupName() {
             HttpContext.Request.Cookies.TryGetValue(SchedulerSignalRHub.GroupIdKey, out var cookie);
-            return cookie;
+            return cookie ?? "0";
         }
     }
 }
