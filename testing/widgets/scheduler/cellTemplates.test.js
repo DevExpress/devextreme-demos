@@ -10,7 +10,7 @@ fixture('Scheduler.CellTemplates')
   });
 
 runManualTest('Scheduler', 'CellTemplates', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
-  test('ContextMenuIntegration', async (t) => {
+  test('CellTemplates', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t
