@@ -83,8 +83,9 @@ export class AppComponent {
   }
 
   isDisabledDateCell(date: Date) {
-    return this.currentView === 'month'
-      ? this.isHoliday(date)
+    console.log()
+    return this.isMonthView()
+      ? this.isWeekend(date)
       : this.isDisableDate(date);
   }
 
