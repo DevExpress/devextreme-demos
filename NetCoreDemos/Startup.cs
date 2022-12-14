@@ -61,7 +61,8 @@ namespace DevExtreme.NETCore.Demos {
                 builder
                     .AllowAnyMethod()
                     .AllowAnyHeader()
-                    .AllowAnyOrigin();
+                    .AllowCredentials()
+                    .SetIsOriginAllowed(_ => true);
             }));
 
             services.AddSignalR()
