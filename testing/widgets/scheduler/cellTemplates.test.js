@@ -16,7 +16,7 @@ runManualTest('Scheduler', 'CellTemplates', ['jQuery', 'React', 'Vue', 'Angular'
     await t
       .click($('.dx-widget').withAttribute('aria-label', 'Month'))
       .expect(
-        await takeScreenshot('switch-to-month.png'),
+        await takeScreenshot('scheduler_CellTemplates_month_view.png'),
       ).ok();
 
     await t.expect(compareResults.isValid())
