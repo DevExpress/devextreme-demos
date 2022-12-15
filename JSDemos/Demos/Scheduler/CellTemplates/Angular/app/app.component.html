@@ -27,7 +27,6 @@
   >
     {{ isMonthView() ? dataCell.startDate.getDate() : "" }}
   </div>
-
   <div
     *dxTemplate="let dateCell of 'dateCellTemplate'"
     [ngClass]="{ 'disable-date': isDisabledDateCell(dateCell.date) }"
