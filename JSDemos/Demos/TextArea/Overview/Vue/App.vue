@@ -80,11 +80,10 @@ export default {
   methods: {
     onCheckboxValueChanged(e) {
       const str = service.getContent();
-      this.value = e.value ? str.getContent().substring(0, 100) : str;
+      this.value = e.value ? str.substring(0, 100) : str;
       this.maxLength = e.value ? 100 : null;
     },
     onAutoResizeChanged(e) {
-      this.autoResizeEnabled = e.value;
       this.height = e.value ? undefined : 90;
     },
   },
