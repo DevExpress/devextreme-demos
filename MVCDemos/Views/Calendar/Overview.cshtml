@@ -145,7 +145,7 @@
         getDateBoxInstance().option("value", data.value);
     }
 
-    function calendar_valueChanged(data) {
+    function calendar_optionChanged(data) {
         if (data.name === 'zoomLevel') {
             $("#zoom-level").dxSelectBox("instance").option('value', data.value);
         }
