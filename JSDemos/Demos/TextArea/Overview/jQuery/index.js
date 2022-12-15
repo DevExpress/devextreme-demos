@@ -7,7 +7,7 @@ $(() => {
   $('#set-max-length').dxCheckBox({
     value: false,
     onValueChanged(data) {
-      const str = data.value ? (exampleTextArea.option('value')).substring(0, 100) : longText;
+      const str = data.value ? exampleTextArea.option('value').substring(0, 100) : longText;
       exampleTextArea.option('value', str);
       exampleTextArea.option('maxLength', data.value ? 100 : null);
     },

@@ -64,7 +64,7 @@
     function checkBox_valueChanged(data) {
         var exampleTextArea = $("#example-textarea").dxTextArea("instance");
 
-        exampleTextArea.option("value", data.value ? (exampleTextArea.option("value")).substring(0, 100) : null);
+        exampleTextArea.option("value", data.value ? exampleTextArea.option("value").substring(0, 100) : null);
         exampleTextArea.option("maxLength", data.value ? 100 : null);
     }
 

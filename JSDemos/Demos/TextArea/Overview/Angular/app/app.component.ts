@@ -52,7 +52,6 @@ export class AppComponent {
   }
 
   onAutoResizeChanged(e) {
-    this.autoResizeEnabled = e.value;
     this.height = e.value ? undefined : 90;
   }
 }
