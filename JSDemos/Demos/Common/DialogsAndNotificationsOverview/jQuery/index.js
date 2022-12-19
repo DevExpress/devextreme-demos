@@ -13,6 +13,7 @@ $(() => {
     height: 540,
     contentTemplate() {
       const result = $(_.template($('#property-details').html(), currentHouse));
+
       const button = result.find('#favorites')
         .dxButton(buttonOptions)
         .dxButton('instance');
