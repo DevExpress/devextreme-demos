@@ -17,6 +17,13 @@ jobs:
       - name: Get sources
         uses: actions/checkout@v2
 
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-quality: ga
+          dotnet-version: |
+            5.0.x   
+
       - name: Restore npm cache
         uses: actions/cache@v2
         with:
