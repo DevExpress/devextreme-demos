@@ -23,7 +23,7 @@ jobs:
 
     #Git
     - name: Get sources
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Setup dotnet
       uses: actions/setup-dotnet@v3
@@ -45,14 +45,14 @@ jobs:
 
     #Build Devextreme
     - name: DevExtreme - Restore npm cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ./devextreme-repo/node_modules
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme-repo/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
     - name: Use Node.js 15
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: '15'
 
@@ -69,7 +69,7 @@ jobs:
       run: npm pack
 
     - name: Use Node.js 14
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: '14'
 
@@ -91,7 +91,7 @@ jobs:
 
     - name: DevExtreme React - Restore package cache
       id: devextreme-react-cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ./devextreme-react-*.tgz
         key: devextreme-react-package-${{ steps.devextreme-react-ref.outputs.head }}-${{ hashFiles('devextreme-react-repo/packages/devextreme-react/metadata/integration-data.json') }}
@@ -133,7 +133,7 @@ jobs:
 
     - name: DevExtreme Vue - Restore package cache
       id: devextreme-vue-cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ./devextreme-vue-*.tgz
         key: devextreme-vue-package-${{ steps.devextreme-vue-ref.outputs.head }}-${{ hashFiles('devextreme-vue-repo/packages/devextreme-vue/metadata/integration-data.json') }}
@@ -175,7 +175,7 @@ jobs:
 
     - name: DevExtreme Angular - Restore package cache
       id: devextreme-angular-cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ./devextreme-angular-*.tgz
         key: devextreme-angular-package-${{ steps.devextreme-angular-ref.outputs.head }}-${{ hashFiles('devextreme-angular-repo/packages/devextreme-angular/metadata/NGMetaData.json') }}
@@ -201,7 +201,7 @@ jobs:
 
     #Build Demos
     - name: Demos - Restore npm cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ./node_modules
         key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
@@ -234,7 +234,7 @@ jobs:
       run: 7z a -t7z -mx3 -mmt2 node_modules.7z node_modules
 
     - name: Copy build artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: devextreme-sources
         path: |
@@ -260,10 +260,10 @@ jobs:
 #        sudo dpkg -i "google-chrome-stable_${CHROME_VERSION}_amd64.deb"
 
     - name: Get sources
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Download devextreme sources
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: devextreme-sources
 
@@ -310,7 +310,7 @@ jobs:
 
     - name: Copy screenshots artifacts
       if: ${{ failure() }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: screenshots-${{ steps.screenshotname.outputs.value }}
         path: ${{ github.workspace }}/testing/artifacts/compared-screenshots/*

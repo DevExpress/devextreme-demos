@@ -18,12 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Build DevExtreme
     timeout-minutes: 15
-    
+
     steps:
 
     #Git
     - name: Get sources
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Clone devextreme repo from PR author fork
       continue-on-error: true
@@ -37,14 +37,14 @@ jobs:
 
     #Build Devextreme
     - name: DevExtreme - Restore npm cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ./devextreme-repo/node_modules
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme-repo/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
     - name: Use Node.js 15
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: '15'
 
@@ -62,7 +62,7 @@ jobs:
 
     #Build Demos
     - name: Demos - Restore npm cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ./node_modules
         key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
@@ -76,13 +76,13 @@ jobs:
       run: npm install $(find ./devextreme-repo/artifacts/npm/devextreme/ -maxdepth 1 -name "devextreme-*.tgz")
 
     #Publish artifacts
-    - name: Zip node_modules    
+    - name: Zip node_modules
       run: 7z a -t7z -mx3 -mmt2 node_modules.7z node_modules
 
-    - name: Copy build artifacts      
-      uses: actions/upload-artifact@v2
+    - name: Copy build artifacts
+      uses: actions/upload-artifact@v3
       with:
-        name: devextreme-sources        
+        name: devextreme-sources
         path: node_modules.7z
         retention-days: 1
 
@@ -90,7 +90,7 @@ jobs:
     needs: build
     strategy:
       fail-fast: false
-      matrix:      
+      matrix:
         CONSTEL: [jquery(1/4), jquery(2/4), jquery(3/4), jquery(4/4)]
 
     runs-on: ubuntu-latest
@@ -105,10 +105,10 @@ jobs:
 #        sudo dpkg -i "google-chrome-stable_${CHROME_VERSION}_amd64.deb"
 
     - name: Get sources
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Download devextreme sources
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: devextreme-sources
 
@@ -147,7 +147,7 @@ jobs:
 
     - name: Copy screenshots artifacts
       if: ${{ failure() }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: screenshots
         path: ${{ github.workspace }}/testing/artifacts/compared-screenshots/*
