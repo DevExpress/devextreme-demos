@@ -1,0 +1,8 @@
+@model IEnumerable<DevExtreme.MVC.Demos.Models.TileViewItem>
+
+@(Html.DevExtreme().TileView()
+    .DataSource(Model)
+    .ItemTemplate(@<text>
+        <div class="image" style="background-image: url(<%- ImageSrc %>)"></div>
+    </text>)
+)
