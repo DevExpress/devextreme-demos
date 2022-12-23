@@ -11,7 +11,7 @@ namespace DevExtreme.NETCore.Demos.Models {
 
         [JsonProperty("heightRatio")]
         public int? HeightRatio { get; set; }
-        
+
         [JsonProperty("widthRatio")]
         public int? WidthRatio { get; set; }
     }
