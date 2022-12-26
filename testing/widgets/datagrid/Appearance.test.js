@@ -25,6 +25,12 @@ runManualTest('DataGrid', 'Appearance', ['jQuery', 'React', 'Vue', 'Angular'], (
     await t.click($('.dx-checkbox-icon').nth(0));
     await takeScreenshot('datagrid_appearance_5_desktop.png');
 
+    await t.rightClick($('.dx-datagrid-headers .dx-datagrid-action').nth(1));
+    await takeScreenshot('datagrid_appearance_6_desktop.png');
+
+    await t.click($('.dx-menu-item').nth(1));
+    await takeScreenshot('datagrid_appearance_7_desktop.png');
+
     await t
       .expect(compareResults.isValid())
       .ok(compareResults.errorMessages());
