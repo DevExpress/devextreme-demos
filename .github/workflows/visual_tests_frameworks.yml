@@ -418,7 +418,7 @@ jobs:
         npm install devextreme-angular-installer.tgz
 
     - name: Prepare bundles
-      run: npm run prepare-bundles
+      run: npm run prepare-js
 
     - name: Demos - Run tsc
       run: tsc --noEmit
