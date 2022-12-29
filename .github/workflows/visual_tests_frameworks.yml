@@ -128,7 +128,7 @@ jobs:
       run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme-react ./devextreme-react-repo
 
     - name: Clone devextreme-react repo
-      run: test -d ./devextreme-react-repo || git clone -b master https://github.com/devexpress/devextreme-react ./devextreme-react-repo
+      run: test -d ./devextreme-react-repo || git clone -b 22.1 https://github.com/devexpress/devextreme-react ./devextreme-react-repo
 
     - name: Copy devextreme package
       run: |
@@ -229,13 +229,13 @@ jobs:
       run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme-vue ./devextreme-vue-repo
 
     - name: Clone devextreme-vue repo
-      run: test -d ./devextreme-vue-repo || git clone -b master https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
+      run: test -d ./devextreme-vue-repo || git clone -b 22.1 https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
 
     - name: Copy devextreme package
       run: |
         mkdir ./devextreme-vue-repo/devextreme-setup
         cp ./devextreme-installer.tgz ./devextreme-vue-repo/devextreme-setup
-   
+
     - name: Get devextreme-vue ref
       working-directory: ./devextreme-vue-repo
       id: devextreme-vue-ref
@@ -259,7 +259,7 @@ jobs:
     - name: Install packages for devextreme-vue
       working-directory: ./devextreme-vue-repo
       run: npm install --no-audit --no-fund
-      
+
     - name: Build and Pack
       working-directory: ./devextreme-vue-repo
       run: npm run pack
@@ -326,13 +326,13 @@ jobs:
       run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme-angular ./devextreme-angular-repo
 
     - name: Clone devextreme-angular repo
-      run: test -d ./devextreme-angular-repo || git clone -b master https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
+      run: test -d ./devextreme-angular-repo || git clone -b 22.1 https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
 
     - name: Copy devextreme package
       run: |
         mkdir ./devextreme-angular-repo/devextreme-setup
         cp ./devextreme-installer.tgz ./devextreme-angular-repo/devextreme-setup
-   
+
     - name: Get devextreme-angular ref
       working-directory: ./devextreme-angular-repo
       id: devextreme-angular-ref
@@ -354,7 +354,7 @@ jobs:
     - name: Install packages for devextreme-angular
       working-directory: ./devextreme-angular-repo
       run: npm install --no-audit --no-fund
-      
+
     - name: Build and Pack
       working-directory: ./devextreme-angular-repo
       run: npm run pack
@@ -424,7 +424,7 @@ jobs:
       run: tsc --noEmit
 
     #Publish artifacts
-    - name: Zip node_modules    
+    - name: Zip node_modules
       run: 7z a -t7z -mx3 -mmt2 node_modules.7z node_modules
 
     - name: Copy build artifacts
@@ -449,7 +449,7 @@ jobs:
 
     - name: Delete DX packages
       run:  sed -i '/22.1-next/d' ./package.json
-    
+
     - name: Download devextreme sources
       uses: actions/download-artifact@v2
       with:
