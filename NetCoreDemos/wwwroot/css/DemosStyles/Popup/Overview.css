@@ -15,7 +15,7 @@
     font-size: 14px;
 }
 
-#container ul li img {
+#container ul li img{
     width: 100px;
 }
 
@@ -26,8 +26,4 @@
 .dx-popup-content p {
     margin-bottom: 10px;
     margin-top: 0;
-}
-
-.dx-theme-material .dx-toolbar {
-    padding-right: 24px;
 }
