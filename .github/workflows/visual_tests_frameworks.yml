@@ -418,8 +418,8 @@ jobs:
         npm install devextreme-angular-installer.tgz
 
     - name: Prepare bundles
-      run: npm run prepare-bundles
-    
+      run: npm run prepare-js
+
     - name: Demos - Run tsc
       run: tsc --noEmit
 
@@ -514,9 +514,9 @@ jobs:
 
     - name: Prepare JS
       run: npm run prepare-js
-    
-    - name: Prepare Bundles
-      run: npx gulp bundles
+
+    #- name: Prepare Bundles
+    #  run: npx gulp bundles
 
     - name: Run Web Server
       run: |
