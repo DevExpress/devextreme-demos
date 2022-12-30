@@ -73,6 +73,11 @@ export default {
     padding: 0 5px;
   }
 
+  .dx-viewport:not(.dx-theme-ios7) .dx-fieldset {
+    width: 40%;
+    float: left;
+  }
+
   .dx-field > .dx-lookup {
     flex: 1;
   }

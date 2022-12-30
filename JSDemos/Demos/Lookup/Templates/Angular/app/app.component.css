@@ -33,6 +33,11 @@
   font-size: 15px;
 }
 
+::ng-deep .dx-viewport:not(.dx-theme-ios7) .dx-fieldset {
+  width: 40%;
+  float: left;
+}
+
 ::ng-deep .dx-field > .dx-lookup {
   flex: 1;
 }
