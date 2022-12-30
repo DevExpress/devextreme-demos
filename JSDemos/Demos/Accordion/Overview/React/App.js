@@ -7,7 +7,7 @@ import Slider, { Tooltip, Label } from 'devextreme-react/slider';
 import service from './data.js';
 import CustomTitle from './CustomTitle.js';
 import CustomItem from './CustomItem.js';
-
+// silly comment
 class App extends React.Component {
   constructor(props) {
     super(props);
