@@ -39,7 +39,6 @@
                     .ColSpan(2)
                 );
         })
-        .DataSource(d => d.WebApi().Controller("DataGridEmployees").UpdateAction(true).Key("ID"))
-        .DataSourceOptions(d => d.Filter("['ID', '<=' , 10]"))
+        .DataSource(d => d.WebApi().Controller("DataGridEmployees").UpdateAction(true).InsertAction(true).DeleteAction(true).Key("ID"))
     )
 </div>
