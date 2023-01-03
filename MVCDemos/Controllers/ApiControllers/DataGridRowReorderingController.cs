@@ -32,7 +32,7 @@ namespace DevExtreme.MVC.Demos.Controllers {
             Validate(task);
 
             _context.Tasks.Remove(task);
-            var sortedTasks = _context.Tasks.OrderBy(t => t.OrderIndex);
+            var sortedTasks = _context.Tasks.OrderBy(t => t.OrderIndex).ToList();
 
             if(oldOrderIndex != task.OrderIndex) {
                 if(oldOrderIndex < task.OrderIndex) {
