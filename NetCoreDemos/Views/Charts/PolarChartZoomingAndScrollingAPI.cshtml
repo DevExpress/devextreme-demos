@@ -47,7 +47,7 @@
         .TickInterval(1)
         .MinorTick(mt => mt.Visible(false))
     )
-    .Behavior(b => b.CallValueChanged(ValueChangedCallMode.OnMoving))
+    .Behavior(b => b.ValueChangeMode(SliderValueChangeMode.OnHandleMove))
     .OnValueChanged(@<text>
         function(e) {
             var zoomedChart = $("#zoomedChart").dxPolarChart("instance");
