@@ -28,7 +28,7 @@
         .Series(ConfigureSeries())
         .Palette(VizPalette.HarmonyLight)
     )
-    .Behavior(b => b.CallValueChanged(ValueChangedCallMode.OnMoving))
+    .Behavior(b => b.ValueChangeMode(SliderValueChangeMode.OnHandleMove))
     .OnValueChanged(@<text>
         function(e) {
             var zoomedChart = $("#zoomedChart").dxChart("instance");
