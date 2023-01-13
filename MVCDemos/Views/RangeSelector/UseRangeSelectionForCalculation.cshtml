@@ -11,7 +11,7 @@
             .Marker(m => m.Visible(false))
             .Label(l => l.Format("MMM"))
         )
-        .Behavior(b => b.CallValueChanged(ValueChangedCallMode.OnMoving))
+        .Behavior(b => b.ValueChangeMode(SliderValueChangeMode.OnHandleMove))
         .SliderMarker(sm => sm.Format("dd EEEE"))
         .Title("Calculate the Working Days Count in a Date Period")
         .OnValueChanged("rangeSelector_valueChanged"))
@@ -23,9 +23,9 @@
             <span>Handle Range Changes</span>
             @(Html.DevExtreme().SelectBox()
                 .ID("handle")
-                .DataSource(new[] { "onMoving", "onMovingComplete"})
+                .DataSource(new[] { "onHandleMove", "onHandleRelease"})
                 .Width(210)
-                .Value("onMoving")
+                .Value("onHandleMove")
                 .OnValueChanged("selectBox_valueChanged"))
         </div>
     </div>
@@ -45,6 +45,6 @@
     }
     function selectBox_valueChanged(data) {
         var rangeSelector = $("#range-selector").dxRangeSelector("instance");
-        rangeSelector.option("behavior.callValueChanged", data.value);
+        rangeSelector.option("behavior.valueChangeMode", data.value);
     }
 </script>

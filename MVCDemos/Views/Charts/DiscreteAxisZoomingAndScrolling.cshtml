@@ -67,7 +67,7 @@
                 s.Add().Name("K").ValueField("K");
                 s.Add().Name("Na").ValueField("Na");
         }))
-        .Behavior(b => b.CallValueChanged(ValueChangedCallMode.OnMoving))
+        .Behavior(b => b.ValueChangeMode(SliderValueChangeMode.OnHandleMove))
         .OnValueChanged(@<text>
             function (e) {
                 $("#zoomedChart").dxChart("instance").getArgumentAxis().visualRange(e.value);

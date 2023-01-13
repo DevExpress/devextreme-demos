@@ -9,7 +9,7 @@
         .TickInterval(1)
         .MinorTickInterval(1)
         .Label(f => f.Format(Format.Decimal)))
-    .Behavior(b => b.CallValueChanged(ValueChangedCallMode.OnMoving))
+    .Behavior(b => b.ValueChangeMode(SliderValueChangeMode.OnHandleMove))
     .Title("Filter Employee List by Birth Year")
     .OnValueChanged("rangeSelector_valueChanged")
 )

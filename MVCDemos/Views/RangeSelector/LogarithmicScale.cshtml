@@ -37,7 +37,7 @@
         )
         .SliderMarker(sm => sm.Format(Format.Exponential))
         .Behavior(b => b
-            .CallValueChanged(ValueChangedCallMode.OnMoving)
+            .ValueChangeMode(SliderValueChangeMode.OnHandleMove)
             .SnapToTicks(false)
         )
         .OnValueChanged("rangeSelector_valueChanged")
