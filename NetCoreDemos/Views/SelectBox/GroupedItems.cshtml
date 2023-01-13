@@ -36,7 +36,6 @@
         <div class="dx-field-label">Pre-grouped data</div>
         <div class="dx-field-value">
             @(Html.DevExtreme().SelectBox()
-                .ID("selectbox-pregroupeddata")
                 .DataSource(new JS("fromPregroupedData"))
                 .ValueExpr("ID")
                 .Grouped(true)
