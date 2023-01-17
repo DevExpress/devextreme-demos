@@ -3,7 +3,7 @@ import React from 'react';
 import FileManager, { Permissions } from 'devextreme-react/file-manager';
 import CustomFileSystemProvider from 'devextreme/file_management/custom_provider';
 import { LoadPanel } from 'devextreme-react/load-panel';
-import { AzureGateway, AzureFileSystem } from './azure-file-system.js'; // eslint-disable-line import/no-unresolved
+import { AzureGateway, AzureFileSystem } from './azure.file.system.js'; // eslint-disable-line import/no-unresolved
 
 const endpointUrl = 'https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-access';
 const allowedFileExtensions = [];

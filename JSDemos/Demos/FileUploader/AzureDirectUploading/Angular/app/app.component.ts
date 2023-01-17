@@ -5,7 +5,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 
 import { DxFileUploaderModule, DxLoadPanelModule } from 'devextreme-angular';
-import { AzureGateway } from './azure-file-system';
+import { AzureGateway } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

@@ -1,14 +1,7 @@
 {
    "files":[
       {
-         "filePath":"./JSDemos/shared/azure-file-system.js",
-         "paths":[
-            "./NetCoreDemos/wwwroot/utils",
-            "./MVCDemos/Scripts/utils"
-         ]
-      },
-      {
-         "filePath":"./JSDemos/shared/azure-file-system.d.ts",
+         "filePath":"./JSDemos/shared/azure-file-system-for-jQuery/azure.file.system.js",
          "paths":[
             "./NetCoreDemos/wwwroot/utils",
             "./MVCDemos/Scripts/utils"

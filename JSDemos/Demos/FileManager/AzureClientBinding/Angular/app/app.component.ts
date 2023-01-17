@@ -6,7 +6,7 @@ import { lastValueFrom } from 'rxjs';
 
 import { DxFileManagerModule, DxLoadPanelModule } from 'devextreme-angular';
 import CustomFileSystemProvider from 'devextreme/file_management/custom_provider';
-import { AzureGateway, AzureFileSystem } from './azure-file-system';
+import { AzureGateway, AzureFileSystem } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

@@ -1,22 +1,22 @@
 {
    "files":[
       {
-         "filePath":"./JSDemos/shared/azure-file-system.js",
+         "filePath":"./JSDemos/shared/azure.file.system.js",
          "paths":[
-            "./JSDemos/Demos/FileUploader/AzureDirectUploading/Angular/app/azure-file-system.ts",
+            "./JSDemos/Demos/FileUploader/AzureDirectUploading/Angular/app/app.service.ts",
             "./JSDemos/Demos/FileUploader/AzureDirectUploading/React",
             "./JSDemos/Demos/FileUploader/AzureDirectUploading/Vue",  
 
-            "./JSDemos/Demos/FileManager/AzureClientBinding/Angular/app/azure-file-system.ts",
+            "./JSDemos/Demos/FileManager/AzureClientBinding/Angular/app/app.service.ts",
             "./JSDemos/Demos/FileManager/AzureClientBinding/React",
             "./JSDemos/Demos/FileManager/AzureClientBinding/Vue"
          ]
       },
       {
-         "filePath":"./JSDemos/shared/azure-file-system-for-jQuery/azure-file-system.js",
+         "filePath":"./JSDemos/shared/azure-file-system-for-jQuery/azure.file.system.js",
          "paths":[
-            "./JSDemos/Demos/FileUploader/AzureDirectUploading/jQuery",
-            "./JSDemos/Demos/FileManager/AzureClientBinding/jQuery"
+            "./JSDemos/Demos/FileUploader/AzureDirectUploading/jQuery/external",
+            "./JSDemos/Demos/FileManager/AzureClientBinding/jQuery/external"
          ]
       }
    ]

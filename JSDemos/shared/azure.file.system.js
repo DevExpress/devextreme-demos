@@ -1,4 +1,4 @@
-﻿var AzureFileSystem = function(azureGateway) {
+export function AzureFileSystem(azureGateway) {
     var EMPTY_DIR_DUMMY_BLOB_NAME = "aspxAzureEmptyFolderBlob";
 
     var gateway = azureGateway;
@@ -170,7 +170,7 @@
     };
 };
 
-var AzureGateway = function(endpointUrl, onRequestExecuted) {
+export function AzureGateway(endpointUrl, onRequestExecuted) {
 
     var getBlobList = function(prefix) {
         return getAccessUrl("BlobList")
@@ -183,7 +183,7 @@ var AzureGateway = function(endpointUrl, onRequestExecuted) {
 
     var parseEntryListResult = function (xmlString) {
         var xml = new DOMParser().parseFromString(xmlString, "text/xml");
-        return [...xml.querySelectorAll('Blob')].map(parseEntry);
+        return Array.from(xml.querySelectorAll('Blob')).map(parseEntry);
     };
 
     var parseEntry = function (xmlEntry) {
@@ -283,7 +283,7 @@ var AzureGateway = function(endpointUrl, onRequestExecuted) {
             '<BlockList>'
         ];
 
-        for(var i = 0; i < blockCount; i += 1) {
+        for(var i = 0; i < blockCount; i++) {
             var blockContent = '  <Latest>' + getBlockId(i) + '</Latest>';
             contentParts.push(blockContent);
         }
@@ -341,7 +341,7 @@ var AzureGateway = function(endpointUrl, onRequestExecuted) {
 
         var queryString = commandQueryString || "";
         if(restQueryString) {
-            queryString += queryString ? "&" + restQueryString : restQueryString;    
+            queryString += queryString ? "&" + restQueryString : restQueryString;
         }
 
         ajaxArgs.url = queryString ? urlPath + "?" + queryString : urlPath;

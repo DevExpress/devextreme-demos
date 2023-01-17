@@ -56,7 +56,7 @@
 <script>
 import { DxFileUploader } from 'devextreme-vue/file-uploader';
 import { DxLoadPanel } from 'devextreme-vue/load-panel';
-import { AzureGateway } from './azure-file-system.js'; // eslint-disable-line import/no-unresolved
+import { AzureGateway } from './azure.file.system.js'; // eslint-disable-line import/no-unresolved
 
 const endpointUrl = 'https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-access';
 
