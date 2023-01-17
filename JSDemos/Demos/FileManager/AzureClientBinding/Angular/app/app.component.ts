@@ -6,6 +6,7 @@ import { lastValueFrom } from 'rxjs';
 
 import { DxFileManagerModule, DxLoadPanelModule } from 'devextreme-angular';
 import CustomFileSystemProvider from 'devextreme/file_management/custom_provider';
+import { AzureGateway, AzureFileSystem } from './azure-file-system';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -30,8 +31,8 @@ export class AppComponent {
 
   constructor(http: HttpClient) {
     const endpointUrl = 'https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-access';
-    gateway = new AzureGateway(endpointUrl, this.onRequestExecuted.bind(this));
-    azure = new AzureFileSystem(gateway);
+    gateway = new (AzureGateway as any)(endpointUrl, this.onRequestExecuted.bind(this));
+    azure = new (AzureFileSystem as any)(gateway);
 
     this.allowedFileExtensions = [];
     this.fileSystemProvider = new CustomFileSystemProvider({

@@ -5,6 +5,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 
 import { DxFileUploaderModule, DxLoadPanelModule } from 'devextreme-angular';
+import { AzureGateway } from './azure-file-system';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -25,7 +26,7 @@ export class AppComponent {
 
   constructor(http: HttpClient) {
     const endpointUrl = 'https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-access';
-    gateway = new AzureGateway(endpointUrl, this.onRequestExecuted.bind(this));
+    gateway = new (AzureGateway as any)(endpointUrl, this.onRequestExecuted.bind(this));
 
     this.requests = [];
     this.wrapperClassName = '';
