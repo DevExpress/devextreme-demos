@@ -3,7 +3,7 @@ MVCDemos/*
 bundles/*
 NetCoreDemos/*
 JSDemos/Demos/**/testcafe-test-code.js
-/**/azure-file-system.js
-/**/azure-file-system.ts
+/**/azure.file.system.js
+/**/azure.file.system.ts
 
 JSDemos/Demos/**/config.js
