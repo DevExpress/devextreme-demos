@@ -8,5 +8,9 @@ namespace DevExtreme.MVC.Demos.Controllers {
         {
             return View(SampleData.TileViewItems);
         }
+
+        public ActionResult Directions() {
+            return View(SampleData.TileViewItems);
+        }
     }
 }
