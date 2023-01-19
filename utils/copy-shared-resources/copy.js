@@ -26,6 +26,11 @@ function copySharedResources(callback, json) {
       }
 
       fs.copyFileSync(fileInfo.filePath, filePathTo);
+
+      if (fileInfo.removeExport) {
+        const fileContent = fs.readFileSync(filePathTo, 'utf-8');
+        fs.writeFileSync(filePathTo, fileContent.replace(/export\s/g, ''));
+      }
     }
   }
 
