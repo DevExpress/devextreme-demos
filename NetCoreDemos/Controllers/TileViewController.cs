@@ -6,5 +6,9 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         public ActionResult Basics() {
             return View(SampleData.TileViewItems);
         }
+
+        public ActionResult Directions() {
+            return View(SampleData.TileViewItems);
+        }
     }
 }
