@@ -1,27 +1,20 @@
-/* eslint-disable arrow-body-style */
-/* eslint-disable prefer-template */
-/* eslint-disable object-shorthand */
-/* eslint-disable @typescript-eslint/comma-dangle */
-/* eslint-disable @typescript-eslint/lines-between-class-members */
-/* eslint-disable @typescript-eslint/quotes */
-
 export class AzureFileSystem {
   gateway: AzureGateway;
+
   EMPTY_DIR_DUMMY_BLOB_NAME: string;
+
   constructor(azureGateway) {
     this.gateway = azureGateway;
-    this.EMPTY_DIR_DUMMY_BLOB_NAME = "aspxAzureEmptyFolderBlob";
+    this.EMPTY_DIR_DUMMY_BLOB_NAME = 'aspxAzureEmptyFolderBlob';
   }
 
   getItems(path) {
     var prefix = this.getDirectoryBlobName(path);
-    return this.gateway.getBlobList(prefix).then((entries) => {
-      return this.getDataObjectsFromEntries(entries, prefix);
-    });
+    return this.gateway.getBlobList(prefix).then((entries) => this.getDataObjectsFromEntries(entries, prefix));
   }
 
   createDirectory(path, name) {
-    var blobName = path ? path + "/" + name : name;
+    var blobName = path ? `${path}/${name}` : name;
     return this.gateway.createDirectoryBlob(blobName);
   }
 
@@ -36,9 +29,9 @@ export class AzureFileSystem {
   }
 
   getPathWithNewName(path, name) {
-    var parts = path.split("/");
+    var parts = path.split('/');
     parts[parts.length - 1] = name;
-    return parts.join("/");
+    return parts.join('/');
   }
 
   deleteFile(path) {
@@ -47,9 +40,7 @@ export class AzureFileSystem {
 
   deleteDirectory(path) {
     var prefix = this.getDirectoryBlobName(path);
-    return this.executeActionForEachEntry(prefix, (entry) => {
-      return this.gateway.deleteBlob(entry.name);
-    });
+    return this.executeActionForEachEntry(prefix, (entry) => this.gateway.deleteBlob(entry.name));
   }
 
   copyFile(sourcePath, destinationPath) {
@@ -59,9 +50,7 @@ export class AzureFileSystem {
   copyDirectory(sourcePath, destinationPath) {
     var prefix = this.getDirectoryBlobName(sourcePath);
     var destinationKey = this.getDirectoryBlobName(destinationPath);
-    return this.executeActionForEachEntry(prefix, (entry) => {
-      return this.copyEntry(entry, prefix, destinationKey);
-    });
+    return this.executeActionForEachEntry(prefix, (entry) => this.copyEntry(entry, prefix, destinationKey));
   }
 
   copyEntry(entry, sourceKey, destinationKey) {
@@ -71,19 +60,13 @@ export class AzureFileSystem {
   }
 
   moveFile(sourcePath, destinationPath) {
-    return this.gateway.copyBlob(sourcePath, destinationPath).then(() => {
-      return this.gateway.deleteBlob(sourcePath);
-    });
+    return this.gateway.copyBlob(sourcePath, destinationPath).then(() => this.gateway.deleteBlob(sourcePath));
   }
 
   moveDirectory(sourcePath, destinationPath) {
     var prefix = this.getDirectoryBlobName(sourcePath);
     var destinationKey = this.getDirectoryBlobName(destinationPath);
-    return this.executeActionForEachEntry(prefix, (entry) => {
-      return this.copyEntry(entry, prefix, destinationKey).then(() => {
-        return this.gateway.deleteBlob(entry.name);
-      });
-    });
+    return this.executeActionForEachEntry(prefix, (entry) => this.copyEntry(entry, prefix, destinationKey).then(() => this.gateway.deleteBlob(entry.name)));
   }
 
   downloadFile(path) {
@@ -94,9 +77,7 @@ export class AzureFileSystem {
 
   executeActionForEachEntry(prefix, action) {
     return this.gateway.getBlobList(prefix).then((entries) => {
-      var deferreds = entries.map((entry) => {
-        return action(entry);
-      });
+      var deferreds = entries.map((entry) => action(entry));
       return Promise.all(deferreds);
     });
   }
@@ -107,7 +88,7 @@ export class AzureFileSystem {
 
     entries.forEach((entry) => {
       var restName = entry.name.substr(prefix.length);
-      var parts = restName.split("/");
+      var parts = restName.split('/');
 
       if (parts.length === 1) {
         if (restName !== this.EMPTY_DIR_DUMMY_BLOB_NAME) {
@@ -115,7 +96,7 @@ export class AzureFileSystem {
             name: restName,
             isDirectory: false,
             dateModified: entry.lastModified,
-            size: entry.length
+            size: entry.length,
           };
           result.push(obj);
         }
@@ -125,7 +106,7 @@ export class AzureFileSystem {
         if (!directory) {
           directory = {
             name: dirName,
-            isDirectory: true
+            isDirectory: true,
           };
           directories[dirName] = directory;
           result.push(directory);
@@ -148,53 +129,49 @@ export class AzureFileSystem {
       var name2 = obj2.name.toLowerCase();
       if (name1 < name2) {
         return -1;
-      // eslint-disable-next-line no-else-return
-      } else {
-        return name1 > name2 ? 1 : 0;
       }
+      return name1 > name2 ? 1 : 0;
     }
 
     return obj1.isDirectory ? -1 : 1;
   }
 
   getDirectoryBlobName(path) {
-    return path ? path + "/" : path;
+    return path ? `${path}/` : path;
   }
 }
 
 export class AzureGateway {
   endpointUrl: any;
+
   onRequestExecuted: any;
+
   constructor(endpointUrl, onRequestExecuted) {
     this.endpointUrl = endpointUrl;
     this.onRequestExecuted = onRequestExecuted;
   }
 
   getBlobList(prefix) {
-    return this.getAccessUrl("BlobList")
-      .then((accessUrls: AccessUrls) => {
-        return this.executeBlobListRequest(accessUrls.url1, prefix);
-      })
-      .then((xml) => {
-        return this.parseEntryListResult(xml);
-      });
+    return this.getAccessUrl('BlobList')
+      .then((accessUrls: AccessUrls) => this.executeBlobListRequest(accessUrls.url1, prefix))
+      .then((xml) => this.parseEntryListResult(xml));
   }
 
   parseEntryListResult(xmlString): Array<FileEntry> {
-    var xml = new DOMParser().parseFromString(xmlString, "text/xml");
+    var xml = new DOMParser().parseFromString(xmlString, 'text/xml');
     return Array.from(xml.querySelectorAll('Blob')).map(this.parseEntry);
   }
 
   parseEntry(xmlEntry): FileEntry {
     var entry: FileEntry = {};
 
-    entry.etag = xmlEntry.querySelector("Etag").textContent;
-    entry.name = xmlEntry.querySelector("Name").textContent;
+    entry.etag = xmlEntry.querySelector('Etag').textContent;
+    entry.name = xmlEntry.querySelector('Name').textContent;
 
-    var dateStr = xmlEntry.querySelector("Last-Modified").textContent;
+    var dateStr = xmlEntry.querySelector('Last-Modified').textContent;
     entry.lastModified = new Date(dateStr);
 
-    var lengthStr = xmlEntry.querySelector("Content-Length").textContent;
+    var lengthStr = xmlEntry.querySelector('Content-Length').textContent;
     entry.length = parseInt(lengthStr, 10);
 
     return entry;
@@ -202,8 +179,8 @@ export class AzureGateway {
 
   executeBlobListRequest(accessUrl, prefix) {
     var params: RequestParams = {
-      restype: "container",
-      comp: "list"
+      restype: 'container',
+      comp: 'list',
     };
     if (prefix) {
       params.prefix = prefix;
@@ -212,121 +189,115 @@ export class AzureGateway {
   }
 
   createDirectoryBlob(name) {
-    return this.getAccessUrl("CreateDirectory", name).then(
-      (accessUrls: AccessUrls) => {
-        return this.executeRequest({
-          url: accessUrls.url1,
-          method: "PUT",
-          headers: {
-            "x-ms-blob-type": "BlockBlob"
-          },
-          processData: false,
-          contentType: false
-        });
-      }
+    return this.getAccessUrl('CreateDirectory', name).then(
+      (accessUrls: AccessUrls) => this.executeRequest({
+        url: accessUrls.url1,
+        method: 'PUT',
+        headers: {
+          'x-ms-blob-type': 'BlockBlob',
+        },
+        processData: false,
+        contentType: false,
+      }),
     );
   }
 
   deleteBlob(name) {
-    return this.getAccessUrl("DeleteBlob", name).then(
-      (accessUrls: AccessUrls) => {
-        return this.executeRequest({
-          url: accessUrls.url1,
-          method: "DELETE"
-        });
-      }
+    return this.getAccessUrl('DeleteBlob', name).then(
+      (accessUrls: AccessUrls) => this.executeRequest({
+        url: accessUrls.url1,
+        method: 'DELETE',
+      }),
     );
   }
 
   copyBlob(sourceName, destinationName) {
-    return this.getAccessUrl("CopyBlob", sourceName, destinationName).then(
-      (accessUrls: AccessUrls) => {
-        return this.executeRequest({
-          url: accessUrls.url2,
-          method: "PUT",
-          headers: {
-            "x-ms-copy-source": accessUrls.url1
-          }
-        });
-      }
+    return this.getAccessUrl('CopyBlob', sourceName, destinationName).then(
+      (accessUrls: AccessUrls) => this.executeRequest({
+        url: accessUrls.url2,
+        method: 'PUT',
+        headers: {
+          'x-ms-copy-source': accessUrls.url1,
+        },
+      }),
     );
   }
 
   putBlock(uploadUrl, blockIndex, blockBlob) {
     var blockId = this.getBlockId(blockIndex);
     var params: RequestParams = {
-      comp: "block",
-      blockid: blockId
+      comp: 'block',
+      blockid: blockId,
     };
     return this.executeRequest(
       {
         url: uploadUrl,
-        method: "PUT",
+        method: 'PUT',
         data: blockBlob,
         processData: false,
-        contentType: false
+        contentType: false,
       },
-      params
+      params,
     );
   }
 
   putBlockList(uploadUrl, blockCount) {
     var content = this.getBlockListContent(blockCount);
     var params: RequestParams = {
-      comp: "blocklist"
+      comp: 'blocklist',
     };
     return this.executeRequest(
       {
         url: uploadUrl,
-        method: "PUT",
-        data: content
+        method: 'PUT',
+        data: content,
       },
-      params
+      params,
     );
   }
 
   getBlockListContent(blockCount) {
     var contentParts = [
       '<?xml version="1.0" encoding="utf-8"?>',
-      "<BlockList>"
+      '<BlockList>',
     ];
 
     for (var i = 0; i < blockCount; i++) {
-      var blockContent = "  <Latest>" + this.getBlockId(i) + "</Latest>";
+      var blockContent = `  <Latest>${this.getBlockId(i)}</Latest>`;
       contentParts.push(blockContent);
     }
 
-    contentParts.push("</BlockList>");
-    return contentParts.join("\n");
+    contentParts.push('</BlockList>');
+    return contentParts.join('\n');
   }
 
   getBlockId(blockIndex: number): string {
-    var res = blockIndex + "";
+    var res = `${blockIndex}`;
     while (res.length < 10) {
-      res = "0" + res;
+      res = `0${res}`;
     }
     return btoa(res);
   }
 
   getUploadAccessUrl(blobName: string): Promise<AccessUrls | any> {
-    return this.getAccessUrl("UploadBlob", blobName);
+    return this.getAccessUrl('UploadBlob', blobName);
   }
 
   getBlobUrl(blobName: string): Promise<AccessUrls | any> {
-    return this.getAccessUrl("GetBlob", blobName);
+    return this.getAccessUrl('GetBlob', blobName);
   }
 
   getAccessUrl(
     command: string,
     blobName?: string,
-    blobName2?: string
+    blobName2?: string,
   ): Promise<AccessUrls | any> {
-    var url = this.endpointUrl + "?command=" + command;
+    var url = `${this.endpointUrl}?command=${command}`;
     if (blobName) {
-      url += "&blobName=" + encodeURIComponent(blobName);
+      url += `&blobName=${encodeURIComponent(blobName)}`;
     }
     if (blobName2) {
-      url += "&blobName2=" + encodeURIComponent(blobName2);
+      url += `&blobName2=${encodeURIComponent(blobName2)}`;
     }
 
     // eslint-disable-next-line no-async-promise-executor
@@ -342,30 +313,30 @@ export class AzureGateway {
   }
 
   executeRequest(args: any, commandParams?: RequestParams): Promise<any> {
-    var ajaxArgs = typeof args === "string" ? { url: args } : args;
+    var ajaxArgs = typeof args === 'string' ? { url: args } : args;
 
-    var method = ajaxArgs.method || "GET";
+    var method = ajaxArgs.method || 'GET';
 
-    var urlParts = ajaxArgs.url.split("?");
+    var urlParts = ajaxArgs.url.split('?');
     var urlPath = urlParts[0];
     var restQueryString = urlParts[1];
     var commandQueryString = commandParams
       ? this.getQueryString(commandParams)
-      : "";
+      : '';
 
-    var queryString = commandQueryString || "";
+    var queryString = commandQueryString || '';
     if (restQueryString) {
-      queryString += queryString ? "&" + restQueryString : restQueryString;
+      queryString += queryString ? `&${restQueryString}` : restQueryString;
     }
 
-    ajaxArgs.url = queryString ? urlPath + "?" + queryString : urlPath;
+    ajaxArgs.url = queryString ? `${urlPath}?${queryString}` : urlPath;
 
     return fetch(ajaxArgs.url, ajaxArgs)
       .then((x) => {
         var eventArgs = {
-          method: method,
-          urlPath: urlPath,
-          queryString: queryString
+          method,
+          urlPath,
+          queryString,
         };
         if (this.onRequestExecuted) {
           this.onRequestExecuted(eventArgs);
@@ -388,8 +359,8 @@ export class AzureGateway {
 
   getQueryString(params: object): string {
     return Object.keys(params)
-      .map((key) => key + "=" + encodeURIComponent(params[key]))
-      .join("&");
+      .map((key) => `${key}=${encodeURIComponent(params[key])}`)
+      .join('&');
   }
 }
 type FileEntry = {
