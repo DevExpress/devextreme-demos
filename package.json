@@ -35,7 +35,7 @@
         "exceljs": "3.10.0",
         "file-saver-es": "2.0.5",
         "globalize": "1.1.1",
-        "html-react-parser": "3.0.6",
+        "html-react-parser": "1.4.8",
         "jquery": "3.5.1",
         "jspdf": "2.3.1",
         "jspdf-autotable": "3.5.14",
