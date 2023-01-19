@@ -1,3 +1,10 @@
+/* eslint-disable arrow-body-style */
+/* eslint-disable prefer-template */
+/* eslint-disable object-shorthand */
+/* eslint-disable @typescript-eslint/comma-dangle */
+/* eslint-disable @typescript-eslint/lines-between-class-members */
+/* eslint-disable @typescript-eslint/quotes */
+
 export class AzureFileSystem {
   gateway: AzureGateway;
   EMPTY_DIR_DUMMY_BLOB_NAME: string;
@@ -141,6 +148,7 @@ export class AzureFileSystem {
       var name2 = obj2.name.toLowerCase();
       if (name1 < name2) {
         return -1;
+      // eslint-disable-next-line no-else-return
       } else {
         return name1 > name2 ? 1 : 0;
       }
@@ -321,6 +329,7 @@ export class AzureGateway {
       url += "&blobName2=" + encodeURIComponent(blobName2);
     }
 
+    // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
       await this.executeRequest(url).then((x) => {
         if (x.success) {
