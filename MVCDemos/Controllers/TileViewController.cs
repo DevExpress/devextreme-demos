@@ -12,5 +12,9 @@ namespace DevExtreme.MVC.Demos.Controllers {
         public ActionResult Directions() {
             return View(SampleData.TileViewItems);
         }
+
+        public ActionResult ItemTemplate() {
+            return View(SampleData.TileViewItems);
+        }
     }
 }
