@@ -12,27 +12,27 @@
         <script src="~/utils/azure.file.system.js"></script>
         <script>
             function uploadChunk(file, uploadInfo) {
-                var deferred = null;
+                var promise = null;
 
                 if(uploadInfo.chunkIndex === 0) {
-                    deferred = gateway.getUploadAccessUrl(file.name).done(function(accessUrl) {
-                        uploadInfo.customData.accessUrl = accessUrl;
+                    promise = gateway.getUploadAccessUrl(file.name).then(function(accessUrls) {
+                        uploadInfo.customData.accessUrl = accessUrls.url1;
                     });
                 } else {
-                    deferred = $.Deferred().resolve().promise();
+                    promise = Promise.resolve();
                 }
 
-                deferred = deferred.then(function() {
+                promise = promise.then(function() {
                     return gateway.putBlock(uploadInfo.customData.accessUrl, uploadInfo.chunkIndex, uploadInfo.chunkBlob);
                 });
 
                 if(uploadInfo.chunkIndex === uploadInfo.chunkCount - 1) {
-                    deferred = deferred.then(function() {
+                    promise = promise.then(function() {
                         return gateway.putBlockList(uploadInfo.customData.accessUrl, uploadInfo.chunkCount);
                     });
                 }
 
-                return deferred.promise();
+                return promise.promise();
             }
 
             function onRequestExecuted(e) {

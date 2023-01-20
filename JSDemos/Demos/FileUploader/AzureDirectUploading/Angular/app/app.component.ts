@@ -39,8 +39,8 @@ export class AppComponent {
     let promise = null;
 
     if (uploadInfo.chunkIndex === 0) {
-      promise = gateway.getUploadAccessUrl(file.name).done((accessUrl) => {
-        uploadInfo.customData.accessUrl = accessUrl;
+      promise = gateway.getUploadAccessUrl(file.name).then((accessUrls) => {
+        uploadInfo.customData.accessUrl = accessUrls.url1;
       });
     } else {
       promise = Promise.resolve();
