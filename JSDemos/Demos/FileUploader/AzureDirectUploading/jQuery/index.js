@@ -48,7 +48,7 @@ function uploadChunk(file, uploadInfo) {
     ));
   }
 
-  return promise.promise();
+  return promise;
 }
 
 function onRequestExecuted(e) {
