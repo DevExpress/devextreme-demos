@@ -1,0 +1,22 @@
+@model IEnumerable<DevExtreme.NETCore.Demos.Models.TileViewItem>
+
+@(Html.DevExtreme().TileView()
+    .DataSource(Model)
+    .Height(390)
+    .BaseItemHeight(120)
+    .BaseItemWidth(185)
+    .ItemMargin(10)
+    .ItemTemplate(@<text>
+            <div class="price"><%- formatCurrency(Price) %></div>
+            <div class="image" style="background-image: url(<%- ImageSrc %>)"></div>
+    </text>)
+)
+
+<script>
+    const formatCurrency = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+    }).format;
+</script>

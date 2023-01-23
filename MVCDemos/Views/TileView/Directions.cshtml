@@ -1,0 +1,33 @@
+@model IEnumerable<DevExtreme.MVC.Demos.Models.TileViewItem>
+
+@(Html.DevExtreme().TileView()
+    .ID("tileView")
+    .DataSource(Model)
+    .Height(390)
+    .BaseItemHeight(120)
+    .BaseItemWidth(185)
+    .ItemMargin(10)
+    .Direction(Orientation.Horizontal)
+    .ItemTemplate(@<text>
+        <div class="image" style="background-image: url(<%- ImageSrc %>)"></div>
+    </text>)
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+        <span>Direction</span>
+        @(Html.DevExtreme().SelectBox()
+            .Items(new[] { "horizontal", "vertical" })
+            .Value("horizontal")
+            .OnValueChanged("onDirectionChanged")
+        )
+    </div>
+</div>
+
+<script>
+    function onDirectionChanged({ value }) {
+        const tileView = $("#tileView").dxTileView("instance");
+        tileView.option("direction", value);
+    }
+</script>
