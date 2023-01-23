@@ -26,7 +26,7 @@ export class AppComponent {
 
   constructor(http: HttpClient) {
     const endpointUrl = 'https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-access';
-    gateway = new (AzureGateway as any)(endpointUrl, this.onRequestExecuted.bind(this));
+    gateway = new AzureGateway(endpointUrl, this.onRequestExecuted.bind(this));
 
     this.requests = [];
     this.wrapperClassName = '';
