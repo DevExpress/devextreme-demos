@@ -18,8 +18,11 @@ namespace DevExtreme.NETCore.Demos.Controllers.ApiControllers {
         [HttpGet]
         public object Get(string parentIds) {
             var parents = string.IsNullOrEmpty(parentIds) ? new[] { "" } : parentIds.Split(',');
+#if PUBLISH
+            var rootPath = Path.Combine(_webHostEnvironment.ContentRootPath, "Sources");
+#else
             var rootPath = _webHostEnvironment.ContentRootPath;
-
+#endif
             var childNodes = parents.SelectMany(parentId => {
                 var parentPath = String.IsNullOrEmpty(parentId) ? rootPath : Path.Combine(rootPath, parentId);
                 return Directory.EnumerateFileSystemEntries(parentPath);
@@ -33,7 +36,11 @@ namespace DevExtreme.NETCore.Demos.Controllers.ApiControllers {
                     return new {
                         id = Path.Combine(parentId, Path.GetFileName(path)),
                         parentId,
+#if PUBLISH
+                        name = Path.GetFileNameWithoutExtension(path),
+#else
                         name = Path.GetFileName(path),
+#endif
                         modifiedDate = fileInfo.LastWriteTime,
                         createdDate = fileInfo.CreationTime,
                         size = isDirectory ? (long?)null : fileInfo.Length,
