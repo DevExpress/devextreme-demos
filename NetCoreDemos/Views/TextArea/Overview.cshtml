@@ -7,6 +7,13 @@
             .Text("Limit text length")
         )
     </div>
+    <div class="dx-field">
+        @(Html.DevExtreme().CheckBox()
+            .Value(false)
+            .OnValueChanged("resize_valueChanged")
+            .Text("Enable auto resize")
+        )
+    </div>
 </div>
 
 <div class="left-content">
@@ -25,7 +32,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().SelectBox()
                     .DataSource(new[] {
-                        new { name = "change", title = "On Blur" },
+                        new { name = "change", title = "On Change" },
                         new { name = "keyup", title = "On Key Up" }
                     })
                     .ValueExpr("name")
@@ -56,13 +63,16 @@
 
     function checkBox_valueChanged(data) {
         var exampleTextArea = $("#example-textarea").dxTextArea("instance");
-        if(data.value) {
-            exampleTextArea.option("value", (exampleTextArea.option("value")).substring(0, 100));
-            exampleTextArea.option("maxLength", 100);
-        } else {
-            exampleTextArea.option("maxLength", null);
-            exampleTextArea.option("value", text);
-        }
+
+        exampleTextArea.option("value", data.value ? exampleTextArea.option("value").substring(0, 100) : null);
+        exampleTextArea.option("maxLength", data.value ? 100 : null);
+    }
+
+    function resize_valueChanged(e) {
+        var exampleTextArea = $("#example-textarea").dxTextArea("instance");
+
+        exampleTextArea.option("autoResizeEnabled", e.value);
+        exampleTextArea.option("height", e.value ? undefined : 90);
     }
 
     function selectBox_valueChanged(data) {

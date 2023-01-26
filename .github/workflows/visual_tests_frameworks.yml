@@ -78,6 +78,12 @@ jobs:
     needs: build-devextreme
 
     steps:
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-quality: ga
+        dotnet-version: |
+          3.1
+          6.0
 
     #Git
     - name: Get sources
@@ -173,6 +179,12 @@ jobs:
     needs: build-devextreme
 
     steps:
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-quality: ga
+        dotnet-version: |
+          3.1
+          6.0
 
     #Git
     - name: Get sources
@@ -456,6 +468,10 @@ jobs:
     - name: Run npm install
       run: npm install --no-audit --no-fund
 
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 5.0.408
+
     - name: Prepare dotnet
       run: |
         dotnet new globaljson --sdk-version 5.0.408
@@ -512,8 +528,11 @@ jobs:
     - name: Get changed files
       if: github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'force all tests')
       run: |
-        curl --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-          --url https://api.github.com/repos/${{github.repository}}/pulls/${{github.event.pull_request.number}}/files > changed-files.json
+        gh api \
+          -H "Accept: application/vnd.github+json" \
+          "/repos/{owner}/{repo}/pulls/${{github.event.pull_request.number}}/files?per_page=100" --paginate --jq 'map({filename})' >> changed-files.json
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Run TestCafe tests
       env:

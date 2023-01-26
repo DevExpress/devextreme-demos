@@ -1,5 +1,22 @@
 ﻿@using DevExtreme.NETCore.Demos.Models.SampleData
 
+<script>
+    var fromPregroupedData = new DevExpress.data.DataSource({
+        store: {
+            type: 'array',
+            data: @(Html.Raw(Json.Serialize(SampleData.ElectronicsGrouped))),
+            key: 'ID',
+        },
+        map(item) {
+            item.key = item.Name;
+            item.items = item.Products;
+            return item;
+        },
+    });
+    
+    fromPregroupedData.load();
+</script>
+
 <div class="dx-fieldset">
     <div class="dx-field">
         <div class="dx-field-label">Data grouped in the DataSource</div>
@@ -10,6 +27,7 @@
                 .ValueExpr("ID")
                 .Grouped(true)
                 .DisplayExpr("Name")
+                .Value(1)
             )
         </div>
     </div>
@@ -18,11 +36,11 @@
         <div class="dx-field-label">Pre-grouped data</div>
         <div class="dx-field-value">
             @(Html.DevExtreme().SelectBox()
-                .DataSource(SampleData.ElectronicsGrouped)
-                .DataSourceOptions(o => o.Map("dataSource_map"))
+                .DataSource(new JS("fromPregroupedData"))
                 .ValueExpr("ID")
                 .Grouped(true)
                 .DisplayExpr("Name")
+                .Value(1)
             )
         </div>
     </div>
@@ -38,15 +56,8 @@
                 .GroupTemplate(@<text>
                     <div class="custom-icon"><span class="dx-icon-box icon"></span><%- key %></div>
                 </text>)
+                .Value(1)
             )
         </div>
     </div>
 </div>
-
-<script>
-    function dataSource_map(dataItem) {
-        dataItem.key = dataItem.Name;
-        dataItem.items = dataItem.Products;
-        return dataItem;
-    }
-</script>

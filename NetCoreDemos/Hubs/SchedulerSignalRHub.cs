@@ -10,7 +10,7 @@ namespace DevExtreme.NETCore.Demos.Hubs {
         public override Task OnConnectedAsync() {
             string groupId;
             Context.GetHttpContext().Request.Cookies.TryGetValue(GroupIdKey, out groupId);
-            Groups.AddToGroupAsync(Context.ConnectionId, groupId);
+            Groups.AddToGroupAsync(Context.ConnectionId, groupId ?? "0");
 
             return base.OnConnectedAsync();
         }

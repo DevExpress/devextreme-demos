@@ -65,8 +65,8 @@
     <Reference Include="CommonMark, Version=0.1.0.0, Culture=neutral, PublicKeyToken=001ef8810438905d, processorArchitecture=MSIL">
       <HintPath>packages\CommonMark.NET.0.15.1\lib\net45\CommonMark.dll</HintPath>
     </Reference>
-    <Reference Include="DevExtreme.AspNet.Data, Version=2.8.6.0, Culture=neutral, PublicKeyToken=982f5dab1439d0f7, processorArchitecture=MSIL">
-      <HintPath>packages\DevExtreme.AspNet.Data.2.8.6\lib\net452\DevExtreme.AspNet.Data.dll</HintPath>
+    <Reference Include="DevExtreme.AspNet.Data, Version=2.9.0.0, Culture=neutral, PublicKeyToken=982f5dab1439d0f7, processorArchitecture=MSIL">
+      <HintPath>packages\DevExtreme.AspNet.Data.2.9.0\lib\net452\DevExtreme.AspNet.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="DevExtreme.AspNet.Mvc">
@@ -243,7 +243,7 @@
       <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -746,7 +746,6 @@
     <Content Include="Content\DemosStyles\Charts\Annotation.css" />
     <Content Include="Content\DemosStyles\Common\CustomTextEditorButtons.css" />
     <Content Include="Content\DemosStyles\DataGrid\CustomizeKeyboardNavigation.css" />
-    <Content Include="Content\DemosStyles\DataGrid\ExcelJS.css" />
     <Content Include="Content\DemosStyles\DataGrid\ExcelJSCellCustomization.css" />
     <Content Include="Content\DemosStyles\DataGrid\ExcelJSHeaderAndFooter.css" />
     <Content Include="Content\DemosStyles\DataGrid\ExcelJSOverview.css" />
@@ -1784,7 +1783,7 @@
     <Content Include="Scripts\localization\dx.messages.en.js" />
     <Content Include="Scripts\localization\dx.messages.ja.js" />
     <Content Include="Scripts\localization\dx.messages.ru.js" />
-    <Content Include="Scripts\utils\azure-file-system.js" />
+    <Content Include="Scripts\utils\azure.file.system.js" />
     <Content Include="Scripts\vectormap-data\africa.js" />
     <Content Include="Scripts\vectormap-data\canada.js" />
     <Content Include="Scripts\vectormap-data\eurasia.js" />
@@ -2146,7 +2145,6 @@
     <Content Include="Views\FileManager\BindingToFileSystem.cshtml" />
     <Content Include="Views\FileManager\CustomThumbnails.cshtml" />
     <Content Include="Views\FileManager\BindingToHierarchicalStructure.cshtml" />
-    <Content Include="Views\DataGrid\ExcelJS.cshtml" />
     <Content Include="Views\DataGrid\ExcelJSCellCustomization.cshtml" />
     <Content Include="Views\DataGrid\ExcelJSHeaderAndFooter.cshtml" />
     <Content Include="Views\DataGrid\ExcelJSOverview.cshtml" />

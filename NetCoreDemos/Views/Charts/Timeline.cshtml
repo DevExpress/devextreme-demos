@@ -7,6 +7,7 @@
             .RangeValue1Field("Start")
             .RangeValue2Field("End")
             .BarOverlapGroup("monarchs")
+            .MinBarSize(4)
         )
         .BarGroupPadding(0.2)
         .Rotated(true)
@@ -101,6 +102,12 @@
             new {
                 Monarch="Elizabeth II",
                 Start=new DateTime(1952, 2, 6),
+                House="Windsor",
+                End=new DateTime(2022, 9, 8)
+            },
+            new {
+                Monarch="Charles III",
+                Start=new DateTime(2022, 9, 8),
                 House="Windsor",
                 End=DateTime.Now
             },

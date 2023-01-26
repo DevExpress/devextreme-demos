@@ -193,10 +193,6 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View(SampleData.Orders.Take(12));
         }
 
-        public ActionResult ExcelJS() {
-            return View(SampleData.Orders);
-        }
-
         public ActionResult ExcelJSExportImages() {
             return View();
         }
