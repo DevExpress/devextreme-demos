@@ -688,6 +688,9 @@
     <Compile Include="ViewModels\ToolbarViewModel.cs" />
     <Compile Include="ViewModels\SelectBoxViewModel.cs" />
     <Compile Include="ViewModels\GalleryViewModel.cs" />
+    <Compile Include="Controllers\TileViewController.cs" />
+    <Compile Include="Models\TileViewItem.cs" />
+    <Compile Include="Models\SampleData\TileViewItems.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\FileManagement.mdf" />
@@ -2255,6 +2258,9 @@
     <None Include="Web.Publish.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="Views\TileView\Basics.cshtml" />
+    <Content Include="Views\TileView\Directions.cshtml" />
+    <Content Include="Views\TileView\ItemTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
