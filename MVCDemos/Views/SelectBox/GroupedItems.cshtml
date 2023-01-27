@@ -4,7 +4,7 @@
     var fromPregroupedData = new DevExpress.data.DataSource({
         store: {
             type: 'array',
-            data: @(Html.Raw(Json.Serialize(SampleData.ElectronicsGrouped))),
+            data: @(Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(SampleData.ElectronicsGrouped))),
             key: 'ID',
         },
         map(item) {
