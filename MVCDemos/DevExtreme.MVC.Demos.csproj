@@ -2261,6 +2261,16 @@
     <Content Include="Views\TileView\Basics.cshtml" />
     <Content Include="Views\TileView\Directions.cshtml" />
     <Content Include="Views\TileView\ItemTemplate.cshtml" />
+    <Content Include="Content\DemosStyles\TileView\Basics.css" />
+    <Content Include="Content\DemosStyles\TileView\Directions.css" />
+    <Content Include="Content\DemosStyles\TileView\ItemTemplate.css" />
+    <Content Include="Content\Images\Gallery\12.jpg" />
+    <Content Include="Content\images\Gallery\14.jpg" />
+    <Content Include="Content\images\Gallery\17.jpg" />
+    <Content Include="Content\images\Gallery\20.jpg" />
+    <Content Include="Content\images\Gallery\21.jpg" />
+    <Content Include="Content\images\Gallery\22.jpg" />
+    <Content Include="Content\images\Gallery\23.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
