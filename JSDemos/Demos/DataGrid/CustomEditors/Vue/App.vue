@@ -169,7 +169,7 @@ export default {
     },
     onRowInserted(e) {
       e.component.navigateToRow(e.key);
-    }
+    },
   },
 };
 </script>
