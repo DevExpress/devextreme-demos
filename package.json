@@ -103,7 +103,7 @@
         "stylelint": "13.13.1",
         "stylelint-config-standard": "22.0.0",
         "systemjs-builder": "0.16.15",
-        "testcafe": "2.2.0",
+        "testcafe": "2.3.0",
         "typescript": "3.9.10"
     },
     "scripts": {
