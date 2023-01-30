@@ -65,18 +65,15 @@ npm run fix-lint
 
 ## ASP.NET Demos
 
-1. You will need Windows. Enable Developer Mode so that the `mklink` command doesn't require elevation. Refer to https://blogs.windows.com/windowsdeveloper/2016/12/02/symlinks-windows-10/.
+1. You will need Windows. Enable Developer Mode so that the `mklink` command doesn't require elevation.\
+To enable Developer Mode, type "Developer Settings" in a Windows search box and toggle the "Developer Mode" switch in the opened settings dialog.\
+Refer to the following articles to learn more: [Symlinks](https://blogs.windows.com/windowsdeveloper/2016/12/02/symlinks-windows-10/), [Developer Mode](https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development).
 
-1. In the `mobile` repository:
-   - Run `PrepareWorkspace.cmd`.
-   - Then, run the following commands:
-     ```
-     cd GitHub
-     npm run build
-     ```
-     Or run `Packer.cmd`.
+1. In the `mobile` repository, use the Windows console to:
+   - 2.1 Run `PrepareWorkspace.cmd`.
+   - 2.2 Run `Packer.cmd`.
 
-1. Open the `repository.config.json` file and set the `hg` property to a path where your clone of the `mobile` repository is located, for example:
+1. Open the `mobile/repository.config.json` file and set the `hg` property to the path where your clone of the `mobile` repository is located. For example:
 
     ```json
     {
@@ -84,13 +81,13 @@ npm run fix-lint
     }
     ```
 
-1. Prepare ASP.NET demos for launch and development:
-
+1. Prepare ASP.NET demos for launch and development. Run this command in the `mobile/GitHub_Demos` repository.
     ```
     npm run prepare-mvc
     ```
+    For this, you need .NET Framework 4.5.2 installed on your device. You can download a full Developer Pack here: [.NET 4.5.2 Developer Pack Installer](https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net452-developer-pack-offline-installer).
 
-1. Open the ASP.NET or ASP.NET Core project in Visual Studio and add or edit demos there.
+1. Open the `NetCoreDemos/DevExtreme.NETCore.Demos.sln` or `MVCDemos/DevExtreme.MVC.Demos.sln` project in Visual Studio and add or edit demos there.
 
 ## See Also
 
