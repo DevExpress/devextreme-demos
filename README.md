@@ -66,9 +66,8 @@ npm run fix-lint
 ## ASP.NET Demos
 
 1. You will need Windows. Enable Developer Mode so that the `mklink` command doesn't require elevation.\
-About symlinks: https://blogs.windows.com/windowsdeveloper/2016/12/02/symlinks-windows-10/.\
-About Developer Mode: https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development.\
-To enable Developer Mode, type "Developer Settings" in a Windows search box and toggle the "Developer Mode" switch in the opened settings dialog.
+To enable Developer Mode, type "Developer Settings" in a Windows search box and toggle the "Developer Mode" switch in the opened settings dialog.\
+Refer to the following articles to learn more: [Symlinks](https://blogs.windows.com/windowsdeveloper/2016/12/02/symlinks-windows-10/), [Developer Mode](https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development).
 
 1. In the `mobile` repository, use the Windows console to:
    - 2.1 Run `PrepareWorkspace.cmd`.
@@ -83,11 +82,10 @@ To enable Developer Mode, type "Developer Settings" in a Windows search box and 
     ```
 
 1. Prepare ASP.NET demos for launch and development. Run this command in the `mobile/GitHub_Demos` repository.
-
     ```
     npm run prepare-mvc
     ```
-    For this, you need .NET Framework 4.5.2 installed on your device. You can download a full Developer Pack here: https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net452-developer-pack-offline-installer.
+    For this, you need .NET Framework 4.5.2 installed on your device. You can download a full Developer Pack here: [.NET 4.5.2 Developer Pack Installer](https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net452-developer-pack-offline-installer).
 
 1. Open the `NetCoreDemos/DevExtreme.NETCore.Demos.sln` or `MVCDemos/DevExtreme.MVC.Demos.sln` project in Visual Studio and add or edit demos there.
 
