@@ -28,7 +28,7 @@
     )
     <text>
         <div id="request-panel"></div>
-        <script src="~/Scripts/utils/azure-file-system.js"></script>
+        <script src="~/Scripts/utils/azure.file.system.js"></script>
         <script>
             function getItems(parentDirectory) {
                 return azure.getItems(parentDirectory.path);
@@ -57,28 +57,28 @@
             }
 
             function uploadFileChunk(fileData, uploadInfo, destinationDirectory) {
-                var deferred = null;
+                var promise = null;
 
                 if(uploadInfo.chunkIndex === 0) {
                     var filePath = destinationDirectory.path ? destinationDirectory.path + "/" + fileData.name : fileData.name;
-                    deferred = gateway.getUploadAccessUrl(filePath).done(function(accessUrl) {
-                        uploadInfo.customData.accessUrl = accessUrl;
+                    promise = gateway.getUploadAccessUrl(filePath).then(function(accessUrls) {
+                        uploadInfo.customData.accessUrl = accessUrls.url1;
                     });
                 } else {
-                    deferred = $.Deferred().resolve().promise();
+                    promise = Promise.resolve();
                 }
 
-                deferred = deferred.then(function() {
+                promise = promise.then(function() {
                     return gateway.putBlock(uploadInfo.customData.accessUrl, uploadInfo.chunkIndex, uploadInfo.chunkBlob);
                 });
 
                 if(uploadInfo.chunkIndex === uploadInfo.chunkCount - 1) {
-                    deferred = deferred.then(function() {
+                    promise = promise.then(function() {
                         return gateway.putBlockList(uploadInfo.customData.accessUrl, uploadInfo.chunkCount);
                     });
                 }
 
-                return deferred.promise();
+                return promise;
             }
 
             function downloadItems(items) {
