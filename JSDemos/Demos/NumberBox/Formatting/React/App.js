@@ -6,7 +6,7 @@ class App extends React.Component {
     return (
       <div>
         <div className="dx-fieldset">
-        <div className="dx-field">
+          <div className="dx-field">
             <div className="dx-field-label">Integer format</div>
             <div className="dx-field-value">
               <NumberBox
