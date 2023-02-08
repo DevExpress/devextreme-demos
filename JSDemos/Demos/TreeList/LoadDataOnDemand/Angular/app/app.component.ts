@@ -29,9 +29,7 @@ export class AppComponent {
         }
         return lastValueFrom(
           http.get('https://js.devexpress.com/Demos/Mvc/api/treeListData', { params }),
-        ).then((result: any) => ({
-          data: result,
-        }));
+        );
       },
     };
   }
