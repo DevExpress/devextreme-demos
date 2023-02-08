@@ -1765,7 +1765,6 @@
     <Content Include="Scripts\data\populationData.js" />
     <Content Include="Scripts\data\populations.js" />
     <Content Include="Scripts\data\sales.js" />
-    <Content Include="Scripts\dx.all.debug.js" />
     <Content Include="Scripts\dx.all.js" />
     <Content Include="Scripts\globalize.js" />
     <Content Include="Scripts\globalize.min.js" />
