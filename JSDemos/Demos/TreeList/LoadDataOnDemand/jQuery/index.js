@@ -7,7 +7,7 @@ $(() => {
           dataType: 'json',
           data: { parentIds: options.parentIds },
         }).then((result) => ({
-          data: result
+          data: result,
         }));
       },
     },
