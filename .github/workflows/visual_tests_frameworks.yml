@@ -247,7 +247,6 @@ jobs:
         pushd devextreme-setup
         installerName=$(realpath .)/$(ls *.tgz)
         popd
-        npm install --save-dev yocto-queue
         npm install --save-dev $installerName
 
     - name: Build and Pack
