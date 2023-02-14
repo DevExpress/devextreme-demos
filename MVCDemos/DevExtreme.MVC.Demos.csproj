@@ -385,6 +385,7 @@
     <Compile Include="Models\FileManagement\FileManagementDbContext.cs" />
     <Compile Include="Models\FileManagement\InMemoryFileManagementDataContext.cs" />
     <Compile Include="Models\FileManagement\User.cs" />
+    <Compile Include="Models\FileUploader\ChunkMetadata.cs" />
     <Compile Include="Models\Flow.cs" />
     <Compile Include="Models\Gantt\Resource.cs" />
     <Compile Include="Models\Gantt\ResourceAssignment.cs" />
