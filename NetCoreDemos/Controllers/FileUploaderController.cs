@@ -53,7 +53,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
 
         #region Validation
         const long MaxFileSize = 4_000_000;
-        string[] ImageExtensions = { ".jpg", ".jpeg", ".gif", ".png" };
+        string[] ImageExtensions = { ".JPG", ".JPEG", ".GIF", ".PNG" };
 
         public ActionResult Validation() {
             return View();
