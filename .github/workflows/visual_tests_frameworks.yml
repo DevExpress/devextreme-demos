@@ -128,7 +128,7 @@ jobs:
       run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme-react ./devextreme-react-repo
 
     - name: Clone devextreme-react repo
-      run: test -d ./devextreme-react-repo || git clone -b master https://github.com/devexpress/devextreme-react ./devextreme-react-repo
+      run: test -d ./devextreme-react-repo || git clone -b 22.2 https://github.com/devexpress/devextreme-react ./devextreme-react-repo
 
     - name: Copy devextreme package
       run: |
@@ -229,7 +229,7 @@ jobs:
       run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme-vue ./devextreme-vue-repo
 
     - name: Clone devextreme-vue repo
-      run: test -d ./devextreme-vue-repo || git clone -b master https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
+      run: test -d ./devextreme-vue-repo || git clone -b 22.2 https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
 
     - name: Copy devextreme package
       run: |
@@ -315,7 +315,7 @@ jobs:
       run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme-angular ./devextreme-angular-repo
 
     - name: Clone devextreme-angular repo
-      run: test -d ./devextreme-angular-repo || git clone -b master https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
+      run: test -d ./devextreme-angular-repo || git clone -b 22.2 https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
 
     - name: Copy devextreme package
       run: |
