@@ -213,10 +213,10 @@ jobs:
 
     #Build devextreme-vue
 
-    - name: Use Node.js 18
+    - name: Use Node.js 14
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        node-version: '14'
 
     - name: Download devextreme sources
       uses: actions/download-artifact@v3
