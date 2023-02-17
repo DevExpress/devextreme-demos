@@ -10,7 +10,7 @@
     @foreach(var country in countries) {
         @(Html.DevExtreme().PieChart()
         .Type(PieChartType.Doughnut)
-        .ResolveLabelOverlapping(PieChartResolveLabelOverlapping.Shift)
+        .ResolveLabelOverlapping(ShiftLabelOverlap.Shift)
         .InnerRadius(0.65)
         .SizeGroup("piesGroup")
         .Series(s => s

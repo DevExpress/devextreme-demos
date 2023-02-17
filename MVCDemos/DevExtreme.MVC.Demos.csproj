@@ -688,6 +688,9 @@
     <Compile Include="ViewModels\ToolbarViewModel.cs" />
     <Compile Include="ViewModels\SelectBoxViewModel.cs" />
     <Compile Include="ViewModels\GalleryViewModel.cs" />
+    <Compile Include="Controllers\TileViewController.cs" />
+    <Compile Include="Models\TileViewItem.cs" />
+    <Compile Include="Models\SampleData\TileViewItems.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\FileManagement.mdf" />
@@ -1783,7 +1786,7 @@
     <Content Include="Scripts\localization\dx.messages.en.js" />
     <Content Include="Scripts\localization\dx.messages.ja.js" />
     <Content Include="Scripts\localization\dx.messages.ru.js" />
-    <Content Include="Scripts\utils\azure-file-system.js" />
+    <Content Include="Scripts\utils\azure.file.system.js" />
     <Content Include="Scripts\vectormap-data\africa.js" />
     <Content Include="Scripts\vectormap-data\canada.js" />
     <Content Include="Scripts\vectormap-data\eurasia.js" />
@@ -2255,6 +2258,19 @@
     <None Include="Web.Publish.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="Views\TileView\Basics.cshtml" />
+    <Content Include="Views\TileView\Directions.cshtml" />
+    <Content Include="Views\TileView\ItemTemplate.cshtml" />
+    <Content Include="Content\DemosStyles\TileView\Basics.css" />
+    <Content Include="Content\DemosStyles\TileView\Directions.css" />
+    <Content Include="Content\DemosStyles\TileView\ItemTemplate.css" />
+    <Content Include="Content\Images\Gallery\12.jpg" />
+    <Content Include="Content\images\Gallery\14.jpg" />
+    <Content Include="Content\images\Gallery\17.jpg" />
+    <Content Include="Content\images\Gallery\20.jpg" />
+    <Content Include="Content\images\Gallery\21.jpg" />
+    <Content Include="Content\images\Gallery\22.jpg" />
+    <Content Include="Content\images\Gallery\23.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
