@@ -40,7 +40,7 @@ namespace DevExtreme.NETCore.Demos.Controllers.ApiControllers {
                 var sortedTasks = _context.Tasks.OrderBy(t => t.OrderIndex);
 
                 if(oldOrderIndex < newOrderIndex) {
-                    for(var i = oldOrderIndex+1; i <= newOrderIndex; i++) {
+                    for(var i = oldOrderIndex + 1; i <= newOrderIndex; i++) {
                         sortedTasks.ElementAt(i).OrderIndex--;
                     };
                 } else {
