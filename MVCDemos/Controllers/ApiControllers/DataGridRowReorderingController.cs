@@ -37,12 +37,12 @@ namespace DevExtreme.MVC.Demos.Controllers {
                 var sortedTasks = _context.Tasks.OrderBy(t => t.OrderIndex).ToList();
 
                 if(oldOrderIndex < newOrderIndex) {
-                    for(var i = oldOrderIndex+1; i <= newOrderIndex; i++) {
-                        sortedTasks.ElementAt(i).OrderIndex--;
+                    for(var i = oldOrderIndex + 1; i <= newOrderIndex; i++) {
+                        sortedTasks[i].OrderIndex--;
                     };
                 } else {
                     for(var i = newOrderIndex; i < oldOrderIndex; i++) {
-                        sortedTasks.ElementAt(i).OrderIndex++;
+                        sortedTasks[i].OrderIndex++;
                     };
                 }
                 task.OrderIndex = newOrderIndex;
