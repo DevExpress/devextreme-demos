@@ -1,0 +1,29 @@
+{
+   "files":[
+      {
+         "filePath":"./JSDemos/shared/azure.file.system.ts",
+         "paths":[
+            "./JSDemos/Demos/FileUploader/AzureDirectUploading/Angular/app/app.service.ts",
+            "./JSDemos/Demos/FileManager/AzureClientBinding/Angular/app/app.service.ts"
+         ]
+      },
+      {
+         "filePath":"./JSDemos/shared/azure.file.system.js",
+         "paths":[
+            "./JSDemos/Demos/FileUploader/AzureDirectUploading/React",
+            "./JSDemos/Demos/FileUploader/AzureDirectUploading/Vue",  
+
+            "./JSDemos/Demos/FileManager/AzureClientBinding/React",
+            "./JSDemos/Demos/FileManager/AzureClientBinding/Vue"
+         ]
+      },
+      {
+         "filePath":"./JSDemos/shared/azure.file.system.js",
+         "removeExport": true,
+         "paths":[
+            "./JSDemos/Demos/FileUploader/AzureDirectUploading/jQuery/external",
+            "./JSDemos/Demos/FileManager/AzureClientBinding/jQuery/external"
+         ]
+      }
+   ]
+}

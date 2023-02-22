@@ -1,0 +1,12 @@
+{
+   "files":[
+      {
+         "filePath":"./JSDemos/shared/azure.file.system.js",
+         "removeExport": true,
+         "paths":[
+            "./NetCoreDemos/wwwroot/utils",
+            "./MVCDemos/Scripts/utils"
+         ]
+      }
+   ]
+}

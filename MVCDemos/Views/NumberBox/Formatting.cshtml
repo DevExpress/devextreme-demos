@@ -1,5 +1,14 @@
 ﻿<div class="dx-fieldset">
     <div class="dx-field">
+        <div class="dx-field-label">Integer format</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().NumberBox()
+                .Format("#")
+                .Value(14500)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
         <div class="dx-field-label">Currency format</div>
         <div class="dx-field-value">
             @(Html.DevExtreme().NumberBox()

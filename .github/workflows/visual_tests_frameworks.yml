@@ -213,10 +213,10 @@ jobs:
 
     #Build devextreme-vue
 
-    - name: Use Node.js 14
+    - name: Use Node.js 18
       uses: actions/setup-node@v3
       with:
-        node-version: '14'
+        node-version: '18'
 
     - name: Download devextreme sources
       uses: actions/download-artifact@v3
@@ -241,7 +241,7 @@ jobs:
       id: devextreme-vue-ref
       run: echo "::set-output name=head::$(git rev-parse HEAD)"
 
-    - name: Install devextreme package
+    - name: Install packages for devextreme-vue
       working-directory: ./devextreme-vue-repo
       run: |
         pushd devextreme-setup
