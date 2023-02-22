@@ -6,7 +6,7 @@
         .Margin(m => m.Bottom(20))
         .Legend(l => l.Visible(false))
         .Animation(a => a.Enabled(false))
-        .ResolveLabelOverlapping(PieChartResolveLabelOverlapping.Shift)
+        .ResolveLabelOverlapping(ShiftLabelOverlap.Shift)
         .Export(e => e.Enabled(true))
         .Series(s => s
             .Add()
@@ -45,11 +45,11 @@
             <span>Label Overlapping Resolution Mode</span>
             @(Html.DevExtreme().SelectBox()
                 .DataSource(new[] {
-                    PieChartResolveLabelOverlapping.Shift,
-                    PieChartResolveLabelOverlapping.Hide,
-                    PieChartResolveLabelOverlapping.None
+                    ShiftLabelOverlap.Shift,
+                    ShiftLabelOverlap.Hide,
+                    ShiftLabelOverlap.None
                 })
-                .Value(PieChartResolveLabelOverlapping.Shift)
+                .Value(ShiftLabelOverlap.Shift)
                 .OnValueChanged(@<text>
                     function (e) {
                         $("#pie-chart").dxPieChart("option", "resolveLabelOverlapping", e.value);
