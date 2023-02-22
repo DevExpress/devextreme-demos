@@ -249,10 +249,6 @@ jobs:
         popd
         npm install --save-dev --legacy-peer-deps $installerName
 
-    - name: Install packages for devextreme-vue
-      working-directory: ./devextreme-vue-repo
-      run: npm install --no-audit --no-fund
-
     - name: Build and Pack
       working-directory: ./devextreme-vue-repo
       run: npm run pack
