@@ -125,7 +125,7 @@ export default {
         const newValue = args.text;
         const isItemInDataSource = this.editableProducts.some((item) => item === newValue);
         if (!isItemInDataSource) {
-          this.editableProducts.unshift(newValue);
+          this.editableProducts = [newValue, ...this.editableProducts];
         }
         args.customItem = newValue;
       },
