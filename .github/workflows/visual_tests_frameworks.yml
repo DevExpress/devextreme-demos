@@ -254,7 +254,7 @@ jobs:
         cd ../vue2-strategy
         npm install --save-dev $installerName
         cd ../../
-        npm install --save-dev --legacy-peer-deps $installerName
+        npm install --save-dev $installerName
 
     - name: Install packages for devextreme-vue
       working-directory: ./devextreme-vue-repo
