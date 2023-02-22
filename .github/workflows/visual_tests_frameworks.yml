@@ -248,7 +248,7 @@ jobs:
         installerName=$(realpath .)/$(ls *.tgz)
         popd
         cd ./packages/devextreme-vue
-        npm install --save-dev $installerName
+        npm install --save-dev --legacy-peer-deps $installerName
         cd ../sandbox
         npm install --save-dev $installerName
         cd ../vue2-strategy
