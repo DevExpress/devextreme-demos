@@ -28,31 +28,25 @@ namespace DevExtreme.MVC.Demos.Controllers {
             var oldOrderIndex = task.OrderIndex;
 
             JsonConvert.PopulateObject(values, task);
+            var newOrderIndex = task.OrderIndex;
 
             Validate(task);
 
-            _context.Tasks.Remove(task);
-            var sortedTasks = _context.Tasks.OrderBy(t => t.OrderIndex).ToList();
+            if(oldOrderIndex != newOrderIndex) {
+                task.OrderIndex = oldOrderIndex;
+                var sortedTasks = _context.Tasks.OrderBy(t => t.OrderIndex).ToList();
 
-            if(oldOrderIndex != task.OrderIndex) {
-                if(oldOrderIndex < task.OrderIndex) {
-                    for(var i = oldOrderIndex; i < task.OrderIndex; i++) {
-
-                        if(sortedTasks.ElementAt(i).OrderIndex > 0) {
-                            sortedTasks.ElementAt(i).OrderIndex--;
-                        }
-                    }
-                } else if(oldOrderIndex > task.OrderIndex) {
-                    for(var i = task.OrderIndex; i < oldOrderIndex; i++) {
-
-                        if(sortedTasks.ElementAt(i).OrderIndex < sortedTasks.Count()) {
-                            sortedTasks.ElementAt(i).OrderIndex++;
-                        }
-                    }
+                if(oldOrderIndex < newOrderIndex) {
+                    for(var i = oldOrderIndex + 1; i <= newOrderIndex; i++) {
+                        sortedTasks[i].OrderIndex--;
+                    };
+                } else {
+                    for(var i = newOrderIndex; i < oldOrderIndex; i++) {
+                        sortedTasks[i].OrderIndex++;
+                    };
                 }
+                task.OrderIndex = newOrderIndex;
             }
-
-            _context.Tasks.Add(task);
 
             if(!ModelState.IsValid)
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState.GetFullErrorMessage());
