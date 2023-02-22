@@ -31,8 +31,8 @@ $(() => {
       const newValue = args.text;
       const { component } = args;
       const currentItems = component.option('items');
-      const itemInDataSource = currentItems.find((item) => item === newValue);
-      if (!itemInDataSource) {
+      const isItemInDataSource = currentItems.some((item) => item === newValue);
+      if (!isItemInDataSource) {
         currentItems.unshift(newValue);
         component.option('items', currentItems);
       }

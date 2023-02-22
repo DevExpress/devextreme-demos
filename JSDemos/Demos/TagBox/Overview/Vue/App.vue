@@ -123,8 +123,8 @@ export default {
       value: simpleProducts[0],
       onCustomItemCreating: (args) => {
         const newValue = args.text;
-        const itemInDataSource = this.editableProducts.find((item) => item === newValue);
-        if (!itemInDataSource) {
+        const isItemInDataSource = this.editableProducts.some((item) => item === newValue);
+        if (!isItemInDataSource) {
           this.editableProducts.unshift(newValue);
         }
         args.customItem = newValue;
