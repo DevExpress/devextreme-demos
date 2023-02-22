@@ -23,8 +23,8 @@ class App extends React.Component {
 
   onCustomItemCreating(args) {
     const newValue = args.text;
-    const itemInDataSource = this.state.editableProducts.find((item) => item === newValue);
-    if (!itemInDataSource) {
+    const isItemInDataSource = this.state.editableProducts.some((item) => item === newValue);
+    if (!isItemInDataSource) {
       this.setState({
         editableProducts: [newValue, ...this.state.editableProducts],
       });

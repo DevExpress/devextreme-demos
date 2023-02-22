@@ -110,8 +110,8 @@
         var newValue = args.text,
             component = args.component,
             currentItems = component.option("items");
-        const itemInDataSource = currentItems.find((item) => item === newValue);
-        if (!itemInDataSource) {
+        const isItemInDataSource = currentItems.some((item) => item === newValue);
+        if (!isItemInDataSource) {
             currentItems.unshift(newValue);
             component.option('items', currentItems);
         }
