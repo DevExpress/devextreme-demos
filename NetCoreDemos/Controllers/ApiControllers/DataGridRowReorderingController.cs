@@ -28,13 +28,13 @@ namespace DevExtreme.NETCore.Demos.Controllers.ApiControllers {
 
             var task = _context.Tasks.First(o => o.ID == key);
             var oldOrderIndex = task.OrderIndex;
-            
+
             JsonConvert.PopulateObject(values, task);
             var newOrderIndex = task.OrderIndex;
 
             if(!TryValidateModel(task))
                 return BadRequest(ModelState.GetFullErrorMessage());
-            
+
             if(oldOrderIndex != newOrderIndex) {
                 task.OrderIndex = oldOrderIndex;
                 var sortedTasks = _context.Tasks.OrderBy(t => t.OrderIndex).ToList();
