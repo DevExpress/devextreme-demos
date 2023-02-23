@@ -66,7 +66,7 @@ namespace DevExtreme.MVC.Demos.Controllers {
                 var extension = Path.GetExtension(imageFile.FileName).ToUpperInvariant();
                 var isValidExtenstion = ImageExtensions.Contains(extension);
 
-                if(!isValidExtenstion) {
+                if(isValidExtenstion) {
                     throw new InvalidOperationException();
                 }
 
