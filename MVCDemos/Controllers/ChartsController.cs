@@ -185,6 +185,10 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View(SampleData.GetAnnotationsInfo());
         }
 
+        public ActionResult PieWithCustomStyles() {
+            return View();
+        }
+
         public ActionResult Doughnut() {
             return View(SampleData.PopulationData);
         }
