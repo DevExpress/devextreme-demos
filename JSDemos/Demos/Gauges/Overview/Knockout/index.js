@@ -15,11 +15,19 @@ window.onload = function () {
         tickInterval: 20,
         minorTickInterval: 10,
       },
+      centerTemplate(gauge, container) {
+        const content = $(`<svg>
+        <circle cx="100" cy="100" r="55" stroke-width="2" stroke="#f05b41" fill="transparent"></circle>
+        <text text-anchor="middle" y="120" x="100" font-size="50" font-weight="lighter" fill="#f05b41">${gauge.value()}</text>
+        </svg>`);
+
+        container.appendChild(content.get(0));
+      },
       valueIndicator: {
-        type: 'twoColorNeedle',
-        color: 'none',
-        secondFraction: 0.24,
-        secondColor: '#f05b41',
+        indentFromCenter: 55,
+        color: '#f05b41',
+        spindleSize: 0,
+        spindleGapSize: 0,
       },
       value: speedValue,
       size: {

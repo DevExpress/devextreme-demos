@@ -16,13 +16,16 @@
         />
       </div>
       <div class="center-section">
-        <DxCircularGauge :value="speedValue">
+        <DxCircularGauge
+          :value="speedValue"
+          center-template="centerTemplate"
+        >
           <DxSize :width="260"/>
           <DxValueIndicator
-            :second-fraction="0.24"
-            type="twoColorNeedle"
-            color="none"
-            second-color="#f05b41"
+            :indent-from-center="55"
+            color="#f05b41"
+            :spindle-size="0"
+            :spindle-gap-size="0"
           />
           <DxGeometry
             :start-angle="225"
@@ -34,10 +37,27 @@
             :tick-interval="20"
             :minor-tick-interval="10"
           />
+          <template #centerTemplate="data">
+            <svg>
+              <circle
+                cx="100"
+                cy="100"
+                r="55"
+                stroke-width="2"
+                stroke="#f05b41"
+                fill="transparent"
+              />
+              <text
+                text-anchor="middle"
+                x="100"
+                y="120"
+                font-size="50"
+                font-weight="lighter"
+                fill="#f05b41"
+              >{{ data.data.value() }}</text>
+            </svg>
+          </template>
         </DxCircularGauge>
-        <div class="speed-value">
-          <span>{{ speedValue }}</span>
-        </div>
         <DxLinearGauge
           id="fuel-gauge"
           :value="50 - speedValue * 0.24"
