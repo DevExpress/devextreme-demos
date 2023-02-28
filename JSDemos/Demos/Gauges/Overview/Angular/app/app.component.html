@@ -17,7 +17,11 @@
       </dx-circular-gauge>
     </div>
     <div class="center-section">
-      <dx-circular-gauge id="speed-gauge" [value]="speedValue" centerTemplate="centerTemplate">
+      <dx-circular-gauge
+        id="speed-gauge"
+        [value]="speedValue"
+        centerTemplate="centerTemplate"
+      >
         <dxo-size [width]="260"></dxo-size>
         <dxo-value-indicator
           [indentFromCenter]="55"
@@ -51,7 +55,9 @@
             font-weight="lighter"
             alignment-baseline="middle"
             [attr.fill]="color"
-          >{{ gauge.value() }}</text>
+          >
+            {{ gauge.value() }}
+          </text>
         </svg>
       </dx-circular-gauge>
       <dx-linear-gauge id="fuel-gauge" [value]="50 - speedValue * 0.24">
