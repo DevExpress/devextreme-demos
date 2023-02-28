@@ -23,7 +23,7 @@
           <DxSize :width="260"/>
           <DxValueIndicator
             :indent-from-center="55"
-            color="#f05b41"
+            :color="color"
             :spindle-size="0"
             :spindle-gap-size="0"
           />
@@ -44,16 +44,17 @@
                 cy="100"
                 r="55"
                 stroke-width="2"
-                stroke="#f05b41"
+                :stroke="color"
                 fill="transparent"
               />
               <text
                 text-anchor="middle"
                 x="100"
-                y="120"
+                y="100"
                 font-size="50"
                 font-weight="lighter"
-                fill="#f05b41"
+                alignment-baseline="middle"
+                :fill="color"
               >{{ data.data.value() }}</text>
             </svg>
           </template>
@@ -78,7 +79,7 @@
           <DxLinearValueIndicator
             :size="8"
             :offset="7"
-            color="#f05b41"
+            :color="color"
           />
         </DxLinearGauge>
       </div>
@@ -147,6 +148,7 @@ export default {
   data() {
     return {
       speedValue: 40,
+      color: '#f05b41',
     };
   },
 };

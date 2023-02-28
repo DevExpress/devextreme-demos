@@ -25,7 +25,7 @@ function CenterTemplate(gauge) {
   return (
     <svg>
       <circle cx="100" cy="100" r="55" strokeWidth="2" stroke={color} fill="transparent"></circle>
-      <text textAnchor="middle" y="120" x="100" fontSize="50" fontWeight="lighter" fill={color}>${gauge.value()}</text>
+      <text textAnchor="middle" alignmentBaseline="middle" y="100" x="100" fontSize="50" fontWeight="lighter" fill={color}>{gauge.value()}</text>
     </svg>
   );
 }

@@ -1,4 +1,5 @@
 window.onload = function () {
+  const color = '#f05b41';
   const speedValue = ko.observable(40);
   const gaugeValue = ko.computed(() => (speedValue() / 2));
 
@@ -17,15 +18,15 @@ window.onload = function () {
       },
       centerTemplate(gauge, container) {
         const content = $(`<svg>
-        <circle cx="100" cy="100" r="55" stroke-width="2" stroke="#f05b41" fill="transparent"></circle>
-        <text text-anchor="middle" y="120" x="100" font-size="50" font-weight="lighter" fill="#f05b41">${gauge.value()}</text>
+        <circle cx="100" cy="100" r="55" stroke-width="2" stroke=${color} fill="transparent"></circle>
+        <text text-anchor="middle" alignment-baseline="middle" y="100" x="100" font-size="50" font-weight="lighter" fill=${color}>${gauge.value()}</text>
         </svg>`);
 
         container.appendChild(content.get(0));
       },
       valueIndicator: {
         indentFromCenter: 55,
-        color: '#f05b41',
+        color,
         spindleSize: 0,
         spindleGapSize: 0,
       },
@@ -45,7 +46,7 @@ window.onload = function () {
         tickInterval: 10,
       },
       valueIndicator: {
-        color: '#f05b41',
+        color,
       },
       value: gaugeValue,
       size: {
@@ -64,7 +65,7 @@ window.onload = function () {
         endAngle: 0,
       },
       valueIndicator: {
-        color: '#f05b41',
+        color,
       },
       value: gaugeValue,
       size: {
@@ -83,7 +84,7 @@ window.onload = function () {
         endAngle: -180,
       },
       valueIndicator: {
-        color: '#f05b41',
+        color,
       },
       value: gaugeValue,
       size: {
@@ -102,7 +103,7 @@ window.onload = function () {
         endAngle: -90,
       },
       valueIndicator: {
-        color: '#f05b41',
+        color,
       },
       value: gaugeValue,
       size: {
@@ -124,7 +125,7 @@ window.onload = function () {
         },
       },
       valueIndicator: {
-        color: '#f05b41',
+        color,
         size: 8,
         offset: 7,
       },
