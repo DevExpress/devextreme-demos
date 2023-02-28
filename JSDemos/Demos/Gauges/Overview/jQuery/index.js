@@ -1,4 +1,5 @@
 $(() => {
+  const color = '#f05b41';
   const gaugeOptions = {
     scale: {
       startValue: 0,
@@ -6,7 +7,7 @@ $(() => {
       tickInterval: 50,
     },
     valueIndicator: {
-      color: '#f05b41',
+      color,
     },
     value: 20,
     size: {
@@ -28,14 +29,14 @@ $(() => {
     },
     valueIndicator: {
       indentFromCenter: 55,
-      color: '#f05b41',
+      color,
       spindleSize: 0,
       spindleGapSize: 0,
     },
     centerTemplate: (gauge, container) => {
       const content = $(`<svg>
-      <circle cx="100" cy="100" r="55" stroke-width="2" stroke="#f05b41" fill="transparent"></circle>
-      <text text-anchor="middle" y="120" x="100" font-size="50" font-weight="lighter" fill="#f05b41">${gauge.value()}</text>
+      <circle cx="100" cy="100" r="55" stroke-width="2" stroke=${color} fill="transparent"></circle>
+      <text text-anchor="middle" alignment-baseline="middle" y="100" x="100" font-size="50" font-weight="lighter" fill=${color}>${gauge.value()}</text>
       </svg>`);
 
       container.appendChild(content.get(0));
@@ -78,7 +79,7 @@ $(() => {
       },
     },
     valueIndicator: {
-      color: '#f05b41',
+      color,
       size: 8,
       offset: 7,
     },

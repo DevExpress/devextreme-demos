@@ -21,11 +21,11 @@ import Indicator from './Indicator.js';
 
 const color = '#f05b41';
 
-function centerTemplate(gauge) {
+function CenterTemplate(gauge) {
   return (
     <svg>
-      <circle cx="100" cy="100" r="55" strokeWidth="2" stroke="#f05b41" fill="transparent"></circle>
-      <text textAnchor="middle" y="120" x="100" fontSize="50" fontWeight="lighter" fill="#f05b41">${gauge.value()}</text>
+      <circle cx="100" cy="100" r="55" strokeWidth="2" stroke={color} fill="transparent"></circle>
+      <text textAnchor="middle" y="120" x="100" fontSize="50" fontWeight="lighter" fill={color}>${gauge.value()}</text>
     </svg>
   );
 }
@@ -66,7 +66,7 @@ class App extends React.Component {
           </div>
           &nbsp;
           <div className="center-section">
-            <CircularGauge value={speedValue} centerRender={centerTemplate}>
+            <CircularGauge value={speedValue} centerRender={CenterTemplate}>
               <CircularSize width={260} />
               <CircularScale
                 startValue={20}
