@@ -34,12 +34,27 @@ $(() => {
       spindleGapSize: 0,
     },
     centerTemplate: (gauge, container) => {
-      const content = $(`<svg>
-      <circle cx="100" cy="100" r="55" stroke-width="2" stroke=${color} fill="transparent"></circle>
-      <text text-anchor="middle" alignment-baseline="middle" y="100" x="100" font-size="50" font-weight="lighter" fill=${color}>${gauge.value()}</text>
-      </svg>`);
+      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
 
-      container.appendChild(content.get(0));
+      circle.setAttribute('cx', 100);
+      circle.setAttribute('cy', 100);
+      circle.setAttribute('r', 55);
+      circle.setAttribute('stroke-width', 2);
+      circle.setAttribute('stroke', color);
+      circle.setAttribute('fill', 'transparent');
+
+      text.setAttribute('text-anchor', 'middle');
+      text.setAttribute('alignment-baseline', 'middle');
+      text.setAttribute('x', 100);
+      text.setAttribute('y', 100);
+      text.setAttribute('font-size', 50);
+      text.setAttribute('font-weight', 'lighter');
+      text.setAttribute('fill', color);
+      text.textContent = gauge.value();
+
+      container.appendChild(circle);
+      container.appendChild(text);
     },
     value: 40,
     size: {
