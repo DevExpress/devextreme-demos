@@ -87,7 +87,7 @@ npm run fix-lint
 1. Prepare ASP.NET demos for launch and development:
 
     ```
-    npm run prepare-mvc
+    npm run prepare-all
     ```
 
 1. Open the ASP.NET or ASP.NET Core project in Visual Studio and add or edit demos there.
