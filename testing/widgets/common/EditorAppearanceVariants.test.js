@@ -39,6 +39,8 @@ runManualTest('Common', 'EditorAppearanceVariants', ['jQuery', 'React', 'Vue', '
       });
     });
 
-    await t.expect(compareResults.isValid()).ok(compareResults.errorMessages());
+    await t
+      .expect(compareResults.isValid())
+      .ok(compareResults.errorMessages());
   });
 });
