@@ -1,6 +1,6 @@
 import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
 import { Selector as $ } from 'testcafe';
-import asyncForEach from '../../../utils/visual-tests/helpers/async-for-each-helper';
+import asyncForEach from '../../../utils/visual-tests/helpers/async-for-each';
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
 fixture('Common.EditorAppearanceVariants')
