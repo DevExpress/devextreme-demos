@@ -51,7 +51,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View();
         }
 
-        public ActionResult GaugeTitleCustomized() {
+        public ActionResult TitleAndCenterLabelCustomized() {
             return View();
         }
 

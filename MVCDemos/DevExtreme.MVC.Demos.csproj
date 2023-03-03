@@ -896,7 +896,7 @@
     <Content Include="Content\DemosStyles\Gauges\DifferentSubvalueIndicatorTypesLinearGauge.css" />
     <Content Include="Content\DemosStyles\Gauges\DifferentValueIndicatorTypes.css" />
     <Content Include="Content\DemosStyles\Gauges\DifferentValueIndicatorTypesLinearGauge.css" />
-    <Content Include="Content\DemosStyles\Gauges\GaugeTitleCustomized.css" />
+    <Content Include="Content\DemosStyles\Gauges\TitleAndCenterLabelCustomized.css" />
     <Content Include="Content\DemosStyles\Gauges\GaugeTooltip.css" />
     <Content Include="Content\DemosStyles\Gauges\LabelsCustomization.css" />
     <Content Include="Content\DemosStyles\Gauges\Overview.css" />
@@ -1885,7 +1885,7 @@
     <Content Include="Views\Scheduler\Timelines.cshtml" />
     <Content Include="Views\Gauges\UpdateCircularGaugeDataAtRuntime.cshtml" />
     <Content Include="Views\Scheduler\GoogleCalendarIntegration.cshtml" />
-    <Content Include="Views\Gauges\GaugeTitleCustomized.cshtml" />
+    <Content Include="Views\Gauges\TitleAndCenterLabelCustomized.cshtml" />
     <Content Include="Views\Gauges\GaugeTooltip.cshtml" />
     <Content Include="Views\Gauges\ValueIndicatorsAPI.cshtml" />
     <Content Include="Views\Form\CustomizeItem.cshtml" />
