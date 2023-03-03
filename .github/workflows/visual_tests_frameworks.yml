@@ -247,7 +247,7 @@ jobs:
         pushd devextreme-setup
         installerName=$(realpath .)/$(ls *.tgz)
         popd
-        npm install --save-dev $installerName
+        npm install --save-dev --legacy-peer-deps $installerName
 
     - name: Build and Pack
       working-directory: ./devextreme-vue-repo
