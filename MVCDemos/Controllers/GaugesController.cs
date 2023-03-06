@@ -52,7 +52,7 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View();
         }
 
-        public ActionResult TitleAndCenterLabelCustomized() {
+        public ActionResult GaugeTitleCustomized() {
             return View();
         }
 
