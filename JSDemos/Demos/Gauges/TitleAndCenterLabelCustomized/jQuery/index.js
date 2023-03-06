@@ -20,7 +20,7 @@ $(() => {
       text: 'Amount of Produced Gold (Kilos)',
       verticalAlignment: 'bottom',
       font: {
-        size: 24,
+        size: 25,
       },
       margin: {
         top: 25,
