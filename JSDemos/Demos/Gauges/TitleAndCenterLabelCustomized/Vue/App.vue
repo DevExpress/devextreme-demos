@@ -46,7 +46,7 @@
             />
             <text
               text-anchor="middle"
-              style="font-size: 20px"
+              font-size="20"
               y="25"
               x="50"
               fill="#000"
@@ -67,7 +67,7 @@
             />
             <text
               text-anchor="middle"
-              style="font-size: 12px"
+              font-size="12"
               y="23"
               x="57"
               fill="#000"

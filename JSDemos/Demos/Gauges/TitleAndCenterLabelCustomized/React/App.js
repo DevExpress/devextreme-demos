@@ -11,14 +11,14 @@ function CenterTemplate(gauge) {
 
       <g transform="translate(50 0)">
         <rect x="0" y="0" width="100" height="50" rx="25" fill="#f2f2f2"></rect>
-        <text textAnchor="middle" style="font-size: 20px" y="25" x="50" fill="#000" alignmentBaseline="middle">
+        <text textAnchor="middle" y="25" x="50" fill="#000" fontSize="20" alignmentBaseline="middle">
           {gauge.value()}
         </text>
       </g>
 
       <g transform="translate(43 140)">
         <rect className="description" x="0" y="0" width="114" height="56" rx="8" fill="#fff"></rect>
-        <text textAnchor="middle" style="font-size: 12px" y="23" x="57" fill="#000" alignmentBaseline="middle">
+        <text textAnchor="middle" y="23" x="57" fill="#000" fontSize="12" alignmentBaseline="middle">
           <tspan x="57">Capacity: 10kg</tspan>
           <tspan x="57" dy="20">Graduation: 10g</tspan>
         </text>
