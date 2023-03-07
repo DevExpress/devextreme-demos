@@ -56,15 +56,18 @@
                 .Value(40)
                 .Size(s => s.Width(260))
                 .ValueIndicator(v => v
-                    .Type(GaugeIndicatorType.TwoColorNeedle)
-                    .Color("none")
-                    .SecondFraction(0.24)
-                    .SecondColor("#f05b41")
+                    .IndentFromCenter(55)
+                    .Color("#f05b41")
+                    .SpindleSize(0)
+                    .SpindleGapSize(0)
                 )
+                .CenterTemplate(@<text>
+                    <svg>
+                        <circle cx="100" cy="100" r="55" stroke-width="2" stroke="#f05b41" fill="transparent"></circle>
+                        <text text-anchor="middle" alignment-baseline="middle" y="100" x="100" font-size="50" font-weight="lighter" fill="#f05b41">"<%- value() %>"</text>
+                    </svg>
+                </text>)
             )
-            <div class="speed-value">
-                <span>40</span>
-            </div>
             @(Html.DevExtreme().LinearGauge()
                 .ID("fuel-gauge")
                 .Scale(s => s
