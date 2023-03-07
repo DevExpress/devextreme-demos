@@ -9,6 +9,7 @@ class App extends React.Component {
   render() {
     return (
       <PieChart
+        id="pie"
         dataSource={data}
         customizePoint={customizePoint}
       >
