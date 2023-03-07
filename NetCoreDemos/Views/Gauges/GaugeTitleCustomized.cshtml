@@ -3,19 +3,39 @@
     .Scale(s => s
         .StartValue(0)
         .EndValue(10)
-        .TickInterval(2)
+        .TickInterval(1)
+        .MinorTick(t => t.Visible(true))
     )
-    .Value(7)
+    .Export(e => e.Enabled(true))
+    .RangeContainer(r => r.BackgroundColor("#03a9f4"))
+    .ValueIndicator(v => v.Color("#03a9f4"))
+    .Value(7.78)
     .Title(t => t
         .Text("Amount of Produced Gold (Kilos)")
-        .HorizontalAlignment(HorizontalAlignment.Center)
         .VerticalAlignment(VerticalEdge.Bottom)
         .Font(f => f
-            .Size(30)
-            .Color("#CFB53B")
+            .Size(25)
         )
         .Margin(m => m
             .Top(25)
         )
     )
+    .CenterTemplate(@<text>
+        <svg>
+            <rect y="0" x="0" width="200" height="200" fill="transparent"></rect>
+      
+            <g transform="translate(50 0)">
+                <rect x="0" y="0" width="100" height="50" rx="25" fill="#f2f2f2"></rect>
+                <text text-anchor="middle" y="25" x="50" fill="#000" font-size="20" alignment-baseline="middle"><%- value() %></text>
+            </g>
+            
+            <g transform="translate(43 140)">
+                <rect class="description" x="0" y="0" width="114" height="56" rx="8" fill="#fff"></rect>
+                <text text-anchor="middle" y="23" x="57" fill="#000" font-size="12" alignment-baseline="middle">
+                    <tspan x="57">Capacity: 10kg</tspan>
+                    <tspan x="57" dy="20">Graduation: 10g</tspan>
+                </text>
+            </g>
+        </svg>
+    </text>)
 )
