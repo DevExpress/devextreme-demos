@@ -2,7 +2,7 @@ import React from 'react';
 import PieChart, {
   Series, Label, Connector, Export,
 } from 'devextreme-react/pie-chart';
-import Charts from 'devextreme/common/charts';
+import { registerGradient, registerPattern } from 'devextreme/common/charts';
 import { data } from './data.js';
 
 class App extends React.Component {
@@ -39,7 +39,7 @@ function hexToRgb(hex, opacity = 1) {
 }
 
 function gradient(type, color1, color2) {
-  return Charts.registerGradient(type, {
+  return registerGradient(type, {
     colors: [{
       offset: '20%',
       color: color1,
@@ -55,13 +55,13 @@ function linearGradient(color) { return gradient('linear', color, hexToRgb(color
 function radialGradient(color) { return gradient('radial', hexToRgb(color, 0.5), color); }
 
 function patternImage(color) {
-  return Charts.registerPattern({
+  return registerPattern({
     width: imagePatternSize,
     height: imagePatternSize,
     template: (container) => {
       container.innerHTML = ['<svg>',
-        `<rect width=${imagePatternSize} height=${imagePatternSize} fill=${color} />`,
-        `<image width=${imagePatternSize} height=${imagePatternSize}
+        `<rect x=0 y=0 width=${imagePatternSize} height=${imagePatternSize} fill=${color} />`,
+        `<image x=0 y=0 width=${imagePatternSize} height=${imagePatternSize}
           href='../../../../images/Charts/PieWithCustomStyles/diamond.png'
           opacity=0.6
         />`,
@@ -71,7 +71,7 @@ function patternImage(color) {
 }
 
 function strokePattern(color) {
-  return Charts.registerPattern({
+  return registerPattern({
     width: shapePatternSize,
     height: shapePatternSize,
     template: (container) => {
@@ -87,12 +87,12 @@ function strokePattern(color) {
 }
 
 function squarePattern(color) {
-  return Charts.registerPattern({
+  return registerPattern({
     width: shapePatternSize,
     height: shapePatternSize,
     template: (container) => {
       container.innerHTML = ['<svg>',
-        `<rect width=${shapePatternSize} height=${shapePatternSize} stroke=${color} stroke-width=2 />`,
+        `<rect x=0 y=0 width=${shapePatternSize} height=${shapePatternSize} stroke=${color} stroke-width=2 />`,
         '</svg>'].join('');
     },
   });

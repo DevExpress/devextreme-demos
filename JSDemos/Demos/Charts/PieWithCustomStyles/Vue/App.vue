@@ -26,7 +26,7 @@ import DxPieChart, {
   DxConnector,
   DxExport,
 } from 'devextreme-vue/pie-chart';
-import Charts from 'devextreme/common/charts';
+import { registerGradient, registerPattern } from 'devextreme/common/charts';
 import { data } from './data.js';
 
 const imagePatternSize = 12;
@@ -78,7 +78,7 @@ export default {
     },
 
     gradient(type, color1, color2) {
-      return Charts.registerGradient(type, {
+      return registerGradient(type, {
         colors: [{
           offset: '20%',
           color: color1,
@@ -94,13 +94,13 @@ export default {
     radialGradient(color) { return this.gradient('radial', this.hexToRgb(color, 0.5), color); },
 
     patternImage(color) {
-      return Charts.registerPattern({
+      return registerPattern({
         width: imagePatternSize,
         height: imagePatternSize,
         template: (container) => {
           container.innerHTML = ['<svg>',
-            `<rect width=${imagePatternSize} height=${imagePatternSize} fill=${color} />`,
-            `<image width=${imagePatternSize} height=${imagePatternSize}
+            `<rect x=0 y=0 width=${imagePatternSize} height=${imagePatternSize} fill=${color} />`,
+            `<image x=0 y=0 width=${imagePatternSize} height=${imagePatternSize}
               href='../../../../images/Charts/PieWithCustomStyles/diamond.png'
               opacity=0.6
             />`,
@@ -110,7 +110,7 @@ export default {
     },
 
     strokePattern(color) {
-      return Charts.registerPattern({
+      return registerPattern({
         width: shapePatternSize,
         height: shapePatternSize,
         template: (container) => {
@@ -126,12 +126,12 @@ export default {
     },
 
     squarePattern(color) {
-      return Charts.registerPattern({
+      return registerPattern({
         width: shapePatternSize,
         height: shapePatternSize,
         template: (container) => {
           container.innerHTML = ['<svg>',
-            `<rect width=${shapePatternSize} height=${shapePatternSize} stroke=${color} stroke-width=2 />`,
+            `<rect x=0 y=0 width=${shapePatternSize} height=${shapePatternSize} stroke=${color} stroke-width=2 />`,
             '</svg>'].join('');
         },
       });

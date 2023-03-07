@@ -71,8 +71,8 @@ function patternImage(color) {
     height: imagePatternSize,
     template: (container) => {
       const contentItems = ['<svg>',
-        `<rect width=${imagePatternSize} height=${imagePatternSize} fill=${color} />`,
-        `<image width=${imagePatternSize} height=${imagePatternSize}
+        `<rect x=0 y=0 width=${imagePatternSize} height=${imagePatternSize} fill=${color} />`,
+        `<image x=0 y=0 width=${imagePatternSize} height=${imagePatternSize}
           href='../../../../images/Charts/PieWithCustomStyles/diamond.png'
           opacity=0.6
         />`,
@@ -107,7 +107,7 @@ function squarePattern(color) {
     height: shapePatternSize,
     template: (container) => {
       const contentItems = ['<svg>',
-        `<rect width=${shapePatternSize} height=${shapePatternSize} stroke=${color} stroke-width=2 />`,
+        `<rect x=0 y=0 width=${shapePatternSize} height=${shapePatternSize} stroke=${color} stroke-width=2 />`,
         '</svg>'].join('');
 
       $(contentItems).appendTo(container);

@@ -2,7 +2,7 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxPieChartModule } from 'devextreme-angular';
-import Charts from 'devextreme/common/charts';
+import { registerGradient, registerPattern } from 'devextreme/common/charts';
 import { Data, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -56,7 +56,7 @@ export class AppComponent {
     return `rgba(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}, ${opacity})`;
   };
 
-  gradient = (type, color1, color2) => Charts.registerGradient(type, {
+  gradient = (type, color1, color2) => registerGradient(type, {
     colors: [{
       offset: '20%',
       color: color1,
@@ -70,13 +70,13 @@ export class AppComponent {
 
   radialGradient = (color) => this.gradient('radial', this.hexToRgb(color, 0.5), color);
 
-  patternImage = (color) => Charts.registerPattern({
+  patternImage = (color) => registerPattern({
     width: this.imagePatternSize,
     height: this.imagePatternSize,
     template: (container) => {
       container.innerHTML = ['<svg>',
-        `<rect width=${this.imagePatternSize} height=${this.imagePatternSize} fill=${color} />`,
-        `<image width=${this.imagePatternSize} height=${this.imagePatternSize}
+        `<rect x=0 y=0 width=${this.imagePatternSize} height=${this.imagePatternSize} fill=${color} />`,
+        `<image x=0 y=0 width=${this.imagePatternSize} height=${this.imagePatternSize}
           href='../../../../images/Charts/PieWithCustomStyles/diamond.png'
           opacity=0.6
         />`,
@@ -84,7 +84,7 @@ export class AppComponent {
     },
   });
 
-  strokePattern = (color) => Charts.registerPattern({
+  strokePattern = (color) => registerPattern({
     width: this.shapePatternSize,
     height: this.shapePatternSize,
     template: (container) => {
@@ -98,12 +98,12 @@ export class AppComponent {
     },
   });
 
-  squarePattern = (color) => Charts.registerPattern({
+  squarePattern = (color) => registerPattern({
     width: this.shapePatternSize,
     height: this.shapePatternSize,
     template: (container) => {
       container.innerHTML = ['<svg>',
-        `<rect width=${this.shapePatternSize} height=${this.shapePatternSize} stroke=${color} stroke-width=2 />`,
+        `<rect x=0 y=0 width=${this.shapePatternSize} height=${this.shapePatternSize} stroke=${color} stroke-width=2 />`,
         '</svg>'].join('');
     },
   });
