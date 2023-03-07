@@ -1,12 +1,5 @@
-<dx-pie-chart
-  id="pie"
-  [dataSource]="data"
-  [customizePoint]="customizePoint"
->
-  <dxi-series
-    argumentField="type"
-    valueField="value"
-  >
+<dx-pie-chart id="pie" [dataSource]="data" [customizePoint]="customizePoint">
+  <dxi-series argumentField="type" valueField="value">
     <dxo-label [visible]="true" [customizeText]="customizeText">
       <dxo-connector [visible]="true"></dxo-connector>
     </dxo-label>
