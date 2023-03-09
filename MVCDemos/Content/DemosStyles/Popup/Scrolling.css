@@ -11,3 +11,37 @@
     padding-top: 20px;
     width: 300px;
 }
+
+.label {
+    color: rgba(51, 51, 51, 0.6);
+    font-size: 12px;
+}
+
+.demo-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.header {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.caption {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 24px 0 8px 0;
+}
