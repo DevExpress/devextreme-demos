@@ -69,7 +69,7 @@ export default function App() {
             Set <b>showTitle</b> to <code>true</code> and use
             the <b>title</b> property to specify the caption.
             The Close button will appear if you do not disable
-            the <b>showCloseButton</b> property.<br></br>
+            the <b>showCloseButton</b> property.<br></br><br></br>
             Add <b>toolbarItems</b> markup and set each item&apos;s
             <b>toolbar</b> property to <code>top</code>.
             If you want to display an item in the overflow menu, as shown in this demo,
