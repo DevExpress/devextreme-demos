@@ -35,6 +35,7 @@ runManualTest('Common', 'EditorAppearanceVariants', ['jQuery', 'React', 'Vue', '
         await changeStylingMode(stylingMode);
         await changeLabelMode(labelMode);
         await clickSaveButton();
+        await t.wait(500);
         await takeScreenshot(`common_editor_appearance_variants_${stylingMode}_${labelMode}_desktop.png`);
       });
     });
