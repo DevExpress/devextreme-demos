@@ -162,7 +162,7 @@ export default {
 }
 
 .demo-container {
-  height: 100%;
+  height: 450px;
   display: flex;
   align-items: center;
   flex-direction: column;
