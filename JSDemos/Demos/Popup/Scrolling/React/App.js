@@ -58,7 +58,7 @@ export default function App() {
         onHiding={hide}
         showTitle={true}
         hideOnOutsideClick={true}>
-        <div>
+        <div className="scrollable-popup-content">
           <div className="header">The Popup inner area is divided into three parts:</div>
 
           <div className="caption">Content area</div>
