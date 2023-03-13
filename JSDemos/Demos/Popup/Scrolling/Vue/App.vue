@@ -129,7 +129,7 @@ export default {
       popupScrollViewVisible: false,
       bookButtonOptions: {
         width: 300,
-        text: 'Print',
+        text: 'Book',
         type: 'default',
         onClick: () => {
           this.popupVisible = false;

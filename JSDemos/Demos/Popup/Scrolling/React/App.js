@@ -23,7 +23,7 @@ export default function App() {
 
   const bookButtonOptions = React.useMemo(() => ({
     width: 300,
-    text: 'Print',
+    text: 'Book',
     type: 'default',
     onClick: hide,
   }));

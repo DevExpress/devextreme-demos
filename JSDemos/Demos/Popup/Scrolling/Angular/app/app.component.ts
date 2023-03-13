@@ -34,7 +34,7 @@ export class AppComponent {
   constructor() {
     this.bookButtonOptions = {
       width: 300,
-      text: 'Print',
+      text: 'Book',
       type: 'default',
       onClick: () => {
         this.popupVisible = false;
