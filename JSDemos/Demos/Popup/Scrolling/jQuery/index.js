@@ -66,13 +66,6 @@ $(() => {
       contentTemplate() {
         const scrollView = $('<div />');
 
-        scrollView.append(
-          $('<img />', {
-            src:
-              'https://js.devexpress.com/Demos/WidgetsGallery/JSDemos/images/Popup-Scrolling-Image.jpg',
-            class: 'center',
-          }),
-        );
         scrollView.append($('<div/>').html(htmlContent));
 
         scrollView.dxScrollView({
