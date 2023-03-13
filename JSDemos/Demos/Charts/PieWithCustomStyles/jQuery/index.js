@@ -70,15 +70,17 @@ function patternImage(color) {
     width: imagePatternSize,
     height: imagePatternSize,
     template: (container) => {
-      const contentItems = ['<svg>',
-        `<rect x=0 y=0 width=${imagePatternSize} height=${imagePatternSize} fill=${color} />`,
-        `<image x=0 y=0 width=${imagePatternSize} height=${imagePatternSize}
-          href='../../../../images/Charts/PieWithCustomStyles/diamond.png'
-          opacity=0.6
-        />`,
-        '</svg>'].join('');
+      const rect = createRect(imagePatternSize, color);
+      const image = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+      image.setAttribute('x', 0);
+      image.setAttribute('y', 0);
+      image.setAttribute('width', imagePatternSize);
+      image.setAttribute('height', imagePatternSize);
+      image.setAttribute('href', '../../../../images/Charts/PieWithCustomStyles/diamond.png');
+      image.setAttribute('opacity', '0.6');
 
-      $(contentItems).appendTo(container);
+      container.appendChild(rect);
+      container.appendChild(image);
     },
   });
 }
@@ -92,11 +94,12 @@ function strokePattern(color) {
       const oneHalfSize = shapePatternSize * 1.5;
       const d = `M ${halfSize} ${-halfSize} L ${-halfSize} ${halfSize} M 0 ${shapePatternSize} L ${shapePatternSize} 0 M ${oneHalfSize} ${halfSize} L ${halfSize} ${oneHalfSize}`;
 
-      const contentItems = ['<svg>',
-        `<path stroke=${color} stroke-width=2 d="${d}" />`,
-        '</svg>'].join('');
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 
-      $(contentItems).appendTo(container);
+      path.setAttribute('stroke', color);
+      path.setAttribute('stroke-width', 2);
+      path.setAttribute('d', d);
+      container.appendChild(path);
     },
   });
 }
@@ -106,11 +109,22 @@ function squarePattern(color) {
     width: shapePatternSize,
     height: shapePatternSize,
     template: (container) => {
-      const contentItems = ['<svg>',
-        `<rect x=0 y=0 width=${shapePatternSize} height=${shapePatternSize} stroke=${color} stroke-width=2 />`,
-        '</svg>'].join('');
-
-      $(contentItems).appendTo(container);
+      const rect = createRect(shapePatternSize, null, color, 2);
+      container.appendChild(rect);
     },
   });
+}
+
+function createRect(size, fill, stroke, strokeWidth) {
+  const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+
+  rect.setAttribute('x', 0);
+  rect.setAttribute('y', 0);
+  rect.setAttribute('width', size);
+  rect.setAttribute('height', size);
+  rect.setAttribute('fill', fill);
+  rect.setAttribute('stroke', stroke);
+  rect.setAttribute('stroke-width', strokeWidth);
+
+  return rect;
 }

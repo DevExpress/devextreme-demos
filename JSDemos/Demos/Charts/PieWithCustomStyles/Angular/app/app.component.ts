@@ -56,7 +56,7 @@ export class AppComponent {
     return `rgba(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}, ${opacity})`;
   };
 
-  gradient = (type, color1, color2) => registerGradient(type, {
+  gradient = (type: string, color1: string, color2: string) => registerGradient(type, {
     colors: [{
       offset: '20%',
       color: color1,
@@ -66,47 +66,71 @@ export class AppComponent {
     }],
   });
 
-  linearGradient = (color) => this.gradient('linear', color, this.hexToRgb(color, 0.5));
+  linearGradient = (color: string) => this.gradient('linear', color, this.hexToRgb(color, 0.5));
 
-  radialGradient = (color) => this.gradient('radial', this.hexToRgb(color, 0.5), color);
+  radialGradient = (color: string) => this.gradient('radial', this.hexToRgb(color, 0.5), color);
 
-  patternImage = (color) => registerPattern({
+  patternImage = (color: string) => registerPattern({
     width: this.imagePatternSize,
     height: this.imagePatternSize,
     template: (container) => {
-      container.innerHTML = ['<svg>',
-        `<rect x=0 y=0 width=${this.imagePatternSize} height=${this.imagePatternSize} fill=${color} />`,
-        `<image x=0 y=0 width=${this.imagePatternSize} height=${this.imagePatternSize}
-          href='../../../../images/Charts/PieWithCustomStyles/diamond.png'
-          opacity=0.6
-        />`,
-        '</svg>'].join('');
+      const rect = this.createRect(this.imagePatternSize, color, '', 0);
+      const image = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+      image.setAttribute('x', '0');
+      image.setAttribute('y', '0');
+      image.setAttribute('width', this.imagePatternSize.toString());
+      image.setAttribute('height', this.imagePatternSize.toString());
+      image.setAttribute('href', '../../../../images/Charts/PieWithCustomStyles/diamond.png');
+      image.setAttribute('opacity', '0.6');
+
+      container.appendChild(rect);
+      container.appendChild(image);
     },
   });
 
-  strokePattern = (color) => registerPattern({
+  strokePattern = (color: string) => registerPattern({
     width: this.shapePatternSize,
     height: this.shapePatternSize,
     template: (container) => {
       const halfSize = this.shapePatternSize / 2;
       const oneHalfSize = this.shapePatternSize * 1.5;
-      const d = `M ${halfSize} ${-halfSize} L ${-halfSize} ${halfSize} M 0 ${this.shapePatternSize} L ${this.shapePatternSize} 0 M ${oneHalfSize} ${halfSize} L ${halfSize} ${oneHalfSize}`;
+      const d = `M ${halfSize} ${-halfSize} L ${-halfSize} ${halfSize} M 0 ${
+        this.shapePatternSize
+      } L ${
+        this.shapePatternSize
+      } 0 M ${oneHalfSize} ${halfSize} L ${halfSize} ${oneHalfSize}`;
 
-      container.innerHTML = ['<svg>',
-        `<path stroke=${color} stroke-width=2 d="${d}" />`,
-        '</svg>'].join('');
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+
+      path.setAttribute('stroke', color);
+      path.setAttribute('stroke-width', '2');
+      path.setAttribute('d', d);
+      container.appendChild(path);
     },
   });
 
-  squarePattern = (color) => registerPattern({
+  squarePattern = (color: string) => registerPattern({
     width: this.shapePatternSize,
     height: this.shapePatternSize,
     template: (container) => {
-      container.innerHTML = ['<svg>',
-        `<rect x=0 y=0 width=${this.shapePatternSize} height=${this.shapePatternSize} stroke=${color} stroke-width=2 />`,
-        '</svg>'].join('');
+      const rect = this.createRect(this.shapePatternSize, '', color, 2);
+      container.appendChild(rect);
     },
   });
+
+  createRect = (size: number, fill: string, stroke: string, strokeWidth: number) => {
+    const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+
+    rect.setAttribute('x', '0');
+    rect.setAttribute('y', '0');
+    rect.setAttribute('width', size.toString());
+    rect.setAttribute('height', size.toString());
+    rect.setAttribute('fill', fill);
+    rect.setAttribute('stroke', stroke);
+    rect.setAttribute('stroke-width', strokeWidth.toString());
+
+    return rect;
+  };
 }
 
 @NgModule({
