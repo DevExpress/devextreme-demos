@@ -1,18 +1,4 @@
-﻿#textBlock {
-    padding-left: 20px;
-    padding-right: 20px;
-    line-height: 1.6em;
-}
-
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 20px;
-    width: 300px;
-}
-
-.label {
+﻿.label {
     color: rgba(51, 51, 51, 0.6);
     font-size: 12px;
 }
@@ -34,14 +20,20 @@
     gap: 15px;
 }
 
-.header {
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 8px;
+.dx-popup-content {
+    font-size: 12px;
+}
+
+.dx-popup-title .dx-toolbar-before {
+    width: 100%;
 }
 
 .caption {
-    font-size: 16px;
+    padding-bottom: 8px;
     font-weight: 500;
-    padding: 24px 0 8px 0;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
 }

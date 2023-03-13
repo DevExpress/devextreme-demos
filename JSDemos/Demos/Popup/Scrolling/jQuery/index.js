@@ -18,10 +18,10 @@ $(() => {
 
   const popupWithScrollableContainer = $('#scrollable-popup')
     .dxPopup({
-      width: 500,
-      height: 400,
+      width: 360,
+      height: 320,
       visible: false,
-      showTitle: true,
+      title: 'Downtown Inn',
       hideOnOutsideClick: true,
       toolbarItems: [
         {
@@ -29,8 +29,8 @@ $(() => {
           toolbar: 'bottom',
           location: 'center',
           options: {
-            width: 220,
-            text: 'Print',
+            width: 300,
+            text: 'Book',
             type: 'default',
             onClick() {
               popupWithScrollableContainer.hide();
@@ -43,10 +43,10 @@ $(() => {
 
   const popupWithScrollView = $('#popup-with-scrollview')
     .dxPopup({
-      width: 500,
-      height: 400,
+      width: 360,
+      height: 320,
       visible: false,
-      showTitle: true,
+      title: 'Downtown Inn',
       hideOnOutsideClick: true,
       toolbarItems: [
         {
@@ -54,8 +54,8 @@ $(() => {
           toolbar: 'bottom',
           location: 'center',
           options: {
-            width: 220,
-            text: 'Print',
+            width: 300,
+            text: 'Book',
             type: 'default',
             onClick() {
               popupWithScrollView.hide();
@@ -73,7 +73,7 @@ $(() => {
             class: 'center',
           }),
         );
-        scrollView.append($('<div id="textBlock" />').html(longText));
+        scrollView.append($('<div/>').html(htmlContent));
 
         scrollView.dxScrollView({
           width: '100%',

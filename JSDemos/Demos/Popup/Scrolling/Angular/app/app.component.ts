@@ -21,7 +21,7 @@ export class AppComponent {
 
   popupScrollViewVisible = false;
 
-  printButtonOptions: any;
+  bookButtonOptions: any;
 
   onShowScrollablePopup() {
     this.popupVisible = true;
@@ -32,8 +32,8 @@ export class AppComponent {
   }
 
   constructor() {
-    this.printButtonOptions = {
-      width: 220,
+    this.bookButtonOptions = {
+      width: 300,
       text: 'Print',
       type: 'default',
       onClick: () => {

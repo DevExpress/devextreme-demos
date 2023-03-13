@@ -21,8 +21,8 @@ export default function App() {
     setPopupScrollViewVisible(false);
   }, [setPopupVisible, setPopupScrollViewVisible]);
 
-  const printButtonOptions = React.useMemo(() => ({
-    width: 220,
+  const bookButtonOptions = React.useMemo(() => ({
+    width: 300,
     text: 'Print',
     type: 'default',
     onClick: hide,
@@ -52,76 +52,84 @@ export default function App() {
       </div>
 
       <Popup
-        width={500}
-        height={400}
+        width={360}
+        height={320}
         visible={popupVisible}
         onHiding={hide}
-        showTitle={true}
-        hideOnOutsideClick={true}>
+        hideOnOutsideClick={true}
+        title="Downtown Inn">
         <div className="scrollable-popup-content">
-          <div className="header">The Popup inner area is divided into three parts:</div>
-
-          <div className="caption">Content area</div>
-          To populate the Popup with content, use the <b>contentTemplate</b> property.
-
-          <div className="caption">Top toolbar</div>
-          <div>
-            Set <b>showTitle</b> to <code>true</code> and use
-            the <b>title</b> property to specify the caption.
-            The Close button will appear if you do not disable
-            the <b>showCloseButton</b> property.<br></br><br></br>
-            Add <b>toolbarItems</b> markup and set each item&apos;s
-            <b>toolbar</b> property to <code>top</code>.
-            If you want to display an item in the overflow menu, as shown in this demo,
-            set the item&apos;s <b>locateInMenu</b> property to <code>always</code>.
-            You can also assign <code>never</code> to this property to keep the item
-            outside the overflow menu, or you can assign <code>auto</code> to hide the item
-            in the menu if the Popup&apos;s width decreases.
+          <div className="caption">Description</div>
+          In the heart of LA&apos;s business district, the Downtown Inn has a welcoming staff
+          and award winning restaurants that remain open 24 hours a day.
+          Use our conference room facilities to conduct meetings and have a drink
+          at our beautiful rooftop bar.
+          <br /><br />
+          <div className="content">
+            <div>
+              <div className="caption">Features</div>
+              <div>Concierge</div>
+              <div>Restaurant</div>
+              <div>Valet Parking</div>
+              <div>Fitness Center</div>
+              <div>Sauna</div>
+              <div>Airport Shuttle</div>
+            </div>
+            <div>
+              <div className="caption">Rooms</div>
+              <div>Climate control</div>
+              <div>Air conditioning</div>
+              <div>Coffee/tea maker</div>
+              <div>Iron/ironing</div>
+            </div>
           </div>
-
-          <div className="caption">Bottom toolbar</div>
-          To enable the bottom toolbar, declare
-          the <b>toolbarItems</b> array as shown in this demo.
-          Set each item&apos;s <b>toolbar</b> property to <code>bottom</code>.
-          To learn more about toolbar configuration, refer to the following tutorial: <a
-            href="https://js.devexpress.com/Documentation/Guide/UI_Components/Toolbar/Getting_Started_with_Toolbar/"
-            target="_blank" rel="noreferrer"
-          >Getting Started with Toolbar</a>
         </div>
         <ToolbarItem
           widget="dxButton"
           toolbar="bottom"
           location="center"
-          options={printButtonOptions}
+          options={bookButtonOptions}
         />
       </Popup>
 
       <Popup
-        width={500}
-        height={400}
+        width={360}
+        height={320}
         visible={popupScrollViewVisible}
         onHiding={hide}
-        showTitle={true}
-        hideOnOutsideClick={true}>
+        hideOnOutsideClick={true}
+        title="Downtown Inn">
         <ScrollView width='100%' height='100%'>
-          <img src="../../../../images/Popup-Scrolling-Image.jpg" className="center" />
-          <div id="textBlock">
-              The <b>ScrollView</b> allows users to scroll its content vertically.
-              To enable horizontal and vertical scrolling, set the <b>direction</b> option
-              to <i>&quot;both&quot;</i>. Horizontal scrolling is available
-              only if the content is wider than the <b>ScrollView</b>. Otherwise,
-              the content adapts to the widget&apos;s width.<br /><br />The <b>ScrollView</b> uses
-              native scrolling on most platforms, except
-              desktops. To use it on all platforms, assign <b>true</b> to
-              the <b>useNative</b> option. If you assign <b>false</b>, scrolling
-              is simulated on all platforms.
+          <div className="caption">Description</div>
+          In the heart of LA&apos;s business district, the Downtown Inn has a welcoming staff
+          and award winning restaurants that remain open 24 hours a day.
+          Use our conference room facilities to conduct meetings and have a drink
+          at our beautiful rooftop bar.
+          <br /><br />
+          <div className="content">
+            <div>
+              <div className="caption">Features</div>
+              <div>Concierge</div>
+              <div>Restaurant</div>
+              <div>Valet Parking</div>
+              <div>Fitness Center</div>
+              <div>Sauna</div>
+              <div>Airport Shuttle</div>
+            </div>
+            <div>
+              <div className="caption">Rooms</div>
+              <div>Climate control</div>
+              <div>Air conditioning</div>
+              <div>Coffee/tea maker</div>
+              <div>Iron/ironing</div>
+            </div>
           </div>
         </ScrollView>
         <ToolbarItem
           widget="dxButton"
           toolbar="bottom"
           location="center"
-          options={printButtonOptions}
+          options={bookButtonOptions}
         />
       </Popup>
     </React.Fragment>
