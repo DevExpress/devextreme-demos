@@ -53,7 +53,7 @@ class App extends React.Component {
           options: {
             icon: '../../../../images/icons/eye.png',
             type: 'default',
-            onClick: () => this.buttonClick('Password'),
+            onClick: () => this.changePasswordMode('Password'),
           },
         },
       ],
@@ -67,7 +67,7 @@ class App extends React.Component {
           options: {
             icon: '../../../../images/icons/eye.png',
             type: 'default',
-            onClick: () => this.buttonClick('ConfirmPassword'),
+            onClick: () => this.changePasswordMode('ConfirmPassword'),
           },
         },
       ],
@@ -90,10 +90,10 @@ class App extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.passwordComparison = this.passwordComparison.bind(this);
     this.onInitialized = this.onInitialized.bind(this);
-    this.buttonClick = this.buttonClick.bind(this);
+    this.changePasswordMode = this.changePasswordMode.bind(this);
   }
 
-  buttonClick(name) {
+  changePasswordMode(name) {
     const editor = this.formInstance.getEditor(name);
     editor.option('mode', editor.option('mode') === 'text' ? 'password' : 'text');
   }

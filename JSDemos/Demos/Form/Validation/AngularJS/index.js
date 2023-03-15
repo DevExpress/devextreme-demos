@@ -12,7 +12,7 @@ DemoApp.controller('DemoController', ($scope) => {
     return d.promise();
   };
 
-  const buttonClick = function (name) {
+  const changePasswordMode = function (name) {
     const editor = formInstance.getEditor(name);
     editor.option('mode', editor.option('mode') === 'text' ? 'password' : 'text');
   };
@@ -60,7 +60,7 @@ DemoApp.controller('DemoController', ($scope) => {
             options: {
               icon: '../../../../images/icons/eye.png',
               type: 'default',
-              onClick: () => buttonClick('Password'),
+              onClick: () => changePasswordMode('Password'),
             },
           }],
         },
@@ -82,7 +82,7 @@ DemoApp.controller('DemoController', ($scope) => {
             options: {
               icon: '../../../../images/icons/eye.png',
               type: 'default',
-              onClick: () => buttonClick('ConfirmPassword'),
+              onClick: () => changePasswordMode('ConfirmPassword'),
             },
           }],
         },
