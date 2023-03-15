@@ -31,7 +31,7 @@
         <div>
           <div class="caption">Description</div>
           In the heart of LA's business district, the Downtown Inn has a welcoming staff
-          and award winning restaurantsthat remain open 24 hours a day.
+          and award winning restaurants that remain open 24 hours a day.
           Use our conference room facilities to conduct meetings and have a drink
           at our beautiful rooftop bar.
           <br><br>
@@ -78,7 +78,7 @@
         >
           <div class="caption">Description</div>
           In the heart of LA's business district, the Downtown Inn has a welcoming staff
-          and award winning restaurantsthat remain open 24 hours a day.
+          and award winning restaurants that remain open 24 hours a day.
           Use our conference room facilities to conduct meetings and have a drink
           at our beautiful rooftop bar.
           <br><br>
