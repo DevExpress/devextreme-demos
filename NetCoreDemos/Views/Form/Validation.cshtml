@@ -7,7 +7,6 @@
         @Html.AntiForgeryToken()
 
         @(Html.DevExtreme().Form<EditorsViewModel>()
-            .OnInitialized("onInitialized")
             .ShowValidationSummary(true)
             .Items(items => {
 
@@ -17,33 +16,10 @@
                         groupItems.AddSimpleFor(m => m.Email);
 
                         groupItems.AddSimpleFor(m => m.Password)
-                            .Editor(e => e.TextBox()
-                                .Mode(TextBoxMode.Password)
-                                .OnValueChanged("passwordChanged")
-                                .Buttons(buttons => {
-                                    buttons.Add()
-                                        .Name("password")
-                                        .Location(TextEditorButtonLocation.After)
-                                        .Widget(w => w.Button()
-                                            .Type(ButtonType.Default)
-                                            .Icon(Url.Content("~/images/icons/eye.png"))
-                                            .OnClick("() => changePasswordMode('Password')"));
-                                })
-                            );
+                            .Editor(e => e.TextBox().Mode(TextBoxMode.Password));
 
                         groupItems.AddSimpleFor(m => m.ConfirmPassword)
-                            .Editor(e => e.TextBox()
-                                .Mode(TextBoxMode.Password)
-                                .Buttons(buttons => {
-                                    buttons.Add()
-                                        .Name("password")
-                                        .Location(TextEditorButtonLocation.After)
-                                        .Widget(w => w.Button()
-                                            .Type(ButtonType.Default)
-                                            .Icon(Url.Content("~/images/icons/eye.png"))
-                                            .OnClick("() => changePasswordMode('ConfirmPassword')"));
-                                })
-                            );
+                            .Editor(e => e.TextBox().Mode(TextBoxMode.Password));
                     });
 
                 items.AddGroup()
@@ -96,22 +72,3 @@
         )
     }
 }
-<script>
-    let formInstance;
-
-    function onInitialized(e) {
-        formInstance = e.component;
-    }
-
-    function passwordChanged(e) {
-        const editor = formInstance.getEditor('ConfirmPassword');
-        if (editor.option('value')) {
-            editor.element().dxValidator('validate');
-        }
-    }
-
-    function changePasswordMode(name) {
-        let editor = formInstance.getEditor(name);
-        editor.option('mode', editor.option('mode') === 'text' ? 'password' : 'text');
-    }
-</script>
