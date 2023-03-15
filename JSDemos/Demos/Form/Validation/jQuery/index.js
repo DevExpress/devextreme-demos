@@ -8,7 +8,7 @@ $(() => {
     return d.promise();
   };
 
-  const buttonClick = function (name) {
+  const changePasswordMode = function (name) {
     const editor = formWidget.getEditor(name);
     editor.option('mode', editor.option('mode') === 'text' ? 'password' : 'text');
   };
@@ -53,7 +53,7 @@ $(() => {
             options: {
               icon: '../../../../images/icons/eye.png',
               type: 'default',
-              onClick: () => buttonClick('Password'),
+              onClick: () => changePasswordMode('Password'),
             },
           }],
         },
@@ -75,7 +75,7 @@ $(() => {
             options: {
               icon: '../../../../images/icons/eye.png',
               type: 'default',
-              onClick: () => buttonClick('ConfirmPassword'),
+              onClick: () => changePasswordMode('ConfirmPassword'),
             },
           }],
         },

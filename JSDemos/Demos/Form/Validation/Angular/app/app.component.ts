@@ -55,7 +55,7 @@ export class AppComponent {
         options: {
           icon: '../../../../images/icons/eye.png',
           type: 'default',
-          onClick: () => this.buttonClick('Password'),
+          onClick: () => this.changePasswordMode('Password'),
         },
       },
     ],
@@ -70,18 +70,10 @@ export class AppComponent {
         options: {
           icon: '../../../../images/icons/eye.png',
           type: 'default',
-          onClick: () => this.buttonClick('ConfirmPassword'),
+          onClick: () => this.changePasswordMode('ConfirmPassword'),
         },
       },
     ],
-  };
-
-  buttonClick = (name) => {
-    let editor = this.form.instance.getEditor(name);
-    editor.option(
-      'mode',
-      editor.option('mode') === 'text' ? 'password' : 'text',
-    );
   };
 
   customer: Customer;
@@ -113,6 +105,14 @@ export class AppComponent {
   checkComparison() {
     return true;
   }
+
+  changePasswordMode = (name) => {
+    let editor = this.form.instance.getEditor(name);
+    editor.option(
+      'mode',
+      editor.option('mode') === 'text' ? 'password' : 'text',
+    );
+  };
 
   constructor(service: Service) {
     this.maxDate = new Date(this.maxDate.setFullYear(this.maxDate.getFullYear() - 21));

@@ -193,7 +193,7 @@ export default {
             options: {
               icon: '../../../../images/icons/eye.png',
               type: 'default',
-              onClick: () => this.buttonClick('Password'),
+              onClick: () => this.changePasswordMode('Password'),
             },
           },
         ],
@@ -207,7 +207,7 @@ export default {
             options: {
               icon: '../../../../images/icons/eye.png',
               type: 'default',
-              onClick: () => this.buttonClick('ConfirmPassword'),
+              onClick: () => this.changePasswordMode('ConfirmPassword'),
             },
           },
         ],
@@ -244,7 +244,7 @@ export default {
     saveFormInstance(e) {
       this.formInstance = e.component;
     },
-    buttonClick(name) {
+    changePasswordMode(name) {
       const editor = this.formInstance.getEditor(name);
       editor.option(
         'mode',
