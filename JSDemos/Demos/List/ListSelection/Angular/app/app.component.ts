@@ -21,7 +21,7 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   tasks: DataSource;
 
-  selectAllModeValue = 'page';
+  selectAllModeVlaue = 'page';
 
   selectionModeValue = 'all';
 
