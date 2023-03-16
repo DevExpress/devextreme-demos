@@ -13,7 +13,7 @@ runManualTest('Charts', 'Crosshair', ['jQuery', 'React', 'Vue', 'Angular'], (tes
   test('Chart.Crosshair', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
-    await t.hover($('.dxc-series').nth(1).find('circle').nth(1));
+    await t.hover($('.dxc-series').nth(1).find('circle').nth(2));
     await takeScreenshot('charts_crosshair.png');
 
     await t
