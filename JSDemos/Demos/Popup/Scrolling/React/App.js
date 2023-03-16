@@ -58,7 +58,7 @@ export default function App() {
         onHiding={hide}
         hideOnOutsideClick={true}
         title="Downtown Inn">
-        <div className="scrollable-popup-content">
+        <div className="popup-content">
           <div className="caption">Description</div>
           In the heart of LA&apos;s business district, the Downtown Inn has a welcoming staff
           and award winning restaurants that remain open 24 hours a day.
