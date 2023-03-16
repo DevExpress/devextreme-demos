@@ -9,7 +9,6 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    gap: 40px;
 }
 
 .button-container {
@@ -17,6 +16,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    padding: 20px 0px;
     gap: 15px;
 }
 
