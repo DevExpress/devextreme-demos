@@ -24,10 +24,6 @@
   font-size: 12px;
 }
 
-::ng-deep .dx-popup-title .dx-toolbar-before {
-  width: 100%;
-}
-
 ::ng-deep .caption {
   padding-bottom: 8px;
   font-weight: 500;

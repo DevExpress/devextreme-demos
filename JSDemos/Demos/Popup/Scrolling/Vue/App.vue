@@ -175,10 +175,6 @@ export default {
   font-size: 12px;
 }
 
-.dx-popup-title .dx-toolbar-before {
-  width: 100%;
-}
-
 .caption {
   padding-bottom: 8px;
   font-weight: 500;
