@@ -3,7 +3,7 @@
         .Text("Show Popup")
         .Type(ButtonType.Default)
         .Width(300)
-        .OnClick("showScrollablePopup")
+        .OnClick("showPopup")
     )
     <div class="label"> A native scrollable container </div>
 </div>
@@ -12,13 +12,13 @@
         @(Html.DevExtreme().Button()
         .Text("Show Popup")
         .Width(300)
-        .OnClick("showScrollViewPopup")
+        .OnClick("showPopupWithScrollView")
     )
     <div class="label"> The ScrollView </div>
 </div>
 
 @(Html.DevExtreme().Popup()
-    .ID("scrollable-popup")
+    .ID("popup")
     .Width(360)
     .Height(320)
     .Visible(false)
@@ -33,7 +33,7 @@
                 .Text("Print")
                 .Type(ButtonType.Default)
                 .Width(300)
-                .OnClick("hideScrollablePopup")
+                .OnClick("hidePopup")
             );
     })
 )
@@ -83,7 +83,7 @@
                 .Text("Print")
                 .Type(ButtonType.Default)
                 .Width(300)
-                .OnClick("hideScrollViewPopup")
+                .OnClick("hidePopupWithScrollView")
             );
     })
 )
@@ -122,19 +122,19 @@
 }
 
 <script>
-    function showScrollablePopup() {
-        $("#scrollable-popup").dxPopup("instance").show();
+    function showPopup() {
+        $("#popup").dxPopup("show");
     }
 
-    function showScrollViewPopup() {
-        $("#popup-with-scrollview").dxPopup("instance").show();
+    function showPopupWithScrollView() {
+        $("#popup-with-scrollview").dxPopup("show");
     }
 
-    function hideScrollablePopup() {
-        $("#scrollable-popup").dxPopup("instance").hide();
+    function hidePopup() {
+        $("#popup").dxPopup("hide");
     }
 
-    function hideScrollViewPopup() {
-        $("#popup-with-scrollview").dxPopup("instance").hide();
+    function hidePopupWithScrollView() {
+        $("#popup-with-scrollview").dxPopup("hide");
     }
 </script>

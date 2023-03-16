@@ -1,14 +1,14 @@
 $(() => {
-  $('#show-scrollable-popup').dxButton({
+  $('#show-popup-button').dxButton({
     text: 'Show Popup',
     width: 300,
     type: 'default',
     onClick() {
-      popupWithScrollableContainer.show();
+      popup.show();
     },
   });
 
-  $('#show-popup-with-scrollview').dxButton({
+  $('#show-popup-with-scrollview-button').dxButton({
     text: 'Show Popup',
     width: 300,
     onClick() {
@@ -16,7 +16,7 @@ $(() => {
     },
   });
 
-  const popupWithScrollableContainer = $('#scrollable-popup')
+  const popup = $('#popup')
     .dxPopup({
       width: 360,
       height: 320,
@@ -33,7 +33,7 @@ $(() => {
             text: 'Book',
             type: 'default',
             onClick() {
-              popupWithScrollableContainer.hide();
+              popup.hide();
             },
           },
         },
@@ -64,16 +64,16 @@ $(() => {
         },
       ],
       contentTemplate() {
-        const scrollView = $('<div />');
+        const $scrollView = $('<div/>');
 
-        scrollView.append($('<div/>').html(htmlContent));
+        $scrollView.append($('<div/>').html(htmlContent));
 
-        scrollView.dxScrollView({
+        $scrollView.dxScrollView({
           width: '100%',
           height: '100%',
         });
 
-        return scrollView;
+        return $scrollView;
       },
     })
     .dxPopup('instance');

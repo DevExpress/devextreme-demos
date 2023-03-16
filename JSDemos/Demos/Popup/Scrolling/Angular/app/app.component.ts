@@ -23,11 +23,11 @@ export class AppComponent {
 
   bookButtonOptions: any;
 
-  onShowScrollablePopup() {
+  showPopup() {
     this.popupVisible = true;
   }
 
-  onShowScrollViewPopup() {
+  showPopupWithScrollView() {
     this.popupScrollViewVisible = true;
   }
 

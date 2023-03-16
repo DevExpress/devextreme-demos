@@ -6,7 +6,7 @@
           :width="300"
           text="Show Popup"
           type="default"
-          @click="onShowScrollablePopup($event)"
+          @click="showPopup($event)"
         />
         <div class="label"> A native scrollable container </div>
       </div>
@@ -15,7 +15,7 @@
         <DxButton
           :width="300"
           text="Show Popup"
-          @click="onShowScrollViewPopup($event)"
+          @click="showPopupWithScrollView($event)"
         />
         <div class="label"> The ScrollView </div>
       </div>
@@ -139,10 +139,10 @@ export default {
     };
   },
   methods: {
-    onShowScrollablePopup() {
+    showPopup() {
       this.popupVisible = true;
     },
-    onShowScrollViewPopup() {
+    showPopupWithScrollView() {
       this.popupScrollViewVisible = true;
     },
   },

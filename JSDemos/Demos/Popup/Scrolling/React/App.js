@@ -8,11 +8,11 @@ export default function App() {
   const [popupVisible, setPopupVisible] = React.useState(false);
   const [popupScrollViewVisible, setPopupScrollViewVisible] = React.useState(false);
 
-  const showScrollablePopup = React.useCallback(() => {
+  const showPopup = React.useCallback(() => {
     setPopupVisible(true);
   }, [setPopupVisible]);
 
-  const showScrollViewPopup = React.useCallback(() => {
+  const showPopupWithScrollView = React.useCallback(() => {
     setPopupScrollViewVisible(true);
   }, [setPopupScrollViewVisible]);
 
@@ -36,7 +36,7 @@ export default function App() {
             text="Show Popup"
             type="default"
             width={300}
-            onClick={showScrollablePopup}
+            onClick={showPopup}
           />
           <div className="label"> A native scrollable container </div>
         </div>
@@ -45,7 +45,7 @@ export default function App() {
           <Button
             text="Show Popup"
             width={300}
-            onClick={showScrollViewPopup}
+            onClick={showPopupWithScrollView}
           />
           <div className="label"> The ScrollView </div>
         </div>
