@@ -24,6 +24,7 @@
     .Visible(false)
     .Title("Downtown Inn")
     .HideOnOutsideClick(true)
+    .ShowCloseButton(true)
     .ContentTemplate(new TemplateName("popup-template"))
     .ToolbarItems(barItems => {
         barItems.Add()
@@ -32,6 +33,7 @@
             .Widget(widget => widget.Button()
                 .Text("Print")
                 .Type(ButtonType.Default)
+                .StylingMode(ButtonStylingMode.Contained)
                 .Width(300)
                 .OnClick("hidePopup")
             );
@@ -74,6 +76,7 @@
     .Visible(false)
     .Title("Downtown Inn")
     .HideOnOutsideClick(true)
+    .ShowCloseButton(true)
     .ContentTemplate(new TemplateName("popup-with-scrollview-template"))
     .ToolbarItems(barItems => {
         barItems.Add()
@@ -82,6 +85,7 @@
             .Widget(widget => widget.Button()
                 .Text("Print")
                 .Type(ButtonType.Default)
+                .StylingMode(ButtonStylingMode.Contained)
                 .Width(300)
                 .OnClick("hidePopupWithScrollView")
             );
