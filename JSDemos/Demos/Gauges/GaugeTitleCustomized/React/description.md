@@ -8,4 +8,4 @@ Use the [horizontalAlignment](/Documentation/ApiReference/UI_Components/dxCircul
 - **Font Settings**    
 To customize a text appearance, define the font properties within the [font](/Documentation/ApiReference/UI_Components/dxCircularGauge/Configuration/title/font/) configuration object.
 
-You can specify a custom label in the CircularGauge's center with the [centerTemplate](/Documentation/ApiReference/UI_Components/dxCircularGauge/Configuration/#centerTemplate) property. Render a template content as [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG) element.
+You can specify a custom label in the CircularGauge's center with the [centerComponent](/Documentation/ApiReference/UI_Components/dxCircularGauge/Configuration/#centerComponent) or [centerRender](/Documentation/ApiReference/UI_Components/dxCircularGauge/Configuration/#centerRender) properties. Render a template content as [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG) element.

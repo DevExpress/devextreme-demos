@@ -1,1 +1,3 @@
-DevExtreme React Gauges is&nbsp;a&nbsp;set of&nbsp;interactive UI components for visualizing data on&nbsp;dashboards. This set includes two circular and one linear gauge. Declared [PropTypes for typechecking](https://reactjs.org/docs/typechecking-with-proptypes.html) are included. [Learn more about DevExtreme React components](/Documentation/Guide/React_Components/DevExtreme_React_Components/).
+DevExtreme React Gauges is&nbsp;a&nbsp;set of&nbsp;interactive UI components for visualizing data on&nbsp;dashboards. This set includes two circular and one linear gauge. Declared [PropTypes for typechecking](https://reactjs.org/docs/typechecking-with-proptypes.html) are included. [Learn more about DevExtreme React components](/Documentation/Guide/React_Components/DevExtreme_React_Components/). 
+
+Check out other demos in this section to explore gauge features, like geometry customization, palettes, tooltips, custom labels in the component's center, etc.
