@@ -29,34 +29,38 @@ export class AppComponent {
 
   customizePoint = (point) => {
     const color = point.series.getPointsByArg(point.argument)[0].getColor();
-    const pointSettings = { color };
-    if (point.argument === 'Stroke Pattern') {
-      pointSettings.color = { fillId: this.strokePattern(color) };
-    }
-    if (point.argument === 'Square Pattern') {
-      pointSettings.color = { fillId: this.squarePattern(color) };
-    }
-    if (point.argument === 'Linear Gradient') {
-      pointSettings.color = { fillId: this.linearGradient(color) };
-    }
-    if (point.argument === 'Radial Gradient') {
-      pointSettings.color = { fillId: this.radialGradient(color) };
-    }
-    if (point.argument === 'Pattern with image') {
-      pointSettings.color = { fillId: this.patternImage(color) };
+    let fillId;
+    switch (point.argument) {
+      case 'Stroke Pattern':
+        fillId = this.getStrokePattern(color);
+        break;
+      case 'Square Pattern':
+        fillId = this.getSquarePattern(color);
+        break;
+      case 'Linear Gradient':
+        fillId = this.getLinearGradient(color);
+        break;
+      case 'Radial Gradient':
+        fillId = this.getRadialGradient(color);
+        break;
+      case 'Pattern with image':
+        fillId = this.getPatternImage(color);
+        break;
+      default:
+        break;
     }
 
-    return pointSettings;
+    return { color: { fillId } };
   };
 
   customizeText = (info) => info.argument;
 
-  hexToRgb = (hex: string, opacity = 1) => {
-    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return `rgba(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}, ${opacity})`;
+  private hexToRgb = (hex: string, opacity = 1) => {
+    const hexArray = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return `rgba(${parseInt(hexArray[1], 16)}, ${parseInt(hexArray[2], 16)}, ${parseInt(hexArray[3], 16)}, ${opacity})`;
   };
 
-  gradient = (type: string, color1: string, color2: string) => registerGradient(type, {
+  private gradient = (type: string, color1: string, color2: string) => registerGradient(type, {
     colors: [{
       offset: '20%',
       color: color1,
@@ -66,11 +70,11 @@ export class AppComponent {
     }],
   });
 
-  linearGradient = (color: string) => this.gradient('linear', color, this.hexToRgb(color, 0.5));
+  private getLinearGradient = (color: string) => this.gradient('linear', color, this.hexToRgb(color, 0.5));
 
-  radialGradient = (color: string) => this.gradient('radial', this.hexToRgb(color, 0.5), color);
+  private getRadialGradient = (color: string) => this.gradient('radial', this.hexToRgb(color, 0.5), color);
 
-  patternImage = (color: string) => registerPattern({
+  private getPatternImage = (color: string) => registerPattern({
     width: this.imagePatternSize,
     height: this.imagePatternSize,
     template: (container) => {
@@ -88,17 +92,17 @@ export class AppComponent {
     },
   });
 
-  strokePattern = (color: string) => registerPattern({
+  private getStrokePattern = (color: string) => registerPattern({
     width: this.shapePatternSize,
     height: this.shapePatternSize,
     template: (container) => {
       const halfSize = this.shapePatternSize / 2;
-      const oneHalfSize = this.shapePatternSize * 1.5;
+      const oneAndAHalfSize = this.shapePatternSize * 1.5;
       const d = `M ${halfSize} ${-halfSize} L ${-halfSize} ${halfSize} M 0 ${
         this.shapePatternSize
       } L ${
         this.shapePatternSize
-      } 0 M ${oneHalfSize} ${halfSize} L ${halfSize} ${oneHalfSize}`;
+      } 0 M ${oneAndAHalfSize} ${halfSize} L ${halfSize} ${oneAndAHalfSize}`;
 
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 
@@ -109,7 +113,7 @@ export class AppComponent {
     },
   });
 
-  squarePattern = (color: string) => registerPattern({
+  private getSquarePattern = (color: string) => registerPattern({
     width: this.shapePatternSize,
     height: this.shapePatternSize,
     template: (container) => {
@@ -118,7 +122,7 @@ export class AppComponent {
     },
   });
 
-  createRect = (size: number, fill: string, stroke: string, strokeWidth: number) => {
+  private createRect = (size: number, fill: string, stroke: string, strokeWidth: number) => {
     const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 
     rect.setAttribute('x', '0');

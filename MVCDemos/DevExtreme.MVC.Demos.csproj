@@ -1146,6 +1146,7 @@
     <Content Include="Content\Images\Charts\Annotation\apple-watch.png" />
     <Content Include="Content\Images\Charts\Annotation\iphone-se.png" />
     <Content Include="Content\Images\Charts\Annotation\iphone-x.png" />
+    <Content Include="Content\Images\Charts\PieWithCustomStyles\diamond.png" />
     <Content Include="Content\Images\Charts\PointImage\icon-medal-bronse.png" />
     <Content Include="Content\Images\Charts\PointImage\icon-medal-gold.png" />
     <Content Include="Content\Images\Charts\PointImage\icon-medal-silver.png" />
