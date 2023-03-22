@@ -1,3 +1,5 @@
-DevExtreme JavaScript Gauge controls are interactive jQuery components for visualizing data on dashboards. They come in two geometric shapes: circular, or radial, and linear. Circular gauges, in turn, can be of two sub-types: regular gauges and bar gauges. In this demo, you can see a simple dashboard with several highly customized gauges. 
+DevExtreme JavaScript Gauge controls help you visualize data and create dashboards. Our library includes three gauge types: radial bar gauges, circular scale gauges, and linear gauges. 
 
-Check out other demos in this section to explore gauge features, like geometry customization, palettes, tooltips, custom labels in the component's center, etc.
+This demo displays a simple dashboard with a few highly customized gauges. 
+
+Review other demos in this section to explore gauge features such as geometry customization, palettes, tooltips, and custom label display.
