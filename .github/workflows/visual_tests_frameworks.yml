@@ -456,6 +456,15 @@ jobs:
           key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
           restore-keys: ${{ runner.os }}-devextreme-node-modules
 
+      - name: Use Node.js 15
+        uses: actions/setup-node@v3
+        with:
+          node-version: '15'
+
+      - name: Install packages
+        working-directory: ./devextreme
+        run: npm install --no-audit --no-fund
+
       #Build devextreme-with-documentation
 
       - name: Download devextreme sources
