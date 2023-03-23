@@ -498,10 +498,9 @@ jobs:
         run: |
           npm run internal-tool -- inject-descriptions --descriptions-path ../../../devextreme-documentation-repo/artifacts/internal-tools/Descriptions.json --js-scripts ./js
 
-      - name: Build
-        continue-on-error: true
+      - name: Build npm
         working-directory: ./devextreme
-        run: npm run build-npm-devextreme
+        run: npx gulp npm
 
       - name: Pack
         working-directory: ./devextreme/artifacts/npm/devextreme
