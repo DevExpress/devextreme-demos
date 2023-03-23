@@ -498,10 +498,6 @@ jobs:
         run: |
           npm run internal-tool -- inject-descriptions --descriptions-path ../../../devextreme-documentation-repo/artifacts/internal-tools/Descriptions.json --js-scripts ./js
 
-      - name: Install packages
-        working-directory: ./devextreme
-        run: npm install --no-audit --no-fund
-
       - name: Build
         working-directory: ./devextreme
         run: npm run build-npm-devextreme
