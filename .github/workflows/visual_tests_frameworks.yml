@@ -61,7 +61,9 @@ jobs:
       run: npm pack
 
     - name: Copy package
-      run: cp ./devextreme/artifacts/npm/devextreme/*.tgz ./devextreme-installer.tgz
+      run: |
+        cp ./devextreme/artifacts/npm/devextreme/*.tgz ./devextreme-installer.tgz
+        cp ./devextreme/artifacts/internal-tools/Declarations.json ./Declarations.json
 
     - name: Copy build artifacts
       uses: actions/upload-artifact@v3
@@ -69,6 +71,7 @@ jobs:
         name: devextreme-sources
         path: |
           devextreme-installer.tgz
+          Declarations.json
         retention-days: 1
 
   build-react:
@@ -477,6 +480,8 @@ jobs:
       - name: Update topics
         working-directory: ./devextreme-documentation-repo
         run: |
+          mkdir -p ./artifacts/internal-tools
+          cp ../Declarations.json ./artifacts/internal-tools/
           npm run update-topics
 
       - name: Inject descriptions
