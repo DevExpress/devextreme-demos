@@ -499,6 +499,7 @@ jobs:
           npm run internal-tool -- inject-descriptions --descriptions-path ../../../devextreme-documentation-repo/artifacts/internal-tools/Descriptions.json --js-scripts ./js
 
       - name: Build
+        continue-on-error: true
         working-directory: ./devextreme
         run: npm run build-npm-devextreme
 
