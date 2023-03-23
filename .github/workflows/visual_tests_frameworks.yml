@@ -487,7 +487,7 @@ jobs:
       - name: Inject descriptions
         working-directory: ./devextreme
         run: |
-          npm run internal-tool -- inject-descriptions --descriptions-path ./devextreme-documentation-repo/artifacts/internal-tools/Descriptions.json --js-scripts ./js
+          npm run internal-tool -- inject-descriptions --descriptions-path ../devextreme-documentation-repo/artifacts/internal-tools/Descriptions.json --js-scripts ./js
 
       - name: Install packages
         working-directory: ./devextreme
