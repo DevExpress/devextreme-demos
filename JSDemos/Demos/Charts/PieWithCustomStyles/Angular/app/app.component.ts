@@ -56,11 +56,11 @@ export class AppComponent {
   customizeText = (info) => info.argument;
 
   private hexToRgb = (hex: string, opacity = 1) => {
-    const hexArray = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return `rgba(${parseInt(hexArray[1], 16)}, ${parseInt(hexArray[2], 16)}, ${parseInt(hexArray[3], 16)}, ${opacity})`;
+    const hexColorParts = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return `rgba(${parseInt(hexColorParts[1], 16)}, ${parseInt(hexColorParts[2], 16)}, ${parseInt(hexColorParts[3], 16)}, ${opacity})`;
   };
 
-  private gradient = (type: string, color1: string, color2: string) => registerGradient(type, {
+  private getGradient = (type: string, color1: string, color2: string) => registerGradient(type, {
     colors: [{
       offset: '20%',
       color: color1,
@@ -70,9 +70,9 @@ export class AppComponent {
     }],
   });
 
-  private getLinearGradient = (color: string) => this.gradient('linear', color, this.hexToRgb(color, 0.5));
+  private getLinearGradient = (color: string) => this.getGradient('linear', color, this.hexToRgb(color, 0.5));
 
-  private getRadialGradient = (color: string) => this.gradient('radial', this.hexToRgb(color, 0.5), color);
+  private getRadialGradient = (color: string) => this.getGradient('radial', this.hexToRgb(color, 0.5), color);
 
   private getPatternImage = (color: string) => registerPattern({
     width: this.imagePatternSize,
@@ -84,7 +84,7 @@ export class AppComponent {
       image.setAttribute('y', '0');
       image.setAttribute('width', this.imagePatternSize.toString());
       image.setAttribute('height', this.imagePatternSize.toString());
-      image.setAttribute('href', '../../../../images/Charts/PieWithCustomStyles/diamond.png');
+      image.setAttribute('href', '../../../../images/Charts/PieWithCustomStyles/diamond.svg');
       image.setAttribute('opacity', '0.6');
 
       container.appendChild(rect);

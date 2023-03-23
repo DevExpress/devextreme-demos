@@ -49,11 +49,11 @@ const imagePatternSize = 12;
 const shapePatternSize = 6;
 
 function hexToRgb(hex, opacity = 1) {
-  const hexArray = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return `rgba(${parseInt(hexArray[1], 16)}, ${parseInt(hexArray[2], 16)}, ${parseInt(hexArray[3], 16)}, ${opacity})`;
+  const hexColorParts = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return `rgba(${parseInt(hexColorParts[1], 16)}, ${parseInt(hexColorParts[2], 16)}, ${parseInt(hexColorParts[3], 16)}, ${opacity})`;
 }
 
-function gradient(type, color1, color2) {
+function getGradient(type, color1, color2) {
   return registerGradient(type, {
     colors: [{
       offset: '20%',
@@ -65,9 +65,9 @@ function gradient(type, color1, color2) {
   });
 }
 
-function getLinearGradient(color) { return gradient('linear', color, hexToRgb(color, 0.5)); }
+function getLinearGradient(color) { return getGradient('linear', color, hexToRgb(color, 0.5)); }
 
-function getRadialGradient(color) { return gradient('radial', hexToRgb(color, 0.5), color); }
+function getRadialGradient(color) { return getGradient('radial', hexToRgb(color, 0.5), color); }
 
 function getPatternImage(color) {
   return registerPattern({
@@ -80,7 +80,7 @@ function getPatternImage(color) {
       image.setAttribute('y', 0);
       image.setAttribute('width', imagePatternSize);
       image.setAttribute('height', imagePatternSize);
-      image.setAttribute('href', '../../../../images/Charts/PieWithCustomStyles/diamond.png');
+      image.setAttribute('href', '../../../../images/Charts/PieWithCustomStyles/diamond.svg');
       image.setAttribute('opacity', '0.6');
 
       container.appendChild(rect);
