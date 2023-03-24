@@ -43,9 +43,9 @@
             </div>
         </div>
         <div class="column">
-             <div class="option">
+            <div class="option">
                 <span>Pan control</span>
-               @(Html.DevExtreme().Switch()
+                @(Html.DevExtreme().Switch()
                     .OnValueChanged("switch_panVisible")
                     .Value(true)
                 )
@@ -79,8 +79,8 @@
         $("#vector-map").dxVectorMap("instance").option('controlBar.panVisible', data.value);
     }
 
-     function switch_zoomVisible(data) {
+    function switch_zoomVisible(data) {
         $("#vector-map").dxVectorMap("instance").option('controlBar.zoomVisible', data.value);
     }
-   
+
 </script>

@@ -81,7 +81,7 @@
                 .OnValueChanged("weekNumberRule_changed")
             )
         </div>
-         <div class="option">
+        <div class="option">
             <span>Zoom level</span>
             @(Html.DevExtreme().SelectBox()
                 .ID("zoom-level")
@@ -151,7 +151,7 @@
         }
     }
 
-      function minValue_changed(data) {
+    function minValue_changed(data) {
         const minDate = new Date(date - msInDay * 3);
 
         getCalendarInstance().option("min", data.value ? minDate : null);

@@ -121,7 +121,7 @@
                 },
                 timeout: 5000,
             });
-    
+
             return deferred.promise();
         }
     });
@@ -129,7 +129,7 @@
     function isNotEmpty(value) {
         return value !== undefined && value !== null && value !== '';
     }
-    
+
     function updateEmployeeInfo() {
         var result = $.trim((firstName || "") + " " + (lastName || ""));
 
