@@ -802,6 +802,7 @@
     <Content Include="Content\DemosStyles\Charts\PieWithCustomLabels.css" />
     <Content Include="Content\DemosStyles\Charts\PieWithMultipleSeries.css" />
     <Content Include="Content\DemosStyles\Charts\PieWithSmallValuesGrouped.css" />
+    <Content Include="Content\DemosStyles\Charts\PieWithCustomStyles.css" />
     <Content Include="Content\DemosStyles\Charts\PointImage.css" />
     <Content Include="Content\DemosStyles\Charts\RangeArea.css" />
     <Content Include="Content\DemosStyles\Charts\RangeBar.css" />
@@ -1145,6 +1146,7 @@
     <Content Include="Content\Images\Charts\Annotation\apple-watch.png" />
     <Content Include="Content\Images\Charts\Annotation\iphone-se.png" />
     <Content Include="Content\Images\Charts\Annotation\iphone-x.png" />
+    <Content Include="Content\Images\Charts\PieWithCustomStyles\diamond.svg" />
     <Content Include="Content\Images\Charts\PointImage\icon-medal-bronse.png" />
     <Content Include="Content\Images\Charts\PointImage\icon-medal-gold.png" />
     <Content Include="Content\Images\Charts\PointImage\icon-medal-silver.png" />
@@ -2461,6 +2463,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Charts\PieWithResolvedLabelOverlapping.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\PieWithCustomStyles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\SelectBox\Overview.cshtml" />
