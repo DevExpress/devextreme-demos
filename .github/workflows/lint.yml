@@ -42,6 +42,16 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Restore npm cache
+        uses: actions/cache@v3
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-modules
+
+      - name: Run npm install
+        run: npm install --no-audit --no-fund
+
       - name: Lint MVCDemos
         run: |
           npm run lint-mvc
@@ -57,6 +67,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+
+      - name: Restore npm cache
+        uses: actions/cache@v3
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-modules
+
+      - name: Run npm install
+        run: npm install --no-audit --no-fund
 
       - name: Lint MVCDemos
         run: |
