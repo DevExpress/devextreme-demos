@@ -1,3 +1,9 @@
-The aggregation algorithm depends on the **aggregateByCategory** property. In this demo, this property is set to **true** and applies the *"sum"* [aggregation method](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/aggregation/#method) for the groups specified in the **dataSource**. 
+To [aggregate](/Documentation/Guide/UI_Components/Chart/Data_Aggregation/) points on discrete axes, do the following steps:
 
-If **aggregateByCategory** is **false**, the specified aggregation method is not applied.
+1. Enable aggregation.    
+You can enable data aggregation for individual series, all series of a specific type, or for all series in the Chart. Assign `true` to the [aggregation](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/aggregation/).[enabled](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/aggregation/#enabled) property.
+In this demo, data aggregation is enabled for all series.
+
+2. Specify aggregation [method](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/aggregation/#method).    
+In this demo, the `sum` method is used.
+
