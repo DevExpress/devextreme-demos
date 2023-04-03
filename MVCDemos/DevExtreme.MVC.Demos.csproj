@@ -972,11 +972,13 @@
     <Content Include="Content\DemosStyles\RangeSlider\Overview.css" />
     <Content Include="Content\DemosStyles\Resizable\Overview.css" />
     <Content Include="Content\DemosStyles\Scheduler\Adaptability.css" />
+    <Content Include="Content\DemosStyles\Scheduler\AllDayPanelMode.css" />
     <Content Include="Content\DemosStyles\Scheduler\ContextMenuIntegration.css" />
     <Content Include="Content\DemosStyles\Scheduler\CurrentTimeIndicator.css" />
     <Content Include="Content\DemosStyles\Scheduler\CustomDragAndDrop.css" />
     <Content Include="Content\DemosStyles\Scheduler\AdaptiveAppointments.css" />
     <Content Include="Content\DemosStyles\Scheduler\CellTemplates.css" />
+    <Content Include="Content\DemosStyles\Scheduler\Editing.css" />
     <Content Include="Content\DemosStyles\Scheduler\VirtualScrolling.css" />
     <Content Include="Content\DemosStyles\Scheduler\CustomizeIndividualViews.css" />
     <Content Include="Content\DemosStyles\Scheduler\CustomTemplates.css" />
@@ -2255,6 +2257,7 @@
     <Content Include="Views\DataGrid\PDFExportMultipleGrids.cshtml" />
     <Content Include="Views\Resizable\Overview.cshtml" />
     <Content Include="Views\Gantt\ExportToPDF.cshtml" />
+    <Content Include="Views\Scheduler\AllDayPanelMode.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
