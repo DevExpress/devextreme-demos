@@ -7,12 +7,12 @@ You can enable data aggregation for the following series:
     Assign `true` to the [series](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/).[aggregation](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/aggregation/).[enabled](/Documentation/ApiReference/UI_Components/dxChart/Configuration/series/aggregation/#enabled) property.
 
     - All series of a specific type  
-    Assign `true` to the `aggregaion.enabled` property belonging to the configuration object of a [specific series type](/Documentation/ApiReference/UI_Components/dxChart/Series_Types/).
+    Assign `true` to the `aggregaion.enabled` property that belongs to the configuration object of a [specific series type](/Documentation/ApiReference/UI_Components/dxChart/Series_Types/).
 
     - All series in the Chart   
     Assign `true` to the [commonSeriesSettings](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/).[aggregation](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/aggregation/).[enabled](/Documentation/ApiReference/UI_Components/dxChart/Configuration/commonSeriesSettings/aggregation/#enabled) property.    
 
-The order of this list specifies the priority order of aggregation in the component. For example, you can enable aggregation for all series and disable it for a specific series.
+Individual series aggregation settings have priority over common aggregation settings in the component. For example, you can enable aggregation for all series and disable it for a specific series.
 
 In this demo, data aggregation is enabled for all series.
 
