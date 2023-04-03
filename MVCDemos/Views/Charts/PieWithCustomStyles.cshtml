@@ -14,11 +14,11 @@
     )
     .Export(e => e.Enabled(true))
     .DataSource(new[] {
-        new { Type = "Stroke Pattern", Value = 1 },
-        new { Type = "Square Pattern", Value = 1 },
+        new { Type = "Stripes", Value = 1 },
+        new { Type = "Grid", Value = 1 },
         new { Type = "Linear Gradient", Value = 1 },
         new { Type = "Radial Gradient", Value = 1 },
-        new { Type = "Pattern with image", Value = 1 }
+        new { Type = "Image", Value = 1 }
     })
 )
 
@@ -37,10 +37,10 @@
         var color = point.series.getPointsByArg(point.argument)[0].getColor();
         var fillId;
         switch (point.argument) {
-            case 'Stroke Pattern':
+            case 'Stripes':
                 fillId = getStrokePattern(color);
                 break;
-            case 'Square Pattern':
+            case 'Grid':
                 fillId = getSquarePattern(color);
                 break;
             case 'Linear Gradient':
@@ -49,7 +49,7 @@
             case 'Radial Gradient':
                 fillId = getRadialGradient(color);
                 break;
-            case 'Pattern with image':
+            case 'Image':
                 fillId = getPatternImage(color);
                 break;
             default:
