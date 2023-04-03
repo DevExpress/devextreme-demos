@@ -24,6 +24,8 @@ runManualTest('List', 'ListSelection', ['jQuery', 'React', 'Vue', 'Angular'], (t
     await t.click(Selector(`.${SELECTBOX_CLASS}`).nth(0));
     await t.click(Selector(`.${POPUP_WRAPPER_CLASS} .${LIST_ITEM_CONTENT_CLASS}`).nth(2));
 
+    await t.wait(2000);
+
     await takeScreenshot('List after change selectionMode to multiple.png');
 
     await t.click(Selector(`.${SELECTBOX_CLASS}`).nth(0));
