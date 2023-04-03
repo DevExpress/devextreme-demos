@@ -258,6 +258,7 @@ module.exports = {
         'volumne', // stockMarket, rename to volume
         'vue',
         'winloss',
+        'writeable', // knockout
         'xlsx', // ExcelJS
         'xhr',
         'Xmla',
@@ -354,6 +355,13 @@ module.exports = {
     },
   }, {
     files: [
+      'JSDemos/Demos/**/Knockout/*.*',
+    ],
+    rules: {
+      'no-param-reassign': 0,
+    },
+  }, {
+    files: [
       '**/test-code.js',
       '**/client-script.js',
     ],
@@ -366,8 +374,10 @@ module.exports = {
     files: [
       'JSDemos/Demos/**/jQuery/*.*',
       'JSDemos/Demos/**/AngularJS/*.*',
+      'JSDemos/Demos/**/Knockout/*.*',
       'utils/templates/jQuery/**/*.*',
       'utils/templates/AngularJS/**/*.*',
+      'utils/templates/Knockout/**/*.*',
     ],
     env: {
       jquery: true,

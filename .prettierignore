@@ -7,4 +7,5 @@
 *.json
 MVCDemos
 NetCoreDemos
+**/Knockout/**
 .github

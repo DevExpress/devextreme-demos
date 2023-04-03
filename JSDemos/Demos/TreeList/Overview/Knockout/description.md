@@ -1,0 +1,1 @@
+DevExtreme JavaScript Tree List is a responsive UI component for visualizing hierarchical data in a grid. It is available for Knockout. Taking the best of the MVVM pattern, Tree List supports two-way binding to view model properties. Discover Tree List's key features, like data editing and validation, sorting, filtering and searching, in other demos from this section.
