@@ -27,6 +27,7 @@
     <div class="option">
       <span>Select All Mode</span>
       <dx-select-box
+        [disabled]="selectionModeValue !== 'all'"
         [items]="['page', 'allPages']"
         [(value)]="selectAllModeValue"
       >
