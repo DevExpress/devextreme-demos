@@ -39,7 +39,6 @@
         "jquery": "3.6.3",
         "jspdf": "2.5.1",
         "jspdf-autotable": "3.5.28",
-        "knockout": "3.5.1",
         "plugin-typescript": "8.0.0",
         "preact": "10.12.1",
         "prettier": "2.8.4",
