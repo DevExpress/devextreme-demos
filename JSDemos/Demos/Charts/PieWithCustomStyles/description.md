@@ -2,7 +2,7 @@ This demo enables custom patterns and gradients in PieChart slices.
 
 ## Gradient
 
-Call the [registerGradient()](/Documentation/ApiReference/Common/Utils/viz/#registerGradienttype_options) method to obtain a gradient ID. Specify method arguments:
+Call the [registerGradient()](/Documentation/ApiReference/Common/Utils/viz/#registerGradienttype_options) method to obtain the gradient ID. Specify method arguments:
 
 - `type`    
 This method supports two gradient types: *'linear'* and *'radial'*.
@@ -11,7 +11,7 @@ This method supports two gradient types: *'linear'* and *'radial'*.
 An object with gradient options.
 
     - `colors`    
-    An array of gradient colors. Each color is an object that includes `color` and `offset` fields. The `offset` field specifies a starting point for each color.
+    An array of gradient colors. Each color is an object that includes `color` and `offset` fields. The `offset` field specifies the starting point for each color.
 
     - `rotationAngle` (linear gradients only)
     You can use this option to rotate linear gradients.
@@ -20,7 +20,7 @@ An object with gradient options.
 
 This demo uses patterns for two pie slices: Grid and Stripes. 
 
-To acquire a pattern ID, call the [registerPattern()](/Documentation/ApiReference/Common/Utils/viz/#registerPatternoptions) method. Specify method arguments:
+To get the pattern ID, call the [registerPattern()](/Documentation/ApiReference/Common/Utils/viz/#registerPatternoptions) method. Specify method arguments:
 
 - `options`    
 An object with pattern options.
@@ -36,9 +36,9 @@ An object with pattern options.
 
 ## Fill the PieChart
 
-If you want to fill all slices with the same pattern or gradient, assign pattern ID to [series](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/).[color](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/#color).`fillId`. If you want to customize each slice individually, implement the [customizePoint](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/#customizePoint) function as shown in this demo.
+If you want to fill all slices with the same pattern or gradient, assign the pattern ID to [series](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/).[color](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/series/#color).`fillId`. If you want to customize each slice individually, implement the [customizePoint](/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/#customizePoint) function as shown in this demo.
 
-Custom patterns and gradients are not exclusive to PieChart only. The following components support this functionality as well:
+Custom patterns and gradients are not exclusive to PieChart only. The following components also support this functionality:
 
 - [Chart](/Documentation/Guide/UI_Components/Chart/Series/Customize_Appearance/)
 
