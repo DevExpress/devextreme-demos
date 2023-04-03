@@ -1,4 +1,4 @@
-This enables custom patterns and gradients in PieChart slices.
+This demo enables custom patterns and gradients in PieChart slices.
 
 ## Gradient
 
