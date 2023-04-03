@@ -19,22 +19,22 @@ runManualTest('List', 'ListSelection', ['jQuery', 'React', 'Vue', 'Angular'], (t
 
     await t.click(Selector(`.${LIST_ITEM_CONTENT_CLASS}`).nth(3));
 
-    await takeScreenshot('List after click on item, selectionMode="all".png');
+    await takeScreenshot('List after click on item, selectionMode=all.png');
 
     await t.click(Selector(`.${SELECTBOX_CLASS}`).nth(0));
     await t.click(Selector(`.${POPUP_WRAPPER_CLASS} .${LIST_ITEM_CONTENT_CLASS}`).nth(2));
 
-    await takeScreenshot('List after change selectionMode to "multiple".png');
+    await takeScreenshot('List after change selectionMode to multiple.png');
 
     await t.click(Selector(`.${SELECTBOX_CLASS}`).nth(0));
     await t.click(Selector(`.${POPUP_WRAPPER_CLASS} .${LIST_ITEM_CONTENT_CLASS}`).nth(1));
 
-    await takeScreenshot('List after change selectionMode to "single".png');
+    await takeScreenshot('List after change selectionMode to single.png');
 
     await t.click(Selector(`.${SELECTBOX_CLASS}`).nth(0));
     await t.click(Selector(`.${POPUP_WRAPPER_CLASS} .${LIST_ITEM_CONTENT_CLASS}`).nth(0));
 
-    await takeScreenshot('List after change selectionMode to "none".png');
+    await takeScreenshot('List after change selectionMode to none.png');
 
     await t
       .expect(compareResults.isValid())
