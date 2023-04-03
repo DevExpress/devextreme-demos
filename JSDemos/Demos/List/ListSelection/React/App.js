@@ -20,10 +20,12 @@ export default function App() {
   const [selectedItemKeys, setSelectedItemKeys] = React.useState([]);
 
   const onSelectedItemKeysChange = React.useCallback((args) => {
-    if (args.name === 'selectedItemKeys' && selectionMode !== 'none') {
-      setSelectedItemKeys(args.value);
+    if (args.name === 'selectedItemKeys') {
+      if (selectionMode !== 'none' || selectedItemKeys.length !== 0) {
+        setSelectedItemKeys(args.value);
+      }
     }
-  }, [selectionMode, setSelectedItemKeys]);
+  }, [selectionMode, selectedItemKeys, setSelectedItemKeys]);
 
   const onSelectionModeChange = React.useCallback((args) => {
     setSelectionMode(args.value);
