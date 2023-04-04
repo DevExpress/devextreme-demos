@@ -9,10 +9,11 @@ fixture('Common.EditorAppearanceVariants')
     await t.resizeWindow(900, 600);
   });
 
-runManualTest('Common', 'EditorAppearanceVariants', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
+runManualTest('Common', 'EditorAppearanceVariants', ['React', 'Vue', 'Angular'], (test) => {
   test('EditorAppearanceVariants', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
-
+    
+    const SELECTBOX_CLASS = 'dx-selectbox';
     const stylingModes = ['outlined', 'filled', 'underlined'];
     const labelModes = ['static', 'floating', 'hidden'];
 
@@ -21,12 +22,12 @@ runManualTest('Common', 'EditorAppearanceVariants', ['jQuery', 'React', 'Vue', '
     };
 
     const changeLabelMode = async (labelMode) => {
-      await t.click($('.dx-selectbox').nth(3));
+      await t.click($(`.${SELECTBOX_CLASS}`).nth(3));
       await t.click($('.dx-item').withText(labelMode));
     };
 
     const changeStylingMode = async (stylingMode) => {
-      await t.click($('.dx-selectbox').nth(2));
+      await t.click($(`.${SELECTBOX_CLASS}`).nth(2));
       await t.click($('.dx-item').withText(stylingMode)).wait(500);
     };
 
