@@ -523,13 +523,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Copy changed files
-      uses: actions/upload-artifact@v3
-      with:
-        name: changedfiles
-        path: ${{ github.workspace }}/changed-files.json
-        if-no-files-found: ignore
-
     - name: Run TestCafe tests
       env:
         CHANGEDFILEINFOSPATH: ${{ github.workspace }}/changed-files.json
@@ -555,5 +548,12 @@ jobs:
       with:
         name: screenshots-${{ steps.screenshotname.outputs.value }}
         path: ${{ github.workspace }}/testing/artifacts/compared-screenshots/*
+        if-no-files-found: ignore
+
+    - name: Copy changed files
+      uses: actions/upload-artifact@v3
+      with:
+        name: changedfiles
+        path: ${{ github.workspace }}/changed-files.json
         if-no-files-found: ignore
 
