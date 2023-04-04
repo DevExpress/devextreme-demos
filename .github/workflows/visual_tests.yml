@@ -162,10 +162,3 @@ jobs:
         name: screenshots
         path: ${{ github.workspace }}/testing/artifacts/compared-screenshots/*
         if-no-files-found: ignore
-
-    - name: Copy changed files
-      uses: actions/upload-artifact@v3
-      with:
-        name: changedfiles
-        path: ${{ github.workspace }}/changed-files.json
-        if-no-files-found: ignore
