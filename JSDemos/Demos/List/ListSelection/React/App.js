@@ -19,20 +19,20 @@ export default function App() {
   const [selectAllMode, setSelectAllMode] = React.useState('page');
   const [selectedItemKeys, setSelectedItemKeys] = React.useState([]);
 
-  const onSelectedItemKeysChange = React.useCallback((args) => {
-    if (args.name === 'selectedItemKeys') {
+  const onSelectedItemKeysChange = React.useCallback(({ name, value }) => {
+    if (name === 'selectedItemKeys') {
       if (selectionMode !== 'none' || selectedItemKeys.length !== 0) {
-        setSelectedItemKeys(args.value);
+        setSelectedItemKeys(value);
       }
     }
   }, [selectionMode, selectedItemKeys]);
 
-  const onSelectionModeChange = React.useCallback((args) => {
-    setSelectionMode(args.value);
+  const onSelectionModeChange = React.useCallback((value) => {
+    setSelectionMode(value);
   }, []);
 
-  const onSelectAllModeChange = React.useCallback((args) => {
-    setSelectAllMode(args.value);
+  const onSelectAllModeChange = React.useCallback((value) => {
+    setSelectAllMode(value);
   }, []);
 
   return (
@@ -60,7 +60,7 @@ export default function App() {
           <SelectBox
             items={selectionModes}
             value={selectionMode}
-            onValueChanged={onSelectionModeChange}>
+            onValueChange={onSelectionModeChange}>
           </SelectBox>
         </div>
         <div className="option">
@@ -70,7 +70,7 @@ export default function App() {
             disabled={selectionMode !== 'all'}
             items={selectAllModes}
             value={selectAllMode}
-            onValueChanged={onSelectAllModeChange}>
+            onValueChange={onSelectAllModeChange}>
           </SelectBox>
         </div>
       </div>
