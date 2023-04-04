@@ -7,7 +7,7 @@ const fileSystemUtils = require('../shared/fs-utils');
 const menuMetaUtils = require('./menu-meta-utils');
 const menuMetaData = require('../../JSDemos/menuMeta.json');
 
-const existingApproaches = ['jQuery', 'Knockout', 'AngularJS', 'Angular', 'React', 'Vue'];
+const existingApproaches = ['jQuery', 'AngularJS', 'Angular', 'React', 'Vue'];
 
 // const descriptionFileName = 'description.md';
 
