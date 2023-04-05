@@ -16,7 +16,7 @@ DemoApp.controller('DemoController', ($scope) => {
     apiKey: {
       bing: 'Aq3LKP2BOmzWY47TZoT1YdieypN_rB6RY9FqBfx-MDCKjvvWBbT68R51xwbL-AqC',
     },
-    center: 'Brooklyn Bridge,New York,NY',
+    center: '40.7061, -73.9969',
     zoom: 14,
     height: 400,
     width: '100%',

@@ -11,7 +11,7 @@ $(() => {
   }];
 
   const map = $('#map').dxMap({
-    center: 'Brooklyn Bridge,New York,NY',
+    center: '40.7061, -73.9969',
     zoom: 14,
     height: 400,
     width: '100%',

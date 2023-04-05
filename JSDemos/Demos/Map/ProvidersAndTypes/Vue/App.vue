@@ -4,7 +4,7 @@
       :zoom="14"
       :height="400"
       v-model:type="mapTypeValue"
-      center="Brooklyn Bridge,New York,NY"
+      center="40.7061, -73.9969"
       width="100%"
       provider="bing"
       :api-key="apiKey"

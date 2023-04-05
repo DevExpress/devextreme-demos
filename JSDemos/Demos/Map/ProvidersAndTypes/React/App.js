@@ -19,7 +19,7 @@ export default function App() {
   return (
     <div>
       <Map
-        defaultCenter="Brooklyn Bridge,New York,NY"
+        defaultCenter="40.7061, -73.9969"
         defaultZoom={14}
         height={400}
         width="100%"
