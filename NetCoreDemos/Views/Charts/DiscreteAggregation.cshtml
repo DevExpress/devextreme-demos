@@ -8,6 +8,5 @@
         .Type(SeriesType.Bar);
     })
     .SeriesTemplate(t => t.NameField("Year"))
-    .ArgumentAxis(a => a.AggregateByCategory(true))
     .DataSource(Model)
 )

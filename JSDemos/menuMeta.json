@@ -2725,6 +2725,17 @@
               "/Models/SampleData/MedalAnnotations.cs"
             ],
             "DemoType": "Viz"
+          },
+          {
+            "Title": "Pie with Custom Fill Styles",
+            "Name": "PieWithCustomStyles",
+            "DocUrl": "",
+            "Widget": "Charts",
+            "MvcDescription": "",
+            "NetCoreDescription": "",
+            "MvcAdditionalFiles": [],
+            "DemoType": "Web",
+            "Badge": "New"
           }
         ]
       },
@@ -3617,9 +3628,8 @@
             "DemoType": "Viz"
           },
           {
-            "Title": "Title And Center Label Customized",
+            "Title": "Title and Center Label Customization",
             "Name": "GaugeTitleCustomized",
-            "DocUrl": "Guide/UI_Components/CircularGauge/Visual_Elements/#Title_and_Subtitle",
             "Widget": "Gauges",
             "DemoType": "Viz",
             "Badge": "Updated"
@@ -5561,7 +5571,7 @@
             "Name": "Overview",
             "Widget": "Popover"
           }
-        ] 
+        ]
       },
       {
         "Name": "Popup",
@@ -5581,8 +5591,8 @@
           {
             "Title": "Scrolling",
             "Name": "Scrolling",
-            "DocUrl": "Guide/UI_Components/ScrollView/Overview/",
-            "Widget": "Popup"
+            "Widget": "Popup",
+            "Badge": "Updated"
           }
         ]
       },

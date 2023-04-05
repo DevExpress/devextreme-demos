@@ -15,7 +15,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View();
         }
 
-        [HttpPost("[action]")]
+        [HttpPost]
         [EnableCors("CorsPolicy")]
         public ActionResult Upload(IFormFile file) {
             try {
@@ -59,7 +59,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View();
         }
 
-        [HttpPost("[action]")]
+        [HttpPost]
         public ActionResult UploadImage(IFormFile imageFile) {
             try {
                 var extension = Path.GetExtension(imageFile.FileName).ToUpperInvariant();
@@ -102,7 +102,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View();
         }
 
-        [HttpPost("[action]")]
+        [HttpPost]
         public ActionResult UploadChunk(IFormFile file) {
             var chunkMetadata = Request.Form["chunkMetadata"];
 

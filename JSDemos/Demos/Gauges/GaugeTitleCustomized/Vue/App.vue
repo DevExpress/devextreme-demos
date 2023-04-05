@@ -16,7 +16,7 @@
       <DxRangeContainer background-color="#03a9f4"/>
       <DxValueIndicator color="#03a9f4"/>
       <DxTitle
-        text="Amount of Produced Gold (Kilos)"
+        text="Gold Production (in Kilograms)"
         vertical-alignment="bottom"
       >
         <DxFont
@@ -40,19 +40,22 @@
               x="0"
               y="0"
               width="100"
-              height="50"
-              rx="25"
+              height="70"
+              rx="8"
               fill="#f2f2f2"
             />
             <text
               text-anchor="middle"
               font-size="20"
-              y="25"
+              y="27"
               x="50"
               fill="#000"
-              alignment-baseline="middle"
             >
-              {{ data.data.value() }}
+              <tspan x="50">{{ data.data.value() }}</tspan>
+              <tspan
+                x="50"
+                dy="30"
+              >kg</tspan>
             </text>
           </g>
           <g transform="translate(43 140)">
@@ -66,18 +69,17 @@
               fill="#fff"
             />
             <text
-              text-anchor="middle"
+              text-anchor="start"
               font-size="12"
               y="23"
-              x="57"
+              x="15"
               fill="#000"
-              alignment-baseline="middle"
             >
-              <tspan x="57">Capacity: 10kg</tspan>
+              <tspan x="15">Capacity: 10 kg</tspan>
               <tspan
-                x="57"
+                x="15"
                 dy="20"
-              >Graduation: 10g</tspan>
+              >Graduation: 10 g</tspan>
             </text>
           </g>
         </svg>

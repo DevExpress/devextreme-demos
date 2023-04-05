@@ -5,7 +5,7 @@
     <div class="dx-field">
         @(Html.DevExtreme().Lookup()
             .ID("lookup")
-            .DataSource(new JS("employees"))
+            .DataSource(Model)
             .DisplayExpr(new JS("lookup_displayExpr"))
             .DropDownOptions(p => p.ShowTitle(false))
             .Placeholder("Select employee")

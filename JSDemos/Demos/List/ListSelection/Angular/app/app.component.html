@@ -5,12 +5,12 @@
       [dataSource]="tasks"
       [height]="400"
       [selectionMode]="selectionModeValue"
-      [selectAllMode]="selectAllModeVlaue"
+      [selectAllMode]="selectAllModeValue"
       [showSelectionControls]="true"
       [selectedItemKeys]="[]"
     ></dx-list>
     <div class="selected-data">
-      <span class="caption">Selected IDs:</span>
+      <span class="caption">Selected IDs: </span>
       <span>{{ list.selectedItemKeys.join(", ") }}</span>
     </div>
   </div>
@@ -27,8 +27,9 @@
     <div class="option">
       <span>Select All Mode</span>
       <dx-select-box
+        [disabled]="selectionModeValue !== 'all'"
         [items]="['page', 'allPages']"
-        [(value)]="selectAllModeVlaue"
+        [(value)]="selectAllModeValue"
       >
       </dx-select-box>
     </div>
