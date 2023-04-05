@@ -28,7 +28,11 @@
             v-model:mode="passwordMode"
             @value-changed="onPasswordChanged"
           >
-            <DxTextBoxButton name="password" location="after" :options="passwordButton"/>
+            <DxTextBoxButton
+              name="password"
+              location="after"
+              :options="passwordButton"
+            />
             <DxValidator>
               <DxRequiredRule message="Password is required"/>
             </DxValidator>
@@ -38,8 +42,15 @@
       <div class="dx-field">
         <div class="dx-field-label">Confirm Password</div>
         <div class="dx-field-value">
-          <DxTextBox v-model:value="confirmPassword" v-model:mode="confirmPasswordMode">
-            <DxTextBoxButton name="password" location="after" :options="confirmPasswordButton"/>
+          <DxTextBox
+            v-model:value="confirmPassword"
+            v-model:mode="confirmPasswordMode"
+          >
+            <DxTextBoxButton
+              name="password"
+              location="after"
+              :options="confirmPasswordButton"
+            />
             <DxValidator @initialized="onInit">
               <DxRequiredRule message="Confirm Password is required"/>
               <DxCompareRule
