@@ -30,9 +30,26 @@ $(() => {
         .reduce((s, p) => s + p.originalValue, 0);
       const { country } = pieChart.getAllSeries()[0].getVisiblePoints()[0].data;
 
-      const circle = createCircle(100, 100, '#eee', pieChart.getInnerRadius() - 6);
-      const image = createImage(70, 58, 60, 40, `../../../../images/flags/${country.replace(/\s/, '').toLowerCase()}.svg`);
-      const text = createText(100, 120, '#494949', 'middle', 18, [country, formatNumber(total)]);
+      const circle = createElement('circle', {
+        cx: 100,
+        cy: 100,
+        fill: '#eee',
+        r: pieChart.getInnerRadius() - 6,
+      });
+      const image = createElement('image', {
+        x: 70,
+        y: 58,
+        width: 60,
+        height: 40,
+        href: `../../../../images/flags/${country.replace(/\s/, '').toLowerCase()}.svg`,
+      });
+      const text = createText({
+        x: 100,
+        y: 120,
+        fill: '#494949',
+        'text-anchor': 'middle',
+        'font-size': 18,
+      }, [country, formatNumber(total)]);
 
       container.appendChild(circle);
       container.appendChild(image);
@@ -40,56 +57,27 @@ $(() => {
     },
   };
 
-  function createCircle(x, y, color, radius) {
-    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-
-    circle.setAttribute('cx', x);
-    circle.setAttribute('cy', y);
-    circle.setAttribute('fill', color);
-    circle.setAttribute('r', radius);
-
-    return circle;
+  function createElement(type, attributes) {
+    const element = document.createElementNS('http://www.w3.org/2000/svg', type);
+    Object.keys(attributes).forEach((attributeName) => {
+      element.setAttribute(attributeName, attributes[attributeName]);
+    });
+    return element;
   }
 
-  function createImage(x, y, width, height, href) {
-    const image = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+  function createText(attributes, contents) {
+    const text = createElement('text', attributes);
 
-    image.setAttribute('x', x);
-    image.setAttribute('y', y);
-    image.setAttribute('width', width);
-    image.setAttribute('height', height);
-    image.setAttribute('href', href);
+    const tspan1 = createElement('tspan', { x: attributes.x, dy: 0 });
+    tspan1.textContent = contents[0];
 
-    return image;
-  }
-
-  function createText(x, y, color, textAnchor, fontSize, contents) {
-    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-
-    text.setAttribute('x', x);
-    text.setAttribute('y', y);
-    text.setAttribute('fill', color);
-    text.setAttribute('text-anchor', textAnchor);
-    text.setAttribute('font-size', fontSize);
-
-    const tspan1 = createTSpan(x, 0, contents[0]);
-    const tspan2 = createTSpan(x, 20, contents[1], 600);
+    const tspan2 = createElement('tspan', { x: attributes.x, dy: 20, 'font-weight': 600 });
+    tspan2.textContent = contents[1];
 
     text.appendChild(tspan1);
     text.appendChild(tspan2);
 
     return text;
-  }
-
-  function createTSpan(x, dy, content, fontWeight) {
-    const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
-
-    tspan.setAttribute('x', x);
-    tspan.setAttribute('dy', dy);
-    tspan.setAttribute('font-weight', fontWeight);
-    tspan.textContent = content;
-
-    return tspan;
   }
 
   $('#countries')
