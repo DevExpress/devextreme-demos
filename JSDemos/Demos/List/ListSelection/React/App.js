@@ -25,15 +25,15 @@ export default function App() {
         setSelectedItemKeys(value);
       }
     }
-  }, [selectionMode, selectedItemKeys]);
+  }, [selectionMode, selectedItemKeys, setSelectedItemKeys]);
 
   const onSelectionModeChange = React.useCallback((value) => {
     setSelectionMode(value);
-  }, []);
+  }, [setSelectionMode]);
 
   const onSelectAllModeChange = React.useCallback((value) => {
     setSelectAllMode(value);
-  }, []);
+  }, [setSelectAllMode]);
 
   return (
     <React.Fragment>
