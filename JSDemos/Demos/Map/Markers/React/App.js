@@ -19,7 +19,7 @@ export default function App() {
   const onCustomMarkersChange = React.useCallback((value) => {
     setCurrentMarkerUrl(value ? currentMarkerUrl : null);
     setCurrentMarkersData(markersData);
-  }, []);
+  }, [setCurrentMarkerUrl, setCurrentMarkersData]);
 
   const showTooltips = React.useCallback(() => {
     setCurrentMarkersData(currentMarkersData.map((item) => {
@@ -27,7 +27,7 @@ export default function App() {
       newItem.tooltip.isShown = true;
       return newItem;
     }));
-  }, []);
+  }, [setCurrentMarkersData]);
 
   return (
     <React.Fragment>

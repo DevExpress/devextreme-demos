@@ -20,14 +20,14 @@ export default function App() {
       item.mode = value;
       return item;
     }));
-  }, [routes]);
+  }, [routes, setRoutes]);
 
   const routeColorChange = React.useCallback((value) => {
     setRoutes(routes.map((item) => {
       item.color = value;
       return item;
     }));
-  }, [routes]);
+  }, [routes, setRoutes]);
 
   return (
     <div>
