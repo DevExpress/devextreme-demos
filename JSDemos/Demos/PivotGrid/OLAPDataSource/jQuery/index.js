@@ -16,7 +16,9 @@ $(() => {
           dataField: '[Product].[Subcategory]',
           area: 'row',
           headerFilter: {
-            allowSearch: true,
+            search: {
+              enabled,
+            },
           },
         },
         { dataField: '[Ship Date].[Calendar Year]', area: 'column' },

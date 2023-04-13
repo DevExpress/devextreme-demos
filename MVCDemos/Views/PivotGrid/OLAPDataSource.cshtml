@@ -16,7 +16,7 @@
             fields.Add()
                 .DataField("[Product].[Subcategory]")
                 .Area(PivotGridArea.Row)
-                .HeaderFilter(hf => hf.AllowSearch(true));
+                .HeaderFilter(hf => hf.Search(hfs => hfs.Enabled(true)));
 
             fields.Add()
                 .DataField("[Ship Date].[Calendar Year]")

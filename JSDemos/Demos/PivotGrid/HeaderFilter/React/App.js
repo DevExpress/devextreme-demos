@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  PivotGrid, HeaderFilter, FieldChooser, FieldPanel,
+  PivotGrid, HeaderFilter, HeaderFilterSearch, FieldChooser, FieldPanel,
 } from 'devextreme-react/pivot-grid';
 import { CheckBox } from 'devextreme-react/check-box';
 
@@ -41,7 +41,7 @@ class App extends React.Component {
       showRelevantValues: true,
     };
 
-    this.onAllowSearchChanged = this.onAllowSearchChanged.bind(this);
+    this.onSearchEnabledChanged = this.onSearchEnabledChanged.bind(this);
     this.onShowRelevantValuesChanged = this.onShowRelevantValuesChanged.bind(this);
   }
 
@@ -60,11 +60,12 @@ class App extends React.Component {
           dataSource={dataSource}
         >
           <HeaderFilter
-            allowSearch={allowSearch}
             showRelevantValues={showRelevantValues}
             width={300}
             height={400}
-          />
+          >
+            <HeaderFilterSearch enabled={true}/>
+          </HeaderFilter>
           <FieldChooser allowSearch={true} />
           <FieldPanel visible={true} />
         </PivotGrid>
@@ -75,7 +76,7 @@ class App extends React.Component {
               <CheckBox
                 value={allowSearch}
                 text="Allow Search"
-                onValueChanged={this.onAllowSearchChanged}
+                onValueChanged={this.onSearchEnabledChanged}
               />
             </div>
             <div className="option">
@@ -91,9 +92,11 @@ class App extends React.Component {
     );
   }
 
-  onAllowSearchChanged(data) {
+  onSearchEnabledChanged(data) {
     this.setState({
-      allowSearch: data.value,
+      search: {
+        enabled: data.value,
+      },
     });
   }
 
