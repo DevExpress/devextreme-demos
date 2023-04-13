@@ -37,6 +37,8 @@
         .DataSource(d => d.Mvc()
             .Controller("DataGridEmployees")
             .LoadAction("Get")
+            .UpdateAction("Put")
+            .DeleteAction("Delete")
             .Key("ID")
         )
     )
