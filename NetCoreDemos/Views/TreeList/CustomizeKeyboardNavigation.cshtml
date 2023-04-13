@@ -1,10 +1,12 @@
-﻿@using DevExtreme.NETCore.Demos.Models.TreeList
-@model IEnumerable<Employee>
-
-<div id="tree-list-demo">
-    @(Html.DevExtreme().TreeList<Employee>()
+﻿<div id="tree-list-demo">
+    @(Html.DevExtreme().TreeList<DevExtreme.NETCore.Demos.Models.TreeList.Employee>()
         .ID("treeListContainer")
-        .DataSource(Model)
+        .DataSource(ds => ds.Mvc()
+            .Controller("TreeListEmployees")
+            .LoadAction("Get")
+            .UpdateAction("Put")
+            .Key("ID")
+        )
         .KeyExpr("ID")
         .ParentIdExpr("HeadID")
         .ColumnAutoWidth(true)
