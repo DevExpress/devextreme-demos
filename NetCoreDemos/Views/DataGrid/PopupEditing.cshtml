@@ -73,8 +73,9 @@
             .Controller("DataGridEmployees")
             .LoadAction("Get")
             .UpdateAction("Put")
+            .InsertAction("Post")
+            .DeleteAction("Delete")
             .Key("ID")
         )
-        .DataSourceOptions(d => d.Filter("['ID', '<=' , 14]"))
     )
 </div>

@@ -40,7 +40,7 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View();
         }
         public ActionResult CustomizeKeyboardNavigation() {
-            return View(SampleData.TreeListEmployees);
+            return View();
         }
         public ActionResult ColumnChooser() {
             return View(SampleData.TreeListEmployees);
