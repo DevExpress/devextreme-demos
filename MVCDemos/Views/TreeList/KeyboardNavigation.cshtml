@@ -33,6 +33,6 @@
             columns.AddFor(m => m.City);
             columns.AddFor(m => m.State);
         })
-        .DataSource(d => d.WebApi().Controller("TreeListEmployees").UpdateAction(true).Key("ID"))
+        .DataSource(d => d.WebApi().Controller("TreeListEmployees").UpdateAction(true).DeleteAction(true).Key("ID"))
     )
 </div>
