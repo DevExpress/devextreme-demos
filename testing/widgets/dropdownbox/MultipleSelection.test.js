@@ -9,20 +9,20 @@ fixture('DropDownBox.MultipleSelection')
   });
 
 runManualTest('DropDownBox', 'MultipleSelection', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
-  test.only('MultipleSelection', async (t) => {
+  test('MultipleSelection', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click($('.dx-dropdownbox').nth(0))
-        .wait(200)
-        
+      .wait(200);
+
     await takeScreenshot('dropdownbox_multiple_selection_treebox');
 
     await t.click($('.dx-dropdownbox').nth(0))
-        .wait(200);
+      .wait(200);
 
     await t.click($('.dx-dropdownbox').nth(1))
-        .wait(200)
-        
+      .wait(200);
+
     await takeScreenshot('dropdownbox_multiple_selection_gridbox');
 
     await t
