@@ -55,6 +55,7 @@
 <script>
 
 import DxDataGrid, { DxColumn, DxExport } from 'devextreme-vue/data-grid';
+import 'regenerator-runtime/runtime';
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
 // Our demo infrastructure requires us to use 'file-saver-es'.
