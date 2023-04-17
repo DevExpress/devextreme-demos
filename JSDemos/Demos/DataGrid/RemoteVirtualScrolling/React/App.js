@@ -1,7 +1,7 @@
 import React from 'react';
 
 import DataGrid, {
-  Scrolling, Paging, Column, HeaderFilter, HeaderFilterSearch,
+  Scrolling, Paging, Column, HeaderFilter, ColumnHeaderFilterSearch,
 } from 'devextreme-react/data-grid';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
@@ -23,7 +23,7 @@ class App extends React.Component {
         <Scrolling mode="virtual" rowRenderingMode="virtual" />
         <Paging defaultPageSize={100} />
         <HeaderFilter visible={true}>
-          <HeaderFilterSearch enabled={true}/>
+          <ColumnHeaderFilterSearch enabled={true} />
         </HeaderFilter>
 
         <Column dataField="Id" width={75} />

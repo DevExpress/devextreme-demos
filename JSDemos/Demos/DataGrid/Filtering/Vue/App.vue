@@ -56,7 +56,7 @@
         caption="City"
       >
         <DxHeaderFilter>
-          <DxHeaderFilterSearch :enabled="true"/>
+          <DxColumnHeaderFilterSearch :enabled="true"/>
         </DxHeaderFilter>
       </DxColumn>
     </DxDataGrid>
@@ -95,7 +95,7 @@ import {
   DxDataGrid,
   DxColumn,
   DxHeaderFilter,
-  DxHeaderFilterSearch,
+  DxColumnHeaderFilterSearch,
   DxSearchPanel,
   DxFilterRow,
 } from 'devextreme-vue/data-grid';
@@ -113,7 +113,7 @@ export default {
     DxDataGrid,
     DxColumn,
     DxHeaderFilter,
-    DxHeaderFilterSearch,
+    DxColumnHeaderFilterSearch,
     DxSearchPanel,
     DxFilterRow,
   },
