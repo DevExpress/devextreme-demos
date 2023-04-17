@@ -603,6 +603,14 @@
               "/Scripts/data/employeeData.js"
             ],
             "DemoType": "Web"
+          },
+          {
+            "Title": "Column Chooser",
+            "Name": "ColumnChooser",
+            "Widget": "DataGrid",
+            "MvcAdditionalFiles": [],
+            "DemoType": "Web",
+            "Badge": "New"
           }
         ]
       },
@@ -1502,7 +1510,8 @@
               "/Models/TreeList/Employee.cs",
               "/Models/SampleData/TreeListEmployees.cs"
             ],
-            "DemoType": "Web"
+            "DemoType": "Web",
+            "Badge": "Updated"
           },
           {
             "Title": "Column Reordering",

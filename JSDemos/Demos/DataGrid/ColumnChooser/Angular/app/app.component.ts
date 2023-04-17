@@ -26,6 +26,8 @@ export class AppComponent {
 
   selectByClick: boolean;
 
+  recursive: boolean;
+
   columnChooserModes: any;
 
   constructor(service: Service) {
@@ -33,6 +35,7 @@ export class AppComponent {
     this.searchEnabled = true;
     this.allowSelectAll = true;
     this.selectByClick = true;
+    this.recursive = true;
     this.columnChooserModes = [{
       key: 'dragAndDrop',
       name: 'Drag and drop',
