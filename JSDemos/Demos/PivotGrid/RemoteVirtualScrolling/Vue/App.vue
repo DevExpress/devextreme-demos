@@ -18,7 +18,7 @@
         :allow-search="true"
       />
       <DxHeaderFilter>
-        <DxHeaderFilterSearch :enabled="true"/>
+        <DxSearch :enabled="true"/>
       </DxHeaderFilter>
       <DxScrolling
         mode="virtual"
@@ -31,7 +31,7 @@ import DxPivotGrid, {
   DxFieldPanel,
   DxFieldChooser,
   DxHeaderFilter,
-  DxHeaderFilterSearch,
+  DxSearch,
   DxScrolling,
 } from 'devextreme-vue/pivot-grid';
 
@@ -44,7 +44,7 @@ export default {
     DxFieldPanel,
     DxFieldChooser,
     DxHeaderFilter,
-    DxHeaderFilterSearch,
+    DxSearch,
     DxScrolling,
   },
   data() {

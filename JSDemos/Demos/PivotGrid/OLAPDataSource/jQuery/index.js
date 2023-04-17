@@ -17,7 +17,7 @@ $(() => {
           area: 'row',
           headerFilter: {
             search: {
-              enabled,
+              enabled: true,
             },
           },
         },

@@ -14,7 +14,7 @@
         :width="300"
         :height="400"
       >
-        <DxHeaderFilterSearch :enabled="searhEnabled"/>
+        <DxSearch :enabled="searchEnabled"/>
       </DxHeaderFilter>
       <DxFieldChooser
         :allow-search="true"
@@ -28,7 +28,7 @@
       <div class="options-container">
         <div class="option">
           <DxCheckBox
-            v-model:value="searhEnabled"
+            v-model:value="searchEnabled"
             text="Allow Search"
           />
         </div>
@@ -44,7 +44,7 @@
 </template>
 <script>
 import {
-  DxPivotGrid, DxHeaderFilter, DxHeaderFilterSearch, DxFieldChooser, DxFieldPanel,
+  DxPivotGrid, DxHeaderFilter, DxSearch, DxFieldChooser, DxFieldPanel,
 } from 'devextreme-vue/pivot-grid';
 import { DxCheckBox } from 'devextreme-vue/check-box';
 
@@ -55,14 +55,14 @@ export default {
   components: {
     DxPivotGrid,
     DxHeaderFilter,
-    DxHeaderFilterSearch,
+    DxSearch,
     DxFieldChooser,
     DxFieldPanel,
     DxCheckBox,
   },
   data() {
     return {
-      searhEnabled: true,
+      searchEnabled: true,
       showRelevantValues: true,
       dataSource: new PivotGridDataSource({
         fields: [

@@ -14,7 +14,7 @@
     <DxHeaderFilter
       :visible="true"
     >
-      <DxDataGridHeaderFilterSearch
+      <DxSearch
         :enabled="true"
       />
     </DxHeaderFilter>
@@ -56,7 +56,7 @@
 </template>
 <script>
 import {
-  DxDataGrid, DxScrolling, DxPaging, DxColumn, DxHeaderFilter, DxDataGridHeaderFilterSearch,
+  DxDataGrid, DxScrolling, DxPaging, DxColumn, DxHeaderFilter, DxSearch,
 } from 'devextreme-vue/data-grid';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
@@ -67,7 +67,7 @@ export default {
     DxScrolling,
     DxPaging,
     DxHeaderFilter,
-    DxDataGridHeaderFilterSearch,
+    DxSearch,
   },
   data() {
     return {

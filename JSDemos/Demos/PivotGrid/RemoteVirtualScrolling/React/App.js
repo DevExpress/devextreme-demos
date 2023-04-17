@@ -4,7 +4,7 @@ import PivotGrid, {
   FieldPanel,
   FieldChooser,
   HeaderFilter,
-  HeaderFilterSearch,
+  Search,
   Scrolling,
 } from 'devextreme-react/pivot-grid';
 
@@ -28,7 +28,7 @@ class App extends React.Component {
           <FieldPanel visible={true} showFilterFields={false} />
           <FieldChooser allowSearch={true} />
           <HeaderFilter>
-            <HeaderFilterSearch enabled={true}/>
+            <Search enabled={true} />
           </HeaderFilter>
           <Scrolling mode="virtual" />
         </PivotGrid>

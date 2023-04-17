@@ -16,7 +16,7 @@ $(() => {
       visible: true,
       search: {
         enabled: true,
-      }
+      },
     },
     wordWrapEnabled: true,
     showBorders: true,
