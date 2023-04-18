@@ -8,6 +8,7 @@ import Query from 'devextreme/data/query';
 import {
   Service, MovieData, TheatreData, Data,
 } from './app.service';
+import { MoviePipe } from './pipes';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -119,7 +120,7 @@ export class AppComponent {
     DxSchedulerModule,
     DxTemplateModule,
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, MoviePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -11,8 +11,8 @@ import {
   DxSwitchModule,
   DxNumberBoxModule,
 } from 'devextreme-angular';
-import Query from 'devextreme/data/query';
 import { Appointment, Service, MovieData } from './app.service';
+import { MoviePipe } from './pipes';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -62,10 +62,6 @@ export class AppComponent {
   changeIndicatorUpdateInterval(e) {
     this.indicatorUpdateInterval = e.value * 1000;
   }
-
-  getMovieById(id) {
-    return Query(this.moviesData).filter(['id', '=', id]).toArray()[0];
-  }
 }
 
 @NgModule({
@@ -76,7 +72,7 @@ export class AppComponent {
     DxNumberBoxModule,
     DxTemplateModule,
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, MoviePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

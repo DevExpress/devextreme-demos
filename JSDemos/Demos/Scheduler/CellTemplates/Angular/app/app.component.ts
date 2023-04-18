@@ -6,6 +6,9 @@ import { DxSchedulerModule, DxTemplateModule } from 'devextreme-angular';
 import DataSource from 'devextreme/data/data_source';
 import notify from 'devextreme/ui/notify';
 import { DataService } from './app.service';
+import {
+  DinnerPipe, DisableDatePipe, CoffeePipe, WeekendPipe,
+} from './pipes';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -78,32 +81,10 @@ export class AppComponent {
     return day === 0 || day === 6;
   }
 
-  isDisableDate(date: Date) {
-    return this.isHoliday(date) || this.isWeekend(date);
-  }
-
-  isDisabledDateCell(date: Date) {
-    return this.isMonthView()
-      ? this.isWeekend(date)
-      : this.isDisableDate(date);
-  }
-
   isDinner(date: Date) {
     const hours = date.getHours();
     const dinnerTime = this.dataService.getDinnerTime();
     return hours >= dinnerTime.from && hours < dinnerTime.to;
-  }
-
-  hasCoffeeCupIcon(date: Date) {
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const dinnerTime = this.dataService.getDinnerTime();
-
-    return hours === dinnerTime.from && minutes === 0;
-  }
-
-  isMonthView() {
-    return this.currentView === 'month';
   }
 
   isValidAppointment(component: any, appointmentData: any) {
@@ -153,7 +134,7 @@ export class AppComponent {
     DxSchedulerModule,
     DxTemplateModule,
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, DinnerPipe, DisableDatePipe, CoffeePipe, WeekendPipe],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
