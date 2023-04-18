@@ -4,6 +4,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxSchedulerModule, DxTemplateModule } from 'devextreme-angular';
 import DataSource from 'devextreme/data/data_source';
 import { Service, Employee } from './app.service';
+import { MarkWeekEndPipe, MarkTrainingPipe } from './pipes';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -26,35 +27,7 @@ export class AppComponent {
     this.dataSource = new DataSource({
       store: service.getData(),
     });
-
     this.resourcesDataSource = service.getEmployees();
-  }
-
-  markWeekEnd(cellData) {
-    function isWeekEnd(date) {
-      const day = date.getDay();
-      return day === 0 || day === 6;
-    }
-    const classObject = {};
-    classObject[`employee-${cellData.groups.employeeID}`] = true;
-    classObject[`employee-weekend-${cellData.groups.employeeID}`] = isWeekEnd(cellData.startDate);
-    return classObject;
-  }
-
-  markTraining(cellData) {
-    const classObject = {
-      'day-cell': true,
-    };
-
-    classObject[AppComponent.getCurrentTraining(cellData.startDate.getDate(), cellData.groups.employeeID)] = true;
-    return classObject;
-  }
-
-  static getCurrentTraining(date, employeeID) {
-    const result = (date + employeeID) % 3;
-    const currentTraining = `training-background-${result}`;
-
-    return currentTraining;
   }
 }
 
@@ -65,7 +38,7 @@ export class AppComponent {
     DxSchedulerModule,
     DxTemplateModule,
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, MarkWeekEndPipe, MarkTrainingPipe],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
