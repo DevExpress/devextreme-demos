@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  TreeList, Column, ColumnChooser, ColumnChooserSearch, ColumnChooserSelection,
+  DataGrid, Column, ColumnChooser, ColumnChooserSearch, ColumnChooserSelection,
 } from 'devextreme-react/tree-list';
 import { SelectBox } from 'devextreme-react/select-box';
 import { CheckBox } from 'devextreme-react/check-box';
@@ -13,6 +13,8 @@ const columnChooserModes = [{
   key: 'select',
   name: 'Select',
 }];
+
+const searchEditorOptions = { placeholder: 'Search column' };
 
 class App extends React.Component {
   constructor(props) {
@@ -40,7 +42,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <TreeList
+        <DataGrid
           id="employees"
           dataSource={employees}
           columnAutoWidth={true}
@@ -48,27 +50,31 @@ class App extends React.Component {
           showBorders={true}
           keyExpr="ID"
         >
-          <Column dataField="Title" caption="Position" />
-          <Column allowHiding={false} dataField="Full_Name" />
-          <Column dataField="City" />
-          <Column dataField="State" />
-          <Column caption="Contact information">
-            <Column dataField="Mobile_Phone" allowHiding={false} />
-            <Column visible={false} dataField="Email" />
-            <Column visible={false} dataField="Skype" />
+          <Column dataField='FirstName' allowHiding={false} />
+          <Column dataField='LastName' />
+          <Column dataField='Position' />
+          <Column dataField='City' />
+          <Column dataField='State' />
+
+          <Column caption="Contacts">
+            <Column dataField="MobilePhone" allowHiding={false} />
+            <Column dataField="Email" />
+            <Column dataField="Skype" visible={false} />
           </Column>
-          <Column dataField="Hire_Date" dataType="date" />
+
+          <Column dataField="HireDate" dataType="date" />
+
           <ColumnChooser enabled={true} mode={mode}>
             <ColumnChooserSearch
               enabled={searchEnabled}
-              editorOptions={{ placeholder: 'Search column' }} />
+              editorOptions={searchEditorOptions} />
 
             <ColumnChooserSelection
               allowSelectAll={allowSelectAll}
               selectByClick={selectByClick}
               recursive={recursive} />
           </ColumnChooser>
-        </TreeList>
+        </DataGrid>
         <div className="options">
           <div className="caption">Options</div>
           <div className="option">

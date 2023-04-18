@@ -1,6 +1,6 @@
 <template>
   <div>
-    <DxTreeList
+    <DxDataGrid
       id="employees"
       :data-source="employees"
       :column-auto-width="true"
@@ -9,12 +9,14 @@
       key-expr="ID"
     >
       <DxColumn
-        data-field="Title"
-        caption="Position"
+        data-field="FirstName"
+        :allow-hiding="false"
       />
       <DxColumn
-        :allow-hiding="false"
-        data-field="Full_Name"
+        data-field="LastName"
+      />
+      <DxColumn
+        data-field="Position"
       />
       <DxColumn
         data-field="City"
@@ -22,27 +24,26 @@
       <DxColumn
         data-field="State"
       />
-      <DxColumn
-        caption="Contact information"
-      >
+
+      <DxColumn caption="Contacts">
         <DxColumn
-          data-field="Mobile_Phone"
+          data-field="MobilePhone"
           :allow-hiding="false"
         />
         <DxColumn
-          :visible="false"
           data-field="Email"
         />
         <DxColumn
-          :visible="false"
           data-field="Skype"
+          :visible="false"
         />
       </DxColumn>
 
       <DxColumn
-        data-field="Hire_Date"
+        data-field="HireDate"
         data-type="date"
       />
+
       <DxColumnChooser
         :enabled="true"
         :mode="mode"
@@ -57,7 +58,7 @@
           :recursive="recursive"
         />
       </DxColumnChooser>
-    </DxTreeList>
+    </DxDataGrid>
     <div class="options">
       <div class="caption">Options</div>
       <div class="option">
@@ -98,7 +99,7 @@
 </template>
 <script>
 import {
-  DxTreeList, DxColumn, DxColumnChooser, DxColumnChooserSearch, DxColumnChooserSelection,
+  DxDataGrid, DxColumn, DxColumnChooser, DxColumnChooserSearch, DxColumnChooserSelection,
 } from 'devextreme-vue/tree-list';
 import { DxSelectBox } from 'devextreme-vue/select-box';
 import { DxCheckBox } from 'devextreme-vue/check-box';
@@ -106,7 +107,7 @@ import { employees } from './data.js';
 
 export default {
   components: {
-    DxTreeList,
+    DxDataGrid,
     DxColumn,
     DxColumnChooser,
     DxColumnChooserSearch,

@@ -11,27 +11,19 @@ $(() => {
     dataSource: employees,
     keyExpr: 'ID',
     columns: [{
-      dataField: 'Title',
-      caption: 'Position',
-    }, {
-      dataField: 'Full_Name',
+      dataField: 'FirstName',
       allowHiding: false,
-    }, 'City', 'State', {
-      caption: 'Contact information',
-      columns: [
-        {
-          dataField: 'Mobile_Phone',
-          allowHiding: false,
-        }, {
-          dataField: 'Email',
-          visible: false,
-        }, {
-          dataField: 'Skype',
-          visible: false,
-        },
-      ],
+    }, 'LastName', 'Position', 'City', 'State', {
+      caption: 'Contacts',
+      columns: [{
+        dataField: 'MobilePhone',
+        allowHiding: false,
+      }, 'Email', {
+        dataField: 'Skype',
+        visible: false,
+      }],
     }, {
-      dataField: 'Hire_Date',
+      dataField: 'HireDate',
       dataType: 'date',
     }],
     columnAutoWidth: true,
@@ -50,7 +42,6 @@ $(() => {
         allowSelectAll: true,
       },
     },
-    expandedRowKeys: [1],
   }).dxDataGrid('instance');
 
   $('#columnChooserMode').dxSelectBox({
