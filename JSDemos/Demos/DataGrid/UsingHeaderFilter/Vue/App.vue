@@ -6,15 +6,10 @@
       :column-auto-width="true"
       :show-row-lines="true"
       :show-borders="true"
-      :expanded-row-keys="expandedRowKeys"
       key-expr="ID"
-      parent-id-expr="Head_ID"
     >
       <DxHeaderFilter
         :visible="true"
-      />
-      <DxSelection
-        mode="single"
       />
       <DxColumn
         data-field="Full_Name"
@@ -54,13 +49,13 @@
 </template>
 <script>
 import {
-  DxTreeList, DxHeaderFilter, DxSearch, DxSelection, DxColumn,
+  DxTreeList, DxHeaderFilter, DxSearch, DxColumn,
 } from 'devextreme-vue/tree-list';
 import { employees } from './data.js';
 
 export default {
   components: {
-    DxTreeList, DxHeaderFilter, DxSearch, DxSelection, DxColumn,
+    DxTreeList, DxHeaderFilter, DxSearch, DxColumn,
   },
   data() {
     return {

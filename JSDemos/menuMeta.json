@@ -443,6 +443,14 @@
               "/Models/CustomerInfo.cs",
               "/Models/ApplyFilterType.cs"
             ]
+          },
+          {
+            "Title": "Using Header Filter",
+            "Name": "UsingHeaderFilter",
+            "Widget": "DataGrid",
+            "MvcAdditionalFiles": [],
+            "DemoType": "Web",
+            "Badge": "New"
           }
         ]
       },
@@ -1468,7 +1476,8 @@
               "/Models/TreeList/Employee.cs",
               "/Models/SampleData/TreeListEmployees.cs"
             ],
-            "DemoType": "Web"
+            "DemoType": "Web",
+            "Badge": "Updated"
           },
           {
             "Title": "Filter Panel",

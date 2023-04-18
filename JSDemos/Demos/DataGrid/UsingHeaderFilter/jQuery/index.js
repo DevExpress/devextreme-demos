@@ -1,13 +1,9 @@
 $(() => {
-  $('#employees').dxTreeList({
+  $('#employees').dxDataGrid({
     dataSource: employees,
     keyExpr: 'ID',
-    parentIdExpr: 'Head_ID',
     headerFilter: {
       visible: true,
-    },
-    selection: {
-      mode: 'single',
     },
     columns: [
       'Full_Name', {
@@ -39,6 +35,5 @@ $(() => {
     columnAutoWidth: true,
     showRowLines: true,
     showBorders: true,
-    expandedRowKeys: [1],
   });
 });
