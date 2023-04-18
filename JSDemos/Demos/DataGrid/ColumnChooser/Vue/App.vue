@@ -100,7 +100,7 @@
 <script>
 import {
   DxDataGrid, DxColumn, DxColumnChooser, DxColumnChooserSearch, DxColumnChooserSelection,
-} from 'devextreme-vue/tree-list';
+} from 'devextreme-vue/data-grid';
 import { DxSelectBox } from 'devextreme-vue/select-box';
 import { DxCheckBox } from 'devextreme-vue/check-box';
 import { employees } from './data.js';

@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   DataGrid, Column, ColumnChooser, ColumnChooserSearch, ColumnChooserSelection,
-} from 'devextreme-react/tree-list';
+} from 'devextreme-react/data-grid';
 import { SelectBox } from 'devextreme-react/select-box';
 import { CheckBox } from 'devextreme-react/check-box';
 import { employees } from './data.js';
