@@ -1,7 +1,3 @@
-const format = () => function (text, render) {
-  return window.formatCurrency(parseInt(render(text), 10));
-};
-
 const products = [{
   ID: 1,
   Name: 'HD Video Player',
@@ -146,4 +142,9 @@ const products = [{
   Manufacturing: 225,
   Category: 'Automation',
   ImageSrc: '../../../../images/products/19.png',
-}].map((dataItem) => ({ ...dataItem, formatCurrency: format }));
+}].map((dataItem) => ({
+  ...dataItem,
+  formatCurrency: () => function (text, render) {
+    return window.formatCurrency(parseInt(render(text), 10));
+  },
+}));

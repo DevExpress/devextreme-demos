@@ -1,7 +1,3 @@
-const toLowerCase = () => function (text, render) {
-  return render(text).toLowerCase();
-};
-
 const data = [{
   Id: 73,
   Hotel_Name: 'Hamburg Suites',
@@ -1188,7 +1184,12 @@ const data = [{
     FileName: 'Restaurant-19.jpg',
   },
   ],
-}].map((dataItem) => ({ ...dataItem, toLowerCase }));
+}].map((dataItem) => ({
+  ...dataItem,
+  toLowerCase: () => function (text, render) {
+    return render(text).toLowerCase();
+  },
+}));
 
 const dataSource = new DevExpress.data.DataSource({
   store: new DevExpress.data.ArrayStore({
