@@ -12,11 +12,24 @@
     .Columns(column => {
         column.AddFor(m => m.FullName);
 
-        column.AddFor(m => m.Title);
+        column
+            .AddFor(m => m.Title)
+            .HeaderFilter(hf => {
+                hf.AllowSelectAll(false);
 
-        column.AddFor(m => m.City);
+                hf.Search(hfs => hfs.Enabled(true));
+            });
 
-        column.AddFor(m => m.State);
+        column
+            .AddFor(m => m.City)
+            .HeaderFilter(hf => {
+                hf.Search(hfs => {
+                    hfs
+                        .Enabled(true)
+                        .EditorOptions(new { placeholder = 'Search city or state' })
+                        .SearchExpr(new[] { "City", "State" });
+                })
+            });
 
         column.AddFor(m => m.MobilePhone);
 
