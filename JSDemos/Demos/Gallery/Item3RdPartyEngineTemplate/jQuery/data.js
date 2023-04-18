@@ -1,3 +1,7 @@
+const format = () => function (text, render) {
+  return render(window.formatCurrency(parseInt(text, 10)));
+};
+
 const gallery = [{
   ID: '1',
   Address: '652 Avonwick Gate',
@@ -160,4 +164,4 @@ const gallery = [{
   Status: '0',
   Image: '../../../../images/gallery/9.jpg',
 },
-];
+].map((dataItem) => ({ ...dataItem, formatCurrency: format }));

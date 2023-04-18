@@ -1,5 +1,8 @@
 $(() => {
-  DevExpress.setTemplateEngine('underscore');
+  DevExpress.setTemplateEngine({
+    compile: (element) => DevExpress.utils.dom.extractTemplateMarkup(element),
+    render: (template, data) => Mustache.render(template, data),
+  });
 
   window.formatCurrency = new Intl.NumberFormat('en-US', {
     style: 'currency',
