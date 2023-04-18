@@ -23,7 +23,7 @@ export class MarkTrainingPipe implements PipeTransform {
       'day-cell': true,
     };
     classObject[
-      markTrainingPipe.getCurrentTraining(
+      MarkTrainingPipe.getCurrentTraining(
         cellData.startDate.getDate(),
         cellData.groups.employeeID,
       )
