@@ -3,7 +3,7 @@
 @model IEnumerable<Employee>
 
 @(Html.DevExtreme().DataGrid<Employee>()
-    .ID("employees")
+    .ID("gridContainer")
     .DataSource(Model)
     .KeyExpr("ID")
     .HeaderFilter(headerFilter => headerFilter.Visible(true))

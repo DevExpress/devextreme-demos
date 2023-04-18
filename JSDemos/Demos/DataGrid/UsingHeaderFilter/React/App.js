@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  TreeList, HeaderFilter, Search, Column,
-} from 'devextreme-react/tree-list';
+  DataGrid, HeaderFilter, Search, Column,
+} from 'devextreme-react/data-grid';
 import { employees } from './data.js';
 
 const searchFields = ['City', 'State'];
@@ -10,7 +10,7 @@ const searchEditorOptions = { placeholder: 'Search city or state' };
 class App extends React.Component {
   render() {
     return (
-      <TreeList
+      <DataGrid
         id="employees"
         dataSource={employees}
         columnAutoWidth={true}
@@ -19,8 +19,10 @@ class App extends React.Component {
         keyExpr="ID"
       >
         <HeaderFilter visible={true} />
-        <Column dataField="Full_Name" />
-        <Column dataField="Title" caption="Position">
+
+        <Column dataField="FirstName" />
+        <Column dataField="LastName" />
+        <Column dataField="Position">
           <HeaderFilter allowSelectAll={false}>
             <Search enabled={true} />
           </HeaderFilter>
@@ -33,9 +35,9 @@ class App extends React.Component {
               editorOptions={searchEditorOptions} />
           </HeaderFilter>
         </Column>
-        <Column dataField="Mobile_Phone" />
-        <Column dataField="Hire_Date" dataType="date" />
-      </TreeList>
+        <Column dataField="HomePhone" />
+        <Column dataField="HireDate" dataType="date" />
+      </DataGrid>
     );
   }
 }

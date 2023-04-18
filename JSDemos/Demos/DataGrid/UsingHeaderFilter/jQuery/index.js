@@ -5,33 +5,29 @@ $(() => {
     headerFilter: {
       visible: true,
     },
-    columns: [
-      'Full_Name', {
-        dataField: 'Title',
-        caption: 'Position',
-        headerFilter: {
-          allowSelectAll: false,
-          search: {
-            enabled: true,
-          },
+    columns: ['FirstName', 'LastName', {
+      dataField: 'Position',
+      headerFilter: {
+        allowSelectAll: false,
+        search: {
+          enabled: true,
         },
       },
-      {
-        dataField: 'City',
-        headerFilter: {
-          search: {
-            enabled: true,
-            editorOptions: {
-              placeholder: 'Search city or state',
-            },
-            searchExpr: ['City', 'State'],
+    }, {
+      dataField: 'City',
+      headerFilter: {
+        search: {
+          enabled: true,
+          editorOptions: {
+            placeholder: 'Search city or state',
           },
+          searchExpr: ['City', 'State'],
         },
-      }, 'Mobile_Phone', {
-        dataField: 'Hire_Date',
-        dataType: 'date',
       },
-    ],
+    }, 'HomePhone', {
+      dataField: 'HireDate',
+      dataType: 'date',
+    }],
     columnAutoWidth: true,
     showRowLines: true,
     showBorders: true,
