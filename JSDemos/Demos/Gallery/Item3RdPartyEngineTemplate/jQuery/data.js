@@ -1,5 +1,5 @@
 const format = () => function (text, render) {
-  return render(window.formatCurrency(parseInt(text, 10)));
+  return window.formatCurrency(parseInt(render(text), 10));
 };
 
 const gallery = [{

@@ -1,5 +1,5 @@
 const toLowerCase = () => function (text, render) {
-  return render(text.toLowerCase());
+  return render(text).toLowerCase();
 };
 
 const data = [{
