@@ -19,12 +19,12 @@
         column.AddFor(m => m.State);
 
         column.Add()
-            .Caption('Contacts')
+            .Caption("Contacts")
             .Columns(a => {
                 column.AddFor(m => m.MobilePhone)
                     .AllowHiding(false);
 
-                column.AddFor(m => m.Email)
+                column.AddFor(m => m.Email);
 
                 column.AddFor(m => m.Skype)
                     .Visible(false);
@@ -39,7 +39,7 @@
     .ColumnChooser(cc => {
         cc.Enabled(true);
 
-        cc.Mode(ColumnChooserMode.Select);
+        cc.Mode(GridColumnChooserMode.Select);
 
         cc.Search(ccs => ccs
             .Enabled(true)
