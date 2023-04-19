@@ -7,6 +7,7 @@ import PivotGrid, {
 } from 'devextreme-react/pivot-grid';
 import CheckBox from 'devextreme-react/check-box';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'regenerator-runtime/runtime';
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';

@@ -69,6 +69,7 @@ import {
   DxSortByGroupSummaryInfo,
   DxTotalItem,
 } from 'devextreme-vue/data-grid';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'regenerator-runtime/runtime';
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';

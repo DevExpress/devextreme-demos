@@ -18,6 +18,7 @@ import DxPivotGrid, {
   DxFieldChooser,
 } from 'devextreme-vue/pivot-grid';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'regenerator-runtime/runtime';
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';

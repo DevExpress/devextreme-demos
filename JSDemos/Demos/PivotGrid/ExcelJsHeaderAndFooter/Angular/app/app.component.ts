@@ -2,6 +2,7 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxPivotGridModule, DxCheckBoxModule } from 'devextreme-angular';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'regenerator-runtime/runtime';
 import { Workbook, WorksheetViewFrozen } from 'exceljs';
 import { saveAs } from 'file-saver-es';
