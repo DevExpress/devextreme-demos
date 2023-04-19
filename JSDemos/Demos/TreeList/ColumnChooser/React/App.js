@@ -23,21 +23,23 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      mode: columnChooserModes[0].key,
+      mode: columnChooserModes[1].key,
       searchEnabled: true,
       allowSelectAll: true,
       selectByClick: true,
+      recursive: true,
     };
 
     this.onModeValueChanged = this.onModeValueChanged.bind(this);
     this.onSearchEnabledValueChanged = this.onSearchEnabledValueChanged.bind(this);
     this.onAllowSelectAllValueChanged = this.onAllowSelectAllValueChanged.bind(this);
     this.onSelectByClickValueChanged = this.onSelectByClickValueChanged.bind(this);
+    this.onRecursiveValueChanged = this.onRecursiveValueChanged.bind(this);
   }
 
   render() {
     const {
-      mode, searchEnabled, allowSelectAll, selectByClick,
+      mode, searchEnabled, allowSelectAll, selectByClick, recursive,
     } = this.state;
 
     return (
@@ -53,13 +55,15 @@ class App extends React.Component {
           parentIdExpr="Head_ID"
         >
           <Column dataField="Title" caption="Position" />
-          <Column allowHiding={false} dataField="Full_Name" />
+          <Column dataField="Full_Name" allowHiding={false} />
           <Column dataField="City" />
           <Column dataField="State" />
-          <Column dataField="Mobile_Phone" />
-          <Column visible={false} dataField="Email" />
+          <Column caption="Contacts">
+            <Column dataField="Mobile_Phone" allowHiding={false} />
+            <Column dataField="Email" />
+            <Column visible={false} dataField="Skype" />
+          </Column>
           <Column dataField="Hire_Date" dataType="date" />
-          <Column visible={false} dataField="Skype" />
           <ColumnChooser enabled={true} mode={mode}>
             <ColumnChooserSearch
               enabled={searchEnabled}
@@ -67,7 +71,8 @@ class App extends React.Component {
 
             <ColumnChooserSelection
               allowSelectAll={allowSelectAll}
-              selectByClick={selectByClick} />
+              selectByClick={selectByClick}
+              recursive={recursive} />
           </ColumnChooser>
         </TreeList>
         <div className="options">
@@ -107,6 +112,14 @@ class App extends React.Component {
               onValueChanged={this.onSelectByClickValueChanged}
             />
           </div>
+          <div className="option">
+            <CheckBox
+              id="recursive"
+              defaultValue={recursive}
+              text="Recursive"
+              onValueChanged={this.onRecursiveValueChanged}
+            />
+          </div>
         </div>
       </div>
     );
@@ -133,6 +146,12 @@ class App extends React.Component {
   onSelectByClickValueChanged(e) {
     this.setState({
       selectByClick: e.value,
+    });
+  }
+
+  onRecursiveValueChanged(e) {
+    this.setState({
+      recursive: e.value,
     });
   }
 }

@@ -11,7 +11,7 @@
   <dxo-column-chooser
     #columnChooser
     [enabled]="true"
-    [mode]="columnChooserModes[0].key"
+    [mode]="columnChooserModes[1].key"
   >
     <dxo-search
       [enabled]="searchEnabled"
@@ -21,6 +21,7 @@
     <dxo-selection
       [allowSelectAll]="allowSelectAll"
       [selectByClick]="selectByClick"
+      [recursive]="recursive"
     ></dxo-selection>
   </dxo-column-chooser>
 
@@ -28,10 +29,12 @@
   <dxi-column dataField="Full_Name" [allowHiding]="false"></dxi-column>
   <dxi-column dataField="City"></dxi-column>
   <dxi-column dataField="State"></dxi-column>
-  <dxi-column dataField="Mobile_Phone"></dxi-column>
-  <dxi-column dataField="Email" [visible]="false"></dxi-column>
+  <dxi-column caption="Contacts">
+    <dxi-column dataField="Mobile_Phone" [allowHiding]="false"></dxi-column>
+    <dxi-column dataField="Email"></dxi-column>
+    <dxi-column dataField="Skype" [visible]="false"></dxi-column>
+  </dxi-column>
   <dxi-column dataField="Hire_Date" dataType="date"></dxi-column>
-  <dxi-column dataField="Skype" [visible]="false"></dxi-column>
 </dx-tree-list>
 
 <div class="options">
@@ -62,6 +65,12 @@
     <dx-check-box
       text="Select by click"
       [(value)]="selectByClick"
+    ></dx-check-box>
+  </div>
+  <div class="option">
+    <dx-check-box
+      text="Recursive"
+      [(value)]="recursive"
     ></dx-check-box>
   </div>
 </div>

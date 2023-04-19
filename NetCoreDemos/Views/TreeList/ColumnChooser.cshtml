@@ -18,21 +18,28 @@
 
         column.AddFor(m => m.State);
 
-        column.AddFor(m => m.MobilePhone);
+        column.Add()
+            .Caption('Contacts')
+            .Columns(a => {
+                column.AddFor(m => m.MobilePhone)
+                    .AllowHiding(false);
 
-        column.AddFor(m => m.Email)
-            .Visible(false);
+                column.AddFor(m => m.Email)
+
+                column.AddFor(m => m.Skype)
+                    .Visible(false);
+            });
 
         column.AddFor(m => m.HireDate);
 
-        column.AddFor(m => m.Skype)
-            .Visible(false);
     })
     .ColumnAutoWidth(true)
     .ShowRowLines(true)
     .ShowBorders(true)
     .ColumnChooser(cc => {
         cc.Enabled(true);
+
+        cc.Mode(ColumnChooserMode.Select);
 
         cc.Search(ccs => ccs
             .Enabled(true)
@@ -42,6 +49,7 @@
         cc.Selection(ccs => ccs
             .AllowSelectAll(true)
             .SelectByClick(true)
+            .Recursive(true)
         );
     })
     .ExpandedRowKeys(new[] { 1, 5 })
@@ -67,7 +75,7 @@
 
         @(Html.DevExtreme().SelectBox()
             .DataSource(dataSource)
-            .Value(dataSource[0].Key)
+            .Value(dataSource[1].Key)
             .ValueExpr("Key")
             .DisplayExpr("Name")
             .OnValueChanged(@<text>
@@ -113,6 +121,19 @@
                 function(data) {
                     var treeList = $("#employees").dxTreeList("instance");
                     treeList.option("columnChooser.selection.selectByClick", data.value);
+                }
+            </text>)
+        )
+    </div>
+
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .Text("Recursive")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(data) {
+                    var treeList = $("#employees").dxTreeList("instance");
+                    treeList.option("columnChooser.selection.recursive", data.value);
                 }
             </text>)
         )

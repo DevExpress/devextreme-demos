@@ -25,19 +25,23 @@
         data-field="State"
       />
       <DxColumn
-        data-field="Mobile_Phone"
-      />
-      <DxColumn
-        :visible="false"
-        data-field="Email"
-      />
+        caption="Contacts"
+      >
+        <DxColumn
+          :allow-hiding="false"
+          data-field="Mobile_Phone"
+        />
+        <DxColumn
+          data-field="Email"
+        />
+        <DxColumn
+          :visible="false"
+          data-field="Skype"
+        />
+      </DxColumn>
       <DxColumn
         data-field="Hire_Date"
         data-type="date"
-      />
-      <DxColumn
-        :visible="false"
-        data-field="Skype"
       />
       <DxColumnChooser
         :enabled="true"
@@ -50,6 +54,7 @@
         <DxColumnChooserSelection
           :allow-select-all="allowSelectAll"
           :select-by-click="selectByClick"
+          :recursive="recursive"
         />
       </DxColumnChooser>
     </DxTreeList>
@@ -80,6 +85,12 @@
         <DxCheckBox
           v-model:value="selectByClick"
           text="Select by click"
+        />
+      </div>
+      <div class="option">
+        <DxCheckBox
+          v-model:value="recursive"
+          text="Recursive"
         />
       </div>
     </div>
@@ -113,10 +124,11 @@ export default {
         key: 'select',
         name: 'Select',
       }],
-      mode: 'dragAndDrop',
+      mode: 'select',
       searchEnabled: true,
       allowSelectAll: true,
       selectByClick: true,
+      recursive: true,
       expandedRowKeys: [1, 5],
     };
   },

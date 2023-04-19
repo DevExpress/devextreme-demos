@@ -1,4 +1,12 @@
 $(() => {
+  const columnChooserModes = [{
+    key: 'dragAndDrop',
+    name: 'Drag and drop',
+  }, {
+    key: 'select',
+    name: 'Select',
+  }];
+
   const treeList = $('#employees').dxTreeList({
     dataSource: employees,
     keyExpr: 'ID',
@@ -9,20 +17,24 @@ $(() => {
     }, {
       dataField: 'Full_Name',
       allowHiding: false,
-    }, 'City', 'State', 'Mobile_Phone', {
-      dataField: 'Email',
-      visible: false,
+    }, 'City', 'State', {
+      caption: 'Contacts',
+      columns: [{
+        dataField: 'Mobile_Phone',
+        allowHiding: false,
+      }, 'Email', {
+        dataField: 'Skype',
+        visible: false,
+      }],
     }, {
       dataField: 'Hire_Date',
       dataType: 'date',
-    }, {
-      dataField: 'Skype',
-      visible: false,
     }],
     columnAutoWidth: true,
     showRowLines: true,
     showBorders: true,
     columnChooser: {
+      mode: columnChooserModes[1].key,
       enabled: true,
       search: {
         enabled: true,
@@ -31,22 +43,15 @@ $(() => {
       selection: {
         selectByClick: true,
         allowSelectAll: true,
+        recursive: true,
       },
     },
     expandedRowKeys: [1, 5],
   }).dxTreeList('instance');
 
-  const columnChooserModes = [{
-    key: 'dragAndDrop',
-    name: 'Drag and drop',
-  }, {
-    key: 'select',
-    name: 'Select',
-  }];
-
   $('#columnChooserMode').dxSelectBox({
     items: columnChooserModes,
-    value: columnChooserModes[0].key,
+    value: columnChooserModes[1].key,
     valueExpr: 'key',
     displayExpr: 'name',
     onValueChanged(data) {
@@ -75,6 +80,14 @@ $(() => {
     value: true,
     onValueChanged(data) {
       treeList.option('columnChooser.selection.selectByClick', data.value);
+    },
+  });
+
+  $('#recursive').dxCheckBox({
+    text: 'Recursive',
+    value: true,
+    onValueChanged(data) {
+      treeList.option('columnChooser.selection.recursive', data.value);
     },
   });
 });
