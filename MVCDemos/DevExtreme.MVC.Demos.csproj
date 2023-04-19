@@ -2258,6 +2258,7 @@
     <Content Include="Views\Resizable\Overview.cshtml" />
     <Content Include="Views\Gantt\ExportToPDF.cshtml" />
     <Content Include="Views\Scheduler\AllDayPanelMode.cshtml" />
+    <Content Include="Views\DataGrid\ColumnChooser.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

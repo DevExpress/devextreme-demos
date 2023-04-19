@@ -21,15 +21,16 @@
 
         column.Add()
             .Caption("Contacts")
-            .Columns(a => {
-                a.AddFor(m => m.MobilePhone)
+            .Columns(a =>
+            {
+                a.AddFor(m => m.Phone)
                     .AllowHiding(false);
 
-                a.AddFor(m => m.Email)
+                a.AddFor(m => m.Email);
 
                 a.AddFor(m => m.Skype)
                     .Visible(false);
-            })
+            });
 
         column.AddFor(m => m.HireDate);
 
@@ -40,7 +41,7 @@
     .ColumnChooser(cc => {
         cc
             .Enabled(true)
-            .Mode('select')
+            .Mode(GridColumnChooserMode.Select);
 
         cc.Search(ccs => ccs
             .Enabled(true)
@@ -80,8 +81,8 @@
             .DisplayExpr("Name")
             .OnValueChanged(@<text>
                 function(data) {
-                    var treeList = $("#employees").dxTreeList("instance");
-                    treeList.option("columnChooser.mode", data.value);
+                    var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                    dataGrid.option("columnChooser.mode", data.value);
                 }
             </text>)
         )
@@ -93,8 +94,8 @@
             .Value(true)
             .OnValueChanged(@<text>
                 function(data) {
-                    var treeList = $("#employees").dxDataGrid("instance");
-                    treeList.option("columnChooser.search.enabled", data.value);
+                    var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                    dataGrid.option("columnChooser.search.enabled", data.value);
                 }
             </text>)
         )
@@ -106,8 +107,8 @@
             .Value(true)
             .OnValueChanged(@<text>
                 function(data) {
-                    var treeList = $("#employees").dxDataGrid("instance");
-                    treeList.option("columnChooser.selection.allowSelectAll", data.value);
+                    var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                    dataGrid.option("columnChooser.selection.allowSelectAll", data.value);
                 }
             </text>)
         )
@@ -119,8 +120,8 @@
             .Value(true)
             .OnValueChanged(@<text>
                 function(data) {
-                    var treeList = $("#employees").dxDataGrid("instance");
-                    treeList.option("columnChooser.selection.selectByClick", data.value);
+                    var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                    dataGrid.option("columnChooser.selection.selectByClick", data.value);
                 }
             </text>)
         )
@@ -132,8 +133,8 @@
             .Value(true)
             .OnValueChanged(@<text>
                 function(data) {
-                    var treeList = $("#employees").dxDataGrid("instance");
-                    treeList.option("columnChooser.selection.recursive", data.value);
+                    var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                    dataGrid.option("columnChooser.selection.recursive", data.value);
                 }
             </text>)
         )
