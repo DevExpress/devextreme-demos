@@ -6,9 +6,7 @@ import { DxSchedulerModule, DxTemplateModule } from 'devextreme-angular';
 import DataSource from 'devextreme/data/data_source';
 import notify from 'devextreme/ui/notify';
 import { DataService } from './app.service';
-import {
-  DinnerPipe, DisableDatePipe, CoffeePipe, WeekendPipe,
-} from './pipes';
+import { ApplyPipe } from './pipes';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -23,6 +21,10 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   dataSource: DataSource;
 
+  dinnerTime;
+
+  holidays;
+
   currentDate = new Date(2021, 3, 27);
 
   views = ['workWeek', 'month'];
@@ -30,6 +32,8 @@ export class AppComponent {
   currentView = this.views[0];
 
   constructor(public dataService: DataService) {
+    this.dinnerTime = dataService.getDinnerTime();
+    this.holidays = dataService.getHolidays();
     this.dataSource = new DataSource({
       store: dataService.getData(),
     });
@@ -70,9 +74,8 @@ export class AppComponent {
     notify('Cannot create or move an appointment/event to disabled time/date regions.', 'warning', 1000);
   }
 
-  isHoliday(date: Date) {
+  isHoliday(date: Date, holidays) {
     const localeDate = date.toLocaleDateString();
-    const holidays = this.dataService.getHolidays();
     return holidays.filter((holiday) => holiday.toLocaleDateString() === localeDate).length > 0;
   }
 
@@ -81,10 +84,16 @@ export class AppComponent {
     return day === 0 || day === 6;
   }
 
-  isDinner(date: Date) {
+  isDinner(date: Date, dinnerTime) {
     const hours = date.getHours();
-    const dinnerTime = this.dataService.getDinnerTime();
     return hours >= dinnerTime.from && hours < dinnerTime.to;
+  }
+
+  hasCoffeeCupIcon(date: Date, dinnerTime) {
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+
+    return hours === dinnerTime.from && minutes === 0;
   }
 
   isValidAppointment(component: any, appointmentData: any) {
@@ -115,7 +124,7 @@ export class AppComponent {
   }
 
   isValidAppointmentDate(date: Date) {
-    return !this.isHoliday(date) && !this.isDinner(date) && !this.isWeekend(date);
+    return !this.isHoliday(date, this.holidays) && !this.isDinner(date, this.dinnerTime) && !this.isWeekend(date);
   }
 
   applyDisableDatesToDateEditors(form: any) {
@@ -134,7 +143,7 @@ export class AppComponent {
     DxSchedulerModule,
     DxTemplateModule,
   ],
-  declarations: [AppComponent, DinnerPipe, DisableDatePipe, CoffeePipe, WeekendPipe],
+  declarations: [AppComponent, ApplyPipe],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
