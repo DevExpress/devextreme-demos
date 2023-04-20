@@ -26,9 +26,9 @@
                 hf.Search(hfs => {
                     hfs
                         .Enabled(true)
-                        .EditorOptions(new { placeholder = 'Search city or state' })
+                        .EditorOptions(new { placeholder = "Search city or state" })
                         .SearchExpr(new[] { "City", "State" });
-                })
+                });
             });
 
         column.AddFor(m => m.MobilePhone);
