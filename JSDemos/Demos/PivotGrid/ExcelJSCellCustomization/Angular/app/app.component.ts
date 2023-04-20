@@ -2,8 +2,7 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxPivotGridModule } from 'devextreme-angular';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import 'regenerator-runtime/runtime';
+window.regeneratorRuntime = null;
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
 // Our demo infrastructure requires us to use 'file-saver-es'. We recommend that you use the official 'file-saver' package in your applications.

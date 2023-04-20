@@ -5,8 +5,7 @@ import PivotGrid, {
   Export,
 } from 'devextreme-react/pivot-grid';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import 'regenerator-runtime/runtime';
+window.regeneratorRuntime = null;
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
 // Our demo infrastructure requires us to use 'file-saver-es'.
