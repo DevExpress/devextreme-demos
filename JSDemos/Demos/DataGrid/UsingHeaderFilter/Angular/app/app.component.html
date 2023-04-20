@@ -12,17 +12,16 @@
   <dxi-column dataField="LastName"></dxi-column>
   <dxi-column dataField="Position">
     <dxo-header-filter [allowSelectAll]="false">
-      <dxo-search
-        [enabled]="true"
-      ></dxo-search>
+      <dxo-search [enabled]="true"></dxo-search>
     </dxo-header-filter>
   </dxi-column>
   <dxi-column dataField="City">
     <dxo-header-filter>
-      <dxo-search 
-        [enabled]="true" 
-        [searchExpr]="['City', 'State']" 
-        [editorOptions]="{ placeholder: 'Search city or state' }"></dxo-search>
+      <dxo-search
+        [enabled]="true"
+        [searchExpr]="['City', 'State']"
+        [editorOptions]="{ placeholder: 'Search city or state' }"
+      ></dxo-search>
     </dxo-header-filter>
   </dxi-column>
   <dxi-column dataField="HomePhone"></dxi-column>
