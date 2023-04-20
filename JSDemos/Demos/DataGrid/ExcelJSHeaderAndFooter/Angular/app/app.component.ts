@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { DxDataGridModule, DxTemplateModule } from 'devextreme-angular';
-window.regeneratorRuntime = null;
+import 'regenerator-runtime/runtime.js';
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
 // Our demo infrastructure requires us to use 'file-saver-es'. We recommend that you use the official 'file-saver' package in your applications.

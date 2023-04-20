@@ -1,6 +1,6 @@
 import React from 'react';
 import DataGrid, { Column, Export } from 'devextreme-react/data-grid';
-window.regeneratorRuntime = null;
+import 'regenerator-runtime/runtime.js';
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
 // Our demo infrastructure requires us to use 'file-saver-es'.

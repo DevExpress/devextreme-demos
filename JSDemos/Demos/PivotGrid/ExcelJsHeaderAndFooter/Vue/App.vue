@@ -61,7 +61,7 @@ import DxPivotGrid, {
 } from 'devextreme-vue/pivot-grid';
 import DxCheckBox from 'devextreme-vue/check-box';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
-window.regeneratorRuntime = null;
+import 'regenerator-runtime/runtime.js';
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
 // Our demo infrastructure requires us to use 'file-saver-es'.
