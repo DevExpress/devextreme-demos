@@ -7,7 +7,7 @@ $(() => {
     showBorders: true,
     headerFilter: {
       search: {
-        enabled: true
+        enabled: true,
       },
       showRelevantValues: true,
       width: 300,

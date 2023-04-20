@@ -19,7 +19,7 @@ $(() => {
           headerFilter: {
             search: {
               enabled: true,
-            }
+            },
           },
         },
         { dataField: '[Ship Date].[Calendar Year]', area: 'column' },

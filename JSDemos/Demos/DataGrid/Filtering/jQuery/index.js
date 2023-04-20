@@ -86,7 +86,7 @@ $(() => {
       headerFilter: {
         search: {
           enabled: true,
-        }
+        },
       },
     }],
   }).dxDataGrid('instance');
