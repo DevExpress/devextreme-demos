@@ -8,7 +8,7 @@ import Query from 'devextreme/data/query';
 import {
   Service, MovieData, TheatreData, Data,
 } from './app.service';
-import { MoviePipe } from './pipes';
+import { ApplyPipe } from './pipes';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -40,7 +40,7 @@ export class AppComponent {
   onAppointmentFormOpening(data) {
     const that = this;
     const form = data.form;
-    let movieInfo = that.getMovieById(data.appointmentData.movieId) || {};
+    let movieInfo = that.getMovieById(data.appointmentData.movieId, this.moviesData) || {};
     let startDate = data.appointmentData.startDate;
 
     form.option('items', [{
@@ -54,7 +54,7 @@ export class AppComponent {
         displayExpr: 'text',
         valueExpr: 'id',
         onValueChanged(args) {
-          movieInfo = that.getMovieById(args.value);
+          movieInfo = that.getMovieById(args.value, this.moviesData);
 
           form.updateData('director', movieInfo.director);
           form.updateData('endDate', new Date(startDate.getTime() + 60 * 1000 * movieInfo.duration));
@@ -109,8 +109,8 @@ export class AppComponent {
     return null;
   }
 
-  getMovieById(id) {
-    return Query(this.moviesData).filter(['id', '=', id]).toArray()[0];
+  getMovieById(id, moviesData) {
+    return Query(moviesData).filter(['id', '=', id]).toArray()[0];
   }
 }
 
@@ -121,7 +121,7 @@ export class AppComponent {
     DxSchedulerModule,
     DxTemplateModule,
   ],
-  declarations: [AppComponent, MoviePipe],
+  declarations: [AppComponent, ApplyPipe],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
