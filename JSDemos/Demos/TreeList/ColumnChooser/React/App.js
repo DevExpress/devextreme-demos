@@ -42,6 +42,8 @@ class App extends React.Component {
       mode, searchEnabled, allowSelectAll, selectByClick, recursive,
     } = this.state;
 
+    const isDragMode = mode === columnChooserModes[0].key;
+
     return (
       <div>
         <TreeList
@@ -102,6 +104,7 @@ class App extends React.Component {
               defaultValue={allowSelectAll}
               text="Allow select all"
               onValueChanged={this.onAllowSelectAllValueChanged}
+              disabled={isDragMode}
             />
           </div>
           <div className="option">
@@ -110,6 +113,7 @@ class App extends React.Component {
               defaultValue={selectByClick}
               text="Select by click"
               onValueChanged={this.onSelectByClickValueChanged}
+              disabled={isDragMode}
             />
           </div>
           <div className="option">
@@ -118,6 +122,7 @@ class App extends React.Component {
               defaultValue={recursive}
               text="Recursive"
               onValueChanged={this.onRecursiveValueChanged}
+              disabled={isDragMode}
             />
           </div>
         </div>

@@ -80,18 +80,21 @@
         <DxCheckBox
           v-model:value="allowSelectAll"
           text="Allow select all"
+          :disabled="mode === 'dragAndDrop'"
         />
       </div>
       <div class="option">
         <DxCheckBox
           v-model:value="selectByClick"
           text="Select by click"
+          :disabled="mode === 'dragAndDrop'"
         />
       </div>
       <div class="option">
         <DxCheckBox
           v-model:value="recursive"
           text="Recursive"
+          :disabled="mode === 'dragAndDrop'"
         />
       </div>
     </div>

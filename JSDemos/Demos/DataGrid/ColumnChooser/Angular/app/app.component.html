@@ -59,15 +59,21 @@
     <dx-check-box
       text="Allow select all"
       [(value)]="allowSelectAll"
+      [disabled]="columnChooser.mode === 'dragAndDrop'"
     ></dx-check-box>
   </div>
   <div class="option">
     <dx-check-box
       text="Select by click"
       [(value)]="selectByClick"
+      [disabled]="columnChooser.mode === 'dragAndDrop'"
     ></dx-check-box>
   </div>
   <div class="option">
-    <dx-check-box text="Recursive" [(value)]="recursive"></dx-check-box>
+    <dx-check-box 
+      text="Recursive" 
+      [(value)]="recursive"
+      [disabled]="columnChooser.mode === 'dragAndDrop'"
+    ></dx-check-box>
   </div>
 </div>

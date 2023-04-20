@@ -51,6 +51,12 @@ $(() => {
     displayExpr: 'name',
     onValueChanged(data) {
       dataGrid.option('columnChooser.mode', data.value);
+
+      const isDragMode = columnChooserModes[0].key === data.value;
+
+      $('#allowSelectAll').dxCheckBox('instance').option('disabled', isDragMode);
+      $('#selectByClick').dxCheckBox('instance').option('disabled', isDragMode);
+      $('#recursive').dxCheckBox('instance').option('disabled', isDragMode);
     },
   });
 

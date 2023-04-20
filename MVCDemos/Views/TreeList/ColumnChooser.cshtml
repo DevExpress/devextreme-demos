@@ -82,6 +82,12 @@
                 function(data) {
                     var treeList = $("#employees").dxTreeList("instance");
                     treeList.option("columnChooser.mode", data.value);
+
+                    const isDragMode = dataSource[0].key === data.value;
+
+                    $('#allowSelectAll').dxCheckBox('instance').option('disabled', isDragMode);
+                    $('#selectByClick').dxCheckBox('instance').option('disabled', isDragMode);
+                    $('#recursive').dxCheckBox('instance').option('disabled', isDragMode);
                 }
             </text>)
         )
@@ -102,6 +108,7 @@
 
     <div class="option">
         @(Html.DevExtreme().CheckBox()
+            .ID("allowSelectAll")
             .Text("Allow select all")
             .Value(true)
             .OnValueChanged(@<text>
@@ -115,6 +122,7 @@
 
     <div class="option">
         @(Html.DevExtreme().CheckBox()
+            .ID("selectByClick")
             .Text("Select by click")
             .Value(true)
             .OnValueChanged(@<text>
@@ -128,6 +136,7 @@
 
     <div class="option">
         @(Html.DevExtreme().CheckBox()
+            .ID("recursive")
             .Text("Recursive")
             .Value(true)
             .OnValueChanged(@<text>
