@@ -9,7 +9,7 @@
         .ShowFilterFields(false)
     )
     .FieldChooser(fc => fc.AllowSearch(true))
-    .HeaderFilter(hf => hf.AllowSearch(true))
+    .HeaderFilter(hf => hf.Search(hfs => hfs.Enabled(true)))
     .Scrolling(fc => fc.Mode(PivotGridScrollingMode.Virtual))
     .DataSource(d => d
         .Paginate(true)

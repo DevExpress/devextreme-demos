@@ -12,12 +12,12 @@
             fields.AddFor(m => m.Region)
                 .Width(120)
                 .Area(PivotGridArea.Row)
-                .HeaderFilter(hf => hf.AllowSearch(true));
+                .HeaderFilter(hf => hf.Search(hfs => hfs.Enabled(true)));
 
             fields.AddFor(m => m.City)
                 .Width(150)
                 .Area(PivotGridArea.Row)
-                .HeaderFilter(hf => hf.AllowSearch(true))
+                .HeaderFilter(hf => hf.Search(hfs => hfs.Enabled(true)))
                 .Selector("pivotGrid_dataSource_cityField_selector");
 
             fields.AddFor(m => m.Date)
