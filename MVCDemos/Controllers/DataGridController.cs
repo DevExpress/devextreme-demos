@@ -97,6 +97,10 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View(SampleData.OrdersWithCustomerInfo);
         }
 
+        public ActionResult UsingHeaderFilter() {
+            return View(SampleData.DataGridEmployees.Take(10));
+        }
+
         public ActionResult FocusedRow() {
             return View();
         }

@@ -22,13 +22,26 @@
       <DxColumn
         data-field="Title"
         caption="Position"
-      />
+      >
+        <DxHeaderFilter
+          :allow-select-all="false"
+        >
+          <DxSearch
+            :enabled="true"
+          />
+        </DxHeaderFilter>
+      </DxColumn>
       <DxColumn
         data-field="City"
-      />
-      <DxColumn
-        data-field="State"
-      />
+      >
+        <DxHeaderFilter>
+          <DxSearch
+            :enabled="true"
+            :search-expr="['City', 'State']"
+            :editor-options="{ placeholder: 'Search city or state' }"
+          />
+        </DxHeaderFilter>
+      </DxColumn>
       <DxColumn
         data-field="Mobile_Phone"
       />
@@ -41,13 +54,13 @@
 </template>
 <script>
 import {
-  DxTreeList, DxHeaderFilter, DxSelection, DxColumn,
+  DxTreeList, DxHeaderFilter, DxSearch, DxSelection, DxColumn,
 } from 'devextreme-vue/tree-list';
 import { employees } from './data.js';
 
 export default {
   components: {
-    DxTreeList, DxHeaderFilter, DxSelection, DxColumn,
+    DxTreeList, DxHeaderFilter, DxSearch, DxSelection, DxColumn,
   },
   data() {
     return {
