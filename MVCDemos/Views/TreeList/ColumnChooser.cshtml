@@ -18,24 +18,41 @@
 
         column.AddFor(m => m.State);
 
-        column.AddFor(m => m.MobilePhone);
+        column.Add()
+            .Caption("Contacts")
+            .Columns(a => {
+                column.AddFor(m => m.MobilePhone)
+                    .AllowHiding(false);
 
-        column.AddFor(m => m.Email)
-            .Visible(false);
+                column.AddFor(m => m.Email);
+
+                column.AddFor(m => m.Skype)
+                    .Visible(false);
+            });
 
         column.AddFor(m => m.HireDate);
 
-        column.AddFor(m => m.Skype)
-            .Visible(false);
     })
     .ColumnAutoWidth(true)
     .ShowRowLines(true)
     .ShowBorders(true)
-    .ColumnChooser(cc => cc
-        .Enabled(true)
-        .AllowSearch(true)
-    )
-    .ExpandedRowKeys(new[] { 1 })
+    .ColumnChooser(cc => {
+        cc.Enabled(true);
+
+        cc.Mode(GridColumnChooserMode.Select);
+
+        cc.Search(ccs => ccs
+            .Enabled(true)
+            .EditorOptions(new { Placeholder = "Search column" })
+        );
+
+        cc.Selection(ccs => ccs
+            .AllowSelectAll(true)
+            .SelectByClick(true)
+            .Recursive(true)
+        );
+    })
+    .ExpandedRowKeys(new[] { 1, 5 })
 )
 
 <div class="options">
@@ -58,13 +75,19 @@
 
         @(Html.DevExtreme().SelectBox()
             .DataSource(dataSource)
-            .Value(dataSource[0].Key)
+            .Value(dataSource[1].Key)
             .ValueExpr("Key")
             .DisplayExpr("Name")
             .OnValueChanged(@<text>
                 function(data) {
                     var treeList = $("#employees").dxTreeList("instance");
                     treeList.option("columnChooser.mode", data.value);
+
+                    const isDragMode = dataSource[0].key === data.value;
+
+                    $('#allowSelectAll').dxCheckBox('instance').option('disabled', isDragMode);
+                    $('#selectByClick').dxCheckBox('instance').option('disabled', isDragMode);
+                    $('#recursive').dxCheckBox('instance').option('disabled', isDragMode);
                 }
             </text>)
         )
@@ -72,12 +95,54 @@
     </div>
     <div class="option">
         @(Html.DevExtreme().CheckBox()
-            .Text("Allow search")
+            .Text("Search enabled")
             .Value(true)
             .OnValueChanged(@<text>
                 function(data) {
                     var treeList = $("#employees").dxTreeList("instance");
-                    treeList.option("columnChooser.allowSearch", data.value);
+                    treeList.option("columnChooser.search.enabled", data.value);
+                }
+            </text>)
+        )
+    </div>
+
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .ID("allowSelectAll")
+            .Text("Allow select all")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(data) {
+                    var treeList = $("#employees").dxTreeList("instance");
+                    treeList.option("columnChooser.selection.allowSelectAll", data.value);
+                }
+            </text>)
+        )
+    </div>
+
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .ID("selectByClick")
+            .Text("Select by click")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(data) {
+                    var treeList = $("#employees").dxTreeList("instance");
+                    treeList.option("columnChooser.selection.selectByClick", data.value);
+                }
+            </text>)
+        )
+    </div>
+
+    <div class="option">
+        @(Html.DevExtreme().CheckBox()
+            .ID("recursive")
+            .Text("Recursive")
+            .Value(true)
+            .OnValueChanged(@<text>
+                function(data) {
+                    var treeList = $("#employees").dxTreeList("instance");
+                    treeList.option("columnChooser.selection.recursive", data.value);
                 }
             </text>)
         )

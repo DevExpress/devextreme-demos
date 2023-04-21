@@ -155,6 +155,10 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View();
         }
 
+        public ActionResult ColumnChooser() {
+            return View(SampleData.DataGridEmployees.Take(10).ToList<Employee>());
+        }
+
         public ActionResult ColumnTemplate() {
             return View(SampleData.DataGridEmployees.Take(9).ToList<Employee>());
         }

@@ -714,6 +714,7 @@
     <Content Include="Content\DemosStyles\Charts\Strips.css" />
     <Content Include="Content\DemosStyles\Common\EditorAppearanceVariants.css" />
     <Content Include="Content\DemosStyles\DataGrid\BatchUpdateRequest.css" />
+    <Content Include="Content\DemosStyles\DataGrid\ColumnChooser.css" />
     <Content Include="Content\DemosStyles\DataGrid\CustomEditors.css" />
     <Content Include="Content\DemosStyles\DataGrid\DnDBetweenGrids.css" />
     <Content Include="Content\DemosStyles\DataGrid\EditStateManagement.css" />
@@ -2258,6 +2259,7 @@
     <Content Include="Views\Resizable\Overview.cshtml" />
     <Content Include="Views\Gantt\ExportToPDF.cshtml" />
     <Content Include="Views\Scheduler\AllDayPanelMode.cshtml" />
+    <Content Include="Views\DataGrid\ColumnChooser.cshtml" />
     <Content Include="Views\DataGrid\UsingHeaderFilter.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
