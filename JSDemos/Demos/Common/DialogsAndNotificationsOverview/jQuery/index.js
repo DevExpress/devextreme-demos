@@ -2,7 +2,7 @@ $(() => {
   let currentHouse;
 
   DevExpress.setTemplateEngine({
-    compile: (element) => DevExpress.utils.dom.extractTemplateMarkup(element),
+    compile: (element) => $(element).html(),
     render: (template, data) => Mustache.render(template, data),
   });
 
