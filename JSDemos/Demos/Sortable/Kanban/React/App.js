@@ -124,7 +124,7 @@ class App extends React.Component {
     }
 
     if (toIndex >= 0) {
-      result = [...items.slice(0, toIndex), item, ...items.slice(toIndex)];
+      result = [...result.slice(0, toIndex), item, ...result.slice(toIndex)];
     }
 
     return result;
