@@ -3,8 +3,8 @@ import { Selector } from 'testcafe';
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
 const CLASSES = {
-  list: 'list',
-  card: 'card',
+  list: '.list',
+  card: '.card',
 };
 
 fixture('Sortable.Kanban')
