@@ -11,7 +11,11 @@
     #columnChooser
     [enabled]="true"
     [mode]="columnChooserModes[1].key"
-    [position]="{ my: 'right top', at: 'right bottom', of: '.dx-datagrid-column-chooser-button' }"
+    [position]="{
+      my: 'right top',
+      at: 'right bottom',
+      of: '.dx-datagrid-column-chooser-button'
+    }"
   >
     <dxo-search
       [enabled]="searchEnabled"
@@ -53,7 +57,7 @@
       ></dx-select-box>
     </div>
   </div>
-  
+
   <div class="checkboxes-container">
     <div class="option">
       <dx-check-box
@@ -83,5 +87,4 @@
       ></dx-check-box>
     </div>
   </div>
-
 </div>
