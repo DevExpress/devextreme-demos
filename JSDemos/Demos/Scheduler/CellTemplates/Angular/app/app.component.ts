@@ -74,9 +74,9 @@ export class AppComponent {
     notify('Cannot create or move an appointment/event to disabled time/date regions.', 'warning', 1000);
   }
 
-  isHoliday(date: Date, holidays) {
+  isHoliday(date: Date, component) {
     const localeDate = date.toLocaleDateString();
-    return holidays.filter((holiday) => holiday.toLocaleDateString() === localeDate).length > 0;
+    return component.holidays.filter((holiday) => holiday.toLocaleDateString() === localeDate).length > 0;
   }
 
   isWeekend(date: Date) {
@@ -84,16 +84,16 @@ export class AppComponent {
     return day === 0 || day === 6;
   }
 
-  isDinner(date: Date, dinnerTime) {
+  isDinner(date: Date, component) {
     const hours = date.getHours();
-    return hours >= dinnerTime.from && hours < dinnerTime.to;
+    return hours >= component.dinnerTime.from && hours < component.dinnerTime.to;
   }
 
-  hasCoffeeCupIcon(date: Date, dinnerTime) {
+  hasCoffeeCupIcon(date: Date, component) {
     const hours = date.getHours();
     const minutes = date.getMinutes();
 
-    return hours === dinnerTime.from && minutes === 0;
+    return hours === component.dinnerTime.from && minutes === 0;
   }
 
   isValidAppointment(component: any, appointmentData: any) {

@@ -109,8 +109,8 @@ export class AppComponent {
     return null;
   }
 
-  getMovieById(id, moviesData) {
-    return Query(moviesData).filter(['id', '=', id]).toArray()[0];
+  getMovieById(id, component) {
+    return Query(component.moviesData).filter(['id', '=', id]).toArray()[0];
   }
 }
 

@@ -19,8 +19,7 @@
   <div *dxTemplate="let model of 'appointment-template'">
     <ng-container
       *ngIf="
-        getMovieById
-          | apply : model.appointmentData.movieId : moviesData as movie
+        getMovieById | apply : model.appointmentData.movieId : this as movie
       "
     >
       <div class="movie">

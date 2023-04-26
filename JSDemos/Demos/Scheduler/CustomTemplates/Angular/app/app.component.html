@@ -35,7 +35,7 @@
   <div *dxTemplate="let model of 'appointment-template'">
     <div class="showtime-preview">
       <div>{{
-        (getMovieById | apply : model.appointmentData.movieId : moviesData).text
+        (getMovieById | apply : model.appointmentData.movieId : this).text
       }}</div>
       <div
         >Ticket Price:
@@ -55,8 +55,7 @@
   <div *dxTemplate="let model of 'tooltip-template'">
     <ng-container
       *ngIf="
-        getMovieById
-          | apply : model.appointmentData.movieId : moviesData as movie
+        getMovieById | apply : model.appointmentData.movieId : this as movie
       "
     >
       <div class="movie-tooltip">
