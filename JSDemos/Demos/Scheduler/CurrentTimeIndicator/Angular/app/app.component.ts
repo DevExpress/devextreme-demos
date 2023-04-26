@@ -64,8 +64,8 @@ export class AppComponent {
     this.indicatorUpdateInterval = e.value * 1000;
   }
 
-  getMovieById(id, moviesData) {
-    return Query(moviesData).filter(['id', '=', id]).toArray()[0];
+  getMovieById(id, component) {
+    return Query(component.moviesData).filter(['id', '=', id]).toArray()[0];
   }
 }
 
