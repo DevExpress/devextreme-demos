@@ -77,17 +77,9 @@ function List({
 function App() {
   const [state, setState] = React.useState({
     statuses,
-    lists: [],
-    employeesMap: {},
+    lists: getLists(statuses, taskList),
+    employeesMap: getEmployeesMap(employees),
   });
-
-  React.useEffect(() => {
-    setState((stateValue) => ({
-      ...stateValue,
-      lists: getLists(statuses, taskList),
-      employeesMap: getEmployeesMap(employees),
-    }));
-  }, []);
 
   const onListReorder = React.useCallback(({ fromIndex, toIndex }) => {
     setState((stateValue) => ({
