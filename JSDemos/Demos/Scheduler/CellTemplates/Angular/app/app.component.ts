@@ -19,11 +19,13 @@ if (!/localhost/.test(document.location.host)) {
   providers: [DataService],
 })
 export class AppComponent {
-  dataSource: DataSource;
+  dataSource = new DataSource({
+      store: this.dataService.getData(),
+  });
 
-  dinnerTime;
+  dinnerTime = this.dataService.getDinnerTime();
 
-  holidays;
+  holidays = this.dataService.getHolidays();
 
   currentDate = new Date(2021, 3, 27);
 
@@ -31,12 +33,7 @@ export class AppComponent {
 
   currentView = this.views[0];
 
-  constructor(public dataService: DataService) {
-    this.dinnerTime = dataService.getDinnerTime();
-    this.holidays = dataService.getHolidays();
-    this.dataSource = new DataSource({
-      store: dataService.getData(),
-    });
+  constructor(private dataService: DataService) {}
   }
 
   onOptionChanged(e: any) {
