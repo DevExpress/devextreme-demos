@@ -82,7 +82,7 @@
 
             @(Html.DevExtreme().SelectBox()
                 .DataSource(dataSource)
-                .Value(dataSource[0].Key)
+                .Value(dataSource[1].Key)
                 .ValueExpr("Key")
                 .DisplayExpr("Name")
                 .OnValueChanged(@<text>

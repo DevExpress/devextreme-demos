@@ -21,12 +21,12 @@
         column.Add()
             .Caption("Contacts")
             .Columns(a => {
-                column.AddFor(m => m.MobilePhone)
+                a.AddFor(m => m.MobilePhone)
                     .AllowHiding(false);
 
-                column.AddFor(m => m.Email);
+                a.AddFor(m => m.Email);
 
-                column.AddFor(m => m.Skype)
+                a.AddFor(m => m.Skype)
                     .Visible(false);
             });
 
