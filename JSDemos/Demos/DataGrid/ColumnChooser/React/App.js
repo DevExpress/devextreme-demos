@@ -14,6 +14,7 @@ const columnChooserModes = [{
   name: 'Select',
 }];
 
+const columnChooserPosition = { my: 'right top', at: 'right bottom', of: '.dx-datagrid-column-chooser-button' };
 const searchEditorOptions = { placeholder: 'Search column' };
 
 class App extends React.Component {
@@ -66,7 +67,10 @@ class App extends React.Component {
 
           <Column dataField="HireDate" dataType="date" />
 
-          <ColumnChooser enabled={true} mode={mode}>
+          <ColumnChooser
+            enabled={true}
+            mode={mode}
+            position={columnChooserPosition}>
             <ColumnChooserSearch
               enabled={searchEnabled}
               editorOptions={searchEditorOptions} />
@@ -79,52 +83,59 @@ class App extends React.Component {
         </DataGrid>
         <div className="options">
           <div className="caption">Options</div>
-          <div className="option">
-            <span>Column chooser mode</span>
-            &nbsp;
-            <SelectBox
-              items={columnChooserModes}
-              value={mode}
-              valueExpr="key"
-              displayExpr="name"
-              onValueChanged={this.onModeValueChanged}
-            />
+
+          <div className="selectboxes-container">
+            <div className="option">
+              <span>Column chooser mode</span>
+              &nbsp;
+              <SelectBox
+                items={columnChooserModes}
+                value={mode}
+                valueExpr="key"
+                displayExpr="name"
+                onValueChanged={this.onModeValueChanged}
+              />
+            </div>
           </div>
-          <div className="option">
-            <CheckBox
-              id="searchEnabled"
-              defaultValue={searchEnabled}
-              text="Search enabled"
-              onValueChanged={this.onSearchEnabledValueChanged}
-            />
+
+          <div className='checkboxes-container'>
+            <div className="option">
+              <CheckBox
+                id="searchEnabled"
+                defaultValue={searchEnabled}
+                text="Search enabled"
+                onValueChanged={this.onSearchEnabledValueChanged}
+              />
+            </div>
+            <div className="option">
+              <CheckBox
+                id="allowSelectAll"
+                defaultValue={allowSelectAll}
+                text="Allow select all"
+                onValueChanged={this.onAllowSelectAllValueChanged}
+                disabled={isDragMode}
+              />
+            </div>
+            <div className="option">
+              <CheckBox
+                id="selectByClick"
+                defaultValue={selectByClick}
+                text="Select by click"
+                onValueChanged={this.onSelectByClickValueChanged}
+                disabled={isDragMode}
+              />
+            </div>
+            <div className="option">
+              <CheckBox
+                id="recursive"
+                defaultValue={recursive}
+                text="Recursive"
+                onValueChanged={this.onRecursiveValueChanged}
+                disabled={isDragMode}
+              />
+            </div>
           </div>
-          <div className="option">
-            <CheckBox
-              id="allowSelectAll"
-              defaultValue={allowSelectAll}
-              text="Allow select all"
-              onValueChanged={this.onAllowSelectAllValueChanged}
-              disabled={isDragMode}
-            />
-          </div>
-          <div className="option">
-            <CheckBox
-              id="selectByClick"
-              defaultValue={selectByClick}
-              text="Select by click"
-              onValueChanged={this.onSelectByClickValueChanged}
-              disabled={isDragMode}
-            />
-          </div>
-          <div className="option">
-            <CheckBox
-              id="recursive"
-              defaultValue={recursive}
-              text="Recursive"
-              onValueChanged={this.onRecursiveValueChanged}
-              disabled={isDragMode}
-            />
-          </div>
+
         </div>
       </div>
     );
