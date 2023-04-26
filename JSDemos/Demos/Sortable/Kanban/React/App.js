@@ -3,8 +3,6 @@ import ScrollView from 'devextreme-react/scroll-view';
 import Sortable from 'devextreme-react/sortable';
 import { tasks as taskList, employees } from './data.js';
 
-const taskStatuses = ['Not Started', 'Need Assistance', 'In Progress', 'Deferred', 'Completed'];
-
 function getLists(statusArray, taskArray) {
   const tasksMap = taskArray.reduce((result, task) => {
     if (result[task.Task_Status]) {
@@ -40,6 +38,9 @@ function reorderItem(array, fromIdx, toIdx) {
   const result = removeItem(array, fromIdx);
   return insertItem(result, item, toIdx);
 }
+
+const taskStatuses = ['Not Started', 'Need Assistance', 'In Progress', 'Deferred', 'Completed'];
+const employeesRecord = getEmployeesMap(employees);
 
 function Card({ task, employeesMap }) {
   return <div className="card dx-card dx-theme-text-color dx-theme-background-color">
@@ -77,7 +78,6 @@ function List({
 function App() {
   const [statuses, setStatuses] = React.useState(taskStatuses);
   const [lists, setLists] = React.useState(getLists(taskStatuses, taskList));
-  const [employeesMap] = React.useState(getEmployeesMap(employees));
 
   const onListReorder = React.useCallback(({ fromIndex, toIndex }) => {
     setLists((state) => reorderItem(state, fromIndex, toIndex));
@@ -117,7 +117,7 @@ function App() {
               title={status}
               index={listIndex}
               tasks={tasks}
-              employeesMap={employeesMap}
+              employeesMap={employeesRecord}
               onTaskDrop={onTaskDrop}>
             </List>;
           })}
