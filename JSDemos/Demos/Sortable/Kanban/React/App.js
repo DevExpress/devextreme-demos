@@ -3,7 +3,7 @@ import ScrollView from 'devextreme-react/scroll-view';
 import Sortable from 'devextreme-react/sortable';
 import { tasks as taskList, employees } from './data.js';
 
-const statuses = ['Not Started', 'Need Assistance', 'In Progress', 'Deferred', 'Completed'];
+const taskStatuses = ['Not Started', 'Need Assistance', 'In Progress', 'Deferred', 'Completed'];
 
 function getLists(statusArray, taskArray) {
   const tasksMap = taskArray.reduce((result, task) => {
@@ -75,36 +75,28 @@ function List({
 }
 
 function App() {
-  const [state, setState] = React.useState({
-    statuses,
-    lists: getLists(statuses, taskList),
-    employeesMap: getEmployeesMap(employees),
-  });
+  const [statuses, setStatuses] = React.useState(taskStatuses);
+  const [lists, setLists] = React.useState(getLists(taskStatuses, taskList));
+  const [employeesMap] = React.useState(getEmployeesMap(employees));
 
   const onListReorder = React.useCallback(({ fromIndex, toIndex }) => {
-    setState((stateValue) => ({
-      ...stateValue,
-      lists: reorderItem(stateValue.lists, fromIndex, toIndex),
-      statuses: reorderItem(stateValue.statuses, fromIndex, toIndex),
-    }));
+    setLists((state) => reorderItem(state, fromIndex, toIndex));
+    setStatuses((state) => reorderItem(state, fromIndex, toIndex));
   }, []);
 
   const onTaskDrop = React.useCallback(
     ({
       fromData, toData, fromIndex, toIndex,
     }) => {
-      const updatedLists = [...state.lists];
+      const updatedLists = [...lists];
 
       const item = updatedLists[fromData][fromIndex];
       updatedLists[fromData] = removeItem(updatedLists[fromData], fromIndex);
       updatedLists[toData] = insertItem(updatedLists[toData], item, toIndex);
 
-      setState((stateValue) => ({
-        ...stateValue,
-        lists: updatedLists,
-      }));
+      setLists(updatedLists);
     },
-    [state],
+    [lists],
   );
 
   return (
@@ -118,14 +110,14 @@ function App() {
           itemOrientation="horizontal"
           handle=".list-title"
           onReorder={onListReorder}>
-          {state.lists.map((tasks, listIndex) => {
-            const status = state.statuses[listIndex];
+          {lists.map((tasks, listIndex) => {
+            const status = statuses[listIndex];
             return <List
               key={status}
               title={status}
               index={listIndex}
               tasks={tasks}
-              employeesMap={state.employeesMap}
+              employeesMap={employeesMap}
               onTaskDrop={onTaskDrop}>
             </List>;
           })}
