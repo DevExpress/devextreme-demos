@@ -1,8 +1,4 @@
 $(() => {
-  function isDeleteAllowed(nodeData) {
-    return nodeData.ID !== 1
-  };
-
   $('#employees').dxTreeList({
     dataSource: employees,
     keyExpr: 'ID',
@@ -13,9 +9,9 @@ $(() => {
     editing: {
       mode: 'row',
       allowUpdating: true,
-      allowDeleting: true,
-      allowAdding: (args)=>{
-        return isDeleteAllowed(args.row.data)
+      allowAdding: true,
+      allowDeleting: (args)=>{
+        return args.row.data.ID !== 1
       },
     },
     columns: [{
