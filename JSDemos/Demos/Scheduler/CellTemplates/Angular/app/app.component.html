@@ -30,7 +30,7 @@
       'dx-scheduler-date-table-cell-text': currentView === 'month'
     }"
   >
-    {{ currentView === "month" ? dataCell.startDate.getDate() : "" }}
+    {{ currentView === "month" ? (dataCell.startDate | date) : "" }}
   </div>
 
   <div
