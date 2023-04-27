@@ -54,9 +54,7 @@
 
   <div *dxTemplate="let model of 'tooltip-template'">
     <ng-container
-      *ngIf="
-        getMovieById | apply : model.appointmentData.movieId : this as movie
-      "
+      *ngIf="getMovieById | apply : model.appointmentData.movieId as movie"
     >
       <div class="movie-tooltip">
         <img [src]="movie.image" />

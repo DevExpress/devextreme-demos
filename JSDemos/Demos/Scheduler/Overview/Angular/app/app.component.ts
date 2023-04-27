@@ -30,7 +30,7 @@ export class AppComponent {
     this.resourcesDataSource = service.getEmployees();
   }
 
-  markWeekEnd(cellData) {
+  markWeekEnd = (cellData) => {
     function isWeekEnd(date) {
       const day = date.getDay();
       return day === 0 || day === 6;
@@ -40,16 +40,16 @@ export class AppComponent {
       [`employee-${cellData.groups.employeeID}`]: true,
       [`employee-weekend-${cellData.groups.employeeID}`]: isWeekEnd(cellData.startDate),
     };
-  }
+  };
 
-  markTraining(cellData) {
+  markTraining = (cellData) => {
     const classObject = {
       'day-cell': true,
     };
 
     classObject[AppComponent.getCurrentTraining(cellData.startDate.getDate(), cellData.groups.employeeID)] = true;
     return classObject;
-  }
+  };
 
   static getCurrentTraining(date, employeeID) {
     const result = (date + employeeID) % 3;
