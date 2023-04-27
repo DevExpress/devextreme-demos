@@ -87,7 +87,7 @@ class App extends React.Component {
           <div className="selectboxes-container">
             <div className="option">
               <span>Column chooser mode</span>
-              &nbsp;
+
               <SelectBox
                 items={columnChooserModes}
                 value={mode}
