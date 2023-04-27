@@ -48,25 +48,23 @@ export class AppComponent {
     this.moviesData = service.getMoviesData();
   }
 
-  onContentReady(e) {
+  onContentReady = (e) => {
     e.component.scrollTo(new Date());
-  }
+  };
 
-  onAppointmentClick(e) {
+  onAppointmentClick = (e) => {
     e.cancel = true;
-  }
+  };
 
-  onAppointmentDblClick(e) {
+  onAppointmentDblClick = (e) => {
     e.cancel = true;
-  }
+  };
 
-  changeIndicatorUpdateInterval(e) {
+  changeIndicatorUpdateInterval = (e) => {
     this.indicatorUpdateInterval = e.value * 1000;
-  }
+  };
 
-  getMovieById(id, component) {
-    return Query(component.moviesData).filter(['id', '=', id]).toArray()[0];
-  }
+  getMovieById = (id) => Query(this.moviesData).filter(['id', '=', id]).toArray()[0];
 }
 
 @NgModule({

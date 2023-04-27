@@ -37,10 +37,10 @@ export class AppComponent {
     this.theatreData = service.getTheatreData();
   }
 
-  onAppointmentFormOpening(data) {
+  onAppointmentFormOpening = (data) => {
     const that = this;
     const form = data.form;
-    let movieInfo = that.getMovieById(data.appointmentData.movieId, this.moviesData) || {};
+    let movieInfo = that.getMovieById(data.appointmentData.movieId) || {};
     let startDate = data.appointmentData.startDate;
 
     form.option('items', [{
@@ -54,7 +54,7 @@ export class AppComponent {
         displayExpr: 'text',
         valueExpr: 'id',
         onValueChanged(args) {
-          movieInfo = that.getMovieById(args.value, this.moviesData);
+          movieInfo = that.getMovieById(args.value);
 
           form.updateData('director', movieInfo.director);
           form.updateData('endDate', new Date(startDate.getTime() + 60 * 1000 * movieInfo.duration));
@@ -100,18 +100,16 @@ export class AppComponent {
         },
       },
     }]);
-  }
+  };
 
-  getDataObj(objData) {
+  getDataObj = (objData) => {
     for (let i = 0; i < this.data.length; i++) {
       if (this.data[i].startDate.getTime() === objData.startDate.getTime() && this.data[i].theatreId === objData.theatreId) { return this.data[i]; }
     }
     return null;
-  }
+  };
 
-  getMovieById(id, component) {
-    return Query(component.moviesData).filter(['id', '=', id]).toArray()[0];
-  }
+  getMovieById = (id) => Query(this.moviesData).filter(['id', '=', id]).toArray()[0];
 }
 
 @NgModule({

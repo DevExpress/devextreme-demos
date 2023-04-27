@@ -39,71 +39,71 @@ export class AppComponent {
     });
   }
 
-  onOptionChanged(e: any) {
+  onOptionChanged = (e: any) => {
     if (e.name === 'currentView') {
       this.currentView = e.value;
     }
-  }
+  };
 
-  onAppointmentFormOpening(e: any) {
+  onAppointmentFormOpening = (e: any) => {
     const startDate = e.appointmentData.startDate;
     if (!this.isValidAppointmentDate(startDate)) {
       e.cancel = true;
       this.notifyDisableDate();
     }
     this.applyDisableDatesToDateEditors(e.form);
-  }
+  };
 
-  onAppointmentAdding(e: any) {
+  onAppointmentAdding = (e: any) => {
     const isValidAppointment = this.isValidAppointment(e.component, e.appointmentData);
     if (!isValidAppointment) {
       e.cancel = true;
       this.notifyDisableDate();
     }
-  }
+  };
 
-  onAppointmentUpdating(e: any) {
+  onAppointmentUpdating = (e: any) => {
     const isValidAppointment = this.isValidAppointment(e.component, e.newData);
     if (!isValidAppointment) {
       e.cancel = true;
       this.notifyDisableDate();
     }
-  }
+  };
 
-  notifyDisableDate() {
+  notifyDisableDate = () => {
     notify('Cannot create or move an appointment/event to disabled time/date regions.', 'warning', 1000);
-  }
+  };
 
-  isHoliday(date: Date, component) {
+  isHoliday = (date: Date, component) => {
     const localeDate = date.toLocaleDateString();
     return component.holidays.filter((holiday) => holiday.toLocaleDateString() === localeDate).length > 0;
-  }
+  };
 
-  isWeekend(date: Date) {
+  isWeekend = (date: Date) => {
     const day = date.getDay();
     return day === 0 || day === 6;
-  }
+  };
 
-  isDinner(date: Date, component) {
+  isDinner = (date: Date) => {
     const hours = date.getHours();
-    return hours >= component.dinnerTime.from && hours < component.dinnerTime.to;
-  }
+    return hours >= this.dinnerTime.from && hours < this.dinnerTime.to;
+  };
 
-  hasCoffeeCupIcon(date: Date, component) {
+  hasCoffeeCupIcon = (date: Date) => {
     const hours = date.getHours();
     const minutes = date.getMinutes();
 
-    return hours === component.dinnerTime.from && minutes === 0;
-  }
+    return hours === this.dinnerTime.from && minutes === 0;
+  };
 
-  isValidAppointment(component: any, appointmentData: any) {
+  isValidAppointment = (component: any, appointmentData: any) => {
     const startDate = new Date(appointmentData.startDate);
     const endDate = new Date(appointmentData.endDate);
     const cellDuration = component.option('cellDuration');
     return this.isValidAppointmentInterval(startDate, endDate, cellDuration);
-  }
+  };
 
-  isValidAppointmentInterval(startDate: Date, endDate: Date, cellDuration: number) {
+  isValidAppointmentInterval = (startDate: Date, endDate: Date, cellDuration: number) => {
     const edgeEndDate = new Date(endDate.getTime() - 1);
 
     if (!this.isValidAppointmentDate(edgeEndDate)) {
@@ -121,20 +121,18 @@ export class AppComponent {
     }
 
     return true;
-  }
+  };
 
-  isValidAppointmentDate(date: Date) {
-    return !this.isHoliday(date, this.holidays) && !this.isDinner(date, this.dinnerTime) && !this.isWeekend(date);
-  }
+  isValidAppointmentDate = (date: Date) => !this.isHoliday(date, this.holidays) && !this.isDinner(date) && !this.isWeekend(date);
 
-  applyDisableDatesToDateEditors(form: any) {
+  applyDisableDatesToDateEditors = (form: any) => {
     const holidays = this.dataService.getHolidays();
     const startDateEditor = form.getEditor('startDate');
     startDateEditor.option('disabledDates', holidays);
 
     const endDateEditor = form.getEditor('endDate');
     endDateEditor.option('disabledDates', holidays);
-  }
+  };
 }
 
 @NgModule({
