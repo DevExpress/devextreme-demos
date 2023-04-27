@@ -11,11 +11,6 @@
     #columnChooser
     [enabled]="true"
     [mode]="columnChooserModes[1].key"
-    [position]="{
-      my: 'right top',
-      at: 'right bottom',
-      of: '.dx-datagrid-column-chooser-button'
-    }"
   >
     <dxo-search
       [enabled]="searchEnabled"
@@ -35,7 +30,7 @@
   <dxi-column dataField="City"></dxi-column>
   <dxi-column dataField="State"></dxi-column>
   <dxi-column caption="Contacts">
-    <dxi-column dataField="Mobile_Phone" [allowHiding]="false"></dxi-column>
+    <dxi-column dataField="MobilePhone" [allowHiding]="false"></dxi-column>
     <dxi-column dataField="Email"></dxi-column>
     <dxi-column dataField="Skype" [visible]="false"></dxi-column>
   </dxi-column>
