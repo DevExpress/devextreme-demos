@@ -16,7 +16,7 @@
         .Editing(e => e
             .Mode(GridEditMode.Popup)
             .AllowUpdating(true)
-            .AllowDeleting(true)
+            .AllowDeleting(new JS("allowDeleting"))
             .AllowAdding(true)
             .Popup(p => p
                 .Title("Employee Info")
@@ -71,5 +71,9 @@
 
     function treeList_onInitNewRow(e) {
         e.data.HeadID = 1;
+    }
+
+    function allowDeleting(e) {
+        return e.row.data.ID !== 1;
     }
 </script>
