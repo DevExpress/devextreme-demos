@@ -12,9 +12,15 @@
     [enabled]="true"
     [mode]="columnChooserModes[1].key"
   >
+    <dxo-position
+      my="right top"
+      at="right bottom"
+      of=".dx-datagrid-column-chooser-button"
+    ></dxo-position>
+
     <dxo-search
       [enabled]="searchEnabled"
-      [editorOptions]="{ placeholder: 'Search column' }"
+      [editorOptions]="editorOptions"
     ></dxo-search>
 
     <dxo-selection

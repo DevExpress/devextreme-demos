@@ -46,11 +46,15 @@
       <DxColumnChooser
         :enabled="true"
         :mode="mode"
-        :position="{ my: 'right top', at: 'right bottom', of: '.dx-treelist-column-chooser-button' }"
       >
+        <DxPosition
+          my="right top"
+          at="right bottom"
+          of=".dx-treelist-column-chooser-button"
+        />
         <DxColumnChooserSearch
           :enabled="searchEnabled"
-          :editor-options="{ placeholder: 'Search column' }"
+          :editor-options="editorOptions"
         />
         <DxColumnChooserSelection
           :allow-select-all="allowSelectAll"
@@ -110,6 +114,7 @@
 <script>
 import {
   DxTreeList, DxColumn, DxColumnChooser, DxColumnChooserSearch, DxColumnChooserSelection,
+  DxPosition,
 } from 'devextreme-vue/tree-list';
 import { DxSelectBox } from 'devextreme-vue/select-box';
 import { DxCheckBox } from 'devextreme-vue/check-box';
@@ -124,6 +129,7 @@ export default {
     DxColumnChooserSelection,
     DxSelectBox,
     DxCheckBox,
+    DxPosition,
   },
   data() {
     return {
@@ -141,6 +147,7 @@ export default {
       selectByClick: true,
       recursive: true,
       expandedRowKeys: [1, 5],
+      editorOptions: { placeholder: 'Search column' },
     };
   },
 };

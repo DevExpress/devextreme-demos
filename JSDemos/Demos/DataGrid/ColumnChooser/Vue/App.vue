@@ -47,11 +47,16 @@
       <DxColumnChooser
         :enabled="true"
         :mode="mode"
-        :position="{ my: 'right top', at: 'right bottom', of: '.dx-datagrid-column-chooser-button' }"
       >
+        <DxPosition
+          my="right top"
+          at="right bottom"
+          of=".dx-datagrid-column-chooser-button"
+        />
+
         <DxColumnChooserSearch
           :enabled="searchEnabled"
-          :editor-options="{ placeholder: 'Search column' }"
+          :editor-options="editorOptions"
         />
         <DxColumnChooserSelection
           :allow-select-all="allowSelectAll"
@@ -111,6 +116,7 @@
 <script>
 import {
   DxDataGrid, DxColumn, DxColumnChooser, DxColumnChooserSearch, DxColumnChooserSelection,
+  DxPosition,
 } from 'devextreme-vue/data-grid';
 import { DxSelectBox } from 'devextreme-vue/select-box';
 import { DxCheckBox } from 'devextreme-vue/check-box';
@@ -125,6 +131,7 @@ export default {
     DxColumnChooserSelection,
     DxSelectBox,
     DxCheckBox,
+    DxPosition,
   },
   data() {
     return {
@@ -141,6 +148,7 @@ export default {
       allowSelectAll: true,
       selectByClick: true,
       recursive: true,
+      editorOptions: { placeholder: 'Search column' },
     };
   },
 };

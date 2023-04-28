@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  TreeList, Column, ColumnChooser, ColumnChooserSearch, ColumnChooserSelection,
+  TreeList, Column, ColumnChooser, ColumnChooserSearch, ColumnChooserSelection, Position,
 } from 'devextreme-react/tree-list';
 import { SelectBox } from 'devextreme-react/select-box';
 import { CheckBox } from 'devextreme-react/check-box';
@@ -16,7 +16,6 @@ const columnChooserModes = [{
 
 const expandedRowKeys = [1, 5];
 
-const columnChooserPosition = { my: 'right top', at: 'right bottom', of: '.dx-treelist-column-chooser-button' };
 const searchEditorOptions = { placeholder: 'Search column' };
 
 class App extends React.Component {
@@ -70,7 +69,13 @@ class App extends React.Component {
           <ColumnChooser
             enabled={true}
             mode={mode}
-            position={columnChooserPosition}>
+          >
+            <Position
+              my="right top"
+              at="right bottom"
+              of=".dx-treelist-column-chooser-button"
+            />
+
             <ColumnChooserSearch
               enabled={searchEnabled}
               editorOptions={searchEditorOptions} />

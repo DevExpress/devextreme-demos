@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  DataGrid, Column, ColumnChooser, ColumnChooserSearch, ColumnChooserSelection,
+  DataGrid, Column, ColumnChooser, ColumnChooserSearch, ColumnChooserSelection, Position,
 } from 'devextreme-react/data-grid';
 import { SelectBox } from 'devextreme-react/select-box';
 import { CheckBox } from 'devextreme-react/check-box';
@@ -14,7 +14,6 @@ const columnChooserModes = [{
   name: 'Select',
 }];
 
-const columnChooserPosition = { my: 'right top', at: 'right bottom', of: '.dx-datagrid-column-chooser-button' };
 const searchEditorOptions = { placeholder: 'Search column' };
 
 class App extends React.Component {
@@ -70,7 +69,13 @@ class App extends React.Component {
           <ColumnChooser
             enabled={true}
             mode={mode}
-            position={columnChooserPosition}>
+          >
+            <Position
+              my="right top"
+              at="right bottom"
+              of=".dx-datagrid-column-chooser-button"
+            />
+
             <ColumnChooserSearch
               enabled={searchEnabled}
               editorOptions={searchEditorOptions} />
