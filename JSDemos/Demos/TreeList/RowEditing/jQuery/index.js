@@ -10,9 +10,7 @@ $(() => {
       mode: 'row',
       allowUpdating: true,
       allowAdding: true,
-      allowDeleting: (args)=>{
-        return args.row.data.ID !== 1
-      },
+      allowDeleting: (args) => args.row.data.ID !== 1,
     },
     columns: [{
       dataField: 'Full_Name',
