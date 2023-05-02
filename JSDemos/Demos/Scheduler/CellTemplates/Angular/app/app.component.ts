@@ -20,7 +20,7 @@ if (!/localhost/.test(document.location.host)) {
 })
 export class AppComponent {
   dataSource = new DataSource({
-      store: this.dataService.getData(),
+    store: this.dataService.getData(),
   });
 
   dinnerTime = this.dataService.getDinnerTime();
@@ -34,7 +34,6 @@ export class AppComponent {
   currentView = this.views[0];
 
   constructor(private dataService: DataService) {}
-  }
 
   onOptionChanged = (e: any) => {
     if (e.name === 'currentView') {
