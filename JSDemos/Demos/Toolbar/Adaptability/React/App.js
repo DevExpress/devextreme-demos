@@ -32,6 +32,9 @@ function onSelectionChanged(name) {
   notify(`The "${name}" value has been changed`);
 }
 
+const fontInputAttr = { 'aria-label': 'Font' };
+const textStyleInputAttr = { 'aria-label': 'Text Style' };
+
 function App() {
   const [lineHeight, setLineHeight] = React.useState(lineHeightDefault);
   const [textAlign, setTextAlign] = React.useState(textAlignDefault);
@@ -221,6 +224,7 @@ function App() {
               <SelectBox
                 placeholder="Font"
                 displayExpr="text"
+                inputAttr={fontInputAttr}
                 dataSource={fontFamilies}
                 onItemClick={onFontFamilyClick}
               ></SelectBox>
@@ -277,6 +281,7 @@ function App() {
               <SelectBox
                 displayExpr="text"
                 valueExpr="text"
+                inputAttr={textStyleInputAttr}
                 dataSource={headings}
                 defaultValue={heading}
                 onItemClick={onHeadingClick}
