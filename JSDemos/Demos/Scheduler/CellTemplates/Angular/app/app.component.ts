@@ -70,9 +70,9 @@ export class AppComponent {
     notify('Cannot create or move an appointment/event to disabled time/date regions.', 'warning', 1000);
   };
 
-  isHoliday = (date: Date, component) => {
+  isHoliday = (date: Date) => {
     const localeDate = date.toLocaleDateString();
-    return component.holidays.filter((holiday) => holiday.toLocaleDateString() === localeDate).length > 0;
+    return this.holidays.filter((holiday) => holiday.toLocaleDateString() === localeDate).length > 0;
   };
 
   isWeekend = (date: Date) => {
