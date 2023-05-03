@@ -16,7 +16,7 @@
         .Editing(editing => editing
             .Mode(GridEditMode.Form)
             .AllowUpdating(true)
-            .AllowDeleting(true)
+            .AllowDeleting(new JS("allowDeleting"))
             .AllowAdding(true)
         )
         .Columns(columns => {
@@ -66,5 +66,9 @@
 
     function treeList_onInitNewRow(e) {
         e.data.HeadID = 1;
+    }
+
+    function allowDeleting(e) {
+        return e.row.data.ID !== 1;
     }
 </script>
