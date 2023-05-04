@@ -17,6 +17,8 @@ import {
   textAlignItems,
   textAlignItemsExtended,
   listTypes,
+  fontInputAttr,
+  textStyleInputAttr,
 } from './data.js';
 
 const lineHeightDefault = lineHeights[1].lineHeight;
