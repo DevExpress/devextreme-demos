@@ -1,4 +1,4 @@
-A header filter allows users to filter rows by values selected in a pop-up menu. To display such a menu, users can click header a filter icon in a column header.
+A header filter allows users to filter rows by values selected in a pop-up menu. To display such a menu, users can click a header filter icon in a column header.
 
 ### Display Header Filter Icons
 

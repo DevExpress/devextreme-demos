@@ -6,12 +6,12 @@ To display the column chooser, click the button in the toolbar above the DataGri
 Users drag and drop column headers to and from the column chooser.
 
 * *"select"*         
-Users select and deselect checkboxes with column names.
+Users select and deselect check boxes with column names.
 
 In *"select"* mode, you can choose whether parent element selection affects child/nested elements. Use the **selection**.[recursive](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/columnChooser/select/#recursive) property.
 
-If the column chooser contains a lot of hidden column, you can enable column search UI. Assign **true** to the **search**.[enabled](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/columnChooser/search/#enabled) property. 
+If the column chooser contains many hidden columns, you can enable the column search UI. Assign **true** to the **search**.[enabled](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/columnChooser/search/#enabled) property.
 
-In this demo, use checkboxes below the DataGrid to toggle the search and selection features.
+In this demo, use the check boxes below the DataGrid to toggle the search and selection features.
 
 To hide a column in code, set the **columns[]**.[visible](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/columns/#visible) property to **false**. 
