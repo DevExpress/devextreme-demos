@@ -17,8 +17,6 @@ import {
   textAlignItems,
   textAlignItemsExtended,
   listTypes,
-  fontInputAttr,
-  textStyleInputAttr,
 } from './data.js';
 
 const lineHeightDefault = lineHeights[1].lineHeight;
@@ -223,7 +221,6 @@ function App() {
               <SelectBox
                 placeholder="Font"
                 displayExpr="text"
-                inputAttr={fontInputAttr}
                 dataSource={fontFamilies}
                 onItemClick={onFontFamilyClick}
               ></SelectBox>
@@ -280,7 +277,6 @@ function App() {
               <SelectBox
                 displayExpr="text"
                 valueExpr="text"
-                inputAttr={textStyleInputAttr}
                 dataSource={headings}
                 defaultValue={heading}
                 onItemClick={onHeadingClick}
