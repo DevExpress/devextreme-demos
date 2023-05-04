@@ -8,9 +8,9 @@ Users drag and drop column headers to and from the column chooser.
 * *"select"*         
 Users select and deselect checkboxes with column names.
 
-The column chooser selection is non-recursive. When a parent element is selected, nested elements remain unselected. If you want to select elements recursively, enable the **selection**.[recursive](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/columnChooser/select/#recursive) property.
+In *"select"* mode, you can choose whether parent element selection affects child/nested elements. Use the **selection**.[recursive](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/columnChooser/select/#recursive) property.
 
-You can allow users to search through column names. For this, assign **true** to the **search**.[enabled](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/columnChooser/search/#enabled) property. 
+If the column chooser contains a lot of hidden column, you can enable column search UI. Assign **true** to the **search**.[enabled](/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/columnChooser/search/#enabled) property. 
 
 In this demo, use checkboxes below the DataGrid to toggle the search and selection features.
 
