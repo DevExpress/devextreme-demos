@@ -3,7 +3,7 @@ A header filter allows a user to filter field values by including or excluding t
 To configure a header filter, use the global [headerFilter](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/headerFilter/) object or a field's [headerFilter](/Documentation/ApiReference/Data_Layer/PivotGridDataSource/Configuration/fields/headerFilter/) object. This demo specifies the following properties in the global **headerFilter** object:
 
 - [search](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/headerFilter/search/)     
-Allows users to configure a search through field values. 
+Allows you to configure a search panel within a header filter. 
 
 - [showRelevantValues](/Documentation/ApiReference/UI_Components/dxPivotGrid/Configuration/headerFilter/#showRelevantValues)       
 Specifies whether to show all field values or only those that satisfy the other applied filters.
