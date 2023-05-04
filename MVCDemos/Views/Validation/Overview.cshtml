@@ -24,6 +24,19 @@
                 <div class="dx-field-value">
                     @(Html.DevExtreme().TextBoxFor(m => m.Password)
                         .Mode(TextBoxMode.Password)
+                        .ID("Password")
+                        .OnValueChanged("onPasswordChanged")
+                        .Buttons(buttons =>
+                        {
+                            buttons.Add()
+                            .Name("password")
+                            .Location(TextEditorButtonLocation.After)
+                            .Widget(w => w.Button()
+                            .Type(ButtonType.Default)
+                            .Icon(Url.Content("~/Content/Images/icons/eye.png"))
+                            .OnClick("() => changePasswordMode('Password')"));
+
+                        })
                     )
                 </div>
             </div>
@@ -34,6 +47,17 @@
                 <div class="dx-field-value">
                     @(Html.DevExtreme().TextBoxFor(m => m.ConfirmPassword)
                         .Mode(TextBoxMode.Password)
+                        .ID("ConfirmPassword")
+                        .Buttons(buttons =>
+                        {
+                            buttons.Add()
+                            .Name("password")
+                            .Location(TextEditorButtonLocation.After)
+                            .Widget(w => w.Button()
+                            .Type(ButtonType.Default)
+                            .Icon(Url.Content("~/Content/Images/icons/eye.png"))
+                            .OnClick("() => changePasswordMode('ConfirmPassword')"));
+                        })
                     )
                 </div>
             </div>
@@ -125,3 +149,16 @@
         </div>
     }
 }
+<script>
+    function changePasswordMode(name) {
+        let editor = $(`#${name}`).dxTextBox("instance");
+        editor.option('mode', editor.option('mode') === 'text' ? 'password' : 'text');
+    }
+
+    function onPasswordChanged(e) {
+        let editor = $("#ConfirmPassword").dxTextBox("instance");
+        if(editor.option("value")) {
+            editor.element().dxValidator("validate")
+        }
+    }
+</script>

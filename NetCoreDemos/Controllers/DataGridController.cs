@@ -94,6 +94,11 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View(SampleData.OrdersWithCustomerInfo);
         }
 
+        public ActionResult UsingHeaderFilter() {
+            return View(SampleData.DataGridEmployees);
+        }
+
+
         public ActionResult FocusedRow() {
             return View();
         }
@@ -148,6 +153,10 @@ namespace DevExtreme.NETCore.Demos.Controllers {
 
         public ActionResult CommandColumnCustomization() {
             return View();
+        }
+
+        public ActionResult ColumnChooser() {
+            return View(SampleData.DataGridEmployees.Take(10).ToList<Employee>());
         }
 
         public ActionResult ColumnTemplate() {

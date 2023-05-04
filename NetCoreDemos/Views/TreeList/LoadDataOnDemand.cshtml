@@ -41,7 +41,9 @@
                 url: "@Url.Content("~/api/TreeListData")",
                 dataType: "json",
                 data: { parentIds: options.parentIds.join(",") }
-            });
+            }).then((result) => ({
+                data: result
+            }));
         }
     };
 </script>

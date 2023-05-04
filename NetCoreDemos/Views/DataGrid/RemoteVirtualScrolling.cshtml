@@ -9,7 +9,11 @@
         .RowRenderingMode(GridRowRenderingMode.Virtual)
     )
     .Paging(p => p.PageSize(100))
-    .HeaderFilter(f => f.Visible(true))
+    .HeaderFilter(hf => {
+        hf.Visible(true);
+
+        hf.Search(hfs => hfs.Enabled(true));
+    })
     .WordWrapEnabled(true)
     .Height(440)
     .ShowBorders(true)

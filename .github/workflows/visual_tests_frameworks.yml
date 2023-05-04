@@ -213,10 +213,10 @@ jobs:
 
     #Build devextreme-vue
 
-    - name: Use Node.js 14
+    - name: Use Node.js 18
       uses: actions/setup-node@v3
       with:
-        node-version: '14'
+        node-version: '18'
 
     - name: Download devextreme sources
       uses: actions/download-artifact@v3
@@ -241,24 +241,13 @@ jobs:
       id: devextreme-vue-ref
       run: echo "::set-output name=head::$(git rev-parse HEAD)"
 
-    - name: Install devextreme package
+    - name: Install packages for devextreme-vue
       working-directory: ./devextreme-vue-repo
       run: |
         pushd devextreme-setup
         installerName=$(realpath .)/$(ls *.tgz)
         popd
-        cd ./packages/devextreme-vue
-        npm install --save-dev $installerName
-        cd ../sandbox
-        npm install --save-dev $installerName
-        cd ../vue2-strategy
-        npm install --save-dev $installerName
-        cd ../../
-        npm install --save-dev $installerName
-
-    - name: Install packages for devextreme-vue
-      working-directory: ./devextreme-vue-repo
-      run: npm install --no-audit --no-fund
+        npm install --save-dev --legacy-peer-deps $installerName
 
     - name: Build and Pack
       working-directory: ./devextreme-vue-repo

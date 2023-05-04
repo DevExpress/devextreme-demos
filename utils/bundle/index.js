@@ -135,6 +135,7 @@ function prepareModulesToNamedImport() {
     'pdf_exporter.js',
     'time_zone_utils.js',
     'devextreme/ui/dialog.js',
+    'common/charts.js',
   ];
 
   const paths = [

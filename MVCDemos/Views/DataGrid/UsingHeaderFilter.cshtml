@@ -1,0 +1,41 @@
+﻿@using DevExtreme.MVC.Demos.Models.DataGrid
+
+@model IEnumerable<Employee>
+
+@(Html.DevExtreme().DataGrid<Employee>()
+    .ID("gridContainer")
+    .DataSource(Model)
+    .KeyExpr("ID")
+    .HeaderFilter(headerFilter => headerFilter.Visible(true))
+    .Selection(s => s.Mode(SelectionMode.Single))
+    .Columns(column => {
+        column.AddFor(m => m.FirstName);
+        column.AddFor(m => m.LastName);
+
+        column
+            .AddFor(m => m.Position)
+            .HeaderFilter(hf => {
+                hf.AllowSelectAll(false);
+
+                hf.Search(hfs => hfs.Enabled(true));
+            });
+
+        column
+            .AddFor(m => m.City)
+            .HeaderFilter(hf => {
+                hf.Search(hfs => {
+                    hfs
+                        .Enabled(true)
+                        .EditorOptions(new { placeholder = "Search city or state" })
+                        .SearchExpr(new[] { "City", "State" });
+                });
+            });
+
+        column.AddFor(m => m.HomePhone);
+
+        column.AddFor(m => m.HireDate);
+    })
+    .ColumnAutoWidth(true)
+    .ShowRowLines(true)
+    .ShowBorders(true)
+)

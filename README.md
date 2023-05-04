@@ -83,7 +83,7 @@ Refer to the following articles to learn more: [Symlinks](https://blogs.windows.
 
 1. Prepare ASP.NET demos for launch and development. Run this command in the `mobile/GitHub_Demos` repository.
     ```
-    npm run prepare-mvc
+    npm run prepare-all
     ```
     For this, you need .NET Framework 4.5.2 installed on your device. You can download a full Developer Pack here: [.NET 4.5.2 Developer Pack Installer](https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net452-developer-pack-offline-installer).
 

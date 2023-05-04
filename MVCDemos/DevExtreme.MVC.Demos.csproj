@@ -385,6 +385,7 @@
     <Compile Include="Models\FileManagement\FileManagementDbContext.cs" />
     <Compile Include="Models\FileManagement\InMemoryFileManagementDataContext.cs" />
     <Compile Include="Models\FileManagement\User.cs" />
+    <Compile Include="Models\FileUploader\ChunkMetadata.cs" />
     <Compile Include="Models\Flow.cs" />
     <Compile Include="Models\Gantt\Resource.cs" />
     <Compile Include="Models\Gantt\ResourceAssignment.cs" />
@@ -713,6 +714,7 @@
     <Content Include="Content\DemosStyles\Charts\Strips.css" />
     <Content Include="Content\DemosStyles\Common\EditorAppearanceVariants.css" />
     <Content Include="Content\DemosStyles\DataGrid\BatchUpdateRequest.css" />
+    <Content Include="Content\DemosStyles\DataGrid\ColumnChooser.css" />
     <Content Include="Content\DemosStyles\DataGrid\CustomEditors.css" />
     <Content Include="Content\DemosStyles\DataGrid\DnDBetweenGrids.css" />
     <Content Include="Content\DemosStyles\DataGrid\EditStateManagement.css" />
@@ -801,6 +803,7 @@
     <Content Include="Content\DemosStyles\Charts\PieWithCustomLabels.css" />
     <Content Include="Content\DemosStyles\Charts\PieWithMultipleSeries.css" />
     <Content Include="Content\DemosStyles\Charts\PieWithSmallValuesGrouped.css" />
+    <Content Include="Content\DemosStyles\Charts\PieWithCustomStyles.css" />
     <Content Include="Content\DemosStyles\Charts\PointImage.css" />
     <Content Include="Content\DemosStyles\Charts\RangeArea.css" />
     <Content Include="Content\DemosStyles\Charts\RangeBar.css" />
@@ -970,11 +973,13 @@
     <Content Include="Content\DemosStyles\RangeSlider\Overview.css" />
     <Content Include="Content\DemosStyles\Resizable\Overview.css" />
     <Content Include="Content\DemosStyles\Scheduler\Adaptability.css" />
+    <Content Include="Content\DemosStyles\Scheduler\AllDayPanelMode.css" />
     <Content Include="Content\DemosStyles\Scheduler\ContextMenuIntegration.css" />
     <Content Include="Content\DemosStyles\Scheduler\CurrentTimeIndicator.css" />
     <Content Include="Content\DemosStyles\Scheduler\CustomDragAndDrop.css" />
     <Content Include="Content\DemosStyles\Scheduler\AdaptiveAppointments.css" />
     <Content Include="Content\DemosStyles\Scheduler\CellTemplates.css" />
+    <Content Include="Content\DemosStyles\Scheduler\Editing.css" />
     <Content Include="Content\DemosStyles\Scheduler\VirtualScrolling.css" />
     <Content Include="Content\DemosStyles\Scheduler\CustomizeIndividualViews.css" />
     <Content Include="Content\DemosStyles\Scheduler\CustomTemplates.css" />
@@ -1144,6 +1149,7 @@
     <Content Include="Content\Images\Charts\Annotation\apple-watch.png" />
     <Content Include="Content\Images\Charts\Annotation\iphone-se.png" />
     <Content Include="Content\Images\Charts\Annotation\iphone-x.png" />
+    <Content Include="Content\Images\Charts\PieWithCustomStyles\diamond.svg" />
     <Content Include="Content\Images\Charts\PointImage\icon-medal-bronse.png" />
     <Content Include="Content\Images\Charts\PointImage\icon-medal-gold.png" />
     <Content Include="Content\Images\Charts\PointImage\icon-medal-silver.png" />
@@ -1786,7 +1792,7 @@
     <Content Include="Scripts\localization\dx.messages.en.js" />
     <Content Include="Scripts\localization\dx.messages.ja.js" />
     <Content Include="Scripts\localization\dx.messages.ru.js" />
-    <Content Include="Scripts\utils\azure-file-system.js" />
+    <Content Include="Scripts\utils\azure.file.system.js" />
     <Content Include="Scripts\vectormap-data\africa.js" />
     <Content Include="Scripts\vectormap-data\canada.js" />
     <Content Include="Scripts\vectormap-data\eurasia.js" />
@@ -2252,6 +2258,9 @@
     <Content Include="Views\DataGrid\PDFExportMultipleGrids.cshtml" />
     <Content Include="Views\Resizable\Overview.cshtml" />
     <Content Include="Views\Gantt\ExportToPDF.cshtml" />
+    <Content Include="Views\Scheduler\AllDayPanelMode.cshtml" />
+    <Content Include="Views\DataGrid\ColumnChooser.cshtml" />
+    <Content Include="Views\DataGrid\UsingHeaderFilter.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2460,6 +2469,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Charts\PieWithResolvedLabelOverlapping.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Charts\PieWithCustomStyles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\SelectBox\Overview.cshtml" />
