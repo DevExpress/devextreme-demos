@@ -119,7 +119,7 @@ export class AppComponent {
     return true;
   };
 
-  isValidAppointmentDate = (date: Date) => !this.isHoliday(date, this.holidays) && !this.isDinner(date) && !this.isWeekend(date);
+  isValidAppointmentDate = (date: Date) => !this.isHoliday(date) && !this.isDinner(date) && !this.isWeekend(date);
 
   applyDisableDatesToDateEditors = (form: any) => {
     const holidays = this.dataService.getHolidays();
