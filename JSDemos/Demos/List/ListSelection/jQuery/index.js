@@ -27,6 +27,7 @@ $(() => {
     },
   });
 
+
   const selectAllModeChooser = $('#selectAllMode').dxSelectBox({
     disabled: false,
     items: ['page', 'allPages'],
