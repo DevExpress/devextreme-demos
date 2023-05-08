@@ -18,7 +18,7 @@ runManualTest('List', 'ListSelection', ['jQuery', 'React', 'Vue', 'Angular'], (t
   test('List Selection', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
-    await t.click(Selector(`.${CHECKBOX_CONTAINER_CLASS}`).last());
+    await t.click(Selector(`.${CHECKBOX_CONTAINER_CLASS}`).nth(-1));
 
     await t.click(Selector(`.${LIST_ITEM_CONTENT_CLASS}`).nth(3));
 
