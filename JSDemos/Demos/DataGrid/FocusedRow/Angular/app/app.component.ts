@@ -122,6 +122,7 @@ export class AppComponent {
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserTransferStateModule,
     DxDataGridModule,
     DxNumberBoxModule,
     DxCheckBoxModule,
