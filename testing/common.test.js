@@ -131,7 +131,10 @@ const execTestCafeCode = (t, code) => {
 
         if (process.env.ACCESSIBILITY_TESTS) {
           const { error, results } = await axeCheck(t, '.demo-container');
-          appendMdReport({ testName, approach, results });
+
+          if (results.violations.length > 0) {
+            appendMdReport({ testName, results });
+          }
 
           await t.expect(error).notOk();
           await t.expect(results.violations.length === 0).ok(createReport(results.violations));

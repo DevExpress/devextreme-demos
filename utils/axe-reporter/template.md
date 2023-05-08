@@ -1,4 +1,4 @@
-## {{testName}}-{{approach}}<br/>
+## {{testName}}<br/>
 
 {{#results}}
 Id: {{id}}<br/> 

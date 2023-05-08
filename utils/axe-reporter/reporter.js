@@ -1,5 +1,12 @@
 import mustache from 'mustache';
-import { appendFileSync, readFileSync, writeFileSync, existsSync } from 'fs';
+import path from 'path';
+import {
+  appendFileSync,
+  readFileSync,
+  writeFileSync,
+  mkdirSync,
+  existsSync,
+} from 'fs';
 
 function replaceBase64(html) {
   return html.replace(/data:image\/png;base64.+"/, '..."');
@@ -22,13 +29,16 @@ function simplifyResults(r) {
   }));
 }
 
-export function appendMdReport({ testName, approach, results }) {
+export function appendMdReport({ testName, results }) {
   const template = readFileSync('./utils/axe-reporter/template.md', { encoding: 'utf8' });
   // eslint-disable-next-line max-len
-  const mdString = `${mustache.render(template, { testName, approach, results: simplifyResults(results) })} \n\n`;
-  const reportPath = './texting/artifacts/axe/axe_report.md';
+  const mdString = `${mustache.render(template, { testName, results: simplifyResults(results) })} \n\n`;
+  const reportDir = './testing/artifacts/axe';
+  const reportFileName = 'axe_report.md';
+  const reportPath = path.join(reportDir, reportFileName);
 
   if (!existsSync(reportPath)) {
+    mkdirSync(reportDir, { recursive: true });
     writeFileSync(reportPath, mdString);
   } else {
     appendFileSync(reportPath, mdString);
