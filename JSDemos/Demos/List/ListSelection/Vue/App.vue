@@ -32,12 +32,12 @@
           v-model:value="selectAllMode"
         />
       </div>
-       <div class="option">
-          <span>Select By Click</span>
-          <DxCheckBox
-            v-model:value="selectByClick"
-          />
-        </div>
+      <div class="option">
+        <span>Select By Click</span>
+        <DxCheckBox
+          v-model:value="selectByClick"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -56,7 +56,7 @@ export default {
     DxSelectBox,
     DxList,
     DxCheckBox,
-    
+
   },
   data() {
     return {
