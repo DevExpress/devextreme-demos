@@ -9,7 +9,7 @@ $(() => {
     height: 400,
     showSelectionControls: true,
     selectionMode: 'all',
-    selectByClick: false,
+    selectByClick: true,
     onSelectionChanged() {
       $('#selectedItemKeys').text(listWidget.option('selectedItemKeys').join(', '));
     },
@@ -38,7 +38,7 @@ $(() => {
   }).dxSelectBox('instance');
 
   $('#selectByClick').dxCheckBox({
-    value: false,
+    value: true,
     onValueChanged(e) {
       listWidget.option('selectByClick', e.value);
     },
