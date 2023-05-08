@@ -33,7 +33,12 @@ export class AppComponent {
 }
 
 @NgModule({
-  imports: [BrowserModule, DxListModule, DxTemplateModule],
+  imports: [
+    BrowserModule,
+    BrowserTransferStateModule,
+    DxListModule,
+    DxTemplateModule,
+  ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
 })
