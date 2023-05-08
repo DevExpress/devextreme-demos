@@ -15,7 +15,6 @@ if (!/localhost/.test(document.location.host)) {
   styleUrls: ['app/app.component.css'],
 })
 export class AppComponent {
-  
 }
 
 @NgModule({
