@@ -1,5 +1,5 @@
 import mustache from 'mustache';
-import { appendFileSync, readFileSync } from 'fs';
+import { appendFileSync, readFileSync, writeFileSync, existsSync } from 'fs';
 
 function replaceBase64(html) {
   return html.replace(/data:image\/png;base64.+"/, '..."');
@@ -25,6 +25,12 @@ function simplifyResults(r) {
 export function appendMdReport({ testName, approach, results }) {
   const template = readFileSync('./utils/axe-reporter/template.md', { encoding: 'utf8' });
   // eslint-disable-next-line max-len
-  const mdString = mustache.render(template, { testName, approach, results: simplifyResults(results) });
-  appendFileSync('./texting/artifacts/axe/axe_report.md', `${mdString} \n\n`);
+  const mdString = `${mustache.render(template, { testName, approach, results: simplifyResults(results) })} \n\n`;
+  const reportPath = './texting/artifacts/axe/axe_report.md';
+
+  if (!existsSync(reportPath)) {
+    writeFileSync(reportPath, mdString);
+  } else {
+    appendFileSync(reportPath, mdString);
+  }
 }
