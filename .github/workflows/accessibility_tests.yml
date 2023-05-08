@@ -157,6 +157,6 @@ jobs:
         if: ${{ failure() }}
         uses: actions/upload-artifact@v3
         with:
-          name: screenshots
+          name: axe-report
           path: ${{ github.workspace }}/testing/artifacts/axe/*
           if-no-files-found: ignore
