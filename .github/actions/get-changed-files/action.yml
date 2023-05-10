@@ -15,4 +15,4 @@ runs:
         gh api \
           -H "Accept: application/vnd.github+json" \
           "/repos/{owner}/{repo}/pulls/${{github.event.pull_request.number}}/files" --paginate \
-          --jq '.[] | {filename:.filename}' | jq -s > {{ inputs.path }}
+          --jq '.[] | {filename:.filename}' | jq -s > ${{ inputs.path }}
