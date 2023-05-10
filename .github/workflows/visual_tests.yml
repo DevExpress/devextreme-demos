@@ -142,6 +142,10 @@ jobs:
     - name: Get changed files
       uses: ./.github/actions/get-changed-files
       if: github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'force all tests')
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        path: changed-files.json
 
     - name: Run TestCafe tests
       env:

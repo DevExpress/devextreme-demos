@@ -1,5 +1,10 @@
-name: Get changed files
-description: Get changed files
+name: 'Get changed files'
+description: 'Get list of the pull request files and save it to file system as a JSON file'
+
+inputs:
+  path:
+    description: 'Path to file'
+    required: true
 
 runs:
   using: composite
@@ -10,7 +15,4 @@ runs:
         gh api \
           -H "Accept: application/vnd.github+json" \
           "/repos/{owner}/{repo}/pulls/${{github.event.pull_request.number}}/files" --paginate \
-          --jq '.[] | {filename:.filename}' | jq -s > changed-files.json
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+          --jq '.[] | {filename:.filename}' | jq -s > {{ inputs.path }}
