@@ -1,0 +1,162 @@
+﻿@using DevExtreme.NETCore.Demos.Models.DataGrid
+@using DevExtreme.NETCore.Demos.Models
+
+@model IEnumerable<Employee>
+
+@(Html.DevExtreme().DataGrid<Employee>()
+    .ID("gridContainer")
+    .DataSource(Model)
+    .KeyExpr("ID")
+    .Columns(column => {
+        column.AddFor(m => m.FirstName)
+            .AllowHiding(false);
+
+        column.AddFor(m => m.LastName);
+
+        column.AddFor(m => m.Position);
+
+        column.AddFor(m => m.City);
+
+        column.AddFor(m => m.State);
+
+        column.Add()
+            .Caption("Contacts")
+            .Columns(a => {
+                a.AddFor(m => m.Phone)
+                    .AllowHiding(false);
+
+                a.AddFor(m => m.Email);
+
+                a.AddFor(m => m.Skype)
+                    .Visible(false);
+            });
+
+        column.AddFor(m => m.HireDate);
+
+    })
+    .ColumnAutoWidth(true)
+    .ShowRowLines(true)
+    .ShowBorders(true)
+    .ColumnChooser(cc => {
+        cc
+            .Enabled(true)
+            .Mode(GridColumnChooserMode.Select)
+            .Position(pc => pc
+                .My(HorizontalAlignment.Right, VerticalAlignment.Top)
+                .At(HorizontalAlignment.Right, VerticalAlignment.Bottom)
+                .Of(".dx-datagrid-column-chooser-button")
+            );
+
+        cc.Search(ccs => ccs
+            .Enabled(true)
+            .EditorOptions(new { Placeholder = "Search column" })
+        );
+
+        cc.Selection(ccs => ccs
+            .AllowSelectAll(true)
+            .SelectByClick(true)
+            .Recursive(true)
+        );
+    })
+)
+
+<div class="options">
+    <div class="caption">Options</div>
+    
+    <div class='selectboxes-container'>
+        <div class="option">
+            <span>Column chooser mode</span>
+
+            @{
+                var dataSource = new[] {
+                    new ColumnChooserMode {
+                        Key = "dragAndDrop",
+                        Name = "Drag and drop"
+                    },
+                    new ColumnChooserMode {
+                        Key = "select",
+                        Name = "Select"
+                    }
+                };
+            }
+
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(dataSource)
+                .Value(dataSource[1].Key)
+                .ValueExpr("Key")
+                .DisplayExpr("Name")
+                .OnValueChanged(@<text>
+                    function(data) {
+                        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                        dataGrid.option("columnChooser.mode", data.value);
+
+                        const isDragMode = dataSource[0].key === data.value;
+
+                        $('#allowSelectAll').dxCheckBox('instance').option('disabled', isDragMode);
+                        $('#selectByClick').dxCheckBox('instance').option('disabled', isDragMode);
+                        $('#recursive').dxCheckBox('instance').option('disabled', isDragMode);
+                    }
+                </text>)
+            )
+
+        </div>
+    </div>
+    
+    <div class='checkboxes-container'>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Search enabled")
+                .Value(true)
+                .OnValueChanged(@<text>
+                    function(data) {
+                        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                        dataGrid.option("columnChooser.search.enabled", data.value);
+                    }
+                </text>)
+            )
+        </div>
+
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .ID("allowSelectAll")
+                .Text("Allow select all")
+                .Value(true)
+                .OnValueChanged(@<text>
+                    function(data) {
+                        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                        dataGrid.option("columnChooser.selection.allowSelectAll", data.value);
+                    }
+                </text>)
+            )
+        </div>
+
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .ID("selectByClick")
+                .Text("Select by click")
+                .Value(true)
+                .OnValueChanged(@<text>
+                    function(data) {
+                        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                        dataGrid.option("columnChooser.selection.selectByClick", data.value);
+                    }
+                </text>)
+            )
+        </div>
+
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .ID("recursive")
+                .Text("Recursive")
+                .Value(true)
+                .OnValueChanged(@<text>
+                    function(data) {
+                        var dataGrid = $("#gridContainer").dxDataGrid("instance");
+                        dataGrid.option("columnChooser.selection.recursive", data.value);
+                    }
+                </text>)
+            )
+        </div>
+    </div>
+
+</div>

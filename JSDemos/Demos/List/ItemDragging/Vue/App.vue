@@ -3,7 +3,6 @@
     <div class="widget-container">
       <DxList
         :data-source="plannedTasks"
-        :repaint-changes-only="true"
         key-expr="id"
       >
         <DxItemDragging
@@ -12,12 +11,12 @@
           :on-drag-start="onDragStart"
           :on-add="onAdd"
           :on-remove="onRemove"
+          :on-reorder="onReorder"
           group="tasks"
         />
       </DxList>
       <DxList
         :data-source="doingTasks"
-        :repaint-changes-only="true"
         key-expr="id"
       >
         <DxItemDragging
@@ -26,6 +25,7 @@
           :on-drag-start="onDragStart"
           :on-add="onAdd"
           :on-remove="onRemove"
+          :on-reorder="onReorder"
           group="tasks"
         />
       </DxList>
@@ -62,6 +62,10 @@ export default {
       const data = [...this[e.fromData]];
       data.splice(e.fromIndex, 1);
       this[e.fromData] = data;
+    },
+    onReorder(e) {
+      this.onRemove(e);
+      this.onAdd(e);
     },
   },
 };

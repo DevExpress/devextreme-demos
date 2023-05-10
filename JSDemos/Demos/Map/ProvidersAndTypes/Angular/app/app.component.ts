@@ -1,9 +1,9 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxMapModule, DxSelectBoxModule } from 'devextreme-angular';
 
-import { MapSetting, Service } from './app.service';
+import { MapSetting, APIKey, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -20,20 +20,18 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   mapTypes: MapSetting[];
 
-  keys = {};
+  apiKey: APIKey = {};
 
   constructor(service: Service) {
     this.mapTypes = service.getMapTypes();
-    // Specify your API keys for each map provider:
-    // this.keys["bing"] = "YOUR_BING_MAPS_API_KEY";
-    // this.keys["google"] = "YOUR_GOOGLE_MAPS_API_KEY";
-    // this.keys["googleStatic"] = "YOUR_GOOGLE_STATIC_MAPS_API_KEY";
+    this.apiKey.bing = 'Aq3LKP2BOmzWY47TZoT1YdieypN_rB6RY9FqBfx-MDCKjvvWBbT68R51xwbL-AqC';
   }
 }
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserTransferStateModule,
     DxMapModule,
     DxSelectBoxModule,
   ],

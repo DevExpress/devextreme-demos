@@ -1,5 +1,5 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxCircularGaugeModule, DxLinearGaugeModule, DxSliderModule } from 'devextreme-angular';
 
@@ -16,11 +16,14 @@ if (!/localhost/.test(document.location.host)) {
 
 export class AppComponent {
   speedValue = 40;
+
+  color = '#f05b41';
 }
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserTransferStateModule,
     DxCircularGaugeModule,
     DxLinearGaugeModule,
     DxSliderModule,

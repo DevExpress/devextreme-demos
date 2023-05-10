@@ -34,6 +34,6 @@
                     .ValueExpr("ID")
                 );
         })
-        .DataSource(d => d.WebApi().Controller("DataGridEmployees").UpdateAction(true).Key("ID"))
+        .DataSource(d => d.WebApi().Controller("DataGridEmployees").UpdateAction(true).DeleteAction(true).Key("ID"))
     )
 </div>

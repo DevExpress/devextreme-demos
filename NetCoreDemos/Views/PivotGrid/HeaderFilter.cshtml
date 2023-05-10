@@ -5,8 +5,8 @@
     .AllowSortingBySummary(true)
     .Height(570)
     .ShowBorders(true)
-    .HeaderFilter(h => h
-        .AllowSearch(true)
+    .HeaderFilter(hf => hf
+        .Search(hfs => hfs.Enabled(true))
         .ShowRelevantValues(true)
         .Width(300)
         .Height(400)
@@ -59,7 +59,7 @@
                 .Value(true)
                 .OnValueChanged(@<text>
                     function(data) {
-                        $("#pivotgrid").dxPivotGrid("instance").option("headerFilter.allowSearch", data.value);
+                        $("#pivotgrid").dxPivotGrid("instance").option("headerFilter.search.enabled", data.value);
                     }
                 </text>)
             )

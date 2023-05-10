@@ -1,9 +1,14 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxMapModule, DxSelectBoxModule } from 'devextreme-angular';
 
-import { Marker, Route, Service } from './app.service';
+import {
+  Marker,
+  APIKey,
+  Route,
+  Service,
+} from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -22,7 +27,11 @@ export class AppComponent {
 
   markers: Marker[];
 
+  apiKey: APIKey = {};
+
   constructor(service: Service) {
+    this.apiKey.bing = 'Aq3LKP2BOmzWY47TZoT1YdieypN_rB6RY9FqBfx-MDCKjvvWBbT68R51xwbL-AqC';
+
     this.markers = service.getMarkers();
     this.routes = service.getRoutes();
   }
@@ -45,6 +54,7 @@ export class AppComponent {
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserTransferStateModule,
     DxMapModule,
     DxSelectBoxModule,
   ],

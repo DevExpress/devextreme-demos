@@ -1,5 +1,5 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import {
@@ -46,7 +46,7 @@ export class AppComponent {
     this.productsStore = new DataSource(service.getProducts());
 
     this.backButtonOptions = {
-      type: 'back',
+      icon: 'back',
       onClick: () => {
         notify('Back button has been clicked!');
       },
@@ -108,6 +108,7 @@ export class AppComponent {
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserTransferStateModule,
     DxListModule,
     DxToolbarModule,
     DxSelectBoxModule,

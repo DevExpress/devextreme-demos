@@ -1,5 +1,5 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { DxTreeListModule, DxSelectBoxModule, DxCheckBoxModule } from 'devextreme-angular';
@@ -20,13 +20,25 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   employees: Employee[];
 
-  allowSearch: boolean;
+  searchEnabled: boolean;
+
+  editorOptions: any;
+
+  allowSelectAll: boolean;
+
+  selectByClick: boolean;
+
+  recursive: boolean;
 
   columnChooserModes: any;
 
   constructor(service: Service) {
     this.employees = service.getEmployees();
-    this.allowSearch = true;
+    this.searchEnabled = true;
+    this.editorOptions = { placeholder: 'Search column' };
+    this.allowSelectAll = true;
+    this.selectByClick = true;
+    this.recursive = true;
     this.columnChooserModes = [{
       key: 'dragAndDrop',
       name: 'Drag and drop',
@@ -40,6 +52,7 @@ export class AppComponent {
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserTransferStateModule,
     DxTreeListModule,
     DxSelectBoxModule,
     DxCheckBoxModule,

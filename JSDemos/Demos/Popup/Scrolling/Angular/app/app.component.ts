@@ -1,8 +1,10 @@
 import { Component, NgModule, enableProdMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { DxPopupModule, DxScrollViewModule, DxTemplateModule } from 'devextreme-angular';
+import {
+  DxPopupModule, DxButtonModule, DxScrollViewModule, DxTemplateModule,
+} from 'devextreme-angular';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -15,15 +17,40 @@ if (!/localhost/.test(document.location.host)) {
 })
 
 export class AppComponent {
-  constructor() {
+  popupVisible = false;
 
+  popupWithScrollViewVisible = false;
+
+  bookButtonOptions: any;
+
+  showPopup() {
+    this.popupVisible = true;
+  }
+
+  showPopupWithScrollView() {
+    this.popupWithScrollViewVisible = true;
+  }
+
+  constructor() {
+    this.bookButtonOptions = {
+      width: 300,
+      text: 'Book',
+      type: 'default',
+      stylingMode: 'contained',
+      onClick: () => {
+        this.popupVisible = false;
+        this.popupWithScrollViewVisible = false;
+      },
+    };
   }
 }
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserTransferStateModule,
     DxPopupModule,
+    DxButtonModule,
     DxScrollViewModule,
     DxTemplateModule,
   ],

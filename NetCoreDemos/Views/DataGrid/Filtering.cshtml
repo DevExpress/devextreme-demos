@@ -75,7 +75,9 @@
 
         columns.AddFor(m => m.Employee);
 
-        columns.AddFor(m => m.CustomerStoreCity).HeaderFilter(hf => hf.AllowSearch(true));
+        columns.AddFor(m => m.CustomerStoreCity).HeaderFilter(hf => {
+            hf.Search(hfs => hfs.Enabled(true));
+        });
     })
     .DataSource(d => d.Mvc().Controller("DataGridFiltering").LoadAction("Get").Key("ID"))
 )

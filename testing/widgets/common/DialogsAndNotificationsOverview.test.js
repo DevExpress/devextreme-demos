@@ -16,7 +16,7 @@ runManualTest('Common', 'DialogsAndNotificationsOverview', ['jQuery', 'React', '
   test('DialogsAndNotificationsOverview', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
-    await t.click($(`.${IMAGES_CONTAINER_CLASS} .${ITEM_CONTENT_CLASS} img`));
+    await t.click($(`.${IMAGES_CONTAINER_CLASS} .${ITEM_CONTENT_CLASS}`));
     await takeScreenshot('common_dialogs_and_notifications_overview_popup.png');
 
     await t

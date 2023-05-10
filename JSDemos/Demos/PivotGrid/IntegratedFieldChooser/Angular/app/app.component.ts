@@ -1,7 +1,7 @@
 import {
   NgModule, Component, ViewChild, enableProdMode,
 } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxPivotGridModule, DxSelectBoxModule } from 'devextreme-angular';
 
@@ -29,7 +29,9 @@ export class AppComponent {
           dataField: '[Product].[Subcategory]',
           area: 'row',
           headerFilter: {
-            allowSearch: true,
+            search: {
+              enabled: true,
+            },
           },
         },
         { dataField: '[Ship Date].[Calendar Year]', area: 'column' },
@@ -52,6 +54,7 @@ export class AppComponent {
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserTransferStateModule,
     DxPivotGridModule,
     DxSelectBoxModule,
   ],

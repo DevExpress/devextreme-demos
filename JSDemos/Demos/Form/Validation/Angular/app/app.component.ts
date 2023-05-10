@@ -1,7 +1,7 @@
 import {
   NgModule, Component, ViewChild, enableProdMode,
 } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
   DxCheckBoxModule,
@@ -13,6 +13,7 @@ import {
   DxFormComponent,
 } from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
+import Validator from 'devextreme/ui/validator';
 
 import { Customer, Service } from './app.service';
 
@@ -38,11 +39,41 @@ const sendRequest = function (value) {
 export class AppComponent {
   @ViewChild(DxFormComponent, { static: false }) form:DxFormComponent;
 
-  password = '';
-
   passwordOptions: any = {
     mode: 'password',
-    value: this.password,
+    onValueChanged: () => {
+      let editor = this.form.instance.getEditor('ConfirmPassword');
+      if (editor.option('value')) {
+        let instance = Validator.getInstance(editor.element()) as Validator;
+        instance.validate();
+      }
+    },
+    buttons: [
+      {
+        name: 'password',
+        location: 'after',
+        options: {
+          icon: '../../../../images/icons/eye.png',
+          type: 'default',
+          onClick: () => this.changePasswordMode('Password'),
+        },
+      },
+    ],
+  };
+
+  confirmOptions: any = {
+    mode: 'password',
+    buttons: [
+      {
+        name: 'password',
+        location: 'after',
+        options: {
+          icon: '../../../../images/icons/eye.png',
+          type: 'default',
+          onClick: () => this.changePasswordMode('ConfirmPassword'),
+        },
+      },
+    ],
   };
 
   customer: Customer;
@@ -75,6 +106,14 @@ export class AppComponent {
     return true;
   }
 
+  changePasswordMode = (name) => {
+    let editor = this.form.instance.getEditor(name);
+    editor.option(
+      'mode',
+      editor.option('mode') === 'text' ? 'password' : 'text',
+    );
+  };
+
   constructor(service: Service) {
     this.maxDate = new Date(this.maxDate.setFullYear(this.maxDate.getFullYear() - 21));
     this.countries = service.getCountries();
@@ -102,6 +141,7 @@ export class AppComponent {
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserTransferStateModule,
     DxCheckBoxModule,
     DxSelectBoxModule,
     DxNumberBoxModule,

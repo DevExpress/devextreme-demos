@@ -1,5 +1,5 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
   DxPivotGridModule,
@@ -43,7 +43,9 @@ export class AppComponent {
         dataField: 'region',
         area: 'row',
         headerFilter: {
-          allowSearch: true,
+          search: {
+            enabled: true,
+          },
         },
       }, {
         caption: 'City',
@@ -51,7 +53,9 @@ export class AppComponent {
         width: 150,
         area: 'row',
         headerFilter: {
-          allowSearch: true,
+          search: {
+            enabled: true,
+          },
         },
         selector(data: Sale) {
           return `${data.city} (${data.country})`;
@@ -91,6 +95,7 @@ export class AppComponent {
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserTransferStateModule,
     DxPivotGridModule,
     DxRadioGroupModule,
     DxPivotGridFieldChooserModule,
