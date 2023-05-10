@@ -506,7 +506,7 @@ jobs:
         python -m http.server 8083 &
 
     - name: Get changed files
-      uses: ./github/actions/get-changed-files
+      uses: ./.github/actions/get-changed-files
       if: github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'force all tests')
 
     - name: Run TestCafe tests
