@@ -60,6 +60,10 @@ jobs:
       working-directory: ./devextreme-repo/artifacts/npm/devextreme
       run: npm pack
 
+    - name: DevExtreme dist - Pack
+      working-directory: ./devextreme-repo/artifacts/npm/devextreme-dist
+      run: npm pack
+
     #Build Demos
     - name: Demos - Restore npm cache
       uses: actions/cache@v3
@@ -77,6 +81,9 @@ jobs:
 
     - name: Demos - Install devextreme package
       run: npm install $(find ./devextreme-repo/artifacts/npm/devextreme/ -maxdepth 1 -name "devextreme-*.tgz")
+
+    - name: Demos - Install devextreme-dist package
+      run: npm install $(find ./devextreme-repo/artifacts/npm/devextreme-dist/ -maxdepth 1 -name "devextreme-*.tgz")
 
     #Publish artifacts
     - name: Zip node_modules
