@@ -1,5 +1,5 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxListModule } from 'devextreme-angular';
 
@@ -24,6 +24,10 @@ export class AppComponent {
   constructor(service: Service) {
     this.doingTasks = service.getDoingTasks();
     this.plannedTasks = service.getPlannedTasks();
+
+    this.onAdd = this.onAdd.bind(this);
+    this.onRemove = this.onRemove.bind(this);
+    this.onReorder = this.onReorder.bind(this);
   }
 
   onDragStart(e) {
@@ -37,11 +41,17 @@ export class AppComponent {
   onRemove(e) {
     e.fromData.splice(e.fromIndex, 1);
   }
+
+  onReorder(e) {
+    this.onRemove(e);
+    this.onAdd(e);
+  }
 }
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserTransferStateModule,
     DxListModule,
   ],
   declarations: [AppComponent],

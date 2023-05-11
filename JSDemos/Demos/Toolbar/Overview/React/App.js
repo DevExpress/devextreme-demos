@@ -54,7 +54,7 @@ class App extends React.Component {
 const productsStore = new DataSource(products);
 
 const backButtonOptions = {
-  type: 'back',
+  icon: 'back',
   onClick: () => {
     notify('Back button has been clicked!');
   },
@@ -73,6 +73,7 @@ const selectBoxOptions = {
   valueExpr: 'id',
   displayExpr: 'text',
   value: productTypes[0].id,
+  inputAttr: { 'aria-label': 'Categories' },
   onValueChanged: (args) => {
     if (args.value > 1) {
       productsStore.filter('type', '=', args.value);

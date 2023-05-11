@@ -1,5 +1,5 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { DxDataGridModule } from 'devextreme-angular';
@@ -21,15 +21,22 @@ export class AppComponent {
 
   showHeaderFilter: boolean;
 
+  editorOptions: any;
+
+  searchExpr: any;
+
   constructor(service: Service) {
     this.employees = service.getEmployees();
     this.showHeaderFilter = true;
+    this.editorOptions = { placeholder: 'Search city or state' };
+    this.searchExpr = ['City', 'State'];
   }
 }
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserTransferStateModule,
     DxDataGridModule,
   ],
   declarations: [AppComponent],

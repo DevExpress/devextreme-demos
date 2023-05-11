@@ -4,7 +4,7 @@ $(() => {
       location: 'before',
       widget: 'dxButton',
       options: {
-        type: 'back',
+        icon: 'back',
         onClick() {
           DevExpress.ui.notify('Back button has been clicked!');
         },
@@ -35,6 +35,7 @@ $(() => {
         valueExpr: 'id',
         displayExpr: 'text',
         value: productTypes[0].id,
+        inputAttr: { 'aria-label': 'Categories' },
         onValueChanged(args) {
           if (args.value > 1) {
             productsStore.filter('type', '=', args.value);

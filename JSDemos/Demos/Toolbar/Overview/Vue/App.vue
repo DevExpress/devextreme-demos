@@ -71,7 +71,7 @@ export default {
     return {
       productsStore: new DataSource(products),
       backButtonOptions: {
-        type: 'back',
+        icon: 'back',
         onClick: () => {
           notify('Back button has been clicked!');
         },
@@ -88,6 +88,7 @@ export default {
         valueExpr: 'id',
         displayExpr: 'text',
         value: productTypes[0].id,
+        inputAttr: { 'aria-label': 'Categories' },
         onValueChanged: (args) => {
           if (args.value > 1) {
             this.productsStore.filter('type', '=', args.value);

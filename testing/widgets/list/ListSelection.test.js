@@ -3,6 +3,7 @@ import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
 const LIST_ITEM_CONTENT_CLASS = 'dx-list-item-content';
+const CHECKBOX_CONTAINER_CLASS = 'dx-checkbox-container';
 const SELECTBOX_CLASS = 'dx-selectbox';
 const POPUP_WRAPPER_CLASS = 'dx-popup-wrapper';
 
@@ -16,6 +17,8 @@ fixture('List.ListSelection')
 runManualTest('List', 'ListSelection', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
   test('List Selection', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
+
+    await t.click(Selector(`.${CHECKBOX_CONTAINER_CLASS}`).nth(-1));
 
     await t.click(Selector(`.${LIST_ITEM_CONTENT_CLASS}`).nth(3));
 

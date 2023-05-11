@@ -1,5 +1,5 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { DxDataGridModule, DxSelectBoxModule, DxCheckBoxModule } from 'devextreme-angular';
@@ -22,6 +22,8 @@ export class AppComponent {
 
   searchEnabled: boolean;
 
+  editorOptions: any;
+
   allowSelectAll: boolean;
 
   selectByClick: boolean;
@@ -33,6 +35,7 @@ export class AppComponent {
   constructor(service: Service) {
     this.employees = service.getEmployees();
     this.searchEnabled = true;
+    this.editorOptions = { placeholder: 'Search column' };
     this.allowSelectAll = true;
     this.selectByClick = true;
     this.recursive = true;
@@ -49,6 +52,7 @@ export class AppComponent {
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserTransferStateModule,
     DxDataGridModule,
     DxSelectBoxModule,
     DxCheckBoxModule,

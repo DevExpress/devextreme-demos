@@ -56,12 +56,18 @@ jobs:
       working-directory: ./devextreme
       run: npm run build-npm-devextreme
 
-    - name: Pack
+    - name: Pack devextreme
       working-directory: ./devextreme/artifacts/npm/devextreme
       run: npm pack
 
-    - name: Copy package
-      run: cp ./devextreme/artifacts/npm/devextreme/*.tgz ./devextreme-installer.tgz
+    - name: Pack devextreme-dist
+      working-directory: ./devextreme/artifacts/npm/devextreme-dist
+      run: npm pack
+
+    - name: Copy packages
+      run: |
+        cp ./devextreme/artifacts/npm/devextreme/*.tgz ./devextreme-installer.tgz
+        cp ./devextreme/artifacts/npm/devextreme-dist/*.tgz ./devextreme-dist-installer.tgz
 
     - name: Copy build artifacts
       uses: actions/upload-artifact@v3
@@ -69,6 +75,7 @@ jobs:
         name: devextreme-sources
         path: |
           devextreme-installer.tgz
+          devextreme-dist-installer.tgz
         retention-days: 1
 
   build-react:
@@ -130,10 +137,11 @@ jobs:
     - name: Clone devextreme-react repo
       run: test -d ./devextreme-react-repo || git clone -b master https://github.com/devexpress/devextreme-react ./devextreme-react-repo
 
-    - name: Copy devextreme package
+    - name: Copy devextreme packages
       run: |
         mkdir ./devextreme-react-repo/devextreme-setup
         cp ./devextreme-installer.tgz ./devextreme-react-repo/devextreme-setup
+        cp ./devextreme-dist-installer.tgz ./devextreme-react-repo/devextreme-setup
 
     - name: Get devextreme-react ref
       working-directory: ./devextreme-react-repo
@@ -144,14 +152,15 @@ jobs:
       working-directory: ./devextreme-react-repo
       run: |
         pushd devextreme-setup
-        installerName=$(realpath .)/$(ls *.tgz)
+        installerName=$(realpath .)/$(ls devextreme-installer.tgz)
+        installerDistName=$(realpath .)/$(ls devextreme-dist-installer.tgz)
         popd
         cd ./packages/devextreme-react
-        npm install --save-dev $installerName
+        npm install --save-dev $installerName $installerDistName
         cd ../sandbox
-        npm install --save-dev $installerName
+        npm install --save-dev $installerName $installerDistName
         cd ../../
-        npm install --save-dev $installerName
+        npm install --save-dev $installerName $installerDistName
 
     - name: Install packages for devextreme-react
       working-directory: ./devextreme-react-repo
@@ -214,15 +223,17 @@ jobs:
       run: |
         mkdir ./devextreme-vue-repo/devextreme-setup
         cp ./devextreme-installer.tgz ./devextreme-vue-repo/devextreme-setup
+        cp ./devextreme-dist-installer.tgz ./devextreme-vue-repo/devextreme-setup
 
     - name: Install packages for devextreme-vue
       working-directory: ./devextreme-vue-repo
       run: |
         npm run restore-devextreme
         pushd devextreme-setup
-        installerName=$(realpath .)/$(ls *.tgz)
+        installerName=$(realpath .)/$(ls devextreme-installer.tgz)
+        installerDistName=$(realpath .)/$(ls devextreme-dist-installer.tgz)
         popd
-        npm install --save-dev --legacy-peer-deps $installerName
+        npm install --save-dev --legacy-peer-deps $installerName $installerDistName
         npm run generate-metadata
 
     - name: Build and Pack
@@ -297,6 +308,7 @@ jobs:
       run: |
         mkdir ./devextreme-angular-repo/devextreme-setup
         cp ./devextreme-installer.tgz ./devextreme-angular-repo/devextreme-setup
+        cp ./devextreme-dist-installer.tgz ./devextreme-angular-repo/devextreme-setup
 
     - name: Get devextreme-angular ref
       working-directory: ./devextreme-angular-repo
@@ -307,14 +319,15 @@ jobs:
       working-directory: ./devextreme-angular-repo
       run: |
         pushd devextreme-setup
-        installerName=$(realpath .)/$(ls *.tgz)
+        installerName=$(realpath .)/$(ls devextreme-installer.tgz)
+        installerDistName=$(realpath .)/$(ls devextreme-dist-installer.tgz)
         popd
         cd ./packages/devextreme-angular
-        npm install --save-dev $installerName
+        npm install --save-dev $installerName $installerDistName
         cd ../sandbox
-        npm install --save-dev $installerName
+        npm install --save-dev $installerName $installerDistName
         cd ../../
-        npm install --save-dev $installerName
+        npm install --save-dev $installerName $installerDistName
 
     - name: Install packages for devextreme-angular
       working-directory: ./devextreme-angular-repo
@@ -378,6 +391,7 @@ jobs:
     - name: Install package
       run: |
         npm install devextreme-installer.tgz
+        npm install devextreme-dist-installer.tgz
         npm install devextreme-react-installer.tgz
         npm install devextreme-vue-installer.tgz
         npm install devextreme-angular-installer.tgz
@@ -426,6 +440,7 @@ jobs:
     - name: Install packages
       run: |
         npm install devextreme-installer.tgz
+        npm install devextreme-dist-installer.tgz
         npm install devextreme-react-installer.tgz
         npm install devextreme-vue-installer.tgz
         npm install devextreme-angular-installer.tgz
