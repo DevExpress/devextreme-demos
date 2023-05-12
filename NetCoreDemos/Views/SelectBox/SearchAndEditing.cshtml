@@ -83,6 +83,7 @@
                 .Value(200)
                 .ShowSpinButtons(true)
                 .Step(100)
+                .InputAttr("aria-label", "Search Timeout")
                 .OnValueChanged("searchTimeout_changed")
             )
         </div>
@@ -93,6 +94,7 @@
                 .Max(5)
                 .Value(0)
                 .ShowSpinButtons(true)
+                .InputAttr("aria-label", "Minimum Search Length")
                 .OnValueChanged("minSearchLength_changed")
             )
         </div>

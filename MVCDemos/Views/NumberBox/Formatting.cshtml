@@ -4,6 +4,7 @@
         <div class="dx-field-value">
             @(Html.DevExtreme().NumberBox()
                 .Format("#")
+                .InputAttr("aria-label", "Integer Format")
                 .Value(14500)
             )
         </div>
@@ -13,6 +14,7 @@
         <div class="dx-field-value">
             @(Html.DevExtreme().NumberBox()
                 .Format("$ #,##0.##")
+                .InputAttr("aria-label", "Currency Format")
                 .Value(14500.55)
             )
         </div>
@@ -22,6 +24,7 @@
         <div class="dx-field-value">
             @(Html.DevExtreme().NumberBox()
                 .Format("$ #,##0.##;($ #,##0.##)")
+                .InputAttr("aria-label", "Accounting Format")
                 .Value(-2314.12)
             )
         </div>
@@ -32,6 +35,7 @@
             @(Html.DevExtreme().NumberBox()
                 .Format("#0%")
                 .Value(0.15)
+                .InputAttr("aria-label", "Percent Format")
                 .Step(0.01)
             )
         </div>
@@ -41,6 +45,7 @@
         <div class="dx-field-value">
             @(Html.DevExtreme().NumberBox()
                 .Format("#,##0.00")
+                .InputAttr("aria-label", "Fixed Point Format")
                 .Value(13415.24)
             )
         </div>
@@ -50,6 +55,7 @@
         <div class="dx-field-value">
             @(Html.DevExtreme().NumberBox()
                 .Format("#0.## kg")
+                .InputAttr("aria-label", "Weight Format")
                 .Value(3.14)
             )
         </div>

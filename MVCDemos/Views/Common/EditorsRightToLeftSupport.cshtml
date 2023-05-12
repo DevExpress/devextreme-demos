@@ -31,6 +31,7 @@
             <div class="dx-field-label">Number Box</div>
             <div class="dx-field-value">
                 @(Html.DevExtreme().NumberBox()
+                .InputAttr("aria-label", "Number Box")
                     .RtlEnabled(Model.RtlEnabled)
                     .ShowSpinButtons(true)
                     .Value(123))

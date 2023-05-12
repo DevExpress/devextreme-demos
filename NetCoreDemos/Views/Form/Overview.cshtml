@@ -62,6 +62,7 @@
             @(Html.DevExtreme().NumberBox()
                 .Value(null)
                 .Max(550)
+                .InputAttr("aria-label", "Width")
                 .OnValueChanged("formWidth_changed")
             )
         </div>
