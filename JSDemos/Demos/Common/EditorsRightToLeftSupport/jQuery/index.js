@@ -14,6 +14,7 @@ $(() => {
   const numberBoxWidget = $('#number-box').dxNumberBox({
     showSpinButtons: true,
     value: '123',
+    inputAttr: { 'aria-label': 'Number Box' },
   }).dxNumberBox('instance');
 
   const selectBoxWidget = $('#select-box').dxSelectBox({

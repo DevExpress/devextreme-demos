@@ -84,11 +84,13 @@ $(() => {
     disabled: true,
     value: 0,
     showSpinButtons: true,
+    inputAttr: { 'aria-label': 'Start Index' },
   });
   $('#endIndexContainer').dxNumberBox({
     disabled: true,
     value: 3,
     showSpinButtons: true,
+    inputAttr: { 'aria-label': 'End Index' },
   });
 
   $('#startDateContainer').dxDateBox({

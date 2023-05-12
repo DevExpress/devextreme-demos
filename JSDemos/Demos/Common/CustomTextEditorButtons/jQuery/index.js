@@ -22,6 +22,7 @@ $(() => {
     format: '$ #.##',
     showClearButton: true,
     showSpinButtons: true,
+    inputAttr: { 'aria-label': 'Multi Currency' },
     buttons: [{
       name: 'currency',
       location: 'after',

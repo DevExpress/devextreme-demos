@@ -24,6 +24,7 @@ $(() => {
     max: 700,
     min: 70,
     format: '#0px',
+    inputAttr: { 'aria-label': 'Width' },
     onValueChanged(e) {
       const width = e.value;
       $('svg').width(width);
@@ -37,6 +38,7 @@ $(() => {
     max: 700,
     min: 70,
     format: '#0px',
+    inputAttr: { 'aria-label': 'Height' },
     onValueChanged(e) {
       const height = e.value;
       $('svg').height(height);
