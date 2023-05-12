@@ -32,6 +32,7 @@
             .Visible(false)
             .ValueChangeEvent("keyup")
             .Placeholder("top")
+            .InputAttr("aria-label", "Position Top")
             .OnValueChanged("topNumberBoxValueChanged")
         )
         @(Html.DevExtreme().NumberBox()
@@ -41,6 +42,7 @@
             .Visible(false)
             .ValueChangeEvent("keyup")
             .Placeholder("bottom")
+            .InputAttr("aria-label", "Position Bottom")
             .OnValueChanged("bottomNumberBoxValueChanged")
         )
     </div>
@@ -52,6 +54,7 @@
             .Visible(false)
             .ValueChangeEvent("keyup")
             .Placeholder("left")
+            .InputAttr("aria-label", "Position Left")
             .OnValueChanged("leftNumberBoxValueChanged")
         )
         @(Html.DevExtreme().NumberBox()
@@ -61,6 +64,7 @@
             .Visible(false)
             .ValueChangeEvent("keyup")
             .Placeholder("right")
+            .InputAttr("aria-label", "Position Right")
             .OnValueChanged("rightNumberBoxValueChanged")
         )
     </div>

@@ -50,6 +50,7 @@
             <span>Scroll Speed:</span>
             @(Html.DevExtreme().NumberBox()
                 .Value(30)
+                .InputAttr("aria-label", "Scroll Speed")
                 .OnValueChanged("scrollSpeed_changed")
             )
         </div>
@@ -57,6 +58,7 @@
             <span>Scroll Sensitivity:</span>
             @(Html.DevExtreme().NumberBox()
                 .Value(60)
+                .InputAttr("aria-label", "Scroll Sensitivity")
                 .OnValueChanged("scrollSensitivity_changed")
             )
         </div>

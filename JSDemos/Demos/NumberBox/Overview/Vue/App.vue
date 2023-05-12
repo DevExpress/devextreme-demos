@@ -38,7 +38,7 @@
             :min="10"
             :max="20"
             :show-spin-buttons="true"
-            :input-attr="{ 'aria-label': 'Min and Max' }"
+            :input-attr="{ 'aria-label': 'Min And Max' }"
           />
         </div>
       </div>
