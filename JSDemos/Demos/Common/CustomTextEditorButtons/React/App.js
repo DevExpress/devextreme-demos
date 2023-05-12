@@ -6,6 +6,8 @@ import { DateBox, Button as DateBoxButton } from 'devextreme-react/date-box';
 
 const millisecondsInDay = 24 * 60 * 60 * 1000;
 
+const currencyLabel = { 'aria-label': 'Multi Currency' };
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -123,6 +125,7 @@ class App extends React.Component {
                 showSpinButtons={true}
                 format={this.state.currencyFormat}
                 value={this.state.currencyValue}
+                inputAttr={currencyLabel}
                 onValueChanged={this.changeCurrency}>
                 <NumberBoxButton
                   name="currency"

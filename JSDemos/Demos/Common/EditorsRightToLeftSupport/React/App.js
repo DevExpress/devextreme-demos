@@ -7,7 +7,7 @@ import { Autocomplete } from 'devextreme-react/autocomplete';
 import { CheckBox } from 'devextreme-react/check-box';
 import { TextArea } from 'devextreme-react/text-area';
 import { TagBox } from 'devextreme-react/tag-box';
-import { europeanUnion } from './data.js';
+import { europeanUnion, numberBoxLabel } from './data.js';
 
 class App extends React.Component {
   constructor() {
@@ -71,6 +71,7 @@ class App extends React.Component {
                   showSpinButtons={true}
                   defaultValue="123"
                   rtlEnabled={this.state.rtlEnabled}
+                  inputAttr={numberBoxLabel}
                 />
               </div>
             </div>

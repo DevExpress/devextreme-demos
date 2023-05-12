@@ -4,7 +4,7 @@
       <div class="dx-field">
         <div class="dx-field-label">Default mode</div>
         <div class="dx-field-value">
-          <DxNumberBox :input-attr="{ 'aria-label': 'Simple' }" />
+          <DxNumberBox :input-attr="{ 'aria-label': 'Simple' }"/>
         </div>
       </div>
       <div class="dx-field">

@@ -20,6 +20,8 @@ import 'jspdf-autotable';
 const formats = ['A0', 'A1', 'A2', 'A3', 'A4', 'Auto'];
 const exportModes = ['All', 'Chart', 'Tree List'];
 const dateRanges = ['All', 'Visible', 'Custom'];
+const startTaskIndexLabel = { 'aria-label': 'Start Task Index' };
+const endTaskIndexLabel = { 'aria-label': 'End Task Index' };
 
 class App extends React.Component {
   constructor(props) {
@@ -139,6 +141,7 @@ class App extends React.Component {
                   max={this.state.endTaskIndex}
                   disabled={this.state.customRangeDisabled}
                   showSpinButtons={true}
+                  inputAttr={startTaskIndexLabel}
                   onValueChanged={this.startTaskIndexValueChanged}
                 />
               </div>
@@ -153,6 +156,7 @@ class App extends React.Component {
                   max={tasks.length - 1}
                   disabled={this.state.customRangeDisabled}
                   showSpinButtons={true}
+                  inputAttr={endTaskIndexLabel}
                   onValueChanged={this.endTaskIndexValueChanged}
                 />
               </div>

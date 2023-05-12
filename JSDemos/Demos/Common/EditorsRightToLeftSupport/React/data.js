@@ -111,3 +111,5 @@ export const europeanUnion = [{
   nameAr: 'المملكة المتحدة',
   nameEn: 'United Kingdom',
 }];
+
+export const numberBoxLabel = { 'aria-label': 'Number Box' };
