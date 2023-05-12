@@ -7,7 +7,7 @@ $(() => {
     value: 20.5,
     showSpinButtons: true,
     showClearButton: true,
-    inputAttr: { 'aria-label': 'Buttons' },
+    inputAttr: { 'aria-label': 'With Spin And Buttons' },
   });
 
   $('#disabled').dxNumberBox({

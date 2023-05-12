@@ -77,7 +77,7 @@ $(() => {
     min: 1,
     max: 183,
     step: 0,
-    inputAttr: { 'aria-label': 'Task Id' },
+    inputAttr: { 'aria-label': 'Focused Row key' },
     onValueChanged(e) {
       if (e.event && e.value > 0) {
         dataGrid.option('focusedRowKey', e.value);
