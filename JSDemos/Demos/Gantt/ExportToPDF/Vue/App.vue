@@ -92,6 +92,7 @@
               :min="0"
               :max="endTaskIndex"
               :show-spin-buttons="true"
+              :input-attr="{ 'aria-label': 'Start Task Index' }"
               @value-changed="startTaskIndexChanged"
             />
           </div>
@@ -105,6 +106,7 @@
               :min="startTaskIndex"
               :max="tasks.length - 1"
               :show-spin-buttons="true"
+              :input-attr="{ 'aria-label': 'End Task Index' }"
               @value-changed="endTaskIndexChanged"
             />
           </div>

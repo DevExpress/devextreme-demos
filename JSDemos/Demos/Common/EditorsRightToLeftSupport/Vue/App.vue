@@ -37,6 +37,7 @@
               :show-spin-buttons="true"
               :value="123"
               :rtl-enabled="rtlEnabled"
+              :input-attr="{ 'aria-label': 'Number Box' }"
             />
           </div>
         </div>

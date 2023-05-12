@@ -27,6 +27,7 @@
             :format="currencyFormat"
             :show-clear-button="true"
             :show-spin-buttons="true"
+            :input-attr="{ 'aria-label': 'Currency Value' }"
           >
             <DxNumberBoxButton
               :options="currencyButton"

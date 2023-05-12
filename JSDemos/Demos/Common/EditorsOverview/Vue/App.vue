@@ -32,6 +32,7 @@
               :max="700"
               :min="70"
               format="#0px"
+              :input-attr="{ 'aria-label': 'Width' }"
             />
           </div>
         </div>
@@ -44,6 +45,7 @@
               :max="700"
               :min="70"
               format="#0px"
+              :input-attr="{ 'aria-label': 'Height' }"
             />
           </div>
         </div>
