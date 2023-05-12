@@ -2444,9 +2444,9 @@
             "Name": "ChartsDrillDown",
             "Widget": "Charts",
             "DemoType": "Viz",
-			"MvcAdditionalFiles": [
+            "MvcAdditionalFiles": [
               "/Controllers/ApiControllers/WorldPopulationDataController.cs",
-			  "/Models/SampleData/WorldPopulationData.cs"
+              "/Models/SampleData/WorldPopulationData.cs"
             ]
           },
           {
