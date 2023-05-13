@@ -7,7 +7,7 @@ import { Autocomplete } from 'devextreme-react/autocomplete';
 import { CheckBox } from 'devextreme-react/check-box';
 import { TextArea } from 'devextreme-react/text-area';
 import { TagBox } from 'devextreme-react/tag-box';
-import { europeanUnion, numberBoxLabel } from './data.js';
+import { europeanUnion, numberBoxLabel, notesLabel } from './data.js';
 
 class App extends React.Component {
   constructor() {
@@ -105,6 +105,7 @@ class App extends React.Component {
                 <TextArea
                   defaultValue={this.textValue}
                   rtlEnabled={this.state.rtlEnabled}
+                  inputAttr={notesLabel}
                 />
               </div>
             </div>

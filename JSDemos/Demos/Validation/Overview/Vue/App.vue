@@ -87,6 +87,7 @@
         <div class="dx-field-value">
           <DxDateBox
             invalid-date-message="The date must have the following format: MM/dd/yyyy"
+            :input-attr="{ 'aria-label': 'Date' }"
           >
             <DxValidator>
               <DxRequiredRule message="Date of birth is required"/>

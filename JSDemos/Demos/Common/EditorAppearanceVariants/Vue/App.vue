@@ -105,6 +105,7 @@
           :styling-mode="stylingMode"
           :label-mode="labelMode"
           :value="text"
+          :input-attr="{ 'aria-label': 'Notes' }"
           width="100%"
           placeholder="Type..."
           label="Notes"

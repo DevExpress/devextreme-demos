@@ -19,6 +19,8 @@ import {
 import notify from 'devextreme/ui/notify';
 import service from './data.js';
 
+const dateLabel = { 'aria-label': 'Date' };
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -138,7 +140,7 @@ class App extends React.Component {
             <div className="dx-field-label">Date of birth</div>
             <div className="dx-field-value">
               <DateBox
-                invalidDateMessage="The date must have the following format: MM/dd/yyyy">
+                invalidDateMessage="The date must have the following format: MM/dd/yyyy" inputAttr={dateLabel}>
                 <Validator>
                   <RequiredRule message="Date of birth is required" />
                   <RangeRule message="You must be at least 21 years old" max={this.maxDate} />

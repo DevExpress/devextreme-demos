@@ -39,7 +39,11 @@
   <div class="dx-field">
     <div class="dx-field-label">Advanced DateBox</div>
     <div class="dx-field-value">
-      <dx-date-box stylingMode="outlined" [(value)]="dateValue">
+      <dx-date-box
+        stylingMode="outlined"
+        [(value)]="dateValue"
+        [inputAttr]="{ 'aria-label': 'Date' }"
+      >
         <dxi-button
           name="today"
           location="before"

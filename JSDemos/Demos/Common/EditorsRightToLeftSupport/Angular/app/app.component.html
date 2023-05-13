@@ -67,7 +67,11 @@
     <div class="dx-field">
       <div class="dx-field-label">Text Area</div>
       <div class="dx-field-value">
-        <dx-text-area [value]="textValue" [rtlEnabled]="rtlEnabled">
+        <dx-text-area
+          [value]="textValue"
+          [rtlEnabled]="rtlEnabled"
+          [inputAttr]="{ 'aria-label': 'Notes' }"
+        >
         </dx-text-area>
       </div>
     </div>

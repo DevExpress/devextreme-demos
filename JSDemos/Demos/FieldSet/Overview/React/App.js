@@ -2,6 +2,8 @@ import React from 'react';
 import TextBox from 'devextreme-react/text-box';
 import TextArea from 'devextreme-react/text-area';
 
+const notesLabel = { 'aria-label': 'Notes' };
+
 class App extends React.Component {
   render() {
     return (
@@ -32,7 +34,7 @@ class App extends React.Component {
           <div className="dx-fieldset-header">Field Set with Custom Value Width</div>
           <div className="dx-field">
             <div className="dx-field-label">Notes</div>
-            <TextArea className="dx-field-value" height={80} defaultValue="Kevin is our hard-working shipping manager and has been helping that department work like clockwork for 18 months. When not in the office, he is usually on the basketball court playing pick-up games." />
+            <TextArea className="dx-field-value" inputAttr={notesLabel} height={80} defaultValue="Kevin is our hard-working shipping manager and has been helping that department work like clockwork for 18 months. When not in the office, he is usually on the basketball court playing pick-up games." />
           </div>
         </div>
       </div>

@@ -34,6 +34,7 @@
         placeholder="Select..."
         [stylingMode]="stylingMode"
         [labelMode]="labelMode"
+        [inputAttr]="{ 'aria-label': 'Birth Date' }"
       >
         <dx-validator>
           <dxi-validation-rule type="required"> </dxi-validation-rule>
@@ -91,6 +92,7 @@
         placeholder="Select..."
         [stylingMode]="stylingMode"
         [labelMode]="labelMode"
+        [inputAttr]="{ 'aria-label': 'Hire Date' }"
       >
         <dx-validator>
           <dxi-validation-rule type="required"> </dxi-validation-rule>
@@ -106,6 +108,7 @@
       label="Notes"
       [stylingMode]="stylingMode"
       [labelMode]="labelMode"
+      [inputAttr]="{ 'aria-label': 'Notes' }"
     ></dx-text-area>
   </div>
   <div class="center">

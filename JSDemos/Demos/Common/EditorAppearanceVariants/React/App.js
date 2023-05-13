@@ -13,6 +13,9 @@ import service from './data.js';
 
 const stylingModes = ['outlined', 'filled', 'underlined'];
 const labelModes = ['static', 'floating', 'hidden'];
+const notesLabel = { 'aria-label': 'Notes' };
+const birthDataLabel = { 'aria-label': 'Birth Date' };
+const hireDateLabel = { 'aria-label': 'Hire Date' };
 
 class App extends React.Component {
   constructor(props) {
@@ -76,6 +79,7 @@ class App extends React.Component {
                 width="100%"
                 placeholder="Birth Date"
                 label="Birth Date"
+                inputAttr={birthDataLabel}
                 labelMode={this.state.labelMode}
               >
                 <Validator>
@@ -133,6 +137,7 @@ class App extends React.Component {
                 width="100%"
                 placeholder="Select..."
                 label="Hire Date"
+                inputAttr={hireDateLabel}
                 labelMode={this.state.labelMode}
               >
                 <Validator>
@@ -149,6 +154,7 @@ class App extends React.Component {
               placeholder="Type..."
               label="Notes"
               labelMode={this.state.labelMode}
+              inputAttr={notesLabel}
             />
           </div>
           <div className="center">

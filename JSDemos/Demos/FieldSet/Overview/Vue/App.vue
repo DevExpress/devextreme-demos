@@ -39,6 +39,7 @@
           class="dx-field-value"
           :height="80"
           :value="text"
+          :input-attr="{ 'aria-label': 'Notes' }"
         />
       </div>
     </div>

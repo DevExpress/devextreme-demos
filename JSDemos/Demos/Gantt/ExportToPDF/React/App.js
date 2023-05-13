@@ -12,7 +12,7 @@ import { exportGantt as exportGanttToPdf } from 'devextreme/pdf_exporter';
 
 import { jsPDF } from 'jspdf';
 import {
-  tasks, dependencies, resources, resourceAssignments,
+  tasks, dependencies, resources, resourceAssignments, startDateLabel, endDateLabel,
 } from './data.js';
 
 import 'jspdf-autotable';
@@ -168,6 +168,7 @@ class App extends React.Component {
                 <DateBox
                   value={this.state.startDate}
                   max={this.state.endDate}
+                  inputAttr={startDateLabel}
                   disabled={this.state.customRangeDisabled}
                   type="date"
                   onValueChanged={this.startDateValueChanged}
@@ -181,6 +182,7 @@ class App extends React.Component {
                 <DateBox
                   value={this.state.endDate}
                   min={this.state.startDate}
+                  inputAttr={endDateLabel}
                   disabled={this.state.customRangeDisabled}
                   type="date"
                   onValueChanged={this.endDateValueChanged}

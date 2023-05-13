@@ -53,6 +53,7 @@ $(() => {
   const dateEditor = $('#advanced-datebox').dxDateBox({
     value: new Date().getTime(),
     stylingMode: 'outlined',
+    inputAttr: { 'aria-label': 'Date' },
     buttons: [{
       name: 'today',
       location: 'before',

@@ -113,3 +113,4 @@ export const europeanUnion = [{
 }];
 
 export const numberBoxLabel = { 'aria-label': 'Number Box' };
+export const notesLabel = { 'aria-label': 'Notes' };

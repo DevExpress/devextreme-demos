@@ -34,6 +34,7 @@ $(() => {
 
   const textAreaWidget = $('#text-area').dxTextArea({
     value: 'text',
+    inputAttr: { 'aria-label': 'Notes' },
   }).dxTextArea('instance');
 
   const autocompleteWidget = $('#autocomplete').dxAutocomplete({

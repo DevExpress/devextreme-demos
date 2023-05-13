@@ -30,6 +30,7 @@ $(() => {
     label: 'Birth Date',
     placeholder: 'Select...',
     value: '6/3/1981',
+    inputAttr: { 'aria-label': 'Birth Date' },
   }).dxValidator({
     validationRules: [{
       type: 'required',
@@ -40,6 +41,7 @@ $(() => {
     width: '100%',
     label: 'Hire Date',
     placeholder: 'Select...',
+    inputAttr: { 'aria-label': 'Hire Date' },
   }).dxValidator({
     validationRules: [{
       type: 'required',
@@ -88,6 +90,7 @@ $(() => {
     width: '100%',
     placeholder: 'Type...',
     label: 'Notes',
+    inputAttr: { 'aria-label': 'Notes' },
   }).dxTextArea('instance');
 
   $('#validate').dxButton({

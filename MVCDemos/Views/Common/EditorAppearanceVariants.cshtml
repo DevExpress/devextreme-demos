@@ -19,6 +19,7 @@
         <div class="right">
             @(Html.DevExtreme().DateBox()
                 .ID("birthDate")
+                .InputAttr("aria-label", "Birth Date")
                 .Value(new DateTime(1981, 6, 3))
                 .Width("100%")
                 .Placeholder("Select...")
@@ -71,6 +72,7 @@
         <div class="right">
             @(Html.DevExtreme().DateBox()
                 .ID("hireDate")
+                .InputAttr("aria-label", "Hire Date")
                 .Width("100%")
                 .Placeholder("Select...")
                 .Label("Hire Date")

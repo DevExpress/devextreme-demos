@@ -108,6 +108,7 @@ $(() => {
 
   $('#date-validation').dxDateBox({
     invalidDateMessage: 'The date must have the following format: MM/dd/yyyy',
+    inputAttr: { 'aria-label': 'Date' },
   }).dxValidator({
     validationRules: [{
       type: 'required',

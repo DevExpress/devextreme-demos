@@ -71,6 +71,7 @@
             <DxTextArea
               :value="textValue"
               :rtl-enabled="rtlEnabled"
+              :input-attr="{ 'aria-label': 'Notes' }"
             />
           </div>
         </div>

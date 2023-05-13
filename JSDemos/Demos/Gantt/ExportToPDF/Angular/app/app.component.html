@@ -104,6 +104,7 @@
           [(value)]="startDate"
           [max]="endDate"
           type="date"
+          [inputAttr]="{ 'aria-label': 'Start Date' }"
         >
         </dx-date-box>
       </div>
@@ -116,6 +117,7 @@
           [(value)]="endDate"
           [min]="startDate"
           type="date"
+          [inputAttr]="{ 'aria-label': 'End Date' }"
         >
         </dx-date-box>
       </div>

@@ -116,6 +116,7 @@
           <div class="value">
             <DxDateBox
               :disabled="customRangeDisabled"
+              :input-attr="{ 'aria-label': 'Start Date' }"
               v-model:value="startDate"
               :max="endDate"
               type="date"
@@ -128,6 +129,7 @@
           <div class="value">
             <DxDateBox
               :disabled="customRangeDisabled"
+              :input-attr="{ 'aria-label': 'End Date' }"
               v-model:value="endDate"
               :min="startDate"
               type="date"
