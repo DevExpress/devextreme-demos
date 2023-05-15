@@ -6,7 +6,6 @@ import TextArea from 'devextreme-react/text-area';
 import service from './data.js';
 
 const { valueChangeEvents } = service;
-
 const notesLabel = { 'aria-label': 'Notes' };
 
 class App extends React.Component {

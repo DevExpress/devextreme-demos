@@ -5,11 +5,8 @@ import { NumberBox, Button as NumberBoxButton } from 'devextreme-react/number-bo
 import { DateBox, Button as DateBoxButton } from 'devextreme-react/date-box';
 
 const millisecondsInDay = 24 * 60 * 60 * 1000;
-
 const currencyLabel = { 'aria-label': 'Multi Currency' };
-
 const dateBoxLabel = { 'aria-label': 'Date' };
-
 const passwordLabel = { 'aria-label': 'Password' };
 
 class App extends React.Component {
