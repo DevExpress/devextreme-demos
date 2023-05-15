@@ -14,7 +14,7 @@ import service from './data.js';
 const stylingModes = ['outlined', 'filled', 'underlined'];
 const labelModes = ['static', 'floating', 'hidden'];
 const notesLabel = { 'aria-label': 'Notes' };
-const birthDataLabel = { 'aria-label': 'Birth Date' };
+const birthDateLabel = { 'aria-label': 'Birth Date' };
 const hireDateLabel = { 'aria-label': 'Hire Date' };
 const nameLabel = { 'aria-label': 'Name' };
 const addressLabel = { 'aria-label': 'Address' };
@@ -84,7 +84,7 @@ class App extends React.Component {
                 width="100%"
                 placeholder="Birth Date"
                 label="Birth Date"
-                inputAttr={birthDataLabel}
+                inputAttr={birthDateLabel}
                 labelMode={this.state.labelMode}
               >
                 <Validator>
