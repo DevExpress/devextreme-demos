@@ -5,6 +5,7 @@
       <div class="value">
         <dx-text-box
           [(value)]="text"
+          [inputAttr]="{ 'aria-label': 'Title' }"
           valueChangeEvent="keyup"
           [maxLength]="40"
         ></dx-text-box>

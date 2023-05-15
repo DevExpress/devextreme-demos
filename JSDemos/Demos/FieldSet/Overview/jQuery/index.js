@@ -1,10 +1,12 @@
 $(() => {
   $('#address').dxTextBox({
     value: '424 N Main St.',
+    inputAttr: { 'aria-label': 'Address' },
   });
 
   $('#city').dxTextBox({
     value: 'San Diego',
+    inputAttr: { 'aria-label': 'City' },
   });
 
   $('#notes').dxTextArea({

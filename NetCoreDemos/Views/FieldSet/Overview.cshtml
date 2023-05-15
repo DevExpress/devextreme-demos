@@ -16,6 +16,7 @@
             <div class="dx-field-label">Address</div>
             <div class="dx-field-value">
                 @(Html.DevExtreme().TextBox()
+                    .InputAttr("aria-label", "Address")
                     .Value("424 N Main St."))
             </div>
         </div>
@@ -23,6 +24,7 @@
             <div class="dx-field-label">City</div>
             <div class="dx-field-value">
                 @(Html.DevExtreme().TextBox()
+                    .InputAttr("aria-label", "City")
                     .Value("San Diego"))
             </div>
         </div>

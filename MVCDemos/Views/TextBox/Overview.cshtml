@@ -5,6 +5,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().TextBox()
                     .Value("John Smith")
+                    .InputAttr("aria-label", "Name")
                 )
             </div>
         </div>
@@ -13,6 +14,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().TextBox()
                     .Placeholder("Enter full name here...")
+                    .InputAttr("aria-label", "Full Name")
                 )
             </div>
         </div>
@@ -21,6 +23,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().TextBox()
                     .Value("John Smith")
+                    .InputAttr("aria-label", "Name")
                     .ShowClearButton(true)
                 )
             </div>
@@ -32,6 +35,7 @@
                     .Mode(TextBoxMode.Password)
                     .Value("f5lzKs0T")
                     .Placeholder("Enter password")
+                    .InputAttr("aria-label", "Password")
                     .ShowClearButton(true)
                 )
             </div>
@@ -41,6 +45,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().TextBox()
                     .Mask("+1 (X00) 000-0000")
+                    .InputAttr("aria-label", "Mask")
                     .MaskRules(new { X = new JS("/[02-9]/") })
                 )
             </div>
@@ -50,6 +55,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().TextBox()
                     .Value("John Smith")
+                    .InputAttr("aria-label", "Name")
                     .Disabled(true)
                 )
             </div>
@@ -64,6 +70,7 @@
                     .Value("Smith")
                     .ShowClearButton(true)
                     .Placeholder("Enter full name")
+                    .InputAttr("aria-label", "Full Name")
                     .ValueChangeEvent("keyup")
                     .OnValueChanged("textBox_valueChanged")
                 )
@@ -75,6 +82,7 @@
                 @(Html.DevExtreme().TextBox()
                     .ID("email")
                     .Value("smith@corp.com")
+                    .InputAttr("aria-label", "Email")
                     .ReadOnly(true)
                     .HoverStateEnabled(true)
                 )

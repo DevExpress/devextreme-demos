@@ -50,6 +50,7 @@
                                 .Editor(e =>
                                     e.TextBox()
                                         .Mask("+1 (X00) 000-0000")
+                                        .InputAttr("aria-label", "Mask")
                                         .MaskRules(new { X = new JS("/[01-9]/") })
                                         .Buttons(b =>
                                             b.Add().Name("Trash")
@@ -69,6 +70,7 @@
                                 .Editor(e =>
                                     e.TextBox()
                                         .Mask("+1 (X00) 000-0000")
+                                        .InputAttr("aria-label", "Mask")
                                         .MaskRules(new { X = new JS("/[01-9]/") })
                                         .Buttons(b =>
                                             b.Add().Name("Trash")

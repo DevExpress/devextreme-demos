@@ -5,6 +5,7 @@
             @(Html.DevExtreme().TextBox()
                 .ID("password")
                 .Value("password")
+                .InputAttr("aria-label", "Password")
                 .Placeholder("password")
                 .Mode(TextBoxMode.Password)
                 .StylingMode(EditorStylingMode.Filled)
@@ -53,6 +54,7 @@
         <div class="dx-field-value">
             @(Html.DevExtreme().DateBox()
                 .ID("advanced-datebox")
+                .InputAttr("aria-label", "Date")
                 .Value(new JS("new Date().getTime()"))
                 .StylingMode(EditorStylingMode.Outlined)
                 .OnInitialized("dateOnInitialized")

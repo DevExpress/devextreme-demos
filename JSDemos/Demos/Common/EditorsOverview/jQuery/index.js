@@ -2,6 +2,7 @@ $(() => {
   $('#text-box').dxTextBox({
     value: 'UI Superhero',
     valueChangeEvent: 'keyup',
+    inputAttr: { 'aria-label': 'Type' },
     maxLength: 40,
     onValueChanged(e) {
       $('.text').text(e.value);

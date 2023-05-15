@@ -3,6 +3,8 @@ import TextBox from 'devextreme-react/text-box';
 import TextArea from 'devextreme-react/text-area';
 
 const notesLabel = { 'aria-label': 'Notes' };
+const addressLabel = { 'aria-label': 'Address' };
+const cityLabel = { 'aria-label': 'City' };
 
 class App extends React.Component {
   render() {
@@ -23,11 +25,11 @@ class App extends React.Component {
           <div className="dx-fieldset-header">Field Set with DevExtreme Widgets</div>
           <div className="dx-field">
             <div className="dx-field-label">Address</div>
-            <TextBox className="dx-field-value" defaultValue="424 N Main St." />
+            <TextBox inputAttr={addressLabel} className="dx-field-value" defaultValue="424 N Main St." />
           </div>
           <div className="dx-field">
             <div className="dx-field-label">City</div>
-            <TextBox className="dx-field-value" defaultValue="San Diego" />
+            <TextBox inputAttr={cityLabel} className="dx-field-value" defaultValue="San Diego" />
           </div>
         </div>
         <div className="dx-fieldset" id="notes-container">

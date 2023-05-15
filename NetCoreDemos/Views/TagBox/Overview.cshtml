@@ -7,6 +7,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().TagBox()
                     .Items(Model.Items)
+                    .InputAttr("aria-label", "Product")
                 )
             </div>
         </div>
@@ -15,6 +16,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().TagBox()
                     .Items(Model.Items)
+                    .InputAttr("aria-label", "Product")
                     .SearchEnabled(true)
                 )
             </div>
@@ -25,6 +27,7 @@
                 @(Html.DevExtreme().TagBox()
                     .Items(Model.Items)
                     .ShowSelectionControls(true)
+                    .InputAttr("aria-label", "Product")
                     .ApplyValueMode(EditorApplyValueMode.UseButtons)
                 )
             </div>
@@ -34,6 +37,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().TagBox()
                     .Items(Model.Items)
+                    .InputAttr("aria-label", "Product")
                     .HideSelectedItems(true)
                 )
             </div>
@@ -43,6 +47,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().TagBox()
                     .Items(Model.Items)
+                    .InputAttr("aria-label", "Product")
                     .Multiline(false)
                 )
             </div>
@@ -53,6 +58,7 @@
                 @(Html.DevExtreme().TagBox()
                     .Items(Model.Items)
                     .AcceptCustomValue(true)
+                    .InputAttr("aria-label", "Product")
                     .OnCustomItemCreating("customItem_creating")
                 )
             </div>
@@ -62,6 +68,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().TagBox()
                     .Items(Model.Items)
+                    .InputAttr("aria-label", "Product")
                     .Placeholder("Choose Product...")
                 )
             </div>
@@ -72,6 +79,7 @@
                 @(Html.DevExtreme().TagBox()
                     .Items(Model.Items)
                     .Value(new[] { Model.Items.First() })
+                    .InputAttr("aria-label", "Product")
                     .Disabled(true)
                 )
             </div>
@@ -82,6 +90,7 @@
                 @(Html.DevExtreme().TagBox()
                     .DataSource(d => d.Mvc().LoadAction("GetProducts").Key("ID"))
                     .DisplayExpr("Name")
+                    .InputAttr("aria-label", "Product")
                     .ValueExpr("ID")
                 )
             </div>
@@ -92,6 +101,7 @@
                 @(Html.DevExtreme().TagBox()
                     .DataSource(d => d.Mvc().LoadAction("GetProducts").Key("ID"))
                     .DisplayExpr("Name")
+                    .InputAttr("aria-label", "Product")
                     .ValueExpr("ID")
                     .ItemTemplate(@<text>
                     <div class="custom-item">

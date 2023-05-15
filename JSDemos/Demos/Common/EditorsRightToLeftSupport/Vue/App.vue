@@ -26,6 +26,7 @@
             <DxTextBox
               :show-clear-button="true"
               :value="textValue"
+              :input-attr="{ 'aria-label': 'Text Box' }"
               :rtl-enabled="rtlEnabled"
             />
           </div>
@@ -58,6 +59,7 @@
             <DxTagBox
               :items="europeanUnion"
               :value="[europeanUnion[0].id]"
+              :input-attr="{ 'aria-label': 'Name' }"
               :rtl-enabled="rtlEnabled"
               :display-expr="displayExpr"
               placeholder="..."

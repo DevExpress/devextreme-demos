@@ -97,13 +97,14 @@ $(() => {
     disabled: true,
     type: 'date',
     value: tasks[0].start,
-
+    inputAttr: { 'aria-label': 'Start Date' },
   });
 
   $('#endDateContainer').dxDateBox({
     disabled: true,
     type: 'date',
     value: tasks[0].end,
+    inputAttr: { 'aria-label': 'End Date' },
   });
 
   function exportGantt() {

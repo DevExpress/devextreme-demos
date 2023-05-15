@@ -8,6 +8,7 @@
             <DxTextBox
               v-model:value="text"
               :max-length="40"
+              :input-attr="{ 'aria-label': 'Title' }"
               value-change-event="keyup"
             />
           </div>

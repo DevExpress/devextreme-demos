@@ -3,6 +3,7 @@ $(() => {
     placeholder: 'password',
     mode: 'password',
     value: 'password',
+    inputAttr: { 'aria-label': 'Password' },
     stylingMode: 'filled',
     buttons: [{
       name: 'password',

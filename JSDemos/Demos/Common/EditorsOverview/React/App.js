@@ -10,6 +10,7 @@ import Logo from './Logo.js';
 
 const widthLabel = { 'aria-label': 'Width' };
 const heightLabel = { 'aria-label': 'Height' };
+const titleLabel = { 'aria-label': 'Title' };
 
 const noFlipTransform = 'scaleX(1)';
 const transformations = [
@@ -63,6 +64,7 @@ class App extends React.Component {
               <div className="value">
                 <TextBox
                   value={this.state.text}
+                  inputAttr={titleLabel}
                   onValueChanged={this.handleTextChange}
                   maxLength={40}
                   valueChangeEvent="keyup"

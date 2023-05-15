@@ -6,6 +6,7 @@
                 @(Html.DevExtreme().TextBox()
                     .Value("UI Superhero")
                     .ValueChangeEvent("keyup")
+                    .InputAttr("aria-label", "Title")
                     .MaxLength(40)
                     .OnValueChanged(@<text>
                         function(e){

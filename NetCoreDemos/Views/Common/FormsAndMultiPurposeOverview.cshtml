@@ -16,6 +16,7 @@
                         secondGroupItems.AddSimpleFor(m => m.BirthDate)
                             .Editor(e => e
                                 .DateBox()
+                                .InputAttr("aria-label", "Date")
                                 .Width("100%")
                             )
                             .IsRequired(false);
@@ -64,6 +65,7 @@
                             .Editor(e => e
                                 .TextBox()
                                 .Mask("+1 (000) 000-0000")
+                                .InputAttr("aria-label", "Mask")
                             );
                     });
 

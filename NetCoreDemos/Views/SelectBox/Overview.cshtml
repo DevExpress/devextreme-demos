@@ -68,6 +68,7 @@
                             <% } %>
                             @(Html.DevExtreme().TextBox()
                                 .Value(new JS("typeof Name !== 'undefined' && Name"))
+                                .InputAttr("aria-label", "Name")
                                 .ElementAttr("class", "product-name")
                                 .ReadOnly(true)
                             )

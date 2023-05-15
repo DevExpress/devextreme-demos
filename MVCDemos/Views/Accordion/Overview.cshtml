@@ -62,6 +62,7 @@
                 .ID("tagbox")
                 .DisplayExpr("Name")
                 .ValueExpr("ID")
+                .InputAttr("aria-label", "Company")
                 .Value(new[] { 1 })
                 .DataSource(d => d.Mvc().LoadAction("GetData").Key("ID"))
                 .Disabled(true)

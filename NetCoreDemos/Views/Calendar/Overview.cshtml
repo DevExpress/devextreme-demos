@@ -93,6 +93,7 @@
         <div class="option">
             <span>Selected date</span>
             @(Html.DevExtreme().DateBox()
+                .InputAttr("aria-label", "Date")
                 .ID("selected-date")
                 .Value(DateTime.Now)
                 .OnValueChanged("selectedDate_changed")

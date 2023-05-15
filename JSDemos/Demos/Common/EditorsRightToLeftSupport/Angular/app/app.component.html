@@ -21,6 +21,7 @@
       <div class="dx-field-value">
         <dx-text-box
           [showClearButton]="true"
+          [inputAttr]="{ 'aria-label': 'Text Box' }"
           [value]="textValue"
           [rtlEnabled]="rtlEnabled"
         >
@@ -59,6 +60,7 @@
           [value]="[europeanUnion[0].id]"
           placeholder="..."
           valueExpr="id"
+          [inputAttr]="{ 'aria-label': 'Name' }"
           [displayExpr]="displayExpr"
           [rtlEnabled]="rtlEnabled"
         ></dx-tag-box>

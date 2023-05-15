@@ -14,11 +14,21 @@
     <div class="dx-fieldset-header">Field Set with DevExtreme Widgets</div>
     <div class="dx-field">
       <div class="dx-field-label">Address</div>
-      <dx-text-box class="dx-field-value" value="424 N Main St."> </dx-text-box>
+      <dx-text-box
+        class="dx-field-value"
+        value="424 N Main St."
+        [inputAttr]="{ 'aria-label': 'Address' }"
+      >
+      </dx-text-box>
     </div>
     <div class="dx-field">
       <div class="dx-field-label">City</div>
-      <dx-text-box class="dx-field-value" value="San Diego"> </dx-text-box>
+      <dx-text-box
+        class="dx-field-value"
+        value="San Diego"
+        [inputAttr]="{ 'aria-label': 'City' }"
+      >
+      </dx-text-box>
     </div>
   </div>
   <div class="dx-fieldset" id="notes-container">

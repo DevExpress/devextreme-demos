@@ -8,6 +8,7 @@ $(() => {
 
   const textBoxWidget = $('#text-box').dxTextBox({
     showClearButton: true,
+    inputAttr: { 'aria-label': 'Text Box' },
     value: 'text',
   }).dxTextBox('instance');
 
@@ -29,6 +30,7 @@ $(() => {
     value: [europeanUnion[0].id],
     placeholder: '...',
     displayExpr: 'nameEn',
+    inputAttr: { 'aria-label': 'Name' },
     valueExpr: 'id',
   }).dxTagBox('instance');
 

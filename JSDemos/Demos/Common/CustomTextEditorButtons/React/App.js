@@ -8,6 +8,10 @@ const millisecondsInDay = 24 * 60 * 60 * 1000;
 
 const currencyLabel = { 'aria-label': 'Multi Currency' };
 
+const dateBoxLabel = { 'aria-label': 'Date' };
+
+const passwordLabel = { 'aria-label': 'Password' };
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -108,6 +112,7 @@ class App extends React.Component {
                 placeholder="password"
                 stylingMode="filled"
                 defaultValue="password"
+                inputAttr={passwordLabel}
                 mode={this.state.passwordMode}>
                 <TextBoxButton
                   name="password"
@@ -142,6 +147,7 @@ class App extends React.Component {
             <div className="dx-field-value">
               <DateBox value={this.state.dateValue}
                 stylingMode="outlined"
+                inputAttr={dateBoxLabel}
                 onValueChanged={this.onDateChanged}>
                 <DateBoxButton
                   name="today"
