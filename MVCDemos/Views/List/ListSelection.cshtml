@@ -7,6 +7,7 @@
             .Height(400)
             .ShowSelectionControls(true)
             .SelectionMode(ListSelectionMode.All)
+            .SelectByClick(false)
             .DataSource(Model, "ID")
             .ItemTemplate(@<text><%- Text %></text>)
             .OnSelectionChanged(@<text>
@@ -47,6 +48,18 @@
                 .OnValueChanged(@<text>
                     function(data) {
                         $("#simpleList").dxList("option", "selectAllMode", data.value);
+                    }
+                </text>)
+            )
+        </div>
+         <div class="option">
+            <span>Select By Click</span>
+            @(Html.DevExtreme().CheckBox()
+                .ID("selectByClick")
+                .Value(false)
+                .OnValueChanged(@<text>
+                    function(data) {
+                        $("#simpleList").dxList("option", "selectByClick", data.value);
                     }
                 </text>)
             )
