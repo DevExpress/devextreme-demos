@@ -16,7 +16,7 @@ exports.copyCommonAspFiles = parallel(
     .pipe(dest('MVCDemos/Content/icons')),
 
   () => src([
-    'node_modules/devextreme/dist/js/**/*',
+    'node_modules/devextreme-dist/js/**/*',
     'node_modules/globalize/dist/**/+(currency|date|message|number|globalize).js',
     'node_modules/cldrjs/dist/**/!(node_main.js)',
     'node_modules/devextreme-aspnet-data/js/**/**',
