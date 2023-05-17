@@ -80,6 +80,12 @@ import DxNumberBox from 'devextreme-vue/number-box';
 import DxForm from 'devextreme-vue/form';
 import service from './data.js';
 
+const labelModes = ['outside', 'static', 'floating', 'hidden'];
+const labelLocations = ['left', 'top'];
+const columnsCounts = ['auto', 1, 2, 3];
+const minColumnWidths = [150, 200, 300];
+const companies = service.getCompanies();
+
 export default {
   components: {
     DxCheckBox,
@@ -88,11 +94,6 @@ export default {
     DxForm,
   },
   data() {
-    const companies = service.getCompanies();
-    const labelModes = ['outside', 'static', 'floating', 'hidden'];
-    const labelLocations = ['left', 'top'];
-    const columnsCounts = ['auto', 1, 2, 3];
-    const minColumnWidths = [150, 200, 300];
     return {
       labelMode: 'floating',
       labelLocation: 'left',
