@@ -32,6 +32,7 @@
             <span>Select All Mode</span>
             @(Html.DevExtreme().SelectBox()
                 .ID("select-all-mode")
+                .InputAttr("aria-label", "Select All Mode")
                 .DataSource(new[] { "allPages", "page" })
                 .Value("allPages")
                 .OnValueChanged("selectAllMode_changed")
@@ -41,6 +42,7 @@
             <span>Show Checkboxes Mode</span>
             @(Html.DevExtreme().SelectBox()
                 .ID("show-checkboxes-mode")
+                .InputAttr("aria-label", "Show Checkboxes Mode")
                 .DataSource(new[] { "none", "onClick", "onLongTap", "always" })
                 .Value(new JS("defaultMode"))
                 .OnValueChanged("showCheckBoxesMode_changed")

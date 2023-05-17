@@ -12,6 +12,7 @@
     @(Html.DevExtreme().SelectBox()
         .DataSource(statuses)
         .Value(statuses[0])
+        .InputAttr("aria-label", "Status")
         .OnValueChanged(@<text>
             function(data) {
                 var dataGrid = $("#gridContainer").dxDataGrid("instance");

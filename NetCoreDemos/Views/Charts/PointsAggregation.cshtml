@@ -94,6 +94,7 @@
                 .DataSource(new JS("intervals"))
                 .Value(VizTimeInterval.Week)
                 .ValueExpr("Interval")
+                .InputAttr("aria-label", "Interval")
                 .DisplayExpr("DisplayName")
                 .OnValueChanged(@<text>
                     function (data) {
@@ -112,6 +113,7 @@
                 })
                 .Value(ChartSeriesAggregationMethod.Avg)
                 .ValueExpr("Func")
+                .InputAttr("aria-label", "Function")
                 .DisplayExpr("DisplayName")
                 .OnValueChanged(@<text>
                     function (data) {

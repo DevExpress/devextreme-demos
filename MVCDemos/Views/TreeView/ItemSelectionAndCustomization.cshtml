@@ -42,6 +42,7 @@
             <div class="editor-container">
                 @(Html.DevExtreme().SelectBox()
                     .ID("showCheckBoxesMode")
+                    .InputAttr("aria-label", "Show Checkboxes Mode")
                     .Items(new List<string> { "selectAll", "normal", "none" })
                     .Value("normal")
                     .OnValueChanged("showCheckBoxesModeValueChanged"))
@@ -52,6 +53,7 @@
             <div class="editor-container">
                 @(Html.DevExtreme().SelectBox()
                     .ID("selectionMode")
+                    .InputAttr("aria-label", "Selection Mode")
                     .Items(new List<string> { "multiple", "single" })
                     .Value("multiple")
                     .OnValueChanged("selectionModeValueChanged"))

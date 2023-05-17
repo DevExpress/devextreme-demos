@@ -77,6 +77,7 @@
             <div class="label">Document format:</div>
             <div class="value">
                 @(Html.DevExtreme().SelectBox()
+                    .InputAttr("aria-label", "Document Format")
                     .ID("formatSelector")
                     .DataSource(new[] { "A0", "A1", "A2", "A3", "A4", "Auto" })
                     .Value("A0")
@@ -97,6 +98,7 @@
             <div class="value">
                 @(Html.DevExtreme().SelectBox()
                     .ID("exportModeSelector")
+                    .InputAttr("aria-label", "Export Mode")
                     .DataSource(new[] {
                         "All", "Chart", "Tree List"
                     })
@@ -109,6 +111,7 @@
             <div class="value">
                 @(Html.DevExtreme().SelectBox()
                     .ID("dataRangeSelector")
+                    .InputAttr("aria-label", "Date Range")
                     .DataSource(new[] {
                         "All", "Visible", "Custom"
                     })

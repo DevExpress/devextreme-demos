@@ -36,6 +36,7 @@
                         new { name = "keyup", title = "On Key Up" }
                     })
                     .ValueExpr("name")
+                    .InputAttr("aria-label", "Event")
                     .DisplayExpr("title")
                     .Value("change")
                     .OnValueChanged("selectBox_valueChanged")

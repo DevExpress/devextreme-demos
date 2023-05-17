@@ -26,6 +26,7 @@
                     new { name = "Videos", value = "video/*" }
                 })
                 .ValueExpr("value")
+                .InputAttr("aria-label", "File Type")
                 .DisplayExpr("name")
                 .Value("*")
                 .OnValueChanged("acceptOption_changed")
@@ -36,6 +37,7 @@
             @(Html.DevExtreme().SelectBox()
                 .DataSource(new[] { "instantly", "useButtons" })
                 .Value("instantly")
+                .InputAttr("aria-label", "Mode")
                 .OnValueChanged("uploadMode_changed")
             )
         </div>

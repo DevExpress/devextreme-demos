@@ -45,6 +45,7 @@
             items.AddSimple()
                 .Label(l => l.Text("Product"))
                 .Editor(e => e.SelectBox()
+                    .InputAttr("aria-label", "Product")
                     .DataSource(d => d.WebApi()
                         .Controller("DataGridAdvancedMasterDetailView")
                         .LoadAction("GetProductsBySupplier")

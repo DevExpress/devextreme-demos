@@ -22,6 +22,7 @@
         @(Html.DevExtreme().SelectBox()
             .ID("select-resizing")
             .DataSource(new[] { "nextColumn", "widget" })
+            .InputAttr("aria-label", "Column Resizing Mode")
             .Value("nextColumn")
             .Width(250)
             .OnValueChanged("selectBox_valueChanged")

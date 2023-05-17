@@ -87,6 +87,7 @@
             <span>Zoom level</span>
             @(Html.DevExtreme().SelectBox()
                 .ID("zoom-level")
+                .InputAttr("aria-label", "Zoom Level")
                 .DataSource(zoomLevels)
                 .Value(zoomLevels[0])
                 .OnValueChanged("zoomLevel_changed")

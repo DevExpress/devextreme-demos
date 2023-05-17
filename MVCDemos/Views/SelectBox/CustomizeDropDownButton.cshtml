@@ -6,6 +6,7 @@
         <div class="dx-field-value">
             @(Html.DevExtreme().SelectBox()
                 .DataSource(d => d.Mvc().LoadAction("GetProductNames"))
+                .InputAttr("aria-label", "Simple Product")
                 .DropDownButtonTemplate(@<text>
                     <img src="~/Content/images/icons/custom-dropbutton-icon.svg" class="custom-icon" />
                 </text>)
@@ -18,6 +19,7 @@
         <div class="dx-field-value">
             @(Html.DevExtreme().SelectBox()
                 .DataSource(d => d.Mvc().LoadAction("GetProductNames"))
+                .InputAttr("aria-label", "Product")
                 .DataSourceOptions(dso => dso.OnLoadingChanged("selectBox_loadingChanged"))
                 .DropDownButtonTemplate(@<text>
                     @(Html.DevExtreme().LoadIndicator()
@@ -36,6 +38,7 @@
             @(Html.DevExtreme().SelectBox()
                 .DataSource(Model)
                 .ShowClearButton(true)
+                .InputAttr("aria-label", "Templated Product")
                 .DisplayExpr("Name")
                 .ValueExpr("ID")
                 .Value(1)

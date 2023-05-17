@@ -25,7 +25,7 @@ $(() => {
 
   $('#selectbox-ungroupeddata').dxSelectBox({
     dataSource: fromUngroupedData,
-    inputAttr: { 'aria-label': 'Ungrouped Data' },
+    inputAttr: { 'aria-label': 'Data' },
     valueExpr: 'ID',
     grouped: true,
     displayExpr: 'Name',

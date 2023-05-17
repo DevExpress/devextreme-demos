@@ -49,6 +49,7 @@
                 .DataSource(new[] { 1, 2, 3, 4 })
                 .Value(3)
                 .Width(80)
+                .InputAttr("aria-label", "Max Count")
                 .OnValueChanged(@<text>
                     function(data) {
                         var chart = $("#chart").dxChart("instance");
@@ -63,6 +64,7 @@
                 .DataSource(new[] { ScaleBreakLineStyle.Waved, ScaleBreakLineStyle.Straight })
                 .Value(ScaleBreakLineStyle.Waved)
                 .Width(120)
+                .InputAttr("aria-label", "Line Style")
                 .OnValueChanged(@<text>
                     function(data) {
                         var chart = $("#chart").dxChart("instance");

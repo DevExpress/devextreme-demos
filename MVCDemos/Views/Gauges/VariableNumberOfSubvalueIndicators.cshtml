@@ -43,6 +43,7 @@
 
     @(Html.DevExtreme().SelectBox()
         .ID("selectbox")
+        .InputAttr("aria-label", "Department")
         .DataSource(Model, "Name")
         .DisplayExpr("Name")
         .Value("Meat")

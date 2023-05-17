@@ -15,6 +15,7 @@
     <div class="action-container">
         @(Html.DevExtreme().SelectBox()
             .ID("select-color")
+            .InputAttr("aria-label", "Color")
             .Width(150)
             .DataSource(Model)
             .DisplayExpr("Name")

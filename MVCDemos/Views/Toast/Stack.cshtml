@@ -20,6 +20,7 @@
     )
     @(Html.DevExtreme().SelectBox()
         .ID("position")
+        .InputAttr("aria-label", "Position")
         .Items(positions)
         .Value("bottom center")
         .OnSelectionChanged("positionSelectionChanged")
@@ -71,6 +72,7 @@
     <div>Direction</div>
     @(Html.DevExtreme().SelectBox()
         .ID("direction")
+        .InputAttr("aria-label", "Direction")
         .Items(directions)
         .Value("up-push")
         .OnSelectionChanged("directionSelectionChanged")

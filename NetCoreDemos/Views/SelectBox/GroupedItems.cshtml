@@ -23,6 +23,7 @@
         <div class="dx-field-value">
             @(Html.DevExtreme().SelectBox()
                 .DataSource(SampleData.Electronics)
+                .InputAttr("aria-label", "Data")
                 .DataSourceOptions(o => o.Group("Category"))
                 .ValueExpr("ID")
                 .Grouped(true)
@@ -37,6 +38,7 @@
         <div class="dx-field-value">
             @(Html.DevExtreme().SelectBox()
                 .DataSource(new JS("fromPregroupedData"))
+                .InputAttr("aria-label", "Pregrouped Data")
                 .ValueExpr("ID")
                 .Grouped(true)
                 .DisplayExpr("Name")
@@ -49,6 +51,7 @@
         <div class="dx-field-value">
             @(Html.DevExtreme().SelectBox()
                 .DataSource(SampleData.Electronics)
+                .InputAttr("aria-label", "Templated Ungrouped Data")
                 .DataSourceOptions(o => o.Group("Category"))
                 .ValueExpr("ID")
                 .Grouped(true)

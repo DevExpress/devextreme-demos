@@ -46,6 +46,7 @@
         <span>Apply Changes Mode:</span>
         @(Html.DevExtreme().SelectBox()
             .ID("applyChangesMode")
+            .InputAttr("aria-label", "Apply Changes Mode")
             .DataSource(new JS("applyChangesModes"))
             .Width(180)
             .Value(new JS("applyChangesModes[0]"))

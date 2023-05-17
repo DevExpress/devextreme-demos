@@ -20,6 +20,7 @@
                     .Label(l => l.Template(new JS("positionLabel")))
                     .Editor(e => e
                         .SelectBox()
+                        .InputAttr("aria-label", "Position")
                         .DataSource(new[] {
                             "HR Manager",
                             "IT Manager",

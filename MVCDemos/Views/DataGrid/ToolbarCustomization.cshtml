@@ -35,6 +35,7 @@
                 .Widget(w =>
                     w.SelectBox()
                         .Width(225)
+                        .InputAttr("aria-label", "State")
                         .DataSource(new[] {
                             new { value = "CustomerStoreState", text = "Grouping by State" },
                             new { value = "Employee", text = "Grouping by Employee" },

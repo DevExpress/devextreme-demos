@@ -104,6 +104,7 @@
         @(Html.DevExtreme().SelectBox()
             .ID("applyFilterEditor")
             .DataSource(dataSource)
+            .InputAttr("aria-label", "Filter")
             .Value(dataSource[0].Key)
             .ValueExpr("Key")
             .DisplayExpr("Name")

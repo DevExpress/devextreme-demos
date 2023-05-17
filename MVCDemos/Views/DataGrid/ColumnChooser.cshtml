@@ -84,6 +84,7 @@
                 .DataSource(dataSource)
                 .Value(dataSource[1].Key)
                 .ValueExpr("Key")
+                .InputAttr("aria-label", "Column Chooser Mode")
                 .DisplayExpr("Name")
                 .OnValueChanged(@<text>
                     function(data) {

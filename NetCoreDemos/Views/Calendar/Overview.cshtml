@@ -67,6 +67,7 @@
             <span>First day of week</span>
             @(Html.DevExtreme().SelectBox()
                 .DataSource(weekDays)
+                .InputAttr("aria-label", "Day")
                 .Value(FirstDayOfWeek.Sunday)
                 .ValueExpr("Id")
                 .DisplayExpr("Text")
@@ -78,6 +79,7 @@
             @(Html.DevExtreme().SelectBox()
                 .DataSource(weekNumberRules)
                 .Value(WeekNumberRule.Auto)
+                .InputAttr("aria-label", "Rule")
                 .OnValueChanged("weekNumberRule_changed")
             )
         </div>
@@ -86,6 +88,7 @@
             @(Html.DevExtreme().SelectBox()
                 .ID("zoom-level")
                 .DataSource(zoomLevels)
+                .InputAttr("aria-label", "Zoom Leven")
                 .Value(zoomLevels[0])
                 .OnValueChanged("zoomLevel_changed")
             )

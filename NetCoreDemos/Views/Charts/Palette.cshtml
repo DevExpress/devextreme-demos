@@ -39,6 +39,7 @@
             <span>Palette</span>
             @(Html.DevExtreme().SelectBox()
                 .Value("Material")
+                .InputAttr("aria-label", "Palette")
                 .Items(new[] { "Material", "Soft Pastel", "Harmony Light", "Pastel", "Bright", "Soft", "Ocean", "Office", "Vintage", "Violet", "Carmine", "Dark Moon", "Soft Blue", "Dark Violet", "Green Mist" })
                 .OnValueChanged(@<text>
                     function(e) {
@@ -54,6 +55,7 @@
             @(Html.DevExtreme()
                 .SelectBox()
                 .Value("Blend")
+                .InputAttr("aria-label", "Palette Extension Mode")
                 .Items(Enum.GetNames(typeof(VizPaletteExtensionMode)))
                 .OnValueChanged(@<text>
                     function(e) {

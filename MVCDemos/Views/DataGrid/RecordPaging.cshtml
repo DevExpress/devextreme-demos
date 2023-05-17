@@ -27,6 +27,7 @@
                     .ID("displayMode")
                     .DataSource(new[] { new { text= "Display Mode 'full'", value= "full" }, new { text= "Display Mode 'compact'", value= "compact" } })
                     .DisplayExpr("text")
+                    .InputAttr("aria-label", "Display Mode")
                     .ValueExpr("value")
                     .Value("full")
                     .OnValueChanged(@<text>

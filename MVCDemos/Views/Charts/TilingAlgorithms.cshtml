@@ -42,6 +42,7 @@
         @(Html.DevExtreme().SelectBox()
             .DataSource(new[] { "sliceAndDice", "squarified", "strip", "custom" })
             .Width(200)
+            .InputAttr("aria-label", "Algorithm")
             .Value("strip")
             .OnValueChanged("selectBox_valueChanged")
             .ElementAttr("class", "selectbox")

@@ -48,6 +48,7 @@
                     .DataSource(d => d.Mvc()
                         .Controller("DataGridAdvancedMasterDetailView")
                         .LoadAction("GetProductsBySupplier")
+                        .InputAttr("aria-label", "Product")
                         .LoadParams(new { supplierID = new JS("tabExtras.supplierID") })
                         .Key("ProductID")
                     )

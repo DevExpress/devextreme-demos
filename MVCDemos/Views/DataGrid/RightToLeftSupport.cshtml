@@ -33,6 +33,7 @@
         <span>Language:</span>
         @(Html.DevExtreme().SelectBox()
             .ID("select-language")
+            .InputAttr("aria-label", "Language")
             .DataSource(new[] { "Arabic (Right-to-Left direction)", "English (Left-to-Right direction)" })
             .Value("English (Left-to-Right direction)")
             .Width(250)

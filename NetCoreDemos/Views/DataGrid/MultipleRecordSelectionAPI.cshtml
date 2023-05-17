@@ -32,6 +32,7 @@
                 .Widget(w =>
                     w.SelectBox()
                         .DataSource(new[] { "All", "Dr.", "Mr.", "Mrs.", "Ms." })
+                        .InputAttr("aria-label", "Title")
                         .Placeholder("Select title")
                         .OnValueChanged("selectBox_valueChanged")
                         .OnInitialized("selectBox_onInitialized")

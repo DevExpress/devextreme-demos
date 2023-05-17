@@ -42,6 +42,7 @@
                 @(Html.DevExtreme().SelectBox()
                     .ID("selectbox")
                     .DataSource(tabs)
+                    .InputAttr("aria-label", "Tab")
                     .Value(0)
                     .DisplayExpr("text")
                     .ValueExpr("id")

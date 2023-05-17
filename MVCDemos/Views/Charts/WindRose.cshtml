@@ -38,6 +38,7 @@
         @(Html.DevExtreme().SelectBox()
             .Width(300)
             .DataSource(Model)
+            .InputAttr("aria-label", "Period")
             .Value(Model.First().Period)
             .ValueExpr("Period")
             .DisplayExpr("Period")

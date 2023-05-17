@@ -37,6 +37,7 @@
                     "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
                 })
                 .Width("100%")
+                .InputAttr("aria-label", "State")
                 .Placeholder("Select...")
                 .Label("State")
             )
@@ -107,6 +108,7 @@
         <label>Styling Mode</label>
         @(Html.DevExtreme().SelectBox()
             .Items(new[] { "outlined", "filled", "underlined" })
+            .InputAttr("aria-label", "Styling Mode")
             .Value(new JS("stylingMode"))
             .OnValueChanged("stylingModeChanged")
         )
@@ -116,6 +118,7 @@
         @(Html.DevExtreme().SelectBox()
             .Items(new[] { "static", "floating", "hidden" })
             .Value(new JS("labelMode"))
+            .InputAttr("aria-label", "Label Mode")
             .OnValueChanged("labelModeChanged")
         )
     </div>

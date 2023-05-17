@@ -9,6 +9,7 @@
                 <div class="dx-field-value">
                     @(Html.DevExtreme().SelectBox()
                         .RtlEnabled(Model.RtlEnabled)
+                        .InputAttr("aria-label", "Language")
                         .DataSource(Model.LanguageItems)
                         .Value(Model.RtlEnabled ? Model.LanguageItems.First() : Model.LanguageItems.Last())
                         .OnValueChanged("selectBox_valueChanged"))
@@ -43,6 +44,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().SelectBox()
                     .RtlEnabled(Model.RtlEnabled)
+                    .InputAttr("aria-label", "European Union")
                     .DataSource(d => d.Mvc().Controller("Common").LoadAction("GetEuropeanUnionData").Key("ID"))
                     .ValueExpr("ID")
                     .DisplayExpr(Model.DisplayExpr)
