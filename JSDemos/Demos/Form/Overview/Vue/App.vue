@@ -106,7 +106,7 @@ export default {
       labelModes,
       labelLocations,
       columnsCounts,
-      minColumnWidths
+      minColumnWidths,
     };
   },
   computed: {
