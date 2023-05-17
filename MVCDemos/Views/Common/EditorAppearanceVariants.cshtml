@@ -5,6 +5,7 @@
             @(Html.DevExtreme().TextBox()
                 .ID("name")
                 .Value("Olivia Peyton")
+                .InputAttr("aria-label", "Name")
                 .Width("100%")
                 .Placeholder("Type...")
                 .Label("Name")
@@ -12,6 +13,7 @@
             @(Html.DevExtreme().TextBox()
                 .ID("place")
                 .Width("100%")
+                .InputAttr("aria-label", "Address")
                 .Placeholder("Type...")
                 .Label("Address")
             )
@@ -19,6 +21,7 @@
         <div class="right">
             @(Html.DevExtreme().DateBox()
                 .ID("birthDate")
+                .InputAttr("aria-label", "Birth Date")
                 .Value(new DateTime(1981, 6, 3))
                 .Width("100%")
                 .Placeholder("Select...")
@@ -42,6 +45,7 @@
     <div class="center">
         @(Html.DevExtreme().TagBox()
             .ID("position")
+            .InputAttr("aria-label", "Position")
             .Items(new[] {
                 "HR Manager",
                 "IT Manager",
@@ -63,6 +67,7 @@
             @(Html.DevExtreme().TextBox()
                 .ID("phone")
                 .Width("100%")
+                .InputAttr("aria-label", "Phone")
                 .Label("Phone")
                 .Mask("+1 (X00) 000-0000")
                 .MaskRules(new { X = new JS("/[02-9]/") })
@@ -71,6 +76,7 @@
         <div class="right">
             @(Html.DevExtreme().DateBox()
                 .ID("hireDate")
+                .InputAttr("aria-label", "Hire Date")
                 .Width("100%")
                 .Placeholder("Select...")
                 .Label("Hire Date")

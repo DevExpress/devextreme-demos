@@ -54,6 +54,7 @@
                 Html.DevExtreme().TagBox()
                     .Value(new JS("value"))
                     .Items(categories)
+                    .InputAttr("aria-label", "Category")
                     .OnValueChanged(@"function(e) {
                         setValue(e.value && e.value.length ? e.value : null);
                     }")

@@ -28,6 +28,7 @@
                 @(Html.DevExtreme().TextBox()
                     .ID("zoom-factor")
                     .Width(210)
+                    .InputAttr("aria-label", "Zoom")
                     .ReadOnly(true)
                     .Value("1.00")
                 )
@@ -38,6 +39,7 @@
                     .ID("center")
                     .Width(210)
                     .ReadOnly(true)
+                    .InputAttr("aria-label", "Center")
                     .Value("0.000, 46.036")
                 )
             </div>

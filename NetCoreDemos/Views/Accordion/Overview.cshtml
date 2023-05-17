@@ -60,6 +60,7 @@
             <span class="caption">Selected Items</span>
             @(Html.DevExtreme().TagBox()
                 .ID("tagbox")
+                .InputAttr("aria-label", "Company Name")
                 .DisplayExpr("Name")
                 .ValueExpr("ID")
                 .Value(new[] { 1 })

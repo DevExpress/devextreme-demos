@@ -128,6 +128,7 @@
                 @(Html.DevExtreme().NumberBox()
                     .ID("startIndexContainer")
                     .Value(0)
+                    .InputAttr("aria-label", "Start Task Index")
                     .Disabled(true)
                     .ShowSpinButtons(true)
                 )
@@ -140,6 +141,7 @@
                     .ID("endIndexContainer")
                     .Value(3)
                     .Disabled(true)
+                    .InputAttr("aria-label", "End Task Index")
                     .ShowSpinButtons(true)
                 )
             </div>
@@ -148,6 +150,7 @@
             <div class="label">Start date:</div>
             <div class="value">
                 @(Html.DevExtreme().DateBox()
+                    .InputAttr("aria-label", "Start Date")
                     .ID("startDateContainer")
                     .Type(DateBoxType.Date)
                     .Disabled(true)
@@ -159,6 +162,7 @@
             <div class="label">End date:</div>
             <div class="value">
                 @(Html.DevExtreme().DateBox()
+                    .InputAttr("aria-label", "End Date")
                     .ID("endDateContainer")
                     .Type(DateBoxType.Date)
                     .Disabled(true)

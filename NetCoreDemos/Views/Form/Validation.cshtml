@@ -19,6 +19,7 @@
                         groupItems.AddSimpleFor(m => m.Password)
                             .Editor(e => e.TextBox()
                                 .Mode(TextBoxMode.Password)
+                                .InputAttr("aria-label", "Password")
                                 .OnValueChanged("passwordChanged")
                                 .Buttons(buttons => {
                                     buttons.Add()
@@ -34,6 +35,7 @@
                         groupItems.AddSimpleFor(m => m.ConfirmPassword)
                             .Editor(e => e.TextBox()
                                 .Mode(TextBoxMode.Password)
+                                .InputAttr("aria-label", "Password")
                                 .Buttons(buttons => {
                                     buttons.Add()
                                         .Name("password")
@@ -75,6 +77,7 @@
                             .HelpText("Enter the phone number in USA phone format")
                             .Editor(e => e.TextBox()
                                 .Mask("+1 (X00) 000-0000")
+                                .InputAttr("aria-label", "Phone")
                                 .MaskRules(new { X = new JS("/[02-9]/") })
                                 .MaskInvalidMessage("The phone must have a correct USA phone format")
                             );

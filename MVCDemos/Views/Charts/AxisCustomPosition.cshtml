@@ -34,6 +34,7 @@
                 @(Html.DevExtreme().NumberBox()
                 .Value(0)
                 .ShowSpinButtons(true)
+                .InputAttr("aria-label", "Custom Position")
                 .OnValueChanged(@<text>
                     function(e) {
                         var chart = $("#chart").dxChart("instance");
@@ -47,6 +48,7 @@
                 @(Html.DevExtreme().NumberBox()
                 .Value(0)
                 .ShowSpinButtons(true)
+                .InputAttr("aria-label", "Offset")
                 .OnValueChanged(@<text>
                     function(e) {
                         var chart = $("#chart").dxChart("instance");
@@ -63,6 +65,7 @@
                 @(Html.DevExtreme().NumberBox()
                 .Value(0)
                 .ShowSpinButtons(true)
+                .InputAttr("aria-label", "Custom Position")
                 .OnValueChanged(@<text>
                     function(e) {
                         var chart = $("#chart").dxChart("instance");
@@ -76,6 +79,7 @@
                 @(Html.DevExtreme().NumberBox()
                 .Value(0)
                 .ShowSpinButtons(true)
+                .InputAttr("aria-label", "Offset")
                 .OnValueChanged(@<text>
                     function(e) {
                         var chart = $("#chart").dxChart("instance");

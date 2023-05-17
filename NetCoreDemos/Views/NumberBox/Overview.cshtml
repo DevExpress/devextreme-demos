@@ -12,6 +12,7 @@
                 @(Html.DevExtreme().NumberBox()
                     .Value(20.5)
                     .ShowSpinButtons(true)
+                    .InputAttr("aria-label", "With Spin And Buttons")
                     .ShowClearButton(true)
                 )
             </div>
@@ -23,6 +24,7 @@
                     .Value(20.5)
                     .ShowSpinButtons(true)
                     .ShowClearButton(true)
+                    .InputAttr("aria-label", "Disabled")
                     .Disabled(true)
                 )
             </div>
@@ -34,6 +36,7 @@
                     .Value(15)
                     .Min(10)
                     .Max(20)
+                    .InputAttr("aria-label", "Max And Min")
                     .ShowSpinButtons(true)
                 )
             </div>
@@ -50,6 +53,7 @@
                     .Value(16)
                     .ShowSpinButtons(true)
                     .OnKeyDown("key_down")
+                    .InputAttr("aria-label", "Sales")
                     .OnValueChanged("numberBox_valueChanged")
                 )
             </div>
@@ -61,6 +65,7 @@
                     .ID("stock")
                     .Value(14)
                     .Min(0)
+                    .InputAttr("aria-label", "Stock")
                     .ShowSpinButtons(false)
                     .ReadOnly(true)
                 )

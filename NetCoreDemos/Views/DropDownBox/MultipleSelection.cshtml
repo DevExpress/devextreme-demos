@@ -6,6 +6,7 @@
                 .Value(new[] { "1_1" })
                 .ValueExpr("ID")
                 .DisplayExpr("Text")
+                .InputAttr("aria-label", "Owner")
                 .DropDownOptions(o => o.Height(350))
                 .DataSource(d => d.Mvc()
                     .Controller("TreeViewPlainData")
@@ -26,6 +27,7 @@
         <div class="dx-field-value">
             @(Html.DevExtreme().DropDownBox()
                 .Value(new[] { 3 })
+                .InputAttr("aria-label", "Owner")
                 .ValueExpr("ID")
                 .DisplayExpr("CompanyName")
                 .DataSource(d => d.Mvc()

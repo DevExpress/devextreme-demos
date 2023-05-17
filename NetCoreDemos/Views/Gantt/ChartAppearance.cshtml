@@ -56,6 +56,7 @@
                 <div class="label">Start Date Range:</div>
                 <div class="value">
                     @(Html.DevExtreme().DateBox()
+                        .InputAttr("aria-label", "Start Date")
                         .Type(DateBoxType.Date)
                         .Value(new DateTime(2018, 12, 1))
                         .OnValueChanged("ganttStartDateRange_changed")
@@ -66,6 +67,7 @@
                 <div class="label">End Date Range:</div>
                 <div class="value">
                     @(Html.DevExtreme().DateBox()
+                        .InputAttr("aria-label", "End Date")
                         .Type(DateBoxType.Date)
                         .Value(new DateTime(2019, 12, 1))
                         .OnValueChanged("ganttEndDateRange_changed")

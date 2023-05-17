@@ -6,6 +6,7 @@
         <div class="dx-field-value">
             @(Html.DevExtreme().TagBox()
                 .DataSource(Model)
+                .InputAttr("aria-label", "Category")
                 .DataSourceOptions(o => o.Group("Category"))
                 .ValueExpr("ID")
                 .Value(new[] { 17, 19 })
@@ -21,6 +22,7 @@
             @(Html.DevExtreme().TagBox()
                 .DataSource(Model)
                 .DataSourceOptions(o => o.Group("Category"))
+                .InputAttr("aria-label", "Category")
                 .ValueExpr("ID")
                 .Value(new[] { 17, 19 })
                 .Grouped(true)
@@ -36,6 +38,7 @@
             @(Html.DevExtreme().TagBox()
                 .DataSource(Model)
                 .DataSourceOptions(o => o.Group("Category"))
+                .InputAttr("aria-label", "Category")
                 .ValueExpr("ID")
                 .Value(new[] { 18 })
                 .Grouped(true)

@@ -23,6 +23,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().TextBox()
                     .RtlEnabled(Model.RtlEnabled)
+                    .InputAttr("aria-label", "Text Box")
                     .ShowClearButton(true)
                     .Value(Model.Text))
             </div>
@@ -33,6 +34,7 @@
                 @(Html.DevExtreme().NumberBox()
                     .RtlEnabled(Model.RtlEnabled)
                     .ShowSpinButtons(true)
+                    .InputAttr("aria-label", "Number Box")
                     .Value(123))
             </div>
         </div>
@@ -52,6 +54,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().TagBox()
                     .RtlEnabled(Model.RtlEnabled)
+                    .InputAttr("aria-label", "Name")
                     .DataSource(d => d.Mvc().Controller("Common").LoadAction("GetEuropeanUnionData").Key("ID"))
                     .ValueExpr("ID")
                     .DisplayExpr(Model.DisplayExpr)
