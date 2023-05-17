@@ -129,7 +129,7 @@ const execTestCafeCode = (t, code) => {
           await execTestCafeCode(t, testCafeCodeSource);
         }
 
-        if (process.env.ACCESSIBILITY_TESTS) {
+        if (process.env.STRATEGY === 'accessibility') {
           const { error, results } = await axeCheck(t, '.demo-container');
 
           if (results.violations.length > 0) {
