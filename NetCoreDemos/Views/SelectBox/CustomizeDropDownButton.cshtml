@@ -5,6 +5,7 @@
         <div class="dx-field-label">Image as the icon</div>
         <div class="dx-field-value">
             @(Html.DevExtreme().SelectBox()
+                .InputAttr("aria-label", "Product")
                 .DataSource(d => d.Mvc().LoadAction("GetProductNames"))
                 .DropDownButtonTemplate(@<text>
                     <img src="~/images/icons/custom-dropbutton-icon.svg" class="custom-icon" />
@@ -18,6 +19,7 @@
         <div class="dx-field-value">
             @(Html.DevExtreme().SelectBox()
                 .DataSource(d => d.Mvc().LoadAction("GetProductNames"))
+                .InputAttr("aria-label", "Custom Product")
                 .DataSourceOptions(dso => dso.OnLoadingChanged("selectBox_loadingChanged"))
                 .DropDownButtonTemplate(@<text>
                     @(Html.DevExtreme().LoadIndicator()
@@ -35,6 +37,7 @@
         <div class="dx-field-value">
             @(Html.DevExtreme().SelectBox()
                 .DataSource(Model)
+                .InputAttr("aria-label", "Templated Product")
                 .ShowClearButton(true)
                 .DisplayExpr("Name")
                 .ValueExpr("ID")

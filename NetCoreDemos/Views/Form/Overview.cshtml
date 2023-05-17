@@ -6,6 +6,7 @@
         @(Html.DevExtreme().SelectBox()
             .ID("companySelectBox")
             .DisplayExpr("Name")
+            .InputAttr("aria-label", "Company")
             .Label("Select company")
             .LabelMode(EditorLabelMode.Floating)
             .DataSource(d => d.Mvc().LoadAction("GetCompanies").Key("ID"))
@@ -28,6 +29,7 @@
         <div class="option">
             <span>Label mode:</span>
             @(Html.DevExtreme().SelectBox()
+                .InputAttr("aria-label", "Label Mode")
                 .DataSource(new[] { "outside", "static", "floating", "hidden" })
                 .Value("floating")
                 .OnValueChanged("labelMode_changed")
@@ -38,12 +40,14 @@
             @(Html.DevExtreme().SelectBox()
                 .DataSource(new[] { "left", "top" })
                 .Value("left")
+                .InputAttr("aria-label", "Label Location")
                 .OnValueChanged("labelLocation_changed")
             )
         </div>
         <div class="option">
             <span>Columns count:</span>
             @(Html.DevExtreme().SelectBox()
+                .InputAttr("aria-label", "Column Count")
                 .DataSource(new object[] { "auto", 1, 2, 3 })
                 .Value(2)
                 .OnValueChanged("colCount_changed")
@@ -53,6 +57,7 @@
             <span>Min column width:</span>
             @(Html.DevExtreme().SelectBox()
                 .DataSource(new[] { 150, 200, 300 })
+                .InputAttr("aria-label", "Min Column Width")
                 .Value(300)
                 .OnValueChanged("minColWidth_changed")
             )
