@@ -34,7 +34,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View();
         }
 
-        [HttpPost("action")]
+        [HttpPost]
         public ActionResult FileSelection(string firstName, string lastName, IFormFile photo) {
             ViewBag.FirstName = firstName;
             ViewBag.LastName = lastName;
