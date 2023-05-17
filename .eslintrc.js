@@ -18,6 +18,7 @@ module.exports = {
   plugins: [
     'spellcheck',
     'no-only-tests',
+    'deprecation',
   ],
   rules: {
     'spellcheck/spell-checker': (() => {
@@ -339,7 +340,7 @@ module.exports = {
       '@typescript-eslint/no-unused-expressions': 0,
       '@typescript-eslint/no-useless-constructor': 0,
       '@typescript-eslint/explicit-module-boundary-types': 0, // was warn
-
+      'deprecation/deprecation': 'error',
     },
   }, {
     files: [
