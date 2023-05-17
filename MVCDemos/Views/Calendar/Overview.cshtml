@@ -68,6 +68,7 @@
             @(Html.DevExtreme().SelectBox()
                 .DataSource(weekDays)
                 .Value(FirstDayOfWeek.Sunday)
+                .InputAttr("aria-label", "Day")
                 .ValueExpr("Id")
                 .DisplayExpr("Text")
                 .OnValueChanged("firstDayOfWeek_changed")
@@ -78,6 +79,7 @@
             @(Html.DevExtreme().SelectBox()
                 .DataSource(weekNumberRules)
                 .Value(WeekNumberRule.Auto)
+                .InputAttr("aria-label", "Rule")
                 .OnValueChanged("weekNumberRule_changed")
             )
         </div>
