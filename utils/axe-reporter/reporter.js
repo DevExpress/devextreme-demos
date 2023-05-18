@@ -1,14 +1,13 @@
 import mustache from 'mustache';
 import path from 'path';
 import {
-  appendFileSync,
+  writeFileSync,
   readFileSync,
   mkdirSync,
   existsSync,
 } from 'fs';
 
-const reportDir = './testing/artifacts/axe';
-const reportFileName = `${process.env.CONSTEL ? process.env.CONSTEL.replace(/[()/]/g, '_') : ''}axe_report.md`;
+const reportDir = './testing/artifacts/axe-reports';
 const template = readFileSync(path.join(__dirname, 'template.md'), { encoding: 'utf8' });
 
 function replaceBase64(html) {
@@ -32,14 +31,13 @@ function simplifyResults(r) {
   }));
 }
 
-export function appendMdReport({ testName, results }) {
+export function createMdReport({ testName, results }) {
   // eslint-disable-next-line max-len
-  const mdString = `${mustache.render(template, { testName, results: simplifyResults(results) })} \n\n`;
-  const reportPath = path.join(reportDir, reportFileName);
+  const mdString = mustache.render(template, { testName, results: simplifyResults(results) });
 
-  if (!existsSync(reportPath)) {
+  if (!existsSync(reportDir)) {
     mkdirSync(reportDir, { recursive: true });
   }
 
-  appendFileSync(reportPath, mdString);
+  writeFileSync(path.join(reportDir, `${testName}.md`), mdString);
 }

@@ -130,7 +130,7 @@
         "lint": "npm-run-all -p -c lint-js lint-mvc lint-netcore lint-css lint-html",
         "webserver": "http-server --port 8080 -c-1",
         "test-testcafe": "node utils/visual-tests/testcafe-runner.mjs",
-        "test-testcafe:accessibility": "cross-env STRATEGY=accessibility node utils/visual-tests/testcafe-runner.mjs",
+        "test-testcafe:accessibility": "cross-env STRATEGY=accessibility CONSTEL=jquery node utils/visual-tests/testcafe-runner.mjs",
         "fix-lint": "prettier --write . && eslint --fix . && stylelint **/*.{css,vue} --fix",
         "build": "node utils/bundle/index.js",
         "build-angular": "npm run build -- angular",

@@ -10,7 +10,7 @@ import {
   shouldRunFramework,
   shouldRunTestAtIndex,
 } from '../utils/visual-tests/matrix-test-helper';
-import { appendMdReport } from '../utils/axe-reporter/reporter';
+import { createMdReport } from '../utils/axe-reporter/reporter';
 
 const globalReadFrom = (basePath, relativePath, mapCallback) => {
   const absolute = join(basePath, relativePath);
@@ -133,7 +133,7 @@ const execTestCafeCode = (t, code) => {
           const { error, results } = await axeCheck(t, '.demo-container');
 
           if (results.violations.length > 0) {
-            appendMdReport({ testName, results });
+            createMdReport({ testName, results });
           }
 
           await t.expect(error).notOk();
