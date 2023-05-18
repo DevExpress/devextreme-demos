@@ -122,7 +122,8 @@ export function shouldRunFramework(currentFramework) {
 }
 
 export function shouldRunTestAtIndex(testIndex) {
-  return settings.current === testIndex % settings.total;
+  return (settings.current === settings.total ? 0 : settings.current)
+      === testIndex % settings.total;
 }
 
 export function shouldRunTest(currentFramework, testIndex) {
