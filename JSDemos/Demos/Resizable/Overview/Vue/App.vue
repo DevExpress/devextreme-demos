@@ -57,7 +57,7 @@
         <div>Handles</div>
         <DxTagBox
           :items="handleValues"
-          :input-attr="{ 'aria-label': 'Behavior' }"
+          :input-attr="{ 'aria-label': 'Handle' }"
           v-model:value="handles"
         />
       </div>

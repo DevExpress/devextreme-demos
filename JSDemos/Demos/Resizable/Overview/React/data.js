@@ -360,4 +360,4 @@ export const orders = [{
   Employee: 'Clark Morgan',
 }];
 
-export const handleLabel = { 'aria-label': 'Behavior' };
+export const handleLabel = { 'aria-label': 'Handle' };
