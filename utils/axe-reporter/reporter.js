@@ -8,7 +8,7 @@ import {
 } from 'fs';
 
 const reportDir = './testing/artifacts/axe';
-const reportFileName = `${process.env.CONSTEL.replace(/[()/]/g, '_')}axe_report.md`;
+const reportFileName = `${process.env.CONSTEL ? process.env.CONSTEL.replace(/[()/]/g, '_') : ''}axe_report.md`;
 const template = readFileSync(path.join(__dirname, 'template.md'), { encoding: 'utf8' });
 
 function replaceBase64(html) {
