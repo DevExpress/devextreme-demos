@@ -39,7 +39,7 @@ $(() => {
 
   $('#handle').dxSelectBox({
     dataSource: ['onHandleMove', 'onHandleRelease'],
-    inputAttr: { 'aria-label': 'Handle' },
+    inputAttr: { 'aria-label': 'Behavior' },
     width: 210,
     value: 'onHandleMove',
     onValueChanged(data) {
