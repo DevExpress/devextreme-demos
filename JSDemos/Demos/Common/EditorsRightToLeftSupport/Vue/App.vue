@@ -49,7 +49,7 @@
             <DxSelectBox
               :items="europeanUnion"
               :value="europeanUnion[0]"
-              :input-attr="{ 'aria-label': 'European Union' }"
+              :input-attr="{ 'aria-label': 'European Union Data' }"
               :rtl-enabled="rtlEnabled"
               :display-expr="displayExpr"
             />

@@ -44,7 +44,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().SelectBox()
                     .RtlEnabled(Model.RtlEnabled)
-                    .InputAttr("aria-label", "European Union")
+                    .InputAttr("aria-label", "European Union Data")
                     .DataSource(d => d.Mvc().Controller("Common").LoadAction("GetEuropeanUnionData").Key("ID"))
                     .ValueExpr("ID")
                     .DisplayExpr(Model.DisplayExpr)

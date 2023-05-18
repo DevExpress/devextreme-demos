@@ -123,4 +123,4 @@ export const emailLabel = { 'aria-label': 'Email' };
 export const cityLabel = { 'aria-label': 'City' };
 export const addressLabel = { 'aria-label': 'Address' };
 export const languageLabel = { 'aria-label': 'Language' };
-export const europeanUnionDataLabel = { 'aria-label': 'European Union' };
+export const europeanUnionDataLabel = { 'aria-label': 'European Union Data' };
