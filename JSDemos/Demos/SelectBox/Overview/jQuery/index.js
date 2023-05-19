@@ -26,7 +26,7 @@ $(() => {
   });
 
   $('#products-data-source').dxSelectBox({
-    inputAttr: { 'aria-label': 'Product From DS' },
+    inputAttr: { 'aria-label': 'Product ID' },
     dataSource: new DevExpress.data.ArrayStore({
       data: products,
       key: 'ID',

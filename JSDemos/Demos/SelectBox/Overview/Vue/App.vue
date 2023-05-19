@@ -49,7 +49,7 @@
         <div class="dx-field-value">
           <DxSelectBox
             :data-source="data"
-            :input-attr="{ 'aria-label': 'Product From DS' }"
+            :input-attr="{ 'aria-label': 'Product ID' }"
             :value="products[0].ID"
             display-expr="Name"
             value-expr="ID"

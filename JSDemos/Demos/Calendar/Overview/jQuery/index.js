@@ -104,7 +104,7 @@ $(() => {
     dataSource: weekDays,
     value: 0,
     valueExpr: 'id',
-    inputAttr: { 'aria-label': 'Day' },
+    inputAttr: { 'aria-label': 'First Day of Week' },
     displayExpr: 'text',
     onValueChanged(data) {
       calendar.option('firstDayOfWeek', data.value);
@@ -114,7 +114,7 @@ $(() => {
   $('#week-number-rule').dxSelectBox({
     dataSource: weekNumberRules,
     value: weekNumberRules[0],
-    inputAttr: { 'aria-label': 'Rule' },
+    inputAttr: { 'aria-label': 'Week Number Rule' },
     onValueChanged(data) {
       calendar.option('weekNumberRule', data.value);
     },

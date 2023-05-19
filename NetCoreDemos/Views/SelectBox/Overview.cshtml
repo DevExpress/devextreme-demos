@@ -49,7 +49,7 @@
             <div class="dx-field-label">Data source usage</div>
             <div class="dx-field-value">
                 @(Html.DevExtreme().SelectBox()
-                    .InputAttr("aria-label", "Product From DS")
+                    .InputAttr("aria-label", "Product ID")
                     .DataSource(d => d.Mvc().LoadAction("GetProducts").Key("ID"))
                     .DisplayExpr("Name")
                     .ValueExpr("ID")

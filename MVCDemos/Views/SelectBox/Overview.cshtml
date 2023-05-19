@@ -51,7 +51,7 @@
                 @(Html.DevExtreme().SelectBox()
                     .DataSource(d => d.Mvc().LoadAction("GetProducts").Key("ID"))
                     .DisplayExpr("Name")
-                    .InputAttr("aria-label", "Product From DS")
+                    .InputAttr("aria-label", "Product ID")
                     .ValueExpr("ID")
                     .Value(1)
                 )

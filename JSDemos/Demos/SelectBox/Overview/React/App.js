@@ -8,7 +8,7 @@ import Field from './Field.js';
 import Item from './Item.js';
 
 const simpleProductLabel = { 'aria-label': 'Simple Product' };
-const productFromDataSourceLabel = { 'aria-label': 'Product From DS' };
+const productIDLabel = { 'aria-label': 'Product ID' };
 const productWithPlaceholderLabel = { 'aria-label': 'Product With Placeholder' };
 const productLabel = { 'aria-label': 'Product' };
 const readOnlyProductLabel = { 'aria-label': 'ReadOnly Product' };
@@ -79,7 +79,7 @@ class App extends React.Component {
             <div className="dx-field-value">
               <SelectBox dataSource={this.data}
                 displayExpr="Name"
-                inputAttr={productFromDataSourceLabel}
+                inputAttr={productIDLabel}
                 valueExpr="ID"
                 defaultValue={this.products[0].ID} />
             </div>

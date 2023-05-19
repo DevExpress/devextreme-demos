@@ -67,7 +67,7 @@
         <DxSelectBox
           v-model:value="firstDay"
           :data-source="weekDays"
-          :input-attr="{ 'aria-label': 'Day' }"
+          :input-attr="{ 'aria-label': 'First Day of Week' }"
           value-expr="id"
           display-expr="text"
         />
@@ -76,7 +76,7 @@
         <span>Week number rule</span>
         <DxSelectBox
           v-model:value="weekNumberRule"
-          :input-attr="{ 'aria-label': 'Rule' }"
+          :input-attr="{ 'aria-label': 'Week Number Rule' }"
           :data-source="weekNumberRules"
         />
       </div>

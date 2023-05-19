@@ -8,7 +8,7 @@ const startValue = new Date(2011, 0, 1);
 const endValue = new Date(2011, 11, 31);
 const behaviorModes = ['onHandleMove', 'onHandleRelease'];
 
-const behaviorLabel = { 'aria-label': 'Behavior' };
+const valueChangeModeLabel = { 'aria-label': 'Value Change Mode' };
 
 class App extends React.Component {
   constructor(props) {
@@ -46,7 +46,7 @@ class App extends React.Component {
             <SelectBox
               dataSource={behaviorModes}
               width={210}
-              inputAttr={behaviorLabel}
+              inputAttr={valueChangeModeLabel}
               value={this.state.behaviorMode}
               onValueChanged={this.setBehavior}
             />

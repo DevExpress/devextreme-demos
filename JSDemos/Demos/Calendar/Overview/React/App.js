@@ -19,8 +19,8 @@ const weekDays = [
 
 const dateBoxLabel = { 'aria-label': 'Date' };
 const zoomLevelLabel = { 'aria-label': 'Zoom Level' };
-const dayLabel = { 'aria-label': 'Day' };
-const ruleLabel = { 'aria-label': 'Rule' };
+const dayLabel = { 'aria-label': 'First Day of Week' };
+const ruleLabel = { 'aria-label': 'Week Number Rule' };
 
 export default function App() {
   const [minDateValue, setMinDateValue] = React.useState(null);
