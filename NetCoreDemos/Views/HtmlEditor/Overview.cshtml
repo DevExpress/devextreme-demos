@@ -115,6 +115,7 @@
         <div class="label">Image upload tabs:</div>
         @(Html.DevExtreme().SelectBox()
             .ID("html-editor-sb")
+            .InputAttr("aria-label", "Tab")
             .DataSource(new JS("tabs"))
             .Value(new JS("tabs[2].Value"))
             .OnValueChanged("change_tabs")

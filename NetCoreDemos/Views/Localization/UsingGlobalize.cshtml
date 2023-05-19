@@ -59,6 +59,7 @@
             @(Html.DevExtreme().SelectBox()
                 .ID("selectBox")
                 .InputAttr("id", "selectInput")
+                .InputAttr("aria-label", "Language")
                 .DataSource(new JS("locales"))
                 .DisplayExpr("name")
                 .ValueExpr("value")

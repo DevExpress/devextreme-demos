@@ -44,6 +44,7 @@
     @(Html.DevExtreme().SelectBox()
         .ID("selectbox")
         .DataSource(Model, "Name")
+        .InputAttr("aria-label", "Department")
         .DisplayExpr("Name")
         .Value("Meat")
         .OnValueChanged("selectBox_OnValueChanged")

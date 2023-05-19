@@ -25,6 +25,7 @@
             <span>Show scrollbar:</span>
             @(Html.DevExtreme().SelectBox()
                 .ID("show-scrollbar-mode")
+                .InputAttr("aria-label", "Show Scrollbar Mode")
                 .Items(items => {
                     items.Add().Text("On Scroll").Option("value", "onScroll");
                     items.Add().Text("On Hover").Option("value", "onHover");

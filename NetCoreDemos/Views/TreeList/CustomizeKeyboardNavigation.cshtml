@@ -61,6 +61,7 @@
                 @(Html.DevExtreme().SelectBox()
                     .ID("enterKeyAction")
                     .DataSource(enterKeyActionDataSource)
+                    .InputAttr("aria-label", "Key Action")
                     .Value(enterKeyActionDataSource[1])
                     .OnValueChanged(@<text>
                         function(data) {
@@ -79,6 +80,7 @@
 
                 @(Html.DevExtreme().SelectBox()
                     .ID("enterKeyDirection")
+                    .InputAttr("aria-label", "Key Direction")
                     .DataSource(enterKeyDirectionDataSource)
                     .Value(enterKeyDirectionDataSource[1])
                     .OnValueChanged(@<text>

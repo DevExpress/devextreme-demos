@@ -32,6 +32,7 @@
         <span>Selection Mode</span>
         @(Html.DevExtreme().SelectBox()
             .Value("all")
+            .InputAttr("aria-label", "Selection Mode")
             .DataSource(new[] { "all", "excludeRecursive", "leavesOnly" })
             .OnValueChanged(@<text>
                 function(e) {
