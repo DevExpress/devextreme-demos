@@ -19,6 +19,7 @@
             <div>Show First Submenu Mode</div>
             @(Html.DevExtreme().SelectBox()
                 .DataSource(new JS("showSubmenuModes"))
+                .InputAttr("aria-label", "Submenu Mode")
                 .Value(new JS("showSubmenuModes[1]"))
                 .DisplayExpr("name")
                 .OnValueChanged("firstSubMenuMode_changed")
@@ -29,6 +30,7 @@
             @(Html.DevExtreme().SelectBox()
                 .DataSource(new[] { "horizontal", "vertical" })
                 .Value("horizontal")
+                .InputAttr("aria-label", "Orientation")
                 .OnValueChanged("menuOrientation_changed")
             )
         </div>

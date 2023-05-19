@@ -32,6 +32,7 @@
         <span>Column resizing mode:</span>
         @(Html.DevExtreme().SelectBox()
             .ID("select-resizing")
+            .InputAttr("aria-label", "Column Resizing Mode")
             .DataSource(new[] { "nextColumn", "widget" })
             .Value("nextColumn")
             .Width(250)

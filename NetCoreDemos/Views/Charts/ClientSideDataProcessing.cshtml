@@ -43,6 +43,7 @@
     </div>
     @(Html.DevExtreme().SelectBox()
         .ID("choose-temperature")
+        .InputAttr("aria-label", "Temperature")
         .DataSource(new[] { 2, 4, 6, 8, 9, 10, 11 })
         .Value(2)
         .OnValueChanged(@<text>

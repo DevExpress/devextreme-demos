@@ -16,6 +16,7 @@
     <div class="option">
         <span>Search mode</span>
         @(Html.DevExtreme().SelectBox()
+            .InputAttr("aria-label", "Search Mode")
             .ID("searchMode")
             .DataSource(new[] { "contains", "startsWith", "equals" })
             .Value("contains")

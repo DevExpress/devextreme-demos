@@ -9,6 +9,7 @@
             <div class="value">
                 @(Html.DevExtreme().SelectBox()
                     .ID("sortingMode")
+                    .InputAttr("aria-label", "Sorting Mode")
                     .DataSource(new[] {
                         "single",
                         "multiple",

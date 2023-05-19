@@ -9,6 +9,7 @@
             <div class="value">
                 @(Html.DevExtreme().SelectBox()
                     .ID("scaleType")
+                    .InputAttr("aria-label", "Scale Type")
                     .DataSource(d => d.Array().Data(SampleData.GanttScaleTypes))
                     .Value("months")
                     .OnValueChanged("ganttScaleType_valueChanged")
@@ -20,6 +21,7 @@
             <div class="value">
                 @(Html.DevExtreme().SelectBox()
                     .ID("titlePosition")
+                    .InputAttr("aria-label", "Title Position")
                     .DataSource(new[] {
                         "inside",
                         "outside",

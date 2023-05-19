@@ -28,6 +28,7 @@
             @(Html.DevExtreme().SelectBox()
                 .ID("itemDeleteMode")
                 .Disabled(true)
+                .InputAttr("aria-label", "Delete Mode")
                 .DataSource(Enum.GetValues(typeof(ListItemDeleteMode)))
                 .Value(ListItemDeleteMode.Toggle)
                 .OnValueChanged("selectBox_valueChanged")

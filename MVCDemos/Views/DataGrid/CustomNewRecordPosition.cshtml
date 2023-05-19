@@ -60,6 +60,7 @@
             <span>New Row Position</span>
             @(Html.DevExtreme().SelectBox()
                 .ID("newRowPositionSelectBox")
+                .InputAttr("aria-label", "Position")
                 .Value("viewportTop")
                 .Items(new[] { "first", "last", "pageTop", "pageBottom", "viewportTop", "viewportBottom" })
                 .OnValueChanged("newRowPositionChanged")
@@ -70,6 +71,7 @@
             @(Html.DevExtreme().SelectBox()
                 .ID("scrollingModeSelectBox")
                 .Value("standard")
+                .InputAttr("aria-label", "Scrolling Mode")
                 .Items(new[] { "standard", "virtual" })
                 .OnValueChanged("scrollingModeChanged")
             )

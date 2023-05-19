@@ -27,6 +27,7 @@
         @(Html.DevExtreme().SelectBox()
             .Items(new[] { "instantly", "useButtons" })
             .Value("instantly")
+            .InputAttr("aria-label", "Apply Value Mode")
             .OnValueChanged("selectBox_valueChanged")
         )
     </div>

@@ -43,6 +43,7 @@
                 OverlappingBehavior.None
             })
             .Value(OverlappingBehavior.Stagger)
+            .InputAttr("aria-label", "Overlapping Mode")
             .OnValueChanged(@<text>
                 function(e) {
                     var chart = $("#chart").dxChart("instance");

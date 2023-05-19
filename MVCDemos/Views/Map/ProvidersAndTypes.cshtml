@@ -15,6 +15,7 @@
         <span>Map Type</span>
         @(Html.DevExtreme().SelectBox()
             .ID("choose-type")
+            .InputAttr("aria-label", "Map Type")
             .DataSource(new[] {
                 new { key = GeoMapType.Roadmap, name = "Road Map" },
                 new { key = GeoMapType.Satellite, name = "Satellite (Photographic) Map" },

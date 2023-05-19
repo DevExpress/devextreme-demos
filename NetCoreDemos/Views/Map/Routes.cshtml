@@ -33,6 +33,7 @@
         <span>Set mode</span>
         @(Html.DevExtreme().SelectBox()
             .ID("choose-mode")
+            .InputAttr("aria-label", "Mode")
             .DataSource(new[] { "driving", "walking" })
             .Value("driving")
             .OnValueChanged("chooseMode_valueChanged")
@@ -42,6 +43,7 @@
         <span>Route color</span>
         @(Html.DevExtreme().SelectBox()
             .ID("choose-color")
+            .InputAttr("aria-label", "Color")
             .DataSource(new[] { "blue", "green", "red" })
             .Value("blue")
             .OnValueChanged("chooseColor_valueChanged")

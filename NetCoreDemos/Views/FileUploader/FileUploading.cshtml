@@ -27,6 +27,7 @@
                 })
                 .ValueExpr("value")
                 .DisplayExpr("name")
+                .InputAttr("aria-label", "File Type")
                 .Value("*")
                 .OnValueChanged("acceptOption_changed")
             )
@@ -38,6 +39,7 @@
                     "instantly", "useButtons"
                 })
                 .Value("instantly")
+                .InputAttr("aria-label", "Mode")
                 .OnValueChanged("uploadMode_changed")
             )
         </div>

@@ -17,6 +17,7 @@
                     .ID("choose-continent")
                     .DataSource(Model)
                     .Width(210)
+                    .InputAttr("aria-label", "Continent")
                     .DisplayExpr("Continent")
                     .ValueExpr("Coordinates")
                     .Value(Model.First().Coordinates)

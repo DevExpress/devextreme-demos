@@ -20,6 +20,7 @@
         @(Html.DevExtreme().SelectBox()
             .Items(new[] { "horizontal", "vertical" })
             .Value("horizontal")
+            .InputAttr("aria-label", "Direction")
             .OnValueChanged("onDirectionChanged")
         )
     </div>

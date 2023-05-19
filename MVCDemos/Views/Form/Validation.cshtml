@@ -63,6 +63,7 @@
                         groupItems.AddSimpleFor(m => m.Country)
                             .Editor(e => e
                                 .SelectBox()
+                                .InputAttr("aria-label", "Country")
                                 .DataSource(d => d.WebApi().RouteName("GeoNames").LoadAction("Countries"))
                             );
 

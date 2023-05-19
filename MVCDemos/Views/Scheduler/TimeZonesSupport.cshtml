@@ -4,6 +4,7 @@
     <span>Office Time Zone</span>
     @(Html.DevExtreme().SelectBox()
         .Width(240)
+        .InputAttr("aria-label", "Time Zone")
         .ElementAttr("class", "selectBox")
         .DisplayExpr("title")
         .ValueExpr("id")

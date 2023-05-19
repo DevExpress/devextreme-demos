@@ -155,6 +155,7 @@
         </div>
         @(Html.DevExtreme().SelectBox()
             .ID("choose-months")
+            .InputAttr("aria-label", "Month")
             .DataSource(new[] { 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 })
             .Value(12)
             .OnValueChanged("selectBox_valueChanged")

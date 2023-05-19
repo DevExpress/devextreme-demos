@@ -68,6 +68,7 @@
         @(Html.DevExtreme().SelectBox()
             .ID("refresh-mode")
             .DataSource(new[] { "full", "reshape", "repaint" })
+            .InputAttr("aria-label", "Refresh Mode")
             .Value("reshape")
             .OnValueChanged(@<text> function(e) {
                 $("#grid").dxDataGrid("instance").option("editing.refreshMode", e.value);

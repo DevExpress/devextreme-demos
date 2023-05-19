@@ -16,6 +16,7 @@
             .ID("searchMode")
             .DataSource(new[] { "contains", "startsWith", "equals" })
             .Value("contains")
+            .InputAttr("aria-label", "Search Mode")
             .OnValueChanged("selectBox_valueChanged")
         )
     </div>

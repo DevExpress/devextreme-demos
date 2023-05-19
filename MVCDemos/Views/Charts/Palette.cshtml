@@ -40,6 +40,7 @@
             @(Html.DevExtreme().SelectBox()
                 .Value("Material")
                 .Items(new[] { "Material", "Soft Pastel", "Harmony Light", "Pastel", "Bright", "Soft", "Ocean", "Office", "Vintage", "Violet", "Carmine", "Dark Moon", "Soft Blue", "Dark Violet", "Green Mist" })
+                .InputAttr("aria-label", "Palette")
                 .OnValueChanged(@<text>
                     function(e) {
                         $("#pie").dxPieChart({
@@ -54,6 +55,7 @@
             @(Html.DevExtreme()
                 .SelectBox()
                 .Value("Blend")
+                .InputAttr("aria-label", "Pelette Extension Mode")
                 .Items(Enum.GetNames(typeof(VizPaletteExtensionMode)))
                 .OnValueChanged(@<text>
                     function(e) {

@@ -89,6 +89,7 @@
         @(Html.DevExtreme().SelectBox()
             .DataSource(new JS("['auto', 'up', 'down']"))
             .Value("auto")
+            .InputAttr("aria-label", "Direction")
             .OnSelectionChanged("directionChanged")
         )
     </div>

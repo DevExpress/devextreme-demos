@@ -16,6 +16,7 @@
         @(Html.DevExtreme().SelectBox()
             .ID("select-color")
             .Width(150)
+            .InputAttr("aria-label", "Color")
             .DataSource(Model)
             .DisplayExpr("Name")
             .ValueExpr("Name")

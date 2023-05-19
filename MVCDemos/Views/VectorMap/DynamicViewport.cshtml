@@ -16,6 +16,7 @@
                 @(Html.DevExtreme().SelectBox()
                     .ID("choose-continent")
                     .DataSource(Model)
+                    .InputAttr("aria-label", "Continent")
                     .Width(210)
                     .DisplayExpr("Continent")
                     .ValueExpr("Coordinates")

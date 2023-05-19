@@ -67,6 +67,7 @@
         <span>Refresh Mode:</span>
         @(Html.DevExtreme().SelectBox()
             .ID("refresh-mode")
+            .InputAttr("aria-label", "Refresh Mode")
             .DataSource(new[] { "full", "reshape", "repaint" })
             .Value("reshape")
             .OnValueChanged(@<text> function(e) {

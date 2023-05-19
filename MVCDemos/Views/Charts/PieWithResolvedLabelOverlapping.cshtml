@@ -50,6 +50,7 @@
                     ShiftLabelOverlap.None
                 })
                 .Value(ShiftLabelOverlap.Shift)
+                .InputAttr("aria-label", "Resolution Mode")
                 .OnValueChanged(@<text>
                     function (e) {
                         $("#pie-chart").dxPieChart("option", "resolveLabelOverlapping", e.value);

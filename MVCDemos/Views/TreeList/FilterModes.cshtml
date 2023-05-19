@@ -46,6 +46,7 @@
         <span>Filter Mode</span>
         @(Html.DevExtreme().SelectBox()
             .Value(TreeListFilterMode.MatchOnly)
+            .InputAttr("aria-label", "Filter Mode")
             .DataSource(new[] { "matchOnly", "withAncestors", "fullBranch" })
             .OnValueChanged(@<text>
                 function(data) {

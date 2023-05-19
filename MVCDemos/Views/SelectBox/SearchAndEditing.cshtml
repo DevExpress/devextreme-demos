@@ -9,6 +9,7 @@
                 <div class="dx-field-value">
                     @(Html.DevExtreme().SelectBox()
                         .ID("search-box")
+                        .InputAttr("aria-label", "Product")
                         .DataSource(d => d
                             .Mvc()
                             .LoadAction("GetItems")
@@ -31,6 +32,7 @@
                         @(Html.DevExtreme().SelectBox()
                             .DataSource(d => d.WebApi()
                                 .Controller("SelectBoxEditing")
+                                .InputAttr("aria-label", "Custom Product")
                                 .LoadMode(DataSourceLoadMode.Raw)
                                 .InsertAction(true)
                                 .Key("ID")
@@ -59,6 +61,7 @@
             <div>Search Mode</div>
             @(Html.DevExtreme().SelectBox()
                 .DataSource(new JS("searchModes"))
+                .InputAttr("aria-label", "Search Mode")
                 .Value(new JS("searchModes[0]"))
                 .OnValueChanged("searchMode_changed")
             )
@@ -68,6 +71,7 @@
             @(Html.DevExtreme().SelectBox()
                 .DataSource(new JS("searchExpressions"))
                 .DisplayExpr("name")
+                .InputAttr("aria-label", "Search Expression")
                 .ValueExpr("value")
                 .Value(new JS("searchExpressions[0].value"))
                 .OnValueChanged("searchExpr_changed")

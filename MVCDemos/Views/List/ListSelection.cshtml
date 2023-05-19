@@ -29,6 +29,7 @@
             <span>Selection Mode</span>
             @(Html.DevExtreme().SelectBox()
                 .Value(ListSelectionMode.All)
+                .InputAttr("aria-label", "Selection Mode")
                 .DataSource(Enum.GetValues(typeof(ListSelectionMode)))
                 .OnValueChanged(@<text>
                     function(data) {
@@ -43,6 +44,7 @@
             @(Html.DevExtreme().SelectBox()
                 .ID("selectAllMode")
                 .Disabled(false)
+                .InputAttr("aria-label", "Select All Mode")
                 .DataSource(Enum.GetValues(typeof(SelectAllMode)))
                 .Value(SelectAllMode.Page)
                 .OnValueChanged(@<text>

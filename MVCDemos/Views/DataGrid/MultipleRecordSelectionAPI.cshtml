@@ -33,6 +33,7 @@
                     w.SelectBox()
                         .DataSource(new[] { "All", "Dr.", "Mr.", "Mrs.", "Ms." })
                         .Placeholder("Select title")
+                        .InputAttr("aria-label", "Title")
                         .OnValueChanged("selectBox_valueChanged")
                         .OnInitialized("selectBox_onInitialized")
                 );

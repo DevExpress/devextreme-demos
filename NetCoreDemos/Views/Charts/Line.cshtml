@@ -51,6 +51,7 @@
                     SeriesType.FullStackedLine
                 })
                 .Value(SeriesType.Line)
+                .InputAttr("aria-label", "Series Type")
                 .OnValueChanged(@<text>
                     function (e) {
                         $("#line-chart").dxChart("option", "commonSeriesSettings.type", e.value);

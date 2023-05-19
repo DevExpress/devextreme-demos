@@ -39,6 +39,7 @@
                     SeriesType.FullStackedSplineArea
                 })
                 .Value(SeriesType.SplineArea)
+                .InputAttr("aria-label", "Series Type")
                 .OnValueChanged(@<text>
                     function(e) {
                         $("#spline-area-chart").dxChart("option", "commonSeriesSettings.type", e.value);

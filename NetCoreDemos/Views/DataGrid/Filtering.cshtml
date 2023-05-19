@@ -104,6 +104,7 @@
             .ID("applyFilterEditor")
             .DataSource(dataSource)
             .Value(dataSource[0].Key)
+            .InputAttr("aria-label", "Filter")
             .ValueExpr("Key")
             .DisplayExpr("Name")
             .OnValueChanged(@<text>

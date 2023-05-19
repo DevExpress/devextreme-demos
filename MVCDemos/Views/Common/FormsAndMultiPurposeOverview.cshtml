@@ -34,6 +34,7 @@
                         secondGroupItems.AddSimpleFor(m => m.Position)
                             .Editor(e => e
                                 .SelectBox()
+                                .InputAttr("aria-label", "Position")
                                 .DataSource(new[] {
                                         "HR Manager",
                                         "IT Manager",
@@ -51,6 +52,7 @@
                         secondGroupItems.AddSimpleFor(m => m.State)
                             .Editor(e => e
                                 .SelectBox()
+                                .InputAttr("aria-label", "State")
                                 .DataSource(new[] {
                                         "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
                                         "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",

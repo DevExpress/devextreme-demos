@@ -64,6 +64,7 @@
 
     @(Html.DevExtreme().SelectBox()
         .ID("selectbox")
+        .InputAttr("aria-label", "Month")
         .Width(150)
         .DataSource(Model)
         .Value(1)

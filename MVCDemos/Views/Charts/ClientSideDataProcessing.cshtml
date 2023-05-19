@@ -45,6 +45,7 @@
         .ID("choose-temperature")
         .DataSource(new[] { 2, 4, 6, 8, 9, 10, 11 })
         .Value(2)
+        .InputAttr("aria-label", "Temperature")
         .OnValueChanged(@<text>
             function(data) {
                 var source = $("#chart").dxChart("getDataSource");

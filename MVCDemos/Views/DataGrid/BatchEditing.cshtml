@@ -49,6 +49,7 @@
             <span>Start Edit Action</span>
             @(Html.DevExtreme().SelectBox()
                 .ID("start-edit-action")
+                .InputAttr("aria-label", "Action")
                 .DataSource(new[] { "click", "dblClick" })
                 .Value("click")
                 .OnValueChanged("onStartEditActionValueChanged")

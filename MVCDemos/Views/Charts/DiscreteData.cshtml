@@ -27,6 +27,7 @@
         <div>Series Type</div>&nbsp;
         @(Html.DevExtreme().SelectBox()
             .Width(200)
+            .InputAttr("aria-label", "Series Type")
             .DataSource(new[] { "scatter", "line", "area", "bar", "stackedbar" })
             .Value("scatter")
             .OnValueChanged(@<text>

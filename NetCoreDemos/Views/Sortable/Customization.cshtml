@@ -26,6 +26,7 @@
             @(Html.DevExtreme().SelectBox()
                 .DataSource(new string[] { "push", "indicate" })
                 .Value("push")
+                .InputAttr("aria-label", "Drop Feedback Mode")
                 .OnValueChanged("dropFeedbackMode_changed")
             )
         </div>
@@ -34,6 +35,7 @@
             @(Html.DevExtreme().SelectBox()
                 .DataSource(new string[] { "vertical", "horizontal" })
                 .Value("vertical")
+                .InputAttr("aria-label", "Orientation")
                 .OnValueChanged("itemOrientation_changed")
             )
         </div>
@@ -42,6 +44,7 @@
             @(Html.DevExtreme().SelectBox()
                 .ID("drag-direction")
                 .DataSource(new string[] { "both", "vertical" })
+                .InputAttr("aria-label", "Drag Direction")
                 .Value("both")
                 .OnValueChanged("dragDirection_changed")
             )
@@ -94,6 +97,7 @@
         });
         $("#drag-direction").dxSelectBox({
             value: "both",
+            inputAttr: { 'aria-label': 'Drag Direction' },
             items: ["both", data.value]
         });
     }
