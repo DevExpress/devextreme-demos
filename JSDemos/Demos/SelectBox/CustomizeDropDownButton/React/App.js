@@ -2,7 +2,9 @@ import React from 'react';
 import SelectBox from 'devextreme-react/select-box';
 
 import { Template } from 'devextreme-react/core/template';
-import { products, simpleProducts, simpleProductLabel, deferredProductLabel, productLabel } from './data.js';
+import {
+  products, simpleProducts, simpleProductLabel, deferredProductLabel, productLabel,
+} from './data.js';
 import ImageIcon from './imageIcon.js';
 import IndicatorIcon from './indicatorIcon.js';
 import ConditionalIcon from './conditionalIcon.js';
