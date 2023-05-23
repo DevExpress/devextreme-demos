@@ -1,0 +1,17 @@
+/* .demo-container {
+  width: 820px;
+  height: 482px;
+} */
+
+.dx-field {
+  padding: 8px;
+}
+
+.selected-days-wrapper {
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.multiline-label {
+  padding-top: 0;
+}
