@@ -2,7 +2,7 @@
   <div class="dx-field">
     <div class="dx-field-label multiline-label">
       <span>Range selection</span>
-      <div class="selected-days-wrapper ">
+      <div class="selected-days-wrapper">
         <span>Days selected: </span>
         <span>{{ selectedDays }}</span>
       </div>
@@ -18,10 +18,7 @@
   <div class="dx-field">
     <div class="dx-field-label">Custom format</div>
     <div class="dx-field-value">
-      <dx-date-range-box
-        [value]="initialValue"
-        displayFormat="EEEE, MMM dd"
-      >
+      <dx-date-range-box [value]="initialValue" displayFormat="EEEE, MMM dd">
       </dx-date-range-box>
     </div>
   </div>
@@ -46,21 +43,14 @@
   <div class="dx-field">
     <div class="dx-field-label">Access current month only</div>
     <div class="dx-field-value">
-      <dx-date-range-box
-        [min]="min"
-        [max]="max"
-      >
-      </dx-date-range-box>
+      <dx-date-range-box [min]="min" [max]="max"> </dx-date-range-box>
     </div>
   </div>
   <div class="dx-field">
     <div class="dx-field-label">Clear button</div>
     <div class="dx-field-value">
-      <dx-date-range-box
-        [showClearButton]="true"
-        [value]="initialValue"
-      >
-    </dx-date-range-box>
+      <dx-date-range-box [showClearButton]="true" [value]="initialValue">
+      </dx-date-range-box>
     </div>
   </div>
 </div>
