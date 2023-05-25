@@ -9,7 +9,7 @@
         </div>
         <div class="dx-field-value">
             @(Html.DevExtreme().DateRangeBox()
-                //.InputAttr("aria-label", "Default select")
+                .InputAttr("aria-label", "Default select")
                 .Value(new JS("initialValue"))
                 .OnValueChanged("showSelectedDays")
             )
@@ -21,7 +21,7 @@
             @(Html.DevExtreme().DateRangeBox()
                 .Value(new JS("initialValue"))
                 .DisplayFormat("EEEE, MMM dd")
-                //.InputAttr("aria-label", "Custom Format")
+                .InputAttr("aria-label", "Custom Format")
             )
         </div>
     </div>
@@ -29,7 +29,7 @@
         <div class="dx-field-label">Use buttons to apply value</div>
         <div class="dx-field-value">
             @(Html.DevExtreme().DateRangeBox()
-                //.InputAttr("aria-label", "Apply value")
+                .InputAttr("aria-label", "Apply value")
                 .ApplyValueMode(EditorApplyValueMode.UseButtons)
             )
         </div>
@@ -38,7 +38,7 @@
         <div class="dx-field-label">Single view</div>
         <div class="dx-field-value">
             @(Html.DevExtreme().DateRangeBox()
-                //.InputAttr("aria-label", "Single view")
+                .InputAttr("aria-label", "Single view")
                 .MultiView(false)
             )
         </div>
@@ -47,7 +47,7 @@
         <div class="dx-field-label">Open by icon click only</div>
         <div class="dx-field-value">
             @(Html.DevExtreme().DateRangeBox()
-                //.InputAttr("aria-label", "Open on icon click")
+                .InputAttr("aria-label", "Open on icon click")
                 .OpenOnFieldClick(false)
             )
         </div>
@@ -56,7 +56,7 @@
         <div class="dx-field-label">Access current month only</div>
         <div class="dx-field-value">
             @(Html.DevExtreme().DateRangeBox()
-                //.InputAttr("aria-label", "Current month only")
+                .InputAttr("aria-label", "Current month only")
                 .Min(new JS("minValue"))
                 .Max(new JS("maxValue"))
             )
@@ -66,7 +66,7 @@
         <div class="dx-field-label">Clear button</div>
         <div class="dx-field-value">
             @(Html.DevExtreme().DateRangeBox()
-                //.InputAttr("aria-label", "Clear Date")
+                .InputAttr("aria-label", "Clear Date")
                 .ShowClearButton(true)
                 .Value(new JS("initialValue"))
             )
