@@ -22,7 +22,7 @@
           <DxDateRangeBox
             :value="initialValue"
             display-format="EEEE, MMM dd"
-            :input-attr="{ 'aria-label': 'Custom Date' }"
+            :input-attr="{ 'aria-label': 'Custom format' }"
           />
         </div>
       </div>

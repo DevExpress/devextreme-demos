@@ -13,7 +13,7 @@ $(() => {
   $('#custom-format').dxDateRangeBox({
     value: initialValue,
     displayFormat: 'EEEE, MMM dd',
-    inputAttr: { 'aria-label': 'Custom Date' },
+    inputAttr: { 'aria-label': 'Custom format' },
   });
 
   $('#apply-value').dxDateRangeBox({
