@@ -10,7 +10,10 @@
           </div>
         </div>
         <div class="dx-field-value">
-          <DxDateRangeBox v-model:value="currentValue" />
+          <DxDateRangeBox
+            v-model:value="currentValue"
+            :input-attr="{ 'aria-label': 'Default range' }"
+          />
         </div>
       </div>
       <div class="dx-field">
@@ -19,25 +22,35 @@
           <DxDateRangeBox
             :value="initialValue"
             display-format="EEEE, MMM dd"
+            :input-attr="{ 'aria-label': 'Custom Date' }"
           />
         </div>
       </div>
       <div class="dx-field">
-        <div class="dx-field-label">Apply value mode: Use buttons</div>
+        <div class="dx-field-label">Use buttons to apply value</div>
         <div class="dx-field-value">
-          <DxDateRangeBox apply-value-mode="useButtons"/>
+          <DxDateRangeBox
+            apply-value-mode="useButtons"
+            :input-attr="{ 'aria-label': 'Apply value' }"
+          />
         </div>
       </div>
       <div class="dx-field">
-        <div class="dx-field-label">One view</div>
+        <div class="dx-field-label">Single view</div>
         <div class="dx-field-value">
-          <DxDateRangeBox :multi-view="false"/>
+          <DxDateRangeBox
+            :multi-view="false"
+            :input-attr="{ 'aria-label': 'Single view' }"
+          />
         </div>
       </div>
       <div class="dx-field">
         <div class="dx-field-label">Open by icon click only</div>
         <div class="dx-field-value">
-          <DxDateRangeBox :open-on-field-click="false" />
+          <DxDateRangeBox
+            :open-on-field-click="false"
+            :input-attr="{ 'aria-label': 'Open on icon click' }"
+          />
         </div>
       </div>
       <div class="dx-field">
@@ -45,7 +58,8 @@
         <div class="dx-field-value">
           <DxDateRangeBox
             :min="min"
-            :max="max" 
+            :max="max"
+            :input-attr="{ 'aria-label': 'Current month only' }"
           />
         </div>
       </div>
@@ -55,6 +69,7 @@
           <DxDateRangeBox
             :show-clear-button="true"
             :value="initialValue"
+            :input-attr="{ 'aria-label': 'Clear Date' }"
           />
         </div>
       </div>
@@ -78,7 +93,7 @@ export default {
       currentValue: initialValue,
       initialValue,
       min: new Date(now.setDate(1)),
-      max: new Date(now.setDate(lastDay))
+      max: new Date(now.setDate(lastDay)),
     };
   },
   computed: {
@@ -96,7 +111,7 @@ export default {
       const diffInDay = Math.floor(Math.abs((value[1] - value[0]) / (24 * 60 * 60 * 1000)));
       return diffInDay + 1;
     },
-  }
+  },
 };
 </script>
 <style scoped>

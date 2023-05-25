@@ -11,6 +11,7 @@
       <dx-date-range-box
         [(value)]="currentValue"
         (onValueChanged)="currentValueChanged($event)"
+        [inputAttr]="{ 'aria-label': 'Default range' }"
       >
       </dx-date-range-box>
     </div>
@@ -18,38 +19,63 @@
   <div class="dx-field">
     <div class="dx-field-label">Custom format</div>
     <div class="dx-field-value">
-      <dx-date-range-box [value]="initialValue" displayFormat="EEEE, MMM dd">
+      <dx-date-range-box
+        [value]="initialValue"
+        displayFormat="EEEE, MMM dd"
+        [inputAttr]="{ 'aria-label': 'Custom Date' }"
+      >
       </dx-date-range-box>
     </div>
   </div>
   <div class="dx-field">
-    <div class="dx-field-label">Apply value mode: Use buttons</div>
+    <div class="dx-field-label">Use buttons to apply value</div>
     <div class="dx-field-value">
-      <dx-date-range-box applyValueMode="useButtons"></dx-date-range-box>
+      <dx-date-range-box
+        applyValueMode="useButtons"
+        [inputAttr]="{ 'aria-label': 'Apply value' }"
+      >
+      </dx-date-range-box>
     </div>
   </div>
   <div class="dx-field">
-    <div class="dx-field-label">One view</div>
+    <div class="dx-field-label">Single view</div>
     <div class="dx-field-value">
-      <dx-date-range-box [multiView]="false"></dx-date-range-box>
+      <dx-date-range-box
+        [multiView]="false"
+        [inputAttr]="{ 'aria-label': 'Single view' }"
+        >
+      </dx-date-range-box>
     </div>
   </div>
   <div class="dx-field">
     <div class="dx-field-label">Open by icon click only</div>
     <div class="dx-field-value">
-      <dx-date-range-box [openOnFieldClick]="false"></dx-date-range-box>
+      <dx-date-range-box
+        [openOnFieldClick]="false"
+        [inputAttr]="{ 'aria-label': 'Open on icon click' }"
+      >
+      </dx-date-range-box>
     </div>
   </div>
   <div class="dx-field">
     <div class="dx-field-label">Access current month only</div>
     <div class="dx-field-value">
-      <dx-date-range-box [min]="min" [max]="max"> </dx-date-range-box>
+      <dx-date-range-box
+        [min]="min"
+        [max]="max"
+        [inputAttr]="{ 'aria-label': 'Current month only' }"
+      >
+      </dx-date-range-box>
     </div>
   </div>
   <div class="dx-field">
     <div class="dx-field-label">Clear button</div>
     <div class="dx-field-value">
-      <dx-date-range-box [showClearButton]="true" [value]="initialValue">
+      <dx-date-range-box
+        [showClearButton]="true"
+        [value]="initialValue"
+        [inputAttr]="{ 'aria-label': 'Clear Date' }"
+      >
       </dx-date-range-box>
     </div>
   </div>

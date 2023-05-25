@@ -6,7 +6,7 @@ $(() => {
 
   $('#range-selection').dxDateRangeBox({
     value: initialValue,
-    inputAttr: { 'aria-label': 'Select Days' },
+    inputAttr: { 'aria-label': 'Default select' },
     onValueChanged: showSelectedDays,
   });
 
@@ -22,7 +22,7 @@ $(() => {
   });
 
   $('#single-view').dxDateRangeBox({
-    inputAttr: { 'aria-label': 'One view' },
+    inputAttr: { 'aria-label': 'Single view' },
     multiView: false,
   });
 
