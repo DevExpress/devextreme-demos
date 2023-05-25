@@ -1,0 +1,99 @@
+﻿<div class="dx-fieldset">
+    <div class="dx-field">
+        <div class="dx-field-label multiline-label">
+            <span>Range selection</span>
+            <div class="selected-days-wrapper">
+                <span>Days selected: </span>
+                <span id="days-selected"></span>
+            </div>
+        </div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateRangeBox()
+                //.InputAttr("aria-label", "Default select")
+                .Value(new JS("initialValue"))
+                .OnValueChanged("showSelectedDays")
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Custom format</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateRangeBox()
+                .Value(new JS("initialValue"))
+                .DisplayFormat("EEEE, MMM dd")
+                //.InputAttr("aria-label", "Custom Format")
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Use buttons to apply value</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateRangeBox()
+                //.InputAttr("aria-label", "Apply value")
+                .ApplyValueMode(EditorApplyValueMode.UseButtons)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Single view</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateRangeBox()
+                //.InputAttr("aria-label", "Single view")
+                .MultiView(false)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Open by icon click only</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateRangeBox()
+                //.InputAttr("aria-label", "Open on icon click")
+                .OpenOnFieldClick(false)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Access current month only</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateRangeBox()
+                //.InputAttr("aria-label", "Current month only")
+                .Min(new JS("minValue"))
+                .Max(new JS("maxValue"))
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Clear button</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateRangeBox()
+                //.InputAttr("aria-label", "Clear Date")
+                .ShowClearButton(true)
+                .Value(new JS("initialValue"))
+            )
+        </div>
+    </div>
+</div>
+<script>
+    var msInDay = 1000 * 60 * 60 * 24;
+    var now = new Date();
+    var initialValue = [new Date(now.getTime() - msInDay * 3), new Date(now.getTime() + msInDay * 3)];
+    var lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+
+    var minValue = new Date(now.setDate(1));
+    var maxValue = new Date(now.setDate(lastDay));
+
+    function showSelectedDays({ value: [startDate, endDate] }) {
+        if (!startDate || !endDate) {
+            $('#days-selected').text(0);
+            return;
+        }
+
+        var daysCount = (endDate - startDate) / (24 * 60 * 60 * 1000);
+        $('#days-selected').text(daysCount + 1);
+    }
+
+    $(function() {
+        showSelectedDays({ value: initialValue });
+    });
+
+</script>
