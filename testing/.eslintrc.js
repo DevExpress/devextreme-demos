@@ -1,3 +1,7 @@
+const spellcheckRule = require('eslint-config-devextreme/spell-check').rules['spellcheck/spell-checker'];
+
+spellcheckRule[1].skipWords.push('axe');
+
 module.exports = {
   extends: [
     'devextreme/spell-check',
@@ -17,5 +21,6 @@ module.exports = {
       'error',
       2,
     ],
+    'spellcheck/spell-checker': spellcheckRule,
   },
 };

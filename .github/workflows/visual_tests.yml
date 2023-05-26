@@ -101,10 +101,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        STRATEGY: [screenshots, accessibility]
         CONSTEL: [jquery(1/4), jquery(2/4), jquery(3/4), jquery(4/4)]
 
     runs-on: ubuntu-latest
-    name: ${{ matrix.CONSTEL }}
+    name: ${{ matrix.CONSTEL }}-${{ matrix.STRATEGY }}
     timeout-minutes: 20
 
     steps:
@@ -116,7 +117,6 @@ jobs:
 
     - name: Get sources
       uses: actions/checkout@v3
-
 
     - name: Delete DX packages
       run:  sed -i '/23.1-next/d' ./package.json
@@ -149,6 +149,7 @@ jobs:
 
     - name: Run TestCafe tests
       env:
+        STRATEGY: ${{ matrix.STRATEGY }}
         CHANGEDFILEINFOSPATH: ${{ github.workspace }}/changed-files.json
         BROWSERS: chrome:headless --disable-partial-raster --disable-skia-runtime-opts --run-all-compositor-stages-before-draw --disable-new-content-rendering-timeout --disable-threaded-animation --disable-threaded-scrolling --disable-checker-imaging --disable-image-animation-resync --use-gl="swiftshader" --disable-features=PaintHolding --js-flags=--random-seed=2147483647 --font-render-hinting=none --disable-font-subpixel-positioning
         #DEBUG: hammerhead:*,testcafe:*
@@ -162,9 +163,17 @@ jobs:
       run: npm run test-testcafe
 
     - name: Copy screenshots artifacts
-      if: ${{ failure() }}
+      if: failure() && matrix.STRATEGY == 'screenshots'
       uses: actions/upload-artifact@v3
       with:
         name: screenshots
         path: ${{ github.workspace }}/testing/artifacts/compared-screenshots/*
+        if-no-files-found: ignore
+
+    - name: Copy accessibility report
+      if: failure() && matrix.STRATEGY == 'accessibility'
+      uses: actions/upload-artifact@v3
+      with:
+        name: accessibility-reports
+        path: ${{ github.workspace }}/testing/artifacts/axe-reports/*
         if-no-files-found: ignore

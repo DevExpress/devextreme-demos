@@ -62,8 +62,10 @@
     "devDependencies": {
         "@babel/core": "7.20.12",
         "@babel/preset-env": "7.20.2",
+        "@testcafe-community/axe": "3.5.0",
         "@typescript-eslint/eslint-plugin": "4.33.0",
         "@typescript-eslint/parser": "4.33.0",
+        "axe-core": "4.6.3",
         "babel-eslint": "10.1.0",
         "babel-jest": "27.5.1",
         "cookie-parser": "1.4.6",
@@ -128,6 +130,7 @@
         "lint": "npm-run-all -p -c lint-js lint-mvc lint-netcore lint-css lint-html",
         "webserver": "http-server --port 8080 -c-1",
         "test-testcafe": "node utils/visual-tests/testcafe-runner.mjs",
+        "test-testcafe:accessibility": "cross-env STRATEGY=accessibility CONSTEL=jquery node utils/visual-tests/testcafe-runner.mjs",
         "fix-lint": "prettier --write . && eslint --fix . && stylelint **/*.{css,vue} --fix",
         "build": "node utils/bundle/index.js",
         "build-angular": "npm run build -- angular",

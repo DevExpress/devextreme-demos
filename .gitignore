@@ -9,6 +9,7 @@ NuGet
 .vscode
 .idea
 .vs
+.idea
 *.orig
 *.rej
 *.ldf
