@@ -7,13 +7,6 @@ const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
 const initialValue = [new Date(now.getTime() - msInDay * 3), new Date(now.getTime() + msInDay * 3)];
 const min = new Date(now.setDate(1));
 const max = new Date(now.setDate(lastDay));
-const selectionLabel = { 'aria-label': 'Default range' };
-const customFormatLabel = { 'aria-label': 'Custom format' };
-const applyValueLabel = { 'aria-label': 'Apply value' };
-const singleViewLabel = { 'aria-label': 'Single view' };
-const iconClickLabel = { 'aria-label': 'Open on icon click' };
-const currentMonthLabel = { 'aria-label': 'Current month only' };
-const clearButtonLabel = { 'aria-label': 'Clear Date' };
 
 function convertRangeToDays(value) {
   const diffInDay = Math.floor(Math.abs((value[1] - value[0]) / msInDay));
@@ -46,7 +39,6 @@ export default function App() {
         </div>
         <div className="dx-field-value">
           <DateRangeBox
-            inputAttr={selectionLabel}
             defaultValue={initialValue}
             onValueChanged={onCurrentValueChange}
           />
@@ -56,7 +48,6 @@ export default function App() {
         <div className="dx-field-label">Custom format</div>
         <div className="dx-field-value">
           <DateRangeBox
-            inputAttr={customFormatLabel}
             defaultValue={initialValue}
             displayFormat="EEEE, MMM dd"
           />
@@ -65,19 +56,19 @@ export default function App() {
       <div className="dx-field">
         <div className="dx-field-label">Use buttons to apply selection</div>
         <div className="dx-field-value">
-          <DateRangeBox inputAttr={applyValueLabel} applyValueMode="useButtons" />
+          <DateRangeBox applyValueMode="useButtons" />
         </div>
       </div>
       <div className="dx-field">
         <div className="dx-field-label">Single-calendar View</div>
         <div className="dx-field-value">
-          <DateRangeBox inputAttr={singleViewLabel} multiView={false} />
+          <DateRangeBox multiView={false} />
         </div>
       </div>
       <div className="dx-field">
         <div className="dx-field-label">Calendar only appears on icon click</div>
         <div className="dx-field-value">
-          <DateRangeBox inputAttr={iconClickLabel} openOnFieldClick={false} />
+          <DateRangeBox openOnFieldClick={false} />
         </div>
       </div>
       <div className="dx-field">
@@ -86,7 +77,6 @@ export default function App() {
           <DateRangeBox
             min={min}
             max={max}
-            inputAttr={currentMonthLabel}
           />
         </div>
       </div>
@@ -96,7 +86,6 @@ export default function App() {
           <DateRangeBox
             defaultValue={initialValue}
             showClearButton
-            inputAttr={clearButtonLabel}
           />
         </div>
       </div>

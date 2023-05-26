@@ -12,7 +12,6 @@
         <div class="dx-field-value">
           <DxDateRangeBox
             v-model:value="currentValue"
-            :input-attr="{ 'aria-label': 'Default range' }"
           />
         </div>
       </div>
@@ -22,7 +21,6 @@
           <DxDateRangeBox
             :value="initialValue"
             display-format="EEEE, MMM dd"
-            :input-attr="{ 'aria-label': 'Custom format' }"
           />
         </div>
       </div>
@@ -31,7 +29,6 @@
         <div class="dx-field-value">
           <DxDateRangeBox
             apply-value-mode="useButtons"
-            :input-attr="{ 'aria-label': 'Apply value' }"
           />
         </div>
       </div>
@@ -40,7 +37,6 @@
         <div class="dx-field-value">
           <DxDateRangeBox
             :multi-view="false"
-            :input-attr="{ 'aria-label': 'Single view' }"
           />
         </div>
       </div>
@@ -49,7 +45,6 @@
         <div class="dx-field-value">
           <DxDateRangeBox
             :open-on-field-click="false"
-            :input-attr="{ 'aria-label': 'Open on icon click' }"
           />
         </div>
       </div>
@@ -59,7 +54,6 @@
           <DxDateRangeBox
             :min="min"
             :max="max"
-            :input-attr="{ 'aria-label': 'Current month only' }"
           />
         </div>
       </div>
@@ -69,7 +63,6 @@
           <DxDateRangeBox
             :show-clear-button="true"
             :value="initialValue"
-            :input-attr="{ 'aria-label': 'Clear Date' }"
           />
         </div>
       </div>

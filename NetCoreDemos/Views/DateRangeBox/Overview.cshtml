@@ -9,7 +9,6 @@
         </div>
         <div class="dx-field-value">
             @(Html.DevExtreme().DateRangeBox()
-                .InputAttr("aria-label", "Default select")
                 .Value(new JS("initialValue"))
                 .OnValueChanged("showSelectedDays")
             )
@@ -21,7 +20,6 @@
             @(Html.DevExtreme().DateRangeBox()
                 .Value(new JS("initialValue"))
                 .DisplayFormat("EEEE, MMM dd")
-                .InputAttr("aria-label", "Custom Format")
             )
         </div>
     </div>
@@ -29,7 +27,6 @@
         <div class="dx-field-label">Use buttons to apply selection</div>
         <div class="dx-field-value">
             @(Html.DevExtreme().DateRangeBox()
-                .InputAttr("aria-label", "Apply value")
                 .ApplyValueMode(EditorApplyValueMode.UseButtons)
             )
         </div>
@@ -38,7 +35,6 @@
         <div class="dx-field-label">Single-calendar View</div>
         <div class="dx-field-value">
             @(Html.DevExtreme().DateRangeBox()
-                .InputAttr("aria-label", "Single view")
                 .MultiView(false)
             )
         </div>
@@ -47,7 +43,6 @@
         <div class="dx-field-label">Calendar only appears on icon click</div>
         <div class="dx-field-value">
             @(Html.DevExtreme().DateRangeBox()
-                .InputAttr("aria-label", "Open on icon click")
                 .OpenOnFieldClick(false)
             )
         </div>
@@ -56,7 +51,6 @@
         <div class="dx-field-label">Limit available dates (this month)</div>
         <div class="dx-field-value">
             @(Html.DevExtreme().DateRangeBox()
-                .InputAttr("aria-label", "Current month only")
                 .Min(new JS("minValue"))
                 .Max(new JS("maxValue"))
             )
@@ -66,7 +60,6 @@
         <div class="dx-field-label">Clear button</div>
         <div class="dx-field-value">
             @(Html.DevExtreme().DateRangeBox()
-                .InputAttr("aria-label", "Clear Date")
                 .ShowClearButton(true)
                 .Value(new JS("initialValue"))
             )
