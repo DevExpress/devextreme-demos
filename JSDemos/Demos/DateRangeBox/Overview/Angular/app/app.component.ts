@@ -9,10 +9,13 @@ if (!/localhost/.test(document.location.host)) {
 
 const msInDay = 1000 * 60 * 60 * 24;
 const now = new Date();
-const initialValue: [Date, Date] = [new Date(now.getTime() - msInDay * 3), new Date(now.getTime() + msInDay * 3)];
+const initialValue: [Date, Date] = [
+  new Date(now.getTime() - msInDay * 3),
+  new Date(now.getTime() + msInDay * 3),
+];
 
-function convertRangeToDays(value) {
-  const diffInDay = Math.floor(Math.abs((value[1] - value[0]) / msInDay));
+function convertRangeToDays([startDate, endDate]) {
+  const diffInDay = Math.floor(Math.abs((endDate - startDate) / msInDay));
 
   return diffInDay + 1;
 }
@@ -41,11 +44,11 @@ export class AppComponent {
     this.max = new Date(now.setDate(lastDay));
   }
 
-  currentValueChanged({ value }) {
+  currentValueChanged({ value: [startDate, endDate] }) {
     let daysCount = 0;
 
-    if (value[0] && value[1]) {
-      daysCount = convertRangeToDays(value);
+    if (startDate && endDate) {
+      daysCount = convertRangeToDays([startDate, endDate]);
     }
 
     this.selectedDays = daysCount;

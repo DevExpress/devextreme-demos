@@ -1,8 +1,10 @@
 $(() => {
   const msInDay = 1000 * 60 * 60 * 24;
   const now = new Date();
-  const initialValue = [new Date(now.getTime() - msInDay * 3),
-    new Date(now.getTime() + msInDay * 3)];
+  const initialValue = [
+    new Date(now.getTime() - msInDay * 3),
+    new Date(now.getTime() + msInDay * 3),
+  ];
 
   $('#range-selection').dxDateRangeBox({
     value: initialValue,
