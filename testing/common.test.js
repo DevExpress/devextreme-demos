@@ -3,12 +3,14 @@ import { ClientFunction } from 'testcafe';
 import { join } from 'path';
 import { existsSync, readFileSync } from 'fs';
 import { compareScreenshot } from 'devextreme-screenshot-comparer';
+import { axeCheck, createReport } from '@testcafe-community/axe';
 import {
   getPortByIndex,
   runTestAtPage,
   shouldRunFramework,
   shouldRunTestAtIndex,
 } from '../utils/visual-tests/matrix-test-helper';
+import { createMdReport } from '../utils/axe-reporter/reporter';
 
 const globalReadFrom = (basePath, relativePath, mapCallback) => {
   const absolute = join(basePath, relativePath);
@@ -63,6 +65,7 @@ const execTestCafeCode = (t, code) => {
     .afterEach((t) => clearTimeout(t.ctx.watchDogHandle))
     .clientScripts([
       { module: 'mockdate' },
+      { module: 'axe-core/axe.min.js' },
       join(__dirname, '../utils/visual-tests/inject/test-utils.js'),
       { content: injectStyle(globalReadFrom(__dirname, '../utils/visual-tests/inject/test-styles.css')) },
       {
@@ -77,7 +80,7 @@ const execTestCafeCode = (t, code) => {
     .map((path) => join(path, platform));
 
   getDemoPaths(approach).forEach((demoPath, index) => {
-    if (!shouldRunTestAtIndex(index) || !existsSync(demoPath)) { return; }
+    if (!shouldRunTestAtIndex(index + 1) || !existsSync(demoPath)) { return; }
 
     // eslint-disable-next-line max-len
     const readFrom = (relativePath, mapCallback) => globalReadFrom(demoPath, relativePath, mapCallback);
@@ -126,12 +129,23 @@ const execTestCafeCode = (t, code) => {
           await execTestCafeCode(t, testCafeCodeSource);
         }
 
-        const comparisonResult = await compareScreenshot(t, `${testName}.png`, undefined, comparisonOptions);
-        if (!comparisonResult) {
-          // eslint-disable-next-line no-console
-          console.log(await t.getBrowserConsoleMessages());
+        if (process.env.STRATEGY === 'accessibility') {
+          const { error, results } = await axeCheck(t, '.demo-container');
+
+          if (results.violations.length > 0) {
+            createMdReport({ testName, results });
+          }
+
+          await t.expect(error).notOk();
+          await t.expect(results.violations.length === 0).ok(createReport(results.violations));
+        } else {
+          const comparisonResult = await compareScreenshot(t, `${testName}.png`, undefined, comparisonOptions);
+          if (!comparisonResult) {
+            // eslint-disable-next-line no-console
+            console.log(await t.getBrowserConsoleMessages());
+          }
+          await t.expect(comparisonResult).ok('INVALID_SCREENSHOT');
         }
-        await t.expect(comparisonResult).ok('INVALID_SCREENSHOT');
       });
   });
 });

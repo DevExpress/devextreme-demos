@@ -43,6 +43,7 @@ module.exports = {
         'attrs',
         'aug',
         'autocomplete',
+        'axe',
         'backorder',
         'backordered', // DevAV NetCore
         'bing',
