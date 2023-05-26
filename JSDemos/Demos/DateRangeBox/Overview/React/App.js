@@ -16,7 +16,7 @@ const currentMonthLabel = { 'aria-label': 'Current month only' };
 const clearButtonLabel = { 'aria-label': 'Clear Date' };
 
 function convertRangeToDays(value) {
-  const diffInDay = Math.floor(Math.abs((value[1] - value[0]) / (24 * 60 * 60 * 1000)));
+  const diffInDay = Math.floor(Math.abs((value[1] - value[0]) / msInDay));
 
   return diffInDay + 1;
 }
@@ -38,7 +38,7 @@ export default function App() {
     <div className="dx-fieldset">
       <div className="dx-field">
         <div className="dx-field-label multiline-label">
-          <span>Range selection</span>
+          <span>Default functionality</span>
           <div className="selected-days-wrapper ">
             <span>Days selected: </span>
             <span>{ selectedDays }</span>
@@ -63,25 +63,25 @@ export default function App() {
         </div>
       </div>
       <div className="dx-field">
-        <div className="dx-field-label">Use buttons to apply value</div>
+        <div className="dx-field-label">Use buttons to apply selection</div>
         <div className="dx-field-value">
           <DateRangeBox inputAttr={applyValueLabel} applyValueMode="useButtons" />
         </div>
       </div>
       <div className="dx-field">
-        <div className="dx-field-label">Single view</div>
+        <div className="dx-field-label">Single-calendar View</div>
         <div className="dx-field-value">
           <DateRangeBox inputAttr={singleViewLabel} multiView={false} />
         </div>
       </div>
       <div className="dx-field">
-        <div className="dx-field-label">Open by icon click only</div>
+        <div className="dx-field-label">Calendar only appears on icon click</div>
         <div className="dx-field-value">
           <DateRangeBox inputAttr={iconClickLabel} openOnFieldClick={false} />
         </div>
       </div>
       <div className="dx-field">
-        <div className="dx-field-label">Access current month only</div>
+        <div className="dx-field-label">Limit available dates (this month)</div>
         <div className="dx-field-value">
           <DateRangeBox
             min={min}

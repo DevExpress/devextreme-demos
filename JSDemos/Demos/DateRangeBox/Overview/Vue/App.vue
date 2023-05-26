@@ -3,7 +3,7 @@
     <div class="dx-fieldset">
       <div class="dx-field">
         <div class="dx-field-label multiline-label">
-          <span>Range selection</span>
+          <span>Default functionality</span>
           <div class="selected-days-wrapper ">
             <span>Days selected: </span>
             <span>{{ selectedDays }}</span>
@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="dx-field">
-        <div class="dx-field-label">Use buttons to apply value</div>
+        <div class="dx-field-label">Use buttons to apply selection</div>
         <div class="dx-field-value">
           <DxDateRangeBox
             apply-value-mode="useButtons"
@@ -36,7 +36,7 @@
         </div>
       </div>
       <div class="dx-field">
-        <div class="dx-field-label">Single view</div>
+        <div class="dx-field-label">Single-calendar View</div>
         <div class="dx-field-value">
           <DxDateRangeBox
             :multi-view="false"
@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="dx-field">
-        <div class="dx-field-label">Open by icon click only</div>
+        <div class="dx-field-label">Calendar only appears on icon click</div>
         <div class="dx-field-value">
           <DxDateRangeBox
             :open-on-field-click="false"
@@ -54,7 +54,7 @@
         </div>
       </div>
       <div class="dx-field">
-        <div class="dx-field-label">Access current month only</div>
+        <div class="dx-field-label">Limit available dates (this month)</div>
         <div class="dx-field-value">
           <DxDateRangeBox
             :min="min"
@@ -108,7 +108,7 @@ export default {
       let daysCount = 0;
 
       if (value[0] && value[1]) {
-        daysCount = Math.floor(Math.abs((value[1] - value[0]) / (24 * 60 * 60 * 1000))) + 1;
+        daysCount = Math.floor(Math.abs((value[1] - value[0]) / msInDay)) + 1;
       }
       return daysCount;
     },

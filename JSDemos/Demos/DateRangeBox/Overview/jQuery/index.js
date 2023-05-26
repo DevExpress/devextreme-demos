@@ -55,7 +55,7 @@ $(() => {
     let daysCount = 0;
 
     if (startDate && endDate) {
-      daysCount = (endDate - startDate) / (24 * 60 * 60 * 1000) + 1;
+      daysCount = (endDate - startDate) / msInDay + 1;
     }
 
     $('#days-selected').text(daysCount);

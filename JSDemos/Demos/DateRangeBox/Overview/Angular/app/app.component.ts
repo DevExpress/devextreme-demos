@@ -12,7 +12,7 @@ const now = new Date();
 const initialValue: [Date, Date] = [new Date(now.getTime() - msInDay * 3), new Date(now.getTime() + msInDay * 3)];
 
 function convertRangeToDays(value) {
-  const diffInDay = Math.floor(Math.abs((value[1] - value[0]) / (24 * 60 * 60 * 1000)));
+  const diffInDay = Math.floor(Math.abs((value[1] - value[0]) / msInDay));
 
   return diffInDay + 1;
 }
