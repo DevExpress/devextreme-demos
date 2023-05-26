@@ -25,13 +25,12 @@ export default function App() {
   const [selectedDays, setSelectedDays] = React.useState(convertRangeToDays(initialValue));
 
   const onCurrentValueChange = React.useCallback(({ value }) => {
-    let daysCount;
+    let daysCount = 0;
 
-    if (!value[0] || !value[1]) {
-      daysCount = 0;
-    } else {
+    if (value[0] && value[1]) {
       daysCount = convertRangeToDays(value);
     }
+
     setSelectedDays(daysCount);
   }, [setSelectedDays]);
 

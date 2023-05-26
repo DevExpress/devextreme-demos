@@ -105,11 +105,12 @@ export default {
   },
   methods: {
     convertRangeToDays(value) {
-      if (!value[0] || !value[1]) {
-        return 0;
+      let daysCount = 0;
+
+      if (value[0] && value[1]) {
+        daysCount = Math.floor(Math.abs((value[1] - value[0]) / (24 * 60 * 60 * 1000))) + 1;
       }
-      const diffInDay = Math.floor(Math.abs((value[1] - value[0]) / (24 * 60 * 60 * 1000)));
-      return diffInDay + 1;
+      return daysCount;
     },
   },
 };

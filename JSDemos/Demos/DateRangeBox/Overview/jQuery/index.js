@@ -52,13 +52,13 @@ $(() => {
   }
 
   function showSelectedDays({ value: [startDate, endDate] }) {
-    if (!startDate || !endDate) {
-      $('#days-selected').text(0);
-      return;
+    let daysCount = 0;
+
+    if (startDate && endDate) {
+      daysCount = (endDate - startDate) / (24 * 60 * 60 * 1000) + 1;
     }
 
-    const daysCount = (endDate - startDate) / (24 * 60 * 60 * 1000);
-    $('#days-selected').text(daysCount + 1);
+    $('#days-selected').text(daysCount);
   }
 
   showSelectedDays({ value: initialValue });
