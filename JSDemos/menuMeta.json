@@ -4423,12 +4423,25 @@
       {
         "Name": "Date Range Box",
         "Equivalents": "",
-        "Demos": [{
+        "Demos": [
+          {
             "Title": "Overview",
             "Name": "Overview",
             "Widget": "DateRangeBox",
             "Badge": "New"
-        }]
+          },
+          {
+            "Title": "Formatting",
+            "Name": "Formatting",
+            "DocUrl": "",
+            "Widget": "DateRangeBox",
+            "MvcDescription": "",
+            "NetCoreDescription": "",
+            "MvcAdditionalFiles": [],
+            "DemoType": "Web",
+            "Badge": "New"
+          }
+        ]
       }
     ]
   },
