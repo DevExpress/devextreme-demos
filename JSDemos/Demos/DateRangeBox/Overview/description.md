@@ -18,5 +18,4 @@ Allows allows you to pick the start or end dates in a single or multiple calenda
 - [applyValueMode](/Documentation/ApiReference/UI_Components/dxDateBox/Configuration/#applyValueMode)     
 Defines whether the selected value applies instantly or after a user clicks the **Apply** button.
 
-
 To get started with the DevExtreme DateRangeBox component, refer to the [Getting Started with DateRangeBox](/Documentation/Guide/UI_Components/DateRangeBox/Getting_Started_with_DateRangeBox/) tutorial for step-by-step instructions.
