@@ -38,7 +38,7 @@
         "html-react-parser": "1.4.14",
         "jquery": "3.7.0",
         "jspdf": "2.5.1",
-        "jspdf-autotable": "3.5.28",
+        "jspdf-autotable": "3.5.29",
         "knockout": "3.5.1",
         "plugin-typescript": "8.0.0",
         "preact": "10.13.2",
