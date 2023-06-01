@@ -31,8 +31,8 @@ export default function App() {
           <div className="dx-field-value">
             <DateRangeBox
               displayFormat="shortdate"
-              startDate={startDate}
-              endDate={endDate}
+              defaultStartDate={startDate}
+              defaultEndDate={endDate}
               {...commonSettings}
             />
           </div>
@@ -42,8 +42,8 @@ export default function App() {
           <div className="dx-field-value">
             <DateRangeBox
               displayFormat="EEEE, d of MMM, yyyy"
-              startDate={startDate}
-              endDate={endDate}
+              defaultStartDate={startDate}
+              defaultEndDate={endDate}
               {...commonSettings}
             />
           </div>
@@ -53,8 +53,8 @@ export default function App() {
           <div className="dx-field-value">
             <DateRangeBox
               displayFormat="'Year': yyyy, 'Month': MMM, 'Day': d"
-              startDate={startDate}
-              endDate={endDate}
+              defaultStartDate={startDate}
+              defaultEndDate={endDate}
               {...commonSettings}
             />
           </div>
