@@ -1,7 +1,7 @@
-The [DateRangeBox](/Documentation/ApiReference/UI_Components/dxDateRangeBox/) component allows users to enter or pick dates in a specified range. This demo illustrates the following DateRangeBox properties:
+The [DateRangeBox](/Documentation/ApiReference/UI_Components/dxDateRangeBox/) component allows users to select a date range. The component includes input boxes for start/end dates and a date-picker dropdown. This demo shows how you can use the following DateRangeBox settings:
 
 - [value](/Documentation/ApiReference/UI_Components/dxDateRangeBox/Configuration/#value)     
-An array where you can specify the selected range (start and end dates). The DateRangeBox allows you to define the start and end dates separately. For this purpose, use the [startDate](/Documentation/ApiReference/UI_Components/dxDateRangeBox/Configuration/#startDate) and [endDate](/Documentation/ApiReference/UI_Components/dxDateRangeBox/Configuration/#endDate) properties.
+An array where you can specify the selected range (start and end dates). The DateRangeBox also allows you to define the start and end dates separately. For this purpose, use the [startDate](/Documentation/ApiReference/UI_Components/dxDateRangeBox/Configuration/#startDate) and [endDate](/Documentation/ApiReference/UI_Components/dxDateRangeBox/Configuration/#endDate) properties instead.
 
 - [displayFormat](/Documentation/ApiReference/UI_Components/dxDateRangeBox/Configuration/#displayFormat)        
 A date display format. You can use one of the [predefined formats](/Documentation/ApiReference/Common/Object_Structures/format/#type) or specify a [custom format](/Documentation/Guide/Common/Value_Formatting/#Format_Widget_Values/Custom_Format_String). This demo illustrates the latter.
@@ -10,10 +10,10 @@ A date display format. You can use one of the [predefined formats](/Documentatio
 Specifies whether the DateRangeBox responds to user interaction.
 
 - [showClearButton](/Documentation/ApiReference/UI_Components/dxDateRangeBox/Configuration/#showClearButton)        
-This property allows you to display the button that clears the DateRangeBox **values**.
+Displays the button that clears DateRangeBox **values**.
 
 - [multiView](/Documentation/ApiReference/UI_Components/dxDateRangeBox/Configuration/#multiView)     
-Allows allows you to pick the start or end dates in a single or multiple calendars.
+Switches between a single-month and two-month dropdown calendar.
 
 - [applyValueMode](/Documentation/ApiReference/UI_Components/dxDateBox/Configuration/#applyValueMode)     
 Defines whether the selected value applies instantly or after a user clicks the **Apply** button.
