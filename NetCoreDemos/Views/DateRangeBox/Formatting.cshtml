@@ -1,0 +1,59 @@
+﻿<div class="dx-fieldset">
+    <div class="dx-field">
+        <div class="dx-field-label">Locale-dependent format</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateRangeBox()
+                .StartDatePlaceholder("12/31/2018")
+                .EndDatePlaceholder("12/31/2018")
+                .ShowClearButton(true)
+                .UseMaskBehavior(true)
+                .OpenOnFieldClick(false)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Built-in predefined format</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateRangeBox()
+                .DisplayFormat(Format.ShortDate)
+                .StartDate(new JS("startDate"))
+                .EndDate(new JS("endDate"))
+                .ShowClearButton(true)
+                .UseMaskBehavior(true)
+                .OpenOnFieldClick(false)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Locale Data Markup Language (LDML) pattern</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateRangeBox()
+                .DisplayFormat("EEEE, d of MMM, yyyy")
+                .StartDate(new JS("startDate"))
+                .EndDate(new JS("endDate"))
+                .ShowClearButton(true)
+                .UseMaskBehavior(true)
+                .OpenOnFieldClick(false)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Format with literal characters</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateRangeBox()
+                .DisplayFormat("'Year': yyyy, 'Month': MMM, 'Day': d")
+                .StartDate(new JS("startDate"))
+                .EndDate(new JS("endDate"))
+                .ShowClearButton(true)
+                .UseMaskBehavior(true)
+                .OpenOnFieldClick(false)
+            )
+        </div>
+    </div>
+</div>
+<script>
+    var msInDay = 1000 * 60 * 60 * 24;
+    var now = new Date();
+    var startDate = new Date(now.getTime() - msInDay * 3);
+    var endDate = new Date(now.getTime() + msInDay * 3);
+</script>

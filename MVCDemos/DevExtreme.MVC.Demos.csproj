@@ -1087,6 +1087,7 @@
     <Content Include="Content\DemosStyles\DataGrid\VirtualScrolling.css" />
     <Content Include="Content\DemosStyles\DateBox\Overview.css" />
     <Content Include="Content\DemosStyles\DateRangeBox\Overview.css" />
+    <Content Include="Content\DemosStyles\DateRangeBox\Formatting.css" />
     <Content Include="Content\DemosStyles\FileUploader\FileUploading.css" />
     <Content Include="Content\DemosStyles\Form\Overview.css" />
     <Content Include="Content\DemosStyles\Menu\Overview.css" />
@@ -1806,6 +1807,7 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\DateBox\Overview.cshtml" />
     <Content Include="Views\DateRangeBox\Overview.cshtml" />
+    <Content Include="Views\DateRangeBox\Formatting.cshtml" />
     <Content Include="Views\ColorBox\Overview.cshtml" />
     <Content Include="Views\Charts\MultipleAxes.cshtml" />
     <Content Include="Views\Charts\MultiplePanes.cshtml" />
