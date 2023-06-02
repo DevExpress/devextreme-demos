@@ -13,6 +13,11 @@
   padding: 0 10px 0 0;
 }
 
+.editors .state-select-box {
+  margin-right: 20px;
+  width: 50%;
+}
+
 .editors .right {
   padding: 0 0 0 10px;
 }
@@ -55,7 +60,7 @@
   padding-right: 27px;
 }
 
-.editors-container {
+.flex-container {
   display: flex;
   align-items: center;
   justify-content: space-between;

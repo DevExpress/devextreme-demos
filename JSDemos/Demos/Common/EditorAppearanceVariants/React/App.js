@@ -51,7 +51,7 @@ class App extends React.Component {
       <React.Fragment>
         <div className="title">Edit Profile</div>
         <div className="editors">
-          <div className="editors-container editors-padding-right">
+          <div className="flex-container editors-padding-right">
             <div className="left">
               <TextBox
                 stylingMode={this.state.stylingMode}
@@ -105,32 +105,36 @@ class App extends React.Component {
                   <RequiredRule />
                 </Validator>
               </DateBox>
-              <SelectBox
-                items={this.states}
-                stylingMode={this.state.stylingMode}
-                inputAttr={stateLabel}
-                width="100%"
-                placeholder="Select..."
-                label="State"
-                labelMode={this.state.labelMode}
-              >
-                <Validator>
-                  <RequiredRule />
-                </Validator>
-              </SelectBox>
-              <TextBox
-                stylingMode={this.state.stylingMode}
-                width="100%"
-                mask="+1 (000) 000-0000"
-                inputAttr={phoneLabel}
-                maskRules={this.phoneRules}
-                label="Phone"
-                labelMode={this.state.labelMode}
-              >
-                <Validator>
-                  <RequiredRule />
-                </Validator>
-              </TextBox>
+              <div className="flex-container">
+                <div className="state-select-box">
+                  <SelectBox
+                    items={this.states}
+                    stylingMode={this.state.stylingMode}
+                    inputAttr={stateLabel}
+                    width="100%"
+                    placeholder="Select..."
+                    label="State"
+                    labelMode={this.state.labelMode}
+                  >
+                    <Validator>
+                      <RequiredRule />
+                    </Validator>
+                  </SelectBox>
+                </div>
+                <TextBox
+                  stylingMode={this.state.stylingMode}
+                  width="100%"
+                  mask="+1 (000) 000-0000"
+                  inputAttr={phoneLabel}
+                  maskRules={this.phoneRules}
+                  label="Phone"
+                  labelMode={this.state.labelMode}
+                >
+                  <Validator>
+                    <RequiredRule />
+                  </Validator>
+                </TextBox>
+              </div>
             </div>
           </div>
           <div className="editors-padding-right center">
