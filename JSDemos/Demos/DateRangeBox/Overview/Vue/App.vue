@@ -115,6 +115,7 @@ export default {
 .demo-container {
   height: 650px;
 }
+
 .dx-field {
   padding: 8px;
 }

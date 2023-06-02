@@ -78,6 +78,7 @@ export default {
 .demo-container {
   height: 610px;
 }
+
 .dx-fieldset {
   min-height: 500px;
 }
