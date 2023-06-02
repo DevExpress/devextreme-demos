@@ -28,11 +28,7 @@
   margin-bottom: 20px;
 }
 
-.editors .center {
-  padding: 0 27px 0 0;
-}
-
-.validate {
+.save-button {
   float: right;
 }
 
@@ -55,9 +51,12 @@
   margin-top: 20px;
 }
 
+.editors-padding-right {
+  padding-right: 27px;
+}
+
 .editors-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: 27px;
 }
