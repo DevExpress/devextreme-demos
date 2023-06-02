@@ -8,7 +8,7 @@ import Button from 'devextreme-react/button';
 import Validator, { RequiredRule } from 'devextreme-react/validator';
 import notify from 'devextreme/ui/notify';
 
-import service from './data.js';
+import { states } from './data.js';
 
 const stylingModes = ['outlined', 'filled', 'underlined'];
 const labelModes = ['static', 'floating', 'hidden'];
@@ -22,24 +22,19 @@ const stateLabel = { 'aria-label': 'State' };
 const labelModeLabel = { 'aria-label': 'Label Mode' };
 const stylingModeLabel = { 'aria-label': 'Styling Mode' };
 
+const birthDate = new Date(1981, 5, 3);
+const phoneRules = {
+  X: /[02-9]/,
+};
+
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      birthDate: new Date(1981, 5, 3),
       stylingMode: 'filled',
       labelMode: 'static',
     };
-
-    this.phoneRules = {
-      X: /[02-9]/,
-    };
-
-    this.positions = service.getPositions();
-    this.defaultPosition = ['Support Manager'];
-
-    this.states = service.getStates();
 
     this.validateClick = this.validateClick.bind(this);
     this.stylingModeChange = this.stylingModeChange.bind(this);
@@ -93,7 +88,7 @@ class App extends React.Component {
             </div>
             <div className="right">
               <DateBox
-                defaultValue={this.state.birthDate}
+                defaultValue={birthDate}
                 stylingMode={this.state.stylingMode}
                 width="100%"
                 placeholder="Birth Date"
@@ -108,7 +103,7 @@ class App extends React.Component {
               <div className="flex-container">
                 <div className="state-select-box">
                   <SelectBox
-                    items={this.states}
+                    items={states}
                     stylingMode={this.state.stylingMode}
                     inputAttr={stateLabel}
                     width="100%"
@@ -126,7 +121,7 @@ class App extends React.Component {
                   width="100%"
                   mask="+1 (000) 000-0000"
                   inputAttr={phoneLabel}
-                  maskRules={this.phoneRules}
+                  maskRules={phoneRules}
                   label="Phone"
                   labelMode={this.state.labelMode}
                 >
@@ -192,15 +187,15 @@ class App extends React.Component {
     }
   }
 
-  stylingModeChange(e) {
+  stylingModeChange({ value }) {
     this.setState({
-      stylingMode: e.value,
+      stylingMode: value,
     });
   }
 
-  labelModeChange(e) {
+  labelModeChange({ value }) {
     this.setState({
-      labelMode: e.value,
+      labelMode: value,
     });
   }
 }
