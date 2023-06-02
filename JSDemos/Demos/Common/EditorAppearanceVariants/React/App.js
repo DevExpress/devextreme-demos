@@ -27,6 +27,14 @@ const phoneRules = {
   X: /[02-9]/,
 };
 
+function validateClick(e) {
+  const result = e.validationGroup.validate();
+  if (result.isValid) {
+    notify('The task was saved successfully.', 'success');
+  } else {
+    notify('The task was not saved. Please check if all fields are valid.', 'error');
+  }
+}
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -36,7 +44,6 @@ class App extends React.Component {
       labelMode: 'static',
     };
 
-    this.validateClick = this.validateClick.bind(this);
     this.stylingModeChange = this.stylingModeChange.bind(this);
     this.labelModeChange = this.labelModeChange.bind(this);
   }
@@ -143,7 +150,7 @@ class App extends React.Component {
               inputAttr={notesLabel}
             />
             <Button
-              onClick={this.validateClick}
+              onClick={validateClick}
               text="Save"
               icon="save"
               type="default"
@@ -176,15 +183,6 @@ class App extends React.Component {
         </div>
       </React.Fragment>
     );
-  }
-
-  validateClick(e) {
-    const result = e.validationGroup.validate();
-    if (result.isValid) {
-      notify('The task was saved successfully.', 'success');
-    } else {
-      notify('The task was not saved. Please check if all fields are valid.', 'error');
-    }
   }
 
   stylingModeChange({ value }) {
