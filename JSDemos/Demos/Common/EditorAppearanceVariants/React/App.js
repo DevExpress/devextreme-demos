@@ -1,7 +1,6 @@
 import React from 'react';
 
 import SelectBox from 'devextreme-react/select-box';
-import TagBox from 'devextreme-react/tag-box';
 import TextBox from 'devextreme-react/text-box';
 import DateBox from 'devextreme-react/date-box';
 import TextArea from 'devextreme-react/text-area';
@@ -52,7 +51,7 @@ class App extends React.Component {
       <React.Fragment>
         <div className="title">Edit Profile</div>
         <div className="editors">
-          <div className="editors-container">
+          <div className="editors-container editors-padding-right">
             <div className="left">
               <TextBox
                 stylingMode={this.state.stylingMode}
@@ -79,6 +78,18 @@ class App extends React.Component {
                   <RequiredRule />
                 </Validator>
               </TextBox>
+              <DateBox
+                stylingMode={this.state.stylingMode}
+                width="100%"
+                placeholder="Select..."
+                label="Hire Date"
+                inputAttr={hireDateLabel}
+                labelMode={this.state.labelMode}
+              >
+                <Validator>
+                  <RequiredRule />
+                </Validator>
+              </DateBox>
             </div>
             <div className="right">
               <DateBox
@@ -107,27 +118,6 @@ class App extends React.Component {
                   <RequiredRule />
                 </Validator>
               </SelectBox>
-            </div>
-          </div>
-          <div className="center">
-            <TagBox
-              items={this.positions}
-              defaultValue={this.defaultPosition}
-              multiline={false}
-              stylingMode={this.state.stylingMode}
-              width="100%"
-              inputAttr={nameLabel}
-              placeholder="Select..."
-              label="Position"
-              labelMode={this.state.labelMode}
-            >
-              <Validator>
-                <RequiredRule />
-              </Validator>
-            </TagBox>
-          </div>
-          <div className="editors-container">
-            <div className="left">
               <TextBox
                 stylingMode={this.state.stylingMode}
                 width="100%"
@@ -142,22 +132,8 @@ class App extends React.Component {
                 </Validator>
               </TextBox>
             </div>
-            <div className="right">
-              <DateBox
-                stylingMode={this.state.stylingMode}
-                width="100%"
-                placeholder="Select..."
-                label="Hire Date"
-                inputAttr={hireDateLabel}
-                labelMode={this.state.labelMode}
-              >
-                <Validator>
-                  <RequiredRule />
-                </Validator>
-              </DateBox>
-            </div>
           </div>
-          <div className="center">
+          <div className="editors-padding-right center">
             <TextArea
               stylingMode={this.state.stylingMode}
               defaultValue='Olivia loves to sell. She has been selling DevAV products since 2012.'
@@ -167,13 +143,11 @@ class App extends React.Component {
               labelMode={this.state.labelMode}
               inputAttr={notesLabel}
             />
-          </div>
-          <div className="center">
             <Button
               onClick={this.validateClick}
               text="Save"
               type="default"
-              className="validate"
+              className="save-button"
             />
           </div>
         </div>
