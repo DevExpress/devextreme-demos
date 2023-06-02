@@ -146,6 +146,7 @@ class App extends React.Component {
             <Button
               onClick={this.validateClick}
               text="Save"
+              icon="save"
               type="default"
               className="save-button"
             />
