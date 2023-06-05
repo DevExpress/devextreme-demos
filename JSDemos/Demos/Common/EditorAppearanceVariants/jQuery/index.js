@@ -25,7 +25,7 @@ $(() => {
     }],
   }).dxTextBox('instance');
 
-  const birthDate = $('#birthDate').dxDateBox({
+  const birthDate = $('#birth-date').dxDateBox({
     label: 'Birth Date',
     placeholder: 'Select...',
     value: '6/3/1981',
@@ -36,7 +36,7 @@ $(() => {
     }],
   }).dxDateBox('instance');
 
-  const hireDate = $('#hireDate').dxDateBox({
+  const hireDate = $('#hire-date').dxDateBox({
     label: 'Hire Date',
     placeholder: 'Select...',
     inputAttr: { 'aria-label': 'Hire Date' },

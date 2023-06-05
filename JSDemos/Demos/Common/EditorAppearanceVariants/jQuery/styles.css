@@ -28,7 +28,7 @@
   grid-area: address;
 }
 
-#birthDate {
+#birth-date {
   grid-area: birthDate;
 }
 
@@ -40,7 +40,7 @@
   grid-area: phone;
 }
 
-#hireDate {
+#hire-date {
   grid-area: hireDate;
 }
 
