@@ -68,7 +68,7 @@ export default function App() {
         </Validator>
       </TextBox>
       <DateBox
-        id='hireDate'
+        id='hire-date'
         stylingMode={stylingMode}
         placeholder="Select..."
         label="Hire Date"
@@ -80,7 +80,7 @@ export default function App() {
         </Validator>
       </DateBox>
       <DateBox
-        id='birthDate'
+        id='birth-date'
         defaultValue='6/3/1981'
         stylingMode={stylingMode}
         placeholder="Birth Date"
