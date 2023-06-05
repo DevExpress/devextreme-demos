@@ -1,132 +1,108 @@
 <template>
-  <div>
+  <div id="content-wrapper">
     <div class="title">Edit Profile</div>
-    <div class="editors">
-      <div class="editors-container">
-        <div class="left">
-          <DxTextBox
-            :styling-mode="stylingMode"
-            :label-mode="labelMode"
-            value="Olivia Peyton"
-            :input-attr="{ 'aria-label': 'Name' }"
-            width="100%"
-            placeholder="Type..."
-            label="Name"
-          >
-            <DxValidator>
-              <DxRequiredRule/>
-            </DxValidator>
-          </DxTextBox>
-          <DxTextBox
-            :styling-mode="stylingMode"
-            :label-mode="labelMode"
-            :input-attr="{ 'aria-label': 'Address' }"
-            width="100%"
-            placeholder="Type..."
-            label="Address"
-          >
-            <DxValidator>
-              <DxRequiredRule/>
-            </DxValidator>
-          </DxTextBox>
-        </div>
-        <div class="right">
-          <DxDateBox
-            :value="birthDate"
-            :styling-mode="stylingMode"
-            :label-mode="labelMode"
-            :input-attr="{ 'aria-label': 'Birth Date' }"
-            width="100%"
-            placeholder="Select..."
-            label="Birth Date"
-          >
-            <DxValidator>
-              <DxRequiredRule/>
-            </DxValidator>
-          </DxDateBox>
-          <DxSelectBox
-            :items="states"
-            :input-attr="{ 'aria-label': 'State' }"
-            :styling-mode="stylingMode"
-            :label-mode="labelMode"
-            width="100%"
-            placeholder="Select..."
-            label="State"
-          >
-            <DxValidator>
-              <DxRequiredRule/>
-            </DxValidator>
-          </DxSelectBox>
-        </div>
-      </div>
-      <div class="center">
-        <DxTagBox
-          :items="positions"
-          :value="[ 'Support Manager' ]"
-          :input-attr="{ 'aria-label': 'Position' }"
-          :multiline="false"
-          :styling-mode="stylingMode"
-          :label-mode="labelMode"
-          width="100%"
-          placeholder="Select..."
-          label="Position"
-        >
-          <DxValidator>
-            <DxRequiredRule/>
-          </DxValidator>
-        </DxTagBox>
-      </div>
-      <div class="editors-container">
-        <div class="left">
-          <DxTextBox
-            :styling-mode="stylingMode"
-            :label-mode="labelMode"
-            :mask-rules="phoneRules"
-            :input-attr="{ 'aria-label': 'Phone' }"
-            width="100%"
-            mask="+1 (000) 000-0000"
-            label="Phone"
-          >
-            <DxValidator>
-              <DxRequiredRule/>
-            </DxValidator>
-          </DxTextBox>
-        </div>
-        <div class="right">
-          <DxDateBox
-            :styling-mode="stylingMode"
-            :label-mode="labelMode"
-            width="100%"
-            :input-attr="{ 'aria-label': 'Hire Date' }"
-            placeholder="Select..."
-            label="Hire Date"
-          >
-            <DxValidator>
-              <DxRequiredRule/>
-            </DxValidator>
-          </DxDateBox>
-        </div>
-      </div>
-      <div class="center">
-        <DxTextArea
-          :styling-mode="stylingMode"
-          :label-mode="labelMode"
-          :value="text"
-          :input-attr="{ 'aria-label': 'Notes' }"
-          width="100%"
-          placeholder="Type..."
-          label="Notes"
-        />
-      </div>
-      <div class="center">
-        <DxButton
-          @click="validateClick"
-          text="Save"
-          type="default"
-          class="validate"
-        />
-      </div>
-    </div>
+    <DxTextBox
+      :styling-mode="stylingMode"
+      :label-mode="labelMode"
+      :input-attr="{ 'aria-label': 'Name' }"
+      value="Olivia Peyton"
+      id="name"
+      placeholder="Type..."
+      label="Name"
+    >
+      <DxValidator>
+        <DxRequiredRule/>
+      </DxValidator>
+    </DxTextBox>
+    <DxTextBox
+      :styling-mode="stylingMode"
+      :label-mode="labelMode"
+      :input-attr="{ 'aria-label': 'Address' }"
+      placeholder="Type..."
+      label="Address"
+      id="address"
+    >
+      <DxValidator>
+        <DxRequiredRule/>
+      </DxValidator>
+    </DxTextBox>
+    <DxDateBox
+      :styling-mode="stylingMode"
+      :label-mode="labelMode"
+      :input-attr="{ 'aria-label': 'Hire Date' }"
+      id="hire-date"
+      placeholder="Select..."
+      label="Hire Date"
+    >
+      <DxValidator>
+        <DxRequiredRule/>
+      </DxValidator>
+    </DxDateBox>
+    <DxDateBox
+      :styling-mode="stylingMode"
+      :label-mode="labelMode"
+      :input-attr="{ 'aria-label': 'Birth Date' }"
+      :value="birthDate"
+      id="birth-date"
+      placeholder="Select..."
+      label="Birth Date"
+    >
+      <DxValidator>
+        <DxRequiredRule/>
+      </DxValidator>
+    </DxDateBox>
+    <DxSelectBox
+      :items="states"
+      :input-attr="{ 'aria-label': 'State' }"
+      :styling-mode="stylingMode"
+      :label-mode="labelMode"
+      id="state"
+      placeholder="Select..."
+      label="State"
+    >
+      <DxValidator>
+        <DxRequiredRule/>
+      </DxValidator>
+    </DxSelectBox>
+    <DxTextBox
+      :styling-mode="stylingMode"
+      :label-mode="labelMode"
+      :mask-rules="phoneRules"
+      :input-attr="{ 'aria-label': 'Phone' }"
+      id="phone"
+      mask="+1 (000) 000-0000"
+      label="Phone"
+    >
+      <DxValidator>
+        <DxRequiredRule/>
+      </DxValidator>
+    </DxTextBox>
+    <DxDateRangeBox
+      :styling-mode="stylingMode"
+      :label-mode="labelMode"
+      id="vacation-dates"
+      start-date="6/3/2023"
+      start-date-label="Start Vacation Date"
+      end-date="12/3/2023"
+      end-date-label="End Vacation Date"
+    />
+    <DxTextArea
+      :styling-mode="stylingMode"
+      :label-mode="labelMode"
+      :value="text"
+      :input-attr="{ 'aria-label': 'Notes' }"
+      id="notes"
+      placeholder="Type..."
+      label="Notes"
+    />
+    <DxButton
+      @click="validateClick"
+      text="Save"
+      icon="save"
+      type="default"
+      id="validate"
+      class="validate"
+    />
     <div class="options">
       <div class="caption">Options</div>
       <div class="option">
@@ -155,27 +131,27 @@
 import DxSelectBox from 'devextreme-vue/select-box';
 import DxTextBox from 'devextreme-vue/text-box';
 import DxTextArea from 'devextreme-vue/text-area';
-import DxTagBox from 'devextreme-vue/tag-box';
 import DxDateBox from 'devextreme-vue/date-box';
 import DxButton from 'devextreme-vue/button';
+import DxDateRangeBox from 'devextreme-vue/date-range-box';
 import {
   DxValidator,
   DxRequiredRule,
 } from 'devextreme-vue/validator';
 import notify from 'devextreme/ui/notify';
 
-import service from './data.js';
+import { states } from './data.js';
 
 export default {
   components: {
     DxSelectBox,
     DxTextBox,
     DxTextArea,
-    DxTagBox,
     DxDateBox,
     DxButton,
     DxValidator,
     DxRequiredRule,
+    DxDateRangeBox,
   },
   data() {
     return {
@@ -183,16 +159,15 @@ export default {
       stylingMode: 'filled',
       labelMode: 'static',
       text: 'Olivia loves to sell. She has been selling DevAV products since 2012.',
-      positions: service.getPositions(),
-      states: service.getStates(),
+      states,
       phoneRules: {
         X: /[02-9]/,
       },
     };
   },
   methods: {
-    validateClick(e) {
-      const result = e.validationGroup.validate();
+    validateClick({ validationGroup }) {
+      const result = validationGroup.validate();
       if (result.isValid) {
         notify('The task was saved successfully.', 'success');
       } else {
@@ -203,67 +178,70 @@ export default {
 };
 </script>
 <style>
+#content-wrapper {
+  height: 600px;
+  display: grid;
+  grid-template-areas:
+    'title title title title options'
+    'name birthDate birthDate birthDate options'
+    'address state phone phone options'
+    'hireDate range range range options'
+    'notes notes notes notes options'
+    '. . . validate options'
+    '. . . . options';
+  grid-template-rows: auto auto auto auto auto auto 1fr;
+  grid-template-columns: 3fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+
 .title {
-  padding: 20px 0 20px 0;
+  grid-area: title;
   font-size: 18px;
   font-weight: 500;
 }
 
-.editors {
-  margin-right: 320px;
-  height: 570px;
+#name {
+  grid-area: name;
 }
 
-.editors .left {
-  padding: 0 10px 0 0;
+#address {
+  grid-area: address;
 }
 
-.editors .right {
-  padding: 0 0 0 10px;
+#birth-date {
+  grid-area: birthDate;
 }
 
-.editors .left,
-.editors .right {
-  flex-grow: 1;
+#state {
+  grid-area: state;
 }
 
-.editors .left > *,
-.editors .right > *,
-.editors .center > * {
-  margin-bottom: 20px;
+#phone {
+  grid-area: phone;
 }
 
-.editors .center {
-  padding: 0 27px 0 0;
+#hire-date {
+  grid-area: hireDate;
 }
 
-.validate {
-  float: right;
+#notes {
+  grid-area: notes;
+}
+
+#vacation-dates {
+  grid-area: range;
+}
+
+#validate {
+  grid-area: validate;
 }
 
 .options {
+  grid-area: options;
   padding: 20px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  margin-left: 20px;
   width: 260px;
-  top: 0;
   background-color: rgba(191, 191, 191, 0.15);
 }
 
-.caption {
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.option {
-  margin-top: 20px;
-}
-
-.editors-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-right: 27px;
-}
 </style>
