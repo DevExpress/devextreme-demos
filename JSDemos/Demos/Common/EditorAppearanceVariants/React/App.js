@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 
 import SelectBox from 'devextreme-react/select-box';
 import TextBox from 'devextreme-react/text-box';
@@ -29,13 +29,13 @@ function validateClick(e) {
   }
 }
 
-export function App() {
-  const [stylingMode, setStylingMode] = useState('filled');
-  const [labelMode, setLabelMode] = useState('static');
-  const changeStylingMode = useCallback(({ value }) => {
+export default function App() {
+  const [stylingMode, setStylingMode] = React.useState('filled');
+  const [labelMode, setLabelMode] = React.useState('static');
+  const changeStylingMode = React.useCallback(({ value }) => {
     setStylingMode(value);
   }, []);
-  const labelModeChange = useCallback(({ value }) => {
+  const labelModeChange = React.useCallback(({ value }) => {
     setLabelMode(value);
   }, []);
 
