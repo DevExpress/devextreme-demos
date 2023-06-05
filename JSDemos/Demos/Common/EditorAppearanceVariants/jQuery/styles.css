@@ -1,63 +1,65 @@
+.demo-container {
+  height: 600px;
+  display: grid;
+  grid-template-areas:
+    'title title title title options'
+    'name birthDate birthDate birthDate options'
+    'address state phone phone options'
+    'hireDate range range range options'
+    'notes notes notes notes options'
+    '. . . validate options'
+    '. . . . options';
+  grid-template-rows: auto auto auto auto auto auto 1fr;
+  grid-template-columns: 3fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+
 .title {
-  padding: 20px 0 20px 0;
+  grid-area: title;
   font-size: 18px;
   font-weight: 500;
 }
 
-.editors {
-  margin-right: 320px;
-  height: 570px;
+#name {
+  grid-area: name;
 }
 
-.editors .left {
-  padding: 0 10px 0 0;
+#address {
+  grid-area: address;
 }
 
-.editors .right {
-  padding: 0 0 0 10px;
+#birthDate {
+  grid-area: birthDate;
 }
 
-.editors .left,
-.editors .right {
-  flex-grow: 1;
+#state {
+  grid-area: state;
 }
 
-.editors .left > div,
-.editors .right > div,
-.editors .center > div {
-  margin-bottom: 20px;
+#phone {
+  grid-area: phone;
 }
 
-.editors .center {
-  padding: 0 27px 0 0;
+#hireDate {
+  grid-area: hireDate;
 }
 
-.validate {
-  float: right;
+#notes {
+  grid-area: notes;
+}
+
+#vacation-dates {
+  grid-area: range;
+}
+
+#validate {
+  grid-area: validate;
 }
 
 .options {
+  grid-area: options;
   padding: 20px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  margin-left: 20px;
   width: 260px;
-  top: 0;
   background-color: rgba(191, 191, 191, 0.15);
-}
-
-.caption {
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.option {
-  margin-top: 20px;
-}
-
-.editors-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-right: 27px;
 }
