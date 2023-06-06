@@ -18,7 +18,7 @@ runManualTest('Common', 'EditorAppearanceVariants', ['React', 'Vue', 'Angular'],
     const labelModes = ['static', 'floating', 'hidden'];
 
     const clickSaveButton = async () => {
-      await t.click($('.validate.dx-button'));
+      await t.click($('#validate'));
     };
 
     const changeLabelMode = async (labelMode) => {
