@@ -9,6 +9,7 @@ import {
   DxDateBoxModule,
   DxButtonModule,
   DxValidatorModule,
+  DxDateRangeBoxModule,
 } from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
 
@@ -33,16 +34,14 @@ export class AppComponent {
 
   birthDate = new Date(1981, 5, 3);
 
-  positions: string[];
-
   states: string[];
 
   phoneRules: any = {
     X: /[02-9]/,
   };
 
-  validateClick(e) {
-    const result = e.validationGroup.validate();
+  validateClick({ validationGroup }) {
+    const result = validationGroup.validate();
     if (result.isValid) {
       notify('The task was saved successfully.', 'success');
     } else {
@@ -51,7 +50,6 @@ export class AppComponent {
   }
 
   constructor(service: Service) {
-    this.positions = service.getPositions();
     this.states = service.getStates();
   }
 }
@@ -67,6 +65,7 @@ export class AppComponent {
     DxDateBoxModule,
     DxButtonModule,
     DxValidatorModule,
+    DxDateRangeBoxModule,
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
