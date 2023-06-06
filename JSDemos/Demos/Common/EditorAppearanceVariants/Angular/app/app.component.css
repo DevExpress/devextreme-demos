@@ -1,63 +1,65 @@
+::ng-deep #content-wrapper {
+  height: 600px;
+  display: grid;
+  grid-template-areas:
+    'title title title title options'
+    'name birthDate birthDate birthDate options'
+    'address state phone phone options'
+    'hireDate range range range options'
+    'notes notes notes notes options'
+    '. . . validate options'
+    '. . . . options';
+  grid-template-rows: auto auto auto auto auto auto 1fr;
+  grid-template-columns: 3fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+
 ::ng-deep .title {
-  padding: 20px 0 20px 0;
+  grid-area: title;
   font-size: 18px;
   font-weight: 500;
 }
 
-::ng-deep .editors {
-  margin-right: 320px;
-  height: 570px;
+::ng-deep #name {
+  grid-area: name;
 }
 
-::ng-deep .editors .left {
-  padding: 0 10px 0 0;
+::ng-deep #address {
+  grid-area: address;
 }
 
-::ng-deep .editors .right {
-  padding: 0 0 0 10px;
+::ng-deep #birth-date {
+  grid-area: birthDate;
 }
 
-::ng-deep .editors .left,
-::ng-deep .editors .right {
-  flex-grow: 1;
+::ng-deep #state {
+  grid-area: state;
 }
 
-::ng-deep .editors .left > *,
-::ng-deep .editors .right > *,
-::ng-deep .editors .center > * {
-  margin-bottom: 20px;
+::ng-deep #phone {
+  grid-area: phone;
 }
 
-::ng-deep .editors .center {
-  padding: 0 27px 0 0;
+::ng-deep #hire-date {
+  grid-area: hireDate;
 }
 
-::ng-deep .validate {
-  float: right;
+::ng-deep #notes {
+  grid-area: notes;
+}
+
+::ng-deep #vacation-dates {
+  grid-area: range;
+}
+
+::ng-deep #validate {
+  grid-area: validate;
 }
 
 ::ng-deep .options {
+  grid-area: options;
   padding: 20px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  margin-left: 20px;
   width: 260px;
-  top: 0;
   background-color: rgba(191, 191, 191, 0.15);
-}
-
-::ng-deep .caption {
-  font-size: 18px;
-  font-weight: 500;
-}
-
-::ng-deep .option {
-  margin-top: 20px;
-}
-
-::ng-deep .editors-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-right: 27px;
 }
