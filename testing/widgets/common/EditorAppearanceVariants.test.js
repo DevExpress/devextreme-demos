@@ -22,12 +22,12 @@ runManualTest('Common', 'EditorAppearanceVariants', ['React', 'Vue', 'Angular'],
     };
 
     const changeLabelMode = async (labelMode) => {
-      await t.click($(`.${SELECTBOX_CLASS}`).nth(3));
+      await t.click($(`.${SELECTBOX_CLASS}`).nth(2));
       await t.click($('.dx-item').withText(labelMode));
     };
 
     const changeStylingMode = async (stylingMode) => {
-      await t.click($(`.${SELECTBOX_CLASS}`).nth(2));
+      await t.click($(`.${SELECTBOX_CLASS}`).nth(1));
       await t.click($('.dx-item').withText(stylingMode)).wait(500);
     };
 
