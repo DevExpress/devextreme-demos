@@ -63,3 +63,12 @@
   width: 260px;
   background-color: rgba(191, 191, 191, 0.15);
 }
+
+.caption {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.option {
+  margin-top: 20px;
+}
