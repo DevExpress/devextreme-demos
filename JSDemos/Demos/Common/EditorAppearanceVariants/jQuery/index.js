@@ -1,5 +1,6 @@
 $(() => {
-  const stylingMode = readStylingMode() || 'filled';
+  const stylingMode = 'filled';
+  const labelModeWidgets = [];
   DevExpress.config({
     editorStylingMode: stylingMode,
   });
@@ -98,35 +99,27 @@ $(() => {
     },
   });
 
-  $('#modeSelector').dxSelectBox({
+  labelModeWidgets.push(name, place, birthDate, hireDate, range, state, phone, notes);
+
+  const stylingModeSelectBox = $('#modeSelector').dxSelectBox({
     items: ['outlined', 'filled', 'underlined'],
     value: stylingMode,
     inputAttr: { 'aria-label': 'Mode' },
-    onValueChanged(e) {
-      writeStylingMode(e.value);
+    onValueChanged({ value }) {
+      [stylingModeSelectBox, labelModeSelectBox].concat(labelModeWidgets).forEach((editor) => {
+        editor.option('stylingMode', value);
+      });
     },
-  });
+  }).dxSelectBox('instance');
 
-  $('#labelModeSelector').dxSelectBox({
+  const labelModeSelectBox = $('#labelModeSelector').dxSelectBox({
     items: ['static', 'floating', 'hidden'],
     value: 'static',
     inputAttr: { 'aria-label': 'Label Mode' },
     onValueChanged({ value }) {
-      [name, place, birthDate, hireDate, range, state, phone, notes].forEach((editor) => {
+      labelModeWidgets.forEach((editor) => {
         editor.option('labelMode', value);
       });
     },
-  });
+  }).dxSelectBox('instance');
 });
-
-const storageKey = 'editorStylingMode';
-function readStylingMode() {
-  const mode = localStorage.getItem(storageKey);
-  localStorage.removeItem(storageKey);
-  return mode;
-}
-
-function writeStylingMode(mode) {
-  localStorage.setItem(storageKey, mode);
-  window.location.reload(true);
-}
