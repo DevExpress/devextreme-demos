@@ -101,7 +101,7 @@ $(() => {
 
   labelModeWidgets.push(name, place, birthDate, hireDate, range, state, phone, notes);
 
-  const stylingModeSelectBox = $('#modeSelector').dxSelectBox({
+  const stylingModeSelectBox = $('#mode-selector').dxSelectBox({
     items: ['outlined', 'filled', 'underlined'],
     value: stylingMode,
     inputAttr: { 'aria-label': 'Mode' },
@@ -112,7 +112,7 @@ $(() => {
     },
   }).dxSelectBox('instance');
 
-  const labelModeSelectBox = $('#labelModeSelector').dxSelectBox({
+  const labelModeSelectBox = $('#label-mode-selector').dxSelectBox({
     items: ['static', 'floating', 'hidden'],
     value: 'static',
     inputAttr: { 'aria-label': 'Label Mode' },
