@@ -2265,7 +2265,7 @@
     <Content Include="Views\Gantt\ExportToPDF.cshtml" />
     <Content Include="Views\Scheduler\AllDayPanelMode.cshtml" />
     <Content Include="Views\DataGrid\ColumnChooser.cshtml" />
-    <Content Include="Views\DataGrid\UsingHeaderFilter.cshtml" />
+    <Content Include="Views\DataGrid\ColumnHeaderFilter.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
