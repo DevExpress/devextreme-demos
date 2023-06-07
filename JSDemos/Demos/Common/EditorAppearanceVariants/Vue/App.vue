@@ -179,7 +179,7 @@ export default {
 </script>
 <style>
 #content-wrapper {
-  height: 600px;
+  height: 610px;
   display: grid;
   grid-template-areas:
     'title title title title'
