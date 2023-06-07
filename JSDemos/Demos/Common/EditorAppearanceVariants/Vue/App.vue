@@ -182,15 +182,15 @@ export default {
   height: 600px;
   display: grid;
   grid-template-areas:
-    'title title title title options'
-    'name birthDate birthDate birthDate options'
-    'address state phone phone options'
-    'hireDate range range range options'
-    'notes notes notes notes options'
-    '. . . validate options'
-    '. . . . options';
-  grid-template-rows: auto auto auto auto auto auto 1fr;
-  grid-template-columns: 3fr 1fr 1fr 1fr;
+    'title title title title'
+    'name name birthDate birthDate '
+    'address address state phone'
+    'hireDate hireDate range range'
+    'notes notes notes notes'
+    '. . . validate'
+    'options options options options';
+  grid-template-rows: auto auto auto auto auto auto auto 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
 }
 
@@ -239,8 +239,7 @@ export default {
 .options {
   grid-area: options;
   padding: 20px;
-  margin-left: 20px;
-  width: 260px;
+  margin-top: 40px;
   background-color: rgba(191, 191, 191, 0.15);
 }
 
@@ -250,6 +249,8 @@ export default {
 }
 
 .option {
+  padding-right: 20px;
+  float: left;
   margin-top: 20px;
 }
 
