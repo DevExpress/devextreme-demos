@@ -112,12 +112,12 @@
         const address = $("#address").dxTextBox("instance");
         const phone = $("#phone").dxTextBox("instance");
         const birthDate = $("#birth-date").dxDateBox("instance");
-        const position = $("#position").dxTagBox("instance");
         const hireDate = $("#hire-date").dxDateBox("instance");
+        const vacationDates = $("#vacation-dates").dxDateRangeBox("instance");
         const state = $("#state").dxSelectBox("instance");
         const notes = $("#notes").dxTextArea("instance");
 
-        return [name, address, birthDate, position, hireDate, state, phone, notes];
+        return [name, address, birthDate, hireDate, vacationDates, state, phone, notes];
     }
 
     function stylingModeChanged({ value }) {
@@ -136,7 +136,7 @@
     }
 
     $(function() {
-        ["name", "address", "birth-date", "position", "hire-date", "state", "phone"].forEach((editorId) => {
+        ["name", "address", "birth-date", "hire-date", "state", "phone"].forEach((editorId) => {
             $("#" + editorId).dxValidator({
                 validationRules: [{ type: "required" }]
             });
