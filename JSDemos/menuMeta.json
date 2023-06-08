@@ -4433,6 +4433,7 @@
             "Name": "EditorAppearanceVariants",
             "DocUrl": "",
             "Widget": "Common",
+            "Badge": "Updated",
             "DemoType": "Web"
           }
         ]
