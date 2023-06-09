@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   Chart,
   Series,
@@ -16,7 +15,7 @@ import { temperaturesData, lowAverage, highAverage } from './data.js';
 const highAverageColor = '#ff9b52';
 const lowAverageColor = '#6199e6';
 
-function customizePoint(arg) {
+const customizePoint = (arg) => {
   if (arg.value > highAverage) {
     return { color: highAverageColor };
   }
@@ -24,9 +23,9 @@ function customizePoint(arg) {
     return { color: lowAverageColor };
   }
   return null;
-}
+};
 
-function customizeLabel(arg) {
+const customizeLabel = (arg) => {
   if (arg.value > highAverage) {
     return getLabelsSettings(highAverageColor);
   }
@@ -34,21 +33,21 @@ function customizeLabel(arg) {
     return getLabelsSettings(lowAverageColor);
   }
   return null;
-}
+};
 
-function getLabelsSettings(backgroundColor) {
+const getLabelsSettings = (backgroundColor) => {
   return {
     visible: true,
     backgroundColor,
     customizeText,
   };
-}
+};
 
-function customizeText(arg) {
+const customizeText = (arg) => {
   return `${arg.valueText}&#176F`;
-}
+};
 
-export default function App() {
+const App = () => {
   return (
     <Chart
       id="chart"
@@ -85,4 +84,6 @@ export default function App() {
       <Export enabled />
     </Chart>
   );
-}
+};
+
+export default App;

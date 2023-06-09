@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import ScrollView from 'devextreme-react/scroll-view';
 import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
@@ -6,143 +6,110 @@ import service from './data.js';
 
 const showScrollBarModeLabel = { 'aria-label': 'Show Scrollbar Mode' };
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const [showScrollBarMode, setShowScrollBarMode] = useState('onScroll');
+  const [pullDown, setPullDown] = useState(false);
+  const [scrollByContent, setScrollByContent] = useState(true);
+  const [scrollByThumb, setScrollByThumb] = useState(true);
+  const [content, setContent] = useState(service.getContent());
+  const scrollViewRef = useRef(null);
 
-    this.state = {
-      showScrollBarMode: 'onScroll',
-      pullDown: false,
-      scrollByContent: true,
-      scrollByThumb: true,
-      content: service.getContent(),
-    };
-    this.getInstance = this.getInstance.bind(this);
-    this.pullDownValueChanged = this.pullDownValueChanged.bind(this);
-    this.reachBottomValueChanged = this.reachBottomValueChanged.bind(this);
-    this.scrollbarModelValueChanged = this.scrollbarModelValueChanged.bind(this);
-    this.scrollByContentValueChanged = this.scrollByContentValueChanged.bind(this);
-    this.scrollByThumbValueChanged = this.scrollByThumbValueChanged.bind(this);
-    this.updateTopContent = this.updateTopContent.bind(this);
-    this.updateBottomContent = this.updateBottomContent.bind(this);
-    this.updateContent = this.updateContent.bind(this);
-  }
+  const pullDownValueChanged = (args) => {
+    setPullDown(args.value);
+  };
 
-  render() {
-    const {
-      showScrollBarMode, content, scrollByThumb, scrollByContent, pullDown,
-    } = this.state;
-    return (
-      <div id="scrollview-demo">
-        <ScrollView id="scrollview" ref={this.getInstance}
-          reachBottomText="Updating..."
-          scrollByContent={scrollByContent}
-          bounceEnabled={pullDown}
-          onReachBottom={this.updateBottomContent}
-          onPullDown={this.updateTopContent}
-          showScrollbar={showScrollBarMode}
-          scrollByThumb={scrollByThumb}>
-          <div className="text-content">
-            {content}
-          </div>
-        </ScrollView>
-        <div className="options">
-          <div className="caption">Options</div>
-          <div className="option">
-            <span>Show scrollbar: </span>
-            <SelectBox
-              items={showScrollbarModes}
-              valueExpr="value"
-              inputAttr={showScrollBarModeLabel}
-              displayExpr="text"
-              value={showScrollBarMode}
-              onValueChanged={this.scrollbarModelValueChanged}
-            />
-          </div>
-          <div className="option">
-            <CheckBox
-              text="Update content on the ReachBottom event"
-              defaultValue={true}
-              onValueChanged={this.reachBottomValueChanged}
-            />
-          </div>
-          <div className="option">
-            <CheckBox
-              text="Update content on the PullDown event"
-              value={pullDown}
-              onValueChanged={this.pullDownValueChanged}
-            />
-          </div>
-          <div className="option">
-            <CheckBox
-              text="Scroll by content"
-              value={scrollByContent}
-              onValueChanged={this.scrollByContentValueChanged}
-            />
-          </div>
-          <div className="option">
-            <CheckBox
-              text="Scroll by thumb"
-              value={scrollByThumb}
-              onValueChanged={this.scrollByThumbValueChanged}
-            />
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const reachBottomValueChanged = (args) => {
+    scrollViewRef.current.option('onReachBottom', args.value ? updateBottomContent : null);
+  };
 
-  getInstance(ref) {
-    this.scrollView = ref.instance;
-  }
+  const scrollbarModelValueChanged = (args) => {
+    setShowScrollBarMode(args.value);
+  };
 
-  pullDownValueChanged(args) {
-    this.setState({
-      pullDown: args.value,
-    });
-  }
+  const scrollByContentValueChanged = (args) => {
+    setScrollByContent(args.value);
+  };
 
-  reachBottomValueChanged(args) {
-    this.scrollView.option('onReachBottom', args.value ? this.updateBottomContent : null);
-  }
+  const scrollByThumbValueChanged = (args) => {
+    setScrollByThumb(args.value);
+  };
 
-  scrollbarModelValueChanged(args) {
-    this.setState({
-      showScrollBarMode: args.value,
-    });
-  }
+  const updateTopContent = (args) => {
+    updateContent(args, 'PullDown');
+  };
 
-  scrollByContentValueChanged(args) {
-    this.setState({
-      scrollByContent: args.value,
-    });
-  }
+  const updateBottomContent = (args) => {
+    updateContent(args, 'ReachBottom');
+  };
 
-  scrollByThumbValueChanged(args) {
-    this.setState({
-      scrollByThumb: args.value,
-    });
-  }
-
-  updateTopContent(args) {
-    this.updateContent(args, 'PullDown');
-  }
-
-  updateBottomContent(args) {
-    this.updateContent(args, 'ReachBottom');
-  }
-
-  updateContent(args, eventName) {
+  const updateContent = (args, eventName) => {
     const updateContentText = `\n Content has been updated on the ${eventName} event.\n\n`;
     if (this.updateContentTimer) { clearTimeout(this.updateContentTimer); }
     this.updateContentTimer = setTimeout(() => {
-      this.setState({
-        content: eventName === 'PullDown' ? updateContentText + this.state.content : this.state.content + updateContentText,
-      });
+      setContent(eventName === 'PullDown' ? updateContentText + content : content + updateContentText);
       args.component.release();
     }, 500);
-  }
-}
+  };
+
+  return (
+    <div id="scrollview-demo">
+      <ScrollView id="scrollview" ref={scrollViewRef}
+        reachBottomText="Updating..."
+        scrollByContent={scrollByContent}
+        bounceEnabled={pullDown}
+        onReachBottom={updateBottomContent}
+        onPullDown={updateTopContent}
+        showScrollbar={showScrollBarMode}
+        scrollByThumb={scrollByThumb}>
+        <div className="text-content">
+          {content}
+        </div>
+      </ScrollView>
+      <div className="options">
+        <div className="caption">Options</div>
+        <div className="option">
+          <span>Show scrollbar: </span>
+          <SelectBox
+            items={showScrollbarModes}
+            valueExpr="value"
+            inputAttr={showScrollBarModeLabel}
+            displayExpr="text"
+            value={showScrollBarMode}
+            onValueChanged={scrollbarModelValueChanged}
+          />
+        </div>
+        <div className="option">
+          <CheckBox
+            text="Update content on the ReachBottom event"
+            defaultValue={true}
+            onValueChanged={reachBottomValueChanged}
+          />
+        </div>
+        <div className="option">
+          <CheckBox
+            text="Update content on the PullDown event"
+            value={pullDown}
+            onValueChanged={pullDownValueChanged}
+          />
+        </div>
+        <div className="option">
+          <CheckBox
+            text="Scroll by content"
+            value={scrollByContent}
+            onValueChanged={scrollByContentValueChanged}
+          />
+        </div>
+        <div className="option">
+          <CheckBox
+            text="Scroll by thumb"
+            value={scrollByThumb}
+            onValueChanged={scrollByThumbValueChanged}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const showScrollbarModes = [{
   text: 'On Scroll',

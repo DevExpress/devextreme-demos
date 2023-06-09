@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useCallback } from 'react';
 import DataGrid, {
   Column,
   Grouping,
@@ -9,13 +8,12 @@ import DataGrid, {
 } from 'devextreme-react/data-grid';
 import { jsPDF } from 'jspdf';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
-
 import { customers } from './data.js';
 
 const exportFormats = ['pdf'];
 
-export default function App() {
-  const onExporting = React.useCallback((e) => {
+const App = () => {
+  const onExporting = useCallback((e) => {
     // eslint-disable-next-line new-cap
     const doc = new jsPDF();
 
@@ -26,7 +24,7 @@ export default function App() {
     }).then(() => {
       doc.save('Companies.pdf');
     });
-  });
+  }, []);
 
   return (
     <DataGrid
@@ -48,4 +46,6 @@ export default function App() {
       <Column dataField="State" dataType="string" groupIndex={0} />
     </DataGrid>
   );
-}
+};
+
+export default App;

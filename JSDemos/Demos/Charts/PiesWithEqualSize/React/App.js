@@ -1,11 +1,9 @@
 import React from 'react';
-
 import PieChart, {
   Series,
   Label,
   Legend,
 } from 'devextreme-react/pie-chart';
-
 import { countries, waterLandRatio } from './data.js';
 
 const pieCharts = [{
@@ -18,7 +16,7 @@ const pieCharts = [{
   dataSource: waterLandRatio,
 }];
 
-function App() {
+const App = () => {
   const pies = pieCharts.map((options, i) => (
     <PieChart
       className="pie"

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   Column, DataGrid, MasterDetail, Paging,
 } from 'devextreme-react/data-grid';
@@ -13,29 +12,27 @@ const suppliersData = createStore({
   loadUrl: `${url}/GetSuppliers`,
 });
 
-class App extends React.Component {
-  render() {
-    return (
-      <DataGrid
-        dataSource={suppliersData}
-        remoteOperations={true}
-        showBorders={true}
-        id="gridContainer"
-      >
-        <MasterDetail
-          enabled={true}
-          component={MasterDetailView}
-        />
-        <Paging defaultPageSize={15} />
+const App = () => {
+  return (
+    <DataGrid
+      dataSource={suppliersData}
+      remoteOperations={true}
+      showBorders={true}
+      id="gridContainer"
+    >
+      <MasterDetail
+        enabled={true}
+        component={MasterDetailView}
+      />
+      <Paging defaultPageSize={15} />
 
-        <Column dataField="ContactName" />
-        <Column dataField="ContactTitle" />
-        <Column dataField="CompanyName" />
-        <Column dataField="City" />
-        <Column dataField="Country" />
-      </DataGrid>
-    );
-  }
+      <Column dataField="ContactName" />
+      <Column dataField="ContactTitle" />
+      <Column dataField="CompanyName" />
+      <Column dataField="City" />
+      <Column dataField="Country" />
+    </DataGrid>
+  );
 }
 
 export default App;

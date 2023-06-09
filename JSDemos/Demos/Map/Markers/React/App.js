@@ -1,9 +1,7 @@
-import React from 'react';
-
+import React, { useState, useCallback } from 'react';
 import Map from 'devextreme-react/map';
 import Button from 'devextreme-react/button';
 import CheckBox from 'devextreme-react/check-box';
-
 import { markersData } from './data.js';
 
 const markerUrl = 'https://js.devexpress.com/Demos/WidgetsGallery/JSDemos/images/maps/map-marker.png';
@@ -13,21 +11,21 @@ const apiKey = {
 };
 
 export default function App() {
-  const [currentMarkersData, setCurrentMarkersData] = React.useState(markersData);
-  const [currentMarkerUrl, setCurrentMarkerUrl] = React.useState(markerUrl);
+  const [currentMarkersData, setCurrentMarkersData] = useState(markersData);
+  const [currentMarkerUrl, setCurrentMarkerUrl] = useState(markerUrl);
 
-  const onCustomMarkersChange = React.useCallback((value) => {
+  const onCustomMarkersChange = useCallback((value) => {
     setCurrentMarkerUrl(value ? currentMarkerUrl : null);
     setCurrentMarkersData(markersData);
-  }, [setCurrentMarkerUrl, setCurrentMarkersData]);
+  }, [currentMarkerUrl]);
 
-  const showTooltips = React.useCallback(() => {
+  const showTooltips = useCallback(() => {
     setCurrentMarkersData(currentMarkersData.map((item) => {
       const newItem = JSON.parse(JSON.stringify(item));
       newItem.tooltip.isShown = true;
       return newItem;
     }));
-  }, [setCurrentMarkersData]);
+  }, [currentMarkersData]);
 
   return (
     <React.Fragment>

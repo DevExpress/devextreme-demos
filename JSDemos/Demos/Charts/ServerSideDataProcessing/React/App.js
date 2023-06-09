@@ -1,8 +1,6 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 import DataSource from 'devextreme/data/data_source';
 import 'devextreme/data/odata/store';
-
 import Chart, {
   ValueAxis,
   ArgumentAxis,
@@ -17,15 +15,14 @@ import Chart, {
   Export,
   LoadingIndicator,
 } from 'devextreme-react/chart';
-
 import SelectBox from 'devextreme-react/select-box';
-
 import { months, monthLabel } from './data.js';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.chartDataSource = new DataSource({
+function App() {
+  const [chartDataSource, setChartDataSource] = useState(null);
+
+  useEffect(() => {
+    const dataSource = new DataSource({
       store: {
         type: 'odata',
         url: 'https://js.devexpress.com/Demos/WidgetsGallery/odata/WeatherItems',
@@ -37,76 +34,62 @@ class App extends React.Component {
       filter: ['Id', '=', 1],
       paginate: false,
     });
+    setChartDataSource(dataSource);
+  }, []);
 
-    this.onValueChanged = (data) => {
-      this.chartDataSource.filter(['Id', '=', data.value]);
-      this.chartDataSource.load();
+  const onValueChanged = (data) => {
+    chartDataSource.filter(['Id', '=', data.value]);
+    chartDataSource.load();
+  };
+
+  const customizeLabel = (e) => {
+    return `${e.valueText}${'&#176C'}`;
+  };
+
+  const customizeTooltip = (arg) => {
+    return {
+      text: `${arg.valueText}${'&#176C'}`,
     };
-  }
+  };
 
-  render() {
-    return (
-      <div id="chart-demo">
-        <Chart
-          title="Temperature in Seattle , 2017"
-          dataSource={this.chartDataSource}>
+  return (
+    <div id="chart-demo">
+      {chartDataSource && (
+        <Chart title="Temperature in Seattle , 2017" dataSource={chartDataSource}>
           <Size height={420} />
-          <ValueAxis
-            valueType="numeric"
-          >
+          <ValueAxis valueType="numeric">
             <Grid opacity={0.2} />
-            <Label customizeText={this.customizeLabel} />
+            <Label customizeText={customizeLabel} />
           </ValueAxis>
           <ArgumentAxis type="discrete">
             <Grid visible={true} opacity={0.5} />
           </ArgumentAxis>
           <CommonPaneSettings>
-            <Border
-              visible={true}
-              width={2}
-              top={false}
-              right={false}
-            />
+            <Border visible={true} width={2} top={false} right={false} />
           </CommonPaneSettings>
-          <Series
-            argumentField="Number"
-            valueField="Temperature"
-            type="spline"
-          />
+          <Series argumentField="Number" valueField="Temperature" type="spline" />
           <Legend visible={false} />
           <Export enabled={true} />
-          <Tooltip
-            enabled={true}
-            customizeTooltip={customizeTooltip} />
+          <Tooltip enabled={true} customizeTooltip={customizeTooltip} />
           <LoadingIndicator enabled={true} />
         </Chart>
+      )}
 
-        <div className="action">
-          <div className="label">Choose a month:
-          </div>
-          <SelectBox
-            id="selectbox"
-            width={150}
-            valueExpr="id"
-            inputAttr={monthLabel}
-            displayExpr="name"
-            items={months}
-            defaultValue={1}
-            onValueChanged={this.onValueChanged} />
-        </div>
+      <div className="action">
+        <div className="label">Choose a month:</div>
+        <SelectBox
+          id="selectbox"
+          width={150}
+          valueExpr="id"
+          inputAttr={monthLabel}
+          displayExpr="name"
+          items={months}
+          defaultValue={1}
+          onValueChanged={onValueChanged}
+        />
       </div>
-    );
-  }
-
-  customizeLabel(e) {
-    return `${e.valueText}${'&#176C'}`;
-  }
-}
-
-function customizeTooltip(arg) {
-  return {
-    text: `${arg.valueText}${'&#176C'}`,
-  };
+    </div>
+  );
 }
 
 export default App;

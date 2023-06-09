@@ -10,27 +10,25 @@ const format = {
   precision: 1,
 };
 
-class App extends React.Component {
-  render() {
-    return (
-      <BarGauge
-        id="gauge"
-        startValue={0}
-        endValue={100}
-        defaultValues={values}
-      >
-        <Label indent={30} format={format} customizeText={this.customizeText} />
-        <Export enabled={true} />
-        <Title text={"Series' Ratings"}>
-          <Font size={28} />
-        </Title>
-      </BarGauge>
-    );
-  }
-
-  customizeText({ valueText }) {
+const App = () => {
+  const customizeText = ({ valueText }) => {
     return `${valueText} %`;
   }
+
+  return (
+    <BarGauge
+      id="gauge"
+      startValue={0}
+      endValue={100}
+      defaultValues={values}
+    >
+      <Label indent={30} format={format} customizeText={customizeText} />
+      <Export enabled={true} />
+      <Title text={"Series' Ratings"}>
+        <Font size={28} />
+      </Title>
+    </BarGauge>
+  );
 }
 
 export default App;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Gantt, {
   Tasks, Dependencies, Resources, ResourceAssignments, Column, Editing, ContextMenu,
 } from 'devextreme-react/gantt';
@@ -8,11 +8,39 @@ import {
 } from './data.js';
 
 function App() {
-  const [ganttConfig, setGanttConfig] = React.useState({
-    showResources: true,
-    disableContextMenu: false,
-    contextMenuItems: getContextMenuItems(),
-  });
+  const [showResources, setShowResources] = useState(true);
+  const [disableContextMenu, setDisableContextMenu] = useState(false);
+  const [contextMenuItems, setContextMenuItems] = useState(getContextMenuItems());
+
+  function onContextMenuPreparing(e) {
+    e.cancel = disableContextMenu;
+  }
+
+  function onCustomizeContextMenu(e) {
+    setContextMenuItems(e.value ? getContextMenuItems() : undefined);
+  }
+
+  function onPreventContextMenuShowing(e) {
+    setDisableContextMenu(e.value);
+  }
+
+  function onCustomCommandClick(e) {
+    if (e.name === 'ToggleDisplayOfResources') {
+      setShowResources(!showResources);
+    }
+  }
+
+  function getContextMenuItems() {
+    return [
+      'addTask',
+      'taskdetails',
+      'deleteTask',
+      {
+        name: 'ToggleDisplayOfResources',
+        text: 'Toggle Display of Resources',
+      },
+    ];
+  }
 
   return (
     <div id="form-demo">
@@ -21,7 +49,7 @@ function App() {
         <div className="option">
           <CheckBox
             text="Prevent Context Menu Showing"
-            value={ganttConfig.disableContextMenu}
+            value={disableContextMenu}
             onValueChanged={onPreventContextMenuShowing}
           />
         </div>
@@ -38,13 +66,13 @@ function App() {
         <Gantt
           taskListWidth={500}
           height={700}
-          showResources={ganttConfig.showResources}
+          showResources={showResources}
           scaleType="weeks"
           onCustomCommand={onCustomCommandClick}
           onContextMenuPreparing={onContextMenuPreparing}
         >
           <ContextMenu
-            items={ganttConfig.contextMenuItems} />
+            items={contextMenuItems} />
 
           <Tasks dataSource={tasks} />
           <Dependencies dataSource={dependencies} />
@@ -60,45 +88,6 @@ function App() {
       </div>
     </div>
   );
-
-  function onContextMenuPreparing(e) {
-    e.cancel = ganttConfig.disableContextMenu;
-  }
-
-  function onCustomizeContextMenu(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      contextMenuItems: e.value ? getContextMenuItems() : undefined,
-    });
-  }
-
-  function onPreventContextMenuShowing(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      disableContextMenu: e.value,
-    });
-  }
-
-  function onCustomCommandClick(e) {
-    if (e.name === 'ToggleDisplayOfResources') {
-      setGanttConfig({
-        ...ganttConfig,
-        showResources: !ganttConfig.showResources,
-      });
-    }
-  }
-
-  function getContextMenuItems() {
-    return [
-      'addTask',
-      'taskdetails',
-      'deleteTask',
-      {
-        name: 'ToggleDisplayOfResources',
-        text: 'Toggle Display of Resources',
-      },
-    ];
-  }
 }
 
 export default App;

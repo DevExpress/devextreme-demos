@@ -11,7 +11,7 @@ import Funnel, {
 } from 'devextreme-react/funnel';
 import { dataSource } from './data.js';
 
-function App() {
+const App = () => {
   return (
     <Funnel id="pyramid"
       dataSource={dataSource}

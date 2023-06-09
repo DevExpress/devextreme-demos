@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Gantt, {
   Tasks, Dependencies, Column, Validation, Editing,
 } from 'devextreme-react/gantt';
@@ -6,11 +6,32 @@ import CheckBox from 'devextreme-react/check-box';
 import { tasks, dependencies } from './data.js';
 
 function App() {
-  const [ganttConfig, setGanttConfig] = React.useState({
+  const [ganttConfig, setGanttConfig] = useState({
     autoUpdateParentTasks: true,
     validateDependencies: true,
     enablePredecessorGap: true,
   });
+
+  const onAutoUpdateParentTasksChanged = (e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      autoUpdateParentTasks: e.value,
+    });
+  };
+
+  const onValidateDependenciesChanged = (e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      validateDependencies: e.value,
+    });
+  };
+
+  const onEnablePredecessorGapChanged = (e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      enablePredecessorGap: e.value,
+    });
+  };
 
   return (
     <div id="form-demo">
@@ -63,27 +84,6 @@ function App() {
       </div>
     </div>
   );
-
-  function onAutoUpdateParentTasksChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      autoUpdateParentTasks: e.value,
-    });
-  }
-
-  function onValidateDependenciesChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      validateDependencies: e.value,
-    });
-  }
-
-  function onEnablePredecessorGapChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      enablePredecessorGap: e.value,
-    });
-  }
 }
 
 export default App;

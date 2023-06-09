@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import DataGrid, { Paging, Scrolling, Column } from 'devextreme-react/data-grid';
 import Resizable from 'devextreme-react/resizable';
 import CheckBox from 'devextreme-react/check-box';
@@ -9,15 +9,15 @@ import { orders, handleLabel } from './data.js';
 const handleValues = ['left', 'top', 'right', 'bottom'];
 
 function App() {
-  const [keepAspectRatio, setKeepAspectRatio] = React.useState(true);
-  const [handles, setHandles] = React.useState(handleValues);
-  const [resizableClasses, setResizableClasses] = React.useState('');
+  const [keepAspectRatio, setKeepAspectRatio] = useState(true);
+  const [handles, setHandles] = useState(handleValues);
+  const [resizableClasses, setResizableClasses] = useState('');
 
-  const keepAspectRatioValueChange = React.useCallback((value) => {
+  const keepAspectRatioValueChange = useCallback((value) => {
     setKeepAspectRatio(value);
   }, [setKeepAspectRatio]);
 
-  const handlesValueChange = React.useCallback((value) => {
+  const handlesValueChange = useCallback((value) => {
     const classes = handleValues.reduce((acc, handle) => {
       const newClass = value.includes(handle) ? '' : ` no-${handle}-handle`;
       return acc + newClass;

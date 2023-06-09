@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Button from 'devextreme-react/button';
 import SelectBox from 'devextreme-react/select-box';
 import DataGrid, {
@@ -10,113 +10,97 @@ import service from './data.js';
 
 const countLabel = { 'aria-label': 'Count' };
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.orders = service.getOrders();
-    this.state = {
-      expanded: true,
-      totalCount: this.getGroupCount('CustomerStoreState'),
-      grouping: 'CustomerStoreState',
-    };
-    this.groupingValues = [{
-      value: 'CustomerStoreState',
-      text: 'Grouping by State',
-    }, {
-      value: 'Employee',
-      text: 'Grouping by Employee',
-    }];
-    this.dataGrid = null;
+const App = () => {
+  const [expanded, setExpanded] = useState(true);
+  const [totalCount, setTotalCount] = useState(getGroupCount('CustomerStoreState'));
+  const [grouping, setGrouping] = useState('CustomerStoreState');
+  const dataGridRef = useRef(null);
 
-    this.groupChanged = this.groupChanged.bind(this);
-    this.collapseAllClick = this.collapseAllClick.bind(this);
-    this.refreshDataGrid = this.refreshDataGrid.bind(this);
-    this.getRef = this.getRef.bind(this);
-  }
+  const orders = service.getOrders();
 
-  getGroupCount(groupField) {
-    return query(this.orders)
+  const groupingValues = [{
+    value: 'CustomerStoreState',
+    text: 'Grouping by State',
+  }, {
+    value: 'Employee',
+    text: 'Grouping by Employee',
+  }];
+
+  useEffect(() => {
+    window.dataGrid = dataGridRef.current;
+  }, []);
+
+  const getGroupCount = (groupField) => {
+    return query(orders)
       .groupBy(groupField)
       .toArray().length;
   }
 
-  groupChanged(e) {
+  const groupChanged = (e) => {
     const grouping = e.value;
-    this.dataGrid.instance.clearGrouping();
-    this.dataGrid.instance.columnOption(grouping, 'groupIndex', 0);
-    this.setState({
-      totalCount: this.getGroupCount(grouping),
-      grouping,
-    });
+    dataGridRef.current.instance.clearGrouping();
+    dataGridRef.current.instance.columnOption(grouping, 'groupIndex', 0);
+    setTotalCount(getGroupCount(grouping));
+    setGrouping(grouping);
   }
 
-  collapseAllClick() {
-    const newValue = !this.state.expanded;
-    this.setState({
-      expanded: newValue,
-    });
+  const collapseAllClick = () => {
+    setExpanded(!expanded);
   }
 
-  refreshDataGrid() {
-    this.dataGrid.instance.refresh();
+  const refreshDataGrid = () => {
+    dataGridRef.current.instance.refresh();
   }
 
-  getRef(ref) {
-    this.dataGrid = ref;
-    window.dataGrid = this.dataGrid;
-  }
-
-  render() {
-    return (
-      <DataGrid id="gridContainer"
-        ref={this.getRef}
-        dataSource={this.orders}
-        keyExpr="ID"
-        showBorders={true}>
-        <Grouping autoExpandAll={this.state.expanded} />
-        <ColumnChooser enabled={true} />
-        <LoadPanel enabled={true} />
-        <Column dataField="OrderNumber" caption="Invoice Number" />
-        <Column dataField="OrderDate" />
-        <Column dataField="Employee" />
-        <Column dataField="CustomerStoreCity" caption="City" />
-        <Column dataField="CustomerStoreState" caption="State" groupIndex={0} />
-        <Column dataField="SaleAmount" alignment="right" format="currency" />
-        <Toolbar>
-          <Item location="before">
-            <div className="informer">
-              <h2 className="count">{this.state.totalCount}</h2>
-              <span className="name">Total Count</span>
-            </div>
-          </Item>
-          <Item location="before">
-            <SelectBox
-              width="225"
-              items={this.groupingValues}
-              displayExpr="text"
-              inputAttr={countLabel}
-              valueExpr="value"
-              value={this.state.grouping}
-              onValueChanged={this.groupChanged} />
-          </Item>
-          <Item location="before">
-            <Button
-              text={this.state.expanded ? 'Collapse All' : 'Expand All'}
-              width='136'
-              onClick={this.collapseAllClick} />
-          </Item>
-          <Item location="after">
-            <Button
-              icon='refresh'
-              onClick={this.refreshDataGrid} />
-          </Item>
-          <Item
-            name="columnChooserButton"
-          />
-        </Toolbar>
-      </DataGrid>
-    );
-  }
+  return (
+    <DataGrid id="gridContainer"
+      ref={dataGridRef}
+      dataSource={orders}
+      keyExpr="ID"
+      showBorders={true}>
+      <Grouping autoExpandAll={expanded} />
+      <ColumnChooser enabled={true} />
+      <LoadPanel enabled={true} />
+      <Column dataField="OrderNumber" caption="Invoice Number" />
+      <Column dataField="OrderDate" />
+      <Column dataField="Employee" />
+      <Column dataField="CustomerStoreCity" caption="City" />
+      <Column dataField="CustomerStoreState" caption="State" groupIndex={0} />
+      <Column dataField="SaleAmount" alignment="right" format="currency" />
+      <Toolbar>
+        <Item location="before">
+          <div className="informer">
+            <h2 className="count">{totalCount}</h2>
+            <span className="name">Total Count</span>
+          </div>
+        </Item>
+        <Item location="before">
+          <SelectBox
+            width="225"
+            items={groupingValues}
+            displayExpr="text"
+            inputAttr={countLabel}
+            valueExpr="value"
+            value={grouping}
+            onValueChanged={groupChanged} />
+        </Item>
+        <Item location="before">
+          <Button
+            text={expanded ? 'Collapse All' : 'Expand All'}
+            width='136'
+            onClick={collapseAllClick} />
+        </Item>
+        <Item location="after">
+          <Button
+            icon='refresh'
+            onClick={refreshDataGrid} />
+        </Item>
+        <Item
+          name="columnChooserButton"
+        />
+      </Toolbar>
+    </DataGrid>
+  );
 }
 
 export default App;

@@ -1,13 +1,9 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import OData from 'devextreme/data/odata/store';
 import { Autocomplete } from 'devextreme-react/autocomplete';
 import CustomStore from 'devextreme/data/custom_store';
 import 'whatwg-fetch';
-
-import {
-  names, surnames, positions,
-} from './data.js';
+import { names, surnames, positions } from './data.js';
 
 function isNotEmpty(value) {
   return value !== undefined && value !== null && value !== '';
@@ -24,11 +20,7 @@ const clientsStore = new CustomStore({
   useDefaultSearch: true,
   load(loadOptions) {
     let params = '?';
-    [
-      'skip',
-      'take',
-      'filter',
-    ].forEach((option) => {
+    ['skip', 'take', 'filter'].forEach((option) => {
       if (option in loadOptions && isNotEmpty(loadOptions[option])) {
         params += `${option}=${JSON.stringify(loadOptions[option])}&`;
       }
@@ -39,154 +31,133 @@ const clientsStore = new CustomStore({
       .then((data) => ({
         data: data.data,
       }))
-      .catch(() => { throw new Error('Data Loading Error'); });
+      .catch(() => {
+        throw new Error('Data Loading Error');
+      });
   },
 });
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstName: '',
-      lastName: '',
-      position: positions[0],
-      state: '',
-      currentClient: '',
-    };
+const App = () => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [position, setPosition] = useState(positions[0]);
+  const [state, setState] = useState('');
+  const [currentClient, setCurrentClient] = useState('');
 
-    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
-    this.handleLastNameChange = this.handleLastNameChange.bind(this);
-    this.handleStateChange = this.handleStateChange.bind(this);
-    this.handleCurrentClientChange = this.handleCurrentClientChange.bind(this);
-  }
+  const handleFirstNameChange = (e) => {
+    setFirstName(e.value);
+  };
 
-  render() {
-    let fullInfo = '';
-    fullInfo += (`${this.state.firstName || ''} ${this.state.lastName || ''}`).trim();
-    fullInfo += (fullInfo && this.state.position) ? (`, ${this.state.position}`) : this.state.position || '';
-    fullInfo += (fullInfo && this.state.state) ? (`, ${this.state.state}`) : this.state.state || '';
-    fullInfo += (fullInfo && this.state.currentClient) ? (`, ${this.state.currentClient}`) : this.state.currentClient || '';
+  const handleLastNameChange = (e) => {
+    setLastName(e.value);
+  };
 
-    return (
-      <div className="form">
+  const handleStateChange = (e) => {
+    setState(e.value);
+  };
 
-        <div className="dx-fieldset">
-          <div className="dx-fieldset-header">Default Mode</div>
-          <div className="dx-field">
-            <div className="dx-field-label">First Name</div>
-            <div className="dx-field-value">
-              <Autocomplete
-                dataSource={names}
-                value={this.state.firstName}
-                onValueChanged={this.handleFirstNameChange}
-                placeholder="Type first name..."
-              />
-            </div>
-          </div>
-        </div>
+  const handleCurrentClientChange = (e) => {
+    setCurrentClient(e.value);
+  };
 
-        <div className="dx-fieldset">
-          <div className="dx-fieldset-header">With Clear Button</div>
-          <div className="dx-field">
-            <div className="dx-field-label">Last Name</div>
-            <div className="dx-field-value">
-              <Autocomplete
-                dataSource={surnames}
-                value={this.state.lastName}
-                onValueChanged={this.handleLastNameChange}
-                showClearButton={true}
-                placeholder="Type last name..."
-              />
-            </div>
-          </div>
-        </div>
+  let fullInfo = '';
+  fullInfo += (`${firstName || ''} ${lastName || ''}`).trim();
+  fullInfo += (fullInfo && position) ? (`, ${position}`) : position || '';
+  fullInfo += (fullInfo && state) ? (`, ${state}`) : state || '';
+  fullInfo += (fullInfo && currentClient) ? (`, ${currentClient}`) : currentClient || '';
 
-        <div className="dx-fieldset">
-          <div className="dx-fieldset-header">Disabled</div>
-          <div className="dx-field">
-            <div className="dx-field-label">Position</div>
-            <div className="dx-field-value">
-              <Autocomplete
-                dataSource={positions}
-                value={this.state.position}
-                disabled={true}
-              />
-            </div>
-          </div>
-        </div>
+  const renderState = (data) => <span>{data.State_Long} ({data.State_Short})</span>;
 
-        <div className="dx-fieldset">
-          <div className="dx-fieldset-header">Custom Item Template and Data Source Usage</div>
-          <div className="dx-field">
-            <div className="dx-field-label">State</div>
-            <div className="dx-field-value">
-              <Autocomplete
-                dataSource={states}
-                value={this.state.state}
-                valueExpr="State_Long"
-                onValueChanged={this.handleStateChange}
-                placeholder="Type state name..."
-                itemRender={this.renderState}
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="dx-fieldset">
-          <div className="dx-fieldset-header">Custom Store and Search Options</div>
-          <div className="dx-field">
-            <div className="dx-field-label">Current Client</div>
-            <div className="dx-field-value">
-              <Autocomplete
-                dataSource={clientsStore}
-                value={this.state.currentClient}
-                valueExpr="Text"
-                onValueChanged={this.handleCurrentClientChange}
-                minSearchLength={2}
-                searchTimeout={500}
-                placeholder="Type client name..."
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="dx-fieldset">
-          <div className="dx-fieldset-header">Event Handling</div>
-          <div className="employees-data">
-            Employee data: <span>{fullInfo}</span>
+  return (
+    <div className="form">
+      <div className="dx-fieldset">
+        <div className="dx-fieldset-header">Default Mode</div>
+        <div className="dx-field">
+          <div className="dx-field-label">First Name</div>
+          <div className="dx-field-value">
+            <Autocomplete
+              dataSource={names}
+              value={firstName}
+              onValueChanged={handleFirstNameChange}
+              placeholder="Type first name..."
+            />
           </div>
         </div>
       </div>
-    );
-  }
 
-  renderState(data) {
-    return <span>{data.State_Long} ({data.State_Short})</span>;
-  }
+      <div className="dx-fieldset">
+        <div className="dx-fieldset-header">With Clear Button</div>
+        <div className="dx-field">
+          <div className="dx-field-label">Last Name</div>
+          <div className="dx-field-value">
+            <Autocomplete
+              dataSource={surnames}
+              value={lastName}
+              onValueChanged={handleLastNameChange}
+              showClearButton={true}
+              placeholder="Type last name..."
+            />
+          </div>
+        </div>
+      </div>
 
-  handleFirstNameChange(e) {
-    this.setState({
-      firstName: e.value,
-    });
-  }
+      <div className="dx-fieldset">
+        <div className="dx-fieldset-header">Disabled</div>
+        <div className="dx-field">
+          <div className="dx-field-label">Position</div>
+          <div className="dx-field-value">
+            <Autocomplete
+              dataSource={positions}
+              value={position}
+              disabled={true}
+            />
+          </div>
+        </div>
+      </div>
 
-  handleLastNameChange(e) {
-    this.setState({
-      lastName: e.value,
-    });
-  }
+      <div className="dx-fieldset">
+        <div className="dx-fieldset-header">Custom Item Template and Data Source Usage</div>
+        <div className="dx-field">
+          <div className="dx-field-label">State</div>
+          <div className="dx-field-value">
+            <Autocomplete
+              dataSource={states}
+              value={state}
+              valueExpr="State_Long"
+              onValueChanged={handleStateChange}
+              placeholder="Type state name..."
+              itemRender={renderState}
+            />
+          </div>
+        </div>
+      </div>
 
-  handleStateChange(e) {
-    this.setState({
-      state: e.value,
-    });
-  }
+      <div className="dx-fieldset">
+        <div className="dx-fieldset-header">Custom Store and Search Options</div>
+        <div className="dx-field">
+          <div className="dx-field-label">Current Client</div>
+          <div className="dx-field-value">
+            <Autocomplete
+              dataSource={clientsStore}
+              value={currentClient}
+              valueExpr="Text"
+              onValueChanged={handleCurrentClientChange}
+              minSearchLength={2}
+              searchTimeout={500}
+              placeholder="Type client name..."
+            />
+          </div>
+        </div>
+      </div>
 
-  handleCurrentClientChange(e) {
-    this.setState({
-      currentClient: e.value,
-    });
-  }
-}
+      <div className="dx-fieldset">
+        <div className="dx-fieldset-header">Event Handling</div>
+        <div className="employees-data">
+          Employee data: <span>{fullInfo}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default App;

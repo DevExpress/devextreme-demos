@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import RangeSelector, {
   Margin, Scale, MinorTick, Label, SliderMarker,
 } from 'devextreme-react/range-selector';
 
 const defaultValue = [40000, 80000];
 
-function App() {
+const App = () => {
+  const [value, setValue] = useState(defaultValue);
+
   return (
     <RangeSelector
       id="range-selector"
       title="Select House Price Range"
-      defaultValue={defaultValue}
+      defaultValue={value}
+      onValueChanged={setValue}
     >
       <Margin top={50} />
       <Scale

@@ -1,20 +1,12 @@
 import React from 'react';
-
 import Gantt, {
   Tasks, Dependencies, Resources, ResourceAssignments, Column, Editing, Toolbar, Item, Validation,
 } from 'devextreme-react/gantt';
+import { tasks, dependencies, resources, resourceAssignments } from './data.js';
 
-import {
-  tasks, dependencies, resources, resourceAssignments,
-} from './data.js';
-
-function App() {
+const App = () => {
   return (
-    <Gantt
-      taskListWidth={500}
-      scaleType="weeks"
-      height={700}>
-
+    <Gantt taskListWidth={500} scaleType="weeks" height={700}>
       <Tasks dataSource={tasks} />
       <Dependencies dataSource={dependencies} />
       <Resources dataSource={resources} />
@@ -42,6 +34,6 @@ function App() {
       <Editing enabled />
     </Gantt>
   );
-}
+};
 
 export default App;

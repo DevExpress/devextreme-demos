@@ -6,7 +6,7 @@ import { dataSource } from './data.js';
 
 const range = [new Date(2011, 11, 25), new Date(2012, 0, 1)];
 
-function App() {
+const App = () => {
   return (
     <RangeSelector
       id="range-selector"

@@ -7,7 +7,7 @@ import {
 } from './data.js';
 import TaskTemplate from './TaskTemplate.js';
 
-function App() {
+const App = () => {
   return (
     <div id="form-demo">
       <div className="widget-container">

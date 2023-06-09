@@ -1,10 +1,6 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import Scheduler, { Resource, View, Scrolling } from 'devextreme-react/scheduler';
-import {
-  resources,
-  generateAppointments,
-} from './data.js';
+import { resources, generateAppointments } from './data.js';
 
 const currentDate = new Date(2021, 1, 2);
 
@@ -17,12 +13,15 @@ const endDayHour = 20;
 
 const appointments = generateAppointments(startDay, endDay, startDayHour, endDayHour);
 
-function App() {
+const App = () => {
+  const [currentView, setCurrentView] = useState('Timeline');
+
   return (
     <Scheduler
       dataSource={appointments}
       height={600}
-      defaultCurrentView='Timeline'
+      defaultCurrentView={currentView}
+      onOptionChanged={(e) => setCurrentView(e.value)}
       defaultCurrentDate={currentDate}
       startDayHour={startDayHour}
       endDayHour={endDayHour}

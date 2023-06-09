@@ -7,45 +7,44 @@ import Item from './Item.js';
 
 const searchExpression = ['FirstName', 'LastName', 'Prefix'];
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <div className="dx-fieldset">
-          <div className="dx-fieldset-header">Custom Field Template</div>
-          <div className="dx-field">
-            <Lookup className="field-customization"
-              defaultValue={employees[0].ID}
-              displayExpr={this.getDisplayExpr}
-              valueExpr="ID"
-              items={employees}
-              searchEnabled={true}
-              fieldRender={Field}>
-              <DropDownOptions title="Select employee" />
-            </Lookup>
-          </div>
-        </div>
-        <div className="dx-fieldset">
-          <div className="dx-fieldset-header">Custom Item Template</div>
-          <div className="dx-field">
-            <Lookup
-              items={employees}
-              displayExpr={this.getDisplayExpr}
-              searchExpr={searchExpression}
-              valueExpr="ID"
-              placeholder="Select employee"
-              itemRender={Item}>
-              <DropDownOptions title="Select employee" />
-            </Lookup>
-          </div>
-        </div>
-      </div>
-    );
-  }
+const App = () => {
 
-  getDisplayExpr(item) {
+  const getDisplayExpr = (item) => {
     return item ? `${item.FirstName} ${item.LastName}` : '';
   }
+
+  return (
+    <div>
+      <div className="dx-fieldset">
+        <div className="dx-fieldset-header">Custom Field Template</div>
+        <div className="dx-field">
+          <Lookup className="field-customization"
+            defaultValue={employees[0].ID}
+            displayExpr={getDisplayExpr}
+            valueExpr="ID"
+            items={employees}
+            searchEnabled={true}
+            fieldRender={Field}>
+            <DropDownOptions title="Select employee" />
+          </Lookup>
+        </div>
+      </div>
+      <div className="dx-fieldset">
+        <div className="dx-fieldset-header">Custom Item Template</div>
+        <div className="dx-field">
+          <Lookup
+            items={employees}
+            displayExpr={getDisplayExpr}
+            searchExpr={searchExpression}
+            valueExpr="ID"
+            placeholder="Select employee"
+            itemRender={Item}>
+            <DropDownOptions title="Select employee" />
+          </Lookup>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default App;

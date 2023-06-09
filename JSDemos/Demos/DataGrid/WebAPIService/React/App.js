@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import 'devextreme/data/odata/store';
 import {
   Column,
@@ -52,71 +51,77 @@ const shippersData = createStore({
   },
 });
 
-class App extends React.Component {
-  render() {
-    return (
-      <DataGrid
-        dataSource={dataSource}
-        showBorders={true}
-        height={600}
-        remoteOperations={true}
+const App = () => {
+  const [enabled, setEnabled] = useState(true);
+  const [visible, setVisible] = useState(true);
+  const [mode, setMode] = useState('row');
+  const [allowAdding, setAllowAdding] = useState(true);
+  const [allowDeleting, setAllowDeleting] = useState(true);
+  const [allowUpdating, setAllowUpdating] = useState(true);
+  const [autoExpandAll, setAutoExpandAll] = useState(false);
+
+  return (
+    <DataGrid
+      dataSource={dataSource}
+      showBorders={true}
+      height={600}
+      remoteOperations={true}
+    >
+      <MasterDetail
+        enabled={enabled}
+        component={MasterDetailGrid}
+      />
+      <FilterRow visible={visible} />
+      <HeaderFilter visible={visible} />
+      <GroupPanel visible={visible} />
+      <Scrolling mode="virtual" />
+      <Editing
+        mode={mode}
+        allowAdding={allowAdding}
+        allowDeleting={allowDeleting}
+        allowUpdating={allowUpdating}
+      />
+      <Grouping autoExpandAll={autoExpandAll} />
+
+      <Column dataField="CustomerID" caption="Customer">
+        <Lookup dataSource={customersData} valueExpr="Value" displayExpr="Text" />
+        <StringLengthRule max={5} message="The field Customer must be a string with a maximum length of 5." />
+      </Column>
+
+      <Column dataField="OrderDate" dataType="date">
+        <RequiredRule message="The OrderDate field is required." />
+      </Column>
+
+      <Column dataField="Freight">
+        <HeaderFilter groupInterval={100} />
+        <RangeRule min={0} max={2000} message="The field Freight must be between 0 and 2000." />
+      </Column>
+
+      <Column dataField="ShipCountry">
+        <StringLengthRule max={15} message="The field ShipCountry must be a string with a maximum length of 15." />
+      </Column>
+
+      <Column
+        dataField="ShipVia"
+        caption="Shipping Company"
+        dataType="number"
       >
-        <MasterDetail
-          enabled={true}
-          component={MasterDetailGrid}
-        />
-        <FilterRow visible={true} />
-        <HeaderFilter visible={true} />
-        <GroupPanel visible={true} />
-        <Scrolling mode="virtual" />
-        <Editing
-          mode="row"
-          allowAdding={true}
-          allowDeleting={true}
-          allowUpdating={true}
-        />
-        <Grouping autoExpandAll={false} />
+        <Lookup dataSource={shippersData} valueExpr="Value" displayExpr="Text" />
+      </Column>
+      <Summary>
+        <TotalItem column="Freight" summaryType="sum">
+          <ValueFormat type="decimal" precision={2} />
+        </TotalItem>
 
-        <Column dataField="CustomerID" caption="Customer">
-          <Lookup dataSource={customersData} valueExpr="Value" displayExpr="Text" />
-          <StringLengthRule max={5} message="The field Customer must be a string with a maximum length of 5." />
-        </Column>
+        <GroupItem column="Freight" summaryType="sum">
+          <ValueFormat type="decimal" precision={2} />
+        </GroupItem>
 
-        <Column dataField="OrderDate" dataType="date">
-          <RequiredRule message="The OrderDate field is required." />
-        </Column>
+        <GroupItem summaryType="count" />
 
-        <Column dataField="Freight">
-          <HeaderFilter groupInterval={100} />
-          <RangeRule min={0} max={2000} message="The field Freight must be between 0 and 2000." />
-        </Column>
-
-        <Column dataField="ShipCountry">
-          <StringLengthRule max={15} message="The field ShipCountry must be a string with a maximum length of 15." />
-        </Column>
-
-        <Column
-          dataField="ShipVia"
-          caption="Shipping Company"
-          dataType="number"
-        >
-          <Lookup dataSource={shippersData} valueExpr="Value" displayExpr="Text" />
-        </Column>
-        <Summary>
-          <TotalItem column="Freight" summaryType="sum">
-            <ValueFormat type="decimal" precision={2} />
-          </TotalItem>
-
-          <GroupItem column="Freight" summaryType="sum">
-            <ValueFormat type="decimal" precision={2} />
-          </GroupItem>
-
-          <GroupItem summaryType="count" />
-
-        </Summary>
-      </DataGrid>
-    );
-  }
-}
+      </Summary>
+    </DataGrid>
+  );
+};
 
 export default App;

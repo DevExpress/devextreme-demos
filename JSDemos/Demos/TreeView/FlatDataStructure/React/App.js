@@ -1,46 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TreeView from 'devextreme-react/tree-view';
-
 import service from './data.js';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.products = service.getProducts();
-    this.state = {
-      currentItem: { ...this.products[0] },
-    };
-    this.selectItem = this.selectItem.bind(this);
-  }
+const App = () => {
+  const [currentItem, setCurrentItem] = useState(service.getProducts()[0]);
 
-  render() {
-    const { currentItem } = this.state;
-    return (
-      <div className="form">
-        <TreeView id="simple-treeview"
-          items={this.products}
-          dataStructure="plain"
-          displayExpr="name"
-          parentIdExpr="categoryId"
-          keyExpr="ID"
-          width={300}
-          onItemClick={this.selectItem} />
-        {currentItem.price
-          && <div id="product-details">
-            <img src={currentItem.icon} />
-            <div className="name">{currentItem.name}</div>
-            <div className="price">{`$${currentItem.price}`}</div>
-          </div>
-        }
-      </div>
-    );
-  }
+  const selectItem = (e) => {
+    setCurrentItem({ ...e.itemData });
+  };
 
-  selectItem(e) {
-    this.setState({
-      currentItem: { ...e.itemData },
-    });
-  }
-}
+  return (
+    <div className="form">
+      <TreeView
+        id="simple-treeview"
+        items={service.getProducts()}
+        dataStructure="plain"
+        displayExpr="name"
+        parentIdExpr="categoryId"
+        keyExpr="ID"
+        width={300}
+        onItemClick={selectItem}
+      />
+      {currentItem.price && (
+        <div id="product-details">
+          <img src={currentItem.icon} />
+          <div className="name">{currentItem.name}</div>
+          <div className="price">{`$${currentItem.price}`}</div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default App;

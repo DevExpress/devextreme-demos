@@ -1,11 +1,7 @@
-import React from 'react';
-
+import React, { useState, useCallback } from 'react';
 import Map from 'devextreme-react/map';
 import SelectBox from 'devextreme-react/select-box';
-
-import {
-  markersData, routesData, modeLabel, colorLabel,
-} from './data.js';
+import { markersData, routesData, modeLabel, colorLabel } from './data.js';
 
 const modes = ['driving', 'walking'];
 const routeColors = ['blue', 'green', 'red'];
@@ -14,17 +10,17 @@ const apiKey = {
   bing: 'Aq3LKP2BOmzWY47TZoT1YdieypN_rB6RY9FqBfx-MDCKjvvWBbT68R51xwbL-AqC',
 };
 
-export default function App() {
-  const [routes, setRoutes] = React.useState(routesData);
+function App() {
+  const [routes, setRoutes] = useState(routesData);
 
-  const routeModeChange = React.useCallback((value) => {
+  const routeModeChange = useCallback((value) => {
     setRoutes(routes.map((item) => {
       item.mode = value;
       return item;
     }));
   }, [routes, setRoutes]);
 
-  const routeColorChange = React.useCallback((value) => {
+  const routeColorChange = useCallback((value) => {
     setRoutes(routes.map((item) => {
       item.color = value;
       return item;
@@ -67,3 +63,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;

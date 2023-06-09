@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Accordion from 'devextreme-react/accordion';
 import CheckBox from 'devextreme-react/check-box';
 import TagBox from 'devextreme-react/tag-box';
@@ -10,84 +10,15 @@ import CustomItem from './CustomItem.js';
 
 const companyLabel = { 'aria-label': 'Company' };
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.companies = service.getCompanies();
-    this.state = {
-      selectedItems: [this.companies[0]],
-      multiple: false,
-      collapsible: false,
-      animationDuration: 300,
-    };
-    this.selectionChanged = this.selectionChanged.bind(this);
-    this.selectedItemsChanged = this.selectedItemsChanged.bind(this);
-    this.multipleChanged = this.multipleChanged.bind(this);
-    this.collapsibleChanged = this.collapsibleChanged.bind(this);
-    this.animationDurationChanged = this.animationDurationChanged.bind(this);
-  }
+const App = () => {
+  const companies = service.getCompanies();
+  const [selectedItems, setSelectedItems] = useState([companies[0]]);
+  const [multiple, setMultiple] = useState(false);
+  const [collapsible, setCollapsible] = useState(false);
+  const [animationDuration, setAnimationDuration] = useState(300);
 
-  render() {
-    const {
-      selectedItems, multiple, collapsible, animationDuration,
-    } = this.state;
-    return (
-      <div id="accordion">
-        <Accordion
-          dataSource={this.companies}
-          collapsible={collapsible}
-          multiple={multiple}
-          animationDuration={animationDuration}
-          selectedItems={selectedItems}
-          onSelectionChanged={this.selectionChanged}
-          itemTitleRender={CustomTitle}
-          itemRender={CustomItem}
-          id="accordion-container"
-        />
-        <div className="options">
-          <div className="caption">Options</div>
-          <div className="option">
-            <CheckBox text="Multiple enabled"
-              value={multiple}
-              onValueChanged={this.multipleChanged}
-            />
-          </div>
-          <div className="option">
-            <CheckBox
-              text="Collapsible enabled"
-              value={collapsible}
-              onValueChanged={this.collapsibleChanged}
-            />
-          </div>
-          <div className="option">
-            <span>Animation duration</span>
-            <Slider
-              min={0}
-              max={1000}
-              value={animationDuration}
-              onValueChanged={this.animationDurationChanged}
-            >
-              <Tooltip enabled={true} position="bottom" />
-              <Label visible={true} />
-            </Slider>
-          </div>
-          <div className="option">
-            <span className="caption">Selected Items</span>
-            <TagBox dataSource={this.companies}
-              displayExpr="CompanyName"
-              value={selectedItems}
-              inputAttr={companyLabel}
-              onValueChanged={this.selectedItemsChanged}
-              disabled={!multiple}
-            />
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  selectionChanged(e) {
-    let newItems = [...this.state.selectedItems];
+  const selectionChanged = (e) => {
+    let newItems = [...selectedItems];
     e.removedItems.forEach((item) => {
       const index = newItems.indexOf(item);
       if (index >= 0) {
@@ -97,34 +28,78 @@ class App extends React.Component {
     if (e.addedItems.length) {
       newItems = [...newItems, ...e.addedItems];
     }
-    this.setState({
-      selectedItems: newItems,
-    });
+    setSelectedItems(newItems);
   }
 
-  selectedItemsChanged(e) {
-    this.setState({
-      selectedItems: e.value,
-    });
+  const selectedItemsChanged = (e) => {
+    setSelectedItems(e.value);
   }
 
-  multipleChanged(e) {
-    this.setState({
-      multiple: e.value,
-    });
+  const multipleChanged = (e) => {
+    setMultiple(e.value);
   }
 
-  collapsibleChanged(e) {
-    this.setState({
-      collapsible: e.value,
-    });
+  const collapsibleChanged = (e) => {
+    setCollapsible(e.value);
   }
 
-  animationDurationChanged(e) {
-    this.setState({
-      animationDuration: e.value,
-    });
+  const animationDurationChanged = (e) => {
+    setAnimationDuration(e.value);
   }
+
+  return (
+    <div id="accordion">
+      <Accordion
+        dataSource={companies}
+        collapsible={collapsible}
+        multiple={multiple}
+        animationDuration={animationDuration}
+        selectedItems={selectedItems}
+        onSelectionChanged={selectionChanged}
+        itemTitleRender={CustomTitle}
+        itemRender={CustomItem}
+        id="accordion-container"
+      />
+      <div className="options">
+        <div className="caption">Options</div>
+        <div className="option">
+          <CheckBox text="Multiple enabled"
+            value={multiple}
+            onValueChanged={multipleChanged}
+          />
+        </div>
+        <div className="option">
+          <CheckBox
+            text="Collapsible enabled"
+            value={collapsible}
+            onValueChanged={collapsibleChanged}
+          />
+        </div>
+        <div className="option">
+          <span>Animation duration</span>
+          <Slider
+            min={0}
+            max={1000}
+            value={animationDuration}
+            onValueChanged={animationDurationChanged}
+          >
+            <Tooltip enabled={true} position="bottom" />
+            <Label visible={true} />
+          </Slider>
+        </div>
+        <div className="option">
+          <span className="caption">Selected Items</span>
+          <TagBox dataSource={companies}
+            displayExpr="CompanyName"
+            value={selectedItems}
+            inputAttr={companyLabel}
+            onValueChanged={selectedItemsChanged}
+            disabled={!multiple}
+          />
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default App;

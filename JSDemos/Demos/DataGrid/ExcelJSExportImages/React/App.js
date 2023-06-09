@@ -1,46 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import DataGrid, { Column, Export } from 'devextreme-react/data-grid';
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
-// Our demo infrastructure requires us to use 'file-saver-es'.
-// We recommend that you use the official 'file-saver' package in your applications.
 import { exportDataGrid } from 'devextreme/excel_exporter';
 
 import service from './data.js';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.employees = service.getEmployees();
-    this.onExporting = this.onExporting.bind(this);
-  }
+const App = () => {
+  const [employees, setEmployees] = useState([]);
 
-  render() {
-    return (
-      <div>
-        <DataGrid
-          id="gridContainer"
-          dataSource={this.employees}
-          keyExpr="ID"
-          showBorders={true}
-          showRowLines={true}
-          showColumnLines={false}
-          onExporting={this.onExporting}>
+  useEffect(() => {
+    setEmployees(service.getEmployees());
+  }, []);
 
-          <Column dataField="Picture" width={90} cellRender={this.renderGridCell} />
-          <Column dataField="FirstName" />
-          <Column dataField="LastName" />
-          <Column dataField="Position" />
-          <Column dataField="BirthDate" dataType="date" />
-          <Column dataField="HireDate" dataType="date" />
-
-          <Export enabled={true} />
-        </DataGrid>
-      </div>
-    );
-  }
-
-  onExporting(e) {
+  const onExporting = (e) => {
     const workbook = new Workbook();
     const worksheet = workbook.addWorksheet('Main sheet');
 
@@ -73,11 +46,34 @@ class App extends React.Component {
       });
     });
     e.cancel = true;
-  }
+  };
 
-  renderGridCell(cellData) {
+  const renderGridCell = (cellData) => {
     return (<div><img src={cellData.value}></img></div>);
-  }
-}
+  };
+
+  return (
+    <div>
+      <DataGrid
+        id="gridContainer"
+        dataSource={employees}
+        keyExpr="ID"
+        showBorders={true}
+        showRowLines={true}
+        showColumnLines={false}
+        onExporting={onExporting}>
+
+        <Column dataField="Picture" width={90} cellRender={renderGridCell} />
+        <Column dataField="FirstName" />
+        <Column dataField="LastName" />
+        <Column dataField="Position" />
+        <Column dataField="BirthDate" dataType="date" />
+        <Column dataField="HireDate" dataType="date" />
+
+        <Export enabled={true} />
+      </DataGrid>
+    </div>
+  );
+};
 
 export default App;

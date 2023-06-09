@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useCallback } from 'react';
 import PivotGrid, {
   FieldChooser,
   Export,
@@ -7,8 +6,6 @@ import PivotGrid, {
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
-// Our demo infrastructure requires us to use 'file-saver-es'.
-// We recommend that you use the official 'file-saver' package in your applications.
 import { exportPivotGrid } from 'devextreme/excel_exporter';
 import { sales } from './data.js';
 
@@ -39,7 +36,7 @@ const dataSource = new PivotGridDataSource({
 });
 
 export default function App() {
-  const onExporting = React.useCallback((e) => {
+  const onExporting = useCallback((e) => {
     const workbook = new Workbook();
     const worksheet = workbook.addWorksheet('Sales');
 
@@ -66,16 +63,16 @@ export default function App() {
       });
     });
     e.cancel = true;
-  });
+  }, []);
 
-  const onCellPrepared = React.useCallback(({ cell, area, cellElement }) => {
+  const onCellPrepared = useCallback(({ cell, area, cellElement }) => {
     cell.area = area;
 
     if (isDataCell(cell) || isTotalCell(cell)) {
       const appearance = getConditionalAppearance(cell);
       Object.assign(cellElement.style, getCssStyles(appearance));
     }
-  });
+  }, []);
 
   function isDataCell(cell) {
     return (cell.area === 'data' && cell.rowType === 'D' && cell.columnType === 'D');
@@ -115,7 +112,7 @@ export default function App() {
   }
 
   return (
-    <React.Fragment>
+    <>
       <PivotGrid
         allowSortingBySummary={true}
         allowSorting={true}
@@ -130,6 +127,6 @@ export default function App() {
         <FieldChooser enabled={false} />
         <Export enabled={true} />
       </PivotGrid>
-    </React.Fragment>
+    </>
   );
 }

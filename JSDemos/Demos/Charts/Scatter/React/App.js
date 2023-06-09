@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   Chart,
   Series,
@@ -17,22 +16,15 @@ import { generateDataSource } from './data.js';
 
 const dataSource = generateDataSource();
 
-export default function App() {
+function App() {
   return (
     <Chart id="chart" dataSource={dataSource}>
       <CommonSeriesSettings type="scatter" />
-      <Series
-        valueField="y1"
-        argumentField="x1" />
-      <Series
-        valueField="y2"
-        argumentField="x2"
-      >
+      <Series valueField="y1" argumentField="x1" />
+      <Series valueField="y2" argumentField="x2">
         <Point symbol="triangleDown" />
       </Series>
-      <ArgumentAxis
-        tickInterval={5}
-      >
+      <ArgumentAxis tickInterval={5}>
         <Grid visible={true} />
         <MinorGrid visible={true} />
       </ArgumentAxis>
@@ -44,3 +36,5 @@ export default function App() {
     </Chart>
   );
 }
+
+export default App;

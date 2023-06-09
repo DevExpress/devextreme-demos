@@ -1,18 +1,16 @@
 import React from 'react';
-
 import VectorMap, {
   Label,
   Layer,
   Font,
   LoadingIndicator,
 } from 'devextreme-react/vector-map';
-
 import * as mapsData from 'devextreme-dist/js/vectormap-data/usa.js';
 import { weatherData } from './data.js';
 
 const bounds = [-118, 52, -80, 20];
 
-export default function App() {
+const App = () => {
   return (
     <VectorMap
       id="vector-map"
@@ -37,3 +35,5 @@ export default function App() {
     </VectorMap>
   );
 }
+
+export default App;

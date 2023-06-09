@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import ScrollView from 'devextreme-react/scroll-view';
 import Sortable from 'devextreme-react/sortable';
 import { tasks as taskList, employees } from './data.js';
 
-function getLists(statusArray, taskArray) {
+const getLists = (statusArray, taskArray) => {
   const tasksMap = taskArray.reduce((result, task) => {
     if (result[task.Task_Status]) {
       result[task.Task_Status].push(task);
@@ -14,45 +14,45 @@ function getLists(statusArray, taskArray) {
     return result;
   }, {});
   return statusArray.map((status) => tasksMap[status]);
-}
+};
 
-function getEmployeesMap(employeesArray) {
+const getEmployeesMap = (employeesArray) => {
   return employeesArray.reduce((result, employee) => {
     result[employee.ID] = employee.Name;
     return result;
   }, {});
-}
+};
 
-function removeItem(array, removeIdx) {
+const removeItem = (array, removeIdx) => {
   return array.filter((_, idx) => idx !== removeIdx);
-}
+};
 
-function insertItem(array, item, insertIdx) {
+const insertItem = (array, item, insertIdx) => {
   const newArray = [...array];
   newArray.splice(insertIdx, 0, item);
   return newArray;
-}
+};
 
-function reorderItem(array, fromIdx, toIdx) {
+const reorderItem = (array, fromIdx, toIdx) => {
   const item = array[fromIdx];
   const result = removeItem(array, fromIdx);
   return insertItem(result, item, toIdx);
-}
+};
 
 const taskStatuses = ['Not Started', 'Need Assistance', 'In Progress', 'Deferred', 'Completed'];
 const employeesRecord = getEmployeesMap(employees);
 
-function Card({ task, employeesMap }) {
+const Card = ({ task, employeesMap }) => {
   return <div className="card dx-card dx-theme-text-color dx-theme-background-color">
     <div className={`card-priority priority-${task.Task_Priority}`}></div>
     <div className="card-subject">{task.Task_Subject}</div>
     <div className="card-assignee">{employeesMap[task.Task_Assigned_Employee_ID]}</div>
   </div>;
-}
+};
 
-function List({
+const List = ({
   title, index, tasks, employeesMap, onTaskDrop,
-}) {
+}) => {
   return <div className="list">
     <div className="list-title dx-theme-text-color">{title}</div>
     <ScrollView
@@ -73,18 +73,18 @@ function List({
       </Sortable>
     </ScrollView>
   </div>;
-}
+};
 
-function App() {
-  const [statuses, setStatuses] = React.useState(taskStatuses);
-  const [lists, setLists] = React.useState(getLists(taskStatuses, taskList));
+const App = () => {
+  const [statuses, setStatuses] = useState(taskStatuses);
+  const [lists, setLists] = useState(getLists(taskStatuses, taskList));
 
-  const onListReorder = React.useCallback(({ fromIndex, toIndex }) => {
+  const onListReorder = useCallback(({ fromIndex, toIndex }) => {
     setLists((state) => reorderItem(state, fromIndex, toIndex));
     setStatuses((state) => reorderItem(state, fromIndex, toIndex));
   }, []);
 
-  const onTaskDrop = React.useCallback(
+  const onTaskDrop = useCallback(
     ({
       fromData, toData, fromIndex, toIndex,
     }) => {
@@ -125,6 +125,6 @@ function App() {
       </ScrollView>
     </div>
   );
-}
+};
 
 export default App;

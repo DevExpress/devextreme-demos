@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 import TreeList, { Column, Lookup } from 'devextreme-react/tree-list';
 import { NumberBox } from 'devextreme-react/number-box';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
@@ -20,30 +19,21 @@ const taskEmployees = AspNetData.createStore({
 
 const focusedRowKeyLabel = { 'aria-label': 'Focused Row Key' };
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const [taskSubject, setTaskSubject] = useState('');
+  const [taskAssigned, setTaskAssigned] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [taskStatus, setTaskStatus] = useState('');
+  const [taskProgress, setTaskProgress] = useState('');
+  const [focusedRowKey, setFocusedRowKey] = useState(45);
 
-    this.state = {
-      taskSubject: '',
-      taskAssigned: '',
-      startDate: '',
-      taskStatus: '',
-      taskProgress: '',
-      focusedRowKey: 45,
-    };
-
-    this.onFocusedRowChanged = this.onFocusedRowChanged.bind(this);
-    this.onTaskIdChanged = this.onTaskIdChanged.bind(this);
-  }
-
-  onTaskIdChanged(e) {
+  const onTaskIdChanged = (e) => {
     if (e.event && e.value > 0) {
-      this.setState({ focusedRowKey: e.value });
+      setFocusedRowKey(e.value);
     }
-  }
+  };
 
-  onFocusedRowChanged(e) {
+  const onFocusedRowChanged = (e) => {
     const rowData = e.row && e.row.data;
     let progress;
     let cellValue;
@@ -56,68 +46,65 @@ class App extends React.Component {
         assigned = item.Name;
       });
 
-      this.setState({
-        taskSubject: rowData.Task_Subject,
-        taskAssigned: assigned,
-        startDate: new Date(rowData.Task_Start_Date).toLocaleDateString(),
-        taskStatus: e.row.data.Task_Status,
-        taskProgress: progress,
-        focusedRowKey: e.component.option('focusedRowKey'),
-      });
+      setTaskSubject(rowData.Task_Subject);
+      setTaskAssigned(assigned);
+      setStartDate(new Date(rowData.Task_Start_Date).toLocaleDateString());
+      setTaskStatus(e.row.data.Task_Status);
+      setTaskProgress(progress);
+      setFocusedRowKey(e.component.option('focusedRowKey'));
     }
-  }
+  };
 
-  render() {
-    return (
-      <div>
-        <TreeList
-          id="treeList"
-          dataSource={dataSourceOptions}
-          focusedRowEnabled={true}
-          focusedRowKey={this.state.focusedRowKey}
-          parentIdExpr="Task_Parent_ID"
-          hasItemsExpr="Has_Items"
-          wordWrapEnabled={true}
-          showBorders={true}
-          onFocusedRowChanged={this.onFocusedRowChanged}>
-          <Column dataField="Task_ID" width={100} alignment="left" />
-          <Column dataField="Task_Assigned_Employee_ID" caption="Assigned" minWidth={120}>
-            <Lookup dataSource={taskEmployees} valueExpr="ID" displayExpr="Name" />
-          </Column>
-          <Column dataField="Task_Status" caption="Status" width={160} />
-          <Column dataField="Task_Start_Date" caption="Start Date" dataType="date" width={160} />
-          <Column dataField="Task_Due_Date" caption="Due Date" dataType="date" width={160} />
-        </TreeList>
-        <div className="task-info">
-          <div className="info">
-            <div className="task-subject">{this.state.taskSubject}</div>
-            <span className="task-assigned">{this.state.taskAssigned}</span>
-            <span className="start-date">{this.state.startDate}</span>
-          </div>
-          <div className="progress">
-            <span className="task-status">{this.state.taskStatus}</span>
-            <span className="task-progress">{this.state.taskProgress}</span>
-          </div>
+  return (
+    <div>
+      <TreeList
+        id="treeList"
+        dataSource={dataSourceOptions}
+        focusedRowEnabled={true}
+        focusedRowKey={focusedRowKey}
+        parentIdExpr="Task_Parent_ID"
+        hasItemsExpr="Has_Items"
+        wordWrapEnabled={true}
+        showBorders={true}
+        onFocusedRowChanged={onFocusedRowChanged}
+      >
+        <Column dataField="Task_ID" width={100} alignment="left" />
+        <Column dataField="Task_Assigned_Employee_ID" caption="Assigned" minWidth={120}>
+          <Lookup dataSource={taskEmployees} valueExpr="ID" displayExpr="Name" />
+        </Column>
+        <Column dataField="Task_Status" caption="Status" width={160} />
+        <Column dataField="Task_Start_Date" caption="Start Date" dataType="date" width={160} />
+        <Column dataField="Task_Due_Date" caption="Due Date" dataType="date" width={160} />
+      </TreeList>
+      <div className="task-info">
+        <div className="info">
+          <div className="task-subject">{taskSubject}</div>
+          <span className="task-assigned">{taskAssigned}</span>
+          <span className="start-date">{startDate}</span>
         </div>
-
-        <div className="options">
-          <div className="caption">Options</div>
-          <div className="option">
-            <span>Focused row key </span>
-            <NumberBox
-              id="taskId"
-              min={1}
-              max={182}
-              step={0}
-              value={this.state.focusedRowKey}
-              inputAttr={focusedRowKeyLabel}
-              onValueChanged={this.onTaskIdChanged}>
-            </NumberBox>
-          </div>
+        <div className="progress">
+          <span className="task-status">{taskStatus}</span>
+          <span className="task-progress">{taskProgress}</span>
         </div>
       </div>
-    );
-  }
-}
+
+      <div className="options">
+        <div className="caption">Options</div>
+        <div className="option">
+          <span>Focused row key </span>
+          <NumberBox
+            id="taskId"
+            min={1}
+            max={182}
+            step={0}
+            value={focusedRowKey}
+            inputAttr={focusedRowKeyLabel}
+            onValueChanged={onTaskIdChanged}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default App;

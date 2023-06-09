@@ -1,5 +1,4 @@
-/* eslint-disable func-style */
-import React from 'react';
+import React, { useState } from 'react';
 
 import Scheduler from 'devextreme-react/scheduler';
 import notify from 'devextreme/ui/notify';
@@ -18,8 +17,8 @@ const notifyDisableDate = () => {
   notify('Cannot create or move an appointment/event to disabled time/date regions.', 'warning', 1000);
 };
 
-function App() {
-  const [currentView, setCurrentView] = React.useState(views[0]);
+const App = () => {
+  const [currentView, setCurrentView] = useState(views[0]);
 
   const onAppointmentFormOpening = (e) => {
     const startDate = new Date(e.appointmentData.startDate);

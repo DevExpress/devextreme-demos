@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ScrollView from 'devextreme-react/scroll-view';
 import Sortable from 'devextreme-react/sortable';
 import SelectBox from 'devextreme-react/select-box';
@@ -16,202 +16,154 @@ const itemOrientations = ['vertical', 'horizontal'];
 const verticalDragDirections = ['both', 'vertical'];
 const horizontalDragDirections = ['both', 'horizontal'];
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+function App() {
+  const [items, setItems] = useState(tasks);
+  const [dropFeedbackMode, setDropFeedbackMode] = useState('push');
+  const [itemOrientation, setItemOrientation] = useState('vertical');
+  const [dragDirection, setDragDirection] = useState('both');
+  const [scrollSpeed, setScrollSpeed] = useState(30);
+  const [scrollSensitivity, setScrollSensitivity] = useState(60);
+  const [handle, setHandle] = useState('');
+  const [dragComponent, setDragComponent] = useState(null);
+  const [cursorOffset, setCursorOffset] = useState(null);
 
-    this.state = {
-      items: tasks,
-      dropFeedbackMode: 'push',
-      itemOrientation: 'vertical',
-      dragDirection: 'both',
-      scrollSpeed: 30,
-      scrollSensitivity: 60,
-      handle: '',
-      dragComponent: null,
-      cursorOffset: null,
-    };
+  const onDragStart = (e) => {
+    e.itemData = items[e.fromIndex];
+  };
 
-    this.onDragStart = this.onDragStart.bind(this);
-    this.onReorder = this.onReorder.bind(this);
-    this.onDropFeedbackModeChanged = this.onDropFeedbackModeChanged.bind(this);
-    this.onItemOrientationChanged = this.onItemOrientationChanged.bind(this);
-    this.onDragDirectionChanged = this.onDragDirectionChanged.bind(this);
-    this.onScrollSpeedChanged = this.onScrollSpeedChanged.bind(this);
-    this.onScrollSensitivityChanged = this.onScrollSensitivityChanged.bind(this);
-    this.onHandleChanged = this.onHandleChanged.bind(this);
-    this.onDragTemplateChanged = this.onDragTemplateChanged.bind(this);
-  }
+  const onReorder = (e) => {
+    let newItems = [...items.slice(0, e.fromIndex), ...items.slice(e.fromIndex + 1)];
+    newItems = [
+      ...newItems.slice(0, e.toIndex),
+      e.itemData,
+      ...newItems.slice(e.toIndex),
+    ];
+    setItems(newItems);
+  };
 
-  render() {
-    const {
-      items,
-      dropFeedbackMode,
-      itemOrientation,
-      dragDirection,
-      scrollSpeed,
-      scrollSensitivity,
-      handle,
-      dragComponent,
-      cursorOffset,
-    } = this.state;
-    return (
-      <div id="demo-container">
-        <div className="widget-container">
-          <ScrollView
-            id="scroll"
-            className={itemOrientation === 'horizontal' ? 'horizontal' : ''}
-            direction={itemOrientation}
-            showScrollbar="always"
+  const onDropFeedbackModeChanged = (e) => {
+    setDropFeedbackMode(e.value);
+  };
+
+  const onItemOrientationChanged = (e) => {
+    setItemOrientation(e.value);
+    setDragDirection('both');
+  };
+
+  const onDragDirectionChanged = (e) => {
+    setDragDirection(e.value);
+  };
+
+  const onScrollSpeedChanged = (e) => {
+    setScrollSpeed(e.value);
+  };
+
+  const onScrollSensitivityChanged = (e) => {
+    setScrollSensitivity(e.value);
+  };
+
+  const onHandleChanged = (e) => {
+    setHandle(e.value ? '.handle' : '');
+  };
+
+  const onDragTemplateChanged = (e) => {
+    setDragComponent(e.value ? DragItem : null);
+    setCursorOffset(e.value ? { x: 10, y: 20 } : null);
+  };
+
+  return (
+    <div id="demo-container">
+      <div className="widget-container">
+        <ScrollView
+          id="scroll"
+          className={itemOrientation === 'horizontal' ? 'horizontal' : ''}
+          direction={itemOrientation}
+          showScrollbar="always"
+        >
+          <Sortable
+            id="list"
+            dropFeedbackMode={dropFeedbackMode}
+            itemOrientation={itemOrientation}
+            dragDirection={dragDirection}
+            scrollSpeed={scrollSpeed}
+            scrollSensitivity={scrollSensitivity}
+            handle={handle}
+            dragComponent={dragComponent}
+            cursorOffset={cursorOffset}
+            onDragStart={onDragStart}
+            onReorder={onReorder}
           >
-            <Sortable
-              id="list"
-              dropFeedbackMode={dropFeedbackMode}
-              itemOrientation={itemOrientation}
-              dragDirection={dragDirection}
-              scrollSpeed={scrollSpeed}
-              scrollSensitivity={scrollSensitivity}
-              handle={handle}
-              dragComponent={dragComponent}
-              cursorOffset={cursorOffset}
-              onDragStart={this.onDragStart}
-              onReorder={this.onReorder}
-            >
-              {items.map((item) => (
-                <Item
-                  key={item.Task_ID}
-                  text={item.Task_Subject}
-                  handle={handle}
-                />
-              ))}
-            </Sortable>
-          </ScrollView>
+            {items.map((item) => (
+              <Item
+                key={item.Task_ID}
+                text={item.Task_Subject}
+                handle={handle}
+              />
+            ))}
+          </Sortable>
+        </ScrollView>
+      </div>
+      <div className="options">
+        <div className="caption">Options</div>
+        <div className="option">
+          <span>Drop Feedback Mode:</span>
+          <SelectBox
+            items={dropFeedbackModes}
+            inputAttr={dropFeedbackModeLabel}
+            value={dropFeedbackMode}
+            onValueChanged={onDropFeedbackModeChanged}
+          />
         </div>
-        <div className="options">
-          <div className="caption">Options</div>
-          <div className="option">
-            <span>Drop Feedback Mode:</span>
-            <SelectBox
-              items={dropFeedbackModes}
-              inputAttr={dropFeedbackModeLabel}
-              value={dropFeedbackMode}
-              onValueChanged={this.onDropFeedbackModeChanged}
-            />
-          </div>
-          <div className="option">
-            <span>Item Orientation:</span>
-            <SelectBox
-              items={itemOrientations}
-              inputAttr={itemOrientationLabel}
-              value={itemOrientation}
-              onValueChanged={this.onItemOrientationChanged}
-            />
-          </div>
-          <div className="option">
-            <span>Drag Direction:</span>
-            <SelectBox
-              items={
-                itemOrientation === 'vertical'
-                  ? verticalDragDirections
-                  : horizontalDragDirections
-              }
-              value={dragDirection}
-              inputAttr={dragDirectionLabel}
-              onValueChanged={this.onDragDirectionChanged}
-            />
-          </div>
-          <div className="option">
-            <span>Scroll Speed:</span>
-            <NumberBox
-              value={scrollSpeed}
-              inputAttr={scrollSpeedLabel}
-              onValueChanged={this.onScrollSpeedChanged}
-            />
-          </div>
-          <div className="option">
-            <span>Scroll Sensitivity:</span>
-            <NumberBox
-              value={scrollSensitivity}
-              inputAttr={scrollSensitivityLabel}
-              onValueChanged={this.onScrollSensitivityChanged}
-            />
-          </div>
-          <div className="option">
-            <CheckBox text="Use Handle" onValueChanged={this.onHandleChanged} />
-          </div>
-          <div className="option">
-            <CheckBox
-              text="Use Drag Template"
-              onValueChanged={this.onDragTemplateChanged}
-            />
-          </div>
+        <div className="option">
+          <span>Item Orientation:</span>
+          <SelectBox
+            items={itemOrientations}
+            inputAttr={itemOrientationLabel}
+            value={itemOrientation}
+            onValueChanged={onItemOrientationChanged}
+          />
+        </div>
+        <div className="option">
+          <span>Drag Direction:</span>
+          <SelectBox
+            items={
+              itemOrientation === 'vertical'
+                ? verticalDragDirections
+                : horizontalDragDirections
+            }
+            value={dragDirection}
+            inputAttr={dragDirectionLabel}
+            onValueChanged={onDragDirectionChanged}
+          />
+        </div>
+        <div className="option">
+          <span>Scroll Speed:</span>
+          <NumberBox
+            value={scrollSpeed}
+            inputAttr={scrollSpeedLabel}
+            onValueChanged={onScrollSpeedChanged}
+          />
+        </div>
+        <div className="option">
+          <span>Scroll Sensitivity:</span>
+          <NumberBox
+            value={scrollSensitivity}
+            inputAttr={scrollSensitivityLabel}
+            onValueChanged={onScrollSensitivityChanged}
+          />
+        </div>
+        <div className="option">
+          <CheckBox text="Use Handle" onValueChanged={onHandleChanged} />
+        </div>
+        <div className="option">
+          <CheckBox
+            text="Use Drag Template"
+            onValueChanged={onDragTemplateChanged}
+          />
         </div>
       </div>
-    );
-  }
-
-  onDragStart(e) {
-    e.itemData = this.state.items[e.fromIndex];
-  }
-
-  onReorder(e) {
-    let { items } = this.state;
-
-    items = [...items.slice(0, e.fromIndex), ...items.slice(e.fromIndex + 1)];
-    items = [
-      ...items.slice(0, e.toIndex),
-      e.itemData,
-      ...items.slice(e.toIndex),
-    ];
-
-    this.setState({
-      items,
-    });
-  }
-
-  onDropFeedbackModeChanged(e) {
-    this.setState({
-      dropFeedbackMode: e.value,
-    });
-  }
-
-  onItemOrientationChanged(e) {
-    this.setState({
-      itemOrientation: e.value,
-      dragDirection: 'both',
-    });
-  }
-
-  onDragDirectionChanged(e) {
-    this.setState({
-      dragDirection: e.value,
-    });
-  }
-
-  onScrollSpeedChanged(e) {
-    this.setState({
-      scrollSpeed: e.value,
-    });
-  }
-
-  onScrollSensitivityChanged(e) {
-    this.setState({
-      scrollSensitivity: e.value,
-    });
-  }
-
-  onHandleChanged(e) {
-    this.setState({
-      handle: e.value ? '.handle' : '',
-    });
-  }
-
-  onDragTemplateChanged(e) {
-    this.setState({
-      dragComponent: e.value ? DragItem : null,
-      cursorOffset: e.value ? { x: 10, y: 20 } : null,
-    });
-  }
+    </div>
+  );
 }
 
 export default App;

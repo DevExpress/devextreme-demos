@@ -4,7 +4,7 @@ import Gantt, {
 } from 'devextreme-react/gantt';
 import { tasks, currentDate } from './data.js';
 
-function App() {
+const App = () => {
   return (
     <Gantt
       taskListWidth={300}

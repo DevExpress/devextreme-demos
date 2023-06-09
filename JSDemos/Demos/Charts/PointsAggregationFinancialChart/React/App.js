@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import Chart, {
   Series,
   Aggregation,
@@ -11,7 +10,6 @@ import Chart, {
   Legend,
   Tooltip,
 } from 'devextreme-react/chart';
-
 import RangeSelector, {
   Size,
   Scale,
@@ -23,81 +21,58 @@ import RangeSelector, {
 } from 'devextreme-react/range-selector';
 import { dataSource } from './data.js';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      visualRange: {},
-    };
+const App = () => {
+  const [visualRange, setVisualRange] = useState({});
 
-    this.updateVisualRange = this.updateVisualRange.bind(this);
-  }
+  const updateVisualRange = (e) => {
+    setVisualRange(e.value);
+  };
 
-  render() {
-    return (
-      <div id="chart-demo">
-        <Chart
-          id="zoomedChart"
-          dataSource={dataSource}
-          title="Google Inc. Stock Prices"
+  return (
+    <div id="chart-demo">
+      <Chart id="zoomedChart" dataSource={dataSource} title="Google Inc. Stock Prices">
+        <Series
+          type="candleStick"
+          openValueField="Open"
+          highValueField="High"
+          lowValueField="Low"
+          closeValueField="Close"
+          argumentField="Date"
         >
-          <Series
-            type="candleStick"
-            openValueField="Open"
-            highValueField="High"
-            lowValueField="Low"
-            closeValueField="Close"
-            argumentField="Date"
-          >
-            <Aggregation enabled={true} />
-          </Series>
-          <ArgumentAxis
-            visualRange={this.state.visualRange}
-            valueMarginsEnabled={false}
-            argumentType="datetime"
-          >
-            <Grid visible={true} />
-            <Label visible={false} />
-          </ArgumentAxis>
-          <ValueAxis valueType="numeric" />
-          <Margin right={10} />
-          <Legend visible={false} />
-          <Tooltip enabled={true} />
-        </Chart>
-        <RangeSelector
-          dataSource={dataSource}
-          onValueChanged={this.updateVisualRange}
+          <Aggregation enabled={true} />
+        </Series>
+        <ArgumentAxis
+          visualRange={visualRange}
+          valueMarginsEnabled={false}
+          argumentType="datetime"
         >
-          <Size height={120} />
-          <RsChart>
-            <RsValueAxis valueType="numeric" />
-            <RsSeries
-              type="line"
-              valueField="Open"
-              argumentField="Date"
-            >
-              <RsAggregation enabled="true" />
-            </RsSeries>
-          </RsChart>
-          <Scale
-            placeholderHeight={20}
-            minorTickInterval="day"
-            tickInterval="month"
-            valueType="datetime"
-            aggregationInterval="week"
-          />
-          <Behavior
-            snapToTicks={false}
-            valueChangeMode="onHandleMove"
-          />
-        </RangeSelector>
-      </div>
-    );
-  }
-
-  updateVisualRange(e) {
-    this.setState({ visualRange: e.value });
-  }
-}
+          <Grid visible={true} />
+          <Label visible={false} />
+        </ArgumentAxis>
+        <ValueAxis valueType="numeric" />
+        <Margin right={10} />
+        <Legend visible={false} />
+        <Tooltip enabled={true} />
+      </Chart>
+      <RangeSelector dataSource={dataSource} onValueChanged={updateVisualRange}>
+        <Size height={120} />
+        <RsChart>
+          <RsValueAxis valueType="numeric" />
+          <RsSeries type="line" valueField="Open" argumentField="Date">
+            <RsAggregation enabled="true" />
+          </RsSeries>
+        </RsChart>
+        <Scale
+          placeholderHeight={20}
+          minorTickInterval="day"
+          tickInterval="month"
+          valueType="datetime"
+          aggregationInterval="week"
+        />
+        <Behavior snapToTicks={false} valueChangeMode="onHandleMove" />
+      </RangeSelector>
+    </div>
+  );
+};
 
 export default App;

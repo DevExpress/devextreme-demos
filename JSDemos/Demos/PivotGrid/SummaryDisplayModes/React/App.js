@@ -1,73 +1,10 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import PivotGrid, {
   FieldChooser,
   FieldPanel,
 } from 'devextreme-react/pivot-grid';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
-
 import sales from './data.js';
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onContextMenuPreparing = this.onContextMenuPreparing.bind(this);
-  }
-
-  render() {
-    return (
-      <React.Fragment>
-        <div className="desc-container">
-          Right-click (or&nbsp;touch and hold) the &quot;Relative Sales&quot; field
-          and select an&nbsp;item from the appeared context menu to&nbsp;change the
-          <b> &quot;summaryDisplayMode&quot;</b> option.
-        </div>
-        <PivotGrid
-          id="sales"
-          dataSource={dataSource}
-          allowSortingBySummary={true}
-          allowSorting={true}
-          allowExpandAll={true}
-          showBorders={true}
-          onContextMenuPreparing={this.onContextMenuPreparing}
-        >
-          <FieldPanel
-            showFilterFields={false}
-            allowFieldDragging={false}
-            visible={true}
-          />
-          <FieldChooser enabled={false} />
-        </PivotGrid>
-      </React.Fragment>
-    );
-  }
-
-  onContextMenuPreparing(e) {
-    if (e.field && e.field.dataField === 'amount') {
-      summaryDisplayModes.forEach((mode) => {
-        e.items.push({
-          text: mode.text,
-          selected: e.field.summaryDisplayMode === mode.value,
-          onItemClick: () => {
-            let format;
-            const caption = mode.value === 'none' ? 'Total Sales' : 'Relative Sales';
-            if (mode.value === 'none'
-              || mode.value === 'absoluteVariation') {
-              format = 'currency';
-            }
-            dataSource.field(e.field.index, {
-              summaryDisplayMode: mode.value,
-              format,
-              caption,
-            });
-
-            dataSource.load();
-          },
-        });
-      });
-    }
-  }
-}
 
 const summaryDisplayModes = [
   { text: 'None', value: 'none' },
@@ -109,5 +46,61 @@ const dataSource = new PivotGridDataSource({
   }],
   store: sales,
 });
+
+const App = () => {
+  const [items, setItems] = useState([]);
+
+  const onContextMenuPreparing = (e) => {
+    if (e.field && e.field.dataField === 'amount') {
+      const newItems = [];
+      summaryDisplayModes.forEach((mode) => {
+        newItems.push({
+          text: mode.text,
+          selected: e.field.summaryDisplayMode === mode.value,
+          onItemClick: () => {
+            let format;
+            const caption = mode.value === 'none' ? 'Total Sales' : 'Relative Sales';
+            if (mode.value === 'none' || mode.value === 'absoluteVariation') {
+              format = 'currency';
+            }
+            dataSource.field(e.field.index, {
+              summaryDisplayMode: mode.value,
+              format,
+              caption,
+            });
+            dataSource.load();
+          },
+        });
+      });
+      setItems(newItems);
+    }
+  };
+
+  return (
+    <>
+      <div className="desc-container">
+        Right-click (or&nbsp;touch and hold) the &quot;Relative Sales&quot; field
+        and select an&nbsp;item from the appeared context menu to&nbsp;change the
+        <b> &quot;summaryDisplayMode&quot;</b> option.
+      </div>
+      <PivotGrid
+        id="sales"
+        dataSource={dataSource}
+        allowSortingBySummary={true}
+        allowSorting={true}
+        allowExpandAll={true}
+        showBorders={true}
+        onContextMenuPreparing={onContextMenuPreparing}
+      >
+        <FieldPanel
+          showFilterFields={false}
+          allowFieldDragging={false}
+          visible={true}
+        />
+        <FieldChooser enabled={false} />
+      </PivotGrid>
+    </>
+  );
+};
 
 export default App;

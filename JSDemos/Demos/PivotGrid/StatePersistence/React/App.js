@@ -1,66 +1,57 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import PivotGrid, {
   FieldChooser,
   FieldPanel,
   StateStoring,
 } from 'devextreme-react/pivot-grid';
 import Button from 'devextreme-react/button';
-
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
-
 import sales from './data.js';
 
-class App extends React.Component {
-  render() {
-    return (
-      <React.Fragment>
-        <div id="pivotgrid-demo">
-          <div className="desc-container">Expand, filter, sort and perform other operations
-            on&nbsp;the PivotGrid&rsquo;s columns and
-            rows. <a onClick={this.onRefreshClick}>Refresh</a> the web page and note that
-            the PivotGrid&rsquo;s state is&nbsp;automatically persisted.
-          </div>
-          <Button
-            text={"Reset the PivotGrid's State"}
-            onClick={this.onResetClick}
-          />
-          <PivotGrid
-            id="sales"
-            dataSource={dataSource}
-            allowSortingBySummary={true}
-            allowSorting={true}
-            allowFiltering={true}
-            allowExpandAll={true}
-            showBorders={true}
-            height={570}
-            onContextMenuPreparing={this.onContextMenuPreparing}
-          >
-            <StateStoring
-              enabled={true}
-              type="localStorage"
-              storageKey="dx-widget-gallery-pivotgrid-storing"
-            />
-            <FieldPanel
-              visible={true}
-            />
-            <FieldChooser enabled={true} />
-          </PivotGrid>
-        </div>
-      </React.Fragment>
-    );
-  }
+const dataSource = new PivotGridDataSource({
+  fields: [{
+    caption: 'Region',
+    width: 120,
+    dataField: 'region',
+    area: 'row',
+    sortBySummaryField: 'sales',
+  }, {
+    caption: 'City',
+    dataField: 'city',
+    width: 150,
+    area: 'row',
+  }, {
+    dataField: 'date',
+    dataType: 'date',
+    area: 'column',
+  }, {
+    groupName: 'date',
+    groupInterval: 'year',
+  }, {
+    groupName: 'date',
+    groupInterval: 'quarter',
+  }, {
+    dataField: 'sales',
+    dataType: 'number',
+    summaryType: 'sum',
+    format: 'currency',
+    area: 'data',
+  }],
+  store: sales,
+});
 
-  onRefreshClick() {
+const App = () => {
+  const [dataSourceState, setDataSourceState] = useState({});
+
+  const onRefreshClick = () => {
     window.location.reload();
-  }
+  };
 
-  onResetClick() {
+  const onResetClick = () => {
     dataSource.state({});
-  }
+  };
 
-  onContextMenuPreparing(e) {
-    const dataSource = e.component.getDataSource();
+  const onContextMenuPreparing = (e) => {
     const sourceField = e.field;
 
     if (sourceField) {
@@ -104,47 +95,49 @@ class App extends React.Component {
         });
       }
     }
-  }
-}
+  };
 
-const dataSource = new PivotGridDataSource({
-  fields: [{
-    caption: 'Region',
-    width: 120,
-    dataField: 'region',
-    area: 'row',
-    sortBySummaryField: 'sales',
-  }, {
-    caption: 'City',
-    dataField: 'city',
-    width: 150,
-    area: 'row',
-  }, {
-    dataField: 'date',
-    dataType: 'date',
-    area: 'column',
-  }, {
-    groupName: 'date',
-    groupInterval: 'year',
-  }, {
-    groupName: 'date',
-    groupInterval: 'quarter',
-  }, {
-    dataField: 'sales',
-    dataType: 'number',
-    summaryType: 'sum',
-    format: 'currency',
-    area: 'data',
-  }],
-  store: sales,
-});
+  const setSummaryType = (args, sourceField) => {
+    dataSource.field(sourceField.index, {
+      summaryType: args.itemData.value,
+    });
 
-function setSummaryType(args, sourceField) {
-  dataSource.field(sourceField.index, {
-    summaryType: args.itemData.value,
-  });
+    dataSource.load();
+  };
 
-  dataSource.load();
-}
+  return (
+    <React.Fragment>
+      <div id="pivotgrid-demo">
+        <div className="desc-container">
+          Expand, filter, sort and perform other operations on&nbsp;the PivotGrid&rsquo;s columns and rows.{' '}
+          <a onClick={onRefreshClick}>Refresh</a> the web page and note that the PivotGrid&rsquo;s state
+          is&nbsp;automatically persisted.
+        </div>
+        <Button text={"Reset the PivotGrid's State"} onClick={onResetClick} />
+        <PivotGrid
+          id="sales"
+          dataSource={dataSource}
+          allowSortingBySummary={true}
+          allowSorting={true}
+          allowFiltering={true}
+          allowExpandAll={true}
+          showBorders={true}
+          height={570}
+          onContextMenuPreparing={onContextMenuPreparing}
+        >
+          <StateStoring
+            enabled={true}
+            type="localStorage"
+            storageKey="dx-widget-gallery-pivotgrid-storing"
+            state={dataSourceState}
+            onStateChanged={setDataSourceState}
+          />
+          <FieldPanel visible={true} />
+          <FieldChooser enabled={true} />
+        </PivotGrid>
+      </div>
+    </React.Fragment>
+  );
+};
 
 export default App;

@@ -1,77 +1,58 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import List, { ItemDragging } from 'devextreme-react/list';
-
 import { plannedTasks, doingTasks } from './data.js';
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      plannedTasks,
-      doingTasks,
-    };
-    this.onDragStart = this.onDragStart.bind(this);
-    this.onAdd = this.onAdd.bind(this);
-    this.onRemove = this.onRemove.bind(this);
-    this.onReorder = this.onReorder.bind(this);
-  }
+const App = () => {
+  const [plannedTasksState, setPlannedTasksState] = useState(plannedTasks);
+  const [doingTasksState, setDoingTasksState] = useState(doingTasks);
 
-  onDragStart(e) {
-    e.itemData = this.state[e.fromData][e.fromIndex];
-  }
+  const onDragStart = (e) => {
+    e.itemData = e.fromData === 'plannedTasks' ? plannedTasksState[e.fromIndex] : doingTasksState[e.fromIndex];
+  };
 
-  onAdd(e) {
-    const tasks = this.state[e.toData];
-    this.setState({
-      [e.toData]: [...tasks.slice(0, e.toIndex), e.itemData, ...tasks.slice(e.toIndex)],
-    });
-  }
+  const onAdd = (e) => {
+    const tasks = e.toData === 'plannedTasks' ? plannedTasksState : doingTasksState;
+    const newTasks = [...tasks.slice(0, e.toIndex), e.itemData, ...tasks.slice(e.toIndex)];
+    e.toData === 'plannedTasks' ? setPlannedTasksState(newTasks) : setDoingTasksState(newTasks);
+  };
 
-  onRemove(e) {
-    const tasks = this.state[e.fromData];
-    this.setState({
-      [e.fromData]: [...tasks.slice(0, e.fromIndex), ...tasks.slice(e.fromIndex + 1)],
-    });
-  }
+  const onRemove = (e) => {
+    const tasks = e.fromData === 'plannedTasks' ? plannedTasksState : doingTasksState;
+    const newTasks = [...tasks.slice(0, e.fromIndex), ...tasks.slice(e.fromIndex + 1)];
+    e.fromData === 'plannedTasks' ? setPlannedTasksState(newTasks) : setDoingTasksState(newTasks);
+  };
 
-  onReorder(e) {
-    this.onRemove(e);
-    this.onAdd(e);
-  }
+  const onReorder = (e) => {
+    onRemove(e);
+    onAdd(e);
+  };
 
-  render() {
-    return (
-      <div className="widget-container">
-        <List
-          dataSource={this.state.plannedTasks}
-          keyExpr="id">
-          <ItemDragging
-            allowReordering={true}
-            group="tasks"
-            data="plannedTasks"
-            onDragStart={this.onDragStart}
-            onAdd={this.onAdd}
-            onRemove={this.onRemove}
-            onReorder={this.onReorder}>
-          </ItemDragging>
-        </List>
-        <List
-          dataSource={this.state.doingTasks}
-          keyExpr="id">
-          <ItemDragging
-            allowReordering={true}
-            group="tasks"
-            data="doingTasks"
-            onDragStart={this.onDragStart}
-            onAdd={this.onAdd}
-            onRemove={this.onRemove}
-            onReorder={this.onReorder}>
-          </ItemDragging>
-        </List>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="widget-container">
+      <List dataSource={plannedTasksState} keyExpr="id">
+        <ItemDragging
+          allowReordering={true}
+          group="tasks"
+          data="plannedTasks"
+          onDragStart={onDragStart}
+          onAdd={onAdd}
+          onRemove={onRemove}
+          onReorder={onReorder}
+        />
+      </List>
+      <List dataSource={doingTasksState} keyExpr="id">
+        <ItemDragging
+          allowReordering={true}
+          group="tasks"
+          data="doingTasks"
+          onDragStart={onDragStart}
+          onAdd={onAdd}
+          onRemove={onRemove}
+          onReorder={onReorder}
+        />
+      </List>
+    </div>
+  );
+};
 
 export default App;

@@ -1,9 +1,7 @@
-import React from 'react';
-
+import React, { useCallback } from 'react';
 import DataGrid, { Column, Export } from 'devextreme-react/data-grid';
 import { jsPDF } from 'jspdf';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
-
 import { countries } from './data.js';
 
 const gdpFormat = {
@@ -13,8 +11,8 @@ const gdpFormat = {
 
 const exportFormats = ['pdf'];
 
-export default function App() {
-  const onExporting = React.useCallback((e) => {
+function App() {
+  const onExporting = useCallback((e) => {
     // eslint-disable-next-line new-cap
     const doc = new jsPDF();
     const lastPoint = { x: 0, y: 0 };
@@ -43,33 +41,25 @@ export default function App() {
       doc.setFontSize(9);
       doc.setTextColor('#cccccc');
       const footerWidth = doc.getTextDimensions(footer).w;
-      doc.text(footer, (lastPoint.x - footerWidth), lastPoint.y + 5);
+      doc.text(footer, lastPoint.x - footerWidth, lastPoint.y + 5);
 
       doc.save('Companies.pdf');
     });
-  });
+  }, []);
 
   return (
     <DataGrid
       dataSource={countries}
       keyExpr="ID"
       showBorders={true}
-      onExporting={onExporting}>
-
+      onExporting={onExporting}
+    >
       <Export enabled={true} formats={exportFormats} />
       <Column dataField="Country" />
       <Column dataField="Area" />
       <Column caption="Population">
-        <Column
-          dataField="Population_Total"
-          caption="Total"
-          format="fixedPoint"
-        />
-        <Column
-          dataField="Population_Urban"
-          caption="Urban"
-          format="percent"
-        />
+        <Column dataField="Population_Total" caption="Total" format="fixedPoint" />
+        <Column dataField="Population_Urban" caption="Urban" format="percent" />
       </Column>
       <Column caption="Nominal GDP">
         <Column
@@ -79,26 +69,13 @@ export default function App() {
           sortOrder="desc"
         />
         <Column caption="By Sector">
-          <Column
-            dataField="GDP_Agriculture"
-            caption="Agriculture"
-            format={gdpFormat}
-            width={95}
-          />
-          <Column
-            dataField="GDP_Industry"
-            caption="Industry"
-            format={gdpFormat}
-            width={80}
-          />
-          <Column
-            dataField="GDP_Services"
-            caption="Services"
-            format={gdpFormat}
-            width={85}
-          />
+          <Column dataField="GDP_Agriculture" caption="Agriculture" format={gdpFormat} width={95} />
+          <Column dataField="GDP_Industry" caption="Industry" format={gdpFormat} width={80} />
+          <Column dataField="GDP_Services" caption="Services" format={gdpFormat} width={85} />
         </Column>
       </Column>
     </DataGrid>
   );
 }
+
+export default App;

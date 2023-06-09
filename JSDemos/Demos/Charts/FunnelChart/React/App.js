@@ -10,7 +10,11 @@ import Funnel, {
 } from 'devextreme-react/funnel';
 import { dataSource } from './data.js';
 
-function App() {
+const App = () => {
+  const formatLabel = (arg) => {
+    return `<span class="label">${arg.percentText}</span><br/>${arg.item.argument}`;
+  }
+
   return (
     <Funnel id="funnel"
       dataSource={dataSource}
@@ -34,10 +38,6 @@ function App() {
       />
     </Funnel>
   );
-}
-
-function formatLabel(arg) {
-  return `<span class="label">${arg.percentText}</span><br/>${arg.item.argument}`;
 }
 
 export default App;

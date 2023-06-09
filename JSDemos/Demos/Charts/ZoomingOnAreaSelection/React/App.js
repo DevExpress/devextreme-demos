@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useRef } from 'react';
 import Chart, {
   ArgumentAxis,
   ValueAxis,
@@ -13,78 +12,59 @@ import Chart, {
   Legend,
   Border,
 } from 'devextreme-react/chart';
-
 import Button from 'devextreme-react/button';
-
 import { birthLife } from './data.js';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+function App() {
+  const chartRef = useRef(null);
 
-    this.chartRef = React.createRef();
-
-    this.resetZoom = () => {
-      this.chart.resetVisualRange();
-    };
-  }
-
-  render() {
-    return (
-      <div>
-        <Chart
-          title="Life Expectancy vs. Birth Rates"
-          dataSource={birthLife}
-          ref={this.chartRef}
-          id="chart">
-          <ArgumentAxis title="Life Expectancy" />
-          <ValueAxis title="Birth Rate" />
-          <SeriesTemplate
-            nameField="year" />
-          <CommonSeriesSettings
-            type="scatter"
-            argumentField="life_exp"
-            valueField="birth_rate">
-            <Point size={8} />
-          </CommonSeriesSettings>
-          <ZoomAndPan
-            valueAxis="both"
-            argumentAxis="both"
-            dragToZoom={true}
-            allowMouseWheel={true}
-            panKey="shift" />
-          <Crosshair
-            enabled={true}>
-            <Label visible={true} />
-          </Crosshair>
-          <Tooltip
-            enabled={true}
-            customizeTooltip={customizeTooltip}
-          ></Tooltip>
-          <Legend
-            position="inside">
-            <Border visible={true} />
-          </Legend>
-        </Chart>
-        <Button
-          id="reset-zoom"
-          text="Reset"
-          onClick={this.resetZoom}
-        ></Button>
-      </div>
-    );
-  }
-
-  get chart() {
-    return this.chartRef.current.instance;
-  }
-}
-
-function customizeTooltip(pointInfo) {
-  const { data } = pointInfo.point;
-  return {
-    text: `${data.country} ${data.year}`,
+  const resetZoom = () => {
+    chartRef.current.instance.resetVisualRange();
   };
+
+  const customizeTooltip = (pointInfo) => {
+    const { data } = pointInfo.point;
+    return {
+      text: `${data.country} ${data.year}`,
+    };
+  };
+
+  return (
+    <div>
+      <Chart
+        title="Life Expectancy vs. Birth Rates"
+        dataSource={birthLife}
+        ref={chartRef}
+        id="chart"
+      >
+        <ArgumentAxis title="Life Expectancy" />
+        <ValueAxis title="Birth Rate" />
+        <SeriesTemplate nameField="year" />
+        <CommonSeriesSettings
+          type="scatter"
+          argumentField="life_exp"
+          valueField="birth_rate"
+        >
+          <Point size={8} />
+        </CommonSeriesSettings>
+        <ZoomAndPan
+          valueAxis="both"
+          argumentAxis="both"
+          dragToZoom={true}
+          allowMouseWheel={true}
+          panKey="shift"
+        />
+        <Crosshair enabled={true}>
+          <Label visible={true} />
+        </Crosshair>
+        <Tooltip enabled={true} customizeTooltip={customizeTooltip} />
+        <Legend position="inside">
+          <Border visible={true} />
+        </Legend>
+      </Chart>
+      <Button id="reset-zoom" text="Reset" onClick={resetZoom}></Button>
+    </div>
+  );
 }
 
 export default App;

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import VectorMap, {
   Layer,
   Tooltip,
@@ -13,7 +12,14 @@ const projection = {
   from: ([x, y]) => [x * 100, y * 100],
 };
 
-export default function App() {
+const App = () => {
+  const customizeTooltip = (arg) => {
+    if (arg.layer.name === 'rooms') {
+      return { text: `Square: ${arg.attribute('square')} ft&#178` };
+    }
+    return null;
+  };
+
   return (
     <VectorMap
       id="vector-map"
@@ -38,11 +44,6 @@ export default function App() {
       ></Tooltip>
     </VectorMap>
   );
-}
+};
 
-function customizeTooltip(arg) {
-  if (arg.layer.name === 'rooms') {
-    return { text: `Square: ${arg.attribute('square')} ft&#178` };
-  }
-  return null;
-}
+export default App;

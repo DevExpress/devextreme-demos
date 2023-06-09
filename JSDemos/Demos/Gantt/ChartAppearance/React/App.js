@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Gantt, {
   Tasks, Dependencies, Resources, ResourceAssignments, Column, Editing,
 } from 'devextreme-react/gantt';
@@ -17,8 +17,8 @@ const titlePositions = ['inside', 'outside', 'none'];
 export const scaleTypeLabel = { 'aria-label': 'Scale Type' };
 export const titlePositionLabel = { 'aria-label': 'Title Position' };
 
-function App() {
-  const [ganttConfig, setGanttConfig] = React.useState({
+const App = () => {
+  const [ganttConfig, setGanttConfig] = useState({
     scaleType: 'months',
     taskTitlePosition: 'outside',
     showResources: true,
@@ -27,6 +27,55 @@ function App() {
     startDateRange: new Date(2018, 11, 1),
     endDateRange: new Date(2019, 11, 1),
   });
+
+  const onScaleTypeChanged = (e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      scaleType: e.value,
+    });
+  };
+
+  const onTaskTitlePositionChanged = (e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      taskTitlePosition: e.value,
+    });
+  };
+
+  const onShowResourcesChanged = (e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      showResources: e.value,
+    });
+  };
+
+  const onShowDependenciesChanged = (e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      showDependencies: e.value,
+    });
+  };
+
+  const onShowCustomTaskTooltip = (e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      showCustomTaskTooltip: e.value,
+    });
+  };
+
+  const onStartDateValueChanged = (e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      startDateRange: e.value,
+    });
+  };
+
+  const onEndDateValueChanged = (e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      endDateRange: e.value,
+    });
+  };
 
   return (
     <div id="form-demo">
@@ -147,54 +196,6 @@ function App() {
       </div>
     </div>
   );
+};
 
-  function onScaleTypeChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      scaleType: e.value,
-    });
-  }
-
-  function onTaskTitlePositionChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      taskTitlePosition: e.value,
-    });
-  }
-
-  function onShowResourcesChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      showResources: e.value,
-    });
-  }
-
-  function onShowDependenciesChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      showDependencies: e.value,
-    });
-  }
-
-  function onShowCustomTaskTooltip(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      showCustomTaskTooltip: e.value,
-    });
-  }
-
-  function onStartDateValueChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      startDateRange: e.value,
-    });
-  }
-
-  function onEndDateValueChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      endDateRange: e.value,
-    });
-  }
-}
 export default App;

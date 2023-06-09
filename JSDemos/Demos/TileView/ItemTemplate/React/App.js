@@ -9,21 +9,19 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 0,
 });
 
-class App extends React.Component {
-  render() {
-    return (
-      <TileView
-        items={homes}
-        height={390}
-        baseItemHeight={120}
-        baseItemWidth={185}
-        itemMargin={10}
-        itemComponent={TileViewItem} />
-    );
-  }
+const App = () => {
+  return (
+    <TileView
+      items={homes}
+      height={390}
+      baseItemHeight={120}
+      baseItemWidth={185}
+      itemMargin={10}
+      itemComponent={TileViewItem} />
+  );
 }
 
-function TileViewItem({ data }) {
+const TileViewItem = ({ data }) => {
   return (
     <div className="dx-tile-content">
       <div className="price">{currencyFormatter.format(data.Price)}</div>

@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 import Guid from 'devextreme/core/guid';
@@ -22,50 +21,49 @@ function createStore() {
   });
 }
 
-const store1 = createStore();
-const store2 = createStore();
+const App = () => {
+  const [store1, setStore1] = useState(createStore());
+  const [store2, setStore2] = useState(createStore());
 
-function updateStores(events) {
-  store1.push(events);
-  store2.push(events);
-}
-
-class App extends React.Component {
-  render() {
-    return (
-      <div className="tables">
-        <div className="column">
-          <Grid dataSource={store1} />
-        </div>
-        <div className="column">
-          <Grid dataSource={store2} />
-        </div>
-      </div>
-    );
+  function updateStores(events) {
+    setStore1((prevStore) => prevStore.push(events));
+    setStore2((prevStore) => prevStore.push(events));
   }
-}
 
-const hubUrl = `${BASE_PATH}dataGridCollaborativeEditingHub?GroupId=${groupId}`;
-const connection = new HubConnectionBuilder()
-  .withUrl(hubUrl, {
-    skipNegotiation: true,
-    transport: HttpTransportType.WebSockets,
-  })
-  .build();
+  useEffect(() => {
+    const hubUrl = `${BASE_PATH}dataGridCollaborativeEditingHub?GroupId=${groupId}`;
+    const connection = new HubConnectionBuilder()
+      .withUrl(hubUrl, {
+        skipNegotiation: true,
+        transport: HttpTransportType.WebSockets,
+      })
+      .build();
 
-connection.start()
-  .then(() => {
-    connection.on('update', (key, data) => {
-      updateStores([{ type: 'update', key, data }]);
+    connection.start().then(() => {
+      connection.on('update', (key, data) => {
+        updateStores([{ type: 'update', key, data }]);
+      });
+
+      connection.on('insert', (data) => {
+        updateStores([{ type: 'insert', data }]);
+      });
+
+      connection.on('remove', (key) => {
+        updateStores([{ type: 'remove', key }]);
+      });
     });
+  }, []);
 
-    connection.on('insert', (data) => {
-      updateStores([{ type: 'insert', data }]);
-    });
-
-    connection.on('remove', (key) => {
-      updateStores([{ type: 'remove', key }]);
-    });
-  });
+  return (
+    <div className="tables">
+      <div className="column">
+        <Grid dataSource={store1} />
+      </div>
+      <div className="column">
+        <Grid dataSource={store2} />
+      </div>
+    </div>
+  );
+};
 
 export default App;

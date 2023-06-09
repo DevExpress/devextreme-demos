@@ -1,71 +1,49 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import Switch from 'devextreme-react/switch';
 import Scheduler, { Resource, View } from 'devextreme-react/scheduler';
-
 import { data, priorityData } from './data.js';
 
 const currentDate = new Date(2021, 3, 21);
-
 const groups = ['priorityId'];
 
-class App extends React.Component {
-  constructor() {
-    super();
+const App = () => {
+  const [groupByDate, setGroupByDate] = useState(true);
 
-    this.state = {
-      groupByDate: true,
-    };
-    this.onGroupByDateChanged = this.onGroupByDateChanged.bind(this);
-  }
+  const onGroupByDateChanged = (args) => {
+    setGroupByDate(args.value);
+  };
 
-  onGroupByDateChanged(args) {
-    this.setState({
-      groupByDate: args.value,
-    });
-  }
-
-  render() {
-    return (
-      <div id="scheduler">
-        <Scheduler
-          timeZone="America/Los_Angeles"
-          dataSource={data}
-          groups={groups}
-          groupByDate={this.state.groupByDate}
-          defaultCurrentView="week"
-          defaultCurrentDate={currentDate}
-          height={700}
-          startDayHour={9}
-          endDayHour={16}
-          crossScrollingEnabled={true}>
-          <Resource
-            fieldExpr="priorityId"
-            allowMultiple={false}
-            dataSource={priorityData}
-            label="Priority"
-          />
-          <View
-            type="week"
-            name="Week"
-          />
-          <View
-            type="month"
-            name="Month"
-          />
-        </Scheduler>
-        <div className="options">
-          <div className="caption">Group by Date First</div>
-          <div className="option">
-            <Switch
-              value={ this.state.groupByDate }
-              onValueChanged={this.onGroupByDateChanged}
-            />
-          </div>
+  return (
+    <div id="scheduler">
+      <Scheduler
+        timeZone="America/Los_Angeles"
+        dataSource={data}
+        groups={groups}
+        groupByDate={groupByDate}
+        defaultCurrentView="week"
+        defaultCurrentDate={currentDate}
+        height={700}
+        startDayHour={9}
+        endDayHour={16}
+        crossScrollingEnabled={true}
+      >
+        <Resource
+          fieldExpr="priorityId"
+          allowMultiple={false}
+          dataSource={priorityData}
+          label="Priority"
+        />
+        <View type="week" name="Week" />
+        <View type="month" name="Month" />
+      </Scheduler>
+      <div className="options">
+        <div className="caption">Group by Date First</div>
+        <div className="option">
+          <Switch value={groupByDate} onValueChanged={onGroupByDateChanged} />
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default App;

@@ -1,65 +1,45 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
-
 import SelectBox from 'devextreme-react/select-box';
-
-import PivotGrid, {
-  FieldChooser,
-} from 'devextreme-react/pivot-grid';
+import PivotGrid, { FieldChooser } from 'devextreme-react/pivot-grid';
 
 const applyChangesModeLabel = { 'aria-label': 'Apply Changes Mode' };
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const [applyChangesMode, setApplyChangesMode] = useState('instantly');
 
-    this.state = {
-      applyChangesMode: 'instantly',
-    };
+  const changeMode = (e) => {
+    setApplyChangesMode(e.value);
+  };
 
-    this.changeMode = this.changeMode.bind(this);
-  }
-
-  render() {
-    return (
-      <React.Fragment>
-        <PivotGrid
-          dataSource={dataSource}
-          allowSortingBySummary={true}
-          allowFiltering={true}
-          allowSorting={true}
-          height={470}
-          showBorders={true}
-        >
-          <FieldChooser
-            enabled={true}
-            allowSearch={true}
-            applyChangesMode={this.state.applyChangesMode} />
-        </PivotGrid>
-        <div className="options">
-          <div className="caption">Options</div>
-          <div className="option">
-            <span>Apply Changes Mode:</span>
-            <SelectBox
-              items={applyChangesModes}
-              width={180}
-              inputAttr={applyChangesModeLabel}
-              value={this.state.applyChangesMode}
-              onValueChanged={this.changeMode}>
-            </SelectBox>
-          </div>
+  return (
+    <>
+      <PivotGrid
+        dataSource={dataSource}
+        allowSortingBySummary={true}
+        allowFiltering={true}
+        allowSorting={true}
+        height={470}
+        showBorders={true}
+      >
+        <FieldChooser enabled={true} allowSearch={true} applyChangesMode={applyChangesMode} />
+      </PivotGrid>
+      <div className="options">
+        <div className="caption">Options</div>
+        <div className="option">
+          <span>Apply Changes Mode:</span>
+          <SelectBox
+            items={applyChangesModes}
+            width={180}
+            inputAttr={applyChangesModeLabel}
+            value={applyChangesMode}
+            onValueChanged={changeMode}
+          />
         </div>
-      </React.Fragment>
-    );
-  }
-
-  changeMode(e) {
-    this.setState({
-      applyChangesMode: e.value,
-    });
-  }
-}
+      </div>
+    </>
+  );
+};
 
 const dataSource = new PivotGridDataSource({
   fields: [

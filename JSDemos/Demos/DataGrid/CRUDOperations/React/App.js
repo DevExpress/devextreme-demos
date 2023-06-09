@@ -1,11 +1,15 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import {
-  DataGrid, Column, Editing, Scrolling, Lookup, Summary, TotalItem,
+  DataGrid,
+  Column,
+  Editing,
+  Scrolling,
+  Lookup,
+  Summary,
+  TotalItem,
 } from 'devextreme-react/data-grid';
 import { Button } from 'devextreme-react/button';
 import { SelectBox } from 'devextreme-react/select-box';
-
 import CustomStore from 'devextreme/data/custom_store';
 import { formatDate } from 'devextreme/localization';
 import 'whatwg-fetch';
@@ -15,57 +19,64 @@ const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
 
 const REFRESH_MODES = ['full', 'reshape', 'repaint'];
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      ordersData: new CustomStore({
-        key: 'OrderID',
-        load: () => this.sendRequest(`${URL}/Orders`),
-        insert: (values) => this.sendRequest(`${URL}/InsertOrder`, 'POST', {
+const App = () => {
+  const [ordersData] = useState(
+    new CustomStore({
+      key: 'OrderID',
+      load: () => sendRequest(`${URL}/Orders`),
+      insert: (values) =>
+        sendRequest(`${URL}/InsertOrder`, 'POST', {
           values: JSON.stringify(values),
         }),
-        update: (key, values) => this.sendRequest(`${URL}/UpdateOrder`, 'PUT', {
+      update: (key, values) =>
+        sendRequest(`${URL}/UpdateOrder`, 'PUT', {
           key,
           values: JSON.stringify(values),
         }),
-        remove: (key) => this.sendRequest(`${URL}/DeleteOrder`, 'DELETE', {
+      remove: (key) =>
+        sendRequest(`${URL}/DeleteOrder`, 'DELETE', {
           key,
         }),
-      }),
-      customersData: new CustomStore({
-        key: 'Value',
-        loadMode: 'raw',
-        load: () => this.sendRequest(`${URL}/CustomersLookup`),
-      }),
-      shippersData: new CustomStore({
-        key: 'Value',
-        loadMode: 'raw',
-        load: () => this.sendRequest(`${URL}/ShippersLookup`),
-      }),
-      requests: [],
-      refreshMode: 'reshape',
-    };
+    })
+  );
+  const [customersData] = useState(
+    new CustomStore({
+      key: 'Value',
+      loadMode: 'raw',
+      load: () => sendRequest(`${URL}/CustomersLookup`),
+    })
+  );
+  const [shippersData] = useState(
+    new CustomStore({
+      key: 'Value',
+      loadMode: 'raw',
+      load: () => sendRequest(`${URL}/ShippersLookup`),
+    })
+  );
+  const [requests, setRequests] = useState([]);
+  const [refreshMode, setRefreshMode] = useState('reshape');
 
-    this.clearRequests = this.clearRequests.bind(this);
-    this.handleRefreshModeChange = this.handleRefreshModeChange.bind(this);
-  }
-
-  sendRequest(url, method = 'GET', data = {}) {
-    this.logRequest(method, url, data);
+  const sendRequest = (url, method = 'GET', data = {}) => {
+    logRequest(method, url, data);
 
     if (method === 'GET') {
       return fetch(url, {
         method,
         credentials: 'include',
-      }).then((result) => result.json().then((json) => {
-        if (result.ok) return json.data;
-        throw json.Message;
-      }));
+      }).then((result) =>
+        result.json().then((json) => {
+          if (result.ok) return json.data;
+          throw json.Message;
+        })
+      );
     }
 
-    const params = Object.keys(data).map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`).join('&');
+    const params = Object.keys(data)
+      .map(
+        (key) =>
+          `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+      )
+      .join('&');
 
     return fetch(url, {
       method,
@@ -82,98 +93,88 @@ class App extends React.Component {
         throw json.Message;
       });
     });
-  }
+  };
 
-  logRequest(method, url, data) {
-    const args = Object.keys(data || {}).map((key) => `${key}=${data[key]}`).join(' ');
+  const logRequest = (method, url, data) => {
+    const args = Object.keys(data || {})
+      .map((key) => `${key}=${data[key]}`)
+      .join(' ');
 
     const time = formatDate(new Date(), 'HH:mm:ss');
     const request = [time, method, url.slice(URL.length), args].join(' ');
 
-    this.setState((state) => ({ requests: [request].concat(state.requests) }));
-  }
+    setRequests((prevRequests) => [request, ...prevRequests]);
+  };
 
-  clearRequests() {
-    this.setState({ requests: [] });
-  }
+  const clearRequests = () => {
+    setRequests([]);
+  };
 
-  handleRefreshModeChange(e) {
-    this.setState({ refreshMode: e.value });
-  }
+  const handleRefreshModeChange = (e) => {
+    setRefreshMode(e.value);
+  };
 
-  render() {
-    const {
-      refreshMode, ordersData, customersData, shippersData,
-    } = this.state;
-    return (
-      <React.Fragment>
-        <DataGrid
-          id="grid"
-          showBorders={true}
-          dataSource={ordersData}
-          repaintChangesOnly={true}
-        >
-          <Editing
-            refreshMode={refreshMode}
-            mode="cell"
-            allowAdding={true}
-            allowDeleting={true}
-            allowUpdating={true}
+  return (
+    <>
+      <DataGrid
+        id="grid"
+        showBorders={true}
+        dataSource={ordersData}
+        repaintChangesOnly={true}
+      >
+        <Editing
+          refreshMode={refreshMode}
+          mode="cell"
+          allowAdding={true}
+          allowDeleting={true}
+          allowUpdating={true}
+        />
+
+        <Scrolling mode="virtual" />
+
+        <Column dataField="CustomerID" caption="Customer">
+          <Lookup dataSource={customersData} valueExpr="Value" displayExpr="Text" />
+        </Column>
+
+        <Column dataField="OrderDate" dataType="date"></Column>
+
+        <Column dataField="Freight"></Column>
+
+        <Column dataField="ShipCountry"></Column>
+
+        <Column dataField="ShipVia" caption="Shipping Company" dataType="number">
+          <Lookup dataSource={shippersData} valueExpr="Value" displayExpr="Text" />
+        </Column>
+        <Summary>
+          <TotalItem column="CustomerID" summaryType="count" />
+          <TotalItem column="Freight" summaryType="sum" valueFormat="#0.00" />
+        </Summary>
+      </DataGrid>
+      <div className="options">
+        <div className="caption">Options</div>
+        <div className="option">
+          <span>Refresh Mode: </span>
+          <SelectBox
+            value={refreshMode}
+            inputAttr={refreshModeLabel}
+            items={REFRESH_MODES}
+            onValueChanged={handleRefreshModeChange}
           />
-
-          <Scrolling
-            mode="virtual"
-          />
-
-          <Column dataField="CustomerID" caption="Customer">
-            <Lookup dataSource={customersData} valueExpr="Value" displayExpr="Text" />
-          </Column>
-
-          <Column dataField="OrderDate" dataType="date">
-          </Column>
-
-          <Column dataField="Freight">
-          </Column>
-
-          <Column dataField="ShipCountry">
-          </Column>
-
-          <Column
-            dataField="ShipVia"
-            caption="Shipping Company"
-            dataType="number"
-          >
-            <Lookup dataSource={shippersData} valueExpr="Value" displayExpr="Text" />
-          </Column>
-          <Summary>
-            <TotalItem column="CustomerID" summaryType="count" />
-            <TotalItem column="Freight" summaryType="sum" valueFormat="#0.00" />
-          </Summary>
-        </DataGrid>
-        <div className="options">
-          <div className="caption">Options</div>
-          <div className="option">
-            <span>Refresh Mode: </span>
-            <SelectBox
-              value={refreshMode}
-              inputAttr={refreshModeLabel}
-              items={REFRESH_MODES}
-              onValueChanged={this.handleRefreshModeChange}
-            />
-          </div>
-          <div id="requests">
-            <div>
-              <div className="caption">Network Requests</div>
-              <Button id="clear" text="Clear" onClick={this.clearRequests} />
-            </div>
-            <ul>
-              {this.state.requests.map((request, index) => <li key={index}>{request}</li>)}
-            </ul>
-          </div>
         </div>
-      </React.Fragment>
-    );
-  }
-}
+        <div id="requests">
+          <div>
+            <div className="caption">Network Requests</div>
+            <Button id="clear" text="Clear" onClick={clearRequests} />
+          </div>
+          <ul>
+            {requests.map((request, index) => (
+              <li key={index}>{request}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default App;

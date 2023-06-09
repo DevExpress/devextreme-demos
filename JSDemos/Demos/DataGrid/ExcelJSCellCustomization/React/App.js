@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DataGrid, {
   Column, Export, Summary, GroupPanel, Grouping, SortByGroupSummaryInfo, TotalItem,
 } from 'devextreme-react/data-grid';
@@ -10,59 +10,20 @@ import { exportDataGrid } from 'devextreme/excel_exporter';
 
 import service from './data.js';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.companies = service.getCompanies();
-    this.onExporting = this.onExporting.bind(this);
-  }
+function App() {
+  const [companies, setCompanies] = useState(service.getCompanies());
 
-  render() {
-    return (
-      <div>
-        <DataGrid
-          id="gridContainer"
-          dataSource={this.companies}
-          keyExpr="ID"
-          showBorders={true}
-          onExporting={this.onExporting}>
-
-          <GroupPanel visible={true} />
-          <Grouping autoExpandAll={true} />
-          <SortByGroupSummaryInfo summaryItem="count" />
-
-          <Column dataField="Name" width={190} />
-          <Column dataField="Address" width={200} />
-          <Column dataField="City" />
-          <Column dataField="State" groupIndex={0} />
-          <Column dataField="Phone" format={this.phoneNumberFormat} />
-          <Column dataField="Website" caption="" alignment="center" width={100} cellRender={this.renderGridCell} />
-
-          <Export enabled={true} />
-
-          <Summary>
-            <TotalItem
-              column="Name"
-              summaryType="count"
-              displayFormat="Total count: {0} companies"
-            />
-          </Summary>
-        </DataGrid>
-      </div>
-    );
-  }
-
-  renderGridCell(data) {
+  function renderGridCell(data) {
     return <a href={ data.text } target='_blank' rel='noopener noreferrer'>Website</a>;
   }
 
-  phoneNumberFormat(value) {
+  function phoneNumberFormat(value) {
     const USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);
 
     return `(${USNumber[1]}) ${USNumber[2]}-${USNumber[3]}`;
   }
 
-  onExporting(e) {
+  function onExporting(e) {
     const workbook = new Workbook();
     const worksheet = workbook.addWorksheet('Companies');
 
@@ -101,6 +62,39 @@ class App extends React.Component {
     });
     e.cancel = true;
   }
+
+  return (
+    <div>
+      <DataGrid
+        id="gridContainer"
+        dataSource={companies}
+        keyExpr="ID"
+        showBorders={true}
+        onExporting={onExporting}>
+
+        <GroupPanel visible={true} />
+        <Grouping autoExpandAll={true} />
+        <SortByGroupSummaryInfo summaryItem="count" />
+
+        <Column dataField="Name" width={190} />
+        <Column dataField="Address" width={200} />
+        <Column dataField="City" />
+        <Column dataField="State" groupIndex={0} />
+        <Column dataField="Phone" format={phoneNumberFormat} />
+        <Column dataField="Website" caption="" alignment="center" width={100} cellRender={renderGridCell} />
+
+        <Export enabled={true} />
+
+        <Summary>
+          <TotalItem
+            column="Name"
+            summaryType="count"
+            displayFormat="Total count: {0} companies"
+          />
+        </Summary>
+      </DataGrid>
+    </div>
+  );
 }
 
 export default App;

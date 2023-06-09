@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   PivotGrid, HeaderFilter, Search, FieldChooser, FieldPanel,
 } from 'devextreme-react/pivot-grid';
@@ -32,77 +32,60 @@ const dataSource = new PivotGridDataSource({
   }),
 });
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const [searchEnabled, setSearchEnabled] = useState(true);
+  const [showRelevantValues, setShowRelevantValues] = useState(true);
 
-    this.state = {
-      searchEnabled: true,
-      showRelevantValues: true,
-    };
+  const onSearchEnabledChanged = (data) => {
+    setSearchEnabled(data.value);
+  };
 
-    this.onSearchEnabledChanged = this.onSearchEnabledChanged.bind(this);
-    this.onShowRelevantValuesChanged = this.onShowRelevantValuesChanged.bind(this);
-  }
+  const onShowRelevantValuesChanged = (data) => {
+    setShowRelevantValues(data.value);
+  };
 
-  render() {
-    const { searchEnabled, showRelevantValues } = this.state;
-
-    return (
-      <div>
-        <PivotGrid
-          id="sales"
-          allowFiltering={true}
-          allowSorting={true}
-          allowSortingBySummary={true}
-          height={570}
-          showBorders={true}
-          dataSource={dataSource}
+  return (
+    <div>
+      <PivotGrid
+        id="sales"
+        allowFiltering={true}
+        allowSorting={true}
+        allowSortingBySummary={true}
+        height={570}
+        showBorders={true}
+        dataSource={dataSource}
+      >
+        <HeaderFilter
+          showRelevantValues={showRelevantValues}
+          width={300}
+          height={400}
         >
-          <HeaderFilter
-            showRelevantValues={showRelevantValues}
-            width={300}
-            height={400}
-          >
-            <Search enabled={searchEnabled} />
-          </HeaderFilter>
-          <FieldChooser allowSearch={true} />
-          <FieldPanel visible={true} />
-        </PivotGrid>
-        <div className="options">
-          <div className="caption">Options</div>
-          <div className="options-container">
-            <div className="option">
-              <CheckBox
-                value={searchEnabled}
-                text="Allow Search"
-                onValueChanged={this.onSearchEnabledChanged}
-              />
-            </div>
-            <div className="option">
-              <CheckBox
-                value={showRelevantValues}
-                text="Show Relevant Values"
-                onValueChanged={this.onShowRelevantValuesChanged}
-              />
-            </div>
+          <Search enabled={searchEnabled} />
+        </HeaderFilter>
+        <FieldChooser allowSearch={true} />
+        <FieldPanel visible={true} />
+      </PivotGrid>
+      <div className="options">
+        <div className="caption">Options</div>
+        <div className="options-container">
+          <div className="option">
+            <CheckBox
+              value={searchEnabled}
+              text="Allow Search"
+              onValueChanged={onSearchEnabledChanged}
+            />
+          </div>
+          <div className="option">
+            <CheckBox
+              value={showRelevantValues}
+              text="Show Relevant Values"
+              onValueChanged={onShowRelevantValuesChanged}
+            />
           </div>
         </div>
       </div>
-    );
-  }
-
-  onSearchEnabledChanged(data) {
-    this.setState({
-      searchEnabled: data.value,
-    });
-  }
-
-  onShowRelevantValuesChanged(data) {
-    this.setState({
-      showRelevantValues: data.value,
-    });
-  }
-}
+    </div>
+  );
+};
 
 export default App;

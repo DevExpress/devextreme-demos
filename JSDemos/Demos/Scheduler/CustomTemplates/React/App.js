@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Scheduler, { Editing, Resource } from 'devextreme-react/scheduler';
 import Query from 'devextreme/data/query';
 
@@ -10,50 +10,14 @@ const currentDate = new Date(2021, 3, 27);
 const views = ['day', 'week', 'timelineDay'];
 const groups = ['theatreId'];
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onAppointmentFormOpening = this.onAppointmentFormOpening.bind(this);
-  }
+function App() {
+  const [movieInfo, setMovieInfo] = useState({});
 
-  render() {
-    return (
-      <Scheduler
-        timeZone="America/Los_Angeles"
-        dataSource={data}
-        views={views}
-        defaultCurrentView="day"
-        defaultCurrentDate={currentDate}
-        groups={groups}
-        height={600}
-        firstDayOfWeek={0}
-        startDayHour={9}
-        endDayHour={23}
-        showAllDayPanel={false}
-        crossScrollingEnabled={true}
-        cellDuration={20}
-        appointmentComponent={Appointment}
-        appointmentTooltipComponent={AppointmentTooltip}
-        onAppointmentFormOpening={this.onAppointmentFormOpening}
-      >
-        <Editing allowAdding={false} />
-        <Resource
-          dataSource={moviesData}
-          fieldExpr="movieId"
-          useColorAsDefault={true}
-        />
-        <Resource
-          dataSource={theatreData}
-          fieldExpr="theatreId"
-        />
-      </Scheduler>
-    );
-  }
-
-  onAppointmentFormOpening(e) {
+  const onAppointmentFormOpening = (e) => {
     const { form } = e;
-    let movieInfo = getMovieById(e.appointmentData.movieId) || {};
     let { startDate } = e.appointmentData;
+
+    setMovieInfo(getMovieById(e.appointmentData.movieId) || {});
 
     form.option('items', [{
       label: {
@@ -66,7 +30,7 @@ class App extends React.Component {
         displayExpr: 'text',
         valueExpr: 'id',
         onValueChanged(args) {
-          movieInfo = getMovieById(args.value);
+          setMovieInfo(getMovieById(args.value));
 
           form.updateData('director', movieInfo.director);
           form.updateData('endDate', new Date(startDate.getTime() + 60 * 1000 * movieInfo.duration));
@@ -113,7 +77,39 @@ class App extends React.Component {
       },
     },
     ]);
-  }
+  };
+
+  return (
+    <Scheduler
+      timeZone="America/Los_Angeles"
+      dataSource={data}
+      views={views}
+      defaultCurrentView="day"
+      defaultCurrentDate={currentDate}
+      groups={groups}
+      height={600}
+      firstDayOfWeek={0}
+      startDayHour={9}
+      endDayHour={23}
+      showAllDayPanel={false}
+      crossScrollingEnabled={true}
+      cellDuration={20}
+      appointmentComponent={Appointment}
+      appointmentTooltipComponent={AppointmentTooltip}
+      onAppointmentFormOpening={onAppointmentFormOpening}
+    >
+      <Editing allowAdding={false} />
+      <Resource
+        dataSource={moviesData}
+        fieldExpr="movieId"
+        useColorAsDefault={true}
+      />
+      <Resource
+        dataSource={theatreData}
+        fieldExpr="theatreId"
+      />
+    </Scheduler>
+  );
 }
 
 function getMovieById(id) {

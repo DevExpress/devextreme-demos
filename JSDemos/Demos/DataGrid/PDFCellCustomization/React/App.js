@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import DataGrid, {
   Column, Summary, GroupPanel, Grouping, SortByGroupSummaryInfo, TotalItem, Export,
 } from 'devextreme-react/data-grid';
@@ -10,7 +10,7 @@ import { companies } from './data.js';
 const exportFormats = ['pdf'];
 
 export default function App() {
-  const onExporting = React.useCallback((e) => {
+  const onExporting = useCallback((e) => {
     // eslint-disable-next-line new-cap
     const doc = new jsPDF();
 
@@ -44,13 +44,13 @@ export default function App() {
     }).then(() => {
       doc.save('Companies.pdf');
     });
-  });
+  }, []);
 
-  const renderGridCell = React.useCallback((data) => (
+  const renderGridCell = useCallback((data) => (
     <a href={ data.text } target='_blank' rel='noopener noreferrer'>Website</a>
   ), []);
 
-  const phoneNumberFormat = React.useCallback((value) => {
+  const phoneNumberFormat = useCallback((value) => {
     const USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);
     return `(${USNumber[1]}) ${USNumber[2]}-${USNumber[3]}`;
   }, []);

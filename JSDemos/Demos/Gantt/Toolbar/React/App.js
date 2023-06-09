@@ -1,25 +1,37 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import Gantt, {
   Tasks, Dependencies, Resources, ResourceAssignments, Column, Editing, Toolbar, Item,
 } from 'devextreme-react/gantt';
 import { Popup } from 'devextreme-react/popup';
-
 import {
   tasks, dependencies, resources, resourceAssignments,
 } from './data.js';
 
-function App() {
-  const [ganttConfig, setGanttConfig] = React.useState({
+const App = () => {
+  const [ganttConfig, setGanttConfig] = useState({
     popupVisible: false,
   });
 
-  const [aboutButtonOptions] = React.useState({
+  const [aboutButtonOptions] = useState({
     text: 'About',
     icon: 'info',
     stylingMode: 'text',
     onClick: () => { aboutButtonClick(); },
   });
+
+  const aboutButtonClick = () => {
+    setGanttConfig({
+      ...ganttConfig,
+      popupVisible: true,
+    });
+  }
+
+  const onHiding = () => {
+    setGanttConfig({
+      ...ganttConfig,
+      popupVisible: false,
+    });
+  }
 
   return (
     <React.Fragment>
@@ -80,20 +92,6 @@ function App() {
       </Popup>
     </React.Fragment>
   );
-
-  function aboutButtonClick() {
-    setGanttConfig({
-      ...ganttConfig,
-      popupVisible: true,
-    });
-  }
-
-  function onHiding() {
-    setGanttConfig({
-      ...ganttConfig,
-      popupVisible: false,
-    });
-  }
 }
 
 export default App;

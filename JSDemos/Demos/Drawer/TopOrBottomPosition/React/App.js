@@ -1,113 +1,99 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import Drawer from 'devextreme-react/drawer';
 import RadioGroup from 'devextreme-react/radio-group';
 import Toolbar from 'devextreme-react/toolbar';
 import HTMLReactParser from 'html-react-parser';
-
 import { text } from './data.js';
 import NavigationList from './NavigationList.js';
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.openedStateRadioButtons = ['push', 'shrink', 'overlap'];
-    this.positionRadioButtons = ['top', 'bottom'];
-    this.revealModeRadioButtons = ['slide', 'expand'];
+const App = () => {
+  const [opened, setOpened] = useState(false);
+  const [openedStateMode, setOpenedStateMode] = useState('shrink');
+  const [position, setPosition] = useState('top');
+  const [revealMode, setRevealMode] = useState('expand');
 
-    this.state = {
-      opened: false,
-      openedStateMode: 'shrink',
-      revealMode: 'expand',
-      position: 'top',
-    };
+  const openedStateRadioButtons = ['push', 'shrink', 'overlap'];
+  const positionRadioButtons = ['top', 'bottom'];
+  const revealModeRadioButtons = ['slide', 'expand'];
 
-    this.toolbarItems = [{
-      widget: 'dxButton',
-      location: 'before',
-      options: {
-        icon: 'menu',
-        onClick: () => this.setState({ opened: !this.state.opened }),
-      },
-    }];
+  const toolbarItems = [{
+    widget: 'dxButton',
+    location: 'before',
+    options: {
+      icon: 'menu',
+      onClick: () => setOpened(!opened),
+    },
+  }];
 
-    this.onOpenedStateModeChanged = this.onOpenedStateModeChanged.bind(this);
-    this.onRevealModeChanged = this.onRevealModeChanged.bind(this);
-    this.onPositionChanged = this.onPositionChanged.bind(this);
-    this.onOutsideClick = this.onOutsideClick.bind(this);
-  }
+  const onOpenedStateModeChanged = ({ value }) => {
+    setOpenedStateMode(value);
+  };
 
-  onOpenedStateModeChanged({ value }) {
-    this.setState({ openedStateMode: value });
-  }
+  const onRevealModeChanged = ({ value }) => {
+    setRevealMode(value);
+  };
 
-  onRevealModeChanged({ value }) {
-    this.setState({ revealMode: value });
-  }
+  const onPositionChanged = ({ value }) => {
+    setPosition(value);
+  };
 
-  onPositionChanged({ value }) {
-    this.setState({ position: value });
-  }
+  const onOutsideClick = () => {
+    setOpened(false);
+  };
 
-  onOutsideClick() {
-    this.setState({ opened: false });
-  }
-
-  render() {
-    const {
-      opened, openedStateMode, position, revealMode,
-    } = this.state;
-    return (
-      <React.Fragment>
-        <Toolbar items={this.toolbarItems} />
-        <Drawer
-          opened={opened}
-          closeOnOutsideClick={this.onOutsideClick}
-          openedStateMode={openedStateMode}
-          position={position}
-          component={NavigationList}
-          revealMode={revealMode}
-          height={400}
-          maxSize={200}>
-          <div id="content" className="dx-theme-background-color">
-            {HTMLReactParser(text)}
-          </div>
-        </Drawer>
-        <div className="options">
-          <div className="caption">Options</div>
+  return (
+    <>
+      <Toolbar items={toolbarItems} />
+      <Drawer
+        opened={opened}
+        closeOnOutsideClick={onOutsideClick}
+        openedStateMode={openedStateMode}
+        position={position}
+        component={NavigationList}
+        revealMode={revealMode}
+        height={400}
+        maxSize={200}
+      >
+        <div id="content" className="dx-theme-background-color">
+          {HTMLReactParser(text)}
+        </div>
+      </Drawer>
+      <div className="options">
+        <div className="caption">Options</div>
+        <div className="option">
+          <label>Opened state mode</label>
+          <RadioGroup
+            items={openedStateRadioButtons}
+            layout="horizontal"
+            value={openedStateMode}
+            onValueChanged={onOpenedStateModeChanged}
+          />
+        </div>
+        {' '}
+        <div className="option">
+          <label>Position</label>
+          <RadioGroup
+            items={positionRadioButtons}
+            layout="horizontal"
+            value={position}
+            onValueChanged={onPositionChanged}
+          />
+        </div>
+        {' '}
+        {openedStateMode !== 'push' && (
           <div className="option">
-            <label>Opened state mode</label>
-            <RadioGroup
-              items={this.openedStateRadioButtons}
-              layout="horizontal"
-              value={openedStateMode}
-              onValueChanged={this.onOpenedStateModeChanged}
-            />
-          </div>
-          {' '}
-          <div className="option">
-            <label>Position</label>
-            <RadioGroup
-              items={this.positionRadioButtons}
-              layout="horizontal"
-              value={position}
-              onValueChanged={this.onPositionChanged}
-            />
-          </div>
-          {' '}
-          {openedStateMode !== 'push' && (<div className="option">
             <label>Reveal mode</label>
             <RadioGroup
-              items={this.revealModeRadioButtons}
+              items={revealModeRadioButtons}
               layout="horizontal"
               value={revealMode}
-              onValueChanged={this.onRevealModeChanged}
+              onValueChanged={onRevealModeChanged}
             />
-          </div>)}
-        </div>
-      </React.Fragment>
-    );
-  }
-}
+          </div>
+        )}
+      </div>
+    </>
+  );
+};
 
 export default App;

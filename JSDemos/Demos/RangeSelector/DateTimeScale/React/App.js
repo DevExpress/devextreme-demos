@@ -6,7 +6,7 @@ import { dataSource } from './data.js';
 
 const defaultValue = ['2013/03/01', '2013/03/07'];
 
-function App() {
+const App = () => {
   return (
     <RangeSelector
       id="range-selector"

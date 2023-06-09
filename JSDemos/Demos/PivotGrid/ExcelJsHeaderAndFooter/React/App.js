@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useState, useCallback } from 'react';
 import PivotGrid, {
   FieldChooser,
   FieldPanel,
@@ -9,10 +8,7 @@ import CheckBox from 'devextreme-react/check-box';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
-// Our demo infrastructure requires us to use 'file-saver-es'.
-// We recommend that you use the official 'file-saver' package in your applications.
 import { exportPivotGrid } from 'devextreme/excel_exporter';
-
 import { sales } from './data.js';
 
 const dataSource = new PivotGridDataSource({
@@ -49,12 +45,12 @@ const dataSource = new PivotGridDataSource({
 });
 
 export default function App() {
-  const [exportDataFieldHeaders, setExportDataFieldHeaders] = React.useState(false);
-  const [exportRowFieldHeaders, setExportRowFieldHeaders] = React.useState(false);
-  const [exportColumnFieldHeaders, setExportColumnFieldHeaders] = React.useState(false);
-  const [exportFilterFieldHeaders, setExportFilterFieldHeaders] = React.useState(false);
+  const [exportDataFieldHeaders, setExportDataFieldHeaders] = useState(false);
+  const [exportRowFieldHeaders, setExportRowFieldHeaders] = useState(false);
+  const [exportColumnFieldHeaders, setExportColumnFieldHeaders] = useState(false);
+  const [exportFilterFieldHeaders, setExportFilterFieldHeaders] = useState(false);
 
-  const onExporting = React.useCallback((e) => {
+  const onExporting = useCallback((e) => {
     const workbook = new Workbook();
     const worksheet = workbook.addWorksheet('Sales');
 
@@ -72,7 +68,6 @@ export default function App() {
       exportColumnFieldHeaders,
       exportFilterFieldHeaders,
     }).then((cellRange) => {
-      // Header
       const headerRow = worksheet.getRow(2);
       headerRow.height = 30;
 
@@ -85,7 +80,6 @@ export default function App() {
       headerCell.font = { name: 'Segoe UI Light', size: 22, bold: true };
       headerCell.alignment = { horizontal: 'left', vertical: 'middle', wrapText: true };
 
-      // Footer
       const footerRowIndex = cellRange.to.row + 2;
       const footerCell = worksheet.getRow(footerRowIndex).getCell(cellRange.to.column);
       footerCell.value = 'www.wikipedia.org';
@@ -97,26 +91,26 @@ export default function App() {
       });
     });
     e.cancel = true;
-  });
+  }, [exportDataFieldHeaders, exportRowFieldHeaders, exportColumnFieldHeaders, exportFilterFieldHeaders]);
 
-  const onExportDataFieldHeadersChanged = React.useCallback(({ value }) => {
+  const onExportDataFieldHeadersChanged = useCallback(({ value }) => {
     setExportDataFieldHeaders(value);
-  }, [exportDataFieldHeaders, setExportDataFieldHeaders]);
+  }, []);
 
-  const onExportRowFieldHeadersChanged = React.useCallback(({ value }) => {
+  const onExportRowFieldHeadersChanged = useCallback(({ value }) => {
     setExportRowFieldHeaders(value);
-  }, [exportRowFieldHeaders, setExportRowFieldHeaders]);
+  }, []);
 
-  const onExportColumnFieldHeadersChanged = React.useCallback(({ value }) => {
+  const onExportColumnFieldHeadersChanged = useCallback(({ value }) => {
     setExportColumnFieldHeaders(value);
-  }, [exportColumnFieldHeaders, setExportColumnFieldHeaders]);
+  }, []);
 
-  const onExportFilterFieldHeadersChanged = React.useCallback(({ value }) => {
+  const onExportFilterFieldHeadersChanged = useCallback(({ value }) => {
     setExportFilterFieldHeaders(value);
-  }, [exportFilterFieldHeaders, setExportFilterFieldHeaders]);
+  }, []);
 
   return (
-    <React.Fragment>
+    <>
       <div className="long-title">
         <h3>Sales Amount by Region</h3>
       </div>
@@ -160,6 +154,6 @@ export default function App() {
             text="Export Filter Field Headers" />
         </div>
       </div>
-    </React.Fragment>
+    </>
   );
 }

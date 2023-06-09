@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import DataGrid, {
-  Column, RowDragging, Scrolling, Lookup, Sorting,
+  Column,
+  RowDragging,
+  Scrolling,
+  Lookup,
+  Sorting,
 } from 'devextreme-react/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 
@@ -23,63 +27,58 @@ const employeesStore = createStore({
   },
 });
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const [gridData, setGridData] = useState([]);
 
-    this.onReorder = this.onReorder.bind(this);
-  }
+  useEffect(() => {
+    setGridData(tasksStore);
+  }, []);
 
-  onReorder(e) {
-    e.promise = this.processReorder(e);
-  }
+  const onReorder = (e) => {
+    e.promise = processReorder(e);
+  };
 
-  async processReorder(e) {
+  const processReorder = async (e) => {
     const visibleRows = e.component.getVisibleRows();
     const newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
 
     await tasksStore.update(e.itemData.ID, { OrderIndex: newOrderIndex });
     await e.component.refresh();
-  }
+  };
 
-  render() {
-    return (
-      <React.Fragment>
-        <DataGrid
-          height={440}
-          dataSource={tasksStore}
-          showBorders={true}
-        >
-          <RowDragging
-            allowReordering={true}
-            onReorder={this.onReorder}
-            dropFeedbackMode="push"
+  return (
+    <React.Fragment>
+      <DataGrid height={440} dataSource={gridData} showBorders={true}>
+        <RowDragging
+          allowReordering={true}
+          onReorder={onReorder}
+          dropFeedbackMode="push"
+        />
+        <Scrolling mode="virtual" />
+        <Sorting mode="none" />
+        <Column dataField="ID" width={55} />
+        <Column dataField="Owner" width={150}>
+          <Lookup
+            dataSource={employeesStore}
+            valueExpr="ID"
+            displayExpr="FullName"
           />
-          <Scrolling mode="virtual" />
-          <Sorting mode="none" />
-          <Column dataField="ID" width={55} />
-          <Column dataField="Owner" width={150}>
-            <Lookup
-              dataSource={employeesStore}
-              valueExpr="ID"
-              displayExpr="FullName"
-            />
-          </Column>
-          <Column
-            dataField="AssignedEmployee"
-            caption="Assignee"
-            width={150}>
-            <Lookup
-              dataSource={employeesStore}
-              valueExpr="ID"
-              displayExpr="FullName"
-            />
-          </Column>
-          <Column dataField="Subject" />
-        </DataGrid>
-      </React.Fragment>
-    );
-  }
-}
+        </Column>
+        <Column
+          dataField="AssignedEmployee"
+          caption="Assignee"
+          width={150}
+        >
+          <Lookup
+            dataSource={employeesStore}
+            valueExpr="ID"
+            displayExpr="FullName"
+          />
+        </Column>
+        <Column dataField="Subject" />
+      </DataGrid>
+    </React.Fragment>
+  );
+};
 
 export default App;

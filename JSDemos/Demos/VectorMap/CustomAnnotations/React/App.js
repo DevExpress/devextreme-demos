@@ -11,7 +11,7 @@ import AnnotationTemplate from './AnnotationTemplate.js';
 
 const bounds = [-118, 55, -80, 23];
 
-export default function App() {
+function App() {
   return (
     <VectorMap
       id="vector-map"
@@ -40,3 +40,4 @@ export default function App() {
   );
 }
 
+export default App;

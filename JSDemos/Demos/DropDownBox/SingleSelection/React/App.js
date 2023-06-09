@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import DropDownBox from 'devextreme-react/drop-down-box';
 import TreeView from 'devextreme-react/tree-view';
 import DataGrid, {
@@ -10,31 +10,16 @@ import 'whatwg-fetch';
 const gridColumns = ['CompanyName', 'City', 'Phone'];
 const ownerLabel = { 'aria-label': 'Owner' };
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.treeView = null;
-    this.treeDataSource = this.makeAsyncDataSource('treeProducts.json');
-    this.gridDataSource = this.makeAsyncDataSource('customers.json');
-    this.state = {
-      treeBoxValue: '1_1',
-      gridBoxValue: [3],
-      isGridBoxOpened: false,
-      isTreeBoxOpened: false,
-    };
-    this.treeViewItemSelectionChanged = this.treeViewItemSelectionChanged.bind(this);
-    this.syncTreeViewSelection = this.syncTreeViewSelection.bind(this);
-    this.syncDataGridSelection = this.syncDataGridSelection.bind(this);
-    this.dataGridOnSelectionChanged = this.dataGridOnSelectionChanged.bind(this);
-    this.treeViewRender = this.treeViewRender.bind(this);
-    this.treeViewOnContentReady = this.treeViewOnContentReady.bind(this);
-    this.dataGridRender = this.dataGridRender.bind(this);
-    this.onGridBoxOpened = this.onGridBoxOpened.bind(this);
-    this.onTreeBoxOpened = this.onTreeBoxOpened.bind(this);
-    this.onTreeItemClick = this.onTreeItemClick.bind(this);
-  }
+const App = () => {
+  const [treeBoxValue, setTreeBoxValue] = useState('1_1');
+  const [gridBoxValue, setGridBoxValue] = useState([3]);
+  const [isGridBoxOpened, setIsGridBoxOpened] = useState(false);
+  const [isTreeBoxOpened, setIsTreeBoxOpened] = useState(false);
+  const treeView = useRef(null);
+  const treeDataSource = makeAsyncDataSource('treeProducts.json');
+  const gridDataSource = makeAsyncDataSource('customers.json');
 
-  makeAsyncDataSource(jsonFile) {
+  const makeAsyncDataSource = (jsonFile) => {
     return new CustomStore({
       loadMode: 'raw',
       key: 'ID',
@@ -45,75 +30,31 @@ class App extends React.Component {
     });
   }
 
-  render() {
+  const treeViewRender = () => {
     return (
-      <div className="dx-fieldset">
-        <div className="dx-field">
-          <div className="dx-field-label">DropDownBox with embedded TreeView</div>
-          <div className="dx-field-value">
-            <DropDownBox
-              value={this.state.treeBoxValue}
-              opened={this.state.isTreeBoxOpened}
-              valueExpr="ID"
-              inputAttr={ownerLabel}
-              displayExpr="name"
-              placeholder="Select a value..."
-              showClearButton={true}
-              dataSource={this.treeDataSource}
-              onValueChanged={this.syncTreeViewSelection}
-              onOptionChanged={this.onTreeBoxOpened}
-              contentRender={this.treeViewRender}
-            />
-          </div>
-        </div>
-        <div className="dx-field">
-          <div className="dx-field-label">DropDownBox with embedded DataGrid</div>
-          <div className="dx-field-value">
-            <DropDownBox
-              value={this.state.gridBoxValue}
-              opened={this.state.isGridBoxOpened}
-              valueExpr="ID"
-              deferRendering={false}
-              inputAttr={ownerLabel}
-              displayExpr={this.gridBoxDisplayExpr}
-              placeholder="Select a value..."
-              showClearButton={true}
-              dataSource={this.gridDataSource}
-              onValueChanged={this.syncDataGridSelection}
-              onOptionChanged={this.onGridBoxOpened}
-              contentRender={this.dataGridRender}
-            />
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  treeViewRender() {
-    return (
-      <TreeView dataSource={this.treeDataSource}
-        ref={(ref) => { this.treeView = ref; }}
+      <TreeView dataSource={treeDataSource}
+        ref={treeView}
         dataStructure="plain"
         keyExpr="ID"
         parentIdExpr="categoryId"
         selectionMode="single"
         displayExpr="name"
         selectByClick={true}
-        onContentReady={this.treeViewOnContentReady}
-        onItemClick={this.onTreeItemClick}
-        onItemSelectionChanged={this.treeViewItemSelectionChanged}
+        onContentReady={treeViewOnContentReady}
+        onItemClick={onTreeItemClick}
+        onItemSelectionChanged={treeViewItemSelectionChanged}
       />
     );
   }
 
-  dataGridRender() {
+  const dataGridRender = () => {
     return (
       <DataGrid
-        dataSource={this.gridDataSource}
+        dataSource={gridDataSource}
         columns={gridColumns}
         hoverStateEnabled={true}
-        selectedRowKeys={this.state.gridBoxValue}
-        onSelectionChanged={this.dataGridOnSelectionChanged}
+        selectedRowKeys={gridBoxValue}
+        onSelectionChanged={dataGridOnSelectionChanged}
         height="100%">
         <Selection mode="single" />
         <Scrolling mode="virtual" />
@@ -123,67 +64,95 @@ class App extends React.Component {
     );
   }
 
-  syncTreeViewSelection(e) {
-    this.setState({
-      treeBoxValue: e.value,
-    });
-    if (!this.treeView) return;
+  const syncTreeViewSelection = (e) => {
+    setTreeBoxValue(e.value);
+    if (!treeView.current) return;
 
     if (!e.value) {
-      this.treeView.instance.unselectAll();
+      treeView.current.instance.unselectAll();
     } else {
-      this.treeView.instance.selectItem(e.value);
+      treeView.current.instance.selectItem(e.value);
     }
   }
 
-  syncDataGridSelection(e) {
-    this.setState({
-      gridBoxValue: e.value,
-    });
+  const syncDataGridSelection = (e) => {
+    setGridBoxValue(e.value);
   }
 
-  treeViewItemSelectionChanged(e) {
-    this.setState({
-      treeBoxValue: e.component.getSelectedNodeKeys(),
-    });
+  const treeViewItemSelectionChanged = (e) => {
+    setTreeBoxValue(e.component.getSelectedNodeKeys());
   }
 
-  dataGridOnSelectionChanged(e) {
-    this.setState({
-      gridBoxValue: e.selectedRowKeys,
-      isGridBoxOpened: false,
-    });
+  const dataGridOnSelectionChanged = (e) => {
+    setGridBoxValue(e.selectedRowKeys);
+    setIsGridBoxOpened(false);
   }
 
-  gridBoxDisplayExpr(item) {
+  const gridBoxDisplayExpr = (item) => {
     return item && `${item.CompanyName} <${item.Phone}>`;
   }
 
-  treeViewOnContentReady(e) {
-    e.component.selectItem(this.state.treeBoxValue);
+  const treeViewOnContentReady = (e) => {
+    e.component.selectItem(treeBoxValue);
   }
 
-  onTreeItemClick() {
-    this.setState({
-      isTreeBoxOpened: false,
-    });
+  const onTreeItemClick = () => {
+    setIsTreeBoxOpened(false);
   }
 
-  onGridBoxOpened(e) {
+  const onGridBoxOpened = (e) => {
     if (e.name === 'opened') {
-      this.setState({
-        isGridBoxOpened: e.value,
-      });
+      setIsGridBoxOpened(e.value);
     }
   }
 
-  onTreeBoxOpened(e) {
+  const onTreeBoxOpened = (e) => {
     if (e.name === 'opened') {
-      this.setState({
-        isTreeBoxOpened: e.value,
-      });
+      setIsTreeBoxOpened(e.value);
     }
   }
+
+  return (
+    <div className="dx-fieldset">
+      <div className="dx-field">
+        <div className="dx-field-label">DropDownBox with embedded TreeView</div>
+        <div className="dx-field-value">
+          <DropDownBox
+            value={treeBoxValue}
+            opened={isTreeBoxOpened}
+            valueExpr="ID"
+            inputAttr={ownerLabel}
+            displayExpr="name"
+            placeholder="Select a value..."
+            showClearButton={true}
+            dataSource={treeDataSource}
+            onValueChanged={syncTreeViewSelection}
+            onOptionChanged={onTreeBoxOpened}
+            contentRender={treeViewRender}
+          />
+        </div>
+      </div>
+      <div className="dx-field">
+        <div className="dx-field-label">DropDownBox with embedded DataGrid</div>
+        <div className="dx-field-value">
+          <DropDownBox
+            value={gridBoxValue}
+            opened={isGridBoxOpened}
+            valueExpr="ID"
+            deferRendering={false}
+            inputAttr={ownerLabel}
+            displayExpr={gridBoxDisplayExpr}
+            placeholder="Select a value..."
+            showClearButton={true}
+            dataSource={gridDataSource}
+            onValueChanged={syncDataGridSelection}
+            onOptionChanged={onGridBoxOpened}
+            contentRender={dataGridRender}
+          />
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default App;

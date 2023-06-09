@@ -1,9 +1,7 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import notify from 'devextreme/ui/notify';
 import Button from 'devextreme-react/button';
 import Popup from 'devextreme-react/popup';
-
 import { housesSource } from './data.js';
 import House from './House.js';
 
@@ -21,47 +19,11 @@ const favButtonAttrs = {
   class: 'favorites',
 };
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const [currentHouse, setCurrentHouse] = useState(housesSource[0]);
+  const [popupVisible, setPopupVisible] = useState(false);
 
-    this.state = {
-      currentHouse: housesSource[0],
-    };
-
-    this.renderPopup = this.renderPopup.bind(this);
-    this.showHouse = this.showHouse.bind(this);
-    this.changeFavoriteState = this.changeFavoriteState.bind(this);
-    this.handlePopupHidden = this.handlePopupHidden.bind(this);
-  }
-
-  render() {
-    return (
-      <div className="images">
-        {
-          housesSource.map((h) => <House
-            house={h}
-            show={this.showHouse}
-            key={h.ID}
-          />)
-        }
-        <Popup
-          width={660}
-          height={540}
-          showTitle={true}
-          title={this.state.currentHouse.Address}
-          dragEnabled={false}
-          hideOnOutsideClick={true}
-          visible={this.state.popupVisible}
-          onHiding={this.handlePopupHidden}
-          contentRender={this.renderPopup}
-        />
-      </div>
-    );
-  }
-
-  renderPopup() {
-    const { currentHouse } = this.state;
+  const renderPopup = () => {
     return (
       <div className="popup-property-details">
         <div className="large-text">{formatCurrency(currentHouse.Price)}</div>
@@ -72,7 +34,7 @@ class App extends React.Component {
           width={260}
           height={44}
           elementAttr={favButtonAttrs}
-          onClick={this.changeFavoriteState}
+          onClick={changeFavoriteState}
         />
         <div className="images">
           <img src={currentHouse.Image} />
@@ -81,38 +43,52 @@ class App extends React.Component {
         <div>{currentHouse.Features}</div>
       </div>
     );
-  }
+  };
 
-  showHouse(house) {
-    this.setState({
-      currentHouse: house,
-      popupVisible: true,
-    });
-  }
+  const showHouse = (house) => {
+    setCurrentHouse(house);
+    setPopupVisible(true);
+  };
 
-  handlePopupHidden() {
-    this.setState({
-      popupVisible: false,
-    });
-  }
+  const handlePopupHidden = () => {
+    setPopupVisible(false);
+  };
 
-  changeFavoriteState() {
-    const { currentHouse } = this.state;
-    currentHouse.Favorite = !currentHouse.Favorite;
-
-    this.renderPopup = this.renderPopup.bind(this);
-    this.setState({
-      currentHouse,
-    });
+  const changeFavoriteState = () => {
+    const updatedHouse = { ...currentHouse, Favorite: !currentHouse.Favorite };
+    setCurrentHouse(updatedHouse);
 
     notify({
       message: `This item has been ${
-        currentHouse.Favorite ? 'added to' : 'removed from'
+        updatedHouse.Favorite ? 'added to' : 'removed from'
       } the Favorites list!`,
       width: 450,
     },
-    currentHouse.Favorite ? 'success' : 'error', 2000);
-  }
-}
+    updatedHouse.Favorite ? 'success' : 'error', 2000);
+  };
+
+  return (
+    <div className="images">
+      {
+        housesSource.map((h) => <House
+          house={h}
+          show={showHouse}
+          key={h.ID}
+        />)
+      }
+      <Popup
+        width={660}
+        height={540}
+        showTitle={true}
+        title={currentHouse.Address}
+        dragEnabled={false}
+        hideOnOutsideClick={true}
+        visible={popupVisible}
+        onHiding={handlePopupHidden}
+        contentRender={renderPopup}
+      />
+    </div>
+  );
+};
 
 export default App;

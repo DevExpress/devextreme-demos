@@ -5,39 +5,37 @@ import {
 
 const values = [121.4, 135.4, 115.9, 141.1, 127.5];
 
-class App extends React.Component {
-  render() {
-    return (
-      <BarGauge
-        id="gauge"
-        startValue={0}
-        endValue={200}
-        defaultValues={values}
-      >
-        <Label visible={false} />
-        <Tooltip enabled={true} customizeTooltip={this.customizeTooltip} />
-        <Export enabled={true} />
-        <Title text="Average Speed by Racer">
-          <Font size={28} />
-        </Title>
-        <Legend visible={true} customizeText={this.customizeText} verticalAlignment="bottom" horizontalAlignment="center" />
-      </BarGauge>
-    );
-  }
-
-  customizeTooltip(arg) {
+const App = () => {
+  const customizeTooltip = (arg) => {
     return {
       text: getText(arg, arg.valueText),
     };
   }
 
-  customizeText(arg) {
+  const customizeText = (arg) => {
     return getText(arg.item, arg.text);
   }
-}
 
-function getText(item, text) {
-  return `Racer ${(item.index + 1)} - ${text} km/h`;
+  const getText = (item, text) => {
+    return `Racer ${(item.index + 1)} - ${text} km/h`;
+  }
+
+  return (
+    <BarGauge
+      id="gauge"
+      startValue={0}
+      endValue={200}
+      defaultValues={values}
+    >
+      <Label visible={false} />
+      <Tooltip enabled={true} customizeTooltip={customizeTooltip} />
+      <Export enabled={true} />
+      <Title text="Average Speed by Racer">
+        <Font size={28} />
+      </Title>
+      <Legend visible={true} customizeText={customizeText} verticalAlignment="bottom" horizontalAlignment="center" />
+    </BarGauge>
+  );
 }
 
 export default App;

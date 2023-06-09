@@ -1,94 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DataGrid, {
-  Column, RowDragging, Scrolling, Lookup, Sorting,
+  Column,
+  RowDragging,
+  Scrolling,
+  Lookup,
+  Sorting,
 } from 'devextreme-react/data-grid';
 import { CheckBox } from 'devextreme-react/check-box';
 import { tasks, employees } from './data.js';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const [showDragIcons, setShowDragIcons] = useState(true);
+  const [data, setData] = useState(tasks);
 
-    this.onReorder = this.onReorder.bind(this);
-    this.onShowDragIconsChanged = this.onShowDragIconsChanged.bind(this);
-
-    this.state = {
-      tasks,
-      showDragIcons: true,
-    };
-  }
-
-  onReorder(e) {
+  const onReorder = (e) => {
     const visibleRows = e.component.getVisibleRows();
-    const newTasks = [...this.state.tasks];
+    const newTasks = [...data];
 
-    const toIndex = newTasks.findIndex((item) => item.ID === visibleRows[e.toIndex].data.ID);
-    const fromIndex = newTasks.findIndex((item) => item.ID === e.itemData.ID);
+    const toIndex = newTasks.findIndex(
+      (item) => item.ID === visibleRows[e.toIndex].data.ID
+    );
+    const fromIndex = newTasks.findIndex(
+      (item) => item.ID === e.itemData.ID
+    );
 
     newTasks.splice(fromIndex, 1);
     newTasks.splice(toIndex, 0, e.itemData);
 
-    this.setState({
-      tasks: newTasks,
-    });
-  }
+    setData(newTasks);
+  };
 
-  onShowDragIconsChanged(args) {
-    this.setState({
-      showDragIcons: args.value,
-    });
-  }
+  const onShowDragIconsChanged = (args) => {
+    setShowDragIcons(args.value);
+  };
 
-  render() {
-    return (
-      <React.Fragment>
-        <DataGrid
-          height={440}
-          dataSource={this.state.tasks}
-          keyExpr="ID"
-          showBorders={true}
-        >
-          <RowDragging
-            allowReordering={true}
-            onReorder={this.onReorder}
-            showDragIcons={this.state.showDragIcons}
+  return (
+    <>
+      <DataGrid
+        height={440}
+        dataSource={data}
+        keyExpr="ID"
+        showBorders={true}
+      >
+        <RowDragging
+          allowReordering={true}
+          onReorder={onReorder}
+          showDragIcons={showDragIcons}
+        />
+        <Scrolling mode="virtual" />
+        <Sorting mode="none" />
+        <Column dataField="ID" width={55} />
+        <Column dataField="Owner" width={150}>
+          <Lookup dataSource={employees} valueExpr="ID" displayExpr="FullName" />
+        </Column>
+        <Column dataField="AssignedEmployee" caption="Assignee" width={150}>
+          <Lookup dataSource={employees} valueExpr="ID" displayExpr="FullName" />
+        </Column>
+        <Column dataField="Subject" />
+      </DataGrid>
+
+      <div className="options">
+        <div className="caption">Options</div>
+        <div className="option">
+          <CheckBox
+            value={showDragIcons}
+            text="Show Drag Icons"
+            onValueChanged={onShowDragIconsChanged}
           />
-          <Scrolling mode="virtual" />
-          <Sorting mode="none" />
-          <Column dataField="ID" width={55} />
-          <Column dataField="Owner" width={150}>
-            <Lookup
-              dataSource={employees}
-              valueExpr="ID"
-              displayExpr="FullName"
-            />
-          </Column>
-          <Column
-            dataField="AssignedEmployee"
-            caption="Assignee"
-            width={150}>
-            <Lookup
-              dataSource={employees}
-              valueExpr="ID"
-              displayExpr="FullName"
-            />
-          </Column>
-          <Column dataField="Subject" />
-        </DataGrid>
-
-        <div className="options">
-          <div className="caption">Options</div>
-          <div className="option">
-            <CheckBox
-              value={this.state.showDragIcons}
-              text="Show Drag Icons"
-              onValueChanged={this.onShowDragIconsChanged}
-            />
-          </div>
         </div>
-      </React.Fragment>
-    );
-  }
-}
+      </div>
+    </>
+  );
+};
 
 export default App;

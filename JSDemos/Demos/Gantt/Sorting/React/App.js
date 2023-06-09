@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Gantt, {
   Tasks, Dependencies, Resources, ResourceAssignments, Column, Editing, Sorting,
 } from 'devextreme-react/gantt';
@@ -9,12 +9,28 @@ import {
 } from './data.js';
 
 const sortingModeValues = ['single', 'multiple', 'none'];
-function App() {
-  const [ganttConfig, setGanttConfig] = React.useState({
+
+const App = () => {
+  const [ganttConfig, setGanttConfig] = useState({
     sortingMode: 'single',
     showSortIndexes: false,
     showSortIndexesDisabled: true,
   });
+
+  const onSortingModeChanged = (e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      sortingMode: e.value,
+      showSortIndexesDisabled: e.value !== 'multiple',
+    });
+  }
+
+  const onShowSortIndexesChanged = (e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      showSortIndexes: e.value,
+    });
+  }
 
   return (
     <div id="form-demo">
@@ -65,21 +81,6 @@ function App() {
       </div>
     </div>
   );
-
-  function onSortingModeChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      sortingMode: e.value,
-      showSortIndexesDisabled: e.value !== 'multiple',
-    });
-  }
-
-  function onShowSortIndexesChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      showSortIndexes: e.value,
-    });
-  }
 }
 
 export default App;

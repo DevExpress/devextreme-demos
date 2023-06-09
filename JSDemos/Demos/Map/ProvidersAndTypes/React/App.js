@@ -1,18 +1,18 @@
-import React from 'react';
+There you go:
 
+import React, { useState, useCallback } from 'react';
 import Map from 'devextreme-react/map';
 import SelectBox from 'devextreme-react/select-box';
-
 import { mapTypes, mapTypeLabel } from './data.js';
 
 const apiKey = {
   bing: 'Aq3LKP2BOmzWY47TZoT1YdieypN_rB6RY9FqBfx-MDCKjvvWBbT68R51xwbL-AqC',
 };
 
-export default function App() {
-  const [mapTypeValue, setMapTypeValue] = React.useState(mapTypes[0].key);
+function App() {
+  const [mapTypeValue, setMapTypeValue] = useState(mapTypes[0].key);
 
-  const onMapTypeChange = React.useCallback((value) => {
+  const onMapTypeChange = useCallback((value) => {
     setMapTypeValue(value);
   }, [setMapTypeValue]);
 
@@ -45,3 +45,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;

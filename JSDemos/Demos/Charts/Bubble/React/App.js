@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   Chart,
   Series,
@@ -12,19 +11,38 @@ import {
   Tooltip,
   Export,
 } from 'devextreme-react/chart';
-
 import { dataSource } from './data.js';
 
 const palette = ['#00ced1', '#008000', '#ffd700', '#ff7f50'];
 
-export default function App() {
+const App = () => {
+  const customizeTooltip = (pointInfo) => {
+    return {
+      text: `${pointInfo.point.tag}<br/>Total Population: ${pointInfo.argumentText}M<br/>Population with Age over 60: ${pointInfo.valueText}M (${pointInfo.size}%)`,
+    };
+  };
+
+  const seriesClick = (e) => {
+    const series = e.target;
+    if (series.isVisible()) {
+      series.hide();
+    } else {
+      series.show();
+    }
+  };
+
+  const customizeText = (e) => {
+    return `${e.value}M`;
+  };
+
   return (
     <Chart
       id="chart"
       title={'Correlation between Total Population and\n Population with Age over 60'}
       palette={palette}
       onSeriesClick={seriesClick}
-      dataSource={dataSource}>
+      dataSource={dataSource}
+    >
       <Tooltip enabled={true} location="edge" customizeTooltip={customizeTooltip} />
       <CommonSeriesSettings type="bubble" />
       <ValueAxis title="Population with Age over 60">
@@ -61,32 +79,12 @@ export default function App() {
         sizeField="perc4"
         tagField="tag4"
       />
-      <Legend
-        position="inside"
-        horizontalAlignment="left"
-      >
+      <Legend position="inside" horizontalAlignment="left">
         <Border visible={true} />
       </Legend>
       <Export enabled={true} />
     </Chart>
   );
-}
+};
 
-function customizeTooltip(pointInfo) {
-  return {
-    text: `${pointInfo.point.tag}<br/>Total Population: ${pointInfo.argumentText}M<br/>Population with Age over 60: ${pointInfo.valueText}M (${pointInfo.size}%)`,
-  };
-}
-
-function seriesClick(e) {
-  const series = e.target;
-  if (series.isVisible()) {
-    series.hide();
-  } else {
-    series.show();
-  }
-}
-
-function customizeText(e) {
-  return `${e.value}M`;
-}
+export default App;

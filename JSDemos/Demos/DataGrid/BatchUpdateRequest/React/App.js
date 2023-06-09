@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import DataGrid, { Column, Editing } from 'devextreme-react/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 import 'whatwg-fetch';
@@ -36,8 +36,8 @@ async function processBatchRequest(url, changes, component) {
   component.cancelEditData();
 }
 
-function App() {
-  const onSaving = React.useCallback((e) => {
+const App = () => {
+  const onSaving = useCallback((e) => {
     e.cancel = true;
 
     if (e.changes.length) {

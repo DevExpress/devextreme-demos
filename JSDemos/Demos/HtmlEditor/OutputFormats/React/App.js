@@ -1,107 +1,79 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import HtmlEditor, { Toolbar, Item } from 'devextreme-react/html-editor';
 import ButtonGroup, { Item as ButtonItem } from 'devextreme-react/button-group';
 import prettier from 'prettier/standalone';
 import parserHtml from 'prettier/parser-html';
 import { markup } from './data.js';
-
 import 'devextreme/ui/html_editor/converters/markdown';
 
 const sizeValues = ['8pt', '10pt', '12pt', '14pt', '18pt', '24pt', '36pt'];
 const fontValues = ['Arial', 'Courier New', 'Georgia', 'Impact', 'Lucida Console', 'Tahoma', 'Times New Roman', 'Verdana'];
 const defaultSelectedItemKeys = ['Html'];
 
-class App extends React.Component {
-  constructor() {
-    super();
+const App = () => {
+  const [valueContent, setValueContent] = useState(markup);
+  const [editorValueType, setEditorValueType] = useState('html');
 
-    this.state = {
-      valueContent: markup,
-      editorValueType: 'html',
-    };
+  const valueChanged = (e) => {
+    setValueContent(e.value);
+  };
 
-    this.valueChanged = this.valueChanged.bind(this);
-    this.valueTypeChanged = this.valueTypeChanged.bind(this);
-    this.prettierFormat = this.prettierFormat.bind(this);
-  }
+  const valueTypeChanged = (e) => {
+    setEditorValueType(e.addedItems[0].text.toLowerCase());
+  };
 
-  render() {
-    const { valueContent, editorValueType } = this.state;
-
-    return (
-      <div className="widget-container">
-        <HtmlEditor
-          height={300}
-          defaultValue={valueContent}
-          valueType={editorValueType}
-          onValueChanged={this.valueChanged}
-        >
-          <Toolbar>
-            <Item name="undo" />
-            <Item name="redo" />
-            <Item name="separator" />
-            <Item
-              name="size"
-              acceptedValues={sizeValues}
-            />
-            <Item
-              name="font"
-              acceptedValues={fontValues}
-            />
-            <Item name="separator" />
-            <Item name="bold" />
-            <Item name="italic" />
-            <Item name="strike" />
-            <Item name="underline" />
-            <Item name="separator" />
-            <Item name="alignLeft" />
-            <Item name="alignCenter" />
-            <Item name="alignRight" />
-            <Item name="alignJustify" />
-            <Item name="separator" />
-            <Item name="color" />
-            <Item name="background" />
-          </Toolbar>
-        </HtmlEditor>
-
-        <div className="options">
-          <ButtonGroup
-            onSelectionChanged={this.valueTypeChanged}
-            defaultSelectedItemKeys={defaultSelectedItemKeys}
-          >
-            <ButtonItem text="Html" />
-            <ButtonItem text="Markdown" />
-          </ButtonGroup>
-          <div className="value-content">
-            {this.prettierFormat(valueContent)}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  valueChanged(e) {
-    this.setState({
-      valueContent: e.value,
-    });
-  }
-
-  valueTypeChanged(e) {
-    this.setState({
-      editorValueType: e.addedItems[0].text.toLowerCase(),
-    });
-  }
-
-  prettierFormat(text) {
-    if (this.state.editorValueType === 'html') {
+  const prettierFormat = (text) => {
+    if (editorValueType === 'html') {
       return prettier.format(text, {
         parser: 'html',
         plugins: [parserHtml],
       });
     }
     return text;
-  }
-}
+  };
+
+  return (
+    <div className="widget-container">
+      <HtmlEditor
+        height={300}
+        defaultValue={valueContent}
+        valueType={editorValueType}
+        onValueChanged={valueChanged}
+      >
+        <Toolbar>
+          <Item name="undo" />
+          <Item name="redo" />
+          <Item name="separator" />
+          <Item name="size" acceptedValues={sizeValues} />
+          <Item name="font" acceptedValues={fontValues} />
+          <Item name="separator" />
+          <Item name="bold" />
+          <Item name="italic" />
+          <Item name="strike" />
+          <Item name="underline" />
+          <Item name="separator" />
+          <Item name="alignLeft" />
+          <Item name="alignCenter" />
+          <Item name="alignRight" />
+          <Item name="alignJustify" />
+          <Item name="separator" />
+          <Item name="color" />
+          <Item name="background" />
+        </Toolbar>
+      </HtmlEditor>
+
+      <div className="options">
+        <ButtonGroup
+          onSelectionChanged={valueTypeChanged}
+          defaultSelectedItemKeys={defaultSelectedItemKeys}
+        >
+          <ButtonItem text="Html" />
+          <ButtonItem text="Markdown" />
+        </ButtonGroup>
+        <div className="value-content">{prettierFormat(valueContent)}</div>
+      </div>
+    </div>
+  );
+};
 
 export default App;
