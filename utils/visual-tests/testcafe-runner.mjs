@@ -7,6 +7,12 @@ function reporter() {
     afterErrorList: false,
     testCount: 0,
     skipped: 0,
+    axeViolationsCount: {
+      minor: 0,
+      moderate: 0,
+      serious: 0,
+      critical: 0,
+    },
 
     reportTaskStart(startTime, userAgents, testCount) {
       this.startTime = startTime;
@@ -69,6 +75,27 @@ function reporter() {
         .newline();
     },
 
+    appendAxeViolationsCount(reportData, browsers) {
+      if (!reportData)
+        return;
+
+      if (!Object.values(reportData).some(data => data.length))
+        return;
+
+      browsers.forEach(({ testRunId }) => {
+        const browserReportData = reportData[testRunId];
+
+        if (!browserReportData)
+          return;
+
+        browserReportData.forEach(data => {
+          Object.keys(data).forEach(violation => {
+            this.axeViolationsCount[violation] += data[violation];
+          });
+        });
+      });
+    },
+
     reportTestDone(name, testRunInfo) {
       const hasErr = !!testRunInfo.errs.length;
       let symbol = null;
@@ -87,6 +114,8 @@ function reporter() {
         // eslint-disable-next-line spellcheck/spell-checker
         nameStyle = this.chalk.grey;
       }
+
+      this.appendAxeViolationsCount(testRunInfo.reportData, testRunInfo.browsers);
 
       let doneMessage = 'done';
       if (testRunInfo.skipped) doneMessage = 'skip';
@@ -125,7 +154,7 @@ function reporter() {
       });
     },
 
-    reportTaskDone(endTime, passed, warnings) {
+    reportTaskDone(endTime, passed, warnings, result) {
       const durationMs = endTime - this.startTime;
       const durationStr = this.moment.duration(durationMs).format('h[h] mm[m] ss[s]');
       let footer = passed === this.testCount
@@ -150,6 +179,12 @@ function reporter() {
       }
 
       if (warnings.length) this.renderWarnings(warnings);
+
+      const { minor, moderate, serious, critical } = this.axeViolationsCount;
+      const total = minor + minor + serious + critical;
+
+      this.write(this.chalk.yellow(`Axe report: ${total} accessibility issues found (${critical} critical, ${serious} serious, ${moderate} moderate, and ${minor} minor)`))
+          .newline();
     },
   };
 }
@@ -163,6 +198,7 @@ async function main() {
     .reporter(reporter)
     .browsers(process.env.BROWSERS || 'chrome:headless --disable-partial-raster --disable-skia-runtime-opts --run-all-compositor-stages-before-draw --disable-new-content-rendering-timeout --disable-threaded-animation --disable-threaded-scrolling --disable-checker-imaging --disable-image-animation-resync --use-gl="swiftshader" --disable-features=PaintHolding --js-flags=--random-seed=2147483647 --font-render-hinting=none --disable-font-subpixel-positioning')
     .concurrency(concurrency || 1)
+    .src('./testing/common.test.js')
     .run({ quarantineMode: !!process.env.TCQUARANTINE });
 
   await tester.close();
