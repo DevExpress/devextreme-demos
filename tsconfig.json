@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "jsx": "preserve",
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "moduleResolution": "node",
   },
   "include": [
-    "JSDemos/Demos/**/*.{ts,tsx}"
+    "JSDemos/Demos/**/*.ts",
+    "JSDemos/Demos/**/*.tsx"
   ]
 }
