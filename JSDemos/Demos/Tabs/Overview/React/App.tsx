@@ -6,6 +6,10 @@ import SelectBox from 'devextreme-react/select-box';
 import { tabs, longtabs, tabLabel } from './data.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor() {
     super();
     this.state = {
@@ -21,10 +25,12 @@ class App extends React.Component {
       <React.Fragment>
         <div id="longtabs">
           <div className="caption">Tabs</div>
+          // @ts-expect-error TS(2786): 'Tabs' cannot be used as a JSX component.
           <Tabs dataSource={longtabs} />
         </div>
         <div id="scrolledtabs">
           <div className="caption">Tabs with Overflow</div>
+          // @ts-expect-error TS(2786): 'Tabs' cannot be used as a JSX component.
           <Tabs
             dataSource={longtabs}
             width={300}
@@ -34,6 +40,7 @@ class App extends React.Component {
         </div>
         <div id="tabs">
           <div className="caption">API</div>
+          // @ts-expect-error TS(2786): 'Tabs' cannot be used as a JSX component.
           <Tabs
             dataSource={tabs}
             selectedIndex={selectedIndex}
@@ -43,6 +50,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Selected index:</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
                 <SelectBox
                   dataSource={tabs}
                   displayExpr="text"

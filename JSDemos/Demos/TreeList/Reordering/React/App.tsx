@@ -7,6 +7,7 @@ const expandedRowKeys = [1];
 class App extends React.Component {
   render() {
     return (
+      // @ts-expect-error TS(2786): 'TreeList' cannot be used as a JSX component.
       <TreeList
         id="employees"
         dataSource={employees}
@@ -18,11 +19,17 @@ class App extends React.Component {
         keyExpr="ID"
         parentIdExpr="Head_ID"
       >
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column allowReordering={false} dataField="Full_Name" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Title" caption="Position" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="City" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="State" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Mobile_Phone" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Hire_Date" dataType="date" />
       </TreeList>
     );

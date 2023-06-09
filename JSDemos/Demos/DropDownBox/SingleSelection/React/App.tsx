@@ -11,6 +11,16 @@ const gridColumns = ['CompanyName', 'City', 'Phone'];
 const ownerLabel = { 'aria-label': 'Owner' };
 
 class App extends React.Component {
+  gridDataSource: any;
+
+  setState: any;
+
+  state: any;
+
+  treeDataSource: any;
+
+  treeView: any;
+
   constructor(props) {
     super(props);
     this.treeView = null;
@@ -51,6 +61,7 @@ class App extends React.Component {
         <div className="dx-field">
           <div className="dx-field-label">DropDownBox with embedded TreeView</div>
           <div className="dx-field-value">
+            // @ts-expect-error TS(2786): 'DropDownBox' cannot be used as a JSX component.
             <DropDownBox
               value={this.state.treeBoxValue}
               opened={this.state.isTreeBoxOpened}
@@ -69,6 +80,7 @@ class App extends React.Component {
         <div className="dx-field">
           <div className="dx-field-label">DropDownBox with embedded DataGrid</div>
           <div className="dx-field-value">
+            // @ts-expect-error TS(2786): 'DropDownBox' cannot be used as a JSX component.
             <DropDownBox
               value={this.state.gridBoxValue}
               opened={this.state.isGridBoxOpened}
@@ -91,6 +103,7 @@ class App extends React.Component {
 
   treeViewRender() {
     return (
+      // @ts-expect-error TS(2786): 'TreeView' cannot be used as a JSX component.
       <TreeView dataSource={this.treeDataSource}
         ref={(ref) => { this.treeView = ref; }}
         dataStructure="plain"
@@ -108,6 +121,7 @@ class App extends React.Component {
 
   dataGridRender() {
     return (
+      // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
       <DataGrid
         dataSource={this.gridDataSource}
         columns={gridColumns}
@@ -115,9 +129,13 @@ class App extends React.Component {
         selectedRowKeys={this.state.gridBoxValue}
         onSelectionChanged={this.dataGridOnSelectionChanged}
         height="100%">
+        // @ts-expect-error TS(2786): 'Selection' cannot be used as a JSX component.
         <Selection mode="single" />
+        // @ts-expect-error TS(2786): 'Scrolling' cannot be used as a JSX component.
         <Scrolling mode="virtual" />
+        // @ts-expect-error TS(2786): 'Paging' cannot be used as a JSX component.
         <Paging enabled={true} pageSize={10} />
+        // @ts-expect-error TS(2786): 'FilterRow' cannot be used as a JSX component.
         <FilterRow visible={true} />
       </DataGrid>
     );

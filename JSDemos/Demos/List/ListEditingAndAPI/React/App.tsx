@@ -9,6 +9,10 @@ import { tasks, deleteModeLabel } from './data.js';
 const itemDeleteModes = ['static', 'toggle', 'slideButton', 'slideItem', 'swipe', 'context'];
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor() {
     super();
     this.state = {
@@ -35,6 +39,7 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <div className="widget-container">
+          // @ts-expect-error TS(2786): 'List' cannot be used as a JSX component.
           <List
             dataSource={tasks}
             height={400}
@@ -45,6 +50,7 @@ class App extends React.Component {
         <div className="options">
           <div className="caption">Options</div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="Allow deletion"
               value={this.state.allowDeletion}
@@ -53,6 +59,7 @@ class App extends React.Component {
           </div>
           <div className="option">
             <span>Item delete mode </span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               disabled={!this.state.allowDeletion}
               items={itemDeleteModes}

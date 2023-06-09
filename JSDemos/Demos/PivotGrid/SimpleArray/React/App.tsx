@@ -14,6 +14,7 @@ class App extends React.Component {
         <div className="long-title">
           <h3>Sales Amount by Region</h3>
         </div>
+        // @ts-expect-error TS(2786): 'PivotGrid' cannot be used as a JSX component.
         <PivotGrid
           id="sales"
           dataSource={dataSource}
@@ -24,6 +25,7 @@ class App extends React.Component {
           height={440}
           showBorders={true}
         >
+          // @ts-expect-error TS(2786): 'FieldChooser' cannot be used as a JSX component.
           <FieldChooser enabled={false} />
         </PivotGrid>
       </React.Fragment>

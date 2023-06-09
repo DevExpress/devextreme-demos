@@ -46,6 +46,7 @@ function App() {
   }, []);
 
   return (
+    // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
     <DataGrid
       id="gridContainer"
       dataSource={ordersStore}
@@ -53,18 +54,27 @@ function App() {
       remoteOperations={true}
       repaintChangesOnly={true}
       onSaving={onSaving}>
+      // @ts-expect-error TS(2786): 'Editing' cannot be used as a JSX component.
       <Editing
+        // @ts-expect-error TS(2322): Type '{ mode: string; allowAdding: boolean; allowD... Remove this comment to see the full error message
         mode="batch"
         allowAdding={true}
         allowDeleting={true}
         allowUpdating={true}
       />
+      // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
       <Column dataField="OrderID" allowEditing={false}></Column>
+      // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
       <Column dataField="ShipName"></Column>
+      // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
       <Column dataField="ShipCountry"></Column>
+      // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
       <Column dataField="ShipCity"></Column>
+      // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
       <Column dataField="ShipAddress"></Column>
+      // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
       <Column dataField="OrderDate" dataType="date"></Column>
+      // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
       <Column dataField="Freight"></Column>
     </DataGrid>
   );

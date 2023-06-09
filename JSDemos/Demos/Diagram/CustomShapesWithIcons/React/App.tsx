@@ -5,6 +5,8 @@ import Diagram, {
 import 'whatwg-fetch';
 
 class App extends React.Component {
+  diagramRef: any;
+
   constructor(props) {
     super(props);
 
@@ -25,8 +27,11 @@ class App extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'Diagram' cannot be used as a JSX component.
       <Diagram id="diagram" ref={this.diagramRef}>
+        // @ts-expect-error TS(2786): 'CustomShape' cannot be used as a JSX component.
         <CustomShape
+          // @ts-expect-error TS(2322): Type '{ children: Element[]; category: string; typ... Remove this comment to see the full error message
           category="hardware"
           type="internet"
           title="Internet"
@@ -43,12 +48,18 @@ class App extends React.Component {
           textTop={0.7}
           textWidth={1}
           textHeight={0.3}>
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={0} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.9} y={0.5} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={1} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.1} y={0.5} />
         </CustomShape>
+        // @ts-expect-error TS(2786): 'CustomShape' cannot be used as a JSX component.
         <CustomShape
+          // @ts-expect-error TS(2322): Type '{ children: Element[]; category: string; typ... Remove this comment to see the full error message
           category="hardware"
           type="laptop"
           title="Laptop"
@@ -65,12 +76,18 @@ class App extends React.Component {
           textTop={0.7}
           textWidth={1}
           textHeight={0.3}>
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={0} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.9} y={0.5} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={1} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.1} y={0.5} />
         </CustomShape>
+        // @ts-expect-error TS(2786): 'CustomShape' cannot be used as a JSX component.
         <CustomShape
+          // @ts-expect-error TS(2322): Type '{ children: Element[]; category: string; typ... Remove this comment to see the full error message
           category="hardware"
           type="mobile"
           title="Mobile"
@@ -87,12 +104,18 @@ class App extends React.Component {
           textTop={0.7}
           textWidth={1}
           textHeight={0.3}>
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={0} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.9} y={0.5} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={1} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.1} y={0.5} />
         </CustomShape>
+        // @ts-expect-error TS(2786): 'CustomShape' cannot be used as a JSX component.
         <CustomShape
+          // @ts-expect-error TS(2322): Type '{ children: Element[]; category: string; typ... Remove this comment to see the full error message
           category="hardware"
           type="pc"
           title="PC"
@@ -109,12 +132,18 @@ class App extends React.Component {
           textTop={0.7}
           textWidth={1}
           textHeight={0.3}>
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={0} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.9} y={0.5} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={1} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.1} y={0.5} />
         </CustomShape>
+        // @ts-expect-error TS(2786): 'CustomShape' cannot be used as a JSX component.
         <CustomShape
+          // @ts-expect-error TS(2322): Type '{ children: Element[]; category: string; typ... Remove this comment to see the full error message
           category="hardware"
           type="phone"
           title="Phone"
@@ -131,12 +160,18 @@ class App extends React.Component {
           textTop={0.7}
           textWidth={1}
           textHeight={0.3}>
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={0} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.9} y={0.5} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={1} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.1} y={0.5} />
         </CustomShape>
+        // @ts-expect-error TS(2786): 'CustomShape' cannot be used as a JSX component.
         <CustomShape
+          // @ts-expect-error TS(2322): Type '{ children: Element[]; category: string; typ... Remove this comment to see the full error message
           category="hardware"
           type="printer"
           title="Printer"
@@ -153,12 +188,18 @@ class App extends React.Component {
           textTop={0.7}
           textWidth={1}
           textHeight={0.3}>
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={0} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.9} y={0.5} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={1} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.1} y={0.5} />
         </CustomShape>
+        // @ts-expect-error TS(2786): 'CustomShape' cannot be used as a JSX component.
         <CustomShape
+          // @ts-expect-error TS(2322): Type '{ children: never[]; category: string; type:... Remove this comment to see the full error message
           category="hardware"
           type="router"
           title="Router"
@@ -176,7 +217,9 @@ class App extends React.Component {
           textWidth={1}
           textHeight={0.3}>
         </CustomShape>
+        // @ts-expect-error TS(2786): 'CustomShape' cannot be used as a JSX component.
         <CustomShape
+          // @ts-expect-error TS(2322): Type '{ children: Element[]; category: string; typ... Remove this comment to see the full error message
           category="hardware"
           type="scaner"
           title="Scaner"
@@ -193,12 +236,18 @@ class App extends React.Component {
           textTop={0.7}
           textWidth={1}
           textHeight={0.3}>
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={0} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.9} y={0.5} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={1} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.1} y={0.5} />
         </CustomShape>
+        // @ts-expect-error TS(2786): 'CustomShape' cannot be used as a JSX component.
         <CustomShape
+          // @ts-expect-error TS(2322): Type '{ children: Element[]; category: string; typ... Remove this comment to see the full error message
           category="hardware"
           type="server"
           title="Server"
@@ -215,12 +264,18 @@ class App extends React.Component {
           textTop={0.7}
           textWidth={1}
           textHeight={0.3}>
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={0} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.9} y={0.5} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={1} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.1} y={0.5} />
         </CustomShape>
+        // @ts-expect-error TS(2786): 'CustomShape' cannot be used as a JSX component.
         <CustomShape
+          // @ts-expect-error TS(2322): Type '{ children: Element[]; category: string; typ... Remove this comment to see the full error message
           category="hardware"
           type="switch"
           title="Switch"
@@ -237,12 +292,18 @@ class App extends React.Component {
           textTop={0.7}
           textWidth={1}
           textHeight={0.3}>
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={0} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.9} y={0.5} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={1} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.1} y={0.5} />
         </CustomShape>
+        // @ts-expect-error TS(2786): 'CustomShape' cannot be used as a JSX component.
         <CustomShape
+          // @ts-expect-error TS(2322): Type '{ children: Element[]; category: string; typ... Remove this comment to see the full error message
           category="hardware"
           type="wifi"
           title="Wi Fi Router"
@@ -259,12 +320,18 @@ class App extends React.Component {
           textTop={0.7}
           textWidth={1}
           textHeight={0.3}>
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={0} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.9} y={0.5} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.5} y={1} />
+          // @ts-expect-error TS(2786): 'ConnectionPoint' cannot be used as a JSX componen... Remove this comment to see the full error message
           <ConnectionPoint x={0.1} y={0.5} />
         </CustomShape>
+        // @ts-expect-error TS(2786): 'Toolbox' cannot be used as a JSX component.
         <Toolbox>
+          // @ts-expect-error TS(2786): 'Group' cannot be used as a JSX component.
           <Group category="hardware" title="Hardware" />
         </Toolbox>
       </Diagram>

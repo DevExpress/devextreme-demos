@@ -11,6 +11,10 @@ import {
 } from './data.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -27,13 +31,16 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <div className="flex-container">
+          // @ts-expect-error TS(2786): 'PieChart' cannot be used as a JSX component.
           <PieChart
             id="pie"
             dataSource={dataSource}
             palette={this.state.palette}
             paletteExtensionMode={this.state.extensionMode.toLowerCase()}
           >
+            // @ts-expect-error TS(2786): 'Legend' cannot be used as a JSX component.
             <Legend visible={false} />
+            // @ts-expect-error TS(2786): 'Series' cannot be used as a JSX component.
             <Series />
           </PieChart>
 
@@ -53,6 +60,7 @@ class App extends React.Component {
           <div className="options-container">
             <div className="option">
               <span>Palette </span>
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox
                 items={paletteCollection}
                 inputAttr={paletteLabel}
@@ -62,6 +70,7 @@ class App extends React.Component {
             </div>
             <div className="option">
               <span>Palette Extension Mode </span>
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox
                 items={paletteExtensionModes}
                 inputAttr={paletteExtensionLabel}

@@ -41,6 +41,7 @@ class App extends React.Component {
         <div className="dx-field">
           <div className="dx-field-label">Data grouped in the DataSource</div>
           <div className="dx-field-value">
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               dataSource={fromUngroupedData}
               valueExpr="ID"
@@ -53,6 +54,7 @@ class App extends React.Component {
         <div className="dx-field">
           <div className="dx-field-label">Pre-grouped data</div>
           <div className="dx-field-value">
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               dataSource={fromPregroupedData}
               valueExpr="ID"
@@ -65,6 +67,7 @@ class App extends React.Component {
         <div className="dx-field">
           <div className="dx-field-label">Custom group template</div>
           <div className="dx-field-value">
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               dataSource={fromUngroupedData}
               valueExpr="ID"

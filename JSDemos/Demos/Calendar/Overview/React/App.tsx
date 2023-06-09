@@ -89,6 +89,7 @@ export default function App() {
   return (
     <div id="container">
       <div className="calendar-container">
+        // @ts-expect-error TS(2786): 'Calendar' cannot be used as a JSX component.
         <Calendar
           value={currentValue}
           onValueChanged={onCurrentValueChange}
@@ -107,6 +108,7 @@ export default function App() {
       <div className="options">
         <div className="caption">Options</div>
         <div className="option">
+          // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
           <CheckBox
             defaultValue={false}
             text="Set minimum date"
@@ -114,6 +116,7 @@ export default function App() {
           />
         </div>
         <div className="option">
+          // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
           <CheckBox
             defaultValue={false}
             text="Set maximum date"
@@ -121,6 +124,7 @@ export default function App() {
           />
         </div>
         <div className="option">
+          // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
           <CheckBox
             defaultValue={false}
             text="Disable weekends"
@@ -128,6 +132,7 @@ export default function App() {
           />
         </div>
         <div className="option">
+          // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
           <CheckBox
             defaultValue={false}
             text="Show week numbers"
@@ -135,6 +140,7 @@ export default function App() {
           />
         </div>
         <div className="option">
+          // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
           <CheckBox
             defaultValue={false}
             text="Use custom cell template"
@@ -142,6 +148,7 @@ export default function App() {
           />
         </div>
         <div className="option">
+          // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
           <CheckBox
             value={disabled}
             text="Disable the calendar"
@@ -150,6 +157,7 @@ export default function App() {
         </div>
         <div className="option">
           <span>First day of week</span>
+          // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
           <SelectBox
             dataSource={weekDays}
             inputAttr={dayLabel}
@@ -161,6 +169,7 @@ export default function App() {
         </div>
         <div className="option">
           <span>Week number rule</span>
+          // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
           <SelectBox
             dataSource={weekNumberRules}
             inputAttr={ruleLabel}
@@ -170,6 +179,7 @@ export default function App() {
         </div>
         <div className="option">
           <span>Zoom level</span>
+          // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
           <SelectBox
             dataSource={zoomLevels}
             value={zoomLevel}
@@ -179,6 +189,7 @@ export default function App() {
         </div>
         <div className="option">
           <span>Selected date</span>
+          // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
           <DateBox
             id="selected-date"
             value={currentValue}

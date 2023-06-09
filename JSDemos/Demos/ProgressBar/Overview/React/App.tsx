@@ -16,6 +16,10 @@ function statusFormat(ratio) {
 let intervalId;
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -31,6 +35,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="form">
+        // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
         <Button
           id="progress-button"
           text={this.state.buttonText}
@@ -40,6 +45,7 @@ class App extends React.Component {
         <div className="progress-info">
                     Time left {formatTime(this.state.seconds)}
         </div>
+        // @ts-expect-error TS(2786): 'ProgressBar' cannot be used as a JSX component.
         <ProgressBar
           id="progress-bar-status"
           className={this.state.seconds === 0 ? 'complete' : '' }
@@ -59,12 +65,15 @@ class App extends React.Component {
     };
 
     if (this.state.inProgress) {
+      // @ts-expect-error TS(2339): Property 'buttonText' does not exist on type '{ in... Remove this comment to see the full error message
       state.buttonText = 'Continue progress';
       clearInterval(intervalId);
     } else {
+      // @ts-expect-error TS(2339): Property 'buttonText' does not exist on type '{ in... Remove this comment to see the full error message
       state.buttonText = 'Stop progress';
 
       if (this.state.seconds === 0) {
+        // @ts-expect-error TS(2339): Property 'seconds' does not exist on type '{ inPro... Remove this comment to see the full error message
         state.seconds = maxValue;
       }
 
@@ -80,7 +89,9 @@ class App extends React.Component {
     };
 
     if (state.seconds === 0) {
+      // @ts-expect-error TS(2339): Property 'buttonText' does not exist on type '{ se... Remove this comment to see the full error message
       state.buttonText = 'Restart progress';
+      // @ts-expect-error TS(2339): Property 'inProgress' does not exist on type '{ se... Remove this comment to see the full error message
       state.inProgress = !this.state.inProgress;
       clearInterval(intervalId);
     }

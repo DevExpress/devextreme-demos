@@ -12,6 +12,10 @@ const allowedFileExtensions = [];
 const loadPanelPosition = { of: '#file-manager' };
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor() {
     super();
     this.state = {
@@ -25,9 +29,12 @@ class App extends React.Component {
   render() {
     return (
       <div id="wrapper" className={this.state.wrapperClassName}>
+        // @ts-expect-error TS(2786): 'LoadPanel' cannot be used as a JSX component.
         <LoadPanel visible={this.state.loadPanelVisible} position={loadPanelPosition} />
+        // @ts-expect-error TS(2786): 'FileManager' cannot be used as a JSX component.
         <FileManager id="file-manager" fileSystemProvider={fileSystemProvider} allowedFileExtensions={allowedFileExtensions}>
           {/* uncomment the code below to enable file/directory management */}
+          // @ts-expect-error TS(2786): 'Permissions' cannot be used as a JSX component.
           <Permissions
             // create={true}
             // copy={true}
@@ -35,6 +42,7 @@ class App extends React.Component {
             // delete={true}
             // rename={true}
             // upload={true}
+            // @ts-expect-error TS(2322): Type '{ children: never[]; download: boolean; }' i... Remove this comment to see the full error message
             download={true}>
           </Permissions>
         </FileManager>

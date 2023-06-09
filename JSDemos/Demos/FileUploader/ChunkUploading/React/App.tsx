@@ -2,6 +2,10 @@ import React from 'react';
 import FileUploader from 'devextreme-react/file-uploader';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = { chunks: [] };
@@ -12,6 +16,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'FileUploader' cannot be used as a JSX component.
         <FileUploader
           name="file"
           accept="image/*"

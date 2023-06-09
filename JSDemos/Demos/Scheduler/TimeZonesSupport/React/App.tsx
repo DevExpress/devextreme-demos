@@ -16,6 +16,10 @@ function getLocations(date) {
 const demoLocations = getLocations(currentDate);
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -62,6 +66,7 @@ class App extends React.Component {
       <React.Fragment>
         <div className="option">
           <span>Office Time Zone</span>
+          // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
           <SelectBox
             items={this.state.demoLocations}
             displayExpr="title"
@@ -72,8 +77,10 @@ class App extends React.Component {
             onValueChanged={this.onValueChanged}
           />
         </div>
+        // @ts-expect-error TS(2786): 'Scheduler' cannot be used as a JSX component.
         <Scheduler
           dataSource={data}
+          // @ts-expect-error TS(2322): Type 'string[]' is not assignable to type '("workW... Remove this comment to see the full error message
           views={views}
           defaultCurrentView="workWeek"
           startDayHour={8}
@@ -83,7 +90,9 @@ class App extends React.Component {
           onAppointmentFormOpening={this.onAppointmentFormOpening}
           onOptionChanged={this.onOptionChanged}
         >
+          // @ts-expect-error TS(2786): 'Editing' cannot be used as a JSX component.
           <Editing
+            // @ts-expect-error TS(2322): Type '{ allowTimeZoneEditing: boolean; }' is not a... Remove this comment to see the full error message
             allowTimeZoneEditing={true}
           />
         </Scheduler>

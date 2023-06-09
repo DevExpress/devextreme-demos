@@ -9,6 +9,10 @@ import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 import sales from './data.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -24,6 +28,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'PivotGrid' cannot be used as a JSX component.
         <PivotGrid
           id="sales"
           showTotalsPrior={this.state.showTotalsPrior ? 'both' : 'none'}
@@ -33,11 +38,13 @@ class App extends React.Component {
           dataSource={dataSource}
           showBorders={true}
           height="440">
+          // @ts-expect-error TS(2786): 'FieldChooser' cannot be used as a JSX component.
           <FieldChooser height="500" />
         </PivotGrid>
         <div className="options">
           <div className="caption">Options</div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox id="show-totals-prior"
               text="Show Totals Prior"
               value={this.state.showTotalsPrior}
@@ -45,6 +52,7 @@ class App extends React.Component {
           </div>
           &nbsp;
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox id="data-field-area"
               text="Data Field Headers in Rows"
               value={this.state.dataFieldArea}
@@ -52,6 +60,7 @@ class App extends React.Component {
           </div>
           &nbsp;
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox id="row-header-layout"
               text="Tree Row Header Layout"
               value={this.state.rowHeaderLayout}

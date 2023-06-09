@@ -9,6 +9,10 @@ const displayModes = [{ text: 'Display Mode \'full\'', value: 'full' }, { text: 
 const allowedPageSizes = [5, 10, 'all'];
 const data = generateData(100000);
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   displayModeChange = (value) => {
     this.setState({ ...this.state, displayMode: value });
   }
@@ -46,6 +50,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
         <DataGrid
           id='gridContainer'
           dataSource={data}
@@ -53,9 +58,13 @@ class App extends React.Component {
           showBorders={true}
           customizeColumns={this.customizeColumns}
         >
+          // @ts-expect-error TS(2786): 'Scrolling' cannot be used as a JSX component.
           <Scrolling rowRenderingMode='virtual'></Scrolling>
+          // @ts-expect-error TS(2786): 'Paging' cannot be used as a JSX component.
           <Paging defaultPageSize={10} />
+          // @ts-expect-error TS(2786): 'Pager' cannot be used as a JSX component.
           <Pager
+            // @ts-expect-error TS(2322): Type '{ visible: boolean; allowedPageSizes: (strin... Remove this comment to see the full error message
             visible={true}
             allowedPageSizes={allowedPageSizes}
             displayMode={this.state.displayMode}
@@ -67,6 +76,7 @@ class App extends React.Component {
           <div className='caption'>Options</div>
           <div className='option-container'>
             <div className='option'>
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox
                 id='displayModes'
                 items={displayModes}
@@ -77,6 +87,7 @@ class App extends React.Component {
                 onValueChange={this.displayModeChange} />
             </div>
             <div className='option'>
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 id='showPageSizes'
                 text='Show Page Size Selector'
@@ -84,6 +95,7 @@ class App extends React.Component {
                 onValueChange={this.showPageSizeSelectorChange} />
             </div>
             <div className='option'>
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 id='showInfo'
                 text='Show Info Text'
@@ -91,6 +103,7 @@ class App extends React.Component {
                 onValueChange={this.showInfoChange} />
             </div>
             <div className='option'>
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 id='showNavButtons'
                 text='Show Navigation Buttons'

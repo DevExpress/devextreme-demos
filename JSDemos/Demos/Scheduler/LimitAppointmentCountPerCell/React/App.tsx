@@ -19,12 +19,21 @@ const views = [{
 }];
 
 class App extends React.Component {
+  getAppointmentTemplate: any;
+
+  hideSchedulerTooltip: any;
+
+  onContentReady: any;
+
   render() {
     return (
+      // @ts-expect-error TS(2786): 'Scheduler' cannot be used as a JSX component.
       <Scheduler
         timeZone="America/Los_Angeles"
         dataSource={data}
+        // @ts-expect-error TS(2322): Type '({ type: string; name: string; maxAppointmen... Remove this comment to see the full error message
         views={views}
+        // @ts-expect-error TS(2322): Type '"Auto Mode"' is not assignable to type '"mon... Remove this comment to see the full error message
         defaultCurrentView="Auto Mode"
         defaultCurrentDate={currentDate}
         height={650}
@@ -32,7 +41,9 @@ class App extends React.Component {
         onContentReady={this.onContentReady}
         onAppointmentDeleted={this.hideSchedulerTooltip}
       >
+        // @ts-expect-error TS(2786): 'Resource' cannot be used as a JSX component.
         <Resource
+          // @ts-expect-error TS(2322): Type '{ dataSource: { text: string; id: number; co... Remove this comment to see the full error message
           dataSource={resourcesData}
           fieldExpr="roomId"
           label="Room"

@@ -10,6 +10,10 @@ const currentDate = new Date(2021, 3, 21);
 const groups = ['priorityId'];
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor() {
     super();
 
@@ -28,6 +32,7 @@ class App extends React.Component {
   render() {
     return (
       <div id="scheduler">
+        // @ts-expect-error TS(2786): 'Scheduler' cannot be used as a JSX component.
         <Scheduler
           timeZone="America/Los_Angeles"
           dataSource={data}
@@ -39,17 +44,23 @@ class App extends React.Component {
           startDayHour={9}
           endDayHour={16}
           crossScrollingEnabled={true}>
+          // @ts-expect-error TS(2786): 'Resource' cannot be used as a JSX component.
           <Resource
+            // @ts-expect-error TS(2322): Type '{ fieldExpr: string; allowMultiple: boolean;... Remove this comment to see the full error message
             fieldExpr="priorityId"
             allowMultiple={false}
             dataSource={priorityData}
             label="Priority"
           />
+          // @ts-expect-error TS(2786): 'View' cannot be used as a JSX component.
           <View
+            // @ts-expect-error TS(2322): Type '{ type: string; name: string; }' is not assi... Remove this comment to see the full error message
             type="week"
             name="Week"
           />
+          // @ts-expect-error TS(2786): 'View' cannot be used as a JSX component.
           <View
+            // @ts-expect-error TS(2322): Type '{ type: string; name: string; }' is not assi... Remove this comment to see the full error message
             type="month"
             name="Month"
           />
@@ -57,6 +68,7 @@ class App extends React.Component {
         <div className="options">
           <div className="caption">Group by Date First</div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'Switch' cannot be used as a JSX component.
             <Switch
               value={ this.state.groupByDate }
               onValueChanged={this.onGroupByDateChanged}

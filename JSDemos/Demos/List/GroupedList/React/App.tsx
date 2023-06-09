@@ -12,6 +12,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="list-container">
+        // @ts-expect-error TS(2786): 'List' cannot be used as a JSX component.
         <List
           dataSource={employees}
           height="100%"

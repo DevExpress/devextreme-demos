@@ -49,6 +49,7 @@ export default function App() {
       customizeCell: ({ pivotCell, excelCell }) => {
         if (isDataCell(pivotCell) || isTotalCell(pivotCell)) {
           const appearance = getConditionalAppearance(pivotCell);
+          // @ts-expect-error TS(2345): Argument of type '{ fill: string; font: string; bo... Remove this comment to see the full error message
           Object.assign(excelCell, getExcelCellFormat(appearance));
         }
 
@@ -73,6 +74,7 @@ export default function App() {
 
     if (isDataCell(cell) || isTotalCell(cell)) {
       const appearance = getConditionalAppearance(cell);
+      // @ts-expect-error TS(2345): Argument of type '{ fill: string; font: string; bo... Remove this comment to see the full error message
       Object.assign(cellElement.style, getCssStyles(appearance));
     }
   });
@@ -116,6 +118,7 @@ export default function App() {
 
   return (
     <React.Fragment>
+      // @ts-expect-error TS(2786): 'PivotGrid' cannot be used as a JSX component.
       <PivotGrid
         allowSortingBySummary={true}
         allowSorting={true}
@@ -127,7 +130,9 @@ export default function App() {
         onExporting={onExporting}
         onCellPrepared={onCellPrepared}
       >
+        // @ts-expect-error TS(2786): 'FieldChooser' cannot be used as a JSX component.
         <FieldChooser enabled={false} />
+        // @ts-expect-error TS(2786): 'Export' cannot be used as a JSX component.
         <Export enabled={true} />
       </PivotGrid>
     </React.Fragment>

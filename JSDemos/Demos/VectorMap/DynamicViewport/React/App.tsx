@@ -15,6 +15,24 @@ import {
 const bounds = [-180, 85, 180, -60];
 
 class App extends React.Component {
+  centerChanged: any;
+
+  continentChanged: any;
+
+  map: any;
+
+  panVisibleChange: any;
+
+  setState: any;
+
+  state: any;
+
+  storeMapInstance: any;
+
+  zoomFactorChanged: any;
+
+  zoomVisibleChange: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -61,13 +79,16 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        // @ts-expect-error TS(2786): 'VectorMap' cannot be used as a JSX component.
         <VectorMap
           id="vector-map"
           bounds={bounds}
           ref={this.storeMapInstance}
           onZoomFactorChanged={this.zoomFactorChanged}
           onCenterChanged={this.centerChanged}>
+          // @ts-expect-error TS(2786): 'ControlBar' cannot be used as a JSX component.
           <ControlBar zoomVisible={this.state.zoomVisible} panVisible={this.state.panVisible} />
+          // @ts-expect-error TS(2786): 'Layer' cannot be used as a JSX component.
           <Layer dataSource={mapsData.world} />
         </VectorMap>
 
@@ -77,6 +98,7 @@ class App extends React.Component {
             <div className="column">
               <div className="option">
                 <span>Continent</span>
+                // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
                 <SelectBox
                   dataSource={viewportCoordinates}
                   displayExpr="continent"
@@ -89,6 +111,7 @@ class App extends React.Component {
               </div>
               <div className="option">
                 <span>Zoom factor</span>
+                // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
                 <TextBox
                   value={this.state.zoomFactor}
                   inputAttr={zoomLabel}
@@ -98,6 +121,7 @@ class App extends React.Component {
               </div>
               <div className="option">
                 <span>Center</span>
+                // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
                 <TextBox
                   value={this.state.center}
                   readOnly={true}
@@ -109,12 +133,14 @@ class App extends React.Component {
             <div className="column">
               <div className="option">
                 <span>Pan control</span>
+                // @ts-expect-error TS(2786): 'Switch' cannot be used as a JSX component.
                 <Switch
                   value={this.state.panVisible}
                   onValueChange={this.panVisibleChange} />
               </div>
               <div className="option">
                 <span>Zoom bar</span>
+                // @ts-expect-error TS(2786): 'Switch' cannot be used as a JSX component.
                 <Switch
                   value={this.state.zoomVisible}
                   onValueChange={this.zoomVisibleChange} />

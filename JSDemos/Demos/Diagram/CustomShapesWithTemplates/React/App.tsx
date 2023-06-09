@@ -6,6 +6,14 @@ import CustomShapeTemplate from './CustomShapeTemplate.js';
 import service from './data.js';
 
 class App extends React.Component {
+  dataSource: any;
+
+  employees: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -50,8 +58,11 @@ class App extends React.Component {
   render() {
     return (
       <div id="container">
+        // @ts-expect-error TS(2786): 'Diagram' cannot be used as a JSX component.
         <Diagram id="diagram" customShapeRender={this.customShapeTemplate} readOnly={true}>
+          // @ts-expect-error TS(2786): 'CustomShape' cannot be used as a JSX component.
           {this.employees.map((employee, index) => <CustomShape
+            // @ts-expect-error TS(2322): Type '{ type: string; baseType: string; defaultWid... Remove this comment to see the full error message
             type={`employee${employee.ID}`}
             baseType="rectangle"
             defaultWidth={1.5}
@@ -59,10 +70,13 @@ class App extends React.Component {
             allowEditText={false}
             allowResize={false}
             key={index} />)}
+          // @ts-expect-error TS(2786): 'Nodes' cannot be used as a JSX component.
           <Nodes dataSource={this.dataSource} keyExpr="ID" typeExpr={this.itemTypeExpr} parentKeyExpr="Head_ID">
+            // @ts-expect-error TS(2786): 'AutoLayout' cannot be used as a JSX component.
             <AutoLayout type="tree" />
           </Nodes>
         </Diagram>
+        // @ts-expect-error TS(2786): 'Popup' cannot be used as a JSX component.
         <Popup
           visible={this.state.popupVisible}
           onHiding={this.hideInfo}

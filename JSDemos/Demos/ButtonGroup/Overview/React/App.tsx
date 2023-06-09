@@ -10,6 +10,7 @@ class App extends React.Component {
     return (
       <div>
         <div className="buttongroups-container">
+          // @ts-expect-error TS(2786): 'ButtonGroup' cannot be used as a JSX component.
           <ButtonGroup
             items={alignments}
             keyExpr="alignment"
@@ -17,6 +18,7 @@ class App extends React.Component {
             selectedItemKeys={selectedItemKeys}
             onItemClick={itemClick}
           />
+          // @ts-expect-error TS(2786): 'ButtonGroup' cannot be used as a JSX component.
           <ButtonGroup
             items={fontStyles}
             keyExpr="style"
@@ -26,6 +28,7 @@ class App extends React.Component {
           />
         </div>
         <div className="buttongroups-container">
+          // @ts-expect-error TS(2786): 'ButtonGroup' cannot be used as a JSX component.
           <ButtonGroup
             items={alignments}
             keyExpr="alignment"
@@ -33,6 +36,7 @@ class App extends React.Component {
             selectedItemKeys={selectedItemKeys}
             onItemClick={itemClick}
           />
+          // @ts-expect-error TS(2786): 'ButtonGroup' cannot be used as a JSX component.
           <ButtonGroup
             className="multiple-selection-styling-mode"
             items={fontStyles}

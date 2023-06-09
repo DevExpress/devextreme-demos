@@ -10,6 +10,22 @@ const additionalGeneratorOneLabel = { 'aria-label': 'Additional Generator One' }
 const additionalGeneratorTwoLabel = { 'aria-label': 'Additional Generator Two' };
 
 class App extends React.Component {
+  gaugeRef: any;
+
+  setAdditionalGenerator1Value: any;
+
+  setAdditionalGenerator2Value: any;
+
+  setMainGeneratorValue: any;
+
+  setState: any;
+
+  state: any;
+
+  storeGaugeRef: any;
+
+  updateValues: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -55,15 +71,21 @@ class App extends React.Component {
     return (
       <div id="gauge-demo">
         <div className="widget-container">
+          // @ts-expect-error TS(2786): 'CircularGauge' cannot be used as a JSX component.
           <CircularGauge
             id="gauge"
             ref={this.storeGaugeRef}
           >
+            // @ts-expect-error TS(2786): 'Scale' cannot be used as a JSX component.
             <Scale startValue={10} endValue={40} tickInterval={5}>
+              // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
               <Label customizeText={this.customizeText} />
             </Scale>
+            // @ts-expect-error TS(2786): 'Tooltip' cannot be used as a JSX component.
             <Tooltip enabled={true} />
+            // @ts-expect-error TS(2786): 'Title' cannot be used as a JSX component.
             <Title text="Generators Voltage (kV)">
+              // @ts-expect-error TS(2786): 'Font' cannot be used as a JSX component.
               <Font size={28} />
             </Title>
           </CircularGauge>
@@ -72,6 +94,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <span>Main generator</span>&nbsp;
+            // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
             <NumberBox
               id="main-generator"
               value={this.state.mainGeneratorValue}
@@ -85,6 +108,7 @@ class App extends React.Component {
           </div>
           <div className="option">
             <span>Additional generator 1</span>&nbsp;
+            // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
             <NumberBox
               id="additional-generator-one"
               value={this.state.additionalGenerator1Value}
@@ -98,6 +122,7 @@ class App extends React.Component {
           </div>
           <div className="option">
             <span>Additional generator 2</span>&nbsp;
+            // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
             <NumberBox
               id="additional-generator-two"
               value={this.state.additionalGenerator2Value}
@@ -110,6 +135,7 @@ class App extends React.Component {
             />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
             <Button
               id="edit"
               width={100}

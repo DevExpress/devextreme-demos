@@ -18,6 +18,7 @@ export default function App() {
 
   return (
     <div>
+      // @ts-expect-error TS(2786): 'Map' cannot be used as a JSX component.
       <Map
         defaultCenter="40.7061, -73.9969"
         defaultZoom={14}
@@ -32,6 +33,7 @@ export default function App() {
         <div className="caption">Options</div>
         <div className="option">
           <span>Map Type</span>
+          // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
           <SelectBox
             value={mapTypeValue}
             onValueChange={onMapTypeChange}

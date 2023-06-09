@@ -19,9 +19,11 @@ class App extends React.Component {
     return (
       <div className="tables">
         <div className="column">
+          // @ts-expect-error TS(2786): 'Grid' cannot be used as a JSX component.
           <Grid tasksStore={tasksStore} status={1} />
         </div>
         <div className="column">
+          // @ts-expect-error TS(2786): 'Grid' cannot be used as a JSX component.
           <Grid tasksStore={tasksStore} status={2} />
         </div>
       </div>

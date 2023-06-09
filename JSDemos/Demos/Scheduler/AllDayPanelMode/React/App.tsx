@@ -14,6 +14,10 @@ const views = [{
 const allDayPanelItems = ['all', 'allDay', 'hidden'];
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -29,9 +33,11 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'Scheduler' cannot be used as a JSX component.
         <Scheduler
           timeZone="America/Los_Angeles"
           dataSource={data}
+          // @ts-expect-error TS(2322): Type '(string | { type: string; name: string; inte... Remove this comment to see the full error message
           views={views}
           defaultCurrentView="day"
           defaultCurrentDate={currentDate}
@@ -43,6 +49,7 @@ class App extends React.Component {
           <div className="option">
             <div className="label">All day panel mode</div>
             <div className="value">
+              // @ts-expect-error TS(2786): 'RadioGroup' cannot be used as a JSX component.
               <RadioGroup
                 items={allDayPanelItems}
                 value={this.state.allDayPanelMode}

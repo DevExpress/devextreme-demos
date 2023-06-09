@@ -10,6 +10,12 @@ import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 import { sales } from './data.js';
 
 class App extends React.Component {
+  dataGrid: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -29,6 +35,7 @@ class App extends React.Component {
 
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'PivotGrid' cannot be used as a JSX component.
         <PivotGrid
           id="sales"
           allowSortingBySummary={true}
@@ -39,8 +46,10 @@ class App extends React.Component {
           dataSource={dataSource}
           onCellClick={this.onCellClick}
         >
+          // @ts-expect-error TS(2786): 'FieldChooser' cannot be used as a JSX component.
           <FieldChooser enabled={false} />
         </PivotGrid>
+        // @ts-expect-error TS(2786): 'Popup' cannot be used as a JSX component.
         <Popup
           visible={popupVisible}
           width={600}
@@ -49,15 +58,20 @@ class App extends React.Component {
           onHiding={this.onHiding}
           onShown={this.onShown}
         >
+          // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
           <DataGrid
             width={560}
             height={300}
             dataSource={drillDownDataSource}
             ref={this.getDataGridInstance}
           >
+            // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
             <Column dataField="region" />
+            // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
             <Column dataField="city" />
+            // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
             <Column dataField="amount" dataType="number" format="currency" />
+            // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
             <Column dataField="date" dataType="date" />
           </DataGrid>
         </Popup>

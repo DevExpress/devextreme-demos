@@ -25,6 +25,20 @@ const startTaskIndexLabel = { 'aria-label': 'Start Task Index' };
 const endTaskIndexLabel = { 'aria-label': 'End Task Index' };
 
 class App extends React.Component {
+  dateRangeBoxRef: any;
+
+  exportButtonOptions: any;
+
+  exportModeBoxRef: any;
+
+  formatBoxRef: any;
+
+  ganttRef: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.formatBoxRef = null;
@@ -61,6 +75,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'Gantt' cannot be used as a JSX component.
         <Gantt
           ref={this.ganttRef}
           taskListWidth={500}
@@ -68,25 +83,41 @@ class App extends React.Component {
           height={700}
           rootValue={-1}>
 
+          // @ts-expect-error TS(2786): 'Tasks' cannot be used as a JSX component.
           <Tasks dataSource={tasks} />
+          // @ts-expect-error TS(2786): 'Dependencies' cannot be used as a JSX component.
           <Dependencies dataSource={dependencies} />
+          // @ts-expect-error TS(2786): 'Resources' cannot be used as a JSX component.
           <Resources dataSource={resources} />
+          // @ts-expect-error TS(2786): 'ResourceAssignments' cannot be used as a JSX comp... Remove this comment to see the full error message
           <ResourceAssignments dataSource={resourceAssignments} />
 
+          // @ts-expect-error TS(2786): 'Toolbar' cannot be used as a JSX component.
           <Toolbar>
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="undo" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="redo" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="separator" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="zoomIn" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="zoomOut" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="separator" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item widget="dxButton" options={this.exportButtonOptions} />
           </Toolbar>
 
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="title" caption="Subject" width={300} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="start" caption="Start Date" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="end" caption="End Date" />
 
+          // @ts-expect-error TS(2786): 'Editing' cannot be used as a JSX component.
           <Editing enabled={true} />
         </Gantt>
         <div className="options">
@@ -96,6 +127,7 @@ class App extends React.Component {
               <div className="label">Document format:</div>
               {' '}
               <div className="value">
+                // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
                 <SelectBox items={formats}
                   value={this.state.formatBoxValue}
                   inputAttr={documentFormatLabel}
@@ -106,6 +138,7 @@ class App extends React.Component {
               <div className="label">Landscape orientation:</div>
               {' '}
               <div className="value">
+                // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
                 <CheckBox
                   value={this.state.landscapeCheckBoxValue}
                   onValueChanged={this.onLandscapeCheckBoxChanged} />
@@ -115,6 +148,7 @@ class App extends React.Component {
               <div className="label">Export mode:</div>
               {' '}
               <div className="value">
+                // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
                 <SelectBox items={exportModes}
                   value={this.state.exportModeBoxValue}
                   inputAttr={exportModeLabel}
@@ -125,6 +159,7 @@ class App extends React.Component {
               <div className="label">Date range:</div>
               {' '}
               <div className="value">
+                // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
                 <SelectBox items={dateRanges}
                   value={this.state.dateRangeBoxValue}
                   inputAttr={dateRangeLabel}
@@ -139,6 +174,7 @@ class App extends React.Component {
               <div className="label">Start task (index):</div>
               {' '}
               <div className="value">
+                // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
                 <NumberBox
                   value={this.state.startTaskIndex}
                   min={0}
@@ -154,6 +190,7 @@ class App extends React.Component {
               <div className="label">End task (index):</div>
               {' '}
               <div className="value">
+                // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
                 <NumberBox
                   value={this.state.endTaskIndex}
                   min={this.state.startTaskIndex}
@@ -169,6 +206,7 @@ class App extends React.Component {
               <div className="label">Start date:</div>
               {' '}
               <div className="value">
+                // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
                 <DateBox
                   value={this.state.startDate}
                   max={this.state.endDate}
@@ -183,6 +221,7 @@ class App extends React.Component {
               <div className="label">End date:</div>
               {' '}
               <div className="value">
+                // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
                 <DateBox
                   value={this.state.endDate}
                   min={this.state.startDate}

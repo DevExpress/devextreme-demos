@@ -1,6 +1,8 @@
 import React from 'react';
 
 class Breadcrumb extends React.Component {
+  props: any;
+
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);

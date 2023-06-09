@@ -49,6 +49,7 @@ export default function App() {
 
   return (
     <div>
+      // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
       <DataGrid
         id="gridContainer"
         dataSource={employees}
@@ -58,12 +59,19 @@ export default function App() {
         showColumnLines={false}
         onExporting={onExporting}>
 
+        // @ts-expect-error TS(2786): 'Export' cannot be used as a JSX component.
         <Export enabled={true} formats={exportFormats} />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Picture" width={90} cellRender={renderGridCell} />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="FirstName" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="LastName" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Position" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="BirthDate" dataType="date" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="HireDate" dataType="date" />
       </DataGrid>
     </div>

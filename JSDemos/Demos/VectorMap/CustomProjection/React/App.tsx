@@ -36,18 +36,24 @@ const customProjection = {
 
 export default function App() {
   return (
+    // @ts-expect-error TS(2786): 'VectorMap' cannot be used as a JSX component.
     <VectorMap
       id="vector-map"
       projection={customProjection}
       title="Wagner VI projection"
     >
+      // @ts-expect-error TS(2786): 'Layer' cannot be used as a JSX component.
       <Layer
+        // @ts-expect-error TS(2322): Type '{ dataSource: any; }' is not assignable to t... Remove this comment to see the full error message
         dataSource={mapsData.world} />
+      // @ts-expect-error TS(2786): 'Layer' cannot be used as a JSX component.
       <Layer
+        // @ts-expect-error TS(2322): Type '{ dataSource: { type: string; features: any[... Remove this comment to see the full error message
         dataSource={coordLinesData}
         color="#aaa"
         borderWidth={1}
         hoverEanbled={false} />
+      // @ts-expect-error TS(2786): 'Export' cannot be used as a JSX component.
       <Export enabled={true}></Export>
     </VectorMap>
   );

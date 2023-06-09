@@ -25,6 +25,7 @@ class App extends React.Component {
               07/03/19 - 12:22AM
             </div>
             <div className="text">
+              // @ts-expect-error TS(2322): Type 'string' is not assignable to type 'boolean'.
               <span className="dx-mention" spellCheck="false"><span><span>@</span>John Heart</span></span> What experience do you have in this field?
             </div>
           </div>
@@ -56,13 +57,17 @@ class App extends React.Component {
               07/03/19 - 12:26AM
             </div>
             <div className="text">
+              // @ts-expect-error TS(2322): Type 'string' is not assignable to type 'boolean'.
               That&apos;s very interesting. <span className="dx-mention" spellCheck="false"><span><span>@</span>Olivia Peyton</span></span>, what do you think?
             </div>
           </div>
         </div>
+        // @ts-expect-error TS(2786): 'HtmlEditor' cannot be used as a JSX component.
         <HtmlEditor
+          // @ts-expect-error TS(2322): Type '{ dataSource: { text: string; team: string; ... Remove this comment to see the full error message
           mentions={mentionsConfig}>
           <p>
+            // @ts-expect-error TS(2322): Type 'string' is not assignable to type 'boolean'.
             <span className="dx-mention" spellCheck="false" data-marker="@" data-mention-value="Kevin Carter"><span><span>@</span>Kevin Carter</span></span>
             {" I think John's expertise can be very valuable in our startup."}
           </p>

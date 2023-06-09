@@ -7,6 +7,10 @@ import { multiViewItems as companies } from './data.js';
 import CompanyItem from './CompanyItem.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor() {
     super();
     this.state = {
@@ -27,6 +31,7 @@ class App extends React.Component {
     } = this.state;
     return (
       <div>
+        // @ts-expect-error TS(2786): 'TabPanel' cannot be used as a JSX component.
         <TabPanel
           height={260}
           dataSource={companies}
@@ -44,6 +49,7 @@ class App extends React.Component {
         <div className="options">
           <div className="caption">Options</div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               value={loop}
               onValueChanged={this.onLoopChanged}
@@ -51,6 +57,7 @@ class App extends React.Component {
             />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               value={ animationEnabled }
               onValueChanged={this.onAnimationEnabledChanged}
@@ -58,6 +65,7 @@ class App extends React.Component {
             />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               value={ swipeEnabled }
               onValueChanged={this.onSwipeEnabledChanged}

@@ -16,23 +16,31 @@ const projection = {
 
 export default function App() {
   return (
+    // @ts-expect-error TS(2786): 'VectorMap' cannot be used as a JSX component.
     <VectorMap
       id="vector-map"
       maxZoomFactor={2}
       projection={projection}
     >
+      // @ts-expect-error TS(2786): 'Title' cannot be used as a JSX component.
       <Title text="Map of Pangaea" subtitle="with modern continental outlines"></Title>
+      // @ts-expect-error TS(2786): 'Layer' cannot be used as a JSX component.
       <Layer
+        // @ts-expect-error TS(2322): Type '{ children: never[]; dataSource: { type: str... Remove this comment to see the full error message
         dataSource={pangaeaBorders}
         hoverEnabled={false}
         name="pangaea"
         color="#bb7862">
       </Layer>
+      // @ts-expect-error TS(2786): 'Layer' cannot be used as a JSX component.
       <Layer
+        // @ts-expect-error TS(2322): Type '{ children: Element; dataSource: { type: str... Remove this comment to see the full error message
         dataSource={pangaeaContinents}
         customize={customizeLayer}>
+        // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
         <Label enabled={true} dataField="name"></Label>
       </Layer>
+      // @ts-expect-error TS(2786): 'Export' cannot be used as a JSX component.
       <Export enabled={true}></Export>
     </VectorMap>
   );

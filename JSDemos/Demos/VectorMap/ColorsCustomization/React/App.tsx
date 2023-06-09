@@ -14,19 +14,25 @@ const bounds = [-180, 85, 180, -60];
 
 export default function App() {
   return (
+    // @ts-expect-error TS(2786): 'VectorMap' cannot be used as a JSX component.
     <VectorMap
       id="vector-map"
       bounds={bounds}
       onClick={clickHandler}
     >
+      // @ts-expect-error TS(2786): 'Layer' cannot be used as a JSX component.
       <Layer
+        // @ts-expect-error TS(2322): Type '{ children: never[]; dataSource: any; custom... Remove this comment to see the full error message
         dataSource={mapsData.world}
         customize={customizeLayer}>
       </Layer>
+      // @ts-expect-error TS(2786): 'Tooltip' cannot be used as a JSX component.
       <Tooltip enabled={true}
         customizeTooltip={customizeTooltip}
       >
+        // @ts-expect-error TS(2786): 'Border' cannot be used as a JSX component.
         <Border visible={true}></Border>
+        // @ts-expect-error TS(2786): 'Font' cannot be used as a JSX component.
         <Font color="#fff"></Font>
       </Tooltip>
     </VectorMap>

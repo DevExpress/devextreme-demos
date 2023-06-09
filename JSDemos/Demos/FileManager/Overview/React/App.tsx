@@ -9,6 +9,10 @@ const remoteProvider = new RemoteFileSystemProvider({
 });
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -47,12 +51,15 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        // @ts-expect-error TS(2786): 'FileManager' cannot be used as a JSX component.
         <FileManager
           currentPath={this.state.currentPath}
           fileSystemProvider={remoteProvider}
           onSelectedFileOpened={this.displayImagePopup}
           onCurrentDirectoryChanged={this.onCurrentDirectoryChanged}>
+          // @ts-expect-error TS(2786): 'Permissions' cannot be used as a JSX component.
           <Permissions
+            // @ts-expect-error TS(2322): Type '{ children: never[]; create: boolean; copy: ... Remove this comment to see the full error message
             create={true}
             copy={true}
             move={true}
@@ -63,6 +70,7 @@ class App extends React.Component {
           </Permissions>
         </FileManager>
 
+        // @ts-expect-error TS(2786): 'Popup' cannot be used as a JSX component.
         <Popup
           maxHeight={600}
           hideOnOutsideClick={true}

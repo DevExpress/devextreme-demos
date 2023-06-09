@@ -14,39 +14,56 @@ const saleAmountEditorOptions = { format: 'currency', showClearButton: true };
 class App extends React.Component {
   render() {
     return (
+      // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
       <DataGrid
         id="gridContainer"
         columnsAutoWidth="true"
+        // @ts-expect-error TS(2322): Type '{ customOperations: { name: string; caption:... Remove this comment to see the full error message
         filterBuilder={filterBuilder}
         defaultFilterValue={filterValue}
         dataSource={orders}
         keyExpr="ID"
         showBorders={true}
       >
+        // @ts-expect-error TS(2786): 'FilterRow' cannot be used as a JSX component.
         <FilterRow visible={true} />
+        // @ts-expect-error TS(2786): 'FilterPanel' cannot be used as a JSX component.
         <FilterPanel visible={true} />
+        // @ts-expect-error TS(2786): 'FilterBuilderPopup' cannot be used as a JSX compo... Remove this comment to see the full error message
         <FilterBuilderPopup position={filterBuilderPopupPosition} />
+        // @ts-expect-error TS(2786): 'HeaderFilter' cannot be used as a JSX component.
         <HeaderFilter visible={true} />
+        // @ts-expect-error TS(2786): 'Scrolling' cannot be used as a JSX component.
         <Scrolling mode="infinite" />
 
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column
+          // @ts-expect-error TS(2322): Type '{ children: Element; dataType: string; dataF... Remove this comment to see the full error message
           dataType="number"
           dataField="OrderNumber"
           caption="Invoice Number"
         >
+          // @ts-expect-error TS(2786): 'HeaderFilter' cannot be used as a JSX component.
           <HeaderFilter groupInterval={10000} />
         </Column>
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="OrderDate" dataType="date" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column
+          // @ts-expect-error TS(2322): Type '{ children: Element; editorOptions: { format... Remove this comment to see the full error message
           editorOptions={saleAmountEditorOptions}
           dataField="SaleAmount"
           dataType="number"
           format="currency"
         >
+          // @ts-expect-error TS(2786): 'HeaderFilter' cannot be used as a JSX component.
           <HeaderFilter dataSource={saleAmountHeaderFilters} />
         </Column>
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Employee" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="CustomerInfo.StoreCity" caption="City" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="CustomerInfo.StoreState" caption="State" />
       </DataGrid>
     );

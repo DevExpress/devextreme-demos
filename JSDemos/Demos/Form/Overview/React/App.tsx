@@ -17,6 +17,12 @@ const columnCountLabel = { 'aria-label': 'Column Count' };
 const minCountWidthLabel = { 'aria-label': 'Min Count Width' };
 
 class App extends React.Component {
+  companies: any;
+
+  setState: any;
+
+  state: any;
+
   constructor() {
     super();
     this.companies = service.getCompanies();
@@ -59,6 +65,7 @@ class App extends React.Component {
       <div id="form-demo">
         <div className="widget-container">
           { labelMode === 'outside' && (<div>Select company:</div>) }
+          // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
           <SelectBox
             displayExpr="Name"
             dataSource={this.companies}
@@ -68,6 +75,7 @@ class App extends React.Component {
             value={company}
             onValueChanged={this.onCompanyChanged}
           />
+          // @ts-expect-error TS(2786): 'Form' cannot be used as a JSX component.
           <Form
             id="form"
             labelMode={labelMode}
@@ -84,6 +92,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <span>Label mode:</span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               items={labelModes}
               inputAttr={labelModeLabel}
@@ -93,6 +102,7 @@ class App extends React.Component {
           </div>
           <div className="option">
             <span>Label location:</span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               items={labelLocations}
               inputAttr={labelLocationLabel}
@@ -102,6 +112,7 @@ class App extends React.Component {
           </div>
           <div className="option">
             <span>Columns count:</span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               items={columnsCount}
               value={colCount}
@@ -111,6 +122,7 @@ class App extends React.Component {
           </div>
           <div className="option">
             <span>Min column width:</span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               items={minColumnWidths}
               value={minColWidth}
@@ -120,6 +132,7 @@ class App extends React.Component {
           </div>
           <div className="option">
             <span>Form width:</span>
+            // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
             <NumberBox
               max={550}
               value={width}
@@ -128,6 +141,7 @@ class App extends React.Component {
             />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="readOnly"
               value={readOnly}
@@ -135,6 +149,7 @@ class App extends React.Component {
             />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="showColonAfterLabel"
               value={showColon}

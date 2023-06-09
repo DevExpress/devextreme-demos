@@ -18,9 +18,11 @@ class App extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'Scheduler' cannot be used as a JSX component.
       <Scheduler
         timeZone="America/Los_Angeles"
         dataSource={data}
+        // @ts-expect-error TS(2322): Type 'string[]' is not assignable to type '("day" ... Remove this comment to see the full error message
         views={views}
         defaultCurrentView="day"
         defaultCurrentDate={currentDate}
@@ -36,13 +38,18 @@ class App extends React.Component {
         appointmentTooltipComponent={AppointmentTooltip}
         onAppointmentFormOpening={this.onAppointmentFormOpening}
       >
+        // @ts-expect-error TS(2786): 'Editing' cannot be used as a JSX component.
         <Editing allowAdding={false} />
+        // @ts-expect-error TS(2786): 'Resource' cannot be used as a JSX component.
         <Resource
+          // @ts-expect-error TS(2322): Type '{ dataSource: { id: number; text: string; di... Remove this comment to see the full error message
           dataSource={moviesData}
           fieldExpr="movieId"
           useColorAsDefault={true}
         />
+        // @ts-expect-error TS(2786): 'Resource' cannot be used as a JSX component.
         <Resource
+          // @ts-expect-error TS(2322): Type '{ dataSource: { text: string; id: number; }[... Remove this comment to see the full error message
           dataSource={theatreData}
           fieldExpr="theatreId"
         />

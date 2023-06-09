@@ -5,6 +5,10 @@ import List, { ItemDragging } from 'devextreme-react/list';
 import { plannedTasks, doingTasks } from './data.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor() {
     super();
     this.state = {
@@ -43,10 +47,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="widget-container">
+        // @ts-expect-error TS(2786): 'List' cannot be used as a JSX component.
         <List
           dataSource={this.state.plannedTasks}
           keyExpr="id">
+          // @ts-expect-error TS(2786): 'ItemDragging' cannot be used as a JSX component.
           <ItemDragging
+            // @ts-expect-error TS(2322): Type '{ children: never[]; allowReordering: boolea... Remove this comment to see the full error message
             allowReordering={true}
             group="tasks"
             data="plannedTasks"
@@ -56,10 +63,13 @@ class App extends React.Component {
             onReorder={this.onReorder}>
           </ItemDragging>
         </List>
+        // @ts-expect-error TS(2786): 'List' cannot be used as a JSX component.
         <List
           dataSource={this.state.doingTasks}
           keyExpr="id">
+          // @ts-expect-error TS(2786): 'ItemDragging' cannot be used as a JSX component.
           <ItemDragging
+            // @ts-expect-error TS(2322): Type '{ children: never[]; allowReordering: boolea... Remove this comment to see the full error message
             allowReordering={true}
             group="tasks"
             data="doingTasks"

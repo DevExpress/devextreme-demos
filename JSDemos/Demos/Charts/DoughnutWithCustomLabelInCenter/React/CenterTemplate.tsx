@@ -20,6 +20,7 @@ export default function TooltipTemplate(pieChart) {
   return (
     <svg>
       <circle cx="100" cy="100" r={pieChart.getInnerRadius() - 6} fill="#eee"></circle>
+      // @ts-expect-error TS(2322): Type '{ href: string; x: string; y: string; width:... Remove this comment to see the full error message
       <image href={getImagePath(country)} x="70" y="58" width="60" height="40" />
       <text textAnchor="middle" x="100" y="120" style={{ fontSize: 18, fill: '#494949' }}>
         <tspan x="100">{country}</tspan>

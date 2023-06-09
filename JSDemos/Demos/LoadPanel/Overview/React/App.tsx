@@ -8,6 +8,10 @@ import { employee } from './data.js';
 const position = { of: '#employee' };
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -32,6 +36,7 @@ class App extends React.Component {
       <React.Fragment>
         <h1>John Heart</h1>
         &nbsp;
+        // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
         <Button text="Load Data" onClick={this.onClick}></Button>
 
         <div id="employee">
@@ -53,6 +58,7 @@ class App extends React.Component {
           </p>
         </div>
 
+        // @ts-expect-error TS(2786): 'LoadPanel' cannot be used as a JSX component.
         <LoadPanel
           shadingColor="rgba(0,0,0,0.4)"
           position={position}
@@ -69,6 +75,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
 
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="With indicator"
               value={this.state.showIndicator}
@@ -77,6 +84,7 @@ class App extends React.Component {
           </div>
 
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="With overlay"
               value={this.state.shading}
@@ -85,6 +93,7 @@ class App extends React.Component {
           </div>
 
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="With pane"
               value={this.state.showPane}
@@ -93,6 +102,7 @@ class App extends React.Component {
           </div>
 
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="Hide on outside click"
               value={this.state.hideOnOutsideClick}

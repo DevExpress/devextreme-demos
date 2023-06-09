@@ -8,6 +8,12 @@ const maskLabel = { 'aria-label': 'Mask' };
 const emailLabel = { 'aria-label': 'Email' };
 
 class App extends React.Component {
+  rules: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -30,18 +36,21 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Default mode</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
               <TextBox defaultValue="John Smith" inputAttr={nameLabel} />
             </div>
           </div>
           <div className="dx-field">
             <div className="dx-field-label">With placeholder</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
               <TextBox placeholder="Enter full name here..." inputAttr={fullNameLabel} />
             </div>
           </div>
           <div className="dx-field">
             <div className="dx-field-label">With clear button</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
               <TextBox defaultValue="John Smith"
                 inputAttr={nameLabel}
                 showClearButton={true} />
@@ -50,6 +59,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Password mode</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
               <TextBox mode="password"
                 inputAttr={passwordLabel}
                 placeholder="Enter password"
@@ -60,6 +70,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Text mask</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
               <TextBox mask="+1 (X00) 000-0000"
                 inputAttr={maskLabel}
                 maskRules={this.rules} />
@@ -68,6 +79,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Disabled</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
               <TextBox defaultValue="John Smith"
                 inputAttr={nameLabel}
                 disabled={true} />
@@ -79,6 +91,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Full Name</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
               <TextBox defaultValue="Smith"
                 inputAttr={fullNameLabel}
                 showClearButton={true}
@@ -90,6 +103,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Email (read only)</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
               <TextBox readOnly={true}
                 inputAttr={emailLabel}
                 hoverStateEnabled={false}

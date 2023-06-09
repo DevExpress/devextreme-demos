@@ -18,6 +18,10 @@ const searchEditorOptions = { placeholder: 'Search column' };
 const columnChooserModeLabel = { 'aria-label': 'Column Chooser Mode' };
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -45,6 +49,7 @@ class App extends React.Component {
 
     return (
       <div>
+        // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
         <DataGrid
           id="employees"
           dataSource={employees}
@@ -53,35 +58,53 @@ class App extends React.Component {
           showBorders={true}
           keyExpr="ID"
         >
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField='FirstName' allowHiding={false} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField='LastName' />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField='Position' />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField='City' />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField='State' />
 
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column caption="Contacts">
+            // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
             <Column dataField="MobilePhone" allowHiding={false} />
+            // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
             <Column dataField="Email" />
+            // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
             <Column dataField="Skype" visible={false} />
           </Column>
 
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="HireDate" dataType="date" />
 
+          // @ts-expect-error TS(2786): 'ColumnChooser' cannot be used as a JSX component.
           <ColumnChooser
+            // @ts-expect-error TS(2322): Type '{ children: Element[]; enabled: boolean; mod... Remove this comment to see the full error message
             enabled={true}
             mode={mode}
           >
+            // @ts-expect-error TS(2786): 'Position' cannot be used as a JSX component.
             <Position
+              // @ts-expect-error TS(2322): Type '{ my: string; at: string; of: string; }' is ... Remove this comment to see the full error message
               my="right top"
               at="right bottom"
               of=".dx-datagrid-column-chooser-button"
             />
 
+            // @ts-expect-error TS(2786): 'ColumnChooserSearch' cannot be used as a JSX comp... Remove this comment to see the full error message
             <ColumnChooserSearch
+              // @ts-expect-error TS(2322): Type '{ enabled: any; editorOptions: { placeholder... Remove this comment to see the full error message
               enabled={searchEnabled}
               editorOptions={searchEditorOptions} />
 
+            // @ts-expect-error TS(2786): 'ColumnChooserSelection' cannot be used as a JSX c... Remove this comment to see the full error message
             <ColumnChooserSelection
+              // @ts-expect-error TS(2322): Type '{ allowSelectAll: any; selectByClick: any; r... Remove this comment to see the full error message
               allowSelectAll={allowSelectAll}
               selectByClick={selectByClick}
               recursive={recursive} />
@@ -94,6 +117,7 @@ class App extends React.Component {
             <div className="option">
               <span>Column chooser mode</span>
               &nbsp;
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox
                 items={columnChooserModes}
                 value={mode}
@@ -107,6 +131,7 @@ class App extends React.Component {
 
           <div className='checkboxes-container'>
             <div className="option">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 id="searchEnabled"
                 defaultValue={searchEnabled}
@@ -115,6 +140,7 @@ class App extends React.Component {
               />
             </div>
             <div className="option">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 id="allowSelectAll"
                 defaultValue={allowSelectAll}
@@ -124,6 +150,7 @@ class App extends React.Component {
               />
             </div>
             <div className="option">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 id="selectByClick"
                 defaultValue={selectByClick}
@@ -133,6 +160,7 @@ class App extends React.Component {
               />
             </div>
             <div className="option">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 id="recursive"
                 defaultValue={recursive}

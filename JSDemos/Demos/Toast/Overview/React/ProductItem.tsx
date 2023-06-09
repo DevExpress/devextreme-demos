@@ -11,6 +11,7 @@ export function ProductItem(props) {
     <React.Fragment>
       <img src={props.product.ImageSrc} alt="monitor" />
       <div>{props.product.Name}</div>
+      // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
       <CheckBox
         text="Available"
         onValueChanged={onValueChanged}

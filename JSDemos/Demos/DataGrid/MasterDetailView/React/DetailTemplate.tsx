@@ -7,6 +7,10 @@ import service from './data.js';
 const tasks = service.getTasks();
 
 class DetailTemplate extends React.Component {
+  dataSource: any;
+
+  props: any;
+
   constructor(props) {
     super(props);
     this.dataSource = getTasks(props.data.key);
@@ -19,16 +23,23 @@ class DetailTemplate extends React.Component {
         <div className="master-detail-caption">
           {`${FirstName} ${LastName}'s Tasks:`}
         </div>
+        // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
         <DataGrid
           dataSource={this.dataSource}
           showBorders={true}
           columnAutoWidth={true}
         >
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Subject" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="StartDate" dataType="date" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="DueDate" dataType="date" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Priority" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ caption: string; dataType: string; calcula... Remove this comment to see the full error message
             caption="Completed"
             dataType="boolean"
             calculateCellValue={this.completedValue}

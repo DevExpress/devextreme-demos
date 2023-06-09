@@ -12,6 +12,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'PivotGrid' cannot be used as a JSX component.
         <PivotGrid
           id="sales"
           dataSource={dataSource}
@@ -22,7 +23,9 @@ class App extends React.Component {
           showBorders={true}
           showTotalsPrior="rows"
           showColumnTotals={false}>
+          // @ts-expect-error TS(2786): 'FieldChooser' cannot be used as a JSX component.
           <FieldChooser enabled={false} />
+          // @ts-expect-error TS(2786): 'Scrolling' cannot be used as a JSX component.
           <Scrolling mode="virtual" />
         </PivotGrid>
       </React.Fragment>

@@ -35,6 +35,10 @@ const transformations = [
 ];
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -63,6 +67,7 @@ class App extends React.Component {
             <div className="field">
               <div className="label">Title</div>
               <div className="value">
+                // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
                 <TextBox
                   value={this.state.text}
                   inputAttr={titleLabel}
@@ -75,6 +80,7 @@ class App extends React.Component {
             <div className="field">
               <div className="label">Color</div>
               <div className="value">
+                // @ts-expect-error TS(2786): 'ColorBox' cannot be used as a JSX component.
                 <ColorBox
                   value={this.state.color}
                   onValueChanged={this.handleColorChange}
@@ -87,6 +93,7 @@ class App extends React.Component {
             <div className="field">
               <div className="label">Width</div>
               <div className="value">
+                // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
                 <NumberBox
                   value={this.state.width}
                   onValueChanged={this.handleWidthChange}
@@ -101,6 +108,7 @@ class App extends React.Component {
             <div className="field">
               <div className="label">Height</div>
               <div className="value">
+                // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
                 <NumberBox
                   value={this.state.height}
                   onValueChanged={this.handleHeightChange}
@@ -117,6 +125,7 @@ class App extends React.Component {
             <div className="field">
               <div className="label">Transform</div>
               <div className="value">
+                // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
                 <SelectBox
                   value={this.state.transform}
                   onValueChanged={this.handleTransformChange}
@@ -132,6 +141,7 @@ class App extends React.Component {
             <div className="field">
               <div className="label">Border</div>
               <div className="value">
+                // @ts-expect-error TS(2786): 'Switch' cannot be used as a JSX component.
                 <Switch
                   value={this.state.border}
                   onValueChanged={this.handleBorderChange}
@@ -141,7 +151,9 @@ class App extends React.Component {
           </div>
         </div>
 
+        // @ts-expect-error TS(2786): 'Logo' cannot be used as a JSX component.
         <Logo
+          // @ts-expect-error TS(2322): Type '{ text: any; width: any; height: any; color:... Remove this comment to see the full error message
           text={this.state.text}
           width={this.state.width}
           height={this.state.height}

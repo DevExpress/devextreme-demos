@@ -15,6 +15,7 @@ class App extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
       <DataGrid
         id="grid-container"
         dataSource={employees}
@@ -23,13 +24,21 @@ class App extends React.Component {
         onContentReady={this.contentReady}
         showBorders={true}
       >
+        // @ts-expect-error TS(2786): 'Selection' cannot be used as a JSX component.
         <Selection mode="single" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Prefix" width={70} caption="Title" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="FirstName" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="LastName" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Position" width={170} />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="State" width={125} />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="BirthDate" dataType="date" />
+        // @ts-expect-error TS(2786): 'MasterDetail' cannot be used as a JSX component.
         <MasterDetail enabled={false} render={renderDetail} />
       </DataGrid>
     );

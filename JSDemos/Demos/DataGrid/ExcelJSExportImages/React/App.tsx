@@ -9,6 +9,8 @@ import { exportDataGrid } from 'devextreme/excel_exporter';
 import service from './data.js';
 
 class App extends React.Component {
+  employees: any;
+
   constructor(props) {
     super(props);
     this.employees = service.getEmployees();
@@ -18,6 +20,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
         <DataGrid
           id="gridContainer"
           dataSource={this.employees}
@@ -27,13 +30,20 @@ class App extends React.Component {
           showColumnLines={false}
           onExporting={this.onExporting}>
 
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Picture" width={90} cellRender={this.renderGridCell} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="FirstName" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="LastName" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Position" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="BirthDate" dataType="date" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="HireDate" dataType="date" />
 
+          // @ts-expect-error TS(2786): 'Export' cannot be used as a JSX component.
           <Export enabled={true} />
         </DataGrid>
       </div>

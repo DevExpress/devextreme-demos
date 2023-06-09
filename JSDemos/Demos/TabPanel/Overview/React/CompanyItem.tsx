@@ -1,6 +1,8 @@
 import React from 'react';
 
 class CompanyItem extends React.PureComponent {
+  props: any;
+
   render() {
     const company = this.props.data;
     return (

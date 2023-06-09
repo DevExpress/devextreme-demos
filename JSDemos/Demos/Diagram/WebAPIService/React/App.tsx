@@ -31,13 +31,19 @@ const shapes = ['rectangle'];
 class App extends React.Component {
   render() {
     return (
+      // @ts-expect-error TS(2786): 'Diagram' cannot be used as a JSX component.
       <Diagram id="diagram">
+        // @ts-expect-error TS(2786): 'Nodes' cannot be used as a JSX component.
         <Nodes dataSource={dataSource} keyExpr="ID" textExpr="Title" parentKeyExpr="HeadID">
+          // @ts-expect-error TS(2786): 'AutoLayout' cannot be used as a JSX component.
           <AutoLayout type="tree" />
         </Nodes>
+        // @ts-expect-error TS(2786): 'ContextToolbox' cannot be used as a JSX component... Remove this comment to see the full error message
         <ContextToolbox shapeIconsPerRow={2} width={100} shapes={shapes}>
         </ContextToolbox>
+        // @ts-expect-error TS(2786): 'Toolbox' cannot be used as a JSX component.
         <Toolbox showSearch={false} shapeIconsPerRow={2}>
+          // @ts-expect-error TS(2786): 'Group' cannot be used as a JSX component.
           <Group title="Items" shapes={shapes} />
         </Toolbox>
       </Diagram>

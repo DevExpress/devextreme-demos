@@ -5,6 +5,14 @@ import Sortable from 'devextreme-react/sortable';
 import service from './data.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
+  treeViewDriveCRef: any;
+
+  treeViewDriveDRef: any;
+
   constructor(props) {
     super(props);
     this.treeViewDriveCRef = React.createRef();
@@ -24,6 +32,7 @@ class App extends React.Component {
       <div className="form">
         <div className="drive-panel">
           <div className="drive-header dx-treeview-item"><div className="dx-treeview-item-content"><i className="dx-icon dx-icon-activefolder"></i><span>Drive C:</span></div></div>
+          // @ts-expect-error TS(2786): 'Sortable' cannot be used as a JSX component.
           <Sortable
             filter=".dx-treeview-item"
             group="shared"
@@ -32,6 +41,7 @@ class App extends React.Component {
             allowReordering={true}
             onDragChange={this.onDragChange}
             onDragEnd={this.onDragEnd}>
+            // @ts-expect-error TS(2786): 'TreeView' cannot be used as a JSX component.
             <TreeView
               id="treeviewDriveC"
               expandNodesRecursive={false}
@@ -46,6 +56,7 @@ class App extends React.Component {
         </div>
         <div className="drive-panel">
           <div className="drive-header dx-treeview-item"><div className="dx-treeview-item-content"><i className="dx-icon dx-icon-activefolder"></i><span>Drive D:</span></div></div>
+          // @ts-expect-error TS(2786): 'Sortable' cannot be used as a JSX component.
           <Sortable
             filter=".dx-treeview-item"
             group="shared"
@@ -54,6 +65,7 @@ class App extends React.Component {
             allowReordering={true}
             onDragChange={this.onDragChange}
             onDragEnd={this.onDragEnd}>
+            // @ts-expect-error TS(2786): 'TreeView' cannot be used as a JSX component.
             <TreeView
               id="treeviewDriveD"
               expandNodesRecursive={false}

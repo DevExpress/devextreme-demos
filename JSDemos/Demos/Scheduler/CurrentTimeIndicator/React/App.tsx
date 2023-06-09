@@ -10,6 +10,10 @@ const currentDate = new Date();
 const views = ['week', 'timelineWeek'];
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -26,8 +30,10 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'Scheduler' cannot be used as a JSX component.
         <Scheduler
           dataSource={data}
+          // @ts-expect-error TS(2322): Type 'string[]' is not assignable to type '("week"... Remove this comment to see the full error message
           views={views}
           defaultCurrentView="week"
           showCurrentTimeIndicator={this.state.showCurrentTimeIndicator}
@@ -41,7 +47,9 @@ class App extends React.Component {
           onAppointmentClick={this.onAppointmentClick}
           onAppointmentDblClick={this.onAppointmentDblClick}
         >
+          // @ts-expect-error TS(2786): 'Resource' cannot be used as a JSX component.
           <Resource
+            // @ts-expect-error TS(2322): Type '{ dataSource: { id: number; text: string; im... Remove this comment to see the full error message
             dataSource={moviesData}
             fieldExpr="movieId"
           />
@@ -52,6 +60,7 @@ class App extends React.Component {
               <div className="label">Current time indicator </div>
               {' '}
               <div className="value">
+                // @ts-expect-error TS(2786): 'Switch' cannot be used as a JSX component.
                 <Switch
                   id="show-indicator"
                   value={this.state.showCurrentTimeIndicator}
@@ -63,6 +72,7 @@ class App extends React.Component {
               <div className="label">Shading until current time </div>
               {' '}
               <div className="value">
+                // @ts-expect-error TS(2786): 'Switch' cannot be used as a JSX component.
                 <Switch
                   id="allow-shading"
                   value={this.state.shadeUntilCurrentTime}
@@ -77,6 +87,7 @@ class App extends React.Component {
               <div className="label">Update position in </div>
               {' '}
               <div className="value">
+                // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
                 <NumberBox
                   min={1}
                   max={1200}

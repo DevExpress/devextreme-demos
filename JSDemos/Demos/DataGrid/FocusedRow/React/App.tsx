@@ -26,6 +26,10 @@ const dataSourceOptions = {
 };
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -87,8 +91,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
         <DataGrid
           id="gridContainer"
+          // @ts-expect-error TS(2322): Type '{ store: { type: string; key: string; url: s... Remove this comment to see the full error message
           dataSource={dataSourceOptions}
           focusedRowEnabled={true}
           focusedRowKey={this.state.focusedRowKey}
@@ -96,25 +102,36 @@ class App extends React.Component {
           onFocusedRowChanging={this.onFocusedRowChanging}
           onFocusedRowChanged={this.onFocusedRowChanged}
           showBorders={true}>
+          // @ts-expect-error TS(2786): 'Paging' cannot be used as a JSX component.
           <Paging defaultPageSize={10} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ dataField: string; width: number; }' is no... Remove this comment to see the full error message
             dataField="Task_ID"
             width={80} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ caption: string; dataField: string; dataTy... Remove this comment to see the full error message
             caption="Start Date"
             dataField="Task_Start_Date"
             dataType="date" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ caption: string; dataField: string; dataTy... Remove this comment to see the full error message
             caption="Assigned To"
             dataField="ResponsibleEmployee.Employee_Full_Name"
             dataType="date"
             allowSorting={false}
           />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ caption: string; dataField: string; width:... Remove this comment to see the full error message
             caption="Subject"
             dataField="Task_Subject"
             width={350} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ caption: string; dataField: string; }' is ... Remove this comment to see the full error message
             caption="Status"
             dataField="Task_Status" />
         </DataGrid>
@@ -135,6 +152,7 @@ class App extends React.Component {
           <div className="options-container">
             <div className="option">
               <span>Focused Row Key </span>
+              // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
               <NumberBox
                 id="taskId"
                 min={1}
@@ -146,6 +164,7 @@ class App extends React.Component {
               </NumberBox>
             </div>
             <div className="option">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 text="Auto Navigate To Focused Row"
                 value={this.state.autoNavigateToFocusedRow}

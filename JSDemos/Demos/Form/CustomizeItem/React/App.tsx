@@ -30,35 +30,55 @@ export default function App() {
   }, []);
 
   return (
+    // @ts-expect-error TS(2786): 'Form' cannot be used as a JSX component.
     <Form
       onContentReady={validateForm}
       formData={employee}>
+      // @ts-expect-error TS(2786): 'GroupItem' cannot be used as a JSX component.
       <GroupItem colCount={2} caption="Employee Details">
+        // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
         <Item dataField="FirstName" editorOptions={nameEditorOptions}>
+          // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
           <Label render={LabelTemplate('user')} />
         </Item>
+        // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
         <Item dataField="Position" editorType="dxSelectBox" editorOptions={positionEditorOptions} validationRules={validationRules.position}>
+          // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
           <Label render={LabelTemplate('info')} />
         </Item>
+        // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
         <Item dataField="LastName" editorOptions={nameEditorOptions}>
+          // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
           <Label render={LabelTemplate('user')} />
         </Item>
+        // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
         <Item dataField="HireDate" editorType="dxDateBox" editorOptions={hireDateEditorOptions} validationRules={validationRules.hireDate}>
+          // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
           <Label render={LabelTemplate('event')} />
         </Item>
+        // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
         <Item dataField="BirthDate" editorType="dxDateBox" editorOptions={birthDateEditorOptions}>
+          // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
           <Label render={LabelTemplate('event')} />
         </Item>
+        // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
         <Item dataField="Address">
+          // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
           <Label render={LabelTemplate('home')} />
         </Item>
+        // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
         <Item dataField="Notes" colSpan={2} editorType="dxTextArea" editorOptions={notesEditorOptions}>
+          // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
           <Label render={LabelNotesTemplate} />
         </Item>
+        // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
         <Item dataField="Phone" editorOptions={phoneEditorOptions}>
+          // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
           <Label render={LabelTemplate('tel')} />
         </Item>
+        // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
         <Item dataField="Email">
+          // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
           <Label render={LabelTemplate('email')} />
         </Item>
       </GroupItem>

@@ -36,6 +36,7 @@ class App extends React.Component {
               >details</a>)
             </p>
 
+            // @ts-expect-error TS(2786): 'Popover' cannot be used as a JSX component.
             <Popover
               target="#link1"
               showEvent="mouseenter"
@@ -62,6 +63,7 @@ class App extends React.Component {
               >details</a>)
             </p>
 
+            // @ts-expect-error TS(2786): 'Popover' cannot be used as a JSX component.
             <Popover
               target="#link2"
               showEvent="mouseenter"
@@ -90,12 +92,14 @@ class App extends React.Component {
               >details</a>)
             </p>
 
+            // @ts-expect-error TS(2786): 'Popover' cannot be used as a JSX component.
             <Popover
               target="#link3"
               showEvent="mouseenter"
               hideEvent="mouseleave"
               position="top"
               width={300}
+              // @ts-expect-error TS(2322): Type '{ show: { type: string; from: { scale: numbe... Remove this comment to see the full error message
               animation={animationConfig}
             >
               2012 Sales Report has to be completed
@@ -117,6 +121,7 @@ class App extends React.Component {
               >more</a>)
             </p>
 
+            // @ts-expect-error TS(2786): 'Popover' cannot be used as a JSX component.
             <Popover
               target="#link4"
               showEvent="click"

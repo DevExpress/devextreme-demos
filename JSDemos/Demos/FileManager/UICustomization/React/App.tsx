@@ -7,6 +7,12 @@ import FileManager, {
 import { fileItems } from './data.js';
 
 class App extends React.Component {
+  changeCategoryMenuOptions: any;
+
+  fileManagerRef: any;
+
+  newFileMenuOptions: any;
+
   constructor(props) {
     super(props);
 
@@ -70,58 +76,98 @@ class App extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'FileManager' cannot be used as a JSX component.
       <FileManager
         ref={this.fileManagerRef}
         fileSystemProvider={fileItems}
+        // @ts-expect-error TS(2322): Type '({ itemData, viewArea, fileSystemItem }: { i... Remove this comment to see the full error message
         onContextMenuItemClick={this.onItemClick}
         height={450}>
+        // @ts-expect-error TS(2786): 'Permissions' cannot be used as a JSX component.
         <Permissions
+          // @ts-expect-error TS(2322): Type '{ children: never[]; create: boolean; delete... Remove this comment to see the full error message
           create={true}
           delete={true}
           rename={true}
           download={true}>
         </Permissions>
+        // @ts-expect-error TS(2786): 'ItemView' cannot be used as a JSX component.
         <ItemView showParentFolder={false}>
+          // @ts-expect-error TS(2786): 'Details' cannot be used as a JSX component.
           <Details>
+            // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
             <Column dataField="thumbnail"></Column>
+            // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
             <Column dataField="name"></Column>
+            // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
             <Column dataField="category" caption="Category" width="95"></Column>
+            // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
             <Column dataField="dateModified"></Column>
+            // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
             <Column dataField="size"></Column>
           </Details>
         </ItemView>
+        // @ts-expect-error TS(2786): 'Toolbar' cannot be used as a JSX component.
         <Toolbar>
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item name="showNavPane" visible="true" />
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item name="separator" />
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item name="create" />
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item widget="dxMenu" location="before" options={this.newFileMenuOptions} />
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item name="refresh" />
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item name="separator" location="after" />
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item name="switchView" />
 
+          // @ts-expect-error TS(2786): 'FileSelectionItem' cannot be used as a JSX compon... Remove this comment to see the full error message
           <FileSelectionItem name="rename" />
+          // @ts-expect-error TS(2786): 'FileSelectionItem' cannot be used as a JSX compon... Remove this comment to see the full error message
           <FileSelectionItem name="separator" />
+          // @ts-expect-error TS(2786): 'FileSelectionItem' cannot be used as a JSX compon... Remove this comment to see the full error message
           <FileSelectionItem name="delete" />
+          // @ts-expect-error TS(2786): 'FileSelectionItem' cannot be used as a JSX compon... Remove this comment to see the full error message
           <FileSelectionItem name="separator" />
+          // @ts-expect-error TS(2786): 'FileSelectionItem' cannot be used as a JSX compon... Remove this comment to see the full error message
           <FileSelectionItem widget="dxMenu" location="before" options={this.changeCategoryMenuOptions} />
+          // @ts-expect-error TS(2786): 'FileSelectionItem' cannot be used as a JSX compon... Remove this comment to see the full error message
           <FileSelectionItem name="refresh" />
+          // @ts-expect-error TS(2786): 'FileSelectionItem' cannot be used as a JSX compon... Remove this comment to see the full error message
           <FileSelectionItem name="clearSelection" />
         </Toolbar>
+        // @ts-expect-error TS(2786): 'ContextMenu' cannot be used as a JSX component.
         <ContextMenu>
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item name="create" />
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item text="Create new file" icon="plus">
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item text="Text Document" extension=".txt" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item text="RTF Document" extension=".rtf" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item text="Spreadsheet" extension=".xls" />
           </Item>
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item name="rename" beginGroup="true" />
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item name="delete" />
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item text="Category" icon="tags" beginGroup="true">
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item text="Work" category="Work" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item text="Important" category="Important" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item text="Home" category="Home" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item text="None" category="" />
           </Item>
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item name="refresh" />
         </ContextMenu>
       </FileManager>

@@ -13,6 +13,8 @@ import {
 import { temperaturesData } from './data.js';
 
 class App extends React.Component {
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -25,6 +27,7 @@ class App extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'Chart' cannot be used as a JSX component.
       <Chart
         id="chart"
         title="Daily Temperature in May"
@@ -32,33 +35,46 @@ class App extends React.Component {
         customizePoint={this.customizePoint}
         customizeLabel={this.customizeLabel}
       >
+        // @ts-expect-error TS(2786): 'Series' cannot be used as a JSX component.
         <Series
+          // @ts-expect-error TS(2322): Type '{ argumentField: string; valueField: string;... Remove this comment to see the full error message
           argumentField="day"
           valueField="value"
           type="bar"
           color="#e7d19a"
         />
+        // @ts-expect-error TS(2786): 'ValueAxis' cannot be used as a JSX component.
         <ValueAxis maxValueMargin={0.01}>
+          // @ts-expect-error TS(2786): 'VisualRange' cannot be used as a JSX component.
           <VisualRange startValue={40} />
+          // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
           <Label customizeText={this.customizeText} />
+          // @ts-expect-error TS(2786): 'ConstantLine' cannot be used as a JSX component.
           <ConstantLine
+            // @ts-expect-error TS(2322): Type '{ children: Element; width: number; value: a... Remove this comment to see the full error message
             width={2}
             value={this.state.lowAverage}
             color="#8c8cff"
             dashStyle="dash"
           >
+            // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
             <Label text="Low Average" />
           </ConstantLine>
+          // @ts-expect-error TS(2786): 'ConstantLine' cannot be used as a JSX component.
           <ConstantLine
+            // @ts-expect-error TS(2322): Type '{ children: Element; width: number; value: a... Remove this comment to see the full error message
             width={2}
             value={this.state.highAverage}
             color="#ff7c7c"
             dashStyle="dash"
           >
+            // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
             <Label text="High Average" />
           </ConstantLine>
         </ValueAxis>
+        // @ts-expect-error TS(2786): 'Legend' cannot be used as a JSX component.
         <Legend visible={false} />
+        // @ts-expect-error TS(2786): 'Export' cannot be used as a JSX component.
         <Export enabled={true} />
       </Chart>
     );

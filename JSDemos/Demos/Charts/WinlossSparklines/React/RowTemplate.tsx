@@ -15,6 +15,7 @@ export default function RowTemplate(props) {
     <tr>
       <th>{ props.year }</th>
       <td>
+        // @ts-expect-error TS(2786): 'Sparkline' cannot be used as a JSX component.
         <Sparkline
           dataSource={aluminumCosts}
           showMinMax={true}
@@ -24,10 +25,12 @@ export default function RowTemplate(props) {
           valueField={props.year}
           type="winloss"
         >
+          // @ts-expect-error TS(2786): 'Tooltip' cannot be used as a JSX component.
           <Tooltip format="currency" />
         </Sparkline>
       </td>
       <td>
+        // @ts-expect-error TS(2786): 'Sparkline' cannot be used as a JSX component.
         <Sparkline
           dataSource={nickelCosts}
           showMinMax={true}
@@ -40,10 +43,12 @@ export default function RowTemplate(props) {
           winColor="#6babac"
           lossColor="#8076bb"
         >
+          // @ts-expect-error TS(2786): 'Tooltip' cannot be used as a JSX component.
           <Tooltip format="currency" />
         </Sparkline>
       </td>
       <td>
+        // @ts-expect-error TS(2786): 'Sparkline' cannot be used as a JSX component.
         <Sparkline
           dataSource={copperCosts}
           winlossThreshold={8000}
@@ -55,6 +60,7 @@ export default function RowTemplate(props) {
           winColor="#7e4452"
           lossColor="#ebdd8f"
         >
+          // @ts-expect-error TS(2786): 'Tooltip' cannot be used as a JSX component.
           <Tooltip format="currency" />
         </Sparkline>
       </td>

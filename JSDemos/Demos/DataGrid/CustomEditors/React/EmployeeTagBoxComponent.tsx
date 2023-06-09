@@ -4,6 +4,8 @@ import TagBox from 'devextreme-react/tag-box';
 const nameLabel = { 'aria-label': 'Name' };
 
 export default class EmployeeTagBoxComponent extends React.Component {
+  props: any;
+
   constructor(props) {
     super(props);
     this.onValueChanged = this.onValueChanged.bind(this);
@@ -19,6 +21,7 @@ export default class EmployeeTagBoxComponent extends React.Component {
   }
 
   render() {
+    // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
     return <TagBox
       dataSource={this.props.data.column.lookup.dataSource}
       defaultValue={this.props.data.value}

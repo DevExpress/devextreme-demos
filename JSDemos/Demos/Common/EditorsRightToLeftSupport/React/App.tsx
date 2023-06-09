@@ -13,6 +13,18 @@ import {
 } from './data.js';
 
 class App extends React.Component {
+  displayExpr: any;
+
+  languages: any;
+
+  setState: any;
+
+  state: any;
+
+  tagBoxDefaultValue: any;
+
+  textValue: any;
+
   constructor() {
     super();
     this.state = {
@@ -46,6 +58,7 @@ class App extends React.Component {
               <div className="dx-field">
                 <div className="dx-field-label">Language</div>
                 <div className="dx-field-value">
+                  // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
                   <SelectBox
                     items={this.languages}
                     inputAttr={languageLabel}
@@ -61,6 +74,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Text Box</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
                 <TextBox
                   showClearButton={true}
                   inputAttr={textBoxLabel}
@@ -72,8 +86,10 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Number Box</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
                 <NumberBox
                   showSpinButtons={true}
+                  // @ts-expect-error TS(2322): Type 'string' is not assignable to type 'number'.
                   defaultValue="123"
                   rtlEnabled={this.state.rtlEnabled}
                   inputAttr={numberBoxLabel}
@@ -83,6 +99,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Select Box</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
                 <SelectBox
                   items={europeanUnion}
                   inputAttr={europeanUnionDataLabel}
@@ -95,6 +112,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Tag Box</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
                 <TagBox
                   items={europeanUnion}
                   defaultValue={this.tagBoxDefaultValue}
@@ -109,6 +127,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Text Area</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'TextArea' cannot be used as a JSX component.
                 <TextArea
                   defaultValue={this.textValue}
                   rtlEnabled={this.state.rtlEnabled}
@@ -119,6 +138,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Autocomplete</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'Autocomplete' cannot be used as a JSX component.
                 <Autocomplete
                   items={europeanUnion}
                   rtlEnabled={this.state.rtlEnabled}
@@ -129,6 +149,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Check Box</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
                 <CheckBox
                   defaultValue={true}
                   text={this.textValue}
@@ -139,6 +160,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Switch</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'Switch' cannot be used as a JSX component.
                 <Switch
                   rtlEnabled={this.state.rtlEnabled}
                 />

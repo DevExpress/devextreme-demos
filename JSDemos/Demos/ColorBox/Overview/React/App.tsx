@@ -2,6 +2,12 @@ import React from 'react';
 import ColorBox from 'devextreme-react/color-box';
 
 class App extends React.Component {
+  handleColorChange: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -17,6 +23,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Default mode</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'ColorBox' cannot be used as a JSX component.
                 <ColorBox
                   defaultValue="#f05b41"
                 />
@@ -25,6 +32,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">With alpha channel editing</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'ColorBox' cannot be used as a JSX component.
                 <ColorBox
                   defaultValue="#f05b41"
                   editAlphaChannel={true}
@@ -34,6 +42,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Custom button captions</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'ColorBox' cannot be used as a JSX component.
                 <ColorBox
                   defaultValue="#f05b41"
                   applyButtonText="Apply"
@@ -44,6 +53,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Read only</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'ColorBox' cannot be used as a JSX component.
                 <ColorBox
                   defaultValue="#f05b41"
                   readOnly={true}
@@ -53,6 +63,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Disabled</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'ColorBox' cannot be used as a JSX component.
                 <ColorBox
                   defaultValue="#f05b41"
                   disabled={true}
@@ -67,6 +78,7 @@ class App extends React.Component {
                 <div className="superhero"></div>
               </div>
               <div className="hero-color-box">
+                // @ts-expect-error TS(2786): 'ColorBox' cannot be used as a JSX component.
                 <ColorBox
                   value={this.state.color}
                   applyValueMode="instantly"

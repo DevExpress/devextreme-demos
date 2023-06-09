@@ -11,6 +11,12 @@ const dropDownOptions = { width: 500 };
 const ownerLabel = { 'aria-label': 'Owner' };
 
 export default class EmployeeDropDownBoxComponent extends React.Component {
+  props: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -32,6 +38,7 @@ export default class EmployeeDropDownBoxComponent extends React.Component {
 
   contentRender() {
     return (
+      // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
       <DataGrid
         dataSource={this.props.data.column.lookup.dataSource}
         remoteOperations={true}
@@ -42,11 +49,17 @@ export default class EmployeeDropDownBoxComponent extends React.Component {
         focusedRowEnabled={true}
         defaultFocusedRowKey={this.state.selectedRowKeys[0]}
       >
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="FullName" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Title" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Department" />
+        // @ts-expect-error TS(2786): 'Paging' cannot be used as a JSX component.
         <Paging enabled={true} defaultPageSize={10} />
+        // @ts-expect-error TS(2786): 'Scrolling' cannot be used as a JSX component.
         <Scrolling mode="virtual" />
+        // @ts-expect-error TS(2786): 'Selection' cannot be used as a JSX component.
         <Selection mode="single" />
       </DataGrid>
     );
@@ -62,6 +75,7 @@ export default class EmployeeDropDownBoxComponent extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'DropDownBox' cannot be used as a JSX component.
       <DropDownBox
         onOptionChanged={this.boxOptionChanged}
         opened={this.state.isDropDownOpened}

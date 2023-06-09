@@ -3,6 +3,10 @@ import RadioGroup from 'devextreme-react/radio-group';
 import { priorities, priorityEntities, tasks } from './data.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -21,24 +25,28 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Default mode</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'RadioGroup' cannot be used as a JSX component.
               <RadioGroup items={priorities} defaultValue={priorities[0]} />
             </div>
           </div>
           <div className="dx-field">
             <div className="dx-field-label">Disabled</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'RadioGroup' cannot be used as a JSX component.
               <RadioGroup items={priorities} defaultValue={priorities[1]} disabled={true} />
             </div>
           </div>
           <div className="dx-field">
             <div className="dx-field-label">Horizontal layout</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'RadioGroup' cannot be used as a JSX component.
               <RadioGroup items={priorities} defaultValue={priorities[0]} layout="horizontal" />
             </div>
           </div>
           <div className="dx-field">
             <div className="dx-field-label">Custom item template</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'RadioGroup' cannot be used as a JSX component.
               <RadioGroup
                 className={this.state.colorPriority.toLowerCase()}
                 items={priorities} value={this.state.colorPriority}
@@ -48,6 +56,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Event handling</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'RadioGroup' cannot be used as a JSX component.
               <RadioGroup id="radio-group-with-selection" items={priorityEntities} value={this.state.selectionPriority}
                 valueExpr="id" displayExpr="text" onValueChanged={this.changeSelectionPriority} />
             </div>

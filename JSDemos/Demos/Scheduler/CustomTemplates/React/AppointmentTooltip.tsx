@@ -8,6 +8,8 @@ function getMovieById(id) {
 }
 
 export default class AppointmentTooltip extends React.Component {
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {

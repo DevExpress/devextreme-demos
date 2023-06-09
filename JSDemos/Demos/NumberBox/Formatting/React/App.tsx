@@ -16,6 +16,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Integer format</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
               <NumberBox
                 format="#"
                 inputAttr={integerFormatLabel}
@@ -25,6 +26,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Currency format</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
               <NumberBox
                 format="$ #,##0.##"
                 inputAttr={currencyFormatLabel}
@@ -34,6 +36,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Accounting format</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
               <NumberBox
                 format="$ #,##0.##;($ #,##0.##)"
                 inputAttr={accountingFormatLabel}
@@ -43,6 +46,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Percent format</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
               <NumberBox
                 format="#0%"
                 inputAttr={percentFormatLabel}
@@ -53,6 +57,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Fixed point format</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
               <NumberBox
                 format="#,##0.00"
                 inputAttr={fixedPointFormatLabel}
@@ -62,6 +67,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Weight format</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
               <NumberBox
                 format="#0.## kg"
                 inputAttr={weightFormatLabel}

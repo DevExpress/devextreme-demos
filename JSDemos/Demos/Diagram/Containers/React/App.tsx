@@ -3,6 +3,8 @@ import Diagram, { Group, Toolbox } from 'devextreme-react/diagram';
 import 'whatwg-fetch';
 
 class App extends React.Component {
+  diagramRef: any;
+
   constructor(props) {
     super(props);
 
@@ -23,9 +25,13 @@ class App extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'Diagram' cannot be used as a JSX component.
       <Diagram id="diagram" ref={this.diagramRef}>
+        // @ts-expect-error TS(2786): 'Toolbox' cannot be used as a JSX component.
         <Toolbox>
+          // @ts-expect-error TS(2786): 'Group' cannot be used as a JSX component.
           <Group category="general" title="General" />
+          // @ts-expect-error TS(2786): 'Group' cannot be used as a JSX component.
           <Group category="containers" title="Containers" expanded={true} />
         </Toolbox>
       </Diagram>

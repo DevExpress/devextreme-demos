@@ -21,8 +21,10 @@ const dataSource = {
 class App extends React.Component {
   render() {
     return (
+      // @ts-expect-error TS(2786): 'TreeList' cannot be used as a JSX component.
       <TreeList
         id="treelist"
+        // @ts-expect-error TS(2322): Type '{ load(loadOptions: any): Promise<any>; }' i... Remove this comment to see the full error message
         dataSource={dataSource}
         showBorders={true}
         keyExpr="id"
@@ -30,10 +32,15 @@ class App extends React.Component {
         hasItemsExpr="hasItems"
         rootValue=""
       >
+        // @ts-expect-error TS(2786): 'RemoteOperations' cannot be used as a JSX compone... Remove this comment to see the full error message
         <RemoteOperations filtering={true} />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="name" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column width={100} customizeText={this.customizeText} dataField="size" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column width={150} dataField="createdDate" dataType="date" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column width={150} dataField="modifiedDate" dataType="date" />
       </TreeList>
     );

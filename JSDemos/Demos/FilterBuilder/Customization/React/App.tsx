@@ -5,6 +5,10 @@ import { formatValue } from './helpers.js';
 import { EditorComponent } from './EditorComponent.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -17,14 +21,19 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        // @ts-expect-error TS(2786): 'FilterBuilder' cannot be used as a JSX component.
         <FilterBuilder
+          // @ts-expect-error TS(2322): Type '({ dataField: string; dataType?: undefined; ... Remove this comment to see the full error message
           fields={fields}
           value={this.state.value}
           onInitialized={this.updateTexts}
+          // @ts-expect-error TS(2322): Type 'string[]' is not assignable to type 'GroupOp... Remove this comment to see the full error message
           groupOperations={groupOperations}
           onValueChanged={this.onValueChanged}
         >
+          // @ts-expect-error TS(2786): 'CustomOperation' cannot be used as a JSX componen... Remove this comment to see the full error message
           <CustomOperation
+            // @ts-expect-error TS(2322): Type '{ name: string; caption: string; icon: strin... Remove this comment to see the full error message
             name="anyof"
             caption="Is any of"
             icon="check"

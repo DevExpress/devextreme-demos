@@ -6,6 +6,12 @@ import { colors, colorLabel } from './data.js';
 const palette = ['#ff0000', '#00ff00', '#0000ff'];
 
 class App extends React.Component {
+  onSelectionChanged: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -29,6 +35,7 @@ class App extends React.Component {
           <h3>Colors Representation via Basic Colors</h3>
         </div>
         <div id="gauge-demo">
+          // @ts-expect-error TS(2786): 'BarGauge' cannot be used as a JSX component.
           <BarGauge
             id="gauge"
             startValue={0}
@@ -36,9 +43,11 @@ class App extends React.Component {
             palette={palette}
             values={this.state.basis}
           >
+            // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
             <Label visible={false} />
           </BarGauge>
           <div className="action-container">
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               id="select-color"
               width={150}

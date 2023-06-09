@@ -28,6 +28,10 @@ const dataSourceOptions = {
 };
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -38,6 +42,7 @@ class App extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
       <DataGrid
         dataSource={dataSourceOptions}
         allowColumnReordering={true}
@@ -45,19 +50,27 @@ class App extends React.Component {
         showBorders={true}
         onContentReady={this.onContentReady}
       >
+        // @ts-expect-error TS(2786): 'GroupPanel' cannot be used as a JSX component.
         <GroupPanel visible={true} />
+        // @ts-expect-error TS(2786): 'SearchPanel' cannot be used as a JSX component.
         <SearchPanel visible={true} highlightCaseSensitive={true} />
+        // @ts-expect-error TS(2786): 'Grouping' cannot be used as a JSX component.
         <Grouping autoExpandAll={false} />
 
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Product" groupIndex={0} />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column
+          // @ts-expect-error TS(2322): Type '{ dataField: string; caption: string; dataTy... Remove this comment to see the full error message
           dataField="Amount"
           caption="Sale Amount"
           dataType="number"
           format="currency"
           alignment="right"
         />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column
+          // @ts-expect-error TS(2322): Type '{ dataField: string; caption: string; dataTy... Remove this comment to see the full error message
           dataField="Discount"
           caption="Discount %"
           dataType="number"
@@ -67,13 +80,20 @@ class App extends React.Component {
           cellRender={DiscountCell}
           cssClass="bullet"
         />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="SaleDate" dataType="date" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Region" dataType="string" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Sector" dataType="string" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Channel" dataType="string" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Customer" dataType="string" width={150} />
 
+        // @ts-expect-error TS(2786): 'Pager' cannot be used as a JSX component.
         <Pager allowedPageSizes={pageSizes} showPageSizeSelector={true} />
+        // @ts-expect-error TS(2786): 'Paging' cannot be used as a JSX component.
         <Paging defaultPageSize={10} />
       </DataGrid>
     );

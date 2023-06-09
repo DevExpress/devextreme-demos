@@ -13,6 +13,20 @@ const customFormatLabel = { 'aria-label': 'Custom Format' };
 const birthDateLabel = { 'aria-label': 'Birth Date' };
 
 class App extends React.Component {
+  dateClear: any;
+
+  disabledDates: any;
+
+  firstWorkDay2017: any;
+
+  min: any;
+
+  now: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -43,6 +57,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Date</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
               <DateBox defaultValue={this.now}
                 inputAttr={dateLabel}
                 type="date" />
@@ -51,6 +66,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Time</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
               <DateBox defaultValue={this.now}
                 inputAttr={timeLabel}
                 type="time" />
@@ -59,6 +75,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Date and time</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
               <DateBox defaultValue={this.now}
                 inputAttr={dateTimeLabel}
                 type="datetime" />
@@ -67,6 +84,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Custom format</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
               <DateBox defaultValue={this.now}
                 inputAttr={customFormatLabel}
                 displayFormat="EEEE, MMM dd" />
@@ -75,6 +93,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Date picker</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
               <DateBox defaultValue={this.now}
                 inputAttr={pickerLabel}
                 pickerType="rollers" />
@@ -83,6 +102,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Clear button</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
               <DateBox defaultValue={this.dateClear}
                 type="time"
                 inputAttr={clearLabel}
@@ -92,6 +112,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Disabled</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
               <DateBox defaultValue={this.now}
                 type="datetime"
                 inputAttr={disabledLabel}
@@ -101,6 +122,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Disable certain dates</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
               <DateBox defaultValue={this.firstWorkDay2017}
                 type="date"
                 pickerType="calendar"
@@ -114,6 +136,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Set Birthday</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
               <DateBox applyValueMode="useButtons"
                 value={this.state.value}
                 min={this.min}

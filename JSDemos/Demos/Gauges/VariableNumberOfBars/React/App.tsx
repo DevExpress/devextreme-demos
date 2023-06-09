@@ -9,6 +9,12 @@ const format = {
 };
 
 class App extends React.Component {
+  getValueChangedHandler: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -36,15 +42,18 @@ class App extends React.Component {
           <h3>Sampling by Goods</h3>
         </div>
         <div id="gauge-demo">
+          // @ts-expect-error TS(2786): 'BarGauge' cannot be used as a JSX component.
           <BarGauge
             id="gauge"
             startValue={0}
             endValue={50}
             values={this.state.values}
           >
+            // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
             <Label format={format} />
           </BarGauge>
           <div id="panel">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             {this.state.productsActivity.map((p, i) => <CheckBox
               key={i}
               text={products[i].name}

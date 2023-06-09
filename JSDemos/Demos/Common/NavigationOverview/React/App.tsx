@@ -5,6 +5,10 @@ import TabPanel from 'devextreme-react/tab-panel';
 import { continents } from './data.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -23,6 +27,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <div className="left-content">
+          // @ts-expect-error TS(2786): 'TreeView' cannot be used as a JSX component.
           <TreeView
             dataSource={continents}
             selectionMode="single"
@@ -56,6 +61,7 @@ class App extends React.Component {
 
           <div className="sub-title">Largest cities</div>
 
+          // @ts-expect-error TS(2786): 'TabPanel' cannot be used as a JSX component.
           <TabPanel
             itemTitleRender={renderPanelItemTitle}
             itemRender={renderPanelItem}

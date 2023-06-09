@@ -13,6 +13,14 @@ import {
 const optionDirections = ['auto', 'up', 'down'];
 
 class App extends React.Component {
+  grid: any;
+
+  selectionChanged: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -60,6 +68,7 @@ class App extends React.Component {
 
     return (
       <div>
+        // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
         <DataGrid
           id="grid"
           dataSource={employees}
@@ -67,30 +76,43 @@ class App extends React.Component {
           ref={(ref) => { this.grid = ref; }}
           showBorders={true}
           onSelectionChanged={this.selectionChanged}>
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Prefix" caption="Title" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="FirstName" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="LastName" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Position" width={130} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="StateID" caption="State" width={125}>
+            // @ts-expect-error TS(2786): 'Lookup' cannot be used as a JSX component.
             <Lookup dataSource={states} valueExpr="ID" displayExpr="Name" />
           </Column>
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="BirthDate" dataType="date" width={125} />
+          // @ts-expect-error TS(2786): 'Selection' cannot be used as a JSX component.
           <Selection mode="single" />
+          // @ts-expect-error TS(2786): 'Editing' cannot be used as a JSX component.
           <Editing mode="popup">
+            // @ts-expect-error TS(2786): 'Texts' cannot be used as a JSX component.
             <Texts confirmDeleteMessage="" />
           </Editing>
         </DataGrid>
+        // @ts-expect-error TS(2786): 'SpeedDialAction' cannot be used as a JSX componen... Remove this comment to see the full error message
         <SpeedDialAction
           icon="add"
           label="Add row"
           index={1}
           onClick={this.addRow} />
+        // @ts-expect-error TS(2786): 'SpeedDialAction' cannot be used as a JSX componen... Remove this comment to see the full error message
         <SpeedDialAction
           icon="trash"
           label="Delete row"
           index={2}
           visible={selectedRowIndex !== undefined && selectedRowIndex !== -1}
           onClick={this.deleteRow} />
+        // @ts-expect-error TS(2786): 'SpeedDialAction' cannot be used as a JSX componen... Remove this comment to see the full error message
         <SpeedDialAction
           icon="edit"
           label="Edit row"
@@ -101,6 +123,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <span>Direction: </span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               dataSource={optionDirections}
               defaultValue="auto"

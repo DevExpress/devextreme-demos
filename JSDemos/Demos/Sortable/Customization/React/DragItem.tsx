@@ -9,6 +9,7 @@ const itemStyle = {
 
 export default function DragItem({ data }) {
   return (
+    // @ts-expect-error TS(2741): Property 'handle' is missing in type '{ text: any;... Remove this comment to see the full error message
     <Item
       text={data.itemData.Task_Subject}
       style={itemStyle}

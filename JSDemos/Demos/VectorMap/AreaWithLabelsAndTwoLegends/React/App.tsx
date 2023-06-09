@@ -18,43 +18,57 @@ const bounds = [-180, 85, 180, -75];
 
 export default function App() {
   return (
+    // @ts-expect-error TS(2786): 'VectorMap' cannot be used as a JSX component.
     <VectorMap
       id="vector-map" bounds={bounds}>
+      // @ts-expect-error TS(2786): 'Layer' cannot be used as a JSX component.
       <Layer
+        // @ts-expect-error TS(2322): Type '{ children: Element; dataSource: any; name: ... Remove this comment to see the full error message
         dataSource={mapsData.world}
         name="areas"
         palette="Violet"
         colorGroups={colorGroups}
         colorGroupingField="population"
         customize={customizeLayer}>
+        // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
         <Label enabled={true} dataField="name"></Label>
       </Layer>
+      // @ts-expect-error TS(2786): 'Layer' cannot be used as a JSX component.
       <Layer
+        // @ts-expect-error TS(2322): Type '{ children: Element; dataSource: { type: str... Remove this comment to see the full error message
         dataSource={markers}
         name="markers"
         elementType="bubble"
         dataField="value"
         sizeGroups={sizeGroups}
         opacity="0.8">
+        // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
         <Label enabled={false}></Label>
       </Layer>
+      // @ts-expect-error TS(2786): 'Legend' cannot be used as a JSX component.
       <Legend
+        // @ts-expect-error TS(2322): Type '{ children: Element; title: string; horizont... Remove this comment to see the full error message
         title="World Population<br/>Percentages"
         horizontalAlignment="left"
         verticalAlignment="bottom"
         customizeItems={customizeItems}
         customizeText={customizeText}>
+        // @ts-expect-error TS(2786): 'Source' cannot be used as a JSX component.
         <Source layer="areas" grouping="color"></Source>
       </Legend>
+      // @ts-expect-error TS(2786): 'Legend' cannot be used as a JSX component.
       <Legend
+        // @ts-expect-error TS(2322): Type '{ children: Element; title: string; markerSh... Remove this comment to see the full error message
         title="City Population"
         markerShape="circle"
         horizontalAlignment="right"
         verticalAlignment="bottom"
         customizeItems={customizeItems}
         customizeText={customizeMarkers}>
+        // @ts-expect-error TS(2786): 'Source' cannot be used as a JSX component.
         <Source layer="markers" grouping="size"></Source>
       </Legend>
+      // @ts-expect-error TS(2786): 'Tooltip' cannot be used as a JSX component.
       <Tooltip enabled={true}
         customizeTooltip={customizeTooltip} />
     </VectorMap>

@@ -10,6 +10,10 @@ const notesLabel = { 'aria-label': 'Notes' };
 const eventLabel = { 'aria-label': 'Event' };
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -32,12 +36,14 @@ class App extends React.Component {
         <div className="dx-fieldset">
           <div className="dx-fieldset-header">Default Mode</div>
           <div className="dx-field">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               defaultValue={false}
               onValueChanged={this.onCheckboxValueChanged}
               text="Limit text length"></CheckBox>
           </div>
           <div className="dx-field">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               value={this.state.autoResizeEnabled}
               onValueChanged={this.onAutoResizeChanged}
@@ -45,6 +51,7 @@ class App extends React.Component {
           </div>
         </div>
         <div className="left-content">
+          // @ts-expect-error TS(2786): 'TextArea' cannot be used as a JSX component.
           <TextArea
             height={this.state.height}
             maxLength={this.state.maxLength}
@@ -58,6 +65,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Synchronize text areas </div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
                 <SelectBox
                   items={valueChangeEvents}
                   valueExpr="name"
@@ -69,6 +77,7 @@ class App extends React.Component {
               </div>
             </div>
           </div>
+          // @ts-expect-error TS(2786): 'TextArea' cannot be used as a JSX component.
           <TextArea
             height={90}
             value={this.state.valueForEditableTestArea}
@@ -76,6 +85,7 @@ class App extends React.Component {
             inputAttr={notesLabel}
             onValueChanged={this.onTextAreaValueChanged}
           />
+          // @ts-expect-error TS(2786): 'TextArea' cannot be used as a JSX component.
           <TextArea
             height={90}
             value={this.state.valueForEditableTestArea}

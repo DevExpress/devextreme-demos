@@ -11,6 +11,7 @@ export default function App() {
       <div id="chart-demo">
         <table
           className="demo-table"
+          // @ts-expect-error TS(2322): Type '{ children: Element; className: string; bord... Remove this comment to see the full error message
           border="1"
         >
           <tbody>

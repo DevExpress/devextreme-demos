@@ -46,11 +46,13 @@ function App() {
   return <React.Fragment>
     <div className='options'>
       <div>Position</div>
+      // @ts-expect-error TS(2786): 'RadioGroup' cannot be used as a JSX component.
       <RadioGroup
         layout='horizontal'
         defaultValue='predefined'
         items={radioGroupItems}
         onValueChange={(value) => setIsPredefined(value === 'predefined')} />
+      // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
       <SelectBox
         items={positions}
         value={predefinedPosition}
@@ -58,17 +60,21 @@ function App() {
         onSelectionChanged={({ selectedItem }) => setPredefinedPosition(selectedItem)}
         visible={isPredefined} />
       <div className='section'>
+        // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
         <NumberBox
           visible={!isPredefined}
           placeholder='top'
+          // @ts-expect-error TS(2322): Type 'string' is not assignable to type 'number'.
           defaultValue=''
           valueChangeEvent='keyup'
           disabled={!!coordinatePosition.bottom}
           inputAttr={positionTopLabel}
           onValueChange={topNumberBoxValueChanged} />
+        // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
         <NumberBox
           visible={!isPredefined}
           placeholder='bottom'
+          // @ts-expect-error TS(2322): Type 'string' is not assignable to type 'number'.
           defaultValue=''
           valueChangeEvent='keyup'
           inputAttr={positionBottomLabel}
@@ -76,17 +82,21 @@ function App() {
           onValueChange={bottomNumberBoxValueChanged} />
       </div>
       <div className='section'>
+        // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
         <NumberBox
           visible={!isPredefined}
           placeholder='left'
+          // @ts-expect-error TS(2322): Type 'string' is not assignable to type 'number'.
           defaultValue=''
           valueChangeEvent='keyup'
           inputAttr={positionLeftLabel}
           disabled={!!coordinatePosition.right}
           onValueChange={leftNumberBoxValueChanged} />
+        // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
         <NumberBox
           visible={!isPredefined}
           placeholder='right'
+          // @ts-expect-error TS(2322): Type 'string' is not assignable to type 'number'.
           defaultValue=''
           valueChangeEvent='keyup'
           inputAttr={positionRightLabel}
@@ -94,13 +104,16 @@ function App() {
           onValueChange={rightNumberBoxValueChanged} />
       </div>
       <div>Direction</div>
+      // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
       <SelectBox
         items={directions}
         inputAttr={directionLabel}
         value={direction}
         onSelectionChanged={({ selectedItem }) => setDirection(selectedItem)} />
       <div className='section'>
+        // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
         <Button text='Show' width='48%' onClick={() => show()} />
+        // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
         <Button text='Hide all' width='48%' onClick={() => HideToasts()} />
       </div>
     </div>

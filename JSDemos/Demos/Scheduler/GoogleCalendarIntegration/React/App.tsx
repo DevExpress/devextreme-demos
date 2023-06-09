@@ -30,8 +30,10 @@ class App extends React.Component {
         <div className="long-title">
           <h3>Tasks for Employees (USA Office)</h3>
         </div>
+        // @ts-expect-error TS(2786): 'Scheduler' cannot be used as a JSX component.
         <Scheduler
           dataSource={dataSource}
+          // @ts-expect-error TS(2322): Type 'string[]' is not assignable to type '("day" ... Remove this comment to see the full error message
           views={views}
           defaultCurrentView="workWeek"
           defaultCurrentDate={currentDate}

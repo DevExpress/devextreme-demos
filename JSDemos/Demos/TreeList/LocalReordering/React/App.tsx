@@ -6,6 +6,10 @@ import { employees as employeeList } from './data.js';
 const expandedRowKeys = [1];
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -25,6 +29,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        // @ts-expect-error TS(2786): 'TreeList' cannot be used as a JSX component.
         <TreeList
           id="employees"
           dataSource={this.state.employees}
@@ -36,18 +41,26 @@ class App extends React.Component {
           defaultExpandedRowKeys={expandedRowKeys}
           columnAutoWidth={true}
         >
+          // @ts-expect-error TS(2786): 'RowDragging' cannot be used as a JSX component.
           <RowDragging
+            // @ts-expect-error TS(2322): Type '{ onDragChange: (e: any) => void; onReorder:... Remove this comment to see the full error message
             onDragChange={this.onDragChange}
             onReorder={this.onReorder}
             allowDropInsideItem={this.state.allowDropInsideItem}
             allowReordering={this.state.allowReordering}
             showDragIcons={this.state.showDragIcons}
           />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Title" caption="Position" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Full_Name" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="City" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="State" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Mobile_Phone" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Hire_Date" dataType="date" />
         </TreeList>
 
@@ -55,6 +68,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="options-container">
             <div className="option">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 value={this.state.allowDropInsideItem}
                 text="Allow Drop Inside Item"
@@ -62,6 +76,7 @@ class App extends React.Component {
               />
             </div>
             <div className="option">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 value={this.state.allowReordering}
                 text="Allow Reordering"
@@ -69,6 +84,7 @@ class App extends React.Component {
               />
             </div>
             <div className="option">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 value={this.state.showDragIcons}
                 text="Show Drag Icons"

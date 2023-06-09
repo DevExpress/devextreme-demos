@@ -11,6 +11,12 @@ import ConditionalIcon from './conditionalIcon.js';
 import Item from './item.js';
 
 class App extends React.Component {
+  deferredProducts: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.deferredProducts = {
@@ -42,6 +48,7 @@ class App extends React.Component {
         <div className='dx-field'>
           <div className='dx-field-label'>Image as the icon</div>
           <div className='dx-field-value'>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox dataSource={simpleProducts}
               inputAttr={simpleProductLabel}
               dropDownButtonRender={ImageIcon} />
@@ -50,9 +57,11 @@ class App extends React.Component {
         <div className='dx-field'>
           <div className='dx-field-label'>Load indicator as the icon</div>
           <div className='dx-field-value'>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox dataSource={this.deferredProducts}
               inputAttr={deferredProductLabel}
               dropDownButtonTemplate='loadIndicator'>
+              // @ts-expect-error TS(2786): 'Template' cannot be used as a JSX component.
               <Template name='loadIndicator' render={this.renderLoadIndicator} />
             </SelectBox>
           </div>
@@ -60,6 +69,7 @@ class App extends React.Component {
         <div className='dx-field'>
           <div className='dx-field-label'>Value-dependent icon</div>
           <div className='dx-field-value'>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox dataSource={products}
               defaultValue={products[0].ID}
               selectedItem={this.state.selectedItem}
@@ -71,6 +81,7 @@ class App extends React.Component {
               dropDownButtonTemplate='conditionalIcon'
               onSelectionChanged={this.selectionChanged}
             >
+              // @ts-expect-error TS(2786): 'Template' cannot be used as a JSX component.
               <Template name='conditionalIcon' render={this.renderConditionalIcon} />
             </SelectBox>
           </div>

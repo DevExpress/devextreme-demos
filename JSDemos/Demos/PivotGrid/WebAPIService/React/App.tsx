@@ -66,6 +66,7 @@ const dataSource = {
 class App extends React.Component {
   render() {
     return (
+      // @ts-expect-error TS(2786): 'PivotGrid' cannot be used as a JSX component.
       <PivotGrid
         allowSorting={true}
         allowSortingBySummary={true}
@@ -73,8 +74,10 @@ class App extends React.Component {
         height={620}
         showBorders={true}
         rowHeaderLayout="tree"
+        // @ts-expect-error TS(2322): Type '{ remoteOperations: boolean; store: CustomSt... Remove this comment to see the full error message
         dataSource={dataSource}>
 
+        // @ts-expect-error TS(2786): 'Scrolling' cannot be used as a JSX component.
         <Scrolling mode="virtual" />
       </PivotGrid>
     );

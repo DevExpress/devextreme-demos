@@ -23,6 +23,12 @@ const statuses = ['All', 'Not Started', 'In Progress', 'Need Assistance', 'Defer
 const statusLabel = { 'aria-label': 'Status' };
 
 class App extends React.Component {
+  dataGrid: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -44,37 +50,51 @@ class App extends React.Component {
           </div>
         </div>
         <div className="right-side">
+          // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
           <SelectBox
             items={statuses}
             inputAttr={statusLabel}
             value={this.state.filterStatus}
+            // @ts-expect-error TS(2322): Type '({ value }: { value: any; }) => void' is not... Remove this comment to see the full error message
             onValueChanged={this.onValueChanged} />
         </div>
 
+        // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
         <DataGrid
           id="gridContainer"
           ref={(ref) => { this.dataGrid = ref; }}
+          // @ts-expect-error TS(2322): Type '{ store: { type: string; url: string; key: s... Remove this comment to see the full error message
           dataSource={dataSourceOptions}
           columnAutoWidth={true}
           showBorders={true}
         >
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ dataField: string; width: number; }' is no... Remove this comment to see the full error message
             dataField="Task_ID"
             width={80} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ dataField: string; caption: string; dataTy... Remove this comment to see the full error message
             dataField="Task_Start_Date"
             caption="Start Date"
             dataType="date" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ allowSorting: boolean; dataField: string; ... Remove this comment to see the full error message
             allowSorting={false}
             dataField="ResponsibleEmployee.Employee_Full_Name"
             cssClass="employee"
             caption="Assigned To" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ dataField: string; caption: string; width:... Remove this comment to see the full error message
             dataField="Task_Subject"
             caption="Subject"
             width={350} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ dataField: string; caption: string; }' is ... Remove this comment to see the full error message
             dataField="Task_Status"
             caption="Status" />
         </DataGrid>

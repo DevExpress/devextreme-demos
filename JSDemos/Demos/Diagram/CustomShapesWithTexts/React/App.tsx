@@ -4,6 +4,10 @@ import service from './data.js';
 import 'whatwg-fetch';
 
 class App extends React.Component {
+  diagramRef: any;
+
+  employees: any;
+
   constructor(props) {
     super(props);
 
@@ -25,10 +29,14 @@ class App extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'Diagram' cannot be used as a JSX component.
       <Diagram id="diagram" ref={this.diagramRef}>
+        // @ts-expect-error TS(2786): 'CustomShape' cannot be used as a JSX component.
         {this.employees.map((employee, index) => <CustomShape category="employees" type={`employee${employee.ID}`} baseType="rectangle"
           defaultText={employee.Full_Name} allowEditText={false} key={index} />)}
+        // @ts-expect-error TS(2786): 'Toolbox' cannot be used as a JSX component.
         <Toolbox>
+          // @ts-expect-error TS(2786): 'Group' cannot be used as a JSX component.
           <Group category="employees" title="Employees" displayMode="texts" />
         </Toolbox>
       </Diagram>

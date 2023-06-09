@@ -10,6 +10,16 @@ import 'whatwg-fetch';
 const buttonDropDownOptions = { width: 230 };
 
 class App extends React.Component {
+  colorPicker: any;
+
+  data: any;
+
+  setState: any;
+
+  state: any;
+
+  toolbarItems: any;
+
   onButtonClick(e) {
     notify(`Go to ${e.component.option('text')}'s profile`, 'success', 600);
   }
@@ -126,6 +136,7 @@ class App extends React.Component {
                 Custom static text
             </div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'DropDownButton' cannot be used as a JSX component... Remove this comment to see the full error message
               <DropDownButton
                 text="Download Trial"
                 icon="save"
@@ -141,6 +152,7 @@ class App extends React.Component {
                     Custom main button action
             </div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'DropDownButton' cannot be used as a JSX component... Remove this comment to see the full error message
               <DropDownButton
                 splitButton={true}
                 useSelectMode={false}
@@ -159,14 +171,18 @@ class App extends React.Component {
         <div className="dx-fieldset">
           <div className="dx-fieldset-header">Usage in a toolbar</div>
           <div className="dx-field">
+            // @ts-expect-error TS(2786): 'Toolbar' cannot be used as a JSX component.
             <Toolbar items={this.toolbarItems}>
+              // @ts-expect-error TS(2786): 'Template' cannot be used as a JSX component.
               <Template name="colorpicker">
                 <div className="custom-color-picker">
                   {this.data.colors.map((color, i) => (
+                    // @ts-expect-error TS(2786): 'ColorIcon' cannot be used as a JSX component.
                     <ColorIcon key={i} color={color} onClick={this.onColorClick} />
                   ))}
                 </div>
               </Template>
+              // @ts-expect-error TS(2786): 'Template' cannot be used as a JSX component.
               <Template name="fontItem" render={ this.itemTemplateRender }>
               </Template>
             </Toolbar>

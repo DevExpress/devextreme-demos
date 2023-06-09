@@ -11,6 +11,8 @@ import { exportDataGrid } from 'devextreme/excel_exporter';
 import service from './data.js';
 
 class App extends React.Component {
+  companies: any;
+
   constructor(props) {
     super(props);
     this.companies = service.getCompanies();
@@ -20,6 +22,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
         <DataGrid
           id="gridContainer"
           dataSource={this.companies}
@@ -27,21 +30,34 @@ class App extends React.Component {
           showBorders={true}
           onExporting={this.onExporting}>
 
+          // @ts-expect-error TS(2786): 'GroupPanel' cannot be used as a JSX component.
           <GroupPanel visible={true} />
+          // @ts-expect-error TS(2786): 'Grouping' cannot be used as a JSX component.
           <Grouping autoExpandAll={true} />
+          // @ts-expect-error TS(2786): 'SortByGroupSummaryInfo' cannot be used as a JSX c... Remove this comment to see the full error message
           <SortByGroupSummaryInfo summaryItem="count" />
 
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Name" width={190} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Address" width={200} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="City" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="State" groupIndex={0} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Phone" format={this.phoneNumberFormat} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Website" caption="" alignment="center" width={100} cellRender={this.renderGridCell} />
 
+          // @ts-expect-error TS(2786): 'Export' cannot be used as a JSX component.
           <Export enabled={true} />
 
+          // @ts-expect-error TS(2786): 'Summary' cannot be used as a JSX component.
           <Summary>
+            // @ts-expect-error TS(2786): 'TotalItem' cannot be used as a JSX component.
             <TotalItem
+              // @ts-expect-error TS(2322): Type '{ column: string; summaryType: string; displ... Remove this comment to see the full error message
               column="Name"
               summaryType="count"
               displayFormat="Total count: {0} companies"

@@ -44,6 +44,10 @@ const clientsStore = new CustomStore({
 });
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -75,6 +79,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">First Name</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'Autocomplete' cannot be used as a JSX component.
               <Autocomplete
                 dataSource={names}
                 value={this.state.firstName}
@@ -90,6 +95,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Last Name</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'Autocomplete' cannot be used as a JSX component.
               <Autocomplete
                 dataSource={surnames}
                 value={this.state.lastName}
@@ -106,6 +112,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Position</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'Autocomplete' cannot be used as a JSX component.
               <Autocomplete
                 dataSource={positions}
                 value={this.state.position}
@@ -120,6 +127,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">State</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'Autocomplete' cannot be used as a JSX component.
               <Autocomplete
                 dataSource={states}
                 value={this.state.state}
@@ -137,6 +145,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Current Client</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'Autocomplete' cannot be used as a JSX component.
               <Autocomplete
                 dataSource={clientsStore}
                 value={this.state.currentClient}

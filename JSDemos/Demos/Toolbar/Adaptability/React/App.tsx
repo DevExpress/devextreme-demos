@@ -135,6 +135,7 @@ function App() {
 
   const renderTextAlign = React.useCallback(
     () => (
+      // @ts-expect-error TS(2786): 'ButtonGroup' cannot be used as a JSX component.
       <ButtonGroup
         keyExpr="alignment"
         stylingMode="outlined"
@@ -148,7 +149,9 @@ function App() {
 
   const renderTextAlignMenu = React.useCallback(
     () => (
+      // @ts-expect-error TS(2786): 'ButtonGroup' cannot be used as a JSX component.
       <ButtonGroup
+        // @ts-expect-error TS(2322): Type '{ displayExpr: string; keyExpr: string; styl... Remove this comment to see the full error message
         displayExpr="text"
         keyExpr="alignment"
         stylingMode="outlined"
@@ -168,6 +171,7 @@ function App() {
   return (
     <React.Fragment>
       <div className="widget-container">
+        // @ts-expect-error TS(2786): 'Resizable' cannot be used as a JSX component.
         <Resizable
           className="resizable-container"
           minWidth={500}
@@ -176,16 +180,23 @@ function App() {
           handles="right"
           area=".widget-container"
         >
+          // @ts-expect-error TS(2786): 'Toolbar' cannot be used as a JSX component.
           <Toolbar multiline={multiline}>
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item location="before">
+              // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
               <Button icon="undo" onClick={onUndoButtonClick}></Button>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item location="before">
+              // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
               <Button icon="redo" onClick={onRedoButtonClick}></Button>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item
+              // @ts-expect-error TS(2322): Type '{ children: Element; location: string; locat... Remove this comment to see the full error message
               location="before"
               locateInMenu="auto"
               menuItemRender={renderMenuSeparator}
@@ -193,7 +204,9 @@ function App() {
               <div className="toolbar-separator"></div>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item location="before" locateInMenu="auto">
+              // @ts-expect-error TS(2786): 'DropDownButton' cannot be used as a JSX component... Remove this comment to see the full error message
               <DropDownButton
                 width="100%"
                 displayExpr="text"
@@ -206,7 +219,9 @@ function App() {
               ></DropDownButton>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item location="before" locateInMenu="auto">
+              // @ts-expect-error TS(2786): 'DropDownButton' cannot be used as a JSX component... Remove this comment to see the full error message
               <DropDownButton
                 width="100%"
                 icon="indent"
@@ -219,7 +234,9 @@ function App() {
               ></DropDownButton>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item location="before" locateInMenu="auto">
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox
                 placeholder="Font"
                 displayExpr="text"
@@ -229,7 +246,9 @@ function App() {
               ></SelectBox>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item
+              // @ts-expect-error TS(2322): Type '{ children: Element; location: string; locat... Remove this comment to see the full error message
               location="before"
               locateInMenu="auto"
               menuItemRender={renderMenuSeparator}
@@ -237,7 +256,9 @@ function App() {
               <div className="toolbar-separator"></div>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item location="before">
+              // @ts-expect-error TS(2786): 'ButtonGroup' cannot be used as a JSX component.
               <ButtonGroup
                 keyExpr="icon"
                 stylingMode="outlined"
@@ -247,11 +268,14 @@ function App() {
               ></ButtonGroup>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item location="before">
               <div className="toolbar-separator"></div>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item
+              // @ts-expect-error TS(2322): Type '{ widget: string; location: string; locateIn... Remove this comment to see the full error message
               widget="dxButtonGroup"
               location="before"
               locateInMenu="auto"
@@ -259,7 +283,9 @@ function App() {
               menuItemRender={renderTextAlignMenu}
             ></Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item location="before">
+              // @ts-expect-error TS(2786): 'ButtonGroup' cannot be used as a JSX component.
               <ButtonGroup
                 keyExpr="alignment"
                 stylingMode="outlined"
@@ -268,7 +294,9 @@ function App() {
               ></ButtonGroup>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item
+              // @ts-expect-error TS(2322): Type '{ children: Element; location: string; locat... Remove this comment to see the full error message
               location="before"
               locateInMenu="auto"
               menuItemRender={renderMenuSeparator}
@@ -276,7 +304,9 @@ function App() {
               <div className="toolbar-separator"></div>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item location="before" locateInMenu="auto">
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox
                 displayExpr="text"
                 valueExpr="text"
@@ -287,7 +317,9 @@ function App() {
               ></SelectBox>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item
+              // @ts-expect-error TS(2322): Type '{ children: Element; location: string; locat... Remove this comment to see the full error message
               location="before"
               locateInMenu="auto"
               menuItemRender={renderMenuSeparator}
@@ -295,12 +327,15 @@ function App() {
               <div className="toolbar-separator"></div>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item
+              // @ts-expect-error TS(2322): Type '{ children: Element; location: string; locat... Remove this comment to see the full error message
               location="before"
               locateInMenu="auto"
               showText="inMenu"
               widget="dxButton"
             >
+              // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
               <Button
                 icon="link"
                 text="Link"
@@ -308,12 +343,15 @@ function App() {
               ></Button>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item
+              // @ts-expect-error TS(2322): Type '{ children: Element; location: string; locat... Remove this comment to see the full error message
               location="before"
               locateInMenu="auto"
               showText="inMenu"
               widget="dxButton"
             >
+              // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
               <Button
                 icon="image"
                 text="Add image"
@@ -321,7 +359,9 @@ function App() {
               ></Button>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item
+              // @ts-expect-error TS(2322): Type '{ children: Element; location: string; locat... Remove this comment to see the full error message
               location="before"
               locateInMenu="auto"
               menuItemRender={renderMenuSeparator}
@@ -329,12 +369,15 @@ function App() {
               <div className="toolbar-separator"></div>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item
+              // @ts-expect-error TS(2322): Type '{ children: Element; location: string; locat... Remove this comment to see the full error message
               location="before"
               locateInMenu="auto"
               showText="inMenu"
               widget="dxButton"
             >
+              // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
               <Button
                 icon="clearformat"
                 text="Clear formating"
@@ -342,12 +385,15 @@ function App() {
               ></Button>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item
+              // @ts-expect-error TS(2322): Type '{ children: Element; location: string; locat... Remove this comment to see the full error message
               location="before"
               locateInMenu="auto"
               showText="inMenu"
               widget="dxButton"
             >
+              // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
               <Button
                 icon="codeblock"
                 text="Code block"
@@ -355,12 +401,15 @@ function App() {
               ></Button>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item
+              // @ts-expect-error TS(2322): Type '{ children: Element; location: string; locat... Remove this comment to see the full error message
               location="before"
               locateInMenu="auto"
               showText="inMenu"
               widget="dxButton"
             >
+              // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
               <Button
                 icon="blockquote"
                 text="Blockquote"
@@ -368,7 +417,9 @@ function App() {
               ></Button>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item
+              // @ts-expect-error TS(2322): Type '{ children: Element; location: string; locat... Remove this comment to see the full error message
               location="before"
               locateInMenu="auto"
               menuItemRender={renderMenuSeparator}
@@ -376,7 +427,9 @@ function App() {
               <div className="toolbar-separator"></div>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item location="after" showText="inMenu" widget="dxButton">
+              // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
               <Button
                 icon="attach"
                 text="Attach"
@@ -384,7 +437,9 @@ function App() {
               ></Button>
             </Item>
 
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item locateInMenu="always" showText="inMenu" widget="dxButton">
+              // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
               <Button
                 icon="help"
                 text="About"
@@ -398,6 +453,7 @@ function App() {
       <div className="options-container">
         <div className="caption">Options</div>
 
+        // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
         <CheckBox
           text="Multiline mode"
           value={multiline}

@@ -6,6 +6,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'TreeView' cannot be used as a JSX component.
         <TreeView
           id="simple-treeview"
           dataStructure="plain"

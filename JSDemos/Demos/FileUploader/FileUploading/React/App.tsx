@@ -8,6 +8,12 @@ const fileTypeLabel = { 'aria-label': 'File Type' };
 const uploadModeLabel = { 'aria-label': 'Mode' };
 
 class App extends React.Component {
+  fileTypesSource: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -34,6 +40,7 @@ class App extends React.Component {
     return (
       <div>
         <div className="widget-container">
+          // @ts-expect-error TS(2786): 'FileUploader' cannot be used as a JSX component.
           <FileUploader
             multiple={this.state.multiple}
             accept={this.state.accept}
@@ -58,13 +65,16 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <span>File types</span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox dataSource={this.fileTypesSource} inputAttr={fileTypeLabel} valueExpr="value" displayExpr="name" defaultValue="*" onValueChanged={this.onAcceptChanged} />
           </div>
           <div className="option">
             <span>Upload mode</span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox items={uploadModes} defaultValue="instantly" inputAttr={uploadModeLabel} onValueChanged={this.onUploadModeChanged} />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox text="Allow multiple files selection" onValueChanged={this.onMultipleChanged} />
           </div>
         </div>

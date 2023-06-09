@@ -19,6 +19,7 @@ class App extends React.Component {
 
   render() {
     const pies = countries.map((country) => (
+      // @ts-expect-error TS(2786): 'PieChart' cannot be used as a JSX component.
       <PieChart
         id="pie-chart"
         key={country}
@@ -29,17 +30,22 @@ class App extends React.Component {
         centerRender={CenterTemplate}
         type="doughnut"
       >
+        // @ts-expect-error TS(2786): 'Series' cannot be used as a JSX component.
         <Series
+          // @ts-expect-error TS(2322): Type '{ children: Element; argumentField: string; ... Remove this comment to see the full error message
           argumentField="commodity"
           valueField="total"
         >
+          // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
           <Label visible={true}
             format="fixedPoint"
             customizeText={this.customizeLabel}
             backgroundColor="none">
+            // @ts-expect-error TS(2786): 'Connector' cannot be used as a JSX component.
             <Connector visible={true}></Connector>
           </Label>
         </Series>
+        // @ts-expect-error TS(2786): 'Legend' cannot be used as a JSX component.
         <Legend visible={false}></Legend>
       </PieChart>
     ));

@@ -9,6 +9,8 @@ const defaultValues = {
 };
 
 class App extends React.Component {
+  items: any;
+
   constructor() {
     super();
     this.items = products.slice(0, 5);
@@ -33,6 +35,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Multi-tag for several items</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
               <TagBox
                 items={products}
                 defaultValue={defaultValues.severalItems}
@@ -48,6 +51,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Multi-tag for all items</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
               <TagBox
                 items={this.items}
                 defaultValue={defaultValues.allItems}
@@ -62,6 +66,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Multi-tag with ordinary tags</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
               <TagBox
                 items={products}
                 defaultValue={defaultValues.ordinaryTags}

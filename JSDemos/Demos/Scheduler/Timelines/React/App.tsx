@@ -11,9 +11,11 @@ const groups = ['priority'];
 class App extends React.Component {
   render() {
     return (
+      // @ts-expect-error TS(2786): 'Scheduler' cannot be used as a JSX component.
       <Scheduler
         timeZone="America/Los_Angeles"
         dataSource={data}
+        // @ts-expect-error TS(2322): Type 'string[]' is not assignable to type '("timel... Remove this comment to see the full error message
         views={views}
         defaultCurrentView="timelineMonth"
         defaultCurrentDate={currentDate}
@@ -23,14 +25,18 @@ class App extends React.Component {
         firstDayOfWeek={0}
         startDayHour={8}
         endDayHour={20}>
+        // @ts-expect-error TS(2786): 'Resource' cannot be used as a JSX component.
         <Resource
+          // @ts-expect-error TS(2322): Type '{ fieldExpr: string; allowMultiple: boolean;... Remove this comment to see the full error message
           fieldExpr="ownerId"
           allowMultiple={true}
           dataSource={resourcesData}
           label="Owner"
           useColorAsDefault={ true }
         />
+        // @ts-expect-error TS(2786): 'Resource' cannot be used as a JSX component.
         <Resource
+          // @ts-expect-error TS(2322): Type '{ fieldExpr: string; allowMultiple: boolean;... Remove this comment to see the full error message
           fieldExpr="priority"
           allowMultiple={false}
           dataSource={priorityData}

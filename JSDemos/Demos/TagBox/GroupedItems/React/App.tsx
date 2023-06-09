@@ -14,6 +14,8 @@ const defaultValues = {
 const productLabel = { 'aria-label': 'Product' };
 
 class App extends React.Component {
+  products: any;
+
   constructor() {
     super();
 
@@ -30,6 +32,7 @@ class App extends React.Component {
         <div className="dx-field">
           <div className="dx-field-label">Grouped items</div>
           <div className="dx-field-value">
+            // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
             <TagBox
               dataSource={this.products}
               inputAttr={productLabel}
@@ -43,6 +46,7 @@ class App extends React.Component {
         <div className="dx-field">
           <div className="dx-field-label">Grouped items with search enabled</div>
           <div className="dx-field-value">
+            // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
             <TagBox
               dataSource={this.products}
               valueExpr="ID"
@@ -57,6 +61,7 @@ class App extends React.Component {
         <div className="dx-field">
           <div className="dx-field-label">Grouped items with a custom group template</div>
           <div className="dx-field-value">
+            // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
             <TagBox
               dataSource={this.products}
               valueExpr="ID"

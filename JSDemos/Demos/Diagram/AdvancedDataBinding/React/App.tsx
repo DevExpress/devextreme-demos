@@ -6,6 +6,10 @@ import ArrayStore from 'devextreme/data/array_store';
 import service from './data.js';
 
 class App extends React.Component {
+  orgItemsDataSource: any;
+
+  orgLinksDataSource: any;
+
   constructor(props) {
     super(props);
 
@@ -21,8 +25,11 @@ class App extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'Diagram' cannot be used as a JSX component.
       <Diagram id="diagram">
+        // @ts-expect-error TS(2786): 'Nodes' cannot be used as a JSX component.
         <Nodes
+          // @ts-expect-error TS(2322): Type '{ children: Element; dataSource: any; typeEx... Remove this comment to see the full error message
           dataSource={this.orgItemsDataSource}
           typeExpr={this.itemTypeExpr}
           textExpr="name"
@@ -30,11 +37,15 @@ class App extends React.Component {
           heightExpr={this.itemHeightExpr}
           textStyleExpr={this.itemTextStyleExpr}
           styleExpr={this.itemStyleExpr}>
+          // @ts-expect-error TS(2786): 'AutoLayout' cannot be used as a JSX component.
           <AutoLayout type="tree" orientation="horizontal" />
         </Nodes>
+        // @ts-expect-error TS(2786): 'Edges' cannot be used as a JSX component.
         <Edges dataSource={this.orgLinksDataSource} styleExpr={this.linkStyleExpr}
           fromLineEndExpr={this.linkFromLineEndExpr} toLineEndExpr={this.linkToLineEndExpr} />
+        // @ts-expect-error TS(2786): 'Toolbox' cannot be used as a JSX component.
         <Toolbox>
+          // @ts-expect-error TS(2786): 'Group' cannot be used as a JSX component.
           <Group category="general" title="General" />
         </Toolbox>
       </Diagram>
@@ -78,6 +89,7 @@ class App extends React.Component {
   itemStyleExpr(obj) {
     const style = { stroke: '#444444' };
     if (obj.type === 'group') {
+      // @ts-expect-error TS(2339): Property 'fill' does not exist on type '{ stroke: ... Remove this comment to see the full error message
       style.fill = '#f3f3f3';
     }
     return style;

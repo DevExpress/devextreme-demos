@@ -8,6 +8,10 @@ const endpointUrl = 'https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-
 const loadPanelPosition = { of: '#file-uploader' };
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor() {
     super();
     this.state = {
@@ -25,8 +29,10 @@ class App extends React.Component {
   render() {
     return (
       <div id="wrapper" className={this.state.wrapperClassName}>
+        // @ts-expect-error TS(2786): 'LoadPanel' cannot be used as a JSX component.
         <LoadPanel visible={this.state.loadPanelVisible} position={loadPanelPosition} />
         <div id="widget-area">
+          // @ts-expect-error TS(2786): 'FileUploader' cannot be used as a JSX component.
           <FileUploader id="file-uploader" chunkSize={200000} maxFileSize={1048576} uploadChunk={this.uploadChunk} />
           <div id="request-panel">
             {

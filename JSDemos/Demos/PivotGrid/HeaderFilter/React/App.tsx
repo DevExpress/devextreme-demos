@@ -25,6 +25,7 @@ const dataSource = new PivotGridDataSource({
     },
   ],
   store: new XmlaStore({
+    // @ts-expect-error TS(2345): Argument of type '{ type: string; url: string; cat... Remove this comment to see the full error message
     type: 'xmla',
     url: 'https://demos.devexpress.com/Services/OLAP/msmdpump.dll',
     catalog: 'Adventure Works DW Standard Edition',
@@ -33,6 +34,10 @@ const dataSource = new PivotGridDataSource({
 });
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -50,6 +55,7 @@ class App extends React.Component {
 
     return (
       <div>
+        // @ts-expect-error TS(2786): 'PivotGrid' cannot be used as a JSX component.
         <PivotGrid
           id="sales"
           allowFiltering={true}
@@ -59,20 +65,26 @@ class App extends React.Component {
           showBorders={true}
           dataSource={dataSource}
         >
+          // @ts-expect-error TS(2786): 'HeaderFilter' cannot be used as a JSX component.
           <HeaderFilter
+            // @ts-expect-error TS(2322): Type '{ children: Element; showRelevantValues: any... Remove this comment to see the full error message
             showRelevantValues={showRelevantValues}
             width={300}
             height={400}
           >
+            // @ts-expect-error TS(2786): 'Search' cannot be used as a JSX component.
             <Search enabled={searchEnabled} />
           </HeaderFilter>
+          // @ts-expect-error TS(2786): 'FieldChooser' cannot be used as a JSX component.
           <FieldChooser allowSearch={true} />
+          // @ts-expect-error TS(2786): 'FieldPanel' cannot be used as a JSX component.
           <FieldPanel visible={true} />
         </PivotGrid>
         <div className="options">
           <div className="caption">Options</div>
           <div className="options-container">
             <div className="option">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 value={searchEnabled}
                 text="Allow Search"
@@ -80,6 +92,7 @@ class App extends React.Component {
               />
             </div>
             <div className="option">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 value={showRelevantValues}
                 text="Show Relevant Values"

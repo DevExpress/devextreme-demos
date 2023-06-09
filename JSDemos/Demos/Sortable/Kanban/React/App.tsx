@@ -55,10 +55,12 @@ function List({
 }) {
   return <div className="list">
     <div className="list-title dx-theme-text-color">{title}</div>
+    // @ts-expect-error TS(2786): 'ScrollView' cannot be used as a JSX component.
     <ScrollView
       className="scrollable-list"
       direction="vertical"
       showScrollbar="always">
+      // @ts-expect-error TS(2786): 'Sortable' cannot be used as a JSX component.
       <Sortable
         className="sortable-cards"
         group="cardsGroup"
@@ -101,10 +103,12 @@ function App() {
 
   return (
     <div id="kanban">
+      // @ts-expect-error TS(2786): 'ScrollView' cannot be used as a JSX component.
       <ScrollView
         className="scrollable-board"
         direction="horizontal"
         showScrollbar="always">
+        // @ts-expect-error TS(2786): 'Sortable' cannot be used as a JSX component.
         <Sortable
           className="sortable-lists"
           itemOrientation="horizontal"

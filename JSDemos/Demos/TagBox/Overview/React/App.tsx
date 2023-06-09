@@ -9,6 +9,12 @@ import { simpleProducts, products, productLabel } from './data.js';
 const disabledValue = [simpleProducts[0]];
 
 class App extends React.Component {
+  dataSource: any;
+
+  setState: any;
+
+  state: any;
+
   constructor() {
     super();
     this.dataSource = new ArrayStore({
@@ -39,12 +45,14 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Default mode</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
               <TagBox items={simpleProducts} inputAttr={productLabel} />
             </div>
           </div>
           <div className="dx-field">
             <div className="dx-field-label">Search mode</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
               <TagBox items={simpleProducts}
                 searchEnabled={true}
                 inputAttr={productLabel}
@@ -54,6 +62,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Batch selection</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
               <TagBox items={simpleProducts}
                 showSelectionControls={true}
                 inputAttr={productLabel}
@@ -63,6 +72,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Hide selected items</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
               <TagBox items={simpleProducts}
                 inputAttr={productLabel}
                 hideSelectedItems={true} />
@@ -71,6 +81,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Single line mode</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
               <TagBox items={simpleProducts}
                 inputAttr={productLabel}
                 multiline={false} />
@@ -79,6 +90,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Add custom items</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
               <TagBox items={this.state.editableProducts}
                 inputAttr={productLabel}
                 acceptCustomValue={true}
@@ -88,6 +100,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">With custom placeholder</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
               <TagBox items={simpleProducts}
                 inputAttr={productLabel}
                 placeholder="Choose Product..." />
@@ -96,6 +109,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Disabled</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
               <TagBox items={simpleProducts}
                 inputAttr={productLabel}
                 value={disabledValue}
@@ -105,6 +119,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Data source</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
               <TagBox dataSource={this.dataSource}
                 inputAttr={productLabel}
                 displayExpr="Name"
@@ -114,6 +129,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Custom template</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
               <TagBox dataSource={this.dataSource}
                 inputAttr={productLabel}
                 displayExpr="Name"

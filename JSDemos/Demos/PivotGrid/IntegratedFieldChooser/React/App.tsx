@@ -11,6 +11,10 @@ import PivotGrid, {
 const applyChangesModeLabel = { 'aria-label': 'Apply Changes Mode' };
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -24,6 +28,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'PivotGrid' cannot be used as a JSX component.
         <PivotGrid
           dataSource={dataSource}
           allowSortingBySummary={true}
@@ -32,7 +37,9 @@ class App extends React.Component {
           height={470}
           showBorders={true}
         >
+          // @ts-expect-error TS(2786): 'FieldChooser' cannot be used as a JSX component.
           <FieldChooser
+            // @ts-expect-error TS(2322): Type '{ enabled: boolean; allowSearch: boolean; ap... Remove this comment to see the full error message
             enabled={true}
             allowSearch={true}
             applyChangesMode={this.state.applyChangesMode} />
@@ -41,6 +48,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <span>Apply Changes Mode:</span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               items={applyChangesModes}
               width={180}

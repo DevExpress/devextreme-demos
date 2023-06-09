@@ -31,6 +31,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Built-in icon</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button icon="check"
                   type="success"
                   text="Done"
@@ -40,6 +41,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Image icon</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button icon="../../../../images/icons/weather.png"
                   text="Weather"
                   onClick={this.weatherClick} />
@@ -48,6 +50,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">External icon</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button className="send"
                   icon="fa fa-envelope-o"
                   text="Send"
@@ -57,8 +60,10 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Icon only</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button icon="plus"
                   onClick={this.plusClick} />
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button icon="back"
                   id="icon-back"
                   onClick={this.backClick} />
@@ -71,6 +76,7 @@ class App extends React.Component {
           <div className="fields-container">
             <div className="dx-field">
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button icon="check"
                   type="success"
                   text="Done"
@@ -79,6 +85,7 @@ class App extends React.Component {
             </div>
             <div className="dx-field">
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button icon="../../../../images/icons/weather.png"
                   text="Weather"
                   disabled={true} />
@@ -86,6 +93,7 @@ class App extends React.Component {
             </div>
             <div className="dx-field">
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button className="send"
                   icon="fa fa-envelope-o"
                   text="Send"
@@ -94,8 +102,10 @@ class App extends React.Component {
             </div>
             <div className="dx-field">
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button icon="plus"
                   disabled={true} />
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button icon="back"
                   id="icon-disabled-back"
                   disabled={true} />

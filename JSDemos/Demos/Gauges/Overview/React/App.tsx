@@ -31,6 +31,12 @@ function CenterTemplate(gauge) {
 }
 
 class App extends React.Component {
+  handleSpeedChange: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -66,16 +72,23 @@ class App extends React.Component {
           </div>
           &nbsp;
           <div className="center-section">
+            // @ts-expect-error TS(2786): 'CircularGauge' cannot be used as a JSX component.
             <CircularGauge value={speedValue} centerRender={CenterTemplate}>
+              // @ts-expect-error TS(2786): 'CircularSize' cannot be used as a JSX component.
               <CircularSize width={260} />
+              // @ts-expect-error TS(2786): 'CircularScale' cannot be used as a JSX component.
               <CircularScale
+                // @ts-expect-error TS(2322): Type '{ startValue: number; endValue: number; tick... Remove this comment to see the full error message
                 startValue={20}
                 endValue={200}
                 tickInterval={20}
                 minorTickInterval={10}
               />
+              // @ts-expect-error TS(2786): 'Geometry' cannot be used as a JSX component.
               <Geometry startAngle={225} endAngle={315} />
+              // @ts-expect-error TS(2786): 'CircularValueIndicator' cannot be used as a JSX c... Remove this comment to see the full error message
               <CircularValueIndicator
+                // @ts-expect-error TS(2322): Type '{ indentFromCenter: number; color: string; s... Remove this comment to see the full error message
                 indentFromCenter={55}
                 color={color}
                 spindleSize={0}
@@ -83,18 +96,26 @@ class App extends React.Component {
               />
             </CircularGauge>
 
+            // @ts-expect-error TS(2786): 'LinearGauge' cannot be used as a JSX component.
             <LinearGauge value={50 - speedValue * 0.24} id="fuel-gauge">
+              // @ts-expect-error TS(2786): 'LinearSize' cannot be used as a JSX component.
               <LinearSize width={90} height={20} />
+              // @ts-expect-error TS(2786): 'LinearScale' cannot be used as a JSX component.
               <LinearScale
+                // @ts-expect-error TS(2322): Type '{ children: Element[]; startValue: number; e... Remove this comment to see the full error message
                 startValue={0}
                 endValue={50}
                 tickInterval={25}
                 minorTickInterval={12.5}
               >
+                // @ts-expect-error TS(2786): 'MinorTick' cannot be used as a JSX component.
                 <MinorTick visible={true} />
+                // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
                 <Label visible={false} />
               </LinearScale>
+              // @ts-expect-error TS(2786): 'LinearValueIndicator' cannot be used as a JSX com... Remove this comment to see the full error message
               <LinearValueIndicator
+                // @ts-expect-error TS(2322): Type '{ size: number; offset: number; color: strin... Remove this comment to see the full error message
                 size={8}
                 offset={7}
                 color={color}
@@ -120,6 +141,7 @@ class App extends React.Component {
           </div>
         </div>
 
+        // @ts-expect-error TS(2786): 'Slider' cannot be used as a JSX component.
         <Slider
           value={this.state.speedValue}
           onValueChanged={this.handleSpeedChange}

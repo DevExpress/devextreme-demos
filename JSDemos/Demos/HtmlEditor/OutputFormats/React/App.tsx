@@ -13,6 +13,10 @@ const fontValues = ['Arial', 'Courier New', 'Georgia', 'Impact', 'Lucida Console
 const defaultSelectedItemKeys = ['Html'];
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor() {
     super();
 
@@ -31,46 +35,71 @@ class App extends React.Component {
 
     return (
       <div className="widget-container">
+        // @ts-expect-error TS(2786): 'HtmlEditor' cannot be used as a JSX component.
         <HtmlEditor
           height={300}
           defaultValue={valueContent}
           valueType={editorValueType}
           onValueChanged={this.valueChanged}
         >
+          // @ts-expect-error TS(2786): 'Toolbar' cannot be used as a JSX component.
           <Toolbar>
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="undo" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="redo" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="separator" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item
+              // @ts-expect-error TS(2322): Type '{ name: string; acceptedValues: string[]; }'... Remove this comment to see the full error message
               name="size"
               acceptedValues={sizeValues}
             />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item
+              // @ts-expect-error TS(2322): Type '{ name: string; acceptedValues: string[]; }'... Remove this comment to see the full error message
               name="font"
               acceptedValues={fontValues}
             />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="separator" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="bold" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="italic" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="strike" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="underline" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="separator" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="alignLeft" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="alignCenter" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="alignRight" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="alignJustify" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="separator" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="color" />
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item name="background" />
           </Toolbar>
         </HtmlEditor>
 
         <div className="options">
+          // @ts-expect-error TS(2786): 'ButtonGroup' cannot be used as a JSX component.
           <ButtonGroup
             onSelectionChanged={this.valueTypeChanged}
             defaultSelectedItemKeys={defaultSelectedItemKeys}
           >
+            // @ts-expect-error TS(2786): 'ButtonItem' cannot be used as a JSX component.
             <ButtonItem text="Html" />
+            // @ts-expect-error TS(2786): 'ButtonItem' cannot be used as a JSX component.
             <ButtonItem text="Markdown" />
           </ButtonGroup>
           <div className="value-content">

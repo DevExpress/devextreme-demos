@@ -69,8 +69,10 @@ function App() {
   const renderTimeCell = (itemData) => <TimeCell itemData={itemData} />;
 
   return (
+    // @ts-expect-error TS(2786): 'Scheduler' cannot be used as a JSX component.
     <Scheduler
       dataSource={data}
+      // @ts-expect-error TS(2322): Type 'string[]' is not assignable to type '("workW... Remove this comment to see the full error message
       views={views}
       defaultCurrentDate={currentDate}
       currentView={currentView}

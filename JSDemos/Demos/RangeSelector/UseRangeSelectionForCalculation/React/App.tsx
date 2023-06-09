@@ -11,6 +11,10 @@ const behaviorModes = ['onHandleMove', 'onHandleRelease'];
 const valueChangeModeLabel = { 'aria-label': 'Value Change Mode' };
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -24,18 +28,26 @@ class App extends React.Component {
   render() {
     return (
       <div id="range-selector-demo">
+        // @ts-expect-error TS(2786): 'RangeSelector' cannot be used as a JSX component.
         <RangeSelector
           id="range-selector"
           title="Calculate the Working Days Count in a Date Period"
           onValueChanged={this.processRange}
         >
+          // @ts-expect-error TS(2786): 'Margin' cannot be used as a JSX component.
           <Margin top={50} />
+          // @ts-expect-error TS(2786): 'Scale' cannot be used as a JSX component.
           <Scale startValue={startValue} endValue={endValue} minorTickInterval="day" tickInterval="month">
+            // @ts-expect-error TS(2786): 'MinorTick' cannot be used as a JSX component.
             <MinorTick visible={false} />
+            // @ts-expect-error TS(2786): 'Marker' cannot be used as a JSX component.
             <Marker visible={false} />
+            // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
             <Label format="MMM" />
           </Scale>
+          // @ts-expect-error TS(2786): 'Behavior' cannot be used as a JSX component.
           <Behavior valueChangeMode={this.state.behaviorMode} />
+          // @ts-expect-error TS(2786): 'SliderMarker' cannot be used as a JSX component.
           <SliderMarker format="dd EEEE" />
         </RangeSelector>
         <h2>Working days count: { this.state.workingDaysCount }</h2>
@@ -43,6 +55,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <span>Handle Range Changes </span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               dataSource={behaviorModes}
               width={210}

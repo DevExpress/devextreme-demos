@@ -6,6 +6,14 @@ import List from 'devextreme-react/list';
 import service from './data.js';
 
 class App extends React.Component {
+  contextMenuRef: any;
+
+  setState: any;
+
+  state: any;
+
+  treeViewRef: any;
+
   constructor(props) {
     super(props);
     this.contextMenuRef = React.createRef();
@@ -25,6 +33,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="form">
+        // @ts-expect-error TS(2786): 'TreeView' cannot be used as a JSX component.
         <TreeView id="treeview"
           ref={this.treeViewRef}
           items={this.state.products}
@@ -33,6 +42,7 @@ class App extends React.Component {
           onItemContextMenu={this.treeViewItemContextMenu} />
         <div className="log-container">
           <div><i className="icon dx-icon-clock"></i>&nbsp;Operations log:</div>
+          // @ts-expect-error TS(2786): 'List' cannot be used as a JSX component.
           <List
             id="log"
             width={400}
@@ -40,6 +50,7 @@ class App extends React.Component {
             showScrollbar="always"
             items={this.state.logItems} />
         </div>
+        // @ts-expect-error TS(2786): 'ContextMenu' cannot be used as a JSX component.
         <ContextMenu
           ref={this.contextMenuRef}
           dataSource={this.state.menuItems}

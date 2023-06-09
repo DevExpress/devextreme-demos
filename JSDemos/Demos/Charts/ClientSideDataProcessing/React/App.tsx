@@ -18,6 +18,18 @@ import SelectBox from 'devextreme-react/select-box';
 const temperatureLabel = { 'aria-label': 'Temperature' };
 
 class App extends React.Component {
+  changeTemperature: any;
+
+  customizePoint: any;
+
+  monthWeather: any;
+
+  palette: any;
+
+  paletteIndex: any;
+
+  temperature: any;
+
   constructor(props) {
     super(props);
     this.temperature = [2, 4, 6, 8, 9, 10, 11];
@@ -54,26 +66,36 @@ class App extends React.Component {
   render() {
     return (
       <div id="chart-demo">
+        // @ts-expect-error TS(2786): 'Chart' cannot be used as a JSX component.
         <Chart
           title="Temperature in Seattle: October 2017"
           dataSource={this.monthWeather}
           customizePoint={this.customizePoint}>
+          // @ts-expect-error TS(2786): 'Size' cannot be used as a JSX component.
           <Size height={420} />
+          // @ts-expect-error TS(2786): 'ValueAxis' cannot be used as a JSX component.
           <ValueAxis>
+            // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
             <Label customizeText={this.customizeLabel} />
           </ValueAxis>
+          // @ts-expect-error TS(2786): 'Series' cannot be used as a JSX component.
           <Series
+            // @ts-expect-error TS(2322): Type '{ argumentField: string; valueField: string;... Remove this comment to see the full error message
             argumentField="day"
             valueField="t"
             type="bar"
           />
+          // @ts-expect-error TS(2786): 'Legend' cannot be used as a JSX component.
           <Legend visible={false} />
+          // @ts-expect-error TS(2786): 'Export' cannot be used as a JSX component.
           <Export enabled={true} />
+          // @ts-expect-error TS(2786): 'LoadingIndicator' cannot be used as a JSX compone... Remove this comment to see the full error message
           <LoadingIndicator enabled={true} />
         </Chart>
         <div className="action">
           <div className="label">Choose a temperature threshold, &deg;C:
           </div>
+          // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
           <SelectBox
             id="choose-temperature"
             dataSource={this.temperature}

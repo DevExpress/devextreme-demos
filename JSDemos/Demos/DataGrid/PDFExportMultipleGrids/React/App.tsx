@@ -27,6 +27,10 @@ const ratingDataSource = {
 };
 
 class App extends React.Component {
+  priceGridRef: any;
+
+  ratingGridRef: any;
+
   constructor(props) {
     super(props);
 
@@ -38,26 +42,40 @@ class App extends React.Component {
     return (
       <div>
         <div id="exportContainer">
+          // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
           <Button
             text="Export multiple grids"
             icon="exportpdf"
             onClick={this.exportGrids}
           />
         </div>
+        // @ts-expect-error TS(2786): 'TabPanel' cannot be used as a JSX component.
         <TabPanel id="tabPanel" deferRendering={false}>
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item title="Price">
+            // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
             <DataGrid id="priceDataGrid" ref={this.priceGridRef} dataSource={priceDataSource} showBorders={true} rowAlternationEnabled={true}>
+              // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
               <Column dataField="Product_ID" caption="ID" width={50} />
+              // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
               <Column dataField="Product_Name" caption="Name" />
+              // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
               <Column dataField="Product_Sale_Price" caption="Sale Price" dataType="number" format="currency" />
+              // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
               <Column dataField="Product_Retail_Price" caption="Retail Price" dataType="number" format="currency" />
             </DataGrid>
           </Item>
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item title="Rating">
+            // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
             <DataGrid id="ratingDataGrid" ref={this.ratingGridRef} dataSource={ratingDataSource} showBorders={true} rowAlternationEnabled={true}>
+              // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
               <Column dataField="Product_ID" caption="ID" width={50} />
+              // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
               <Column dataField="Product_Name" caption="Name" />
+              // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
               <Column dataField="Product_Consumer_Rating" caption="Rating" />
+              // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
               <Column dataField="Product_Category" caption="Category" />
             </DataGrid>
           </Item>
@@ -66,6 +84,7 @@ class App extends React.Component {
     );
   }
 
+  // @ts-expect-error TS(2300): Duplicate identifier 'setAlternatingRowsBackground... Remove this comment to see the full error message
   setAlternatingRowsBackground = (dataGrid, gridCell, pdfCell) => {
     if (gridCell.rowType === 'data') {
       const rowIndex = dataGrid.getRowIndexByKey(gridCell.data.Product_ID);
@@ -104,6 +123,7 @@ class App extends React.Component {
     });
   }
 
+  // @ts-expect-error TS(2300): Duplicate identifier 'setAlternatingRowsBackground... Remove this comment to see the full error message
   setAlternatingRowsBackground(gridCell, excelCell) {
     if (gridCell.rowType === 'header' || gridCell.rowType === 'data') {
       if (excelCell.fullAddress.row % 2 === 0) {

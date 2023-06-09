@@ -3,6 +3,12 @@ import FileUploader from 'devextreme-react/file-uploader';
 import ProgressBar from 'devextreme-react/progress-bar';
 
 class App extends React.Component {
+  allowedFileExtensions: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -36,6 +42,7 @@ class App extends React.Component {
             <span>Drag & Drop the desired file</span>
             <span>…or click to browse for a file instead.</span>
           </div>}
+          // @ts-expect-error TS(2786): 'ProgressBar' cannot be used as a JSX component.
           <ProgressBar
             id="upload-progress"
             min={0}
@@ -46,6 +53,7 @@ class App extends React.Component {
             value={progressValue}
           ></ProgressBar>
         </div>
+        // @ts-expect-error TS(2786): 'FileUploader' cannot be used as a JSX component.
         <FileUploader
           id="file-uploader"
           dialogTrigger="#dropzone-external"

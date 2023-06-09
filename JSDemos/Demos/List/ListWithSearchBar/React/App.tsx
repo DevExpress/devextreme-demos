@@ -9,6 +9,10 @@ function ItemTemplate(data) {
 const searchModes = ['contains', 'startsWith', 'equals'];
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor() {
     super();
     this.state = {
@@ -27,6 +31,7 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <div className="list-container">
+          // @ts-expect-error TS(2786): 'List' cannot be used as a JSX component.
           <List
             dataSource={products}
             height={400}
@@ -39,6 +44,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <span>Search mode </span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               items={searchModes}
               inputAttr={searchModeLabel}

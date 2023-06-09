@@ -17,6 +17,8 @@ const position = {
 };
 
 class House extends React.PureComponent {
+  props: any;
+
   constructor(props) {
     super(props);
 
@@ -44,9 +46,11 @@ class House extends React.PureComponent {
               </div>
             </div>
           </div>
+          // @ts-expect-error TS(2786): 'Popover' cannot be used as a JSX component.
           <Popover
             showEvent="mouseenter"
             hideEvent="mouseleave"
+            // @ts-expect-error TS(2322): Type '{ offset: string; at: string; my: string; co... Remove this comment to see the full error message
             position={position}
             target={`#house${house.ID}`}
             width={260}

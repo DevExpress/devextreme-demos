@@ -24,6 +24,18 @@ const labelModeLabel = { 'aria-label': 'Label Mode' };
 const stylingModeLabel = { 'aria-label': 'Styling Mode' };
 
 class App extends React.Component {
+  defaultPosition: any;
+
+  phoneRules: any;
+
+  positions: any;
+
+  setState: any;
+
+  state: any;
+
+  states: any;
+
   constructor(props) {
     super(props);
 
@@ -54,6 +66,7 @@ class App extends React.Component {
         <div className="editors">
           <div className="editors-container">
             <div className="left">
+              // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
               <TextBox
                 stylingMode={this.state.stylingMode}
                 defaultValue="Olivia Peyton"
@@ -63,10 +76,13 @@ class App extends React.Component {
                 label="Name"
                 labelMode={this.state.labelMode}
               >
+                // @ts-expect-error TS(2786): 'Validator' cannot be used as a JSX component.
                 <Validator>
+                  // @ts-expect-error TS(2786): 'RequiredRule' cannot be used as a JSX component.
                   <RequiredRule />
                 </Validator>
               </TextBox>
+              // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
               <TextBox
                 stylingMode={this.state.stylingMode}
                 width="100%"
@@ -75,12 +91,15 @@ class App extends React.Component {
                 label="Address"
                 labelMode={this.state.labelMode}
               >
+                // @ts-expect-error TS(2786): 'Validator' cannot be used as a JSX component.
                 <Validator>
+                  // @ts-expect-error TS(2786): 'RequiredRule' cannot be used as a JSX component.
                   <RequiredRule />
                 </Validator>
               </TextBox>
             </div>
             <div className="right">
+              // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
               <DateBox
                 defaultValue={this.state.birthDate}
                 stylingMode={this.state.stylingMode}
@@ -90,10 +109,13 @@ class App extends React.Component {
                 inputAttr={birthDateLabel}
                 labelMode={this.state.labelMode}
               >
+                // @ts-expect-error TS(2786): 'Validator' cannot be used as a JSX component.
                 <Validator>
+                  // @ts-expect-error TS(2786): 'RequiredRule' cannot be used as a JSX component.
                   <RequiredRule />
                 </Validator>
               </DateBox>
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox
                 items={this.states}
                 stylingMode={this.state.stylingMode}
@@ -103,13 +125,16 @@ class App extends React.Component {
                 label="State"
                 labelMode={this.state.labelMode}
               >
+                // @ts-expect-error TS(2786): 'Validator' cannot be used as a JSX component.
                 <Validator>
+                  // @ts-expect-error TS(2786): 'RequiredRule' cannot be used as a JSX component.
                   <RequiredRule />
                 </Validator>
               </SelectBox>
             </div>
           </div>
           <div className="center">
+            // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
             <TagBox
               items={this.positions}
               defaultValue={this.defaultPosition}
@@ -121,13 +146,16 @@ class App extends React.Component {
               label="Position"
               labelMode={this.state.labelMode}
             >
+              // @ts-expect-error TS(2786): 'Validator' cannot be used as a JSX component.
               <Validator>
+                // @ts-expect-error TS(2786): 'RequiredRule' cannot be used as a JSX component.
                 <RequiredRule />
               </Validator>
             </TagBox>
           </div>
           <div className="editors-container">
             <div className="left">
+              // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
               <TextBox
                 stylingMode={this.state.stylingMode}
                 width="100%"
@@ -137,12 +165,15 @@ class App extends React.Component {
                 label="Phone"
                 labelMode={this.state.labelMode}
               >
+                // @ts-expect-error TS(2786): 'Validator' cannot be used as a JSX component.
                 <Validator>
+                  // @ts-expect-error TS(2786): 'RequiredRule' cannot be used as a JSX component.
                   <RequiredRule />
                 </Validator>
               </TextBox>
             </div>
             <div className="right">
+              // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
               <DateBox
                 stylingMode={this.state.stylingMode}
                 width="100%"
@@ -151,13 +182,16 @@ class App extends React.Component {
                 inputAttr={hireDateLabel}
                 labelMode={this.state.labelMode}
               >
+                // @ts-expect-error TS(2786): 'Validator' cannot be used as a JSX component.
                 <Validator>
+                  // @ts-expect-error TS(2786): 'RequiredRule' cannot be used as a JSX component.
                   <RequiredRule />
                 </Validator>
               </DateBox>
             </div>
           </div>
           <div className="center">
+            // @ts-expect-error TS(2786): 'TextArea' cannot be used as a JSX component.
             <TextArea
               stylingMode={this.state.stylingMode}
               defaultValue='Olivia loves to sell. She has been selling DevAV products since 2012.'
@@ -169,6 +203,7 @@ class App extends React.Component {
             />
           </div>
           <div className="center">
+            // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
             <Button
               onClick={this.validateClick}
               text="Save"
@@ -181,6 +216,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <label>Styling Mode</label>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               stylingMode={this.state.stylingMode}
               items={stylingModes}
@@ -191,6 +227,7 @@ class App extends React.Component {
           </div>
           <div className="option">
             <label>Label Mode</label>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               stylingMode={this.state.stylingMode}
               items={labelModes}

@@ -2,6 +2,7 @@ import React from 'react';
 
 export function LabelTemplate(data) {
   return (<svg overflow="visible"><image filter="url(#DevExpress_shadow_filter)" y="0" width="60" height="40"
+    // @ts-expect-error TS(2322): Type '{ filter: string; y: string; width: string; ... Remove this comment to see the full error message
     href={getFilePath(data.valueText)}></image>
   <text className="template-text" x="30" y="59" textAnchor="middle">{data.valueText}</text></svg>);
 }

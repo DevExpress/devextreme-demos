@@ -16,6 +16,10 @@ const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
 const REFRESH_MODES = ['full', 'reshape', 'repaint'];
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -107,13 +111,16 @@ class App extends React.Component {
     } = this.state;
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
         <DataGrid
           id="grid"
           showBorders={true}
           dataSource={ordersData}
           repaintChangesOnly={true}
         >
+          // @ts-expect-error TS(2786): 'Editing' cannot be used as a JSX component.
           <Editing
+            // @ts-expect-error TS(2322): Type '{ refreshMode: any; mode: string; allowAddin... Remove this comment to see the full error message
             refreshMode={refreshMode}
             mode="cell"
             allowAdding={true}
@@ -121,32 +128,45 @@ class App extends React.Component {
             allowUpdating={true}
           />
 
+          // @ts-expect-error TS(2786): 'Scrolling' cannot be used as a JSX component.
           <Scrolling
+            // @ts-expect-error TS(2322): Type '{ mode: string; }' is not assignable to type... Remove this comment to see the full error message
             mode="virtual"
           />
 
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="CustomerID" caption="Customer">
+            // @ts-expect-error TS(2786): 'Lookup' cannot be used as a JSX component.
             <Lookup dataSource={customersData} valueExpr="Value" displayExpr="Text" />
           </Column>
 
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="OrderDate" dataType="date">
           </Column>
 
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Freight">
           </Column>
 
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="ShipCountry">
           </Column>
 
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ children: Element; dataField: string; capt... Remove this comment to see the full error message
             dataField="ShipVia"
             caption="Shipping Company"
             dataType="number"
           >
+            // @ts-expect-error TS(2786): 'Lookup' cannot be used as a JSX component.
             <Lookup dataSource={shippersData} valueExpr="Value" displayExpr="Text" />
           </Column>
+          // @ts-expect-error TS(2786): 'Summary' cannot be used as a JSX component.
           <Summary>
+            // @ts-expect-error TS(2786): 'TotalItem' cannot be used as a JSX component.
             <TotalItem column="CustomerID" summaryType="count" />
+            // @ts-expect-error TS(2786): 'TotalItem' cannot be used as a JSX component.
             <TotalItem column="Freight" summaryType="sum" valueFormat="#0.00" />
           </Summary>
         </DataGrid>
@@ -154,6 +174,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <span>Refresh Mode: </span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               value={refreshMode}
               inputAttr={refreshModeLabel}
@@ -164,6 +185,7 @@ class App extends React.Component {
           <div id="requests">
             <div>
               <div className="caption">Network Requests</div>
+              // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
               <Button id="clear" text="Clear" onClick={this.clearRequests} />
             </div>
             <ul>

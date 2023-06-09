@@ -8,6 +8,10 @@ import RenderContactItem from './ContactItem.js';
 import { actionSheetItems, contacts } from './data.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor() {
     super();
 
@@ -24,12 +28,14 @@ class App extends React.Component {
   render() {
     return (
       <div className="app-container">
+        // @ts-expect-error TS(2786): 'List' cannot be used as a JSX component.
         <List
           id="list"
           items={contacts}
           itemRender={RenderContactItem}
           onItemClick={this.onListItemClick}
         />
+        // @ts-expect-error TS(2786): 'ActionSheet' cannot be used as a JSX component.
         <ActionSheet
           title="Choose action"
           usePopover={true}

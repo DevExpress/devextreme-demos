@@ -29,13 +29,19 @@ export function getPatternImage(color) {
     width: imagePatternSize,
     height: imagePatternSize,
     template: (container) => {
+      // @ts-expect-error TS(2554): Expected 4 arguments, but got 2.
       const rect = createRect(imagePatternSize, color);
       const image = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+      // @ts-expect-error TS(2769): No overload matches this call.
       image.setAttribute('x', 0);
+      // @ts-expect-error TS(2769): No overload matches this call.
       image.setAttribute('y', 0);
+      // @ts-expect-error TS(2769): No overload matches this call.
       image.setAttribute('width', imagePatternSize);
+      // @ts-expect-error TS(2769): No overload matches this call.
       image.setAttribute('height', imagePatternSize);
       image.setAttribute('href', '../../../../images/Charts/PieWithCustomStyles/diamond.svg');
+      // @ts-expect-error TS(2769): No overload matches this call.
       image.setAttribute('opacity', 0.6);
 
       container.appendChild(rect);
@@ -55,6 +61,7 @@ export function getStrokePattern(color) {
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 
       path.setAttribute('stroke', color);
+      // @ts-expect-error TS(2769): No overload matches this call.
       path.setAttribute('stroke-width', 2);
       path.setAttribute('d', d);
       container.appendChild(path);
@@ -76,7 +83,9 @@ export function getSquarePattern(color) {
 export function createRect(size, fill, stroke, strokeWidth) {
   const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 
+  // @ts-expect-error TS(2769): No overload matches this call.
   rect.setAttribute('x', 0);
+  // @ts-expect-error TS(2769): No overload matches this call.
   rect.setAttribute('y', 0);
   rect.setAttribute('width', size);
   rect.setAttribute('height', size);

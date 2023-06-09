@@ -13,6 +13,14 @@ import { employees, titleLabel } from './data.js';
 const titles = ['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.'];
 
 class App extends React.Component {
+  dataGrid: any;
+
+  selectionChangedBySelectBox: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -37,6 +45,7 @@ class App extends React.Component {
 
     return (
       <div>
+        // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
         <DataGrid
           id="grid-container"
           dataSource={employees}
@@ -46,25 +55,38 @@ class App extends React.Component {
           selectedRowKeys={selectedRowKeys}
           showBorders={true}
         >
+          // @ts-expect-error TS(2786): 'Selection' cannot be used as a JSX component.
           <Selection mode="multiple" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Prefix" caption="Title" width={70} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="FirstName" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="LastName" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Position" width={180} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="BirthDate" dataType="date" width={125} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="HireDate" dataType="date" width={125} />
+          // @ts-expect-error TS(2786): 'Toolbar' cannot be used as a JSX component.
           <Toolbar>
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item location="before">
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox
                 dataSource={titles}
                 inputAttr={titleLabel}
+                // @ts-expect-error TS(2322): Type '({ value }: { value: any; }) => void' is not... Remove this comment to see the full error message
                 onValueChanged={this.onSelectionFilterChanged}
                 placeholder="Select title"
                 width={150}
                 value={prefix}
               />
             </Item>
+            // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
             <Item location="before">
+              // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
               <Button
                 disabled={!selectedRowKeys.length}
                 onClick={this.onClearButtonClicked}

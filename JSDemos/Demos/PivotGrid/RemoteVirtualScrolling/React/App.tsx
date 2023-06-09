@@ -18,6 +18,7 @@ class App extends React.Component {
         <div className="long-title">
           <h3>Sales Statistics</h3>
         </div>
+        // @ts-expect-error TS(2786): 'PivotGrid' cannot be used as a JSX component.
         <PivotGrid
           dataSource={dataSource}
           allowSorting={true}
@@ -25,11 +26,16 @@ class App extends React.Component {
           height={570}
           showBorders={true}
         >
+          // @ts-expect-error TS(2786): 'FieldPanel' cannot be used as a JSX component.
           <FieldPanel visible={true} showFilterFields={false} />
+          // @ts-expect-error TS(2786): 'FieldChooser' cannot be used as a JSX component.
           <FieldChooser allowSearch={true} />
+          // @ts-expect-error TS(2786): 'HeaderFilter' cannot be used as a JSX component.
           <HeaderFilter>
+            // @ts-expect-error TS(2786): 'Search' cannot be used as a JSX component.
             <Search enabled={true} />
           </HeaderFilter>
+          // @ts-expect-error TS(2786): 'Scrolling' cannot be used as a JSX component.
           <Scrolling mode="virtual" />
         </PivotGrid>
       </React.Fragment>
@@ -46,6 +52,7 @@ const dataSource = new PivotGridDataSource({
     { dataField: '[Measures].[Internet Sales Amount]', area: 'data' },
   ],
   store: new XmlaStore({
+    // @ts-expect-error TS(2345): Argument of type '{ type: string; url: string; cat... Remove this comment to see the full error message
     type: 'xmla',
     url: 'https://demos.devexpress.com/Services/OLAP/msmdpump.dll',
     catalog: 'Adventure Works DW Standard Edition',

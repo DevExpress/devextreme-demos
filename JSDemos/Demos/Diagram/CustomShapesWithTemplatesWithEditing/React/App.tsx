@@ -21,6 +21,18 @@ const phoneLabel = { 'aria-label': 'Phone' };
 const skypeLabel = { 'aria-label': 'Skype' };
 
 class App extends React.Component {
+  dataSource: any;
+
+  diagramRef: any;
+
+  employees: any;
+
+  generatedID: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -31,6 +43,7 @@ class App extends React.Component {
     this.dataSource = new ArrayStore({
       key: 'ID',
       data: this.employees,
+      // @ts-expect-error TS(2322): Type '(values: any, key: any) => void' is not assi... Remove this comment to see the full error message
       onInserting(values, key) {
         this.update(key, {
           ID: values.ID || (that.generatedID += 1),
@@ -201,24 +214,35 @@ class App extends React.Component {
     );
     return (
       <div id="container">
+        // @ts-expect-error TS(2786): 'Diagram' cannot be used as a JSX component.
         <Diagram id="diagram" ref={this.diagramRef} customShapeRender={this.customShapeTemplate} customShapeToolboxRender={this.customShapeToolboxTemplate} onRequestLayoutUpdate={this.onRequestLayoutUpdate}>
+          // @ts-expect-error TS(2786): 'CustomShape' cannot be used as a JSX component.
           <CustomShape type="employee" baseType="rectangle" category="employee" title="New Employee"
             defaultWidth={1.5} defaultHeight={1} toolboxWidthToHeightRatio={2}
             minWidth={1.5} minHeight={1} maxWidth={3} maxHeight={2}
             allowEditText={false} />
+          // @ts-expect-error TS(2786): 'Nodes' cannot be used as a JSX component.
           <Nodes dataSource={this.dataSource} keyExpr="ID" typeExpr={this.itemTypeExpr} customDataExpr={this.itemCustomDataExpr} parentKeyExpr="Head_ID">
+            // @ts-expect-error TS(2786): 'AutoLayout' cannot be used as a JSX component.
             <AutoLayout type="tree" />
           </Nodes>
+          // @ts-expect-error TS(2786): 'ContextToolbox' cannot be used as a JSX component... Remove this comment to see the full error message
           <ContextToolbox shapeIconsPerRow={1} width={100} />
+          // @ts-expect-error TS(2786): 'Toolbox' cannot be used as a JSX component.
           <Toolbox showSearch={false} shapeIconsPerRow={1}>
+            // @ts-expect-error TS(2786): 'Group' cannot be used as a JSX component.
             <Group category="employee" title="Employee" expanded={true} />
           </Toolbox>
+          // @ts-expect-error TS(2786): 'PropertiesPanel' cannot be used as a JSX componen... Remove this comment to see the full error message
           <PropertiesPanel>
+            // @ts-expect-error TS(2786): 'Tab' cannot be used as a JSX component.
             <Tab>
+              // @ts-expect-error TS(2786): 'Group' cannot be used as a JSX component.
               <Group title="Page Properties" commands={pageCommands} />
             </Tab>
           </PropertiesPanel>
         </Diagram>
+        // @ts-expect-error TS(2786): 'Popup' cannot be used as a JSX component.
         <Popup
           visible={this.state.popupVisible}
           onHiding={this.cancelEditEmployee}
@@ -241,48 +265,57 @@ function PopupContentFunc(props) {
         <div className="dx-field">
           <div className="dx-field-label">Name</div>
           <div className="dx-field-value">
+            // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
             <TextBox inputAttr={nameLabel} value={props.currentEmployee.Full_Name} onValueChanged={props.handleNameChange} valueChangeEvent="input"></TextBox>
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Title</div>
           <div className="dx-field-value">
+            // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
             <TextBox inputAttr={titleLabel} value={props.currentEmployee.Title} onValueChanged={props.handleTitleChange} valueChangeEvent="input"></TextBox>
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">City</div>
           <div className="dx-field-value">
+            // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
             <TextBox inputAttr={cityLabel} value={props.currentEmployee.City} onValueChanged={props.handleCityChange} valueChangeEvent="input"></TextBox>
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">State</div>
           <div className="dx-field-value">
+            // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
             <TextBox inputAttr={stateLabel} value={props.currentEmployee.State} onValueChanged={props.handleStateChange} valueChangeEvent="input"></TextBox>
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Email</div>
           <div className="dx-field-value">
+            // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
             <TextBox inputAttr={emailLabel} value={props.currentEmployee.Email} onValueChanged={props.handleEmailChange} valueChangeEvent="input"></TextBox>
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Skype</div>
           <div className="dx-field-value">
+            // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
             <TextBox inputAttr={skypeLabel} value={props.currentEmployee.Skype} onValueChanged={props.handleSkypeChange} valueChangeEvent="input"></TextBox>
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Phone</div>
           <div className="dx-field-value">
+            // @ts-expect-error TS(2786): 'TextBox' cannot be used as a JSX component.
             <TextBox inputAttr={phoneLabel} value={props.currentEmployee.Mobile_Phone} onValueChanged={props.handlePhoneChange} valueChangeEvent="input"></TextBox>
           </div>
         </div>
       </div>
       <div className="dx-fieldset buttons">
+        // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
         <Button text="Update" type="default" onClick={props.updateEmployeeClick}></Button>
+        // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
         <Button text="Cancel" onClick={props.cancelEditEmployeeClick}></Button>
       </div>
     </React.Fragment>

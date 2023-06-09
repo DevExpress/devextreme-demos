@@ -9,6 +9,10 @@ const resizingModes = ['nextColumn', 'widget'];
 const columnResizingModeLabel = { 'aria-label': 'Column Resizing Mode' };
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -24,6 +28,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
         <DataGrid id="orders"
           dataSource={orders}
           keyExpr="ID"
@@ -39,6 +44,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <span>Column resizing mode:&nbsp;</span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox items={resizingModes}
               value={this.state.mode}
               inputAttr={columnResizingModeLabel}

@@ -11,6 +11,7 @@ function LabelNotesTemplate(data) {
         { data.text }
       </div>
 
+      // @ts-expect-error TS(2786): 'Tooltip' cannot be used as a JSX component.
       <Tooltip
         target="#helpedInfo"
         showEvent="mouseenter"

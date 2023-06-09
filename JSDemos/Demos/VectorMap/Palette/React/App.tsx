@@ -15,9 +15,12 @@ const bounds = [-180, 85, 180, -60];
 
 function App() {
   return (
+    // @ts-expect-error TS(2786): 'VectorMap' cannot be used as a JSX component.
     <VectorMap
       id="vector-map" bounds={bounds}>
+      // @ts-expect-error TS(2786): 'Layer' cannot be used as a JSX component.
       <Layer
+        // @ts-expect-error TS(2322): Type '{ children: never[]; dataSource: any; palett... Remove this comment to see the full error message
         dataSource={mapsData.world}
         palette="Violet"
         name="areas"
@@ -27,8 +30,11 @@ function App() {
       >
       </Layer>
 
+      // @ts-expect-error TS(2786): 'Legend' cannot be used as a JSX component.
       <Legend
+        // @ts-expect-error TS(2322): Type '{ children: Element; customizeText: (arg: an... Remove this comment to see the full error message
         customizeText={customizeText}>
+        // @ts-expect-error TS(2786): 'Source' cannot be used as a JSX component.
         <Source layer="areas" grouping="color"></Source>
       </Legend>
     </VectorMap>

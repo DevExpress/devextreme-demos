@@ -45,10 +45,12 @@ function App() {
 
   return (
     <React.Fragment>
+      // @ts-expect-error TS(2786): 'LoadPanel' cannot be used as a JSX component.
       <LoadPanel
         position={loadPanelPosition}
         visible={state.isLoading}
       />
+      // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
       <DataGrid
         id="gridContainer"
         keyExpr="OrderID"
@@ -56,7 +58,9 @@ function App() {
         showBorders
         repaintChangesOnly
         onSaving={onSaving}>
+        // @ts-expect-error TS(2786): 'Editing' cannot be used as a JSX component.
         <Editing
+          // @ts-expect-error TS(2322): Type '{ mode: string; allowAdding: true; allowDele... Remove this comment to see the full error message
           mode="row"
           allowAdding
           allowDeleting
@@ -66,12 +70,19 @@ function App() {
           editRowKey={state.editRowKey}
           onEditRowKeyChange={onEditRowKeyChange}
         />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="OrderID" allowEditing={false}></Column>
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="ShipName"></Column>
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="ShipCountry"></Column>
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="ShipCity"></Column>
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="ShipAddress"></Column>
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="OrderDate" dataType="date"></Column>
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Freight"></Column>
       </DataGrid>
       <div className="options">

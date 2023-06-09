@@ -22,6 +22,16 @@ const wholeRange = {
 };
 
 class App extends React.Component {
+  HALFDAY: any;
+
+  chartDataSource: any;
+
+  packetsLock: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.packetsLock = 0;
@@ -42,41 +52,58 @@ class App extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'Chart' cannot be used as a JSX component.
       <Chart
         id="chart"
         title="Temperature in Toronto (2017)"
         dataSource={this.chartDataSource}
         onOptionChanged={this.handleChange}
       >
+        // @ts-expect-error TS(2786): 'ZoomAndPan' cannot be used as a JSX component.
         <ZoomAndPan argumentAxis="pan" />
+        // @ts-expect-error TS(2786): 'ScrollBar' cannot be used as a JSX component.
         <ScrollBar visible={true} />
+        // @ts-expect-error TS(2786): 'ArgumentAxis' cannot be used as a JSX component.
         <ArgumentAxis
+          // @ts-expect-error TS(2322): Type '{ argumentType: string; visualRangeUpdateMod... Remove this comment to see the full error message
           argumentType="datetime"
           visualRangeUpdateMode="keep"
           visualRange={this.state.visualRange}
           wholeRange={wholeRange} />
+        // @ts-expect-error TS(2786): 'ValueAxis' cannot be used as a JSX component.
         <ValueAxis
+          // @ts-expect-error TS(2322): Type '{ children: Element[]; name: string; allowDe... Remove this comment to see the full error message
           name="temperature"
           allowDecimals={false}
         >
+          // @ts-expect-error TS(2786): 'Title' cannot be used as a JSX component.
           <Title text={'Temperature, &deg;C'}>
+            // @ts-expect-error TS(2786): 'Font' cannot be used as a JSX component.
             <Font color="#ff950c" />
           </Title>
+          // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
           <Label>
+            // @ts-expect-error TS(2786): 'Font' cannot be used as a JSX component.
             <Font color="#ff950c" />
           </Label>
         </ValueAxis>
+        // @ts-expect-error TS(2786): 'Series' cannot be used as a JSX component.
         <Series
+          // @ts-expect-error TS(2322): Type '{ color: string; type: string; argumentField... Remove this comment to see the full error message
           color="#ff950c"
           type="rangeArea"
           argumentField="date"
           rangeValue1Field="minTemp"
           rangeValue2Field="maxTemp"
           name="Temperature range" />
+        // @ts-expect-error TS(2786): 'Animation' cannot be used as a JSX component.
         <Animation enabled={false} />
+        // @ts-expect-error TS(2786): 'LoadingIndicator' cannot be used as a JSX compone... Remove this comment to see the full error message
         <LoadingIndicator backgroundColor="none">
+          // @ts-expect-error TS(2786): 'Font' cannot be used as a JSX component.
           <Font size={14} />
         </LoadingIndicator>
+        // @ts-expect-error TS(2786): 'Legend' cannot be used as a JSX component.
         <Legend visible={false} />
       </Chart>
     );

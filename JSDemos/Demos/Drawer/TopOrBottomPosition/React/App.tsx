@@ -9,6 +9,18 @@ import { text } from './data.js';
 import NavigationList from './NavigationList.js';
 
 class App extends React.Component {
+  openedStateRadioButtons: any;
+
+  positionRadioButtons: any;
+
+  revealModeRadioButtons: any;
+
+  setState: any;
+
+  state: any;
+
+  toolbarItems: any;
+
   constructor() {
     super();
     this.openedStateRadioButtons = ['push', 'shrink', 'overlap'];
@@ -59,9 +71,12 @@ class App extends React.Component {
     } = this.state;
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'Toolbar' cannot be used as a JSX component.
         <Toolbar items={this.toolbarItems} />
+        // @ts-expect-error TS(2786): 'Drawer' cannot be used as a JSX component.
         <Drawer
           opened={opened}
+          // @ts-expect-error TS(2322): Type '() => void' is not assignable to type 'boole... Remove this comment to see the full error message
           closeOnOutsideClick={this.onOutsideClick}
           openedStateMode={openedStateMode}
           position={position}
@@ -77,30 +92,36 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <label>Opened state mode</label>
+            // @ts-expect-error TS(2786): 'RadioGroup' cannot be used as a JSX component.
             <RadioGroup
               items={this.openedStateRadioButtons}
               layout="horizontal"
               value={openedStateMode}
+              // @ts-expect-error TS(2322): Type '({ value }: { value: any; }) => void' is not... Remove this comment to see the full error message
               onValueChanged={this.onOpenedStateModeChanged}
             />
           </div>
           {' '}
           <div className="option">
             <label>Position</label>
+            // @ts-expect-error TS(2786): 'RadioGroup' cannot be used as a JSX component.
             <RadioGroup
               items={this.positionRadioButtons}
               layout="horizontal"
               value={position}
+              // @ts-expect-error TS(2322): Type '({ value }: { value: any; }) => void' is not... Remove this comment to see the full error message
               onValueChanged={this.onPositionChanged}
             />
           </div>
           {' '}
           {openedStateMode !== 'push' && (<div className="option">
             <label>Reveal mode</label>
+            // @ts-expect-error TS(2786): 'RadioGroup' cannot be used as a JSX component.
             <RadioGroup
               items={this.revealModeRadioButtons}
               layout="horizontal"
               value={revealMode}
+              // @ts-expect-error TS(2322): Type '({ value }: { value: any; }) => void' is not... Remove this comment to see the full error message
               onValueChanged={this.onRevealModeChanged}
             />
           </div>)}

@@ -25,6 +25,7 @@ function App() {
           <div className="dx-field">
             <div className="dx-field-label">Language</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox
                 items={languages}
                 inputAttr={languageLabel}
@@ -38,6 +39,7 @@ function App() {
       <div>
         <div className="dx-fieldset">
           <div className="dx-fieldset-header">
+            // @ts-expect-error TS(2786): 'Menu' cannot be used as a JSX component.
             <Menu
               dataSource={continents}
               rtlEnabled={rtlEnabled}
@@ -48,6 +50,7 @@ function App() {
         <div className="dx-fieldset">
           <div className="dx-field">
             <div className="dx-field-label">
+              // @ts-expect-error TS(2786): 'TreeView' cannot be used as a JSX component.
               <TreeView
                 width={200}
                 dataSource={continents}
@@ -56,6 +59,7 @@ function App() {
               />
             </div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'Accordion' cannot be used as a JSX component.
               <Accordion
                 dataSource={europeCountries}
                 rtlEnabled={rtlEnabled}

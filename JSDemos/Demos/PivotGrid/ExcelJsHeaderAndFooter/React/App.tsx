@@ -76,6 +76,7 @@ export default function App() {
       const headerRow = worksheet.getRow(2);
       headerRow.height = 30;
 
+      // @ts-expect-error TS(2339): Property 'xSplit' does not exist on type 'Partial<... Remove this comment to see the full error message
       const columnFromIndex = worksheet.views[0].xSplit + 1;
       const columnToIndex = columnFromIndex + 3;
       worksheet.mergeCells(2, columnFromIndex, 2, columnToIndex);
@@ -120,6 +121,7 @@ export default function App() {
       <div className="long-title">
         <h3>Sales Amount by Region</h3>
       </div>
+      // @ts-expect-error TS(2786): 'PivotGrid' cannot be used as a JSX component.
       <PivotGrid
         dataSource={dataSource}
         height={440}
@@ -128,7 +130,9 @@ export default function App() {
         allowFiltering={true}
         onExporting={onExporting}
       >
+        // @ts-expect-error TS(2786): 'FieldPanel' cannot be used as a JSX component.
         <FieldPanel
+          // @ts-expect-error TS(2322): Type '{ children: never[]; showDataFields: boolean... Remove this comment to see the full error message
           showDataFields={true}
           showRowFields={true}
           showColumnFields={true}
@@ -136,24 +140,30 @@ export default function App() {
           allowFieldDragging={true}
           visible={true}>
         </FieldPanel>
+        // @ts-expect-error TS(2786): 'FieldChooser' cannot be used as a JSX component.
         <FieldChooser enabled={false} />
+        // @ts-expect-error TS(2786): 'Export' cannot be used as a JSX component.
         <Export enabled={true} />
       </PivotGrid>
       <div className="export-options">
         <div className="caption">Export Options</div>
         <div className="options">
+          // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
           <CheckBox id="export-data-field-headers"
             value={exportDataFieldHeaders}
             onValueChanged={onExportDataFieldHeadersChanged}
             text="Export Data Field Headers" />
+          // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
           <CheckBox id="export-row-field-headers"
             value={exportRowFieldHeaders}
             onValueChanged={onExportRowFieldHeadersChanged}
             text="Export Row Field Headers" />
+          // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
           <CheckBox id="export-column-field-headers"
             value={exportColumnFieldHeaders}
             onValueChanged={onExportColumnFieldHeadersChanged}
             text="Export Column Field Headers" />
+          // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
           <CheckBox id="export-filter-field-headers"
             value={exportFilterFieldHeaders}
             onValueChanged={onExportFilterFieldHeadersChanged}

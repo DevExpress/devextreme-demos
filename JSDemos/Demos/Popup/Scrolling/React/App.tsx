@@ -33,6 +33,7 @@ export default function App() {
     <React.Fragment>
       <div className="demo-container">
         <div className="button-container">
+          // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
           <Button
             text="Show Popup"
             type="default"
@@ -43,6 +44,7 @@ export default function App() {
         </div>
 
         <div className="button-container">
+          // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
           <Button
             text="Show Popup"
             width={300}
@@ -52,6 +54,7 @@ export default function App() {
         </div>
       </div>
 
+      // @ts-expect-error TS(2786): 'Popup' cannot be used as a JSX component.
       <Popup
         width={360}
         height={320}
@@ -86,7 +89,9 @@ export default function App() {
             </div>
           </div>
         </div>
+        // @ts-expect-error TS(2786): 'ToolbarItem' cannot be used as a JSX component.
         <ToolbarItem
+          // @ts-expect-error TS(2322): Type '{ widget: string; toolbar: string; location:... Remove this comment to see the full error message
           widget="dxButton"
           toolbar="bottom"
           location="center"
@@ -94,6 +99,7 @@ export default function App() {
         />
       </Popup>
 
+      // @ts-expect-error TS(2786): 'Popup' cannot be used as a JSX component.
       <Popup
         width={360}
         height={320}
@@ -102,6 +108,7 @@ export default function App() {
         hideOnOutsideClick={true}
         showCloseButton={true}
         title="Downtown Inn">
+        // @ts-expect-error TS(2786): 'ScrollView' cannot be used as a JSX component.
         <ScrollView width='100%' height='100%'>
           <div className="caption">Description</div>
           In the heart of LA&apos;s business district, the Downtown Inn has a welcoming staff
@@ -128,7 +135,9 @@ export default function App() {
             </div>
           </div>
         </ScrollView>
+        // @ts-expect-error TS(2786): 'ToolbarItem' cannot be used as a JSX component.
         <ToolbarItem
+          // @ts-expect-error TS(2322): Type '{ widget: string; toolbar: string; location:... Remove this comment to see the full error message
           widget="dxButton"
           toolbar="bottom"
           location="center"

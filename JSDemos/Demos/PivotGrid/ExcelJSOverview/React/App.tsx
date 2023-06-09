@@ -58,6 +58,7 @@ export default function App() {
 
   return (
     <React.Fragment>
+      // @ts-expect-error TS(2786): 'PivotGrid' cannot be used as a JSX component.
       <PivotGrid
         dataSource={dataSource}
         height={440}
@@ -65,7 +66,9 @@ export default function App() {
         rowHeaderLayout="tree"
         onExporting={onExporting}
       >
+        // @ts-expect-error TS(2786): 'FieldChooser' cannot be used as a JSX component.
         <FieldChooser enabled={false} />
+        // @ts-expect-error TS(2786): 'Export' cannot be used as a JSX component.
         <Export enabled={true} />
       </PivotGrid>
     </React.Fragment>

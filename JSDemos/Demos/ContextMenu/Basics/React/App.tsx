@@ -19,6 +19,7 @@ class App extends React.Component {
             Right click the image to show available actions:
         </div>
         <img id="image" src="../../../../images/products/7.png" />
+        // @ts-expect-error TS(2786): 'ContextMenu' cannot be used as a JSX component.
         <ContextMenu
           dataSource={items}
           width={200}

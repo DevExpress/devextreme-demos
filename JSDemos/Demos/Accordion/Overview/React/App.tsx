@@ -11,6 +11,12 @@ import CustomItem from './CustomItem.js';
 const companyLabel = { 'aria-label': 'Company' };
 
 class App extends React.Component {
+  companies: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.companies = service.getCompanies();
@@ -33,6 +39,7 @@ class App extends React.Component {
     } = this.state;
     return (
       <div id="accordion">
+        // @ts-expect-error TS(2786): 'Accordion' cannot be used as a JSX component.
         <Accordion
           dataSource={this.companies}
           collapsible={collapsible}
@@ -47,12 +54,14 @@ class App extends React.Component {
         <div className="options">
           <div className="caption">Options</div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox text="Multiple enabled"
               value={multiple}
               onValueChanged={this.multipleChanged}
             />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="Collapsible enabled"
               value={collapsible}
@@ -61,18 +70,22 @@ class App extends React.Component {
           </div>
           <div className="option">
             <span>Animation duration</span>
+            // @ts-expect-error TS(2786): 'Slider' cannot be used as a JSX component.
             <Slider
               min={0}
               max={1000}
               value={animationDuration}
               onValueChanged={this.animationDurationChanged}
             >
+              // @ts-expect-error TS(2786): 'Tooltip' cannot be used as a JSX component.
               <Tooltip enabled={true} position="bottom" />
+              // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
               <Label visible={true} />
             </Slider>
           </div>
           <div className="option">
             <span className="caption">Selected Items</span>
+            // @ts-expect-error TS(2786): 'TagBox' cannot be used as a JSX component.
             <TagBox dataSource={this.companies}
               displayExpr="CompanyName"
               value={selectedItems}

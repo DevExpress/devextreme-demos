@@ -7,6 +7,14 @@ import { filter, fields, products } from './data.js';
 import CustomItem from './CustomItem.js';
 
 class App extends React.Component {
+  dataSource: any;
+
+  filterBuilderInstance: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.dataSource = new DataSource({
@@ -25,10 +33,13 @@ class App extends React.Component {
     return (
       <div>
         <div className="filter-container">
+          // @ts-expect-error TS(2786): 'FilterBuilder' cannot be used as a JSX component.
           <FilterBuilder ref={this.setFilterBuilderInstance}
+            // @ts-expect-error TS(2322): Type '({ dataField: string; dataType: string; form... Remove this comment to see the full error message
             fields={fields}
             value={this.state.value}
             onValueChanged={this.onValueChanged} />
+          // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
           <Button
             text="Apply Filter"
             type="default"
@@ -36,6 +47,7 @@ class App extends React.Component {
           <div className="dx-clearfix"></div>
         </div>
         <div className="list-container">
+          // @ts-expect-error TS(2786): 'List' cannot be used as a JSX component.
           <List dataSource={this.dataSource} itemRender={CustomItem} />
         </div>
       </div>

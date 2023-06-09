@@ -17,6 +17,10 @@ const verticalDragDirections = ['both', 'vertical'];
 const horizontalDragDirections = ['both', 'horizontal'];
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -58,12 +62,14 @@ class App extends React.Component {
     return (
       <div id="demo-container">
         <div className="widget-container">
+          // @ts-expect-error TS(2786): 'ScrollView' cannot be used as a JSX component.
           <ScrollView
             id="scroll"
             className={itemOrientation === 'horizontal' ? 'horizontal' : ''}
             direction={itemOrientation}
             showScrollbar="always"
           >
+            // @ts-expect-error TS(2786): 'Sortable' cannot be used as a JSX component.
             <Sortable
               id="list"
               dropFeedbackMode={dropFeedbackMode}
@@ -78,6 +84,7 @@ class App extends React.Component {
               onReorder={this.onReorder}
             >
               {items.map((item) => (
+                // @ts-expect-error TS(2741): Property 'style' is missing in type '{ key: any; t... Remove this comment to see the full error message
                 <Item
                   key={item.Task_ID}
                   text={item.Task_Subject}
@@ -91,6 +98,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <span>Drop Feedback Mode:</span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               items={dropFeedbackModes}
               inputAttr={dropFeedbackModeLabel}
@@ -100,6 +108,7 @@ class App extends React.Component {
           </div>
           <div className="option">
             <span>Item Orientation:</span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               items={itemOrientations}
               inputAttr={itemOrientationLabel}
@@ -109,6 +118,7 @@ class App extends React.Component {
           </div>
           <div className="option">
             <span>Drag Direction:</span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               items={
                 itemOrientation === 'vertical'
@@ -122,6 +132,7 @@ class App extends React.Component {
           </div>
           <div className="option">
             <span>Scroll Speed:</span>
+            // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
             <NumberBox
               value={scrollSpeed}
               inputAttr={scrollSpeedLabel}
@@ -130,6 +141,7 @@ class App extends React.Component {
           </div>
           <div className="option">
             <span>Scroll Sensitivity:</span>
+            // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
             <NumberBox
               value={scrollSensitivity}
               inputAttr={scrollSensitivityLabel}
@@ -137,9 +149,11 @@ class App extends React.Component {
             />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox text="Use Handle" onValueChanged={this.onHandleChanged} />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="Use Drag Template"
               onValueChanged={this.onDragTemplateChanged}

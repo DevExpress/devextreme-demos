@@ -16,6 +16,16 @@ const templatedProductLabel = { 'aria-label': 'Templated Product' };
 const disabledProductLabel = { 'aria-label': 'Disabled Product' };
 
 class App extends React.Component {
+  data: any;
+
+  products: any;
+
+  setState: any;
+
+  simpleProducts: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.products = service.getProducts();
@@ -44,12 +54,14 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Default mode</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox items={this.simpleProducts} inputAttr={simpleProductLabel} />
             </div>
           </div>
           <div className="dx-field">
             <div className="dx-field-label">With a custom placeholder</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox items={this.simpleProducts}
                 placeholder="Choose Product"
                 inputAttr={productWithPlaceholderLabel}
@@ -59,6 +71,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Read only</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox items={this.simpleProducts}
                 defaultValue={this.simpleProducts[0]}
                 inputAttr={readOnlyProductLabel}
@@ -68,6 +81,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Disabled</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox items={this.simpleProducts}
                 inputAttr={disabledProductLabel}
                 defaultValue={this.simpleProducts[0]}
@@ -77,6 +91,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Data source usage</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox dataSource={this.data}
                 displayExpr="Name"
                 inputAttr={productIDLabel}
@@ -87,6 +102,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Custom templates</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox id="custom-templates"
                 dataSource={this.products}
                 displayExpr="Name"
@@ -103,6 +119,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Product</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox items={this.simpleProducts}
                 value={this.state.value}
                 inputAttr={productLabel}

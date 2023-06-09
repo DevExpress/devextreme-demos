@@ -9,6 +9,10 @@ import { homes, directionLabel } from './data.js';
 const directions = ['horizontal', 'vertical'];
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor() {
     super();
 
@@ -22,6 +26,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        // @ts-expect-error TS(2786): 'TileView' cannot be used as a JSX component.
         <TileView
           items={homes}
           itemRender={RenderHomeItem}
@@ -36,6 +41,7 @@ class App extends React.Component {
           <div className='caption'>Options</div>
           <div className='option'>
             <span>Direction</span>&nbsp;
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               items={directions}
               inputAttr={directionLabel}

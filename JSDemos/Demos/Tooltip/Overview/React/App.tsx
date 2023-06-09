@@ -39,6 +39,7 @@ class App extends React.Component {
             src="../../../../images/products/17.png"
           />
 
+          // @ts-expect-error TS(2786): 'Tooltip' cannot be used as a JSX component.
           <Tooltip
             target="#product1"
             showEvent="mouseenter"
@@ -56,6 +57,7 @@ class App extends React.Component {
             src="../../../../images/products/3.png"
           />
 
+          // @ts-expect-error TS(2786): 'Tooltip' cannot be used as a JSX component.
           <Tooltip
             target="#product2"
             showEvent="mouseenter"
@@ -75,11 +77,13 @@ class App extends React.Component {
             src="../../../../images/products/15.png"
           />
 
+          // @ts-expect-error TS(2786): 'Tooltip' cannot be used as a JSX component.
           <Tooltip
             target="#product3"
             showEvent="mouseenter"
             hideEvent="mouseleave"
             position="top"
+            // @ts-expect-error TS(2322): Type '{ show: { type: string; from: { top: number;... Remove this comment to see the full error message
             animation={animationConfig}
             hideOnOutsideClick={false}
           >

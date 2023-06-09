@@ -15,6 +15,10 @@ const startValueLabel = { 'aria-label': 'Start Value' };
 const endValueLabel = { 'aria-label': 'End Value' };
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -33,13 +37,16 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Default mode</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'RangeSlider' cannot be used as a JSX component.
               <RangeSlider min={0} max={100} defaultValue={defaultValues.defaultMode} />
             </div>
           </div>
           <div className="dx-field custom-height-slider">
             <div className="dx-field-label">With labels</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'RangeSlider' cannot be used as a JSX component.
               <RangeSlider min={0} max={100} defaultValue={defaultValues.labels}>
+                // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
                 <Label visible={true} format={format} position="top" />
               </RangeSlider>
             </div>
@@ -47,7 +54,9 @@ class App extends React.Component {
           <div className="dx-field custom-height-slider">
             <div className="dx-field-label">With tooltips</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'RangeSlider' cannot be used as a JSX component.
               <RangeSlider min={0} max={100} defaultValue={defaultValues.tooltips}>
+                // @ts-expect-error TS(2786): 'Tooltip' cannot be used as a JSX component.
                 <Tooltip enabled={true} format={format} showMode="always" position="bottom" />
               </RangeSlider>
             </div>
@@ -55,6 +64,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Without range highlighting</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'RangeSlider' cannot be used as a JSX component.
               <RangeSlider
                 min={0}
                 max={100}
@@ -65,7 +75,9 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">With discrete step</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'RangeSlider' cannot be used as a JSX component.
               <RangeSlider min={0} max={100} defaultValue={defaultValues.discreteStep} step={10}>
+                // @ts-expect-error TS(2786): 'Tooltip' cannot be used as a JSX component.
                 <Tooltip enabled="true" />
               </RangeSlider>
             </div>
@@ -73,6 +85,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Disabled</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'RangeSlider' cannot be used as a JSX component.
               <RangeSlider
                 min={0}
                 max={100}
@@ -86,6 +99,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">On handle movement</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'RangeSlider' cannot be used as a JSX component.
               <RangeSlider
                 min={0}
                 max={100}
@@ -97,6 +111,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">On handle release</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'RangeSlider' cannot be used as a JSX component.
               <RangeSlider
                 min={0}
                 max={100}
@@ -109,6 +124,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Start value</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
               <NumberBox
                 value={this.state.startValue}
                 min={0}
@@ -121,6 +137,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">End value</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
               <NumberBox
                 value={this.state.endValue}
                 min={0}

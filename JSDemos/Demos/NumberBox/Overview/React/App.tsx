@@ -9,6 +9,10 @@ const salesLabel = { 'aria-label': 'Sales' };
 const stockLabel = { 'aria-label': 'Stock' };
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -41,12 +45,14 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Default mode</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
               <NumberBox inputAttr={simpleLabel} />
             </div>
           </div>
           <div className="dx-field">
             <div className="dx-field-label">With spin and clear buttons</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
               <NumberBox
                 defaultValue={20.5}
                 showSpinButtons={true}
@@ -58,6 +64,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Disabled</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
               <NumberBox
                 defaultValue={20.5}
                 showSpinButtons={true}
@@ -70,6 +77,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">With max and min values</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
               <NumberBox
                 defaultValue={15}
                 min={10}
@@ -85,6 +93,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">This month sales</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
               <NumberBox
                 value={value}
                 max={max}
@@ -99,6 +108,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Stock</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
               <NumberBox
                 min={0}
                 showSpinButtons={false}

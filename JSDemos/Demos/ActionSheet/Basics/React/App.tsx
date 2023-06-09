@@ -6,6 +6,10 @@ import notify from 'devextreme/ui/notify';
 import { actionSheetItems } from './data.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -25,6 +29,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        // @ts-expect-error TS(2786): 'ActionSheet' cannot be used as a JSX component.
         <ActionSheet
           dataSource={actionSheetItems}
           title="Choose action"
@@ -34,16 +39,19 @@ class App extends React.Component {
           onItemClick={this.onActionSheetItemClick}
           onCancelClick={this.onActionSheetCancelClick} />
         <div className="button">
+          // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
           <Button width="100%" text="Click to show Action Sheet" onClick={this.showActionSheet} />
         </div>
         <div className="options">
           <div className="caption">Options</div>
           <div className="option">
             <span>Show title</span>
+            // @ts-expect-error TS(2786): 'Switch' cannot be used as a JSX component.
             <Switch value={this.state.showTitle} onValueChanged={this.changeTitle} />
           </div>
           <div className="option">
             <span>Show cancel button</span>
+            // @ts-expect-error TS(2786): 'Switch' cannot be used as a JSX component.
             <Switch value={this.state.showCancelButton} onValueChanged={this.changeCancelButton} />
           </div>
         </div>

@@ -11,6 +11,10 @@ import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 import sales from './data.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -29,6 +33,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'PivotGrid' cannot be used as a JSX component.
         <PivotGrid
           id="sales"
           dataSource={dataSource}
@@ -39,7 +44,9 @@ class App extends React.Component {
           height={490}
           onContextMenuPreparing={this.onContextMenuPreparing}
         >
+          // @ts-expect-error TS(2786): 'FieldPanel' cannot be used as a JSX component.
           <FieldPanel
+            // @ts-expect-error TS(2322): Type '{ showColumnFields: any; showDataFields: any... Remove this comment to see the full error message
             showColumnFields={this.state.showColumnFields}
             showDataFields={this.state.showDataFields}
             showFilterFields={this.state.showFilterFields}
@@ -47,11 +54,13 @@ class App extends React.Component {
             allowFieldDragging={true}
             visible={true}
           />
+          // @ts-expect-error TS(2786): 'FieldChooser' cannot be used as a JSX component.
           <FieldChooser height={500} />
         </PivotGrid>
         <div className="options">
           <div className="caption">Options</div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox id="show-data-fields"
               value={this.state.showColumnFields}
               onValueChanged={this.onShowColumnFieldsChanged}
@@ -59,6 +68,7 @@ class App extends React.Component {
           </div>
           &nbsp;
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox id="show-row-fields"
               value={this.state.showDataFields}
               onValueChanged={this.onShowDataFieldsChanged}
@@ -66,6 +76,7 @@ class App extends React.Component {
           </div>
           &nbsp;
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox id="show-column-fields"
               value={this.state.showFilterFields}
               onValueChanged={this.onShowFilterFieldsChanged}
@@ -73,6 +84,7 @@ class App extends React.Component {
           </div>
           &nbsp;
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox id="show-filter-fields"
               value={this.state.showRowFields}
               onValueChanged={this.onShowRowFieldsChanged}
@@ -111,6 +123,7 @@ class App extends React.Component {
             if (sourceField.groupName) {
               fieldIndex = dataSource
                 .getAreaFields(sourceField.area, true)[sourceField.areaIndex]
+                // @ts-expect-error TS(2339): Property 'index' does not exist on type 'PivotGrid... Remove this comment to see the full error message
                 .index;
             } else {
               fieldIndex = sourceField.index;

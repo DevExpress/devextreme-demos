@@ -8,6 +8,7 @@ class App extends React.Component {
     return (
       <div className="main-block">
         <div className="file-uploader-block">
+          // @ts-expect-error TS(2786): 'FileUploader' cannot be used as a JSX component.
           <FileUploader multiple={true} uploadMode="useButtons" uploadUrl="https://js.devexpress.com/Demos/NetCore/FileUploader/Upload" allowedFileExtensions={fileExtensions} />
           <span className="note">{'Allowed file extensions: '}
             <span>.jpg, .jpeg, .gif, .png</span>
@@ -15,6 +16,7 @@ class App extends React.Component {
           </span>
         </div>
         <div className="file-uploader-block" style={{ float: 'right' }}>
+          // @ts-expect-error TS(2786): 'FileUploader' cannot be used as a JSX component.
           <FileUploader multiple={true} uploadMode="useButtons" uploadUrl="https://js.devexpress.com/Demos/NetCore/FileUploader/Upload" maxFileSize={4000000} />
           <span className="note">{'Maximum file size: '}
             <span>4 MB</span>

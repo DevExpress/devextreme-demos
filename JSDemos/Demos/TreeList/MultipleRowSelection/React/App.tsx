@@ -9,6 +9,10 @@ const emptySelectedText = 'Nobody has been selected';
 const selectionModes = ['all', 'excludeRecursive', 'leavesOnly'];
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -30,6 +34,7 @@ class App extends React.Component {
     } = this.state;
     return (
       <div>
+        // @ts-expect-error TS(2786): 'TreeList' cannot be used as a JSX component.
         <TreeList
           id="employees"
           dataSource={employees}
@@ -42,17 +47,24 @@ class App extends React.Component {
           parentIdExpr="Head_ID"
           onSelectionChanged={this.onSelectionChanged}
         >
+          // @ts-expect-error TS(2786): 'Selection' cannot be used as a JSX component.
           <Selection recursive={recursive} mode="multiple" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Full_Name" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Title" caption="Position" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="City" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="State" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column width={120} dataField="Hire_Date" dataType="date" />
         </TreeList>
         <div className="options">
           <div className="caption">Options</div>
           <div className="option">
             <span>Selection Mode</span>{' '}
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               value={selectionMode}
               items={selectionModes}
@@ -62,6 +74,7 @@ class App extends React.Component {
             />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               value={recursive}
               text="Recursive Selection"

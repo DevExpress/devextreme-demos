@@ -13,12 +13,14 @@ const views = ['month'];
 class App extends React.Component {
   render() {
     return (
+      // @ts-expect-error TS(2786): 'Scheduler' cannot be used as a JSX component.
       <Scheduler
         timeZone="America/Los_Angeles"
         dataSource={data}
         dataCellComponent={DataCell}
         resourceCellComponent={ResourceCell}
         groups={groups}
+        // @ts-expect-error TS(2322): Type 'string[]' is not assignable to type '("month... Remove this comment to see the full error message
         views={views}
         defaultCurrentView="month"
         defaultCurrentDate={currentDate}
@@ -28,7 +30,9 @@ class App extends React.Component {
         startDayHour={8}
         endDayHour={18}
       >
+        // @ts-expect-error TS(2786): 'Resource' cannot be used as a JSX component.
         <Resource
+          // @ts-expect-error TS(2322): Type '{ label: string; fieldExpr: string; dataSour... Remove this comment to see the full error message
           label="Employee"
           fieldExpr="employeeID"
           dataSource={employees}

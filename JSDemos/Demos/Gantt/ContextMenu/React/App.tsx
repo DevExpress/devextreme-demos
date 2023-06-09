@@ -19,6 +19,7 @@ function App() {
       <div className="options">
         <div className="caption">Options</div>
         <div className="option">
+          // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
           <CheckBox
             text="Prevent Context Menu Showing"
             value={ganttConfig.disableContextMenu}
@@ -27,6 +28,7 @@ function App() {
         </div>
           &nbsp;
         <div className="option">
+          // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
           <CheckBox
             text="Customize Context Menu"
             defaultValue={true}
@@ -35,6 +37,7 @@ function App() {
         </div>
       </div>
       <div className="widget-container">
+        // @ts-expect-error TS(2786): 'Gantt' cannot be used as a JSX component.
         <Gantt
           taskListWidth={500}
           height={700}
@@ -43,18 +46,28 @@ function App() {
           onCustomCommand={onCustomCommandClick}
           onContextMenuPreparing={onContextMenuPreparing}
         >
+          // @ts-expect-error TS(2786): 'ContextMenu' cannot be used as a JSX component.
           <ContextMenu
+            // @ts-expect-error TS(2322): Type '{ items: any; }' is not assignable to type '... Remove this comment to see the full error message
             items={ganttConfig.contextMenuItems} />
 
+          // @ts-expect-error TS(2786): 'Tasks' cannot be used as a JSX component.
           <Tasks dataSource={tasks} />
+          // @ts-expect-error TS(2786): 'Dependencies' cannot be used as a JSX component.
           <Dependencies dataSource={dependencies} />
+          // @ts-expect-error TS(2786): 'Resources' cannot be used as a JSX component.
           <Resources dataSource={resources} />
+          // @ts-expect-error TS(2786): 'ResourceAssignments' cannot be used as a JSX comp... Remove this comment to see the full error message
           <ResourceAssignments dataSource={resourceAssignments} />
 
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="title" caption="Subject" width={300} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="start" caption="Start Date" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="end" caption="End Date" />
 
+          // @ts-expect-error TS(2786): 'Editing' cannot be used as a JSX component.
           <Editing enabled />
         </Gantt>
       </div>

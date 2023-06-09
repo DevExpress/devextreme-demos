@@ -7,6 +7,7 @@ class NavigationList extends React.PureComponent {
   render() {
     return (
       <div className="list" style={{ width: '200px' }}>
+        // @ts-expect-error TS(2786): 'List' cannot be used as a JSX component.
         <List
           dataSource={navigation}
           hoverStateEnabled={false}

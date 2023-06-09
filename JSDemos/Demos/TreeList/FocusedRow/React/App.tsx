@@ -21,6 +21,10 @@ const taskEmployees = AspNetData.createStore({
 const focusedRowKeyLabel = { 'aria-label': 'Focused Row Key' };
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -52,6 +56,7 @@ class App extends React.Component {
     if (rowData) {
       progress = rowData.Task_Completion ? `${rowData.Task_Completion}%` : '';
       cellValue = e.component.cellValue(e.row.rowIndex, 'Assigned');
+      // @ts-expect-error TS(2339): Property 'done' does not exist on type 'Promise<an... Remove this comment to see the full error message
       taskEmployees.byKey(cellValue).done((item) => {
         assigned = item.Name;
       });
@@ -70,6 +75,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        // @ts-expect-error TS(2786): 'TreeList' cannot be used as a JSX component.
         <TreeList
           id="treeList"
           dataSource={dataSourceOptions}
@@ -80,12 +86,18 @@ class App extends React.Component {
           wordWrapEnabled={true}
           showBorders={true}
           onFocusedRowChanged={this.onFocusedRowChanged}>
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Task_ID" width={100} alignment="left" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Task_Assigned_Employee_ID" caption="Assigned" minWidth={120}>
+            // @ts-expect-error TS(2786): 'Lookup' cannot be used as a JSX component.
             <Lookup dataSource={taskEmployees} valueExpr="ID" displayExpr="Name" />
           </Column>
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Task_Status" caption="Status" width={160} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Task_Start_Date" caption="Start Date" dataType="date" width={160} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Task_Due_Date" caption="Due Date" dataType="date" width={160} />
         </TreeList>
         <div className="task-info">
@@ -104,6 +116,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <span>Focused row key </span>
+            // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
             <NumberBox
               id="taskId"
               min={1}

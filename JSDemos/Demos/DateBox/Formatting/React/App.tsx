@@ -13,6 +13,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Locale-dependent format</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
               <DateBox
                 type="datetime"
                 placeholder="12/31/2018, 2:52 PM"
@@ -24,6 +25,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Built-in predefined format</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
               <DateBox defaultValue={date}
                 placeholder="10/16/2018"
                 showClearButton={true}
@@ -36,6 +38,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Locale Data Markup Language (LDML) pattern</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
               <DateBox defaultValue={date}
                 placeholder="Tuesday, 16 of Oct, 2018 14:52"
                 showClearButton={true}
@@ -47,6 +50,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Format with literal characters</div>
             <div className="dx-field-value">
+              // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
               <DateBox defaultValue={date}
                 placeholder="Year: 2018"
                 showClearButton={true}

@@ -7,6 +7,12 @@ import CheckBox from 'devextreme-react/check-box';
 import { employees, showCheckboxesModeLabel, selectionModeLabel } from './data.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
+  treeViewRef: any;
+
   constructor() {
     super();
     this.treeViewRef = React.createRef();
@@ -39,6 +45,7 @@ class App extends React.Component {
       <div>
         <div className="form">
           <h4>Employees</h4>
+          // @ts-expect-error TS(2786): 'TreeView' cannot be used as a JSX component.
           <TreeView
             id="treeview"
             ref={this.treeViewRef}
@@ -55,14 +62,15 @@ class App extends React.Component {
           />
           {' '}
           <div className="selected-container">Selected employees
-            <List
-              id="selected-employees"
-              width={400}
-              height={200}
-              showScrollbar="always"
-              items={this.state.selectedEmployees}
-              itemRender={renderListItem}
-            />
+            // @ts-expect-error TS(2786): 'List' cannot be used as a JSX component.
+          <List
+            id="selected-employees"
+            width={400}
+            height={200}
+            showScrollbar="always"
+            items={this.state.selectedEmployees}
+            itemRender={renderListItem}
+          />
           </div>
         </div>
         <div className="options">
@@ -71,6 +79,7 @@ class App extends React.Component {
             <div className="option">
               <span>Show Check Boxes Mode:</span>
               <div className="editor-container">
+                // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
                 <SelectBox
                   items={this.state.showCheckBoxesModes}
                   value={this.state.showCheckBoxesMode}
@@ -81,6 +90,7 @@ class App extends React.Component {
             <div className="option">
               <span>Selection Mode:</span>
               <div className="editor-container">
+                // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
                 <SelectBox
                   items={this.state.selectionModes}
                   value={this.state.selectionMode}
@@ -92,6 +102,7 @@ class App extends React.Component {
             <div className="option">
               <div className="caption-placeholder">&nbsp;</div>
               <div className="editor-container">
+                // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
                 <CheckBox
                   text="Select Nodes Recursive"
                   value={this.state.selectNodesRecursive}
@@ -102,6 +113,7 @@ class App extends React.Component {
             <div className="option">
               <div className="caption-placeholder">&nbsp;</div>
               <div className="editor-container">
+                // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
                 <CheckBox
                   text="Select By Click"
                   value={this.state.selectByClick}
@@ -133,9 +145,12 @@ class App extends React.Component {
     const state = { showCheckBoxesMode: e.value };
 
     if (e.value === 'selectAll') {
+      // @ts-expect-error TS(2339): Property 'selectionMode' does not exist on type '{... Remove this comment to see the full error message
       state.selectionMode = 'multiple';
+      // @ts-expect-error TS(2339): Property 'isRecursiveDisabled' does not exist on t... Remove this comment to see the full error message
       state.isRecursiveDisabled = false;
     }
+    // @ts-expect-error TS(2339): Property 'isSelectionModeDisabled' does not exist ... Remove this comment to see the full error message
     state.isSelectionModeDisabled = e.value === 'selectAll';
 
     this.setState(state);
@@ -145,9 +160,11 @@ class App extends React.Component {
     const state = { selectionMode: e.value };
 
     if (e.value === 'single') {
+      // @ts-expect-error TS(2339): Property 'selectNodesRecursive' does not exist on ... Remove this comment to see the full error message
       state.selectNodesRecursive = false;
       this.treeView.unselectAll();
     }
+    // @ts-expect-error TS(2339): Property 'isRecursiveDisabled' does not exist on t... Remove this comment to see the full error message
     state.isRecursiveDisabled = e.value === 'single';
 
     this.setState(state);

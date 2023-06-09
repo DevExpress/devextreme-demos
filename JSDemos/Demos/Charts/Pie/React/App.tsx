@@ -20,6 +20,7 @@ class App extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'PieChart' cannot be used as a JSX component.
       <PieChart
         id="pie"
         dataSource={areas}
@@ -28,16 +29,22 @@ class App extends React.Component {
         onPointClick={this.pointClickHandler}
         onLegendClick={this.legendClickHandler}
       >
+        // @ts-expect-error TS(2786): 'Series' cannot be used as a JSX component.
         <Series
+          // @ts-expect-error TS(2322): Type '{ children: Element; argumentField: string; ... Remove this comment to see the full error message
           argumentField="country"
           valueField="area"
         >
+          // @ts-expect-error TS(2786): 'Label' cannot be used as a JSX component.
           <Label visible={true}>
+            // @ts-expect-error TS(2786): 'Connector' cannot be used as a JSX component.
             <Connector visible={true} width={1} />
           </Label>
         </Series>
 
+        // @ts-expect-error TS(2786): 'Size' cannot be used as a JSX component.
         <Size width={500} />
+        // @ts-expect-error TS(2786): 'Export' cannot be used as a JSX component.
         <Export enabled={true} />
       </PieChart>
     );

@@ -21,6 +21,7 @@ function App() {
     <div id="product-list">
       <h1>Product List</h1>
       <ul>{items}</ul>
+      // @ts-expect-error TS(2786): 'Toast' cannot be used as a JSX component.
       <Toast
         visible={toastConfig.isVisible}
         message={toastConfig.message}

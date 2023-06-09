@@ -6,6 +6,12 @@ import DataGrid, {
 import service from './data.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
+  states: any;
+
   constructor(props) {
     super(props);
     this.state = { employees: service.getEmployees() };
@@ -60,6 +66,7 @@ class App extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
       <DataGrid
         id="gridContainer"
         dataSource={this.state.employees}
@@ -67,23 +74,36 @@ class App extends React.Component {
         showBorders={true}
         onRowValidating={this.onRowValidating}
         onEditorPreparing={this.onEditorPreparing}>
+        // @ts-expect-error TS(2786): 'Editing' cannot be used as a JSX component.
         <Editing
+          // @ts-expect-error TS(2322): Type '{ mode: string; useIcons: boolean; allowUpda... Remove this comment to see the full error message
           mode="row"
           useIcons={true}
           allowUpdating={true}
           allowDeleting={this.allowDeleting} />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column type="buttons" width={110}>
+          // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
           <Button name="edit" />
+          // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
           <Button name="delete" />
+          // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
           <Button hint="Clone" icon="copy" visible={this.isCloneIconVisible} disabled={this.isCloneIconDisabled} onClick={this.cloneIconClick} />
         </Column>
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Prefix" caption="Title" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="FirstName" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="LastName" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Position" width={130} />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="StateID" caption="State" width={125}>
+          // @ts-expect-error TS(2786): 'Lookup' cannot be used as a JSX component.
           <Lookup dataSource={this.states} displayExpr="Name" valueExpr="ID" />
         </Column>
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="BirthDate" dataType="date" width={125} />
       </DataGrid>
     );

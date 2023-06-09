@@ -1,6 +1,8 @@
 import React from 'react';
 
 class ResourceCell extends React.PureComponent {
+  props: any;
+
   render() {
     const { data: { color, text, data: { avatar, age, discipline } } } = this.props;
     return (

@@ -4,6 +4,12 @@ import TreeView from 'devextreme-react/tree-view';
 import service from './data.js';
 
 class App extends React.Component {
+  products: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.products = service.getProducts();
@@ -17,6 +23,7 @@ class App extends React.Component {
     const { currentItem } = this.state;
     return (
       <div className="form">
+        // @ts-expect-error TS(2786): 'TreeView' cannot be used as a JSX component.
         <TreeView id="simple-treeview"
           items={this.products}
           width={300}

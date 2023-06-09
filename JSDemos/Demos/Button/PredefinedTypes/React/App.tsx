@@ -18,6 +18,7 @@ class App extends React.Component {
                 Normal
               </div>
               <div>
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button
                   width={120}
                   text="Contained"
@@ -27,6 +28,7 @@ class App extends React.Component {
                 />
               </div>
               <div>
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button
                   width={120}
                   text="Outlined"
@@ -36,6 +38,7 @@ class App extends React.Component {
                 />
               </div>
               <div>
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button
                   width={120}
                   text="Text"
@@ -50,6 +53,7 @@ class App extends React.Component {
                 Success
               </div>
               <div>
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button
                   width={120}
                   text="Contained"
@@ -59,6 +63,7 @@ class App extends React.Component {
                 />
               </div>
               <div>
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button
                   width={120}
                   text="Outlined"
@@ -68,6 +73,7 @@ class App extends React.Component {
                 />
               </div>
               <div>
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button
                   width={120}
                   text="Text"
@@ -84,6 +90,7 @@ class App extends React.Component {
                 Default
               </div>
               <div>
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button
                   width={120}
                   text="Contained"
@@ -93,6 +100,7 @@ class App extends React.Component {
                 />
               </div>
               <div>
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button
                   width={120}
                   text="Outlined"
@@ -102,6 +110,7 @@ class App extends React.Component {
                 />
               </div>
               <div>
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button
                   width={120}
                   text="Text"
@@ -116,6 +125,7 @@ class App extends React.Component {
                 Danger
               </div>
               <div>
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button
                   width={120}
                   text="Contained"
@@ -125,6 +135,7 @@ class App extends React.Component {
                 />
               </div>
               <div>
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button
                   width={120}
                   text="Outlined"
@@ -134,6 +145,7 @@ class App extends React.Component {
                 />
               </div>
               <div>
+                // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                 <Button
                   width={120}
                   text="Text"

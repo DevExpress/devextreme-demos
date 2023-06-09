@@ -3,6 +3,10 @@ import RangeSelector, { Chart, Series } from 'devextreme-react/range-selector';
 import { dataSource } from './data.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -14,13 +18,16 @@ class App extends React.Component {
   render() {
     return (
       <div id="range-selector-demo">
+        // @ts-expect-error TS(2786): 'RangeSelector' cannot be used as a JSX component.
         <RangeSelector
           id="range-selector"
           title="Copper Production in 2013"
           dataSource={dataSource}
           onValueChanged={this.processRange}
         >
+          // @ts-expect-error TS(2786): 'Chart' cannot be used as a JSX component.
           <Chart>
+            // @ts-expect-error TS(2786): 'Series' cannot be used as a JSX component.
             <Series type="bar" argumentField="country" valueField="copper" />
           </Chart>
         </RangeSelector>

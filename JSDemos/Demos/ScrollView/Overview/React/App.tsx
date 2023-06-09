@@ -7,6 +7,14 @@ import service from './data.js';
 const showScrollBarModeLabel = { 'aria-label': 'Show Scrollbar Mode' };
 
 class App extends React.Component {
+  scrollView: any;
+
+  setState: any;
+
+  state: any;
+
+  updateContentTimer: any;
+
   constructor(props) {
     super(props);
 
@@ -34,6 +42,7 @@ class App extends React.Component {
     } = this.state;
     return (
       <div id="scrollview-demo">
+        // @ts-expect-error TS(2786): 'ScrollView' cannot be used as a JSX component.
         <ScrollView id="scrollview" ref={this.getInstance}
           reachBottomText="Updating..."
           scrollByContent={scrollByContent}
@@ -50,6 +59,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <span>Show scrollbar: </span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               items={showScrollbarModes}
               valueExpr="value"
@@ -60,6 +70,7 @@ class App extends React.Component {
             />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="Update content on the ReachBottom event"
               defaultValue={true}
@@ -67,6 +78,7 @@ class App extends React.Component {
             />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="Update content on the PullDown event"
               value={pullDown}
@@ -74,6 +86,7 @@ class App extends React.Component {
             />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="Scroll by content"
               value={scrollByContent}
@@ -81,6 +94,7 @@ class App extends React.Component {
             />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="Scroll by thumb"
               value={scrollByThumb}

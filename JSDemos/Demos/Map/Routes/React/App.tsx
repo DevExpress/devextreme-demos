@@ -33,6 +33,7 @@ export default function App() {
 
   return (
     <div>
+      // @ts-expect-error TS(2786): 'Map' cannot be used as a JSX component.
       <Map
         defaultZoom={14}
         height={440}
@@ -47,6 +48,7 @@ export default function App() {
         <div className="caption">Options</div>
         <div className="option">
           <span>Set mode</span>
+          // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
           <SelectBox
             defaultValue="driving"
             items={modes}
@@ -56,6 +58,7 @@ export default function App() {
         </div>
         <div className="option">
           <span>Route color</span>
+          // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
           <SelectBox
             defaultValue="blue"
             inputAttr={colorLabel}

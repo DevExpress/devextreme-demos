@@ -21,6 +21,8 @@ const dataSource = new DataSource({
 });
 
 class App extends React.Component {
+  source: any;
+
   constructor(props) {
     super(props);
     this.source = dataSource;
@@ -34,6 +36,7 @@ class App extends React.Component {
         <div id="chart-demo">
           <table
             className="demo-table"
+            // @ts-expect-error TS(2322): Type '{ children: Element; className: string; bord... Remove this comment to see the full error message
             border="1"
           >
             <tbody>
@@ -54,6 +57,7 @@ class App extends React.Component {
           <div className="action">
             <div className="label">Choose a number of months:
             </div>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               id="choose-months"
               dataSource={months}

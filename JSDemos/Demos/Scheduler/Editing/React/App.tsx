@@ -9,6 +9,10 @@ const currentDate = new Date(2021, 3, 29);
 const views = ['day', 'week'];
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -31,9 +35,11 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'Scheduler' cannot be used as a JSX component.
         <Scheduler
           timeZone="America/Los_Angeles"
           dataSource={data}
+          // @ts-expect-error TS(2322): Type 'string[]' is not assignable to type '("day" ... Remove this comment to see the full error message
           views={views}
           defaultCurrentView="week"
           defaultCurrentDate={currentDate}
@@ -49,6 +55,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="options-container">
             <div className="option">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 defaultValue={this.state.allowAdding}
                 text="Allow adding"
@@ -56,6 +63,7 @@ class App extends React.Component {
               />
             </div>
             <div className="option">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 defaultValue={this.state.allowDeleting}
                 text="Allow deleting"
@@ -63,6 +71,7 @@ class App extends React.Component {
               />
             </div>
             <div className="option">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 defaultValue={this.state.allowUpdating}
                 text="Allow updating"
@@ -70,6 +79,7 @@ class App extends React.Component {
               />
             </div>
             <div className="option">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 defaultValue={this.state.allowResizing}
                 text="Allow resizing"
@@ -78,6 +88,7 @@ class App extends React.Component {
               />
             </div>
             <div className="option">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 defaultValue={this.state.allowDragging}
                 text="Allow dragging"

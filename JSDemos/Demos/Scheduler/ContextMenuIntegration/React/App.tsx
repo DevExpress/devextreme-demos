@@ -12,6 +12,14 @@ const appointmentClassName = '.dx-scheduler-appointment';
 const cellClassName = '.dx-scheduler-date-table-cell';
 
 class App extends React.Component {
+  groups: any;
+
+  scheduler: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.scheduler = React.createRef();
@@ -32,10 +40,12 @@ class App extends React.Component {
     } = this.state;
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'Scheduler' cannot be used as a JSX component.
         <Scheduler
           ref={this.scheduler}
           timeZone="America/Los_Angeles"
           dataSource={data}
+          // @ts-expect-error TS(2322): Type 'string[]' is not assignable to type '("month... Remove this comment to see the full error message
           views={views}
           groups={groups}
           crossScrollingEnabled={crossScrollingEnabled}
@@ -43,16 +53,20 @@ class App extends React.Component {
           currentDate={currentDate}
           startDayHour={9}
           recurrenceEditMode="series"
+          // @ts-expect-error TS(2322): Type '({ appointmentData, targetedAppointmentData ... Remove this comment to see the full error message
           onAppointmentContextMenu={this.onAppointmentContextMenu}
           onCellContextMenu={this.onCellContextMenu}
           height={600}
         >
+          // @ts-expect-error TS(2786): 'Resource' cannot be used as a JSX component.
           <Resource
+            // @ts-expect-error TS(2322): Type '{ dataSource: { text: string; id: number; co... Remove this comment to see the full error message
             dataSource={resourcesData}
             fieldExpr="roomId"
             label="Room"
           />
         </Scheduler>
+        // @ts-expect-error TS(2786): 'ContextMenu' cannot be used as a JSX component.
         <ContextMenu
           dataSource={contextMenuItems}
           width={200}

@@ -22,6 +22,10 @@ const favButtonAttrs = {
 };
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -39,12 +43,14 @@ class App extends React.Component {
     return (
       <div className="images">
         {
+          // @ts-expect-error TS(2786): 'House' cannot be used as a JSX component.
           housesSource.map((h) => <House
             house={h}
             show={this.showHouse}
             key={h.ID}
           />)
         }
+        // @ts-expect-error TS(2786): 'Popup' cannot be used as a JSX component.
         <Popup
           width={660}
           height={540}
@@ -66,6 +72,7 @@ class App extends React.Component {
       <div className="popup-property-details">
         <div className="large-text">{formatCurrency(currentHouse.Price)}</div>
         <div className="opacity">{currentHouse.Address}, {currentHouse.City}, {currentHouse.State}</div>
+        // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
         <Button
           icon="favorites"
           text={currentHouse.Favorite ? REMOVE_FROM_FAVORITES : ADD_TO_FAVORITES}

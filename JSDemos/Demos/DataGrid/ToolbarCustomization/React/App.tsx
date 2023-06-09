@@ -11,6 +11,16 @@ import service from './data.js';
 const countLabel = { 'aria-label': 'Count' };
 
 class App extends React.Component {
+  dataGrid: any;
+
+  groupingValues: any;
+
+  orders: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.orders = service.getOrders();
@@ -63,33 +73,48 @@ class App extends React.Component {
 
   getRef(ref) {
     this.dataGrid = ref;
+    // @ts-expect-error TS(2339): Property 'dataGrid' does not exist on type 'Window... Remove this comment to see the full error message
     window.dataGrid = this.dataGrid;
   }
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
       <DataGrid id="gridContainer"
         ref={this.getRef}
         dataSource={this.orders}
         keyExpr="ID"
         showBorders={true}>
+        // @ts-expect-error TS(2786): 'Grouping' cannot be used as a JSX component.
         <Grouping autoExpandAll={this.state.expanded} />
+        // @ts-expect-error TS(2786): 'ColumnChooser' cannot be used as a JSX component.
         <ColumnChooser enabled={true} />
+        // @ts-expect-error TS(2786): 'LoadPanel' cannot be used as a JSX component.
         <LoadPanel enabled={true} />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="OrderNumber" caption="Invoice Number" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="OrderDate" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Employee" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="CustomerStoreCity" caption="City" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="CustomerStoreState" caption="State" groupIndex={0} />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="SaleAmount" alignment="right" format="currency" />
+        // @ts-expect-error TS(2786): 'Toolbar' cannot be used as a JSX component.
         <Toolbar>
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item location="before">
             <div className="informer">
               <h2 className="count">{this.state.totalCount}</h2>
               <span className="name">Total Count</span>
             </div>
           </Item>
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item location="before">
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               width="225"
               items={this.groupingValues}
@@ -99,18 +124,24 @@ class App extends React.Component {
               value={this.state.grouping}
               onValueChanged={this.groupChanged} />
           </Item>
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item location="before">
+            // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
             <Button
               text={this.state.expanded ? 'Collapse All' : 'Expand All'}
               width='136'
               onClick={this.collapseAllClick} />
           </Item>
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item location="after">
+            // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
             <Button
               icon='refresh'
               onClick={this.refreshDataGrid} />
           </Item>
+          // @ts-expect-error TS(2786): 'Item' cannot be used as a JSX component.
           <Item
+            // @ts-expect-error TS(2322): Type '{ name: string; }' is not assignable to type... Remove this comment to see the full error message
             name="columnChooserButton"
           />
         </Toolbar>

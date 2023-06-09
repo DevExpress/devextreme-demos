@@ -11,6 +11,10 @@ const views = [{ type: 'day', intervalCount: 3 }];
 const draggingGroupName = 'appointmentsGroup';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -24,12 +28,15 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'ScrollView' cannot be used as a JSX component.
         <ScrollView id="scroll">
+          // @ts-expect-error TS(2786): 'Draggable' cannot be used as a JSX component.
           <Draggable
             id="list"
             data="dropArea"
             group={draggingGroupName}
             onDragStart={this.onListDragStart}>
+            // @ts-expect-error TS(2786): 'Draggable' cannot be used as a JSX component.
             {this.state.tasks.map((task) => <Draggable
               key={task.text}
               className="item dx-card dx-theme-text-color dx-theme-background-color"
@@ -42,16 +49,20 @@ class App extends React.Component {
             </Draggable>)}
           </Draggable>
         </ScrollView>
+        // @ts-expect-error TS(2786): 'Scheduler' cannot be used as a JSX component.
         <Scheduler
           timeZone="America/Los_Angeles"
           id="scheduler"
           dataSource={this.state.appointments}
+          // @ts-expect-error TS(2322): Type '{ type: string; intervalCount: number; }[]' ... Remove this comment to see the full error message
           views={views}
           defaultCurrentDate={currentDate}
           height={600}
           startDayHour={9}
           editing={true}>
+          // @ts-expect-error TS(2786): 'AppointmentDragging' cannot be used as a JSX comp... Remove this comment to see the full error message
           <AppointmentDragging
+            // @ts-expect-error TS(2322): Type '{ group: string; onRemove: (e: any) => void;... Remove this comment to see the full error message
             group={draggingGroupName}
             onRemove={this.onAppointmentRemove}
             onAdd={this.onAppointmentAdd}

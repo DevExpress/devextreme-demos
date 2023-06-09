@@ -26,6 +26,22 @@ const productsDataSource = new DataSource({
 });
 
 class App extends React.Component {
+  editBoxValueChanged: any;
+
+  minSearchLengthOptionChanged: any;
+
+  searchExprOptionChanged: any;
+
+  searchModeOptionChanged: any;
+
+  searchTimeoutOptionChanged: any;
+
+  setState: any;
+
+  showDataBeforeSearchOptionChanged: any;
+
+  state: any;
+
   constructor() {
     super();
 
@@ -96,6 +112,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Product</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
                 <SelectBox dataSource={products}
                   displayExpr="Name"
                   searchEnabled={true}
@@ -113,6 +130,7 @@ class App extends React.Component {
             <div className="dx-field">
               <div className="dx-field-label">Product</div>
               <div className="dx-field-value">
+                // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
                 <SelectBox dataSource={productsDataSource}
                   displayExpr="Name"
                   valueExpr="ID"
@@ -137,6 +155,7 @@ class App extends React.Component {
           <div className="caption">SearchBox Options</div>
           <div className="option">
             <div>Search Mode</div>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox items={searchModeItems}
               value={searchModeOption}
               inputAttr={searchModeLabel}
@@ -144,6 +163,7 @@ class App extends React.Component {
           </div>
           <div className="option">
             <div>Search Expression</div>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox items={searchExprItems}
               displayExpr="name"
               valueExpr="value"
@@ -153,6 +173,7 @@ class App extends React.Component {
           </div>
           <div className="option">
             <div>Search Timeout</div>
+            // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
             <NumberBox min={0}
               max={5000}
               showSpinButtons={true}
@@ -163,6 +184,7 @@ class App extends React.Component {
           </div>
           <div className="option">
             <div>Minimum Search Length</div>
+            // @ts-expect-error TS(2786): 'NumberBox' cannot be used as a JSX component.
             <NumberBox min={0}
               max={5}
               showSpinButtons={true}
@@ -171,6 +193,7 @@ class App extends React.Component {
               onValueChanged={this.minSearchLengthOptionChanged} />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox text="Show Data Before Search"
               value={showDataBeforeSearchOption}
               onValueChanged={this.showDataBeforeSearchOptionChanged} />

@@ -68,6 +68,7 @@ function App() {
   return (
     <React.Fragment>
       <div id="container">
+        // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
         <Button
           disabled={disableButton()}
           text="Add Tab"
@@ -76,6 +77,7 @@ function App() {
           onClick={addButtonHandler}
         />
       </div>
+      // @ts-expect-error TS(2786): 'Sortable' cannot be used as a JSX component.
       <Sortable
         filter=".dx-tab"
         data={employees}
@@ -84,6 +86,7 @@ function App() {
         onDragStart={onTabDragStart}
         onReorder={onTabDrop}
       >
+        // @ts-expect-error TS(2786): 'TabPanel' cannot be used as a JSX component.
         <TabPanel
           dataSource={employees}
           height={410}

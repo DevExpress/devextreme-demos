@@ -2,6 +2,7 @@ import React from 'react';
 
 class Logo extends React.PureComponent {
   render() {
+    // @ts-expect-error TS(2339): Property 'props' does not exist on type 'Logo'.
     const { props } = this;
     return (
       <div

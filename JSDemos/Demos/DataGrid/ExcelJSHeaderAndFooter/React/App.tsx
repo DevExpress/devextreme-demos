@@ -22,49 +22,68 @@ class App extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
       <DataGrid
         dataSource={countries}
         keyExpr="ID"
         showBorders={true}
         onExporting={this.onExporting}
       >
+        // @ts-expect-error TS(2786): 'Export' cannot be used as a JSX component.
         <Export enabled={true} />
 
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Country" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column dataField="Area" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column caption="Population">
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ dataField: string; caption: string; format... Remove this comment to see the full error message
             dataField="Population_Total"
             caption="Total"
             format="fixedPoint"
           />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ dataField: string; caption: string; format... Remove this comment to see the full error message
             dataField="Population_Urban"
             caption="Urban"
             format="percent"
           />
         </Column>
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column caption="Nominal GDP">
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ dataField: string; caption: string; format... Remove this comment to see the full error message
             dataField="GDP_Total"
             caption="Total, mln $"
             format="fixedPoint"
             sortOrder="desc"
           />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column caption="By Sector">
+            // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
             <Column
+              // @ts-expect-error TS(2322): Type '{ dataField: string; caption: string; format... Remove this comment to see the full error message
               dataField="GDP_Agriculture"
               caption="Agriculture"
               format={gdpFormat}
               width={95}
             />
+            // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
             <Column
+              // @ts-expect-error TS(2322): Type '{ dataField: string; caption: string; format... Remove this comment to see the full error message
               dataField="GDP_Industry"
               caption="Industry"
               format={gdpFormat}
               width={80}
             />
+            // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
             <Column
+              // @ts-expect-error TS(2322): Type '{ dataField: string; caption: string; format... Remove this comment to see the full error message
               dataField="GDP_Services"
               caption="Services"
               format={gdpFormat}

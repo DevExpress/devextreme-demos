@@ -44,6 +44,7 @@ export default function App() {
   return (
     <React.Fragment>
       <div className="widget-container">
+        // @ts-expect-error TS(2786): 'List' cannot be used as a JSX component.
         <List
           dataSource={dataSource}
           height={400}
@@ -64,6 +65,7 @@ export default function App() {
         <div className="option">
           <span>Selection Mode</span>
             &nbsp;
+          // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
           <SelectBox
             items={selectionModes}
             inputAttr={selectionModeLabel}
@@ -74,6 +76,7 @@ export default function App() {
         <div className="option">
           <span>Select All Mode</span>
             &nbsp;
+          // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
           <SelectBox
             disabled={selectionMode !== 'all'}
             items={selectAllModes}
@@ -85,6 +88,7 @@ export default function App() {
         <div className="option">
           <span>Select By Click</span>
             &nbsp;
+          // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
           <CheckBox
             value={selectByClick}
             onValueChange={onSelectByClickChange}>

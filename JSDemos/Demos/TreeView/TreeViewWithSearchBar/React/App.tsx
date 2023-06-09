@@ -8,6 +8,10 @@ import { products, searchModeLabel } from './data.js';
 const options = ['contains', 'startswith', 'equals'];
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -20,6 +24,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'TreeView' cannot be used as a JSX component.
         <TreeView
           id="treeview"
           items={products}
@@ -31,6 +36,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <span>Search mode</span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               items={options}
               inputAttr={searchModeLabel}

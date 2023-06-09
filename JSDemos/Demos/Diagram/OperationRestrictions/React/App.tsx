@@ -9,6 +9,10 @@ import service from './data.js';
 const shapes = ['team', 'employee'];
 
 class App extends React.Component {
+  diagramRef: any;
+
+  orgItemsDataSource: any;
+
   constructor(props) {
     super(props);
     this.diagramRef = React.createRef();
@@ -22,21 +26,31 @@ class App extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'Diagram' cannot be used as a JSX component.
       <Diagram id="diagram" ref={this.diagramRef} onRequestEditOperation={this.onRequestEditOperation} onRequestLayoutUpdate={this.onRequestLayoutUpdate}>
+        // @ts-expect-error TS(2786): 'CustomShape' cannot be used as a JSX component.
         <CustomShape category="items" type="root" baseType="octagon"
           defaultText="Development" />
+        // @ts-expect-error TS(2786): 'CustomShape' cannot be used as a JSX component.
         <CustomShape category="items" type="team" baseType="ellipse"
           title="Team" defaultText="Team Name" />
+        // @ts-expect-error TS(2786): 'CustomShape' cannot be used as a JSX component.
         <CustomShape category="items" type="employee" baseType="rectangle"
           title="Employee" defaultText="Employee Name" />
+        // @ts-expect-error TS(2786): 'Nodes' cannot be used as a JSX component.
         <Nodes dataSource={this.orgItemsDataSource} keyExpr="ID" textExpr="Name" typeExpr="Type" parentKeyExpr="ParentID" styleExpr={this.itemStyleExpr}>
+          // @ts-expect-error TS(2786): 'AutoLayout' cannot be used as a JSX component.
           <AutoLayout type="tree" />
         </Nodes>
+        // @ts-expect-error TS(2786): 'ContextToolbox' cannot be used as a JSX component... Remove this comment to see the full error message
         <ContextToolbox shapeIconsPerRow={2} width={100} shapes={shapes}>
         </ContextToolbox>
+        // @ts-expect-error TS(2786): 'Toolbox' cannot be used as a JSX component.
         <Toolbox shapeIconsPerRow={2}>
+          // @ts-expect-error TS(2786): 'Group' cannot be used as a JSX component.
           <Group title="Items" shapes={shapes} />
         </Toolbox>
+        // @ts-expect-error TS(2786): 'PropertiesPanel' cannot be used as a JSX componen... Remove this comment to see the full error message
         <PropertiesPanel visibility="disabled">
         </PropertiesPanel>
       </Diagram>

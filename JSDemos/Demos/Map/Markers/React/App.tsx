@@ -31,6 +31,7 @@ export default function App() {
 
   return (
     <React.Fragment>
+      // @ts-expect-error TS(2786): 'Map' cannot be used as a JSX component.
       <Map
         defaultZoom={11}
         height={440}
@@ -45,6 +46,7 @@ export default function App() {
       <div className="options">
         <div className="caption">Options</div>
         <div className="option">
+          // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
           <CheckBox
             defaultValue={true}
             text="Use custom marker icons"
@@ -52,6 +54,7 @@ export default function App() {
           />
         </div>
         <div className="option">
+          // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
           <Button
             text="Show all tooltips"
             onClick={showTooltips}

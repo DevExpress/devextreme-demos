@@ -22,6 +22,7 @@ class App extends React.Component {
           and select an&nbsp;item from the appeared context menu to&nbsp;change the
           <b> &quot;summaryDisplayMode&quot;</b> option.
         </div>
+        // @ts-expect-error TS(2786): 'PivotGrid' cannot be used as a JSX component.
         <PivotGrid
           id="sales"
           dataSource={dataSource}
@@ -31,11 +32,14 @@ class App extends React.Component {
           showBorders={true}
           onContextMenuPreparing={this.onContextMenuPreparing}
         >
+          // @ts-expect-error TS(2786): 'FieldPanel' cannot be used as a JSX component.
           <FieldPanel
+            // @ts-expect-error TS(2322): Type '{ showFilterFields: boolean; allowFieldDragg... Remove this comment to see the full error message
             showFilterFields={false}
             allowFieldDragging={false}
             visible={true}
           />
+          // @ts-expect-error TS(2786): 'FieldChooser' cannot be used as a JSX component.
           <FieldChooser enabled={false} />
         </PivotGrid>
       </React.Fragment>

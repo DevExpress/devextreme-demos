@@ -7,6 +7,7 @@ import Grid from './Grid.js';
 
 const BASE_PATH = 'https://js.devexpress.com/Demos/NetCore/';
 const url = `${BASE_PATH}api/DataGridCollaborativeEditing`;
+// @ts-expect-error TS(2339): Property 'toJSON' does not exist on type 'Guid'.
 const groupId = new Guid().toJSON();
 
 function createStore() {
@@ -35,9 +36,11 @@ class App extends React.Component {
     return (
       <div className="tables">
         <div className="column">
+          // @ts-expect-error TS(2786): 'Grid' cannot be used as a JSX component.
           <Grid dataSource={store1} />
         </div>
         <div className="column">
+          // @ts-expect-error TS(2786): 'Grid' cannot be used as a JSX component.
           <Grid dataSource={store2} />
         </div>
       </div>

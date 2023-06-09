@@ -4,6 +4,10 @@ import CheckBox from 'devextreme-react/check-box';
 import { gallery } from './data.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -19,6 +23,7 @@ class App extends React.Component {
     return (
       <div>
         <div className="widget-container">
+          // @ts-expect-error TS(2786): 'Gallery' cannot be used as a JSX component.
           <Gallery
             id="gallery"
             dataSource={gallery}
@@ -31,15 +36,19 @@ class App extends React.Component {
         <div className="options">
           <div className="caption">Options</div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox text="Loop mode" value={this.state.loop} onValueChanged={this.onLoopChanged} />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox text="Slide show" value={this.state.slideShow} onValueChanged={this.onSlideShowChanged} />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox text="Navigation buttons" value={this.state.showNavButtons} onValueChanged={this.onShowNavButtonsChanged} />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox text="Indicator" value={this.state.showIndicator} onValueChanged={this.onShowIndicatorChanged} />
           </div>
         </div>

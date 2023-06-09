@@ -6,6 +6,10 @@ import { populationByAge, algorithmLabel } from './data.js';
 const algorithms = ['sliceAndDice', 'squarified', 'strip', 'custom'];
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -18,17 +22,22 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'TreeMap' cannot be used as a JSX component.
         <TreeMap
           id="treemap"
           dataSource={populationByAge}
           layoutAlgorithm={this.state.currentAlgorithm}
           title="Population by Age Groups"
         >
+          // @ts-expect-error TS(2786): 'Colorizer' cannot be used as a JSX component.
           <Colorizer
+            // @ts-expect-error TS(2322): Type '{ colorizeGroups: boolean; type: string; }' ... Remove this comment to see the full error message
             colorizeGroups={true}
             type="discrete"
           />
+          // @ts-expect-error TS(2786): 'Tooltip' cannot be used as a JSX component.
           <Tooltip
+            // @ts-expect-error TS(2322): Type '{ enabled: boolean; customizeTooltip: (arg: ... Remove this comment to see the full error message
             enabled={true}
             customizeTooltip={customizeTooltip}
             format="thousands"
@@ -38,6 +47,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <span>Tiling Algorithm </span>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               dataSource={algorithms}
               width={200}

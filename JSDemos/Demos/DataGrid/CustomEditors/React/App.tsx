@@ -36,6 +36,8 @@ const tasks = createStore({
 });
 
 class App extends React.Component {
+  dataField: any;
+
   constructor(props) {
     super(props);
     this.statusEditorRender = this.statusEditorRender.bind(this);
@@ -63,6 +65,7 @@ class App extends React.Component {
 
   statusEditorRender(cell) {
     const onValueChanged = this.onValueChanged.bind(this, cell);
+    // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
     return <SelectBox
       defaultValue={cell.value}
       {...cell.column.lookup}
@@ -90,33 +93,46 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
         <DataGrid
           dataSource={tasks}
           showBorders={true}
           onRowInserted={this.onRowInserted}
         >
+          // @ts-expect-error TS(2786): 'Paging' cannot be used as a JSX component.
           <Paging enabled={true} defaultPageSize={15} />
+          // @ts-expect-error TS(2786): 'HeaderFilter' cannot be used as a JSX component.
           <HeaderFilter visible={true} />
+          // @ts-expect-error TS(2786): 'SearchPanel' cannot be used as a JSX component.
           <SearchPanel visible={true} />
+          // @ts-expect-error TS(2786): 'Editing' cannot be used as a JSX component.
           <Editing
+            // @ts-expect-error TS(2322): Type '{ mode: string; allowUpdating: boolean; allo... Remove this comment to see the full error message
             mode="cell"
             allowUpdating={true}
             allowAdding={true}
           />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ children: Element[]; dataField: string; wi... Remove this comment to see the full error message
             dataField="Owner"
             width={150}
             allowSorting={false}
             editCellComponent={EmployeeDropDownBoxComponent}
           >
+            // @ts-expect-error TS(2786): 'Lookup' cannot be used as a JSX component.
             <Lookup
+              // @ts-expect-error TS(2322): Type '{ dataSource: CustomStore<any, any>; display... Remove this comment to see the full error message
               dataSource={employees}
               displayExpr="FullName"
               valueExpr="ID"
             />
+            // @ts-expect-error TS(2786): 'RequiredRule' cannot be used as a JSX component.
             <RequiredRule />
           </Column>
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ children: Element[]; dataField: string; ca... Remove this comment to see the full error message
             dataField="AssignedEmployee"
             caption="Assignees"
             width={200}
@@ -124,26 +140,36 @@ class App extends React.Component {
             editCellComponent={EmployeeTagBoxComponent}
             cellTemplate={this.cellTemplate}
             calculateFilterExpression={this.calculateFilterExpression}>
+            // @ts-expect-error TS(2786): 'Lookup' cannot be used as a JSX component.
             <Lookup
+              // @ts-expect-error TS(2322): Type '{ dataSource: CustomStore<any, any>; valueEx... Remove this comment to see the full error message
               dataSource={employees}
               valueExpr="ID"
               displayExpr="FullName"
             />
+            // @ts-expect-error TS(2786): 'RequiredRule' cannot be used as a JSX component.
             <RequiredRule />
           </Column>
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Subject">
+            // @ts-expect-error TS(2786): 'RequiredRule' cannot be used as a JSX component.
             <RequiredRule />
           </Column>
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column
+            // @ts-expect-error TS(2322): Type '{ children: Element[]; dataField: string; wi... Remove this comment to see the full error message
             dataField="Status"
             width={200}
             editCellRender={this.statusEditorRender}
           >
+            // @ts-expect-error TS(2786): 'Lookup' cannot be used as a JSX component.
             <Lookup
+              // @ts-expect-error TS(2322): Type '{ dataSource: { id: number; name: string; }[... Remove this comment to see the full error message
               dataSource={statuses}
               displayExpr="name"
               valueExpr="id"
             />
+            // @ts-expect-error TS(2786): 'RequiredRule' cannot be used as a JSX component.
             <RequiredRule />
           </Column>
         </DataGrid>

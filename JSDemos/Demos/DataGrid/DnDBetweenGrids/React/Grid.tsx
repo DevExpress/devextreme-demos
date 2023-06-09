@@ -4,6 +4,14 @@ import DataGrid, {
 } from 'devextreme-react/data-grid';
 
 class Grid extends React.Component {
+  dataSource: any;
+
+  filterExpr: any;
+
+  priorities: any;
+
+  props: any;
+
   constructor(props) {
     super(props);
 
@@ -39,34 +47,46 @@ class Grid extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
       <DataGrid
         dataSource={this.dataSource}
         height={440}
         showBorders={true}
         filterValue={this.filterExpr}
       >
+        // @ts-expect-error TS(2786): 'RowDragging' cannot be used as a JSX component.
         <RowDragging
+          // @ts-expect-error TS(2322): Type '{ data: any; group: string; onAdd: (e: any) ... Remove this comment to see the full error message
           data={this.props.status}
           group="tasksGroup"
           onAdd={this.onAdd}
         />
+        // @ts-expect-error TS(2786): 'Scrolling' cannot be used as a JSX component.
         <Scrolling mode="virtual" />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column
+          // @ts-expect-error TS(2322): Type '{ dataField: string; dataType: string; }' is... Remove this comment to see the full error message
           dataField="Subject"
           dataType="string"
         />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column
+          // @ts-expect-error TS(2322): Type '{ children: Element; dataField: string; data... Remove this comment to see the full error message
           dataField="Priority"
           dataType="number"
           width={80}
         >
+          // @ts-expect-error TS(2786): 'Lookup' cannot be used as a JSX component.
           <Lookup
+            // @ts-expect-error TS(2322): Type '{ dataSource: any; valueExpr: string; displa... Remove this comment to see the full error message
             dataSource={this.priorities}
             valueExpr="id"
             displayExpr="text"
           />
         </Column>
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column
+          // @ts-expect-error TS(2322): Type '{ dataField: string; dataType: string; visib... Remove this comment to see the full error message
           dataField="Status"
           dataType="number"
           visible={false}

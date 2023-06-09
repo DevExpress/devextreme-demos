@@ -5,6 +5,10 @@ import FileManager, { Permissions, ItemView } from 'devextreme-react/file-manage
 import { fileItems } from './data.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -24,15 +28,20 @@ class App extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'FileManager' cannot be used as a JSX component.
       <FileManager
         fileSystemProvider={fileItems}
         customizeThumbnail={this.customizeIcon}
         height={450}
         onOptionChanged={this.onOptionChanged}>
+        // @ts-expect-error TS(2786): 'ItemView' cannot be used as a JSX component.
         <ItemView
+          // @ts-expect-error TS(2322): Type '{ children: never[]; mode: any; }' is not as... Remove this comment to see the full error message
           mode={this.state.itemViewMode}>
         </ItemView>
+        // @ts-expect-error TS(2786): 'Permissions' cannot be used as a JSX component.
         <Permissions
+          // @ts-expect-error TS(2322): Type '{ children: never[]; create: boolean; copy: ... Remove this comment to see the full error message
           create={true}
           copy={true}
           move={true}

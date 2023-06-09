@@ -9,6 +9,14 @@ const orientationLabel = { 'aria-label': 'Orientation' };
 const showSubmenuModeLabel = { 'aria-label': 'Show Submenu Mode' };
 
 class App extends React.Component {
+  products: any;
+
+  setState: any;
+
+  showSubmenuModes: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.products = service.getProducts();
@@ -39,6 +47,7 @@ class App extends React.Component {
       <div className="form">
         <div>
           <div className="label">Catalog:</div>
+          // @ts-expect-error TS(2786): 'Menu' cannot be used as a JSX component.
           <Menu dataSource={this.products}
             displayExpr="name"
             showFirstSubmenuMode={showFirstSubmenuModes}
@@ -58,6 +67,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <div>Show First Submenu Mode</div>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               items={this.showSubmenuModes}
               displayExpr="name"
@@ -68,6 +78,7 @@ class App extends React.Component {
           </div>
           <div className="option">
             <div>Orientation</div>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               items={orientations}
               inputAttr={orientationLabel}
@@ -76,6 +87,7 @@ class App extends React.Component {
             />
           </div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="Hide Submenu on Mouse Leave"
               value={hideSubmenuOnMouseLeave}

@@ -12,6 +12,7 @@ export default function AnnotationTemplate(annotation) {
   const { data } = annotation;
   return (
     <svg className="annotation">
+      // @ts-expect-error TS(2322): Type '{ href: string; width: string; height: strin... Remove this comment to see the full error message
       <image href={getImagePath(data)} width="60" height="40" />
       <rect x={0} y={0} className="border"></rect>
       <text x="70" y="25" className="state">{annotation.argument}</text>

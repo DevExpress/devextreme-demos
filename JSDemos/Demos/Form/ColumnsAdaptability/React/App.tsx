@@ -9,6 +9,10 @@ const colCountByScreen = {
 };
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor() {
     super();
     this.state = {
@@ -23,6 +27,7 @@ class App extends React.Component {
 
     return (
       <div>
+        // @ts-expect-error TS(2786): 'Form' cannot be used as a JSX component.
         <Form
           id="form"
           formData={employee}
@@ -35,6 +40,7 @@ class App extends React.Component {
         <div className="options">
           <div className="caption">Options</div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="Calculate the number of columns automatically"
               value={calculateColCountAutomatically}

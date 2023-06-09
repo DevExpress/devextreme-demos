@@ -8,6 +8,12 @@ import { data, priorities } from './data.js';
 const views = ['week', 'month'];
 
 class App extends React.Component {
+  schedulerRef: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -23,10 +29,12 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'Scheduler' cannot be used as a JSX component.
         <Scheduler
           ref={this.schedulerRef}
           timeZone="America/Los_Angeles"
           dataSource={data}
+          // @ts-expect-error TS(2322): Type 'string[]' is not assignable to type '("week"... Remove this comment to see the full error message
           views={views}
           adaptivityEnabled={true}
           onOptionChanged={this.onOptionChanged}
@@ -35,12 +43,15 @@ class App extends React.Component {
           cellDuration={this.state.cellDuration}
           height={590}
           startDayHour={9}>
+          // @ts-expect-error TS(2786): 'Resource' cannot be used as a JSX component.
           <Resource
+            // @ts-expect-error TS(2322): Type '{ dataSource: { text: string; id: number; co... Remove this comment to see the full error message
             dataSource={priorities}
             fieldExpr="priorityId"
             label="Priority"
           />
         </Scheduler>
+        // @ts-expect-error TS(2786): 'SpeedDialAction' cannot be used as a JSX componen... Remove this comment to see the full error message
         <SpeedDialAction
           icon="plus"
           onClick={this.showAppointmentPopup}

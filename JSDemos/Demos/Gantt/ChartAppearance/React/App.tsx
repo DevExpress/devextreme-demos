@@ -37,6 +37,7 @@ function App() {
             <div className="label">Scale Type:</div>
             {' '}
             <div className="value">
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox
                 items={scaleTypes}
                 inputAttr={scaleTypeLabel}
@@ -49,6 +50,7 @@ function App() {
             <div className="label">Title Position:</div>
             {' '}
             <div className="value">
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox
                 items={titlePositions}
                 inputAttr={titlePositionLabel}
@@ -61,6 +63,7 @@ function App() {
             <div className="label">Show Resources:</div>
             {' '}
             <div className="value">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 value={ganttConfig.showResources}
                 onValueChanged={onShowResourcesChanged}
@@ -71,6 +74,7 @@ function App() {
             <div className="label">Show Dependencies:</div>
             {' '}
             <div className="value">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 value={ganttConfig.showDependencies}
                 onValueChanged={onShowDependenciesChanged}
@@ -84,6 +88,7 @@ function App() {
             <div className="label">Start Date Range:</div>
             {' '}
             <div className="value">
+              // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
               <DateBox
                 inputAttr={startDateLabel}
                 value={ganttConfig.startDateRange}
@@ -96,6 +101,7 @@ function App() {
             <div className="label">End Date Range:</div>
             {' '}
             <div className="value">
+              // @ts-expect-error TS(2786): 'DateBox' cannot be used as a JSX component.
               <DateBox
                 inputAttr={endDateLabel}
                 value={ganttConfig.endDateRange}
@@ -108,6 +114,7 @@ function App() {
             <div className="label">Customize Task Tooltip:</div>
             {' '}
             <div className="value">
+              // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
               <CheckBox
                 value={ganttConfig.showCustomTaskTooltip}
                 onValueChanged={onShowCustomTaskTooltip}
@@ -117,6 +124,7 @@ function App() {
         </div>
       </div>
       <div className="widget-container">
+        // @ts-expect-error TS(2786): 'Gantt' cannot be used as a JSX component.
         <Gantt
           taskListWidth={500}
           height={700}
@@ -133,15 +141,23 @@ function App() {
           startDateRange = {ganttConfig.startDateRange}
           endDateRange = {ganttConfig.endDateRange}>
 
+          // @ts-expect-error TS(2786): 'Tasks' cannot be used as a JSX component.
           <Tasks dataSource={tasks} />
+          // @ts-expect-error TS(2786): 'Dependencies' cannot be used as a JSX component.
           <Dependencies dataSource={dependencies} />
+          // @ts-expect-error TS(2786): 'Resources' cannot be used as a JSX component.
           <Resources dataSource={resources} />
+          // @ts-expect-error TS(2786): 'ResourceAssignments' cannot be used as a JSX comp... Remove this comment to see the full error message
           <ResourceAssignments dataSource={resourceAssignments} />
 
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="title" caption="Subject" width={300} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="start" caption="Start Date" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="end" caption="End Date" />
 
+          // @ts-expect-error TS(2786): 'Editing' cannot be used as a JSX component.
           <Editing enabled />
         </Gantt>
       </div>

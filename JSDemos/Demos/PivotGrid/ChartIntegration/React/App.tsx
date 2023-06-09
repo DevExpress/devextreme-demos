@@ -16,6 +16,10 @@ import PivotGrid, {
 import sales from './data.js';
 
 class App extends React.Component {
+  chart: any;
+
+  pivotGrid: any;
+
   componentDidMount() {
     this.pivotGrid.bindChart(this.chart, {
       dataFieldsDisplayMode: 'splitPanes',
@@ -26,13 +30,19 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'Chart' cannot be used as a JSX component.
         <Chart ref={(ref) => { this.chart = ref.instance; }}>
+          // @ts-expect-error TS(2786): 'Size' cannot be used as a JSX component.
           <Size height={320} />
+          // @ts-expect-error TS(2786): 'Tooltip' cannot be used as a JSX component.
           <Tooltip enabled={true} customizeTooltip={customizeTooltip} />
+          // @ts-expect-error TS(2786): 'CommonSeriesSettings' cannot be used as a JSX com... Remove this comment to see the full error message
           <CommonSeriesSettings type="bar" />
+          // @ts-expect-error TS(2786): 'AdaptiveLayout' cannot be used as a JSX component... Remove this comment to see the full error message
           <AdaptiveLayout width={450} />
         </Chart>
 
+        // @ts-expect-error TS(2786): 'PivotGrid' cannot be used as a JSX component.
         <PivotGrid
           id="pivotgrid"
           dataSource={dataSource}
@@ -45,6 +55,7 @@ class App extends React.Component {
           showRowGrandTotals={false}
           ref={(ref) => { this.pivotGrid = ref.instance; }}
         >
+          // @ts-expect-error TS(2786): 'FieldChooser' cannot be used as a JSX component.
           <FieldChooser enabled={true} height={400} />
         </PivotGrid>
       </React.Fragment>

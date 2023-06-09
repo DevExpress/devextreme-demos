@@ -58,9 +58,11 @@ class App extends React.Component {
     return (
       <div className="schedulers">
         <div className="column-1">
+          // @ts-expect-error TS(2786): 'Scheduler' cannot be used as a JSX component.
           <Scheduler
             timeZone="America/Los_Angeles"
             dataSource={store1}
+            // @ts-expect-error TS(2322): Type 'string[]' is not assignable to type '("day" ... Remove this comment to see the full error message
             views={views}
             defaultCurrentView="day"
             defaultCurrentDate={currentDate}
@@ -76,9 +78,11 @@ class App extends React.Component {
             allDayExpr="AllDay" />
         </div>
         <div className="column-2">
+          // @ts-expect-error TS(2786): 'Scheduler' cannot be used as a JSX component.
           <Scheduler
             timeZone="America/Los_Angeles"
             dataSource={store2}
+            // @ts-expect-error TS(2322): Type 'string[]' is not assignable to type '("day" ... Remove this comment to see the full error message
             views={views}
             defaultCurrentView="day"
             defaultCurrentDate={currentDate}

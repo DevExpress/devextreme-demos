@@ -18,6 +18,7 @@ function convertRangeToDays([startDate, endDate]) {
 }
 
 export default function App() {
+  // @ts-expect-error TS(2345): Argument of type 'Date[]' is not assignable to par... Remove this comment to see the full error message
   const [selectedDays, setSelectedDays] = React.useState(convertRangeToDays(initialValue));
 
   const onCurrentValueChange = React.useCallback(({ value: [startDate, endDate] }) => {
@@ -41,6 +42,7 @@ export default function App() {
           </div>
         </div>
         <div className="dx-field-value">
+          // @ts-expect-error TS(2786): 'DateRangeBox' cannot be used as a JSX component.
           <DateRangeBox
             defaultValue={initialValue}
             onValueChanged={onCurrentValueChange}
@@ -50,6 +52,7 @@ export default function App() {
       <div className="dx-field">
         <div className="dx-field-label">Custom format</div>
         <div className="dx-field-value">
+          // @ts-expect-error TS(2786): 'DateRangeBox' cannot be used as a JSX component.
           <DateRangeBox
             defaultValue={initialValue}
             displayFormat="EEEE, MMM dd"
@@ -59,24 +62,28 @@ export default function App() {
       <div className="dx-field">
         <div className="dx-field-label">Use buttons to apply selection</div>
         <div className="dx-field-value">
+          // @ts-expect-error TS(2786): 'DateRangeBox' cannot be used as a JSX component.
           <DateRangeBox applyValueMode="useButtons" />
         </div>
       </div>
       <div className="dx-field">
         <div className="dx-field-label">Single-calendar View</div>
         <div className="dx-field-value">
+          // @ts-expect-error TS(2786): 'DateRangeBox' cannot be used as a JSX component.
           <DateRangeBox multiView={false} />
         </div>
       </div>
       <div className="dx-field">
         <div className="dx-field-label">Calendar only appears on icon click</div>
         <div className="dx-field-value">
+          // @ts-expect-error TS(2786): 'DateRangeBox' cannot be used as a JSX component.
           <DateRangeBox openOnFieldClick={false} />
         </div>
       </div>
       <div className="dx-field">
         <div className="dx-field-label">Limit available dates (this month)</div>
         <div className="dx-field-value">
+          // @ts-expect-error TS(2786): 'DateRangeBox' cannot be used as a JSX component.
           <DateRangeBox
             min={min}
             max={max}
@@ -86,6 +93,7 @@ export default function App() {
       <div className="dx-field">
         <div className="dx-field-label">Clear button</div>
         <div className="dx-field-value">
+          // @ts-expect-error TS(2786): 'DateRangeBox' cannot be used as a JSX component.
           <DateRangeBox
             defaultValue={initialValue}
             showClearButton

@@ -14,6 +14,7 @@ class App extends React.Component {
         <div className="dx-fieldset">
           <div className="dx-fieldset-header">Custom Field Template</div>
           <div className="dx-field">
+            // @ts-expect-error TS(2786): 'Lookup' cannot be used as a JSX component.
             <Lookup className="field-customization"
               defaultValue={employees[0].ID}
               displayExpr={this.getDisplayExpr}
@@ -21,6 +22,7 @@ class App extends React.Component {
               items={employees}
               searchEnabled={true}
               fieldRender={Field}>
+              // @ts-expect-error TS(2786): 'DropDownOptions' cannot be used as a JSX componen... Remove this comment to see the full error message
               <DropDownOptions title="Select employee" />
             </Lookup>
           </div>
@@ -28,6 +30,7 @@ class App extends React.Component {
         <div className="dx-fieldset">
           <div className="dx-fieldset-header">Custom Item Template</div>
           <div className="dx-field">
+            // @ts-expect-error TS(2786): 'Lookup' cannot be used as a JSX component.
             <Lookup
               items={employees}
               displayExpr={this.getDisplayExpr}
@@ -35,6 +38,7 @@ class App extends React.Component {
               valueExpr="ID"
               placeholder="Select employee"
               itemRender={Item}>
+              // @ts-expect-error TS(2786): 'DropDownOptions' cannot be used as a JSX componen... Remove this comment to see the full error message
               <DropDownOptions title="Select employee" />
             </Lookup>
           </div>

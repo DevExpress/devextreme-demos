@@ -29,6 +29,14 @@ import service from './data.js';
 const applyChangesModeLabel = { 'aria-label': 'Apply Changes Mode' };
 
 class App extends React.Component {
+  fieldChooser: any;
+
+  setFieldChooser: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -52,6 +60,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'PivotGrid' cannot be used as a JSX component.
         <PivotGrid
           dataSource={dataSource}
           allowSortingBySummary={true}
@@ -59,10 +68,12 @@ class App extends React.Component {
           allowSorting={true}
           showBorders={true}
         >
+          // @ts-expect-error TS(2786): 'FieldChooser' cannot be used as a JSX component.
           <FieldChooser enabled={false} />
         </PivotGrid>
 
         <div className="container">
+          // @ts-expect-error TS(2786): 'PivotGridFieldChooser' cannot be used as a JSX co... Remove this comment to see the full error message
           <PivotGridFieldChooser
             ref={this.setFieldChooser}
             dataSource={dataSource}
@@ -71,7 +82,9 @@ class App extends React.Component {
             layout={this.state.layout}
             applyChangesMode={this.state.applyChangesMode}
           >
+            // @ts-expect-error TS(2786): 'Texts' cannot be used as a JSX component.
             <Texts
+              // @ts-expect-error TS(2322): Type '{ allFields: string; columnFields: string; d... Remove this comment to see the full error message
               allFields="All"
               columnFields="Columns"
               dataFields="Data"
@@ -81,11 +94,13 @@ class App extends React.Component {
           </PivotGridFieldChooser>
           { this.state.applyChangesMode === 'onDemand'
                 && <div className="bottom-bar">
+                  // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                   <Button
                     text="Apply"
                     type="default"
                     onClick={this.applyClick}
                   ></Button>
+                  // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
                   <Button
                     text="Cancel"
                     onClick={this.cancelClick}
@@ -97,6 +112,7 @@ class App extends React.Component {
             <div className="caption">Options</div>
             <div className="option">
               <span>Choose layout:</span>
+              // @ts-expect-error TS(2786): 'RadioGroup' cannot be used as a JSX component.
               <RadioGroup
                 items={layouts}
                 value={this.state.layout}
@@ -109,6 +125,7 @@ class App extends React.Component {
             </div>
             <div className="option">
               <span>Apply Changes Mode:</span>
+              // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
               <SelectBox
                 className="option-editor"
                 items={applyChangesModes}

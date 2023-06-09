@@ -27,6 +27,10 @@ const formatCurrency = new Intl.NumberFormat(
 ).format;
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
 
@@ -43,6 +47,7 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <div className="left">
+          // @ts-expect-error TS(2786): 'List' cannot be used as a JSX component.
           <List
             selectionMode="single"
             dataSource={dataSourceOptions}
@@ -69,6 +74,7 @@ class App extends React.Component {
             </div>
           </div>
 
+          // @ts-expect-error TS(2786): 'TileView' cannot be used as a JSX component.
           <TileView
             dataSource={currentHotel.Images}
             height={224}

@@ -5,6 +5,12 @@ import CheckBox from 'devextreme-react/check-box';
 import service from './data.js';
 
 class App extends React.Component {
+  employees: any;
+
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.employees = service.getEmployees();
@@ -48,24 +54,34 @@ class App extends React.Component {
     } = this.state;
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
         <DataGrid dataSource={this.employees}
           keyExpr="ID"
           showColumnLines={showColumnLines}
           showRowLines={showRowLines}
           showBorders={showBorders}
           rowAlternationEnabled={rowAlternationEnabled}>
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Prefix" width={80} caption="Title" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="FirstName" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="LastName" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="City" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="State" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="Position" width={130} />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="BirthDate" width={100} dataType="date" />
+          // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
           <Column dataField="HireDate" width={100} dataType="date" />
         </DataGrid>
         <div className="options">
           <div className="caption">Options</div>
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="Show Column Lines"
               value={showColumnLines}
@@ -73,6 +89,7 @@ class App extends React.Component {
           </div>
           &nbsp;
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="Show Row Lines"
               value={showRowLines}
@@ -80,6 +97,7 @@ class App extends React.Component {
           </div>
           &nbsp;
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="Show Borders"
               value={showBorders}
@@ -87,6 +105,7 @@ class App extends React.Component {
           </div>
           &nbsp;
           <div className="option">
+            // @ts-expect-error TS(2786): 'CheckBox' cannot be used as a JSX component.
             <CheckBox
               text="Alternating Row Color"
               value={rowAlternationEnabled}

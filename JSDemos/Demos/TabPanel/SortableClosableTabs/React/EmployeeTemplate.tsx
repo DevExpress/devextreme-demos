@@ -27,6 +27,7 @@ function EmployeeTemplate(props) {
       </div>
       <div className="caption">{`${FirstName} ${LastName}'s Tasks:`}</div>
       <div className="task-list">
+        // @ts-expect-error TS(2786): 'List' cannot be used as a JSX component.
         <List
           dataSource={tasks}
           showSelectionControls={true}

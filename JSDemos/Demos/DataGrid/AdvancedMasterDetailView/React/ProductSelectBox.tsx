@@ -6,6 +6,10 @@ const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridAdvancedMasterDetai
 const productLabel = { 'aria-label': 'Product' };
 
 class ProductSelectBox extends React.Component {
+  productsData: any;
+
+  props: any;
+
   constructor(props) {
     super(props);
 
@@ -21,6 +25,7 @@ class ProductSelectBox extends React.Component {
 
   render() {
     return (
+      // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
       <SelectBox
         value={this.props.productId}
         deferRendering={false}

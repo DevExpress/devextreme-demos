@@ -6,6 +6,10 @@ import { EmployeeItem } from './EmployeeItem.js';
 import { employees } from './data.js';
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   moreInfoButtonOptions = null;
 
   emailButtonOptions = null;
@@ -38,6 +42,7 @@ class App extends React.Component {
 
   render() {
     const items = employees.map((employee) => <li key={employee.ID}>
+      // @ts-expect-error TS(2786): 'EmployeeItem' cannot be used as a JSX component.
       <EmployeeItem
         employee={employee}
         showInfo={this.showInfo}
@@ -51,6 +56,7 @@ class App extends React.Component {
 
         <ul>{items}</ul>
 
+        // @ts-expect-error TS(2786): 'Popup' cannot be used as a JSX component.
         <Popup
           visible={this.state.popupVisible}
           onHiding={this.hideInfo}
@@ -63,25 +69,33 @@ class App extends React.Component {
           width={300}
           height={280}
         >
+          // @ts-expect-error TS(2786): 'Position' cannot be used as a JSX component.
           <Position
+            // @ts-expect-error TS(2322): Type '{ at: string; my: string; of: any; collision... Remove this comment to see the full error message
             at="bottom"
             my="center"
             of={this.state.positionOf}
             collision="fit"
           />
+          // @ts-expect-error TS(2786): 'ToolbarItem' cannot be used as a JSX component.
           <ToolbarItem
+            // @ts-expect-error TS(2322): Type '{ widget: string; toolbar: string; locateInM... Remove this comment to see the full error message
             widget="dxButton"
             toolbar="top"
             locateInMenu="always"
             options={this.moreInfoButtonOptions}
           />
+          // @ts-expect-error TS(2786): 'ToolbarItem' cannot be used as a JSX component.
           <ToolbarItem
+            // @ts-expect-error TS(2322): Type '{ widget: string; toolbar: string; location:... Remove this comment to see the full error message
             widget="dxButton"
             toolbar="bottom"
             location="before"
             options={this.emailButtonOptions}
           />
+          // @ts-expect-error TS(2786): 'ToolbarItem' cannot be used as a JSX component.
           <ToolbarItem
+            // @ts-expect-error TS(2322): Type '{ widget: string; toolbar: string; location:... Remove this comment to see the full error message
             widget="dxButton"
             toolbar="bottom"
             location="after"

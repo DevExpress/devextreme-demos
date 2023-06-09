@@ -25,6 +25,7 @@ class App extends React.Component {
             {service.getWeeksData().map((week, i) => <tr key={i}>
               <th>{`${week.weekCount} week`}</th>
               {week.bulletsData.map((data, j) => <td key={j}>
+                // @ts-expect-error TS(2786): 'Bullet' cannot be used as a JSX component.
                 <Bullet
                   className="bullet"
                   startScaleValue={0}
@@ -33,6 +34,7 @@ class App extends React.Component {
                   target={data.target}
                   color={data.color}
                 >
+                  // @ts-expect-error TS(2786): 'Tooltip' cannot be used as a JSX component.
                   <Tooltip customizeTooltip={this.customizeTooltip} />
                 </Bullet>
               </td>)}

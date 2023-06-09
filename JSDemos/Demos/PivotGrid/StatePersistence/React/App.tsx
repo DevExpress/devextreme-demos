@@ -21,10 +21,12 @@ class App extends React.Component {
             rows. <a onClick={this.onRefreshClick}>Refresh</a> the web page and note that
             the PivotGrid&rsquo;s state is&nbsp;automatically persisted.
           </div>
+          // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
           <Button
             text={"Reset the PivotGrid's State"}
             onClick={this.onResetClick}
           />
+          // @ts-expect-error TS(2786): 'PivotGrid' cannot be used as a JSX component.
           <PivotGrid
             id="sales"
             dataSource={dataSource}
@@ -36,14 +38,19 @@ class App extends React.Component {
             height={570}
             onContextMenuPreparing={this.onContextMenuPreparing}
           >
+            // @ts-expect-error TS(2786): 'StateStoring' cannot be used as a JSX component.
             <StateStoring
+              // @ts-expect-error TS(2322): Type '{ enabled: boolean; type: string; storageKey... Remove this comment to see the full error message
               enabled={true}
               type="localStorage"
               storageKey="dx-widget-gallery-pivotgrid-storing"
             />
+            // @ts-expect-error TS(2786): 'FieldPanel' cannot be used as a JSX component.
             <FieldPanel
+              // @ts-expect-error TS(2322): Type '{ visible: boolean; }' is not assignable to ... Remove this comment to see the full error message
               visible={true}
             />
+            // @ts-expect-error TS(2786): 'FieldChooser' cannot be used as a JSX component.
             <FieldChooser enabled={true} />
           </PivotGrid>
         </div>

@@ -44,38 +44,54 @@ const allowedPageSizes = [8, 12, 20];
 class App extends React.Component {
   render() {
     return (
+      // @ts-expect-error TS(2786): 'DataGrid' cannot be used as a JSX component.
       <DataGrid
         dataSource={store}
         showBorders={true}
         remoteOperations={true}
       >
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column
+          // @ts-expect-error TS(2322): Type '{ dataField: string; dataType: string; }' is... Remove this comment to see the full error message
           dataField="OrderNumber"
           dataType="number"
         />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column
+          // @ts-expect-error TS(2322): Type '{ dataField: string; dataType: string; }' is... Remove this comment to see the full error message
           dataField="OrderDate"
           dataType="date"
         />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column
+          // @ts-expect-error TS(2322): Type '{ dataField: string; dataType: string; }' is... Remove this comment to see the full error message
           dataField="StoreCity"
           dataType="string"
         />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column
+          // @ts-expect-error TS(2322): Type '{ dataField: string; dataType: string; }' is... Remove this comment to see the full error message
           dataField="StoreState"
           dataType="string"
         />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column
+          // @ts-expect-error TS(2322): Type '{ dataField: string; dataType: string; }' is... Remove this comment to see the full error message
           dataField="Employee"
           dataType="string"
         />
+        // @ts-expect-error TS(2786): 'Column' cannot be used as a JSX component.
         <Column
+          // @ts-expect-error TS(2322): Type '{ dataField: string; dataType: string; forma... Remove this comment to see the full error message
           dataField="SaleAmount"
           dataType="number"
           format="currency"
         />
+        // @ts-expect-error TS(2786): 'Paging' cannot be used as a JSX component.
         <Paging defaultPageSize={12} />
+        // @ts-expect-error TS(2786): 'Pager' cannot be used as a JSX component.
         <Pager
+          // @ts-expect-error TS(2322): Type '{ showPageSizeSelector: boolean; allowedPage... Remove this comment to see the full error message
           showPageSizeSelector={true}
           allowedPageSizes={allowedPageSizes}
         />

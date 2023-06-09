@@ -13,6 +13,8 @@ function getCurrentTraining(date, employeeID) {
 }
 
 class DataCell extends React.PureComponent {
+  props: any;
+
   render() {
     const { data: { startDate, groups: { employeeID }, text } } = this.props;
     const dayClasses = [

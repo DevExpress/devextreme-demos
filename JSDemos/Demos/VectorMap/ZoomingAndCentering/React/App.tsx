@@ -13,6 +13,12 @@ import { markers } from './data.js';
 const bounds = [-180, 85, 180, -60];
 
 class App extends React.Component {
+  reset: any;
+
+  storeVectorMap: any;
+
+  vectorMap: any;
+
   constructor(props) {
     super(props);
 
@@ -42,22 +48,29 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        // @ts-expect-error TS(2786): 'VectorMap' cannot be used as a JSX component.
         <VectorMap
           ref={this.storeVectorMap}
           id="vector-map"
           onClick={this.markerClick}
           bounds={bounds}>
+          // @ts-expect-error TS(2786): 'Layer' cannot be used as a JSX component.
           <Layer
+            // @ts-expect-error TS(2322): Type '{ children: never[]; dataSource: any; hoverE... Remove this comment to see the full error message
             dataSource={mapsData.world}
             hoverEnabled={false}>
           </Layer>
+          // @ts-expect-error TS(2786): 'Layer' cannot be used as a JSX component.
           <Layer
+            // @ts-expect-error TS(2322): Type '{ dataSource: { coordinates: number[]; attri... Remove this comment to see the full error message
             dataSource={markers}
           />
+          // @ts-expect-error TS(2786): 'Tooltip' cannot be used as a JSX component.
           <Tooltip enabled={true}
             customizeTooltip={this.customizeTooltip}
           ></Tooltip>
         </VectorMap>
+        // @ts-expect-error TS(2786): 'Button' cannot be used as a JSX component.
         <Button
           text="Reset"
           id="reset"

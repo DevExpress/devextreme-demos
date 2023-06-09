@@ -6,6 +6,10 @@ import { employees, applyValueModeLabel } from './data.js';
 const applyValueModes = ['instantly', 'useButtons'];
 
 class App extends React.Component {
+  setState: any;
+
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -22,6 +26,7 @@ class App extends React.Component {
       <div>
         <div className="dx-fieldset">
           <div className="dx-field">
+            // @ts-expect-error TS(2786): 'Lookup' cannot be used as a JSX component.
             <Lookup
               value={selectedValue}
               items={employees}
@@ -30,6 +35,7 @@ class App extends React.Component {
               onValueChanged={this.onValueChanged}
               applyValueMode={applyValueMode}
             >
+              // @ts-expect-error TS(2786): 'DropDownOptions' cannot be used as a JSX componen... Remove this comment to see the full error message
               <DropDownOptions showTitle={false} />
             </Lookup>
           </div>
@@ -47,6 +53,7 @@ class App extends React.Component {
           <div className="caption">Options</div>
           <div className="option">
             <div className="label">Apply Value Mode</div>
+            // @ts-expect-error TS(2786): 'SelectBox' cannot be used as a JSX component.
             <SelectBox
               items={applyValueModes}
               inputAttr={applyValueModeLabel}
