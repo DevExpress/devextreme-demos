@@ -1076,6 +1076,7 @@
     <Content Include="Content\DemosStyles\DataGrid\DeferredSelection.css" />
     <Content Include="Content\DemosStyles\DataGrid\Filtering.css" />
     <Content Include="Content\DemosStyles\DataGrid\FilteringAPI.css" />
+    <Content Include="Content\DemosStyles\DataGrid\ColumnHeaderFilter.css" />
     <Content Include="Content\DemosStyles\DataGrid\InfiniteScrolling.css" />
     <Content Include="Content\DemosStyles\DataGrid\MultipleRecordSelectionAPI.css" />
     <Content Include="Content\DemosStyles\DataGrid\MultipleRecordSelectionModes.css" />
