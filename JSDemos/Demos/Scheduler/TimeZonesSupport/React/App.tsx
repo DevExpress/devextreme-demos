@@ -8,9 +8,9 @@ import { data, locations, timeZoneLabel } from './data.js';
 const currentDate = new Date(2021, 3, 27);
 const views = ['workWeek'];
 
-function getLocations(date) {
+function getLocations(date: Date) {
   const timeZones = timeZoneUtils.getTimeZones(date);
-  return timeZones.filter((timeZone) => locations.indexOf(timeZone.id) !== -1);
+  return timeZones.filter((timeZone: { id: string; }) => locations.indexOf(timeZone.id) !== -1);
 }
 
 const demoLocations = getLocations(currentDate);
@@ -27,13 +27,13 @@ class App extends React.Component {
     this.onOptionChanged = this.onOptionChanged.bind(this);
   }
 
-  onValueChanged(e) {
+  onValueChanged(e: { value: any; }) {
     this.setState({
       timeZone: e.value,
     });
   }
 
-  onAppointmentFormOpening(e) {
+  onAppointmentFormOpening(e: { form: any; }) {
     const { form } = e;
 
     const startDateTimezoneEditor = form.getEditor('startDateTimeZone');
@@ -48,7 +48,7 @@ class App extends React.Component {
     endDateDataSource.load();
   }
 
-  onOptionChanged(e) {
+  onOptionChanged(e: { name: string; value: any; }) {
     if (e.name === 'currentDate') {
       this.setState({
         demoLocations: getLocations(e.value),

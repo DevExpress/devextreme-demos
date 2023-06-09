@@ -59,7 +59,7 @@ class App extends React.Component {
     dataSource.state({});
   }
 
-  onContextMenuPreparing(e) {
+  onContextMenuPreparing(e: { component: { getDataSource: () => any; }; field: { summaryType: string; }; items: { text: string; onItemClick?: () => void; items?: { text: string; value: string; onItemClick(args: any): void; selected: boolean; }[]; }[]; }) {
     const dataSource = e.component.getDataSource();
     const sourceField = e.field;
 
@@ -86,7 +86,7 @@ class App extends React.Component {
       }
 
       if (sourceField.dataType === 'number') {
-        const menuItems = [];
+        const menuItems: ({ text: string; value: string; onItemClick(args: any): void; selected: boolean; })[] = [];
 
         e.items.push({ text: 'Summary Type', items: menuItems });
 
@@ -139,7 +139,7 @@ const dataSource = new PivotGridDataSource({
   store: sales,
 });
 
-function setSummaryType(args, sourceField) {
+function setSummaryType(args: { itemData: { value: any; }; }, sourceField: { index: string | number; } | { summaryType: string; }) {
   dataSource.field(sourceField.index, {
     summaryType: args.itemData.value,
   });

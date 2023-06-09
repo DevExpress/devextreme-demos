@@ -61,14 +61,14 @@ class App extends React.Component {
     );
   }
 
-  setResolveMode(data) {
+  setResolveMode(data: { value: any; }) {
     this.setState({
       resolveMode: data.value,
     });
   }
 }
 
-function formatText(arg) {
+function formatText(arg: { argumentText: any; percentText: any; }) {
   return `${arg.argumentText} (${arg.percentText})`;
 }
 

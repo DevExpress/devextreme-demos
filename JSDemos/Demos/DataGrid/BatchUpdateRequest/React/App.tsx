@@ -13,7 +13,7 @@ const ordersStore = createStore({
   },
 });
 
-async function sendBatchRequest(url, changes) {
+async function sendBatchRequest(url: RequestInfo | URL, changes) {
   const result = await fetch(url, {
     method: 'POST',
     body: JSON.stringify(changes),
@@ -30,14 +30,14 @@ async function sendBatchRequest(url, changes) {
   }
 }
 
-async function processBatchRequest(url, changes, component) {
+async function processBatchRequest(url: string, changes, component: { refresh: (arg0: boolean) => any; cancelEditData: () => void; }) {
   await sendBatchRequest(url, changes);
   await component.refresh(true);
   component.cancelEditData();
 }
 
 function App() {
-  const onSaving = React.useCallback((e) => {
+  const onSaving = React.useCallback((e: { cancel: boolean; changes: string | any[]; promise: Promise<void>; component: any; }) => {
     e.cancel = true;
 
     if (e.changes.length) {

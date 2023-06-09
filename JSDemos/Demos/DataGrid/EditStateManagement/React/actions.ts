@@ -12,7 +12,7 @@ export const SAVING_CANCEL = 'SAVING_CANCEL';
 export const SET_CHANGES = 'SET_CHANGES';
 export const SET_EDIT_ROW_KEY = 'SET_EDIT_ROW_KEY';
 
-export async function loadOrders(dispatch) {
+export async function loadOrders(dispatch: (arg0: { type: string; payload?: { data: any; }; }) => void) {
   dispatch({ type: FETCH_PENDING });
 
   try {
@@ -30,7 +30,7 @@ export async function loadOrders(dispatch) {
   }
 }
 
-export async function saveChange(dispatch, change) {
+export async function saveChange(dispatch: (arg0: { type: string; payload?: { change: any; }; }) => void, change: { type: any; data: any; }) {
   if (change && change.type) {
     let data;
 
@@ -58,7 +58,7 @@ export async function saveChange(dispatch, change) {
   }
 }
 
-async function sendChange(url, change) {
+async function sendChange(url: string, change: { type: any; data: any; key: any; }) {
   switch (change.type) {
     case 'insert':
       return sendRequest(`${url}/InsertOrder`, 'POST', {
@@ -76,14 +76,14 @@ async function sendChange(url, change) {
   }
 }
 
-export function setChanges(dispatch, changes) {
+export function setChanges(dispatch: (arg0: { type: string; payload: any; }) => void, changes) {
   dispatch({
     type: SET_CHANGES,
     payload: changes,
   });
 }
 
-export function setEditRowKey(dispatch, editRowKey) {
+export function setEditRowKey(dispatch: (arg0: { type: string; payload: any; }) => void, editRowKey) {
   dispatch({
     type: SET_EDIT_ROW_KEY,
     payload: editRowKey,

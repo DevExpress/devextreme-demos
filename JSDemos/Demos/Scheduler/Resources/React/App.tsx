@@ -68,7 +68,7 @@ class App extends React.Component {
     );
   }
 
-  onRadioGroupValueChanged(args) {
+  onRadioGroupValueChanged(args: { value: any; }) {
     this.setState({
       radioGroupValue: args.value,
     });

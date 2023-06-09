@@ -3,7 +3,7 @@ import { Button } from 'devextreme-react/button';
 import notify from 'devextreme/ui/notify';
 
 class App extends React.Component {
-  onClick(e) {
+  onClick(e: { component: { option: (arg0: string) => any; }; }) {
     const buttonText = e.component.option('text');
     notify(`The ${capitalize(buttonText)} button was clicked`);
   }
@@ -150,7 +150,7 @@ class App extends React.Component {
   }
 }
 
-function capitalize(text) {
+function capitalize(text: string) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 

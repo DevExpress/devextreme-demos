@@ -36,7 +36,7 @@ function App() {
   );
 }
 
-function formatLabel(arg) {
+function formatLabel(arg: { percentText: any; item: { argument: any; }; }) {
   return `<span class="label">${arg.percentText}</span><br/>${arg.item.argument}`;
 }
 

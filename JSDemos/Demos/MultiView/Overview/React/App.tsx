@@ -19,7 +19,7 @@ class App extends React.Component {
     this.onAnimationEnabledChanged = this.onAnimationEnabledChanged.bind(this);
   }
 
-  onSelectionChanged(args) {
+  onSelectionChanged(args: { name: string; value: any; }) {
     if (args.name === 'selectedIndex') {
       this.setState({
         selectedIndex: args.value,
@@ -27,13 +27,13 @@ class App extends React.Component {
     }
   }
 
-  onLoopChanged(args) {
+  onLoopChanged(args: { value: any; }) {
     this.setState({
       loop: args.value,
     });
   }
 
-  onAnimationEnabledChanged(args) {
+  onAnimationEnabledChanged(args: { value: any; }) {
     this.setState({
       animationEnabled: args.value,
     });

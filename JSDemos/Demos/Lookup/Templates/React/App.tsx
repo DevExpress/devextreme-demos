@@ -43,7 +43,7 @@ class App extends React.Component {
     );
   }
 
-  getDisplayExpr(item) {
+  getDisplayExpr(item: { FirstName: any; LastName: any; }) {
     return item ? `${item.FirstName} ${item.LastName}` : '';
   }
 }

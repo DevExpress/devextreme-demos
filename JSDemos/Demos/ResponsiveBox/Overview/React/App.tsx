@@ -7,7 +7,7 @@ import ResponsiveBox, {
   Location,
 } from 'devextreme-react/responsive-box';
 
-function screen(width) {
+function screen(width: number) {
   return (width < 700) ? 'sm' : 'lg';
 }
 

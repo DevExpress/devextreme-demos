@@ -14,7 +14,7 @@ class App extends React.Component {
     this.onFilterModeChange = this.onFilterModeChange.bind(this);
   }
 
-  onFilterModeChange(args) {
+  onFilterModeChange(args: { value: any; }) {
     this.setState({
       filterMode: args.value,
     });

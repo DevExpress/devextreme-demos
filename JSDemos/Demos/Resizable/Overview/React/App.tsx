@@ -17,7 +17,7 @@ function App() {
     setKeepAspectRatio(value);
   }, [setKeepAspectRatio]);
 
-  const handlesValueChange = React.useCallback((value) => {
+  const handlesValueChange = React.useCallback((value: { includes: (arg0: string) => any; }) => {
     const classes = handleValues.reduce((acc, handle) => {
       const newClass = value.includes(handle) ? '' : ` no-${handle}-handle`;
       return acc + newClass;

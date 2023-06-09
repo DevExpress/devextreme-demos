@@ -18,7 +18,7 @@ class App extends React.Component {
     };
   }
 
-  onReorder(e) {
+  onReorder(e: { component: { getVisibleRows: () => any; }; toIndex: string | number; itemData: { ID: any; }; }) {
     const visibleRows = e.component.getVisibleRows();
     const newTasks = [...this.state.tasks];
 
@@ -33,7 +33,7 @@ class App extends React.Component {
     });
   }
 
-  onShowDragIconsChanged(args) {
+  onShowDragIconsChanged(args: { value: any; }) {
     this.setState({
       showDragIcons: args.value,
     });

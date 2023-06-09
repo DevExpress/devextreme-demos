@@ -109,7 +109,7 @@ class App extends React.Component {
     );
   }
 
-  showInfo(employee) {
+  showInfo(employee: { ID: any; }) {
     this.setState({
       currentEmployee: employee,
       positionOf: `#image${employee.ID}`,

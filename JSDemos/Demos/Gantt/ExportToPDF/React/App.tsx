@@ -229,38 +229,38 @@ class App extends React.Component {
     ).then((doc) => doc.save('gantt.pdf'));
   }
 
-  formatBoxSelectionChanged(e) {
+  formatBoxSelectionChanged(e: { value: any; }) {
     this.setState({ formatBoxValue: e.value });
   }
 
-  exportModeBoxSelectionChanged(e) {
+  exportModeBoxSelectionChanged(e: { value: any; }) {
     this.setState({ exportModeBoxValue: e.value });
   }
 
-  dateRangeBoxSelectionChanged(e) {
+  dateRangeBoxSelectionChanged(e: { value: string; }) {
     this.setState({
       dateRangeBoxValue: e.value,
       customRangeDisabled: e.value !== 'Custom',
     });
   }
 
-  onLandscapeCheckBoxChanged(e) {
+  onLandscapeCheckBoxChanged(e: { value: any; }) {
     this.setState({ landscapeCheckBoxValue: e.value });
   }
 
-  startTaskIndexValueChanged(e) {
+  startTaskIndexValueChanged(e: { value: any; }) {
     this.setState({ startTaskIndex: e.value });
   }
 
-  endTaskIndexValueChanged(e) {
+  endTaskIndexValueChanged(e: { value: any; }) {
     this.setState({ endTaskIndex: e.value });
   }
 
-  startDateValueChanged(e) {
+  startDateValueChanged(e: { value: any; }) {
     this.setState({ startDate: e.value });
   }
 
-  endDateValueChanged(e) {
+  endDateValueChanged(e: { value: any; }) {
     this.setState({ startDate: e.value });
   }
 }

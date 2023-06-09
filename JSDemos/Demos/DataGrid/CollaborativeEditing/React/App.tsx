@@ -25,7 +25,7 @@ function createStore() {
 const store1 = createStore();
 const store2 = createStore();
 
-function updateStores(events) {
+function updateStores(events: { type: "insert" | "remove" | "update"; data?: any; key?: any; index?: number; }[] | { type: string; key: any; data: any; }[] | { type: string; data: any; }[] | { type: string; key: any; }[]) {
   store1.push(events);
   store2.push(events);
 }

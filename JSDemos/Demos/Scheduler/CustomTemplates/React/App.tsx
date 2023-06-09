@@ -50,7 +50,7 @@ class App extends React.Component {
     );
   }
 
-  onAppointmentFormOpening(e) {
+  onAppointmentFormOpening(e: { appointmentData?: any; form?: any; }) {
     const { form } = e;
     let movieInfo = getMovieById(e.appointmentData.movieId) || {};
     let { startDate } = e.appointmentData;
@@ -65,7 +65,7 @@ class App extends React.Component {
         items: moviesData,
         displayExpr: 'text',
         valueExpr: 'id',
-        onValueChanged(args) {
+        onValueChanged(args: { value: any; }) {
           movieInfo = getMovieById(args.value);
 
           form.updateData('director', movieInfo.director);
@@ -88,7 +88,7 @@ class App extends React.Component {
       editorOptions: {
         width: '100%',
         type: 'datetime',
-        onValueChanged(args) {
+        onValueChanged(args: { value: any; }) {
           startDate = args.value;
           form.updateData('endDate', new Date(startDate.getTime() + 60 * 1000 * movieInfo.duration));
         },

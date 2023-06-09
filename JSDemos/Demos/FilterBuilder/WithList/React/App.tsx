@@ -42,12 +42,12 @@ class App extends React.Component {
     );
   }
 
-  setFilterBuilderInstance(ref) {
+  setFilterBuilderInstance(ref: { instance: any; }) {
     this.filterBuilderInstance = ref.instance;
     this.refreshDataSource();
   }
 
-  onValueChanged(e) {
+  onValueChanged(e: { value: any; }) {
     this.setState({
       value: e.value,
     });

@@ -7,7 +7,7 @@ const { format } = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 0,
 });
 
-function getPieData(name) {
+function getPieData(name: string | number) {
   return countriesGDP[name] ? [
     { name: 'industry', value: countriesGDP[name].industry },
     { name: 'services', value: countriesGDP[name].services },
@@ -15,7 +15,7 @@ function getPieData(name) {
   ] : null;
 }
 
-export default function TooltipTemplate(info) {
+export default function TooltipTemplate(info: { attribute: (arg0: string) => any; }) {
   const name = info.attribute('name');
   const countryGDPData = countriesGDP[name];
   const total = countryGDPData && countryGDPData.total;

@@ -54,7 +54,7 @@ class App extends React.Component {
     );
   }
 
-  changeMode(e) {
+  changeMode(e: { value: any; }) {
     this.setState({
       applyChangesMode: e.value,
     });

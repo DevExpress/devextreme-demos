@@ -75,13 +75,13 @@ class App extends React.Component {
     );
   }
 
-  setPalette(e) {
+  setPalette(e: { value: any; }) {
     this.setState({
       palette: e.value,
     });
   }
 
-  setExtensionMode(e) {
+  setExtensionMode(e: { value: any; }) {
     this.setState({
       extensionMode: e.value,
     });

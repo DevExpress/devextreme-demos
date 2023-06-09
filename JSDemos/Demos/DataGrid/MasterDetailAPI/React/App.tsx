@@ -35,17 +35,17 @@ class App extends React.Component {
     );
   }
 
-  contentReady(e) {
+  contentReady(e: { component: { getSelectedRowKeys: () => { (): any; new(): any; length: any; }; selectRowsByIndexes: (arg0: number) => void; }; }) {
     if (!e.component.getSelectedRowKeys().length) { e.component.selectRowsByIndexes(0); }
   }
 
-  selectionChanged(e) {
+  selectionChanged(e: { component: { collapseAll: (arg0: number) => void; expandRow: (arg0: any) => void; }; currentSelectedRowKeys: any[]; }) {
     e.component.collapseAll(-1);
     e.component.expandRow(e.currentSelectedRowKeys[0]);
   }
 }
 
-function renderDetail(props) {
+function renderDetail(props: { data: { Picture: any; Notes: any; }; }) {
   const { Picture, Notes } = props.data;
   return (
     <div className="employee-info">

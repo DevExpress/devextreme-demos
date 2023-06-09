@@ -51,7 +51,7 @@ class App extends React.Component {
     );
   }
 
-  setAlgorithm(data) {
+  setAlgorithm(data: { value: any; }) {
     this.setState({
       selectedAlgorithm: data.value,
       currentAlgorithm: getCurrentAlgorithm(data.value),
@@ -59,12 +59,12 @@ class App extends React.Component {
   }
 }
 
-function customAlgorithm(arg) {
+function customAlgorithm(arg: { rect: string | any[]; sum: any; items: any[]; }) {
   const totalRect = arg.rect.slice();
   let totalSum = arg.sum;
   let side = 0;
 
-  arg.items.forEach((item) => {
+  arg.items.forEach((item: { value: number; rect: any; }) => {
     const size = Math.round(((totalRect[side + 2] - totalRect[side]) * item.value) / totalSum);
     const rect = totalRect.slice();
 
@@ -76,7 +76,7 @@ function customAlgorithm(arg) {
   });
 }
 
-function getCurrentAlgorithm(selectedAlgorithm) {
+function getCurrentAlgorithm(selectedAlgorithm: string) {
   let currentAlgorithm = selectedAlgorithm.toLowerCase();
   if (currentAlgorithm === 'custom') {
     currentAlgorithm = customAlgorithm;
@@ -85,7 +85,7 @@ function getCurrentAlgorithm(selectedAlgorithm) {
   return currentAlgorithm;
 }
 
-function customizeTooltip(arg) {
+function customizeTooltip(arg: { node: { getParent?: any; isLeaf?: any; data?: any; }; valueText: any; }) {
   const { data } = arg.node;
   const parentData = arg.node.getParent().data;
 

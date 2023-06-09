@@ -19,7 +19,7 @@ class App extends React.Component {
     this.onGroupByDateChanged = this.onGroupByDateChanged.bind(this);
   }
 
-  onGroupByDateChanged(args) {
+  onGroupByDateChanged(args: { value: any; }) {
     this.setState({
       groupByDate: args.value,
     });

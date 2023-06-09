@@ -83,7 +83,7 @@ class App extends React.Component {
     dataSource.reload();
   }
 
-  selectionChanged(data) {
+  selectionChanged(data: { selectedRowKeys: any; }) {
     this.setState({
       selectedItemKeys: data.selectedRowKeys,
     });

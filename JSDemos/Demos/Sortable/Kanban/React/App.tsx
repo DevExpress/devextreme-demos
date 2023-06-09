@@ -3,8 +3,8 @@ import ScrollView from 'devextreme-react/scroll-view';
 import Sortable from 'devextreme-react/sortable';
 import { tasks as taskList, employees } from './data.js';
 
-function getLists(statusArray, taskArray) {
-  const tasksMap = taskArray.reduce((result, task) => {
+function getLists(statusArray: any[], taskArray: any[]) {
+  const tasksMap = taskArray.reduce((result: { [x: string]: any[]; }, task: { Task_Status: string | number; }) => {
     if (result[task.Task_Status]) {
       result[task.Task_Status].push(task);
     } else {
@@ -13,27 +13,27 @@ function getLists(statusArray, taskArray) {
 
     return result;
   }, {});
-  return statusArray.map((status) => tasksMap[status]);
+  return statusArray.map((status: string | number) => tasksMap[status]);
 }
 
-function getEmployeesMap(employeesArray) {
-  return employeesArray.reduce((result, employee) => {
+function getEmployeesMap(employeesArray: any[]) {
+  return employeesArray.reduce((result: { [x: string]: any; }, employee: { ID: string | number; Name: any; }) => {
     result[employee.ID] = employee.Name;
     return result;
   }, {});
 }
 
-function removeItem(array, removeIdx) {
+function removeItem(array: any[], removeIdx) {
   return array.filter((_, idx) => idx !== removeIdx);
 }
 
-function insertItem(array, item, insertIdx) {
+function insertItem(array: any[], item, insertIdx: number) {
   const newArray = [...array];
   newArray.splice(insertIdx, 0, item);
   return newArray;
 }
 
-function reorderItem(array, fromIdx, toIdx) {
+function reorderItem(array: { [x: string]: any; }, fromIdx: string | number, toIdx) {
   const item = array[fromIdx];
   const result = removeItem(array, fromIdx);
   return insertItem(result, item, toIdx);
@@ -65,7 +65,7 @@ function List({
         data={index}
         onReorder={onTaskDrop}
         onAdd={onTaskDrop}>
-        {tasks.map((task) => <Card
+        {tasks.map((task: { Task_ID: any; }) => <Card
           key={task.Task_ID}
           task={task}
           employeesMap={employeesMap}>
@@ -80,8 +80,8 @@ function App() {
   const [lists, setLists] = React.useState(getLists(taskStatuses, taskList));
 
   const onListReorder = React.useCallback(({ fromIndex, toIndex }) => {
-    setLists((state) => reorderItem(state, fromIndex, toIndex));
-    setStatuses((state) => reorderItem(state, fromIndex, toIndex));
+    setLists((state: { [x: string]: any; }) => reorderItem(state, fromIndex, toIndex));
+    setStatuses((state: { [x: string]: any; }) => reorderItem(state, fromIndex, toIndex));
   }, []);
 
   const onTaskDrop = React.useCallback(
@@ -110,7 +110,7 @@ function App() {
           itemOrientation="horizontal"
           handle=".list-title"
           onReorder={onListReorder}>
-          {lists.map((tasks, listIndex) => {
+          {lists.map((tasks, listIndex: string | number) => {
             const status = statuses[listIndex];
             return <List
               key={status}

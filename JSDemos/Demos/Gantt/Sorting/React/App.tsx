@@ -66,7 +66,7 @@ function App() {
     </div>
   );
 
-  function onSortingModeChanged(e) {
+  function onSortingModeChanged(e: { value: string; }) {
     setGanttConfig({
       ...ganttConfig,
       sortingMode: e.value,
@@ -74,7 +74,7 @@ function App() {
     });
   }
 
-  function onShowSortIndexesChanged(e) {
+  function onShowSortIndexesChanged(e: { value: any; }) {
     setGanttConfig({
       ...ganttConfig,
       showSortIndexes: e.value,

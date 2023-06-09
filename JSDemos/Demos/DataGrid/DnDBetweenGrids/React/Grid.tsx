@@ -3,7 +3,12 @@ import DataGrid, {
   Column, RowDragging, Scrolling, Lookup,
 } from 'devextreme-react/data-grid';
 
-class Grid extends React.Component {
+interface GridProps {
+tasksStore: CustomStore<any, any>;
+status: number;
+}
+
+class Grid extends React.Component<GridProps> {
   constructor(props) {
     super(props);
 
@@ -26,7 +31,7 @@ class Grid extends React.Component {
     };
   }
 
-  onAdd(e) {
+  onAdd(e: { itemData: { ID: any; }; toData: any; }) {
     const key = e.itemData.ID;
     const values = { Status: e.toData };
 

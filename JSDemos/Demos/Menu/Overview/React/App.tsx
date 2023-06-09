@@ -87,7 +87,7 @@ class App extends React.Component {
     );
   }
 
-  itemClick(e) {
+  itemClick(e: { itemData: { price: any; }; }) {
     if (e.itemData.price) {
       this.setState({
         currentProduct: e.itemData,
@@ -95,19 +95,19 @@ class App extends React.Component {
     }
   }
 
-  showSubmenuModeChanged(e) {
+  showSubmenuModeChanged(e: { value: any; }) {
     this.setState({
       showFirstSubmenuModes: e.value,
     });
   }
 
-  orientationChanged(e) {
+  orientationChanged(e: { value: any; }) {
     this.setState({
       orientation: e.value,
     });
   }
 
-  hideSubmenuOnMouseLeaveChanged(e) {
+  hideSubmenuOnMouseLeaveChanged(e: { value: any; }) {
     this.setState({
       hideSubmenuOnMouseLeave: e.value,
     });

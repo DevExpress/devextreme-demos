@@ -12,20 +12,20 @@ class App extends React.Component {
     this.getFilteredCities = this.getFilteredCities.bind(this);
   }
 
-  getFilteredCities(options) {
+  getFilteredCities(options: { data: { StateID: any; }; }) {
     return {
       store: this.cities,
       filter: options.data ? ['StateID', '=', options.data.StateID] : null,
     };
   }
 
-  onEditorPreparing(e) {
+  onEditorPreparing(e: { parentType: string; dataField: string; editorOptions: { disabled: boolean; }; row: { data: { StateID: any; }; }; }) {
     if (e.parentType === 'dataRow' && e.dataField === 'CityID') {
       e.editorOptions.disabled = (typeof e.row.data.StateID !== 'number');
     }
   }
 
-  setStateValue(rowData, value) {
+  setStateValue(rowData: { CityID: any; }, value) {
     rowData.CityID = null;
     this.defaultSetCellValue(rowData, value);
   }

@@ -3,12 +3,12 @@ import { registerGradient, registerPattern } from 'devextreme/common/charts';
 const imagePatternSize = 12;
 const shapePatternSize = 6;
 
-function hexToRgb(hex, opacity = 1) {
+function hexToRgb(hex: string, opacity = 1) {
   const hexColorParts = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return `rgba(${parseInt(hexColorParts[1], 16)}, ${parseInt(hexColorParts[2], 16)}, ${parseInt(hexColorParts[3], 16)}, ${opacity})`;
 }
 
-function getGradient(type, color1, color2) {
+function getGradient(type: string, color1: string, color2: string) {
   return registerGradient(type, {
     colors: [{
       offset: '20%',
@@ -20,11 +20,11 @@ function getGradient(type, color1, color2) {
   });
 }
 
-export function getLinearGradient(color) { return getGradient('linear', color, hexToRgb(color, 0.5)); }
+export function getLinearGradient(color: string) { return getGradient('linear', color, hexToRgb(color, 0.5)); }
 
-export function getRadialGradient(color) { return getGradient('radial', hexToRgb(color, 0.5), color); }
+export function getRadialGradient(color: string) { return getGradient('radial', hexToRgb(color, 0.5), color); }
 
-export function getPatternImage(color) {
+export function getPatternImage(color: string) {
   return registerPattern({
     width: imagePatternSize,
     height: imagePatternSize,
@@ -44,7 +44,7 @@ export function getPatternImage(color) {
   });
 }
 
-export function getStrokePattern(color) {
+export function getStrokePattern(color: string) {
   return registerPattern({
     width: shapePatternSize,
     height: shapePatternSize,
@@ -62,7 +62,7 @@ export function getStrokePattern(color) {
   });
 }
 
-export function getSquarePattern(color) {
+export function getSquarePattern(color: string) {
   return registerPattern({
     width: shapePatternSize,
     height: shapePatternSize,
@@ -73,7 +73,7 @@ export function getSquarePattern(color) {
   });
 }
 
-export function createRect(size, fill, stroke, strokeWidth) {
+export function createRect(size: string | number, fill: string, stroke: string, strokeWidth: string | number) {
   const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 
   rect.setAttribute('x', 0);

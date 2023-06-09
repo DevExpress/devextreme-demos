@@ -38,7 +38,7 @@ class App extends React.Component {
   }
 }
 
-function customizeText(arg) {
+function customizeText(arg: { valueText: any; percentText: any; }) {
   return `${arg.valueText} (${arg.percentText})`;
 }
 

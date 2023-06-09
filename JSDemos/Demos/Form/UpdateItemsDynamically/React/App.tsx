@@ -12,7 +12,7 @@ class App extends React.Component {
     this.checkBoxOptions = {
       text: 'Show Address',
       value: true,
-      onValueChanged: (e) => {
+      onValueChanged: (e: { component: { option: (arg0: string) => any; }; }) => {
         this.setState({
           isHomeAddressVisible: e.component.option('value'),
         });
@@ -68,7 +68,7 @@ class App extends React.Component {
               name="phones-container">
               <GroupItem
                 name="phones">
-                { this.state.phoneOptions.map((phone, index) => <SimpleItem
+                { this.state.phoneOptions.map((phone, index: number) => <SimpleItem
                   key = {`Phones${index}`}
                   dataField={`Phones[${index}]`}
                   editorOptions={phone}>
@@ -88,14 +88,14 @@ class App extends React.Component {
   }
 
   getPhonesOptions() {
-    const options = [];
+    const options: ({ mask: string; maskRules: { X: RegExp; }; buttons: { name: string; location: string; options: { stylingMode: string; icon: string; onClick: () => void; }; }[]; })[] = [];
     for (let i = 0; i < this.employee.Phones.length; i += 1) {
       options.push(this.generateNewPhoneOptions(i));
     }
     return options;
   }
 
-  generateNewPhoneOptions(index) {
+  generateNewPhoneOptions(index: number) {
     return {
       mask: '+1 (X00) 000-0000',
       maskRules: { X: /[01-9]/ },

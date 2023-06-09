@@ -14,7 +14,7 @@ class App extends React.Component {
     this.onOptionChanged = this.onOptionChanged.bind(this);
   }
 
-  onOptionChanged(e) {
+  onOptionChanged(e: { fullName: string; value: any; }) {
     if (e.fullName === 'itemView.mode') {
       this.setState({
         itemViewMode: e.value,
@@ -45,7 +45,7 @@ class App extends React.Component {
     );
   }
 
-  customizeIcon(fileSystemItem) {
+  customizeIcon(fileSystemItem: { isDirectory: any; getFileExtension: () => any; }) {
     if (fileSystemItem.isDirectory) {
       return '../../../../images/thumbnails/folder.svg';
     }

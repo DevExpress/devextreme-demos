@@ -25,7 +25,7 @@ class App extends React.Component {
       zoomVisible: true,
     };
 
-    this.storeMapInstance = (component) => {
+    this.storeMapInstance = (component: { instance: any; }) => {
       this.map = component.instance;
     };
 

@@ -43,14 +43,14 @@ class App extends React.Component {
     );
   }
 
-  onListItemClick(e) {
+  onListItemClick(e: { itemElement: any; }) {
     this.setState({
       isActionSheetVisible: true,
       actionSheetTarget: e.itemElement,
     });
   }
 
-  onActionSheetItemClick(e) {
+  onActionSheetItemClick(e: { itemData: { text: any; }; }) {
     this.setState({
       isActionSheetVisible: false,
     });

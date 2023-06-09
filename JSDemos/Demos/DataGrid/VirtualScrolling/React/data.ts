@@ -4,12 +4,12 @@ function random() {
   return s % (10 - 1);
 }
 
-export function generateData(count) {
+export function generateData(count: number) {
   let i;
   const surnames = ['Smith', 'Johnson', 'Brown', 'Taylor', 'Anderson', 'Harris', 'Clark', 'Allen', 'Scott', 'Carter'];
   const names = ['James', 'John', 'Robert', 'Christopher', 'George', 'Mary', 'Nancy', 'Sandra', 'Michelle', 'Betty'];
   const gender = ['Male', 'Female'];
-  const items = [];
+  const items: ({ id: number; firstName: string; lastName: string; gender: string; birthDate: Date; })[] = [];
   const startBirthDate = Date.parse('1/1/1975');
   const endBirthDate = Date.parse('1/1/1992');
 

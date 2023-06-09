@@ -46,20 +46,20 @@ class App extends React.Component {
     );
   }
 
-  updateTexts(e) {
+  updateTexts(e: { component: { option: (arg0: string) => any; getFilterExpression: () => any; }; }) {
     this.setState({
       filterText: formatValue(e.component.option('value')),
       dataSourceText: formatValue(e.component.getFilterExpression()),
     });
   }
 
-  onValueChanged(e) {
+  onValueChanged(e: { value: any; }) {
     this.setState({ value: e.value });
     this.updateTexts(e);
   }
 }
 
-function calculateFilterExpression(filterValue, field) {
+function calculateFilterExpression(filterValue: any[], field: { dataField: any; }) {
   return filterValue && filterValue.length
     && Array.prototype.concat.apply([], filterValue.map((value) => [[field.dataField, '=', value], 'or'])).slice(0, -1);
 }

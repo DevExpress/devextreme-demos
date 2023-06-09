@@ -57,7 +57,7 @@ class App extends React.Component {
     });
   }
 
-  onActionSheetItemClick(e) {
+  onActionSheetItemClick(e: { itemData: { text: any; }; }) {
     this.onActionSheetButtonClick(e.itemData.text);
   }
 
@@ -65,20 +65,20 @@ class App extends React.Component {
     this.onActionSheetButtonClick('Cancel');
   }
 
-  onActionSheetButtonClick(buttonName) {
+  onActionSheetButtonClick(buttonName: string) {
     this.setState({
       isActionSheetVisible: false,
     });
     notify(`The "${buttonName}" button is clicked.`);
   }
 
-  changeTitle(e) {
+  changeTitle(e: { value: any; }) {
     this.setState({
       showTitle: e.value,
     });
   }
 
-  changeCancelButton(e) {
+  changeCancelButton(e: { value: any; }) {
     this.setState({
       showCancelButton: e.value,
     });

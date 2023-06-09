@@ -59,7 +59,7 @@ class App extends React.Component {
     );
   }
 
-  onValueChanged(e) {
+  onValueChanged(e: { value: any; }) {
     this.setState({
       value: e.value,
     });

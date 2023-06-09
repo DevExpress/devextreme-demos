@@ -87,7 +87,7 @@ class App extends React.Component {
     );
   }
 
-  onCheckboxValueChanged(e) {
+  onCheckboxValueChanged(e: { value: any; }) {
     const str = service.getContent();
     this.setState({
       value: e.value ? str.substring(0, 100) : str,
@@ -95,20 +95,20 @@ class App extends React.Component {
     });
   }
 
-  onAutoResizeChanged(e) {
+  onAutoResizeChanged(e: { value: any; }) {
     this.setState({
       autoResizeEnabled: e.value,
       height: e.value ? undefined : 90,
     });
   }
 
-  onSelectBoxValueChanged(e) {
+  onSelectBoxValueChanged(e: { value: any; }) {
     this.setState({
       eventValue: e.value,
     });
   }
 
-  onTextAreaValueChanged(e) {
+  onTextAreaValueChanged(e: { value: any; }) {
     this.setState({
       valueForEditableTestArea: e.value,
     });

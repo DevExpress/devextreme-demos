@@ -25,11 +25,11 @@ class App extends React.Component {
     this.hideInfo = this.hideInfo.bind(this);
   }
 
-  itemTypeExpr(obj) {
+  itemTypeExpr(obj: { ID: any; }) {
     return `employee${obj.ID}`;
   }
 
-  customShapeTemplate(item) {
+  customShapeTemplate(item: { dataItem: any; }) {
     return CustomShapeTemplate(item.dataItem, () => { this.showInfo(item.dataItem); });
   }
 
@@ -51,7 +51,7 @@ class App extends React.Component {
     return (
       <div id="container">
         <Diagram id="diagram" customShapeRender={this.customShapeTemplate} readOnly={true}>
-          {this.employees.map((employee, index) => <CustomShape
+          {this.employees.map((employee: { ID: any; }, index) => <CustomShape
             type={`employee${employee.ID}`}
             baseType="rectangle"
             defaultWidth={1.5}

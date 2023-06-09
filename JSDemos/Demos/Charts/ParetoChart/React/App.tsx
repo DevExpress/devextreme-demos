@@ -95,7 +95,7 @@ class App extends React.Component {
   }
 }
 
-function customizeTooltip(pointInfo) {
+function customizeTooltip(pointInfo: { argumentText: any; points: { valueText: any; }[]; }) {
   return {
     html: `<div><div class="tooltip-header">${
       pointInfo.argumentText

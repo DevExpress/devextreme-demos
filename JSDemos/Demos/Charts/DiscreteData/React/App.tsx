@@ -60,7 +60,7 @@ class App extends React.Component {
     );
   }
 
-  handleChange(e) {
+  handleChange(e: { value: any; }) {
     this.setState({ currentType: e.value });
   }
 }

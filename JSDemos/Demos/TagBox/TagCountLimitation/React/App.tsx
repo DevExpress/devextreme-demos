@@ -15,7 +15,7 @@ class App extends React.Component {
     this.onMultiTagPreparing = this.onMultiTagPreparing.bind(this);
   }
 
-  onMultiTagPreparing(args) {
+  onMultiTagPreparing(args: { selectedItems: string | any[]; cancel: boolean; text: string; }) {
     const selectedItemsLength = args.selectedItems.length;
     const totalCount = 5;
 

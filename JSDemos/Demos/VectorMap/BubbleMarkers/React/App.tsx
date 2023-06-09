@@ -49,17 +49,17 @@ export default function App() {
   );
 }
 
-function customizeTooltip(arg) {
+function customizeTooltip(arg: { layer: { type: string; }; attribute: (arg0: string) => any; }) {
   if (arg.layer.type === 'marker') {
     return { text: arg.attribute('tooltip') };
   }
   return null;
 }
 
-function customizeText(arg) {
+function customizeText(arg: { index: string | number; }) {
   return ['< 8000K', '8000K to 10000K', '> 10000K'][arg.index];
 }
 
-function customizeItems(items) {
+function customizeItems(items: any[]) {
   return items.reverse();
 }

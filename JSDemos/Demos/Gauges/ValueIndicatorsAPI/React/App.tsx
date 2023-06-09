@@ -24,19 +24,19 @@ class App extends React.Component {
       gauge.subvalues([this.state.additionalGenerator1Value, this.state.additionalGenerator2Value]);
     };
 
-    this.setMainGeneratorValue = (e) => {
+    this.setMainGeneratorValue = (e: { value: any; }) => {
       this.setState({
         mainGeneratorValue: e.value,
       });
     };
 
-    this.setAdditionalGenerator1Value = (e) => {
+    this.setAdditionalGenerator1Value = (e: { value: any; }) => {
       this.setState({
         additionalGenerator1Value: e.value,
       });
     };
 
-    this.setAdditionalGenerator2Value = (e) => {
+    this.setAdditionalGenerator2Value = (e: { value: any; }) => {
       this.setState({
         additionalGenerator2Value: e.value,
       });

@@ -146,49 +146,49 @@ class App extends React.Component {
     );
   }
 
-  onCompanyChanged(e) {
+  onCompanyChanged(e: { value: any; }) {
     this.setState({
       company: e.value,
     });
   }
 
-  onLabelModeChanged(e) {
+  onLabelModeChanged(e: { value: any; }) {
     this.setState({
       labelMode: e.value,
     });
   }
 
-  onLabelLocationChanged(e) {
+  onLabelLocationChanged(e: { value: any; }) {
     this.setState({
       labelLocation: e.value,
     });
   }
 
-  onReadOnlyChanged(e) {
+  onReadOnlyChanged(e: { value: any; }) {
     this.setState({
       readOnly: e.value,
     });
   }
 
-  onShowColonChanged(e) {
+  onShowColonChanged(e: { value: any; }) {
     this.setState({
       showColon: e.value,
     });
   }
 
-  onMinColWidthChanged(e) {
+  onMinColWidthChanged(e: { value: any; }) {
     this.setState({
       minColWidth: e.value,
     });
   }
 
-  onColumnsCountChanged(e) {
+  onColumnsCountChanged(e: { value: any; }) {
     this.setState({
       colCount: e.value,
     });
   }
 
-  onFormWidthChanged(e) {
+  onFormWidthChanged(e: { value: any; }) {
     this.setState({
       width: e.value,
     });

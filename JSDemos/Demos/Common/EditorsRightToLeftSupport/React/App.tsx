@@ -28,7 +28,7 @@ class App extends React.Component {
     this.onLanguageChanged = this.onLanguageChanged.bind(this);
   }
 
-  onLanguageChanged(args) {
+  onLanguageChanged(args: { value: any; }) {
     const isRTL = args.value === this.languages[0];
 
     this.displayExpr = isRTL ? 'nameAr' : 'nameEn';

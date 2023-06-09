@@ -41,12 +41,12 @@ class App extends React.Component {
     );
   }
 
-  nodeClick(e) {
+  nodeClick(e: { node: { drillDown: () => void; }; }) {
     e.node.drillDown();
   }
 
-  drill(e) {
-    const drillInfo = [];
+  drill(e: { node: { getParent: () => any; label: () => any; }; }) {
+    const drillInfo: ({ text: any; node: any; } | { text: any; })[] = [];
     for (let node = e.node.getParent(); node; node = node.getParent()) {
       drillInfo.unshift({
         text: node.label() || 'All Continents',
@@ -62,7 +62,7 @@ class App extends React.Component {
     this.setState({ drillInfo });
   }
 
-  drillInfoClick(node) {
+  drillInfoClick(node: { drillDown: () => void; }) {
     if (node) {
       node.drillDown();
     }

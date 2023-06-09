@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function EmployeeCell(options) {
+export default function EmployeeCell(options: { data: { Task_Assigned_Employee: any; }; }) {
   const employee = options.data.Task_Assigned_Employee;
   if (!employee) {
     return <span className="name">not assigned</span>;

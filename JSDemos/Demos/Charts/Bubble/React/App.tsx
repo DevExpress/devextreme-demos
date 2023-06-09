@@ -72,13 +72,13 @@ export default function App() {
   );
 }
 
-function customizeTooltip(pointInfo) {
+function customizeTooltip(pointInfo: { point: { tag: any; }; argumentText: any; valueText: any; size: any; }) {
   return {
     text: `${pointInfo.point.tag}<br/>Total Population: ${pointInfo.argumentText}M<br/>Population with Age over 60: ${pointInfo.valueText}M (${pointInfo.size}%)`,
   };
 }
 
-function seriesClick(e) {
+function seriesClick(e: { target: any; }) {
   const series = e.target;
   if (series.isVisible()) {
     series.hide();
@@ -87,6 +87,6 @@ function seriesClick(e) {
   }
 }
 
-function customizeText(e) {
+function customizeText(e: { value: any; }) {
   return `${e.value}M`;
 }

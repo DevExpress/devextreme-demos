@@ -204,7 +204,7 @@ class App extends React.Component {
     );
   }
 
-  validateClick(e) {
+  validateClick(e: { validationGroup: { validate: () => any; }; }) {
     const result = e.validationGroup.validate();
     if (result.isValid) {
       notify('The task was saved successfully.', 'success');
@@ -213,13 +213,13 @@ class App extends React.Component {
     }
   }
 
-  stylingModeChange(e) {
+  stylingModeChange(e: { value: any; }) {
     this.setState({
       stylingMode: e.value,
     });
   }
 
-  labelModeChange(e) {
+  labelModeChange(e: { value: any; }) {
     this.setState({
       labelMode: e.value,
     });

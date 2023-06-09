@@ -148,49 +148,49 @@ function App() {
     </div>
   );
 
-  function onScaleTypeChanged(e) {
+  function onScaleTypeChanged(e: { value: any; }) {
     setGanttConfig({
       ...ganttConfig,
       scaleType: e.value,
     });
   }
 
-  function onTaskTitlePositionChanged(e) {
+  function onTaskTitlePositionChanged(e: { value: any; }) {
     setGanttConfig({
       ...ganttConfig,
       taskTitlePosition: e.value,
     });
   }
 
-  function onShowResourcesChanged(e) {
+  function onShowResourcesChanged(e: { value: any; }) {
     setGanttConfig({
       ...ganttConfig,
       showResources: e.value,
     });
   }
 
-  function onShowDependenciesChanged(e) {
+  function onShowDependenciesChanged(e: { value: any; }) {
     setGanttConfig({
       ...ganttConfig,
       showDependencies: e.value,
     });
   }
 
-  function onShowCustomTaskTooltip(e) {
+  function onShowCustomTaskTooltip(e: { value: any; }) {
     setGanttConfig({
       ...ganttConfig,
       showCustomTaskTooltip: e.value,
     });
   }
 
-  function onStartDateValueChanged(e) {
+  function onStartDateValueChanged(e: { value: any; }) {
     setGanttConfig({
       ...ganttConfig,
       startDateRange: e.value,
     });
   }
 
-  function onEndDateValueChanged(e) {
+  function onEndDateValueChanged(e: { value: any; }) {
     setGanttConfig({
       ...ganttConfig,
       endDateRange: e.value,

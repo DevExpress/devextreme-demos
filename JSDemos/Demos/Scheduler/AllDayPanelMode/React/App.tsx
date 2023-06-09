@@ -22,7 +22,7 @@ class App extends React.Component {
     this.onChangeAllDayPanelMode = this.onChangeAllDayPanelMode.bind(this);
   }
 
-  onChangeAllDayPanelMode(e) {
+  onChangeAllDayPanelMode(e: { value: any; }) {
     this.setState({ allDayPanelMode: e.value });
   }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Sparkline, { Size, Tooltip } from 'devextreme-react/sparkline';
 
-export default function ChartCell(cellData) {
+export default function ChartCell(cellData: { data: { dayClose: any; }; }) {
   return (
     <div className="chart-cell">
       <Sparkline

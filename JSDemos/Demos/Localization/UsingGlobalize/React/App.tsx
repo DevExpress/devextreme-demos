@@ -47,7 +47,7 @@ class App extends React.Component {
     return locale != null ? locale : 'en';
   }
 
-  setLocale(locale) {
+  setLocale(locale: string) {
     sessionStorage.setItem('locale', locale);
   }
 
@@ -63,7 +63,7 @@ class App extends React.Component {
     Globalize.locale(this.state.locale);
   }
 
-  changeLocale(e) {
+  changeLocale(e: { value: any; }) {
     this.setState({
       locale: e.value,
     });

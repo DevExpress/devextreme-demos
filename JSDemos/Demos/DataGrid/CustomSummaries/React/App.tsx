@@ -12,7 +12,7 @@ class App extends React.Component {
     this.orders = service.getOrders();
   }
 
-  calculateSelectedRow(options) {
+  calculateSelectedRow(options: { name: string; summaryProcess: string; totalValue: number; component: { isRowSelected: (arg0: any) => any; }; value: { ID: any; SaleAmount: any; }; }) {
     if (options.name === 'SelectedRowsSummary') {
       if (options.summaryProcess === 'start') {
         options.totalValue = 0;
@@ -24,7 +24,7 @@ class App extends React.Component {
     }
   }
 
-  onSelectionChanged(e) {
+  onSelectionChanged(e: { component: { refresh: (arg0: boolean) => void; }; }) {
     e.component.refresh(true);
   }
 

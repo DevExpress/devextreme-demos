@@ -7,7 +7,7 @@ function getMovieById(id) {
   return Query(moviesData).filter(['id', id]).toArray()[0];
 }
 
-export default function Appointment(model) {
+export default function Appointment(model: { data: { targetedAppointmentData: any; }; }) {
   const { targetedAppointmentData } = model.data;
 
   const movieData = getMovieById(targetedAppointmentData.movieId) || {};

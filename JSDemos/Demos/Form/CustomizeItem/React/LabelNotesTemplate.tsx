@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tooltip } from 'devextreme-react/tooltip';
 
-function LabelNotesTemplate(data) {
+function LabelNotesTemplate(data: { text: any; }) {
   return (
     <React.Fragment>
       <div id="template-content">

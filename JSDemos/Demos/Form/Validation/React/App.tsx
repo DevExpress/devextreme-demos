@@ -93,12 +93,12 @@ class App extends React.Component {
     this.changePasswordMode = this.changePasswordMode.bind(this);
   }
 
-  changePasswordMode(name) {
+  changePasswordMode(name: string) {
     const editor = this.formInstance.getEditor(name);
     editor.option('mode', editor.option('mode') === 'text' ? 'password' : 'text');
   }
 
-  onInitialized(e) {
+  onInitialized(e: { component: any; }) {
     this.formInstance = e.component;
   }
 
@@ -194,7 +194,7 @@ class App extends React.Component {
     return true;
   }
 
-  handleSubmit(e) {
+  handleSubmit(e: { preventDefault: () => void; }) {
     notify({
       message: 'You have submitted the form',
       position: {
@@ -210,7 +210,7 @@ class App extends React.Component {
   }
 }
 
-function sendRequest(value) {
+function sendRequest(value: string) {
   const invalidEmail = 'test@dx-email.com';
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -219,7 +219,7 @@ function sendRequest(value) {
   });
 }
 
-function asyncValidation(params) {
+function asyncValidation(params: { value: any; }) {
   return sendRequest(params.value);
 }
 

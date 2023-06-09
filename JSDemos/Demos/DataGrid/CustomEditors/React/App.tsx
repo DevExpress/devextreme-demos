@@ -41,27 +41,27 @@ class App extends React.Component {
     this.statusEditorRender = this.statusEditorRender.bind(this);
   }
 
-  cellTemplate(container, options) {
+  cellTemplate(container: { textContent: any; title: any; }, options: { value: any; column: { lookup: { calculateCellValue: (arg0: any) => any; }; }; }) {
     const noBreakSpace = '\u00A0';
     const text = (options.value || []).map((element) => options.column.lookup.calculateCellValue(element)).join(', ');
     container.textContent = text || noBreakSpace;
     container.title = text;
   }
 
-  calculateFilterExpression(filterValue, selectedFilterOperation, target) {
+  calculateFilterExpression(filterValue, selectedFilterOperation, target: string) {
     if (target === 'search' && typeof (filterValue) === 'string') {
       return [this.dataField, 'contains', filterValue];
     }
-    return function(data) {
+    return function(data: { AssignedEmployee: any; }) {
       return (data.AssignedEmployee || []).indexOf(filterValue) !== -1;
     };
   }
 
-  onValueChanged(cell, e) {
+  onValueChanged(cell: { setValue: (arg0: any) => void; }, e: { value: any; }) {
     cell.setValue(e.value);
   }
 
-  statusEditorRender(cell) {
+  statusEditorRender(cell: { value: any; column: { lookup: any; }; }) {
     const onValueChanged = this.onValueChanged.bind(this, cell);
     return <SelectBox
       defaultValue={cell.value}
@@ -72,7 +72,7 @@ class App extends React.Component {
     />;
   }
 
-  itemRender(data) {
+  itemRender(data: { id: any; name: any; }) {
     const imageSource = `images/icons/status-${data.id}.svg`;
     if (data != null) {
       return <div>
@@ -83,7 +83,7 @@ class App extends React.Component {
     return <span>(All)</span>;
   }
 
-  onRowInserted(e) {
+  onRowInserted(e: { component: { navigateToRow: (arg0: any) => void; }; key: any; }) {
     e.component.navigateToRow(e.key);
   }
 

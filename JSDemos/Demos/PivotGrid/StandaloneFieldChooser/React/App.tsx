@@ -44,7 +44,7 @@ class App extends React.Component {
 
     this.fieldChooser = null;
 
-    this.setFieldChooser = (ref) => {
+    this.setFieldChooser = (ref: { instance: any; }) => {
       this.fieldChooser = ref.instance;
     };
   }
@@ -126,13 +126,13 @@ class App extends React.Component {
     );
   }
 
-  changeMode(e) {
+  changeMode(e: { value: any; }) {
     this.setState({
       applyChangesMode: e.value,
     });
   }
 
-  changeLayout(e) {
+  changeLayout(e: { value: any; }) {
     this.setState({
       layout: e.value,
     });
@@ -168,7 +168,7 @@ const dataSource = new PivotGridDataSource({
         enabled: true,
       },
     },
-    selector(data) {
+    selector(data: { city: any; country: any; }) {
       return `${data.city} (${data.country})`;
     },
   }, {

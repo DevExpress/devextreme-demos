@@ -37,7 +37,7 @@ function App() {
     }
   }, [employees, setEmployees, setSelectedItem]);
 
-  const renderTitle = React.useCallback((data) => (
+  const renderTitle = React.useCallback((data: { FirstName: any; LastName: any; }) => (
     <React.Fragment>
       <div>
         <span>
@@ -48,15 +48,15 @@ function App() {
     </React.Fragment>
   ), [employees, closeButtonHandler]);
 
-  const onSelectionChanged = React.useCallback((args) => {
+  const onSelectionChanged = React.useCallback((args: { addedItems: any[]; }) => {
     setSelectedItem(args.addedItems[0]);
   }, [setSelectedItem]);
 
-  const onTabDragStart = React.useCallback((e) => {
+  const onTabDragStart = React.useCallback((e: { itemData: any; fromData: { [x: string]: any; }; fromIndex: string | number; }) => {
     e.itemData = e.fromData[e.fromIndex];
   }, []);
 
-  const onTabDrop = React.useCallback((e) => {
+  const onTabDrop = React.useCallback((e: { fromIndex: number; toIndex: number; itemData: any; }) => {
     const newEmployees = [...employees];
 
     newEmployees.splice(e.fromIndex, 1);

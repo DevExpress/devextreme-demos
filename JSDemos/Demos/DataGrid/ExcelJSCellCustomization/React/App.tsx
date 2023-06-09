@@ -52,17 +52,17 @@ class App extends React.Component {
     );
   }
 
-  renderGridCell(data) {
+  renderGridCell(data: { text: any; }) {
     return <a href={ data.text } target='_blank' rel='noopener noreferrer'>Website</a>;
   }
 
-  phoneNumberFormat(value) {
+  phoneNumberFormat(value: string) {
     const USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);
 
     return `(${USNumber[1]}) ${USNumber[2]}-${USNumber[3]}`;
   }
 
-  onExporting(e) {
+  onExporting(e: { component: any; cancel: boolean; }) {
     const workbook = new Workbook();
     const worksheet = workbook.addWorksheet('Companies');
 

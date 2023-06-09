@@ -25,7 +25,7 @@ function App() {
   );
 }
 
-function customizeSeries(valueFromNameField) {
+function customizeSeries(valueFromNameField: string) {
   return valueFromNameField === 'USA' ? {
     color: 'red',
   } : {};

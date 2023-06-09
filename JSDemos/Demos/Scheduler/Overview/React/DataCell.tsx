@@ -1,6 +1,6 @@
 import React from 'react';
 
-function isWeekEnd(date) {
+function isWeekEnd(date: { getDay: () => any; }) {
   const day = date.getDay();
   return day === 0 || day === 6;
 }

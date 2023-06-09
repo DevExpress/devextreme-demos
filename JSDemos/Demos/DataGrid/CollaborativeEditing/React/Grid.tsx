@@ -4,7 +4,11 @@ import DataGrid, {
 } from 'devextreme-react/data-grid';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
-class Grid extends React.Component {
+interface GridProps {
+dataSource: CustomStore<any, any>;
+}
+
+class Grid extends React.Component<GridProps> {
   constructor(props) {
     super(props);
 

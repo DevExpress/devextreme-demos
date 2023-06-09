@@ -24,13 +24,13 @@ class App extends React.Component {
     this.onStartEditActionChanged = this.onStartEditActionChanged.bind(this);
   }
 
-  onSelectTextOnEditStartChanged(args) {
+  onSelectTextOnEditStartChanged(args: { value: any; }) {
     this.setState({
       selectTextOnEditStart: args.value,
     });
   }
 
-  onStartEditActionChanged(args) {
+  onStartEditActionChanged(args: { value: any; }) {
     this.setState({
       startEditAction: args.value,
     });

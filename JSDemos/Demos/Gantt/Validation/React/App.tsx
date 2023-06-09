@@ -64,21 +64,21 @@ function App() {
     </div>
   );
 
-  function onAutoUpdateParentTasksChanged(e) {
+  function onAutoUpdateParentTasksChanged(e: { value: any; }) {
     setGanttConfig({
       ...ganttConfig,
       autoUpdateParentTasks: e.value,
     });
   }
 
-  function onValidateDependenciesChanged(e) {
+  function onValidateDependenciesChanged(e: { value: any; }) {
     setGanttConfig({
       ...ganttConfig,
       validateDependencies: e.value,
     });
   }
 
-  function onEnablePredecessorGapChanged(e) {
+  function onEnablePredecessorGapChanged(e: { value: any; }) {
     setGanttConfig({
       ...ganttConfig,
       enablePredecessorGap: e.value,

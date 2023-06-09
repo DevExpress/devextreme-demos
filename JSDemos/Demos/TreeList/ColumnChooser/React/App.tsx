@@ -147,31 +147,31 @@ class App extends React.Component {
     );
   }
 
-  onModeValueChanged(e) {
+  onModeValueChanged(e: { value: any; }) {
     this.setState({
       mode: e.value,
     });
   }
 
-  onSearchEnabledValueChanged(e) {
+  onSearchEnabledValueChanged(e: { value: any; }) {
     this.setState({
       searchEnabled: e.value,
     });
   }
 
-  onAllowSelectAllValueChanged(e) {
+  onAllowSelectAllValueChanged(e: { value: any; }) {
     this.setState({
       allowSelectAll: e.value,
     });
   }
 
-  onSelectByClickValueChanged(e) {
+  onSelectByClickValueChanged(e: { value: any; }) {
     this.setState({
       selectByClick: e.value,
     });
   }
 
-  onRecursiveValueChanged(e) {
+  onRecursiveValueChanged(e: { value: any; }) {
     this.setState({
       recursive: e.value,
     });

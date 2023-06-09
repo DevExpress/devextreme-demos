@@ -173,7 +173,7 @@ class App extends React.Component {
     return true;
   }
 
-  updateCategory(newCategory, directory, viewArea) {
+  updateCategory(newCategory, directory, viewArea: string) {
     let items = null;
 
     if (viewArea === 'navPane') {
@@ -182,7 +182,7 @@ class App extends React.Component {
       items = this.fileManager.getSelectedItems();
     }
 
-    items.forEach((item) => {
+    items.forEach((item: { dataItem: { category: any; }; }) => {
       if (item.dataItem) {
         item.dataItem.category = newCategory;
       }

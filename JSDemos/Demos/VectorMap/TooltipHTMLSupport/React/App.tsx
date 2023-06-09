@@ -56,14 +56,14 @@ export default function App() {
   );
 }
 
-function customizeLayer(elements) {
-  elements.forEach((element) => {
+function customizeLayer(elements: any[]) {
+  elements.forEach((element: { attribute: (arg0: string,arg1: undefined) => string | number; }) => {
     const countryGDPData = countriesGDP[element.attribute('name')];
     element.attribute('total', (countryGDPData && countryGDPData.total) || 0);
   });
 }
 
-function customizeLegendText(arg) {
+function customizeLegendText(arg: { start: number | number | bigint; end: number | number | bigint; }) {
   return `${format(arg.start)} to ${format(arg.end)}`;
 }
 

@@ -65,7 +65,7 @@ class App extends React.Component {
     );
   }
 
-  onTabsSelectionChanged(args) {
+  onTabsSelectionChanged(args: { name: string; value: any; }) {
     if (args.name === 'selectedIndex') {
       this.setState({
         selectedIndex: args.value,
@@ -73,7 +73,7 @@ class App extends React.Component {
     }
   }
 
-  onValueChanged(args) {
+  onValueChanged(args: { value: any; }) {
     this.setState({
       selectedIndex: args.value,
     });

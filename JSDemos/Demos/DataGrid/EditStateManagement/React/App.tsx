@@ -20,7 +20,7 @@ const loadPanelPosition = { of: '#gridContainer' };
 function App() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
-  const changesText = React.useMemo(() => JSON.stringify(state.changes.map((change) => ({
+  const changesText = React.useMemo(() => JSON.stringify(state.changes.map((change: { type: string; key: any; data: any; }) => ({
     type: change.type,
     key: change.type !== 'insert' ? change.key : undefined,
     data: change.data,
@@ -30,7 +30,7 @@ function App() {
     loadOrders(dispatch);
   }, []);
 
-  const onSaving = React.useCallback((e) => {
+  const onSaving = React.useCallback((e: { cancel: boolean; promise: Promise<any>; changes: any[]; }) => {
     e.cancel = true;
     e.promise = saveChange(dispatch, e.changes[0]);
   }, []);

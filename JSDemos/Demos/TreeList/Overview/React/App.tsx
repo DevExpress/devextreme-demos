@@ -89,7 +89,7 @@ const dataSourceOptions = {
   }),
 };
 
-function customizeTaskCompletionText(cellInfo) {
+function customizeTaskCompletionText(cellInfo: { valueText: any; }) {
   return `${cellInfo.valueText}%`;
 }
 

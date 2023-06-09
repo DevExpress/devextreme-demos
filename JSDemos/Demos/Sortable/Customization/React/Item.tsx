@@ -1,6 +1,13 @@
-import React from 'react';
 
-export default function Item({ text, handle, style }) {
+
+interface ItemProps {
+key?: any;
+text: any;
+handle?: any;
+style?: { width: number; padding: number; fontWeight: string; };
+}import React from 'react';
+
+export default function Item({ text, handle, style }: ItemProps) {
   let className = 'item dx-card dx-theme-text-color dx-theme-background-color';
   if (handle) {
     className += ' item-with-handle';

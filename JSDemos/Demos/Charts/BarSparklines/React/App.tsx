@@ -67,7 +67,7 @@ class App extends React.Component {
     );
   }
 
-  onValueChanged(e) {
+  onValueChanged(e: { value: any; }) {
     this.source.filter(['month', '<=', e.value]);
     this.source.load();
   }

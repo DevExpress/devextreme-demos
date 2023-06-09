@@ -1,6 +1,13 @@
 import React from 'react';
 
-class Breadcrumb extends React.Component {
+interface BreadcrumbProps {
+key: any;
+onClick: any;
+info: any;
+isLast: boolean;
+}
+
+class Breadcrumb extends React.Component<BreadcrumbProps> {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);

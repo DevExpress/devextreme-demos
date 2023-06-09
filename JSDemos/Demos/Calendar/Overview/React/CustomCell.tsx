@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function isWeekend(date) {
+export function isWeekend(date: { getDay: () => any; }) {
   const day = date.getDay();
   return day === 0 || day === 6;
 }
@@ -26,7 +26,7 @@ function getCellCssClass({ date, view }) {
   return cssClass;
 }
 
-function CustomCell(cell) {
+function CustomCell(cell: { text?: any; date?: any; view?: any; }) {
   const {
     text,
   } = cell;

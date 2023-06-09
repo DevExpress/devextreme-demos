@@ -30,7 +30,7 @@ class App extends React.Component {
     return `${Math.floor(Math.abs(((new Date()).getTime() - this.state.value.getTime()) / (24 * 60 * 60 * 1000)))} days`;
   }
 
-  onValueChanged(e) {
+  onValueChanged(e: { value: any; }) {
     this.setState({
       value: e.value,
     });

@@ -21,7 +21,7 @@ class App extends React.Component {
     this.onCustomItemCreating = this.onCustomItemCreating.bind(this);
   }
 
-  onCustomItemCreating(args) {
+  onCustomItemCreating(args: { text: any; customItem: any; }) {
     const newValue = args.text;
     const isItemInDataSource = this.state.editableProducts.some((item) => item === newValue);
     if (!isItemInDataSource) {

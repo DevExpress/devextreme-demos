@@ -32,7 +32,7 @@ class App extends React.Component {
     );
   }
 
-  selectItem(e) {
+  selectItem(e: { itemData: any; }) {
     this.setState({
       currentItem: { ...e.itemData },
     });

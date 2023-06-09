@@ -78,7 +78,7 @@ class App extends React.Component {
     return this.treeViewDriveDRef.current.instance;
   }
 
-  onDragChange(e) {
+  onDragChange(e: { fromComponent: any; toComponent: any; fromData: any; fromIndex: any; toData: any; cancel: boolean; }) {
     if (e.fromComponent === e.toComponent) {
       const fromNode = this.findNode(this.getTreeView(e.fromData), e.fromIndex);
       const toNode = this.findNode(this.getTreeView(e.toData), this.calculateToIndex(e));
@@ -88,7 +88,7 @@ class App extends React.Component {
     }
   }
 
-  onDragEnd(e) {
+  onDragEnd(e: { fromComponent: any; toComponent: any; fromIndex: any; toIndex: any; fromData: any; toData: any; dropInsideItem: any; }) {
     if (e.fromComponent === e.toComponent && e.fromIndex === e.toIndex) {
       return;
     }
@@ -118,19 +118,19 @@ class App extends React.Component {
     toTreeView.scrollToItem(toTopVisibleNode);
   }
 
-  getTreeView(driveName) {
+  getTreeView(driveName: string) {
     return driveName === 'driveC'
       ? this.treeViewDriveC
       : this.treeViewDriveD;
   }
 
-  getStateFieldName(driveName) {
+  getStateFieldName(driveName: string) {
     return driveName === 'driveC'
       ? 'itemsDriveC'
       : 'itemsDriveD';
   }
 
-  calculateToIndex(e) {
+  calculateToIndex(e: { fromComponent: any; toComponent: any; dropInsideItem: any; toIndex: number; fromIndex: number; }) {
     if (e.fromComponent !== e.toComponent || e.dropInsideItem) {
       return e.toIndex;
     }
@@ -140,7 +140,7 @@ class App extends React.Component {
       : e.toIndex + 1;
   }
 
-  findNode(treeView, index) {
+  findNode(treeView: { element: () => { (): any; new(): any; querySelectorAll: { (arg0: string): { (): any; new(): any;[x: string]: any; }; new(): any; }; }; getNodes: () => any; }, index: string | number) {
     const nodeElement = treeView.element().querySelectorAll('.dx-treeview-node')[index];
     if (nodeElement) {
       return this.findNodeById(treeView.getNodes(), nodeElement.getAttribute('data-item-id'));
@@ -148,7 +148,7 @@ class App extends React.Component {
     return null;
   }
 
-  findNodeById(nodes, id) {
+  findNodeById(nodes: string | any[], id) {
     for (let i = 0; i < nodes.length; i += 1) {
       if (nodes[i].itemData.id === id) {
         return nodes[i];
@@ -163,9 +163,9 @@ class App extends React.Component {
     return null;
   }
 
-  moveNode(fromNode, toNode, fromItems, toItems, isDropInsideItem) {
+  moveNode(fromNode: { itemData: { id: any; }; }, toNode: { itemData: { items: any[]; id: any; }; }, fromItems, toItems, isDropInsideItem) {
     const fromNodeContainingArray = this.getNodeContainingArray(fromNode, fromItems);
-    const fromIndex = fromNodeContainingArray.findIndex((item) => item.id === fromNode.itemData.id);
+    const fromIndex = fromNodeContainingArray.findIndex((item: { id: any; }) => item.id === fromNode.itemData.id);
     fromNodeContainingArray.splice(fromIndex, 1);
 
     if (isDropInsideItem) {
@@ -174,18 +174,18 @@ class App extends React.Component {
       const toNodeContainingArray = this.getNodeContainingArray(toNode, toItems);
       const toIndex = toNode === null
         ? toNodeContainingArray.length
-        : toNodeContainingArray.findIndex((item) => item.id === toNode.itemData.id);
+        : toNodeContainingArray.findIndex((item: { id: any; }) => item.id === toNode.itemData.id);
       toNodeContainingArray.splice(toIndex, 0, fromNode.itemData);
     }
   }
 
-  getNodeContainingArray(node, rootArray) {
+  getNodeContainingArray(node: { parent: { itemData: { items: any; }; }; }, rootArray) {
     return node === null || node.parent === null
       ? rootArray
       : node.parent.itemData.items;
   }
 
-  isChildNode(parentNode, childNode) {
+  isChildNode(parentNode: { itemData: { id: any; }; }, childNode: { parent: any; }) {
     let { parent } = childNode;
     while (parent !== null) {
       if (parent.itemData.id === parentNode.itemData.id) {
@@ -196,7 +196,7 @@ class App extends React.Component {
     return false;
   }
 
-  getTopVisibleNode(component) {
+  getTopVisibleNode(component: { element: () => any; }) {
     const treeViewElement = component.element();
     const treeViewTopPosition = treeViewElement.getBoundingClientRect().top;
     const nodes = treeViewElement.querySelectorAll('.dx-treeview-node');

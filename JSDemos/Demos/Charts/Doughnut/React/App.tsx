@@ -40,7 +40,7 @@ class App extends React.Component {
     );
   }
 
-  customizeTooltip(arg) {
+  customizeTooltip(arg: { valueText: any; percent: number; }) {
     return {
       text: `${arg.valueText} - ${(arg.percent * 100).toFixed(2)}%`,
     };

@@ -31,7 +31,7 @@ function App() {
     </div>
   );
 
-  function checkAvailability(e, product) {
+  function checkAvailability(e: { value: any; }, product: { Name: string | number; }) {
     const type = e.value ? 'success' : 'error';
     const message = product.Name + (e.value ? ' is available' : ' is not available');
 

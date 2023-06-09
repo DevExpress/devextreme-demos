@@ -41,7 +41,7 @@ export default function App() {
     });
   }, []);
 
-  const renderGridCell = React.useCallback((cellData) => (
+  const renderGridCell = React.useCallback((cellData: { value: any; }) => (
     <div>
       <img src={cellData.value}></img>
     </div>

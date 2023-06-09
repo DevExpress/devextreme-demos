@@ -114,22 +114,22 @@ class App extends React.Component {
     );
   }
 
-  treeViewSelectionChanged(e) {
+  treeViewSelectionChanged(e: { component: any; }) {
     this.syncSelection(e.component);
   }
 
-  treeViewContentReady(e) {
+  treeViewContentReady(e: { component: any; }) {
     this.syncSelection(e.component);
   }
 
-  syncSelection(treeView) {
+  syncSelection(treeView: { getSelectedNodes: () => any[]; }) {
     const selectedEmployees = treeView.getSelectedNodes()
-      .map((node) => node.itemData);
+      .map((node: { itemData: any; }) => node.itemData);
 
     this.setState(() => ({ selectedEmployees }));
   }
 
-  showCheckBoxesModeValueChanged(e) {
+  showCheckBoxesModeValueChanged(e: { value: string; }) {
     const state = { showCheckBoxesMode: e.value };
 
     if (e.value === 'selectAll') {
@@ -141,7 +141,7 @@ class App extends React.Component {
     this.setState(state);
   }
 
-  selectionModeValueChanged(e) {
+  selectionModeValueChanged(e: { value: string; }) {
     const state = { selectionMode: e.value };
 
     if (e.value === 'single') {
@@ -153,11 +153,11 @@ class App extends React.Component {
     this.setState(state);
   }
 
-  selectNodesRecursiveValueChanged(e) {
+  selectNodesRecursiveValueChanged(e: { value: any; }) {
     this.setState({ selectNodesRecursive: e.value });
   }
 
-  selectByClickValueChanged(e) {
+  selectByClickValueChanged(e: { value: any; }) {
     this.setState({ selectByClick: e.value });
   }
 
@@ -166,11 +166,11 @@ class App extends React.Component {
   }
 }
 
-function renderTreeViewItem(item) {
+function renderTreeViewItem(item: { fullName: any; position: any; }) {
   return `${item.fullName} (${item.position})`;
 }
 
-function renderListItem(item) {
+function renderListItem(item: { prefix: any; fullName: any; position: any; }) {
   return `${item.prefix} ${item.fullName} (${item.position})`;
 }
 

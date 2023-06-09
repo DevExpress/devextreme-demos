@@ -2,7 +2,7 @@ import React from 'react';
 
 const formatDate = new Intl.DateTimeFormat('en-US').format;
 
-export default function DataRow(rowInfo) {
+export default function DataRow(rowInfo: { data: { Picture: any; Prefix: any; FirstName: any; LastName: any; Position: any; BirthDate: VarDate; HireDate: VarDate; Notes: any; }; }) {
   return (
     <React.Fragment>
       <tr className="main-row">

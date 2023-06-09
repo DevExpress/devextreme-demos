@@ -29,7 +29,7 @@ class App extends React.Component {
     );
   }
 
-  processRange(e) {
+  processRange(e: { value: any[]; }) {
     this.setState({
       totalProduction: calculateTotalProduction(e.value),
     });

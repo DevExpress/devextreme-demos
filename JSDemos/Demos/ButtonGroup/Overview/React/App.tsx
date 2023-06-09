@@ -47,7 +47,7 @@ class App extends React.Component {
   }
 }
 
-function itemClick(e) {
+function itemClick(e: { itemData: { hint: any; }; }) {
   notify({ message: `The "${e.itemData.hint}" button was clicked`, width: 320 }, 'success', 1000);
 }
 

@@ -41,7 +41,7 @@ class App extends React.Component {
     );
   }
 
-  itemTypeExpr(obj, value) {
+  itemTypeExpr(obj: { type: string; }, value: string) {
     if (value) {
       obj.type = (value === 'rectangle') ? undefined : 'group';
     } else {
@@ -50,7 +50,7 @@ class App extends React.Component {
     return null;
   }
 
-  itemWidthExpr(obj, value) {
+  itemWidthExpr(obj: { width: any; type: string; }, value) {
     if (value) {
       obj.width = value;
     } else {
@@ -59,7 +59,7 @@ class App extends React.Component {
     return null;
   }
 
-  itemHeightExpr(obj, value) {
+  itemHeightExpr(obj: { height: any; type: string; }, value) {
     if (value) {
       obj.height = value;
     } else {
@@ -68,14 +68,14 @@ class App extends React.Component {
     return null;
   }
 
-  itemTextStyleExpr(obj) {
+  itemTextStyleExpr(obj: { level: string; }) {
     if (obj.level === 'senior') {
       return { 'font-weight': 'bold', 'text-decoration': 'underline' };
     }
     return {};
   }
 
-  itemStyleExpr(obj) {
+  itemStyleExpr(obj: { type: string; }) {
     const style = { stroke: '#444444' };
     if (obj.type === 'group') {
       style.fill = '#f3f3f3';

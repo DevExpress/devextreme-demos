@@ -19,13 +19,13 @@ class App extends React.Component {
     this.onItemDeleteModeChange = this.onItemDeleteModeChange.bind(this);
   }
 
-  onAllowDeletionChange(args) {
+  onAllowDeletionChange(args: { value: any; }) {
     this.setState({
       allowDeletion: args.value,
     });
   }
 
-  onItemDeleteModeChange(args) {
+  onItemDeleteModeChange(args: { value: any; }) {
     this.setState({
       itemDeleteMode: args.value,
     });

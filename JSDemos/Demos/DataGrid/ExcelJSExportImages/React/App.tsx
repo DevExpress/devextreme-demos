@@ -40,7 +40,7 @@ class App extends React.Component {
     );
   }
 
-  onExporting(e) {
+  onExporting(e: { component: any; cancel: boolean; }) {
     const workbook = new Workbook();
     const worksheet = workbook.addWorksheet('Main sheet');
 
@@ -75,7 +75,7 @@ class App extends React.Component {
     e.cancel = true;
   }
 
-  renderGridCell(cellData) {
+  renderGridCell(cellData: { value: any; }) {
     return (<div><img src={cellData.value}></img></div>);
   }
 }

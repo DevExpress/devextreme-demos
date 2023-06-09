@@ -22,7 +22,7 @@ class App extends React.Component {
     this.onCurrentDirectoryChanged = this.onCurrentDirectoryChanged.bind(this);
   }
 
-  displayImagePopup(e) {
+  displayImagePopup(e: { file: { name: any; dataItem: { url: any; }; }; }) {
     this.setState({
       popupVisible: true,
       imageItemToDisplay: {
@@ -38,7 +38,7 @@ class App extends React.Component {
     });
   }
 
-  onCurrentDirectoryChanged(e) {
+  onCurrentDirectoryChanged(e: { component: { option: (arg0: string) => any; }; }) {
     this.setState({
       currentPath: e.component.option('currentPath'),
     });

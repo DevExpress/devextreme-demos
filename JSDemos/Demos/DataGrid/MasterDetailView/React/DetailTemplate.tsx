@@ -7,7 +7,7 @@ import service from './data.js';
 const tasks = service.getTasks();
 
 class DetailTemplate extends React.Component {
-  constructor(props) {
+  constructor(props: { data: { key: any; }; }) {
     super(props);
     this.dataSource = getTasks(props.data.key);
   }
@@ -38,7 +38,7 @@ class DetailTemplate extends React.Component {
     );
   }
 
-  completedValue(rowData) {
+  completedValue(rowData: { Status: string; }) {
     return rowData.Status === 'Completed';
   }
 }

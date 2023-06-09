@@ -37,13 +37,13 @@ class App extends React.Component {
     this.onTaskIdChanged = this.onTaskIdChanged.bind(this);
   }
 
-  onTaskIdChanged(e) {
+  onTaskIdChanged(e: { event: any; value: number; }) {
     if (e.event && e.value > 0) {
       this.setState({ focusedRowKey: e.value });
     }
   }
 
-  onFocusedRowChanged(e) {
+  onFocusedRowChanged(e: { row: { data: { Task_Status: any; }; rowIndex: any; }; component: { cellValue: (arg0: any,arg1: string) => any; option: (arg0: string) => any; }; }) {
     const rowData = e.row && e.row.data;
     let progress;
     let cellValue;
@@ -52,7 +52,7 @@ class App extends React.Component {
     if (rowData) {
       progress = rowData.Task_Completion ? `${rowData.Task_Completion}%` : '';
       cellValue = e.component.cellValue(e.row.rowIndex, 'Assigned');
-      taskEmployees.byKey(cellValue).done((item) => {
+      taskEmployees.byKey(cellValue).done((item: { Name: any; }) => {
         assigned = item.Name;
       });
 

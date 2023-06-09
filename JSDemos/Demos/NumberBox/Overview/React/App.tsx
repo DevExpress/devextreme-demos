@@ -19,13 +19,13 @@ class App extends React.Component {
     this.keyDown = this.keyDown.bind(this);
   }
 
-  valueChanged(e) {
+  valueChanged(e: { value: any; }) {
     this.setState({
       value: e.value,
     });
   }
 
-  keyDown(e) {
+  keyDown(e: { event: any; }) {
     const { event } = e;
     const str = event.key || String.fromCharCode(event.which);
     if (/^[.,e]$/.test(str)) {

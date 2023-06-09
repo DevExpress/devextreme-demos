@@ -1,6 +1,15 @@
 import React from 'react';
 
-class Logo extends React.PureComponent {
+interface LogoProps {
+text: any;
+width: any;
+height: any;
+color: any;
+transform: any;
+border: any;
+}
+
+class Logo extends React.PureComponent<LogoProps> {
   render() {
     const { props } = this;
     return (

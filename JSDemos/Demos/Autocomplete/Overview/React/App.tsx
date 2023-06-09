@@ -9,7 +9,7 @@ import {
   names, surnames, positions,
 } from './data.js';
 
-function isNotEmpty(value) {
+function isNotEmpty(value: string) {
   return value !== undefined && value !== null && value !== '';
 }
 
@@ -160,29 +160,29 @@ class App extends React.Component {
     );
   }
 
-  renderState(data) {
+  renderState(data: { State_Long: any; State_Short: any; }) {
     return <span>{data.State_Long} ({data.State_Short})</span>;
   }
 
-  handleFirstNameChange(e) {
+  handleFirstNameChange(e: { value: any; }) {
     this.setState({
       firstName: e.value,
     });
   }
 
-  handleLastNameChange(e) {
+  handleLastNameChange(e: { value: any; }) {
     this.setState({
       lastName: e.value,
     });
   }
 
-  handleStateChange(e) {
+  handleStateChange(e: { value: any; }) {
     this.setState({
       state: e.value,
     });
   }
 
-  handleCurrentClientChange(e) {
+  handleCurrentClientChange(e: { value: any; }) {
     this.setState({
       currentClient: e.value,
     });

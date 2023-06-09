@@ -25,19 +25,19 @@ class App extends React.Component {
       lineStyleValue: lineStyles[0],
     };
 
-    this.changeBreaksCount = (e) => {
+    this.changeBreaksCount = (e: { value: any; }) => {
       this.setState({
         breaksCountValue: e.value,
       });
     };
 
-    this.changeStyle = (e) => {
+    this.changeStyle = (e: { value: any; }) => {
       this.setState({
         lineStyleValue: e.value,
       });
     };
 
-    this.changeBreaksEnabledState = (e) => {
+    this.changeBreaksEnabledState = (e: { value: any; }) => {
       this.setState({
         autoBreaksEnabledValue: e.value,
       });

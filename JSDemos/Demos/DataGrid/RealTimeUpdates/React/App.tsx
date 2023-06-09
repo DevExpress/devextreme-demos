@@ -94,7 +94,7 @@ class App extends React.Component {
     );
   }
 
-  detailRender(detail) {
+  detailRender(detail: { data: any; }) {
     return (
       <DataGrid
         dataSource={this.getDetailGridDataSource(detail.data)}
@@ -134,13 +134,13 @@ class App extends React.Component {
     );
   }
 
-  onUpdateFrequencyChanged(e) {
+  onUpdateFrequencyChanged(e: { value: any; }) {
     this.setState({
       updateFrequency: e.value,
     });
   }
 
-  getDetailGridDataSource(product) {
+  getDetailGridDataSource(product: { ProductID: any; }) {
     return {
       store: ordersStore,
       reshapeOnPush: true,
@@ -148,7 +148,7 @@ class App extends React.Component {
     };
   }
 
-  getAmount(order) {
+  getAmount(order: { UnitPrice: number; Quantity: number; }) {
     return order.UnitPrice * order.Quantity;
   }
 }

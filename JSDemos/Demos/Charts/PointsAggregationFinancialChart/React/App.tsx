@@ -95,7 +95,7 @@ class App extends React.Component {
     );
   }
 
-  updateVisualRange(e) {
+  updateVisualRange(e: { value: any; }) {
     this.setState({ visualRange: e.value });
   }
 }

@@ -43,18 +43,18 @@ class App extends React.Component {
     );
   }
 
-  pointClickHandler(e) {
+  pointClickHandler(e: { target: any; }) {
     this.toggleVisibility(e.target);
   }
 
-  legendClickHandler(e) {
+  legendClickHandler(e: { target: any; component: { getAllSeries: () => { getPointsByArg: (arg0: any) => any[]; }[]; }; }) {
     const arg = e.target;
     const item = e.component.getAllSeries()[0].getPointsByArg(arg)[0];
 
     this.toggleVisibility(item);
   }
 
-  toggleVisibility(item) {
+  toggleVisibility(item: { isVisible: () => any; hide: () => any; show: () => any; }) {
     item.isVisible() ? item.hide() : item.show();
   }
 }

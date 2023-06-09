@@ -1,7 +1,11 @@
 import React from 'react';
 
 const fontFamily = "'Segoe UI', 'Helvetica Neue', 'Trebuchet MS', Verdana, sans-serif";
-class Form extends React.Component {
+
+interface FormProps {
+onRef: (arg: any) => void;
+}
+class Form extends React.Component<FormProps> {
   componentDidMount() {
     this.props.onRef(this);
   }

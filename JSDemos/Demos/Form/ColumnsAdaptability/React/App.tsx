@@ -46,14 +46,14 @@ class App extends React.Component {
     );
   }
 
-  onCalculateColCountAutomaticallyChanged(e) {
+  onCalculateColCountAutomaticallyChanged(e: { value: any; }) {
     this.setState({
       calculateColCountAutomatically: e.value,
     });
   }
 }
 
-function screenByWidth(width) {
+function screenByWidth(width: number) {
   return width < 720 ? 'sm' : 'md';
 }
 

@@ -50,7 +50,7 @@ function App() {
         layout='horizontal'
         defaultValue='predefined'
         items={radioGroupItems}
-        onValueChange={(value) => setIsPredefined(value === 'predefined')} />
+        onValueChange={(value: string) => setIsPredefined(value === 'predefined')} />
       <SelectBox
         items={positions}
         value={predefinedPosition}

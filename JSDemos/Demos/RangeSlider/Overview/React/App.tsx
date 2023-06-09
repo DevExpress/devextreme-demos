@@ -135,20 +135,20 @@ class App extends React.Component {
     );
   }
 
-  onRangeChanged(data) {
+  onRangeChanged(data: { start: any; end: any; }) {
     this.setState({
       startValue: data.start,
       endValue: data.end,
     });
   }
 
-  onStartChanged(data) {
+  onStartChanged(data: { value: any; }) {
     this.setState({
       startValue: data.value,
     });
   }
 
-  onEndChanged(data) {
+  onEndChanged(data: { value: any; }) {
     this.setState({
       endValue: data.value,
     });

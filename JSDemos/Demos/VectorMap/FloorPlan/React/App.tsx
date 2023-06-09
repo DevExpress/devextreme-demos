@@ -40,7 +40,7 @@ export default function App() {
   );
 }
 
-function customizeTooltip(arg) {
+function customizeTooltip(arg: { layer: { name: string; }; attribute: (arg0: string) => any; }) {
   if (arg.layer.name === 'rooms') {
     return { text: `Square: ${arg.attribute('square')} ft&#178` };
   }

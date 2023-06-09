@@ -19,8 +19,8 @@ import TooltipTemplate from './TooltipTemplate.js';
 const colorGroups = [0, 10000, 50000, 100000, 500000, 1000000, 10000000, 50000000];
 const mapBounds = [-180, 85, 180, -60];
 
-function customizeLayer(elements) {
-  elements.forEach((element) => {
+function customizeLayer(elements: any[]) {
+  elements.forEach((element: { attribute: (arg0: string,arg1: undefined) => string | number; }) => {
     const countryGDPData = countriesGDP[element.attribute('name')];
     element.attribute('total', (countryGDPData && countryGDPData.total) || 0);
   });
@@ -30,7 +30,7 @@ const { format } = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 0,
 });
 
-function customizeLegendText(arg) {
+function customizeLegendText(arg: { start: number | number | bigint; end: number | number | bigint; }) {
   return `${format(arg.start)} to ${format(arg.end)}`;
 }
 

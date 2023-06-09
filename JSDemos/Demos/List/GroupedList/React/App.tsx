@@ -4,7 +4,7 @@ import List from 'devextreme-react/list';
 
 import { employees } from './data.js';
 
-function GroupTemplate(item) {
+function GroupTemplate(item: { key: any; }) {
   return <div>Assigned: {item.key}</div>;
 }
 

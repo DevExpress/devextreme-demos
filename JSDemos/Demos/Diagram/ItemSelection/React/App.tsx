@@ -20,10 +20,10 @@ class App extends React.Component {
     this.onSelectionChanged = this.onSelectionChanged.bind(this);
   }
 
-  onContentReady(e) {
+  onContentReady(e: { component: any; }) {
     const diagram = e.component;
     // preselect some shape
-    const items = diagram.getItems().filter((item) => item.itemType === 'shape' && (item.text === 'Greta Sims'));
+    const items = diagram.getItems().filter((item: { itemType: string; text: string; }) => item.itemType === 'shape' && (item.text === 'Greta Sims'));
     if (items.length > 0) {
       diagram.setSelectedItems(items);
       diagram.scrollToItem(items[0]);
@@ -34,8 +34,8 @@ class App extends React.Component {
   onSelectionChanged({ items }) {
     let selectedItemNames = 'Nobody has been selected';
     const filteredItems = items
-      .filter((item) => item.itemType === 'shape')
-      .map((item) => item.text);
+      .filter((item: { itemType: string; }) => item.itemType === 'shape')
+      .map((item: { text: any; }) => item.text);
     if (filteredItems.length > 0) {
       selectedItemNames = filteredItems.join(', ');
     }

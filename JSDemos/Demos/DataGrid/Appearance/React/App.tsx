@@ -17,7 +17,7 @@ class App extends React.Component {
     this.onValueChanged = this.onValueChanged.bind(this);
   }
 
-  onValueChanged(e) {
+  onValueChanged(e: { component: { option: (arg0: string) => any; }; value: any; }) {
     let optionName = null;
     switch (e.component.option('text')) {
       case 'Show Row Lines': {

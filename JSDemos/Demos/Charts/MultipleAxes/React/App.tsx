@@ -70,11 +70,11 @@ class App extends React.Component {
   }
 }
 
-function customizeTooltip(pointInfo) {
+function customizeTooltip(pointInfo: { valueText: string; point: { getColor: () => any; }; seriesName: any; }) {
   const items = pointInfo.valueText.split('\n');
   const color = pointInfo.point.getColor();
 
-  items.forEach((item, index) => {
+  items.forEach((item: string | any[], index: string | number) => {
     if (item.indexOf(pointInfo.seriesName) === 0) {
       const element = document.createElement('span');
 

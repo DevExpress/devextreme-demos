@@ -13,7 +13,7 @@ import CenterTemplate from './CenterTemplate.js';
 const countries = Array.from(new Set(data.map((item) => item.country)));
 
 class App extends React.Component {
-  customizeLabel(e) {
+  customizeLabel(e: { argumentText: any; valueText: any; }) {
     return `${e.argumentText}\n${e.valueText}`;
   }
 

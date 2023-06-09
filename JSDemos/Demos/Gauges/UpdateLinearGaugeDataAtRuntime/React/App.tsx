@@ -21,7 +21,7 @@ class App extends React.Component {
       pressure: cities[0].data.pressure,
     };
 
-    this.onSelectionChanged = (e) => {
+    this.onSelectionChanged = (e: { selectedItem: { data: any; }; }) => {
       const weatherData = e.selectedItem.data;
       this.setState({
         selectBoxValue: weatherData,

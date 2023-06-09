@@ -52,7 +52,7 @@ class App extends React.Component {
     this.handleRefreshModeChange = this.handleRefreshModeChange.bind(this);
   }
 
-  sendRequest(url, method = 'GET', data = {}) {
+  sendRequest(url: RequestInfo | URL, method = 'GET', data = {}) {
     this.logRequest(method, url, data);
 
     if (method === 'GET') {
@@ -84,20 +84,20 @@ class App extends React.Component {
     });
   }
 
-  logRequest(method, url, data) {
+  logRequest(method: string, url: string | any[], data: { [x: string]: any; }) {
     const args = Object.keys(data || {}).map((key) => `${key}=${data[key]}`).join(' ');
 
     const time = formatDate(new Date(), 'HH:mm:ss');
     const request = [time, method, url.slice(URL.length), args].join(' ');
 
-    this.setState((state) => ({ requests: [request].concat(state.requests) }));
+    this.setState((state: { requests: ConcatArray<string> | (string | ConcatArray<string>)[]; }) => ({ requests: [request].concat(state.requests) }));
   }
 
   clearRequests() {
     this.setState({ requests: [] });
   }
 
-  handleRefreshModeChange(e) {
+  handleRefreshModeChange(e: { value: any; }) {
     this.setState({ refreshMode: e.value });
   }
 

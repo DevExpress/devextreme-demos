@@ -26,7 +26,7 @@ class App extends React.Component {
   render() {
     return (
       <Diagram id="diagram" ref={this.diagramRef}>
-        {this.employees.map((employee, index) => <CustomShape category="employees" type={`employee${employee.ID}`} baseType="rectangle"
+        {this.employees.map((employee: { ID: any; Full_Name: any; }, index) => <CustomShape category="employees" type={`employee${employee.ID}`} baseType="rectangle"
           defaultText={employee.Full_Name} allowEditText={false} key={index} />)}
         <Toolbox>
           <Group category="employees" title="Employees" displayMode="texts" />

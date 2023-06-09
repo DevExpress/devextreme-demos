@@ -51,8 +51,8 @@ class App extends React.Component {
     this.storeChartRef = (ref) => { this.chartRef = ref; };
   }
 
-  calculateCandle(e) {
-    const prices = e.data.map((d) => d.price);
+  calculateCandle(e: { data: any[]; intervalStart: { valueOf: () => any; }; intervalEnd: { valueOf: () => any; }; }) {
+    const prices = e.data.map((d: { price: any; }) => d.price);
     if (prices.length) {
       return {
         date: new Date((e.intervalStart.valueOf() + e.intervalEnd.valueOf()) / 2),
@@ -121,7 +121,7 @@ class App extends React.Component {
     );
   }
 
-  customizePoint(arg) {
+  customizePoint(arg: { seriesName: string; argument: any; }) {
     if (arg.seriesName === 'Volume') {
       const point = this.chartRef.instance.getAllSeries()[0].getPointsByArg(arg.argument)[0].data;
       if (point && point.close >= point.open) {

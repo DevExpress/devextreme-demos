@@ -21,7 +21,7 @@ class App extends React.Component {
       enterKeyAction: 'moveFocus',
       enterKeyDirection: 'column',
     };
-    this.onFocusedCellChanging = (e) => {
+    this.onFocusedCellChanging = (e: { isHighlighted: boolean; }) => {
       e.isHighlighted = true;
     };
     this.editOnKeyPressChanged = this.editOnKeyPressChanged.bind(this);
@@ -29,15 +29,15 @@ class App extends React.Component {
     this.enterKeyDirectionChanged = this.enterKeyDirectionChanged.bind(this);
   }
 
-  editOnKeyPressChanged(e) {
+  editOnKeyPressChanged(e: { value: any; }) {
     this.setState({ editOnKeyPress: e.value });
   }
 
-  enterKeyActionChanged(e) {
+  enterKeyActionChanged(e: { value: any; }) {
     this.setState({ enterKeyAction: e.value });
   }
 
-  enterKeyDirectionChanged(e) {
+  enterKeyDirectionChanged(e: { value: any; }) {
     this.setState({ enterKeyDirection: e.value });
   }
 

@@ -48,7 +48,7 @@ export default function App() {
   );
 }
 
-function customizeText(itemInfo) {
+function customizeText(itemInfo: { color: string; }) {
   if (itemInfo.color === '#3c20c8') {
     return 'Cold';
   }

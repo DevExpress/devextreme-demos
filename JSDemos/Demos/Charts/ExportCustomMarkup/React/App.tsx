@@ -71,7 +71,7 @@ class App extends React.Component {
       height: 420,
       margin: 0,
       format: 'png',
-      svgToCanvas(svg, canvas) {
+      svgToCanvas(svg: Node, canvas) {
         return new Promise((resolve) => {
           toCanvas(canvas, new XMLSerializer().serializeToString(svg), {
             ignoreDimensions: true,

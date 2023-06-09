@@ -70,7 +70,7 @@ class App extends React.Component {
   }
 }
 
-function customizeTooltipText(pointInfo) {
+function customizeTooltipText(pointInfo: { argumentText: any; point: { data: { system: any; }; }; valueText: any; }) {
   return {
     text: `<span class='title'>${pointInfo.argumentText
     }</span><br />&nbsp;<br />System: ${pointInfo.point.data.system

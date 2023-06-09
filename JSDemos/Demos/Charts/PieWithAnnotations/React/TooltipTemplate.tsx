@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function TooltipTemplate(annotation) {
+export default function TooltipTemplate(annotation: { data: any; }) {
   const { data } = annotation;
 
   return (

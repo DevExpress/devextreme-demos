@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CustomShapeTemplate(employee, editEmployee, deleteEmployee) {
+export default function CustomShapeTemplate(employee: { Full_Name: any; Title: any; }, editEmployee: () => void, deleteEmployee: () => void) {
   const employeeName = employee ? employee.Full_Name : 'Employee\'s Name';
   const employeeTitle = employee ? employee.Title : 'Employee\'s Title';
   return (

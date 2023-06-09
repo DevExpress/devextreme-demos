@@ -38,7 +38,7 @@ export default function App() {
         <Border color="transparent" />
       </CommonAnnotationSettings>
       {
-        annotationSources.map((item) => (
+        annotationSources.map((item: { country: any; data: any; location: any; offsetX: any; offsetY: any; color: any; image: any; borderColor: any; shadowOpacity: any; }) => (
           <Annotation
             key={item.country}
             argument={item.country}

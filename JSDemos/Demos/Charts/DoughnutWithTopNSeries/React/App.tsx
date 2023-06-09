@@ -37,7 +37,7 @@ class App extends React.Component {
     );
   }
 
-  customizeLabel(point) {
+  customizeLabel(point: { argumentText: any; valueText: any; }) {
     return `${point.argumentText}: ${point.valueText}%`;
   }
 }

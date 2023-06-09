@@ -18,15 +18,15 @@ class App extends React.Component {
     this.cloneIconClick = this.cloneIconClick.bind(this);
   }
 
-  isChief(position) {
+  isChief(position: string) {
     return position && ['CEO', 'CMO'].indexOf(position.trim().toUpperCase()) >= 0;
   }
 
-  allowDeleting(e) {
+  allowDeleting(e: { row: { data: { Position: any; }; }; }) {
     return !this.isChief(e.row.data.Position);
   }
 
-  onRowValidating(e) {
+  onRowValidating(e: { newData: { Position: any; }; errorText: string; isValid: boolean; }) {
     const position = e.newData.Position;
 
     if (this.isChief(position)) {
@@ -35,21 +35,21 @@ class App extends React.Component {
     }
   }
 
-  onEditorPreparing(e) {
+  onEditorPreparing(e: { parentType: string; dataField: string; editorOptions: { readOnly: boolean; }; value: any; }) {
     if (e.parentType === 'dataRow' && e.dataField === 'Position') {
       e.editorOptions.readOnly = this.isChief(e.value);
     }
   }
 
-  isCloneIconVisible(e) {
+  isCloneIconVisible(e: { row: { isEditing: any; }; }) {
     return !e.row.isEditing;
   }
 
-  isCloneIconDisabled(e) {
+  isCloneIconDisabled(e: { row: { data: { Position: any; }; }; }) {
     return this.isChief(e.row.data.Position);
   }
 
-  cloneIconClick(e) {
+  cloneIconClick(e: { row: { data: any; rowIndex: number; }; event: { preventDefault: () => void; }; }) {
     const employees = [...this.state.employees];
     const clonedItem = { ...e.row.data, ID: service.getMaxID() };
 

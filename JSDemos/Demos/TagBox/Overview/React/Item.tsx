@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Item(data) {
+export default function Item(data: { ImageSrc: any; Name: any; }) {
   return (
     <div className="custom-item">
       <img src={data.ImageSrc} />

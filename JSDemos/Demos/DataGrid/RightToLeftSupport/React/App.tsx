@@ -22,7 +22,7 @@ class App extends React.Component {
     this.headerCellRender = this.headerCellRender.bind(this);
   }
 
-  selectLanguage(e) {
+  selectLanguage(e: { value: any; }) {
     const newRtlEnabled = e.value === this.languages[0];
     this.setState({
       rtlEnabled: newRtlEnabled,

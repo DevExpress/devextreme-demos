@@ -7,7 +7,7 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 0,
 });
 
-export default function CustomItem(item) {
+export default function CustomItem(item: { ImageSrc: any; Name: any; Price: number | number | bigint; }) {
   return (
     <div className="product">
       <img src={item.ImageSrc} />

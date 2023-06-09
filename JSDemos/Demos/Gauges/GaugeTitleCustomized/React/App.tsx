@@ -4,7 +4,7 @@ import {
   Export, RangeContainer, ValueIndicator,
 } from 'devextreme-react/circular-gauge';
 
-function CenterTemplate(gauge) {
+function CenterTemplate(gauge: { value: () => any; }) {
   return (
     <svg>
       <rect y="0" x="0" width="200" height="200" fill="transparent"></rect>

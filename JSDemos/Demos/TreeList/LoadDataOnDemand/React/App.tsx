@@ -3,11 +3,11 @@ import { TreeList, RemoteOperations, Column } from 'devextreme-react/tree-list';
 import 'whatwg-fetch';
 
 const dataSource = {
-  load(loadOptions) {
+  load(loadOptions: { parentIds: any; }) {
     const parentIdsParam = loadOptions.parentIds;
     const url = new URL('https://js.devexpress.com/Demos/Mvc/api/treeListData');
     if (parentIdsParam) {
-      parentIdsParam.forEach((id) => {
+      parentIdsParam.forEach((id: string) => {
         url.searchParams.append('parentIds', id);
       });
     }
@@ -39,7 +39,7 @@ class App extends React.Component {
     );
   }
 
-  customizeText(e) {
+  customizeText(e: { value: number; }) {
     if (e.value !== null) {
       return `${Math.ceil(e.value / 1024)} KB`;
     }

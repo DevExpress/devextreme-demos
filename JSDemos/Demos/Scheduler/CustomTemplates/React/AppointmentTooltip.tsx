@@ -8,7 +8,7 @@ function getMovieById(id) {
 }
 
 export default class AppointmentTooltip extends React.Component {
-  constructor(props) {
+  constructor(props: { data: { appointmentData: { movieId: any; }; }; }) {
     super(props);
     this.state = {
       movieData: getMovieById(props.data.appointmentData.movieId),

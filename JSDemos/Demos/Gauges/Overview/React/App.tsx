@@ -21,7 +21,7 @@ import Indicator from './Indicator.js';
 
 const color = '#f05b41';
 
-function CenterTemplate(gauge) {
+function CenterTemplate(gauge: { value: () => any; }) {
   return (
     <svg>
       <circle cx="100" cy="100" r="55" strokeWidth="2" stroke={color} fill="transparent"></circle>

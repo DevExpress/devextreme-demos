@@ -1,7 +1,7 @@
 import React from 'react';
 import Utils from './utils.js';
 
-export default function DataCell(props) {
+export default function DataCell(props: { itemData: { startDate: any; }; className: any; children: any; }) {
   const { startDate } = props.itemData;
   const isDinner = Utils.isDinner(startDate);
   let cssClasses = props.className

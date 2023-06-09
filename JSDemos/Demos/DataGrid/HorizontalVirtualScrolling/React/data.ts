@@ -1,7 +1,7 @@
-export function generateData(rowCount, columnCount) {
+export function generateData(rowCount: number, columnCount: number) {
   let i; let
     j;
-  const items = [];
+  const items: {}[] = [];
 
   for (i = 0; i < rowCount; i += 1) {
     const item = {};

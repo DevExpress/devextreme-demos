@@ -3,7 +3,11 @@ import { Form, Item } from 'devextreme-react/form';
 
 const items = ['Address', 'City', 'Region', 'PostalCode', 'Country', 'Phone'];
 
-class AddressTab extends React.Component {
+interface AddressTabProps {
+data: any;
+}
+
+class AddressTab extends React.Component<AddressTabProps> {
   render() {
     return (
       <Form
@@ -22,7 +26,7 @@ class AddressTab extends React.Component {
     );
   }
 
-  renderFormItem(item) {
+  renderFormItem(item: { editorOptions: { value: any; }; }) {
     return <span>{item.editorOptions.value}</span>;
   }
 }

@@ -66,7 +66,7 @@ class App extends React.Component {
     this.showTooltip(point);
   }
 
-  showTooltip(point) {
+  showTooltip(point: { showTooltip: () => void; argument: any; }) {
     point.showTooltip();
     this.setState({
       selectedRegion: point.argument,
@@ -74,7 +74,7 @@ class App extends React.Component {
   }
 }
 
-function customizeTooltip(pointInfo) {
+function customizeTooltip(pointInfo: { argumentText: any; valueText: any; }) {
   return {
     text: `${pointInfo.argumentText}<br/>${pointInfo.valueText}`,
   };

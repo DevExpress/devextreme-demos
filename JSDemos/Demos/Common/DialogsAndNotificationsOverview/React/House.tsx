@@ -16,7 +16,37 @@ const position = {
   collision: 'fit flip',
 };
 
-class House extends React.PureComponent {
+interface HouseProps {
+house: { ID: string; Favorite: boolean; Address: string; City: string; State: string; ZipCode: string; Beds: string; Baths: string; HouseSize: number; LotSize: string; Price: number; Coordinates: string; Features: string; ...show?: (house: any) => void;
+key?: string;show?: (house: any) => void;
+key?: string;show?: (house: any) => void;
+key?: string;show?: (house: any) => void;
+key?: string;show?: (house: any) => void;
+key?: string;show?: (house: any) => void;
+key?: string;show?: (house: any) => void;
+key?: string;show?: (house: any) => void;
+key?: string;show?: (house: any) => void;
+key?: string;show?: (house: any) => void;
+key?: string;show?: (house: any) => void;
+key?: string;show?: (house: any) => void;
+key?: string;
+
+
+
+
+
+
+
+
+
+
+
+ 4 more ...; Agent: { ...; }; };
+show: (house: any) => void;
+key: string;
+}
+
+class House extends React.PureComponent<HouseProps> {
   constructor(props) {
     super(props);
 

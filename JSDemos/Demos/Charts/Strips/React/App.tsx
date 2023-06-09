@@ -16,7 +16,7 @@ import { temperaturesData, lowAverage, highAverage } from './data.js';
 const highAverageColor = '#ff9b52';
 const lowAverageColor = '#6199e6';
 
-function customizePoint(arg) {
+function customizePoint(arg: { value: number; }) {
   if (arg.value > highAverage) {
     return { color: highAverageColor };
   }
@@ -26,7 +26,7 @@ function customizePoint(arg) {
   return null;
 }
 
-function customizeLabel(arg) {
+function customizeLabel(arg: { value: number; }) {
   if (arg.value > highAverage) {
     return getLabelsSettings(highAverageColor);
   }
@@ -36,7 +36,7 @@ function customizeLabel(arg) {
   return null;
 }
 
-function getLabelsSettings(backgroundColor) {
+function getLabelsSettings(backgroundColor: string) {
   return {
     visible: true,
     backgroundColor,
@@ -44,7 +44,7 @@ function getLabelsSettings(backgroundColor) {
   };
 }
 
-function customizeText(arg) {
+function customizeText(arg: { valueText: any; }) {
   return `${arg.valueText}&#176F`;
 }
 

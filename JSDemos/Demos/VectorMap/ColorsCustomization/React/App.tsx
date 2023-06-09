@@ -33,7 +33,7 @@ export default function App() {
   );
 }
 
-function customizeTooltip(arg) {
+function customizeTooltip(arg: { attribute: (arg0: string) => any; }) {
   const name = arg.attribute('name');
   const country = countries[name];
   if (country) {
@@ -51,8 +51,8 @@ function clickHandler({ target }) {
   }
 }
 
-function customizeLayer(elements) {
-  elements.forEach((element) => {
+function customizeLayer(elements: any[]) {
+  elements.forEach((element: { attribute: (arg0: string) => string | number; applySettings: (arg0: { color: any; hoveredColor: string; selectedColor: string; }) => void; }) => {
     const country = countries[element.attribute('name')];
     if (country) {
       element.applySettings({

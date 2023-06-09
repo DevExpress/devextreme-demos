@@ -11,7 +11,7 @@ class App extends React.Component {
     this.orders = service.getOrders();
   }
 
-  customizeDate(data) {
+  customizeDate(data: { value: Date; }) {
     return `First: ${formatDate(data.value, 'MMM dd, yyyy')}`;
   }
 

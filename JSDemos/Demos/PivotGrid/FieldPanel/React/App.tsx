@@ -83,23 +83,23 @@ class App extends React.Component {
     );
   }
 
-  onShowColumnFieldsChanged(e) {
+  onShowColumnFieldsChanged(e: { value: any; }) {
     this.setState({ showColumnFields: e.value });
   }
 
-  onShowDataFieldsChanged(e) {
+  onShowDataFieldsChanged(e: { value: any; }) {
     this.setState({ showDataFields: e.value });
   }
 
-  onShowFilterFieldsChanged(e) {
+  onShowFilterFieldsChanged(e: { value: any; }) {
     this.setState({ showFilterFields: e.value });
   }
 
-  onShowRowFieldsChanged(e) {
+  onShowRowFieldsChanged(e: { value: any; }) {
     this.setState({ showRowFields: e.value });
   }
 
-  onContextMenuPreparing(e) {
+  onContextMenuPreparing(e: { field: { summaryType: string; }; items: { text: string; onItemClick?: () => void; items?: { text: string; value: string; onItemClick(args: any): void; selected: boolean; }[]; }[]; }) {
     const sourceField = e.field;
 
     if (sourceField) {
@@ -125,7 +125,7 @@ class App extends React.Component {
       }
 
       if (sourceField.dataType === 'number') {
-        const menuItems = [];
+        const menuItems: ({ text: string; value: string; onItemClick(args: any): void; selected: boolean; })[] = [];
 
         e.items.push({ text: 'Summary Type', items: menuItems });
         ['Sum', 'Avg', 'Min', 'Max'].forEach((summaryType) => {
@@ -156,7 +156,7 @@ const dataSource = new PivotGridDataSource({
     dataField: 'city',
     width: 150,
     area: 'row',
-    selector(data) {
+    selector(data: { city: any; country: any; }) {
       return `${data.city} (${data.country})`;
     },
   }, {
@@ -173,7 +173,7 @@ const dataSource = new PivotGridDataSource({
   store: sales,
 });
 
-function setSummaryType(args, sourceField) {
+function setSummaryType(args: { itemData: { value: any; }; }, sourceField: { index: string | number; } | { summaryType: string; }) {
   dataSource.field(sourceField.index, {
     summaryType: args.itemData.value,
   });

@@ -18,7 +18,7 @@ class App extends React.Component {
     );
   }
 
-  createChildren(parent) {
+  createChildren(parent: { itemData: { id: any; }; }) {
     const parentId = parent ? parent.itemData.id : '';
 
     return fetch(`https://js.devexpress.com/Demos/Mvc/api/TreeViewData?parentId=${parentId}`)

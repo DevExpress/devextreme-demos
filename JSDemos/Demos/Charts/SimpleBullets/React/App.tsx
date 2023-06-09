@@ -4,7 +4,7 @@ import Bullet, { Tooltip } from 'devextreme-react/bullet';
 import { service } from './data.js';
 
 class App extends React.Component {
-  customizeTooltip(arg) {
+  customizeTooltip(arg: { value: any; target: any; }) {
     return {
       text: `Current t&#176: ${arg.value} &#176C<br>Average t&#176:${arg.target}&#176C`,
     };

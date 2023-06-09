@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ChangeCell(cell) {
+export default function ChangeCell(cell: { data: { change: number; percentChange: number; }; text: any; }) {
   return (
     <div className={cell.data.change > 0 ? 'inc' : 'dec' }>
       <span className="current-value">{cell.text}</span>

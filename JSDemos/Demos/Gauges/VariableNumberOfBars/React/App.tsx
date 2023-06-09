@@ -17,7 +17,7 @@ class App extends React.Component {
       values: products.map((p) => p.count),
     };
 
-    this.getValueChangedHandler = (productIndex) => (e) => {
+    this.getValueChangedHandler = (productIndex: string | number) => (e: { value: any; }) => {
       const productsActivity = this.state.productsActivity.slice();
       productsActivity[productIndex] = e.value;
       this.setState({
@@ -45,7 +45,7 @@ class App extends React.Component {
             <Label format={format} />
           </BarGauge>
           <div id="panel">
-            {this.state.productsActivity.map((p, i) => <CheckBox
+            {this.state.productsActivity.map((p, i: string | number) => <CheckBox
               key={i}
               text={products[i].name}
               value={p}

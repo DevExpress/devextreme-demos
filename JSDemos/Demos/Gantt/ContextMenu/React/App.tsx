@@ -61,25 +61,25 @@ function App() {
     </div>
   );
 
-  function onContextMenuPreparing(e) {
+  function onContextMenuPreparing(e: { cancel: any; }) {
     e.cancel = ganttConfig.disableContextMenu;
   }
 
-  function onCustomizeContextMenu(e) {
+  function onCustomizeContextMenu(e: { value: any; }) {
     setGanttConfig({
       ...ganttConfig,
       contextMenuItems: e.value ? getContextMenuItems() : undefined,
     });
   }
 
-  function onPreventContextMenuShowing(e) {
+  function onPreventContextMenuShowing(e: { value: any; }) {
     setGanttConfig({
       ...ganttConfig,
       disableContextMenu: e.value,
     });
   }
 
-  function onCustomCommandClick(e) {
+  function onCustomCommandClick(e: { name: string; }) {
     if (e.name === 'ToggleDisplayOfResources') {
       setGanttConfig({
         ...ganttConfig,

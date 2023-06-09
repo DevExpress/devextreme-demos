@@ -17,25 +17,25 @@ class App extends React.Component {
     this.onReorder = this.onReorder.bind(this);
   }
 
-  onDragStart(e) {
+  onDragStart(e: { itemData: any; fromData: string | number; fromIndex: string | number; }) {
     e.itemData = this.state[e.fromData][e.fromIndex];
   }
 
-  onAdd(e) {
+  onAdd(e: { toData: string | number; toIndex: any; itemData: any; }) {
     const tasks = this.state[e.toData];
     this.setState({
       [e.toData]: [...tasks.slice(0, e.toIndex), e.itemData, ...tasks.slice(e.toIndex)],
     });
   }
 
-  onRemove(e) {
+  onRemove(e: { fromData: string | number; fromIndex: number; }) {
     const tasks = this.state[e.fromData];
     this.setState({
       [e.fromData]: [...tasks.slice(0, e.fromIndex), ...tasks.slice(e.fromIndex + 1)],
     });
   }
 
-  onReorder(e) {
+  onReorder(e: { fromData?: string | number; fromIndex?: number; toData?: string | number; toIndex?: any; itemData?: any; }) {
     this.onRemove(e);
     this.onAdd(e);
   }

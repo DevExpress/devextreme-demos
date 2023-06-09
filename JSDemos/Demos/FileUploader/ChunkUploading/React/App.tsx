@@ -23,7 +23,7 @@ class App extends React.Component {
         <span className="note">Maximum file size: <span>4 MB.</span></span>
         <div className="chunk-panel">
           {
-            this.state.chunks.map((c, i) => <div key={i}>
+            this.state.chunks.map((c: { segmentSize: any; bytesLoaded: any; bytesTotal: any; }, i) => <div key={i}>
               <span>Chunk size:</span>
               <span className="segment-size dx-theme-accent-as-text-color">{this.getValueInKb(c.segmentSize)}</span>
               <span>, Uploaded:</span>
@@ -37,7 +37,7 @@ class App extends React.Component {
     );
   }
 
-  onUploadProgress(e) {
+  onUploadProgress(e: { segmentSize: any; bytesLoaded: any; bytesTotal: any; }) {
     const chunk = {
       segmentSize: e.segmentSize,
       bytesLoaded: e.bytesLoaded,
@@ -50,7 +50,7 @@ class App extends React.Component {
     this.setState({ chunks: [] });
   }
 
-  getValueInKb(value) {
+  getValueInKb(value: number) {
     return `${(value / 1024).toFixed(0)}kb`;
   }
 }

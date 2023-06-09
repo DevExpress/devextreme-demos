@@ -48,7 +48,7 @@ class App extends React.Component {
     );
   }
 
-  directionChanged(e) {
+  directionChanged(e: { value: any; }) {
     this.setState({
       direction: e.value,
     });

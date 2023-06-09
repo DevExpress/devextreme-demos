@@ -82,7 +82,7 @@ class App extends React.Component {
     );
   }
 
-  handleChange(e) {
+  handleChange(e: { fullName: string; value: { startValue: any; }; component: any; }) {
     if (e.fullName === 'argumentAxis.visualRange') {
       const stateStart = this.state.visualRange.startValue;
       const currentStart = e.value.startValue;
@@ -93,7 +93,7 @@ class App extends React.Component {
     }
   }
 
-  onVisualRangeChanged(component) {
+  onVisualRangeChanged(component: { getDataSource: () => { (): any; new(): any; items: { (): any; new(): any; }; }; }) {
     const items = component.getDataSource().items();
     const { visualRange } = this.state;
     if (!items.length
@@ -103,7 +103,7 @@ class App extends React.Component {
     }
   }
 
-  uploadDataByVisualRange(visualRange, component) {
+  uploadDataByVisualRange(visualRange: { startValue: any; endValue: any; }, component: { getDataSource: () => any; showLoadingIndicator: () => void; }) {
     const dataSource = component.getDataSource();
     const storage = dataSource.items();
     const ajaxArgs = {
@@ -126,7 +126,7 @@ class App extends React.Component {
           const componentStorage = dataSource.store();
 
           dataFrame
-            .map((i) => ({
+            .map((i: { Date: VarDate | string | number | Date | VarDate; MinTemp: any; MaxTemp: any; }) => ({
               date: new Date(i.Date),
               minTemp: i.MinTemp,
               maxTemp: i.MaxTemp,
@@ -145,7 +145,7 @@ class App extends React.Component {
   }
 }
 
-function getDataFrame(args) {
+function getDataFrame(args: { startVisible: any; endVisible: any; startBound: any; endBound: any; } | (() => void)) {
   let params = '?';
 
   params += `startVisible=${args.startVisible}
@@ -157,7 +157,7 @@ function getDataFrame(args) {
     .then((response) => response.json());
 }
 
-function getDateString(dateTime) {
+function getDateString(dateTime: { toLocaleDateString: (arg0: string) => any; }) {
   return dateTime ? dateTime.toLocaleDateString('en-US') : '';
 }
 

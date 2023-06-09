@@ -15,7 +15,7 @@ import {
 import { dataSource, annotationSources } from './data.js';
 
 class App extends React.Component {
-  customizeTooltip(annotation) {
+  customizeTooltip(annotation: { description: any; }) {
     return {
       html: `<div class='tooltip'>${annotation.description}</div>`,
     };

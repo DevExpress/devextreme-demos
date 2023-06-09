@@ -34,7 +34,7 @@ class App extends React.Component {
     this.onTreeItemClick = this.onTreeItemClick.bind(this);
   }
 
-  makeAsyncDataSource(jsonFile) {
+  makeAsyncDataSource(jsonFile: string) {
     return new CustomStore({
       loadMode: 'raw',
       key: 'ID',
@@ -123,7 +123,7 @@ class App extends React.Component {
     );
   }
 
-  syncTreeViewSelection(e) {
+  syncTreeViewSelection(e: { value: any; }) {
     this.setState({
       treeBoxValue: e.value,
     });
@@ -136,30 +136,30 @@ class App extends React.Component {
     }
   }
 
-  syncDataGridSelection(e) {
+  syncDataGridSelection(e: { value: any; }) {
     this.setState({
       gridBoxValue: e.value,
     });
   }
 
-  treeViewItemSelectionChanged(e) {
+  treeViewItemSelectionChanged(e: { component: { getSelectedNodeKeys: () => any; }; }) {
     this.setState({
       treeBoxValue: e.component.getSelectedNodeKeys(),
     });
   }
 
-  dataGridOnSelectionChanged(e) {
+  dataGridOnSelectionChanged(e: { selectedRowKeys: any; }) {
     this.setState({
       gridBoxValue: e.selectedRowKeys,
       isGridBoxOpened: false,
     });
   }
 
-  gridBoxDisplayExpr(item) {
+  gridBoxDisplayExpr(item: { CompanyName: any; Phone: any; }) {
     return item && `${item.CompanyName} <${item.Phone}>`;
   }
 
-  treeViewOnContentReady(e) {
+  treeViewOnContentReady(e: { component: { selectItem: (arg0: any) => void; }; }) {
     e.component.selectItem(this.state.treeBoxValue);
   }
 
@@ -169,7 +169,7 @@ class App extends React.Component {
     });
   }
 
-  onGridBoxOpened(e) {
+  onGridBoxOpened(e: { name: string; value: any; }) {
     if (e.name === 'opened') {
       this.setState({
         isGridBoxOpened: e.value,
@@ -177,7 +177,7 @@ class App extends React.Component {
     }
   }
 
-  onTreeBoxOpened(e) {
+  onTreeBoxOpened(e: { name: string; value: any; }) {
     if (e.name === 'opened') {
       this.setState({
         isTreeBoxOpened: e.value,

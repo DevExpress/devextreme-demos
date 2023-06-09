@@ -28,7 +28,7 @@ class App extends React.Component {
     this.dataGridRender = this.dataGridRender.bind(this);
   }
 
-  makeAsyncDataSource(jsonFile) {
+  makeAsyncDataSource(jsonFile: string) {
     return new CustomStore({
       loadMode: 'raw',
       key: 'ID',
@@ -114,7 +114,7 @@ class App extends React.Component {
     );
   }
 
-  syncTreeViewSelection(e) {
+  syncTreeViewSelection(e: { component: { selectItem: any; }; value: any; }) {
     const treeView = (e.component.selectItem && e.component)
       || (this.treeView && this.treeView.instance);
 
@@ -136,19 +136,19 @@ class App extends React.Component {
     }
   }
 
-  syncDataGridSelection(e) {
+  syncDataGridSelection(e: { value: any; }) {
     this.setState({
       gridBoxValue: e.value || [],
     });
   }
 
-  treeViewItemSelectionChanged(e) {
+  treeViewItemSelectionChanged(e: { component: { getSelectedNodeKeys: () => any; }; }) {
     this.setState({
       treeBoxValue: e.component.getSelectedNodeKeys(),
     });
   }
 
-  dataGridOnSelectionChanged(e) {
+  dataGridOnSelectionChanged(e: { selectedRowKeys: string | any[]; }) {
     this.setState({
       gridBoxValue: (e.selectedRowKeys.length && e.selectedRowKeys) || [],
     });

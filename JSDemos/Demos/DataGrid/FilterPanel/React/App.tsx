@@ -53,7 +53,7 @@ class App extends React.Component {
   }
 }
 
-function getOrderDay(rowData) {
+function getOrderDay(rowData: { OrderDate: VarDate | string | number | Date | VarDate; }) {
   return (new Date(rowData.OrderDate)).getDay();
 }
 

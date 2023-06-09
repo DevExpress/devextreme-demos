@@ -80,7 +80,7 @@ class App extends React.Component {
   }
 }
 
-function customizeTooltip(pointInfo) {
+function customizeTooltip(pointInfo: { point: { data: any; }; }) {
   const { data } = pointInfo.point;
   return {
     text: `${data.country} ${data.year}`,

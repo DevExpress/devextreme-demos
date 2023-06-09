@@ -1,6 +1,6 @@
 import React from 'react';
 
-function formatPrice(price) {
+function formatPrice(price: number) {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',

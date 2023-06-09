@@ -64,13 +64,13 @@ class App extends React.Component {
     );
   }
 
-  changeColorPriority(e) {
+  changeColorPriority(e: { value: any; }) {
     this.setState({
       colorPriority: e.value,
     });
   }
 
-  changeSelectionPriority(e) {
+  changeSelectionPriority(e: { value: any; }) {
     this.setState({
       selectionPriority: e.value,
     });

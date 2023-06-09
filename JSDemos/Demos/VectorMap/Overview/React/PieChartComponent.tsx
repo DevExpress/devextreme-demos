@@ -6,13 +6,13 @@ import PieChart, {
   Connector,
 } from 'devextreme-react/pie-chart';
 
-function customizeText(pointInfo) {
+function customizeText(pointInfo: { argument: string | any[]; value: any; }) {
   return `${pointInfo.argument[0].toUpperCase()}${
     pointInfo.argument.slice(1)
   }: $${pointInfo.value}M`;
 }
 
-function PieChartComponent(props) {
+function PieChartComponent(props: { data: any; }) {
   return (
     <PieChart id="gdp-sectors"
       dataSource={props.data}

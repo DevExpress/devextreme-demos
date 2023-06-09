@@ -30,11 +30,11 @@ class App extends React.Component {
     this.onReorder = this.onReorder.bind(this);
   }
 
-  onReorder(e) {
+  onReorder(e: { promise: Promise<void>; }) {
     e.promise = this.processReorder(e);
   }
 
-  async processReorder(e) {
+  async processReorder(e: { component: { getVisibleRows: () => any; refresh: () => any; }; toIndex: string | number; itemData: { ID: any; }; }) {
     const visibleRows = e.component.getVisibleRows();
     const newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
 

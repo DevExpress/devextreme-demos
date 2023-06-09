@@ -3,7 +3,7 @@ import SelectBox from 'devextreme-react/select-box';
 import List from 'devextreme-react/list';
 import { products, searchModeLabel } from './data.js';
 
-function ItemTemplate(data) {
+function ItemTemplate(data: { Name: any; }) {
   return <div>{data.Name}</div>;
 }
 const searchModes = ['contains', 'startsWith', 'equals'];
@@ -17,7 +17,7 @@ class App extends React.Component {
     this.onSearchModeChange = this.onSearchModeChange.bind(this);
   }
 
-  onSearchModeChange(args) {
+  onSearchModeChange(args: { value: any; }) {
     this.setState({
       searchMode: args.value,
     });

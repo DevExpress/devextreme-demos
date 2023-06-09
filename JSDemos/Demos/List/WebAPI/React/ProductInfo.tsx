@@ -7,7 +7,7 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 2,
 });
 
-export default function ProductInfo(item) {
+export default function ProductInfo(item: { CategoryName: any; ProductName: any; UnitPrice: number | number | bigint; }) {
   return (
     <React.Fragment>
       <div>{item.CategoryName}</div>

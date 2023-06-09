@@ -37,7 +37,7 @@ class App extends React.Component {
       elementAttr: {
         class: 'currency',
       },
-      onClick: (e) => {
+      onClick: (e: { component: { option: (arg0: string,arg1: string) => string; }; }) => {
         if (e.component.option('text') === '$') {
           e.component.option('text', '€');
           this.setState({
@@ -85,14 +85,14 @@ class App extends React.Component {
       },
     };
 
-    this.onDateChanged = (e) => {
+    this.onDateChanged = (e: { value: any; }) => {
       this.setState({
         dateValue: e.value,
       });
     };
   }
 
-  changeCurrency(data) {
+  changeCurrency(data: { value: any; }) {
     this.setState({
       currencyValue: data.value,
     });

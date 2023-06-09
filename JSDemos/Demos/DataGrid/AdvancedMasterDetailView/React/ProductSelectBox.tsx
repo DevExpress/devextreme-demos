@@ -5,7 +5,13 @@ import { createStore } from 'devextreme-aspnet-data-nojquery';
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridAdvancedMasterDetailView';
 const productLabel = { 'aria-label': 'Product' };
 
-class ProductSelectBox extends React.Component {
+interface ProductSelectBoxProps {
+supplierId: any;
+productId: any;
+onProductChanged: (productId: any) => void;
+}
+
+class ProductSelectBox extends React.Component<ProductSelectBoxProps> {
   constructor(props) {
     super(props);
 
@@ -33,14 +39,14 @@ class ProductSelectBox extends React.Component {
     );
   }
 
-  setDefaultValue(items) {
+  setDefaultValue(items: any[]) {
     const firstItem = items[0];
     if (firstItem && this.props.productId === null) {
       this.props.onProductChanged(firstItem.ProductID);
     }
   }
 
-  valueChanged(e) {
+  valueChanged(e: { value: any; }) {
     this.props.onProductChanged(e.value);
   }
 }

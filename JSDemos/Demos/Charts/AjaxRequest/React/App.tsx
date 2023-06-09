@@ -11,7 +11,7 @@ import Chart, {
 } from 'devextreme-react/chart';
 
 class App extends React.Component {
-  customizeText(e) {
+  customizeText(e: { value: any; }) {
     return `Day ${e.value}`;
   }
 

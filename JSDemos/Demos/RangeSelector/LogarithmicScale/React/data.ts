@@ -1,4 +1,4 @@
-const data = [];
+const data: ({ arg: number; val: number; })[] = [];
 for (let i = 0; i < 100; i += 1) {
   data.push({
     arg: 10 ** i * 0.1,

@@ -8,7 +8,7 @@ import service from './data.js';
 const dataSource = service.getMaleAgeData();
 
 class App extends React.Component {
-  customizeTooltip(arg) {
+  customizeTooltip(arg: { seriesName: any; valueText: any; }) {
     return {
       text: `${arg.seriesName} years: ${arg.valueText}`,
     };

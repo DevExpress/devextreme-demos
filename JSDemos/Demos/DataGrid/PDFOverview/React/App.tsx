@@ -15,7 +15,7 @@ import { customers } from './data.js';
 const exportFormats = ['pdf'];
 
 export default function App() {
-  const onExporting = React.useCallback((e) => {
+  const onExporting = React.useCallback((e: { component: any; }) => {
     // eslint-disable-next-line new-cap
     const doc = new jsPDF();
 

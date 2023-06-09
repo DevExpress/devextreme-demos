@@ -30,7 +30,7 @@ class App extends React.Component {
     this.onValueChanged = this.onValueChanged.bind(this);
   }
 
-  onValueChanged(e) {
+  onValueChanged(e: { value: any; }) {
     this.setState({
       value: e.value,
     });

@@ -79,7 +79,7 @@ class App extends React.Component {
     );
   }
 
-  onContentReady(e) {
+  onContentReady(e: { component: { expandRow: (arg0: string[]) => void; }; }) {
     if (!this.state.collapsed) {
       e.component.expandRow(['EnviroCare']);
       this.setState({

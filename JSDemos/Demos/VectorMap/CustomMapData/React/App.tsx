@@ -38,8 +38,8 @@ export default function App() {
   );
 }
 
-function customizeLayer(elements) {
-  elements.forEach((element) => {
+function customizeLayer(elements: any[]) {
+  elements.forEach((element: { applySettings: (arg0: { color: any; }) => void; attribute: (arg0: string) => any; }) => {
     element.applySettings({
       color: element.attribute('color'),
     });

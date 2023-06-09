@@ -21,7 +21,7 @@ class App extends React.Component {
     this.onCurrentDirectoryChanged = this.onCurrentDirectoryChanged.bind(this);
   }
 
-  onCurrentDirectoryChanged(e) {
+  onCurrentDirectoryChanged(e: { component: { option: (arg0: string) => any; }; }) {
     this.setState({
       currentPath: e.component.option('currentPath'),
     });

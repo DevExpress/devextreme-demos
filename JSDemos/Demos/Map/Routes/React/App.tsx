@@ -18,14 +18,14 @@ export default function App() {
   const [routes, setRoutes] = React.useState(routesData);
 
   const routeModeChange = React.useCallback((value) => {
-    setRoutes(routes.map((item) => {
+    setRoutes(routes.map((item: { mode: any; }) => {
       item.mode = value;
       return item;
     }));
   }, [routes, setRoutes]);
 
   const routeColorChange = React.useCallback((value) => {
-    setRoutes(routes.map((item) => {
+    setRoutes(routes.map((item: { color: any; }) => {
       item.color = value;
       return item;
     }));

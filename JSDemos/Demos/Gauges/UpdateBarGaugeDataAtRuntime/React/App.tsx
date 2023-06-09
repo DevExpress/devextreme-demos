@@ -58,7 +58,7 @@ class App extends React.Component {
     );
   }
 
-  getBasicColors(value) {
+  getBasicColors(value: string | any[]) {
     const code = Number(`0x${value.slice(1)}`);
     return [
       (code >> 16) & 0xff,

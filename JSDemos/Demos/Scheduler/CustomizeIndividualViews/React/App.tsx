@@ -56,7 +56,7 @@ class App extends React.Component {
   }
 }
 
-function renderDateCell(cellData) {
+function renderDateCell(cellData: { date: { getDay: () => string | number; getDate: () => any; }; }) {
   return (
     <React.Fragment>
       <div className="name">{dayOfWeekNames[cellData.date.getDay()]}</div>

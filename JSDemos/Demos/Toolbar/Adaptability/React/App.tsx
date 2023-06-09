@@ -26,11 +26,11 @@ const textAlignDefault = [textAlignItems[0].alignment];
 const fontSizeDefault = fontSizes[2].size;
 const headingDefault = headings[0].text;
 
-function onButtonClick(name) {
+function onButtonClick(name: string) {
   notify(`The "${name}" button has been clicked`);
 }
 
-function onSelectionChanged(name) {
+function onSelectionChanged(name: string) {
   notify(`The "${name}" value has been changed`);
 }
 
@@ -49,7 +49,7 @@ function App() {
     onButtonClick('Undo');
   }, []);
 
-  const onButtonGroupClick = React.useCallback((e) => {
+  const onButtonGroupClick = React.useCallback((e: { itemData: { hint: any; }; }) => {
     onButtonClick(e.itemData.hint);
   }, []);
 
@@ -86,7 +86,7 @@ function App() {
   }, []);
 
   const onHeadingClick = React.useCallback(
-    (e) => {
+    (e: { itemData: { text: any; }; }) => {
       setHeading(e.itemData.text);
       notify('The "Heading" value has been changed');
     },
@@ -94,7 +94,7 @@ function App() {
   );
 
   const onLineHeightChanged = React.useCallback(
-    (e) => {
+    (e: { item: { lineHeight: any; }; }) => {
       setLineHeight(e.item.lineHeight);
       onSelectionChanged('Line Height');
     },
@@ -102,7 +102,7 @@ function App() {
   );
 
   const onFontSizeChange = React.useCallback(
-    (e) => {
+    (e: { item: { size: any; }; }) => {
       setFontSize(e.item.size);
       onSelectionChanged('Font Size');
     },
@@ -110,7 +110,7 @@ function App() {
   );
 
   const onTextAlignChanged = React.useCallback(
-    (e) => {
+    (e: { itemData: { alignment: any; hint: any; }; }) => {
       const { alignment, hint } = e.itemData;
 
       setTextAlign([alignment]);
@@ -127,7 +127,7 @@ function App() {
   );
 
   const renderFontSize = React.useCallback(
-    (itemData) => (
+    (itemData: { size: any; text: any; }) => (
       <div style={{ fontSize: `${itemData.size}px` }}>{itemData.text}</div>
     ),
     [],

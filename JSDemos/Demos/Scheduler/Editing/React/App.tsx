@@ -91,39 +91,39 @@ class App extends React.Component {
     );
   }
 
-  onAllowAddingChanged(e) {
+  onAllowAddingChanged(e: { value: any; }) {
     this.setState({ allowAdding: e.value });
   }
 
-  onAllowDeletingChanged(e) {
+  onAllowDeletingChanged(e: { value: any; }) {
     this.setState({ allowDeleting: e.value });
   }
 
-  onAllowResizingChanged(e) {
+  onAllowResizingChanged(e: { value: any; }) {
     this.setState({ allowResizing: e.value });
   }
 
-  onAllowDraggingChanged(e) {
+  onAllowDraggingChanged(e: { value: any; }) {
     this.setState({ allowDragging: e.value });
   }
 
-  onAllowUpdatingChanged(e) {
+  onAllowUpdatingChanged(e: { value: any; }) {
     this.setState({ allowUpdating: e.value });
   }
 
-  showToast(event, value, type) {
+  showToast(event: string, value, type: string) {
     notify(`${event} "${value}" task`, type, 800);
   }
 
-  showAddedToast(e) {
+  showAddedToast(e: { appointmentData: { text: any; }; }) {
     this.showToast('Added', e.appointmentData.text, 'success');
   }
 
-  showUpdatedToast(e) {
+  showUpdatedToast(e: { appointmentData: { text: any; }; }) {
     this.showToast('Updated', e.appointmentData.text, 'info');
   }
 
-  showDeletedToast(e) {
+  showDeletedToast(e: { appointmentData: { text: any; }; }) {
     this.showToast('Deleted', e.appointmentData.text, 'warning');
   }
 }

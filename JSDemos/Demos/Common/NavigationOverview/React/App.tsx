@@ -70,7 +70,7 @@ class App extends React.Component {
     );
   }
 
-  handleTreeViewSelectionChange(e) {
+  handleTreeViewSelectionChange(e: { itemData: any; }) {
     const countryData = e.itemData;
     if (countryData.cities) {
       this.setState({
@@ -81,18 +81,18 @@ class App extends React.Component {
     }
   }
 
-  handleTabPanelSelectionChange(e) {
+  handleTabPanelSelectionChange(e: { value: any; }) {
     this.setState({
       tabPanelIndex: e.value,
     });
   }
 }
 
-function renderPanelItemTitle(item) {
+function renderPanelItemTitle(item: { text: any; }) {
   return <span className="tab-panel-title">{item.text}</span>;
 }
 
-function renderPanelItem(city) {
+function renderPanelItem(city: { flag: any; capital: any; description: any; population: any; area: any; density: any; }) {
   return (
     <React.Fragment>
       <img className="flag" src={city.flag} />

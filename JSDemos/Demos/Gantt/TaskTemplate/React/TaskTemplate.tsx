@@ -1,18 +1,18 @@
 import React from 'react';
 
-function getImagePath(taskId) {
+function getImagePath(taskId: number) {
   const imgPath = '../../../../images/employees';
   let img = taskId < 10 ? `0${taskId}` : taskId;
   img = `${imgPath}/${img}.png`;
   return img;
 }
 
-function getTaskColor(taskId) {
+function getTaskColor(taskId: number) {
   const color = taskId % 6;
   return `custom-task-color-${color}`;
 }
 
-export default function TaskTemplate(item) {
+export default function TaskTemplate(item: { taskData: { id: any; title: any; progress: any; }; taskSize: { width: any; }; taskResources: { text: any; }[]; }) {
   return (
     <div className={`custom-task ${getTaskColor(item.taskData.id)}`} style={ { width: `${item.taskSize.width}px` } }>
       <div className="custom-task-img-wrapper">

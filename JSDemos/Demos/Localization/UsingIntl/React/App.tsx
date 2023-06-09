@@ -39,7 +39,7 @@ class App extends React.Component {
     return storageLocale != null ? storageLocale : 'en';
   }
 
-  setLocale(savingLocale) {
+  setLocale(savingLocale: string) {
     sessionStorage.setItem('locale', savingLocale);
   }
 
@@ -49,7 +49,7 @@ class App extends React.Component {
     loadMessages(service.getDictionary());
   }
 
-  changeLocale(e) {
+  changeLocale(e: { value: any; }) {
     this.setState({
       locale: e.value,
     });

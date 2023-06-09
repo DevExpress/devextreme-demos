@@ -8,7 +8,7 @@ import service from './data.js';
 const dataSource = service.dataSource();
 
 class App extends React.Component {
-  customizeTooltip(arg) {
+  customizeTooltip(arg: { percentText: any; valueText: any; }) {
     return {
       text: `${arg.percentText} years: ${arg.valueText}`,
     };

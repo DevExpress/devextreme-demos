@@ -56,13 +56,13 @@ class App extends React.Component {
     );
   }
 
-  processRange(e) {
+  processRange(e: { value: [any,any]; }) {
     this.setState({
       workingDaysCount: calculateWorkdays(e.value),
     });
   }
 
-  setBehavior(data) {
+  setBehavior(data: { value: any; }) {
     this.setState({
       behaviorMode: data.value,
     });

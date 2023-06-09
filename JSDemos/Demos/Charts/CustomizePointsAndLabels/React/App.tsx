@@ -64,7 +64,7 @@ class App extends React.Component {
     );
   }
 
-  customizePoint(arg) {
+  customizePoint(arg: { value: number; }) {
     if (arg.value > this.state.highAverage) {
       return { color: '#ff7c7c', hoverStyle: { color: '#ff7c7c' } };
     }
@@ -74,12 +74,12 @@ class App extends React.Component {
     return null;
   }
 
-  customizeLabel(arg) {
+  customizeLabel(arg: { value: number; }) {
     if (arg.value > this.state.highAverage) {
       return {
         visible: true,
         backgroundColor: '#ff7c7c',
-        customizeText(e) {
+        customizeText(e: { valueText: any; }) {
           return `${e.valueText}&#176F`;
         },
       };
@@ -87,7 +87,7 @@ class App extends React.Component {
     return null;
   }
 
-  customizeText(arg) {
+  customizeText(arg: { valueText: any; }) {
     return `${arg.valueText}&#176F`;
   }
 }

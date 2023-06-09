@@ -9,7 +9,7 @@ class App extends React.Component {
     this.employees = service.getEmployees();
   }
 
-  calculateCellValue(data) {
+  calculateCellValue(data: { Title: any; FirstName: any; LastName: any; }) {
     return [data.Title, data.FirstName, data.LastName].join(' ');
   }
 

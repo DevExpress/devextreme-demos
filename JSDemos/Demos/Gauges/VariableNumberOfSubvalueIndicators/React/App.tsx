@@ -55,7 +55,7 @@ class App extends React.Component {
     return `${valueText} kW`;
   }
 
-  customizeTooltip(arg) {
+  customizeTooltip(arg: { valueText: any; index: number; }) {
     let result = `${arg.valueText} kW`;
     if (arg.index >= 0) {
       result = `Secondary ${(arg.index + 1)}: ${result}`;

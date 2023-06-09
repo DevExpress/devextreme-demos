@@ -77,7 +77,7 @@ class App extends React.Component {
               onDragStart={this.onDragStart}
               onReorder={this.onReorder}
             >
-              {items.map((item) => (
+              {items.map((item: { Task_ID: any; Task_Subject: any; }) => (
                 <Item
                   key={item.Task_ID}
                   text={item.Task_Subject}
@@ -150,11 +150,11 @@ class App extends React.Component {
     );
   }
 
-  onDragStart(e) {
+  onDragStart(e: { itemData: any; fromIndex: string | number; }) {
     e.itemData = this.state.items[e.fromIndex];
   }
 
-  onReorder(e) {
+  onReorder(e: { fromIndex: number; toIndex: any; itemData: any; }) {
     let { items } = this.state;
 
     items = [...items.slice(0, e.fromIndex), ...items.slice(e.fromIndex + 1)];
@@ -169,44 +169,44 @@ class App extends React.Component {
     });
   }
 
-  onDropFeedbackModeChanged(e) {
+  onDropFeedbackModeChanged(e: { value: any; }) {
     this.setState({
       dropFeedbackMode: e.value,
     });
   }
 
-  onItemOrientationChanged(e) {
+  onItemOrientationChanged(e: { value: any; }) {
     this.setState({
       itemOrientation: e.value,
       dragDirection: 'both',
     });
   }
 
-  onDragDirectionChanged(e) {
+  onDragDirectionChanged(e: { value: any; }) {
     this.setState({
       dragDirection: e.value,
     });
   }
 
-  onScrollSpeedChanged(e) {
+  onScrollSpeedChanged(e: { value: any; }) {
     this.setState({
       scrollSpeed: e.value,
     });
   }
 
-  onScrollSensitivityChanged(e) {
+  onScrollSensitivityChanged(e: { value: any; }) {
     this.setState({
       scrollSensitivity: e.value,
     });
   }
 
-  onHandleChanged(e) {
+  onHandleChanged(e: { value: any; }) {
     this.setState({
       handle: e.value ? '.handle' : '',
     });
   }
 
-  onDragTemplateChanged(e) {
+  onDragTemplateChanged(e: { value: any; }) {
     this.setState({
       dragComponent: e.value ? DragItem : null,
       cursorOffset: e.value ? { x: 10, y: 20 } : null,

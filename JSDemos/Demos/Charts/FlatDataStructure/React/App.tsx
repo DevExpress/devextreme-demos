@@ -20,7 +20,7 @@ function App() {
   );
 }
 
-function customizeTooltip(arg) {
+function customizeTooltip(arg: { node: { isLeaf?: any; data?: any; }; valueText: any; }) {
   const { data } = arg.node;
 
   return {

@@ -83,12 +83,12 @@ class App extends React.Component {
     );
   }
 
-  updateVisualRange(e) {
+  updateVisualRange(e: { value: any; }) {
     this.setState({ visualRange: e.value });
   }
 }
 
-function formatValueAxisLabel() {
+function formatValueAxisLabel(this: any) {
   return `${this.valueText}%`;
 }
 

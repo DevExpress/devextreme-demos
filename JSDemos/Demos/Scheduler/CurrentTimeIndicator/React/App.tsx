@@ -96,27 +96,27 @@ class App extends React.Component {
     );
   }
 
-  onContentReady(e) {
+  onContentReady(e: { component: { scrollTo: (arg0: Date) => void; }; }) {
     e.component.scrollTo(new Date());
   }
 
-  onAppointmentClick(e) {
+  onAppointmentClick(e: { cancel: boolean; }) {
     e.cancel = true;
   }
 
-  onAppointmentDblClick(e) {
+  onAppointmentDblClick(e: { cancel: boolean; }) {
     e.cancel = true;
   }
 
-  onShowCurrentTimeIndicatorChanged(e) {
+  onShowCurrentTimeIndicatorChanged(e: { value: any; }) {
     this.setState({ showCurrentTimeIndicator: e.value });
   }
 
-  onShadeUntilCurrentTimeChanged(e) {
+  onShadeUntilCurrentTimeChanged(e: { value: any; }) {
     this.setState({ shadeUntilCurrentTime: e.value });
   }
 
-  onUpdateIntervalChanged(args) {
+  onUpdateIntervalChanged(args: { value: any; }) {
     this.setState({ updateInterval: args.value });
   }
 }

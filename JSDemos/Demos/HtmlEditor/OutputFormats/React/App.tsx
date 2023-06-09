@@ -81,13 +81,13 @@ class App extends React.Component {
     );
   }
 
-  valueChanged(e) {
+  valueChanged(e: { value: any; }) {
     this.setState({
       valueContent: e.value,
     });
   }
 
-  valueTypeChanged(e) {
+  valueTypeChanged(e: { addedItems: { text: string; }[]; }) {
     this.setState({
       editorValueType: e.addedItems[0].text.toLowerCase(),
     });

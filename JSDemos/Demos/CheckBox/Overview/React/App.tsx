@@ -10,7 +10,7 @@ class App extends React.Component {
     this.onValueChanged = this.onValueChanged.bind(this);
   }
 
-  onValueChanged(args) {
+  onValueChanged(args: { value: any; }) {
     this.setState({
       checkBoxValue: args.value,
     });

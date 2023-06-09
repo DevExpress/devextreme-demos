@@ -66,7 +66,7 @@ class App extends React.Component {
     );
   }
 
-  setAlternatingRowsBackground = (dataGrid, gridCell, pdfCell) => {
+  setAlternatingRowsBackground = (dataGrid: { getRowIndexByKey: (arg0: any) => any; }, gridCell, pdfCell) => {
     if (gridCell.rowType === 'data') {
       const rowIndex = dataGrid.getRowIndexByKey(gridCell.data.Product_ID);
       if (rowIndex % 2 === 0) {
@@ -104,7 +104,7 @@ class App extends React.Component {
     });
   }
 
-  setAlternatingRowsBackground(gridCell, excelCell) {
+  setAlternatingRowsBackground(gridCell: { rowType: string; }, excelCell: { fullAddress: { row: number; }; fill: { type: string; pattern: string; fgColor: { argb: string; }; bgColor: { argb: string; }; }; }) {
     if (gridCell.rowType === 'header' || gridCell.rowType === 'data') {
       if (excelCell.fullAddress.row % 2 === 0) {
         excelCell.fill = {

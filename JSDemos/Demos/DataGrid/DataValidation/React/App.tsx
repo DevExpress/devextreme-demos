@@ -69,7 +69,7 @@ class App extends React.Component {
   }
 }
 
-function asyncValidation(params) {
+function asyncValidation(params: { data: { ID: any; }; value: any; }) {
   return fetch('https://js.devexpress.com/Demos/Mvc/RemoteValidation/CheckUniqueEmailAddress', {
     method: 'POST',
     headers: {

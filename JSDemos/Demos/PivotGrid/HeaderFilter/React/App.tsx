@@ -92,13 +92,13 @@ class App extends React.Component {
     );
   }
 
-  onSearchEnabledChanged(data) {
+  onSearchEnabledChanged(data: { value: any; }) {
     this.setState({
       searchEnabled: data.value,
     });
   }
 
-  onShowRelevantValuesChanged(data) {
+  onShowRelevantValuesChanged(data: { value: any; }) {
     this.setState({
       showRelevantValues: data.value,
     });

@@ -35,13 +35,13 @@ function App() {
   );
 }
 
-function customizeLayer(elements) {
-  elements.forEach((element) => {
+function customizeLayer(elements: any[]) {
+  elements.forEach((element: { attribute: (arg0: string,arg1: undefined) => string | number; }) => {
     element.attribute('population', populations[element.attribute('name')]);
   });
 }
 
-function customizeText(arg) {
+function customizeText(arg: { index: number; start: any; end: any; }) {
   let text;
   if (arg.index === 0) {
     text = '< 0.5%';

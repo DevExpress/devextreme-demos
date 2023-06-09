@@ -29,7 +29,7 @@ const data = [
 ];
 
 export default {
-  filterData(name) {
+  filterData(name: string) {
     return data.filter((item) => item.parentID === name);
   },
 };

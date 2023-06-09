@@ -76,7 +76,7 @@ class App extends React.Component {
     );
   }
 
-  onExporting(e) {
+  onExporting(e: { component: any; cancel: boolean; }) {
     const workbook = new Workbook();
     const worksheet = workbook.addWorksheet('CountriesPopulation');
 

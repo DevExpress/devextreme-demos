@@ -34,13 +34,13 @@ class App extends React.Component {
     this.getRef = this.getRef.bind(this);
   }
 
-  getGroupCount(groupField) {
+  getGroupCount(groupField: string) {
     return query(this.orders)
       .groupBy(groupField)
       .toArray().length;
   }
 
-  groupChanged(e) {
+  groupChanged(e: { value: any; }) {
     const grouping = e.value;
     this.dataGrid.instance.clearGrouping();
     this.dataGrid.instance.columnOption(grouping, 'groupIndex', 0);

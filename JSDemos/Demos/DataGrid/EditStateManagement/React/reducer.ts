@@ -11,7 +11,7 @@ import {
   SET_EDIT_ROW_KEY,
 } from './actions.js';
 
-export default function reducer(state, { type, payload }) {
+export default function reducer(state: { data: any[]; }, { type, payload }) {
   let newData;
 
   switch (type) {

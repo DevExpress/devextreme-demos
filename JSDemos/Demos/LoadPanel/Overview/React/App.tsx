@@ -120,25 +120,25 @@ class App extends React.Component {
     });
   }
 
-  onShowIndicatorChange(e) {
+  onShowIndicatorChange(e: { value: any; }) {
     this.setState({
       showIndicator: e.value,
     });
   }
 
-  onShadingChange(e) {
+  onShadingChange(e: { value: any; }) {
     this.setState({
       shading: e.value,
     });
   }
 
-  onShowPaneChange(e) {
+  onShowPaneChange(e: { value: any; }) {
     this.setState({
       showPane: e.value,
     });
   }
 
-  onHideOnOutsideClickChange(e) {
+  onHideOnOutsideClickChange(e: { value: any; }) {
     this.setState({
       hideOnOutsideClick: e.value,
     });

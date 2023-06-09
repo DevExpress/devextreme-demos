@@ -43,7 +43,7 @@ class App extends React.Component {
     );
   }
 
-  showToast(text) {
+  showToast(text: string) {
     notify({
       position: {
         at: 'top', my: 'top', of: '#diagram', offset: '0 4',
@@ -54,7 +54,7 @@ class App extends React.Component {
     });
   }
 
-  onRequestLayoutUpdate(e) {
+  onRequestLayoutUpdate(e: { changes: string | any[]; allowed: boolean; }) {
     for (let i = 0; i < e.changes.length; i += 1) {
       if (e.changes[i].type === 'remove') {
         e.allowed = true;
@@ -64,7 +64,7 @@ class App extends React.Component {
     }
   }
 
-  onRequestEditOperation(e) {
+  onRequestEditOperation(e: { operation: string; args: { shape: { type: string; attachedConnectorIds: string | any[]; id: any; }; newSize: { width: number; height: number; }; newShape: { type: any; }; connectorPosition: string; newPoints: string | any[]; text: string; }; reason: string; allowed: boolean; }) {
     const diagram = this.diagramRef.current.instance;
     if (e.operation === 'addShape') {
       if (e.args.shape.type !== 'employee' && e.args.shape.type !== 'team') {
@@ -135,7 +135,7 @@ class App extends React.Component {
     }
   }
 
-  itemStyleExpr(obj) {
+  itemStyleExpr(obj: { Type: string; }) {
     if (obj.Type === 'root') {
       return { fill: '#ffcfc3' };
     }

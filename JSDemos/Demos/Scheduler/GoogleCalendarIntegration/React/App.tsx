@@ -5,7 +5,7 @@ import Scheduler from 'devextreme-react/scheduler';
 
 import CustomStore from 'devextreme/data/custom_store';
 
-function getData(_, requestOptions) {
+function getData(_, requestOptions: RequestInit) {
   const PUBLIC_KEY = 'AIzaSyBnNAISIUKe6xdhq1_rjor2rxoI3UlMY7k';
   const CALENDAR_ID = 'f7jnetm22dsjc3npc2lu3buvu4@group.calendar.google.com';
   const dataUrl = ['https://www.googleapis.com/calendar/v3/calendars/',

@@ -23,16 +23,16 @@ class App extends React.Component {
       valueCustomPosition: 0,
       valueOffset: 0,
     };
-    this.changeArgumentPosition = (e) => {
+    this.changeArgumentPosition = (e: { value: any; }) => {
       this.setState({ argumentCustomPosition: e.value });
     };
-    this.changeArgumentOffset = (e) => {
+    this.changeArgumentOffset = (e: { value: any; }) => {
       this.setState({ argumentOffset: e.value });
     };
-    this.changeValuePosition = (e) => {
+    this.changeValuePosition = (e: { value: any; }) => {
       this.setState({ valueCustomPosition: e.value });
     };
-    this.changeValueOffset = (e) => {
+    this.changeValueOffset = (e: { value: any; }) => {
       this.setState({ valueOffset: e.value });
     };
   }

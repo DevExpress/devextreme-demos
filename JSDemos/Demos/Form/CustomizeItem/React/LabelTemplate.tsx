@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function LabelTemplate(iconName) {
-  return function template(data) {
+export default function LabelTemplate(iconName: string) {
+  return function template(data: { text: any; }) {
     return (<div><i className={`dx-icon dx-icon-${iconName}`}></i>{ data.text }</div>);
   };
 }

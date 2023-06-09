@@ -155,12 +155,12 @@ class App extends React.Component {
   }
 }
 
-function calculateRangeArea(aggregationInfo) {
+function calculateRangeArea(aggregationInfo: { data: any[]; intervalStart: { valueOf: () => any; }; intervalEnd: { valueOf: () => any; }; }) {
   if (!aggregationInfo.data.length) {
     return null;
   }
 
-  const temp = aggregationInfo.data.map((item) => item.temp);
+  const temp = aggregationInfo.data.map((item: { temp: any; }) => item.temp);
   return {
     date: new Date((aggregationInfo.intervalStart.valueOf()
       + aggregationInfo.intervalEnd.valueOf()) / 2),
@@ -169,24 +169,24 @@ function calculateRangeArea(aggregationInfo) {
   };
 }
 
-function customizeTooltip(pointInfo) {
+function customizeTooltip(pointInfo: { point: { aggregationInfo: any; }; seriesName: string | number; }) {
   const { aggregationInfo } = pointInfo.point;
   const start = aggregationInfo && aggregationInfo.intervalStart;
   const end = aggregationInfo && aggregationInfo.intervalEnd;
   const handlers = {
-    'Average temperature': (arg) => ({
+    'Average temperature': (arg: { argument: { toDateString: () => any; }; value: number; }) => ({
       text: `${(!aggregationInfo
         ? `Date: ${arg.argument.toDateString()}`
         : `Interval: ${start.toDateString()} - ${end.toDateString()}`)
       }<br/>Temperature: ${arg.value.toFixed(2)} °C`,
     }),
-    'Temperature range': (arg) => ({
+    'Temperature range': (arg: { rangeValue1: any; rangeValue2: any; }) => ({
       text: `Interval: ${start.toDateString()
       } - ${end.toDateString()
       }<br/>Temperature range: ${arg.rangeValue1
       } - ${arg.rangeValue2} °C`,
     }),
-    Precipitation: (arg) => ({
+    Precipitation: (arg: { argument: { toDateString: () => any; }; valueText: any; }) => ({
       text: `Date: ${arg.argument.toDateString()
       }<br/>Precipitation: ${arg.valueText} mm`,
     }),

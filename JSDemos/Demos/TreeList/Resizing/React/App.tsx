@@ -58,7 +58,7 @@ class App extends React.Component {
     );
   }
 
-  onResizingModeChanged(e) {
+  onResizingModeChanged(e: { value: any; }) {
     this.setState({
       columnResizingMode: e.value,
     });

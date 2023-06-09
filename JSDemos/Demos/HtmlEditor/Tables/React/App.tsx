@@ -76,13 +76,13 @@ class App extends React.Component {
     );
   }
 
-  tableResizingChanged(e) {
+  tableResizingChanged(e: { value: any; }) {
     this.setState({
       allowResizing: e.value,
     });
   }
 
-  tableContextMenuChanged(e) {
+  tableContextMenuChanged(e: { value: any; }) {
     this.setState({
       contextMenuEnabled: e.value,
     });

@@ -23,7 +23,7 @@ class App extends React.Component {
   }
 }
 
-function customizeColumns(columns) {
+function customizeColumns(columns: { width: number; }[]) {
   columns[0].width = 70;
 }
 

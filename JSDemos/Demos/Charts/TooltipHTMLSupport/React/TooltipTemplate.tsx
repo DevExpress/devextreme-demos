@@ -1,6 +1,6 @@
 import React from 'react';
 
-function getImagePath(point) {
+function getImagePath(point: { data: { name: string; }; }) {
   return `../../../../images/flags/${point.data.name.replace(/\s/, '')}.svg`;
 }
 
@@ -8,7 +8,7 @@ const formatNumber = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 0,
 }).format;
 
-export default function TooltipTemplate(info) {
+export default function TooltipTemplate(info: { point: { data: { capital: any; area: number; }; } | { data: { name: string; }; }; argument: any; value: number | number | bigint; }) {
   return (
     <div className="state-tooltip">
       <img src={getImagePath(info.point)} /><h4 className="state">{info.argument}</h4>

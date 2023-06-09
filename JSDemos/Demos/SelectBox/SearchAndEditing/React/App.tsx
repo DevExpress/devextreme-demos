@@ -58,7 +58,7 @@ class App extends React.Component {
     };
   }
 
-  customItemCreating(args) {
+  customItemCreating(args: { text: any; customItem: Promise<{ Name: any; ID: any; }>; }) {
     if (!args.text) {
       args.customItem = null;
       return;

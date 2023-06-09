@@ -7,7 +7,11 @@ import { createStore } from 'devextreme-aspnet-data-nojquery';
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridAdvancedMasterDetailView';
 
-class OrderHistory extends React.Component {
+interface OrderHistoryProps {
+productId: any;
+}
+
+class OrderHistory extends React.Component<OrderHistoryProps> {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,7 +46,7 @@ class OrderHistory extends React.Component {
     );
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: { productId: any; }) {
     const { productId } = this.props;
     if (prevProps.productId !== productId) {
       this.setState({

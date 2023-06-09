@@ -4,7 +4,7 @@ import Bullet, {
   Font, Margin, Size, Tooltip,
 } from 'devextreme-react/bullet';
 
-export default function DiscountCell(cellData) {
+export default function DiscountCell(cellData: { value: number; }) {
   return (
     <Bullet
       showTarget={false}
@@ -27,7 +27,7 @@ export default function DiscountCell(cellData) {
   );
 }
 
-function customizeTooltip(data) {
+function customizeTooltip(data: { value: string; }) {
   return {
     text: `${parseInt(data.value, 10)}%`,
   };

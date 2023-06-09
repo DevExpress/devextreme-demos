@@ -49,7 +49,7 @@ class App extends React.Component {
     );
   }
 
-  onOptionChanged(e) {
+  onOptionChanged(e: { name: string; value: any; }) {
     if (e.name === 'currentDate') {
       this.setState({ currentDate: e.value });
     }

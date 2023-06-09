@@ -58,20 +58,20 @@ class App extends React.Component {
     );
   }
 
-  onValueChanged(e) {
+  onValueChanged(e: { value: any; }) {
     this.setState({
       selectedValue: e.value,
     });
   }
 
-  changeApplyValueMode(e) {
+  changeApplyValueMode(e: { value: any; }) {
     this.setState({
       applyValueMode: e.value,
     });
   }
 }
 
-function getDisplayExpr(item) {
+function getDisplayExpr(item: { FirstName: any; LastName: any; }) {
   return item ? `${item.FirstName} ${item.LastName}` : '';
 }
 

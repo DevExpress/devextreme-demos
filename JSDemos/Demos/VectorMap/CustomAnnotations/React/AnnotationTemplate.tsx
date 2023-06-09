@@ -1,6 +1,6 @@
 import React from 'react';
 
-function getImagePath(data) {
+function getImagePath(data: { name: string; }) {
   return `../../../../images/flags/${data.name.replace(/\s/, '')}.svg`;
 }
 
@@ -8,7 +8,7 @@ const formatNumber = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 0,
 }).format;
 
-export default function AnnotationTemplate(annotation) {
+export default function AnnotationTemplate(annotation: { data: any; }) {
   const { data } = annotation;
   return (
     <svg className="annotation">

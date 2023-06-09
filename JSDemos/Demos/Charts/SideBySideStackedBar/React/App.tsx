@@ -62,10 +62,10 @@ class App extends React.Component {
   }
 }
 
-function customizeItems(items) {
+function customizeItems(items: any[]) {
   const sortedItems = [];
 
-  items.forEach((item) => {
+  items.forEach((item: { series: { stack: string; }; }) => {
     const startIndex = item.series.stack === 'male' ? 0 : 3;
     sortedItems.splice(startIndex, 0, item);
   });

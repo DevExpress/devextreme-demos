@@ -62,19 +62,19 @@ class App extends React.Component {
     );
   }
 
-  onShowTotalsPriorChanged(data) {
+  onShowTotalsPriorChanged(data: { value: any; }) {
     this.setState({
       showTotalsPrior: data.value,
     });
   }
 
-  onDataFieldAreaChanged(data) {
+  onDataFieldAreaChanged(data: { value: any; }) {
     this.setState({
       dataFieldArea: data.value,
     });
   }
 
-  onRowHeaderLayoutChanged(data) {
+  onRowHeaderLayoutChanged(data: { value: any; }) {
     this.setState({
       rowHeaderLayout: data.value,
     });

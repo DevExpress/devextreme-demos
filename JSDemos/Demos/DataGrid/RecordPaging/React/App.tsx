@@ -29,7 +29,7 @@ class App extends React.Component {
     return this.state.displayMode === 'compact';
   }
 
-  customizeColumns(columns) {
+  customizeColumns(columns: { width: number; }[]) {
     columns[0].width = 70;
   }
 

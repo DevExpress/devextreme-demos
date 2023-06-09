@@ -41,13 +41,13 @@ class App extends React.Component {
       return { color };
     };
 
-    this.changeTemperature = (e) => {
+    this.changeTemperature = (e: { value: any; }) => {
       this.monthWeather.filter(['t', '>', e.value]);
       this.monthWeather.load();
     };
   }
 
-  customizeLabel(e) {
+  customizeLabel(e: { valueText: any; }) {
     return `${e.valueText}${'&#176C'}`;
   }
 

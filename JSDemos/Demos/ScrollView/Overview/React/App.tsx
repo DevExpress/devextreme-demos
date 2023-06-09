@@ -92,47 +92,47 @@ class App extends React.Component {
     );
   }
 
-  getInstance(ref) {
+  getInstance(ref: { instance: any; }) {
     this.scrollView = ref.instance;
   }
 
-  pullDownValueChanged(args) {
+  pullDownValueChanged(args: { value: any; }) {
     this.setState({
       pullDown: args.value,
     });
   }
 
-  reachBottomValueChanged(args) {
+  reachBottomValueChanged(args: { value: any; }) {
     this.scrollView.option('onReachBottom', args.value ? this.updateBottomContent : null);
   }
 
-  scrollbarModelValueChanged(args) {
+  scrollbarModelValueChanged(args: { value: any; }) {
     this.setState({
       showScrollBarMode: args.value,
     });
   }
 
-  scrollByContentValueChanged(args) {
+  scrollByContentValueChanged(args: { value: any; }) {
     this.setState({
       scrollByContent: args.value,
     });
   }
 
-  scrollByThumbValueChanged(args) {
+  scrollByThumbValueChanged(args: { value: any; }) {
     this.setState({
       scrollByThumb: args.value,
     });
   }
 
-  updateTopContent(args) {
+  updateTopContent(args: { component: { release: () => void; }; }) {
     this.updateContent(args, 'PullDown');
   }
 
-  updateBottomContent(args) {
+  updateBottomContent(args: { component: { release: () => void; }; }) {
     this.updateContent(args, 'ReachBottom');
   }
 
-  updateContent(args, eventName) {
+  updateContent(args: { component: { release: () => void; }; }, eventName: string) {
     const updateContentText = `\n Content has been updated on the ${eventName} event.\n\n`;
     if (this.updateContentTimer) { clearTimeout(this.updateContentTimer); }
     this.updateContentTimer = setTimeout(() => {

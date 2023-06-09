@@ -70,11 +70,11 @@ function App() {
   );
 }
 
-function renderArabicTitle(item) {
+function renderArabicTitle(item: { nameAr: any; }) {
   return (<div>{item.nameAr}</div>);
 }
 
-function renderArabic(country) {
+function renderArabic(country: { capitalAr: any; population: any; area: any; }) {
   return (
     <div>
       <div>عاصمة: { country.capitalAr } </div>
@@ -84,11 +84,11 @@ function renderArabic(country) {
   );
 }
 
-function renderEnglishTitle(item) {
+function renderEnglishTitle(item: { nameEn: any; }) {
   return (<div>{item.nameEn}</div>);
 }
 
-function renderEnglish(country) {
+function renderEnglish(country: { capitalEn: any; population: any; area: any; }) {
   return (
     <div>
       <div>Capital: { country.capitalEn } </div>

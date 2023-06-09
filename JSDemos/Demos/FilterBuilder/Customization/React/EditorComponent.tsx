@@ -20,7 +20,7 @@ export class EditorComponent extends React.Component {
     );
   }
 
-  onValueChanged(e) {
+  onValueChanged(e: { value: string | any[]; }) {
     this.props.data.setValue(e.value && e.value.length ? e.value : null);
   }
 }

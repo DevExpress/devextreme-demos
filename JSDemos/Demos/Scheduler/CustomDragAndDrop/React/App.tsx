@@ -30,7 +30,7 @@ class App extends React.Component {
             data="dropArea"
             group={draggingGroupName}
             onDragStart={this.onListDragStart}>
-            {this.state.tasks.map((task) => <Draggable
+            {this.state.tasks.map((task: { text: any; }) => <Draggable
               key={task.text}
               className="item dx-card dx-theme-text-color dx-theme-background-color"
               clone={true}
@@ -61,7 +61,7 @@ class App extends React.Component {
     );
   }
 
-  onAppointmentRemove(e) {
+  onAppointmentRemove(e: { itemData: any; }) {
     const index = this.state.appointments.indexOf(e.itemData);
 
     if (index >= 0) {
@@ -75,7 +75,7 @@ class App extends React.Component {
     }
   }
 
-  onAppointmentAdd(e) {
+  onAppointmentAdd(e: { fromData: any; itemData: any; }) {
     const index = this.state.tasks.indexOf(e.fromData);
 
     if (index >= 0) {
@@ -89,15 +89,15 @@ class App extends React.Component {
     }
   }
 
-  onListDragStart(e) {
+  onListDragStart(e: { cancel: boolean; }) {
     e.cancel = true;
   }
 
-  onItemDragStart(e) {
+  onItemDragStart(e: { itemData: any; fromData: any; }) {
     e.itemData = e.fromData;
   }
 
-  onItemDragEnd(e) {
+  onItemDragEnd(e: { toData: any; cancel: boolean; }) {
     if (e.toData) {
       e.cancel = true;
     }

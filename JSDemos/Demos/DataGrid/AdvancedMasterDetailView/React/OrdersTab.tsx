@@ -4,7 +4,11 @@ import { Form, Item, Label } from 'devextreme-react/form';
 import ProductSelectBox from './ProductSelectBox.js';
 import OrderHistory from './OrderHistory.js';
 
-class OrdersTab extends React.Component {
+interface OrdersTabProps {
+supplierId: any;
+}
+
+class OrdersTab extends React.Component<OrdersTabProps> {
   constructor(props) {
     super(props);
     this.state = {

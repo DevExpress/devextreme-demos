@@ -47,25 +47,25 @@ class App extends React.Component {
     );
   }
 
-  onLoopChanged(data) {
+  onLoopChanged(data: { value: any; }) {
     this.setState({
       loop: data.value,
     });
   }
 
-  onSlideShowChanged(data) {
+  onSlideShowChanged(data: { value: any; }) {
     this.setState({
       slideShow: data.value,
     });
   }
 
-  onShowNavButtonsChanged(data) {
+  onShowNavButtonsChanged(data: { value: any; }) {
     this.setState({
       showNavButtons: data.value,
     });
   }
 
-  onShowIndicatorChanged(data) {
+  onShowIndicatorChanged(data: { value: any; }) {
     this.setState({
       showIndicator: data.value,
     });

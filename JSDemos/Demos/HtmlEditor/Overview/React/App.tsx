@@ -111,13 +111,13 @@ class App extends React.Component {
     );
   }
 
-  multilineChanged(e) {
+  multilineChanged(e: { value: any; }) {
     this.setState({
       isMultiline: e.value,
     });
   }
 
-  currentTabChanged(e) {
+  currentTabChanged(e: { value: any; }) {
     this.setState({
       currentTab: e.value,
     });

@@ -40,7 +40,7 @@ class App extends React.Component {
   }
 }
 
-function customizeSeries(valueFromNameField) {
+function customizeSeries(valueFromNameField: number) {
   return valueFromNameField === 2009 ? { type: 'line', label: { visible: true }, color: '#ff3f7a' } : {};
 }
 

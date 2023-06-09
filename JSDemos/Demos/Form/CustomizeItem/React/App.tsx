@@ -25,7 +25,7 @@ const notesEditorOptions = { height: 90, maxLength: 200 };
 const phoneEditorOptions = { mask: '+1 (X00) 000-0000', maskRules: { X: /[02-9]/ } };
 
 export default function App() {
-  const validateForm = React.useCallback((e) => {
+  const validateForm = React.useCallback((e: { component: { validate: () => void; }; }) => {
     e.component.validate();
   }, []);
 

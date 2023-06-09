@@ -12,7 +12,7 @@ const lookupData = {
 };
 
 class App extends React.Component {
-  allowDeleting(e) {
+  allowDeleting(e: { row: { data: { ID: number; }; }; }) {
     return e.row.data.ID !== 1;
   }
 
@@ -59,14 +59,14 @@ class App extends React.Component {
     );
   }
 
-  onEditorPreparing(e) {
+  onEditorPreparing(e: { dataField: string; row: { data: { ID: number; }; }; editorOptions: { disabled: boolean; value: any; }; }) {
     if (e.dataField === 'Head_ID' && e.row.data.ID === 1) {
       e.editorOptions.disabled = true;
       e.editorOptions.value = null;
     }
   }
 
-  onInitNewRow(e) {
+  onInitNewRow(e: { data: { Head_ID: number; }; }) {
     e.data.Head_ID = 1;
   }
 }

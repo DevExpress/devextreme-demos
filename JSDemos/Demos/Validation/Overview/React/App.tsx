@@ -228,7 +228,7 @@ class App extends React.Component {
     );
   }
 
-  onInit(e) {
+  onInit(e: { component: any; }) {
     this.validatorInstance = e.component;
   }
 
@@ -240,7 +240,7 @@ class App extends React.Component {
     return true;
   }
 
-  onPasswordChanged(e) {
+  onPasswordChanged(e: { value: any; }) {
     this.setState({
       password: e.value,
     });
@@ -249,13 +249,13 @@ class App extends React.Component {
     }
   }
 
-  onConfirmPasswordChanged(e) {
+  onConfirmPasswordChanged(e: { value: any; }) {
     this.setState({
       confirmPassword: e.value,
     });
   }
 
-  onFormSubmit(e) {
+  onFormSubmit(e: { preventDefault: () => void; }) {
     notify({
       message: 'You have submitted the form',
       position: {
@@ -268,7 +268,7 @@ class App extends React.Component {
   }
 }
 
-function sendRequest(value) {
+function sendRequest(value: string) {
   const invalidEmail = 'test@dx-email.com';
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -277,7 +277,7 @@ function sendRequest(value) {
   });
 }
 
-function asyncValidation(params) {
+function asyncValidation(params: { value: any; }) {
   return sendRequest(params.value);
 }
 

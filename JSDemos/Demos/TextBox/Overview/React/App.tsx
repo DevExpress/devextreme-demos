@@ -17,7 +17,7 @@ class App extends React.Component {
     this.valueChanged = this.valueChanged.bind(this);
   }
 
-  valueChanged(data) {
+  valueChanged(data: { value: string; }) {
     this.setState({
       emailValue: `${data.value.replace(/\s/g, '').toLowerCase()}@corp.com`,
     });

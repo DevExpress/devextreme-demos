@@ -54,11 +54,11 @@ class App extends React.Component {
     );
   }
 
-  customizeTooltip(e) {
+  customizeTooltip(e: { valueText: number; }) {
     return { text: Math.abs(e.valueText) };
   }
 
-  customizeLabel(e) {
+  customizeLabel(e: { value: number; }) {
     return `${Math.abs(e.value)}%`;
   }
 }

@@ -4,18 +4,18 @@ const formatNumber = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 0,
 }).format;
 
-function calculateTotal(pieChart) {
+function calculateTotal(pieChart: { getAllSeries: () => { getVisiblePoints: () => any[]; }[]; }) {
   return formatNumber(pieChart
     .getAllSeries()[0]
     .getVisiblePoints()
-    .reduce((s, p) => s + p.originalValue, 0));
+    .reduce((s, p: { originalValue: any; }) => s + p.originalValue, 0));
 }
 
-function getImagePath(country) {
+function getImagePath(country: string) {
   return `../../../../images/flags/${country.replace(/\s/, '').toLowerCase()}.svg`;
 }
 
-export default function TooltipTemplate(pieChart) {
+export default function TooltipTemplate(pieChart: { getAllSeries: () => { getVisiblePoints: () => { data: { country: any; }; }[]; }[]; getInnerRadius: () => number; }) {
   const { country } = pieChart.getAllSeries()[0].getVisiblePoints()[0].data;
   return (
     <svg>

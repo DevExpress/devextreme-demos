@@ -43,13 +43,13 @@ class App extends React.Component {
     this.onAutoNavigateToFocusedRowChanged = this.onAutoNavigateToFocusedRowChanged.bind(this);
   }
 
-  onTaskIdChanged(e) {
+  onTaskIdChanged(e: { event: any; value: number; }) {
     if (e.event && e.value > 0) {
       this.setState({ focusedRowKey: e.value });
     }
   }
 
-  onFocusedRowChanging(e) {
+  onFocusedRowChanging(e: { component: { getVisibleRows: () => { (): any; new(): any; length: any; }; pageCount: () => any; pageIndex: (arg0: number) => { (): any; new(): any; done: { (arg0: { (): void; (): void; }): void; new(): any; }; }; option: (arg0: string,arg1: number) => void; }; event: { key: any; }; prevRowIndex: any; newRowIndex: number; }) {
     const rowsCount = e.component.getVisibleRows().length;
     const pageCount = e.component.pageCount();
     const pageIndex = e.component.pageIndex();
@@ -68,7 +68,7 @@ class App extends React.Component {
     }
   }
 
-  onFocusedRowChanged(e) {
+  onFocusedRowChanged(e: { row: { data: any; }; component: { option: (arg0: string) => any; }; }) {
     const dataRow = e.row && e.row.data;
     const progress = dataRow && dataRow.Task_Completion ? `${dataRow.Task_Completion}%` : '';
     this.setState({
@@ -80,7 +80,7 @@ class App extends React.Component {
     });
   }
 
-  onAutoNavigateToFocusedRowChanged(e) {
+  onAutoNavigateToFocusedRowChanged(e: { value: any; }) {
     this.setState({ autoNavigateToFocusedRow: e.value });
   }
 

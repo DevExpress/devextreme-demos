@@ -69,11 +69,11 @@ class App extends React.Component {
     );
   }
 
-  itemTitleRender(company) {
+  itemTitleRender(company: { CompanyName: any; }) {
     return <span>{company.CompanyName}</span>;
   }
 
-  onSelectionChanged(args) {
+  onSelectionChanged(args: { name: string; value: any; }) {
     if (args.name === 'selectedIndex') {
       this.setState({
         selectedIndex: args.value,
@@ -81,19 +81,19 @@ class App extends React.Component {
     }
   }
 
-  onLoopChanged(args) {
+  onLoopChanged(args: { value: any; }) {
     this.setState({
       loop: args.value,
     });
   }
 
-  onAnimationEnabledChanged(args) {
+  onAnimationEnabledChanged(args: { value: any; }) {
     this.setState({
       animationEnabled: args.value,
     });
   }
 
-  onSwipeEnabledChanged(args) {
+  onSwipeEnabledChanged(args: { value: any; }) {
     this.setState({
       swipeEnabled: args.value,
     });

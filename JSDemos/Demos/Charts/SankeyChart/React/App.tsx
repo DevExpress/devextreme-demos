@@ -37,7 +37,7 @@ class App extends React.Component {
   }
 }
 
-function customizeLinkTooltip(info) {
+function customizeLinkTooltip(info: { source: any; target: any; weight: any; }) {
   return {
     html: `<b>From:</b> ${info.source}<br/><b>To:</b> ${info.target}<br/><b>Weight:</b> ${info.weight}`,
   };

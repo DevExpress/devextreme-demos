@@ -12,7 +12,7 @@ const headDataSource = {
 };
 
 class App extends React.Component {
-  allowDeleting(e) {
+  allowDeleting(e: { row: { data: { ID: number; }; }; }) {
     return e.row.data.ID !== 1;
   }
 
@@ -69,13 +69,13 @@ class App extends React.Component {
     );
   }
 
-  onEditorPreparing(e) {
+  onEditorPreparing(e: { dataField: string; row: { data: { ID: number; }; }; cancel: boolean; }) {
     if (e.dataField === 'Head_ID' && e.row.data.ID === 1) {
       e.cancel = true;
     }
   }
 
-  onInitNewRow(e) {
+  onInitNewRow(e: { data: { Head_ID: number; }; }) {
     e.data.Head_ID = 1;
   }
 }

@@ -65,11 +65,11 @@ class App extends React.Component {
     );
   }
 
-  getDataGridInstance(ref) {
+  getDataGridInstance(ref: { instance: any; }) {
     this.dataGrid = ref.instance;
   }
 
-  onCellClick(e) {
+  onCellClick(e: { area: string; component: { getDataSource: () => any; }; cell: { rowPath: string | any[]; }; }) {
     if (e.area === 'data') {
       const pivotGridDataSource = e.component.getDataSource();
       const rowPathLength = e.cell.rowPath.length;

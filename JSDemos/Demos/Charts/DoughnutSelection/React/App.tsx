@@ -33,7 +33,7 @@ class App extends React.Component {
     );
   }
 
-  pointClickHandler(arg) {
+  pointClickHandler(arg: { target: { select: () => void; }; }) {
     arg.target.select();
   }
 }

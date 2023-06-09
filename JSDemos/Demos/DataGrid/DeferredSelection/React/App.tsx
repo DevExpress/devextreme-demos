@@ -107,13 +107,13 @@ class App extends React.Component {
     );
   }
 
-  onInitialized(e) {
+  onInitialized(e: { component: any; }) {
     dataGrid = e.component;
     this.calculateStatistics();
   }
 
   calculateStatistics() {
-    dataGrid.getSelectedRowsData().then((rowData) => {
+    dataGrid.getSelectedRowsData().then((rowData: string | any[]) => {
       let commonDuration = 0;
 
       for (let i = 0; i < rowData.length; i += 1) {

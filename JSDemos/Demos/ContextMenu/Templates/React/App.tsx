@@ -5,13 +5,13 @@ import notify from 'devextreme/ui/notify';
 
 import { contextMenuItems as items } from './data.js';
 
-function itemClick(e) {
+function itemClick(e: { itemData: { items: any; text: any; }; }) {
   if (!e.itemData.items) {
     notify(`The "${e.itemData.text}" item was clicked`, 'success', 1500);
   }
 }
 
-function ItemTemplate(e) {
+function ItemTemplate(e: { icon: any; items: any; text: any; }) {
   return (
     <React.Fragment>
       <span className={ e.icon } />

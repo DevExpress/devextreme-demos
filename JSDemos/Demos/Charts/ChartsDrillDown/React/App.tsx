@@ -55,7 +55,7 @@ class App extends React.Component {
     };
   }
 
-  onPointClick(e) {
+  onPointClick(e: { target: { originalArgument: any; }; }) {
     if (this.state.isFirstLevel) {
       this.setState({
         isFirstLevel: false,

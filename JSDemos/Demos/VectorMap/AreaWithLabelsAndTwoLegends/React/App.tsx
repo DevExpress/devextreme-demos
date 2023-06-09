@@ -61,7 +61,7 @@ export default function App() {
   );
 }
 
-function customizeText(arg) {
+function customizeText(arg: { index: number; start: any; end: any; }) {
   if (arg.index === 0) {
     return '< 0.5%';
   } if (arg.index === 5) {
@@ -70,22 +70,22 @@ function customizeText(arg) {
   return `${arg.start}% to ${arg.end}%`;
 }
 
-function customizeTooltip(arg) {
+function customizeTooltip(arg: { attribute: (arg0: string) => any; }) {
   return {
     text: arg.attribute('text'),
   };
 }
 
-function customizeMarkers(arg) {
+function customizeMarkers(arg: { index: string | number; }) {
   return ['< 8000K', '8000K to 10000K', '> 10000K'][arg.index];
 }
 
-function customizeItems(items) {
+function customizeItems(items: any[]) {
   return items.reverse();
 }
 
-function customizeLayer(elements) {
-  elements.forEach((element) => {
+function customizeLayer(elements: any[]) {
+  elements.forEach((element: { attribute: (arg0: string,arg1: undefined) => void; }) => {
     const name = element.attribute('name');
     const population = populations[name];
     if (population) {

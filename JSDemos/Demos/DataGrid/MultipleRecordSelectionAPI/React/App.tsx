@@ -115,11 +115,11 @@ class App extends React.Component {
   }
 }
 
-function getEmployeeName(row) {
+function getEmployeeName(row: { FirstName: any; LastName: any; }) {
   return `${row.FirstName} ${row.LastName}`;
 }
 
-function getEmployeeNames(selectedRowsData) {
+function getEmployeeNames(selectedRowsData: any[]) {
   return selectedRowsData.length ? selectedRowsData.map(getEmployeeName).join(', ') : 'Nobody has been selected';
 }
 

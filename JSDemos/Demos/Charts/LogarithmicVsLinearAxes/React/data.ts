@@ -1,4 +1,4 @@
-export const dataSource = [];
+export const dataSource: ({ arg: number; val: number; })[] = [];
 
 for (let i = 0; i < 600; i += 1) {
   const argument = i / 100;

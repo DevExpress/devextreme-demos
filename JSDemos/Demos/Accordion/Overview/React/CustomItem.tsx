@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CustomItem(data) {
+export default function CustomItem(data: { City: any; State: any; Zipcode: any; Address: any; Phone: any; Fax: any; Website: any; }) {
   return (
     <div>
       <div>

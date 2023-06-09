@@ -40,7 +40,7 @@ export default function App() {
   );
 }
 
-function customizeTooltip(arg) {
+function customizeTooltip(arg: { layer: { type: string; }; attribute: (arg0: string) => any; }) {
   if (arg.layer.type === 'marker') {
     return {
       text: arg.attribute('tooltip'),
@@ -49,6 +49,6 @@ function customizeTooltip(arg) {
   return 0;
 }
 
-function customizeText(arg) {
+function customizeText(arg: { index: string | number; }) {
   return names[arg.index];
 }

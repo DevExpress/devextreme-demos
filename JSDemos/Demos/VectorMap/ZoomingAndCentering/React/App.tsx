@@ -16,7 +16,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.storeVectorMap = (component) => {
+    this.storeVectorMap = (component: { instance: any; }) => {
       this.vectorMap = component.instance;
     };
 
@@ -26,14 +26,14 @@ class App extends React.Component {
     };
   }
 
-  customizeTooltip(arg) {
+  customizeTooltip(arg: { layer: { type: string; }; attribute: (arg0: string) => any; }) {
     if (arg.layer.type === 'marker') {
       return { text: arg.attribute('name') };
     }
     return null;
   }
 
-  markerClick(e) {
+  markerClick(e: { target: { layer: { type: string; }; coordinates: () => any; }; component: { center: (arg0: any) => { (): any; new(): any; zoomFactor: { (arg0: number): void; new(): any; }; }; }; }) {
     if (e.target && e.target.layer.type === 'marker') {
       e.component.center(e.target.coordinates()).zoomFactor(10);
     }

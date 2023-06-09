@@ -35,7 +35,7 @@ class App extends React.Component {
   }
 }
 
-function cellRender(data) {
+function cellRender(data: { value: any; }) {
   return <img src={data.value} />;
 }
 

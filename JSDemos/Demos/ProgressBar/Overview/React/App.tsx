@@ -9,7 +9,7 @@ function formatTime(value) {
   return `00:00:${(`0${value}`).slice(-2)}`;
 }
 
-function statusFormat(ratio) {
+function statusFormat(ratio: number) {
   return `Loading: ${ratio * 100}%`;
 }
 

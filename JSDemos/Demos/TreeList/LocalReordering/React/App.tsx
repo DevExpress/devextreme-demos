@@ -81,7 +81,7 @@ class App extends React.Component {
     );
   }
 
-  onDragChange(e) {
+  onDragChange(e: { component: { getVisibleRows: () => any; getNodeByKey: (arg0: any) => any; }; itemData: { ID: any; }; toIndex: string | number; cancel: boolean; }) {
     const visibleRows = e.component.getVisibleRows();
     const sourceNode = e.component.getNodeByKey(e.itemData.ID);
     let targetNode = visibleRows[e.toIndex].node;
@@ -95,7 +95,7 @@ class App extends React.Component {
     }
   }
 
-  onReorder(e) {
+  onReorder(e: { component: { getVisibleRows: () => any; isRowExpanded: (arg0: any) => any; }; itemData: any; dropInsideItem: any; toIndex: number; fromIndex: number; }) {
     const visibleRows = e.component.getVisibleRows();
     let sourceData = e.itemData;
     let { employees } = this.state;
@@ -133,19 +133,19 @@ class App extends React.Component {
     });
   }
 
-  onAllowDropInsideItemChanged(args) {
+  onAllowDropInsideItemChanged(args: { value: any; }) {
     this.setState({
       allowDropInsideItem: args.value,
     });
   }
 
-  onAllowReorderingChanged(args) {
+  onAllowReorderingChanged(args: { value: any; }) {
     this.setState({
       allowReordering: args.value,
     });
   }
 
-  onShowDragIconsChanged(args) {
+  onShowDragIconsChanged(args: { value: any; }) {
     this.setState({
       showDragIcons: args.value,
     });

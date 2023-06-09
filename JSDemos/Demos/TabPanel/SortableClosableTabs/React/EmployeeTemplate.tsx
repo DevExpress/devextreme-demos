@@ -2,11 +2,11 @@ import React from 'react';
 import { List } from 'devextreme-react/list';
 import service from './data.js';
 
-function itemRender(data) {
+function itemRender(data: { Subject: any; }) {
   return <div>{data.Subject}</div>;
 }
 
-function EmployeeTemplate(props) {
+function EmployeeTemplate(props: { data: { ID?: any; FirstName?: any; LastName?: any; Picture?: any; Position?: any; Notes?: any; }; }) {
   const tasks = service
     .getTasks()
     .filter((task) => task.EmployeeID === props.data.ID);

@@ -23,7 +23,7 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(e) {
+  handleChange(e: { value: any; }) {
     this.setState({
       type: e.value,
     });

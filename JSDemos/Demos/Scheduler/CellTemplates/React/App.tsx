@@ -21,7 +21,7 @@ const notifyDisableDate = () => {
 function App() {
   const [currentView, setCurrentView] = React.useState(views[0]);
 
-  const onAppointmentFormOpening = (e) => {
+  const onAppointmentFormOpening = (e: { appointmentData: { startDate: VarDate; }; cancel: boolean; form: any; }) => {
     const startDate = new Date(e.appointmentData.startDate);
     if (!Utils.isValidAppointmentDate(startDate)) {
       e.cancel = true;
@@ -30,7 +30,7 @@ function App() {
     applyDisableDatesToDateEditors(e.form);
   };
 
-  const onAppointmentAdding = (e) => {
+  const onAppointmentAdding = (e: { component: any; appointmentData: any; cancel: boolean; }) => {
     const isValidAppointment = Utils.isValidAppointment(e.component, e.appointmentData);
     if (!isValidAppointment) {
       e.cancel = true;
@@ -38,7 +38,7 @@ function App() {
     }
   };
 
-  const onAppointmentUpdating = (e) => {
+  const onAppointmentUpdating = (e: { component: any; newData: any; cancel: boolean; }) => {
     const isValidAppointment = Utils.isValidAppointment(e.component, e.newData);
     if (!isValidAppointment) {
       e.cancel = true;
@@ -48,7 +48,7 @@ function App() {
 
   const onCurrentViewChange = (value) => (setCurrentView(value));
 
-  const applyDisableDatesToDateEditors = (form) => {
+  const applyDisableDatesToDateEditors = (form: { getEditor: (arg0: string) => any; }) => {
     const startDateEditor = form.getEditor('startDate');
     startDateEditor.option('disabledDates', holidays);
 

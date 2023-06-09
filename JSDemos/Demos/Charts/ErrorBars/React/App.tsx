@@ -82,7 +82,7 @@ class App extends React.Component {
   }
 }
 
-function customizeTooltip(pointInfo) {
+function customizeTooltip(pointInfo: { seriesName: any; value: any; lowErrorValue: any; highErrorValue: any; }) {
   return {
     text: `${pointInfo.seriesName}: ${pointInfo.value
     } (range: ${pointInfo.lowErrorValue

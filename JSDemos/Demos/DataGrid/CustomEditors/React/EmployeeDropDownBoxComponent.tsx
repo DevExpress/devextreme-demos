@@ -11,7 +11,7 @@ const dropDownOptions = { width: 500 };
 const ownerLabel = { 'aria-label': 'Owner' };
 
 export default class EmployeeDropDownBoxComponent extends React.Component {
-  constructor(props) {
+  constructor(props: { data: { value: any; }; }) {
     super(props);
     this.state = {
       selectedRowKeys: [props.data.value],
@@ -22,7 +22,7 @@ export default class EmployeeDropDownBoxComponent extends React.Component {
     this.boxOptionChanged = this.boxOptionChanged.bind(this);
   }
 
-  boxOptionChanged(e) {
+  boxOptionChanged(e: { name: string; value: any; }) {
     if (e.name === 'opened') {
       this.setState({
         isDropDownOpened: e.value,
@@ -52,7 +52,7 @@ export default class EmployeeDropDownBoxComponent extends React.Component {
     );
   }
 
-  onSelectionChanged(selectionChangedArgs) {
+  onSelectionChanged(selectionChangedArgs: { selectedRowKeys: any; }) {
     this.setState({
       selectedRowKeys: selectionChangedArgs.selectedRowKeys,
       isDropDownOpened: false,

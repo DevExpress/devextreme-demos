@@ -153,39 +153,39 @@ class App extends React.Component {
     );
   }
 
-  handleTextChange(e) {
+  handleTextChange(e: { value: any; }) {
     this.setState({
       text: e.value,
     });
   }
 
-  handleColorChange(e) {
+  handleColorChange(e: { value: any; }) {
     this.setState({
       color: e.value,
     });
   }
 
-  handleHeightChange(e) {
+  handleHeightChange(e: { value: number; }) {
     this.setState({
       width: (e.value * 37) / 26,
       height: e.value,
     });
   }
 
-  handleWidthChange(e) {
+  handleWidthChange(e: { value: number; }) {
     this.setState({
       width: e.value,
       height: (e.value * 26) / 37,
     });
   }
 
-  handleTransformChange(e) {
+  handleTransformChange(e: { value: any; }) {
     this.setState({
       transform: e.value,
     });
   }
 
-  handleBorderChange(e) {
+  handleBorderChange(e: { value: any; }) {
     this.setState({
       border: e.value,
     });

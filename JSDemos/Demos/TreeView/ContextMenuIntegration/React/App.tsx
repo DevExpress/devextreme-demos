@@ -57,7 +57,7 @@ class App extends React.Component {
     return this.contextMenuRef.current.instance;
   }
 
-  treeViewItemContextMenu(e) {
+  treeViewItemContextMenu(e: { itemData: { price: any; }; node: { expanded: any; }; }) {
     this.setState({
       selectedTreeItem: e.itemData,
     });
@@ -72,7 +72,7 @@ class App extends React.Component {
     this.contextMenu.option('items[1].disabled', !e.node.expanded);
   }
 
-  contextMenuItemClick(e) {
+  contextMenuItemClick(e: { itemData: { id: any; }; }) {
     let logEntry = '';
     switch (e.itemData.id) {
       case 'expand': {

@@ -15,7 +15,7 @@ class App extends React.Component {
   }
 }
 
-function HomeImage(data) {
+function HomeImage(data: { ImageSrc: any; }) {
   return <div className="dx-tile-image" style={{ backgroundImage: `url(${data.ImageSrc})` }}></div>;
 }
 

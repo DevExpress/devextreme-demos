@@ -87,7 +87,7 @@ class App extends React.Component {
     );
   }
 
-  handleListSelectionChange(e) {
+  handleListSelectionChange(e: { addedItems: any[]; }) {
     const currentHotel = e.addedItems[0];
     this.setState({
       currentHotel,
@@ -96,11 +96,11 @@ class App extends React.Component {
   }
 }
 
-function renderListGroup(group) {
+function renderListGroup(group: { key: any; }) {
   return <div className="city">{group.key}</div>;
 }
 
-function renderListItem(item) {
+function renderListItem(item: { Hotel_Name: any; Postal_Code: any; Address: any; Hotel_Class: string; Price: number | number | bigint; }) {
   return (
     <div>
       <div className="hotel">
@@ -117,7 +117,7 @@ function renderListItem(item) {
   );
 }
 
-function renderTile(item) {
+function renderTile(item: { FileName: any; }) {
   return (
     <img
       className="tile-image"

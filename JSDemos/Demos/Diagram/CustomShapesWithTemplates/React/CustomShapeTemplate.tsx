@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CustomShapeTemplate(employee, showInfo) {
+export default function CustomShapeTemplate(employee: { Full_Name: any; Title: any; }, showInfo: () => void) {
   return (
     <svg className="template">
       <text className="template-name" x="50%" y="20%">{employee.Full_Name}</text>

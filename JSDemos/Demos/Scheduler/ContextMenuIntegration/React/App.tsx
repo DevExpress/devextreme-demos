@@ -101,7 +101,7 @@ class App extends React.Component {
     }));
   }
 
-  onContextMenuItemClick(e) {
+  onContextMenuItemClick(e: { itemData: { onItemClick: (arg0: any) => void; }; }) {
     e.itemData.onItemClick(e);
   }
 

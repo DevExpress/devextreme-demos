@@ -15,7 +15,7 @@ function App() {
   const [changes, setChanges] = React.useState([]);
   const [editRowKey, setEditRowKey] = React.useState(null);
 
-  const onAddButtonClick = React.useCallback((e) => {
+  const onAddButtonClick = React.useCallback((e: { row: { key: any; }; }) => {
     const key = new Guid().toString();
     setChanges([{
       key,
@@ -27,7 +27,7 @@ function App() {
 
   const isAddButtonVisible = React.useCallback(({ row }) => !row.isEditing, []);
 
-  const onRowInserted = React.useCallback((e) => {
+  const onRowInserted = React.useCallback((e: { component: { navigateToRow: (arg0: any) => void; }; key: any; }) => {
     e.component.navigateToRow(e.key);
   }, []);
 

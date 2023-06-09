@@ -42,7 +42,7 @@ class App extends React.Component {
     );
   }
 
-  onPointClick(e) {
+  onPointClick(e: { target: { select: () => void; }; }) {
     e.target.select();
   }
 }

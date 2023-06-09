@@ -1,14 +1,14 @@
-{
-    "files": {
-        "renameExtensions": true
-    },
-    "fixes": {
-        "incompleteTypes": true,
-        "missingProperties": true,
-        "noImplicitAny": true
-    },
-    "include": [
-        "JSDemos/Demos/**/React/*.{js,jsx}"
-    ],
-    "project": "./tsconfig.json"
-}
+[
+    {
+        "fixes": {
+            "incompleteTypes": true,
+            "noImplicitAny": true,
+            "inferableTypes": true,
+            "noImplicitThis": true
+        },
+        "include": [
+            "JSDemos/Demos/**/React/*.{ts,tsx}"
+        ],
+        "projectPath": "./tsconfig.json"
+    }
+]

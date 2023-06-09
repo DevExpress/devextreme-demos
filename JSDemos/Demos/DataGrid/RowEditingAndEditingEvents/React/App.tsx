@@ -28,7 +28,7 @@ class App extends React.Component {
   }
 
   logEvent(eventName) {
-    this.setState((state) => ({ events: [eventName].concat(state.events) }));
+    this.setState((state: { events: any; }) => ({ events: [eventName].concat(state.events) }));
   }
 
   clearEvents() {

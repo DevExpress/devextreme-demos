@@ -14,7 +14,7 @@ const WAGNER_6_U_LAT = 2 / Math.sqrt(3) - 0.1;
 
 const customProjection = {
   aspectRatio: 2,
-  to(coordinates) {
+  to(coordinates: number[]) {
     const x = coordinates[0] * RADIANS;
     const y = Math.min(Math.max(coordinates[1] * RADIANS, -WAGNER_6_P_LAT), +WAGNER_6_P_LAT);
     const t = y / Math.PI;
@@ -23,7 +23,7 @@ const customProjection = {
       (y * 2) / Math.PI,
     ];
   },
-  from(coordinates) {
+  from(coordinates: number[]) {
     const x = coordinates[0];
     const y = Math.min(Math.max(coordinates[1], -WAGNER_6_U_LAT), +WAGNER_6_U_LAT);
     const t = y / 2;

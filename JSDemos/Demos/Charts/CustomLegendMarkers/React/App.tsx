@@ -7,7 +7,7 @@ import { dataSource } from './data.js';
 import markerTemplate from './MarkerTemplate.js';
 
 class App extends React.Component {
-  onLegendClick(e) {
+  onLegendClick(e: { target: { isVisible: () => any; hide: () => any; show: () => any; }; }) {
     e.target.isVisible() ? e.target.hide() : e.target.show();
   }
 

@@ -79,7 +79,7 @@ class App extends React.Component {
     );
   }
 
-  onSelectionChanged(e) {
+  onSelectionChanged(e: { component: { getSelectedRowsData: (arg0: any) => any; }; selectedRowKeys: any; }) {
     const selectedData = e.component.getSelectedRowsData(this.state.selectionMode);
     this.setState({
       selectedRowKeys: e.selectedRowKeys,
@@ -87,7 +87,7 @@ class App extends React.Component {
     });
   }
 
-  onRecursiveChanged(e) {
+  onRecursiveChanged(e: { value: any; }) {
     this.setState({
       recursive: e.value,
       selectedRowKeys: [],
@@ -95,7 +95,7 @@ class App extends React.Component {
     });
   }
 
-  onSelectionModeChanged(e) {
+  onSelectionModeChanged(e: { value: any; }) {
     this.setState({
       selectionMode: e.value,
       selectedRowKeys: [],
@@ -103,9 +103,9 @@ class App extends React.Component {
     });
   }
 
-  getEmployeeNames(employeeList) {
+  getEmployeeNames(employeeList: any[]) {
     if (employeeList.length > 0) {
-      return employeeList.map((employee) => employee.Full_Name).join(', ');
+      return employeeList.map((employee: { Full_Name: any; }) => employee.Full_Name).join(', ');
     }
     return emptySelectedText;
   }

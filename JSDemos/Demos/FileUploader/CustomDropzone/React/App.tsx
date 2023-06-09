@@ -65,19 +65,19 @@ class App extends React.Component {
     );
   }
 
-  onDropZoneEnter(e) {
+  onDropZoneEnter(e: { dropZoneElement: { id: string; }; }) {
     if (e.dropZoneElement.id === 'dropzone-external') {
       this.setState({ isDropZoneActive: true });
     }
   }
 
-  onDropZoneLeave(e) {
+  onDropZoneLeave(e: { dropZoneElement: { id: string; }; }) {
     if (e.dropZoneElement.id === 'dropzone-external') {
       this.setState({ isDropZoneActive: false });
     }
   }
 
-  onUploaded(e) {
+  onUploaded(e: { file: any; }) {
     const { file } = e;
     const fileReader = new FileReader();
     fileReader.onload = () => {
@@ -94,7 +94,7 @@ class App extends React.Component {
     });
   }
 
-  onProgress(e) {
+  onProgress(e: { bytesLoaded: number; bytesTotal: number; }) {
     this.setState({ progressValue: (e.bytesLoaded / e.bytesTotal) * 100 });
   }
 

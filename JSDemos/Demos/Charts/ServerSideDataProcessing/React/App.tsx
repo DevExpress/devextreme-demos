@@ -38,7 +38,7 @@ class App extends React.Component {
       paginate: false,
     });
 
-    this.onValueChanged = (data) => {
+    this.onValueChanged = (data: { value: any; }) => {
       this.chartDataSource.filter(['Id', '=', data.value]);
       this.chartDataSource.load();
     };
@@ -98,12 +98,12 @@ class App extends React.Component {
     );
   }
 
-  customizeLabel(e) {
+  customizeLabel(e: { valueText: any; }) {
     return `${e.valueText}${'&#176C'}`;
   }
 }
 
-function customizeTooltip(arg) {
+function customizeTooltip(arg: { valueText: any; }) {
   return {
     text: `${arg.valueText}${'&#176C'}`,
   };

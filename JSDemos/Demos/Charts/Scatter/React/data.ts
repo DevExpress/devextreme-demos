@@ -3,7 +3,7 @@ export function generateDataSource() {
   const b2 = random(-100, 100) / 10;
   let k1 = random(-100, 100) / 10;
   let k2 = random(-100, 100) / 10;
-  const ds = [];
+  const ds: ({ x1: any; y1: number; x2: any; y2: number; })[] = [];
 
   let i;
   let x1;
@@ -42,6 +42,6 @@ export function generateDataSource() {
   return ds;
 }
 
-function random(min, max) {
+function random(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }

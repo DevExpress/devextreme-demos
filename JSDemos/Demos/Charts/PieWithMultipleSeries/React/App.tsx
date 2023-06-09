@@ -41,7 +41,7 @@ class App extends React.Component {
     );
   }
 
-  customizeTooltip(arg) {
+  customizeTooltip(arg: { argumentText: any; seriesName: any; valueText: any; }) {
     return { text: `${arg.argumentText}<br>${arg.seriesName}: ${arg.valueText}B` };
   }
 }

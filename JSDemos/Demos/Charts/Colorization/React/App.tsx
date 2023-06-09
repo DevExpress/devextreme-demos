@@ -47,14 +47,14 @@ class App extends React.Component {
     );
   }
 
-  setType(data) {
+  setType(data: { value: any; }) {
     this.setState({
       typeOptions: data.value,
     });
   }
 }
 
-function customizeTooltip(arg) {
+function customizeTooltip(arg: { node: { isLeaf?: any; data?: any; }; valueText: any; }) {
   const { data } = arg.node;
 
   return {

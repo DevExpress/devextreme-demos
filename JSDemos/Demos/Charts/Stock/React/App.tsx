@@ -58,7 +58,7 @@ class App extends React.Component {
     );
   }
 
-  customizeTooltip(arg) {
+  customizeTooltip(arg: { openValue: any; closeValue: any; highValue: any; lowValue: any; }) {
     return {
       text: `Open: $${arg.openValue}<br/>
 Close: $${arg.closeValue}<br/>

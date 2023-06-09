@@ -10,11 +10,11 @@ import 'whatwg-fetch';
 const buttonDropDownOptions = { width: 230 };
 
 class App extends React.Component {
-  onButtonClick(e) {
+  onButtonClick(e: { component: { option: (arg0: string) => any; }; }) {
     notify(`Go to ${e.component.option('text')}'s profile`, 'success', 600);
   }
 
-  onItemClick(e) {
+  onItemClick(e: { itemData: { name: any; }; }) {
     notify(e.itemData.name || e.itemData, 'success', 600);
   }
 
@@ -26,7 +26,7 @@ class App extends React.Component {
     this.colorPicker.close();
   }
 
-  itemTemplateRender(item) {
+  itemTemplateRender(item: { size: any; text: any; }) {
     return (<div style={{ fontSize: `${item.size}px` }}>
       {item.text}
     </div>);
@@ -55,7 +55,7 @@ class App extends React.Component {
           width: 125,
           stylingMode: 'text',
           useSelectMode: true,
-          onSelectionChanged: (e) => {
+          onSelectionChanged: (e: { item: { name: string; }; }) => {
             this.setState({
               alignment: e.item.name.toLowerCase(),
             });
@@ -87,7 +87,7 @@ class App extends React.Component {
           useSelectMode: true,
           items: this.data.fontSizes,
           selectedItemKey: 14,
-          onSelectionChanged: (e) => {
+          onSelectionChanged: (e: { item: { size: any; }; }) => {
             this.setState({
               fontSize: e.item.size,
             });
@@ -106,7 +106,7 @@ class App extends React.Component {
           useSelectMode: true,
           items: this.data.lineHeights,
           selectedItemKey: 1.35,
-          onSelectionChanged: (e) => {
+          onSelectionChanged: (e: { item: { lineHeight: any; }; }) => {
             this.setState({
               lineHeight: e.item.lineHeight,
             });

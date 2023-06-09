@@ -30,7 +30,7 @@ class App extends React.Component {
           <FileUploader id="file-uploader" chunkSize={200000} maxFileSize={1048576} uploadChunk={this.uploadChunk} />
           <div id="request-panel">
             {
-              this.state.requests.map((r, i) => <div key={i} className="request-info">
+              this.state.requests.map((r: { method: any; urlPath: any; queryString: any; }, i) => <div key={i} className="request-info">
                 <div className="parameter-info">
                   <div className="parameter-name">Method:</div>
                   <div className="parameter-value dx-theme-accent-as-text-color">{r.method}</div>
@@ -60,12 +60,12 @@ class App extends React.Component {
     );
   }
 
-  uploadChunk(file, uploadInfo) {
+  uploadChunk(file: { name: any; }, uploadInfo: { chunkIndex: number; customData: { accessUrl: any; }; chunkBlob: any; chunkCount: number; }) {
     let promise = null;
 
     if (uploadInfo.chunkIndex === 0) {
       // eslint-disable-next-line spellcheck/spell-checker
-      promise = gateway.getUploadAccessUrl(file.name).then((accessUrls) => {
+      promise = gateway.getUploadAccessUrl(file.name).then((accessUrls: { url1: any; }) => {
         // eslint-disable-next-line spellcheck/spell-checker
         uploadInfo.customData.accessUrl = accessUrls.url1;
       });

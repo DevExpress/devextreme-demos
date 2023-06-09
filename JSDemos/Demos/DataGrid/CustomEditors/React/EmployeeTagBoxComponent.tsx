@@ -10,7 +10,7 @@ export default class EmployeeTagBoxComponent extends React.Component {
     this.onSelectionChanged = this.onSelectionChanged.bind(this);
   }
 
-  onValueChanged(e) {
+  onValueChanged(e: { value: any; }) {
     this.props.data.setValue(e.value);
   }
 

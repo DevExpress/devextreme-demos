@@ -25,18 +25,18 @@ class App extends React.Component {
     );
   }
 
-  customizeTooltip(arg) {
+  customizeTooltip(arg: { valueText: any; }) {
     return {
       text: getText(arg, arg.valueText),
     };
   }
 
-  customizeText(arg) {
+  customizeText(arg: { item: any; text: any; }) {
     return getText(arg.item, arg.text);
   }
 }
 
-function getText(item, text) {
+function getText(item: { index: number; }, text) {
   return `Racer ${(item.index + 1)} - ${text} km/h`;
 }
 

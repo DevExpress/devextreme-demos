@@ -80,7 +80,7 @@ export default function App() {
 
   const isDateDisabled = React.useCallback(({ view, date }) => view === 'month' && isWeekend(date), []);
 
-  const onOptionChange = React.useCallback((e) => {
+  const onOptionChange = React.useCallback((e: { name: string; }) => {
     if (e.name === 'zoomLevel') {
       onZoomLevelChange(e);
     }

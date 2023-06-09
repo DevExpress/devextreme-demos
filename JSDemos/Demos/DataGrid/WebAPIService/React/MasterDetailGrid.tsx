@@ -6,7 +6,7 @@ import { createStore } from 'devextreme-aspnet-data-nojquery';
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
 
 class MasterDetailGrid extends React.Component {
-  constructor(props) {
+  constructor(props: { data: { key: any; }; }) {
     super(props);
     this.dataSource = getMasterDetailGridDataSource(props.data.key);
   }

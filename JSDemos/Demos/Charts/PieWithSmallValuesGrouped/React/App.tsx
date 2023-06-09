@@ -34,7 +34,7 @@ function App() {
   );
 }
 
-function formatLabel(arg) {
+function formatLabel(arg: { argumentText: any; valueText: any; }) {
   return `${arg.argumentText}: ${arg.valueText}%`;
 }
 

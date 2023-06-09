@@ -44,7 +44,7 @@ class App extends React.Component {
             <div>
               <h4>Selected Files</h4>
               {
-                this.state.selectedFiles.map((file, i) => <div className="selected-item" key={i}>
+                this.state.selectedFiles.map((file: { name: any; size: any; type: any; lastModifiedDate: any; }, i) => <div className="selected-item" key={i}>
                   <span>{`Name: ${file.name}`}<br /></span>
                   <span>{`Size ${file.size}`}<br /></span>
                   <span>{`Type ${file.type}`}<br /></span>
@@ -72,19 +72,19 @@ class App extends React.Component {
     );
   }
 
-  onSelectedFilesChanged(e) {
+  onSelectedFilesChanged(e: { value: any; }) {
     this.setState({ selectedFiles: e.value });
   }
 
-  onAcceptChanged(e) {
+  onAcceptChanged(e: { value: any; }) {
     this.setState({ accept: e.value });
   }
 
-  onUploadModeChanged(e) {
+  onUploadModeChanged(e: { value: any; }) {
     this.setState({ uploadMode: e.value });
   }
 
-  onMultipleChanged(e) {
+  onMultipleChanged(e: { value: any; }) {
     this.setState({ multiple: e.value });
   }
 }

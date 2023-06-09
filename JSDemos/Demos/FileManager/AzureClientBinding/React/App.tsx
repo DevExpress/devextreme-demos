@@ -58,7 +58,7 @@ class App extends React.Component {
           </FileManager>
           <div id="request-panel">
             {
-              this.state.requests.map((r, i) => <div key={i} className="request-info">
+              this.state.requests.map((r: { method: any; urlPath: any; queryString: any; }, i) => <div key={i} className="request-info">
                 <div className="parameter-info">
                   <div className="parameter-name">Method:</div>
                   <div className="parameter-value dx-theme-accent-as-text-color">{r.method}</div>
@@ -106,45 +106,45 @@ class App extends React.Component {
   }
 }
 
-function getItems(parentDirectory) {
+function getItems(parentDirectory: { path: any; }) {
   return azure.getItems(parentDirectory.path);
 }
 
-function createDirectory(parentDirectory, name) {
+function createDirectory(parentDirectory: { path: any; }, name) {
   return azure.createDirectory(parentDirectory.path, name);
 }
 
-function renameItem(item, name) {
+function renameItem(item: { isDirectory: any; path: any; }, name) {
   return item.isDirectory
     ? azure.renameDirectory(item.path, name)
     : azure.renameFile(item.path, name);
 }
 
-function deleteItem(item) {
+function deleteItem(item: { isDirectory: any; path: any; }) {
   return item.isDirectory ? azure.deleteDirectory(item.path) : azure.deleteFile(item.path);
 }
 
-function copyItem(item, destinationDirectory) {
+function copyItem(item: { name: any; isDirectory: any; path: any; }, destinationDirectory: { path: any; }) {
   const destinationPath = destinationDirectory.path ? `${destinationDirectory.path}/${item.name}` : item.name;
   return item.isDirectory
     ? azure.copyDirectory(item.path, destinationPath)
     : azure.copyFile(item.path, destinationPath);
 }
 
-function moveItem(item, destinationDirectory) {
+function moveItem(item: { name: any; isDirectory: any; path: any; }, destinationDirectory: { path: any; }) {
   const destinationPath = destinationDirectory.path ? `${destinationDirectory.path}/${item.name}` : item.name;
   return item.isDirectory
     ? azure.moveDirectory(item.path, destinationPath)
     : azure.moveFile(item.path, destinationPath);
 }
 
-function uploadFileChunk(fileData, uploadInfo, destinationDirectory) {
+function uploadFileChunk(fileData: { name: any; }, uploadInfo: { chunkIndex: number; customData: { accessUrl: any; }; chunkBlob: any; chunkCount: number; }, destinationDirectory: { path: any; }) {
   let promise = null;
 
   if (uploadInfo.chunkIndex === 0) {
     const filePath = destinationDirectory.path ? `${destinationDirectory.path}/${fileData.name}` : fileData.name;
     // eslint-disable-next-line spellcheck/spell-checker
-    promise = gateway.getUploadAccessUrl(filePath).then((accessUrls) => {
+    promise = gateway.getUploadAccessUrl(filePath).then((accessUrls: { url1: any; }) => {
       // eslint-disable-next-line spellcheck/spell-checker
       uploadInfo.customData.accessUrl = accessUrls.url1;
     });
@@ -168,7 +168,7 @@ function uploadFileChunk(fileData, uploadInfo, destinationDirectory) {
   return promise;
 }
 
-function downloadItems(items) {
+function downloadItems(items: { path: any; }[]) {
   azure.downloadFile(items[0].path);
 }
 

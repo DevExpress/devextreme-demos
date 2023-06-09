@@ -131,7 +131,7 @@ class App extends React.Component {
     );
   }
 
-  calculateFilterExpression(value, selectedFilterOperations, target) {
+  calculateFilterExpression(value: string, selectedFilterOperations, target: string) {
     const column = this;
     if (target === 'headerFilter' && value === 'weekends') {
       return [[getOrderDay, '=', 0], 'or', [getOrderDay, '=', 6]];
@@ -139,8 +139,8 @@ class App extends React.Component {
     return column.defaultCalculateFilterExpression(value, selectedFilterOperations, target);
   }
 
-  orderHeaderFilter(data) {
-    data.dataSource.postProcess = (results) => {
+  orderHeaderFilter(data: { dataSource: { postProcess: (results: any) => any; }; }) {
+    data.dataSource.postProcess = (results: { text: string; value: string; }[]) => {
       results.push({
         text: 'Weekends',
         value: 'weekends',
@@ -149,21 +149,21 @@ class App extends React.Component {
     };
   }
 
-  onShowFilterRowChanged(e) {
+  onShowFilterRowChanged(e: { value: any; }) {
     this.setState({
       showFilterRow: e.value,
     });
     this.clearFilter();
   }
 
-  onShowHeaderFilterChanged(e) {
+  onShowHeaderFilterChanged(e: { value: any; }) {
     this.setState({
       showHeaderFilter: e.value,
     });
     this.clearFilter();
   }
 
-  onCurrentFilterChanged(e) {
+  onCurrentFilterChanged(e: { value: any; }) {
     this.setState({
       currentFilter: e.value,
     });
@@ -174,7 +174,7 @@ class App extends React.Component {
   }
 }
 
-function getOrderDay(rowData) {
+function getOrderDay(rowData: { OrderDate: VarDate | string | number | Date | VarDate; }) {
   return (new Date(rowData.OrderDate)).getDay();
 }
 

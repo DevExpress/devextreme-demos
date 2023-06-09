@@ -26,13 +26,13 @@ class App extends React.Component {
     this.editRow = this.editRow.bind(this);
   }
 
-  selectedChanged(e) {
+  selectedChanged(e: { component: { getRowIndexByKey: (arg0: any) => any; }; selectedRowKeys: any[]; }) {
     this.setState({
       selectedRowIndex: e.component.getRowIndexByKey(e.selectedRowKeys[0]),
     });
   }
 
-  directionChanged(e) {
+  directionChanged(e: { selectedItem: string | number; }) {
     config({
       floatingActionButtonConfig: directions[e.selectedItem],
     });

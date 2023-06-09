@@ -17,7 +17,7 @@ class App extends React.Component {
     this.changeResizingMode = this.changeResizingMode.bind(this);
   }
 
-  changeResizingMode(data) {
+  changeResizingMode(data: { value: any; }) {
     this.setState({ mode: data.value });
   }
 

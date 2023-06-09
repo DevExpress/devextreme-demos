@@ -28,7 +28,7 @@ class App extends React.Component {
     this.updateVisualRange = this.updateVisualRange.bind(this);
   }
 
-  updateVisualRange(e) {
+  updateVisualRange(e: { value: any; }) {
     this.setState({ visualRange: e.value });
   }
 

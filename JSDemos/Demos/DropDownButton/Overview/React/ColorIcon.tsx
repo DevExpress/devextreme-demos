@@ -1,6 +1,12 @@
 import React from 'react';
 
-class ColorIcon extends React.Component {
+interface ColorIconProps {
+key: any;
+color: any;
+onClick: (color: any) => void;
+}
+
+class ColorIcon extends React.Component<ColorIconProps> {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);

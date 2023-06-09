@@ -55,7 +55,7 @@ class App extends React.Component {
     );
   }
 
-  updateRange(data) {
+  updateRange(data: { value: any; }) {
     this.setState({
       range: data.value,
     });
