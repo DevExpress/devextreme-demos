@@ -198,7 +198,6 @@ async function main() {
     .reporter(reporter)
     .browsers(process.env.BROWSERS || 'chrome:headless --disable-partial-raster --disable-skia-runtime-opts --run-all-compositor-stages-before-draw --disable-new-content-rendering-timeout --disable-threaded-animation --disable-threaded-scrolling --disable-checker-imaging --disable-image-animation-resync --use-gl="swiftshader" --disable-features=PaintHolding --js-flags=--random-seed=2147483647 --font-render-hinting=none --disable-font-subpixel-positioning')
     .concurrency(concurrency || 1)
-    .src('./testing/common.test.js')
     .run({ quarantineMode: !!process.env.TCQUARANTINE });
 
   await tester.close();
