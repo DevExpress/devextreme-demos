@@ -107,6 +107,7 @@ jobs:
     runs-on: ubuntu-latest
     name: ${{ matrix.CONSTEL }}-${{ matrix.STRATEGY }}
     timeout-minutes: 20
+    continue-on-error: true
 
     steps:
 #    - name: Pin Chrome version
@@ -148,6 +149,7 @@ jobs:
         path: changed-files.json
 
     - name: Run TestCafe tests
+      shell: bash
       env:
         STRATEGY: ${{ matrix.STRATEGY }}
         CHANGEDFILEINFOSPATH: ${{ github.workspace }}/changed-files.json
@@ -160,9 +162,13 @@ jobs:
         # DISABLE_DEMO_TEST_SETTINGS: ignore # Uncomment to ignore the `ignore` field
         # DISABLE_DEMO_TEST_SETTINGS: comparison-options # Uncomment to ignore the `comparison-options` field
         CI_ENV: true # The `ignore` field in the visualtestrc.json should be disabled when running test locally
+      run: npm run test-testcafe
+
+    - name: Show accessibility warnings
+      if: matrix.STRATEGY == 'accessibility'
       run: |
-        warning=$(npm run test-testcafe | tee /dev/tty | grep "Axe report: ")
-        echo "::warning ::$warning"
+        message=$(cat report.txt)
+        echo "::warning ::$message"
 
     - name: Copy screenshots artifacts
       if: failure() && matrix.STRATEGY == 'screenshots'
