@@ -107,7 +107,6 @@ jobs:
     runs-on: ubuntu-latest
     name: ${{ matrix.CONSTEL }}-${{ matrix.STRATEGY }}
     timeout-minutes: 20
-    continue-on-error: true
 
     steps:
 #    - name: Pin Chrome version
@@ -163,9 +162,10 @@ jobs:
         # DISABLE_DEMO_TEST_SETTINGS: comparison-options # Uncomment to ignore the `comparison-options` field
         CI_ENV: true # The `ignore` field in the visualtestrc.json should be disabled when running test locally
       run: npm run test-testcafe
+      continue-on-error: true
 
     - name: Show accessibility warnings
-      if: matrix.STRATEGY == 'accessibility'
+      if: failure() && matrix.STRATEGY == 'accessibility'
       run: |
         message=$(cat report.txt)
         echo "::warning ::$message"
