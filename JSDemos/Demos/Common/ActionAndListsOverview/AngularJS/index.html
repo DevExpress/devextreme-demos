@@ -72,7 +72,7 @@
           dx-item-alias="data"
         >
           <div data-options="dxTemplate: { name: 'item' }">
-            <div class="tile-image" ng-style="{ 'background-image': 'url(../../../../images/hotels/' + data.FileName + ')' }"></div>
+            <div class="tile-image" alt="{{data.FileName}}" ng-style="{ 'background-image': 'url(../../../../images/hotels/' + data.FileName + ')' }"></div>
           </div>
         </div>
         <div class="address">{{currentHotel.Postal_Code}}, {{currentHotel.Address}}</div>
