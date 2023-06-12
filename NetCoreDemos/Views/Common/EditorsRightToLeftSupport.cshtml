@@ -76,6 +76,7 @@
             <div class="dx-field-label">Autocomplete</div>
             <div class="dx-field-value">
                 @(Html.DevExtreme().Autocomplete()
+                    .InputAttr("aria-label", "Autocomplete")
                     .RtlEnabled(Model.RtlEnabled)
                     .DataSource(d => d.Mvc().Controller("Common").LoadAction("GetEuropeanUnionData").Key("ID"))
                     .ValueExpr(Model.DisplayExpr))
