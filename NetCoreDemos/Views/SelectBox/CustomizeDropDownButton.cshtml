@@ -8,7 +8,7 @@
                 .InputAttr("aria-label", "Product")
                 .DataSource(d => d.Mvc().LoadAction("GetProductNames"))
                 .DropDownButtonTemplate(@<text>
-                    <img src="~/images/icons/custom-dropbutton-icon.svg" class="custom-icon" />
+                    <img alt="Custom icon" src="~/images/icons/custom-dropbutton-icon.svg" class="custom-icon" />
                 </text>)
             )
         </div>
@@ -26,7 +26,7 @@
                         .ID("dropDownButtonLoadIndicator")
                         .Visible(false)
                     )
-                    <img src="~/images/icons/custom-dropbutton-icon.svg" class="custom-icon" id="dropDownButtonImage" />
+                    <img alt="Custom icon" src="~/images/icons/custom-dropbutton-icon.svg" class="custom-icon" id="dropDownButtonImage" />
                 </text>)
             )
         </div>
@@ -44,7 +44,7 @@
                 .Value(1)
                 .ItemTemplate(@<text>
                     <div class="custom-item">
-                        <img src="<%- IconSrc %>" />
+                        <img alt="<%- Name %>" src="<%- IconSrc %>" />
                         <div class="product-name"><%- Name %></div>
                     </div>
                 </text>)
@@ -64,6 +64,7 @@
         if(selectedItem) {
             return function () {
                 return $("<img>", {
+                    atl: "Custom icon",
                     src: selectedItem.IconSrc,
                     class: "custom-icon"
                 });
