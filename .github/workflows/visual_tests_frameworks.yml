@@ -324,16 +324,7 @@ jobs:
         installerName=$(realpath .)/$(ls devextreme-installer.tgz)
         installerDistName=$(realpath .)/$(ls devextreme-dist-installer.tgz)
         popd
-        cd ./packages/devextreme-angular
-        npm install --save-dev $installerName $installerDistName
-        cd ../sandbox
-        npm install --save-dev $installerName $installerDistName
-        cd ../../
-        npm install --save-dev $installerName $installerDistName
-
-    - name: Install packages for devextreme-angular
-      working-directory: ./devextreme-angular-repo
-      run: npm install --no-audit --no-fund
+        npm install --save-dev --legacy-peer-deps $installerName $installerDistName
 
     - name: Build and Pack
       working-directory: ./devextreme-angular-repo
