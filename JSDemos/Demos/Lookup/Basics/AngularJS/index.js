@@ -8,7 +8,7 @@ DemoApp.controller('DemoController', ($scope) => {
     items: employeesList,
     value: employeesList[0],
     inputAttr: {
-      'aria-lebel': 'Simple lookup',
+      'aria-label': 'Simple lookup',
     },
   };
 
@@ -25,7 +25,7 @@ DemoApp.controller('DemoController', ($scope) => {
     grouped: true,
     displayExpr: 'Subject',
     inputAttr: {
-      'aria-lebel': 'Grouped lookup',
+      'aria-label': 'Grouped lookup',
     },
   };
 });
