@@ -8,6 +8,7 @@
       valueExpr="ID"
       [value]="employees[0].ID"
       fieldTemplate="field"
+      [inputAttr]="{ 'aria-label': 'Custom Field Template' }"
     >
       <dxo-drop-down-options title="Select employee"></dxo-drop-down-options>
       <div *dxTemplate="let item of 'field'">
@@ -30,6 +31,7 @@
       [displayExpr]="getDisplayExpr"
       placeholder="Select employee"
       itemTemplate="listItem"
+      [inputAttr]="{ 'aria-label': 'Custom Item Template' }"
     >
       <dxo-drop-down-options title="Select employee"></dxo-drop-down-options>
       <div *dxTemplate="let item of 'listItem'">

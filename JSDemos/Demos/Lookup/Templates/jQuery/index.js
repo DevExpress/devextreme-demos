@@ -7,6 +7,9 @@ $(() => {
     },
     valueExpr: 'ID',
     value: employees[0].ID,
+    inputAttr: {
+      'aria-label': 'Custom Field Template',
+    },
     fieldTemplate(data) {
       return getTemplateMarkup(data, 'custom-field');
     },
@@ -21,6 +24,9 @@ $(() => {
       title: 'Select employee',
     },
     placeholder: 'Select employee',
+    inputAttr: {
+      'aria-label': 'Custom Item Template',
+    },
     itemTemplate(data) {
       return getTemplateMarkup(data, 'custom-item');
     },
