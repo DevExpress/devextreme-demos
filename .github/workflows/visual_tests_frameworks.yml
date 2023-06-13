@@ -43,10 +43,10 @@ jobs:
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
-    - name: Use Node.js 15
+    - name: Use Node.js 18
       uses: actions/setup-node@v3
       with:
-        node-version: '15'
+        node-version: '18'
 
     - name: Install packages
       working-directory: ./devextreme
@@ -288,10 +288,10 @@ jobs:
 
     #Build devextreme-angular
 
-    - name: Use Node.js 14
+    - name: Use Node.js 18
       uses: actions/setup-node@v3
       with:
-        node-version: '14'
+        node-version: '18'
 
     - name: Download devextreme sources
       uses: actions/download-artifact@v3
@@ -306,16 +306,15 @@ jobs:
     - name: Clone devextreme-angular repo
       run: test -d ./devextreme-angular-repo || git clone -b master https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
 
+    - name: Install packages for devextreme-angular
+      working-directory: ./devextreme-angular-repo
+      run: npm install --no-audit --no-fund
+
     - name: Copy devextreme package
       run: |
         mkdir ./devextreme-angular-repo/devextreme-setup
         cp ./devextreme-installer.tgz ./devextreme-angular-repo/devextreme-setup
         cp ./devextreme-dist-installer.tgz ./devextreme-angular-repo/devextreme-setup
-
-    - name: Get devextreme-angular ref
-      working-directory: ./devextreme-angular-repo
-      id: devextreme-angular-ref
-      run: echo "::set-output name=head::$(git rev-parse HEAD)"
 
     - name: Install devextreme package
       working-directory: ./devextreme-angular-repo
@@ -435,10 +434,10 @@ jobs:
           key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
           restore-keys: ${{ runner.os }}-devextreme-node-modules
 
-      - name: Use Node.js 15
+      - name: Use Node.js 18
         uses: actions/setup-node@v3
         with:
-          node-version: '15'
+          node-version: '18'
 
       - name: Install packages
         working-directory: ./devextreme
