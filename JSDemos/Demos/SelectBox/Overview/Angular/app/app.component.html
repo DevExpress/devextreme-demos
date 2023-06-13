@@ -67,7 +67,7 @@
       >
         <div *dxTemplate="let data of 'field'">
           <div class="custom-item">
-            <img src="{{ data && data.ImageSrc }}" />
+            <img alt='Product name' src="{{ data && data.ImageSrc }}" />
             <dx-text-box
               class="product-name"
               [value]="data && data.Name"
@@ -78,7 +78,7 @@
         </div>
         <div *dxTemplate="let data of 'item'">
           <div class="custom-item">
-            <img src="{{ data.ImageSrc }}" />
+            <img alt='Product name' src="{{ data.ImageSrc }}" />
             <div class="product-name">
               {{ data.Name }}
             </div>
