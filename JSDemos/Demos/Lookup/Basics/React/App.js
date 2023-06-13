@@ -3,8 +3,8 @@ import { Lookup, DropDownOptions } from 'devextreme-react/lookup';
 import DataSource from 'devextreme/data/data_source';
 import { employeesList, employeesTasks } from './data.js';
 
-const simpleLookupLabel = { 'aria-lebel': 'Simple lookup' };
-const groupedLookupLabel = { 'aria-lebel': 'Grouped lookup' };
+const simpleLookupLabel = { 'aria-label': 'Simple lookup' };
+const groupedLookupLabel = { 'aria-label': 'Grouped lookup' };
 
 const groupedData = new DataSource({
   store: employeesTasks,

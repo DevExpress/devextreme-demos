@@ -6,7 +6,7 @@
         <DxLookup
           :items="employeesList"
           :value="employeesList[0]"
-          :input-attr="{ 'aria-lebel': 'Simple lookup' }"
+          :input-attr="{ 'aria-label': 'Simple lookup' }"
         >
           <DxDropDownOptions :show-title="false"/>
         </DxLookup>
@@ -18,7 +18,7 @@
         <DxLookup
           :data-source="employeesTasks"
           :grouped="true"
-          :input-attr="{ 'aria-lebel': 'Grouped lookup' }"
+          :input-attr="{ 'aria-label': 'Grouped lookup' }"
           display-expr="Subject"
         >
           <DxDropDownOptions

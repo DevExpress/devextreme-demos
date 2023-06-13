@@ -6,7 +6,7 @@ $(() => {
     items: employeesList,
     value: employeesList[0],
     inputAttr: {
-      'aria-lebel': 'Simple lookup',
+      'aria-label': 'Simple lookup',
     },
   });
 
@@ -23,7 +23,7 @@ $(() => {
     grouped: true,
     displayExpr: 'Subject',
     inputAttr: {
-      'aria-lebel': 'Grouped lookup',
+      'aria-label': 'Grouped lookup',
     },
   });
 });
