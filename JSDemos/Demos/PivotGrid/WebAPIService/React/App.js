@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { PivotGrid, Scrolling } from 'devextreme-react/pivot-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 
@@ -63,22 +62,20 @@ const dataSource = {
   }],
 };
 
-class App extends React.Component {
-  render() {
-    return (
-      <PivotGrid
-        allowSorting={true}
-        allowSortingBySummary={true}
-        allowFiltering={true}
-        height={620}
-        showBorders={true}
-        rowHeaderLayout="tree"
-        dataSource={dataSource}>
+const App = () => {
+  return (
+    <PivotGrid
+      allowSorting={true}
+      allowSortingBySummary={true}
+      allowFiltering={true}
+      height={620}
+      showBorders={true}
+      rowHeaderLayout="tree"
+      dataSource={dataSource}>
 
-        <Scrolling mode="virtual" />
-      </PivotGrid>
-    );
-  }
+      <Scrolling mode="virtual" />
+    </PivotGrid>
+  );
 }
 
 export default App;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Chart, {
   ArgumentAxis,
   ValueAxis,
@@ -21,37 +21,27 @@ import TooltipTemplate from './TooltipTemplate.js';
 const minVisualRangeLength = { minutes: 10 };
 const defaultVisualRange = { length: 'hour' };
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { dataSource: null };
+const App = () => {
+  const [dataSource, setDataSource] = useState(null);
+  const chartRef = useRef(null);
 
-    const hubConnection = new HubConnectionBuilder()
+  const hubConnection = useRef(
+    new HubConnectionBuilder()
       .withUrl('https://js.devexpress.com/Demos/NetCore/stockTickDataHub', {
         skipNegotiation: true,
         transport: HttpTransportType.WebSockets,
       })
-      .build();
+      .build()
+  );
 
-    const store = new CustomStore({
-      load: () => hubConnection.invoke('getAllData'),
+  const store = useRef(
+    new CustomStore({
+      load: () => hubConnection.current.invoke('getAllData'),
       key: 'date',
-    });
+    })
+  );
 
-    hubConnection
-      .start()
-      .then(() => {
-        hubConnection.on('updateStockPrice', (data) => {
-          store.push([{ type: 'insert', key: data.date, data }]);
-        });
-        this.setState({ dataSource: store });
-      });
-
-    this.customizePoint = this.customizePoint.bind(this);
-    this.storeChartRef = (ref) => { this.chartRef = ref; };
-  }
-
-  calculateCandle(e) {
+  const calculateCandle = (e) => {
     const prices = e.data.map((d) => d.price);
     if (prices.length) {
       return {
@@ -63,73 +53,82 @@ class App extends React.Component {
       };
     }
     return null;
-  }
+  };
 
-  render() {
-    return (
-      <div>
-        <Chart
-          id="chart"
-          ref={this.storeChartRef}
-          dataSource={this.state.dataSource}
-          title="Stock Price"
-          customizePoint={this.customizePoint}>
-          <Margin right={30} />
-          <Series
-            pane="Price"
-            argumentField="date"
-            type="CandleStick">
-            <Aggregation
-              enabled={true}
-              method="custom"
-              calculate={this.calculateCandle} />
-          </Series>
-          <Series
-            pane="Volume"
-            name="Volume"
-            argumentField="date"
-            valueField="volume"
-            color="red"
-            type="bar">
-            <Aggregation
-              enabled={true}
-              method="sum" />
-          </Series>
-          <Pane name="Price"></Pane>
-          <Pane name="Volume" height={80}></Pane>
-          <Legend visible={false} />
-          <ArgumentAxis
-            argumentType="datetime"
-            minVisualRangeLength={minVisualRangeLength}
-            defaultVisualRange={defaultVisualRange} />
-          <ValueAxis placeholderSize={50} />
-          <ZoomAndPan argumentAxis="both" />
-          <ScrollBar visible={true} />
-          <LoadingIndicator enabled={true} />
-          <Tooltip
-            enabled={true}
-            shared={true}
-            argumentFormat="shortDateShortTime"
-            contentRender={TooltipTemplate}
-          />
-          <Crosshair
-            enabled={true}>
-            <HorizontalLine visible={false} />
-          </Crosshair>
-        </Chart>
-      </div>
-    );
-  }
-
-  customizePoint(arg) {
+  const customizePoint = (arg) => {
     if (arg.seriesName === 'Volume') {
-      const point = this.chartRef.instance.getAllSeries()[0].getPointsByArg(arg.argument)[0].data;
+      const point = chartRef.current.instance.getAllSeries()[0].getPointsByArg(arg.argument)[0].data;
       if (point && point.close >= point.open) {
         return { color: '#1db2f5' };
       }
     }
     return null;
-  }
-}
+  };
+
+  useEffect(() => {
+    hubConnection.current
+      .start()
+      .then(() => {
+        hubConnection.current.on('updateStockPrice', (data) => {
+          store.current.push([{ type: 'insert', key: data.date, data }]);
+        });
+        setDataSource(store.current);
+      });
+  }, []);
+
+  return (
+    <div>
+      <Chart
+        id="chart"
+        ref={chartRef}
+        dataSource={dataSource}
+        title="Stock Price"
+        customizePoint={customizePoint}>
+        <Margin right={30} />
+        <Series
+          pane="Price"
+          argumentField="date"
+          type="CandleStick">
+          <Aggregation
+            enabled={true}
+            method="custom"
+            calculate={calculateCandle} />
+        </Series>
+        <Series
+          pane="Volume"
+          name="Volume"
+          argumentField="date"
+          valueField="volume"
+          color="red"
+          type="bar">
+          <Aggregation
+            enabled={true}
+            method="sum" />
+        </Series>
+        <Pane name="Price"></Pane>
+        <Pane name="Volume" height={80}></Pane>
+        <Legend visible={false} />
+        <ArgumentAxis
+          argumentType="datetime"
+          minVisualRangeLength={minVisualRangeLength}
+          defaultVisualRange={defaultVisualRange} />
+        <ValueAxis placeholderSize={50} />
+        <ZoomAndPan argumentAxis="both" />
+        <ScrollBar visible={true} />
+        <LoadingIndicator enabled={true} />
+        <Tooltip
+          enabled={true}
+          shared={true}
+          argumentFormat="shortDateShortTime"
+          contentRender={TooltipTemplate}
+        />
+        <Crosshair
+          enabled={true}>
+          <HorizontalLine visible={false} />
+        </Crosshair>
+      </Chart>
+    </div>
+  );
+};
 
 export default App;

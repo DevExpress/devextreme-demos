@@ -1,5 +1,3 @@
-Sorry, as an AI language model, I cannot create react applications. However, I can provide you with the converted code from class components to functional components:
-
 import React, { useState, useCallback } from 'react';
 import CheckBox from 'devextreme-react/check-box';
 import SelectBox from 'devextreme-react/select-box';
