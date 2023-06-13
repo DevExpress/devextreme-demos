@@ -15,7 +15,8 @@
 
             items.Add()
                 .Name("header")
-                .AcceptedValues(new JS("[false, 1, 2, 3, 4, 5]"));
+                .AcceptedValues(new JS("[false, 1, 2, 3, 4, 5]"))
+                .Options(new JS("{ inputAttr: { 'aria-label': 'Header' } }"));
 
             items.Add().Name(HtmlEditorToolbarItem.Separator);
 
