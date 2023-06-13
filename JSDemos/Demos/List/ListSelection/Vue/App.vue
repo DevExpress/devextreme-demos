@@ -37,6 +37,7 @@
       <div class="option">
         <span>Select By Click</span>
         <DxCheckBox
+          :element-attr="{ 'aria-label': 'Selection By Click' }"
           v-model:value="selectByClick"
         />
       </div>
