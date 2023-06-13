@@ -6,7 +6,7 @@
         .DataSource(Model)
         .ItemTemplate(@<text>
             <div class="product">
-                <img src="<%- ImageSrc %>">
+                <img alt="<%- Name %>" src="<%- ImageSrc %>">
                 <div><%- Name %></div>
                 <div class="price"><%- formatCurrency(Price) %></div>
             </div>
