@@ -20,7 +20,6 @@ namespace DevExtreme.NETCore.Demos.Models.TreeList {
         public string Title { get; set; }
         [Required]
         public string City { get; set; }
-        [Required]
         public string State { get; set; }
         public string Email { get; set; }
         public string Skype { get; set; }
