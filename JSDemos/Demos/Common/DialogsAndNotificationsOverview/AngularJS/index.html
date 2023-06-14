@@ -18,7 +18,7 @@
       <div class="images">
         <div ng-repeat="house in houses">
           <div ng-click="showHouse(house)" class="item-content">
-            <img ng-alt="{{house.Address}}" ng-src="{{house.Image}}" />
+            <img alt="{{house.Address}}" ng-src="{{house.Image}}" />
 
             <div class="item-options">
               <div>
@@ -48,7 +48,7 @@
                     }"
             >
               <div class="agent-details">
-                <img ng-alt="{{house.Agent.Name}}" ng-src="{{house.Agent.Picture}}" />
+                <img alt="{{house.Agent.Name}}" ng-src="{{house.Agent.Picture}}" />
                 <div>
                   <div class="name large-text">{{house.Agent.Name}}</div>
                   <div class="phone">Tel: {{house.Agent.Phone}}</div>
@@ -87,8 +87,8 @@
                     }"
             ></div>
             <div class="images">
-              <img ng-alt="{{currentHouse.Address}}" ng-src="{{currentHouse.Image}}" />
-              <img ng-alt="{{currentHouse.Address}}" ng-src="{{currentHouse.Image.replace('.jpg', 'b.jpg')}}" />
+              <img alt="{{currentHouse.Address}}" ng-src="{{currentHouse.Image}}" />
+              <img alt="{{currentHouse.Address}}" ng-src="{{currentHouse.Image.replace('.jpg', 'b.jpg')}}" />
             </div>
             <div>{{currentHouse.Features}}</div>
           </div>
