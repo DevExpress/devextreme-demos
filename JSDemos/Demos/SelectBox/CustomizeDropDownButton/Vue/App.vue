@@ -72,7 +72,10 @@
             </template>
             <template #customItem="{ data: itemData }">
               <div class="custom-item">
-                <img :alt="itemData.Name" :src="'../../../../images/icons/' + itemData.IconSrc">
+                <img
+                  :alt="itemData.Name"
+                  :src="'../../../../images/icons/' + itemData.IconSrc"
+                >
                 <div class="product-name">
                   {{ itemData.Name }}
                 </div>

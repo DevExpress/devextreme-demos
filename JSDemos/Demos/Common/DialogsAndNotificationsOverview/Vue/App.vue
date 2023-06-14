@@ -15,7 +15,10 @@
             <div class="price large-text">{{ currency(house.Price) }}</div>
             <div class="agent">
               <div :id="'house' + house.ID">
-                <img alt="Listing agent" src="../../../../images/icon-agent.svg">
+                <img
+                  alt="Listing agent"
+                  src="../../../../images/icon-agent.svg"
+                >
                 Listing agent
               </div>
             </div>
@@ -31,7 +34,10 @@
         >
           <template #popoverContent="{ data }">
             <div class="agent-details">
-              <img :alt="house.Agent.Name" :src="house.Agent.Picture">
+              <img
+                :alt="house.Agent.Name"
+                :src="house.Agent.Picture"
+              >
               <div>
                 <div class="name large-text">{{ house.Agent.Name }}</div>
                 <div class="phone">Tel: {{ house.Agent.Phone }}</div>
@@ -68,8 +74,14 @@
             @click="changeFavoriteState"
           />
           <div class="images">
-            <img :alt="currentHouse.Address" :src="currentHouse.Image">
-            <img :alt="currentHouse.Address" :src="currentHouse.Image.replace('.jpg', 'b.jpg')">
+            <img
+              :alt="currentHouse.Address"
+              :src="currentHouse.Image"
+            >
+            <img
+              :alt="currentHouse.Address"
+              :src="currentHouse.Image.replace('.jpg', 'b.jpg')"
+            >
           </div>
           <div>{{ currentHouse.Features }}</div>
         </div>

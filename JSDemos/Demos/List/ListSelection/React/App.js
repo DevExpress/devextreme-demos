@@ -92,7 +92,7 @@ export default function App() {
             &nbsp;
           <CheckBox
             value={selectByClick}
-            elementAttr={selectByClick}
+            elementAttr={selectByClickLabel}
             onValueChange={onSelectByClickChange}>
           </CheckBox>
         </div>

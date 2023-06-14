@@ -9,7 +9,7 @@ import { TextArea } from 'devextreme-react/text-area';
 import { TagBox } from 'devextreme-react/tag-box';
 import {
   europeanUnion, numberBoxLabel, notesLabel, nameLabel, textBoxLabel,
-  europeanUnionDataLabel, languageLabel, autocompleteLabel
+  europeanUnionDataLabel, languageLabel, autocompleteLabel,
 } from './data.js';
 
 class App extends React.Component {
