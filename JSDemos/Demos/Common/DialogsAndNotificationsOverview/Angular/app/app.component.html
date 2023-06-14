@@ -30,10 +30,7 @@
         </dxo-position>
         <div *dxTemplate="let data of 'popoverContent'">
           <div class="agent-details">
-            <img
-              alt="{{ house.Agent.Name }}"
-              src="{{ house.Agent.Picture }}"
-            />
+            <img alt="{{ house.Agent.Name }}" src="{{ house.Agent.Picture }}" />
             <div>
               <div class="name large-text">{{ house.Agent.Name }}</div>
               <div class="phone">Tel: {{ house.Agent.Phone }}</div>
@@ -64,10 +61,10 @@
         >
         <dx-button
           class="favorites"
+          icon="favorites"
           [text]="
             currentHouse.Favorite ? REMOVE_FROM_FAVORITES : ADD_TO_FAVORITES
           "
-          icon="favorites"
           [width]="260"
           [height]="44"
           (onClick)="changeFavoriteState($event)"
