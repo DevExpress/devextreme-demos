@@ -23,12 +23,12 @@
             items.Add()
                 .Name("size")
                 .AcceptedValues(new[] { "8pt", "10pt", "12pt", "14pt", "18pt", "24pt", "36pt" })
-                .Options(new JS("{ inputAttr: { 'aria-label': 'Font size' } }"));
+                .Option("inputAttr", new { "aria-label" = "Font size" });
 
             items.Add()
                 .Name("font")
                 .AcceptedValues(new[] { "Arial", "Courier New", "Georgia", "Impact", "Lucida Console", "Tahoma", "Times New Roman", "Verdana" })
-                .Options(new JS("{ inputAttr: { 'aria-label': 'Font family' } }"));
+                .Option("inputAttr", new { "aria-label" = "Font family" });
 
             items.Add().Name(HtmlEditorToolbarItem.Separator);
 
@@ -61,7 +61,7 @@
             items.Add()
                 .Name("header")
                 .AcceptedValues(new JS("[false, 1, 2, 3, 4, 5]"))
-                .Options(new JS("{ inputAttr: { 'aria-label': 'Header' } }"));
+                .Option("inputAttr", new { "aria-label" = "Header" });
 
             items.Add().Name(HtmlEditorToolbarItem.Separator);
 
