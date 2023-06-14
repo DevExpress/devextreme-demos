@@ -22,7 +22,7 @@
             items.Add()
                 .Name("size")
                 .AcceptedValues(new[] { "8pt", "10pt", "12pt", "14pt", "18pt", "24pt", "36pt" })
-                .Options(new JS("{ inputAttr: { 'aria-label': 'Font size' } }"));
+                @* .Option("inputAttr", new { 'aria-label' = 'Font size' }); *@
 
             items.Add()
                 .Name("font")
