@@ -61,7 +61,10 @@
         </div>
 
         <div *dxTemplate="let data of 'item'" class="custom-item">
-          <img alt="{{ data.Name }}" src="../../../../images/icons/{{ data.IconSrc }}" />
+          <img
+            alt="{{ data.Name }}"
+            src="../../../../images/icons/{{ data.IconSrc }}"
+          />
           <div class="product-name">{{ data.Name }}</div>
         </div>
       </dx-select-box>
