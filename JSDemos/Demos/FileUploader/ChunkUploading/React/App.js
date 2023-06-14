@@ -17,9 +17,7 @@ const App = () => {
     setChunks([]);
   };
 
-  const getValueInKb = (value) => {
-    return `${(value / 1024).toFixed(0)}kb`;
-  };
+  const getValueInKb = (value) => `${(value / 1024).toFixed(0)}kb`;
 
   return (
     <React.Fragment>

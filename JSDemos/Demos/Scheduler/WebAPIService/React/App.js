@@ -17,26 +17,24 @@ const dataSource = AspNetData.createStore({
 const currentDate = new Date(2021, 3, 27);
 const views = ['day', 'workWeek', 'month'];
 
-const App = () => {
-  return (
-    <Scheduler
-      timeZone="America/Los_Angeles"
-      dataSource={dataSource}
-      views={views}
-      defaultCurrentView="day"
-      defaultCurrentDate={currentDate}
-      height={600}
-      startDayHour={9}
-      endDayHour={19}
-      remoteFiltering={true}
-      dateSerializationFormat="yyyy-MM-ddTHH:mm:ssZ"
-      textExpr="Text"
-      startDateExpr="StartDate"
-      endDateExpr="EndDate"
-      allDayExpr="AllDay"
-      recurrenceRuleExpr="RecurrenceRule"
-      recurrenceExceptionExpr="RecurrenceException" />
-  );
-}
+const App = () => (
+  <Scheduler
+    timeZone="America/Los_Angeles"
+    dataSource={dataSource}
+    views={views}
+    defaultCurrentView="day"
+    defaultCurrentDate={currentDate}
+    height={600}
+    startDayHour={9}
+    endDayHour={19}
+    remoteFiltering={true}
+    dateSerializationFormat="yyyy-MM-ddTHH:mm:ssZ"
+    textExpr="Text"
+    startDateExpr="StartDate"
+    endDateExpr="EndDate"
+    allDayExpr="AllDay"
+    recurrenceRuleExpr="RecurrenceRule"
+    recurrenceExceptionExpr="RecurrenceException" />
+);
 
 export default App;

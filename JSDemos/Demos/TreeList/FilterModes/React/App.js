@@ -12,7 +12,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <TreeList
         id="employees"
         dataSource={employees}
@@ -43,7 +43,7 @@ const App = () => {
           />
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

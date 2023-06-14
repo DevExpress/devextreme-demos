@@ -20,13 +20,9 @@ const App = () => {
     return null;
   };
 
-  const customizeText = (arg) => {
-    return ['< 8000K', '8000K to 10000K', '> 10000K'][arg.index];
-  };
+  const customizeText = (arg) => ['< 8000K', '8000K to 10000K', '> 10000K'][arg.index];
 
-  const customizeItems = (items) => {
-    return items.reverse();
-  };
+  const customizeItems = (items) => items.reverse();
 
   return (
     <VectorMap id="vector-map" bounds={bounds}>

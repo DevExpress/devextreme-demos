@@ -18,27 +18,25 @@ const App = () => {
 
   const displayModeChange = (value) => {
     setState({ ...state, displayMode: value });
-  }
+  };
 
   const showPageSizeSelectorChange = (value) => {
     setState({ ...state, showPageSizeSelector: value });
-  }
+  };
 
   const showInfoChange = (value) => {
     setState({ ...state, showInfo: value });
-  }
+  };
 
   const showNavButtonsChange = (value) => {
     setState({ ...state, showNavButtons: value });
-  }
+  };
 
-  const isCompactMode = () => {
-    return state.displayMode === 'compact';
-  }
+  const isCompactMode = () => state.displayMode === 'compact';
 
   const customizeColumns = (columns) => {
     columns[0].width = 70;
-  }
+  };
 
   return (
     <div>
@@ -98,6 +96,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

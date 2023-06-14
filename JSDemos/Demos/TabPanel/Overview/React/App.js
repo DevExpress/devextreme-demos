@@ -10,9 +10,7 @@ const App = () => {
   const [loop, setLoop] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const itemTitleRender = (company) => {
-    return <span>{company.CompanyName}</span>;
-  };
+  const itemTitleRender = (company) => <span>{company.CompanyName}</span>;
 
   const onSelectionChanged = (args) => {
     if (args.name === 'selectedIndex') {

@@ -84,8 +84,8 @@ const App = () => {
       dataRange = {
         startIndex: startTaskIndex,
         endIndex: endTaskIndex,
-        startDate: startDate,
-        endDate: endDate,
+        startDate,
+        endDate,
       };
     } else {
       dataRange = dataRangeMode;
@@ -104,7 +104,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <Gantt
         ref={ganttRef}
         taskListWidth={500}
@@ -239,7 +239,7 @@ const App = () => {
           </div>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

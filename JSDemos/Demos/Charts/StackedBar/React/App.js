@@ -7,11 +7,9 @@ import service from './data.js';
 const dataSource = service.getMaleAgeData();
 
 const App = () => {
-  const customizeTooltip = (arg) => {
-    return {
-      text: `${arg.seriesName} years: ${arg.valueText}`,
-    };
-  };
+  const customizeTooltip = (arg) => ({
+    text: `${arg.seriesName} years: ${arg.valueText}`,
+  });
 
   return (
     <Chart

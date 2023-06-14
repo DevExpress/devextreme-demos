@@ -11,34 +11,32 @@ import Funnel, {
 } from 'devextreme-react/funnel';
 import { dataSource } from './data.js';
 
-const App = () => {
-  return (
-    <Funnel id="pyramid"
-      dataSource={dataSource}
-      sortData={false}
-      inverted={true}
-      algorithm="dynamicHeight"
-      palette="Harmony Light"
-      argumentField="level"
-      valueField="count"
+const App = () => (
+  <Funnel id="pyramid"
+    dataSource={dataSource}
+    sortData={false}
+    inverted={true}
+    algorithm="dynamicHeight"
+    palette="Harmony Light"
+    argumentField="level"
+    valueField="count"
+  >
+    <Title text="Team Composition">
+      <Margin bottom={30} />
+    </Title>
+    <Tooltip enabled={true} />
+    <Item>
+      <Border visible={true} />
+    </Item>
+    <Legend visible={true} />
+    <Label
+      visible={true}
+      horizontalAlignment="left"
+      backgroundColor="none"
     >
-      <Title text="Team Composition">
-        <Margin bottom={30} />
-      </Title>
-      <Tooltip enabled={true} />
-      <Item>
-        <Border visible={true} />
-      </Item>
-      <Legend visible={true} />
-      <Label
-        visible={true}
-        horizontalAlignment="left"
-        backgroundColor="none"
-      >
-        <Font size={16} />
-      </Label>
-    </Funnel>
-  );
-}
+      <Font size={16} />
+    </Label>
+  </Funnel>
+);
 
 export default App;

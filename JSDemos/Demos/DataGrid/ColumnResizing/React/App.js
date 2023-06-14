@@ -13,7 +13,7 @@ function App() {
 
   const changeResizingMode = (data) => {
     setMode(data.value);
-  }
+  };
 
   return (
     <div>

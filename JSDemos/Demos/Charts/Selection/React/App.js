@@ -11,10 +11,9 @@ import Chart, {
 import { exportData } from './data.js';
 
 const App = () => {
-
   const onPointClick = ({ target: point }) => {
     point.select();
-  }
+  };
 
   const onLegendClick = ({ target: series }) => {
     if (series.isVisible()) {
@@ -22,7 +21,7 @@ const App = () => {
     } else {
       series.show();
     }
-  }
+  };
 
   return (
     <Chart
@@ -69,6 +68,6 @@ const App = () => {
       <Export enabled={true} />
     </Chart>
   );
-}
+};
 
 export default App;

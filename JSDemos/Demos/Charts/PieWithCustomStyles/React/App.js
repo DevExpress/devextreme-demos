@@ -8,9 +8,7 @@ import {
 import { data } from './data.js';
 
 const App = () => {
-  const customizeText = (info) => {
-    return info.argument;
-  }
+  const customizeText = (info) => info.argument;
 
   const customizePoint = (point) => {
     const color = point.series.getPointsByArg(point.argument)[0].getColor();
@@ -36,7 +34,7 @@ const App = () => {
     }
 
     return { color: { fillId } };
-  }
+  };
 
   return (
     <PieChart
@@ -54,6 +52,6 @@ const App = () => {
       <Export enabled />
     </PieChart>
   );
-}
+};
 
 export default App;

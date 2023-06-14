@@ -34,7 +34,7 @@ const App = () => {
   });
 
   return (
-    <>
+    <React.Fragment>
       <div className="long-title">
         <h3>Sales Amount by Region</h3>
       </div>
@@ -50,7 +50,7 @@ const App = () => {
       >
         <FieldChooser enabled={false} />
       </PivotGrid>
-    </>
+    </React.Fragment>
   );
 };
 

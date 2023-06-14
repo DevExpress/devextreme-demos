@@ -29,23 +29,23 @@ const App = () => {
       newItems = [...newItems, ...e.addedItems];
     }
     setSelectedItems(newItems);
-  }
+  };
 
   const selectedItemsChanged = (e) => {
     setSelectedItems(e.value);
-  }
+  };
 
   const multipleChanged = (e) => {
     setMultiple(e.value);
-  }
+  };
 
   const collapsibleChanged = (e) => {
     setCollapsible(e.value);
-  }
+  };
 
   const animationDurationChanged = (e) => {
     setAnimationDuration(e.value);
-  }
+  };
 
   return (
     <div id="accordion">
@@ -100,6 +100,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

@@ -240,4 +240,42 @@ const App = () => {
         defaultHeight={0.75}
         defaultText="Switch"
         allowEditText={true}
-        text
+        textLeft={0}
+        textTop={0.7}
+        textWidth={1}
+        textHeight={0.3}>
+        <ConnectionPoint x={0.5} y={0} />
+        <ConnectionPoint x={0.9} y={0.5} />
+        <ConnectionPoint x={0.5} y={1} />
+        <ConnectionPoint x={0.1} y={0.5} />
+      </CustomShape>
+      <CustomShape
+        category="hardware"
+        type="wifi"
+        title="Wi Fi Router"
+        backgroundImageUrl="../../../../images/shapes/wifi.svg"
+        backgroundImageLeft={0.15}
+        backgroundImageTop={0}
+        backgroundImageWidth={0.7}
+        backgroundImageHeight={0.7}
+        defaultWidth={0.75}
+        defaultHeight={0.75}
+        defaultText="Wi Fi"
+        allowEditText={true}
+        textLeft={0}
+        textTop={0.7}
+        textWidth={1}
+        textHeight={0.3}>
+        <ConnectionPoint x={0.5} y={0} />
+        <ConnectionPoint x={0.9} y={0.5} />
+        <ConnectionPoint x={0.5} y={1} />
+        <ConnectionPoint x={0.1} y={0.5} />
+      </CustomShape>
+      <Toolbox>
+        <Group category="hardware" title="Hardware" />
+      </Toolbox>
+    </Diagram>
+  );
+};
+
+export default App;

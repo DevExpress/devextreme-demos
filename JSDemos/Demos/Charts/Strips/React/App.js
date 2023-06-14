@@ -35,55 +35,49 @@ const customizeLabel = (arg) => {
   return null;
 };
 
-const getLabelsSettings = (backgroundColor) => {
-  return {
-    visible: true,
-    backgroundColor,
-    customizeText,
-  };
-};
+const getLabelsSettings = (backgroundColor) => ({
+  visible: true,
+  backgroundColor,
+  customizeText,
+});
 
-const customizeText = (arg) => {
-  return `${arg.valueText}&#176F`;
-};
+const customizeText = (arg) => `${arg.valueText}&#176F`;
 
-const App = () => {
-  return (
-    <Chart
-      id="chart"
-      title="Temperature in September"
-      dataSource={temperaturesData}
-      customizePoint={customizePoint}
-      customizeLabel={customizeLabel}
-    >
-      <Series
-        argumentField="day"
-        valueField="temperature"
-        type="spline"
-        color="#a3aaaa"
-      />
-      <ValueAxis>
-        <Label customizeText={customizeText} />
-        <Strip startValue={highAverage} color="rgba(255,155,85,0.15)">
-          <Label text="Above average">
-            <Font color={highAverageColor} />
-          </Label>
-        </Strip>
-        <Strip endValue={lowAverage} color="rgba(97,153,230,0.10)">
-          <Label text="Below average">
-            <Font color={lowAverageColor} />
-          </Label>
-        </Strip>
-        <StripStyle>
-          <Label>
-            <Font weight="500" size="14" />
-          </Label>
-        </StripStyle>
-      </ValueAxis>
-      <Legend visible={false} />
-      <Export enabled />
-    </Chart>
-  );
-};
+const App = () => (
+  <Chart
+    id="chart"
+    title="Temperature in September"
+    dataSource={temperaturesData}
+    customizePoint={customizePoint}
+    customizeLabel={customizeLabel}
+  >
+    <Series
+      argumentField="day"
+      valueField="temperature"
+      type="spline"
+      color="#a3aaaa"
+    />
+    <ValueAxis>
+      <Label customizeText={customizeText} />
+      <Strip startValue={highAverage} color="rgba(255,155,85,0.15)">
+        <Label text="Above average">
+          <Font color={highAverageColor} />
+        </Label>
+      </Strip>
+      <Strip endValue={lowAverage} color="rgba(97,153,230,0.10)">
+        <Label text="Below average">
+          <Font color={lowAverageColor} />
+        </Label>
+      </Strip>
+      <StripStyle>
+        <Label>
+          <Font weight="500" size="14" />
+        </Label>
+      </StripStyle>
+    </ValueAxis>
+    <Legend visible={false} />
+    <Export enabled />
+  </Chart>
+);
 
 export default App;

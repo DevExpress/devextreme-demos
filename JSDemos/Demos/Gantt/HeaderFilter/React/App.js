@@ -2,29 +2,29 @@ import React from 'react';
 import Gantt, {
   Tasks, Dependencies, Resources, ResourceAssignments, Column, Editing, HeaderFilter,
 } from 'devextreme-react/gantt';
-import { tasks, dependencies, resources, resourceAssignments } from './data.js';
+import {
+  tasks, dependencies, resources, resourceAssignments,
+} from './data.js';
 
-const App = () => {
-  return (
-    <Gantt
-      taskListWidth={500}
-      scaleType="weeks"
-      height={700}
-      rootValue={-1}
-    >
-      <Tasks dataSource={tasks} />
-      <Dependencies dataSource={dependencies} />
-      <Resources dataSource={resources} />
-      <ResourceAssignments dataSource={resourceAssignments} />
+const App = () => (
+  <Gantt
+    taskListWidth={500}
+    scaleType="weeks"
+    height={700}
+    rootValue={-1}
+  >
+    <Tasks dataSource={tasks} />
+    <Dependencies dataSource={dependencies} />
+    <Resources dataSource={resources} />
+    <ResourceAssignments dataSource={resourceAssignments} />
 
-      <Column dataField="title" caption="Subject" width={300} />
-      <Column dataField="start" caption="Start Date" />
-      <Column dataField="end" caption="End Date" />
+    <Column dataField="title" caption="Subject" width={300} />
+    <Column dataField="start" caption="Start Date" />
+    <Column dataField="end" caption="End Date" />
 
-      <Editing enabled />
-      <HeaderFilter visible />
-    </Gantt>
-  );
-};
+    <Editing enabled />
+    <HeaderFilter visible />
+  </Gantt>
+);
 
 export default App;

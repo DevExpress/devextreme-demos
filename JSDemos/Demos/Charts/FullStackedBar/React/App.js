@@ -6,40 +6,36 @@ import service from './data.js';
 
 const dataSource = service.dataSource();
 
-const customizeTooltip = (arg) => {
-  return {
-    text: `${arg.percentText} years: ${arg.valueText}`,
-  };
-};
+const customizeTooltip = (arg) => ({
+  text: `${arg.percentText} years: ${arg.valueText}`,
+});
 
-const App = () => {
-  return (
-    <Chart
-      id="chart"
-      dataSource={dataSource}
-    >
-      <Title
-        text="Energy Consumption in 2004"
-        subtitle="(Millions of Tons, Oil Equivalent)"
-      />
-      <CommonSeriesSettings argumentField="country" type="fullstackedbar" />
-      <Series valueField="hydro" name="Hydro-electric" />
-      <Series valueField="oil" name="Oil" />
-      <Series valueField="gas" name="Natural gas" />
-      <Series valueField="coal" name="Coal" />
-      <Series valueField="nuclear" name="Nuclear" />
+const App = () => (
+  <Chart
+    id="chart"
+    dataSource={dataSource}
+  >
+    <Title
+      text="Energy Consumption in 2004"
+      subtitle="(Millions of Tons, Oil Equivalent)"
+    />
+    <CommonSeriesSettings argumentField="country" type="fullstackedbar" />
+    <Series valueField="hydro" name="Hydro-electric" />
+    <Series valueField="oil" name="Oil" />
+    <Series valueField="gas" name="Natural gas" />
+    <Series valueField="coal" name="Coal" />
+    <Series valueField="nuclear" name="Nuclear" />
 
-      <Legend verticalAlignment="top"
-        horizontalAlignment="center"
-        itemTextPosition="right"
-      />
-      <Export enabled={true} />
-      <Tooltip
-        enabled={true}
-        customizeTooltip={customizeTooltip}
-      />
-    </Chart>
-  );
-};
+    <Legend verticalAlignment="top"
+      horizontalAlignment="center"
+      itemTextPosition="right"
+    />
+    <Export enabled={true} />
+    <Tooltip
+      enabled={true}
+      customizeTooltip={customizeTooltip}
+    />
+  </Chart>
+);
 
 export default App;

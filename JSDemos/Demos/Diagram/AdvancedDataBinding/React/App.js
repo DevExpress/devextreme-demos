@@ -7,13 +7,13 @@ import service from './data.js';
 
 const App = () => {
   const [orgItemsDataSource] = useState(new ArrayStore({
-      key: 'id',
-      data: service.getOrgItems(),
-    }));
+    key: 'id',
+    data: service.getOrgItems(),
+  }));
   const [orgLinksDataSource] = useState(new ArrayStore({
-      key: 'id',
-      data: service.getOrgLinks(),
-    }));
+    key: 'id',
+    data: service.getOrgLinks(),
+  }));
 
   const itemTypeExpr = (obj, value) => {
     if (value) {
@@ -57,17 +57,11 @@ const App = () => {
     return style;
   };
 
-  const linkStyleExpr = () => {
-    return { stroke: '#444444' };
-  };
+  const linkStyleExpr = () => ({ stroke: '#444444' });
 
-  const linkFromLineEndExpr = () => {
-    return 'none';
-  };
+  const linkFromLineEndExpr = () => 'none';
 
-  const linkToLineEndExpr = () => {
-    return 'none';
-  };
+  const linkToLineEndExpr = () => 'none';
 
   return (
     <Diagram id="diagram">

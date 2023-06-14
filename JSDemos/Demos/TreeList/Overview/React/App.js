@@ -15,18 +15,16 @@ const expandedKeys = [1, 2];
 const selectedKeys = [1, 29, 42];
 
 function App() {
-  const [dataSourceOptions, setDataSourceOptions] = useState(() => {
-    return {
-      store: tasks.map((task) => {
-        employees.forEach((employee) => {
-          if (task.Task_Assigned_Employee_ID === employee.ID) {
-            task.Task_Assigned_Employee = employee;
-          }
-        });
-        return task;
-      }),
-    };
-  });
+  const [dataSourceOptions, setDataSourceOptions] = useState(() => ({
+    store: tasks.map((task) => {
+      employees.forEach((employee) => {
+        if (task.Task_Assigned_Employee_ID === employee.ID) {
+          task.Task_Assigned_Employee = employee;
+        }
+      });
+      return task;
+    }),
+  }));
 
   function customizeTaskCompletionText(cellInfo) {
     return `${cellInfo.valueText}%`;

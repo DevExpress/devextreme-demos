@@ -4,24 +4,22 @@ import Gantt, {
 } from 'devextreme-react/gantt';
 import { tasks, currentDate } from './data.js';
 
-const App = () => {
-  return (
-    <Gantt
-      taskListWidth={300}
-      height={700}
-      taskTitlePosition="none">
+const App = () => (
+  <Gantt
+    taskListWidth={300}
+    height={700}
+    taskTitlePosition="none">
 
-      <StripLine start={tasks[0].start} title="Start" />
-      <StripLine start={tasks[tasks.length - 3].start} end={tasks[tasks.length - 1].end} title="Final Phase" />
-      <StripLine start={currentDate} title="Current Time" cssClass="current-time" />
+    <StripLine start={tasks[0].start} title="Start" />
+    <StripLine start={tasks[tasks.length - 3].start} end={tasks[tasks.length - 1].end} title="Final Phase" />
+    <StripLine start={currentDate} title="Current Time" cssClass="current-time" />
 
-      <Validation autoUpdateParentTasks />
+    <Validation autoUpdateParentTasks />
 
-      <Tasks dataSource={tasks} />
+    <Tasks dataSource={tasks} />
 
-      <Column dataField="title" caption="Task" width={300} />
-    </Gantt>
-  );
-}
+    <Column dataField="title" caption="Task" width={300} />
+  </Gantt>
+);
 
 export default App;

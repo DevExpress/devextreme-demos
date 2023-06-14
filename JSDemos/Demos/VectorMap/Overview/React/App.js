@@ -28,36 +28,32 @@ const { format } = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 0,
 });
 
-const customizeLegendText = (arg) => {
-  return `${format(arg.start)} to ${format(arg.end)}`;
-};
+const customizeLegendText = (arg) => `${format(arg.start)} to ${format(arg.end)}`;
 
-const App = () => {
-  return (
-    <Map bounds={mapBounds}>
-      <Size height={500} />
-      <Layer
-        name="areas"
-        dataSource={mapsData.world}
-        colorGroups={colorGroups}
-        colorGroupingField="total"
-        customize={customizeLayer}
-      >
-        <Label dataField="name" enabled={true} />
-      </Layer>
+const App = () => (
+  <Map bounds={mapBounds}>
+    <Size height={500} />
+    <Layer
+      name="areas"
+      dataSource={mapsData.world}
+      colorGroups={colorGroups}
+      colorGroupingField="total"
+      customize={customizeLayer}
+    >
+      <Label dataField="name" enabled={true} />
+    </Layer>
 
-      <Legend customizeText={customizeLegendText}>
-        <Source layer="areas" grouping="color" />
-      </Legend>
+    <Legend customizeText={customizeLegendText}>
+      <Source layer="areas" grouping="color" />
+    </Legend>
 
-      <Title text="Nominal GDP">
-        <Subtitle text="(in millions of US dollars)" />
-      </Title>
+    <Title text="Nominal GDP">
+      <Subtitle text="(in millions of US dollars)" />
+    </Title>
 
-      <Tooltip enabled={true} contentRender={TooltipTemplate} />
-      <Export enabled={true} />
-    </Map>
-  );
-};
+    <Tooltip enabled={true} contentRender={TooltipTemplate} />
+    <Export enabled={true} />
+  </Map>
+);
 
 export default App;

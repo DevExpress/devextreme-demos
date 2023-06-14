@@ -19,17 +19,16 @@ const App = () => {
   const [monthWeather, setMonthWeather] = useState(
     new DataSource({
       store: new CustomStore({
-        load: () =>
-          fetch('../../../../data/monthWeather.json')
-            .then((e) => e.json())
-            .catch(() => {
-              throw new Error('Data Loading Error');
-            }),
+        load: () => fetch('../../../../data/monthWeather.json')
+          .then((e) => e.json())
+          .catch(() => {
+            throw new Error('Data Loading Error');
+          }),
         loadMode: 'raw',
       }),
       filter: ['t', '>', '2'],
       paginate: false,
-    })
+    }),
   );
   const temperature = [2, 4, 6, 8, 9, 10, 11];
   const palette = ['#c3a2cc', '#b7b5e0', '#e48cba'];

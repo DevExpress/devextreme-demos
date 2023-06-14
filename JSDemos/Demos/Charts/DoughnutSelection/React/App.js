@@ -8,10 +8,9 @@ import PieChart, {
 import { olympicMedals } from './data.js';
 
 const App = () => {
-
   const pointClickHandler = (arg) => {
     arg.target.select();
-  }
+  };
 
   return (
     <PieChart
@@ -33,6 +32,6 @@ const App = () => {
       />
     </PieChart>
   );
-}
+};
 
 export default App;

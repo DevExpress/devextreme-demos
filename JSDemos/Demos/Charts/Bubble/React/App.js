@@ -16,11 +16,9 @@ import { dataSource } from './data.js';
 const palette = ['#00ced1', '#008000', '#ffd700', '#ff7f50'];
 
 const App = () => {
-  const customizeTooltip = (pointInfo) => {
-    return {
-      text: `${pointInfo.point.tag}<br/>Total Population: ${pointInfo.argumentText}M<br/>Population with Age over 60: ${pointInfo.valueText}M (${pointInfo.size}%)`,
-    };
-  };
+  const customizeTooltip = (pointInfo) => ({
+    text: `${pointInfo.point.tag}<br/>Total Population: ${pointInfo.argumentText}M<br/>Population with Age over 60: ${pointInfo.valueText}M (${pointInfo.size}%)`,
+  });
 
   const seriesClick = (e) => {
     const series = e.target;
@@ -31,9 +29,7 @@ const App = () => {
     }
   };
 
-  const customizeText = (e) => {
-    return `${e.value}M`;
-  };
+  const customizeText = (e) => `${e.value}M`;
 
   return (
     <Chart

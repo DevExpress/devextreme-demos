@@ -40,8 +40,8 @@ const App = () => {
       if (e.changes[i].type === 'remove') {
         e.allowed = true;
       } else if (
-        e.changes[i].data.ParentID !== undefined &&
-        e.changes[i].data.ParentID !== null
+        e.changes[i].data.ParentID !== undefined
+        && e.changes[i].data.ParentID !== null
       ) {
         e.allowed = true;
       }
@@ -52,12 +52,12 @@ const App = () => {
     const diagram = diagramRef.current.instance;
     if (e.operation === 'addShape') {
       if (
-        e.args.shape.type !== 'employee' &&
-        e.args.shape.type !== 'team'
+        e.args.shape.type !== 'employee'
+        && e.args.shape.type !== 'team'
       ) {
         if (e.reason !== 'checkUIElementAvailability') {
           showToast(
-            "You can add only a 'Team' or 'Employee' shape."
+            "You can add only a 'Team' or 'Employee' shape.",
           );
         }
         e.allowed = false;
@@ -66,7 +66,7 @@ const App = () => {
       if (e.args.shape.type === 'root') {
         if (e.reason !== 'checkUIElementAvailability') {
           showToast(
-            "You cannot delete the 'Development' shape."
+            "You cannot delete the 'Development' shape.",
           );
         }
         e.allowed = false;
@@ -84,7 +84,7 @@ const App = () => {
           ) {
             if (e.reason !== 'checkUIElementAvailability') {
               showToast(
-                "You cannot delete a 'Team' shape that has a child shape."
+                "You cannot delete a 'Team' shape that has a child shape.",
               );
             }
             e.allowed = false;
@@ -104,7 +104,7 @@ const App = () => {
       if (shapeType === 'root' && e.args.connectorPosition === 'end') {
         if (e.reason !== 'checkUIElementAvailability') {
           showToast(
-            "The 'Development' shape cannot have an incoming connection."
+            "The 'Development' shape cannot have an incoming connection.",
           );
         }
         e.allowed = false;
@@ -115,7 +115,7 @@ const App = () => {
     } else if (e.operation === 'changeConnectorPoints') {
       if (e.args.newPoints.length > 2) {
         if (e.reason !== 'checkUIElementAvailability') {
-          showToast("You cannot add points to a connector.");
+          showToast('You cannot add points to a connector.');
         }
         e.allowed = false;
       }
@@ -123,7 +123,7 @@ const App = () => {
       if (e.args.shape.type === 'root') {
         if (e.reason !== 'checkUIElementAvailability') {
           showToast(
-            "You cannot change the 'Development' shape's text."
+            "You cannot change the 'Development' shape's text.",
           );
         }
         e.allowed = false;

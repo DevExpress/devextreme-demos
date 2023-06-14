@@ -62,20 +62,18 @@ const dataSource = {
   }],
 };
 
-const App = () => {
-  return (
-    <PivotGrid
-      allowSorting={true}
-      allowSortingBySummary={true}
-      allowFiltering={true}
-      height={620}
-      showBorders={true}
-      rowHeaderLayout="tree"
-      dataSource={dataSource}>
+const App = () => (
+  <PivotGrid
+    allowSorting={true}
+    allowSortingBySummary={true}
+    allowFiltering={true}
+    height={620}
+    showBorders={true}
+    rowHeaderLayout="tree"
+    dataSource={dataSource}>
 
-      <Scrolling mode="virtual" />
-    </PivotGrid>
-  );
-}
+    <Scrolling mode="virtual" />
+  </PivotGrid>
+);
 
 export default App;

@@ -48,6 +48,6 @@ const App = () => {
       <Column dataField="Hire_Date" dataType="date" />
     </TreeList>
   );
-}
+};
 
 export default App;

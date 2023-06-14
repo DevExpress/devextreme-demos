@@ -11,13 +11,9 @@ import Chart, {
 import { dataSource } from './data.js';
 
 const App = () => {
-  const customizeTooltip = (e) => {
-    return { text: Math.abs(e.valueText) };
-  };
+  const customizeTooltip = (e) => ({ text: Math.abs(e.valueText) });
 
-  const customizeLabel = (e) => {
-    return `${Math.abs(e.value)}%`;
-  };
+  const customizeLabel = (e) => `${Math.abs(e.value)}%`;
 
   return (
     <Chart

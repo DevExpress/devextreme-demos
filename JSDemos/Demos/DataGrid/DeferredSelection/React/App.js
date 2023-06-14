@@ -46,7 +46,7 @@ const App = () => {
         query(rowData)
           .groupBy('ResponsibleEmployee.Employee_Full_Name')
           .toArray()
-          .length
+          .length,
       );
       setAvgDuration(Math.round(commonDuration / rowData.length) || 0);
     });

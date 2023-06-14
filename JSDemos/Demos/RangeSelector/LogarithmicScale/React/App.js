@@ -12,7 +12,7 @@ const App = () => {
 
   const updateRange = (data) => {
     setRange(data.value);
-  }
+  };
 
   return (
     <React.Fragment>
@@ -50,6 +50,6 @@ const App = () => {
       </RangeSelector>
     </React.Fragment>
   );
-}
+};
 
 export default App;

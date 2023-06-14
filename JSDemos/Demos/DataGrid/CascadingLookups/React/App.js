@@ -7,12 +7,10 @@ const App = () => {
   const [states] = useState(service.getStates());
   const [cities] = useState(service.getCities());
 
-  const getFilteredCities = (options) => {
-    return {
-      store: cities,
-      filter: options.data ? ['StateID', '=', options.data.StateID] : null,
-    };
-  };
+  const getFilteredCities = (options) => ({
+    store: cities,
+    filter: options.data ? ['StateID', '=', options.data.StateID] : null,
+  });
 
   const onEditorPreparing = (e) => {
     if (e.parentType === 'dataRow' && e.dataField === 'CityID') {

@@ -55,28 +55,24 @@ function App() {
     },
   };
 
-  const passwordComparison = () => {
-    return password;
-  }
+  const passwordComparison = () => password;
 
-  const checkComparison = () => {
-    return true;
-  }
+  const checkComparison = () => true;
 
   const onPasswordChanged = (e) => {
     setPassword(e.value);
     if (confirmPassword) {
       validatorInstance.validate();
     }
-  }
+  };
 
   const onConfirmPasswordChanged = (e) => {
     setConfirmPassword(e.value);
-  }
+  };
 
   const onInit = (e) => {
     validatorInstance = e.component;
-  }
+  };
 
   const onFormSubmit = (e) => {
     notify({
@@ -88,7 +84,7 @@ function App() {
     }, 'success', 3000);
 
     e.preventDefault();
-  }
+  };
 
   return (
     <form action="your-action" onSubmit={onFormSubmit}>

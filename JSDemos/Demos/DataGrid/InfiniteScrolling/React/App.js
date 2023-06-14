@@ -7,7 +7,7 @@ const dataSource = generateData(100000);
 const App = () => {
   const customizeColumns = (columns) => {
     columns[0].width = 70;
-  }
+  };
 
   return (
     <DataGrid
@@ -22,6 +22,6 @@ const App = () => {
       <LoadPanel enabled={false} />
     </DataGrid>
   );
-}
+};
 
 export default App;

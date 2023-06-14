@@ -112,7 +112,7 @@ export default function App() {
   }
 
   return (
-    <>
+    <React.Fragment>
       <PivotGrid
         allowSortingBySummary={true}
         allowSorting={true}
@@ -127,6 +127,6 @@ export default function App() {
         <FieldChooser enabled={false} />
         <Export enabled={true} />
       </PivotGrid>
-    </>
+    </React.Fragment>
   );
 }

@@ -16,11 +16,11 @@ function App() {
 
   const processRange = (e) => {
     setWorkingDaysCount(calculateWorkdays(e.value));
-  }
+  };
 
   const setBehavior = (data) => {
     setBehaviorMode(data.value);
-  }
+  };
 
   return (
     <div id="range-selector-demo">

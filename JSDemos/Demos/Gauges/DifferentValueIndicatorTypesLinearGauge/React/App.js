@@ -4,9 +4,7 @@ import {
 } from 'devextreme-react/linear-gauge';
 
 const App = () => {
-  const customizeText = ({ valueText }) => {
-    return `${valueText} %`;
-  }
+  const customizeText = ({ valueText }) => `${valueText} %`;
 
   return (
     <div>
@@ -117,6 +115,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

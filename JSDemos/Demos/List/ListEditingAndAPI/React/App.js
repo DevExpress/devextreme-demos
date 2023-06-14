@@ -12,11 +12,11 @@ const App = () => {
 
   const onAllowDeletionChange = (args) => {
     setAllowDeletion(args.value);
-  }
+  };
 
   const onItemDeleteModeChange = (args) => {
     setItemDeleteMode(args.value);
-  }
+  };
 
   return (
     <React.Fragment>
@@ -50,6 +50,6 @@ const App = () => {
       </div>
     </React.Fragment>
   );
-}
+};
 
 export default App;

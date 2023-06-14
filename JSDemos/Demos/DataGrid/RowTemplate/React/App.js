@@ -24,6 +24,6 @@ const App = () => {
       <Column dataField="HireDate" dataType="date" />
     </DataGrid>
   );
-}
+};
 
 export default App;

@@ -9,14 +9,12 @@ const typeGroups = ['typeId'];
 const priorityGroups = ['priorityId'];
 
 const App = () => {
-  const renderDateCell = (cellData) => {
-    return (
-      <React.Fragment>
-        <div className="name">{dayOfWeekNames[cellData.date.getDay()]}</div>
-        <div className="number">{cellData.date.getDate()}</div>
-      </React.Fragment>
-    );
-  }
+  const renderDateCell = (cellData) => (
+    <React.Fragment>
+      <div className="name">{dayOfWeekNames[cellData.date.getDay()]}</div>
+      <div className="number">{cellData.date.getDate()}</div>
+    </React.Fragment>
+  );
 
   return (
     <Scheduler
@@ -61,6 +59,6 @@ const App = () => {
       />
     </Scheduler>
   );
-}
+};
 
 export default App;

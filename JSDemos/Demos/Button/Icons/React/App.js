@@ -3,26 +3,25 @@ import { Button } from 'devextreme-react/button';
 import notify from 'devextreme/ui/notify';
 
 const App = () => {
-
   const weatherClick = () => {
     notify('The Weather button was clicked');
-  }
+  };
 
   const doneClick = () => {
     notify('The Done button was clicked');
-  }
+  };
 
   const sendClick = () => {
     notify('The Send button was clicked');
-  }
+  };
 
   const plusClick = () => {
     notify('The button was clicked');
-  }
+  };
 
   const backClick = () => {
     notify('The button was clicked');
-  }
+  };
 
   return (
     <div>
@@ -105,6 +104,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

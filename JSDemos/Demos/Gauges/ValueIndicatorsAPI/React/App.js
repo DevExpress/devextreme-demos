@@ -25,9 +25,7 @@ function App() {
     updateValues();
   }, []);
 
-  const customizeText = ({ valueText }) => {
-    return `${valueText} kV`;
-  };
+  const customizeText = ({ valueText }) => `${valueText} kV`;
 
   return (
     <div id="gauge-demo">

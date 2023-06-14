@@ -23,14 +23,14 @@ const App = () => {
       sortingMode: e.value,
       showSortIndexesDisabled: e.value !== 'multiple',
     });
-  }
+  };
 
   const onShowSortIndexesChanged = (e) => {
     setGanttConfig({
       ...ganttConfig,
       showSortIndexes: e.value,
     });
-  }
+  };
 
   return (
     <div id="form-demo">
@@ -81,6 +81,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

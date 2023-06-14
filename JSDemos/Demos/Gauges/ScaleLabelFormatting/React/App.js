@@ -4,9 +4,7 @@ import {
 } from 'devextreme-react/circular-gauge';
 
 const App = () => {
-  const customizeText = ({ valueText }) => {
-    return `${valueText} %`;
-  }
+  const customizeText = ({ valueText }) => `${valueText} %`;
 
   return (
     <CircularGauge
@@ -27,6 +25,6 @@ const App = () => {
       </Title>
     </CircularGauge>
   );
-}
+};
 
 export default App;

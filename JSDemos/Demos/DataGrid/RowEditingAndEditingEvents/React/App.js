@@ -21,7 +21,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <DataGrid
         id="gridContainer"
         dataSource={employees}
@@ -65,7 +65,7 @@ const App = () => {
           ))}
         </ul>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

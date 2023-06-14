@@ -18,11 +18,11 @@ const App = () => {
 
   const onSelectTextOnEditStartChanged = (args) => {
     setSelectTextOnEditStart(args.value);
-  }
+  };
 
   const onStartEditActionChanged = (args) => {
     setStartEditAction(args.value);
-  }
+  };
 
   return (
     <div id="data-grid-demo">
@@ -69,6 +69,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

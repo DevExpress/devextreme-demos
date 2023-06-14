@@ -87,6 +87,6 @@ const App = () => {
       onAppointmentUpdating={onAppointmentUpdating}
     />
   );
-}
+};
 
 export default App;

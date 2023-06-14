@@ -14,9 +14,7 @@ const App = () => {
     setSubvalues([selectedItem.min, selectedItem.max]);
   };
 
-  const customizeText = ({ valueText }) => {
-    return `${valueText} °C`;
-  };
+  const customizeText = ({ valueText }) => `${valueText} °C`;
 
   return (
     <div id="gauge-demo">

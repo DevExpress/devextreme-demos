@@ -15,14 +15,12 @@ import Chart, {
 import { dataSource } from './data.js';
 
 const App = () => {
-  const customizeTooltip = (arg) => {
-    return {
-      text: `Open: $${arg.openValue}<br/>
+  const customizeTooltip = (arg) => ({
+    text: `Open: $${arg.openValue}<br/>
 Close: $${arg.closeValue}<br/>
 High: $${arg.highValue}<br/>
 Low: $${arg.lowValue}<br/>`,
-    };
-  };
+  });
 
   return (
     <Chart id="chart" title="Stock Price" dataSource={dataSource}>

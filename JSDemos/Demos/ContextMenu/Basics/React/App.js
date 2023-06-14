@@ -7,22 +7,20 @@ const itemClick = (e) => {
   if (!e.itemData.items) {
     notify(`The "${e.itemData.text}" item was clicked`, 'success', 1500);
   }
-}
+};
 
-const App = () => {
-  return (
-    <React.Fragment>
-      <div className="label">
+const App = () => (
+  <React.Fragment>
+    <div className="label">
         Right click the image to show available actions:
-      </div>
-      <img id="image" src="../../../../images/products/7.png" />
-      <ContextMenu
-        dataSource={items}
-        width={200}
-        target="#image"
-        onItemClick={itemClick} />
-    </React.Fragment>
-  );
-}
+    </div>
+    <img id="image" src="../../../../images/products/7.png" />
+    <ContextMenu
+      dataSource={items}
+      width={200}
+      target="#image"
+      onItemClick={itemClick} />
+  </React.Fragment>
+);
 
 export default App;

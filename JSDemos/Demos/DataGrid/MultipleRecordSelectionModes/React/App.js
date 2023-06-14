@@ -15,7 +15,7 @@ const selectAllModes = ['allPages', 'page'];
 function App() {
   const [allMode, setAllMode] = useState('allPages');
   const [checkBoxesMode, setCheckBoxesMode] = useState(
-    themes.current().startsWith('material') ? 'always' : 'onClick'
+    themes.current().startsWith('material') ? 'always' : 'onClick',
   );
 
   const onCheckBoxesModeChanged = ({ value }) => {

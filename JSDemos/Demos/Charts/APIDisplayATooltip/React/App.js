@@ -25,11 +25,9 @@ function App() {
     setSelectedRegion(point?.argument);
   };
 
-  const customizeTooltip = (pointInfo) => {
-    return {
-      text: `${pointInfo.argumentText}<br/>${pointInfo.valueText}`,
-    };
-  };
+  const customizeTooltip = (pointInfo) => ({
+    text: `${pointInfo.argumentText}<br/>${pointInfo.valueText}`,
+  });
 
   return (
     <React.Fragment>

@@ -5,10 +5,9 @@ import {
 import { grossProductData } from './data.js';
 
 const App = () => {
-
   const onPointClick = (e) => {
     e.target.select();
-  }
+  };
 
   return (
     <Chart id="chart"
@@ -43,6 +42,6 @@ const App = () => {
       <Export enabled={true} />
     </Chart>
   );
-}
+};
 
 export default App;

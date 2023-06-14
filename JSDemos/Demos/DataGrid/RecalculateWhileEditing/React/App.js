@@ -41,6 +41,6 @@ const App = () => {
       </DataGrid>
     </React.Fragment>
   );
-}
+};
 
 export default App;

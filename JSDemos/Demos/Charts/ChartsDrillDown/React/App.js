@@ -11,28 +11,26 @@ const App = () => {
   const [isFirstLevel, setIsFirstLevel] = useState(true);
   const [data, setData] = useState(service.filterData(''));
 
-  const customizePoint = () => {
-    return {
-      color: colors[Number(isFirstLevel)],
-      hoverStyle: !isFirstLevel ? {
-        hatching: 'none',
-      } : {},
-    };
-  }
+  const customizePoint = () => ({
+    color: colors[Number(isFirstLevel)],
+    hoverStyle: !isFirstLevel ? {
+      hatching: 'none',
+    } : {},
+  });
 
   const onPointClick = (e) => {
     if (isFirstLevel) {
       setIsFirstLevel(false);
       setData(service.filterData(e.target.originalArgument));
     }
-  }
+  };
 
   const onButtonClick = () => {
     if (!isFirstLevel) {
       setIsFirstLevel(true);
       setData(service.filterData(''));
     }
-  }
+  };
 
   return (
     <div>
@@ -56,6 +54,6 @@ const App = () => {
       />
     </div>
   );
-}
+};
 
 export default App;

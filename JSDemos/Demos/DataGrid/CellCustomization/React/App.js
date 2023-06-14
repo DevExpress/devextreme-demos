@@ -28,6 +28,6 @@ const App = () => {
       <Column caption="Low" cellRender={DiffCell} />
     </DataGrid>
   );
-}
+};
 
 export default App;

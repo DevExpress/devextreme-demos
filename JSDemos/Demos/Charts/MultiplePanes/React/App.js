@@ -13,13 +13,9 @@ import Chart, {
 import { weatherData } from './data.js';
 
 const App = () => {
-  const temperatureCustomizeText = ({ valueText }) => {
-    return `${valueText} °C`;
-  }
+  const temperatureCustomizeText = ({ valueText }) => `${valueText} °C`;
 
-  const precipitationCustomizeText = ({ valueText }) => {
-    return `${valueText} mm`;
-  }
+  const precipitationCustomizeText = ({ valueText }) => `${valueText} mm`;
 
   return (
     <Chart
@@ -77,6 +73,6 @@ const App = () => {
       <Export enabled={true} />
     </Chart>
   );
-}
+};
 
 export default App;

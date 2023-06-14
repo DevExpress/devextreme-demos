@@ -110,7 +110,7 @@ export default function App() {
   }, []);
 
   return (
-    <>
+    <React.Fragment>
       <div className="long-title">
         <h3>Sales Amount by Region</h3>
       </div>
@@ -154,6 +154,6 @@ export default function App() {
             text="Export Filter Field Headers" />
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 }

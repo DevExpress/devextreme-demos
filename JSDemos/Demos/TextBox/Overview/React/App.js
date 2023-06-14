@@ -13,7 +13,7 @@ const App = () => {
 
   const valueChanged = (data) => {
     setEmailValue(`${data.value.replace(/\s/g, '').toLowerCase()}@corp.com`);
-  }
+  };
 
   return (
     <div>
@@ -90,6 +90,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

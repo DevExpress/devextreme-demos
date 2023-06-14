@@ -20,7 +20,7 @@ const App = () => {
 
   const updateVisualRange = (e) => {
     setVisualRange(e.value);
-  }
+  };
 
   return (
     <React.Fragment>
@@ -55,6 +55,6 @@ const App = () => {
       </RangeSelector>
     </React.Fragment>
   );
-}
+};
 
 export default App;

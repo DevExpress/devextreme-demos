@@ -43,7 +43,7 @@ const App = () => {
 
   const getDataGridInstance = (ref) => {
     dataGridRef.current = ref.instance;
-  }
+  };
 
   const onCellClick = (e) => {
     if (e.area === 'data') {
@@ -55,15 +55,15 @@ const App = () => {
       setDrillDownDataSource(pivotGridDataSource.createDrillDownDataSource(e.cell));
       setPopupVisible(true);
     }
-  }
+  };
 
   const onHiding = () => {
     setPopupVisible(false);
-  }
+  };
 
   const onShown = () => {
     dataGridRef.current.updateDimensions();
-  }
+  };
 
   return (
     <React.Fragment>
@@ -101,6 +101,6 @@ const App = () => {
       </Popup>
     </React.Fragment>
   );
-}
+};
 
 export default App;

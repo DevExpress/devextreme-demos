@@ -50,7 +50,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <div className="title">Edit Profile</div>
       <div className="editors">
         <div className="editors-container">
@@ -201,7 +201,7 @@ const App = () => {
           />
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

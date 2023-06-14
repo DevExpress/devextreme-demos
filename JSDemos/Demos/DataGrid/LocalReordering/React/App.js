@@ -18,10 +18,10 @@ const App = () => {
     const newTasks = [...data];
 
     const toIndex = newTasks.findIndex(
-      (item) => item.ID === visibleRows[e.toIndex].data.ID
+      (item) => item.ID === visibleRows[e.toIndex].data.ID,
     );
     const fromIndex = newTasks.findIndex(
-      (item) => item.ID === e.itemData.ID
+      (item) => item.ID === e.itemData.ID,
     );
 
     newTasks.splice(fromIndex, 1);
@@ -35,7 +35,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <DataGrid
         height={440}
         dataSource={data}
@@ -69,7 +69,7 @@ const App = () => {
           />
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

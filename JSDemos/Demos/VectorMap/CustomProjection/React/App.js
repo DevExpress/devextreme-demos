@@ -32,23 +32,21 @@ const customProjection = {
   },
 };
 
-const App = () => {
-  return (
-    <VectorMap
-      id="vector-map"
-      projection={customProjection}
-      title="Wagner VI projection"
-    >
-      <Layer
-        dataSource={mapsData.world} />
-      <Layer
-        dataSource={coordLinesData}
-        color="#aaa"
-        borderWidth={1}
-        hoverEanbled={false} />
-      <Export enabled={true}></Export>
-    </VectorMap>
-  );
-};
+const App = () => (
+  <VectorMap
+    id="vector-map"
+    projection={customProjection}
+    title="Wagner VI projection"
+  >
+    <Layer
+      dataSource={mapsData.world} />
+    <Layer
+      dataSource={coordLinesData}
+      color="#aaa"
+      borderWidth={1}
+      hoverEanbled={false} />
+    <Export enabled={true}></Export>
+  </VectorMap>
+);
 
 export default App;

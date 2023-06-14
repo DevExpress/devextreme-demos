@@ -43,7 +43,7 @@ const App = () => {
     const text = (options.value || []).map((element) => options.column.lookup.calculateCellValue(element)).join(', ');
     container.textContent = text || noBreakSpace;
     container.title = text;
-  }
+  };
 
   const calculateFilterExpression = (filterValue, selectedFilterOperation, target) => {
     if (target === 'search' && typeof (filterValue) === 'string') {
@@ -52,11 +52,11 @@ const App = () => {
     return function(data) {
       return (data.AssignedEmployee || []).indexOf(filterValue) !== -1;
     };
-  }
+  };
 
   const onValueChanged = (cell, e) => {
     cell.setValue(e.value);
-  }
+  };
 
   const statusEditorRender = (cell) => {
     const onValueChanged = onValueChanged.bind(this, cell);
@@ -67,7 +67,7 @@ const App = () => {
       inputAttr={statusLabel}
       itemRender={itemRender}
     />;
-  }
+  };
 
   const itemRender = (data) => {
     const imageSource = `images/icons/status-${data.id}.svg`;
@@ -78,11 +78,11 @@ const App = () => {
       </div>;
     }
     return <span>(All)</span>;
-  }
+  };
 
   const onRowInserted = (e) => {
     e.component.navigateToRow(e.key);
-  }
+  };
 
   return (
     <div>
@@ -145,6 +145,6 @@ const App = () => {
       </DataGrid>
     </div>
   );
-}
+};
 
 export default App;

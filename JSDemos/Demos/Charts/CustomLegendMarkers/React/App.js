@@ -8,7 +8,7 @@ import markerTemplate from './MarkerTemplate.js';
 const App = () => {
   const onLegendClick = (e) => {
     e.target.isVisible() ? e.target.hide() : e.target.show();
-  }
+  };
 
   return (
     <Chart id="chart"
@@ -35,6 +35,6 @@ const App = () => {
       </Legend>
     </Chart>
   );
-}
+};
 
 export default App;

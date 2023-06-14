@@ -28,17 +28,13 @@ const App = () => {
   };
 
   const detailRender = (detail) => {
-    const getAmount = (order) => {
-      return order.UnitPrice * order.Quantity;
-    };
+    const getAmount = (order) => order.UnitPrice * order.Quantity;
 
-    const getDetailGridDataSource = (product) => {
-      return {
-        store: ordersStore,
-        reshapeOnPush: true,
-        filter: ['ProductID', '=', product.ProductID],
-      };
-    };
+    const getDetailGridDataSource = (product) => ({
+      store: ordersStore,
+      reshapeOnPush: true,
+      filter: ['ProductID', '=', product.ProductID],
+    });
 
     return (
       <DataGrid

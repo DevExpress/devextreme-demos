@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Scheduler, { Resource } from 'devextreme-react/scheduler';
 import RadioGroup from 'devextreme-react/radio-group';
-import { data, assignees, rooms, priorities, resourcesList } from './data.js';
+import {
+  data, assignees, rooms, priorities, resourcesList,
+} from './data.js';
 
 const currentDate = new Date(2021, 3, 27);
 const views = ['workWeek'];

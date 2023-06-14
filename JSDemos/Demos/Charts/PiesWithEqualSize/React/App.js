@@ -43,6 +43,6 @@ const App = () => {
       {pies}
     </div>
   );
-}
+};
 
 export default App;

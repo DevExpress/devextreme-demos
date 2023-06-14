@@ -20,6 +20,6 @@ const App = () => {
   return (
     <Diagram id="diagram" ref={diagramRef} autoZoomMode="fitWidth" />
   );
-}
+};
 
 export default App;

@@ -15,11 +15,9 @@ import {
 import { dataSource, annotationSources } from './data.js';
 
 const App = () => {
-  const customizeTooltip = (annotation) => {
-    return {
-      html: `<div class='tooltip'>${annotation.description}</div>`,
-    };
-  }
+  const customizeTooltip = (annotation) => ({
+    html: `<div class='tooltip'>${annotation.description}</div>`,
+  });
 
   return (
     <Chart
@@ -50,6 +48,6 @@ const App = () => {
       }
     </Chart>
   );
-}
+};
 
 export default App;

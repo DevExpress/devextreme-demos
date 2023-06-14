@@ -69,7 +69,7 @@ const App = () => {
           </div>
           <div className="option">
             <span>Style </span>
-            <<SelectBox
+            <SelectBox
               items={lineStyles}
               inputAttr={lineStyleLabel}
               value={lineStyleValue}

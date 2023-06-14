@@ -10,9 +10,7 @@ import PieChart, {
 import { dataSource } from './data.js';
 
 const App = () => {
-  const formatLabel = (arg) => {
-    return `${arg.argumentText}: ${arg.valueText}%`;
-  };
+  const formatLabel = (arg) => `${arg.argumentText}: ${arg.valueText}%`;
 
   return (
     <PieChart

@@ -22,17 +22,15 @@ const App = () => {
     setSelectedValue(e.value);
   };
 
-  const headerCellRender = () => {
-    return (
-      <div>
-        {rtlEnabled ? (
-          <div>المساحة (كم<sup>2</sup>)</div>
-        ) : (
-          <div>Area (km<sup>2</sup>)</div>
-        )}
-      </div>
-    );
-  };
+  const headerCellRender = () => (
+    <div>
+      {rtlEnabled ? (
+        <div>المساحة (كم<sup>2</sup>)</div>
+      ) : (
+        <div>Area (km<sup>2</sup>)</div>
+      )}
+    </div>
+  );
 
   return (
     <React.Fragment>

@@ -77,7 +77,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <div className="desc-container">
         Right-click (or&nbsp;touch and hold) the &quot;Relative Sales&quot; field
         and select an&nbsp;item from the appeared context menu to&nbsp;change the
@@ -99,7 +99,7 @@ const App = () => {
         />
         <FieldChooser enabled={false} />
       </PivotGrid>
-    </>
+    </React.Fragment>
   );
 };
 

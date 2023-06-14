@@ -28,7 +28,7 @@ const App = () => {
     setDisplayExpr(isRTL ? 'nameAr' : 'nameEn');
     setRtlEnabled(isRTL);
     setTextValue(isRTL ? 'نص' : 'text');
-  }
+  };
 
   return (
     <div>
@@ -141,6 +141,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

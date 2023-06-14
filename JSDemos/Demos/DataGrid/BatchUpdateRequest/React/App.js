@@ -68,6 +68,6 @@ const App = () => {
       <Column dataField="Freight"></Column>
     </DataGrid>
   );
-}
+};
 
 export default App;

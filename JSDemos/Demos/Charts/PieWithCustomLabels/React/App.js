@@ -10,9 +10,7 @@ import PieChart, {
 import { dataSource } from './data.js';
 
 const App = () => {
-  const customizeText = (arg) => {
-    return `${arg.valueText} (${arg.percentText})`;
-  }
+  const customizeText = (arg) => `${arg.valueText} (${arg.percentText})`;
 
   return (
     <PieChart id="pie"
@@ -38,6 +36,6 @@ const App = () => {
       </Series>
     </PieChart>
   );
-}
+};
 
 export default App;

@@ -4,9 +4,7 @@ import RangeSelector, {
 } from 'devextreme-react/range-selector';
 
 const App = () => {
-  const formatText = ({ valueText }) => {
-    return `${valueText} mg/L`;
-  }
+  const formatText = ({ valueText }) => `${valueText} mg/L`;
 
   return (
     <RangeSelector
@@ -29,6 +27,6 @@ const App = () => {
       <Behavior snapToTicks={false} />
     </RangeSelector>
   );
-}
+};
 
 export default App;

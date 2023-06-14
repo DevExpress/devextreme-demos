@@ -3,11 +3,9 @@ import Bullet, { Tooltip } from 'devextreme-react/bullet';
 import { service } from './data.js';
 
 const App = () => {
-  const customizeTooltip = (arg) => {
-    return {
-      text: `Current t&#176: ${arg.value} &#176C<br>Average t&#176:${arg.target}&#176C`,
-    };
-  };
+  const customizeTooltip = (arg) => ({
+    text: `Current t&#176: ${arg.value} &#176C<br>Average t&#176:${arg.target}&#176C`,
+  });
 
   return (
     <div id="chart-demo">

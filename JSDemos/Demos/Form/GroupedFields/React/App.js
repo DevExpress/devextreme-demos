@@ -13,7 +13,7 @@ const App = () => {
   const [employee] = useState(service.getEmployee());
 
   return (
-    <>
+    <React.Fragment>
       <div className="long-title">
         <h3>Personal details</h3>
       </div>
@@ -52,7 +52,7 @@ const App = () => {
           </GroupItem>
         </Form>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

@@ -6,9 +6,7 @@ import {
 const values = [-21.3, 14.8, -30.9, 45.2];
 
 function App() {
-  const customizeText = ({ valueText }) => {
-    return `${valueText} mm`;
-  }
+  const customizeText = ({ valueText }) => `${valueText} mm`;
 
   return (
     <BarGauge

@@ -17,7 +17,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <div id="longtabs">
         <div className="caption">Tabs</div>
         <Tabs dataSource={longtabs} />
@@ -60,7 +60,7 @@ const App = () => {
           </div>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

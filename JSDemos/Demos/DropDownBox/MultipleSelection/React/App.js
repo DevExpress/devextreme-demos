@@ -20,67 +20,58 @@ const App = () => {
   const treeDataSource = makeAsyncDataSource('treeProducts.json');
   const gridDataSource = makeAsyncDataSource('customers.json');
 
-  const makeAsyncDataSource = (jsonFile) => {
-    return new CustomStore({
-      loadMode: 'raw',
-      key: 'ID',
-      load() {
-        return fetch(`../../../../data/${jsonFile}`).then((response) =>
-          response.json()
-        );
-      },
-    });
-  };
+  const makeAsyncDataSource = (jsonFile) => new CustomStore({
+    loadMode: 'raw',
+    key: 'ID',
+    load() {
+      return fetch(`../../../../data/${jsonFile}`).then((response) => response.json());
+    },
+  });
 
-  const treeViewRender = () => {
-    return (
-      <TreeView
-        dataSource={treeDataSource}
-        ref={treeViewRef}
-        dataStructure="plain"
-        keyExpr="ID"
-        parentIdExpr="categoryId"
-        selectionMode="multiple"
-        showCheckBoxesMode="normal"
-        selectNodesRecursive={false}
-        displayExpr="name"
-        selectByClick={true}
-        onContentReady={syncTreeViewSelection}
-        onItemSelectionChanged={treeViewItemSelectionChanged}
-      />
-    );
-  };
+  const treeViewRender = () => (
+    <TreeView
+      dataSource={treeDataSource}
+      ref={treeViewRef}
+      dataStructure="plain"
+      keyExpr="ID"
+      parentIdExpr="categoryId"
+      selectionMode="multiple"
+      showCheckBoxesMode="normal"
+      selectNodesRecursive={false}
+      displayExpr="name"
+      selectByClick={true}
+      onContentReady={syncTreeViewSelection}
+      onItemSelectionChanged={treeViewItemSelectionChanged}
+    />
+  );
 
-  const dataGridRender = () => {
-    return (
-      <DataGrid
-        height={345}
-        dataSource={gridDataSource}
-        columns={gridColumns}
-        hoverStateEnabled={true}
-        selectedRowKeys={gridBoxValue}
-        onSelectionChanged={dataGridOnSelectionChanged}
-      >
-        <Selection mode="multiple" />
-        <Scrolling mode="virtual" />
-        <Paging enabled={true} pageSize={10} />
-        <FilterRow visible={true} />
-      </DataGrid>
-    );
-  };
+  const dataGridRender = () => (
+    <DataGrid
+      height={345}
+      dataSource={gridDataSource}
+      columns={gridColumns}
+      hoverStateEnabled={true}
+      selectedRowKeys={gridBoxValue}
+      onSelectionChanged={dataGridOnSelectionChanged}
+    >
+      <Selection mode="multiple" />
+      <Scrolling mode="virtual" />
+      <Paging enabled={true} pageSize={10} />
+      <FilterRow visible={true} />
+    </DataGrid>
+  );
 
   const syncTreeViewSelection = (e) => {
-    const treeView =
-      (e.component.selectItem && e.component) ||
-      (treeViewRef.current && treeViewRef.current.instance);
+    const treeView = (e.component.selectItem && e.component)
+      || (treeViewRef.current && treeViewRef.current.instance);
 
     if (treeView) {
       if (e.value === null) {
         treeView.unselectAll();
       } else {
         const values = e.value || treeBoxValue;
-        values &&
-          values.forEach((value) => {
+        values
+          && values.forEach((value) => {
             treeView.selectItem(value);
           });
       }

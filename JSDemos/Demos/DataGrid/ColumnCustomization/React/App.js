@@ -5,9 +5,7 @@ import service from './data.js';
 const App = () => {
   const [employees] = useState(service.getEmployees());
 
-  const calculateCellValue = (data) => {
-    return [data.Title, data.FirstName, data.LastName].join(' ');
-  }
+  const calculateCellValue = (data) => [data.Title, data.FirstName, data.LastName].join(' ');
 
   return (
     <DataGrid
@@ -55,6 +53,6 @@ const App = () => {
       <Column dataField="Email" />
     </DataGrid>
   );
-}
+};
 
 export default App;

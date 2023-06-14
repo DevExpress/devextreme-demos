@@ -14,9 +14,7 @@ const App = () => {
     setSubvalues(value.secondary);
   };
 
-  const customizeText = ({ valueText }) => {
-    return `${valueText} kW`;
-  };
+  const customizeText = ({ valueText }) => `${valueText} kW`;
 
   const customizeTooltip = (arg) => {
     let result = `${arg.valueText} kW`;

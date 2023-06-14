@@ -23,19 +23,13 @@ const App = () => {
     return `${arg.start}% to ${arg.end}%`;
   };
 
-  const customizeTooltip = (arg) => {
-    return {
-      text: arg.attribute('text'),
-    };
-  };
+  const customizeTooltip = (arg) => ({
+    text: arg.attribute('text'),
+  });
 
-  const customizeMarkers = (arg) => {
-    return ['< 8000K', '8000K to 10000K', '> 10000K'][arg.index];
-  };
+  const customizeMarkers = (arg) => ['< 8000K', '8000K to 10000K', '> 10000K'][arg.index];
 
-  const customizeItems = (items) => {
-    return items.reverse();
-  };
+  const customizeItems = (items) => items.reverse();
 
   const customizeLayer = (elements) => {
     elements.forEach((element) => {

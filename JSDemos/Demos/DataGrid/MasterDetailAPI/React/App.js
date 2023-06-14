@@ -11,13 +11,13 @@ function App() {
 
   const contentReady = (e) => {
     if (!e.component.getSelectedRowKeys().length) { e.component.selectRowsByIndexes(0); }
-  }
+  };
 
   const selectionChanged = (e) => {
     e.component.collapseAll(-1);
     setSelectedRow(e.currentSelectedRowKeys[0]);
     e.component.expandRow(selectedRow);
-  }
+  };
 
   const renderDetail = (props) => {
     const { Picture, Notes } = props.data;
@@ -27,7 +27,7 @@ function App() {
         <p className="employee-notes">{Notes}</p>
       </div>
     );
-  }
+  };
 
   return (
     <DataGrid

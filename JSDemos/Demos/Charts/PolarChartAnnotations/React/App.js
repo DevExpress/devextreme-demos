@@ -106,6 +106,6 @@ const App = () => {
       />
     </PolarChart>
   );
-}
+};
 
 export default App;

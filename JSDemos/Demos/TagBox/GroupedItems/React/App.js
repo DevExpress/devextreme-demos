@@ -18,7 +18,7 @@ const App = () => {
       store: productsData,
       key: 'ID',
       group: 'Category',
-    })
+    }),
   );
 
   return (

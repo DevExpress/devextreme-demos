@@ -40,45 +40,43 @@ const store = new CustomStore({
 
 const allowedPageSizes = [8, 12, 20];
 
-const App = () => {
-  return (
-    <DataGrid
-      dataSource={store}
-      showBorders={true}
-      remoteOperations={true}
-    >
-      <Column
-        dataField="OrderNumber"
-        dataType="number"
-      />
-      <Column
-        dataField="OrderDate"
-        dataType="date"
-      />
-      <Column
-        dataField="StoreCity"
-        dataType="string"
-      />
-      <Column
-        dataField="StoreState"
-        dataType="string"
-      />
-      <Column
-        dataField="Employee"
-        dataType="string"
-      />
-      <Column
-        dataField="SaleAmount"
-        dataType="number"
-        format="currency"
-      />
-      <Paging defaultPageSize={12} />
-      <Pager
-        showPageSizeSelector={true}
-        allowedPageSizes={allowedPageSizes}
-      />
-    </DataGrid>
-  );
-}
+const App = () => (
+  <DataGrid
+    dataSource={store}
+    showBorders={true}
+    remoteOperations={true}
+  >
+    <Column
+      dataField="OrderNumber"
+      dataType="number"
+    />
+    <Column
+      dataField="OrderDate"
+      dataType="date"
+    />
+    <Column
+      dataField="StoreCity"
+      dataType="string"
+    />
+    <Column
+      dataField="StoreState"
+      dataType="string"
+    />
+    <Column
+      dataField="Employee"
+      dataType="string"
+    />
+    <Column
+      dataField="SaleAmount"
+      dataType="number"
+      format="currency"
+    />
+    <Paging defaultPageSize={12} />
+    <Pager
+      showPageSizeSelector={true}
+      allowedPageSizes={allowedPageSizes}
+    />
+  </DataGrid>
+);
 
 export default App;

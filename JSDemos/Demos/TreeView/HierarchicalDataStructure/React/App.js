@@ -7,7 +7,7 @@ const App = () => {
 
   const selectItem = (e) => {
     setCurrentItem({ ...e.itemData });
-  }
+  };
 
   return (
     <div className="form">
@@ -24,6 +24,6 @@ const App = () => {
       }
     </div>
   );
-}
+};
 
 export default App;

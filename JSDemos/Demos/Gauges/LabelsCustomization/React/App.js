@@ -11,9 +11,7 @@ const format = {
 };
 
 const App = () => {
-  const customizeText = ({ valueText }) => {
-    return `${valueText} %`;
-  }
+  const customizeText = ({ valueText }) => `${valueText} %`;
 
   return (
     <BarGauge
@@ -29,6 +27,6 @@ const App = () => {
       </Title>
     </BarGauge>
   );
-}
+};
 
 export default App;

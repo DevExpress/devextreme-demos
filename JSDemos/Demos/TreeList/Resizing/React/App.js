@@ -11,7 +11,7 @@ const App = () => {
 
   const onResizingModeChanged = (e) => {
     setColumnResizingMode(e.value);
-  }
+  };
 
   return (
     <div>
@@ -49,6 +49,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

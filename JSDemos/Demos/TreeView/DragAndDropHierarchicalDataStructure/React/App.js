@@ -57,13 +57,9 @@ const App = () => {
     toTreeView.scrollToItem(toTopVisibleNode);
   };
 
-  const getTreeView = (driveName) => {
-    return driveName === 'driveC' ? treeViewDriveCRef.current.instance : treeViewDriveDRef.current.instance;
-  };
+  const getTreeView = (driveName) => (driveName === 'driveC' ? treeViewDriveCRef.current.instance : treeViewDriveDRef.current.instance);
 
-  const getStateFieldName = (driveName) => {
-    return driveName === 'driveC' ? 'itemsDriveC' : 'itemsDriveD';
-  };
+  const getStateFieldName = (driveName) => (driveName === 'driveC' ? 'itemsDriveC' : 'itemsDriveD');
 
   const calculateToIndex = (e) => {
     if (e.fromComponent !== e.toComponent || e.dropInsideItem) {
@@ -110,9 +106,7 @@ const App = () => {
     }
   };
 
-  const getNodeContainingArray = (node, rootArray) => {
-    return node === null || node.parent === null ? rootArray : node.parent.itemData.items;
-  };
+  const getNodeContainingArray = (node, rootArray) => (node === null || node.parent === null ? rootArray : node.parent.itemData.items);
 
   const isChildNode = (parentNode, childNode) => {
     let { parent } = childNode;

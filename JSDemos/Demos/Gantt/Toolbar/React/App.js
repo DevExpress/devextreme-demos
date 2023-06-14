@@ -24,14 +24,14 @@ const App = () => {
       ...ganttConfig,
       popupVisible: true,
     });
-  }
+  };
 
   const onHiding = () => {
     setGanttConfig({
       ...ganttConfig,
       popupVisible: false,
     });
-  }
+  };
 
   return (
     <React.Fragment>
@@ -92,6 +92,6 @@ const App = () => {
       </Popup>
     </React.Fragment>
   );
-}
+};
 
 export default App;

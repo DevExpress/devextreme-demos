@@ -13,14 +13,13 @@ import Chart, {
 import { versionSources, statisticsData } from './data.js';
 
 const App = () => {
-
   const onSeriesClick = ({ target: series }) => {
     if (series.isSelected()) {
       series.clearSelection();
     } else {
       series.select();
     }
-  }
+  };
 
   return (
     <Chart
@@ -54,6 +53,6 @@ const App = () => {
       <Export enabled={true} />
     </Chart>
   );
-}
+};
 
 export default App;

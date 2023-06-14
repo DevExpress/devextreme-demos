@@ -96,18 +96,14 @@ const App = () => {
     e.preventDefault();
   };
 
-  const passwordComparison = () => {
-    return customer.Password;
-  };
+  const passwordComparison = () => customer.Password;
 
   const changePasswordMode = (name) => {
     const editor = formInstance.current.getEditor(name);
     editor.option('mode', editor.option('mode') === 'text' ? 'password' : 'text');
   };
 
-  const checkComparison = () => {
-    return true;
-  };
+  const checkComparison = () => true;
 
   const onInitialized = (e) => {
     formInstance.current = e.component;

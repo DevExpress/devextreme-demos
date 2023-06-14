@@ -5,17 +5,15 @@ import { data } from './data.js';
 const currentDate = new Date(2021, 2, 28);
 const views = ['week', 'month'];
 
-const App = () => {
-  return (
-    <Scheduler
-      timeZone="America/Los_Angeles"
-      dataSource={data}
-      views={views}
-      defaultCurrentView="week"
-      defaultCurrentDate={currentDate}
-      height={600}
-      startDayHour={9} />
-  );
-}
+const App = () => (
+  <Scheduler
+    timeZone="America/Los_Angeles"
+    dataSource={data}
+    views={views}
+    defaultCurrentView="week"
+    defaultCurrentDate={currentDate}
+    height={600}
+    startDayHour={9} />
+);
 
 export default App;

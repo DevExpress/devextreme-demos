@@ -51,17 +51,17 @@ const App = () => {
         workbook.xlsx.writeBuffer().then((buffer) => {
           saveAs(
             new Blob([buffer], { type: 'application/octet-stream' }),
-            'Sales.xlsx'
+            'Sales.xlsx',
           );
         });
       });
       e.cancel = true;
     },
-    [saveAs]
+    [saveAs],
   );
 
   return (
-    <>
+    <React.Fragment>
       <PivotGrid
         dataSource={dataSource}
         height={440}
@@ -72,7 +72,7 @@ const App = () => {
         <FieldChooser enabled={false} />
         <Export enabled={true} />
       </PivotGrid>
-    </>
+    </React.Fragment>
   );
 };
 

@@ -30,11 +30,9 @@ const App = () => {
     window.dataGrid = dataGridRef.current;
   }, []);
 
-  const getGroupCount = (groupField) => {
-    return query(orders)
-      .groupBy(groupField)
-      .toArray().length;
-  }
+  const getGroupCount = (groupField) => query(orders)
+    .groupBy(groupField)
+    .toArray().length;
 
   const groupChanged = (e) => {
     const grouping = e.value;
@@ -42,15 +40,15 @@ const App = () => {
     dataGridRef.current.instance.columnOption(grouping, 'groupIndex', 0);
     setTotalCount(getGroupCount(grouping));
     setGrouping(grouping);
-  }
+  };
 
   const collapseAllClick = () => {
     setExpanded(!expanded);
-  }
+  };
 
   const refreshDataGrid = () => {
     dataGridRef.current.instance.refresh();
-  }
+  };
 
   return (
     <DataGrid id="gridContainer"
@@ -101,6 +99,6 @@ const App = () => {
       </Toolbar>
     </DataGrid>
   );
-}
+};
 
 export default App;

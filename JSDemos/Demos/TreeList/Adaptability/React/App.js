@@ -27,6 +27,6 @@ const App = () => {
       <ColumnChooser enabled={true} mode="select" />
     </TreeList>
   );
-}
+};
 
 export default App;

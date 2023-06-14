@@ -6,19 +6,13 @@ import {
 const values = [121.4, 135.4, 115.9, 141.1, 127.5];
 
 const App = () => {
-  const customizeTooltip = (arg) => {
-    return {
-      text: getText(arg, arg.valueText),
-    };
-  }
+  const customizeTooltip = (arg) => ({
+    text: getText(arg, arg.valueText),
+  });
 
-  const customizeText = (arg) => {
-    return getText(arg.item, arg.text);
-  }
+  const customizeText = (arg) => getText(arg.item, arg.text);
 
-  const getText = (item, text) => {
-    return `Racer ${(item.index + 1)} - ${text} km/h`;
-  }
+  const getText = (item, text) => `Racer ${(item.index + 1)} - ${text} km/h`;
 
   return (
     <BarGauge
@@ -36,6 +30,6 @@ const App = () => {
       <Legend visible={true} customizeText={customizeText} verticalAlignment="bottom" horizontalAlignment="center" />
     </BarGauge>
   );
-}
+};
 
 export default App;

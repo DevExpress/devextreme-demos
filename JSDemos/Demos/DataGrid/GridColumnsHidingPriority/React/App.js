@@ -26,6 +26,6 @@ const App = () => {
       </DataGrid>
     </div>
   );
-}
+};
 
 export default App;

@@ -15,23 +15,19 @@ const App = () => {
   const [currentEmployee, setCurrentEmployee] = useState({});
   const [popupVisible, setPopupVisible] = useState(false);
 
-  const itemTypeExpr = (obj) => {
-    return `employee${obj.ID}`;
-  }
+  const itemTypeExpr = (obj) => `employee${obj.ID}`;
 
-  const customShapeTemplate = (item) => {
-    return CustomShapeTemplate(item.dataItem, () => { showInfo(item.dataItem); });
-  }
+  const customShapeTemplate = (item) => CustomShapeTemplate(item.dataItem, () => { showInfo(item.dataItem); });
 
   const showInfo = (employee) => {
     setCurrentEmployee(employee);
     setPopupVisible(true);
-  }
+  };
 
   const hideInfo = () => {
     setCurrentEmployee({});
     setPopupVisible(false);
-  }
+  };
 
   return (
     <div id="container">
@@ -68,6 +64,6 @@ const App = () => {
       </Popup>
     </div>
   );
-}
+};
 
 export default App;

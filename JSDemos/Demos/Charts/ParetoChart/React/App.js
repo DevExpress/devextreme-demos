@@ -29,25 +29,21 @@ const App = () => {
     setDataArray(newDataArray);
   }, []);
 
-  const customizeTooltip = (pointInfo) => {
-    return {
-      html: `<div><div class="tooltip-header">${
-        pointInfo.argumentText
-      }</div><div class="tooltip-body"><div class="series-name"><span class='top-series-name'>${
-        pointInfo.points[0].seriesName
-      }</span>: </div><div class="value-text"><span class='top-series-value'>${
-        pointInfo.points[0].valueText
-      }</span></div><div class="series-name"><span class='bottom-series-name'>${
-        pointInfo.points[1].seriesName
-      }</span>: </div><div class="value-text"><span class='bottom-series-value'>${
-        pointInfo.points[1].valueText
-      }</span>% </div></div></div>`,
-    };
-  };
+  const customizeTooltip = (pointInfo) => ({
+    html: `<div><div class="tooltip-header">${
+      pointInfo.argumentText
+    }</div><div class="tooltip-body"><div class="series-name"><span class='top-series-name'>${
+      pointInfo.points[0].seriesName
+    }</span>: </div><div class="value-text"><span class='top-series-value'>${
+      pointInfo.points[0].valueText
+    }</span></div><div class="series-name"><span class='bottom-series-name'>${
+      pointInfo.points[1].seriesName
+    }</span>: </div><div class="value-text"><span class='bottom-series-value'>${
+      pointInfo.points[1].valueText
+    }</span>% </div></div></div>`,
+  });
 
-  const customizePercentageText = ({ valueText }) => {
-    return `${valueText}%`;
-  };
+  const customizePercentageText = ({ valueText }) => `${valueText}%`;
 
   return (
     <Chart

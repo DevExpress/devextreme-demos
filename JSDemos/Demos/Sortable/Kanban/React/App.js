@@ -16,16 +16,12 @@ const getLists = (statusArray, taskArray) => {
   return statusArray.map((status) => tasksMap[status]);
 };
 
-const getEmployeesMap = (employeesArray) => {
-  return employeesArray.reduce((result, employee) => {
-    result[employee.ID] = employee.Name;
-    return result;
-  }, {});
-};
+const getEmployeesMap = (employeesArray) => employeesArray.reduce((result, employee) => {
+  result[employee.ID] = employee.Name;
+  return result;
+}, {});
 
-const removeItem = (array, removeIdx) => {
-  return array.filter((_, idx) => idx !== removeIdx);
-};
+const removeItem = (array, removeIdx) => array.filter((_, idx) => idx !== removeIdx);
 
 const insertItem = (array, item, insertIdx) => {
   const newArray = [...array];
@@ -42,38 +38,34 @@ const reorderItem = (array, fromIdx, toIdx) => {
 const taskStatuses = ['Not Started', 'Need Assistance', 'In Progress', 'Deferred', 'Completed'];
 const employeesRecord = getEmployeesMap(employees);
 
-const Card = ({ task, employeesMap }) => {
-  return <div className="card dx-card dx-theme-text-color dx-theme-background-color">
-    <div className={`card-priority priority-${task.Task_Priority}`}></div>
-    <div className="card-subject">{task.Task_Subject}</div>
-    <div className="card-assignee">{employeesMap[task.Task_Assigned_Employee_ID]}</div>
-  </div>;
-};
+const Card = ({ task, employeesMap }) => <div className="card dx-card dx-theme-text-color dx-theme-background-color">
+  <div className={`card-priority priority-${task.Task_Priority}`}></div>
+  <div className="card-subject">{task.Task_Subject}</div>
+  <div className="card-assignee">{employeesMap[task.Task_Assigned_Employee_ID]}</div>
+</div>;
 
 const List = ({
   title, index, tasks, employeesMap, onTaskDrop,
-}) => {
-  return <div className="list">
-    <div className="list-title dx-theme-text-color">{title}</div>
-    <ScrollView
-      className="scrollable-list"
-      direction="vertical"
-      showScrollbar="always">
-      <Sortable
-        className="sortable-cards"
-        group="cardsGroup"
-        data={index}
-        onReorder={onTaskDrop}
-        onAdd={onTaskDrop}>
-        {tasks.map((task) => <Card
-          key={task.Task_ID}
-          task={task}
-          employeesMap={employeesMap}>
-        </Card>)}
-      </Sortable>
-    </ScrollView>
-  </div>;
-};
+}) => <div className="list">
+  <div className="list-title dx-theme-text-color">{title}</div>
+  <ScrollView
+    className="scrollable-list"
+    direction="vertical"
+    showScrollbar="always">
+    <Sortable
+      className="sortable-cards"
+      group="cardsGroup"
+      data={index}
+      onReorder={onTaskDrop}
+      onAdd={onTaskDrop}>
+      {tasks.map((task) => <Card
+        key={task.Task_ID}
+        task={task}
+        employeesMap={employeesMap}>
+      </Card>)}
+    </Sortable>
+  </ScrollView>
+</div>;
 
 const App = () => {
   const [statuses, setStatuses] = useState(taskStatuses);

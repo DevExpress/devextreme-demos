@@ -36,9 +36,7 @@ function App() {
     setVisualRange(e.value);
   };
 
-  const formatValueAxisLabel = () => {
-    return `${this.valueText}%`;
-  };
+  const formatValueAxisLabel = () => `${this.valueText}%`;
 
   return (
     <React.Fragment>

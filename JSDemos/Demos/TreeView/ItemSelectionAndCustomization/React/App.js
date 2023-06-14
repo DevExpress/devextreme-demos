@@ -63,13 +63,9 @@ function App() {
     setSelectByClick(e.value);
   };
 
-  const renderTreeViewItem = (item) => {
-    return `${item.fullName} (${item.position})`;
-  };
+  const renderTreeViewItem = (item) => `${item.fullName} (${item.position})`;
 
-  const renderListItem = (item) => {
-    return `${item.prefix} ${item.fullName} (${item.position})`;
-  };
+  const renderListItem = (item) => `${item.prefix} ${item.fullName} (${item.position})`;
 
   return (
     <div>

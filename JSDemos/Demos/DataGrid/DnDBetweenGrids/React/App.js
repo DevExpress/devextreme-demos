@@ -13,17 +13,15 @@ const tasksStore = AspNetData.createStore({
   },
 });
 
-const App = () => {
-  return (
-    <div className="tables">
-      <div className="column">
-        <Grid tasksStore={tasksStore} status={1} />
-      </div>
-      <div className="column">
-        <Grid tasksStore={tasksStore} status={2} />
-      </div>
+const App = () => (
+  <div className="tables">
+    <div className="column">
+      <Grid tasksStore={tasksStore} status={1} />
     </div>
-  );
-};
+    <div className="column">
+      <Grid tasksStore={tasksStore} status={2} />
+    </div>
+  </div>
+);
 
 export default App;

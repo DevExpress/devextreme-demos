@@ -23,7 +23,7 @@ function App() {
 
   const onValueChanged = (e) => {
     setValue(e.value);
-  }
+  };
 
   return (
     <div>

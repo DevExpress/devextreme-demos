@@ -11,9 +11,7 @@ import Funnel, {
 import { dataSource } from './data.js';
 
 const App = () => {
-  const formatLabel = (arg) => {
-    return `<span class="label">${arg.percentText}</span><br/>${arg.item.argument}`;
-  }
+  const formatLabel = (arg) => `<span class="label">${arg.percentText}</span><br/>${arg.item.argument}`;
 
   return (
     <Funnel id="funnel"
@@ -38,6 +36,6 @@ const App = () => {
       />
     </Funnel>
   );
-}
+};
 
 export default App;

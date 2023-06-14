@@ -21,13 +21,13 @@ const App = () => {
       };
     }
     return null;
-  }
+  };
 
   const clickHandler = ({ target }) => {
     if (target && countries[target.attribute('name')]) {
       target.selected(!target.selected());
     }
-  }
+  };
 
   const customizeLayer = (elements) => {
     elements.forEach((element) => {
@@ -40,7 +40,7 @@ const App = () => {
         });
       }
     });
-  }
+  };
 
   return (
     <VectorMap
@@ -60,6 +60,6 @@ const App = () => {
       </Tooltip>
     </VectorMap>
   );
-}
+};
 
 export default App;

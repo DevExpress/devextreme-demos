@@ -1,5 +1,3 @@
-There you go:
-
 import React, { useState, useCallback } from 'react';
 import Map from 'devextreme-react/map';
 import SelectBox from 'devextreme-react/select-box';

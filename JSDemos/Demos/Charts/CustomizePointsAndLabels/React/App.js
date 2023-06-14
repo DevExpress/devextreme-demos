@@ -38,9 +38,7 @@ function App() {
     return null;
   };
 
-  const customizeText = (arg) => {
-    return `${arg.valueText}&#176F`;
-  };
+  const customizeText = (arg) => `${arg.valueText}&#176F`;
 
   return (
     <Chart

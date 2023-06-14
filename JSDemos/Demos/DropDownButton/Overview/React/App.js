@@ -31,11 +31,9 @@ const App = () => {
     colorPicker.current.close();
   };
 
-  const itemTemplateRender = (item) => {
-    return (<div style={{ fontSize: `${item.size}px` }}>
-      {item.text}
-    </div>);
-  };
+  const itemTemplateRender = (item) => (<div style={{ fontSize: `${item.size}px` }}>
+    {item.text}
+  </div>);
 
   const data = service.getData();
 
@@ -159,9 +157,9 @@ const App = () => {
           </Toolbar>
         </div>
         <div className={ color ? 'dx-field' : 'dx-field dx-theme-text-color' } style={{
-          color: color,
+          color,
           textAlign: alignment,
-          lineHeight: lineHeight,
+          lineHeight,
           fontSize: `${fontSize}px`,
         }}>
           <p id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

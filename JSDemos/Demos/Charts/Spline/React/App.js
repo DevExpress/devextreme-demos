@@ -22,7 +22,7 @@ const App = () => {
 
   const handleChange = (e) => {
     setType(e.value);
-  }
+  };
 
   return (
     <React.Fragment>
@@ -74,6 +74,6 @@ const App = () => {
       </div>
     </React.Fragment>
   );
-}
+};
 
 export default App;

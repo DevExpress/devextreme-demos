@@ -23,27 +23,25 @@ const App = () => {
   const [currentHouse, setCurrentHouse] = useState(housesSource[0]);
   const [popupVisible, setPopupVisible] = useState(false);
 
-  const renderPopup = () => {
-    return (
-      <div className="popup-property-details">
-        <div className="large-text">{formatCurrency(currentHouse.Price)}</div>
-        <div className="opacity">{currentHouse.Address}, {currentHouse.City}, {currentHouse.State}</div>
-        <Button
-          icon="favorites"
-          text={currentHouse.Favorite ? REMOVE_FROM_FAVORITES : ADD_TO_FAVORITES}
-          width={260}
-          height={44}
-          elementAttr={favButtonAttrs}
-          onClick={changeFavoriteState}
-        />
-        <div className="images">
-          <img src={currentHouse.Image} />
-          <img src={currentHouse.Image.replace('.jpg', 'b.jpg')} />
-        </div>
-        <div>{currentHouse.Features}</div>
+  const renderPopup = () => (
+    <div className="popup-property-details">
+      <div className="large-text">{formatCurrency(currentHouse.Price)}</div>
+      <div className="opacity">{currentHouse.Address}, {currentHouse.City}, {currentHouse.State}</div>
+      <Button
+        icon="favorites"
+        text={currentHouse.Favorite ? REMOVE_FROM_FAVORITES : ADD_TO_FAVORITES}
+        width={260}
+        height={44}
+        elementAttr={favButtonAttrs}
+        onClick={changeFavoriteState}
+      />
+      <div className="images">
+        <img src={currentHouse.Image} />
+        <img src={currentHouse.Image.replace('.jpg', 'b.jpg')} />
       </div>
-    );
-  };
+      <div>{currentHouse.Features}</div>
+    </div>
+  );
 
   const showHouse = (house) => {
     setCurrentHouse(house);

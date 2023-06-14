@@ -111,7 +111,7 @@ function App() {
   }
 
   return (
-    <>
+    <React.Fragment>
       <PivotGrid
         id="sales"
         dataSource={dataSource}
@@ -170,7 +170,7 @@ function App() {
           />
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 }
 

@@ -13,7 +13,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <PivotGrid
         dataSource={dataSource}
         allowSortingBySummary={true}
@@ -37,7 +37,7 @@ const App = () => {
           />
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

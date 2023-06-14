@@ -16,13 +16,11 @@ import Chart, {
 import { weatherData } from './data.js';
 
 const App = () => {
-  const customizeTooltip = (pointInfo) => {
-    return {
-      text: `${pointInfo.seriesName}: ${pointInfo.value
-      } (range: ${pointInfo.lowErrorValue
-      } - ${pointInfo.highErrorValue})`,
-    };
-  };
+  const customizeTooltip = (pointInfo) => ({
+    text: `${pointInfo.seriesName}: ${pointInfo.value
+    } (range: ${pointInfo.lowErrorValue
+    } - ${pointInfo.highErrorValue})`,
+  });
 
   return (
     <Chart

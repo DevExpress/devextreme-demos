@@ -14,13 +14,13 @@ const App = () => {
     new ArrayStore({
       key: 'id',
       data: service.getOrgItems(),
-    })
+    }),
   );
   const [orgLinksDataSource] = useState(
     new ArrayStore({
       key: 'id',
       data: service.getOrgLinks(),
-    })
+    }),
   );
 
   return (

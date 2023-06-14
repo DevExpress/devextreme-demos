@@ -62,7 +62,7 @@ const App = () => {
         saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'MultipleGrids.xlsx');
       });
     });
-  }
+  };
 
   const setAlternatingRowsBackground = (gridCell, excelCell) => {
     if (gridCell.rowType === 'header' || gridCell.rowType === 'data') {
@@ -72,7 +72,7 @@ const App = () => {
         };
       }
     }
-  }
+  };
 
   const priceDataGrid = priceGridRef.current?.instance;
   const ratingDataGrid = ratingGridRef.current?.instance;
@@ -106,6 +106,6 @@ const App = () => {
       </TabPanel>
     </div>
   );
-}
+};
 
 export default App;

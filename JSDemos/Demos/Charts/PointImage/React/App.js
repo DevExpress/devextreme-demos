@@ -17,7 +17,6 @@ import { iceHockeyStatistics } from './data.js';
 const exportFormats = ['PNG', 'PDF', 'JPEG', 'GIF', 'SVG'];
 
 const App = () => {
-
   const customizePoint = (pointInfo) => {
     if (pointInfo.value === 1) {
       return { image: { url: '../../../../images/Charts/PointImage/icon-medal-gold.png', width: 20, height: 20 }, visible: true };
@@ -29,7 +28,7 @@ const App = () => {
       return { image: { url: '../../../../images/Charts/PointImage/icon-medal-bronse.png', width: 20, height: 20 }, visible: true };
     }
     return null;
-  }
+  };
 
   const customizeText = (labelInfo) => {
     if (labelInfo.valueText === '1') {
@@ -40,7 +39,7 @@ const App = () => {
       return `${labelInfo.valueText}rd place`;
     }
     return `${labelInfo.valueText}th place`;
-  }
+  };
 
   return (
     <Chart
@@ -77,6 +76,6 @@ const App = () => {
       <Legend visible={false} />
     </Chart>
   );
-}
+};
 
 export default App;

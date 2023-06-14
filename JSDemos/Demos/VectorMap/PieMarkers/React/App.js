@@ -20,9 +20,7 @@ const App = () => {
     return 0;
   };
 
-  const customizeText = (arg) => {
-    return names[arg.index];
-  };
+  const customizeText = (arg) => names[arg.index];
 
   return (
     <VectorMap id="vector-map" bounds={bounds}>

@@ -22,7 +22,7 @@ const App = () => {
 
     if (inProgress) {
       intervalId = setInterval(() => {
-        setSeconds(prevSeconds => prevSeconds - 1);
+        setSeconds((prevSeconds) => prevSeconds - 1);
       }, 1000);
     }
 

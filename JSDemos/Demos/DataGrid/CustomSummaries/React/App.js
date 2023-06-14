@@ -19,11 +19,11 @@ const App = () => {
         }
       }
     }
-  }
+  };
 
   const onSelectionChanged = (e) => {
     e.component.refresh(true);
-  }
+  };
 
   return (
     <React.Fragment>
@@ -53,6 +53,6 @@ const App = () => {
       </DataGrid>
     </React.Fragment>
   );
-}
+};
 
 export default App;

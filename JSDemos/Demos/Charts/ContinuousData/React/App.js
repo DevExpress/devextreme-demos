@@ -8,23 +8,21 @@ import {
 } from 'devextreme-react/polar-chart';
 import { dataSource } from './data.js';
 
-const App = () => {
-  return (
-    <PolarChart
-      id="chart"
-      dataSource={dataSource}
-      title="Rose in Polar Coordinates"
-    >
-      <Series type="line" />
-      <ArgumentAxis
-        inverted={true}
-        startAngle={90}
-        tickInterval={30}
-      />
-      <Export enabled={true} />
-      <Legend visible={false} />
-    </PolarChart>
-  );
-}
+const App = () => (
+  <PolarChart
+    id="chart"
+    dataSource={dataSource}
+    title="Rose in Polar Coordinates"
+  >
+    <Series type="line" />
+    <ArgumentAxis
+      inverted={true}
+      startAngle={90}
+      tickInterval={30}
+    />
+    <Export enabled={true} />
+    <Legend visible={false} />
+  </PolarChart>
+);
 
 export default App;

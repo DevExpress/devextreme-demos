@@ -13,9 +13,7 @@ import Chart, {
 import { inflationData } from './data.js';
 
 const App = () => {
-  const customizeLabelText = ({ valueText }) => {
-    return `${valueText} %`;
-  }
+  const customizeLabelText = ({ valueText }) => `${valueText} %`;
 
   return (
     <Chart
@@ -57,6 +55,6 @@ const App = () => {
       <Legend visible={false} />
     </Chart>
   );
-}
+};
 
 export default App;

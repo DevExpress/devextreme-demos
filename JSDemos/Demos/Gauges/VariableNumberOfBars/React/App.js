@@ -10,7 +10,7 @@ const format = {
 
 const App = () => {
   const [productsActivity, setProductsActivity] = useState(
-    products.map((p) => p.active)
+    products.map((p) => p.active),
   );
   const [values, setValues] = useState(products.map((p) => p.count));
 
@@ -21,7 +21,7 @@ const App = () => {
     setValues(
       products
         .map((p, i) => (newProductsActivity[i] ? p.count : null))
-        .filter((c) => c !== null)
+        .filter((c) => c !== null),
     );
   };
 

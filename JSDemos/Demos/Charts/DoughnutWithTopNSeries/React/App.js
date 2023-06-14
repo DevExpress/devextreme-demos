@@ -10,9 +10,7 @@ import PieChart, {
 import { internetLanguages } from './data.js';
 
 const App = () => {
-  const customizeLabel = (point) => {
-    return `${point.argumentText}: ${point.valueText}%`;
-  };
+  const customizeLabel = (point) => `${point.argumentText}: ${point.valueText}%`;
 
   return (
     <PieChart

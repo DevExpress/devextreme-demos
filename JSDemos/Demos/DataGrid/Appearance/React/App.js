@@ -51,7 +51,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <DataGrid
         dataSource={employees}
         keyExpr="ID"
@@ -103,7 +103,7 @@ const App = () => {
           />
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

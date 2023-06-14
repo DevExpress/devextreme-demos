@@ -21,7 +21,7 @@ const App = () => {
       diagram.scrollToItem(items[0]);
       diagram.focus();
     }
-  }
+  };
 
   const onSelectionChanged = ({ items }) => {
     let selectedItemNames = 'Nobody has been selected';
@@ -32,7 +32,7 @@ const App = () => {
       selectedItemNames = filteredItems.join(', ');
     }
     setSelectedItemNames(selectedItemNames);
-  }
+  };
 
   return (
     <div>
@@ -51,6 +51,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

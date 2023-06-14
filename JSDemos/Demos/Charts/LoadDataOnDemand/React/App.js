@@ -31,7 +31,7 @@ const App = () => {
       store: [],
       sort: 'date',
       paginate: false,
-    })
+    }),
   );
   const [packetsLock, setPacketsLock] = useState(0);
   const HALFDAY = 43200000;
@@ -57,8 +57,8 @@ const App = () => {
     if (!items.length) return;
     const { visualRange } = this.state;
     if (
-      items[0].date - visualRange.startValue >= HALFDAY ||
-      visualRange.endValue - items[items.length - 1].date >= HALFDAY
+      items[0].date - visualRange.startValue >= HALFDAY
+      || visualRange.endValue - items[items.length - 1].date >= HALFDAY
     ) {
       uploadDataByVisualRange(visualRange, component);
     }
@@ -72,14 +72,14 @@ const App = () => {
       endVisible: getDateString(visualRange.endValue),
       startBound: getDateString(storage.length ? storage[0].date : null),
       endBound: getDateString(
-        storage.length ? storage[storage.length - 1].date : null
+        storage.length ? storage[storage.length - 1].date : null,
       ),
     };
 
     if (
-      ajaxArgs.startVisible !== ajaxArgs.startBound &&
-      ajaxArgs.endVisible !== ajaxArgs.endBound &&
-      !packetsLock
+      ajaxArgs.startVisible !== ajaxArgs.startBound
+      && ajaxArgs.endVisible !== ajaxArgs.endBound
+      && !packetsLock
     ) {
       setPacketsLock(packetsLock + 1);
       component.showLoadingIndicator();
@@ -169,7 +169,7 @@ function getDataFrame(args) {
     &endBound=${args.endBound}`;
 
   return fetch(
-    `https://js.devexpress.com/Demos/WidgetsGallery/data/temperatureData${params}`
+    `https://js.devexpress.com/Demos/WidgetsGallery/data/temperatureData${params}`,
   ).then((response) => response.json());
 }
 

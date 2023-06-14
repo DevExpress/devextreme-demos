@@ -5,20 +5,18 @@ import {
 
 const customTicks = [0, 10, 25, 50];
 
-const App = () => {
-  return (
-    <LinearGauge
-      id="gauge"
-      value={35}
-    >
-      <Geometry orientation="vertical" />
-      <Scale startValue={0} endValue={50} customTicks={customTicks} />
-      <Title text="Fuel Volume (in Liters)">
-        <Font size={28} />
-      </Title>
-      <Export enabled={true} />
-    </LinearGauge>
-  );
-}
+const App = () => (
+  <LinearGauge
+    id="gauge"
+    value={35}
+  >
+    <Geometry orientation="vertical" />
+    <Scale startValue={0} endValue={50} customTicks={customTicks} />
+    <Title text="Fuel Volume (in Liters)">
+      <Font size={28} />
+    </Title>
+    <Export enabled={true} />
+  </LinearGauge>
+);
 
 export default App;

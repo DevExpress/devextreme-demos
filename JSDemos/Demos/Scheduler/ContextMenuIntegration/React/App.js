@@ -102,7 +102,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <Scheduler
         ref={scheduler}
         timeZone="America/Los_Angeles"
@@ -132,7 +132,7 @@ const App = () => {
         onItemClick={onContextMenuItemClick}
         itemRender={AppointmentMenuTemplate}
       />
-    </>
+    </React.Fragment>
   );
 };
 

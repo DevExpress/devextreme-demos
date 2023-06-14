@@ -25,23 +25,21 @@ const dataSource = createStore({
 const App = () => {
   const [asyncValidationResult, setAsyncValidationResult] = useState(null);
 
-  const asyncValidation = (params) => {
-    return fetch(
-      'https://js.devexpress.com/Demos/Mvc/RemoteValidation/CheckUniqueEmailAddress',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json;',
-        },
-        body: JSON.stringify({
-          id: params.data.ID,
-          email: params.value,
-        }),
-      }
-    )
-      .then((response) => response.json())
-      .then((result) => setAsyncValidationResult(result));
-  };
+  const asyncValidation = (params) => fetch(
+    'https://js.devexpress.com/Demos/Mvc/RemoteValidation/CheckUniqueEmailAddress',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;',
+      },
+      body: JSON.stringify({
+        id: params.data.ID,
+        email: params.value,
+      }),
+    },
+  )
+    .then((response) => response.json())
+    .then((result) => setAsyncValidationResult(result));
 
   return (
     <React.Fragment>

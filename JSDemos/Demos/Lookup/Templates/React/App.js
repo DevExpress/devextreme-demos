@@ -8,10 +8,7 @@ import Item from './Item.js';
 const searchExpression = ['FirstName', 'LastName', 'Prefix'];
 
 const App = () => {
-
-  const getDisplayExpr = (item) => {
-    return item ? `${item.FirstName} ${item.LastName}` : '';
-  }
+  const getDisplayExpr = (item) => (item ? `${item.FirstName} ${item.LastName}` : '');
 
   return (
     <div>
@@ -45,6 +42,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

@@ -22,17 +22,13 @@ function App() {
     chartRef.current.instance.exportTo('Example', 'png');
   };
 
-  const customizeTooltipText = (pointInfo) => {
-    return {
-      text: `<span class='title'>${pointInfo.argumentText
-      }</span><br />&nbsp;<br />System: ${pointInfo.point.data.system
-      }<br />Height: ${pointInfo.valueText} m`,
-    };
-  };
+  const customizeTooltipText = (pointInfo) => ({
+    text: `<span class='title'>${pointInfo.argumentText
+    }</span><br />&nbsp;<br />System: ${pointInfo.point.data.system
+    }<br />Height: ${pointInfo.valueText} m`,
+  });
 
-  const customizeLabelText = ({ value }) => {
-    return `${value} m`;
-  };
+  const customizeLabelText = ({ value }) => `${value} m`;
 
   return (
     <React.Fragment>

@@ -54,7 +54,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <ScrollView id="scroll">
         <Draggable
           id="list"
@@ -90,7 +90,7 @@ const App = () => {
           onAdd={onAppointmentAdd}
         />
       </Scheduler>
-    </>
+    </React.Fragment>
   );
 };
 

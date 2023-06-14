@@ -64,13 +64,12 @@ const App = () => {
   });
 
   const customizeTooltip = (args) => {
-    const valueText =
-      args.seriesName.indexOf('Total') !== -1
-        ? new Intl.NumberFormat('en-EN', {
-            style: 'currency',
-            currency: 'USD',
-          }).format(args.originalValue)
-        : args.originalValue;
+    const valueText = args.seriesName.indexOf('Total') !== -1
+      ? new Intl.NumberFormat('en-EN', {
+        style: 'currency',
+        currency: 'USD',
+      }).format(args.originalValue)
+      : args.originalValue;
 
     return {
       html: `${args.seriesName}<div class='currency'>${valueText}</div>`,
@@ -78,7 +77,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <Chart ref={chartRef}>
         <Size height={320} />
         <Tooltip enabled={true} customizeTooltip={customizeTooltip} />
@@ -100,7 +99,7 @@ const App = () => {
       >
         <FieldChooser enabled={true} height={400} />
       </PivotGrid>
-    </>
+    </React.Fragment>
   );
 };
 

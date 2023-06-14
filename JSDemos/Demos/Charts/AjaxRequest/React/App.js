@@ -10,9 +10,7 @@ import Chart, {
 } from 'devextreme-react/chart';
 
 const App = () => {
-  const customizeText = (e) => {
-    return `Day ${e.value}`;
-  }
+  const customizeText = (e) => `Day ${e.value}`;
 
   return (
     <Chart
@@ -45,6 +43,6 @@ const App = () => {
 
     </Chart>
   );
-}
+};
 
 export default App;

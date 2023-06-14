@@ -73,7 +73,7 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <React.Fragment>
       <Chart ref={chartRef}>
         <Size height={200} />
         <Tooltip enabled={true} customizeTooltip={customizeTooltip} />
@@ -95,7 +95,7 @@ const App = () => {
       >
         <FieldChooser enabled={true} height={400} />
       </PivotGrid>
-    </>
+    </React.Fragment>
   );
 };
 

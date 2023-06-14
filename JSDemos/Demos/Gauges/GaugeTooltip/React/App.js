@@ -6,11 +6,9 @@ import {
 const subvalues = [8, 18];
 
 function App() {
-  const customizeTooltip = ({ valueText }) => {
-    return {
-      text: `${valueText} ohm`,
-    };
-  };
+  const customizeTooltip = ({ valueText }) => ({
+    text: `${valueText} ohm`,
+  });
 
   return (
     <CircularGauge

@@ -51,6 +51,6 @@ const App = () => {
       />
     </Scheduler>
   );
-}
+};
 
 export default App;

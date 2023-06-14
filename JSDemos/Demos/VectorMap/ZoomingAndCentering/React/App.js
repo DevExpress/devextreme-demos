@@ -32,7 +32,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <VectorMap
         ref={vectorMapRef}
         id="vector-map"
@@ -44,7 +44,7 @@ const App = () => {
         <Tooltip enabled={true} customizeTooltip={customizeTooltip} />
       </VectorMap>
       <Button text="Reset" id="reset" onClick={reset} />
-    </>
+    </React.Fragment>
   );
 };
 

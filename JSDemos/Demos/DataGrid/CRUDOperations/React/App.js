@@ -24,34 +24,31 @@ const App = () => {
     new CustomStore({
       key: 'OrderID',
       load: () => sendRequest(`${URL}/Orders`),
-      insert: (values) =>
-        sendRequest(`${URL}/InsertOrder`, 'POST', {
-          values: JSON.stringify(values),
-        }),
-      update: (key, values) =>
-        sendRequest(`${URL}/UpdateOrder`, 'PUT', {
-          key,
-          values: JSON.stringify(values),
-        }),
-      remove: (key) =>
-        sendRequest(`${URL}/DeleteOrder`, 'DELETE', {
-          key,
-        }),
-    })
+      insert: (values) => sendRequest(`${URL}/InsertOrder`, 'POST', {
+        values: JSON.stringify(values),
+      }),
+      update: (key, values) => sendRequest(`${URL}/UpdateOrder`, 'PUT', {
+        key,
+        values: JSON.stringify(values),
+      }),
+      remove: (key) => sendRequest(`${URL}/DeleteOrder`, 'DELETE', {
+        key,
+      }),
+    }),
   );
   const [customersData] = useState(
     new CustomStore({
       key: 'Value',
       loadMode: 'raw',
       load: () => sendRequest(`${URL}/CustomersLookup`),
-    })
+    }),
   );
   const [shippersData] = useState(
     new CustomStore({
       key: 'Value',
       loadMode: 'raw',
       load: () => sendRequest(`${URL}/ShippersLookup`),
-    })
+    }),
   );
   const [requests, setRequests] = useState([]);
   const [refreshMode, setRefreshMode] = useState('reshape');
@@ -63,18 +60,15 @@ const App = () => {
       return fetch(url, {
         method,
         credentials: 'include',
-      }).then((result) =>
-        result.json().then((json) => {
-          if (result.ok) return json.data;
-          throw json.Message;
-        })
-      );
+      }).then((result) => result.json().then((json) => {
+        if (result.ok) return json.data;
+        throw json.Message;
+      }));
     }
 
     const params = Object.keys(data)
       .map(
-        (key) =>
-          `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+        (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`,
       )
       .join('&');
 
@@ -115,7 +109,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <DataGrid
         id="grid"
         showBorders={true}
@@ -173,7 +167,7 @@ const App = () => {
           </ul>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

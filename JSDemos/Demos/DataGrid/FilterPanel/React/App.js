@@ -12,9 +12,7 @@ import { orders } from './data.js';
 const saleAmountEditorOptions = { format: 'currency', showClearButton: true };
 
 function App() {
-  const getOrderDay = (rowData) => {
-    return (new Date(rowData.OrderDate)).getDay();
-  }
+  const getOrderDay = (rowData) => (new Date(rowData.OrderDate)).getDay();
 
   const filterBuilderPopupPosition = {
     of: window,

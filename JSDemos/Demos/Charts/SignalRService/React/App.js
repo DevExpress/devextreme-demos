@@ -31,14 +31,14 @@ const App = () => {
         skipNegotiation: true,
         transport: HttpTransportType.WebSockets,
       })
-      .build()
+      .build(),
   );
 
   const store = useRef(
     new CustomStore({
       load: () => hubConnection.current.invoke('getAllData'),
       key: 'date',
-    })
+    }),
   );
 
   const calculateCandle = (e) => {

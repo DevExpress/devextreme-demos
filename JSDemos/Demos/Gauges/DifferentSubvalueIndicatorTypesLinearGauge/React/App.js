@@ -6,9 +6,7 @@ import {
 const subValues = [18, 43];
 
 const App = () => {
-  const customizeText = ({ valueText }) => {
-    return `$${valueText}`;
-  }
+  const customizeText = ({ valueText }) => `$${valueText}`;
 
   return (
     <div>
@@ -103,6 +101,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

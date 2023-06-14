@@ -16,7 +16,6 @@ import {
 import { dataSource } from './data.js';
 
 const App = () => {
-
   const customizePoint = ({ data }) => {
     let color; let hoverStyle;
     switch (data.type) {
@@ -32,7 +31,7 @@ const App = () => {
         break;
     }
     return { color, hoverStyle };
-  }
+  };
 
   return (
     <Chart
@@ -61,6 +60,6 @@ const App = () => {
       <Export enabled={true} />
     </Chart>
   );
-}
+};
 
 export default App;

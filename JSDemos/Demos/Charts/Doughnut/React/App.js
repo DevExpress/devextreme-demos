@@ -11,11 +11,9 @@ import PieChart, {
 import { populationByRegions } from './data.js';
 
 const App = () => {
-  const customizeTooltip = (arg) => {
-    return {
-      text: `${arg.valueText} - ${(arg.percent * 100).toFixed(2)}%`,
-    };
-  };
+  const customizeTooltip = (arg) => ({
+    text: `${arg.valueText} - ${(arg.percent * 100).toFixed(2)}%`,
+  });
 
   return (
     <PieChart

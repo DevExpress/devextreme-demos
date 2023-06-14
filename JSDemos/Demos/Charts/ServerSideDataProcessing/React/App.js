@@ -42,15 +42,11 @@ function App() {
     chartDataSource.load();
   };
 
-  const customizeLabel = (e) => {
-    return `${e.valueText}${'&#176C'}`;
-  };
+  const customizeLabel = (e) => `${e.valueText}${'&#176C'}`;
 
-  const customizeTooltip = (arg) => {
-    return {
-      text: `${arg.valueText}${'&#176C'}`,
-    };
-  };
+  const customizeTooltip = (arg) => ({
+    text: `${arg.valueText}${'&#176C'}`,
+  });
 
   return (
     <div id="chart-demo">

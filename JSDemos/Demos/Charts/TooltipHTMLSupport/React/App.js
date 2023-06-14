@@ -7,19 +7,17 @@ import PieChart, {
 import { populationData } from './data.js';
 import TooltipTemplate from './TooltipTemplate.js';
 
-const App = () => {
-  return (
-    <PieChart
-      id="pie-chart"
-      dataSource={populationData}
-      title="Top 10 Most Populated States in US"
-      palette="Bright"
-    >
-      <Series argumentField="name" valueField="population" />
-      <Tooltip enabled={true} contentRender={TooltipTemplate} />
-      <Export enabled={true} />
-    </PieChart>
-  );
-};
+const App = () => (
+  <PieChart
+    id="pie-chart"
+    dataSource={populationData}
+    title="Top 10 Most Populated States in US"
+    palette="Bright"
+  >
+    <Series argumentField="name" valueField="population" />
+    <Tooltip enabled={true} contentRender={TooltipTemplate} />
+    <Export enabled={true} />
+  </PieChart>
+);
 
 export default App;

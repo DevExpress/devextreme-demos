@@ -1,7 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import Map from 'devextreme-react/map';
 import SelectBox from 'devextreme-react/select-box';
-import { markersData, routesData, modeLabel, colorLabel } from './data.js';
+import {
+  markersData, routesData, modeLabel, colorLabel,
+} from './data.js';
 
 const modes = ['driving', 'walking'];
 const routeColors = ['blue', 'green', 'red'];

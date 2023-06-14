@@ -9,7 +9,7 @@ const App = () => {
     if (e.fullName === 'itemView.mode') {
       setItemViewMode(e.value);
     }
-  }
+  };
 
   const customizeIcon = (fileSystemItem) => {
     if (fileSystemItem.isDirectory) {
@@ -27,7 +27,7 @@ const App = () => {
       default:
         return '../../../../images/thumbnails/doc-txt.svg';
     }
-  }
+  };
 
   return (
     <FileManager
@@ -49,6 +49,6 @@ const App = () => {
       </Permissions>
     </FileManager>
   );
-}
+};
 
 export default App;

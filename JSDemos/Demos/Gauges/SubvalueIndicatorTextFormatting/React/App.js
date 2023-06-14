@@ -11,9 +11,7 @@ const format = {
 };
 
 const App = () => {
-  const customizeText = ({ valueText }) => {
-    return `${valueText} °C`;
-  }
+  const customizeText = ({ valueText }) => `${valueText} °C`;
 
   return (
     <CircularGauge
@@ -33,6 +31,6 @@ const App = () => {
       </Title>
     </CircularGauge>
   );
-}
+};
 
 export default App;

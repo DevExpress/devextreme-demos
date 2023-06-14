@@ -27,6 +27,6 @@ const App = () => {
       <SliderMarker format="currency" />
     </RangeSelector>
   );
-}
+};
 
 export default App;

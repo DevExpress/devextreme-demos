@@ -38,7 +38,7 @@ const App = () => {
     e.promise = processReorder(e);
   };
 
-  const processReorder = async (e) => {
+  const processReorder = async(e) => {
     const visibleRows = e.component.getVisibleRows();
     const newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
 

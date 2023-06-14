@@ -48,9 +48,7 @@ const App = () => {
     e.cancel = true;
   };
 
-  const renderGridCell = (cellData) => {
-    return (<div><img src={cellData.value}></img></div>);
-  };
+  const renderGridCell = (cellData) => (<div><img src={cellData.value}></img></div>);
 
   return (
     <div>

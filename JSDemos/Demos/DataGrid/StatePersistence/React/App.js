@@ -13,11 +13,11 @@ const App = () => {
 
   const onRefreshClick = () => {
     window.location.reload();
-  }
+  };
 
   const onStateResetClick = () => {
     dataGrid.current.instance.state(null);
-  }
+  };
 
   return (
     <React.Fragment>
@@ -44,6 +44,6 @@ const App = () => {
       </DataGrid>
     </React.Fragment>
   );
-}
+};
 
 export default App;

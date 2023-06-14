@@ -8,9 +8,7 @@ import service from './data.js';
 const App = () => {
   const [orders] = useState(service.getOrders());
 
-  const customizeDate = (data) => {
-    return `First: ${formatDate(data.value, 'MMM dd, yyyy')}`;
-  }
+  const customizeDate = (data) => `First: ${formatDate(data.value, 'MMM dd, yyyy')}`;
 
   return (
     <React.Fragment>
@@ -42,6 +40,6 @@ const App = () => {
       </DataGrid>
     </React.Fragment>
   );
-}
+};
 
 export default App;
