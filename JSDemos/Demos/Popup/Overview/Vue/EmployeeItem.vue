@@ -1,7 +1,7 @@
 <template>
   <li>
     <img
-      :alt="`${employee.FirstName} ${employee.LastName}`"
+      :alt="employee.FirstName + ' ' + employee.LastName"
       :src="employee.Picture"
       :id="'image' + employee.ID"
     ><br>

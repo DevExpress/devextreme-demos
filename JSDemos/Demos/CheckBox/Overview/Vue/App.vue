@@ -4,19 +4,28 @@
       <div class="dx-field">
         <div class="dx-field-label">Checked</div>
         <div class="dx-field-value">
-          <DxCheckBox :value="true" :elementAttr="checkedLabel" />
+          <DxCheckBox
+            :value="true"
+            :element-attr="checkedLabel"
+          />
         </div>
       </div>
       <div class="dx-field">
         <div class="dx-field-label">Unchecked</div>
         <div class="dx-field-value">
-          <DxCheckBox :value="false" :elementAttr="unCheckedLabel" />
+          <DxCheckBox
+            :value="false"
+            :element-attr="unCheckedLabel"
+          />
         </div>
       </div>
       <div class="dx-field">
         <div class="dx-field-label">Indeterminate</div>
         <div class="dx-field-value">
-          <DxCheckBox :value="null" :elementAttr="indeterminateLabel" />
+          <DxCheckBox
+            :value="null"
+            :element-attr="indeterminateLabel"
+          />
         </div>
       </div>
       <div class="dx-field">
@@ -25,14 +34,17 @@
           <DxCheckBox
             :enable-three-state-behavior="true"
             :value="null"
-            :elementAttr="threeStateModeLabel"
+            :element-attr="threeStateModeLabel"
           />
         </div>
       </div>
       <div class="dx-field">
         <div class="dx-field-label">Handle value change</div>
         <div class="dx-field-value">
-          <DxCheckBox v-model:value="checkBoxValue" :elementAttr="handleValueChangeLabel" />
+          <DxCheckBox
+            v-model:value="checkBoxValue"
+            :element-attr="handleValueChangeLabel"
+          />
         </div>
       </div>
       <div class="dx-field">
@@ -41,7 +53,7 @@
           <DxCheckBox
             :disabled="true"
             :value="checkBoxValue"
-            :elementAttr="disabledLabel" 
+            :element-attr="disabledLabel" 
           />
         </div>
       </div>
@@ -51,7 +63,7 @@
           <DxCheckBox
             :value="null"
             :icon-size="30"
-            :elementAttr="customSizeLabel" 
+            :element-attr="customSizeLabel" 
           />
         </div>
       </div>

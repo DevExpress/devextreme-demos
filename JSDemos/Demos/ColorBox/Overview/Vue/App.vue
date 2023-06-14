@@ -6,7 +6,7 @@
         <div class="dx-field-value">
           <DxColorBox
             value="#f05b41"
-            :inputAttr="defaultModeLabel"
+            :input-attr="defaultModeLabel"
           />
         </div>
       </div>
@@ -16,7 +16,7 @@
           <DxColorBox
             :edit-alpha-channel="true"
             value="#f05b41"
-            :inputAttr="alphaChannelLabel"
+            :input-attr="alphaChannelLabel"
           />
         </div>
       </div>
@@ -27,7 +27,7 @@
             value="#f05b41"
             apply-button-text="Apply"
             cancel-button-text="Decline"
-            :inputAttr="customButtonCaptionsLabel"
+            :input-attr="customButtonCaptionsLabel"
           />
         </div>
       </div>
@@ -37,7 +37,7 @@
           <DxColorBox
             :read-only="true"
             value="#f05b41"
-            :inputAttr="readOnlyLabel"
+            :input-attr="readOnlyLabel"
           />
         </div>
       </div>
@@ -47,7 +47,7 @@
           <DxColorBox
             :disabled="true"
             value="#f05b41"
-            :inputAttr="disabledLabel"
+            :input-attr="disabledLabel"
           />
         </div>
       </div>
@@ -65,7 +65,7 @@
           <DxColorBox
             v-model:value="color"
             apply-value-mode="instantly"
-            :inputAttr="eventHandlingLabel"
+            :input-attr="eventHandlingLabel"
           />
         </div>
       </div>
