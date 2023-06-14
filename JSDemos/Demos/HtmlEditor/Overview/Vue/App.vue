@@ -19,7 +19,7 @@
           :options="fontSizeOptions"
         />
         <DxItem
-        name="font"
+          name="font"
           :accepted-values="fontValues"
           :options="fontFamilyOptions"
         />

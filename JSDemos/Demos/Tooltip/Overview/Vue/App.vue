@@ -22,7 +22,7 @@
     <div class="label">With template</div>
     <div>
       <img
-      alt="SuperPlasma 50"
+        alt="SuperPlasma 50"
         id="product2"
         src="../../../../images/products/3.png"
       >
