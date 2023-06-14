@@ -53,7 +53,7 @@
           <DxCheckBox
             :disabled="true"
             :value="checkBoxValue"
-            :element-attr="disabledLabel" 
+            :element-attr="disabledLabel"
           />
         </div>
       </div>
@@ -63,7 +63,7 @@
           <DxCheckBox
             :value="null"
             :icon-size="30"
-            :element-attr="customSizeLabel" 
+            :element-attr="customSizeLabel"
           />
         </div>
       </div>
