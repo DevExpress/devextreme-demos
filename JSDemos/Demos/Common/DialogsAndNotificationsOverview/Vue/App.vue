@@ -8,7 +8,10 @@
         class="item-content"
         @click="showHouse(house)"
       >
-        <img :alt="house.Address" :src="house.Image">
+        <img
+          :alt="house.Address"
+          :src="house.Image"
+        >
         <div class="item-options">
           <div>
             <div class="address">{{ house.Address }}</div>
