@@ -90,7 +90,7 @@ class App extends React.Component {
     );
   }
 
-  selectionChanged(e) {
+  selectionChanged(e: { removedItems: any[]; addedItems: string | any[]; }) {
     let newItems = [...this.state.selectedItems];
     e.removedItems.forEach((item) => {
       const index = newItems.indexOf(item);
@@ -106,25 +106,25 @@ class App extends React.Component {
     });
   }
 
-  selectedItemsChanged(e) {
+  selectedItemsChanged(e: { value: any; }) {
     this.setState({
       selectedItems: e.value,
     });
   }
 
-  multipleChanged(e) {
+  multipleChanged(e: { value: any; }) {
     this.setState({
       multiple: e.value,
     });
   }
 
-  collapsibleChanged(e) {
+  collapsibleChanged(e: { value: any; }) {
     this.setState({
       collapsible: e.value,
     });
   }
 
-  animationDurationChanged(e) {
+  animationDurationChanged(e: { value: any; }) {
     this.setState({
       animationDuration: e.value,
     });
