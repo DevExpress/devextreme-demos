@@ -14,7 +14,7 @@
             .InputAttr("aria-label", "Custom Field Template")
             .FieldTemplate(@<text>
                 <div class="custom-field">
-                    <img src="<%- Picture %>" /><div><%- Prefix %> <%- FirstName %> <%- LastName %></div>
+                    <img alt="<%- FirstName %>" src="<%- Picture %>" /><div><%- Prefix %> <%- FirstName %> <%- LastName %></div>
                 </div>
             </text>)
         )
@@ -33,7 +33,7 @@
             .InputAttr("aria-label", "Custom Item Template")
             .ItemTemplate(@<text>
                 <div class="custom-item">
-                    <img src="<%- Picture %>" /><div><%- Prefix %> <%- FirstName %> <%- LastName %></div>
+                    <img alt="<%- FirstName %>" src="<%- Picture %>" /><div><%- Prefix %> <%- FirstName %> <%- LastName %></div>
                 </div>
             </text>)
         )

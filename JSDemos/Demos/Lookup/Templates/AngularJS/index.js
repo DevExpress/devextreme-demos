@@ -35,7 +35,7 @@ DemoApp.controller('DemoController', ($scope) => {
   };
 
   function getTemplateMarkup(data, containerClass) {
-    return `<div class='${containerClass}'><img src='${
+    return `<div class='${containerClass}'><img alt='${data.FirstName}' src='${
       data.Picture}' /><div>${data.Prefix} ${
       data.FirstName} ${data.LastName}</div></div>`;
   }
