@@ -4,9 +4,14 @@ import CheckBox from 'devextreme-react/check-box';
 import TagBox from 'devextreme-react/tag-box';
 import Slider, { Tooltip, Label } from 'devextreme-react/slider';
 
-import service from './data.ts';
-import CustomTitle from './CustomTitle.tsx';
-import CustomItem from './CustomItem.tsx';
+import service from './data';
+import CustomTitle from './CustomTitle';
+import CustomItem from './CustomItem';
+import { NativeEventInfo } from 'devextreme/events';
+import dxSlider from 'devextreme/ui/slider';
+import { ValueChangedInfo } from 'devextreme/ui/editor/editor';
+import dxCheckBox from 'devextreme/ui/check_box';
+import dxTagBox from 'devextreme/ui/tag_box';
 
 const companyLabel = { 'aria-label': 'Company' };
 
@@ -106,25 +111,25 @@ class App extends React.Component {
     });
   }
 
-  selectedItemsChanged(e: { value: any; }) {
+  selectedItemsChanged(e: NativeEventInfo<dxTagBox, Event | KeyboardEvent | MouseEvent | PointerEvent> & ValueChangedInfo) {
     this.setState({
       selectedItems: e.value,
     });
   }
 
-  multipleChanged(e: { value: any; }) {
+  multipleChanged(e: NativeEventInfo<dxCheckBox, Event> & ValueChangedInfo) {
     this.setState({
       multiple: e.value,
     });
   }
 
-  collapsibleChanged(e: { value: any; }) {
+  collapsibleChanged(e: NativeEventInfo<dxCheckBox, Event> & ValueChangedInfo) {
     this.setState({
       collapsible: e.value,
     });
   }
 
-  animationDurationChanged(e: { value: any; }) {
+  animationDurationChanged(e: NativeEventInfo<dxSlider, Event> & ValueChangedInfo) {
     this.setState({
       animationDuration: e.value,
     });
