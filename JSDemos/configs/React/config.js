@@ -1,6 +1,15 @@
 window.config = {
-  transpiler: 'plugin-babel',
+  transpiler: 'ts',
+  typescriptOptions: {
+    module: 'system',
+    emitDecoratorMetadata: true,
+    experimentalDecorators: true,
+    jsx: 'react',
+  },
   meta: {
+    'typescript': {
+      'exports': 'ts',
+    },
     'devextreme/localization.js': {
       'esModule': true,
     },
@@ -25,6 +34,8 @@ window.config = {
   },
   defaultExtension: 'js',
   map: {
+    'ts': 'npm:plugin-typescript/lib/plugin.js',
+    'typescript': 'npm:typescript/lib/typescript.js',
     'react': 'npm:react/umd/react.development.js',
     'react-dom': 'npm:react-dom/umd/react-dom.development.js',
     'prop-types': 'npm:prop-types/prop-types.js',
