@@ -292,6 +292,7 @@ module.exports = {
   overrides: [{
     'files': [
       '*.ts',
+      '*.tsx',
     ],
     extends: ['devextreme/typescript'],
     parserOptions: {
