@@ -1,25 +1,54 @@
 [
     {
-        "files": {
-            "renameExtensions": true
-        },
-        "fixes": {
-            "importExtensions": true
-        },
-        "include": [
-            "JSDemos/Demos/Accordion/**/React/!(*config).{js,jsx}"
-        ],
-        "project": "./tsconfig.json"
-    },
-    {
         "fixes": {
             "incompleteTypes": true,
-            "missingProperties": true,
-            "noImplicitAny": true
+            "noImplicitAny": true,
+            "noImplicitThis": true,
+            "inferableTypes": true,
+            "strictNonNullAssertions": true
+        },
+        "include": [
+            "test/**/*.{ts,tsx}"
+        ],
+        "projectPath": "./tsconfig.json",
+        "types": {
+            "strictNullChecks": true
+        }
+    },
+    {
+        "exclude": [
+            "test/**/*.{ts,tsx}"
+        ],
+        "fixes": {
+            "incompleteTypes": true,
+            "noImplicitAny": true,
+            "noImplicitThis": true,
+            "inferableTypes": true,
+            "strictNonNullAssertions": true
         },
         "include": [
             "JSDemos/Demos/Accordion/**/React/*.{ts,tsx}"
         ],
-        "project": "./tsconfig.json"
+        "projectPath": "./tsconfig.json",
+        "types": {
+            "strictNullChecks": true
+        }
+    },
+    {
+        "fixes": {
+            "incompleteTypes": true,
+            "noImplicitAny": true,
+            "noImplicitThis": true,
+            "inferableTypes": true,
+            "strictNonNullAssertions": true
+        },
+        "include": [
+            "test/**/*.{ts,tsx}",
+            "JSDemos/Demos/Accordion/**/React/*.{ts,tsx}"
+        ],
+        "projectPath": "./tsconfig.json",
+        "types": {
+            "strictNullChecks": true
+        }
     }
 ]
