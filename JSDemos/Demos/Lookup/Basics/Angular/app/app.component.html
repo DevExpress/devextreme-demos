@@ -14,10 +14,10 @@
   <div class="dx-fieldset-header">Grouped lookup</div>
   <div class="dx-field">
     <dx-lookup
+      displayExpr="Subject"
       [dataSource]="dataSource"
       [grouped]="true"
       [inputAttr]="{ 'aria-label': 'Grouped lookup' }"
-      displayExpr="Subject"
     >
       <dxo-drop-down-options [hideOnOutsideClick]="true" [showTitle]="false">
       </dxo-drop-down-options>
