@@ -4,9 +4,9 @@ import CheckBox from 'devextreme-react/check-box';
 import TagBox from 'devextreme-react/tag-box';
 import Slider, { Tooltip, Label } from 'devextreme-react/slider';
 
-import service from './data.js';
-import CustomTitle from './CustomTitle.js';
-import CustomItem from './CustomItem.js';
+import service from './data.ts';
+import CustomTitle from './CustomTitle.tsx';
+import CustomItem from './CustomItem.tsx';
 
 const companyLabel = { 'aria-label': 'Company' };
 
