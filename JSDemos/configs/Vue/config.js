@@ -27,6 +27,7 @@ window.config = {
     'npm:': '../../../../../node_modules/',
   },
   map: {
+    'vue/compiler-sfc': 'npm:@vue/compiler-sfc/dist/compiler-sfc.esm-browser.js',
     'vue': 'npm:vue/dist/vue.esm-browser.js',
     'vue-loader': 'npm:dx-systemjs-vue-browser/index.js',
 

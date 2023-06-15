@@ -6,10 +6,10 @@
           <div class="label">Title</div>
           <div class="value">
             <DxTextBox
-                v-model:value="text"
-                :max-length="40"
-                :input-attr="{ 'aria-label': 'Title' }"
-                value-change-event="keyup"
+              v-model:value="text"
+              :max-length="40"
+              :input-attr="{ 'aria-label': 'Title' }"
+              value-change-event="keyup"
             />
           </div>
         </div>
@@ -17,8 +17,8 @@
           <div class="label">Color</div>
           <div class="value">
             <DxColorBox
-                v-model:value="color"
-                apply-value-mode="instantly"
+              v-model:value="color"
+              apply-value-mode="instantly"
             />
           </div>
         </div>
@@ -28,12 +28,12 @@
           <div class="label">Width</div>
           <div class="value">
             <DxNumberBox
-                v-model:value="width"
-                :show-spin-buttons="true"
-                :max="700"
-                :min="70"
-                format="#0px"
-                :input-attr="{ 'aria-label': 'Width' }"
+              v-model:value="width"
+              :show-spin-buttons="true"
+              :max="700"
+              :min="70"
+              format="#0px"
+              :input-attr="{ 'aria-label': 'Width' }"
             />
           </div>
         </div>
@@ -41,12 +41,12 @@
           <div class="label">Height</div>
           <div class="value">
             <DxNumberBox
-                v-model:value="height"
-                :show-spin-buttons="true"
-                :max="700"
-                :min="70"
-                format="#0px"
-                :input-attr="{ 'aria-label': 'Height' }"
+              v-model:value="height"
+              :show-spin-buttons="true"
+              :max="700"
+              :min="70"
+              format="#0px"
+              :input-attr="{ 'aria-label': 'Height' }"
             />
           </div>
         </div>
@@ -56,12 +56,12 @@
           <div class="label">Transform</div>
           <div class="value">
             <DxSelectBox
-                v-model:value="transform"
-                :items="transformations"
-                :input-attr="{ 'aria-label': 'Transform' }"
-                :grouped="true"
-                display-expr="name"
-                value-expr="value"
+              v-model:value="transform"
+              :items="transformations"
+              :input-attr="{ 'aria-label': 'Transform' }"
+              :grouped="true"
+              display-expr="name"
+              value-expr="value"
             />
           </div>
         </div>
@@ -74,12 +74,12 @@
       </div>
     </div>
     <SuperheroLogo
-        :color="color"
-        :text="text"
-        :width="width"
-        :height="height"
-        :transform="transform"
-        :border="border"
+      :color="color"
+      :text="text"
+      :width="width"
+      :height="height"
+      :transform="transform"
+      :border="border"
     />
   </div>
 </template>

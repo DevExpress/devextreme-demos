@@ -1,10 +1,10 @@
 <template>
   <DxForm
-      :form-data="data"
-      :items="items"
-      :col-count="2"
-      :customize-item="customizeItem"
-      class="address-form form-container"
+    :form-data="data"
+    :items="items"
+    :col-count="2"
+    :customize-item="customizeItem"
+    class="address-form form-container"
   >
     <template #form-item="{ data: item }">
       <span>

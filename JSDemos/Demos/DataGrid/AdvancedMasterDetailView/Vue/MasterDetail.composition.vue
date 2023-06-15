@@ -1,21 +1,21 @@
 <template>
   <DxTabPanel>
     <DxItem
-        title="Orders"
-        template="orders-tab"
+      title="Orders"
+      template="orders-tab"
     />
     <template #orders-tab>
       <OrdersTab
-          :supplier-id="masterDetailData.key"
+        :supplier-id="masterDetailData.key"
       />
     </template>
     <DxItem
-        title="Address"
-        template="address-tab"
+      title="Address"
+      template="address-tab"
     />
     <template #address-tab>
       <AddressTab
-          :data="masterDetailData.data"
+        :data="masterDetailData.data"
       />
     </template>
   </DxTabPanel>
