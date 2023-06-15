@@ -11,8 +11,10 @@ import CustomItem from './CustomItem.tsx';
 const companyLabel = { 'aria-label': 'Company' };
 
 class App extends React.Component {
-companies: { ID: number; CompanyName: string; Address: string; City: string; State: string; Zipcode: number; Phone: string; Fax: string; Website: string; }[];
-state: { selectedItems: any[]; multiple: boolean; collapsible: boolean; animationDuration: number; };
+  companies: { ID: number; CompanyName: string; Address: string; City: string; State: string; Zipcode: number; Phone: string; Fax: string; Website: string; }[];
+
+  state: { selectedItems: any[]; multiple: boolean; collapsible: boolean; animationDuration: number; };
+
   constructor(props) {
     super(props);
     this.companies = service.getCompanies();
