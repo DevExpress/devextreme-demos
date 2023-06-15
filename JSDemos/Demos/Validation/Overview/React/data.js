@@ -31,3 +31,4 @@ export const dateLabel = { 'aria-label': 'Date' };
 export const cityLabel = { 'aria-label': 'City' };
 export const addressLabel = { 'aria-label': 'Address' };
 export const passwordLabel = { 'aria-label': 'Password' };
+export const countryLabel = { 'aria-label': 'Country' };

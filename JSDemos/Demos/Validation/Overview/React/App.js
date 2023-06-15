@@ -19,10 +19,8 @@ import {
 import notify from 'devextreme/ui/notify';
 import {
   countries, nameLabel, passwordLabel, emailLabel,
-  maskLabel, dateLabel, cityLabel, addressLabel,
+  maskLabel, dateLabel, cityLabel, addressLabel, countryLabel,
 } from './data.js';
-
-const countryLabel = { 'aria-label': 'Country' };
 
 class App extends React.Component {
   constructor(props) {
