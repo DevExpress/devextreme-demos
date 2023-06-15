@@ -4,9 +4,10 @@ import CheckBox from 'devextreme-react/check-box';
 import TagBox from 'devextreme-react/tag-box';
 import Slider, { Tooltip, Label } from 'devextreme-react/slider';
 
-import service from './data';
-import CustomTitle from './CustomTitle';
-import CustomItem from './CustomItem';
+import service from './data.ts';
+import CustomTitle from './CustomTitle.tsx';
+import CustomItem from './CustomItem.tsx';
+
 import { NativeEventInfo } from 'devextreme/events';
 import dxSlider from 'devextreme/ui/slider';
 import { ValueChangedInfo } from 'devextreme/ui/editor/editor';

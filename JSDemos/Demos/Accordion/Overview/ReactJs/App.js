@@ -3,9 +3,9 @@ import Accordion from 'devextreme-react/accordion';
 import CheckBox from 'devextreme-react/check-box';
 import TagBox from 'devextreme-react/tag-box';
 import Slider, { Tooltip, Label } from 'devextreme-react/slider';
-import service from './data';
-import CustomTitle from './CustomTitle';
-import CustomItem from './CustomItem';
+import service from './data.js';
+import CustomTitle from './CustomTitle.js';
+import CustomItem from './CustomItem.js';
 
 const companyLabel = { 'aria-label': 'Company' };
 class App extends React.Component {
