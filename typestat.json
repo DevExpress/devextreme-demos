@@ -1,0 +1,25 @@
+[
+    {
+        "files": {
+            "renameExtensions": true
+        },
+        "fixes": {
+            "importExtensions": true
+        },
+        "include": [
+            "JSDemos/Demos/Accordion/**/React/!(*config).{js,jsx}"
+        ],
+        "project": "./tsconfig.json"
+    },
+    {
+        "fixes": {
+            "incompleteTypes": true,
+            "missingProperties": true,
+            "noImplicitAny": true
+        },
+        "include": [
+            "JSDemos/Demos/Accordion/**/React/*.{ts,tsx}"
+        ],
+        "project": "./tsconfig.json"
+    }
+]
