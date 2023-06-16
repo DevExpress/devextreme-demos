@@ -314,16 +314,14 @@ jobs:
       run: |
         mkdir ./devextreme-angular-repo/devextreme-setup
         cp ./devextreme-installer.tgz ./devextreme-angular-repo/devextreme-setup
-        cp ./devextreme-dist-installer.tgz ./devextreme-angular-repo/devextreme-setup
 
     - name: Install devextreme package
       working-directory: ./devextreme-angular-repo
       run: |
         pushd devextreme-setup
         installerName=$(realpath .)/$(ls devextreme-installer.tgz)
-        installerDistName=$(realpath .)/$(ls devextreme-dist-installer.tgz)
         popd
-        npm install --save-dev --legacy-peer-deps $installerName $installerDistName
+        npm install --save-dev --legacy-peer-deps $installerName --workspace=devextreme-angular
 
     - name: Build and Pack
       working-directory: ./devextreme-angular-repo
