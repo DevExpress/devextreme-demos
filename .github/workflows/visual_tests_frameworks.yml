@@ -225,7 +225,6 @@ jobs:
       run: |
         mkdir ./devextreme-vue-repo/devextreme-setup
         cp ./devextreme-installer.tgz ./devextreme-vue-repo/devextreme-setup
-        cp ./devextreme-dist-installer.tgz ./devextreme-vue-repo/devextreme-setup
 
     - name: Install packages for devextreme-vue
       working-directory: ./devextreme-vue-repo
@@ -233,9 +232,8 @@ jobs:
         npm run restore-devextreme
         pushd devextreme-setup
         installerName=$(realpath .)/$(ls devextreme-installer.tgz)
-        installerDistName=$(realpath .)/$(ls devextreme-dist-installer.tgz)
         popd
-        npm install --save-dev --legacy-peer-deps $installerName $installerDistName
+        npm install --save-dev --legacy-peer-deps $installerName --workspace=devextreme-vue --workspace=devextreme-vue2-strategy
         npm run generate-metadata
 
     - name: Build and Pack
