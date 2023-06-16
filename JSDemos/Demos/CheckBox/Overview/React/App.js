@@ -2,7 +2,7 @@ import React from 'react';
 import { CheckBox } from 'devextreme-react/check-box';
 
 const checkedLabel = { 'aria-label': 'Checked' };
-const unCheckedLabel = { 'aria-label': 'Unchecked' };
+const uncheckedLabel = { 'aria-label': 'Unchecked' };
 const indeterminateLabel = { 'aria-label': 'Indeterminate' };
 const threeStateModeLabel = { 'aria-label': 'Three state mode' };
 const handleValueChangeLabel = { 'aria-label': 'Handle value change' };
@@ -37,7 +37,7 @@ class App extends React.Component {
           <div className="dx-field">
             <div className="dx-field-label">Unchecked</div>
             <div className="dx-field-value">
-              <CheckBox defaultValue={false} elementAttr={unCheckedLabel} />
+              <CheckBox defaultValue={false} elementAttr={uncheckedLabel} />
             </div>
           </div>
           <div className="dx-field">
