@@ -9,6 +9,7 @@
             .DisplayExpr(new JS("lookup_displayExpr"))
             .DropDownOptions(p => p.ShowTitle(false))
             .Placeholder("Select employee")
+            .InputAttr("aria-label", "Lookup")
             .OnValueChanged("lookup_valueChanged")
             .ApplyValueMode(EditorApplyValueMode.Instantly)
         )
