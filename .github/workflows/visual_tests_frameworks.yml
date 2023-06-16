@@ -221,6 +221,10 @@ jobs:
     - name: Clone devextreme-vue repo
       run: test -d ./devextreme-vue-repo || git clone -b master https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
 
+    - name: Install packages for devextreme-vue
+      working-directory: ./devextreme-vue-repo
+      run: npm install --no-audit --no-fund
+
     - name: Copy devextreme package
       run: |
         mkdir ./devextreme-vue-repo/devextreme-setup
