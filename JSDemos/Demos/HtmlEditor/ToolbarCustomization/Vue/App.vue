@@ -10,7 +10,7 @@
         <DxItem
           name="header"
           :accepted-values="headerValues"
-          :option="headerOptions"
+          :options="headerOptions"
         />
         <DxItem name="separator"/>
         <DxItem name="bold"/>
