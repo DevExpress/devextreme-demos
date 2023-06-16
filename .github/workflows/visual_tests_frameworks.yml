@@ -143,7 +143,6 @@ jobs:
       run: |
         mkdir ./devextreme-react-repo/devextreme-setup
         cp ./devextreme-installer.tgz ./devextreme-react-repo/devextreme-setup
-        cp ./devextreme-dist-installer.tgz ./devextreme-react-repo/devextreme-setup
 
     - name: Get devextreme-react ref
       working-directory: ./devextreme-react-repo
@@ -155,14 +154,13 @@ jobs:
       run: |
         pushd devextreme-setup
         installerName=$(realpath .)/$(ls devextreme-installer.tgz)
-        installerDistName=$(realpath .)/$(ls devextreme-dist-installer.tgz)
         popd
         cd ./packages/devextreme-react
-        npm install --save-dev $installerName $installerDistName
+        npm install --save-dev $installerName
         cd ../sandbox
-        npm install --save-dev $installerName $installerDistName
+        npm install --save-dev $installerName
         cd ../../
-        npm install --save-dev $installerName $installerDistName
+        npm install --save-dev $installerName
 
     - name: Install packages for devextreme-react
       working-directory: ./devextreme-react-repo
@@ -237,7 +235,7 @@ jobs:
         pushd devextreme-setup
         installerName=$(realpath .)/$(ls devextreme-installer.tgz)
         popd
-        npm install --save-dev --legacy-peer-deps $installerName --workspace=devextreme-vue --workspace=devextreme-vue2-strategy
+        npm install --save-dev --legacy-peer-deps $installerName --workspace=devextreme-vue --workspace=devextreme-vue2-strategy --include-workspace-root
         npm run generate-metadata
 
     - name: Build and Pack
