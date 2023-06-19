@@ -17,7 +17,7 @@
     </div>
     <div class="right-content">
         <div class="title-container">
-            <img alt="country flag" class="flag" id="country-flag" src="@Model.Flag" />
+            <img class="flag" id="country-flag" src="@Model.Flag" />
             <div>
                 <div class="country-name" id="full-country-name">@Model.FullName</div>
                 <div id="country-description">@Model.Description</div>
@@ -49,7 +49,7 @@
             </text>)
             .ItemTemplate(@<text>
 
-                <img alt="country flag" class="flag" src="<%- Flag %>" />
+                <img class="flag" src="<%- Flag %>" />
                 <div class="right-content">
                     <div><b><%- (typeof Capital != "undefined" && Capital) ? "Capital. " : "" %></b><%- Description %></div>
                     <div class="stats">

@@ -5,7 +5,7 @@
     <ul class="products">
         @foreach(var product in Model) {
             <li>
-                <img alt="@product.Name" src="@product.ImageSrc" />
+                <img src="@product.ImageSrc" />
                 <div class="name">@product.Name</div>
                 @(Html.DevExtreme().CheckBox()
                     .Text("Available")

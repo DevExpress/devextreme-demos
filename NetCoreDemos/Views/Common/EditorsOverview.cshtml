@@ -22,7 +22,6 @@
                 @(Html.DevExtreme().ColorBox()
                     .Value("#f05b41")
                     .ApplyValueMode(EditorApplyValueMode.Instantly)
-                    .InputAttr("aria-label", "Color")
                     .OnValueChanged(@<text>
                         function(e) {
                             $(".color").css("fill", e.value);

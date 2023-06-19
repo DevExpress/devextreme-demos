@@ -1,7 +1,7 @@
 ﻿<div class="form">
     <div class="label">Default mode</div>
     <div>
-        <img alt="ExcelRemote IR" id="product1" src="~/Content/Images/ProductsLarge/17.png">
+        <img id="product1" src="~/Content/Images/ProductsLarge/17.png">
         @(Html.DevExtreme().Tooltip()
             .Target("#product1")
             .ShowEvent("mouseenter")
@@ -12,7 +12,7 @@
     </div>
     <div class="label">With template</div>
     <div>
-        <img alt="SuperPlasma 50" id="product2" src="~/Content/Images/ProductsLarge/3.png">
+        <img id="product2" src="~/Content/Images/ProductsLarge/3.png">
         @(Html.DevExtreme().Tooltip()
             .Target("#product2")
             .ShowEvent("mouseenter")
@@ -20,7 +20,7 @@
             .HideOnOutsideClick(false)
             .Position(Position.Right)
             .ContentTemplate(@<text>
-                <img alt="SuperPlasma 50" width="150" src="~/Content/Images/ProductsLarge/3.png">
+                <img width="150" src="~/Content/Images/ProductsLarge/3.png">
                 <br />
                 <b>SuperPlasma 50</b>
                 <br />
@@ -30,7 +30,7 @@
     </div>
     <div class="label">With animation</div>
     <div>
-        <img alt="Projector PlusHD" id="product3" src="~/Content/Images/ProductsLarge/15.png">
+        <img id="product3" src="~/Content/Images/ProductsLarge/15.png">
         @(Html.DevExtreme().Tooltip()
             .ContentTemplate("Projector PlusHD")
             .Target("#product3")
