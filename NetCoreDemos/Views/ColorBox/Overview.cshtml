@@ -5,6 +5,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().ColorBox()
                     .Value("#f05b41")
+                    .InputAttr("aria-label", "Checked")
                 )
             </div>
         </div>
@@ -14,6 +15,7 @@
                 @(Html.DevExtreme().ColorBox()
                     .Value("#f05b41")
                     .EditAlphaChannel(true)
+                    .InputAttr("aria-label", "With alpha channel editing")
                 )
             </div>
         </div>
@@ -24,6 +26,7 @@
                     .Value("#f05b41")
                     .ApplyButtonText("Apply")
                     .CancelButtonText("Decline")
+                    .InputAttr("aria-label", "Custom button captions")
                 )
             </div>
         </div>
@@ -33,6 +36,7 @@
                 @(Html.DevExtreme().ColorBox()
                     .Value("#f05b41")
                     .ReadOnly(true)
+                    .InputAttr("aria-label", "Read only")
                 )
             </div>
         </div>
@@ -42,6 +46,7 @@
                 @(Html.DevExtreme().ColorBox()
                     .Value("#f05b41")
                     .Disabled(true)
+                    .InputAttr("aria-label", "Disabled")
                 )
             </div>
         </div>
@@ -56,6 +61,7 @@
                 @(Html.DevExtreme().ColorBox()
                     .Value("#f05b41")
                     .ApplyValueMode(EditorApplyValueMode.Instantly)
+                    .InputAttr("aria-label", "Event Handling")
                     .OnValueChanged("colorBox_valueChanged")
                     .OnInput("colorBox_inputChanged")
                 )

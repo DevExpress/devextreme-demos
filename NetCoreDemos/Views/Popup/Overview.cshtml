@@ -75,7 +75,7 @@
     <ul class="employees">
         @foreach (var employee in Model) {
             <li>
-                <img src="@employee.Picture" id="@("image" + employee.ID)" /><br />
+                <img alt="@employee.FirstName @employee.Lastname" src="@employee.Picture" id="@("image" + employee.ID)" /><br />
                 <i>@employee.FirstName</i>
                 <i>@employee.LastName</i><br />
 

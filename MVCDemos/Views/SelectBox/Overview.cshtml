@@ -70,7 +70,7 @@
                     .FieldTemplate(@<text>
                         <div class="custom-item">
                             <% if(typeof ImageSrc !== 'undefined') { %>
-                                <img src="<%- ImageSrc %>" />
+                                <img alt='Product name' src="<%- ImageSrc %>" />
                             <% } %>
                             @(Html.DevExtreme().TextBox()
                                 .Value(new JS("typeof Name !== 'undefined' && Name"))
@@ -82,7 +82,7 @@
                     </text>)
                     .ItemTemplate(@<text>
                         <div class="custom-item">
-                            <img src="<%- ImageSrc %>" />
+                            <img alt='Product name' src="<%- ImageSrc %>" />
                             <div class="product-name"><%- Name %></div>
                         </div>
                     </text>)

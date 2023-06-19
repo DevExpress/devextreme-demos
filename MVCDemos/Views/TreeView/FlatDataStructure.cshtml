@@ -12,7 +12,7 @@
 )
 
 <div id="product-details" class="hidden">
-    <img src="" />
+    <img alt="Product details" src="" />
     <div class="name"></div>
     <div class="price"></div>
 </div>
@@ -22,7 +22,7 @@
         var item = e.itemData;
         if(item.Price) {
             $("#product-details").removeClass("hidden");
-            $("#product-details > img").attr("src", item.Image);
+            $("#product-details > img").attr("alt", item.Text).attr("src", item.Image);
             $("#product-details > .price").text("$" + item.Price);
             $("#product-details > .name").text(item.Text);
         } else {
