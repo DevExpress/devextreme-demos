@@ -12,8 +12,20 @@
     <script src="index.js"></script>
     <script src="data.js"></script>
   </head>
-  <body class="dx-viewport">
-    <div class="demo-container">
+<body class="dx-viewport">
+  <div class="demo-container">
+    <div class="options">
+      <div class="caption">Options</div>
+      <div class="option">
+        <label>Styling Mode</label>
+        <div id="styling-mode-selector"></div>
+      </div>
+      <div class="option">
+        <label>Label Mode</label>
+        <div id="label-mode-selector"></div>
+      </div>
+    </div>
+    <div class="widgets-container">
       <div class="title">Edit Profile</div>
       <div id="name"></div>
       <div id="address"></div>
@@ -23,18 +35,8 @@
       <div id="hire-date"></div>
       <div id="vacation-dates"></div>
       <div id="notes"></div>
-      <div id="validate"></div>
-      <div class="options">
-        <div class="caption">Options</div>
-        <div class="option">
-          <label>Styling Mode</label>
-          <div id="styling-mode-selector"></div>
-        </div>
-        <div class="option">
-          <label>Label Mode</label>
-          <div id="label-mode-selector"></div>
-        </div>
-      </div>
     </div>
-  </body>
+    <div id="validate"></div>
+  </div>
+</body>
 </html>
