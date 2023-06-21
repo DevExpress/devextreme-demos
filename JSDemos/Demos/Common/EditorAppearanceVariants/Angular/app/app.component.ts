@@ -28,7 +28,7 @@ if (!/localhost/.test(document.location.host)) {
 })
 
 export class AppComponent {
-  stylingMode = 'filled';
+  stylingMode = 'outlined';
 
   labelMode = 'static';
 
