@@ -1,17 +1,19 @@
 #app {
   height: 610px;
+}
+
+.widgets-container {
   display: grid;
   grid-template-areas:
     'title title title title'
     'name name birthDate birthDate '
     'address address state phone'
     'hireDate hireDate range range'
-    'notes notes notes notes'
-    '. . . validate'
-    'options options options options';
-  grid-template-rows: auto auto auto auto auto auto auto 1fr;
+    'notes notes notes notes';
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .title {
@@ -53,13 +55,16 @@
 }
 
 #validate {
-  grid-area: validate;
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
+  width: 100px;
 }
 
 .options {
   grid-area: options;
   padding: 20px;
-  margin-top: 40px;
+  margin-bottom: 40px;
   background-color: rgba(191, 191, 191, 0.15);
 }
 
@@ -68,8 +73,11 @@
   font-weight: 500;
 }
 
+.editors-modes {
+  display: flex;
+}
+
 .option {
   padding-right: 20px;
-  float: left;
   margin-top: 20px;
 }
