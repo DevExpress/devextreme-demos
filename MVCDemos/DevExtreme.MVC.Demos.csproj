@@ -1076,6 +1076,7 @@
     <Content Include="Content\DemosStyles\DataGrid\DeferredSelection.css" />
     <Content Include="Content\DemosStyles\DataGrid\Filtering.css" />
     <Content Include="Content\DemosStyles\DataGrid\FilteringAPI.css" />
+    <Content Include="Content\DemosStyles\DataGrid\ColumnHeaderFilter.css" />
     <Content Include="Content\DemosStyles\DataGrid\InfiniteScrolling.css" />
     <Content Include="Content\DemosStyles\DataGrid\MultipleRecordSelectionAPI.css" />
     <Content Include="Content\DemosStyles\DataGrid\MultipleRecordSelectionModes.css" />
@@ -2265,7 +2266,7 @@
     <Content Include="Views\Gantt\ExportToPDF.cshtml" />
     <Content Include="Views\Scheduler\AllDayPanelMode.cshtml" />
     <Content Include="Views\DataGrid\ColumnChooser.cshtml" />
-    <Content Include="Views\DataGrid\UsingHeaderFilter.cshtml" />
+    <Content Include="Views\DataGrid\ColumnHeaderFilter.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

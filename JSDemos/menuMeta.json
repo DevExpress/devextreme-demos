@@ -447,8 +447,8 @@
             ]
           },
           {
-            "Title": "Using Header Filter",
-            "Name": "UsingHeaderFilter",
+            "Title": "Column Header Filter",
+            "Name": "ColumnHeaderFilter",
             "Widget": "DataGrid",
             "MvcAdditionalFiles": [
               "/Models/DataGrid/Employee.cs",
@@ -1206,8 +1206,7 @@
               "/Models/Sale.cs",
               "/Models/SampleData/Sales.cs"
             ],
-            "DemoType": "Web",
-            "Badge": "Updated"
+            "DemoType": "Web"
           }
         ]
       }
@@ -2895,8 +2894,7 @@
             "Name": "RangeBar",
             "Widget": "Charts",
             "DemoType": "Viz",
-            "Equivalents": "rangeBar",
-            "Badge": "Updated"
+            "Equivalents": "rangeBar"
           },
           {
             "Title": "Timeline Chart",
@@ -3912,7 +3910,6 @@
             "Title": "Adaptability",
             "Name": "Adaptability",
             "Widget": "Toolbar",
-            "Badge": "New",
             "DemoType": "Web",
             "MvcAdditionalFiles": [
               "/Models/SimpleData.cs",
@@ -4108,7 +4105,6 @@
             "Title": "Overview",
             "Name": "Overview",
             "Widget": "Autocomplete",
-            "Badge": "Updated",
             "Modules": "whatwg-fetch",
             "MvcAdditionalFiles": [
               "/Models/SampleData/Names.cs",
@@ -4126,8 +4122,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "Widget": "Calendar",
-            "Badge": "Updated"
+            "Widget": "Calendar"
           }
         ]
       },
@@ -4143,8 +4138,7 @@
             "MvcAdditionalFiles": [
               "/Controllers/CheckBoxController.cs",
               "/Views/CheckBox/Overview.cshtml"
-            ],
-            "Badge": "Updated"
+            ]
           }
         ]
       },
@@ -4380,7 +4374,6 @@
             "Title": "Overview",
             "Name": "Overview",
             "Widget": "Validation",
-            "Badge": "Updated",
             "MvcAdditionalFiles": [
               "/Views/Validation/SuccessValidation.cshtml",
               "/ViewModels/EditorsViewModel.cs",
@@ -4545,8 +4538,7 @@
           {
             "Title": "Customize Item",
             "Name": "CustomizeItem",
-            "Widget": "Form",
-            "Badge": "Updated"
+            "Widget": "Form"
           },
           {
             "Title": "Grouped Fields",
@@ -4728,8 +4720,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "Widget": "RangeSlider",
-            "Badge": "Updated"
+            "Widget": "RangeSlider"
           }
         ]
       },
@@ -4768,8 +4759,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "Widget": "Slider",
-            "Badge": "Updated"
+            "Widget": "Slider"
           }
         ]
       },
@@ -5206,6 +5196,7 @@
             "Title": "List Selection",
             "Name": "ListSelection",
             "Widget": "List",
+            "Badge": "Updated",
             "MvcAdditionalFiles": [
               "/Models/ListItem.cs",
               "/Models/SampleData/ListPlainData.cs"
@@ -5469,7 +5460,6 @@
             "Name": "DynamicViewport",
             "Widget": "VectorMap",
             "Modules": "vectormap",
-            "Badge": "Updated",
             "MvcAdditionalFiles": [
               "/Models/SampleData/ViewportCoordinateData.cs",
               "/Models/ViewportCoordinate.cs"
@@ -5640,8 +5630,7 @@
             "MvcAdditionalFiles": [
               "/Models/DataGrid/Employee.cs",
               "/Models/SampleData/DataGridEmployees.cs"
-            ],
-            "Badge": "Updated"
+            ]
           },
           {
             "Title": "Scrolling",

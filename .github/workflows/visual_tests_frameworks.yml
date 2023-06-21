@@ -43,10 +43,10 @@ jobs:
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
-    - name: Use Node.js 15
+    - name: Use Node.js 18
       uses: actions/setup-node@v3
       with:
-        node-version: '15'
+        node-version: '18'
 
     - name: Install packages
       working-directory: ./devextreme
@@ -143,7 +143,6 @@ jobs:
       run: |
         mkdir ./devextreme-react-repo/devextreme-setup
         cp ./devextreme-installer.tgz ./devextreme-react-repo/devextreme-setup
-        cp ./devextreme-dist-installer.tgz ./devextreme-react-repo/devextreme-setup
 
     - name: Get devextreme-react ref
       working-directory: ./devextreme-react-repo
@@ -155,14 +154,13 @@ jobs:
       run: |
         pushd devextreme-setup
         installerName=$(realpath .)/$(ls devextreme-installer.tgz)
-        installerDistName=$(realpath .)/$(ls devextreme-dist-installer.tgz)
         popd
         cd ./packages/devextreme-react
-        npm install --save-dev $installerName $installerDistName
+        npm install --save-dev $installerName
         cd ../sandbox
-        npm install --save-dev $installerName $installerDistName
+        npm install --save-dev $installerName
         cd ../../
-        npm install --save-dev $installerName $installerDistName
+        npm install --save-dev $installerName
 
     - name: Install packages for devextreme-react
       working-directory: ./devextreme-react-repo
@@ -221,11 +219,14 @@ jobs:
     - name: Clone devextreme-vue repo
       run: test -d ./devextreme-vue-repo || git clone -b master https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
 
+    - name: Install packages for devextreme-vue
+      working-directory: ./devextreme-vue-repo
+      run: npm install --no-audit --no-fund
+
     - name: Copy devextreme package
       run: |
         mkdir ./devextreme-vue-repo/devextreme-setup
         cp ./devextreme-installer.tgz ./devextreme-vue-repo/devextreme-setup
-        cp ./devextreme-dist-installer.tgz ./devextreme-vue-repo/devextreme-setup
 
     - name: Install packages for devextreme-vue
       working-directory: ./devextreme-vue-repo
@@ -233,9 +234,8 @@ jobs:
         npm run restore-devextreme
         pushd devextreme-setup
         installerName=$(realpath .)/$(ls devextreme-installer.tgz)
-        installerDistName=$(realpath .)/$(ls devextreme-dist-installer.tgz)
         popd
-        npm install --save-dev --legacy-peer-deps $installerName $installerDistName
+        npm install --save-dev --legacy-peer-deps $installerName --workspace=devextreme-vue --workspace=devextreme-vue2-strategy --include-workspace-root
         npm run generate-metadata
 
     - name: Build and Pack
@@ -288,10 +288,10 @@ jobs:
 
     #Build devextreme-angular
 
-    - name: Use Node.js 14
+    - name: Use Node.js 18
       uses: actions/setup-node@v3
       with:
-        node-version: '14'
+        node-version: '18'
 
     - name: Download devextreme sources
       uses: actions/download-artifact@v3
@@ -306,34 +306,22 @@ jobs:
     - name: Clone devextreme-angular repo
       run: test -d ./devextreme-angular-repo || git clone -b master https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
 
+    - name: Install packages for devextreme-angular
+      working-directory: ./devextreme-angular-repo
+      run: npm install --no-audit --no-fund
+
     - name: Copy devextreme package
       run: |
         mkdir ./devextreme-angular-repo/devextreme-setup
         cp ./devextreme-installer.tgz ./devextreme-angular-repo/devextreme-setup
-        cp ./devextreme-dist-installer.tgz ./devextreme-angular-repo/devextreme-setup
-
-    - name: Get devextreme-angular ref
-      working-directory: ./devextreme-angular-repo
-      id: devextreme-angular-ref
-      run: echo "::set-output name=head::$(git rev-parse HEAD)"
 
     - name: Install devextreme package
       working-directory: ./devextreme-angular-repo
       run: |
         pushd devextreme-setup
         installerName=$(realpath .)/$(ls devextreme-installer.tgz)
-        installerDistName=$(realpath .)/$(ls devextreme-dist-installer.tgz)
         popd
-        cd ./packages/devextreme-angular
-        npm install --save-dev $installerName $installerDistName
-        cd ../sandbox
-        npm install --save-dev $installerName $installerDistName
-        cd ../../
-        npm install --save-dev $installerName $installerDistName
-
-    - name: Install packages for devextreme-angular
-      working-directory: ./devextreme-angular-repo
-      run: npm install --no-audit --no-fund
+        npm install --save-dev --legacy-peer-deps $installerName --workspace=devextreme-angular
 
     - name: Build and Pack
       working-directory: ./devextreme-angular-repo
@@ -361,10 +349,10 @@ jobs:
     - name: Get sources
       uses: actions/checkout@v3
 
-    - name: Use Node.js 14
+    - name: Use Node.js 18
       uses: actions/setup-node@v3
       with:
-        node-version: '14'
+        node-version: '18'
 
     - name: Download devextreme sources
       uses: actions/download-artifact@v3
@@ -381,11 +369,6 @@ jobs:
 
     - name: Delete DX packages
       run:  sed -i '/23.1-next/d' ./package.json
-
-    - name: Use Node.js 15
-      uses: actions/setup-node@v3
-      with:
-        node-version: '15'
 
     - name: Install packages
       run: npm install --no-audit --no-fund
@@ -444,10 +427,10 @@ jobs:
           key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
           restore-keys: ${{ runner.os }}-devextreme-node-modules
 
-      - name: Use Node.js 15
+      - name: Use Node.js 18
         uses: actions/setup-node@v3
         with:
-          node-version: '15'
+          node-version: '18'
 
       - name: Install packages
         working-directory: ./devextreme
