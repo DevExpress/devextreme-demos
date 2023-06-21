@@ -1,6 +1,5 @@
 $(() => {
   const stylingMode = 'outlined';
-  const labelModeWidgets = [];
   DevExpress.config({
     editorStylingMode: stylingMode,
   });
@@ -99,27 +98,23 @@ $(() => {
     },
   });
 
-  labelModeWidgets.push(name, place, birthDate, hireDate, range, state, phone, notes);
+  const getValueChangedHandler = (optionName) => ({ value }) => {
+    [name, place, birthDate, hireDate, range, state, phone, notes].forEach((editor) => {
+      editor.option(optionName, value);
+    });
+  };
 
   $('#styling-mode-selector').dxSelectBox({
     items: ['outlined', 'filled', 'underlined'],
     value: 'outlined',
     inputAttr: { 'aria-label': 'Mode' },
-    onValueChanged({ value }) {
-      labelModeWidgets.forEach((editor) => {
-        editor.option('stylingMode', value);
-      });
-    },
+    onValueChanged: getValueChangedHandler('stylingMode'),
   }).dxSelectBox('instance');
 
   $('#label-mode-selector').dxSelectBox({
     items: ['static', 'floating', 'hidden'],
     value: 'static',
     inputAttr: { 'aria-label': 'Label Mode' },
-    onValueChanged({ value }) {
-      labelModeWidgets.forEach((editor) => {
-        editor.option('labelMode', value);
-      });
-    },
+    onValueChanged: getValueChangedHandler('labelMode'),
   }).dxSelectBox('instance');
 });
