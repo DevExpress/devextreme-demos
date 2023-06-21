@@ -171,7 +171,6 @@ export default function App() {
         type="default"
         id='validate'
       />
-
     </React.Fragment>
   );
 }
