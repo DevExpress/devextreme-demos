@@ -8,6 +8,7 @@
           <DxSelectBox
             :input-attr="{ 'aria-label': 'Styling Mode' }"
             :items="[ 'outlined', 'filled', 'underlined' ]"
+            styling-mode="outlined"
             v-model:value="stylingMode"
           />
         </div>
@@ -16,6 +17,7 @@
           <DxSelectBox
             :input-attr="{ 'aria-label': 'Label Mode' }"
             :items="[ 'static', 'floating', 'hidden' ]"
+            styling-mode="outlined"
             v-model:value="labelMode"
           />
         </div>
@@ -181,7 +183,7 @@ export default {
 </script>
 <style>
 #content-wrapper {
-  height: 610px;
+  height: 680px;
 }
 
 .widgets-container {
