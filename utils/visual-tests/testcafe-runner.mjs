@@ -198,7 +198,7 @@ function accessibilityTestCafeReporter() {
       } = this.violationsCount;
       const total = minor + minor + serious + critical;
 
-      fs.writeFileSync('report.txt', `Axe report: ${total} accessibility issues found (${critical} critical, ${serious} serious, ${moderate} moderate, and ${minor} minor)`);
+      fs.writeFileSync(process.env.ACCESSIBILITY_TESTCAFE_REPORT_PATH || 'accessibility_report.txt', `Axe report: ${total} accessibility issues found (${critical} critical, ${serious} serious, ${moderate} moderate, and ${minor} minor)`);
     },
   };
 }
