@@ -37,6 +37,7 @@
         .InputAttr("aria-label", "Address")
         .Placeholder("Type...")
         .Label("Address")
+        .LabelMode(EditorLabelMode.Static)
     )
     @(Html.DevExtreme().DateBox()
         .ID("birth-date")
@@ -57,6 +58,7 @@
         .InputAttr("aria-label", "State")
         .Placeholder("Select...")
         .Label("State")
+        .LabelMode(EditorLabelMode.Static)
     )
     @(Html.DevExtreme().TextBox()
         .ID("phone")
@@ -70,6 +72,7 @@
         .InputAttr("aria-label", "Hire Date")
         .Placeholder("Select...")
         .Label("Hire Date")
+        .LabelMode(EditorLabelMode.Static)
     )
     @(Html.DevExtreme().DateRangeBox()
         .ID("vacation-dates")
@@ -94,7 +97,6 @@
 )
 
 <script>
-    var storageKey = "stylingMode";
     var stylingMode = "outlined";
     var labelMode = "static";
 

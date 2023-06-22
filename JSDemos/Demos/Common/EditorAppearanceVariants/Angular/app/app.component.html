@@ -7,6 +7,7 @@
         <dx-select-box
           [items]="['outlined', 'filled', 'underlined']"
           [inputAttr]="{ 'aria-label': 'Styling Mode' }"
+          stylingMode="outlined"
           [(value)]="stylingMode"
         ></dx-select-box>
       </div>
@@ -15,6 +16,7 @@
         <dx-select-box
           [items]="['floating', 'static', 'hidden']"
           [inputAttr]="{ 'aria-label': 'Label Mode' }"
+          stylingMode="outlined"
           [(value)]="labelMode"
         ></dx-select-box>
       </div>

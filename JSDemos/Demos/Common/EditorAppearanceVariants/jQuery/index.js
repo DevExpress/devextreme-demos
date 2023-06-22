@@ -1,5 +1,6 @@
 $(() => {
   const stylingMode = 'outlined';
+  const labelMode = 'static';
   DevExpress.config({
     editorStylingMode: stylingMode,
   });
@@ -19,6 +20,7 @@ $(() => {
     placeholder: 'Type...',
     inputAttr: { 'aria-label': 'Address' },
     label: 'Address',
+    labelMode,
   }).dxValidator({
     validationRules: [{
       type: 'required',
@@ -40,6 +42,7 @@ $(() => {
     label: 'Hire Date',
     placeholder: 'Select...',
     inputAttr: { 'aria-label': 'Hire Date' },
+    labelMode,
   }).dxValidator({
     validationRules: [{
       type: 'required',
@@ -58,6 +61,7 @@ $(() => {
     inputAttr: { 'aria-label': 'State' },
     placeholder: 'Select...',
     label: 'State',
+    labelMode,
   }).dxValidator({
     validationRules: [{
       type: 'required',
