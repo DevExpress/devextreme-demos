@@ -165,7 +165,7 @@ jobs:
       continue-on-error: true
 
     - name: Show accessibility warnings
-      if: failure() && matrix.STRATEGY == 'accessibility'
+      if: matrix.STRATEGY == 'accessibility'
       run: |
         message=$(cat report.txt)
         echo "::warning ::$message"
@@ -179,7 +179,7 @@ jobs:
         if-no-files-found: ignore
 
     - name: Copy accessibility report
-      if: failure() && matrix.STRATEGY == 'accessibility'
+      if: matrix.STRATEGY == 'accessibility'
       uses: actions/upload-artifact@v3
       with:
         name: accessibility-reports
