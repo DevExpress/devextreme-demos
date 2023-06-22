@@ -100,15 +100,22 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().TagBox()
                     .DataSource(d => d.Mvc().LoadAction("GetProducts").Key("ID"))
+                    .Value(new[] {1, 2})
                     .DisplayExpr("Name")
                     .ValueExpr("ID")
                     .InputAttr("aria-label", "Product")
                     .ItemTemplate(@<text>
-                    <div class="custom-item">
-                        <img src="<%- ImageSrc %>" />
-                        <div class="product-name"><%- Name %></div>
-                    </div>
+                        <div class="custom-item">
+                            <img src="<%- ImageSrc %>" />
+                            <div class="product-name"><%- Name %></div>
+                        </div>
                     </text>)
+                    .TagTemplate(new JS("tagTemplate"))
+                )
+
+                	
+                @(Html.DevExtreme().Popover()
+                    .ID("popover")
                 )
             </div>
         </div>
@@ -127,4 +134,40 @@
         }
         args.customItem = newValue;
     }
+
+    function tagTemplate(data) {
+        const isDisabled = data.Name === 'SuperHD Player';
+        const popover = $('#popover').dxPopover('instance')
+        const tagImg = $('<img>', { class: 'tag-img' }).attr({
+            src: data.ImageSrc,
+            alt: data.Name
+        })
+        const tag = $('<div>')
+            .addClass(`dx-tag-content ${isDisabled && 'disabled-tag'}`)
+            .append(
+                tagImg,
+                $('<span>').text(data.Name),
+                !isDisabled && $('<div>').addClass('dx-tag-remove-button')
+            )
+        tag.on('dxhoverstart', function (args) {
+            popover.option({
+                contentTemplate: () => popoverContentTemplate(data),
+                target: args.target.closest('.dx-tag')
+            });
+            popover.show();
+        })
+        tag.on('dxhoverend', function (args) {
+            popover.hide();
+        })
+        return tag;
+    }
+
+    const popoverContentTemplate = function (product) {
+        return $('<div>').append(
+            $(`<p><b>Name: </b><span>${product.Name}</span></p>`),
+            $(`<p><b>Price: </b><span>$${product.Price}</span></p>`),
+            $(`<p><b>In-stock: </b><span>${product.CurrentInventory}</span></p>`),
+            $(`<p><b>Category: </b><span>${product.Category}</span></p>`),
+        );
+    };
 </script>
