@@ -1019,7 +1019,7 @@
     <Content Include="Content\DemosStyles\TreeList\SingleRowSelection.css" />
     <Content Include="Content\DemosStyles\TreeList\StatePersistence.css" />
     <Content Include="Content\DemosStyles\TreeList\UsingFilterRow.css" />
-    <Content Include="Content\DemosStyles\TreeList\UsingHeaderFilter.css" />
+    <Content Include="Content\DemosStyles\TreeList\ColumnHeaderFilter.css" />
     <Content Include="Content\DemosStyles\TreeList\UsingSearchPanel.css" />
     <Content Include="Content\DemosStyles\TreeList\WebAPIService.css" />
     <Content Include="Content\DemosStyles\TreeList\SimpleArrayPlainStructure.css" />
@@ -2120,7 +2120,7 @@
     <Content Include="Views\TreeList\PopupEditing.cshtml" />
     <Content Include="Views\TreeList\SingleRowSelection.cshtml" />
     <Content Include="Views\TreeList\UsingFilterRow.cshtml" />
-    <Content Include="Views\TreeList\UsingHeaderFilter.cshtml" />
+    <Content Include="Views\TreeList\ColumnHeaderFilter.cshtml" />
     <Content Include="Views\TreeList\UsingSearchPanel.cshtml" />
     <Content Include="Views\Slider\Overview.cshtml" />
     <Content Include="Views\Tabs\Overview.cshtml" />
