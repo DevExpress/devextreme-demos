@@ -169,7 +169,7 @@ jobs:
     - name: Show accessibility warnings
       if: matrix.STRATEGY == 'accessibility'
       run: |
-        message=$(cat ${{ ACCESSIBILITY_TESTCAFE_REPORT_PATH }})
+        message=$(cat $ACCESSIBILITY_TESTCAFE_REPORT_PATH)
         echo "::warning ::$message"
 
     - name: Copy screenshots artifacts
