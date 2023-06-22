@@ -126,7 +126,6 @@
       id="validate"
       class="validate"
     />
-
   </div>
 </template>
 <script>
