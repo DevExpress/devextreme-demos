@@ -35,10 +35,10 @@ export default function App() {
   const [labelMode, setLabelMode] = React.useState('static');
   const changeStylingMode = React.useCallback(({ value }) => {
     setStylingMode(value);
-  }, []);
+  }, [setStylingMode]);
   const labelModeChange = React.useCallback(({ value }) => {
     setLabelMode(value);
-  }, []);
+  }, [setStylingMode]);
 
   return (
     <React.Fragment>
