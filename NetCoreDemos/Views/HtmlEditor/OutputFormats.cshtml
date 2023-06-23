@@ -6,6 +6,13 @@
     <script src="https://www.unpkg.com/prettier@2.7.1/parser-html.js"></script>
 }
 
+@functions {
+    object GetInputAttr(string key, string value)
+    {
+        return new { inputAttr = new Dictionary<string, string>() { { key, value } } };
+    }
+}
+
 @(Html.DevExtreme().HtmlEditor()
     .ID("html_editor")
     .Height(300)
@@ -21,11 +28,13 @@
 
             items.Add()
                 .Name("size")
-                .AcceptedValues(new[] { "8pt", "10pt", "12pt", "14pt", "18pt", "24pt", "36pt" });
+                .AcceptedValues(new[] { "8pt", "10pt", "12pt", "14pt", "18pt", "24pt", "36pt" })
+                .Option("options", GetInputAttr("aria-label", "Font size"));
 
             items.Add()
                 .Name("font")
-                .AcceptedValues(new[] { "Arial", "Courier New", "Georgia", "Impact", "Lucida Console", "Tahoma", "Times New Roman", "Verdana" });
+                .AcceptedValues(new[] { "Arial", "Courier New", "Georgia", "Impact", "Lucida Console", "Tahoma", "Times New Roman", "Verdana" })
+                .Option("options", GetInputAttr("aria-label", "Font family"));
 
             items.Add().Name(HtmlEditorToolbarItem.Separator);
 
