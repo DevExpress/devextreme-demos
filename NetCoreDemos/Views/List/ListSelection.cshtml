@@ -59,6 +59,7 @@
             @(Html.DevExtreme().CheckBox()
                 .ID("selectByClick")
                 .Value(false)
+                .ElementAttr("aria-label", "Selection By Click")
                 .OnValueChanged(@<text>
                     function(data) {
                         $("#simpleList").dxList("option", "selectByClick", data.value);
