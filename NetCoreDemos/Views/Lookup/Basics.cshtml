@@ -8,6 +8,7 @@
             .DataSource(Model)
             .DropDownOptions(p => p.ShowTitle(false))
             .Value(Model.First())
+            .InputAttr("aria-label", "Simple lookup")
         )
     </div>
 </div>
@@ -26,6 +27,7 @@
             )
             .Grouped(true)
             .DisplayExpr("Subject")
+            .InputAttr("aria-label", "Grouped lookup")
         )
     </div>
 </div>

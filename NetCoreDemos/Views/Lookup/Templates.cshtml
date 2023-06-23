@@ -11,9 +11,10 @@
             .DropDownOptions(p => p.Title("Select employee"))
             .ValueExpr("ID")
             .Value(Model.First().ID)
+            .InputAttr("aria-label", "Custom Field Template")
             .FieldTemplate(@<text>
                 <div class="custom-field">
-                    <img src="<%- Picture %>" /><div><%- Prefix %> <%- FirstName %> <%- LastName %></div>
+                    <img alt="<%- FirstName %>" src="<%- Picture %>" /><div><%- Prefix %> <%- FirstName %> <%- LastName %></div>
                 </div>
             </text>)
         )
@@ -29,9 +30,10 @@
             .DisplayExpr(new JS("lookup_displayExpr"))
             .DropDownOptions(p => p.Title("Select employee"))
             .Placeholder("Select employee")
+            .InputAttr("aria-label", "Custom Item Template")
             .ItemTemplate(@<text>
             <div class="custom-item">
-                <img src="<%- Picture %>" /><div><%- Prefix %> <%- FirstName %> <%- LastName %></div>
+                <img alt="<%- FirstName %>" src="<%- Picture %>" /><div><%- Prefix %> <%- FirstName %> <%- LastName %></div>
             </div>
             </text>)
         )
