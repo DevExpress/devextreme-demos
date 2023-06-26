@@ -2,6 +2,13 @@
     <script src="https://unpkg.com/devextreme-quill@21_2/dist/dx-quill.min.js"></script>
 }
 
+@functions {
+    object GetInputAttr(string key, string value)
+    {
+        return new { inputAttr = new Dictionary<string, string>() { { key, value } } };
+    }
+}
+
 @(Html.DevExtreme().HtmlEditor()
     .ID("html_editor")
     .Value(new JS("markup"))
@@ -15,7 +22,8 @@
 
             items.Add()
                 .Name("header")
-                .AcceptedValues(new JS("[false, 1, 2, 3, 4, 5]"));
+                .AcceptedValues(new JS("[false, 1, 2, 3, 4, 5]"))
+                .Option("options", GetInputAttr("aria-label", "Header"));
 
             items.Add().Name(HtmlEditorToolbarItem.Separator);
 

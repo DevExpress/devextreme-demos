@@ -5,6 +5,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().CheckBox()
                     .Value(true)
+                    .ElementAttr("aria-label", "Checked")
                 )
             </div>
         </div>
@@ -13,6 +14,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().CheckBox()
                     .Value(false)
+                    .ElementAttr("aria-label", "Unchecked")
                 )
             </div>
         </div>
@@ -21,6 +23,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().CheckBox()
                     .Value(null)
+                    .ElementAttr("aria-label", "Indeterminate")
                 )
             </div>
         </div>
@@ -30,6 +33,7 @@
                 @(Html.DevExtreme().CheckBox()
                     .EnableThreeStateBehavior(true)
                     .Value(null)
+                    .ElementAttr("aria-label", "Three state mode")
                 )
             </div>
         </div>
@@ -38,6 +42,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().CheckBox()
                     .Value(null)
+                    .ElementAttr("aria-label", "Handle value change")
                     .OnValueChanged("checkBox_valueChanged")
                 )
             </div>
@@ -49,6 +54,7 @@
                     .ID("disabled")
                     .Value(null)
                     .Disabled(true)
+                    .ElementAttr("aria-label", "Disabled")
                 )
             </div>
         </div>
@@ -58,6 +64,7 @@
                 @(Html.DevExtreme().CheckBox()
                     .Value(null)
                     .IconSize(30)
+                    .ElementAttr("aria-label", "Custom size")
                 )
             </div>
         </div>

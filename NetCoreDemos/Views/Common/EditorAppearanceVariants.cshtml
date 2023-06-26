@@ -1,132 +1,103 @@
-﻿<div class="title">Edit Profile</div>
-<div class="editors">
-    <div class="editors-container">
-        <div class="left">
-            @(Html.DevExtreme().TextBox()
-                .ID("name")
-                .Value("Olivia Peyton")
-                .Width("100%")
-                .InputAttr("aria-label", "Name")
-                .Placeholder("Type...")
-                .Label("Name")
-            )
-            @(Html.DevExtreme().TextBox()
-                .ID("place")
-                .InputAttr("aria-label", "Address")
-                .Width("100%")
-                .Placeholder("Type...")
-                .Label("Address")
-            )
-        </div>
-        <div class="right">
-            @(Html.DevExtreme().DateBox()
-                .ID("birthDate")
-                .InputAttr("aria-label", "Birth Date")
-                .Value(new DateTime(1981, 6, 3))
-                .Width("100%")
-                .Placeholder("Select...")
-                .Label("Birth Date")
-            )
-            @(Html.DevExtreme().SelectBox()
-                .ID("state")
-                .Items(new[] {
-                    "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
-                    "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
-                    "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
-                    "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
-                    "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
-                })
-                .Width("100%")
-                .InputAttr("aria-label", "State")
-                .Placeholder("Select...")
-                .Label("State")
-            )
-        </div>
-    </div>
-    <div class="center">
-        @(Html.DevExtreme().TagBox()
-            .ID("position")
-            .InputAttr("aria-label", "Position")
-            .Items(new[] {
-                "HR Manager",
-                "IT Manager",
-                "CEO",
-                "Controller",
-                "Sales Manager",
-                "Support Manager",
-                "Shipping Manager"
-            })
-            .Value(new[] { "Support Manager" })
-            .Multiline(false)
-            .Width("100%")
-            .Placeholder("Select...")
-            .Label("Position")
-        )
-    </div>
-        <div class="editors-container">
-        <div class="left">
-            @(Html.DevExtreme().TextBox()
-                .ID("phone")
-                .Width("100%")
-                .InputAttr("aria-label", "Phone")
-                .Label("Phone")
-                .Mask("+1 (X00) 000-0000")
-                .MaskRules(new { X = new JS("/[02-9]/") })
-            )
-        </div>
-        <div class="right">
-            @(Html.DevExtreme().DateBox()
-                .ID("hireDate")
-                .InputAttr("aria-label", "Hire Date")
-                .Width("100%")
-                .Placeholder("Select...")
-                .Label("Hire Date")
-            )
-        </div>
-    </div>
-        <div class="center">
-            @(Html.DevExtreme().TextArea()
-                .ID("textArea")
-                .Value("Olivia loves to sell. She has been selling DevAV products since 2012.")
-                .Width("100%")
-                .Placeholder("Type...")
-                .Label("Notes")
-            )
-    </div>
-    <div class="center">
-        @(Html.DevExtreme().Button()
-            .ElementAttr("class", "validate")
-            .Text("Save")
-            .Type(ButtonType.Default)
-            .OnClick("saveClick")
-        )
-    </div>
-</div>
-<div class="options">
+﻿<div class="options">
     <div class="caption">Options</div>
-    <div class="option">
-        <label>Styling Mode</label>
-        @(Html.DevExtreme().SelectBox()
-            .Items(new[] { "outlined", "filled", "underlined" })
-            .Value(new JS("stylingMode"))
-            .InputAttr("aria-label", "Styling Mode")
-            .OnValueChanged("stylingModeChanged")
-        )
-    </div>
-    <div class="option">
-        <label>Label Mode</label>
-        @(Html.DevExtreme().SelectBox()
-            .Items(new[] { "static", "floating", "hidden" })
-            .Value(new JS("labelMode"))
-            .InputAttr("aria-label", "Label Mode")
-            .OnValueChanged("labelModeChanged")
-        )
+    <div class="editors-modes">
+        <div class="option">
+            <label>Styling Mode</label>
+            @(Html.DevExtreme().SelectBox()
+                .ID("styling-mode-selector")
+                .Items(new[] { "outlined", "filled", "underlined" })
+                .Value(new JS("stylingMode"))
+                .InputAttr("aria-label", "Styling Mode")
+                .OnValueChanged("getValueChangedHandler('stylingMode')")
+            )
+        </div>
+        <div class="option">
+            <label>Label Mode</label>
+            @(Html.DevExtreme().SelectBox()
+                .ID("label-mode-selector")
+                .Items(new[] { "static", "floating", "hidden" })
+                .Value(new JS("labelMode"))
+                .InputAttr("aria-label", "Label Mode")
+                .OnValueChanged("getValueChangedHandler('labelMode')")
+            )
+        </div>
     </div>
 </div>
+<div class="widgets-container">
+    <div class="title">Edit Profile</div>
+    @(Html.DevExtreme().TextBox()
+        .ID("name")
+        .Value("Olivia Peyton")
+        .InputAttr("aria-label", "Name")
+        .Placeholder("Type...")
+        .Label("Name")
+    )
+    @(Html.DevExtreme().TextBox()
+        .ID("address")
+        .InputAttr("aria-label", "Address")
+        .Placeholder("Type...")
+        .Label("Address")
+        .LabelMode(EditorLabelMode.Static)
+    )
+    @(Html.DevExtreme().DateBox()
+        .ID("birth-date")
+        .InputAttr("aria-label", "Birth Date")
+        .Value(new DateTime(1981, 6, 3))
+        .Placeholder("Select...")
+        .Label("Birth Date")
+    )
+    @(Html.DevExtreme().SelectBox()
+        .ID("state")
+        .Items(new[] {
+            "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
+            "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
+            "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
+            "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
+            "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
+        })
+        .InputAttr("aria-label", "State")
+        .Placeholder("Select...")
+        .Label("State")
+        .LabelMode(EditorLabelMode.Static)
+    )
+    @(Html.DevExtreme().TextBox()
+        .ID("phone")
+        .InputAttr("aria-label", "Phone")
+        .Label("Phone")
+        .Mask("+1 (X00) 000-0000")
+        .MaskRules(new { X = new JS("/[02-9]/") })
+    )
+    @(Html.DevExtreme().DateBox()
+        .ID("hire-date")
+        .InputAttr("aria-label", "Hire Date")
+        .Placeholder("Select...")
+        .Label("Hire Date")
+        .LabelMode(EditorLabelMode.Static)
+    )
+    @(Html.DevExtreme().DateRangeBox()
+        .ID("vacation-dates")
+        .StartDate("6/3/2023")
+        .StartDateLabel("Start Vacation Date")
+        .EndDate("12/3/2023")
+        .EndDateLabel("End Vacation Date")
+    )
+    @(Html.DevExtreme().TextArea()
+        .ID("notes")
+        .Value("Olivia loves to sell. She has been selling DevAV products since 2012.")
+        .Placeholder("Type...")
+        .Label("Notes")
+    )
+</div>
+@(Html.DevExtreme().Button()
+    .ID("validate")
+    .Text("Save")
+    .Icon("save")
+    .Type(ButtonType.Default)
+    .OnClick("saveClick")
+)
 
 <script>
-    var storageKey = "stylingMode";
-    var stylingMode = readStylingMode() || "filled";
+    var stylingMode = "outlined";
     var labelMode = "static";
 
     DevExpress.config({
@@ -142,35 +113,27 @@
         }
     }
 
-    function readStylingMode() {
-        var mode = localStorage.getItem(storageKey);
-        localStorage.removeItem(storageKey);
-        return mode;
-    }
-
-    function stylingModeChanged(e) {
-        localStorage.setItem(storageKey, e.value);
-        window.location.reload(true);
-    }
-
-    function labelModeChanged(e) {
+    function getWidgetsInstances() {
         const name = $("#name").dxTextBox("instance");
-        const place = $("#place").dxTextBox("instance");
+        const address = $("#address").dxTextBox("instance");
         const phone = $("#phone").dxTextBox("instance");
-        const birthDate = $("#birthDate").dxDateBox("instance");
-        const position = $("#position").dxTagBox("instance");
-        const hireDate = $("#hireDate").dxDateBox("instance");
+        const birthDate = $("#birth-date").dxDateBox("instance");
+        const hireDate = $("#hire-date").dxDateBox("instance");
+        const vacationDates = $("#vacation-dates").dxDateRangeBox("instance");
         const state = $("#state").dxSelectBox("instance");
-        const notes = $("#textArea").dxTextArea("instance");
+        const notes = $("#notes").dxTextArea("instance");
 
-        [name, place, birthDate, position, hireDate, state, phone, notes].forEach((editor) => {
-            editor.option("labelMode", e.value);
-        });
-
+        return [name, address, birthDate, hireDate, vacationDates, state, phone, notes];
     }
+
+    const getValueChangedHandler = (optionName) => ({ value }) => {
+        getWidgetsInstances().forEach((editor) => {
+            editor.option(optionName, value);
+        });
+    };
 
     $(function() {
-        ["name", "place", "birthDate", "position", "hireDate", "state", "phone"].forEach((editorId) => {
+        ["name", "address", "birth-date", "hire-date", "state", "phone"].forEach((editorId) => {
             $("#" + editorId).dxValidator({
                 validationRules: [{ type: "required" }]
             });
