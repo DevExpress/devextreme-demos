@@ -234,7 +234,7 @@ jobs:
         pushd devextreme-setup
         installerName=$(realpath .)/$(ls devextreme-installer.tgz)
         popd
-        npm install --save-dev --legacy-peer-deps $installerName --workspace=devextreme-vue --workspace=devextreme-vue2-strategy --include-workspace-root
+        npm install --save-dev --legacy-peer-deps $installerName --workspace=devextreme-vue --workspace=devextreme-vue2-strategy --workspace=devextreme-vue-sandbox --include-workspace-root
         npm run generate-metadata
 
     - name: Build and Pack
