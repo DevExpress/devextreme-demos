@@ -59,11 +59,11 @@ export class AppComponent {
 
   onMouseLeave() {
     this.target = null;
-    this.visible = false
+    this.visible = false;
   }
 
   isDisabled(product) {
-    return product.Name === 'SuperHD Video Player'
+    return product.Name === 'SuperHD Video Player';
   }
 }
 

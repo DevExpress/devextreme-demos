@@ -20,7 +20,7 @@ class App extends React.Component {
       editableProducts: [...simpleProducts],
       value: [1, 2],
       target: null,
-      product: {}
+      product: {},
     };
     this.onCustomItemCreating = this.onCustomItemCreating.bind(this);
     this.onMouseEnter = this.onMouseEnter.bind(this);
@@ -41,22 +41,22 @@ class App extends React.Component {
   onMouseEnter(e, product) {
     this.setState({
       target: e.target,
-      product
-    })
+      product,
+    });
   }
-    
+
   renderTag(product) {
     const isDisabled = product.Name === 'SuperHD Video Player';
-    
+
     return (
-        <div 
-          className={`dx-tag-content ${isDisabled && 'disabled-tag'}`}
-          onMouseEnter={(e) => this.onMouseEnter(e, product)}
-          >
-          <img src={product.ImageSrc} className="tag-img" />
-          <span>{product.Name}</span>
-          {!isDisabled && <div className="dx-tag-remove-button"></div>}
-        </div>
+      <div
+        className={`dx-tag-content ${isDisabled && 'disabled-tag'}`}
+        onMouseEnter={(e) => this.onMouseEnter(e, product)}
+      >
+        <img src={product.ImageSrc} className="tag-img" />
+        <span>{product.Name}</span>
+        {!isDisabled && <div className="dx-tag-remove-button"></div>}
+      </div>
     );
   }
 
@@ -150,22 +150,22 @@ class App extends React.Component {
                 itemRender={Item}
                 tagRender={this.renderTag} />
 
-              <Popover 
+              <Popover
                 showEvent="mouseenter"
                 hideEvent="mouseleave"
                 target={this.state.target}>
-                  <p>
-                    <b>Name: </b><span>{ this.state.product.Name }</span>
-                  </p>
-                  <p>
-                    <b>Price: </b><span>{ this.state.product.Price }</span>
-                  </p>
-                  <p>
-                    <b>In-stock: </b><span>{ this.state.product.Current_Inventory }</span>
-                  </p>
-                  <p>
-                    <b>Category: </b><span>{ this.state.product.Category }</span>
-                  </p>
+                <p>
+                  <b>Name: </b><span>{ this.state.product.Name }</span>
+                </p>
+                <p>
+                  <b>Price: </b><span>{ this.state.product.Price }</span>
+                </p>
+                <p>
+                  <b>In-stock: </b><span>{ this.state.product.Current_Inventory }</span>
+                </p>
+                <p>
+                  <b>Category: </b><span>{ this.state.product.Category }</span>
+                </p>
               </Popover>
             </div>
           </div>

@@ -27,7 +27,7 @@ export const products = [{
 }, {
   Id: 2,
   Name: 'SuperHD Video Player',
-  Price: 400, 
+  Price: 400,
   Current_Inventory: 150,
   Backorder: 0,
   Manufacturing: 25,

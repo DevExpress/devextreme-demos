@@ -110,7 +110,7 @@
           </template>
 
           <template #tag="{ data }">
-            <Tag :tag-data="data" />
+            <Tag :tag-data="data"/>
           </template>
         </DxTagBox>
       </div>

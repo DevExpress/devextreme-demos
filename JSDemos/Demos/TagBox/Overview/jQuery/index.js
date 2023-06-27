@@ -70,16 +70,16 @@ $(() => {
   });
 
   let product = null;
-  
+
   const popoverContentTemplate = function () {
     return $('<div>').append(
       $(`<p><b>Name: </b><span>${product.Name}</span></p>`),
-      $(`<p><b>Price: </b><span>$${product.Price}</span></p>`),      
+      $(`<p><b>Price: </b><span>$${product.Price}</span></p>`),
       $(`<p><b>In-stock: </b><span>${product.Current_Inventory}</span></p>`),
       $(`<p><b>Category: </b><span>${product.Category}</span></p>`),
     );
   };
-  
+
   const popover = $('#popover').dxPopover({}).dxPopover('instance');
 
   $('#productsCustom').dxTagBox({
@@ -95,35 +95,35 @@ $(() => {
     },
     tagTemplate(data) {
       const isDisabled = data.Name === 'SuperHD Video Player';
-      
-      const tagImg = $('<img>', {class: 'tag-img'}).attr({
+
+      const tagImg = $('<img>', { class: 'tag-img' }).attr({
         src: data.ImageSrc,
-        alt: data.Name
-      })
+        alt: data.Name,
+      });
 
       const tag = $('<div>')
-      .addClass(`dx-tag-content ${isDisabled && 'disabled-tag'}`)
-      .append(
-        tagImg,
-        $('<span>').text(data.Name),
-        !isDisabled && $('<div>').addClass('dx-tag-remove-button')
-      )
-      
-      tag.on('dxhoverstart', function(args) {
+        .addClass(`dx-tag-content ${isDisabled && 'disabled-tag'}`)
+        .append(
+          tagImg,
+          $('<span>').text(data.Name),
+          !isDisabled && $('<div>').addClass('dx-tag-remove-button'),
+        );
+
+      tag.on('dxhoverstart', (args) => {
         product = data;
         popover.option({
           contentTemplate: () => popoverContentTemplate(),
-          target: args.target.closest('.dx-tag')
+          target: args.target.closest('.dx-tag'),
         });
 
         popover.show();
-      })
+      });
 
-      tag.on('dxhoverend', function (args) {
+      tag.on('dxhoverend', () => {
         popover.hide();
-      })
+      });
 
       return tag;
-    }
+    },
   });
 });
