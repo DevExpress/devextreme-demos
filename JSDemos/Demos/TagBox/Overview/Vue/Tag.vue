@@ -65,8 +65,8 @@ export default {
   margin-right: 5px;
 }
 
-.disabled-tag {
-  padding-right: 6px !important;
+.dx-tag-content.disabled-tag {
+  padding-right: 6px;
   opacity: 0.5;
   cursor: not-allowed;
 }
