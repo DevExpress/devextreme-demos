@@ -2,6 +2,13 @@
     <script src="https://unpkg.com/devextreme-quill@21_2/dist/dx-quill.min.js"></script>
 }
 
+@functions {
+    object GetInputAttr(string key, string value)
+    {
+        return new { inputAttr = new Dictionary<string, string>() { { key, value } } };
+    }
+}
+
 @(Html.DevExtreme().HtmlEditor()
     .ID("html-editor")
     .Height(725)
@@ -22,11 +29,13 @@
 
             items.Add()
                 .Name("size")
-                .AcceptedValues(new[] { "8pt", "10pt", "12pt", "14pt", "18pt", "24pt", "36pt" });
+                .AcceptedValues(new[] { "8pt", "10pt", "12pt", "14pt", "18pt", "24pt", "36pt" })
+                .Option("options", GetInputAttr("aria-label", "Font size"));
 
             items.Add()
                 .Name("font")
-                .AcceptedValues(new[] { "Arial", "Courier New", "Georgia", "Impact", "Lucida Console", "Tahoma", "Times New Roman", "Verdana" });
+                .AcceptedValues(new[] { "Arial", "Courier New", "Georgia", "Impact", "Lucida Console", "Tahoma", "Times New Roman", "Verdana" })
+                .Option("options", GetInputAttr("aria-label", "Font family"));
 
             items.Add().Name(HtmlEditorToolbarItem.Separator);
 
@@ -58,7 +67,8 @@
 
             items.Add()
                 .Name("header")
-                .AcceptedValues(new JS("[false, 1, 2, 3, 4, 5]"));
+                .AcceptedValues(new JS("[false, 1, 2, 3, 4, 5]"))
+                .Option("options", GetInputAttr("aria-label", "Header"));
 
             items.Add().Name(HtmlEditorToolbarItem.Separator);
 

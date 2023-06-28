@@ -9,14 +9,14 @@
     @foreach(var property in Model) {
         <div onclick="showPopup(@property.ID, '@property.Address')">
             <div class="item-content">
-                <img src="@property.Image" />
+                <img alt="@property.Address" src="@property.Image" />
                 <div class="item-options">
                     <div>
                         <div class="address">@property.Address</div>
                         <div class="price large-text">$@string.Format("{0:n0}", property.Price)</div>
                         <div class="agent">
                             <div id="@("house" + property.ID)">
-                                <img src="~/Content/Images/icon-agent.svg">
+                                <img alt="Listing agent" src="~/Content/Images/icon-agent.svg">
                                 Listing agent
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                 .Width(260)
                 .ContentTemplate(
                     "<div class='agent-details'>" +
-                        "<img src='" + property.Agent.Picture + "' />" +
+                        "<img alt='" + property.Agent.FirstName + " " + property.Agent.LastName + "' src='" + property.Agent.Picture + "' />" +
                         "<div>" +
                             "<div class='name large-text'>" + property.Agent.FirstName + " " + property.Agent.LastName + "</div>" +
                             "<div class='phone'>Tel: " + property.Agent.Phone + "</div>" +
@@ -66,8 +66,8 @@
                         </text>)
                     )
                     <div class='images'>
-                        <img src="@property.Image" />
-                        <img src="@property.Image.Replace(".jpg", "b.jpg")" />
+                        <img alt="@property.Address" src="@property.Image" />
+                        <img alt="@property.Address" src="@property.Image.Replace(".jpg", "b.jpg")" />
                     </div>
                     <div>@property.Features</div>
                 </div>
