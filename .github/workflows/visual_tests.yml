@@ -151,6 +151,7 @@ jobs:
 
     - name: Run TestCafe tests
       shell: bash
+      continue-on-error: ${{ matrix.STRATEGY == 'accessibility' }}
       env:
         STRATEGY: ${{ matrix.STRATEGY }}
         CHANGEDFILEINFOSPATH: ${{ github.workspace }}/changed-files.json
@@ -164,7 +165,6 @@ jobs:
         # DISABLE_DEMO_TEST_SETTINGS: comparison-options # Uncomment to ignore the `comparison-options` field
         CI_ENV: true # The `ignore` field in the visualtestrc.json should be disabled when running test locally
       run: npm run test-testcafe
-      continue-on-error: true
 
     - name: Show accessibility warnings
       if: matrix.STRATEGY == 'accessibility'
