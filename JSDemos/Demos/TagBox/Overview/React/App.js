@@ -5,6 +5,7 @@ import Popover from 'devextreme-react/popover';
 import ArrayStore from 'devextreme/data/array_store';
 
 import Item from './Item.js';
+import Tag from './Tag.js';
 import { simpleProducts, products, productLabel } from './data.js';
 
 const disabledValue = [simpleProducts[0]];
@@ -24,7 +25,6 @@ class App extends React.Component {
     };
     this.onCustomItemCreating = this.onCustomItemCreating.bind(this);
     this.onMouseEnter = this.onMouseEnter.bind(this);
-    this.renderTag = this.renderTag.bind(this);
   }
 
   onCustomItemCreating(args) {
@@ -40,24 +40,9 @@ class App extends React.Component {
 
   onMouseEnter(e, product) {
     this.setState({
-      target: e.target,
+      target: e.currentTarget,
       product,
     });
-  }
-
-  renderTag(product) {
-    const isDisabled = product.Name === 'SuperHD Video Player';
-
-    return (
-      <div
-        className={`dx-tag-content ${isDisabled && 'disabled-tag'}`}
-        onMouseEnter={(e) => this.onMouseEnter(e, product)}
-      >
-        <img src={product.ImageSrc} className="tag-img" />
-        <span>{product.Name}</span>
-        {!isDisabled && <div className="dx-tag-remove-button"></div>}
-      </div>
-    );
   }
 
   render() {
@@ -148,12 +133,13 @@ class App extends React.Component {
                 displayExpr="Name"
                 valueExpr="Id"
                 itemRender={Item}
-                tagRender={this.renderTag} />
+                tagRender={(data) => <Tag product={data} onMouseEnter={this.onMouseEnter} />} />
 
               <Popover
                 showEvent="mouseenter"
                 hideEvent="mouseleave"
-                target={this.state.target}>
+                target={this.state.target}
+              >
                 <p>
                   <b>Name: </b><span>{ this.state.product.Name }</span>
                 </p>
