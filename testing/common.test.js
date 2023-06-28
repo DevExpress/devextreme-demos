@@ -10,7 +10,7 @@ import {
   shouldRunFramework,
   shouldRunTestAtIndex,
 } from '../utils/visual-tests/matrix-test-helper';
-import { createMdReport } from '../utils/axe-reporter/reporter';
+import { createMdReport, createTestCafeReport } from '../utils/axe-reporter/reporter';
 
 const globalReadFrom = (basePath, relativePath, mapCallback) => {
   const absolute = join(basePath, relativePath);
@@ -81,7 +81,6 @@ const execTestCafeCode = (t, code) => {
 
   getDemoPaths(approach).forEach((demoPath, index) => {
     if (!shouldRunTestAtIndex(index + 1) || !existsSync(demoPath)) { return; }
-
     // eslint-disable-next-line max-len
     const readFrom = (relativePath, mapCallback) => globalReadFrom(demoPath, relativePath, mapCallback);
 
@@ -134,6 +133,7 @@ const execTestCafeCode = (t, code) => {
 
           if (results.violations.length > 0) {
             createMdReport({ testName, results });
+            await t.report(createTestCafeReport(results.violations));
           }
 
           await t.expect(error).notOk();

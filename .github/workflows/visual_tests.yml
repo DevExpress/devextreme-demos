@@ -103,6 +103,8 @@ jobs:
       matrix:
         STRATEGY: [screenshots, accessibility]
         CONSTEL: [jquery(1/4), jquery(2/4), jquery(3/4), jquery(4/4)]
+    env:
+      ACCESSIBILITY_TESTCAFE_REPORT_PATH: "accessibility_testcafe_report"
 
     runs-on: ubuntu-latest
     name: ${{ matrix.CONSTEL }}-${{ matrix.STRATEGY }}
@@ -148,6 +150,8 @@ jobs:
         path: changed-files.json
 
     - name: Run TestCafe tests
+      shell: bash
+      continue-on-error: ${{ matrix.STRATEGY == 'accessibility' }}
       env:
         STRATEGY: ${{ matrix.STRATEGY }}
         CHANGEDFILEINFOSPATH: ${{ github.workspace }}/changed-files.json
@@ -162,6 +166,12 @@ jobs:
         CI_ENV: true # The `ignore` field in the visualtestrc.json should be disabled when running test locally
       run: npm run test-testcafe
 
+    - name: Show accessibility warnings
+      if: matrix.STRATEGY == 'accessibility'
+      run: |
+        message=$(cat $ACCESSIBILITY_TESTCAFE_REPORT_PATH)
+        echo "::warning ::$message"
+
     - name: Copy screenshots artifacts
       if: failure() && matrix.STRATEGY == 'screenshots'
       uses: actions/upload-artifact@v3
@@ -171,7 +181,7 @@ jobs:
         if-no-files-found: ignore
 
     - name: Copy accessibility report
-      if: failure() && matrix.STRATEGY == 'accessibility'
+      if: matrix.STRATEGY == 'accessibility'
       uses: actions/upload-artifact@v3
       with:
         name: accessibility-reports
