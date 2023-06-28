@@ -63,7 +63,7 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         public ActionResult UsingFilterRow() {
             return View(SampleData.TreeListEmployees);
         }
-        public ActionResult UsingHeaderFilter() {
+        public ActionResult ColumnHeaderFilter() {
             return View(SampleData.TreeListEmployees);
         }
         public ActionResult MultipleRowSelection() {
