@@ -1,4 +1,5 @@
 import createTestCafe from 'testcafe';
+import fs from 'fs';
 
 function reporter() {
   return {
@@ -125,7 +126,7 @@ function reporter() {
       });
     },
 
-    reportTaskDone(endTime, passed, warnings) {
+    reportTaskDone(endTime, passed, warnings, result) {
       const durationMs = endTime - this.startTime;
       const durationStr = this.moment.duration(durationMs).format('h[h] mm[m] ss[s]');
       let footer = passed === this.testCount
@@ -154,13 +155,67 @@ function reporter() {
   };
 }
 
+function accessibilityTestCafeReporter() {
+  return {
+    violationsCount: {
+      minor: 0,
+      moderate: 0,
+      serious: 0,
+      critical: 0,
+    },
+
+    appendAxeViolationsCount(reportData, browsers) {
+      if (!reportData) { return; }
+
+      if (!Object.values(reportData).some((data) => data.length)) { return; }
+
+      browsers.forEach(({ testRunId }) => {
+        const browserReportData = reportData[testRunId];
+
+        if (!browserReportData) { return; }
+
+        browserReportData.forEach((data) => {
+          Object.keys(data).forEach((violation) => {
+            this.violationsCount[violation] += data[violation];
+          });
+        });
+      });
+    },
+
+    reportFixtureStart() {},
+
+    reportTaskStart() {},
+
+    reportTestStart() {},
+
+    reportTestDone(name, testRunInfo) {
+      this.appendAxeViolationsCount(testRunInfo.reportData, testRunInfo.browsers);
+    },
+
+    reportTaskDone() {
+      const {
+        minor, moderate, serious, critical,
+      } = this.violationsCount;
+      const total = minor + minor + serious + critical;
+
+      fs.writeFileSync(process.env.ACCESSIBILITY_TESTCAFE_REPORT_PATH || 'accessibility_report.txt', `Axe report: ${total} accessibility issues found (${critical} critical, ${serious} serious, ${moderate} moderate, and ${minor} minor)`);
+    },
+  };
+}
+
 async function main() {
   const tester = await createTestCafe();
   const runner = tester.createRunner();
   const concurrency = (process.env.CONCURRENCY && (+process.env.CONCURRENCY)) || 1;
 
+  const reporters = [reporter]
+
+  if (process.env.STRATEGY === 'accessibility') {
+    reporters.push(accessibilityTestCafeReporter);
+  }
+
   const failedCount = await runner
-    .reporter(reporter)
+    .reporter(reporters)
     .browsers(process.env.BROWSERS || 'chrome:headless --disable-partial-raster --disable-skia-runtime-opts --run-all-compositor-stages-before-draw --disable-new-content-rendering-timeout --disable-threaded-animation --disable-threaded-scrolling --disable-checker-imaging --disable-image-animation-resync --use-gl="swiftshader" --disable-features=PaintHolding --js-flags=--random-seed=2147483647 --font-render-hinting=none --disable-font-subpixel-positioning')
     .concurrency(concurrency || 1)
     .run({ quarantineMode: !!process.env.TCQUARANTINE });
