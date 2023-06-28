@@ -151,10 +151,6 @@ jobs:
         popd
         npm install --save-dev --legacy-peer-deps $installerName --workspace=devextreme-react --workspace=devextreme-react-sandbox --include-workspace-root
 
-    - name: Install packages for devextreme-react
-      working-directory: ./devextreme-react-repo
-      run: npm install --no-audit --no-fund
-
     - name: Build and Pack
       working-directory: ./devextreme-react-repo
       run: npm run pack
