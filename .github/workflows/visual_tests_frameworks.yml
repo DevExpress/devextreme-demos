@@ -89,7 +89,6 @@ jobs:
     steps:
     - uses: actions/setup-dotnet@v3
       with:
-        dotnet-quality: ga
         dotnet-version: |
           3.1
           6.0
@@ -121,10 +120,10 @@ jobs:
 
     #Build devextreme-react
 
-    - name: Use Node.js 14
+    - name: Use Node.js 18
       uses: actions/setup-node@v3
       with:
-        node-version: '14'
+        node-version: '18'
 
     - name: Download devextreme sources
       uses: actions/download-artifact@v3
@@ -144,27 +143,13 @@ jobs:
         mkdir ./devextreme-react-repo/devextreme-setup
         cp ./devextreme-installer.tgz ./devextreme-react-repo/devextreme-setup
 
-    - name: Get devextreme-react ref
-      working-directory: ./devextreme-react-repo
-      id: devextreme-react-ref
-      run: echo "::set-output name=head::$(git rev-parse HEAD)"
-
     - name: Install devextreme package
       working-directory: ./devextreme-react-repo
       run: |
         pushd devextreme-setup
         installerName=$(realpath .)/$(ls devextreme-installer.tgz)
         popd
-        cd ./packages/devextreme-react
-        npm install --save-dev $installerName
-        cd ../sandbox
-        npm install --save-dev $installerName
-        cd ../../
-        npm install --save-dev $installerName
-
-    - name: Install packages for devextreme-react
-      working-directory: ./devextreme-react-repo
-      run: npm install --no-audit --no-fund
+        npm install --save-dev --legacy-peer-deps $installerName --workspace=devextreme-react --workspace=devextreme-react-sandbox --include-workspace-root
 
     - name: Build and Pack
       working-directory: ./devextreme-react-repo
@@ -190,7 +175,6 @@ jobs:
     steps:
     - uses: actions/setup-dotnet@v3
       with:
-        dotnet-quality: ga
         dotnet-version: |
           3.1
           6.0
@@ -219,9 +203,9 @@ jobs:
     - name: Clone devextreme-vue repo
       run: test -d ./devextreme-vue-repo || git clone -b 23.1 https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
 
-    - name: Install packages for devextreme-vue
+    - name: Restore submodule
       working-directory: ./devextreme-vue-repo
-      run: npm install --no-audit --no-fund
+      run: npm run restore-devextreme
 
     - name: Copy devextreme package
       run: |
@@ -231,11 +215,10 @@ jobs:
     - name: Install packages for devextreme-vue
       working-directory: ./devextreme-vue-repo
       run: |
-        npm run restore-devextreme
         pushd devextreme-setup
         installerName=$(realpath .)/$(ls devextreme-installer.tgz)
         popd
-        npm install --save-dev --legacy-peer-deps $installerName --workspace=devextreme-vue --workspace=devextreme-vue2-strategy --include-workspace-root
+        npm install --save-dev --legacy-peer-deps $installerName --workspace=devextreme-vue --workspace=devextreme-vue2-strategy --workspace=devextreme-vue-sandbox --include-workspace-root
         npm run generate-metadata
 
     - name: Build and Pack
