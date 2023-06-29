@@ -8,4 +8,4 @@ The [customizeCell](/Documentation/ApiReference/Common/Object_Structures/ExportD
 
 The [customizeCell](/Documentation/ApiReference/Common/Object_Structures/ExportDataGridProps/#customizeCell) function also allows you to identify row types. For example, this demo changes the background color and font weight for cells with the "group" [rowType](/Documentation/ApiReference/UI_Components/dxDataGrid/Row/#rowType).
 
-You can specify a cell used as a start position for export data. For this purpose, assign an object with the cell coordinates to the [topLeftCell](/Documentation/ApiReference/Common/Object_Structures/ExcelExportDataGridProps/topLeftCell/) property.
+You can specify the cell used as the start position for exported data. For this purpose, assign an object with the cell coordinates to the [topLeftCell](/Documentation/ApiReference/Common/Object_Structures/ExcelExportDataGridProps/topLeftCell/) property.
