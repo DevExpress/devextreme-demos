@@ -12,7 +12,7 @@ const config = {
   'devextreme-vue': '',
   'devexpress-diagram': '',
   'devexpress-gantt': '',
-  'hg': '',
+  'devextreme-aspnet': '',
 };
 /* eslint-enable quote-props */
 
