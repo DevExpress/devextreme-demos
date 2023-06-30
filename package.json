@@ -70,7 +70,7 @@
         "babel-jest": "27.5.1",
         "cookie-parser": "1.4.6",
         "cross-env": "7.0.3",
-        "devextreme-screenshot-comparer": "2.0.16",
+        "devextreme-screenshot-comparer": "2.0.17",
         "eclint": "2.8.1",
         "eslint": "7.32.0",
         "eslint-config-airbnb-base": "14.2.1",
@@ -106,7 +106,7 @@
         "stylelint": "13.13.1",
         "stylelint-config-standard": "22.0.0",
         "systemjs-builder": "0.16.15",
-        "testcafe": "2.6.2",
+        "testcafe": "3.0.1",
         "typescript": "3.9.10"
     },
     "scripts": {
