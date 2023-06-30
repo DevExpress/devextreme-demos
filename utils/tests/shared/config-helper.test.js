@@ -13,7 +13,7 @@ const configKeys = [
   'devextreme-vue',
   'devexpress-diagram',
   'devexpress-gantt',
-  'hg',
+  'devextreme-aspnet',
 ];
 
 describe('Config helper tests', () => {
@@ -38,7 +38,7 @@ describe('Config helper tests', () => {
   "devextreme-vue": "",
   "devexpress-diagram": "",
   "devexpress-gantt": "",
-  "hg": ""
+  "devextreme-aspnet": ""
 }`, 'utf8');
   });
 
@@ -50,7 +50,7 @@ describe('Config helper tests', () => {
         "devextreme-vue":"1",
         "devexpress-diagram":"1",
         "devexpress-gantt":"1",
-        "hg":"1"}`);
+        "devextreme-aspnet":"1"}`);
     const config = init();
 
     configKeys.forEach((key) => {
@@ -70,7 +70,7 @@ describe('Config helper tests', () => {
         "devextreme-vue":"1",
         "devexpress-diagram":"1",
         "devexpress-gantt":"1",
-        "hg":"1"}`);
+        "devextreme-aspnet":"1"}`);
     const config = init();
 
     config.hg = '2';
@@ -85,7 +85,7 @@ describe('Config helper tests', () => {
   "devextreme-vue": "1",
   "devexpress-diagram": "1",
   "devexpress-gantt": "1",
-  "hg": "2"
+  "devextreme-aspnet": "2"
 }`, 'utf8');
   });
 });
