@@ -32,17 +32,9 @@
         },
         {
             "matchPackagePatterns": [ "*" ],
-            "matchUpdateTypes": [ "minor", "patch" ],
-            "automerge": true
-        },
-        {
-            "matchPackagePatterns": [ "*" ],
             "matchUpdateTypes": [ "major" ],
-            "enabled": false
+            "dependencyDashboardApproval": true
         }
-    ],
-    "reviewers": [
-        "team:devextreme-devops"
     ],
     "ignorePaths": [
         ".github",
