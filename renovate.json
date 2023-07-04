@@ -12,8 +12,7 @@
         "dependencies"
     ],
     "vulnerabilityAlerts": {
-        "enabled": true,
-        "automerge": true
+        "enabled": true
     },
     "packageRules": [
         {
@@ -32,13 +31,8 @@
         },
         {
             "matchPackagePatterns": [ "*" ],
-            "matchUpdateTypes": [ "minor", "patch" ],
-            "automerge": true
-        },
-        {
-            "matchPackagePatterns": [ "*" ],
             "matchUpdateTypes": [ "major" ],
-            "enabled": false
+            "dependencyDashboardApproval": true
         }
     ],
     "reviewers": [
