@@ -1,5 +1,5 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
-import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { DxDataGridModule } from 'devextreme-angular';
@@ -9,8 +9,10 @@ if (!/localhost/.test(document.location.host)) {
 }
 
 @Component({
-  selector: 'demo-app',
-  templateUrl: 'app/app.component.html',
+  selector: 'app-root',
+  // standalone: true,
+  // templateUrl: 'app.component.html',
+  template: '<dx-data-grid id="grid" dataSource="../../../../data/customers.json"></dx-data-grid>'
 })
 export class AppComponent {
 }
@@ -18,7 +20,6 @@ export class AppComponent {
 @NgModule({
   imports: [
     BrowserModule,
-    BrowserTransferStateModule,
     DxDataGridModule,
   ],
   declarations: [AppComponent],

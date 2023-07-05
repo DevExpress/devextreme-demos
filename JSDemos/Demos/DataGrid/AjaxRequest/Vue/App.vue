@@ -1,22 +1,15 @@
 <template>
-  <DxDataGrid
-    :columns="columns"
-    :show-borders="true"
-    data-source="../../../../data/customers.json"
-  />
+  <DxDataGrid data-source="../../../../data/customers.json" />
 </template>
+
 <script>
+import 'devextreme/dist/css/dx.light.css';
 
 import DxDataGrid from 'devextreme-vue/data-grid';
 
 export default {
   components: {
     DxDataGrid,
-  },
-  data() {
-    return {
-      columns: ['CompanyName', 'City', 'State', 'Phone', 'Fax'],
-    };
-  },
+  }
 };
 </script>
