@@ -3,6 +3,7 @@
     <div
       ref="target"
       :class="{'dx-tag-content': true, 'disabled-tag': isDisabled}"
+      :aria-disabled="isDisabled"
       @mouseenter="show = true"
       @mouseleave="show = false"
     >

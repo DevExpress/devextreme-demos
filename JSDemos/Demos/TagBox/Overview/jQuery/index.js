@@ -102,6 +102,7 @@ $(() => {
       });
 
       const tag = $('<div>')
+        .attr('aria-disabled', isDisabled)
         .addClass(`dx-tag-content ${isDisabled && 'disabled-tag'}`)
         .append(
           tagImg,

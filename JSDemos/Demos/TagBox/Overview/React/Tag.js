@@ -7,6 +7,7 @@ export default function Tag({ product, onMouseEnter }) {
       <div
         className={`dx-tag-content ${isDisabled && 'disabled-tag'}`}
         onMouseEnter={(e) => onMouseEnter(e, product)}
+        aria-disabled={isDisabled}
       >
         <img src={product.ImageSrc} className="tag-img" />
         <span>{product.Name}</span>

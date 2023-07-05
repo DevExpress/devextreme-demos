@@ -127,6 +127,7 @@
                 'dx-tag-content': true,
                 'disabled-tag': isDisabled(product)
               }"
+              [attr.aria-disabled]="isDisabled(product)"
               (mouseenter)="onMouseEnter($event, product)"
               (mouseleave)="onMouseLeave()"
             >
