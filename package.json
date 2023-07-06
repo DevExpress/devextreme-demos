@@ -106,7 +106,7 @@
         "stylelint": "13.13.1",
         "stylelint-config-standard": "22.0.0",
         "systemjs-builder": "0.16.15",
-        "testcafe": "https://github.com/Artem-Babich/test-packages/files/11966331/testcafe-2.6.0.tar.gz",
+        "testcafe": "https://github.com/Artem-Babich/test-packages/files/11967793/testcafe-2.5.1-rc.1.tar.gz",
         "typescript": "3.9.10"
     },
     "scripts": {
