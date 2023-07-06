@@ -2,7 +2,6 @@ import glob from 'glob';
 import { ClientFunction } from 'testcafe';
 import { join } from 'path';
 import { existsSync, readFileSync } from 'fs';
-import { compareScreenshot } from 'devextreme-screenshot-comparer';
 import { axeCheck, createReport } from '@testcafe-community/axe';
 import {
   getPortByIndex,
@@ -11,7 +10,6 @@ import {
   shouldRunTestAtIndex,
 } from '../utils/visual-tests/matrix-test-helper';
 import { createMdReport, createTestCafeReport } from '../utils/axe-reporter/reporter';
-import { takeScreenshot } from 'devextreme-screenshot-comparer/src/take-screenshot';
 
 const globalReadFrom = (basePath, relativePath, mapCallback) => {
   const absolute = join(basePath, relativePath);
@@ -143,7 +141,7 @@ const execTestCafeCode = (t, code) => {
           const comparisonResult = true;
 
           await t.takeScreenshot(`${testName}.png`);
-          
+
           if (!comparisonResult) {
             // eslint-disable-next-line no-console
             console.log(await t.getBrowserConsoleMessages());
