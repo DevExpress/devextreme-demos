@@ -1,8 +1,8 @@
 const childProcess = require('child_process');
 
-const systemSync = (command, cwd) => {
+const systemSync = (command) => {
   try {
-    childProcess.execSync(command, { stdio: 'inherit', cwd });
+    childProcess.execSync(command, { stdio: 'inherit' });
   } catch (error) {
     throw new Error(error);
   }

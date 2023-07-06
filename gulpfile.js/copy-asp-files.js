@@ -23,8 +23,8 @@ function checkAspnetPath(callback) {
 }
 
 function runBuild(callback) {
-  systemSync('npm i', aspnetPath);
-  systemSync('npm run build', aspnetPath);
+  systemSync(`cd ${aspnetPath} && npm i`);
+  systemSync(`cd ${aspnetPath} && npm run build`);
   callback();
 }
 

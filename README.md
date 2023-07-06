@@ -15,7 +15,7 @@ npm run prepare-all
 npm run prepare-js
 ```
 ```
-npm run prepare-mvc
+npm run prepare-aspnet
 ```
 
 Angular, Vue, and React demos can use bundles instead of separate files from `node_modules`. With bundles, demos launch faster but become harder to debug. Run the following command to create the bundles and replace the SystemJS configuration:
