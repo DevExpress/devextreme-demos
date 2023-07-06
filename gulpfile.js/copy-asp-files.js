@@ -10,7 +10,7 @@ const { init } = require('../utils/shared/config-helper');
 
 const aspnetPath = init()['devextreme-aspnet'];
 
-function checkDotnetPath(callback) {
+function checkAspnetPath(callback) {
   if (!aspnetPath) {
     throw Error('Aspnet repo path is not specified. Look at repository.config.json');
   }
@@ -34,7 +34,7 @@ function restorePackages(callback) {
 }
 
 exports.copyAspFiles = series(
-  checkDotnetPath,
+  checkAspnetPath,
   runBuild,
   parallel(
     () => src('MVCDemos/AppData/*.ldf', { read: false }).pipe(clean()),

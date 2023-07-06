@@ -32,7 +32,7 @@ namespace AspNetCoreDemos.DemoShell {
         }
 
         public static string GetCurrentDevice(HttpContext http) {
-		var device = http.Request.Query["device"];
+            var device = http.Request.Query["device"];
             if(device == "mobile")
                 return "iPhone";
 

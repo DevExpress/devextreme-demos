@@ -120,7 +120,7 @@
         "prepare-ts": "node ./node_modules/typescript/bin/tsc -p JSDemos/shared",
         "prepare-js": "npm run prepare-ts && gulp js",
         "prepare-aspnet": "gulp aspnet",
-        "prepare-all": "npm run prepare-js && npm run prepare-mvc",
+        "prepare-all": "npm run prepare-js && npm run prepare-aspnet",
         "prepare-shared": "npm run prepare-ts && gulp shared",
         "lint-html": "prettier --check .",
         "lint-js": "eslint .",
