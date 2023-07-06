@@ -6,6 +6,5 @@
     "path": "./",
     "pathPattern": "${TEST}.png"
   },
-  "pageLoadTimeout": 10000,
-  "nativeAutomation": true
+  "pageLoadTimeout": 10000
 }

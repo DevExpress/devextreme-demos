@@ -2,6 +2,7 @@ import glob from 'glob';
 import { ClientFunction } from 'testcafe';
 import { join } from 'path';
 import { existsSync, readFileSync } from 'fs';
+import { compareScreenshot } from 'devextreme-screenshot-comparer';
 import { axeCheck, createReport } from '@testcafe-community/axe';
 import {
   getPortByIndex,
@@ -138,10 +139,7 @@ const execTestCafeCode = (t, code) => {
           await t.expect(error).notOk();
           await t.expect(results.violations.length === 0).ok(createReport(results.violations));
         } else {
-          const comparisonResult = true;
-
-          await t.takeScreenshot(`${testName}.png`);
-
+          const comparisonResult = await compareScreenshot(t, `${testName}.png`, undefined, comparisonOptions);
           if (!comparisonResult) {
             // eslint-disable-next-line no-console
             console.log(await t.getBrowserConsoleMessages());
