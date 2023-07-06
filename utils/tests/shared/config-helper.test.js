@@ -73,7 +73,7 @@ describe('Config helper tests', () => {
         "devextreme-aspnet":"1"}`);
     const config = init();
 
-    config.hg = '2';
+    config['devextreme-aspnet'] = '2';
 
     updateConfig(config);
 
