@@ -43,7 +43,7 @@ exports.copyAspFiles = series(
 
     () => src('NetCoreDemos/project.lock.json', { read: false, allowEmpty: true }).pipe(clean()),
 
-    // TODO: discuss about "demo-template.css"
+    // TODO: back to the "demo-template.css" after migrating WidgetsGallery
     // () => src('Demos/WidgetsGallery/WidgetsGallery/build/demo-template.css', { cwd: aspnetPath })
     //   .pipe(dest('MVCDemos/Content'))
     //   .pipe(dest('NetCoreDemos/wwwroot/css')),

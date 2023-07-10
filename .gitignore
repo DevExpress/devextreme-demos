@@ -32,7 +32,7 @@ MVCDemos/App_Data/Northwind.mdf
 MVCDemos/Content/icons
 MVCDemos/Content/DevExtreme
 MVCDemos/Content/Descr/Temp
-MVCDemos/Content/demo-template.css
+!MVCDemos/Content/demo-template.css
 MVCDemos/Content/SampleData/SampleImages
 MVCDemos/Scripts/*
 !MVCDemos/Scripts/data
@@ -50,6 +50,7 @@ NetCoreDemos/wwwroot/js
 NetCoreDemos/wwwroot/css/*
 !NetCoreDemos/wwwroot/css/custom\.css
 !NetCoreDemos/wwwroot/css/DemosStyles
+!NetCoreDemos/wwwroot/css/demo-template.css
 NetCoreDemos/wwwroot/SampleData/SampleImages
 NetCoreDemos/menuMeta.json
 NetCoreDemos/wwwroot/bundle.min.css
