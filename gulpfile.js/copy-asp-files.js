@@ -38,7 +38,7 @@ exports.copyAspFiles = series(
   runBuild,
   parallel(
     () => src('MVCDemos/AppData/*.ldf', { read: false }).pipe(clean()),
-    () => src('internal/SampleDatabases/Northwind.mdf', { cwd: aspnetPath })
+    () => src('NetCoreDemos/Northwind.mdf')
       .pipe(dest('MVCDemos/App_Data')),
 
     () => src('NetCoreDemos/project.lock.json', { read: false, allowEmpty: true }).pipe(clean()),
@@ -48,7 +48,7 @@ exports.copyAspFiles = series(
     //   .pipe(dest('MVCDemos/Content'))
     //   .pipe(dest('NetCoreDemos/wwwroot/css')),
 
-    () => src('internal/SampleImages/**/*', { cwd: aspnetPath })
+    () => src('SampleImages/**/*')
       .pipe(dest('MVCDemos/Content/SampleData/SampleImages'))
       .pipe(dest('NetCoreDemos/wwwroot/SampleData/SampleImages')),
 
