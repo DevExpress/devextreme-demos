@@ -7,7 +7,7 @@ const defaultValues = {
   allItems: [1, 2, 3, 4, 5],
   ordinaryTags: [1, 2, 3, 4, 5, 6, 7],
 };
-const [items] = products.slice(0, 5);
+const items = products.slice(0, 5);
 
 const onMultiTagPreparing = (args) => {
   const selectedItemsLength = args.selectedItems.length;

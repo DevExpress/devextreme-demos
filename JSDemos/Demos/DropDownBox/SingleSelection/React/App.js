@@ -9,8 +9,6 @@ import 'whatwg-fetch';
 
 const gridColumns = ['CompanyName', 'City', 'Phone'];
 const ownerLabel = { 'aria-label': 'Owner' };
-const treeDataSource = makeAsyncDataSource('treeProducts.json');
-const gridDataSource = makeAsyncDataSource('customers.json');
 
 const makeAsyncDataSource = (jsonFile) => (new CustomStore({
   loadMode: 'raw',
@@ -20,6 +18,9 @@ const makeAsyncDataSource = (jsonFile) => (new CustomStore({
       .then((response) => response.json());
   },
 }));
+
+const treeDataSource = makeAsyncDataSource('treeProducts.json');
+const gridDataSource = makeAsyncDataSource('customers.json');
 
 function App() {
   const treeViewRef = useRef(null);

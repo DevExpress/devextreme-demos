@@ -14,7 +14,7 @@ function App() {
   const [selectedItem, setSelectedItem] = useState(products[0]);
   const [isLoaded, setIsLoaded] = useState(true);
 
-  const deferredProducts = useMemo({
+  const deferredProducts = useMemo(() => ({
     loadMode: 'raw',
     load: () => {
       setIsLoaded(false);
@@ -27,7 +27,7 @@ function App() {
 
       return promise;
     },
-  }, [setIsLoaded]);
+  }), [setIsLoaded]);
 
   const renderLoadIndicator = useCallback(
     () => (<IndicatorIcon isLoaded={isLoaded} />),

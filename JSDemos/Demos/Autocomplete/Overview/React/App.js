@@ -20,7 +20,7 @@ const states = new OData({
 const clientsStore = new CustomStore({
   key: 'Value',
   useDefaultSearch: true,
-  load: useCallback((loadOptions) => {
+  load: (loadOptions) => {
     let params = '?';
     ['skip', 'take', 'filter'].forEach((option) => {
       if (option in loadOptions && isNotEmpty(loadOptions[option])) {
@@ -36,7 +36,7 @@ const clientsStore = new CustomStore({
       .catch(() => {
         throw new Error('Data Loading Error');
       });
-  }, []),
+  },
 });
 
 function App() {
