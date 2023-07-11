@@ -47,7 +47,9 @@ export class AppComponent {
 
             worksheet.getRow(excelCell.row).height = 90;
             worksheet.addImage(image, {
+              // @ts-expect-error See https://github.com/exceljs/exceljs/issues/1747
               tl: { col: excelCell.col - 1, row: excelCell.row - 1 },
+              // @ts-expect-error See https://github.com/exceljs/exceljs/issues/1747
               br: { col: excelCell.col, row: excelCell.row },
             });
           }
