@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TagBox } from 'devextreme-react/tag-box';
 import { products, productLabel } from './data.js';
 
@@ -7,21 +7,20 @@ const defaultValues = {
   allItems: [1, 2, 3, 4, 5],
   ordinaryTags: [1, 2, 3, 4, 5, 6, 7],
 };
+const [items] = products.slice(0, 5);
+
+const onMultiTagPreparing = (args) => {
+  const selectedItemsLength = args.selectedItems.length;
+  const totalCount = 5;
+
+  if (selectedItemsLength < totalCount) {
+    args.cancel = true;
+  } else {
+    args.text = `All selected (${selectedItemsLength})`;
+  }
+};
 
 function App() {
-  const [items] = useState(products.slice(0, 5));
-
-  const onMultiTagPreparing = (args) => {
-    const selectedItemsLength = args.selectedItems.length;
-    const totalCount = 5;
-
-    if (selectedItemsLength < totalCount) {
-      args.cancel = true;
-    } else {
-      args.text = `All selected (${selectedItemsLength})`;
-    }
-  };
-
   return (
     <div>
       <div className="dx-fieldset">

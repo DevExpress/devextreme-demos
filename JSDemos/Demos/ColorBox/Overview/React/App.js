@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import ColorBox from 'devextreme-react/color-box';
 
 const defaultModeLabel = { 'aria-label': 'Default mode' };
@@ -11,9 +11,9 @@ const eventHandlingLabel = { 'aria-label': 'Event Handling' };
 function App() {
   const [color, setColor] = useState('#f05b41');
 
-  const handleColorChange = ({ value }) => {
+  const handleColorChange = useCallback(({ value }) => {
     setColor(value);
-  };
+  }, []);
 
   return (
     <React.Fragment>

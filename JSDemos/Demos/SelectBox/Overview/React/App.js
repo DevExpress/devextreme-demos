@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import SelectBox from 'devextreme-react/select-box';
 import ArrayStore from 'devextreme/data/array_store';
 import notify from 'devextreme/ui/notify';
@@ -15,20 +15,20 @@ const readOnlyProductLabel = { 'aria-label': 'ReadOnly Product' };
 const templatedProductLabel = { 'aria-label': 'Templated Product' };
 const disabledProductLabel = { 'aria-label': 'Disabled Product' };
 
+const products = service.getProducts();
+const simpleProducts = service.getSimpleProducts();
+const data = new ArrayStore({
+  data: products,
+  key: 'ID',
+});
+
 function App() {
   const [value, setValue] = useState(service.getSimpleProducts()[0]);
 
-  const products = service.getProducts();
-  const simpleProducts = service.getSimpleProducts();
-  const data = new ArrayStore({
-    data: products,
-    key: 'ID',
-  });
-
-  const onValueChanged = (e) => {
+  const onValueChanged = useCallback((e) => {
     setValue(e.value);
     notify(`The value is changed to: "${e.value}"`);
-  };
+  }, []);
 
   return (
     <div>

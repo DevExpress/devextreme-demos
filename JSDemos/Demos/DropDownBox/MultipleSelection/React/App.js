@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import DropDownBox from 'devextreme-react/drop-down-box';
 import TreeView from 'devextreme-react/tree-view';
 import DataGrid, {
@@ -27,7 +27,7 @@ function App() {
   const [gridBoxValue, setGridBoxValue] = useState([3]);
   const treeViewRef = useRef();
 
-  const treeViewRender = () => (
+  const treeViewRender = useCallback(() => (
     <TreeView dataSource={treeDataSource}
       ref={treeViewRef}
       dataStructure="plain"
@@ -41,9 +41,9 @@ function App() {
       onContentReady={syncTreeViewSelection}
       onItemSelectionChanged={treeViewItemSelectionChanged}
     />
-  );
+  ), [treeDataSource]);
 
-  const dataGridRender = () => (
+  const dataGridRender = useCallback(() => (
     <DataGrid
       height={345}
       dataSource={gridDataSource}
@@ -56,9 +56,9 @@ function App() {
       <Paging enabled={true} pageSize={10} />
       <FilterRow visible={true} />
     </DataGrid>
-  );
+  ), [gridDataSource, gridBoxValue]);
 
-  const syncTreeViewSelection = (e) => {
+  const syncTreeViewSelection = useCallback((e) => {
     const treeView = (e.component.selectItem && e.component)
       || (treeViewRef.current && treeViewRef.current.instance);
 
@@ -76,19 +76,19 @@ function App() {
     if (e.value !== undefined) {
       setTreeBoxValue(e.value);
     }
-  };
+  }, [treeBoxValue]);
 
-  const syncDataGridSelection = (e) => {
+  const syncDataGridSelection = useCallback((e) => {
     setGridBoxValue(e.value || []);
-  };
+  }, []);
 
-  const treeViewItemSelectionChanged = (e) => {
+  const treeViewItemSelectionChanged = useCallback((e) => {
     setTreeBoxValue(e.component.getSelectedNodeKeys());
-  };
+  }, []);
 
-  const dataGridOnSelectionChanged = (e) => {
+  const dataGridOnSelectionChanged = useCallback((e) => {
     setGridBoxValue((e.selectedRowKeys.length && e.selectedRowKeys) || []);
-  };
+  }, []);
 
   return (
     <div className="dx-fieldset">

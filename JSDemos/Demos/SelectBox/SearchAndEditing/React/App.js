@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { SelectBox } from 'devextreme-react/select-box';
 import { NumberBox } from 'devextreme-react/number-box';
 import { CheckBox } from 'devextreme-react/check-box';
@@ -33,31 +33,31 @@ function App() {
   const [minSearchLengthOption, setMinSearchLengthOption] = useState(0);
   const [showDataBeforeSearchOption, setShowDataBeforeSearchOption] = useState(false);
 
-  const editBoxValueChanged = ({ component }) => {
+  const editBoxValueChanged = useCallback(({ component }) => {
     setEditBoxValue(component.option('selectedItem'));
-  };
+  }, []);
 
-  const searchModeOptionChanged = ({ value }) => {
+  const searchModeOptionChanged = useCallback(({ value }) => {
     setSearchModeOption(value);
-  };
+  }, []);
 
-  const searchExprOptionChanged = ({ value }) => {
+  const searchExprOptionChanged = useCallback(({ value }) => {
     setSearchExprOption(value);
-  };
+  }, []);
 
-  const searchTimeoutOptionChanged = ({ value }) => {
+  const searchTimeoutOptionChanged = useCallback(({ value }) => {
     setSearchTimeoutOption(value);
-  };
+  }, []);
 
-  const minSearchLengthOptionChanged = ({ value }) => {
+  const minSearchLengthOptionChanged = useCallback(({ value }) => {
     setMinSearchLengthOption(value);
-  };
+  }, []);
 
-  const showDataBeforeSearchOptionChanged = ({ value }) => {
+  const showDataBeforeSearchOptionChanged = useCallback(({ value }) => {
     setShowDataBeforeSearchOption(value);
-  };
+  }, []);
 
-  const customItemCreating = (args) => {
+  const customItemCreating = useCallback((args) => {
     if (!args.text) {
       args.customItem = null;
       return;
@@ -76,7 +76,7 @@ function App() {
       .catch((error) => {
         throw error;
       });
-  };
+  }, []);
 
   return (
     <div id="selectbox-demo">

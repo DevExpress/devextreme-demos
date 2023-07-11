@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 
 import { TextBox, Button as TextBoxButton } from 'devextreme-react/text-box';
 import { NumberBox, Button as NumberBoxButton } from 'devextreme-react/number-box';
@@ -15,15 +15,15 @@ function App() {
   const [currencyValue, setCurrencyValue] = useState(14500.55);
   const [dateValue, setDateValue] = useState(new Date().getTime());
 
-  const passwordButton = useMemo({
+  const passwordButton = useMemo(() => ({
     icon: '../../../../images/icons/eye.png',
     type: 'default',
     onClick: () => {
       setPasswordMode((prevPasswordMode) => (prevPasswordMode === 'text' ? 'password' : 'text'));
     },
-  }, setPasswordMode);
+  }), [setPasswordMode]);
 
-  const currencyButton = useMemo({
+  const currencyButton = useMemo(() => ({
     text: '€',
     stylingMode: 'text',
     width: 32,
@@ -41,38 +41,38 @@ function App() {
         setCurrencyValue((prevCurrencyValue) => prevCurrencyValue * 0.836);
       }
     },
-  }, [setCurrencyFormat, setCurrencyValue]);
+  }), [setCurrencyFormat, setCurrencyValue]);
 
-  const todayButton = useMemo({
+  const todayButton = useMemo(() => ({
     text: 'Today',
     onClick: () => {
       setDateValue(new Date().getTime());
     },
-  }, [setDateValue]);
+  }), [setDateValue]);
 
-  const prevDateButton = useMemo({
+  const prevDateButton = useMemo(() => ({
     icon: 'spinprev',
     stylingMode: 'text',
     onClick: () => {
       setDateValue((prevDateValue) => prevDateValue - millisecondsInDay);
     },
-  }, [setDateValue]);
+  }), [setDateValue]);
 
-  const nextDateButton = useMemo({
+  const nextDateButton = useMemo(() => ({
     icon: 'spinnext',
     stylingMode: 'text',
     onClick: () => {
       setDateValue((prevDateValue) => prevDateValue + millisecondsInDay);
     },
+  }), [setDateValue]);
+
+  const onDateChanged = useCallback((e) => {
+    setDateValue(e.value);
   }, [setDateValue]);
 
-  const onDateChanged = (e) => {
-    setDateValue(e.value);
-  };
-
-  const changeCurrency = (data) => {
+  const changeCurrency = useCallback((data) => {
     setCurrencyValue(data.value);
-  };
+  }, [setCurrencyValue]);
 
   return (
     <React.Fragment>

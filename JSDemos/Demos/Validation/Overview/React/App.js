@@ -39,40 +39,40 @@ function App() {
   const [passwordMode, setPasswordMode] = useState('password');
   const [confirmPasswordMode, setConfirmPasswordMode] = useState('password');
 
-  const passwordButton = useMemo({
+  const passwordButton = useMemo(() => ({
     icon: '../../../../images/icons/eye.png',
     type: 'default',
     onClick: () => {
       setPasswordMode(passwordMode === 'text' ? 'password' : 'text');
     },
-  }, [passwordMode, setPasswordMode]);
+  }), [passwordMode, setPasswordMode]);
 
-  const confirmPasswordButton = useMemo({
+  const confirmPasswordButton = useMemo(() => ({
     icon: '../../../../images/icons/eye.png',
     type: 'default',
     onClick: () => {
       setConfirmPasswordMode(confirmPasswordMode === 'text' ? 'password' : 'text');
     },
-  }, [confirmPasswordMode, setConfirmPasswordMode]);
+  }), [confirmPasswordMode, setConfirmPasswordMode]);
 
   const passwordComparison = useCallback(() => password, [password]);
 
-  const onPasswordChanged = (e) => {
+  const onPasswordChanged = useCallback((e) => {
     setPassword(e.value);
     if (confirmPassword) {
       validatorInstance.validate();
     }
-  };
+  }, [confirmPassword, setPassword, validatorInstance]);
 
-  const onInit = (e) => {
+  const onInit = useCallback((e) => {
     validatorInstance = e.component;
-  };
+  }, []);
 
-  const onConfirmPasswordChanged = (e) => {
+  const onConfirmPasswordChanged = useCallback((e) => {
     setConfirmPassword(e.value);
-  };
+  }, []);
 
-  const onFormSubmit = (e) => {
+  const onFormSubmit = useCallback((e) => {
     notify({
       message: 'You have submitted the form',
       position: {
@@ -82,7 +82,7 @@ function App() {
     }, 'success', 3000);
 
     e.preventDefault();
-  };
+  }, []);
 
   let validatorInstance;
 

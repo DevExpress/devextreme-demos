@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import TagBox from 'devextreme-react/tag-box';
 import Popover from 'devextreme-react/popover';
@@ -21,19 +21,19 @@ function App() {
     key: 'Id',
   });
 
-  const onCustomItemCreating = (args) => {
+  const onCustomItemCreating = useCallback((args) => {
     const newValue = args.text;
     const isItemInDataSource = editableProducts.some((item) => item === newValue);
     if (!isItemInDataSource) {
       setEditableProducts([newValue, ...editableProducts]);
     }
     args.customItem = newValue;
-  };
+  }, [editableProducts]);
 
-  const onMouseEnter = (e, newProduct) => {
+  const onMouseEnter = useCallback((e, newProduct) => {
     setTarget(e.currentTarget);
     setProduct(newProduct);
-  };
+  }, []);
 
   return (
     <React.Fragment>

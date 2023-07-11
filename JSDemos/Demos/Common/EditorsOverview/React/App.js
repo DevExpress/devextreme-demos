@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import ColorBox from 'devextreme-react/color-box';
 import NumberBox from 'devextreme-react/number-box';
@@ -43,31 +43,31 @@ function App() {
   const [transform, setTransform] = useState(noFlipTransform);
   const [border, setBorder] = useState(false);
 
-  const handleTextChange = (e) => {
+  const handleTextChange = useCallback((e) => {
     setText(e.value);
-  };
+  }, []);
 
-  const handleColorChange = (e) => {
+  const handleColorChange = useCallback((e) => {
     setColor(e.value);
-  };
+  }, []);
 
-  const handleHeightChange = (e) => {
+  const handleHeightChange = useCallback((e) => {
     setWidth((e.value * 37) / 26);
     setHeight(e.value);
-  };
+  }, []);
 
-  const handleWidthChange = (e) => {
+  const handleWidthChange = useCallback((e) => {
     setWidth(e.value);
     setHeight((e.value * 26) / 37);
-  };
+  }, []);
 
-  const handleTransformChange = (e) => {
+  const handleTransformChange = useCallback((e) => {
     setTransform(e.value);
-  };
+  }, []);
 
-  const handleBorderChange = (e) => {
+  const handleBorderChange = useCallback((e) => {
     setBorder(e.value);
-  };
+  }, []);
 
   return (
     <React.Fragment>

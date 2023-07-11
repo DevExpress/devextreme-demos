@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { NumberBox } from 'devextreme-react/number-box';
 
 const simpleLabel = { 'aria-label': 'Simple' };
@@ -12,17 +12,17 @@ function App() {
   const [value, setValue] = useState(16);
   const [max] = useState(30);
 
-  const valueChanged = (e) => {
+  const valueChanged = useCallback((e) => {
     setValue(e.value);
-  };
+  }, []);
 
-  const keyDown = (e) => {
+  const keyDown = useCallback((e) => {
     const { event } = e;
     const str = event.key || String.fromCharCode(event.which);
     if (/^[.,e]$/.test(str)) {
       event.preventDefault();
     }
-  };
+  }, []);
 
   return (
     <div className="form">

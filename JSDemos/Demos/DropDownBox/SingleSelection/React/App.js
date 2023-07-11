@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import DropDownBox from 'devextreme-react/drop-down-box';
 import TreeView from 'devextreme-react/tree-view';
 import DataGrid, {
@@ -28,7 +28,7 @@ function App() {
   const [isGridBoxOpened, setIsGridBoxOpened] = useState(false);
   const [isTreeBoxOpened, setIsTreeBoxOpened] = useState(false);
 
-  const treeViewRender = () => (
+  const treeViewRender = useCallback(() => (
     <TreeView dataSource={treeDataSource}
       ref={treeViewRef}
       dataStructure="plain"
@@ -41,9 +41,9 @@ function App() {
       onItemClick={onTreeItemClick}
       onItemSelectionChanged={treeViewItemSelectionChanged}
     />
-  );
+  ), [treeDataSource]);
 
-  const dataGridRender = () => (
+  const dataGridRender = useCallback(() => (
     <DataGrid
       dataSource={gridDataSource}
       columns={gridColumns}
@@ -56,9 +56,9 @@ function App() {
       <Paging enabled={true} pageSize={10} />
       <FilterRow visible={true} />
     </DataGrid>
-  );
+  ), [gridDataSource, gridBoxValue]);
 
-  const syncTreeViewSelection = (e) => {
+  const syncTreeViewSelection = useCallback((e) => {
     setTreeBoxValue(e.value);
     if (!treeViewRef.current) return;
 
@@ -67,44 +67,44 @@ function App() {
     } else {
       treeViewRef.current.instance.selectItem(e.value);
     }
-  };
+  }, []);
 
-  const syncDataGridSelection = (e) => {
+  const syncDataGridSelection = useCallback((e) => {
     setGridBoxValue(e.value);
-  };
+  }, []);
 
-  const treeViewItemSelectionChanged = (e) => {
+  const treeViewItemSelectionChanged = useCallback((e) => {
     setTreeBoxValue(e.component.getSelectedNodeKeys());
-  };
+  }, []);
 
-  const dataGridOnSelectionChanged = (e) => {
+  const dataGridOnSelectionChanged = useCallback((e) => {
     setGridBoxValue(e.selectedRowKeys);
     setIsGridBoxOpened(false);
-  };
+  }, []);
 
-  const gridBoxDisplayExpr = (item) => (
+  const gridBoxDisplayExpr = useCallback((item) => (
     item && `${item.CompanyName} <${item.Phone}>`
-  );
+  ), []);
 
-  const treeViewOnContentReady = (e) => {
+  const treeViewOnContentReady = useCallback((e) => {
     e.component.selectItem(treeBoxValue);
-  };
+  }, [treeBoxValue]);
 
-  const onTreeItemClick = () => {
+  const onTreeItemClick = useCallback(() => {
     setIsTreeBoxOpened(false);
-  };
+  }, []);
 
-  const onGridBoxOpened = (e) => {
+  const onGridBoxOpened = useCallback((e) => {
     if (e.name === 'opened') {
       setIsGridBoxOpened(e.value);
     }
-  };
+  }, []);
 
-  const onTreeBoxOpened = (e) => {
+  const onTreeBoxOpened = useCallback((e) => {
     if (e.name === 'opened') {
       setIsTreeBoxOpened(e.value);
     }
-  };
+  }, []);
 
   return (
     <div className="dx-fieldset">

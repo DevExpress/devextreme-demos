@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import CheckBox from 'devextreme-react/check-box';
 import SelectBox from 'devextreme-react/select-box';
 import TextArea from 'devextreme-react/text-area';
@@ -17,24 +17,24 @@ function App() {
   const [autoResizeEnabled, setAutoResizeEnabled] = useState(false);
   const [height, setHeight] = useState(90);
 
-  const onCheckboxValueChanged = (e) => {
+  const onCheckboxValueChanged = useCallback((e) => {
     const str = service.getContent();
     setValue(e.value ? str.substring(0, 100) : str);
     setMaxLength(e.value ? 100 : null);
-  };
+  }, []);
 
-  const onAutoResizeChanged = (e) => {
+  const onAutoResizeChanged = useCallback((e) => {
     setAutoResizeEnabled(e.value);
     setHeight(e.value ? undefined : 90);
-  };
+  }, []);
 
-  const onSelectBoxValueChanged = (e) => {
+  const onSelectBoxValueChanged = useCallback((e) => {
     setEventValue(e.value);
-  };
+  }, []);
 
-  const onTextAreaValueChanged = (e) => {
+  const onTextAreaValueChanged = useCallback((e) => {
     setValueForEditableTestArea(e.value);
-  };
+  }, []);
 
   return (
     <React.Fragment>

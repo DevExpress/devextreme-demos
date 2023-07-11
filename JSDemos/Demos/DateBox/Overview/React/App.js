@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import DateBox from 'devextreme-react/date-box';
 
 import service from './data.js';
@@ -20,13 +20,14 @@ function App() {
   const dateClear = new Date(2015, 11, 1, 6);
   const disabledDates = service.getFederalHolidays();
 
-  const diffInDay = `${Math.floor(
+  const diffInDay = useMemo(() => `${Math.floor(
     Math.abs((new Date().getTime() - value.getTime()) / (24 * 60 * 60 * 1000)),
-  )} days`;
+  )} days`,
+  [value]);
 
-  const onValueChanged = (e) => {
+  const onValueChanged = useCallback((e) => {
     setValue(e.value);
-  };
+  }, []);
 
   return (
     <div>

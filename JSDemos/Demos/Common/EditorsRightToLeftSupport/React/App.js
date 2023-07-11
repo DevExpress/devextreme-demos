@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { NumberBox } from 'devextreme-react/number-box';
 import { SelectBox } from 'devextreme-react/select-box';
 import { Switch } from 'devextreme-react/switch';
@@ -23,13 +23,13 @@ function App() {
   const [displayExpr, setDisplayExpr] = useState('nameEn');
   const [textValue, setTextValue] = useState('text');
 
-  const onLanguageChanged = (args) => {
+  const onLanguageChanged = useCallback((args) => {
     const isRTL = args.value === languages[0];
 
     setDisplayExpr(isRTL ? 'nameAr' : 'nameEn');
     setRtlEnabled(isRTL);
     setTextValue(isRTL ? 'نص' : 'text');
-  };
+  }, []);
 
   return (
     <div>

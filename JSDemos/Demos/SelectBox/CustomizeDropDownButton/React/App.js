@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import SelectBox from 'devextreme-react/select-box';
 
 import { Template } from 'devextreme-react/core/template';
@@ -29,13 +29,19 @@ function App() {
     },
   }, [setIsLoaded]);
 
-  const renderLoadIndicator = () => (<IndicatorIcon isLoaded={isLoaded} />);
+  const renderLoadIndicator = useCallback(
+    () => (<IndicatorIcon isLoaded={isLoaded} />),
+    [isLoaded],
+  );
 
-  const renderConditionalIcon = () => (<ConditionalIcon value={selectedItem} />);
+  const renderConditionalIcon = useCallback(
+    () => (<ConditionalIcon value={selectedItem} />),
+    [selectedItem],
+  );
 
-  const selectionChanged = (event) => {
+  const selectionChanged = useCallback((event) => {
     setSelectedItem(event.selectedItem);
-  };
+  }, []);
 
   return (
     <div className='dx-fieldset'>

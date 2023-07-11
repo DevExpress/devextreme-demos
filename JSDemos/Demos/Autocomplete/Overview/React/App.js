@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import OData from 'devextreme/data/odata/store';
 import { Autocomplete } from 'devextreme-react/autocomplete';
 import CustomStore from 'devextreme/data/custom_store';
@@ -20,7 +20,7 @@ const states = new OData({
 const clientsStore = new CustomStore({
   key: 'Value',
   useDefaultSearch: true,
-  load(loadOptions) {
+  load: useCallback((loadOptions) => {
     let params = '?';
     ['skip', 'take', 'filter'].forEach((option) => {
       if (option in loadOptions && isNotEmpty(loadOptions[option])) {
@@ -36,7 +36,7 @@ const clientsStore = new CustomStore({
       .catch(() => {
         throw new Error('Data Loading Error');
       });
-  },
+  }, []),
 });
 
 function App() {
@@ -46,21 +46,21 @@ function App() {
   const [state, setState] = useState('');
   const [currentClient, setCurrentClient] = useState('');
 
-  const handleFirstNameChange = (e) => {
+  const handleFirstNameChange = useCallback((e) => {
     setFirstName(e.value);
-  };
+  }, []);
 
-  const handleLastNameChange = (e) => {
+  const handleLastNameChange = useCallback((e) => {
     setLastName(e.value);
-  };
+  }, []);
 
-  const handleStateChange = (e) => {
+  const handleStateChange = useCallback((e) => {
     setState(e.value);
-  };
+  }, []);
 
-  const handleCurrentClientChange = (e) => {
+  const handleCurrentClientChange = useCallback((e) => {
     setCurrentClient(e.value);
-  };
+  }, []);
 
   let fullInfo = '';
   fullInfo += (`${firstName || ''} ${lastName || ''}`).trim();
@@ -68,8 +68,10 @@ function App() {
   fullInfo += (fullInfo && state) ? `, ${state}` : state || '';
   fullInfo += (fullInfo && currentClient) ? `, ${currentClient}` : currentClient || '';
 
-  // eslint-disable-next-line func-style
-  const renderState = (data) => <span>{data.State_Long} ({data.State_Short})</span>;
+  const renderState = useCallback(
+    (data) => <span>{data.State_Long} ({data.State_Short})</span>,
+    [],
+  );
 
   return (
     <div className="form">
