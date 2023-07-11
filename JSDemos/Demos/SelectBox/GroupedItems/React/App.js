@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SelectBox } from 'devextreme-react/select-box';
 import DataSource from 'devextreme/data/data_source';
 import Group from './Group.js';
@@ -29,55 +29,52 @@ const fromPregroupedData = new DataSource({
   },
 });
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+function App() {
+  useEffect(() => {
     fromPregroupedData.load();
-  }
+  }, []);
 
-  render() {
-    return (
-      <div className="dx-fieldset">
-        <div className="dx-field">
-          <div className="dx-field-label">Data grouped in the DataSource</div>
-          <div className="dx-field-value">
-            <SelectBox
-              dataSource={fromUngroupedData}
-              valueExpr="ID"
-              grouped={true}
-              inputAttr={ungroupedDataLabel}
-              displayExpr="Name"
-              defaultValue={1} />
-          </div>
-        </div>
-        <div className="dx-field">
-          <div className="dx-field-label">Pre-grouped data</div>
-          <div className="dx-field-value">
-            <SelectBox
-              dataSource={fromPregroupedData}
-              valueExpr="ID"
-              inputAttr={pregroupedDataLabel}
-              grouped={true}
-              displayExpr="Name"
-              defaultValue={1} />
-          </div>
-        </div>
-        <div className="dx-field">
-          <div className="dx-field-label">Custom group template</div>
-          <div className="dx-field-value">
-            <SelectBox
-              dataSource={fromUngroupedData}
-              valueExpr="ID"
-              inputAttr={templatedUngroupedDataLabel}
-              grouped={true}
-              displayExpr="Name"
-              groupRender={Group}
-              defaultValue={1} />
-          </div>
+  return (
+    <div className="dx-fieldset">
+      <div className="dx-field">
+        <div className="dx-field-label">Data grouped in the DataSource</div>
+        <div className="dx-field-value">
+          <SelectBox
+            dataSource={fromUngroupedData}
+            valueExpr="ID"
+            grouped={true}
+            inputAttr={ungroupedDataLabel}
+            displayExpr="Name"
+            defaultValue={1} />
         </div>
       </div>
-    );
-  }
+      <div className="dx-field">
+        <div className="dx-field-label">Pre-grouped data</div>
+        <div className="dx-field-value">
+          <SelectBox
+            dataSource={fromPregroupedData}
+            valueExpr="ID"
+            inputAttr={pregroupedDataLabel}
+            grouped={true}
+            displayExpr="Name"
+            defaultValue={1} />
+        </div>
+      </div>
+      <div className="dx-field">
+        <div className="dx-field-label">Custom group template</div>
+        <div className="dx-field-value">
+          <SelectBox
+            dataSource={fromUngroupedData}
+            valueExpr="ID"
+            inputAttr={templatedUngroupedDataLabel}
+            grouped={true}
+            displayExpr="Name"
+            groupRender={Group}
+            defaultValue={1} />
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default App;

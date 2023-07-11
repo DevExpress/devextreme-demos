@@ -455,7 +455,7 @@ module.exports = {
       ],
       quotes: ['error', 'single', { avoidEscape: true }],
       'prefer-template': 'error',
-      'func-style': ['error', 'declaration'],
+      'func-style': ['error', 'declaration', { 'allowArrowFunctions': true }],
       'react/jsx-curly-brace-presence': [
         'error',
         {

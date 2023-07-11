@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useState, useCallback } from 'react';
 import SelectBox from 'devextreme-react/select-box';
 import TextBox from 'devextreme-react/text-box';
 import DateBox from 'devextreme-react/date-box';
@@ -8,7 +7,6 @@ import TextArea from 'devextreme-react/text-area';
 import Button from 'devextreme-react/button';
 import Validator, { RequiredRule } from 'devextreme-react/validator';
 import notify from 'devextreme/ui/notify';
-
 import {
   states, stylingModes, labelModes, notesLabel,
   birthDateLabel, hireDateLabel,
@@ -31,12 +29,12 @@ function validateClick({ validationGroup }) {
 
 export default function App() {
   const defaultStylingMode = 'outlined';
-  const [stylingMode, setStylingMode] = React.useState(defaultStylingMode);
-  const [labelMode, setLabelMode] = React.useState('static');
-  const changeStylingMode = React.useCallback(({ value }) => {
+  const [stylingMode, setStylingMode] = useState(defaultStylingMode);
+  const [labelMode, setLabelMode] = useState('static');
+  const changeStylingMode = useCallback(({ value }) => {
     setStylingMode(value);
   }, [setStylingMode]);
-  const labelModeChange = React.useCallback(({ value }) => {
+  const labelModeChange = useCallback(({ value }) => {
     setLabelMode(value);
   }, [setStylingMode]);
 
