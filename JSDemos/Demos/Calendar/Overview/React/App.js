@@ -22,6 +22,8 @@ const zoomLevelLabel = { 'aria-label': 'Zoom Level' };
 const dayLabel = { 'aria-label': 'First Day of Week' };
 const ruleLabel = { 'aria-label': 'Week Number Rule' };
 
+const isDateDisabled = ({ view, date }) => view === 'month' && isWeekend(date);
+
 export default function App() {
   const [minDateValue, setMinDateValue] = useState(null);
   const [maxDateValue, setMaxDateValue] = useState(null);
@@ -78,8 +80,6 @@ export default function App() {
     setUseCellTemplate(!!value);
   }, [setUseCellTemplate]);
 
-  const isDateDisabled = useCallback(({ view, date }) => view === 'month' && isWeekend(date), []);
-
   const onOptionChange = useCallback((e) => {
     if (e.name === 'zoomLevel') {
       onZoomLevelChange(e);
@@ -91,11 +91,11 @@ export default function App() {
       <div className="calendar-container">
         <Calendar
           value={currentValue}
-          onValueChanged={useCallback(onCurrentValueChange, [onCurrentValueChange])}
-          onOptionChanged={useCallback(onOptionChange, [onOptionChange])}
+          onValueChanged={onCurrentValueChange}
+          onOptionChanged={onOptionChange}
           min={minDateValue}
           max={maxDateValue}
-          disabledDates={weekendDisabled ? useCallback(isDateDisabled, [isDateDisabled]) : null}
+          disabledDates={weekendDisabled ? isDateDisabled : null}
           firstDayOfWeek={firstDay}
           weekNumberRule={weekNumberRule}
           showWeekNumbers={showWeekNumbers}
@@ -110,42 +110,42 @@ export default function App() {
           <CheckBox
             defaultValue={false}
             text="Set minimum date"
-            onValueChanged={useCallback(onMinDateChange, [onMinDateChange])}
+            onValueChanged={onMinDateChange}
           />
         </div>
         <div className="option">
           <CheckBox
             defaultValue={false}
             text="Set maximum date"
-            onValueChanged={useCallback(onMaxDateChange, [onMaxDateChange])}
+            onValueChanged={onMaxDateChange}
           />
         </div>
         <div className="option">
           <CheckBox
             defaultValue={false}
             text="Disable weekends"
-            onValueChanged={useCallback(onDisableWeekendChange, [onDisableWeekendChange])}
+            onValueChanged={onDisableWeekendChange}
           />
         </div>
         <div className="option">
           <CheckBox
             defaultValue={false}
             text="Show week numbers"
-            onValueChanged={useCallback(onShowWeekNumbersChange, [onShowWeekNumbersChange])}
+            onValueChanged={onShowWeekNumbersChange}
           />
         </div>
         <div className="option">
           <CheckBox
             defaultValue={false}
             text="Use custom cell template"
-            onValueChanged={useCallback(onUseCellTemplateChange, [onUseCellTemplateChange])}
+            onValueChanged={onUseCellTemplateChange}
           />
         </div>
         <div className="option">
           <CheckBox
             value={disabled}
             text="Disable the calendar"
-            onValueChanged={useCallback(onDisabledChange, [onDisabledChange])}
+            onValueChanged={onDisabledChange}
           />
         </div>
         <div className="option">
@@ -156,7 +156,7 @@ export default function App() {
             displayExpr="text"
             valueExpr="id"
             value={firstDay}
-            onValueChanged={useCallback(onFirstDayChange, [onFirstDayChange])}
+            onValueChanged={onFirstDayChange}
           />
         </div>
         <div className="option">
@@ -165,7 +165,7 @@ export default function App() {
             dataSource={weekNumberRules}
             inputAttr={ruleLabel}
             value={weekNumberRule}
-            onValueChanged={useCallback(onWeekNumberRuleChange, [onWeekNumberRuleChange])}
+            onValueChanged={onWeekNumberRuleChange}
           />
         </div>
         <div className="option">
@@ -174,7 +174,7 @@ export default function App() {
             dataSource={zoomLevels}
             value={zoomLevel}
             inputAttr={zoomLevelLabel}
-            onValueChanged={useCallback(onZoomLevelChange, [onZoomLevelChange])}
+            onValueChanged={onZoomLevelChange}
           />
         </div>
         <div className="option">
@@ -182,7 +182,7 @@ export default function App() {
           <DateBox
             id="selected-date"
             value={currentValue}
-            onValueChanged={useCallback(onCurrentValueChange, [onCurrentValueChange])}
+            onValueChanged={onCurrentValueChange}
             min={minDateValue}
             max={maxDateValue}
             inputAttr={dateBoxLabel}

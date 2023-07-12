@@ -22,6 +22,10 @@ const makeAsyncDataSource = (jsonFile) => (new CustomStore({
 const treeDataSource = makeAsyncDataSource('treeProducts.json');
 const gridDataSource = makeAsyncDataSource('customers.json');
 
+const gridBoxDisplayExpr = (item) => (
+  item && `${item.CompanyName} <${item.Phone}>`
+);
+
 function App() {
   const treeViewRef = useRef(null);
   const [treeBoxValue, setTreeBoxValue] = useState('1_1');
@@ -82,10 +86,6 @@ function App() {
     setGridBoxValue(e.selectedRowKeys);
     setIsGridBoxOpened(false);
   }, []);
-
-  const gridBoxDisplayExpr = useCallback((item) => (
-    item && `${item.CompanyName} <${item.Phone}>`
-  ), []);
 
   const treeViewOnContentReady = useCallback((e) => {
     e.component.selectItem(treeBoxValue);

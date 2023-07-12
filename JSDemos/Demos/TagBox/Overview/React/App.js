@@ -10,16 +10,15 @@ import { simpleProducts, products, productLabel } from './data.js';
 
 const disabledValue = [simpleProducts[0]];
 const value = [1, 2];
+const dataSource = new ArrayStore({
+  data: products,
+  key: 'Id',
+});
 
 function App() {
   const [editableProducts, setEditableProducts] = useState([...simpleProducts]);
   const [target, setTarget] = useState(null);
   const [product, setProduct] = useState({});
-
-  const dataSource = new ArrayStore({
-    data: products,
-    key: 'Id',
-  });
 
   const onCustomItemCreating = useCallback((args) => {
     const newValue = args.text;

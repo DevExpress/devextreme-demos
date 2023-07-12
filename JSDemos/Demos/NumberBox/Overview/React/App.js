@@ -8,20 +8,20 @@ const maxAndMinLabel = { 'aria-label': 'Min And Max' };
 const salesLabel = { 'aria-label': 'Sales' };
 const stockLabel = { 'aria-label': 'Stock' };
 
+const keyDown = (e) => {
+  const { event } = e;
+  const str = event.key || String.fromCharCode(event.which);
+  if (/^[.,e]$/.test(str)) {
+    event.preventDefault();
+  }
+};
+
 function App() {
   const [value, setValue] = useState(16);
   const [max] = useState(30);
 
   const valueChanged = useCallback((e) => {
     setValue(e.value);
-  }, []);
-
-  const keyDown = useCallback((e) => {
-    const { event } = e;
-    const str = event.key || String.fromCharCode(event.which);
-    if (/^[.,e]$/.test(str)) {
-      event.preventDefault();
-    }
   }, []);
 
   return (

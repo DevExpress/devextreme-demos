@@ -39,6 +39,8 @@ const clientsStore = new CustomStore({
   },
 });
 
+const renderState = (data) => (<span>{data.State_Long} ({data.State_Short})</span>);
+
 function App() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -67,11 +69,6 @@ function App() {
   fullInfo += (fullInfo && position) ? `, ${position}` : position || '';
   fullInfo += (fullInfo && state) ? `, ${state}` : state || '';
   fullInfo += (fullInfo && currentClient) ? `, ${currentClient}` : currentClient || '';
-
-  const renderState = useCallback(
-    (data) => <span>{data.State_Long} ({data.State_Short})</span>,
-    [],
-  );
 
   return (
     <div className="form">

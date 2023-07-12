@@ -25,6 +25,27 @@ const productsDataSource = new DataSource({
   },
 });
 
+const customItemCreating = (args) => {
+  if (!args.text) {
+    args.customItem = null;
+    return;
+  }
+
+  const productIds = simpleProducts.map((item) => item.ID);
+  const incrementedId = Math.max.apply(null, productIds) + 1;
+  const newItem = {
+    Name: args.text,
+    ID: incrementedId,
+  };
+
+  args.customItem = productsDataSource.store().insert(newItem)
+    .then(() => productsDataSource.load())
+    .then(() => newItem)
+    .catch((error) => {
+      throw error;
+    });
+};
+
 function App() {
   const [editBoxValue, setEditBoxValue] = useState(simpleProducts[0]);
   const [searchModeOption, setSearchModeOption] = useState('contains');
@@ -55,27 +76,6 @@ function App() {
 
   const showDataBeforeSearchOptionChanged = useCallback(({ value }) => {
     setShowDataBeforeSearchOption(value);
-  }, []);
-
-  const customItemCreating = useCallback((args) => {
-    if (!args.text) {
-      args.customItem = null;
-      return;
-    }
-
-    const productIds = simpleProducts.map((item) => item.ID);
-    const incrementedId = Math.max.apply(null, productIds) + 1;
-    const newItem = {
-      Name: args.text,
-      ID: incrementedId,
-    };
-
-    args.customItem = productsDataSource.store().insert(newItem)
-      .then(() => productsDataSource.load())
-      .then(() => newItem)
-      .catch((error) => {
-        throw error;
-      });
   }, []);
 
   return (

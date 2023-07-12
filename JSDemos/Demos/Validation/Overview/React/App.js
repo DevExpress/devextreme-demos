@@ -29,6 +29,22 @@ const phoneRules = {
   X: /[02-9]/,
 };
 const checkComparison = () => true;
+const onFormSubmit = (e) => {
+  notify({
+    message: 'You have submitted the form',
+    position: {
+      my: 'center top',
+      at: 'center top',
+    },
+  }, 'success', 3000);
+
+  e.preventDefault();
+};
+
+let validatorInstance;
+const onInit = (e) => {
+  validatorInstance = e.component;
+};
 
 function App() {
   const currentDate = new Date();
@@ -64,27 +80,9 @@ function App() {
     }
   }, [confirmPassword, setPassword, validatorInstance]);
 
-  const onInit = useCallback((e) => {
-    validatorInstance = e.component;
-  }, []);
-
   const onConfirmPasswordChanged = useCallback((e) => {
     setConfirmPassword(e.value);
   }, []);
-
-  const onFormSubmit = useCallback((e) => {
-    notify({
-      message: 'You have submitted the form',
-      position: {
-        my: 'center top',
-        at: 'center top',
-      },
-    }, 'success', 3000);
-
-    e.preventDefault();
-  }, []);
-
-  let validatorInstance;
 
   return (
     <form action="your-action" onSubmit={onFormSubmit}>
