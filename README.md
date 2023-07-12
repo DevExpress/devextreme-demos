@@ -65,9 +65,7 @@ npm run fix-lint
 
 ## ASP.NET Demos
 
-1. You will need Windows. Enable Developer Mode so that the `mklink` command doesn't require elevation.\
-To enable Developer Mode, type "Developer Settings" in a Windows search box and toggle the "Developer Mode" switch in the opened settings dialog.\
-Refer to the following articles to learn more: [Symlinks](https://blogs.windows.com/windowsdeveloper/2016/12/02/symlinks-windows-10/), [Developer Mode](https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development).
+> **_NOTE:_** You will need Windows. 
 
 1. Clone the [devextreme-aspnet](https://github.com/DevExpress/devextreme-aspnet) repo.
 
