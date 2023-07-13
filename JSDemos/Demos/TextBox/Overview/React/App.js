@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import TextBox from 'devextreme-react/text-box';
 
 const nameLabel = { 'aria-label': 'Name' };
@@ -9,9 +9,9 @@ const emailLabel = { 'aria-label': 'Email' };
 const rules = { X: /[02-9]/ };
 
 function App() {
-  const [emailValue, setEmailValue] = useState('smith@corp.com');
+  const [emailValue, setEmailValue] = React.useState('smith@corp.com');
 
-  const valueChanged = useCallback((data) => {
+  const valueChanged = React.useCallback((data) => {
     setEmailValue(`${data.value.replace(/\s/g, '').toLowerCase()}@corp.com`);
   }, []);
 

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React from 'react';
 import DropDownBox from 'devextreme-react/drop-down-box';
 import TreeView from 'devextreme-react/tree-view';
 import DataGrid, {
@@ -23,11 +23,11 @@ const treeDataSource = makeAsyncDataSource('treeProducts.json');
 const gridDataSource = makeAsyncDataSource('customers.json');
 
 function App() {
-  const [treeBoxValue, setTreeBoxValue] = useState(['1_1']);
-  const [gridBoxValue, setGridBoxValue] = useState([3]);
-  const treeViewRef = useRef();
+  const [treeBoxValue, setTreeBoxValue] = React.useState(['1_1']);
+  const [gridBoxValue, setGridBoxValue] = React.useState([3]);
+  const treeViewRef = React.useRef();
 
-  const treeViewRender = useCallback(() => (
+  const treeViewRender = React.useCallback(() => (
     <TreeView dataSource={treeDataSource}
       ref={treeViewRef}
       dataStructure="plain"
@@ -43,7 +43,7 @@ function App() {
     />
   ), [treeDataSource]);
 
-  const dataGridRender = useCallback(() => (
+  const dataGridRender = React.useCallback(() => (
     <DataGrid
       height={345}
       dataSource={gridDataSource}
@@ -58,7 +58,7 @@ function App() {
     </DataGrid>
   ), [gridDataSource, gridBoxValue]);
 
-  const syncTreeViewSelection = useCallback((e) => {
+  const syncTreeViewSelection = React.useCallback((e) => {
     const treeView = (e.component.selectItem && e.component)
       || (treeViewRef.current && treeViewRef.current.instance);
 
@@ -78,15 +78,15 @@ function App() {
     }
   }, [treeBoxValue]);
 
-  const syncDataGridSelection = useCallback((e) => {
+  const syncDataGridSelection = React.useCallback((e) => {
     setGridBoxValue(e.value || []);
   }, []);
 
-  const treeViewItemSelectionChanged = useCallback((e) => {
+  const treeViewItemSelectionChanged = React.useCallback((e) => {
     setTreeBoxValue(e.component.getSelectedNodeKeys());
   }, []);
 
-  const dataGridOnSelectionChanged = useCallback((e) => {
+  const dataGridOnSelectionChanged = React.useCallback((e) => {
     setGridBoxValue((e.selectedRowKeys.length && e.selectedRowKeys) || []);
   }, []);
 

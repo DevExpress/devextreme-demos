@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import DateRangeBox from 'devextreme-react/date-range-box';
 
 const msInDay = 1000 * 60 * 60 * 24;
@@ -18,9 +18,9 @@ function convertRangeToDays([startDate, endDate]) {
 }
 
 export default function App() {
-  const [selectedDays, setSelectedDays] = useState(convertRangeToDays(initialValue));
+  const [selectedDays, setSelectedDays] = React.useState(convertRangeToDays(initialValue));
 
-  const onCurrentValueChange = useCallback(({ value: [startDate, endDate] }) => {
+  const onCurrentValueChange = React.useCallback(({ value: [startDate, endDate] }) => {
     let daysCount = 0;
 
     if (startDate && endDate) {

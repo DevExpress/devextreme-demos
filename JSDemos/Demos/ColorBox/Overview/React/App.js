@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import ColorBox from 'devextreme-react/color-box';
 
 const defaultModeLabel = { 'aria-label': 'Default mode' };
@@ -9,9 +9,9 @@ const disabledLabel = { 'aria-label': 'Disabled' };
 const eventHandlingLabel = { 'aria-label': 'Event Handling' };
 
 function App() {
-  const [color, setColor] = useState('#f05b41');
+  const [color, setColor] = React.useState('#f05b41');
 
-  const handleColorChange = useCallback(({ value }) => {
+  const handleColorChange = React.useCallback(({ value }) => {
     setColor(value);
   }, []);
 

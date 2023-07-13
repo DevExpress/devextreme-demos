@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useCallback } from 'react';
+import React from 'react';
 
 import { TextBox, Button as TextBoxButton } from 'devextreme-react/text-box';
 import { NumberBox, Button as NumberBoxButton } from 'devextreme-react/number-box';
@@ -10,12 +10,12 @@ const dateBoxLabel = { 'aria-label': 'Date' };
 const passwordLabel = { 'aria-label': 'Password' };
 
 function App() {
-  const [passwordMode, setPasswordMode] = useState('password');
-  const [currencyFormat, setCurrencyFormat] = useState('$ #.##');
-  const [currencyValue, setCurrencyValue] = useState(14500.55);
-  const [dateValue, setDateValue] = useState(new Date().getTime());
+  const [passwordMode, setPasswordMode] = React.useState('password');
+  const [currencyFormat, setCurrencyFormat] = React.useState('$ #.##');
+  const [currencyValue, setCurrencyValue] = React.useState(14500.55);
+  const [dateValue, setDateValue] = React.useState(new Date().getTime());
 
-  const passwordButton = useMemo(() => ({
+  const passwordButton = React.useMemo(() => ({
     icon: '../../../../images/icons/eye.png',
     type: 'default',
     onClick: () => {
@@ -23,7 +23,7 @@ function App() {
     },
   }), [setPasswordMode]);
 
-  const currencyButton = useMemo(() => ({
+  const currencyButton = React.useMemo(() => ({
     text: '€',
     stylingMode: 'text',
     width: 32,
@@ -43,14 +43,14 @@ function App() {
     },
   }), [setCurrencyFormat, setCurrencyValue]);
 
-  const todayButton = useMemo(() => ({
+  const todayButton = React.useMemo(() => ({
     text: 'Today',
     onClick: () => {
       setDateValue(new Date().getTime());
     },
   }), [setDateValue]);
 
-  const prevDateButton = useMemo(() => ({
+  const prevDateButton = React.useMemo(() => ({
     icon: 'spinprev',
     stylingMode: 'text',
     onClick: () => {
@@ -58,7 +58,7 @@ function App() {
     },
   }), [setDateValue]);
 
-  const nextDateButton = useMemo(() => ({
+  const nextDateButton = React.useMemo(() => ({
     icon: 'spinnext',
     stylingMode: 'text',
     onClick: () => {
@@ -66,11 +66,11 @@ function App() {
     },
   }), [setDateValue]);
 
-  const onDateChanged = useCallback((e) => {
+  const onDateChanged = React.useCallback((e) => {
     setDateValue(e.value);
   }, [setDateValue]);
 
-  const changeCurrency = useCallback((data) => {
+  const changeCurrency = React.useCallback((data) => {
     setCurrencyValue(data.value);
   }, [setCurrencyValue]);
 

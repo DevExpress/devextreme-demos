@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React from 'react';
 import DateBox from 'devextreme-react/date-box';
 
 import service from './data.js';
@@ -13,19 +13,19 @@ const customFormatLabel = { 'aria-label': 'Custom Format' };
 const birthDateLabel = { 'aria-label': 'Birth Date' };
 
 function App() {
-  const [value, setValue] = useState(new Date(1981, 3, 27));
+  const [value, setValue] = React.useState(new Date(1981, 3, 27));
   const now = new Date();
   const firstWorkDay2017 = new Date(2017, 0, 3);
   const min = new Date(1900, 0, 1);
   const dateClear = new Date(2015, 11, 1, 6);
   const disabledDates = service.getFederalHolidays();
 
-  const diffInDay = useMemo(() => `${Math.floor(
+  const diffInDay = React.useMemo(() => `${Math.floor(
     Math.abs((new Date().getTime() - value.getTime()) / (24 * 60 * 60 * 1000)),
   )} days`,
   [value]);
 
-  const onValueChanged = useCallback((e) => {
+  const onValueChanged = React.useCallback((e) => {
     setValue(e.value);
   }, []);
 

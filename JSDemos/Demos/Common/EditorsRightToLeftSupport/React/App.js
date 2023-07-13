@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import { NumberBox } from 'devextreme-react/number-box';
 import { SelectBox } from 'devextreme-react/select-box';
 import { Switch } from 'devextreme-react/switch';
@@ -19,11 +19,11 @@ const languages = [
 const tagBoxDefaultValue = [europeanUnion[0].id];
 
 function App() {
-  const [rtlEnabled, setRtlEnabled] = useState(false);
-  const [displayExpr, setDisplayExpr] = useState('nameEn');
-  const [textValue, setTextValue] = useState('text');
+  const [rtlEnabled, setRtlEnabled] = React.useState(false);
+  const [displayExpr, setDisplayExpr] = React.useState('nameEn');
+  const [textValue, setTextValue] = React.useState('text');
 
-  const onLanguageChanged = useCallback((args) => {
+  const onLanguageChanged = React.useCallback((args) => {
     const isRTL = args.value === languages[0];
 
     setDisplayExpr(isRTL ? 'nameAr' : 'nameEn');

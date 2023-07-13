@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import CheckBox from 'devextreme-react/check-box';
 import SelectBox from 'devextreme-react/select-box';
 import DateBox from 'devextreme-react/date-box';
@@ -25,62 +25,62 @@ const ruleLabel = { 'aria-label': 'Week Number Rule' };
 const isDateDisabled = ({ view, date }) => view === 'month' && isWeekend(date);
 
 export default function App() {
-  const [minDateValue, setMinDateValue] = useState(null);
-  const [maxDateValue, setMaxDateValue] = useState(null);
-  const [weekendDisabled, setWeekendDisabled] = useState(null);
-  const [firstDay, setFirstDay] = useState(0);
-  const [weekNumberRule, setWeekNumberRule] = useState('auto');
-  const [showWeekNumbers, setShowWeekNumbers] = useState(false);
-  const [currentValue, setCurrentValue] = useState(new Date());
-  const [useCellTemplate, setUseCellTemplate] = useState(null);
-  const [disabled, setDisabled] = useState(false);
-  const [zoomLevel, setZoomLevel] = useState('month');
+  const [minDateValue, setMinDateValue] = React.useState(null);
+  const [maxDateValue, setMaxDateValue] = React.useState(null);
+  const [weekendDisabled, setWeekendDisabled] = React.useState(null);
+  const [firstDay, setFirstDay] = React.useState(0);
+  const [weekNumberRule, setWeekNumberRule] = React.useState('auto');
+  const [showWeekNumbers, setShowWeekNumbers] = React.useState(false);
+  const [currentValue, setCurrentValue] = React.useState(new Date());
+  const [useCellTemplate, setUseCellTemplate] = React.useState(null);
+  const [disabled, setDisabled] = React.useState(false);
+  const [zoomLevel, setZoomLevel] = React.useState('month');
 
-  const onCurrentValueChange = useCallback(({ value }) => {
+  const onCurrentValueChange = React.useCallback(({ value }) => {
     setCurrentValue(value);
   }, [setCurrentValue]);
 
-  const onDisabledChange = useCallback(({ value }) => {
+  const onDisabledChange = React.useCallback(({ value }) => {
     setDisabled(value);
   }, [setDisabled]);
 
-  const onZoomLevelChange = useCallback(({ value }) => {
+  const onZoomLevelChange = React.useCallback(({ value }) => {
     setZoomLevel(value);
   }, [setZoomLevel]);
 
-  const onMinDateChange = useCallback(({ value }) => {
+  const onMinDateChange = React.useCallback(({ value }) => {
     setMinDateValue(
       value ? new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 3) : null,
     );
   }, [setMinDateValue]);
 
-  const onMaxDateChange = useCallback(({ value }) => {
+  const onMaxDateChange = React.useCallback(({ value }) => {
     setMaxDateValue(
       value ? new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 3) : null,
     );
   }, [setMaxDateValue]);
 
-  const onDisableWeekendChange = useCallback(({ value }) => {
+  const onDisableWeekendChange = React.useCallback(({ value }) => {
     setWeekendDisabled(value);
   }, [setWeekendDisabled]);
 
-  const onFirstDayChange = useCallback(({ value }) => {
+  const onFirstDayChange = React.useCallback(({ value }) => {
     setFirstDay(value);
   }, [setFirstDay]);
 
-  const onWeekNumberRuleChange = useCallback(({ value }) => {
+  const onWeekNumberRuleChange = React.useCallback(({ value }) => {
     setWeekNumberRule(value);
   }, [setWeekNumberRule]);
 
-  const onShowWeekNumbersChange = useCallback(({ value }) => {
+  const onShowWeekNumbersChange = React.useCallback(({ value }) => {
     setShowWeekNumbers(value);
   }, [setShowWeekNumbers]);
 
-  const onUseCellTemplateChange = useCallback(({ value }) => {
+  const onUseCellTemplateChange = React.useCallback(({ value }) => {
     setUseCellTemplate(!!value);
   }, [setUseCellTemplate]);
 
-  const onOptionChange = useCallback((e) => {
+  const onOptionChange = React.useCallback((e) => {
     if (e.name === 'zoomLevel') {
       onZoomLevelChange(e);
     }

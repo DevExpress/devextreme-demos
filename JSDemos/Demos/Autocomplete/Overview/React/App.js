@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import OData from 'devextreme/data/odata/store';
 import { Autocomplete } from 'devextreme-react/autocomplete';
 import CustomStore from 'devextreme/data/custom_store';
@@ -42,25 +42,25 @@ const clientsStore = new CustomStore({
 const renderState = (data) => (<span>{data.State_Long} ({data.State_Short})</span>);
 
 function App() {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [firstName, setFirstName] = React.useState('');
+  const [lastName, setLastName] = React.useState('');
 
-  const [state, setState] = useState('');
-  const [currentClient, setCurrentClient] = useState('');
+  const [state, setState] = React.useState('');
+  const [currentClient, setCurrentClient] = React.useState('');
 
-  const handleFirstNameChange = useCallback((e) => {
+  const handleFirstNameChange = React.useCallback((e) => {
     setFirstName(e.value);
   }, []);
 
-  const handleLastNameChange = useCallback((e) => {
+  const handleLastNameChange = React.useCallback((e) => {
     setLastName(e.value);
   }, []);
 
-  const handleStateChange = useCallback((e) => {
+  const handleStateChange = React.useCallback((e) => {
     setState(e.value);
   }, []);
 
-  const handleCurrentClientChange = useCallback((e) => {
+  const handleCurrentClientChange = React.useCallback((e) => {
     setCurrentClient(e.value);
   }, []);
 

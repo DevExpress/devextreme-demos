@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import SelectBox from 'devextreme-react/select-box';
 import TextBox from 'devextreme-react/text-box';
 import DateBox from 'devextreme-react/date-box';
@@ -29,12 +29,12 @@ function validateClick({ validationGroup }) {
 
 export default function App() {
   const defaultStylingMode = 'outlined';
-  const [stylingMode, setStylingMode] = useState(defaultStylingMode);
-  const [labelMode, setLabelMode] = useState('static');
-  const changeStylingMode = useCallback(({ value }) => {
+  const [stylingMode, setStylingMode] = React.useState(defaultStylingMode);
+  const [labelMode, setLabelMode] = React.useState('static');
+  const changeStylingMode = React.useCallback(({ value }) => {
     setStylingMode(value);
   }, [setStylingMode]);
-  const labelModeChange = useCallback(({ value }) => {
+  const labelModeChange = React.useCallback(({ value }) => {
     setLabelMode(value);
   }, [setStylingMode]);
 

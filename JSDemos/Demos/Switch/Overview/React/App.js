@@ -1,10 +1,10 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import Switch from 'devextreme-react/switch';
 
 function App() {
-  const [value, setValue] = useState(false);
+  const [value, setValue] = React.useState(false);
 
-  const valueChanged = useCallback((e) => {
+  const valueChanged = React.useCallback((e) => {
     setValue(e.value);
   }, []);
 

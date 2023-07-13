@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React from 'react';
 import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
 import { TextBox, Button as TextBoxButton } from 'devextreme-react/text-box';
@@ -50,12 +50,12 @@ function App() {
   const currentDate = new Date();
   const maxDate = new Date(currentDate.setFullYear(currentDate.getFullYear() - 21));
 
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [passwordMode, setPasswordMode] = useState('password');
-  const [confirmPasswordMode, setConfirmPasswordMode] = useState('password');
+  const [password, setPassword] = React.useState('');
+  const [confirmPassword, setConfirmPassword] = React.useState('');
+  const [passwordMode, setPasswordMode] = React.useState('password');
+  const [confirmPasswordMode, setConfirmPasswordMode] = React.useState('password');
 
-  const passwordButton = useMemo(() => ({
+  const passwordButton = React.useMemo(() => ({
     icon: '../../../../images/icons/eye.png',
     type: 'default',
     onClick: () => {
@@ -63,7 +63,7 @@ function App() {
     },
   }), [passwordMode, setPasswordMode]);
 
-  const confirmPasswordButton = useMemo(() => ({
+  const confirmPasswordButton = React.useMemo(() => ({
     icon: '../../../../images/icons/eye.png',
     type: 'default',
     onClick: () => {
@@ -71,16 +71,16 @@ function App() {
     },
   }), [confirmPasswordMode, setConfirmPasswordMode]);
 
-  const passwordComparison = useCallback(() => password, [password]);
+  const passwordComparison = React.useCallback(() => password, [password]);
 
-  const onPasswordChanged = useCallback((e) => {
+  const onPasswordChanged = React.useCallback((e) => {
     setPassword(e.value);
     if (confirmPassword) {
       validatorInstance.validate();
     }
   }, [confirmPassword, setPassword, validatorInstance]);
 
-  const onConfirmPasswordChanged = useCallback((e) => {
+  const onConfirmPasswordChanged = React.useCallback((e) => {
     setConfirmPassword(e.value);
   }, []);
 

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import SelectBox from 'devextreme-react/select-box';
 import ArrayStore from 'devextreme/data/array_store';
 import notify from 'devextreme/ui/notify';
@@ -23,9 +23,9 @@ const data = new ArrayStore({
 });
 
 function App() {
-  const [value, setValue] = useState(service.getSimpleProducts()[0]);
+  const [value, setValue] = React.useState(service.getSimpleProducts()[0]);
 
-  const onValueChanged = useCallback((e) => {
+  const onValueChanged = React.useCallback((e) => {
     setValue(e.value);
     notify(`The value is changed to: "${e.value}"`);
   }, []);

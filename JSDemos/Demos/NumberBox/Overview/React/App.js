@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import { NumberBox } from 'devextreme-react/number-box';
 
 const simpleLabel = { 'aria-label': 'Simple' };
@@ -17,10 +17,10 @@ const keyDown = (e) => {
 };
 
 function App() {
-  const [value, setValue] = useState(16);
-  const [max] = useState(30);
+  const [value, setValue] = React.useState(16);
+  const [max] = React.useState(30);
 
-  const valueChanged = useCallback((e) => {
+  const valueChanged = React.useCallback((e) => {
     setValue(e.value);
   }, []);
 
