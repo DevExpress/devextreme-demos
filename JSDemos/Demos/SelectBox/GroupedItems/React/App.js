@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { SelectBox } from 'devextreme-react/select-box';
 import DataSource from 'devextreme/data/data_source';
 import Group from './Group.js';
@@ -30,7 +30,7 @@ const fromPregroupedData = new DataSource({
 });
 
 function App() {
-  useEffect(() => {
+  React.useEffect(() => {
     fromPregroupedData.load();
   }, []);
 
