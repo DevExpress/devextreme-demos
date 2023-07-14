@@ -19,6 +19,7 @@ module.exports = {
     'spellcheck',
     'no-only-tests',
     'deprecation',
+    'react-hooks',
   ],
   rules: {
     'spellcheck/spell-checker': (() => {
@@ -283,6 +284,8 @@ module.exports = {
     'prefer-destructuring': 0,
     'no-param-reassign': ['error', { 'props': false }],
     'no-only-tests/no-only-tests': 'error',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
   extends: [
     'eslint:recommended',
