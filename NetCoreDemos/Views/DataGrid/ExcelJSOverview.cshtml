@@ -12,6 +12,7 @@
         .DataSource(Model, "ID")
         .Selection(s => s.Mode(SelectionMode.Multiple))
         .Export(e => e.Enabled(true).AllowExportSelectedData(true))
+        .Width("100%")
         .ShowBorders(true)
         .GroupPanel(groupPanel => groupPanel.Visible(true))
         .Grouping(grouping => grouping.AutoExpandAll(true))

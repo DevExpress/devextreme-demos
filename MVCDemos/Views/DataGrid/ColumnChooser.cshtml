@@ -35,6 +35,7 @@
 
     })
     .ColumnAutoWidth(true)
+    .Width("100%")
     .ShowRowLines(true)
     .ShowBorders(true)
     .ColumnChooser(cc => {
@@ -62,7 +63,7 @@
 
 <div class="options">
     <div class="caption">Options</div>
-    
+
     <div class='selectboxes-container'>
         <div class="option">
             <span>Column chooser mode</span>
@@ -102,7 +103,7 @@
 
         </div>
     </div>
-    
+
     <div class='checkboxes-container'>
         <div class="option">
             @(Html.DevExtreme().CheckBox()
