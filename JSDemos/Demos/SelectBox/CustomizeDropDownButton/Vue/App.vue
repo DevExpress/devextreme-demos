@@ -33,7 +33,7 @@
                 <span :hidden="!isLoaded">
                   <img
                     alt="Custom icon"
-                    src="../../../../images/icons/custom-dropbutton-icon.svg"
+                    :src="'../../../../images/icons/custom-dropbutton-icon.svg'"
                     class="custom-icon"
                   >
                 </span>
@@ -88,39 +88,30 @@
   </div>
 
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import { DxSelectBox } from 'devextreme-vue/select-box';
 import { DxLoadIndicator } from 'devextreme-vue/load-indicator';
-import { products, simpleProducts } from './data.js';
+import { products as productsData, simpleProducts as simpleProductsData } from './data.js';
 
-export default {
-  components: {
-    DxSelectBox,
-    DxLoadIndicator,
-  },
-  data() {
-    return {
-      products,
-      simpleProducts,
-      isLoaded: true,
-      deferredProducts: {
-        loadMode: 'raw',
-        load: () => {
-          this.isLoaded = false;
-          const promise = new Promise((resolve) => {
-            setTimeout(() => {
-              resolve(simpleProducts);
-              this.isLoaded = true;
-            }, 3000);
-          });
+const products = ref(productsData);
+const simpleProducts = ref(simpleProductsData);
+const isLoaded = ref(true);
+const deferredProducts = ref({
+  loadMode: 'raw',
+  load: () => {
+    isLoaded.value = false;
+    const promise = new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(simpleProductsData);
+        isLoaded.value = true;
+      }, 3000);
+    });
 
-          return promise;
-        },
-      },
-      selectedItem: products[0],
-    };
+    return promise;
   },
-};
+});
+const selectedItem = ref(productsData[0]);
 </script>
 <style scoped>
 .dx-dropdowneditor-button .dx-button-content {

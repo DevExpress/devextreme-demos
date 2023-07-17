@@ -103,53 +103,41 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import { DxSelectBox } from 'devextreme-vue/select-box';
 import { DxNumberBox } from 'devextreme-vue/number-box';
 import { DxCheckBox } from 'devextreme-vue/check-box';
 import DataSource from 'devextreme/data/data_source';
+import { products as productsData, simpleProducts } from './data.js';
 
-import { products, simpleProducts } from './data.js';
-
-const productsDataSource = new DataSource({
+const products = ref(productsData);
+const productsDataSource = ref(new DataSource({
   store: {
     data: simpleProducts,
     type: 'array',
     key: 'ID',
   },
-});
+}));
+const editBoxValue = ref(simpleProducts[0]);
+const product = ref(simpleProducts[0].ID);
+const searchModeOption = ref('contains');
+const searchExprOption = ref('Name');
+const searchTimeoutOption = ref(200);
+const minSearchLengthOption = ref(0);
+const showDataBeforeSearchOption = ref(false);
+const searchExprItems = ref([
+  {
+    name: "'Name'",
+    value: 'Name',
+  },
+  {
+    name: "['Name', 'Category']",
+    value: ['Name', 'Category'],
+  },
+]);
 
-export default {
-  components: {
-    DxSelectBox,
-    DxNumberBox,
-    DxCheckBox,
-  },
-  data() {
-    return {
-      products,
-      productsDataSource,
-      editBoxValue: simpleProducts[0],
-      product: simpleProducts[0].ID,
-      searchModeOption: 'contains',
-      searchExprOption: 'Name',
-      searchTimeoutOption: 200,
-      minSearchLengthOption: 0,
-      showDataBeforeSearchOption: false,
-      searchExprItems: [
-        {
-          name: "'Name'",
-          value: 'Name',
-        },
-        {
-          name: "['Name', 'Category']",
-          value: ['Name', 'Category'],
-        },
-      ],
-    };
-  },
-  methods: {
-    customItemCreating(data) {
+function customItemCreating(data) {
       if (!data.text) {
         data.customItem = null;
         return;
@@ -162,7 +150,7 @@ export default {
         ID: incrementedId,
       };
 
-      data.customItem = productsDataSource
+      data.customItem = productsDataSource.value
         .store()
         .insert(newItem)
         .then(() => productsDataSource.load())
@@ -170,9 +158,7 @@ export default {
         .catch((error) => {
           throw error;
         });
-    },
-  },
-};
+    };
 </script>
 <style scoped>
 .widget-container {

@@ -4,6 +4,9 @@ window.config = {
     '*.vue': {
       loader: 'vue-loader',
     },
+    '*.svg': {
+      loader: 'svg-loader',
+    },
     'devextreme/localization.js': {
       'esModule': true,
     },
@@ -24,11 +27,14 @@ window.config = {
     /**/
   },
   paths: {
+    'root:': '../../../../../',
     'npm:': '../../../../../node_modules/',
   },
   map: {
+    'vue/compiler-sfc': 'npm:@vue/compiler-sfc/dist/compiler-sfc.esm-browser.js',
     'vue': 'npm:vue/dist/vue.esm-browser.js',
     'vue-loader': 'npm:dx-systemjs-vue-browser/index.js',
+    'svg-loader': 'root:utils/svg-loader.js',
 
     /** signalr */
     '@aspnet/signalr': 'npm:@aspnet/signalr/dist/cjs',

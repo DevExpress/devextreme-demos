@@ -79,42 +79,31 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { computed, ref } from 'vue';
 import { DxCheckBox } from 'devextreme-vue/check-box';
 
-export default {
-  components: {
-    DxCheckBox,
-  },
+const checkBoxValue = ref(null);
 
-  data() {
-    return {
-      checkBoxValue: null,
-    };
-  },
-
-  computed: {
-    checkedLabel() {
-      return { 'aria-label': 'Checked' };
-    },
-    unCheckedLabel() {
-      return { 'aria-label': 'Unchecked' };
-    },
-    indeterminateLabel() {
-      return { 'aria-label': 'Indeterminate' };
-    },
-    threeStateModeLabel() {
-      return { 'aria-label': 'Three state mode' };
-    },
-    handleValueChangeLabel() {
-      return { 'aria-label': 'Handle value change' };
-    },
-    disabledLabel() {
-      return { 'aria-label': 'Disabled' };
-    },
-    customSizeLabel() {
-      return { 'aria-label': 'Custom size' };
-    },
-  },
-};
+const checkedLabel = computed(() => {
+  return { 'aria-label': 'Checked' };
+});
+const unCheckedLabel = computed(() => {
+  return { 'aria-label': 'Unchecked' };
+});
+const indeterminateLabel = computed(() => {
+  return { 'aria-label': 'Indeterminate' };
+});
+const threeStateModeLabel = computed(() => {
+  return { 'aria-label': 'Three state mode' };
+});
+const handleValueChangeLabel = computed(() => {
+  return { 'aria-label': 'Handle value change' };
+});
+const disabledLabel = computed(() => {
+  return { 'aria-label': 'Disabled' };
+});
+const customSizeLabel = computed(() => {
+  return { 'aria-label': 'Custom size' };
+});
 </script>
