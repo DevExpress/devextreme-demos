@@ -73,28 +73,19 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import { DxNumberBox } from 'devextreme-vue/number-box';
 
-export default {
-  components: {
-    DxNumberBox,
-  },
-  data() {
-    return {
-      max: 30,
-      value: 16,
-    };
-  },
-  methods: {
-    keyDown(e) {
-      const { event } = e;
-      const str = event.key || String.fromCharCode(event.which);
-      if (/^[.,e]$/.test(str)) {
-        event.preventDefault();
-      }
-    },
-  },
+const max = ref(30);
+const value = ref(16);
+
+function keyDown(e) {
+  const { event } = e;
+  const str = event.key || String.fromCharCode(event.which);
+  if (/^[.,e]$/.test(str)) {
+    event.preventDefault();
+  }
 };
 </script>
 

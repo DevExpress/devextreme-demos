@@ -72,42 +72,30 @@
     </div>
   </div>
 </template>
-<script>
-
+<script setup lang="ts">
+import { computed, ref } from 'vue';
 import DxColorBox from 'devextreme-vue/color-box';
 
-export default {
-  components: {
-    DxColorBox,
-  },
+const color = ref('#f05b41');
 
-  data() {
-    return {
-      color: '#f05b41',
-    };
-  },
-
-  computed: {
-    defaultModeLabel() {
-      return { 'aria-label': 'Default mode' };
-    },
-    alphaChannelLabel() {
-      return { 'aria-label': 'With alpha channel editing' };
-    },
-    customButtonCaptionsLabel() {
-      return { 'aria-label': 'Custom button captions' };
-    },
-    readOnlyLabel() {
-      return { 'aria-label': 'Read only' };
-    },
-    disabledLabel() {
-      return { 'aria-label': 'Disabled' };
-    },
-    eventHandlingLabel() {
-      return { 'aria-label': 'Event Handling' };
-    },
-  },
-};
+const defaultModeLabel = computed(() => {
+  return { 'aria-label': 'Default mode' };
+});
+const alphaChannelLabel = computed(() => {
+  return { 'aria-label': 'With alpha channel editing' };
+});
+const customButtonCaptionsLabel = computed(() => {
+  return { 'aria-label': 'Custom button captions' };
+});
+const readOnlyLabel = computed(() => {
+  return { 'aria-label': 'Read only' };
+});
+const disabledLabel = computed(() => {
+  return { 'aria-label': 'Disabled' };
+});
+const eventHandlingLabel = computed(() => {
+  return { 'aria-label': 'Event Handling' };
+});
 </script>
 <style>
 .form {
