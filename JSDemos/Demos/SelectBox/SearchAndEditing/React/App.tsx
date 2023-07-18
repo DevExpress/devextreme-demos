@@ -25,7 +25,7 @@ const productsDataSource = new DataSource({
   },
 });
 
-const customItemCreating = (args) => {
+const customItemCreating = (args: { text: any; customItem: Promise<{ Name: any; ID: any; }>; }) => {
   if (!args.text) {
     args.customItem = null;
     return;

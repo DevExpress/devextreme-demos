@@ -25,7 +25,7 @@ function App() {
   )} days`,
   [value]);
 
-  const onValueChanged = React.useCallback((e) => {
+  const onValueChanged = React.useCallback((e: { value: any; }) => {
     setValue(e.value);
   }, []);
 

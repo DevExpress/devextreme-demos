@@ -43,29 +43,29 @@ function App() {
   const [transform, setTransform] = React.useState(noFlipTransform);
   const [border, setBorder] = React.useState(false);
 
-  const handleTextChange = React.useCallback((e) => {
+  const handleTextChange = React.useCallback((e: { value: any; }) => {
     setText(e.value);
   }, []);
 
-  const handleColorChange = React.useCallback((e) => {
+  const handleColorChange = React.useCallback((e: { value: any; }) => {
     setColor(e.value);
   }, []);
 
-  const handleHeightChange = React.useCallback((e) => {
+  const handleHeightChange = React.useCallback((e: { value: number; }) => {
     setWidth((e.value * 37) / 26);
     setHeight(e.value);
   }, []);
 
-  const handleWidthChange = React.useCallback((e) => {
+  const handleWidthChange = React.useCallback((e: { value: number; }) => {
     setWidth(e.value);
     setHeight((e.value * 26) / 37);
   }, []);
 
-  const handleTransformChange = React.useCallback((e) => {
+  const handleTransformChange = React.useCallback((e: { value: any; }) => {
     setTransform(e.value);
   }, []);
 
-  const handleBorderChange = React.useCallback((e) => {
+  const handleBorderChange = React.useCallback((e: { value: any; }) => {
     setBorder(e.value);
   }, []);
 

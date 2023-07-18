@@ -12,7 +12,7 @@ const customSizeLabel = { 'aria-label': 'Custom size' };
 function App() {
   const [checkBoxValue, setCheckBoxValue] = React.useState(null);
 
-  const onValueChanged = React.useCallback((args) => {
+  const onValueChanged = React.useCallback((args: { value: any; }) => {
     setCheckBoxValue(args.value);
   }, []);
 

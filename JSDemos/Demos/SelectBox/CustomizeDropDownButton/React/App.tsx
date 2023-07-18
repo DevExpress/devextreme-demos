@@ -39,7 +39,7 @@ function App() {
     [selectedItem],
   );
 
-  const selectionChanged = React.useCallback((event) => {
+  const selectionChanged = React.useCallback((event: { selectedItem: any; }) => {
     setSelectedItem(event.selectedItem);
   }, []);
 

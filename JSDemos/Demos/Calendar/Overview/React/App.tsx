@@ -80,7 +80,7 @@ export default function App() {
     setUseCellTemplate(!!value);
   }, [setUseCellTemplate]);
 
-  const onOptionChange = React.useCallback((e) => {
+  const onOptionChange = React.useCallback((e: { name: string; }) => {
     if (e.name === 'zoomLevel') {
       onZoomLevelChange(e);
     }

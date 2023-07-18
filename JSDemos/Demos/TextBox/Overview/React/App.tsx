@@ -11,7 +11,7 @@ const rules = { X: /[02-9]/ };
 function App() {
   const [emailValue, setEmailValue] = React.useState('smith@corp.com');
 
-  const valueChanged = React.useCallback((data) => {
+  const valueChanged = React.useCallback((data: { value: string; }) => {
     setEmailValue(`${data.value.replace(/\s/g, '').toLowerCase()}@corp.com`);
   }, []);
 

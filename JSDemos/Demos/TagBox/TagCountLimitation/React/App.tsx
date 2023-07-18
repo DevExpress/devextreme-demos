@@ -9,7 +9,7 @@ const defaultValues = {
 };
 const items = products.slice(0, 5);
 
-const onMultiTagPreparing = (args) => {
+const onMultiTagPreparing = (args: { selectedItems: string | any[]; cancel: boolean; text: string; }) => {
   const selectedItemsLength = args.selectedItems.length;
   const totalCount = 5;
 

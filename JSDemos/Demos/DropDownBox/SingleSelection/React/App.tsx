@@ -10,7 +10,7 @@ import 'whatwg-fetch';
 const gridColumns = ['CompanyName', 'City', 'Phone'];
 const ownerLabel = { 'aria-label': 'Owner' };
 
-const makeAsyncDataSource = (jsonFile) => (new CustomStore({
+const makeAsyncDataSource = (jsonFile: string) => (new CustomStore({
   loadMode: 'raw',
   key: 'ID',
   load() {
@@ -22,7 +22,7 @@ const makeAsyncDataSource = (jsonFile) => (new CustomStore({
 const treeDataSource = makeAsyncDataSource('treeProducts.json');
 const gridDataSource = makeAsyncDataSource('customers.json');
 
-const gridBoxDisplayExpr = (item) => (
+const gridBoxDisplayExpr = (item: { CompanyName: any; Phone: any; }) => (
   item && `${item.CompanyName} <${item.Phone}>`
 );
 
@@ -63,7 +63,7 @@ function App() {
     </DataGrid>
   ), [gridDataSource, gridBoxValue]);
 
-  const syncTreeViewSelection = React.useCallback((e) => {
+  const syncTreeViewSelection = React.useCallback((e: { value: any; }) => {
     setTreeBoxValue(e.value);
     if (!treeViewRef.current) return;
 
@@ -74,20 +74,20 @@ function App() {
     }
   }, []);
 
-  const syncDataGridSelection = React.useCallback((e) => {
+  const syncDataGridSelection = React.useCallback((e: { value: any; }) => {
     setGridBoxValue(e.value);
   }, []);
 
-  const treeViewItemSelectionChanged = React.useCallback((e) => {
+  const treeViewItemSelectionChanged = React.useCallback((e: { component: { getSelectedNodeKeys: () => any; }; }) => {
     setTreeBoxValue(e.component.getSelectedNodeKeys());
   }, []);
 
-  const dataGridOnSelectionChanged = React.useCallback((e) => {
+  const dataGridOnSelectionChanged = React.useCallback((e: { selectedRowKeys: any; }) => {
     setGridBoxValue(e.selectedRowKeys);
     setIsGridBoxOpened(false);
   }, []);
 
-  const treeViewOnContentReady = React.useCallback((e) => {
+  const treeViewOnContentReady = React.useCallback((e: { component: { selectItem: (arg0: any) => void; }; }) => {
     e.component.selectItem(treeBoxValue);
   }, [treeBoxValue]);
 
@@ -95,13 +95,13 @@ function App() {
     setIsTreeBoxOpened(false);
   }, []);
 
-  const onGridBoxOpened = React.useCallback((e) => {
+  const onGridBoxOpened = React.useCallback((e: { name: string; value: any; }) => {
     if (e.name === 'opened') {
       setIsGridBoxOpened(e.value);
     }
   }, []);
 
-  const onTreeBoxOpened = React.useCallback((e) => {
+  const onTreeBoxOpened = React.useCallback((e: { name: string; value: any; }) => {
     if (e.name === 'opened') {
       setIsTreeBoxOpened(e.value);
     }

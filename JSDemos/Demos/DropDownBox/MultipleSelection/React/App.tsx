@@ -10,7 +10,7 @@ import 'whatwg-fetch';
 const gridColumns = ['CompanyName', 'City', 'Phone'];
 const ownerLabel = { 'aria-label': 'Owner' };
 
-const makeAsyncDataSource = (jsonFile) => (new CustomStore({
+const makeAsyncDataSource = (jsonFile: string) => (new CustomStore({
   loadMode: 'raw',
   key: 'ID',
   load() {
@@ -58,7 +58,7 @@ function App() {
     </DataGrid>
   ), [gridDataSource, gridBoxValue]);
 
-  const syncTreeViewSelection = React.useCallback((e) => {
+  const syncTreeViewSelection = React.useCallback((e: { component: { selectItem: any; }; value: any; }) => {
     const treeView = (e.component.selectItem && e.component)
       || (treeViewRef.current && treeViewRef.current.instance);
 
@@ -78,15 +78,15 @@ function App() {
     }
   }, [treeBoxValue]);
 
-  const syncDataGridSelection = React.useCallback((e) => {
+  const syncDataGridSelection = React.useCallback((e: { value: any; }) => {
     setGridBoxValue(e.value || []);
   }, []);
 
-  const treeViewItemSelectionChanged = React.useCallback((e) => {
+  const treeViewItemSelectionChanged = React.useCallback((e: { component: { getSelectedNodeKeys: () => any; }; }) => {
     setTreeBoxValue(e.component.getSelectedNodeKeys());
   }, []);
 
-  const dataGridOnSelectionChanged = React.useCallback((e) => {
+  const dataGridOnSelectionChanged = React.useCallback((e: { selectedRowKeys: string | any[]; }) => {
     setGridBoxValue((e.selectedRowKeys.length && e.selectedRowKeys) || []);
   }, []);
 

@@ -23,7 +23,7 @@ function App() {
   const [displayExpr, setDisplayExpr] = React.useState('nameEn');
   const [textValue, setTextValue] = React.useState('text');
 
-  const onLanguageChanged = React.useCallback((args) => {
+  const onLanguageChanged = React.useCallback((args: { value: string; }) => {
     const isRTL = args.value === languages[0];
 
     setDisplayExpr(isRTL ? 'nameAr' : 'nameEn');

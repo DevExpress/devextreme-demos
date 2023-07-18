@@ -1,7 +1,11 @@
-import React from 'react';
+
+
+interface IndicatorIconProps {
+isLoaded: any;
+}import React from 'react';
 import LoadIndicator from 'devextreme-react/load-indicator';
 
-export default function IndicatorIcon({ isLoaded }) {
+export default function IndicatorIcon({ isLoaded }: IndicatorIconProps) {
   return (
     <span>
       <LoadIndicator visible={!isLoaded} />

@@ -1,6 +1,11 @@
-import React from 'react';
 
-export default function Tag({ product, onMouseEnter }) {
+
+interface TagProps {
+product: any;
+onMouseEnter: any;
+}import React from 'react';
+
+export default function Tag({ product, onMouseEnter }: TagProps) {
   const isDisabled = product.Name === 'SuperHD Video Player';
   return (
     <React.Fragment>

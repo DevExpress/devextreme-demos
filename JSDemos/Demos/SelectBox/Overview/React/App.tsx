@@ -25,7 +25,7 @@ const data = new ArrayStore({
 function App() {
   const [value, setValue] = React.useState(service.getSimpleProducts()[0]);
 
-  const onValueChanged = React.useCallback((e) => {
+  const onValueChanged = React.useCallback((e: { value: any; }) => {
     setValue(e.value);
     notify(`The value is changed to: "${e.value}"`);
   }, []);

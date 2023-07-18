@@ -19,7 +19,7 @@ function App() {
     icon: '../../../../images/icons/eye.png',
     type: 'default',
     onClick: () => {
-      setPasswordMode((prevPasswordMode) => (prevPasswordMode === 'text' ? 'password' : 'text'));
+      setPasswordMode((prevPasswordMode: string) => (prevPasswordMode === 'text' ? 'password' : 'text'));
     },
   }), [setPasswordMode]);
 
@@ -30,15 +30,15 @@ function App() {
     elementAttr: {
       class: 'currency',
     },
-    onClick: (e) => {
+    onClick: (e: { component: { option: (arg0: string,arg1: string) => string; }; }) => {
       if (e.component.option('text') === '$') {
         e.component.option('text', '€');
         setCurrencyFormat('$ #.##');
-        setCurrencyValue((prevCurrencyValue) => prevCurrencyValue / 0.836);
+        setCurrencyValue((prevCurrencyValue: number) => prevCurrencyValue / 0.836);
       } else {
         e.component.option('text', '$');
         setCurrencyFormat('€ #.##');
-        setCurrencyValue((prevCurrencyValue) => prevCurrencyValue * 0.836);
+        setCurrencyValue((prevCurrencyValue: number) => prevCurrencyValue * 0.836);
       }
     },
   }), [setCurrencyFormat, setCurrencyValue]);
@@ -54,7 +54,7 @@ function App() {
     icon: 'spinprev',
     stylingMode: 'text',
     onClick: () => {
-      setDateValue((prevDateValue) => prevDateValue - millisecondsInDay);
+      setDateValue((prevDateValue: number) => prevDateValue - millisecondsInDay);
     },
   }), [setDateValue]);
 
@@ -62,15 +62,15 @@ function App() {
     icon: 'spinnext',
     stylingMode: 'text',
     onClick: () => {
-      setDateValue((prevDateValue) => prevDateValue + millisecondsInDay);
+      setDateValue((prevDateValue: number) => prevDateValue + millisecondsInDay);
     },
   }), [setDateValue]);
 
-  const onDateChanged = React.useCallback((e) => {
+  const onDateChanged = React.useCallback((e: { value: any; }) => {
     setDateValue(e.value);
   }, [setDateValue]);
 
-  const changeCurrency = React.useCallback((data) => {
+  const changeCurrency = React.useCallback((data: { value: any; }) => {
     setCurrencyValue(data.value);
   }, [setCurrencyValue]);
 

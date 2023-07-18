@@ -4,7 +4,7 @@ import Switch from 'devextreme-react/switch';
 function App() {
   const [value, setValue] = React.useState(false);
 
-  const valueChanged = React.useCallback((e) => {
+  const valueChanged = React.useCallback((e: { value: any; }) => {
     setValue(e.value);
   }, []);
 

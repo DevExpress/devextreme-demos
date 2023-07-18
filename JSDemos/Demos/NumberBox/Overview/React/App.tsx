@@ -8,7 +8,7 @@ const maxAndMinLabel = { 'aria-label': 'Min And Max' };
 const salesLabel = { 'aria-label': 'Sales' };
 const stockLabel = { 'aria-label': 'Stock' };
 
-const keyDown = (e) => {
+const keyDown = (e: { event: any; }) => {
   const { event } = e;
   const str = event.key || String.fromCharCode(event.which);
   if (/^[.,e]$/.test(str)) {
@@ -20,7 +20,7 @@ function App() {
   const [value, setValue] = React.useState(16);
   const [max] = React.useState(30);
 
-  const valueChanged = React.useCallback((e) => {
+  const valueChanged = React.useCallback((e: { value: any; }) => {
     setValue(e.value);
   }, []);
 

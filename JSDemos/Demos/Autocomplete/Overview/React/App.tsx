@@ -5,7 +5,7 @@ import CustomStore from 'devextreme/data/custom_store';
 import 'whatwg-fetch';
 import { names, surnames, positions } from './data.js';
 
-function isNotEmpty(value) {
+function isNotEmpty(value: string) {
   return value !== undefined && value !== null && value !== '';
 }
 
@@ -48,19 +48,19 @@ function App() {
   const [state, setState] = React.useState('');
   const [currentClient, setCurrentClient] = React.useState('');
 
-  const handleFirstNameChange = React.useCallback((e) => {
+  const handleFirstNameChange = React.useCallback((e: { value: any; }) => {
     setFirstName(e.value);
   }, []);
 
-  const handleLastNameChange = React.useCallback((e) => {
+  const handleLastNameChange = React.useCallback((e: { value: any; }) => {
     setLastName(e.value);
   }, []);
 
-  const handleStateChange = React.useCallback((e) => {
+  const handleStateChange = React.useCallback((e: { value: any; }) => {
     setState(e.value);
   }, []);
 
-  const handleCurrentClientChange = React.useCallback((e) => {
+  const handleCurrentClientChange = React.useCallback((e: { value: any; }) => {
     setCurrentClient(e.value);
   }, []);
 

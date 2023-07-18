@@ -29,7 +29,7 @@ const phoneRules = {
   X: /[02-9]/,
 };
 const checkComparison = () => true;
-const onFormSubmit = (e) => {
+const onFormSubmit = (e: { preventDefault: () => void; }) => {
   notify({
     message: 'You have submitted the form',
     position: {
@@ -42,7 +42,7 @@ const onFormSubmit = (e) => {
 };
 
 let validatorInstance;
-const onInit = (e) => {
+const onInit = (e: { component: any; }) => {
   validatorInstance = e.component;
 };
 
@@ -73,14 +73,14 @@ function App() {
 
   const passwordComparison = React.useCallback(() => password, [password]);
 
-  const onPasswordChanged = React.useCallback((e) => {
+  const onPasswordChanged = React.useCallback((e: { value: any; }) => {
     setPassword(e.value);
     if (confirmPassword) {
       validatorInstance.validate();
     }
   }, [confirmPassword, setPassword, validatorInstance]);
 
-  const onConfirmPasswordChanged = React.useCallback((e) => {
+  const onConfirmPasswordChanged = React.useCallback((e: { value: any; }) => {
     setConfirmPassword(e.value);
   }, []);
 
@@ -243,7 +243,7 @@ function App() {
   );
 }
 
-function sendRequest(value) {
+function sendRequest(value: string) {
   const invalidEmail = 'test@dx-email.com';
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -252,7 +252,7 @@ function sendRequest(value) {
   });
 }
 
-function asyncValidation(params) {
+function asyncValidation(params: { value: any; }) {
   return sendRequest(params.value);
 }
 

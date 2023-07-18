@@ -19,22 +19,22 @@ function App() {
   const [autoResizeEnabled, setAutoResizeEnabled] = React.useState(false);
   const [height, setHeight] = React.useState(90);
 
-  const onCheckboxValueChanged = React.useCallback((e) => {
+  const onCheckboxValueChanged = React.useCallback((e: { value: any; }) => {
     const str = service.getContent();
     setValue(e.value ? str.substring(0, 100) : str);
     setMaxLength(e.value ? 100 : null);
   }, []);
 
-  const onAutoResizeChanged = React.useCallback((e) => {
+  const onAutoResizeChanged = React.useCallback((e: { value: any; }) => {
     setAutoResizeEnabled(e.value);
     setHeight(e.value ? undefined : 90);
   }, []);
 
-  const onSelectBoxValueChanged = React.useCallback((e) => {
+  const onSelectBoxValueChanged = React.useCallback((e: { value: any; }) => {
     setEventValue(e.value);
   }, []);
 
-  const onTextAreaValueChanged = React.useCallback((e) => {
+  const onTextAreaValueChanged = React.useCallback((e: { value: any; }) => {
     setValueForEditableTestArea(e.value);
   }, []);
 

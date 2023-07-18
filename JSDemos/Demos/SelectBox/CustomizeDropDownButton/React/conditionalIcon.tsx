@@ -1,6 +1,10 @@
-import React from 'react';
 
-export default function ConditionalIcon({ value }) {
+
+interface ConditionalIconProps {
+value: any;
+}import React from 'react';
+
+export default function ConditionalIcon({ value }: ConditionalIconProps) {
   if (value) {
     return (
       <img

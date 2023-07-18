@@ -20,7 +20,7 @@ function App() {
   const [target, setTarget] = React.useState(null);
   const [product, setProduct] = React.useState({});
 
-  const onCustomItemCreating = React.useCallback((args) => {
+  const onCustomItemCreating = React.useCallback((args: { text: any; customItem: any; }) => {
     const newValue = args.text;
     const isItemInDataSource = editableProducts.some((item) => item === newValue);
     if (!isItemInDataSource) {
@@ -29,7 +29,7 @@ function App() {
     args.customItem = newValue;
   }, [editableProducts]);
 
-  const onMouseEnter = React.useCallback((e, newProduct) => {
+  const onMouseEnter = React.useCallback((e: { currentTarget: any; }, newProduct) => {
     setTarget(e.currentTarget);
     setProduct(newProduct);
   }, []);
