@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import DataGrid, { Column, Export } from 'devextreme-react/data-grid';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
@@ -9,7 +9,7 @@ const exportFormats = ['pdf'];
 export default function App() {
   const employees = service.getEmployees();
 
-  const onExporting = React.useCallback(({ component }) => {
+  const onExporting = useCallback(({ component }) => {
     // eslint-disable-next-line new-cap
     const doc = new jsPDF();
 
@@ -41,11 +41,11 @@ export default function App() {
     });
   }, []);
 
-  const renderGridCell = React.useCallback((cellData) => (
+  const renderGridCell = useCallback((cellData) => (
     <div>
       <img src={cellData.value}></img>
     </div>
-  ));
+  ), []);
 
   return (
     <div>

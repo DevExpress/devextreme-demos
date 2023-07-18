@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
@@ -30,42 +30,42 @@ function updateStores(events) {
   store2.push(events);
 }
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="tables">
-        <div className="column">
-          <Grid dataSource={store1} />
-        </div>
-        <div className="column">
-          <Grid dataSource={store2} />
-        </div>
+const App = () => {
+  useEffect(() => {
+    const hubUrl = `${BASE_PATH}dataGridCollaborativeEditingHub?GroupId=${groupId}`;
+    const connection = new HubConnectionBuilder()
+      .withUrl(hubUrl, {
+        skipNegotiation: true,
+        transport: HttpTransportType.WebSockets,
+      })
+      .build();
+
+    connection.start()
+      .then(() => {
+        connection.on('update', (key, data) => {
+          updateStores([{ type: 'update', key, data }]);
+        });
+
+        connection.on('insert', (data) => {
+          updateStores([{ type: 'insert', data }]);
+        });
+
+        connection.on('remove', (key) => {
+          updateStores([{ type: 'remove', key }]);
+        });
+      });
+  }, []);
+
+  return (
+    <div className="tables">
+      <div className="column">
+        <Grid dataSource={store1} />
       </div>
-    );
-  }
-}
-
-const hubUrl = `${BASE_PATH}dataGridCollaborativeEditingHub?GroupId=${groupId}`;
-const connection = new HubConnectionBuilder()
-  .withUrl(hubUrl, {
-    skipNegotiation: true,
-    transport: HttpTransportType.WebSockets,
-  })
-  .build();
-
-connection.start()
-  .then(() => {
-    connection.on('update', (key, data) => {
-      updateStores([{ type: 'update', key, data }]);
-    });
-
-    connection.on('insert', (data) => {
-      updateStores([{ type: 'insert', data }]);
-    });
-
-    connection.on('remove', (key) => {
-      updateStores([{ type: 'remove', key }]);
-    });
-  });
+      <div className="column">
+        <Grid dataSource={store2} />
+      </div>
+    </div>
+  );
+};
 
 export default App;

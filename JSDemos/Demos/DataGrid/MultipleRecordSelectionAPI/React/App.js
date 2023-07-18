@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useState, useRef } from 'react';
 import DataGrid, {
   Column,
   Selection,
@@ -12,93 +11,28 @@ import { employees, titleLabel } from './data.js';
 
 const titles = ['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.'];
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+function App() {
+  const [prefix, setPrefix] = useState('');
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const [selectedEmployeeNames, setSelectedEmployeeNames] = useState('Nobody has been selected');
 
-    this.dataGrid = null;
-    this.selectionChangedBySelectBox = false;
+  const dataGridRef = useRef(null);
+  const selectionChangedBySelectBox = useRef(false);
 
-    this.state = {
-      prefix: '',
-      selectedEmployeeNames: 'Nobody has been selected',
-      selectedRowKeys: [],
-    };
+  const onClearButtonClicked = () => {
+    dataGridRef.current.instance.clearSelection();
+  };
 
-    this.onClearButtonClicked = this.onClearButtonClicked.bind(this);
-    this.onSelectionChanged = this.onSelectionChanged.bind(this);
-    this.onSelectionFilterChanged = this.onSelectionFilterChanged.bind(this);
-  }
+  const onSelectionChanged = ({ selectedRowKeys, selectedRowsData }) => {
+    selectionChangedBySelectBox.current = false;
 
-  render() {
-    const {
-      prefix, selectedRowKeys, selectedEmployeeNames,
-    } = this.state;
+    setPrefix(null);
+    setSelectedRowKeys(selectedRowKeys);
+    setSelectedEmployeeNames(getEmployeeNames(selectedRowsData));
+  };
 
-    return (
-      <div>
-        <DataGrid
-          id="grid-container"
-          dataSource={employees}
-          keyExpr="ID"
-          onSelectionChanged={this.onSelectionChanged}
-          ref={(ref) => { this.dataGrid = ref; }}
-          selectedRowKeys={selectedRowKeys}
-          showBorders={true}
-        >
-          <Selection mode="multiple" />
-          <Column dataField="Prefix" caption="Title" width={70} />
-          <Column dataField="FirstName" />
-          <Column dataField="LastName" />
-          <Column dataField="Position" width={180} />
-          <Column dataField="BirthDate" dataType="date" width={125} />
-          <Column dataField="HireDate" dataType="date" width={125} />
-          <Toolbar>
-            <Item location="before">
-              <SelectBox
-                dataSource={titles}
-                inputAttr={titleLabel}
-                onValueChanged={this.onSelectionFilterChanged}
-                placeholder="Select title"
-                width={150}
-                value={prefix}
-              />
-            </Item>
-            <Item location="before">
-              <Button
-                disabled={!selectedRowKeys.length}
-                onClick={this.onClearButtonClicked}
-                text="Clear Selection"
-              />
-            </Item>
-          </Toolbar>
-        </DataGrid>
-        <div className="selected-data">
-          <span className="caption">Selected Records:</span>{' '}
-          <span>
-            { selectedEmployeeNames }
-          </span>
-        </div>
-      </div>
-    );
-  }
-
-  onSelectionChanged({ selectedRowKeys, selectedRowsData }) {
-    this.selectionChangedBySelectBox = false;
-
-    this.setState({
-      prefix: null,
-      selectedEmployeeNames: getEmployeeNames(selectedRowsData),
-      selectedRowKeys,
-    });
-  }
-
-  onClearButtonClicked() {
-    this.dataGrid.instance.clearSelection();
-  }
-
-  onSelectionFilterChanged({ value }) {
-    this.selectionChangedBySelectBox = true;
+  const onSelectionFilterChanged = ({ value }) => {
+    selectionChangedBySelectBox.current = true;
 
     const prefix = value;
 
@@ -106,21 +40,62 @@ class App extends React.Component {
       const filteredEmployees = prefix === 'All' ? employees : employees.filter((employee) => employee.Prefix === prefix);
       const selectedRowKeys = filteredEmployees.map((employee) => employee.ID);
 
-      this.setState({
-        prefix,
-        selectedRowKeys,
-        selectedEmployeeNames: getEmployeeNames(filteredEmployees),
-      });
+      setPrefix(prefix);
+      setSelectedRowKeys(selectedRowKeys);
+      setSelectedEmployeeNames(getEmployeeNames(filteredEmployees));
     }
-  }
-}
+  };
 
-function getEmployeeName(row) {
-  return `${row.FirstName} ${row.LastName}`;
-}
+  const getEmployeeName = (row) => `${row.FirstName} ${row.LastName}`;
 
-function getEmployeeNames(selectedRowsData) {
-  return selectedRowsData.length ? selectedRowsData.map(getEmployeeName).join(', ') : 'Nobody has been selected';
+  const getEmployeeNames = (selectedRowsData) => (selectedRowsData.length ? selectedRowsData.map(getEmployeeName).join(', ') : 'Nobody has been selected');
+
+  return (
+    <div>
+      <DataGrid
+        id="grid-container"
+        dataSource={employees}
+        keyExpr="ID"
+        onSelectionChanged={onSelectionChanged}
+        ref={dataGridRef}
+        selectedRowKeys={selectedRowKeys}
+        showBorders={true}
+      >
+        <Selection mode="multiple" />
+        <Column dataField="Prefix" caption="Title" width={70} />
+        <Column dataField="FirstName" />
+        <Column dataField="LastName" />
+        <Column dataField="Position" width={180} />
+        <Column dataField="BirthDate" dataType="date" width={125} />
+        <Column dataField="HireDate" dataType="date" width={125} />
+        <Toolbar>
+          <Item location="before">
+            <SelectBox
+              dataSource={titles}
+              inputAttr={titleLabel}
+              onValueChanged={onSelectionFilterChanged}
+              placeholder="Select title"
+              width={150}
+              value={prefix}
+            />
+          </Item>
+          <Item location="before">
+            <Button
+              disabled={!selectedRowKeys.length}
+              onClick={onClearButtonClicked}
+              text="Clear Selection"
+            />
+          </Item>
+        </Toolbar>
+      </DataGrid>
+      <div className="selected-data">
+        <span className="caption">Selected Records:</span>{' '}
+        <span>
+          {selectedEmployeeNames}
+        </span>
+      </div>
+    </div>
+  );
 }
 
 export default App;

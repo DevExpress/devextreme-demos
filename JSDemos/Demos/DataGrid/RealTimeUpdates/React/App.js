@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import DataGrid, {
   Column, Summary, TotalItem, MasterDetail, Paging,
 } from 'devextreme-react/data-grid';
@@ -13,91 +13,39 @@ const dataSource = new DataSource({
   reshapeOnPush: true,
 });
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const [updateFrequency, setUpdateFrequency] = useState(100);
 
-    this.state = {
-      updateFrequency: 100,
-    };
-
-    this.onUpdateFrequencyChanged = this.onUpdateFrequencyChanged.bind(this);
-    this.detailRender = this.detailRender.bind(this);
-
-    setInterval(() => {
+  useEffect(() => {
+    const interval = setInterval(() => {
       if (getOrderCount() > 500000) {
         return;
       }
 
-      for (let i = 0; i < this.state.updateFrequency / 20; i += 1) {
+      for (let i = 0; i < updateFrequency / 20; i += 1) {
         addOrder();
       }
     }, 50);
-  }
 
-  render() {
-    return (
-      <div>
-        <DataGrid
-          dataSource={dataSource}
-          repaintChangesOnly={true}
-          columnAutoWidth={true}
-          showBorders={true}>
-          <Paging defaultPageSize={10} />
-          <Column
-            dataField="ProductName"
-            dataType="string" />
-          <Column
-            dataField="UnitPrice"
-            dataType="number"
-            format="currency" />
-          <Column
-            dataField="OrderCount"
-            dataType="number" />
-          <Column
-            dataField="Quantity"
-            dataType="number" />
-          <Column
-            dataField="Amount"
-            dataType="number"
-            format="currency" />
-          <Summary>
-            <TotalItem column="ProductName" summaryType="count" />
-            <TotalItem column="Amount" summaryType="sum" displayFormat="{0}" valueFormat="currency" />
-            <TotalItem column="OrderCount" summaryType="sum" displayFormat="{0}" />
-          </Summary>
-          <MasterDetail
-            enabled={true}
-            render={this.detailRender}>
-          </MasterDetail>
-        </DataGrid>
-        <div className="options">
-          <div className="caption">Options</div>
-          <div className="option">
-            <span>Update frequency:</span>
-            <Slider
-              min={10}
-              step={10}
-              max={5000}
-              value={this.state.updateFrequency}
-              onValueChanged={this.onUpdateFrequencyChanged}>
-              <Tooltip
-                enabled={true}
-                format="#0 per second"
-                showMode="always"
-                position="top">
-              </Tooltip>
-            </Slider>
-          </div>
-        </div>
-      </div>
-    );
-  }
+    return () => clearInterval(interval);
+  }, [updateFrequency]);
 
-  detailRender(detail) {
+  const onUpdateFrequencyChanged = (e) => {
+    setUpdateFrequency(e.value);
+  };
+
+  const detailRender = (detail) => {
+    const getDetailGridDataSource = (product) => ({
+      store: ordersStore,
+      reshapeOnPush: true,
+      filter: ['ProductID', '=', product.ProductID],
+    });
+
+    const getAmount = (order) => order.UnitPrice * order.Quantity;
+
     return (
       <DataGrid
-        dataSource={this.getDetailGridDataSource(detail.data)}
+        dataSource={getDetailGridDataSource(detail.data)}
         repaintChangesOnly={true}
         columnAutoWidth={true}
         showBorders={true}>
@@ -124,7 +72,7 @@ class App extends React.Component {
           dataType="number"
           format="currency"
           allowSorting={true}
-          calculateCellValue={this.getAmount} />
+          calculateCellValue={getAmount} />
         <Summary>
           <TotalItem column="OrderID" summaryType="count" />
           <TotalItem column="Quantity" summaryType="sum" displayFormat="{0}" />
@@ -132,25 +80,64 @@ class App extends React.Component {
         </Summary>
       </DataGrid>
     );
-  }
+  };
 
-  onUpdateFrequencyChanged(e) {
-    this.setState({
-      updateFrequency: e.value,
-    });
-  }
-
-  getDetailGridDataSource(product) {
-    return {
-      store: ordersStore,
-      reshapeOnPush: true,
-      filter: ['ProductID', '=', product.ProductID],
-    };
-  }
-
-  getAmount(order) {
-    return order.UnitPrice * order.Quantity;
-  }
-}
+  return (
+    <div>
+      <DataGrid
+        dataSource={dataSource}
+        repaintChangesOnly={true}
+        columnAutoWidth={true}
+        showBorders={true}>
+        <Paging defaultPageSize={10} />
+        <Column
+          dataField="ProductName"
+          dataType="string" />
+        <Column
+          dataField="UnitPrice"
+          dataType="number"
+          format="currency" />
+        <Column
+          dataField="OrderCount"
+          dataType="number" />
+        <Column
+          dataField="Quantity"
+          dataType="number" />
+        <Column
+          dataField="Amount"
+          dataType="number"
+          format="currency" />
+        <Summary>
+          <TotalItem column="ProductName" summaryType="count" />
+          <TotalItem column="Amount" summaryType="sum" displayFormat="{0}" valueFormat="currency" />
+          <TotalItem column="OrderCount" summaryType="sum" displayFormat="{0}" />
+        </Summary>
+        <MasterDetail
+          enabled={true}
+          render={detailRender}>
+        </MasterDetail>
+      </DataGrid>
+      <div className="options">
+        <div className="caption">Options</div>
+        <div className="option">
+          <span>Update frequency:</span>
+          <Slider
+            min={10}
+            step={10}
+            max={5000}
+            value={updateFrequency}
+            onValueChanged={onUpdateFrequencyChanged}>
+            <Tooltip
+              enabled={true}
+              format="#0 per second"
+              showMode="always"
+              position="top">
+            </Tooltip>
+          </Slider>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default App;

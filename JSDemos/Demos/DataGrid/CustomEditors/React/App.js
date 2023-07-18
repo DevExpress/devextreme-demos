@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DataGrid, {
   Paging,
   HeaderFilter,
@@ -35,44 +35,39 @@ const tasks = createStore({
   },
 });
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.statusEditorRender = this.statusEditorRender.bind(this);
-  }
-
-  cellTemplate(container, options) {
+const App = () => {
+  const [cellTemplate, setCellTemplate] = useState(() => {
     const noBreakSpace = '\u00A0';
     const text = (options.value || []).map((element) => options.column.lookup.calculateCellValue(element)).join(', ');
     container.textContent = text || noBreakSpace;
     container.title = text;
-  }
+  });
 
-  calculateFilterExpression(filterValue, selectedFilterOperation, target) {
+  const [calculateFilterExpression, setCalculateFilterExpression] = useState((filterValue, selectedFilterOperation, target) => {
     if (target === 'search' && typeof (filterValue) === 'string') {
       return [this.dataField, 'contains', filterValue];
     }
     return function(data) {
       return (data.AssignedEmployee || []).indexOf(filterValue) !== -1;
     };
-  }
+  });
 
-  onValueChanged(cell, e) {
+  const [onValueChanged, setOnValueChanged] = useState((cell, e) => {
     cell.setValue(e.value);
-  }
+  });
 
-  statusEditorRender(cell) {
-    const onValueChanged = this.onValueChanged.bind(this, cell);
+  const [statusEditorRender, setStatusEditorRender] = useState((cell) => {
+    const onValueChanged = onValueChanged.bind(this, cell);
     return <SelectBox
       defaultValue={cell.value}
       {...cell.column.lookup}
       onValueChanged={onValueChanged}
       inputAttr={statusLabel}
-      itemRender={this.itemRender}
+      itemRender={itemRender}
     />;
-  }
+  });
 
-  itemRender(data) {
+  const [itemRender, setItemRender] = useState((data) => {
     const imageSource = `images/icons/status-${data.id}.svg`;
     if (data != null) {
       return <div>
@@ -81,75 +76,73 @@ class App extends React.Component {
       </div>;
     }
     return <span>(All)</span>;
-  }
+  });
 
-  onRowInserted(e) {
+  const onRowInserted = (e) => {
     e.component.navigateToRow(e.key);
-  }
+  };
 
-  render() {
-    return (
-      <div>
-        <DataGrid
-          dataSource={tasks}
-          showBorders={true}
-          onRowInserted={this.onRowInserted}
+  return (
+    <div>
+      <DataGrid
+        dataSource={tasks}
+        showBorders={true}
+        onRowInserted={onRowInserted}
+      >
+        <Paging enabled={true} defaultPageSize={15} />
+        <HeaderFilter visible={true} />
+        <SearchPanel visible={true} />
+        <Editing
+          mode="cell"
+          allowUpdating={true}
+          allowAdding={true}
+        />
+        <Column
+          dataField="Owner"
+          width={150}
+          allowSorting={false}
+          editCellComponent={EmployeeDropDownBoxComponent}
         >
-          <Paging enabled={true} defaultPageSize={15} />
-          <HeaderFilter visible={true} />
-          <SearchPanel visible={true} />
-          <Editing
-            mode="cell"
-            allowUpdating={true}
-            allowAdding={true}
+          <Lookup
+            dataSource={employees}
+            displayExpr="FullName"
+            valueExpr="ID"
           />
-          <Column
-            dataField="Owner"
-            width={150}
-            allowSorting={false}
-            editCellComponent={EmployeeDropDownBoxComponent}
-          >
-            <Lookup
-              dataSource={employees}
-              displayExpr="FullName"
-              valueExpr="ID"
-            />
-            <RequiredRule />
-          </Column>
-          <Column
-            dataField="AssignedEmployee"
-            caption="Assignees"
-            width={200}
-            allowSorting={false}
-            editCellComponent={EmployeeTagBoxComponent}
-            cellTemplate={this.cellTemplate}
-            calculateFilterExpression={this.calculateFilterExpression}>
-            <Lookup
-              dataSource={employees}
-              valueExpr="ID"
-              displayExpr="FullName"
-            />
-            <RequiredRule />
-          </Column>
-          <Column dataField="Subject">
-            <RequiredRule />
-          </Column>
-          <Column
-            dataField="Status"
-            width={200}
-            editCellRender={this.statusEditorRender}
-          >
-            <Lookup
-              dataSource={statuses}
-              displayExpr="name"
-              valueExpr="id"
-            />
-            <RequiredRule />
-          </Column>
-        </DataGrid>
-      </div>
-    );
-  }
-}
+          <RequiredRule />
+        </Column>
+        <Column
+          dataField="AssignedEmployee"
+          caption="Assignees"
+          width={200}
+          allowSorting={false}
+          editCellComponent={EmployeeTagBoxComponent}
+          cellTemplate={cellTemplate}
+          calculateFilterExpression={calculateFilterExpression}>
+          <Lookup
+            dataSource={employees}
+            valueExpr="ID"
+            displayExpr="FullName"
+          />
+          <RequiredRule />
+        </Column>
+        <Column dataField="Subject">
+          <RequiredRule />
+        </Column>
+        <Column
+          dataField="Status"
+          width={200}
+          editCellRender={statusEditorRender}
+        >
+          <Lookup
+            dataSource={statuses}
+            displayExpr="name"
+            valueExpr="id"
+          />
+          <RequiredRule />
+        </Column>
+      </DataGrid>
+    </div>
+  );
+};
 
 export default App;
