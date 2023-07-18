@@ -53,32 +53,21 @@
     </DxDataGrid>
   </div>
 </template>
-<script>
-
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
 import {
   DxDataGrid,
   DxColumn,
 } from 'devextreme-vue/data-grid';
 import CustomStore from 'devextreme/data/custom_store';
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
-
 import PriceCell from './PriceCell.vue';
 import ChangeCell from './ChangeCell.vue';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    PriceCell,
-    ChangeCell,
-  },
-  data() {
-    return {
-      connectionStarted: false,
-      dataSource: null,
-    };
-  },
-  mounted() {
+const connectionStarted = ref(false);
+const dataSource = ref(null);
+
+onMounted(() => {
     const hubConnection = new HubConnectionBuilder()
       .withUrl('https://js.devexpress.com/Demos/NetCore/liveUpdateSignalRHub', {
         skipNegotiation: true,
@@ -97,11 +86,10 @@ export default {
         hubConnection.on('updateStockPrice', (data) => {
           store.push([{ type: 'update', key: data.symbol, data }]);
         });
-        this.dataSource = store;
-        this.connectionStarted = true;
+        dataSource.value = store;
+        connectionStarted.value = true;
       });
-  },
-};
+  });
 </script>
 
 <style>

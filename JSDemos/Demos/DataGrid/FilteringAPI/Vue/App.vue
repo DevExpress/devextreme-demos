@@ -2,8 +2,8 @@
   <div>
     <div class="left-side">
       <div class="logo">
-        <img src="../../../../images/logo-devav.png">
-        <img src="../../../../images/logo-tasks.png">
+        <img :src="'../../../../images/logo-devav.png'">
+        <img :src="'../../../../images/logo-tasks.png'">
       </div>
     </div>
     <div class="right-side">
@@ -17,7 +17,7 @@
 
     <DxDataGrid
       id="gridContainer"
-      :ref="dataGridRefName"
+      ref="dataGridRef"
       :data-source="dataSource"
       :column-auto-width="true"
       :show-borders="true"
@@ -49,7 +49,8 @@
     </DxDataGrid>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxColumn,
   DxDataGrid,
@@ -57,45 +58,33 @@ import {
 import DxSelectBox from 'devextreme-vue/select-box';
 import 'devextreme/data/odata/store';
 
-export default {
-  components: {
-    DxSelectBox,
-    DxColumn,
-    DxDataGrid,
+const dataSource = {
+  store: {
+    type: 'odata',
+    url: 'https://js.devexpress.com/Demos/DevAV/odata/Tasks',
+    key: 'Task_ID',
   },
-  data() {
-    return {
-      dataSource: {
-        store: {
-          type: 'odata',
-          url: 'https://js.devexpress.com/Demos/DevAV/odata/Tasks',
-          key: 'Task_ID',
-        },
-        expand: 'ResponsibleEmployee',
-        select: [
-          'Task_ID',
-          'Task_Subject',
-          'Task_Start_Date',
-          'Task_Status',
-          'ResponsibleEmployee/Employee_Full_Name',
-        ],
-      },
-      statuses: ['All', 'Not Started', 'In Progress', 'Need Assistance', 'Deferred', 'Completed'],
-      dataGridRefName: 'dataGrid',
-    };
-  },
-  methods: {
-    onValueChanged({ value }) {
-      const dataGrid = this.$refs[this.dataGridRefName].instance;
-
-      if (value === 'All') {
-        dataGrid.clearFilter();
-      } else {
-        dataGrid.filter(['Task_Status', '=', value]);
-      }
-    },
-  },
+  expand: 'ResponsibleEmployee',
+  select: [
+    'Task_ID',
+    'Task_Subject',
+    'Task_Start_Date',
+    'Task_Status',
+    'ResponsibleEmployee/Employee_Full_Name',
+  ],
 };
+const statuses = ['All', 'Not Started', 'In Progress', 'Need Assistance', 'Deferred', 'Completed'];
+const dataGridRef = ref(null);
+
+function onValueChanged({ value }) {
+  const dataGrid = dataGridRef.value?.instance;
+
+  if (value === 'All') {
+    dataGrid?.clearFilter();
+  } else {
+    dataGrid?.filter(['Task_Status', '=', value]);
+  }
+}
 </script>
 <style scoped>
 .right-side {

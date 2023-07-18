@@ -2,7 +2,7 @@
   <DxDataGrid
     id="grid-container"
     :show-borders="true"
-    :data-source="dataSource"
+    :data-source="employees"
     key-expr="ID"
     @selection-changed="selectionChanged"
     @content-ready="contentReady"
@@ -42,8 +42,7 @@
     </template>
   </DxDataGrid>
 </template>
-<script>
-
+<script setup lang="ts">
 import DxDataGrid, {
   DxColumn,
   DxMasterDetail,
@@ -51,28 +50,14 @@ import DxDataGrid, {
 } from 'devextreme-vue/data-grid';
 import { employees } from './data.js';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxMasterDetail,
-    DxSelection,
-  },
-  data() {
-    return {
-      dataSource: employees,
-    };
-  },
-  methods: {
-    contentReady(e) {
-      if (!e.component.getSelectedRowKeys().length) { e.component.selectRowsByIndexes(0); }
-    },
-    selectionChanged(e) {
-      e.component.collapseAll(-1);
-      e.component.expandRow(e.currentSelectedRowKeys[0]);
-    },
-  },
-};
+function contentReady(e) {
+  if (!e.component.getSelectedRowKeys().length) { e.component.selectRowsByIndexes(0); }
+}
+
+function selectionChanged(e) {
+  e.component.collapseAll(-1);
+  e.component.expandRow(e.currentSelectedRowKeys[0]);
+}
 </script>
 <style>
 #grid-container {

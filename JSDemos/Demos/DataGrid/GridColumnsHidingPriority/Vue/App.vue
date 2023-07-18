@@ -35,20 +35,11 @@
     </DxDataGrid>
   </div>
 </template>
-<script>
+<script setup lang="ts">
 import { DxDataGrid, DxColumn } from 'devextreme-vue/data-grid';
 import service from './data.js';
 
-export default {
-  components: {
-    DxDataGrid, DxColumn,
-  },
-  data() {
-    return {
-      dataSource: service.getOrders(),
-    };
-  },
-};
+const dataSource = service.getOrders();
 </script>
 <style scoped>
 #gridContainer {

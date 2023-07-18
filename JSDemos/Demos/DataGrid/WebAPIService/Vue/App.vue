@@ -94,7 +94,8 @@
     </DxSummary>
   </DxDataGrid>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxDataGrid,
   DxColumn,
@@ -114,13 +115,25 @@ import {
   DxRangeRule,
   DxValueFormat,
 } from 'devextreme-vue/data-grid';
-
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 import MasterDetailGrid from './MasterDetailGrid.vue';
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
-
-const dataSource = createStore({
+const customersData = ref(createStore({
+  key: 'Value',
+  loadUrl: `${url}/CustomersLookup`,
+  onBeforeSend: (method, ajaxOptions) => {
+    ajaxOptions.xhrFields = { withCredentials: true };
+  },
+}));
+const shippersData = ref(createStore({
+  key: 'Value',
+  loadUrl: `${url}/ShippersLookup`,
+  onBeforeSend: (method, ajaxOptions) => {
+    ajaxOptions.xhrFields = { withCredentials: true };
+  },
+}));
+const dataSource = ref(createStore({
   key: 'OrderID',
   loadUrl: `${url}/Orders`,
   insertUrl: `${url}/InsertOrder`,
@@ -129,52 +142,5 @@ const dataSource = createStore({
   onBeforeSend: (method, ajaxOptions) => {
     ajaxOptions.xhrFields = { withCredentials: true };
   },
-});
-
-const customersData = createStore({
-  key: 'Value',
-  loadUrl: `${url}/CustomersLookup`,
-  onBeforeSend: (method, ajaxOptions) => {
-    ajaxOptions.xhrFields = { withCredentials: true };
-  },
-});
-
-const shippersData = createStore({
-  key: 'Value',
-  loadUrl: `${url}/ShippersLookup`,
-  onBeforeSend: (method, ajaxOptions) => {
-    ajaxOptions.xhrFields = { withCredentials: true };
-  },
-});
-
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxEditing,
-    DxFilterRow,
-    DxHeaderFilter,
-    DxGroupPanel,
-    DxGrouping,
-    DxScrolling,
-    DxSummary,
-    DxLookup,
-    DxTotalItem,
-    DxGroupItem,
-    DxMasterDetail,
-    DxStringLengthRule,
-    DxRangeRule,
-    DxRequiredRule,
-    DxValueFormat,
-    MasterDetailGrid,
-  },
-  data() {
-    return {
-      url,
-      customersData,
-      shippersData,
-      dataSource,
-    };
-  },
-};
+}));
 </script>

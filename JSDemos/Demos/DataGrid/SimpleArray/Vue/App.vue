@@ -6,20 +6,11 @@
     :show-borders="true"
   />
 </template>
-<script>
-
+<script setup lang="ts">
+import { ref } from 'vue';
 import DxDataGrid from 'devextreme-vue/data-grid';
 import { customers } from './data.js';
 
-export default {
-  components: {
-    DxDataGrid,
-  },
-  data() {
-    return {
-      dataSource: customers,
-      columns: ['CompanyName', 'City', 'State', 'Phone', 'Fax'],
-    };
-  },
-};
+const dataSource = ref(customers);
+const columns = ref(['CompanyName', 'City', 'State', 'Phone', 'Fax']);
 </script>

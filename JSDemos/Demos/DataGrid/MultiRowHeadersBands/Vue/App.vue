@@ -59,27 +59,15 @@
   </DxDataGrid>
 </template>
 
-<script>
-
+<script setup lang="ts">
+import { ref } from 'vue';
 import DxDataGrid, { DxColumn, DxColumnChooser } from 'devextreme-vue/data-grid';
 import { countries } from './data.js';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxColumnChooser,
-  },
-  data() {
-    return {
-      countries,
-      gdpFormat: {
-        type: 'percent',
-        precision: 1,
-      },
-    };
-  },
-};
+const gdpFormat = ref({
+  type: 'percent',
+  precision: 1,
+});
 </script>
 
 <style>

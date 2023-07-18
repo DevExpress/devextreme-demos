@@ -63,7 +63,7 @@
       <span v-if="data == null">(All)</span>
       <div v-else>
         <img
-          :src="'images/icons/status-' + data.id + '.svg'"
+          :src="'../../../../images/icons/status-' + data.id + '.svg'"
           class="status-icon middle"
         >
         <span class="middle">{{ data.name }}</span>
@@ -89,8 +89,7 @@
 
   </DxDataGrid>
 </template>
-<script>
-
+<script setup lang="ts">
 import {
   DxDataGrid,
   DxPaging,
@@ -106,8 +105,20 @@ import { statuses } from './data.js';
 import EmployeeDropDownBoxComponent from './EmployeeDropDownBoxComponent.vue';
 import EmployeeTagBoxComponent from './EmployeeTagBoxComponent.vue';
 
+function cellTemplate(container, options) {
+  const noBreakSpace = '\u00A0';
+  const text = (options.value || []).map((element) => options.column.lookup.calculateCellValue(element)).join(', ');
+  container.textContent = text || noBreakSpace;
+  container.title = text;
+};
+function onValueChanged(value, cellInfo) {
+  cellInfo.setValue(value);
+  cellInfo.component.updateDimensions();
+};
+function onRowInserted(e) {
+  e.component.navigateToRow(e.key);
+};
 const url = 'https://js.devexpress.com/Demos/Mvc/api/CustomEditors';
-
 const employees = createStore({
   key: 'ID',
   loadUrl: `${url}/Employees`,
@@ -115,7 +126,6 @@ const employees = createStore({
     ajaxOptions.xhrFields = { withCredentials: true };
   },
 });
-
 const tasks = createStore({
   key: 'ID',
   loadUrl: `${url}/Tasks`,
@@ -125,53 +135,15 @@ const tasks = createStore({
     ajaxOptions.xhrFields = { withCredentials: true };
   },
 });
-
-export default {
-  components: {
-    DxDataGrid,
-    DxPaging,
-    DxHeaderFilter,
-    DxSearchPanel,
-    DxEditing,
-    DxColumn,
-    DxLookup,
-    DxRequiredRule,
-    EmployeeDropDownBoxComponent,
-    EmployeeTagBoxComponent,
-  },
-  data() {
-    return {
-      tasks,
-      employees,
-      statuses,
-      dropDownOptions: { width: 400 },
-      editorOptions: { itemTemplate: 'statusTemplate' },
-      calculateFilterExpression(filterValue, selectedFilterOperation, target) {
-        if (target === 'search' && typeof (filterValue) === 'string') {
-          return [this.dataField, 'contains', filterValue];
-        }
-        return function(data) {
-          return (data.AssignedEmployee || []).indexOf(filterValue) !== -1;
-        };
-      },
-    };
-  },
-  methods: {
-    cellTemplate(container, options) {
-      const noBreakSpace = '\u00A0';
-      const text = (options.value || []).map((element) => options.column.lookup.calculateCellValue(element)).join(', ');
-      container.textContent = text || noBreakSpace;
-      container.title = text;
-    },
-    onValueChanged(value, cellInfo) {
-      cellInfo.setValue(value);
-      cellInfo.component.updateDimensions();
-    },
-    onRowInserted(e) {
-      e.component.navigateToRow(e.key);
-    },
-  },
-};
+const editorOptions = { itemTemplate: 'statusTemplate' };
+function calculateFilterExpression(filterValue, selectedFilterOperation, target) {
+  if (target === 'search' && typeof (filterValue) === 'string') {
+    return [this.dataField, 'contains', filterValue];
+  }
+  return function(data) {
+    return (data.AssignedEmployee || []).indexOf(filterValue) !== -1;
+  };
+}
 </script>
 <style>
   .status-icon {

@@ -40,7 +40,7 @@
     </DxDataGrid>
   </div>
 </template>
-<script>
+<script setup lang="ts">
 import {
   DxDataGrid,
   DxColumn,
@@ -53,6 +53,18 @@ import {
 } from 'devextreme-vue/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 
+function asyncValidation(params) {
+  return fetch('https://js.devexpress.com/Demos/Mvc/RemoteValidation/CheckUniqueEmailAddress', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;',
+    },
+    body: JSON.stringify({
+      id: params.data.ID,
+      email: params.value,
+    }),
+  }).then((response) => response.json());
+};
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridEmployeesValidation';
 const dataSource = createStore({
   key: 'ID',
@@ -64,37 +76,5 @@ const dataSource = createStore({
     ajaxOptions.xhrFields = { withCredentials: true };
   },
 });
-
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxPaging,
-    DxEditing,
-    DxRequiredRule,
-    DxEmailRule,
-    DxPatternRule,
-    DxAsyncRule,
-  },
-  data() {
-    return {
-      dataSource,
-      pattern: /^\(\d{3}\) \d{3}-\d{4}$/i,
-    };
-  },
-  methods: {
-    asyncValidation(params) {
-      return fetch('https://js.devexpress.com/Demos/Mvc/RemoteValidation/CheckUniqueEmailAddress', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json;',
-        },
-        body: JSON.stringify({
-          id: params.data.ID,
-          email: params.value,
-        }),
-      }).then((response) => response.json());
-    },
-  },
-};
+const pattern = /^\(\d{3}\) \d{3}-\d{4}$/i;
 </script>

@@ -25,7 +25,8 @@
     </DxTooltip>
   </DxBullet>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxBullet,
   DxFont,
@@ -34,30 +35,17 @@ import {
   DxTooltip,
 } from 'devextreme-vue/bullet';
 
-export default {
-  components: {
-    DxBullet,
-    DxFont,
-    DxMargin,
-    DxSize,
-    DxTooltip,
-  },
-  props: {
-    cellData: {
-      type: Object,
-      default: () => {},
-    },
-  },
-  data() {
-    return {
-      customizeTooltip(data) {
-        return {
-          text: `${parseInt(data.value, 10)}%`,
-        };
-      },
-    };
-  },
-};
+withDefaults(defineProps<{
+  cellData?: object
+}>(), {
+  cellData: () => {},
+});
+
+const customizeTooltip = ref((data) => {
+  return {
+    text: `${parseInt(data.value, 10)}%`,
+  };
+});
 </script>
 <style>
 .dx-datagrid .dx-data-row > td.bullet {

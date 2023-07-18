@@ -57,7 +57,8 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxDataGrid,
   DxColumn,
@@ -65,32 +66,17 @@ import {
   DxSearchPanel,
 } from 'devextreme-vue/data-grid';
 import DxSelectBox from 'devextreme-vue/select-box';
-
 import service from './data.js';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxPaging,
-    DxSearchPanel,
-    DxSelectBox,
-  },
-  data() {
-    return {
-      dataSource: service.getEuropeanUnion(),
-      languages: ['Arabic (Right-to-Left direction)', 'English (Left-to-Right direction)'],
-      placeholder: 'Search...',
-      rtlEnabled: false,
-    };
-  },
-  methods: {
-    selectLanguage(e) {
-      this.rtlEnabled = e.value === this.languages[0];
-      this.placeholder = this.rtlEnabled ? 'بحث' : 'Search...';
-    },
-  },
-};
+const dataSource = service.getEuropeanUnion();
+const languages = ['Arabic (Right-to-Left direction)', 'English (Left-to-Right direction)'];
+const placeholder = ref('Search...');
+const rtlEnabled = ref(false);
+
+function selectLanguage(e) {
+  rtlEnabled.value = e.value === languages[0];
+  placeholder.value = rtlEnabled.value ? 'بحث' : 'Search...';
+}
 </script>
 <style scoped>
 #gridContainer {

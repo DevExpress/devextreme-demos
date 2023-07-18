@@ -64,8 +64,8 @@
     </div>
   </div>
 </template>
-<script>
-
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxDataGrid, DxColumn, DxFilterRow, DxSelection,
 } from 'devextreme-vue/data-grid';
@@ -73,65 +73,50 @@ import DxButton from 'devextreme-vue/button';
 import query from 'devextreme/data/query';
 import 'devextreme/data/odata/store';
 
+const dataSource = {
+  store: {
+    type: 'odata',
+    url: 'https://js.devexpress.com/Demos/DevAV/odata/Tasks',
+    key: 'Task_ID',
+  },
+  expand: 'ResponsibleEmployee',
+  select: [
+    'Task_ID',
+    'Task_Subject',
+    'Task_Start_Date',
+    'Task_Due_Date',
+    'Task_Status',
+    'ResponsibleEmployee/Employee_Full_Name',
+  ],
+};
+const selectionFilter = ['Task_Status', '=', 'Completed'];
+const dataGrid = ref({});
+const taskCount = ref(0);
+const peopleCount = ref(0);
+const avgDuration = ref(0);
 const MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxFilterRow,
-    DxSelection,
-    DxButton,
-    query,
-  },
-  data() {
-    return {
-      dataSource: {
-        store: {
-          type: 'odata',
-          url: 'https://js.devexpress.com/Demos/DevAV/odata/Tasks',
-          key: 'Task_ID',
-        },
-        expand: 'ResponsibleEmployee',
-        select: [
-          'Task_ID',
-          'Task_Subject',
-          'Task_Start_Date',
-          'Task_Due_Date',
-          'Task_Status',
-          'ResponsibleEmployee/Employee_Full_Name',
-        ],
-      },
-      selectionFilter: ['Task_Status', '=', 'Completed'],
-      dataGrid: {},
-      taskCount: 0,
-      peopleCount: 0,
-      avgDuration: 0,
-    };
-  },
-  methods: {
-    onInitialized(e) {
-      this.dataGrid = e.component;
-      this.calculateStatistics();
-    },
-    calculateStatistics() {
-      this.dataGrid.getSelectedRowsData().then((rowData) => {
-        let commonDuration = 0;
+function onInitialized(e) {
+  dataGrid.value = e.component;
+  calculateStatistics();
+}
 
-        for (let i = 0; i < rowData.length; i += 1) {
-          commonDuration += rowData[i].Task_Due_Date - rowData[i].Task_Start_Date;
-        }
-        commonDuration /= MILLISECONDS_IN_DAY;
-        this.taskCount = rowData.length;
-        this.peopleCount = query(rowData)
-          .groupBy('ResponsibleEmployee.Employee_Full_Name')
-          .toArray()
-          .length;
-        this.avgDuration = Math.round(commonDuration / rowData.length) || 0;
-      });
-    },
-  },
-};
+function calculateStatistics() {
+  dataGrid.value.getSelectedRowsData().then((rowData) => {
+    let commonDuration = 0;
+
+    for (let i = 0; i < rowData.length; i += 1) {
+      commonDuration += rowData[i].Task_Due_Date - rowData[i].Task_Start_Date;
+    }
+    commonDuration /= MILLISECONDS_IN_DAY;
+    taskCount.value = rowData.length;
+    peopleCount.value = query(rowData)
+      .groupBy('ResponsibleEmployee.Employee_Full_Name')
+      .toArray()
+      .length;
+    avgDuration.value = Math.round(commonDuration / rowData.length) || 0;
+  });
+}
 </script>
 
 <style>

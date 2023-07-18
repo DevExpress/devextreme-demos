@@ -45,33 +45,18 @@
     </DxDataGrid>
   </div>
 </template>
-<script>
+<script setup lang="ts">
 import {
   DxDataGrid,
   DxColumn,
   DxSorting,
   DxPaging,
 } from 'devextreme-vue/data-grid';
-
 import service from './data.js';
 import DiffCell from './DiffCell.vue';
 import ChartCell from './ChartCell.vue';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxSorting,
-    DxPaging,
-    DiffCell,
-    ChartCell,
-  },
-  data() {
-    return {
-      dataSource: service.getWeekData(),
-    };
-  },
-};
+const dataSource = service.getWeekData();
 </script>
 <style scoped>
 #gridContainer td {

@@ -60,7 +60,8 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import { DxSelectBox } from 'devextreme-vue/select-box';
 import {
   DxDataGrid,
@@ -72,23 +73,8 @@ import {
 import themes from 'devextreme/ui/themes';
 import { sales } from './data.js';
 
-export default {
-  components: {
-    DxSelectBox,
-    DxDataGrid,
-    DxColumn,
-    DxPaging,
-    DxSelection,
-    DxFilterRow,
-  },
-  data() {
-    return {
-      allMode: 'allPages',
-      checkBoxesMode: themes.current().startsWith('material') ? 'always' : 'onClick',
-      sales,
-    };
-  },
-};
+const allMode = ref('allPages');
+const checkBoxesMode = ref(themes.current().startsWith('material') ? 'always' : 'onClick');
 </script>
 <style scoped>
 .options {

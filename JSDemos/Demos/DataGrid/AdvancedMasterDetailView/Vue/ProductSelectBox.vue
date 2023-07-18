@@ -10,39 +10,30 @@
   />
 </template>
 
-<script>
-
+<script setup lang="ts">
+import { ref } from 'vue';
 import DxSelectBox from 'devextreme-vue/select-box';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 
-const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridAdvancedMasterDetailView';
+const props = withDefaults(defineProps<{
+  supplierId?: number
+}>(), {
+  supplierId: null,
+});
 
-export default {
-  components: { DxSelectBox },
-  props: {
-    supplierId: {
-      type: Number,
-      default: null,
-    },
-  },
-  data() {
-    return {
-      dataSource: createStore({
-        key: 'ProductID',
-        loadParams: { SupplierID: this.supplierId },
-        loadUrl: `${url}/GetProductsBySupplier`,
-        onLoaded: this.setDefaultValue,
-      }),
-      value: null,
-    };
-  },
-  methods: {
-    setDefaultValue(items) {
-      const firstItem = items[0];
-      if (firstItem && this.value === null) {
-        this.value = firstItem.ProductID;
-      }
-    },
-  },
-};
+const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridAdvancedMasterDetailView';
+const dataSource = createStore({
+  key: 'ProductID',
+  loadParams: { SupplierID: props.supplierId },
+  loadUrl: `${url}/GetProductsBySupplier`,
+  onLoaded: setDefaultValue,
+});
+const value = ref(null);
+
+function setDefaultValue(items) {
+  const firstItem = items[0];
+  if (firstItem && value.value === null) {
+    value.value = firstItem.ProductID;
+  }
+}
 </script>

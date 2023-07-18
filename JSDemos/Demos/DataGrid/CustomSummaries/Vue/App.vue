@@ -48,7 +48,8 @@
     </DxDataGrid>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxDataGrid,
   DxColumn,
@@ -57,40 +58,25 @@ import {
   DxSummary,
   DxTotalItem,
 } from 'devextreme-vue/data-grid';
-
 import service from './data.js';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxPaging,
-    DxSelection,
-    DxSummary,
-    DxTotalItem,
-  },
-  data() {
-    return {
-      orders: service.getOrders(),
-    };
-  },
-  methods: {
-    calculateSelectedRow(options) {
-      if (options.name === 'SelectedRowsSummary') {
-        if (options.summaryProcess === 'start') {
-          options.totalValue = 0;
-        } else if (options.summaryProcess === 'calculate') {
-          if (options.component.isRowSelected(options.value.ID)) {
-            options.totalValue += options.value.SaleAmount;
-          }
-        }
+const orders = service.getOrders();
+
+function calculateSelectedRow(options) {
+  if (options.name === 'SelectedRowsSummary') {
+    if (options.summaryProcess === 'start') {
+      options.totalValue = 0;
+    } else if (options.summaryProcess === 'calculate') {
+      if (options.component.isRowSelected(options.value.ID)) {
+        options.totalValue += options.value.SaleAmount;
       }
-    },
-    onSelectionChanged(e) {
-      e.component.refresh(true);
-    },
-  },
-};
+    }
+  }
+}
+
+function onSelectionChanged(e) {
+  e.component.refresh(true);
+}
 </script>
 <style scoped>
 #gridContainer {

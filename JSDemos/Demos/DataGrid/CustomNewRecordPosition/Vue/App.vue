@@ -82,7 +82,8 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import DxDataGrid, {
   DxColumn, DxEditing, DxValidationRule, DxButton, DxToolbar, DxItem, DxScrolling,
 } from 'devextreme-vue/data-grid';
@@ -90,50 +91,32 @@ import DxSelectBox from 'devextreme-vue/select-box';
 import Guid from 'devextreme/core/guid';
 import { dataSource } from './data.js';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxEditing,
-    DxValidationRule,
-    DxButton,
-    DxToolbar,
-    DxItem,
-    DxScrolling,
-    DxSelectBox,
-  },
-  data() {
-    return {
-      dataSource,
-      newRowPosition: 'viewportTop',
-      scrollingMode: 'standard',
-      changes: [],
-      editRowKey: null,
-      newRowPositionOptions: ['first', 'last', 'pageTop', 'pageBottom', 'viewportTop', 'viewportBottom'],
-      scrollingModeOptions: ['standard', 'virtual'],
-    };
-  },
-  methods: {
-    onAddButtonClick(e) {
-      const key = new Guid().toString();
-      this.changes = [{
-        key,
-        type: 'insert',
-        insertAfterKey: e.row.key,
-      }];
-      this.editRowKey = key;
-    },
-    isAddButtonVisible({ row }) {
-      return !row.isEditing;
-    },
-    onRowInserted(e) {
-      e.component.navigateToRow(e.key);
-    },
-  },
-};
-</script>
+const newRowPosition = ref('viewportTop');
+const scrollingMode = ref('standard');
+const changes = ref([]);
+const editRowKey = ref(null);
+const newRowPositionOptions = ['first', 'last', 'pageTop', 'pageBottom', 'viewportTop', 'viewportBottom'];
+const scrollingModeOptions = ['standard', 'virtual'];
 
-<style>
+function onAddButtonClick(e) {
+  const key = new Guid().toString();
+  changes.value = [{
+    key,
+    type: 'insert',
+    insertAfterKey: e.row.key,
+  }];
+  editRowKey.value = key;
+}
+
+function isAddButtonVisible({ row }) {
+  return !row.isEditing;
+}
+
+function onRowInserted(e) {
+  e.component.navigateToRow(e.key);
+}
+</script>
+<style scoped>
 #gridContainer {
   height: 440px;
 }

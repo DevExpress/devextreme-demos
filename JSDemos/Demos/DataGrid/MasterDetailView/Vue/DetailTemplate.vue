@@ -24,46 +24,37 @@
     </DxDataGrid>
   </div>
 </template>
-<script>
-
+<script setup lang="ts">
+import { ref } from 'vue';
 import { DxDataGrid, DxColumn } from 'devextreme-vue/data-grid';
-
 import ArrayStore from 'devextreme/data/array_store';
 import DataSource from 'devextreme/data/data_source';
 import service from './data.js';
 
-const tasks = service.getTasks();
+const props = withDefaults(defineProps<{
+  templateData?: object
+}>(), {
+  templateData: () => {},
+});
 
-export default {
-  components: { DxDataGrid, DxColumn },
-  props: {
-    templateData: {
-      type: Object,
-      default: () => {},
-    },
-  },
-  data() {
-    const { FirstName, LastName } = this.templateData.data;
-    return {
-      dataSource: this.getTasks(this.templateData.key),
-      detailInfo: `${FirstName} ${LastName}'s Tasks:`,
-    };
-  },
-  methods: {
-    completedValue(rowData) {
-      return rowData.Status === 'Completed';
-    },
-    getTasks(key) {
-      return new DataSource({
-        store: new ArrayStore({
-          data: tasks,
-          key: 'ID',
-        }),
-        filter: ['EmployeeID', '=', key],
-      });
-    },
-  },
-};
+const tasks = service.getTasks();
+const dataSource = getTasks(props.templateData.key);
+const { FirstName, LastName } = props.templateData.data;
+const detailInfo = `${FirstName} ${LastName}'s Tasks:`;
+
+function completedValue(rowData) {
+  return rowData.Status === 'Completed';
+}
+
+function getTasks(key) {
+  return new DataSource({
+    store: new ArrayStore({
+      data: tasks,
+      key: 'ID',
+    }),
+    filter: ['EmployeeID', '=', key],
+  });
+}
 </script>
 <style>
 .master-detail-caption {
