@@ -47,62 +47,49 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { computed, ref } from 'vue';
 import { DxDataGrid, DxColumn, DxEditing } from 'devextreme-vue/data-grid';
 import { DxLoadPanel } from 'devextreme-vue/load-panel';
-import { mapGetters, mapActions } from 'vuex';
+import { useStore } from 'vuex';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxEditing,
-    DxLoadPanel,
+const store = useStore();
+
+const [loadOrders, setEditRowKey, setChanges, saveChange] = ['loadOrders', 'setEditRowKey', 'setChanges', 'saveChange'].map(
+  (action) => (value?) => store.dispatch(action, value),
+);
+const orders = computed(() => store.getters.orders);
+const isLoading = computed(() => store.getters.isLoading);
+const loadPanelPosition = ref({ of: '#gridContainer' });
+const changes = computed({
+  get() {
+    return store.state.changes;
   },
-  data() {
-    return {
-      loadPanelPosition: { of: '#gridContainer' },
-    };
+  set(value) {
+    setChanges(value);
   },
-  computed: {
-    ...mapGetters(['orders', 'isLoading']),
-    editRowKey: {
-      get() {
-        return this.$store.state.editRowKey;
-      },
-      set(value) {
-        this.setEditRowKey(value);
-      },
-    },
-    changes: {
-      get() {
-        return this.$store.state.changes;
-      },
-      set(value) {
-        this.setChanges(value);
-      },
-    },
-    changesText: {
-      get() {
-        return JSON.stringify(this.changes.map((change) => ({
-          type: change.type,
-          key: change.type !== 'insert' ? change.key : undefined,
-          data: change.data,
-        })), null, ' ');
-      },
-    },
+});
+const changesText = computed(() => JSON.stringify(changes.value.map((change) => ({
+  type: change.type,
+  key: change.type !== 'insert' ? change.key : undefined,
+  data: change.data,
+})), null, ' '));
+
+const editRowKey = computed({
+  get() {
+    return store.state.editRowKey;
   },
-  created() {
-    this.loadOrders();
+  set(value) {
+    setEditRowKey(value);
   },
-  methods: {
-    ...mapActions(['setEditRowKey', 'setChanges', 'loadOrders', 'insert', 'update', 'remove', 'saveChange']),
-    onSaving(e) {
-      e.cancel = true;
-      e.promise = this.saveChange(e.changes[0]);
-    },
-  },
-};
+});
+
+function onSaving(e) {
+  e.cancel = true;
+  e.promise = saveChange(e.changes[0]);
+}
+
+loadOrders();
 </script>
 <style scoped>
 #gridContainer {

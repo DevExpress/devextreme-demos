@@ -49,28 +49,15 @@
     </DxDataGrid>
   </div>
 </template>
-<script>
+<script setup lang="ts">
 import {
   DxDataGrid,
   DxColumn,
 } from 'devextreme-vue/data-grid';
-
 import service from './data.js';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-  },
-  data() {
-    return {
-      employees: service.getEmployees(),
-    };
-  },
-  methods: {
-    formatDate: new Intl.DateTimeFormat('en-US').format,
-  },
-};
+const employees = service.getEmployees();
+const formatDate = new Intl.DateTimeFormat('en-US').format;
 </script>
 <style scoped>
 #gridContainer {

@@ -35,10 +35,18 @@
   </DxDataGrid>
 </template>
 
-<script>
+<script setup lang="ts">
 import {
   DxDataGrid, DxColumn, DxRowDragging, DxScrolling, DxLookup,
 } from 'devextreme-vue/data-grid';
+
+const props = withDefaults(defineProps<{
+  tasksStore?: object
+  status?: number
+}>(), {
+  tasksStore: () => ({}),
+  status: 0,
+});
 
 const priorities = [{
   id: 1, text: 'Low',
@@ -50,46 +58,21 @@ const priorities = [{
   id: 4, text: 'Urgent',
 }];
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxRowDragging,
-    DxScrolling,
-    DxLookup,
-  },
-  props: {
-    tasksStore: {
-      type: Object,
-      default: () => ({}),
-    },
-    status: {
-      type: Number,
-      default: 0,
-    },
-  },
-  data() {
-    return {
-      dataSource: {
-        store: this.tasksStore,
-        reshapeOnPush: true,
-      },
-      priorities,
-      filterExpr: ['Status', '=', this.status],
-    };
-  },
-  methods: {
-    onAdd(e) {
+const tasksStore = props.tasksStore;
+const dataSource = {
+  store: tasksStore,
+  reshapeOnPush: true,
+};
+const filterExpr = ['Status', '=', props.status];
+
+function onAdd(e) {
       const key = e.itemData.ID;
       const values = { Status: e.toData };
 
-      this.tasksStore.update(key, values).then(() => {
-        // eslint-disable-next-line vue/no-mutating-props
-        this.tasksStore.push([{
+      tasksStore.update(key, values).then(() => {
+        tasksStore.push([{
           type: 'update', key, data: values,
         }]);
       });
-    },
-  },
-};
+    };
 </script>

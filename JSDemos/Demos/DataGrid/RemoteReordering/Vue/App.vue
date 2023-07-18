@@ -39,14 +39,23 @@
     <DxColumn data-field="Subject"/>
   </DxDataGrid>
 </template>
-<script>
+<script setup lang="ts">
 import {
   DxDataGrid, DxColumn, DxLookup, DxScrolling, DxRowDragging, DxSorting,
 } from 'devextreme-vue/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 
-const url = 'https://js.devexpress.com/Demos/Mvc/api/RowReordering';
+function onReorder(e) {
+  e.promise = processReorder(e);
+};
+async function processReorder(e) {
+      const visibleRows = e.component.getVisibleRows();
+      const newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
 
+      await tasksStore.update(e.itemData.ID, { OrderIndex: newOrderIndex });
+      await e.component.refresh();
+    };
+const url = 'https://js.devexpress.com/Demos/Mvc/api/RowReordering';
 const tasksStore = createStore({
   key: 'ID',
   loadUrl: `${url}/Tasks`,
@@ -55,7 +64,6 @@ const tasksStore = createStore({
     ajaxOptions.xhrFields = { withCredentials: true };
   },
 });
-
 const employeesStore = createStore({
   key: 'ID',
   loadUrl: `${url}/Employees`,
@@ -63,34 +71,4 @@ const employeesStore = createStore({
     ajaxOptions.xhrFields = { withCredentials: true };
   },
 });
-
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxLookup,
-    DxScrolling,
-    DxRowDragging,
-    DxSorting,
-  },
-  data() {
-    return {
-      tasksStore,
-      employeesStore,
-    };
-  },
-  methods: {
-    onReorder(e) {
-      e.promise = this.processReorder(e);
-    },
-
-    async processReorder(e) {
-      const visibleRows = e.component.getVisibleRows();
-      const newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
-
-      await tasksStore.update(e.itemData.ID, { OrderIndex: newOrderIndex });
-      await e.component.refresh();
-    },
-  },
-};
 </script>

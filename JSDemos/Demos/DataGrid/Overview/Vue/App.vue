@@ -66,8 +66,8 @@
     </template>
   </DxDataGrid>
 </template>
-<script>
-
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxDataGrid,
   DxColumn,
@@ -77,47 +77,28 @@ import {
   DxPaging,
   DxSearchPanel,
 } from 'devextreme-vue/data-grid';
-
 import DataSource from 'devextreme/data/data_source';
 import 'devextreme/data/odata/store';
-
 import DiscountCell from './DiscountCell.vue';
 
 let collapsed = false;
-
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxGrouping,
-    DxGroupPanel,
-    DxPager,
-    DxPaging,
-    DxSearchPanel,
-    DiscountCell,
+const dataSource = ref(new DataSource({
+  store: {
+    type: 'odata',
+    url: 'https://js.devexpress.com/Demos/SalesViewer/odata/DaySaleDtoes',
+    key: 'Id',
+    beforeSend(request) {
+      const year = new Date().getFullYear() - 1;
+      request.params.startDate = `${year}-05-10`;
+      request.params.endDate = `${year}-5-15`;
+    },
   },
-  data() {
-    return {
-      dataSource: new DataSource({
-        store: {
-          type: 'odata',
-          url: 'https://js.devexpress.com/Demos/SalesViewer/odata/DaySaleDtoes',
-          key: 'Id',
-          beforeSend(request) {
-            const year = new Date().getFullYear() - 1;
-            request.params.startDate = `${year}-05-10`;
-            request.params.endDate = `${year}-5-15`;
-          },
-        },
-      }),
-      pageSizes: [10, 25, 50, 100],
-      onContentReady(e) {
-        if (!collapsed) {
-          e.component.expandRow(['EnviroCare']);
-          collapsed = true;
-        }
-      },
-    };
-  },
-};
+}));
+const pageSizes = ref([10, 25, 50, 100]);
+const onContentReady = ref((e) => {
+  if (!collapsed) {
+    e.component.expandRow(['EnviroCare']);
+    collapsed = true;
+  }
+});
 </script>

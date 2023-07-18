@@ -12,12 +12,11 @@
     />
   </div>
 </template>
-<script>
+<script setup lang="ts">
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 import Grid from './Grid.vue';
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DnDBetweenGrids';
-
 const tasksStore = AspNetData.createStore({
   key: 'ID',
   loadUrl: `${url}/Tasks`,
@@ -26,17 +25,6 @@ const tasksStore = AspNetData.createStore({
     ajaxOptions.xhrFields = { withCredentials: true };
   },
 });
-
-export default {
-  components: {
-    Grid,
-  },
-  data() {
-    return {
-      tasksStore,
-    };
-  },
-};
 </script>
 
 <style scoped>

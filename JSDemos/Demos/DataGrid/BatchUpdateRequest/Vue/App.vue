@@ -28,13 +28,12 @@
     <DxColumn data-field="Freight"/>
   </DxDataGrid>
 </template>
-<script>
+<script setup lang="ts">
 import { DxDataGrid, DxColumn, DxEditing } from 'devextreme-vue/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 import 'whatwg-fetch';
 
 const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridBatchUpdateWebApi';
-
 const ordersStore = createStore({
   key: 'OrderID',
   loadUrl: `${URL}/Orders`,
@@ -42,6 +41,14 @@ const ordersStore = createStore({
     ajaxOptions.xhrFields = { withCredentials: true };
   },
 });
+
+function onSaving(e) {
+  e.cancel = true;
+
+  if (e.changes.length) {
+    e.promise = processBatchRequest(`${URL}/Batch`, e.changes, e.component);
+  }
+}
 
 async function sendBatchRequest(url, changes) {
   const result = await fetch(url, {
@@ -65,28 +72,6 @@ async function processBatchRequest(url, changes, component) {
   await component.refresh(true);
   component.cancelEditData();
 }
-
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxEditing,
-  },
-  data() {
-    return {
-      ordersStore,
-    };
-  },
-  methods: {
-    onSaving(e) {
-      e.cancel = true;
-
-      if (e.changes.length) {
-        e.promise = processBatchRequest(`${URL}/Batch`, e.changes, e.component);
-      }
-    },
-  },
-};
 </script>
 <style scoped>
 #gridContainer {

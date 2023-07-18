@@ -1,6 +1,6 @@
 <template>
   <DxDropDownBox
-    :ref="dropDownBoxRefName"
+    :ref="dropDownBoxRef"
     :drop-down-options="dropDownOptions"
     :input-attr="{ 'aria-label': 'Owner' }"
     :data-source="dataSource"
@@ -34,8 +34,8 @@
     </template>
   </DxDropDownBox>
 </template>
-<script>
-
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxDataGrid,
   DxPaging,
@@ -45,46 +45,25 @@ import {
 } from 'devextreme-vue/data-grid';
 import DxDropDownBox from 'devextreme-vue/drop-down-box';
 
-const dropDownBoxRefName = 'dropDownBoxRef';
+const props = withDefaults(defineProps<{
+  value?: number
+  onValueChanged?: Function
+  dataSource?: object
+}>(), {
+  value: null,
+  onValueChanged: () => function() {},
+  dataSource: () => {},
+});
 
-export default {
-  components: {
-    DxDataGrid,
-    DxPaging,
-    DxSelection,
-    DxScrolling,
-    DxColumn,
-    DxDropDownBox,
-  },
-  props: {
-    value: {
-      type: Number,
-      default: null,
-    },
-    onValueChanged: {
-      type: Function,
-      default: () => function() {},
-    },
-    dataSource: {
-      type: Object,
-      default: () => {},
-    },
-  },
-  data() {
-    return {
-      currentValue: this.value,
-      dropDownOptions: { width: 500 },
-      dropDownBoxRefName,
-    };
-  },
-  methods: {
-    onSelectionChanged(selectionChangedArgs) {
-      this.currentValue = selectionChangedArgs.selectedRowKeys[0];
-      this.onValueChanged(this.currentValue);
-      if (selectionChangedArgs.selectedRowKeys.length > 0) {
-        this.$refs[dropDownBoxRefName].instance.close();
-      }
-    },
-  },
+const currentValue = ref(props.value);
+const dropDownBoxRef = ref(null);
+const dropDownOptions = { width: 500 };
+
+function onSelectionChanged(selectionChangedArgs) {
+  currentValue.value = selectionChangedArgs.selectedRowKeys[0];
+  props.onValueChanged(currentValue.value);
+  if (selectionChangedArgs.selectedRowKeys.length > 0) {
+    dropDownBoxRef.value?.instance.close();
+  }
 };
 </script>

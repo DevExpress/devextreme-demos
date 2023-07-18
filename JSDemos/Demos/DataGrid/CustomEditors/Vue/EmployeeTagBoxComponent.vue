@@ -14,39 +14,25 @@
     apply-value-mode="useButtons"
   />
 </template>
-<script>
-
+<script setup lang="ts">
+import { ref } from 'vue';
 import DxTagBox from 'devextreme-vue/tag-box';
 
-export default {
-  components: { DxTagBox },
-  props: {
-    value: {
-      type: Array,
-      default: () => [],
-    },
-    onValueChanged: {
-      type: Function,
-      default: () => function() {},
-    },
-    dataSource: {
-      type: Object,
-      default: () => {},
-    },
-    dataGridComponent: {
-      type: Object,
-      default: () => {},
-    },
-  },
-  data() {
-    return {
-      currentValue: this.value,
-    };
-  },
-  methods: {
-    onSelectionChanged() {
-      this.dataGridComponent.updateDimensions();
-    },
-  },
+const props = withDefaults(defineProps<{
+  value?: any[]
+  onValueChanged?: Function
+  dataSource?: object
+  dataGridComponent?: object
+}>(), {
+  value: () => [],
+  onValueChanged: () => function() {},
+  dataSource: () => {},
+  dataGridComponent: () => {},
+});
+
+const currentValue = ref(props.value);
+
+function onSelectionChanged() {
+  props.dataGridComponent.updateDimensions();
 };
 </script>

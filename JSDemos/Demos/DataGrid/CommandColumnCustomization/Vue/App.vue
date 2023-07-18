@@ -60,7 +60,8 @@
     </DxDataGrid>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxDataGrid,
   DxColumn,
@@ -69,58 +70,48 @@ import {
   DxPaging,
   DxLookup,
 } from 'devextreme-vue/data-grid';
-
 import service from './data.js';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxEditing,
-    DxButton,
-    DxPaging,
-    DxLookup,
-  },
-  data() {
-    return {
-      employees: service.getEmployees(),
-      states: service.getStates(),
-    };
-  },
-  methods: {
-    isChief(position) {
-      return position && ['CEO', 'CMO'].indexOf(position.trim().toUpperCase()) >= 0;
-    },
-    isCloneIconVisible(e) {
-      return !e.row.isEditing;
-    },
-    isCloneIconDisabled(e) {
-      return this.isChief(e.row.data.Position);
-    },
-    cloneIconClick(e) {
-      const employees = [...this.employees];
-      const clonedItem = { ...e.row.data, ID: service.getMaxID() };
+const employees = ref(service.getEmployees());
+const states = service.getStates();
 
-      employees.splice(e.row.rowIndex, 0, clonedItem);
-      this.employees = employees;
-      e.event.preventDefault();
-    },
-    rowValidating(e) {
-      const position = e.newData.Position;
+function isChief(position) {
+  return position && ['CEO', 'CMO'].indexOf(position.trim().toUpperCase()) >= 0;
+}
 
-      if (this.isChief(position)) {
-        e.errorText = `The company can have only one ${position.toUpperCase()}. Please choose another position.`;
-        e.isValid = false;
-      }
-    },
-    editorPreparing(e) {
-      if (e.parentType === 'dataRow' && e.dataField === 'Position') {
-        e.editorOptions.readOnly = this.isChief(e.value);
-      }
-    },
-    allowDeleting(e) {
-      return !this.isChief(e.row.data.Position);
-    },
-  },
-};
+function isCloneIconVisible(e) {
+  return !e.row.isEditing;
+}
+
+function isCloneIconDisabled(e) {
+  return isChief(e.row.data.Position);
+}
+
+function cloneIconClick(e) {
+  const updatedEmployees = [...employees.value];
+  const clonedItem = { ...e.row.data, ID: service.getMaxID() };
+
+  updatedEmployees.splice(e.row.rowIndex, 0, clonedItem);
+  employees.value = updatedEmployees;
+  e.event.preventDefault();
+}
+
+function rowValidating(e) {
+  const position = e.newData.Position;
+
+  if (isChief(position)) {
+    e.errorText = `The company can have only one ${position.toUpperCase()}. Please choose another position.`;
+    e.isValid = false;
+  }
+}
+
+function editorPreparing(e) {
+  if (e.parentType === 'dataRow' && e.dataField === 'Position') {
+    e.editorOptions.readOnly = isChief(e.value);
+  }
+}
+
+function allowDeleting(e) {
+  return !isChief(e.row.data.Position);
+}
 </script>

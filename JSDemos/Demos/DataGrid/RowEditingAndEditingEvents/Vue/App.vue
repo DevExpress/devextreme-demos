@@ -44,7 +44,7 @@
         caption="State"
       >
         <DxLookup
-          :data-source="states"
+          :data-source="statesRef"
           display-expr="Name"
           value-expr="ID"
         />
@@ -76,37 +76,23 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import DxButton from 'devextreme-vue/button';
 import {
   DxDataGrid, DxColumn, DxEditing, DxPaging, DxLookup,
 } from 'devextreme-vue/data-grid';
 import { employees, states } from './data.js';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxEditing,
-    DxPaging,
-    DxButton,
-    DxLookup,
-  },
-  data() {
-    return {
-      events: [],
-      dataSource: employees,
-      states,
-    };
-  },
-  methods: {
-    logEvent(eventName) {
-      this.events.unshift(eventName);
-    },
-    clearEvents() {
-      this.events = [];
-    },
-  },
+const events = ref([]);
+const dataSource = ref(employees);
+const statesRef = ref(states);
+
+function logEvent(eventName) {
+  events.value.unshift(eventName);
+};
+function clearEvents() {
+  events.value = [];
 };
 </script>
 <style>

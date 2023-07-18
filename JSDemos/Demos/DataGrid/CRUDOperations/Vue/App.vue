@@ -82,7 +82,8 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxDataGrid,
   DxColumn,
@@ -94,100 +95,82 @@ import {
 } from 'devextreme-vue/data-grid';
 import { DxButton } from 'devextreme-vue/button';
 import { DxSelectBox } from 'devextreme-vue/select-box';
-
 import CustomStore from 'devextreme/data/custom_store';
 import { formatDate } from 'devextreme/localization';
 import 'whatwg-fetch';
 
 const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
+const ordersData = new CustomStore({
+  key: 'OrderID',
+  load: () => sendRequest(`${URL}/Orders`),
+  insert: (values) => sendRequest(`${URL}/InsertOrder`, 'POST', {
+    values: JSON.stringify(values),
+  }),
+  update: (key, values) => sendRequest(`${URL}/UpdateOrder`, 'PUT', {
+    key,
+    values: JSON.stringify(values),
+  }),
+  remove: (key) => sendRequest(`${URL}/DeleteOrder`, 'DELETE', {
+    key,
+  }),
+});
+const customersData = new CustomStore({
+  key: 'Value',
+  loadMode: 'raw',
+  load: () => sendRequest(`${URL}/CustomersLookup`),
+});
+const shippersData = new CustomStore({
+  key: 'Value',
+  loadMode: 'raw',
+  load: () => sendRequest(`${URL}/ShippersLookup`),
+});
+const requests = ref([]);
+const refreshMode = ref('reshape');
+const refreshModes = ref(['full', 'reshape', 'repaint']);
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxEditing,
-    DxScrolling,
-    DxSummary,
-    DxLookup,
-    DxTotalItem,
-    DxButton,
-    DxSelectBox,
-  },
-  data() {
-    return {
-      ordersData: new CustomStore({
-        key: 'OrderID',
-        load: () => this.sendRequest(`${URL}/Orders`),
-        insert: (values) => this.sendRequest(`${URL}/InsertOrder`, 'POST', {
-          values: JSON.stringify(values),
-        }),
-        update: (key, values) => this.sendRequest(`${URL}/UpdateOrder`, 'PUT', {
-          key,
-          values: JSON.stringify(values),
-        }),
-        remove: (key) => this.sendRequest(`${URL}/DeleteOrder`, 'DELETE', {
-          key,
-        }),
-      }),
-      customersData: new CustomStore({
-        key: 'Value',
-        loadMode: 'raw',
-        load: () => this.sendRequest(`${URL}/CustomersLookup`),
-      }),
-      shippersData: new CustomStore({
-        key: 'Value',
-        loadMode: 'raw',
-        load: () => this.sendRequest(`${URL}/ShippersLookup`),
-      }),
-      requests: [],
-      refreshMode: 'reshape',
-      refreshModes: ['full', 'reshape', 'repaint'],
-    };
-  },
-  methods: {
-    sendRequest(url, method = 'GET', data = {}) {
-      this.logRequest(method, url, data);
+function sendRequest(url, method = 'GET', data = {}) {
+  logRequest(method, url, data);
 
-      const params = Object.keys(data).map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`).join('&');
+  const params = Object.keys(data).map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`).join('&');
 
-      if (method === 'GET') {
-        return fetch(url, {
-          method,
-          credentials: 'include',
-        }).then((result) => result.json().then((json) => {
-          if (result.ok) return json.data;
-          throw json.Message;
-        }));
-      }
+  if (method === 'GET') {
+    return fetch(url, {
+      method,
+      credentials: 'include',
+    }).then((result) => result.json().then((json) => {
+      if (result.ok) return json.data;
+      throw json.Message;
+    }));
+  }
 
-      return fetch(url, {
-        method,
-        body: params,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-        },
-        credentials: 'include',
-      }).then((result) => {
-        if (result.ok) {
-          return result.text().then((text) => text && JSON.parse(text));
-        }
-        return result.json().then((json) => {
-          throw json.Message;
-        });
-      });
+  return fetch(url, {
+    method,
+    body: params,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
     },
-    logRequest(method, url, data) {
-      const args = Object.keys(data || {}).map((key) => `${key}=${data[key]}`).join(' ');
+    credentials: 'include',
+  }).then((result) => {
+    if (result.ok) {
+      return result.text().then((text) => text && JSON.parse(text));
+    }
+    return result.json().then((json) => {
+      throw json.Message;
+    });
+  });
+}
 
-      const time = formatDate(new Date(), 'HH:mm:ss');
+function logRequest(method, url, data) {
+  const args = Object.keys(data || {}).map((key) => `${key}=${data[key]}`).join(' ');
 
-      this.requests.unshift([time, method, url.slice(URL.length), args].join(' '));
-    },
-    clearRequests() {
-      this.requests = [];
-    },
-  },
-};
+  const time = formatDate(new Date(), 'HH:mm:ss');
+
+  requests.value.unshift([time, method, url.slice(URL.length), args].join(' '));
+}
+
+function clearRequests() {
+  requests.value = [];
+}
 </script>
 <style scoped>
 #grid {

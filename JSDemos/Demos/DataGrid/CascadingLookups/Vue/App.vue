@@ -44,7 +44,7 @@
     </DxDataGrid>
   </div>
 </template>
-<script>
+<script setup lang="ts">
 import {
   DxDataGrid, DxColumn, DxEditing, DxLookup,
 } from 'devextreme-vue/data-grid';
@@ -54,35 +54,23 @@ const employees = service.getEmployees();
 const states = service.getStates();
 const cities = service.getCities();
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxEditing,
-    DxLookup,
-  },
-  data() {
-    return {
-      employees,
-      states,
-      setStateValue(rowData, value) {
-        rowData.CityID = null;
-        this.defaultSetCellValue(rowData, value);
-      },
-    };
-  },
-  methods: {
-    getFilteredCities: (options) => ({
-      store: cities,
-      filter: options.data ? ['StateID', '=', options.data.StateID] : null,
-    }),
-    onEditorPreparing(e) {
-      if (e.parentType === 'dataRow' && e.dataField === 'CityID') {
-        e.editorOptions.disabled = (typeof e.row.data.StateID !== 'number');
-      }
-    },
-  },
-};
+function setStateValue(rowData, value) {
+  rowData.CityID = null;
+  this.defaultSetCellValue(rowData, value);
+}
+
+function getFilteredCities(options) {
+  return {
+    store: cities,
+    filter: options.data ? ['StateID', '=', options.data.StateID] : null,
+  };
+}
+
+function onEditorPreparing(e) {
+  if (e.parentType === 'dataRow' && e.dataField === 'CityID') {
+    e.editorOptions.disabled = (typeof e.row.data.StateID !== 'number');
+  }
+}
 </script>
 <style>
 #data-grid-demo {

@@ -58,11 +58,10 @@
     </DxDataGrid>
   </div>
 </template>
-<script>
+<script setup lang="ts">
 import {
   DxDataGrid,
   DxColumn,
-  DxExport,
   DxEditing,
   DxGrouping,
   DxGroupPanel,
@@ -72,24 +71,7 @@ import {
 } from 'devextreme-vue/data-grid';
 import service from './data.js';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxExport,
-    DxEditing,
-    DxGrouping,
-    DxGroupPanel,
-    DxPager,
-    DxPaging,
-    DxColumnChooser,
-  },
-  data() {
-    return {
-      dataSource: service.getOrders(),
-    };
-  },
-};
+const dataSource = service.getOrders();
 </script>
 <style scoped>
 #gridContainer {

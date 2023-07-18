@@ -24,26 +24,17 @@
   </DxForm>
 </template>
 
-<script>
-
+<script setup lang="ts">
+import { ref } from 'vue';
 import { DxForm, DxItem, DxLabel } from 'devextreme-vue/form';
 import ProductSelectBox from './ProductSelectBox.vue';
 import OrderHistory from './OrderHistory.vue';
 
-export default {
-  components: {
-    DxForm, DxItem, DxLabel, ProductSelectBox, OrderHistory,
-  },
-  props: {
-    supplierId: {
-      type: Number,
-      default: null,
-    },
-  },
-  data() {
-    return {
-      chosenProductId: null,
-    };
-  },
-};
+withDefaults(defineProps<{
+  supplierId?: number
+}>(), {
+  supplierId: null,
+});
+
+const chosenProductId = ref(null);
 </script>

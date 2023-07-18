@@ -16,7 +16,7 @@
           <DxDataGrid
             id="priceDataGrid"
             width="100%"
-            :ref="priceGridRefKey"
+            ref="priceGridRef"
             :data-source="priceDataSource"
             :show-borders="true"
             :row-alternation-enabled="true"
@@ -50,7 +50,7 @@
           <DxDataGrid
             id="ratingDataGrid"
             width="100%"
-            :ref="ratingGridRefKey"
+            ref="ratingGridRef"
             :data-source="ratingDataSource"
             :show-borders="true"
             :row-alternation-enabled="true"
@@ -78,8 +78,8 @@
     </DxTabPanel>
   </div>
 </template>
-<script>
-
+<script setup lang="ts">
+import { ref } from 'vue';
 import DxButton from 'devextreme-vue/button';
 import DxTabPanel, { DxItem } from 'devextreme-vue/tab-panel';
 import { DxDataGrid, DxColumn } from 'devextreme-vue/data-grid';
@@ -87,80 +87,56 @@ import { exportDataGrid } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
 import 'devextreme/data/odata/store';
 
-const priceGridRefKey = 'priceDataGrid';
-const ratingGridRefKey = 'ratingDataGrid';
+const priceGridRef = ref(null);
+const ratingGridRef = ref(null);
+const priceDataSource = ref({
+  store: {
+    type: 'odata',
+    url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
+    key: 'Product_ID',
+  },
+  select: ['Product_ID', 'Product_Name', 'Product_Sale_Price', 'Product_Retail_Price'],
+  filter: ['Product_ID', '<', 10],
+});
+const ratingDataSource = ref({
+  store: {
+    type: 'odata',
+    url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
+    key: 'Product_ID',
+  },
+  select: ['Product_ID', 'Product_Name', 'Product_Consumer_Rating', 'Product_Category'],
+  filter: ['Product_ID', '<', 10],
+});
 
-export default {
-  components: {
-    DxButton,
-    DxTabPanel,
-    DxItem,
-    DxDataGrid,
-    DxColumn,
-  },
-  data() {
-    return {
-      priceGridRefKey,
-      ratingGridRefKey,
-      priceDataSource: {
-        store: {
-          type: 'odata',
-          url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
-          key: 'Product_ID',
-        },
-        select: ['Product_ID', 'Product_Name', 'Product_Sale_Price', 'Product_Retail_Price'],
-        filter: ['Product_ID', '<', 10],
-      },
-      ratingDataSource: {
-        store: {
-          type: 'odata',
-          url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
-          key: 'Product_ID',
-        },
-        select: ['Product_ID', 'Product_Name', 'Product_Consumer_Rating', 'Product_Category'],
-        filter: ['Product_ID', '<', 10],
-      },
-    };
-  },
-  computed: {
-    priceGridInstance() {
-      return this.$refs[priceGridRefKey].instance;
-    },
-    ratingGridInstance() {
-      return this.$refs[ratingGridRefKey].instance;
-    },
-  },
-  methods: {
-    exportGrids() {
-      const context = this;
-      // eslint-disable-next-line new-cap
-      const doc = new jsPDF();
+function exportGrids() {
+  const priceGrid = priceGridRef.value?.instance;
+  const ratingGrid = ratingGridRef.value?.instance;
+  // eslint-disable-next-line new-cap
+  const doc = new jsPDF();
 
-      exportDataGrid({
-        jsPDFDocument: doc,
-        component: context.priceGridInstance,
-        topLeft: { x: 7, y: 5 },
-        columnWidths: [20, 50, 50, 50],
-        customizeCell: ({ gridCell, pdfCell }) => {
-          setAlternatingRowsBackground(context.priceGridInstance, gridCell, pdfCell);
-        },
-      }).then(() => {
-        doc.addPage();
-        exportDataGrid({
-          jsPDFDocument: doc,
-          component: context.ratingGridInstance,
-          topLeft: { x: 7, y: 5 },
-          columnWidths: [20, 50, 50, 50],
-          customizeCell: ({ gridCell, pdfCell }) => {
-            setAlternatingRowsBackground(context.ratingGridInstance, gridCell, pdfCell);
-          },
-        }).then(() => {
-          doc.save('MultipleGrids.pdf');
-        });
-      });
+  exportDataGrid({
+    jsPDFDocument: doc,
+    component: priceGrid,
+    topLeft: { x: 7, y: 5 },
+    columnWidths: [20, 50, 50, 50],
+    customizeCell: ({ gridCell, pdfCell }) => {
+      setAlternatingRowsBackground(priceGrid, gridCell, pdfCell);
     },
-  },
-};
+  }).then(() => {
+    doc.addPage();
+    exportDataGrid({
+      jsPDFDocument: doc,
+      component: ratingGrid,
+      topLeft: { x: 7, y: 5 },
+      columnWidths: [20, 50, 50, 50],
+      customizeCell: ({ gridCell, pdfCell }) => {
+        setAlternatingRowsBackground(ratingGrid, gridCell, pdfCell);
+      },
+    }).then(() => {
+      doc.save('MultipleGrids.pdf');
+    });
+  });
+}
 
 function setAlternatingRowsBackground(dataGrid, gridCell, pdfCell) {
   if (gridCell.rowType === 'data') {

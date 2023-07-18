@@ -137,7 +137,8 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxDataGrid,
   DxColumn,
@@ -151,50 +152,32 @@ import {
   productsStore, ordersStore, getOrderCount, addOrder,
 } from './data.js';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxSummary,
-    DxTotalItem,
-    DxMasterDetail,
-    DxPaging,
-    DxSlider,
-    DxTooltip,
-  },
-  data() {
-    return {
-      updatesPerSecond: 100,
-      dataGridRefName: 'dataGrid',
-      productsDataSource: {
-        store: productsStore,
-        reshapeOnPush: true,
-      },
-    };
-  },
-  created() {
-    setInterval(() => {
+setInterval(() => {
       if (getOrderCount() > 500000) {
         return;
       }
 
-      for (let i = 0; i < this.updatesPerSecond / 20; i += 1) {
+      for (let i = 0; i < updatesPerSecond.value / 20; i += 1) {
         addOrder();
       }
     }, 50);
-  },
-  methods: {
-    getDetailGridDataSource(product) {
-      return {
-        store: ordersStore,
-        reshapeOnPush: true,
-        filter: ['ProductID', '=', product.ProductID],
-      };
-    },
-    getAmount(order) {
-      return order.UnitPrice * order.Quantity;
-    },
-  },
+
+const updatesPerSecond = ref(100);
+const dataGridRefName = ref('dataGrid');
+const productsDataSource = ref({
+  store: productsStore,
+  reshapeOnPush: true,
+});
+
+function getDetailGridDataSource(product) {
+  return {
+    store: ordersStore,
+    reshapeOnPush: true,
+    filter: ['ProductID', '=', product.ProductID],
+  };
+};
+function getAmount(order) {
+  return order.UnitPrice * order.Quantity;
 };
 </script>
 <style scoped>

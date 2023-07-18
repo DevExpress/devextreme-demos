@@ -1,7 +1,7 @@
 <template>
   <DxDataGrid
     id="gridContainer"
-    :ref="gridRefName"
+    ref="gridRef"
     :data-source="orders"
     key-expr="ID"
     :show-borders="true"
@@ -82,7 +82,8 @@
     </template>
   </DxDataGrid>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxDataGrid,
   DxColumn,
@@ -97,55 +98,37 @@ import { DxButton } from 'devextreme-vue/button';
 import query from 'devextreme/data/query';
 import service from './data.js';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxGrouping,
-    DxColumnChooser,
-    DxLoadPanel,
-    DxToolbar,
-    DxItem,
-    DxSelectBox,
-    DxButton,
-  },
-  data() {
-    return {
-      orders: service.getOrders(),
-      gridRefName: 'dataGrid',
-      expanded: true,
-      totalCount: 0,
-      groupingValues: [{
-        value: 'CustomerStoreState',
-        text: 'Grouping by State',
-      }, {
-        value: 'Employee',
-        text: 'Grouping by Employee',
-      }],
-    };
-  },
-  created() {
-    this.totalCount = this.getGroupCount('CustomerStoreState');
-  },
-  methods: {
-    getGroupCount(groupField) {
-      return query(this.orders)
-        .groupBy(groupField)
-        .toArray().length;
-    },
-    groupChanged(e) {
-      this.$refs[this.gridRefName].instance.clearGrouping();
-      this.$refs[this.gridRefName].instance.columnOption(e.value, 'groupIndex', 0);
-      this.totalCount = this.getGroupCount(e.value);
-    },
-    collapseAllClick() {
-      this.expanded = !this.expanded;
-    },
-    refreshDataGrid() {
-      this.$refs[this.gridRefName].instance.refresh();
-    },
-  },
-};
+const orders = service.getOrders();
+const gridRef = ref(null);
+const expanded = ref(true);
+const totalCount = ref(getGroupCount('CustomerStoreState'));
+const groupingValues = ref([{
+  value: 'CustomerStoreState',
+  text: 'Grouping by State',
+}, {
+  value: 'Employee',
+  text: 'Grouping by Employee',
+}]);
+
+function getGroupCount(groupField) {
+  return query(orders)
+    .groupBy(groupField)
+    .toArray().length;
+}
+
+function groupChanged(e) {
+  gridRef.value.instance.clearGrouping();
+  gridRef.value.instance.columnOption(e.value, 'groupIndex', 0);
+  totalCount.value = getGroupCount(e.value);
+}
+
+function collapseAllClick() {
+  expanded.value = !expanded.value;
+}
+
+function refreshDataGrid() {
+  gridRef.value.instance.refresh();
+}
 </script>
 <style scoped>
 
