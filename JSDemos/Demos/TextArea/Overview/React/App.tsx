@@ -3,7 +3,7 @@ import CheckBox from 'devextreme-react/check-box';
 import SelectBox from 'devextreme-react/select-box';
 import TextArea from 'devextreme-react/text-area';
 
-import service from './data.js';
+import service from './data.ts';
 
 const { valueChangeEvents } = service;
 const notesLabel = { 'aria-label': 'Notes' };

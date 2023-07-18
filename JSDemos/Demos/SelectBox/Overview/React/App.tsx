@@ -3,9 +3,9 @@ import SelectBox from 'devextreme-react/select-box';
 import ArrayStore from 'devextreme/data/array_store';
 import notify from 'devextreme/ui/notify';
 
-import service from './data.js';
-import Field from './Field.js';
-import Item from './Item.js';
+import service from './data.ts';
+import Field from './Field.tsx';
+import Item from './Item.tsx';
 
 const simpleProductLabel = { 'aria-label': 'Simple Product' };
 const productIDLabel = { 'aria-label': 'Product ID' };

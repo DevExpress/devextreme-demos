@@ -3,7 +3,7 @@ import OData from 'devextreme/data/odata/store';
 import { Autocomplete } from 'devextreme-react/autocomplete';
 import CustomStore from 'devextreme/data/custom_store';
 import 'whatwg-fetch';
-import { names, surnames, positions } from './data.js';
+import { names, surnames, positions } from './data.ts';
 
 function isNotEmpty(value: string) {
   return value !== undefined && value !== null && value !== '';

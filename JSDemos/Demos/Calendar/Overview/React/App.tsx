@@ -3,7 +3,7 @@ import CheckBox from 'devextreme-react/check-box';
 import SelectBox from 'devextreme-react/select-box';
 import DateBox from 'devextreme-react/date-box';
 import Calendar from 'devextreme-react/calendar';
-import CustomCell, { isWeekend } from './CustomCell.js';
+import CustomCell, { isWeekend } from './CustomCell.tsx';
 
 const zoomLevels = ['month', 'year', 'decade', 'century'];
 const weekNumberRules = ['auto', 'firstDay', 'firstFourDays', 'fullWeek'];

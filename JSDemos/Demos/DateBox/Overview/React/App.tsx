@@ -1,7 +1,7 @@
 import React from 'react';
 import DateBox from 'devextreme-react/date-box';
 
-import service from './data.js';
+import service from './data.ts';
 
 const dateTimeLabel = { 'aria-label': 'Date Time' };
 const dateLabel = { 'aria-label': 'Date' };

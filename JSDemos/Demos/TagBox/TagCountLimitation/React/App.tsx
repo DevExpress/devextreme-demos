@@ -1,6 +1,6 @@
 import React from 'react';
 import { TagBox } from 'devextreme-react/tag-box';
-import { products, productLabel } from './data.js';
+import { products, productLabel } from './data.ts';
 
 const defaultValues = {
   severalItems: [1, 2, 3, 4],

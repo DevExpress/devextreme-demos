@@ -4,11 +4,11 @@ import SelectBox from 'devextreme-react/select-box';
 import { Template } from 'devextreme-react/core/template';
 import {
   products, simpleProducts, simpleProductLabel, deferredProductLabel, productLabel,
-} from './data.js';
-import ImageIcon from './imageIcon.js';
-import IndicatorIcon from './indicatorIcon.js';
-import ConditionalIcon from './conditionalIcon.js';
-import Item from './item.js';
+} from './data.ts';
+import ImageIcon from './imageIcon.tsx';
+import IndicatorIcon from './indicatorIcon.tsx';
+import ConditionalIcon from './conditionalIcon.tsx';
+import Item from './item.tsx';
 
 function App() {
   const [selectedItem, setSelectedItem] = React.useState(products[0]);

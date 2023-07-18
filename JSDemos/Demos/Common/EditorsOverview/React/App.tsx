@@ -6,7 +6,7 @@ import SelectBox from 'devextreme-react/select-box';
 import Switch from 'devextreme-react/switch';
 import TextBox from 'devextreme-react/text-box';
 
-import Logo from './Logo.js';
+import Logo from './Logo.tsx';
 
 const colorLabel = { 'aria-label': 'Color' };
 const widthLabel = { 'aria-label': 'Width' };

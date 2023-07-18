@@ -7,7 +7,7 @@ import DataSource from 'devextreme/data/data_source';
 import {
   simpleProducts, products, searchTimeoutLabel, minimumSearchLengthLabel,
   searchExpressionLabel, searchModeLabel, productLabel, simpleProductLabel,
-} from './data.js';
+} from './data.ts';
 
 const searchModeItems = ['contains', 'startswith'];
 const searchExprItems = [{

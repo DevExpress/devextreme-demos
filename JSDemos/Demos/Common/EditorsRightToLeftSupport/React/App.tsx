@@ -10,7 +10,7 @@ import { TagBox } from 'devextreme-react/tag-box';
 import {
   europeanUnion, numberBoxLabel, notesLabel, nameLabel, textBoxLabel,
   europeanUnionDataLabel, languageLabel, autocompleteLabel,
-} from './data.js';
+} from './data.ts';
 
 const languages = [
   'Arabic: Right-to-Left direction',

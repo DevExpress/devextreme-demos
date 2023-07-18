@@ -20,7 +20,7 @@ import notify from 'devextreme/ui/notify';
 import {
   countries, nameLabel, passwordLabel, emailLabel,
   maskLabel, dateLabel, cityLabel, addressLabel, countryLabel,
-} from './data.js';
+} from './data.ts';
 
 const cityPattern = '^[^0-9]+$';
 const namePattern = /^[^0-9]+$/;

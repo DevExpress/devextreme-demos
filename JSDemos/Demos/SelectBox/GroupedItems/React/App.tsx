@@ -1,12 +1,12 @@
 import React from 'react';
 import { SelectBox } from 'devextreme-react/select-box';
 import DataSource from 'devextreme/data/data_source';
-import Group from './Group.js';
+import Group from './Group.tsx';
 
 import {
   ungroupedData, pregroupedData, ungroupedDataLabel,
   pregroupedDataLabel, templatedUngroupedDataLabel,
-} from './data.js';
+} from './data.ts';
 
 const fromUngroupedData = new DataSource({
   store: {

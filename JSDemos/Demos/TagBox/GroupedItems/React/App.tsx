@@ -1,9 +1,9 @@
 import React from 'react';
 import { TagBox } from 'devextreme-react/tag-box';
 import DataSource from 'devextreme/data/data_source';
-import Group from './Group.js';
+import Group from './Group.tsx';
 
-import productsData from './data.js';
+import productsData from './data.ts';
 
 const defaultValues = {
   grouped: [17, 19],

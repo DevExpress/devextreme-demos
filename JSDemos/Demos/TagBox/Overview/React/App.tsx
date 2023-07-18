@@ -4,9 +4,9 @@ import TagBox from 'devextreme-react/tag-box';
 import Popover from 'devextreme-react/popover';
 import ArrayStore from 'devextreme/data/array_store';
 
-import Item from './Item.js';
-import Tag from './Tag.js';
-import { simpleProducts, products, productLabel } from './data.js';
+import Item from './Item.tsx';
+import Tag from './Tag.tsx';
+import { simpleProducts, products, productLabel } from './data.ts';
 
 const disabledValue = [simpleProducts[0]];
 const value = [1, 2];
