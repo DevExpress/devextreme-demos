@@ -25,7 +25,7 @@ const data = new ArrayStore({
 function App() {
   const [value, setValue] = React.useState(service.getSimpleProducts()[0]);
 
-  const onValueChanged = React.useCallback((e: { value: any; }) => {
+  const onValueChanged = React.useCallback((e: { value: any }) => {
     setValue(e.value);
     notify(`The value is changed to: "${e.value}"`);
   }, []);
@@ -42,51 +42,40 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">With a custom placeholder</div>
           <div className="dx-field-value">
-            <SelectBox items={simpleProducts}
-              placeholder="Choose Product"
-              inputAttr={productWithPlaceholderLabel}
-              showClearButton={true} />
+            <SelectBox items={simpleProducts} placeholder="Choose Product" inputAttr={productWithPlaceholderLabel} showClearButton={true} />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Read only</div>
           <div className="dx-field-value">
-            <SelectBox items={simpleProducts}
-              defaultValue={simpleProducts[0]}
-              inputAttr={readOnlyProductLabel}
-              readOnly={true} />
+            <SelectBox items={simpleProducts} defaultValue={simpleProducts[0]} inputAttr={readOnlyProductLabel} readOnly={true} />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Disabled</div>
           <div className="dx-field-value">
-            <SelectBox items={simpleProducts}
-              inputAttr={disabledProductLabel}
-              defaultValue={simpleProducts[0]}
-              disabled={true} />
+            <SelectBox items={simpleProducts} inputAttr={disabledProductLabel} defaultValue={simpleProducts[0]} disabled={true} />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Data source usage</div>
           <div className="dx-field-value">
-            <SelectBox dataSource={data}
-              displayExpr="Name"
-              inputAttr={productIDLabel}
-              valueExpr="ID"
-              defaultValue={products[0].ID} />
+            <SelectBox dataSource={data} displayExpr="Name" inputAttr={productIDLabel} valueExpr="ID" defaultValue={products[0].ID} />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Custom templates</div>
           <div className="dx-field-value">
-            <SelectBox id="custom-templates"
+            <SelectBox
+              id="custom-templates"
               dataSource={products}
               displayExpr="Name"
               inputAttr={templatedProductLabel}
               valueExpr="ID"
               defaultValue={products[3].ID}
               fieldRender={Field}
-              itemRender={Item} />
+              itemRender={Item}
+            />
           </div>
         </div>
       </div>
@@ -95,10 +84,7 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Product</div>
           <div className="dx-field-value">
-            <SelectBox items={simpleProducts}
-              value={value}
-              inputAttr={productLabel}
-              onValueChanged={onValueChanged} />
+            <SelectBox items={simpleProducts} value={value} inputAttr={productLabel} onValueChanged={onValueChanged} />
           </div>
         </div>
         <div className="current-value">

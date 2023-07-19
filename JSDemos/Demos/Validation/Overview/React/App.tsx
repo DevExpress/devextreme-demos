@@ -6,20 +6,12 @@ import DateBox from 'devextreme-react/date-box';
 import Button from 'devextreme-react/button';
 import ValidationSummary from 'devextreme-react/validation-summary';
 import {
-  Validator,
-  RequiredRule,
-  CompareRule,
-  EmailRule,
-  PatternRule,
-  StringLengthRule,
-  RangeRule,
-  AsyncRule,
+  Validator, RequiredRule, CompareRule, EmailRule, PatternRule, StringLengthRule, RangeRule, AsyncRule,
 } from 'devextreme-react/validator';
 
 import notify from 'devextreme/ui/notify';
 import {
-  countries, nameLabel, passwordLabel, emailLabel,
-  maskLabel, dateLabel, cityLabel, addressLabel, countryLabel,
+  countries, nameLabel, passwordLabel, emailLabel, maskLabel, dateLabel, cityLabel, addressLabel, countryLabel,
 } from './data.ts';
 
 const cityPattern = '^[^0-9]+$';
@@ -29,20 +21,24 @@ const phoneRules = {
   X: /[02-9]/,
 };
 const checkComparison = () => true;
-const onFormSubmit = (e: { preventDefault: () => void; }) => {
-  notify({
-    message: 'You have submitted the form',
-    position: {
-      my: 'center top',
-      at: 'center top',
+const onFormSubmit = (e: { preventDefault: () => void }) => {
+  notify(
+    {
+      message: 'You have submitted the form',
+      position: {
+        my: 'center top',
+        at: 'center top',
+      },
     },
-  }, 'success', 3000);
+    'success',
+    3000,
+  );
 
   e.preventDefault();
 };
 
 let validatorInstance;
-const onInit = (e: { component: any; }) => {
+const onInit = (e: { component: any }) => {
   validatorInstance = e.component;
 };
 
@@ -55,32 +51,41 @@ function App() {
   const [passwordMode, setPasswordMode] = React.useState('password');
   const [confirmPasswordMode, setConfirmPasswordMode] = React.useState('password');
 
-  const passwordButton = React.useMemo(() => ({
-    icon: '../../../../images/icons/eye.png',
-    type: 'default',
-    onClick: () => {
-      setPasswordMode(passwordMode === 'text' ? 'password' : 'text');
-    },
-  }), [passwordMode, setPasswordMode]);
+  const passwordButton = React.useMemo(
+    () => ({
+      icon: '../../../../images/icons/eye.png',
+      type: 'default',
+      onClick: () => {
+        setPasswordMode(passwordMode === 'text' ? 'password' : 'text');
+      },
+    }),
+    [passwordMode, setPasswordMode],
+  );
 
-  const confirmPasswordButton = React.useMemo(() => ({
-    icon: '../../../../images/icons/eye.png',
-    type: 'default',
-    onClick: () => {
-      setConfirmPasswordMode(confirmPasswordMode === 'text' ? 'password' : 'text');
-    },
-  }), [confirmPasswordMode, setConfirmPasswordMode]);
+  const confirmPasswordButton = React.useMemo(
+    () => ({
+      icon: '../../../../images/icons/eye.png',
+      type: 'default',
+      onClick: () => {
+        setConfirmPasswordMode(confirmPasswordMode === 'text' ? 'password' : 'text');
+      },
+    }),
+    [confirmPasswordMode, setConfirmPasswordMode],
+  );
 
   const passwordComparison = React.useCallback(() => password, [password]);
 
-  const onPasswordChanged = React.useCallback((e: { value: any; }) => {
-    setPassword(e.value);
-    if (confirmPassword) {
-      validatorInstance.validate();
-    }
-  }, [confirmPassword, setPassword, validatorInstance]);
+  const onPasswordChanged = React.useCallback(
+    (e: { value: any }) => {
+      setPassword(e.value);
+      if (confirmPassword) {
+        validatorInstance.validate();
+      }
+    },
+    [confirmPassword, setPassword, validatorInstance],
+  );
 
-  const onConfirmPasswordChanged = React.useCallback((e: { value: any; }) => {
+  const onConfirmPasswordChanged = React.useCallback((e: { value: any }) => {
     setConfirmPassword(e.value);
   }, []);
 
@@ -95,9 +100,7 @@ function App() {
               <Validator>
                 <RequiredRule message="Email is required" />
                 <EmailRule message="Email is invalid" />
-                <AsyncRule
-                  message="Email is already registered"
-                  validationCallback={asyncValidation} />
+                <AsyncRule message="Email is already registered" validationCallback={asyncValidation} />
               </Validator>
             </TextBox>
           </div>
@@ -105,16 +108,8 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Password</div>
           <div className="dx-field-value">
-            <TextBox
-              mode={passwordMode}
-              value={password}
-              inputAttr={passwordLabel}
-              onValueChanged={onPasswordChanged}>
-              <TextBoxButton
-                name="password"
-                location="after"
-                options={passwordButton}
-              />
+            <TextBox mode={passwordMode} value={password} inputAttr={passwordLabel} onValueChanged={onPasswordChanged}>
+              <TextBoxButton name="password" location="after" options={passwordButton} />
               <Validator>
                 <RequiredRule message="Password is required" />
               </Validator>
@@ -124,16 +119,8 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Confirm Password</div>
           <div className="dx-field-value">
-            <TextBox
-              value={confirmPassword}
-              inputAttr={passwordLabel}
-              onValueChanged={onConfirmPasswordChanged}
-              mode={confirmPasswordMode}>
-              <TextBoxButton
-                name="password"
-                location="after"
-                options={confirmPasswordButton}
-              />
+            <TextBox value={confirmPassword} inputAttr={passwordLabel} onValueChanged={onConfirmPasswordChanged} mode={confirmPasswordMode}>
+              <TextBoxButton name="password" location="after" options={confirmPasswordButton} />
               <Validator onInitialized={onInit}>
                 <RequiredRule message="Confirm Password is required" />
                 <CompareRule message="Password and Confirm Password do not match" comparisonTarget={passwordComparison} />
@@ -159,8 +146,7 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Date of birth</div>
           <div className="dx-field-value">
-            <DateBox
-              invalidDateMessage="The date must have the following format: MM/dd/yyyy" inputAttr={dateLabel}>
+            <DateBox invalidDateMessage="The date must have the following format: MM/dd/yyyy" inputAttr={dateLabel}>
               <Validator>
                 <RequiredRule message="Date of birth is required" />
                 <RangeRule message="You must be at least 21 years old" max={maxDate} />
@@ -204,14 +190,11 @@ function App() {
           </div>
         </div>
         <div className="dx-field">
-          <div className="dx-field-label">Phone <i>(optional)</i></div>
+          <div className="dx-field-label">
+            Phone <i>(optional)</i>
+          </div>
           <div className="dx-field-value">
-            <TextBox
-              mask="+1 (X00) 000-0000"
-              inputAttr={maskLabel}
-              maskRules={phoneRules}
-              maskInvalidMessage="The phone must have a correct USA phone format"
-              validationMessagePosition="left">
+            <TextBox mask="+1 (X00) 000-0000" inputAttr={maskLabel} maskRules={phoneRules} maskInvalidMessage="The phone must have a correct USA phone format" validationMessagePosition="left">
               <Validator>
                 <PatternRule message="The phone must have a correct USA phone format" pattern={phonePattern} />
               </Validator>
@@ -219,10 +202,7 @@ function App() {
           </div>
         </div>
         <div>
-          <CheckBox
-            id="check"
-            defaultValue={false}
-            text="I agree to the Terms and Conditions">
+          <CheckBox id="check" defaultValue={false} text="I agree to the Terms and Conditions">
             <Validator>
               <CompareRule message="You must agree to the Terms and Conditions" comparisonTarget={checkComparison} />
             </Validator>
@@ -232,12 +212,7 @@ function App() {
 
       <div className="dx-fieldset">
         <ValidationSummary id="summary" />
-        <Button
-          width="100%"
-          id="button"
-          text="Register"
-          type="success"
-          useSubmitBehavior={true} />
+        <Button width="100%" id="button" text="Register" type="success" useSubmitBehavior={true} />
       </div>
     </form>
   );
@@ -252,7 +227,7 @@ function sendRequest(value: string) {
   });
 }
 
-function asyncValidation(params: { value: any; }) {
+function asyncValidation(params: { value: any }) {
   return sendRequest(params.value);
 }
 

@@ -15,64 +15,85 @@ function App() {
   const [currencyValue, setCurrencyValue] = React.useState(14500.55);
   const [dateValue, setDateValue] = React.useState(new Date().getTime());
 
-  const passwordButton = React.useMemo(() => ({
-    icon: '../../../../images/icons/eye.png',
-    type: 'default',
-    onClick: () => {
-      setPasswordMode((prevPasswordMode: string) => (prevPasswordMode === 'text' ? 'password' : 'text'));
-    },
-  }), [setPasswordMode]);
+  const passwordButton = React.useMemo(
+    () => ({
+      icon: '../../../../images/icons/eye.png',
+      type: 'default',
+      onClick: () => {
+        setPasswordMode((prevPasswordMode: string) => (prevPasswordMode === 'text' ? 'password' : 'text'));
+      },
+    }),
+    [setPasswordMode],
+  );
 
-  const currencyButton = React.useMemo(() => ({
-    text: '€',
-    stylingMode: 'text',
-    width: 32,
-    elementAttr: {
-      class: 'currency',
-    },
-    onClick: (e: { component: { option: (arg0: string,arg1: string) => string; }; }) => {
-      if (e.component.option('text') === '$') {
-        e.component.option('text', '€');
-        setCurrencyFormat('$ #.##');
-        setCurrencyValue((prevCurrencyValue: number) => prevCurrencyValue / 0.836);
-      } else {
-        e.component.option('text', '$');
-        setCurrencyFormat('€ #.##');
-        setCurrencyValue((prevCurrencyValue: number) => prevCurrencyValue * 0.836);
-      }
-    },
-  }), [setCurrencyFormat, setCurrencyValue]);
+  const currencyButton = React.useMemo(
+    () => ({
+      text: '€',
+      stylingMode: 'text',
+      width: 32,
+      elementAttr: {
+        class: 'currency',
+      },
+      onClick: (e: { component: { option: (arg0: string, arg1: string) => string } }) => {
+        if (e.component.option('text') === '$') {
+          e.component.option('text', '€');
+          setCurrencyFormat('$ #.##');
+          setCurrencyValue((prevCurrencyValue: number) => prevCurrencyValue / 0.836);
+        } else {
+          e.component.option('text', '$');
+          setCurrencyFormat('€ #.##');
+          setCurrencyValue((prevCurrencyValue: number) => prevCurrencyValue * 0.836);
+        }
+      },
+    }),
+    [setCurrencyFormat, setCurrencyValue],
+  );
 
-  const todayButton = React.useMemo(() => ({
-    text: 'Today',
-    onClick: () => {
-      setDateValue(new Date().getTime());
+  const todayButton = React.useMemo(
+    () => ({
+      text: 'Today',
+      onClick: () => {
+        setDateValue(new Date().getTime());
+      },
+    }),
+    [setDateValue],
+  );
+
+  const prevDateButton = React.useMemo(
+    () => ({
+      icon: 'spinprev',
+      stylingMode: 'text',
+      onClick: () => {
+        setDateValue((prevDateValue: number) => prevDateValue - millisecondsInDay);
+      },
+    }),
+    [setDateValue],
+  );
+
+  const nextDateButton = React.useMemo(
+    () => ({
+      icon: 'spinnext',
+      stylingMode: 'text',
+      onClick: () => {
+        setDateValue((prevDateValue: number) => prevDateValue + millisecondsInDay);
+      },
+    }),
+    [setDateValue],
+  );
+
+  const onDateChanged = React.useCallback(
+    (e: { value: any }) => {
+      setDateValue(e.value);
     },
-  }), [setDateValue]);
+    [setDateValue],
+  );
 
-  const prevDateButton = React.useMemo(() => ({
-    icon: 'spinprev',
-    stylingMode: 'text',
-    onClick: () => {
-      setDateValue((prevDateValue: number) => prevDateValue - millisecondsInDay);
+  const changeCurrency = React.useCallback(
+    (data: { value: any }) => {
+      setCurrencyValue(data.value);
     },
-  }), [setDateValue]);
-
-  const nextDateButton = React.useMemo(() => ({
-    icon: 'spinnext',
-    stylingMode: 'text',
-    onClick: () => {
-      setDateValue((prevDateValue: number) => prevDateValue + millisecondsInDay);
-    },
-  }), [setDateValue]);
-
-  const onDateChanged = React.useCallback((e: { value: any; }) => {
-    setDateValue(e.value);
-  }, [setDateValue]);
-
-  const changeCurrency = React.useCallback((data: { value: any; }) => {
-    setCurrencyValue(data.value);
-  }, [setCurrencyValue]);
+    [setCurrencyValue],
+  );
 
   return (
     <React.Fragment>
@@ -80,35 +101,16 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Password TextBox</div>
           <div className="dx-field-value">
-            <TextBox
-              placeholder="password"
-              stylingMode="filled"
-              defaultValue="password"
-              inputAttr={passwordLabel}
-              mode={passwordMode}>
-              <TextBoxButton
-                name="password"
-                location="after"
-                options={passwordButton}
-              />
+            <TextBox placeholder="password" stylingMode="filled" defaultValue="password" inputAttr={passwordLabel} mode={passwordMode}>
+              <TextBoxButton name="password" location="after" options={passwordButton} />
             </TextBox>
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Multi-currency NumberBox</div>
           <div className="dx-field-value">
-            <NumberBox
-              showClearButton={true}
-              showSpinButtons={true}
-              format={currencyFormat}
-              value={currencyValue}
-              inputAttr={currencyLabel}
-              onValueChanged={changeCurrency}>
-              <NumberBoxButton
-                name="currency"
-                location="after"
-                options={currencyButton}
-              />
+            <NumberBox showClearButton={true} showSpinButtons={true} format={currencyFormat} value={currencyValue} inputAttr={currencyLabel} onValueChanged={changeCurrency}>
+              <NumberBoxButton name="currency" location="after" options={currencyButton} />
               <NumberBoxButton name="clear" />
               <NumberBoxButton name="spins" />
             </NumberBox>
@@ -117,25 +119,10 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Advanced DateBox</div>
           <div className="dx-field-value">
-            <DateBox value={dateValue}
-              stylingMode="outlined"
-              inputAttr={dateBoxLabel}
-              onValueChanged={onDateChanged}>
-              <DateBoxButton
-                name="today"
-                location="before"
-                options={todayButton}
-              />
-              <DateBoxButton
-                name="prevDate"
-                location="before"
-                options={prevDateButton}
-              />
-              <DateBoxButton
-                name="nextDate"
-                location="after"
-                options={nextDateButton}
-              />
+            <DateBox value={dateValue} stylingMode="outlined" inputAttr={dateBoxLabel} onValueChanged={onDateChanged}>
+              <DateBoxButton name="today" location="before" options={todayButton} />
+              <DateBoxButton name="prevDate" location="before" options={prevDateButton} />
+              <DateBoxButton name="nextDate" location="after" options={nextDateButton} />
               <DateBoxButton name="dropDown" />
             </DateBox>
           </div>

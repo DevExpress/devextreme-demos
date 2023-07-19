@@ -12,7 +12,7 @@ const customSizeLabel = { 'aria-label': 'Custom size' };
 function App() {
   const [checkBoxValue, setCheckBoxValue] = React.useState(null);
 
-  const onValueChanged = React.useCallback((args: { value: any; }) => {
+  const onValueChanged = React.useCallback((args: { value: any }) => {
     setCheckBoxValue(args.value);
   }, []);
 
@@ -40,41 +40,25 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Three state mode</div>
           <div className="dx-field-value">
-            <CheckBox
-              enableThreeStateBehavior={true}
-              defaultValue={null}
-              elementAttr={threeStateModeLabel}
-            />
+            <CheckBox enableThreeStateBehavior={true} defaultValue={null} elementAttr={threeStateModeLabel} />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Handle value change</div>
           <div className="dx-field-value">
-            <CheckBox
-              value={checkBoxValue}
-              elementAttr={handleValueChangeLabel}
-              onValueChanged={onValueChanged}
-            />
+            <CheckBox value={checkBoxValue} elementAttr={handleValueChangeLabel} onValueChanged={onValueChanged} />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Disabled</div>
           <div className="dx-field-value">
-            <CheckBox
-              disabled={true}
-              value={checkBoxValue}
-              elementAttr={disabledLabel}
-            />
+            <CheckBox disabled={true} value={checkBoxValue} elementAttr={disabledLabel} />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Custom size</div>
           <div className="dx-field-value">
-            <CheckBox
-              defaultValue={null}
-              iconSize={30}
-              elementAttr={customSizeLabel}
-            />
+            <CheckBox defaultValue={null} iconSize={30} elementAttr={customSizeLabel} />
           </div>
         </div>
         <div className="dx-field">

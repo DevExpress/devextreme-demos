@@ -5,18 +5,20 @@ import { CheckBox } from 'devextreme-react/check-box';
 import DataSource from 'devextreme/data/data_source';
 
 import {
-  simpleProducts, products, searchTimeoutLabel, minimumSearchLengthLabel,
-  searchExpressionLabel, searchModeLabel, productLabel, simpleProductLabel,
+  simpleProducts, products, searchTimeoutLabel, minimumSearchLengthLabel, searchExpressionLabel, searchModeLabel, productLabel, simpleProductLabel,
 } from './data.ts';
 
 const searchModeItems = ['contains', 'startswith'];
-const searchExprItems = [{
-  name: "'Name'",
-  value: 'Name',
-}, {
-  name: "['Name', 'Category']",
-  value: ['Name', 'Category'],
-}];
+const searchExprItems = [
+  {
+    name: "'Name'",
+    value: 'Name',
+  },
+  {
+    name: "['Name', 'Category']",
+    value: ['Name', 'Category'],
+  },
+];
 const productsDataSource = new DataSource({
   store: {
     data: simpleProducts,
@@ -25,7 +27,7 @@ const productsDataSource = new DataSource({
   },
 });
 
-const customItemCreating = (args: { text: any; customItem: Promise<{ Name: any; ID: any; }>; }) => {
+const customItemCreating = (args: { text: any; customItem: Promise<{ Name: any; ID: any }> }) => {
   if (!args.text) {
     args.customItem = null;
     return;
@@ -38,7 +40,9 @@ const customItemCreating = (args: { text: any; customItem: Promise<{ Name: any; 
     ID: incrementedId,
   };
 
-  args.customItem = productsDataSource.store().insert(newItem)
+  args.customItem = productsDataSource
+    .store()
+    .insert(newItem)
     .then(() => productsDataSource.load())
     .then(() => newItem)
     .catch((error) => {
@@ -86,7 +90,8 @@ function App() {
           <div className="dx-field">
             <div className="dx-field-label">Product</div>
             <div className="dx-field-value">
-              <SelectBox dataSource={products}
+              <SelectBox
+                dataSource={products}
                 displayExpr="Name"
                 searchEnabled={true}
                 inputAttr={simpleProductLabel}
@@ -94,7 +99,8 @@ function App() {
                 searchExpr={searchExprOption}
                 searchTimeout={searchTimeoutOption}
                 minSearchLength={minSearchLengthOption}
-                showDataBeforeSearch={showDataBeforeSearchOption} />
+                showDataBeforeSearch={showDataBeforeSearchOption}
+              />
             </div>
           </div>
         </div>
@@ -103,22 +109,20 @@ function App() {
           <div className="dx-field">
             <div className="dx-field-label">Product</div>
             <div className="dx-field-value">
-              <SelectBox dataSource={productsDataSource}
+              <SelectBox
+                dataSource={productsDataSource}
                 displayExpr="Name"
                 valueExpr="ID"
                 inputAttr={productLabel}
                 acceptCustomValue={true}
                 defaultValue={simpleProducts[0].ID}
                 onCustomItemCreating={customItemCreating}
-                onValueChanged={editBoxValueChanged} />
+                onValueChanged={editBoxValueChanged}
+              />
             </div>
           </div>
           <div className="dx-field current-product">
-            Current product: <span className="current-value">
-              {editBoxValue
-                ? `${editBoxValue.Name} (ID: ${editBoxValue.ID})`
-                : 'Not selected'}
-            </span>
+            Current product: <span className="current-value">{editBoxValue ? `${editBoxValue.Name} (ID: ${editBoxValue.ID})` : 'Not selected'}</span>
           </div>
         </div>
       </div>
@@ -126,43 +130,22 @@ function App() {
         <div className="caption">SearchBox Options</div>
         <div className="option">
           <div>Search Mode</div>
-          <SelectBox items={searchModeItems}
-            value={searchModeOption}
-            inputAttr={searchModeLabel}
-            onValueChanged={searchModeOptionChanged} />
+          <SelectBox items={searchModeItems} value={searchModeOption} inputAttr={searchModeLabel} onValueChanged={searchModeOptionChanged} />
         </div>
         <div className="option">
           <div>Search Expression</div>
-          <SelectBox items={searchExprItems}
-            displayExpr="name"
-            valueExpr="value"
-            inputAttr={searchExpressionLabel}
-            value={searchExprOption}
-            onValueChanged={searchExprOptionChanged} />
+          <SelectBox items={searchExprItems} displayExpr="name" valueExpr="value" inputAttr={searchExpressionLabel} value={searchExprOption} onValueChanged={searchExprOptionChanged} />
         </div>
         <div className="option">
           <div>Search Timeout</div>
-          <NumberBox min={0}
-            max={5000}
-            showSpinButtons={true}
-            step={100}
-            value={searchTimeoutOption}
-            inputAttr={searchTimeoutLabel}
-            onValueChanged={searchTimeoutOptionChanged} />
+          <NumberBox min={0} max={5000} showSpinButtons={true} step={100} value={searchTimeoutOption} inputAttr={searchTimeoutLabel} onValueChanged={searchTimeoutOptionChanged} />
         </div>
         <div className="option">
           <div>Minimum Search Length</div>
-          <NumberBox min={0}
-            max={5}
-            showSpinButtons={true}
-            value={minSearchLengthOption}
-            inputAttr={minimumSearchLengthLabel}
-            onValueChanged={minSearchLengthOptionChanged} />
+          <NumberBox min={0} max={5} showSpinButtons={true} value={minSearchLengthOption} inputAttr={minimumSearchLengthLabel} onValueChanged={minSearchLengthOptionChanged} />
         </div>
         <div className="option">
-          <CheckBox text="Show Data Before Search"
-            value={showDataBeforeSearchOption}
-            onValueChanged={showDataBeforeSearchOptionChanged} />
+          <CheckBox text="Show Data Before Search" value={showDataBeforeSearchOption} onValueChanged={showDataBeforeSearchOptionChanged} />
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ const maxAndMinLabel = { 'aria-label': 'Min And Max' };
 const salesLabel = { 'aria-label': 'Sales' };
 const stockLabel = { 'aria-label': 'Stock' };
 
-const keyDown = (e: { event: any; }) => {
+const keyDown = (e: { event: any }) => {
   const { event } = e;
   const str = event.key || String.fromCharCode(event.which);
   if (/^[.,e]$/.test(str)) {
@@ -20,7 +20,7 @@ function App() {
   const [value, setValue] = React.useState(16);
   const [max] = React.useState(30);
 
-  const valueChanged = React.useCallback((e: { value: any; }) => {
+  const valueChanged = React.useCallback((e: { value: any }) => {
     setValue(e.value);
   }, []);
 
@@ -36,36 +36,19 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">With spin and clear buttons</div>
           <div className="dx-field-value">
-            <NumberBox
-              defaultValue={20.5}
-              showSpinButtons={true}
-              showClearButton={true}
-              inputAttr={withSpinAndButtonsLabel}
-            />
+            <NumberBox defaultValue={20.5} showSpinButtons={true} showClearButton={true} inputAttr={withSpinAndButtonsLabel} />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Disabled</div>
           <div className="dx-field-value">
-            <NumberBox
-              defaultValue={20.5}
-              showSpinButtons={true}
-              showClearButton={true}
-              disabled={true}
-              inputAttr={disabledLabel}
-            />
+            <NumberBox defaultValue={20.5} showSpinButtons={true} showClearButton={true} disabled={true} inputAttr={disabledLabel} />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">With max and min values</div>
           <div className="dx-field-value">
-            <NumberBox
-              defaultValue={15}
-              min={10}
-              max={20}
-              showSpinButtons={true}
-              inputAttr={maxAndMinLabel}
-            />
+            <NumberBox defaultValue={15} min={10} max={20} showSpinButtons={true} inputAttr={maxAndMinLabel} />
           </div>
         </div>
       </div>
@@ -74,27 +57,13 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">This month sales</div>
           <div className="dx-field-value">
-            <NumberBox
-              value={value}
-              max={max}
-              min={0}
-              showSpinButtons={true}
-              onKeyDown={keyDown}
-              onValueChanged={valueChanged}
-              inputAttr={salesLabel}
-            />
+            <NumberBox value={value} max={max} min={0} showSpinButtons={true} onKeyDown={keyDown} onValueChanged={valueChanged} inputAttr={salesLabel} />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Stock</div>
           <div className="dx-field-value">
-            <NumberBox
-              min={0}
-              showSpinButtons={false}
-              readOnly={true}
-              value={max - value}
-              inputAttr={stockLabel}
-            />
+            <NumberBox min={0} showSpinButtons={false} readOnly={true} value={max - value} inputAttr={stockLabel} />
           </div>
         </div>
       </div>

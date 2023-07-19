@@ -36,55 +36,84 @@ export default function App() {
   const [disabled, setDisabled] = React.useState(false);
   const [zoomLevel, setZoomLevel] = React.useState('month');
 
-  const onCurrentValueChange = React.useCallback(({ value }) => {
-    setCurrentValue(value);
-  }, [setCurrentValue]);
+  const onCurrentValueChange = React.useCallback(
+    ({ value }) => {
+      setCurrentValue(value);
+    },
+    [setCurrentValue],
+  );
 
-  const onDisabledChange = React.useCallback(({ value }) => {
-    setDisabled(value);
-  }, [setDisabled]);
+  const onDisabledChange = React.useCallback(
+    ({ value }) => {
+      setDisabled(value);
+    },
+    [setDisabled],
+  );
 
-  const onZoomLevelChange = React.useCallback(({ value }) => {
-    setZoomLevel(value);
-  }, [setZoomLevel]);
+  const onZoomLevelChange = React.useCallback(
+    ({ value }) => {
+      setZoomLevel(value);
+    },
+    [setZoomLevel],
+  );
 
-  const onMinDateChange = React.useCallback(({ value }) => {
-    setMinDateValue(
-      value ? new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 3) : null,
-    );
-  }, [setMinDateValue]);
+  const onMinDateChange = React.useCallback(
+    ({ value }) => {
+      setMinDateValue(value ? new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 3) : null);
+    },
+    [setMinDateValue],
+  );
 
-  const onMaxDateChange = React.useCallback(({ value }) => {
-    setMaxDateValue(
-      value ? new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 3) : null,
-    );
-  }, [setMaxDateValue]);
+  const onMaxDateChange = React.useCallback(
+    ({ value }) => {
+      setMaxDateValue(value ? new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 3) : null);
+    },
+    [setMaxDateValue],
+  );
 
-  const onDisableWeekendChange = React.useCallback(({ value }) => {
-    setWeekendDisabled(value);
-  }, [setWeekendDisabled]);
+  const onDisableWeekendChange = React.useCallback(
+    ({ value }) => {
+      setWeekendDisabled(value);
+    },
+    [setWeekendDisabled],
+  );
 
-  const onFirstDayChange = React.useCallback(({ value }) => {
-    setFirstDay(value);
-  }, [setFirstDay]);
+  const onFirstDayChange = React.useCallback(
+    ({ value }) => {
+      setFirstDay(value);
+    },
+    [setFirstDay],
+  );
 
-  const onWeekNumberRuleChange = React.useCallback(({ value }) => {
-    setWeekNumberRule(value);
-  }, [setWeekNumberRule]);
+  const onWeekNumberRuleChange = React.useCallback(
+    ({ value }) => {
+      setWeekNumberRule(value);
+    },
+    [setWeekNumberRule],
+  );
 
-  const onShowWeekNumbersChange = React.useCallback(({ value }) => {
-    setShowWeekNumbers(value);
-  }, [setShowWeekNumbers]);
+  const onShowWeekNumbersChange = React.useCallback(
+    ({ value }) => {
+      setShowWeekNumbers(value);
+    },
+    [setShowWeekNumbers],
+  );
 
-  const onUseCellTemplateChange = React.useCallback(({ value }) => {
-    setUseCellTemplate(!!value);
-  }, [setUseCellTemplate]);
+  const onUseCellTemplateChange = React.useCallback(
+    ({ value }) => {
+      setUseCellTemplate(!!value);
+    },
+    [setUseCellTemplate],
+  );
 
-  const onOptionChange = React.useCallback((e: { name: string; }) => {
-    if (e.name === 'zoomLevel') {
-      onZoomLevelChange(e);
-    }
-  }, [onZoomLevelChange]);
+  const onOptionChange = React.useCallback(
+    (e: { name: string }) => {
+      if (e.name === 'zoomLevel') {
+        onZoomLevelChange(e);
+      }
+    },
+    [onZoomLevelChange],
+  );
 
   return (
     <div id="container">
@@ -107,86 +136,38 @@ export default function App() {
       <div className="options">
         <div className="caption">Options</div>
         <div className="option">
-          <CheckBox
-            defaultValue={false}
-            text="Set minimum date"
-            onValueChanged={onMinDateChange}
-          />
+          <CheckBox defaultValue={false} text="Set minimum date" onValueChanged={onMinDateChange} />
         </div>
         <div className="option">
-          <CheckBox
-            defaultValue={false}
-            text="Set maximum date"
-            onValueChanged={onMaxDateChange}
-          />
+          <CheckBox defaultValue={false} text="Set maximum date" onValueChanged={onMaxDateChange} />
         </div>
         <div className="option">
-          <CheckBox
-            defaultValue={false}
-            text="Disable weekends"
-            onValueChanged={onDisableWeekendChange}
-          />
+          <CheckBox defaultValue={false} text="Disable weekends" onValueChanged={onDisableWeekendChange} />
         </div>
         <div className="option">
-          <CheckBox
-            defaultValue={false}
-            text="Show week numbers"
-            onValueChanged={onShowWeekNumbersChange}
-          />
+          <CheckBox defaultValue={false} text="Show week numbers" onValueChanged={onShowWeekNumbersChange} />
         </div>
         <div className="option">
-          <CheckBox
-            defaultValue={false}
-            text="Use custom cell template"
-            onValueChanged={onUseCellTemplateChange}
-          />
+          <CheckBox defaultValue={false} text="Use custom cell template" onValueChanged={onUseCellTemplateChange} />
         </div>
         <div className="option">
-          <CheckBox
-            value={disabled}
-            text="Disable the calendar"
-            onValueChanged={onDisabledChange}
-          />
+          <CheckBox value={disabled} text="Disable the calendar" onValueChanged={onDisabledChange} />
         </div>
         <div className="option">
           <span>First day of week</span>
-          <SelectBox
-            dataSource={weekDays}
-            inputAttr={dayLabel}
-            displayExpr="text"
-            valueExpr="id"
-            value={firstDay}
-            onValueChanged={onFirstDayChange}
-          />
+          <SelectBox dataSource={weekDays} inputAttr={dayLabel} displayExpr="text" valueExpr="id" value={firstDay} onValueChanged={onFirstDayChange} />
         </div>
         <div className="option">
           <span>Week number rule</span>
-          <SelectBox
-            dataSource={weekNumberRules}
-            inputAttr={ruleLabel}
-            value={weekNumberRule}
-            onValueChanged={onWeekNumberRuleChange}
-          />
+          <SelectBox dataSource={weekNumberRules} inputAttr={ruleLabel} value={weekNumberRule} onValueChanged={onWeekNumberRuleChange} />
         </div>
         <div className="option">
           <span>Zoom level</span>
-          <SelectBox
-            dataSource={zoomLevels}
-            value={zoomLevel}
-            inputAttr={zoomLevelLabel}
-            onValueChanged={onZoomLevelChange}
-          />
+          <SelectBox dataSource={zoomLevels} value={zoomLevel} inputAttr={zoomLevelLabel} onValueChanged={onZoomLevelChange} />
         </div>
         <div className="option">
           <span>Selected date</span>
-          <DateBox
-            id="selected-date"
-            value={currentValue}
-            onValueChanged={onCurrentValueChange}
-            min={minDateValue}
-            max={maxDateValue}
-            inputAttr={dateBoxLabel}
-          />
+          <DateBox id="selected-date" value={currentValue} onValueChanged={onCurrentValueChange} min={minDateValue} max={maxDateValue} inputAttr={dateBoxLabel} />
         </div>
       </div>
     </div>

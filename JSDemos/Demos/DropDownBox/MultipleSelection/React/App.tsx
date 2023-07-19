@@ -10,14 +10,13 @@ import 'whatwg-fetch';
 const gridColumns = ['CompanyName', 'City', 'Phone'];
 const ownerLabel = { 'aria-label': 'Owner' };
 
-const makeAsyncDataSource = (jsonFile: string) => (new CustomStore({
+const makeAsyncDataSource = (jsonFile: string) => new CustomStore({
   loadMode: 'raw',
   key: 'ID',
   load() {
-    return fetch(`../../../../data/${jsonFile}`)
-      .then((response) => response.json());
+    return fetch(`../../../../data/${jsonFile}`).then((response) => response.json());
   },
-}));
+});
 
 const treeDataSource = makeAsyncDataSource('treeProducts.json');
 const gridDataSource = makeAsyncDataSource('customers.json');
@@ -27,66 +26,70 @@ function App() {
   const [gridBoxValue, setGridBoxValue] = React.useState([3]);
   const treeViewRef = React.useRef();
 
-  const treeViewRender = React.useCallback(() => (
-    <TreeView dataSource={treeDataSource}
-      ref={treeViewRef}
-      dataStructure="plain"
-      keyExpr="ID"
-      parentIdExpr="categoryId"
-      selectionMode="multiple"
-      showCheckBoxesMode="normal"
-      selectNodesRecursive={false}
-      displayExpr="name"
-      selectByClick={true}
-      onContentReady={syncTreeViewSelection}
-      onItemSelectionChanged={treeViewItemSelectionChanged}
-    />
-  ), [treeDataSource]);
+  const treeViewRender = React.useCallback(
+    () => (
+      <TreeView
+        dataSource={treeDataSource}
+        ref={treeViewRef}
+        dataStructure="plain"
+        keyExpr="ID"
+        parentIdExpr="categoryId"
+        selectionMode="multiple"
+        showCheckBoxesMode="normal"
+        selectNodesRecursive={false}
+        displayExpr="name"
+        selectByClick={true}
+        onContentReady={syncTreeViewSelection}
+        onItemSelectionChanged={treeViewItemSelectionChanged}
+      />
+    ),
+    [treeDataSource],
+  );
 
-  const dataGridRender = React.useCallback(() => (
-    <DataGrid
-      height={345}
-      dataSource={gridDataSource}
-      columns={gridColumns}
-      hoverStateEnabled={true}
-      selectedRowKeys={gridBoxValue}
-      onSelectionChanged={dataGridOnSelectionChanged}>
-      <Selection mode="multiple" />
-      <Scrolling mode="virtual" />
-      <Paging enabled={true} pageSize={10} />
-      <FilterRow visible={true} />
-    </DataGrid>
-  ), [gridDataSource, gridBoxValue]);
+  const dataGridRender = React.useCallback(
+    () => (
+      <DataGrid height={345} dataSource={gridDataSource} columns={gridColumns} hoverStateEnabled={true} selectedRowKeys={gridBoxValue} onSelectionChanged={dataGridOnSelectionChanged}>
+        <Selection mode="multiple" />
+        <Scrolling mode="virtual" />
+        <Paging enabled={true} pageSize={10} />
+        <FilterRow visible={true} />
+      </DataGrid>
+    ),
+    [gridDataSource, gridBoxValue],
+  );
 
-  const syncTreeViewSelection = React.useCallback((e: { component: { selectItem: any; }; value: any; }) => {
-    const treeView = (e.component.selectItem && e.component)
-      || (treeViewRef.current && treeViewRef.current.instance);
+  const syncTreeViewSelection = React.useCallback(
+    (e: { component: { selectItem: any }; value: any }) => {
+      const treeView = (e.component.selectItem && e.component) || (treeViewRef.current && treeViewRef.current.instance);
 
-    if (treeView) {
-      if (e.value === null) {
-        treeView.unselectAll();
-      } else {
-        const values = e.value || treeBoxValue;
-        values && values.forEach((value) => {
-          treeView.selectItem(value);
-        });
+      if (treeView) {
+        if (e.value === null) {
+          treeView.unselectAll();
+        } else {
+          const values = e.value || treeBoxValue;
+          values
+            && values.forEach((value) => {
+              treeView.selectItem(value);
+            });
+        }
       }
-    }
 
-    if (e.value !== undefined) {
-      setTreeBoxValue(e.value);
-    }
-  }, [treeBoxValue]);
+      if (e.value !== undefined) {
+        setTreeBoxValue(e.value);
+      }
+    },
+    [treeBoxValue],
+  );
 
-  const syncDataGridSelection = React.useCallback((e: { value: any; }) => {
+  const syncDataGridSelection = React.useCallback((e: { value: any }) => {
     setGridBoxValue(e.value || []);
   }, []);
 
-  const treeViewItemSelectionChanged = React.useCallback((e: { component: { getSelectedNodeKeys: () => any; }; }) => {
+  const treeViewItemSelectionChanged = React.useCallback((e: { component: { getSelectedNodeKeys: () => any } }) => {
     setTreeBoxValue(e.component.getSelectedNodeKeys());
   }, []);
 
-  const dataGridOnSelectionChanged = React.useCallback((e: { selectedRowKeys: string | any[]; }) => {
+  const dataGridOnSelectionChanged = React.useCallback((e: { selectedRowKeys: string | any[] }) => {
     setGridBoxValue((e.selectedRowKeys.length && e.selectedRowKeys) || []);
   }, []);
 

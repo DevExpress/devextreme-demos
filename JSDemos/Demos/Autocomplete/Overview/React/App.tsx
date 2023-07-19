@@ -39,7 +39,11 @@ const clientsStore = new CustomStore({
   },
 });
 
-const renderState = (data) => (<span>{data.State_Long} ({data.State_Short})</span>);
+const renderState = (data) => (
+  <span>
+    {data.State_Long} ({data.State_Short})
+  </span>
+);
 
 function App() {
   const [firstName, setFirstName] = React.useState('');
@@ -48,27 +52,27 @@ function App() {
   const [state, setState] = React.useState('');
   const [currentClient, setCurrentClient] = React.useState('');
 
-  const handleFirstNameChange = React.useCallback((e: { value: any; }) => {
+  const handleFirstNameChange = React.useCallback((e: { value: any }) => {
     setFirstName(e.value);
   }, []);
 
-  const handleLastNameChange = React.useCallback((e: { value: any; }) => {
+  const handleLastNameChange = React.useCallback((e: { value: any }) => {
     setLastName(e.value);
   }, []);
 
-  const handleStateChange = React.useCallback((e: { value: any; }) => {
+  const handleStateChange = React.useCallback((e: { value: any }) => {
     setState(e.value);
   }, []);
 
-  const handleCurrentClientChange = React.useCallback((e: { value: any; }) => {
+  const handleCurrentClientChange = React.useCallback((e: { value: any }) => {
     setCurrentClient(e.value);
   }, []);
 
   let fullInfo = '';
-  fullInfo += (`${firstName || ''} ${lastName || ''}`).trim();
-  fullInfo += (fullInfo && position) ? `, ${position}` : position || '';
-  fullInfo += (fullInfo && state) ? `, ${state}` : state || '';
-  fullInfo += (fullInfo && currentClient) ? `, ${currentClient}` : currentClient || '';
+  fullInfo += `${firstName || ''} ${lastName || ''}`.trim();
+  fullInfo += fullInfo && position ? `, ${position}` : position || '';
+  fullInfo += fullInfo && state ? `, ${state}` : state || '';
+  fullInfo += fullInfo && currentClient ? `, ${currentClient}` : currentClient || '';
 
   return (
     <div className="form">
@@ -77,12 +81,7 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">First Name</div>
           <div className="dx-field-value">
-            <Autocomplete
-              dataSource={names}
-              value={firstName}
-              onValueChanged={handleFirstNameChange}
-              placeholder="Type first name..."
-            />
+            <Autocomplete dataSource={names} value={firstName} onValueChanged={handleFirstNameChange} placeholder="Type first name..." />
           </div>
         </div>
       </div>
@@ -92,13 +91,7 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Last Name</div>
           <div className="dx-field-value">
-            <Autocomplete
-              dataSource={surnames}
-              value={lastName}
-              onValueChanged={handleLastNameChange}
-              showClearButton={true}
-              placeholder="Type last name..."
-            />
+            <Autocomplete dataSource={surnames} value={lastName} onValueChanged={handleLastNameChange} showClearButton={true} placeholder="Type last name..." />
           </div>
         </div>
       </div>
@@ -108,11 +101,7 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Position</div>
           <div className="dx-field-value">
-            <Autocomplete
-              dataSource={positions}
-              value={position}
-              disabled={true}
-            />
+            <Autocomplete dataSource={positions} value={position} disabled={true} />
           </div>
         </div>
       </div>
@@ -122,14 +111,7 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">State</div>
           <div className="dx-field-value">
-            <Autocomplete
-              dataSource={states}
-              value={state}
-              valueExpr="State_Long"
-              onValueChanged={handleStateChange}
-              placeholder="Type state name..."
-              itemRender={renderState}
-            />
+            <Autocomplete dataSource={states} value={state} valueExpr="State_Long" onValueChanged={handleStateChange} placeholder="Type state name..." itemRender={renderState} />
           </div>
         </div>
       </div>

@@ -14,70 +14,64 @@ function App() {
   const [selectedItem, setSelectedItem] = React.useState(products[0]);
   const [isLoaded, setIsLoaded] = React.useState(true);
 
-  const deferredProducts = React.useMemo(() => ({
-    loadMode: 'raw',
-    load: () => {
-      setIsLoaded(false);
-      const promise = new Promise((resolve) => {
-        setTimeout(() => {
-          resolve(simpleProducts);
-          setIsLoaded(true);
-        }, 3000);
-      });
+  const deferredProducts = React.useMemo(
+    () => ({
+      loadMode: 'raw',
+      load: () => {
+        setIsLoaded(false);
+        const promise = new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(simpleProducts);
+            setIsLoaded(true);
+          }, 3000);
+        });
 
-      return promise;
-    },
-  }), [setIsLoaded]);
-
-  const renderLoadIndicator = React.useCallback(
-    () => (<IndicatorIcon isLoaded={isLoaded} />),
-    [isLoaded],
+        return promise;
+      },
+    }),
+    [setIsLoaded],
   );
 
-  const renderConditionalIcon = React.useCallback(
-    () => (<ConditionalIcon value={selectedItem} />),
-    [selectedItem],
-  );
+  const renderLoadIndicator = React.useCallback(() => <IndicatorIcon isLoaded={isLoaded} />, [isLoaded]);
 
-  const selectionChanged = React.useCallback((event: { selectedItem: any; }) => {
+  const renderConditionalIcon = React.useCallback(() => <ConditionalIcon value={selectedItem} />, [selectedItem]);
+
+  const selectionChanged = React.useCallback((event: { selectedItem: any }) => {
     setSelectedItem(event.selectedItem);
   }, []);
 
   return (
-    <div className='dx-fieldset'>
-      <div className='dx-field'>
-        <div className='dx-field-label'>Image as the icon</div>
-        <div className='dx-field-value'>
-          <SelectBox dataSource={simpleProducts}
-            inputAttr={simpleProductLabel}
-            dropDownButtonRender={ImageIcon} />
+    <div className="dx-fieldset">
+      <div className="dx-field">
+        <div className="dx-field-label">Image as the icon</div>
+        <div className="dx-field-value">
+          <SelectBox dataSource={simpleProducts} inputAttr={simpleProductLabel} dropDownButtonRender={ImageIcon} />
         </div>
       </div>
-      <div className='dx-field'>
-        <div className='dx-field-label'>Load indicator as the icon</div>
-        <div className='dx-field-value'>
-          <SelectBox dataSource={deferredProducts}
-            inputAttr={deferredProductLabel}
-            dropDownButtonTemplate='loadIndicator'>
-            <Template name='loadIndicator' render={renderLoadIndicator} />
+      <div className="dx-field">
+        <div className="dx-field-label">Load indicator as the icon</div>
+        <div className="dx-field-value">
+          <SelectBox dataSource={deferredProducts} inputAttr={deferredProductLabel} dropDownButtonTemplate="loadIndicator">
+            <Template name="loadIndicator" render={renderLoadIndicator} />
           </SelectBox>
         </div>
       </div>
-      <div className='dx-field'>
-        <div className='dx-field-label'>Value-dependent icon</div>
-        <div className='dx-field-value'>
-          <SelectBox dataSource={products}
+      <div className="dx-field">
+        <div className="dx-field-label">Value-dependent icon</div>
+        <div className="dx-field-value">
+          <SelectBox
+            dataSource={products}
             defaultValue={products[0].ID}
             selectedItem={selectedItem}
-            displayExpr='Name'
+            displayExpr="Name"
             inputAttr={productLabel}
             showClearButton={true}
-            valueExpr='ID'
+            valueExpr="ID"
             itemRender={Item}
-            dropDownButtonTemplate='conditionalIcon'
+            dropDownButtonTemplate="conditionalIcon"
             onSelectionChanged={selectionChanged}
           >
-            <Template name='conditionalIcon' render={renderConditionalIcon} />
+            <Template name="conditionalIcon" render={renderConditionalIcon} />
           </SelectBox>
         </div>
       </div>

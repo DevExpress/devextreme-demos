@@ -20,12 +20,9 @@ function App() {
   const dateClear = new Date(2015, 11, 1, 6);
   const disabledDates = service.getFederalHolidays();
 
-  const diffInDay = React.useMemo(() => `${Math.floor(
-    Math.abs((new Date().getTime() - value.getTime()) / (24 * 60 * 60 * 1000)),
-  )} days`,
-  [value]);
+  const diffInDay = React.useMemo(() => `${Math.floor(Math.abs((new Date().getTime() - value.getTime()) / (24 * 60 * 60 * 1000)))} days`, [value]);
 
-  const onValueChanged = React.useCallback((e: { value: any; }) => {
+  const onValueChanged = React.useCallback((e: { value: any }) => {
     setValue(e.value);
   }, []);
 
@@ -53,11 +50,7 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Custom format</div>
           <div className="dx-field-value">
-            <DateBox
-              defaultValue={now}
-              inputAttr={customFormatLabel}
-              displayFormat="EEEE, MMM dd"
-            />
+            <DateBox defaultValue={now} inputAttr={customFormatLabel} displayFormat="EEEE, MMM dd" />
           </div>
         </div>
         <div className="dx-field">
@@ -69,35 +62,19 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Clear button</div>
           <div className="dx-field-value">
-            <DateBox
-              defaultValue={dateClear}
-              type="time"
-              inputAttr={clearLabel}
-              showClearButton={true}
-            />
+            <DateBox defaultValue={dateClear} type="time" inputAttr={clearLabel} showClearButton={true} />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Disabled</div>
           <div className="dx-field-value">
-            <DateBox
-              defaultValue={now}
-              type="datetime"
-              inputAttr={disabledLabel}
-              disabled={true}
-            />
+            <DateBox defaultValue={now} type="datetime" inputAttr={disabledLabel} disabled={true} />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Disable certain dates</div>
           <div className="dx-field-value">
-            <DateBox
-              defaultValue={firstWorkDay2017}
-              type="date"
-              pickerType="calendar"
-              inputAttr={disabledLabel}
-              disabledDates={disabledDates}
-            />
+            <DateBox defaultValue={firstWorkDay2017} type="date" pickerType="calendar" inputAttr={disabledLabel} disabledDates={disabledDates} />
           </div>
         </div>
       </div>
@@ -106,18 +83,13 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Set Birthday</div>
           <div className="dx-field-value">
-            <DateBox
-              applyValueMode="useButtons"
-              value={value}
-              min={min}
-              max={now}
-              inputAttr={birthDateLabel}
-              onValueChanged={onValueChanged}
-            />
+            <DateBox applyValueMode="useButtons" value={value} min={min} max={now} inputAttr={birthDateLabel} onValueChanged={onValueChanged} />
           </div>
         </div>
         <div className="dx-field">
-          <div className="dx-field-value">Your age is <div id="age">{diffInDay}</div></div>
+          <div className="dx-field-value">
+            Your age is <div id="age">{diffInDay}</div>
+          </div>
         </div>
       </div>
     </div>

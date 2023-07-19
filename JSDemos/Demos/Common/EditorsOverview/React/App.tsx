@@ -43,29 +43,29 @@ function App() {
   const [transform, setTransform] = React.useState(noFlipTransform);
   const [border, setBorder] = React.useState(false);
 
-  const handleTextChange = React.useCallback((e: { value: any; }) => {
+  const handleTextChange = React.useCallback((e: { value: any }) => {
     setText(e.value);
   }, []);
 
-  const handleColorChange = React.useCallback((e: { value: any; }) => {
+  const handleColorChange = React.useCallback((e: { value: any }) => {
     setColor(e.value);
   }, []);
 
-  const handleHeightChange = React.useCallback((e: { value: number; }) => {
+  const handleHeightChange = React.useCallback((e: { value: number }) => {
     setWidth((e.value * 37) / 26);
     setHeight(e.value);
   }, []);
 
-  const handleWidthChange = React.useCallback((e: { value: number; }) => {
+  const handleWidthChange = React.useCallback((e: { value: number }) => {
     setWidth(e.value);
     setHeight((e.value * 26) / 37);
   }, []);
 
-  const handleTransformChange = React.useCallback((e: { value: any; }) => {
+  const handleTransformChange = React.useCallback((e: { value: any }) => {
     setTransform(e.value);
   }, []);
 
-  const handleBorderChange = React.useCallback((e: { value: any; }) => {
+  const handleBorderChange = React.useCallback((e: { value: any }) => {
     setBorder(e.value);
   }, []);
 
@@ -76,24 +76,13 @@ function App() {
           <div className="field">
             <div className="label">Title</div>
             <div className="value">
-              <TextBox
-                value={text}
-                inputAttr={titleLabel}
-                onValueChanged={handleTextChange}
-                maxLength={40}
-                valueChangeEvent="keyup"
-              />
+              <TextBox value={text} inputAttr={titleLabel} onValueChanged={handleTextChange} maxLength={40} valueChangeEvent="keyup" />
             </div>
           </div>
           <div className="field">
             <div className="label">Color</div>
             <div className="value">
-              <ColorBox
-                value={color}
-                onValueChanged={handleColorChange}
-                applyValueMode="instantly"
-                inputAttr={colorLabel}
-              />
+              <ColorBox value={color} onValueChanged={handleColorChange} applyValueMode="instantly" inputAttr={colorLabel} />
             </div>
           </div>
         </div>
@@ -101,29 +90,13 @@ function App() {
           <div className="field">
             <div className="label">Width</div>
             <div className="value">
-              <NumberBox
-                value={width}
-                onValueChanged={handleWidthChange}
-                showSpinButtons={true}
-                max={700}
-                min={70}
-                format="#0px"
-                inputAttr={widthLabel}
-              />
+              <NumberBox value={width} onValueChanged={handleWidthChange} showSpinButtons={true} max={700} min={70} format="#0px" inputAttr={widthLabel} />
             </div>
           </div>
           <div className="field">
             <div className="label">Height</div>
             <div className="value">
-              <NumberBox
-                value={height}
-                onValueChanged={handleHeightChange}
-                showSpinButtons={true}
-                max={700}
-                min={70}
-                format="#0px"
-                inputAttr={heightLabel}
-              />
+              <NumberBox value={height} onValueChanged={handleHeightChange} showSpinButtons={true} max={700} min={70} format="#0px" inputAttr={heightLabel} />
             </div>
           </div>
         </div>
@@ -131,15 +104,7 @@ function App() {
           <div className="field">
             <div className="label">Transform</div>
             <div className="value">
-              <SelectBox
-                value={transform}
-                onValueChanged={handleTransformChange}
-                inputAttr={transformLabel}
-                items={transformations}
-                grouped={true}
-                displayExpr="name"
-                valueExpr="value"
-              />
+              <SelectBox value={transform} onValueChanged={handleTransformChange} inputAttr={transformLabel} items={transformations} grouped={true} displayExpr="name" valueExpr="value" />
             </div>
           </div>
 
@@ -152,14 +117,7 @@ function App() {
         </div>
       </div>
 
-      <Logo
-        text={text}
-        width={width}
-        height={height}
-        color={color}
-        transform={transform}
-        border={border}
-      />
+      <Logo text={text} width={width} height={height} color={color} transform={transform} border={border} />
     </React.Fragment>
   );
 }
