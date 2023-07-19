@@ -109,16 +109,15 @@ import { DxSelectBox } from 'devextreme-vue/select-box';
 import { DxNumberBox } from 'devextreme-vue/number-box';
 import { DxCheckBox } from 'devextreme-vue/check-box';
 import DataSource from 'devextreme/data/data_source';
-import { products as productsData, simpleProducts } from './data.js';
+import { products, simpleProducts } from './data.js';
 
-const products = ref(productsData);
-const productsDataSource = ref(new DataSource({
+const productsDataSource = new DataSource({
   store: {
     data: simpleProducts,
     type: 'array',
     key: 'ID',
   },
-}));
+});
 const editBoxValue = ref(simpleProducts[0]);
 const product = ref(simpleProducts[0].ID);
 const searchModeOption = ref('contains');
@@ -126,7 +125,7 @@ const searchExprOption = ref('Name');
 const searchTimeoutOption = ref(200);
 const minSearchLengthOption = ref(0);
 const showDataBeforeSearchOption = ref(false);
-const searchExprItems = ref([
+const searchExprItems = [
   {
     name: "'Name'",
     value: 'Name',
@@ -135,30 +134,30 @@ const searchExprItems = ref([
     name: "['Name', 'Category']",
     value: ['Name', 'Category'],
   },
-]);
+];
 
 function customItemCreating(data) {
-      if (!data.text) {
-        data.customItem = null;
-        return;
-      }
+  if (!data.text) {
+    data.customItem = null;
+    return;
+  }
 
-      const productIds = simpleProducts.map((item) => item.ID);
-      const incrementedId = Math.max.apply(null, productIds) + 1;
-      const newItem = {
-        Name: data.text,
-        ID: incrementedId,
-      };
+  const productIds = simpleProducts.map((item) => item.ID);
+  const incrementedId = Math.max.apply(null, productIds) + 1;
+  const newItem = {
+    Name: data.text,
+    ID: incrementedId,
+  };
 
-      data.customItem = productsDataSource.value
-        .store()
-        .insert(newItem)
-        .then(() => productsDataSource.load())
-        .then(() => newItem)
-        .catch((error) => {
-          throw error;
-        });
-    };
+  data.customItem = productsDataSource
+    .store()
+    .insert(newItem)
+    .then(() => productsDataSource.load())
+    .then(() => newItem)
+    .catch((error) => {
+      throw error;
+    });
+}
 </script>
 <style scoped>
 .widget-container {

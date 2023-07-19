@@ -114,11 +114,11 @@ import DxDateBox from 'devextreme-vue/date-box';
 import service from './data.js';
 
 const value = ref(new Date(1981, 3, 27));
-const now = ref(new Date());
-const firstWorkDay2017 = ref(new Date(2017, 0, 3));
-const min = ref(new Date(1900, 0, 1));
-const dateClear = ref(new Date(2015, 11, 1, 6));
-const disabledDates = ref(service.getFederalHolidays());
+const now = new Date();
+const firstWorkDay2017 = new Date(2017, 0, 3);
+const min = new Date(1900, 0, 1);
+const dateClear = new Date(2015, 11, 1, 6);
+const disabledDates = service.getFederalHolidays();
 
 const diffInDay = computed(() => {
   return (

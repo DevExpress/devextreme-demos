@@ -92,26 +92,24 @@
 import { ref } from 'vue';
 import { DxSelectBox } from 'devextreme-vue/select-box';
 import { DxLoadIndicator } from 'devextreme-vue/load-indicator';
-import { products as productsData, simpleProducts as simpleProductsData } from './data.js';
+import { products, simpleProducts } from './data.js';
 
-const products = ref(productsData);
-const simpleProducts = ref(simpleProductsData);
 const isLoaded = ref(true);
-const deferredProducts = ref({
+const selectedItem = ref(products[0]);
+const deferredProducts = {
   loadMode: 'raw',
   load: () => {
     isLoaded.value = false;
     const promise = new Promise((resolve) => {
       setTimeout(() => {
-        resolve(simpleProductsData);
+        resolve(simpleProducts);
         isLoaded.value = true;
       }, 3000);
     });
 
     return promise;
   },
-});
-const selectedItem = ref(productsData[0]);
+};
 </script>
 <style scoped>
 .dx-dropdowneditor-button .dx-button-content {

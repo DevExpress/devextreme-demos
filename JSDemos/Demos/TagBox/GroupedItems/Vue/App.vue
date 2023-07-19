@@ -53,17 +53,15 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
 import { DxTagBox } from 'devextreme-vue/tag-box';
-import DataSource from 'devextreme/data/data_source';
 import Group from './Group.vue';
 import productsData from './data.js';
 
-const products = ref(new DataSource({
+const products = {
   store: productsData,
   key: 'ID',
   group: 'Category',
-}));
+};
 </script>
 <style scoped>
   .dx-field {

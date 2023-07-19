@@ -58,10 +58,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
 import DxDateBox from 'devextreme-vue/date-box';
 
-const date = ref(new Date(2018, 9, 16, 15, 8, 12));
+const date = new Date(2018, 9, 16, 15, 8, 12);
 </script>
 <style>
 .dx-fieldset {

@@ -55,22 +55,21 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
 import DxTagBox from 'devextreme-vue/tag-box';
-import { products as allProducts } from './data.js';
+import { products } from './data.js';
 
-const products = ref(allProducts);
-const items = ref(allProducts.slice(0, 5));
-const onMultiTagPreparing = ref((args) => {
-        const selectedItemsLength = args.selectedItems.length;
-        const totalCount = 5;
+const items = products.slice(0, 5);
 
-        if (selectedItemsLength < totalCount) {
-          args.cancel = true;
-        } else {
-          args.text = `All selected (${selectedItemsLength})`;
-        }
-      });
+function onMultiTagPreparing(args) {
+  const selectedItemsLength = args.selectedItems.length;
+  const totalCount = 5;
+
+  if (selectedItemsLength < totalCount) {
+    args.cancel = true;
+  } else {
+    args.text = `All selected (${selectedItemsLength})`;
+  }
+}
 </script>
 <style scoped>
 .dx-field {

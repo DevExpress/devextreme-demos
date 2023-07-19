@@ -114,11 +114,11 @@ const firstDay = ref(0);
 const showWeekNumbers = ref(false);
 const weekNumberRule = ref('auto');
 const currentValue = ref(new Date());
-const zoomLevels = ref(['month', 'year', 'decade', 'century']);
+const zoomLevels = ['month', 'year', 'decade', 'century'];
 const cellTemplate = ref('cell');
 const disabled = ref(false);
 const zoomLevel = ref('month');
-const weekDays = ref([
+const weekDays = [
   { id: 0, text: 'Sunday' },
   { id: 1, text: 'Monday' },
   { id: 2, text: 'Tuesday' },
@@ -126,51 +126,56 @@ const weekDays = ref([
   { id: 4, text: 'Thursday' },
   { id: 5, text: 'Friday' },
   { id: 6, text: 'Saturday' },
-]);
-const weekNumberRules = ref(['auto', 'firstDay', 'firstFourDays', 'fullWeek']);
+];
+const weekNumberRules = ['auto', 'firstDay', 'firstFourDays', 'fullWeek'];
 
 function isWeekend(date) {
   const day = date.getDay();
   return day === 0 || day === 6;
-};
+}
+
 function setMinDate({ value }) {
   minDateValue.value = value
     ? new Date((new Date()).getTime() - 1000 * 60 * 60 * 24 * 3)
     : null;
-};
+}
+
 function setMaxDate({ value }) {
   maxDateValue.value = value
     ? new Date((new Date()).getTime() + 1000 * 60 * 60 * 24 * 3)
     : null;
-};
+}
+
 function disableWeekend({ value }) {
   disabledDates.value = value
     ? (data) => data.view === 'month' && isWeekend(data.date)
     : null;
-};
+}
+
 function useCellTemplate({ value }) {
   cellTemplate.value = value ? 'custom' : 'cell';
-};
+}
+
 function getCellCssClass({ date, view }) {
-      let cssClass = '';
-      const holidays = [[1, 0], [4, 6], [25, 11]];
+  let cssClass = '';
+  const holidays = [[1, 0], [4, 6], [25, 11]];
 
-      if (view === 'month') {
-        if (!date) {
-          cssClass = 'week-number';
-        } else {
-          if (isWeekend(date)) { cssClass = 'weekend'; }
+  if (view === 'month') {
+    if (!date) {
+      cssClass = 'week-number';
+    } else {
+      if (isWeekend(date)) { cssClass = 'weekend'; }
 
-          holidays.forEach((item) => {
-            if (date.getDate() === item[0] && date.getMonth() === item[1]) {
-              cssClass = 'holiday';
-            }
-          });
+      holidays.forEach((item) => {
+        if (date.getDate() === item[0] && date.getMonth() === item[1]) {
+          cssClass = 'holiday';
         }
-      }
+      });
+    }
+  }
 
-      return cssClass;
-    };
+  return cssClass;
+}
 </script>
 <style scoped>
 #container {
