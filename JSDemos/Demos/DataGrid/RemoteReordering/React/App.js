@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import DataGrid, {
   Column, RowDragging, Scrolling, Lookup, Sorting,
 } from 'devextreme-react/data-grid';
@@ -23,62 +23,53 @@ const employeesStore = createStore({
   },
 });
 
-const App = () => {
-  useEffect(() => {
-    const onReorder = (e) => {
-      e.promise = processReorder(e);
-    };
+const processReorder = async(e) => {
+  const visibleRows = e.component.getVisibleRows();
+  const newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
 
-    const processReorder = async(e) => {
-      const visibleRows = e.component.getVisibleRows();
-      const newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
-
-      await tasksStore.update(e.itemData.ID, { OrderIndex: newOrderIndex });
-      await e.component.refresh();
-    };
-
-    return () => {
-      // Clean up event listener
-      DataGrid.instance.off('onReorder', onReorder);
-    };
-  }, []);
-
-  return (
-    <React.Fragment>
-      <DataGrid
-        height={440}
-        dataSource={tasksStore}
-        showBorders={true}
-      >
-        <RowDragging
-          allowReordering={true}
-          onReorder={onReorder}
-          dropFeedbackMode="push"
-        />
-        <Scrolling mode="virtual" />
-        <Sorting mode="none" />
-        <Column dataField="ID" width={55} />
-        <Column dataField="Owner" width={150}>
-          <Lookup
-            dataSource={employeesStore}
-            valueExpr="ID"
-            displayExpr="FullName"
-          />
-        </Column>
-        <Column
-          dataField="AssignedEmployee"
-          caption="Assignee"
-          width={150}>
-          <Lookup
-            dataSource={employeesStore}
-            valueExpr="ID"
-            displayExpr="FullName"
-          />
-        </Column>
-        <Column dataField="Subject" />
-      </DataGrid>
-    </React.Fragment>
-  );
+  await tasksStore.update(e.itemData.ID, { OrderIndex: newOrderIndex });
+  await e.component.refresh();
 };
+
+const onReorder = (e) => {
+  e.promise = processReorder(e);
+};
+
+const App = () => (
+  <React.Fragment>
+    <DataGrid
+      height={440}
+      dataSource={tasksStore}
+      showBorders={true}
+    >
+      <RowDragging
+        allowReordering={true}
+        onReorder={onReorder}
+        dropFeedbackMode="push"
+      />
+      <Scrolling mode="virtual" />
+      <Sorting mode="none" />
+      <Column dataField="ID" width={55} />
+      <Column dataField="Owner" width={150}>
+        <Lookup
+          dataSource={employeesStore}
+          valueExpr="ID"
+          displayExpr="FullName"
+        />
+      </Column>
+      <Column
+        dataField="AssignedEmployee"
+        caption="Assignee"
+        width={150}>
+        <Lookup
+          dataSource={employeesStore}
+          valueExpr="ID"
+          displayExpr="FullName"
+        />
+      </Column>
+      <Column dataField="Subject" />
+    </DataGrid>
+  </React.Fragment>
+);
 
 export default App;

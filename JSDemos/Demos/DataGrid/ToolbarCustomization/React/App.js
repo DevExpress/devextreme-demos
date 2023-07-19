@@ -9,19 +9,19 @@ import query from 'devextreme/data/query';
 import service from './data.js';
 
 const countLabel = { 'aria-label': 'Count' };
+const groupingValues = [{
+  value: 'CustomerStoreState',
+  text: 'Grouping by State',
+}, {
+  value: 'Employee',
+  text: 'Grouping by Employee',
+}];
 
 const App = () => {
   const orders = service.getOrders();
   const [expanded, setExpanded] = useState(true);
   const [totalCount, setTotalCount] = useState(getGroupCount('CustomerStoreState'));
   const [grouping, setGrouping] = useState('CustomerStoreState');
-  const groupingValues = [{
-    value: 'CustomerStoreState',
-    text: 'Grouping by State',
-  }, {
-    value: 'Employee',
-    text: 'Grouping by Employee',
-  }];
   const dataGridRef = useRef(null);
 
   const getGroupCount = (groupField) => query(orders)
@@ -29,11 +29,11 @@ const App = () => {
     .toArray().length;
 
   const groupChanged = (e) => {
-    const grouping = e.value;
+    const newGrouping = e.value;
     dataGridRef.current.instance.clearGrouping();
-    dataGridRef.current.instance.columnOption(grouping, 'groupIndex', 0);
-    setTotalCount(getGroupCount(grouping));
-    setGrouping(grouping);
+    dataGridRef.current.instance.columnOption(newGrouping, 'groupIndex', 0);
+    setTotalCount(getGroupCount(newGrouping));
+    setGrouping(newGrouping);
   };
 
   const collapseAllClick = () => {

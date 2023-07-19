@@ -3,10 +3,10 @@ import DataGrid, {
   Column, RowDragging, Scrolling, Lookup, Sorting,
 } from 'devextreme-react/data-grid';
 import { CheckBox } from 'devextreme-react/check-box';
-import { tasks, employees } from './data.js';
+import { tasks as defaultTasks, employees } from './data.js';
 
 const App = () => {
-  const [tasks, setTasks] = useState(tasks);
+  const [tasks, setTasks] = useState(defaultTasks);
   const [showDragIcons, setShowDragIcons] = useState(true);
 
   const onReorder = (e) => {

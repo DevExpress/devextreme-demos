@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ODataStore from 'devextreme/data/odata/store';
 import DataGrid, {
   Column,
@@ -26,6 +26,7 @@ const dataSourceOptions = {
 
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const dataGridRef = useRef();
 
   useEffect(() => {
     if (!collapsed) {
@@ -40,6 +41,7 @@ const App = () => {
 
   return (
     <DataGrid
+      ref={dataGridRef}
       dataSource={dataSourceOptions}
       allowColumnReordering={true}
       rowAlternationEnabled={true}

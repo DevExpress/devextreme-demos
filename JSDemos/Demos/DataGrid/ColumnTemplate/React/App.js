@@ -3,16 +3,16 @@ import DataGrid, { Column } from 'devextreme-react/data-grid';
 
 import service from './data.js';
 
+function cellRender(data) {
+  return <img src={data.value} />;
+}
+
 function App() {
   const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
     setEmployees(service.getEmployees());
   }, []);
-
-  function cellRender(data) {
-    return <img src={data.value} />;
-  }
 
   return (
     <DataGrid id="gridContainer"

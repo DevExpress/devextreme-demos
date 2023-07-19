@@ -15,9 +15,10 @@ import {
   keyDirectionLabel,
 } from './data.js';
 
+const enterKeyActions = ['startEdit', 'moveFocus'];
+const enterKeyDirections = ['none', 'column', 'row'];
+
 const App = () => {
-  const enterKeyActions = ['startEdit', 'moveFocus'];
-  const enterKeyDirections = ['none', 'column', 'row'];
   const [editOnKeyPress, setEditOnKeyPress] = useState(true);
   const [enterKeyAction, setEnterKeyAction] = useState('moveFocus');
   const [enterKeyDirection, setEnterKeyDirection] = useState('column');

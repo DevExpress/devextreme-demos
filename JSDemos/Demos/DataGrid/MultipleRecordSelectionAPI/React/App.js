@@ -23,25 +23,25 @@ function App() {
     dataGridRef.current.instance.clearSelection();
   };
 
-  const onSelectionChanged = ({ selectedRowKeys, selectedRowsData }) => {
+  const onSelectionChanged = ({ selectedRowKeys: changedRowKeys, selectedRowsData }) => {
     selectionChangedBySelectBox.current = false;
 
     setPrefix(null);
-    setSelectedRowKeys(selectedRowKeys);
+    setSelectedRowKeys(changedRowKeys);
     setSelectedEmployeeNames(getEmployeeNames(selectedRowsData));
   };
 
   const onSelectionFilterChanged = ({ value }) => {
     selectionChangedBySelectBox.current = true;
 
-    const prefix = value;
+    const newPrefix = value;
 
-    if (prefix) {
-      const filteredEmployees = prefix === 'All' ? employees : employees.filter((employee) => employee.Prefix === prefix);
-      const selectedRowKeys = filteredEmployees.map((employee) => employee.ID);
+    if (newPrefix) {
+      const filteredEmployees = newPrefix === 'All' ? employees : employees.filter((employee) => employee.Prefix === newPrefix);
+      const changedRowKeys = filteredEmployees.map((employee) => employee.ID);
 
-      setPrefix(prefix);
-      setSelectedRowKeys(selectedRowKeys);
+      setPrefix(newPrefix);
+      setSelectedRowKeys(changedRowKeys);
       setSelectedEmployeeNames(getEmployeeNames(filteredEmployees));
     }
   };
