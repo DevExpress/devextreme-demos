@@ -270,7 +270,7 @@ jobs:
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
     - name: Discover declarations
-      working-directory: ./devextreme
+      working-directory: ./devextreme/packages/devextreme
       run: npm run discover-declarations
 
     #Build devextreme-angular
