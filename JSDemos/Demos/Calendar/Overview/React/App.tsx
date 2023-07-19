@@ -2,7 +2,7 @@ import React from 'react';
 import CheckBox from 'devextreme-react/check-box';
 import SelectBox from 'devextreme-react/select-box';
 import DateBox from 'devextreme-react/date-box';
-import Calendar from 'devextreme-react/calendar';
+import Calendar, { CalendarTypes } from 'devextreme-react/calendar';
 import CustomCell, { isWeekend } from './CustomCell.tsx';
 
 const zoomLevels = ['month', 'year', 'decade', 'century'];
@@ -28,13 +28,13 @@ export default function App() {
   const [minDateValue, setMinDateValue] = React.useState(null);
   const [maxDateValue, setMaxDateValue] = React.useState(null);
   const [weekendDisabled, setWeekendDisabled] = React.useState(null);
-  const [firstDay, setFirstDay] = React.useState(0);
-  const [weekNumberRule, setWeekNumberRule] = React.useState('auto');
+  const [firstDay, setFirstDay] = React.useState<CalendarTypes.FirstDayOfWeek>(0);
+  const [weekNumberRule, setWeekNumberRule] = React.useState<CalendarTypes.WeekNumberRule>('auto');
   const [showWeekNumbers, setShowWeekNumbers] = React.useState(false);
   const [currentValue, setCurrentValue] = React.useState(new Date());
   const [useCellTemplate, setUseCellTemplate] = React.useState(null);
   const [disabled, setDisabled] = React.useState(false);
-  const [zoomLevel, setZoomLevel] = React.useState('month');
+  const [zoomLevel, setZoomLevel] = React.useState<CalendarTypes.CalendarZoomLevel>('month');
 
   const onCurrentValueChange = React.useCallback(
     ({ value }) => {

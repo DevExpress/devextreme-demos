@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckBox } from 'devextreme-react/check-box';
+import { CheckBox, CheckBoxTypes } from 'devextreme-react/check-box';
 
 const checkedLabel = { 'aria-label': 'Checked' };
 const uncheckedLabel = { 'aria-label': 'Unchecked' };
@@ -12,7 +12,7 @@ const customSizeLabel = { 'aria-label': 'Custom size' };
 function App() {
   const [checkBoxValue, setCheckBoxValue] = React.useState(null);
 
-  const onValueChanged = React.useCallback((args: { value: any }) => {
+  const onValueChanged = React.useCallback((args: CheckBoxTypes.ValueChangedEvent) => {
     setCheckBoxValue(args.value);
   }, []);
 

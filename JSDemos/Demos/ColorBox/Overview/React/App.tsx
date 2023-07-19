@@ -1,5 +1,5 @@
 import React from 'react';
-import ColorBox from 'devextreme-react/color-box';
+import ColorBox, { ColorBoxTypes } from 'devextreme-react/color-box';
 
 const defaultModeLabel = { 'aria-label': 'Default mode' };
 const alphaChannelLabel = { 'aria-label': 'With alpha channel editing' };
@@ -11,7 +11,7 @@ const eventHandlingLabel = { 'aria-label': 'Event Handling' };
 function App() {
   const [color, setColor] = React.useState('#f05b41');
 
-  const handleColorChange = React.useCallback(({ value }) => {
+  const handleColorChange = React.useCallback(({ value }: ColorBoxTypes.ValueChangedEvent) => {
     setColor(value);
   }, []);
 

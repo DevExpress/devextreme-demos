@@ -1,6 +1,6 @@
 import React from 'react';
 import { NumberBox } from 'devextreme-react/number-box';
-import { SelectBox } from 'devextreme-react/select-box';
+import { SelectBox, SelectBoxTypes } from 'devextreme-react/select-box';
 import { Switch } from 'devextreme-react/switch';
 import { TextBox } from 'devextreme-react/text-box';
 import { Autocomplete } from 'devextreme-react/autocomplete';
@@ -19,7 +19,7 @@ function App() {
   const [displayExpr, setDisplayExpr] = React.useState('nameEn');
   const [textValue, setTextValue] = React.useState('text');
 
-  const onLanguageChanged = React.useCallback((args: { value: string }) => {
+  const onLanguageChanged = React.useCallback((args: SelectBoxTypes.ValueChangedEvent) => {
     const isRTL = args.value === languages[0];
 
     setDisplayExpr(isRTL ? 'nameAr' : 'nameEn');
@@ -51,7 +51,7 @@ function App() {
           <div className="dx-field">
             <div className="dx-field-label">Number Box</div>
             <div className="dx-field-value">
-              <NumberBox showSpinButtons={true} defaultValue="123" rtlEnabled={rtlEnabled} inputAttr={numberBoxLabel} />
+              <NumberBox showSpinButtons={true} defaultValue={123} rtlEnabled={rtlEnabled} inputAttr={numberBoxLabel} />
             </div>
           </div>
           <div className="dx-field">

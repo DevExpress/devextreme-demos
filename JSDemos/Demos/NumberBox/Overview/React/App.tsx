@@ -1,5 +1,5 @@
 import React from 'react';
-import { NumberBox } from 'devextreme-react/number-box';
+import { NumberBox, NumberBoxTypes } from 'devextreme-react/number-box';
 
 const simpleLabel = { 'aria-label': 'Simple' };
 const withSpinAndButtonsLabel = { 'aria-label': 'With Spin And Buttons' };
@@ -8,7 +8,7 @@ const maxAndMinLabel = { 'aria-label': 'Min And Max' };
 const salesLabel = { 'aria-label': 'Sales' };
 const stockLabel = { 'aria-label': 'Stock' };
 
-const keyDown = (e: { event: any }) => {
+const keyDown = (e: NumberBoxTypes.KeyDownEvent) => {
   const { event } = e;
   const str = event.key || String.fromCharCode(event.which);
   if (/^[.,e]$/.test(str)) {
@@ -20,7 +20,7 @@ function App() {
   const [value, setValue] = React.useState(16);
   const [max] = React.useState(30);
 
-  const valueChanged = React.useCallback((e: { value: any }) => {
+  const valueChanged = React.useCallback((e: NumberBoxTypes.ValueChangedEvent) => {
     setValue(e.value);
   }, []);
 

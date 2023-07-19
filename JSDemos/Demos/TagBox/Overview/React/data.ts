@@ -15,7 +15,18 @@ export const simpleProducts = [
   'ExcelRemote IP',
 ];
 
-export const products = [{
+export type Product = {
+  Id?: number,
+  Name?: string,
+  Price?: number,
+  Current_Inventory?: number,
+  Backorder?: number,
+  Manufacturing?: number,
+  Category?: string,
+  ImageSrc?: string,
+};
+
+export const products: Product[] = [{
   Id: 1,
   Name: 'HD Video Player',
   Price: 330,

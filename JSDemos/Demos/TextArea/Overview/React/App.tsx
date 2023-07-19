@@ -1,7 +1,7 @@
 import React from 'react';
-import CheckBox from 'devextreme-react/check-box';
-import SelectBox from 'devextreme-react/select-box';
-import TextArea from 'devextreme-react/text-area';
+import CheckBox, { CheckBoxTypes } from 'devextreme-react/check-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
+import TextArea, { TextAreaTypes } from 'devextreme-react/text-area';
 
 import service from './data.ts';
 
@@ -17,22 +17,22 @@ function App() {
   const [autoResizeEnabled, setAutoResizeEnabled] = React.useState(false);
   const [height, setHeight] = React.useState(90);
 
-  const onCheckboxValueChanged = React.useCallback((e: { value: any }) => {
+  const onCheckboxValueChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     const str = service.getContent();
     setValue(e.value ? str.substring(0, 100) : str);
     setMaxLength(e.value ? 100 : null);
   }, []);
 
-  const onAutoResizeChanged = React.useCallback((e: { value: any }) => {
+  const onAutoResizeChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setAutoResizeEnabled(e.value);
     setHeight(e.value ? undefined : 90);
   }, []);
 
-  const onSelectBoxValueChanged = React.useCallback((e: { value: any }) => {
+  const onSelectBoxValueChanged = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setEventValue(e.value);
   }, []);
 
-  const onTextAreaValueChanged = React.useCallback((e: { value: any }) => {
+  const onTextAreaValueChanged = React.useCallback((e: TextAreaTypes.ValueChangedEvent) => {
     setValueForEditableTestArea(e.value);
   }, []);
 

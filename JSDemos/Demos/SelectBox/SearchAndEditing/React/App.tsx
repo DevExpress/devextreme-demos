@@ -1,5 +1,5 @@
 import React from 'react';
-import { SelectBox } from 'devextreme-react/select-box';
+import { SelectBox, SelectBoxTypes } from 'devextreme-react/select-box';
 import { NumberBox } from 'devextreme-react/number-box';
 import { CheckBox } from 'devextreme-react/check-box';
 import DataSource from 'devextreme/data/data_source';
@@ -7,6 +7,7 @@ import DataSource from 'devextreme/data/data_source';
 import {
   simpleProducts, products, searchTimeoutLabel, minimumSearchLengthLabel, searchExpressionLabel, searchModeLabel, productLabel, simpleProductLabel,
 } from './data.ts';
+import { SimplifiedSearchMode } from 'devextreme/common.js';
 
 const searchModeItems = ['contains', 'startswith'];
 const searchExprItems = [
@@ -27,7 +28,7 @@ const productsDataSource = new DataSource({
   },
 });
 
-const customItemCreating = (args: { text: any; customItem: Promise<{ Name: any; ID: any }> }) => {
+const customItemCreating = (args: SelectBoxTypes.CustomItemCreatingEvent) => {
   if (!args.text) {
     args.customItem = null;
     return;
@@ -52,7 +53,7 @@ const customItemCreating = (args: { text: any; customItem: Promise<{ Name: any; 
 
 function App() {
   const [editBoxValue, setEditBoxValue] = React.useState(simpleProducts[0]);
-  const [searchModeOption, setSearchModeOption] = React.useState('contains');
+  const [searchModeOption, setSearchModeOption] = React.useState<SimplifiedSearchMode>('contains');
   const [searchExprOption, setSearchExprOption] = React.useState('Name');
   const [searchTimeoutOption, setSearchTimeoutOption] = React.useState(200);
   const [minSearchLengthOption, setMinSearchLengthOption] = React.useState(0);

@@ -1,5 +1,5 @@
 import React from 'react';
-import DateBox from 'devextreme-react/date-box';
+import DateBox, { DateBoxTypes } from 'devextreme-react/date-box';
 
 import service from './data.ts';
 
@@ -22,7 +22,7 @@ function App() {
 
   const diffInDay = React.useMemo(() => `${Math.floor(Math.abs((new Date().getTime() - value.getTime()) / (24 * 60 * 60 * 1000)))} days`, [value]);
 
-  const onValueChanged = React.useCallback((e: { value: any }) => {
+  const onValueChanged = React.useCallback((e: DateBoxTypes.ValueChangedEvent) => {
     setValue(e.value);
   }, []);
 

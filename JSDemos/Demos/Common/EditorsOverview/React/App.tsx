@@ -1,10 +1,10 @@
 import React from 'react';
 
-import ColorBox from 'devextreme-react/color-box';
-import NumberBox from 'devextreme-react/number-box';
-import SelectBox from 'devextreme-react/select-box';
-import Switch from 'devextreme-react/switch';
-import TextBox from 'devextreme-react/text-box';
+import ColorBox, { ColorBoxTypes } from 'devextreme-react/color-box';
+import NumberBox, { NumberBoxTypes } from 'devextreme-react/number-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
+import Switch, { SwitchTypes } from 'devextreme-react/switch';
+import TextBox, { TextBoxTypes } from 'devextreme-react/text-box';
 
 import Logo from './Logo.tsx';
 
@@ -43,29 +43,29 @@ function App() {
   const [transform, setTransform] = React.useState(noFlipTransform);
   const [border, setBorder] = React.useState(false);
 
-  const handleTextChange = React.useCallback((e: { value: any }) => {
+  const handleTextChange = React.useCallback((e: TextBoxTypes.ValueChangedEvent) => {
     setText(e.value);
   }, []);
 
-  const handleColorChange = React.useCallback((e: { value: any }) => {
+  const handleColorChange = React.useCallback((e: ColorBoxTypes.ValueChangedEvent) => {
     setColor(e.value);
   }, []);
 
-  const handleHeightChange = React.useCallback((e: { value: number }) => {
+  const handleHeightChange = React.useCallback((e: NumberBoxTypes.ValueChangedEvent) => {
     setWidth((e.value * 37) / 26);
     setHeight(e.value);
   }, []);
 
-  const handleWidthChange = React.useCallback((e: { value: number }) => {
+  const handleWidthChange = React.useCallback((e: NumberBoxTypes.ValueChangedEvent) => {
     setWidth(e.value);
     setHeight((e.value * 26) / 37);
   }, []);
 
-  const handleTransformChange = React.useCallback((e: { value: any }) => {
+  const handleTransformChange = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setTransform(e.value);
   }, []);
 
-  const handleBorderChange = React.useCallback((e: { value: any }) => {
+  const handleBorderChange = React.useCallback((e: SwitchTypes.ValueChangedEvent) => {
     setBorder(e.value);
   }, []);
 

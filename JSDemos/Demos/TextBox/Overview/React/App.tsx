@@ -1,5 +1,5 @@
 import React from 'react';
-import TextBox from 'devextreme-react/text-box';
+import TextBox, { TextBoxTypes } from 'devextreme-react/text-box';
 
 const nameLabel = { 'aria-label': 'Name' };
 const fullNameLabel = { 'aria-label': 'Full Name' };
@@ -11,7 +11,7 @@ const rules = { X: /[02-9]/ };
 function App() {
   const [emailValue, setEmailValue] = React.useState('smith@corp.com');
 
-  const valueChanged = React.useCallback((data: { value: string }) => {
+  const valueChanged = React.useCallback((data: TextBoxTypes.ValueChangedEvent) => {
     setEmailValue(`${data.value.replace(/\s/g, '').toLowerCase()}@corp.com`);
   }, []);
 

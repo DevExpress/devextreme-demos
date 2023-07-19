@@ -4,9 +4,10 @@ import TextBox from 'devextreme-react/text-box';
 import DateBox from 'devextreme-react/date-box';
 import DateRangeBox from 'devextreme-react/date-range-box';
 import TextArea from 'devextreme-react/text-area';
-import Button from 'devextreme-react/button';
+import Button, { ButtonTypes } from 'devextreme-react/button';
 import Validator, { RequiredRule } from 'devextreme-react/validator';
 import notify from 'devextreme/ui/notify';
+import { EditorStyle, LabelMode } from 'devextreme/common';
 import {
   states, stylingModes, labelModes, notesLabel, birthDateLabel, hireDateLabel, nameLabel, addressLabel, phoneLabel, stateLabel, labelModeLabel, stylingModeLabel,
 } from './data.ts';
@@ -15,7 +16,7 @@ const phoneRules = {
   X: /[02-9]/,
 };
 
-function validateClick({ validationGroup }) {
+function validateClick({ validationGroup } : ButtonTypes.ClickEvent) {
   const result = validationGroup.validate();
   if (result.isValid) {
     notify('The task was saved successfully.', 'success');
@@ -26,8 +27,8 @@ function validateClick({ validationGroup }) {
 
 export default function App() {
   const defaultStylingMode = 'outlined';
-  const [stylingMode, setStylingMode] = React.useState(defaultStylingMode);
-  const [labelMode, setLabelMode] = React.useState('static');
+  const [stylingMode, setStylingMode] = React.useState<EditorStyle>(defaultStylingMode);
+  const [labelMode, setLabelMode] = React.useState<LabelMode>('static');
   const changeStylingMode = React.useCallback(
     ({ value }) => {
       setStylingMode(value);

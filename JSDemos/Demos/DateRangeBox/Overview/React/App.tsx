@@ -4,12 +4,12 @@ import DateRangeBox from 'devextreme-react/date-range-box';
 const msInDay = 1000 * 60 * 60 * 24;
 const now = new Date();
 const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-const initialValue = [new Date(now.getTime() - msInDay * 3), new Date(now.getTime() + msInDay * 3)];
+const initialValue: [Date, Date] = [new Date(now.getTime() - msInDay * 3), new Date(now.getTime() + msInDay * 3)];
 const min = new Date(now.setDate(1));
 const max = new Date(now.setDate(lastDay));
 
-function convertRangeToDays([startDate, endDate]) {
-  const diffInDay = Math.floor(Math.abs((endDate - startDate) / msInDay));
+function convertRangeToDays([startDate, endDate]: [Date, Date]) {
+  const diffInDay = Math.floor(Math.abs((endDate.valueOf() - startDate.valueOf()) / msInDay));
 
   return diffInDay + 1;
 }

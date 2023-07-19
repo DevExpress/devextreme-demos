@@ -1,5 +1,5 @@
 import React from 'react';
-import { TagBox } from 'devextreme-react/tag-box';
+import { TagBox, TagBoxTypes } from 'devextreme-react/tag-box';
 import { products, productLabel } from './data.ts';
 
 const defaultValues = {
@@ -9,7 +9,7 @@ const defaultValues = {
 };
 const items = products.slice(0, 5);
 
-const onMultiTagPreparing = (args: { selectedItems: string | any[]; cancel: boolean; text: string }) => {
+const onMultiTagPreparing = (args: TagBoxTypes.MultiTagPreparingEvent) => {
   const selectedItemsLength = args.selectedItems.length;
   const totalCount = 5;
 

@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { TextBox, Button as TextBoxButton } from 'devextreme-react/text-box';
-import { NumberBox, Button as NumberBoxButton } from 'devextreme-react/number-box';
-import { DateBox, Button as DateBoxButton } from 'devextreme-react/date-box';
+import { TextBox, Button as TextBoxButton, TextBoxTypes } from 'devextreme-react/text-box';
+import { NumberBox, Button as NumberBoxButton, NumberBoxTypes } from 'devextreme-react/number-box';
+import { DateBox, Button as DateBoxButton, DateBoxTypes } from 'devextreme-react/date-box';
+import { ButtonTypes } from 'devextreme-react/button';
 
 const millisecondsInDay = 24 * 60 * 60 * 1000;
 const currencyLabel = { 'aria-label': 'Multi Currency' };
@@ -10,12 +11,12 @@ const dateBoxLabel = { 'aria-label': 'Date' };
 const passwordLabel = { 'aria-label': 'Password' };
 
 function App() {
-  const [passwordMode, setPasswordMode] = React.useState('password');
+  const [passwordMode, setPasswordMode] = React.useState<TextBoxTypes.TextBoxType>('password');
   const [currencyFormat, setCurrencyFormat] = React.useState('$ #.##');
   const [currencyValue, setCurrencyValue] = React.useState(14500.55);
   const [dateValue, setDateValue] = React.useState(new Date().getTime());
 
-  const passwordButton = React.useMemo(
+  const passwordButton = React.useMemo<ButtonTypes.Properties>(
     () => ({
       icon: '../../../../images/icons/eye.png',
       type: 'default',
@@ -26,7 +27,7 @@ function App() {
     [setPasswordMode],
   );
 
-  const currencyButton = React.useMemo(
+  const currencyButton = React.useMemo<ButtonTypes.Properties>(
     () => ({
       text: '€',
       stylingMode: 'text',
@@ -34,7 +35,7 @@ function App() {
       elementAttr: {
         class: 'currency',
       },
-      onClick: (e: { component: { option: (arg0: string, arg1: string) => string } }) => {
+      onClick: (e) => {
         if (e.component.option('text') === '$') {
           e.component.option('text', '€');
           setCurrencyFormat('$ #.##');
@@ -59,7 +60,7 @@ function App() {
     [setDateValue],
   );
 
-  const prevDateButton = React.useMemo(
+  const prevDateButton = React.useMemo<ButtonTypes.Properties>(
     () => ({
       icon: 'spinprev',
       stylingMode: 'text',
@@ -70,7 +71,7 @@ function App() {
     [setDateValue],
   );
 
-  const nextDateButton = React.useMemo(
+  const nextDateButton = React.useMemo<ButtonTypes.Properties>(
     () => ({
       icon: 'spinnext',
       stylingMode: 'text',
@@ -82,14 +83,14 @@ function App() {
   );
 
   const onDateChanged = React.useCallback(
-    (e: { value: any }) => {
+    (e: DateBoxTypes.ValueChangedEvent) => {
       setDateValue(e.value);
     },
     [setDateValue],
   );
 
   const changeCurrency = React.useCallback(
-    (data: { value: any }) => {
+    (data: NumberBoxTypes.ValueChangedEvent) => {
       setCurrencyValue(data.value);
     },
     [setCurrencyValue],

@@ -1,6 +1,6 @@
 import React from 'react';
 import OData from 'devextreme/data/odata/store';
-import { Autocomplete } from 'devextreme-react/autocomplete';
+import { Autocomplete, AutocompleteTypes } from 'devextreme-react/autocomplete';
 import CustomStore from 'devextreme/data/custom_store';
 import 'whatwg-fetch';
 import { names, surnames, positions } from './data.ts';
@@ -52,19 +52,19 @@ function App() {
   const [state, setState] = React.useState('');
   const [currentClient, setCurrentClient] = React.useState('');
 
-  const handleFirstNameChange = React.useCallback((e: { value: any }) => {
+  const handleFirstNameChange = React.useCallback((e: AutocompleteTypes.ValueChangedEvent) => {
     setFirstName(e.value);
   }, []);
 
-  const handleLastNameChange = React.useCallback((e: { value: any }) => {
+  const handleLastNameChange = React.useCallback((e: AutocompleteTypes.ValueChangedEvent) => {
     setLastName(e.value);
   }, []);
 
-  const handleStateChange = React.useCallback((e: { value: any }) => {
+  const handleStateChange = React.useCallback((e: AutocompleteTypes.ValueChangedEvent) => {
     setState(e.value);
   }, []);
 
-  const handleCurrentClientChange = React.useCallback((e: { value: any }) => {
+  const handleCurrentClientChange = React.useCallback((e: AutocompleteTypes.ValueChangedEvent) => {
     setCurrentClient(e.value);
   }, []);
 

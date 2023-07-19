@@ -1,12 +1,14 @@
 import React from 'react';
 
-import TagBox from 'devextreme-react/tag-box';
+import TagBox, { TagBoxTypes } from 'devextreme-react/tag-box';
 import Popover from 'devextreme-react/popover';
 import ArrayStore from 'devextreme/data/array_store';
 
 import Item from './Item.tsx';
 import Tag from './Tag.tsx';
-import { simpleProducts, products, productLabel } from './data.ts';
+import {
+  simpleProducts, products, productLabel, Product,
+} from './data.ts';
 
 const disabledValue = [simpleProducts[0]];
 const value = [1, 2];
@@ -18,10 +20,10 @@ const dataSource = new ArrayStore({
 function App() {
   const [editableProducts, setEditableProducts] = React.useState([...simpleProducts]);
   const [target, setTarget] = React.useState(null);
-  const [product, setProduct] = React.useState({});
+  const [product, setProduct] = React.useState<Product>({});
 
   const onCustomItemCreating = React.useCallback(
-    (args: { text: any; customItem: any }) => {
+    (args: TagBoxTypes.CustomItemCreatingEvent) => {
       const newValue = args.text;
       const isItemInDataSource = editableProducts.some((item) => item === newValue);
       if (!isItemInDataSource) {
