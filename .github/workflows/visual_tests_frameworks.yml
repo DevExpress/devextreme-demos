@@ -449,8 +449,9 @@ jobs:
           cp ../Declarations.json ./artifacts/internal-tools/
           npm i
           npm run update-topics
+
       - name: Inject descriptions
-        working-directory: ./devextreme
+        working-directory: ./devextreme/packages/devextreme
         run: |
           npm run internal-tool -- inject-descriptions --descriptions-path ../../../devextreme-documentation-repo/artifacts/internal-tools/Descriptions.json --js-scripts ./js
 
