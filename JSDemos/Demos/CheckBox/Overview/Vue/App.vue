@@ -80,30 +80,16 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 import { DxCheckBox } from 'devextreme-vue/check-box';
 
 const checkBoxValue = ref(null);
 
-const checkedLabel = computed(() => {
-  return { 'aria-label': 'Checked' };
-});
-const unCheckedLabel = computed(() => {
-  return { 'aria-label': 'Unchecked' };
-});
-const indeterminateLabel = computed(() => {
-  return { 'aria-label': 'Indeterminate' };
-});
-const threeStateModeLabel = computed(() => {
-  return { 'aria-label': 'Three state mode' };
-});
-const handleValueChangeLabel = computed(() => {
-  return { 'aria-label': 'Handle value change' };
-});
-const disabledLabel = computed(() => {
-  return { 'aria-label': 'Disabled' };
-});
-const customSizeLabel = computed(() => {
-  return { 'aria-label': 'Custom size' };
-});
+const checkedLabel = { 'aria-label': 'Checked' };
+const unCheckedLabel = { 'aria-label': 'Unchecked' };
+const indeterminateLabel = { 'aria-label': 'Indeterminate' };
+const threeStateModeLabel = { 'aria-label': 'Three state mode' };
+const handleValueChangeLabel = { 'aria-label': 'Handle value change' };
+const disabledLabel = { 'aria-label': 'Disabled' };
+const customSizeLabel = { 'aria-label': 'Custom size' };
 </script>

@@ -124,21 +124,22 @@ import DxNumberBox from 'devextreme-vue/number-box';
 import DxTagBox from 'devextreme-vue/tag-box';
 import { europeanUnion as europeanUnionData } from './data.js';
 
-const europeanUnion = ref(europeanUnionData);
-const languages = ref([
+const languages = [
   'Arabic: Right-to-Left direction',
   'English: Left-to-Right direction',
-]);
+];
+const europeanUnion = ref(europeanUnionData);
 const displayExpr = ref('nameEn');
 const rtlEnabled = ref(false);
 const textValue = ref('text');
-const onLanguageChanged = ref((args) => {
-        const isRTL = args.value === languages.value[0];
 
-        displayExpr.value = isRTL ? 'nameAr' : 'nameEn';
-        rtlEnabled.value = isRTL;
-        textValue.value = isRTL ? 'نص' : 'text';
-      });
+function onLanguageChanged(args) {
+  const isRTL = args.value === languages[0];
+
+  displayExpr.value = isRTL ? 'nameAr' : 'nameEn';
+  rtlEnabled.value = isRTL;
+  textValue.value = isRTL ? 'نص' : 'text';
+}
 </script>
 <style>
 .options {

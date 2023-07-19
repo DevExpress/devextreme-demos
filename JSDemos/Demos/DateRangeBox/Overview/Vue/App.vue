@@ -75,18 +75,15 @@ import DxDateRangeBox from 'devextreme-vue/date-range-box';
 
 const now = new Date();
 const msInDay = 1000 * 60 * 60 * 24;
-
 const initialDates = [
   new Date(now.getTime() - msInDay * 3),
   new Date(now.getTime() + msInDay * 3),
 ];
-
 const currentValue = ref(initialDates);
-const initialValue = ref(initialDates);
+const initialValue = initialDates;
 const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-const min = ref(new Date(now.setDate(1)));
-const max = ref(new Date(now.setDate(lastDay)));
-
+const min = new Date(now.setDate(1));
+const max = new Date(now.setDate(lastDay));
 const selectedDays = computed(() => convertRangeToDays(currentValue.value));
 
 function convertRangeToDays([startDate, endDate]) {

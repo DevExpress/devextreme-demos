@@ -77,17 +77,18 @@ import { DxTextBox, DxButton as DxTextBoxButton } from 'devextreme-vue/text-box'
 import { DxNumberBox, DxButton as DxNumberBoxButton } from 'devextreme-vue/number-box';
 import { DxDateBox, DxButton as DxDateBoxButton } from 'devextreme-vue/date-box';
 
+const millisecondsInDay = 24 * 60 * 60 * 1000;
 const passwordMode = ref('password');
-const passwordButton = ref({
+const passwordButton = {
   icon: '../../../../images/icons/eye.png',
   type: 'default',
   onClick: () => {
     passwordMode.value = passwordMode.value === 'text' ? 'password' : 'text';
   },
-});
+};
 const currencyFormat = ref('$ #.##');
 const currencyValue = ref(14500.55);
-const currencyButton = ref({
+const currencyButton = {
   text: '€',
   stylingMode: 'text',
   width: 32,
@@ -105,29 +106,28 @@ const currencyButton = ref({
       currencyValue.value *= 0.836;
     }
   },
-});
+};
 const dateValue = ref(new Date().getTime());
-const todayButton = ref({
+const todayButton = {
   text: 'Today',
   onClick: () => {
     dateValue.value = new Date().getTime();
   },
-});
-const prevDateButton = ref({
+};
+const prevDateButton = {
   icon: 'spinprev',
   stylingMode: 'text',
   onClick: () => {
     dateValue.value -= millisecondsInDay;
   },
-});
-const nextDateButton = ref({
+};
+const nextDateButton = {
   icon: 'spinnext',
   stylingMode: 'text',
   onClick: () => {
     dateValue.value += millisecondsInDay;
   },
-});
-const millisecondsInDay = 24 * 60 * 60 * 1000;
+};
 </script>
 <style>
 .dx-fieldset {

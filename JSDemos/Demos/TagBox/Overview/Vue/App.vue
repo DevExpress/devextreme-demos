@@ -122,18 +122,16 @@ import { ref } from 'vue';
 import DxTagBox from 'devextreme-vue/tag-box';
 import Item from './Item.vue';
 import Tag from './Tag.vue';
-import { simpleProducts as allSimpleProducts, products as allProducts } from './data.js';
+import { simpleProducts, products } from './data.js';
 
-const products = ref(allProducts);
-const simpleProducts = ref(allSimpleProducts);
-const editableProducts = ref(allSimpleProducts.slice());
+const editableProducts = ref(simpleProducts.slice());
 
 const value = ref([1, 2]);
 const onCustomItemCreating = ref((args) => {
   const newValue = args.text;
   const isItemInDataSource = editableProducts.value.some((item) => item === newValue);
   if (!isItemInDataSource) {
-    editableProducts.value = [newValue, ...editableProducts.value];
+    editableProducts.value = [newValue, ...editableProducts];
   }
   args.customItem = newValue;
 });

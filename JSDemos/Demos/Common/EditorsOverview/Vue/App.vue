@@ -99,7 +99,7 @@ const width = ref(370);
 const height = ref(260);
 const transform = ref('scaleX(1)');
 const border = ref(false);
-const transformations = ref([
+const transformations = [
   {
     key: 'Flip',
     items: [
@@ -117,7 +117,7 @@ const transformations = ref([
       { name: '-30 degrees', value: 'rotate(-30deg)' },
     ],
   },
-]);
+];
 
 watch(() => height.value, (val) => {
   width.value = (val * 37) / 26;

@@ -143,16 +143,15 @@ import {
   DxRequiredRule,
 } from 'devextreme-vue/validator';
 import notify from 'devextreme/ui/notify';
-import { states as statesData } from './data.js';
+import { states } from './data.js';
 
 const birthDate = ref(new Date(1981, 5, 3));
 const stylingMode = ref('outlined');
 const labelMode = ref('static');
 const text = ref('Olivia loves to sell. She has been selling DevAV products since 2012.');
-const states = ref(statesData);
-const phoneRules = ref({
+const phoneRules = {
   X: /[02-9]/,
-});
+};
 
 function validateClick({ validationGroup }) {
   const result = validationGroup.validate();
@@ -161,7 +160,7 @@ function validateClick({ validationGroup }) {
   } else {
     notify('The task was not saved. Please check if all fields are valid.', 'error');
   }
-};
+}
 </script>
 <style>
 #content-wrapper {

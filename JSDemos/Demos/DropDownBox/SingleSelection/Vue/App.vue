@@ -78,13 +78,14 @@ import {
 import CustomStore from 'devextreme/data/custom_store';
 import 'whatwg-fetch';
 
-const treeDataSource = ref(makeAsyncDataSource('treeProducts.json'));
 const treeBoxValue = ref('1_1');
-const gridDataSource = ref(makeAsyncDataSource('customers.json'));
 const isGridBoxOpened = ref(false);
 const isTreeBoxOpened = ref(false);
 const gridBoxValue = ref([3]);
-const gridColumns = ref(['CompanyName', 'City', 'Phone']);
+const gridDataSource = makeAsyncDataSource('customers.json');
+const treeDataSource = makeAsyncDataSource('treeProducts.json');
+const gridColumns = ['CompanyName', 'City', 'Phone'];
+
 let treeView = null;
 
 function treeViewContentReady({ component }) {

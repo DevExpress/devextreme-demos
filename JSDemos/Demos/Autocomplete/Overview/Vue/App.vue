@@ -100,7 +100,7 @@ import ODataStore from 'devextreme/data/odata/store';
 import { DxAutocomplete } from 'devextreme-vue/autocomplete';
 import CustomStore from 'devextreme/data/custom_store';
 import 'whatwg-fetch';
-import { names as dataNames, surnames as dataSurnames, positions as dataPositions } from './data.js';
+import { names, surnames, positions } from './data.js';
 
 const statesStore = new ODataStore({
   url:
@@ -135,20 +135,17 @@ const clientsCustomStore = new CustomStore({
 
 const firstName = ref('');
 const lastName = ref('');
-const position = ref(dataPositions[0]);
+const position = ref(positions[0]);
 const state = ref('');
 const currentClient = ref('');
 const fullInfo = ref('');
-const names = ref(dataNames);
-const surnames = ref(dataSurnames);
-const positions = ref(dataPositions);
 const states = ref(statesStore);
 const clientsStore = ref(clientsCustomStore);
 
 function updateEmployeeInfo() {
   let employeeInfo = '';
   employeeInfo += `${firstName.value || ''} ${lastName.value || ''}`.trim();
-  employeeInfo += (employeeInfo && position.value) ? `, ${position.value}` : position.value || '';
+  employeeInfo += (employeeInfo && position) ? `, ${position}` : position || '';
   employeeInfo += (employeeInfo && state.value) ? `, ${state.value}` : state.value || '';
   employeeInfo += (employeeInfo && currentClient.value) ? `, ${currentClient.value}` : currentClient.value || '';
   fullInfo.value = employeeInfo;

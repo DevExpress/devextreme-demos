@@ -77,8 +77,8 @@
 import { ref } from 'vue';
 import { DxNumberBox } from 'devextreme-vue/number-box';
 
-const max = ref(30);
 const value = ref(16);
+const max = 30;
 
 function keyDown(e) {
   const { event } = e;
@@ -86,6 +86,6 @@ function keyDown(e) {
   if (/^[.,e]$/.test(str)) {
     event.preventDefault();
   }
-};
+}
 </script>
 

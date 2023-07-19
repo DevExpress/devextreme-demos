@@ -222,7 +222,6 @@ import {
 import notify from 'devextreme/ui/notify';
 import service from './data.js';
 
-const $this = {};
 const currentDate = new Date();
 const countries = ref(service.getCountries());
 const phoneRules = ref({
@@ -250,43 +249,51 @@ const namePattern = ref(/^[^0-9]+$/);
 const phonePattern = ref(/^[02-9]\d{9}$/);
 const maxDate = ref(new Date(currentDate.setFullYear(currentDate.getFullYear() - 21)));
 
+let validatorInstance;
+
 function passwordComparison() {
   return password.value;
-};
+}
+
 function checkComparison() {
   return true;
-};
+}
+
 function asyncValidation(params) {
   return sendRequest(params.value);
-};
+}
+
 function onPasswordChanged() {
   if (confirmPassword.value) {
-    $this.validatorInstance.validate();
+    validatorInstance?.validate();
   }
-};
-function onInit(e) {
-  $this.validatorInstance = e.component;
-};
-function onFormSubmit(e) {
-      notify({
-        message: 'You have submitted the form',
-        position: {
-          my: 'center top',
-          at: 'center top',
-        },
-      }, 'success', 3000);
+}
 
-      e.preventDefault();
-    };
-const sendRequest = function(value) {
+function onInit(e) {
+  validatorInstance = e.component;
+}
+
+function onFormSubmit(e) {
+  notify({
+    message: 'You have submitted the form',
+    position: {
+      my: 'center top',
+      at: 'center top',
+    },
+  }, 'success', 3000);
+
+  e.preventDefault();
+}
+
+function sendRequest(value) {
   const invalidEmail = 'test@dx-email.com';
+
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(value !== invalidEmail);
     }, 1000);
   });
-};
-
+}
 </script>
 <style scoped>
 #summary {
