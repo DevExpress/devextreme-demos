@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import DataGrid, {
   Column, FilterRow, HeaderFilter, Search, SearchPanel,
 } from 'devextreme-react/data-grid';
@@ -42,8 +42,25 @@ const saleAmountHeaderFilter = [{
   text: 'Greater than $20000',
   value: ['SaleAmount', '>=', 20000],
 }];
+const orders = service.getOrders();
 
 const getOrderDay = (rowData) => (new Date(rowData.OrderDate)).getDay();
+const calculateFilterExpression = (value, selectedFilterOperations, target) => {
+  const column = this;
+  if (target === 'headerFilter' && value === 'weekends') {
+    return [[getOrderDay, '=', 0], 'or', [getOrderDay, '=', 6]];
+  }
+  return column.defaultCalculateFilterExpression(value, selectedFilterOperations, target);
+};
+const orderHeaderFilter = (data) => {
+  data.dataSource.postProcess = (results) => {
+    results.push({
+      text: 'Weekends',
+      value: 'weekends',
+    });
+    return results;
+  };
+};
 
 function App() {
   const [showFilterRow, setShowFilterRow] = useState(true);
@@ -51,43 +68,23 @@ function App() {
   const [currentFilter, setCurrentFilter] = useState('auto');
   const dataGridRef = useRef(null);
 
-  const orders = service.getOrders();
-
-  const calculateFilterExpression = (value, selectedFilterOperations, target) => {
-    const column = this;
-    if (target === 'headerFilter' && value === 'weekends') {
-      return [[getOrderDay, '=', 0], 'or', [getOrderDay, '=', 6]];
-    }
-    return column.defaultCalculateFilterExpression(value, selectedFilterOperations, target);
-  };
-
-  const orderHeaderFilter = (data) => {
-    data.dataSource.postProcess = (results) => {
-      results.push({
-        text: 'Weekends',
-        value: 'weekends',
-      });
-      return results;
-    };
-  };
-
-  const onShowFilterRowChanged = (e) => {
+  const onShowFilterRowChanged = useCallback((e) => {
     setShowFilterRow(e.value);
     clearFilter();
-  };
+  }, [clearFilter]);
 
-  const onShowHeaderFilterChanged = (e) => {
+  const onShowHeaderFilterChanged = useCallback((e) => {
     setShowHeaderFilter(e.value);
     clearFilter();
-  };
+  }, [clearFilter]);
 
-  const onCurrentFilterChanged = (e) => {
+  const onCurrentFilterChanged = useCallback((e) => {
     setCurrentFilter(e.value);
-  };
+  }, []);
 
-  const clearFilter = () => {
+  const clearFilter = useCallback(() => {
     dataGridRef.current.instance.clearFilter();
-  };
+  }, []);
 
   return (
     <div>

@@ -48,49 +48,45 @@ const onExporting = (e) => {
   });
   e.cancel = true;
 };
+const renderGridCell = (data) => <a href={ data.text } target='_blank' rel='noopener noreferrer'>Website</a>;
 
-const App = () => {
-  const renderGridCell = (data) => <a href={ data.text } target='_blank' rel='noopener noreferrer'>Website</a>;
+const phoneNumberFormat = (value) => {
+  const USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);
 
-  const phoneNumberFormat = (value) => {
-    const USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);
-
-    return `(${USNumber[1]}) ${USNumber[2]}-${USNumber[3]}`;
-  };
-
-  return (
-    <div>
-      <DataGrid
-        id="gridContainer"
-        dataSource={companies}
-        keyExpr="ID"
-        width="100%"
-        showBorders={true}
-        onExporting={onExporting}>
-
-        <GroupPanel visible={true} />
-        <Grouping autoExpandAll={true} />
-        <SortByGroupSummaryInfo summaryItem="count" />
-
-        <Column dataField="Name" width={190} />
-        <Column dataField="Address" width={200} />
-        <Column dataField="City" />
-        <Column dataField="State" groupIndex={0} />
-        <Column dataField="Phone" format={phoneNumberFormat} />
-        <Column dataField="Website" caption="" alignment="center" width={100} cellRender={renderGridCell} />
-
-        <Export enabled={true} />
-
-        <Summary>
-          <TotalItem
-            column="Name"
-            summaryType="count"
-            displayFormat="Total count: {0} companies"
-          />
-        </Summary>
-      </DataGrid>
-    </div>
-  );
+  return `(${USNumber[1]}) ${USNumber[2]}-${USNumber[3]}`;
 };
+const App = () => (
+  <div>
+    <DataGrid
+      id="gridContainer"
+      dataSource={companies}
+      keyExpr="ID"
+      width="100%"
+      showBorders={true}
+      onExporting={onExporting}>
+
+      <GroupPanel visible={true} />
+      <Grouping autoExpandAll={true} />
+      <SortByGroupSummaryInfo summaryItem="count" />
+
+      <Column dataField="Name" width={190} />
+      <Column dataField="Address" width={200} />
+      <Column dataField="City" />
+      <Column dataField="State" groupIndex={0} />
+      <Column dataField="Phone" format={phoneNumberFormat} />
+      <Column dataField="Website" caption="" alignment="center" width={100} cellRender={renderGridCell} />
+
+      <Export enabled={true} />
+
+      <Summary>
+        <TotalItem
+          column="Name"
+          summaryType="count"
+          displayFormat="Total count: {0} companies"
+        />
+      </Summary>
+    </DataGrid>
+  </div>
+);
 
 export default App;

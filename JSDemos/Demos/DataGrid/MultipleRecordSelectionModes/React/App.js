@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import DataGrid, {
   Column,
   Selection,
@@ -18,13 +18,13 @@ const App = () => {
     themes.current().startsWith('material') ? 'always' : 'onClick',
   );
 
-  const onCheckBoxesModeChanged = (value) => {
+  const onCheckBoxesModeChanged = useCallback((value) => {
     setCheckBoxesMode(value);
-  };
+  }, []);
 
-  const onAllModeChanged = (value) => {
+  const onAllModeChanged = useCallback((value) => {
     setAllMode(value);
-  };
+  }, []);
 
   return (
     <div>

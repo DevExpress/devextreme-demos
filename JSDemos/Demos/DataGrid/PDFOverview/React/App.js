@@ -26,13 +26,15 @@ const App = () => {
     });
   }, []);
 
+  const wrappedOnExporting = onExporting ? useCallback(onExporting, []) : null;
+
   return (
     <DataGrid
       dataSource={customers}
       keyExpr="ID"
       allowColumnReordering={true}
       showBorders={true}
-      onExporting={onExporting}
+      onExporting={wrappedOnExporting}
     >
       <Selection mode="multiple" />
       <Grouping autoExpandAll={true} />

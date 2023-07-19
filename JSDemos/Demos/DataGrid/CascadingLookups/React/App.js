@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import DataGrid, { Column, Editing, Lookup } from 'devextreme-react/data-grid';
 import service from './data.js';
+
+const onEditorPreparing = (e) => {
+  if (e.parentType === 'dataRow' && e.dataField === 'CityID') {
+    e.editorOptions.disabled = (typeof e.row.data.StateID !== 'number');
+  }
+};
 
 const App = () => {
   const [dataSource] = useState(service.getEmployees());
   const [states] = useState(service.getStates());
   const [cities] = useState(service.getCities());
 
-  const getFilteredCities = (options) => ({
+  const getFilteredCities = useCallback((options) => ({
     store: cities,
     filter: options.data ? ['StateID', '=', options.data.StateID] : null,
-  });
+  }), [cities]);
 
-  const onEditorPreparing = (e) => {
-    if (e.parentType === 'dataRow' && e.dataField === 'CityID') {
-      e.editorOptions.disabled = (typeof e.row.data.StateID !== 'number');
-    }
-  };
-
-  const setStateValue = (that, rowData, value) => {
+  const setStateValue = useCallback((that, rowData, value) => {
     rowData.CityID = null;
     that.defaultSetCellValue(rowData, value);
-  };
+  }, []);
 
   return (
     <div id="data-grid-demo">

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import DataGrid, { Column } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
 import 'devextreme/data/odata/store';
@@ -26,7 +26,7 @@ const App = () => {
   const [filterStatus, setFilterStatus] = useState(statuses[0]);
   const dataGridRef = useRef(null);
 
-  const onValueChanged = ({ value }) => {
+  const onValueChanged = useCallback(({ value }) => {
     const dataGrid = dataGridRef.current.instance;
 
     if (value === 'All') {
@@ -36,7 +36,7 @@ const App = () => {
     }
 
     setFilterStatus(value);
-  };
+  }, []);
 
   return (
     <div>

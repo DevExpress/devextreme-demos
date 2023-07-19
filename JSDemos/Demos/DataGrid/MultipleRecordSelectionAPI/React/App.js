@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import DataGrid, {
   Column,
   Selection,
@@ -10,6 +10,8 @@ import Button from 'devextreme-react/button';
 import { employees, titleLabel } from './data.js';
 
 const titles = ['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.'];
+const getEmployeeName = (row) => `${row.FirstName} ${row.LastName}`;
+const getEmployeeNames = (selectedRowsData) => (selectedRowsData.length ? selectedRowsData.map(getEmployeeName).join(', ') : 'Nobody has been selected');
 
 function App() {
   const [prefix, setPrefix] = useState('');
@@ -19,19 +21,21 @@ function App() {
   const dataGridRef = useRef(null);
   const selectionChangedBySelectBox = useRef(false);
 
-  const onClearButtonClicked = () => {
+  const onClearButtonClicked = useCallback(() => {
     dataGridRef.current.instance.clearSelection();
-  };
+  }, []);
 
-  const onSelectionChanged = ({ selectedRowKeys: changedRowKeys, selectedRowsData }) => {
-    selectionChangedBySelectBox.current = false;
+  const onSelectionChanged = useCallback(
+    ({ selectedRowKeys: changedRowKeys, selectedRowsData }) => {
+      selectionChangedBySelectBox.current = false;
 
-    setPrefix(null);
-    setSelectedRowKeys(changedRowKeys);
-    setSelectedEmployeeNames(getEmployeeNames(selectedRowsData));
-  };
+      setPrefix(null);
+      setSelectedRowKeys(changedRowKeys);
+      setSelectedEmployeeNames(getEmployeeNames(selectedRowsData));
+    }, [],
+  );
 
-  const onSelectionFilterChanged = ({ value }) => {
+  const onSelectionFilterChanged = useCallback(({ value }) => {
     selectionChangedBySelectBox.current = true;
 
     const newPrefix = value;
@@ -44,11 +48,7 @@ function App() {
       setSelectedRowKeys(changedRowKeys);
       setSelectedEmployeeNames(getEmployeeNames(filteredEmployees));
     }
-  };
-
-  const getEmployeeName = (row) => `${row.FirstName} ${row.LastName}`;
-
-  const getEmployeeNames = (selectedRowsData) => (selectedRowsData.length ? selectedRowsData.map(getEmployeeName).join(', ') : 'Nobody has been selected');
+  }, []);
 
   return (
     <div>

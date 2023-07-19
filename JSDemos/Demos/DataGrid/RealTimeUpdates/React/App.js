@@ -13,6 +13,54 @@ const dataSource = new DataSource({
   reshapeOnPush: true,
 });
 
+const detailRender = (detail) => {
+  const getDetailGridDataSource = (product) => ({
+    store: ordersStore,
+    reshapeOnPush: true,
+    filter: ['ProductID', '=', product.ProductID],
+  });
+
+  const getAmount = (order) => order.UnitPrice * order.Quantity;
+
+  return (
+    <DataGrid
+      dataSource={getDetailGridDataSource(detail.data)}
+      repaintChangesOnly={true}
+      columnAutoWidth={true}
+      showBorders={true}>
+      <Paging defaultPageSize={5} />
+      <Column
+        dataField="OrderID"
+        dataType="number" />
+      <Column
+        dataField="ShipCity"
+        dataType="string" />
+      <Column
+        dataField="OrderDate"
+        dataType="datetime"
+        format="yyyy/MM/dd HH:mm:ss" />
+      <Column
+        dataField="UnitPrice"
+        dataType="number"
+        format="currency" />
+      <Column
+        dataField="Quantity"
+        dataType="number" />
+      <Column
+        caption="Amount"
+        dataType="number"
+        format="currency"
+        allowSorting={true}
+        calculateCellValue={getAmount} />
+      <Summary>
+        <TotalItem column="OrderID" summaryType="count" />
+        <TotalItem column="Quantity" summaryType="sum" displayFormat="{0}" />
+        <TotalItem column="Amount" summaryType="sum" displayFormat="{0}" valueFormat="currency" />
+      </Summary>
+    </DataGrid>
+  );
+};
+
 const App = () => {
   const [updateFrequency, setUpdateFrequency] = useState(100);
 
@@ -32,54 +80,6 @@ const App = () => {
 
   const onUpdateFrequencyChanged = (e) => {
     setUpdateFrequency(e.value);
-  };
-
-  const detailRender = (detail) => {
-    const getDetailGridDataSource = (product) => ({
-      store: ordersStore,
-      reshapeOnPush: true,
-      filter: ['ProductID', '=', product.ProductID],
-    });
-
-    const getAmount = (order) => order.UnitPrice * order.Quantity;
-
-    return (
-      <DataGrid
-        dataSource={getDetailGridDataSource(detail.data)}
-        repaintChangesOnly={true}
-        columnAutoWidth={true}
-        showBorders={true}>
-        <Paging defaultPageSize={5} />
-        <Column
-          dataField="OrderID"
-          dataType="number" />
-        <Column
-          dataField="ShipCity"
-          dataType="string" />
-        <Column
-          dataField="OrderDate"
-          dataType="datetime"
-          format="yyyy/MM/dd HH:mm:ss" />
-        <Column
-          dataField="UnitPrice"
-          dataType="number"
-          format="currency" />
-        <Column
-          dataField="Quantity"
-          dataType="number" />
-        <Column
-          caption="Amount"
-          dataType="number"
-          format="currency"
-          allowSorting={true}
-          calculateCellValue={getAmount} />
-        <Summary>
-          <TotalItem column="OrderID" summaryType="count" />
-          <TotalItem column="Quantity" summaryType="sum" displayFormat="{0}" />
-          <TotalItem column="Amount" summaryType="sum" displayFormat="{0}" valueFormat="currency" />
-        </Summary>
-      </DataGrid>
-    );
   };
 
   return (

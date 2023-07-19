@@ -8,6 +8,11 @@ import { dataSource, positionLabel, scrollingModeLabel } from './data.js';
 
 const newRowPositionOptions = ['first', 'last', 'pageTop', 'pageBottom', 'viewportTop', 'viewportBottom'];
 const scrollingModeOptions = ['standard', 'virtual'];
+const isAddButtonVisible = ({ row }) => !row.isEditing;
+
+const onRowInserted = (e) => {
+  e.component.navigateToRow(e.key);
+};
 
 const App = () => {
   const [newRowPosition, setNewRowPosition] = useState('viewportTop');
@@ -23,12 +28,6 @@ const App = () => {
       insertAfterKey: e.row.key,
     }]);
     setEditRowKey(key);
-  }, []);
-
-  const isAddButtonVisible = useCallback(({ row }) => !row.isEditing, []);
-
-  const onRowInserted = useCallback((e) => {
-    e.component.navigateToRow(e.key);
   }, []);
 
   return (

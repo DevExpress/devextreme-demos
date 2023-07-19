@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import DataGrid, { Scrolling, Sorting, LoadPanel } from 'devextreme-react/data-grid';
 import { generateData } from './data.js';
 
 const dataSource = generateData(100000);
 
+const customizeColumns = (columns) => {
+  columns[0].width = 70;
+};
 const App = () => {
   const [loadPanelEnabled, setLoadPanelEnabled] = useState(true);
 
-  const customizeColumns = (columns) => {
-    columns[0].width = 70;
-  };
-
-  const onContentReady = () => {
+  const onContentReady = useCallback(() => {
     setLoadPanelEnabled(false);
-  };
+  }, []);
 
   return (
     <DataGrid

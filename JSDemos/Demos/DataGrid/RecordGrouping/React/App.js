@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import DataGrid, {
   Column,
   Grouping,
@@ -12,9 +12,9 @@ import { customers } from './data.js';
 const App = () => {
   const [autoExpandAll, setAutoExpandAll] = useState(true);
 
-  const onAutoExpandAllChanged = () => {
+  const onAutoExpandAllChanged = useCallback(() => {
     setAutoExpandAll(!autoExpandAll);
-  };
+  }, [autoExpandAll]);
 
   return (
     <div>

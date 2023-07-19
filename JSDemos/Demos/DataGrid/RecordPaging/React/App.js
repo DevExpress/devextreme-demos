@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import DataGrid, { Scrolling, Pager, Paging } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
@@ -14,27 +14,27 @@ const App = () => {
   const [showInfo, setShowInfo] = useState(true);
   const [showNavButtons, setShowNavButtons] = useState(true);
 
-  const displayModeChange = (value) => {
+  const displayModeChange = useCallback((value) => {
     setDisplayMode(value);
-  };
+  }, []);
 
-  const showPageSizeSelectorChange = (value) => {
+  const showPageSizeSelectorChange = useCallback((value) => {
     setShowPageSizeSelector(value);
-  };
+  }, []);
 
-  const showInfoChange = (value) => {
+  const showInfoChange = useCallback((value) => {
     setShowInfo(value);
-  };
+  }, []);
 
-  const showNavButtonsChange = (value) => {
+  const showNavButtonsChange = useCallback((value) => {
     setShowNavButtons(value);
-  };
+  }, []);
 
-  const isCompactMode = () => displayMode === 'compact';
+  const isCompactMode = useCallback(() => displayMode === 'compact', [displayMode]);
 
-  const customizeColumns = (columns) => {
+  const customizeColumns = useCallback((columns) => {
     columns[0].width = 70;
-  };
+  }, []);
 
   return (
     <div>

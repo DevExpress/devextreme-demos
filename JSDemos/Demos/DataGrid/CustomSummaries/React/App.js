@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import DataGrid, {
   Column, Selection, Paging, Summary, TotalItem,
 } from 'devextreme-react/data-grid';
@@ -9,7 +9,7 @@ const startupSelectedKeys = [1, 4, 7];
 const App = () => {
   const orders = service.getOrders();
 
-  const calculateSelectedRow = (options) => {
+  const calculateSelectedRow = useCallback((options) => {
     if (options.name === 'SelectedRowsSummary') {
       if (options.summaryProcess === 'start') {
         options.totalValue = 0;
@@ -19,11 +19,11 @@ const App = () => {
         }
       }
     }
-  };
+  }, []);
 
-  const onSelectionChanged = (e) => {
+  const onSelectionChanged = useCallback((e) => {
     e.component.refresh(true);
-  };
+  }, []);
 
   useEffect(() => {
     // componentDidMount logic here

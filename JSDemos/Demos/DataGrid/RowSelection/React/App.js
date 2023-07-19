@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import DataGrid, { Column, Selection } from 'devextreme-react/data-grid';
 import { employees } from './data.js';
 
@@ -7,13 +7,13 @@ const App = () => {
   const [selectedRowPicture, setSelectedRowPicture] = useState('');
   const [selectedRowNotes, setSelectedRowNotes] = useState('');
 
-  const onSelectionChanged = ({ selectedRowsData }) => {
+  const onSelectionChanged = useCallback(({ selectedRowsData }) => {
     const data = selectedRowsData[0];
 
     setShowEmployeeInfo(!!data);
     setSelectedRowNotes(data && data.Notes);
     setSelectedRowPicture(data && data.Picture);
-  };
+  }, []);
 
   return (
     <React.Fragment>

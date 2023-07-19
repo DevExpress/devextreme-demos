@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import DataGrid, {
   Column, RowDragging, Scrolling, Lookup, Sorting,
 } from 'devextreme-react/data-grid';
@@ -10,30 +10,30 @@ const tasksStore = createStore({
   key: 'ID',
   loadUrl: `${url}/Tasks`,
   updateUrl: `${url}/UpdateTask`,
-  onBeforeSend: (method, ajaxOptions) => {
+  onBeforeSend: useCallback((method, ajaxOptions) => {
     ajaxOptions.xhrFields = { withCredentials: true };
-  },
+  }, []),
 });
 
 const employeesStore = createStore({
   key: 'ID',
   loadUrl: `${url}/Employees`,
-  onBeforeSend: (method, ajaxOptions) => {
+  onBeforeSend: useCallback((method, ajaxOptions) => {
     ajaxOptions.xhrFields = { withCredentials: true };
-  },
+  }, []),
 });
 
-const processReorder = async(e) => {
+const processReorder = useCallback(async(e) => {
   const visibleRows = e.component.getVisibleRows();
   const newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
 
   await tasksStore.update(e.itemData.ID, { OrderIndex: newOrderIndex });
   await e.component.refresh();
-};
+}, [tasksStore]);
 
-const onReorder = (e) => {
+const onReorder = useCallback((e) => {
   e.promise = processReorder(e);
-};
+}, [processReorder]);
 
 const App = () => (
   <React.Fragment>

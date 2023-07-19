@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { DataGrid, Column, Paging } from 'devextreme-react/data-grid';
 import { NumberBox } from 'devextreme-react/number-box';
 import { CheckBox } from 'devextreme-react/check-box';
@@ -32,13 +32,13 @@ const App = () => {
   const [focusedRowKey, setFocusedRowKey] = useState(117);
   const [autoNavigateToFocusedRow, setAutoNavigateToFocusedRow] = useState(true);
 
-  const onTaskIdChanged = (e) => {
+  const onTaskIdChanged = useCallback((e) => {
     if (e.event && e.value > 0) {
       setFocusedRowKey(e.value);
     }
-  };
+  }, []);
 
-  const onFocusedRowChanging = (e) => {
+  const onFocusedRowChanging = useCallback((e) => {
     const rowsCount = e.component.getVisibleRows().length;
     const pageCount = e.component.pageCount();
     const pageIndex = e.component.pageIndex();
@@ -55,9 +55,9 @@ const App = () => {
         });
       }
     }
-  };
+  }, []);
 
-  const onFocusedRowChanged = (e) => {
+  const onFocusedRowChanged = useCallback((e) => {
     const dataRow = e.row && e.row.data;
     const progress = dataRow && dataRow.Task_Completion ? `${dataRow.Task_Completion}%` : '';
     setTaskSubject(dataRow && dataRow.Task_Subject);
@@ -65,11 +65,11 @@ const App = () => {
     setTaskStatus(dataRow && dataRow.Task_Status);
     setTaskProgress(progress);
     setFocusedRowKey(e.component.option('focusedRowKey'));
-  };
+  }, []);
 
-  const onAutoNavigateToFocusedRowChanged = (e) => {
+  const onAutoNavigateToFocusedRowChanged = useCallback((e) => {
     setAutoNavigateToFocusedRow(e.value);
-  };
+  }, []);
 
   return (
     <div>

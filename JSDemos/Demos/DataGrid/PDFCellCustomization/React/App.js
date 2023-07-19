@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import DataGrid, {
   Column, Summary, GroupPanel, Grouping, SortByGroupSummaryInfo, TotalItem, Export,
 } from 'devextreme-react/data-grid';
@@ -9,52 +9,52 @@ import { companies } from './data.js';
 
 const exportFormats = ['pdf'];
 
+const onExporting = (e) => {
+  // eslint-disable-next-line new-cap
+  const doc = new jsPDF();
+
+  exportDataGrid({
+    jsPDFDocument: doc,
+    component: e.component,
+    columnWidths: [40, 40, 30, 30, 40],
+    customizeCell({ gridCell, pdfCell }) {
+      if (gridCell.rowType === 'data' && gridCell.column.dataField === 'Phone') {
+        pdfCell.text = pdfCell.text.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+      } else if (gridCell.rowType === 'group') {
+        pdfCell.backgroundColor = '#BEDFE6';
+      } else if (gridCell.rowType === 'totalFooter') {
+        pdfCell.font.style = 'italic';
+      }
+    },
+    customDrawCell(options) {
+      const { gridCell, pdfCell } = options;
+
+      if (gridCell.rowType === 'data' && gridCell.column.dataField === 'Website') {
+        options.cancel = true;
+        doc.setFontSize(11);
+        doc.setTextColor('#0000FF');
+
+        const textHeight = doc.getTextDimensions(pdfCell.text).h;
+        doc.textWithLink('website',
+          options.rect.x + pdfCell.padding.left,
+          options.rect.y + options.rect.h / 2 + textHeight / 2, { url: pdfCell.text });
+      }
+    },
+  }).then(() => {
+    doc.save('Companies.pdf');
+  });
+};
+
+const renderGridCell = (data) => (
+  <a href={ data.text } target='_blank' rel='noopener noreferrer'>Website</a>
+);
+
+const phoneNumberFormat = (value) => {
+  const USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);
+  return `(${USNumber[1]}) ${USNumber[2]}-${USNumber[3]}`;
+};
+
 export default function App() {
-  const onExporting = useCallback((e) => {
-    // eslint-disable-next-line new-cap
-    const doc = new jsPDF();
-
-    exportDataGrid({
-      jsPDFDocument: doc,
-      component: e.component,
-      columnWidths: [40, 40, 30, 30, 40],
-      customizeCell({ gridCell, pdfCell }) {
-        if (gridCell.rowType === 'data' && gridCell.column.dataField === 'Phone') {
-          pdfCell.text = pdfCell.text.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
-        } else if (gridCell.rowType === 'group') {
-          pdfCell.backgroundColor = '#BEDFE6';
-        } else if (gridCell.rowType === 'totalFooter') {
-          pdfCell.font.style = 'italic';
-        }
-      },
-      customDrawCell(options) {
-        const { gridCell, pdfCell } = options;
-
-        if (gridCell.rowType === 'data' && gridCell.column.dataField === 'Website') {
-          options.cancel = true;
-          doc.setFontSize(11);
-          doc.setTextColor('#0000FF');
-
-          const textHeight = doc.getTextDimensions(pdfCell.text).h;
-          doc.textWithLink('website',
-            options.rect.x + pdfCell.padding.left,
-            options.rect.y + options.rect.h / 2 + textHeight / 2, { url: pdfCell.text });
-        }
-      },
-    }).then(() => {
-      doc.save('Companies.pdf');
-    });
-  }, []);
-
-  const renderGridCell = useCallback((data) => (
-    <a href={ data.text } target='_blank' rel='noopener noreferrer'>Website</a>
-  ), []);
-
-  const phoneNumberFormat = useCallback((value) => {
-    const USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);
-    return `(${USNumber[1]}) ${USNumber[2]}-${USNumber[3]}`;
-  }, []);
-
   return (
     <div>
       <DataGrid

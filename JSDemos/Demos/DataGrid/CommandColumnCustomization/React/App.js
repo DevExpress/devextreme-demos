@@ -1,38 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import DataGrid, {
   Button, Column, Editing, Lookup,
 } from 'devextreme-react/data-grid';
 
 import service from './data.js';
 
+const states = service.getStates();
+
+const isChief = (position) => position && ['CEO', 'CMO'].indexOf(position.trim().toUpperCase()) >= 0;
+
+const allowDeleting = (e) => !isChief(e.row.data.Position);
+
+const onRowValidating = (e) => {
+  const position = e.newData.Position;
+
+  if (isChief(position)) {
+    e.errorText = `The company can have only one ${position.toUpperCase()}. Please choose another position.`;
+    e.isValid = false;
+  }
+};
+
+const onEditorPreparing = (e) => {
+  if (e.parentType === 'dataRow' && e.dataField === 'Position') {
+    e.editorOptions.readOnly = isChief(e.value);
+  }
+};
+
+const isCloneIconVisible = (e) => !e.row.isEditing;
+
+const isCloneIconDisabled = (e) => isChief(e.row.data.Position);
+
 const App = () => {
   const [employees, setEmployees] = useState(service.getEmployees());
-  const states = service.getStates();
 
-  const isChief = (position) => position && ['CEO', 'CMO'].indexOf(position.trim().toUpperCase()) >= 0;
-
-  const allowDeleting = (e) => !isChief(e.row.data.Position);
-
-  const onRowValidating = (e) => {
-    const position = e.newData.Position;
-
-    if (isChief(position)) {
-      e.errorText = `The company can have only one ${position.toUpperCase()}. Please choose another position.`;
-      e.isValid = false;
-    }
-  };
-
-  const onEditorPreparing = (e) => {
-    if (e.parentType === 'dataRow' && e.dataField === 'Position') {
-      e.editorOptions.readOnly = isChief(e.value);
-    }
-  };
-
-  const isCloneIconVisible = (e) => !e.row.isEditing;
-
-  const isCloneIconDisabled = (e) => isChief(e.row.data.Position);
-
-  const cloneIconClick = (e) => {
+  const cloneIconClick = useCallback((e) => {
     const clonedItem = { ...e.row.data, ID: service.getMaxID() };
 
     setEmployees((prevState) => {
@@ -41,7 +42,7 @@ const App = () => {
       return updatedEmployees;
     });
     e.event.preventDefault();
-  };
+  }, []);
 
   return (
     <DataGrid

@@ -24,18 +24,18 @@ export default function App() {
       },
       topLeft: { x: 5, y: 5 },
       columnWidths: [30, 30, 30, 30, 30, 30],
-      onRowExporting: (e) => {
+      onRowExporting: useCallback((e) => {
         const isHeader = e.rowCells[0].text === 'Picture';
         if (!isHeader) {
           e.rowHeight = 40;
         }
-      },
-      customDrawCell: (e) => {
+      }, []),
+      customDrawCell: useCallback((e) => {
         if (e.gridCell.rowType === 'data' && e.gridCell.column.dataField === 'Picture') {
           doc.addImage(e.gridCell.value, 'PNG', e.rect.x, e.rect.y, e.rect.w, e.rect.h);
           e.cancel = true;
         }
-      },
+      }, []),
     }).then(() => {
       doc.save('DataGrid.pdf');
     });

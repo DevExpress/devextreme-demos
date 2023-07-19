@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import DataGrid, {
   Column,
   MasterDetail,
@@ -6,30 +6,26 @@ import DataGrid, {
 } from 'devextreme-react/data-grid';
 import { employees } from './data.js';
 
+const contentReady = (e) => {
+  if (!e.component.getSelectedRowKeys().length) { e.component.selectRowsByIndexes(0); }
+};
+
+const selectionChanged = (e) => {
+  e.component.collapseAll(-1);
+  e.component.expandRow(e.currentSelectedRowKeys[0]);
+};
+
+const renderDetail = (props) => {
+  const { Picture, Notes } = props.data;
+  return (
+    <div className="employee-info">
+      <img className="employee-photo" src={Picture} />
+      <p className="employee-notes">{Notes}</p>
+    </div>
+  );
+};
+
 function App() {
-  const contentReady = (e) => {
-    if (!e.component.getSelectedRowKeys().length) { e.component.selectRowsByIndexes(0); }
-  };
-
-  const selectionChanged = (e) => {
-    e.component.collapseAll(-1);
-    e.component.expandRow(e.currentSelectedRowKeys[0]);
-  };
-
-  useEffect(() => {
-    // componentDidMount logic here
-  }, []);
-
-  const renderDetail = (props) => {
-    const { Picture, Notes } = props.data;
-    return (
-      <div className="employee-info">
-        <img className="employee-photo" src={Picture} />
-        <p className="employee-notes">{Notes}</p>
-      </div>
-    );
-  };
-
   return (
     <DataGrid
       id="grid-container"

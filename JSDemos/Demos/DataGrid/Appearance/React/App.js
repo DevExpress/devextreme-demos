@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import DataGrid, { Column } from 'devextreme-react/data-grid';
 import CheckBox from 'devextreme-react/check-box';
 
@@ -11,7 +11,7 @@ const App = () => {
   const [showBorders, setShowBorders] = useState(true);
   const [rowAlternationEnabled, setRowAlternationEnabled] = useState(true);
 
-  const onValueChanged = (e) => {
+  const onValueChanged = useCallback((e) => {
     let optionName = null;
     switch (e.component.option('text')) {
       case 'Show Row Lines': {
@@ -47,7 +47,7 @@ const App = () => {
       default:
         break;
     }
-  };
+  }, []);
 
   return (
     <React.Fragment>

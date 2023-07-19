@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import Button from 'devextreme-react/button';
 import TabPanel, { Item } from 'devextreme-react/tab-panel';
 import DataGrid, { Column } from 'devextreme-react/data-grid';
@@ -26,11 +26,21 @@ const ratingDataSource = {
   filter: ['Product_ID', '<', 10],
 };
 
+const setAlternatingRowsBackground = (gridCell, excelCell) => {
+  if (gridCell.rowType === 'header' || gridCell.rowType === 'data') {
+    if (excelCell.fullAddress.row % 2 === 0) {
+      excelCell.fill = {
+        type: 'pattern', pattern: 'solid', fgColor: { argb: 'D3D3D3' }, bgColor: { argb: 'D3D3D3' },
+      };
+    }
+  }
+};
+
 const App = () => {
   const priceGridRef = useRef(null);
   const ratingGridRef = useRef(null);
 
-  const exportGrids = () => {
+  const exportGrids = useCallback(() => {
     const workbook = new Workbook();
     const priceSheet = workbook.addWorksheet('Price');
     const ratingSheet = workbook.addWorksheet('Rating');
@@ -60,17 +70,7 @@ const App = () => {
         saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'MultipleGrids.xlsx');
       });
     });
-  };
-
-  const setAlternatingRowsBackground = (gridCell, excelCell) => {
-    if (gridCell.rowType === 'header' || gridCell.rowType === 'data') {
-      if (excelCell.fullAddress.row % 2 === 0) {
-        excelCell.fill = {
-          type: 'pattern', pattern: 'solid', fgColor: { argb: 'D3D3D3' }, bgColor: { argb: 'D3D3D3' },
-        };
-      }
-    }
-  };
+  }, []);
 
   return (
     <div>

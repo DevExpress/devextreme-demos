@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, {
+  useState, useEffect, useRef, useCallback,
+} from 'react';
 import ODataStore from 'devextreme/data/odata/store';
 import DataGrid, {
   Column,
@@ -35,9 +37,9 @@ const App = () => {
     }
   }, [collapsed]);
 
-  const onContentReady = (e) => {
+  const onContentReady = useCallback((e) => {
     dataGridRef.current = e.component;
-  };
+  }, []);
 
   return (
     <DataGrid

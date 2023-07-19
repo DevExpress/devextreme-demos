@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   DataGrid, Column, ColumnChooser, ColumnChooserSearch, ColumnChooserSelection, Position,
 } from 'devextreme-react/data-grid';
@@ -26,25 +26,25 @@ const App = () => {
 
   const isDragMode = mode === columnChooserModes[0].key;
 
-  const onModeValueChanged = (e) => {
+  const onModeValueChanged = useCallback((e) => {
     setMode(e.value);
-  };
+  }, []);
 
-  const onSearchEnabledValueChanged = (e) => {
+  const onSearchEnabledValueChanged = useCallback((e) => {
     setSearchEnabled(e.value);
-  };
+  }, []);
 
-  const onAllowSelectAllValueChanged = (e) => {
+  const onAllowSelectAllValueChanged = useCallback((e) => {
     setAllowSelectAll(e.value);
-  };
+  }, []);
 
-  const onSelectByClickValueChanged = (e) => {
+  const onSelectByClickValueChanged = useCallback((e) => {
     setSelectByClick(e.value);
-  };
+  }, []);
 
-  const onRecursiveValueChanged = (e) => {
+  const onRecursiveValueChanged = useCallback((e) => {
     setRecursive(e.value);
-  };
+  }, []);
 
   return (
     <div>

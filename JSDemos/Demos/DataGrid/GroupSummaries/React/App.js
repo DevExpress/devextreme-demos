@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import DataGrid, {
   Column, Selection, Summary, GroupItem, SortByGroupSummaryInfo,
 } from 'devextreme-react/data-grid';
@@ -6,6 +6,10 @@ import service from './data.js';
 
 const App = () => {
   const orders = service.getOrders();
+
+  const wrappedCallbacks = useCallback(() => {
+    // Callbacks
+  }, []);
 
   return (
     <React.Fragment>

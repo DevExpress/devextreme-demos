@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import DataGrid, { Column, FilterRow, Selection } from 'devextreme-react/data-grid';
 import Button from 'devextreme-react/button';
 import query from 'devextreme/data/query';
@@ -33,12 +33,12 @@ const App = () => {
     calculateStatistics();
   }, []);
 
-  const onInitialized = (e) => {
+  const onInitialized = useCallback((e) => {
     dataGridRef.current = e.component;
     calculateStatistics();
-  };
+  }, []);
 
-  const calculateStatistics = () => {
+  const calculateStatistics = useCallback(() => {
     dataGridRef.current.getSelectedRowsData().then((rowData) => {
       let commonDuration = 0;
 
@@ -55,7 +55,7 @@ const App = () => {
       );
       setAvgDuration(Math.round(commonDuration / rowData.length) || 0);
     });
-  };
+  }, []);
 
   return (
     <div>

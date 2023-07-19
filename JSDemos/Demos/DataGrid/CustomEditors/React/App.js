@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import DataGrid, {
   Paging,
   HeaderFilter,
@@ -35,31 +35,31 @@ const tasks = createStore({
   },
 });
 
-const cellTemplate = (container, options) => {
+const cellTemplate = useCallback((container, options) => {
   const noBreakSpace = '\u00A0';
   const text = (options.value || []).map((element) => options.column.lookup.calculateCellValue(element)).join(', ');
   container.textContent = text || noBreakSpace;
   container.title = text;
-};
+}, []);
 
-const calculateFilterExpression = (that, filterValue, selectedFilterOperation, target) => {
+const calculateFilterExpression = useCallback((that, filterValue, selectedFilterOperation, target) => {
   if (target === 'search' && typeof (filterValue) === 'string') {
     return [that.dataField, 'contains', filterValue];
   }
   return function(data) {
     return (data.AssignedEmployee || []).indexOf(filterValue) !== -1;
   };
-};
+}, []);
 
-const onValueChanged = (cell, e) => {
+const onValueChanged = useCallback((cell, e) => {
   cell.setValue(e.value);
-};
+}, []);
 
-const onRowInserted = (e) => {
+const onRowInserted = useCallback((e) => {
   e.component.navigateToRow(e.key);
-};
+}, []);
 
-const itemRender = (data) => {
+const itemRender = useCallback((data) => {
   const imageSource = `images/icons/status-${data.id}.svg`;
   if (data != null) {
     return <div>
@@ -68,15 +68,15 @@ const itemRender = (data) => {
     </div>;
   }
   return <span>(All)</span>;
-};
+}, []);
 
-const statusEditorRender = (cell) => <SelectBox
+const statusEditorRender = useCallback((cell) => <SelectBox
   defaultValue={cell.value}
   {...cell.column.lookup}
   onValueChanged={onValueChanged}
   inputAttr={statusLabel}
   itemRender={itemRender}
-/>;
+/>, []);
 
 const App = () => (
   <div>

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import Button from 'devextreme-react/button';
 import SelectBox from 'devextreme-react/select-box';
 import DataGrid, {
@@ -24,25 +24,25 @@ const App = () => {
   const [grouping, setGrouping] = useState('CustomerStoreState');
   const dataGridRef = useRef(null);
 
-  const getGroupCount = (groupField) => query(orders)
+  const getGroupCount = useCallback((groupField) => query(orders)
     .groupBy(groupField)
-    .toArray().length;
+    .toArray().length, [orders]);
 
-  const groupChanged = (e) => {
+  const groupChanged = useCallback((e) => {
     const newGrouping = e.value;
     dataGridRef.current.instance.clearGrouping();
     dataGridRef.current.instance.columnOption(newGrouping, 'groupIndex', 0);
     setTotalCount(getGroupCount(newGrouping));
     setGrouping(newGrouping);
-  };
+  }, [getGroupCount]);
 
-  const collapseAllClick = () => {
+  const collapseAllClick = useCallback(() => {
     setExpanded(!expanded);
-  };
+  }, [expanded]);
 
-  const refreshDataGrid = () => {
+  const refreshDataGrid = useCallback(() => {
     dataGridRef.current.instance.refresh();
-  };
+  }, []);
 
   return (
     <DataGrid id="gridContainer"

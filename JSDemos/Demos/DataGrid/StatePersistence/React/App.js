@@ -1,22 +1,22 @@
-import React, { useRef } from 'react';
+import React, { useRef, useCallback } from 'react';
 import DataGrid, {
   Selection, FilterRow, GroupPanel, StateStoring, Pager, Column,
 } from 'devextreme-react/data-grid';
 import service from './data.js';
 
+const orders = service.getOrders();
+
 const allowedPageSizes = [5, 10, 20];
+const onRefreshClick = () => {
+  window.location.reload();
+};
 
 const App = () => {
-  const orders = service.getOrders();
   const dataGridRef = useRef(null);
 
-  const onRefreshClick = () => {
-    window.location.reload();
-  };
-
-  const onStateResetClick = () => {
+  const onStateResetClick = useCallback(() => {
     dataGridRef.current.instance.state(null);
-  };
+  }, []);
 
   return (
     <React.Fragment>

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useCallback } from 'react';
 import Button from 'devextreme-react/button';
 import TabPanel, { Item } from 'devextreme-react/tab-panel';
 import DataGrid, { Column } from 'devextreme-react/data-grid';
@@ -26,20 +26,20 @@ const ratingDataSource = {
   filter: ['Product_ID', '<', 10],
 };
 
+const setAlternatingRowsBackground = (dataGrid, gridCell, pdfCell) => {
+  if (gridCell.rowType === 'data') {
+    const rowIndex = dataGrid.getRowIndexByKey(gridCell.data.Product_ID);
+    if (rowIndex % 2 === 0) {
+      pdfCell.backgroundColor = '#D3D3D3';
+    }
+  }
+};
+
 const App = () => {
   const priceGridRef = useRef(null);
   const ratingGridRef = useRef(null);
 
-  const setAlternatingRowsBackground = (dataGrid, gridCell, pdfCell) => {
-    if (gridCell.rowType === 'data') {
-      const rowIndex = dataGrid.getRowIndexByKey(gridCell.data.Product_ID);
-      if (rowIndex % 2 === 0) {
-        pdfCell.backgroundColor = '#D3D3D3';
-      }
-    }
-  };
-
-  const exportGrids = () => {
+  const exportGrids = useCallback(() => {
     // eslint-disable-next-line new-cap
     const doc = new jsPDF();
 
@@ -65,7 +65,7 @@ const App = () => {
         doc.save('MultipleGrids.pdf');
       });
     });
-  };
+  }, []);
 
   return (
     <div>

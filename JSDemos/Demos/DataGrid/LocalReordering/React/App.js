@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import DataGrid, {
   Column, RowDragging, Scrolling, Lookup, Sorting,
 } from 'devextreme-react/data-grid';
@@ -9,7 +9,7 @@ const App = () => {
   const [tasks, setTasks] = useState(defaultTasks);
   const [showDragIcons, setShowDragIcons] = useState(true);
 
-  const onReorder = (e) => {
+  const onReorder = useCallback((e) => {
     const visibleRows = e.component.getVisibleRows();
     const newTasks = [...tasks];
 
@@ -20,11 +20,11 @@ const App = () => {
     newTasks.splice(toIndex, 0, e.itemData);
 
     setTasks(newTasks);
-  };
+  }, [tasks]);
 
-  const onShowDragIconsChanged = (args) => {
+  const onShowDragIconsChanged = useCallback((args) => {
     setShowDragIcons(args.value);
-  };
+  }, []);
 
   return (
     <React.Fragment>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import DataGrid, { Column, Paging, SearchPanel } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
 
@@ -16,14 +16,14 @@ const App = () => {
 
   const dataSource = service.getEuropeanUnion();
 
-  const selectLanguage = (e) => {
+  const selectLanguage = useCallback((e) => {
     const newRtlEnabled = e.value === languages[0];
     setRtlEnabled(newRtlEnabled);
     setPlaceholder(newRtlEnabled ? 'بحث' : 'Search...');
     setSelectedValue(e.value);
-  };
+  }, []);
 
-  const headerCellRender = () => (
+  const headerCellRender = useCallback(() => (
     <div>
       {rtlEnabled ? (
         <div>المساحة (كم<sup>2</sup>)</div>
@@ -31,7 +31,7 @@ const App = () => {
         <div>Area (km<sup>2</sup>)</div>
       )}
     </div>
-  );
+  ), [rtlEnabled]);
 
   return (
     <React.Fragment>
