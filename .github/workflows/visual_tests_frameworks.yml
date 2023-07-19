@@ -465,7 +465,7 @@ jobs:
         run: npm pack
 
       - name: Copy package
-        run: cp ./devextreme/artifacts/npm/devextreme/*.tgz ./devextreme-installer-docs.tgz
+        run: cp ./devextreme/packages/devextreme/artifacts/npm/devextreme/*.tgz ./devextreme-installer-docs.tgz
 
       - name: Copy build artifacts
         uses: actions/upload-artifact@v3
