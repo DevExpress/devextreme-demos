@@ -453,13 +453,14 @@ jobs:
         working-directory: ./devextreme
         run: |
           npm run internal-tool -- inject-descriptions --descriptions-path ../../../devextreme-documentation-repo/artifacts/internal-tools/Descriptions.json --js-scripts ./js
+
       - name: Build
         continue-on-error: true
-        working-directory: ./devextreme
+        working-directory: ./devextreme/packages/devextreme
         run: npm run build-npm-devextreme
 
       - name: Pack
-        working-directory: ./devextreme/artifacts/npm/devextreme
+        working-directory: ./devextreme/packages/devextreme/artifacts/npm/devextreme
         run: npm pack
 
       - name: Copy package
