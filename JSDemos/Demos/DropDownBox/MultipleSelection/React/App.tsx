@@ -1,8 +1,8 @@
 import React from 'react';
-import DropDownBox from 'devextreme-react/drop-down-box';
+import DropDownBox, { DropDownBoxTypes } from 'devextreme-react/drop-down-box';
 import TreeView from 'devextreme-react/tree-view';
 import DataGrid, {
-  Selection, Paging, FilterRow, Scrolling,
+  Selection, Paging, FilterRow, Scrolling, DataGridTypes,
 } from 'devextreme-react/data-grid';
 import CustomStore from 'devextreme/data/custom_store';
 import 'whatwg-fetch';
@@ -24,7 +24,7 @@ const gridDataSource = makeAsyncDataSource('customers.json');
 function App() {
   const [treeBoxValue, setTreeBoxValue] = React.useState(['1_1']);
   const [gridBoxValue, setGridBoxValue] = React.useState([3]);
-  const treeViewRef = React.useRef();
+  const treeViewRef = React.useRef<TreeView<any>>();
 
   const treeViewRender = React.useCallback(
     () => (
@@ -59,7 +59,7 @@ function App() {
   );
 
   const syncTreeViewSelection = React.useCallback(
-    (e: { component: { selectItem: any }; value: any }) => {
+    (e: DropDownBoxTypes.ValueChangedEvent | any) => {
       const treeView = (e.component.selectItem && e.component) || (treeViewRef.current && treeViewRef.current.instance);
 
       if (treeView) {
@@ -81,7 +81,7 @@ function App() {
     [treeBoxValue],
   );
 
-  const syncDataGridSelection = React.useCallback((e: { value: any }) => {
+  const syncDataGridSelection = React.useCallback((e: DropDownBoxTypes.ValueChangedEvent) => {
     setGridBoxValue(e.value || []);
   }, []);
 
@@ -89,7 +89,7 @@ function App() {
     setTreeBoxValue(e.component.getSelectedNodeKeys());
   }, []);
 
-  const dataGridOnSelectionChanged = React.useCallback((e: { selectedRowKeys: string | any[] }) => {
+  const dataGridOnSelectionChanged = React.useCallback((e: DataGridTypes.SelectionChangedEvent) => {
     setGridBoxValue((e.selectedRowKeys.length && e.selectedRowKeys) || []);
   }, []);
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
-import { TextBox, Button as TextBoxButton } from 'devextreme-react/text-box';
+import { TextBox, Button as TextBoxButton, TextBoxTypes } from 'devextreme-react/text-box';
 import DateBox from 'devextreme-react/date-box';
-import Button from 'devextreme-react/button';
+import Button, { ButtonTypes } from 'devextreme-react/button';
 import ValidationSummary from 'devextreme-react/validation-summary';
 import {
   Validator, RequiredRule, CompareRule, EmailRule, PatternRule, StringLengthRule, RangeRule, AsyncRule,
@@ -20,7 +20,8 @@ const phonePattern = /^[02-9]\d{9}$/;
 const phoneRules = {
   X: /[02-9]/,
 };
-const checkComparison = () => true;
+
+const checkComparison: any = () => true;
 const onFormSubmit = (e: { preventDefault: () => void }) => {
   notify(
     {
@@ -48,10 +49,10 @@ function App() {
 
   const [password, setPassword] = React.useState('');
   const [confirmPassword, setConfirmPassword] = React.useState('');
-  const [passwordMode, setPasswordMode] = React.useState('password');
-  const [confirmPasswordMode, setConfirmPasswordMode] = React.useState('password');
+  const [passwordMode, setPasswordMode] = React.useState<TextBoxTypes.TextBoxType>('password');
+  const [confirmPasswordMode, setConfirmPasswordMode] = React.useState<TextBoxTypes.TextBoxType>('password');
 
-  const passwordButton = React.useMemo(
+  const passwordButton = React.useMemo<ButtonTypes.Properties>(
     () => ({
       icon: '../../../../images/icons/eye.png',
       type: 'default',
@@ -62,7 +63,7 @@ function App() {
     [passwordMode, setPasswordMode],
   );
 
-  const confirmPasswordButton = React.useMemo(
+  const confirmPasswordButton = React.useMemo<ButtonTypes.Properties>(
     () => ({
       icon: '../../../../images/icons/eye.png',
       type: 'default',
@@ -73,10 +74,10 @@ function App() {
     [confirmPasswordMode, setConfirmPasswordMode],
   );
 
-  const passwordComparison = React.useCallback(() => password, [password]);
+  const passwordComparison = React.useCallback<any>(() => password, [password]);
 
   const onPasswordChanged = React.useCallback(
-    (e: { value: any }) => {
+    (e: TextBoxTypes.ValueChangedEvent) => {
       setPassword(e.value);
       if (confirmPassword) {
         validatorInstance.validate();
@@ -85,7 +86,7 @@ function App() {
     [confirmPassword, setPassword, validatorInstance],
   );
 
-  const onConfirmPasswordChanged = React.useCallback((e: { value: any }) => {
+  const onConfirmPasswordChanged = React.useCallback((e: TextBoxTypes.ValueChangedEvent) => {
     setConfirmPassword(e.value);
   }, []);
 

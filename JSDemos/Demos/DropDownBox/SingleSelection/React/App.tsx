@@ -1,6 +1,6 @@
 import React from 'react';
-import DropDownBox from 'devextreme-react/drop-down-box';
-import TreeView from 'devextreme-react/tree-view';
+import DropDownBox, { DropDownBoxTypes } from 'devextreme-react/drop-down-box';
+import TreeView, { TreeViewTypes } from 'devextreme-react/tree-view';
 import DataGrid, {
   Selection, Paging, FilterRow, Scrolling,
 } from 'devextreme-react/data-grid';
@@ -61,7 +61,7 @@ function App() {
     [gridDataSource, gridBoxValue],
   );
 
-  const syncTreeViewSelection = React.useCallback((e: { value: any }) => {
+  const syncTreeViewSelection = React.useCallback((e: DropDownBoxTypes.ValueChangedEvent) => {
     setTreeBoxValue(e.value);
     if (!treeViewRef.current) return;
 
@@ -72,7 +72,7 @@ function App() {
     }
   }, []);
 
-  const syncDataGridSelection = React.useCallback((e: { value: any }) => {
+  const syncDataGridSelection = React.useCallback((e: DropDownBoxTypes.ValueChangedEvent) => {
     setGridBoxValue(e.value);
   }, []);
 
@@ -86,7 +86,7 @@ function App() {
   }, []);
 
   const treeViewOnContentReady = React.useCallback(
-    (e: { component: { selectItem: (arg0: any) => void } }) => {
+    (e: TreeViewTypes.ContentReadyEvent) => {
       e.component.selectItem(treeBoxValue);
     },
     [treeBoxValue],
@@ -96,13 +96,13 @@ function App() {
     setIsTreeBoxOpened(false);
   }, []);
 
-  const onGridBoxOpened = React.useCallback((e: { name: string; value: any }) => {
+  const onGridBoxOpened = React.useCallback((e: DropDownBoxTypes.OptionChangedEvent) => {
     if (e.name === 'opened') {
       setIsGridBoxOpened(e.value);
     }
   }, []);
 
-  const onTreeBoxOpened = React.useCallback((e: { name: string; value: any }) => {
+  const onTreeBoxOpened = React.useCallback((e: DropDownBoxTypes.OptionChangedEvent) => {
     if (e.name === 'opened') {
       setIsTreeBoxOpened(e.value);
     }

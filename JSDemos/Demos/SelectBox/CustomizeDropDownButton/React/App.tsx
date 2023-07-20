@@ -14,7 +14,7 @@ function App() {
   const [selectedItem, setSelectedItem] = React.useState(products[0]);
   const [isLoaded, setIsLoaded] = React.useState(true);
 
-  const deferredProducts = React.useMemo(
+  const deferredProducts = React.useMemo<any>(
     () => ({
       loadMode: 'raw',
       load: () => {
