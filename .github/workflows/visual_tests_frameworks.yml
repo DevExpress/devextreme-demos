@@ -39,9 +39,9 @@ jobs:
     - name: Restore npm cache
       uses: actions/cache@v3
       with:
-        path: ./devextreme/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-devextreme-node-modules
+        path: 'devextreme/**/node_modules'
+        key: ${{ runner.os }}-node-modules-${{ hashFiles('devextreme/**/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-node-modules
 
     - name: Use Node.js 18
       uses: actions/setup-node@v3
@@ -53,22 +53,26 @@ jobs:
       run: npm install --no-audit --no-fund
 
     - name: Build
-      working-directory: ./devextreme
+      working-directory: ./devextreme/packages/devextreme
       run: npm run build-npm-devextreme
 
+    - name: Discover declarations
+      working-directory: ./devextreme/packages/devextreme
+      run: npm run discover-declarations
+
     - name: Pack devextreme
-      working-directory: ./devextreme/artifacts/npm/devextreme
+      working-directory: ./devextreme/packages/devextreme/artifacts/npm/devextreme
       run: npm pack
 
     - name: Pack devextreme-dist
-      working-directory: ./devextreme/artifacts/npm/devextreme-dist
+      working-directory: ./devextreme/packages/devextreme/artifacts/npm/devextreme-dist
       run: npm pack
 
     - name: Copy packages
       run: |
-        cp ./devextreme/artifacts/npm/devextreme/*.tgz ./devextreme-installer.tgz
-        cp ./devextreme/artifacts/npm/devextreme-dist/*.tgz ./devextreme-dist-installer.tgz
-        cp ./devextreme/artifacts/internal-tools/Declarations.json ./Declarations.json
+        cp ./devextreme/packages/devextreme/artifacts/npm/devextreme/*.tgz ./devextreme-installer.tgz
+        cp ./devextreme/packages/devextreme/artifacts/npm/devextreme-dist/*.tgz ./devextreme-dist-installer.tgz
+        cp ./devextreme/packages/devextreme/artifacts/internal-tools/Declarations.json ./Declarations.json
 
     - name: Copy build artifacts
       uses: actions/upload-artifact@v3
@@ -115,7 +119,7 @@ jobs:
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
     - name: Discover declarations
-      working-directory: ./devextreme
+      working-directory: ./devextreme/packages/devextreme
       run: npm run discover-declarations
 
     #Build devextreme-react
@@ -266,7 +270,7 @@ jobs:
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
     - name: Discover declarations
-      working-directory: ./devextreme
+      working-directory: ./devextreme/packages/devextreme
       run: npm run discover-declarations
 
     #Build devextreme-angular
@@ -445,21 +449,23 @@ jobs:
           cp ../Declarations.json ./artifacts/internal-tools/
           npm i
           npm run update-topics
+
       - name: Inject descriptions
-        working-directory: ./devextreme
+        working-directory: ./devextreme/packages/devextreme
         run: |
-          npm run internal-tool -- inject-descriptions --descriptions-path ../../../devextreme-documentation-repo/artifacts/internal-tools/Descriptions.json --js-scripts ./js
+          npm run internal-tool -- inject-descriptions --descriptions-path ../../../../../devextreme-documentation-repo/artifacts/internal-tools/Descriptions.json --js-scripts ./js
+
       - name: Build
         continue-on-error: true
-        working-directory: ./devextreme
+        working-directory: ./devextreme/packages/devextreme
         run: npm run build-npm-devextreme
 
       - name: Pack
-        working-directory: ./devextreme/artifacts/npm/devextreme
+        working-directory: ./devextreme/packages/devextreme/artifacts/npm/devextreme
         run: npm pack
 
       - name: Copy package
-        run: cp ./devextreme/artifacts/npm/devextreme/*.tgz ./devextreme-installer-docs.tgz
+        run: cp ./devextreme/packages/devextreme/artifacts/npm/devextreme/*.tgz ./devextreme-installer-docs.tgz
 
       - name: Copy build artifacts
         uses: actions/upload-artifact@v3
