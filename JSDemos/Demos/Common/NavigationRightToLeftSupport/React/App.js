@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import SelectBox from 'devextreme-react/select-box';
 import Menu from 'devextreme-react/menu';
 import TreeView from 'devextreme-react/tree-view';
@@ -10,12 +10,40 @@ const languages = [
   'English: Left-to-Right direction',
 ];
 
-function App() {
-  const [rtlEnabled, setRtl] = React.useState(false);
+const App = () => {
+  const [rtlEnabled, setRtl] = useState(false);
 
-  const selectLanguage = React.useCallback(({ value }) => {
+  const selectLanguage = useCallback(({ value }) => {
     setRtl(value === languages[0]);
   }, []);
+
+  const renderArabicTitle = (item) => {
+    return (<div>{item.nameAr}</div>);
+  }
+
+  const renderArabic = (country) => {
+    return (
+      <div>
+        <div>عاصمة: { country.capitalAr } </div>
+        <div>عدد السكان: { country.population } نسمة</div>
+        <div>المساحة: { country.area } كم<sup>2</sup></div>
+      </div>
+    );
+  }
+
+  const renderEnglishTitle = (item) => {
+    return (<div>{item.nameEn}</div>);
+  }
+
+  const renderEnglish = (country) => {
+    return (
+      <div>
+        <div>Capital: { country.capitalEn } </div>
+        <div>Population: { country.population } people</div>
+        <div>Area: { country.area } km<sup>2</sup></div>
+      </div>
+    );
+  }
 
   return (
     <div className={rtlEnabled ? 'dx-rtl' : ''}>
@@ -66,34 +94,6 @@ function App() {
           </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-function renderArabicTitle(item) {
-  return (<div>{item.nameAr}</div>);
-}
-
-function renderArabic(country) {
-  return (
-    <div>
-      <div>عاصمة: { country.capitalAr } </div>
-      <div>عدد السكان: { country.population } نسمة</div>
-      <div>المساحة: { country.area } كم<sup>2</sup></div>
-    </div>
-  );
-}
-
-function renderEnglishTitle(item) {
-  return (<div>{item.nameEn}</div>);
-}
-
-function renderEnglish(country) {
-  return (
-    <div>
-      <div>Capital: { country.capitalEn } </div>
-      <div>Population: { country.population } people</div>
-      <div>Area: { country.area } km<sup>2</sup></div>
     </div>
   );
 }
