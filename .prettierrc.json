@@ -1,7 +1,7 @@
 {
     "tabWidth": 2,
     "htmlWhitespaceSensitivity": "strict",
-    "printWidth": 200,
+    "printWidth": 100,
     "overrides": [{
         "files": "**/Angular/**/*.component.html",
         "options": {
