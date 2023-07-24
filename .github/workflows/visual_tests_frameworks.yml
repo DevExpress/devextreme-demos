@@ -276,7 +276,7 @@ jobs:
     - name: Copy artifacts
       run: |
         mkdir ./devextreme/artifacts
-        cp ./devextreme/packages/devextreme/artifacts ./devextreme/artifacts
+        cp -r ./devextreme/packages/devextreme/artifacts ./devextreme/artifacts
 
     #Build devextreme-angular
 
