@@ -40,8 +40,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./devextreme/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('./devextreme/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-devextreme-node-modules
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
 
     - name: Use Node.js 15
       uses: actions/setup-node@v3
@@ -103,8 +102,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./devextreme/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('./devextreme/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-devextreme-node-modules
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
 
     - name: Discover declarations
       working-directory: ./devextreme
@@ -204,8 +202,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./devextreme/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('./devextreme/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-devextreme-node-modules
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
 
     - name: Discover declarations
       working-directory: ./devextreme
@@ -301,8 +298,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./devextreme/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('./devextreme/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-devextreme-node-modules
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
 
     - name: Discover declarations
       working-directory: ./devextreme
@@ -396,8 +392,6 @@ jobs:
       with:
         path: ./node_modules
         key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-modules
 
     - name: Delete DX packages
       run:  sed -i '/22.2-next/d' ./package.json
