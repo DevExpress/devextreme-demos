@@ -41,6 +41,7 @@ jobs:
       with:
         path: 'devextreme/**/node_modules'
         key: ${{ runner.os }}-node-modules-${{ hashFiles('devextreme/**/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-node-modules
 
     - name: Use Node.js 18
       uses: actions/setup-node@v3
@@ -113,8 +114,9 @@ jobs:
     - name: Restore npm cache
       uses: actions/cache@v3
       with:
-        path: 'devextreme/**/node_modules'
-        key: ${{ runner.os }}-node-modules-${{ hashFiles('devextreme/**/package-lock.json') }}
+        path: ./devextreme/node_modules
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-devextreme-node-modules
 
     - name: Discover declarations
       working-directory: ./devextreme/packages/devextreme
@@ -263,17 +265,13 @@ jobs:
     - name: Restore npm cache
       uses: actions/cache@v3
       with:
-        path: 'devextreme/**/node_modules'
-        key: ${{ runner.os }}-node-modules-${{ hashFiles('devextreme/**/package-lock.json') }}
+        path: ./devextreme/node_modules
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-devextreme-node-modules
 
     - name: Discover declarations
       working-directory: ./devextreme/packages/devextreme
       run: npm run discover-declarations
-
-    - name: Copy artifacts
-      run: |
-        mkdir ./devextreme/artifacts
-        cp -vr ./devextreme/packages/devextreme/artifacts ./devextreme
 
     #Build devextreme-angular
 
@@ -353,6 +351,8 @@ jobs:
       with:
         path: ./node_modules
         key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-modules
 
     - name: Delete DX packages
       run:  sed -i '/23.2-next/d' ./package.json
@@ -410,8 +410,9 @@ jobs:
       - name: Restore npm cache
         uses: actions/cache@v3
         with:
-          path: 'devextreme/**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('devextreme/**/package-lock.json') }}
+          path: ./devextreme/node_modules
+          key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-devextreme-node-modules
 
       - name: Use Node.js 18
         uses: actions/setup-node@v3
