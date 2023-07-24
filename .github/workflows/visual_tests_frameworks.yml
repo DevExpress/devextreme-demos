@@ -40,7 +40,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./devextreme/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('./devextreme/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
     - name: Use Node.js 15
@@ -103,7 +103,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./devextreme/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('./devextreme/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
     - name: Discover declarations
@@ -204,7 +204,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./devextreme/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('./devextreme/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
     - name: Discover declarations
@@ -301,7 +301,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./devextreme/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('./devextreme/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
     - name: Discover declarations
