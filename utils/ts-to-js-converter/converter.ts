@@ -7,7 +7,7 @@ import { copy, emptyDir, remove } from 'fs-extra';
 import { promisify } from 'util';
 import partial from 'lodash.partial';
 
-import { Logger, PathResolvers } from './types';
+import { Logger, PathResolver, PathResolvers } from './types';
 
 const exec = promisify(cps.exec);
 
@@ -179,6 +179,12 @@ const prettify = async (resolve: PathResolvers, log: Logger) => {
   });
 };
 
+const hasTypescriptFiles = async (resolve: PathResolver) => {
+  const filenamePatterns = ['./*.ts', './*.tsx'];
+  const files = (await Promise.all(filenamePatterns.map((pattern) => glob(resolve(pattern))))).flat(1);
+  return files.length > 0;
+};
+
 export const converter = async (
   sourceDir: string,
   outDir: string,
@@ -191,6 +197,11 @@ export const converter = async (
   const tempDir = path.join(sourceDir, '../_temp');
   const sourceDirResolver = partial(path.resolve, sourceDir);
   const tempDirResolver = partial(path.resolve, tempDir);
+
+  if (!await hasTypescriptFiles(sourceDirResolver)) {
+    log.warning(`No TypeScript files found in ${sourceDir}. Skipping...`);
+    return;
+  }
 
   log.debug(`touching ${outDir}`);
   await emptyDir(outDir);
