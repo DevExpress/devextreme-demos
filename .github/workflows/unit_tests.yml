@@ -26,6 +26,7 @@ jobs:
         with:
           path: ./node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-modules
 
       - name: Delete DX packages
         run:  sed -i '/23.2-next/d' ./package.json
