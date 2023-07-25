@@ -199,7 +199,7 @@ export const converter = async (
   const tempDirResolver = partial(path.resolve, tempDir);
 
   if (!await hasTypescriptFiles(sourceDirResolver)) {
-    log.warning(`No TypeScript files found in ${sourceDir}. Skipping...`);
+    log.info(`No TypeScript files found in ${sourceDir}. Skipping...`);
     return;
   }
 

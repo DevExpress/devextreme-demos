@@ -2,15 +2,18 @@
 import minimist from 'minimist';
 import path from 'path';
 import { glob } from 'glob';
+import { consola } from 'consola';
 
 import { converter } from './converter';
 
 const performConversion = async () => {
   const logger = {
-    warning: console.warn,
-    error: console.error,
-    debug: console.debug,
-    info: console.info,
+    warning: consola.warn,
+    error: consola.error,
+    debug: consola.debug,
+    info: consola.info,
+    start: consola.start,
+    success: consola.success,
   };
 
   const args = minimist(process.argv.slice(2));
@@ -34,9 +37,9 @@ const performConversion = async () => {
 
   await Promise.all(
     entries.map(async ({ source, out }) => {
-      logger.info(`converting ${source}`);
+      logger.start(`converting ${source}`);
       await converter(source, out, logger);
-      logger.info(`${source} complete`);
+      logger.success(`${source} complete`);
     }),
   )
     // eslint-disable-next-line no-void

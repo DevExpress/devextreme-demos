@@ -1,4 +1,5 @@
 export type Logger = {
+  info: (msg: string) => void
   debug: (msg: string) => void
   error: (msg: string) => void
   warning: (msg: string) => void
