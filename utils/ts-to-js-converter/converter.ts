@@ -108,6 +108,14 @@ const copyAssets = async (resolve: PathResolvers, log: Logger) => {
   });
 };
 
+const copyEverything = async (resolve: PathResolvers, log: Logger) => {
+  log.debug('copying everything:');
+  await pipeSource(resolve, ['*.*'], async (source, target) => {
+    log.debug(`${source} -> ${target}`);
+    await copy(source, target);
+  });
+};
+
 const strip = async (resolve: PathResolvers, log: Logger) => {
   log.debug('stripping JS example');
 
@@ -138,11 +146,13 @@ const replaceInFiles = async (filenamePatterns: string[], replacementCallback: (
   )
 );
 
+const temporaryImportFixMark = '\'; /* temporary import fix */';
+
 const patchImportsPreCompile = async (resolve: PathResolvers, log: Logger) => {
   const filenamePatterns = ['./*.ts', './*.tsx'];
 
   const replaceFileExtensions = (input) => input
-    .replace(/(\.tsx?)/g, '');
+    .replace(/(\.tsx?';)/g, temporaryImportFixMark);
 
   await replaceInFiles(filenamePatterns, replaceFileExtensions, resolve.source, log);
   log.debug('imports patching done');
@@ -152,7 +162,8 @@ const patchImports = async (resolve: PathResolvers, log: Logger) => {
   const filenamePatterns = ['./*.jsx', './*.js', './*.html'];
 
   const replaceFileExtensions = (input) => input
-    .replace(/(\.tsx?)/g, '.js');
+    .replace(/(\.tsx?)/g, '.js')
+    .replaceAll(temporaryImportFixMark, '.js\';');
 
   await replaceInFiles(filenamePatterns, replaceFileExtensions, resolve.out, log);
   log.debug('imports patching done');
@@ -176,21 +187,28 @@ export const converter = async (
   log.debug('TS to JS example converter starting');
   log.debug(`sourceDir: ${sourceDir}`);
   log.debug(`outDir: ${outDir}`);
-  const tempFolder = '_temp';
+
+  const tempDir = path.join(sourceDir, '../_temp');
+  const sourceDirResolver = partial(path.resolve, sourceDir);
+  const tempDirResolver = partial(path.resolve, tempDir);
+
+  log.debug(`touching ${outDir}`);
+  await emptyDir(outDir);
+  log.debug(`touching ${tempDir}`);
+  await emptyDir(tempDir);
+
+  await copyEverything({ source: sourceDirResolver, out: tempDirResolver }, log);
+
   const resolve = {
-    source: partial(path.resolve, sourceDir),
-    temp: partial(path.resolve, outDir, tempFolder),
+    source: tempDirResolver,
     out: partial(path.resolve, outDir),
   };
 
-  log.debug(`touching ${outDir}`);
-
-  await emptyDir(outDir);
-  await emptyDir(path.join(outDir, tempFolder));
   await patchImportsPreCompile(resolve, log);
   await compile(resolve, log);
   await copyAssets(resolve, log);
   await patchImports(resolve, log);
   await strip(resolve, log);
   await prettify(resolve, log);
+  await remove(tempDir);
 };
