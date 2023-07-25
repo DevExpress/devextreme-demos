@@ -1,12 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import minimist from 'minimist';
 import path from 'path';
-import globCb from 'glob';
-import { promisify } from 'util';
+import { glob } from 'glob';
 
 import { converter } from './converter';
-
-const glob = promisify(globCb);
 
 const performConversion = async () => {
   const logger = {

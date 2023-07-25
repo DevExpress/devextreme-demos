@@ -1,20 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import cps from 'child_process';
 import path from 'path';
-import globCb from 'glob';
-import fs from 'fs';
-import fse from 'fs-extra';
+import { glob } from 'glob';
+import { readFile, writeFile } from 'fs/promises';
+import { copy, emptyDir, remove } from 'fs-extra';
 import { promisify } from 'util';
 import partial from 'lodash.partial';
 
 import { Logger, PathResolvers } from './types';
 
-const readFile = promisify(fs.readFile);
-const copy = promisify(fse.copy);
-const emptyDir = promisify(fse.emptyDir);
-const remove = promisify(fse.remove);
-const writeFile = promisify(fs.writeFile);
-const glob = promisify(globCb);
 const exec = promisify(cps.exec);
 
 const tsConfigFileName = 'converter.tsconfig.json';
