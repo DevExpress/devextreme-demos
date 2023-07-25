@@ -120,28 +120,31 @@ const strip = async (resolve: PathResolvers, log: Logger) => {
   });
 };
 
-const patchImportsPre = async (resolve: PathResolvers, log: Logger) => {
-  const filenamePatterns = ['./*.ts', './*.tsx'];
-
-  const replaceFileExtensions = (input) => input
-    .replace(/(\.tsx?)/g, '');
-
-  await Promise.all(
+const replaceInFiles = async (filenamePatterns: string[], replacementCallback: (string) => string, resolvePath: (string) => string, log: Logger) => (
+  Promise.all(
     filenamePatterns.map(async (pattern) => {
-      log.debug(resolve.source(pattern));
-      const files = await glob(resolve.source(pattern));
+      const files = await glob(resolvePath(pattern));
       log.debug(files.join('\r\n'));
       return Promise.all(
         files.map(async (file) => {
           log.debug(`patching ${file}`);
-          const fileContents = replaceFileExtensions(
+          const fileContents = replacementCallback(
             (await readFile(file)).toString(),
           );
           return writeFile(file, fileContents);
         }),
       );
     }),
-  );
+  )
+);
+
+const patchImportsPreCompile = async (resolve: PathResolvers, log: Logger) => {
+  const filenamePatterns = ['./*.ts', './*.tsx'];
+
+  const replaceFileExtensions = (input) => input
+    .replace(/(\.tsx?)/g, '');
+
+  await replaceInFiles(filenamePatterns, replaceFileExtensions, resolve.source, log);
   log.debug('imports patching done');
 };
 
@@ -151,20 +154,7 @@ const patchImports = async (resolve: PathResolvers, log: Logger) => {
   const replaceFileExtensions = (input) => input
     .replace(/(\.tsx?)/g, '.js');
 
-  await Promise.all(
-    filenamePatterns.map(async (pattern) => {
-      const files = await glob(resolve.out(pattern));
-      return Promise.all(
-        files.map(async (file) => {
-          log.debug(`patching ${file}`);
-          const fileContents = replaceFileExtensions(
-            (await readFile(file)).toString(),
-          );
-          return writeFile(file, fileContents);
-        }),
-      );
-    }),
-  );
+  await replaceInFiles(filenamePatterns, replaceFileExtensions, resolve.out, log);
   log.debug('imports patching done');
 };
 
@@ -197,7 +187,7 @@ export const converter = async (
 
   await emptyDir(outDir);
   await emptyDir(path.join(outDir, tempFolder));
-  await patchImportsPre(resolve, log);
+  await patchImportsPreCompile(resolve, log);
   await compile(resolve, log);
   await copyAssets(resolve, log);
   await patchImports(resolve, log);
