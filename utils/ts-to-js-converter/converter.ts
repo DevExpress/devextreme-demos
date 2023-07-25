@@ -215,11 +215,18 @@ export const converter = async (
     out: partial(path.resolve, outDir),
   };
 
-  await patchImportsPreCompile(resolve, log);
-  await compile(resolve, log);
-  await copyAssets(resolve, log);
-  await patchImports(resolve, log);
-  await strip(resolve, log);
-  await prettify(resolve, log);
-  await remove(tempDir);
+  try {
+    await patchImportsPreCompile(resolve, log);
+    await compile(resolve, log);
+    await copyAssets(resolve, log);
+    await patchImports(resolve, log);
+    await strip(resolve, log);
+    await prettify(resolve, log);
+  } catch (error) {
+    log.error(error);
+    return;
+  } finally {
+    log.debug(`removing temp directory: ${tempDir}`);
+    await remove(tempDir);
+  }
 };
