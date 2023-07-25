@@ -192,15 +192,17 @@ export const converter = async (
   log.debug('TS to JS example converter starting');
   log.debug(`sourceDir: ${sourceDir}`);
   log.debug(`outDir: ${outDir}`);
-
+  const tempFolder = '_temp';
   const resolve = {
     source: partial(path.resolve, sourceDir),
+    temp: partial(path.resolve, outDir, tempFolder),
     out: partial(path.resolve, outDir),
   };
 
   log.debug(`touching ${outDir}`);
 
   await emptyDir(outDir);
+  await emptyDir(path.join(outDir, tempFolder));
   await patchImportsPre(resolve, log);
   await compile(resolve, log);
   await copyAssets(resolve, log);

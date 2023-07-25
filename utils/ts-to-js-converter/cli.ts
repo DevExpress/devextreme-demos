@@ -1,31 +1,53 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import minimist from 'minimist';
 import path from 'path';
+import globCb from 'glob';
+import { promisify } from 'util';
 
-import consola from 'consola';
 import { converter } from './converter';
 
-const args = minimist(process.argv.slice(2));
-const warning = consola.warn;
-const error = consola.error;
-const debug = console.log;
+const glob = promisify(globCb);
 
-const sourceDir = args._[0] || process.cwd();
-const outDir = args['out-dir'] || `${sourceDir}Js`;
+const performConversion = async () => {
+  const logger = {
+    warning: console.warn,
+    error: console.error,
+    debug: console.debug,
+    info: console.info,
+  };
 
-converter(
-  path.resolve(process.cwd(), sourceDir),
-  path.resolve(process.cwd(), outDir),
-  {
-    error,
-    debug,
-    warning,
-  },
-)
-  // eslint-disable-next-line no-void
-  .then(void 0)
-  .catch((error) => {
-    console.log(error);
-    consola.error(error);
-    process.exit(1);
-  });
+  const args = minimist(process.argv.slice(2));
+
+  const sourceDirs = args._ || [process.cwd()];
+  const outDirPostfix = 'Js';
+
+  const entries = (await Promise.all(
+    sourceDirs.map(async (sourceDir) => {
+      const sources = await glob(sourceDir);
+      return sources.map((source) => ({
+        source: path.resolve(process.cwd(), source),
+        out: path.resolve(
+          process.cwd(),
+          path.resolve(process.cwd(), source),
+          `../${path.basename(source)}${outDirPostfix}`,
+        ),
+      }));
+    }),
+  )).flat(1);
+
+  await Promise.all(
+    entries.map(async ({ source, out }) => {
+      logger.info(`converting ${source}`);
+      await converter(source, out, logger);
+      logger.info(`${source} complete`);
+    }),
+  )
+    // eslint-disable-next-line no-void
+    .then(void 0)
+    .catch((error) => {
+      logger.error(error);
+      process.exit(1);
+    });
+};
+
+performConversion();
