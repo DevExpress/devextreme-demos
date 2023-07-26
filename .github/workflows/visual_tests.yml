@@ -84,6 +84,10 @@ jobs:
     - name: Demos - Install devextreme-dist package
       run: npm install $(find ./devextreme-repo/packages/devextreme/artifacts/npm/devextreme-dist/ -maxdepth 1 -name "devextreme-*.tgz")
 
+#TODO: remove
+    - name: Show screenshot-comparer version
+      run: npm list devextreme-screenshot-comparer
+
     #Publish artifacts
     - name: Zip node_modules
       run: 7z a -t7z -mx3 -mmt2 node_modules.7z node_modules
