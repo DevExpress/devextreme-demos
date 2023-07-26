@@ -46,7 +46,7 @@ jobs:
     - name: Use Node.js 18
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        node-version: '18.16.1'
 
     - name: Install packages
       working-directory: ./devextreme
@@ -127,7 +127,7 @@ jobs:
     - name: Use Node.js 18
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        node-version: '18.16.1'
 
     - name: Download devextreme sources
       uses: actions/download-artifact@v3
@@ -192,7 +192,7 @@ jobs:
     - name: Use Node.js 18
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        node-version: '18.16.1'
 
     - name: Download devextreme sources
       uses: actions/download-artifact@v3
@@ -283,7 +283,7 @@ jobs:
     - name: Use Node.js 18
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        node-version: '18.16.1'
 
     - name: Download devextreme sources
       uses: actions/download-artifact@v3
@@ -344,7 +344,7 @@ jobs:
     - name: Use Node.js 18
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        node-version: '18.16.1'
 
     - name: Download devextreme sources
       uses: actions/download-artifact@v3
@@ -422,7 +422,7 @@ jobs:
       - name: Use Node.js 18
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '18.16.1'
 
       - name: Install packages
         working-directory: ./devextreme
