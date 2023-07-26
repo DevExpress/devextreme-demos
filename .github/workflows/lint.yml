@@ -29,3 +29,41 @@ jobs:
         npm -v
         npm install --no-audit --no-fund --ignore-scripts
         git diff --exit-code package-lock.json
+
+  check_generated_demos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - name: Get sources
+      uses: actions/checkout@v3
+
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Restore npm cache
+      uses: actions/cache@v3
+      with:
+        path: ./node_modules
+        key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-node-modules
+
+    - name: Check generated JS demos
+      run: |
+        node -v
+        npm -v
+        npm install --no-audit --no-fund --ignore-scripts
+
+        npm run convert-to-js ./JSDemos/Demos/**/React
+
+        git add . -N
+
+        if git diff --exit-code ; then
+          echo "Generated JS demos are up-to-date"
+        else
+            echo "Generated JS demos are outdated. Execute 'npm run convert-to-js ./JSDemos/Demos/**/React' and commit changes."
+            exit 1
+        fi
+
+
