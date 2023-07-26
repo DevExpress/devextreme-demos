@@ -6,9 +6,9 @@
 </template>
 <script setup lang="ts">
 withDefaults(defineProps<{
-  itemData?: object
+  itemData?: {[key:string]: unknown}
 }>(), {
-  itemData: () => {},
+  itemData: () => ({key: ''}),
 });
 </script>
 <style scoped>

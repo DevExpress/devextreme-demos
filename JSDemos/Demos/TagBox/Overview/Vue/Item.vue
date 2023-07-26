@@ -8,8 +8,8 @@
 </template>
 <script setup lang="ts">
 withDefaults(defineProps<{
-  itemData?: object
+  itemData?: {[key:string]: string}
 }>(), {
-  itemData: () => {},
+  itemData: () => ({Name: ''}),
 });
 </script>

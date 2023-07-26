@@ -145,7 +145,7 @@ const clientsStore = ref(clientsCustomStore);
 function updateEmployeeInfo() {
   let employeeInfo = '';
   employeeInfo += `${firstName.value || ''} ${lastName.value || ''}`.trim();
-  employeeInfo += (employeeInfo && position) ? `, ${position}` : position || '';
+  employeeInfo += (employeeInfo && position) ? `, ${position.value}` : position.value || '';
   employeeInfo += (employeeInfo && state.value) ? `, ${state.value}` : state.value || '';
   employeeInfo += (employeeInfo && currentClient.value) ? `, ${currentClient.value}` : currentClient.value || '';
   fullInfo.value = employeeInfo;
