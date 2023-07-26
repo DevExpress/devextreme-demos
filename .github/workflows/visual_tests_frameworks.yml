@@ -273,6 +273,11 @@ jobs:
       working-directory: ./devextreme/packages/devextreme
       run: npm run discover-declarations
 
+    - name: Copy artifacts
+      run: |
+        mkdir ./devextreme/artifacts
+        cp -vr ./devextreme/packages/devextreme/artifacts ./devextreme
+
     #Build devextreme-angular
 
     - name: Use Node.js 18
