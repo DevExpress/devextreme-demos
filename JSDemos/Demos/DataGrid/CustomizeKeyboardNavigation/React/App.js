@@ -18,14 +18,14 @@ import {
 const enterKeyActions = ['startEdit', 'moveFocus'];
 const enterKeyDirections = ['none', 'column', 'row'];
 
+const onFocusedCellChanging = (e) => {
+  e.isHighlighted = true;
+};
+
 const App = () => {
   const [editOnKeyPress, setEditOnKeyPress] = useState(true);
   const [enterKeyAction, setEnterKeyAction] = useState('moveFocus');
   const [enterKeyDirection, setEnterKeyDirection] = useState('column');
-
-  const onFocusedCellChanging = useCallback((e) => {
-    e.isHighlighted = true;
-  }, []);
 
   const editOnKeyPressChanged = useCallback((e) => {
     setEditOnKeyPress(e.value);

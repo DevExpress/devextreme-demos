@@ -5,6 +5,7 @@ import service from './data.js';
 
 const employees = service.getEmployees();
 const calculateCellValue = (data) => [data.Title, data.FirstName, data.LastName].join(' ');
+
 const App = () => (
   <DataGrid
     id="gridContainer"

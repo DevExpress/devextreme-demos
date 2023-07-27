@@ -9,26 +9,24 @@ const BASE_PATH = 'https://js.devexpress.com/Demos/NetCore/';
 const url = `${BASE_PATH}api/DataGridCollaborativeEditing`;
 const groupId = new Guid().toJSON();
 
-function createStore() {
-  return AspNetData.createStore({
-    key: 'ID',
-    loadUrl: url,
-    insertUrl: url,
-    updateUrl: url,
-    deleteUrl: url,
-    onBeforeSend(operation, ajaxSettings) {
-      ajaxSettings.data.groupId = groupId;
-    },
-  });
-}
+const createStore = () => AspNetData.createStore({
+  key: 'ID',
+  loadUrl: url,
+  insertUrl: url,
+  updateUrl: url,
+  deleteUrl: url,
+  onBeforeSend(operation, ajaxSettings) {
+    ajaxSettings.data.groupId = groupId;
+  },
+});
 
 const store1 = createStore();
 const store2 = createStore();
 
-function updateStores(events) {
+const updateStores = (events) => {
   store1.push(events);
   store2.push(events);
-}
+};
 
 const App = () => {
   useEffect(() => {

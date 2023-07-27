@@ -17,16 +17,15 @@ const groupingValues = [{
   text: 'Grouping by Employee',
 }];
 
+const orders = service.getOrders();
+
+const getGroupCount = (groupField) => query(orders).groupBy(groupField).toArray().length;
+
 const App = () => {
-  const orders = service.getOrders();
   const [expanded, setExpanded] = useState(true);
   const [totalCount, setTotalCount] = useState(getGroupCount('CustomerStoreState'));
   const [grouping, setGrouping] = useState('CustomerStoreState');
   const dataGridRef = useRef(null);
-
-  const getGroupCount = useCallback((groupField) => query(orders)
-    .groupBy(groupField)
-    .toArray().length, [orders]);
 
   const groupChanged = useCallback((e) => {
     const newGrouping = e.value;
@@ -34,7 +33,7 @@ const App = () => {
     dataGridRef.current.instance.columnOption(newGrouping, 'groupIndex', 0);
     setTotalCount(getGroupCount(newGrouping));
     setGrouping(newGrouping);
-  }, [getGroupCount]);
+  }, []);
 
   const collapseAllClick = useCallback(() => {
     setExpanded(!expanded);
@@ -45,7 +44,8 @@ const App = () => {
   }, []);
 
   return (
-    <DataGrid id="gridContainer"
+    <DataGrid
+      id="gridContainer"
       ref={dataGridRef}
       dataSource={orders}
       keyExpr="ID"
@@ -87,9 +87,7 @@ const App = () => {
             icon='refresh'
             onClick={refreshDataGrid} />
         </Item>
-        <Item
-          name="columnChooserButton"
-        />
+        <Item name="columnChooserButton" />
       </Toolbar>
     </DataGrid>
   );

@@ -12,7 +12,7 @@ const languages = ['Arabic (Right-to-Left direction)', 'English (Left-to-Right d
 const App = () => {
   const [placeholder, setPlaceholder] = useState('Search...');
   const [rtlEnabled, setRtlEnabled] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('English (Left-to-Right direction)');
+  const [selectedValue, setSelectedValue] = useState(languages[1]);
 
   const dataSource = service.getEuropeanUnion();
 

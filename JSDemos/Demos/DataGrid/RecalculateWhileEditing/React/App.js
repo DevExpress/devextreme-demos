@@ -8,36 +8,34 @@ const saleAmountEditorOptions = { format: 'currency' };
 const orders = service.getOrders();
 
 const App = () => (
-  <React.Fragment>
-    <DataGrid
-      id="gridContainer"
-      dataSource={orders}
-      keyExpr="ID"
-      repaintChangesOnly={true}
-      showBorders={true}>
-      <Editing
-        mode="batch"
-        allowAdding={true}
-        allowUpdating={true}
-        allowDeleting={true}>
-      </Editing>
-      <Column dataField="OrderNumber" width={130} caption="Invoice Number" />
-      <Column dataField="OrderDate" dataType="date" />
-      <Column dataField="Employee" />
-      <Column dataField="CustomerStoreCity" caption="City" />
-      <Column dataField="CustomerStoreState" caption="State" />
-      <Column dataField="SaleAmount" alignment="right" format="currency" editorOptions={saleAmountEditorOptions} />
-      <Summary recalculateWhileEditing={true}>
-        <TotalItem
-          column="OrderNumber"
-          summaryType="count" />
-        <TotalItem
-          column="SaleAmount"
-          summaryType="sum"
-          valueFormat="currency" />
-      </Summary>
-    </DataGrid>
-  </React.Fragment>
+  <DataGrid
+    id="gridContainer"
+    dataSource={orders}
+    keyExpr="ID"
+    repaintChangesOnly={true}
+    showBorders={true}>
+    <Editing
+      mode="batch"
+      allowAdding={true}
+      allowUpdating={true}
+      allowDeleting={true}>
+    </Editing>
+    <Column dataField="OrderNumber" width={130} caption="Invoice Number" />
+    <Column dataField="OrderDate" dataType="date" />
+    <Column dataField="Employee" />
+    <Column dataField="CustomerStoreCity" caption="City" />
+    <Column dataField="CustomerStoreState" caption="State" />
+    <Column dataField="SaleAmount" alignment="right" format="currency" editorOptions={saleAmountEditorOptions} />
+    <Summary recalculateWhileEditing={true}>
+      <TotalItem
+        column="OrderNumber"
+        summaryType="count" />
+      <TotalItem
+        column="SaleAmount"
+        summaryType="sum"
+        valueFormat="currency" />
+    </Summary>
+  </DataGrid>
 );
 
 export default App;

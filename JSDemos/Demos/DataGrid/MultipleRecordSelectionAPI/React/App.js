@@ -13,13 +13,12 @@ const titles = ['All', 'Dr.', 'Mr.', 'Mrs.', 'Ms.'];
 const getEmployeeName = (row) => `${row.FirstName} ${row.LastName}`;
 const getEmployeeNames = (selectedRowsData) => (selectedRowsData.length ? selectedRowsData.map(getEmployeeName).join(', ') : 'Nobody has been selected');
 
-function App() {
+const App = () => {
   const [prefix, setPrefix] = useState('');
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [selectedEmployeeNames, setSelectedEmployeeNames] = useState('Nobody has been selected');
 
   const dataGridRef = useRef(null);
-  const selectionChangedBySelectBox = useRef(false);
 
   const onClearButtonClicked = useCallback(() => {
     dataGridRef.current.instance.clearSelection();
@@ -27,8 +26,6 @@ function App() {
 
   const onSelectionChanged = useCallback(
     ({ selectedRowKeys: changedRowKeys, selectedRowsData }) => {
-      selectionChangedBySelectBox.current = false;
-
       setPrefix(null);
       setSelectedRowKeys(changedRowKeys);
       setSelectedEmployeeNames(getEmployeeNames(selectedRowsData));
@@ -36,8 +33,6 @@ function App() {
   );
 
   const onSelectionFilterChanged = useCallback(({ value }) => {
-    selectionChangedBySelectBox.current = true;
-
     const newPrefix = value;
 
     if (newPrefix) {
@@ -96,6 +91,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

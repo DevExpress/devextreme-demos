@@ -17,7 +17,8 @@ const App = () => {
 
   return (
     <div>
-      <DataGrid id="orders"
+      <DataGrid
+        id="orders"
         dataSource={orders}
         keyExpr="ID"
         showBorders={true}
@@ -32,7 +33,8 @@ const App = () => {
         <div className="caption">Options</div>
         <div className="option">
           <span>Column resizing mode:&nbsp;</span>
-          <SelectBox items={resizingModes}
+          <SelectBox
+            items={resizingModes}
             value={mode}
             inputAttr={columnResizingModeLabel}
             width={250}

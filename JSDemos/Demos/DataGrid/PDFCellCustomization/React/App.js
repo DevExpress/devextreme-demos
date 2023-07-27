@@ -54,37 +54,37 @@ const phoneNumberFormat = (value) => {
   return `(${USNumber[1]}) ${USNumber[2]}-${USNumber[3]}`;
 };
 
-export default function App() {
-  return (
-    <div>
-      <DataGrid
-        id="gridContainer"
-        dataSource={companies}
-        keyExpr="ID"
-        width="100%"
-        showBorders={true}
-        onExporting={onExporting}>
+const App = () => (
+  <div>
+    <DataGrid
+      id="gridContainer"
+      dataSource={companies}
+      keyExpr="ID"
+      width="100%"
+      showBorders={true}
+      onExporting={onExporting}>
 
-        <Export enabled={true} formats={exportFormats} />
-        <GroupPanel visible={true} />
-        <Grouping autoExpandAll={true} />
-        <SortByGroupSummaryInfo summaryItem="count" />
+      <Export enabled={true} formats={exportFormats} />
+      <GroupPanel visible={true} />
+      <Grouping autoExpandAll={true} />
+      <SortByGroupSummaryInfo summaryItem="count" />
 
-        <Column dataField="Name" width={190} />
-        <Column dataField="Address" width={200} />
-        <Column dataField="City" />
-        <Column dataField="State" groupIndex={0} />
-        <Column dataField="Phone" format={(e) => phoneNumberFormat(e)} />
-        <Column dataField="Website" caption="" alignment="center" width={100} cellRender={(e) => renderGridCell(e)} />
+      <Column dataField="Name" width={190} />
+      <Column dataField="Address" width={200} />
+      <Column dataField="City" />
+      <Column dataField="State" groupIndex={0} />
+      <Column dataField="Phone" format={(e) => phoneNumberFormat(e)} />
+      <Column dataField="Website" caption="" alignment="center" width={100} cellRender={(e) => renderGridCell(e)} />
 
-        <Summary>
-          <TotalItem
-            column="Name"
-            summaryType="count"
-            displayFormat="Total count: {0}"
-          />
-        </Summary>
-      </DataGrid>
-    </div>
-  );
-}
+      <Summary>
+        <TotalItem
+          column="Name"
+          summaryType="count"
+          displayFormat="Total count: {0}"
+        />
+      </Summary>
+    </DataGrid>
+  </div>
+);
+
+export default App;

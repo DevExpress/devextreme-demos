@@ -7,6 +7,7 @@ import service from './data.js';
 const orders = service.getOrders();
 
 const allowedPageSizes = [5, 10, 20];
+
 const onRefreshClick = () => {
   window.location.reload();
 };

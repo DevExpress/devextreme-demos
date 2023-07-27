@@ -50,44 +50,42 @@ const saleAmountHeaderFilters = [{
   value: ['SaleAmount', '>=', 20000],
 }];
 
-function App() {
-  return (
-    <DataGrid
-      id="gridContainer"
-      columnsAutoWidth="true"
-      filterBuilder={filterBuilder}
-      defaultFilterValue={filterValue}
-      dataSource={orders}
-      keyExpr="ID"
-      showBorders={true}
-    >
-      <FilterRow visible={true} />
-      <FilterPanel visible={true} />
-      <FilterBuilderPopup position={filterBuilderPopupPosition} />
-      <HeaderFilter visible={true} />
-      <Scrolling mode="infinite" />
+const App = () => (
+  <DataGrid
+    id="gridContainer"
+    columnsAutoWidth="true"
+    filterBuilder={filterBuilder}
+    defaultFilterValue={filterValue}
+    dataSource={orders}
+    keyExpr="ID"
+    showBorders={true}
+  >
+    <FilterRow visible={true} />
+    <FilterPanel visible={true} />
+    <FilterBuilderPopup position={filterBuilderPopupPosition} />
+    <HeaderFilter visible={true} />
+    <Scrolling mode="infinite" />
 
-      <Column
-        dataType="number"
-        dataField="OrderNumber"
-        caption="Invoice Number"
-      >
-        <HeaderFilter groupInterval={10000} />
-      </Column>
-      <Column dataField="OrderDate" dataType="date" />
-      <Column
-        editorOptions={saleAmountEditorOptions}
-        dataField="SaleAmount"
-        dataType="number"
-        format="currency"
-      >
-        <HeaderFilter dataSource={saleAmountHeaderFilters} />
-      </Column>
-      <Column dataField="Employee" dataType="string" />
-      <Column dataField="CustomerInfo.StoreCity" caption="City" dataType="string" />
-      <Column dataField="CustomerInfo.StoreState" caption="State" dataType="string" />
-    </DataGrid>
-  );
-}
+    <Column
+      dataType="number"
+      dataField="OrderNumber"
+      caption="Invoice Number"
+    >
+      <HeaderFilter groupInterval={10000} />
+    </Column>
+    <Column dataField="OrderDate" dataType="date" />
+    <Column
+      editorOptions={saleAmountEditorOptions}
+      dataField="SaleAmount"
+      dataType="number"
+      format="currency"
+    >
+      <HeaderFilter dataSource={saleAmountHeaderFilters} />
+    </Column>
+    <Column dataField="Employee" dataType="string" />
+    <Column dataField="CustomerInfo.StoreCity" caption="City" dataType="string" />
+    <Column dataField="CustomerInfo.StoreState" caption="State" dataType="string" />
+  </DataGrid>
+);
 
 export default App;

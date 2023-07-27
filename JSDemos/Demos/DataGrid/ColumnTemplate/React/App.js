@@ -1,41 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import DataGrid, { Column } from 'devextreme-react/data-grid';
 
 import service from './data.js';
 
-function cellRender(data) {
-  return <img src={data.value} />;
-}
+const cellRender = (data) => (<img src={data.value} />);
 
-function App() {
-  const [employees, setEmployees] = useState([]);
+const employees = service.getEmployees();
 
-  useEffect(() => {
-    setEmployees(service.getEmployees());
-  }, []);
-
-  return (
-    <DataGrid id="gridContainer"
-      dataSource={employees}
-      keyExpr="ID"
-      showBorders={true}
-    >
-      <Column dataField="Picture"
-        width={100}
-        allowSorting={false}
-        cellRender={cellRender}
-      />
-      <Column dataField="Prefix"
-        width={70}
-        caption="Title"
-      />
-      <Column dataField="FirstName" />
-      <Column dataField="LastName" />
-      <Column dataField="Position" />
-      <Column dataField="BirthDate" dataType="date" />
-      <Column dataField="HireDate" dataType="date" />
-    </DataGrid>
-  );
-}
+const App = () => (
+  <DataGrid
+    id="gridContainer"
+    dataSource={employees}
+    keyExpr="ID"
+    showBorders={true}
+  >
+    <Column
+      dataField="Picture"
+      width={100}
+      allowSorting={false}
+      cellRender={cellRender}
+    />
+    <Column
+      dataField="Prefix"
+      width={70}
+      caption="Title"
+    />
+    <Column dataField="FirstName" />
+    <Column dataField="LastName" />
+    <Column dataField="Position" />
+    <Column dataField="BirthDate" dataType="date" />
+    <Column dataField="HireDate" dataType="date" />
+  </DataGrid>
+);
 
 export default App;

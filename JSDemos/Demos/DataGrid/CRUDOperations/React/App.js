@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   DataGrid, Column, Editing, Scrolling, Lookup, Summary, TotalItem,
 } from 'devextreme-react/data-grid';
@@ -15,7 +15,7 @@ const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
 const REFRESH_MODES = ['full', 'reshape', 'repaint'];
 
 const App = () => {
-  const [ordersData, setOrdersData] = useState(new CustomStore({
+  const [ordersData] = useState(new CustomStore({
     key: 'OrderID',
     load: () => sendRequest(`${URL}/Orders`),
     insert: (values) => sendRequest(`${URL}/InsertOrder`, 'POST', {
@@ -29,12 +29,12 @@ const App = () => {
       key,
     }),
   }));
-  const [customersData, setCustomersData] = useState(new CustomStore({
+  const [customersData] = useState(new CustomStore({
     key: 'Value',
     loadMode: 'raw',
     load: () => sendRequest(`${URL}/CustomersLookup`),
   }));
-  const [shippersData, setShippersData] = useState(new CustomStore({
+  const [shippersData] = useState(new CustomStore({
     key: 'Value',
     loadMode: 'raw',
     load: () => sendRequest(`${URL}/ShippersLookup`),
@@ -42,15 +42,24 @@ const App = () => {
   const [requests, setRequests] = useState([]);
   const [refreshMode, setRefreshMode] = useState('reshape');
 
-  const handleRefreshModeChange = (e) => {
+  const handleRefreshModeChange = useCallback((e) => {
     setRefreshMode(e.value);
-  };
+  }, []);
 
-  const clearRequests = () => {
+  const clearRequests = useCallback(() => {
     setRequests([]);
-  };
+  }, []);
 
-  const sendRequest = (url, method = 'GET', data = {}) => {
+  const logRequest = useCallback((method, url, data) => {
+    const args = Object.keys(data || {}).map((key) => `${key}=${data[key]}`).join(' ');
+
+    const time = formatDate(new Date(), 'HH:mm:ss');
+    const request = [time, method, url.slice(URL.length), args].join(' ');
+
+    setRequests((prevRequests) => [request].concat(prevRequests));
+  }, []);
+
+  const sendRequest = useCallback((url, method = 'GET', data = {}) => {
     logRequest(method, url, data);
 
     if (method === 'GET') {
@@ -80,16 +89,7 @@ const App = () => {
         throw json.Message;
       });
     });
-  };
-
-  const logRequest = (method, url, data) => {
-    const args = Object.keys(data || {}).map((key) => `${key}=${data[key]}`).join(' ');
-
-    const time = formatDate(new Date(), 'HH:mm:ss');
-    const request = [time, method, url.slice(URL.length), args].join(' ');
-
-    setRequests((prevRequests) => [request].concat(prevRequests));
-  };
+  }, [logRequest]);
 
   return (
     <React.Fragment>
@@ -107,23 +107,14 @@ const App = () => {
           allowUpdating={true}
         />
 
-        <Scrolling
-          mode="virtual"
-        />
+        <Scrolling mode="virtual" />
 
         <Column dataField="CustomerID" caption="Customer">
           <Lookup dataSource={customersData} valueExpr="Value" displayExpr="Text" />
         </Column>
-
-        <Column dataField="OrderDate" dataType="date">
-        </Column>
-
-        <Column dataField="Freight">
-        </Column>
-
-        <Column dataField="ShipCountry">
-        </Column>
-
+        <Column dataField="OrderDate" dataType="date" />
+        <Column dataField="Freight" />
+        <Column dataField="ShipCountry" />
         <Column
           dataField="ShipVia"
           caption="Shipping Company"
@@ -131,6 +122,7 @@ const App = () => {
         >
           <Lookup dataSource={shippersData} valueExpr="Value" displayExpr="Text" />
         </Column>
+
         <Summary>
           <TotalItem column="CustomerID" summaryType="count" />
           <TotalItem column="Freight" summaryType="sum" valueFormat="#0.00" />

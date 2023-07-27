@@ -4,49 +4,28 @@ import CheckBox from 'devextreme-react/check-box';
 
 import service from './data.js';
 
+const employees = service.getEmployees();
+
 const App = () => {
-  const employees = service.getEmployees();
   const [showColumnLines, setShowColumnLines] = useState(false);
   const [showRowLines, setShowRowLines] = useState(true);
   const [showBorders, setShowBorders] = useState(true);
   const [rowAlternationEnabled, setRowAlternationEnabled] = useState(true);
 
-  const onValueChanged = useCallback((e) => {
-    let optionName = null;
-    switch (e.component.option('text')) {
-      case 'Show Row Lines': {
-        optionName = 'showRowLines';
-        break;
-      }
-      case 'Show Borders': {
-        optionName = 'showBorders';
-        break;
-      }
-      case 'Alternating Row Color': {
-        optionName = 'rowAlternationEnabled';
-        break;
-      }
-      default: {
-        optionName = 'showColumnLines';
-        break;
-      }
-    }
-    switch (optionName) {
-      case 'showColumnLines':
-        setShowColumnLines(e.value);
-        break;
-      case 'showRowLines':
-        setShowRowLines(e.value);
-        break;
-      case 'showBorders':
-        setShowBorders(e.value);
-        break;
-      case 'rowAlternationEnabled':
-        setRowAlternationEnabled(e.value);
-        break;
-      default:
-        break;
-    }
+  const onShowColumnLinesValueChanged = useCallback((e) => {
+    setShowColumnLines(e.value);
+  }, []);
+
+  const onShowRowLinesValueChanged = useCallback((e) => {
+    setShowRowLines(e.value);
+  }, []);
+
+  const onShowBordersValueChanged = useCallback((e) => {
+    setShowBorders(e.value);
+  }, []);
+
+  const onRowAlternationEnabledChanged = useCallback((e) => {
+    setRowAlternationEnabled(e.value);
   }, []);
 
   return (
@@ -74,7 +53,7 @@ const App = () => {
           <CheckBox
             text="Show Column Lines"
             value={showColumnLines}
-            onValueChanged={onValueChanged}
+            onValueChanged={onShowColumnLinesValueChanged}
           />
         </div>
         &nbsp;
@@ -82,7 +61,7 @@ const App = () => {
           <CheckBox
             text="Show Row Lines"
             value={showRowLines}
-            onValueChanged={onValueChanged}
+            onValueChanged={onShowRowLinesValueChanged}
           />
         </div>
         &nbsp;
@@ -90,7 +69,7 @@ const App = () => {
           <CheckBox
             text="Show Borders"
             value={showBorders}
-            onValueChanged={onValueChanged}
+            onValueChanged={onShowBordersValueChanged}
           />
         </div>
         &nbsp;
@@ -98,7 +77,7 @@ const App = () => {
           <CheckBox
             text="Alternating Row Color"
             value={rowAlternationEnabled}
-            onValueChanged={onValueChanged}
+            onValueChanged={onRowAlternationEnabledChanged}
           />
         </div>
       </div>

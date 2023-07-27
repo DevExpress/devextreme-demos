@@ -8,6 +8,8 @@ const displayModes = [{ text: 'Display Mode \'full\'', value: 'full' }, { text: 
 const allowedPageSizes = [5, 10, 'all'];
 const data = generateData(100000);
 
+const customizeColumns = (columns) => { columns[0].width = 70; };
+
 const App = () => {
   const [displayMode, setDisplayMode] = useState('full');
   const [showPageSizeSelector, setShowPageSizeSelector] = useState(true);
@@ -31,10 +33,6 @@ const App = () => {
   }, []);
 
   const isCompactMode = useCallback(() => displayMode === 'compact', [displayMode]);
-
-  const customizeColumns = useCallback((columns) => {
-    columns[0].width = 70;
-  }, []);
 
   return (
     <div>

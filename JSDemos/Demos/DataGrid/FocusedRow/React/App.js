@@ -81,7 +81,8 @@ const App = () => {
         autoNavigateToFocusedRow={autoNavigateToFocusedRow}
         onFocusedRowChanging={onFocusedRowChanging}
         onFocusedRowChanged={onFocusedRowChanged}
-        showBorders={true}>
+        showBorders={true}
+      >
         <Paging defaultPageSize={10} />
         <Column
           dataField="Task_ID"

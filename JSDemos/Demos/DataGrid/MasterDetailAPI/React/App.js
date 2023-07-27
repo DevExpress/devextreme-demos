@@ -25,26 +25,24 @@ const renderDetail = (props) => {
   );
 };
 
-function App() {
-  return (
-    <DataGrid
-      id="grid-container"
-      dataSource={employees}
-      keyExpr="ID"
-      onSelectionChanged={selectionChanged}
-      onContentReady={contentReady}
-      showBorders={true}
-    >
-      <Selection mode="single" />
-      <Column dataField="Prefix" width={70} caption="Title" />
-      <Column dataField="FirstName" />
-      <Column dataField="LastName" />
-      <Column dataField="Position" width={170} />
-      <Column dataField="State" width={125} />
-      <Column dataField="BirthDate" dataType="date" />
-      <MasterDetail enabled={false} render={renderDetail} />
-    </DataGrid>
-  );
-}
+const App = () => (
+  <DataGrid
+    id="grid-container"
+    dataSource={employees}
+    keyExpr="ID"
+    onSelectionChanged={selectionChanged}
+    onContentReady={contentReady}
+    showBorders={true}
+  >
+    <Selection mode="single" />
+    <Column dataField="Prefix" width={70} caption="Title" />
+    <Column dataField="FirstName" />
+    <Column dataField="LastName" />
+    <Column dataField="Position" width={170} />
+    <Column dataField="State" width={125} />
+    <Column dataField="BirthDate" dataType="date" />
+    <MasterDetail enabled={false} render={renderDetail} />
+  </DataGrid>
+);
 
 export default App;

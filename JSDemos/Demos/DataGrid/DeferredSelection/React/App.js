@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import DataGrid, { Column, FilterRow, Selection } from 'devextreme-react/data-grid';
 import Button from 'devextreme-react/button';
 import query from 'devextreme/data/query';
@@ -22,24 +22,15 @@ const dataSource = {
   ],
 };
 const selectionFilter = ['Task_Status', '=', 'Completed'];
+let dataGrid;
 
 const App = () => {
   const [taskCount, setTaskCount] = useState(0);
   const [peopleCount, setPeopleCount] = useState(0);
   const [avgDuration, setAvgDuration] = useState(0);
-  const dataGridRef = useRef(null);
-
-  useEffect(() => {
-    calculateStatistics();
-  }, []);
-
-  const onInitialized = useCallback((e) => {
-    dataGridRef.current = e.component;
-    calculateStatistics();
-  }, []);
 
   const calculateStatistics = useCallback(() => {
-    dataGridRef.current.getSelectedRowsData().then((rowData) => {
+    dataGrid.getSelectedRowsData().then((rowData) => {
       let commonDuration = 0;
 
       for (let i = 0; i < rowData.length; i += 1) {
@@ -56,6 +47,11 @@ const App = () => {
       setAvgDuration(Math.round(commonDuration / rowData.length) || 0);
     });
   }, []);
+
+  const onInitialized = useCallback((e) => {
+    dataGrid = e.component;
+    calculateStatistics();
+  }, [calculateStatistics]);
 
   return (
     <div>

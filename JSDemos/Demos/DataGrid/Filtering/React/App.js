@@ -62,10 +62,10 @@ const orderHeaderFilter = (data) => {
   };
 };
 
-function App() {
+const App = () => {
   const [showFilterRow, setShowFilterRow] = useState(true);
   const [showHeaderFilter, setShowHeaderFilter] = useState(true);
-  const [currentFilter, setCurrentFilter] = useState('auto');
+  const [currentFilter, setCurrentFilter] = useState(applyFilterTypes[0].key);
   const dataGridRef = useRef(null);
 
   const onShowFilterRowChanged = useCallback((e) => {
@@ -88,35 +88,42 @@ function App() {
 
   return (
     <div>
-      <DataGrid id="gridContainer"
+      <DataGrid
+        id="gridContainer"
         ref={dataGridRef}
         dataSource={orders}
         keyExpr="ID"
         showBorders={true}>
-        <FilterRow visible={showFilterRow}
+        <FilterRow
+          visible={showFilterRow}
           applyFilter={currentFilter} />
         <HeaderFilter visible={showHeaderFilter} />
-        <SearchPanel visible={true}
+        <SearchPanel
+          visible={true}
           width={240}
           placeholder="Search..." />
-        <Column dataField="OrderNumber"
+        <Column
+          dataField="OrderNumber"
           width={140}
           caption="Invoice Number">
           <HeaderFilter groupInterval={10000} />
         </Column>
-        <Column dataField="OrderDate"
+        <Column
+          dataField="OrderDate"
           alignment="right"
           dataType="date"
           width={120}
           calculateFilterExpression={calculateFilterExpression}>
           <HeaderFilter dataSource={orderHeaderFilter} />
         </Column>
-        <Column dataField="DeliveryDate"
+        <Column
+          dataField="DeliveryDate"
           alignment="right"
           dataType="datetime"
           format="M/d/yyyy, HH:mm"
           width={180} />
-        <Column dataField="SaleAmount"
+        <Column
+          dataField="SaleAmount"
           alignment="right"
           dataType="number"
           format="currency"
@@ -124,7 +131,8 @@ function App() {
           <HeaderFilter dataSource={saleAmountHeaderFilter} />
         </Column>
         <Column dataField="Employee" />
-        <Column dataField="CustomerStoreCity"
+        <Column
+          dataField="CustomerStoreCity"
           caption="City">
           <HeaderFilter>
             <Search enabled={true} />
@@ -135,7 +143,8 @@ function App() {
         <div className="caption">Options</div>
         <div className="option">
           <span>Apply Filter </span>
-          <SelectBox items={applyFilterTypes}
+          <SelectBox
+            items={applyFilterTypes}
             value={currentFilter}
             onValueChanged={onCurrentFilterChanged}
             valueExpr="key"
@@ -144,18 +153,20 @@ function App() {
             disabled={!showFilterRow} />
         </div>
         <div className="option">
-          <CheckBox text="Filter Row"
+          <CheckBox
+            text="Filter Row"
             value={showFilterRow}
             onValueChanged={onShowFilterRowChanged} />
         </div>
         <div className="option">
-          <CheckBox text="Header Filter"
+          <CheckBox
+            text="Header Filter"
             value={showHeaderFilter}
             onValueChanged={onShowHeaderFilterChanged} />
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default App;

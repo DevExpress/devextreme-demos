@@ -1,5 +1,5 @@
 import React, {
-  useState, useEffect, useRef, useCallback,
+  useState, useCallback,
 } from 'react';
 import ODataStore from 'devextreme/data/odata/store';
 import DataGrid, {
@@ -27,23 +27,17 @@ const dataSourceOptions = {
 };
 
 const App = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const dataGridRef = useRef();
+  const [collapsed, setCollapsed] = useState(true);
 
-  useEffect(() => {
-    if (!collapsed) {
-      dataGridRef.current.expandRow(['EnviroCare']);
-      setCollapsed(true);
+  const onContentReady = useCallback((e) => {
+    if (collapsed) {
+      e.component.expandRow(['EnviroCare']);
+      setCollapsed(false);
     }
   }, [collapsed]);
 
-  const onContentReady = useCallback((e) => {
-    dataGridRef.current = e.component;
-  }, []);
-
   return (
     <DataGrid
-      ref={dataGridRef}
       dataSource={dataSourceOptions}
       allowColumnReordering={true}
       rowAlternationEnabled={true}

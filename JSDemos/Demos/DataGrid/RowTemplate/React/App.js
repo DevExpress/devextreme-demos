@@ -5,8 +5,10 @@ import DataRow from './DataRow.js';
 import service from './data.js';
 
 const employees = service.getEmployees();
+
 const App = () => (
-  <DataGrid id="gridContainer"
+  <DataGrid
+    id="gridContainer"
     dataSource={employees}
     keyExpr="ID"
     columnAutoWidth={true}

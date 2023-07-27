@@ -48,6 +48,7 @@ const onExporting = (e) => {
   });
   e.cancel = true;
 };
+
 const renderGridCell = (data) => <a href={ data.text } target='_blank' rel='noopener noreferrer'>Website</a>;
 
 const phoneNumberFormat = (value) => {
@@ -55,6 +56,7 @@ const phoneNumberFormat = (value) => {
 
   return `(${USNumber[1]}) ${USNumber[2]}-${USNumber[3]}`;
 };
+
 const App = () => (
   <div>
     <DataGrid

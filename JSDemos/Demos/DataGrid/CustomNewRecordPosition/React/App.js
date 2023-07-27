@@ -8,6 +8,7 @@ import { dataSource, positionLabel, scrollingModeLabel } from './data.js';
 
 const newRowPositionOptions = ['first', 'last', 'pageTop', 'pageBottom', 'viewportTop', 'viewportBottom'];
 const scrollingModeOptions = ['standard', 'virtual'];
+
 const isAddButtonVisible = ({ row }) => !row.isEditing;
 
 const onRowInserted = (e) => {
@@ -40,9 +41,8 @@ const App = () => {
         remoteOperations={true}
         onRowInserted={onRowInserted}
       >
-        <Scrolling
-          mode={scrollingMode}
-        />
+        <Scrolling mode={scrollingMode} />
+
         <Editing
           mode='row'
           allowAdding={true}

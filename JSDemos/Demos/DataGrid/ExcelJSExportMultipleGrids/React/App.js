@@ -83,7 +83,13 @@ const App = () => {
       </div>
       <TabPanel id="tabPanel" deferRendering={false}>
         <Item title="Price">
-          <DataGrid id="priceDataGrid" ref={priceGridRef} dataSource={priceDataSource} showBorders={true} rowAlternationEnabled={true}>
+          <DataGrid
+            id="priceDataGrid"
+            ref={priceGridRef}
+            dataSource={priceDataSource}
+            showBorders={true}
+            rowAlternationEnabled={true}
+          >
             <Column dataField="Product_ID" caption="ID" width={50} />
             <Column dataField="Product_Name" caption="Name" />
             <Column dataField="Product_Sale_Price" caption="Sale Price" dataType="number" format="currency" />
@@ -91,7 +97,13 @@ const App = () => {
           </DataGrid>
         </Item>
         <Item title="Rating">
-          <DataGrid id="ratingDataGrid" ref={ratingGridRef} dataSource={ratingDataSource} showBorders={true} rowAlternationEnabled={true}>
+          <DataGrid
+            id="ratingDataGrid"
+            ref={ratingGridRef}
+            dataSource={ratingDataSource}
+            showBorders={true}
+            rowAlternationEnabled={true}
+          >
             <Column dataField="Product_ID" caption="ID" width={50} />
             <Column dataField="Product_Name" caption="Name" />
             <Column dataField="Product_Consumer_Rating" caption="Rating" />

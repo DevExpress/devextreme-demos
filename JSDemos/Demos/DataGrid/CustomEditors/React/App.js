@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import DataGrid, {
   Paging,
   HeaderFilter,
@@ -35,48 +35,50 @@ const tasks = createStore({
   },
 });
 
-const cellTemplate = useCallback((container, options) => {
+const cellTemplate = (container, options) => {
   const noBreakSpace = '\u00A0';
   const text = (options.value || []).map((element) => options.column.lookup.calculateCellValue(element)).join(', ');
   container.textContent = text || noBreakSpace;
   container.title = text;
-}, []);
+};
 
-const calculateFilterExpression = useCallback((that, filterValue, selectedFilterOperation, target) => {
+const calculateFilterExpression = (that, filterValue, selectedFilterOperation, target) => {
   if (target === 'search' && typeof (filterValue) === 'string') {
     return [that.dataField, 'contains', filterValue];
   }
-  return function(data) {
-    return (data.AssignedEmployee || []).indexOf(filterValue) !== -1;
+
+  return (data) => (data.AssignedEmployee || []).indexOf(filterValue) !== -1;
+};
+
+const onRowInserted = (e) => e.component.navigateToRow(e.key);
+
+const statusEditorRender = (cell) => {
+  const onValueChanged = (e) => cell.setValue(e.value);
+
+  const itemRender = (data) => {
+    const imageSource = `images/icons/status-${data.id}.svg`;
+
+    if (data != null) {
+      return (
+        <div>
+          <img src={imageSource} className="status-icon middle"></img>
+          <span className="middle">{data.name}</span>
+        </div>
+      );
+    }
+
+    return <span>(All)</span>;
   };
-}, []);
 
-const onValueChanged = useCallback((cell, e) => {
-  cell.setValue(e.value);
-}, []);
-
-const onRowInserted = useCallback((e) => {
-  e.component.navigateToRow(e.key);
-}, []);
-
-const itemRender = useCallback((data) => {
-  const imageSource = `images/icons/status-${data.id}.svg`;
-  if (data != null) {
-    return <div>
-      <img src={imageSource} className="status-icon middle"></img>
-      <span className="middle">{data.name}</span>
-    </div>;
-  }
-  return <span>(All)</span>;
-}, []);
-
-const statusEditorRender = useCallback((cell) => <SelectBox
-  defaultValue={cell.value}
-  {...cell.column.lookup}
-  onValueChanged={onValueChanged}
-  inputAttr={statusLabel}
-  itemRender={itemRender}
-/>, []);
+  return (
+    <SelectBox
+      defaultValue={cell.value}
+      {...cell.column.lookup}
+      onValueChanged={onValueChanged}
+      inputAttr={statusLabel}
+      itemRender={itemRender} />
+  );
+};
 
 const App = () => (
   <div>
