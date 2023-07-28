@@ -15,7 +15,7 @@ const App = () => {
   }));
 
   return (
-    <>
+    <React.Fragment>
       <Chart
         id="zoomed-chart"
         dataSource={dataSource}
@@ -48,7 +48,7 @@ const App = () => {
         <SliderMarker format="exponential" />
         <Behavior snapToTicks={false} valueChangeMode="onHandleMove" />
       </RangeSelector>
-    </>
+    </React.Fragment>
   );
 }
 

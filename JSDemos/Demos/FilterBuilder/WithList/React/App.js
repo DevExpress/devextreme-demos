@@ -7,7 +7,7 @@ import { filter, fields, products } from './data.js';
 import CustomItem from './CustomItem.js';
 
 const App = () => {
-  const dataSource = useRef(new DataSource({
+  const dataSource = React.useRef(new DataSource({
     store: products,
   }));
   const filterBuilderInstance = React.useRef(null);

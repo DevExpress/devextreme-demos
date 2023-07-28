@@ -19,7 +19,7 @@ const App = () => {
   }));
 
   return (
-    <>
+    <React.Fragment>
       <RangeSelector
         id="range-selector"
         title="Filter Employee List by Birth Year"
@@ -42,7 +42,7 @@ const App = () => {
         showBorders={true}
         columnAutoWidth={true}
       />
-    </>
+    </React.Fragment>
   );
 };
 

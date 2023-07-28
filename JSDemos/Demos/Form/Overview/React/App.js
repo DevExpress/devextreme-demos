@@ -18,7 +18,7 @@ const minCountWidthLabel = { 'aria-label': 'Min Count Width' };
 
 const App = () => {
   const companies = service.getCompanies();
-  const [labelMode, setLabelMode] = React.React.useState('floating');
+  const [labelMode, setLabelMode] = React.useState('floating');
   const [labelLocation, setLabelLocation] = React.useState('left');
   const [readOnly, setReadOnly] = React.useState(false);
   const [showColon, setShowColon] = React.useState(true);
