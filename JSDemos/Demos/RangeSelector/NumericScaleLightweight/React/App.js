@@ -5,7 +5,7 @@ import RangeSelector, {
 
 const defaultValue = [40000, 80000];
 
-function App() {
+const App = () => {
   return (
     <RangeSelector
       id="range-selector"

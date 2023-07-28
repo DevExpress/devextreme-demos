@@ -6,7 +6,7 @@ import { dataSource } from './data.js';
 
 const defaultValue = ['1', '2'];
 
-function App() {
+const App = () => {
   return (
     <RangeSelector
       id="range-selector"

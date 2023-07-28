@@ -24,7 +24,7 @@ const birthDateEditorOptions = { width: '100%', disabled: true };
 const notesEditorOptions = { height: 90, maxLength: 200 };
 const phoneEditorOptions = { mask: '+1 (X00) 000-0000', maskRules: { X: /[02-9]/ } };
 
-export default function App() {
+const App = () => {
   const validateForm = React.useCallback((e) => {
     e.component.validate();
   }, []);
@@ -65,3 +65,5 @@ export default function App() {
     </Form>
   );
 }
+
+export default App;

@@ -7,7 +7,7 @@ const startValue = new Date(2011, 1, 1);
 const endValue = new Date(2011, 6, 1);
 const range = [new Date(2011, 1, 5), new Date(2011, 2, 5)];
 
-function App() {
+const App = () => {
   return (
     <RangeSelector
       id="range-selector"
