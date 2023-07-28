@@ -5,75 +5,62 @@ import { employees, applyValueModeLabel, lookupLabel } from './data.js';
 
 const applyValueModes = ['instantly', 'useButtons'];
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedValue: null,
-      applyValueMode: 'instantly',
-    };
-    this.onValueChanged = this.onValueChanged.bind(this);
-    this.changeApplyValueMode = this.changeApplyValueMode.bind(this);
-  }
+function App() {
+  const [selectedValue, setSelectedValue] = React.useState(null);
+  const [applyValueMode, setApplyValueMode] = React.useState('instantly');
 
-  render() {
-    const { selectedValue, applyValueMode } = this.state;
-    return (
-      <div>
-        <div className="dx-fieldset">
-          <div className="dx-field">
-            <Lookup
-              value={selectedValue}
-              items={employees}
-              displayExpr={getDisplayExpr}
-              placeholder="Select employee"
-              inputAttr={lookupLabel}
-              onValueChanged={this.onValueChanged}
-              applyValueMode={applyValueMode}
-            >
-              <DropDownOptions showTitle={false} />
-            </Lookup>
-          </div>
-        </div>
-        {selectedValue
-          && <div className="selected">
-            <div className="frame">
-              <img src={selectedValue.Picture} />
-            </div>
-            <div id="selected-employee-notes">{selectedValue.Notes}</div>
-          </div>
-        }
+  const onValueChanged = React.useCallback(() => ((e) => {
+    setSelectedValue(e.value);
+  }));
 
-        <div className="options">
-          <div className="caption">Options</div>
-          <div className="option">
-            <div className="label">Apply Value Mode</div>
-            <SelectBox
-              items={applyValueModes}
-              inputAttr={applyValueModeLabel}
-              value={applyValueMode}
-              onValueChanged={this.changeApplyValueMode} />
-          </div>
+  const changeApplyValueMode = React.useCallback(() => ((e) => {
+    setApplyValueMode(e.value);
+  }));
+
+  const getDisplayExpr = (item) => {
+    return item ? `${item.FirstName} ${item.LastName}` : '';
+  };
+
+  return (
+    <div>
+      <div className="dx-fieldset">
+        <div className="dx-field">
+          <Lookup
+            value={selectedValue}
+            items={employees}
+            displayExpr={getDisplayExpr}
+            placeholder="Select employee"
+            inputAttr={lookupLabel}
+            onValueChanged={onValueChanged}
+            applyValueMode={applyValueMode}
+          >
+            <DropDownOptions showTitle={false} />
+          </Lookup>
         </div>
       </div>
-    );
-  }
+      {selectedValue && (
+        <div className="selected">
+          <div className="frame">
+            <img src={selectedValue.Picture} />
+          </div>
+          <div id="selected-employee-notes">{selectedValue.Notes}</div>
+        </div>
+      )}
 
-  onValueChanged(e) {
-    this.setState({
-      selectedValue: e.value,
-    });
-  }
-
-  changeApplyValueMode(e) {
-    this.setState({
-      applyValueMode: e.value,
-    });
-  }
-}
-
-function getDisplayExpr(item) {
-  return item ? `${item.FirstName} ${item.LastName}` : '';
+      <div className="options">
+        <div className="caption">Options</div>
+        <div className="option">
+          <div className="label">Apply Value Mode</div>
+          <SelectBox
+            items={applyValueModes}
+            inputAttr={applyValueModeLabel}
+            value={applyValueMode}
+            onValueChanged={changeApplyValueMode}
+          />
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default App;
