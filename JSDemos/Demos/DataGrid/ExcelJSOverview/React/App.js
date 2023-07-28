@@ -8,7 +8,7 @@ import { saveAs } from 'file-saver-es';
 // We recommend that you use the official 'file-saver' package in your applications.
 import { exportDataGrid } from 'devextreme/excel_exporter';
 import service from './data.js';
-// test
+
 class App extends React.Component {
   constructor(props) {
     super(props);

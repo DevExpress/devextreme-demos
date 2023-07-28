@@ -9,7 +9,7 @@ import service from './data.js';
 
 const saleAmountEditorOptions = { format: 'currency', showClearButton: true };
 const filterLabel = { 'aria-label': 'Filter' };
-
+// test
 class App extends React.Component {
   constructor(props) {
     super(props);
