@@ -57,7 +57,7 @@ jobs:
         
         npm run convert-to-js ./JSDemos/Demos/**/React
 
-        git add ./JSDemos/Demos/**/React -N
+        git add ./JSDemos/Demos -N
 
         if git diff --exit-code ; then
           echo "Generated JS demos are up-to-date"
