@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Button } from 'devextreme-react/button';
 import { ProgressBar } from 'devextreme-react/progress-bar';
 
@@ -13,83 +12,63 @@ function statusFormat(ratio) {
   return `Loading: ${ratio * 100}%`;
 }
 
-let intervalId;
-
 const elementAttr = { 'aria-label': 'Progress Bar' };
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      seconds: maxValue,
-      buttonText: 'Start progress',
-      inProgress: false,
-    };
+const App = () => {
+  const [seconds, setSeconds] = React.useState(maxValue);
+  const [buttonText, setButtonText] = React.useState('Start progress');
+  const [inProgress, setInProgress] = React.useState(false);
 
-    this.onButtonClick = this.onButtonClick.bind(this);
-    this.timer = this.timer.bind(this);
-  }
+  React.useEffect(() => {
+    let intervalId;
 
-  render() {
-    return (
-      <div className="form">
-        <Button
-          id="progress-button"
-          text={this.state.buttonText}
-          width={200}
-          onClick={this.onButtonClick}
-        />
-        <div className="progress-info">
-                    Time left {formatTime(this.state.seconds)}
-        </div>
-        <ProgressBar
-          id="progress-bar-status"
-          className={this.state.seconds === 0 ? 'complete' : '' }
-          width="90%"
-          min={0}
-          max={maxValue}
-          elementAttr={elementAttr}
-          statusFormat={statusFormat}
-          value={maxValue - this.state.seconds}
-        />
-      </div>
-    );
-  }
+    if (inProgress) {
+      setButtonText('Stop progress');
 
-  onButtonClick() {
-    const state = {
-      inProgress: !this.state.inProgress,
-    };
-
-    if (this.state.inProgress) {
-      state.buttonText = 'Continue progress';
-      clearInterval(intervalId);
-    } else {
-      state.buttonText = 'Stop progress';
-
-      if (this.state.seconds === 0) {
-        state.seconds = maxValue;
+      if (seconds === 0) {
+        setSeconds(maxValue);
       }
 
-      intervalId = setInterval(() => this.timer(), 1000);
-    }
-
-    this.setState(state);
-  }
-
-  timer() {
-    const state = {
-      seconds: this.state.seconds - 1,
-    };
-
-    if (state.seconds === 0) {
-      state.buttonText = 'Restart progress';
-      state.inProgress = !this.state.inProgress;
+      intervalId = setInterval(() => {
+        setSeconds((prevSeconds) => prevSeconds - 1);
+      }, 1000);
+    } else {
+      setButtonText('Continue progress');
       clearInterval(intervalId);
     }
 
-    this.setState(state);
-  }
-}
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [inProgress, seconds]);
+
+  const onButtonClick = React.useCallback(() => {
+    setInProgress((prevInProgress) => !prevInProgress);
+  });
+
+  return (
+    <div className="form">
+      <Button
+        id="progress-button"
+        text={buttonText}
+        width={200}
+        onClick={onButtonClick}
+      />
+      <div className="progress-info">
+        Time left {formatTime(seconds)}
+      </div>
+      <ProgressBar
+        id="progress-bar-status"
+        className={seconds === 0 ? 'complete' : ''}
+        width="90%"
+        min={0}
+        max={maxValue}
+        elementAttr={elementAttr}
+        statusFormat={statusFormat}
+        value={maxValue - seconds}
+      />
+    </div>
+  );
+};
 
 export default App;

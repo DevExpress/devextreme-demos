@@ -17,20 +17,6 @@ function App() {
     </li>
   ));
 
-  return (
-    <div id="product-list">
-      <h1>Product List</h1>
-      <ul>{items}</ul>
-      <Toast
-        visible={toastConfig.isVisible}
-        message={toastConfig.message}
-        type={toastConfig.type}
-        onHiding={onHiding}
-        displayTime={600}
-      />
-    </div>
-  );
-
   function checkAvailability(e, product) {
     const type = e.value ? 'success' : 'error';
     const message = product.Name + (e.value ? ' is available' : ' is not available');
@@ -49,6 +35,20 @@ function App() {
       isVisible: false,
     });
   }
+
+  return (
+    <div id="product-list">
+      <h1>Product List</h1>
+      <ul>{items}</ul>
+      <Toast
+        visible={toastConfig.isVisible}
+        message={toastConfig.message}
+        type={toastConfig.type}
+        onHiding={onHiding}
+        displayTime={600}
+      />
+    </div>
+  );
 }
 
 export default App;

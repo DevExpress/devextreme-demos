@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Button } from 'devextreme-react';
 import { Popup, ToolbarItem } from 'devextreme-react/popup';
 import ScrollView from 'devextreme-react/scroll-view';
@@ -10,16 +9,16 @@ export default function App() {
 
   const showPopup = React.useCallback(() => {
     setPopupVisible(true);
-  }, [setPopupVisible]);
+  }, []);
 
   const showPopupWithScrollView = React.useCallback(() => {
     setPopupWithScrollViewVisible(true);
-  }, [setPopupWithScrollViewVisible]);
+  }, []);
 
   const hide = React.useCallback(() => {
     setPopupVisible(false);
     setPopupWithScrollViewVisible(false);
-  }, [setPopupVisible, setPopupWithScrollViewVisible]);
+  }, []);
 
   const bookButtonOptions = React.useMemo(() => ({
     width: 300,
@@ -27,7 +26,7 @@ export default function App() {
     type: 'default',
     stylingMode: 'contained',
     onClick: hide,
-  }));
+  }), []);
 
   return (
     <React.Fragment>
@@ -138,4 +137,3 @@ export default function App() {
     </React.Fragment>
   );
 }
-
