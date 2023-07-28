@@ -9,9 +9,9 @@ const directions = ['horizontal', 'vertical'];
 const App = () => {
   const [direction, setDirection] = React.useState('horizontal');
 
-  const directionChanged = React.useCallback(() => ((e) => {
+  const directionChanged = React.useCallback((e) => {
     setDirection(e.value);
-  }));
+  });
 
   return (
     <div>

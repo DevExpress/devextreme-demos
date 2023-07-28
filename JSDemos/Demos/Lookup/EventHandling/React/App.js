@@ -9,17 +9,15 @@ function App() {
   const [selectedValue, setSelectedValue] = React.useState(null);
   const [applyValueMode, setApplyValueMode] = React.useState('instantly');
 
-  const onValueChanged = React.useCallback(() => ((e) => {
+  const onValueChanged = React.useCallback((e) => {
     setSelectedValue(e.value);
-  }));
+  });
 
-  const changeApplyValueMode = React.useCallback(() => ((e) => {
+  const changeApplyValueMode = React.useCallback((e) => {
     setApplyValueMode(e.value);
-  }));
+  });
 
-  const getDisplayExpr = (item) => {
-    return item ? `${item.FirstName} ${item.LastName}` : '';
-  };
+  const getDisplayExpr = (item) => (item ? `${item.FirstName} ${item.LastName}` : '');
 
   return (
     <div>

@@ -28,45 +28,39 @@ const App = () => {
   const [currentHotel, setCurrentHotel] = React.useState(data[0]);
   const [selectedItemKeys, setSelectedItemKeys] = React.useState([data[0].Id]);
 
-  const handleListSelectionChange = React.useCallback(() => ((e) => {
+  const handleListSelectionChange = React.useCallback((e) => {
     const currentHotel = e.addedItems[0];
     setCurrentHotel(currentHotel);
     setSelectedItemKeys([currentHotel.Id]);
-  }));
+  });
 
-  const renderListGroup = (group) => {
-    return <div className="city">{group.key}</div>;
-  };
+  const renderListGroup = (group) => <div className="city">{group.key}</div>;
 
-  const renderListItem = (item) => {
-    return (
-      <div>
-        <div className="hotel">
-          <div className="name">{item.Hotel_Name}</div>
-          <div className="address">{`${item.Postal_Code}, ${item.Address}`}</div>
-          <div className={`type ${item.Hotel_Class.toLowerCase()}`} />
-        </div>
-        <div className="price-container">
-          <div className="price">{formatCurrency(item.Price)}</div>
-          &nbsp;
-          <div className="caption">per<br />night</div>
-        </div>
+  const renderListItem = (item) => (
+    <div>
+      <div className="hotel">
+        <div className="name">{item.Hotel_Name}</div>
+        <div className="address">{`${item.Postal_Code}, ${item.Address}`}</div>
+        <div className={`type ${item.Hotel_Class.toLowerCase()}`} />
       </div>
-    );
-  };
+      <div className="price-container">
+        <div className="price">{formatCurrency(item.Price)}</div>
+          &nbsp;
+        <div className="caption">per<br />night</div>
+      </div>
+    </div>
+  );
 
-  const renderTile = (item) => {
-    return (
-      <img
-        className="tile-image"
-        alt={item.FileName}
-        src={`../../../../images/hotels/${item.FileName}`}
-      />
-    );
-  };
+  const renderTile = (item) => (
+    <img
+      className="tile-image"
+      alt={item.FileName}
+      src={`../../../../images/hotels/${item.FileName}`}
+    />
+  );
 
   return (
-    <>
+    <React.Fragment>
       <div className="left">
         <List
           selectionMode="single"
@@ -108,7 +102,7 @@ const App = () => {
         <div className="address">{currentHotel.Postal_Code}, {currentHotel.Address}</div>
         <div className="description">{currentHotel.Description}</div>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

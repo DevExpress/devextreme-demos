@@ -9,21 +9,21 @@ const App = () => {
   const [showNavButtons, setShowNavButtons] = React.useState(true);
   const [showIndicator, setShowIndicator] = React.useState(true);
 
-  const onLoopChanged = React.useCallback(() => ((data) => {
+  const onLoopChanged = React.useCallback((data) => {
     setLoop(data.value);
-  }));
+  });
 
-  const onSlideShowChanged = React.useCallback(() => ((data) => {
+  const onSlideShowChanged = React.useCallback((data) => {
     setSlideShow(data.value);
-  }));
+  });
 
-  const onShowNavButtonsChanged = React.useCallback(() => ((data) => {
+  const onShowNavButtonsChanged = React.useCallback((data) => {
     setShowNavButtons(data.value);
-  }));
+  });
 
-  const onShowIndicatorChanged = React.useCallback(() => ((data) => {
+  const onShowIndicatorChanged = React.useCallback((data) => {
     setShowIndicator(data.value);
-  }));
+  });
 
   return (
     <div>
@@ -56,4 +56,4 @@ const App = () => {
   );
 };
 
-export default App; 
+export default App;

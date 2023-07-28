@@ -14,29 +14,32 @@ const App = () => {
   const [color, setColor] = React.useState(null);
   const [fontSize, setFontSize] = React.useState(14);
   const [lineHeight, setLineHeight] = React.useState(1.35);
+  const [colorPicker, setColorPicker] = React.useState(null);
 
-  const onButtonClick = React.useCallback(() => ((e) => {
+  const onButtonClick = React.useCallback((e) => {
     notify(`Go to ${e.component.option('text')}'s profile`, 'success', 600);
-  }));
+  });
 
-  const onItemClick = React.useCallback(() => ((e) => {
+  const onItemClick = React.useCallback((e) => {
     notify(e.itemData.name || e.itemData, 'success', 600);
-  }));
+  });
 
-  const onColorClick = React.useCallback(() => ((color) => {
+  const onColorClick = React.useCallback((color) => {
     setColor(color);
-    const squareIcon = document.getElementsByClassName('dx-icon-square')[0];
+    const squareIcon = colorPicker.getElementsByClassName('dx-icon-square')[0];
     squareIcon.style.color = color;
     colorPicker.close();
+  }, [colorPicker]);
+
+  const onInitialized = React.useCallback((e) => {
+    setColorPicker(e.component);
   }));
 
-  const itemTemplateRender = (item) => {
-    return (
-      <div style={{ fontSize: `${item.size}px` }}>
-        {item.text}
-      </div>
-    );
-  };
+  const itemTemplateRender = (item) => (
+    <div style={{ fontSize: `${item.size}px` }}>
+      {item.text}
+    </div>
+  );
 
   const data = service.getData();
 
@@ -65,9 +68,7 @@ const App = () => {
         icon: 'square',
         stylingMode: 'text',
         dropDownOptions: { width: 'auto' },
-        onInitialized: ({ component }) => {
-          colorPicker = component;
-        },
+        onInitialized: onInitialized,
         dropDownContentTemplate: 'colorpicker',
       },
     },
@@ -160,9 +161,9 @@ const App = () => {
           </Toolbar>
         </div>
         <div className={color ? 'dx-field' : 'dx-field dx-theme-text-color'} style={{
-          color: color,
+          color,
           textAlign: alignment,
-          lineHeight: lineHeight,
+          lineHeight,
           fontSize: `${fontSize}px`,
         }}>
           <p id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

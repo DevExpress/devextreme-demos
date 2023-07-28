@@ -10,9 +10,7 @@ const customFieldLabel = { 'aria-label': 'Custom Field Template' };
 const customItemLabel = { 'aria-label': 'Custom Item Template' };
 
 const App = () => {
-  const getDisplayExpr = (item) => {
-    return item ? `${item.FirstName} ${item.LastName}` : '';
-  }
+  const getDisplayExpr = (item) => (item ? `${item.FirstName} ${item.LastName}` : '');
 
   return (
     <div>
@@ -50,6 +48,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

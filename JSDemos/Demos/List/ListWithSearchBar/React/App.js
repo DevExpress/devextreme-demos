@@ -12,9 +12,9 @@ const searchModes = ['contains', 'startsWith', 'equals'];
 const App = () => {
   const [searchMode, setSearchMode] = React.useState('contains');
 
-  const onSearchModeChange = React.useCallback(() => ((args) => {
+  const onSearchModeChange = React.useCallback((args) => {
     setSearchMode(args.value);
-  }));
+  });
 
   return (
     <React.Fragment>
@@ -40,6 +40,6 @@ const App = () => {
       </div>
     </React.Fragment>
   );
-}
+};
 
 export default App;

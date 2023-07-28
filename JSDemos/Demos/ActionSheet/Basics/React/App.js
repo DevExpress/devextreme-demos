@@ -10,30 +10,30 @@ const App = () => {
   const [showTitle, setShowTitle] = React.useState(true);
   const [showCancelButton, setShowCancelButton] = React.useState(true);
 
-  const showActionSheet = React.useCallback(() => (() => {
+  const showActionSheet = React.useCallback(() => {
     setIsActionSheetVisible(true);
-  }));
+  });
 
-  const onActionSheetItemClick = React.useCallback(() => ((e) => {
+  const onActionSheetItemClick = React.useCallback((e) => {
     onActionSheetButtonClick(e.itemData.text);
-  }));
+  });
 
-  const onActionSheetCancelClick = React.useCallback(() => (() => {
+  const onActionSheetCancelClick = React.useCallback(() => {
     onActionSheetButtonClick('Cancel');
-  }));
+  });
 
-  const onActionSheetButtonClick = React.useCallback(() => ((buttonName) => {
+  const onActionSheetButtonClick = React.useCallback((buttonName) => {
     setIsActionSheetVisible(false);
     notify(`The "${buttonName}" button is clicked.`);
-  }));
+  });
 
-  const changeTitle = React.useCallback(() => ((e) => {
+  const changeTitle = React.useCallback((e) => {
     setShowTitle(e.value);
-  }));
+  });
 
-  const changeCancelButton = React.useCallback(() => ((e) => {
+  const changeCancelButton = React.useCallback((e) => {
     setShowCancelButton(e.value);
-  }));
+  });
 
   return (
     <div>

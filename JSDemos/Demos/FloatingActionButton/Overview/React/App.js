@@ -14,34 +14,34 @@ const optionDirections = ['auto', 'up', 'down'];
 
 const App = () => {
   const [selectedRowIndex, setSelectedRowIndex] = React.useState(-1);
-  const gridRef = React.FragmentuseRef(null);
+  const gridRef = React.useRef(null);
 
-  const selectedChanged = React.useCallback(() => ((e) => {
+  const selectedChanged = React.useCallback((e) => {
     setSelectedRowIndex(e.component.getRowIndexByKey(e.selectedRowKeys[0]));
-  }));
+  });
 
-  const directionChanged = React.useCallback(() => ((e) => {
+  const directionChanged = React.useCallback((e) => {
     config({
       floatingActionButtonConfig: directions[e.selectedItem],
     });
 
     repaintFloatingActionButton();
-  }));
+  });
 
-  const editRow = React.useCallback(() => (() => {
+  const editRow = React.useCallback(() => {
     gridRef.current.instance.editRow(selectedRowIndex);
     gridRef.current.instance.deselectAll();
-  }), [gridRef]);
+  }, [gridRef]);
 
-  const deleteRow = React.useCallback(() => (() => {
+  const deleteRow = React.useCallback(() => {
     gridRef.current.instance.deleteRow(selectedRowIndex);
     gridRef.current.instance.deselectAll();
-  }), [gridRef]);
+  }, [gridRef]);
 
-  const addRow = React.useCallback(() => (() => {
+  const addRow = React.useCallback(() => {
     gridRef.current.instance.addRow();
     gridRef.current.instance.deselectAll();
-  }), [gridRef]);
+  }, [gridRef]);
 
   return (
     <div>

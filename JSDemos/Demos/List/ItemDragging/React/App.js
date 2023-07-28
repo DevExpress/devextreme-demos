@@ -6,36 +6,36 @@ const App = () => {
   const [plannedTasksState, setPlannedTasksState] = React.useState(plannedTasks);
   const [doingTasksState, setDoingTasksState] = React.useState(doingTasks);
 
-  const onDragStart = React.useCallback(() => ((e) => {
+  const onDragStart = React.useCallback((e) => {
     e.itemData = e.fromData === 'plannedTasks' ? plannedTasksState[e.fromIndex] : doingTasksState[e.fromIndex];
-  }));
+  });
 
-  const onAdd = React.useCallback(() => ((e) => {
+  const onAdd = React.useCallback((e) => {
     const tasks = e.toData === 'plannedTasks' ? plannedTasksState : doingTasksState;
     const updatedTasks = [...tasks.slice(0, e.toIndex), e.itemData, ...tasks.slice(e.toIndex)];
-    
+
     if (e.toData === 'plannedTasks') {
       setPlannedTasksState(updatedTasks);
     } else {
       setDoingTasksState(updatedTasks);
     }
-  }), [plannedTasksState, doingTasksState]);
+  }, [plannedTasksState, doingTasksState]);
 
-  const onRemove = React.useCallback(() => ((e) => {
+  const onRemove = React.useCallback((e) => {
     const tasks = e.fromData === 'plannedTasks' ? plannedTasksState : doingTasksState;
     const updatedTasks = [...tasks.slice(0, e.fromIndex), ...tasks.slice(e.fromIndex + 1)];
-    
+
     if (e.fromData === 'plannedTasks') {
       setPlannedTasksState(updatedTasks);
     } else {
       setDoingTasksState(updatedTasks);
     }
-  }), [plannedTasksState, doingTasksState]);
+  }, [plannedTasksState, doingTasksState]);
 
-  const onReorder = React.useCallback(() => ((e) => {
+  const onReorder = React.useCallback((e) => {
     onRemove(e);
     onAdd(e);
-  }));
+  });
 
   return (
     <div className="widget-container">
