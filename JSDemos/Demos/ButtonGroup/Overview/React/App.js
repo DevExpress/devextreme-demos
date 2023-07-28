@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ButtonGroup } from 'devextreme-react/button-group';
 import notify from 'devextreme/ui/notify';
 import { alignments, fontStyles } from './data.js';
@@ -6,9 +6,9 @@ import { alignments, fontStyles } from './data.js';
 const selectedItemKeys = ['left'];
 
 const App = () => {
-  const itemClick = (e) => {
+  const itemClick = React.useCallback(() => ((e) => {
     notify({ message: `The "${e.itemData.hint}" button was clicked`, width: 320 }, 'success', 1000);
-  };
+  }));
 
   return (
     <div>

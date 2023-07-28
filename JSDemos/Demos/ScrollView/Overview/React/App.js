@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import ScrollView from 'devextreme-react/scroll-view';
 import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
@@ -7,47 +7,47 @@ import service from './data.js';
 const showScrollBarModeLabel = { 'aria-label': 'Show Scrollbar Mode' };
 
 const App = () => {
-  const [showScrollBarMode, setShowScrollBarMode] = useState('onScroll');
-  const [pullDown, setPullDown] = useState(false);
-  const [scrollByContent, setScrollByContent] = useState(true);
-  const [scrollByThumb, setScrollByThumb] = useState(true);
-  const [content, setContent] = useState(service.getContent());
+  const [showScrollBarMode, setShowScrollBarMode] = React.useState('onScroll');
+  const [pullDown, setPullDown] = React.useState(false);
+  const [scrollByContent, setScrollByContent] = React.useState(true);
+  const [scrollByThumb, setScrollByThumb] = React.useState(true);
+  const [content, setContent] = React.useState(service.getContent());
 
-  const scrollViewRef = useRef(null);
+  const scrollViewRef = React.useRef(null);
 
   const getInstance = (ref) => {
     scrollViewRef.current = ref.instance;
   };
 
-  const pullDownValueChanged = (args) => {
+  const pullDownValueChanged = React.useCallback(() => ((args) => {
     setPullDown(args.value);
-  };
+  }));
 
-  const reachBottomValueChanged = (args) => {
+  const reachBottomValueChanged = React.useCallback(() => ((args) => {
     scrollViewRef.current.option('onReachBottom', args.value ? updateBottomContent : null);
-  };
+  }));
 
-  const scrollbarModelValueChanged = (args) => {
+  const scrollbarModelValueChanged = React.useCallback(() => ((args) => {
     setShowScrollBarMode(args.value);
-  };
+  }));
 
-  const scrollByContentValueChanged = (args) => {
+  const scrollByContentValueChanged = React.useCallback(() => ((args) => {
     setScrollByContent(args.value);
-  };
+  }));
 
-  const scrollByThumbValueChanged = (args) => {
+  const scrollByThumbValueChanged = React.useCallback(() => ((args) => {
     setScrollByThumb(args.value);
-  };
+  }));
 
-  const updateTopContent = (args) => {
+  const updateTopContent = React.useCallback(() => ((args) => {
     updateContent(args, 'PullDown');
-  };
+  }));
 
-  const updateBottomContent = (args) => {
+  const updateBottomContent = React.useCallback(() => ((args) => {
     updateContent(args, 'ReachBottom');
-  };
+  }));
 
-  const updateContent = (args, eventName) => {
+  const updateContent = React.useCallback(() => ((args, eventName) => {
     const updateContentText = `\n Content has been updated on the ${eventName} event.\n\n`;
     if (updateContentTimer.current) {
       clearTimeout(updateContentTimer.current);
@@ -56,7 +56,7 @@ const App = () => {
       setContent(eventName === 'PullDown' ? updateContentText + content : content + updateContentText);
       args.component.release();
     }, 500);
-  };
+  }), [content]);
 
   return (
     <div id="scrollview-demo">

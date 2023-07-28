@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import RangeSelector, {
   Margin, Scale, MinorTick, Marker, Label, Behavior, SliderMarker,
 } from 'devextreme-react/range-selector';
@@ -11,16 +11,16 @@ const behaviorModes = ['onHandleMove', 'onHandleRelease'];
 const valueChangeModeLabel = { 'aria-label': 'Value Change Mode' };
 
 function App() {
-  const [workingDaysCount, setWorkingDaysCount] = useState(calculateWorkdays([startValue, endValue]));
-  const [behaviorMode, setBehaviorMode] = useState(behaviorModes[0]);
+  const [workingDaysCount, setWorkingDaysCount] = React.useState(calculateWorkdays([startValue, endValue]));
+  const [behaviorMode, setBehaviorMode] = React.useState(behaviorModes[0]);
 
-  const processRange = (e) => {
+  const processRange = React.useCallback(() => ((e) => {
     setWorkingDaysCount(calculateWorkdays(e.value));
-  }
+  }));
 
-  const setBehavior = (data) => {
+  const setBehavior = React.useCallback(() => ((data) => {
     setBehaviorMode(data.value);
-  }
+  }));
 
   return (
     <div id="range-selector-demo">

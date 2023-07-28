@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FilterBuilder, { CustomOperation } from 'devextreme-react/filter-builder';
 import { filter, fields, groupOperations } from './data.js';
 import { formatValue } from './helpers.js';
 import { EditorComponent } from './EditorComponent.js';
 
 function App() {
-  const [value, setValue] = useState(filter);
-  const [filterText, setFilterText] = useState('');
-  const [dataSourceText, setDataSourceText] = useState('');
+  const [value, setValue] = React.useState(filter);
+  const [filterText, setFilterText] = React.useState('');
+  const [dataSourceText, setDataSourceText] = React.useState('');
 
-  const updateTexts = (e) => {
+  const updateTexts = React.useCallback(() => ((e) => {
     setFilterText(formatValue(e.component.option('value')));
     setDataSourceText(formatValue(e.component.getFilterExpression()));
-  };
+  }));
 
-  const onValueChanged = (e) => {
+  const onValueChanged = React.useCallback(() => ((e) => {
     setValue(e.value);
     updateTexts(e);
-  };
+  }));
 
-  const calculateFilterExpression = (filterValue, field) => {
+  const calculateFilterExpression = React.useCallback(() => ((filterValue, field) => {
     return (
       filterValue &&
       filterValue.length &&
@@ -30,7 +30,7 @@ function App() {
         )
         .slice(0, -1)
     );
-  };
+  }));
 
   return (
     <div>

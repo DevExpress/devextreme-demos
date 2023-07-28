@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Form, {
   ButtonItem,
   GroupItem,
@@ -18,7 +18,7 @@ import 'devextreme-react/autocomplete';
 import service from './data.js';
 
 function App() {
-  const [customer, setCustomer] = useState(service.getCustomer());
+  const [customer, setCustomer] = React.useState(service.getCustomer());
   const formInstance = React.useRef(null);
 
   const buttonOptions = {
@@ -93,7 +93,7 @@ function App() {
       'The date must have the following format: MM/dd/yyyy',
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = React.useCallback(() => ((e) => {
     notify({
       message: 'You have submitted the form',
       position: {
@@ -102,24 +102,24 @@ function App() {
       },
     }, 'success', 3000);
     e.preventDefault();
-  };
+  }));
 
   const changePasswordMode = (name) => {
     const editor = formInstance.current.getEditor(name);
     editor.option('mode', editor.option('mode') === 'text' ? 'password' : 'text');
   };
 
-  const onInitialized = (e) => {
+  const onInitialized = React.useCallback(() => ((e) => {
     formInstance.current = e.component;
-  };
+  }));
 
-  const passwordComparison = () => {
+  const passwordComparison = React.useCallback(() => (() => {
     return customer.Password;
-  };
+  }));
 
-  const checkComparison = () => {
+  const checkComparison = React.useCallback(() => (() => {
     return true;
-  };
+  }));
 
   function sendRequest(value) {
     const invalidEmail = 'test@dx-email.com';

@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Slider, Label, Tooltip } from 'devextreme-react/slider';
 import { NumberBox } from 'devextreme-react/number-box';
 
 const sliderValueLabel = { 'aria-label': 'Slider Value' };
 
 function App() {
-  const [sliderValue, setSliderValue] = useState(10);
+  const [sliderValue, setSliderValue] = React.useState(10);
 
-  const format = (value) => {
+  const format = React.useCallback(() => ((value) => {
     return `${value}%`;
-  }
+  }));
 
   return (
     <div className="form">

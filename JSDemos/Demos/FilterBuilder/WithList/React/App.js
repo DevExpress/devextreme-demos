@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import FilterBuilder from 'devextreme-react/filter-builder';
 import Button from 'devextreme-react/button';
 import List from 'devextreme-react/list';
@@ -10,22 +10,22 @@ const App = () => {
   const dataSource = useRef(new DataSource({
     store: products,
   }));
-  const filterBuilderInstance = useRef(null);
-  const [value, setValue] = useState(filter);
+  const filterBuilderInstance = React.useRef(null);
+  const [value, setValue] = React.useState(filter);
 
   const setFilterBuilderInstance = (ref) => {
     filterBuilderInstance.current = ref.instance;
     refreshDataSource();
   };
 
-  const onValueChanged = (e) => {
+  const onValueChanged = React.useCallback(() => ((e) => {
     setValue(e.value);
-  };
+  }));
 
-  const refreshDataSource = () => {
+  const refreshDataSource = React.useCallback(() => (() => {
     dataSource.current.filter(filterBuilderInstance.current.getFilterExpression());
     dataSource.current.load();
-  };
+  }));
 
   return (
     <div>

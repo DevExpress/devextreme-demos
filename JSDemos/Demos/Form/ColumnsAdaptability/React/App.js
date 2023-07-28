@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CheckBox from 'devextreme-react/check-box';
 import Form from 'devextreme-react/form';
 import employee from './data.js';
@@ -9,11 +9,11 @@ const colCountByScreen = {
 };
 
 const App = () => {
-  const [calculateColCountAutomatically, setCalculateColCountAutomatically] = useState(false);
+  const [calculateColCountAutomatically, setCalculateColCountAutomatically] = React.useState(false);
 
-  const onCalculateColCountAutomaticallyChanged = (e) => {
+  const onCalculateColCountAutomaticallyChanged = React.useCallback(() => ((e) => {
     setCalculateColCountAutomatically(e.value);
-  };
+  }));
 
   return (
     <div>

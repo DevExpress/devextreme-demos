@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FilterBuilder from 'devextreme-react/filter-builder';
 import Button from 'devextreme-react/button';
 import DataGrid from 'devextreme-react/data-grid';
@@ -7,8 +7,8 @@ import ODataStore from 'devextreme/data/odata/store';
 import { filter, fields } from './data.js';
 
 const App = () => {
-  const [value, setValue] = useState(filter);
-  const [gridFilterValue, setGridFilterValue] = useState(filter);
+  const [value, setValue] = React.useState(filter);
+  const [gridFilterValue, setGridFilterValue] = React.useState(filter);
 
   const dataSource = new DataSource({
     store: new ODataStore({
@@ -29,13 +29,13 @@ const App = () => {
     ],
   });
 
-  const onValueChanged = (e) => {
+  const onValueChanged = React.useCallback(() => ((e) => {
     setValue(e.value);
-  };
+  }));
 
-  const buttonClick = () => {
+  const buttonClick = React.useCallback(() => (() => {
     setGridFilterValue(value);
-  };
+  }), [value]);
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import RangeSlider, { Tooltip, Label } from 'devextreme-react/range-slider';
 import NumberBox from 'devextreme-react/number-box';
 
@@ -15,21 +15,21 @@ const startValueLabel = { 'aria-label': 'Start Value' };
 const endValueLabel = { 'aria-label': 'End Value' };
 
 function App() {
-  const [startValue, setStartValue] = useState(10);
-  const [endValue, setEndValue] = useState(90);
+  const [startValue, setStartValue] = React.useState(10);
+  const [endValue, setEndValue] = React.useState(90);
 
-  const onRangeChanged = (data) => {
+  const onRangeChanged = React.useCallback(() => ((data) => {
     setStartValue(data.start);
     setEndValue(data.end);
-  };
+  }));
 
-  const onStartChanged = (data) => {
+  const onStartChanged = React.useCallback(() => ((data) => {
     setStartValue(data.value);
-  };
+  }));
 
-  const onEndChanged = (data) => {
+  const onEndChanged = React.useCallback(() => ((data) => {
     setEndValue(data.value);
-  };
+  }));
 
   return (
     <div className="form">

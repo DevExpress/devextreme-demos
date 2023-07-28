@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import RangeSelector, { Chart, Series } from 'devextreme-react/range-selector';
 import { dataSource } from './data.js';
 
 const formatNumber = new Intl.NumberFormat('en-US', { minimumFractionDigits: 0 }).format;
 
 function App() {
-  const [totalProduction, setTotalProduction] = useState(calculateTotalProduction());
+  const [totalProduction, setTotalProduction] = React.useState(calculateTotalProduction());
 
-  const processRange = (e) => {
+  const processRange = React.useCallback(() => ((e) => {
     setTotalProduction(calculateTotalProduction(e.value));
-  };
+  }));
 
   function calculateTotalProduction(range = []) {
     let startIndex = 0;

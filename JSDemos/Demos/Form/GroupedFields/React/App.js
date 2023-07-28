@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'devextreme-react/text-area';
 import Form, {
   SimpleItem, GroupItem, TabbedItem, TabPanelOptions, Tab,
@@ -6,7 +6,7 @@ import Form, {
 import service from './data.js';
 
 const App = () => {
-  const [employee] = useState(service.getEmployee());
+  const [employee] = React.useState(service.getEmployee());
 
   return (
     <React.Fragment>

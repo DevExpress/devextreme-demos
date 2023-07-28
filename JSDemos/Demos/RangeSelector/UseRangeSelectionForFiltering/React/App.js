@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import RangeSelector, {
   Margin, Scale, Label, Behavior, Format,
 } from 'devextreme-react/range-selector';
@@ -8,15 +8,15 @@ import { employees } from './data.js';
 const columns = ['FirstName', 'LastName', 'BirthYear', 'City', 'Title'];
 
 const App = () => {
-  const [selectedEmployees, setSelectedEmployees] = useState(employees);
+  const [selectedEmployees, setSelectedEmployees] = React.useState(employees);
 
-  const filterEmployees = ({ value }) => {
+  const filterEmployees = React.useCallback(() => (({ value }) => {
     setSelectedEmployees(
       employees.filter(
         (employee) => (employee.BirthYear >= value[0] && employee.BirthYear <= value[1]) || !value.length
       )
     );
-  };
+  }));
 
   return (
     <>

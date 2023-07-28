@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'devextreme-react/text-area';
 
 import Form, { GroupItem, SimpleItem, Label } from 'devextreme-react/form';
 import service from './data.js';
 
 const App = () => {
-  const [phoneOptions, setPhoneOptions] = useState(getPhonesOptions());
-  const [isHomeAddressVisible, setIsHomeAddressVisible] = useState(true);
+  const [phoneOptions, setPhoneOptions] = React.useState(getPhonesOptions());
+  const [isHomeAddressVisible, setIsHomeAddressVisible] = React.useState(true);
 
   const employee = service.getEmployee();
 

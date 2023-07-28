@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CheckBox from 'devextreme-react/check-box';
 import SelectBox from 'devextreme-react/select-box';
 import NumberBox from 'devextreme-react/number-box';
@@ -18,46 +18,46 @@ const minCountWidthLabel = { 'aria-label': 'Min Count Width' };
 
 const App = () => {
   const companies = service.getCompanies();
-  const [labelMode, setLabelMode] = useState('floating');
-  const [labelLocation, setLabelLocation] = useState('left');
-  const [readOnly, setReadOnly] = useState(false);
-  const [showColon, setShowColon] = useState(true);
-  const [minColWidth, setMinColWidth] = useState(300);
-  const [colCount, setColCount] = useState(2);
-  const [company, setCompany] = useState(companies[0]);
-  const [width, setWidth] = useState();
+  const [labelMode, setLabelMode] = React.React.useState('floating');
+  const [labelLocation, setLabelLocation] = React.useState('left');
+  const [readOnly, setReadOnly] = React.useState(false);
+  const [showColon, setShowColon] = React.useState(true);
+  const [minColWidth, setMinColWidth] = React.useState(300);
+  const [colCount, setColCount] = React.useState(2);
+  const [company, setCompany] = React.useState(companies[0]);
+  const [width, setWidth] = React.useState();
 
-  const onCompanyChanged = (e) => {
+  const onCompanyChanged = React.useCallback(() => ((e) => {
     setCompany(e.value);
-  };
+  }));
 
-  const onLabelModeChanged = (e) => {
+  const onLabelModeChanged = React.useCallback(() => ((e) => {
     setLabelMode(e.value);
-  };
+  }));
 
-  const onLabelLocationChanged = (e) => {
+  const onLabelLocationChanged = React.useCallback(() => ((e) => {
     setLabelLocation(e.value);
-  };
+  }));
 
-  const onReadOnlyChanged = (e) => {
+  const onReadOnlyChanged = React.useCallback(() => ((e) => {
     setReadOnly(e.value);
-  };
+  }));
 
-  const onShowColonChanged = (e) => {
+  const onShowColonChanged = React.useCallback(() => ((e) => {
     setShowColon(e.value);
-  };
+  }));
 
-  const onMinColWidthChanged = (e) => {
+  const onMinColWidthChanged = React.useCallback(() => ((e) => {
     setMinColWidth(e.value);
-  };
+  }));
 
-  const onColumnsCountChanged = (e) => {
+  const onColumnsCountChanged = React.useCallback(() => ((e) => {
     setColCount(e.value);
-  };
+  }));
 
-  const onFormWidthChanged = (e) => {
+  const onFormWidthChanged = React.useCallback(() => ((e) => {
     setWidth(e.value);
-  };
+  }));
 
   const companySelectorLabelMode = labelMode === 'outside'
     ? 'hidden'
