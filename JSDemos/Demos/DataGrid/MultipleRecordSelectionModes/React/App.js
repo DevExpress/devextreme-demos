@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import DataGrid, {
   Column,
   Selection,
@@ -13,16 +13,16 @@ const showCheckBoxesModes = ['none', 'onClick', 'onLongTap', 'always'];
 const selectAllModes = ['allPages', 'page'];
 
 const App = () => {
-  const [allMode, setAllMode] = useState('allPages');
-  const [checkBoxesMode, setCheckBoxesMode] = useState(
+  const [allMode, setAllMode] = React.useState('allPages');
+  const [checkBoxesMode, setCheckBoxesMode] = React.useState(
     themes.current().startsWith('material') ? 'always' : 'onClick',
   );
 
-  const onCheckBoxesModeChanged = useCallback((value) => {
+  const onCheckBoxesModeChanged = React.useCallback((value) => {
     setCheckBoxesMode(value);
   }, []);
 
-  const onAllModeChanged = useCallback((value) => {
+  const onAllModeChanged = React.useCallback((value) => {
     setAllMode(value);
   }, []);
 

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import DataGrid, {
   Column,
   Editing,
@@ -13,14 +13,14 @@ const startEditActions = ['click', 'dblClick'];
 const actionLabel = { 'aria-label': 'Action' };
 
 const App = () => {
-  const [selectTextOnEditStart, setSelectTextOnEditStart] = useState(true);
-  const [startEditAction, setStartEditAction] = useState('click');
+  const [selectTextOnEditStart, setSelectTextOnEditStart] = React.useState(true);
+  const [startEditAction, setStartEditAction] = React.useState('click');
 
-  const onSelectTextOnEditStartChanged = useCallback((args) => {
+  const onSelectTextOnEditStartChanged = React.useCallback((args) => {
     setSelectTextOnEditStart(args.value);
   }, []);
 
-  const onStartEditActionChanged = useCallback((args) => {
+  const onStartEditActionChanged = React.useCallback((args) => {
     setStartEditAction(args.value);
   }, []);
 

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import DataGrid, {
   Button, Column, Editing, Lookup,
 } from 'devextreme-react/data-grid';
@@ -31,9 +31,9 @@ const isCloneIconVisible = (e) => !e.row.isEditing;
 const isCloneIconDisabled = (e) => isChief(e.row.data.Position);
 
 const App = () => {
-  const [employees, setEmployees] = useState(service.getEmployees());
+  const [employees, setEmployees] = React.useState(service.getEmployees());
 
-  const cloneIconClick = useCallback((e) => {
+  const cloneIconClick = React.useCallback((e) => {
     const clonedItem = { ...e.row.data, ID: service.getMaxID() };
 
     setEmployees((prevState) => {

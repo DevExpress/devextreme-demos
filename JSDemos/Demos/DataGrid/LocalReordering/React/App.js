@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import DataGrid, {
   Column, RowDragging, Scrolling, Lookup, Sorting,
 } from 'devextreme-react/data-grid';
@@ -6,10 +6,10 @@ import { CheckBox } from 'devextreme-react/check-box';
 import { tasks as defaultTasks, employees } from './data.js';
 
 const App = () => {
-  const [tasks, setTasks] = useState(defaultTasks);
-  const [showDragIcons, setShowDragIcons] = useState(true);
+  const [tasks, setTasks] = React.useState(defaultTasks);
+  const [showDragIcons, setShowDragIcons] = React.useState(true);
 
-  const onReorder = useCallback((e) => {
+  const onReorder = React.useCallback((e) => {
     const visibleRows = e.component.getVisibleRows();
     const newTasks = [...tasks];
 
@@ -22,7 +22,7 @@ const App = () => {
     setTasks(newTasks);
   }, [tasks]);
 
-  const onShowDragIconsChanged = useCallback((args) => {
+  const onShowDragIconsChanged = React.useCallback((args) => {
     setShowDragIcons(args.value);
   }, []);
 

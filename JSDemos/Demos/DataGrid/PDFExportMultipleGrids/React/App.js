@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React from 'react';
 import Button from 'devextreme-react/button';
 import TabPanel, { Item } from 'devextreme-react/tab-panel';
 import DataGrid, { Column } from 'devextreme-react/data-grid';
@@ -36,10 +36,10 @@ const setAlternatingRowsBackground = (dataGrid, gridCell, pdfCell) => {
 };
 
 const App = () => {
-  const priceGridRef = useRef(null);
-  const ratingGridRef = useRef(null);
+  const priceGridRef = React.useRef(null);
+  const ratingGridRef = React.useRef(null);
 
-  const exportGrids = useCallback(() => {
+  const exportGrids = React.useCallback(() => {
     // eslint-disable-next-line new-cap
     const doc = new jsPDF();
 

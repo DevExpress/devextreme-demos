@@ -1,6 +1,4 @@
-import React, {
-  useState, useCallback,
-} from 'react';
+import React from 'react';
 import ODataStore from 'devextreme/data/odata/store';
 import DataGrid, {
   Column,
@@ -27,9 +25,9 @@ const dataSourceOptions = {
 };
 
 const App = () => {
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = React.useState(true);
 
-  const onContentReady = useCallback((e) => {
+  const onContentReady = React.useCallback((e) => {
     if (collapsed) {
       e.component.expandRow(['EnviroCare']);
       setCollapsed(false);

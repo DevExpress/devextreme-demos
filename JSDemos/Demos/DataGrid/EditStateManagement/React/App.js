@@ -1,6 +1,4 @@
-import React, {
-  useEffect, useCallback, useMemo, useReducer,
-} from 'react';
+import React from 'react';
 import DataGrid, { Column, Editing } from 'devextreme-react/data-grid';
 import { LoadPanel } from 'devextreme-react/load-panel';
 import 'whatwg-fetch';
@@ -20,28 +18,28 @@ const initialState = {
 const loadPanelPosition = { of: '#gridContainer' };
 
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
-  const changesText = useMemo(() => JSON.stringify(state.changes.map((change) => ({
+  const changesText = React.useMemo(() => JSON.stringify(state.changes.map((change) => ({
     type: change.type,
     key: change.type !== 'insert' ? change.key : undefined,
     data: change.data,
   })), null, ' '), [state.changes]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     loadOrders(dispatch);
   }, []);
 
-  const onSaving = useCallback((e) => {
+  const onSaving = React.useCallback((e) => {
     e.cancel = true;
     e.promise = saveChange(dispatch, e.changes[0]);
   }, []);
 
-  const onChangesChange = useCallback((changes) => {
+  const onChangesChange = React.useCallback((changes) => {
     setChanges(dispatch, changes);
   }, []);
 
-  const onEditRowKeyChange = useCallback((editRowKey) => {
+  const onEditRowKeyChange = React.useCallback((editRowKey) => {
     setEditRowKey(dispatch, editRowKey);
   }, []);
 

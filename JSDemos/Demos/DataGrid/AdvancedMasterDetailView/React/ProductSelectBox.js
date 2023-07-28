@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import { SelectBox } from 'devextreme-react/select-box';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 
@@ -6,13 +6,13 @@ const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridAdvancedMasterDetai
 const productLabel = { 'aria-label': 'Product' };
 
 const ProductSelectBox = (props) => {
-  const [productsData, setProductsData] = useState(null);
+  const [productsData, setProductsData] = React.useState(null);
 
-  const valueChanged = useCallback((e) => {
+  const valueChanged = React.useCallback((e) => {
     props.onProductChanged(e.value);
   }, [props]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const setDefaultValue = (items) => {
       const firstItem = items[0];
       if (firstItem && props.productId === null) {

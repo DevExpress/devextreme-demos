@@ -1,15 +1,15 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { TabPanel, Item } from 'devextreme-react/tab-panel';
 
 import AddressTab from './AddressTab.js';
 import OrdersTab from './OrdersTab.js';
 
 const MasterDetailView = (props) => {
-  const renderOrdersTab = useCallback(() => (
+  const renderOrdersTab = React.useCallback(() => (
     <OrdersTab supplierId={props.data.key} />
   ), [props.data.key]);
 
-  const renderAddressTab = useCallback(() => (
+  const renderAddressTab = React.useCallback(() => (
     <AddressTab data={props.data.data} />
   ), [props.data.data]);
 

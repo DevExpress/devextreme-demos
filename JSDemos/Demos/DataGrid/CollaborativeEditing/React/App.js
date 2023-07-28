@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
@@ -29,7 +29,7 @@ const updateStores = (events) => {
 };
 
 const App = () => {
-  useEffect(() => {
+  React.useEffect(() => {
     const hubUrl = `${BASE_PATH}dataGridCollaborativeEditingHub?GroupId=${groupId}`;
     const connection = new HubConnectionBuilder()
       .withUrl(hubUrl, {

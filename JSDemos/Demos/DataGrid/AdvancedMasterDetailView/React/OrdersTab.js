@@ -1,20 +1,20 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import { Form, Item, Label } from 'devextreme-react/form';
 
 import ProductSelectBox from './ProductSelectBox.js';
 import OrderHistory from './OrderHistory.js';
 
 const OrdersTab = (props) => {
-  const [chosenProductId, setChosenProductId] = useState(null);
+  const [chosenProductId, setChosenProductId] = React.useState(null);
 
-  const renderSelectBox = useCallback(() => (
+  const renderSelectBox = React.useCallback(() => (
     <ProductSelectBox
       supplierId={props.supplierId}
       productId={chosenProductId}
       onProductChanged={setChosenProductId} />
   ), [chosenProductId, props.supplierId]);
 
-  const renderOrderHistory = useCallback(() => (
+  const renderOrderHistory = React.useCallback(() => (
     <OrderHistory productId={chosenProductId} />
   ), [chosenProductId]);
 

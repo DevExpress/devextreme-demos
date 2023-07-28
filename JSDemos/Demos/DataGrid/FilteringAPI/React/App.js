@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React from 'react';
 import DataGrid, { Column } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
 import 'devextreme/data/odata/store';
@@ -23,10 +23,10 @@ const statuses = ['All', 'Not Started', 'In Progress', 'Need Assistance', 'Defer
 const statusLabel = { 'aria-label': 'Status' };
 
 const App = () => {
-  const [filterStatus, setFilterStatus] = useState(statuses[0]);
-  const dataGridRef = useRef(null);
+  const [filterStatus, setFilterStatus] = React.useState(statuses[0]);
+  const dataGridRef = React.useRef(null);
 
-  const onValueChanged = useCallback(({ value }) => {
+  const onValueChanged = React.useCallback(({ value }) => {
     const dataGrid = dataGridRef.current.instance;
 
     if (value === 'All') {

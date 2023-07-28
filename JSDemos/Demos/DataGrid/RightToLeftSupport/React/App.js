@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import DataGrid, { Column, Paging, SearchPanel } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
 
@@ -10,20 +10,20 @@ const languageLabel = { 'aria-label': 'Language' };
 const languages = ['Arabic (Right-to-Left direction)', 'English (Left-to-Right direction)'];
 
 const App = () => {
-  const [placeholder, setPlaceholder] = useState('Search...');
-  const [rtlEnabled, setRtlEnabled] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(languages[1]);
+  const [placeholder, setPlaceholder] = React.useState('Search...');
+  const [rtlEnabled, setRtlEnabled] = React.useState(false);
+  const [selectedValue, setSelectedValue] = React.useState(languages[1]);
 
   const dataSource = service.getEuropeanUnion();
 
-  const selectLanguage = useCallback((e) => {
+  const selectLanguage = React.useCallback((e) => {
     const newRtlEnabled = e.value === languages[0];
     setRtlEnabled(newRtlEnabled);
     setPlaceholder(newRtlEnabled ? 'بحث' : 'Search...');
     setSelectedValue(e.value);
   }, []);
 
-  const headerCellRender = useCallback(() => (
+  const headerCellRender = React.useCallback(() => (
     <div>
       {rtlEnabled ? (
         <div>المساحة (كم<sup>2</sup>)</div>

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import DataGrid, { Column } from 'devextreme-react/data-grid';
 import CheckBox from 'devextreme-react/check-box';
 
@@ -7,24 +7,24 @@ import service from './data.js';
 const employees = service.getEmployees();
 
 const App = () => {
-  const [showColumnLines, setShowColumnLines] = useState(false);
-  const [showRowLines, setShowRowLines] = useState(true);
-  const [showBorders, setShowBorders] = useState(true);
-  const [rowAlternationEnabled, setRowAlternationEnabled] = useState(true);
+  const [showColumnLines, setShowColumnLines] = React.useState(false);
+  const [showRowLines, setShowRowLines] = React.useState(true);
+  const [showBorders, setShowBorders] = React.useState(true);
+  const [rowAlternationEnabled, setRowAlternationEnabled] = React.useState(true);
 
-  const onShowColumnLinesValueChanged = useCallback((e) => {
+  const onShowColumnLinesValueChanged = React.useCallback((e) => {
     setShowColumnLines(e.value);
   }, []);
 
-  const onShowRowLinesValueChanged = useCallback((e) => {
+  const onShowRowLinesValueChanged = React.useCallback((e) => {
     setShowRowLines(e.value);
   }, []);
 
-  const onShowBordersValueChanged = useCallback((e) => {
+  const onShowBordersValueChanged = React.useCallback((e) => {
     setShowBorders(e.value);
   }, []);
 
-  const onRowAlternationEnabledChanged = useCallback((e) => {
+  const onRowAlternationEnabledChanged = React.useCallback((e) => {
     setRowAlternationEnabled(e.value);
   }, []);
 

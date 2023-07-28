@@ -1,13 +1,13 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React from 'react';
 import DataGrid, { Column, Sorting } from 'devextreme-react/data-grid';
 import CheckBox from 'devextreme-react/check-box';
 import { employees } from './data.js';
 
 const App = () => {
-  const [positionDisableSorting, setPositionDisableSorting] = useState(false);
-  const dataGridRef = useRef(null);
+  const [positionDisableSorting, setPositionDisableSorting] = React.useState(false);
+  const dataGridRef = React.useRef(null);
 
-  const onPositionSortingChanged = useCallback(() => {
+  const onPositionSortingChanged = React.useCallback(() => {
     setPositionDisableSorting(!positionDisableSorting);
     dataGridRef.current.instance.columnOption(5, 'sortOrder', undefined);
   }, [positionDisableSorting]);

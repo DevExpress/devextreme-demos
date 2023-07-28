@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import DataGrid, {
   Column,
   Grouping,
@@ -10,9 +10,9 @@ import CheckBox from 'devextreme-react/check-box';
 import { customers } from './data.js';
 
 const App = () => {
-  const [autoExpandAll, setAutoExpandAll] = useState(true);
+  const [autoExpandAll, setAutoExpandAll] = React.useState(true);
 
-  const onAutoExpandAllChanged = useCallback(() => {
+  const onAutoExpandAllChanged = React.useCallback(() => {
     setAutoExpandAll(!autoExpandAll);
   }, [autoExpandAll]);
 

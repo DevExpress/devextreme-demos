@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React from 'react';
 import Button from 'devextreme-react/button';
 import SelectBox from 'devextreme-react/select-box';
 import DataGrid, {
@@ -22,12 +22,12 @@ const orders = service.getOrders();
 const getGroupCount = (groupField) => query(orders).groupBy(groupField).toArray().length;
 
 const App = () => {
-  const [expanded, setExpanded] = useState(true);
-  const [totalCount, setTotalCount] = useState(getGroupCount('CustomerStoreState'));
-  const [grouping, setGrouping] = useState('CustomerStoreState');
-  const dataGridRef = useRef(null);
+  const [expanded, setExpanded] = React.useState(true);
+  const [totalCount, setTotalCount] = React.useState(getGroupCount('CustomerStoreState'));
+  const [grouping, setGrouping] = React.useState('CustomerStoreState');
+  const dataGridRef = React.useRef(null);
 
-  const groupChanged = useCallback((e) => {
+  const groupChanged = React.useCallback((e) => {
     const newGrouping = e.value;
     dataGridRef.current.instance.clearGrouping();
     dataGridRef.current.instance.columnOption(newGrouping, 'groupIndex', 0);
@@ -35,11 +35,11 @@ const App = () => {
     setGrouping(newGrouping);
   }, []);
 
-  const collapseAllClick = useCallback(() => {
+  const collapseAllClick = React.useCallback(() => {
     setExpanded(!expanded);
   }, [expanded]);
 
-  const refreshDataGrid = useCallback(() => {
+  const refreshDataGrid = React.useCallback(() => {
     dataGridRef.current.instance.refresh();
   }, []);
 

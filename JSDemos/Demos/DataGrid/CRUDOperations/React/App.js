@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import {
   DataGrid, Column, Editing, Scrolling, Lookup, Summary, TotalItem,
 } from 'devextreme-react/data-grid';
@@ -15,7 +15,7 @@ const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
 const REFRESH_MODES = ['full', 'reshape', 'repaint'];
 
 const App = () => {
-  const [ordersData] = useState(new CustomStore({
+  const [ordersData] = React.useState(new CustomStore({
     key: 'OrderID',
     load: () => sendRequest(`${URL}/Orders`),
     insert: (values) => sendRequest(`${URL}/InsertOrder`, 'POST', {
@@ -29,28 +29,28 @@ const App = () => {
       key,
     }),
   }));
-  const [customersData] = useState(new CustomStore({
+  const [customersData] = React.useState(new CustomStore({
     key: 'Value',
     loadMode: 'raw',
     load: () => sendRequest(`${URL}/CustomersLookup`),
   }));
-  const [shippersData] = useState(new CustomStore({
+  const [shippersData] = React.useState(new CustomStore({
     key: 'Value',
     loadMode: 'raw',
     load: () => sendRequest(`${URL}/ShippersLookup`),
   }));
-  const [requests, setRequests] = useState([]);
-  const [refreshMode, setRefreshMode] = useState('reshape');
+  const [requests, setRequests] = React.useState([]);
+  const [refreshMode, setRefreshMode] = React.useState('reshape');
 
-  const handleRefreshModeChange = useCallback((e) => {
+  const handleRefreshModeChange = React.useCallback((e) => {
     setRefreshMode(e.value);
   }, []);
 
-  const clearRequests = useCallback(() => {
+  const clearRequests = React.useCallback(() => {
     setRequests([]);
   }, []);
 
-  const logRequest = useCallback((method, url, data) => {
+  const logRequest = React.useCallback((method, url, data) => {
     const args = Object.keys(data || {}).map((key) => `${key}=${data[key]}`).join(' ');
 
     const time = formatDate(new Date(), 'HH:mm:ss');
@@ -59,7 +59,7 @@ const App = () => {
     setRequests((prevRequests) => [request].concat(prevRequests));
   }, []);
 
-  const sendRequest = useCallback((url, method = 'GET', data = {}) => {
+  const sendRequest = React.useCallback((url, method = 'GET', data = {}) => {
     logRequest(method, url, data);
 
     if (method === 'GET') {

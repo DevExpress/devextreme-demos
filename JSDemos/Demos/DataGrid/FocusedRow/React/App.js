@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import { DataGrid, Column, Paging } from 'devextreme-react/data-grid';
 import { NumberBox } from 'devextreme-react/number-box';
 import { CheckBox } from 'devextreme-react/check-box';
@@ -25,20 +25,20 @@ const dataSourceOptions = {
 };
 
 const App = () => {
-  const [taskSubject, setTaskSubject] = useState('');
-  const [taskDetails, setTaskDetails] = useState('');
-  const [taskStatus, setTaskStatus] = useState('');
-  const [taskProgress, setTaskProgress] = useState('');
-  const [focusedRowKey, setFocusedRowKey] = useState(117);
-  const [autoNavigateToFocusedRow, setAutoNavigateToFocusedRow] = useState(true);
+  const [taskSubject, setTaskSubject] = React.useState('');
+  const [taskDetails, setTaskDetails] = React.useState('');
+  const [taskStatus, setTaskStatus] = React.useState('');
+  const [taskProgress, setTaskProgress] = React.useState('');
+  const [focusedRowKey, setFocusedRowKey] = React.useState(117);
+  const [autoNavigateToFocusedRow, setAutoNavigateToFocusedRow] = React.useState(true);
 
-  const onTaskIdChanged = useCallback((e) => {
+  const onTaskIdChanged = React.useCallback((e) => {
     if (e.event && e.value > 0) {
       setFocusedRowKey(e.value);
     }
   }, []);
 
-  const onFocusedRowChanging = useCallback((e) => {
+  const onFocusedRowChanging = React.useCallback((e) => {
     const rowsCount = e.component.getVisibleRows().length;
     const pageCount = e.component.pageCount();
     const pageIndex = e.component.pageIndex();
@@ -57,7 +57,7 @@ const App = () => {
     }
   }, []);
 
-  const onFocusedRowChanged = useCallback((e) => {
+  const onFocusedRowChanged = React.useCallback((e) => {
     const dataRow = e.row && e.row.data;
     const progress = dataRow && dataRow.Task_Completion ? `${dataRow.Task_Completion}%` : '';
     setTaskSubject(dataRow && dataRow.Task_Subject);
@@ -67,7 +67,7 @@ const App = () => {
     setFocusedRowKey(e.component.option('focusedRowKey'));
   }, []);
 
-  const onAutoNavigateToFocusedRowChanged = useCallback((e) => {
+  const onAutoNavigateToFocusedRowChanged = React.useCallback((e) => {
     setAutoNavigateToFocusedRow(e.value);
   }, []);
 

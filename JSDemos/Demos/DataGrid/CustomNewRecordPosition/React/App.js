@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import DataGrid, {
   Column, Editing, ValidationRule, Button, Toolbar, Item, Scrolling,
 } from 'devextreme-react/data-grid';
@@ -16,12 +16,12 @@ const onRowInserted = (e) => {
 };
 
 const App = () => {
-  const [newRowPosition, setNewRowPosition] = useState('viewportTop');
-  const [scrollingMode, setScrollingMode] = useState('standard');
-  const [changes, setChanges] = useState([]);
-  const [editRowKey, setEditRowKey] = useState(null);
+  const [newRowPosition, setNewRowPosition] = React.useState('viewportTop');
+  const [scrollingMode, setScrollingMode] = React.useState('standard');
+  const [changes, setChanges] = React.useState([]);
+  const [editRowKey, setEditRowKey] = React.useState(null);
 
-  const onAddButtonClick = useCallback((e) => {
+  const onAddButtonClick = React.useCallback((e) => {
     const key = new Guid().toString();
     setChanges([{
       key,

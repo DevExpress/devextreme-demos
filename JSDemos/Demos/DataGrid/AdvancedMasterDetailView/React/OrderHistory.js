@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import {
   Column, DataGrid, Paging, Summary, TotalItem, ValueFormat,
@@ -8,9 +8,9 @@ import { createStore } from 'devextreme-aspnet-data-nojquery';
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridAdvancedMasterDetailView';
 
 const OrderHistory = ({ productId }) => {
-  const [orderHistoryStore, setOrderHistoryStore] = useState(null);
+  const [orderHistoryStore, setOrderHistoryStore] = React.useState(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (productId) {
       const newOrderHistoryStore = createStore({
         key: 'OrderID',

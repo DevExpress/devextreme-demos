@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React from 'react';
 import DataGrid, {
   Selection, FilterRow, GroupPanel, StateStoring, Pager, Column,
 } from 'devextreme-react/data-grid';
@@ -13,9 +13,9 @@ const onRefreshClick = () => {
 };
 
 const App = () => {
-  const dataGridRef = useRef(null);
+  const dataGridRef = React.useRef(null);
 
-  const onStateResetClick = useCallback(() => {
+  const onStateResetClick = React.useCallback(() => {
     dataGridRef.current.instance.state(null);
   }, []);
 

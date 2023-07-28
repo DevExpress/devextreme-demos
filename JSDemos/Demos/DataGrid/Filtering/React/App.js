@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React from 'react';
 import DataGrid, {
   Column, FilterRow, HeaderFilter, Search, SearchPanel,
 } from 'devextreme-react/data-grid';
@@ -63,26 +63,26 @@ const orderHeaderFilter = (data) => {
 };
 
 const App = () => {
-  const [showFilterRow, setShowFilterRow] = useState(true);
-  const [showHeaderFilter, setShowHeaderFilter] = useState(true);
-  const [currentFilter, setCurrentFilter] = useState(applyFilterTypes[0].key);
-  const dataGridRef = useRef(null);
+  const [showFilterRow, setShowFilterRow] = React.useState(true);
+  const [showHeaderFilter, setShowHeaderFilter] = React.useState(true);
+  const [currentFilter, setCurrentFilter] = React.useState(applyFilterTypes[0].key);
+  const dataGridRef = React.useRef(null);
 
-  const onShowFilterRowChanged = useCallback((e) => {
+  const onShowFilterRowChanged = React.useCallback((e) => {
     setShowFilterRow(e.value);
     clearFilter();
   }, [clearFilter]);
 
-  const onShowHeaderFilterChanged = useCallback((e) => {
+  const onShowHeaderFilterChanged = React.useCallback((e) => {
     setShowHeaderFilter(e.value);
     clearFilter();
   }, [clearFilter]);
 
-  const onCurrentFilterChanged = useCallback((e) => {
+  const onCurrentFilterChanged = React.useCallback((e) => {
     setCurrentFilter(e.value);
   }, []);
 
-  const clearFilter = useCallback(() => {
+  const clearFilter = React.useCallback(() => {
     dataGridRef.current.instance.clearFilter();
   }, []);
 
