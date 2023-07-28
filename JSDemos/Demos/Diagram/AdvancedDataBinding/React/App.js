@@ -1,47 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Diagram, {
   Nodes, AutoLayout, Edges, Toolbox, Group,
 } from 'devextreme-react/diagram';
 import ArrayStore from 'devextreme/data/array_store';
 import service from './data.js';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const orgItemsDataSource = new ArrayStore({
+    key: 'id',
+    data: service.getOrgItems(),
+  });
+  const orgLinksDataSource = new ArrayStore({
+    key: 'id',
+    data: service.getOrgLinks(),
+  });
 
-    this.orgItemsDataSource = new ArrayStore({
-      key: 'id',
-      data: service.getOrgItems(),
-    });
-    this.orgLinksDataSource = new ArrayStore({
-      key: 'id',
-      data: service.getOrgLinks(),
-    });
-  }
-
-  render() {
-    return (
-      <Diagram id="diagram">
-        <Nodes
-          dataSource={this.orgItemsDataSource}
-          typeExpr={this.itemTypeExpr}
-          textExpr="name"
-          widthExpr={this.itemWidthExpr}
-          heightExpr={this.itemHeightExpr}
-          textStyleExpr={this.itemTextStyleExpr}
-          styleExpr={this.itemStyleExpr}>
-          <AutoLayout type="tree" orientation="horizontal" />
-        </Nodes>
-        <Edges dataSource={this.orgLinksDataSource} styleExpr={this.linkStyleExpr}
-          fromLineEndExpr={this.linkFromLineEndExpr} toLineEndExpr={this.linkToLineEndExpr} />
-        <Toolbox>
-          <Group category="general" title="General" />
-        </Toolbox>
-      </Diagram>
-    );
-  }
-
-  itemTypeExpr(obj, value) {
+  const itemTypeExpr = (obj, value) => {
     if (value) {
       obj.type = (value === 'rectangle') ? undefined : 'group';
     } else {
@@ -50,7 +24,7 @@ class App extends React.Component {
     return null;
   }
 
-  itemWidthExpr(obj, value) {
+  const itemWidthExpr = (obj, value) => {
     if (value) {
       obj.width = value;
     } else {
@@ -59,7 +33,7 @@ class App extends React.Component {
     return null;
   }
 
-  itemHeightExpr(obj, value) {
+  const itemHeightExpr = (obj, value) => {
     if (value) {
       obj.height = value;
     } else {
@@ -68,14 +42,14 @@ class App extends React.Component {
     return null;
   }
 
-  itemTextStyleExpr(obj) {
+  const itemTextStyleExpr = (obj) => {
     if (obj.level === 'senior') {
       return { 'font-weight': 'bold', 'text-decoration': 'underline' };
     }
     return {};
   }
 
-  itemStyleExpr(obj) {
+  const itemStyleExpr = (obj) => {
     const style = { stroke: '#444444' };
     if (obj.type === 'group') {
       style.fill = '#f3f3f3';
@@ -83,17 +57,43 @@ class App extends React.Component {
     return style;
   }
 
-  linkStyleExpr() {
+  const linkStyleExpr = () => {
     return { stroke: '#444444' };
   }
 
-  linkFromLineEndExpr() {
+  const linkFromLineEndExpr = () => {
     return 'none';
   }
 
-  linkToLineEndExpr() {
+  const linkToLineEndExpr = () => {
     return 'none';
   }
+
+  useEffect(() => {
+    // Initialize the data sources
+    orgItemsDataSource.load();
+    orgLinksDataSource.load();
+  }, []);
+
+  return (
+    <Diagram id="diagram">
+      <Nodes
+        dataSource={orgItemsDataSource}
+        typeExpr={itemTypeExpr}
+        textExpr="name"
+        widthExpr={itemWidthExpr}
+        heightExpr={itemHeightExpr}
+        textStyleExpr={itemTextStyleExpr}
+        styleExpr={itemStyleExpr}>
+        <AutoLayout type="tree" orientation="horizontal" />
+      </Nodes>
+      <Edges dataSource={orgLinksDataSource} styleExpr={linkStyleExpr}
+        fromLineEndExpr={linkFromLineEndExpr} toLineEndExpr={linkToLineEndExpr} />
+      <Toolbox>
+        <Group category="general" title="General" />
+      </Toolbox>
+    </Diagram>
+  );
 }
 
 export default App;
