@@ -18,14 +18,14 @@ const App = () => {
     refreshDataSource();
   };
 
-  const onValueChanged = React.useCallback(() => ((e) => {
+  const onValueChanged = React.useCallback((e) => {
     setValue(e.value);
-  }));
+  });
 
-  const refreshDataSource = React.useCallback(() => (() => {
+  const refreshDataSource = React.useCallback(() => {
     dataSource.current.filter(filterBuilderInstance.current.getFilterExpression());
     dataSource.current.load();
-  }));
+  });
 
   return (
     <div>

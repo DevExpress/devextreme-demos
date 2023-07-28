@@ -35,7 +35,7 @@ const App = () => {
     e.itemData = items[e.fromIndex];
   };
 
-  const onReorder = React.useCallback(() => ((e) => {
+  const onReorder = React.useCallback((e) => {
     let updatedItems = [...items.slice(0, e.fromIndex), ...items.slice(e.fromIndex + 1)];
     updatedItems = [
       ...updatedItems.slice(0, e.toIndex),
@@ -44,37 +44,37 @@ const App = () => {
     ];
 
     setItems(updatedItems);
-  }));
+  });
 
-  const onDropFeedbackModeChanged = React.useCallback(() => ((e) => {
+  const onDropFeedbackModeChanged = React.useCallback((e) => {
     setDropFeedbackMode(e.value);
-  }));
+  });
 
-  const onItemOrientationChanged = React.useCallback(() => ((e) => {
+  const onItemOrientationChanged = React.useCallback((e) => {
     setItemOrientation(e.value);
     setDragDirection('both');
-  }));
+  });
 
-  const onDragDirectionChanged = React.useCallback(() => ((e) => {
+  const onDragDirectionChanged = React.useCallback((e) => {
     setDragDirection(e.value);
-  }));
+  });
 
-  const onScrollSpeedChanged = React.useCallback(() => ((e) => {
+  const onScrollSpeedChanged = React.useCallback((e) => {
     setScrollSpeed(e.value);
-  }));
+  });
 
-  const onScrollSensitivityChanged = React.useCallback(() => ((e) => {
+  const onScrollSensitivityChanged = React.useCallback((e) => {
     setScrollSensitivity(e.value);
-  }));
+  });
 
-  const onHandleChanged = React.useCallback(() => ((e) => {
+  const onHandleChanged = React.useCallback((e) => {
     setHandle(e.value ? '.handle' : '');
-  }));
+  });
 
-  const onDragTemplateChanged = React.useCallback(() => ((e) => {
+  const onDragTemplateChanged = React.useCallback((e) => {
     setDragComponent(e.value ? DragItem : null);
     setCursorOffset(e.value ? { x: 10, y: 20 } : null);
-  }));
+  });
 
   return (
     <div id="demo-container">

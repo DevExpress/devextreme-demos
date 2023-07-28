@@ -9,17 +9,17 @@ function App() {
   const [filterText, setFilterText] = React.useState('');
   const [dataSourceText, setDataSourceText] = React.useState('');
 
-  const updateTexts = React.useCallback(() => ((e) => {
+  const updateTexts = React.useCallback((e) => {
     setFilterText(formatValue(e.component.option('value')));
     setDataSourceText(formatValue(e.component.getFilterExpression()));
-  }));
+  });
 
-  const onValueChanged = React.useCallback(() => ((e) => {
+  const onValueChanged = React.useCallback((e) => {
     setValue(e.value);
     updateTexts(e);
-  }));
+  });
 
-  const calculateFilterExpression = React.useCallback(() => ((filterValue, field) => (
+  const calculateFilterExpression = React.useCallback((filterValue, field) => (
     filterValue
       && filterValue.length
       && Array.prototype.concat
@@ -28,7 +28,7 @@ function App() {
           filterValue.map((value) => [[field.dataField, '=', value], 'or']),
         )
         .slice(0, -1)
-  )));
+  ));
 
   return (
     <div>

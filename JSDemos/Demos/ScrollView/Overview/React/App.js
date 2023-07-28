@@ -19,35 +19,35 @@ const App = () => {
     scrollViewRef.current = ref.instance;
   };
 
-  const pullDownValueChanged = React.useCallback(() => ((args) => {
+  const pullDownValueChanged = React.useCallback((args) => {
     setPullDown(args.value);
-  }));
+  });
 
-  const reachBottomValueChanged = React.useCallback(() => ((args) => {
+  const reachBottomValueChanged = React.useCallback((args) => {
     scrollViewRef.current.option('onReachBottom', args.value ? updateBottomContent : null);
-  }));
+  });
 
-  const scrollbarModelValueChanged = React.useCallback(() => ((args) => {
+  const scrollbarModelValueChanged = React.useCallback((args) => {
     setShowScrollBarMode(args.value);
-  }));
+  });
 
-  const scrollByContentValueChanged = React.useCallback(() => ((args) => {
+  const scrollByContentValueChanged = React.useCallback((args) => {
     setScrollByContent(args.value);
-  }));
+  });
 
-  const scrollByThumbValueChanged = React.useCallback(() => ((args) => {
+  const scrollByThumbValueChanged = React.useCallback((args) => {
     setScrollByThumb(args.value);
-  }));
+  });
 
-  const updateTopContent = React.useCallback(() => ((args) => {
+  const updateTopContent = React.useCallback((args) => {
     updateContent(args, 'PullDown');
-  }));
+  });
 
-  const updateBottomContent = React.useCallback(() => ((args) => {
+  const updateBottomContent = React.useCallback((args) => {
     updateContent(args, 'ReachBottom');
-  }));
+  });
 
-  const updateContent = React.useCallback(() => ((args, eventName) => {
+  const updateContent = React.useCallback((args, eventName) => {
     const updateContentText = `\n Content has been updated on the ${eventName} event.\n\n`;
     if (updateContentTimer.current) {
       clearTimeout(updateContentTimer.current);
@@ -56,7 +56,7 @@ const App = () => {
       setContent(eventName === 'PullDown' ? updateContentText + content : content + updateContentText);
       args.component.release();
     }, 500);
-  }), [content]);
+  }, [content]);
 
   return (
     <div id="scrollview-demo">

@@ -93,7 +93,7 @@ function App() {
       'The date must have the following format: MM/dd/yyyy',
   };
 
-  const handleSubmit = React.useCallback(() => ((e) => {
+  const handleSubmit = React.useCallback((e) => {
     notify({
       message: 'You have submitted the form',
       position: {
@@ -102,20 +102,20 @@ function App() {
       },
     }, 'success', 3000);
     e.preventDefault();
-  }));
+  });
 
   const changePasswordMode = (name) => {
     const editor = formInstance.current.getEditor(name);
     editor.option('mode', editor.option('mode') === 'text' ? 'password' : 'text');
   };
 
-  const onInitialized = React.useCallback(() => ((e) => {
+  const onInitialized = React.useCallback((e) => {
     formInstance.current = e.component;
-  }));
+  });
 
-  const passwordComparison = React.useCallback(() => (() => customer.Password));
+  const passwordComparison = React.useCallback(() => customer.Password));
 
-  const checkComparison = React.useCallback(() => (() => true));
+  const checkComparison = React.useCallback(() => true));
 
   function sendRequest(value) {
     const invalidEmail = 'test@dx-email.com';

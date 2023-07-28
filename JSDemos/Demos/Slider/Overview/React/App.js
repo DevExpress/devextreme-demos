@@ -7,7 +7,7 @@ const sliderValueLabel = { 'aria-label': 'Slider Value' };
 function App() {
   const [sliderValue, setSliderValue] = React.useState(10);
 
-  const format = React.useCallback(() => ((value) => `${value}%`));
+  const format = React.useCallback((value) => `${value}%`);
 
   return (
     <div className="form">

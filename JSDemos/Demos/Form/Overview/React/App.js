@@ -27,37 +27,37 @@ const App = () => {
   const [company, setCompany] = React.useState(companies[0]);
   const [width, setWidth] = React.useState();
 
-  const onCompanyChanged = React.useCallback(() => ((e) => {
+  const onCompanyChanged = React.useCallback((e) => {
     setCompany(e.value);
-  }));
+  });
 
-  const onLabelModeChanged = React.useCallback(() => ((e) => {
+  const onLabelModeChanged = React.useCallback((e) => {
     setLabelMode(e.value);
-  }));
+  });
 
-  const onLabelLocationChanged = React.useCallback(() => ((e) => {
+  const onLabelLocationChanged = React.useCallback((e) => {
     setLabelLocation(e.value);
-  }));
+  });
 
-  const onReadOnlyChanged = React.useCallback(() => ((e) => {
+  const onReadOnlyChanged = React.useCallback((e) => {
     setReadOnly(e.value);
-  }));
+  });
 
-  const onShowColonChanged = React.useCallback(() => ((e) => {
+  const onShowColonChanged = React.useCallback((e) => {
     setShowColon(e.value);
-  }));
+  });
 
-  const onMinColWidthChanged = React.useCallback(() => ((e) => {
+  const onMinColWidthChanged = React.useCallback((e) => {
     setMinColWidth(e.value);
-  }));
+  });
 
-  const onColumnsCountChanged = React.useCallback(() => ((e) => {
+  const onColumnsCountChanged = React.useCallback((e) => {
     setColCount(e.value);
-  }));
+  });
 
-  const onFormWidthChanged = React.useCallback(() => ((e) => {
+  const onFormWidthChanged = React.useCallback((e) => {
     setWidth(e.value);
-  }));
+  });
 
   const companySelectorLabelMode = labelMode === 'outside'
     ? 'hidden'

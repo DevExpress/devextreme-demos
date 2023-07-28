@@ -10,9 +10,9 @@ import { dataSource } from './data.js';
 const App = () => {
   const [range, setRange] = React.useState([]);
 
-  const updateRange = React.useCallback(() => ((data) => {
+  const updateRange = React.useCallback((data) => {
     setRange(data.value);
-  }));
+  });
 
   return (
     <React.Fragment>

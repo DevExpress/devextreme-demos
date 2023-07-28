@@ -11,9 +11,9 @@ const colCountByScreen = {
 const App = () => {
   const [calculateColCountAutomatically, setCalculateColCountAutomatically] = React.useState(false);
 
-  const onCalculateColCountAutomaticallyChanged = React.useCallback(() => ((e) => {
+  const onCalculateColCountAutomaticallyChanged = React.useCallback((e) => {
     setCalculateColCountAutomatically(e.value);
-  }));
+  });
 
   return (
     <div>

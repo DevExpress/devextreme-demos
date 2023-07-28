@@ -29,13 +29,13 @@ const App = () => {
     ],
   });
 
-  const onValueChanged = React.useCallback(() => ((e) => {
+  const onValueChanged = React.useCallback((e) => {
     setValue(e.value);
-  }));
+  });
 
-  const buttonClick = React.useCallback(() => (() => {
+  const buttonClick = React.useCallback(() => {
     setGridFilterValue(value);
-  }), [value]);
+  }, [value]);
 
   return (
     <div>

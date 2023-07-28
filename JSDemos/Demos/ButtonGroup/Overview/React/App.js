@@ -6,9 +6,9 @@ import { alignments, fontStyles } from './data.js';
 const selectedItemKeys = ['left'];
 
 const App = () => {
-  const itemClick = React.useCallback(() => ((e) => {
+  const itemClick = React.useCallback((e) => {
     notify({ message: `The "${e.itemData.hint}" button was clicked`, width: 320 }, 'success', 1000);
-  }));
+  });
 
   return (
     <div>

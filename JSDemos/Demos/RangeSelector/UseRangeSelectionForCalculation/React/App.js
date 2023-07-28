@@ -14,13 +14,13 @@ function App() {
   const [workingDaysCount, setWorkingDaysCount] = React.useState(calculateWorkdays([startValue, endValue]));
   const [behaviorMode, setBehaviorMode] = React.useState(behaviorModes[0]);
 
-  const processRange = React.useCallback(() => ((e) => {
+  const processRange = React.useCallback((e) => {
     setWorkingDaysCount(calculateWorkdays(e.value));
-  }));
+  });
 
-  const setBehavior = React.useCallback(() => ((data) => {
+  const setBehavior = React.useCallback((data) => {
     setBehaviorMode(data.value);
-  }));
+  });
 
   return (
     <div id="range-selector-demo">

@@ -7,9 +7,9 @@ const formatNumber = new Intl.NumberFormat('en-US', { minimumFractionDigits: 0 }
 function App() {
   const [totalProduction, setTotalProduction] = React.useState(calculateTotalProduction());
 
-  const processRange = React.useCallback(() => ((e) => {
+  const processRange = React.useCallback((e) => {
     setTotalProduction(calculateTotalProduction(e.value));
-  }));
+  });
 
   function calculateTotalProduction(range = []) {
     let startIndex = 0;

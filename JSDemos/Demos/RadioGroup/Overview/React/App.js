@@ -6,13 +6,13 @@ function App() {
   const [colorPriority, setColorPriority] = React.useState(priorities[2]);
   const [selectionPriority, setSelectionPriority] = React.useState(priorityEntities[0].id);
 
-  const changeColorPriority = React.useCallback(() => ((e) => {
+  const changeColorPriority = React.useCallback((e) => {
     setColorPriority(e.value);
-  }));
+  });
 
-  const changeSelectionPriority = React.useCallback(() => ((e) => {
+  const changeSelectionPriority = React.useCallback((e) => {
     setSelectionPriority(e.value);
-  }));
+  });
 
   const renderCustomItem = (data) => <div>{data}</div>;
 

@@ -18,18 +18,18 @@ function App() {
   const [startValue, setStartValue] = React.useState(10);
   const [endValue, setEndValue] = React.useState(90);
 
-  const onRangeChanged = React.useCallback(() => ((data) => {
+  const onRangeChanged = React.useCallback((data) => {
     setStartValue(data.start);
     setEndValue(data.end);
-  }));
+  });
 
-  const onStartChanged = React.useCallback(() => ((data) => {
+  const onStartChanged = React.useCallback((data) => {
     setStartValue(data.value);
-  }));
+  });
 
-  const onEndChanged = React.useCallback(() => ((data) => {
+  const onEndChanged = React.useCallback((data) => {
     setEndValue(data.value);
-  }));
+  });
 
   return (
     <div className="form">

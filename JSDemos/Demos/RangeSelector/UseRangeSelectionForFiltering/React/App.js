@@ -10,13 +10,13 @@ const columns = ['FirstName', 'LastName', 'BirthYear', 'City', 'Title'];
 const App = () => {
   const [selectedEmployees, setSelectedEmployees] = React.useState(employees);
 
-  const filterEmployees = React.useCallback(() => (({ value }) => {
+  const filterEmployees = React.useCallback(({ value }) => {
     setSelectedEmployees(
       employees.filter(
         (employee) => (employee.BirthYear >= value[0] && employee.BirthYear <= value[1]) || !value.length,
       ),
     );
-  }));
+  });
 
   return (
     <React.Fragment>
