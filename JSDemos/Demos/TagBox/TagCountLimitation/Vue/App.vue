@@ -54,22 +54,31 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
+<script>
 import DxTagBox from 'devextreme-vue/tag-box';
 import { products } from './data.js';
 
-const items = products.slice(0, 5);
+export default {
+  components: {
+    DxTagBox,
+  },
+  data() {
+    return {
+      products,
+      items: products.slice(0, 5),
+      onMultiTagPreparing: (args) => {
+        const selectedItemsLength = args.selectedItems.length;
+        const totalCount = 5;
 
-function onMultiTagPreparing(args) {
-  const selectedItemsLength = args.selectedItems.length;
-  const totalCount = 5;
-
-  if (selectedItemsLength < totalCount) {
-    args.cancel = true;
-  } else {
-    args.text = `All selected (${selectedItemsLength})`;
-  }
-}
+        if (selectedItemsLength < totalCount) {
+          args.cancel = true;
+        } else {
+          args.text = `All selected (${selectedItemsLength})`;
+        }
+      },
+    };
+  },
+};
 </script>
 <style scoped>
 .dx-field {

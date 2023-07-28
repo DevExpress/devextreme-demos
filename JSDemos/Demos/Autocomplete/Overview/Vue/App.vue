@@ -94,22 +94,25 @@
 
   </div>
 </template>
-<script setup lang="ts">
-import { ref } from 'vue';
+<script>
 import ODataStore from 'devextreme/data/odata/store';
 import { DxAutocomplete } from 'devextreme-vue/autocomplete';
 import CustomStore from 'devextreme/data/custom_store';
 import 'whatwg-fetch';
 import { names, surnames, positions } from './data.js';
 
-const statesStore = new ODataStore({
+function isNotEmpty(value) {
+  return value !== undefined && value !== null && value !== '';
+}
+
+const states = new ODataStore({
   url:
-      'https://js.devexpress.com/Demos/DevAV/odata/States?$select=Sate_ID,State_Long,State_Short',
+    'https://js.devexpress.com/Demos/DevAV/odata/States?$select=Sate_ID,State_Long,State_Short',
   key: 'Sate_ID',
   keyType: 'Int32',
 });
 
-const clientsCustomStore = new CustomStore({
+const clientsStore = new CustomStore({
   key: 'Value',
   useDefaultSearch: true,
   load(loadOptions) {
@@ -133,26 +136,37 @@ const clientsCustomStore = new CustomStore({
   },
 });
 
-const firstName = ref('');
-const lastName = ref('');
-const position = ref(positions[0]);
-const state = ref('');
-const currentClient = ref('');
-const fullInfo = ref('');
-const states = ref(statesStore);
-const clientsStore = ref(clientsCustomStore);
+export default {
+  components: {
+    DxAutocomplete,
+  },
+  data() {
+    return {
+      firstName: '',
+      lastName: '',
+      position: positions[0],
+      state: '',
+      currentClient: '',
+      fullInfo: '',
 
-function updateEmployeeInfo() {
-  let employeeInfo = '';
-  employeeInfo += `${firstName.value || ''} ${lastName.value || ''}`.trim();
-  employeeInfo += (employeeInfo && position) ? `, ${position.value}` : position.value || '';
-  employeeInfo += (employeeInfo && state.value) ? `, ${state.value}` : state.value || '';
-  employeeInfo += (employeeInfo && currentClient.value) ? `, ${currentClient.value}` : currentClient.value || '';
-  fullInfo.value = employeeInfo;
-}
-function isNotEmpty(value) {
-  return value !== undefined && value !== null && value !== '';
-}
+      names,
+      surnames,
+      positions,
+      states,
+      clientsStore,
+    };
+  },
+  methods: {
+    updateEmployeeInfo() {
+      let fullInfo = '';
+      fullInfo += `${this.firstName || ''} ${this.lastName || ''}`.trim();
+      fullInfo += (fullInfo && this.position) ? `, ${this.position}` : this.position || '';
+      fullInfo += (fullInfo && this.state) ? `, ${this.state}` : this.state || '';
+      fullInfo += (fullInfo && this.currentClient) ? `, ${this.currentClient}` : this.currentClient || '';
+      this.fullInfo = fullInfo;
+    },
+  },
+};
 </script>
 <style>
 .employees-data {

@@ -69,31 +69,47 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
-import { computed, ref } from 'vue';
+<script>
 import DxDateRangeBox from 'devextreme-vue/date-range-box';
 
-const now = new Date();
 const msInDay = 1000 * 60 * 60 * 24;
-const initialDates = [
+const now = new Date();
+const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+const initialValue = [
   new Date(now.getTime() - msInDay * 3),
   new Date(now.getTime() + msInDay * 3),
 ];
-const currentValue = ref(initialDates);
-const initialValue = initialDates;
-const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-const min = new Date(now.setDate(1));
-const max = new Date(now.setDate(lastDay));
-const selectedDays = computed(() => convertRangeToDays(currentValue.value));
 
-function convertRangeToDays([startDate, endDate]) {
-  let daysCount = 0;
+export default {
+  components: {
+    DxDateRangeBox,
+  },
+  data() {
+    return {
+      currentValue: initialValue,
+      initialValue,
+      min: new Date(now.setDate(1)),
+      max: new Date(now.setDate(lastDay)),
+    };
+  },
+  computed: {
+    selectedDays: {
+      get() {
+        return this.convertRangeToDays(this.currentValue);
+      },
+    },
+  },
+  methods: {
+    convertRangeToDays([startDate, endDate]) {
+      let daysCount = 0;
 
-  if (startDate && endDate) {
-    daysCount = Math.floor(Math.abs((endDate - startDate) / msInDay)) + 1;
-  }
-  return daysCount;
-}
+      if (startDate && endDate) {
+        daysCount = Math.floor(Math.abs((endDate - startDate) / msInDay)) + 1;
+      }
+      return daysCount;
+    },
+  },
+};
 </script>
 <style scoped>
 .demo-container {

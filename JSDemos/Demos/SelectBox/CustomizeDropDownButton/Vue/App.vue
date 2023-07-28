@@ -33,7 +33,7 @@
                 <span :hidden="!isLoaded">
                   <img
                     alt="Custom icon"
-                    :src="'../../../../images/icons/custom-dropbutton-icon.svg'"
+                    src="../../../../images/icons/custom-dropbutton-icon.svg"
                     class="custom-icon"
                   >
                 </span>
@@ -88,26 +88,37 @@
   </div>
 
 </template>
-<script setup lang="ts">
-import { ref } from 'vue';
+<script>
 import { DxSelectBox } from 'devextreme-vue/select-box';
 import { DxLoadIndicator } from 'devextreme-vue/load-indicator';
 import { products, simpleProducts } from './data.js';
 
-const isLoaded = ref(true);
-const selectedItem = ref(products[0]);
-const deferredProducts = {
-  loadMode: 'raw',
-  load: () => {
-    isLoaded.value = false;
-    const promise = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(simpleProducts);
-        isLoaded.value = true;
-      }, 3000);
-    });
+export default {
+  components: {
+    DxSelectBox,
+    DxLoadIndicator,
+  },
+  data() {
+    return {
+      products,
+      simpleProducts,
+      isLoaded: true,
+      deferredProducts: {
+        loadMode: 'raw',
+        load: () => {
+          this.isLoaded = false;
+          const promise = new Promise((resolve) => {
+            setTimeout(() => {
+              resolve(simpleProducts);
+              this.isLoaded = true;
+            }, 3000);
+          });
 
-    return promise;
+          return promise;
+        },
+      },
+      selectedItem: products[0],
+    };
   },
 };
 </script>

@@ -15,6 +15,7 @@
         >
           <template #content="{ data }">
             <DxTreeView
+              :ref="treeViewName"
               :data-source="treeDataSource"
               :select-by-click="true"
               :select-nodes-recursive="false"
@@ -24,8 +25,8 @@
               selection-mode="multiple"
               show-check-boxes-mode="normal"
               display-expr="name"
-              @content-ready="treeViewContentReady($event)"
-              @item-selection-changed="treeViewItemSelectionChanged($event)"
+              @content-ready="syncTreeViewSelection($event)"
+              @item-selection-changed="treeView_itemSelectionChanged($event)"
             />
           </template>
         </DxDropDownBox>
@@ -66,8 +67,7 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
-import { ref } from 'vue';
+<script>
 import DxDropDownBox from 'devextreme-vue/drop-down-box';
 import DxTreeView from 'devextreme-vue/tree-view';
 import {
@@ -76,46 +76,62 @@ import {
 import CustomStore from 'devextreme/data/custom_store';
 import 'whatwg-fetch';
 
-const treeBoxValue = ref(['1_1']);
-const gridBoxValue = ref([3]);
-const treeDataSource = makeAsyncDataSource('treeProducts.json');
-const gridDataSource = makeAsyncDataSource('customers.json');
-const gridColumns = ref(['CompanyName', 'City', 'Phone']);
-let treeView = null;
-
-function treeViewContentReady({ component }) {
-  treeView = component;
-  syncTreeViewSelection();
-}
-
-function makeAsyncDataSource(jsonFile) {
-  return new CustomStore({
-    loadMode: 'raw',
-    key: 'ID',
-    load() {
-      return fetch(`../../../../data/${jsonFile}`)
-        .then((response) => response.json());
-    },
-  });
-}
-
-function syncTreeViewSelection() {
-  const value = treeBoxValue.value;
-
-  if (treeView) {
-    if (value === null) {
-      treeView.unselectAll();
-    } else {
-      value?.forEach((val) => {
-        treeView.selectItem(val);
+export default {
+  components: {
+    DxDropDownBox,
+    DxTreeView,
+    DxDataGrid,
+    DxSelection,
+    DxPaging,
+    DxFilterRow,
+    DxScrolling,
+  },
+  data() {
+    return {
+      treeDataSource: null,
+      treeBoxValue: null,
+      gridDataSource: null,
+      gridBoxValue: [3],
+      treeViewName: 'tree-view',
+      gridColumns: ['CompanyName', 'City', 'Phone'],
+    };
+  },
+  created() {
+    this.treeDataSource = this.makeAsyncDataSource('treeProducts.json');
+    this.gridDataSource = this.makeAsyncDataSource('customers.json');
+    this.treeBoxValue = ['1_1'];
+  },
+  methods: {
+    makeAsyncDataSource(jsonFile) {
+      return new CustomStore({
+        loadMode: 'raw',
+        key: 'ID',
+        load() {
+          return fetch(`../../../../data/${jsonFile}`)
+            .then((response) => response.json());
+        },
       });
-    }
-  }
-}
+    },
+    syncTreeViewSelection(e) {
+      const treeView = (e.component.selectItem && e.component)
+        || (this.$refs[this.treeViewName] && this.$refs[this.treeViewName].instance);
 
-function treeViewItemSelectionChanged(e) {
-  treeBoxValue.value = e.component.getSelectedNodeKeys();
-}
+      if (treeView) {
+        if (e.value === null) {
+          treeView.unselectAll();
+        } else {
+          const values = e.value || this.treeBoxValue;
+          values && values.forEach((value) => {
+            treeView.selectItem(value);
+          });
+        }
+      }
+    },
+    treeView_itemSelectionChanged(e) {
+      this.treeBoxValue = e.component.getSelectedNodeKeys();
+    },
+  },
+};
 </script>
 <style scoped>
 .dx-fieldset {

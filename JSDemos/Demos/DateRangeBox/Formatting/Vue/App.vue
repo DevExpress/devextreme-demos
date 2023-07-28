@@ -55,13 +55,24 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
+<script>
 import DxDateRangeBox from 'devextreme-vue/date-range-box';
 
 const msInDay = 1000 * 60 * 60 * 24;
 const now = new Date();
-const startDate = new Date(now.getTime() - msInDay * 3);
-const endDate = new Date(now.getTime() + msInDay * 3);
+
+export default {
+  components: {
+    DxDateRangeBox,
+  },
+  data() {
+    return {
+      startDate: new Date(now.getTime() - msInDay * 3),
+
+      endDate: new Date(now.getTime() + msInDay * 3),
+    };
+  },
+};
 </script>
 <style>
 .demo-container {

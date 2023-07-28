@@ -4,12 +4,15 @@
     {{ itemData.key }}
   </div>
 </template>
-<script setup lang="ts">
-withDefaults(defineProps<{
-  itemData?: {[key:string]: unknown}
-}>(), {
-  itemData: () => ({key: ''}),
-});
+<script>
+export default {
+  props: {
+    itemData: {
+      type: Object,
+      default: () => {},
+    },
+  },
+};
 </script>
 <style scoped>
   .custom-icon .icon {

@@ -37,19 +37,34 @@
     </DxPopover>
   </div>
 </template>
-<script setup lang="ts">
+<script>
 import { ref } from 'vue';
 import DxPopover from 'devextreme-vue/popover';
 
-const props = withDefaults(defineProps<{
-  tagData?: object
-}>(), {
-  tagData: () => {},
-});
+export default {
+  components: {
+    DxPopover,
+  },
+  props: {
+    tagData: {
+      type: Object,
+      default: () => {},
+    },
+  },
+  setup() {
+    const target = ref(null);
 
-const isDisabled = ref(props.tagData.Name === 'SuperHD Video Player');
-const show = ref(false);
-const target = ref(null);
+    return {
+      target,
+    };
+  },
+  data() {
+    return {
+      isDisabled: this.tagData.Name === 'SuperHD Video Player',
+      show: false,
+    };
+  },
+};
 </script>
 <style scoped>
 .dx-tag-content {

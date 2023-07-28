@@ -91,15 +91,24 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
-import { ref } from 'vue';
+<script>
 import DxTextBox from 'devextreme-vue/text-box';
 
-const emailValue = ref('smith@corp.com');
-const rules = { X: /[02-9]/ };
-
-function valueChanged(data) {
-  emailValue.value = `${data.value.replace(/\s/g, '').toLowerCase()}@corp.com`;
-}
+export default {
+  components: {
+    DxTextBox,
+  },
+  data() {
+    return {
+      emailValue: 'smith@corp.com',
+      rules: { X: /[02-9]/ },
+    };
+  },
+  methods: {
+    valueChanged(data) {
+      this.emailValue = `${data.value.replace(/\s/g, '').toLowerCase()}@corp.com`;
+    },
+  },
+};
 </script>
 

@@ -31,9 +31,17 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
-import { ref } from 'vue';
+<script>
 import { DxSwitch } from 'devextreme-vue/switch';
 
-const value = ref(false);
+export default {
+  components: {
+    DxSwitch,
+  },
+  data() {
+    return {
+      value: false,
+    };
+  },
+};
 </script>
