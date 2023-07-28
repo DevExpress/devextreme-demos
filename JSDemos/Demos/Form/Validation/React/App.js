@@ -113,9 +113,9 @@ function App() {
     formInstance.current = e.component;
   });
 
-  const passwordComparison = React.useCallback(() => customer.Password));
+  const passwordComparison = React.useCallback(() => customer.Password);
 
-  const checkComparison = React.useCallback(() => true));
+  const checkComparison = React.useCallback(() => true);
 
   function sendRequest(value) {
     const invalidEmail = 'test@dx-email.com';
