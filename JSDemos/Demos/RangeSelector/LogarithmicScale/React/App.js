@@ -50,6 +50,6 @@ const App = () => {
       </RangeSelector>
     </React.Fragment>
   );
-}
+};
 
 export default App;

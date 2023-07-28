@@ -5,11 +5,9 @@ import RangeSelector, {
 import { dataSource } from './data.js';
 
 const App = () => {
-  const customizeSeries = (valueFromNameField) => {
-    return valueFromNameField === 'USA' ? {
-      color: 'red',
-    } : {};
-  }
+  const customizeSeries = (valueFromNameField) => (valueFromNameField === 'USA' ? {
+    color: 'red',
+  } : {});
 
   return (
     <RangeSelector
@@ -29,6 +27,6 @@ const App = () => {
       </Scale>
     </RangeSelector>
   );
-}
+};
 
 export default App;

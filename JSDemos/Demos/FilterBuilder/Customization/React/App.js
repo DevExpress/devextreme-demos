@@ -19,18 +19,16 @@ function App() {
     updateTexts(e);
   }));
 
-  const calculateFilterExpression = React.useCallback(() => ((filterValue, field) => {
-    return (
-      filterValue &&
-      filterValue.length &&
-      Array.prototype.concat
+  const calculateFilterExpression = React.useCallback(() => ((filterValue, field) => (
+    filterValue
+      && filterValue.length
+      && Array.prototype.concat
         .apply(
           [],
-          filterValue.map((value) => [[field.dataField, '=', value], 'or'])
+          filterValue.map((value) => [[field.dataField, '=', value], 'or']),
         )
         .slice(0, -1)
-    );
-  }));
+  )));
 
   return (
     <div>

@@ -64,6 +64,6 @@ const App = () => {
       </GroupItem>
     </Form>
   );
-}
+};
 
 export default App;

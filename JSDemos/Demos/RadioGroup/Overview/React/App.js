@@ -14,9 +14,7 @@ function App() {
     setSelectionPriority(e.value);
   }));
 
-  const renderCustomItem = (data) => {
-    return <div>{data}</div>;
-  };
+  const renderCustomItem = (data) => <div>{data}</div>;
 
   return (
     <div className="form">

@@ -1,5 +1,7 @@
 import React from 'react';
-import { Form, SimpleItem, GroupItem, Label } from 'devextreme-react/form';
+import {
+  Form, SimpleItem, GroupItem, Label,
+} from 'devextreme-react/form';
 import { employee, positions, states } from './data.js';
 import 'devextreme-react/text-area';
 
@@ -15,11 +17,9 @@ const App = () => {
   const phoneOptions = { mask: '+1 (000) 000-0000' };
   const notesOptions = { height: 140 };
 
-  const avatarRender = () => {
-    return (
-      <div className="form-avatar"></div>
-    );
-  }
+  const avatarRender = () => (
+    <div className="form-avatar"></div>
+  );
 
   return (
     <Form formData={employee}>
@@ -65,6 +65,6 @@ const App = () => {
       </GroupItem>
     </Form>
   );
-}
+};
 
 export default App;

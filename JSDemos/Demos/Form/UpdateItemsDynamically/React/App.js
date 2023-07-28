@@ -103,6 +103,6 @@ const App = () => {
       </div>
     </React.Fragment>
   );
-}
+};
 
 export default App;
