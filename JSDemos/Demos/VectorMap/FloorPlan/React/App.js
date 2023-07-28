@@ -1,11 +1,9 @@
 import React from 'react';
-
 import VectorMap, {
   Layer,
   Tooltip,
   Label,
 } from 'devextreme-react/vector-map';
-
 import { roomsData, buildingData } from './data.js';
 
 const projection = {
@@ -13,7 +11,14 @@ const projection = {
   from: ([x, y]) => [x * 100, y * 100],
 };
 
-export default function App() {
+const App = () => {
+  const customizeTooltip = React.useCallback((arg) => {
+    if (arg.layer.name === 'rooms') {
+      return { text: `Square: ${arg.attribute('square')} ft&#178` };
+    }
+    return null;
+  });
+
   return (
     <VectorMap
       id="vector-map"
@@ -38,11 +43,6 @@ export default function App() {
       ></Tooltip>
     </VectorMap>
   );
-}
+};
 
-function customizeTooltip(arg) {
-  if (arg.layer.name === 'rooms') {
-    return { text: `Square: ${arg.attribute('square')} ft&#178` };
-  }
-  return null;
-}
+export default App;

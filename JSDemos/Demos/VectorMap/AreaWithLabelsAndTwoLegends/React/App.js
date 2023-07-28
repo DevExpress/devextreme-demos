@@ -1,5 +1,4 @@
 import React from 'react';
-
 import VectorMap, {
   Label,
   Layer,
@@ -7,7 +6,6 @@ import VectorMap, {
   Source,
   Tooltip,
 } from 'devextreme-react/vector-map';
-
 import * as mapsData from 'devextreme-dist/js/vectormap-data/world.js';
 import { populations, markers } from './data.js';
 
@@ -17,6 +15,33 @@ const sizeGroups = [0, 8000, 10000, 50000];
 const bounds = [-180, 85, 180, -75];
 
 export default function App() {
+  const customizeText = React.useCallback((arg) => {
+    if (arg.index === 0) {
+      return '< 0.5%';
+    } if (arg.index === 5) {
+      return '> 3%';
+    }
+    return `${arg.start}% to ${arg.end}%`;
+  });
+
+  const customizeTooltip = React.useCallback((arg) => ({
+    text: arg.attribute('text'),
+  }));
+
+  const customizeMarkers = React.useCallback((arg) => ['< 8000K', '8000K to 10000K', '> 10000K'][arg.index]);
+
+  const customizeItems = React.useCallback((items) => items.reverse());
+
+  const customizeLayer = React.useCallback((elements) => {
+    elements.forEach((element) => {
+      const name = element.attribute('name');
+      const population = populations[name];
+      if (population) {
+        element.attribute('population', population);
+      }
+    });
+  });
+
   return (
     <VectorMap
       id="vector-map" bounds={bounds}>
@@ -59,37 +84,4 @@ export default function App() {
         customizeTooltip={customizeTooltip} />
     </VectorMap>
   );
-}
-
-function customizeText(arg) {
-  if (arg.index === 0) {
-    return '< 0.5%';
-  } if (arg.index === 5) {
-    return '> 3%';
-  }
-  return `${arg.start}% to ${arg.end}%`;
-}
-
-function customizeTooltip(arg) {
-  return {
-    text: arg.attribute('text'),
-  };
-}
-
-function customizeMarkers(arg) {
-  return ['< 8000K', '8000K to 10000K', '> 10000K'][arg.index];
-}
-
-function customizeItems(items) {
-  return items.reverse();
-}
-
-function customizeLayer(elements) {
-  elements.forEach((element) => {
-    const name = element.attribute('name');
-    const population = populations[name];
-    if (population) {
-      element.attribute('population', population);
-    }
-  });
 }

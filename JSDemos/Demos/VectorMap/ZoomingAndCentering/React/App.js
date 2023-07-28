@@ -1,5 +1,4 @@
 import React from 'react';
-
 import VectorMap, {
   Layer,
   Tooltip,
@@ -12,59 +11,42 @@ import { markers } from './data.js';
 
 const bounds = [-180, 85, 180, -60];
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const vectorMapRef = React.useRef(null);
 
-    this.storeVectorMap = (component) => {
-      this.vectorMap = component.instance;
-    };
+  const reset = React.useCallback(() => {
+    vectorMapRef.current.instance.center(null);
+    vectorMapRef.current.instance.zoomFactor(null);
+  });
 
-    this.reset = () => {
-      this.vectorMap.center(null);
-      this.vectorMap.zoomFactor(null);
-    };
-  }
-
-  customizeTooltip(arg) {
+  const customizeTooltip = React.useCallback((arg) => {
     if (arg.layer.type === 'marker') {
       return { text: arg.attribute('name') };
     }
     return null;
-  }
+  });
 
-  markerClick(e) {
+  const markerClick = (e) => {
     if (e.target && e.target.layer.type === 'marker') {
       e.component.center(e.target.coordinates()).zoomFactor(10);
     }
-  }
+  };
 
-  render() {
-    return (
-      <React.Fragment>
-        <VectorMap
-          ref={this.storeVectorMap}
-          id="vector-map"
-          onClick={this.markerClick}
-          bounds={bounds}>
-          <Layer
-            dataSource={mapsData.world}
-            hoverEnabled={false}>
-          </Layer>
-          <Layer
-            dataSource={markers}
-          />
-          <Tooltip enabled={true}
-            customizeTooltip={this.customizeTooltip}
-          ></Tooltip>
-        </VectorMap>
-        <Button
-          text="Reset"
-          id="reset"
-          onClick={this.reset}
-        ></Button>
-      </React.Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      <VectorMap
+        ref={vectorMapRef}
+        id="vector-map"
+        onClick={markerClick}
+        bounds={bounds}
+      >
+        <Layer dataSource={mapsData.world} hoverEnabled={false} />
+        <Layer dataSource={markers} />
+        <Tooltip enabled={true} customizeTooltip={customizeTooltip} />
+      </VectorMap>
+      <Button text="Reset" id="reset" onClick={reset} />
+    </React.Fragment>
+  );
+};
+
 export default App;

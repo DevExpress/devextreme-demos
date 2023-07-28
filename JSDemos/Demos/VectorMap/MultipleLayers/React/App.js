@@ -1,5 +1,4 @@
 import React from 'react';
-
 import VectorMap, {
   Export,
   Layer,
@@ -7,7 +6,6 @@ import VectorMap, {
   Source,
   Font,
 } from 'devextreme-react/vector-map';
-
 import * as mapsData from 'devextreme-dist/js/vectormap-data/world.js';
 import { streamsData } from './data.js';
 
@@ -17,6 +15,13 @@ const streamsPalette = ['#3c20c8', '#d82020'];
 const bounds = [-180, 85, 180, -75];
 
 export default function App() {
+  const customizeText = React.useCallback((itemInfo) => {
+    if (itemInfo.color === '#3c20c8') {
+      return 'Cold';
+    }
+    return 'Warm';
+  });
+
   return (
     <VectorMap
       title="Sea Currents"
@@ -46,11 +51,4 @@ export default function App() {
       <Export enabled={true}></Export>
     </VectorMap>
   );
-}
-
-function customizeText(itemInfo) {
-  if (itemInfo.color === '#3c20c8') {
-    return 'Cold';
-  }
-  return 'Warm';
 }
