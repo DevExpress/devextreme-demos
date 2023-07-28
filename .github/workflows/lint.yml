@@ -51,13 +51,13 @@ jobs:
 
     - name: Check generated JS demos
       run: |
-        node -v
-        npm -v
         npm install --no-audit --no-fund --ignore-scripts
-
+        
+        git reset --hard
+        
         npm run convert-to-js ./JSDemos/Demos/**/React
 
-        git add ./JSDemos/Demos -N
+        git add ./JSDemos/Demos/**/React -N
 
         if git diff --exit-code ; then
           echo "Generated JS demos are up-to-date"
