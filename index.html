@@ -27,11 +27,48 @@
       const ui = DevExpress.ui;
       const themeCookieName = "dx-demo-theme";
 
+      const languages = {
+        typescript: "Typescript",
+        javascript: "Javascript",
+      }
+
+      const platformsByApproach = {
+        jQuery: "jQuery",
+        Angular: "Angular",
+        Vue: "Vue",
+        React: "React",
+        ReactJs: "React"
+      }
+
+      const platforms = {
+        jQuery: {
+          [languages.javascript]: "jQuery",
+          [languages.typescript]: "jQuery",
+        },
+        Angular: {
+          [languages.javascript]: "Angular",
+          [languages.typescript]: "Angular",
+        },
+        Vue: {
+          [languages.javascript]: "Vue",
+          [languages.typescript]: "Vue",
+        },
+        React: {
+          [languages.javascript]: "ReactJs",
+          [languages.typescript]: "React",
+        }
+      };
+
+      let platform = null;
+      let language = null;
       let approach = null;
+
       let theme = null;
       let widget = null;
       let name = null;
       let treeList = null;
+
+      const isLanguageSwitchingSupported = (platform) => platform && platforms[platform][languages.typescript] !== platforms[platform][languages.javascript];
 
       const processLink = () => {
         if (window.location.hash === "") {
@@ -50,6 +87,11 @@
         }
 
         approach = approach ?? pathParts[4];
+        platform = platform ?? platformsByApproach[approach];
+        language = language ?? languages.typescript;
+
+        isLanguageSwitcherVisible = isLanguageSwitchingSupported(platform);
+
         theme = theme ?? pathParts[5];
         widget = pathParts[2];
         name = pathParts[3];
@@ -146,8 +188,8 @@
           closeOnOutsideClick: false,
           template: drawerTemplate,
         });
-
-        new ui.dxToolbar(toolbarElement, {
+        const languageSwitcherVisibilityOption = "items[2].visible";
+        const toolbar = new ui.dxToolbar(toolbarElement, {
           items: [
             {
               location: "before",
@@ -162,11 +204,33 @@
               widget: "dxSelectBox",
               options: {
                 items: ["jQuery", "Angular", "Vue", "React"],
-                value: approach,
+                value: platform,
                 width: 100,
                 onValueChanged: (e) => {
-                  approach = e.value;
+                  platform = e.value;
+                  if(isLanguageSwitchingSupported(platform) && !language) {
+                    language = languages.typescript;
+                  }
+                  approach = platforms[platform][language ?? languages.typescript];
+                  toolbar.option(languageSwitcherVisibilityOption, isLanguageSwitchingSupported(platform));
                   updateDemo();
+                },
+              },
+            },
+            {
+              location: "after",
+              widget: "dxSelectBox",
+              visible: isLanguageSwitcherVisible,
+              options: {                
+                items: ["Typescript", "Javascript"],
+                value: language,
+                width: 100,
+                onValueChanged: (e) => {
+                  language = e.value
+                  if(platforms[platform][language] !== approach) {
+                    approach = platforms[platform][language];
+                    updateDemo();
+                  }
                 },
               },
             },
