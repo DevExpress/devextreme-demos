@@ -58,14 +58,14 @@ const App = () => (
     <Column dataField="Area" />
     <Column caption="Population">
       <Column
-        dataField="Population_Urban"
-        caption="Urban"
-        format="percent"
-      />
-      <Column
         dataField="Population_Total"
         caption="Total"
         format="fixedPoint"
+      />
+      <Column
+        dataField="Population_Urban"
+        caption="Urban"
+        format="percent"
       />
     </Column>
     <Column caption="Nominal GDP">
