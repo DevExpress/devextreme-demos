@@ -9,7 +9,7 @@ function App() {
 
   const processRange = React.useCallback((e) => {
     setTotalProduction(calculateTotalProduction(e.value));
-  });
+  }, []);
 
   function calculateTotalProduction(range = []) {
     let startIndex = 0;

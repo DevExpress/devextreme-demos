@@ -12,12 +12,12 @@ function App() {
   const updateTexts = React.useCallback((e) => {
     setFilterText(formatValue(e.component.option('value')));
     setDataSourceText(formatValue(e.component.getFilterExpression()));
-  });
+  }, []);
 
   const onValueChanged = React.useCallback((e) => {
     setValue(e.value);
     updateTexts(e);
-  });
+  }, [updateTexts]);
 
   const calculateFilterExpression = React.useCallback((filterValue, field) => (
     filterValue
@@ -25,10 +25,10 @@ function App() {
       && Array.prototype.concat
         .apply(
           [],
-          filterValue.map((value) => [[field.dataField, '=', value], 'or']),
+          filterValue.map((i) => [[field.dataField, '=', i], 'or']),
         )
         .slice(0, -1)
-  ));
+  ), []);
 
   return (
     <div>

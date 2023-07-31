@@ -8,11 +8,11 @@ function App() {
 
   const changeColorPriority = React.useCallback((e) => {
     setColorPriority(e.value);
-  });
+  }, []);
 
   const changeSelectionPriority = React.useCallback((e) => {
     setSelectionPriority(e.value);
-  });
+  }, []);
 
   const renderCustomItem = (data) => <div>{data}</div>;
 

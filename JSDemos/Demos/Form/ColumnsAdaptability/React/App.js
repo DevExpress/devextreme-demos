@@ -13,7 +13,7 @@ const App = () => {
 
   const onCalculateColCountAutomaticallyChanged = React.useCallback((e) => {
     setCalculateColCountAutomatically(e.value);
-  });
+  }, []);
 
   return (
     <div>

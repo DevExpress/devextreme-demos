@@ -47,7 +47,7 @@ export default function App() {
 
       doc.save('Companies.pdf');
     });
-  });
+  }, []);
 
   return (
     <DataGrid

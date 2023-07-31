@@ -20,12 +20,12 @@ const App = () => {
 
   const onValueChanged = React.useCallback((e) => {
     setValue(e.value);
-  });
+  }, []);
 
   const refreshDataSource = React.useCallback(() => {
     dataSource.current.filter(filterBuilderInstance.current.getFilterExpression());
     dataSource.current.load();
-  });
+  }, []);
 
   return (
     <div>

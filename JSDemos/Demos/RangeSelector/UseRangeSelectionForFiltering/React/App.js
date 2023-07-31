@@ -13,10 +13,13 @@ const App = () => {
   const filterEmployees = React.useCallback(({ value }) => {
     setSelectedEmployees(
       employees.filter(
-        (employee) => (employee.BirthYear >= value[0] && employee.BirthYear <= value[1]) || !value.length,
+        (employee) => (
+          employee.BirthYear >= value[0]
+          && employee.BirthYear <= value[1])
+          || !value.length,
       ),
     );
-  });
+  }, []);
 
   return (
     <React.Fragment>

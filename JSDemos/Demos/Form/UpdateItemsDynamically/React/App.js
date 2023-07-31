@@ -8,23 +8,21 @@ const App = () => {
   const employee = service.getEmployee();
   const [phoneOptions, setPhoneOptions] = React.useState(getPhonesOptions());
   const [isHomeAddressVisible, setIsHomeAddressVisible] = React.useState(true);
-
-  const checkBoxOptions = {
+  const [checkBoxOptions] = React.useState({
     text: 'Show Address',
     value: true,
     onValueChanged: (e) => {
       setIsHomeAddressVisible(e.component.option('value'));
     },
-  };
-
-  const addPhoneButtonOptions = {
+  });
+  const [addPhoneButtonOptions] = React.useState({
     icon: 'add',
     text: 'Add phone',
     onClick: () => {
       employee.Phones.push('');
       updatePhones();
     },
-  };
+  });
 
   function getPhonesOptions() {
     const options = [];

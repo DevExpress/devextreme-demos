@@ -17,31 +17,45 @@ import Validator from 'devextreme/ui/validator';
 import 'devextreme-react/autocomplete';
 import service from './data.js';
 
+const buttonOptions = {
+  text: 'Register',
+  type: 'success',
+  useSubmitBehavior: true,
+};
+
+const checkBoxOptions = {
+  text: 'I agree to the Terms and Conditions',
+  value: false,
+};
+
+const cityEditorOptions = {
+  dataSource: service.getCities(),
+  minSearchLength: 2,
+};
+
+const countryEditorOptions = {
+  dataSource: service.getCountries(),
+};
+
+const phoneEditorOptions = {
+  mask: '+1 (X00) 000-0000',
+  maskRules: {
+    X: /[02-9]/,
+  },
+  maskInvalidMessage: 'The phone must have a correct USA phone format',
+};
+
+const maxDate = new Date().setFullYear(new Date().getFullYear() - 21);
+
+const dateBoxOptions = {
+  invalidDateMessage:
+    'The date must have the following format: MM/dd/yyyy',
+};
+
 function App() {
-  const [customer, setCustomer] = React.useState(service.getCustomer());
   const formInstance = React.useRef(null);
-
-  const buttonOptions = {
-    text: 'Register',
-    type: 'success',
-    useSubmitBehavior: true,
-  };
-
-  const checkBoxOptions = {
-    text: 'I agree to the Terms and Conditions',
-    value: false,
-  };
-
-  const cityEditorOptions = {
-    dataSource: service.getCities(),
-    minSearchLength: 2,
-  };
-
-  const countryEditorOptions = {
-    dataSource: service.getCountries(),
-  };
-
-  const passwordOptions = {
+  const [customer] = React.useState(service.getCustomer());
+  const [passwordOptions] = React.useState({
     mode: 'password',
     onValueChanged: () => {
       const editor = formInstance.current.getEditor('ConfirmPassword');
@@ -61,9 +75,9 @@ function App() {
         },
       },
     ],
-  };
+  });
 
-  const confirmOptions = {
+  const [confirmOptions] = React.useState({
     mode: 'password',
     buttons: [
       {
@@ -76,22 +90,7 @@ function App() {
         },
       },
     ],
-  };
-
-  const phoneEditorOptions = {
-    mask: '+1 (X00) 000-0000',
-    maskRules: {
-      X: /[02-9]/,
-    },
-    maskInvalidMessage: 'The phone must have a correct USA phone format',
-  };
-
-  const maxDate = new Date().setFullYear(new Date().getFullYear() - 21);
-
-  const dateBoxOptions = {
-    invalidDateMessage:
-      'The date must have the following format: MM/dd/yyyy',
-  };
+  });
 
   const handleSubmit = React.useCallback((e) => {
     notify({
@@ -102,7 +101,7 @@ function App() {
       },
     }, 'success', 3000);
     e.preventDefault();
-  });
+  }, []);
 
   const changePasswordMode = (name) => {
     const editor = formInstance.current.getEditor(name);
@@ -111,11 +110,13 @@ function App() {
 
   const onInitialized = React.useCallback((e) => {
     formInstance.current = e.component;
-  });
+  }, []);
 
-  const passwordComparison = React.useCallback(() => customer.Password);
+  const passwordComparison = React.useCallback(() => customer.Password, [customer.Password]);
 
-  const checkComparison = React.useCallback(() => true);
+  const checkComparison = React.useCallback(() => true, []);
+
+  const asyncValidation = React.useCallback((params) => sendRequest(params.value), []);
 
   function sendRequest(value) {
     const invalidEmail = 'test@dx-email.com';
@@ -124,10 +125,6 @@ function App() {
         resolve(value !== invalidEmail);
       }, 1000);
     });
-  }
-
-  function asyncValidation(params) {
-    return sendRequest(params.value);
   }
 
   return (

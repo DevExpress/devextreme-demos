@@ -45,7 +45,7 @@ export default function App() {
     <div>
       <img src={cellData.value}></img>
     </div>
-  ));
+  ), []);
 
   return (
     <div>

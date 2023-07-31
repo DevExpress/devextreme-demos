@@ -12,7 +12,7 @@ const App = () => {
 
   const updateRange = React.useCallback((data) => {
     setRange(data.value);
-  });
+  }, []);
 
   return (
     <React.Fragment>

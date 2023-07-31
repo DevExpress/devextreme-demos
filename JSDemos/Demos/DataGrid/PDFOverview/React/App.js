@@ -26,7 +26,7 @@ export default function App() {
     }).then(() => {
       doc.save('Companies.pdf');
     });
-  });
+  }, []);
 
   return (
     <DataGrid

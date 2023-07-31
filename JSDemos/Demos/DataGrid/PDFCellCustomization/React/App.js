@@ -44,7 +44,7 @@ export default function App() {
     }).then(() => {
       doc.save('Companies.pdf');
     });
-  });
+  }, []);
 
   const renderGridCell = React.useCallback((data) => (
     <a href={ data.text } target='_blank' rel='noopener noreferrer'>Website</a>

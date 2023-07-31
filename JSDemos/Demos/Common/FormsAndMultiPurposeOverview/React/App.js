@@ -5,18 +5,18 @@ import {
 import { employee, positions, states } from './data.js';
 import 'devextreme-react/text-area';
 
-const App = () => {
-  const birthDateOptions = { width: '100%' };
-  const positionOptions = {
-    items: positions,
-    value: '',
-  };
-  const stateOptions = {
-    items: states,
-  };
-  const phoneOptions = { mask: '+1 (000) 000-0000' };
-  const notesOptions = { height: 140 };
+const birthDateOptions = { width: '100%' };
+const positionOptions = {
+  items: positions,
+  value: '',
+};
+const stateOptions = {
+  items: states,
+};
+const phoneOptions = { mask: '+1 (000) 000-0000' };
+const notesOptions = { height: 140 };
 
+const App = () => {
   const avatarRender = () => (
     <div className="form-avatar"></div>
   );

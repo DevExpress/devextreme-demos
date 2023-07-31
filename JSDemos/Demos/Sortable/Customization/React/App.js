@@ -44,37 +44,37 @@ const App = () => {
     ];
 
     setItems(updatedItems);
-  });
+  }, [items]);
 
   const onDropFeedbackModeChanged = React.useCallback((e) => {
     setDropFeedbackMode(e.value);
-  });
+  }, []);
 
   const onItemOrientationChanged = React.useCallback((e) => {
     setItemOrientation(e.value);
     setDragDirection('both');
-  });
+  }, []);
 
   const onDragDirectionChanged = React.useCallback((e) => {
     setDragDirection(e.value);
-  });
+  }, []);
 
   const onScrollSpeedChanged = React.useCallback((e) => {
     setScrollSpeed(e.value);
-  });
+  }, []);
 
   const onScrollSensitivityChanged = React.useCallback((e) => {
     setScrollSensitivity(e.value);
-  });
+  }, []);
 
   const onHandleChanged = React.useCallback((e) => {
     setHandle(e.value ? '.handle' : '');
-  });
+  }, []);
 
   const onDragTemplateChanged = React.useCallback((e) => {
     setDragComponent(e.value ? DragItem : null);
     setCursorOffset(e.value ? { x: 10, y: 20 } : null);
-  });
+  }, []);
 
   return (
     <div id="demo-container">
