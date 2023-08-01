@@ -9,9 +9,9 @@ const searchExpression = ['FirstName', 'LastName', 'Prefix'];
 const customFieldLabel = { 'aria-label': 'Custom Field Template' };
 const customItemLabel = { 'aria-label': 'Custom Item Template' };
 
-const App = () => {
-  const getDisplayExpr = (item) => (item ? `${item.FirstName} ${item.LastName}` : '');
+const getDisplayExpr = (item) => (item ? `${item.FirstName} ${item.LastName}` : '');
 
+const App = () => {
   return (
     <div>
       <div className="dx-fieldset">

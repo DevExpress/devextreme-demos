@@ -2,27 +2,27 @@ import React from 'react';
 import { Button } from 'devextreme-react/button';
 import notify from 'devextreme/ui/notify';
 
+const weatherClick = () => {
+  notify('The Weather button was clicked');
+};
+
+const doneClick = () => {
+  notify('The Done button was clicked');
+};
+
+const sendClick = () => {
+  notify('The Send button was clicked');
+};
+
+const plusClick = () => {
+  notify('The button was clicked');
+};
+
+const backClick = () => {
+  notify('The button was clicked');
+};
+
 const App = () => {
-  const weatherClick = React.useCallback(() => {
-    notify('The Weather button was clicked');
-  });
-
-  const doneClick = React.useCallback(() => {
-    notify('The Done button was clicked');
-  });
-
-  const sendClick = React.useCallback(() => {
-    notify('The Send button was clicked');
-  });
-
-  const plusClick = React.useCallback(() => {
-    notify('The button was clicked');
-  });
-
-  const backClick = React.useCallback(() => {
-    notify('The button was clicked');
-  });
-
   return (
     <div>
       <div className="dx-fieldset">

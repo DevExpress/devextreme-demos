@@ -9,6 +9,12 @@ import 'whatwg-fetch';
 
 const buttonDropDownOptions = { width: 230 };
 
+const itemTemplateRender = (item) => (
+  <div style={{ fontSize: `${item.size}px` }}>
+    {item.text}
+  </div>
+);
+
 const App = () => {
   const [alignment, setAlignment] = React.useState('left');
   const [color, setColor] = React.useState(null);
@@ -34,12 +40,6 @@ const App = () => {
   const onInitialized = React.useCallback((e) => {
     setColorPicker(e.component);
   }, []);
-
-  const itemTemplateRender = (item) => (
-    <div style={{ fontSize: `${item.size}px` }}>
-      {item.text}
-    </div>
-  );
 
   const data = service.getData();
 

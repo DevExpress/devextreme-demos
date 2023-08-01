@@ -5,6 +5,8 @@ import { employees, applyValueModeLabel, lookupLabel } from './data.js';
 
 const applyValueModes = ['instantly', 'useButtons'];
 
+const getDisplayExpr = (item) => (item ? `${item.FirstName} ${item.LastName}` : '');
+
 function App() {
   const [selectedValue, setSelectedValue] = React.useState(null);
   const [applyValueMode, setApplyValueMode] = React.useState('instantly');
@@ -16,8 +18,6 @@ function App() {
   const changeApplyValueMode = React.useCallback((e) => {
     setApplyValueMode(e.value);
   }, []);
-
-  const getDisplayExpr = (item) => (item ? `${item.FirstName} ${item.LastName}` : '');
 
   return (
     <div>

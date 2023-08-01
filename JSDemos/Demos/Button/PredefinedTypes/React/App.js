@@ -2,12 +2,12 @@ import React from 'react';
 import { Button } from 'devextreme-react/button';
 import notify from 'devextreme/ui/notify';
 
-const App = () => {
-  const onClick = React.useCallback((e) => {
-    const buttonText = e.component.option('text');
-    notify(`The ${capitalize(buttonText)} button was clicked`);
-  }, []);
+const onClick = (e) => {
+  const buttonText = e.component.option('text');
+  notify(`The ${capitalize(buttonText)} button was clicked`);
+};
 
+const App = () => {
   return (
     <div className="buttons-demo">
       <div className="buttons">

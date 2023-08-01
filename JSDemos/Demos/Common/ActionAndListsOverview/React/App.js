@@ -24,6 +24,31 @@ const formatCurrency = new Intl.NumberFormat(
   },
 ).format;
 
+const renderListGroup = (group) => <div className="city">{group.key}</div>;
+
+const renderListItem = (item) => (
+  <div>
+    <div className="hotel">
+      <div className="name">{item.Hotel_Name}</div>
+      <div className="address">{`${item.Postal_Code}, ${item.Address}`}</div>
+      <div className={`type ${item.Hotel_Class.toLowerCase()}`} />
+    </div>
+    <div className="price-container">
+      <div className="price">{formatCurrency(item.Price)}</div>
+        &nbsp;
+      <div className="caption">per<br />night</div>
+    </div>
+  </div>
+);
+
+const renderTile = (item) => (
+  <img
+    className="tile-image"
+    alt={item.FileName}
+    src={`../../../../images/hotels/${item.FileName}`}
+  />
+);
+
 const App = () => {
   const [currentHotel, setCurrentHotel] = React.useState(data[0]);
   const [selectedItemKeys, setSelectedItemKeys] = React.useState([data[0].Id]);
@@ -33,31 +58,6 @@ const App = () => {
     setCurrentHotel(hotel);
     setSelectedItemKeys([hotel.Id]);
   }, []);
-
-  const renderListGroup = (group) => <div className="city">{group.key}</div>;
-
-  const renderListItem = (item) => (
-    <div>
-      <div className="hotel">
-        <div className="name">{item.Hotel_Name}</div>
-        <div className="address">{`${item.Postal_Code}, ${item.Address}`}</div>
-        <div className={`type ${item.Hotel_Class.toLowerCase()}`} />
-      </div>
-      <div className="price-container">
-        <div className="price">{formatCurrency(item.Price)}</div>
-          &nbsp;
-        <div className="caption">per<br />night</div>
-      </div>
-    </div>
-  );
-
-  const renderTile = (item) => (
-    <img
-      className="tile-image"
-      alt={item.FileName}
-      src={`../../../../images/hotels/${item.FileName}`}
-    />
-  );
 
   return (
     <React.Fragment>
