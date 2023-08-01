@@ -40,12 +40,11 @@ const onExporting = ({ component }) => {
   });
 };
 
-
-const renderGridCell = React.useCallback((cellData) => (
+const renderGridCell = (cellData) => (
   <div>
     <img src={cellData.value}></img>
   </div>
-), []);
+);
 
 const App = () => (
   <div>

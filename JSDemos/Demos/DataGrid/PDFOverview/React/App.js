@@ -23,7 +23,7 @@ const onExporting = (e) => {
   }).then(() => {
     doc.save('Companies.pdf');
   });
-}, []);
+};
 
 const App = () => (
   <DataGrid

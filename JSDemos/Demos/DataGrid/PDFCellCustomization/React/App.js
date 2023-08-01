@@ -43,7 +43,7 @@ const onExporting = (e) => {
   }).then(() => {
     doc.save('Companies.pdf');
   });
-}, []);
+};
 
 const renderGridCell = (data) => (
   <a href={ data.text } target='_blank' rel='noopener noreferrer'>Website</a>
