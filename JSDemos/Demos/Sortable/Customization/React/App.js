@@ -31,9 +31,9 @@ const App = () => {
   const [dragComponent, setDragComponent] = React.useState(null);
   const [cursorOffset, setCursorOffset] = React.useState(null);
 
-  const onDragStart = (e) => {
+  const onDragStart = React.useCallback((e) => {
     e.itemData = items[e.fromIndex];
-  };
+  }, []);
 
   const onReorder = React.useCallback((e) => {
     let updatedItems = [...items.slice(0, e.fromIndex), ...items.slice(e.fromIndex + 1)];

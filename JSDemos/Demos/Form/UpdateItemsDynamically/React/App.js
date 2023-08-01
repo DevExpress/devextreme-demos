@@ -4,8 +4,9 @@ import 'devextreme-react/text-area';
 import Form, { GroupItem, SimpleItem, Label } from 'devextreme-react/form';
 import service from './data.js';
 
+const employee = service.getEmployee();
+
 const App = () => {
-  const employee = service.getEmployee();
   const [phoneOptions, setPhoneOptions] = React.useState(getPhonesOptions());
   const [isHomeAddressVisible, setIsHomeAddressVisible] = React.useState(true);
   const [checkBoxOptions] = React.useState({

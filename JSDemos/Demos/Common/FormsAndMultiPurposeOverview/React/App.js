@@ -16,11 +16,11 @@ const stateOptions = {
 const phoneOptions = { mask: '+1 (000) 000-0000' };
 const notesOptions = { height: 140 };
 
-const App = () => {
-  const avatarRender = () => (
-    <div className="form-avatar"></div>
-  );
+const avatarRender = () => (
+  <div className="form-avatar"></div>
+);
 
+const App = () => {
   return (
     <Form formData={employee}>
       <GroupItem cssClass="first-group" colCount={4}>

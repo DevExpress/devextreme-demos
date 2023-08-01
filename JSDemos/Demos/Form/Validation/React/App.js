@@ -52,6 +52,15 @@ const dateBoxOptions = {
     'The date must have the following format: MM/dd/yyyy',
 };
 
+function sendRequest(value) {
+  const invalidEmail = 'test@dx-email.com';
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(value !== invalidEmail);
+    }, 1000);
+  });
+}
+
 function App() {
   const formInstance = React.useRef(null);
   const [customer] = React.useState(service.getCustomer());
@@ -117,15 +126,6 @@ function App() {
   const checkComparison = React.useCallback(() => true, []);
 
   const asyncValidation = React.useCallback((params) => sendRequest(params.value), []);
-
-  function sendRequest(value) {
-    const invalidEmail = 'test@dx-email.com';
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(value !== invalidEmail);
-      }, 1000);
-    });
-  }
 
   return (
     <React.Fragment>

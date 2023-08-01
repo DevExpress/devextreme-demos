@@ -5,11 +5,11 @@ import { alignments, fontStyles } from './data.js';
 
 const selectedItemKeys = ['left'];
 
-const App = () => {
-  const itemClick = React.useCallback((e) => {
-    notify({ message: `The "${e.itemData.hint}" button was clicked`, width: 320 }, 'success', 1000);
-  }, []);
+const itemClick = (e) => {
+  notify({ message: `The "${e.itemData.hint}" button was clicked`, width: 320 }, 'success', 1000);
+};
 
+const App = () => {
   return (
     <div>
       <div className="buttongroups-container">
