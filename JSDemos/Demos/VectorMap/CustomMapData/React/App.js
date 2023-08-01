@@ -12,15 +12,15 @@ const projection = {
   from: ([x, y]) => [x * 100, y * 100],
 };
 
-export default function App() {
-  const customizeLayer = React.useCallback((elements) => {
-    elements.forEach((element) => {
-      element.applySettings({
-        color: element.attribute('color'),
-      });
+const customizeLayer = (elements) => {
+  elements.forEach((element) => {
+    element.applySettings({
+      color: element.attribute('color'),
     });
   });
+};
 
+export default function App() {
   return (
     <VectorMap
       id="vector-map"

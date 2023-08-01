@@ -12,38 +12,38 @@ import { countries } from './data.js';
 
 const bounds = [-180, 85, 180, -60];
 
-export default function App() {
-  const customizeTooltip = React.useCallback((arg) => {
-    const name = arg.attribute('name');
-    const country = countries[name];
+const customizeLayer = (elements) => {
+  elements.forEach((element) => {
+    const country = countries[element.attribute('name')];
     if (country) {
-      return {
-        text: `${name}: ${country.totalArea}M km&#178`,
+      element.applySettings({
         color: country.color,
-      };
-    }
-    return null;
-  });
-
-  const clickHandler = React.useCallback(({ target }) => {
-    if (target && countries[target.attribute('name')]) {
-      target.selected(!target.selected());
+        hoveredColor: '#e0e000',
+        selectedColor: '#008f00',
+      });
     }
   });
+};
 
-  const customizeLayer = React.useCallback((elements) => {
-    elements.forEach((element) => {
-      const country = countries[element.attribute('name')];
-      if (country) {
-        element.applySettings({
-          color: country.color,
-          hoveredColor: '#e0e000',
-          selectedColor: '#008f00',
-        });
-      }
-    });
-  });
+const clickHandler = ({ target }) => {
+  if (target && countries[target.attribute('name')]) {
+    target.selected(!target.selected());
+  }
+};
 
+const customizeTooltip = (arg) => {
+  const name = arg.attribute('name');
+  const country = countries[name];
+  if (country) {
+    return {
+      text: `${name}: ${country.totalArea}M km&#178`,
+      color: country.color,
+    };
+  }
+  return null;
+};
+
+export default function App() {
   return (
     <VectorMap
       id="vector-map"

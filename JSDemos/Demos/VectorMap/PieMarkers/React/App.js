@@ -10,18 +10,18 @@ import { names, markers } from './data.js';
 
 const bounds = [-180, 85, 180, -60];
 
+const customizeTooltip = (arg) => {
+  if (arg.layer.type === 'marker') {
+    return {
+      text: arg.attribute('tooltip'),
+    };
+  }
+  return 0;
+};
+
+const customizeText = (arg) => names[arg.index];
+
 export default function App() {
-  const customizeTooltip = React.useCallback((arg) => {
-    if (arg.layer.type === 'marker') {
-      return {
-        text: arg.attribute('tooltip'),
-      };
-    }
-    return 0;
-  });
-
-  const customizeText = React.useCallback((arg) => names[arg.index]);
-
   return (
     <VectorMap id="vector-map" bounds={bounds}>
       <Layer dataSource={mapsData.world} hoverEnabled={false}></Layer>

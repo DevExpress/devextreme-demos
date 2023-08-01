@@ -11,14 +11,14 @@ const projection = {
   from: ([x, y]) => [x * 100, y * 100],
 };
 
-const App = () => {
-  const customizeTooltip = React.useCallback((arg) => {
-    if (arg.layer.name === 'rooms') {
-      return { text: `Square: ${arg.attribute('square')} ft&#178` };
-    }
-    return null;
-  });
+const customizeTooltip = (arg) => {
+  if (arg.layer.name === 'rooms') {
+    return { text: `Square: ${arg.attribute('square')} ft&#178` };
+  }
+  return null;
+};
 
+export default function App() {
   return (
     <VectorMap
       id="vector-map"
@@ -43,6 +43,4 @@ const App = () => {
       ></Tooltip>
     </VectorMap>
   );
-};
-
-export default App;
+}

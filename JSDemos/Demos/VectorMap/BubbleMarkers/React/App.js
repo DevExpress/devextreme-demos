@@ -13,18 +13,18 @@ const sizeGroups = [0, 8000, 10000, 50000];
 
 const bounds = [-180, 85, 180, -60];
 
+const customizeTooltip = (arg) => {
+  if (arg.layer.type === 'marker') {
+    return { text: arg.attribute('tooltip') };
+  }
+  return null;
+};
+
+const customizeText = (arg) => ['< 8000K', '8000K to 10000K', '> 10000K'][arg.index];
+
+const customizeItems = (items) => items.reverse();
+
 export default function App() {
-  const customizeTooltip = React.useCallback((arg) => {
-    if (arg.layer.type === 'marker') {
-      return { text: arg.attribute('tooltip') };
-    }
-    return null;
-  });
-
-  const customizeText = React.useCallback((arg) => ['< 8000K', '8000K to 10000K', '> 10000K'][arg.index]);
-
-  const customizeItems = React.useCallback((items) => items.reverse());
-
   return (
     <VectorMap id="vector-map" bounds={bounds}>
       <Layer dataSource={mapsData.world} hoverEnabled={false}></Layer>

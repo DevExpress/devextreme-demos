@@ -32,7 +32,7 @@ function customizeLegendText(arg) {
   return `${format(arg.start)} to ${format(arg.end)}`;
 }
 
-const App = () => {
+export default function App() {
   return (
     <Map bounds={mapBounds}>
       <Size height={500} />
@@ -56,8 +56,5 @@ const App = () => {
 
       <Tooltip enabled={true} contentRender={TooltipTemplate} />
       <Export enabled={true} />
-    </Map>
-  );
-};
-
-export default App;
+    </Map>);
+}

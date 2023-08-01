@@ -14,14 +14,14 @@ const streamsPalette = ['#3c20c8', '#d82020'];
 
 const bounds = [-180, 85, 180, -75];
 
-export default function App() {
-  const customizeText = React.useCallback((itemInfo) => {
-    if (itemInfo.color === '#3c20c8') {
-      return 'Cold';
-    }
-    return 'Warm';
-  });
+const customizeText = (itemInfo) => {
+  if (itemInfo.color === '#3c20c8') {
+    return 'Cold';
+  }
+  return 'Warm';
+};
 
+export default function App() {
   return (
     <VectorMap
       title="Sea Currents"
