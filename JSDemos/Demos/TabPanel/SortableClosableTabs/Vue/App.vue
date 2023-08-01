@@ -141,6 +141,13 @@ export default {
   white-space: normal;
 }
 
+.dx-theme-generic .dx-tabs-wrapper .dx-tab {
+  max-width: fit-content;
+  padding-left: 14px;
+  padding-right: 9px;
+  line-height: 1.618;
+}
+
 .dx-tabpanel .dx-tab .dx-icon.dx-icon-close {
   display: inline-block;
   margin-right: 0;
