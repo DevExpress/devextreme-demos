@@ -13,8 +13,8 @@ const dataSourceOptions = {
   searchExpr: ['Hotel_Name', 'City', 'Address'],
 };
 
-const listAttrs = { className: 'list' };
-const tileViewAttrs = { className: 'tile' };
+const listAttrs = { class: 'list' };
+const tileViewAttrs = { class: 'tile' };
 const formatCurrency = new Intl.NumberFormat(
   'en-US', {
     style: 'currency',
