@@ -6,7 +6,7 @@ const App = () => {
   const onClick = React.useCallback((e) => {
     const buttonText = e.component.option('text');
     notify(`The ${capitalize(buttonText)} button was clicked`);
-  });
+  }, []);
 
   return (
     <div className="buttons-demo">

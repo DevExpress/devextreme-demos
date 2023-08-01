@@ -11,11 +11,11 @@ function App() {
 
   const onValueChanged = React.useCallback((e) => {
     setSelectedValue(e.value);
-  });
+  }, []);
 
   const changeApplyValueMode = React.useCallback((e) => {
     setApplyValueMode(e.value);
-  });
+  }, []);
 
   const getDisplayExpr = (item) => (item ? `${item.FirstName} ${item.LastName}` : '');
 

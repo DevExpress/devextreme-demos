@@ -18,22 +18,22 @@ const App = () => {
 
   const onButtonClick = React.useCallback((e) => {
     notify(`Go to ${e.component.option('text')}'s profile`, 'success', 600);
-  });
+  }, []);
 
   const onItemClick = React.useCallback((e) => {
     notify(e.itemData.name || e.itemData, 'success', 600);
-  });
+  }, []);
 
-  const onColorClick = React.useCallback((color) => {
-    setColor(color);
+  const onColorClick = React.useCallback((selectedColor) => {
+    setColor(selectedColor);
     const squareIcon = colorPicker.getElementsByClassName('dx-icon-square')[0];
-    squareIcon.style.color = color;
+    squareIcon.style.color = selectedColor;
     colorPicker.close();
   }, [colorPicker]);
 
   const onInitialized = React.useCallback((e) => {
     setColorPicker(e.component);
-  }));
+  }, []);
 
   const itemTemplateRender = (item) => (
     <div style={{ fontSize: `${item.size}px` }}>
@@ -43,7 +43,7 @@ const App = () => {
 
   const data = service.getData();
 
-  const toolbarItems = [
+  const toolbarItems = React.useCallback([
     {
       location: 'before',
       widget: 'dxDropDownButton',
@@ -68,7 +68,7 @@ const App = () => {
         icon: 'square',
         stylingMode: 'text',
         dropDownOptions: { width: 'auto' },
-        onInitialized: onInitialized,
+        onInitialized,
         dropDownContentTemplate: 'colorpicker',
       },
     },
@@ -104,7 +104,7 @@ const App = () => {
         },
       },
     },
-  ];
+  ], []);
 
   return (
     <div>
@@ -151,8 +151,8 @@ const App = () => {
           <Toolbar items={toolbarItems}>
             <Template name="colorpicker">
               <div className="custom-color-picker">
-                {data.colors.map((color, i) => (
-                  <ColorIcon key={i} color={color} onClick={onColorClick} />
+                {data.colors.map((colorValue, i) => (
+                  <ColorIcon key={i} color={colorValue} onClick={onColorClick} />
                 ))}
               </div>
             </Template>

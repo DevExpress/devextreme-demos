@@ -29,10 +29,10 @@ const App = () => {
   const [selectedItemKeys, setSelectedItemKeys] = React.useState([data[0].Id]);
 
   const handleListSelectionChange = React.useCallback((e) => {
-    const currentHotel = e.addedItems[0];
-    setCurrentHotel(currentHotel);
-    setSelectedItemKeys([currentHotel.Id]);
-  });
+    const hotel = e.addedItems[0];
+    setCurrentHotel(hotel);
+    setSelectedItemKeys([hotel.Id]);
+  }, []);
 
   const renderListGroup = (group) => <div className="city">{group.key}</div>;
 

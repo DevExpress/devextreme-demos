@@ -18,7 +18,7 @@ const App = () => {
 
   const selectedChanged = React.useCallback((e) => {
     setSelectedRowIndex(e.component.getRowIndexByKey(e.selectedRowKeys[0]));
-  });
+  }, []);
 
   const directionChanged = React.useCallback((e) => {
     config({
@@ -26,17 +26,17 @@ const App = () => {
     });
 
     repaintFloatingActionButton();
-  });
+  }, []);
 
   const editRow = React.useCallback(() => {
     gridRef.current.instance.editRow(selectedRowIndex);
     gridRef.current.instance.deselectAll();
-  }, [gridRef]);
+  }, [gridRef, selectedRowIndex]);
 
   const deleteRow = React.useCallback(() => {
     gridRef.current.instance.deleteRow(selectedRowIndex);
     gridRef.current.instance.deselectAll();
-  }, [gridRef]);
+  }, [gridRef, selectedRowIndex]);
 
   const addRow = React.useCallback(() => {
     gridRef.current.instance.addRow();

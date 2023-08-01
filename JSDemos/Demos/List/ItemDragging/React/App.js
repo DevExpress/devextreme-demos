@@ -8,7 +8,7 @@ const App = () => {
 
   const onDragStart = React.useCallback((e) => {
     e.itemData = e.fromData === 'plannedTasks' ? plannedTasksState[e.fromIndex] : doingTasksState[e.fromIndex];
-  });
+  }, [plannedTasksState, doingTasksState]);
 
   const onAdd = React.useCallback((e) => {
     const tasks = e.toData === 'plannedTasks' ? plannedTasksState : doingTasksState;
@@ -35,7 +35,7 @@ const App = () => {
   const onReorder = React.useCallback((e) => {
     onRemove(e);
     onAdd(e);
-  });
+  }, [onAdd, onRemove]);
 
   return (
     <div className="widget-container">

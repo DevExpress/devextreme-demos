@@ -12,28 +12,28 @@ const App = () => {
 
   const showActionSheet = React.useCallback(() => {
     setIsActionSheetVisible(true);
-  });
+  }, []);
 
   const onActionSheetItemClick = React.useCallback((e) => {
     onActionSheetButtonClick(e.itemData.text);
-  });
+  }, [onActionSheetButtonClick]);
 
   const onActionSheetCancelClick = React.useCallback(() => {
     onActionSheetButtonClick('Cancel');
-  });
+  }, [onActionSheetButtonClick]);
 
   const onActionSheetButtonClick = React.useCallback((buttonName) => {
     setIsActionSheetVisible(false);
     notify(`The "${buttonName}" button is clicked.`);
-  });
+  }, []);
 
   const changeTitle = React.useCallback((e) => {
     setShowTitle(e.value);
-  });
+  }, []);
 
   const changeCancelButton = React.useCallback((e) => {
     setShowCancelButton(e.value);
-  });
+  }, []);
 
   return (
     <div>
