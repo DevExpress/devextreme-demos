@@ -9,6 +9,8 @@ import 'whatwg-fetch';
 
 const buttonDropDownOptions = { width: 230 };
 
+const data = service.getData();
+
 const itemTemplateRender = (item) => (
   <div style={{ fontSize: `${item.size}px` }}>
     {item.text}
@@ -40,8 +42,6 @@ const App = () => {
   const onInitialized = React.useCallback((e) => {
     setColorPicker(e.component);
   }, []);
-
-  const data = service.getData();
 
   const toolbarItems = React.useCallback([
     {

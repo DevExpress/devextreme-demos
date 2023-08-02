@@ -14,18 +14,18 @@ const App = () => {
   const onListItemClick = React.useCallback((e) => {
     setIsActionSheetVisible(true);
     setActionSheetTarget(e.itemElement);
-  });
+  }, []);
 
   const onActionSheetItemClick = React.useCallback((e) => {
     setIsActionSheetVisible(false);
     notify(`The "${e.itemData.text}" button is clicked.`);
-  });
+  }, []);
 
   const onVisibleChange = React.useCallback((isVisible) => {
     if (isVisible !== isActionSheetVisible) {
       setIsActionSheetVisible(isVisible);
     }
-  });
+  }, []);
 
   return (
     <div className="app-container">
