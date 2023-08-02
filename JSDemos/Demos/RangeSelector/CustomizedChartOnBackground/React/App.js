@@ -7,7 +7,7 @@ import { dataSource } from './data.js';
 const defaultValue = [0, 5];
 const format = ({ valueText }) => `${valueText} s`;
 
-const App = () => {
+export default function App(){
   return (
     <RangeSelector
       id="range-selector"
@@ -27,5 +27,3 @@ const App = () => {
     </RangeSelector>
   );
 };
-
-export default App;

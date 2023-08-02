@@ -9,7 +9,7 @@ const itemClick = (e) => {
   notify({ message: `The "${e.itemData.hint}" button was clicked`, width: 320 }, 'success', 1000);
 };
 
-const App = () => {
+export default function App() {
   return (
     <div>
       <div className="buttongroups-container">
@@ -48,5 +48,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App;

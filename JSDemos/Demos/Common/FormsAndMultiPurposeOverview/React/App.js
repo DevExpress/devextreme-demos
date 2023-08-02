@@ -20,7 +20,7 @@ const avatarRender = () => (
   <div className="form-avatar"></div>
 );
 
-const App = () => {
+export default function App() {
   return (
     <Form formData={employee}>
       <GroupItem cssClass="first-group" colCount={4}>
@@ -66,5 +66,3 @@ const App = () => {
     </Form>
   );
 };
-
-export default App;

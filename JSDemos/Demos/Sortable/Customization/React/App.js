@@ -33,7 +33,7 @@ const App = () => {
 
   const onDragStart = React.useCallback((e) => {
     e.itemData = items[e.fromIndex];
-  }, []);
+  }, [items]);
 
   const onReorder = React.useCallback((e) => {
     let updatedItems = [...items.slice(0, e.fromIndex), ...items.slice(e.fromIndex + 1)];
