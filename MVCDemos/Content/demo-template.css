@@ -1,0 +1,119 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.demo-container {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    min-height: 100%;
+}
+
+.demo-container .long-title h3 {
+    margin-top: 0;
+}
+
+.demo-container {
+    min-height: 450px;
+}
+
+.Mobile .demo-container {
+    min-height: 590px;
+}
+
+.TabletPortrait .demo-container {
+    min-height: 720px;
+}
+
+.TabletLandscape .demo-container {
+    min-height: 480px;
+}
+
+.dx-color-scheme-dark .options,
+.dx-color-scheme-contrast .options{
+     background-color: #363636;
+}
+
+.dx-color-scheme-dark .selected-container,
+.dx-color-scheme-contrast .selected-container {
+    background: #363636;
+}
+
+.dx-color-scheme-dark #events,
+.dx-color-scheme-contrast #events {
+    background: #363636;
+}
+
+.dx-color-scheme-dark #events ul li,
+.dx-color-scheme-contrast #events ul li {
+    border-bottom: 1px solid #4d4d4d;
+}
+
+.dx-color-scheme-blue-dark .options,
+.dx-color-scheme-lime-dark .options,
+.dx-color-scheme-orange-dark .options,
+.dx-color-scheme-purple-dark .options,
+.dx-color-scheme-teal-dark .options {
+    background-color: rgba(162, 162, 162, 0.15);
+}
+
+.dx-color-scheme-blue-dark .selected-container,
+.dx-color-scheme-lime-dark .selected-container,
+.dx-color-scheme-orange-dark .selected-container,
+.dx-color-scheme-purple-dark .selected-container,
+.dx-color-scheme-teal-dark .selected-container {
+    background: rgba(162, 162, 162, 0.15);
+}
+
+.dx-color-scheme-blue-dark #events,
+.dx-color-scheme-lime-dark #events,
+.dx-color-scheme-orange-dark #events,
+.dx-color-scheme-purple-dark #events,
+.dx-color-scheme-teal-dark #events {
+    background: rgba(162, 162, 162, 0.15);
+}
+
+.dx-color-scheme-blue-dark #events ul li,
+.dx-color-scheme-lime-dark #events ul li,
+.dx-color-scheme-orange-dark #events ul li,
+.dx-color-scheme-purple-dark #events ul li,
+.dx-color-scheme-teal-dark #events ul li {
+    border-bottom: 1px solid rgba(162, 162, 162, 0.4);
+}
+
+body.dx-device-phone .options {
+    left: 0;
+    top: auto;
+    width: auto;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+}
+
+body.dx-device-phone .widget-container {
+    margin-right: 0;
+    padding-top: 15px;
+}
+
+body.dx-device-phone #selectbox-demo .options,
+body.dx-device-phone #calendar-demo .options,
+body.dx-device-phone #list-api-demo .options,
+body.dx-device-phone #list-demo .options,
+body.dx-device-phone #form-demo .options {
+    position: static;
+    margin-top: 20px;
+}
+
+.dx-theme-material .demo-container h1 {
+    font-size: 34px;
+}
+
+.dx-theme-material .demo-container h2 {
+    font-size: 28px;
+}

@@ -15,7 +15,7 @@ npm run prepare-all
 npm run prepare-js
 ```
 ```
-npm run prepare-mvc
+npm run prepare-aspnet
 ```
 
 Angular, Vue, and React demos can use bundles instead of separate files from `node_modules`. With bundles, demos launch faster but become harder to debug. Run the following command to create the bundles and replace the SystemJS configuration:
@@ -65,23 +65,19 @@ npm run fix-lint
 
 ## ASP.NET Demos
 
-1. You will need Windows. Enable Developer Mode so that the `mklink` command doesn't require elevation.\
-To enable Developer Mode, type "Developer Settings" in a Windows search box and toggle the "Developer Mode" switch in the opened settings dialog.\
-Refer to the following articles to learn more: [Symlinks](https://blogs.windows.com/windowsdeveloper/2016/12/02/symlinks-windows-10/), [Developer Mode](https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development).
+> **_NOTE:_** You will need Windows. 
 
-1. In the `mobile` repository, use the Windows console to:
-   - 2.1 Run `PrepareWorkspace.cmd`.
-   - 2.2 Run `Packer.cmd`.
+1. Clone the [devextreme-aspnet](https://github.com/DevExpress/devextreme-aspnet) repo.
 
-1. Open the `mobile/repository.config.json` file and set the `hg` property to the path where your clone of the `mobile` repository is located. For example:
+1. Open the `repository.config.json` file and set the `devextreme-aspnet` property to the path where your clone of the `devextreme-aspnet` repository is located. For example:
 
     ```json
     {
-      "hg": "C:/Work/mobile"
+      "devextreme-aspnet": "C:/Work/devextreme-aspnet"
     }
     ```
 
-1. Prepare ASP.NET demos for launch and development. Run this command in the `mobile/GitHub_Demos` repository.
+1. Prepare ASP.NET demos for launch and development. Run this command in the `devextreme-demos` repository.
     ```
     npm run prepare-all
     ```

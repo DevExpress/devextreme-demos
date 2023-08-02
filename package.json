@@ -1,6 +1,6 @@
 {
     "name": "devextreme-demos",
-    "version": "23.1.0",
+    "version": "23.2.0",
     "description": "",
     "repository": {
         "type": "git",
@@ -33,6 +33,7 @@
         "devextreme-react": "23.2-next",
         "devextreme-vue": "23.2-next",
         "dx-systemjs-vue-browser": "1.0.15",
+        "eslint-plugin-react-hooks": "4.6.0",
         "exceljs": "3.10.0",
         "file-saver-es": "2.0.5",
         "globalize": "1.7.0",
@@ -120,8 +121,8 @@
         "launch-demo": "node utils/shell/server.js",
         "prepare-ts": "node ./node_modules/typescript/bin/tsc -p JSDemos/shared",
         "prepare-js": "npm run prepare-ts && gulp js",
-        "prepare-mvc": "gulp mvc",
-        "prepare-all": "npm run prepare-js && npm run prepare-mvc",
+        "prepare-aspnet": "gulp aspnet",
+        "prepare-all": "npm run prepare-js && npm run prepare-aspnet",
         "prepare-shared": "npm run prepare-ts && gulp shared",
         "lint-html": "prettier --check .",
         "lint-js": "eslint .",
