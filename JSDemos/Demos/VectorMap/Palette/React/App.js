@@ -13,6 +13,24 @@ const colorGroups = [0, 0.5, 0.8, 1, 2, 3, 100];
 
 const bounds = [-180, 85, 180, -60];
 
+function customizeLayer(elements) {
+  elements.forEach((element) => {
+    element.attribute('population', populations[element.attribute('name')]);
+  });
+}
+
+function customizeText(arg) {
+  let text;
+  if (arg.index === 0) {
+    text = '< 0.5%';
+  } else if (arg.index === 5) {
+    text = '> 3%';
+  } else {
+    text = `${arg.start}% to ${arg.end}%`;
+  }
+  return text;
+}
+
 function App() {
   return (
     <VectorMap
@@ -33,24 +51,6 @@ function App() {
       </Legend>
     </VectorMap>
   );
-}
-
-function customizeLayer(elements) {
-  elements.forEach((element) => {
-    element.attribute('population', populations[element.attribute('name')]);
-  });
-}
-
-function customizeText(arg) {
-  let text;
-  if (arg.index === 0) {
-    text = '< 0.5%';
-  } else if (arg.index === 5) {
-    text = '> 3%';
-  } else {
-    text = `${arg.start}% to ${arg.end}%`;
-  }
-  return text;
 }
 
 export default App;
