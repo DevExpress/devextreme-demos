@@ -7,7 +7,7 @@ import { dataSource } from './data.js';
 const defaultValue = [0, 5];
 const format = ({ valueText }) => `${valueText} s`;
 
-export default function App(){
+export default function App() {
   return (
     <RangeSelector
       id="range-selector"
@@ -26,4 +26,4 @@ export default function App(){
       </Chart>
     </RangeSelector>
   );
-};
+}
