@@ -11,7 +11,7 @@ const customItemLabel = { 'aria-label': 'Custom Item Template' };
 
 const getDisplayExpr = (item) => (item ? `${item.FirstName} ${item.LastName}` : '');
 
-const App = () => {
+export default function App() {
   return (
     <div>
       <div className="dx-fieldset">
@@ -49,5 +49,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App;

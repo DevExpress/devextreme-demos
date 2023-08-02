@@ -22,7 +22,7 @@ const backClick = () => {
   notify('The button was clicked');
 };
 
-const App = () => {
+export default function App() {
   return (
     <div>
       <div className="dx-fieldset">
@@ -104,6 +104,4 @@ const App = () => {
       </div>
     </div>
   );
-};
-
-export default App;
+}

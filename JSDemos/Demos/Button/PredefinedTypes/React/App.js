@@ -7,7 +7,11 @@ const onClick = (e) => {
   notify(`The ${capitalize(buttonText)} button was clicked`);
 };
 
-const App = () => {
+function capitalize(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+export default function App() {
   return (
     <div className="buttons-demo">
       <div className="buttons">
@@ -146,10 +150,4 @@ const App = () => {
       </div>
     </div>
   );
-};
-
-function capitalize(text) {
-  return text.charAt(0).toUpperCase() + text.slice(1);
 }
-
-export default App;

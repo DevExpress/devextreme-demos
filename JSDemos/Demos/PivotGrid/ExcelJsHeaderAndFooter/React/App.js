@@ -101,19 +101,19 @@ export default function App() {
 
   const onExportDataFieldHeadersChanged = React.useCallback(({ value }) => {
     setExportDataFieldHeaders(value);
-  }, [exportDataFieldHeaders, setExportDataFieldHeaders]);
+  }, [setExportDataFieldHeaders]);
 
   const onExportRowFieldHeadersChanged = React.useCallback(({ value }) => {
     setExportRowFieldHeaders(value);
-  }, [exportRowFieldHeaders, setExportRowFieldHeaders]);
+  }, [setExportRowFieldHeaders]);
 
   const onExportColumnFieldHeadersChanged = React.useCallback(({ value }) => {
     setExportColumnFieldHeaders(value);
-  }, [exportColumnFieldHeaders, setExportColumnFieldHeaders]);
+  }, [setExportColumnFieldHeaders]);
 
   const onExportFilterFieldHeadersChanged = React.useCallback(({ value }) => {
     setExportFilterFieldHeaders(value);
-  }, [exportFilterFieldHeaders, setExportFilterFieldHeaders]);
+  }, [setExportFilterFieldHeaders]);
 
   return (
     <React.Fragment>

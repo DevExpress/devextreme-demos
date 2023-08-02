@@ -16,7 +16,7 @@ const dataSource = new DataSource({
   filter: ['UnitPrice', '>', 15],
 });
 
-const App = () => {
+export default function App() {
   return (
     <div className="list-container">
       <List
@@ -32,5 +32,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App;
