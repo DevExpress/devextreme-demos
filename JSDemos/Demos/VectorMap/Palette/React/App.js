@@ -13,31 +13,25 @@ const colorGroups = [0, 0.5, 0.8, 1, 2, 3, 100];
 
 const bounds = [-180, 85, 180, -60];
 
+const customizeLayer = (elements) => {
+  elements.forEach((element) => {
+    element.attribute('population', populations[element.attribute('name')]);
+  });
+};
+
+const customizeText = (arg) => {
+  let text;
+  if (arg.index === 0) {
+    text = '< 0.5%';
+  } else if (arg.index === 5) {
+    text = '> 3%';
+  } else {
+    text = `${arg.start}% to ${arg.end}%`;
+  }
+  return text;
+};
+
 const App = () => {
-  React.useEffect(() => {
-    customizeLayer();
-  }, []);
-
-  const customizeLayer = () => {
-    const elements = document.querySelectorAll('.dxm-vector-map-element');
-    elements.forEach((element) => {
-      const population = populations[element.getAttribute('name')];
-      element.setAttribute('population', population);
-    });
-  };
-
-  const customizeText = (arg) => {
-    let text;
-    if (arg.index === 0) {
-      text = '< 0.5%';
-    } else if (arg.index === 5) {
-      text = '> 3%';
-    } else {
-      text = `${arg.start}% to ${arg.end}%`;
-    }
-    return text;
-  };
-
   return (
     <VectorMap id="vector-map" bounds={bounds}>
       <Layer
@@ -46,6 +40,7 @@ const App = () => {
         name="areas"
         colorGroupingField="population"
         colorGroups={colorGroups}
+        customize={customizeLayer}
       ></Layer>
 
       <Legend customizeText={customizeText}>
