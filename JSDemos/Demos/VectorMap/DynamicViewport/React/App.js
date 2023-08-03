@@ -21,24 +21,24 @@ const App = () => {
   const continentChanged = React.useCallback(({ value }) => {
     setCoordinates(value);
     mapRef.current.instance.viewport(value);
-  }, []);
+  }, [setCoordinates]);
 
   const zoomFactorChanged = React.useCallback((e) => {
     setZoomFactor(e.zoomFactor.toFixed(2));
-  }, []);
+  }, [setZoomFactor]);
 
   const centerChanged = React.useCallback((e) => {
     const value = `${e.center[0].toFixed(3)}, ${e.center[1].toFixed(3)}`;
     setCenter(value);
-  }, []);
+  }, [setCenter]);
 
   const panVisibleChange = React.useCallback((value) => {
     setPanVisible(value);
-  }, []);
+  }, [setPanVisible]);
 
   const zoomVisibleChange = React.useCallback((value) => {
     setZoomVisible(value);
-  }, []);
+  }, [setZoomVisible]);
 
   return (
     <div>

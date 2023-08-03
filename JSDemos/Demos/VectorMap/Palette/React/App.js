@@ -31,7 +31,7 @@ const customizeText = (arg) => {
   return text;
 };
 
-const App = () => {
+export default function App() {
   return (
     <VectorMap id="vector-map" bounds={bounds}>
       <Layer
@@ -48,6 +48,4 @@ const App = () => {
       </Legend>
     </VectorMap>
   );
-};
-
-export default App;
+}
