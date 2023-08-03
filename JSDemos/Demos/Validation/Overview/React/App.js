@@ -41,14 +41,10 @@ const onFormSubmit = (e) => {
   e.preventDefault();
 };
 
-let validatorInstance;
-const onInit = (e) => {
-  validatorInstance = e.component;
-};
-
 function App() {
   const currentDate = new Date();
   const maxDate = new Date(currentDate.setFullYear(currentDate.getFullYear() - 21));
+  const validatorRef = React.useRef();
 
   const [password, setPassword] = React.useState('');
   const [confirmPassword, setConfirmPassword] = React.useState('');
@@ -76,9 +72,9 @@ function App() {
   const onPasswordChanged = React.useCallback((e) => {
     setPassword(e.value);
     if (confirmPassword) {
-      validatorInstance.validate();
+      validatorRef.current.instance.validate();
     }
-  }, [confirmPassword, setPassword, validatorInstance]);
+  }, [confirmPassword, setPassword]);
 
   const onConfirmPasswordChanged = React.useCallback((e) => {
     setConfirmPassword(e.value);
@@ -134,7 +130,7 @@ function App() {
                 location="after"
                 options={confirmPasswordButton}
               />
-              <Validator onInitialized={onInit}>
+              <Validator ref={validatorRef}>
                 <RequiredRule message="Confirm Password is required" />
                 <CompareRule message="Password and Confirm Password do not match" comparisonTarget={passwordComparison} />
               </Validator>
