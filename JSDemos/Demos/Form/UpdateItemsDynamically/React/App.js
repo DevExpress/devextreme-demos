@@ -45,7 +45,7 @@ const App = () => {
         },
       },
     }],
-  }), []);
+  }), [updatePhones]);
 
   const getPhonesOptions = React.useCallback(() => {
     const options = [];
@@ -53,11 +53,11 @@ const App = () => {
       options.push(generateNewPhoneOptions(i));
     }
     return options;
-  }, []);
+  }, [generateNewPhoneOptions]);
 
   const updatePhones = React.useCallback(() => {
     setPhoneOptions(getPhonesOptions());
-  }, [setPhoneOptions]);
+  }, [setPhoneOptions, getPhonesOptions]);
 
   const phoneItems = React.useCallback(() => phoneOptions
     && phoneOptions.map((phone, index) => <SimpleItem
