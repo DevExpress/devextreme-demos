@@ -14,7 +14,7 @@ function statusFormat(ratio) {
 
 const elementAttr = { 'aria-label': 'Progress Bar' };
 
-const App = () => {
+export default function App() {
   const [seconds, setSeconds] = React.useState(maxValue);
   const [buttonText, setButtonText] = React.useState('Start progress');
   const [inProgress, setInProgress] = React.useState(false);
@@ -40,11 +40,11 @@ const App = () => {
     return () => {
       clearInterval(intervalId);
     };
-  }, [inProgress, seconds]);
+  }, [inProgress, seconds, setButtonText, setSeconds]);
 
   const onButtonClick = React.useCallback(() => {
     setInProgress((prevInProgress) => !prevInProgress);
-  });
+  }, [setInProgress]);
 
   return (
     <div className="form">
@@ -69,6 +69,4 @@ const App = () => {
       />
     </div>
   );
-};
-
-export default App;
+}

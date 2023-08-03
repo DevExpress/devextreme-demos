@@ -6,7 +6,7 @@ import { employee } from './data.js';
 
 const position = { of: '#employee' };
 
-const App = () => {
+export default function App() {
   const [employeeInfo, setEmployeeInfo] = React.useState({});
   const [loadPanelVisible, setLoadPanelVisible] = React.useState(false);
   const [showIndicator, setShowIndicator] = React.useState(true);
@@ -18,28 +18,28 @@ const App = () => {
     setEmployeeInfo({});
     setLoadPanelVisible(true);
     setTimeout(hideLoadPanel, 3000);
-  });
+  }, [setEmployeeInfo, setLoadPanelVisible]);
 
   const hideLoadPanel = React.useCallback(() => {
     setLoadPanelVisible(false);
     setEmployeeInfo(employee);
-  });
+  }, [setLoadPanelVisible, setEmployeeInfo]);
 
   const onShowIndicatorChange = React.useCallback((e) => {
     setShowIndicator(e.value);
-  });
+  }, [setShowIndicator]);
 
   const onShadingChange = React.useCallback((e) => {
     setShading(e.value);
-  });
+  }, [setShading]);
 
   const onShowPaneChange = React.useCallback((e) => {
     setShowPane(e.value);
-  });
+  }, [setShowPane]);
 
   const onHideOnOutsideClickChange = React.useCallback((e) => {
     setHideOnOutsideClick(e.value);
-  });
+  }, [setHideOnOutsideClick]);
 
   return (
     <React.Fragment>
@@ -113,6 +113,4 @@ const App = () => {
       </div>
     </React.Fragment>
   );
-};
-
-export default App;
+}

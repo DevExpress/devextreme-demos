@@ -13,12 +13,12 @@ export default function App() {
 
   const showPopupWithScrollView = React.useCallback(() => {
     setPopupWithScrollViewVisible(true);
-  }, []);
+  }, [setPopupWithScrollViewVisible]);
 
   const hide = React.useCallback(() => {
     setPopupVisible(false);
     setPopupWithScrollViewVisible(false);
-  }, []);
+  }, [setPopupVisible, setPopupWithScrollViewVisible]);
 
   const bookButtonOptions = React.useMemo(() => ({
     width: 300,
@@ -26,7 +26,7 @@ export default function App() {
     type: 'default',
     stylingMode: 'contained',
     onClick: hide,
-  }), []);
+  }), [hide]);
 
   return (
     <React.Fragment>

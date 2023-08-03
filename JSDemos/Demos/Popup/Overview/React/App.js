@@ -4,7 +4,7 @@ import notify from 'devextreme/ui/notify';
 import { EmployeeItem } from './EmployeeItem.js';
 import { employees } from './data.js';
 
-const App = () => {
+export default function App() {
   const [currentEmployee, setCurrentEmployee] = React.useState({});
   const [popupVisible, setPopupVisible] = React.useState(false);
   const [positionOf, setPositionOf] = React.useState('');
@@ -13,12 +13,12 @@ const App = () => {
     setCurrentEmployee(employee);
     setPositionOf(`#image${employee.ID}`);
     setPopupVisible(true);
-  }, []);
+  }, [setCurrentEmployee, setPositionOf, setPopupVisible]);
 
   const hideInfo = React.useCallback(() => {
     setCurrentEmployee({});
     setPopupVisible(false);
-  }, []);
+  }, [setCurrentEmployee, setPopupVisible]);
 
   const sendEmail = React.useCallback(() => {
     const message = `Email is sent to ${currentEmployee.FirstName} ${currentEmployee.LastName}`;
@@ -33,7 +33,7 @@ const App = () => {
       'success',
       3000,
     );
-  }, []);
+  }, [currentEmployee]);
 
   const showMoreInfo = React.useCallback(() => {
     const message = `More info about ${currentEmployee.FirstName} ${currentEmployee.LastName}`;
@@ -48,23 +48,25 @@ const App = () => {
       'success',
       3000,
     );
-  }, []);
-  const moreInfoButtonOptions = {
+  }, [currentEmployee]);
+
+  const [moreInfoButtonOptions] = React.useState({
     text: 'More info',
     onClick: showMoreInfo,
-  };
+  });
 
-  const emailButtonOptions = {
+  const [emailButtonOptions] = React.useState({
     icon: 'email',
     text: 'Send',
     onClick: sendEmail,
-  };
+  });
 
-  const closeButtonOptions = {
+  const [closeButtonOptions] = React.useState({
     text: 'Close',
     onClick: hideInfo,
-  };
-  const items = employees.map((employee) => (
+  });
+
+  const [items] = employees.map((employee) => (
     <li key={employee.ID}>
       <EmployeeItem employee={employee} showInfo={showInfo} />
     </li>
@@ -125,6 +127,4 @@ const App = () => {
       </Popup>
     </div>
   );
-};
-
-export default App;
+}

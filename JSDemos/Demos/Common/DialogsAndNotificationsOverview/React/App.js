@@ -19,11 +19,11 @@ const favButtonAttrs = {
   class: 'favorites',
 };
 
-const App = () => {
+export default function App() {
   const [currentHouse, setCurrentHouse] = React.useState(housesSource[0]);
   const [popupVisible, setPopupVisible] = React.useState(false);
 
-  const renderPopup = () => (
+  const renderPopup = React.useCallback(() => (
     <div className="popup-property-details">
       <div className="large-text">{formatCurrency(currentHouse.Price)}</div>
       <div className="opacity">{currentHouse.Address}, {currentHouse.City}, {currentHouse.State}</div>
@@ -41,16 +41,16 @@ const App = () => {
       </div>
       <div>{currentHouse.Features}</div>
     </div>
-  );
+  ), [currentHouse]);
 
   const showHouse = React.useCallback((house) => {
     setCurrentHouse(house);
     setPopupVisible(true);
-  });
+  }, [setCurrentHouse, setPopupVisible]);
 
   const handlePopupHidden = React.useCallback(() => {
     setPopupVisible(false);
-  });
+  }, [setPopupVisible]);
 
   const changeFavoriteState = React.useCallback(() => {
     const updatedHouse = { ...currentHouse };
@@ -63,7 +63,7 @@ const App = () => {
       width: 450,
     },
     updatedHouse.Favorite ? 'success' : 'error', 2000);
-  });
+  }, [currentHouse, setCurrentHouse]);
 
   return (
     <div className="images">
@@ -87,6 +87,4 @@ const App = () => {
       />
     </div>
   );
-};
-
-export default App;
+}

@@ -25,25 +25,25 @@ function App() {
 
   const topNumberBoxValueChanged = React.useCallback(
     (top) => setCoordinatePosition({ ...coordinatePosition, top }),
-    [coordinatePosition],
+    [coordinatePosition, setCoordinatePosition],
   );
 
   const bottomNumberBoxValueChanged = React.useCallback(
     (bottom) => setCoordinatePosition({ ...coordinatePosition, bottom }),
-    [coordinatePosition],
+    [coordinatePosition, setCoordinatePosition],
   );
 
   const leftNumberBoxValueChanged = React.useCallback(
     (left) => setCoordinatePosition({ ...coordinatePosition, left }),
-    [coordinatePosition],
+    [coordinatePosition, setCoordinatePosition],
   );
 
   const rightNumberBoxValueChanged = React.useCallback(
     (right) => setCoordinatePosition({ ...coordinatePosition, right }),
-    [coordinatePosition],
+    [coordinatePosition, setCoordinatePosition],
   );
 
-  const show = () => {
+  const show = React.useCallback(() => {
     const position = isPredefined ? predefinedPosition : coordinatePosition;
 
     Notify({
@@ -64,7 +64,7 @@ function App() {
       direction,
     });
     setId(id + 1);
-  };
+  }, [id, isPredefined, predefinedPosition, coordinatePosition, direction]);
 
   return (
     <React.Fragment>

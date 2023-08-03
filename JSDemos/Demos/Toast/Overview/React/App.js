@@ -11,13 +11,7 @@ function App() {
     message: '',
   });
 
-  const items = products.map((product) => (
-    <li key={product.ID}>
-      <ProductItem product={product} checkAvailability={checkAvailability} />
-    </li>
-  ));
-
-  function checkAvailability(e, product) {
+  const checkAvailability = React.useCallback((e, product) => {
     const type = e.value ? 'success' : 'error';
     const message = product.Name + (e.value ? ' is available' : ' is not available');
 
@@ -27,14 +21,20 @@ function App() {
       type,
       message,
     });
-  }
+  }, [toastConfig, setToastConfig]);
 
-  function onHiding() {
+  const onHiding = React.useCallback(() => {
     setToastConfig({
       ...toastConfig,
       isVisible: false,
     });
-  }
+  }, [toastConfig, setToastConfig]);
+
+  const items = products.map((product) => (
+    <li key={product.ID}>
+      <ProductItem product={product} checkAvailability={checkAvailability} />
+    </li>
+  ));
 
   return (
     <div id="product-list">

@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'devextreme-react/button';
 import { LoadIndicator } from 'devextreme-react/load-indicator';
 
-const App = () => {
+export default function App() {
   const [loadIndicatorVisible, setLoadIndicatorVisible] = React.useState(false);
   const [buttonText, setButtonText] = React.useState('Send');
 
@@ -14,7 +14,7 @@ const App = () => {
       setLoadIndicatorVisible(false);
       setButtonText('Send');
     }, 2000);
-  });
+  }, [setLoadIndicatorVisible, setButtonText]);
 
   return (
     <div className="form">
@@ -41,6 +41,4 @@ const App = () => {
       </Button>
     </div>
   );
-};
-
-export default App;
+}
