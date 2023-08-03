@@ -5,14 +5,14 @@ const minify = require('gulp-minify');
 
 exports.copyCommonAspFiles = parallel(
   () => src([
-    'node_modules/devextreme/dist/css/**/*',
+    'node_modules/devextreme-dist/css/**/*',
     'node_modules/devexpress-diagram/dist/**/*.css',
     'node_modules/devexpress-gantt/dist/**/*.css',
   ])
     .pipe(dest('MVCDemos/Content/DevExtreme'))
     .pipe(dest('NetCoreDemos/wwwroot/css')),
 
-  () => src('node_modules/devextreme/dist/css/icons/*')
+  () => src('node_modules/devextreme-dist/css/icons/*')
     .pipe(dest('MVCDemos/Content/icons')),
 
   () => src([
