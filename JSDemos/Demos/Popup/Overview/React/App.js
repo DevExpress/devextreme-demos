@@ -66,16 +66,16 @@ export default function App() {
     onClick: hideInfo,
   });
 
-  const [items] = employees.map((employee) => (
+  const getItems = React.useCallback(() => employees.map((employee) => (
     <li key={employee.ID}>
       <EmployeeItem employee={employee} showInfo={showInfo} />
     </li>
-  ));
+  )), [showInfo]);
 
   return (
     <div id="container">
       <h1>Employees</h1>
-      <ul>{items}</ul>
+      <ul>{getItems()}</ul>
       <Popup
         visible={popupVisible}
         onHiding={hideInfo}
