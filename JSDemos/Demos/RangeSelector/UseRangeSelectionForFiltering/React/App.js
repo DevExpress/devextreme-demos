@@ -19,7 +19,7 @@ const App = () => {
           || !value.length,
       ),
     );
-  }, []);
+  }, [setSelectedEmployees]);
 
   return (
     <React.Fragment>

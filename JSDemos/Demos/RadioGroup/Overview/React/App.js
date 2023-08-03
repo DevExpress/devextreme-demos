@@ -2,19 +2,19 @@ import React from 'react';
 import RadioGroup from 'devextreme-react/radio-group';
 import { priorities, priorityEntities, tasks } from './data.js';
 
+const renderCustomItem = (data) => <div>{data}</div>;
+
 function App() {
   const [colorPriority, setColorPriority] = React.useState(priorities[2]);
   const [selectionPriority, setSelectionPriority] = React.useState(priorityEntities[0].id);
 
   const changeColorPriority = React.useCallback((e) => {
     setColorPriority(e.value);
-  }, []);
+  }, [setColorPriority]);
 
   const changeSelectionPriority = React.useCallback((e) => {
     setSelectionPriority(e.value);
-  }, []);
-
-  const renderCustomItem = (data) => <div>{data}</div>;
+  }, [setSelectionPriority]);
 
   return (
     <div className="form">

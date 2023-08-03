@@ -21,15 +21,15 @@ function App() {
   const onRangeChanged = React.useCallback((data) => {
     setStartValue(data.start);
     setEndValue(data.end);
-  }, []);
+  }, [setStartValue, setEndValue]);
 
   const onStartChanged = React.useCallback((data) => {
     setStartValue(data.value);
-  }, []);
+  }, [setStartValue]);
 
   const onEndChanged = React.useCallback((data) => {
     setEndValue(data.value);
-  }, []);
+  }, [setEndValue]);
 
   return (
     <div className="form">

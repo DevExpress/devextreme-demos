@@ -116,7 +116,7 @@ function App() {
       setTextAlign([alignment]);
       onButtonClick(hint);
     },
-    [],
+    [setTextAlign],
   );
 
   const onToolbarLineModeChanged = React.useCallback(

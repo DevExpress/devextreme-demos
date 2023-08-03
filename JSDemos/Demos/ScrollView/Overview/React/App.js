@@ -22,7 +22,7 @@ const App = () => {
 
   const pullDownValueChanged = React.useCallback((args) => {
     setPullDown(args.value);
-  }, []);
+  }, [setPullDown]);
 
   const reachBottomValueChanged = React.useCallback((args) => {
     scrollViewRef.current.option('onReachBottom', args.value ? updateBottomContent : null);
@@ -30,15 +30,15 @@ const App = () => {
 
   const scrollbarModelValueChanged = React.useCallback((args) => {
     setShowScrollBarMode(args.value);
-  }, []);
+  }, [setShowScrollBarMode]);
 
   const scrollByContentValueChanged = React.useCallback((args) => {
     setScrollByContent(args.value);
-  }, []);
+  }, [setScrollByContent]);
 
   const scrollByThumbValueChanged = React.useCallback((args) => {
     setScrollByThumb(args.value);
-  }, []);
+  }, [setScrollByThumb]);
 
   const updateTopContent = React.useCallback((args) => {
     updateContent(args, 'PullDown');
@@ -57,7 +57,7 @@ const App = () => {
       setContent(eventName === 'PullDown' ? updateContentText + content : content + updateContentText);
       args.component.release();
     }, 500);
-  }, [content]);
+  }, [content, setContent]);
 
   return (
     <div id="scrollview-demo">

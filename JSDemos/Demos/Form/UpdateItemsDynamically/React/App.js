@@ -15,7 +15,8 @@ const App = () => {
     onValueChanged: (e) => {
       setIsHomeAddressVisible(e.component.option('value'));
     },
-  });
+  }, [setIsHomeAddressVisible]);
+  
   const [addPhoneButtonOptions] = React.useState({
     icon: 'add',
     text: 'Add phone',
@@ -23,17 +24,9 @@ const App = () => {
       employee.Phones.push('');
       updatePhones();
     },
-  });
+  }, []);
 
-  function getPhonesOptions() {
-    const options = [];
-    for (let i = 0; i < employee.Phones.length; i += 1) {
-      options.push(generateNewPhoneOptions(i));
-    }
-    return options;
-  }
-
-  function generateNewPhoneOptions(index) {
+  const generateNewPhoneOptions = React.useCallback((index) => {
     return {
       mask: '+1 (X00) 000-0000',
       maskRules: { X: /[01-9]/ },
@@ -50,11 +43,19 @@ const App = () => {
         },
       }],
     };
-  }
+  }, []);
 
-  function updatePhones() {
+  const getPhonesOptions = React.useCallback(() => {
+    const options = [];
+    for (let i = 0; i < employee.Phones.length; i += 1) {
+      options.push(generateNewPhoneOptions(i));
+    }
+    return options;
+  }, []);
+
+  const updatePhones = React.useCallback(()=> {
     setPhoneOptions(getPhonesOptions());
-  }
+  }, [setPhoneOptions]);
 
   return (
     <React.Fragment>

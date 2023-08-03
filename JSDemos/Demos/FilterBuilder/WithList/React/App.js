@@ -20,7 +20,7 @@ const App = () => {
 
   const onValueChanged = React.useCallback((e) => {
     setValue(e.value);
-  }, []);
+  }, [setValue]);
 
   const refreshDataSource = React.useCallback(() => {
     dataSource.current.filter(filterBuilderInstance.current.getFilterExpression());

@@ -27,7 +27,7 @@ function App() {
 
   const processRange = React.useCallback((e) => {
     setTotalProduction(calculateTotalProduction(e.value));
-  }, []);
+  }, [setTotalProduction]);
 
   return (
     <div id="range-selector-demo">

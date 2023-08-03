@@ -18,11 +18,11 @@ function App() {
 
   const processRange = React.useCallback((e) => {
     setWorkingDaysCount(calculateWorkdays(e.value));
-  }, []);
+  }, [setWorkingDaysCount]);
 
   const setBehavior = React.useCallback((data) => {
     setBehaviorMode(data.value);
-  }, []);
+  }, [setBehaviorMode]);
 
   return (
     <div id="range-selector-demo">

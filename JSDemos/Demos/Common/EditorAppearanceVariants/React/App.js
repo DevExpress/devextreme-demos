@@ -38,7 +38,7 @@ export default function App() {
   }, [setStylingMode]);
   const labelModeChange = React.useCallback(({ value }) => {
     setLabelMode(value);
-  }, []);
+  }, [setLabelMode]);
 
   return (
     <React.Fragment>

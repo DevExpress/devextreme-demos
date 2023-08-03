@@ -4,10 +4,14 @@ import { NumberBox } from 'devextreme-react/number-box';
 
 const sliderValueLabel = { 'aria-label': 'Slider Value' };
 
+const format = (value) => `${value}%`;
+
 function App() {
   const [sliderValue, setSliderValue] = React.useState(10);
 
-  const format = React.useCallback((value) => `${value}%`, []);
+  const onValueChanged = React.useCallback((e) => {
+    setSliderValue(e.value);
+  }, [setSliderValue]);
 
   return (
     <div className="form">
@@ -63,7 +67,7 @@ function App() {
             <Slider min={0}
               max={100}
               value={sliderValue}
-              onValueChanged={({ value }) => setSliderValue(value)} />
+              onValueChanged={onValueChanged} />
           </div>
         </div>
         <div className="dx-field">
@@ -73,7 +77,7 @@ function App() {
               max={100}
               value={sliderValue}
               valueChangeMode="onHandleRelease"
-              onValueChanged={({ value }) => setSliderValue(value)} />
+              onValueChanged={onValueChanged} />
           </div>
         </div>
         <div className="dx-field">
@@ -84,7 +88,7 @@ function App() {
               value={sliderValue}
               showSpinButtons={true}
               inputAttr={sliderValueLabel}
-              onValueChanged={({ value }) => setSliderValue(value)} />
+              onValueChanged={onValueChanged} />
           </div>
         </div>
       </div>

@@ -29,35 +29,35 @@ const App = () => {
 
   const onCompanyChanged = React.useCallback((e) => {
     setCompany(e.value);
-  }, []);
+  }, [setCompany]);
 
   const onLabelModeChanged = React.useCallback((e) => {
     setLabelMode(e.value);
-  }, []);
+  }, [setLabelMode]);
 
   const onLabelLocationChanged = React.useCallback((e) => {
     setLabelLocation(e.value);
-  }, []);
+  }, [setLabelLocation]);
 
   const onReadOnlyChanged = React.useCallback((e) => {
     setReadOnly(e.value);
-  }, []);
+  }, [setReadOnly]);
 
   const onShowColonChanged = React.useCallback((e) => {
     setShowColon(e.value);
-  }, []);
+  }, [setShowColon]);
 
   const onMinColWidthChanged = React.useCallback((e) => {
     setMinColWidth(e.value);
-  }, []);
+  }, [setMinColWidth]);
 
   const onColumnsCountChanged = React.useCallback((e) => {
     setColCount(e.value);
-  }, []);
+  }, [setColCount]);
 
   const onFormWidthChanged = React.useCallback((e) => {
     setWidth(e.value);
-  }, []);
+  }, [setWidth]);
 
   const companySelectorLabelMode = labelMode === 'outside'
     ? 'hidden'

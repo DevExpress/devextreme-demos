@@ -12,12 +12,12 @@ function App() {
   const updateTexts = React.useCallback((e) => {
     setFilterText(formatValue(e.component.option('value')));
     setDataSourceText(formatValue(e.component.getFilterExpression()));
-  }, []);
+  }, [setFilterText, setDataSourceText]);
 
   const onValueChanged = React.useCallback((e) => {
     setValue(e.value);
     updateTexts(e);
-  }, [updateTexts]);
+  }, [updateTexts, setValue]);
 
   const calculateFilterExpression = React.useCallback((filterValue, field) => (
     filterValue
