@@ -7,7 +7,7 @@ import service from './data.js';
 const employee = service.getEmployee();
 
 const App = () => {
-  const [phoneOptions, setPhoneOptions] = React.useState(getPhonesOptions());
+  const [phoneOptions, setPhoneOptions] = React.useState();
   const [isHomeAddressVisible, setIsHomeAddressVisible] = React.useState(true);
   const [checkBoxOptions] = React.useState({
     text: 'Show Address',
@@ -25,6 +25,10 @@ const App = () => {
       updatePhones();
     },
   }, []);
+
+  React.useEffect(() => {
+    setPhoneOptions(getPhonesOptions());
+  }, [setPhoneOptions]);
 
   const generateNewPhoneOptions = React.useCallback((index) => {
     return {
@@ -57,6 +61,15 @@ const App = () => {
     setPhoneOptions(getPhonesOptions());
   }, [setPhoneOptions]);
 
+  const phoneItems = React.useCallback((e) => {
+    return phoneOptions && phoneOptions.map((phone, index) => <SimpleItem
+      key={`Phones${index}`}
+      dataField={`Phones[${index}]`}
+      editorOptions={phone}>
+      <Label text={`Phone ${index + 1}`} />
+    </SimpleItem>)
+  }, [phoneOptions]);
+
   return (
     <React.Fragment>
       <div className="long-title"><h3>Personal details</h3></div>
@@ -86,12 +99,7 @@ const App = () => {
             name="phones-container">
             <GroupItem
               name="phones">
-              {phoneOptions.map((phone, index) => <SimpleItem
-                key={`Phones${index}`}
-                dataField={`Phones[${index}]`}
-                editorOptions={phone}>
-                <Label text={`Phone ${index + 1}`} />
-              </SimpleItem>)}
+                {phoneItems()}
             </GroupItem>
             <SimpleItem itemType="button"
               horizontalAlignment="left"
