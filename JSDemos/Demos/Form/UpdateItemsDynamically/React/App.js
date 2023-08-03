@@ -16,7 +16,7 @@ const App = () => {
       setIsHomeAddressVisible(e.component.option('value'));
     },
   }, [setIsHomeAddressVisible]);
-  
+
   const [addPhoneButtonOptions] = React.useState({
     icon: 'add',
     text: 'Add phone',
@@ -28,26 +28,24 @@ const App = () => {
 
   React.useEffect(() => {
     setPhoneOptions(getPhonesOptions());
-  }, [setPhoneOptions]);
+  }, [setPhoneOptions, getPhonesOptions]);
 
-  const generateNewPhoneOptions = React.useCallback((index) => {
-    return {
-      mask: '+1 (X00) 000-0000',
-      maskRules: { X: /[01-9]/ },
-      buttons: [{
-        name: 'trash',
-        location: 'after',
-        options: {
-          stylingMode: 'text',
-          icon: 'trash',
-          onClick: () => {
-            employee.Phones.splice(index, 1);
-            updatePhones();
-          },
+  const generateNewPhoneOptions = React.useCallback((index) => ({
+    mask: '+1 (X00) 000-0000',
+    maskRules: { X: /[01-9]/ },
+    buttons: [{
+      name: 'trash',
+      location: 'after',
+      options: {
+        stylingMode: 'text',
+        icon: 'trash',
+        onClick: () => {
+          employee.Phones.splice(index, 1);
+          updatePhones();
         },
-      }],
-    };
-  }, []);
+      },
+    }],
+  }), []);
 
   const getPhonesOptions = React.useCallback(() => {
     const options = [];
@@ -57,18 +55,17 @@ const App = () => {
     return options;
   }, []);
 
-  const updatePhones = React.useCallback(()=> {
+  const updatePhones = React.useCallback(() => {
     setPhoneOptions(getPhonesOptions());
   }, [setPhoneOptions]);
 
-  const phoneItems = React.useCallback((e) => {
-    return phoneOptions && phoneOptions.map((phone, index) => <SimpleItem
+  const phoneItems = React.useCallback(() => phoneOptions
+    && phoneOptions.map((phone, index) => <SimpleItem
       key={`Phones${index}`}
       dataField={`Phones[${index}]`}
       editorOptions={phone}>
       <Label text={`Phone ${index + 1}`} />
-    </SimpleItem>)
-  }, [phoneOptions]);
+    </SimpleItem>), [phoneOptions]);
 
   return (
     <React.Fragment>
@@ -99,7 +96,7 @@ const App = () => {
             name="phones-container">
             <GroupItem
               name="phones">
-                {phoneItems()}
+              {phoneItems()}
             </GroupItem>
             <SimpleItem itemType="button"
               horizontalAlignment="left"
