@@ -11,19 +11,19 @@ const App = () => {
 
   const onLoopChanged = React.useCallback((data) => {
     setLoop(data.value);
-  }, []);
+  }, [setLoop]);
 
   const onSlideShowChanged = React.useCallback((data) => {
     setSlideShow(data.value);
-  }, []);
+  }, [setSlideShow]);
 
   const onShowNavButtonsChanged = React.useCallback((data) => {
     setShowNavButtons(data.value);
-  }, []);
+  }, [setShowNavButtons]);
 
   const onShowIndicatorChanged = React.useCallback((data) => {
     setShowIndicator(data.value);
-  }, []);
+  }, [setShowIndicator]);
 
   return (
     <div>

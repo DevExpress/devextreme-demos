@@ -14,7 +14,7 @@ const App = () => {
 
   const onSearchModeChange = React.useCallback((args) => {
     setSearchMode(args.value);
-  }, []);
+  }, [setSearchMode]);
 
   return (
     <React.Fragment>

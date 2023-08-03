@@ -13,11 +13,11 @@ function App() {
 
   const onValueChanged = React.useCallback((e) => {
     setSelectedValue(e.value);
-  }, []);
+  }, [setSelectedValue]);
 
   const changeApplyValueMode = React.useCallback((e) => {
     setApplyValueMode(e.value);
-  }, []);
+  }, [setApplyValueMode]);
 
   return (
     <div>

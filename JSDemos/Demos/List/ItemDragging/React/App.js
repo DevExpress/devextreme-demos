@@ -19,7 +19,7 @@ const App = () => {
     } else {
       setDoingTasksState(updatedTasks);
     }
-  }, [plannedTasksState, doingTasksState]);
+  }, [setPlannedTasksState, setDoingTasksState, plannedTasksState, doingTasksState]);
 
   const onRemove = React.useCallback((e) => {
     const tasks = e.fromData === 'plannedTasks' ? plannedTasksState : doingTasksState;
@@ -30,7 +30,7 @@ const App = () => {
     } else {
       setDoingTasksState(updatedTasks);
     }
-  }, [plannedTasksState, doingTasksState]);
+  }, [setPlannedTasksState, setDoingTasksState, plannedTasksState, doingTasksState]);
 
   const onReorder = React.useCallback((e) => {
     onRemove(e);

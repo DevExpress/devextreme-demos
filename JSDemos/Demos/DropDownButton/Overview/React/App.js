@@ -41,7 +41,7 @@ const App = () => {
 
   const onInitialized = React.useCallback((e) => {
     setColorPicker(e.component);
-  }, []);
+  }, [setColorPicker]);
 
   const toolbarItems = React.useCallback([
     {
@@ -104,7 +104,7 @@ const App = () => {
         },
       },
     },
-  ], []);
+  ], [setAlignment, setFontSize, setLineHeight]);
 
   return (
     <div>

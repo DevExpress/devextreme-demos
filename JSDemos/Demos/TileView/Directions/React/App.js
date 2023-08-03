@@ -11,7 +11,7 @@ const App = () => {
 
   const directionChanged = React.useCallback((e) => {
     setDirection(e.value);
-  }, []);
+  }, [setDirection]);
 
   return (
     <div>

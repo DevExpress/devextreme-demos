@@ -57,7 +57,7 @@ const App = () => {
     const hotel = e.addedItems[0];
     setCurrentHotel(hotel);
     setSelectedItemKeys([hotel.Id]);
-  }, []);
+  }, [setCurrentHotel, setSelectedItemKeys]);
 
   return (
     <React.Fragment>

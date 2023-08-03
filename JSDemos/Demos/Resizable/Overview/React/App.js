@@ -25,7 +25,7 @@ const App = () => {
 
     setHandles(value);
     setResizableClasses(classes);
-  }, [setHandles]);
+  }, [setHandles, setResizableClasses]);
 
   return (
     <React.Fragment>

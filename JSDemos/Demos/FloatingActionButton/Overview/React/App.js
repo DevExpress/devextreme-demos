@@ -18,7 +18,7 @@ const App = () => {
 
   const selectedChanged = React.useCallback((e) => {
     setSelectedRowIndex(e.component.getRowIndexByKey(e.selectedRowKeys[0]));
-  }, []);
+  }, [setSelectedRowIndex]);
 
   const directionChanged = React.useCallback((e) => {
     config({

@@ -12,11 +12,11 @@ const App = () => {
 
   const onAllowDeletionChange = React.useCallback((args) => {
     setAllowDeletion(args.value);
-  }, []);
+  }, [setAllowDeletion]);
 
   const onItemDeleteModeChange = React.useCallback((args) => {
     setItemDeleteMode(args.value);
-  }, []);
+  }, [setItemDeleteMode]);
 
   return (
     <React.Fragment>
