@@ -9,7 +9,7 @@ export default function App() {
 
   const showPopup = React.useCallback(() => {
     setPopupVisible(true);
-  }, []);
+  }, [setPopupVisible]);
 
   const showPopupWithScrollView = React.useCallback(() => {
     setPopupWithScrollViewVisible(true);

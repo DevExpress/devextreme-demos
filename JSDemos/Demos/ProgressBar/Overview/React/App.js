@@ -40,7 +40,6 @@ export default function App() {
       }
 
       intervalId = setInterval(() => {
-        
         setSeconds((prevValue) => prevValue - 1);
       }, 1000);
     }
