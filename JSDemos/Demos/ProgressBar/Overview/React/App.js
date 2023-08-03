@@ -13,6 +13,7 @@ function statusFormat(ratio) {
 }
 
 const elementAttr = { 'aria-label': 'Progress Bar' };
+let intervalId;
 
 export default function App() {
   const [seconds, setSeconds] = React.useState(maxValue);
@@ -20,9 +21,18 @@ export default function App() {
   const [inProgress, setInProgress] = React.useState(false);
 
   React.useEffect(() => {
-    let intervalId;
+    if (seconds === 0) {
+      setButtonText('Restart progress');
+      setInProgress(!inProgress);
+      clearInterval(intervalId);
+    }
+  }, [seconds]);
 
+  const onButtonClick = React.useCallback(() => {
     if (inProgress) {
+      setButtonText('Continue progress');
+      clearInterval(intervalId);
+    } else {
       setButtonText('Stop progress');
 
       if (seconds === 0) {
@@ -30,21 +40,12 @@ export default function App() {
       }
 
       intervalId = setInterval(() => {
-        setSeconds((prevSeconds) => prevSeconds - 1);
+        setSeconds(prevValue => prevValue - 1);    
       }, 1000);
-    } else {
-      setButtonText('Continue progress');
-      clearInterval(intervalId);
     }
 
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [inProgress, seconds, setButtonText, setSeconds]);
-
-  const onButtonClick = React.useCallback(() => {
-    setInProgress((prevInProgress) => !prevInProgress);
-  }, [setInProgress]);
+    setInProgress(!inProgress);
+  }, [setInProgress, setButtonText, seconds, inProgress]);
 
   return (
     <div className="form">
