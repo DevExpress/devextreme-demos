@@ -30,15 +30,15 @@
       const languages = {
         typescript: "Typescript",
         javascript: "Javascript",
-      }
+      };
 
       const platformsByApproach = {
         jQuery: "jQuery",
         Angular: "Angular",
         Vue: "Vue",
         React: "React",
-        ReactJs: "React"
-      }
+        ReactJs: "React",
+      };
 
       const platforms = {
         jQuery: {
@@ -56,7 +56,7 @@
         React: {
           [languages.javascript]: "ReactJs",
           [languages.typescript]: "React",
-        }
+        },
       };
 
       let platform = null;
@@ -208,7 +208,7 @@
                 width: 100,
                 onValueChanged: (e) => {
                   platform = e.value;
-                  if(isLanguageSwitchingSupported(platform) && !language) {
+                  if (isLanguageSwitchingSupported(platform) && !language) {
                     language = languages.typescript;
                   }
                   approach = platforms[platform][language ?? languages.typescript];
@@ -221,13 +221,13 @@
               location: "after",
               widget: "dxSelectBox",
               visible: isLanguageSwitcherVisible,
-              options: {                
+              options: {
                 items: ["Typescript", "Javascript"],
                 value: language,
                 width: 100,
                 onValueChanged: (e) => {
-                  language = e.value
-                  if(platforms[platform][language] !== approach) {
+                  language = e.value;
+                  if (platforms[platform][language] !== approach) {
                     approach = platforms[platform][language];
                     updateDemo();
                   }
