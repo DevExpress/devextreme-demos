@@ -9,22 +9,22 @@ const employee = service.getEmployee();
 const App = () => {
   const [phoneOptions, setPhoneOptions] = React.useState();
   const [isHomeAddressVisible, setIsHomeAddressVisible] = React.useState(true);
-  const [checkBoxOptions] = React.useState({
+  const getCheckBoxOptions = React.useCallback(() => ({
     text: 'Show Address',
     value: true,
     onValueChanged: (e) => {
       setIsHomeAddressVisible(e.component.option('value'));
     },
-  }, [setIsHomeAddressVisible]);
+  }), [setIsHomeAddressVisible]);
 
-  const [addPhoneButtonOptions] = React.useState({
+  const getPhoneButtonOptions = React.useCallback(() => ({
     icon: 'add',
     text: 'Add phone',
     onClick: () => {
       employee.Phones.push('');
       updatePhones();
     },
-  }, []);
+  }), [updatePhones]);
 
   React.useEffect(() => {
     setPhoneOptions(getPhonesOptions());
@@ -80,7 +80,7 @@ const App = () => {
               <GroupItem caption="Personal Data">
                 <SimpleItem dataField="FirstName" />
                 <SimpleItem dataField="LastName" />
-                <SimpleItem editorType="dxCheckBox" editorOptions={checkBoxOptions} />
+                <SimpleItem editorType="dxCheckBox" editorOptions={getCheckBoxOptions()} />
               </GroupItem>
             </GroupItem>
             <GroupItem>
@@ -101,7 +101,7 @@ const App = () => {
             <SimpleItem itemType="button"
               horizontalAlignment="left"
               cssClass="add-phone-button"
-              buttonOptions={addPhoneButtonOptions}>
+              buttonOptions={getPhoneButtonOptions()}>
             </SimpleItem>
           </GroupItem>
         </Form>

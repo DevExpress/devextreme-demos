@@ -17,6 +17,8 @@ import Validator from 'devextreme/ui/validator';
 import 'devextreme-react/autocomplete';
 import service from './data.js';
 
+const customer = service.getCustomer();
+
 const buttonOptions = {
   text: 'Register',
   type: 'success',
@@ -61,10 +63,16 @@ function sendRequest(value) {
   });
 }
 
+const passwordComparison = () => customer.Password;
+
+const checkComparison = () => true;
+
+const asyncValidation = (params) => sendRequest(params.value);
+
 function App() {
   const formInstance = React.useRef(null);
-  const [customer] = React.useState(service.getCustomer());
-  const [passwordOptions] = React.useState({
+
+  const getPasswordOptions = React.useCallback(() => ({
     mode: 'password',
     onValueChanged: () => {
       const editor = formInstance.current.getEditor('ConfirmPassword');
@@ -84,9 +92,9 @@ function App() {
         },
       },
     ],
-  });
+  }), [changePasswordMode]);
 
-  const [confirmOptions] = React.useState({
+  const getConfirmOptions = React.useCallback(() => ({
     mode: 'password',
     buttons: [
       {
@@ -99,7 +107,7 @@ function App() {
         },
       },
     ],
-  });
+  }), [changePasswordMode]);
 
   const handleSubmit = React.useCallback((e) => {
     notify({
@@ -112,20 +120,14 @@ function App() {
     e.preventDefault();
   }, []);
 
-  const changePasswordMode = (name) => {
+  const changePasswordMode = React.useCallback((name) => {
     const editor = formInstance.current.getEditor(name);
     editor.option('mode', editor.option('mode') === 'text' ? 'password' : 'text');
-  };
+  }, []);
 
   const onInitialized = React.useCallback((e) => {
     formInstance.current = e.component;
   }, []);
-
-  const passwordComparison = React.useCallback(() => customer.Password, [customer.Password]);
-
-  const checkComparison = React.useCallback(() => true, []);
-
-  const asyncValidation = React.useCallback((params) => sendRequest(params.value), []);
 
   return (
     <React.Fragment>
@@ -146,10 +148,10 @@ function App() {
                 message="Email is already registered"
                 validationCallback={asyncValidation} />
             </SimpleItem>
-            <SimpleItem dataField="Password" editorType="dxTextBox" editorOptions={passwordOptions}>
+            <SimpleItem dataField="Password" editorType="dxTextBox" editorOptions={getPasswordOptions()}>
               <RequiredRule message="Password is required" />
             </SimpleItem>
-            <SimpleItem name="ConfirmPassword" editorType="dxTextBox" editorOptions={confirmOptions}>
+            <SimpleItem name="ConfirmPassword" editorType="dxTextBox" editorOptions={getConfirmOptions()}>
               <Label text="Confirm Password" />
               <RequiredRule message="Confirm Password is required" />
               <CompareRule

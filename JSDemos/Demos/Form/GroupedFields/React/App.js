@@ -5,9 +5,9 @@ import Form, {
 } from 'devextreme-react/form';
 import service from './data.js';
 
-const App = () => {
-  const [employee] = React.useState(service.getEmployee());
+const employee = service.getEmployee();
 
+export default function App() {
   return (
     <React.Fragment>
       <div className="long-title"><h3>Personal details</h3></div>
@@ -51,6 +51,4 @@ const App = () => {
       </div>
     </React.Fragment>
   );
-};
-
-export default App;
+}
