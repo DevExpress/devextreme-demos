@@ -63,7 +63,7 @@ function App() {
           <Item name="showResources" />
           <Item name="showDependencies" />
           <Item name="separator" />
-          <Item widget="dxButton" options={aboutButtonOptions} />
+          <Item widget="dxButton" options={getAboutButtonOptions()} />
         </Toolbar>
 
         <Column dataField="title" caption="Subject" width={300} />
