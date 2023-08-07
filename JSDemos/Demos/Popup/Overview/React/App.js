@@ -50,21 +50,21 @@ export default function App() {
     );
   }, [currentEmployee]);
 
-  const [moreInfoButtonOptions] = React.useState({
+  const getInfoButtonOptions = React.useCallback(() => ({
     text: 'More info',
     onClick: showMoreInfo,
-  });
+  }), [showMoreInfo]);
 
-  const [emailButtonOptions] = React.useState({
+  const getEmailButtonOptions = React.useCallback(() => ({
     icon: 'email',
     text: 'Send',
     onClick: sendEmail,
-  });
+  }), [sendEmail]);
 
-  const [closeButtonOptions] = React.useState({
+  const getCloseButtonOptions = React.useCallback(() => ({
     text: 'Close',
     onClick: hideInfo,
-  });
+  }), [hideInfo]);
 
   const getItems = React.useCallback(() => employees.map((employee) => (
     <li key={employee.ID}>
@@ -93,19 +93,19 @@ export default function App() {
           widget="dxButton"
           toolbar="top"
           locateInMenu="always"
-          options={moreInfoButtonOptions}
+          options={getInfoButtonOptions()}
         />
         <ToolbarItem
           widget="dxButton"
           toolbar="bottom"
           location="before"
-          options={emailButtonOptions}
+          options={getEmailButtonOptions()}
         />
         <ToolbarItem
           widget="dxButton"
           toolbar="bottom"
           location="after"
-          options={closeButtonOptions}
+          options={getCloseButtonOptions()}
         />
         <p>
           Full Name:&nbsp;
