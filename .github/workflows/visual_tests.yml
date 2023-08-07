@@ -39,29 +39,29 @@ jobs:
     - name: DevExtreme - Restore npm cache
       uses: actions/cache@v3
       with:
-        path: ./devextreme-repo/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme-repo/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-devextreme-node-modules
+        path: 'devextreme-repo/**/node_modules'
+        key: ${{ runner.os }}-node-modules-${{ hashFiles('devextreme-repo/**/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-node-modules
 
-    - name: Use Node.js 16
+    - name: Use Node.js 18
       uses: actions/setup-node@v3
       with:
-        node-version: '16'
+        node-version: '18.16.1'
 
     - name: DevExtreme - Install packages
       working-directory: ./devextreme-repo
       run: npm install --no-audit --no-fund
 
     - name: DevExtreme - Build
-      working-directory: ./devextreme-repo
+      working-directory: ./devextreme-repo/packages/devextreme
       run: npm run build-npm-devextreme
 
     - name: DevExtreme - Pack
-      working-directory: ./devextreme-repo/artifacts/npm/devextreme
+      working-directory: ./devextreme-repo/packages/devextreme/artifacts/npm/devextreme
       run: npm pack
 
     - name: DevExtreme dist - Pack
-      working-directory: ./devextreme-repo/artifacts/npm/devextreme-dist
+      working-directory: ./devextreme-repo/packages/devextreme/artifacts/npm/devextreme-dist
       run: npm pack
 
     #Build Demos
@@ -80,10 +80,10 @@ jobs:
         npm install --no-audit --no-fund
 
     - name: Demos - Install devextreme package
-      run: npm install $(find ./devextreme-repo/artifacts/npm/devextreme/ -maxdepth 1 -name "devextreme-*.tgz")
+      run: npm install $(find ./devextreme-repo/packages/devextreme/artifacts/npm/devextreme/ -maxdepth 1 -name "devextreme-*.tgz")
 
     - name: Demos - Install devextreme-dist package
-      run: npm install $(find ./devextreme-repo/artifacts/npm/devextreme-dist/ -maxdepth 1 -name "devextreme-*.tgz")
+      run: npm install $(find ./devextreme-repo/packages/devextreme/artifacts/npm/devextreme-dist/ -maxdepth 1 -name "devextreme-*.tgz")
 
     #Publish artifacts
     - name: Zip node_modules

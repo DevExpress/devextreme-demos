@@ -78,6 +78,7 @@ module.exports = {
         'dest', // gulp
         'dev', // DevAV
         'devexpress',
+        'devextreme',
         'devextremeaddon',
         'dialogs',
         'docurl',
@@ -138,6 +139,7 @@ module.exports = {
         'july',
         'jun',
         'june',
+        'jsx',
         'Kanban',
         'lang',
         'latinamerica',
@@ -147,6 +149,7 @@ module.exports = {
         'loc',
         'lookups',
         'longtabs',
+        'luxon',
         'malemiddle',
         'maleolder',
         'maleyoung',
@@ -395,6 +398,7 @@ module.exports = {
   }, {
     files: [
       'JSDemos/Demos/**/React/*.*',
+      'JSDemos/Demos/**/ReactJs/*.*',
       'utils/templates/React/*.*',
     ],
     extends: [
