@@ -143,7 +143,7 @@ function App() {
         onItemClick={onTextAlignChanged}
       ></ButtonGroup>
     ),
-    [textAlign, textAlignItems, onTextAlignChanged],
+    [textAlign, onTextAlignChanged],
   );
 
   const renderTextAlignMenu = React.useCallback(

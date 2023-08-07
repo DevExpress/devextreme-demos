@@ -97,7 +97,12 @@ export default function App() {
       });
     });
     e.cancel = true;
-  });
+  }, [
+    exportColumnFieldHeaders,
+    exportDataFieldHeaders,
+    exportFilterFieldHeaders,
+    exportRowFieldHeaders,
+  ]);
 
   const onExportDataFieldHeadersChanged = React.useCallback(({ value }) => {
     setExportDataFieldHeaders(value);

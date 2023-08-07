@@ -41,7 +41,7 @@ const dataSource = new PivotGridDataSource({
 const onExporting = (e) => {
   const workbook = new Workbook();
   const worksheet = workbook.addWorksheet('Sales');
-
+  
   exportPivotGrid({
     component: e.component,
     worksheet,
@@ -68,8 +68,6 @@ const onExporting = (e) => {
 };
 
 const onCellPrepared = ({ cell, area, cellElement }) => {
-  cell.area = area;
-
   if (isDataCell(cell) || isTotalCell(cell)) {
     const appearance = getConditionalAppearance(cell);
     Object.assign(cellElement.style, getCssStyles(appearance));
