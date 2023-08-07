@@ -7,13 +7,13 @@ import notify from 'devextreme/ui/notify';
 const firstNameLabel = { 'aria-label': 'First Name' };
 const lastNameLabel = { 'aria-label': 'Last Name' };
 
-const App = () => {
+export default function App() {
   const formElement = React.useRef(null);
 
   const onClick = React.useCallback(() => {
     notify('Uncomment the line to enable sending a form to the server.');
     // formElement.current.submit();
-  });
+  }, []);
 
   return (
     <form id="form" ref={formElement} method="post" action="" encType="multipart/form-data">
@@ -34,6 +34,4 @@ const App = () => {
       <Button className="button" text="Update profile" type="success" onClick={onClick} />
     </form>
   );
-};
-
-export default App;
+}

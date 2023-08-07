@@ -9,8 +9,7 @@ const fileSystemProvider = new RemoteFileSystemProvider({
 
 const allowedFileExtensions = [];
 const loadPanelPosition = { of: '#file-manager' };
-
-const App = () => {
+export default function App() {
   const [loadPanelVisible, setLoadPanelVisible] = React.useState(true);
   const [wrapperClassName, setWrapperClassName] = React.useState('');
 
@@ -18,7 +17,7 @@ const App = () => {
     checkAzureStatus();
   }, []);
 
-  const checkAzureStatus = () => {
+  const checkAzureStatus = React.useCallback(() => {
     fetch('https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-status?widgetType=fileManager')
       .then((response) => response.json())
       .then((result) => {
@@ -26,7 +25,7 @@ const App = () => {
         setWrapperClassName(className);
         setLoadPanelVisible(false);
       });
-  };
+  }, [setWrapperClassName, setLoadPanelVisible]);
 
   return (
     <div id="wrapper" className={wrapperClassName}>
@@ -53,6 +52,4 @@ const App = () => {
       </div>
     </div>
   );
-};
-
-export default App;
+}

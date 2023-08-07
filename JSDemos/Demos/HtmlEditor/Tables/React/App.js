@@ -8,17 +8,17 @@ import HtmlEditor, {
 import { CheckBox } from 'devextreme-react/check-box';
 import { markup } from './data.js';
 
-const App = () => {
+export default function App() {
   const [allowResizing, setAllowResizing] = React.useState(true);
   const [contextMenuEnabled, setContextMenuEnabled] = React.useState(true);
 
   const tableResizingChanged = React.useCallback((e) => {
     setAllowResizing(e.value);
-  });
+  }, [setAllowResizing]);
 
   const tableContextMenuChanged = React.useCallback((e) => {
     setContextMenuEnabled(e.value);
-  });
+  }, [setContextMenuEnabled]);
 
   return (
     <div className="widget-container">
@@ -68,6 +68,4 @@ const App = () => {
       </div>
     </div>
   );
-};
-
-export default App;
+}

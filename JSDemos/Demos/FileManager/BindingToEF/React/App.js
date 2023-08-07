@@ -10,7 +10,7 @@ const remoteProvider = new RemoteFileSystemProvider({
 
 const allowedFileExtensions = [];
 
-const App = () => {
+export default function App() {
   const [currentPath, setCurrentPath] = React.useState('Documents/Reports');
 
   const onCurrentDirectoryChanged = React.useCallback((e) => {
@@ -42,6 +42,4 @@ const App = () => {
       </ItemView>
     </FileManager>
   );
-};
-
-export default App;
+}

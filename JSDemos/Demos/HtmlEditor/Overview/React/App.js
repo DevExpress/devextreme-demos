@@ -37,17 +37,17 @@ const headerOptions = {
   },
 };
 
-const App = () => {
+export default function App() {
   const [isMultiline, setIsMultiline] = React.useState(true);
   const [currentTab, setCurrentTab] = React.useState(tabs[2].value);
 
   const multilineChanged = React.useCallback((e) => {
     setIsMultiline(e.value);
-  });
+  }, [setIsMultiline]);
 
   const currentTabChanged = React.useCallback((e) => {
     setCurrentTab(e.value);
-  });
+  }, [setCurrentTab]);
 
   return (
     <div className="widget-container">
@@ -119,6 +119,4 @@ const App = () => {
       </div>
     </div>
   );
-};
-
-export default App;
+}

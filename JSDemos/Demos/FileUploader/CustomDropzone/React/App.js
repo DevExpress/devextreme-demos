@@ -2,26 +2,26 @@ import React from 'react';
 import FileUploader from 'devextreme-react/file-uploader';
 import ProgressBar from 'devextreme-react/progress-bar';
 
-const App = () => {
+const allowedFileExtensions = ['.jpg', '.jpeg', '.gif', '.png'];
+
+export default function App() {
   const [isDropZoneActive, setIsDropZoneActive] = React.useState(false);
   const [imageSource, setImageSource] = React.useState('');
   const [textVisible, setTextVisible] = React.useState(true);
   const [progressVisible, setProgressVisible] = React.useState(false);
   const [progressValue, setProgressValue] = React.useState(0);
 
-  const allowedFileExtensions = ['.jpg', '.jpeg', '.gif', '.png'];
-
   const onDropZoneEnter = React.useCallback((e) => {
     if (e.dropZoneElement.id === 'dropzone-external') {
       setIsDropZoneActive(true);
     }
-  });
+  }, [setIsDropZoneActive]);
 
   const onDropZoneLeave = React.useCallback((e) => {
     if (e.dropZoneElement.id === 'dropzone-external') {
       setIsDropZoneActive(false);
     }
-  });
+  }, [setIsDropZoneActive]);
 
   const onUploaded = React.useCallback((e) => {
     const { file } = e;
@@ -34,16 +34,16 @@ const App = () => {
     setTextVisible(false);
     setProgressVisible(false);
     setProgressValue(0);
-  });
+  }, [setImageSource, setIsDropZoneActive, setTextVisible, setProgressVisible, setProgressValue]);
 
   const onProgress = React.useCallback((e) => {
     setProgressValue((e.bytesLoaded / e.bytesTotal) * 100);
-  });
+  }, [setProgressValue]);
 
   const onUploadStarted = React.useCallback(() => {
     setImageSource('');
     setProgressVisible(true);
-  });
+  }, [setImageSource, setProgressVisible]);
 
   return (
     <div className="widget-container flex-box">
@@ -83,6 +83,4 @@ const App = () => {
       ></FileUploader>
     </div>
   );
-};
-
-export default App;
+}

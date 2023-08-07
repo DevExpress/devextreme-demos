@@ -2,7 +2,7 @@ import React from 'react';
 import FileManager, { Permissions, ItemView } from 'devextreme-react/file-manager';
 import { fileItems } from './data.js';
 
-const App = () => {
+export default function App() {
   const [itemViewMode, setItemViewMode] = React.useState('thumbnails');
 
   const onOptionChanged = React.useCallback((e) => {
@@ -48,6 +48,4 @@ const App = () => {
       />
     </FileManager>
   );
-};
-
-export default App;
+}

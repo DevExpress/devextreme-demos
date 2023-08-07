@@ -8,21 +8,21 @@ const remoteProvider = new RemoteFileSystemProvider({
 
 const allowedFileExtensions = ['.js', '.json', '.css'];
 
-const App = () => (
-  <FileManager
-    fileSystemProvider={remoteProvider}
-    allowedFileExtensions={allowedFileExtensions}>
-    {/* uncomment the code below to enable file/directory management */}
-    <Permissions
-      // create={true}
-      // copy={true}
-      // move={true}
-      // delete={true}
-      // rename={true}
-      // upload={true}
-      download={true}>
-    </Permissions>
-  </FileManager>
-);
-
-export default App;
+export default function App() {
+  return (
+    <FileManager
+      fileSystemProvider={remoteProvider}
+      allowedFileExtensions={allowedFileExtensions}>
+      {/* uncomment the code below to enable file/directory management */}
+      <Permissions
+        // create={true}
+        // copy={true}
+        // move={true}
+        // delete={true}
+        // rename={true}
+        // upload={true}
+        download={true}>
+      </Permissions>
+    </FileManager>
+  );
+}

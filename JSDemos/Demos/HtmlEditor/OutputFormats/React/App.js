@@ -20,17 +20,17 @@ const fontFamilyOptions = {
   },
 };
 
-const App = () => {
+export default function App() {
   const [valueContent, setValueContent] = React.useState(markup);
   const [editorValueType, setEditorValueType] = React.useState('html');
 
   const valueChanged = React.useCallback((e) => {
     setValueContent(e.value);
-  });
+  }, [setValueContent]);
 
   const valueTypeChanged = React.useCallback((e) => {
     setEditorValueType(e.addedItems[0].text.toLowerCase());
-  });
+  }, [setEditorValueType]);
 
   const prettierFormat = React.useCallback((text) => {
     if (editorValueType === 'html') {
@@ -40,7 +40,7 @@ const App = () => {
       });
     }
     return text;
-  });
+  }, [editorValueType]);
 
   return (
     <div className="widget-container">
@@ -94,6 +94,4 @@ const App = () => {
       </div>
     </div>
   );
-};
-
-export default App;
+}

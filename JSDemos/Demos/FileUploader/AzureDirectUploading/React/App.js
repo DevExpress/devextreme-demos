@@ -7,26 +7,28 @@ import { AzureGateway } from './azure.file.system.js'; // eslint-disable-line im
 const endpointUrl = 'https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-access';
 const loadPanelPosition = { of: '#file-uploader' };
 
-const App = () => {
+let gateway = null;
+
+export default function App() {
   const [requests, setRequests] = React.useState([]);
   const [loadPanelVisible, setLoadPanelVisible] = React.useState(true);
   const [wrapperClassName, setWrapperClassName] = React.useState('');
 
   React.useEffect(() => {
-    const gateway = new AzureGateway(endpointUrl, onRequestExecuted);
+    gateway = new AzureGateway(endpointUrl, onRequestExecuted);
     checkAzureStatus();
 
     return () => {
       gateway.dispose();
     };
-  }, []);
+  }, [checkAzureStatus]);
 
   const onRequestExecuted = React.useCallback(({ method, urlPath, queryString }) => {
     const request = { method, urlPath, queryString };
     setRequests([request, ...requests]);
-  });
+  }, [requests]);
 
-  const checkAzureStatus = () => {
+  const checkAzureStatus = React.useCallback(() => {
     fetch('https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-status?widgetType=fileUploader')
       .then((response) => response.json())
       .then((result) => {
@@ -34,14 +36,14 @@ const App = () => {
         setWrapperClassName(className);
         setLoadPanelVisible(false);
       });
-  };
+  }, [setWrapperClassName, setLoadPanelVisible]);
 
   const uploadChunk = React.useCallback((file, uploadInfo) => {
     let promise = null;
 
     if (uploadInfo.chunkIndex === 0) {
-      promise = gateway.getUploadAccessUrl(file.name).then((accessUrls) => {
-        uploadInfo.customData.accessUrl = accessUrls.url1;
+      promise = gateway.getUploadAccessUrl(file.name).then((accessURLs) => {
+        uploadInfo.customData.accessUrl = accessURLs.url1;
       });
     } else {
       promise = Promise.resolve();
@@ -61,7 +63,7 @@ const App = () => {
     }
 
     return promise;
-  });
+  }, []);
 
   return (
     <div id="wrapper" className={wrapperClassName}>
@@ -98,6 +100,4 @@ const App = () => {
       </div>
     </div>
   );
-};
-
-export default App;
+}

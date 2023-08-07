@@ -7,7 +7,7 @@ const remoteProvider = new RemoteFileSystemProvider({
   endpointUrl: 'https://js.devexpress.com/Demos/Mvc/api/file-manager-file-system-images',
 });
 
-const App = () => {
+export default function App() {
   const [currentPath, setCurrentPath] = React.useState('Widescreen');
   const [popupVisible, setPopupVisible] = React.useState(false);
   const [imageItemToDisplay, setImageItemToDisplay] = React.useState({});
@@ -18,15 +18,15 @@ const App = () => {
       name: e.file.name,
       url: e.file.dataItem.url,
     });
-  });
+  }, [setPopupVisible, setImageItemToDisplay]);
 
   const hideImagePopup = React.useCallback(() => {
     setPopupVisible(false);
-  });
+  }, [setPopupVisible]);
 
   const onCurrentDirectoryChanged = React.useCallback((e) => {
     setCurrentPath(e.component.option('currentPath'));
-  });
+  }, [setCurrentPath]);
 
   return (
     <div>
@@ -58,6 +58,4 @@ const App = () => {
       </Popup>
     </div>
   );
-};
-
-export default App;
+}

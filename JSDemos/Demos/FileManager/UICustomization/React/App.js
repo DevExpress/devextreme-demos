@@ -4,10 +4,10 @@ import FileManager, {
 } from 'devextreme-react/file-manager';
 import { fileItems } from './data.js';
 
-const App = () => {
+export default function App() {
   const fileManagerRef = React.useRef();
 
-  const newFileMenuOptions = {
+  const getNewFileMenuOptions = React.useCallback(() => ({
     items: [
       {
         text: 'Create new file',
@@ -29,9 +29,11 @@ const App = () => {
       },
     ],
     onItemClick,
-  };
+  }), [onItemClick]);
 
-  const changeCategoryMenuOptions = {
+  const getFileManagerInstance = React.useCallback(() => fileManagerRef.current.instance, []);
+
+  const getChangeCategoryMenuOptions = React.useCallback(() => ({
     items: [
       {
         text: 'Category',
@@ -57,7 +59,7 @@ const App = () => {
       },
     ],
     onItemClick,
-  };
+  }), [onItemClick]);
 
   const onItemClick = React.useCallback(({ itemData, viewArea, fileSystemItem }) => {
     let updated = false;
@@ -69,11 +71,14 @@ const App = () => {
     }
 
     if (updated) {
-      fileManager.refresh();
+      getFileManagerInstance().refresh();
     }
-  });
+  }, []);
 
-  const createFile = (fileExtension, directory = fileManager.getCurrentDirectory()) => {
+  const createFile = React.useCallback((
+    fileExtension,
+    directory = getFileManagerInstance().getCurrentDirectory(),
+  ) => {
     const newItem = {
       __KEY__: Date.now(),
       name: `New file${fileExtension}`,
@@ -98,15 +103,15 @@ const App = () => {
 
     array.push(newItem);
     return true;
-  };
+  }, []);
 
-  const updateCategory = (newCategory, directory, viewArea) => {
+  const updateCategory = React.useCallback((newCategory, directory, viewArea) => {
     let items = null;
 
     if (viewArea === 'navPane') {
       items = [directory];
     } else {
-      items = fileManager.getSelectedItems();
+      items = getFileManagerInstance.getSelectedItems();
     }
 
     items.forEach((item) => {
@@ -116,7 +121,7 @@ const App = () => {
     });
 
     return items.length > 0;
-  };
+  }, []);
 
   return (
     <FileManager
@@ -143,7 +148,7 @@ const App = () => {
         <Item name="showNavPane" visible="true" />
         <Item name="separator" />
         <Item name="create" />
-        <Item widget="dxMenu" location="before" options={newFileMenuOptions} />
+        <Item widget="dxMenu" location="before" options={getNewFileMenuOptions()} />
         <Item name="refresh" />
         <Item name="separator" location="after" />
         <Item name="switchView" />
@@ -152,7 +157,7 @@ const App = () => {
         <FileSelectionItem name="separator" />
         <FileSelectionItem name="delete" />
         <FileSelectionItem name="separator" />
-        <FileSelectionItem widget="dxMenu" location="before" options={changeCategoryMenuOptions} />
+        <FileSelectionItem widget="dxMenu" location="before" options={getChangeCategoryMenuOptions()} />
         <FileSelectionItem name="refresh" />
         <FileSelectionItem name="clearSelection" />
       </Toolbar>
@@ -175,6 +180,4 @@ const App = () => {
       </ContextMenu>
     </FileManager>
   );
-};
-
-export default App;
+}

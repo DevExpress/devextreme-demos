@@ -6,27 +6,27 @@ import { markup } from './data.js';
 const headerValues = [false, 1, 2, 3, 4, 5];
 const headerOptions = { inputAttr: { 'aria-label': 'Header' } };
 
-const App = () => {
+export default function App() {
   const [value, setValue] = React.useState(markup);
   const [popupVisible, setPopupVisible] = React.useState(false);
 
-  const toolbarButtonOptions = {
+  const getToolbarButtonOptions = React.useCallback(() => ({
     text: 'Show markup',
     stylingMode: 'text',
     onClick: customButtonClick,
-  };
+  }), [customButtonClick]);
 
   const valueChanged = React.useCallback((e) => {
     setValue(e.value);
-  });
+  }, [setValue]);
 
   const popupHiding = React.useCallback(() => {
     setPopupVisible(false);
-  });
+  }, [setPopupVisible]);
 
   const customButtonClick = React.useCallback(() => {
     setPopupVisible(true);
-  });
+  }, [setPopupVisible]);
 
   return (
     <div className="widget-container">
@@ -47,7 +47,7 @@ const App = () => {
           <Item name="alignRight" />
           <Item name="alignJustify" />
           <Item name="separator" />
-          <Item widget="dxButton" options={toolbarButtonOptions} />
+          <Item widget="dxButton" options={getToolbarButtonOptions()} />
         </Toolbar>
       </HtmlEditor>
       <Popup showTitle={true} title="Markup" visible={popupVisible} onHiding={popupHiding}>
@@ -55,6 +55,4 @@ const App = () => {
       </Popup>
     </div>
   );
-};
-
-export default App;
+}

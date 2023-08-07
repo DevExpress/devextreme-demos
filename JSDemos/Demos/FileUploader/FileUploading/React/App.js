@@ -6,34 +6,33 @@ import CheckBox from 'devextreme-react/check-box';
 const uploadModes = ['instantly', 'useButtons'];
 const fileTypeLabel = { 'aria-label': 'File Type' };
 const uploadModeLabel = { 'aria-label': 'Mode' };
+const fileTypesSource = [
+  { name: 'All types', value: '*' },
+  { name: 'Images', value: 'image/*' },
+  { name: 'Videos', value: 'video/*' },
+];
 
-const App = () => {
+export default function App() {
   const [multiple, setMultiple] = React.useState(false);
   const [uploadMode, setUploadMode] = React.useState('instantly');
   const [accept, setAccept] = React.useState('*');
   const [selectedFiles, setSelectedFiles] = React.useState([]);
 
-  const fileTypesSource = [
-    { name: 'All types', value: '*' },
-    { name: 'Images', value: 'image/*' },
-    { name: 'Videos', value: 'video/*' },
-  ];
-
   const onSelectedFilesChanged = React.useCallback((e) => {
     setSelectedFiles(e.value);
-  });
+  }, [setSelectedFiles]);
 
   const onAcceptChanged = React.useCallback((e) => {
     setAccept(e.value);
-  });
+  }, [setAccept]);
 
   const onUploadModeChanged = React.useCallback((e) => {
     setUploadMode(e.value);
-  });
+  }, [setUploadMode]);
 
   const onMultipleChanged = React.useCallback((e) => {
     setMultiple(e.value);
-  });
+  }, [setMultiple]);
 
   return (
     <div>
@@ -87,6 +86,4 @@ const App = () => {
       </div>
     </div>
   );
-};
-
-export default App;
+}

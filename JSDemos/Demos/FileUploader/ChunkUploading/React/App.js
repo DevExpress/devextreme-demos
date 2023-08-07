@@ -1,7 +1,11 @@
 import React from 'react';
 import FileUploader from 'devextreme-react/file-uploader';
 
-const App = () => {
+function getValueInKb(value) {
+  return `${(value / 1024).toFixed(0)}kb`;
+}
+
+export default function App() {
   const [chunks, setChunks] = React.useState([]);
 
   const onUploadProgress = React.useCallback((e) => {
@@ -11,13 +15,11 @@ const App = () => {
       bytesTotal: e.bytesTotal,
     };
     setChunks([...chunks, chunk]);
-  });
+  }, [chunks, setChunks]);
 
   const onUploadStarted = React.useCallback(() => {
     setChunks([]);
-  });
-
-  const getValueInKb = React.useCallback((value) => `${(value / 1024).toFixed(0)}kb`);
+  }, [setChunks]);
 
   return (
     <React.Fragment>
@@ -47,6 +49,4 @@ const App = () => {
       </div>
     </React.Fragment>
   );
-};
-
-export default App;
+}
