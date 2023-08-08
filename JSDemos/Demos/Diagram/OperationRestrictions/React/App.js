@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Diagram, {
   CustomShape, Nodes, AutoLayout, ContextToolbox, Toolbox, PropertiesPanel, Group,
 } from 'devextreme-react/diagram';
@@ -47,7 +47,7 @@ function itemStyleExpr(obj) {
 }
 
 export default function App() {
-  const diagramRef = useRef(null);
+  const diagramRef = React.useRef(null);
 
   const onRequestEditOperation = React.useCallback((e) => {
     const diagram = diagramRef.current.instance;

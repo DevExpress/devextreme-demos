@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Diagram, { CustomShape, Nodes, AutoLayout } from 'devextreme-react/diagram';
 import { Popup } from 'devextreme-react/popup';
 import ArrayStore from 'devextreme/data/array_store';
@@ -16,8 +16,8 @@ function itemTypeExpr(obj) {
 }
 
 export default function App() {
-  const [currentEmployee, setCurrentEmployee] = useState({});
-  const [popupVisible, setPopupVisible] = useState(false);
+  const [currentEmployee, setCurrentEmployee] = React.useState({});
+  const [popupVisible, setPopupVisible] = React.useState(false);
 
   const customShapeTemplate = React.useCallback((item) => (CustomShapeTemplate(item.dataItem,
     () => { showInfo(item.dataItem); })), [showInfo]);

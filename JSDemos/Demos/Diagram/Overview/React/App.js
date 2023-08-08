@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import Diagram from 'devextreme-react/diagram';
 import 'whatwg-fetch';
 
 export default function App() {
-  const diagramRef = useRef();
+  const diagramRef = React.useRef();
 
-  useEffect(() => {
+  React.useEffect(() => {
     const diagram = diagramRef.current.instance;
     fetch('../../../../data/diagram-flow.json')
       .then((response) => response.json())

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Diagram, {
   Nodes, AutoLayout, Edges, Toolbox, Group,
 } from 'devextreme-react/diagram';
@@ -69,7 +69,7 @@ function linkToLineEndExpr() {
 }
 
 export default function App() {
-  useEffect(() => {
+  React.useEffect(() => {
     // Initialize the data sources
     orgItemsDataSource.load();
     orgLinksDataSource.load();

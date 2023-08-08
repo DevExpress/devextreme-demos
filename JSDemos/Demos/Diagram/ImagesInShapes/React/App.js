@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Diagram, {
   Nodes, AutoLayout, Edges, Toolbox, Group,
 } from 'devextreme-react/diagram';
@@ -15,7 +15,7 @@ const orgLinksDataSource = new ArrayStore({
 });
 
 export default function App() {
-  useEffect(() => {
+  React.useEffect(() => {
     // any necessary code that needs to run on component mount or update
   }, []);
 

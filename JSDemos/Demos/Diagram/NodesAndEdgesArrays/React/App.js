@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Diagram, {
   Nodes, Edges, AutoLayout, Toolbox, Group,
 } from 'devextreme-react/diagram';
@@ -15,7 +15,7 @@ const flowEdgesDataSource = new ArrayStore({
 });
 
 export default function App() {
-  useEffect(() => {
+  React.useEffect(() => {
     // Any necessary side effects can be added here
   }, []);
 

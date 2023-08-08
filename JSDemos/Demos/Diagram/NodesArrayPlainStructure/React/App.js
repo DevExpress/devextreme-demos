@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Diagram, {
   Nodes, AutoLayout, Toolbox, Group,
 } from 'devextreme-react/diagram';
@@ -11,7 +11,7 @@ const dataSource = new ArrayStore({
 });
 
 export default function App() {
-  useEffect(() => {
+  React.useEffect(() => {
     // Any side effects can be added here
   }, []);
 

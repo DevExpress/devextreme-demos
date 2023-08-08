@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Diagram, {
   Nodes, AutoLayout, Toolbox, PropertiesPanel,
 } from 'devextreme-react/diagram';
@@ -22,7 +22,7 @@ function onContentReady(e) {
 }
 
 export default function App() {
-  const [selectedItemNames, setSelectedItemNames] = useState('Nobody has been selected');
+  const [selectedItemNames, setSelectedItemNames] = React.useState('Nobody has been selected');
 
   const onSelectionChanged = React.useCallback(({ items }) => {
     let selectedItems = 'Nobody has been selected';
@@ -35,7 +35,7 @@ export default function App() {
     setSelectedItemNames(selectedItems);
   }, [setSelectedItemNames]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     // componentDidMount logic here
   }, []);
 
