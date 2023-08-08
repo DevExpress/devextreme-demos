@@ -9,7 +9,7 @@ export default function App() {
     if (e.fullName === 'itemView.mode') {
       setItemViewMode(e.value);
     }
-  });
+  }, [setItemViewMode]);
 
   const customizeIcon = React.useCallback((fileSystemItem) => {
     if (fileSystemItem.isDirectory) {
@@ -27,7 +27,7 @@ export default function App() {
       default:
         return '../../../../images/thumbnails/doc-txt.svg';
     }
-  });
+  }, []);
 
   return (
     <FileManager
