@@ -100,7 +100,7 @@ function App() {
 
   function onRequestExecuted({ method, urlPath, queryString }) {
     const request = { method, urlPath, queryString };
-    setRequests([request, ...requests]);
+    setRequests((prevValue) => [request, ...prevValue]);
   }
 
   function checkAzureStatus() {
