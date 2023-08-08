@@ -35,14 +35,14 @@ function App() {
       ...ganttConfig,
       contextMenuItems: e.value ? getContextMenuItems() : undefined,
     });
-  }, [ganttConfig]);
+  }, [ganttConfig, setGanttConfig]);
 
   const onPreventContextMenuShowing = React.useCallback((e) => {
     setGanttConfig({
       ...ganttConfig,
       disableContextMenu: e.value,
     });
-  }, [ganttConfig]);
+  }, [ganttConfig, setGanttConfig]);
 
   const onCustomCommandClick = React.useCallback((e) => {
     if (e.name === 'ToggleDisplayOfResources') {
@@ -51,7 +51,7 @@ function App() {
         showResources: !ganttConfig.showResources,
       });
     }
-  }, [ganttConfig]);
+  }, [ganttConfig, setGanttConfig]);
 
   return (
     <div id="form-demo">

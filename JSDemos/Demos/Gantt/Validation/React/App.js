@@ -17,21 +17,21 @@ function App() {
       ...ganttConfig,
       autoUpdateParentTasks: e.value,
     });
-  }, [ganttConfig]);
+  }, [ganttConfig, setGanttConfig]);
 
   const onValidateDependenciesChanged = React.useCallback((e) => {
     setGanttConfig({
       ...ganttConfig,
       validateDependencies: e.value,
     });
-  }, [ganttConfig]);
+  }, [ganttConfig, setGanttConfig]);
 
   const onEnablePredecessorGapChanged = React.useCallback((e) => {
     setGanttConfig({
       ...ganttConfig,
       enablePredecessorGap: e.value,
     });
-  }, [ganttConfig]);
+  }, [ganttConfi, setGanttConfig]);
 
   return (
     <div id="form-demo">
