@@ -43,10 +43,10 @@ jobs:
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme-repo/package-lock.json') }}
         restore-keys: ${{ runner.os }}-devextreme-node-modules
 
-    - name: Use Node.js 16
+    - name: Use Node.js 18
       uses: actions/setup-node@v3
       with:
-        node-version: '16'
+        node-version: '18.16.1'
 
     - name: DevExtreme - Install packages
       working-directory: ./devextreme-repo
