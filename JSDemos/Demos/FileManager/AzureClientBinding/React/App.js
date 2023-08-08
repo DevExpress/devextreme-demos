@@ -10,12 +10,9 @@ const loadPanelPosition = { of: '#file-manager' };
 
 let gateway = null;
 let azure = null;
-let fileSystemProvider = undefined;
 
 function getItems(parentDirectory) {
-  const a = azure.getItems(parentDirectory.path);
-  console.log(a);
-  return a;
+  return azure.getItems(parentDirectory.path);
 }
 
 function createDirectory(parentDirectory, name) {
