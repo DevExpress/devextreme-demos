@@ -9,6 +9,13 @@
     "noEmit": true,
     "allowImportingTsExtensions": true,
   },
+  "ts-node": {
+    "compilerOptions": {
+      "target": "ES2015",
+      "moduleResolution": "node",
+      "jsx": "react",
+    }
+  },
   "include": [
     "JSDemos/Demos/**/*.ts",
     "JSDemos/Demos/**/*.tsx"
