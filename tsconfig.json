@@ -6,6 +6,8 @@
     "skipLibCheck": true,
     "moduleResolution": "node",
     "jsx": "react",
+    "emitDeclarationOnly": true,
+    "allowImportingTsExtensions": true,
   },
   "include": [
     "JSDemos/Demos/**/*.ts",
