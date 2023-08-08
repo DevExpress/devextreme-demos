@@ -17,21 +17,21 @@ import 'whatwg-fetch';
 const pageCommands = ['pageSize', 'pageOrientation', 'pageColor'];
 const menuCommands = ['bringToFront', 'sendToBack', 'lock', 'unlock'];
 
-const App = () => {
-  const diagramRef = useRef(null);
+function onCustomCommand(e) {
+  if (e.name === 'clear') {
+    const result = dialog.confirm('Are you sure you want to clear the diagram? This action cannot be undone.', 'Warning');
+    result.then(
+      (dialogResult) => {
+        if (dialogResult) {
+          e.component.import('');
+        }
+      },
+    );
+  }
+}
 
-  const onCustomCommand = (e) => {
-    if (e.name === 'clear') {
-      const result = dialog.confirm('Are you sure you want to clear the diagram? This action cannot be undone.', 'Warning');
-      result.then(
-        (dialogResult) => {
-          if (dialogResult) {
-            e.component.import('');
-          }
-        },
-      );
-    }
-  };
+export default function App() {
+  const diagramRef = useRef(null);
 
   useEffect(() => {
     const diagram = diagramRef.current.instance;
@@ -79,6 +79,4 @@ const App = () => {
       </Toolbox>
     </Diagram>
   );
-};
-
-export default App;
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import Diagram from 'devextreme-react/diagram';
 import 'whatwg-fetch';
 
-const App = () => {
+export default function App() {
   const diagramRef = useRef();
 
   useEffect(() => {
@@ -21,5 +21,3 @@ const App = () => {
     <Diagram id="diagram" ref={diagramRef} />
   );
 }
-
-export default App;

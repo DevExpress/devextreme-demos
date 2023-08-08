@@ -8,35 +8,48 @@ import service from './data.js';
 
 const shapes = ['team', 'employee'];
 
-const App = () => {
-  const diagramRef = useRef(null);
-  const orgItemsDataSource = new ArrayStore({
-    key: 'ID',
-    data: service.getOrgItems(),
+const orgItemsDataSource = new ArrayStore({
+  key: 'ID',
+  data: service.getOrgItems(),
+});
+
+function showToast(text) {
+  notify({
+    position: {
+      at: 'top', my: 'top', of: '#diagram', offset: '0 4',
+    },
+    message: text,
+    type: 'warning',
+    delayTime: 2000,
   });
+}
 
-  const showToast = (text) => {
-    notify({
-      position: {
-        at: 'top', my: 'top', of: '#diagram', offset: '0 4',
-      },
-      message: text,
-      type: 'warning',
-      delayTime: 2000,
-    });
-  };
-
-  const onRequestLayoutUpdate = (e) => {
-    for (let i = 0; i < e.changes.length; i += 1) {
-      if (e.changes[i].type === 'remove') {
-        e.allowed = true;
-      } else if (e.changes[i].data.ParentID !== undefined && e.changes[i].data.ParentID !== null) {
-        e.allowed = true;
-      }
+function onRequestLayoutUpdate(e) {
+  for (let i = 0; i < e.changes.length; i += 1) {
+    if (e.changes[i].type === 'remove') {
+      e.allowed = true;
+    } else if (e.changes[i].data.ParentID !== undefined && e.changes[i].data.ParentID !== null) {
+      e.allowed = true;
     }
-  };
+  }
+}
 
-  const onRequestEditOperation = (e) => {
+function itemStyleExpr(obj) {
+  if (obj.Type === 'root') {
+    return { fill: '#ffcfc3' };
+  }
+
+  if (obj.Type === 'team') {
+    return { fill: '#b7e3fe' };
+  }
+
+  return { fill: '#bbefcb' };
+}
+
+export default function App() {
+  const diagramRef = useRef(null);
+
+  const onRequestEditOperation = React.useCallback((e) => {
     const diagram = diagramRef.current.instance;
     if (e.operation === 'addShape') {
       if (e.args.shape.type !== 'employee' && e.args.shape.type !== 'team') {
@@ -105,19 +118,7 @@ const App = () => {
     } else if (e.operation === 'beforeChangeConnectorText') {
       e.allowed = false;
     }
-  };
-
-  const itemStyleExpr = (obj) => {
-    if (obj.Type === 'root') {
-      return { fill: '#ffcfc3' };
-    }
-
-    if (obj.Type === 'team') {
-      return { fill: '#b7e3fe' };
-    }
-
-    return { fill: '#bbefcb' };
-  };
+  }, []);
 
   return (
     <Diagram id="diagram" ref={diagramRef} onRequestEditOperation={onRequestEditOperation} onRequestLayoutUpdate={onRequestLayoutUpdate}>
@@ -139,6 +140,4 @@ const App = () => {
       </PropertiesPanel>
     </Diagram>
   );
-};
-
-export default App;
+}

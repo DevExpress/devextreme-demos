@@ -5,12 +5,12 @@ import Diagram, {
 import ArrayStore from 'devextreme/data/array_store';
 import service from './data.js';
 
-const App = () => {
-  const dataSource = new ArrayStore({
-    key: 'ID',
-    data: service.getEmployees(),
-  });
+const dataSource = new ArrayStore({
+  key: 'ID',
+  data: service.getEmployees(),
+});
 
+export default function App() {
   useEffect(() => {
     // Any side effects can be added here
   }, []);
@@ -26,5 +26,3 @@ const App = () => {
     </Diagram>
   );
 }
-
-export default App;

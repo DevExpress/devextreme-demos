@@ -1,25 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Diagram, {
   Nodes, AutoLayout, Toolbox, Group,
 } from 'devextreme-react/diagram';
 import ArrayStore from 'devextreme/data/array_store';
 import service from './data.js';
 
-const App = () => {
-  const [dataSource, setDataSource] = useState([]);
+const dataSource = new ArrayStore({
+  key: 'this',
+  data: service.getEmployees(),
+});
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await service.getEmployees();
-      setDataSource(new ArrayStore({
-        key: 'this',
-        data: data,
-      }));
-    };
-
-    fetchData();
-  }, []);
-
+export default function App() {
   return (
     <Diagram id="diagram">
       <Nodes dataSource={dataSource} textExpr="Title" itemsExpr="Items">
@@ -30,6 +21,4 @@ const App = () => {
       </Toolbox>
     </Diagram>
   );
-};
-
-export default App;
+}

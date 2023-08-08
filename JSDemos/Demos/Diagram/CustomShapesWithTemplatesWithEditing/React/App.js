@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import Diagram, {
   CustomShape, ContextToolbox, PropertiesPanel, Group, Tab, Toolbox, Nodes, AutoLayout,
 } from 'devextreme-react/diagram';
@@ -20,55 +20,82 @@ const cityLabel = { 'aria-label': 'City' };
 const phoneLabel = { 'aria-label': 'Phone' };
 const skypeLabel = { 'aria-label': 'Skype' };
 
-const App = () => {
-  const [currentEmployee, setCurrentEmployee] = useState({});
-  const [popupVisible, setPopupVisible] = useState(false);
+let generatedID = 100;
 
-  const generatedID = useRef(100);
-  const employees = service.getEmployees();
-  const diagramRef = useRef(null);
-  const dataSource = new ArrayStore({
-    key: 'ID',
-    data: employees,
-    onInserting(values, key) {
-      this.update(key, {
-        ID: values.ID || (generatedID.current += 1),
-        Full_Name: values.Full_Name || "Employee's Name",
-        Title: values.Title || "Employee's Title",
-      });
-    },
-  });
+const employees = service.getEmployees();
+const dataSource = new ArrayStore({
+  key: 'ID',
+  data: employees,
+  onInserting(values, key) {
+    this.update(key, {
+      ID: values.ID || (generatedID += 1),
+      Full_Name: values.Full_Name || "Employee's Name",
+      Title: values.Title || "Employee's Title",
+    });
+  },
+});
 
-  const onRequestLayoutUpdate = (e) => {
-    for (let i = 0; i < e.changes.length; i += 1) {
-      if (e.changes[i].type === 'remove') {
-        e.allowed = true;
-      } else if (e.changes[i].data.Head_ID !== undefined && e.changes[i].data.Head_ID !== null) {
-        e.allowed = true;
-      }
+function onRequestLayoutUpdate(e) {
+  for (let i = 0; i < e.changes.length; i += 1) {
+    if (e.changes[i].type === 'remove') {
+      e.allowed = true;
+    } else if (e.changes[i].data.Head_ID !== undefined && e.changes[i].data.Head_ID !== null) {
+      e.allowed = true;
     }
-  };
+  }
+}
 
-  const customShapeTemplate = (item) => {
-    return CustomShapeTemplate(item.dataItem,
-      () => { editEmployee(item.dataItem); },
-      () => { deleteEmployee(item.dataItem); });
-  };
+function deleteEmployee(employee) {
+  dataSource.push([{ type: 'remove', key: employee.ID }]);
+}
 
-  const customShapeToolboxTemplate = () => {
-    return CustomShapeToolboxTemplate();
-  };
+function itemTypeExpr() {
+  return 'employee';
+}
 
-  const editEmployee = (employee) => {
+function itemCustomDataExpr(obj, value) {
+  if (value === undefined) {
+    return {
+      Full_Name: obj.Full_Name,
+      Prefix: obj.Prefix,
+      Title: obj.Title,
+      City: obj.City,
+      State: obj.State,
+      Email: obj.Email,
+      Skype: obj.Skype,
+      Mobile_Phone: obj.Mobile_Phone,
+    };
+  }
+  obj.Full_Name = value.Full_Name;
+  obj.Prefix = value.Prefix;
+  obj.Title = value.Title;
+  obj.City = value.City;
+  obj.State = value.State;
+  obj.Email = value.Email;
+  obj.Skype = value.Skype;
+  obj.Mobile_Phone = value.Mobile_Phone;
+  return null;
+}
+
+export default function App() {
+  const [currentEmployee, setCurrentEmployee] = React.useState({});
+  const [popupVisible, setPopupVisible] = React.useState(false);
+
+  const diagramRef = React.useRef(null);
+
+  const customShapeTemplate = React.useCallback((item) => (CustomShapeTemplate(item.dataItem,
+    () => { editEmployee(item.dataItem); },
+    () => { deleteEmployee(item.dataItem); })
+  ), [editEmployee, deleteEmployee]);
+
+  const customShapeToolboxTemplate = React.useCallback(() => CustomShapeToolboxTemplate(), []);
+
+  const editEmployee = React.useCallback((employee) => {
     setCurrentEmployee({ ...employee });
     setPopupVisible(true);
-  };
+  }, []);
 
-  const deleteEmployee = (employee) => {
-    dataSource.push([{ type: 'remove', key: employee.ID }]);
-  };
-
-  const updateEmployee = () => {
+  const updateEmployee = React.useCallback(() => {
     dataSource.push([{
       type: 'update',
       key: currentEmployee.ID,
@@ -84,49 +111,49 @@ const App = () => {
     }]);
     setCurrentEmployee({});
     setPopupVisible(false);
-  };
+  }, [currentEmployee, setCurrentEmployee, setPopupVisible]);
 
-  const cancelEditEmployee = () => {
+  const cancelEditEmployee = React.useCallback(() => {
     setCurrentEmployee({});
     setPopupVisible(false);
-  };
+  }, [setCurrentEmployee, setPopupVisible]);
 
-  const handleChange = (field, value) => {
-    setCurrentEmployee(prevState => ({
+  const handleChange = React.useCallback((field, value) => {
+    setCurrentEmployee((prevState) => ({
       ...prevState,
-      [field]: value
+      [field]: value,
     }));
-  };
+  }, [setCurrentEmployee]);
 
-  const handleNameChange = (e) => {
+  const handleNameChange = React.useCallback((e) => {
     handleChange('Full_Name', e.value);
-  };
+  }, [handleChange]);
 
-  const handleTitleChange = (e) => {
+  const handleTitleChange = React.useCallback((e) => {
     handleChange('Title', e.value);
-  };
+  }, [handleChange]);
 
-  const handleCityChange = (e) => {
+  const handleCityChange = React.useCallback((e) => {
     handleChange('City', e.value);
-  };
+  }, [handleChange]);
 
-  const handleStateChange = (e) => {
+  const handleStateChange = React.useCallback((e) => {
     handleChange('State', e.value);
-  };
+  }, [handleChange]);
 
-  const handleEmailChange = (e) => {
+  const handleEmailChange = React.useCallback((e) => {
     handleChange('Email', e.value);
-  };
+  }, [handleChange]);
 
-  const handleSkypeChange = (e) => {
+  const handleSkypeChange = React.useCallback((e) => {
     handleChange('Skype', e.value);
-  };
+  }, [handleChange]);
 
-  const handlePhoneChange = (e) => {
+  const handlePhoneChange = React.useCallback((e) => {
     handleChange('Mobile_Phone', e.value);
-  };
+  }, [handleChange]);
 
-  const popupContentRender = () => (
+  const popupContentRender = React.useCallback(() => (
     <PopupContentFunc
       currentEmployee={currentEmployee}
       handleNameChange={handleNameChange}
@@ -139,7 +166,18 @@ const App = () => {
       updateEmployeeClick={updateEmployee}
       cancelEditEmployeeClick={cancelEditEmployee}
     />
-  );
+  ), [
+    currentEmployee,
+    handleNameChange,
+    handleTitleChange,
+    handleCityChange,
+    handleStateChange,
+    handleEmailChange,
+    handleSkypeChange,
+    handlePhoneChange,
+    updateEmployee,
+    cancelEditEmployee,
+  ]);
 
   return (
     <div id="container">
@@ -173,9 +211,9 @@ const App = () => {
       />
     </div>
   );
-};
+}
 
-const PopupContentFunc = (props) => {
+function PopupContentFunc(props) {
   return (
     <React.Fragment>
       <div className="dx-fieldset">
@@ -217,4 +255,15 @@ const PopupContentFunc = (props) => {
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Phone</div>
-          <div className="dx-field-value
+          <div className="dx-field-value">
+            <TextBox inputAttr={phoneLabel} value={props.currentEmployee.Mobile_Phone} onValueChanged={props.handlePhoneChange} valueChangeEvent="input"></TextBox>
+          </div>
+        </div>
+      </div>
+      <div className="dx-fieldset buttons">
+        <Button text="Update" type="default" onClick={props.updateEmployeeClick}></Button>
+        <Button text="Cancel" onClick={props.cancelEditEmployeeClick}></Button>
+      </div>
+    </React.Fragment>
+  );
+}

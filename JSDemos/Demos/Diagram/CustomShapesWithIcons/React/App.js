@@ -4,7 +4,7 @@ import Diagram, {
 } from 'devextreme-react/diagram';
 import 'whatwg-fetch';
 
-const App = () => {
+export default function App() {
   const diagramRef = useRef(null);
 
   useEffect(() => {
@@ -20,12 +20,12 @@ const App = () => {
   }, []);
 
   return (
-    <Diagram id="diagram" ref={diagramRef}>
+    <Diagram id="diagram" ref={this.diagramRef}>
       <CustomShape
         category="hardware"
         type="internet"
         title="Internet"
-        backgroundImageUrl="../../../../images/shapes/internet.svg"
+        backgroundImageUrl="images/shapes/internet.svg"
         backgroundImageLeft={0.15}
         backgroundImageTop={0}
         backgroundImageWidth={0.7}
@@ -47,7 +47,7 @@ const App = () => {
         category="hardware"
         type="laptop"
         title="Laptop"
-        backgroundImageUrl="../../../../images/shapes/laptop.svg"
+        backgroundImageUrl="images/shapes/laptop.svg"
         backgroundImageLeft={0.15}
         backgroundImageTop={0}
         backgroundImageWidth={0.7}
@@ -69,7 +69,7 @@ const App = () => {
         category="hardware"
         type="mobile"
         title="Mobile"
-        backgroundImageUrl="../../../../images/shapes/mobile.svg"
+        backgroundImageUrl="images/shapes/mobile.svg"
         backgroundImageLeft={0.15}
         backgroundImageTop={0}
         backgroundImageWidth={0.7}
@@ -91,7 +91,7 @@ const App = () => {
         category="hardware"
         type="pc"
         title="PC"
-        backgroundImageUrl="../../../../images/shapes/pc.svg"
+        backgroundImageUrl="images/shapes/pc.svg"
         backgroundImageLeft={0.15}
         backgroundImageTop={0}
         backgroundImageWidth={0.7}
@@ -113,7 +113,7 @@ const App = () => {
         category="hardware"
         type="phone"
         title="Phone"
-        backgroundImageUrl="../../../../images/shapes/phone.svg"
+        backgroundImageUrl="images/shapes/phone.svg"
         backgroundImageLeft={0.15}
         backgroundImageTop={0}
         backgroundImageWidth={0.7}
@@ -135,7 +135,7 @@ const App = () => {
         category="hardware"
         type="printer"
         title="Printer"
-        backgroundImageUrl="../../../../images/shapes/printer.svg"
+        backgroundImageUrl="images/shapes/printer.svg"
         backgroundImageLeft={0.15}
         backgroundImageTop={0}
         backgroundImageWidth={0.7}
@@ -157,7 +157,7 @@ const App = () => {
         category="hardware"
         type="router"
         title="Router"
-        backgroundImageUrl="../../../../images/shapes/router.svg"
+        backgroundImageUrl="images/shapes/router.svg"
         backgroundImageLeft={0.15}
         backgroundImageTop={0}
         backgroundImageWidth={0.7}
@@ -175,7 +175,7 @@ const App = () => {
         category="hardware"
         type="scaner"
         title="Scaner"
-        backgroundImageUrl="../../../../images/shapes/scaner.svg"
+        backgroundImageUrl="images/shapes/scaner.svg"
         backgroundImageLeft={0.15}
         backgroundImageTop={0}
         backgroundImageWidth={0.7}
@@ -197,7 +197,7 @@ const App = () => {
         category="hardware"
         type="server"
         title="Server"
-        backgroundImageUrl="../../../../images/shapes/server.svg"
+        backgroundImageUrl="images/shapes/server.svg"
         backgroundImageLeft={0.15}
         backgroundImageTop={0}
         backgroundImageWidth={0.7}
@@ -219,7 +219,7 @@ const App = () => {
         category="hardware"
         type="switch"
         title="Switch"
-        backgroundImageUrl="../../../../images/shapes/switch.svg"
+        backgroundImageUrl="images/shapes/switch.svg"
         backgroundImageLeft={0.15}
         backgroundImageTop={0}
         backgroundImageWidth={0.7}
@@ -231,4 +231,37 @@ const App = () => {
         textLeft={0}
         textTop={0.7}
         textWidth={1}
-        textHeight={
+        textHeight={0.3}>
+        <ConnectionPoint x={0.5} y={0} />
+        <ConnectionPoint x={0.9} y={0.5} />
+        <ConnectionPoint x={0.5} y={1} />
+        <ConnectionPoint x={0.1} y={0.5} />
+      </CustomShape>
+      <CustomShape
+        category="hardware"
+        type="wifi"
+        title="Wi Fi Router"
+        backgroundImageUrl="images/shapes/wifi.svg"
+        backgroundImageLeft={0.15}
+        backgroundImageTop={0}
+        backgroundImageWidth={0.7}
+        backgroundImageHeight={0.7}
+        defaultWidth={0.75}
+        defaultHeight={0.75}
+        defaultText="Wi Fi"
+        allowEditText={true}
+        textLeft={0}
+        textTop={0.7}
+        textWidth={1}
+        textHeight={0.3}>
+        <ConnectionPoint x={0.5} y={0} />
+        <ConnectionPoint x={0.9} y={0.5} />
+        <ConnectionPoint x={0.5} y={1} />
+        <ConnectionPoint x={0.1} y={0.5} />
+      </CustomShape>
+      <Toolbox>
+        <Group category="hardware" title="Hardware" />
+      </Toolbox>
+    </Diagram>
+  );
+}

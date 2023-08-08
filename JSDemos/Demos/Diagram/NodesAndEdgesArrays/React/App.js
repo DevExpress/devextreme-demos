@@ -5,16 +5,16 @@ import Diagram, {
 import ArrayStore from 'devextreme/data/array_store';
 import service from './data.js';
 
-const App = () => {
-  const flowNodesDataSource = new ArrayStore({
-    key: 'id',
-    data: service.getFlowNodes(),
-  });
-  const flowEdgesDataSource = new ArrayStore({
-    key: 'id',
-    data: service.getFlowEdges(),
-  });
+const flowNodesDataSource = new ArrayStore({
+  key: 'id',
+  data: service.getFlowNodes(),
+});
+const flowEdgesDataSource = new ArrayStore({
+  key: 'id',
+  data: service.getFlowEdges(),
+});
 
+export default function App() {
   useEffect(() => {
     // Any necessary side effects can be added here
   }, []);
@@ -31,5 +31,3 @@ const App = () => {
     </Diagram>
   );
 }
-
-export default App;

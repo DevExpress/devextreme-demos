@@ -2,7 +2,7 @@ import React from 'react';
 import Diagram from 'devextreme-react/diagram';
 import 'whatwg-fetch';
 
-const App = () => {
+export default function App() {
   const diagramRef = React.useRef();
 
   React.useEffect(() => {
@@ -21,5 +21,3 @@ const App = () => {
     <Diagram id="diagram" ref={diagramRef} autoZoomMode="fitWidth" />
   );
 }
-
-export default App;

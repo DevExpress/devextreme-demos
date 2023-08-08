@@ -28,7 +28,7 @@ const dataSource = createStore({
 
 const shapes = ['rectangle'];
 
-const App = () => {
+export default function App() {
   return (
     <Diagram id="diagram">
       <Nodes dataSource={dataSource} keyExpr="ID" textExpr="Title" parentKeyExpr="HeadID">
@@ -42,5 +42,3 @@ const App = () => {
     </Diagram>
   );
 }
-
-export default App;

@@ -3,9 +3,10 @@ import Diagram, { CustomShape, Group, Toolbox } from 'devextreme-react/diagram';
 import service from './data.js';
 import 'whatwg-fetch';
 
-const App = () => {
+const employees = service.getEmployees();
+
+export default function App() {
   const diagramRef = useRef();
-  const employees = service.getEmployees();
 
   useEffect(() => {
     const diagram = diagramRef.current.instance;
@@ -36,6 +37,4 @@ const App = () => {
       </Toolbox>
     </Diagram>
   );
-};
-
-export default App;
+}

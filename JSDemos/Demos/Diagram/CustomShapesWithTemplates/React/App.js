@@ -5,33 +5,32 @@ import ArrayStore from 'devextreme/data/array_store';
 import CustomShapeTemplate from './CustomShapeTemplate.js';
 import service from './data.js';
 
-const App = () => {
-  const employees = service.getEmployees();
-  const dataSource = new ArrayStore({
-    key: 'ID',
-    data: employees,
-  });
+const employees = service.getEmployees();
+const dataSource = new ArrayStore({
+  key: 'ID',
+  data: employees,
+});
 
+function itemTypeExpr(obj) {
+  return `employee${obj.ID}`;
+}
+
+export default function App() {
   const [currentEmployee, setCurrentEmployee] = useState({});
   const [popupVisible, setPopupVisible] = useState(false);
 
-  const customShapeTemplate = (item) => {
-    return CustomShapeTemplate(item.dataItem, () => { showInfo(item.dataItem); });
-  }
+  const customShapeTemplate = React.useCallback((item) => (CustomShapeTemplate(item.dataItem,
+    () => { showInfo(item.dataItem); })), [showInfo]);
 
-  const showInfo = (employee) => {
+  const showInfo = React.useCallback((employee) => {
     setCurrentEmployee(employee);
     setPopupVisible(true);
-  }
+  }, [setCurrentEmployee, setPopupVisible]);
 
-  const hideInfo = () => {
+  const hideInfo = React.useCallback(() => {
     setCurrentEmployee({});
     setPopupVisible(false);
-  }
-
-  const itemTypeExpr = (obj) => {
-    return `employee${obj.ID}`;
-  }
+  }, [setCurrentEmployee, setPopupVisible]);
 
   return (
     <div id="container">
@@ -69,5 +68,3 @@ const App = () => {
     </div>
   );
 }
-
-export default App;

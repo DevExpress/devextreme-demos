@@ -5,34 +5,35 @@ import Diagram, {
 import ArrayStore from 'devextreme/data/array_store';
 import service from './data.js';
 
-const App = () => {
+const dataSource = new ArrayStore({
+  key: 'ID',
+  data: service.getEmployees(),
+});
+
+function onContentReady(e) {
+  const diagram = e.component;
+  // preselect some shape
+  const items = diagram.getItems().filter((item) => item.itemType === 'shape' && (item.text === 'Greta Sims'));
+  if (items.length > 0) {
+    diagram.setSelectedItems(items);
+    diagram.scrollToItem(items[0]);
+    diagram.focus();
+  }
+}
+
+export default function App() {
   const [selectedItemNames, setSelectedItemNames] = useState('Nobody has been selected');
-  const [dataSource] = useState(new ArrayStore({
-    key: 'ID',
-    data: service.getEmployees(),
-  }));
 
-  const onContentReady = (e) => {
-    const diagram = e.component;
-    // preselect some shape
-    const items = diagram.getItems().filter((item) => item.itemType === 'shape' && (item.text === 'Greta Sims'));
-    if (items.length > 0) {
-      diagram.setSelectedItems(items);
-      diagram.scrollToItem(items[0]);
-      diagram.focus();
-    }
-  };
-
-  const onSelectionChanged = ({ items }) => {
-    let selectedItemNames = 'Nobody has been selected';
+  const onSelectionChanged = React.useCallback(({ items }) => {
+    let selectedItems = 'Nobody has been selected';
     const filteredItems = items
       .filter((item) => item.itemType === 'shape')
       .map((item) => item.text);
     if (filteredItems.length > 0) {
-      selectedItemNames = filteredItems.join(', ');
+      selectedItems = filteredItems.join(', ');
     }
-    setSelectedItemNames(selectedItemNames);
-  };
+    setSelectedItemNames(selectedItems);
+  }, [setSelectedItemNames]);
 
   useEffect(() => {
     // componentDidMount logic here
@@ -55,6 +56,4 @@ const App = () => {
       </div>
     </div>
   );
-};
-
-export default App;
+}

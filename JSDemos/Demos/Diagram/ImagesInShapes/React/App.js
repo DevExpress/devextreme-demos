@@ -5,16 +5,16 @@ import Diagram, {
 import ArrayStore from 'devextreme/data/array_store';
 import service from './data.js';
 
-const App = () => {
-  const orgItemsDataSource = new ArrayStore({
-    key: 'id',
-    data: service.getOrgItems(),
-  });
-  const orgLinksDataSource = new ArrayStore({
-    key: 'id',
-    data: service.getOrgLinks(),
-  });
+const orgItemsDataSource = new ArrayStore({
+  key: 'id',
+  data: service.getOrgItems(),
+});
+const orgLinksDataSource = new ArrayStore({
+  key: 'id',
+  data: service.getOrgLinks(),
+});
 
+export default function App() {
   useEffect(() => {
     // any necessary code that needs to run on component mount or update
   }, []);
@@ -32,5 +32,3 @@ const App = () => {
     </Diagram>
   );
 }
-
-export default App;
