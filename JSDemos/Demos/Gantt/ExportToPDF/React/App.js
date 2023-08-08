@@ -11,12 +11,12 @@ import {
 import { exportGantt as exportGanttToPdf } from 'devextreme/pdf_exporter';
 
 import { jsPDF } from 'jspdf';
+import 'jspdf-autotable';
+
 import {
   tasks, dependencies, resources, resourceAssignments, startDateLabel, endDateLabel,
   documentFormatLabel, exportModeLabel, dateRangeLabel,
 } from './data.js';
-
-import 'jspdf-autotable';
 
 const formats = ['A0', 'A1', 'A2', 'A3', 'A4', 'Auto'];
 const exportModes = ['All', 'Chart', 'Tree List'];
@@ -24,194 +24,38 @@ const dateRanges = ['All', 'Visible', 'Custom'];
 const startTaskIndexLabel = { 'aria-label': 'Start Task Index' };
 const endTaskIndexLabel = { 'aria-label': 'End Task Index' };
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.formatBoxRef = null;
-    this.exportModeBoxRef = null;
-    this.dateRangeBoxRef = null;
-    this.ganttRef = React.createRef();
-    this.state = {
-      formatBoxValue: formats[0],
-      exportModeBoxValue: exportModes[0],
-      dateRangeBoxValue: dateRanges[1],
-      landscapeCheckBoxValue: true,
-      startTaskIndex: 0,
-      endTaskIndex: 3,
-      startDate: tasks[0].start,
-      endDate: tasks[0].end,
-      customRangeDisabled: true,
-    };
-    this.exportButtonOptions = {
-      icon: 'exportpdf',
-      hint: 'Export to PDF',
-      stylingMode: 'text',
-      onClick: this.exportButtonClick.bind(this),
-    };
-    this.formatBoxSelectionChanged = this.formatBoxSelectionChanged.bind(this);
-    this.exportModeBoxSelectionChanged = this.exportModeBoxSelectionChanged.bind(this);
-    this.dateRangeBoxSelectionChanged = this.dateRangeBoxSelectionChanged.bind(this);
-    this.onLandscapeCheckBoxChanged = this.onLandscapeCheckBoxChanged.bind(this);
-    this.startTaskIndexValueChanged = this.startTaskIndexValueChanged.bind(this);
-    this.endTaskIndexValueChanged = this.endTaskIndexValueChanged.bind(this);
-    this.startDateValueChanged = this.startDateValueChanged.bind(this);
-    this.endDateValueChanged = this.endDateValueChanged.bind(this);
-  }
+function App() {
+  const ganttRef = React.useRef(null);
+  const [formatBoxValue, setFormatBoxValue] = React.useState(formats[0]);
+  const [exportModeBoxValue, setExportModeBoxValue] = React.useState(exportModes[0]);
+  const [dateRangeBoxValue, setDateRangeBoxValue] = React.useState(dateRanges[1]);
+  const [landscapeCheckBoxValue, setLandscapeCheckBoxValue] = React.useState(true);
+  const [startTaskIndex, setStartTaskIndex] = React.useState(0);
+  const [endTaskIndex, setEndTaskIndex] = React.useState(3);
+  const [startDate, setStartDate] = React.useState(tasks[0].start);
+  const [endDate, setEndDate] = React.useState(tasks[0].end);
+  const [customRangeDisabled, setCustomRangeDisabled] = React.useState(true);
 
-  render() {
-    return (
-      <React.Fragment>
-        <Gantt
-          ref={this.ganttRef}
-          taskListWidth={500}
-          scaleType="weeks"
-          height={700}
-          rootValue={-1}>
+  const getExportButtonOptions = React.useCallback(() => ({
+    icon: 'exportpdf',
+    hint: 'Export to PDF',
+    stylingMode: 'text',
+    onClick: exportButtonClick,
+  }), [exportButtonClick]);
 
-          <Tasks dataSource={tasks} />
-          <Dependencies dataSource={dependencies} />
-          <Resources dataSource={resources} />
-          <ResourceAssignments dataSource={resourceAssignments} />
-
-          <Toolbar>
-            <Item name="undo" />
-            <Item name="redo" />
-            <Item name="separator" />
-            <Item name="zoomIn" />
-            <Item name="zoomOut" />
-            <Item name="separator" />
-            <Item widget="dxButton" options={this.exportButtonOptions} />
-          </Toolbar>
-
-          <Column dataField="title" caption="Subject" width={300} />
-          <Column dataField="start" caption="Start Date" />
-          <Column dataField="end" caption="End Date" />
-
-          <Editing enabled={true} />
-        </Gantt>
-        <div className="options">
-          <div className="column">
-            <div className="caption">Export Options</div>
-            <div className="option">
-              <div className="label">Document format:</div>
-              {' '}
-              <div className="value">
-                <SelectBox items={formats}
-                  value={this.state.formatBoxValue}
-                  inputAttr={documentFormatLabel}
-                  onValueChanged={this.formatBoxSelectionChanged} />
-              </div>
-            </div>
-            <div className="option">
-              <div className="label">Landscape orientation:</div>
-              {' '}
-              <div className="value">
-                <CheckBox
-                  value={this.state.landscapeCheckBoxValue}
-                  onValueChanged={this.onLandscapeCheckBoxChanged} />
-              </div>
-            </div>
-            <div className="option">
-              <div className="label">Export mode:</div>
-              {' '}
-              <div className="value">
-                <SelectBox items={exportModes}
-                  value={this.state.exportModeBoxValue}
-                  inputAttr={exportModeLabel}
-                  onValueChanged={this.exportModeBoxSelectionChanged} />
-              </div>
-            </div>
-            <div className="option">
-              <div className="label">Date range:</div>
-              {' '}
-              <div className="value">
-                <SelectBox items={dateRanges}
-                  value={this.state.dateRangeBoxValue}
-                  inputAttr={dateRangeLabel}
-                  onValueChanged={this.dateRangeBoxSelectionChanged} />
-              </div>
-            </div>
-          </div>
-          {' '}
-          <div className="column">
-            <div className="caption">Task Filter Options</div>
-            <div className="option">
-              <div className="label">Start task (index):</div>
-              {' '}
-              <div className="value">
-                <NumberBox
-                  value={this.state.startTaskIndex}
-                  min={0}
-                  max={this.state.endTaskIndex}
-                  disabled={this.state.customRangeDisabled}
-                  showSpinButtons={true}
-                  inputAttr={startTaskIndexLabel}
-                  onValueChanged={this.startTaskIndexValueChanged}
-                />
-              </div>
-            </div>
-            <div className="option">
-              <div className="label">End task (index):</div>
-              {' '}
-              <div className="value">
-                <NumberBox
-                  value={this.state.endTaskIndex}
-                  min={this.state.startTaskIndex}
-                  max={tasks.length - 1}
-                  disabled={this.state.customRangeDisabled}
-                  showSpinButtons={true}
-                  inputAttr={endTaskIndexLabel}
-                  onValueChanged={this.endTaskIndexValueChanged}
-                />
-              </div>
-            </div>
-            <div className="option">
-              <div className="label">Start date:</div>
-              {' '}
-              <div className="value">
-                <DateBox
-                  value={this.state.startDate}
-                  max={this.state.endDate}
-                  inputAttr={startDateLabel}
-                  disabled={this.state.customRangeDisabled}
-                  type="date"
-                  onValueChanged={this.startDateValueChanged}
-                />
-              </div>
-            </div>
-            <div className="option">
-              <div className="label">End date:</div>
-              {' '}
-              <div className="value">
-                <DateBox
-                  value={this.state.endDate}
-                  min={this.state.startDate}
-                  inputAttr={endDateLabel}
-                  disabled={this.state.customRangeDisabled}
-                  type="date"
-                  onValueChanged={this.endDateValueChanged}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </React.Fragment>
-    );
-  }
-
-  exportButtonClick() {
-    const gantt = this.ganttRef.current.instance;
-    const format = this.state.formatBoxValue.toLowerCase();
-    const isLandscape = this.state.landscapeCheckBoxValue;
-    const exportMode = this.state.exportModeBoxValue === 'Tree List' ? 'treeList' : this.state.exportModeBoxValue.toLowerCase();
-    const dataRangeMode = this.state.dateRangeBoxValue.toLowerCase();
+  const exportButtonClick = React.useCallback(() => {
+    const gantt = ganttRef.current.instance;
+    const format = formatBoxValue.toLowerCase();
+    const isLandscape = landscapeCheckBoxValue;
+    const exportMode = exportModeBoxValue === 'Tree List' ? 'treeList' : exportModeBoxValue.toLowerCase();
+    const dataRangeMode = dateRangeBoxValue.toLowerCase();
     let dataRange;
     if (dataRangeMode === 'custom') {
       dataRange = {
-        startIndex: this.state.startTaskIndex,
-        endIndex: this.state.endTaskIndex,
-        startDate: this.state.startDate,
-        endDate: this.state.endDate,
+        startIndex: startTaskIndex,
+        endIndex: endTaskIndex,
+        startDate,
+        endDate,
       };
     } else {
       dataRange = dataRangeMode;
@@ -227,42 +71,188 @@ class App extends React.Component {
         dateRange: dataRange,
       },
     ).then((doc) => doc.save('gantt.pdf'));
-  }
+  }, [
+    exportModeBoxValue,
+    formatBoxValue,
+    landscapeCheckBoxValue,
+    dateRangeBoxValue,
+    startTaskIndex,
+    endTaskIndex,
+    startDate,
+    endDate,
+  ]);
 
-  formatBoxSelectionChanged(e) {
-    this.setState({ formatBoxValue: e.value });
-  }
+  const formatBoxSelectionChanged = React.useCallback((e) => {
+    setFormatBoxValue(e.value);
+  }, [setFormatBoxValue]);
 
-  exportModeBoxSelectionChanged(e) {
-    this.setState({ exportModeBoxValue: e.value });
-  }
+  const exportModeBoxSelectionChanged = React.useCallback((e) => {
+    setExportModeBoxValue(e.value);
+  }, [setExportModeBoxValue]);
 
-  dateRangeBoxSelectionChanged(e) {
-    this.setState({
-      dateRangeBoxValue: e.value,
-      customRangeDisabled: e.value !== 'Custom',
-    });
-  }
+  const dateRangeBoxSelectionChanged = React.useCallback((e) => {
+    setDateRangeBoxValue(e.value);
+    setCustomRangeDisabled(e.value !== 'Custom');
+  }, [setDateRangeBoxValue, setCustomRangeDisabled]);
 
-  onLandscapeCheckBoxChanged(e) {
-    this.setState({ landscapeCheckBoxValue: e.value });
-  }
+  const onLandscapeCheckBoxChanged = React.useCallback((e) => {
+    setLandscapeCheckBoxValue(e.value);
+  }, [setLandscapeCheckBoxValue]);
 
-  startTaskIndexValueChanged(e) {
-    this.setState({ startTaskIndex: e.value });
-  }
+  const startTaskIndexValueChanged = React.useCallback((e) => {
+    setStartTaskIndex(e.value);
+  }, [setStartTaskIndex]);
 
-  endTaskIndexValueChanged(e) {
-    this.setState({ endTaskIndex: e.value });
-  }
+  const endTaskIndexValueChanged = React.useCallback((e) => {
+    setEndTaskIndex(e.value);
+  }, [setEndTaskIndex]);
 
-  startDateValueChanged(e) {
-    this.setState({ startDate: e.value });
-  }
+  const startDateValueChanged = React.useCallback((e) => {
+    setStartDate(e.value);
+  }, [setStartDate]);
 
-  endDateValueChanged(e) {
-    this.setState({ startDate: e.value });
-  }
+  const endDateValueChanged = React.useCallback((e) => {
+    setEndDate(e.value);
+  }, [setEndDate]);
+
+  return (
+    <React.Fragment>
+      <Gantt
+        ref={ganttRef}
+        taskListWidth={500}
+        scaleType="weeks"
+        height={700}
+        rootValue={-1}>
+
+        <Tasks dataSource={tasks} />
+        <Dependencies dataSource={dependencies} />
+        <Resources dataSource={resources} />
+        <ResourceAssignments dataSource={resourceAssignments} />
+
+        <Toolbar>
+          <Item name="undo" />
+          <Item name="redo" />
+          <Item name="separator" />
+          <Item name="zoomIn" />
+          <Item name="zoomOut" />
+          <Item name="separator" />
+          <Item widget="dxButton" options={getExportButtonOptions()} />
+        </Toolbar>
+
+        <Column dataField="title" caption="Subject" width={300} />
+        <Column dataField="start" caption="Start Date" />
+        <Column dataField="end" caption="End Date" />
+
+        <Editing enabled={true} />
+      </Gantt>
+      <div className="options">
+        <div className="column">
+          <div className="caption">Export Options</div>
+          <div className="option">
+            <div className="label">Document format:</div>
+            {' '}
+            <div className="value">
+              <SelectBox items={formats}
+                value={formatBoxValue}
+                inputAttr={documentFormatLabel}
+                onValueChanged={formatBoxSelectionChanged} />
+            </div>
+          </div>
+          <div className="option">
+            <div className="label">Landscape orientation:</div>
+            {' '}
+            <div className="value">
+              <CheckBox
+                value={landscapeCheckBoxValue}
+                onValueChanged={onLandscapeCheckBoxChanged} />
+            </div>
+          </div>
+          <div className="option">
+            <div className="label">Export mode:</div>
+            {' '}
+            <div className="value">
+              <SelectBox items={exportModes}
+                value={exportModeBoxValue}
+                inputAttr={exportModeLabel}
+                onValueChanged={exportModeBoxSelectionChanged} />
+            </div>
+          </div>
+          <div className="option">
+            <div className="label">Date range:</div>
+            {' '}
+            <div className="value">
+              <SelectBox items={dateRanges}
+                value={dateRangeBoxValue}
+                inputAttr={dateRangeLabel}
+                onValueChanged={dateRangeBoxSelectionChanged} />
+            </div>
+          </div>
+        </div>
+        {' '}
+        <div className="column">
+          <div className="caption">Task Filter Options</div>
+          <div className="option">
+            <div className="label">Start task (index):</div>
+            {' '}
+            <div className="value">
+              <NumberBox
+                value={startTaskIndex}
+                min={0}
+                max={endTaskIndex}
+                disabled={customRangeDisabled}
+                showSpinButtons={true}
+                inputAttr={startTaskIndexLabel}
+                onValueChanged={startTaskIndexValueChanged}
+              />
+            </div>
+          </div>
+          <div className="option">
+            <div className="label">End task (index):</div>
+            {' '}
+            <div className="value">
+              <NumberBox
+                value={endTaskIndex}
+                min={startTaskIndex}
+                max={tasks.length - 1}
+                disabled={customRangeDisabled}
+                showSpinButtons={true}
+                inputAttr={endTaskIndexLabel}
+                onValueChanged={endTaskIndexValueChanged}
+              />
+            </div>
+          </div>
+          <div className="option">
+            <div className="label">Start date:</div>
+            {' '}
+            <div className="value">
+              <DateBox
+                value={startDate}
+                max={endDate}
+                inputAttr={startDateLabel}
+                disabled={customRangeDisabled}
+                type="date"
+                onValueChanged={startDateValueChanged}
+              />
+            </div>
+          </div>
+          <div className="option">
+            <div className="label">End date:</div>
+            {' '}
+            <div className="value">
+              <DateBox
+                value={endDate}
+                min={startDate}
+                inputAttr={endDateLabel}
+                disabled={customRangeDisabled}
+                type="date"
+                onValueChanged={endDateValueChanged}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </React.Fragment>
+  );
 }
 
 export default App;

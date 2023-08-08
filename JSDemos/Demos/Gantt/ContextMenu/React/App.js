@@ -7,12 +7,51 @@ import {
   tasks, dependencies, resources, resourceAssignments,
 } from './data.js';
 
+function getContextMenuItems() {
+  return [
+    'addTask',
+    'taskdetails',
+    'deleteTask',
+    {
+      name: 'ToggleDisplayOfResources',
+      text: 'Toggle Display of Resources',
+    },
+  ];
+}
+
 function App() {
   const [ganttConfig, setGanttConfig] = React.useState({
     showResources: true,
     disableContextMenu: false,
     contextMenuItems: getContextMenuItems(),
   });
+
+  const onContextMenuPreparing = React.useCallback((e) => {
+    e.cancel = ganttConfig.disableContextMenu;
+  }, [ganttConfig]);
+
+  const onCustomizeContextMenu = React.useCallback((e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      contextMenuItems: e.value ? getContextMenuItems() : undefined,
+    });
+  }, [ganttConfig]);
+
+  const onPreventContextMenuShowing = React.useCallback((e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      disableContextMenu: e.value,
+    });
+  }, [ganttConfig]);
+
+  const onCustomCommandClick = React.useCallback((e) => {
+    if (e.name === 'ToggleDisplayOfResources') {
+      setGanttConfig({
+        ...ganttConfig,
+        showResources: !ganttConfig.showResources,
+      });
+    }
+  }, [ganttConfig]);
 
   return (
     <div id="form-demo">
@@ -60,45 +99,6 @@ function App() {
       </div>
     </div>
   );
-
-  function onContextMenuPreparing(e) {
-    e.cancel = ganttConfig.disableContextMenu;
-  }
-
-  function onCustomizeContextMenu(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      contextMenuItems: e.value ? getContextMenuItems() : undefined,
-    });
-  }
-
-  function onPreventContextMenuShowing(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      disableContextMenu: e.value,
-    });
-  }
-
-  function onCustomCommandClick(e) {
-    if (e.name === 'ToggleDisplayOfResources') {
-      setGanttConfig({
-        ...ganttConfig,
-        showResources: !ganttConfig.showResources,
-      });
-    }
-  }
-
-  function getContextMenuItems() {
-    return [
-      'addTask',
-      'taskdetails',
-      'deleteTask',
-      {
-        name: 'ToggleDisplayOfResources',
-        text: 'Toggle Display of Resources',
-      },
-    ];
-  }
 }
 
 export default App;

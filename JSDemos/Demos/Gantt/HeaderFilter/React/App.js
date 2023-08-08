@@ -1,9 +1,7 @@
 import React from 'react';
-
 import Gantt, {
   Tasks, Dependencies, Resources, ResourceAssignments, Column, Editing, HeaderFilter,
 } from 'devextreme-react/gantt';
-
 import {
   tasks, dependencies, resources, resourceAssignments,
 } from './data.js';
@@ -14,8 +12,8 @@ function App() {
       taskListWidth={500}
       scaleType="weeks"
       height={700}
-      rootValue={-1}>
-
+      rootValue={-1}
+    >
       <Tasks dataSource={tasks} />
       <Dependencies dataSource={dependencies} />
       <Resources dataSource={resources} />

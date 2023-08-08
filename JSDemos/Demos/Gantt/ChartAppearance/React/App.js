@@ -28,6 +28,55 @@ function App() {
     endDateRange: new Date(2019, 11, 1),
   });
 
+  const onScaleTypeChanged = React.useCallback((e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      scaleType: e.value,
+    });
+  }, [ganttConfig, setGanttConfig]);
+
+  const onTaskTitlePositionChanged = React.useCallback((e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      taskTitlePosition: e.value,
+    });
+  }, [ganttConfig, setGanttConfig]);
+
+  const onShowResourcesChanged = React.useCallback((e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      showResources: e.value,
+    });
+  }, [ganttConfig, setGanttConfig]);
+
+  const onShowDependenciesChanged = React.useCallback((e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      showDependencies: e.value,
+    });
+  }, [ganttConfig, setGanttConfig]);
+
+  const onShowCustomTaskTooltip = React.useCallback((e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      showCustomTaskTooltip: e.value,
+    });
+  }, [ganttConfig, setGanttConfig]);
+
+  const onStartDateValueChanged = React.useCallback((e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      startDateRange: e.value,
+    });
+  }, [ganttConfig, setGanttConfig]);
+
+  const onEndDateValueChanged = React.useCallback((e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      endDateRange: e.value,
+    });
+  }, [ganttConfig, setGanttConfig]);
+
   return (
     <div id="form-demo">
       <div className="options">
@@ -147,54 +196,6 @@ function App() {
       </div>
     </div>
   );
-
-  function onScaleTypeChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      scaleType: e.value,
-    });
-  }
-
-  function onTaskTitlePositionChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      taskTitlePosition: e.value,
-    });
-  }
-
-  function onShowResourcesChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      showResources: e.value,
-    });
-  }
-
-  function onShowDependenciesChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      showDependencies: e.value,
-    });
-  }
-
-  function onShowCustomTaskTooltip(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      showCustomTaskTooltip: e.value,
-    });
-  }
-
-  function onStartDateValueChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      startDateRange: e.value,
-    });
-  }
-
-  function onEndDateValueChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      endDateRange: e.value,
-    });
-  }
 }
+
 export default App;

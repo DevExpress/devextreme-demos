@@ -9,12 +9,28 @@ import {
 } from './data.js';
 
 const sortingModeValues = ['single', 'multiple', 'none'];
+
 function App() {
   const [ganttConfig, setGanttConfig] = React.useState({
     sortingMode: 'single',
     showSortIndexes: false,
     showSortIndexesDisabled: true,
   });
+
+  const onSortingModeChanged = React.useCallback((e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      sortingMode: e.value,
+      showSortIndexesDisabled: e.value !== 'multiple',
+    });
+  }, [ganttConfig, setGanttConfig]);
+
+  const onShowSortIndexesChanged = React.useCallback((e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      showSortIndexes: e.value,
+    });
+  }, [ganttConfig, setGanttConfig]);
 
   return (
     <div id="form-demo">
@@ -65,21 +81,6 @@ function App() {
       </div>
     </div>
   );
-
-  function onSortingModeChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      sortingMode: e.value,
-      showSortIndexesDisabled: e.value !== 'multiple',
-    });
-  }
-
-  function onShowSortIndexesChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      showSortIndexes: e.value,
-    });
-  }
 }
 
 export default App;

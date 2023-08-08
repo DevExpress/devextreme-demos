@@ -12,6 +12,27 @@ function App() {
     enablePredecessorGap: true,
   });
 
+  const onAutoUpdateParentTasksChanged = React.useCallback((e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      autoUpdateParentTasks: e.value,
+    });
+  }, [ganttConfig]);
+
+  const onValidateDependenciesChanged = React.useCallback((e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      validateDependencies: e.value,
+    });
+  }, [ganttConfig]);
+
+  const onEnablePredecessorGapChanged = React.useCallback((e) => {
+    setGanttConfig({
+      ...ganttConfig,
+      enablePredecessorGap: e.value,
+    });
+  }, [ganttConfig]);
+
   return (
     <div id="form-demo">
       <div className="options">
@@ -63,27 +84,6 @@ function App() {
       </div>
     </div>
   );
-
-  function onAutoUpdateParentTasksChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      autoUpdateParentTasks: e.value,
-    });
-  }
-
-  function onValidateDependenciesChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      validateDependencies: e.value,
-    });
-  }
-
-  function onEnablePredecessorGapChanged(e) {
-    setGanttConfig({
-      ...ganttConfig,
-      enablePredecessorGap: e.value,
-    });
-  }
 }
 
 export default App;

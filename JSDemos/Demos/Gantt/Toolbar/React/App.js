@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Gantt, {
   Tasks, Dependencies, Resources, ResourceAssignments, Column, Editing, Toolbar, Item,
 } from 'devextreme-react/gantt';
@@ -22,18 +21,18 @@ function App() {
   }), [aboutButtonClick]);
 
   const aboutButtonClick = React.useCallback(() => {
-    setGanttConfig({
-      ...ganttConfig,
+    setGanttConfig((prevState) => ({
+      ...prevState,
       popupVisible: true,
-    });
-  }, [ganttConfig]);
+    }));
+  }, [setGanttConfig]);
 
   const onHiding = React.useCallback(() => {
-    setGanttConfig({
-      ...ganttConfig,
+    setGanttConfig((prevState) => ({
+      ...prevState,
       popupVisible: false,
-    });
-  }, [ganttConfig]);
+    }));
+  }, [setGanttConfig]);
 
   return (
     <React.Fragment>
@@ -74,7 +73,7 @@ function App() {
       </Gantt>
       <Popup
         visible={ganttConfig.popupVisible}
-        onHiding = {onHiding}
+        onHiding={onHiding}
         hideOnOutsideClick
         showTitle
         title="About"
