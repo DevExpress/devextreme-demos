@@ -5,7 +5,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "jsx": "react",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "noEmit": true,
     "allowImportingTsExtensions": true,
   },
