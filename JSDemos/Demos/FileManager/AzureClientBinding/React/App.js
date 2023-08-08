@@ -10,10 +10,12 @@ const loadPanelPosition = { of: '#file-manager' };
 
 let gateway = null;
 let azure = null;
-let fileSystemProvider = null;
+let fileSystemProvider = undefined;
 
 function getItems(parentDirectory) {
-  return azure.getItems(parentDirectory.path);
+  const a = azure.getItems(parentDirectory.path);
+  console.log(a);
+  return a;
 }
 
 function createDirectory(parentDirectory, name) {
@@ -80,12 +82,12 @@ function App() {
   const [requests, setRequests] = React.useState([]);
   const [loadPanelVisible, setLoadPanelVisible] = React.useState(true);
   const [wrapperClassName, setWrapperClassName] = React.useState('');
+  const [fileSystemProvider, setFileSystemProvider] = React.useState(null);
 
   React.useEffect(() => {
     gateway = new AzureGateway(endpointUrl, onRequestExecuted);
     azure = new AzureFileSystem(gateway);
-
-    fileSystemProvider = new CustomFileSystemProvider({
+    setFileSystemProvider(new CustomFileSystemProvider({
       getItems,
       createDirectory,
       renameItem,
@@ -94,7 +96,7 @@ function App() {
       moveItem,
       uploadFileChunk,
       downloadItems,
-    });
+    }));
 
     checkAzureStatus();
   }, []);
