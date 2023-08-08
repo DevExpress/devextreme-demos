@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2015",
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node",
     "jsx": "react",
-    "emitDeclarationOnly": true,
+    "moduleResolution": "bundler",
+    "noEmit": true,
     "allowImportingTsExtensions": true,
   },
   "include": [
