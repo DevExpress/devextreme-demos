@@ -76,34 +76,29 @@ function downloadItems(items) {
 }
 
 function App() {
+  gateway = new AzureGateway(endpointUrl, onRequestExecuted);
+  azure = new AzureFileSystem(gateway);
+
   const [requests, setRequests] = React.useState([]);
   const [loadPanelVisible, setLoadPanelVisible] = React.useState(true);
   const [wrapperClassName, setWrapperClassName] = React.useState('');
-  const [fileSystemProvider, setFileSystemProvider] = React.useState(null);
-
-  React.useEffect(() => {
-    gateway = new AzureGateway(endpointUrl, onRequestExecuted);
-    azure = new AzureFileSystem(gateway);
-    setFileSystemProvider(new CustomFileSystemProvider({
-      getItems,
-      createDirectory,
-      renameItem,
-      deleteItem,
-      copyItem,
-      moveItem,
-      uploadFileChunk,
-      downloadItems,
-    }));
-
-    checkAzureStatus();
-  }, []);
+  const [fileSystemProvider] = React.useState(new CustomFileSystemProvider({
+    getItems,
+    createDirectory,
+    renameItem,
+    deleteItem,
+    copyItem,
+    moveItem,
+    uploadFileChunk,
+    downloadItems,
+  }));
 
   function onRequestExecuted({ method, urlPath, queryString }) {
     const request = { method, urlPath, queryString };
     setRequests((prevValue) => [request, ...prevValue]);
   }
 
-  function checkAzureStatus() {
+  const checkAzureStatus = React.useCallback(() => {
     fetch('https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-status?widgetType=fileManager')
       .then((response) => response.json())
       .then((result) => {
@@ -111,7 +106,9 @@ function App() {
         setWrapperClassName(className);
         setLoadPanelVisible(false);
       });
-  }
+  }, [setWrapperClassName, setLoadPanelVisible]);
+
+  checkAzureStatus();
 
   return (
     <div id="wrapper" className={wrapperClassName}>
