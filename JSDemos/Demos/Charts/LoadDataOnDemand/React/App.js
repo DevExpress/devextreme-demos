@@ -16,6 +16,7 @@ import {
 } from 'devextreme-react/chart';
 
 const HALFDAY = 43200000;
+let packetsLock = 0;
 
 const chartDataSource = new DataSource({
   store: [],
@@ -33,8 +34,6 @@ function App() {
     startValue: new Date(2017, 3, 1),
     endValue: new Date(2017, 3, 15),
   });
-
-  const [packetsLock, setPacketsLock] = React.useState(0);
 
   const handleChange = React.useCallback((e) => {
     if (e.fullName === 'argumentAxis.visualRange') {
@@ -54,16 +53,16 @@ function App() {
       || items[0].date - visualRange.startValue >= HALFDAY
       || visualRange.endValue - items[items.length - 1].date >= HALFDAY
     ) {
-      uploadDataByVisualRange(visualRange, component);
+      uploadDataByVisualRange(component);
     }
   }, [visualRange, uploadDataByVisualRange]);
 
-  const uploadDataByVisualRange = React.useCallback((visualRangeValue, component) => {
+  const uploadDataByVisualRange = React.useCallback((component) => {
     const dataSource = component.getDataSource();
     const storage = dataSource.items();
     const ajaxArgs = {
-      startVisible: getDateString(visualRangeValue.startValue),
-      endVisible: getDateString(visualRangeValue.endValue),
+      startVisible: getDateString(visualRange.startValue),
+      endVisible: getDateString(visualRange.endValue),
       startBound: getDateString(storage.length ? storage[0].date : null),
       endBound: getDateString(
         storage.length ? storage[storage.length - 1].date : null,
@@ -75,12 +74,12 @@ function App() {
       && ajaxArgs.endVisible !== ajaxArgs.endBound
       && !packetsLock
     ) {
-      setPacketsLock((prevValue) => prevValue + 1);
+      packetsLock += 1;
       component.showLoadingIndicator();
 
       getDataFrame(ajaxArgs)
         .then((dataFrame) => {
-          setPacketsLock((prevValue) => prevValue - 1);
+          packetsLock -= 1;
 
           const componentStorage = dataSource.store();
 
@@ -97,11 +96,11 @@ function App() {
           onVisualRangeChanged(component);
         })
         .catch(() => {
-          setPacketsLock((prevValue) => prevValue - 1);
+          packetsLock -= 1;
           dataSource.reload();
         });
     }
-  }, [onVisualRangeChanged, packetsLock]);
+  }, [onVisualRangeChanged, visualRange]);
 
   return (
     <Chart
