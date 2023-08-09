@@ -6,6 +6,11 @@ import Chart, {
 } from 'devextreme-react/chart';
 import SelectBox from 'devextreme-react/select-box';
 
+const temperatureLabel = { 'aria-label': 'Temperature' };
+const temperature = [2, 4, 6, 8, 9, 10, 11];
+const palette = ['#c3a2cc', '#b7b5e0', '#e48cba'];
+let paletteIndex = 0;
+
 const monthWeather = new DataSource({
   store: new CustomStore({
     load: () => fetch('../../../../data/monthWeather.json')
@@ -17,29 +22,22 @@ const monthWeather = new DataSource({
   paginate: false,
 });
 
-const temperatureLabel = { 'aria-label': 'Temperature' };
-
 function customizeLabel(e) {
   return `${e.valueText}${'&#176C'}`;
 }
 
-const temperature = [2, 4, 6, 8, 9, 10, 11];
-const palette = ['#c3a2cc', '#b7b5e0', '#e48cba'];
+function customizePoint() {
+  const color = palette[paletteIndex];
+  paletteIndex = paletteIndex === 2 ? 0 : paletteIndex + 1;
+  return { color };
+}
+
+function changeTemperature(e) {
+  monthWeather.filter(['t', '>', e.value]);
+  monthWeather.load();
+}
 
 function App() {
-  const [paletteIndex, setPaletteIndex] = React.useState(0);
-
-  const customizePoint = React.useCallback(() => {
-    const color = palette[paletteIndex];
-    setPaletteIndex(paletteIndex === 2 ? 0 : paletteIndex + 1);
-    return { color };
-  }, [paletteIndex, setPaletteIndex]);
-
-  const changeTemperature = React.useCallback((e) => {
-    monthWeather.filter(['t', '>', e.value]);
-    monthWeather.load();
-  }, []);
-
   return (
     <div id="chart-demo">
       {monthWeather && (
