@@ -15,10 +15,6 @@ const orgLinksDataSource = new ArrayStore({
 });
 
 export default function App() {
-  React.useEffect(() => {
-    // any necessary code that needs to run on component mount or update
-  }, []);
-
   return (
     <Diagram id="diagram">
       <Nodes dataSource={orgItemsDataSource} imageUrlExpr="picture">

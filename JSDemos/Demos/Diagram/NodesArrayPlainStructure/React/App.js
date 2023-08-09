@@ -11,10 +11,6 @@ const dataSource = new ArrayStore({
 });
 
 export default function App() {
-  React.useEffect(() => {
-    // Any side effects can be added here
-  }, []);
-
   return (
     <Diagram id="diagram">
       <Nodes dataSource={dataSource} keyExpr="ID" textExpr="Title" parentKeyExpr="Head_ID">

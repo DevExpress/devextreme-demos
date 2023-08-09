@@ -69,12 +69,6 @@ function linkToLineEndExpr() {
 }
 
 export default function App() {
-  React.useEffect(() => {
-    // Initialize the data sources
-    orgItemsDataSource.load();
-    orgLinksDataSource.load();
-  }, []);
-
   return (
     <Diagram id="diagram">
       <Nodes

@@ -35,10 +35,6 @@ export default function App() {
     setSelectedItemNames(selectedItems);
   }, [setSelectedItemNames]);
 
-  React.useEffect(() => {
-    // componentDidMount logic here
-  }, []);
-
   return (
     <div>
       <Diagram id="diagram" onContentReady={onContentReady} onSelectionChanged={onSelectionChanged}>

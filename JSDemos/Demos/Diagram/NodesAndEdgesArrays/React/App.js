@@ -15,10 +15,6 @@ const flowEdgesDataSource = new ArrayStore({
 });
 
 export default function App() {
-  React.useEffect(() => {
-    // Any necessary side effects can be added here
-  }, []);
-
   return (
     <Diagram id="diagram">
       <Nodes dataSource={flowNodesDataSource} idExpr="id" typeExpr="type" textExpr="text">

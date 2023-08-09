@@ -5,16 +5,12 @@ import Diagram, {
 import ArrayStore from 'devextreme/data/array_store';
 import service from './data.js';
 
+const dataSource = new ArrayStore({
+  key: 'ID',
+  data: service.getEmployees(),
+});
+
 export default function App() {
-  const [dataSource, setDataSource] = React.useState([]);
-
-  React.useEffect(() => {
-    setDataSource(new ArrayStore({
-      key: 'ID',
-      data: service.getEmployees(),
-    }));
-  }, []);
-
   return (
     <Diagram id="diagram" simpleView={true}>
       <Nodes dataSource={dataSource} keyExpr="ID" textExpr="Title" parentKeyExpr="Head_ID">
