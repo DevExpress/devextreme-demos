@@ -26,6 +26,6 @@ function App() {
       />
     </TreeMap>
   );
-};
+}
 
 export default App;

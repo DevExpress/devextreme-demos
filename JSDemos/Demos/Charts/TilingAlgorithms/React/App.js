@@ -7,7 +7,10 @@ const algorithms = ['sliceAndDice', 'squarified', 'strip', 'custom'];
 
 function App() {
   const [selectedAlgorithm, setSelectedAlgorithm] = React.useState(algorithms[2]);
-  const [currentAlgorithm, setCurrentAlgorithm] = React.useState(getCurrentAlgorithm(algorithms[2]));
+  const [
+    currentAlgorithm,
+    setCurrentAlgorithm,
+  ] = React.useState(getCurrentAlgorithm(algorithms[2]));
 
   const setAlgorithm = React.useCallback((data) => {
     setSelectedAlgorithm(data.value);

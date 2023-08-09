@@ -20,22 +20,25 @@ function App() {
   const childRef = React.useRef();
 
   const onClick = React.useCallback(() => {
-    exportFromMarkup(prepareMarkup(chartRef.current.instance.svg(), childRef.current.getElement().innerHTML), {
-      width: 820,
-      height: 420,
-      margin: 0,
-      format: 'png',
-      svgToCanvas(svg, canvas) {
-        return new Promise((resolve) => {
-          toCanvas(canvas, new XMLSerializer().serializeToString(svg), {
-            ignoreDimensions: true,
-            ignoreClear: true,
-            renderCallback: resolve,
+    exportFromMarkup(
+      prepareMarkup(chartRef.current.instance.svg(),
+        childRef.current.getElement().innerHTML), {
+        width: 820,
+        height: 420,
+        margin: 0,
+        format: 'png',
+        svgToCanvas(svg, canvas) {
+          return new Promise((resolve) => {
+            toCanvas(canvas, new XMLSerializer().serializeToString(svg), {
+              ignoreDimensions: true,
+              ignoreClear: true,
+              renderCallback: resolve,
+            });
           });
-        });
+        },
       },
-    });
-  }, [])
+    );
+  }, []);
 
   return (
     <div id="chart-demo">

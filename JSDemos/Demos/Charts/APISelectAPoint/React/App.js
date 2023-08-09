@@ -48,6 +48,6 @@ function App() {
       <Export enabled={true} />
     </Chart>
   );
-};
+}
 
 export default App;

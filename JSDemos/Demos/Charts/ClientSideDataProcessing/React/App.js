@@ -1,8 +1,21 @@
 import React from 'react';
 import DataSource from 'devextreme/data/data_source';
 import CustomStore from 'devextreme/data/custom_store';
-import Chart, { ValueAxis, Label, Legend, Series, Size, Export, LoadingIndicator } from 'devextreme-react/chart';
+import Chart, {
+  ValueAxis, Label, Legend, Series, Size, Export, LoadingIndicator,
+} from 'devextreme-react/chart';
 import SelectBox from 'devextreme-react/select-box';
+
+const monthWeather = new DataSource({
+  store: new CustomStore({
+    load: () => fetch('../../../../data/monthWeather.json')
+      .then((e) => e.json())
+      .catch(() => { throw new Error('Data Loading Error'); }),
+    loadMode: 'raw',
+  }),
+  filter: ['t', '>', '2'],
+  paginate: false,
+});
 
 const temperatureLabel = { 'aria-label': 'Temperature' };
 
@@ -10,45 +23,21 @@ function customizeLabel(e) {
   return `${e.valueText}${'&#176C'}`;
 }
 
-function App() {
-  const [temperature, setTemperature] = React.useState([2, 4, 6, 8, 9, 10, 11]);
-  const [paletteIndex, setPaletteIndex] = React.useState(0);
-  const [monthWeather, setMonthWeather] = React.useState(null);
+const temperature = [2, 4, 6, 8, 9, 10, 11];
+const palette = ['#c3a2cc', '#b7b5e0', '#e48cba'];
 
-  const palette = ['#c3a2cc', '#b7b5e0', '#e48cba'];
+function App() {
+  const [paletteIndex, setPaletteIndex] = React.useState(0);
 
   const customizePoint = React.useCallback(() => {
     const color = palette[paletteIndex];
     setPaletteIndex(paletteIndex === 2 ? 0 : paletteIndex + 1);
     return { color };
-  }, [palette, paletteIndex, setPaletteIndex]);
+  }, [paletteIndex, setPaletteIndex]);
 
   const changeTemperature = React.useCallback((e) => {
     monthWeather.filter(['t', '>', e.value]);
     monthWeather.load();
-  }, [monthWeather]);
-
-  React.useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('../../../../data/monthWeather.json');
-        const data = await response.json();
-        setMonthWeather(
-          new DataSource({
-            store: new CustomStore({
-              load: () => Promise.resolve(data),
-              loadMode: 'raw',
-            }),
-            filter: ['t', '>', '2'],
-            paginate: false,
-          })
-        );
-      } catch (error) {
-        throw new Error('Data Loading Error');
-      }
-    };
-
-    fetchData();
   }, []);
 
   return (
@@ -81,6 +70,6 @@ function App() {
       </div>
     </div>
   );
-};
+}
 
 export default App;

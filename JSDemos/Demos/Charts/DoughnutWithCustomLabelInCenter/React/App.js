@@ -12,11 +12,11 @@ import CenterTemplate from './CenterTemplate.js';
 
 const countries = Array.from(new Set(data.map((item) => item.country)));
 
-function App() {
-  const customizeLabel = (e) => {
-    return `${e.argumentText}\n${e.valueText}`;
-  }
+function customizeLabel(e) {
+  return `${e.argumentText}\n${e.valueText}`;
+}
 
+function App() {
   const pies = countries.map((country) => (
     <PieChart
       id="pie-chart"

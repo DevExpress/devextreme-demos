@@ -6,11 +6,11 @@ import {
 import { dataSource } from './data.js';
 import markerTemplate from './MarkerTemplate.js';
 
-function App() {
-  const onLegendClick = (e) => {
-    e.target.isVisible() ? e.target.hide() : e.target.show();
-  }
+function onLegendClick(e) {
+  e.target.isVisible() ? e.target.hide() : e.target.show();
+}
 
+function App() {
   return (
     <Chart id="chart"
       title="Noisy and Original Signals"

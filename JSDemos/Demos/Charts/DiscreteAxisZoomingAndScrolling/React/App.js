@@ -40,7 +40,6 @@ function App() {
     setVisualRange(e.value);
   }, [setVisualRange]);
 
-
   return (
     <React.Fragment>
       <Chart

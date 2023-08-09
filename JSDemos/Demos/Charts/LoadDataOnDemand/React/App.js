@@ -14,7 +14,14 @@ import {
   Animation,
   LoadingIndicator,
 } from 'devextreme-react/chart';
-import { set } from 'core-js/core/dict';
+
+const HALFDAY = 43200000;
+
+const chartDataSource = new DataSource({
+  store: [],
+  sort: 'date',
+  paginate: false,
+});
 
 const wholeRange = {
   startValue: new Date(2017, 0, 1),
@@ -27,6 +34,8 @@ function App() {
     endValue: new Date(2017, 3, 15),
   });
 
+  const [packetsLock, setPacketsLock] = React.useState(0);
+
   const handleChange = React.useCallback((e) => {
     if (e.fullName === 'argumentAxis.visualRange') {
       const stateStart = visualRange.startValue;
@@ -36,43 +45,42 @@ function App() {
       }
       onVisualRangeChanged(e.component);
     }
-  }, [setVisualRange, visualRange]);
+  }, [setVisualRange, visualRange, onVisualRangeChanged]);
 
   const onVisualRangeChanged = React.useCallback((component) => {
     const items = component.getDataSource().items();
-    const { visualRange } = visualRange;
     if (
-      !items.length ||
-      items[0].date - visualRange.startValue >= HALFDAY ||
-      visualRange.endValue - items[items.length - 1].date >= HALFDAY
+      !items.length
+      || items[0].date - visualRange.startValue >= HALFDAY
+      || visualRange.endValue - items[items.length - 1].date >= HALFDAY
     ) {
       uploadDataByVisualRange(visualRange, component);
     }
   }, [visualRange, uploadDataByVisualRange]);
 
-  const uploadDataByVisualRange = React.useCallback((visualRange, component) => {
+  const uploadDataByVisualRange = React.useCallback((visualRangeValue, component) => {
     const dataSource = component.getDataSource();
     const storage = dataSource.items();
     const ajaxArgs = {
-      startVisible: getDateString(visualRange.startValue),
-      endVisible: getDateString(visualRange.endValue),
+      startVisible: getDateString(visualRangeValue.startValue),
+      endVisible: getDateString(visualRangeValue.endValue),
       startBound: getDateString(storage.length ? storage[0].date : null),
       endBound: getDateString(
-        storage.length ? storage[storage.length - 1].date : null
+        storage.length ? storage[storage.length - 1].date : null,
       ),
     };
 
     if (
-      ajaxArgs.startVisible !== ajaxArgs.startBound &&
-      ajaxArgs.endVisible !== ajaxArgs.endBound &&
-      !packetsLock
+      ajaxArgs.startVisible !== ajaxArgs.startBound
+      && ajaxArgs.endVisible !== ajaxArgs.endBound
+      && !packetsLock
     ) {
-      packetsLock += 1;
+      setPacketsLock((prevValue) => prevValue + 1);
       component.showLoadingIndicator();
 
       getDataFrame(ajaxArgs)
         .then((dataFrame) => {
-          packetsLock -= 1;
+          setPacketsLock((prevValue) => prevValue - 1);
 
           const componentStorage = dataSource.store();
 
@@ -89,19 +97,11 @@ function App() {
           onVisualRangeChanged(component);
         })
         .catch(() => {
-          packetsLock -= 1;
+          setPacketsLock((prevValue) => prevValue - 1);
           dataSource.reload();
         });
     }
-  }, [onVisualRangeChanged]);
-
-  useEffect(() => {
-    const chartDataSource = new DataSource({
-      store: [],
-      sort: 'date',
-      paginate: false,
-    });
-  }, []);
+  }, [onVisualRangeChanged, packetsLock]);
 
   return (
     <Chart
@@ -119,7 +119,7 @@ function App() {
         wholeRange={wholeRange}
       />
       <ValueAxis name="temperature" allowDecimals={false}>
-        <Title text={'Temperature, °C'}>
+        <Title text='Temperature, °C'>
           <Font color="#ff950c" />
         </Title>
         <Label>
@@ -152,7 +152,7 @@ function getDataFrame(args) {
     &endBound=${args.endBound}`;
 
   return fetch(
-    `https://js.devexpress.com/Demos/WidgetsGallery/data/temperatureData${params}`
+    `https://js.devexpress.com/Demos/WidgetsGallery/data/temperatureData${params}`,
   ).then((response) => response.json());
 }
 

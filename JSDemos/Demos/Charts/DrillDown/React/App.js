@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TreeMap, { Size, Title, Colorizer } from 'devextreme-react/tree-map';
 import { citiesPopulation } from './data.js';
 
@@ -15,7 +15,7 @@ function nodeClick(e) {
 }
 
 function App() {
-  const [drillInfo, setDrillInfo] = useState([]);
+  const [drillInfo, setDrillInfo] = React.useState([]);
 
   const drill = React.useCallback((e) => {
     const newDrillInfo = [];

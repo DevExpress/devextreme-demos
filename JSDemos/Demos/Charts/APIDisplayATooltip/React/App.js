@@ -17,12 +17,12 @@ function App() {
 
   const onPointClick = React.useCallback((point) => {
     showTooltip(point);
-  }, [pieChartRef]);
+  }, [showTooltip]);
 
   const onRegionChanged = React.useCallback((value) => {
     const point = pieChartRef.current.instance.getAllSeries()[0].getPointsByArg(value)[0];
     showTooltip(point);
-  }, [pieChartRef]);
+  }, [showTooltip]);
 
   const showTooltip = React.useCallback((point) => {
     point.showTooltip();
@@ -30,7 +30,7 @@ function App() {
   }, [setSelectedRegion]);
 
   return (
-    <>
+    <React.Fragment>
       <PieChart
         ref={pieChartRef}
         dataSource={populationData}
@@ -60,7 +60,7 @@ function App() {
           onValueChanged={onRegionChanged}
         />
       </div>
-    </>
+    </React.Fragment>
   );
 }
 

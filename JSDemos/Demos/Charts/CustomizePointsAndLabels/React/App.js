@@ -11,14 +11,14 @@ import {
 } from 'devextreme-react/chart';
 import { temperaturesData } from './data.js';
 
+const highAverage = 77;
+const lowAverage = 58;
+
 function customizeText(arg) {
   return `${arg.valueText}&#176F`;
 }
 
 function App() {
-  const [highAverage, setHighAverage] = React.useState(77);
-  const [lowAverage, setLowAverage] = React.useState(58);
-
   const customizePoint = React.useCallback((arg) => {
     if (arg.value > highAverage) {
       return { color: '#ff7c7c', hoverStyle: { color: '#ff7c7c' } };
@@ -27,7 +27,7 @@ function App() {
       return { color: '#8c8cff', hoverStyle: { color: '#8c8cff' } };
     }
     return null;
-  }, [highAverage, lowAverage]);
+  }, []);
 
   const customizeLabel = React.useCallback((arg) => {
     if (arg.value > highAverage) {
@@ -40,7 +40,7 @@ function App() {
       };
     }
     return null;
-  }, [highAverage]);
+  }, []);
 
   return (
     <Chart

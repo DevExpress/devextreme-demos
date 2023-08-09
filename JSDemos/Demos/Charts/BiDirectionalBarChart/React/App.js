@@ -56,6 +56,6 @@ function App() {
       </Legend>
     </Chart>
   );
-};
+}
 
 export default App;

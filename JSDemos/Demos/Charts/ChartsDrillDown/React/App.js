@@ -12,12 +12,12 @@ function App() {
   const [data, setData] = React.useState(service.filterData(''));
 
   const customizePoint = React.useCallback(() => {
-    return {
+    ({
       color: colors[Number(isFirstLevel)],
       hoverStyle: !isFirstLevel ? {
         hatching: 'none',
       } : {},
-    };
+    });
   }, [isFirstLevel]);
 
   const onPointClick = React.useCallback((e) => {
@@ -56,6 +56,6 @@ function App() {
       />
     </div>
   );
-};
+}
 
 export default App;

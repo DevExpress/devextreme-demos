@@ -20,17 +20,15 @@ const dataSource = new DataSource({
 });
 
 function App() {
-  const [source, setSource] = React.useState(dataSource);
-
-  useEffect(() => {
-    source.filter(['month', '<=', '12']);
-    source.load();
-  }, [source]);
+  React.useEffect(() => {
+    dataSource.filter(['month', '<=', '12']);
+    dataSource.load();
+  }, []);
 
   const onValueChanged = React.useCallback((e) => {
-    source.filter(['month', '<=', e.value]);
-    source.load();
-  }, [source]);
+    dataSource.filter(['month', '<=', e.value]);
+    dataSource.load();
+  }, []);
 
   return (
     <React.Fragment>
@@ -51,7 +49,7 @@ function App() {
               years.map((year, index) => <RowTemplate
                 key={index}
                 year={year}
-                source={source} />)
+                source={dataSource} />)
             }
           </tbody>
         </table>
@@ -68,6 +66,6 @@ function App() {
       </div>
     </React.Fragment>
   );
-};
+}
 
 export default App;

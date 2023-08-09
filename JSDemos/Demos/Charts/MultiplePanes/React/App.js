@@ -14,7 +14,7 @@ import { weatherData } from './data.js';
 
 function temperatureCustomizeText({ valueText }) {
   return `${valueText} °C`;
-};
+}
 
 function precipitationCustomizeText({ valueText }) {
   return `${valueText} mm`;

@@ -54,6 +54,6 @@ function App() {
       />
     </Chart>
   );
-};
+}
 
 export default App;

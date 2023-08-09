@@ -31,7 +31,7 @@ const chartDataSource = new DataSource({
   paginate: false,
 });
 
-function onValueChanged(data)  {
+function onValueChanged(data) {
   chartDataSource.filter(['Id', '=', data.value]);
   chartDataSource.load();
 }
@@ -45,7 +45,6 @@ function customizeTooltip(arg) {
     text: `${arg.valueText}${'&#176C'}`,
   };
 }
-
 
 function App() {
   return (
