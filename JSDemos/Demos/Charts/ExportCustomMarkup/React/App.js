@@ -38,7 +38,7 @@ function App() {
         },
       },
     );
-  }, []);
+  }, [chartRef]);
 
   const onRef = React.useCallback((ref) => {
     setChildRef(ref);
