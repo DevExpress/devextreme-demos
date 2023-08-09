@@ -11,14 +11,12 @@ function App() {
   const [isFirstLevel, setIsFirstLevel] = React.useState(true);
   const [data, setData] = React.useState(service.filterData(''));
 
-  const customizePoint = React.useCallback(() => {
-    ({
-      color: colors[Number(isFirstLevel)],
-      hoverStyle: !isFirstLevel ? {
-        hatching: 'none',
-      } : {},
-    });
-  }, [isFirstLevel]);
+  const customizePoint = React.useCallback(() => ({
+    color: colors[Number(isFirstLevel)],
+    hoverStyle: !isFirstLevel ? {
+      hatching: 'none',
+    } : {},
+  }), [isFirstLevel]);
 
   const onPointClick = React.useCallback((e) => {
     if (isFirstLevel) {

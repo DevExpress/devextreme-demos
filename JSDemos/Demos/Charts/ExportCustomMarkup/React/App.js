@@ -16,8 +16,8 @@ function prepareMarkup(chartSvg, markup) {
 }
 
 function App() {
+  const [childRef, setChildRef] = React.useState(null);
   const chartRef = React.useRef();
-  const childRef = React.useRef();
 
   const onClick = React.useCallback(() => {
     exportFromMarkup(
@@ -40,10 +40,14 @@ function App() {
     );
   }, []);
 
+  const onRef = React.useCallback((ref) => {
+    setChildRef(ref);
+  }, []);
+
   return (
     <div id="chart-demo">
       <div className="chart_environment">
-        <Form onRef={childRef} />
+        <Form onRef={onRef} />
         <Chart
           ref={chartRef}
           id="chart"
