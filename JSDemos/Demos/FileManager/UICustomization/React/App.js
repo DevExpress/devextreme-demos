@@ -31,8 +31,6 @@ export default function App() {
     onItemClick,
   }), [onItemClick]);
 
-  const getFileManagerInstance = React.useCallback(() => fileManagerRef.current.instance, []);
-
   const getChangeCategoryMenuOptions = React.useCallback(() => ({
     items: [
       {
@@ -71,13 +69,13 @@ export default function App() {
     }
 
     if (updated) {
-      getFileManagerInstance().refresh();
+      fileManagerRef.current.instance.refresh();
     }
   }, []);
 
   const createFile = React.useCallback((
     fileExtension,
-    directory = getFileManagerInstance().getCurrentDirectory(),
+    directory = fileManagerRef.current.instance.getCurrentDirectory(),
   ) => {
     const newItem = {
       __KEY__: Date.now(),
@@ -111,7 +109,7 @@ export default function App() {
     if (viewArea === 'navPane') {
       items = [directory];
     } else {
-      items = getFileManagerInstance.getSelectedItems();
+      items = fileManagerRef.current.instance.getSelectedItems();
     }
 
     items.forEach((item) => {
