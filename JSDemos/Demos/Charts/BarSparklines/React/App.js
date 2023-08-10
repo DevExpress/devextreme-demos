@@ -20,11 +20,6 @@ const dataSource = new DataSource({
 });
 
 function App() {
-  React.useEffect(() => {
-    dataSource.filter(['month', '<=', '12']);
-    dataSource.load();
-  }, []);
-
   const onValueChanged = React.useCallback((e) => {
     dataSource.filter(['month', '<=', e.value]);
     dataSource.load();
