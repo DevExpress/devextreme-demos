@@ -519,9 +519,10 @@ module.exports = {
       'utils/templates/Vue/*.vue',
       'utils/templates/Vue/*.js',
     ],
-    parser: 'babel-eslint',
+    // parser: 'babel-eslint',
     extends: [
       'plugin:vue/recommended',
+      '@vue/typescript/recommended',
     ],
     globals: {
       System: false,

@@ -8,7 +8,7 @@
 withDefaults(defineProps<{
   itemData?: {[key:string]: unknown}
 }>(), {
-  itemData: () => ({key: ''}),
+  itemData: () => ({ key: '' }),
 });
 </script>
 <style scoped>
