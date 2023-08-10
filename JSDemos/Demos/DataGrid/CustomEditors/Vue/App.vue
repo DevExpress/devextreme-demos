@@ -110,14 +110,14 @@ function cellTemplate(container, options) {
   const text = (options.value || []).map((element) => options.column.lookup.calculateCellValue(element)).join(', ');
   container.textContent = text || noBreakSpace;
   container.title = text;
-};
+}
 function onValueChanged(value, cellInfo) {
   cellInfo.setValue(value);
   cellInfo.component.updateDimensions();
-};
+}
 function onRowInserted(e) {
   e.component.navigateToRow(e.key);
-};
+}
 const url = 'https://js.devexpress.com/Demos/Mvc/api/CustomEditors';
 const employees = createStore({
   key: 'ID',

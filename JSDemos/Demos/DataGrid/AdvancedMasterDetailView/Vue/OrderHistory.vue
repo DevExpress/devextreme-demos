@@ -61,13 +61,11 @@ const props = withDefaults(defineProps<{
 });
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridAdvancedMasterDetailView';
-const orderHistoryStore = computed(() => {
-  return props.productId === null ? null : {
-    store: createStore({
-      key: 'OrderID',
-      loadParams: { ProductID: props.productId },
-      loadUrl: `${url}/GetOrdersByProduct`,
-    }),
-  };
-});
+const orderHistoryStore = computed(() => (props.productId === null ? null : {
+  store: createStore({
+    key: 'OrderID',
+    loadParams: { ProductID: props.productId },
+    loadUrl: `${url}/GetOrdersByProduct`,
+  }),
+}));
 </script>

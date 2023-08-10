@@ -88,7 +88,7 @@ const selectedEmployeeNames = computed(() => {
 });
 
 function clearSelection() {
-  const dataGrid = dataGridRef.instance;
+  const dataGrid = dataGridRef.value.instance;
 
   dataGrid.clearSelection();
 }

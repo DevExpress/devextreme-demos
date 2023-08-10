@@ -53,6 +53,7 @@ import { DxDataGrid, DxColumn, DxEditing } from 'devextreme-vue/data-grid';
 import { DxLoadPanel } from 'devextreme-vue/load-panel';
 import { useStore } from 'vuex';
 
+// eslint-disable-next-line react-hooks/rules-of-hooks
 const store = useStore();
 
 const [loadOrders, setEditRowKey, setChanges, saveChange] = ['loadOrders', 'setEditRowKey', 'setChanges', 'saveChange'].map(

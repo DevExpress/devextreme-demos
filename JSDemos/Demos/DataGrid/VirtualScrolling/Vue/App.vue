@@ -19,16 +19,14 @@ import {
 } from 'devextreme-vue/data-grid';
 import { generateData } from './data.js';
 
-const dataSource = computed(() => {
-  return generateData(100000);
-});
+const dataSource = computed(() => generateData(100000));
 
 function onContentReady(e) {
   e.component.option('loadPanel.enabled', false);
-};
+}
 function customizeColumns(columns) {
   columns[0].width = 70;
-};
+}
 </script>
 <style>
 #gridContainer {

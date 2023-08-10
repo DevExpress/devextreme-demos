@@ -81,22 +81,22 @@ const filterBuilder = ref({
 });
 const filterValue = ref([['Employee', '=', 'Clark Morgan'], 'and', ['OrderDate', 'weekends']]);
 const saleAmountHeaderFilters = ref([
-{
-  text: 'Less than $3000',
-  value: ['SaleAmount', '<', 3000],
-}, {
-  text: '$3000 - $5000',
-  value: [['SaleAmount', '>=', 3000], ['SaleAmount', '<', 5000]],
-}, {
-  text: '$5000 - $10000',
-  value: [['SaleAmount', '>=', 5000], ['SaleAmount', '<', 10000]],
-}, {
-  text: '$10000 - $20000',
-  value: [['SaleAmount', '>=', 10000], ['SaleAmount', '<', 20000]],
-}, {
-  text: 'Greater than $20000',
-  value: ['SaleAmount', '>=', 20000],
-}]);
+  {
+    text: 'Less than $3000',
+    value: ['SaleAmount', '<', 3000],
+  }, {
+    text: '$3000 - $5000',
+    value: [['SaleAmount', '>=', 3000], ['SaleAmount', '<', 5000]],
+  }, {
+    text: '$5000 - $10000',
+    value: [['SaleAmount', '>=', 5000], ['SaleAmount', '<', 10000]],
+  }, {
+    text: '$10000 - $20000',
+    value: [['SaleAmount', '>=', 10000], ['SaleAmount', '<', 20000]],
+  }, {
+    text: 'Greater than $20000',
+    value: ['SaleAmount', '>=', 20000],
+  }]);
 const getOrderDay = (rowData) => (new Date(rowData.OrderDate)).getDay();
 </script>
 <style scoped>

@@ -41,11 +41,9 @@ withDefaults(defineProps<{
   cellData: () => {},
 });
 
-const customizeTooltip = ref((data) => {
-  return {
-    text: `${parseInt(data.value, 10)}%`,
-  };
-});
+const customizeTooltip = ref((data) => ({
+  text: `${parseInt(data.value, 10)}%`,
+}));
 </script>
 <style>
 .dx-datagrid .dx-data-row > td.bullet {

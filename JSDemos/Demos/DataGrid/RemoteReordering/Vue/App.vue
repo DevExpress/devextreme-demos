@@ -47,14 +47,14 @@ import { createStore } from 'devextreme-aspnet-data-nojquery';
 
 function onReorder(e) {
   e.promise = processReorder(e);
-};
+}
 async function processReorder(e) {
-      const visibleRows = e.component.getVisibleRows();
-      const newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
+  const visibleRows = e.component.getVisibleRows();
+  const newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
 
-      await tasksStore.update(e.itemData.ID, { OrderIndex: newOrderIndex });
-      await e.component.refresh();
-    };
+  await tasksStore.update(e.itemData.ID, { OrderIndex: newOrderIndex });
+  await e.component.refresh();
+}
 const url = 'https://js.devexpress.com/Demos/Mvc/api/RowReordering';
 const tasksStore = createStore({
   key: 'ID',

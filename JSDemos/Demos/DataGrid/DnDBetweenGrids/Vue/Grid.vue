@@ -36,6 +36,7 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import {
   DxDataGrid, DxColumn, DxRowDragging, DxScrolling, DxLookup,
 } from 'devextreme-vue/data-grid';
@@ -58,7 +59,7 @@ const priorities = [{
   id: 4, text: 'Urgent',
 }];
 
-const tasksStore = props.tasksStore;
+const tasksStore = computed(() => props.tasksStore);
 const dataSource = {
   store: tasksStore,
   reshapeOnPush: true,
@@ -66,13 +67,13 @@ const dataSource = {
 const filterExpr = ['Status', '=', props.status];
 
 function onAdd(e) {
-      const key = e.itemData.ID;
-      const values = { Status: e.toData };
+  const key = e.itemData.ID;
+  const values = { Status: e.toData };
 
-      tasksStore.update(key, values).then(() => {
-        tasksStore.push([{
-          type: 'update', key, data: values,
-        }]);
-      });
-    };
+  tasksStore.value.update(key, values).then(() => {
+    tasksStore.value.push([{
+      type: 'update', key, data: values,
+    }]);
+  });
+}
 </script>

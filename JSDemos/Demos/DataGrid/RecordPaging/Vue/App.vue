@@ -77,11 +77,9 @@ const showPageSizeSelector = ref(true);
 const showInfo = ref(true);
 const showNavButtons = ref(true);
 
-const isCompactMode = computed(() => {
-  return displayMode.value === 'compact';
-});
+const isCompactMode = computed(() => displayMode.value === 'compact');
 
 function customizeColumns(columns) {
   columns[0].width = 70;
-};
+}
 </script>

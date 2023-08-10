@@ -64,7 +64,7 @@ function asyncValidation(params) {
       email: params.value,
     }),
   }).then((response) => response.json());
-};
+}
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridEmployeesValidation';
 const dataSource = createStore({
   key: 'ID',

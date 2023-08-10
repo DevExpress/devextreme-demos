@@ -90,10 +90,10 @@ const statesRef = ref(states);
 
 function logEvent(eventName) {
   events.value.unshift(eventName);
-};
+}
 function clearEvents() {
   events.value = [];
-};
+}
 </script>
 <style>
 #events {

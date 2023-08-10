@@ -65,5 +65,5 @@ function onSelectionChanged(selectionChangedArgs) {
   if (selectionChangedArgs.selectedRowKeys.length > 0) {
     dropDownBoxRef.value?.instance.close();
   }
-};
+}
 </script>

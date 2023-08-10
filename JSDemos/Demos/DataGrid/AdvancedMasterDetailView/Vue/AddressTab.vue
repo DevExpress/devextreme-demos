@@ -15,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import { DxForm } from 'devextreme-vue/form';
 
 withDefaults(defineProps<{

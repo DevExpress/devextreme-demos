@@ -68,28 +68,28 @@ const connectionStarted = ref(false);
 const dataSource = ref(null);
 
 onMounted(() => {
-    const hubConnection = new HubConnectionBuilder()
-      .withUrl('https://js.devexpress.com/Demos/NetCore/liveUpdateSignalRHub', {
-        skipNegotiation: true,
-        transport: HttpTransportType.WebSockets,
-      })
-      .build();
+  const hubConnection = new HubConnectionBuilder()
+    .withUrl('https://js.devexpress.com/Demos/NetCore/liveUpdateSignalRHub', {
+      skipNegotiation: true,
+      transport: HttpTransportType.WebSockets,
+    })
+    .build();
 
-    const store = new CustomStore({
-      load: () => hubConnection.invoke('getAllStocks'),
-      key: 'symbol',
-    });
-
-    hubConnection
-      .start()
-      .then(() => {
-        hubConnection.on('updateStockPrice', (data) => {
-          store.push([{ type: 'update', key: data.symbol, data }]);
-        });
-        dataSource.value = store;
-        connectionStarted.value = true;
-      });
+  const store = new CustomStore({
+    load: () => hubConnection.invoke('getAllStocks'),
+    key: 'symbol',
   });
+
+  hubConnection
+    .start()
+    .then(() => {
+      hubConnection.on('updateStockPrice', (data) => {
+        store.push([{ type: 'update', key: data.symbol, data }]);
+      });
+      dataSource.value = store;
+      connectionStarted.value = true;
+    });
+});
 </script>
 
 <style>

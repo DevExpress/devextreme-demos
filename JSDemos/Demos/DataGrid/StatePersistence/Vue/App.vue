@@ -67,10 +67,10 @@ const dataGrid = ref(null);
 
 function onRefreshClick() {
   window.location.reload();
-};
+}
 function onStateResetClick() {
   dataGrid.value.instance?.state(null);
-};
+}
 </script>
 <style scoped>
 #gridContainer {

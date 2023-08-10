@@ -153,14 +153,14 @@ import {
 } from './data.js';
 
 setInterval(() => {
-      if (getOrderCount() > 500000) {
-        return;
-      }
+  if (getOrderCount() > 500000) {
+    return;
+  }
 
-      for (let i = 0; i < updatesPerSecond.value / 20; i += 1) {
-        addOrder();
-      }
-    }, 50);
+  for (let i = 0; i < updatesPerSecond.value / 20; i += 1) {
+    addOrder();
+  }
+}, 50);
 
 const updatesPerSecond = ref(100);
 const dataGridRefName = ref('dataGrid');
@@ -175,10 +175,10 @@ function getDetailGridDataSource(product) {
     reshapeOnPush: true,
     filter: ['ProductID', '=', product.ProductID],
   };
-};
+}
 function getAmount(order) {
   return order.UnitPrice * order.Quantity;
-};
+}
 </script>
 <style scoped>
 .options {

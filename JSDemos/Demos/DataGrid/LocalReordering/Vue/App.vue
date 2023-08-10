@@ -58,23 +58,23 @@ import {
   DxDataGrid, DxColumn, DxLookup, DxScrolling, DxRowDragging, DxSorting,
 } from 'devextreme-vue/data-grid';
 import DxCheckBox from 'devextreme-vue/check-box';
-import { tasks, employees, statuses } from './data.js';
+import { tasks, employees } from './data.js';
 
-const $this = {}
+const $this = {};
 
 const showDragIcons = ref(true);
 
 function onReorder(e) {
-      const visibleRows = e.component.getVisibleRows();
-      const toIndex = $this.tasks.findIndex((item) => item.ID === visibleRows[e.toIndex].data.ID);
-      const fromIndex = $this.tasks.findIndex((item) => item.ID === e.itemData.ID);
-      const newTasks = [...$this.tasks];
+  const visibleRows = e.component.getVisibleRows();
+  const toIndex = $this.tasks.findIndex((item) => item.ID === visibleRows[e.toIndex].data.ID);
+  const fromIndex = $this.tasks.findIndex((item) => item.ID === e.itemData.ID);
+  const newTasks = [...$this.tasks];
 
-      newTasks.splice(fromIndex, 1);
-      newTasks.splice(toIndex, 0, e.itemData);
+  newTasks.splice(fromIndex, 1);
+  newTasks.splice(toIndex, 0, e.itemData);
 
-      $this.tasks = newTasks;
-    };
+  $this.tasks = newTasks;
+}
 </script>
 <style>
   .options {

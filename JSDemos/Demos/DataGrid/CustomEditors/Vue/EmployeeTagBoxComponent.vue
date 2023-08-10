@@ -34,5 +34,5 @@ const currentValue = ref(props.value);
 
 function onSelectionChanged() {
   props.dataGridComponent.updateDimensions();
-};
+}
 </script>

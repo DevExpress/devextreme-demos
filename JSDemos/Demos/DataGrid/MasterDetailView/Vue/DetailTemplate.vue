@@ -25,7 +25,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed } from 'vue';
 import { DxDataGrid, DxColumn } from 'devextreme-vue/data-grid';
 import ArrayStore from 'devextreme/data/array_store';
 import DataSource from 'devextreme/data/data_source';
@@ -39,7 +39,7 @@ const props = withDefaults(defineProps<{
 
 const tasks = service.getTasks();
 const dataSource = getTasks(props.templateData.key);
-const { FirstName, LastName } = props.templateData.data;
+const { FirstName, LastName } = computed(() => props.templateData.data);
 const detailInfo = `${FirstName} ${LastName}'s Tasks:`;
 
 function completedValue(rowData) {

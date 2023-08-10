@@ -40,7 +40,7 @@ const currentMode = ref('nextColumn');
 
 function changeResizingMode(data) {
   currentMode.value = data.value;
-};
+}
 </script>
 <style scoped>
 #orders {

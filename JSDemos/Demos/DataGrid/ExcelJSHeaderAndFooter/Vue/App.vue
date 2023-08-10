@@ -53,7 +53,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import DxDataGrid, { DxColumn, DxExport } from 'devextreme-vue/data-grid';
 import { Workbook } from 'exceljs';
 // Our demo infrastructure requires us to use 'file-saver-es'.

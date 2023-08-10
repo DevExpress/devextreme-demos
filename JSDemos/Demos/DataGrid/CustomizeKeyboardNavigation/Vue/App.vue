@@ -101,5 +101,5 @@ const enterKeyDirections = ['none', 'column', 'row'];
 
 function onFocusedCellChanging(e) {
   e.isHighlighted = true;
-};
+}
 </script>

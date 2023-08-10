@@ -15,9 +15,7 @@ import { computed } from 'vue';
 import { DxDataGrid, DxScrolling, DxPaging } from 'devextreme-vue/data-grid';
 import { generateData } from './data.js';
 
-const dataSource = computed(() => {
-  return generateData(50, 500);
-});
+const dataSource = computed(() => generateData(50, 500));
 </script>
 <style>
 #gridContainer {
