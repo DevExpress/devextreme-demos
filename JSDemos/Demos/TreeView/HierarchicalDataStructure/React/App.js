@@ -1,15 +1,15 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import TreeView from 'devextreme-react/tree-view';
 import service from './data.js';
 
 const products = service.getProducts();
 
 const App = () => {
-  const [currentItem, setCurrentItem] = useState({ ...products[0] });
+  const [currentItem, setCurrentItem] = React.useState({ ...products[0] });
 
-  const selectItem = useCallback((e) => {
+  const selectItem = React.useCallback((e) => {
     setCurrentItem({ ...e.itemData });
-  }, []);
+  }, [setCurrentItem]);
 
   return (
     <div className="form">

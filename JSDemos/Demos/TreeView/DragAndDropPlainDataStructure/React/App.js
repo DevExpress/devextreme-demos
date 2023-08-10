@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import TreeView from 'devextreme-react/tree-view';
 import Sortable from 'devextreme-react/sortable';
 
@@ -102,13 +102,13 @@ const getTopVisibleNode = (component) => {
 };
 
 const App = () => {
-  const treeViewDriveCRef = useRef();
-  const treeViewDriveDRef = useRef();
+  const treeViewDriveCRef = React.useRef();
+  const treeViewDriveDRef = React.useRef();
 
-  const [itemsDriveC, setItemsDriveC] = useState(service.getItemsDriveC());
-  const [itemsDriveD, setItemsDriveD] = useState(service.getItemsDriveD());
+  const [itemsDriveC, setItemsDriveC] = React.useState(service.getItemsDriveC());
+  const [itemsDriveD, setItemsDriveD] = React.useState(service.getItemsDriveD());
 
-  const onDragChange = (e) => {
+  const onDragChange = React.useCallback((e) => {
     if (e.fromComponent === e.toComponent) {
       const fromNode = findNode(getTreeView(e.fromData), e.fromIndex);
       const toNode = findNode(getTreeView(e.toData), calculateToIndex(e));
@@ -116,9 +116,9 @@ const App = () => {
         e.cancel = true;
       }
     }
-  };
+  }, [getTreeView]);
 
-  const onDragEnd = (e) => {
+  const onDragEnd = React.useCallback((e) => {
     if (e.fromComponent === e.toComponent && e.fromIndex === e.toIndex) {
       return;
     }
@@ -160,11 +160,11 @@ const App = () => {
 
     fromTreeView.scrollToItem(fromTopVisibleNode);
     toTreeView.scrollToItem(toTopVisibleNode);
-  };
+  }, [getTreeView, itemsDriveC, itemsDriveD, setItemsDriveC, setItemsDriveD]);
 
-  const getTreeView = (driveName) => (driveName === 'driveC'
+  const getTreeView = React.useCallback((driveName) => (driveName === 'driveC'
     ? treeViewDriveCRef.current.instance
-    : treeViewDriveDRef.current.instance);
+    : treeViewDriveDRef.current.instance), []);
 
   return (
     <div className="form">

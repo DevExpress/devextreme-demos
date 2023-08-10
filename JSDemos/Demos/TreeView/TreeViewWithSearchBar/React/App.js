@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 
 import TreeView from 'devextreme-react/tree-view';
 import SelectBox from 'devextreme-react/select-box';
@@ -8,11 +8,11 @@ import { products, searchModeLabel } from './data.js';
 const options = ['contains', 'startswith', 'equals'];
 
 const App = () => {
-  const [value, setValue] = useState('contains');
+  const [value, setValue] = React.useState('contains');
 
-  const valueChanged = useCallback((e) => {
+  const valueChanged = React.useCallback((e) => {
     setValue(e.value);
-  }, []);
+  }, [setValue]);
 
   return (
     <React.Fragment>

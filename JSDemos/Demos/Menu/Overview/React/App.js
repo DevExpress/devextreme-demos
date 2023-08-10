@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Menu from 'devextreme-react/menu';
 import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
@@ -7,42 +7,41 @@ import service from './data.js';
 const orientations = ['horizontal', 'vertical'];
 const orientationLabel = { 'aria-label': 'Orientation' };
 const showSubmenuModeLabel = { 'aria-label': 'Show Submenu Mode' };
+const products = service.getProducts();
+const showSubmenuModes = [
+  {
+    name: 'onHover',
+    delay: { show: 0, hide: 500 },
+  },
+  {
+    name: 'onClick',
+    delay: { show: 0, hide: 300 },
+  },
+];
 
 const App = () => {
-  const [showFirstSubmenuModes, setShowFirstSubmenuModes] = useState(null);
-  const [orientation, setOrientation] = useState('horizontal');
-  const [hideSubmenuOnMouseLeave, setHideSubmenuOnMouseLeave] = useState(false);
-  const [currentProduct, setCurrentProduct] = useState(null);
+  const [showFirstSubmenuModes, setShowFirstSubmenuModes] = React.useState(null);
+  const [orientation, setOrientation] = React.useState('horizontal');
+  const [hideSubmenuOnMouseLeave, setHideSubmenuOnMouseLeave] = React.useState(false);
+  const [currentProduct, setCurrentProduct] = React.useState(null);
 
-  const products = service.getProducts();
-  const showSubmenuModes = [
-    {
-      name: 'onHover',
-      delay: { show: 0, hide: 500 },
-    },
-    {
-      name: 'onClick',
-      delay: { show: 0, hide: 300 },
-    },
-  ];
-
-  const itemClick = (e) => {
+  const itemClick = React.useCallback((e) => {
     if (e.itemData.price) {
       setCurrentProduct(e.itemData);
     }
-  };
+  }, [setCurrentProduct]);
 
-  const showSubmenuModeChanged = (e) => {
+  const showSubmenuModeChanged = React.useCallback((e) => {
     setShowFirstSubmenuModes(e.value);
-  };
+  }, [setShowFirstSubmenuModes]);
 
-  const orientationChanged = (e) => {
+  const orientationChanged = React.useCallback((e) => {
     setOrientation(e.value);
-  };
+  }, [setOrientation]);
 
-  const hideSubmenuOnMouseLeaveChanged = (e) => {
+  const hideSubmenuOnMouseLeaveChanged = React.useCallback((e) => {
     setHideSubmenuOnMouseLeave(e.value);
-  };
+  }, [setHideSubmenuOnMouseLeave]);
 
   return (
     <div className="form">

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 
 import Tabs from 'devextreme-react/tabs';
 import SelectBox from 'devextreme-react/select-box';
@@ -6,17 +6,17 @@ import SelectBox from 'devextreme-react/select-box';
 import { tabs, longtabs, tabLabel } from './data.js';
 
 const App = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  const onTabsSelectionChanged = useCallback((args) => {
+  const onTabsSelectionChanged = React.useCallback((args) => {
     if (args.name === 'selectedIndex') {
       setSelectedIndex(args.value);
     }
-  }, []);
+  }, [setSelectedIndex]);
 
-  const onValueChanged = useCallback((args) => {
+  const onValueChanged = React.useCallback((args) => {
     setSelectedIndex(args.value);
-  }, []);
+  }, [setSelectedIndex]);
 
   return (
     <React.Fragment>

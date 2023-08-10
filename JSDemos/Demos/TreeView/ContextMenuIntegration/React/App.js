@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import TreeView from 'devextreme-react/tree-view';
 import ContextMenu from 'devextreme-react/context-menu';
 import List from 'devextreme-react/list';
@@ -8,12 +8,12 @@ const products = service.getProducts();
 const menuItems = service.getMenuItems();
 
 const App = () => {
-  const contextMenuRef = useRef();
-  const treeViewRef = useRef();
-  const [logItems, setLogItems] = useState([]);
-  const [selectedTreeItem, setSelectedTreeItem] = useState(undefined);
+  const contextMenuRef = React.useRef();
+  const treeViewRef = React.useRef();
+  const [logItems, setLogItems] = React.useState([]);
+  const [selectedTreeItem, setSelectedTreeItem] = React.useState(undefined);
 
-  const treeViewItemContextMenu = (e) => {
+  const treeViewItemContextMenu = React.useCallback((e) => {
     setSelectedTreeItem(e.itemData);
 
     const isProduct = e.itemData.price !== undefined;
@@ -24,9 +24,9 @@ const App = () => {
 
     contextMenuRef.current.instance.option('items[0].disabled', e.node.expanded);
     contextMenuRef.current.instance.option('items[1].disabled', !e.node.expanded);
-  };
+  }, []);
 
-  const contextMenuItemClick = (e) => {
+  const contextMenuItemClick = React.useCallback((e) => {
     let logEntry = '';
     switch (e.itemData.id) {
       case 'expand': {
@@ -52,7 +52,7 @@ const App = () => {
     }
     const updatedLogItems = [...logItems, logEntry];
     setLogItems(updatedLogItems);
-  };
+  }, [logItems, selectedTreeItem, setLogItems]);
 
   return (
     <div className="form">

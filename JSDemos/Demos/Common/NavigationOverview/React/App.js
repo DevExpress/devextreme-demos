@@ -1,63 +1,62 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TreeView from 'devextreme-react/tree-view';
 import TabPanel from 'devextreme-react/tab-panel';
 import { continents } from './data.js';
 
-function App() {
-  const [tabPanelIndex, setTabPanelIndex] = useState(0);
-  const [countryData, setCountryData] = useState(continents[0].items[0]);
-  const [citiesData, setCitiesData] = useState(continents[0].items[0].cities);
+const renderPanelItemTitle = (item) => <span className="tab-panel-title">{item.text}</span>;
 
-  const handleTreeViewSelectionChange = (e) => {
-    const countryData = e.itemData;
-    if (countryData.cities) {
-      setTabPanelIndex(0);
-      setCountryData(e.itemData);
-      setCitiesData(countryData.cities);
-    }
-  };
-
-  const handleTabPanelSelectionChange = (e) => {
-    setTabPanelIndex(e.value);
-  };
-
-  const renderPanelItemTitle = (item) => <span className="tab-panel-title">{item.text}</span>;
-
-  const renderPanelItem = (city) => (
-    <React.Fragment>
-      <img alt="country flag" className="flag" src={city.flag} />
-      <div className="right-content">
+const renderPanelItem = (city) => (
+  <React.Fragment>
+    <img alt="country flag" className="flag" src={city.flag} />
+    <div className="right-content">
+      <div>
+        <b>{city.capital ? 'Capital. ' : ''}</b>
+        {city.description}
+      </div>
+      <div className="stats">
         <div>
-          <b>{city.capital ? 'Capital. ' : ''}</b>
-          {city.description}
+          <div>Population</div>
+          <div>
+            <b>{city.population} people</b>
+          </div>
         </div>
-        <div className="stats">
+        <div>
+          <div>Area</div>
           <div>
-            <div>Population</div>
-            <div>
-              <b>{city.population} people</b>
-            </div>
+            <b>
+              {city.area} km<sup>2</sup>
+            </b>
           </div>
+        </div>
+        <div>
+          <div>Density</div>
           <div>
-            <div>Area</div>
-            <div>
-              <b>
-                {city.area} km<sup>2</sup>
-              </b>
-            </div>
-          </div>
-          <div>
-            <div>Density</div>
-            <div>
-              <b>
-                {city.density}/km<sup>2</sup>
-              </b>
-            </div>
+            <b>
+              {city.density}/km<sup>2</sup>
+            </b>
           </div>
         </div>
       </div>
-    </React.Fragment>
-  );
+    </div>
+  </React.Fragment>
+);
+function App() {
+  const [tabPanelIndex, setTabPanelIndex] = React.useState(0);
+  const [countryData, setCountryData] = React.useState(continents[0].items[0]);
+  const [citiesData, setCitiesData] = React.useState(continents[0].items[0].cities);
+
+  const handleTreeViewSelectionChange = React.useCallback((e) => {
+    const selectedCountryData = e.itemData;
+    if (selectedCountryData.cities) {
+      setTabPanelIndex(0);
+      setCountryData(selectedCountryData);
+      setCitiesData(selectedCountryData.cities);
+    }
+  }, [setTabPanelIndex, setCountryData, setCitiesData]);
+
+  const handleTabPanelSelectionChange = React.useCallback((e) => {
+    setTabPanelIndex(e.value);
+  }, [setTabPanelIndex]);
 
   return (
     <div className="container">

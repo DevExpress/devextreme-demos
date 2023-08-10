@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import SelectBox from 'devextreme-react/select-box';
 import Menu from 'devextreme-react/menu';
 import TreeView from 'devextreme-react/tree-view';
@@ -10,32 +10,32 @@ const languages = [
   'English: Left-to-Right direction',
 ];
 
+const renderArabicTitle = (item) => (<div>{item.nameAr}</div>);
+
+const renderArabic = (country) => (
+  <div>
+    <div>عاصمة: { country.capitalAr } </div>
+    <div>عدد السكان: { country.population } نسمة</div>
+    <div>المساحة: { country.area } كم<sup>2</sup></div>
+  </div>
+);
+
+const renderEnglishTitle = (item) => (<div>{item.nameEn}</div>);
+
+const renderEnglish = (country) => (
+  <div>
+    <div>Capital: { country.capitalEn } </div>
+    <div>Population: { country.population } people</div>
+    <div>Area: { country.area } km<sup>2</sup></div>
+  </div>
+);
+
 const App = () => {
-  const [rtlEnabled, setRtl] = useState(false);
+  const [rtlEnabled, setRtl] = React.useState(false);
 
-  const selectLanguage = useCallback(({ value }) => {
+  const selectLanguage = React.useCallback(({ value }) => {
     setRtl(value === languages[0]);
-  }, []);
-
-  const renderArabicTitle = (item) => (<div>{item.nameAr}</div>);
-
-  const renderArabic = (country) => (
-    <div>
-      <div>عاصمة: { country.capitalAr } </div>
-      <div>عدد السكان: { country.population } نسمة</div>
-      <div>المساحة: { country.area } كم<sup>2</sup></div>
-    </div>
-  );
-
-  const renderEnglishTitle = (item) => (<div>{item.nameEn}</div>);
-
-  const renderEnglish = (country) => (
-    <div>
-      <div>Capital: { country.capitalEn } </div>
-      <div>Population: { country.population } people</div>
-      <div>Area: { country.area } km<sup>2</sup></div>
-    </div>
-  );
+  }, [setRtl]);
 
   return (
     <div className={rtlEnabled ? 'dx-rtl' : ''}>

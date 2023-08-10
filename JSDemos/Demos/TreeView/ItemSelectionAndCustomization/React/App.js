@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import TreeView from 'devextreme-react/tree-view';
 import List from 'devextreme-react/list';
 import SelectBox from 'devextreme-react/select-box';
@@ -14,31 +14,31 @@ const renderTreeViewItem = (item) => `${item.fullName} (${item.position})`;
 const renderListItem = (item) => `${item.prefix} ${item.fullName} (${item.position})`;
 
 const App = () => {
-  const treeViewRef = useRef();
-  const [selectedEmployees, setSelectedEmployees] = useState([]);
-  const [selectNodesRecursive, setSelectNodesRecursive] = useState(true);
-  const [selectByClick, setSelectByClick] = useState(false);
-  const [showCheckBoxesMode, setShowCheckBoxesMode] = useState(showCheckBoxesModes[0]);
-  const [selectionMode, setSelectionMode] = useState(selectionModes[0]);
-  const [isSelectionModeDisabled, setIsSelectionModeDisabled] = useState(false);
-  const [isRecursiveDisabled, setIsRecursiveDisabled] = useState(false);
+  const treeViewRef = React.useRef();
+  const [selectedEmployees, setSelectedEmployees] = React.useState([]);
+  const [selectNodesRecursive, setSelectNodesRecursive] = React.useState(true);
+  const [selectByClick, setSelectByClick] = React.useState(false);
+  const [showCheckBoxesMode, setShowCheckBoxesMode] = React.useState(showCheckBoxesModes[0]);
+  const [selectionMode, setSelectionMode] = React.useState(selectionModes[0]);
+  const [isSelectionModeDisabled, setIsSelectionModeDisabled] = React.useState(false);
+  const [isRecursiveDisabled, setIsRecursiveDisabled] = React.useState(false);
 
-  const treeViewSelectionChanged = (e) => {
+  const treeViewSelectionChanged = React.useCallback((e) => {
     syncSelection(e.component);
-  };
+  }, [syncSelection]);
 
-  const treeViewContentReady = (e) => {
+  const treeViewContentReady = React.useCallback((e) => {
     syncSelection(e.component);
-  };
+  }, [syncSelection]);
 
-  const syncSelection = (treeView) => {
+  const syncSelection = React.useCallback((treeView) => {
     const syncSelectedEmployees = treeView.getSelectedNodes()
       .map((node) => node.itemData);
 
     setSelectedEmployees(syncSelectedEmployees);
-  };
+  }, [setSelectedEmployees]);
 
-  const showCheckBoxesModeValueChanged = (e) => {
+  const showCheckBoxesModeValueChanged = React.useCallback((e) => {
     const value = e.value;
     setShowCheckBoxesMode(value);
 
@@ -47,9 +47,9 @@ const App = () => {
       setIsRecursiveDisabled(false);
     }
     setIsSelectionModeDisabled(value === 'selectAll');
-  };
+  }, [setShowCheckBoxesMode, setSelectionMode, setIsRecursiveDisabled, setIsSelectionModeDisabled]);
 
-  const selectionModeValueChanged = (e) => {
+  const selectionModeValueChanged = React.useCallback((e) => {
     const value = e.value;
     setSelectionMode(value);
 
@@ -58,15 +58,15 @@ const App = () => {
       treeViewRef.current.instance.unselectAll();
     }
     setIsRecursiveDisabled(value === 'single');
-  };
+  }, [setSelectionMode, setSelectNodesRecursive, setIsRecursiveDisabled]);
 
-  const selectNodesRecursiveValueChanged = (e) => {
+  const selectNodesRecursiveValueChanged = React.useCallback((e) => {
     setSelectNodesRecursive(e.value);
-  };
+  }, [setSelectNodesRecursive]);
 
-  const selectByClickValueChanged = (e) => {
+  const selectByClickValueChanged = React.useCallback((e) => {
     setSelectByClick(e.value);
-  };
+  }, [setSelectByClick]);
 
   return (
     <div>
