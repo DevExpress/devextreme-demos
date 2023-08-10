@@ -10,6 +10,6 @@
 withDefaults(defineProps<{
   itemData?: {[key:string]: string}
 }>(), {
-  itemData: () => ({Name: ''}),
+  itemData: () => ({ Name: '' }),
 });
 </script>

@@ -120,16 +120,14 @@ const min = new Date(1900, 0, 1);
 const dateClear = new Date(2015, 11, 1, 6);
 const disabledDates = service.getFederalHolidays();
 
-const diffInDay = computed(() => {
-  return (
-    `${Math.floor(
-      Math.abs(
-        (new Date().getTime() - value.value.getTime())
-          / (24 * 60 * 60 * 1000),
-      ),
-    )} days`
-  );
-});
+const diffInDay = computed(() => (
+  `${Math.floor(
+    Math.abs(
+      (new Date().getTime() - value.value.getTime())
+            / (24 * 60 * 60 * 1000),
+    ),
+  )} days`
+));
 </script>
 <style scoped>
 #age {
