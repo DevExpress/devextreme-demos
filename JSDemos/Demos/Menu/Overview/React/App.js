@@ -20,7 +20,7 @@ const showSubmenuModes = [
 ];
 
 const App = () => {
-  const [showFirstSubmenuModes, setShowFirstSubmenuModes] = React.useState(null);
+  const [showFirstSubmenuModes, setShowFirstSubmenuModes] = React.useState(showSubmenuModes[1]);
   const [orientation, setOrientation] = React.useState('horizontal');
   const [hideSubmenuOnMouseLeave, setHideSubmenuOnMouseLeave] = React.useState(false);
   const [currentProduct, setCurrentProduct] = React.useState(null);
