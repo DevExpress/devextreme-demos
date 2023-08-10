@@ -9,9 +9,9 @@ import CustomTitle from './CustomTitle.js';
 import CustomItem from './CustomItem.js';
 
 const companyLabel = { 'aria-label': 'Company' };
+const companies = service.getCompanies();
 
 const App = () => {
-  const companies = service.getCompanies();
   const [selectedItems, setSelectedItems] = React.useState([companies[0]]);
   const [multiple, setMultiple] = React.useState(false);
   const [collapsible, setCollapsible] = React.useState(false);
