@@ -6,6 +6,10 @@ import HTMLReactParser from 'html-react-parser';
 import { text } from './data.js';
 import NavigationList from './NavigationList.js';
 
+const RadioGroupOpenedOptions = ['push', 'shrink', 'overlap'];
+const RadioGroupPositionOptions = ['top', 'bottom'];
+const RadioGroupRevealOptions = ['slide', 'expand'];
+
 const App = () => {
   const [opened, setOpened] = React.useState(false);
   const [openedStateMode, setOpenedStateMode] = React.useState('shrink');
@@ -59,7 +63,7 @@ const App = () => {
         <div className="option">
           <label>Opened state mode</label>
           <RadioGroup
-            items={['push', 'shrink', 'overlap']}
+            items={RadioGroupOpenedOptions}
             layout="horizontal"
             value={openedStateMode}
             onValueChanged={onOpenedStateModeChanged}
@@ -68,7 +72,7 @@ const App = () => {
         <div className="option">
           <label>Position</label>
           <RadioGroup
-            items={['top', 'bottom']}
+            items={RadioGroupPositionOptions}
             layout="horizontal"
             value={position}
             onValueChanged={onPositionChanged}
@@ -78,7 +82,7 @@ const App = () => {
           <div className="option">
             <label>Reveal mode</label>
             <RadioGroup
-              items={['slide', 'expand']}
+              items={RadioGroupRevealOptions}
               layout="horizontal"
               value={revealMode}
               onValueChanged={onRevealModeChanged}
