@@ -12,27 +12,25 @@ function getCurrentTraining(date, employeeID) {
   return currentTraining;
 }
 
-class DataCell extends React.PureComponent {
-  render() {
-    const { data: { startDate, groups: { employeeID }, text } } = this.props;
-    const dayClasses = [
-      'day-cell',
-      getCurrentTraining(startDate.getDate(), employeeID),
-    ];
+function DataCell(props) {
+  const { data: { startDate, groups: { employeeID }, text } } = props;
+  const dayClasses = [
+    'day-cell',
+    getCurrentTraining(startDate.getDate(), employeeID),
+  ];
 
-    const employeeClasses = [`employee-${employeeID}`, 'dx-template-wrapper'];
-    if (isWeekEnd(startDate)) {
-      employeeClasses.push(`employee-weekend-${employeeID}`);
-    }
-
-    return (
-      <div className={employeeClasses.join(' ')}>
-        <div className={dayClasses.join(' ')}>
-          {text}
-        </div>
-      </div>
-    );
+  const employeeClasses = [`employee-${employeeID}`, 'dx-template-wrapper'];
+  if (isWeekEnd(startDate)) {
+    employeeClasses.push(`employee-weekend-${employeeID}`);
   }
+
+  return (
+    <div className={employeeClasses.join(' ')}>
+      <div className={dayClasses.join(' ')}>
+        {text}
+      </div>
+    </div>
+  );
 }
 
 export default DataCell;

@@ -16,20 +16,18 @@ const views = [
   { name: '2 Months', type: 'month', intervalCount: 2 },
 ];
 
-class App extends React.Component {
-  render() {
-    return (
-      <Scheduler
-        timeZone="America/Los_Angeles"
-        dataSource={data}
-        views={views}
-        defaultCurrentView="day"
-        defaultCurrentDate={currentDate}
-        startDayHour={8}
-        height={580}
-      />
-    );
-  }
+function App() {
+  return (
+    <Scheduler
+      timeZone="America/Los_Angeles"
+      dataSource={data}
+      views={views}
+      defaultCurrentView="day"
+      defaultCurrentDate={currentDate}
+      startDayHour={8}
+      height={580}
+    />
+  );
 }
 
 export default App;

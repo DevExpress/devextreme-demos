@@ -52,49 +52,46 @@ connection
       store2.push([{ type: 'remove', key }]);
     });
   });
-
-class App extends React.Component {
-  render() {
-    return (
-      <div className="schedulers">
-        <div className="column-1">
-          <Scheduler
-            timeZone="America/Los_Angeles"
-            dataSource={store1}
-            views={views}
-            defaultCurrentView="day"
-            defaultCurrentDate={currentDate}
-            height={600}
-            startDayHour={9}
-            endDayHour={19}
-            remoteFiltering={true}
-            dateSerializationFormat="yyyy-MM-ddTHH:mm:ssZ"
-            textExpr= "Text"
-            startDateExpr="StartDate"
-            descriptionExpr="Description"
-            endDateExpr="EndDate"
-            allDayExpr="AllDay" />
-        </div>
-        <div className="column-2">
-          <Scheduler
-            timeZone="America/Los_Angeles"
-            dataSource={store2}
-            views={views}
-            defaultCurrentView="day"
-            defaultCurrentDate={currentDate}
-            height={600}
-            startDayHour={9}
-            endDayHour={19}
-            remoteFiltering={true}
-            dateSerializationFormat="yyyy-MM-ddTHH:mm:ssZ"
-            textExpr="Text"
-            startDateExpr="StartDate"
-            endDateExpr="EndDate"
-            allDayExpr="AllDay" />
-        </div>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div className="schedulers">
+    <div className="column-1">
+      <Scheduler
+        timeZone="America/Los_Angeles"
+        dataSource={store1}
+        views={views}
+        defaultCurrentView="day"
+        defaultCurrentDate={currentDate}
+        height={600}
+        startDayHour={9}
+        endDayHour={19}
+        remoteFiltering={true}
+        dateSerializationFormat="yyyy-MM-ddTHH:mm:ssZ"
+        textExpr="Text"
+        startDateExpr="StartDate"
+        descriptionExpr="Description"
+        endDateExpr="EndDate"
+        allDayExpr="AllDay"
+      />
+    </div>
+    <div className="column-2">
+      <Scheduler
+        timeZone="America/Los_Angeles"
+        dataSource={store2}
+        views={views}
+        defaultCurrentView="day"
+        defaultCurrentDate={currentDate}
+        height={600}
+        startDayHour={9}
+        endDayHour={19}
+        remoteFiltering={true}
+        dateSerializationFormat="yyyy-MM-ddTHH:mm:ssZ"
+        textExpr="Text"
+        startDateExpr="StartDate"
+        endDateExpr="EndDate"
+        allDayExpr="AllDay"
+      />
+    </div>
+  </div>
+);
 
 export default App;
