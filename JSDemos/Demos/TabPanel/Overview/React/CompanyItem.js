@@ -1,7 +1,7 @@
 import React from 'react';
 
-function CompanyItem() {
-  const company = this.props.data;
+function CompanyItem({ data }) {
+  const company = data;
   return (
     <div>
       <div className="tabpanel-item">
