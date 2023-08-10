@@ -26,10 +26,8 @@ const fromPregroupedData = new DataSource({
     return item;
   },
 });
+fromPregroupedData.load();
 function App() {
-  React.useEffect(() => {
-    fromPregroupedData.load();
-  }, []);
   return (
     <div className="dx-fieldset">
       <div className="dx-field">
