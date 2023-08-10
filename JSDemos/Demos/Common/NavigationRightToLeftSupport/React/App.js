@@ -17,33 +17,25 @@ const App = () => {
     setRtl(value === languages[0]);
   }, []);
 
-  const renderArabicTitle = (item) => {
-    return (<div>{item.nameAr}</div>);
-  }
+  const renderArabicTitle = (item) => (<div>{item.nameAr}</div>);
 
-  const renderArabic = (country) => {
-    return (
-      <div>
-        <div>عاصمة: { country.capitalAr } </div>
-        <div>عدد السكان: { country.population } نسمة</div>
-        <div>المساحة: { country.area } كم<sup>2</sup></div>
-      </div>
-    );
-  }
+  const renderArabic = (country) => (
+    <div>
+      <div>عاصمة: { country.capitalAr } </div>
+      <div>عدد السكان: { country.population } نسمة</div>
+      <div>المساحة: { country.area } كم<sup>2</sup></div>
+    </div>
+  );
 
-  const renderEnglishTitle = (item) => {
-    return (<div>{item.nameEn}</div>);
-  }
+  const renderEnglishTitle = (item) => (<div>{item.nameEn}</div>);
 
-  const renderEnglish = (country) => {
-    return (
-      <div>
-        <div>Capital: { country.capitalEn } </div>
-        <div>Population: { country.population } people</div>
-        <div>Area: { country.area } km<sup>2</sup></div>
-      </div>
-    );
-  }
+  const renderEnglish = (country) => (
+    <div>
+      <div>Capital: { country.capitalEn } </div>
+      <div>Population: { country.population } people</div>
+      <div>Area: { country.area } km<sup>2</sup></div>
+    </div>
+  );
 
   return (
     <div className={rtlEnabled ? 'dx-rtl' : ''}>
@@ -96,6 +88,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

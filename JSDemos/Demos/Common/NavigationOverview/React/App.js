@@ -21,47 +21,43 @@ function App() {
     setTabPanelIndex(e.value);
   };
 
-  const renderPanelItemTitle = (item) => {
-    return <span className="tab-panel-title">{item.text}</span>;
-  };
+  const renderPanelItemTitle = (item) => <span className="tab-panel-title">{item.text}</span>;
 
-  const renderPanelItem = (city) => {
-    return (
-      <React.Fragment>
-        <img alt="country flag" className="flag" src={city.flag} />
-        <div className="right-content">
+  const renderPanelItem = (city) => (
+    <React.Fragment>
+      <img alt="country flag" className="flag" src={city.flag} />
+      <div className="right-content">
+        <div>
+          <b>{city.capital ? 'Capital. ' : ''}</b>
+          {city.description}
+        </div>
+        <div className="stats">
           <div>
-            <b>{city.capital ? 'Capital. ' : ''}</b>
-            {city.description}
+            <div>Population</div>
+            <div>
+              <b>{city.population} people</b>
+            </div>
           </div>
-          <div className="stats">
+          <div>
+            <div>Area</div>
             <div>
-              <div>Population</div>
-              <div>
-                <b>{city.population} people</b>
-              </div>
+              <b>
+                {city.area} km<sup>2</sup>
+              </b>
             </div>
+          </div>
+          <div>
+            <div>Density</div>
             <div>
-              <div>Area</div>
-              <div>
-                <b>
-                  {city.area} km<sup>2</sup>
-                </b>
-              </div>
-            </div>
-            <div>
-              <div>Density</div>
-              <div>
-                <b>
-                  {city.density}/km<sup>2</sup>
-                </b>
-              </div>
+              <b>
+                {city.density}/km<sup>2</sup>
+              </b>
             </div>
           </div>
         </div>
-      </React.Fragment>
-    );
-  };
+      </div>
+    </React.Fragment>
+  );
 
   return (
     <div className="container">

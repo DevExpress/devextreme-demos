@@ -42,7 +42,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <Toolbar items={toolbarItems} />
       <Drawer
         opened={opened}
@@ -91,7 +91,7 @@ const App = () => {
           )}
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

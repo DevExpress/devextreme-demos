@@ -23,7 +23,7 @@ const App = () => {
     {
       name: 'onClick',
       delay: { show: 0, hide: 300 },
-    }
+    },
   ];
 
   const itemClick = (e) => {
