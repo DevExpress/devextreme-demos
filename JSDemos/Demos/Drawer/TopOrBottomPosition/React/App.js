@@ -69,6 +69,7 @@ const App = () => {
             onValueChanged={onOpenedStateModeChanged}
           />
         </div>
+        {' '}
         <div className="option">
           <label>Position</label>
           <RadioGroup
@@ -78,6 +79,7 @@ const App = () => {
             onValueChanged={onPositionChanged}
           />
         </div>
+        {' '}
         {openedStateMode !== 'push' && (
           <div className="option">
             <label>Reveal mode</label>
