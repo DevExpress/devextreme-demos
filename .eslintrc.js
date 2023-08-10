@@ -19,6 +19,7 @@ module.exports = {
     'spellcheck',
     'no-only-tests',
     'deprecation',
+    'react-hooks',
   ],
   rules: {
     'spellcheck/spell-checker': (() => {
@@ -77,6 +78,7 @@ module.exports = {
         'dest', // gulp
         'dev', // DevAV
         'devexpress',
+        'devextreme',
         'devextremeaddon',
         'dialogs',
         'docurl',
@@ -137,6 +139,7 @@ module.exports = {
         'july',
         'jun',
         'june',
+        'jsx',
         'Kanban',
         'lang',
         'latinamerica',
@@ -146,6 +149,7 @@ module.exports = {
         'loc',
         'lookups',
         'longtabs',
+        'luxon',
         'malemiddle',
         'maleolder',
         'maleyoung',
@@ -283,6 +287,8 @@ module.exports = {
     'prefer-destructuring': 0,
     'no-param-reassign': ['error', { 'props': false }],
     'no-only-tests/no-only-tests': 'error',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
   extends: [
     'eslint:recommended',
@@ -292,6 +298,7 @@ module.exports = {
   overrides: [{
     'files': [
       '*.ts',
+      '*.tsx',
     ],
     extends: ['devextreme/typescript'],
     parserOptions: {
@@ -391,6 +398,7 @@ module.exports = {
   }, {
     files: [
       'JSDemos/Demos/**/React/*.*',
+      'JSDemos/Demos/**/ReactJs/*.*',
       'utils/templates/React/*.*',
     ],
     extends: [
@@ -455,7 +463,7 @@ module.exports = {
       ],
       quotes: ['error', 'single', { avoidEscape: true }],
       'prefer-template': 'error',
-      'func-style': ['error', 'declaration'],
+      'func-style': ['error', 'declaration', { 'allowArrowFunctions': true }],
       'react/jsx-curly-brace-presence': [
         'error',
         {
@@ -511,8 +519,12 @@ module.exports = {
       'utils/templates/Vue/*.vue',
       'utils/templates/Vue/*.js',
     ],
+    parser: 'vue-eslint-parser',
+    'parserOptions': {
+      'parser': '@typescript-eslint/parser',
+    },
     extends: [
-      'plugin:vue/recommended',
+      'plugin:vue/vue3-recommended',
     ],
     globals: {
       System: false,
