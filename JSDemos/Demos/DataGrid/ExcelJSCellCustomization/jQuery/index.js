@@ -2,6 +2,7 @@ $(() => {
   $('#gridContainer').dxDataGrid({
     dataSource: companies,
     keyExpr: 'ID',
+    width: '100%',
     showBorders: true,
     groupPanel: {
       visible: true,
@@ -88,7 +89,6 @@ $(() => {
           saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Companies.xlsx');
         });
       });
-      e.cancel = true;
     },
   });
 });

@@ -53,8 +53,7 @@ export default function App() {
         saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Sales.xlsx');
       });
     });
-    e.cancel = true;
-  });
+  }, []);
 
   return (
     <React.Fragment>

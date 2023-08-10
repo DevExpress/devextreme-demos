@@ -2,7 +2,7 @@
 
 @section ExternalDependencies {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.10.1/polyfill.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/3.8.0/exceljs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 }
 
@@ -10,6 +10,7 @@
         .ID("gridContainer")
         .DataSource(new JS("companies"))
         .KeyExpr("ID")
+        .Width("100%")
         .ShowBorders(true)
         .GroupPanel(groupPanel => groupPanel.Visible(true))
         .Grouping(grouping => grouping.AutoExpandAll(true))
@@ -86,7 +87,6 @@
                 saveAs(new Blob([buffer], { type: "application/octet-stream" }), "Companies.xlsx");
             });
         });
-        e.cancel = true;
     }
 
     function phoneNumberFormat(value) {

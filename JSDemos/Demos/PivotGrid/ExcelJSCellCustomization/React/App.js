@@ -65,8 +65,7 @@ export default function App() {
         saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Sales.xlsx');
       });
     });
-    e.cancel = true;
-  });
+  }, []);
 
   const onCellPrepared = React.useCallback(({ cell, area, cellElement }) => {
     cell.area = area;
@@ -75,7 +74,7 @@ export default function App() {
       const appearance = getConditionalAppearance(cell);
       Object.assign(cellElement.style, getCssStyles(appearance));
     }
-  });
+  }, []);
 
   function isDataCell(cell) {
     return (cell.area === 'data' && cell.rowType === 'D' && cell.columnType === 'D');

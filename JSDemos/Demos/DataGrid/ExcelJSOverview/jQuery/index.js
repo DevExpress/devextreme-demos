@@ -2,6 +2,7 @@ $(() => {
   $('#gridContainer').dxDataGrid({
     dataSource: employees,
     keyExpr: 'ID',
+    width: '100%',
     showBorders: true,
     selection: {
       mode: 'multiple',
@@ -26,7 +27,6 @@ $(() => {
           saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Employees.xlsx');
         });
       });
-      e.cancel = true;
     },
     columns: [
       'FirstName',
