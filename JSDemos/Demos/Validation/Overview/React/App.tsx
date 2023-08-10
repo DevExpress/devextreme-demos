@@ -38,11 +38,6 @@ const onFormSubmit = (e: { preventDefault: () => void }) => {
   e.preventDefault();
 };
 
-let validatorInstance;
-const onInit = (e: { component: any }) => {
-  validatorInstance = e.component;
-};
-
 function App() {
   const currentDate = new Date();
   const maxDate = new Date(currentDate.setFullYear(currentDate.getFullYear() - 21));
@@ -51,6 +46,7 @@ function App() {
   const [confirmPassword, setConfirmPassword] = React.useState('');
   const [passwordMode, setPasswordMode] = React.useState<TextBoxTypes.TextBoxType>('password');
   const [confirmPasswordMode, setConfirmPasswordMode] = React.useState<TextBoxTypes.TextBoxType>('password');
+  const validatorRef = React.useRef(null);
 
   const passwordButton = React.useMemo<ButtonTypes.Properties>(
     () => ({
@@ -80,10 +76,10 @@ function App() {
     (e: TextBoxTypes.ValueChangedEvent) => {
       setPassword(e.value);
       if (confirmPassword) {
-        validatorInstance.validate();
+        validatorRef.current.instance.validate();
       }
     },
-    [confirmPassword, setPassword, validatorInstance],
+    [confirmPassword, setPassword],
   );
 
   const onConfirmPasswordChanged = React.useCallback((e: TextBoxTypes.ValueChangedEvent) => {
@@ -122,7 +118,7 @@ function App() {
           <div className="dx-field-value">
             <TextBox value={confirmPassword} inputAttr={passwordLabel} onValueChanged={onConfirmPasswordChanged} mode={confirmPasswordMode}>
               <TextBoxButton name="password" location="after" options={confirmPasswordButton} />
-              <Validator onInitialized={onInit}>
+              <Validator ref={validatorRef}>
                 <RequiredRule message="Confirm Password is required" />
                 <CompareRule message="Password and Confirm Password do not match" comparisonTarget={passwordComparison} />
               </Validator>
