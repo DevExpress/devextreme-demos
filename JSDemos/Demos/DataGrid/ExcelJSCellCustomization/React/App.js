@@ -100,7 +100,6 @@ class App extends React.Component {
         saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Companies.xlsx');
       });
     });
-    e.cancel = true;
   }
 }
 

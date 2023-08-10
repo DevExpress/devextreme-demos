@@ -56,7 +56,6 @@ class App extends React.Component {
         saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'DataGrid.xlsx');
       });
     });
-    e.cancel = true;
   }
 }
 
