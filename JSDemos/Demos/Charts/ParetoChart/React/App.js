@@ -11,6 +11,18 @@ import Chart, {
 } from 'devextreme-react/chart';
 import { complaintsData } from './data.js';
 
+const data = complaintsData.sort((a, b) => b.count - a.count);
+const totalCount = data.reduce((prevValue, item) => prevValue + item.count, 0);
+let cumulativeCount = 0;
+const dataArray = data.map((item) => {
+  cumulativeCount += item.count;
+  return {
+    complaint: item.complaint,
+    count: item.count,
+    cumulativePercentage: Math.round((cumulativeCount * 100) / totalCount),
+  };
+});
+
 function customizeTooltip(pointInfo) {
   return {
     html: `<div><div class="tooltip-header">${
@@ -32,23 +44,6 @@ function customizePercentageText({ valueText }) {
 }
 
 function App() {
-  const [dataArray, setDataArray] = React.useState([]);
-
-  React.useEffect(() => {
-    const data = complaintsData.sort((a, b) => b.count - a.count);
-    const totalCount = data.reduce((prevValue, item) => prevValue + item.count, 0);
-    let cumulativeCount = 0;
-    const newDataArray = data.map((item) => {
-      cumulativeCount += item.count;
-      return {
-        complaint: item.complaint,
-        count: item.count,
-        cumulativePercentage: Math.round((cumulativeCount * 100) / totalCount),
-      };
-    });
-    setDataArray(newDataArray);
-  }, []);
-
   return (
     <Chart
       title="Pizza Shop Complaints"

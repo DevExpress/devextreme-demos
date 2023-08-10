@@ -16,13 +16,13 @@ function prepareMarkup(chartSvg, markup) {
 }
 
 function App() {
-  const [childRef, setChildRef] = React.useState(null);
+  const childRef = React.useRef(null);
   const chartRef = React.useRef();
 
   const onClick = React.useCallback(() => {
     exportFromMarkup(
       prepareMarkup(chartRef.current.instance.svg(),
-        childRef.current.getElement().innerHTML), {
+        childRef.current.innerHTML), {
         width: 820,
         height: 420,
         margin: 0,
@@ -38,16 +38,12 @@ function App() {
         },
       },
     );
-  }, [childRef]);
-
-  const onRef = React.useCallback((ref) => {
-    setChildRef(ref);
   }, []);
 
   return (
     <div id="chart-demo">
       <div className="chart_environment">
-        <Form onRef={onRef} />
+        <Form ref={childRef} />
         <Chart
           ref={chartRef}
           id="chart"
