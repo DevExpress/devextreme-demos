@@ -26,7 +26,10 @@
       "wwwroot/js/vectormap-data/usa.js",
 
       "wwwroot/DemoShell/hljs/highlight.pack.js"
-    ]
+    ],
+    "minify": {
+      "enabled": false
+    }
   }
 
 ]
