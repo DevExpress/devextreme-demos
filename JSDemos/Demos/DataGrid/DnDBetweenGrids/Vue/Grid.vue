@@ -60,10 +60,10 @@ const priorities = [{
 }];
 
 const tasksStore = computed(() => props.tasksStore);
-const dataSource = {
-  store: tasksStore,
+const dataSource = computed(() => ({
+  store: tasksStore.value,
   reshapeOnPush: true,
-};
+}));
 const filterExpr = ['Status', '=', props.status];
 
 function onAdd(e) {
