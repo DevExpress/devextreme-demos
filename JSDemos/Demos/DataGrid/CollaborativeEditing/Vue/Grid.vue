@@ -66,14 +66,15 @@ withDefaults(defineProps<{
   dataSource: () => ({}),
 });
 
+const statesStore = AspNetData.createStore({
+  key: 'ID',
+  loadUrl: 'https://js.devexpress.com/Demos/NetCore/api/DataGridStatesLookup',
+});
+
 const maxDate = ref(new Date(3000, 0));
 const lookup = ref({
   dataSource: statesStore,
   displayExpr: 'Name',
   valueExpr: 'ID',
-});
-const statesStore = AspNetData.createStore({
-  key: 'ID',
-  loadUrl: 'https://js.devexpress.com/Demos/NetCore/api/DataGridStatesLookup',
 });
 </script>
