@@ -11,7 +11,7 @@
           value-expr="ID"
           display-expr="name"
           placeholder="Select a value..."
-          @value-changed="syncTreeViewSelection($event)"
+          @value-changed="syncTreeViewSelection()"
         >
           <template #content="{ data }">
             <DxTreeView

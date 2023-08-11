@@ -41,10 +41,12 @@
 import { ref } from 'vue';
 import DxPopover from 'devextreme-vue/popover';
 
+type TagData = Record<string, string>;
+
 const props = withDefaults(defineProps<{
-  tagData?: object
+  tagData?: TagData
 }>(), {
-  tagData: () => {},
+  tagData: () => ({} as TagData),
 });
 
 const isDisabled = ref(props.tagData.Name === 'SuperHD Video Player');

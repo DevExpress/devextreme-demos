@@ -131,7 +131,7 @@ const onCustomItemCreating = ref((args) => {
   const newValue = args.text;
   const isItemInDataSource = editableProducts.value.some((item) => item === newValue);
   if (!isItemInDataSource) {
-    editableProducts.value = [newValue, ...editableProducts];
+    editableProducts.value = [newValue, ...editableProducts.value];
   }
   args.customItem = newValue;
 });
