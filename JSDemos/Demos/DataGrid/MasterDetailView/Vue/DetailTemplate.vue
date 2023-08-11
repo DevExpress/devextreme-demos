@@ -39,7 +39,7 @@ const props = withDefaults(defineProps<{
 
 const tasks = service.getTasks();
 const dataSource = getTasks(props.templateData.key);
-const { FirstName, LastName } = computed(() => props.templateData.data);
+const { FirstName, LastName } = computed(() => props.templateData.data).value;
 const detailInfo = `${FirstName} ${LastName}'s Tasks:`;
 
 function completedValue(rowData) {
