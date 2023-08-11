@@ -10,102 +10,93 @@ import CheckBox from 'devextreme-react/check-box';
 import { employees } from './data.js';
 
 const expandedRowKeys = [1, 2, 4, 5];
+const enterKeyActions = ['startEdit', 'moveFocus'];
+const enterKeyDirections = ['none', 'column', 'row'];
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.enterKeyActions = ['startEdit', 'moveFocus'];
-    this.enterKeyDirections = ['none', 'column', 'row'];
-    this.state = {
-      editOnKeyPress: true,
-      enterKeyAction: 'moveFocus',
-      enterKeyDirection: 'column',
-    };
-    this.onFocusedCellChanging = (e) => {
-      e.isHighlighted = true;
-    };
-    this.editOnKeyPressChanged = this.editOnKeyPressChanged.bind(this);
-    this.enterKeyActionChanged = this.enterKeyActionChanged.bind(this);
-    this.enterKeyDirectionChanged = this.enterKeyDirectionChanged.bind(this);
-  }
+const App = () => {
+  const [editOnKeyPress, setEditOnKeyPress] = React.useState(true);
+  const [enterKeyAction, setEnterKeyAction] = React.useState('moveFocus');
+  const [enterKeyDirection, setEnterKeyDirection] = React.useState('column');
 
-  editOnKeyPressChanged(e) {
-    this.setState({ editOnKeyPress: e.value });
-  }
+  const onFocusedCellChanging = React.useCallback((e) => {
+    e.isHighlighted = true;
+  }, []);
 
-  enterKeyActionChanged(e) {
-    this.setState({ enterKeyAction: e.value });
-  }
+  const editOnKeyPressChanged = React.useCallback((e) => {
+    setEditOnKeyPress(e.value);
+  }, []);
 
-  enterKeyDirectionChanged(e) {
-    this.setState({ enterKeyDirection: e.value });
-  }
+  const enterKeyActionChanged = React.useCallback((e) => {
+    setEnterKeyAction(e.value);
+  }, []);
 
-  render() {
-    return (
-      <div id="tree-list-demo">
-        <TreeList
-          id="employees"
-          dataSource={employees}
-          keyExpr="ID"
-          parentIdExpr="Head_ID"
-          columnAutoWidth={true}
-          defaultExpandedRowKeys={expandedRowKeys}
-          onFocusedCellChanging={this.onFocusedCellChanging}>
-          <KeyboardNavigation
-            editOnKeyPress={this.state.editOnKeyPress}
-            enterKeyAction={this.state.enterKeyAction}
-            enterKeyDirection={this.state.enterKeyDirection} />
-          <Editing
-            mode="batch"
-            allowUpdating={true}
-            startEditAction="dblClick" />
-          <Column
-            dataField="Full_Name">
-          </Column>
-          <Column
-            dataField="Prefix"
-            caption="Title">
-          </Column>
-          <Column
-            dataField="Title"
-            caption="Position">
-          </Column>
-          <Column
-            dataField="City">
-          </Column>
-          <Column
-            dataField="Hire_Date"
-            dataType="date">
-          </Column>
-        </TreeList>
-        <div className="options">
-          <div className="caption">Options</div>
-          <div className="option-container">
-            <div className="option check-box">
-              <CheckBox text="Edit On Key Press"
-                value={this.state.editOnKeyPress}
-                onValueChanged={this.editOnKeyPressChanged} />
-            </div>
-            <div className="option">
-              <span className="option-caption">Enter Key Action</span>
-              <SelectBox className="select"
-                items={this.enterKeyActions}
-                value={this.state.enterKeyAction}
-                onValueChanged={this.enterKeyActionChanged} />
-            </div>
-            <div className="option">
-              <span className="option-caption">Enter Key Direction</span>
-              <SelectBox className="select"
-                items={this.enterKeyDirections}
-                value={this.state.enterKeyDirection}
-                onValueChanged={this.enterKeyDirectionChanged} />
-            </div>
+  const enterKeyDirectionChanged = React.useCallback((e) => {
+    setEnterKeyDirection(e.value);
+  }, []);
+
+  return (
+    <div id="tree-list-demo">
+      <TreeList
+        id="employees"
+        dataSource={employees}
+        keyExpr="ID"
+        parentIdExpr="Head_ID"
+        columnAutoWidth={true}
+        defaultExpandedRowKeys={expandedRowKeys}
+        onFocusedCellChanging={onFocusedCellChanging}>
+        <KeyboardNavigation
+          editOnKeyPress={editOnKeyPress}
+          enterKeyAction={enterKeyAction}
+          enterKeyDirection={enterKeyDirection} />
+        <Editing
+          mode="batch"
+          allowUpdating={true}
+          startEditAction="dblClick" />
+        <Column
+          dataField="Full_Name">
+        </Column>
+        <Column
+          dataField="Prefix"
+          caption="Title">
+        </Column>
+        <Column
+          dataField="Title"
+          caption="Position">
+        </Column>
+        <Column
+          dataField="City">
+        </Column>
+        <Column
+          dataField="Hire_Date"
+          dataType="date">
+        </Column>
+      </TreeList>
+      <div className="options">
+        <div className="caption">Options</div>
+        <div className="option-container">
+          <div className="option check-box">
+            <CheckBox text="Edit On Key Press"
+              value={editOnKeyPress}
+              onValueChanged={editOnKeyPressChanged} />
+          </div>
+          <div className="option">
+            <span className="option-caption">Enter Key Action</span>
+            <SelectBox className="select"
+              items={enterKeyActions}
+              value={enterKeyAction}
+              onValueChanged={enterKeyActionChanged} />
+          </div>
+          <div className="option">
+            <span className="option-caption">Enter Key Direction</span>
+            <SelectBox className="select"
+              items={enterKeyDirections}
+              value={enterKeyDirection}
+              onValueChanged={enterKeyDirectionChanged} />
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default App;

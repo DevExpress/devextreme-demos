@@ -18,33 +18,28 @@ const dataSource = {
   },
 };
 
-class App extends React.Component {
-  render() {
-    return (
-      <TreeList
-        id="treelist"
-        dataSource={dataSource}
-        showBorders={true}
-        keyExpr="id"
-        parentIdExpr="parentId"
-        hasItemsExpr="hasItems"
-        rootValue=""
-      >
-        <RemoteOperations filtering={true} />
-        <Column dataField="name" />
-        <Column width={100} customizeText={this.customizeText} dataField="size" />
-        <Column width={150} dataField="createdDate" dataType="date" />
-        <Column width={150} dataField="modifiedDate" dataType="date" />
-      </TreeList>
-    );
+const customizeText = (e) => {
+  if (e.value !== null) {
+    return `${Math.ceil(e.value / 1024)} KB`;
   }
-
-  customizeText(e) {
-    if (e.value !== null) {
-      return `${Math.ceil(e.value / 1024)} KB`;
-    }
-    return null;
-  }
-}
+  return null;
+};
+const App = () => (
+  <TreeList
+    id="treelist"
+    dataSource={dataSource}
+    showBorders={true}
+    keyExpr="id"
+    parentIdExpr="parentId"
+    hasItemsExpr="hasItems"
+    rootValue=""
+  >
+    <RemoteOperations filtering={true} />
+    <Column dataField="name" />
+    <Column width={100} customizeText={customizeText} dataField="size" />
+    <Column width={150} dataField="createdDate" dataType="date" />
+    <Column width={150} dataField="modifiedDate" dataType="date" />
+  </TreeList>
+);
 
 export default App;
