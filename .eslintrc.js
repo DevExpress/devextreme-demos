@@ -519,8 +519,12 @@ module.exports = {
       'utils/templates/Vue/*.vue',
       'utils/templates/Vue/*.js',
     ],
+    parser: 'vue-eslint-parser',
+    'parserOptions': {
+      'parser': '@typescript-eslint/parser',
+    },
     extends: [
-      'plugin:vue/recommended',
+      'plugin:vue/vue3-recommended',
     ],
     globals: {
       System: false,
