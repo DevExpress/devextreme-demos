@@ -1,5 +1,5 @@
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridAdvancedMasterDetailView';
-
+// test
 $(() => {
   $('#gridContainer').dxDataGrid({
     showBorders: true,
