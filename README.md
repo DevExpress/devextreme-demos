@@ -65,7 +65,7 @@ npm run fix-lint
 
 ### TS React Infrastructure
 
-1. After you make any changes in react typescript sources you should run the following command:  
+1. After you make any changes in React TypeScript sources, run the following command:  
 
 ```
 npm run convert-to-js ./JSDemos/Demos/**/React
