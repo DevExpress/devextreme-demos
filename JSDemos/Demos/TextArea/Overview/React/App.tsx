@@ -11,7 +11,9 @@ const eventLabel = { 'aria-label': 'Event' };
 
 function App() {
   const [value, setValue] = React.useState(service.getContent());
-  const [valueForEditableTestArea, setValueForEditableTestArea] = React.useState(service.getContent());
+  const [valueForEditableTestArea, setValueForEditableTestArea] = React.useState(
+    service.getContent(),
+  );
   const [maxLength, setMaxLength] = React.useState(null);
   const [eventValue, setEventValue] = React.useState(valueChangeEvents[0].name);
   const [autoResizeEnabled, setAutoResizeEnabled] = React.useState(false);
