@@ -63,7 +63,7 @@ npm run fix-lint
 
 1. Use the built-in CLI to choose or enter the category, the demo name, and the technology for the new demo.
 
-### TS React infrastructure
+### TS React Infrastructure
 
 1. After you make any changes in react typescript sources you should run the following command:  
 
