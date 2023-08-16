@@ -11,9 +11,7 @@ import Os from 'os';
 import { Logger, PathResolver, PathResolvers } from './types';
 
 let platformGlob = glob;
-const makePathArrayPosix = (pathArray) => pathArray.map(
-  (path) => path.split(path.sep).join(path.posix.sep),
-);
+let makePathArrayPosix = (pathArray) => pathArray;
 
 function isWindows() {
   return Os.platform() === 'win32';
@@ -206,6 +204,9 @@ export const converter = async (
 
   if (isWindows()) {
     platformGlob = _.partial(glob, _, { windowsPathsNoEscape: true }) as any;
+    makePathArrayPosix = (pathArray) => pathArray.map(
+      (path) => path.split(path.sep).join(path.posix.sep),
+    );
   }
 
   const tempDir = path.join(sourceDir, '../_temp');
