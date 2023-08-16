@@ -4,7 +4,14 @@ import { NumberBox } from 'devextreme-react/number-box';
 import { CheckBox } from 'devextreme-react/check-box';
 import DataSource from 'devextreme/data/data_source';
 import {
-  simpleProducts, products, searchTimeoutLabel, minimumSearchLengthLabel, searchExpressionLabel, searchModeLabel, productLabel, simpleProductLabel,
+  simpleProducts,
+  products,
+  searchTimeoutLabel,
+  minimumSearchLengthLabel,
+  searchExpressionLabel,
+  searchModeLabel,
+  productLabel,
+  simpleProductLabel,
 } from './data.js';
 
 const searchModeItems = ['contains', 'startswith'];
@@ -110,7 +117,12 @@ function App() {
             </div>
           </div>
           <div className="dx-field current-product">
-            Current product: <span className="current-value">{editBoxValue ? `${editBoxValue.Name} (ID: ${editBoxValue.ID})` : 'Not selected'}</span>
+            Current product:{' '}
+            <span className="current-value">
+              {editBoxValue
+                ? `${editBoxValue.Name} (ID: ${editBoxValue.ID})`
+                : 'Not selected'}
+            </span>
           </div>
         </div>
       </div>
@@ -118,22 +130,53 @@ function App() {
         <div className="caption">SearchBox Options</div>
         <div className="option">
           <div>Search Mode</div>
-          <SelectBox items={searchModeItems} value={searchModeOption} inputAttr={searchModeLabel} onValueChanged={searchModeOptionChanged} />
+          <SelectBox
+            items={searchModeItems}
+            value={searchModeOption}
+            inputAttr={searchModeLabel}
+            onValueChanged={searchModeOptionChanged}
+          />
         </div>
         <div className="option">
           <div>Search Expression</div>
-          <SelectBox items={searchExprItems} displayExpr="name" valueExpr="value" inputAttr={searchExpressionLabel} value={searchExprOption} onValueChanged={searchExprOptionChanged} />
+          <SelectBox
+            items={searchExprItems}
+            displayExpr="name"
+            valueExpr="value"
+            inputAttr={searchExpressionLabel}
+            value={searchExprOption}
+            onValueChanged={searchExprOptionChanged}
+          />
         </div>
         <div className="option">
           <div>Search Timeout</div>
-          <NumberBox min={0} max={5000} showSpinButtons={true} step={100} value={searchTimeoutOption} inputAttr={searchTimeoutLabel} onValueChanged={searchTimeoutOptionChanged} />
+          <NumberBox
+            min={0}
+            max={5000}
+            showSpinButtons={true}
+            step={100}
+            value={searchTimeoutOption}
+            inputAttr={searchTimeoutLabel}
+            onValueChanged={searchTimeoutOptionChanged}
+          />
         </div>
         <div className="option">
           <div>Minimum Search Length</div>
-          <NumberBox min={0} max={5} showSpinButtons={true} value={minSearchLengthOption} inputAttr={minimumSearchLengthLabel} onValueChanged={minSearchLengthOptionChanged} />
+          <NumberBox
+            min={0}
+            max={5}
+            showSpinButtons={true}
+            value={minSearchLengthOption}
+            inputAttr={minimumSearchLengthLabel}
+            onValueChanged={minSearchLengthOptionChanged}
+          />
         </div>
         <div className="option">
-          <CheckBox text="Show Data Before Search" value={showDataBeforeSearchOption} onValueChanged={showDataBeforeSearchOptionChanged} />
+          <CheckBox
+            text="Show Data Before Search"
+            value={showDataBeforeSearchOption}
+            onValueChanged={showDataBeforeSearchOptionChanged}
+          />
         </div>
       </div>
     </div>

@@ -50,40 +50,36 @@ function App() {
     setIsTreeBoxOpened(false);
   }, []);
 
-  const treeViewRender = React.useCallback(() => (
-    <TreeView dataSource={treeDataSource}
-      ref={treeViewRef}
-      dataStructure="plain"
-      keyExpr="ID"
-      parentIdExpr="categoryId"
-      selectionMode="single"
-      displayExpr="name"
-      selectByClick={true}
-      onContentReady={treeViewOnContentReady}
-      onItemClick={onTreeItemClick}
-      onItemSelectionChanged={treeViewItemSelectionChanged}
-    />
-  ), [
-    treeViewRef,
-    treeViewOnContentReady,
-    onTreeItemClick,
-    treeViewItemSelectionChanged,
-  ]);
+  const treeViewRender = React.useCallback(
+    () => (
+      <TreeView
+        dataSource={treeDataSource}
+        ref={treeViewRef}
+        dataStructure="plain"
+        keyExpr="ID"
+        parentIdExpr="categoryId"
+        selectionMode="single"
+        displayExpr="name"
+        selectByClick={true}
+        onContentReady={treeViewOnContentReady}
+        onItemClick={onTreeItemClick}
+        onItemSelectionChanged={treeViewItemSelectionChanged}
+      />
+    ),
+    [treeViewRef, treeViewOnContentReady, onTreeItemClick, treeViewItemSelectionChanged],
+  );
 
-  const dataGridRender = React.useCallback(() => (
-    <DataGrid
-      dataSource={gridDataSource}
-      columns={gridColumns}
-      hoverStateEnabled={true}
-      selectedRowKeys={gridBoxValue}
-      onSelectionChanged={dataGridOnSelectionChanged}
-      height="100%">
-      <Selection mode="single" />
-      <Scrolling mode="virtual" />
-      <Paging enabled={true} pageSize={10} />
-      <FilterRow visible={true} />
-    </DataGrid>
-  ), [gridBoxValue, dataGridOnSelectionChanged]);
+  const dataGridRender = React.useCallback(
+    () => (
+      <DataGrid dataSource={gridDataSource} columns={gridColumns} hoverStateEnabled={true} selectedRowKeys={gridBoxValue} onSelectionChanged={dataGridOnSelectionChanged} height="100%">
+        <Selection mode="single" />
+        <Scrolling mode="virtual" />
+        <Paging enabled={true} pageSize={10} />
+        <FilterRow visible={true} />
+      </DataGrid>
+    ),
+    [gridBoxValue, dataGridOnSelectionChanged],
+  );
 
   const syncTreeViewSelection = React.useCallback((e: DropDownBoxTypes.ValueChangedEvent) => {
     setTreeBoxValue(e.value);

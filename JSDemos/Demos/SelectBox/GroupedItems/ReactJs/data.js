@@ -200,4 +200,6 @@ export const pregroupedData = [
 ];
 export const ungroupedDataLabel = { 'aria-label': 'Ungrouped Data' };
 export const pregroupedDataLabel = { 'aria-label': 'Pregrouped Data' };
-export const templatedUngroupedDataLabel = { 'aria-label': 'Templated Ungrouped Data' };
+export const templatedUngroupedDataLabel = {
+  'aria-label': 'Templated Ungrouped Data',
+};

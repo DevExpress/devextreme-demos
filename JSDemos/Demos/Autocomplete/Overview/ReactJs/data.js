@@ -102,4 +102,14 @@ export const surnames = [
   'Edwards',
   'Collins',
 ];
-export const positions = ['CEO', 'COO', 'CTO', 'CMO', 'HR Manager', 'IT Manager', 'Controller', 'Sales Manager', 'Support Manager'];
+export const positions = [
+  'CEO',
+  'COO',
+  'CTO',
+  'CMO',
+  'HR Manager',
+  'IT Manager',
+  'Controller',
+  'Sales Manager',
+  'Support Manager',
+];

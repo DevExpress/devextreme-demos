@@ -2,7 +2,10 @@ import React from 'react';
 import DropDownBox from 'devextreme-react/drop-down-box';
 import TreeView from 'devextreme-react/tree-view';
 import DataGrid, {
-  Selection, Paging, FilterRow, Scrolling,
+  Selection,
+  Paging,
+  FilterRow,
+  Scrolling,
 } from 'devextreme-react/data-grid';
 import CustomStore from 'devextreme/data/custom_store';
 import 'whatwg-fetch';
@@ -57,14 +60,29 @@ function App() {
         onItemSelectionChanged={treeViewItemSelectionChanged}
       />
     ),
-    [treeViewRef, treeViewOnContentReady, onTreeItemClick, treeViewItemSelectionChanged],
+    [
+      treeViewRef,
+      treeViewOnContentReady,
+      onTreeItemClick,
+      treeViewItemSelectionChanged,
+    ],
   );
   const dataGridRender = React.useCallback(
     () => (
-      <DataGrid dataSource={gridDataSource} columns={gridColumns} hoverStateEnabled={true} selectedRowKeys={gridBoxValue} onSelectionChanged={dataGridOnSelectionChanged} height="100%">
+      <DataGrid
+        dataSource={gridDataSource}
+        columns={gridColumns}
+        hoverStateEnabled={true}
+        selectedRowKeys={gridBoxValue}
+        onSelectionChanged={dataGridOnSelectionChanged}
+        height="100%"
+      >
         <Selection mode="single" />
         <Scrolling mode="virtual" />
-        <Paging enabled={true} pageSize={10} />
+        <Paging
+          enabled={true}
+          pageSize={10}
+        />
         <FilterRow visible={true} />
       </DataGrid>
     ),

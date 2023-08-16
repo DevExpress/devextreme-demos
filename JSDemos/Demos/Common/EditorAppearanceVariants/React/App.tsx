@@ -16,7 +16,7 @@ const phoneRules = {
   X: /[02-9]/,
 };
 
-function validateClick({ validationGroup } : ButtonTypes.ClickEvent) {
+function validateClick({ validationGroup }: ButtonTypes.ClickEvent) {
   const result = validationGroup.validate();
   if (result.isValid) {
     notify('The task was saved successfully.', 'success');

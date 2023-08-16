@@ -4,10 +4,10 @@ import { NumberBox } from 'devextreme-react/number-box';
 import { CheckBox } from 'devextreme-react/check-box';
 import DataSource from 'devextreme/data/data_source';
 
+import { SimplifiedSearchMode } from 'devextreme/common.js';
 import {
   simpleProducts, products, searchTimeoutLabel, minimumSearchLengthLabel, searchExpressionLabel, searchModeLabel, productLabel, simpleProductLabel,
 } from './data.ts';
-import { SimplifiedSearchMode } from 'devextreme/common.js';
 
 const searchModeItems = ['contains', 'startswith'];
 const searchExprItems = [

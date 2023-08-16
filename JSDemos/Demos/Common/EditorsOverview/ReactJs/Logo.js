@@ -11,8 +11,17 @@ class Logo extends React.PureComponent {
           outlineColor: props.color,
         }}
       >
-        <div className="picture" style={{ transform: props.transform }}>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 370 260" style={{ width: `${props.width}px`, height: `${props.height}px` }}>
+        <div
+          className="picture"
+          style={{ transform: props.transform }}
+        >
+          <svg
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 370 260"
+            style={{ width: `${props.width}px`, height: `${props.height}px` }}
+          >
             <g>
               <path
                 style={{ fill: props.color }}
@@ -132,7 +141,10 @@ class Logo extends React.PureComponent {
                             c0.152-2.119-1.575-3.82-2.916-5.296c-1.728-1.887-3.806-3.33-5.808-4.887c-0.77-0.59-1.552,0.453-0.934,1.124
                             C287.637,53.8,289.195,55.372,290.724,56.965z`}
             />
-            <path className="base-color" d="M320.685,141.241c-0.073,0.022-0.04,0.131,0.033,0.108C320.789,141.327,320.753,141.221,320.685,141.241z" />
+            <path
+              className="base-color"
+              d="M320.685,141.241c-0.073,0.022-0.04,0.131,0.033,0.108C320.789,141.327,320.753,141.221,320.685,141.241z"
+            />
             <path
               className="base-color"
               d={`M316.826,139.985c5.269,2.261,13.137,1.209,18.645-0.172c6.092-1.522,10.875-6.212,14.12-11.379
@@ -158,7 +170,10 @@ class Logo extends React.PureComponent {
             />
           </svg>
         </div>
-        <div className="text" style={{ color: props.color }}>
+        <div
+          className="text"
+          style={{ color: props.color }}
+        >
           {props.text}
         </div>
       </div>

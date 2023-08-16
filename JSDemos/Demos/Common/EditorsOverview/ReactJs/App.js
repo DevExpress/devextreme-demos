@@ -65,13 +65,24 @@ function App() {
           <div className="field">
             <div className="label">Title</div>
             <div className="value">
-              <TextBox value={text} inputAttr={titleLabel} onValueChanged={handleTextChange} maxLength={40} valueChangeEvent="keyup" />
+              <TextBox
+                value={text}
+                inputAttr={titleLabel}
+                onValueChanged={handleTextChange}
+                maxLength={40}
+                valueChangeEvent="keyup"
+              />
             </div>
           </div>
           <div className="field">
             <div className="label">Color</div>
             <div className="value">
-              <ColorBox value={color} onValueChanged={handleColorChange} applyValueMode="instantly" inputAttr={colorLabel} />
+              <ColorBox
+                value={color}
+                onValueChanged={handleColorChange}
+                applyValueMode="instantly"
+                inputAttr={colorLabel}
+              />
             </div>
           </div>
         </div>
@@ -79,13 +90,29 @@ function App() {
           <div className="field">
             <div className="label">Width</div>
             <div className="value">
-              <NumberBox value={width} onValueChanged={handleWidthChange} showSpinButtons={true} max={700} min={70} format="#0px" inputAttr={widthLabel} />
+              <NumberBox
+                value={width}
+                onValueChanged={handleWidthChange}
+                showSpinButtons={true}
+                max={700}
+                min={70}
+                format="#0px"
+                inputAttr={widthLabel}
+              />
             </div>
           </div>
           <div className="field">
             <div className="label">Height</div>
             <div className="value">
-              <NumberBox value={height} onValueChanged={handleHeightChange} showSpinButtons={true} max={700} min={70} format="#0px" inputAttr={heightLabel} />
+              <NumberBox
+                value={height}
+                onValueChanged={handleHeightChange}
+                showSpinButtons={true}
+                max={700}
+                min={70}
+                format="#0px"
+                inputAttr={heightLabel}
+              />
             </div>
           </div>
         </div>
@@ -93,20 +120,38 @@ function App() {
           <div className="field">
             <div className="label">Transform</div>
             <div className="value">
-              <SelectBox value={transform} onValueChanged={handleTransformChange} inputAttr={transformLabel} items={transformations} grouped={true} displayExpr="name" valueExpr="value" />
+              <SelectBox
+                value={transform}
+                onValueChanged={handleTransformChange}
+                inputAttr={transformLabel}
+                items={transformations}
+                grouped={true}
+                displayExpr="name"
+                valueExpr="value"
+              />
             </div>
           </div>
 
           <div className="field">
             <div className="label">Border</div>
             <div className="value">
-              <Switch value={border} onValueChanged={handleBorderChange} />
+              <Switch
+                value={border}
+                onValueChanged={handleBorderChange}
+              />
             </div>
           </div>
         </div>
       </div>
 
-      <Logo text={text} width={width} height={height} color={color} transform={transform} border={border} />
+      <Logo
+        text={text}
+        width={width}
+        height={height}
+        color={color}
+        transform={transform}
+        border={border}
+      />
     </React.Fragment>
   );
 }

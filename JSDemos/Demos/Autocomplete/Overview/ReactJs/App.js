@@ -25,7 +25,9 @@ const clientsStore = new CustomStore({
       }
     });
     params = params.slice(0, -1);
-    return fetch(`https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi/CustomersLookup${params}`)
+    return fetch(
+      `https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi/CustomersLookup${params}`,
+    )
       .then((response) => response.json())
       .then((data) => ({
         data: data.data,
@@ -61,7 +63,8 @@ function App() {
   fullInfo += `${firstName || ''} ${lastName || ''}`.trim();
   fullInfo += fullInfo && position ? `, ${position}` : position || '';
   fullInfo += fullInfo && state ? `, ${state}` : state || '';
-  fullInfo += fullInfo && currentClient ? `, ${currentClient}` : currentClient || '';
+  fullInfo
+    += fullInfo && currentClient ? `, ${currentClient}` : currentClient || '';
   return (
     <div className="form">
       <div className="dx-fieldset">
@@ -69,7 +72,12 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">First Name</div>
           <div className="dx-field-value">
-            <Autocomplete dataSource={names} value={firstName} onValueChanged={handleFirstNameChange} placeholder="Type first name..." />
+            <Autocomplete
+              dataSource={names}
+              value={firstName}
+              onValueChanged={handleFirstNameChange}
+              placeholder="Type first name..."
+            />
           </div>
         </div>
       </div>
@@ -79,7 +87,13 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Last Name</div>
           <div className="dx-field-value">
-            <Autocomplete dataSource={surnames} value={lastName} onValueChanged={handleLastNameChange} showClearButton={true} placeholder="Type last name..." />
+            <Autocomplete
+              dataSource={surnames}
+              value={lastName}
+              onValueChanged={handleLastNameChange}
+              showClearButton={true}
+              placeholder="Type last name..."
+            />
           </div>
         </div>
       </div>
@@ -89,23 +103,38 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Position</div>
           <div className="dx-field-value">
-            <Autocomplete dataSource={positions} value={position} disabled={true} />
+            <Autocomplete
+              dataSource={positions}
+              value={position}
+              disabled={true}
+            />
           </div>
         </div>
       </div>
 
       <div className="dx-fieldset">
-        <div className="dx-fieldset-header">Custom Item Template and Data Source Usage</div>
+        <div className="dx-fieldset-header">
+          Custom Item Template and Data Source Usage
+        </div>
         <div className="dx-field">
           <div className="dx-field-label">State</div>
           <div className="dx-field-value">
-            <Autocomplete dataSource={states} value={state} valueExpr="State_Long" onValueChanged={handleStateChange} placeholder="Type state name..." itemRender={renderState} />
+            <Autocomplete
+              dataSource={states}
+              value={state}
+              valueExpr="State_Long"
+              onValueChanged={handleStateChange}
+              placeholder="Type state name..."
+              itemRender={renderState}
+            />
           </div>
         </div>
       </div>
 
       <div className="dx-fieldset">
-        <div className="dx-fieldset-header">Custom Store and Search Options</div>
+        <div className="dx-fieldset-header">
+          Custom Store and Search Options
+        </div>
         <div className="dx-field">
           <div className="dx-field-label">Current Client</div>
           <div className="dx-field-value">

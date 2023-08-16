@@ -308,6 +308,7 @@ module.exports = {
     },
     rules: {
       // TODO consider this rules
+      'quotes': ['error', 'single', { avoidEscape: true }],
       'eqeqeq': 0,
       'no-plusplus': 0,
       'max-len': 0,

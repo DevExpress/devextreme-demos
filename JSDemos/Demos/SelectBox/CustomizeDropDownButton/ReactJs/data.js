@@ -1,4 +1,10 @@
-export const simpleProducts = ['HD Video Player', 'SuperHD Video Player', 'SuperPlasma 50', 'SuperLED 50', 'SuperLED 42'];
+export const simpleProducts = [
+  'HD Video Player',
+  'SuperHD Video Player',
+  'SuperPlasma 50',
+  'SuperLED 50',
+  'SuperLED 42',
+];
 export const products = [
   {
     ID: 1,

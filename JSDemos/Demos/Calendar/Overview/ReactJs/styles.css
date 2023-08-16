@@ -20,7 +20,9 @@
   color: #3030ff;
 }
 
-.dx-state-disabled.dx-calendar .dx-calendar-cell:not(.dx-calendar-other-month) .weekend {
+.dx-state-disabled.dx-calendar
+  .dx-calendar-cell:not(.dx-calendar-other-month)
+  .weekend {
   color: #8080ff;
 }
 
@@ -28,7 +30,9 @@
   color: #ff3030;
 }
 
-.dx-state-disabled.dx-calendar .dx-calendar-cell:not(.dx-calendar-other-month) .holiday {
+.dx-state-disabled.dx-calendar
+  .dx-calendar-cell:not(.dx-calendar-other-month)
+  .holiday {
   color: #ff8080;
 }
 

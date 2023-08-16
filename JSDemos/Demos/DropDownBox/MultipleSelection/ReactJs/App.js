@@ -2,7 +2,10 @@ import React from 'react';
 import DropDownBox from 'devextreme-react/drop-down-box';
 import TreeView from 'devextreme-react/tree-view';
 import DataGrid, {
-  Selection, Paging, FilterRow, Scrolling,
+  Selection,
+  Paging,
+  FilterRow,
+  Scrolling,
 } from 'devextreme-react/data-grid';
 import CustomStore from 'devextreme/data/custom_store';
 import 'whatwg-fetch';
@@ -43,10 +46,20 @@ function App() {
   );
   const dataGridRender = React.useCallback(
     () => (
-      <DataGrid height={345} dataSource={gridDataSource} columns={gridColumns} hoverStateEnabled={true} selectedRowKeys={gridBoxValue} onSelectionChanged={dataGridOnSelectionChanged}>
+      <DataGrid
+        height={345}
+        dataSource={gridDataSource}
+        columns={gridColumns}
+        hoverStateEnabled={true}
+        selectedRowKeys={gridBoxValue}
+        onSelectionChanged={dataGridOnSelectionChanged}
+      >
         <Selection mode="multiple" />
         <Scrolling mode="virtual" />
-        <Paging enabled={true} pageSize={10} />
+        <Paging
+          enabled={true}
+          pageSize={10}
+        />
         <FilterRow visible={true} />
       </DataGrid>
     ),
@@ -54,7 +67,8 @@ function App() {
   );
   const syncTreeViewSelection = React.useCallback(
     (e) => {
-      const treeView = (e.component.selectItem && e.component) || (treeViewRef.current && treeViewRef.current.instance);
+      const treeView = (e.component.selectItem && e.component)
+        || (treeViewRef.current && treeViewRef.current.instance);
       if (treeView) {
         if (e.value === null) {
           treeView.unselectAll();
