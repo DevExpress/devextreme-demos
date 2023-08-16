@@ -71,7 +71,7 @@ npm run fix-lint
 npm run convert-to-js ./JSDemos/Demos/**/React
 ```
 
-1. To ensure, that react javascript sources are always in sync, there is a workflow: "Check generated JS demos"
+1. To ensure that React JavaScript sources are always in sync, there is a workflow: "Check generated JS demos"
 
 ## ASP.NET Demos
 
