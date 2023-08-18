@@ -30,11 +30,9 @@ import { DxForm, DxItem, DxLabel } from 'devextreme-vue/form';
 import ProductSelectBox from './ProductSelectBox.vue';
 import OrderHistory from './OrderHistory.vue';
 
-withDefaults(defineProps<{
-  supplierId?: number
-}>(), {
-  supplierId: null,
-});
+defineProps<{
+  supplierId: number
+}>();
 
-const chosenProductId = ref(null);
+const chosenProductId = ref<null | number>(null);
 </script>

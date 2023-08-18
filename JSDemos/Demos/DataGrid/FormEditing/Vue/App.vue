@@ -66,6 +66,7 @@ import {
 } from 'devextreme-vue/data-grid';
 import 'devextreme-vue/text-area';
 import { employees, states } from './data.js';
+
 </script>
 <style>
 #data-grid-demo {

@@ -42,9 +42,8 @@ import {
   DxMasterDetail,
 } from 'devextreme-vue/data-grid';
 import DetailTemplate from './DetailTemplate.vue';
-import service from './data.js';
+import { employees } from './data.js';
 
-const employees = service.getEmployees();
 </script>
 <style>
 #grid-container {

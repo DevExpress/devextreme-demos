@@ -4,7 +4,7 @@
       <DxButton
         text="Export multiple grids"
         icon="xlsxfile"
-        @click="exportGrids($event)"
+        @click="exportGrids"
       />
     </div>
     <DxTabPanel
@@ -90,8 +90,9 @@ import { saveAs } from 'file-saver-es';
 import { exportDataGrid } from 'devextreme/excel_exporter';
 import 'devextreme/data/odata/store';
 
-const priceGridRef = ref(null);
-const ratingGridRef = ref(null);
+const priceGridRef = ref<DxDataGrid | null>(null);
+const ratingGridRef = ref<DxDataGrid | null>(null);
+
 const priceDataSource = {
   store: {
     type: 'odata',
@@ -111,7 +112,7 @@ const ratingDataSource = {
   filter: ['Product_ID', '<', 10],
 };
 
-function exportGrids() {
+const exportGrids = () => {
   const workbook = new Workbook();
   const priceSheet = workbook.addWorksheet('Price');
   const ratingSheet = workbook.addWorksheet('Rating');
@@ -141,9 +142,9 @@ function exportGrids() {
       saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'MultipleGrids.xlsx');
     });
   });
-}
+};
 
-function setAlternatingRowsBackground(gridCell, excelCell) {
+const setAlternatingRowsBackground = (gridCell, excelCell) => {
   if (gridCell.rowType === 'header' || gridCell.rowType === 'data') {
     if (excelCell.fullAddress.row % 2 === 0) {
       excelCell.fill = {
@@ -151,7 +152,7 @@ function setAlternatingRowsBackground(gridCell, excelCell) {
       };
     }
   }
-}
+};
 </script>
 
 <style scoped>

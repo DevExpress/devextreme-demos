@@ -48,10 +48,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { DxDataGrid, DxColumn, DxEditing } from 'devextreme-vue/data-grid';
 import { DxLoadPanel } from 'devextreme-vue/load-panel';
 import { useStore } from 'vuex';
+
+const loadPanelPosition = { of: '#gridContainer' };
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
 const store = useStore();
@@ -61,7 +63,7 @@ const [loadOrders, setEditRowKey, setChanges, saveChange] = ['loadOrders', 'setE
 );
 const orders = computed(() => store.getters.orders);
 const isLoading = computed(() => store.getters.isLoading);
-const loadPanelPosition = ref({ of: '#gridContainer' });
+
 const changes = computed({
   get() {
     return store.state.changes;
@@ -70,6 +72,7 @@ const changes = computed({
     setChanges(value);
   },
 });
+
 const changesText = computed(() => JSON.stringify(changes.value.map((change) => ({
   type: change.type,
   key: change.type !== 'insert' ? change.key : undefined,
@@ -85,10 +88,10 @@ const editRowKey = computed({
   },
 });
 
-function onSaving(e) {
+const onSaving = (e) => {
   e.cancel = true;
   e.promise = saveChange(e.changes[0]);
-}
+};
 
 loadOrders();
 </script>

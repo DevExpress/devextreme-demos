@@ -5,14 +5,14 @@
       :data-source="employees"
       :show-borders="true"
       key-expr="ID"
-      @row-validating="rowValidating"
-      @editor-preparing="editorPreparing"
+      @row-validating="onRowValidating"
+      @editor-preparing="onEditorPreparing"
     >
 
       <DxPaging :enabled="false"/>
       <DxEditing
         :allow-updating="true"
-        :allow-deleting="allowDeleting"
+        :allow-deleting="isDeleteIconVisible"
         :use-icons="true"
         mode="row"
       />
@@ -28,7 +28,7 @@
           icon="copy"
           :visible="isCloneIconVisible"
           :disabled="isCloneIconDisabled"
-          @click="cloneIconClick"
+          @click="onCloneIconClick"
         />
       </DxColumn>
       <DxColumn
@@ -70,48 +70,39 @@ import {
   DxPaging,
   DxLookup,
 } from 'devextreme-vue/data-grid';
-import service from './data.js';
+import { employees as defaultEmployees, states, getMaxID } from './data.js';
 
-const employees = ref(service.getEmployees());
-const states = service.getStates();
+const employees = ref(defaultEmployees);
 
-function isChief(position) {
-  return position && ['CEO', 'CMO'].indexOf(position.trim().toUpperCase()) >= 0;
-}
+const isChief = (position) => position && ['CEO', 'CMO'].indexOf(position.trim().toUpperCase()) >= 0;
 
-function isCloneIconVisible(e) {
-  return !e.row.isEditing;
-}
+const isCloneIconVisible = (e) => !e.row.isEditing;
 
-function isCloneIconDisabled(e) {
-  return isChief(e.row.data.Position);
-}
+const isCloneIconDisabled = (e) => isChief(e.row.data.Position);
 
-function cloneIconClick(e) {
+const isDeleteIconVisible = (e) => !isChief(e.row.data.Position);
+
+const onCloneIconClick = (e) => {
   const updatedEmployees = [...employees.value];
-  const clonedItem = { ...e.row.data, ID: service.getMaxID() };
+  const clonedItem = { ...e.row.data, ID: getMaxID() };
 
   updatedEmployees.splice(e.row.rowIndex, 0, clonedItem);
   employees.value = updatedEmployees;
   e.event.preventDefault();
-}
+};
 
-function rowValidating(e) {
+const onRowValidating = (e) => {
   const position = e.newData.Position;
 
   if (isChief(position)) {
     e.errorText = `The company can have only one ${position.toUpperCase()}. Please choose another position.`;
     e.isValid = false;
   }
-}
+};
 
-function editorPreparing(e) {
+const onEditorPreparing = (e) => {
   if (e.parentType === 'dataRow' && e.dataField === 'Position') {
     e.editorOptions.readOnly = isChief(e.value);
   }
-}
-
-function allowDeleting(e) {
-  return !isChief(e.row.data.Position);
-}
+};
 </script>

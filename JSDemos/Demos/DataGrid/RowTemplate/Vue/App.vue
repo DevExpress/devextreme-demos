@@ -54,9 +54,8 @@ import {
   DxDataGrid,
   DxColumn,
 } from 'devextreme-vue/data-grid';
-import service from './data.js';
+import { employees } from './data.js';
 
-const employees = service.getEmployees();
 const formatDate = new Intl.DateTimeFormat('en-US').format;
 </script>
 <style scoped>

@@ -96,7 +96,6 @@
   </DxDataGrid>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
 import {
   DxDataGrid,
   DxColumn,
@@ -120,21 +119,8 @@ import { createStore } from 'devextreme-aspnet-data-nojquery';
 import MasterDetailGrid from './MasterDetailGrid.vue';
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
-const customersData = ref(createStore({
-  key: 'Value',
-  loadUrl: `${url}/CustomersLookup`,
-  onBeforeSend: (method, ajaxOptions) => {
-    ajaxOptions.xhrFields = { withCredentials: true };
-  },
-}));
-const shippersData = ref(createStore({
-  key: 'Value',
-  loadUrl: `${url}/ShippersLookup`,
-  onBeforeSend: (method, ajaxOptions) => {
-    ajaxOptions.xhrFields = { withCredentials: true };
-  },
-}));
-const dataSource = ref(createStore({
+
+const dataSource = createStore({
   key: 'OrderID',
   loadUrl: `${url}/Orders`,
   insertUrl: `${url}/InsertOrder`,
@@ -143,5 +129,22 @@ const dataSource = ref(createStore({
   onBeforeSend: (method, ajaxOptions) => {
     ajaxOptions.xhrFields = { withCredentials: true };
   },
-}));
+});
+
+const customersData = createStore({
+  key: 'Value',
+  loadUrl: `${url}/CustomersLookup`,
+  onBeforeSend: (method, ajaxOptions) => {
+    ajaxOptions.xhrFields = { withCredentials: true };
+  },
+});
+
+const shippersData = createStore({
+  key: 'Value',
+  loadUrl: `${url}/ShippersLookup`,
+  onBeforeSend: (method, ajaxOptions) => {
+    ajaxOptions.xhrFields = { withCredentials: true };
+  },
+});
+
 </script>

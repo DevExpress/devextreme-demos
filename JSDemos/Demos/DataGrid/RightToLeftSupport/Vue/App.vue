@@ -2,7 +2,7 @@
   <div>
     <DxDataGrid
       id="gridContainer"
-      :data-source="dataSource"
+      :data-source="europeanUnion"
       key-expr="nameEn"
       :rtl-enabled="rtlEnabled"
       :show-borders="true"
@@ -51,7 +51,7 @@
           :input-attr="{ 'aria-label': 'Language' }"
           :value="languages[1]"
           :width="250"
-          @valueChanged="selectLanguage($event)"
+          @valueChanged="onSelectLanguage($event)"
         />
       </div>
     </div>
@@ -66,17 +66,17 @@ import {
   DxSearchPanel,
 } from 'devextreme-vue/data-grid';
 import DxSelectBox from 'devextreme-vue/select-box';
-import service from './data.js';
+import { europeanUnion } from './data.js';
 
-const dataSource = service.getEuropeanUnion();
 const languages = ['Arabic (Right-to-Left direction)', 'English (Left-to-Right direction)'];
+
 const placeholder = ref('Search...');
 const rtlEnabled = ref(false);
 
-function selectLanguage(e) {
+const onSelectLanguage = (e) => {
   rtlEnabled.value = e.value === languages[0];
   placeholder.value = rtlEnabled.value ? 'بحث' : 'Search...';
-}
+};
 </script>
 <style scoped>
 #gridContainer {

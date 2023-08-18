@@ -48,11 +48,9 @@ import { Workbook } from 'exceljs';
 // We recommend that you use the official 'file-saver' package in your applications.
 import { saveAs } from 'file-saver-es';
 import { exportDataGrid } from 'devextreme/excel_exporter';
-import service from './data.js';
+import { employees } from './data.js';
 
-const employees = service.getEmployees();
-
-function onExporting(e) {
+const onExporting = (e) => {
   const workbook = new Workbook();
   const worksheet = workbook.addWorksheet('Employees');
 
@@ -65,8 +63,9 @@ function onExporting(e) {
       saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'DataGrid.xlsx');
     });
   });
+
   e.cancel = true;
-}
+};
 </script>
 
 <style scoped>

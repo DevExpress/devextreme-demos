@@ -4,8 +4,8 @@
     :show-borders="true"
     :data-source="employees"
     key-expr="ID"
-    @selection-changed="selectionChanged"
-    @content-ready="contentReady"
+    @selection-changed="onSelectionChanged"
+    @content-ready="onContentReady"
   >
     <DxSelection mode="single"/>
     <DxColumn
@@ -50,14 +50,16 @@ import DxDataGrid, {
 } from 'devextreme-vue/data-grid';
 import { employees } from './data.js';
 
-function contentReady(e) {
-  if (!e.component.getSelectedRowKeys().length) { e.component.selectRowsByIndexes(0); }
-}
+const onContentReady = (e) => {
+  if (!e.component.getSelectedRowKeys().length) {
+    e.component.selectRowsByIndexes(0);
+  }
+};
 
-function selectionChanged(e) {
+const onSelectionChanged = (e) => {
   e.component.collapseAll(-1);
   e.component.expandRow(e.currentSelectedRowKeys[0]);
-}
+};
 </script>
 <style>
 #grid-container {

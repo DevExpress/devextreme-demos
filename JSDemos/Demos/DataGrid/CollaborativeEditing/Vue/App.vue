@@ -18,7 +18,8 @@ import Grid from './Grid.vue';
 
 const BASE_PATH = 'https://js.devexpress.com/Demos/NetCore/';
 const url = `${BASE_PATH}api/DataGridCollaborativeEditing/`;
-const groupId = new Guid().toJSON();
+const groupId = new Guid().toString();
+
 const createStore = () => AspNetData.createStore({
   key: 'ID',
   loadUrl: url,
@@ -29,12 +30,15 @@ const createStore = () => AspNetData.createStore({
     ajaxSettings.data.groupId = groupId;
   },
 });
+
 const store1 = createStore();
 const store2 = createStore();
+
 const updateStores = (events) => {
   store1.push(events);
   store2.push(events);
 };
+
 const hubUrl = `${BASE_PATH}dataGridCollaborativeEditingHub?GroupId=${groupId}`;
 const connection = new HubConnectionBuilder()
   .withUrl(hubUrl, {

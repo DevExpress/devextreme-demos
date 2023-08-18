@@ -33,11 +33,10 @@
   </DxDataGrid>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
 import 'devextreme/data/odata/store';
 import { DxDataGrid, DxColumn } from 'devextreme-vue/data-grid';
 
-const dataSource = ref({
+const dataSource = {
   store: {
     type: 'odata',
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
@@ -52,5 +51,5 @@ const dataSource = ref({
     'Product_Current_Inventory',
   ],
   filter: ['Product_Current_Inventory', '>', 0],
-});
+};
 </script>

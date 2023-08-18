@@ -33,6 +33,7 @@ import { createStore } from 'devextreme-aspnet-data-nojquery';
 import MasterDetail from './MasterDetail.vue';
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridAdvancedMasterDetailView';
+
 const suppliersData = createStore({
   key: 'SupplierID',
   loadUrl: `${url}/GetSuppliers`,

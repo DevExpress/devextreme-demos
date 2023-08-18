@@ -5,9 +5,9 @@
 </template>
 
 <script setup lang="ts">
-withDefaults(defineProps<{
-  cellData?: object
-}>(), {
-  cellData: () => {},
-});
+import { ColumnCellTemplateData } from 'devextreme/ui/data_grid';
+
+defineProps<{
+  cellData: ColumnCellTemplateData
+}>();
 </script>

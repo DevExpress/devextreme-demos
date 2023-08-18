@@ -1,12 +1,12 @@
 <template>
   <DxDataGrid
     id="gridContainer"
-    ref="gridRef"
+    ref="dataGridRef"
     :data-source="orders"
     key-expr="ID"
     :show-borders="true"
   >
-    <DxGrouping :auto-expand-all="expanded"/>
+    <DxGrouping :auto-expand-all="expandAll"/>
     <DxColumnChooser :enabled="true"/>
     <DxLoadPanel :enabled="true"/>
     <DxColumn
@@ -64,14 +64,14 @@
         display-expr="text"
         value-expr="value"
         value="CustomerStoreState"
-        @value-changed="groupChanged"
+        @value-changed="toggleGroupColumn"
       />
     </template>
     <template #collapseTemplate>
       <DxButton
-        :text="expanded ? 'Collapse All' : 'Expand All'"
+        :text="expandAll ? 'Collapse All' : 'Expand All'"
         width="136"
-        @click="collapseAllClick"
+        @click="toggleExpandAll"
       />
     </template>
     <template #refreshTemplate>
@@ -96,39 +96,38 @@ import {
 import { DxSelectBox } from 'devextreme-vue/select-box';
 import { DxButton } from 'devextreme-vue/button';
 import query from 'devextreme/data/query';
-import service from './data.js';
+import { orders } from './data.js';
 
-const orders = service.getOrders();
-const gridRef = ref(null);
-const expanded = ref(true);
+const getGroupCount = (groupField) => query(orders)
+  .groupBy(groupField)
+  .toArray().length;
+
+const dataGridRef = ref<DxDataGrid | null>(null);
+const expandAll = ref(true);
 const totalCount = ref(getGroupCount('CustomerStoreState'));
-const groupingValues = ref([{
+
+const groupingValues = [{
   value: 'CustomerStoreState',
   text: 'Grouping by State',
 }, {
   value: 'Employee',
   text: 'Grouping by Employee',
-}]);
+}];
 
-function getGroupCount(groupField) {
-  return query(orders)
-    .groupBy(groupField)
-    .toArray().length;
-}
+const toggleGroupColumn = (e) => {
+  dataGridRef.value!.instance!.clearGrouping();
+  dataGridRef.value!.instance!.columnOption(e.value, 'groupIndex', 0);
 
-function groupChanged(e) {
-  gridRef.value.instance.clearGrouping();
-  gridRef.value.instance.columnOption(e.value, 'groupIndex', 0);
   totalCount.value = getGroupCount(e.value);
-}
+};
 
-function collapseAllClick() {
-  expanded.value = !expanded.value;
-}
+const toggleExpandAll = () => {
+  expandAll.value = !expandAll.value;
+};
 
-function refreshDataGrid() {
-  gridRef.value.instance.refresh();
-}
+const refreshDataGrid = () => {
+  dataGridRef.value!.instance!.refresh();
+};
 </script>
 <style scoped>
 

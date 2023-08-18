@@ -59,13 +59,9 @@ import {
   DxTotalItem,
 } from 'devextreme-vue/data-grid';
 import { formatDate } from 'devextreme/localization';
-import service from './data.js';
+import { orders } from './data.js';
 
-const orders = service.getOrders();
-
-function customizeDate(data) {
-  return `First: ${formatDate(data.value, 'MMM dd, yyyy')}`;
-}
+const customizeDate = (itemInfo) => `First: ${formatDate(itemInfo.value, 'MMM dd, yyyy')}`;
 </script>
 <style scoped>
 #gridContainer {

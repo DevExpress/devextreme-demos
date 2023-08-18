@@ -66,7 +66,7 @@ const gdpFormat = {
   precision: 1,
 };
 
-function onExporting(e) {
+const onExporting = (e) => {
   const workbook = new Workbook();
   const worksheet = workbook.addWorksheet('CountriesPopulation');
 
@@ -97,8 +97,9 @@ function onExporting(e) {
       saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'CountriesPopulation.xlsx');
     });
   });
+
   e.cancel = true;
-}
+};
 </script>
 
 <style>

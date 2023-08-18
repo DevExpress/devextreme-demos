@@ -81,9 +81,8 @@ import {
   DxGroupItem,
   DxSortByGroupSummaryInfo,
 } from 'devextreme-vue/data-grid';
-import service from './data.js';
+import { orders } from './data.js';
 
-const orders = service.getOrders();
 </script>
 <style scoped>
 #gridContainer {

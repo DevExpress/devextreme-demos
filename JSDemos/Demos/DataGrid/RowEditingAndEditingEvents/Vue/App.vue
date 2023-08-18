@@ -2,7 +2,7 @@
   <div>
     <DxDataGrid
       id="gridContainer"
-      :data-source="dataSource"
+      :data-source="employees"
       :allow-column-reordering="true"
       :show-borders="true"
       key-expr="ID"
@@ -44,7 +44,7 @@
         caption="State"
       >
         <DxLookup
-          :data-source="statesRef"
+          :data-source="states"
           display-expr="Name"
           value-expr="ID"
         />
@@ -84,16 +84,15 @@ import {
 } from 'devextreme-vue/data-grid';
 import { employees, states } from './data.js';
 
-const events = ref([]);
-const dataSource = ref(employees);
-const statesRef = ref(states);
+const events = ref<string[]>([]);
 
-function logEvent(eventName) {
+const logEvent = (eventName) => {
   events.value.unshift(eventName);
-}
-function clearEvents() {
+};
+
+const clearEvents = () => {
   events.value = [];
-}
+};
 </script>
 <style>
 #events {

@@ -60,17 +60,17 @@ import { ref } from 'vue';
 import {
   DxDataGrid, DxSelection, DxFilterRow, DxGroupPanel, DxStateStoring, DxPager, DxColumn,
 } from 'devextreme-vue/data-grid';
-import service from './data.js';
+import { orders } from './data.js';
 
-const orders = ref(service.getOrders());
-const dataGrid = ref(null);
+const dataGrid = ref<DxDataGrid | null>(null);
 
-function onRefreshClick() {
+const onRefreshClick = () => {
   window.location.reload();
-}
-function onStateResetClick() {
-  dataGrid.value.instance?.state(null);
-}
+};
+
+const onStateResetClick = () => {
+  dataGrid.value!.instance?.state(null);
+};
 </script>
 <style scoped>
 #gridContainer {

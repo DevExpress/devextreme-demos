@@ -103,6 +103,7 @@ import {
 } from 'devextreme-vue/data-grid';
 import { DxItem } from 'devextreme-vue/form';
 import { employees, states } from './data.js';
+
 </script>
 <style>
 #data-grid-demo {

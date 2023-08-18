@@ -70,8 +70,12 @@ import {
   DxDataGrid, DxColumn, DxFilterRow, DxSelection,
 } from 'devextreme-vue/data-grid';
 import DxButton from 'devextreme-vue/button';
+
+import DataGrid from 'devextreme/ui/data_grid';
 import query from 'devextreme/data/query';
 import 'devextreme/data/odata/store';
+
+const MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
 
 const dataSource = {
   store: {
@@ -89,34 +93,36 @@ const dataSource = {
     'ResponsibleEmployee/Employee_Full_Name',
   ],
 };
+
+let dataGrid: DataGrid;
 const selectionFilter = ['Task_Status', '=', 'Completed'];
-const dataGrid = ref({});
+
 const taskCount = ref(0);
 const peopleCount = ref(0);
 const avgDuration = ref(0);
-const MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
 
-function onInitialized(e) {
-  dataGrid.value = e.component;
+const calculateStatistics = async() => {
+  const selectedItems = await dataGrid.getSelectedRowsData();
+
+  const totalDuration = selectedItems.reduce((currentValue, item) => {
+    const duration = item.Task_Due_Date - item.Task_Start_Date;
+
+    return currentValue + duration;
+  }, 0);
+  const averageDurationInDays = totalDuration / MILLISECONDS_IN_DAY / selectedItems.length;
+
+  taskCount.value = selectedItems.length;
+  peopleCount.value = query(selectedItems)
+    .groupBy('ResponsibleEmployee.Employee_Full_Name')
+    .toArray().length;
+  avgDuration.value = Math.round(averageDurationInDays) || 0;
+};
+
+const onInitialized = (e) => {
+  dataGrid = e.component;
+
   calculateStatistics();
-}
-
-function calculateStatistics() {
-  dataGrid.value.getSelectedRowsData().then((rowData) => {
-    let commonDuration = 0;
-
-    for (let i = 0; i < rowData.length; i += 1) {
-      commonDuration += rowData[i].Task_Due_Date - rowData[i].Task_Start_Date;
-    }
-    commonDuration /= MILLISECONDS_IN_DAY;
-    taskCount.value = rowData.length;
-    peopleCount.value = query(rowData)
-      .groupBy('ResponsibleEmployee.Employee_Full_Name')
-      .toArray()
-      .length;
-    avgDuration.value = Math.round(commonDuration / rowData.length) || 0;
-  });
-}
+};
 </script>
 
 <style>

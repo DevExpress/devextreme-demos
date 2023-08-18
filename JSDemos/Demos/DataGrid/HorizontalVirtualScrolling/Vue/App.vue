@@ -11,11 +11,10 @@
   </DxDataGrid>
 </template>
 <script setup lang="ts">
-import { computed } from 'vue';
 import { DxDataGrid, DxScrolling, DxPaging } from 'devextreme-vue/data-grid';
 import { generateData } from './data.js';
 
-const dataSource = computed(() => generateData(50, 500));
+const dataSource = () => generateData(50, 500);
 </script>
 <style>
 #gridContainer {

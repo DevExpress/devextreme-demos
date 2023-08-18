@@ -69,7 +69,7 @@
           <DxButton
             id="clear"
             text="Clear"
-            @click="clearRequests()"
+            @click="clearRequests"
           />
         </div>
         <ul>
@@ -100,6 +100,7 @@ import { formatDate } from 'devextreme/localization';
 import 'whatwg-fetch';
 
 const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
+
 const ordersData = new CustomStore({
   key: 'OrderID',
   load: () => sendRequest(`${URL}/Orders`),
@@ -114,21 +115,25 @@ const ordersData = new CustomStore({
     key,
   }),
 });
+
 const customersData = new CustomStore({
   key: 'Value',
   loadMode: 'raw',
   load: () => sendRequest(`${URL}/CustomersLookup`),
 });
+
 const shippersData = new CustomStore({
   key: 'Value',
   loadMode: 'raw',
   load: () => sendRequest(`${URL}/ShippersLookup`),
 });
-const requests = ref([]);
-const refreshMode = ref('reshape');
-const refreshModes = ref(['full', 'reshape', 'repaint']);
 
-function sendRequest(url, method = 'GET', data = {}) {
+const refreshModes = ['full', 'reshape', 'repaint'];
+
+const requests = ref<any[]>([]);
+const refreshMode = ref('reshape');
+
+const sendRequest = async(url, method = 'GET', data = {}) => {
   logRequest(method, url, data);
 
   const params = Object.keys(data).map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`).join('&');
@@ -154,23 +159,24 @@ function sendRequest(url, method = 'GET', data = {}) {
     if (result.ok) {
       return result.text().then((text) => text && JSON.parse(text));
     }
+
     return result.json().then((json) => {
       throw json.Message;
     });
   });
-}
+};
 
-function logRequest(method, url, data) {
+const logRequest = (method, url, data) => {
   const args = Object.keys(data || {}).map((key) => `${key}=${data[key]}`).join(' ');
 
   const time = formatDate(new Date(), 'HH:mm:ss');
 
   requests.value.unshift([time, method, url.slice(URL.length), args].join(' '));
-}
+};
 
-function clearRequests() {
+const clearRequests = () => {
   requests.value = [];
-}
+};
 </script>
 <style scoped>
 #grid {

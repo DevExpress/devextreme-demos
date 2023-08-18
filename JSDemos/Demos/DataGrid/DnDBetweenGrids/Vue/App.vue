@@ -17,6 +17,7 @@ import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 import Grid from './Grid.vue';
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DnDBetweenGrids';
+
 const tasksStore = AspNetData.createStore({
   key: 'ID',
   loadUrl: `${url}/Tasks`,
@@ -26,7 +27,6 @@ const tasksStore = AspNetData.createStore({
   },
 });
 </script>
-
 <style scoped>
 .tables {
   display: flex;

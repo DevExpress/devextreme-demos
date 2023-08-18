@@ -26,9 +26,8 @@ import { DxTabPanel, DxItem } from 'devextreme-vue/tab-panel';
 import OrdersTab from './OrdersTab.vue';
 import AddressTab from './AddressTab.vue';
 
-withDefaults(defineProps<{
-  masterDetailData?: object
-}>(), {
-  masterDetailData: () => ({}),
-});
+defineProps<{
+  masterDetailData: any
+}>();
+
 </script>

@@ -5,7 +5,7 @@
       :data-source="dataSource"
       :show-borders="true"
       :selected-row-keys="selectedItemKeys"
-      @selection-changed="selectionChanged"
+      @selection-changed="onSelectionChanged"
     >
       <DxEditing
         :allow-updating="true"
@@ -53,7 +53,7 @@
         <DxItem location="after">
           <template #default>
             <DxButton
-              @click="deleteRecords()"
+              @click="deleteRecords"
               :disabled="!selectedItemKeys.length"
               icon="trash"
               text="Delete Selected Records"
@@ -87,18 +87,22 @@ const dataSource = new DataSource({
     key: 'ID',
   }),
 });
+
 const selectedItemKeys = ref([]);
 const statesRef = ref(states);
-const selectionChanged = ref((data) => {
+
+const onSelectionChanged = (data) => {
   selectedItemKeys.value = data.selectedRowKeys;
-});
-const deleteRecords = ref(() => {
+};
+
+const deleteRecords = () => {
   selectedItemKeys.value.forEach((key) => {
     dataSource.store().remove(key);
   });
+
   selectedItemKeys.value = [];
   dataSource.reload();
-});
+};
 </script>
 <style>
 #data-grid-demo {

@@ -4,7 +4,7 @@
       <DxButton
         text="Export multiple grids"
         icon="exportpdf"
-        @click="exportGrids($event)"
+        @click="exportGrids"
       />
     </div>
     <DxTabPanel
@@ -87,9 +87,10 @@ import { exportDataGrid } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
 import 'devextreme/data/odata/store';
 
-const priceGridRef = ref(null);
-const ratingGridRef = ref(null);
-const priceDataSource = ref({
+const priceGridRef = ref<DxDataGrid | null>(null);
+const ratingGridRef = ref<DxDataGrid | null>(null);
+
+const priceDataSource = {
   store: {
     type: 'odata',
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
@@ -97,8 +98,9 @@ const priceDataSource = ref({
   },
   select: ['Product_ID', 'Product_Name', 'Product_Sale_Price', 'Product_Retail_Price'],
   filter: ['Product_ID', '<', 10],
-});
-const ratingDataSource = ref({
+};
+
+const ratingDataSource = {
   store: {
     type: 'odata',
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
@@ -106,9 +108,9 @@ const ratingDataSource = ref({
   },
   select: ['Product_ID', 'Product_Name', 'Product_Consumer_Rating', 'Product_Category'],
   filter: ['Product_ID', '<', 10],
-});
+};
 
-function exportGrids() {
+const exportGrids = () => {
   const priceGrid = priceGridRef.value?.instance;
   const ratingGrid = ratingGridRef.value?.instance;
   // eslint-disable-next-line new-cap
@@ -136,16 +138,16 @@ function exportGrids() {
       doc.save('MultipleGrids.pdf');
     });
   });
-}
+};
 
-function setAlternatingRowsBackground(dataGrid, gridCell, pdfCell) {
+const setAlternatingRowsBackground = (dataGrid, gridCell, pdfCell) => {
   if (gridCell.rowType === 'data') {
     const rowIndex = dataGrid.getRowIndexByKey(gridCell.data.Product_ID);
     if (rowIndex % 2 === 0) {
       pdfCell.backgroundColor = '#D3D3D3';
     }
   }
-}
+};
 </script>
 
 <style scoped>

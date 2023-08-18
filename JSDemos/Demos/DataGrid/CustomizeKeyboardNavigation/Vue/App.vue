@@ -93,13 +93,14 @@ import DxSelectBox from 'devextreme-vue/select-box';
 import DxCheckBox from 'devextreme-vue/check-box';
 import { employees, states } from './data.js';
 
-const editOnKeyPress = ref(true);
-const enterKeyDirection = ref('column');
-const enterKeyAction = ref('moveFocus');
 const enterKeyActions = ['startEdit', 'moveFocus'];
 const enterKeyDirections = ['none', 'column', 'row'];
 
-function onFocusedCellChanging(e) {
+const editOnKeyPress = ref(true);
+const enterKeyDirection = ref('column');
+const enterKeyAction = ref('moveFocus');
+
+const onFocusedCellChanging = (e) => {
   e.isHighlighted = true;
-}
+};
 </script>

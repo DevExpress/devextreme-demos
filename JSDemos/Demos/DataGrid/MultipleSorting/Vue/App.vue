@@ -56,11 +56,11 @@ import DxCheckBox from 'devextreme-vue/check-box';
 import { employees } from './data.js';
 
 const positionDisableSorting = ref(false);
-const dataGridRef = ref(null);
+const dataGridRef = ref<DxDataGrid | null>(null);
 
-function onValueChanged() {
-  dataGridRef.value?.instance?.columnOption(5, 'sortOrder', undefined);
-}
+const onValueChanged = () => {
+  dataGridRef.value!.instance!.columnOption(5, 'sortOrder', undefined);
+};
 </script>
 <style scoped>
 .options {

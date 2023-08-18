@@ -34,6 +34,7 @@ import { createStore } from 'devextreme-aspnet-data-nojquery';
 import 'whatwg-fetch';
 
 const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridBatchUpdateWebApi';
+
 const ordersStore = createStore({
   key: 'OrderID',
   loadUrl: `${URL}/Orders`,
@@ -42,13 +43,13 @@ const ordersStore = createStore({
   },
 });
 
-function onSaving(e) {
+const onSaving = (e) => {
   e.cancel = true;
 
   if (e.changes.length) {
     e.promise = processBatchRequest(`${URL}/Batch`, e.changes, e.component);
   }
-}
+};
 
 async function sendBatchRequest(url, changes) {
   const result = await fetch(url, {
@@ -70,6 +71,7 @@ async function sendBatchRequest(url, changes) {
 async function processBatchRequest(url, changes, component) {
   await sendBatchRequest(url, changes);
   await component.refresh(true);
+
   component.cancelEditData();
 }
 </script>

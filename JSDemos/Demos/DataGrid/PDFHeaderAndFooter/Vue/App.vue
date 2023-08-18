@@ -66,7 +66,7 @@ const gdpFormat = {
   precision: 1,
 };
 
-function onExporting(e) {
+const onExporting = (e) => {
   // eslint-disable-next-line new-cap
   const doc = new jsPDF();
   const lastPoint = { x: 0, y: 0 };
@@ -99,7 +99,7 @@ function onExporting(e) {
 
     doc.save('Companies.pdf');
   });
-}
+};
 </script>
 
 <style>

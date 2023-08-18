@@ -17,10 +17,9 @@
         <span>Column resizing mode: </span>
         <DxSelectBox
           :items="resizingModes"
-          :value="currentMode"
+          v-model:value="currentMode"
           :input-attr="{ 'aria-label': 'Column Resizing Mode' }"
           :width="250"
-          :on-value-changed="changeResizingMode"
         />
       </div>
     </div>
@@ -32,15 +31,12 @@ import {
   DxDataGrid,
 } from 'devextreme-vue/data-grid';
 import DxSelectBox from 'devextreme-vue/select-box';
-import orders from './data.js';
+import { orders } from './data.js';
 
 const columns = ['CompanyName', 'City', 'State', 'Phone', 'Fax'];
 const resizingModes = ['nextColumn', 'widget'];
 const currentMode = ref('nextColumn');
 
-function changeResizingMode(data) {
-  currentMode.value = data.value;
-}
 </script>
 <style scoped>
 #orders {

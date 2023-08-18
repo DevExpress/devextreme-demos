@@ -91,30 +91,30 @@ import DxSelectBox from 'devextreme-vue/select-box';
 import Guid from 'devextreme/core/guid';
 import { dataSource } from './data.js';
 
-const newRowPosition = ref('viewportTop');
-const scrollingMode = ref('standard');
-const changes = ref([]);
-const editRowKey = ref(null);
 const newRowPositionOptions = ['first', 'last', 'pageTop', 'pageBottom', 'viewportTop', 'viewportBottom'];
 const scrollingModeOptions = ['standard', 'virtual'];
 
-function onAddButtonClick(e) {
+const newRowPosition = ref('viewportTop');
+const scrollingMode = ref('standard');
+const changes = ref<any[]>([]);
+const editRowKey = ref<string | null>(null);
+
+const onAddButtonClick = (e) => {
   const key = new Guid().toString();
+
   changes.value = [{
     key,
     type: 'insert',
     insertAfterKey: e.row.key,
   }];
   editRowKey.value = key;
-}
+};
 
-function isAddButtonVisible({ row }) {
-  return !row.isEditing;
-}
+const isAddButtonVisible = ({ row }) => !row.isEditing;
 
-function onRowInserted(e) {
+const onRowInserted = (e) => {
   e.component.navigateToRow(e.key);
-}
+};
 </script>
 <style scoped>
 #gridContainer {

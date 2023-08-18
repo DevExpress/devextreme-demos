@@ -25,26 +25,22 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from 'vue';
+import { reactive } from 'vue';
 import { DxDataGrid, DxColumn } from 'devextreme-vue/data-grid';
 import ArrayStore from 'devextreme/data/array_store';
 import DataSource from 'devextreme/data/data_source';
-import service from './data.js';
+import { tasks } from './data.js';
 
-const props = withDefaults(defineProps<{
-  templateData?: object
-}>(), {
-  templateData: () => {},
-});
+const props = defineProps<{
+  templateData?: any
+}>();
 
-const tasks = service.getTasks();
 const dataSource = getTasks(props.templateData.key);
-const { FirstName, LastName } = computed(() => props.templateData.data).value;
-const detailInfo = `${FirstName} ${LastName}'s Tasks:`;
 
-function completedValue(rowData) {
-  return rowData.Status === 'Completed';
-}
+const itemData = reactive(props.templateData.data);
+const detailInfo = `${itemData.FirstName} ${itemData.LastName}'s Tasks:`;
+
+const completedValue = (rowData) => rowData.Status === 'Completed';
 
 function getTasks(key) {
   return new DataSource({

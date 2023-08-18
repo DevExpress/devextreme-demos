@@ -55,16 +55,15 @@
   </DxDataGrid>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
 import {
   DxDataGrid, DxScrolling, DxPaging, DxColumn, DxHeaderFilter, DxSearch,
 } from 'devextreme-vue/data-grid';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
-const dataSource = ref(AspNetData.createStore({
+const dataSource = AspNetData.createStore({
   key: 'Id',
   loadUrl: 'https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/Sales',
-}));
+});
 </script>
 <style>
 #gridContainer {

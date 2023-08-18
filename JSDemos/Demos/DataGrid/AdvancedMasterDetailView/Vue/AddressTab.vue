@@ -17,15 +17,13 @@
 <script setup lang="ts">
 import { DxForm } from 'devextreme-vue/form';
 
-withDefaults(defineProps<{
-  data?: object
-}>(), {
-  data: () => ({}),
-});
+defineProps<{
+  data: object
+}>();
 
 const items = ['Address', 'City', 'Region', 'PostalCode', 'Country', 'Phone'];
 
-function customizeItem(item) {
+const customizeItem = (item) => {
   item.template = 'form-item';
 }
 </script>

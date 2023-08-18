@@ -1,7 +1,6 @@
 <template>
   <div>
     <DxDataGrid
-      :ref="dataGridRefName"
       :data-source="productsDataSource"
       :repaint-changes-only="true"
       :two-way-binding-enabled="false"
@@ -138,7 +137,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import {
   DxDataGrid,
   DxColumn,
@@ -152,33 +151,38 @@ import {
   productsStore, ordersStore, getOrderCount, addOrder,
 } from './data.js';
 
-setInterval(() => {
-  if (getOrderCount() > 500000) {
-    return;
-  }
-
-  for (let i = 0; i < updatesPerSecond.value / 20; i += 1) {
-    addOrder();
-  }
-}, 50);
-
 const updatesPerSecond = ref(100);
-const dataGridRefName = ref('dataGrid');
-const productsDataSource = ref({
+
+const productsDataSource = {
   store: productsStore,
   reshapeOnPush: true,
+};
+
+let interval: any;
+
+onMounted(() => {
+  interval = setInterval(() => {
+    if (getOrderCount() > 500000) {
+      return;
+    }
+
+    for (let i = 0; i < updatesPerSecond.value / 20; i += 1) {
+      addOrder();
+    }
+  }, 50);
 });
 
-function getDetailGridDataSource(product) {
-  return {
-    store: ordersStore,
-    reshapeOnPush: true,
-    filter: ['ProductID', '=', product.ProductID],
-  };
-}
-function getAmount(order) {
-  return order.UnitPrice * order.Quantity;
-}
+onUnmounted(() => {
+  clearInterval(interval);
+});
+
+const getDetailGridDataSource = (product) => ({
+  store: ordersStore,
+  reshapeOnPush: true,
+  filter: ['ProductID', '=', product.ProductID],
+});
+
+const getAmount = (order) => order.UnitPrice * order.Quantity;
 </script>
 <style scoped>
 .options {

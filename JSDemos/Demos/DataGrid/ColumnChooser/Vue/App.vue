@@ -132,12 +132,14 @@ const columnChooserModes = [{
   key: 'select',
   name: 'Select',
 }];
+
 const mode = ref('select');
 const searchEnabled = ref(true);
 const allowSelectAll = ref(true);
 const selectByClick = ref(true);
 const recursive = ref(true);
 const editorOptions = { placeholder: 'Search column' };
+
 </script>
 <style scoped>
 #employees {

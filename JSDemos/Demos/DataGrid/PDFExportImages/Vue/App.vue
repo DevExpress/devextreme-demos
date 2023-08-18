@@ -46,11 +46,9 @@ import {
 } from 'devextreme-vue/data-grid';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
-import service from './data.js';
+import { employees } from './data.js';
 
-const employees = service.getEmployees();
-
-function onExporting({ component }) {
+const onExporting = ({ component }) => {
   // eslint-disable-next-line new-cap
   const doc = new jsPDF();
 
@@ -80,7 +78,7 @@ function onExporting({ component }) {
   }).then(() => {
     doc.save('DataGrid.pdf');
   });
-}
+};
 </script>
 
 <style scoped>

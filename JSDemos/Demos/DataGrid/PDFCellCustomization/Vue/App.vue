@@ -71,15 +71,14 @@ import {
   DxSortByGroupSummaryInfo,
   DxTotalItem,
 } from 'devextreme-vue/data-grid';
-import { jsPDF } from 'jspdf';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
-import service from './data.js';
+import { jsPDF } from 'jspdf';
+import { companies } from './data.js';
 
-const companies = service.getCompanies();
-
-function onExporting(e) {
+const onExporting = (e) => {
   // eslint-disable-next-line new-cap
   const doc = new jsPDF();
+
   exportDataGrid({
     jsPDFDocument: doc,
     component: e.component,
@@ -110,13 +109,13 @@ function onExporting(e) {
   }).then(() => {
     doc.save('Companies.pdf');
   });
-}
+};
 
-function phoneNumberFormat(value) {
+const phoneNumberFormat = (value) => {
   const USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);
 
   return `(${USNumber[1]}) ${USNumber[2]}-${USNumber[3]}`;
-}
+};
 </script>
 
 <style scoped>

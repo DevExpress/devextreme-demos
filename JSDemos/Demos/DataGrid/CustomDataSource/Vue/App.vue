@@ -1,6 +1,6 @@
 <template>
   <DxDataGrid
-    :data-source="dataSource"
+    :data-source="store"
     :show-borders="true"
     :remote-operations="true"
   >
@@ -37,12 +37,13 @@
   </DxDataGrid>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
 import {
   DxDataGrid, DxColumn, DxPaging, DxPager,
 } from 'devextreme-vue/data-grid';
 import CustomStore from 'devextreme/data/custom_store';
 import 'whatwg-fetch';
+
+const isNotEmpty = (value: any): boolean => value !== undefined && value !== null && value !== '';
 
 const store = new CustomStore({
   key: 'OrderNumber',
@@ -59,7 +60,9 @@ const store = new CustomStore({
       'group',
       'groupSummary',
     ].forEach((i) => {
-      if (i in loadOptions && isNotEmpty(loadOptions[i])) { params += `${i}=${JSON.stringify(loadOptions[i])}&`; }
+      if (i in loadOptions && isNotEmpty(loadOptions[i])) {
+        params += `${i}=${JSON.stringify(loadOptions[i])}&`;
+      }
     });
     params = params.slice(0, -1);
 
@@ -74,9 +77,4 @@ const store = new CustomStore({
       .catch(() => { throw new Error('Data Loading Error'); });
   },
 });
-
-const dataSource = ref(store);
-function isNotEmpty(value) {
-  return value !== undefined && value !== null && value !== '';
-}
 </script>

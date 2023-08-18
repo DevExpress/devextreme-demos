@@ -45,17 +45,8 @@ import {
 } from 'devextreme-vue/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 
-function onReorder(e) {
-  e.promise = processReorder(e);
-}
-async function processReorder(e) {
-  const visibleRows = e.component.getVisibleRows();
-  const newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
-
-  await tasksStore.update(e.itemData.ID, { OrderIndex: newOrderIndex });
-  await e.component.refresh();
-}
 const url = 'https://js.devexpress.com/Demos/Mvc/api/RowReordering';
+
 const tasksStore = createStore({
   key: 'ID',
   loadUrl: `${url}/Tasks`,
@@ -64,6 +55,7 @@ const tasksStore = createStore({
     ajaxOptions.xhrFields = { withCredentials: true };
   },
 });
+
 const employeesStore = createStore({
   key: 'ID',
   loadUrl: `${url}/Employees`,
@@ -71,4 +63,17 @@ const employeesStore = createStore({
     ajaxOptions.xhrFields = { withCredentials: true };
   },
 });
+
+const onReorder = (e) => {
+  e.promise = processReorder(e);
+};
+
+const processReorder = async(e) => {
+  const visibleRows = e.component.getVisibleRows();
+  const newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
+
+  await tasksStore.update(e.itemData.ID, { OrderIndex: newOrderIndex });
+  await e.component.refresh();
+};
+
 </script>

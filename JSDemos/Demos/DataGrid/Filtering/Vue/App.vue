@@ -103,11 +103,25 @@ import {
 } from 'devextreme-vue/data-grid';
 import DxSelectBox from 'devextreme-vue/select-box';
 import DxCheckBox from 'devextreme-vue/check-box';
-import service from './data.js';
+import { orders } from './data.js';
+
+const applyFilterTypes = [
+  {
+    key: 'auto',
+    name: 'Immediately',
+  },
+  {
+    key: 'onClick',
+    name: 'On Button Click',
+  },
+];
 
 const showFilterRow = ref(true);
 const showHeaderFilter = ref(true);
-const orders = service.getOrders();
+const currentFilter = ref(applyFilterTypes[0].key);
+
+const dataGridRef = ref<DxDataGrid | null>(null);
+
 const saleAmountEditorOptions = { format: 'currency', showClearButton: true };
 const saleAmountHeaderFilter = [
   {
@@ -134,29 +148,24 @@ const saleAmountHeaderFilter = [
   }, {
     text: 'Greater than $20000',
     value: ['SaleAmount', '>=', 20000],
-  }];
-const getOrderDay = (rowData) => (new Date(rowData.OrderDate)).getDay();
-const applyFilterTypes = [
-  {
-    key: 'auto',
-    name: 'Immediately',
   },
-  {
-    key: 'onClick',
-    name: 'On Button Click',
-  }];
-const currentFilter = ref(applyFilterTypes[0].key);
-const dataGridRef = ref(null);
+];
+
+const clearFilter = () => dataGridRef.value?.instance?.clearFilter();
+
+const getOrderDay = (rowData) => (new Date(rowData.OrderDate)).getDay();
 
 function calculateFilterExpression(value, selectedFilterOperations, target) {
   const column = this;
+
   if (target === 'headerFilter' && value === 'weekends') {
     return [[getOrderDay, '=', 0], 'or', [getOrderDay, '=', 6]];
   }
+
   return column.defaultCalculateFilterExpression(value, selectedFilterOperations, target);
 }
 
-function orderDateHeaderFilter(data) {
+const orderDateHeaderFilter = (data) => {
   data.dataSource.postProcess = (results) => {
     results.push({
       text: 'Weekends',
@@ -164,11 +173,7 @@ function orderDateHeaderFilter(data) {
     });
     return results;
   };
-}
-
-function clearFilter() {
-  dataGridRef.value?.instance?.clearFilter();
-}
+};
 </script>
 <style scoped>
 #gridContainer {

@@ -67,19 +67,24 @@ import {
 } from 'devextreme-vue/data-grid';
 import DxSelectBox from 'devextreme-vue/select-box';
 import DxCheckBox from 'devextreme-vue/check-box';
+import { Column } from 'devextreme/ui/data_grid';
 import { generateData } from './data.js';
 
-const dataSource = ref(generateData(100000));
-const displayModes = ref([{ text: 'Display Mode \'full\'', value: 'full' }, { text: 'Display Mode \'compact\'', value: 'compact' }]);
+const dataSource = generateData(100000);
+const displayModes = [
+  { text: 'Display Mode \'full\'', value: 'full' },
+  { text: 'Display Mode \'compact\'', value: 'compact' },
+];
+const pageSizes = [5, 10, 'all'];
+
 const displayMode = ref('full');
-const pageSizes = ref([5, 10, 'all']);
 const showPageSizeSelector = ref(true);
 const showInfo = ref(true);
 const showNavButtons = ref(true);
 
 const isCompactMode = computed(() => displayMode.value === 'compact');
 
-function customizeColumns(columns) {
+const customizeColumns = (columns: Column[]) => {
   columns[0].width = 70;
-}
+};
 </script>

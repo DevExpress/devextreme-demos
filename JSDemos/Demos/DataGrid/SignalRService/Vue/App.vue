@@ -61,11 +61,12 @@ import {
 } from 'devextreme-vue/data-grid';
 import CustomStore from 'devextreme/data/custom_store';
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
+
 import PriceCell from './PriceCell.vue';
 import ChangeCell from './ChangeCell.vue';
 
 const connectionStarted = ref(false);
-const dataSource = ref(null);
+const dataSource = ref<CustomStore | null>(null);
 
 onMounted(() => {
   const hubConnection = new HubConnectionBuilder()

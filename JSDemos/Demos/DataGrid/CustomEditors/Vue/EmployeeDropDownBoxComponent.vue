@@ -1,6 +1,6 @@
 <template>
   <DxDropDownBox
-    :ref="dropDownBoxRef"
+    ref="dropDownBoxRef"
     :drop-down-options="dropDownOptions"
     :input-attr="{ 'aria-label': 'Owner' }"
     :data-source="dataSource"
@@ -19,7 +19,6 @@
         :on-selection-changed="onSelectionChanged"
         :focused-row-enabled="true"
         :focused-row-key="currentValue"
-        key-expr="ID"
       >
         <DxColumn data-field="FullName"/>
         <DxColumn data-field="Title"/>
@@ -44,26 +43,25 @@ import {
   DxColumn,
 } from 'devextreme-vue/data-grid';
 import DxDropDownBox from 'devextreme-vue/drop-down-box';
+import CustomStore from 'devextreme/data/custom_store';
 
-const props = withDefaults(defineProps<{
-  value?: number
-  onValueChanged?: Function
-  dataSource?: object
-}>(), {
-  value: null,
-  onValueChanged: () => function() {},
-  dataSource: () => {},
-});
+const props = defineProps<{
+  value: number,
+  onValueChanged(value: number): void,
+  dataSource: CustomStore,
+}>();
 
 const currentValue = ref(props.value);
-const dropDownBoxRef = ref(null);
+const dropDownBoxRef = ref<DxDropDownBox | null>(null);
 const dropDownOptions = { width: 500 };
 
-function onSelectionChanged(selectionChangedArgs) {
+const onSelectionChanged = (selectionChangedArgs) => {
   currentValue.value = selectionChangedArgs.selectedRowKeys[0];
+
   props.onValueChanged(currentValue.value);
+
   if (selectionChangedArgs.selectedRowKeys.length > 0) {
-    dropDownBoxRef.value?.instance.close();
+    dropDownBoxRef.value!.instance!.close();
   }
-}
+};
 </script>

@@ -2,7 +2,7 @@
   <div>
     <DxDataGrid
       id="gridContainer"
-      :data-source="dataSource"
+      :data-source="weekData"
       key-expr="date"
       :show-row-lines="true"
       :show-column-lines="false"
@@ -52,11 +52,10 @@ import {
   DxSorting,
   DxPaging,
 } from 'devextreme-vue/data-grid';
-import service from './data.js';
+import { weekData } from './data.js';
 import DiffCell from './DiffCell.vue';
 import ChartCell from './ChartCell.vue';
 
-const dataSource = service.getWeekData();
 </script>
 <style scoped>
 #gridContainer td {

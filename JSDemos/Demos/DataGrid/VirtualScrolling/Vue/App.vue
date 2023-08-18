@@ -13,20 +13,21 @@
   </DxDataGrid>
 </template>
 <script setup lang="ts">
-import { computed } from 'vue';
 import {
   DxDataGrid, DxScrolling, DxSorting, DxLoadPanel,
 } from 'devextreme-vue/data-grid';
+import { Column, ContentReadyEvent } from 'devextreme/ui/data_grid';
 import { generateData } from './data.js';
 
-const dataSource = computed(() => generateData(100000));
+const dataSource = generateData(100000);
 
-function onContentReady(e) {
+const onContentReady = (e: ContentReadyEvent) => {
   e.component.option('loadPanel.enabled', false);
-}
-function customizeColumns(columns) {
+};
+
+const customizeColumns = (columns: Column[]) => {
   columns[0].width = 70;
-}
+};
 </script>
 <style>
 #gridContainer {

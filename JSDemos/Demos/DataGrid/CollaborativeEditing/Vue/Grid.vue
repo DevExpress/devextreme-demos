@@ -54,27 +54,26 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import {
   DxDataGrid, DxColumn, DxPaging, DxEditing, DxRequiredRule, DxRangeRule,
 } from 'devextreme-vue/data-grid';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
+import CustomStore from 'devextreme/data/custom_store';
 
-withDefaults(defineProps<{
-  dataSource?: object
-}>(), {
-  dataSource: () => ({}),
-});
+defineProps<{
+  dataSource: CustomStore
+}>();
 
 const statesStore = AspNetData.createStore({
   key: 'ID',
   loadUrl: 'https://js.devexpress.com/Demos/NetCore/api/DataGridStatesLookup',
 });
 
-const maxDate = ref(new Date(3000, 0));
-const lookup = ref({
+const maxDate = new Date(3000, 0);
+
+const lookup = {
   dataSource: statesStore,
   displayExpr: 'Name',
   valueExpr: 'ID',
-});
+};
 </script>

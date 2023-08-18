@@ -1,7 +1,6 @@
 <template>
   <div>
     <DxDataGrid
-      :ref="dataGridRef"
       :allow-column-reordering="true"
       :data-source="customers"
       key-expr="ID"
@@ -41,7 +40,7 @@ import { jsPDF } from 'jspdf';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
 import { customers } from './data.js';
 
-function onExporting(e) {
+const onExporting = (e) => {
   // eslint-disable-next-line new-cap
   const doc = new jsPDF();
 
@@ -52,5 +51,5 @@ function onExporting(e) {
   }).then(() => {
     doc.save('Companies.pdf');
   });
-}
+};
 </script>

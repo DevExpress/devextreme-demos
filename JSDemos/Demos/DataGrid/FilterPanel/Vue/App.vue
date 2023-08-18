@@ -27,7 +27,7 @@
       />
       <DxColumn
         :editor-options="{ format: 'currency', showClearButton: true }"
-        :header-filter="{dataSource: saleAmountHeaderFilters}"
+        :header-filter="{ dataSource: saleAmountHeaderFilters }"
         data-field="SaleAmount"
         data-type="number"
         format="currency"
@@ -50,7 +50,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
 import {
   DxDataGrid,
   DxColumn,
@@ -62,13 +61,14 @@ import {
 } from 'devextreme-vue/data-grid';
 import { orders } from './data.js';
 
-const filterBuilderPopupPosition = ref({
+const filterBuilderPopupPosition = {
   of: window,
   at: 'top',
   my: 'top',
   offset: { y: 10 },
-});
-const filterBuilder = ref({
+};
+
+const filterBuilder = {
   customOperations: [{
     name: 'weekends',
     caption: 'Weekends',
@@ -78,9 +78,11 @@ const filterBuilder = ref({
     calculateFilterExpression: () => [[getOrderDay, '=', 0], 'or', [getOrderDay, '=', 6]],
   }],
   allowHierarchicalFields: true,
-});
-const filterValue = ref([['Employee', '=', 'Clark Morgan'], 'and', ['OrderDate', 'weekends']]);
-const saleAmountHeaderFilters = ref([
+};
+
+const filterValue = [['Employee', '=', 'Clark Morgan'], 'and', ['OrderDate', 'weekends']];
+
+const saleAmountHeaderFilters = [
   {
     text: 'Less than $3000',
     value: ['SaleAmount', '<', 3000],
@@ -96,7 +98,9 @@ const saleAmountHeaderFilters = ref([
   }, {
     text: 'Greater than $20000',
     value: ['SaleAmount', '>=', 20000],
-  }]);
+  },
+];
+
 const getOrderDay = (rowData) => (new Date(rowData.OrderDate)).getDay();
 </script>
 <style scoped>

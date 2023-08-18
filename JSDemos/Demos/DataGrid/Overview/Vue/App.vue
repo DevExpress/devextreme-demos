@@ -68,7 +68,6 @@
   </DxDataGrid>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
 import {
   DxDataGrid,
   DxColumn,
@@ -80,10 +79,12 @@ import {
 } from 'devextreme-vue/data-grid';
 import DataSource from 'devextreme/data/data_source';
 import 'devextreme/data/odata/store';
+
+import { ContentReadyEvent } from 'devextreme/ui/data_grid';
+
 import DiscountCell from './DiscountCell.vue';
 
-let collapsed = false;
-const dataSource = ref(new DataSource({
+const dataSource = new DataSource({
   store: {
     type: 'odata',
     url: 'https://js.devexpress.com/Demos/SalesViewer/odata/DaySaleDtoes',
@@ -94,12 +95,16 @@ const dataSource = ref(new DataSource({
       request.params.endDate = `${year}-5-15`;
     },
   },
-}));
-const pageSizes = ref([10, 25, 50, 100]);
-const onContentReady = ref((e) => {
+});
+
+const pageSizes = [10, 25, 50, 100];
+
+let collapsed = false;
+
+const onContentReady = (e: ContentReadyEvent) => {
   if (!collapsed) {
     e.component.expandRow(['EnviroCare']);
     collapsed = true;
   }
-});
+};
 </script>

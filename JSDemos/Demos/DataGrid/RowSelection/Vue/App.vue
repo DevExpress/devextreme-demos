@@ -51,13 +51,13 @@ const showEmployeeInfo = ref(false);
 const selectedRowNotes = ref('');
 const selectedRowPicture = ref('');
 
-function onSelectionChanged({ selectedRowsData }) {
+const onSelectionChanged = ({ selectedRowsData }) => {
   const data = selectedRowsData[0];
 
   showEmployeeInfo.value = !!data;
-  selectedRowNotes.value = data && data.Notes;
-  selectedRowPicture.value = data && data.Picture;
-}
+  selectedRowNotes.value = data?.Notes;
+  selectedRowPicture.value = data?.Picture;
+};
 </script>
 <style scoped>
 #employee-info .employee-photo {

@@ -36,9 +36,8 @@
 </template>
 <script setup lang="ts">
 import { DxDataGrid, DxColumn } from 'devextreme-vue/data-grid';
-import service from './data.js';
+import { employees } from './data.js';
 
-const employees = service.getEmployees();
 </script>
 <style scoped>
 #gridContainer {
