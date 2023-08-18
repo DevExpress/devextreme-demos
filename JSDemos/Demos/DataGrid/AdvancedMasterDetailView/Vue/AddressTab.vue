@@ -25,5 +25,5 @@ const items = ['Address', 'City', 'Region', 'PostalCode', 'Country', 'Phone'];
 
 const customizeItem = (item) => {
   item.template = 'form-item';
-}
+};
 </script>

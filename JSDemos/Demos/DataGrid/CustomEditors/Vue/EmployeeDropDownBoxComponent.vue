@@ -47,6 +47,7 @@ import CustomStore from 'devextreme/data/custom_store';
 
 const props = defineProps<{
   value: number,
+  // eslint-disable-next-line no-unused-vars
   onValueChanged(value: number): void,
   dataSource: CustomStore,
 }>();
