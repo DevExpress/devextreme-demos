@@ -14,7 +14,7 @@
 import { DxDataGrid, DxScrolling, DxPaging } from 'devextreme-vue/data-grid';
 import { generateData } from './data.js';
 
-const dataSource = () => generateData(50, 500);
+const dataSource = generateData(50, 500);
 </script>
 <style>
 #gridContainer {
