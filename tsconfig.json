@@ -9,6 +9,7 @@
   },
   "include": [
     "JSDemos/Demos/**/*.ts",
-    "JSDemos/Demos/**/*.tsx"
+    "JSDemos/Demos/**/*.tsx",
+    "JSDemos/Demos/**/*.vue",
   ]
 }
