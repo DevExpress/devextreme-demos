@@ -7,6 +7,9 @@ window.config = {
     '*.ts': {
       loader: 'demo-ts-loader',
     },
+    '*.svg': {
+      loader: 'svg-loader',
+    },
     'devextreme/localization.js': {
       'esModule': true,
     },
@@ -34,6 +37,7 @@ window.config = {
     'vue': 'npm:vue/dist/vue.esm-browser.js',
     'vue-loader': 'npm:dx-systemjs-vue-browser/index.js',
     'demo-ts-loader': 'root:utils/demo-ts-loader.js',
+    'svg-loader': 'root:utils/svg-loader.js',
 
     /** signalr */
     '@aspnet/signalr': 'npm:@aspnet/signalr/dist/cjs',
