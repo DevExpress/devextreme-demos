@@ -79,8 +79,11 @@ jobs:
         npm run pack
 
     - name: Pack devextreme-vue
-      working-directory: ./devextreme/packages/devextreme-vue
-      run: npm run pack
+      working-directory: ./devextreme
+      run: |
+        npm run vue:build-generator
+        cd packages/devextreme-vue
+        npm run pack
 
     - name: Copy packages
       run: |
