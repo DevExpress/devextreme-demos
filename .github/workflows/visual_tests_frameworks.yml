@@ -72,8 +72,11 @@ jobs:
       run: npm pack
 
     - name: Pack devextreme-react
-      working-directory: ./devextreme/packages/devextreme-react
-      run: npm run pack
+      working-directory: ./devextreme
+      run: |
+        npm run react:build-generator
+        cd packages/devextreme-react
+        npm run pack
 
     - name: Pack devextreme-vue
       working-directory: ./devextreme/packages/devextreme-vue
