@@ -58,7 +58,7 @@ import {
   DxDataGrid, DxColumn, DxLookup, DxScrolling, DxRowDragging, DxSorting,
 } from 'devextreme-vue/data-grid';
 import DxCheckBox from 'devextreme-vue/check-box';
-import { tasks as defaultTasks, employees } from './data.js';
+import { tasks as defaultTasks, employees } from './data.ts';
 
 const showDragIcons = ref(true);
 

@@ -48,7 +48,7 @@
 import {
   DxDataGrid, DxColumn, DxEditing, DxLookup,
 } from 'devextreme-vue/data-grid';
-import { employees, states, cities } from './data.js';
+import { employees, states, cities } from './data.ts';
 
 function setStateValue(rowData, value) {
   rowData.CityID = null;

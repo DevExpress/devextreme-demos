@@ -89,7 +89,7 @@ import DxDataGrid, {
 } from 'devextreme-vue/data-grid';
 import DxSelectBox from 'devextreme-vue/select-box';
 import Guid from 'devextreme/core/guid';
-import { dataSource } from './data.js';
+import { dataSource } from './data.ts';
 
 const newRowPositionOptions = ['first', 'last', 'pageTop', 'pageBottom', 'viewportTop', 'viewportBottom'];
 const scrollingModeOptions = ['standard', 'virtual'];

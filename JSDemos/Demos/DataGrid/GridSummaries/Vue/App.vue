@@ -59,7 +59,7 @@ import {
   DxTotalItem,
 } from 'devextreme-vue/data-grid';
 import { formatDate } from 'devextreme/localization';
-import { orders } from './data.js';
+import { orders } from './data.ts';
 
 const customizeDate = (itemInfo) => `First: ${formatDate(itemInfo.value, 'MMM dd, yyyy')}`;
 </script>

@@ -70,7 +70,7 @@ import {
   DxPaging,
   DxLookup,
 } from 'devextreme-vue/data-grid';
-import { employees as defaultEmployees, states, getMaxID } from './data.js';
+import { employees as defaultEmployees, states, getMaxID } from './data.ts';
 
 const employees = ref(defaultEmployees);
 

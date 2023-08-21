@@ -48,7 +48,7 @@ import DxDataGrid, {
   DxMasterDetail,
   DxSelection,
 } from 'devextreme-vue/data-grid';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const onContentReady = (e) => {
   if (!e.component.getSelectedRowKeys().length) {

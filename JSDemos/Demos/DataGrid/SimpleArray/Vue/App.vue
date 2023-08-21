@@ -8,7 +8,7 @@
 </template>
 <script setup lang="ts">
 import DxDataGrid from 'devextreme-vue/data-grid';
-import { customers } from './data.js';
+import { customers } from './data.ts';
 
 const dataSource = customers;
 const columns = ['CompanyName', 'City', 'State', 'Phone', 'Fax'];

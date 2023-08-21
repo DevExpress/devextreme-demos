@@ -29,7 +29,7 @@ import { reactive } from 'vue';
 import { DxDataGrid, DxColumn } from 'devextreme-vue/data-grid';
 import ArrayStore from 'devextreme/data/array_store';
 import DataSource from 'devextreme/data/data_source';
-import { tasks } from './data.js';
+import { tasks } from './data.ts';
 
 const props = defineProps<{
   templateData?: any

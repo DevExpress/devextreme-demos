@@ -57,7 +57,7 @@
 import {
   DxDataGrid, DxHeaderFilter, DxSearch, DxColumn,
 } from 'devextreme-vue/data-grid';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const searchExpr = ['City', 'State'];
 const editorOptions = { placeholder: 'Search city or state' };

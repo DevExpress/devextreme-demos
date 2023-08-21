@@ -52,7 +52,7 @@ import {
   DxSorting,
   DxPaging,
 } from 'devextreme-vue/data-grid';
-import { weekData } from './data.js';
+import { weekData } from './data.ts';
 import DiffCell from './DiffCell.vue';
 import ChartCell from './ChartCell.vue';
 

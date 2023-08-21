@@ -59,7 +59,7 @@ import { Workbook } from 'exceljs';
 // We recommend that you use the official 'file-saver' package in your applications.
 import { saveAs } from 'file-saver-es';
 import { exportDataGrid } from 'devextreme/excel_exporter';
-import { countries } from './data.js';
+import { countries } from './data.ts';
 
 const gdpFormat = {
   type: 'percent',

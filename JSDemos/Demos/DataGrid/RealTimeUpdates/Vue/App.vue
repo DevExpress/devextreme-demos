@@ -149,7 +149,7 @@ import {
 import { DxSlider, DxTooltip } from 'devextreme-vue/slider';
 import {
   productsStore, ordersStore, getOrderCount, addOrder,
-} from './data.js';
+} from './data.ts';
 
 const updatesPerSecond = ref(100);
 

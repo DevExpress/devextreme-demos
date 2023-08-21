@@ -100,7 +100,7 @@ import {
   DxRequiredRule,
 } from 'devextreme-vue/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
-import { statuses } from './data.js';
+import { statuses } from './data.ts';
 import EmployeeDropDownBoxComponent from './EmployeeDropDownBoxComponent.vue';
 import EmployeeTagBoxComponent from './EmployeeTagBoxComponent.vue';
 

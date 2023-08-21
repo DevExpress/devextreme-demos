@@ -59,7 +59,7 @@
 import DxDataGrid, { DxColumn, DxExport } from 'devextreme-vue/data-grid';
 import { jsPDF } from 'jspdf';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
-import { countries } from './data.js';
+import { countries } from './data.ts';
 
 const gdpFormat = {
   type: 'percent',

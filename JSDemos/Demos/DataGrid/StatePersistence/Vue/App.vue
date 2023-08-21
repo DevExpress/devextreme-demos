@@ -60,7 +60,7 @@ import { ref } from 'vue';
 import {
   DxDataGrid, DxSelection, DxFilterRow, DxGroupPanel, DxStateStoring, DxPager, DxColumn,
 } from 'devextreme-vue/data-grid';
-import { orders } from './data.js';
+import { orders } from './data.ts';
 
 const dataGrid = ref<DxDataGrid | null>(null);
 

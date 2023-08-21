@@ -38,7 +38,7 @@ import {
 } from 'devextreme-vue/data-grid';
 import { jsPDF } from 'jspdf';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
-import { customers } from './data.js';
+import { customers } from './data.ts';
 
 const onExporting = (e) => {
   // eslint-disable-next-line new-cap

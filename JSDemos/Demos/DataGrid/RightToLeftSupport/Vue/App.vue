@@ -66,7 +66,7 @@ import {
   DxSearchPanel,
 } from 'devextreme-vue/data-grid';
 import DxSelectBox from 'devextreme-vue/select-box';
-import { europeanUnion } from './data.js';
+import { europeanUnion } from './data.ts';
 
 const languages = ['Arabic (Right-to-Left direction)', 'English (Left-to-Right direction)'];
 

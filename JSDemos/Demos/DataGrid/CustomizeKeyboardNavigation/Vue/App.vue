@@ -91,7 +91,7 @@ import {
 } from 'devextreme-vue/data-grid';
 import DxSelectBox from 'devextreme-vue/select-box';
 import DxCheckBox from 'devextreme-vue/check-box';
-import { employees, states } from './data.js';
+import { employees, states } from './data.ts';
 
 const enterKeyActions = ['startEdit', 'moveFocus'];
 const enterKeyDirections = ['none', 'column', 'row'];

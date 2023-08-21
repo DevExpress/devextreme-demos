@@ -45,7 +45,7 @@ import { Anchor, Workbook } from 'exceljs';
 // We recommend that you use the official 'file-saver' package in your applications.
 import { saveAs } from 'file-saver-es';
 import { exportDataGrid } from 'devextreme/excel_exporter';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const onExporting = (e) => {
   const workbook = new Workbook();

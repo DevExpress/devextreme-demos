@@ -103,7 +103,7 @@ import {
 } from 'devextreme-vue/data-grid';
 import DxSelectBox from 'devextreme-vue/select-box';
 import DxCheckBox from 'devextreme-vue/check-box';
-import { orders } from './data.js';
+import { orders } from './data.ts';
 
 const applyFilterTypes = [
   {
