@@ -44,7 +44,6 @@ jobs:
       with:
         path: 'devextreme/**/node_modules'
         key: ${{ runner.os }}-node-modules-${{ hashFiles('devextreme/**/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-node-modules
 
     - name: Use Node.js 18
       uses: actions/setup-node@v3
