@@ -2,8 +2,8 @@
   <div id="container">
     <div class="calendar-container">
       <DxCalendar
-        v-model:value="currentValue"
         v-model:zoom-level="zoomLevel"
+        selection-mode="selectionMode"
         :min="minDateValue"
         :max="maxDateValue"
         :disabled-dates="disabledDates"
@@ -22,102 +22,130 @@
     </div>
     <div class="options">
       <div class="caption">Options</div>
-      <div class="option">
-        <DxCheckBox
-          :value="false"
-          text="Set minimum date"
-          @value-changed="setMinDate"
+      <DxAccordion
+        id="accordion"
+        :collapsible="true"
+        :active-state-enabled="false"
+        :hover-state-enabled="false"
+        :focus-state-enabled="false"
+        :multiple="false"
+      >
+        <DxItem
+          title="Common options"
+          template="common-options"
         />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          :value="false"
-          text="Set maximum date"
-          @value-changed="setMaxDate"
+        <template #common-options>
+          <div className="option">
+            <span>Zoom level</span>
+            <DxSelectBox
+              v-model:value="zoomLevel"
+              :data-source="zoomLevels"
+              :input-attr="{ 'aria-label': 'Zoom Level' }"
+            />
+          </div>
+          <div className="option">
+            <span>Selection mode</span>
+            <DxSelectBox
+              v-model:value="selectionMode"
+              :data-source="selectionModes"
+              :input-attr="{ 'aria-label': 'Selection Mode' }"
+            />
+          </div>
+          <div class="option">
+            <DxCheckBox
+              :value="false"
+              text="Use custom cell template"
+              @value-changed="useCellTemplate"
+            />
+          </div>
+          <div class="option">
+            <DxCheckBox
+              v-model:value="disabled"
+              text="Disable the calendar"
+            />
+          </div>
+        </template>
+        <DxItem
+          title="Week numeration"
+          template="week-numeration"
         />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          :value="false"
-          text="Disable weekends"
-          @value-changed="disableWeekend"
+        <template #week-numeration>
+          <div class="option">
+            <DxCheckBox
+              v-model:value="showWeekNumbers"
+              text="Show week numbers"
+            />
+          </div>
+          <div class="option">
+            <span>First day of week</span>
+            <DxSelectBox
+              v-model:value="firstDay"
+              :data-source="weekDays"
+              :input-attr="{ 'aria-label': 'First Day of Week' }"
+              value-expr="id"
+              display-expr="text"
+            />
+          </div>
+          <div class="option">
+            <span>Week number rule</span>
+            <DxSelectBox
+              v-model:value="weekNumberRule"
+              :input-attr="{ 'aria-label': 'Week Number Rule' }"
+              :data-source="weekNumberRules"
+            />
+          </div>
+        </template>
+        <DxItem
+          title="Dates availability"
+          template="dates-availability"
         />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="showWeekNumbers"
-          text="Show week numbers"
-        />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          :value="false"
-          text="Use custom cell template"
-          @value-changed="useCellTemplate"
-        />
-      </div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="disabled"
-          text="Disable the calendar"
-        />
-      </div>
-      <div class="option">
-        <span>First day of week</span>
-        <DxSelectBox
-          v-model:value="firstDay"
-          :data-source="weekDays"
-          :input-attr="{ 'aria-label': 'First Day of Week' }"
-          value-expr="id"
-          display-expr="text"
-        />
-      </div>
-      <div class="option">
-        <span>Week number rule</span>
-        <DxSelectBox
-          v-model:value="weekNumberRule"
-          :input-attr="{ 'aria-label': 'Week Number Rule' }"
-          :data-source="weekNumberRules"
-        />
-      </div>
-      <div class="option">
-        <span>Zoom level</span>
-        <DxSelectBox
-          v-model:value="zoomLevel"
-          :input-attr="{ 'aria-label': 'Zoom Level' }"
-          :data-source="zoomLevels"
-        />
-      </div>
-      <div class="option">
-        <span>Selected date</span>
-        <DxDateBox
-          v-model:value="currentValue"
-          :input-attr="{ 'aria-label': 'Date' }"
-          :min="minDateValue"
-          :max="maxDateValue"
-        />
-      </div>
+        <template #dates-availability>
+          <div class="option">
+            <DxCheckBox
+              :value="false"
+              text="Set minimum date"
+              @value-changed="setMinDate"
+            />
+          </div>
+          <div class="option">
+            <DxCheckBox
+              :value="false"
+              text="Set maximum date"
+              @value-changed="setMaxDate"
+            />
+          </div>
+          <div class="option">
+            <DxCheckBox
+              :value="false"
+              text="Disable weekends"
+              @value-changed="disableWeekend"
+            />
+          </div>
+        </template>
+      </DxAccordion>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
+import DxAccordion, { DxItem } from 'devextreme-vue/accordion';
 import DxCheckBox from 'devextreme-vue/check-box';
 import DxSelectBox from 'devextreme-vue/select-box';
-import DxDateBox from 'devextreme-vue/date-box';
 import DxCalendar from 'devextreme-vue/calendar';
 
+const zoomLevel = ref('month');
+const selectionMode = ref('single');
+const cellTemplate = ref('cell');
+const disabled = ref(false);
+const showWeekNumbers = ref(false);
+const firstDay = ref(0);
+const weekNumberRule = ref('auto');
 const minDateValue = ref(null);
 const maxDateValue = ref(null);
 const disabledDates = ref(null);
-const firstDay = ref(0);
-const showWeekNumbers = ref(false);
-const weekNumberRule = ref('auto');
-const currentValue = ref(new Date());
 const zoomLevels = ['month', 'year', 'decade', 'century'];
-const cellTemplate = ref('cell');
-const disabled = ref(false);
-const zoomLevel = ref('month');
+const selectionModes = ['single', 'multiple', 'range'];
+
 const weekDays = [
   { id: 0, text: 'Sunday' },
   { id: 1, text: 'Monday' },
@@ -190,6 +218,30 @@ function getCellCssClass({ date, view }) {
   justify-content: center;
 }
 
+#accordion {
+  background-color: transparent;
+}
+
+#accordion .dx-accordion-item {
+  border: none;
+  margin-top: 20px;
+  background-color: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+#accordion .dx-item-content.dx-accordion-item-title {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: transparent;
+}
+
+#accordion .dx-item-content {
+  padding: 10px 0 0 0;
+  background-color: transparent;
+  overflow: visible;
+}
+
 .dx-calendar-cell:not(.dx-calendar-other-month) .weekend,
 .dx-calendar-cell:not(.dx-calendar-other-month) .holiday {
   text-shadow: none;
@@ -223,6 +275,7 @@ function getCellCssClass({ date, view }) {
 
 .options {
   padding: 20px;
+  height: 540px;
   background-color: rgba(191, 191, 191, 0.15);
 }
 

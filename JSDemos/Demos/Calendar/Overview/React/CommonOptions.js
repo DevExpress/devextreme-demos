@@ -6,7 +6,7 @@ const selectionModes = ['single', 'multiple', 'range'];
 const zoomLevelLabel = { 'aria-label': 'Zoom Level' };
 const selectionModeLabel = { 'aria-label': 'Selection Mode' };
 
-function GeneralOptions(props) {
+function CommonOptions(props) {
   const {
     zoomLevel,
     onZoomLevelChange,
@@ -51,4 +51,4 @@ function GeneralOptions(props) {
   );
 }
 
-export default GeneralOptions;
+export default CommonOptions;

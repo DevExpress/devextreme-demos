@@ -2,7 +2,7 @@ import React from 'react';
 import Accordion, { Item } from 'devextreme-react/accordion';
 import Calendar from 'devextreme-react/calendar';
 import CustomCell, { isWeekend } from './CustomCell.js';
-import GeneralOptions from './GeneralOptions.js';
+import CommonOptions from './CommonOptions.js';
 import WeekNumeration from './WeekNumeration.js';
 import DatesAvailability from './DatesAvailability.js';
 
@@ -70,9 +70,9 @@ export default function App() {
     }
   }, [onZoomLevelChange]);
 
-  const renderGeneralOptions = React.useCallback(
+  const renderCommonOptions = React.useCallback(
     () => (
-      <GeneralOptions
+      <CommonOptions
         zoomLevel={zoomLevel}
         onZoomLevelChange={onZoomLevelChange}
         onSelectionModeChange={onSelectionModeChange}
@@ -134,11 +134,10 @@ export default function App() {
           hoverStateEnabled={false}
           focusStateEnabled={false}
           multiple={false}
-          defaultSelectedIndexselectedIndex={0}
         >
           <Item
-            title='General options'
-            render={renderGeneralOptions}
+            title='Common options'
+            render={renderCommonOptions}
           />
           <Item
             title='Week numeration'

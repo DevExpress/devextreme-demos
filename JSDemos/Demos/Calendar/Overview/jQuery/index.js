@@ -34,11 +34,10 @@ $(() => {
     hoverStateEnabled: false,
     focusStateEnabled: false,
     multiple: false,
-    selectedIndex: 0,
     items: [
       {
-        title: 'General options',
-        template: getGeneralOptionsTemplate,
+        title: 'Common options',
+        template: getCommonOptionsTemplate,
       },
       {
         title: 'Week numeration',
@@ -81,7 +80,7 @@ $(() => {
     return `<span class='${cssClass}'>${data.text}</span>`;
   }
 
-  function getGeneralOptionsTemplate() {
+  function getCommonOptionsTemplate() {
     const $zoomLevel = $('<div>').dxSelectBox({
       dataSource: zoomLevels,
       value: zoomLevels[0],
