@@ -18,15 +18,13 @@
 
   <div *dxTemplate="let model of 'appointment-template'">
     <ng-container
-    *ngIf="getMovieById | apply : model.appointmentData.movieId as movie"
-  >
-    <div class="movie">
-      <img [src]="getMovieById(model.appointmentData.movieId).image" />
-      <div class="movie-text">{{
-        movie.text
-      }}</div>
-    </div>
-  </ng-container>
+      *ngIf="getMovieById | apply : model.appointmentData.movieId as movie"
+    >
+      <div class="movie">
+        <img [src]="getMovieById(model.appointmentData.movieId).image" />
+        <div class="movie-text">{{ movie.text }}</div>
+      </div>
+    </ng-container>
   </div>
 </dx-scheduler>
 
