@@ -1,52 +1,52 @@
 import React from 'react';
-import CheckBox from 'devextreme-react/check-box';
-import SelectBox from 'devextreme-react/select-box';
-import DateBox from 'devextreme-react/date-box';
+import Accordion, { Item } from 'devextreme-react/accordion';
 import Calendar from 'devextreme-react/calendar';
 import CustomCell, { isWeekend } from './CustomCell.js';
-
-const zoomLevels = ['month', 'year', 'decade', 'century'];
-const weekNumberRules = ['auto', 'firstDay', 'firstFourDays', 'fullWeek'];
-const weekDays = [
-  { id: 0, text: 'Sunday' },
-  { id: 1, text: 'Monday' },
-  { id: 2, text: 'Tuesday' },
-  { id: 3, text: 'Wednesday' },
-  { id: 4, text: 'Thursday' },
-  { id: 5, text: 'Friday' },
-  { id: 6, text: 'Saturday' },
-];
-
-const dateBoxLabel = { 'aria-label': 'Date' };
-const zoomLevelLabel = { 'aria-label': 'Zoom Level' };
-const dayLabel = { 'aria-label': 'First Day of Week' };
-const ruleLabel = { 'aria-label': 'Week Number Rule' };
+import GeneralOptions from './GeneralOptions.js';
+import WeekNumeration from './WeekNumeration.js';
+import DatesAvailability from './DatesAvailability.js';
 
 const isDateDisabled = ({ view, date }) => view === 'month' && isWeekend(date);
 
 export default function App() {
+  const [zoomLevel, setZoomLevel] = React.useState('month');
+  const [selectionMode, setSelectionMode] = React.useState('single');
+  const [useCellTemplate, setUseCellTemplate] = React.useState(null);
+  const [disabled, setDisabled] = React.useState(false);
+  const [showWeekNumbers, setShowWeekNumbers] = React.useState(false);
+  const [firstDay, setFirstDay] = React.useState(0);
+  const [weekNumberRule, setWeekNumberRule] = React.useState('auto');
   const [minDateValue, setMinDateValue] = React.useState(null);
   const [maxDateValue, setMaxDateValue] = React.useState(null);
   const [weekendDisabled, setWeekendDisabled] = React.useState(null);
-  const [firstDay, setFirstDay] = React.useState(0);
-  const [weekNumberRule, setWeekNumberRule] = React.useState('auto');
-  const [showWeekNumbers, setShowWeekNumbers] = React.useState(false);
-  const [currentValue, setCurrentValue] = React.useState(new Date());
-  const [useCellTemplate, setUseCellTemplate] = React.useState(null);
-  const [disabled, setDisabled] = React.useState(false);
-  const [zoomLevel, setZoomLevel] = React.useState('month');
 
-  const onCurrentValueChange = React.useCallback(({ value }) => {
-    setCurrentValue(value);
-  }, [setCurrentValue]);
+  const onZoomLevelChange = React.useCallback(({ value }) => {
+    setZoomLevel(value);
+  }, [setZoomLevel]);
+
+  const onSelectionModeChange = React.useCallback(({ value }) => {
+    setSelectionMode(value);
+  }, [setSelectionMode]);
+
+  const onUseCellTemplateChange = React.useCallback(({ value }) => {
+    setUseCellTemplate(!!value);
+  }, [setUseCellTemplate]);
 
   const onDisabledChange = React.useCallback(({ value }) => {
     setDisabled(value);
   }, [setDisabled]);
 
-  const onZoomLevelChange = React.useCallback(({ value }) => {
-    setZoomLevel(value);
-  }, [setZoomLevel]);
+  const onShowWeekNumbersChange = React.useCallback(({ value }) => {
+    setShowWeekNumbers(value);
+  }, [setShowWeekNumbers]);
+
+  const onFirstDayChange = React.useCallback(({ value }) => {
+    setFirstDay(value);
+  }, [setFirstDay]);
+
+  const onWeekNumberRuleChange = React.useCallback(({ value }) => {
+    setWeekNumberRule(value);
+  }, [setWeekNumberRule]);
 
   const onMinDateChange = React.useCallback(({ value }) => {
     setMinDateValue(
@@ -64,34 +64,54 @@ export default function App() {
     setWeekendDisabled(value);
   }, [setWeekendDisabled]);
 
-  const onFirstDayChange = React.useCallback(({ value }) => {
-    setFirstDay(value);
-  }, [setFirstDay]);
-
-  const onWeekNumberRuleChange = React.useCallback(({ value }) => {
-    setWeekNumberRule(value);
-  }, [setWeekNumberRule]);
-
-  const onShowWeekNumbersChange = React.useCallback(({ value }) => {
-    setShowWeekNumbers(value);
-  }, [setShowWeekNumbers]);
-
-  const onUseCellTemplateChange = React.useCallback(({ value }) => {
-    setUseCellTemplate(!!value);
-  }, [setUseCellTemplate]);
-
   const onOptionChange = React.useCallback((e) => {
     if (e.name === 'zoomLevel') {
       onZoomLevelChange(e);
     }
   }, [onZoomLevelChange]);
 
+  const renderGeneralOptions = React.useCallback(
+    () => (
+      <GeneralOptions
+        zoomLevel={zoomLevel}
+        onZoomLevelChange={onZoomLevelChange}
+        onSelectionModeChange={onSelectionModeChange}
+        onUseCellTemplateChange={onUseCellTemplateChange}
+        onDisabledChange={onDisabledChange}
+      />),
+    [
+      zoomLevel,
+      onZoomLevelChange,
+      onSelectionModeChange,
+      onUseCellTemplateChange,
+      onDisabledChange,
+    ],
+  );
+
+  const renderWeekNumeration = React.useCallback(
+    () => (
+      <WeekNumeration
+        onShowWeekNumbersChange={onShowWeekNumbersChange}
+        onFirstDayChange={onFirstDayChange}
+        onWeekNumberRuleChange={onWeekNumberRuleChange}
+      />),
+    [onShowWeekNumbersChange, onFirstDayChange, onWeekNumberRuleChange],
+  );
+
+  const renderDatesAvailability = React.useCallback(
+    () => (
+      <DatesAvailability
+        onMinDateChange={onMinDateChange}
+        onMaxDateChange={onMaxDateChange}
+        onDisableWeekendChange={onDisableWeekendChange}
+      />),
+    [onMinDateChange, onMaxDateChange, onDisableWeekendChange],
+  );
+
   return (
     <div id="container">
       <div className="calendar-container">
         <Calendar
-          value={currentValue}
-          onValueChanged={onCurrentValueChange}
           onOptionChanged={onOptionChange}
           min={minDateValue}
           max={maxDateValue}
@@ -101,93 +121,34 @@ export default function App() {
           showWeekNumbers={showWeekNumbers}
           disabled={disabled}
           zoomLevel={zoomLevel}
+          selectionMode={selectionMode}
           cellRender={useCellTemplate ? CustomCell : null}
         />
       </div>
       <div className="options">
         <div className="caption">Options</div>
-        <div className="option">
-          <CheckBox
-            defaultValue={false}
-            text="Set minimum date"
-            onValueChanged={onMinDateChange}
+        <Accordion
+          id='accordion'
+          collapsible={true}
+          activeStateEnabled={false}
+          hoverStateEnabled={false}
+          focusStateEnabled={false}
+          multiple={false}
+          defaultSelectedIndexselectedIndex={0}
+        >
+          <Item
+            title='General options'
+            render={renderGeneralOptions}
           />
-        </div>
-        <div className="option">
-          <CheckBox
-            defaultValue={false}
-            text="Set maximum date"
-            onValueChanged={onMaxDateChange}
+          <Item
+            title='Week numeration'
+            render={renderWeekNumeration}
           />
-        </div>
-        <div className="option">
-          <CheckBox
-            defaultValue={false}
-            text="Disable weekends"
-            onValueChanged={onDisableWeekendChange}
+          <Item
+            title='Dates availability'
+            render={renderDatesAvailability}
           />
-        </div>
-        <div className="option">
-          <CheckBox
-            defaultValue={false}
-            text="Show week numbers"
-            onValueChanged={onShowWeekNumbersChange}
-          />
-        </div>
-        <div className="option">
-          <CheckBox
-            defaultValue={false}
-            text="Use custom cell template"
-            onValueChanged={onUseCellTemplateChange}
-          />
-        </div>
-        <div className="option">
-          <CheckBox
-            value={disabled}
-            text="Disable the calendar"
-            onValueChanged={onDisabledChange}
-          />
-        </div>
-        <div className="option">
-          <span>First day of week</span>
-          <SelectBox
-            dataSource={weekDays}
-            inputAttr={dayLabel}
-            displayExpr="text"
-            valueExpr="id"
-            value={firstDay}
-            onValueChanged={onFirstDayChange}
-          />
-        </div>
-        <div className="option">
-          <span>Week number rule</span>
-          <SelectBox
-            dataSource={weekNumberRules}
-            inputAttr={ruleLabel}
-            value={weekNumberRule}
-            onValueChanged={onWeekNumberRuleChange}
-          />
-        </div>
-        <div className="option">
-          <span>Zoom level</span>
-          <SelectBox
-            dataSource={zoomLevels}
-            value={zoomLevel}
-            inputAttr={zoomLevelLabel}
-            onValueChanged={onZoomLevelChange}
-          />
-        </div>
-        <div className="option">
-          <span>Selected date</span>
-          <DateBox
-            id="selected-date"
-            value={currentValue}
-            onValueChanged={onCurrentValueChange}
-            min={minDateValue}
-            max={maxDateValue}
-            inputAttr={dateBoxLabel}
-          />
-        </div>
+        </Accordion>
       </div>
     </div>
   );
