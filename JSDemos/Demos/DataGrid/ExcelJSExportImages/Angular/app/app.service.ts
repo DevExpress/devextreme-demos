@@ -16,7 +16,7 @@ export class Employee {
   HireDate: string;
 }
 
-const employees: Employee = [{
+const employees: Employee[] = [{
   ID: 1,
   FirstName: 'John',
   LastName: 'Heart',

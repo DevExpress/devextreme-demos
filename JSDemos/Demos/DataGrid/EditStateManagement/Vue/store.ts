@@ -4,7 +4,9 @@ import 'whatwg-fetch';
 import applyChanges from 'devextreme/data/apply_changes';
 import { DataChange } from 'devextreme/ui/data_grid';
 
+// @ts-expect-error
 import { sendRequest } from './utils.ts';
+// @ts-expect-error
 import { Order } from './data.ts';
 
 const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
