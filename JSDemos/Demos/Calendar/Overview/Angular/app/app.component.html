@@ -30,7 +30,7 @@
       [hoverStateEnabled]="false"
       [focusStateEnabled]="false"
     >
-      <dxi-item title="Common options" >
+      <dxi-item title="Common options">
         <div *dxTemplate>
           <div class="option">
             <span>Zoom level</span>
@@ -59,12 +59,15 @@
             </dx-check-box>
           </div>
           <div class="option">
-            <dx-check-box [(value)]="calendar.disabled" text="Disable the calendar">
+            <dx-check-box
+              [(value)]="calendar.disabled"
+              text="Disable the calendar"
+            >
             </dx-check-box>
           </div>
         </div>
       </dxi-item>
-      <dxi-item title="Week numeration" >
+      <dxi-item title="Week numeration">
         <div *dxTemplate>
           <div class="option">
             <dx-check-box
@@ -93,7 +96,7 @@
           </div>
         </div>
       </dxi-item>
-      <dxi-item title="Dates availability" >
+      <dxi-item title="Dates availability">
         <div *dxTemplate>
           <div class="option">
             <dx-check-box
