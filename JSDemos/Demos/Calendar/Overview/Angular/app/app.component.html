@@ -2,16 +2,16 @@
   <div class="calendar-container">
     <dx-calendar
       #calendar
-      [(value)]="currentValue"
+      [zoomLevel]="zoomLevels[0]"
+      [selectionMode]="selectionModes[0]"
+      [cellTemplate]="cellTemplate"
+      [disabled]="false"
+      [showWeekNumbers]="false"
+      [firstDayOfWeek]="0"
+      weekNumberRule="auto"
       [min]="minDateValue"
       [max]="maxDateValue"
       [disabledDates]="disabledDates"
-      [showWeekNumbers]="false"
-      [disabled]="false"
-      [firstDayOfWeek]="0"
-      [zoomLevel]="zoomLevels[0]"
-      [cellTemplate]="cellTemplate"
-      weekNumberRule="auto"
     >
       <span
         *dxTemplate="let cell of 'custom'"
@@ -23,86 +23,104 @@
   </div>
   <div class="options">
     <div class="caption">Options</div>
-    <div class="option">
-      <dx-check-box
-        text="Set minimum date"
-        [value]="false"
-        (onValueChanged)="setMinDate($event)"
-      >
-      </dx-check-box>
-    </div>
-    <div class="option">
-      <dx-check-box
-        text="Set maximum date"
-        [value]="false"
-        (onValueChanged)="setMaxDate($event)"
-      >
-      </dx-check-box>
-    </div>
-    <div class="option">
-      <dx-check-box
-        text="Disable weekends"
-        [value]="false"
-        (onValueChanged)="disableWeekend($event)"
-      >
-      </dx-check-box>
-    </div>
-    <div class="option">
-      <dx-check-box
-        text="Show week numbers"
-        [(value)]="calendar.showWeekNumbers"
-      >
-      </dx-check-box>
-    </div>
-    <div class="option">
-      <dx-check-box
-        text="Use custom cell template"
-        [value]="false"
-        (onValueChanged)="useCellTemplate($event)"
-      >
-      </dx-check-box>
-    </div>
-    <div class="option">
-      <dx-check-box [(value)]="calendar.disabled" text="Disable the calendar">
-      </dx-check-box>
-    </div>
-    <div class="option">
-      <span>First day of week</span>
-      <dx-select-box
-        [dataSource]="weekDays"
-        [inputAttr]="{ 'aria-label': 'First Day of Week' }"
-        [(value)]="calendar.firstDayOfWeek"
-        valueExpr="id"
-        displayExpr="text"
-      ></dx-select-box>
-    </div>
-    <div class="option">
-      <span>Week number rule</span>
-      <dx-select-box
-        [dataSource]="weekNumberRules"
-        [inputAttr]="{ 'aria-label': 'Week Number Rule' }"
-        [(value)]="calendar.weekNumberRule"
-      ></dx-select-box>
-    </div>
-    <div class="option">
-      <span>Zoom level</span>
-      <dx-select-box
-        [dataSource]="zoomLevels"
-        [(value)]="calendar.zoomLevel"
-        [inputAttr]="{ 'aria-label': 'Zoom Level' }"
-      >
-      </dx-select-box>
-    </div>
-    <div class="option">
-      <span>Selected date</span>
-      <dx-date-box
-        id="selected-date"
-        [min]="minDateValue"
-        [max]="maxDateValue"
-        [(value)]="currentValue"
-        [inputAttr]="{ 'aria-label': 'Date' }"
-      >
-      </dx-date-box>
-    </div>
+    <dx-accordion
+      id="accordion"
+      [collapsible]="true"
+      [activeStateEnabled]="false"
+      [hoverStateEnabled]="false"
+      [focusStateEnabled]="false"
+    >
+      <dxi-item title="Common options" >
+        <div *dxTemplate>
+          <div class="option">
+            <span>Zoom level</span>
+            <dx-select-box
+              [dataSource]="zoomLevels"
+              [(value)]="calendar.zoomLevel"
+              [inputAttr]="{ 'aria-label': 'Zoom Level' }"
+            >
+            </dx-select-box>
+          </div>
+          <div class="option">
+            <span>Selection mode</span>
+            <dx-select-box
+              [dataSource]="selectionModes"
+              [(value)]="calendar.selectionMode"
+              [inputAttr]="{ 'aria-label': 'Selection mode' }"
+            >
+            </dx-select-box>
+          </div>
+          <div class="option">
+            <dx-check-box
+              text="Use custom cell template"
+              [value]="false"
+              (onValueChanged)="useCellTemplate($event)"
+            >
+            </dx-check-box>
+          </div>
+          <div class="option">
+            <dx-check-box [(value)]="calendar.disabled" text="Disable the calendar">
+            </dx-check-box>
+          </div>
+        </div>
+      </dxi-item>
+      <dxi-item title="Week numeration" >
+        <div *dxTemplate>
+          <div class="option">
+            <dx-check-box
+              text="Show week numbers"
+              [(value)]="calendar.showWeekNumbers"
+            >
+            </dx-check-box>
+          </div>
+          <div class="option">
+            <span>First day of week</span>
+            <dx-select-box
+              [dataSource]="weekDays"
+              [inputAttr]="{ 'aria-label': 'First Day of Week' }"
+              [(value)]="calendar.firstDayOfWeek"
+              valueExpr="id"
+              displayExpr="text"
+            ></dx-select-box>
+          </div>
+          <div class="option">
+            <span>Week number rule</span>
+            <dx-select-box
+              [dataSource]="weekNumberRules"
+              [inputAttr]="{ 'aria-label': 'Week Number Rule' }"
+              [(value)]="calendar.weekNumberRule"
+            ></dx-select-box>
+          </div>
+        </div>
+      </dxi-item>
+      <dxi-item title="Dates availability" >
+        <div *dxTemplate>
+          <div class="option">
+            <dx-check-box
+              text="Set minimum date"
+              [value]="false"
+              (onValueChanged)="setMinDate($event)"
+            >
+            </dx-check-box>
+          </div>
+          <div class="option">
+            <dx-check-box
+              text="Set maximum date"
+              [value]="false"
+              (onValueChanged)="setMaxDate($event)"
+            >
+            </dx-check-box>
+          </div>
+          <div class="option">
+            <dx-check-box
+              text="Disable weekends"
+              [value]="false"
+              (onValueChanged)="disableWeekend($event)"
+            >
+            </dx-check-box>
+          </div>
+        </div>
+      </dxi-item>
+    </dx-accordion>
   </div>
 </div>

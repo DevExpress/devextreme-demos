@@ -133,7 +133,6 @@ export default function App() {
           activeStateEnabled={false}
           hoverStateEnabled={false}
           focusStateEnabled={false}
-          multiple={false}
         >
           <Item
             title='Common options'

@@ -33,7 +33,6 @@ $(() => {
     activeStateEnabled: false,
     hoverStateEnabled: false,
     focusStateEnabled: false,
-    multiple: false,
     items: [
       {
         title: 'Common options',

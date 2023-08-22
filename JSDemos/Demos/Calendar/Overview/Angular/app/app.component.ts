@@ -2,9 +2,9 @@ import { Component, NgModule, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
+  DxAccordionModule,
   DxSelectBoxModule,
   DxCheckBoxModule,
-  DxDateBoxModule,
   DxCalendarModule,
   DxTemplateModule,
 } from 'devextreme-angular';
@@ -22,8 +22,6 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   now: Date = new Date();
 
-  currentValue: Date = new Date();
-
   minDateValue: Date | null = null;
 
   maxDateValue: Date | null = null;
@@ -32,6 +30,10 @@ export class AppComponent {
 
   zoomLevels: string[] = [
     'month', 'year', 'decade', 'century',
+  ];
+
+  selectionModes: string[] = [
+    'single', 'multiple', 'range',
   ];
 
   weekDays: { id: number; text: string }[] = [
@@ -106,10 +108,10 @@ export class AppComponent {
   imports: [
     BrowserModule,
     BrowserTransferStateModule,
+    DxAccordionModule,
     DxSelectBoxModule,
     DxCalendarModule,
     DxCheckBoxModule,
-    DxDateBoxModule,
     DxTemplateModule,
   ],
   declarations: [AppComponent],
