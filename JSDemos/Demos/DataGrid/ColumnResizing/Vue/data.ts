@@ -1,4 +1,24 @@
-export const orders = [{
+export type Customer = {
+  ID: number;
+
+  CompanyName: string;
+
+  Address: string;
+
+  City: string;
+
+  State: string;
+
+  Zipcode: number;
+
+  Phone: string;
+
+  Fax: string;
+
+  Website: string;
+};
+
+export const orders: Customer[] = [{
   ID: 1,
   CompanyName: 'Super Mart of the West',
   Address: '702 SW 8th Street',

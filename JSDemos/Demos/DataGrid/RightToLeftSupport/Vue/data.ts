@@ -1,4 +1,20 @@
-export const europeanUnion = [{
+export type EuropeanUnion = {
+  nameAr: string;
+
+  nameEn: string;
+
+  population: number;
+
+  area: number;
+
+  capitalAr: string;
+
+  capitalEn: string;
+
+  accession: number;
+};
+
+export const europeanUnion: EuropeanUnion[] = [{
   nameAr: 'النمسا',
   nameEn: 'Austria',
   population: 8451900,

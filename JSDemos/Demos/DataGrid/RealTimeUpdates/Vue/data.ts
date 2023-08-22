@@ -1,10 +1,38 @@
 import ArrayStore from 'devextreme/data/array_store';
 
+export type Product = {
+  ProductID: number;
+
+  ProductName: string;
+
+  UnitPrice: number;
+
+  Quantity: number;
+
+  Amount: number;
+
+  OrderCount: number;
+};
+
+export type Order = {
+  OrderID: number;
+
+  ShipCity: string;
+
+  ProductID: number;
+
+  UnitPrice: number;
+
+  OrderDate: Date;
+
+  Quantity: number;
+};
+
 const cities = ['Los Angeles', 'Denver', 'Bentonville', 'Atlanta', 'Reno', 'Beaver', 'Malibu', 'Phoenix', 'San Diego', 'Little Rock', 'Pasadena', 'Boise', 'San Jose', 'Chatsworth', 'San Fernando', 'South Pasadena', 'San Fernando Valley', 'La Canada', 'St. Louis'];
 
-const orders = [];
+const orders: Order[] = [];
 
-const products = [];
+const products: Product[] = [];
 
 for (let i = 1; i <= 100; i += 1) {
   products.push({
@@ -12,12 +40,12 @@ for (let i = 1; i <= 100; i += 1) {
   });
 }
 
-export const productsStore = new ArrayStore({
+export const productsStore = new ArrayStore<Product, number>({
   key: 'ProductID',
   data: products,
 });
 
-export const ordersStore = new ArrayStore({
+export const ordersStore = new ArrayStore<Order, number>({
   key: 'OrderID',
   data: orders,
 });

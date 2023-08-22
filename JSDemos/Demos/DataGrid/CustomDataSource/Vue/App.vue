@@ -48,6 +48,8 @@ const isNotEmpty = (value: any): boolean => value !== undefined && value !== nul
 const store = new CustomStore({
   key: 'OrderNumber',
   load(loadOptions) {
+    type LoadOptionsKey = keyof typeof loadOptions;
+
     let params = '?';
     [
       'skip',
@@ -60,8 +62,10 @@ const store = new CustomStore({
       'group',
       'groupSummary',
     ].forEach((i) => {
-      if (i in loadOptions && isNotEmpty(loadOptions[i])) {
-        params += `${i}=${JSON.stringify(loadOptions[i])}&`;
+      const property = i as LoadOptionsKey;
+
+      if (property in loadOptions && isNotEmpty(loadOptions[property])) {
+        params += `${i}=${JSON.stringify(loadOptions[property])}&`;
       }
     });
     params = params.slice(0, -1);

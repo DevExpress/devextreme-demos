@@ -52,6 +52,7 @@ import {
   DxAsyncRule,
 } from 'devextreme-vue/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
+import { ValidationCallbackData } from 'devextreme/common';
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridEmployeesValidation';
 
@@ -68,7 +69,7 @@ const dataSource = createStore({
 
 const pattern = /^\(\d{3}\) \d{3}-\d{4}$/i;
 
-const asyncValidation = async(params) => fetch('https://js.devexpress.com/Demos/Mvc/RemoteValidation/CheckUniqueEmailAddress', {
+const asyncValidation = async(params: ValidationCallbackData) => fetch('https://js.devexpress.com/Demos/Mvc/RemoteValidation/CheckUniqueEmailAddress', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json;',

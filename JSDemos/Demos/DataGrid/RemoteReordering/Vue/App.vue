@@ -43,6 +43,9 @@
 import {
   DxDataGrid, DxColumn, DxLookup, DxScrolling, DxRowDragging, DxSorting,
 } from 'devextreme-vue/data-grid';
+
+import { RowDraggingReorderEvent } from 'devextreme/ui/data_grid';
+
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/RowReordering';
@@ -64,11 +67,11 @@ const employeesStore = createStore({
   },
 });
 
-const onReorder = (e) => {
+const onReorder = (e: RowDraggingReorderEvent) => {
   e.promise = processReorder(e);
 };
 
-const processReorder = async(e) => {
+const processReorder = async(e: RowDraggingReorderEvent) => {
   const visibleRows = e.component.getVisibleRows();
   const newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
 

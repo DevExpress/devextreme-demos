@@ -1,4 +1,10 @@
-export const statuses = [{
+export type Status = {
+  id: number;
+
+  name: string;
+};
+
+export const statuses: Status[] = [{
   id: 1, name: 'Not Started',
 }, {
   id: 2, name: 'In Progress',

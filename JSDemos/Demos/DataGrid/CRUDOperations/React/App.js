@@ -62,33 +62,32 @@ const App = () => {
   const sendRequest = React.useCallback((url, method = 'GET', data = {}) => {
     logRequest(method, url, data);
 
-    if (method === 'GET') {
-      return fetch(url, {
-        method,
-        credentials: 'include',
-      }).then((result) => result.json().then((json) => {
-        if (result.ok) return json.data;
-        throw json.Message;
-      }));
+    const request = {
+      method, credentials: 'include',
+    };
+
+    if (['DELETE', 'POST', 'PUT'].includes(method)) {
+      const params = Object.keys(data)
+        .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+        .join('&');
+
+      request.body = params;
+      request.headers = { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' };
     }
 
-    const params = Object.keys(data).map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`).join('&');
+    return fetch(url, request)
+      // eslint-disable-next-line consistent-return
+      .then(async(result) => {
+        if (!result.ok) {
+          const json = await result.json();
+          throw json.Message;
+        }
 
-    return fetch(url, {
-      method,
-      body: params,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-      },
-      credentials: 'include',
-    }).then((result) => {
-      if (result.ok) {
-        return result.text().then((text) => text && JSON.parse(text));
-      }
-      return result.json().then((json) => {
-        throw json.Message;
+        if (method === 'GET') {
+          const json = await result.json();
+          return json.data;
+        }
       });
-    });
   }, [logRequest]);
 
   return (

@@ -79,10 +79,14 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import 'devextreme/data/odata/store';
 import { DxDataGrid, DxColumn, DxPaging } from 'devextreme-vue/data-grid';
 import DxNumberBox from 'devextreme-vue/number-box';
 import DxCheckBox from 'devextreme-vue/check-box';
+
+import { Options as DataSourceOptions } from 'devextreme/data/data_source';
+import { FocusedRowChangedEvent, FocusedRowChangingEvent } from 'devextreme/ui/data_grid';
+
+import 'devextreme/data/odata/store';
 
 const taskSubject = ref('');
 const taskDetails = ref('');
@@ -92,7 +96,7 @@ const taskProgress = ref('');
 const focusedRowKey = ref(117);
 const autoNavigateToFocusedRow = ref(true);
 
-const dataSource = {
+const dataSource: DataSourceOptions = {
   store: {
     type: 'odata',
     key: 'Task_ID',
@@ -110,29 +114,27 @@ const dataSource = {
   ],
 };
 
-const onFocusedRowChanging = (e) => {
-  const pageSize = e.component.pageSize();
+const onFocusedRowChanging = (e: FocusedRowChangingEvent) => {
+  const rowsCount = e.component.getVisibleRows().length;
+  const pageCount = e.component.pageCount();
   const pageIndex = e.component.pageIndex();
-  const isLoading = e.component.getController('data').isLoading();
-  const key = e.event && e.event.key;
+  const key = e.event?.key;
 
-  if (!isLoading) {
-    if (key && e.prevRowIndex === e.newRowIndex) {
-      if (e.newRowIndex === pageSize - 1) {
-        e.component.pageIndex(pageIndex + 1).done(() => {
-          e.component.option('focusedRowIndex', 0);
-        });
-      } else if (e.newRowIndex === 0) {
-        e.component.pageIndex(pageIndex - 1).done(() => {
-          e.component.option('focusedRowIndex', pageSize - 1);
-        });
-      }
+  if (key && e.prevRowIndex === e.newRowIndex) {
+    if (e.newRowIndex === rowsCount - 1 && pageIndex < pageCount - 1) {
+      e.component.pageIndex(pageIndex + 1).then(() => {
+        e.component.option('focusedRowIndex', 0);
+      });
+    } else if (e.newRowIndex === 0 && pageIndex > 0) {
+      e.component.pageIndex(pageIndex - 1).then(() => {
+        e.component.option('focusedRowIndex', rowsCount - 1);
+      });
     }
   }
 };
 
-const onFocusedRowChanged = (e) => {
-  const data = e.row && e.row.data;
+const onFocusedRowChanged = (e: FocusedRowChangedEvent) => {
+  const data = e.row?.data;
 
   taskSubject.value = data?.Task_Subject;
   taskDetails.value = data?.Task_Description;

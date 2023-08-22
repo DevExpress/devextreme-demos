@@ -27,7 +27,10 @@ import OrdersTab from './OrdersTab.vue';
 import AddressTab from './AddressTab.vue';
 
 defineProps<{
-  masterDetailData: any
+  masterDetailData: {
+    key: number,
+    data: object
+  }
 }>();
 
 </script>

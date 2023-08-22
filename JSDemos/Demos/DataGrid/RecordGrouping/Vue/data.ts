@@ -1,4 +1,24 @@
-export const customers = [{
+export type Customer = {
+  ID: number;
+
+  CompanyName: string;
+
+  Address: string;
+
+  City: string;
+
+  State: string;
+
+  Zipcode: number;
+
+  Phone: string;
+
+  Fax: string;
+
+  Website: string;
+};
+
+export const customers: Customer[] = [{
   ID: 1,
   CompanyName: 'Premier Buy',
   Address: '7601 Penn Avenue South',

@@ -1,3 +1,33 @@
+export type Value = {
+  value: number;
+
+  diff: number;
+};
+
+export type DayClose = {
+  close: number;
+
+  date: Date;
+};
+
+export type WeekData = {
+  date: Date;
+
+  open: Value;
+
+  high: Value;
+
+  low: Value;
+
+  close: Value;
+
+  volume: number;
+
+  adjClose: number;
+
+  dayClose: DayClose[];
+};
+
 export const weekData = [{
   date: new Date('2013/12/23'),
   open: {

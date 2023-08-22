@@ -1,4 +1,36 @@
-export const employees = [{
+export type Task = {
+  ID: number;
+
+  Subject: string;
+
+  Status: number;
+
+  Owner: number;
+
+  AssignedEmployee: number;
+
+  OrderIndex: number;
+
+  Priority: number;
+};
+
+export type Employee = {
+  ID: number;
+
+  FullName: string;
+
+  Department: string;
+
+  Title: string;
+};
+
+export type Status = {
+  id: number;
+
+  name: string;
+};
+
+export const employees: Employee[] = [{
   ID: 1,
   FullName: 'John Heart',
   Department: 'Management',
@@ -255,7 +287,7 @@ export const employees = [{
   Title: 'Engineer',
 }];
 
-export const statuses = [{
+export const statuses: Status[] = [{
   id: 1, name: 'Not Started',
 }, {
   id: 2, name: 'In Progress',
@@ -267,7 +299,7 @@ export const statuses = [{
   id: 5, name: 'Completed',
 }];
 
-export const tasks = [{
+export const tasks: Task[] = [{
   ID: 1,
   Subject: 'Prepare 2013 Financial',
   Status: 5,

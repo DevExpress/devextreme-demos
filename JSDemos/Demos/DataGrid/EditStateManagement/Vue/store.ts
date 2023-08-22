@@ -1,112 +1,104 @@
-
 import { createStore } from 'vuex';
 import 'whatwg-fetch';
+
 import applyChanges from 'devextreme/data/apply_changes';
-import { sendRequest } from './utils.js';
+import { DataChange } from 'devextreme/ui/data_grid';
+
+import { sendRequest } from './utils.ts';
+import { Order } from './data.ts';
 
 const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
 
-export default createStore({
+export type State = {
+  orders: Order[],
+  changes: DataChange[],
+  editRowKey: number | null,
+  isLoading: boolean,
+};
+
+export default createStore<State>({
   state: {
     orders: [],
     changes: [],
     editRowKey: null,
     isLoading: false,
   },
-  getters: {
-    orders(state) {
-      return state.orders;
-    },
-    isLoading(state) {
-      return state.isLoading;
-    },
-  },
   mutations: {
-    updateIsLoading(state, isLoading) {
+    updateIsLoading(state, isLoading: boolean) {
       state.isLoading = isLoading;
     },
 
-    updateEditRowKey(state, editRowKey) {
+    updateEditRowKey(state, editRowKey: number | null) {
       state.editRowKey = editRowKey;
     },
 
-    updateChanges(state, changes) {
+    updateChanges(state, changes: DataChange[]) {
       state.changes = changes;
     },
 
-    updateOrders(state, { change, data }) {
-      if (change) {
-        change.data = data;
-        state.orders = applyChanges(state.orders, [change], { keyExpr: 'OrderID' });
-      } else {
-        state.orders = data;
-      }
+    updateOrders(state, orders: Order[]) {
+      state.orders = orders;
+    },
+
+    applyChangeToOrders(state, { change, data }: { change: DataChange, data: Order }) {
+      change.data = data;
+      state.orders = applyChanges(state.orders, [change], { keyExpr: 'OrderID' });
     },
   },
   actions: {
-    setEditRowKey(context, value) {
+    setEditRowKey(context, value: number | null) {
       context.commit('updateEditRowKey', value);
     },
 
-    setChanges(context, value) {
+    setChanges(context, value: DataChange[]) {
       context.commit('updateChanges', value);
     },
 
     async loadOrders(context) {
       context.commit('updateIsLoading', true);
+
       try {
-        const { data } = await sendRequest(`${URL}/Orders?skip=700`);
-        context.commit('updateOrders', { data });
+        const { data: orders } = await sendRequest(`${URL}/Orders?skip=700`);
+        context.commit('updateOrders', orders);
       } finally {
         context.commit('updateIsLoading', false);
       }
     },
 
-    async insert(context, change) {
-      const data = await sendRequest(`${URL}/InsertOrder`, 'POST', {
+    async insert(context, change: DataChange) {
+      const newOrder = await sendRequest(`${URL}/InsertOrder`, 'POST', {
         values: JSON.stringify(change.data),
       });
 
-      context.commit('updateOrders', { change, data });
+      context.commit('applyChangeToOrders', { change, data: newOrder });
     },
 
-    async update(context, change) {
-      const data = await sendRequest(`${URL}/UpdateOrder`, 'PUT', {
+    async update(context, change: DataChange) {
+      const updatedOrder = await sendRequest(`${URL}/UpdateOrder`, 'PUT', {
         key: change.key,
         values: JSON.stringify(change.data),
       });
 
-      context.commit('updateOrders', { change, data });
+      context.commit('applyChangeToOrders', { change, data: updatedOrder });
     },
 
-    async remove(context, change) {
+    async remove(context, change: DataChange) {
       const data = await sendRequest(`${URL}/DeleteOrder`, 'DELETE', { key: change.key });
 
-      context.commit('updateOrders', { change, data });
+      context.commit('applyChangeToOrders', { change, data });
     },
 
-    async saveChange({ commit, dispatch }, change) {
+    async saveChange({ commit, dispatch }, change: DataChange) {
       if (change && change.type) {
         commit('updateIsLoading', true);
 
         try {
-          switch (change.type) {
-            case 'insert':
-              await dispatch('insert', change);
-              break;
-            case 'update':
-              await dispatch('update', change);
-              break;
-            case 'remove':
-              await dispatch('remove', change);
-              break;
-            default:
-              break;
-          }
+          await dispatch(change.type, change);
         } finally {
           commit('updateIsLoading', false);
         }
       }
+
       commit('updateEditRowKey', null);
       commit('updateChanges', []);
     },

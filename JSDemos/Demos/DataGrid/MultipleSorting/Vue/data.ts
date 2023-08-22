@@ -1,4 +1,36 @@
-export const employees = [{
+export type Employee = {
+  ID: number;
+
+  FirstName: string;
+
+  LastName: string;
+
+  Phone: string;
+
+  Prefix: string;
+
+  Position: string;
+
+  BirthDate: string;
+
+  HireDate: string;
+
+  Email: string;
+
+  Address: string;
+
+  City: string;
+
+  State: string;
+
+  StateID: number;
+
+  HomePhone: string;
+
+  Skype: string;
+};
+
+export const employees: Employee[] = [{
   ID: 1,
   FirstName: 'John',
   LastName: 'Heart',

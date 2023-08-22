@@ -1,4 +1,22 @@
-export const orders = [{
+export type Order = {
+  ID: number;
+
+  OrderNumber: number;
+
+  OrderDate: string;
+
+  DeliveryDate: string;
+
+  SaleAmount: number;
+
+  Terms: string;
+
+  CustomerStoreCity: string;
+
+  Employee: string;
+};
+
+export const orders: Order[] = [{
   ID: 1,
   OrderNumber: 35703,
   OrderDate: '2017/04/10',

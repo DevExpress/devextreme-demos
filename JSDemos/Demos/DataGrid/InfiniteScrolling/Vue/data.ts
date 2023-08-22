@@ -1,15 +1,27 @@
+export type Employee = {
+  id: number;
+
+  firstName: string;
+
+  lastName: string;
+
+  gender: string;
+
+  birthDate: Date;
+};
+
 let s = 123456789;
-const random = function() {
+const random = function () {
   s = (1103515245 * s + 12345) % 2147483647;
   return s % (10 - 1);
 };
 
-export const generateData = function(count) {
+export const generateData = function (count: number) {
   let i;
   const surnames = ['Smith', 'Johnson', 'Brown', 'Taylor', 'Anderson', 'Harris', 'Clark', 'Allen', 'Scott', 'Carter'];
   const names = ['James', 'John', 'Robert', 'Christopher', 'George', 'Mary', 'Nancy', 'Sandra', 'Michelle', 'Betty'];
   const gender = ['Male', 'Female'];
-  const items = [];
+  const items: Employee[] = [];
   const startBirthDate = Date.parse('1/1/1975');
   const endBirthDate = Date.parse('1/1/1992');
 
@@ -20,7 +32,7 @@ export const generateData = function(count) {
     birthDate.setHours(12);
 
     const nameIndex = random();
-    const item = {
+    const item: Employee = {
       id: i + 1,
       firstName: names[nameIndex],
       lastName: surnames[random()],
@@ -29,5 +41,6 @@ export const generateData = function(count) {
     };
     items.push(item);
   }
+
   return items;
 };

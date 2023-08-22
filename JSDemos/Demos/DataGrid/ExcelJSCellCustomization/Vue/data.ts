@@ -1,4 +1,24 @@
-export const companies = [{
+export type Company = {
+  ID: number;
+
+  Name: string;
+
+  Address: string;
+
+  City: string;
+
+  State: string;
+
+  Zipcode: number;
+
+  Phone: string;
+
+  Fax: string;
+
+  Website: string;
+};
+
+export const companies: Company[] = [{
   ID: 1,
   Name: 'Super Mart of the West',
   Address: '702 SW 8th Street',

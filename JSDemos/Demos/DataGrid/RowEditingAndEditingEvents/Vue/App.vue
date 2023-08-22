@@ -86,7 +86,7 @@ import { employees, states } from './data.ts';
 
 const events = ref<string[]>([]);
 
-const logEvent = (eventName) => {
+const logEvent = (eventName: string) => {
   events.value.unshift(eventName);
 };
 

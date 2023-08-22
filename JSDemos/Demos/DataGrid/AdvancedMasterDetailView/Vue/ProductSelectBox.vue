@@ -32,7 +32,7 @@ const dataSource = createStore({
 
 const productId = ref(null);
 
-function setDefaultValue(items) {
+function setDefaultValue(items: any[]) {
   const firstItem = items[0];
 
   if (firstItem && productId.value === null) {

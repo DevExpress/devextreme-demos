@@ -1,4 +1,18 @@
-export const sales = [{
+export type Sale = {
+  orderId: number;
+
+  region: string;
+
+  country: string;
+
+  city: string;
+
+  amount: number;
+
+  date: string;
+};
+
+export const sales: Sale[] = [{
   orderId: 10248,
   region: 'North America',
   country: 'United States',

@@ -1,4 +1,34 @@
-export const employees = [{
+export type Employee = {
+  ID: number;
+
+  FirstName: string;
+
+  LastName: string;
+
+  Prefix: string;
+
+  Position: string;
+
+  StateID: number;
+
+  CityID: number;
+};
+
+export type State = {
+  ID: number;
+
+  Name: string;
+};
+
+export type City = {
+  ID: number;
+
+  Name: string;
+
+  StateID: number;
+};
+
+export const employees: Employee[] = [{
   ID: 1,
   FirstName: 'John',
   LastName: 'Heart',
@@ -112,7 +142,7 @@ export const employees = [{
   CityID: 5,
 }];
 
-export const states = [{
+export const states: State[] = [{
   ID: 1,
   Name: 'Alabama',
 }, {
@@ -129,7 +159,7 @@ export const states = [{
   Name: 'California',
 }];
 
-export const cities = [{
+export const cities: City[] = [{
   ID: 1,
   Name: 'Tuscaloosa',
   StateID: 1,

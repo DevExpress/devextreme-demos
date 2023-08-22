@@ -1,4 +1,18 @@
-export const orders = [{
+export type Order = {
+  OrderNumber: number;
+
+  SaleAmount: number;
+
+  StoreCity: string;
+
+  StoreState: string;
+
+  Employee: string;
+
+  OrderDate: string;
+};
+
+export const orders: Order[] = [{
   OrderNumber: 35703,
   SaleAmount: 11800,
   StoreCity: 'Los Angeles',
