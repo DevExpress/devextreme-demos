@@ -10,6 +10,31 @@
   justify-content: center;
 }
 
+#accordion {
+  background-color: transparent;
+}
+
+#accordion .dx-accordion-item {
+  border: none;
+  margin-top: 20px;
+  background-color: transparent;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  overflow: visible;
+}
+
+#accordion .dx-item-content.dx-accordion-item-title {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: transparent;
+}
+
+#accordion .dx-item-content {
+  padding: 10px 0 0 0;
+  background-color: transparent;
+  overflow: visible;
+}
+
 .dx-calendar-cell:not(.dx-calendar-other-month) .weekend,
 .dx-calendar-cell:not(.dx-calendar-other-month) .holiday {
   text-shadow: none;
@@ -43,6 +68,7 @@
 
 .options {
   padding: 20px;
+  height: 540px;
   background-color: rgba(191, 191, 191, 0.15);
 }
 
