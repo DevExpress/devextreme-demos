@@ -5,8 +5,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "moduleResolution": "node",
+    "jsx": "react",
   },
   "include": [
-    "JSDemos/Demos/**/*.ts"
+    "JSDemos/Demos/**/*.ts",
+    "JSDemos/Demos/**/*.tsx",
   ]
 }
