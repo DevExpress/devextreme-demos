@@ -54,7 +54,7 @@ import {
 } from './data.ts';
 
 function setStateValue(this: Column, newData: Employee, value: number, currentRowData: Employee) {
-  (newData as any).CityID = null;
+  newData.CityID = null;
 
   this.defaultSetCellValue!(newData, value, currentRowData);
 }
@@ -66,7 +66,9 @@ const getFilteredCities = (options: { data: City }) => ({
 
 const onEditorPreparing = (e: EditorPreparingEvent<Employee>) => {
   if (e.parentType === 'dataRow' && e.dataField === 'CityID') {
-    e.editorOptions.disabled = (typeof e.row!.data.StateID !== 'number');
+    const isStateNotSet = e.row!.data.StateID === undefined;
+
+    e.editorOptions.disabled = isStateNotSet;
   }
 };
 </script>

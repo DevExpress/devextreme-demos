@@ -11,7 +11,7 @@ export type Employee = {
 
   StateID: number;
 
-  CityID: number;
+  CityID: number | null;
 };
 
 export type State = {

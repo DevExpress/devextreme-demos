@@ -116,7 +116,7 @@ const onAddButtonClick = (e: ColumnButtonClickEvent) => {
   editRowKey.value = key;
 };
 
-const isAddButtonVisible = ({ row }: { row: Row }) => !row.isEditing;
+const isAddButtonVisible = (e: { row: Row }) => !e.row.isEditing;
 
 const onRowInserted = (e: RowInsertedEvent) => {
   e.component.navigateToRow(e.key);

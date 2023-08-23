@@ -105,7 +105,7 @@ import DxSelectBox from 'devextreme-vue/select-box';
 import DxCheckBox from 'devextreme-vue/check-box';
 import { Column } from 'devextreme/ui/data_grid';
 import { Options as DataSourceOptions } from 'devextreme/data/data_source';
-import { Order, orders } from './data.ts';
+import { orders, Order } from './data.ts';
 
 const applyFilterTypes = [
   {
@@ -169,12 +169,15 @@ function calculateFilterExpression(
   return column.defaultCalculateFilterExpression!(value, selectedFilterOperations, target);
 }
 
-const orderDateHeaderFilter = ({ dataSource }: { dataSource: DataSourceOptions }) => {
+const orderDateHeaderFilter = (options: { dataSource: DataSourceOptions }) => {
+  const { dataSource } = options;
+
   dataSource.postProcess = (results) => {
     results.push({
       text: 'Weekends',
       value: 'weekends',
     });
+
     return results;
   };
 };

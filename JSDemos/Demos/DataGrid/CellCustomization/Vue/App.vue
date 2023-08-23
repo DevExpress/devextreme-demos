@@ -50,10 +50,7 @@
 </template>
 <script setup lang="ts">
 import {
-  DxDataGrid,
-  DxColumn,
-  DxSorting,
-  DxPaging,
+  DxDataGrid, DxColumn, DxSorting, DxPaging,
 } from 'devextreme-vue/data-grid';
 
 import DiffCell from './DiffCell.vue';

@@ -36,7 +36,12 @@ const products: Product[] = [];
 
 for (let i = 1; i <= 100; i += 1) {
   products.push({
-    ProductID: i, ProductName: `Product ${i}`, UnitPrice: Math.floor(Math.random() * 1000) + 1, Quantity: 0, Amount: 0, OrderCount: 0,
+    ProductID: i, 
+    ProductName: `Product ${i}`, 
+    UnitPrice: Math.floor(Math.random() * 1000) + 1, 
+    Quantity: 0, 
+    Amount: 0, 
+    OrderCount: 0,
   });
 }
 
@@ -50,13 +55,11 @@ export const ordersStore = new ArrayStore<Order, number>({
   data: orders,
 });
 
-export function getOrderCount() {
-  return orders.length;
-}
+export const getOrderCount = () => orders.length;
 
-export function addOrder() {
+export const addOrder = () => {
   const product = products[Math.round(Math.random() * 99)];
-  const order = {
+  const order: Order = {
     OrderID: orders.length ? orders[orders.length - 1].OrderID + 1 : 20001,
     ShipCity: cities[Math.round(Math.random() * (cities.length - 1))],
     ProductID: product.ProductID,
@@ -76,4 +79,4 @@ export function addOrder() {
       Amount: product.Amount + order.UnitPrice * order.Quantity,
     },
   }]);
-}
+};

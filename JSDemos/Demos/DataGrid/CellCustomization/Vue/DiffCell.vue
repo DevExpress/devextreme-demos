@@ -8,7 +8,7 @@
 import { formatNumber } from 'devextreme/localization';
 import { Column } from 'devextreme/ui/data_grid';
 
-import { Value, WeekData } from './data';
+import { WeekData, DiffValueProperties } from './data';
 
 const props = defineProps<{
   column: Column,
@@ -16,9 +16,9 @@ const props = defineProps<{
 }>();
 
 const getCellData = () => {
-  const property = props.column.caption!.toLowerCase() as keyof typeof props.rowData;
+  const property = props.column.caption!.toLowerCase() as DiffValueProperties;
 
-  return props.rowData![property] as Value;
+  return props.rowData![property];
 };
 
 const cellData = getCellData();

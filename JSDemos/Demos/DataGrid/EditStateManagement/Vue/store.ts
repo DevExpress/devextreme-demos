@@ -42,8 +42,11 @@ export default createStore<State>({
       state.orders = orders;
     },
 
-    applyChangeToOrders(state, { change, data }: { change: DataChange, data: Order }) {
+    applyChangeToOrders(state, payload: { change: DataChange, data: Order }) {
+      const { change, data } = payload;
+
       change.data = data;
+
       state.orders = applyChanges(state.orders, [change], { keyExpr: 'OrderID' });
     },
   },

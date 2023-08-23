@@ -146,7 +146,7 @@ const onRowInserted = (e: RowInsertedEvent) => {
 function calculateFilterExpression(
   this: Column, filterValue: any, selectedFilterOperations: string | null, target: string,
 ) {
-  if (target === 'search' && typeof (filterValue) === 'string') {
+  if (target === 'search' && typeof filterValue === 'string') {
     return [this.dataField, 'contains', filterValue];
   }
 

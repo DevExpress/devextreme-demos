@@ -1,4 +1,4 @@
-export type Value = {
+export type DiffValue = {
   value: number;
 
   diff: number;
@@ -13,13 +13,13 @@ export type DayClose = {
 export type WeekData = {
   date: Date;
 
-  open: Value;
+  open: DiffValue;
 
-  high: Value;
+  high: DiffValue;
 
-  low: Value;
+  low: DiffValue;
 
-  close: Value;
+  close: DiffValue;
 
   volume: number;
 
@@ -27,6 +27,8 @@ export type WeekData = {
 
   dayClose: DayClose[];
 };
+
+export type DiffValueProperties = 'open' | 'high' | 'low' | 'close';
 
 export const weekData = [{
   date: new Date('2013/12/23'),
