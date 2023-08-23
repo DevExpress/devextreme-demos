@@ -1,7 +1,8 @@
 import React from 'react';
 
-function ResourceCell(props) {
+const ResourceCell = (props) => {
   const { data: { color, text, data: { avatar, age, discipline } } } = props;
+
   return (
     <div className="dx-template-wrapper">
       <div className="name" style={{ background: color }}>

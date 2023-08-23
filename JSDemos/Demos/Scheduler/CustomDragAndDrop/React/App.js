@@ -10,41 +10,52 @@ const currentDate = new Date(2021, 3, 26);
 const views = [{ type: 'day', intervalCount: 3 }];
 const draggingGroupName = 'appointmentsGroup';
 
+const onListDragStart = (e) => {
+  e.cancel = true;
+};
+
+const onItemDragStart = (e) => {
+  e.itemData = e.fromData;
+};
+
+const onItemDragEnd = (e) => {
+  if (e.toData) {
+    e.cancel = true;
+  }
+};
+
 const App = () => {
-  const [state, setState] = React.useState({
-    tasks,
-    appointments,
-  });
+  const [state, setState] = React.useState({ tasks, appointments });
 
   const onAppointmentRemove = React.useCallback((e) => {
-    const index = state.appointments.indexOf(e.itemData);
+    setState(state => {
+      const { appointments, tasks } = state;
+      
+      const index = appointments.indexOf(e.itemData);
 
-    if (index >= 0) {
-      const updatedAppointments = [...state.appointments];
-      updatedAppointments.splice(index, 1);
-      const updatedTasks = [...state.tasks, e.itemData];
+      if (index >= 0) {
+        tasks.push(e.itemData);
+        appointments.splice(index, 1);
+      }
 
-      setState({
-        tasks: updatedTasks,
-        appointments: updatedAppointments,
-      });
-    }
-  }, [state.appointments, state.tasks]);
+      return { appointments: [...appointments], tasks: [...tasks] };
+    });
+  }, []);
 
   const onAppointmentAdd = React.useCallback((e) => {
-    const index = state.tasks.indexOf(e.fromData);
+    setState(state => {
+      const { appointments, tasks } = state;
+      
+      const index = tasks.indexOf(e.fromData);
 
-    if (index >= 0) {
-      const updatedTasks = [...state.tasks];
-      updatedTasks.splice(index, 1);
-      const updatedAppointments = [...state.appointments, e.itemData];
+      if (index >= 0) {
+        tasks.splice(index, 1);
+        appointments.push(e.itemData);
+      }
 
-      setState({
-        tasks: updatedTasks,
-        appointments: updatedAppointments,
-      });
-    }
-  }, [state.appointments, state.tasks]);
+      return { appointments: [...appointments], tasks: [...tasks] };
+    });
+  }, []);
 
   return (
     <React.Fragment>
@@ -87,20 +98,6 @@ const App = () => {
       </Scheduler>
     </React.Fragment>
   );
-};
-
-const onListDragStart = (e) => {
-  e.cancel = true;
-};
-
-const onItemDragStart = (e) => {
-  e.itemData = e.fromData;
-};
-
-const onItemDragEnd = (e) => {
-  if (e.toData) {
-    e.cancel = true;
-  }
 };
 
 export default App;

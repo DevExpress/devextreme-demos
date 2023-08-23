@@ -8,7 +8,7 @@ const dayOfWeekNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const typeGroups = ['typeId'];
 const priorityGroups = ['priorityId'];
 
-const renderDateCell = (cellData) => (
+const DateCell = ({ data: cellData }) => (
   <React.Fragment>
     <div className="name">{dayOfWeekNames[cellData.date.getDay()]}</div>
     <div className="number">{cellData.date.getDate()}</div>
@@ -27,13 +27,13 @@ const App = () => (
     endDayHour={23}
   >
     <View type="day" />
-    <View type="week" groups={typeGroups} dateCellRender={renderDateCell} />
+    <View type="week" groups={typeGroups} dateCellComponent={DateCell} />
     <View
       type="workWeek"
       groups={priorityGroups}
       startDayHour={9}
       endDayHour={18}
-      dateCellRender={renderDateCell}
+      dateCellComponent={DateCell}
     />
     <View type="month" />
     <Resource

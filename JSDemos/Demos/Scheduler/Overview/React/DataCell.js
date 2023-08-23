@@ -1,19 +1,20 @@
 import React from 'react';
 
-function isWeekEnd(date) {
+const isWeekEnd = (date) => {
   const day = date.getDay();
   return day === 0 || day === 6;
 }
 
-function getCurrentTraining(date, employeeID) {
+const getCurrentTraining = (date, employeeID) => {
   const result = (date + employeeID) % 3;
   const currentTraining = `training-background-${result}`;
 
   return currentTraining;
 }
 
-function DataCell(props) {
+const DataCell = (props) => {
   const { data: { startDate, groups: { employeeID }, text } } = props;
+
   const dayClasses = [
     'day-cell',
     getCurrentTraining(startDate.getDate(), employeeID),

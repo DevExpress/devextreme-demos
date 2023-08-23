@@ -6,15 +6,10 @@ import { data, priorities } from './data.js';
 const views = ['week', 'month'];
 const cellDuration = 30;
 
-const App = () => {
-  const [currentDate, setCurrentDate] = React.useState(new Date(2021, 2, 25));
-  const schedulerRef = React.useRef(null);
+const currentDate = new Date(2021, 2, 25);
 
-  const onOptionChanged = React.useCallback((e) => {
-    if (e.name === 'currentDate') {
-      setCurrentDate(e.value);
-    }
-  }, []);
+const App = () => {
+  const schedulerRef = React.useRef(null);
 
   const showAppointmentPopup = React.useCallback(() => {
     schedulerRef.current.instance.showAppointmentPopup();
@@ -28,9 +23,8 @@ const App = () => {
         dataSource={data}
         views={views}
         adaptivityEnabled={true}
-        onOptionChanged={onOptionChanged}
         defaultCurrentView="month"
-        currentDate={currentDate}
+        defaultCurrentDate={currentDate}
         cellDuration={cellDuration}
         height={590}
         startDayHour={9}

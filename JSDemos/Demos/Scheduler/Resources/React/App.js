@@ -5,21 +5,17 @@ import Scheduler, { Resource } from 'devextreme-react/scheduler';
 import RadioGroup from 'devextreme-react/radio-group';
 
 import {
-  data,
-  assignees,
-  rooms,
-  priorities,
-  resourcesList,
+  data, assignees, rooms, priorities, resourcesList,
 } from './data.js';
 
 const currentDate = new Date(2021, 3, 27);
 const views = ['workWeek'];
 
 const App = () => {
-  const [radioGroupValue, setRadioGroupValue] = React.useState(resourcesList[0]);
+  const [currentResource, setCurrentResource] = React.useState(resourcesList[0]);
 
-  const onRadioGroupValueChanged = React.useCallback((args) => {
-    setRadioGroupValue(args.value);
+  const onRadioGroupValueChanged = React.useCallback((e) => {
+    setCurrentResource(e.value);
   }, []);
 
   return (
@@ -38,20 +34,20 @@ const App = () => {
           dataSource={rooms}
           fieldExpr="roomId"
           label="Room"
-          useColorAsDefault={radioGroupValue === 'Room'}
+          useColorAsDefault={currentResource === 'Room'}
         />
         <Resource
           dataSource={priorities}
           fieldExpr="priorityId"
           label="Priority"
-          useColorAsDefault={radioGroupValue === 'Priority'}
+          useColorAsDefault={currentResource === 'Priority'}
         />
         <Resource
           dataSource={assignees}
           allowMultiple={true}
           fieldExpr="assigneeId"
           label="Assignee"
-          useColorAsDefault={radioGroupValue === 'Assignee'}
+          useColorAsDefault={currentResource === 'Assignee'}
         />
       </Scheduler>
       <div className="options">
@@ -59,7 +55,7 @@ const App = () => {
         <div className="option">
           <RadioGroup
             items={resourcesList}
-            value={radioGroupValue}
+            value={currentResource}
             layout="horizontal"
             onValueChanged={onRadioGroupValueChanged}
           />

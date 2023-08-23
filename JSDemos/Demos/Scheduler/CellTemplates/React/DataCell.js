@@ -1,12 +1,10 @@
 import React from 'react';
 import Utils from './utils.js';
 
-export default function DataCell(props) {
-  const { startDate } = props.itemData;
+const DataCell = (props) => {
+  const { startDate } = props.data;
   const isDinner = Utils.isDinner(startDate);
-  let cssClasses = props.className
-    ? props.className
-    : '';
+  let cssClasses = props.className || '';
 
   if (Utils.isDisableDate(startDate)) {
     cssClasses += ' disable-date';
@@ -20,3 +18,5 @@ export default function DataCell(props) {
     </div>
   );
 }
+
+export default DataCell;

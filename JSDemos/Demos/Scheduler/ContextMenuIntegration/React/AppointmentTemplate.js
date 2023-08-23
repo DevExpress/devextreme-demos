@@ -1,8 +1,10 @@
 import React from 'react';
 
-export function AppointmentMenuTemplate(itemData) {
-  return (<div>
+const AppointmentMenuTemplate = ({ data: itemData}) => (
+  <div>
     {itemData.color ? <div className="item-badge" style={{ backgroundColor: itemData.color }} /> : ''}
     {itemData.text}
-  </div>);
-}
+  </div>
+);
+
+export default AppointmentMenuTemplate;

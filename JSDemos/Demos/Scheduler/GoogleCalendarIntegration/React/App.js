@@ -5,15 +5,18 @@ import Scheduler from 'devextreme-react/scheduler';
 
 import CustomStore from 'devextreme/data/custom_store';
 
-function getData(_, requestOptions) {
-  const PUBLIC_KEY = 'AIzaSyBnNAISIUKe6xdhq1_rjor2rxoI3UlMY7k';
+const getData = async (_, requestOptions) => {
+  const GOOGLE_CALENDAR_URL = 'https://www.googleapis.com/calendar/v3/calendars/';
   const CALENDAR_ID = 'f7jnetm22dsjc3npc2lu3buvu4@group.calendar.google.com';
-  const dataUrl = ['https://www.googleapis.com/calendar/v3/calendars/',
-    CALENDAR_ID, '/events?key=', PUBLIC_KEY].join('');
+  const PUBLIC_KEY = 'AIzaSyBnNAISIUKe6xdhq1_rjor2rxoI3UlMY7k';
 
-  return fetch(dataUrl, requestOptions).then(
-    (response) => response.json(),
-  ).then((data) => data.items);
+  const dataUrl = [GOOGLE_CALENDAR_URL, CALENDAR_ID, '/events?key=', PUBLIC_KEY].join('');
+
+  const response = await fetch(dataUrl, requestOptions);
+
+  const data = await response.json();
+
+  return data.items;
 }
 
 const dataSource = new CustomStore({

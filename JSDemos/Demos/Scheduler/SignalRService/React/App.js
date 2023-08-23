@@ -9,18 +9,16 @@ import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
 const BASE_PATH = 'https://js.devexpress.com/Demos/NetCore/';
 const url = `${BASE_PATH}api/SchedulerSignalR`;
 
-function createStore() {
-  return AspNetData.createStore({
-    key: 'AppointmentId',
-    loadUrl: url,
-    insertUrl: url,
-    updateUrl: url,
-    deleteUrl: url,
-    onBeforeSend(method, ajaxOptions) {
-      ajaxOptions.xhrFields = { withCredentials: true };
-    },
-  });
-}
+const createStore = () => AspNetData.createStore({
+  key: 'AppointmentId',
+  loadUrl: url,
+  insertUrl: url,
+  updateUrl: url,
+  deleteUrl: url,
+  onBeforeSend(method, ajaxOptions) {
+    ajaxOptions.xhrFields = { withCredentials: true };
+  },
+});
 
 const store1 = createStore();
 const store2 = createStore();
@@ -52,6 +50,7 @@ connection
       store2.push([{ type: 'remove', key }]);
     });
   });
+
 const App = () => (
   <div className="schedulers">
     <div className="column-1">

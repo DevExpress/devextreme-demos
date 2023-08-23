@@ -3,12 +3,11 @@ import Query from 'devextreme/data/query';
 import localization from 'devextreme/localization';
 import { moviesData } from './data.js';
 
-function getMovieById(id) {
-  return Query(moviesData).filter(['id', id]).toArray()[0];
-}
+const getMovieById = (id) => Query(moviesData).filter(['id', id]).toArray()[0];
 
-export default function Appointment(model) {
-  const { targetedAppointmentData } = model.data;
+const Appointment = (props) => {
+  console.log(props);
+  const { targetedAppointmentData } = props.data;
 
   const movieData = getMovieById(targetedAppointmentData.movieId) || {};
 
@@ -26,3 +25,5 @@ export default function Appointment(model) {
     </div>
   );
 }
+
+export default Appointment;

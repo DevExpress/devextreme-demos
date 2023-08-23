@@ -1,8 +1,9 @@
 import React from 'react';
 import Utils from './utils.js';
 
-export default function TimeCell(props) {
-  const { date, text } = props.itemData;
+const TimeCell = (props) => {
+  const { date, text } = props.data;
+
   const isDinner = Utils.isDinner(date);
   const hasCoffeeCupIcon = Utils.hasCoffeeCupIcon(date);
 
@@ -13,3 +14,5 @@ export default function TimeCell(props) {
     </div>
   );
 }
+
+export default TimeCell;

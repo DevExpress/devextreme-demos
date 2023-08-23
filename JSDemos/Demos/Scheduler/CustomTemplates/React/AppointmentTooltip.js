@@ -3,12 +3,11 @@ import Query from 'devextreme/data/query';
 
 import { moviesData } from './data.js';
 
-function getMovieById(id) {
-  return Query(moviesData).filter(['id', id]).toArray()[0];
-}
+const getMovieById = (id) => Query(moviesData).filter(['id', id]).toArray()[0];
 
 export function AppointmentTooltip(props) {
-  const [movieData] = React.useState(getMovieById(props.data.appointmentData.movieId));
+  const movieData = getMovieById(props.data.appointmentData.movieId);
+
   return (
     <div className="movie-tooltip">
       <img src={movieData.image} />

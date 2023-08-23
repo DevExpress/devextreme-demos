@@ -3,11 +3,13 @@ import Scheduler, { Resource } from 'devextreme-react/scheduler';
 import { Switch } from 'devextreme-react/switch';
 import { NumberBox } from 'devextreme-react/number-box';
 
-import { data, moviesData, positionLabel } from './data.js';
+import { data, moviesData } from './data.js';
 import AppointmentTemplate from './AppointmentTemplate.js';
 
 const currentDate = new Date();
-const views = ['week', 'timelineWeek'];
+const views = ['week', 'timelineWeek', 'day'];
+
+const intervalLabel = { 'aria-label': 'Interval' };
 
 const onContentReady = (e) => {
   e.component.scrollTo(new Date());
@@ -34,8 +36,8 @@ const App = () => {
     setShadeUntilCurrentTime(e.value);
   }, []);
 
-  const onUpdateIntervalChanged = React.useCallback((args) => {
-    setUpdateInterval(args.value);
+  const onUpdateIntervalChanged = React.useCallback((e) => {
+    setUpdateInterval(e.value);
   }, []);
 
   return (
@@ -45,12 +47,13 @@ const App = () => {
         views={views}
         defaultCurrentView="week"
         showCurrentTimeIndicator={showCurrentTimeIndicator}
+        indicatorUpdateInterval={updateInterval * 1000}
         showAllDayPanel={false}
         shadeUntilCurrentTime={shadeUntilCurrentTime}
         defaultCurrentDate={currentDate}
         editing={false}
         height={600}
-        appointmentRender={AppointmentTemplate}
+        appointmentComponent={AppointmentTemplate}
         onContentReady={onContentReady}
         onAppointmentClick={onAppointmentClick}
         onAppointmentDblClick={onAppointmentDblClick}
@@ -99,7 +102,7 @@ const App = () => {
                 showSpinButtons={true}
                 width={100}
                 format="#0 s"
-                inputAttr={positionLabel}
+                inputAttr={intervalLabel}
                 onValueChanged={onUpdateIntervalChanged}
               />
             </div>

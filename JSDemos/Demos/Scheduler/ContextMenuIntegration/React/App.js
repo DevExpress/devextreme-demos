@@ -4,15 +4,19 @@ import ContextMenu from 'devextreme-react/context-menu';
 
 import { data, resourcesData } from './data.js';
 
-import { AppointmentMenuTemplate } from './AppointmentTemplate.js';
+import AppointmentMenuTemplate from './AppointmentTemplate.js';
 
 const views = ['day', 'month'];
 
 const appointmentClassName = '.dx-scheduler-appointment';
 const cellClassName = '.dx-scheduler-date-table-cell';
 
+const onContextMenuItemClick = (e) => {
+  e.itemData.onItemClick(e);
+};
+
 const App = () => {
-  const scheduler = React.useRef(null);
+  const schedulerRef = React.useRef(null);
   const [currentDate, setCurrentDate] = React.useState(new Date(2020, 10, 25));
   const [contextMenuItems, setContextMenuItems] = React.useState([]);
   const [target, setTarget] = React.useState(appointmentClassName);
@@ -20,31 +24,31 @@ const App = () => {
   const [groups, setGroups] = React.useState(null);
   const [crossScrollingEnabled, setCrossScrollingEnabled] = React.useState(false);
 
-  const onAppointmentContextMenu = React.useCallback(
-    ({ appointmentData, targetedAppointmentData }) => {
-      const schedulerInstance = scheduler.current.instance;
+  const onAppointmentContextMenu = React.useCallback(({ appointmentData, targetedAppointmentData }) => {
+      const scheduler = schedulerRef.current.instance;
       const resourceItems = resourcesData.map((item) => ({
         ...item,
-        onItemClick: ({ itemData }) => schedulerInstance.updateAppointment(appointmentData, {
+        onItemClick: ({ itemData }) => scheduler.updateAppointment(appointmentData, {
           ...appointmentData,
           ...{ roomId: [itemData.id] },
         }),
       }));
+
       setTarget(appointmentClassName);
       setDisabled(false);
       setContextMenuItems([
         {
           text: 'Open',
-          onItemClick: () => schedulerInstance.showAppointmentPopup(appointmentData),
+          onItemClick: () => scheduler.showAppointmentPopup(appointmentData),
         },
         {
           text: 'Delete',
-          onItemClick: () => schedulerInstance.deleteAppointment(appointmentData),
+          onItemClick: () => scheduler.deleteAppointment(appointmentData),
         },
         {
           text: 'Repeat Weekly',
           beginGroup: true,
-          onItemClick: () => schedulerInstance.updateAppointment(appointmentData, {
+          onItemClick: () => scheduler.updateAppointment(appointmentData, {
             startDate: targetedAppointmentData.startDate,
             recurrenceRule: 'FREQ=WEEKLY',
           }),
@@ -52,29 +56,24 @@ const App = () => {
         { text: 'Set Room', beginGroup: true, disabled: true },
         ...resourceItems,
       ]);
-    },
-    [],
-  );
-
-  const onContextMenuItemClick = React.useCallback((e) => {
-    e.itemData.onItemClick(e);
-  }, []);
+    }, []);
 
   const onCellContextMenu = React.useCallback(({ cellData }) => {
-    const schedulerInstance = scheduler.current.instance;
+    const scheduler = schedulerRef.current.instance;
+
     setTarget(cellClassName);
     setDisabled(false);
     setContextMenuItems([
       {
         text: 'New Appointment',
-        onItemClick: () => schedulerInstance.showAppointmentPopup(
+        onItemClick: () => scheduler.showAppointmentPopup(
           { startDate: cellData.startDate },
           true,
         ),
       },
       {
         text: 'New Recurring Appointment',
-        onItemClick: () => schedulerInstance.showAppointmentPopup(
+        onItemClick: () => scheduler.showAppointmentPopup(
           {
             startDate: cellData.startDate,
             recurrenceRule: 'FREQ=DAILY',
@@ -107,7 +106,7 @@ const App = () => {
   return (
     <React.Fragment>
       <Scheduler
-        ref={scheduler}
+        ref={schedulerRef}
         timeZone="America/Los_Angeles"
         dataSource={data}
         views={views}
@@ -133,7 +132,7 @@ const App = () => {
         target={target}
         disabled={disabled}
         onItemClick={onContextMenuItemClick}
-        itemRender={AppointmentMenuTemplate}
+        itemComponent={AppointmentMenuTemplate}
       />
     </React.Fragment>
   );

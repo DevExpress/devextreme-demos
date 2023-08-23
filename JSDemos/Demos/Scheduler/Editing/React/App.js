@@ -1,5 +1,5 @@
 import React from 'react';
-import Scheduler from 'devextreme-react/scheduler';
+import Scheduler, { Editing } from 'devextreme-react/scheduler';
 import { CheckBox } from 'devextreme-react/check-box';
 import notify from 'devextreme/ui/notify';
 
@@ -8,6 +8,23 @@ import { data } from './data.js';
 const currentDate = new Date(2021, 3, 29);
 const views = ['day', 'week'];
 
+
+const showToast = (event, value, type) => {
+  notify(`${event} "${value}" task`, type, 800);
+};
+
+const showAddedToast = (e) => {
+  showToast('Added', e.appointmentData.text, 'success');
+};
+
+const showUpdatedToast = (e) => {
+  showToast('Updated', e.appointmentData.text, 'info');
+};
+
+const showDeletedToast = (e) => {
+  showToast('Deleted', e.appointmentData.text, 'warning');
+};
+
 const App = () => {
   const [allowAdding, setAllowAdding] = React.useState(true);
   const [allowDeleting, setAllowDeleting] = React.useState(true);
@@ -15,39 +32,15 @@ const App = () => {
   const [allowDragging, setAllowDragging] = React.useState(true);
   const [allowUpdating, setAllowUpdating] = React.useState(true);
 
-  const editingOptions = React.useMemo(() => ({
-    allowAdding,
-    allowDeleting,
-    allowResizing,
-    allowDragging,
-    allowUpdating,
-  }), [
-    allowAdding,
-    allowDeleting,
-    allowResizing,
-    allowDragging,
-    allowUpdating,
-  ]);
+  const onAllowAddingChanged = React.useCallback((e) => setAllowAdding(e.value), []);
 
-  const onAllowAddingChanged = React.useCallback((e) => {
-    setAllowAdding(e.value);
-  }, []);
+  const onAllowDeletingChanged = React.useCallback((e) => setAllowDeleting(e.value), []);
 
-  const onAllowDeletingChanged = React.useCallback((e) => {
-    setAllowDeleting(e.value);
-  }, []);
+  const onAllowResizingChanged = React.useCallback((e) => setAllowResizing(e.value), []);
 
-  const onAllowResizingChanged = React.useCallback((e) => {
-    setAllowResizing(e.value);
-  }, []);
+  const onAllowDraggingChanged = React.useCallback((e) => setAllowDragging(e.value), []);
 
-  const onAllowDraggingChanged = React.useCallback((e) => {
-    setAllowDragging(e.value);
-  }, []);
-
-  const onAllowUpdatingChanged = React.useCallback((e) => {
-    setAllowUpdating(e.value);
-  }, []);
+  const onAllowUpdatingChanged = React.useCallback((e) => setAllowUpdating(e.value), []);
 
   return (
     <React.Fragment>
@@ -60,11 +53,18 @@ const App = () => {
         startDayHour={9}
         endDayHour={19}
         height={600}
-        editing={editingOptions}
         onAppointmentAdded={showAddedToast}
         onAppointmentUpdated={showUpdatedToast}
         onAppointmentDeleted={showDeletedToast}
-      />
+      >
+        <Editing
+          allowAdding={allowAdding}
+          allowDeleting={allowDeleting}
+          allowResizing={allowResizing}
+          allowDragging={allowDragging}
+          allowUpdating={allowUpdating}
+        />
+      </Scheduler>
       <div className="options">
         <div className="caption">Options</div>
         <div className="options-container">
@@ -109,22 +109,6 @@ const App = () => {
       </div>
     </React.Fragment>
   );
-};
-
-const showToast = (event, value, type) => {
-  notify(`${event} "${value}" task`, type, 800);
-};
-
-const showAddedToast = (e) => {
-  showToast('Added', e.appointmentData.text, 'success');
-};
-
-const showUpdatedToast = (e) => {
-  showToast('Updated', e.appointmentData.text, 'info');
-};
-
-const showDeletedToast = (e) => {
-  showToast('Deleted', e.appointmentData.text, 'warning');
 };
 
 export default App;
