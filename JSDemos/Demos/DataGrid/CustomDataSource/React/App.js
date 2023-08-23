@@ -17,8 +17,8 @@ const store = new CustomStore({
     ];
 
     const queryString = paramNames
-      .filter(paramName => isNotEmpty(loadOptions[paramName]))
-      .map(paramName => `${paramName}=${JSON.stringify(loadOptions[paramName])}`)
+      .filter((paramName) => isNotEmpty(loadOptions[paramName]))
+      .map((paramName) => `${paramName}=${JSON.stringify(loadOptions[paramName])}`)
       .join('&');
 
     try {
@@ -31,9 +31,9 @@ const store = new CustomStore({
         totalCount: result.totalCount,
         summary: result.summary,
         groupCount: result.groupCount,
-      }
-    } catch(err) {
-      throw new Error('Data Loading Error')
+      };
+    } catch (err) {
+      throw new Error('Data Loading Error');
     }
   },
 });

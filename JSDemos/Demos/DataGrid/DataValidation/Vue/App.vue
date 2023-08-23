@@ -42,7 +42,7 @@
 </template>
 <script setup lang="ts">
 import {
-  DxDataGrid, DxColumn, DxPaging, DxEditing, DxRequiredRule, 
+  DxDataGrid, DxColumn, DxPaging, DxEditing, DxRequiredRule,
   DxEmailRule, DxPatternRule, DxAsyncRule,
 } from 'devextreme-vue/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
@@ -74,10 +74,10 @@ const asyncValidation = async(params: ValidationCallbackData) => {
       id: params.data.ID,
       email: params.value,
     }),
-  })
-  
+  });
+
   const result = await response.json();
 
   return result;
-}
+};
 </script>

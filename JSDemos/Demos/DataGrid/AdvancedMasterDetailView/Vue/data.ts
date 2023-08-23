@@ -1,63 +1,63 @@
 export type Supplier = {
-    SupplierID: number;
+  SupplierID: number;
 
-    CompanyName: string;
+  CompanyName: string;
 
-    ContactName: string;
+  ContactName: string;
 
-    ContactTitle: string;
+  ContactTitle: string;
 
-    Address: string;
+  Address: string;
 
-    City: string;
+  City: string;
 
-    Region: string | null;
+  Region: string | null;
 
-    PostalCode: string;
+  PostalCode: string;
 
-    Country: string;
+  Country: string;
 
-    Phone: string;
+  Phone: string;
 
-    Fax: string | null;
+  Fax: string | null;
 
-    HomePage: string | null;
+  HomePage: string | null;
 };
 
 export type Product = {
-    ProductID: number;
+  ProductID: number;
 
-    ProductName: string
+  ProductName: string
 
-    SupplierID: number;
+  SupplierID: number;
 
-    CategoryID: number;
+  CategoryID: number;
 
-    QuantityPerUnit: string
+  QuantityPerUnit: string
 
-    UnitPrice: number
+  UnitPrice: number
 
-    UnitsInStock: number
+  UnitsInStock: number
 
-    UnitsOnOrder: number
+  UnitsOnOrder: number
 
-    ReorderLevel: number
+  ReorderLevel: number
 
-    Discontinued: boolean;
+  Discontinued: boolean;
 };
 
 export type Order = {
-    OrderID: number;
+  OrderID: number;
 
-    OrderDate: Date;
+  OrderDate: Date;
 
-    ShipCountry: string;
+  ShipCountry: string;
 
-    ShipCity: string;
+  ShipCity: string;
 
-    UnitPrice: number;
+  UnitPrice: number;
 
-    Quantity: number;
+  Quantity: number;
 
-    Discount: number;
+  Discount: number;
 };

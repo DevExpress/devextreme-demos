@@ -28,8 +28,8 @@ const asyncValidation = async(params) => {
       id: params.data.ID,
       email: params.value,
     }),
-  })
-  
+  });
+
   const result = await response.json();
 
   return result;

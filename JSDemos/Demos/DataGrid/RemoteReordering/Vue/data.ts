@@ -1,25 +1,25 @@
 export type Task = {
-    ID: number;
+  ID: number;
 
-    Subject: string;
+  Subject: string;
 
-    Status: number;
+  Status: number;
 
-    Owner: number;
+  Owner: number;
 
-    AssignedEmployee: number;
+  AssignedEmployee: number;
 
-    OrderIndex: number;
+  OrderIndex: number;
 
-    Priority: number;
+  Priority: number;
 };
 
 export type Employee = {
-    ID: number;
+  ID: number;
 
-    FullName: string;
-    
-    Department: string;
-    
-    Title: string;
+  FullName: string;
+
+  Department: string;
+
+  Title: string;
 };

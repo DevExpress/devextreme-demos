@@ -8,7 +8,7 @@
 import { formatNumber } from 'devextreme/localization';
 import { Column } from 'devextreme/ui/data_grid';
 
-import { WeekData, DiffValueProperties } from './data';
+import { WeekData, DiffValueProperties } from './data.ts';
 
 const props = defineProps<{
   column: Column,

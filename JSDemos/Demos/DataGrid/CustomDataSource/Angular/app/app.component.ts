@@ -36,13 +36,13 @@ export class AppComponent {
         let params = new HttpParams();
 
         paramNames
-          .filter(paramName => isNotEmpty(loadOptions[paramName]))
-          .forEach(paramName => { 
-            params = params.set(paramName, JSON.stringify(loadOptions[paramName])) 
+          .filter((paramName) => isNotEmpty(loadOptions[paramName]))
+          .forEach((paramName) => {
+            params = params.set(paramName, JSON.stringify(loadOptions[paramName]));
           });
 
         try {
-          const result: any = await lastValueFrom(httpClient.get(url, { params }))
+          const result: any = await lastValueFrom(httpClient.get(url, { params }));
 
           return {
             data: result.data,
@@ -50,7 +50,7 @@ export class AppComponent {
             summary: result.summary,
             groupCount: result.groupCount,
           };
-        } catch(err) {
+        } catch (err) {
           throw new Error('Data Loading Error');
         }
       },

@@ -96,7 +96,7 @@ $(() => {
 
 function getTaskDataItem(row) {
   const rowData = row && row.data;
-  
+
   return {
     subject: rowData.Task_Subject,
     description: rowData.Task_Description,

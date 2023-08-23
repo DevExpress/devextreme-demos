@@ -136,7 +136,7 @@ const refreshMode = ref('reshape');
 const sendRequest = async(url: string, method = 'GET', data: Record<string, string> = {}) => {
   logRequest(method, url, data);
 
-  const request: RequestInit = {
+  const request: any = {
     method, credentials: 'include',
   };
 
@@ -151,16 +151,14 @@ const sendRequest = async(url: string, method = 'GET', data: Record<string, stri
 
   const response = await fetch(url, request);
 
-  const isJson = response.headers.get("content-type")?.includes('application/json');
+  const isJson = response.headers.get('content-type')?.includes('application/json');
   const result = isJson ? await response.json() : {};
-  
+
   if (!response.ok) {
     throw result.Message;
   }
 
-  if (method === 'GET') {
-    return result.data;
-  }
+  return method === 'GET' ? result.data : {};
 };
 
 const logRequest = (method: string, url: string, data: Record<string, string>) => {

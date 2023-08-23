@@ -54,9 +54,9 @@ const store = new CustomStore({
     ] as const;
 
     const queryString = paramNames
-      .filter(paramName => isNotEmpty(loadOptions[paramName]))
-      .map(paramName => `${paramName}=${JSON.stringify(loadOptions[paramName])}`)
-      .join('&');    
+      .filter((paramName) => isNotEmpty(loadOptions[paramName]))
+      .map((paramName) => `${paramName}=${JSON.stringify(loadOptions[paramName])}`)
+      .join('&');
 
     try {
       const response = await fetch(`https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/orders?${queryString}`);
@@ -68,9 +68,9 @@ const store = new CustomStore({
         totalCount: result.totalCount,
         summary: result.summary,
         groupCount: result.groupCount,
-      }
-    } catch(err) {
-      throw new Error('Data Loading Error')
+      };
+    } catch (err) {
+      throw new Error('Data Loading Error');
     }
   },
 });

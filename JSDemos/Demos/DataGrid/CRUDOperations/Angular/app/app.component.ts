@@ -98,10 +98,8 @@ export class AppComponent {
     try {
       const result = await lastValueFrom<any>(request);
 
-      if (method === 'GET') {
-        return result.data;
-      }
-    } catch(e) {
+      return method === 'GET' ? result.data : {};
+    } catch (e) {
       throw e.error.Message;
     }
   }

@@ -60,7 +60,8 @@ const App = () => {
     setRequests((prevRequests) => [request].concat(prevRequests));
   }, []);
 
-  const sendRequest = React.useCallback(async (url, method = 'GET', data = {}) => {
+  // eslint-disable-next-line consistent-return
+  const sendRequest = React.useCallback(async(url, method = 'GET', data = {}) => {
     logRequest(method, url, data);
 
     const request = {
@@ -78,16 +79,14 @@ const App = () => {
 
     const response = await fetch(url, request);
 
-    const isJson = response.headers.get("content-type")?.includes('application/json');
+    const isJson = response.headers.get('content-type')?.includes('application/json');
     const result = isJson ? await response.json() : {};
-    
+
     if (!response.ok) {
       throw result.Message;
     }
-  
-    if (method === 'GET') {
-      return result.data;
-    }
+
+    return method === 'GET' ? result.data : {};
   }, [logRequest]);
 
   return (

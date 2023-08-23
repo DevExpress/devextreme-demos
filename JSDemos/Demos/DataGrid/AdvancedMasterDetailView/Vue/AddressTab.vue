@@ -18,7 +18,7 @@
 import { DxForm } from 'devextreme-vue/form';
 import { SimpleItem } from 'devextreme/ui/form';
 
-import { Supplier } from './data';
+import { Supplier } from './data.ts';
 
 defineProps<{
   data: Supplier

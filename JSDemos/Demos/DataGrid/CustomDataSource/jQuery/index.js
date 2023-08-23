@@ -15,8 +15,8 @@ $(() => {
       const args = {};
 
       paramNames
-        .filter(paramName => isNotEmpty(loadOptions[paramName]))
-        .forEach(paramName => { args[paramName] = JSON.stringify(loadOptions[paramName]) });
+        .filter((paramName) => isNotEmpty(loadOptions[paramName]))
+        .forEach((paramName) => { args[paramName] = JSON.stringify(loadOptions[paramName]); });
 
       $.ajax({
         url: 'https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/orders',
