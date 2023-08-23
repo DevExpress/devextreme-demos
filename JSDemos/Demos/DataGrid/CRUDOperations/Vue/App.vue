@@ -136,7 +136,7 @@ const refreshMode = ref('reshape');
 const sendRequest = async(url: string, method = 'GET', data: Record<string, string> = {}) => {
   logRequest(method, url, data);
 
-  const request: any = {
+  const request: RequestInit = {
     method, credentials: 'include',
   };
 
@@ -149,19 +149,18 @@ const sendRequest = async(url: string, method = 'GET', data: Record<string, stri
     request.headers = { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' };
   }
 
-  return fetch(url, request)
-    // eslint-disable-next-line consistent-return
-    .then(async(result) => {
-      if (!result.ok) {
-        const json = await result.json();
-        throw json.Message;
-      }
+  const response = await fetch(url, request);
 
-      if (method === 'GET') {
-        const json = await result.json();
-        return json.data;
-      }
-    });
+  const isJson = response.headers.get("content-type")?.includes('application/json');
+  const result = isJson ? await response.json() : {};
+  
+  if (!response.ok) {
+    throw result.Message;
+  }
+
+  if (method === 'GET') {
+    return result.data;
+  }
 };
 
 const logRequest = (method: string, url: string, data: Record<string, string>) => {

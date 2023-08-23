@@ -39,6 +39,7 @@ const App = () => {
     loadMode: 'raw',
     load: () => sendRequest(`${URL}/ShippersLookup`),
   }));
+
   const [requests, setRequests] = React.useState([]);
   const [refreshMode, setRefreshMode] = React.useState('reshape');
 
@@ -59,7 +60,7 @@ const App = () => {
     setRequests((prevRequests) => [request].concat(prevRequests));
   }, []);
 
-  const sendRequest = React.useCallback((url, method = 'GET', data = {}) => {
+  const sendRequest = React.useCallback(async (url, method = 'GET', data = {}) => {
     logRequest(method, url, data);
 
     const request = {
@@ -75,19 +76,18 @@ const App = () => {
       request.headers = { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' };
     }
 
-    return fetch(url, request)
-      // eslint-disable-next-line consistent-return
-      .then(async(result) => {
-        if (!result.ok) {
-          const json = await result.json();
-          throw json.Message;
-        }
+    const response = await fetch(url, request);
 
-        if (method === 'GET') {
-          const json = await result.json();
-          return json.data;
-        }
-      });
+    const isJson = response.headers.get("content-type")?.includes('application/json');
+    const result = isJson ? await response.json() : {};
+    
+    if (!response.ok) {
+      throw result.Message;
+    }
+  
+    if (method === 'GET') {
+      return result.data;
+    }
   }, [logRequest]);
 
   return (

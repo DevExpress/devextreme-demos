@@ -18,8 +18,10 @@
 import { DxForm } from 'devextreme-vue/form';
 import { SimpleItem } from 'devextreme/ui/form';
 
+import { Supplier } from './data';
+
 defineProps<{
-  data: object
+  data: Supplier
 }>();
 
 const items = ['Address', 'City', 'Region', 'PostalCode', 'Country', 'Phone'];

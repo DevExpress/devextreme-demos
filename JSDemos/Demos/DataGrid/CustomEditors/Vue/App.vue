@@ -105,7 +105,8 @@ import { ColumnCellTemplateData, RowInsertedEvent, Column } from 'devextreme/ui/
 
 import EmployeeDropDownBoxComponent from './EmployeeDropDownBoxComponent.vue';
 import EmployeeTagBoxComponent from './EmployeeTagBoxComponent.vue';
-import { statuses } from './data.ts';
+
+import { statuses, Task } from './data.ts';
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/CustomEditors';
 
@@ -150,7 +151,7 @@ function calculateFilterExpression(
     return [this.dataField, 'contains', filterValue];
   }
 
-  return (rowData: any) => (rowData.AssignedEmployee || []).indexOf(filterValue) !== -1;
+  return (rowData: Task) => (rowData.AssignedEmployee || []).includes(filterValue);
 }
 </script>
 <style>

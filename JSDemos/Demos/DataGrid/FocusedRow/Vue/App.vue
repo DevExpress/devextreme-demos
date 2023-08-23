@@ -87,6 +87,7 @@ import { Options as DataSourceOptions } from 'devextreme/data/data_source';
 import { FocusedRowChangedEvent, FocusedRowChangingEvent } from 'devextreme/ui/data_grid';
 
 import 'devextreme/data/odata/store';
+import { Task } from './data.ts';
 
 const taskSubject = ref('');
 const taskDetails = ref('');
@@ -133,12 +134,12 @@ const onFocusedRowChanging = (e: FocusedRowChangingEvent) => {
   }
 };
 
-const onFocusedRowChanged = (e: FocusedRowChangedEvent) => {
-  const data = e.row?.data;
+const onFocusedRowChanged = (e: FocusedRowChangedEvent<Task>) => {
+  const data = e.row!.data!;
 
-  taskSubject.value = data?.Task_Subject;
-  taskDetails.value = data?.Task_Description;
-  taskStatus.value = data?.Task_Status;
-  taskProgress.value = data?.Task_Completion ? `${data.Task_Completion}%` : '';
+  taskSubject.value = data.Task_Subject;
+  taskDetails.value = data.Task_Description;
+  taskStatus.value = data.Task_Status;
+  taskProgress.value = data.Task_Completion ? `${data.Task_Completion}%` : '';
 };
 </script>
