@@ -24,6 +24,6 @@ const Appointment = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default Appointment;

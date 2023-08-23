@@ -13,6 +13,6 @@ const TimeCell = (props) => {
       {hasCoffeeCupIcon ? <div className='cafe' /> : null}
     </div>
   );
-}
+};
 
 export default TimeCell;

@@ -8,7 +8,6 @@ import { data } from './data.js';
 const currentDate = new Date(2021, 3, 29);
 const views = ['day', 'week'];
 
-
 const showToast = (event, value, type) => {
   notify(`${event} "${value}" task`, type, 800);
 };

@@ -4,7 +4,7 @@ import Scheduler, { AppointmentDragging } from 'devextreme-react/scheduler';
 import Draggable from 'devextreme-react/draggable';
 import ScrollView from 'devextreme-react/scroll-view';
 
-import { appointments, tasks } from './data.js';
+import { appointments as defaultAppointments, tasks as defaultTasks } from './data.js';
 
 const currentDate = new Date(2021, 3, 26);
 const views = [{ type: 'day', intervalCount: 3 }];
@@ -25,12 +25,14 @@ const onItemDragEnd = (e) => {
 };
 
 const App = () => {
-  const [state, setState] = React.useState({ tasks, appointments });
+  const [state, setState] = React.useState({
+    tasks: defaultTasks, appointments: defaultAppointments,
+  });
 
   const onAppointmentRemove = React.useCallback((e) => {
-    setState(state => {
-      const { appointments, tasks } = state;
-      
+    setState((currentState) => {
+      const { appointments, tasks } = currentState;
+
       const index = appointments.indexOf(e.itemData);
 
       if (index >= 0) {
@@ -43,9 +45,9 @@ const App = () => {
   }, []);
 
   const onAppointmentAdd = React.useCallback((e) => {
-    setState(state => {
-      const { appointments, tasks } = state;
-      
+    setState((currentState) => {
+      const { appointments, tasks } = currentState;
+
       const index = tasks.indexOf(e.fromData);
 
       if (index >= 0) {

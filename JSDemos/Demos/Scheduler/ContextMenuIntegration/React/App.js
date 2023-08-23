@@ -24,7 +24,8 @@ const App = () => {
   const [groups, setGroups] = React.useState(null);
   const [crossScrollingEnabled, setCrossScrollingEnabled] = React.useState(false);
 
-  const onAppointmentContextMenu = React.useCallback(({ appointmentData, targetedAppointmentData }) => {
+  const onAppointmentContextMenu = React.useCallback(
+    ({ appointmentData, targetedAppointmentData }) => {
       const scheduler = schedulerRef.current.instance;
       const resourceItems = resourcesData.map((item) => ({
         ...item,
@@ -56,7 +57,9 @@ const App = () => {
         { text: 'Set Room', beginGroup: true, disabled: true },
         ...resourceItems,
       ]);
-    }, []);
+    }
+    , [],
+  );
 
   const onCellContextMenu = React.useCallback(({ cellData }) => {
     const scheduler = schedulerRef.current.instance;

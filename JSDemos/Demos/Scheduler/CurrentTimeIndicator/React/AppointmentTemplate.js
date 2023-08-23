@@ -7,7 +7,7 @@ const getMovieById = (id) => Query(moviesData).filter(['id', id]).toArray()[0];
 
 const AppointmentTemplate = (props) => {
   const { appointmentData } = props.data;
-  
+
   const movieInfo = getMovieById(appointmentData.movieId) || {};
 
   return (

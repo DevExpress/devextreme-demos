@@ -18,6 +18,6 @@ const ResourceCell = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default ResourceCell;

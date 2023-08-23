@@ -26,6 +26,6 @@ const AppointmentTooltip = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default AppointmentTooltip;

@@ -54,15 +54,15 @@ const onAppointmentUpdating = (e) => {
 const App = () => {
   const [currentView, setCurrentView] = React.useState(views[0]);
 
-  const DataCellComponent = React.useMemo(() => (currentView === 'month'
-      ? DataCellMonth : DataCell
+  const DataCellComponent = React.useMemo(() => (
+    currentView === 'month' ? DataCellMonth : DataCell
   ), [currentView]);
 
   const onCurrentViewChange = React.useCallback((value) => setCurrentView(value), []);
 
-  const renderDateCell = React.useCallback((itemData) => 
-    <DateCell itemData={itemData} currentView={currentView} />,
-  [currentView]);
+  const renderDateCell = React.useCallback((itemData) => (
+    <DateCell itemData={itemData} currentView={currentView} />
+  ), [currentView]);
 
   return (
     <Scheduler
@@ -84,6 +84,6 @@ const App = () => {
       onAppointmentUpdating={onAppointmentUpdating}
     />
   );
-}
+};
 
 export default App;

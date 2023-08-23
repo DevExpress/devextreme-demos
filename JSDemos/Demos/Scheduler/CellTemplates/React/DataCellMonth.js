@@ -13,6 +13,6 @@ const DataCellMonth = (props) => {
       {day}
     </DataCell>
   );
-}
+};
 
 export default DataCellMonth;

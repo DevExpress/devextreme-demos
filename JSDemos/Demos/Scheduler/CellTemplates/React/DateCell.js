@@ -12,6 +12,6 @@ const DateCell = (props) => {
       <div>{text}</div>
     </div>
   );
-}
+};
 
 export default DateCell;

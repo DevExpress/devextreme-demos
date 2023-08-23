@@ -17,6 +17,6 @@ const DataCell = (props) => {
       {props.children}
     </div>
   );
-}
+};
 
 export default DataCell;

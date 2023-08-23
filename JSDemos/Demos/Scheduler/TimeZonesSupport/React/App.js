@@ -14,7 +14,7 @@ const getTimeZones = (date) => {
   const timeZones = timeZoneUtils.getTimeZones(date);
 
   return timeZones.filter((timeZone) => locations.indexOf(timeZone.id) !== -1);
-}
+};
 
 const defaultTimeZones = getTimeZones(currentDate);
 

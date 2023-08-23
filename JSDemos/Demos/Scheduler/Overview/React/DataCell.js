@@ -3,14 +3,14 @@ import React from 'react';
 const isWeekEnd = (date) => {
   const day = date.getDay();
   return day === 0 || day === 6;
-}
+};
 
 const getCurrentTraining = (date, employeeID) => {
   const result = (date + employeeID) % 3;
   const currentTraining = `training-background-${result}`;
 
   return currentTraining;
-}
+};
 
 const DataCell = (props) => {
   const { data: { startDate, groups: { employeeID }, text } } = props;
@@ -32,6 +32,6 @@ const DataCell = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default DataCell;
