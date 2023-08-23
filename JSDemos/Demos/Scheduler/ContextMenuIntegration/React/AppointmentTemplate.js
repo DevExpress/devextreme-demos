@@ -1,9 +1,9 @@
 import React from 'react';
 
-const AppointmentMenuTemplate = ({ data: itemData}) => (
+const AppointmentMenuTemplate = ({ data }) => (
   <div>
-    {itemData.color ? <div className="item-badge" style={{ backgroundColor: itemData.color }} /> : ''}
-    {itemData.text}
+    {data.color ? <div className="item-badge" style={{ backgroundColor: data.color }} /> : ''}
+    {data.text}
   </div>
 );
 

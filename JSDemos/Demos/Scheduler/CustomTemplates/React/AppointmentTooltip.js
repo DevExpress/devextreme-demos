@@ -5,8 +5,10 @@ import { moviesData } from './data.js';
 
 const getMovieById = (id) => Query(moviesData).filter(['id', id]).toArray()[0];
 
-export function AppointmentTooltip(props) {
-  const movieData = getMovieById(props.data.appointmentData.movieId);
+const AppointmentTooltip = (props) => {
+  const { movieId } = props.data.appointmentData;
+
+  const movieData = React.useMemo(() => getMovieById(movieId), [movieId]);
 
   return (
     <div className="movie-tooltip">
@@ -25,3 +27,5 @@ export function AppointmentTooltip(props) {
     </div>
   );
 }
+
+export default AppointmentTooltip;

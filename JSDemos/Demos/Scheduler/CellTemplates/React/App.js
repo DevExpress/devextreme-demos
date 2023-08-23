@@ -58,7 +58,7 @@ const App = () => {
       ? DataCellMonth : DataCell
   ), [currentView]);
 
-  const onCurrentViewChange = (value) => (setCurrentView(value));
+  const onCurrentViewChange = React.useCallback((value) => setCurrentView(value), []);
 
   const renderDateCell = React.useCallback((itemData) => 
     <DateCell itemData={itemData} currentView={currentView} />,

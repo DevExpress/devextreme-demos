@@ -7,7 +7,7 @@ import { data, moviesData } from './data.js';
 import AppointmentTemplate from './AppointmentTemplate.js';
 
 const currentDate = new Date();
-const views = ['week', 'timelineWeek', 'day'];
+const views = ['week', 'timelineWeek'];
 
 const intervalLabel = { 'aria-label': 'Interval' };
 
