@@ -70,12 +70,12 @@ jobs:
       working-directory: ./devextreme/packages/devextreme/artifacts/npm/devextreme-dist
       run: npm pack
 
-    - name: Pack devextreme-react
-      working-directory: ./devextreme/packages/devextreme-react
+    - name: Pack devextreme-angular
+      working-directory: ./devextreme/packages/devextreme-angular
       run: npm run pack
 
-    - name: Pack devextreme-vue
-      working-directory: ./devextreme/packages/devextreme-vue
+    - name: Pack devextreme-react
+      working-directory: ./devextreme/packages/devextreme-react
       run: npm run pack
 
     - name: Pack devextreme-vue
