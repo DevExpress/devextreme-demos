@@ -108,7 +108,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build Demos
     timeout-minutes: 20
-    needs: [build-angular]
+    needs: build-devextreme
 
     steps:
 
