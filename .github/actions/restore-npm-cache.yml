@@ -1,0 +1,21 @@
+name: "Restore npm cache"
+description: "Restore cache into npm cache directory"
+
+inputs:
+  package-lock-hash:
+    description: "Hash of the package-lock.json file(s)"
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Get npm cache directory
+      id: npm-cache-dir
+      shell: bash
+      run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+
+    - name: Restore npm cache
+      uses: actions/cache@v3
+      with:
+        path: ${{ steps.npm-cache-dir.outputs.dir }}
+        key: ${{ runner.os }}-node-${{ github.workflow }}-${{ inputs.package-lock-hash }}

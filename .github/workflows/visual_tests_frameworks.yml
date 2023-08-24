@@ -37,11 +37,9 @@ jobs:
 
     #Build Devextreme
     - name: Restore npm cache
-      uses: actions/cache@v3
+      uses: .github/actions/restore-npm-cache
       with:
-        path: ./devextreme/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-devextreme-node-modules
+        package-lock-hash: ${{ hashFiles('devextreme/package-lock.json') }}
 
     - name: Use Node.js 15
       uses: actions/setup-node@v3
