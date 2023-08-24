@@ -73,7 +73,7 @@ export class AppComponent {
     });
   }
 
-  async sendRequest(url: string, method = 'GET', data: any = {}): any {
+  async sendRequest(url: string, method = 'GET', data: any = {}) {
     this.logRequest(method, url, data);
 
     const httpParams = new HttpParams({ fromObject: data });
