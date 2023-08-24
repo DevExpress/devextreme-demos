@@ -45,8 +45,8 @@ import {
   DxDataGrid, DxColumn, DxPaging, DxEditing, DxRequiredRule,
   DxEmailRule, DxPatternRule, DxAsyncRule,
 } from 'devextreme-vue/data-grid';
+import { ValidationCallbackData } from 'devextreme-vue/common';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
-import { ValidationCallbackData } from 'devextreme/common';
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridEmployeesValidation';
 const emailValidationUrl = 'https://js.devexpress.com/Demos/Mvc/RemoteValidation/CheckUniqueEmailAddress';
