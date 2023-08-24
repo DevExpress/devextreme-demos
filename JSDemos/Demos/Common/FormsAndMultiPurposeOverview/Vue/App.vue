@@ -95,10 +95,6 @@ export default {
   padding: 20px;
 }
 
-.second-group {
-  background-color: rgba(191, 191, 191, 0.15);
-}
-
 .form-avatar {
   height: 128px;
   width: 128px;

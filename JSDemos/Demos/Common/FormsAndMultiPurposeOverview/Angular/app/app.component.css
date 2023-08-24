@@ -3,10 +3,6 @@
   padding: 20px;
 }
 
-::ng-deep .second-group {
-  background-color: rgba(191, 191, 191, 0.15);
-}
-
 ::ng-deep .form-avatar {
   height: 128px;
   width: 128px;
