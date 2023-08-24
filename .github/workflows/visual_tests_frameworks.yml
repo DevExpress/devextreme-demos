@@ -98,11 +98,9 @@ jobs:
         test -d ./devextreme || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme
 
     - name: Restore npm cache
-      uses: actions/cache@v3
+      uses: ./.github/actions/restore-npm-cache
       with:
-        path: ./devextreme/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-devextreme-node-modules
+        package-lock-hash: ${{ hashFiles('devextreme/package-lock.json') }}
 
     - name: Discover declarations
       working-directory: ./devextreme
@@ -199,11 +197,9 @@ jobs:
         test -d ./devextreme || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme
 
     - name: Restore npm cache
-      uses: actions/cache@v3
+      uses: ./.github/actions/restore-npm-cache
       with:
-        path: ./devextreme/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-devextreme-node-modules
+        package-lock-hash: ${{ hashFiles('devextreme/package-lock.json') }}
 
     - name: Discover declarations
       working-directory: ./devextreme
@@ -296,11 +292,9 @@ jobs:
         test -d ./devextreme || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme
 
     - name: Restore npm cache
-      uses: actions/cache@v3
+      uses: ./.github/actions/restore-npm-cache
       with:
-        path: ./devextreme/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-devextreme-node-modules
+        package-lock-hash: ${{ hashFiles('devextreme/package-lock.json') }}
 
     - name: Discover declarations
       working-directory: ./devextreme
@@ -390,12 +384,9 @@ jobs:
         name: devextreme-sources
 
     - name: Restore npm cache
-      uses: actions/cache@v3
+      uses: ./.github/actions/restore-npm-cache
       with:
-        path: ./node_modules
-        key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-modules
+        package-lock-hash: ${{ hashFiles('package-lock.json') }}
 
     - name: Delete DX packages
       run:  sed -i '/22.2-next/d' ./package.json
