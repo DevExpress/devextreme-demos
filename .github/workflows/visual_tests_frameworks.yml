@@ -44,7 +44,6 @@ jobs:
       with:
         path: 'devextreme/**/node_modules'
         key: ${{ runner.os }}-node-modules-${{ hashFiles('devextreme/**/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-node-modules
 
     - name: Use Node.js 18
       uses: actions/setup-node@v3
@@ -71,10 +70,20 @@ jobs:
       working-directory: ./devextreme/packages/devextreme/artifacts/npm/devextreme-dist
       run: npm pack
 
+    - name: Pack devextreme-react
+      working-directory: ./devextreme/packages/devextreme-react
+      run: npm run pack
+
+    - name: Pack devextreme-vue
+      working-directory: ./devextreme/packages/devextreme-vue
+      run: npm run pack
+
     - name: Copy packages
       run: |
         cp ./devextreme/packages/devextreme/artifacts/npm/devextreme/*.tgz ./devextreme-installer.tgz
         cp ./devextreme/packages/devextreme/artifacts/npm/devextreme-dist/*.tgz ./devextreme-dist-installer.tgz
+        cp ./devextreme/packages/devextreme-react/npm/*.tgz ./devextreme-react-installer.tgz
+        cp ./devextreme/packages/devextreme-vue/npm/*.tgz ./devextreme-vue-installer.tgz
         cp ./devextreme/packages/devextreme/artifacts/internal-tools/Declarations.json ./Declarations.json
 
     - name: Copy build artifacts
@@ -84,163 +93,9 @@ jobs:
         path: |
           devextreme-installer.tgz
           devextreme-dist-installer.tgz
-          Declarations.json
-        retention-days: 1
-
-  build-react:
-    runs-on: ubuntu-latest
-    name: Build React
-    timeout-minutes: 20
-    needs: build-devextreme
-
-    steps:
-    - uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: |
-          3.1
-          6.0
-
-    #Git
-    - name: Get sources
-      uses: actions/checkout@v3
-
-    - name: Clone devextreme repo from PR author fork
-      continue-on-error: true
-      if: github.event_name == 'pull_request'
-      run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme ./devextreme
-
-    - name: Clone devextreme repo
-      run: |
-        BASE_BRANCH=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
-        test -d ./devextreme || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme
-
-    - name: Restore npm cache
-      uses: actions/cache@v3
-      with:
-        path: ./devextreme/node_modules
-        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-devextreme-node-modules
-
-    - name: Discover declarations
-      working-directory: ./devextreme/packages/devextreme
-      run: npm run discover-declarations
-
-    #Build devextreme-react
-
-    - name: Use Node.js 18
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-
-    - name: Download devextreme sources
-      uses: actions/download-artifact@v3
-      with:
-        name: devextreme-sources
-
-    - name: Clone devextreme-react repo from PR author fork
-      continue-on-error: true
-      if: github.event_name == 'pull_request'
-      run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme-react ./devextreme-react-repo
-
-    - name: Clone devextreme-react repo
-      run: test -d ./devextreme-react-repo || git clone -b master https://github.com/devexpress/devextreme-react ./devextreme-react-repo
-
-    - name: Copy devextreme packages
-      run: |
-        mkdir ./devextreme-react-repo/devextreme-setup
-        cp ./devextreme-installer.tgz ./devextreme-react-repo/devextreme-setup
-
-    - name: Install devextreme package
-      working-directory: ./devextreme-react-repo
-      run: |
-        pushd devextreme-setup
-        installerName=$(realpath .)/$(ls devextreme-installer.tgz)
-        popd
-        npm install --save-dev --legacy-peer-deps $installerName --workspace=devextreme-react --workspace=devextreme-react-sandbox --include-workspace-root
-
-    - name: Build and Pack
-      working-directory: ./devextreme-react-repo
-      run: npm run pack
-
-    - name: Copy devextreme-react package
-      run: cp ./devextreme-react-repo/packages/devextreme-react/npm/*.tgz ./devextreme-react-installer.tgz
-
-    - name: Copy build artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: devextreme-sources
-        path: |
           devextreme-react-installer.tgz
-        retention-days: 1
-
-  build-vue:
-    runs-on: ubuntu-latest
-    name: Build Vue
-    timeout-minutes: 20
-    needs: build-devextreme
-
-    steps:
-    - uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: |
-          3.1
-          6.0
-
-    #Git
-    - name: Get sources
-      uses: actions/checkout@v3
-
-    #Build devextreme-vue
-
-    - name: Use Node.js 18
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-
-    - name: Download devextreme sources
-      uses: actions/download-artifact@v3
-      with:
-        name: devextreme-sources
-
-    - name: Clone devextreme-vue repo from PR author fork
-      continue-on-error: true
-      if: github.event_name == 'pull_request'
-      run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme-vue ./devextreme-vue-repo
-
-    - name: Clone devextreme-vue repo
-      run: test -d ./devextreme-vue-repo || git clone -b master https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
-
-    - name: Restore submodule
-      working-directory: ./devextreme-vue-repo
-      run: npm run restore-devextreme
-
-    - name: Copy devextreme package
-      run: |
-        mkdir ./devextreme-vue-repo/devextreme-setup
-        cp ./devextreme-installer.tgz ./devextreme-vue-repo/devextreme-setup
-
-    - name: Install packages for devextreme-vue
-      working-directory: ./devextreme-vue-repo
-      run: |
-        pushd devextreme-setup
-        installerName=$(realpath .)/$(ls devextreme-installer.tgz)
-        popd
-        npm install --save-dev --legacy-peer-deps $installerName --workspace=devextreme-vue --workspace=devextreme-vue2-strategy --workspace=devextreme-vue-sandbox --include-workspace-root
-        npm run generate-metadata
-
-    - name: Build and Pack
-      working-directory: ./devextreme-vue-repo
-      run: npm run pack
-
-    - name: Copy devextreme-vue package
-      run: cp ./devextreme-vue-repo/packages/devextreme-vue/npm/*.tgz ./devextreme-vue-installer.tgz
-
-    - name: Copy build artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: devextreme-sources
-        path: |
           devextreme-vue-installer.tgz
+          Declarations.json
         retention-days: 1
 
   build-angular:
@@ -332,7 +187,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build Demos
     timeout-minutes: 20
-    needs: [build-angular, build-react, build-vue]
+    needs: [build-angular]
 
     steps:
 

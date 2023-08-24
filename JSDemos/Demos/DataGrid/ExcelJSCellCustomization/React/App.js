@@ -5,9 +5,7 @@ import DataGrid, {
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
 import { exportDataGrid } from 'devextreme/excel_exporter';
-import service from './data.js';
-
-const companies = service.getCompanies();
+import { companies } from './data.js';
 
 const onExporting = (e) => {
   const workbook = new Workbook();
@@ -46,7 +44,6 @@ const onExporting = (e) => {
       saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Companies.xlsx');
     });
   });
-  e.cancel = true;
 };
 
 const renderGridCell = (data) => <a href={ data.text } target='_blank' rel='noopener noreferrer'>Website</a>;
