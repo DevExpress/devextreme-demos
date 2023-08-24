@@ -36,15 +36,16 @@ jobs:
         test -d ./devextreme || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme
 
     #Build Devextreme
-    - name: Restore npm cache
-      uses: ./.github/actions/restore-npm-cache
-      with:
-        package-lock-hash: ${{ hashFiles('devextreme/package-lock.json') }}
 
     - name: Use Node.js 15
       uses: actions/setup-node@v3
       with:
         node-version: '15'
+
+    - name: Restore npm cache
+      uses: ./.github/actions/restore-npm-cache
+      with:
+        package-lock-hash: ${{ hashFiles('devextreme/package-lock.json') }}
 
     - name: Install packages
       working-directory: ./devextreme
@@ -101,6 +102,10 @@ jobs:
       uses: ./.github/actions/restore-npm-cache
       with:
         package-lock-hash: ${{ hashFiles('devextreme/package-lock.json') }}
+
+    - name: Install packages
+      working-directory: ./devextreme
+      run: npm install --no-audit --no-fund
 
     - name: Discover declarations
       working-directory: ./devextreme
@@ -201,6 +206,10 @@ jobs:
       with:
         package-lock-hash: ${{ hashFiles('devextreme/package-lock.json') }}
 
+    - name: Install packages
+      working-directory: ./devextreme
+      run: npm install --no-audit --no-fund
+
     - name: Discover declarations
       working-directory: ./devextreme
       run: npm run discover-declarations
@@ -295,6 +304,10 @@ jobs:
       uses: ./.github/actions/restore-npm-cache
       with:
         package-lock-hash: ${{ hashFiles('devextreme/package-lock.json') }}
+
+    - name: Install packages
+      working-directory: ./devextreme
+      run: npm install --no-audit --no-fund
 
     - name: Discover declarations
       working-directory: ./devextreme
