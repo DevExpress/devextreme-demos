@@ -6,7 +6,7 @@ import { readFile, writeFile } from 'fs/promises';
 import { copy, emptyDir, remove } from 'fs-extra';
 import { promisify } from 'util';
 import _ from 'lodash';
-import Os from 'os';
+import os from 'os';
 
 import { Logger, PathResolver, PathResolvers } from './types';
 
@@ -16,7 +16,7 @@ const makePathArrayPosix = (pathArray) => pathArray.map(
 );
 
 function isWindows() {
-  return Os.platform() === 'win32';
+  return os.platform() === 'win32';
 }
 
 const exec = promisify(cps.exec);
