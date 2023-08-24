@@ -4,18 +4,19 @@ import SelectBox from 'devextreme-react/select-box';
 import TextArea from 'devextreme-react/text-area';
 import service from './data.js';
 
+const content = service.getContent();
 const { valueChangeEvents } = service;
 const notesLabel = { 'aria-label': 'Notes' };
 const eventLabel = { 'aria-label': 'Event' };
 function App() {
-  const [value, setValue] = React.useState(service.getContent());
-  const [valueForEditableTestArea, setValueForEditableTestArea] = React.useState(service.getContent());
+  const [value, setValue] = React.useState(content);
+  const [valueForEditableTestArea, setValueForEditableTestArea] = React.useState(content);
   const [maxLength, setMaxLength] = React.useState(null);
   const [eventValue, setEventValue] = React.useState(valueChangeEvents[0].name);
   const [autoResizeEnabled, setAutoResizeEnabled] = React.useState(false);
   const [height, setHeight] = React.useState(90);
   const onCheckboxValueChanged = React.useCallback((e) => {
-    const str = service.getContent();
+    const str = content;
     setValue(e.value ? str.substring(0, 100) : str);
     setMaxLength(e.value ? 100 : null);
   }, []);
