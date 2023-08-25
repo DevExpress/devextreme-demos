@@ -21,7 +21,9 @@ function App() {
       icon: '../../../../images/icons/eye.png',
       type: 'default',
       onClick: () => {
-        setPasswordMode((prevPasswordMode: string) => (prevPasswordMode === 'text' ? 'password' : 'text'));
+        setPasswordMode((prevPasswordMode: string) =>
+          prevPasswordMode === 'text' ? 'password' : 'text',
+        );
       },
     }),
     [setPasswordMode],

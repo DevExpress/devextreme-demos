@@ -1,6 +1,7 @@
 *.js
 *.mjs
 *.ts
+*.tsx
 *.vue
 *.css
 *.md

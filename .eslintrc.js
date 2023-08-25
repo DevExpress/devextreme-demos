@@ -429,6 +429,7 @@ module.exports = {
       'comma-spacing': 'error',
       'computed-property-spacing': 'error',
       'comma-style': ['error', 'last'],
+      'implicit-arrow-linebreak': 0,
       'no-multiple-empty-lines': ['error', { max: 1 }],
       'no-irregular-whitespace': 'error',
       'no-multi-spaces': 'error',

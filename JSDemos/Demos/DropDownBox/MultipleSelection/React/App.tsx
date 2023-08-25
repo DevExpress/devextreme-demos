@@ -14,13 +14,14 @@ import 'whatwg-fetch';
 const gridColumns = ['CompanyName', 'City', 'Phone'];
 const ownerLabel = { 'aria-label': 'Owner' };
 
-const makeAsyncDataSource = (jsonFile: string) => new CustomStore({
-  loadMode: 'raw',
-  key: 'ID',
-  load() {
-    return fetch(`../../../../data/${jsonFile}`).then((response) => response.json());
-  },
-});
+const makeAsyncDataSource = (jsonFile: string) =>
+  new CustomStore({
+    loadMode: 'raw',
+    key: 'ID',
+    load() {
+      return fetch(`../../../../data/${jsonFile}`).then((response) => response.json());
+    },
+  });
 
 const treeDataSource = makeAsyncDataSource('treeProducts.json');
 const gridDataSource = makeAsyncDataSource('customers.json');
@@ -82,8 +83,8 @@ function App() {
           treeView.unselectAll();
         } else {
           const values = e.value || treeBoxValue;
-          values
-            && values.forEach((value) => {
+          values &&
+            values.forEach((value) => {
               treeView.selectItem(value);
             });
         }

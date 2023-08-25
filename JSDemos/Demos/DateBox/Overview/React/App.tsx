@@ -21,9 +21,10 @@ function App() {
   const disabledDates = service.getFederalHolidays();
 
   const diffInDay = React.useMemo(
-    () => `${Math.floor(
-      Math.abs((new Date().getTime() - value.getTime()) / (24 * 60 * 60 * 1000)),
-    )} days`,
+    () =>
+      `${Math.floor(
+        Math.abs((new Date().getTime() - value.getTime()) / (24 * 60 * 60 * 1000)),
+      )} days`,
     [value],
   );
 

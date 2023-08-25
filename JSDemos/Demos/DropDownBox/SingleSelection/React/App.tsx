@@ -10,18 +10,20 @@ import 'whatwg-fetch';
 const gridColumns = ['CompanyName', 'City', 'Phone'];
 const ownerLabel = { 'aria-label': 'Owner' };
 
-const makeAsyncDataSource = (jsonFile: string) => new CustomStore({
-  loadMode: 'raw',
-  key: 'ID',
-  load() {
-    return fetch(`../../../../data/${jsonFile}`).then((response) => response.json());
-  },
-});
+const makeAsyncDataSource = (jsonFile: string) =>
+  new CustomStore({
+    loadMode: 'raw',
+    key: 'ID',
+    load() {
+      return fetch(`../../../../data/${jsonFile}`).then((response) => response.json());
+    },
+  });
 
 const treeDataSource = makeAsyncDataSource('treeProducts.json');
 const gridDataSource = makeAsyncDataSource('customers.json');
 
-const gridBoxDisplayExpr = (item: { CompanyName: any; Phone: any }) => item && `${item.CompanyName} <${item.Phone}>`;
+const gridBoxDisplayExpr = (item: { CompanyName: any; Phone: any }) =>
+  item && `${item.CompanyName} <${item.Phone}>`;
 
 function App() {
   const treeViewRef = React.useRef(null);
