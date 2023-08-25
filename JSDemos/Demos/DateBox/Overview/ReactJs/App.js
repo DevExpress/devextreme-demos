@@ -18,9 +18,10 @@ function App() {
   const dateClear = new Date(2015, 11, 1, 6);
   const disabledDates = service.getFederalHolidays();
   const diffInDay = React.useMemo(
-    () => `${Math.floor(
-      Math.abs((new Date().getTime() - value.getTime()) / (24 * 60 * 60 * 1000)),
-    )} days`,
+    () =>
+      `${Math.floor(
+        Math.abs((new Date().getTime() - value.getTime()) / (24 * 60 * 60 * 1000)),
+      )} days`,
     [value],
   );
   const onValueChanged = React.useCallback((e) => {

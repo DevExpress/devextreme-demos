@@ -9,13 +9,14 @@ import 'whatwg-fetch';
 
 const gridColumns = ['CompanyName', 'City', 'Phone'];
 const ownerLabel = { 'aria-label': 'Owner' };
-const makeAsyncDataSource = (jsonFile) => new CustomStore({
-  loadMode: 'raw',
-  key: 'ID',
-  load() {
-    return fetch(`../../../../data/${jsonFile}`).then((response) => response.json());
-  },
-});
+const makeAsyncDataSource = (jsonFile) =>
+  new CustomStore({
+    loadMode: 'raw',
+    key: 'ID',
+    load() {
+      return fetch(`../../../../data/${jsonFile}`).then((response) => response.json());
+    },
+  });
 const treeDataSource = makeAsyncDataSource('treeProducts.json');
 const gridDataSource = makeAsyncDataSource('customers.json');
 const gridBoxDisplayExpr = (item) => item && `${item.CompanyName} <${item.Phone}>`;
