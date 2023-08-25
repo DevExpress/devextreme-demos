@@ -1,3 +1,5 @@
+/* stylelint-disable indentation */
+/* stylelint-disable selector-descendant-combinator-no-non-space */
 .dx-dropdownlist-popup-wrapper
   .dx-list:not(.dx-list-select-decorator-enabled)
   .dx-list-item-content {
