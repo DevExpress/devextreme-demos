@@ -22,8 +22,7 @@ function App() {
       type: 'default',
       onClick: () => {
         setPasswordMode((prevPasswordMode: string) =>
-          prevPasswordMode === 'text' ? 'password' : 'text',
-        );
+          (prevPasswordMode === 'text' ? 'password' : 'text'));
       },
     }),
     [setPasswordMode],
