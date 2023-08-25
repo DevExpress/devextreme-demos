@@ -30,10 +30,7 @@ function validateClick({ validationGroup }) {
   if (result.isValid) {
     notify('The task was saved successfully.', 'success');
   } else {
-    notify(
-      'The task was not saved. Please check if all fields are valid.',
-      'error',
-    );
+    notify('The task was not saved. Please check if all fields are valid.', 'error');
   }
 }
 export default function App() {

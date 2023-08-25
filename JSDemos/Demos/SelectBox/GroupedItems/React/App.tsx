@@ -4,7 +4,11 @@ import DataSource from 'devextreme/data/data_source';
 import Group from './Group.tsx';
 
 import {
-  ungroupedData, pregroupedData, ungroupedDataLabel, pregroupedDataLabel, templatedUngroupedDataLabel,
+  ungroupedData,
+  pregroupedData,
+  ungroupedDataLabel,
+  pregroupedDataLabel,
+  templatedUngroupedDataLabel,
 } from './data.ts';
 
 const fromUngroupedData = new DataSource({
@@ -36,19 +40,41 @@ function App() {
       <div className="dx-field">
         <div className="dx-field-label">Data grouped in the DataSource</div>
         <div className="dx-field-value">
-          <SelectBox dataSource={fromUngroupedData} valueExpr="ID" grouped={true} inputAttr={ungroupedDataLabel} displayExpr="Name" defaultValue={1} />
+          <SelectBox
+            dataSource={fromUngroupedData}
+            valueExpr="ID"
+            grouped={true}
+            inputAttr={ungroupedDataLabel}
+            displayExpr="Name"
+            defaultValue={1}
+          />
         </div>
       </div>
       <div className="dx-field">
         <div className="dx-field-label">Pre-grouped data</div>
         <div className="dx-field-value">
-          <SelectBox dataSource={fromPregroupedData} valueExpr="ID" inputAttr={pregroupedDataLabel} grouped={true} displayExpr="Name" defaultValue={1} />
+          <SelectBox
+            dataSource={fromPregroupedData}
+            valueExpr="ID"
+            inputAttr={pregroupedDataLabel}
+            grouped={true}
+            displayExpr="Name"
+            defaultValue={1}
+          />
         </div>
       </div>
       <div className="dx-field">
         <div className="dx-field-label">Custom group template</div>
         <div className="dx-field-value">
-          <SelectBox dataSource={fromUngroupedData} valueExpr="ID" inputAttr={templatedUngroupedDataLabel} grouped={true} displayExpr="Name" groupRender={Group} defaultValue={1} />
+          <SelectBox
+            dataSource={fromUngroupedData}
+            valueExpr="ID"
+            inputAttr={templatedUngroupedDataLabel}
+            grouped={true}
+            displayExpr="Name"
+            groupRender={Group}
+            defaultValue={1}
+          />
         </div>
       </div>
     </div>

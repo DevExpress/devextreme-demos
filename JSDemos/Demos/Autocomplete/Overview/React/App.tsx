@@ -81,7 +81,12 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">First Name</div>
           <div className="dx-field-value">
-            <Autocomplete dataSource={names} value={firstName} onValueChanged={handleFirstNameChange} placeholder="Type first name..." />
+            <Autocomplete
+              dataSource={names}
+              value={firstName}
+              onValueChanged={handleFirstNameChange}
+              placeholder="Type first name..."
+            />
           </div>
         </div>
       </div>
@@ -91,7 +96,13 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Last Name</div>
           <div className="dx-field-value">
-            <Autocomplete dataSource={surnames} value={lastName} onValueChanged={handleLastNameChange} showClearButton={true} placeholder="Type last name..." />
+            <Autocomplete
+              dataSource={surnames}
+              value={lastName}
+              onValueChanged={handleLastNameChange}
+              showClearButton={true}
+              placeholder="Type last name..."
+            />
           </div>
         </div>
       </div>
@@ -101,7 +112,11 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Position</div>
           <div className="dx-field-value">
-            <Autocomplete dataSource={positions} value={position} disabled={true} />
+            <Autocomplete
+              dataSource={positions}
+              value={position}
+              disabled={true}
+            />
           </div>
         </div>
       </div>
@@ -111,7 +126,14 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">State</div>
           <div className="dx-field-value">
-            <Autocomplete dataSource={states} value={state} valueExpr="State_Long" onValueChanged={handleStateChange} placeholder="Type state name..." itemRender={renderState} />
+            <Autocomplete
+              dataSource={states}
+              value={state}
+              valueExpr="State_Long"
+              onValueChanged={handleStateChange}
+              placeholder="Type state name..."
+              itemRender={renderState}
+            />
           </div>
         </div>
       </div>

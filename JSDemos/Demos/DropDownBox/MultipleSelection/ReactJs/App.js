@@ -2,10 +2,7 @@ import React from 'react';
 import DropDownBox from 'devextreme-react/drop-down-box';
 import TreeView from 'devextreme-react/tree-view';
 import DataGrid, {
-  Selection,
-  Paging,
-  FilterRow,
-  Scrolling,
+  Selection, Paging, FilterRow, Scrolling,
 } from 'devextreme-react/data-grid';
 import CustomStore from 'devextreme/data/custom_store';
 import 'whatwg-fetch';

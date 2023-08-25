@@ -9,7 +9,18 @@ import Validator, { RequiredRule } from 'devextreme-react/validator';
 import notify from 'devextreme/ui/notify';
 import { EditorStyle, LabelMode } from 'devextreme/common';
 import {
-  states, stylingModes, labelModes, notesLabel, birthDateLabel, hireDateLabel, nameLabel, addressLabel, phoneLabel, stateLabel, labelModeLabel, stylingModeLabel,
+  states,
+  stylingModes,
+  labelModes,
+  notesLabel,
+  birthDateLabel,
+  hireDateLabel,
+  nameLabel,
+  addressLabel,
+  phoneLabel,
+  stateLabel,
+  labelModeLabel,
+  stylingModeLabel,
 } from './data.ts';
 
 const phoneRules = {
@@ -49,42 +60,100 @@ export default function App() {
         <div className="editors-modes">
           <div className="option">
             <label>Styling Mode</label>
-            <SelectBox stylingMode={defaultStylingMode} items={stylingModes} inputAttr={stylingModeLabel} value={stylingMode} onValueChanged={changeStylingMode} />
+            <SelectBox
+              stylingMode={defaultStylingMode}
+              items={stylingModes}
+              inputAttr={stylingModeLabel}
+              value={stylingMode}
+              onValueChanged={changeStylingMode}
+            />
           </div>
           <div className="option">
             <label>Label Mode</label>
-            <SelectBox stylingMode={defaultStylingMode} items={labelModes} inputAttr={labelModeLabel} value={labelMode} onValueChanged={labelModeChange} />
+            <SelectBox
+              stylingMode={defaultStylingMode}
+              items={labelModes}
+              inputAttr={labelModeLabel}
+              value={labelMode}
+              onValueChanged={labelModeChange}
+            />
           </div>
         </div>
       </div>
       <div className="widgets-container">
         <div className="title">Edit Profile</div>
-        <TextBox id="name" stylingMode={stylingMode} defaultValue="Olivia Peyton" inputAttr={nameLabel} placeholder="Type..." label="Name" labelMode={labelMode}>
+        <TextBox
+          id="name"
+          stylingMode={stylingMode}
+          defaultValue="Olivia Peyton"
+          inputAttr={nameLabel}
+          placeholder="Type..."
+          label="Name"
+          labelMode={labelMode}
+        >
           <Validator>
             <RequiredRule />
           </Validator>
         </TextBox>
-        <TextBox id="address" stylingMode={stylingMode} placeholder="Type..." inputAttr={addressLabel} label="Address" labelMode={labelMode}>
+        <TextBox
+          id="address"
+          stylingMode={stylingMode}
+          placeholder="Type..."
+          inputAttr={addressLabel}
+          label="Address"
+          labelMode={labelMode}
+        >
           <Validator>
             <RequiredRule />
           </Validator>
         </TextBox>
-        <DateBox id="hire-date" stylingMode={stylingMode} placeholder="Select..." label="Hire Date" inputAttr={hireDateLabel} labelMode={labelMode}>
+        <DateBox
+          id="hire-date"
+          stylingMode={stylingMode}
+          placeholder="Select..."
+          label="Hire Date"
+          inputAttr={hireDateLabel}
+          labelMode={labelMode}
+        >
           <Validator>
             <RequiredRule />
           </Validator>
         </DateBox>
-        <DateBox id="birth-date" defaultValue="6/3/1981" stylingMode={stylingMode} placeholder="Birth Date" label="Birth Date" inputAttr={birthDateLabel} labelMode={labelMode}>
+        <DateBox
+          id="birth-date"
+          defaultValue="6/3/1981"
+          stylingMode={stylingMode}
+          placeholder="Birth Date"
+          label="Birth Date"
+          inputAttr={birthDateLabel}
+          labelMode={labelMode}
+        >
           <Validator>
             <RequiredRule />
           </Validator>
         </DateBox>
-        <SelectBox id="state" items={states} stylingMode={stylingMode} inputAttr={stateLabel} placeholder="Select..." label="State" labelMode={labelMode}>
+        <SelectBox
+          id="state"
+          items={states}
+          stylingMode={stylingMode}
+          inputAttr={stateLabel}
+          placeholder="Select..."
+          label="State"
+          labelMode={labelMode}
+        >
           <Validator>
             <RequiredRule />
           </Validator>
         </SelectBox>
-        <TextBox id="phone" stylingMode={stylingMode} mask="+1 (000) 000-0000" inputAttr={phoneLabel} maskRules={phoneRules} label="Phone" labelMode={labelMode}>
+        <TextBox
+          id="phone"
+          stylingMode={stylingMode}
+          mask="+1 (000) 000-0000"
+          inputAttr={phoneLabel}
+          maskRules={phoneRules}
+          label="Phone"
+          labelMode={labelMode}
+        >
           <Validator>
             <RequiredRule />
           </Validator>
@@ -108,7 +177,13 @@ export default function App() {
           inputAttr={notesLabel}
         />
       </div>
-      <Button onClick={validateClick} text="Save" icon="save" type="default" id="validate" />
+      <Button
+        onClick={validateClick}
+        text="Save"
+        icon="save"
+        type="default"
+        id="validate"
+      />
     </React.Fragment>
   );
 }

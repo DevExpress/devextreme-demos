@@ -6,12 +6,27 @@ import DateBox from 'devextreme-react/date-box';
 import Button, { ButtonTypes } from 'devextreme-react/button';
 import ValidationSummary from 'devextreme-react/validation-summary';
 import {
-  Validator, RequiredRule, CompareRule, EmailRule, PatternRule, StringLengthRule, RangeRule, AsyncRule,
+  Validator,
+  RequiredRule,
+  CompareRule,
+  EmailRule,
+  PatternRule,
+  StringLengthRule,
+  RangeRule,
+  AsyncRule,
 } from 'devextreme-react/validator';
 
 import notify from 'devextreme/ui/notify';
 import {
-  countries, nameLabel, passwordLabel, emailLabel, maskLabel, dateLabel, cityLabel, addressLabel, countryLabel,
+  countries,
+  nameLabel,
+  passwordLabel,
+  emailLabel,
+  maskLabel,
+  dateLabel,
+  cityLabel,
+  addressLabel,
+  countryLabel,
 } from './data.ts';
 
 const cityPattern = '^[^0-9]+$';
@@ -87,7 +102,10 @@ function App() {
   }, []);
 
   return (
-    <form action="your-action" onSubmit={onFormSubmit}>
+    <form
+      action="your-action"
+      onSubmit={onFormSubmit}
+    >
       <div className="dx-fieldset">
         <div className="dx-fieldset-header">Credentials</div>
         <div className="dx-field">
@@ -97,7 +115,10 @@ function App() {
               <Validator>
                 <RequiredRule message="Email is required" />
                 <EmailRule message="Email is invalid" />
-                <AsyncRule message="Email is already registered" validationCallback={asyncValidation} />
+                <AsyncRule
+                  message="Email is already registered"
+                  validationCallback={asyncValidation}
+                />
               </Validator>
             </TextBox>
           </div>
@@ -105,8 +126,17 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Password</div>
           <div className="dx-field-value">
-            <TextBox mode={passwordMode} value={password} inputAttr={passwordLabel} onValueChanged={onPasswordChanged}>
-              <TextBoxButton name="password" location="after" options={passwordButton} />
+            <TextBox
+              mode={passwordMode}
+              value={password}
+              inputAttr={passwordLabel}
+              onValueChanged={onPasswordChanged}
+            >
+              <TextBoxButton
+                name="password"
+                location="after"
+                options={passwordButton}
+              />
               <Validator>
                 <RequiredRule message="Password is required" />
               </Validator>
@@ -116,11 +146,23 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Confirm Password</div>
           <div className="dx-field-value">
-            <TextBox value={confirmPassword} inputAttr={passwordLabel} onValueChanged={onConfirmPasswordChanged} mode={confirmPasswordMode}>
-              <TextBoxButton name="password" location="after" options={confirmPasswordButton} />
+            <TextBox
+              value={confirmPassword}
+              inputAttr={passwordLabel}
+              onValueChanged={onConfirmPasswordChanged}
+              mode={confirmPasswordMode}
+            >
+              <TextBoxButton
+                name="password"
+                location="after"
+                options={confirmPasswordButton}
+              />
               <Validator ref={validatorRef}>
                 <RequiredRule message="Confirm Password is required" />
-                <CompareRule message="Password and Confirm Password do not match" comparisonTarget={passwordComparison} />
+                <CompareRule
+                  message="Password and Confirm Password do not match"
+                  comparisonTarget={passwordComparison}
+                />
               </Validator>
             </TextBox>
           </div>
@@ -131,11 +173,20 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Name</div>
           <div className="dx-field-value">
-            <TextBox value="Peter" inputAttr={nameLabel}>
+            <TextBox
+              value="Peter"
+              inputAttr={nameLabel}
+            >
               <Validator>
                 <RequiredRule message="Name is required" />
-                <PatternRule message="Do not use digits in the Name" pattern={namePattern} />
-                <StringLengthRule message="Name must have at least 2 symbols" min={2} />
+                <PatternRule
+                  message="Do not use digits in the Name"
+                  pattern={namePattern}
+                />
+                <StringLengthRule
+                  message="Name must have at least 2 symbols"
+                  min={2}
+                />
               </Validator>
             </TextBox>
           </div>
@@ -143,10 +194,16 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Date of birth</div>
           <div className="dx-field-value">
-            <DateBox invalidDateMessage="The date must have the following format: MM/dd/yyyy" inputAttr={dateLabel}>
+            <DateBox
+              invalidDateMessage="The date must have the following format: MM/dd/yyyy"
+              inputAttr={dateLabel}
+            >
               <Validator>
                 <RequiredRule message="Date of birth is required" />
-                <RangeRule message="You must be at least 21 years old" max={maxDate} />
+                <RangeRule
+                  message="You must be at least 21 years old"
+                  max={maxDate}
+                />
               </Validator>
             </DateBox>
           </div>
@@ -157,7 +214,11 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Country</div>
           <div className="dx-field-value">
-            <SelectBox dataSource={countries} validationMessagePosition="left" inputAttr={countryLabel}>
+            <SelectBox
+              dataSource={countries}
+              validationMessagePosition="left"
+              inputAttr={countryLabel}
+            >
               <Validator>
                 <RequiredRule message="Country is required" />
               </Validator>
@@ -167,11 +228,20 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">City</div>
           <div className="dx-field-value">
-            <TextBox validationMessagePosition="left" inputAttr={cityLabel}>
+            <TextBox
+              validationMessagePosition="left"
+              inputAttr={cityLabel}
+            >
               <Validator>
                 <RequiredRule message="City is required" />
-                <PatternRule message="Do not use digits in the City name" pattern={cityPattern} />
-                <StringLengthRule message="City must have at least 2 symbols" min={2} />
+                <PatternRule
+                  message="Do not use digits in the City name"
+                  pattern={cityPattern}
+                />
+                <StringLengthRule
+                  message="City must have at least 2 symbols"
+                  min={2}
+                />
               </Validator>
             </TextBox>
           </div>
@@ -179,7 +249,10 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Address</div>
           <div className="dx-field-value">
-            <TextBox validationMessagePosition="left" inputAttr={addressLabel}>
+            <TextBox
+              validationMessagePosition="left"
+              inputAttr={addressLabel}
+            >
               <Validator>
                 <RequiredRule message="Address is required" />
               </Validator>
@@ -191,17 +264,33 @@ function App() {
             Phone <i>(optional)</i>
           </div>
           <div className="dx-field-value">
-            <TextBox mask="+1 (X00) 000-0000" inputAttr={maskLabel} maskRules={phoneRules} maskInvalidMessage="The phone must have a correct USA phone format" validationMessagePosition="left">
+            <TextBox
+              mask="+1 (X00) 000-0000"
+              inputAttr={maskLabel}
+              maskRules={phoneRules}
+              maskInvalidMessage="The phone must have a correct USA phone format"
+              validationMessagePosition="left"
+            >
               <Validator>
-                <PatternRule message="The phone must have a correct USA phone format" pattern={phonePattern} />
+                <PatternRule
+                  message="The phone must have a correct USA phone format"
+                  pattern={phonePattern}
+                />
               </Validator>
             </TextBox>
           </div>
         </div>
         <div>
-          <CheckBox id="check" defaultValue={false} text="I agree to the Terms and Conditions">
+          <CheckBox
+            id="check"
+            defaultValue={false}
+            text="I agree to the Terms and Conditions"
+          >
             <Validator>
-              <CompareRule message="You must agree to the Terms and Conditions" comparisonTarget={checkComparison} />
+              <CompareRule
+                message="You must agree to the Terms and Conditions"
+                comparisonTarget={checkComparison}
+              />
             </Validator>
           </CheckBox>
         </div>
@@ -209,7 +298,13 @@ function App() {
 
       <div className="dx-fieldset">
         <ValidationSummary id="summary" />
-        <Button width="100%" id="button" text="Register" type="success" useSubmitBehavior={true} />
+        <Button
+          width="100%"
+          id="button"
+          text="Register"
+          type="success"
+          useSubmitBehavior={true}
+        />
       </div>
     </form>
   );

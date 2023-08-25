@@ -27,21 +27,44 @@ function App() {
       <div className="dx-field">
         <div className="dx-field-label">Grouped items</div>
         <div className="dx-field-value">
-          <TagBox dataSource={products} inputAttr={productLabel} valueExpr="ID" defaultValue={defaultValues.grouped} grouped={true} displayExpr="Name" />
+          <TagBox
+            dataSource={products}
+            inputAttr={productLabel}
+            valueExpr="ID"
+            defaultValue={defaultValues.grouped}
+            grouped={true}
+            displayExpr="Name"
+          />
         </div>
       </div>
 
       <div className="dx-field">
         <div className="dx-field-label">Grouped items with search enabled</div>
         <div className="dx-field-value">
-          <TagBox dataSource={products} valueExpr="ID" inputAttr={productLabel} defaultValue={defaultValues.search} searchEnabled={true} grouped={true} displayExpr="Name" />
+          <TagBox
+            dataSource={products}
+            valueExpr="ID"
+            inputAttr={productLabel}
+            defaultValue={defaultValues.search}
+            searchEnabled={true}
+            grouped={true}
+            displayExpr="Name"
+          />
         </div>
       </div>
 
       <div className="dx-field">
         <div className="dx-field-label">Grouped items with a custom group template</div>
         <div className="dx-field-value">
-          <TagBox dataSource={products} valueExpr="ID" inputAttr={productLabel} defaultValue={defaultValues.template} grouped={true} displayExpr="Name" groupRender={Group} />
+          <TagBox
+            dataSource={products}
+            valueExpr="ID"
+            inputAttr={productLabel}
+            defaultValue={defaultValues.template}
+            grouped={true}
+            displayExpr="Name"
+            groupRender={Group}
+          />
         </div>
       </div>
     </div>

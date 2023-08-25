@@ -3,7 +3,11 @@ import SelectBox from 'devextreme-react/select-box';
 
 import { Template } from 'devextreme-react/core/template';
 import {
-  products, simpleProducts, simpleProductLabel, deferredProductLabel, productLabel,
+  products,
+  simpleProducts,
+  simpleProductLabel,
+  deferredProductLabel,
+  productLabel,
 } from './data.ts';
 import ImageIcon from './imageIcon.tsx';
 import IndicatorIcon from './indicatorIcon.tsx';
@@ -32,9 +36,15 @@ function App() {
     [setIsLoaded],
   );
 
-  const renderLoadIndicator = React.useCallback(() => <IndicatorIcon isLoaded={isLoaded} />, [isLoaded]);
+  const renderLoadIndicator = React.useCallback(
+    () => <IndicatorIcon isLoaded={isLoaded} />,
+    [isLoaded],
+  );
 
-  const renderConditionalIcon = React.useCallback(() => <ConditionalIcon value={selectedItem} />, [selectedItem]);
+  const renderConditionalIcon = React.useCallback(
+    () => <ConditionalIcon value={selectedItem} />,
+    [selectedItem],
+  );
 
   const selectionChanged = React.useCallback((event: { selectedItem: any }) => {
     setSelectedItem(event.selectedItem);
@@ -45,14 +55,25 @@ function App() {
       <div className="dx-field">
         <div className="dx-field-label">Image as the icon</div>
         <div className="dx-field-value">
-          <SelectBox dataSource={simpleProducts} inputAttr={simpleProductLabel} dropDownButtonRender={ImageIcon} />
+          <SelectBox
+            dataSource={simpleProducts}
+            inputAttr={simpleProductLabel}
+            dropDownButtonRender={ImageIcon}
+          />
         </div>
       </div>
       <div className="dx-field">
         <div className="dx-field-label">Load indicator as the icon</div>
         <div className="dx-field-value">
-          <SelectBox dataSource={deferredProducts} inputAttr={deferredProductLabel} dropDownButtonTemplate="loadIndicator">
-            <Template name="loadIndicator" render={renderLoadIndicator} />
+          <SelectBox
+            dataSource={deferredProducts}
+            inputAttr={deferredProductLabel}
+            dropDownButtonTemplate="loadIndicator"
+          >
+            <Template
+              name="loadIndicator"
+              render={renderLoadIndicator}
+            />
           </SelectBox>
         </div>
       </div>
@@ -71,7 +92,10 @@ function App() {
             dropDownButtonTemplate="conditionalIcon"
             onSelectionChanged={selectionChanged}
           >
-            <Template name="conditionalIcon" render={renderConditionalIcon} />
+            <Template
+              name="conditionalIcon"
+              render={renderConditionalIcon}
+            />
           </SelectBox>
         </div>
       </div>

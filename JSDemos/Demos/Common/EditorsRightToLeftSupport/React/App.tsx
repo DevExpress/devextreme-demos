@@ -8,7 +8,14 @@ import { CheckBox } from 'devextreme-react/check-box';
 import { TextArea } from 'devextreme-react/text-area';
 import { TagBox } from 'devextreme-react/tag-box';
 import {
-  europeanUnion, numberBoxLabel, notesLabel, nameLabel, textBoxLabel, europeanUnionDataLabel, languageLabel, autocompleteLabel,
+  europeanUnion,
+  numberBoxLabel,
+  notesLabel,
+  nameLabel,
+  textBoxLabel,
+  europeanUnionDataLabel,
+  languageLabel,
+  autocompleteLabel,
 } from './data.ts';
 
 const languages = ['Arabic: Right-to-Left direction', 'English: Left-to-Right direction'];
@@ -36,7 +43,13 @@ function App() {
             <div className="dx-field">
               <div className="dx-field-label">Language</div>
               <div className="dx-field-value">
-                <SelectBox items={languages} inputAttr={languageLabel} defaultValue={languages[1]} rtlEnabled={rtlEnabled} onValueChanged={onLanguageChanged} />
+                <SelectBox
+                  items={languages}
+                  inputAttr={languageLabel}
+                  defaultValue={languages[1]}
+                  rtlEnabled={rtlEnabled}
+                  onValueChanged={onLanguageChanged}
+                />
               </div>
             </div>
           </div>
@@ -45,43 +58,80 @@ function App() {
           <div className="dx-field">
             <div className="dx-field-label">Text Box</div>
             <div className="dx-field-value">
-              <TextBox showClearButton={true} inputAttr={textBoxLabel} defaultValue={textValue} rtlEnabled={rtlEnabled} />
+              <TextBox
+                showClearButton={true}
+                inputAttr={textBoxLabel}
+                defaultValue={textValue}
+                rtlEnabled={rtlEnabled}
+              />
             </div>
           </div>
           <div className="dx-field">
             <div className="dx-field-label">Number Box</div>
             <div className="dx-field-value">
-              <NumberBox showSpinButtons={true} defaultValue={123} rtlEnabled={rtlEnabled} inputAttr={numberBoxLabel} />
+              <NumberBox
+                showSpinButtons={true}
+                defaultValue={123}
+                rtlEnabled={rtlEnabled}
+                inputAttr={numberBoxLabel}
+              />
             </div>
           </div>
           <div className="dx-field">
             <div className="dx-field-label">Select Box</div>
             <div className="dx-field-value">
-              <SelectBox items={europeanUnion} inputAttr={europeanUnionDataLabel} defaultValue={europeanUnion[0]} rtlEnabled={rtlEnabled} displayExpr={displayExpr} />
+              <SelectBox
+                items={europeanUnion}
+                inputAttr={europeanUnionDataLabel}
+                defaultValue={europeanUnion[0]}
+                rtlEnabled={rtlEnabled}
+                displayExpr={displayExpr}
+              />
             </div>
           </div>
           <div className="dx-field">
             <div className="dx-field-label">Tag Box</div>
             <div className="dx-field-value">
-              <TagBox items={europeanUnion} defaultValue={tagBoxDefaultValue} rtlEnabled={rtlEnabled} inputAttr={nameLabel} displayExpr={displayExpr} placeholder="..." valueExpr="id" />
+              <TagBox
+                items={europeanUnion}
+                defaultValue={tagBoxDefaultValue}
+                rtlEnabled={rtlEnabled}
+                inputAttr={nameLabel}
+                displayExpr={displayExpr}
+                placeholder="..."
+                valueExpr="id"
+              />
             </div>
           </div>
           <div className="dx-field">
             <div className="dx-field-label">Text Area</div>
             <div className="dx-field-value">
-              <TextArea defaultValue={textValue} rtlEnabled={rtlEnabled} inputAttr={notesLabel} />
+              <TextArea
+                defaultValue={textValue}
+                rtlEnabled={rtlEnabled}
+                inputAttr={notesLabel}
+              />
             </div>
           </div>
           <div className="dx-field">
             <div className="dx-field-label">Autocomplete</div>
             <div className="dx-field-value">
-              <Autocomplete items={europeanUnion} rtlEnabled={rtlEnabled} valueExpr={displayExpr} inputAttr={autocompleteLabel} />
+              <Autocomplete
+                items={europeanUnion}
+                rtlEnabled={rtlEnabled}
+                valueExpr={displayExpr}
+                inputAttr={autocompleteLabel}
+              />
             </div>
           </div>
           <div className="dx-field">
             <div className="dx-field-label">Check Box</div>
             <div className="dx-field-value">
-              <CheckBox defaultValue={true} text={textValue} rtlEnabled={rtlEnabled} />
+              <CheckBox
+                defaultValue={true}
+                text={textValue}
+                rtlEnabled={rtlEnabled}
+              />
             </div>
           </div>
           <div className="dx-field">

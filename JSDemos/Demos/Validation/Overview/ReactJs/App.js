@@ -51,9 +51,7 @@ const onFormSubmit = (e) => {
 };
 function App() {
   const currentDate = new Date();
-  const maxDate = new Date(
-    currentDate.setFullYear(currentDate.getFullYear() - 21),
-  );
+  const maxDate = new Date(currentDate.setFullYear(currentDate.getFullYear() - 21));
   const [password, setPassword] = React.useState('');
   const [confirmPassword, setConfirmPassword] = React.useState('');
   const [passwordMode, setPasswordMode] = React.useState('password');
@@ -74,9 +72,7 @@ function App() {
       icon: '../../../../images/icons/eye.png',
       type: 'default',
       onClick: () => {
-        setConfirmPasswordMode(
-          confirmPasswordMode === 'text' ? 'password' : 'text',
-        );
+        setConfirmPasswordMode(confirmPasswordMode === 'text' ? 'password' : 'text');
       },
     }),
     [confirmPasswordMode, setConfirmPasswordMode],

@@ -119,9 +119,7 @@ function App() {
           <div className="dx-field current-product">
             Current product:{' '}
             <span className="current-value">
-              {editBoxValue
-                ? `${editBoxValue.Name} (ID: ${editBoxValue.ID})`
-                : 'Not selected'}
+              {editBoxValue ? `${editBoxValue.Name} (ID: ${editBoxValue.ID})` : 'Not selected'}
             </span>
           </div>
         </div>

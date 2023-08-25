@@ -1,9 +1,6 @@
 import React from 'react';
 import { TextBox, Button as TextBoxButton } from 'devextreme-react/text-box';
-import {
-  NumberBox,
-  Button as NumberBoxButton,
-} from 'devextreme-react/number-box';
+import { NumberBox, Button as NumberBoxButton } from 'devextreme-react/number-box';
 import { DateBox, Button as DateBoxButton } from 'devextreme-react/date-box';
 
 const millisecondsInDay = 24 * 60 * 60 * 1000;

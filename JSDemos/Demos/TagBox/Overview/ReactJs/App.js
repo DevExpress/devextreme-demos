@@ -13,17 +13,13 @@ const dataSource = new ArrayStore({
   key: 'Id',
 });
 function App() {
-  const [editableProducts, setEditableProducts] = React.useState([
-    ...simpleProducts,
-  ]);
+  const [editableProducts, setEditableProducts] = React.useState([...simpleProducts]);
   const [target, setTarget] = React.useState(null);
   const [product, setProduct] = React.useState({});
   const onCustomItemCreating = React.useCallback(
     (args) => {
       const newValue = args.text;
-      const isItemInDataSource = editableProducts.some(
-        (item) => item === newValue,
-      );
+      const isItemInDataSource = editableProducts.some((item) => item === newValue);
       if (!isItemInDataSource) {
         setEditableProducts([newValue, ...editableProducts]);
       }

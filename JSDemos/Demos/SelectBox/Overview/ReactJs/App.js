@@ -8,9 +8,7 @@ import Item from './Item.js';
 
 const simpleProductLabel = { 'aria-label': 'Simple Product' };
 const productIDLabel = { 'aria-label': 'Product ID' };
-const productWithPlaceholderLabel = {
-  'aria-label': 'Product With Placeholder',
-};
+const productWithPlaceholderLabel = { 'aria-label': 'Product With Placeholder' };
 const productLabel = { 'aria-label': 'Product' };
 const readOnlyProductLabel = { 'aria-label': 'ReadOnly Product' };
 const templatedProductLabel = { 'aria-label': 'Templated Product' };

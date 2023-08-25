@@ -45,55 +45,94 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Default mode</div>
           <div className="dx-field-value">
-            <TagBox items={simpleProducts} inputAttr={productLabel} />
+            <TagBox
+              items={simpleProducts}
+              inputAttr={productLabel}
+            />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Search mode</div>
           <div className="dx-field-value">
-            <TagBox items={simpleProducts} searchEnabled={true} inputAttr={productLabel} />
+            <TagBox
+              items={simpleProducts}
+              searchEnabled={true}
+              inputAttr={productLabel}
+            />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Batch selection</div>
           <div className="dx-field-value">
-            <TagBox items={simpleProducts} showSelectionControls={true} inputAttr={productLabel} applyValueMode="useButtons" />
+            <TagBox
+              items={simpleProducts}
+              showSelectionControls={true}
+              inputAttr={productLabel}
+              applyValueMode="useButtons"
+            />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Hide selected items</div>
           <div className="dx-field-value">
-            <TagBox items={simpleProducts} inputAttr={productLabel} hideSelectedItems={true} />
+            <TagBox
+              items={simpleProducts}
+              inputAttr={productLabel}
+              hideSelectedItems={true}
+            />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Single line mode</div>
           <div className="dx-field-value">
-            <TagBox items={simpleProducts} inputAttr={productLabel} multiline={false} />
+            <TagBox
+              items={simpleProducts}
+              inputAttr={productLabel}
+              multiline={false}
+            />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Add custom items</div>
           <div className="dx-field-value">
-            <TagBox items={editableProducts} inputAttr={productLabel} acceptCustomValue={true} onCustomItemCreating={onCustomItemCreating} />
+            <TagBox
+              items={editableProducts}
+              inputAttr={productLabel}
+              acceptCustomValue={true}
+              onCustomItemCreating={onCustomItemCreating}
+            />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">With custom placeholder</div>
           <div className="dx-field-value">
-            <TagBox items={simpleProducts} inputAttr={productLabel} placeholder="Choose Product..." />
+            <TagBox
+              items={simpleProducts}
+              inputAttr={productLabel}
+              placeholder="Choose Product..."
+            />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Disabled</div>
           <div className="dx-field-value">
-            <TagBox items={simpleProducts} inputAttr={productLabel} value={disabledValue} disabled={true} />
+            <TagBox
+              items={simpleProducts}
+              inputAttr={productLabel}
+              value={disabledValue}
+              disabled={true}
+            />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Data source</div>
           <div className="dx-field-value">
-            <TagBox dataSource={dataSource} inputAttr={productLabel} displayExpr="Name" valueExpr="Id" />
+            <TagBox
+              dataSource={dataSource}
+              inputAttr={productLabel}
+              displayExpr="Name"
+              valueExpr="Id"
+            />
           </div>
         </div>
         <div className="dx-field">
@@ -106,10 +145,19 @@ function App() {
               displayExpr="Name"
               valueExpr="Id"
               itemRender={Item}
-              tagRender={(data) => <Tag product={data} onMouseEnter={onMouseEnter} />}
+              tagRender={(data) => (
+                <Tag
+                  product={data}
+                  onMouseEnter={onMouseEnter}
+                />
+              )}
             />
 
-            <Popover showEvent="mouseenter" hideEvent="mouseleave" target={target}>
+            <Popover
+              showEvent="mouseenter"
+              hideEvent="mouseleave"
+              target={target}
+            >
               <p>
                 <b>Name: </b>
                 <span>{product.Name}</span>

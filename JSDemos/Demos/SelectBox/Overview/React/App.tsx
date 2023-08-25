@@ -36,31 +36,55 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Default mode</div>
           <div className="dx-field-value">
-            <SelectBox items={simpleProducts} inputAttr={simpleProductLabel} />
+            <SelectBox
+              items={simpleProducts}
+              inputAttr={simpleProductLabel}
+            />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">With a custom placeholder</div>
           <div className="dx-field-value">
-            <SelectBox items={simpleProducts} placeholder="Choose Product" inputAttr={productWithPlaceholderLabel} showClearButton={true} />
+            <SelectBox
+              items={simpleProducts}
+              placeholder="Choose Product"
+              inputAttr={productWithPlaceholderLabel}
+              showClearButton={true}
+            />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Read only</div>
           <div className="dx-field-value">
-            <SelectBox items={simpleProducts} defaultValue={simpleProducts[0]} inputAttr={readOnlyProductLabel} readOnly={true} />
+            <SelectBox
+              items={simpleProducts}
+              defaultValue={simpleProducts[0]}
+              inputAttr={readOnlyProductLabel}
+              readOnly={true}
+            />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Disabled</div>
           <div className="dx-field-value">
-            <SelectBox items={simpleProducts} inputAttr={disabledProductLabel} defaultValue={simpleProducts[0]} disabled={true} />
+            <SelectBox
+              items={simpleProducts}
+              inputAttr={disabledProductLabel}
+              defaultValue={simpleProducts[0]}
+              disabled={true}
+            />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Data source usage</div>
           <div className="dx-field-value">
-            <SelectBox dataSource={data} displayExpr="Name" inputAttr={productIDLabel} valueExpr="ID" defaultValue={products[0].ID} />
+            <SelectBox
+              dataSource={data}
+              displayExpr="Name"
+              inputAttr={productIDLabel}
+              valueExpr="ID"
+              defaultValue={products[0].ID}
+            />
           </div>
         </div>
         <div className="dx-field">
@@ -84,7 +108,12 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Product</div>
           <div className="dx-field-value">
-            <SelectBox items={simpleProducts} value={value} inputAttr={productLabel} onValueChanged={onValueChanged} />
+            <SelectBox
+              items={simpleProducts}
+              value={value}
+              inputAttr={productLabel}
+              onValueChanged={onValueChanged}
+            />
           </div>
         </div>
         <div className="current-value">

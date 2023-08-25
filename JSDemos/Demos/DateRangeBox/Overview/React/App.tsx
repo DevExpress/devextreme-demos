@@ -4,7 +4,10 @@ import DateRangeBox from 'devextreme-react/date-range-box';
 const msInDay = 1000 * 60 * 60 * 24;
 const now = new Date();
 const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-const initialValue: [Date, Date] = [new Date(now.getTime() - msInDay * 3), new Date(now.getTime() + msInDay * 3)];
+const initialValue: [Date, Date] = [
+  new Date(now.getTime() - msInDay * 3),
+  new Date(now.getTime() + msInDay * 3),
+];
 const min = new Date(now.setDate(1));
 const max = new Date(now.setDate(lastDay));
 
@@ -41,13 +44,19 @@ export default function App() {
           </div>
         </div>
         <div className="dx-field-value">
-          <DateRangeBox defaultValue={initialValue} onValueChanged={onCurrentValueChange} />
+          <DateRangeBox
+            defaultValue={initialValue}
+            onValueChanged={onCurrentValueChange}
+          />
         </div>
       </div>
       <div className="dx-field">
         <div className="dx-field-label">Custom format</div>
         <div className="dx-field-value">
-          <DateRangeBox defaultValue={initialValue} displayFormat="EEEE, MMM dd" />
+          <DateRangeBox
+            defaultValue={initialValue}
+            displayFormat="EEEE, MMM dd"
+          />
         </div>
       </div>
       <div className="dx-field">
@@ -71,13 +80,19 @@ export default function App() {
       <div className="dx-field">
         <div className="dx-field-label">Limit available dates (this month)</div>
         <div className="dx-field-value">
-          <DateRangeBox min={min} max={max} />
+          <DateRangeBox
+            min={min}
+            max={max}
+          />
         </div>
       </div>
       <div className="dx-field">
         <div className="dx-field-label">Clear button</div>
         <div className="dx-field-value">
-          <DateRangeBox defaultValue={initialValue} showClearButton />
+          <DateRangeBox
+            defaultValue={initialValue}
+            showClearButton
+          />
         </div>
       </div>
     </div>

@@ -30,9 +30,12 @@ function App() {
   const [isGridBoxOpened, setIsGridBoxOpened] = React.useState(false);
   const [isTreeBoxOpened, setIsTreeBoxOpened] = React.useState(false);
 
-  const treeViewItemSelectionChanged = React.useCallback((e: { component: { getSelectedNodeKeys: () => any } }) => {
-    setTreeBoxValue(e.component.getSelectedNodeKeys());
-  }, []);
+  const treeViewItemSelectionChanged = React.useCallback(
+    (e: { component: { getSelectedNodeKeys: () => any } }) => {
+      setTreeBoxValue(e.component.getSelectedNodeKeys());
+    },
+    [],
+  );
 
   const dataGridOnSelectionChanged = React.useCallback((e: { selectedRowKeys: any }) => {
     setGridBoxValue(e.selectedRowKeys);
@@ -71,10 +74,20 @@ function App() {
 
   const dataGridRender = React.useCallback(
     () => (
-      <DataGrid dataSource={gridDataSource} columns={gridColumns} hoverStateEnabled={true} selectedRowKeys={gridBoxValue} onSelectionChanged={dataGridOnSelectionChanged} height="100%">
+      <DataGrid
+        dataSource={gridDataSource}
+        columns={gridColumns}
+        hoverStateEnabled={true}
+        selectedRowKeys={gridBoxValue}
+        onSelectionChanged={dataGridOnSelectionChanged}
+        height="100%"
+      >
         <Selection mode="single" />
         <Scrolling mode="virtual" />
-        <Paging enabled={true} pageSize={10} />
+        <Paging
+          enabled={true}
+          pageSize={10}
+        />
         <FilterRow visible={true} />
       </DataGrid>
     ),

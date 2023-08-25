@@ -52,17 +52,13 @@ export default function App() {
   );
   const onMinDateChange = React.useCallback(
     ({ value }) => {
-      setMinDateValue(
-        value ? new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 3) : null,
-      );
+      setMinDateValue(value ? new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 3) : null);
     },
     [setMinDateValue],
   );
   const onMaxDateChange = React.useCallback(
     ({ value }) => {
-      setMaxDateValue(
-        value ? new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 3) : null,
-      );
+      setMaxDateValue(value ? new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 3) : null);
     },
     [setMaxDateValue],
   );

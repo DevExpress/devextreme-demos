@@ -36,9 +36,7 @@ function App() {
           </div>
         </div>
         <div className="dx-field">
-          <div className="dx-field-label">
-            Locale Data Markup Language (LDML) pattern
-          </div>
+          <div className="dx-field-label">Locale Data Markup Language (LDML) pattern</div>
           <div className="dx-field-value">
             <DateRangeBox
               displayFormat="EEEE, d of MMM, yyyy"

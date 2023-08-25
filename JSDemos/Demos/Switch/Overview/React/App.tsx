@@ -26,13 +26,19 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Value change handling</div>
           <div className="dx-field-value">
-            <Switch value={value} onValueChanged={valueChanged} />
+            <Switch
+              value={value}
+              onValueChanged={valueChanged}
+            />
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Disabled</div>
           <div className="dx-field-value">
-            <Switch value={value} disabled={true} />
+            <Switch
+              value={value}
+              disabled={true}
+            />
           </div>
         </div>
       </div>

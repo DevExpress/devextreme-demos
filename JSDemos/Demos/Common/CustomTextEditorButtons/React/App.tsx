@@ -102,16 +102,37 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Password TextBox</div>
           <div className="dx-field-value">
-            <TextBox placeholder="password" stylingMode="filled" defaultValue="password" inputAttr={passwordLabel} mode={passwordMode}>
-              <TextBoxButton name="password" location="after" options={passwordButton} />
+            <TextBox
+              placeholder="password"
+              stylingMode="filled"
+              defaultValue="password"
+              inputAttr={passwordLabel}
+              mode={passwordMode}
+            >
+              <TextBoxButton
+                name="password"
+                location="after"
+                options={passwordButton}
+              />
             </TextBox>
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Multi-currency NumberBox</div>
           <div className="dx-field-value">
-            <NumberBox showClearButton={true} showSpinButtons={true} format={currencyFormat} value={currencyValue} inputAttr={currencyLabel} onValueChanged={changeCurrency}>
-              <NumberBoxButton name="currency" location="after" options={currencyButton} />
+            <NumberBox
+              showClearButton={true}
+              showSpinButtons={true}
+              format={currencyFormat}
+              value={currencyValue}
+              inputAttr={currencyLabel}
+              onValueChanged={changeCurrency}
+            >
+              <NumberBoxButton
+                name="currency"
+                location="after"
+                options={currencyButton}
+              />
               <NumberBoxButton name="clear" />
               <NumberBoxButton name="spins" />
             </NumberBox>
@@ -120,10 +141,27 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Advanced DateBox</div>
           <div className="dx-field-value">
-            <DateBox value={dateValue} stylingMode="outlined" inputAttr={dateBoxLabel} onValueChanged={onDateChanged}>
-              <DateBoxButton name="today" location="before" options={todayButton} />
-              <DateBoxButton name="prevDate" location="before" options={prevDateButton} />
-              <DateBoxButton name="nextDate" location="after" options={nextDateButton} />
+            <DateBox
+              value={dateValue}
+              stylingMode="outlined"
+              inputAttr={dateBoxLabel}
+              onValueChanged={onDateChanged}
+            >
+              <DateBoxButton
+                name="today"
+                location="before"
+                options={todayButton}
+              />
+              <DateBoxButton
+                name="prevDate"
+                location="before"
+                options={prevDateButton}
+              />
+              <DateBoxButton
+                name="nextDate"
+                location="after"
+                options={nextDateButton}
+              />
               <DateBoxButton name="dropDown" />
             </DateBox>
           </div>

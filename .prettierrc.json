@@ -7,5 +7,21 @@
         "options": {
             "printWidth": 80
         }
-    }]
+    },
+    {
+        "files": ["**/React/**/*.tsx", "**/ReactJs/**/*.jsx"],
+        "options": {
+            "printWidth": 100,
+            "singleQuote": true,
+            "singleAttributePerLine": true
+        }
+    },
+    {
+        "files": "**/ReactJs/**/*.html",
+        "options": {
+            "printWidth": 100,
+            "singleAttributePerLine": true
+        }
+    }
+]
 }

@@ -50,9 +50,7 @@ function App() {
       </div>
 
       <div className="dx-field">
-        <div className="dx-field-label">
-          Grouped items with a custom group template
-        </div>
+        <div className="dx-field-label">Grouped items with a custom group template</div>
         <div className="dx-field-value">
           <TagBox
             dataSource={products}

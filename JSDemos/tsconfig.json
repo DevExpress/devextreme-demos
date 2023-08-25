@@ -1,18 +1,18 @@
 {
-    "compilerOptions": {
-      "target": "ES2015",
-      "experimentalDecorators": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "jsx": "react",
-      "moduleResolution": "bundler",
-      "allowImportingTsExtensions": true,
-      "noEmit": true
-    },
-    
-    "include": [
-      "Demos/**/*.ts",
-      "Demos/**/*.tsx"
-    ]
-  }
+  "extends":"../tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2015",
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "noEmit": true
+  },
+  
+  "include": [
+    "./Demos/**/*.ts",
+    "./Demos/**/*.tsx"
+  ]
+}
   

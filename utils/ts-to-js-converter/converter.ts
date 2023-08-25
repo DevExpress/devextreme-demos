@@ -181,7 +181,7 @@ const patchImports = async (resolve: PathResolvers, log: Logger) => {
 
 const prettify = async (resolve: PathResolvers, log: Logger) => {
   log.debug('running Prettier');
-  await exec(`prettier --write "${resolve.out('')}" --single-attribute-per-line --print-width 80`, {
+  await exec(`prettier --write "${resolve.out('')}" --single-attribute-per-line --print-width 100`, {
     cwd: resolve.out(''),
   });
   await exec(`eslint --fix "${resolve.out('')}"`, {

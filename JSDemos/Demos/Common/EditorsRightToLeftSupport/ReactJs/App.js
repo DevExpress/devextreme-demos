@@ -18,10 +18,7 @@ import {
   autocompleteLabel,
 } from './data.js';
 
-const languages = [
-  'Arabic: Right-to-Left direction',
-  'English: Left-to-Right direction',
-];
+const languages = ['Arabic: Right-to-Left direction', 'English: Left-to-Right direction'];
 const tagBoxDefaultValue = [europeanUnion[0].id];
 function App() {
   const [rtlEnabled, setRtlEnabled] = React.useState(false);
