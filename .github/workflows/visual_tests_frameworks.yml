@@ -503,6 +503,8 @@ jobs:
     - name: Get sources
       uses: actions/checkout@v3
 
+    - uses: ./.github/actions/pin-browsers
+
     - name: Delete DX packages
       run:  sed -i '/22.2-next/d' ./package.json
 
