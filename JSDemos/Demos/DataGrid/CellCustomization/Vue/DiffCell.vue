@@ -1,46 +1,29 @@
 <template>
-  <div :class="className(cellData)">
-    <div class="current-value">{{ formatCurrency(cellData) }}</div>
-    <div class="diff">{{ fixed(abs(cellData), 2) }}</div>
+  <div :class="className">
+    <div class="current-value">{{ currencyFormat }}</div>
+    <div class="diff">{{ difference }}</div>
   </div>
 </template>
-<script>
-import {
-  DxSparkline,
-  DxSize,
-  DxTooltip,
-} from 'devextreme-vue/sparkline';
+<script setup lang="ts">
 import { formatNumber } from 'devextreme/localization';
+import { Column } from 'devextreme/ui/data_grid';
 
-const gridCellData = function(value) {
-  return value.data[value.column.caption.toLowerCase()];
+import { WeekData, DiffValueProperties } from './data.ts';
+
+const props = defineProps<{
+  column: Column,
+  rowData: WeekData,
+}>();
+
+const getCellData = () => {
+  const property = props.column.caption!.toLowerCase() as DiffValueProperties;
+
+  return props.rowData![property];
 };
 
-export default {
-  components: {
-    DxSparkline,
-    DxSize,
-    DxTooltip,
-  },
-  props: {
-    cellData: {
-      type: Object,
-      default: () => {},
-    },
-  },
-  methods: {
-    className(value) {
-      return gridCellData(value).diff > 0 ? 'inc' : 'dec';
-    },
-    formatCurrency(value) {
-      return formatNumber(gridCellData(value).value, { type: 'currency', currency: 'USD', precision: 2 });
-    },
-    abs(value) {
-      return Math.abs(gridCellData(value).diff);
-    },
-    fixed(value, precision) {
-      return value.toFixed(precision);
-    },
-  },
-};
+const cellData = getCellData();
+
+const className = cellData.diff > 0 ? 'inc' : 'dec';
+const currencyFormat = formatNumber(cellData.value, { type: 'currency', currency: 'USD', precision: 2 });
+const difference = Math.abs(cellData.diff).toFixed(2);
 </script>

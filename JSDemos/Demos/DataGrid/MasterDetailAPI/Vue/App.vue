@@ -2,10 +2,10 @@
   <DxDataGrid
     id="grid-container"
     :show-borders="true"
-    :data-source="dataSource"
+    :data-source="employees"
     key-expr="ID"
-    @selection-changed="selectionChanged"
-    @content-ready="contentReady"
+    @selection-changed="onSelectionChanged"
+    @content-ready="onContentReady"
   >
     <DxSelection mode="single"/>
     <DxColumn
@@ -42,36 +42,24 @@
     </template>
   </DxDataGrid>
 </template>
-<script>
-
+<script setup lang="ts">
 import DxDataGrid, {
   DxColumn,
   DxMasterDetail,
   DxSelection,
 } from 'devextreme-vue/data-grid';
-import { employees } from './data.js';
+import { ContentReadyEvent, SelectionChangedEvent } from 'devextreme/ui/data_grid';
+import { employees } from './data.ts';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxMasterDetail,
-    DxSelection,
-  },
-  data() {
-    return {
-      dataSource: employees,
-    };
-  },
-  methods: {
-    contentReady(e) {
-      if (!e.component.getSelectedRowKeys().length) { e.component.selectRowsByIndexes(0); }
-    },
-    selectionChanged(e) {
-      e.component.collapseAll(-1);
-      e.component.expandRow(e.currentSelectedRowKeys[0]);
-    },
-  },
+const onContentReady = (e: ContentReadyEvent) => {
+  if (!e.component.getSelectedRowKeys().length) {
+    e.component.selectRowsByIndexes(0);
+  }
+};
+
+const onSelectionChanged = (e: SelectionChangedEvent) => {
+  e.component.collapseAll(-1);
+  e.component.expandRow(e.currentSelectedRowKeys[0]);
 };
 </script>
 <style>

@@ -1,10 +1,10 @@
 <template>
   <div>
     <DxDataGrid
-      :ref="dataGridRefName"
+      ref="dataGridRef"
       :data-source="employees"
-      key-expr="ID"
       :show-borders="true"
+      key-expr="ID"
     >
       <DxColumn
         :width="70"
@@ -45,36 +45,21 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxColumn,
   DxDataGrid,
   DxSorting,
 } from 'devextreme-vue/data-grid';
 import DxCheckBox from 'devextreme-vue/check-box';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
-export default {
-  components: {
-    DxCheckBox,
-    DxColumn,
-    DxDataGrid,
-    DxSorting,
-  },
-  data() {
-    return {
-      positionDisableSorting: false,
-      dataGridRefName: 'dataGrid',
-      employees,
-    };
-  },
-  methods: {
-    onValueChanged() {
-      const dataGrid = this.$refs[this.dataGridRefName].instance;
+const positionDisableSorting = ref(false);
+const dataGridRef = ref<DxDataGrid | null>(null);
 
-      dataGrid.columnOption(5, 'sortOrder', undefined);
-    },
-  },
+const onValueChanged = () => {
+  dataGridRef.value!.instance!.columnOption(5, 'sortOrder', undefined);
 };
 </script>
 <style scoped>

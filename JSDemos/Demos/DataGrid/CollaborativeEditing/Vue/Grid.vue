@@ -53,41 +53,29 @@
   </DxDataGrid>
 </template>
 
-<script>
+<script setup lang="ts">
 import {
   DxDataGrid, DxColumn, DxPaging, DxEditing, DxRequiredRule, DxRangeRule,
 } from 'devextreme-vue/data-grid';
+
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
+import CustomStore from 'devextreme/data/custom_store';
+import { ColumnLookup } from 'devextreme/ui/data_grid';
+
+defineProps<{
+  dataSource: CustomStore
+}>();
 
 const statesStore = AspNetData.createStore({
   key: 'ID',
   loadUrl: 'https://js.devexpress.com/Demos/NetCore/api/DataGridStatesLookup',
 });
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxPaging,
-    DxEditing,
-    DxRequiredRule,
-    DxRangeRule,
-  },
-  props: {
-    dataSource: {
-      type: Object,
-      default: () => ({}),
-    },
-  },
-  data() {
-    return {
-      maxDate: new Date(3000, 0),
-      lookup: {
-        dataSource: statesStore,
-        displayExpr: 'Name',
-        valueExpr: 'ID',
-      },
-    };
-  },
+const maxDate = new Date(3000, 0);
+
+const lookup: ColumnLookup = {
+  dataSource: statesStore,
+  displayExpr: 'Name',
+  valueExpr: 'ID',
 };
 </script>

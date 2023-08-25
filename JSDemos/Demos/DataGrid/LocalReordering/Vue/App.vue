@@ -52,44 +52,29 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxDataGrid, DxColumn, DxLookup, DxScrolling, DxRowDragging, DxSorting,
 } from 'devextreme-vue/data-grid';
 import DxCheckBox from 'devextreme-vue/check-box';
-import { tasks, employees, statuses } from './data.js';
+import { RowDraggingReorderEvent } from 'devextreme/ui/data_grid';
+import { tasks as defaultTasks, employees, Task } from './data.ts';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxLookup,
-    DxScrolling,
-    DxRowDragging,
-    DxSorting,
-    DxCheckBox,
-  },
-  data() {
-    return {
-      tasks,
-      employees,
-      statuses,
-      showDragIcons: true,
-    };
-  },
-  methods: {
-    onReorder(e) {
-      const visibleRows = e.component.getVisibleRows();
-      const toIndex = this.tasks.findIndex((item) => item.ID === visibleRows[e.toIndex].data.ID);
-      const fromIndex = this.tasks.findIndex((item) => item.ID === e.itemData.ID);
-      const newTasks = [...this.tasks];
+const showDragIcons = ref(true);
 
-      newTasks.splice(fromIndex, 1);
-      newTasks.splice(toIndex, 0, e.itemData);
+const tasks = ref<Task[]>(defaultTasks);
 
-      this.tasks = newTasks;
-    },
-  },
+const onReorder = (e: RowDraggingReorderEvent) => {
+  const visibleRows = e.component.getVisibleRows();
+  const toIndex = tasks.value.findIndex((item) => item.ID === visibleRows[e.toIndex].data.ID);
+  const fromIndex = tasks.value.findIndex((item) => item.ID === e.itemData.ID);
+  const newTasks = [...tasks.value];
+
+  newTasks.splice(fromIndex, 1);
+  newTasks.splice(toIndex, 0, e.itemData);
+
+  tasks.value = newTasks;
 };
 </script>
 <style>

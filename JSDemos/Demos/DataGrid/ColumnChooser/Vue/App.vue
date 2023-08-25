@@ -115,45 +115,34 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxDataGrid, DxColumn, DxColumnChooser, DxColumnChooserSearch, DxColumnChooserSelection,
   DxPosition,
 } from 'devextreme-vue/data-grid';
 import { DxSelectBox } from 'devextreme-vue/select-box';
 import { DxCheckBox } from 'devextreme-vue/check-box';
-import { employees } from './data.js';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxColumnChooser,
-    DxColumnChooserSearch,
-    DxColumnChooserSelection,
-    DxSelectBox,
-    DxCheckBox,
-    DxPosition,
-  },
-  data() {
-    return {
-      employees,
-      columnChooserModes: [{
-        key: 'dragAndDrop',
-        name: 'Drag and drop',
-      }, {
-        key: 'select',
-        name: 'Select',
-      }],
-      mode: 'select',
-      searchEnabled: true,
-      allowSelectAll: true,
-      selectByClick: true,
-      recursive: true,
-      editorOptions: { placeholder: 'Search column' },
-    };
-  },
-};
+import { Properties as TextBoxProperties } from 'devextreme/ui/text_box';
+
+import { employees } from './data.ts';
+
+const columnChooserModes = [{
+  key: 'dragAndDrop',
+  name: 'Drag and drop',
+}, {
+  key: 'select',
+  name: 'Select',
+}];
+
+const mode = ref('select');
+const searchEnabled = ref(true);
+const allowSelectAll = ref(true);
+const selectByClick = ref(true);
+const recursive = ref(true);
+const editorOptions: TextBoxProperties = { placeholder: 'Search column' };
+
 </script>
 <style scoped>
 #employees {

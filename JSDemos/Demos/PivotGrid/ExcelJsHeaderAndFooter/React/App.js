@@ -96,24 +96,28 @@ export default function App() {
         saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Sales.xlsx');
       });
     });
-    e.cancel = true;
-  });
+  }, [
+    exportColumnFieldHeaders,
+    exportDataFieldHeaders,
+    exportFilterFieldHeaders,
+    exportRowFieldHeaders,
+  ]);
 
   const onExportDataFieldHeadersChanged = React.useCallback(({ value }) => {
     setExportDataFieldHeaders(value);
-  }, [exportDataFieldHeaders, setExportDataFieldHeaders]);
+  }, [setExportDataFieldHeaders]);
 
   const onExportRowFieldHeadersChanged = React.useCallback(({ value }) => {
     setExportRowFieldHeaders(value);
-  }, [exportRowFieldHeaders, setExportRowFieldHeaders]);
+  }, [setExportRowFieldHeaders]);
 
   const onExportColumnFieldHeadersChanged = React.useCallback(({ value }) => {
     setExportColumnFieldHeaders(value);
-  }, [exportColumnFieldHeaders, setExportColumnFieldHeaders]);
+  }, [setExportColumnFieldHeaders]);
 
   const onExportFilterFieldHeadersChanged = React.useCallback(({ value }) => {
     setExportFilterFieldHeaders(value);
-  }, [exportFilterFieldHeaders, setExportFilterFieldHeaders]);
+  }, [setExportFilterFieldHeaders]);
 
   return (
     <React.Fragment>

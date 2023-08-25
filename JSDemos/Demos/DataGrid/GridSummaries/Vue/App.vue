@@ -50,7 +50,7 @@
     </DxDataGrid>
   </div>
 </template>
-<script>
+<script setup lang="ts">
 import {
   DxDataGrid,
   DxColumn,
@@ -59,29 +59,10 @@ import {
   DxTotalItem,
 } from 'devextreme-vue/data-grid';
 import { formatDate } from 'devextreme/localization';
+import { SummaryItemTextInfo } from 'devextreme/ui/data_grid';
+import { orders } from './data.ts';
 
-import service from './data.js';
-
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxSelection,
-    DxSummary,
-    DxTotalItem,
-  },
-  data() {
-    return {
-      orders: service.getOrders(),
-    };
-  },
-  methods: {
-    formatDate,
-    customizeDate(data) {
-      return `First: ${formatDate(data.value, 'MMM dd, yyyy')}`;
-    },
-  },
-};
+const customizeDate = (itemInfo: SummaryItemTextInfo) => `First: ${formatDate(itemInfo.value as Date, 'MMM dd, yyyy')}`;
 </script>
 <style scoped>
 #gridContainer {

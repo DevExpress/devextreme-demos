@@ -1,7 +1,6 @@
 <template>
   <div>
     <DxDataGrid
-      :ref="dataGridRefName"
       :data-source="productsDataSource"
       :repaint-changes-only="true"
       :two-way-binding-enabled="false"
@@ -137,7 +136,8 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { onMounted, onUnmounted, ref } from 'vue';
 import {
   DxDataGrid,
   DxColumn,
@@ -148,54 +148,41 @@ import {
 } from 'devextreme-vue/data-grid';
 import { DxSlider, DxTooltip } from 'devextreme-vue/slider';
 import {
-  productsStore, ordersStore, getOrderCount, addOrder,
-} from './data.js';
+  productsStore, ordersStore, getOrderCount, addOrder, Order, Product,
+} from './data.ts';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxSummary,
-    DxTotalItem,
-    DxMasterDetail,
-    DxPaging,
-    DxSlider,
-    DxTooltip,
-  },
-  data() {
-    return {
-      updatesPerSecond: 100,
-      dataGridRefName: 'dataGrid',
-      productsDataSource: {
-        store: productsStore,
-        reshapeOnPush: true,
-      },
-    };
-  },
-  created() {
-    setInterval(() => {
-      if (getOrderCount() > 500000) {
-        return;
-      }
+const updatesPerSecond = ref(100);
 
-      for (let i = 0; i < this.updatesPerSecond / 20; i += 1) {
-        addOrder();
-      }
-    }, 50);
-  },
-  methods: {
-    getDetailGridDataSource(product) {
-      return {
-        store: ordersStore,
-        reshapeOnPush: true,
-        filter: ['ProductID', '=', product.ProductID],
-      };
-    },
-    getAmount(order) {
-      return order.UnitPrice * order.Quantity;
-    },
-  },
+const productsDataSource = {
+  store: productsStore,
+  reshapeOnPush: true,
 };
+
+let interval: any;
+
+onMounted(() => {
+  interval = setInterval(() => {
+    if (getOrderCount() > 500000) {
+      return;
+    }
+
+    for (let i = 0; i < updatesPerSecond.value / 20; i += 1) {
+      addOrder();
+    }
+  }, 50);
+});
+
+onUnmounted(() => {
+  clearInterval(interval);
+});
+
+const getDetailGridDataSource = (product: Product) => ({
+  store: ordersStore,
+  reshapeOnPush: true,
+  filter: ['ProductID', '=', product.ProductID],
+});
+
+const getAmount = (order: Order) => order.UnitPrice * order.Quantity;
 </script>
 <style scoped>
 .options {

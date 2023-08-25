@@ -7,7 +7,7 @@
       the grid to its initial state.</div>
     <DxDataGrid
       id="gridContainer"
-      ref="dataGrid"
+      ref="dataGridRef"
       :data-source="orders"
       :key-expr="'ID'"
       :allow-column-resizing="true"
@@ -55,29 +55,21 @@
     </DxDataGrid>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxDataGrid, DxSelection, DxFilterRow, DxGroupPanel, DxStateStoring, DxPager, DxColumn,
 } from 'devextreme-vue/data-grid';
-import service from './data.js';
+import { orders } from './data.ts';
 
-export default {
-  components: {
-    DxDataGrid, DxSelection, DxFilterRow, DxGroupPanel, DxStateStoring, DxPager, DxColumn,
-  },
-  data() {
-    return {
-      orders: service.getOrders(),
-    };
-  },
-  methods: {
-    onRefreshClick() {
-      window.location.reload();
-    },
-    onStateResetClick() {
-      this.$refs.dataGrid.instance.state(null);
-    },
-  },
+const dataGridRef = ref<DxDataGrid | null>(null);
+
+const onRefreshClick = () => {
+  window.location.reload();
+};
+
+const onStateResetClick = () => {
+  dataGridRef.value!.instance!.state(null);
 };
 </script>
 <style scoped>

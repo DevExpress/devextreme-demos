@@ -28,8 +28,9 @@
     <DxColumn data-field="Freight"/>
   </DxDataGrid>
 </template>
-<script>
+<script setup lang="ts">
 import { DxDataGrid, DxColumn, DxEditing } from 'devextreme-vue/data-grid';
+import DataGrid, { SavingEvent, DataChange } from 'devextreme/ui/data_grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 import 'whatwg-fetch';
 
@@ -43,7 +44,22 @@ const ordersStore = createStore({
   },
 });
 
-async function sendBatchRequest(url, changes) {
+const onSaving = (e: SavingEvent) => {
+  e.cancel = true;
+
+  if (e.changes.length) {
+    e.promise = processBatchRequest(`${URL}/Batch`, e.changes, e.component);
+  }
+};
+
+async function processBatchRequest(url: string, changes: DataChange[], component: DataGrid) {
+  await sendBatchRequest(url, changes);
+  await component.refresh(true);
+
+  component.cancelEditData();
+}
+
+async function sendBatchRequest(url: string, changes: DataChange[]) {
   const result = await fetch(url, {
     method: 'POST',
     body: JSON.stringify(changes),
@@ -59,34 +75,6 @@ async function sendBatchRequest(url, changes) {
     throw json.Message;
   }
 }
-
-async function processBatchRequest(url, changes, component) {
-  await sendBatchRequest(url, changes);
-  await component.refresh(true);
-  component.cancelEditData();
-}
-
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxEditing,
-  },
-  data() {
-    return {
-      ordersStore,
-    };
-  },
-  methods: {
-    onSaving(e) {
-      e.cancel = true;
-
-      if (e.changes.length) {
-        e.promise = processBatchRequest(`${URL}/Batch`, e.changes, e.component);
-      }
-    },
-  },
-};
 </script>
 <style scoped>
 #gridContainer {

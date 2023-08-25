@@ -1,6 +1,6 @@
 <template>
   <DxDataGrid
-    :data-source="dataSource"
+    :data-source="employees"
     :show-borders="true"
     :focused-row-enabled="true"
     key-expr="ID"
@@ -36,8 +36,7 @@
     </DxColumn>
   </DxDataGrid>
 </template>
-<script>
-
+<script setup lang="ts">
 import {
   DxDataGrid,
   DxEditing,
@@ -49,25 +48,6 @@ import {
   DxColumn,
   DxLookup,
 } from 'devextreme-vue/data-grid';
-import { employees, states } from './data.js';
+import { employees, states } from './data.ts';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxEditing,
-    DxHeaderFilter,
-    DxFilterRow,
-    DxFilterPanel,
-    DxPager,
-    DxPaging,
-    DxColumn,
-    DxLookup,
-  },
-  data() {
-    return {
-      dataSource: employees,
-      states,
-    };
-  },
-};
 </script>

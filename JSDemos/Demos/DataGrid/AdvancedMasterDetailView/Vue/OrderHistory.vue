@@ -42,45 +42,24 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import {
-  DxDataGrid,
-  DxColumn,
-  DxPaging,
-  DxSummary,
-  DxTotalItem,
-  DxValueFormat,
+  DxDataGrid, DxColumn, DxPaging, DxSummary, DxTotalItem, DxValueFormat,
 } from 'devextreme-vue/data-grid';
-
 import { createStore } from 'devextreme-aspnet-data-nojquery';
+import { computed } from 'vue';
+
+const props = defineProps<{
+  productId: number | null
+}>();
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridAdvancedMasterDetailView';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxPaging,
-    DxSummary,
-    DxTotalItem,
-    DxValueFormat,
-  },
-  props: {
-    productId: {
-      type: Number,
-      default: null,
-    },
-  },
-  computed: {
-    orderHistoryStore() {
-      return this.productId === null ? null : {
-        store: createStore({
-          key: 'OrderID',
-          loadParams: { ProductID: this.productId },
-          loadUrl: `${url}/GetOrdersByProduct`,
-        }),
-      };
-    },
-  },
-};
+const orderHistoryStore = computed(() => (props.productId === null ? null : {
+  store: createStore({
+    key: 'OrderID',
+    loadParams: { ProductID: props.productId },
+    loadUrl: `${url}/GetOrdersByProduct`,
+  }),
+}));
 </script>

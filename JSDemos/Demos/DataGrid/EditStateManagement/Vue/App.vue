@@ -47,62 +47,51 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+
 import { DxDataGrid, DxColumn, DxEditing } from 'devextreme-vue/data-grid';
 import { DxLoadPanel } from 'devextreme-vue/load-panel';
-import { mapGetters, mapActions } from 'vuex';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxEditing,
-    DxLoadPanel,
-  },
-  data() {
-    return {
-      loadPanelPosition: { of: '#gridContainer' },
-    };
-  },
-  computed: {
-    ...mapGetters(['orders', 'isLoading']),
-    editRowKey: {
-      get() {
-        return this.$store.state.editRowKey;
-      },
-      set(value) {
-        this.setEditRowKey(value);
-      },
-    },
-    changes: {
-      get() {
-        return this.$store.state.changes;
-      },
-      set(value) {
-        this.setChanges(value);
-      },
-    },
-    changesText: {
-      get() {
-        return JSON.stringify(this.changes.map((change) => ({
-          type: change.type,
-          key: change.type !== 'insert' ? change.key : undefined,
-          data: change.data,
-        })), null, ' ');
-      },
-    },
-  },
-  created() {
-    this.loadOrders();
-  },
-  methods: {
-    ...mapActions(['setEditRowKey', 'setChanges', 'loadOrders', 'insert', 'update', 'remove', 'saveChange']),
-    onSaving(e) {
-      e.cancel = true;
-      e.promise = this.saveChange(e.changes[0]);
-    },
-  },
+import { SavingEvent, DataChange } from 'devextreme/ui/data_grid';
+
+import { State } from './store.ts';
+
+const loadPanelPosition = { of: '#gridContainer' };
+
+// eslint-disable-next-line react-hooks/rules-of-hooks
+const store = useStore<State>();
+
+const loadOrders = () => store.dispatch('loadOrders');
+const setEditRowKey = (value: number | null) => store.dispatch('setEditRowKey', value);
+const setChanges = (value: DataChange[]) => store.dispatch('setChanges', value);
+const saveChange = (change: DataChange) => store.dispatch('saveChange', change);
+const orders = computed(() => store.state.orders);
+const isLoading = computed(() => store.state.isLoading);
+
+const changes = computed({
+  get: () => (store.state.changes),
+  set: (value) => { setChanges(value); },
+});
+
+const editRowKey = computed({
+  get: () => store.state.editRowKey,
+  set: (value) => { setEditRowKey(value); },
+});
+
+const changesText = computed(() => JSON.stringify(changes.value.map((change) => ({
+  type: change.type,
+  key: change.type !== 'insert' ? change.key : undefined,
+  data: change.data,
+})), null, ' '));
+
+const onSaving = (e: SavingEvent) => {
+  e.cancel = true;
+  e.promise = saveChange(e.changes[0]);
 };
+
+loadOrders();
 </script>
 <style scoped>
 #gridContainer {

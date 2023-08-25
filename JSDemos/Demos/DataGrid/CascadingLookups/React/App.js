@@ -1,16 +1,14 @@
 import React from 'react';
 import DataGrid, { Column, Editing, Lookup } from 'devextreme-react/data-grid';
-import service from './data.js';
+import { employees, states, cities } from './data.js';
 
 const onEditorPreparing = (e) => {
   if (e.parentType === 'dataRow' && e.dataField === 'CityID') {
-    e.editorOptions.disabled = (typeof e.row.data.StateID !== 'number');
+    const isStateNotSet = e.row.data.StateID === undefined;
+
+    e.editorOptions.disabled = isStateNotSet;
   }
 };
-
-const dataSource = service.getEmployees();
-const states = service.getStates();
-const cities = service.getCities();
 
 const getFilteredCities = (options) => ({
   store: cities,
@@ -25,7 +23,7 @@ function setStateValue(rowData, value) {
 const App = () => (
   <div id="data-grid-demo">
     <DataGrid
-      dataSource={dataSource}
+      dataSource={employees}
       keyExpr="ID"
       showBorders={true}
       onEditorPreparing={onEditorPreparing}

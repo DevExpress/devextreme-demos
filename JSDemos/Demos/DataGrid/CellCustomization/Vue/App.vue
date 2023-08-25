@@ -2,7 +2,7 @@
   <div>
     <DxDataGrid
       id="gridContainer"
-      :data-source="dataSource"
+      :data-source="weekData"
       key-expr="date"
       :show-row-lines="true"
       :show-column-lines="false"
@@ -36,42 +36,28 @@
         caption="Low"
         cell-template="diff-cell-template"
       />
-      <template #chart-cell-template="{ data }">
-        <ChartCell :cell-data="data.data.dayClose"/>
+      <template #chart-cell-template="{ data: templateOptions }">
+        <ChartCell :day-close="templateOptions.data.dayClose"/>
       </template>
-      <template #diff-cell-template="{ data }">
-        <DiffCell :cell-data="data"/>
+      <template #diff-cell-template="{ data: templateOptions }">
+        <DiffCell
+          :column="templateOptions.column"
+          :row-data="templateOptions.data"
+        />
       </template>
     </DxDataGrid>
   </div>
 </template>
-<script>
+<script setup lang="ts">
 import {
-  DxDataGrid,
-  DxColumn,
-  DxSorting,
-  DxPaging,
+  DxDataGrid, DxColumn, DxSorting, DxPaging,
 } from 'devextreme-vue/data-grid';
 
-import service from './data.js';
 import DiffCell from './DiffCell.vue';
 import ChartCell from './ChartCell.vue';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxSorting,
-    DxPaging,
-    DiffCell,
-    ChartCell,
-  },
-  data() {
-    return {
-      dataSource: service.getWeekData(),
-    };
-  },
-};
+import { weekData } from './data.ts';
+
 </script>
 <style scoped>
 #gridContainer td {

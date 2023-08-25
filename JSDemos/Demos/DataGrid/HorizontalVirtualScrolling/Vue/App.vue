@@ -10,22 +10,11 @@
     <DxScrolling column-rendering-mode="virtual"/>
   </DxDataGrid>
 </template>
-<script>
+<script setup lang="ts">
 import { DxDataGrid, DxScrolling, DxPaging } from 'devextreme-vue/data-grid';
-import { generateData } from './data.js';
+import { generateData } from './data.ts';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxScrolling,
-    DxPaging,
-  },
-  computed: {
-    dataSource() {
-      return generateData(50, 500);
-    },
-  },
-};
+const dataSource = generateData(50, 500);
 </script>
 <style>
 #gridContainer {

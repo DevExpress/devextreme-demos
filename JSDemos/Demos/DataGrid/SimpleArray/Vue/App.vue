@@ -1,25 +1,14 @@
 <template>
   <DxDataGrid
-    :data-source="dataSource"
+    :data-source="customers"
     key-expr="ID"
     :columns="columns"
     :show-borders="true"
   />
 </template>
-<script>
-
+<script setup lang="ts">
 import DxDataGrid from 'devextreme-vue/data-grid';
-import { customers } from './data.js';
+import { customers } from './data.ts';
 
-export default {
-  components: {
-    DxDataGrid,
-  },
-  data() {
-    return {
-      dataSource: customers,
-      columns: ['CompanyName', 'City', 'State', 'Phone', 'Fax'],
-    };
-  },
-};
+const columns = ['CompanyName', 'City', 'State', 'Phone', 'Fax'];
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div id="data-grid-demo">
     <DxDataGrid
-      :data-source="dataSource"
+      :data-source="employees"
       :show-borders="true"
       :on-focused-cell-changing="onFocusedCellChanging"
       key-expr="ID"
@@ -79,7 +79,8 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxDataGrid,
   DxKeyboardNavigation,
@@ -90,34 +91,19 @@ import {
 } from 'devextreme-vue/data-grid';
 import DxSelectBox from 'devextreme-vue/select-box';
 import DxCheckBox from 'devextreme-vue/check-box';
-import { employees, states } from './data.js';
 
-export default {
-  components: {
-    DxDataGrid,
-    DxColumn,
-    DxPaging,
-    DxEditing,
-    DxKeyboardNavigation,
-    DxLookup,
-    DxCheckBox,
-    DxSelectBox,
-  },
-  data() {
-    return {
-      dataSource: employees,
-      states,
-      editOnKeyPress: true,
-      enterKeyActions: ['startEdit', 'moveFocus'],
-      enterKeyDirections: ['none', 'column', 'row'],
-      enterKeyDirection: 'column',
-      enterKeyAction: 'moveFocus',
-    };
-  },
-  methods: {
-    onFocusedCellChanging(e) {
-      e.isHighlighted = true;
-    },
-  },
+import { FocusedCellChangingEvent } from 'devextreme/ui/data_grid';
+
+import { employees, states } from './data.ts';
+
+const enterKeyActions = ['startEdit', 'moveFocus'];
+const enterKeyDirections = ['none', 'column', 'row'];
+
+const editOnKeyPress = ref(true);
+const enterKeyDirection = ref('column');
+const enterKeyAction = ref('moveFocus');
+
+const onFocusedCellChanging = (e: FocusedCellChangingEvent) => {
+  e.isHighlighted = true;
 };
 </script>
