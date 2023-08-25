@@ -308,6 +308,7 @@ module.exports = {
     },
     rules: {
       // TODO consider this rules
+      'quotes': ['error', 'single', { avoidEscape: true }],
       'eqeqeq': 0,
       'no-plusplus': 0,
       'max-len': 0,
@@ -428,6 +429,7 @@ module.exports = {
       'comma-spacing': 'error',
       'computed-property-spacing': 'error',
       'comma-style': ['error', 'last'],
+      'implicit-arrow-linebreak': 0,
       'no-multiple-empty-lines': ['error', { max: 1 }],
       'no-irregular-whitespace': 'error',
       'no-multi-spaces': 'error',
