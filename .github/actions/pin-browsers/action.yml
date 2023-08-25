@@ -1,0 +1,40 @@
+name: "Pin Browsers"
+description: "Install and setup Chrome and Firefox"
+
+inputs:
+  chrome-version:
+    description: "Chrome version to install"
+    default: "110.0.5481.177-1"
+  firefox-version:
+    description: "Firefox version to install"
+    default: "latest"
+
+runs:
+  using: composite
+  steps:
+    - name: "Setup Chrome"
+      shell: bash
+      env:
+        CHROME_VERSION: ${{ inputs.chrome-version }}
+      run: |
+        if [ -n "$CHROME_VERSION" ]; then
+          curl -L "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb" > /tmp/chrome.deb
+          sudo dpkg -i /tmp/chrome.deb
+          unlink /tmp/chrome.deb
+          google-chrome-stable --version
+        else
+          echo "Skip Chrome upgrade"
+        fi
+    - shell: bash
+      run: |
+        echo Installed chromium version: ${{ inputs.chrome-version }}
+        google-chrome-stable --version
+    - name: "Setup Firefox"
+      id: setup-firefox
+      uses: browser-actions/setup-firefox@v1
+      with:
+        firefox-version: ${{ inputs.firefox-version }}
+    - shell: bash
+      run: |
+        echo Installed firefox versions: ${{ steps.setup-firefox.outputs.firefox-version }}
+        firefox --version
