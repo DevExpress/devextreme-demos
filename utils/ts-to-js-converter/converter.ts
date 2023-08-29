@@ -5,9 +5,19 @@ import { glob } from 'glob';
 import { readFile, writeFile } from 'fs/promises';
 import { copy, emptyDir, remove } from 'fs-extra';
 import { promisify } from 'util';
-import partial from 'lodash.partial';
+import _ from 'lodash';
+import os from 'os';
 
 import { Logger, PathResolver, PathResolvers } from './types';
+
+let platformGlob = glob;
+const makePathArrayPosix = (pathArray) => pathArray.map(
+  (pathElem) => pathElem.split(path.sep).join(path.posix.sep),
+);
+
+function isWindows() {
+  return os.platform() === 'win32';
+}
 
 const exec = promisify(cps.exec);
 
@@ -30,8 +40,8 @@ const makeConfig = (
   types: string[],
   module = 'ES2015',
 ) => ({
-  include,
-  exclude,
+  include: makePathArrayPosix(include),
+  exclude: makePathArrayPosix(exclude),
   compilerOptions: {
     outDir: resolve.out('./'),
     rootDir: resolve.source('./'),
@@ -56,7 +66,7 @@ const pipeSource = async (
   processor: (source: string, target: string) => Promise<void>,
 ): Promise<void> => {
   await Promise.all(assets.map(async (asset) => {
-    const files = await glob(resolve.source(asset));
+    const files = await platformGlob(resolve.source(asset));
     await Promise.all(files.map(async (file) => {
       await processor(
         resolve.source(file),
@@ -120,7 +130,7 @@ const strip = async (resolve: PathResolvers, log: Logger) => {
   log.debug('stripping JS example');
 
   await redundantAssets.map(async (asset) => {
-    const files = await glob(resolve.out(asset));
+    const files = await platformGlob(resolve.out(asset));
     await files.map(async (file) => {
       log.debug(`! ${file}`);
       await remove(file);
@@ -131,7 +141,7 @@ const strip = async (resolve: PathResolvers, log: Logger) => {
 const replaceInFiles = async (filenamePatterns: string[], replacementCallback: (string) => string, resolvePath: (string) => string, log: Logger) => (
   Promise.all(
     filenamePatterns.map(async (pattern) => {
-      const files = await glob(resolvePath(pattern));
+      const files = await platformGlob(resolvePath(pattern));
       log.debug(files.join('\r\n'));
       return Promise.all(
         files.map(async (file) => {
@@ -171,7 +181,7 @@ const patchImports = async (resolve: PathResolvers, log: Logger) => {
 
 const prettify = async (resolve: PathResolvers, log: Logger) => {
   log.debug('running Prettier');
-  await exec(`prettier --write "${resolve.out('')}"`, {
+  await exec(`prettier --write "${resolve.out('')}" --single-attribute-per-line --print-width 100`, {
     cwd: resolve.out(''),
   });
   await exec(`eslint --fix "${resolve.out('')}"`, {
@@ -181,7 +191,7 @@ const prettify = async (resolve: PathResolvers, log: Logger) => {
 
 const hasTypescriptFiles = async (resolve: PathResolver) => {
   const filenamePatterns = ['./*.ts', './*.tsx'];
-  const files = (await Promise.all(filenamePatterns.map((pattern) => glob(resolve(pattern))))).flat(1);
+  const files = (await Promise.all(filenamePatterns.map((pattern) => platformGlob(resolve(pattern))))).flat(1);
   return files.length > 0;
 };
 
@@ -194,9 +204,13 @@ export const converter = async (
   log.debug(`sourceDir: ${sourceDir}`);
   log.debug(`outDir: ${outDir}`);
 
+  if (isWindows()) {
+    platformGlob = _.partial(glob, _, { windowsPathsNoEscape: true }) as any;
+  }
+
   const tempDir = path.join(sourceDir, '../_temp');
-  const sourceDirResolver = partial(path.resolve, sourceDir);
-  const tempDirResolver = partial(path.resolve, tempDir);
+  const sourceDirResolver = _.partial(path.resolve, sourceDir);
+  const tempDirResolver = _.partial(path.resolve, tempDir);
 
   if (!await hasTypescriptFiles(sourceDirResolver)) {
     log.info(`No TypeScript files found in ${sourceDir}. Skipping...`);
@@ -212,7 +226,7 @@ export const converter = async (
 
   const resolve = {
     source: tempDirResolver,
-    out: partial(path.resolve, outDir),
+    out: _.partial(path.resolve, outDir),
   };
 
   try {

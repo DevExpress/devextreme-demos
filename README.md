@@ -63,6 +63,16 @@ npm run fix-lint
 
 1. Use the built-in CLI to choose or enter the category, the demo name, and the technology for the new demo.
 
+### TS React Infrastructure
+
+1. After you make any changes in React TypeScript sources, run the following command:  
+
+```
+npm run convert-to-js ./JSDemos/Demos/**/React
+```
+
+1. To ensure that React JavaScript and TypeScript sources are always in sync, the following GitHub action is used: "Check generated JS demos".
+
 ## ASP.NET Demos
 
 > **_NOTE:_** You will need Windows. 
