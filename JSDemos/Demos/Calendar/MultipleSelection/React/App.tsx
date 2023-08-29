@@ -1,12 +1,10 @@
 import React from 'react';
 import CheckBox from 'devextreme-react/check-box';
 import SelectBox from 'devextreme-react/select-box';
-import Calendar from 'devextreme-react/calendar';
+import Calendar, { CalendarTypes } from 'devextreme-react/calendar';
 
 const selectionModes = ['single', 'multiple', 'range'];
 const selectionModeLabel = { 'aria-label': 'Selection Mode' };
-
-const initialValues = [new Date(), new Date(new Date().getTime() + 1000 * 60 * 60 * 24)];
 
 const isWeekend = (date) => {
   const day = date.getDay();
@@ -17,7 +15,7 @@ const isDateDisabled = ({ view, date }) => view === 'month' && isWeekend(date);
 export default function App() {
   const [showWeekNumbers, setShowWeekNumbers] = React.useState(true);
   const [selectWeekOnClick, setSelectWeekOnClick] = React.useState(true);
-  const [selectionMode, setSelectionMode] = React.useState('multiple');
+  const [selectionMode, setSelectionMode] = React.useState<CalendarTypes.CalendarSelectionMode>('multiple');
   const [minDateValue, setMinDateValue] = React.useState(null);
   const [maxDateValue, setMaxDateValue] = React.useState(null);
   const [weekendDisabled, setWeekendDisabled] = React.useState(null);
@@ -54,7 +52,6 @@ export default function App() {
     <div id="container">
       <div className="calendar-container">
         <Calendar
-          defaultValues={initialValues}
           showWeekNumbers={showWeekNumbers}
           selectWeekOnClick={selectWeekOnClick}
           selectionMode={selectionMode}
