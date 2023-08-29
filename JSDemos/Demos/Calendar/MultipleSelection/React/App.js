@@ -84,6 +84,7 @@ export default function App() {
           <SelectBox
             dataSource={selectionModes}
             value={selectionMode}
+            inputAttr={selectionModeLabel}
             onValueChanged={onSelectionModeChange}
           />
         </div>
