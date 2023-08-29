@@ -10,6 +10,9 @@ const isWeekend = (date) => {
   return day === 0 || day === 6;
 };
 const isDateDisabled = ({ view, date }) => view === 'month' && isWeekend(date);
+const now = new Date().getTime();
+const msInDay = 1000 * 60 * 60 * 24;
+const initialValues = [now, now + msInDay];
 export default function App() {
   const [showWeekNumbers, setShowWeekNumbers] = React.useState(true);
   const [selectWeekOnClick, setSelectWeekOnClick] = React.useState(true);
@@ -62,6 +65,7 @@ export default function App() {
           selectionMode={selectionMode}
           min={minDateValue}
           max={maxDateValue}
+          values={initialValues}
           disabledDates={weekendDisabled ? isDateDisabled : null}
         />
       </div>

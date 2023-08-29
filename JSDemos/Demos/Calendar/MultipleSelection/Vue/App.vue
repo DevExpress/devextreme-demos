@@ -26,7 +26,7 @@
         />
       </div>
       <div class="option">
-        <span>Selection mode</span>
+        <span>Selection Mode</span>
         <DxSelectBox
           v-model:value="selectionMode"
           :data-source="selectionModes"
