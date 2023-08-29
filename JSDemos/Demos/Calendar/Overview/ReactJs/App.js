@@ -20,7 +20,6 @@ const dateBoxLabel = { 'aria-label': 'Date' };
 const zoomLevelLabel = { 'aria-label': 'Zoom Level' };
 const dayLabel = { 'aria-label': 'First Day of Week' };
 const ruleLabel = { 'aria-label': 'Week Number Rule' };
-
 export default function App() {
   const [zoomLevel, setZoomLevel] = React.useState('month');
   const [currentValue, setCurrentValue] = React.useState(new Date());
@@ -29,41 +28,56 @@ export default function App() {
   const [showWeekNumbers, setShowWeekNumbers] = React.useState(false);
   const [firstDay, setFirstDay] = React.useState(0);
   const [weekNumberRule, setWeekNumberRule] = React.useState('auto');
-
-  const onCurrentValueChange = React.useCallback(({ value }) => {
-    setCurrentValue(value);
-  }, [setCurrentValue]);
-
-  const onDisabledChange = React.useCallback(({ value }) => {
-    setDisabled(value);
-  }, [setDisabled]);
-
-  const onZoomLevelChange = React.useCallback(({ value }) => {
-    setZoomLevel(value);
-  }, [setZoomLevel]);
-
-  const onFirstDayChange = React.useCallback(({ value }) => {
-    setFirstDay(value);
-  }, [setFirstDay]);
-
-  const onWeekNumberRuleChange = React.useCallback(({ value }) => {
-    setWeekNumberRule(value);
-  }, [setWeekNumberRule]);
-
-  const onShowWeekNumbersChange = React.useCallback(({ value }) => {
-    setShowWeekNumbers(value);
-  }, [setShowWeekNumbers]);
-
-  const onUseCellTemplateChange = React.useCallback(({ value }) => {
-    setUseCellTemplate(!!value);
-  }, [setUseCellTemplate]);
-
-  const onOptionChange = React.useCallback((e) => {
-    if (e.name === 'zoomLevel') {
-      onZoomLevelChange(e);
-    }
-  }, [onZoomLevelChange]);
-
+  const onCurrentValueChange = React.useCallback(
+    ({ value }) => {
+      setCurrentValue(value);
+    },
+    [setCurrentValue],
+  );
+  const onDisabledChange = React.useCallback(
+    ({ value }) => {
+      setDisabled(value);
+    },
+    [setDisabled],
+  );
+  const onZoomLevelChange = React.useCallback(
+    ({ value }) => {
+      setZoomLevel(value);
+    },
+    [setZoomLevel],
+  );
+  const onFirstDayChange = React.useCallback(
+    ({ value }) => {
+      setFirstDay(value);
+    },
+    [setFirstDay],
+  );
+  const onWeekNumberRuleChange = React.useCallback(
+    ({ value }) => {
+      setWeekNumberRule(value);
+    },
+    [setWeekNumberRule],
+  );
+  const onShowWeekNumbersChange = React.useCallback(
+    ({ value }) => {
+      setShowWeekNumbers(value);
+    },
+    [setShowWeekNumbers],
+  );
+  const onUseCellTemplateChange = React.useCallback(
+    ({ value }) => {
+      setUseCellTemplate(!!value);
+    },
+    [setUseCellTemplate],
+  );
+  const onOptionChange = React.useCallback(
+    (e) => {
+      if (e.name === 'zoomLevel') {
+        onZoomLevelChange(e);
+      }
+    },
+    [onZoomLevelChange],
+  );
   return (
     <div id="container">
       <div className="calendar-container">

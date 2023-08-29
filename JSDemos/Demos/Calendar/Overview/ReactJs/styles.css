@@ -49,3 +49,8 @@
 .option {
   margin-top: 10px;
 }
+
+.section {
+  margin-top: 10px;
+  text-decoration: underline;
+}
