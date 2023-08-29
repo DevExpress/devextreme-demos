@@ -1035,6 +1035,7 @@
     <Content Include="Content\DemosStyles\Accordion\Overview.css" />
     <Content Include="Content\DemosStyles\Autocomplete\Overview.css" />
     <Content Include="Content\DemosStyles\Calendar\Overview.css" />
+    <Content Include="Content\DemosStyles\Calendar\MultipleSelection.css" />
     <Content Include="Content\DemosStyles\Charts\APIDisplayATooltip.css" />
     <Content Include="Content\DemosStyles\Charts\Area.css" />
     <Content Include="Content\DemosStyles\Charts\AreaSparklines.css" />
@@ -1811,6 +1812,7 @@
     <Content Include="Views\Charts\SeriesTemplates.cshtml" />
     <Content Include="Views\Charts\NullPointSupport.cshtml" />
     <Content Include="Views\Calendar\Overview.cshtml" />
+    <Content Include="Views\Calendar\MultipleSelection.cshtml" />
     <Content Include="Views\Autocomplete\Overview.cshtml" />
     <Content Include="Views\Charts\APISelectAPoint.cshtml" />
     <Content Include="Views\DataGrid\RowSelection.cshtml" />
