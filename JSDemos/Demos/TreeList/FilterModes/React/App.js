@@ -8,10 +8,6 @@ const filterModes = ['matchOnly', 'withAncestors', 'fullBranch'];
 const App = () => {
   const [filterMode, setFilterMode] = React.useState('matchOnly');
 
-  const onFilterModeChange = React.useCallback((args) => {
-    setFilterMode(args.value);
-  }, []);
-
   return (
     <React.Fragment>
       <TreeList
@@ -54,7 +50,7 @@ const App = () => {
             items={filterModes}
             value={filterMode}
             inputAttr={filterLabel}
-            onValueChanged={onFilterModeChange}>
+            onValueChange={setFilterMode}>
           </SelectBox>
         </div>
       </div>

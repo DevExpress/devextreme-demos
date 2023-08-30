@@ -9,10 +9,6 @@ const expandedRowKeys = [1, 3, 6];
 const App = () => {
   const [columnResizingMode, setColumnResizingMode] = React.useState('nextColumn');
 
-  const onResizingModeChanged = React.useCallback((e) => {
-    setColumnResizingMode(e.value);
-  }, []);
-
   return (
     <div>
       <TreeList
@@ -43,7 +39,7 @@ const App = () => {
             value={columnResizingMode}
             inputAttr={columnResizingModeLabel}
             width={250}
-            onValueChanged={onResizingModeChanged}
+            onValueChange={setColumnResizingMode}
           />
         </div>
       </div>

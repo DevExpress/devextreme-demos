@@ -22,18 +22,6 @@ const App = () => {
   const [enterKeyAction, setEnterKeyAction] = React.useState('moveFocus');
   const [enterKeyDirection, setEnterKeyDirection] = React.useState('column');
 
-  const editOnKeyPressChanged = React.useCallback((e) => {
-    setEditOnKeyPress(e.value);
-  }, []);
-
-  const enterKeyActionChanged = React.useCallback((e) => {
-    setEnterKeyAction(e.value);
-  }, []);
-
-  const enterKeyDirectionChanged = React.useCallback((e) => {
-    setEnterKeyDirection(e.value);
-  }, []);
-
   return (
     <div id="tree-list-demo">
       <TreeList
@@ -77,21 +65,21 @@ const App = () => {
           <div className="option check-box">
             <CheckBox text="Edit On Key Press"
               value={editOnKeyPress}
-              onValueChanged={editOnKeyPressChanged} />
+              onValueChange={setEditOnKeyPress} />
           </div>
           <div className="option">
             <span className="option-caption">Enter Key Action</span>
             <SelectBox className="select"
               items={enterKeyActions}
               value={enterKeyAction}
-              onValueChanged={enterKeyActionChanged} />
+              onValueChange={setEnterKeyAction} />
           </div>
           <div className="option">
             <span className="option-caption">Enter Key Direction</span>
             <SelectBox className="select"
               items={enterKeyDirections}
               value={enterKeyDirection}
-              onValueChanged={enterKeyDirectionChanged} />
+              onValueChange={setEnterKeyDirection} />
           </div>
         </div>
       </div>

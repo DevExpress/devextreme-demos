@@ -57,18 +57,6 @@ const App = () => {
     setEmployees(updatedEmployees);
   }, [employees]);
 
-  const onAllowDropInsideItemChanged = React.useCallback((args) => {
-    setAllowDropInsideItem(args.value);
-  }, []);
-
-  const onAllowReorderingChanged = React.useCallback((args) => {
-    setAllowReordering(args.value);
-  }, []);
-
-  const onShowDragIconsChanged = React.useCallback((args) => {
-    setShowDragIcons(args.value);
-  }, []);
-
   return (
     <div>
       <TreeList
@@ -104,21 +92,21 @@ const App = () => {
             <CheckBox
               value={allowDropInsideItem}
               text="Allow Drop Inside Item"
-              onValueChanged={onAllowDropInsideItemChanged}
+              onValueChange={setAllowDropInsideItem}
             />
           </div>
           <div className="option">
             <CheckBox
               value={allowReordering}
               text="Allow Reordering"
-              onValueChanged={onAllowReorderingChanged}
+              onValueChange={setAllowReordering}
             />
           </div>
           <div className="option">
             <CheckBox
               value={showDragIcons}
               text="Show Drag Icons"
-              onValueChanged={onShowDragIconsChanged}
+              onValueChange={setShowDragIcons}
             />
           </div>
         </div>

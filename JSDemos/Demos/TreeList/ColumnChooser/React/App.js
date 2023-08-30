@@ -27,26 +27,6 @@ const App = () => {
 
   const isDragMode = mode === columnChooserModes[0].key;
 
-  const onModeValueChanged = React.useCallback((e) => {
-    setMode(e.value);
-  }, []);
-
-  const onSearchEnabledValueChanged = React.useCallback((e) => {
-    setSearchEnabled(e.value);
-  }, []);
-
-  const onAllowSelectAllValueChanged = React.useCallback((e) => {
-    setAllowSelectAll(e.value);
-  }, []);
-
-  const onSelectByClickValueChanged = React.useCallback((e) => {
-    setSelectByClick(e.value);
-  }, []);
-
-  const onRecursiveValueChanged = React.useCallback((e) => {
-    setRecursive(e.value);
-  }, []);
-
   return (
     <div>
       <TreeList
@@ -102,7 +82,7 @@ const App = () => {
               valueExpr="key"
               displayExpr="name"
               inputAttr={columnChooserModeLabel}
-              onValueChanged={onModeValueChanged}
+              onValueChange={setMode}
             />
           </div>
         </div>
@@ -113,7 +93,7 @@ const App = () => {
               id="searchEnabled"
               defaultValue={searchEnabled}
               text="Search enabled"
-              onValueChanged={onSearchEnabledValueChanged}
+              onValueChange={setSearchEnabled}
             />
           </div>
           <div className="option">
@@ -121,7 +101,7 @@ const App = () => {
               id="allowSelectAll"
               defaultValue={allowSelectAll}
               text="Allow select all"
-              onValueChanged={onAllowSelectAllValueChanged}
+              onValueChange={setAllowSelectAll}
               disabled={isDragMode}
             />
           </div>
@@ -130,7 +110,7 @@ const App = () => {
               id="selectByClick"
               defaultValue={selectByClick}
               text="Select by click"
-              onValueChanged={onSelectByClickValueChanged}
+              onValueChange={setSelectByClick}
               disabled={isDragMode}
             />
           </div>
@@ -139,7 +119,7 @@ const App = () => {
               id="recursive"
               defaultValue={recursive}
               text="Recursive"
-              onValueChanged={onRecursiveValueChanged}
+              onValueChange={setRecursive}
               disabled={isDragMode}
             />
           </div>
