@@ -21,7 +21,7 @@ $(() => {
     validationGroup: 'customerData',
     onOptionChanged: (e) => {
       if (e.name === 'isDirty') {
-          const resetButton = formWidget.getButton('ResetBtn');
+          const resetButton = formWidget.getButton('Reset');
           resetButton.option('disabled', !e.value);
       }
     },
@@ -132,7 +132,7 @@ $(() => {
         dataField: 'VacationDates',
         editorType: 'dxDateRangeBox',
         label: {
-          text: 'Next Year Vacation Dates',
+          text: 'Vacation Dates',
         },
         editorOptions: {
             startDatePlaceholder: "Start Date",
@@ -228,7 +228,7 @@ $(() => {
               items: [
               {
                   itemType: 'button',
-                  name: 'ResetBtn',
+                  name: 'Reset',
                   buttonOptions: {
                       onClick: () => {
                         formWidget.reset();
