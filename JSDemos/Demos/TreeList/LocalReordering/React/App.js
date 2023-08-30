@@ -5,25 +5,25 @@ import { employees as employeeList } from './data.js';
 
 const expandedRowKeys = [1];
 
+const onDragChange = (e) => {
+  const visibleRows = e.component.getVisibleRows();
+  const sourceNode = e.component.getNodeByKey(e.itemData.ID);
+  let targetNode = visibleRows[e.toIndex].node;
+
+  while (targetNode && targetNode.data) {
+    if (targetNode.data.ID === sourceNode.data.ID) {
+      e.cancel = true;
+      break;
+    }
+    targetNode = targetNode.parent;
+  }
+};
+
 const App = () => {
   const [employees, setEmployees] = React.useState(employeeList);
   const [allowDropInsideItem, setAllowDropInsideItem] = React.useState(true);
   const [allowReordering, setAllowReordering] = React.useState(true);
   const [showDragIcons, setShowDragIcons] = React.useState(true);
-
-  const onDragChange = React.useCallback((e) => {
-    const visibleRows = e.component.getVisibleRows();
-    const sourceNode = e.component.getNodeByKey(e.itemData.ID);
-    let targetNode = visibleRows[e.toIndex].node;
-
-    while (targetNode && targetNode.data) {
-      if (targetNode.data.ID === sourceNode.data.ID) {
-        e.cancel = true;
-        break;
-      }
-      targetNode = targetNode.parent;
-    }
-  }, []);
 
   const onReorder = React.useCallback((e) => {
     const visibleRows = e.component.getVisibleRows();

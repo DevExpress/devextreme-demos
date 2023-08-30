@@ -19,6 +19,17 @@ const lookupData = {
 
 const allowDeleting = (e) => e.row.data.ID !== 1;
 
+const onEditorPreparing = (e) => {
+  if (e.dataField === 'Head_ID' && e.row.data.ID === 1) {
+    e.editorOptions.disabled = true;
+    e.editorOptions.value = null;
+  }
+};
+
+const onInitNewRow = (e) => {
+  e.data.Head_ID = 1;
+};
+
 const App = () => (
   <div id="tree-list-demo">
     <TreeList
@@ -59,16 +70,5 @@ const App = () => (
     </TreeList>
   </div>
 );
-
-const onEditorPreparing = (e) => {
-  if (e.dataField === 'Head_ID' && e.row.data.ID === 1) {
-    e.editorOptions.disabled = true;
-    e.editorOptions.value = null;
-  }
-};
-
-const onInitNewRow = (e) => {
-  e.data.Head_ID = 1;
-};
 
 export default App;

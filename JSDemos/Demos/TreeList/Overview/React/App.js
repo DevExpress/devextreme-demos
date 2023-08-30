@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Template } from 'devextreme-react/core/template';
 import TreeList, {
   Column, ColumnChooser, HeaderFilter, SearchPanel, Selection, Lookup,
 } from 'devextreme-react/tree-list';
@@ -10,6 +9,27 @@ import EmployeeCell from './EmployeeCell.js';
 
 const expandedKeys = [1, 2];
 const selectedKeys = [1, 29, 42];
+
+const statuses = [
+  'Not Started',
+  'Need Assistance',
+  'In Progress',
+  'Deferred',
+  'Completed',
+];
+
+const dataSourceOptions = {
+  store: tasks.map((task) => {
+    employees.forEach((employee) => {
+      if (task.Task_Assigned_Employee_ID === employee.ID) {
+        task.Task_Assigned_Employee = employee;
+      }
+    });
+    return task;
+  }),
+};
+
+const customizeTaskCompletionText = (cellInfo) => `${cellInfo.valueText}%`;
 
 function App() {
   return (
@@ -35,7 +55,7 @@ function App() {
         caption="Assigned"
         allowSorting={true}
         minWidth={200}
-        cellTemplate="employeeTemplate"
+        cellComponent={EmployeeCell}
       >
         <Lookup dataSource={employees} displayExpr="Name" valueExpr="ID" />
       </Column>
@@ -70,32 +90,8 @@ function App() {
         caption="Due Date"
         dataType="date"
       />
-
-      <Template name="employeeTemplate" render={EmployeeCell} />
     </TreeList>
   );
 }
-const dataSourceOptions = {
-  store: tasks.map((task) => {
-    employees.forEach((employee) => {
-      if (task.Task_Assigned_Employee_ID === employee.ID) {
-        task.Task_Assigned_Employee = employee;
-      }
-    });
-    return task;
-  }),
-};
-
-function customizeTaskCompletionText(cellInfo) {
-  return `${cellInfo.valueText}%`;
-}
-
-const statuses = [
-  'Not Started',
-  'Need Assistance',
-  'In Progress',
-  'Deferred',
-  'Completed',
-];
 
 export default App;

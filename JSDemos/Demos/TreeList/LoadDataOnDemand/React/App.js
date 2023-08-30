@@ -3,7 +3,7 @@ import { TreeList, RemoteOperations, Column } from 'devextreme-react/tree-list';
 import 'whatwg-fetch';
 
 const dataSource = {
-  load(loadOptions) {
+  async load(loadOptions) {
     const parentIdsParam = loadOptions.parentIds;
     const url = new URL('https://js.devexpress.com/Demos/Mvc/api/treeListData');
     if (parentIdsParam) {
@@ -12,9 +12,13 @@ const dataSource = {
       });
     }
 
-    return fetch(url)
-      .then((response) => response.json())
-      .catch(() => { throw new Error('Data Loading Error'); });
+    const result = await fetch(url);
+
+    if (result.status === 200) {
+      return result.json();
+    }
+
+    throw new Error('Data Loading Error');
   },
 };
 

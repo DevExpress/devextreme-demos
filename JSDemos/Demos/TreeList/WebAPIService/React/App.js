@@ -33,6 +33,12 @@ const statusesData = [
 
 const expandedKeys = [1, 2];
 
+const initNewRow = (e) => {
+  e.data.Task_Status = 'Not Started';
+  e.data.Task_Start_Date = new Date();
+  e.data.Task_Due_Date = new Date();
+};
+
 const App = () => (
   <TreeList
     id="tree-list"
@@ -70,11 +76,5 @@ const App = () => (
     <Column dataField="Task_Due_Date" caption="Due Date" dataType="date" />
   </TreeList>
 );
-
-const initNewRow = (e) => {
-  e.data.Task_Status = 'Not Started';
-  e.data.Task_Start_Date = new Date();
-  e.data.Task_Due_Date = new Date();
-};
 
 export default App;

@@ -13,14 +13,14 @@ const expandedRowKeys = [1, 2, 4, 5];
 const enterKeyActions = ['startEdit', 'moveFocus'];
 const enterKeyDirections = ['none', 'column', 'row'];
 
+const onFocusedCellChanging = (e) => {
+  e.isHighlighted = true;
+};
+
 const App = () => {
   const [editOnKeyPress, setEditOnKeyPress] = React.useState(true);
   const [enterKeyAction, setEnterKeyAction] = React.useState('moveFocus');
   const [enterKeyDirection, setEnterKeyDirection] = React.useState('column');
-
-  const onFocusedCellChanging = React.useCallback((e) => {
-    e.isHighlighted = true;
-  }, []);
 
   const editOnKeyPressChanged = React.useCallback((e) => {
     setEditOnKeyPress(e.value);

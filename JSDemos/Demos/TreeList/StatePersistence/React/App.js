@@ -6,6 +6,10 @@ import { employees } from './data.js';
 
 const expandedRowKeys = [1, 2, 10];
 
+const reloadPage = () => {
+  window.location.reload();
+};
+
 const App = () => {
   const treeList = React.useRef(null);
 
@@ -37,10 +41,6 @@ const App = () => {
       </TreeList>
     </div>
   );
-};
-
-const reloadPage = () => {
-  window.location.reload();
 };
 
 export default App;
