@@ -241,7 +241,6 @@ $(() => {
                   },
               }, {
                   itemType: 'button',
-                  horizontalAlignment: 'right',
                   buttonOptions: {
                       text: 'Register',
                       type: 'default',
