@@ -195,7 +195,7 @@ $(() => {
         }],
       }, {
           itemType: 'group',
-          cssClass: 'last-group-margin',
+          cssClass: 'last-group',
           colCountByScreen: {
                   xs: 2, 
                   sm: 2,
