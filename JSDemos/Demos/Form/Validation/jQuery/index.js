@@ -19,6 +19,12 @@ $(() => {
     showColonAfterLabel: true,
     showValidationSummary: true,
     validationGroup: 'customerData',
+    onOptionChanged: (e) => {
+      if (e.name === 'isDirty') {
+          const resetButton = formWidget.getButton('ResetBtn');
+          resetButton.option('disabled', !e.value);
+      }
+    },
     items: [{
       itemType: 'group',
       caption: 'Credentials',
@@ -51,8 +57,8 @@ $(() => {
             name: 'password',
             location: 'after',
             options: {
-              icon: '../../../../images/icons/eye.png',
-              type: 'default',
+              stylingMode: 'text',
+              icon: 'eyeopen',
               onClick: () => changePasswordMode('Password'),
             },
           }],
@@ -73,8 +79,8 @@ $(() => {
             name: 'password',
             location: 'after',
             options: {
-              icon: '../../../../images/icons/eye.png',
-              type: 'default',
+              icon: 'eyeopen',
+              stylingMode: 'text',
               onClick: () => changePasswordMode('ConfirmPassword'),
             },
           }],
@@ -112,6 +118,7 @@ $(() => {
         },
         editorOptions: {
           invalidDateMessage: 'The date must have the following format: MM/dd/yyyy',
+          placeholder: "Birth Date"
         },
         validationRules: [{
           type: 'required',
@@ -121,7 +128,18 @@ $(() => {
           max: new Date().setFullYear(new Date().getFullYear() - 21),
           message: 'You must be at least 21 years old',
         }],
-      }],
+      }, {
+        dataField: 'VacationDates',
+        editorType: 'dxDateRangeBox',
+        label: {
+          text: 'Next Year Vacation Dates',
+        },
+        editorOptions: {
+            startDatePlaceholder: "Start Date",
+            endDatePlaceholder: "End Date",
+        },
+      }
+    ],
     }, {
       itemType: 'group',
       caption: 'Billing address',
@@ -176,29 +194,65 @@ $(() => {
           message: 'The phone must have a correct USA phone format',
         }],
       }, {
-        dataField: 'Accepted',
-        label: {
-          visible: false,
-        },
-        editorOptions: {
-          text: 'I agree to the Terms and Conditions',
-        },
-        validationRules: [{
-          type: 'compare',
-          comparisonTarget() { return true; },
-          message: 'You must agree to the Terms and Conditions',
-        }],
-      }],
-    }, {
-      itemType: 'button',
-      horizontalAlignment: 'left',
-      buttonOptions: {
-        text: 'Register',
-        type: 'success',
-        useSubmitBehavior: true,
-      },
-    }],
-  }).dxForm('instance');
+          itemType: 'group',
+          cssClass: 'last-group-margin',
+          colCountByScreen: {
+                  xs: 2, 
+                  sm: 2,
+                  md: 2,
+                  lg: 2
+              },
+          items: [{
+              dataField: 'Accepted',
+              label: {
+                visible: false,
+              },
+              editorOptions: {
+                text: 'I agree to the Terms and Conditions',
+              },
+              validationRules: [{
+                type: 'compare',
+                comparisonTarget() { return true; },
+                message: 'You must agree to the Terms and Conditions',
+              }],
+            }, 
+            {
+              itemType: 'group',
+              cssClass: 'buttons-group',
+              colCountByScreen: {
+                  xs: 2, 
+                  sm: 2,
+                  md: 2,
+                  lg: 2
+              },
+              items: [
+              {
+                  itemType: 'button',
+                  name: 'ResetBtn',
+                  buttonOptions: {
+                      onClick: () => {
+                        formWidget.reset();
+                      },
+                      icon: 'refresh',
+                      text: 'Reset',
+                      disabled: true,
+                      width:'120px',
+
+                  },
+              }, {
+                  itemType: 'button',
+                  horizontalAlignment: 'right',
+                  buttonOptions: {
+                      text: 'Register',
+                      type: 'default',
+                      useSubmitBehavior: true,
+                      width:'120px'
+                  }
+              }]
+          }]
+        }
+    ]}
+]}).dxForm('instance');
 
   $('#form-container').on('submit', (e) => {
     DevExpress.ui.notify({
