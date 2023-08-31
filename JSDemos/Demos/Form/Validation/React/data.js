@@ -5,7 +5,7 @@ const customer = {
   Date: null,
   VacationDates: [null, null],
   Country: '',
-  City: '',
+  City: null,
   Address: '',
   Phone: '',
   Accepted: false,
