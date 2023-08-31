@@ -21,8 +21,8 @@ $(() => {
     validationGroup: 'customerData',
     onOptionChanged: (e) => {
       if (e.name === 'isDirty') {
-          const resetButton = formWidget.getButton('Reset');
-          resetButton.option('disabled', !e.value);
+        const resetButton = formWidget.getButton('Reset');
+        resetButton.option('disabled', !e.value);
       }
     },
     items: [{
@@ -109,7 +109,6 @@ $(() => {
           pattern: '^[^0-9]+$',
           message: 'Do not use digits in the Name',
         }],
-
       }, {
         dataField: 'Date',
         editorType: 'dxDateBox',
@@ -118,7 +117,7 @@ $(() => {
         },
         editorOptions: {
           invalidDateMessage: 'The date must have the following format: MM/dd/yyyy',
-          placeholder: "Birth Date"
+          placeholder: 'Birth Date',
         },
         validationRules: [{
           type: 'required',
@@ -139,8 +138,7 @@ $(() => {
           endDatePlaceholder: 'End Date',
           invalidDateMessage: 'The date must have the following format: MM/dd/yyyy',
         },
-      }
-    ],
+      }],
     }, {
       itemType: 'group',
       caption: 'Billing address',
@@ -194,16 +192,15 @@ $(() => {
           pattern: /^[02-9]\d{9}$/,
           message: 'The phone must have a correct USA phone format',
         }],
-      }
-    ]}, 
-    {
+      }],
+    }, {
       itemType: 'group',
       cssClass: 'last-group',
       colCountByScreen: {
-        xs: 2, 
+        xs: 2,
         sm: 2,
         md: 2,
-        lg: 2
+        lg: 2,
       },
       items: [{
         dataField: 'Accepted',
@@ -218,15 +215,14 @@ $(() => {
           comparisonTarget() { return true; },
           message: 'You must agree to the Terms and Conditions',
         }],
-      }, 
-      {
+      }, {
         itemType: 'group',
         cssClass: 'buttons-group',
         colCountByScreen: {
           xs: 2,
           sm: 2,
           md: 2,
-          lg: 2
+          lg: 2,
         },
         items: [{
           itemType: 'button',
@@ -241,17 +237,17 @@ $(() => {
             width: '120px',
           },
         }, {
-            itemType: 'button',
-            buttonOptions: {
-              text: 'Register',
-              type: 'default',
-              useSubmitBehavior: true,
-              width: '120px'
-            }
-        }]
-      }]
-    }
-]}).dxForm('instance');
+          itemType: 'button',
+          buttonOptions: {
+            text: 'Register',
+            type: 'default',
+            useSubmitBehavior: true,
+            width: '120px',
+          },
+        }],
+      }],
+    }],
+  }).dxForm('instance');
 
   $('#form-container').on('submit', (e) => {
     DevExpress.ui.notify({

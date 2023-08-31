@@ -77,19 +77,18 @@
         >
         </dxi-validation-rule>
       </dxi-item>
-    <dxi-item
-      dataField="VacationDates"
-      editorType="dxDateRangeBox"
-      [editorOptions]="{
-        startDatePlaceholder: 'Start Date',
-        endDatePlaceholder: 'End Date',
-        invalidDateMessage:
-          'The date must have the following format: MM/dd/yyyy'
-      }"
+      <dxi-item
+        dataField="VacationDates"
+        editorType="dxDateRangeBox"
+        [editorOptions]="{
+          startDatePlaceholder: 'Start Date',
+          endDatePlaceholder: 'End Date',
+          invalidDateMessage:
+            'The date must have the following format: MM/dd/yyyy'
+        }"
       >
-      <dxo-label text="Vacation Dates"> </dxo-label>
-    </dxi-item>
-
+        <dxo-label text="Vacation Dates"> </dxo-label>
+      </dxi-item>
     </dxi-item>
     <dxi-item itemType="group" caption="Billing address">
       <dxi-item
@@ -142,8 +141,9 @@
       </dxi-item>
     </dxi-item>
 
-    <dxi-item itemType="group" 
-      cssClass="last-group" 
+    <dxi-item
+      itemType="group"
+      cssClass="last-group"
       [colCountByScreen]="colCountByScreen"
     >
       <dxi-item
@@ -164,17 +164,18 @@
         </dxi-validation-rule>
       </dxi-item>
 
-      <dxi-item itemType="group" 
-        cssClass="buttons-group" 
-        [colCountByScreen]="colCountByScreen">
+      <dxi-item
+        itemType="group"
+        cssClass="buttons-group"
+        [colCountByScreen]="colCountByScreen"
+      >
         <dxi-item
           name="Reset"
           itemType="button"
-          [buttonOptions]="resetButtonOptions">
+          [buttonOptions]="resetButtonOptions"
+        >
         </dxi-item>
-        <dxi-item
-          itemType="button"
-          [buttonOptions]="registerButtonOptions">
+        <dxi-item itemType="button" [buttonOptions]="registerButtonOptions">
         </dxi-item>
       </dxi-item>
     </dxi-item>

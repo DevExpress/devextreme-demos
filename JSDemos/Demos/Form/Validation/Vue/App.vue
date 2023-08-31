@@ -109,9 +109,9 @@
             </DxSimpleItem>
           </DxGroupItem>
 
-          <DxGroupItem 
-            cssClass="last-group" 
-            :colCountByScreen="colCountByScreen"
+          <DxGroupItem
+            css-class="last-group"
+            :col-count-by-screen="colCountByScreen"
           >
             <DxSimpleItem
               :editor-options="checkBoxOptions"
@@ -127,8 +127,8 @@
             </DxSimpleItem>
 
             <DxGroupItem
-              cssClass="buttons-group"
-              :colCountByScreen="colCountByScreen"
+              css-class="buttons-group"
+              :col-count-by-screen="colCountByScreen"
             >
               <DxButtonItem
                 :button-options="resetButtonOptions"
@@ -159,7 +159,7 @@ import DxForm, {
   DxAsyncRule,
 } from 'devextreme-vue/form';
 import DxAutocomplete from 'devextreme-vue/autocomplete';
-import DxDateRangeBox from 'devextreme-vue/date-range-box'
+import DxDateRangeBox from 'devextreme-vue/date-range-box';
 
 import notify from 'devextreme/ui/notify';
 import Validator from 'devextreme/ui/validator';
@@ -212,10 +212,10 @@ export default {
         },
       },
       colCountByScreen: {
-        xs: 2, 
+        xs: 2,
         sm: 2,
         md: 2,
-        lg: 2
+        lg: 2,
       },
       passwordOptions: {
         mode: 'password',
@@ -253,7 +253,7 @@ export default {
         ],
       },
       dateBoxOptions: {
-        placeholder: "Birth Date",
+        placeholder: 'Birth Date',
         invalidDateMessage:
           'The date must have the following format: MM/dd/yyyy',
       },
@@ -289,7 +289,7 @@ export default {
   },
   methods: {
     onOptionChanged(e) {
-      if(e.name === 'isDirty') {
+      if (e.name === 'isDirty') {
         const resetButton = this.formInstance.getButton('Reset');
         resetButton.option('disabled', !e.value);
       }

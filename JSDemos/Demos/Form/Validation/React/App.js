@@ -43,10 +43,10 @@ const phoneEditorOptions = {
 };
 
 const colCountByScreen = {
-  xs: 2, 
+  xs: 2,
   sm: 2,
   md: 2,
-  lg: 2
+  lg: 2,
 };
 
 const maxDate = new Date().setFullYear(new Date().getFullYear() - 21);
@@ -92,10 +92,10 @@ function App() {
     disabled: true,
     icon: 'refresh',
     text: 'Reset',
-    width: '120px',  
+    width: '120px',
     onClick: () => {
       formInstance.current.reset();
-    }
+    },
   });
 
   const getPasswordOptions = React.useCallback(() => ({
@@ -156,8 +156,8 @@ function App() {
   }, []);
 
   const onOptionChanged = React.useCallback((e) => {
-    if(e.name === 'isDirty') {
-      setResetButtonOptions({...resetButtonOptions, disabled: !e.value})
+    if (e.name === 'isDirty') {
+      setResetButtonOptions({ ...resetButtonOptions, disabled: !e.value });
     }
   }, [resetButtonOptions, setResetButtonOptions]);
 
@@ -208,7 +208,7 @@ function App() {
             </SimpleItem>
 
             <SimpleItem dataField="VacationDates"
-              editorType="dxDateRangeBox" 
+              editorType="dxDateRangeBox"
               editorOptions={dateRangeBoxOptions}
             >
               <Label text="Vacation Dates" />

@@ -10,7 +10,7 @@ export class Customer {
   Date: Date;
 
   VacationDates: [Date, Date];
-  
+
   Country: string;
 
   City: string;

@@ -79,10 +79,10 @@ export class AppComponent {
   };
 
   colCountByScreen = {
-    xs: 2, 
+    xs: 2,
     sm: 2,
     md: 2,
-    lg: 2
+    lg: 2,
   };
 
   customer: Customer;
@@ -158,7 +158,7 @@ export class AppComponent {
   };
 
   onOptionChanged = function (e) {
-    if(e.name === 'isDirty') {
+    if (e.name === 'isDirty') {
       const resetButton = this.form.instance.getButton('Reset');
       resetButton.option('disabled', !e.value);
     }
