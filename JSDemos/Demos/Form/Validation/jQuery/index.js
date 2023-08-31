@@ -228,8 +228,7 @@ $(() => {
           md: 2,
           lg: 2
         },
-        items: [
-        {
+        items: [{
           itemType: 'button',
           name: 'Reset',
           buttonOptions: {

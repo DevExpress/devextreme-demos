@@ -109,7 +109,10 @@
             </DxSimpleItem>
           </DxGroupItem>
 
-          <DxGroupItem cssClass="last-group" :colCountByScreen="colCountByScreen">
+          <DxGroupItem 
+            cssClass="last-group" 
+            :colCountByScreen="colCountByScreen"
+          >
             <DxSimpleItem
               :editor-options="checkBoxOptions"
               data-field="Accepted"
@@ -123,12 +126,19 @@
               />
             </DxSimpleItem>
 
-            <DxGroupItem cssClass="buttons-group" :colCountByScreen="colCountByScreen">
-              <DxButtonItem :button-options="resetButtonOptions" name="Reset" />
-              <DxButtonItem :button-options="registerButtonOptions" />
+            <DxGroupItem
+              cssClass="buttons-group"
+              :colCountByScreen="colCountByScreen"
+            >
+              <DxButtonItem
+                :button-options="resetButtonOptions"
+                name="Reset"
+              />
+              <DxButtonItem
+                :button-options="registerButtonOptions"
+              />
             </DxGroupItem>
           </DxGroupItem>
-
         </DxForm>
       </form>
     </div>
