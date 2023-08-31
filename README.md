@@ -79,10 +79,11 @@ npm run convert-to-js ./JSDemos/Demos/**/React
 
 1. Clone the [devextreme-aspnet](https://github.com/DevExpress/devextreme-aspnet) repo.
 
-1. Open the `repository.config.json` file and set the `devextreme-aspnet` property to the path where your clone of the `devextreme-aspnet` repository is located. For example:
+1. Open the `repository.config.json` file, set the `devextreme-aspnet` property to the path where your clone of the `devextreme-aspnet` repository is located, and set the `devextreme` property to the path DevExtreme repo if you want to use local devextreme dist. For example:
 
     ```json
     {
+      "devextreme": "C:/Work/DevExtreme",
       "devextreme-aspnet": "C:/Work/devextreme-aspnet"
     }
     ```
