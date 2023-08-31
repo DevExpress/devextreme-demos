@@ -6,7 +6,7 @@ const { copyAspFiles } = require('./copy-asp-files');
 const { copyMvcSharedResources } = require('../utils/copy-shared-resources/copy');
 
 exports.aspnet = series(
-  copyCommonAspFiles,
   copyAspFiles,
+  copyCommonAspFiles,
   copyMvcSharedResources,
 );
