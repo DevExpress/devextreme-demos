@@ -9,6 +9,7 @@
           v-model:form-data="customer"
           :read-only="false"
           @initialized="saveFormInstance"
+          @optionChanged="onOptionChanged"
           :show-colon-after-label="true"
           :show-validation-summary="true"
           validation-group="customerData"
@@ -61,6 +62,13 @@
                 message="You must be at least 21 years old"
               />
             </DxSimpleItem>
+            <DxSimpleItem
+              :editor-options="dateRangeBoxOptions"
+              data-field="VacationDates"
+              editor-type="dxDateRangeBox"
+            >
+              <DxLabel text="Vacation Dates"/>
+            </DxSimpleItem>
           </DxGroupItem>
           <DxGroupItem caption="Billing address">
             <DxSimpleItem
@@ -99,6 +107,9 @@
                 message="The phone must have a correct USA phone format"
               />
             </DxSimpleItem>
+          </DxGroupItem>
+
+          <DxGroupItem cssClass="last-group" :colCountByScreen="colCountByScreen">
             <DxSimpleItem
               :editor-options="checkBoxOptions"
               data-field="Accepted"
@@ -111,11 +122,13 @@
                 message="You must agree to the Terms and Conditions"
               />
             </DxSimpleItem>
+
+            <DxGroupItem cssClass="buttons-group" :colCountByScreen="colCountByScreen">
+              <DxButtonItem :button-options="resetButtonOptions" name="Reset" />
+              <DxButtonItem :button-options="registerButtonOptions" />
+            </DxGroupItem>
           </DxGroupItem>
-          <DxButtonItem
-            :button-options="buttonOptions"
-            horizontal-alignment="left"
-          />
+
         </DxForm>
       </form>
     </div>
@@ -136,6 +149,7 @@ import DxForm, {
   DxAsyncRule,
 } from 'devextreme-vue/form';
 import DxAutocomplete from 'devextreme-vue/autocomplete';
+import DxDateRangeBox from 'devextreme-vue/date-range-box'
 
 import notify from 'devextreme/ui/notify';
 import Validator from 'devextreme/ui/validator';
@@ -172,10 +186,26 @@ export default {
     return {
       formInstance: null,
       customer: service.getCustomer(),
-      buttonOptions: {
+      registerButtonOptions: {
         text: 'Register',
-        type: 'success',
+        type: 'default',
+        width: '120px',
         useSubmitBehavior: true,
+      },
+      resetButtonOptions: {
+        icon: 'refresh',
+        text: 'Reset',
+        disabled: true,
+        width: '120px',
+        onClick: () => {
+          this.formInstance.reset();
+        },
+      },
+      colCountByScreen: {
+        xs: 2, 
+        sm: 2,
+        md: 2,
+        lg: 2
       },
       passwordOptions: {
         mode: 'password',
@@ -191,8 +221,8 @@ export default {
             name: 'password',
             location: 'after',
             options: {
-              icon: '../../../../images/icons/eye.png',
-              type: 'default',
+              icon: 'eyeopen',
+              stylingMode: 'text',
               onClick: () => this.changePasswordMode('Password'),
             },
           },
@@ -205,14 +235,21 @@ export default {
             name: 'password',
             location: 'after',
             options: {
-              icon: '../../../../images/icons/eye.png',
-              type: 'default',
+              icon: 'eyeopen',
+              stylingMode: 'text',
               onClick: () => this.changePasswordMode('ConfirmPassword'),
             },
           },
         ],
       },
       dateBoxOptions: {
+        placeholder: "Birth Date",
+        invalidDateMessage:
+          'The date must have the following format: MM/dd/yyyy',
+      },
+      dateRangeBoxOptions: {
+        endDatePlaceholder: 'End Date',
+        startDatePlaceholder: 'Start Date',
         invalidDateMessage:
           'The date must have the following format: MM/dd/yyyy',
       },
@@ -241,6 +278,12 @@ export default {
     };
   },
   methods: {
+    onOptionChanged(e) {
+      if(e.name === 'isDirty') {
+        const resetButton = this.formInstance.getButton('Reset');
+        resetButton.option('disabled', !e.value);
+      }
+    },
     saveFormInstance(e) {
       this.formInstance = e.component;
     },
@@ -276,5 +319,22 @@ export default {
 <style scoped>
 form {
   margin: 10px;
+}
+
+.last-group {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.last-group .dx-box-item-content {
+  justify-content: center !important;
+}
+
+.buttons-group .dx-box-flex  {
+  align-items: flex-end !important;
+}
+
+.buttons-group .dx-box-flex .dx-field-button-item {
+  padding: 5px;
 }
 </style>

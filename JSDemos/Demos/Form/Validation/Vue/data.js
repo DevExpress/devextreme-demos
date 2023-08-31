@@ -3,6 +3,7 @@ const customer = {
   Password: '',
   Name: 'Peter',
   Date: null,
+  VacationDates: [null, null],
   Country: '',
   City: '',
   Address: '',

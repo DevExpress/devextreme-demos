@@ -135,8 +135,9 @@ $(() => {
           text: 'Vacation Dates',
         },
         editorOptions: {
-            startDatePlaceholder: "Start Date",
-            endDatePlaceholder: "End Date",
+          startDatePlaceholder: 'Start Date',
+          endDatePlaceholder: 'End Date',
+          invalidDateMessage: 'The date must have the following format: MM/dd/yyyy',
         },
       }
     ],
@@ -193,64 +194,64 @@ $(() => {
           pattern: /^[02-9]\d{9}$/,
           message: 'The phone must have a correct USA phone format',
         }],
-      }, {
-          itemType: 'group',
-          cssClass: 'last-group',
-          colCountByScreen: {
-                  xs: 2, 
-                  sm: 2,
-                  md: 2,
-                  lg: 2
-              },
-          items: [{
-              dataField: 'Accepted',
-              label: {
-                visible: false,
-              },
-              editorOptions: {
-                text: 'I agree to the Terms and Conditions',
-              },
-              validationRules: [{
-                type: 'compare',
-                comparisonTarget() { return true; },
-                message: 'You must agree to the Terms and Conditions',
-              }],
-            }, 
-            {
-              itemType: 'group',
-              cssClass: 'buttons-group',
-              colCountByScreen: {
-                  xs: 2, 
-                  sm: 2,
-                  md: 2,
-                  lg: 2
-              },
-              items: [
-              {
-                  itemType: 'button',
-                  name: 'Reset',
-                  buttonOptions: {
-                      onClick: () => {
-                        formWidget.reset();
-                      },
-                      icon: 'refresh',
-                      text: 'Reset',
-                      disabled: true,
-                      width:'120px',
-
-                  },
-              }, {
-                  itemType: 'button',
-                  buttonOptions: {
-                      text: 'Register',
-                      type: 'default',
-                      useSubmitBehavior: true,
-                      width:'120px'
-                  }
-              }]
-          }]
-        }
-    ]}
+      }
+    ]}, 
+    {
+      itemType: 'group',
+      cssClass: 'last-group',
+      colCountByScreen: {
+        xs: 2, 
+        sm: 2,
+        md: 2,
+        lg: 2
+      },
+      items: [{
+        dataField: 'Accepted',
+        label: {
+          visible: false,
+        },
+        editorOptions: {
+          text: 'I agree to the Terms and Conditions',
+        },
+        validationRules: [{
+          type: 'compare',
+          comparisonTarget() { return true; },
+          message: 'You must agree to the Terms and Conditions',
+        }],
+      }, 
+      {
+        itemType: 'group',
+        cssClass: 'buttons-group',
+        colCountByScreen: {
+          xs: 2,
+          sm: 2,
+          md: 2,
+          lg: 2
+        },
+        items: [
+        {
+          itemType: 'button',
+          name: 'Reset',
+          buttonOptions: {
+            onClick: () => {
+              formWidget.reset();
+            },
+            icon: 'refresh',
+            text: 'Reset',
+            disabled: true,
+            width: '120px',
+          },
+        }, {
+            itemType: 'button',
+            buttonOptions: {
+              text: 'Register',
+              type: 'default',
+              useSubmitBehavior: true,
+              width: '120px'
+            }
+        }]
+      }]
+    }
 ]}).dxForm('instance');
 
   $('#form-container').on('submit', (e) => {
