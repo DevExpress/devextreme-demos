@@ -589,7 +589,7 @@ jobs:
     - name: Get screenshots artifacts name
       if: ${{ failure() }}
       id: screenshotname
-      run: echo ::set-output name=value::$(echo "${{ matrix.CONSTEL }}" | grep -oP "^\w+")
+      run: echo "value=$(echo "${{ matrix.CONSTEL }}" | grep -oP "^\w+")" >> $GITHUB_OUTPUT
 
     - name: Copy screenshots artifacts
       if: ${{ failure() }}
