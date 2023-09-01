@@ -1,7 +1,8 @@
 $(() => {
   let maxID = employees[employees.length - 1].ID;
-
-  const isChief = (position) => position && ['CEO', 'CMO'].indexOf(position.trim().toUpperCase()) >= 0;
+  const isChief = function (position) {
+    return position && ['CEO', 'CMO'].indexOf(position.trim().toUpperCase()) >= 0;
+  };
 
   $('#grid-container').dxDataGrid({
     dataSource: employees,

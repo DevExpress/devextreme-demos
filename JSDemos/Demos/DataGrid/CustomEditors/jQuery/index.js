@@ -54,7 +54,6 @@ $(() => {
       cellTemplate(container, options) {
         const noBreakSpace = '\u00A0';
         const text = (options.value || []).map((element) => options.column.lookup.calculateCellValue(element)).join(', ');
-
         container.text(text || noBreakSpace).attr('title', text);
       },
       calculateFilterExpression(filterValue, selectedFilterOperation, target) {
