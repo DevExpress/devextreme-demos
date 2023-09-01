@@ -159,7 +159,7 @@ import DxForm, {
   DxAsyncRule,
 } from 'devextreme-vue/form';
 import DxAutocomplete from 'devextreme-vue/autocomplete';
-import DxDateRangeBox from 'devextreme-vue/date-range-box';
+import 'devextreme-vue/date-range-box';
 
 import notify from 'devextreme/ui/notify';
 import Validator from 'devextreme/ui/validator';
