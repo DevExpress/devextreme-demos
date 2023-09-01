@@ -2,8 +2,8 @@
   id="gridContainer"
   keyExpr="ID"
   [dataSource]="employees"
-  (onSelectionChanged)="onSelectionChanged($event)"
-  (onContentReady)="onContentReady($event)"
+  (onSelectionChanged)="selectionChanged($event)"
+  (onContentReady)="contentReady($event)"
   [showBorders]="true"
 >
   <dxo-selection mode="single"></dxo-selection>

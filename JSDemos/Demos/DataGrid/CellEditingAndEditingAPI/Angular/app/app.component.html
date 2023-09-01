@@ -3,7 +3,7 @@
     id="gridContainer"
     [dataSource]="dataSource"
     [showBorders]="true"
-    (onSelectionChanged)="onSelectionChanged($event)"
+    (onSelectionChanged)="selectionChanged($event)"
   >
     <dxo-paging [enabled]="false"></dxo-paging>
     <dxo-editing
