@@ -2,7 +2,7 @@ import React from 'react';
 import DataGrid, {
   Column, Editing, Summary, TotalItem,
 } from 'devextreme-react/data-grid';
-import { orders } from './data.js';
+import service from './data.js';
 
 const saleAmountEditorOptions = { format: 'currency' };
 

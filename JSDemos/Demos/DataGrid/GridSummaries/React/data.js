@@ -1,4 +1,4 @@
-export const orders = [{
+const orders = [{
   ID: 1,
   OrderNumber: 35703,
   OrderDate: '2014-04-10',
@@ -389,3 +389,9 @@ export const orders = [{
   CustomerStoreCity: 'Phoenix',
   Employee: 'Clark Morgan',
 }];
+
+export default {
+  getOrders() {
+    return orders;
+  },
+};

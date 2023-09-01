@@ -2,7 +2,9 @@ import React from 'react';
 import { DataGrid, Column } from 'devextreme-react/data-grid';
 import ArrayStore from 'devextreme/data/array_store';
 import DataSource from 'devextreme/data/data_source';
-import { tasks } from './data.js';
+import service from './data.js';
+
+const tasks = service.getTasks();
 
 class DetailTemplate extends React.Component {
   constructor(props) {

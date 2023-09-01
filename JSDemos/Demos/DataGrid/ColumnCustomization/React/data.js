@@ -1,4 +1,4 @@
-export const employees = [{
+const employees = [{
   ID: 1,
   FirstName: 'John',
   LastName: 'Heart',
@@ -169,3 +169,9 @@ export const employees = [{
   DepartmentID: 5,
   MobilePhone: '(310) 555-7276',
 }];
+
+export default {
+  getEmployees() {
+    return employees;
+  },
+};
