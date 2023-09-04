@@ -99,7 +99,7 @@
                     .Items(groupItems => {
                         groupItems.AddSimpleFor(m => m.Accepted)
                             .Label(l => l.Visible(false))
-                            .Editor(editor => editor.CheckBox().Text("I agree to the Terms and Conditions__"));
+                            .Editor(editor => editor.CheckBox().Text("I agree to the Terms and Conditions"));
                         groupItems.AddGroup()
                             .ColCountByScreen(c => c.Md(2).Sm(2).Lg(2))
                             .CssClass("buttons-group")
