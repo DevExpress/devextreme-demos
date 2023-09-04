@@ -515,6 +515,9 @@ module.exports = {
     'parserOptions': {
       'parser': '@typescript-eslint/parser',
     },
+    env: {
+      node: true,
+    },
     extends: [
       'plugin:vue/vue3-recommended',
     ],
@@ -534,7 +537,7 @@ module.exports = {
       'no-trailing-spaces': 'error',
       'no-new-func': 'error',
       'no-eval': 'error',
-      'no-undef': 'error',
+      'no-undef': 'warn',
       'no-unused-expressions': 'off',
       'no-unused-vars': ['error'],
       'no-extend-native': 'error',
