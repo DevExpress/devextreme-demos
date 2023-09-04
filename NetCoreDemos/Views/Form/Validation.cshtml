@@ -11,7 +11,6 @@
             .OnOptionChanged("onOptionChanged")
             .ShowValidationSummary(true)
             .Items(items => {
-
                 items.AddGroup()
                     .Caption("Credentials")
                     .Items(groupItems => {
@@ -28,7 +27,7 @@
                                         .Location(TextEditorButtonLocation.After)
                                         .Widget(w => w.Button()
                                             .Type(ButtonType.Default)
-                                            .Icon(Url.Content("eyeopen"))
+                                            .Icon("eyeopen")
                                             .StylingMode(ButtonStylingMode.Text)
                                             .OnClick("() => changePasswordMode('Password')"));
                                 })
@@ -44,7 +43,7 @@
                                         .Location(TextEditorButtonLocation.After)
                                         .Widget(w => w.Button()
                                             .Type(ButtonType.Default)
-                                            .Icon(Url.Content("eyeopen"))
+                                            .Icon("eyeopen")
                                             .StylingMode(ButtonStylingMode.Text)
                                             .OnClick("() => changePasswordMode('ConfirmPassword')"));
                                 })
@@ -58,9 +57,9 @@
                         groupItems.AddSimpleFor(m => m.Date);
                         groupItems.AddSimpleFor(m => m.VacationDates)
                             .Editor(e => e
-                            .DateRangeBox()
-                            .StartDatePlaceholder("Start Date")
-                            .EndDatePlaceholder("End Date")
+                                .DateRangeBox()
+                                .StartDatePlaceholder("Start Date")
+                                .EndDatePlaceholder("End Date")
                     );
                 });
 

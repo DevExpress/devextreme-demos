@@ -58,11 +58,11 @@
                         groupItems.AddSimpleFor(m => m.Date);
                         groupItems.AddSimpleFor(m => m.VacationDates)
                             .Editor(e => e
-                            .DateRangeBox()
-                            .StartDatePlaceholder("Start Date")
-                            .EndDatePlaceholder("End Date")
-                    );
-                });
+                                .DateRangeBox()
+                                .StartDatePlaceholder("Start Date")
+                                .EndDatePlaceholder("End Date")
+                            );
+                    });
 
                 items.AddGroup()
                     .Caption("Billing address")
@@ -104,7 +104,8 @@
                             .ColCountByScreen(c => c.Md(2).Sm(2).Lg(2))
                             .CssClass("buttons-group")
                             .Items(secondGroupItems => {
-                                secondGroupItems.AddButton().Name("Reset")
+                                secondGroupItems.AddButton()
+                                .Name("Reset")
                                 .ButtonOptions(b => b.Text("Reset")
                                     .Icon(Url.Content("refresh"))
                                     .Width(120)
@@ -114,9 +115,9 @@
 
                                 secondGroupItems.AddButton()
                                     .ButtonOptions(b => b.Text("Register")
-                                    .Type(ButtonType.Default)
-                                    .Width(120)
-                                    .UseSubmitBehavior(true)
+                                        .Type(ButtonType.Default)
+                                        .Width(120)
+                                        .UseSubmitBehavior(true)
                                 );
                             });
                     });
