@@ -19,14 +19,10 @@
   <div
     *dxTemplate="let dataCell of 'dataCellTemplate'"
     [ngClass]="{
-      'disable-date':
-        (isHoliday | apply : dataCell.startDate) ||
-        (isWeekend | apply : dataCell.startDate),
+      'disable-date': (isDisableDate | apply : dataCell.startDate),
       dinner:
-        !(
-          (isHoliday | apply : dataCell.startDate) ||
-          (isWeekend | apply : dataCell.startDate)
-        ) && (isDinner | apply : dataCell.startDate),
+        !(isDisableDate | apply : dataCell.startDate) &&
+        (isDinner | apply : dataCell.startDate),
       'dx-scheduler-date-table-cell-text': currentView === 'month'
     }"
   >
@@ -36,11 +32,7 @@
   <div
     *dxTemplate="let dateCell of 'dateCellTemplate'"
     [ngClass]="{
-      'disable-date':
-        currentView === 'month'
-          ? (isWeekend | apply : dateCell.date)
-          : (isHoliday | apply : dateCell.date) ||
-            (isWeekend | apply : dateCell.date)
+      'disable-date': (isDisabledDateCell | apply : dateCell.date)
     }"
   >
     {{ dateCell.text }}

@@ -93,6 +93,10 @@ export class AppComponent {
     return hours >= this.dinnerTime.from && hours < this.dinnerTime.to;
   };
 
+  isDisableDate = (date: Date) => this.isHoliday(date) || this.isWeekend(date);
+
+  isDisabledDateCell = (date: Date) => (this.currentView === 'month' ? this.isWeekend(date) : this.isDisableDate(date));
+
   hasCoffeeCupIcon = (date: Date) => {
     const hours = date.getHours();
     const minutes = date.getMinutes();
