@@ -340,7 +340,7 @@ form {
   justify-content: center !important;
 }
 
-.buttons-group .dx-box-flex  {
+.buttons-group .dx-box-flex {
   align-items: flex-end !important;
 }
 

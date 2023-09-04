@@ -11,7 +11,7 @@
   justify-content: center !important;
 }
 
-::ng-deep .buttons-group .dx-box-flex  {
+::ng-deep .buttons-group .dx-box-flex {
   align-items: flex-end !important;
 }
 
