@@ -29,7 +29,8 @@
                                             .Type(ButtonType.Default)
                                             .Icon("eyeopen")
                                             .StylingMode(ButtonStylingMode.Text)
-                                            .OnClick("() => changePasswordMode('Password')"));
+                                            .OnClick("() => changePasswordMode('Password')")
+                                        );
                                 })
                             );
 
@@ -45,7 +46,8 @@
                                             .Type(ButtonType.Default)
                                             .Icon("eyeopen")
                                             .StylingMode(ButtonStylingMode.Text)
-                                            .OnClick("() => changePasswordMode('ConfirmPassword')"));
+                                            .OnClick("() => changePasswordMode('ConfirmPassword')")
+                                        );
                                 })
                             );
                     });
@@ -60,8 +62,8 @@
                                 .DateRangeBox()
                                 .StartDatePlaceholder("Start Date")
                                 .EndDatePlaceholder("End Date")
-                    );
-                });
+                            );
+                    });
 
                 items.AddGroup()
                     .Caption("Billing address")
@@ -113,10 +115,10 @@
 
                                 secondGroupItems.AddButton()
                                     .ButtonOptions(b => b.Text("Register")
-                                    .Type(ButtonType.Default)
-                                    .Width(120)
-                                    .UseSubmitBehavior(true)
-                                );
+                                        .Type(ButtonType.Default)
+                                        .Width(120)
+                                        .UseSubmitBehavior(true)
+                                    );
                             });
                     });
                 })

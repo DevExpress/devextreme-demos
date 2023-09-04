@@ -11,7 +11,6 @@
             .OnOptionChanged("onOptionChanged")
             .ShowValidationSummary(true)
             .Items(items => {
-
                 items.AddGroup()
                     .Caption("Credentials")
                     .Items(groupItems => {
@@ -106,19 +105,19 @@
                             .Items(secondGroupItems => {
                                 secondGroupItems.AddButton()
                                 .Name("Reset")
-                                .ButtonOptions(b => b.Text("Reset")
-                                    .Icon(Url.Content("refresh"))
-                                    .Width(120)
-                                    .Disabled(true)
-                                    .OnClick("onResetButtonClick")
-                                );
+                                    .ButtonOptions(b => b.Text("Reset")
+                                        .Icon(Url.Content("refresh"))
+                                        .Width(120)
+                                        .Disabled(true)
+                                        .OnClick("onResetButtonClick")
+                                    );
 
                                 secondGroupItems.AddButton()
                                     .ButtonOptions(b => b.Text("Register")
                                         .Type(ButtonType.Default)
                                         .Width(120)
                                         .UseSubmitBehavior(true)
-                                );
+                                    );
                             });
                     });
                 })
