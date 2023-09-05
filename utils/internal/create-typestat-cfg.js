@@ -2,10 +2,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const demosMetaPath = '../../JSDemos/menuMeta.json';
+const demosMetaPath = path.join('..', '..', 'JSDemos', 'menuMeta.json');
 const demosMeta = JSON.parse(fs.readFileSync(demosMetaPath));
-const relativeRootDemosPath = 'JSDemos/Demos';
-const pathToOutput = '../../';
+const relativeRootDemosPath = path.join('JSDemos', 'Demos');
+const pathToOutput = path.join('..', '..');
 
 function findFolderPaths(meta, folderName) {
   const folderMeta = meta.find((metaElement) => metaElement.Name === folderName);
@@ -33,12 +33,41 @@ function findAllPathForGroup(group, reactFoldersByFolderName) {
 function findAllDemosByGroup(group, reactFoldersByFolderName) {
   group.Demos.forEach((demo) => {
     const { Widget, Name } = demo;
-    reactFoldersByFolderName.push(`"${relativeRootDemosPath}/${Widget}/${Name}/React`);
+    const demoPath = path.join(relativeRootDemosPath, Widget, Name, 'React');
+    reactFoldersByFolderName.push(demoPath);
   });
+}
+
+function findJSXForRename(reactFolders) {
+  const reactJsxPaths = [];
+  reactFolders.forEach((folder) => {
+    const files = fs.readdirSync(path.join(pathToOutput, folder));
+    files.forEach((file) => {
+      if (!file.includes('config.') && (file.endsWith('.js') || file.endsWith('.jsx'))) {
+        reactJsxPaths.push(path.join(folder, file));
+      }
+    });
+  });
+  return reactJsxPaths;
+}
+
+function findTSXInferTypes(reactJsxPaths) {
+  return reactJsxPaths.map((reactPath) => {
+    if (reactPath.endsWith('.js')) {
+      return [reactPath.replace('.js', '.ts'), reactPath.replace('.js', '.tsx')];
+    }
+    if (reactPath.endsWith('.jsx')) {
+      return [reactPath.replace('.jsx', '.tsx'), reactPath.replace('.jsx', '.ts')];
+    }
+    return reactPath;
+  }).flat();
 }
 
 const metaFolder = process.argv[2];
 const reactFilePaths = findFolderPaths(demosMeta, metaFolder);
+
+const JSXForRename = findJSXForRename(reactFilePaths);
+const TSXInferTypes = findTSXInferTypes(JSXForRename);
 const result = `[
     {
         "files": {
@@ -48,9 +77,9 @@ const result = `[
             "importExtensions": true
         },
         "include": [
-            ${reactFilePaths.map((filePath) => `${filePath}/!(*config).{js,jsx}"`).join(',\n')}
+            ${JSXForRename.map((filePath) => `"${filePath}"`).join(',\n')}
         ],
-        "project": "JSDemos\\\\tsconfig.json"
+        "project": "${path.join('JSDemos', 'tsconfig.json')}"
     },
     {
         "fixes": {
@@ -59,9 +88,10 @@ const result = `[
             "noImplicitAny": true
         },
         "include": [
-            ${reactFilePaths.map((filePath) => `${filePath}/*.{ts,tsx}"`).join(',\n')}
+            ${TSXInferTypes.map((filePath) => `"${filePath}"`).join(',\n')}
         ],
-        "project": "JSDemos\\\\tsconfig.json"
+        "project": "${path.join('JSDemos', 'tsconfig.json')}"
     }
 ]`;
-fs.writeFileSync(path.join(pathToOutput, 'typestat.json'), result);
+const resultWithDoubleBackslash = result.replaceAll('\\', '\\\\');
+fs.writeFileSync(path.join(pathToOutput, 'typestat.json'), resultWithDoubleBackslash);
