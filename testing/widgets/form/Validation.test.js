@@ -13,18 +13,14 @@ runManualTest('Form', 'Validation', ['jQuery', 'Vue', 'Angular'], (test) => {
   test('Validation', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
+    await takeScreenshot('form_validation_summary.png');
+
     await t.click('.dx-button-default');
-    await takeScreenshot('form_validation_summary.png', '.dx-form');
+    await takeScreenshot('form_validation_before_reset.png');
 
     await t.click('.dx-checkbox');
-    await takeScreenshot('form_validation_before_reset.png', '.dx-form');
-
-    await t.click('.dx-checkbox');
-    await takeScreenshot('form_validation_after_reset.png', '.dx-form');
-
     await t.click($('.dx-field-button-item').nth(0));
-
-    await takeScreenshot('form_validation_after_reset.png', '.dx-form');
+    await takeScreenshot('form_validation_after_reset.png');
 
     await t
       .expect(compareResults.isValid())
