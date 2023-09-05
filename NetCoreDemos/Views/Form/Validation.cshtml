@@ -8,9 +8,9 @@
 
         @(Html.DevExtreme().Form<EditorsViewModel>()
             .OnInitialized("onInitialized")
+            .OnOptionChanged("onOptionChanged")
             .ShowValidationSummary(true)
             .Items(items => {
-
                 items.AddGroup()
                     .Caption("Credentials")
                     .Items(groupItems => {
@@ -27,8 +27,10 @@
                                         .Location(TextEditorButtonLocation.After)
                                         .Widget(w => w.Button()
                                             .Type(ButtonType.Default)
-                                            .Icon(Url.Content("~/images/icons/eye.png"))
-                                            .OnClick("() => changePasswordMode('Password')"));
+                                            .Icon("eyeopen")
+                                            .StylingMode(ButtonStylingMode.Text)
+                                            .OnClick("() => changePasswordMode('Password')")
+                                        );
                                 })
                             );
 
@@ -42,8 +44,10 @@
                                         .Location(TextEditorButtonLocation.After)
                                         .Widget(w => w.Button()
                                             .Type(ButtonType.Default)
-                                            .Icon(Url.Content("~/images/icons/eye.png"))
-                                            .OnClick("() => changePasswordMode('ConfirmPassword')"));
+                                            .Icon("eyeopen")
+                                            .StylingMode(ButtonStylingMode.Text)
+                                            .OnClick("() => changePasswordMode('ConfirmPassword')")
+                                        );
                                 })
                             );
                     });
@@ -53,6 +57,12 @@
                     .Items(groupItems => {
                         groupItems.AddSimpleFor(m => m.Name);
                         groupItems.AddSimpleFor(m => m.Date);
+                        groupItems.AddSimpleFor(m => m.VacationDates)
+                            .Editor(e => e
+                                .DateRangeBox()
+                                .StartDatePlaceholder("Start Date")
+                                .EndDatePlaceholder("End Date")
+                            );
                     });
 
                 items.AddGroup()
@@ -82,20 +92,36 @@
                                 .MaskRules(new { X = new JS("/[02-9]/") })
                                 .MaskInvalidMessage("The phone must have a correct USA phone format")
                             );
+                    });
 
+                items.AddGroup()
+                    .CssClass("last-group")
+                    .ColCountByScreen(c => c.Md(2).Sm(2).Lg(2))
+                    .Items(groupItems => {
                         groupItems.AddSimpleFor(m => m.Accepted)
                             .Label(l => l.Visible(false))
                             .Editor(editor => editor.CheckBox().Text("I agree to the Terms and Conditions"));
+                        groupItems.AddGroup()
+                            .ColCountByScreen(c => c.Md(2).Sm(2).Lg(2))
+                            .CssClass("buttons-group")
+                            .Items(secondGroupItems => {
+                                secondGroupItems.AddButton().Name("Reset")
+                                .ButtonOptions(b => b.Text("Reset")
+                                    .Icon(Url.Content("refresh"))
+                                    .Width(120)
+                                    .Disabled(true)
+                                    .OnClick("onResetButtonClick")
+                                );
+
+                                secondGroupItems.AddButton()
+                                    .ButtonOptions(b => b.Text("Register")
+                                        .Type(ButtonType.Default)
+                                        .Width(120)
+                                        .UseSubmitBehavior(true)
+                                    );
+                            });
                     });
-
-                items.AddButton()
-                    .HorizontalAlignment(HorizontalAlignment.Left)
-                    .ButtonOptions(b => b.Text("Register")
-                        .Type(ButtonType.Success)
-                        .UseSubmitBehavior(true)
-                );
-
-            })
+                })
             .FormData(Model)
         )
     }
@@ -105,6 +131,17 @@
 
     function onInitialized(e) {
         formInstance = e.component;
+    }
+
+	function onOptionChanged(e) {
+		if(e.name === 'isDirty') {
+			const resetButton = formInstance.getButton('Reset');
+			resetButton.option('disabled', !e.value);
+		}
+	}
+
+	function onResetButtonClick(e) {
+        formInstance.reset();
     }
 
     function passwordChanged(e) {
