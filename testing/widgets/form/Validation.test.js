@@ -6,7 +6,7 @@ fixture('Form.Validation')
   .page('http://localhost:8080/')
   .beforeEach(async (t) => {
     await t
-      .resizeWindow(900, 600);
+      .resizeWindow(900, 1200);
   });
 
 runManualTest('Form', 'Validation', ['jQuery', 'Vue', 'Angular'], (test) => {
