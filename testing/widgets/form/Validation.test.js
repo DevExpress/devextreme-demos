@@ -15,7 +15,7 @@ runManualTest('Form', 'Validation', ['jQuery', 'Vue', 'Angular'], (test) => {
 
     await takeScreenshot('form_validation_summary.png');
 
-    await t.click('.dx-button-default');
+    await t.click($('.dx-field-button-item').nth(1));
     await takeScreenshot('form_validation_before_reset.png');
 
     await t.click('.dx-checkbox');
