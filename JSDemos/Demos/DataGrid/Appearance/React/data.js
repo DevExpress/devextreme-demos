@@ -1,4 +1,4 @@
-export const employees = [{
+const employees = [{
   ID: 1,
   FirstName: 'John',
   LastName: 'Heart',
@@ -129,3 +129,9 @@ export const employees = [{
   State: 'California',
   City: 'San Jose',
 }];
+
+export default {
+  getEmployees() {
+    return employees;
+  },
+};

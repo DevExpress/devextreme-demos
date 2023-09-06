@@ -1,4 +1,4 @@
-export const employees = [{
+const employees = [{
   ID: 1,
   FirstName: 'John',
   LastName: 'Heart',
@@ -112,7 +112,7 @@ export const employees = [{
   CityID: 5,
 }];
 
-export const states = [{
+const states = [{
   ID: 1,
   Name: 'Alabama',
 }, {
@@ -129,7 +129,7 @@ export const states = [{
   Name: 'California',
 }];
 
-export const cities = [{
+const cities = [{
   ID: 1,
   Name: 'Tuscaloosa',
   StateID: 1,
@@ -210,3 +210,15 @@ export const cities = [{
   Name: 'Ontario',
   StateID: 5,
 }];
+
+export default {
+  getEmployees() {
+    return employees;
+  },
+  getStates() {
+    return states;
+  },
+  getCities() {
+    return cities;
+  },
+};

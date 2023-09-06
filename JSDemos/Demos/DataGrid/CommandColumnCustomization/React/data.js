@@ -1,4 +1,4 @@
-export const employees = [{
+const employees = [{
   ID: 1,
   FirstName: 'John',
   LastName: 'Heart',
@@ -154,7 +154,7 @@ export const employees = [{
   StateID: 13,
 }];
 
-export const states = [{
+const states = [{
   ID: 1,
   Name: 'Alabama',
 }, {
@@ -311,7 +311,16 @@ export const states = [{
 
 let maxID = employees[employees.length - 1].ID;
 
-export const getMaxID = () => {
-  maxID += 1;
-  return maxID;
+export default {
+  getMaxID() {
+    maxID += 1;
+    return maxID;
+  },
+  getEmployees() {
+    return employees;
+  },
+
+  getStates() {
+    return states;
+  },
 };

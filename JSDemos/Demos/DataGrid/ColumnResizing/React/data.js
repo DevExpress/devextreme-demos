@@ -1,4 +1,4 @@
-export const orders = [{
+export default [{
   ID: 1,
   CompanyName: 'Super Mart of the West',
   Address: '702 SW 8th Street',
