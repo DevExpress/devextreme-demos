@@ -28,7 +28,6 @@ $(() => {
     },
     onInitialized(e) {
       dataGrid = e.component;
-
       calculateStatistics();
     },
     selectionFilter: ['Task_Status', '=', 'Completed'],
@@ -58,23 +57,24 @@ $(() => {
     }],
   }).dxDataGrid('instance');
 
-  async function calculateStatistics() {
-    const selectedItems = await dataGrid.getSelectedRowsData();
+  function calculateStatistics() {
+    dataGrid.getSelectedRowsData().then((rowData) => {
+      let commonDuration = 0;
 
-    const totalDuration = selectedItems.reduce((currentValue, item) => {
-      const duration = item.Task_Due_Date - item.Task_Start_Date;
+      for (let i = 0; i < rowData.length; i += 1) {
+        commonDuration += rowData[i].Task_Due_Date - rowData[i].Task_Start_Date;
+      }
+      commonDuration /= MILLISECONDS_IN_DAY;
 
-      return currentValue + duration;
-    }, 0);
-    const averageDurationInDays = totalDuration / MILLISECONDS_IN_DAY / selectedItems.length;
-
-    $('#tasks-count').text(selectedItems.length);
-    $('#people-count').text(
-      DevExpress.data.query(selectedItems)
-        .groupBy('ResponsibleEmployee.Employee_Full_Name')
-        .toArray().length,
-    );
-    $('#avg-duration').text(Math.round(averageDurationInDays) || 0);
+      $('#tasks-count').text(rowData.length);
+      $('#people-count').text(
+        DevExpress.data.query(rowData)
+          .groupBy('ResponsibleEmployee.Employee_Full_Name')
+          .toArray()
+          .length,
+      );
+      $('#avg-duration').text(Math.round(commonDuration / rowData.length) || 0);
+    });
   }
 
   $('#calculateButton').dxButton({
