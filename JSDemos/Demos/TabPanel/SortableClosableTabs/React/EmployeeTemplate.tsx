@@ -9,11 +9,11 @@ function itemRender(data) {
 function EmployeeTemplate(props: { data: { ID?: any; FirstName?: any; LastName?: any; Picture?: any; Position?: any; Notes?: any; }; }) {
   const tasks = service
     .getTasks()
-    .filter((task) => task.EmployeeID === props.data.ID);
+    .filter((task: { EmployeeID: any; }) => task.EmployeeID === props.data.ID);
   const {
     FirstName, LastName, Picture, Position, Notes,
   } = props.data;
-  const completedTasks = tasks.filter((task) => task.Status === 'Completed');
+  const completedTasks = tasks.filter((task: { Status: string; }) => task.Status === 'Completed');
 
   return (
     <React.Fragment>

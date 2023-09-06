@@ -17,7 +17,7 @@ const App = () => {
   const [collapsible, setCollapsible] = React.useState(false);
   const [animationDuration, setAnimationDuration] = React.useState(300);
 
-  const selectionChanged = React.useCallback((e) => {
+  const selectionChanged = React.useCallback((e: { removedItems: any[]; addedItems: string | any[]; }) => {
     let newItems = [...selectedItems];
     e.removedItems.forEach((item) => {
       const index = newItems.indexOf(item);
@@ -31,19 +31,19 @@ const App = () => {
     setSelectedItems(newItems);
   }, [selectedItems, setSelectedItems]);
 
-  const selectedItemsChanged = React.useCallback((e) => {
+  const selectedItemsChanged = React.useCallback((e: { value: any; }) => {
     setSelectedItems(e.value);
   }, [setSelectedItems]);
 
-  const multipleChanged = React.useCallback((e) => {
+  const multipleChanged = React.useCallback((e: { value: any; }) => {
     setMultiple(e.value);
   }, [setMultiple]);
 
-  const collapsibleChanged = React.useCallback((e) => {
+  const collapsibleChanged = React.useCallback((e: { value: any; }) => {
     setCollapsible(e.value);
   }, [setCollapsible]);
 
-  const animationDurationChanged = React.useCallback((e) => {
+  const animationDurationChanged = React.useCallback((e: { value: any; }) => {
     setAnimationDuration(e.value);
   }, [setAnimationDuration]);
 
