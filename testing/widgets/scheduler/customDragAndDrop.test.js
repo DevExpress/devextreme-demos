@@ -1,5 +1,5 @@
-import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
+import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
 const LIST_SELECTOR = '#list.dx-draggable';
 const LIST_ITEM_SELECTOR = '.dx-card.dx-draggable';
@@ -32,7 +32,7 @@ fixture('Scheduler.CustomDragAndDrop')
     test(`Should drag-and-drop from ${fromName} to ${toName}`, async (t) => {
       const {
         takeScreenshot,
-        compareResults
+        compareResults,
       } = createScreenshotsComparer(t);
 
       await t.dragToElement(fromSelector, toSelector, DRAG_MOUSE_OPTIONS);
