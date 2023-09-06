@@ -19,8 +19,9 @@
       id="select-resizing"
       [items]="resizingModes"
       [inputAttr]="{ 'aria-label': 'Column Resizing Mode' }"
-      [(value)]="columnResizingMode"
+      [value]="resizingModes[0]"
       [width]="250"
+      (onValueChanged)="selectResizing($event)"
     >
     </dx-select-box>
   </div>

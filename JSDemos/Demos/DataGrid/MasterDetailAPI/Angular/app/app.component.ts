@@ -21,11 +21,11 @@ export class AppComponent {
     this.employees = service.getEmployees();
   }
 
-  onContentReady(e) {
+  contentReady(e) {
     if (!e.component.getSelectedRowKeys().length) { e.component.selectRowsByIndexes(0); }
   }
 
-  onSelectionChanged(e) {
+  selectionChanged(e) {
     e.component.collapseAll(-1);
     e.component.expandRow(e.currentSelectedRowKeys[0]);
   }

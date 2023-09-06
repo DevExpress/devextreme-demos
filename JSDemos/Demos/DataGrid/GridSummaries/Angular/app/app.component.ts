@@ -22,8 +22,8 @@ export class AppComponent {
     this.orders = service.getOrders();
   }
 
-  customizeDate(itemInfo) {
-    return `First: ${new DatePipe('en-US').transform(itemInfo.value, 'MMM dd, yyyy')}`;
+  customizeDate(data) {
+    return `First: ${new DatePipe('en-US').transform(data.value, 'MMM dd, yyyy')}`;
   }
 }
 
