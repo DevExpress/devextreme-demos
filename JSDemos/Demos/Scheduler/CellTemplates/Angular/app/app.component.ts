@@ -4,7 +4,9 @@ import {
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxSchedulerModule, DxTemplateModule } from 'devextreme-angular';
-
+import {
+  OptionChangedEvent, AppointmentFormOpeningEvent, AppointmentAddingEvent, AppointmentUpdatingEvent,
+} from 'devextreme/ui/scheduler';
 import DataSource from 'devextreme/data/data_source';
 import notify from 'devextreme/ui/notify';
 import { DataService } from './app.service';
@@ -43,14 +45,14 @@ export class AppComponent {
     });
   }
 
-  onOptionChanged = (e: any) => {
+  onOptionChanged = (e: OptionChangedEvent) => {
     if (e.name === 'currentView') {
       this.currentView = e.value;
     }
   };
 
-  onAppointmentFormOpening = (e: any) => {
-    const startDate = e.appointmentData.startDate;
+  onAppointmentFormOpening = (e: AppointmentFormOpeningEvent) => {
+    const startDate = e.appointmentData.startDate as Date;
     if (!this.isValidAppointmentDate(startDate)) {
       e.cancel = true;
       this.notifyDisableDate();
@@ -58,7 +60,7 @@ export class AppComponent {
     this.applyDisableDatesToDateEditors(e.form);
   };
 
-  onAppointmentAdding = (e: any) => {
+  onAppointmentAdding = (e: AppointmentAddingEvent) => {
     const isValidAppointment = this.isValidAppointment(e.component, e.appointmentData);
     if (!isValidAppointment) {
       e.cancel = true;
@@ -66,7 +68,7 @@ export class AppComponent {
     }
   };
 
-  onAppointmentUpdating = (e: any) => {
+  onAppointmentUpdating = (e: AppointmentUpdatingEvent) => {
     const isValidAppointment = this.isValidAppointment(e.component, e.newData);
     if (!isValidAppointment) {
       e.cancel = true;
