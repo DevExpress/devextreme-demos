@@ -147,7 +147,8 @@
         "build-vue": "npm run build -- vue",
         "build-bundles": "npm-run-all -p build-angular build-react build-vue",
         "prepare-bundles": "npm run build-bundles && gulp bundles",
-        "convert-to-js": "ts-node ./utils/ts-to-js-converter/cli.ts"
+        "convert-to-js": "ts-node ./utils/ts-to-js-converter/cli.ts",
+        "create-typestat-cfg": "cd ./utils/internal && node ./create-typestat-cfg.js"
     },
     "license": "SEE LICENSE IN README.md",
     "keywords": [
