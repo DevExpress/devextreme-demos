@@ -2,6 +2,8 @@ import { Selector as $ } from 'testcafe';
 import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
+const FIELD_BUTTON_ITEM_CLASS = '.dx-field-button-item';
+
 fixture('Form.Validation')
   .page('http://localhost:8080/')
   .beforeEach(async (t) => {
@@ -15,11 +17,11 @@ runManualTest('Form', 'Validation', ['jQuery', 'Vue', 'Angular'], (test) => {
 
     await takeScreenshot('form_validation_summary.png');
 
-    await t.click($('.dx-field-button-item').nth(1));
+    await t.click($(FIELD_BUTTON_ITEM_CLASS).nth(1));
     await takeScreenshot('form_validation_before_reset.png');
 
     await t.click('.dx-checkbox');
-    await t.click($('.dx-field-button-item').nth(0));
+    await t.click($(FIELD_BUTTON_ITEM_CLASS).nth(0));
     await takeScreenshot('form_validation_after_reset.png');
 
     await t
