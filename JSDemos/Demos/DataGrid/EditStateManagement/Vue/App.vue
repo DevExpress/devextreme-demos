@@ -55,7 +55,6 @@ import { useStore } from 'vuex';
 
 const loadPanelPosition = { of: '#gridContainer' };
 
-// eslint-disable-next-line react-hooks/rules-of-hooks
 const store = useStore();
 
 const [loadOrders, setEditRowKey, setChanges, saveChange] = ['loadOrders', 'setEditRowKey', 'setChanges', 'saveChange'].map(
