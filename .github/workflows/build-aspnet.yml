@@ -26,12 +26,12 @@ jobs:
           echo "version=$env:version" >> $GITHUB_OUTPUT
 
       - name: Clone devextreme-aspnet repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           repository: DevExpress/devextreme-aspnet
           ref: ${{ steps.get_version.outputs.version }}
           path: devextreme-aspnet
-          token: ${{ secrets.ASPNET_PAT || github.token }}
+          token: ${{ secrets.ASPNET_PAT }}
 
       - name: Restore npm cache
         uses: actions/cache@v3
