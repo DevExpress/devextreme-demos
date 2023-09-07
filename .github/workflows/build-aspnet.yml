@@ -21,8 +21,8 @@ jobs:
 
       - name: Clone devextreme-aspnet repo
         run: |
-          BASE_BRANCH=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
-          git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme-aspnet ./devextreme-aspnet
+          $env:BASE_BRANCH=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
+          git clone -b $env:BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme-aspnet ./devextreme-aspnet
 
       - name: Restore npm cache
         uses: actions/cache@v3
