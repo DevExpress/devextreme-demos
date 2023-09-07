@@ -135,12 +135,12 @@
         formInstance = e.component;
     }
 
-	function onOptionChanged(e) {
-		if(e.name === 'isDirty') {
-			const resetButton = formInstance.getButton('Reset');
-			resetButton.option('disabled', !e.value);
-		}
-	}
+    function onOptionChanged(e) {
+        if(e.name === 'isDirty') {
+            const resetButton = formInstance.getButton('Reset');
+            resetButton.option('disabled', !e.value);
+        }
+    }
 
 	function onResetButtonClick(e) {
         formInstance.reset();
