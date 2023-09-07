@@ -1,0 +1,42 @@
+name: Build aspnet demos
+
+concurrency:
+  group: wf-${{ github.event.pull_request.number || github.sha }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+  push:
+    branches:
+      - "[0-9][0-9]_[0-9]"
+
+jobs:
+  build:
+    name: Build aspnet demos
+    runs-on: windows-2019
+
+    steps:
+      - name: Get sources
+        uses: actions/checkout@v4
+
+      - name: Clone devextreme-aspnet repo
+        run: |
+          BASE_BRANCH=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
+          git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme-aspnet ./devextreme-aspnet
+
+      - name: Restore npm cache
+        uses: actions/cache@v3
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Run npm install
+        run: npm install --no-audit --no-fund
+
+      - name: Update repository.config.json
+        run: |
+          jq '."devextreme" = "${{ github.workspace }}\\DevExtreme" | ."devextreme-aspnet" = "${{ github.workspace }}\\devextreme-aspnet"' repository.config.json > temp.json 
+          mv temp.json repository.config.json
+
+      - name: Build demos
+        run: npm run prepare-aspnet
