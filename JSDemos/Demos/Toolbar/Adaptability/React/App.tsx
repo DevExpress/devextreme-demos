@@ -1,11 +1,11 @@
 import React from 'react';
 import Toolbar, { Item } from 'devextreme-react/toolbar';
-import { Button } from 'devextreme-react/button';
-import { ButtonGroup } from 'devextreme-react/button-group';
+import Button from 'devextreme-react/button';
+import ButtonGroup, { ButtonGroupTypes } from 'devextreme-react/button-group';
 import Resizable from 'devextreme-react/resizable';
 import CheckBox from 'devextreme-react/check-box';
-import DropDownButton from 'devextreme-react/drop-down-button';
-import SelectBox from 'devextreme-react/select-box';
+import DropDownButton, { DropDownButtonTypes } from 'devextreme-react/drop-down-button';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import notify from 'devextreme/ui/notify';
 import 'devextreme/ui/select_box';
 import {
@@ -49,7 +49,7 @@ function App() {
     onButtonClick('Undo');
   }, []);
 
-  const onButtonGroupClick = React.useCallback((e: { itemData: { hint: any; }; }) => {
+  const onButtonGroupClick = React.useCallback((e: ButtonGroupTypes.ItemClickEvent) => {
     onButtonClick(e.itemData.hint);
   }, []);
 
@@ -86,7 +86,7 @@ function App() {
   }, []);
 
   const onHeadingClick = React.useCallback(
-    (e: { itemData: { text: any; }; }) => {
+    (e: SelectBoxTypes.ItemClickEvent) => {
       setHeading(e.itemData.text);
       notify('The "Heading" value has been changed');
     },
@@ -94,7 +94,7 @@ function App() {
   );
 
   const onLineHeightChanged = React.useCallback(
-    (e: { item: { lineHeight: any; }; }) => {
+    (e: DropDownButtonTypes.SelectionChangedEvent) => {
       setLineHeight(e.item.lineHeight);
       onSelectionChanged('Line Height');
     },
@@ -102,7 +102,7 @@ function App() {
   );
 
   const onFontSizeChange = React.useCallback(
-    (e: { item: { size: any; }; }) => {
+    (e: DropDownButtonTypes.SelectionChangedEvent) => {
       setFontSize(e.item.size);
       onSelectionChanged('Font Size');
     },
@@ -110,7 +110,7 @@ function App() {
   );
 
   const onTextAlignChanged = React.useCallback(
-    (e: { itemData: { alignment: any; hint: any; }; }) => {
+    (e: ButtonGroupTypes.ItemClickEvent) => {
       const { alignment, hint } = e.itemData;
 
       setTextAlign([alignment]);

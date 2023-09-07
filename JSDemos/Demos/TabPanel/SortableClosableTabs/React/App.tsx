@@ -52,7 +52,7 @@ function App() {
     setSelectedItem(args.addedItems[0]);
   }, [setSelectedItem]);
 
-  const onTabDragStart = React.useCallback((e: { itemData: any; fromData: { [x: string]: any; }; fromIndex: string | number; }) => {
+  const onTabDragStart = React.useCallback((e: { itemData?: any; fromData: { [x: string]: any; }; fromIndex: string | number; }) => {
     e.itemData = e.fromData[e.fromIndex];
   }, []);
 

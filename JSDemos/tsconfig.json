@@ -5,8 +5,7 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "jsx": "react",
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    "moduleResolution": "node",
     "noEmit": true
   },
   
