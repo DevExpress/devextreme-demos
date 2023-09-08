@@ -24,7 +24,7 @@
         "cldr-numbers-full": "40.0.0",
         "cldrjs": "0.5.5",
         "core-js": "2.6.12",
-        "devextreme": "23.2-next",
+        "devextreme": "23.2.1-alpha-23251-0115",
         "devextreme-angular": "23.2-next",
         "devextreme-aspnet-data": "2.9.0",
         "devextreme-aspnet-data-nojquery": "2.9.0",
