@@ -24,14 +24,9 @@ jobs:
         run: |
           $env:version=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
           echo "version=$env:version" >> $GITHUB_OUTPUT
-          echo $env:version
 
       - name: Clone devextreme-aspnet repo
-        uses: actions/checkout@v4
-        with:
-          repository: DevExpress/devextreme-aspnet
-          ref: ${{ steps.get_version.outputs.version }}
-          path: devextreme-aspnet
+        run: git clone -b ${{ steps.get_version.outputs.version }} https://${{ github.token }}@github.com/DevExpress/devextreme-aspnet ./devextreme-aspnet
 
       - name: Restore npm cache
         uses: actions/cache@v3
