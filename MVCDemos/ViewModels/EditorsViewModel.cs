@@ -11,22 +11,22 @@ namespace DevExtreme.MVC.Demos.ViewModels {
         [Required(ErrorMessage = "Email is required")]
         [RegularExpression(@"^[\d\w._-]+@[\d\w._-]+\.[\w]+$", ErrorMessage = "Email is invalid")]
         [Remote("CheckEmailAddress", "RemoteValidation", ErrorMessage = "Email is already registered", HttpMethod = "POST")]
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Name is required")]
         [RegularExpression(@"^[^0-9]+$", ErrorMessage = "Do not use digits in the Name.")]
         [StringLength(int.MaxValue, MinimumLength = 2, ErrorMessage = "Name must have at least 2 symbols")]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Password is required")]
-        public string Password { get; set; }
+        public string Password { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Confirm Password is required")]
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "'Password' and 'Confirm Password' do not match.")]
-        public string ConfirmPassword { get; set; }
+        public string ConfirmPassword { get; set; } = string.Empty;
 
         [RegularExpression(@"^[02-9]\d{9}$", ErrorMessage = "The phone must have a correct USA phone format")]
-        public string Phone { get; set; }
+        public string Phone { get; set; } = string.Empty;
 
         public string Extension { get; set; }
 
@@ -34,7 +34,7 @@ namespace DevExtreme.MVC.Demos.ViewModels {
         public string Country { get; set; }
 
         [Required(ErrorMessage = "Address is required")]
-        public string Address { get; set; }
+        public string Address { get; set; } = string.Empty;
 
         public string Description { get; set; }
 
@@ -57,6 +57,8 @@ namespace DevExtreme.MVC.Demos.ViewModels {
         [Required(ErrorMessage = "Date of birth is required")]
         [VerifyAge(21, ErrorMessage = "You must be at least {1} years old")]
         public DateTime? Date { get; set; }
+
+        public DateTime?[] VacationDates { get; set; }
 
         [DevExtremeRequired(ErrorMessage = "You must agree to the Terms and Conditions")]
         public bool Accepted { get; set; }
