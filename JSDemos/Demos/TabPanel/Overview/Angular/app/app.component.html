@@ -43,7 +43,7 @@
       <div class="option-label">Tabs position</div>
 
       <dx-select-box
-        [inputAttr]="tabsPositionsSelectBoxLabel"
+        [inputAttr]="{ 'aria-label': 'Tabs positions' }"
         [items]="tabsPositions"
         [value]="tabsPosition"
         (onValueChanged)="onTabsPositionChanged"
@@ -54,7 +54,7 @@
       <div class="option-label">Styling mode</div>
 
       <dx-select-box
-        [inputAttr]="stylingModesSelectBoxLabel"
+        [inputAttr]="{ 'aria-label': 'Tabs positions' }"
         [items]="stylingModes"
         [value]="stylingMode"
         (onValueChanged)="onStylingModeChanged"
@@ -65,7 +65,7 @@
       <div class="option-label">Icon position</div>
 
       <dx-select-box
-        [inputAttr]="iconPositionsSelectBoxLabel"
+        [inputAttr]="{ 'aria-label': 'Icon positions' }"
         [items]="iconPositions"
         [value]="iconPosition"
         (onValueChanged)="onIconPositionChanged"
@@ -75,7 +75,7 @@
     <div class="option">
       <dx-check-box
         text="Show navigation buttons"
-        [elementAttr]="navButtonsCheckBoxLabel"
+        [elementAttr]="{ 'aria-label': 'Show navigation buttons' }"
         [value]="showNavButtons"
         (onValueChanged)="onShowNavButtonsChanged"
       ></dx-check-box>
