@@ -31,6 +31,7 @@ jobs:
           repository: DevExpress/devextreme-aspnet
           ref: ${{ steps.get_version.outputs.version }}
           path: devextreme-aspnet
+          token: ${{ secrets.ASPNET_PAT }}
 
       - name: Restore npm cache
         uses: actions/cache@v3
