@@ -5,7 +5,7 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  pull_request_target:
+  pull_request:
   push:
     branches:
       - "[0-9][0-9]_[0-9]"
@@ -14,6 +14,8 @@ jobs:
   build:
     name: Build aspnet demos
     runs-on: windows-2019
+    permissions:
+      contents: read
 
     steps:
       - name: Get sources
@@ -31,7 +33,6 @@ jobs:
           repository: DevExpress/devextreme-aspnet
           ref: ${{ steps.get_version.outputs.version }}
           path: devextreme-aspnet
-          token: ${{ secrets.ASPNET_PAT }}
 
       - name: Restore npm cache
         uses: actions/cache@v3
