@@ -1,64 +1,84 @@
-<dx-tab-panel
-  #tabPanel
-  [height]="260"
-  [dataSource]="companies"
-  [selectedIndex]="0"
-  [loop]="false"
-  [animationEnabled]="true"
-  [swipeEnabled]="true"
->
-  <div *dxTemplate="let company of 'title'">
-    <span>{{ company.CompanyName }}</span>
+<div id="tabpanel-demo">
+  <div class="widget-container">
+    <dx-tab-panel
+      width="100%"
+      [height]="418"
+      [animationEnabled]="true"
+      [swipeEnabled]="true"
+      [dataSource]="dataSource"
+      [selectedIndex]="selectedIndex"
+      [tabsPosition]="tabsPosition"
+      [stylingMode]="stylingMode"
+      [iconPosition]="iconPosition"
+      [showNavButtons]="showNavButtons"
+    >
+      <div *dxTemplate="let tabPanelItem of 'item'">
+        <div class="tabpanel-item">
+
+          <div
+            *ngFor="let task of tabPanelItem.tasks"
+            [className]="getTaskClassName(task.priority)"
+          >
+            <p class='task-item-text'>
+              {{task.text}}
+            </p>
+
+            <p class='task-item-info'>
+              {{task.date}} by {{task.assignedBy}}
+            </p>
+
+            <div class='task-item-pseudo-button-wrapper'>
+              <div class='task-item-pseudo-button'></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </dx-tab-panel>
   </div>
-  <div *dxTemplate="let company of 'item'">
-    <div class="tabpanel-item">
-      <div>
-        <p>
-          <b>{{ company.City }}</b>
-          (<span>{{ company.State }}</span
-          >)
-        </p>
-        <p>
-          <span>{{ company.Zipcode }}</span>
-          <span>{{ company.Address }}</span>
-        </p>
-      </div>
-      <div>
-        <p>
-          Phone: <b>{{ company.Phone }}</b>
-        </p>
-        <p>
-          Fax: <b>{{ company.Fax }}</b>
-        </p>
-        <p>
-          Website:
-          <a href="{{ company.Website }}" target="_blank">
-            {{ company.Website }}
-          </a>
-        </p>
-      </div>
+
+  <div class="options">
+    <div class="caption">Options</div>
+
+    <div class="option">
+      <div class="option-label">Tabs position</div>
+
+      <dx-select-box
+        [inputAttr]="tabsPositionsSelectBoxLabel"
+        [items]="tabsPositions"
+        [value]="tabsPosition"
+        (onValueChanged)="onTabsPositionChanged"
+      ></dx-select-box>
     </div>
-  </div>
-</dx-tab-panel>
-<div class="item-box">
-  Item <span>{{ tabPanel.selectedIndex + 1 }}</span> of
-  <span>{{ itemCount }}</span>
-</div>
-<div class="options">
-  <div class="caption">Options</div>
-  <div class="option">
-    <dx-check-box text="Loop enabled" [(value)]="tabPanel.loop"></dx-check-box>
-  </div>
-  <div class="option">
-    <dx-check-box
-      text="Animation enabled"
-      [(value)]="tabPanel.animationEnabled"
-    ></dx-check-box>
-  </div>
-  <div class="option">
-    <dx-check-box
-      text="Swipe enabled"
-      [(value)]="tabPanel.swipeEnabled"
-    ></dx-check-box>
+
+    <div class="option">
+      <div class="option-label">Styling mode</div>
+
+      <dx-select-box
+        [inputAttr]="stylingModesSelectBoxLabel"
+        [items]="stylingModes"
+        [value]="stylingMode"
+        (onValueChanged)="onStylingModeChanged"
+      ></dx-select-box>
+    </div>
+
+    <div class="option">
+      <div class="option-label">Icon position</div>
+
+      <dx-select-box
+        [inputAttr]="iconPositionsSelectBoxLabel"
+        [items]="iconPositions"
+        [value]="iconPosition"
+        (onValueChanged)="onIconPositionChanged"
+      ></dx-select-box>
+    </div>
+
+    <div class="option">
+      <dx-check-box
+        text="Show navigation buttons"
+        [elementAttr]="navButtonsCheckBoxLabel"
+        [value]="showNavButtons"
+        (onValueChanged)="onShowNavButtonsChanged"
+      ></dx-check-box>
+    </div>
   </div>
 </div>

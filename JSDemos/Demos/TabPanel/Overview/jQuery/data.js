@@ -23,7 +23,7 @@ const iconPositions = [
   'bottom',
 ];
 
-const navButtonsCheckBoxLabel = { 'aria-label': 'Icon positions' };
+const navButtonsCheckBoxLabel = { 'aria-label': 'Show navigation buttons' };
 
 const tasks = [
   {

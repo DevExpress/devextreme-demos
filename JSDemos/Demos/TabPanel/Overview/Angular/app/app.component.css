@@ -1,45 +1,142 @@
-::ng-deep .tabpanel-item {
-  height: 200px;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding-left: 25px;
-  padding-top: 55px;
+::ng-deep #tabpanel-demo {
+  display: flex;
+  min-height: 450px;
+  background-color: rgba(191, 191, 191, 0.15);
 }
 
-::ng-deep .mobile .tabpanel-item {
-  padding-top: 10px;
+::ng-deep .widget-container {
+  display: inline;
+  flex-grow: 1;
+  min-width: 648px;
+  padding: 16px 32px;
 }
 
-::ng-deep .tabpanel-item > div {
-  float: left;
-  padding: 0 85px 10px 10px;
+::ng-deep .dx-tabpanel {
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-::ng-deep .tabpanel-item p {
-  font-size: 16px;
-  margin: 0;
+::ng-deep .dx-tabs-vertical {
+  min-width: 120px;
 }
 
-::ng-deep .item-box {
-  font-size: 16px;
-  margin: 15px 0 45px 10px;
+::ng-deep .dx-multiview-item-content {
+  padding: 24px;
 }
 
 ::ng-deep .options {
+  display: inline-flex;
+  flex-direction: column;
+  flex-shrink: 0;
   padding: 20px;
-  background-color: rgba(191, 191, 191, 0.15);
-  margin-top: 20px;
+  width: 260px;
+}
+
+::ng-deep .tabpanel-item .task-item:not(:last-child) {
+  margin-bottom: 12px;
 }
 
 ::ng-deep .caption {
-  font-size: 18px;
   font-weight: 500;
+  font-size: 18px;
 }
 
 ::ng-deep .option {
-  margin-top: 10px;
+  margin-top: 20px;
+}
+
+::ng-deep .option-label {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+::ng-deep .dx-color-scheme-blue-light .dx-tabpanel-container {
+  background-color: #fff;
+}
+
+::ng-deep .task-item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 48px;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+::ng-deep .task-item::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 6px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 4px;
+}
+
+::ng-deep .task-item-priority-hight::before {
+  background-color: #e1bee7;
+}
+
+::ng-deep .task-item-priority-normal::before {
+  background-color: #ffe0b2;
+}
+
+::ng-deep .task-item-priority-low::before {
+  background-color: #c8e6c9;
+}
+
+::ng-deep .task-item-text,
+::ng-deep .task-item-info {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 16px;
+  margin: 0;
+}
+
+::ng-deep .task-item-info {
+  width: 240px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.38);
+}
+
+::ng-deep .task-item-pseudo-button-wrapper {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+  width: 18px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+::ng-deep .task-item-pseudo-button {
+  position: relative;
+}
+
+::ng-deep .task-item-pseudo-button,
+::ng-deep .task-item-pseudo-button::before,
+::ng-deep .task-item-pseudo-button::after {
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 3px;
+  width: 3px;
+  border-radius: 50%;
+}
+
+::ng-deep .task-item-pseudo-button::before,
+::ng-deep .task-item-pseudo-button::after {
+  content: '';
+  position: absolute;
+}
+
+::ng-deep .task-item-pseudo-button::before {
+  top: -150%;
+}
+
+::ng-deep .task-item-pseudo-button::after {
+  bottom: -150%;
 }
