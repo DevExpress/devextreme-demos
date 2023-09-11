@@ -23,6 +23,8 @@ export const iconPositions = [
   'bottom',
 ];
 
+export const navButtonsCheckBoxLabel = { 'aria-label': 'Icon positions' };
+
 const tasks = [
   {
     status: 'Not Started',

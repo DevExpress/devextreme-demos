@@ -11,11 +11,9 @@ import {
   stylingModes,
   iconPositionsSelectBoxLabel,
   iconPositions,
+  navButtonsCheckBoxLabel,
   dataSource,
 } from './data.js';
-
-const tabPanelHeight = 418;
-const tabPanelWidth = '100%';
 
 const App = () => {
   const [tabsPosition, setTabsPosition] = React.useState(tabsPositions[0]);
@@ -50,10 +48,10 @@ const App = () => {
     <div id='tabpanel-demo'>
       <div className='widget-container'>
         <TabPanel
+          width="100%"
+          height={418}
           animationEnabled={true}
           swipeEnabled={true}
-          width={tabPanelWidth}
-          height={tabPanelHeight}
           dataSource={dataSource}
           selectedIndex={selectedIndex}
           tabsPosition={tabsPosition}
@@ -104,6 +102,7 @@ const App = () => {
         <div className='option'>
           <CheckBox
             text='Show navigation buttons'
+            elementAttr={navButtonsCheckBoxLabel}
             value={showNavButtons}
             onValueChanged={onShowNavButtonsChanged}
           />

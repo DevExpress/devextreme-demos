@@ -1,58 +1,41 @@
-#tabpanel-demo {
-  display: flex;
-  min-height: 450px;
-  background-color: rgba(191, 191, 191, 0.15);
-}
+<template>
+  <div :class="className">
+    <p className="task-item-text">
+      {{ task.text }}
+    </p>
 
-.widget-container {
-  display: inline;
-  flex-grow: 1;
-  min-width: 648px;
-  padding: 16px 32px;
-}
+    <p className="task-item-info">
+      {{ task.date }} by {{ task.assignedBy }}
+    </p>
 
-.dx-tabpanel {
-  border-radius: 8px;
-  overflow: hidden;
-}
+    <div className="task-item-pseudo-button-wrapper">
+      <div className="task-item-pseudo-button"/>
+    </div>
+  </div>
+</template>
 
-.dx-tabs-vertical {
-  min-width: 120px;
-}
+<script>
+export default {
+  name: 'TaskItem',
 
-.dx-multiview-item-content {
-  padding: 24px;
-}
+  props: {
+    task: {
+      type: Object,
+      default: () => {},
+    },
+  },
 
-.options {
-  display: inline-flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  padding: 20px;
-  width: 260px;
-}
+  computed: {
+    className() {
+      const { priority } = this.task;
 
-.tabpanel-item .task-item:not(:last-child) {
-  margin-bottom: 12px;
-}
+      return `task-item task-item-priority-${priority}`;
+    },
+  },
+};
+</script>
 
-.caption {
-  font-weight: 500;
-  font-size: 18px;
-}
-
-.option {
-  margin-top: 20px;
-}
-
-.option-label {
-  color: rgba(0, 0, 0, 0.6);
-}
-
-.dx-color-scheme-blue-light .dx-tabpanel-container {
-  background-color: #fff;
-}
-
+<style>
 .task-item {
   position: relative;
   display: flex;
@@ -140,3 +123,4 @@
 .task-item-pseudo-button::after {
   bottom: -150%;
 }
+</style>

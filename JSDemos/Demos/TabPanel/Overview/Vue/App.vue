@@ -1,136 +1,191 @@
 <template>
-  <div>
-    <DxTabPanel
-      :height="260"
-      :data-source="companies"
-      v-model:selected-index="selectedIndex"
-      :loop="loop"
-      :animation-enabled="animationEnabled"
-      :swipe-enabled="swipeEnabled"
-    >
-      <template #title="{ data: company }">
-        <span>{{ company.CompanyName }}</span>
-      </template>
-      <template #item="{ data: company }">
-        <div class="tabpanel-item">
-          <div>
-            <p>
-              <b>{{ company.City }}</b>
-              (<span>{{ company.State }}</span>)
-            </p>
-            <p>
-              <span>{{ company.Zipcode }}&nbsp;</span>
-              <span>{{ company.Address }}</span>
-            </p>
-          </div>
-          <div>
-            <p>
-              Phone: <b>{{ company.Phone }}</b>
-            </p>
-            <p>
-              Fax: <b>{{ company.Fax }}</b>
-            </p>
-            <p>
-              Website:
-              <a
-                :href="company.Website"
-                target="_blank"
-              >
-                {{ company.Website }}
-              </a>
-            </p>
-          </div>
-        </div>
-      </template>
-    </DxTabPanel>
-    <div class="item-box">
-      Item <span>{{ selectedIndex + 1 }}</span> of <span>{{ companies.length }}</span>
+  <div id="tabpanel-demo">
+    <div className="widget-container">
+      <DxTabPanel
+        width="100%"
+        height="418"
+        item-template="tabPanelItem"
+        :animation-enabled="true"
+        :swipe-enabled="true"
+        :data-source="dataSource"
+        :selected-index="selectedIndex"
+        :tabs-position="tabsPosition"
+        :styling-mode="stylingMode"
+        :icon-position="iconPosition"
+        :show-nav-buttons="showNavButtons"
+        :on-option-changed="onSelectionChanged"
+      >
+        <template #tabPanelItem="{ data }">
+          <TabPanelItem
+            :tasks="data.tasks"
+          />
+        </template>
+      </DxTabPanel>
     </div>
-    <div class="options">
-      <div class="caption">Options</div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="loop"
-          text="Loop enabled"
+
+    <div className="options">
+      <div className="caption">Options</div>
+
+      <div className="option">
+        <div className="option-label">Tabs position</div>
+
+        <DxSelectBox
+          :input-attr="tabsPositionsSelectBoxLabel"
+          :items="tabsPositions"
+          :value="tabsPosition"
+          :on-value-changed="onTabsPositionChanged"
         />
       </div>
-      <div class="option">
-        <DxCheckBox
-          v-model:value="animationEnabled"
-          text="Animation enabled"
+
+      <div className="option">
+        <div className="option-label">Styling mode</div>
+
+        <DxSelectBox
+          :input-attr="stylingModesSelectBoxLabel"
+          :items="stylingModes"
+          :value="stylingMode"
+          :on-value-changed="onStylingModeChanged"
         />
       </div>
-      <div class="option">
+
+      <div className="option">
+        <div className="option-label">Icon position</div>
+
+        <DxSelectBox
+          :input-attr="iconPositionsSelectBoxLabel"
+          :items="iconPositions"
+          :value="iconPosition"
+          :on-value-changed="onIconPositionChanged"
+        />
+      </div>
+
+      <div className="option">
         <DxCheckBox
-          v-model:value="swipeEnabled"
-          text="Swipe enabled"
+          text="Show navigation buttons"
+          :element-attr="navButtonsCheckBoxLabel"
+          :value="showNavButtons"
+          :on-value-changed="onShowNavButtonsChanged"
         />
       </div>
     </div>
   </div>
 </template>
+
 <script>
-
-import DxCheckBox from 'devextreme-vue/check-box';
 import DxTabPanel from 'devextreme-vue/tab-panel';
+import DxSelectBox from 'devextreme-vue/select-box';
+import DxCheckBox from 'devextreme-vue/check-box';
 
-import { multiViewItems } from './data.js';
+import TabPanelItem from './TabPanelItem.vue';
+
+import {
+  tabsPositionsSelectBoxLabel,
+  tabsPositions,
+  stylingModesSelectBoxLabel,
+  stylingModes,
+  iconPositionsSelectBoxLabel,
+  iconPositions,
+  navButtonsCheckBoxLabel,
+  dataSource,
+} from './data.js';
 
 export default {
   components: {
-    DxCheckBox,
     DxTabPanel,
+    DxSelectBox,
+    DxCheckBox,
+    TabPanelItem,
   },
+
   data() {
     return {
+      tabsPositionsSelectBoxLabel,
+      tabsPositions,
+      tabsPosition: tabsPositions[0],
+      stylingModesSelectBoxLabel,
+      stylingModes,
+      stylingMode: stylingModes[0],
+      iconPositionsSelectBoxLabel,
+      iconPositions,
+      iconPosition: iconPositions[0],
+      navButtonsCheckBoxLabel,
+      dataSource,
+      showNavButtons: true,
       selectedIndex: 0,
-      loop: false,
-      animationEnabled: true,
-      swipeEnabled: true,
-      companies: multiViewItems,
     };
+  },
+
+  methods: {
+    onTabsPositionChanged(args) {
+      this.tabsPosition = args.value;
+    },
+    onStylingModeChanged(args) {
+      this.stylingMode = args.value;
+    },
+    onIconPositionChanged(args) {
+      this.iconPosition = args.value;
+    },
+    onShowNavButtonsChanged(args) {
+      this.showNavButtons = args.value;
+    },
+    onSelectionChanged(args) {
+      if (args.name === 'selectedIndex') {
+        this.selectedIndex = args.value;
+      }
+    },
   },
 };
 </script>
+
 <style>
-.tabpanel-item {
-  height: 200px;
-  user-select: none;
-  padding-left: 25px;
-  padding-top: 55px;
+#tabpanel-demo {
+  display: flex;
+  min-height: 450px;
+  background-color: rgba(191, 191, 191, 0.15);
 }
 
-.mobile .tabpanel-item {
-  padding-top: 10px;
+.widget-container {
+  display: inline;
+  flex-grow: 1;
+  min-width: 648px;
+  padding: 16px 32px;
 }
 
-.tabpanel-item > div {
-  float: left;
-  padding: 0 85px 10px 10px;
+.dx-tabpanel {
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.tabpanel-item p {
-  font-size: 16px;
-  margin: 0;
+.dx-tabs-vertical {
+  min-width: 120px;
 }
 
-.item-box {
-  font-size: 16px;
-  margin: 15px 0 45px 10px;
+.dx-multiview-item-content {
+  padding: 24px;
 }
 
 .options {
+  display: inline-flex;
+  flex-direction: column;
+  flex-shrink: 0;
   padding: 20px;
-  background-color: rgba(191, 191, 191, 0.15);
-  margin-top: 20px;
+  width: 260px;
 }
 
 .caption {
-  font-size: 18px;
   font-weight: 500;
+  font-size: 18px;
 }
 
 .option {
-  margin-top: 10px;
+  margin-top: 20px;
+}
+
+.option-label {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.dx-color-scheme-blue-light .dx-tabpanel-container {
+  background-color: #fff;
 }
 </style>
