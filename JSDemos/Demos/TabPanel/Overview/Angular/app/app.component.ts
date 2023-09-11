@@ -6,7 +6,7 @@ import {
   DxTabPanelModule, DxCheckBoxModule, DxSelectBoxModule, DxTemplateModule,
 } from 'devextreme-angular';
 
-import { TabPanelItem, Service, AriaLabelAttr } from './app.service';
+import { TabPanelItem, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -23,69 +23,37 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   dataSource: TabPanelItem[];
 
-  tabsPositionsSelectBoxLabel: AriaLabelAttr;
+  tabsPositions: string[] = [
+    'left',
+    'top',
+    'right',
+    'bottom',
+  ];
 
-  tabsPositions: string[];
+  tabsPosition: string = this.tabsPositions[0];
 
-  tabsPosition: string;
+  stylingModes: string[] = [
+    'secondary',
+    'primary',
+  ];
 
-  stylingModesSelectBoxLabel: AriaLabelAttr;
+  stylingMode: string = this.stylingModes[0];
 
-  stylingModes: string[];
+  iconPositions: string[] = [
+    'top',
+    'start',
+    'end',
+    'bottom',
+  ];
 
-  stylingMode: string;
+  iconPosition: string = this.iconPositions[0];
 
-  iconPositionsSelectBoxLabel: AriaLabelAttr;
+  selectedIndex = 0;
 
-  iconPositions: string[];
-
-  iconPosition: string;
-
-  navButtonsCheckBoxLabel: AriaLabelAttr;
-
-  selectedIndex: number;
-
-  showNavButtons: boolean;
+  showNavButtons = true;
 
   constructor(service: Service) {
     this.dataSource = service.getItems();
-
-    this.selectedIndex = 0;
-
-    this.tabsPositionsSelectBoxLabel = { 'aria-label': 'Tabs positions' };
-
-    this.tabsPositions = [
-      'left',
-      'top',
-      'right',
-      'bottom',
-    ];
-
-    this.tabsPosition = this.tabsPositions[0];
-
-    this.stylingModesSelectBoxLabel = { 'aria-label': 'Tabs positions' };
-
-    this.stylingModes = [
-      'secondary',
-      'primary',
-    ];
-
-    this.stylingMode = this.stylingModes[0];
-
-    this.iconPositionsSelectBoxLabel = { 'aria-label': 'Icon positions' };
-
-    this.iconPositions = [
-      'top',
-      'start',
-      'end',
-      'bottom',
-    ];
-
-    this.iconPosition = this.iconPositions[0];
-
-    this.navButtonsCheckBoxLabel = { 'aria-label': 'Show navigation buttons' };
-
-    this.showNavButtons = true;
   }
 
   onTabsPositionChanged({ value }: { value: string }) {

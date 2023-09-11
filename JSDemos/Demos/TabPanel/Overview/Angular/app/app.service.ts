@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
 
-export class AriaLabelAttr {
-  'aria-label': string;
-}
-
 export class Task {
   status: string;
 
