@@ -44,7 +44,7 @@ jobs:
 
       - name: Update repository.config.json
         run: |
-          jq '."devextreme" = "${{ github.workspace }}\\DevExtreme" | ."devextreme-aspnet" = "${{ github.workspace }}\\devextreme-aspnet"' repository.config.json > temp.json 
+          jq '.devextreme = \"${{ github.workspace }}\\DevExtreme\" | .\"devextreme-aspnet\" = \"${{ github.workspace }}\\devextreme-aspnet\"' repository.config.json > temp.json 
           mv -Force temp.json repository.config.json
 
       - name: Build aspnet demos
