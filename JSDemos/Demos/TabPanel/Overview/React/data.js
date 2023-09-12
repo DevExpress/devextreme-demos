@@ -7,7 +7,7 @@ export const tabsPositions = [
   'bottom',
 ];
 
-export const stylingModesSelectBoxLabel = { 'aria-label': 'Tabs positions' };
+export const stylingModesSelectBoxLabel = { 'aria-label': 'Styling mode' };
 
 export const stylingModes = [
   'secondary',

@@ -7,7 +7,7 @@ const tabsPositions = [
   'bottom',
 ];
 
-const stylingModesSelectBoxLabel = { 'aria-label': 'Tabs positions' };
+const stylingModesSelectBoxLabel = { 'aria-label': 'Styling mode' };
 
 const stylingModes = [
   'secondary',
