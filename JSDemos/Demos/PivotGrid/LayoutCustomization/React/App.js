@@ -9,18 +9,6 @@ const App = () => {
   const [dataFieldArea, setDataFieldArea] = React.useState(false);
   const [rowHeaderLayout, setRowHeaderLayout] = React.useState(true);
 
-  const onShowTotalsPriorChanged = React.useCallback((data) => {
-    setShowTotalsPrior(data.value);
-  }, []);
-
-  const onDataFieldAreaChanged = React.useCallback((data) => {
-    setDataFieldArea(data.value);
-  }, []);
-
-  const onRowHeaderLayoutChanged = React.useCallback((data) => {
-    setRowHeaderLayout(data.value);
-  }, []);
-
   return (
     <React.Fragment>
       <PivotGrid
@@ -42,25 +30,25 @@ const App = () => {
             id="show-totals-prior"
             text="Show Totals Prior"
             value={showTotalsPrior}
-            onValueChanged={onShowTotalsPriorChanged}
+            onValueChange={setShowTotalsPrior}
           />
         </div>
-        &nbsp;
+        <br />
         <div className="option">
           <CheckBox
             id="data-field-area"
             text="Data Field Headers in Rows"
             value={dataFieldArea}
-            onValueChanged={onDataFieldAreaChanged}
+            onValueChange={setDataFieldArea}
           />
         </div>
-        &nbsp;
+        <br />
         <div className="option">
           <CheckBox
             id="row-header-layout"
             text="Tree Row Header Layout"
             value={rowHeaderLayout}
-            onValueChanged={onRowHeaderLayoutChanged}
+            onValueChange={setRowHeaderLayout}
           />
         </div>
       </div>

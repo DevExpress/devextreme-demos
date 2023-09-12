@@ -9,19 +9,17 @@ import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 import sales from './data.js';
 
 const App = () => (
-  <React.Fragment>
-    <PivotGrid
-      dataSource={dataSource}
-      allowSortingBySummary={true}
-      allowSorting={true}
-      allowFiltering={true}
-      allowExpandAll={true}
-      height={560}
-      showBorders={true}>
-      <FieldChooser enabled={false} />
-      <Scrolling mode="virtual" />
-    </PivotGrid>
-  </React.Fragment>
+  <PivotGrid
+    dataSource={dataSource}
+    allowSortingBySummary={true}
+    allowSorting={true}
+    allowFiltering={true}
+    allowExpandAll={true}
+    height={560}
+    showBorders={true}>
+    <FieldChooser enabled={false} />
+    <Scrolling mode="virtual" />
+  </PivotGrid>
 );
 
 const dataSource = new PivotGridDataSource({

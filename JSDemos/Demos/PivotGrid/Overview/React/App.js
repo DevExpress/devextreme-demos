@@ -15,48 +15,6 @@ import PivotGrid, {
 
 import { sales } from './data.js';
 
-const App = () => {
-  const chartRef = React.useRef(null);
-  const pivotGridRef = React.useRef(null);
-
-  React.useEffect(() => {
-    pivotGridRef.current.instance.bindChart(chartRef.current.instance, {
-      dataFieldsDisplayMode: 'splitPanes',
-      alternateDataFields: false,
-    });
-    setTimeout(() => {
-      dataSource.expandHeaderItem('row', ['North America']);
-      dataSource.expandHeaderItem('column', [2013]);
-    });
-  }, []);
-
-  return (
-    <React.Fragment>
-      <Chart ref={chartRef}>
-        <Size height={200} />
-        <Tooltip enabled={true} customizeTooltip={customizeTooltip} />
-        <CommonSeriesSettings type="bar" />
-        <AdaptiveLayout width={450} />
-      </Chart>
-
-      <PivotGrid
-        id="pivotgrid"
-        dataSource={dataSource}
-        allowSortingBySummary={true}
-        allowFiltering={true}
-        showBorders={true}
-        showColumnTotals={false}
-        showColumnGrandTotals={false}
-        showRowTotals={false}
-        showRowGrandTotals={false}
-        ref={pivotGridRef}
-      >
-        <FieldChooser enabled={true} height={400} />
-      </PivotGrid>
-    </React.Fragment>
-  );
-};
-
 const currencyFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
@@ -106,5 +64,47 @@ const dataSource = new PivotGridDataSource({
   ],
   store: sales,
 });
+
+const App = () => {
+  const chartRef = React.useRef(null);
+  const pivotGridRef = React.useRef(null);
+
+  React.useEffect(() => {
+    pivotGridRef.current.instance.bindChart(chartRef.current.instance, {
+      dataFieldsDisplayMode: 'splitPanes',
+      alternateDataFields: false,
+    });
+    setTimeout(() => {
+      dataSource.expandHeaderItem('row', ['North America']);
+      dataSource.expandHeaderItem('column', [2013]);
+    });
+  }, []);
+
+  return (
+    <React.Fragment>
+      <Chart ref={chartRef}>
+        <Size height={200} />
+        <Tooltip enabled={true} customizeTooltip={customizeTooltip} />
+        <CommonSeriesSettings type="bar" />
+        <AdaptiveLayout width={450} />
+      </Chart>
+
+      <PivotGrid
+        id="pivotgrid"
+        dataSource={dataSource}
+        allowSortingBySummary={true}
+        allowFiltering={true}
+        showBorders={true}
+        showColumnTotals={false}
+        showColumnGrandTotals={false}
+        showRowTotals={false}
+        showRowGrandTotals={false}
+        ref={pivotGridRef}
+      >
+        <FieldChooser enabled={true} height={400} />
+      </PivotGrid>
+    </React.Fragment>
+  );
+};
 
 export default App;

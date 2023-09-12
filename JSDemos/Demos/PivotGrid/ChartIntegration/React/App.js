@@ -26,7 +26,7 @@ const customizeTooltip = (args) => {
   };
 };
 
-function App() {
+const App = () => {
   const chartRef = React.useRef(null);
   const pivotGridRef = React.useRef(null);
 
@@ -62,7 +62,7 @@ function App() {
       </PivotGrid>
     </React.Fragment>
   );
-}
+};
 
 const dataSource = new PivotGridDataSource({
   fields: [{
