@@ -86,7 +86,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Date = "2023-09-16",
                 AssignedBy = "Greta Sims"
             }
-        }
+        };
 
         public static readonly IEnumerable<TaskItem> HelpNeededTaskItems = new[] {
             new TaskItem {
@@ -131,7 +131,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Date = "2023-09-16",
                 AssignedBy = "Ed Holmes"
             }
-        }
+        };
 
         public static readonly IEnumerable<TaskItem> InProgressTaskItems = new[] {
             new TaskItem {
@@ -169,7 +169,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Date = "2023-09-16",
                 AssignedBy = "John Heart"
             }
-        }
+        };
 
         public static readonly IEnumerable<TaskItem> DeferredTaskItems = new[] {
             new TaskItem {
@@ -214,7 +214,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Date = "2023-09-16",
                 AssignedBy = "John Heart"
             }
-        }
+        };
 
         public static readonly IEnumerable<TaskItem> RejectedTaskItems = new[] {
             new TaskItem {
@@ -252,7 +252,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Date = "2023-09-16",
                 AssignedBy = "Cindy Stanwick"
             }
-        }
+        };
 
         public static readonly IEnumerable<TaskItem> CompletedTaskItems = new[] {
             new TaskItem {
@@ -297,7 +297,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Date = "2023-09-16",
                 AssignedBy = "Robin Cosworth"
             }
-        }
+        };
 
         public static readonly IEnumerable<TabPanelItem> TabPanelItems = new[] {
             new TabPanelItem {
@@ -330,6 +330,6 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Title = "Completed",
                 Tasks = CompletedTaskItems
             }
-        }
+        };
     }
 }
