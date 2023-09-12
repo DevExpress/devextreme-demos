@@ -52,283 +52,283 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
 
         public static readonly IEnumerable<TaskItem> NotStartedTaskItems = new[] {
             new TaskItem {
-                Status = "Not Started",
-                Priority = "hight",
-                Text = "Revenue Projections",
-                Date = "2023-09-16",
-                AssignedBy = "John Heart"
+                status = "Not Started",
+                priority = "hight",
+                text = "Revenue Projections",
+                date = "2023-09-16",
+                assignedBy = "John Heart"
             },
             new TaskItem {
-                Status = "Not Started",
-                Priority = "hight",
-                Text = "New Brochures",
-                Date = "2023-09-16",
-                AssignedBy = "Samantha Bright"
+                status = "Not Started",
+                priority = "hight",
+                text = "New Brochures",
+                date = "2023-09-16",
+                assignedBy = "Samantha Bright"
             },
             new TaskItem {
-                Status = "Not Started",
-                Priority = "normal",
-                Text = "Training",
-                Date = "2023-09-16",
-                AssignedBy = "Arthur Miller"
+                status = "Not Started",
+                priority = "normal",
+                text = "Training",
+                date = "2023-09-16",
+                assignedBy = "Arthur Miller"
             },
             new TaskItem {
-                Status = "Not Started",
-                Priority = "normal",
-                Text = "NDA",
-                Date = "2023-09-16",
-                AssignedBy = "Robert Reagan"
+                status = "Not Started",
+                priority = "normal",
+                text = "NDA",
+                date = "2023-09-16",
+                assignedBy = "Robert Reagan"
             },
             new TaskItem {
-                Status = "Not Started",
-                Priority = "low",
-                Text = "Health Insurance",
-                Date = "2023-09-16",
-                AssignedBy = "Greta Sims"
+                status = "Not Started",
+                priority = "low",
+                text = "Health Insurance",
+                date = "2023-09-16",
+                assignedBy = "Greta Sims"
             }
         };
 
         public static readonly IEnumerable<TaskItem> HelpNeededTaskItems = new[] {
             new TaskItem {
-                Status = "Help Needed",
-                Priority = "low",
-                Text = "TV Recall",
-                Date = "2023-09-16",
-                AssignedBy = "Brett Wade"
+                status = "Help Needed",
+                priority = "low",
+                text = "TV Recall",
+                date = "2023-09-16",
+                assignedBy = "Brett Wade"
             },
             new TaskItem {
-                Status = "Help Needed",
-                Priority = "low",
-                Text = "Recall and Refund Forms",
-                Date = "2023-09-16",
-                AssignedBy = "Sandra Johnson"
+                status = "Help Needed",
+                priority = "low",
+                text = "Recall and Refund Forms",
+                date = "2023-09-16",
+                assignedBy = "Sandra Johnson"
             },
             new TaskItem {
-                Status = "Help Needed",
-                Priority = "hight",
-                Text = "Shippers",
-                Date = "2023-09-16",
-                AssignedBy = "Ed Holmes"
+                status = "Help Needed",
+                priority = "hight",
+                text = "Shippers",
+                date = "2023-09-16",
+                assignedBy = "Ed Holmes"
             },
             new TaskItem {
-                Status = "Help Needed",
-                Priority = "normal",
-                Text = "Hardware Upgrade",
-                Date = "2023-09-16",
-                AssignedBy = "Barb Banks"
+                status = "Help Needed",
+                priority = "normal",
+                text = "Hardware Upgrade",
+                date = "2023-09-16",
+                assignedBy = "Barb Banks"
             },
             new TaskItem {
-                Status = "Help Needed",
-                Priority = "normal",
-                Text = "Touch-Enabled Apps",
-                Date = "2023-09-16",
-                AssignedBy = "Kevin Carter"
+                status = "Help Needed",
+                priority = "normal",
+                text = "Touch-Enabled Apps",
+                date = "2023-09-16",
+                assignedBy = "Kevin Carter"
             },
             new TaskItem {
-                Status = "Help Needed",
-                Priority = "low",
-                Text = "Review HR Budget Company Wide",
-                Date = "2023-09-16",
-                AssignedBy = "Ed Holmes"
+                status = "Help Needed",
+                priority = "low",
+                text = "Review HR Budget Company Wide",
+                date = "2023-09-16",
+                assignedBy = "Ed Holmes"
             }
         };
 
         public static readonly IEnumerable<TaskItem> InProgressTaskItems = new[] {
             new TaskItem {
-                Status = "In Progress",
-                Priority = "normal",
-                Text = "Online Sales",
-                Date = "2023-09-16",
-                AssignedBy = "Cindy Stanwick"
+                status = "In Progress",
+                priority = "normal",
+                text = "Online Sales",
+                date = "2023-09-16",
+                assignedBy = "Cindy Stanwick"
             },
             new TaskItem {
-                Status = "In Progress",
-                Priority = "normal",
-                Text = "New Website Design",
-                Date = "2023-09-16",
-                AssignedBy = "Sammy Hill"
+                status = "In Progress",
+                priority = "normal",
+                text = "New Website Design",
+                date = "2023-09-16",
+                assignedBy = "Sammy Hill"
             },
             new TaskItem {
-                Status = "In Progress",
-                Priority = "low",
-                Text = "Bandwidth Increase",
-                Date = "2023-09-16",
-                AssignedBy = "Davey Jones"
+                status = "In Progress",
+                priority = "low",
+                text = "Bandwidth Increase",
+                date = "2023-09-16",
+                assignedBy = "Davey Jones"
             },
             new TaskItem {
-                Status = "In Progress",
-                Priority = "normal",
-                Text = "Support",
-                Date = "2023-09-16",
-                AssignedBy = "Victor Norris"
+                status = "In Progress",
+                priority = "normal",
+                text = "Support",
+                date = "2023-09-16",
+                assignedBy = "Victor Norris"
             },
             new TaskItem {
-                Status = "In Progress",
-                Priority = "low",
-                Text = "Training Material",
-                Date = "2023-09-16",
-                AssignedBy = "John Heart"
+                status = "In Progress",
+                priority = "low",
+                text = "Training Material",
+                date = "2023-09-16",
+                assignedBy = "John Heart"
             }
         };
 
         public static readonly IEnumerable<TaskItem> DeferredTaskItems = new[] {
             new TaskItem {
-                Status = "Deferred",
-                Priority = "normal",
-                Text = "New Database",
-                Date = "2023-09-16",
-                AssignedBy = "Samantha Bright"
+                status = "Deferred",
+                priority = "normal",
+                text = "New Database",
+                date = "2023-09-16",
+                assignedBy = "Samantha Bright"
             },
             new TaskItem {
-                Status = "Deferred",
-                Priority = "hight",
-                Text = "Automation Server",
-                Date = "2023-09-16",
-                AssignedBy = "Arthur Miller"
+                status = "Deferred",
+                priority = "hight",
+                text = "Automation Server",
+                date = "2023-09-16",
+                assignedBy = "Arthur Miller"
             },
             new TaskItem {
-                Status = "Deferred",
-                Priority = "normal",
-                Text = "Retail Sales",
-                Date = "2023-09-16",
-                AssignedBy = "Robert Reagan"
+                status = "Deferred",
+                priority = "normal",
+                text = "Retail Sales",
+                date = "2023-09-16",
+                assignedBy = "Robert Reagan"
             },
             new TaskItem {
-                Status = "Deferred",
-                Priority = "normal",
-                Text = "Shipping Labels",
-                Date = "2023-09-16",
-                AssignedBy = "Greta Sims"
+                status = "Deferred",
+                priority = "normal",
+                text = "Shipping Labels",
+                date = "2023-09-16",
+                assignedBy = "Greta Sims"
             },
             new TaskItem {
-                Status = "Deferred",
-                Priority = "low",
-                Text = "Customer Follow Up Plan",
-                Date = "2023-09-16",
-                AssignedBy = "Brett Wade"
+                status = "Deferred",
+                priority = "low",
+                text = "Customer Follow Up Plan",
+                date = "2023-09-16",
+                assignedBy = "Brett Wade"
             },
             new TaskItem {
-                Status = "Deferred",
-                Priority = "normal",
-                Text = "Support Dept Budget Report",
-                Date = "2023-09-16",
-                AssignedBy = "John Heart"
+                status = "Deferred",
+                priority = "normal",
+                text = "Support Dept Budget Report",
+                date = "2023-09-16",
+                assignedBy = "John Heart"
             }
         };
 
         public static readonly IEnumerable<TaskItem> RejectedTaskItems = new[] {
             new TaskItem {
-                Status = "Rejected",
-                Priority = "hight",
-                Text = "Schedule Meeting with Sales Team",
-                Date = "2023-09-16",
-                AssignedBy = "Sandra Johnson"
+                status = "Rejected",
+                priority = "hight",
+                text = "Schedule Meeting with Sales Team",
+                date = "2023-09-16",
+                assignedBy = "Sandra Johnson"
             },
             new TaskItem {
-                Status = "Rejected",
-                Priority = "normal",
-                Text = "Confirm Availability for Sales Meeting",
-                Date = "2023-09-16",
-                AssignedBy = "Ed Holmes"
+                status = "Rejected",
+                priority = "normal",
+                text = "Confirm Availability for Sales Meeting",
+                date = "2023-09-16",
+                assignedBy = "Ed Holmes"
             },
             new TaskItem {
-                Status = "Rejected",
-                Priority = "normal",
-                Text = "Reschedule Sales Team Meeting",
-                Date = "2023-09-16",
-                AssignedBy = "Barb Banks"
+                status = "Rejected",
+                priority = "normal",
+                text = "Reschedule Sales Team Meeting",
+                date = "2023-09-16",
+                assignedBy = "Barb Banks"
             },
             new TaskItem {
-                Status = "Rejected",
-                Priority = "hight",
-                Text = "Update Database with New Leads",
-                Date = "2023-09-16",
-                AssignedBy = "Kevin Carter"
+                status = "Rejected",
+                priority = "hight",
+                text = "Update Database with New Leads",
+                date = "2023-09-16",
+                assignedBy = "Kevin Carter"
             },
             new TaskItem {
-                Status = "Rejected",
-                Priority = "low",
-                Text = "Send Territory Sales Breakdown",
-                Date = "2023-09-16",
-                AssignedBy = "Cindy Stanwick"
+                status = "Rejected",
+                priority = "low",
+                text = "Send Territory Sales Breakdown",
+                date = "2023-09-16",
+                assignedBy = "Cindy Stanwick"
             }
         };
 
         public static readonly IEnumerable<TaskItem> CompletedTaskItems = new[] {
             new TaskItem {
-                Status = "Completed",
-                Priority = "normal",
-                Text = "Territory Sales Breakdown Report",
-                Date = "2023-09-16",
-                AssignedBy = "Sammy Hill"
+                status = "Completed",
+                priority = "normal",
+                text = "Territory Sales Breakdown Report",
+                date = "2023-09-16",
+                assignedBy = "Sammy Hill"
             },
             new TaskItem {
-                Status = "Completed",
-                Priority = "low",
-                Text = "Return Merchandise Report",
-                Date = "2023-09-16",
-                AssignedBy = "Davey Jones"
+                status = "Completed",
+                priority = "low",
+                text = "Return Merchandise Report",
+                date = "2023-09-16",
+                assignedBy = "Davey Jones"
             },
             new TaskItem {
-                Status = "Completed",
-                Priority = "hight",
-                Text = "Staff Productivity Report",
-                Date = "2023-09-16",
-                AssignedBy = "Victor Norris"
+                status = "Completed",
+                priority = "hight",
+                text = "Staff Productivity Report",
+                date = "2023-09-16",
+                assignedBy = "Victor Norris"
             },
             new TaskItem {
-                Status = "Completed",
-                Priority = "normal",
-                Text = "Review HR Budget Company Wide",
-                Date = "2023-09-16",
-                AssignedBy = "Mary Stern"
+                status = "Completed",
+                priority = "normal",
+                text = "Review HR Budget Company Wide",
+                date = "2023-09-16",
+                assignedBy = "Mary Stern"
             },
             new TaskItem {
-                Status = "Completed",
-                Priority = "normal",
-                Text = "Support",
-                Date = "2023-09-16",
-                AssignedBy = "Victor Norris"
+                status = "Completed",
+                priority = "normal",
+                text = "Support",
+                date = "2023-09-16",
+                assignedBy = "Victor Norris"
             },
             new TaskItem {
-                Status = "Completed",
-                Priority = "low",
-                Text = "Support Dept Budget Report",
-                Date = "2023-09-16",
-                AssignedBy = "Robin Cosworth"
+                status = "Completed",
+                priority = "low",
+                text = "Support Dept Budget Report",
+                date = "2023-09-16",
+                assignedBy = "Robin Cosworth"
             }
         };
 
         public static readonly IEnumerable<TabPanelItem> TabPanelItems = new[] {
             new TabPanelItem {
-                Icon = "description",
-                Title = "Not Started",
-                Tasks = NotStartedTaskItems
+                icon = "description",
+                title = "Not Started",
+                tasks = NotStartedTaskItems
             },
             new TabPanelItem {
-                Icon = "task-helpneeded",
-                Title = "Help Needed",
-                Tasks = HelpNeededTaskItems
+                icon = "task-helpneeded",
+                title = "Help Needed",
+                tasks = HelpNeededTaskItems
             },
             new TabPanelItem {
-                Icon = "task-inprogress",
-                Title = "In Progress",
-                Tasks = InProgressTaskItems
+                icon = "task-inprogress",
+                title = "In Progress",
+                tasks = InProgressTaskItems
             },
             new TabPanelItem {
-                Icon = "task-stop",
-                Title = "Deferred",
-                Tasks = DeferredTaskItems
+                icon = "task-stop",
+                title = "Deferred",
+                tasks = DeferredTaskItems
             },
             new TabPanelItem {
-                Icon = "task-rejected",
-                Title = "Rejected",
-                Tasks = RejectedTaskItems
+                icon = "task-rejected",
+                title = "Rejected",
+                tasks = RejectedTaskItems
             },
             new TabPanelItem {
-                Icon = "task-complete",
-                Title = "Completed",
-                Tasks = CompletedTaskItems
+                icon = "task-complete",
+                title = "Completed",
+                tasks = CompletedTaskItems
             }
         };
     }

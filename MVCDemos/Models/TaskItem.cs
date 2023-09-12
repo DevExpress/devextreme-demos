@@ -5,10 +5,10 @@ using System.Web;
 
 namespace DevExtreme.MVC.Demos.Models {
     public class TaskItem {
-      public string Status { get; set; }
-      public string Priority { get; set; }
-      public string Text { get; set; }
-      public string Date { get; set; }
-      public string AssignedBy { get; set; }
+      public string status { get; set; }
+      public string priority { get; set; }
+      public string text { get; set; }
+      public string date { get; set; }
+      public string assignedBy { get; set; }
     }
 }
