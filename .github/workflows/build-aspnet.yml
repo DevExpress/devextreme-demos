@@ -49,5 +49,13 @@ jobs:
           $jsonData."devextreme-aspnet" = "${{ github.workspace }}\devextreme-aspnet"
           $jsonData | ConvertTo-Json | Set-Content -Path "repository.config.json"
 
-      - name: Build aspnet demos
+      - name: Run prepare-aspnet
         run: npm run prepare-aspnet
+
+      - name: Build MVC demos
+        working-directory: MVCDemos
+        run: dotnet build DevExtreme.MVC.Demos.sln
+
+      - name: Build Core demos
+        working-directory: NetCoreDemos
+        run: dotnet build DevExtreme.NETCore.Demos.sln
