@@ -10,72 +10,64 @@ import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 
 import sales from './data.js';
 
+const setSummaryType = (args, sourceField) => {
+  dataSource.field(sourceField.index, {
+    summaryType: args.itemData.value,
+  });
+
+  dataSource.load();
+};
+
+const onContextMenuPreparing = (e) => {
+  const sourceField = e.field;
+
+  if (sourceField) {
+    if (!sourceField.groupName || sourceField.groupIndex === 0) {
+      e.items.push({
+        text: 'Hide field',
+        onItemClick() {
+          let fieldIndex;
+          if (sourceField.groupName) {
+            fieldIndex = dataSource
+              .getAreaFields(sourceField.area, true)[sourceField.areaIndex]
+              .index;
+          } else {
+            fieldIndex = sourceField.index;
+          }
+
+          dataSource.field(fieldIndex, {
+            area: null,
+          });
+          dataSource.load();
+        },
+      });
+    }
+
+    if (sourceField.dataType === 'number') {
+      const menuItems = [];
+
+      e.items.push({ text: 'Summary Type', items: menuItems });
+      ['Sum', 'Avg', 'Min', 'Max'].forEach((summaryType) => {
+        const summaryTypeValue = summaryType.toLowerCase();
+
+        menuItems.push({
+          text: summaryType,
+          value: summaryType.toLowerCase(),
+          onItemClick(args) {
+            setSummaryType(args, sourceField);
+          },
+          selected: e.field.summaryType === summaryTypeValue,
+        });
+      });
+    }
+  }
+};
+
 const App = () => {
   const [showColumnFields, setShowColumnFields] = React.useState(true);
   const [showDataFields, setShowDataFields] = React.useState(true);
   const [showFilterFields, setShowFilterFields] = React.useState(true);
   const [showRowFields, setShowRowFields] = React.useState(true);
-
-  const onShowColumnFieldsChanged = React.useCallback((e) => {
-    setShowColumnFields(e.value);
-  }, []);
-
-  const onShowDataFieldsChanged = React.useCallback((e) => {
-    setShowDataFields(e.value);
-  }, []);
-
-  const onShowFilterFieldsChanged = React.useCallback((e) => {
-    setShowFilterFields(e.value);
-  }, []);
-
-  const onShowRowFieldsChanged = React.useCallback((e) => {
-    setShowRowFields(e.value);
-  }, []);
-
-  const onContextMenuPreparing = React.useCallback((e) => {
-    const sourceField = e.field;
-
-    if (sourceField) {
-      if (!sourceField.groupName || sourceField.groupIndex === 0) {
-        e.items.push({
-          text: 'Hide field',
-          onItemClick() {
-            let fieldIndex;
-            if (sourceField.groupName) {
-              fieldIndex = dataSource
-                .getAreaFields(sourceField.area, true)[sourceField.areaIndex]
-                .index;
-            } else {
-              fieldIndex = sourceField.index;
-            }
-
-            dataSource.field(fieldIndex, {
-              area: null,
-            });
-            dataSource.load();
-          },
-        });
-      }
-
-      if (sourceField.dataType === 'number') {
-        const menuItems = [];
-
-        e.items.push({ text: 'Summary Type', items: menuItems });
-        ['Sum', 'Avg', 'Min', 'Max'].forEach((summaryType) => {
-          const summaryTypeValue = summaryType.toLowerCase();
-
-          menuItems.push({
-            text: summaryType,
-            value: summaryType.toLowerCase(),
-            onItemClick(args) {
-              setSummaryType(args, sourceField);
-            },
-            selected: e.field.summaryType === summaryTypeValue,
-          });
-        });
-      }
-    }
-  }, []);
 
   return (
     <React.Fragment>
@@ -104,28 +96,28 @@ const App = () => {
         <div className="option">
           <CheckBox id="show-data-fields"
             value={showColumnFields}
-            onValueChanged={onShowColumnFieldsChanged}
+            onValueChange={setShowColumnFields}
             text="Show Data Fields" />
         </div>
-        &nbsp;
+        <br />
         <div className="option">
           <CheckBox id="show-row-fields"
             value={showDataFields}
-            onValueChanged={onShowDataFieldsChanged}
+            onValueChange={setShowDataFields}
             text="Show Row Fields" />
         </div>
-        &nbsp;
+        <br />
         <div className="option">
           <CheckBox id="show-column-fields"
             value={showFilterFields}
-            onValueChanged={onShowFilterFieldsChanged}
+            onValueChange={setShowFilterFields}
             text="Show Column Fields" />
         </div>
-        &nbsp;
+        <br />
         <div className="option">
           <CheckBox id="show-filter-fields"
             value={showRowFields}
-            onValueChanged={onShowRowFieldsChanged}
+            onValueChange={setShowRowFields}
             text="Show Filter Fields" />
         </div>
       </div>
@@ -160,13 +152,5 @@ const dataSource = new PivotGridDataSource({
   }],
   store: sales,
 });
-
-function setSummaryType(args, sourceField) {
-  dataSource.field(sourceField.index, {
-    summaryType: args.itemData.value,
-  });
-
-  dataSource.load();
-}
 
 export default App;

@@ -13,10 +13,6 @@ const applyChangesModeLabel = { 'aria-label': 'Apply Changes Mode' };
 const App = () => {
   const [applyChangesMode, setApplyChangesMode] = React.useState('instantly');
 
-  const changeMode = React.useCallback((e) => {
-    setApplyChangesMode(e.value);
-  }, []);
-
   return (
     <React.Fragment>
       <PivotGrid
@@ -41,7 +37,7 @@ const App = () => {
             width={180}
             inputAttr={applyChangesModeLabel}
             value={applyChangesMode}
-            onValueChanged={changeMode}>
+            onValueChange={setApplyChangesMode}>
           </SelectBox>
         </div>
       </div>

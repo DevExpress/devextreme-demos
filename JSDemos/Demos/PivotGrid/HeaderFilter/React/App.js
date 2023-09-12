@@ -36,14 +36,6 @@ const App = () => {
   const [searchEnabled, setSearchEnabled] = React.useState(true);
   const [showRelevantValues, setShowRelevantValues] = React.useState(true);
 
-  const onSearchEnabledChanged = React.useCallback((data) => {
-    setSearchEnabled(data.value);
-  }, []);
-
-  const onShowRelevantValuesChanged = React.useCallback((data) => {
-    setShowRelevantValues(data.value);
-  }, []);
-
   return (
     <div>
       <PivotGrid
@@ -72,14 +64,14 @@ const App = () => {
             <CheckBox
               value={searchEnabled}
               text="Allow Search"
-              onValueChanged={onSearchEnabledChanged}
+              onValueChange={setSearchEnabled}
             />
           </div>
           <div className="option">
             <CheckBox
               value={showRelevantValues}
               text="Show Relevant Values"
-              onValueChanged={onShowRelevantValuesChanged}
+              onValueChange={setShowRelevantValues}
             />
           </div>
         </div>

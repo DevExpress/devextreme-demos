@@ -15,10 +15,6 @@ const App = () => {
   const [popupVisible, setPopupVisible] = React.useState(false);
   const dataGridRef = React.useRef(null);
 
-  const getDataGridInstance = React.useCallback((ref) => {
-    dataGridRef.current = ref.instance;
-  }, []);
-
   const onCellClick = React.useCallback((e) => {
     if (e.area === 'data') {
       const pivotGridDataSource = e.component.getDataSource();
@@ -29,14 +25,6 @@ const App = () => {
       setDrillDownDataSource(pivotGridDataSource.createDrillDownDataSource(e.cell));
       setPopupVisible(true);
     }
-  }, []);
-
-  const onHiding = React.useCallback(() => {
-    setPopupVisible(false);
-  }, []);
-
-  const onShown = React.useCallback(() => {
-    dataGridRef.current.updateDimensions();
   }, []);
 
   return (
@@ -58,14 +46,14 @@ const App = () => {
         width={600}
         height={400}
         title={popupTitle}
-        onHiding={onHiding}
-        onShown={onShown}
+        onHiding={() => setPopupVisible(false)}
+        onShown={() => dataGridRef.current.updateDimensions()}
       >
         <DataGrid
           width={560}
           height={300}
           dataSource={drillDownDataSource}
-          ref={getDataGridInstance}
+          ref={dataGridRef}
         >
           <Column dataField="region" />
           <Column dataField="city" />

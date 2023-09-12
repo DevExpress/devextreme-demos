@@ -35,22 +35,6 @@ const App = () => {
   const [layout, setLayout] = React.useState(0);
   const fieldChooserRef = React.useRef(null);
 
-  const changeMode = React.useCallback((e) => {
-    setApplyChangesMode(e.value);
-  }, []);
-
-  const changeLayout = React.useCallback((e) => {
-    setLayout(e.value);
-  }, []);
-
-  const applyClick = React.useCallback(() => {
-    fieldChooserRef.current.applyChanges();
-  }, []);
-
-  const cancelClick = React.useCallback(() => {
-    fieldChooserRef.current.cancelChanges();
-  }, []);
-
   return (
     <React.Fragment>
       <PivotGrid
@@ -85,11 +69,11 @@ const App = () => {
             <Button
               text="Apply"
               type="default"
-              onClick={applyClick}
+              onClick={() => fieldChooserRef.current.applyChanges()}
             ></Button>
             <Button
               text="Cancel"
-              onClick={cancelClick}
+              onClick={() => fieldChooserRef.current.cancelChanges()}
             ></Button>
           </div>
         }
@@ -105,7 +89,7 @@ const App = () => {
               layout="vertical"
               valueExpr="key"
               displayExpr="name"
-              onValueChanged={changeLayout}>
+              onValueChange={setLayout}>
             </RadioGroup>
           </div>
           <div className="option">
@@ -116,7 +100,7 @@ const App = () => {
               inputAttr={applyChangesModeLabel}
               width={180}
               value={applyChangesMode}
-              onValueChanged={changeMode}>
+              onValueChange={setApplyChangesMode}>
             </SelectBox>
           </div>
         </div>
