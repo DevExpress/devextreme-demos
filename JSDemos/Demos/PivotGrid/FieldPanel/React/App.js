@@ -10,96 +10,29 @@ import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 
 import sales from './data.js';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showColumnFields: true,
-      showDataFields: true,
-      showFilterFields: true,
-      showRowFields: true,
-    };
-    this.onShowColumnFieldsChanged = this.onShowColumnFieldsChanged.bind(this);
-    this.onShowDataFieldsChanged = this.onShowDataFieldsChanged.bind(this);
-    this.onShowFilterFieldsChanged = this.onShowFilterFieldsChanged.bind(this);
-    this.onShowRowFieldsChanged = this.onShowRowFieldsChanged.bind(this);
-    this.onContextMenuPreparing = this.onContextMenuPreparing.bind(this);
-  }
+const App = () => {
+  const [showColumnFields, setShowColumnFields] = React.useState(true);
+  const [showDataFields, setShowDataFields] = React.useState(true);
+  const [showFilterFields, setShowFilterFields] = React.useState(true);
+  const [showRowFields, setShowRowFields] = React.useState(true);
 
-  render() {
-    return (
-      <React.Fragment>
-        <PivotGrid
-          id="sales"
-          dataSource={dataSource}
-          allowSortingBySummary={true}
-          allowSorting={true}
-          allowFiltering={true}
-          showBorders={true}
-          height={490}
-          onContextMenuPreparing={this.onContextMenuPreparing}
-        >
-          <FieldPanel
-            showColumnFields={this.state.showColumnFields}
-            showDataFields={this.state.showDataFields}
-            showFilterFields={this.state.showFilterFields}
-            showRowFields={this.state.showRowFields}
-            allowFieldDragging={true}
-            visible={true}
-          />
-          <FieldChooser height={500} />
-        </PivotGrid>
-        <div className="options">
-          <div className="caption">Options</div>
-          <div className="option">
-            <CheckBox id="show-data-fields"
-              value={this.state.showColumnFields}
-              onValueChanged={this.onShowColumnFieldsChanged}
-              text="Show Data Fields" />
-          </div>
-          &nbsp;
-          <div className="option">
-            <CheckBox id="show-row-fields"
-              value={this.state.showDataFields}
-              onValueChanged={this.onShowDataFieldsChanged}
-              text="Show Row Fields" />
-          </div>
-          &nbsp;
-          <div className="option">
-            <CheckBox id="show-column-fields"
-              value={this.state.showFilterFields}
-              onValueChanged={this.onShowFilterFieldsChanged}
-              text="Show Column Fields" />
-          </div>
-          &nbsp;
-          <div className="option">
-            <CheckBox id="show-filter-fields"
-              value={this.state.showRowFields}
-              onValueChanged={this.onShowRowFieldsChanged}
-              text="Show Filter Fields" />
-          </div>
-        </div>
-      </React.Fragment>
-    );
-  }
+  const onShowColumnFieldsChanged = React.useCallback((e) => {
+    setShowColumnFields(e.value);
+  }, []);
 
-  onShowColumnFieldsChanged(e) {
-    this.setState({ showColumnFields: e.value });
-  }
+  const onShowDataFieldsChanged = React.useCallback((e) => {
+    setShowDataFields(e.value);
+  }, []);
 
-  onShowDataFieldsChanged(e) {
-    this.setState({ showDataFields: e.value });
-  }
+  const onShowFilterFieldsChanged = React.useCallback((e) => {
+    setShowFilterFields(e.value);
+  }, []);
 
-  onShowFilterFieldsChanged(e) {
-    this.setState({ showFilterFields: e.value });
-  }
+  const onShowRowFieldsChanged = React.useCallback((e) => {
+    setShowRowFields(e.value);
+  }, []);
 
-  onShowRowFieldsChanged(e) {
-    this.setState({ showRowFields: e.value });
-  }
-
-  onContextMenuPreparing(e) {
+  const onContextMenuPreparing = React.useCallback((e) => {
     const sourceField = e.field;
 
     if (sourceField) {
@@ -142,8 +75,63 @@ class App extends React.Component {
         });
       }
     }
-  }
-}
+  }, []);
+
+  return (
+    <React.Fragment>
+      <PivotGrid
+        id="sales"
+        dataSource={dataSource}
+        allowSortingBySummary={true}
+        allowSorting={true}
+        allowFiltering={true}
+        showBorders={true}
+        height={490}
+        onContextMenuPreparing={onContextMenuPreparing}
+      >
+        <FieldPanel
+          showColumnFields={showColumnFields}
+          showDataFields={showDataFields}
+          showFilterFields={showFilterFields}
+          showRowFields={showRowFields}
+          allowFieldDragging={true}
+          visible={true}
+        />
+        <FieldChooser height={500} />
+      </PivotGrid>
+      <div className="options">
+        <div className="caption">Options</div>
+        <div className="option">
+          <CheckBox id="show-data-fields"
+            value={showColumnFields}
+            onValueChanged={onShowColumnFieldsChanged}
+            text="Show Data Fields" />
+        </div>
+        &nbsp;
+        <div className="option">
+          <CheckBox id="show-row-fields"
+            value={showDataFields}
+            onValueChanged={onShowDataFieldsChanged}
+            text="Show Row Fields" />
+        </div>
+        &nbsp;
+        <div className="option">
+          <CheckBox id="show-column-fields"
+            value={showFilterFields}
+            onValueChanged={onShowFilterFieldsChanged}
+            text="Show Column Fields" />
+        </div>
+        &nbsp;
+        <div className="option">
+          <CheckBox id="show-filter-fields"
+            value={showRowFields}
+            onValueChanged={onShowRowFieldsChanged}
+            text="Show Filter Fields" />
+        </div>
+      </div>
+    </React.Fragment>
+  );
+};
 
 const dataSource = new PivotGridDataSource({
   fields: [{
