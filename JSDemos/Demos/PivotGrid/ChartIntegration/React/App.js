@@ -31,7 +31,7 @@ function App() {
   const pivotGridRef = React.useRef(null);
 
   React.useEffect(() => {
-    pivotGridRef.current.bindChart(chartRef.current.instance, {
+    pivotGridRef.current.instance.bindChart(chartRef.current.instance, {
       dataFieldsDisplayMode: 'splitPanes',
       alternateDataFields: false,
     });
