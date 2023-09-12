@@ -57,28 +57,28 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Text = "Revenue Projections",
                 Date = "2023-09-16",
                 AssignedBy = "John Heart"
-            }
+            },
             new TaskItem {
                 Status = "Not Started",
                 Priority = "hight",
                 Text = "New Brochures",
                 Date = "2023-09-16",
                 AssignedBy = "Samantha Bright"
-            }
+            },
             new TaskItem {
                 Status = "Not Started",
                 Priority = "normal",
                 Text = "Training",
                 Date = "2023-09-16",
                 AssignedBy = "Arthur Miller"
-            }
+            },
             new TaskItem {
                 Status = "Not Started",
                 Priority = "normal",
                 Text = "NDA",
                 Date = "2023-09-16",
                 AssignedBy = "Robert Reagan"
-            }
+            },
             new TaskItem {
                 Status = "Not Started",
                 Priority = "low",
@@ -304,27 +304,27 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Icon = "description",
                 Title = "Not Started",
                 Tasks = NotStartedTaskItems
-            }
+            },
             new TabPanelItem {
                 Icon = "task-helpneeded",
                 Title = "Help Needed",
                 Tasks = HelpNeededTaskItems
-            }
+            },
             new TabPanelItem {
                 Icon = "task-inprogress",
                 Title = "In Progress",
                 Tasks = InProgressTaskItems
-            }
+            },
             new TabPanelItem {
                 Icon = "task-stop",
                 Title = "Deferred",
                 Tasks = DeferredTaskItems
-            }
+            },
             new TabPanelItem {
                 Icon = "task-rejected",
                 Title = "Rejected",
                 Tasks = RejectedTaskItems
-            }
+            },
             new TabPanelItem {
                 Icon = "task-complete",
                 Title = "Completed",
