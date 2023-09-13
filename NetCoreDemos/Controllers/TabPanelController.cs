@@ -1,10 +1,10 @@
 ﻿using DevExtreme.AspNet.Data;
 using DevExtreme.AspNet.Mvc;
-using DevExtreme.MVC.Demos.Models.SampleData;
+using DevExtreme.NETCore.Demos.Models.SampleData;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Web.Mvc;
 
-namespace DevExtreme.MVC.Demos.Controllers {
+namespace DevExtreme.NETCore.Demos.Controllers {
     public class TabPanelController : Controller {
         #region Overview
         public ActionResult Overview() {

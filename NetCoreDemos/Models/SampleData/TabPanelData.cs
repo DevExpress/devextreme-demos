@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace DevExtreme.MVC.Demos.Models.SampleData {
+namespace DevExtreme.NETCore.Demos.Models.SampleData {
     public static class TabPanelData {
         public static readonly IEnumerable<Company> Companies = new[] {
             new Company {

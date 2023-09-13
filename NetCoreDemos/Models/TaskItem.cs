@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
-namespace DevExtreme.MVC.Demos.Models {
+namespace DevExtreme.NETCore.Demos.Models {
     public class TaskItem {
       public string status { get; set; }
       public string priority { get; set; }

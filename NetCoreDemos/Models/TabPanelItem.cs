@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
-namespace DevExtreme.MVC.Demos.Models {
+namespace DevExtreme.NETCore.Demos.Models {
     public class TabPanelItem {
       public string icon { get; set; }
       public string title { get; set; }
