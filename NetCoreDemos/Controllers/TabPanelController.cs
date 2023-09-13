@@ -1,10 +1,10 @@
 ﻿using DevExtreme.AspNet.Data;
 using DevExtreme.AspNet.Mvc;
-using DevExtreme.NETCore.Demos.Models.SampleData;
-using Microsoft.AspNetCore.Mvc;
+using DevExtreme.MVC.Demos.Models.SampleData;
 using Newtonsoft.Json;
+using System.Web.Mvc;
 
-namespace DevExtreme.NETCore.Demos.Controllers {
+namespace DevExtreme.MVC.Demos.Controllers {
     public class TabPanelController : Controller {
         #region Overview
         public ActionResult Overview() {
@@ -16,8 +16,13 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         }
 
         [HttpGet]
-        public object GetCompanies(DataSourceLoadOptions loadOptions) {
-            return DataSourceLoader.Load(TabPanelData.Companies, loadOptions);
+        public ActionResult GetCompanies(DataSourceLoadOptions loadOptions) {
+            return Content(JsonConvert.SerializeObject(DataSourceLoader.Load(TabPanelData.Companies, loadOptions)), "application/json");
+        }
+
+        [HttpGet]
+        public ActionResult GetTabPanelItems(DataSourceLoadOptions loadOptions) {
+            return Content(JsonConvert.SerializeObject(DataSourceLoader.Load(TabPanelData.TabPanelItems, loadOptions)), "application/json");
         }
         #endregion
     }

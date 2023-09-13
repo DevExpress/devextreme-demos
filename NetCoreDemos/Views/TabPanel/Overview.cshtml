@@ -1,86 +1,140 @@
-﻿@(Html.DevExtreme().TabPanel()
-    .ID("tabpanel-container")
-    .Height(260)
-    .DataSource(d => d.Mvc().LoadAction("GetCompanies"))
-    .SelectedIndex(0)
-    .Loop(false)
-    .AnimationEnabled(true)
-    .SwipeEnabled(true)
-    .ItemTitleTemplate(@<text><span><%- Name %></span></text>)
-    .ItemTemplate(@<text>
-        <div class="tabpanel-item">
-            <div>
-                <p>
-                    <b><%- City %></b>
-                    (<span><%- State %></span>)
-                </p>
-                <p>
-                    <span><%- ZipCode %></span>
-                    <span><%- Address %></span>
-                </p>
-            </div>
-            <div>
-                <p>Phone: <b><%- Phone %></b></p>
-                <p>Fax: <b><%- Fax %></b></p>
-                <p>
-                    Website:
-                    <a href="<%- Website %>" target="_blank"><%- Website %></a>
-                </p>
-            </div>
+﻿@{
+    var tabsPositions = new[] {
+        "left",
+        "top",
+        "right",
+        "bottom"
+    };
+
+    var stylingModes = new[] {
+        "secondary",
+        "primary"
+    };
+
+    var iconPositions = new[] {
+        "top",
+        "start",
+        "end",
+        "bottom"
+    };
+}
+
+<div id="tabpanel-demo">
+    <div class="widget-container">
+        @(Html.DevExtreme().TabPanel()
+            .ID("tabpanel")
+            .DataSource(d => d.Mvc().LoadAction("GetTabPanelItems"))
+            .Width("100%")
+            .Height(418)
+            .AnimationEnabled(true)
+            .SwipeEnabled(true)
+            .SelectedIndex(0)
+            .ShowNavButtons(true)
+            .TabsPosition(Position.Top)
+            .StylingMode(TabsStyle.Secondary)
+            .IconPosition(TabsIconPosition.Top)
+            .ItemTemplate(new JS("tabPanelTemplate"))
+        )
+    </div>
+
+    <div class="options">
+        <div class="caption">Options</div>
+
+        <div class="option">
+            <div class="option-label">Tabs position</div>
+
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(tabsPositions)
+                .Value("left")
+                .InputAttr("aria-label", "Tabs positions")
+                .OnValueChanged("tabsPositionChanged")
+            )
         </div>
-    </text>)
-    .OnSelectionChanged("tabPanelSelection_changed")
-)
 
-<div class="item-box">
-    Item <span class="selected-index">1</span>
-    of <span>4</span>
-</div>
+        <div class="option">
+            <div class="option-label">Styling mode</div>
 
-<div class="options">
-    <div class="caption">Options</div>
-    <div class="option">
-        @(Html.DevExtreme().CheckBox()
-            .Value(false)
-            .Text("Loop enabled")
-            .OnValueChanged("loopEnabled")
-        )
-    </div>
-    <div class="option">
-        @(Html.DevExtreme().CheckBox()
-            .Value(true)
-            .Text("Animation enabled")
-            .OnValueChanged("animationEnabled")
-        )
-    </div>
-    <div class="option">
-        @(Html.DevExtreme().CheckBox()
-            .Value(true)
-            .Text("Swipe enabled")
-            .OnValueChanged("swipeEnabled")
-        )
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(stylingModes)
+                .Value("secondary")
+                .InputAttr("aria-label", "Styling mode")
+                .OnValueChanged("stylingModeChanged")
+            )
+        </div>
+
+        <div class="option">
+            <div class="option-label">Icon position</div>
+
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(iconPositions)
+                .Value("top")
+                .InputAttr("aria-label", "Icon positions")
+                .OnValueChanged("iconPositionChanged")
+            )
+        </div>
+
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(false)
+                .Text("Show navigation buttons")
+                .OnValueChanged("showNavButtonsChanged")
+            )
+        </div>
     </div>
 </div>
 
 <script>
-    function tabPanelSelection_changed(e) {
-        $(".selected-index")
-                .text(e.component.option("selectedIndex") + 1);
+    const taskItem = (task) => {
+        const className = `task-item task-item-priority-${task.priority}`;
+
+        return `
+            <div class="${className}">
+                <p class="task-item-text">
+                    ${task.text}
+                </p>
+
+                <p class="task-item-info">
+                    ${task.date} by ${task.assignedBy}
+                </p>
+
+                <div class="task-item-pseudo-button-wrapper">
+                    <div class="task-item-pseudo-button"></div>
+                </div>
+            </div>
+        `;
+    };
+
+    const taskList = (tasks) => {
+        const list = tasks.reduce((accumulator, task) => `${accumulator} ${taskItem(task)}`, '');
+
+        return `
+            <div class="tabpanel-item">
+                ${list}
+            </div>
+        `;
+    };
+
+    function tabPanelTemplate({ tasks }) {
+        return taskList(tasks)
     }
 
     function getTabPanelInstance() {
         return $("#tabpanel-container").dxTabPanel("instance");
     }
 
-    function loopEnabled(e) {
-        getTabPanelInstance().option("loop", e.value);
+    function tabsPositionChanged({ value }) {
+        getTabPanelInstance().option({ tabsPosition: value });
     }
 
-    function animationEnabled(e) {
-        getTabPanelInstance().option("animationEnabled", e.value);
+    function stylingModeChanged({ value }) {
+        getTabPanelInstance().option({ stylingMode: value });
     }
 
-    function swipeEnabled(e) {
-        getTabPanelInstance().option("swipeEnabled", e.value);
+    function iconPositionChanged({ value }) {
+        getTabPanelInstance().option({ iconPosition: value });
+    }
+
+    function showNavButtonsChanged({ value }) {
+        getTabPanelInstance().option({ showNavButtons: value });
     }
 </script>
