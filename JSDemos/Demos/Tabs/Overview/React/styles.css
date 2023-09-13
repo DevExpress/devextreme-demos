@@ -1,26 +1,108 @@
-.content {
-  text-align: justify;
-  margin-top: 25px;
+body {
+  margin: 0;
+  padding: 0;
 }
 
-#longtabs {
-  margin-top: 20px;
+#tabs-demo {
+  padding: 20px;
+  display: flex;
+  min-height: 450px;
+  justify-content: space-between;
 }
 
-#scrolledtabs {
-  margin-top: 20px;
+.widget-container {
+  margin-top: 90px;
+  align-self: center;
+  flex-grow: 1;
+  margin: 0 auto;
+  max-width: 700px;  
+  padding: 16px 72px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column; 
 }
 
-#tabs {
-  margin-top: 60px;
+.options {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  padding: 20px;
+  width: 260px;
+  background-color: rgba(191, 191, 191, 0.15);
+}
+
+.tabs-container:not(:last-child) .dx-tabs-horizontal {
+  margin-bottom: 80px;
+}
+
+.tabs-container:not(:last-child) .dx-tabs-vertical {
+  margin-right: 80px;
+}
+
+.dx-tabs-horizontal {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.dx-tabs-vertical {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.dx-tab {
+  width: 140px;
+}
+
+.tabs-container {
+  display: flex;
 }
 
 .caption {
-  font-size: 16px;
-  padding-bottom: 3px;
-  padding-left: 10px;
+  font-weight: 500;
+  font-size: 18px;
 }
 
-.left-aligned {
-  text-align: left;
+#show-navigation-buttons {
+  margin-top: 22px;
+}
+
+.option {
+  margin-top: 20px;
+}
+
+
+.dx-color-scheme-light .dx-tabs-horizontal ,
+.dx-color-scheme-carmine .dx-tabs-horizontal ,
+.dx-color-scheme-dark .dx-tabs-horizontal,
+.dx-color-scheme-greenmist .dx-tabs-horizontal,
+.dx-color-scheme-darkmoon .dx-tabs-horizontal,
+.dx-color-scheme-darkviolet .dx-tabs-horizontal,
+.dx-color-scheme-softblue .dx-tabs-horizontal {
+  border-bottom: unset;
+}
+
+.dx-color-scheme-blue-dark .dx-tabs-horizontal,
+.dx-color-scheme-orange-dark .dx-tabs-horizontal,
+.dx-color-scheme-teal-dark .dx-tabs-horizontal,
+
+.dx-color-scheme-lime-dark .dx-tabs-horizontal,
+.dx-color-scheme-purple-dark .dx-tabs-horizontal {
+  border-bottom: 1px solid rgb(81, 81, 89);
+}
+
+.dx-color-scheme-light .dx-tabs-vertical ,
+.dx-color-scheme-carmine .dx-tabs-vertical ,
+.dx-color-scheme-dark .dx-tabs-vertical,
+.dx-color-scheme-greenmist .dx-tabs-vertical,
+.dx-color-scheme-darkmoon .dx-tabs-vertical,
+.dx-color-scheme-darkviolet .dx-tabs-vertical,
+.dx-color-scheme-softblue .dx-tabs-vertical {
+  border-right: unset;
+}
+
+.dx-color-scheme-blue-dark .dx-tabs-vertical,
+.dx-color-scheme-orange-dark .dx-tabs-vertical,
+.dx-color-scheme-teal-dark .dx-tabs-vertical,
+
+.dx-color-scheme-lime-dark .dx-tabs-vertical,
+.dx-color-scheme-purple-dark .dx-tabs-vertical {
+  border-right: 1px solid rgb(81, 81, 89);
 }

@@ -1,26 +1,112 @@
-::ng-deep .content {
-  text-align: justify;
-  margin-top: 25px;
+::ng-deep body {
+  margin: 0;
+  padding: 0;
 }
 
-::ng-deep #longtabs {
-  margin-top: 20px;
+::ng-deep #tabs-demo {
+  padding: 20px;
+  display: flex;
+  min-height: 450px;
+  
+  justify-content: space-between;
 }
 
-::ng-deep #scrolledtabs {
-  margin-top: 20px;
+::ng-deep .first-group {
+  display: none;;
 }
 
-::ng-deep #tabs {
-  margin-top: 60px;
+::ng-deep .widget-container {
+  margin-top: 90px;
+  flex-grow: 1;
+  margin: 0 auto;
+  max-width: 700px;  
+  padding: 16px 72px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column; 
+}
+
+::ng-deep .options {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  padding: 20px;
+  width: 260px;
+  background-color: rgba(191, 191, 191, 0.15);
+}
+
+::ng-deep .tabs-container:not(:last-child) .dx-tabs-horizontal {
+  margin-bottom: 80px;
+}
+
+::ng-deep .tabs-container:not(:last-child) .dx-tabs-vertical {
+  margin-right: 80px;
+}
+
+::ng-deep .dx-tabs-horizontal {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+::ng-deep .dx-tabs-vertical {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+::ng-deep .dx-tab {
+  width: 140px !important;
+}
+
+::ng-deep .tabs-container {
+  display: flex;
 }
 
 ::ng-deep .caption {
-  font-size: 16px;
-  padding-bottom: 3px;
-  padding-left: 10px;
+  font-weight: 500;
+  font-size: 18px;
 }
 
-::ng-deep .left-aligned {
-  text-align: left;
+::ng-deep #show-navigation-buttons {
+  margin-top: 22px;
+}
+
+::ng-deep .option {
+  margin-top: 20px;
+}
+
+
+::ng-deep .dx-color-scheme-light .dx-tabs-horizontal ,
+::ng-deep .dx-color-scheme-carmine .dx-tabs-horizontal ,
+::ng-deep .dx-color-scheme-dark .dx-tabs-horizontal,
+::ng-deep .dx-color-scheme-greenmist .dx-tabs-horizontal,
+::ng-deep .dx-color-scheme-darkmoon .dx-tabs-horizontal,
+::ng-deep .dx-color-scheme-darkviolet .dx-tabs-horizontal,
+::ng-deep .dx-color-scheme-softblue .dx-tabs-horizontal {
+  border-bottom: unset;
+}
+
+::ng-deep .dx-color-scheme-blue-dark .dx-tabs-horizontal,
+::ng-deep .dx-color-scheme-orange-dark .dx-tabs-horizontal,
+::ng-deep .dx-color-scheme-teal-dark .dx-tabs-horizontal,
+
+::ng-deep .dx-color-scheme-lime-dark .dx-tabs-horizontal,
+::ng-deep .dx-color-scheme-purple-dark .dx-tabs-horizontal {
+  border-bottom: 1px solid rgb(81, 81, 89);
+}
+
+::ng-deep .dx-color-scheme-light .dx-tabs-vertical ,
+::ng-deep .dx-color-scheme-carmine .dx-tabs-vertical ,
+::ng-deep .dx-color-scheme-dark .dx-tabs-vertical,
+::ng-deep .dx-color-scheme-greenmist .dx-tabs-vertical,
+::ng-deep .dx-color-scheme-darkmoon .dx-tabs-vertical,
+::ng-deep .dx-color-scheme-darkviolet .dx-tabs-vertical,
+::ng-deep .dx-color-scheme-softblue .dx-tabs-vertical {
+  border-right: unset;
+}
+
+::ng-deep .dx-color-scheme-blue-dark .dx-tabs-vertical,
+::ng-deep .dx-color-scheme-orange-dark .dx-tabs-vertical,
+::ng-deep .dx-color-scheme-teal-dark .dx-tabs-vertical,
+
+::ng-deep .dx-color-scheme-lime-dark .dx-tabs-vertical,
+::ng-deep .dx-color-scheme-purple-dark .dx-tabs-vertical {
+  border-right: 1px solid rgb(81, 81, 89);
 }

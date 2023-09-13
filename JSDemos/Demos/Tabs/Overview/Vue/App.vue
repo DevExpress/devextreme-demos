@@ -1,93 +1,264 @@
 <template>
-  <div>
-    <div id="longtabs">
-      <div class="caption">Tabs</div>
-      <DxTabs :data-source="longtabs"/>
-    </div>
-    <div id="scrolledtabs">
-      <div class="caption">Tabs with Overflow</div>
-      <DxTabs
-        :data-source="longtabs"
-        :width="300"
-        :scroll-by-content="true"
-        :show-nav-buttons="true"
-      />
-    </div>
-    <div id="tabs">
-      <div class="caption">API</div>
-      <DxTabs
-        :data-source="tabs"
-        v-model:selected-index="selectedIndex"
-      />
-      <div class="content dx-fieldset">
-        <div class="dx-field">
-          <div class="dx-field-label">Selected index:</div>
-          <div class="dx-field-value">
-            <DxSelectBox
-              v-model:value="selectedIndex"
-              :data-source="tabs"
-              :input-attr="{ 'aria-label': 'Tab' }"
-              display-expr="text"
-              value-expr="id"
-            />
-          </div>
-        </div>
-        <div class="dx-field">
-          <div class="dx-field-label">Selected content:</div>
-          <div class="dx-field-value-static left-aligned">
-            {{ tabs[selectedIndex].content }}
-          </div>
-        </div>
+  <div id="tabs-demo">
+    <div class="widget-container">
+      <div class="tabs-container">
+        <DxTabs :data-source="tabsWithText" 
+          @initialized="saveTabInstance1"
+          id="withText" 
+          :scroll-by-content="false"
+          :show-nav-buttons="false"
+        />
+      </div>
+      <div class="tabs-container">
+        <DxTabs :data-source="tabsWithIconAndText" 
+          @initialized="saveTabInstance2"
+          id="withIconAndText" 
+          :scroll-by-content="false"
+          :show-nav-buttons="false"
+        />
+      </div>
+      <div class="tabs-container">
+        <DxTabs :data-source="tabsWithIcon" 
+          @initialized="saveTabInstance3"
+          id="withIcon" 
+          :scroll-by-content="false"
+          :show-nav-buttons="false"
+        />
       </div>
     </div>
+
+    <div class="options">
+      <div class="caption">Options</div>
+      <div class="option">
+        <span>Orientation</span>
+        <DxSelectBox
+          :items="orientations"
+          :input-attr="{ 'aria-label': 'Orientation' }"
+          v-model:value="orientation"
+          @value-changed="onOrientationChanged"
+        />
+      </div>
+
+      <div class="option">
+        <span>Styling mode</span>
+        <DxSelectBox
+          :items="stylingModes"
+          :input-attr="{ 'aria-label': 'Styling Mode' }"
+          v-model:value="stylingMode"
+          @value-changed="onStylingModeChanged"
+        />
+      </div>
+    
+      <div class="option">
+        <span>Icon position</span>
+        <DxSelectBox
+          :items="iconPositions"
+          :input-attr="{ 'aria-label': 'Icon Position' }"
+          v-model:value="iconPosition"
+           @value-changed="onIconPositionChanged"
+        />
+      </div>
+    
+      <div class="option">
+        <DxCheckBox
+          id="show-navigation-buttons"
+          text="Show navigation buttons"
+          :value="false"
+          @value-changed="onShowNavigationChanged"
+        />
+      </div>
+      <div class="option">
+        <DxCheckBox
+          id="scroll-content"
+          text="Scroll content"
+          :value="false"
+          @value-changed="onScrollContentChanged"
+        />
+      </div>
+    </div>
+
   </div>
 </template>
 <script>
 
 import DxSelectBox from 'devextreme-vue/select-box';
+import DxCheckBox from 'devextreme-vue/check-box';
 import DxTabs from 'devextreme-vue/tabs';
 
-import { tabs, longtabs } from './data.js';
+import service from './data.js';
+import { orientations, stylingModes, iconPositions } from './data.js';
 
 export default {
   components: {
     DxSelectBox,
     DxTabs,
+    DxCheckBox,
   },
-  data() {
+ data() {
     return {
-      selectedIndex: 0,
-      tabs,
-      longtabs,
+      tabsWithText: service.getTabsWithText(),
+      tabsWithIcon: service.getTabsWithIcon(),
+      tabsWithIconAndText: service.getTabsWithIconAndText(),
+      orientations,
+      stylingModes,
+      iconPositions,
+      orientation: orientations[0],
+      stylingMode: stylingModes[0],
+      iconPosition: iconPositions[0],
     };
+  },
+  methods: {
+    saveTabInstance1(e) {
+      this.tabInstance1 = e.component;
+    },
+    saveTabInstance2(e) {
+      this.tabInstance2 = e.component;
+    },
+    saveTabInstance3(e) {
+      this.tabInstance3 = e.component;
+    },
+
+    onShowNavigationChanged(e) {
+      this.setTabsOption('showNavButtons', e.value);
+    },
+
+    onScrollContentChanged(e) {
+      this.setTabsOption('scrollByContent', e.value);
+    },
+
+    onStylingModeChanged(e) {
+      this.setTabsOption('stylingMode', e.value);
+    },
+    onIconPositionChanged(e) {
+      this.setTabsOption('iconPosition', e.value);
+    },
+
+    onOrientationChanged(e) {
+      const widgetContainer = document.getElementsByClassName('widget-container');
+      widgetContainer[0].style.flexDirection = e.value === 'horizontal' ? 'column' : 'row';
+      this.setTabsOption('orientation', e.value);
+    },
+
+    setTabsOption(propertyName, value) {
+      this.tabInstance1.option(propertyName, value);
+      this.tabInstance2.option(propertyName, value);
+      this.tabInstance3.option(propertyName, value);
+    },
+
+    itemClick(e) {
+      if (e.itemData.price) {
+        this.currentProduct = e.itemData;
+      }
+    },
   },
 };
 </script>
 <style>
-.content {
-  text-align: justify;
-  margin-top: 25px;
+body {
+  margin: 0;
+  padding: 0;
 }
 
-#longtabs {
-  margin-top: 20px;
+#tabs-demo {
+  padding: 20px;
+  display: flex;
+  min-height: 450px;
+  justify-content: space-between;
 }
 
-#scrolledtabs {
-  margin-top: 20px;
+.widget-container {
+  margin-top: 90px;
+  flex-grow: 1;
+  margin: 0 auto;
+  max-width: 700px;  
+  padding: 16px 72px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column; 
 }
 
-#tabs {
-  margin-top: 60px;
+.options {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  padding: 20px;
+  width: 260px;
+  background-color: rgba(191, 191, 191, 0.15);
+}
+
+.tabs-container:not(:last-child) .dx-tabs-horizontal {
+  margin-bottom: 80px;
+}
+
+.tabs-container:not(:last-child) .dx-tabs-vertical {
+  margin-right: 80px;
+}
+
+.dx-tabs-horizontal {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.dx-tabs-vertical {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.dx-tab {
+  width: 140px;
+}
+
+.tabs-container {
+  display: flex;
 }
 
 .caption {
-  font-size: 16px;
-  padding-bottom: 3px;
-  padding-left: 10px;
+  font-weight: 500;
+  font-size: 18px;
 }
 
-.left-aligned {
-  text-align: left;
+#show-navigation-buttons {
+  margin-top: 22px;
+}
+
+.option {
+  margin-top: 20px;
+}
+
+
+.dx-color-scheme-light .dx-tabs-horizontal ,
+.dx-color-scheme-carmine .dx-tabs-horizontal ,
+.dx-color-scheme-dark .dx-tabs-horizontal,
+.dx-color-scheme-greenmist .dx-tabs-horizontal,
+.dx-color-scheme-darkmoon .dx-tabs-horizontal,
+.dx-color-scheme-darkviolet .dx-tabs-horizontal,
+.dx-color-scheme-softblue .dx-tabs-horizontal {
+  border-bottom: unset;
+}
+
+.dx-color-scheme-blue-dark .dx-tabs-horizontal,
+.dx-color-scheme-orange-dark .dx-tabs-horizontal,
+.dx-color-scheme-teal-dark .dx-tabs-horizontal,
+
+.dx-color-scheme-lime-dark .dx-tabs-horizontal,
+.dx-color-scheme-purple-dark .dx-tabs-horizontal {
+  border-bottom: 1px solid rgb(81, 81, 89);
+}
+
+.dx-color-scheme-light .dx-tabs-vertical ,
+.dx-color-scheme-carmine .dx-tabs-vertical ,
+.dx-color-scheme-dark .dx-tabs-vertical,
+.dx-color-scheme-greenmist .dx-tabs-vertical,
+.dx-color-scheme-darkmoon .dx-tabs-vertical,
+.dx-color-scheme-darkviolet .dx-tabs-vertical,
+.dx-color-scheme-softblue .dx-tabs-vertical {
+  border-right: unset;
+}
+
+.dx-color-scheme-blue-dark .dx-tabs-vertical,
+.dx-color-scheme-orange-dark .dx-tabs-vertical,
+.dx-color-scheme-teal-dark .dx-tabs-vertical,
+
+.dx-color-scheme-lime-dark .dx-tabs-vertical,
+.dx-color-scheme-purple-dark .dx-tabs-vertical {
+  border-right: 1px solid rgb(81, 81, 89);
 }
 </style>

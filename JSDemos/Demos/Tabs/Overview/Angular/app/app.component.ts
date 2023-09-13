@@ -1,10 +1,10 @@
-import { NgModule, Component, enableProdMode } from '@angular/core';
+import { NgModule, Component, enableProdMode, ViewChild } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { DxTabsModule, DxSelectBoxModule } from 'devextreme-angular';
+import { DxTabsModule, DxSelectBoxModule, DxCheckBoxModule, DxTabsComponent } from 'devextreme-angular';
 
-import { Tab, Longtab, Service } from './app.service';
+import { Tab, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -17,20 +17,66 @@ if (!/localhost/.test(document.location.host)) {
   providers: [Service],
 })
 export class AppComponent {
-  longtabs: Longtab[];
+  @ViewChild('withText') withText: DxTabsComponent;
 
-  tabs: Tab[];
+  @ViewChild('withIconAndText') withIconAndText: DxTabsComponent;
 
-  tabContent: string;
+  @ViewChild('withIcon') withIcon: DxTabsComponent;
+
+  tabsWithText: Tab[];
+
+  tabsWithIconAndText: Tab[];
+
+  tabsWithIcon: Tab[];
+
+  orientations: string[] = ['horizontal', 'vertical'];
+
+  stylingModes: string[] = ['primary', 'secondary'];
+
+  iconPositions: string[] = ['top', 'end', 'bottom', 'start'];
+
+  orientation: string;
+
+  stylingMode: string;
+
+  iconPosition: string;
 
   constructor(service: Service) {
-    this.longtabs = service.getLongtabs();
-    this.tabs = service.getTabs();
-    this.tabContent = this.tabs[0].content;
+    this.tabsWithText = service.getTabsWithText();
+    this.tabsWithIconAndText = service.getTabsWithIconAndText();
+    this.tabsWithIcon = service.getTabsWithIcon();
+
+    this.orientation = this.orientations[0];
+    this.stylingMode = this.stylingModes[0];
+    this.iconPosition = this.iconPositions[0];
   }
 
-  selectTab(e) {
-    this.tabContent = this.tabs[e.itemIndex].content;
+  onOrientationChanged(e) {
+    const widgetContainer = document.getElementsByClassName('widget-container');
+    widgetContainer[0].style.flexDirection = e.value === 'horizontal' ? 'column' : 'row';
+    this.setTabsOption('orientation', e.value);
+  }
+
+  onShowNavigationChanged(e) {
+    this.setTabsOption('showNavButtons', e.value);
+  }
+
+  onScrollContentChanged(e) {
+    this.setTabsOption('scrollByContent', e.value);
+  }
+
+  onIconPositionChanged(e) {
+    this.setTabsOption('iconPosition', e.value);
+  }
+
+  onStylingModeChanged(e) {
+    this.setTabsOption('stylingMode', e.value);
+  }
+
+  setTabsOption(option, value) {
+    this.withText.instance.option(option, value);
+    this.withIconAndText.instance.option(option, value);
+    this.withIcon.instance.option(option, value);
   }
 }
 
@@ -39,6 +85,7 @@ export class AppComponent {
     BrowserModule,
     BrowserTransferStateModule,
     DxTabsModule,
+    DxCheckBoxModule,
     DxSelectBoxModule,
   ],
   declarations: [AppComponent],
