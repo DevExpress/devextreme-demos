@@ -2,25 +2,28 @@
   <div id="tabs-demo">
     <div class="widget-container">
       <div class="tabs-container">
-        <DxTabs :data-source="tabsWithText" 
+        <DxTabs
+          :data-source="tabsWithText"
           @initialized="saveTabInstance1"
-          id="withText" 
+          id="withText"
           :scroll-by-content="false"
           :show-nav-buttons="false"
         />
       </div>
       <div class="tabs-container">
-        <DxTabs :data-source="tabsWithIconAndText" 
+        <DxTabs
+          :data-source="tabsWithIconAndText"
           @initialized="saveTabInstance2"
-          id="withIconAndText" 
+          id="withIconAndText"
           :scroll-by-content="false"
           :show-nav-buttons="false"
         />
       </div>
       <div class="tabs-container">
-        <DxTabs :data-source="tabsWithIcon" 
+        <DxTabs
+          :data-source="tabsWithIcon"
           @initialized="saveTabInstance3"
-          id="withIcon" 
+          id="withIcon"
           :scroll-by-content="false"
           :show-nav-buttons="false"
         />
@@ -48,17 +51,17 @@
           @value-changed="onStylingModeChanged"
         />
       </div>
-    
+
       <div class="option">
         <span>Icon position</span>
         <DxSelectBox
           :items="iconPositions"
           :input-attr="{ 'aria-label': 'Icon Position' }"
           v-model:value="iconPosition"
-           @value-changed="onIconPositionChanged"
+          @value-changed="onIconPositionChanged"
         />
       </div>
-    
+
       <div class="option">
         <DxCheckBox
           id="show-navigation-buttons"
@@ -85,8 +88,7 @@ import DxSelectBox from 'devextreme-vue/select-box';
 import DxCheckBox from 'devextreme-vue/check-box';
 import DxTabs from 'devextreme-vue/tabs';
 
-import service from './data.js';
-import { orientations, stylingModes, iconPositions } from './data.js';
+import service, { orientations, stylingModes, iconPositions } from './data.js';
 
 export default {
   components: {
@@ -94,7 +96,7 @@ export default {
     DxTabs,
     DxCheckBox,
   },
- data() {
+  data() {
     return {
       tabsWithText: service.getTabsWithText(),
       tabsWithIcon: service.getTabsWithIcon(),
@@ -167,14 +169,13 @@ body {
 }
 
 .widget-container {
-  margin-top: 90px;
   flex-grow: 1;
   margin: 0 auto;
-  max-width: 700px;  
+  max-width: 700px;
   padding: 16px 72px;
   display: flex;
   justify-content: center;
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 .options {
@@ -223,9 +224,8 @@ body {
   margin-top: 20px;
 }
 
-
-.dx-color-scheme-light .dx-tabs-horizontal ,
-.dx-color-scheme-carmine .dx-tabs-horizontal ,
+.dx-color-scheme-light .dx-tabs-horizontal,
+.dx-color-scheme-carmine .dx-tabs-horizontal,
 .dx-color-scheme-dark .dx-tabs-horizontal,
 .dx-color-scheme-greenmist .dx-tabs-horizontal,
 .dx-color-scheme-darkmoon .dx-tabs-horizontal,
@@ -237,14 +237,13 @@ body {
 .dx-color-scheme-blue-dark .dx-tabs-horizontal,
 .dx-color-scheme-orange-dark .dx-tabs-horizontal,
 .dx-color-scheme-teal-dark .dx-tabs-horizontal,
-
 .dx-color-scheme-lime-dark .dx-tabs-horizontal,
 .dx-color-scheme-purple-dark .dx-tabs-horizontal {
   border-bottom: 1px solid rgb(81, 81, 89);
 }
 
-.dx-color-scheme-light .dx-tabs-vertical ,
-.dx-color-scheme-carmine .dx-tabs-vertical ,
+.dx-color-scheme-light .dx-tabs-vertical,
+.dx-color-scheme-carmine .dx-tabs-vertical,
 .dx-color-scheme-dark .dx-tabs-vertical,
 .dx-color-scheme-greenmist .dx-tabs-vertical,
 .dx-color-scheme-darkmoon .dx-tabs-vertical,
@@ -256,7 +255,6 @@ body {
 .dx-color-scheme-blue-dark .dx-tabs-vertical,
 .dx-color-scheme-orange-dark .dx-tabs-vertical,
 .dx-color-scheme-teal-dark .dx-tabs-vertical,
-
 .dx-color-scheme-lime-dark .dx-tabs-vertical,
 .dx-color-scheme-purple-dark .dx-tabs-vertical {
   border-right: 1px solid rgb(81, 81, 89);

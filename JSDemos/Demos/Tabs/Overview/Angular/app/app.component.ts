@@ -1,8 +1,12 @@
-import { NgModule, Component, enableProdMode, ViewChild } from '@angular/core';
+import {
+  NgModule, Component, enableProdMode, ViewChild,
+} from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { DxTabsModule, DxSelectBoxModule, DxCheckBoxModule, DxTabsComponent } from 'devextreme-angular';
+import {
+  DxTabsModule, DxSelectBoxModule, DxCheckBoxModule, DxTabsComponent,
+} from 'devextreme-angular';
 
 import { Tab, Service } from './app.service';
 

@@ -120,7 +120,7 @@ const App = () => {
             onValueChanged={iconPositionChanged}
           />
         </OptionWrapper>
-      
+
         <div className="option">
           <CheckBox
             id="show-navigation-buttons"
