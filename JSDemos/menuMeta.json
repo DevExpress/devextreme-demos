@@ -3875,6 +3875,17 @@
             "Title": "Overview",
             "Name": "Overview",
             "Widget": "Tabs"
+          },
+          {
+            "Title": "Selection",
+            "Name": "Selection",
+            "DocUrl": "",
+            "Widget": "Tabs",
+            "MvcDescription": "",
+            "NetCoreDescription": "",
+            "MvcAdditionalFiles": [],
+            "DemoType": "Web",
+            "Badge": "New"
           }
         ]
       },
@@ -4163,16 +4174,18 @@
         "Name": "Date Range Box",
         "Equivalents": "DateRangeBox, dxDateRangeBox, dx-date-range-box",
         "Breadcrumb": true,
-        "Demos": [{
+        "Demos": [
+          {
             "Title": "Overview",
             "Name": "Overview",
             "Widget": "DateRangeBox"
-        },
-        {
-          "Title": "Formatting",
-          "Name": "Formatting",
-          "Widget": "DateRangeBox"
-        }]
+          },
+          {
+            "Title": "Formatting",
+            "Name": "Formatting",
+            "Widget": "DateRangeBox"
+          }
+        ]
       },
       {
         "Name": "Drop Down Box",
