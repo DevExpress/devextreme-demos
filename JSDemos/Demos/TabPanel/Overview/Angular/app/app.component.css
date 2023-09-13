@@ -1,17 +1,16 @@
-::ng-deep #tabpanel-demo {
+::ng-deep .tabpanel-demo {
   display: flex;
   min-height: 450px;
-  background-color: rgba(191, 191, 191, 0.15);
 }
 
 ::ng-deep .widget-container {
   display: inline;
   flex-grow: 1;
-  min-width: 648px;
+  min-width: 450px;
   padding: 16px 32px;
 }
 
-::ng-deep .dx-tabpanel {
+::ng-deep .dx-theme-material .dx-tabpanel {
   border-radius: 8px;
   overflow: hidden;
 }
@@ -28,8 +27,10 @@
   display: inline-flex;
   flex-direction: column;
   flex-shrink: 0;
+  box-sizing: border-box;
+  width: 300px;
   padding: 20px;
-  width: 260px;
+  background-color: rgba(191, 191, 191, 0.15);
 }
 
 ::ng-deep .tabpanel-item .task-item:not(:last-child) {
@@ -43,14 +44,6 @@
 
 ::ng-deep .option {
   margin-top: 20px;
-}
-
-::ng-deep .option-label {
-  color: rgba(0, 0, 0, 0.6);
-}
-
-::ng-deep .dx-color-scheme-blue-light .dx-tabpanel-container {
-  background-color: #fff;
 }
 
 ::ng-deep .task-item {
@@ -97,6 +90,7 @@
 
 ::ng-deep .task-item-info {
   width: 240px;
+  min-width: 240px;
   font-size: 12px;
   color: rgba(0, 0, 0, 0.38);
 }
@@ -121,10 +115,10 @@
 ::ng-deep .task-item-pseudo-button,
 ::ng-deep .task-item-pseudo-button::before,
 ::ng-deep .task-item-pseudo-button::after {
-  background-color: rgba(0, 0, 0, 0.6);
   height: 3px;
   width: 3px;
   border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 ::ng-deep .task-item-pseudo-button::before,
@@ -139,4 +133,85 @@
 
 ::ng-deep .task-item-pseudo-button::after {
   bottom: -150%;
+}
+
+::ng-deep .dx-color-scheme-lime-light,
+::ng-deep .dx-color-scheme-blue-light,
+::ng-deep .dx-color-scheme-orange-light,
+::ng-deep .dx-color-scheme-purple-light,
+::ng-deep .dx-color-scheme-teal-light {
+  background-color: rgba(191, 191, 191, 0.15);
+}
+
+::ng-deep .dx-color-scheme-teal-light .dx-tabpanel,
+::ng-deep .dx-color-scheme-orange-light .dx-tabpanel,
+::ng-deep .dx-color-scheme-lime-light .dx-tabpanel,
+::ng-deep .dx-color-scheme-blue-light .dx-tabpanel,
+::ng-deep .dx-color-scheme-purple-light .dx-tabpanel {
+  background-color: #fff;
+}
+
+::ng-deep .dx-color-scheme-teal-light .option-label,
+::ng-deep .dx-color-scheme-purple-light .option-label,
+::ng-deep .dx-color-scheme-orange-light .option-label,
+::ng-deep .dx-color-scheme-lime-light .option-label,
+::ng-deep .dx-color-scheme-blue-light .option-label,
+::ng-deep .dx-color-scheme-carmine .option-label,
+::ng-deep .dx-color-scheme-greenmist .option-label,
+::ng-deep .dx-color-scheme-light .option-label {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+::ng-deep .dx-color-scheme-teal-dark .task-item,
+::ng-deep .dx-color-scheme-purple-dark .task-item,
+::ng-deep .dx-color-scheme-orange-dark .task-item,
+::ng-deep .dx-color-scheme-lime-dark .task-item,
+::ng-deep .dx-color-scheme-blue-dark .task-item,
+::ng-deep .dx-color-scheme-darkviolet .task-item,
+::ng-deep .dx-color-scheme-darkmoon .task-item,
+::ng-deep .dx-color-scheme-contrast .task-item,
+::ng-deep .dx-color-scheme-dark .task-item {
+  box-shadow: 0 1px 4px 0 rgba(255, 255, 255, 0.1);
+}
+
+::ng-deep .dx-color-scheme-teal-dark .task-item-info,
+::ng-deep .dx-color-scheme-purple-dark .task-item-info,
+::ng-deep .dx-color-scheme-orange-dark .task-item-info,
+::ng-deep .dx-color-scheme-lime-dark .task-item-info,
+::ng-deep .dx-color-scheme-blue-dark .task-item-info,
+::ng-deep .dx-color-scheme-darkviolet .task-item-info,
+::ng-deep .dx-color-scheme-darkmoon .task-item-info,
+::ng-deep .dx-color-scheme-contrast .task-item-info,
+::ng-deep .dx-color-scheme-dark .task-item-info {
+  color: inherit;
+}
+
+::ng-deep .dx-color-scheme-teal-dark .task-item-pseudo-button,
+::ng-deep .dx-color-scheme-teal-dark .task-item-pseudo-button::before,
+::ng-deep .dx-color-scheme-teal-dark .task-item-pseudo-button::after,
+::ng-deep .dx-color-scheme-purple-dark .task-item-pseudo-button,
+::ng-deep .dx-color-scheme-purple-dark .task-item-pseudo-button::before,
+::ng-deep .dx-color-scheme-purple-dark .task-item-pseudo-button::after,
+::ng-deep .dx-color-scheme-orange-dark .task-item-pseudo-button,
+::ng-deep .dx-color-scheme-orange-dark .task-item-pseudo-button::before,
+::ng-deep .dx-color-scheme-orange-dark .task-item-pseudo-button::after,
+::ng-deep .dx-color-scheme-lime-dark .task-item-pseudo-button,
+::ng-deep .dx-color-scheme-lime-dark .task-item-pseudo-button::before,
+::ng-deep .dx-color-scheme-lime-dark .task-item-pseudo-button::after,
+::ng-deep .dx-color-scheme-blue-dark .task-item-pseudo-button,
+::ng-deep .dx-color-scheme-blue-dark .task-item-pseudo-button::before,
+::ng-deep .dx-color-scheme-blue-dark .task-item-pseudo-button::after,
+::ng-deep .dx-color-scheme-darkviolet .task-item-pseudo-button,
+::ng-deep .dx-color-scheme-darkviolet .task-item-pseudo-button::before,
+::ng-deep .dx-color-scheme-darkviolet .task-item-pseudo-button::after,
+::ng-deep .dx-color-scheme-darkmoon .task-item-pseudo-button,
+::ng-deep .dx-color-scheme-darkmoon .task-item-pseudo-button::before,
+::ng-deep .dx-color-scheme-darkmoon .task-item-pseudo-button::after,
+::ng-deep .dx-color-scheme-contrast .task-item-pseudo-button,
+::ng-deep .dx-color-scheme-contrast .task-item-pseudo-button::before,
+::ng-deep .dx-color-scheme-contrast .task-item-pseudo-button::after,
+::ng-deep .dx-color-scheme-dark .task-item-pseudo-button,
+::ng-deep .dx-color-scheme-dark .task-item-pseudo-button::before,
+::ng-deep .dx-color-scheme-dark .task-item-pseudo-button::after {
+  background-color: #dedede;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div id="tabpanel-demo">
+  <div class="tabpanel-demo">
     <div className="widget-container">
       <DxTabPanel
         width="100%"
@@ -138,20 +138,19 @@ export default {
 </script>
 
 <style>
-#tabpanel-demo {
+.tabpanel-demo {
   display: flex;
   min-height: 450px;
-  background-color: rgba(191, 191, 191, 0.15);
 }
 
 .widget-container {
   display: inline;
   flex-grow: 1;
-  min-width: 648px;
+  min-width: 450px;
   padding: 16px 32px;
 }
 
-.dx-tabpanel {
+.dx-theme-material .dx-tabpanel {
   border-radius: 8px;
   overflow: hidden;
 }
@@ -168,8 +167,10 @@ export default {
   display: inline-flex;
   flex-direction: column;
   flex-shrink: 0;
+  box-sizing: border-box;
+  width: 300px;
   padding: 20px;
-  width: 260px;
+  background-color: rgba(191, 191, 191, 0.15);
 }
 
 .caption {
@@ -181,11 +182,30 @@ export default {
   margin-top: 20px;
 }
 
-.option-label {
-  color: rgba(0, 0, 0, 0.6);
+.dx-color-scheme-lime-light,
+.dx-color-scheme-blue-light,
+.dx-color-scheme-orange-light,
+.dx-color-scheme-purple-light,
+.dx-color-scheme-teal-light {
+  background-color: rgba(191, 191, 191, 0.15);
 }
 
-.dx-color-scheme-blue-light .dx-tabpanel-container {
+.dx-color-scheme-teal-light .dx-tabpanel,
+.dx-color-scheme-orange-light .dx-tabpanel,
+.dx-color-scheme-lime-light .dx-tabpanel,
+.dx-color-scheme-blue-light .dx-tabpanel,
+.dx-color-scheme-purple-light .dx-tabpanel {
   background-color: #fff;
+}
+
+.dx-color-scheme-teal-light .option-label,
+.dx-color-scheme-purple-light .option-label,
+.dx-color-scheme-orange-light .option-label,
+.dx-color-scheme-lime-light .option-label,
+.dx-color-scheme-blue-light .option-label,
+.dx-color-scheme-carmine .option-label,
+.dx-color-scheme-greenmist .option-label,
+.dx-color-scheme-light .option-label {
+  color: rgba(0, 0, 0, 0.6);
 }
 </style>

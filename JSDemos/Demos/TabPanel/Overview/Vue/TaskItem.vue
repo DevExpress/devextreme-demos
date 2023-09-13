@@ -80,6 +80,7 @@ export default {
 
 .task-item-info {
   width: 240px;
+  min-width: 240px;
   font-size: 12px;
   color: rgba(0, 0, 0, 0.38);
 }
@@ -104,10 +105,10 @@ export default {
 .task-item-pseudo-button,
 .task-item-pseudo-button::before,
 .task-item-pseudo-button::after {
-  background-color: rgba(0, 0, 0, 0.6);
   height: 3px;
   width: 3px;
   border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .task-item-pseudo-button::before,
@@ -122,5 +123,59 @@ export default {
 
 .task-item-pseudo-button::after {
   bottom: -150%;
+}
+
+.dx-color-scheme-teal-dark .task-item,
+.dx-color-scheme-purple-dark .task-item,
+.dx-color-scheme-orange-dark .task-item,
+.dx-color-scheme-lime-dark .task-item,
+.dx-color-scheme-blue-dark .task-item,
+.dx-color-scheme-darkviolet .task-item,
+.dx-color-scheme-darkmoon .task-item,
+.dx-color-scheme-contrast .task-item,
+.dx-color-scheme-dark .task-item {
+  box-shadow: 0 1px 4px 0 rgba(255, 255, 255, 0.1);
+}
+
+.dx-color-scheme-teal-dark .task-item-info,
+.dx-color-scheme-purple-dark .task-item-info,
+.dx-color-scheme-orange-dark .task-item-info,
+.dx-color-scheme-lime-dark .task-item-info,
+.dx-color-scheme-blue-dark .task-item-info,
+.dx-color-scheme-darkviolet .task-item-info,
+.dx-color-scheme-darkmoon .task-item-info,
+.dx-color-scheme-contrast .task-item-info,
+.dx-color-scheme-dark .task-item-info {
+  color: inherit;
+}
+
+.dx-color-scheme-teal-dark .task-item-pseudo-button,
+.dx-color-scheme-teal-dark .task-item-pseudo-button::before,
+.dx-color-scheme-teal-dark .task-item-pseudo-button::after,
+.dx-color-scheme-purple-dark .task-item-pseudo-button,
+.dx-color-scheme-purple-dark .task-item-pseudo-button::before,
+.dx-color-scheme-purple-dark .task-item-pseudo-button::after,
+.dx-color-scheme-orange-dark .task-item-pseudo-button,
+.dx-color-scheme-orange-dark .task-item-pseudo-button::before,
+.dx-color-scheme-orange-dark .task-item-pseudo-button::after,
+.dx-color-scheme-lime-dark .task-item-pseudo-button,
+.dx-color-scheme-lime-dark .task-item-pseudo-button::before,
+.dx-color-scheme-lime-dark .task-item-pseudo-button::after,
+.dx-color-scheme-blue-dark .task-item-pseudo-button,
+.dx-color-scheme-blue-dark .task-item-pseudo-button::before,
+.dx-color-scheme-blue-dark .task-item-pseudo-button::after,
+.dx-color-scheme-darkviolet .task-item-pseudo-button,
+.dx-color-scheme-darkviolet .task-item-pseudo-button::before,
+.dx-color-scheme-darkviolet .task-item-pseudo-button::after,
+.dx-color-scheme-darkmoon .task-item-pseudo-button,
+.dx-color-scheme-darkmoon .task-item-pseudo-button::before,
+.dx-color-scheme-darkmoon .task-item-pseudo-button::after,
+.dx-color-scheme-contrast .task-item-pseudo-button,
+.dx-color-scheme-contrast .task-item-pseudo-button::before,
+.dx-color-scheme-contrast .task-item-pseudo-button::after,
+.dx-color-scheme-dark .task-item-pseudo-button,
+.dx-color-scheme-dark .task-item-pseudo-button::before,
+.dx-color-scheme-dark .task-item-pseudo-button::after {
+  background-color: #dedede;
 }
 </style>

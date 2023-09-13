@@ -45,8 +45,8 @@ const App = () => {
   }, [setSelectedIndex]);
 
   return (
-    <div id='tabpanel-demo'>
-      <div className='widget-container'>
+    <div className="tabpanel-demo">
+      <div className="widget-container">
         <TabPanel
           width="100%"
           height={418}
@@ -63,11 +63,11 @@ const App = () => {
         />
       </div>
 
-      <div className='options'>
-        <div className='caption'>Options</div>
+      <div className="options">
+        <div className="caption">Options</div>
 
-        <div className='option'>
-          <div className='option-label'>Tabs position</div>
+        <div className="option">
+          <div className="option-label">Tabs position</div>
 
           <SelectBox
             inputAttr={tabsPositionsSelectBoxLabel}
@@ -77,8 +77,8 @@ const App = () => {
           />
         </div>
 
-        <div className='option'>
-          <div className='option-label'>Styling mode</div>
+        <div className="option">
+          <div className="option-label">Styling mode</div>
 
           <SelectBox
             inputAttr={stylingModesSelectBoxLabel}
@@ -88,8 +88,8 @@ const App = () => {
           />
         </div>
 
-        <div className='option'>
-          <div className='option-label'>Icon position</div>
+        <div className="option">
+          <div className="option-label">Icon position</div>
 
           <SelectBox
             inputAttr={iconPositionsSelectBoxLabel}
@@ -99,9 +99,9 @@ const App = () => {
           />
         </div>
 
-        <div className='option'>
+        <div className="option">
           <CheckBox
-            text='Show navigation buttons'
+            text="Show navigation buttons"
             elementAttr={navButtonsCheckBoxLabel}
             value={showNavButtons}
             onValueChanged={onShowNavButtonsChanged}

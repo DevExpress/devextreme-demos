@@ -90,20 +90,6 @@ const tasks = [
     date: '2023-09-16',
     assignedBy: 'Barb Banks',
   },
-  {
-    status: 'Help Needed',
-    priority: 'normal',
-    text: 'Touch-Enabled Apps',
-    date: '2023-09-16',
-    assignedBy: 'Kevin Carter',
-  },
-  {
-    status: 'Help Needed',
-    priority: 'low',
-    text: 'Review HR Budget Company Wide',
-    date: '2023-09-16',
-    assignedBy: 'Ed Holmes',
-  },
 
   {
     status: 'In Progress',
@@ -176,13 +162,6 @@ const tasks = [
     date: '2023-09-16',
     assignedBy: 'Brett Wade',
   },
-  {
-    status: 'Deferred',
-    priority: 'normal',
-    text: 'Support Dept Budget Report',
-    date: '2023-09-16',
-    assignedBy: 'John Heart',
-  },
 
   {
     status: 'Rejected',
@@ -240,27 +219,6 @@ const tasks = [
     text: 'Staff Productivity Report',
     date: '2023-09-16',
     assignedBy: 'Victor Norris',
-  },
-  {
-    status: 'Completed',
-    priority: 'normal',
-    text: 'Review HR Budget Company Wide',
-    date: '2023-09-16',
-    assignedBy: 'Mary Stern',
-  },
-  {
-    status: 'Completed',
-    priority: 'normal',
-    text: 'Support',
-    date: '2023-09-16',
-    assignedBy: 'Victor Norris',
-  },
-  {
-    status: 'Completed',
-    priority: 'low',
-    text: 'Support Dept Budget Report',
-    date: '2023-09-16',
-    assignedBy: 'Robin Cosworth',
   },
 ];
 

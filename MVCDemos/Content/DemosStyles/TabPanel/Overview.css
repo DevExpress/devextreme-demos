@@ -1,17 +1,16 @@
-﻿#tabpanel-demo {
+﻿.tabpanel-demo {
     display: flex;
     min-height: 450px;
-    background-color: rgba(191, 191, 191, 0.15);
 }
 
 .widget-container {
     display: inline;
     flex-grow: 1;
-    min-width: 648px;
+    min-width: 450px;
     padding: 16px 32px;
 }
 
-.dx-tabpanel {
+.dx-theme-material .dx-tabpanel {
     border-radius: 8px;
     overflow: hidden;
 }
@@ -28,8 +27,10 @@
     display: inline-flex;
     flex-direction: column;
     flex-shrink: 0;
+    box-sizing: border-box;
+    width: 300px;
     padding: 20px;
-    width: 260px;
+    background-color: rgba(191, 191, 191, 0.15);
 }
 
 .tabpanel-item .task-item:not(:last-child) {
@@ -43,14 +44,6 @@
 
 .option {
     margin-top: 20px;
-}
-
-.option-label {
-    color: rgba(0, 0, 0, 0.6);
-}
-
-.dx-color-scheme-blue-light .dx-tabpanel-container {
-    background-color: #fff;
 }
 
 .task-item {
@@ -97,6 +90,7 @@
 
 .task-item-info {
     width: 240px;
+    min-width: 240px;
     font-size: 12px;
     color: rgba(0, 0, 0, 0.38);
 }
@@ -121,10 +115,10 @@
 .task-item-pseudo-button,
 .task-item-pseudo-button::before,
 .task-item-pseudo-button::after {
-    background-color: rgba(0, 0, 0, 0.6);
     height: 3px;
     width: 3px;
     border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .task-item-pseudo-button::before,
@@ -139,4 +133,85 @@
 
 .task-item-pseudo-button::after {
     bottom: -150%;
+}
+
+.dx-color-scheme-lime-light,
+.dx-color-scheme-blue-light,
+.dx-color-scheme-orange-light,
+.dx-color-scheme-purple-light,
+.dx-color-scheme-teal-light {
+    background-color: rgba(191, 191, 191, 0.15);
+}
+
+.dx-color-scheme-teal-light .dx-tabpanel,
+.dx-color-scheme-orange-light .dx-tabpanel,
+.dx-color-scheme-lime-light .dx-tabpanel,
+.dx-color-scheme-blue-light .dx-tabpanel,
+.dx-color-scheme-purple-light .dx-tabpanel {
+    background-color: #fff;
+}
+
+.dx-color-scheme-teal-light .option-label,
+.dx-color-scheme-purple-light .option-label,
+.dx-color-scheme-orange-light .option-label,
+.dx-color-scheme-lime-light .option-label,
+.dx-color-scheme-blue-light .option-label,
+.dx-color-scheme-carmine .option-label,
+.dx-color-scheme-greenmist .option-label,
+.dx-color-scheme-light .option-label {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.dx-color-scheme-teal-dark .task-item,
+.dx-color-scheme-purple-dark .task-item,
+.dx-color-scheme-orange-dark .task-item,
+.dx-color-scheme-lime-dark .task-item,
+.dx-color-scheme-blue-dark .task-item,
+.dx-color-scheme-darkviolet .task-item,
+.dx-color-scheme-darkmoon .task-item,
+.dx-color-scheme-contrast .task-item,
+.dx-color-scheme-dark .task-item {
+    box-shadow: 0 1px 4px 0 rgba(255, 255, 255, 0.1);
+}
+
+.dx-color-scheme-teal-dark .task-item-info,
+.dx-color-scheme-purple-dark .task-item-info,
+.dx-color-scheme-orange-dark .task-item-info,
+.dx-color-scheme-lime-dark .task-item-info,
+.dx-color-scheme-blue-dark .task-item-info,
+.dx-color-scheme-darkviolet .task-item-info,
+.dx-color-scheme-darkmoon .task-item-info,
+.dx-color-scheme-contrast .task-item-info,
+.dx-color-scheme-dark .task-item-info {
+    color: inherit;
+}
+
+.dx-color-scheme-teal-dark .task-item-pseudo-button,
+.dx-color-scheme-teal-dark .task-item-pseudo-button::before,
+.dx-color-scheme-teal-dark .task-item-pseudo-button::after,
+.dx-color-scheme-purple-dark .task-item-pseudo-button,
+.dx-color-scheme-purple-dark .task-item-pseudo-button::before,
+.dx-color-scheme-purple-dark .task-item-pseudo-button::after,
+.dx-color-scheme-orange-dark .task-item-pseudo-button,
+.dx-color-scheme-orange-dark .task-item-pseudo-button::before,
+.dx-color-scheme-orange-dark .task-item-pseudo-button::after,
+.dx-color-scheme-lime-dark .task-item-pseudo-button,
+.dx-color-scheme-lime-dark .task-item-pseudo-button::before,
+.dx-color-scheme-lime-dark .task-item-pseudo-button::after,
+.dx-color-scheme-blue-dark .task-item-pseudo-button,
+.dx-color-scheme-blue-dark .task-item-pseudo-button::before,
+.dx-color-scheme-blue-dark .task-item-pseudo-button::after,
+.dx-color-scheme-darkviolet .task-item-pseudo-button,
+.dx-color-scheme-darkviolet .task-item-pseudo-button::before,
+.dx-color-scheme-darkviolet .task-item-pseudo-button::after,
+.dx-color-scheme-darkmoon .task-item-pseudo-button,
+.dx-color-scheme-darkmoon .task-item-pseudo-button::before,
+.dx-color-scheme-darkmoon .task-item-pseudo-button::after,
+.dx-color-scheme-contrast .task-item-pseudo-button,
+.dx-color-scheme-contrast .task-item-pseudo-button::before,
+.dx-color-scheme-contrast .task-item-pseudo-button::after,
+.dx-color-scheme-dark .task-item-pseudo-button,
+.dx-color-scheme-dark .task-item-pseudo-button::before,
+.dx-color-scheme-dark .task-item-pseudo-button::after {
+    background-color: #dedede;
 }
