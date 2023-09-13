@@ -112,6 +112,7 @@ window.config = {
     'luxon': 'npm:luxon/build/global/luxon.min.js',
     'es6-object-assign': 'npm:es6-object-assign',
 
+    'devextreme--wip-test': 'npm:devextreme/cjs',
     'devextreme': 'npm:devextreme/cjs',
     'devextreme-react': 'npm:devextreme-react',
     'jszip': 'npm:jszip/dist/jszip.min.js',
