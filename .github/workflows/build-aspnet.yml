@@ -57,7 +57,7 @@ jobs:
 
       - name: Build MVC demos
         working-directory: MVCDemos
-        run:
+        run: |
           nuget restore DevExtreme.MVC.Demos.sln
           msbuild DevExtreme.MVC.Demos.sln
 
