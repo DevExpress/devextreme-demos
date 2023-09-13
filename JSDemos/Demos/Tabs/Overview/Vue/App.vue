@@ -156,23 +156,16 @@ export default {
 };
 </script>
 <style>
-body {
-  margin: 0;
-  padding: 0;
-}
-
 #tabs-demo {
-  padding: 20px;
   display: flex;
   min-height: 450px;
   justify-content: space-between;
 }
 
 .widget-container {
+  align-items: center;
   flex-grow: 1;
-  margin: 0 auto;
-  max-width: 700px;
-  padding: 16px 72px;
+  padding: 16px 4px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -195,20 +188,13 @@ body {
   margin-right: 80px;
 }
 
-.dx-tabs-horizontal {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-.dx-tabs-vertical {
-  border-right: 1px solid rgba(0, 0, 0, 0.12);
-}
-
 .dx-tab {
-  width: 140px;
+  width: 120px;
 }
 
 .tabs-container {
   display: flex;
+  max-width: 600px;
 }
 
 .caption {
@@ -222,6 +208,14 @@ body {
 
 .option {
   margin-top: 20px;
+}
+
+.dx-tabs-horizontal {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.dx-tabs-vertical {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .dx-color-scheme-light .dx-tabs-horizontal,

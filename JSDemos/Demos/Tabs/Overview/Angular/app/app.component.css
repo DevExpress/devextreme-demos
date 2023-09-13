@@ -1,24 +1,13 @@
-::ng-deep body {
-  margin: 0;
-  padding: 0;
-}
-
 ::ng-deep #tabs-demo {
-  padding: 20px;
   display: flex;
   min-height: 450px;
   justify-content: space-between;
 }
 
-::ng-deep .first-group {
-  display: none;
-}
-
 ::ng-deep .widget-container {
+  align-items: center;
   flex-grow: 1;
-  margin: 0 auto;
-  max-width: 700px;
-  padding: 16px 72px;
+  padding: 16px 4px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -41,20 +30,13 @@
   margin-right: 80px;
 }
 
-::ng-deep .dx-tabs-horizontal {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-::ng-deep .dx-tabs-vertical {
-  border-right: 1px solid rgba(0, 0, 0, 0.12);
-}
-
 ::ng-deep .dx-tab {
-  width: 140px !important;
+  width: 120px;
 }
 
 ::ng-deep .tabs-container {
   display: flex;
+  max-width: 600px;
 }
 
 ::ng-deep .caption {
@@ -68,6 +50,14 @@
 
 ::ng-deep .option {
   margin-top: 20px;
+}
+
+::ng-deep .dx-tabs-horizontal {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+::ng-deep .dx-tabs-vertical {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 ::ng-deep .dx-color-scheme-light .dx-tabs-horizontal,
