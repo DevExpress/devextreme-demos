@@ -125,16 +125,8 @@ export default {
   bottom: -150%;
 }
 
-.dx-color-scheme-teal-dark .task-item,
-.dx-color-scheme-purple-dark .task-item,
-.dx-color-scheme-orange-dark .task-item,
-.dx-color-scheme-lime-dark .task-item,
-.dx-color-scheme-blue-dark .task-item,
-.dx-color-scheme-darkviolet .task-item,
-.dx-color-scheme-darkmoon .task-item,
-.dx-color-scheme-contrast .task-item,
-.dx-color-scheme-dark .task-item {
-  box-shadow: 0 1px 4px 0 rgba(255, 255, 255, 0.1);
+.dx-color-scheme-contrast .task-item {
+  border: 1px solid #dedede;
 }
 
 .dx-color-scheme-teal-dark .task-item-info,

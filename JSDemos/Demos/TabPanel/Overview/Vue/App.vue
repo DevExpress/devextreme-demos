@@ -183,11 +183,7 @@ export default {
   margin-top: 20px;
 }
 
-.dx-color-scheme-lime-light,
-.dx-color-scheme-blue-light,
-.dx-color-scheme-orange-light,
-.dx-color-scheme-purple-light,
-.dx-color-scheme-teal-light {
+.dx-theme-material .widget-container {
   background-color: rgba(191, 191, 191, 0.15);
 }
 
@@ -197,6 +193,14 @@ export default {
 .dx-color-scheme-blue-light .dx-tabpanel,
 .dx-color-scheme-purple-light .dx-tabpanel {
   background-color: #fff;
+}
+
+.dx-color-scheme-teal-dark .dx-tabpanel,
+.dx-color-scheme-purple-dark .dx-tabpanel,
+.dx-color-scheme-orange-dark .dx-tabpanel,
+.dx-color-scheme-lime-dark .dx-tabpanel,
+.dx-color-scheme-blue-dark .dx-tabpanel {
+  background-color: #363640;
 }
 
 .dx-color-scheme-teal-light .option-label,

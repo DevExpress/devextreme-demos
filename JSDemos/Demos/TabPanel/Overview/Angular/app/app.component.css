@@ -136,12 +136,12 @@
   bottom: -150%;
 }
 
-::ng-deep .dx-color-scheme-lime-light,
-::ng-deep .dx-color-scheme-blue-light,
-::ng-deep .dx-color-scheme-orange-light,
-::ng-deep .dx-color-scheme-purple-light,
-::ng-deep .dx-color-scheme-teal-light {
+::ng-deep .dx-theme-material .widget-container {
   background-color: rgba(191, 191, 191, 0.15);
+}
+
+::ng-deep .dx-color-scheme-contrast .task-item {
+  border: 1px solid #dedede;
 }
 
 ::ng-deep .dx-color-scheme-teal-light .dx-tabpanel,
@@ -150,6 +150,14 @@
 ::ng-deep .dx-color-scheme-blue-light .dx-tabpanel,
 ::ng-deep .dx-color-scheme-purple-light .dx-tabpanel {
   background-color: #fff;
+}
+
+::ng-deep .dx-color-scheme-teal-dark .dx-tabpanel,
+::ng-deep .dx-color-scheme-purple-dark .dx-tabpanel,
+::ng-deep .dx-color-scheme-orange-dark .dx-tabpanel,
+::ng-deep .dx-color-scheme-lime-dark .dx-tabpanel,
+::ng-deep .dx-color-scheme-blue-dark .dx-tabpanel {
+  background-color: #363640;
 }
 
 ::ng-deep .dx-color-scheme-teal-light .option-label,
@@ -161,18 +169,6 @@
 ::ng-deep .dx-color-scheme-greenmist .option-label,
 ::ng-deep .dx-color-scheme-light .option-label {
   color: rgba(0, 0, 0, 0.6);
-}
-
-::ng-deep .dx-color-scheme-teal-dark .task-item,
-::ng-deep .dx-color-scheme-purple-dark .task-item,
-::ng-deep .dx-color-scheme-orange-dark .task-item,
-::ng-deep .dx-color-scheme-lime-dark .task-item,
-::ng-deep .dx-color-scheme-blue-dark .task-item,
-::ng-deep .dx-color-scheme-darkviolet .task-item,
-::ng-deep .dx-color-scheme-darkmoon .task-item,
-::ng-deep .dx-color-scheme-contrast .task-item,
-::ng-deep .dx-color-scheme-dark .task-item {
-  box-shadow: 0 1px 4px 0 rgba(255, 255, 255, 0.1);
 }
 
 ::ng-deep .dx-color-scheme-teal-dark .task-item-info,
