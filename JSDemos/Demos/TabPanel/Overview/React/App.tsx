@@ -12,21 +12,21 @@ const App = () => {
   const [loop, setLoop] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  const onSelectionChanged = React.useCallback((args: { name: string; value: any; }) => {
+  const onSelectionChanged = React.useCallback((args: { name: string; value?: any; }) => {
     if (args.name === 'selectedIndex') {
       setSelectedIndex(args.value);
     }
   }, [setSelectedIndex]);
 
-  const onLoopChanged = React.useCallback((args: { value: any; }) => {
+  const onLoopChanged = React.useCallback((args: { value?: any; }) => {
     setLoop(args.value);
   }, [setLoop]);
 
-  const onAnimationEnabledChanged = React.useCallback((args: { value: any; }) => {
+  const onAnimationEnabledChanged = React.useCallback((args: { value?: any; }) => {
     setAnimationEnabled(args.value);
   }, [setAnimationEnabled]);
 
-  const onSwipeEnabledChanged = React.useCallback((args: { value: any; }) => {
+  const onSwipeEnabledChanged = React.useCallback((args: { value?: any; }) => {
     setSwipeEnabled(args.value);
   }, [setSwipeEnabled]);
 

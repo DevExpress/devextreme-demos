@@ -1,6 +1,6 @@
 import React from 'react';
-import TreeView from 'devextreme-react/tree-view';
-import TabPanel from 'devextreme-react/tab-panel';
+import TreeView, { TreeViewTypes } from 'devextreme-react/tree-view';
+import TabPanel, { TabPanelTypes } from 'devextreme-react/tab-panel';
 import { continents } from './data.ts';
 
 const renderPanelItemTitle = (item) => <span className="tab-panel-title">{item.text}</span>;
@@ -45,7 +45,7 @@ function App() {
   const [countryData, setCountryData] = React.useState(continents[0].items[0]);
   const [citiesData, setCitiesData] = React.useState(continents[0].items[0].cities);
 
-  const handleTreeViewSelectionChange = React.useCallback((e: { itemData: any; }) => {
+  const handleTreeViewSelectionChange = React.useCallback((e: TreeViewTypes.SelectionChangedEvent) => {
     const selectedCountryData = e.itemData;
     if (selectedCountryData.cities) {
       setTabPanelIndex(0);
@@ -54,7 +54,7 @@ function App() {
     }
   }, [setTabPanelIndex, setCountryData, setCitiesData]);
 
-  const handleTabPanelSelectionChange = React.useCallback((e: { value: any; }) => {
+  const handleTabPanelSelectionChange = React.useCallback((e: TabPanelTypes.SelectionChangedEvent) => {
     setTabPanelIndex(e.value);
   }, [setTabPanelIndex]);
 

@@ -70,7 +70,7 @@ const selectBoxOptions = {
   inputAttr: { 'aria-label': 'Categories' },
   onValueChanged: (args: { value: number; }) => {
     if (args.value > 1) {
-      productsStore.filter('type', '=', args.value);
+      productsStore.filter(['type', '=', args.value]);
     } else {
       productsStore.filter(null);
     }

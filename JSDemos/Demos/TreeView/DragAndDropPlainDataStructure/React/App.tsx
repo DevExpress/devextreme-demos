@@ -65,7 +65,7 @@ const moveChildren = (node: { itemData: { isDirectory: any; }; children: any[]; 
     return;
   }
 
-  node.children.forEach((child: { itemData: { isDirectory: any; id: any; } | any[]; }) => {
+  node.children.forEach((child: { itemData: { isDirectory: any; id?: any; }; children: any[]; }) => {
     if (child.itemData.isDirectory) {
       moveChildren(child, fromDataSource, toDataSource);
     }
@@ -102,8 +102,8 @@ const getTopVisibleNode = (component: { element: () => any; }) => {
 };
 
 const App = () => {
-  const treeViewDriveCRef = React.useRef();
-  const treeViewDriveDRef = React.useRef();
+  const treeViewDriveCRef = React.useRef(null);
+  const treeViewDriveDRef = React.useRef(null);
 
   const [itemsDriveC, setItemsDriveC] = React.useState(service.getItemsDriveC());
   const [itemsDriveD, setItemsDriveD] = React.useState(service.getItemsDriveD());
@@ -136,23 +136,23 @@ const App = () => {
     const fromTopVisibleNode = getTopVisibleNode(e.fromComponent);
     const toTopVisibleNode = getTopVisibleNode(e.toComponent);
 
-    const fromItems = getStateFieldName(e.fromData) === 'driveC'
+    const fromItems = getStateFieldName(e.fromData) === 'itemsDriveC'
       ? itemsDriveC
       : itemsDriveD;
 
-    const toItems = getStateFieldName(e.toData) === 'driveC'
+    const toItems = getStateFieldName(e.toData) === 'itemsDriveC'
       ? itemsDriveC
       : itemsDriveD;
 
     moveNode(fromNode, toNode, fromItems, toItems, e.dropInsideItem);
 
-    if (getStateFieldName(e.fromData) === 'driveC') {
+    if (getStateFieldName(e.fromData) === 'itemsDriveC') {
       setItemsDriveC([...fromItems]);
     } else {
       setItemsDriveD([...fromItems]);
     }
 
-    if (getStateFieldName(e.toData) === 'driveC') {
+    if (getStateFieldName(e.toData) === 'itemsDriveC') {
       setItemsDriveC([...toItems]);
     } else {
       setItemsDriveD([...toItems]);

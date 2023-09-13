@@ -1,12 +1,12 @@
 import React from 'react';
 import Accordion from 'devextreme-react/accordion';
-import CheckBox from 'devextreme-react/check-box';
-import TagBox from 'devextreme-react/tag-box';
-import Slider, { Tooltip, Label } from 'devextreme-react/slider';
+import CheckBox, { CheckBoxTypes } from 'devextreme-react/check-box';
+import TagBox, { TagBoxTypes } from 'devextreme-react/tag-box';
+import Slider, { Tooltip, Label, SliderTypes } from 'devextreme-react/slider';
 
-import service from './data.js';
-import CustomTitle from './CustomTitle.js';
-import CustomItem from './CustomItem.js';
+import service from './data.ts';
+import CustomTitle from './CustomTitle.tsx';
+import CustomItem from './CustomItem.tsx';
 
 const companyLabel = { 'aria-label': 'Company' };
 const companies = service.getCompanies();
@@ -31,19 +31,19 @@ const App = () => {
     setSelectedItems(newItems);
   }, [selectedItems, setSelectedItems]);
 
-  const selectedItemsChanged = React.useCallback((e: { value: any; }) => {
+  const selectedItemsChanged = React.useCallback((e: TagBoxTypes.ValueChangedEvent) => {
     setSelectedItems(e.value);
   }, [setSelectedItems]);
 
-  const multipleChanged = React.useCallback((e: { value: any; }) => {
+  const multipleChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setMultiple(e.value);
   }, [setMultiple]);
 
-  const collapsibleChanged = React.useCallback((e: { value: any; }) => {
+  const collapsibleChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setCollapsible(e.value);
   }, [setCollapsible]);
 
-  const animationDurationChanged = React.useCallback((e: { value: any; }) => {
+  const animationDurationChanged = React.useCallback((e: SliderTypes.ValueChangedEvent) => {
     setAnimationDuration(e.value);
   }, [setAnimationDuration]);
 

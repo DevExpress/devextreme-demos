@@ -8,13 +8,13 @@ import { tabs, longtabs, tabLabel } from './data.ts';
 const App = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  const onTabsSelectionChanged = React.useCallback((args: { name: string; value: any; }) => {
+  const onTabsSelectionChanged = React.useCallback((args: { name: string; value?: any; }) => {
     if (args.name === 'selectedIndex') {
       setSelectedIndex(args.value);
     }
   }, [setSelectedIndex]);
 
-  const onValueChanged = React.useCallback((args: { value: any; }) => {
+  const onValueChanged = React.useCallback((args: { value?: any; }) => {
     setSelectedIndex(args.value);
   }, [setSelectedIndex]);
 

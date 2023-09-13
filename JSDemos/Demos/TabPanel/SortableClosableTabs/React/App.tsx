@@ -52,11 +52,11 @@ function App() {
     setSelectedItem(args.addedItems[0]);
   }, [setSelectedItem]);
 
-  const onTabDragStart = React.useCallback((e: { itemData?: any; fromData: { [x: string]: any; }; fromIndex: string | number; }) => {
+  const onTabDragStart = React.useCallback((e: { itemData?: any; fromData?: { [x: string]: any; }; fromIndex: string | number; }) => {
     e.itemData = e.fromData[e.fromIndex];
   }, []);
 
-  const onTabDrop = React.useCallback((e: { fromIndex: number; toIndex: number; itemData: any; }) => {
+  const onTabDrop = React.useCallback((e: { fromIndex: number; toIndex: number; itemData?: any; }) => {
     const newEmployees = [...employees];
 
     newEmployees.splice(e.fromIndex, 1);

@@ -8,7 +8,7 @@ const products = service.getProducts();
 const App = () => {
   const [currentItem, setCurrentItem] = React.useState(products[0]);
 
-  const selectItem = React.useCallback((e: { itemData: any; }) => {
+  const selectItem = React.useCallback((e: { itemData?: any; }) => {
     setCurrentItem({ ...e.itemData });
   }, [setCurrentItem]);
 

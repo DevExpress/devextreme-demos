@@ -304,7 +304,7 @@ export default {
     return products;
   },
 
-  getMenuItems() {
+  getMenuItems(): { id: string, text: string }[] {
     return menuItems;
   },
 };

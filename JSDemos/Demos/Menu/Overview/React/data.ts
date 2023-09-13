@@ -85,8 +85,21 @@ const products = [{
   }],
 }];
 
+export interface ProductItemType {
+  id: string,
+  name: string,
+  price: number,
+  icon: string,
+}
+
+export interface ProductType {
+  id: string,
+  name: string,
+  items: (ProductItemType | ProductType)[],
+}
+
 export default {
-  getProducts() {
+  getProducts(): ProductType[] {
     return products;
   },
 };

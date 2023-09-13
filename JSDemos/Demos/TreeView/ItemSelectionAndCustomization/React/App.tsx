@@ -1,20 +1,20 @@
 import React from 'react';
-import TreeView from 'devextreme-react/tree-view';
+import TreeView, { TreeViewTypes } from 'devextreme-react/tree-view';
 import List from 'devextreme-react/list';
 import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
 
 import { employees, showCheckboxesModeLabel, selectionModeLabel } from './data.ts';
 
-const showCheckBoxesModes = ['normal', 'selectAll', 'none'];
-const selectionModes = ['multiple', 'single'];
+const showCheckBoxesModes: TreeViewTypes.TreeViewCheckBoxMode[] = ['normal', 'selectAll', 'none'];
+const selectionModes: TreeViewTypes.SingleOrMultiple[] = ['multiple', 'single'];
 
 const renderTreeViewItem = (item: { fullName: any; position: any; }) => `${item.fullName} (${item.position})`;
 
 const renderListItem = (item: { prefix: any; fullName: any; position: any; }) => `${item.prefix} ${item.fullName} (${item.position})`;
 
 const App = () => {
-  const treeViewRef = React.useRef();
+  const treeViewRef = React.useRef(null);
   const [selectedEmployees, setSelectedEmployees] = React.useState([]);
   const [selectNodesRecursive, setSelectNodesRecursive] = React.useState(true);
   const [selectByClick, setSelectByClick] = React.useState(false);
@@ -23,6 +23,13 @@ const App = () => {
   const [isSelectionModeDisabled, setIsSelectionModeDisabled] = React.useState(false);
   const [isRecursiveDisabled, setIsRecursiveDisabled] = React.useState(false);
 
+  const syncSelection = React.useCallback((treeView: { getSelectedNodes: () => any[]; }) => {
+    const syncSelectedEmployees = treeView.getSelectedNodes()
+      .map((node: { itemData: any; }) => node.itemData);
+
+    setSelectedEmployees(syncSelectedEmployees);
+  }, [setSelectedEmployees]);
+
   const treeViewSelectionChanged = React.useCallback((e: { component: any; }) => {
     syncSelection(e.component);
   }, [syncSelection]);
@@ -30,13 +37,6 @@ const App = () => {
   const treeViewContentReady = React.useCallback((e: { component: any; }) => {
     syncSelection(e.component);
   }, [syncSelection]);
-
-  const syncSelection = React.useCallback((treeView: { getSelectedNodes: () => any[]; }) => {
-    const syncSelectedEmployees = treeView.getSelectedNodes()
-      .map((node: { itemData: any; }) => node.itemData);
-
-    setSelectedEmployees(syncSelectedEmployees);
-  }, [setSelectedEmployees]);
 
   const showCheckBoxesModeValueChanged = React.useCallback((e: { value: any; }) => {
     const value = e.value;

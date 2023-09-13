@@ -8,8 +8,8 @@ const products = service.getProducts();
 const menuItems = service.getMenuItems();
 
 const App = () => {
-  const contextMenuRef = React.useRef();
-  const treeViewRef = React.useRef();
+  const contextMenuRef = React.useRef(null);
+  const treeViewRef = React.useRef(null);
   const [logItems, setLogItems] = React.useState([]);
   const [selectedTreeItem, setSelectedTreeItem] = React.useState(undefined);
 
@@ -26,7 +26,7 @@ const App = () => {
     contextMenuRef.current.instance.option('items[1].disabled', !e.node.expanded);
   }, []);
 
-  const contextMenuItemClick = React.useCallback((e: { itemData: { id: any; }; }) => {
+  const contextMenuItemClick = React.useCallback((e: { itemData: { id?: any; }; }) => {
     let logEntry = '';
     switch (e.itemData.id) {
       case 'expand': {

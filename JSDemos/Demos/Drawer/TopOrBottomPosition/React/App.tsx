@@ -1,5 +1,5 @@
 import React from 'react';
-import Drawer from 'devextreme-react/drawer';
+import Drawer, { DrawerTypes } from 'devextreme-react/drawer';
 import RadioGroup from 'devextreme-react/radio-group';
 import Toolbar from 'devextreme-react/toolbar';
 import HTMLReactParser from 'html-react-parser';
@@ -12,9 +12,9 @@ const RadioGroupRevealOptions = ['slide', 'expand'];
 
 const App = () => {
   const [opened, setOpened] = React.useState(false);
-  const [openedStateMode, setOpenedStateMode] = React.useState('shrink');
-  const [revealMode, setRevealMode] = React.useState('expand');
-  const [position, setPosition] = React.useState('top');
+  const [openedStateMode, setOpenedStateMode] = React.useState<DrawerTypes.OpenedStateMode>('shrink');
+  const [revealMode, setRevealMode] = React.useState<DrawerTypes.RevealMode>('expand');
+  const [position, setPosition] = React.useState<DrawerTypes.PanelLocation>('top');
 
   const toolbarItems = React.useMemo(() => [{
     widget: 'dxButton',
@@ -39,6 +39,7 @@ const App = () => {
 
   const onOutsideClick = React.useCallback(() => {
     setOpened(false);
+    return false;
   }, [setOpened]);
 
   return (

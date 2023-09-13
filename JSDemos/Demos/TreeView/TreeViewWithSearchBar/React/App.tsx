@@ -1,7 +1,7 @@
 import React from 'react';
 
 import TreeView from 'devextreme-react/tree-view';
-import SelectBox from 'devextreme-react/select-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 
 import { products, searchModeLabel } from './data.ts';
 
@@ -10,7 +10,7 @@ const options = ['contains', 'startswith', 'equals'];
 const App = () => {
   const [value, setValue] = React.useState('contains');
 
-  const valueChanged = React.useCallback((e: { value: any; }) => {
+  const valueChanged = React.useCallback((e: { value?: any; }) => {
     setValue(e.value);
   }, [setValue]);
 
