@@ -230,9 +230,10 @@ jobs:
           npm run update-topics
 
       - name: Inject descriptions
-        working-directory: ./devextreme/packages/devextreme
+        working-directory: ./devextreme
         run: |
-          npm run internal-tool -- inject-descriptions --descriptions-path ../../../../../devextreme-documentation-repo/artifacts/internal-tools/Descriptions.json --js-scripts ./js
+          cp ../devextreme-documentation-repo/artifacts/internal-tools/Descriptions.json ./artifacts/internal-tools/
+          npm run devextreme:inject-descriptions
 
       - name: Build
         continue-on-error: true
