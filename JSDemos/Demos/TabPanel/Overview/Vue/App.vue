@@ -140,6 +140,7 @@ export default {
 <style>
 .tabpanel-demo {
   display: flex;
+  height: 100%;
   min-height: 450px;
 }
 
