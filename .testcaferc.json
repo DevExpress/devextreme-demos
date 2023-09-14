@@ -1,6 +1,6 @@
 {
   "src": [
-    "./testing/**/VectorMapZooming.test.js"
+    "./testing/**/*.test.js"
   ],
   "screenshots": {
     "path": "./",
