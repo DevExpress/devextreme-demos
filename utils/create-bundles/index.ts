@@ -32,9 +32,8 @@ const getPathToDemo = (destinationDemo: string) => join(__dirname, '..', '..', '
 const hasLocalizationModule = (demo: Demo) => {
   const { Widget, Name } = demo;
   const isLocalization = Widget === 'Localization';
-  const isSchedulerLocalization = Widget === 'Scheduler' && Name === 'CustomTemplates';
 
-  return isLocalization || isSchedulerLocalization;
+  return isLocalization;
 };
 
 const buildReactDemo = async (demoComponent: string, demoName: string) => {
