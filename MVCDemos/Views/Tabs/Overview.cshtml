@@ -2,24 +2,24 @@
     <div class="widget-container">
         <div class="tabs-container">
             @(Html.DevExtreme().Tabs()
-				.ID("withText")
-				.DataSource(new JS("tabsText"))
-				.SelectedIndex(0)
-				)
+                .ID("withText")
+                .DataSource(new JS("tabsText"))
+                .SelectedIndex(0)
+                )
         </div>
         <div class="tabs-container">
             @(Html.DevExtreme().Tabs()
-				.ID("withIconAndText")
-				.DataSource(new JS("tabsTextAndIcon"))
-				.SelectedIndex(0)
-				)
+                .ID("withIconAndText")
+                .DataSource(new JS("tabsTextAndIcon"))
+                .SelectedIndex(0)
+                )
         </div>
         <div class="tabs-container">
             @(Html.DevExtreme().Tabs()
-				.ID("withIcon")
-				.DataSource(new JS("tabsIcon"))
-				.SelectedIndex(0)
-				)
+                .ID("withIcon")
+                .DataSource(new JS("tabsIcon"))
+                .SelectedIndex(0)
+                )
         </div>
     </div>
 
@@ -29,48 +29,48 @@
         <div class="option">
             <div>Orientation</div>
             @(Html.DevExtreme().SelectBox()
-				.DataSource(new[] { "horizontal", "vertical" })
-				.InputAttr("aria-label", "Orientation")
-				.Value("horizontal")
-				.OnValueChanged("orientation_valueChanged")
-				)
+                .DataSource(new[] { "horizontal", "vertical" })
+                .InputAttr("aria-label", "Orientation")
+                .Value("horizontal")
+                .OnValueChanged("orientation_valueChanged")
+                )
         </div>
 
         <div class="option">
             <div>Styling Mode</div>
             @(Html.DevExtreme().SelectBox()
-				.DataSource(new[] { "primary", "secondary" })
-				.InputAttr("aria-label", "Styling Mode")
-				.Value("primary")
-				.OnValueChanged("stylingMode_valueChanged")
-				)
+                .DataSource(new[] { "primary", "secondary" })
+                .InputAttr("aria-label", "Styling Mode")
+                .Value("primary")
+                .OnValueChanged("stylingMode_valueChanged")
+                )
         </div>
 
         <div class="option">
             <div>Icon position</div>
             @(Html.DevExtreme().SelectBox()
-				.DataSource(new[] { "top", "start", "end", "bottom" })
-				.InputAttr("aria-label", "Icon Position")
-				.Value("top")
-				.OnValueChanged("iconPosition_valueChanged")
-				)
+                .DataSource(new[] { "top", "start", "end", "bottom" })
+                .InputAttr("aria-label", "Icon Position")
+                .Value("top")
+                .OnValueChanged("iconPosition_valueChanged")
+                )
         </div>
 
         <div class="option">
             @(Html.DevExtreme().CheckBox()
-				.Value(false)
-				.ID("show-navigation-buttons")
-				.Text("Show Navigation Buttons")
-				.OnValueChanged("showNavigation_valueChanged")
-				)
+                .Value(false)
+                .ID("show-navigation-buttons")
+                .Text("Show Navigation Buttons")
+                .OnValueChanged("showNavigation_valueChanged")
+                )
         </div>
         <div class="option">
             @(Html.DevExtreme().CheckBox()
-				.Value(false)
-				.ID("scroll-content")
-				.Text("Scroll Content")
-				.OnValueChanged("scrollContent_valueChanged")
-				)
+                .Value(false)
+                .ID("scroll-content")
+                .Text("Scroll Content")
+                .OnValueChanged("scrollContent_valueChanged")
+                )
         </div>
     </div>
 </div>
