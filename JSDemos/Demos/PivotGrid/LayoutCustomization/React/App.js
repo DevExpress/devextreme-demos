@@ -33,7 +33,7 @@ const App = () => {
             onValueChange={setShowTotalsPrior}
           />
         </div>
-        <br />
+        &nbsp;
         <div className="option">
           <CheckBox
             id="data-field-area"
@@ -42,7 +42,7 @@ const App = () => {
             onValueChange={setDataFieldArea}
           />
         </div>
-        <br />
+        &nbsp;
         <div className="option">
           <CheckBox
             id="row-header-layout"

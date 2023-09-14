@@ -99,21 +99,21 @@ const App = () => {
             onValueChange={setShowColumnFields}
             text="Show Data Fields" />
         </div>
-        <br />
+        &nbsp;
         <div className="option">
           <CheckBox id="show-row-fields"
             value={showDataFields}
             onValueChange={setShowDataFields}
             text="Show Row Fields" />
         </div>
-        <br />
+        &nbsp;
         <div className="option">
           <CheckBox id="show-column-fields"
             value={showFilterFields}
             onValueChange={setShowFilterFields}
             text="Show Column Fields" />
         </div>
-        <br />
+        &nbsp;
         <div className="option">
           <CheckBox id="show-filter-fields"
             value={showRowFields}
