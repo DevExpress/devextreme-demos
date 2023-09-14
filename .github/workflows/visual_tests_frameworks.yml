@@ -150,6 +150,9 @@ jobs:
     - name: Prepare bundles
       run: npm run prepare-bundles
 
+    - name: Print tsc version on CI
+      run: tsc -v
+
     - name: Demos - Run tsc
       run: tsc --noEmit
 
