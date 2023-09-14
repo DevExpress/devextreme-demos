@@ -2,17 +2,20 @@ $(() => {
   const tab1 = $('#withText').dxTabs({
     showNavButtons: false,
     dataSource: tabsText,
+    selectedIndex: 0,
   }).dxTabs('instance');
 
   const tab2 = $('#withIconAndText').dxTabs({
     showNavButtons: false,
     dataSource: tabsIconAndText,
     iconPosition: iconPositions[0],
+    selectedIndex: 0,
   }).dxTabs('instance');
 
   const tab3 = $('#withIcon').dxTabs({
     showNavButtons: false,
     dataSource: tabsIcon,
+    selectedIndex: 0,
   }).dxTabs('instance');
 
   $('#orientation').dxSelectBox({

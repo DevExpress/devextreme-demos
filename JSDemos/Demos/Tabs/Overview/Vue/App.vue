@@ -4,6 +4,7 @@
       <div class="tabs-container">
         <DxTabs
           :data-source="tabsWithText"
+          selectedIndex="0"
           @initialized="saveTabInstance1"
           id="withText"
           :scroll-by-content="false"
@@ -14,6 +15,7 @@
         <DxTabs
           :data-source="tabsWithIconAndText"
           @initialized="saveTabInstance2"
+          selectedIndex="0"
           id="withIconAndText"
           :scroll-by-content="false"
           :show-nav-buttons="false"
@@ -22,6 +24,7 @@
       <div class="tabs-container">
         <DxTabs
           :data-source="tabsWithIcon"
+          selectedIndex="0"
           @initialized="saveTabInstance3"
           id="withIcon"
           :scroll-by-content="false"
@@ -189,7 +192,7 @@ export default {
 }
 
 .dx-tab {
-  width: 120px;
+  width: 135px;
 }
 
 .tabs-container {

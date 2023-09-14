@@ -67,6 +67,7 @@ const App = () => {
             showNavButtons={showNavigation}
             orientation={orientation}
             stylingMode={stylingMode}
+            selectedIndex={0}
           />
         </div>
         <div className="tabs-container">
@@ -77,6 +78,7 @@ const App = () => {
             orientation={orientation}
             stylingMode={stylingMode}
             iconPosition={iconPosition}
+            selectedIndex={0}
           />
         </div>
         <div className="tabs-container">
@@ -87,6 +89,7 @@ const App = () => {
             orientation={orientation}
             stylingMode={stylingMode}
             iconPosition={iconPosition}
+            selectedIndex={0}
           />
         </div>
       </div>
