@@ -59,8 +59,8 @@ jobs:
       run: npm run build-npm-devextreme
 
     - name: Discover declarations
-      working-directory: ./devextreme/packages/devextreme
-      run: npm run discover-declarations
+      working-directory: ./devextreme
+      run: npm run tools:discover-declarations
 
     - name: Pack devextreme
       working-directory: ./devextreme/packages/devextreme/artifacts/npm/devextreme
@@ -89,7 +89,7 @@ jobs:
         cp ./devextreme/packages/devextreme-angular/npm/dist/*.tgz ./devextreme-angular-installer.tgz
         cp ./devextreme/packages/devextreme-react/npm/*.tgz ./devextreme-react-installer.tgz
         cp ./devextreme/packages/devextreme-vue/npm/*.tgz ./devextreme-vue-installer.tgz
-        cp ./devextreme/packages/devextreme/artifacts/internal-tools/Declarations.json ./Declarations.json
+        cp ./devextreme/artifacts/internal-tools/Declarations.json ./Declarations.json
 
     - name: Copy build artifacts
       uses: actions/upload-artifact@v3
@@ -230,9 +230,11 @@ jobs:
           npm run update-topics
 
       - name: Inject descriptions
-        working-directory: ./devextreme/packages/devextreme
+        working-directory: ./devextreme
         run: |
-          npm run internal-tool -- inject-descriptions --descriptions-path ../../../../../devextreme-documentation-repo/artifacts/internal-tools/Descriptions.json --js-scripts ./js
+          mkdir -p ./artifacts/internal-tools
+          cp ../devextreme-documentation-repo/artifacts/internal-tools/Descriptions.json ./artifacts/internal-tools/
+          npm run devextreme:inject-descriptions
 
       - name: Build
         continue-on-error: true
