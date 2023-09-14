@@ -24,11 +24,7 @@ $(() => {
     value: 'horizontal',
     inputAttr: { 'aria-label': 'Orientation' },
     onValueChanged(data) {
-      if (data.value === 'horizontal') {
-        $('.widget-container').css('flex-direction', 'column');
-      } else {
-        $('.widget-container').css('flex-direction', 'row');
-      }
+      $('.widget-container').css('flex-direction', data.value === 'horizontal' ? 'column' : 'row');
 
       setTabsOption('orientation', data.value);
     },
