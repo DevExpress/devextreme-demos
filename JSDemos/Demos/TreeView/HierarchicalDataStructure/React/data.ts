@@ -292,8 +292,17 @@ const products = [{
   }],
 }];
 
+interface Product {
+  id: string,
+  text: string,
+  items?: Product[],
+  expanded?: boolean,
+  image?: string,
+  price?: number,
+}
+
 export default {
-  getProducts() {
+  getProducts(): Product[] {
     return products;
   },
 };

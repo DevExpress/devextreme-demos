@@ -1,9 +1,8 @@
-import React from 'react';
-import DateBox from 'devextreme-react/date-box';
-
+import React from "react";
+import DateBox from "devextreme-react/date-box";
 const date = new Date(2018, 9, 16, 15, 8, 12);
-const dataTimeLabel = { 'aria-label': 'Date Time' };
-const dateLabel = { 'aria-label': 'Date' };
+const dataTimeLabel = { "aria-label": "Date Time" };
+const dateLabel = { "aria-label": "Date" };
 function App() {
   return (
     <div>
