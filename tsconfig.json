@@ -6,12 +6,10 @@
     "skipLibCheck": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "types": ["react", "react-dom"],
   },
-  
   "include": [
     "utils/**/*.ts",
-    "./Demos/**/*.ts",
-    "./Demos/**/*.tsx"
-  ]
+    "JSDemos/Demos/**/*.ts",
+    "JSDemos/Demos/**/*.tsx",
+  ],
 }

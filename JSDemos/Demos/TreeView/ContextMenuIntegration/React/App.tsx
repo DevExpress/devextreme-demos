@@ -1,6 +1,6 @@
 import React from 'react';
-import TreeView from 'devextreme-react/tree-view';
-import ContextMenu from 'devextreme-react/context-menu';
+import TreeView, { TreeViewTypes } from 'devextreme-react/tree-view';
+import ContextMenu, { ContextMenuTypes } from 'devextreme-react/context-menu';
 import List from 'devextreme-react/list';
 import service from './data.ts';
 
@@ -13,7 +13,9 @@ const App = () => {
   const [logItems, setLogItems] = React.useState([]);
   const [selectedTreeItem, setSelectedTreeItem] = React.useState(undefined);
 
-  const treeViewItemContextMenu = React.useCallback((e: { itemData: { price: any; }; node: { expanded: any; }; }) => {
+  const treeViewItemContextMenu = React.useCallback((
+    e: TreeViewTypes.ItemContextMenuEvent & { itemData: { price?: any; }; node: { expanded: any; }; },
+  ) => {
     setSelectedTreeItem(e.itemData);
 
     const isProduct = e.itemData.price !== undefined;
@@ -26,7 +28,9 @@ const App = () => {
     contextMenuRef.current.instance.option('items[1].disabled', !e.node.expanded);
   }, []);
 
-  const contextMenuItemClick = React.useCallback((e: { itemData: { id?: any; }; }) => {
+  const contextMenuItemClick = React.useCallback((
+    e: ContextMenuTypes.ItemClickEvent & { itemData: { id?: any; }; },
+  ) => {
     let logEntry = '';
     switch (e.itemData.id) {
       case 'expand': {

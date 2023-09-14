@@ -1,6 +1,6 @@
 import React from 'react';
 import CheckBox from 'devextreme-react/check-box';
-import MultiView, { MultiViewTypes } from 'devextreme-react/multi-view';
+import MultiView from 'devextreme-react/multi-view';
 import { multiViewItems as companies } from './data.ts';
 import CompanyItem from './CompanyItem.tsx';
 

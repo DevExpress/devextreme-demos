@@ -1,0 +1,18 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "target": "ES2015",
+        "esModuleInterop": true,
+        "jsx": "react",
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "types": [
+            "react",
+            "react-dom"
+        ],
+    },
+    "include": [
+        "./Demos/**/React/*.tsx",
+        "./Demos/**/Angular/app/*.ts"
+    ]
+}

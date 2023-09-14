@@ -8,6 +8,7 @@ const orientations = ['horizontal', 'vertical'];
 const orientationLabel = { 'aria-label': 'Orientation' };
 const showSubmenuModeLabel = { 'aria-label': 'Show Submenu Mode' };
 const products = service.getProducts();
+
 interface showSubmenuModesType {
   name: MenuTypes.SubmenuShowMode,
   delay: {
@@ -32,7 +33,7 @@ const App = () => {
   const [hideSubmenuOnMouseLeave, setHideSubmenuOnMouseLeave] = React.useState(false);
   const [currentProduct, setCurrentProduct] = React.useState(null);
 
-  const itemClick = React.useCallback((e: MenuTypes.ItemClickEvent<ProductItemType>) => {
+  const itemClick = React.useCallback((e: MenuTypes.ItemClickEvent & { itemData: ProductItemType }) => {
     if (e.itemData.price) {
       setCurrentProduct(e.itemData);
     }

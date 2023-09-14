@@ -38,7 +38,7 @@ const App = () => {
     syncSelection(e.component);
   }, [syncSelection]);
 
-  const showCheckBoxesModeValueChanged = React.useCallback((e: { value: any; }) => {
+  const showCheckBoxesModeValueChanged = React.useCallback((e: { value?: any; }) => {
     const value = e.value;
     setShowCheckBoxesMode(value);
 
@@ -49,7 +49,7 @@ const App = () => {
     setIsSelectionModeDisabled(value === 'selectAll');
   }, [setShowCheckBoxesMode, setSelectionMode, setIsRecursiveDisabled, setIsSelectionModeDisabled]);
 
-  const selectionModeValueChanged = React.useCallback((e: { value: any; }) => {
+  const selectionModeValueChanged = React.useCallback((e: { value?: any; }) => {
     const value = e.value;
     setSelectionMode(value);
 
@@ -60,11 +60,11 @@ const App = () => {
     setIsRecursiveDisabled(value === 'single');
   }, [setSelectionMode, setSelectNodesRecursive, setIsRecursiveDisabled]);
 
-  const selectNodesRecursiveValueChanged = React.useCallback((e: { value: any; }) => {
+  const selectNodesRecursiveValueChanged = React.useCallback((e: { value?: any; }) => {
     setSelectNodesRecursive(e.value);
   }, [setSelectNodesRecursive]);
 
-  const selectByClickValueChanged = React.useCallback((e: { value: any; }) => {
+  const selectByClickValueChanged = React.useCallback((e: { value?: any; }) => {
     setSelectByClick(e.value);
   }, [setSelectByClick]);
 

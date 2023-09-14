@@ -45,7 +45,9 @@ function App() {
   const [countryData, setCountryData] = React.useState(continents[0].items[0]);
   const [citiesData, setCitiesData] = React.useState(continents[0].items[0].cities);
 
-  const handleTreeViewSelectionChange = React.useCallback((e: TreeViewTypes.SelectionChangedEvent) => {
+  const handleTreeViewSelectionChange = React.useCallback((
+    e: TreeViewTypes.SelectionChangedEvent & { itemData: any },
+  ) => {
     const selectedCountryData = e.itemData;
     if (selectedCountryData.cities) {
       setTabPanelIndex(0);
@@ -54,7 +56,9 @@ function App() {
     }
   }, [setTabPanelIndex, setCountryData, setCitiesData]);
 
-  const handleTabPanelSelectionChange = React.useCallback((e: TabPanelTypes.SelectionChangedEvent) => {
+  const handleTabPanelSelectionChange = React.useCallback((
+    e: TabPanelTypes.SelectionChangedEvent & { value: any },
+  ) => {
     setTabPanelIndex(e.value);
   }, [setTabPanelIndex]);
 
