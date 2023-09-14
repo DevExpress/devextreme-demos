@@ -103,37 +103,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 18px;
   width: 18px;
   transform: translateY(-50%);
   cursor: pointer;
 }
 
 ::ng-deep .task-item-pseudo-button {
-  position: relative;
-}
-
-::ng-deep .task-item-pseudo-button,
-::ng-deep .task-item-pseudo-button::before,
-::ng-deep .task-item-pseudo-button::after {
-  height: 3px;
-  width: 3px;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-::ng-deep .task-item-pseudo-button::before,
-::ng-deep .task-item-pseudo-button::after {
-  content: '';
-  position: absolute;
-}
-
-::ng-deep .task-item-pseudo-button::before {
-  top: -150%;
-}
-
-::ng-deep .task-item-pseudo-button::after {
-  bottom: -150%;
+  font-size: 18px;
+  opacity: 0.6;
 }
 
 ::ng-deep .dx-theme-material .widget-container {
@@ -181,34 +158,4 @@
 ::ng-deep .dx-color-scheme-contrast .task-item-info,
 ::ng-deep .dx-color-scheme-dark .task-item-info {
   color: inherit;
-}
-
-::ng-deep .dx-color-scheme-teal-dark .task-item-pseudo-button,
-::ng-deep .dx-color-scheme-teal-dark .task-item-pseudo-button::before,
-::ng-deep .dx-color-scheme-teal-dark .task-item-pseudo-button::after,
-::ng-deep .dx-color-scheme-purple-dark .task-item-pseudo-button,
-::ng-deep .dx-color-scheme-purple-dark .task-item-pseudo-button::before,
-::ng-deep .dx-color-scheme-purple-dark .task-item-pseudo-button::after,
-::ng-deep .dx-color-scheme-orange-dark .task-item-pseudo-button,
-::ng-deep .dx-color-scheme-orange-dark .task-item-pseudo-button::before,
-::ng-deep .dx-color-scheme-orange-dark .task-item-pseudo-button::after,
-::ng-deep .dx-color-scheme-lime-dark .task-item-pseudo-button,
-::ng-deep .dx-color-scheme-lime-dark .task-item-pseudo-button::before,
-::ng-deep .dx-color-scheme-lime-dark .task-item-pseudo-button::after,
-::ng-deep .dx-color-scheme-blue-dark .task-item-pseudo-button,
-::ng-deep .dx-color-scheme-blue-dark .task-item-pseudo-button::before,
-::ng-deep .dx-color-scheme-blue-dark .task-item-pseudo-button::after,
-::ng-deep .dx-color-scheme-darkviolet .task-item-pseudo-button,
-::ng-deep .dx-color-scheme-darkviolet .task-item-pseudo-button::before,
-::ng-deep .dx-color-scheme-darkviolet .task-item-pseudo-button::after,
-::ng-deep .dx-color-scheme-darkmoon .task-item-pseudo-button,
-::ng-deep .dx-color-scheme-darkmoon .task-item-pseudo-button::before,
-::ng-deep .dx-color-scheme-darkmoon .task-item-pseudo-button::after,
-::ng-deep .dx-color-scheme-contrast .task-item-pseudo-button,
-::ng-deep .dx-color-scheme-contrast .task-item-pseudo-button::before,
-::ng-deep .dx-color-scheme-contrast .task-item-pseudo-button::after,
-::ng-deep .dx-color-scheme-dark .task-item-pseudo-button,
-::ng-deep .dx-color-scheme-dark .task-item-pseudo-button::before,
-::ng-deep .dx-color-scheme-dark .task-item-pseudo-button::after {
-  background-color: #dedede;
 }

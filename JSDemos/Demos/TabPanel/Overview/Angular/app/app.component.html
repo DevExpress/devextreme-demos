@@ -19,16 +19,16 @@
             *ngFor="let task of tabPanelItem.tasks"
             [className]="getTaskClassName(task.priority)"
           >
-            <p class='task-item-text'>
+            <p class="task-item-text">
               {{task.text}}
             </p>
 
-            <p class='task-item-info'>
+            <p class="task-item-info">
               {{task.date}} by {{task.assignedBy}}
             </p>
 
-            <div class='task-item-pseudo-button-wrapper'>
-              <div class='task-item-pseudo-button'></div>
+            <div class="task-item-pseudo-button-wrapper">
+              <i class="task-item-pseudo-button dx-icon dx-icon-overflow"></i>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="tabpanel-demo">
-    <div className="widget-container">
+    <div class="widget-container">
       <DxTabPanel
         width="100%"
         height="418"
@@ -23,11 +23,11 @@
       </DxTabPanel>
     </div>
 
-    <div className="options">
-      <div className="caption">Options</div>
+    <div class="options">
+      <div class="caption">Options</div>
 
-      <div className="option">
-        <div className="option-label">Tabs position</div>
+      <div class="option">
+        <div class="option-label">Tabs position</div>
 
         <DxSelectBox
           :input-attr="tabsPositionsSelectBoxLabel"
@@ -37,8 +37,8 @@
         />
       </div>
 
-      <div className="option">
-        <div className="option-label">Styling mode</div>
+      <div class="option">
+        <div class="option-label">Styling mode</div>
 
         <DxSelectBox
           :input-attr="stylingModesSelectBoxLabel"
@@ -48,8 +48,8 @@
         />
       </div>
 
-      <div className="option">
-        <div className="option-label">Icon position</div>
+      <div class="option">
+        <div class="option-label">Icon position</div>
 
         <DxSelectBox
           :input-attr="iconPositionsSelectBoxLabel"
@@ -59,7 +59,7 @@
         />
       </div>
 
-      <div className="option">
+      <div class="option">
         <DxCheckBox
           text="Show navigation buttons"
           :element-attr="navButtonsCheckBoxLabel"

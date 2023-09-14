@@ -12,7 +12,7 @@ function TaskItem({ prop }) {
       </p>
 
       <div className="task-item-pseudo-button-wrapper">
-        <div className="task-item-pseudo-button"></div>
+        <i className="task-item-pseudo-button dx-icon dx-icon-overflow"></i>
       </div>
     </div>
   );

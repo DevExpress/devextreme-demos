@@ -13,7 +13,7 @@ $(() => {
         </p>
 
         <div class="task-item-pseudo-button-wrapper">
-          <div class="task-item-pseudo-button"></div>
+          <i class="task-item-pseudo-button dx-icon dx-icon-overflow"></i>
         </div>
       </div>
     `;

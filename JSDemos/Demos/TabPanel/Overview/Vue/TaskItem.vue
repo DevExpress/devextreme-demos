@@ -1,15 +1,15 @@
 <template>
   <div :class="className">
-    <p className="task-item-text">
+    <p class="task-item-text">
       {{ task.text }}
     </p>
 
-    <p className="task-item-info">
+    <p class="task-item-info">
       {{ task.date }} by {{ task.assignedBy }}
     </p>
 
-    <div className="task-item-pseudo-button-wrapper">
-      <div className="task-item-pseudo-button"/>
+    <div class="task-item-pseudo-button-wrapper">
+      <i class="task-item-pseudo-button dx-icon dx-icon-overflow"/>
     </div>
   </div>
 </template>
@@ -92,37 +92,14 @@ export default {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 18px;
   width: 18px;
   transform: translateY(-50%);
   cursor: pointer;
 }
 
 .task-item-pseudo-button {
-  position: relative;
-}
-
-.task-item-pseudo-button,
-.task-item-pseudo-button::before,
-.task-item-pseudo-button::after {
-  height: 3px;
-  width: 3px;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.task-item-pseudo-button::before,
-.task-item-pseudo-button::after {
-  content: '';
-  position: absolute;
-}
-
-.task-item-pseudo-button::before {
-  top: -150%;
-}
-
-.task-item-pseudo-button::after {
-  bottom: -150%;
+  font-size: 18px;
+  opacity: 0.6;
 }
 
 .dx-color-scheme-contrast .task-item {
@@ -139,35 +116,5 @@ export default {
 .dx-color-scheme-contrast .task-item-info,
 .dx-color-scheme-dark .task-item-info {
   color: inherit;
-}
-
-.dx-color-scheme-teal-dark .task-item-pseudo-button,
-.dx-color-scheme-teal-dark .task-item-pseudo-button::before,
-.dx-color-scheme-teal-dark .task-item-pseudo-button::after,
-.dx-color-scheme-purple-dark .task-item-pseudo-button,
-.dx-color-scheme-purple-dark .task-item-pseudo-button::before,
-.dx-color-scheme-purple-dark .task-item-pseudo-button::after,
-.dx-color-scheme-orange-dark .task-item-pseudo-button,
-.dx-color-scheme-orange-dark .task-item-pseudo-button::before,
-.dx-color-scheme-orange-dark .task-item-pseudo-button::after,
-.dx-color-scheme-lime-dark .task-item-pseudo-button,
-.dx-color-scheme-lime-dark .task-item-pseudo-button::before,
-.dx-color-scheme-lime-dark .task-item-pseudo-button::after,
-.dx-color-scheme-blue-dark .task-item-pseudo-button,
-.dx-color-scheme-blue-dark .task-item-pseudo-button::before,
-.dx-color-scheme-blue-dark .task-item-pseudo-button::after,
-.dx-color-scheme-darkviolet .task-item-pseudo-button,
-.dx-color-scheme-darkviolet .task-item-pseudo-button::before,
-.dx-color-scheme-darkviolet .task-item-pseudo-button::after,
-.dx-color-scheme-darkmoon .task-item-pseudo-button,
-.dx-color-scheme-darkmoon .task-item-pseudo-button::before,
-.dx-color-scheme-darkmoon .task-item-pseudo-button::after,
-.dx-color-scheme-contrast .task-item-pseudo-button,
-.dx-color-scheme-contrast .task-item-pseudo-button::before,
-.dx-color-scheme-contrast .task-item-pseudo-button::after,
-.dx-color-scheme-dark .task-item-pseudo-button,
-.dx-color-scheme-dark .task-item-pseudo-button::before,
-.dx-color-scheme-dark .task-item-pseudo-button::after {
-  background-color: #dedede;
 }
 </style>
