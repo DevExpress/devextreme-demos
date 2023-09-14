@@ -197,7 +197,7 @@ export default {
 
 .tabs-container {
   display: flex;
-  max-width: 600px;
+  max-width: 675px;
 }
 
 .caption {
