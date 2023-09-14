@@ -3874,7 +3874,8 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "Widget": "Tabs"
+            "Widget": "Tabs",
+            "Badge": "Updated"
           },
           {
             "Title": "Selection",
