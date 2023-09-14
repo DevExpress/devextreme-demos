@@ -37,7 +37,7 @@ export class AppComponent {
 
   stylingModes: string[] = ['primary', 'secondary'];
 
-  iconPositions: string[] = ['top', 'end', 'bottom', 'start'];
+  iconPositions: string[] = ['start', 'top', 'end', 'bottom'];
 
   orientation: string;
 

@@ -99,8 +99,8 @@ export const showNavigationLabel = { 'aria-label': 'Show Navigation' };
 export const scrollContentLabel = { 'aria-label': 'Scroll Content' };
 
 export const iconPositions = [
-  'top',
   'start',
+  'top',
   'end',
   'bottom',
 ];
