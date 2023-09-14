@@ -21,6 +21,8 @@ screenshots
 bundles
 changed-files.json
 
+publish-demos
+
 gulpfile.js/.eslintrc.js
 
 **/azure.file.system.js
