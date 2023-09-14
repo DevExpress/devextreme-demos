@@ -8,8 +8,6 @@
     "moduleResolution": "node",
   },
   "include": [
-    "utils/**/*.ts",
-    "JSDemos/Demos/**/*.ts",
-    "JSDemos/Demos/**/*.tsx",
-  ],
+    "utils/**/*.ts"
+  ]
 }

@@ -2,17 +2,15 @@
     "extends": "../tsconfig.json",
     "compilerOptions": {
         "target": "ES2015",
+        "experimentalDecorators": true,
         "esModuleInterop": true,
         "jsx": "react",
-        "moduleResolution": "node",
-        "experimentalDecorators": true,
-        "types": [
-            "react",
-            "react-dom"
-        ],
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "noEmit": true
     },
     "include": [
-        "./Demos/**/React/*.tsx",
-        "./Demos/**/Angular/app/*.ts"
+        "./Demos/**/*.ts",
+        "./Demos/**/*.tsx"
     ]
 }
