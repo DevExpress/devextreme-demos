@@ -1,193 +1,193 @@
 ﻿<div id="tabs-demo">
     <div class="widget-container">
-		<div class="tabs-container">
-			@(Html.DevExtreme().Tabs()
-				.ID("withText")
-				.DataSource(new JS("tabsText"))
-				.SelectedIndex(0)
-				)
-		</div>
-		<div class="tabs-container">
-			@(Html.DevExtreme().Tabs()
-				.ID("withIconAndText")
-				.DataSource(new JS("tabsTextAndIcon"))
-				.SelectedIndex(0)
-				)
-		</div>
-		<div class="tabs-container">
-			@(Html.DevExtreme().Tabs()
-				.ID("withIcon")
-				.DataSource(new JS("tabsIcon"))
-				.SelectedIndex(0)
-				)
-		</div>
-	</div>
+        <div class="tabs-container">
+            @(Html.DevExtreme().Tabs()
+                .ID("withText")
+                .DataSource(new JS("tabsText"))
+                .SelectedIndex(0)
+                )
+        </div>
+        <div class="tabs-container">
+            @(Html.DevExtreme().Tabs()
+                .ID("withIconAndText")
+                .DataSource(new JS("tabsTextAndIcon"))
+                .SelectedIndex(0)
+                )
+        </div>
+        <div class="tabs-container">
+            @(Html.DevExtreme().Tabs()
+                .ID("withIcon")
+                .DataSource(new JS("tabsIcon"))
+                .SelectedIndex(0)
+                )
+        </div>
+    </div>
 
-	<div class="options">
-		<div class="caption">Options</div>
-		
-		<div class="option">
-			<div>Orientation</div>
-			@(Html.DevExtreme().SelectBox()
-				.DataSource(new[] { "horizontal", "vertical" })
-				.InputAttr("aria-label", "Orientation")
-				.Value("horizontal")
-				.OnValueChanged("orientation_valueChanged")
-				)
-		</div>
+    <div class="options">
+        <div class="caption">Options</div>
+        
+        <div class="option">
+            <div>Orientation</div>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new[] { "horizontal", "vertical" })
+                .InputAttr("aria-label", "Orientation")
+                .Value("horizontal")
+                .OnValueChanged("orientation_valueChanged")
+                )
+        </div>
 
-		<div class="option">
-			<div>Styling Mode</div>
-			@(Html.DevExtreme().SelectBox()
-				.DataSource(new[] { "primary", "secondary" })
-				.InputAttr("aria-label", "Styling Mode")
-				.Value("primary")
-				.OnValueChanged("stylingMode_valueChanged")
-				)
-		</div>
+        <div class="option">
+            <div>Styling Mode</div>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new[] { "primary", "secondary" })
+                .InputAttr("aria-label", "Styling Mode")
+                .Value("primary")
+                .OnValueChanged("stylingMode_valueChanged")
+                )
+        </div>
 
-		<div class="option">
-			<div>Icon position</div>
-			@(Html.DevExtreme().SelectBox()
-				.DataSource(new[] { "top", "start", "end", "bottom" })
-				.InputAttr("aria-label", "Icon Position")
-				.Value("top")
-				.OnValueChanged("iconPosition_valueChanged")
-				)
-		</div>
+        <div class="option">
+            <div>Icon position</div>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(new[] { "top", "start", "end", "bottom" })
+                .InputAttr("aria-label", "Icon Position")
+                .Value("top")
+                .OnValueChanged("iconPosition_valueChanged")
+                )
+        </div>
 
-		<div class="option">
-			@(Html.DevExtreme().CheckBox()
-				.Value(false)
-				.ID("show-navigation-buttons")
-				.Text("Show Navigation Buttons")
-				.OnValueChanged("showNavigation_valueChanged")
-				)
-		</div>
-		<div class="option">
-			@(Html.DevExtreme().CheckBox()
-				.Value(false)
-				.ID("scroll-content")
-				.Text("Scroll Content")
-				.OnValueChanged("scrollContent_valueChanged")
-				)
-		</div>
-	</div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(false)
+                .ID("show-navigation-buttons")
+                .Text("Show Navigation Buttons")
+                .OnValueChanged("showNavigation_valueChanged")
+                )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(false)
+                .ID("scroll-content")
+                .Text("Scroll Content")
+                .OnValueChanged("scrollContent_valueChanged")
+                )
+        </div>
+    </div>
 </div>
 
 <script>
-	function orientation_valueChanged(e) {
-		$('.widget-container').css('flex-direction', e.value === 'horizontal' ? 'column' : 'row');
+    function orientation_valueChanged(e) {
+        $('.widget-container').css('flex-direction', e.value === 'horizontal' ? 'column' : 'row');
 
-		setTabsOption('orientation', e.value);
+        setTabsOption('orientation', e.value);
     }
 
-	function stylingMode_valueChanged(e) {
+    function stylingMode_valueChanged(e) {
         setTabsOption('stylingMode', e.value);
     }
 
-	function iconPosition_valueChanged(e) {
-		setTabsOption('iconPosition', e.value);
-	}
-
-	function showNavigation_valueChanged(e) {
-		setTabsOption('showNavButtons', e.value);
+    function iconPosition_valueChanged(e) {
+        setTabsOption('iconPosition', e.value);
     }
 
-	function scrollContent_valueChanged(e) {
-		setTabsOption('scrollByContent', e.value);
-	}
+    function showNavigation_valueChanged(e) {
+        setTabsOption('showNavButtons', e.value);
+    }
 
-	function setTabsOption(option, value) {
-		$("#withText").dxTabs("instance").option(option, value);
-		$("#withIconAndText").dxTabs("instance").option(option, value);
-		$("#withIcon").dxTabs("instance").option(option, value);
-	}
+    function scrollContent_valueChanged(e) {
+        setTabsOption('scrollByContent', e.value);
+    }
 
-	const tabsText = [
-		{
-			id: 0,
-			text: 'User',
-		},
-		{
-			id: 1,
-			text: 'Analytics',
-		},
-		{
-			id: 2,
-			text: 'Clients',
-		},
-		{
-			id: 3,
-			text: 'Orders',
-		},
-		{
-			id: 4,
-			text: 'Favorites',
-		},
-		{
-			id: 5,
-			text: 'Search',
-		},
-	];
+    function setTabsOption(option, value) {
+        $("#withText").dxTabs("instance").option(option, value);
+        $("#withIconAndText").dxTabs("instance").option(option, value);
+        $("#withIcon").dxTabs("instance").option(option, value);
+    }
 
-	const tabsTextAndIcon = [
-		{
-			id: 0,
-			text: 'User',
-			icon: 'user',
-		},
-		{
-			id: 1,
-			text: 'Analytics',
-			icon: 'chart',
-		},
-		{
-			id: 2,
-			text: 'Clients',
-			icon: 'account-box',
-		},
-		{
-			id: 3,
-			text: 'Orders',
-			icon: 'orders-box',
-		},
-		{
-			id: 4,
-			text: 'Favorites',
-			icon: 'bookmark',
-		},
-		{
-			id: 5,
-			text: 'Search',
-			icon: 'search',
-		},
-	];
+    const tabsText = [
+        {
+            id: 0,
+            text: 'User',
+        },
+        {
+            id: 1,
+            text: 'Analytics',
+        },
+        {
+            id: 2,
+            text: 'Clients',
+        },
+        {
+            id: 3,
+            text: 'Orders',
+        },
+        {
+            id: 4,
+            text: 'Favorites',
+        },
+        {
+            id: 5,
+            text: 'Search',
+        },
+    ];
 
-	const tabsIcon = [
-		{
-			id: 0,
-			icon: 'user',
-		},
-		{
-			id: 1,
-			icon: 'chart',
-		},
-		{
-			id: 2,
-			icon: 'account-box',
-		},
-		{
-			id: 3,
-			icon: 'orders-box',
-		},
-		{
-			id: 4,
-			icon: 'bookmark',
-		},
-		{
-			id: 5,
-			icon: 'search',
-		},
-	];
+    const tabsTextAndIcon = [
+        {
+            id: 0,
+            text: 'User',
+            icon: 'user',
+        },
+        {
+            id: 1,
+            text: 'Analytics',
+            icon: 'chart',
+        },
+        {
+            id: 2,
+            text: 'Clients',
+            icon: 'account-box',
+        },
+        {
+            id: 3,
+            text: 'Orders',
+            icon: 'orders-box',
+        },
+        {
+            id: 4,
+            text: 'Favorites',
+            icon: 'bookmark',
+        },
+        {
+            id: 5,
+            text: 'Search',
+            icon: 'search',
+        },
+    ];
+
+    const tabsIcon = [
+        {
+            id: 0,
+            icon: 'user',
+        },
+        {
+            id: 1,
+            icon: 'chart',
+        },
+        {
+            id: 2,
+            icon: 'account-box',
+        },
+        {
+            id: 3,
+            icon: 'orders-box',
+        },
+        {
+            id: 4,
+            icon: 'bookmark',
+        },
+        {
+            id: 5,
+            icon: 'search',
+        },
+    ];
 </script>
