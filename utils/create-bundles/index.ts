@@ -81,7 +81,7 @@ menu.forEach((meta) => {
     group.Demos?.forEach((demo) => {
       const { Name, Widget } = demo;
 
-      const isSkipDemo = hasLocalizationModule(demo) || (Widget === 'Diagram' && (Name === 'UICustomization'));
+      const isSkipDemo = hasLocalizationModule(demo);
       if (isSkipDemo) {
         return;
       }
