@@ -37,6 +37,7 @@ namespace DevExtreme.MVC.Demos {
                 .Include("~/Scripts/dx.aspnet.data.js")
                 .Include("~/Scripts/vectormap-data/world.js")
                 .Include("~/Scripts/vectormap-data/usa.js");
+            bundle.Transforms.Clear();
             return bundle;
         }
     }
