@@ -31,12 +31,12 @@
 }
 
 ::ng-deep .dx-tab {
-  width: 135px;
+  width: 138px;
 }
 
 ::ng-deep .tabs-container {
   display: flex;
-  max-width: 675px;
+  max-width: 690px;
 }
 
 ::ng-deep .caption {

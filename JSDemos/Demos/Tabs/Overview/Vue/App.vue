@@ -192,12 +192,12 @@ export default {
 }
 
 .dx-tab {
-  width: 135px;
+  width: 138px;
 }
 
 .tabs-container {
   display: flex;
-  max-width: 675px;
+  max-width: 690px;
 }
 
 .caption {
