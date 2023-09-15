@@ -13,7 +13,4 @@
         "./Demos/**/*.ts",
         "./Demos/**/*.tsx"
     ],
-    "exclude": [
-        "./Demos/**/Vue/**"
-    ]
 }
