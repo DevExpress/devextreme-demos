@@ -17,7 +17,9 @@ jobs:
 
     steps:
       - name: Check permissions
-        if: secrets.ASPNET_PAT == "" || secrets.ASPNET_PAT == null
+        env:
+          ASPNET_PAT: ${{ secrets.ASPNET_PAT }}
+        if: env.ASPNET_PAT == ""
         run: |
           echo "Please create your PR from feature branch (not from fork)"
           exit 1
