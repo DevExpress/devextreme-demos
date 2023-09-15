@@ -82,7 +82,7 @@ export default {
   width: 240px;
   min-width: 240px;
   font-size: 12px;
-  color: rgba(0, 0, 0, 0.38);
+  opacity: 0.38;
 }
 
 .task-item-pseudo-button-wrapper {
