@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DevExtreme Demo</title>
+    <title>{{demo_title}}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -15,23 +15,21 @@
     </div>
     
     <script>
-      (() => {
-        const searchParams = new URLSearchParams(window.location.search);
-        const theme = searchParams.get('theme') ?? "dx.material.blue.light";
-        
-        const themeLink = document.createElement('link');
-        themeLink.rel = 'stylesheet';
-        themeLink.href = `https://cdnjs.cloudflare.com/ajax/libs/devextreme-dist/23.1.4/css/${theme}.min.css`;
-        document.head.appendChild(themeLink);
-  
-        window.addEventListener('load', () => {
-          const scriptBundle = document.createElement('script');
-          scriptBundle.type = 'text/javascript';
-          scriptBundle.src = './demo-bundle.js';
-          scriptBundle.defer = true;
-          document.head.appendChild(scriptBundle);
-        });
-      })();
+      const searchParams = new URLSearchParams(window.location.search);
+      const theme = searchParams.get('theme') ?? "dx.material.blue.light";
+      
+      const themeLink = document.createElement('link');
+      themeLink.rel = 'stylesheet';
+      themeLink.href = `https://cdnjs.cloudflare.com/ajax/libs/devextreme-dist/{{dx_version}}/css/${theme}.min.css`;
+      document.head.appendChild(themeLink);
+
+      window.addEventListener('load', () => {
+        const scriptBundle = document.createElement('script');
+        scriptBundle.type = 'text/javascript';
+        scriptBundle.src = './{{bundle_path}}';
+        scriptBundle.defer = true;
+        document.head.appendChild(scriptBundle);
+      });
     </script>
   </body>
 </html>
