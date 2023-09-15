@@ -16,6 +16,12 @@ jobs:
     runs-on: windows-2019
 
     steps:
+      - name: Check permissions
+        if: ${{ secrets.ASPNET_PAT }} == "" || ${{ secrets.ASPNET_PAT }} == null
+        run: |
+          echo "Please create your PR from feature branch (not from fork)"
+          exit 1
+
       - name: Get sources
         uses: actions/checkout@v4
 
