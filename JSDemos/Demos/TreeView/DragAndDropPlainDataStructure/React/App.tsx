@@ -87,7 +87,7 @@ const isChildNode = (parentNode: { itemData: { id: any; }; }, childNode: { paren
   return false;
 };
 
-const getTopVisibleNode = (component: { element: () => any; }) => {
+const getTopVisibleNode = (component) => {
   const treeViewElement = component.element();
   const treeViewTopPosition = treeViewElement.getBoundingClientRect().top;
   const nodes = treeViewElement.querySelectorAll('.dx-treeview-node');

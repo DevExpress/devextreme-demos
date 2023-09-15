@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button } from 'devextreme-react';
-import { Sortable } from 'devextreme-react/sortable';
-import TabPanel from 'devextreme-react/tab-panel';
+import Button from 'devextreme-react/button';
+import Sortable, { SortableTypes } from 'devextreme-react/sortable';
+import TabPanel, { TabPanelTypes } from 'devextreme-react/tab-panel';
 import 'devextreme/data/odata/store';
 
 import service from './data.ts';
@@ -48,15 +48,15 @@ function App() {
     </React.Fragment>
   ), [employees, closeButtonHandler]);
 
-  const onSelectionChanged = React.useCallback((args: { addedItems: any[]; }) => {
+  const onSelectionChanged = React.useCallback((args: TabPanelTypes.SelectionChangedEvent) => {
     setSelectedItem(args.addedItems[0]);
   }, [setSelectedItem]);
 
-  const onTabDragStart = React.useCallback((e: { itemData?: any; fromData?: { [x: string]: any; }; fromIndex: string | number; }) => {
+  const onTabDragStart = React.useCallback((e: SortableTypes.DragStartEvent) => {
     e.itemData = e.fromData[e.fromIndex];
   }, []);
 
-  const onTabDrop = React.useCallback((e: { fromIndex: number; toIndex: number; itemData?: any; }) => {
+  const onTabDrop = React.useCallback((e: SortableTypes.ReorderEvent) => {
     const newEmployees = [...employees];
 
     newEmployees.splice(e.fromIndex, 1);

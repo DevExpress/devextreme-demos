@@ -1,7 +1,7 @@
 import React from 'react';
 import Menu, { MenuTypes } from 'devextreme-react/menu';
-import SelectBox from 'devextreme-react/select-box';
-import CheckBox from 'devextreme-react/check-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
+import CheckBox, { CheckBoxTypes } from 'devextreme-react/check-box';
 import service, { ProductItemType } from './data.ts';
 
 const orientations = ['horizontal', 'vertical'];
@@ -39,15 +39,15 @@ const App = () => {
     }
   }, [setCurrentProduct]);
 
-  const showSubmenuModeChanged = React.useCallback((e: any) => {
+  const showSubmenuModeChanged = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setShowFirstSubmenuModes(e.value);
   }, [setShowFirstSubmenuModes]);
 
-  const orientationChanged = React.useCallback((e: { value?: any; }) => {
+  const orientationChanged = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setOrientation(e.value);
   }, [setOrientation]);
 
-  const hideSubmenuOnMouseLeaveChanged = React.useCallback((e: { value?: any; }) => {
+  const hideSubmenuOnMouseLeaveChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setHideSubmenuOnMouseLeave(e.value);
   }, [setHideSubmenuOnMouseLeave]);
 

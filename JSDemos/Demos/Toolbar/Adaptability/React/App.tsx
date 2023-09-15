@@ -149,7 +149,6 @@ function App() {
   const renderTextAlignMenu = React.useCallback(
     () => (
       <ButtonGroup
-        // displayExpr="text"
         keyExpr="alignment"
         stylingMode="outlined"
         items={textAlignItemsExtended}

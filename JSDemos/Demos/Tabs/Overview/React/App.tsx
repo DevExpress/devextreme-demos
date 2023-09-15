@@ -1,20 +1,20 @@
 import React from 'react';
 
-import Tabs from 'devextreme-react/tabs';
-import SelectBox from 'devextreme-react/select-box';
+import Tabs, { TabsTypes } from 'devextreme-react/tabs';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 
 import { tabs, longtabs, tabLabel } from './data.ts';
 
 const App = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  const onTabsSelectionChanged = React.useCallback((args: { name: string; value?: any; }) => {
+  const onTabsSelectionChanged = React.useCallback((args: TabsTypes.OptionChangedEvent) => {
     if (args.name === 'selectedIndex') {
       setSelectedIndex(args.value);
     }
   }, [setSelectedIndex]);
 
-  const onValueChanged = React.useCallback((args: { value?: any; }) => {
+  const onValueChanged = React.useCallback((args: SelectBoxTypes.ValueChangedEvent) => {
     setSelectedIndex(args.value);
   }, [setSelectedIndex]);
 

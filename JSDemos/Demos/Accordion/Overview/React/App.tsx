@@ -1,5 +1,5 @@
 import React from 'react';
-import Accordion from 'devextreme-react/accordion';
+import Accordion, { AccordionTypes } from 'devextreme-react/accordion';
 import CheckBox, { CheckBoxTypes } from 'devextreme-react/check-box';
 import TagBox, { TagBoxTypes } from 'devextreme-react/tag-box';
 import Slider, { Tooltip, Label, SliderTypes } from 'devextreme-react/slider';
@@ -17,7 +17,7 @@ const App = () => {
   const [collapsible, setCollapsible] = React.useState(false);
   const [animationDuration, setAnimationDuration] = React.useState(300);
 
-  const selectionChanged = React.useCallback((e: { removedItems: any[]; addedItems: string | any[]; }) => {
+  const selectionChanged = React.useCallback((e: AccordionTypes.SelectionChangedEvent) => {
     let newItems = [...selectedItems];
     e.removedItems.forEach((item) => {
       const index = newItems.indexOf(item);

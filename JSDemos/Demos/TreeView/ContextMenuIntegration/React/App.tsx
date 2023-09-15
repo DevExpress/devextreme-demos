@@ -14,7 +14,7 @@ const App = () => {
   const [selectedTreeItem, setSelectedTreeItem] = React.useState(undefined);
 
   const treeViewItemContextMenu = React.useCallback((
-    e: TreeViewTypes.ItemContextMenuEvent & { itemData: { price?: any; }; node: { expanded: any; }; },
+    e: TreeViewTypes.ItemContextMenuEvent & { itemData: { price?: any; }; },
   ) => {
     setSelectedTreeItem(e.itemData);
 

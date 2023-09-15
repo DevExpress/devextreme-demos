@@ -292,17 +292,17 @@ const products = [{
   }],
 }];
 
-interface Product {
+export interface ProductType {
   id: string,
   text: string,
-  items?: Product[],
+  items?: ProductType[],
   expanded?: boolean,
   image?: string,
   price?: number,
 }
 
 export default {
-  getProducts(): Product[] {
+  getProducts(): ProductType[] {
     return products;
   },
 };

@@ -68,7 +68,7 @@ const selectBoxOptions = {
   displayExpr: 'text',
   value: productTypes[0].id,
   inputAttr: { 'aria-label': 'Categories' },
-  onValueChanged: (args: { value: number; }) => {
+  onValueChanged: (args) => {
     if (args.value > 1) {
       productsStore.filter(['type', '=', args.value]);
     } else {

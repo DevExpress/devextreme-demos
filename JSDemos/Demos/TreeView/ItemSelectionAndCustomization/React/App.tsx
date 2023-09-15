@@ -1,8 +1,8 @@
 import React from 'react';
 import TreeView, { TreeViewTypes } from 'devextreme-react/tree-view';
 import List from 'devextreme-react/list';
-import SelectBox from 'devextreme-react/select-box';
-import CheckBox from 'devextreme-react/check-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
+import CheckBox, { CheckBoxTypes } from 'devextreme-react/check-box';
 
 import { employees, showCheckboxesModeLabel, selectionModeLabel } from './data.ts';
 
@@ -23,22 +23,22 @@ const App = () => {
   const [isSelectionModeDisabled, setIsSelectionModeDisabled] = React.useState(false);
   const [isRecursiveDisabled, setIsRecursiveDisabled] = React.useState(false);
 
-  const syncSelection = React.useCallback((treeView: { getSelectedNodes: () => any[]; }) => {
+  const syncSelection = React.useCallback((treeView) => {
     const syncSelectedEmployees = treeView.getSelectedNodes()
-      .map((node: { itemData: any; }) => node.itemData);
+      .map((node) => node.itemData);
 
     setSelectedEmployees(syncSelectedEmployees);
   }, [setSelectedEmployees]);
 
-  const treeViewSelectionChanged = React.useCallback((e: { component: any; }) => {
+  const treeViewSelectionChanged = React.useCallback((e: TreeViewTypes.SelectionChangedEvent) => {
     syncSelection(e.component);
   }, [syncSelection]);
 
-  const treeViewContentReady = React.useCallback((e: { component: any; }) => {
+  const treeViewContentReady = React.useCallback((e: TreeViewTypes.ContentReadyEvent) => {
     syncSelection(e.component);
   }, [syncSelection]);
 
-  const showCheckBoxesModeValueChanged = React.useCallback((e: { value?: any; }) => {
+  const showCheckBoxesModeValueChanged = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     const value = e.value;
     setShowCheckBoxesMode(value);
 
@@ -49,7 +49,7 @@ const App = () => {
     setIsSelectionModeDisabled(value === 'selectAll');
   }, [setShowCheckBoxesMode, setSelectionMode, setIsRecursiveDisabled, setIsSelectionModeDisabled]);
 
-  const selectionModeValueChanged = React.useCallback((e: { value?: any; }) => {
+  const selectionModeValueChanged = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     const value = e.value;
     setSelectionMode(value);
 
@@ -60,11 +60,11 @@ const App = () => {
     setIsRecursiveDisabled(value === 'single');
   }, [setSelectionMode, setSelectNodesRecursive, setIsRecursiveDisabled]);
 
-  const selectNodesRecursiveValueChanged = React.useCallback((e: { value?: any; }) => {
+  const selectNodesRecursiveValueChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setSelectNodesRecursive(e.value);
   }, [setSelectNodesRecursive]);
 
-  const selectByClickValueChanged = React.useCallback((e: { value?: any; }) => {
+  const selectByClickValueChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setSelectByClick(e.value);
   }, [setSelectByClick]);
 
