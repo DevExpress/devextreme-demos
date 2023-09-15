@@ -19,7 +19,7 @@ const buildReactDemo = async (demo: Demo) => {
 
   // Build demo bundle
   const entryDemoPoint = join(sourceDemoPath, 'index.js');
-  const build = await esbuild.build({
+  esbuild.build({
     entryPoints: [entryDemoPoint],
     outdir: destionationDemoPath,
     entryNames: '[dir]/bundle.[hash]',
@@ -27,19 +27,15 @@ const buildReactDemo = async (demo: Demo) => {
     minify: true,
     loader: { '.js': 'jsx' },
     // TODO: Fix globolize aliases
+  }).then(() => {
+    copyDemoMetadata(demo, 'React');
   });
-
-  copyDemoMetadata(demo, 'React');
 };
 
 const menu: Item[] = (menuMeta as any).default;
 menu.forEach((meta) => {
   meta.Groups.forEach((group) => {
     group.Demos?.forEach((demo) => {
-      if (demo.Widget !== 'Accordion') {
-        return;
-      }
-
       if (isSkipDemo(demo)) {
         return;
       }
