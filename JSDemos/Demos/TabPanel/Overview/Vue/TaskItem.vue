@@ -105,16 +105,4 @@ export default {
 .dx-color-scheme-contrast .task-item {
   border: 1px solid #dedede;
 }
-
-.dx-color-scheme-teal-dark .task-item-info,
-.dx-color-scheme-purple-dark .task-item-info,
-.dx-color-scheme-orange-dark .task-item-info,
-.dx-color-scheme-lime-dark .task-item-info,
-.dx-color-scheme-blue-dark .task-item-info,
-.dx-color-scheme-darkviolet .task-item-info,
-.dx-color-scheme-darkmoon .task-item-info,
-.dx-color-scheme-contrast .task-item-info,
-.dx-color-scheme-dark .task-item-info {
-  color: inherit;
-}
 </style>

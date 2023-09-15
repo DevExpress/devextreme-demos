@@ -2,6 +2,7 @@
   <div class="tabpanel-demo">
     <div class="widget-container">
       <DxTabPanel
+        class="dx-theme-background-color"
         width="100%"
         height="418"
         item-template="tabPanelItem"
@@ -185,32 +186,5 @@ export default {
 
 .dx-theme-material .widget-container {
   background-color: rgba(191, 191, 191, 0.15);
-}
-
-.dx-color-scheme-teal-light .dx-tabpanel,
-.dx-color-scheme-orange-light .dx-tabpanel,
-.dx-color-scheme-lime-light .dx-tabpanel,
-.dx-color-scheme-blue-light .dx-tabpanel,
-.dx-color-scheme-purple-light .dx-tabpanel {
-  background-color: #fff;
-}
-
-.dx-color-scheme-teal-dark .dx-tabpanel,
-.dx-color-scheme-purple-dark .dx-tabpanel,
-.dx-color-scheme-orange-dark .dx-tabpanel,
-.dx-color-scheme-lime-dark .dx-tabpanel,
-.dx-color-scheme-blue-dark .dx-tabpanel {
-  background-color: #363640;
-}
-
-.dx-color-scheme-teal-light .option-label,
-.dx-color-scheme-purple-light .option-label,
-.dx-color-scheme-orange-light .option-label,
-.dx-color-scheme-lime-light .option-label,
-.dx-color-scheme-blue-light .option-label,
-.dx-color-scheme-carmine .option-label,
-.dx-color-scheme-greenmist .option-label,
-.dx-color-scheme-light .option-label {
-  color: rgba(0, 0, 0, 0.6);
 }
 </style>

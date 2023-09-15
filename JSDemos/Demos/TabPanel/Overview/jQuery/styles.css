@@ -93,7 +93,7 @@
   width: 240px;
   min-width: 240px;
   font-size: 12px;
-  color: rgba(0, 0, 0, 0.38);
+  opacity: 0.38;
 }
 
 .task-item-pseudo-button-wrapper {
@@ -119,43 +119,4 @@
 
 .dx-color-scheme-contrast .task-item {
   border: 1px solid #dedede;
-}
-
-.dx-color-scheme-teal-light .dx-tabpanel,
-.dx-color-scheme-orange-light .dx-tabpanel,
-.dx-color-scheme-lime-light .dx-tabpanel,
-.dx-color-scheme-blue-light .dx-tabpanel,
-.dx-color-scheme-purple-light .dx-tabpanel {
-  background-color: #fff;
-}
-
-.dx-color-scheme-teal-dark .dx-tabpanel,
-.dx-color-scheme-purple-dark .dx-tabpanel,
-.dx-color-scheme-orange-dark .dx-tabpanel,
-.dx-color-scheme-lime-dark .dx-tabpanel,
-.dx-color-scheme-blue-dark .dx-tabpanel {
-  background-color: #363640;
-}
-
-.dx-color-scheme-teal-light .option-label,
-.dx-color-scheme-purple-light .option-label,
-.dx-color-scheme-orange-light .option-label,
-.dx-color-scheme-lime-light .option-label,
-.dx-color-scheme-blue-light .option-label,
-.dx-color-scheme-carmine .option-label,
-.dx-color-scheme-greenmist .option-label,
-.dx-color-scheme-light .option-label {
-  color: rgba(0, 0, 0, 0.6);
-}
-
-.dx-color-scheme-teal-dark .task-item-info,
-.dx-color-scheme-purple-dark .task-item-info,
-.dx-color-scheme-orange-dark .task-item-info,
-.dx-color-scheme-lime-dark .task-item-info,
-.dx-color-scheme-blue-dark .task-item-info,
-.dx-color-scheme-darkviolet .task-item-info,
-.dx-color-scheme-darkmoon .task-item-info,
-.dx-color-scheme-contrast .task-item-info,
-.dx-color-scheme-dark .task-item-info {
-  color: inherit;
 }
