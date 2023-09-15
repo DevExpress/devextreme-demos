@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from 'devextreme-react';
-import { Sortable } from 'devextreme-react/sortable';
+import Button from 'devextreme-react/button';
+import Sortable from 'devextreme-react/sortable';
 import TabPanel from 'devextreme-react/tab-panel';
 import 'devextreme/data/odata/store';
 import service from './data.js';
