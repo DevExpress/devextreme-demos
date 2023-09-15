@@ -20,11 +20,11 @@
             [className]="getTaskClassName(task.priority)"
           >
             <p class="task-item-text">
-              {{task.text}}
+              {{ task.text }}
             </p>
 
             <p class="task-item-info">
-              {{task.date}} by {{task.assignedBy}}
+              {{ task.date }} by {{ task.assignedBy }}
             </p>
 
             <div class="task-item-pseudo-button-wrapper">
@@ -46,7 +46,7 @@
         [inputAttr]="{ 'aria-label': 'Tabs positions' }"
         [items]="tabsPositions"
         [value]="tabsPosition"
-        (onValueChanged)="onTabsPositionChanged"
+        (onValueChanged)="(onTabsPositionChanged)"
       ></dx-select-box>
     </div>
 
@@ -57,7 +57,7 @@
         [inputAttr]="{ 'aria-label': 'Tabs positions' }"
         [items]="stylingModes"
         [value]="stylingMode"
-        (onValueChanged)="onStylingModeChanged"
+        (onValueChanged)="(onStylingModeChanged)"
       ></dx-select-box>
     </div>
 
@@ -68,7 +68,7 @@
         [inputAttr]="{ 'aria-label': 'Icon positions' }"
         [items]="iconPositions"
         [value]="iconPosition"
-        (onValueChanged)="onIconPositionChanged"
+        (onValueChanged)="(onIconPositionChanged)"
       ></dx-select-box>
     </div>
 
@@ -77,7 +77,7 @@
         text="Show navigation buttons"
         [elementAttr]="{ 'aria-label': 'Show navigation buttons' }"
         [value]="showNavButtons"
-        (onValueChanged)="onShowNavButtonsChanged"
+        (onValueChanged)="(onShowNavButtonsChanged)"
       ></dx-check-box>
     </div>
   </div>
