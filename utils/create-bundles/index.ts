@@ -2,7 +2,7 @@ import * as esbuild from 'esbuild';
 import { join } from 'path';
 import { existsSync, mkdirSync } from 'fs-extra';
 import {
-  copyDemoMetadata, getSourcePathByDemo, getDestinationPathByDemo, isSkipDemo,
+  copyDemoMetadata, getSourcePathByDemo, getDestinationPathByDemo, isSkipDemo, copyMetadata,
 } from './helper';
 import { Demo, Item } from './helper/types';
 
@@ -44,3 +44,5 @@ menu.forEach((meta) => {
     });
   });
 });
+
+copyMetadata();

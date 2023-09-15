@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-return */
 import { join } from 'path';
 import {
-  copySync, readdirSync, readFileSync, writeFileSync,
+  copySync, existsSync, readdirSync, readFileSync, writeFileSync,
 } from 'fs-extra';
 import { version as DXVersion } from 'devextreme/package.json';
 import { Demo } from './types';
@@ -21,8 +21,9 @@ export const copyMetadata = () => {
   const destinationData = join(destinationPublishDir, 'data');
   const destinationImages = join(destinationPublishDir, 'images');
 
-  const diagramCss = join(__dirname, '..', '..', 'node_modules', 'devexpress-diagram', 'dist', 'dx-diagram.css');
-  const ganttCss = join(__dirname, '..', '..', 'node_modules', 'devexpress-gantt', 'dist', 'dx-gantt.css');
+  const nodeModulesPath = join(__dirname, '..', '..', '..', 'node_modules');
+  const diagramCss = join(nodeModulesPath, 'devexpress-diagram', 'dist', 'dx-diagram.css');
+  const ganttCss = join(nodeModulesPath, 'devexpress-gantt', 'dist', 'dx-gantt.css');
 
   copySync(diagramCss, join(destinationCss, 'dx-diagram.css'));
   copySync(ganttCss, join(destinationCss, 'dx-gantt.css'));
@@ -32,7 +33,13 @@ export const copyMetadata = () => {
 
 const getBundlePath = (distDemoPath: string) => readdirSync(distDemoPath).find((item) => item.startsWith('bundle'));
 
-const copyDemoStyles = (source: string, dist: string) => copySync(join(source, 'styles.css'), join(dist, 'styles.css'));
+const copyDemoStyles = (source: string, dist: string) => {
+  const sourceCss = join(source, 'styles.css');
+  const destinationCss = join(dist, 'styles.css');
+  if (existsSync(sourceCss)) {
+    copySync(sourceCss, destinationCss);
+  }
+};
 
 const copyReactDemoLayout = (demo: Demo, framework: string): void => {
   const destinationDemoPath = getDestinationPathByDemo(demo, framework);
