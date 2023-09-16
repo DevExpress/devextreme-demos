@@ -20,7 +20,6 @@ const App = () => {
   const [stylingMode, setStylingMode] = React.useState(stylingModes[0]);
   const [iconPosition, setIconPosition] = React.useState(iconPositions[0]);
   const [showNavButtons, setShowNavButtons] = React.useState(true);
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
 
   const onTabsPositionChanged = React.useCallback((args) => {
     setTabsPosition(args.value);
@@ -38,12 +37,6 @@ const App = () => {
     setShowNavButtons(args.value);
   }, [setShowNavButtons]);
 
-  const onSelectionChanged = React.useCallback((args) => {
-    if (args.name === 'selectedIndex') {
-      setSelectedIndex(args.value);
-    }
-  }, [setSelectedIndex]);
-
   return (
     <div className="tabpanel-demo">
       <div className="widget-container">
@@ -53,14 +46,13 @@ const App = () => {
           height={418}
           animationEnabled={true}
           swipeEnabled={true}
+          selectedIndex={0}
           dataSource={dataSource}
-          selectedIndex={selectedIndex}
           tabsPosition={tabsPosition}
           stylingMode={stylingMode}
           iconPosition={iconPosition}
           showNavButtons={showNavButtons}
           itemComponent={TabPanelItem}
-          onOptionChanged={onSelectionChanged}
         />
       </div>
 

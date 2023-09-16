@@ -28,28 +28,28 @@ const navButtonsCheckBoxLabel = { 'aria-label': 'Show navigation buttons' };
 const tasks = [
   {
     status: 'Not Started',
-    priority: 'hight',
+    priority: 'high',
     text: 'Revenue Projections',
     date: '2023/09/16',
     assignedBy: 'John Heart',
   },
   {
     status: 'Not Started',
-    priority: 'hight',
+    priority: 'high',
     text: 'New Brochures',
     date: '2023/09/16',
     assignedBy: 'Samantha Bright',
   },
   {
     status: 'Not Started',
-    priority: 'normal',
+    priority: 'medium',
     text: 'Training',
     date: '2023/09/16',
     assignedBy: 'Arthur Miller',
   },
   {
     status: 'Not Started',
-    priority: 'normal',
+    priority: 'medium',
     text: 'NDA',
     date: '2023/09/16',
     assignedBy: 'Robert Reagan',
@@ -78,14 +78,14 @@ const tasks = [
   },
   {
     status: 'Help Needed',
-    priority: 'hight',
+    priority: 'high',
     text: 'Shippers',
     date: '2023/09/16',
     assignedBy: 'Ed Holmes',
   },
   {
     status: 'Help Needed',
-    priority: 'normal',
+    priority: 'medium',
     text: 'Hardware Upgrade',
     date: '2023/09/16',
     assignedBy: 'Barb Banks',
@@ -93,14 +93,14 @@ const tasks = [
 
   {
     status: 'In Progress',
-    priority: 'normal',
+    priority: 'medium',
     text: 'Online Sales',
     date: '2023/09/16',
     assignedBy: 'Cindy Stanwick',
   },
   {
     status: 'In Progress',
-    priority: 'normal',
+    priority: 'medium',
     text: 'New Website Design',
     date: '2023/09/16',
     assignedBy: 'Sammy Hill',
@@ -114,7 +114,7 @@ const tasks = [
   },
   {
     status: 'In Progress',
-    priority: 'normal',
+    priority: 'medium',
     text: 'Support',
     date: '2023/09/16',
     assignedBy: 'Victor Norris',
@@ -129,28 +129,28 @@ const tasks = [
 
   {
     status: 'Deferred',
-    priority: 'normal',
+    priority: 'medium',
     text: 'New Database',
     date: '2023/09/16',
     assignedBy: 'Samantha Bright',
   },
   {
     status: 'Deferred',
-    priority: 'hight',
+    priority: 'high',
     text: 'Automation Server',
     date: '2023/09/16',
     assignedBy: 'Arthur Miller',
   },
   {
     status: 'Deferred',
-    priority: 'normal',
+    priority: 'medium',
     text: 'Retail Sales',
     date: '2023/09/16',
     assignedBy: 'Robert Reagan',
   },
   {
     status: 'Deferred',
-    priority: 'normal',
+    priority: 'medium',
     text: 'Shipping Labels',
     date: '2023/09/16',
     assignedBy: 'Greta Sims',
@@ -165,28 +165,28 @@ const tasks = [
 
   {
     status: 'Rejected',
-    priority: 'hight',
+    priority: 'high',
     text: 'Schedule Meeting with Sales Team',
     date: '2023/09/16',
     assignedBy: 'Sandra Johnson',
   },
   {
     status: 'Rejected',
-    priority: 'normal',
+    priority: 'medium',
     text: 'Confirm Availability for Sales Meeting',
     date: '2023/09/16',
     assignedBy: 'Ed Holmes',
   },
   {
     status: 'Rejected',
-    priority: 'normal',
+    priority: 'medium',
     text: 'Reschedule Sales Team Meeting',
     date: '2023/09/16',
     assignedBy: 'Barb Banks',
   },
   {
     status: 'Rejected',
-    priority: 'hight',
+    priority: 'high',
     text: 'Update Database with New Leads',
     date: '2023/09/16',
     assignedBy: 'Kevin Carter',
@@ -201,7 +201,7 @@ const tasks = [
 
   {
     status: 'Completed',
-    priority: 'normal',
+    priority: 'medium',
     text: 'Territory Sales Breakdown Report',
     date: '2023/09/16',
     assignedBy: 'Sammy Hill',
@@ -215,7 +215,7 @@ const tasks = [
   },
   {
     status: 'Completed',
-    priority: 'hight',
+    priority: 'high',
     text: 'Staff Productivity Report',
     date: '2023/09/16',
     assignedBy: 'Victor Norris',

@@ -14,7 +14,6 @@
         :styling-mode="stylingMode"
         :icon-position="iconPosition"
         :show-nav-buttons="showNavButtons"
-        :on-option-changed="onSelectionChanged"
       >
         <template #tabPanelItem="{ data }">
           <TabPanelItem
@@ -34,7 +33,6 @@
           :input-attr="tabsPositionsSelectBoxLabel"
           :items="tabsPositions"
           :value="tabsPosition"
-          :on-value-changed="onTabsPositionChanged"
         />
       </div>
 
@@ -45,7 +43,6 @@
           :input-attr="stylingModesSelectBoxLabel"
           :items="stylingModes"
           :value="stylingMode"
-          :on-value-changed="onStylingModeChanged"
         />
       </div>
 
@@ -56,7 +53,6 @@
           :input-attr="iconPositionsSelectBoxLabel"
           :items="iconPositions"
           :value="iconPosition"
-          :on-value-changed="onIconPositionChanged"
         />
       </div>
 
@@ -65,7 +61,6 @@
           text="Show navigation buttons"
           :element-attr="navButtonsCheckBoxLabel"
           :value="showNavButtons"
-          :on-value-changed="onShowNavButtonsChanged"
         />
       </div>
     </div>
@@ -114,26 +109,6 @@ export default {
       showNavButtons: true,
       selectedIndex: 0,
     };
-  },
-
-  methods: {
-    onTabsPositionChanged(args) {
-      this.tabsPosition = args.value;
-    },
-    onStylingModeChanged(args) {
-      this.stylingMode = args.value;
-    },
-    onIconPositionChanged(args) {
-      this.iconPosition = args.value;
-    },
-    onShowNavButtonsChanged(args) {
-      this.showNavButtons = args.value;
-    },
-    onSelectionChanged(args) {
-      if (args.name === 'selectedIndex') {
-        this.selectedIndex = args.value;
-      }
-    },
   },
 };
 </script>

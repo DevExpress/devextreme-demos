@@ -56,22 +56,6 @@ export class AppComponent {
     this.dataSource = service.getItems();
   }
 
-  onTabsPositionChanged({ value }: { value: string }) {
-    this.tabsPosition = value;
-  }
-
-  onStylingModeChanged({ value }: { value: string }) {
-    this.stylingMode = value;
-  }
-
-  onIconPositionChanged({ value }: { value: string }) {
-    this.iconPosition = value;
-  }
-
-  onShowNavButtonsChanged({ value }: { value: boolean }) {
-    this.showNavButtons = value;
-  }
-
   getTaskClassName(priority: string) {
     return `task-item task-item-priority-${priority}`;
   }
