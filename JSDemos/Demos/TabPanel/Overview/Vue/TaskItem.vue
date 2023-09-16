@@ -57,11 +57,11 @@ export default {
   border-radius: 4px;
 }
 
-.task-item-priority-hight::before {
+.task-item-priority-high::before {
   background-color: #e1bee7;
 }
 
-.task-item-priority-normal::before {
+.task-item-priority-medium::before {
   background-color: #ffe0b2;
 }
 
@@ -103,6 +103,6 @@ export default {
 }
 
 .dx-color-scheme-contrast .task-item {
-  border: 1px solid #dedede;
+  border: 1px solid #fff;
 }
 </style>

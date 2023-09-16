@@ -28,7 +28,9 @@ export default {
 </script>
 
 <style>
-.tabpanel-item .task-item:not(:last-child) {
-  margin-bottom: 12px;
+.tabpanel-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 </style>
