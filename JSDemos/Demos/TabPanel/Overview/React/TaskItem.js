@@ -11,9 +11,7 @@ function TaskItem({ prop }) {
         {prop.date} by {prop.assignedBy}
       </p>
 
-      <div className="task-item-pseudo-button-wrapper">
-        <i className="task-item-pseudo-button dx-icon dx-icon-overflow"></i>
-      </div>
+      <i className="task-item-pseudo-button dx-icon dx-icon-overflow"></i>
     </div>
   );
 }

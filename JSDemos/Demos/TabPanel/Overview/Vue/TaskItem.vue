@@ -8,9 +8,7 @@
       {{ task.date }} by {{ task.assignedBy }}
     </p>
 
-    <div class="task-item-pseudo-button-wrapper">
-      <i class="task-item-pseudo-button dx-icon dx-icon-overflow"/>
-    </div>
+    <i class="task-item-pseudo-button dx-icon dx-icon-overflow"/>
   </div>
 </template>
 
@@ -85,20 +83,13 @@ export default {
   opacity: 0.38;
 }
 
-.task-item-pseudo-button-wrapper {
+.task-item-pseudo-button {
   position: absolute;
   right: 8px;
   top: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
+  font-size: 18px;
   transform: translateY(-50%);
   cursor: pointer;
-}
-
-.task-item-pseudo-button {
-  font-size: 18px;
   opacity: 0.6;
 }
 
