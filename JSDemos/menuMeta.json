@@ -3847,7 +3847,8 @@
             "Name": "Overview",
             "Widget": "TabPanel",
             "MvcAdditionalFiles": [
-              "/Models/Company.cs",
+              "/Models/TabPanelItem.cs",
+              "/Models/TaskItem.cs",
               "/Models/SampleData/TabPanelData.cs"
             ]
           },
