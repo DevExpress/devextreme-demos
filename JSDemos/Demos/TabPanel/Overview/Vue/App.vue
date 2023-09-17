@@ -8,12 +8,12 @@
         item-template="tabPanelItem"
         :animation-enabled="true"
         :swipe-enabled="true"
+        v-model:tabs-position="tabsPosition"
+        v-model:styling-mode="stylingMode"
+        v-model:icon-position="iconPosition"
+        v-model:show-nav-buttons="showNavButtons"
         :data-source="dataSource"
         :selected-index="selectedIndex"
-        :tabs-position="tabsPosition"
-        :styling-mode="stylingMode"
-        :icon-position="iconPosition"
-        :show-nav-buttons="showNavButtons"
       >
         <template #tabPanelItem="{ data }">
           <TabPanelItem
@@ -30,9 +30,9 @@
         <div class="option-label">Tabs position</div>
 
         <DxSelectBox
+          v-model:value="tabsPosition"
           :input-attr="tabsPositionsSelectBoxLabel"
           :items="tabsPositions"
-          :value="tabsPosition"
         />
       </div>
 
@@ -40,9 +40,9 @@
         <div class="option-label">Styling mode</div>
 
         <DxSelectBox
+          v-model:value="stylingMode"
           :input-attr="stylingModesSelectBoxLabel"
           :items="stylingModes"
-          :value="stylingMode"
         />
       </div>
 
@@ -50,17 +50,17 @@
         <div class="option-label">Icon position</div>
 
         <DxSelectBox
+          v-model:value="iconPosition"
           :input-attr="iconPositionsSelectBoxLabel"
           :items="iconPositions"
-          :value="iconPosition"
         />
       </div>
 
       <div class="option">
         <DxCheckBox
           text="Show navigation buttons"
+          v-model:value="showNavButtons"
           :element-attr="navButtonsCheckBoxLabel"
-          :value="showNavButtons"
         />
       </div>
     </div>
