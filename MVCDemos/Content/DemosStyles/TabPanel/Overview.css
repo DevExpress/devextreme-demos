@@ -20,10 +20,6 @@
     min-width: 120px;
 }
 
-.dx-multiview-item-content {
-    padding: 24px;
-}
-
 .options {
     display: inline-flex;
     flex-direction: column;
@@ -38,6 +34,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    padding: 24px;
   }
 
 .caption {
