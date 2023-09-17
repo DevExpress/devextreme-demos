@@ -136,10 +136,6 @@ export default {
   min-width: 120px;
 }
 
-.dx-multiview-item-content {
-  padding: 24px;
-}
-
 .options {
   display: inline-flex;
   flex-direction: column;
