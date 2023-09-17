@@ -129,7 +129,7 @@ export default {
 
 .dx-theme-material .dx-tabpanel {
   border-radius: 8px;
-  overflow: hidden;
+  overflow: clip;
 }
 
 .dx-tabs-vertical {

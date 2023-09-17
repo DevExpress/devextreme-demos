@@ -13,7 +13,7 @@
 
 ::ng-deep .dx-theme-material .dx-tabpanel {
   border-radius: 8px;
-  overflow: hidden;
+  overflow: clip;
 }
 
 ::ng-deep .dx-tabs-vertical {
