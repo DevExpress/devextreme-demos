@@ -306,27 +306,27 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 tasks = NotStartedTaskItems
             },
             new TabPanelItem {
-                icon = "task-helpneeded",
+                icon = "taskhelpneeded",
                 title = "Help Needed",
                 tasks = HelpNeededTaskItems
             },
             new TabPanelItem {
-                icon = "task-inprogress",
+                icon = "taskinprogress",
                 title = "In Progress",
                 tasks = InProgressTaskItems
             },
             new TabPanelItem {
-                icon = "task-stop",
+                icon = "taskstop",
                 title = "Deferred",
                 tasks = DeferredTaskItems
             },
             new TabPanelItem {
-                icon = "task-rejected",
+                icon = "taskrejected",
                 title = "Rejected",
                 tasks = RejectedTaskItems
             },
             new TabPanelItem {
-                icon = "task-complete",
+                icon = "taskcomplete",
                 title = "Completed",
                 tasks = CompletedTaskItems
             }

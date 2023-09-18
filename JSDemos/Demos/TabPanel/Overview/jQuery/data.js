@@ -229,27 +229,27 @@ const dataSource = [
     tasks: tasks.filter((item) => item.status === 'Not Started'),
   },
   {
-    icon: 'task-helpneeded',
+    icon: 'taskhelpneeded',
     title: 'Help Needed',
     tasks: tasks.filter((item) => item.status === 'Help Needed'),
   },
   {
-    icon: 'task-inprogress',
+    icon: 'taskinprogress',
     title: 'In Progress',
     tasks: tasks.filter((item) => item.status === 'In Progress'),
   },
   {
-    icon: 'task-stop',
+    icon: 'taskstop',
     title: 'Deferred',
     tasks: tasks.filter((item) => item.status === 'Deferred'),
   },
   {
-    icon: 'task-rejected',
+    icon: 'taskrejected',
     title: 'Rejected',
     tasks: tasks.filter((item) => item.status === 'Rejected'),
   },
   {
-    icon: 'task-complete',
+    icon: 'taskcomplete',
     title: 'Completed',
     tasks: tasks.filter((item) => item.status === 'Completed'),
   },
