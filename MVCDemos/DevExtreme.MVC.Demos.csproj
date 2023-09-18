@@ -571,6 +571,8 @@
     <Compile Include="Models\SelectedEmployee.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="Models\SubvalueIndicator.cs" />
+    <Compile Include="Models\TaskItem.cs" />
+    <Compile Include="Models\TabPanelItem.cs" />
     <Compile Include="Models\EmployeeTask.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\ContinentPopulation.cs" />

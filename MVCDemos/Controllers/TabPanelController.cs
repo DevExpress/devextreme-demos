@@ -19,6 +19,11 @@ namespace DevExtreme.MVC.Demos.Controllers {
         public ActionResult GetCompanies(DataSourceLoadOptions loadOptions) {
             return Content(JsonConvert.SerializeObject(DataSourceLoader.Load(TabPanelData.Companies, loadOptions)), "application/json");
         }
+
+        [HttpGet]
+        public ActionResult GetTabPanelItems(DataSourceLoadOptions loadOptions) {
+            return Content(JsonConvert.SerializeObject(DataSourceLoader.Load(TabPanelData.TabPanelItems, loadOptions)), "application/json");
+        }
         #endregion
     }
 }
