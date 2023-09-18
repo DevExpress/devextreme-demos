@@ -1032,6 +1032,7 @@
     <Content Include="Content\DemosStyles\TextArea\Overview.css" />
     <Content Include="Content\DemosStyles\TagBox\Overview.css" />
     <Content Include="Content\DemosStyles\TabPanel\Overview.css" />
+    <Content Include="Content\DemosStyles\TabPanel\Templates.css" />
     <Content Include="Content\DemosStyles\Accordion\Overview.css" />
     <Content Include="Content\DemosStyles\Autocomplete\Overview.css" />
     <Content Include="Content\DemosStyles\Calendar\Overview.css" />
@@ -2318,6 +2319,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\TabPanel\Overview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TabPanel\Templates.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Accordion\Overview.cshtml" />
