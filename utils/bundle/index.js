@@ -116,7 +116,7 @@ const defaultBuilderConfig = {
     'devextreme/*': 'node_modules/devextreme/cjs/*',
     'devexpress-gantt': 'node_modules/devexpress-gantt/dist/dx-gantt.min.js',
     'devexpress-diagram': 'node_modules/devexpress-diagram/dist/dx-diagram.min.js',
-    [`devextreme-${framework}/*`]: `node_modules/devextreme-${framework}/*`,
+    [`devextreme-${framework}/*`]: `node_modules/devextreme-${framework}/${['react', 'vue'].includes(framework) ? 'cjs/*' : '*'}`,
     ...additionPaths,
   },
 };
