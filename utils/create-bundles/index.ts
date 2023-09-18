@@ -19,7 +19,7 @@ const buildReactDemo = async (demo: Demo) => {
 
   // Build demo bundle
   const entryDemoPoint = join(sourceDemoPath, 'index.js');
-  esbuild.build({
+  await esbuild.build({
     entryPoints: [entryDemoPoint],
     outdir: destionationDemoPath,
     entryNames: '[dir]/bundle.[hash]',
@@ -32,17 +32,25 @@ const buildReactDemo = async (demo: Demo) => {
   });
 };
 
-const menu: Item[] = (menuMeta as any).default;
-menu.forEach((meta) => {
-  meta.Groups.forEach((group) => {
-    group.Demos?.forEach((demo) => {
-      if (isSkipDemo(demo)) {
-        return;
+const buildDemo = async () => {
+  const menu: Item[] = (menuMeta as any).default;
+
+  for (const meta of menu) {
+    const groups = meta.Groups;
+    for (const group of groups) {
+      const demos = group.Demos || [];
+      for (const demo of demos) {
+        if (isSkipDemo(demo)) {
+          return;
+        }
+
+        console.log(`Demo: ${demo.Widget} - ${demo.Name}`);
+        // eslint-disable-next-line no-await-in-loop
+        await buildReactDemo(demo);
       }
+    }
+  }
+};
 
-      buildReactDemo(demo);
-    });
-  });
-});
-
+buildDemo();
 copyMetadata();
