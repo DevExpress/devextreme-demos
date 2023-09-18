@@ -3846,6 +3846,7 @@
             "Title": "Overview",
             "Name": "Overview",
             "Widget": "TabPanel",
+            "Badge": "New",
             "MvcAdditionalFiles": [
               "/Models/TabPanelItem.cs",
               "/Models/TaskItem.cs",
