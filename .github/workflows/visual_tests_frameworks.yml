@@ -80,7 +80,10 @@ jobs:
 
     - name: Inject descriptions
       working-directory: ./devextreme
-      run: npm run devextreme:inject-descriptions
+      run: |
+        mkdir -p ./artifacts/internal-tools
+        cp ../devextreme-documentation-repo/artifacts/internal-tools/Descriptions.json ./artifacts/internal-tools/
+        npm run devextreme:inject-descriptions
 
     # Pack
 
