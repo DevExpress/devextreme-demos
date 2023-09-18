@@ -1,4 +1,4 @@
-.tabpanel-item {
+::ng-deep .tabpanel-item {
   height: 200px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -10,40 +10,36 @@
   padding-top: 55px;
 }
 
-.mobile .tabpanel-item {
+::ng-deep .mobile .tabpanel-item {
   padding-top: 10px;
 }
 
-.tabpanel-item > div {
+::ng-deep .tabpanel-item > div {
   float: left;
   padding: 0 85px 10px 10px;
 }
 
-.tabpanel-item p {
+::ng-deep .tabpanel-item p {
   font-size: 16px;
   margin: 0;
 }
 
-.item-box {
+::ng-deep .item-box {
   font-size: 16px;
   margin: 15px 0 45px 10px;
 }
 
-.options {
+::ng-deep .options {
   padding: 20px;
   background-color: rgba(191, 191, 191, 0.15);
   margin-top: 20px;
 }
 
-.caption {
+::ng-deep .caption {
   font-size: 18px;
   font-weight: 500;
 }
 
-.option {
+::ng-deep .option {
   margin-top: 10px;
-}
-
-.dx-tabs-scrollable .dx-tab {
-  display: table-cell;
 }
