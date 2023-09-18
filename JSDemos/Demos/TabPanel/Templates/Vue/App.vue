@@ -34,6 +34,7 @@
               Website:
               <a
                 :href="company.Website"
+                rel="noreferrer"
                 target="_blank"
               >
                 {{ company.Website }}
