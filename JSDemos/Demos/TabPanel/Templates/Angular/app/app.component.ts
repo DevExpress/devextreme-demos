@@ -2,11 +2,9 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import {
-  DxTabPanelModule, DxCheckBoxModule, DxSelectBoxModule, DxTemplateModule,
-} from 'devextreme-angular';
+import { DxTabPanelModule, DxCheckBoxModule, DxTemplateModule } from 'devextreme-angular';
 
-import { TabPanelItem, Service } from './app.service';
+import { Company, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -19,45 +17,14 @@ if (!/localhost/.test(document.location.host)) {
   providers: [Service],
   preserveWhitespaces: true,
 })
-
 export class AppComponent {
-  dataSource: TabPanelItem[];
+  companies: Company[];
 
-  tabsPositions: string[] = [
-    'left',
-    'top',
-    'right',
-    'bottom',
-  ];
-
-  tabsPosition: string = this.tabsPositions[0];
-
-  stylingModes: string[] = [
-    'secondary',
-    'primary',
-  ];
-
-  stylingMode: string = this.stylingModes[0];
-
-  iconPositions: string[] = [
-    'top',
-    'start',
-    'end',
-    'bottom',
-  ];
-
-  iconPosition: string = this.iconPositions[0];
-
-  selectedIndex = 0;
-
-  showNavButtons = true;
+  itemCount: number;
 
   constructor(service: Service) {
-    this.dataSource = service.getItems();
-  }
-
-  getTaskClassName(priority: string) {
-    return `task-item task-item-priority-${priority}`;
+    this.companies = service.getCompanies();
+    this.itemCount = this.companies.length;
   }
 }
 
@@ -67,7 +34,6 @@ export class AppComponent {
     BrowserTransferStateModule,
     DxTabPanelModule,
     DxCheckBoxModule,
-    DxSelectBoxModule,
     DxTemplateModule,
   ],
   declarations: [AppComponent],
