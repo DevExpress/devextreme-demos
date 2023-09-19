@@ -1,4 +1,6 @@
-import { Component, NgModule, ViewChild, enableProdMode } from '@angular/core';
+import {
+  Component, NgModule, ViewChild, enableProdMode,
+} from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
