@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import CheckBox from 'devextreme-react/check-box';
 import SelectBox from 'devextreme-react/select-box';
 import Button from 'devextreme-react/button';
@@ -17,7 +17,7 @@ const msInDay = 1000 * 60 * 60 * 24;
 const initialValue = [now, now + msInDay];
 
 export default function App() {
-  const calendar = useRef(null);
+  const calendar = React.useRef(null);
   const [selectWeekOnClick, setSelectWeekOnClick] = React.useState(true);
   const [selectionMode, setSelectionMode] = React.useState<CalendarTypes.CalendarSelectionMode>('multiple');
   const [minDateValue, setMinDateValue] = React.useState(null);
