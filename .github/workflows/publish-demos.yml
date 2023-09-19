@@ -18,9 +18,18 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Read version from package.json and append "-stable"
+        run: echo echo "STABLE_VERSION=$(jq -r '.version' package.json | awk -F. '{print $1 "." $2}')-stable" >> $GITHUB_ENV
+
       - name: Install Dependencies
         run: npm install
-      
+
+      - name: Install stable devextreme pacakges
+        run: npm install devextreme@${{ env.STABLE_VERSION }} devextreme-angular@${{ env.STABLE_VERSION }} devextreme-react@${{ env.STABLE_VERSION }} devextreme-vue@${{ env.STABLE_VERSION }}
+
       - name: Copy metadata
         run: npm run make-demos-bundle -- --copy-metadata
 
