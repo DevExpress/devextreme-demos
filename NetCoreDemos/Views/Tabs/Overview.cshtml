@@ -1,26 +1,20 @@
 ﻿<div id="tabs-demo">
     <div class="widget-container">
-        <div class="tabs-container">
-            @(Html.DevExtreme().Tabs()
-                .ID("withText")
-                .DataSource(new JS("tabsText"))
-                .SelectedIndex(0)
-            )
-        </div>
-        <div class="tabs-container">
-            @(Html.DevExtreme().Tabs()
-                .ID("withIconAndText")
-                .DataSource(new JS("tabsTextAndIcon"))
-                .SelectedIndex(0)
-            )
-        </div>
-        <div class="tabs-container">
-            @(Html.DevExtreme().Tabs()
-                .ID("withIcon")
-                .DataSource(new JS("tabsIcon"))
-                .SelectedIndex(0)
-            )
-        </div>
+        @(Html.DevExtreme().Tabs()
+            .ID("withText")
+            .DataSource(new JS("tabsText"))
+            .SelectedIndex(0)
+        )
+        @(Html.DevExtreme().Tabs()
+            .ID("withIconAndText")
+            .DataSource(new JS("tabsTextAndIcon"))
+            .SelectedIndex(0)
+        )
+        @(Html.DevExtreme().Tabs()
+            .ID("withIcon")
+            .DataSource(new JS("tabsIcon"))
+            .SelectedIndex(0)
+        )
     </div>
 
     <div class="options">

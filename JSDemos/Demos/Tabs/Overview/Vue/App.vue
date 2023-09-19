@@ -1,36 +1,30 @@
 <template>
   <div id="tabs-demo">
     <div class="widget-container">
-      <div class="tabs-container">
-        <DxTabs
-          :data-source="tabsWithText"
-          selected-index="0"
-          @initialized="saveTabInstance1"
-          id="withText"
-          :scroll-by-content="false"
-          :show-nav-buttons="false"
-        />
-      </div>
-      <div class="tabs-container">
-        <DxTabs
-          :data-source="tabsWithIconAndText"
-          @initialized="saveTabInstance2"
-          selected-index="0"
-          id="withIconAndText"
-          :scroll-by-content="false"
-          :show-nav-buttons="false"
-        />
-      </div>
-      <div class="tabs-container">
-        <DxTabs
-          :data-source="tabsWithIcon"
-          selected-index="0"
-          @initialized="saveTabInstance3"
-          id="withIcon"
-          :scroll-by-content="false"
-          :show-nav-buttons="false"
-        />
-      </div>
+      <DxTabs
+        :data-source="tabsWithText"
+        selected-index="0"
+        @initialized="saveTabInstance1"
+        id="withText"
+        :scroll-by-content="false"
+        :show-nav-buttons="false"
+      />
+      <DxTabs
+        :data-source="tabsWithIconAndText"
+        @initialized="saveTabInstance2"
+        selected-index="0"
+        id="withIconAndText"
+        :scroll-by-content="false"
+        :show-nav-buttons="false"
+      />
+      <DxTabs
+        :data-source="tabsWithIcon"
+        selected-index="0"
+        @initialized="saveTabInstance3"
+        id="withIcon"
+        :scroll-by-content="false"
+        :show-nav-buttons="false"
+      />
     </div>
 
     <div class="options">
@@ -182,11 +176,11 @@ export default {
   background-color: rgba(191, 191, 191, 0.15);
 }
 
-.tabs-container:not(:last-child) .dx-tabs-horizontal {
+.dx-tabs-horizontal:not(:last-child) {
   margin-bottom: 80px;
 }
 
-.tabs-container:not(:last-child) .dx-tabs-vertical {
+.dx-tabs-vertical:not(:last-child)  {
   margin-right: 80px;
 }
 
@@ -194,7 +188,7 @@ export default {
   width: 138px;
 }
 
-.tabs-container {
+.dx-tabs {
   display: flex;
   max-width: 690px;
 }
@@ -219,5 +213,4 @@ export default {
 .dx-tabs-vertical {
   border-right: 1px solid rgb(225, 225, 225, 0.4);
 }
-
 </style>

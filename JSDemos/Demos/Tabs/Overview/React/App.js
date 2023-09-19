@@ -60,38 +60,32 @@ const App = () => {
   return (
     <div id="tabs-demo">
       <div className="widget-container" ref={widgetContainerRef}>
-        <div className="tabs-container">
-          <Tabs id="withText"
-            dataSource={tabsText}
-            scrollByContent={scrollContent}
-            showNavButtons={showNavigation}
-            orientation={orientation}
-            stylingMode={stylingMode}
-            selectedIndex={0}
-          />
-        </div>
-        <div className="tabs-container">
-          <Tabs id="withIconAndText"
-            dataSource={tabsIconAndText}
-            scrollByContent={scrollContent}
-            showNavButtons={showNavigation}
-            orientation={orientation}
-            stylingMode={stylingMode}
-            iconPosition={iconPosition}
-            selectedIndex={0}
-          />
-        </div>
-        <div className="tabs-container">
-          <Tabs id="withIcon"
-            dataSource={tabsIcon}
-            scrollByContent={scrollContent}
-            showNavButtons={showNavigation}
-            orientation={orientation}
-            stylingMode={stylingMode}
-            iconPosition={iconPosition}
-            selectedIndex={0}
-          />
-        </div>
+        <Tabs id="withText"
+          dataSource={tabsText}
+          scrollByContent={scrollContent}
+          showNavButtons={showNavigation}
+          orientation={orientation}
+          stylingMode={stylingMode}
+          selectedIndex={0}
+        />
+        <Tabs id="withIconAndText"
+          dataSource={tabsIconAndText}
+          scrollByContent={scrollContent}
+          showNavButtons={showNavigation}
+          orientation={orientation}
+          stylingMode={stylingMode}
+          iconPosition={iconPosition}
+          selectedIndex={0}
+        />
+        <Tabs id="withIcon"
+          dataSource={tabsIcon}
+          scrollByContent={scrollContent}
+          showNavButtons={showNavigation}
+          orientation={orientation}
+          stylingMode={stylingMode}
+          iconPosition={iconPosition}
+          selectedIndex={0}
+        />
       </div>
 
       <div className="options">

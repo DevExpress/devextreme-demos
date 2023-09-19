@@ -21,11 +21,11 @@
   background-color: rgba(191, 191, 191, 0.15);
 }
 
-.tabs-container:not(:last-child) .dx-tabs-horizontal {
+.dx-tabs-horizontal:not(:last-child) {
   margin-bottom: 80px;
 }
 
-.tabs-container:not(:last-child) .dx-tabs-vertical {
+.dx-tabs-vertical:not(:last-child)  {
   margin-right: 80px;
 }
 
@@ -33,7 +33,7 @@
   width: 138px;
 }
 
-.tabs-container {
+.dx-tabs {
   display: flex;
   max-width: 690px;
 }

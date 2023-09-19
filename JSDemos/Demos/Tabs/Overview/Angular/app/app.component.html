@@ -1,32 +1,26 @@
 <div id="tabs-demo">
   <div class="widget-container">
-    <div class="tabs-container">
-      <dx-tabs
-        #withText
-        [selectedIndex]="0"
-        [dataSource]="tabsWithText"
-        [scrollByContent]="false"
-        [showNavButtons]="false"
-      ></dx-tabs>
-    </div>
-    <div class="tabs-container">
-      <dx-tabs
-        #withIconAndText
-        [selectedIndex]="0"
-        [dataSource]="tabsWithIconAndText"
-        [scrollByContent]="false"
-        [showNavButtons]="false"
-      ></dx-tabs>
-    </div>
-    <div class="tabs-container">
-      <dx-tabs
-        #withIcon
-        [selectedIndex]="0"
-        [dataSource]="tabsWithIcon"
-        [scrollByContent]="false"
-        [showNavButtons]="false"
-      ></dx-tabs>
-    </div>
+    <dx-tabs
+      #withText
+      [selectedIndex]="0"
+      [dataSource]="tabsWithText"
+      [scrollByContent]="false"
+      [showNavButtons]="false"
+    ></dx-tabs>
+    <dx-tabs
+      #withIconAndText
+      [selectedIndex]="0"
+      [dataSource]="tabsWithIconAndText"
+      [scrollByContent]="false"
+      [showNavButtons]="false"
+    ></dx-tabs>
+    <dx-tabs
+      #withIcon
+      [selectedIndex]="0"
+      [dataSource]="tabsWithIcon"
+      [scrollByContent]="false"
+      [showNavButtons]="false"
+    ></dx-tabs>
   </div>
 
   <div class="options">
