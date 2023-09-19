@@ -16,12 +16,6 @@
       <div class="caption">Options</div>
       <div class="option">
         <DxCheckBox
-          v-model:value="showWeekNumbers"
-          text="Show week numbers"
-        />
-      </div>
-      <div class="option">
-        <DxCheckBox
           v-model:value="selectWeekOnClick"
           text="Select week on click"
         />
@@ -76,7 +70,6 @@ import DxButton from 'devextreme-vue/button';
 
 const calendarRef = ref(null);
 const initialValue = [new Date(), new Date(new Date().getTime() + 1000 * 60 * 60 * 24)];
-const showWeekNumbers = ref(true);
 const selectWeekOnClick = ref(true);
 const selectionMode = ref('multiple');
 const minDateValue = ref(null);
