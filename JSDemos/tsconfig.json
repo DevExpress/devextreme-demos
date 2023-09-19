@@ -11,8 +11,8 @@
   },
   
   "include": [
-    "./Demos/**/React/*.ts",
-    "./Demos/**/React/*.tsx"
+    "./Demos/**/*.ts",
+    "./Demos/**/*.tsx"
   ]
 }
   
