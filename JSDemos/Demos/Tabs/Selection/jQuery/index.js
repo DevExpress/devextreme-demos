@@ -1,4 +1,4 @@
-$(() => {  
+$(() => {
   const tabsInstance = $('.tabs-container').dxTabs({
     dataSource: employees,
     selectedItem: employees[0],
@@ -37,9 +37,9 @@ $(() => {
       element.append($note);
     },
     onSelectionChanged({ component }) {
-        const { selectedItem } = component.option();
+      const { selectedItem } = component.option();
 
-        tabsInstance.option({ selectedItem });
+      tabsInstance.option({ selectedItem });
     },
   }).dxMultiView('instance');
 });

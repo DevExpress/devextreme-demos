@@ -5,7 +5,7 @@
         <div class="dx-field">
           <div class="tabs-container">
             <DxTabs
-              :data-source="employees" 
+              :data-source="employees"
               v-model:selected-item="selectedItem"
             />
           </div>
@@ -14,12 +14,12 @@
         <div class="dx-field select-box-container">
           <div class="dx-field-label">Selected user:</div>
           <div class="dx-field-value">
-            <DxSelectBox 
+            <DxSelectBox
               :data-source="employees"
-                v-model:selected-item="selectedItem"
-                :value="selectedItem"
-                displayExpr="text"
-                :input-attr="{ 'aria-label': 'Select Employee' }"
+              v-model:selected-item="selectedItem"
+              :value="selectedItem"
+              display-expr="text"
+              :input-attr="{ 'aria-label': 'Select Employee' }"
             />
           </div>
         </div>
@@ -34,9 +34,13 @@
           >
             <template #item="{ data }">
               <div class="employee-info">
-                <img :alt="data.text" class="employee-photo" :src="data.picture" />
+                <img
+                  :alt="data.text"
+                  class="employee-photo"
+                  :src="data.picture"
+                >
                 <p class="employee-notes">
-                  <b>Position: {{ data.position }}</b><br />
+                  <b>Position: {{ data.position }}</b><br>
                   {{ data.notes }}
                 </p>
               </div>
@@ -45,7 +49,7 @@
         </div>
 
         <div class="icon-container">
-          <span class="dx-icon dx-icon-info"></span>
+          <span class="dx-icon dx-icon-info"/>
           <span class="demo-info">You can swipe this area.</span>
         </div>
       </div>
@@ -73,7 +77,7 @@ export default {
   data() {
     return {
       selectedItem: employees[0],
-      employees, 
+      employees,
     };
   },
 };

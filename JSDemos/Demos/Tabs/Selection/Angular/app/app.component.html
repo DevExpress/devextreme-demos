@@ -3,7 +3,11 @@
     <div class="content dx-fieldset">
       <div class="dx-field">
         <div class="tabs-container">
-          <dx-tabs #apiTabs [dataSource]="employees" [selectedItem]="employees[0]">
+          <dx-tabs
+            #apiTabs
+            [dataSource]="employees"
+            [selectedItem]="employees[0]"
+          >
           </dx-tabs>
         </div>
       </div>
@@ -12,24 +16,34 @@
         <div class="dx-field-label">Selected user:</div>
 
         <div class="dx-field-value">
-          <dx-select-box id="selectbox" displayExpr="text" [dataSource]="employees"
+          <dx-select-box
+            id="selectbox"
+            displayExpr="text"
+            [dataSource]="employees"
             [inputAttr]="{ 'aria-label': 'Select Employee' }"
-            [(value)]="apiTabs.selectedItem"></dx-select-box>
+            [(value)]="apiTabs.selectedItem"
+          ></dx-select-box>
         </div>
       </div>
 
       <div class="dx-field multiview-container">
-        <dx-multi-view 
-        [height]="112"
-        [dataSource]="employees"
-        [(selectedItem)]="apiTabs.selectedItem"
-        [loop]="false"
-        [animationEnabled]="true">
+        <dx-multi-view
+          [height]="112"
+          [dataSource]="employees"
+          [(selectedItem)]="apiTabs.selectedItem"
+          [loop]="false"
+          [animationEnabled]="true"
+        >
           <div *dxTemplate="let data of 'item'">
             <div class="employee-info">
-              <img [alt]="data.text" class="employee-photo" [src]="data.picture" />
+              <img
+                [alt]="data.text"
+                class="employee-photo"
+                [src]="data.picture"
+              />
               <p class="employee-notes">
-                <b>Position: {{ data.position }}</b><br />
+                <b>Position: {{ data.position }}</b
+                ><br />
                 {{ data.notes }}
               </p>
             </div>

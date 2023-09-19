@@ -8,7 +8,9 @@ import { employees, selectBoxLabel } from './data.js';
 
 class EmployeeInfo extends React.Component {
   render() {
-    const { text, picture, position, notes } = this.props.data;
+    const {
+      text, picture, position, notes,
+    } = this.props.data;
 
     return (
       <div className="employee-info">
