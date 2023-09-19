@@ -1,9 +1,5 @@
 
-
-interface RowTemplateProps {
-key: number;
-year: string;
-}import React from 'react';
+import React from 'react';
 
 import Sparkline, {
   Tooltip,
@@ -14,6 +10,11 @@ import {
   nickelCosts,
   palladiumCosts,
 } from './data.ts';
+
+interface RowTemplateProps {
+  key: number;
+  year: string;
+}
 
 export default function RowTemplate(props: RowTemplateProps) {
   return (

@@ -1,14 +1,15 @@
 
-
-interface RowTemplateProps {
-key: number;
-year: string;
-source: DataSource<any, any>;
-}import React from 'react';
+import React from 'react';
 
 import Sparkline, {
   Tooltip,
 } from 'devextreme-react/sparkline';
+
+interface RowTemplateProps {
+  key: number;
+  year: string;
+  source: DataSource<any, any>;
+}
 
 export default function RowTemplate(props: RowTemplateProps) {
   return (

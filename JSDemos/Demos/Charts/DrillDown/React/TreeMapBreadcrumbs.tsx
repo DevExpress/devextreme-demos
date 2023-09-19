@@ -1,11 +1,12 @@
 
+import React from 'react';
+import Breadcrumb from './Breadcrumb.tsx';
 
 interface TreeMapBreadcrumbsProps {
-className: string;
-onItemClick: (node: any) => void;
-treeInfo: any;
-}import React from 'react';
-import Breadcrumb from './Breadcrumb.tsx';
+  className: string;
+  onItemClick: (node: any) => void;
+  treeInfo: any;
+}
 
 function TreeMapBreadcrumbs({ className, treeInfo, onItemClick }: TreeMapBreadcrumbsProps) {
   const lastIndex = treeInfo.length - 1;

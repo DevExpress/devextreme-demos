@@ -1,11 +1,12 @@
 
+import React from 'react';
 
 interface BreadcrumbProps {
-key: any;
-onClick: any;
-info: any;
-isLast: boolean;
-}import React from 'react';
+  key: any;
+  onClick: any;
+  info: any;
+  isLast: boolean;
+}
 
 function Breadcrumb(props: BreadcrumbProps) {
   const onClick = React.useCallback(() => {
