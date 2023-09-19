@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import CheckBox from 'devextreme-react/check-box';
 import SelectBox from 'devextreme-react/select-box';
+import Button from 'devextreme-react/button';
 import Calendar from 'devextreme-react/calendar';
 
 const selectionModes = ['single', 'multiple', 'range'];
@@ -12,20 +13,14 @@ const isWeekend = (date) => {
 const isDateDisabled = ({ view, date }) => view === 'month' && isWeekend(date);
 const now = new Date().getTime();
 const msInDay = 1000 * 60 * 60 * 24;
-const initialValues = [now, now + msInDay];
+const initialValue = [now, now + msInDay];
 export default function App() {
-  const [showWeekNumbers, setShowWeekNumbers] = React.useState(true);
+  const calendar = useRef(null);
   const [selectWeekOnClick, setSelectWeekOnClick] = React.useState(true);
   const [selectionMode, setSelectionMode] = React.useState('multiple');
   const [minDateValue, setMinDateValue] = React.useState(null);
   const [maxDateValue, setMaxDateValue] = React.useState(null);
   const [weekendDisabled, setWeekendDisabled] = React.useState(null);
-  const onShowWeekNumbersChange = React.useCallback(
-    ({ value }) => {
-      setShowWeekNumbers(value);
-    },
-    [setShowWeekNumbers],
-  );
   const onSelectWeekOnClickChange = React.useCallback(
     ({ value }) => {
       setSelectWeekOnClick(value);
@@ -56,28 +51,25 @@ export default function App() {
     },
     [setWeekendDisabled],
   );
+  const onClearButtonClick = React.useCallback(() => {
+    calendar.current.instance.clear();
+  }, []);
   return (
     <div id="container">
       <div className="calendar-container">
         <Calendar
-          showWeekNumbers={showWeekNumbers}
+          ref={calendar}
+          showWeekNumbers={true}
           selectWeekOnClick={selectWeekOnClick}
           selectionMode={selectionMode}
           min={minDateValue}
           max={maxDateValue}
-          values={initialValues}
+          defaultValue={initialValue}
           disabledDates={weekendDisabled ? isDateDisabled : null}
         />
       </div>
       <div className="options">
         <div className="caption">Options</div>
-        <div className="option">
-          <CheckBox
-            defaultValue={true}
-            text="Show week numbers"
-            onValueChanged={onShowWeekNumbersChange}
-          />
-        </div>
         <div className="option">
           <CheckBox
             defaultValue={true}
@@ -94,7 +86,7 @@ export default function App() {
             onValueChanged={onSelectionModeChange}
           />
         </div>
-        <div className="caption option">
+        <div className="option caption">
           <span>Dates availability</span>
         </div>
         <div className="option">
@@ -116,6 +108,12 @@ export default function App() {
             defaultValue={false}
             text="Disable weekends"
             onValueChanged={onDisableWeekendChange}
+          />
+        </div>
+        <div className="option">
+          <Button
+            text="Clear value"
+            onClick={onClearButtonClick}
           />
         </div>
       </div>

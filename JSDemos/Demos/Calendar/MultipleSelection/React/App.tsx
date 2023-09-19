@@ -62,7 +62,7 @@ export default function App() {
           selectionMode={selectionMode}
           min={minDateValue}
           max={maxDateValue}
-          defaultValuealue={initialValue}
+          defaultValue={initialValue}
           disabledDates={weekendDisabled ? isDateDisabled : null}
         />
       </div>
