@@ -180,7 +180,7 @@ export default {
   margin-bottom: 80px;
 }
 
-.dx-tabs-vertical:not(:last-child)  {
+.dx-tabs-vertical:not(:last-child) {
   margin-right: 80px;
 }
 
