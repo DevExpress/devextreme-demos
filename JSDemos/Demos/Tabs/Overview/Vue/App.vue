@@ -162,7 +162,6 @@ export default {
 #tabs-demo {
   display: flex;
   min-height: 450px;
-  justify-content: space-between;
 }
 
 .widget-container {

@@ -1,7 +1,6 @@
 ::ng-deep #tabs-demo {
   display: flex;
   min-height: 450px;
-  justify-content: space-between;
 }
 
 ::ng-deep .widget-container {
