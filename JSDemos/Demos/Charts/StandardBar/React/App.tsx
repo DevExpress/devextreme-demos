@@ -1,6 +1,6 @@
 import React from 'react';
 import { Chart, Series } from 'devextreme-react/chart';
-import { dataSource } from './data.js';
+import { dataSource } from './data.ts';
 
 function App() {
   return (

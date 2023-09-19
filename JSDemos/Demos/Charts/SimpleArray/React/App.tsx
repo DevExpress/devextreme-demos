@@ -5,7 +5,7 @@ import Chart, {
   Legend,
   Series,
 } from 'devextreme-react/chart';
-import { populationData } from './data.js';
+import { populationData } from './data.ts';
 
 function App() {
   return (

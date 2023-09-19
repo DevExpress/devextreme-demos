@@ -9,7 +9,7 @@ import {
   Margin,
   Export,
 } from 'devextreme-react/polar-chart';
-import { windSources, windRoseData, periodLabel } from './data.js';
+import { windSources, windRoseData, periodLabel } from './data.ts';
 
 function onLegendClick({ target: series }) {
   if (series.isVisible()) {

@@ -11,8 +11,8 @@ import PieChart, {
   Tooltip,
   Legend,
 } from 'devextreme-react/pie-chart';
-import { dataSource, getAnnotationSources } from './data.js';
-import TooltipTemplate from './TooltipTemplate.js';
+import { dataSource, getAnnotationSources } from './data.ts';
+import TooltipTemplate from './TooltipTemplate.tsx';
 
 const annotationSources = getAnnotationSources();
 

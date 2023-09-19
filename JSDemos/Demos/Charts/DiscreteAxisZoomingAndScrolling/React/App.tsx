@@ -17,7 +17,7 @@ import RangeSelector, {
   CommonSeriesSettings as CommonSeriesSettingsOptions,
   Series as RsChartSeries,
 } from 'devextreme-react/range-selector';
-import { series, dataSource } from './data.js';
+import { series, dataSource } from './data.ts';
 
 const seriesList = series.map((item) => <Series
   valueField={item.valueField}

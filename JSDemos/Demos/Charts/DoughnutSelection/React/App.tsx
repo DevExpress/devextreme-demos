@@ -5,7 +5,7 @@ import PieChart, {
   Export,
   HoverStyle,
 } from 'devextreme-react/pie-chart';
-import { olympicMedals } from './data.js';
+import { olympicMedals } from './data.ts';
 
 function pointClickHandler(arg: { target: { select: () => void; }; }) {
   arg.target.select();

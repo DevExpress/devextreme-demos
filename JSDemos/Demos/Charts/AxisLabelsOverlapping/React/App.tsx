@@ -7,7 +7,7 @@ import {
   Legend,
   Label,
 } from 'devextreme-react/chart';
-import { overlappingModes, population, seriesTypeLabel } from './data.js';
+import { overlappingModes, population, seriesTypeLabel } from './data.ts';
 
 function App() {
   const [currentMode, setCurrentMode] = React.useState(overlappingModes[0]);

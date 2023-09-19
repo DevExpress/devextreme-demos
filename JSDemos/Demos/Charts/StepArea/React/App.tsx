@@ -8,7 +8,7 @@ import Chart, {
   Border,
   Export,
 } from 'devextreme-react/chart';
-import { dataSource } from './data.js';
+import { dataSource } from './data.ts';
 
 function App() {
   return (

@@ -3,7 +3,7 @@ import PieChart, {
   Series, Tooltip, Size, Legend,
 } from 'devextreme-react/pie-chart';
 import { SelectBox } from 'devextreme-react/select-box';
-import { populationData, regionLabel } from './data.js';
+import { populationData, regionLabel } from './data.ts';
 
 function customizeTooltip(pointInfo: { argumentText: any; valueText: any; }) {
   return {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Sankey, { Tooltip, Link, Node } from 'devextreme-react/sankey';
-import { data } from './data.js';
+import { data } from './data.ts';
 
 function customizeLinkTooltip(info: { source: any; target: any; weight: any; }) {
   return {

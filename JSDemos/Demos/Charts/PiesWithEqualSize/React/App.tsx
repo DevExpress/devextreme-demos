@@ -4,7 +4,7 @@ import PieChart, {
   Label,
   Legend,
 } from 'devextreme-react/pie-chart';
-import { countries, waterLandRatio } from './data.js';
+import { countries, waterLandRatio } from './data.ts';
 
 const pieCharts = [{
   title: 'Area of Countries',

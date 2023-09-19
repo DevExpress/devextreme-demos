@@ -8,7 +8,7 @@ import Chart, {
   Tooltip,
   Margin,
 } from 'devextreme-react/chart';
-import { dataSource } from './data.js';
+import { dataSource } from './data.ts';
 
 function customizeTooltip(e: { valueText: number; }) {
   return { text: Math.abs(e.valueText) };

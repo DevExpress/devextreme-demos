@@ -10,7 +10,7 @@ import Chart, {
   Grid,
   Format,
 } from 'devextreme-react/chart';
-import { continentSources, populationData } from './data.js';
+import { continentSources, populationData } from './data.ts';
 
 function customizeTooltip(pointInfo: { valueText: string; point: { getColor: () => any; }; seriesName: any; }) {
   const items = pointInfo.valueText.split('\n');

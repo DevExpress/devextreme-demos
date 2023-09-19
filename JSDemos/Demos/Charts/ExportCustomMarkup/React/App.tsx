@@ -5,8 +5,8 @@ import {
 import { Button } from 'devextreme-react/button';
 import { exportFromMarkup } from 'devextreme/viz/export';
 import toCanvas from 'canvg';
-import { dataSource } from './data.js';
-import Form from './Form.js';
+import { dataSource } from './data.ts';
+import Form from './Form.tsx';
 
 const barPadding = 0.3;
 

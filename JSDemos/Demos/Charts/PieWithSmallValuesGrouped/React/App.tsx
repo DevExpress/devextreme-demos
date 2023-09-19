@@ -7,7 +7,7 @@ import PieChart, {
   Legend,
   Export,
 } from 'devextreme-react/pie-chart';
-import { dataSource } from './data.js';
+import { dataSource } from './data.ts';
 
 function formatLabel(arg: { argumentText: any; valueText: any; }) {
   return `${arg.argumentText}: ${arg.valueText}%`;

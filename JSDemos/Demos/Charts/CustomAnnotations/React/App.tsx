@@ -5,8 +5,8 @@ import Chart, {
   Legend,
   CommonAnnotationSettings,
 } from 'devextreme-react/chart';
-import { populationData } from './data.js';
-import AnnotationTemplate from './AnnotationTemplate.js';
+import { populationData } from './data.ts';
+import AnnotationTemplate from './AnnotationTemplate.tsx';
 
 function App() {
   return (

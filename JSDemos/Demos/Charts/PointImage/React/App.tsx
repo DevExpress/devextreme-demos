@@ -12,7 +12,7 @@ import {
   Legend,
   Point,
 } from 'devextreme-react/chart';
-import { iceHockeyStatistics } from './data.js';
+import { iceHockeyStatistics } from './data.ts';
 
 const exportFormats = ['PNG', 'PDF', 'JPEG', 'GIF', 'SVG'];
 

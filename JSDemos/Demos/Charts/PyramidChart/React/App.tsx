@@ -9,7 +9,7 @@ import Funnel, {
   Label,
   Font,
 } from 'devextreme-react/funnel';
-import { dataSource } from './data.js';
+import { dataSource } from './data.ts';
 
 function App() {
   return (

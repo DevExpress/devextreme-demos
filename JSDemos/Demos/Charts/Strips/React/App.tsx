@@ -10,7 +10,7 @@ import {
   Font,
   Export,
 } from 'devextreme-react/chart';
-import { temperaturesData, lowAverage, highAverage } from './data.js';
+import { temperaturesData, lowAverage, highAverage } from './data.ts';
 
 const highAverageColor = '#ff9b52';
 const lowAverageColor = '#6199e6';

@@ -7,8 +7,8 @@ import PieChart, {
   Connector,
 } from 'devextreme-react/pie-chart';
 
-import { data } from './data.js';
-import CenterTemplate from './CenterTemplate.js';
+import { data } from './data.ts';
+import CenterTemplate from './CenterTemplate.tsx';
 
 const countries = Array.from(new Set(data.map((item) => item.country)));
 

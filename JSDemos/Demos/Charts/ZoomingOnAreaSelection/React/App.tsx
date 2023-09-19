@@ -13,7 +13,7 @@ import Chart, {
   Border,
 } from 'devextreme-react/chart';
 import Button from 'devextreme-react/button';
-import { birthLife } from './data.js';
+import { birthLife } from './data.ts';
 
 function customizeTooltip(pointInfo: { point: { data: any; }; }) {
   const { data } = pointInfo.point;

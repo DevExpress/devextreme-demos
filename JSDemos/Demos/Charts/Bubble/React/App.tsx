@@ -11,7 +11,7 @@ import {
   Tooltip,
   Export,
 } from 'devextreme-react/chart';
-import { dataSource } from './data.js';
+import { dataSource } from './data.ts';
 
 const palette = ['#00ced1', '#008000', '#ffd700', '#ff7f50'];
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Chart, Series, CommonSeriesSettings, Label, Format, Legend, Export,
 } from 'devextreme-react/chart';
-import { grossProductData } from './data.js';
+import { grossProductData } from './data.ts';
 
 function onPointClick(e: { target: { select: () => void; }; }) {
   e.target.select();

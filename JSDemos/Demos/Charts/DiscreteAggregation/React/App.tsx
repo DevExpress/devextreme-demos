@@ -6,7 +6,7 @@ import Chart, {
   SeriesTemplate,
   Aggregation,
 } from 'devextreme-react/chart';
-import { oilProductionData } from './data.js';
+import { oilProductionData } from './data.ts';
 
 function App() {
   return (

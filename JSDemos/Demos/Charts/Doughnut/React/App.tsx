@@ -8,7 +8,7 @@ import PieChart, {
   Connector,
   Export,
 } from 'devextreme-react/pie-chart';
-import { populationByRegions } from './data.js';
+import { populationByRegions } from './data.ts';
 
 function customizeTooltip(arg: { valueText: any; percent: number; }) {
   return {

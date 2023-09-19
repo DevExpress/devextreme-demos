@@ -14,7 +14,7 @@ import {
   Label,
   Format,
 } from 'devextreme-react/chart';
-import { architectureSources, sharingStatisticsInfo, seriesTypeLabel } from './data.js';
+import { architectureSources, sharingStatisticsInfo, seriesTypeLabel } from './data.ts';
 
 const types = ['spline', 'stackedspline', 'fullstackedspline'];
 

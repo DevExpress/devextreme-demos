@@ -15,7 +15,7 @@ import {
   Subtitle,
   Tooltip,
 } from 'devextreme-react/chart';
-import { energySources, countriesInfo } from './data.js';
+import { energySources, countriesInfo } from './data.ts';
 
 function App() {
   return (

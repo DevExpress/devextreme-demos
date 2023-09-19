@@ -10,7 +10,7 @@ import Chart, {
   Export,
   Legend,
 } from 'devextreme-react/chart';
-import { inflationData } from './data.js';
+import { inflationData } from './data.ts';
 
 function customizeLabelText({ valueText }) {
   return `${valueText} %`;

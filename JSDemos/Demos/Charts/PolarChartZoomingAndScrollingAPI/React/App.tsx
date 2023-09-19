@@ -17,7 +17,7 @@ import RangeSelector, {
   MinorTick,
   Behavior,
 } from 'devextreme-react/range-selector';
-import { dataSource } from './data.js';
+import { dataSource } from './data.ts';
 
 function App() {
   const [visualRange, setVisualRange] = React.useState({ startValue: 0, endValue: 8 });

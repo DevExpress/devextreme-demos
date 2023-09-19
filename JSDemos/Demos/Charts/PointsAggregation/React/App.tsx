@@ -16,7 +16,7 @@ import CheckBox from 'devextreme-react/check-box';
 import SelectBox from 'devextreme-react/select-box';
 import {
   weatherData, aggregationFunctions, aggregationIntervals, functionLabel, intervalLabel,
-} from './data.js';
+} from './data.ts';
 
 function customizeTooltip(pointInfo: { point: { aggregationInfo: any; }; seriesName: string | number; }) {
   const { aggregationInfo } = pointInfo.point;

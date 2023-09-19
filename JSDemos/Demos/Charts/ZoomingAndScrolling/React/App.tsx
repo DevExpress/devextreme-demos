@@ -6,7 +6,7 @@ import Chart, {
   Legend,
   ScrollBar,
 } from 'devextreme-react/chart';
-import { zoomingData } from './data.js';
+import { zoomingData } from './data.ts';
 
 const visualRange = { startValue: 300, endValue: 500 };
 

@@ -6,7 +6,7 @@ import {
   Export,
   Tooltip,
 } from 'devextreme-react/polar-chart';
-import { fruitSources, productionData } from './data.js';
+import { fruitSources, productionData } from './data.ts';
 
 function App() {
   return (

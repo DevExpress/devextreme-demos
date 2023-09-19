@@ -12,7 +12,7 @@ import {
   Image,
   Annotation,
 } from 'devextreme-react/chart';
-import { dataSource, annotationSources } from './data.js';
+import { dataSource, annotationSources } from './data.ts';
 
 function customizeTooltip(annotation: { description: any; }) {
   return {

@@ -7,7 +7,7 @@ import SelectBox from 'devextreme-react/select-box';
 import { getPalette } from 'devextreme/viz/palette';
 import {
   paletteCollection, paletteExtensionModes, dataSource, paletteLabel, paletteExtensionLabel,
-} from './data.js';
+} from './data.ts';
 
 function App() {
   const [palette, setPalette] = React.useState(paletteCollection[0]);

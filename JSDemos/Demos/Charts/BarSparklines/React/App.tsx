@@ -2,7 +2,7 @@ import React from 'react';
 import SelectBox from 'devextreme-react/select-box';
 import DataSource from 'devextreme/data/data_source';
 import CustomStore from 'devextreme/data/custom_store';
-import RowTemplate from './RowTemplate.js';
+import RowTemplate from './RowTemplate.tsx';
 
 const months = [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 const years = ['2010', '2011', '2012'];

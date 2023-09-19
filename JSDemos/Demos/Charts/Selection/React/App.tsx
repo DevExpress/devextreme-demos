@@ -8,7 +8,7 @@ import Chart, {
   Legend,
   Export,
 } from 'devextreme-react/chart';
-import { exportData } from './data.js';
+import { exportData } from './data.ts';
 
 function onPointClick({ target: point }) {
   point.select();

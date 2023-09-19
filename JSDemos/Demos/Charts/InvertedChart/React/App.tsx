@@ -7,7 +7,7 @@ import {
   Export,
   Legend,
 } from 'devextreme-react/polar-chart';
-import { dataSource } from './data.js';
+import { dataSource } from './data.ts';
 
 function App() {
   return (

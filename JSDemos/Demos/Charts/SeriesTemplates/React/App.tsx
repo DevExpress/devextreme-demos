@@ -7,7 +7,7 @@ import Chart, {
   CommonSeriesSettings,
   Export,
 } from 'devextreme-react/chart';
-import { dataSource } from './data.js';
+import { dataSource } from './data.ts';
 
 function customizeSeries(valueFromNameField: number) {
   return valueFromNameField === 2009 ? { type: 'line', label: { visible: true }, color: '#ff3f7a' } : {};

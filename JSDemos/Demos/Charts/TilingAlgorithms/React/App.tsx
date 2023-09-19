@@ -1,7 +1,7 @@
 import React from 'react';
 import TreeMap, { Colorizer, Tooltip } from 'devextreme-react/tree-map';
 import SelectBox from 'devextreme-react/select-box';
-import { populationByAge, algorithmLabel } from './data.js';
+import { populationByAge, algorithmLabel } from './data.ts';
 
 const algorithms = ['sliceAndDice', 'squarified', 'strip', 'custom'];
 

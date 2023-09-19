@@ -3,8 +3,8 @@ import React from 'react';
 import {
   Chart, Series, CommonSeriesSettings, Point, Legend,
 } from 'devextreme-react/chart';
-import { dataSource } from './data.js';
-import markerTemplate from './MarkerTemplate.js';
+import { dataSource } from './data.ts';
+import markerTemplate from './MarkerTemplate.tsx';
 
 function onLegendClick(e: { target: { isVisible: () => any; hide: () => any; show: () => any; }; }) {
   e.target.isVisible() ? e.target.hide() : e.target.show();

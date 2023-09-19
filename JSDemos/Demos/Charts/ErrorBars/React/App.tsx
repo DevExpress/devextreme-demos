@@ -13,7 +13,7 @@ import Chart, {
   Tooltip,
   Grid,
 } from 'devextreme-react/chart';
-import { weatherData } from './data.js';
+import { weatherData } from './data.ts';
 
 function customizeTooltip(pointInfo: { seriesName: any; value: any; lowErrorValue: any; highErrorValue: any; }) {
   return {

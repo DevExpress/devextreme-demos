@@ -19,7 +19,7 @@ import RangeSelector, {
   Aggregation as RsAggregation,
   Behavior,
 } from 'devextreme-react/range-selector';
-import { dataSource } from './data.js';
+import { dataSource } from './data.ts';
 
 function App() {
   const [visualRange, setVisualRange] = React.useState({});

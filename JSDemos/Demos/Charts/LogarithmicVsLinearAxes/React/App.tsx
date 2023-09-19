@@ -11,7 +11,7 @@ import {
   Label,
   Legend,
 } from 'devextreme-react/chart';
-import { dataSource } from './data.js';
+import { dataSource } from './data.ts';
 
 const crosshairFormat = {
   type: 'fixedPoint',

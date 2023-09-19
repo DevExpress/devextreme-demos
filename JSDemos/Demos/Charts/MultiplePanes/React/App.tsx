@@ -10,7 +10,7 @@ import Chart, {
   Title,
   Grid,
 } from 'devextreme-react/chart';
-import { weatherData } from './data.js';
+import { weatherData } from './data.ts';
 
 function temperatureCustomizeText({ valueText }) {
   return `${valueText} °C`;

@@ -8,7 +8,7 @@ import Chart, {
   Export,
   Point,
 } from 'devextreme-react/chart';
-import { medalsInfo } from './data.js';
+import { medalsInfo } from './data.ts';
 
 function App() {
   return (

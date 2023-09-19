@@ -3,7 +3,7 @@ import {
   Chart, Series, Legend, ValueAxis,
 } from 'devextreme-react/chart';
 import { Button } from 'devextreme-react/button';
-import service from './data.js';
+import service from './data.ts';
 
 const colors = ['#6babac', '#e55253'];
 

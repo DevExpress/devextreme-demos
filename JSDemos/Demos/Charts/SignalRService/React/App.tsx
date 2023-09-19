@@ -16,7 +16,7 @@ import Chart, {
 } from 'devextreme-react/chart';
 import CustomStore from 'devextreme/data/custom_store';
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
-import TooltipTemplate from './TooltipTemplate.js';
+import TooltipTemplate from './TooltipTemplate.tsx';
 
 const minVisualRangeLength = { minutes: 10 };
 const defaultVisualRange = { length: 'hour' };

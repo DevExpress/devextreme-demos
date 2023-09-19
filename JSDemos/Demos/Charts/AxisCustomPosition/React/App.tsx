@@ -9,7 +9,7 @@ import {
   ValueAxis,
   Legend,
 } from 'devextreme-react/chart';
-import { generateDataSource, customPositionLabel, offsetLabel } from './data.js';
+import { generateDataSource, customPositionLabel, offsetLabel } from './data.ts';
 
 const dataSource = generateDataSource();
 const defaultVisualRange = [-20, 20];

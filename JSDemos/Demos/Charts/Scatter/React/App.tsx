@@ -12,7 +12,7 @@ import {
   CommonPaneSettings,
   Border,
 } from 'devextreme-react/chart';
-import { generateDataSource } from './data.js';
+import { generateDataSource } from './data.ts';
 
 const dataSource = generateDataSource();
 

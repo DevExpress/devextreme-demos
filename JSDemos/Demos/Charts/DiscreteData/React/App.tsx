@@ -6,7 +6,7 @@ import {
   Series,
   Margin,
 } from 'devextreme-react/polar-chart';
-import { types, dataSource, seriesTypeLabel } from './data.js';
+import { types, dataSource, seriesTypeLabel } from './data.ts';
 
 function App() {
   const [currentType, setCurrentType] = React.useState(types[0]);

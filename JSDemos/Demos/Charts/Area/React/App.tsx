@@ -10,7 +10,7 @@ import {
   Margin,
 } from 'devextreme-react/chart';
 
-import { dataSource, seriesTypeLabel } from './data.js';
+import { dataSource, seriesTypeLabel } from './data.ts';
 
 const types = ['area', 'stackedarea', 'fullstackedarea'];
 

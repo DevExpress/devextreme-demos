@@ -1,7 +1,7 @@
 import React from 'react';
 import TreeMap, { Tooltip } from 'devextreme-react/tree-map';
 import SelectBox from 'devextreme-react/select-box';
-import { salesAmount, colorizationOptions, colorizationTypeLabel } from './data.js';
+import { salesAmount, colorizationOptions, colorizationTypeLabel } from './data.ts';
 
 function customizeTooltip(arg: { node: { isLeaf?: any; data?: any; }; valueText: any; }) {
   const { data } = arg.node;

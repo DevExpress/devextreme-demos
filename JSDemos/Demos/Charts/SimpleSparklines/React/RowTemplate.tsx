@@ -13,7 +13,7 @@ import {
   oilCosts,
   silverCosts,
   goldCosts,
-} from './data.js';
+} from './data.ts';
 
 export default function RowTemplate(props: RowTemplateProps) {
   return (

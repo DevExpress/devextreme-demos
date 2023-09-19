@@ -1,5 +1,5 @@
 import React from 'react';
-import RowTemplate from './RowTemplate.js';
+import RowTemplate from './RowTemplate.tsx';
 
 const years = ['2010', '2011', '2012'];
 

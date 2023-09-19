@@ -4,8 +4,8 @@ import PieChart, {
   Tooltip,
   Export,
 } from 'devextreme-react/pie-chart';
-import { populationData } from './data.js';
-import TooltipTemplate from './TooltipTemplate.js';
+import { populationData } from './data.ts';
+import TooltipTemplate from './TooltipTemplate.tsx';
 
 function App() {
   return (

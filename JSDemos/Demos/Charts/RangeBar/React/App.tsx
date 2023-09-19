@@ -9,7 +9,7 @@ import Chart, {
   Legend,
   Tooltip,
 } from 'devextreme-react/chart';
-import { oilPrices } from './data.js';
+import { oilPrices } from './data.ts';
 
 function App() {
   return (

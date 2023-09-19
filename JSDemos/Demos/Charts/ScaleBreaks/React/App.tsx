@@ -8,7 +8,7 @@ import Chart, {
 } from 'devextreme-react/chart';
 import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
-import { dataSource, lineStyleLabel, maxCountLabel } from './data.js';
+import { dataSource, lineStyleLabel, maxCountLabel } from './data.ts';
 
 const lineStyles = ['waved', 'straight'];
 const breaksCount = [1, 2, 3, 4];

@@ -10,7 +10,7 @@ import {
   Label,
   Format,
 } from 'devextreme-react/chart';
-import { medalSources, olympicAchievements } from './data.js';
+import { medalSources, olympicAchievements } from './data.ts';
 
 function App() {
   return (

@@ -1,8 +1,8 @@
 import React from 'react';
 import TreeMap, { Size, Title, Colorizer } from 'devextreme-react/tree-map';
-import { citiesPopulation } from './data.js';
+import { citiesPopulation } from './data.ts';
 
-import TreeMapBreadcrumbs from './TreeMapBreadcrumbs.js';
+import TreeMapBreadcrumbs from './TreeMapBreadcrumbs.tsx';
 
 function drillInfoClick(node: { drillDown: () => void; }) {
   if (node) {

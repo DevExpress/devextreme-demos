@@ -13,7 +13,7 @@ import RangeSelector, {
   Scale,
   Behavior,
 } from 'devextreme-react/range-selector';
-import { zoomingData } from './data.js';
+import { zoomingData } from './data.ts';
 
 function App() {
   const [visualRange, setVisualRange] = React.useState({ startValue: 10, endValue: 880 });

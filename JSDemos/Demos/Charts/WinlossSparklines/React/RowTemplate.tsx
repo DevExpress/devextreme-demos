@@ -13,7 +13,7 @@ import {
   aluminumCosts,
   nickelCosts,
   copperCosts,
-} from './data.js';
+} from './data.ts';
 
 export default function RowTemplate(props: RowTemplateProps) {
   return (

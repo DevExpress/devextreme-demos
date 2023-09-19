@@ -7,7 +7,7 @@ import {
   Legend,
   Point,
 } from 'devextreme-react/chart';
-import { yearSources, grossProductData } from './data.js';
+import { yearSources, grossProductData } from './data.ts';
 
 function App() {
   return (

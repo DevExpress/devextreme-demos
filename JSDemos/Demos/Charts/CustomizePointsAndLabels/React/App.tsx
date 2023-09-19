@@ -9,7 +9,7 @@ import {
   ConstantLine,
   Export,
 } from 'devextreme-react/chart';
-import { temperaturesData } from './data.js';
+import { temperaturesData } from './data.ts';
 
 const highAverage = 77;
 const lowAverage = 58;

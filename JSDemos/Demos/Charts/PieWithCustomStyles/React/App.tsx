@@ -4,8 +4,8 @@ import PieChart, {
 } from 'devextreme-react/pie-chart';
 import {
   getStrokePattern, getSquarePattern, getLinearGradient, getRadialGradient, getPatternImage,
-} from './utils.js';
-import { data } from './data.js';
+} from './utils.ts';
+import { data } from './data.ts';
 
 function customizeText(info: { argument: any; }) {
   return info.argument;

@@ -8,7 +8,7 @@ import Funnel, {
   Border,
   Label,
 } from 'devextreme-react/funnel';
-import { dataSource } from './data.js';
+import { dataSource } from './data.ts';
 
 function formatLabel(arg: { percentText: any; item: { argument: any; }; }) {
   return `<span class="label">${arg.percentText}</span><br/>${arg.item.argument}`;

@@ -3,7 +3,7 @@ import Chart, { Series, Label, Legend } from 'devextreme-react/chart';
 import PieChart, { Series as PieSeries, Label as PieLabel, Connector } from 'devextreme-react/pie-chart';
 import { Button } from 'devextreme-react/button';
 import { exportWidgets } from 'devextreme/viz/export';
-import { allMedals, goldMedals } from './data.js';
+import { allMedals, goldMedals } from './data.ts';
 
 function App() {
   const chartRef = React.useRef(null);

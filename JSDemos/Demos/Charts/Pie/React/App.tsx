@@ -6,7 +6,7 @@ import PieChart, {
   Size,
   Export,
 } from 'devextreme-react/pie-chart';
-import { areas } from './data.js';
+import { areas } from './data.ts';
 
 function pointClickHandler(e: { target: any; }) {
   toggleVisibility(e.target);

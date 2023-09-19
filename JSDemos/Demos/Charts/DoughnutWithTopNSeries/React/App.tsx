@@ -7,7 +7,7 @@ import PieChart, {
   SmallValuesGrouping,
   Connector,
 } from 'devextreme-react/pie-chart';
-import { internetLanguages } from './data.js';
+import { internetLanguages } from './data.ts';
 
 function customizeLabel(point: { argumentText: any; valueText: any; }) {
   return `${point.argumentText}: ${point.valueText}%`;

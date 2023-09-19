@@ -9,7 +9,7 @@ import Chart, {
   VisualRange,
 } from 'devextreme-react/chart';
 import Button from 'devextreme-react/button';
-import { mountains } from './data.js';
+import { mountains } from './data.ts';
 
 function customizeTooltipText(pointInfo: { argumentText: any; point: { data: { system: any; }; }; valueText: any; }) {
   return {

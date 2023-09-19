@@ -13,7 +13,7 @@ import {
   Tooltip,
   Grid,
 } from 'devextreme-react/chart';
-import service from './data.js';
+import service from './data.ts';
 
 const countriesInfo = service.getCountriesInfo();
 const energySources = service.getEnergySources();

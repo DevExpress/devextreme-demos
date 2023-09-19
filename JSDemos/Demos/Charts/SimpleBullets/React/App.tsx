@@ -1,6 +1,6 @@
 import React from 'react';
 import Bullet, { Tooltip } from 'devextreme-react/bullet';
-import { service } from './data.js';
+import { service } from './data.ts';
 
 function customizeTooltip(arg: { value: any; target: any; }) {
   return {

@@ -9,7 +9,7 @@ import Chart, {
   ConstantLine,
   Label,
 } from 'devextreme-react/chart';
-import { complaintsData } from './data.js';
+import { complaintsData } from './data.ts';
 
 const data = complaintsData.sort((a, b) => b.count - a.count);
 const totalCount = data.reduce((prevValue, item) => prevValue + item.count, 0);

@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Chart, SeriesTemplate, CommonSeriesSettings, Title,
 } from 'devextreme-react/chart';
-import { dataSource } from './data.js';
+import { dataSource } from './data.ts';
 
 function App() {
   return (

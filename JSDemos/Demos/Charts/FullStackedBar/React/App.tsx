@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Chart, Series, CommonSeriesSettings, Legend, Export, Tooltip, Title,
 } from 'devextreme-react/chart';
-import service from './data.js';
+import service from './data.ts';
 
 const dataSource = service.dataSource();
 

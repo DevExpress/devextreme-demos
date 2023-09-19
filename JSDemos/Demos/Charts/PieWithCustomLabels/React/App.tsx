@@ -7,7 +7,7 @@ import PieChart, {
   Font,
   Connector,
 } from 'devextreme-react/pie-chart';
-import { dataSource } from './data.js';
+import { dataSource } from './data.ts';
 
 function customizeText(arg: { valueText: any; percentText: any; }) {
   return `${arg.valueText} (${arg.percentText})`;

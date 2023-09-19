@@ -16,7 +16,7 @@ import Chart, {
   LoadingIndicator,
 } from 'devextreme-react/chart';
 import SelectBox from 'devextreme-react/select-box';
-import { months, monthLabel } from './data.js';
+import { months, monthLabel } from './data.ts';
 
 const chartDataSource = new DataSource({
   store: {

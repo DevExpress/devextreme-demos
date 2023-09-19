@@ -10,7 +10,7 @@ import PieChart, {
   Animation,
 } from 'devextreme-react/pie-chart';
 
-import { dataSource, resolutionModeLabel } from './data.js';
+import { dataSource, resolutionModeLabel } from './data.ts';
 
 const resolveModes = ['shift', 'hide', 'none'];
 
