@@ -1,5 +1,5 @@
 import {
-  existsSync, readFileSync, writeFileSync, readdirSync, statSync, copyFileSync, mkdirSync,
+  existsSync, readFileSync, writeFileSync, readdirSync, statSync, copyFileSync, mkdirSync, copySync,
 } from 'fs-extra';
 import { join, basename, extname } from 'path';
 import { createHash } from 'crypto';
@@ -115,4 +115,22 @@ export const copyMetadata = () => {
   const sourceScripts = join(__dirname, 'metadata', 'scripts');
   const destScripts = join(destinationPublishDir, 'scripts');
   copyMetadataDir(sourceScripts, destScripts);
+
+  const nodeModulesPath = join(__dirname, '..', '..', '..', 'node_modules');
+
+  const destinationCss = join(destinationPublishDir, 'css');
+
+  const diagramCss = join(nodeModulesPath, 'devexpress-diagram', 'dist', 'dx-diagram.css');
+  copySync(diagramCss, join(destinationCss, 'dx-diagram.css'));
+
+  const ganttCss = join(nodeModulesPath, 'devexpress-gantt', 'dist', 'dx-gantt.css');
+  copySync(ganttCss, join(destinationCss, 'dx-gantt.css'));
+
+  const sourceData = join(sourceDemosDir, '..', 'data');
+  const destinationData = join(destinationPublishDir, 'data');
+  copySync(sourceData, destinationData);
+
+  const sourceImages = join(sourceDemosDir, '..', 'images');
+  const destinationImages = join(destinationPublishDir, 'images');
+  copySync(sourceImages, destinationImages);
 };
