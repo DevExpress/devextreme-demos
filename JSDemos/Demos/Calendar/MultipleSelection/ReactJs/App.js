@@ -94,7 +94,7 @@ export default function App() {
             onValueChanged={onSelectionModeChange}
           />
         </div>
-        <div className="section">
+        <div className="caption option">
           <span>Dates availability</span>
         </div>
         <div className="option">

@@ -4,19 +4,11 @@ $(() => {
   const date = new Date().getTime();
 
   const calendar = $('#calendar').dxCalendar({
-    values: [date, date + msInDay],
+    value: [date, date + msInDay],
     showWeekNumbers: true,
     selectWeekOnClick: true,
     selectionMode: 'multiple',
   }).dxCalendar('instance');
-
-  $('#week-numbers').dxCheckBox({
-    text: 'Show week numbers',
-    value: true,
-    onValueChanged(data) {
-      calendar.option('showWeekNumbers', data.value);
-    },
-  });
 
   $('#select-week').dxCheckBox({
     text: 'Select week on click',
@@ -62,6 +54,11 @@ $(() => {
         calendar.option('disabledDates', null);
       }
     },
+  });
+
+  $('#clear-button').dxButton({
+    text: 'Clear value',
+    onClick: () => { calendar.clear(); },
   });
 
   function isWeekend(d) {

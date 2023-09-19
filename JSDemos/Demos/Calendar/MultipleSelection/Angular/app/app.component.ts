@@ -1,10 +1,12 @@
-import { Component, NgModule, enableProdMode } from '@angular/core';
+import { Component, NgModule, ViewChild, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
   DxSelectBoxModule,
   DxCheckBoxModule,
   DxCalendarModule,
+  DxButtonModule,
+  DxCalendarComponent,
 } from 'devextreme-angular';
 
 if (!/localhost/.test(document.location.host)) {
@@ -18,9 +20,11 @@ if (!/localhost/.test(document.location.host)) {
 })
 
 export class AppComponent {
+  @ViewChild(DxCalendarComponent, { static: false }) calendar: DxCalendarComponent;
+
   now: Date = new Date();
 
-  initialValues: Date[] = [new Date(), new Date(new Date().getTime() + 1000 * 60 * 60 * 24)];
+  value: any = [new Date(), new Date(new Date().getTime() + 1000 * 60 * 60 * 24)];
 
   selectionModes: string[] = [
     'single', 'multiple', 'range',
@@ -57,6 +61,10 @@ export class AppComponent {
       ? (data) => data.view === 'month' && this.isWeekend(data.date)
       : null;
   }
+
+  clearValue() {
+    this.calendar.instance.clear();
+  }
 }
 
 @NgModule({
@@ -66,6 +74,7 @@ export class AppComponent {
     DxSelectBoxModule,
     DxCalendarModule,
     DxCheckBoxModule,
+    DxButtonModule,
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],

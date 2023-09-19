@@ -138,7 +138,7 @@ export default function App() {
             onValueChanged={onDisabledChange}
           />
         </div>
-        <div className="section">
+        <div className="caption option">
           <span>Week numeration</span>
         </div>
         <div className="option">

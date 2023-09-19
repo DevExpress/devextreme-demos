@@ -47,7 +47,7 @@
           text="Disable the calendar"
         />
       </div>
-      <div class="section">
+      <div class="caption option">
         <span>Week numeration</span>
       </div>
       <div class="option">
@@ -184,10 +184,5 @@ function getCellCssClass({ date, view }) {
 
 .option {
   margin-top: 10px;
-}
-
-.section {
-  margin-top: 10px;
-  text-decoration: underline;
 }
 </style>

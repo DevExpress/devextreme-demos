@@ -23,8 +23,3 @@
 ::ng-deep .option {
   margin-top: 10px;
 }
-
-::ng-deep .section {
-  margin-top: 10px;
-  text-decoration: underline;
-}

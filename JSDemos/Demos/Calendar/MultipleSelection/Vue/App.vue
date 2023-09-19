@@ -2,8 +2,9 @@
   <div id="container">
     <div class="calendar-container">
       <DxCalendar
-        :values="initialValues"
-        :show-week-numbers="showWeekNumbers"
+        ref="calendarRef"
+        :value="initialValue"
+        :show-week-numbers="true"
         :select-week-on-click="selectWeekOnClick"
         :selection-mode="selectionMode"
         :min="minDateValue"
@@ -33,7 +34,7 @@
           :input-attr="{ 'aria-label': 'Selection Mode' }"
         />
       </div>
-      <div class="section">
+      <div class="option caption">
         <span>Dates availability</span>
       </div>
       <div class="option">
@@ -57,6 +58,12 @@
           @value-changed="disableWeekend"
         />
       </div>
+      <div class="option">
+        <DxButton
+          text="Clear value"
+          @click="clearValue"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -65,8 +72,10 @@ import { ref } from 'vue';
 import DxCheckBox from 'devextreme-vue/check-box';
 import DxSelectBox from 'devextreme-vue/select-box';
 import DxCalendar from 'devextreme-vue/calendar';
+import DxButton from 'devextreme-vue/button';
 
-const initialValues = [new Date(), new Date(new Date().getTime() + 1000 * 60 * 60 * 24)];
+const calendarRef = ref(null);
+const initialValue = [new Date(), new Date(new Date().getTime() + 1000 * 60 * 60 * 24)];
 const showWeekNumbers = ref(true);
 const selectWeekOnClick = ref(true);
 const selectionMode = ref('multiple');
@@ -98,6 +107,10 @@ function disableWeekend({ value }) {
     : null;
 }
 
+function clearValue() {
+  calendarRef.value.instance.clear();
+}
+
 </script>
 <style scoped>
 #container {
@@ -124,10 +137,5 @@ function disableWeekend({ value }) {
 
 .option {
   margin-top: 10px;
-}
-
-.section {
-  margin-top: 10px;
-  text-decoration: underline;
 }
 </style>
