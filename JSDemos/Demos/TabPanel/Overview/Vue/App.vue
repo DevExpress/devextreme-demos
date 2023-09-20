@@ -149,7 +149,6 @@ export default {
   flex-direction: column;
   flex-shrink: 0;
   box-sizing: border-box;
-  width: 300px;
   padding: 20px;
   background-color: rgba(191, 191, 191, 0.15);
 }
