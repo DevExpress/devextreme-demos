@@ -1,4 +1,6 @@
-export const overlappingModes = ['stagger', 'rotate', 'hide', 'none'];
+import { ILabelProps } from 'devextreme-react/chart';
+
+export const overlappingModes: (ILabelProps['overlappingBehavior'])[] = ['stagger', 'rotate', 'hide', 'none'];
 
 export const population = [
   { country: 'China', val: 1382500000 },

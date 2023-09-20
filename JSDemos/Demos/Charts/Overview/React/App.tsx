@@ -11,11 +11,11 @@ import Chart, {
 } from 'devextreme-react/chart';
 import { complaintsData } from './data.ts';
 
-const data = complaintsData.sort((a: { count: number; }, b: { count: number; }) => b.count - a.count);
-const totalCount = data.reduce((prevValue, item: { count: any; }) => prevValue + item.count, 0);
+const data = complaintsData.sort((a, b) => b.count - a.count);
+const totalCount = data.reduce((prevValue, item) => prevValue + item.count, 0);
 let cumulativeCount = 0;
 
-const dataArray = data.map((item: { count: number; complaint: any; }) => {
+const dataArray = data.map((item) => {
   cumulativeCount += item.count;
   return {
     complaint: item.complaint,
@@ -24,21 +24,19 @@ const dataArray = data.map((item: { count: number; complaint: any; }) => {
   };
 });
 
-function customizeTooltip(pointInfo: { argumentText: any; points: { valueText: any; }[]; }) {
-  return {
-    html: `<div><div class="tooltip-header">${
-      pointInfo.argumentText
-    }</div><div class="tooltip-body"><div class="series-name"><span class='top-series-name'>${
-      pointInfo.points[0].seriesName
-    }</span>: </div><div class="value-text"><span class='top-series-value'>${
-      pointInfo.points[0].valueText
-    }</span></div><div class="series-name"><span class='bottom-series-name'>${
-      pointInfo.points[1].seriesName
-    }</span>: </div><div class="value-text"><span class='bottom-series-value'>${
-      pointInfo.points[1].valueText
-    }</span>% </div></div></div>`,
-  };
-}
+const customizeTooltip = (pointInfo) => ({
+  html: `<div><div class="tooltip-header">${
+    pointInfo.argumentText
+  }</div><div class="tooltip-body"><div class="series-name"><span class='top-series-name'>${
+    pointInfo.points[0].seriesName
+  }</span>: </div><div class="value-text"><span class='top-series-value'>${
+    pointInfo.points[0].valueText
+  }</span></div><div class="series-name"><span class='bottom-series-name'>${
+    pointInfo.points[1].seriesName
+  }</span>: </div><div class="value-text"><span class='bottom-series-value'>${
+    pointInfo.points[1].valueText
+  }</span>% </div></div></div>`,
+});
 
 function customizePercentageText({ valueText }) {
   return `${valueText}%`;

@@ -2,6 +2,7 @@ import React from 'react';
 import DataSource from 'devextreme/data/data_source';
 import {
   Chart,
+  ChartTypes,
   ZoomAndPan,
   ScrollBar,
   ArgumentAxis,
@@ -35,29 +36,7 @@ function App() {
     endValue: new Date(2017, 3, 15),
   });
 
-  const handleChange = React.useCallback((e: { fullName: string; value: { startValue: any; }; component: any; }) => {
-    if (e.fullName === 'argumentAxis.visualRange') {
-      const stateStart = visualRange.startValue;
-      const currentStart = e.value.startValue;
-      if (stateStart.valueOf() !== currentStart.valueOf()) {
-        setVisualRange(e.value);
-      }
-      onVisualRangeChanged(e.component);
-    }
-  }, [setVisualRange, visualRange, onVisualRangeChanged]);
-
-  const onVisualRangeChanged = React.useCallback((component: { getDataSource: () => { (): any; new(): any; items: { (): any; new(): any; }; }; }) => {
-    const items = component.getDataSource().items();
-    if (
-      !items.length
-      || items[0].date - visualRange.startValue >= HALFDAY
-      || visualRange.endValue - items[items.length - 1].date >= HALFDAY
-    ) {
-      uploadDataByVisualRange(component);
-    }
-  }, [visualRange, uploadDataByVisualRange]);
-
-  const uploadDataByVisualRange = React.useCallback((component: { getDataSource: () => any; showLoadingIndicator: () => void; }) => {
+  const uploadDataByVisualRange = React.useCallback((component) => {
     const dataSource = component.getDataSource();
     const storage = dataSource.items();
     const ajaxArgs = {
@@ -84,7 +63,7 @@ function App() {
           const componentStorage = dataSource.store();
 
           dataFrame
-            .map((i: { Date: VarDate | string | number | Date | VarDate; MinTemp: any; MaxTemp: any; }) => ({
+            .map((i) => ({
               date: new Date(i.Date),
               minTemp: i.MinTemp,
               maxTemp: i.MaxTemp,
@@ -100,7 +79,29 @@ function App() {
           dataSource.reload();
         });
     }
-  }, [onVisualRangeChanged, visualRange]);
+  }, [visualRange]);
+
+  const onVisualRangeChanged = React.useCallback((component) => {
+    const items = component.getDataSource().items();
+    if (
+      !items.length
+      || items[0].date - visualRange.startValue.getTime() >= HALFDAY
+      || visualRange.endValue.getTime() - items[items.length - 1].date >= HALFDAY
+    ) {
+      uploadDataByVisualRange(component);
+    }
+  }, [visualRange, uploadDataByVisualRange]);
+
+  const handleChange = React.useCallback((e: ChartTypes.OptionChangedEvent) => {
+    if (e.fullName === 'argumentAxis.visualRange') {
+      const stateStart = visualRange.startValue;
+      const currentStart = e.value.startValue;
+      if (stateStart.valueOf() !== currentStart.valueOf()) {
+        setVisualRange(e.value);
+      }
+      onVisualRangeChanged(e.component);
+    }
+  }, [setVisualRange, visualRange, onVisualRangeChanged]);
 
   return (
     <Chart
@@ -127,7 +128,7 @@ function App() {
       </ValueAxis>
       <Series
         color="#ff950c"
-        type="rangeArea"
+        type="rangearea"
         argumentField="date"
         rangeValue1Field="minTemp"
         rangeValue2Field="maxTemp"
@@ -142,7 +143,7 @@ function App() {
   );
 }
 
-function getDataFrame(args: { startVisible: any; endVisible: any; startBound: any; endBound: any; } | (() => void)) {
+function getDataFrame(args) {
   let params = '?';
 
   params += `startVisible=${args.startVisible}
@@ -155,7 +156,7 @@ function getDataFrame(args: { startVisible: any; endVisible: any; startBound: an
   ).then((response) => response.json());
 }
 
-function getDateString(dateTime: { toLocaleDateString: (arg0: string) => any; }) {
+function getDateString(dateTime) {
   return dateTime ? dateTime.toLocaleDateString('en-US') : '';
 }
 

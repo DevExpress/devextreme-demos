@@ -32,7 +32,7 @@ function App() {
       <Series
         pane="topPane"
         color="#b0daff"
-        type="rangeArea"
+        type="rangearea"
         rangeValue1Field="minT"
         rangeValue2Field="maxT"
         name="Monthly Temperature Ranges, °C"

@@ -1,5 +1,5 @@
 import React from 'react';
-import NumberBox from 'devextreme-react/number-box';
+import NumberBox, { NumberBoxTypes } from 'devextreme-react/number-box';
 import {
   Chart,
   CommonSeriesSettings,
@@ -20,19 +20,19 @@ function App() {
   const [valueCustomPosition, setValueCustomPosition] = React.useState(0);
   const [valueOffset, setValueOffset] = React.useState(0);
 
-  const changeArgumentPosition = React.useCallback((e: { value: any; }) => {
+  const changeArgumentPosition = React.useCallback((e: NumberBoxTypes.ValueChangedEvent) => {
     setArgumentCustomPosition(e.value);
   }, [setArgumentCustomPosition]);
 
-  const changeArgumentOffset = React.useCallback((e: { value: any; }) => {
+  const changeArgumentOffset = React.useCallback((e: NumberBoxTypes.ValueChangedEvent) => {
     setArgumentOffset(e.value);
   }, [setArgumentOffset]);
 
-  const changeValuePosition = React.useCallback((e: { value: any; }) => {
+  const changeValuePosition = React.useCallback((e: NumberBoxTypes.ValueChangedEvent) => {
     setValueCustomPosition(e.value);
   }, [setValueCustomPosition]);
 
-  const changeValueOffset = React.useCallback((e: { value: any; }) => {
+  const changeValueOffset = React.useCallback((e: NumberBoxTypes.ValueChangedEvent) => {
     setValueOffset(e.value);
   }, [setValueOffset]);
 

@@ -61,7 +61,6 @@ function App() {
         verticalAlignment="bottom"
         horizontalAlignment="center"
         itemTextPosition="bottom"
-        equalColumnWidth={true}
       />
       <Title text="Energy Consumption in 2004">
         <Subtitle text="(Millions of Tons, Oil Equivalent)" />

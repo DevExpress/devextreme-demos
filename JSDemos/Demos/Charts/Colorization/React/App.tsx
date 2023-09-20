@@ -1,6 +1,6 @@
 import React from 'react';
 import TreeMap, { Tooltip } from 'devextreme-react/tree-map';
-import SelectBox from 'devextreme-react/select-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import { salesAmount, colorizationOptions, colorizationTypeLabel } from './data.ts';
 
 function customizeTooltip(arg: { node: { isLeaf?: any; data?: any; }; valueText: any; }) {
@@ -14,7 +14,7 @@ function customizeTooltip(arg: { node: { isLeaf?: any; data?: any; }; valueText:
 function App() {
   const [typeOptions, setTypeOptions] = React.useState(colorizationOptions[2].options);
 
-  const setType = React.useCallback((data: { value: any; }) => {
+  const setType = React.useCallback((data: SelectBoxTypes.ValueChangedEvent) => {
     setTypeOptions(data.value);
   }, [setTypeOptions]);
 

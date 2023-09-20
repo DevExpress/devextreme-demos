@@ -3,7 +3,7 @@ import PieChart, {
   Series,
   Legend,
 } from 'devextreme-react/pie-chart';
-import SelectBox from 'devextreme-react/select-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import { getPalette } from 'devextreme/viz/palette';
 import {
   paletteCollection, paletteExtensionModes, dataSource, paletteLabel, paletteExtensionLabel,
@@ -13,11 +13,11 @@ function App() {
   const [palette, setPalette] = React.useState(paletteCollection[0]);
   const [extensionMode, setExtensionMode] = React.useState(paletteExtensionModes[1]);
 
-  const handlePaletteChange = React.useCallback((e: { value: any; }) => {
+  const handlePaletteChange = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setPalette(e.value);
   }, [setPalette]);
 
-  const handleExtensionModeChange = React.useCallback((e: { value: any; }) => {
+  const handleExtensionModeChange = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setExtensionMode(e.value);
   }, [setExtensionMode]);
 

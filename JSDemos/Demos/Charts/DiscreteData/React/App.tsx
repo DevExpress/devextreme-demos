@@ -1,5 +1,5 @@
 import React from 'react';
-import SelectBox from 'devextreme-react/select-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import {
   PolarChart,
   CommonSeriesSettings,
@@ -11,7 +11,7 @@ import { types, dataSource, seriesTypeLabel } from './data.ts';
 function App() {
   const [currentType, setCurrentType] = React.useState(types[0]);
 
-  const handleChange = React.useCallback((e: { value: any; }) => {
+  const handleChange = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setCurrentType(e.value);
   }, [setCurrentType]);
 

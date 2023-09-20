@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Chart, Series, Legend, ValueAxis,
+  Chart, Series, Legend, ValueAxis, ChartTypes
 } from 'devextreme-react/chart';
 import { Button } from 'devextreme-react/button';
 import service from './data.ts';
@@ -11,7 +11,7 @@ function App() {
   const [isFirstLevel, setIsFirstLevel] = React.useState(true);
   const [data, setData] = React.useState(service.filterData(''));
 
-  const customizePoint = React.useCallback(() => ({
+  const customizePoint: CommonSeriesSettings = React.useCallback(() => ({
     color: colors[Number(isFirstLevel)],
     hoverStyle: !isFirstLevel ? {
       hatching: 'none',

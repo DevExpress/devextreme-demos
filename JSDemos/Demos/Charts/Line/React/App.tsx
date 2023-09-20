@@ -1,5 +1,5 @@
 import React from 'react';
-import SelectBox from 'devextreme-react/select-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import {
   Chart,
   Series,
@@ -13,17 +13,20 @@ import {
   Tooltip,
   Grid,
 } from 'devextreme-react/chart';
+import { Properties as ChartPropsType } from 'devextreme/viz/chart';
+
 import service from './data.ts';
 
 const countriesInfo = service.getCountriesInfo();
 const energySources = service.getEnergySources();
-const types = ['line', 'stackedline', 'fullstackedline'];
+
+const types: (ChartPropsType['commonSeriesSettings']['type'])[] = ['line', 'stackedline', 'fullstackedline'];
 const seriesTypeLabel = { 'aria-label': 'Series Type' };
 
 function App() {
-  const [type, setType] = React.useState('line');
+  const [type, setType] = React.useState(types[0]);
 
-  const handleChange = React.useCallback((e: { value: any; }) => {
+  const handleChange = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setType(e.value);
   }, []);
 

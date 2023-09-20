@@ -1,4 +1,6 @@
-export const types = ['scatter', 'line', 'area', 'bar', 'stackedbar'];
+import { Properties as PolarChartPropsType } from 'devextreme/viz/polar_chart';
+
+export const types: (PolarChartPropsType['commonSeriesSettings']['type'])[] = ['scatter', 'line', 'area', 'bar', 'stackedbar'];
 
 export const dataSource = [{
   arg: 'January',

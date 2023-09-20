@@ -1,15 +1,19 @@
-export const colorizationOptions = [{
+import { Properties as TreeMapPropType } from 'devextreme/viz/tree_map';
+
+type typeOptionsType = TreeMapPropType['colorizer'];
+
+export const colorizationOptions: { name: string, options: typeOptionsType }[] = [{
   name: 'Discrete',
   options: {
     type: 'discrete',
-    palette: 'Harmony Light',
+    palette: ['Harmony Light'],
     colorizeGroups: false,
   },
 }, {
   name: 'Grouped',
   options: {
     type: 'discrete',
-    palette: 'Harmony Light',
+    palette: ['Harmony Light'],
     colorizeGroups: true,
   },
 }, {

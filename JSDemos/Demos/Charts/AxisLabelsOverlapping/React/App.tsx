@@ -1,5 +1,5 @@
 import React from 'react';
-import SelectBox from 'devextreme-react/select-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import {
   Chart,
   Series,
@@ -12,7 +12,7 @@ import { overlappingModes, population, seriesTypeLabel } from './data.ts';
 function App() {
   const [currentMode, setCurrentMode] = React.useState(overlappingModes[0]);
 
-  const handleChange = React.useCallback((e: { value: any; }) => {
+  const handleChange = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setCurrentMode(e.value);
   }, [setCurrentMode]);
 

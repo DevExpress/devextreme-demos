@@ -1,4 +1,6 @@
-export const paletteCollection = ['Material', 'Soft Pastel', 'Harmony Light', 'Pastel', 'Bright', 'Soft', 'Ocean', 'Office', 'Vintage', 'Violet', 'Carmine', 'Dark Moon', 'Soft Blue', 'Dark Violet', 'Green Mist'];
+import { Properties as PieChartPropsType } from 'devextreme/viz/pie_chart';
+
+export const paletteCollection: PieChartPropsType['palette'] = ['Material', 'Soft Pastel', 'Harmony Light', 'Pastel', 'Bright', 'Soft', 'Ocean', 'Office', 'Vintage', 'Violet', 'Carmine', 'Dark Moon', 'Soft Blue', 'Dark Violet', 'Green Mist'];
 export const paletteExtensionModes = ['Alternate', 'Blend', 'Extrapolate'];
 
 const data: ({ arg: string; val: number; })[] = [];

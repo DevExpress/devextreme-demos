@@ -6,17 +6,18 @@ import Chart, {
   Export,
   Legend,
   Tooltip,
+  ITooltipProps,
   Title,
   Grid,
   Format,
 } from 'devextreme-react/chart';
 import { continentSources, populationData } from './data.ts';
 
-function customizeTooltip(pointInfo: { valueText: string; point: { getColor: () => any; }; seriesName: any; }) {
+const customizeTooltip: ITooltipProps['customizeTooltip'] = (pointInfo) => {
   const items = pointInfo.valueText.split('\n');
   const color = pointInfo.point.getColor();
 
-  items.forEach((item: string | any[], index: string | number) => {
+  items.forEach((item, index) => {
     if (item.indexOf(pointInfo.seriesName) === 0) {
       const element = document.createElement('span');
 
@@ -29,7 +30,7 @@ function customizeTooltip(pointInfo: { valueText: string; point: { getColor: () 
   });
 
   return { text: items.join('\n') };
-}
+};
 
 function App() {
   return (

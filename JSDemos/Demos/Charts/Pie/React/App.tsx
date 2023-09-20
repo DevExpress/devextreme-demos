@@ -5,20 +5,21 @@ import PieChart, {
   Connector,
   Size,
   Export,
+  PieChartTypes,
 } from 'devextreme-react/pie-chart';
 import { areas } from './data.ts';
 
-function pointClickHandler(e: { target: any; }) {
+function pointClickHandler(e: PieChartTypes.PointClickEvent) {
   toggleVisibility(e.target);
 }
 
-function legendClickHandler(e: { target: any; component: { getAllSeries: () => { getPointsByArg: (arg0: any) => any[]; }[]; }; }) {
+function legendClickHandler(e: PieChartTypes.LegendClickEvent) {
   const arg = e.target;
   const item = e.component.getAllSeries()[0].getPointsByArg(arg)[0];
   toggleVisibility(item);
 }
 
-function toggleVisibility(item: { isVisible: () => any; hide: () => any; show: () => any; }) {
+function toggleVisibility(item) {
   item.isVisible() ? item.hide() : item.show();
 }
 

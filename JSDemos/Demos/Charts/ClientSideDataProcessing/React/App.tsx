@@ -4,7 +4,7 @@ import CustomStore from 'devextreme/data/custom_store';
 import Chart, {
   ValueAxis, Label, Legend, Series, Size, Export, LoadingIndicator,
 } from 'devextreme-react/chart';
-import SelectBox from 'devextreme-react/select-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 
 const temperatureLabel = { 'aria-label': 'Temperature' };
 const temperature = [2, 4, 6, 8, 9, 10, 11];
@@ -32,7 +32,7 @@ function customizePoint() {
   return { color };
 }
 
-function changeTemperature(e: { value: any; }) {
+function changeTemperature(e: SelectBoxTypes.ValueChangedEvent) {
   monthWeather.filter(['t', '>', e.value]);
   monthWeather.load();
 }
