@@ -165,6 +165,8 @@ export default {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  min-width: 200px;
+  overflow: clip;
 }
 
 .options {
@@ -190,7 +192,7 @@ export default {
 
 .dx-tabs {
   display: flex;
-  max-width: 690px;
+  max-width: 100%;
 }
 
 .caption {

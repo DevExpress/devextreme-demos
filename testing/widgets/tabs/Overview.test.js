@@ -20,6 +20,12 @@ runManualTest('Tabs', 'Overview', ['jQuery', 'React', 'Vue', 'Angular'], (test) 
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t
+      .click($(`.${OPTION_CLASS} .${CHECKBOX_CLASS}`).nth(0))
+      .wait(200);
+
+    await takeScreenshot('tabs_shownavbuttons_true.png');
+
+    await t
       .click($(`.${OPTION_CLASS} .${SELECTBOX_CLASS}`).nth(0))
       .click($(`.${SELECTBOX_POPUP_WRAPPER_CLASS} .${LIST_ITEM_CLASS}`).nth(1))
       .wait(200);
@@ -39,12 +45,6 @@ runManualTest('Tabs', 'Overview', ['jQuery', 'React', 'Vue', 'Angular'], (test) 
       .wait(200);
 
     await takeScreenshot('tabs_iconposition_top.png');
-
-    await t
-      .click($(`.${OPTION_CLASS} .${CHECKBOX_CLASS}`).nth(0))
-      .wait(200);
-
-    await takeScreenshot('tabs_shownavbuttons_true.png');
 
     await t
       .expect(compareResults.isValid())

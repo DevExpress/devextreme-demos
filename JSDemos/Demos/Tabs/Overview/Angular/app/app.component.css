@@ -10,6 +10,8 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  min-width: 200px;
+  overflow: clip;
 }
 
 ::ng-deep .options {
@@ -31,7 +33,7 @@
 
 ::ng-deep .dx-tabs {
   display: flex;
-  max-width: 690px;
+  max-width: 100%;
 }
 
 ::ng-deep .dx-tab {
