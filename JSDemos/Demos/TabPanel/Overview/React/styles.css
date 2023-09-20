@@ -10,6 +10,9 @@
   flex-grow: 1;
   min-width: 360px;
   padding: 16px 32px;
+}
+
+.dx-theme-material .widget-container {
   background-color: rgba(191, 191, 191, 0.15);
 }
 
@@ -109,10 +112,6 @@
   transform: translateY(-50%);
   cursor: pointer;
   opacity: 0.6;
-}
-
-.dx-theme-material .widget-container {
-  background-color: rgba(191, 191, 191, 0.15);
 }
 
 .dx-color-scheme-contrast .task-item {
