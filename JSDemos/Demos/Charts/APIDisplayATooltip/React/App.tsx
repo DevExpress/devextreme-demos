@@ -15,6 +15,11 @@ function App() {
   const [selectedRegion, setSelectedRegion] = React.useState(null);
   const pieChartRef = React.useRef(null);
 
+  const showTooltip = React.useCallback((point: { showTooltip: () => void; argument: any; }) => {
+    point.showTooltip();
+    setSelectedRegion(point.argument);
+  }, [setSelectedRegion]);
+
   const onPointClick = React.useCallback((point) => {
     showTooltip(point);
   }, [showTooltip]);
@@ -23,11 +28,6 @@ function App() {
     const point = pieChartRef.current.instance.getAllSeries()[0].getPointsByArg(value)[0];
     showTooltip(point);
   }, [showTooltip]);
-
-  const showTooltip = React.useCallback((point: { showTooltip: () => void; argument: any; }) => {
-    point.showTooltip();
-    setSelectedRegion(point.argument);
-  }, [setSelectedRegion]);
 
   return (
     <React.Fragment>
