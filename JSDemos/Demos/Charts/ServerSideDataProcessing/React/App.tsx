@@ -15,7 +15,7 @@ import Chart, {
   Export,
   LoadingIndicator,
 } from 'devextreme-react/chart';
-import SelectBox from 'devextreme-react/select-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import { months, monthLabel } from './data.ts';
 
 const chartDataSource = new DataSource({
@@ -31,7 +31,7 @@ const chartDataSource = new DataSource({
   paginate: false,
 });
 
-function onValueChanged(data: { value: any; }) {
+function onValueChanged(data: SelectBoxTypes.ValueChangedEvent) {
   chartDataSource.filter(['Id', '=', data.value]);
   chartDataSource.load();
 }

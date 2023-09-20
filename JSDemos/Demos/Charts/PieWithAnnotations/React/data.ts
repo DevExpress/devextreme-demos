@@ -86,8 +86,8 @@ export const dataSource = [{
 }];
 
 export function getAnnotationSources() {
-  const annotations: ({ color?: string; borderColor?: string; shadowOpacity?: number; image: string; data: { country: string; oldCountryName: string; gold: number; silver: number; bronze: number; } | { country: string; gold: number; silver: number; bronze: number; oldCountryName?: undefined; }; country: string; offsetX: number; offsetY: ...)[] = [];
-  for (let i = 0; i < annotationSources.length; i: string | number += 1) {
+  const annotations = [];
+  for (let i = 0; i < annotationSources.length; i += 1) {
     const annotation = annotationSources[i];
     const { country } = annotation;
     const image = `../../../../images/flags/3x2/${country.replace(/\s/, '')}.svg`;

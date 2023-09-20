@@ -76,7 +76,7 @@ function App() {
         </Strip>
         <StripStyle>
           <Label>
-            <Font weight="500" size="14" />
+            <Font weight={500} size="14" />
           </Label>
         </StripStyle>
       </ValueAxis>

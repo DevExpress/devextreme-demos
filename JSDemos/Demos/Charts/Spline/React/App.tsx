@@ -1,10 +1,11 @@
 import React from 'react';
-import SelectBox from 'devextreme-react/select-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import {
   Chart,
   Series,
   ArgumentAxis,
   CommonSeriesSettings,
+  ICommonSeriesSettingsProps,
   CommonAxisSettings,
   Grid,
   Export,
@@ -16,12 +17,12 @@ import {
 } from 'devextreme-react/chart';
 import { architectureSources, sharingStatisticsInfo, seriesTypeLabel } from './data.ts';
 
-const types = ['spline', 'stackedspline', 'fullstackedspline'];
+const types: (ICommonSeriesSettingsProps['type'])[] = ['spline', 'stackedspline', 'fullstackedspline'];
 
 function App() {
-  const [type, setType] = React.useState('spline');
+  const [type, setType] = React.useState(types[0]);
 
-  const handleChange = React.useCallback((e: { value: any; }) => {
+  const handleChange = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setType(e.value);
   }, [setType]);
 

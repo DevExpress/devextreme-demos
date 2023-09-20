@@ -19,7 +19,7 @@ function App() {
       title="Male Age Structure"
       dataSource={dataSource}
     >
-      <CommonSeriesSettings argumentField="state" type="stackedBar" />
+      <CommonSeriesSettings argumentField="state" type="stackedbar" />
       <Series
         valueField="young"
         name="0-14"

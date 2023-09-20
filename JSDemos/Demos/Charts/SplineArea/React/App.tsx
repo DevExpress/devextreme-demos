@@ -1,10 +1,11 @@
 import React from 'react';
-import SelectBox from 'devextreme-react/select-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import {
   Chart,
   Series,
   ArgumentAxis,
   CommonSeriesSettings,
+  ICommonSeriesSettingsProps,
   Margin,
   Export,
   Legend,
@@ -12,12 +13,12 @@ import {
 
 import { dataSource, seriesTypeLabel } from './data.ts';
 
-const types = ['splinearea', 'stackedsplinearea', 'fullstackedsplinearea'];
+const types: (ICommonSeriesSettingsProps['type'])[] = ['splinearea', 'stackedsplinearea', 'fullstackedsplinearea'];
 
 function App() {
   const [type, setType] = React.useState(types[0]);
 
-  const handleChange = React.useCallback((e: { value: any; }) => {
+  const handleChange = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setType(e.value);
   }, [setType]);
 

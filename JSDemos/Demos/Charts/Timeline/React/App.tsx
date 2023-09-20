@@ -14,7 +14,7 @@ function App() {
       </ArgumentAxis>
       <Title text="The British Monarchy" subtitle="An Abbreviated Timeline" />
       <CommonSeriesSettings
-        type="rangeBar"
+        type="rangebar"
         argumentField="monarch"
         rangeValue1Field="start"
         rangeValue2Field="end"

@@ -11,10 +11,11 @@ import {
   Export,
   Legend,
   Point,
+  IExportProps,
 } from 'devextreme-react/chart';
 import { iceHockeyStatistics } from './data.ts';
 
-const exportFormats = ['PNG', 'PDF', 'JPEG', 'GIF', 'SVG'];
+const exportFormats: IExportProps['formats'] = ['PNG', 'PDF', 'JPEG', 'GIF', 'SVG'];
 
 function customizePoint(e: { value: number; }) {
   if (e.value === 1) {

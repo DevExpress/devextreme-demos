@@ -36,7 +36,7 @@ function App() {
         title="Google Inc. Stock Prices"
       >
         <Series
-          type="candleStick"
+          type="candlestick"
           openValueField="Open"
           highValueField="High"
           lowValueField="Low"
@@ -70,7 +70,7 @@ function App() {
             valueField="Open"
             argumentField="Date"
           >
-            <RsAggregation enabled="true" />
+            <RsAggregation enabled={true} />
           </RsSeries>
         </RsChart>
         <Scale

@@ -5,12 +5,13 @@ import Chart, {
   Tooltip,
   ValueAxis,
   BreakStyle,
+  IBreakStyleProps,
 } from 'devextreme-react/chart';
-import SelectBox from 'devextreme-react/select-box';
-import CheckBox from 'devextreme-react/check-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
+import CheckBox, { CheckBoxTypes } from 'devextreme-react/check-box';
 import { dataSource, lineStyleLabel, maxCountLabel } from './data.ts';
 
-const lineStyles = ['waved', 'straight'];
+const lineStyles: (IBreakStyleProps['line'])[] = ['waved', 'straight'];
 const breaksCount = [1, 2, 3, 4];
 
 function App() {
@@ -18,15 +19,15 @@ function App() {
   const [breaksCountValue, setBreaksCountValue] = React.useState(3);
   const [lineStyleValue, setLineStyleValue] = React.useState(lineStyles[0]);
 
-  const changeBreaksCount = React.useCallback((e: { value: any; }) => {
+  const changeBreaksCount = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setBreaksCountValue(e.value);
   }, [setBreaksCountValue]);
 
-  const changeStyle = React.useCallback((e: { value: any; }) => {
+  const changeStyle = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setLineStyleValue(e.value);
   }, [setLineStyleValue]);
 
-  const changeBreaksEnabledState = React.useCallback((e: { value: any; }) => {
+  const changeBreaksEnabledState = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setAutoBreaksEnabledValue(e.value);
   }, [setAutoBreaksEnabledValue]);
 

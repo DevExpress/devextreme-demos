@@ -11,7 +11,7 @@ function customizeText(info: { argument: any; }) {
   return info.argument;
 }
 
-function customizePoint(point: { series: { getPointsByArg: (arg0: any) => { getColor: () => any; }[]; }; argument: any; }) {
+function customizePoint(point) {
   const color = point.series.getPointsByArg(point.argument)[0].getColor();
   let fillId;
   switch (point.argument) {

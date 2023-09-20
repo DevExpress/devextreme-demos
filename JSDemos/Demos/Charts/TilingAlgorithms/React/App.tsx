@@ -1,18 +1,21 @@
 import React from 'react';
-import TreeMap, { Colorizer, Tooltip } from 'devextreme-react/tree-map';
-import SelectBox from 'devextreme-react/select-box';
+import TreeMap, {
+  Colorizer, Tooltip, ITreeMapOptions, ITooltipProps,
+} from 'devextreme-react/tree-map';
+import { TreeMapLayoutAlgorithm } from 'devextreme/viz/tree_map';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import { populationByAge, algorithmLabel } from './data.ts';
 
-const algorithms = ['sliceAndDice', 'squarified', 'strip', 'custom'];
+const algorithms: (TreeMapLayoutAlgorithm | 'custom')[] = ['sliceanddice', 'squarified', 'strip', 'custom'];
 
 function App() {
   const [selectedAlgorithm, setSelectedAlgorithm] = React.useState(algorithms[2]);
   const [
     currentAlgorithm,
     setCurrentAlgorithm,
-  ] = React.useState(getCurrentAlgorithm(algorithms[2]));
+  ] = React.useState<ITreeMapOptions['layoutAlgorithm']>(getCurrentAlgorithm(algorithms[2]));
 
-  const setAlgorithm = React.useCallback((data: { value: any; }) => {
+  const setAlgorithm = React.useCallback((data: SelectBoxTypes.ValueChangedEvent) => {
     setSelectedAlgorithm(data.value);
     setCurrentAlgorithm(getCurrentAlgorithm(data.value));
   }, [setSelectedAlgorithm, setCurrentAlgorithm]);
@@ -52,12 +55,12 @@ function App() {
   );
 }
 
-function customAlgorithm(arg: { rect: string | any[]; sum: any; items: any[]; }) {
+const customAlgorithm: ITreeMapOptions['layoutAlgorithm'] = (arg) => {
   const totalRect = arg.rect.slice();
   let totalSum = arg.sum;
   let side = 0;
 
-  arg.items.forEach((item: { value: number; rect: any; }) => {
+  arg.items.forEach((item) => {
     const size = Math.round(((totalRect[side + 2] - totalRect[side]) * item.value) / totalSum);
     const rect = totalRect.slice();
 
@@ -67,10 +70,10 @@ function customAlgorithm(arg: { rect: string | any[]; sum: any; items: any[]; })
     item.rect = rect;
     side = 1 - side;
   });
-}
+};
 
-function getCurrentAlgorithm(selectedAlgorithm: string) {
-  let currentAlgorithm = selectedAlgorithm.toLowerCase();
+function getCurrentAlgorithm(selectedAlgorithm: (TreeMapLayoutAlgorithm | 'custom')): ITreeMapOptions['layoutAlgorithm'] {
+  let currentAlgorithm: ITreeMapOptions['layoutAlgorithm'] | 'custom' = selectedAlgorithm;
   if (currentAlgorithm === 'custom') {
     currentAlgorithm = customAlgorithm;
   }
@@ -78,7 +81,7 @@ function getCurrentAlgorithm(selectedAlgorithm: string) {
   return currentAlgorithm;
 }
 
-function customizeTooltip(arg: { node: { getParent?: any; isLeaf?: any; data?: any; }; valueText: any; }) {
+const customizeTooltip: ITooltipProps['customizeTooltip'] = (arg) => {
   const { data } = arg.node;
   const parentData = arg.node.getParent().data;
 
@@ -87,6 +90,6 @@ function customizeTooltip(arg: { node: { getParent?: any; isLeaf?: any; data?: a
       ? `<span class='country'>${parentData.name}</span><br />${data.name}<br />${arg.valueText}(${((100 * data.value) / parentData.total).toFixed(1)}%)`
       : `<span class='country'>${data.name}</span>`,
   };
-}
+};
 
 export default App;

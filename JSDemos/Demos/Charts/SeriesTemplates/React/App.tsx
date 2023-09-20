@@ -2,6 +2,7 @@ import React from 'react';
 import Chart, {
   Legend,
   SeriesTemplate,
+  ISeriesTemplateProps,
   Title,
   Subtitle,
   CommonSeriesSettings,
@@ -9,9 +10,11 @@ import Chart, {
 } from 'devextreme-react/chart';
 import { dataSource } from './data.ts';
 
-function customizeSeries(valueFromNameField: number) {
-  return valueFromNameField === 2009 ? { type: 'line', label: { visible: true }, color: '#ff3f7a' } : {};
-}
+const customizeSeries: ISeriesTemplateProps['customizeSeries'] = (valueFromNameField: number) => (
+  valueFromNameField === 2009
+    ? { type: 'line', label: { visible: true }, color: '#ff3f7a' }
+    : {}
+);
 
 function App() {
   return (

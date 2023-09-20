@@ -1,10 +1,18 @@
-export const aggregationIntervals = [
+import { IAggregationProps, IArgumentAxisProps } from 'devextreme-react/chart';
+
+export const aggregationIntervals: {
+  displayName: string,
+  interval: IArgumentAxisProps['aggregationInterval'],
+}[] = [
   { displayName: 'One week', interval: 'week' },
   { displayName: 'Two weeks', interval: { weeks: 2 } },
   { displayName: 'Month', interval: 'month' },
 ];
 
-export const aggregationFunctions = [
+export const aggregationFunctions: {
+  displayName: string,
+  func: IAggregationProps['method'],
+}[] = [
   { displayName: 'Average', func: 'avg' },
   { displayName: 'Minimum', func: 'min' },
   { displayName: 'Maximum', func: 'max' },

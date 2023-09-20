@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SelectBox from 'devextreme-react/select-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import PieChart, {
   Series,
   Label,
@@ -8,11 +8,12 @@ import PieChart, {
   Export,
   Legend,
   Animation,
+  IPieChartOptions,
 } from 'devextreme-react/pie-chart';
 
 import { dataSource, resolutionModeLabel } from './data.ts';
 
-const resolveModes = ['shift', 'hide', 'none'];
+const resolveModes: (IPieChartOptions['resolveLabelOverlapping'])[] = ['shift', 'hide', 'none'];
 
 function formatText(arg: { argumentText: any; percentText: any; }) {
   return `${arg.argumentText} (${arg.percentText})`;
@@ -21,7 +22,7 @@ function formatText(arg: { argumentText: any; percentText: any; }) {
 function App() {
   const [resolveMode, setResolveMode] = React.useState(resolveModes[0]);
 
-  const handleResolveModeChange = React.useCallback((data: { value: any; }) => {
+  const handleResolveModeChange = React.useCallback((data: SelectBoxTypes.ValueChangedEvent) => {
     setResolveMode(data.value);
   }, [setResolveMode]);
 

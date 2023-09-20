@@ -3,10 +3,15 @@ import PieChart, {
   Series,
   Label,
   Legend,
+  IPieChartOptions,
 } from 'devextreme-react/pie-chart';
 import { countries, waterLandRatio } from './data.ts';
 
-const pieCharts = [{
+const pieCharts: {
+  title: string,
+  palette: IPieChartOptions['palette'],
+  dataSource: any,
+}[] = [{
   title: 'Area of Countries',
   palette: 'Soft',
   dataSource: countries,
