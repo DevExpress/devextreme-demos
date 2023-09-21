@@ -116,20 +116,6 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 text = "Hardware Upgrade",
                 date = "2023/09/16",
                 assignedBy = "Barb Banks"
-            },
-            new TaskItem {
-                status = "Help Needed",
-                priority = "normal",
-                text = "Touch-Enabled Apps",
-                date = "2023/09/16",
-                assignedBy = "Kevin Carter"
-            },
-            new TaskItem {
-                status = "Help Needed",
-                priority = "low",
-                text = "Review HR Budget Company Wide",
-                date = "2023/09/16",
-                assignedBy = "Ed Holmes"
             }
         };
 
@@ -199,20 +185,6 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 text = "Shipping Labels",
                 date = "2023/09/16",
                 assignedBy = "Greta Sims"
-            },
-            new TaskItem {
-                status = "Deferred",
-                priority = "low",
-                text = "Customer Follow Up Plan",
-                date = "2023/09/16",
-                assignedBy = "Brett Wade"
-            },
-            new TaskItem {
-                status = "Deferred",
-                priority = "normal",
-                text = "Support Dept Budget Report",
-                date = "2023/09/16",
-                assignedBy = "John Heart"
             }
         };
 
@@ -282,20 +254,6 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 text = "Review HR Budget Company Wide",
                 date = "2023/09/16",
                 assignedBy = "Mary Stern"
-            },
-            new TaskItem {
-                status = "Completed",
-                priority = "normal",
-                text = "Support",
-                date = "2023/09/16",
-                assignedBy = "Victor Norris"
-            },
-            new TaskItem {
-                status = "Completed",
-                priority = "low",
-                text = "Support Dept Budget Report",
-                date = "2023/09/16",
-                assignedBy = "Robin Cosworth"
             }
         };
 

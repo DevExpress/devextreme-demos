@@ -29,7 +29,6 @@
             .Height(418)
             .AnimationEnabled(true)
             .SwipeEnabled(true)
-            .SelectedIndex(0)
             .ShowNavButtons(true)
             .TabsPosition(Position.Top)
             .StylingMode(TabsStyle.Secondary)
@@ -90,13 +89,13 @@
 
         return `
             <div class="${className}">
-                <p class="task-item-text">
+                <span class="task-item-text">
                     ${task.text}
-                </p>
+                </span>
 
-                <p class="task-item-info">
+                <span class="task-item-info">
                     ${task.date} by ${task.assignedBy}
-                </p>
+                </span>
 
                 <i class="task-item-pseudo-button dx-icon dx-icon-overflow"></i>
             </div>
