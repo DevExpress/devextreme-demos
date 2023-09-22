@@ -36,10 +36,6 @@ const buildDemos = async (bundler: Bundler) => {
           break;
         }
 
-        if (demo.Widget !== 'Accordion') {
-          break;
-        }
-
         console.log(`${bundler.framework} Demo: ${demo.Widget} - ${demo.Name}`);
 
         // eslint-disable-next-line no-await-in-loop

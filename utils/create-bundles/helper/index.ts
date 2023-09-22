@@ -1,5 +1,5 @@
 import {
-  existsSync, readFileSync, writeFileSync, readdirSync, statSync, copyFileSync, mkdirSync, copySync,
+  existsSync,readFileSync, writeFileSync, readdirSync, copyFileSync, mkdirSync, copySync,
 } from 'fs-extra';
 import { join, basename, extname } from 'path';
 import { createHash } from 'crypto';
@@ -23,18 +23,6 @@ const getFileHash = (fileContent: string) => {
   const hash = createHash('shake256', { outputLength: 4 }).update(fileContent);
   const hashResult = hash.digest('hex');
   return hashResult;
-};
-
-export const copyDemoStyles = (sourceDemoPath: string, destinationDemoPath: string) => {
-  const sourceCss = join(sourceDemoPath, 'styles.css');
-  if (!existsSync(sourceCss)) {
-    return undefined;
-  }
-
-  const contentCss = readFileSync(sourceCss, { encoding: 'utf-8' });
-  const hash = getFileHash(contentCss);
-  const destinationCss = join(destinationDemoPath, `bundle.${hash}.css`);
-  writeFileSync(destinationCss, contentCss, { encoding: 'utf-8' });
 };
 
 const getTemplateContent = (framework: Framework) => {

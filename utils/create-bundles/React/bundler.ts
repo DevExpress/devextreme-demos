@@ -1,8 +1,9 @@
 import { build, BuildOptions } from 'esbuild';
-import { existsSync, mkdirSync } from 'fs-extra';
+import { existsSync, mkdirSync, removeSync } from 'fs-extra';
 import { join } from 'path';
+import ignoreMissingCss from '../plugins/ignore-missing-css';
 import {
-  copyDemoStyles, getDestinationPathByDemo, getSourcePathByDemo, createDemoLayout,
+  getDestinationPathByDemo, getSourcePathByDemo, createDemoLayout,
 } from '../helper';
 import { Bundler } from '../helper/bundler';
 import { Demo, Framework } from '../helper/types';
@@ -21,6 +22,8 @@ export default class ReactBundler implements Bundler {
       entryNames: '[dir]/bundle.[hash]',
       outdir: destinationDemoPath,
       entryPoints: this.#getEntryPoints(sourceDemoPath),
+      plugins: [ignoreMissingCss],
+      external: ['*.png', '*.svg'],
     };
 
     return options;
@@ -33,14 +36,17 @@ export default class ReactBundler implements Bundler {
     }
 
     const destinationDemoPath = getDestinationPathByDemo(demo, this.framework);
+    if (existsSync(destinationDemoPath)) {
+      removeSync(destinationDemoPath);
+    }
+
     mkdirSync(destinationDemoPath, { recursive: true });
 
     const options = this.getBuildOptions(demo);
     await build(options);
 
-    copyDemoStyles(sourceDemoPath, destinationDemoPath);
     createDemoLayout(demo, this.framework);
   };
 
-  #getEntryPoints = (sourceDemoPath: string) => [join(sourceDemoPath, 'index.js')];
+  #getEntryPoints = (sourceDemoPath: string) => [join(sourceDemoPath, 'index.js'), join(sourceDemoPath, 'styles.css')];
 }
