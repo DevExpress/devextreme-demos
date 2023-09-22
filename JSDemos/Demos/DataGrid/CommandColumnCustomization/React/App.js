@@ -23,6 +23,7 @@ const onRowValidating = (e) => {
 };
 
 const onEditorPreparing = (e) => {
+  console.log(e);
   if (e.parentType === 'dataRow' && e.dataField === 'Position') {
     e.editorOptions.readOnly = isChief(e.value);
   }

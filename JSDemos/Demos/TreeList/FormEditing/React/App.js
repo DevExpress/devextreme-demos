@@ -14,6 +14,7 @@ const lookupData = {
 const allowDeleting = (e) => e.row.data.ID !== 1;
 
 const onEditorPreparing = (e) => {
+  console.log(e);
   if (e.dataField === 'Head_ID' && e.row.data.ID === 1) {
     e.editorOptions.disabled = true;
     e.editorOptions.value = null;

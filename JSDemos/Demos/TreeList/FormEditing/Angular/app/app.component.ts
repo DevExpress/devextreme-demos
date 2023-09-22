@@ -3,6 +3,7 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { DxTreeListModule } from 'devextreme-angular';
+import { DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 
 import { Employee, Service } from './app.service';
 
@@ -42,6 +43,10 @@ export class AppComponent {
 
   allowDeleting(e) {
     return e.row.data.ID !== 1;
+  }
+
+  onButtonClick(e: DxDataGridTypes.ColumnButtonClickEvent) {
+    console.log(e);
   }
 }
 
