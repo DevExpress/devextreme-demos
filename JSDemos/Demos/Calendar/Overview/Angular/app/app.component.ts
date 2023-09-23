@@ -8,6 +8,7 @@ import {
   DxCalendarModule,
   DxTemplateModule,
 } from 'devextreme-angular';
+import { DxCalendarTypes } from 'devextreme-angular/ui/calendar';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -33,6 +34,8 @@ export class AppComponent {
   zoomLevels: string[] = [
     'month', 'year', 'decade', 'century',
   ];
+
+  zoomLevel: DxCalendarTypes.CalendarZoomLevel = 'month';
 
   weekDays: { id: number; text: string }[] = [
     { id: 0, text: 'Sunday' },
