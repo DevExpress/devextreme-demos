@@ -7,8 +7,7 @@
         columns.AddFor(m => m.OrderNumber)
             .Width(130);
 
-        columns.AddFor(m => m.OrderDate)
-            .Width(160);
+        columns.AddFor(m => m.OrderDate);
 
         columns.AddFor(m => m.Employee);
 
@@ -17,6 +16,7 @@
         columns.AddFor(m => m.CustomerStoreState);
 
         columns.AddFor(m => m.SaleAmount)
+            .Width(160)
             .Alignment(HorizontalAlignment.Right)
             .Format(Format.Currency);
         })

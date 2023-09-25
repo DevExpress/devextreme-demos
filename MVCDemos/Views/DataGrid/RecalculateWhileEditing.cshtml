@@ -26,6 +26,7 @@
         columns.AddFor(m => m.CustomerStoreState);
 
         columns.AddFor(m => m.SaleAmount)
+            .Width(160)
             .Alignment(HorizontalAlignment.Right)
             .Format(Format.Currency)
             .EditorOptions(new { format = "currency" });
