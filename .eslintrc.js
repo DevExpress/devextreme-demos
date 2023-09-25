@@ -511,8 +511,15 @@ module.exports = {
       'utils/templates/Vue/*.vue',
       'utils/templates/Vue/*.js',
     ],
+    parser: 'vue-eslint-parser',
+    'parserOptions': {
+      'parser': '@typescript-eslint/parser',
+    },
+    env: {
+      node: true,
+    },
     extends: [
-      'plugin:vue/recommended',
+      'plugin:vue/vue3-recommended',
     ],
     globals: {
       System: false,
@@ -530,7 +537,7 @@ module.exports = {
       'no-trailing-spaces': 'error',
       'no-new-func': 'error',
       'no-eval': 'error',
-      'no-undef': 'error',
+      'no-undef': 'warn',
       'no-unused-expressions': 'off',
       'no-unused-vars': ['error'],
       'no-extend-native': 'error',
