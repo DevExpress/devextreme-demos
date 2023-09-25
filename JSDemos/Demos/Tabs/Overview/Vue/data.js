@@ -92,8 +92,6 @@ export const stylingModes = [
   'secondary',
 ];
 
-export const iconPositionsSelectBoxLabel = { 'aria-label': 'Icon positions' };
-
 export const iconPositions = [
   'start',
   'top',

@@ -45,19 +45,19 @@ export class AppComponent {
 
   iconPosition: string;
 
+  widgetContainerClasses = 'widget-container widget-container-horizontal';
+
   constructor(service: Service) {
     this.tabsWithText = service.getTabsWithText();
     this.tabsWithIconAndText = service.getTabsWithIconAndText();
     this.tabsWithIcon = service.getTabsWithIcon();
-
     this.orientation = this.orientations[0];
     this.stylingMode = this.stylingModes[0];
     this.iconPosition = this.iconPositions[0];
   }
 
   onOrientationChanged(e) {
-    const widgetContainer = document.getElementsByClassName('widget-container');
-    widgetContainer[0].style.flexDirection = e.value === 'horizontal' ? 'column' : 'row';
+    this.widgetContainerClasses = `widget-container widget-container-${e.value}`;
     this.setTabsOption('orientation', e.value);
   }
 

@@ -92,8 +92,6 @@ const stylingModes = [
   'secondary',
 ];
 
-const iconPositionsSelectBoxLabel = { 'aria-label': 'Icon positions' };
-
 const iconPositions = [
   'start',
   'top',

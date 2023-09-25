@@ -24,7 +24,10 @@ $(() => {
     value: 'horizontal',
     inputAttr: { 'aria-label': 'Orientation' },
     onValueChanged(data) {
-      $('.widget-container').css('flex-direction', data.value === 'horizontal' ? 'column' : 'row');
+      const $widgetContainer = $('.widget-container');
+
+      $widgetContainer.removeClass();
+      $widgetContainer.addClass(`widget-container widget-container-${data.value}`);
 
       setTabsOption('orientation', data.value);
     },

@@ -71,7 +71,10 @@
 
 <script>
     function orientation_valueChanged(e) {
-        $('.widget-container').css('flex-direction', e.value === 'horizontal' ? 'column' : 'row');
+        const $widgetContainer = $('.widget-container');
+
+        $widgetContainer.removeClass();
+        $widgetContainer.addClass(`widget-container widget-container-${data.value}`);
 
         setTabsOption('orientation', e.value);
     }

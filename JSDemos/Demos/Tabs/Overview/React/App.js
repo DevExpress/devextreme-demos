@@ -33,8 +33,7 @@ const App = () => {
   const [iconPosition, setIconPosition] = React.useState(iconPositions[0]);
   const [showNavigation, setShowNavigation] = React.useState(false);
   const [scrollContent, setScrollContent] = React.useState(false);
-
-  const widgetContainerRef = React.useRef(null);
+  const [widgetContainerClasses, setWidgetContainerClasses] = React.useState('widget-container widget-container-horizontal');
 
   const stylingModeChanged = React.useCallback((e) => {
     setStylingMode(e.value);
@@ -44,10 +43,12 @@ const App = () => {
     setIconPosition(e.value);
   }, [setIconPosition]);
 
-  const orientationChanged = React.useCallback((e) => {
-    widgetContainerRef.current.style.flexDirection = e.value === 'horizontal' ? 'column' : 'row';
-    setOrientation(e.value);
-  }, [setOrientation]);
+  const orientationChanged = React.useCallback(
+    (e) => {
+      setWidgetContainerClasses(`widget-container widget-container-${e.value}`);
+      setOrientation(e.value);
+    }, [setOrientation, setWidgetContainerClasses],
+  );
 
   const showNavigationChanged = React.useCallback((e) => {
     setShowNavigation(e.value);
@@ -59,8 +60,9 @@ const App = () => {
 
   return (
     <div id="tabs-demo">
-      <div className="widget-container" ref={widgetContainerRef}>
-        <Tabs id="withText"
+      <div className={widgetContainerClasses}>
+        <Tabs
+          id="withText"
           dataSource={tabsText}
           scrollByContent={scrollContent}
           showNavButtons={showNavigation}
@@ -68,7 +70,8 @@ const App = () => {
           stylingMode={stylingMode}
           selectedIndex={0}
         />
-        <Tabs id="withIconAndText"
+        <Tabs
+          id="withIconAndText"
           dataSource={tabsIconAndText}
           scrollByContent={scrollContent}
           showNavButtons={showNavigation}
@@ -77,7 +80,8 @@ const App = () => {
           iconPosition={iconPosition}
           selectedIndex={0}
         />
-        <Tabs id="withIcon"
+        <Tabs
+          id="withIcon"
           dataSource={tabsIcon}
           scrollByContent={scrollContent}
           showNavButtons={showNavigation}
