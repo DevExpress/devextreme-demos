@@ -11,6 +11,9 @@ import {
   shouldRunTestAtIndex,
 } from '../utils/visual-tests/matrix-test-helper';
 import { createMdReport, createTestCafeReport } from '../utils/axe-reporter/reporter';
+import knownWarningsArray from './known-warnings.json';
+
+const knownWarnings = new Set(knownWarningsArray);
 
 const globalReadFrom = (basePath, relativePath, mapCallback) => {
   const absolute = join(basePath, relativePath);
@@ -140,10 +143,21 @@ const execTestCafeCode = (t, code) => {
           await t.expect(results.violations.length === 0).ok(createReport(results.violations));
         } else {
           const comparisonResult = await compareScreenshot(t, `${testName}.png`, undefined, comparisonOptions);
+          const consoleMessages = await t.getBrowserConsoleMessages();
           if (!comparisonResult) {
             // eslint-disable-next-line no-console
-            console.log(await t.getBrowserConsoleMessages());
+            console.log(consoleMessages);
           }
+
+          const errors = [...consoleMessages.error, ...consoleMessages.warn]
+            .filter((e) => !knownWarnings.has(e));
+
+          if (errors.length) {
+            console.log(errors);
+          }
+
+          await t.expect(errors).eql([]);
+
           await t.expect(comparisonResult).ok('INVALID_SCREENSHOT');
         }
       });
