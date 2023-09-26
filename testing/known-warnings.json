@@ -7,5 +7,6 @@
   "[Vue warn]: Property \"",
   "W1011 - The \"keyExpr\" option is not applied when dataSource is not an array.",
   "[Vue warn]: Failed to resolve component: ",
-  "Warning: forwardRef render functions accept exactly two parameters: props and ref."
+  "Warning: forwardRef render functions accept exactly two parameters: props and ref.",
+  "Warning: %s: `ref` is not a prop."
 ]
