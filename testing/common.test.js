@@ -152,10 +152,6 @@ const execTestCafeCode = (t, code) => {
           const errors = [...consoleMessages.error, ...consoleMessages.warn]
             .filter((e) => !knownWarnings.has(e));
 
-          if (errors.length) {
-            console.log(errors);
-          }
-
           await t.expect(errors).eql([]);
 
           await t.expect(comparisonResult).ok('INVALID_SCREENSHOT');
