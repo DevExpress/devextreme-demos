@@ -4,7 +4,7 @@ import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
 const TABS_WRAPPER_CLASS = 'dx-tabs-wrapper';
 const TAB_CLASS = 'dx-tab';
-const OPTION_CLASS = 'option';
+const SELECT_BOX_CONTAINER_CLASS = 'select-box-container';
 const SELECTBOX_CLASS = 'dx-selectbox';
 const SELECTBOX_POPUP_WRAPPER_CLASS = 'dx-selectbox-popup-wrapper';
 const LIST_ITEM_CLASS = 'dx-list-item';
@@ -27,7 +27,7 @@ runManualTest('Tabs', 'Selection', ['jQuery', 'React', 'Vue', 'Angular'], (test)
     await takeScreenshot('tabs_second_item_selection.png');
 
     await t
-      .click($(`.${OPTION_CLASS} .${SELECTBOX_CLASS}`).nth(0))
+      .click($(`.${SELECT_BOX_CONTAINER_CLASS} .${SELECTBOX_CLASS}`).nth(0))
       .click($(`.${SELECTBOX_POPUP_WRAPPER_CLASS} .${LIST_ITEM_CLASS}`).nth(2))
       .wait(200);
 
