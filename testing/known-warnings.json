@@ -2,5 +2,8 @@
   "W1025 - 'scrolling.mode' is set to 'virtual' or 'infinite'. Specify the height of the component. See:\nhttp://js.devexpress.com/error/23_2/W1025",
   "W1023 - Appointments require unique keys. Otherwise, the agenda view may not work correctly. See:\nhttp://js.devexpress.com/error/23_2/W1023",
   "The specified credentials are invalid. You can sign up for a free developer account at http://www.bingmapsportal.com",
-  "W2108 - The browser does not support exporting images to GIF format. See:\nhttp://js.devexpress.com/error/23_2/W2108"
+  "W2108 - The browser does not support exporting images to GIF format. See:\nhttp://js.devexpress.com/error/23_2/W2108",
+  "[Vue warn]: Do not use built-in or reserved HTML elements as component id: title",
+  "[Vue warn]: Property \"",
+  "W1011 - The \"keyExpr\" option is not applied when dataSource is not an array."
 ]
