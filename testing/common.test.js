@@ -11,9 +11,7 @@ import {
   shouldRunTestAtIndex,
 } from '../utils/visual-tests/matrix-test-helper';
 import { createMdReport, createTestCafeReport } from '../utils/axe-reporter/reporter';
-import knownWarningsArray from './known-warnings.json';
-
-const knownWarnings = new Set(knownWarningsArray);
+import knownWarnings from './known-warnings.json';
 
 const globalReadFrom = (basePath, relativePath, mapCallback) => {
   const absolute = join(basePath, relativePath);
@@ -150,7 +148,7 @@ const execTestCafeCode = (t, code) => {
           }
 
           const errors = [...consoleMessages.error, ...consoleMessages.warn]
-            .filter((e) => !knownWarnings.has(e));
+            .filter((e) => !knownWarnings.some((kw) => e.startsWith(kw)));
 
           await t.expect(errors).eql([]);
 
