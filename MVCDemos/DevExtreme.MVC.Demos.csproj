@@ -992,6 +992,7 @@
     <Content Include="Content\DemosStyles\Sortable\Kanban.css" />
     <Content Include="Content\DemosStyles\TabPanel\SortableClosableTabs.css" />
     <Content Include="Content\DemosStyles\Tabs\Overview.css" />
+    <Content Include="Content\DemosStyles\Tabs\Selection.css" />
     <Content Include="Content\DemosStyles\TagBox\GroupedItems.css" />
     <Content Include="Content\DemosStyles\TagBox\TagCountLimitation.css" />
     <Content Include="Content\DemosStyles\Toast\Overview.css" />
@@ -2119,6 +2120,7 @@
     <Content Include="Views\TreeList\UsingSearchPanel.cshtml" />
     <Content Include="Views\Slider\Overview.cshtml" />
     <Content Include="Views\Tabs\Overview.cshtml" />
+    <Content Include="Views\Tabs\Selection.cshtml" />
     <Content Include="Views\TagBox\TagCountLimitation.cshtml" />
     <Content Include="Views\VectorMap\Overview.cshtml" />
     <Content Include="Views\TreeList\Overview.cshtml" />
