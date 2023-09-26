@@ -143,12 +143,6 @@ export default {
       this.tabInstance2.option(propertyName, value);
       this.tabInstance3.option(propertyName, value);
     },
-
-    itemClick(e) {
-      if (e.itemData.price) {
-        this.currentProduct = e.itemData;
-      }
-    },
   },
 };
 </script>
@@ -164,7 +158,8 @@ export default {
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  gap: 80px;
+  row-gap: 80px;
+  column-gap: 4px;
   max-width: calc(100% - 300px);
   min-width: 200px;
   padding: 16px 32px;
@@ -180,7 +175,6 @@ export default {
   flex-direction: column;
   flex-shrink: 0;
   padding: 20px;
-  width: 300px;
   background-color: rgba(191, 191, 191, 0.15);
 }
 
