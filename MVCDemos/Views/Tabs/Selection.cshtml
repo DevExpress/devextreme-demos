@@ -17,13 +17,13 @@
                 <div class="dx-field-label">Selected user:</div>
                 <div class="dx-field-value">
                     @(Html.DevExtreme().SelectBox()
-                            .ID("select")
-                            .OnInitialized("onSelectBoxInitialized")
-                            .DataSource(new JS("employees"))
-                            .OnSelectionChanged("selectionChanged")
-                            .InputAttr("aria-label", "Select Employee")
-                            .Value(new JS("employees[0]"))
-                            .DisplayExpr("text")
+                        .ID("select")
+                        .OnInitialized("onSelectBoxInitialized")
+                        .DataSource(new JS("employees"))
+                        .OnSelectionChanged("selectionChanged")
+                        .InputAttr("aria-label", "Select Employee")
+                        .Value(new JS("employees[0]"))
+                        .DisplayExpr("text")
                     )
                 </div>
             </div>
