@@ -71,7 +71,10 @@
 
 <script>
     function orientation_valueChanged(e) {
-        $('.widget-container').css('flex-direction', e.value === 'horizontal' ? 'column' : 'row');
+        const $widgetContainer = $('.widget-container');
+
+        $widgetContainer.removeClass();
+        $widgetContainer.addClass(`widget-container widget-container-${data.value}`);
 
         setTabsOption('orientation', e.value);
     }
@@ -139,12 +142,12 @@
         {
             id: 2,
             text: 'Clients',
-            icon: 'account-box',
+            icon: 'accountbox',
         },
         {
             id: 3,
             text: 'Orders',
-            icon: 'orders-box',
+            icon: 'ordersbox',
         },
         {
             id: 4,
@@ -169,11 +172,11 @@
         },
         {
             id: 2,
-            icon: 'account-box',
+            icon: 'accountbox',
         },
         {
             id: 3,
-            icon: 'orders-box',
+            icon: 'ordersbox',
         },
         {
             id: 4,

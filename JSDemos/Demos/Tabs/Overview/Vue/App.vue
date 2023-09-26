@@ -1,29 +1,29 @@
 <template>
   <div id="tabs-demo">
-    <div class="widget-container">
+    <div :class="widgetContainerClasses">
       <DxTabs
-        :data-source="tabsWithText"
-        selected-index="0"
-        @initialized="saveTabInstance1"
         id="withText"
+        selected-index="0"
+        :data-source="tabsWithText"
         :scroll-by-content="false"
         :show-nav-buttons="false"
+        @initialized="saveTabInstance1"
       />
       <DxTabs
-        :data-source="tabsWithIconAndText"
-        @initialized="saveTabInstance2"
-        selected-index="0"
         id="withIconAndText"
+        selected-index="0"
+        :data-source="tabsWithIconAndText"
         :scroll-by-content="false"
         :show-nav-buttons="false"
+        @initialized="saveTabInstance2"
       />
       <DxTabs
-        :data-source="tabsWithIcon"
-        selected-index="0"
-        @initialized="saveTabInstance3"
         id="withIcon"
+        selected-index="0"
+        :data-source="tabsWithIcon"
         :scroll-by-content="false"
         :show-nav-buttons="false"
+        @initialized="saveTabInstance3"
       />
     </div>
 
@@ -95,16 +95,23 @@ export default {
   },
   data() {
     return {
-      tabsWithText: service.getTabsWithText(),
-      tabsWithIcon: service.getTabsWithIcon(),
-      tabsWithIconAndText: service.getTabsWithIconAndText(),
       orientations,
       stylingModes,
       iconPositions,
+      tabsWithText: service.getTabsWithText(),
+      tabsWithIcon: service.getTabsWithIcon(),
+      tabsWithIconAndText: service.getTabsWithIconAndText(),
       orientation: orientations[0],
-      stylingMode: stylingModes[0],
       iconPosition: iconPositions[0],
+      stylingMode: stylingModes[0],
     };
+  },
+  computed: {
+    widgetContainerClasses() {
+      const { orientation } = this;
+
+      return `widget-container widget-container-${orientation}`;
+    },
   },
   methods: {
     saveTabInstance1(e) {
@@ -116,38 +123,25 @@ export default {
     saveTabInstance3(e) {
       this.tabInstance3 = e.component;
     },
-
     onShowNavigationChanged(e) {
       this.setTabsOption('showNavButtons', e.value);
     },
-
     onScrollContentChanged(e) {
       this.setTabsOption('scrollByContent', e.value);
     },
-
     onStylingModeChanged(e) {
       this.setTabsOption('stylingMode', e.value);
     },
     onIconPositionChanged(e) {
       this.setTabsOption('iconPosition', e.value);
     },
-
     onOrientationChanged(e) {
-      const widgetContainer = document.getElementsByClassName('widget-container');
-      widgetContainer[0].style.flexDirection = e.value === 'horizontal' ? 'column' : 'row';
       this.setTabsOption('orientation', e.value);
     },
-
     setTabsOption(propertyName, value) {
       this.tabInstance1.option(propertyName, value);
       this.tabInstance2.option(propertyName, value);
       this.tabInstance3.option(propertyName, value);
-    },
-
-    itemClick(e) {
-      if (e.itemData.price) {
-        this.currentProduct = e.itemData;
-      }
     },
   },
 };
@@ -159,12 +153,21 @@ export default {
 }
 
 .widget-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   flex-grow: 1;
-  padding: 16px 4px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  row-gap: 80px;
+  column-gap: 4px;
+  max-width: calc(100% - 300px);
+  min-width: 200px;
+  padding: 16px 32px;
+  overflow: clip;
+}
+
+.widget-container-vertical {
+  flex-direction: row;
 }
 
 .options {
@@ -172,25 +175,11 @@ export default {
   flex-direction: column;
   flex-shrink: 0;
   padding: 20px;
-  width: 260px;
   background-color: rgba(191, 191, 191, 0.15);
 }
 
-.dx-tabs-horizontal:not(:last-child) {
-  margin-bottom: 80px;
-}
-
-.dx-tabs-vertical:not(:last-child) {
-  margin-right: 80px;
-}
-
 .dx-tab {
-  width: 138px;
-}
-
-.dx-tabs {
-  display: flex;
-  max-width: 690px;
+  width: 135px;
 }
 
 .caption {
@@ -212,5 +201,6 @@ export default {
 
 .dx-tabs-vertical {
   border-right: 1px solid rgb(225, 225, 225, 0.4);
+  height: 250px;
 }
 </style>

@@ -39,12 +39,12 @@ const tabsWithIconAndText = [
   {
     id: 2,
     text: 'Clients',
-    icon: 'account-box',
+    icon: 'accountbox',
   },
   {
     id: 3,
     text: 'Orders',
-    icon: 'orders-box',
+    icon: 'ordersbox',
   },
   {
     id: 4,
@@ -69,11 +69,11 @@ const tabsWithIcon = [
   },
   {
     id: 2,
-    icon: 'account-box',
+    icon: 'accountbox',
   },
   {
     id: 3,
-    icon: 'orders-box',
+    icon: 'ordersbox',
   },
   {
     id: 4,
@@ -91,8 +91,6 @@ export const stylingModes = [
   'primary',
   'secondary',
 ];
-
-export const iconPositionsSelectBoxLabel = { 'aria-label': 'Icon positions' };
 
 export const iconPositions = [
   'start',

@@ -46,11 +46,11 @@ const tabsWithIcon: Tab[] = [
   },
   {
     id: 2,
-    icon: 'account-box',
+    icon: 'accountbox',
   },
   {
     id: 3,
-    icon: 'orders-box',
+    icon: 'ordersbox',
   },
   {
     id: 4,
@@ -76,12 +76,12 @@ const tabsWithIconAndText: Tab[] = [
   {
     id: 2,
     text: 'Clients',
-    icon: 'account-box',
+    icon: 'accountbox',
   },
   {
     id: 3,
     text: 'Orders',
-    icon: 'orders-box',
+    icon: 'ordersbox',
   },
   {
     id: 4,
