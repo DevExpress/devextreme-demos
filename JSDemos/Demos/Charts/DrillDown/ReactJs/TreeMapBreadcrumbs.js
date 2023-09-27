@@ -1,5 +1,6 @@
-import React from "react";
-import Breadcrumb from "./Breadcrumb.js";
+import React from 'react';
+import Breadcrumb from './Breadcrumb.js';
+
 function TreeMapBreadcrumbs({ className, treeInfo, onItemClick }) {
   const lastIndex = treeInfo.length - 1;
   return (

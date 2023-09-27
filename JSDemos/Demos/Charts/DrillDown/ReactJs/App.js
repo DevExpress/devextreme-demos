@@ -1,7 +1,8 @@
-import React from "react";
-import TreeMap, { Size, Title, Colorizer } from "devextreme-react/tree-map";
-import { citiesPopulation } from "./data.js";
-import TreeMapBreadcrumbs from "./TreeMapBreadcrumbs.js";
+import React from 'react';
+import TreeMap, { Size, Title, Colorizer } from 'devextreme-react/tree-map';
+import { citiesPopulation } from './data.js';
+import TreeMapBreadcrumbs from './TreeMapBreadcrumbs.js';
+
 function drillInfoClick(node) {
   if (node) {
     node.drillDown();
@@ -17,7 +18,7 @@ function App() {
       const newDrillInfo = [];
       for (let node = e.node.getParent(); node; node = node.getParent()) {
         newDrillInfo.unshift({
-          text: node.label() || "All Continents",
+          text: node.label() || 'All Continents',
           node,
         });
       }
@@ -28,7 +29,7 @@ function App() {
       }
       setDrillInfo(newDrillInfo);
     },
-    [setDrillInfo]
+    [setDrillInfo],
   );
   return (
     <React.Fragment>

@@ -1,6 +1,6 @@
 const dataSource = [
   {
-    country: "USA",
+    country: 'USA',
     hydro: 59.8,
     oil: 937.6,
     gas: 582,
@@ -8,7 +8,7 @@ const dataSource = [
     nuclear: 187.9,
   },
   {
-    country: "China",
+    country: 'China',
     hydro: 74.2,
     oil: 308.6,
     gas: 35.1,
@@ -16,7 +16,7 @@ const dataSource = [
     nuclear: 11.3,
   },
   {
-    country: "Russia",
+    country: 'Russia',
     hydro: 40,
     oil: 128.5,
     gas: 361.8,
@@ -24,7 +24,7 @@ const dataSource = [
     nuclear: 32.4,
   },
   {
-    country: "Japan",
+    country: 'Japan',
     hydro: 22.6,
     oil: 241.5,
     gas: 64.9,
@@ -32,7 +32,7 @@ const dataSource = [
     nuclear: 64.8,
   },
   {
-    country: "India",
+    country: 'India',
     hydro: 19,
     oil: 119.3,
     gas: 28.9,
@@ -40,7 +40,7 @@ const dataSource = [
     nuclear: 3.8,
   },
   {
-    country: "Germany",
+    country: 'Germany',
     hydro: 6.1,
     oil: 123.6,
     gas: 77.3,

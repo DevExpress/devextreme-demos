@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import Funnel, {
   Title,
   Margin,
@@ -7,8 +7,9 @@ import Funnel, {
   Item,
   Border,
   Label,
-} from "devextreme-react/funnel";
-import { dataSource } from "./data.js";
+} from 'devextreme-react/funnel';
+import { dataSource } from './data.js';
+
 const formatLabel = (arg) =>
   `<span class="label">${arg.percentText}</span><br/>${arg.item.argument}`;
 function App() {

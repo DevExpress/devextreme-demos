@@ -1,7 +1,10 @@
-import React from "react";
-import PieChart, { Series, Legend, Label, Connector } from "devextreme-react/pie-chart";
-import { data } from "./data.js";
-import CenterTemplate from "./CenterTemplate.js";
+import React from 'react';
+import PieChart, {
+  Series, Legend, Label, Connector,
+} from 'devextreme-react/pie-chart';
+import { data } from './data.js';
+import CenterTemplate from './CenterTemplate.js';
+
 const countries = Array.from(new Set(data.map((item) => item.country)));
 const customizeLabel = (e) => `${e.argumentText}\n${e.valueText}`;
 function App() {

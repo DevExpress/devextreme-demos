@@ -1,13 +1,13 @@
 const energySources = [
-  { value: "hydro", name: "Hydro-electric" },
-  { value: "oil", name: "Oil" },
-  { value: "gas", name: "Natural gas" },
-  { value: "coal", name: "Coal" },
-  { value: "nuclear", name: "Nuclear" },
+  { value: 'hydro', name: 'Hydro-electric' },
+  { value: 'oil', name: 'Oil' },
+  { value: 'gas', name: 'Natural gas' },
+  { value: 'coal', name: 'Coal' },
+  { value: 'nuclear', name: 'Nuclear' },
 ];
 const countriesInfo = [
   {
-    country: "USA",
+    country: 'USA',
     hydro: 71.2,
     oil: 910.4,
     gas: 483.2,
@@ -15,7 +15,7 @@ const countriesInfo = [
     nuclear: 216.1,
   },
   {
-    country: "China",
+    country: 'China',
     hydro: 72.5,
     oil: 223.6,
     gas: 36,
@@ -23,7 +23,7 @@ const countriesInfo = [
     nuclear: 11.3,
   },
   {
-    country: "Russia",
+    country: 'Russia',
     hydro: 47.7,
     oil: 149.4,
     gas: 432.3,
@@ -31,7 +31,7 @@ const countriesInfo = [
     nuclear: 29.3,
   },
   {
-    country: "Japan",
+    country: 'Japan',
     hydro: 17.9,
     oil: 283.6,
     gas: 61.8,
@@ -39,7 +39,7 @@ const countriesInfo = [
     nuclear: 52.8,
   },
   {
-    country: "India",
+    country: 'India',
     hydro: 14.4,
     oil: 86.4,
     gas: 25.1,
@@ -47,7 +47,7 @@ const countriesInfo = [
     nuclear: 3.8,
   },
   {
-    country: "Germany",
+    country: 'Germany',
     hydro: 6.6,
     oil: 101.7,
     gas: 92.7,

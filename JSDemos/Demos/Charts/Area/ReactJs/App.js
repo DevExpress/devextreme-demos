@@ -1,5 +1,5 @@
-import React from "react";
-import SelectBox from "devextreme-react/select-box";
+import React from 'react';
+import SelectBox from 'devextreme-react/select-box';
 import {
   Chart,
   Series,
@@ -8,16 +8,17 @@ import {
   Export,
   Legend,
   Margin,
-} from "devextreme-react/chart";
-import { dataSource, seriesTypeLabel } from "./data.js";
-const types = ["area", "stackedarea", "fullstackedarea"];
+} from 'devextreme-react/chart';
+import { dataSource, seriesTypeLabel } from './data.js';
+
+const types = ['area', 'stackedarea', 'fullstackedarea'];
 function App() {
   const [type, setType] = React.useState(types[0]);
   const handleChange = React.useCallback(
     (e) => {
       setType(e.value);
     },
-    [setType]
+    [setType],
   );
   return (
     <div id="chart-demo">

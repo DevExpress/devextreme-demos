@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+
 export function LabelTemplate(data) {
   return (
     <svg overflow="visible">
@@ -21,5 +22,5 @@ export function LabelTemplate(data) {
   );
 }
 function getFilePath(text) {
-  return `../../../../images/flags/3x2/${text.toLowerCase().replace(" ", "")}.svg`;
+  return `../../../../images/flags/3x2/${text.toLowerCase().replace(' ', '')}.svg`;
 }

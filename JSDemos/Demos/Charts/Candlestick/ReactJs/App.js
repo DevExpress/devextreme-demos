@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import Chart, {
   CommonSeriesSettings,
   Series,
@@ -11,8 +11,9 @@ import Chart, {
   Legend,
   Export,
   Tooltip,
-} from "devextreme-react/chart";
-import { dataSource } from "./data.js";
+} from 'devextreme-react/chart';
+import { dataSource } from './data.js';
+
 function customizeTooltip(arg) {
   return {
     text: `Open: $${arg.openValue}<br/>

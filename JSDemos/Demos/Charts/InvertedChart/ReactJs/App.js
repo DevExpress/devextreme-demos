@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   PolarChart,
   Series,
@@ -6,9 +6,8 @@ import {
   ValueAxis,
   Export,
   Legend,
-} from 'devextreme-react/polar-chart';
-import { dataSource } from './data.js';
-
+} from "devextreme-react/polar-chart";
+import { dataSource } from "./data.js";
 function App() {
   return (
     <PolarChart

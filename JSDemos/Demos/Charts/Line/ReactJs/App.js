@@ -1,5 +1,5 @@
-import React from "react";
-import SelectBox from "devextreme-react/select-box";
+import React from 'react';
+import SelectBox from 'devextreme-react/select-box';
 import {
   Chart,
   Series,
@@ -12,12 +12,13 @@ import {
   Subtitle,
   Tooltip,
   Grid,
-} from "devextreme-react/chart";
-import service from "./data.js";
+} from 'devextreme-react/chart';
+import service from './data.js';
+
 const countriesInfo = service.getCountriesInfo();
 const energySources = service.getEnergySources();
-const types = ["line", "stackedline", "fullstackedline"];
-const seriesTypeLabel = { "aria-label": "Series Type" };
+const types = ['line', 'stackedline', 'fullstackedline'];
+const seriesTypeLabel = { 'aria-label': 'Series Type' };
 function App() {
   const [type, setType] = React.useState(types[0]);
   const handleChange = React.useCallback((e) => {

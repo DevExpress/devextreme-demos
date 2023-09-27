@@ -1,127 +1,127 @@
 export const citiesPopulation = [
   {
-    name: "Africa",
+    name: 'Africa',
     items: [
       {
-        name: "Nigeria",
+        name: 'Nigeria',
         items: [
           {
-            name: "Lagos",
+            name: 'Lagos',
             value: 21324000,
           },
           {
-            name: "Kano",
+            name: 'Kano',
             value: 3626068,
           },
           {
-            name: "Ibadan",
+            name: 'Ibadan',
             value: 3200000,
           },
           {
-            name: "Abuja",
+            name: 'Abuja',
             value: 3000000,
           },
           {
-            name: "Kaduna",
+            name: 'Kaduna',
             value: 1652844,
           },
           {
-            name: "Port Harcourt",
+            name: 'Port Harcourt',
             value: 1320214,
           },
           {
-            name: "Aba",
+            name: 'Aba',
             value: 1300000,
           },
           {
-            name: "Ogbomosho",
+            name: 'Ogbomosho',
             value: 1200000,
           },
           {
-            name: "Maiduguri",
+            name: 'Maiduguri',
             value: 1197497,
           },
         ],
       },
       {
-        name: "Egypt",
+        name: 'Egypt',
         items: [
           {
-            name: "Cairo",
+            name: 'Cairo',
             value: 9278441,
           },
           {
-            name: "Alexandria",
+            name: 'Alexandria',
             value: 4546231,
           },
           {
-            name: "Giza",
+            name: 'Giza',
             value: 4239988,
           },
           {
-            name: "Shubra El-Kheima",
+            name: 'Shubra El-Kheima',
             value: 3072951,
           },
           {
-            name: "Port Said",
+            name: 'Port Said',
             value: 1607353,
           },
           {
-            name: "Suez",
+            name: 'Suez',
             value: 1347352,
           },
         ],
       },
       {
-        name: "Congo",
+        name: 'Congo',
         items: [
           {
-            name: "Kinshasa",
+            name: 'Kinshasa',
             value: 9735000,
           },
           {
-            name: "Lubumbashi",
+            name: 'Lubumbashi',
             value: 1786397,
           },
           {
-            name: "Mbuji-Mayi",
+            name: 'Mbuji-Mayi',
             value: 1680991,
           },
           {
-            name: "Kananga",
+            name: 'Kananga',
             value: 1061181,
           },
           {
-            name: "Bukavu",
+            name: 'Bukavu',
             value: 1012053,
           },
           {
-            name: "Kisangani",
+            name: 'Kisangani',
             value: 935977,
           },
         ],
       },
       {
-        name: "Morocco",
+        name: 'Morocco',
         items: [
           {
-            name: "Casablanca",
+            name: 'Casablanca',
             value: 3359818,
           },
           {
-            name: "Fès",
+            name: 'Fès',
             value: 1112072,
           },
           {
-            name: "Tangier",
+            name: 'Tangier',
             value: 947952,
           },
           {
-            name: "Marrakech",
+            name: 'Marrakech',
             value: 928850,
           },
           {
-            name: "Salé",
+            name: 'Salé',
             value: 920403,
           },
         ],
@@ -129,120 +129,120 @@ export const citiesPopulation = [
     ],
   },
   {
-    name: "Asia",
+    name: 'Asia',
     items: [
       {
-        name: "China",
+        name: 'China',
         items: [
           {
-            name: "Shanghai",
+            name: 'Shanghai',
             value: 24256800,
           },
           {
-            name: "Beijing",
+            name: 'Beijing',
             value: 21516000,
           },
           {
-            name: "Chongqing",
+            name: 'Chongqing',
             value: 18384100,
           },
           {
-            name: "Chengdu",
+            name: 'Chengdu',
             value: 17677122,
           },
           {
-            name: "Tianjin",
+            name: 'Tianjin',
             value: 15200000,
           },
           {
-            name: "Guangzhou",
+            name: 'Guangzhou',
             value: 13080500,
           },
           {
-            name: "Shenzhen",
+            name: 'Shenzhen',
             value: 10630000,
           },
         ],
       },
       {
-        name: "Pakistan",
+        name: 'Pakistan',
         items: [
           {
-            name: "Karachi",
+            name: 'Karachi',
             value: 23500000,
           },
           {
-            name: "Faisalabad",
+            name: 'Faisalabad',
             value: 6418745,
           },
           {
-            name: "Lahore",
+            name: 'Lahore',
             value: 6318745,
           },
           {
-            name: "Rawalpindi",
+            name: 'Rawalpindi',
             value: 3363911,
           },
           {
-            name: "Hyderabad",
+            name: 'Hyderabad',
             value: 3429471,
           },
           {
-            name: "Multan",
+            name: 'Multan',
             value: 2050000,
           },
         ],
       },
       {
-        name: "India",
+        name: 'India',
         items: [
           {
-            name: "Delhi",
+            name: 'Delhi',
             value: 16787941,
           },
           {
-            name: "Mumbai",
+            name: 'Mumbai',
             value: 12478447,
           },
           {
-            name: "Bengaluru",
+            name: 'Bengaluru',
             value: 8425970,
           },
           {
-            name: "Hyderabad",
+            name: 'Hyderabad',
             value: 7749334,
           },
           {
-            name: "Chennai",
+            name: 'Chennai',
             value: 7088000,
           },
           {
-            name: "Ahmedabad",
+            name: 'Ahmedabad',
             value: 5577940,
           },
         ],
       },
       {
-        name: "Japan",
+        name: 'Japan',
         items: [
           {
-            name: "Tokyo",
+            name: 'Tokyo',
             value: 9262046,
           },
           {
-            name: "Yokohama",
+            name: 'Yokohama',
             value: 3697894,
           },
           {
-            name: "Osaka",
+            name: 'Osaka',
             value: 2668586,
           },
           {
-            name: "Nagoya",
+            name: 'Nagoya',
             value: 2283289,
           },
           {
-            name: "Sapporo",
+            name: 'Sapporo',
             value: 1918096,
           },
         ],
@@ -250,117 +250,117 @@ export const citiesPopulation = [
     ],
   },
   {
-    name: "Europe",
+    name: 'Europe',
     items: [
       {
-        name: "Turkey",
+        name: 'Turkey',
         items: [
           {
-            name: "Istanbul",
+            name: 'Istanbul',
             value: 14160467,
           },
           {
-            name: "Ankara",
+            name: 'Ankara',
             value: 4470800,
           },
           {
-            name: "İzmir",
+            name: 'İzmir',
             value: 3276815,
           },
           {
-            name: "Bursa",
+            name: 'Bursa',
             value: 1957247,
           },
           {
-            name: "Adana",
+            name: 'Adana',
             value: 1717473,
           },
         ],
       },
       {
-        name: "Russia",
+        name: 'Russia',
         items: [
           {
-            name: "Moscow",
+            name: 'Moscow',
             value: 12197596,
           },
           {
-            name: "Saint Petersburg",
+            name: 'Saint Petersburg',
             value: 5191690,
           },
           {
-            name: "Novosibirsk",
+            name: 'Novosibirsk',
             value: 1473754,
           },
           {
-            name: "Yekaterinburg",
+            name: 'Yekaterinburg',
             value: 1428042,
           },
         ],
       },
       {
-        name: "United Kingdom",
+        name: 'United Kingdom',
         items: [
           {
-            name: "London",
+            name: 'London',
             value: 8538689,
           },
           {
-            name: "Birmingham",
+            name: 'Birmingham',
             value: 1101360,
           },
           {
-            name: "Glasgow",
+            name: 'Glasgow',
             value: 599650,
           },
           {
-            name: "Liverpool",
+            name: 'Liverpool',
             value: 473073,
           },
         ],
       },
       {
-        name: "Germany",
+        name: 'Germany',
         items: [
           {
-            name: "Berlin",
+            name: 'Berlin',
             value: 3517424,
           },
           {
-            name: "Hamburg",
+            name: 'Hamburg',
             value: 1686100,
           },
           {
-            name: "Munich",
+            name: 'Munich',
             value: 1185400,
           },
           {
-            name: "Cologne",
+            name: 'Cologne',
             value: 1046680,
           },
           {
-            name: "Frankfurt",
+            name: 'Frankfurt',
             value: 717624,
           },
         ],
       },
       {
-        name: "France",
+        name: 'France',
         items: [
           {
-            name: "Paris",
+            name: 'Paris',
             value: 2240621,
           },
           {
-            name: "Marseille",
+            name: 'Marseille',
             value: 852516,
           },
           {
-            name: "Lyon",
+            name: 'Lyon',
             value: 500715,
           },
           {
-            name: "Toulouse",
+            name: 'Toulouse',
             value: 461190,
           },
         ],
@@ -368,120 +368,120 @@ export const citiesPopulation = [
     ],
   },
   {
-    name: "North America",
+    name: 'North America',
     items: [
       {
-        name: "Mexico",
+        name: 'Mexico',
         items: [
           {
-            name: "Mexico City",
+            name: 'Mexico City',
             value: 8874724,
           },
           {
-            name: "Ecatepec de Morelos",
+            name: 'Ecatepec de Morelos',
             value: 1742023,
           },
           {
-            name: "Puebla",
+            name: 'Puebla',
             value: 1508707,
           },
           {
-            name: "Guadalajara",
+            name: 'Guadalajara',
             value: 1506359,
           },
           {
-            name: "Juárez",
+            name: 'Juárez',
             value: 1409987,
           },
           {
-            name: "Tijuana",
+            name: 'Tijuana',
             value: 1399282,
           },
           {
-            name: "León",
+            name: 'León',
             value: 1281434,
           },
         ],
       },
       {
-        name: "United States",
+        name: 'United States',
         items: [
           {
-            name: "New York City",
+            name: 'New York City',
             value: 8550405,
           },
           {
-            name: "Los Angeles",
+            name: 'Los Angeles',
             value: 3884307,
           },
           {
-            name: "Chicago",
+            name: 'Chicago',
             value: 2722389,
           },
           {
-            name: "Houston",
+            name: 'Houston',
             value: 2296224,
           },
           {
-            name: "Philadelphia",
+            name: 'Philadelphia',
             value: 1567442,
           },
           {
-            name: "Phoenix",
+            name: 'Phoenix',
             value: 1563025,
           },
           {
-            name: "San Antonio",
+            name: 'San Antonio',
             value: 1469845,
           },
           {
-            name: "San Diego",
+            name: 'San Diego',
             value: 1394928,
           },
         ],
       },
       {
-        name: "Canada",
+        name: 'Canada',
         items: [
           {
-            name: "Toronto",
+            name: 'Toronto',
             value: 2808503,
           },
           {
-            name: "Montreal",
+            name: 'Montreal',
             value: 1731245,
           },
           {
-            name: "Calgary",
+            name: 'Calgary',
             value: 1096833,
           },
           {
-            name: "Ottawa",
+            name: 'Ottawa',
             value: 956710,
           },
           {
-            name: "Edmonton",
+            name: 'Edmonton',
             value: 895000,
           },
           {
-            name: "Mississauga",
+            name: 'Mississauga',
             value: 713443,
           },
         ],
       },
       {
-        name: "Cuba",
+        name: 'Cuba',
         items: [
           {
-            name: "Havana",
+            name: 'Havana',
             value: 2135498,
           },
           {
-            name: "Santiago de Cuba",
+            name: 'Santiago de Cuba',
             value: 425851,
           },
           {
-            name: "Camagüey",
+            name: 'Camagüey',
             value: 305845,
           },
         ],
@@ -489,129 +489,129 @@ export const citiesPopulation = [
     ],
   },
   {
-    name: "South America",
+    name: 'South America',
     items: [
       {
-        name: "Brazil",
+        name: 'Brazil',
         items: [
           {
-            name: "São Paulo",
+            name: 'São Paulo',
             value: 11895893,
           },
           {
-            name: "Rio de Janeiro",
+            name: 'Rio de Janeiro',
             value: 6429923,
           },
           {
-            name: "Salvador",
+            name: 'Salvador',
             value: 2902927,
           },
           {
-            name: "Brasília",
+            name: 'Brasília',
             value: 2914830,
           },
           {
-            name: "Fortaleza",
+            name: 'Fortaleza',
             value: 2591188,
           },
           {
-            name: "Belo Horizonte",
+            name: 'Belo Horizonte',
             value: 2513451,
           },
           {
-            name: "Manaus",
+            name: 'Manaus',
             value: 2094391,
           },
         ],
       },
       {
-        name: "Peru",
+        name: 'Peru',
         items: [
           {
-            name: "Lima",
+            name: 'Lima',
             value: 8693387,
           },
           {
-            name: "Callao",
+            name: 'Callao',
             value: 1010315,
           },
           {
-            name: "Arequipa",
+            name: 'Arequipa',
             value: 869351,
           },
           {
-            name: "Trujillo",
+            name: 'Trujillo',
             value: 788236,
           },
           {
-            name: "Chiclayo",
+            name: 'Chiclayo',
             value: 600440,
           },
         ],
       },
       {
-        name: "Colombia",
+        name: 'Colombia',
         items: [
           {
-            name: "Bogotá",
+            name: 'Bogotá',
             value: 7776845,
           },
           {
-            name: "Medellín",
+            name: 'Medellín',
             value: 2441123,
           },
           {
-            name: "Cali",
+            name: 'Cali',
             value: 2400653,
           },
           {
-            name: "Barranquilla",
+            name: 'Barranquilla',
             value: 1214253,
           },
           {
-            name: "Cartagena",
+            name: 'Cartagena',
             value: 959594,
           },
         ],
       },
       {
-        name: "Chile",
+        name: 'Chile',
         items: [
           {
-            name: "Santiago",
+            name: 'Santiago',
             value: 5507282,
           },
           {
-            name: "Puente Alto",
+            name: 'Puente Alto',
             value: 610118,
           },
           {
-            name: "Maipú",
+            name: 'Maipú',
             value: 468390,
           },
         ],
       },
       {
-        name: "Venezuela",
+        name: 'Venezuela',
         items: [
           {
-            name: "Caracas",
+            name: 'Caracas',
             value: 3289886,
           },
           {
-            name: "Maracaibo",
+            name: 'Maracaibo',
             value: 1653211,
           },
           {
-            name: "Barquisimeto",
+            name: 'Barquisimeto',
             value: 1116182,
           },
           {
-            name: "Valencia",
+            name: 'Valencia',
             value: 901900,
           },
           {
-            name: "Ciudad Guayana",
+            name: 'Ciudad Guayana',
             value: 877547,
           },
         ],

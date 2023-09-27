@@ -1,5 +1,6 @@
-import React from "react";
-const formatNumber = new Intl.NumberFormat("en-US", {
+import React from 'react';
+
+const formatNumber = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 0,
 }).format;
 function calculateTotal(pieChart) {
@@ -7,11 +8,11 @@ function calculateTotal(pieChart) {
     pieChart
       .getAllSeries()[0]
       .getVisiblePoints()
-      .reduce((s, p) => s + p.originalValue, 0)
+      .reduce((s, p) => s + p.originalValue, 0),
   );
 }
 function getImagePath(country) {
-  return `../../../../images/flags/${country.replace(/\s/, "").toLowerCase()}.svg`;
+  return `../../../../images/flags/${country.replace(/\s/, '').toLowerCase()}.svg`;
 }
 export default function TooltipTemplate(pieChart) {
   const { country } = pieChart.getAllSeries()[0].getVisiblePoints()[0].data;
@@ -34,7 +35,7 @@ export default function TooltipTemplate(pieChart) {
         textAnchor="middle"
         x="100"
         y="120"
-        style={{ fontSize: 18, fill: "#494949" }}
+        style={{ fontSize: 18, fill: '#494949' }}
       >
         <tspan x="100">{country}</tspan>
         <tspan

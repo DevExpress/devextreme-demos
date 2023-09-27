@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Chart,
   Series,
@@ -7,8 +7,9 @@ import {
   Export,
   Tooltip,
   Title,
-} from "devextreme-react/chart";
-import service from "./data.js";
+} from 'devextreme-react/chart';
+import service from './data.js';
+
 const dataSource = service.dataSource();
 function customizeTooltip(arg) {
   return {
