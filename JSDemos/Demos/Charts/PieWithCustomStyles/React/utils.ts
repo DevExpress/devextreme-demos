@@ -31,12 +31,12 @@ export function getPatternImage(color: string) {
     template: (container) => {
       const rect = createRect(imagePatternSize, color);
       const image = document.createElementNS('http://www.w3.org/2000/svg', 'image');
-      image.setAttribute('x', 0);
-      image.setAttribute('y', 0);
-      image.setAttribute('width', imagePatternSize);
-      image.setAttribute('height', imagePatternSize);
+      image.setAttribute('x', '0');
+      image.setAttribute('y', '0');
+      image.setAttribute('width', imagePatternSize.toString());
+      image.setAttribute('height', imagePatternSize.toString());
       image.setAttribute('href', '../../../../images/Charts/PieWithCustomStyles/diamond.svg');
-      image.setAttribute('opacity', 0.6);
+      image.setAttribute('opacity', '0.6');
 
       container.appendChild(rect);
       container.appendChild(image);
@@ -55,7 +55,7 @@ export function getStrokePattern(color: string) {
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 
       path.setAttribute('stroke', color);
-      path.setAttribute('stroke-width', 2);
+      path.setAttribute('stroke-width', '2');
       path.setAttribute('d', d);
       container.appendChild(path);
     },
@@ -73,16 +73,16 @@ export function getSquarePattern(color: string) {
   });
 }
 
-export function createRect(size: string | number, fill: string, stroke: string, strokeWidth: string | number) {
+export function createRect(size: string | number, fill: string, stroke?: string, strokeWidth?: string | number) {
   const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 
-  rect.setAttribute('x', 0);
-  rect.setAttribute('y', 0);
-  rect.setAttribute('width', size);
-  rect.setAttribute('height', size);
+  rect.setAttribute('x', '0');
+  rect.setAttribute('y', '0');
+  rect.setAttribute('width', size.toString());
+  rect.setAttribute('height', size.toString());
   rect.setAttribute('fill', fill);
   rect.setAttribute('stroke', stroke);
-  rect.setAttribute('stroke-width', strokeWidth);
+  rect.setAttribute('stroke-width', strokeWidth.toString());
 
   return rect;
 }

@@ -31,7 +31,7 @@ function App() {
       <div id="chart-demo">
         <table
           className="demo-table"
-          border="1"
+          style={{ border: 1 }}
         >
           <tbody>
             <tr>
