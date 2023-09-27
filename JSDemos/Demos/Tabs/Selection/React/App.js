@@ -36,13 +36,11 @@ const App = () => {
       <div id="demo-items-container">
         <div className="content dx-fieldset">
           <div className="dx-field">
-            <div className="tabs-container">
-              <Tabs
-                dataSource={employees}
-                onSelectionChanged={onSelectionChanged}
-                selectedItem={selectedItem}
-              />
-            </div>
+            <Tabs
+              dataSource={employees}
+              onSelectionChanged={onSelectionChanged}
+              selectedItem={selectedItem}
+            />
           </div>
 
           <div className="dx-field select-box-container">

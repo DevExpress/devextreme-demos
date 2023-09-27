@@ -3,22 +3,20 @@
     <div id="demo-items-container">
       <div class="content dx-fieldset">
         <div class="dx-field">
-          <div class="tabs-container">
-            <DxTabs
-              :data-source="employees"
-              v-model:selected-item="selectedItem"
-            />
-          </div>
+          <DxTabs
+            v-model:selected-item="selectedItem"
+            :data-source="employees"
+          />
         </div>
 
         <div class="dx-field select-box-container">
           <div class="dx-field-label">Selected user:</div>
           <div class="dx-field-value">
             <DxSelectBox
-              :data-source="employees"
-              v-model:selected-item="selectedItem"
-              :value="selectedItem"
               display-expr="text"
+              v-model:selected-item="selectedItem"
+              :data-source="employees"
+              :value="selectedItem"
               :input-attr="{ 'aria-label': 'Select Employee' }"
             />
           </div>
@@ -26,17 +24,17 @@
 
         <div class="dx-field multiview-container">
           <DxMultiView
+            v-model:selected-item="selectedItem"
             :height="112"
             :data-source="employees"
-            v-model:selected-item="selectedItem"
             :loop="false"
             :animation-enabled="true"
           >
             <template #item="{ data }">
               <div class="employee-info">
                 <img
-                  :alt="data.text"
                   class="employee-photo"
+                  :alt="data.text"
                   :src="data.picture"
                 >
                 <p class="employee-notes">

@@ -2,14 +2,12 @@
   <div id="demo-items-container">
     <div class="content dx-fieldset">
       <div class="dx-field">
-        <div class="tabs-container">
-          <dx-tabs
-            #apiTabs
-            [dataSource]="employees"
-            [selectedItem]="employees[0]"
-          >
-          </dx-tabs>
-        </div>
+        <dx-tabs
+          #tabs
+          [dataSource]="employees"
+          [selectedItem]="employees[0]"
+        >
+        </dx-tabs>
       </div>
 
       <div class="dx-field select-box-container">
@@ -21,7 +19,7 @@
             displayExpr="text"
             [dataSource]="employees"
             [inputAttr]="{ 'aria-label': 'Select Employee' }"
-            [(value)]="apiTabs.selectedItem"
+            [(value)]="tabs.selectedItem"
           ></dx-select-box>
         </div>
       </div>
@@ -30,7 +28,7 @@
         <dx-multi-view
           [height]="112"
           [dataSource]="employees"
-          [(selectedItem)]="apiTabs.selectedItem"
+          [(selectedItem)]="tabs.selectedItem"
           [loop]="false"
           [animationEnabled]="true"
         >
