@@ -33,7 +33,7 @@
             <template #item="{ data }">
               <div class="employee-info">
                 <img
-                  class="employee-photo"
+                  class="employee-photo dx-theme-border-color"
                   :alt="data.text"
                   :src="data.picture"
                 >
@@ -96,7 +96,8 @@ export default {
     height: 80px;
     width: 80px;
     border-radius: 50%;
-    border: 1px solid #ebebeb;
+    border-width: 1px;
+    border-style: solid;
     flex-shrink: 0;
     object-fit: contain;
     margin-right: 24px;

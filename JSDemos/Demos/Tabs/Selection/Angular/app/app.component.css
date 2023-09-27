@@ -22,7 +22,8 @@
   height: 80px;
   width: 80px;
   border-radius: 50%;
-  border: 1px solid #ebebeb;
+  border-width: 1px;
+  border-style: solid;
   flex-shrink: 0;
   object-fit: contain;
   margin-right: 24px;
