@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Tabs from 'devextreme-react/tabs';
 import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
@@ -143,4 +144,5 @@ const App = () => {
     </div>
   );
 };
+
 export default App;
