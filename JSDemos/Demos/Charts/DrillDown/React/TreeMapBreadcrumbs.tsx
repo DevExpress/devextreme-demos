@@ -13,7 +13,7 @@ function TreeMapBreadcrumbs({ className, treeInfo, onItemClick }: TreeMapBreadcr
   return (
     <div className={className}>
       {
-        treeInfo.map((info: { text: any; }, index: number) => (
+        treeInfo.map((info, index: number) => (
           <Breadcrumb
             key={info.text}
             onClick={onItemClick}

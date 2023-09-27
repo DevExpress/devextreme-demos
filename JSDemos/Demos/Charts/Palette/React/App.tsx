@@ -28,7 +28,7 @@ function App() {
           id="pie"
           dataSource={dataSource}
           palette={palette}
-          paletteExtensionMode={extensionMode.toLowerCase()}
+          paletteExtensionMode={extensionMode}
         >
           <Legend visible={false} />
           <Series />

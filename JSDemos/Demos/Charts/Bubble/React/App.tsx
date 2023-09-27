@@ -9,17 +9,16 @@ import {
   Label,
   Border,
   Tooltip,
+  ITooltipProps,
   Export,
 } from 'devextreme-react/chart';
 import { dataSource } from './data.ts';
 
 const palette = ['#00ced1', '#008000', '#ffd700', '#ff7f50'];
 
-function customizeTooltip(pointInfo: { point: { tag: any; }; argumentText: any; valueText: any; size: any; }) {
-  return {
-    text: `${pointInfo.point.tag}<br/>Total Population: ${pointInfo.argumentText}M<br/>Population with Age over 60: ${pointInfo.valueText}M (${pointInfo.size}%)`,
-  };
-}
+const customizeTooltip: ITooltipProps['customizeTooltip'] = (pointInfo) => ({
+  text: `${pointInfo.point.tag}<br/>Total Population: ${pointInfo.argumentText}M<br/>Population with Age over 60: ${pointInfo.valueText}M (${pointInfo.size}%)`,
+});
 
 function seriesClick(e: { target: any; }) {
   const series = e.target;

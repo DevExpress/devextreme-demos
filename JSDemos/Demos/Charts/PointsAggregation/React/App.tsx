@@ -18,7 +18,7 @@ import {
   weatherData, aggregationFunctions, aggregationIntervals, functionLabel, intervalLabel,
 } from './data.ts';
 
-function customizeTooltip(pointInfo: { point: { aggregationInfo: any; }; seriesName: string | number; }) {
+function customizeTooltip(pointInfo) {
   const { aggregationInfo } = pointInfo.point;
   const start = aggregationInfo && aggregationInfo.intervalStart;
   const end = aggregationInfo && aggregationInfo.intervalEnd;

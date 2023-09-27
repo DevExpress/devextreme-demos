@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  Chart, Series, CommonSeriesSettings, Label, Format, Legend, Export,
+  Chart, ChartTypes, Series, CommonSeriesSettings, Label, Format, Legend, Export,
 } from 'devextreme-react/chart';
 import { grossProductData } from './data.ts';
 
-function onPointClick(e: { target: { select: () => void; }; }) {
+function onPointClick(e: ChartTypes.PointClickEvent) {
   e.target.select();
 }
 

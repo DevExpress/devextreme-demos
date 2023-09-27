@@ -17,7 +17,7 @@ function prepareMarkup(chartSvg, markup) {
 
 function App() {
   const childRef = React.useRef(null);
-  const chartRef = React.useRef();
+  const chartRef = React.useRef(null);
 
   const onClick = React.useCallback(() => {
     exportFromMarkup(

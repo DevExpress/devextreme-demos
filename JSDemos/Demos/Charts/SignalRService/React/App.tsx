@@ -14,6 +14,7 @@ import Chart, {
   Margin,
   HorizontalLine,
   IArgumentAxisProps,
+  IAggregationProps,
 } from 'devextreme-react/chart';
 import CustomStore from 'devextreme/data/custom_store';
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
@@ -26,7 +27,7 @@ function App() {
   const [dataSource, setDataSource] = React.useState(null);
   const chartRef = React.useRef(null);
 
-  const customizePoint = React.useCallback((arg: { seriesName: string; argument: any; }) => {
+  const customizePoint = React.useCallback((arg) => {
     if (arg.seriesName === 'Volume') {
       const point = chartRef.current.instance.getAllSeries()[0]
         .getPointsByArg(arg.argument)[0].data;
@@ -37,8 +38,8 @@ function App() {
     return null;
   }, []);
 
-  const calculateCandle = React.useCallback((e: { data: any[]; intervalStart: { valueOf: () => any; }; intervalEnd: { valueOf: () => any; }; }) => {
-    const prices = e.data.map((d: { price: any; }) => d.price);
+  const calculateCandle = React.useCallback<IAggregationProps['calculate']>((e) => {
+    const prices = e.data.map((d) => d.price);
     if (prices.length) {
       return {
         date: new Date((e.intervalStart.valueOf() + e.intervalEnd.valueOf()) / 2),

@@ -1,15 +1,15 @@
 import React from 'react';
-import TreeMap, { Tooltip } from 'devextreme-react/tree-map';
+import TreeMap, { Tooltip, ITooltipProps } from 'devextreme-react/tree-map';
 import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import { salesAmount, colorizationOptions, colorizationTypeLabel } from './data.ts';
 
-function customizeTooltip(arg: { node: { isLeaf?: any; data?: any; }; valueText: any; }) {
+const customizeTooltip: ITooltipProps['customizeTooltip'] = (arg) => {
   const { data } = arg.node;
 
   return {
     text: arg.node.isLeaf() ? `<span class='product'>${data.name}</span><br/>Sales Amount: ${arg.valueText}` : null,
   };
-}
+};
 
 function App() {
   const [typeOptions, setTypeOptions] = React.useState(colorizationOptions[2].options);

@@ -20,10 +20,10 @@ function App() {
             <th>July</th>
             <th>August</th>
           </tr>
-          {service.getWeeksData().map((week: { weekCount: any; bulletsData: any[]; }, i) => (
+          {service.getWeeksData().map((week, i) => (
             <tr key={i}>
               <th>{`${week.weekCount} week`}</th>
-              {week.bulletsData.map((data: { value: number | undefined; target: number | undefined; color: string | undefined; }, j) => (
+              {week.bulletsData.map((data, j) => (
                 <td key={j}>
                   <Bullet
                     className="bullet"

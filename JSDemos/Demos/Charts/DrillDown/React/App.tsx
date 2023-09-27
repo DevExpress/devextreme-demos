@@ -1,5 +1,7 @@
 import React from 'react';
 import TreeMap, { Size, Title, Colorizer } from 'devextreme-react/tree-map';
+import { DrillEvent } from 'devextreme/viz/tree_map';
+
 import { citiesPopulation } from './data.ts';
 
 import TreeMapBreadcrumbs from './TreeMapBreadcrumbs.tsx';
@@ -15,10 +17,10 @@ function nodeClick(e: { node: { drillDown: () => void; }; }) {
 }
 
 function App() {
-  const [drillInfo, setDrillInfo] = React.useState([]);
+  const [drillInfo, setDrillInfo] = React.useState<{ text?: string, node?: DrillEvent['node'] }[]>([]);
 
-  const drill = React.useCallback((e: { node: { getParent: () => any; label: () => any; }; }) => {
-    const newDrillInfo: ({ text: any; node: any; } | { text: any; })[] = [];
+  const drill = React.useCallback((e: DrillEvent) => {
+    const newDrillInfo: ({ text: any; node?: any; })[] = [];
     for (let node = e.node.getParent(); node; node = node.getParent()) {
       newDrillInfo.unshift({
         text: node.label() || 'All Continents',

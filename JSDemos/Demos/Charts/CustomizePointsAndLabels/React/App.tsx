@@ -34,7 +34,7 @@ function App() {
       return {
         visible: true,
         backgroundColor: '#ff7c7c',
-        customizeText(e: { valueText: any; }) {
+        customizeText(e) {
           return `${e.valueText}&#176F`;
         },
       };

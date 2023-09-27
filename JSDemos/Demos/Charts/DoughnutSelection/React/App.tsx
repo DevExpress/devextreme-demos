@@ -1,5 +1,6 @@
 import React from 'react';
 import PieChart, {
+  PieChartTypes,
   Legend,
   Series,
   Export,
@@ -7,7 +8,7 @@ import PieChart, {
 } from 'devextreme-react/pie-chart';
 import { olympicMedals } from './data.ts';
 
-function pointClickHandler(arg: { target: { select: () => void; }; }) {
+function pointClickHandler(arg: PieChartTypes.PointClickEvent) {
   arg.target.select();
 }
 

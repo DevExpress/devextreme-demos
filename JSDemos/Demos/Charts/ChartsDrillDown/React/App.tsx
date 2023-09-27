@@ -1,6 +1,10 @@
 import React from 'react';
 import {
-  Chart, Series, Legend, ValueAxis, ChartTypes
+  Chart,
+  Series,
+  Legend,
+  ValueAxis,
+  ChartTypes,
 } from 'devextreme-react/chart';
 import { Button } from 'devextreme-react/button';
 import service from './data.ts';
@@ -11,17 +15,23 @@ function App() {
   const [isFirstLevel, setIsFirstLevel] = React.useState(true);
   const [data, setData] = React.useState(service.filterData(''));
 
-  const customizePoint: CommonSeriesSettings = React.useCallback(() => ({
+  const customizePoint = React.useCallback((): {
+    color: string,
+    hoverStyle?: {
+      color?: string,
+      hatching?: string
+    }
+  } => ({
     color: colors[Number(isFirstLevel)],
     hoverStyle: !isFirstLevel ? {
       hatching: 'none',
     } : {},
   }), [isFirstLevel]);
 
-  const onPointClick = React.useCallback((e: { target: { originalArgument: any; }; }) => {
+  const onPointClick = React.useCallback((e: ChartTypes.PointClickEvent) => {
     if (isFirstLevel) {
       setIsFirstLevel(false);
-      setData(service.filterData(e.target.originalArgument));
+      setData(service.filterData(e.target.originalArgument.toString()));
     }
   }, [isFirstLevel, setData, setIsFirstLevel]);
 

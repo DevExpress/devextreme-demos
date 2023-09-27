@@ -1,16 +1,14 @@
 import React from 'react';
 import {
-  Chart, Series, CommonSeriesSettings, Legend, Export, Tooltip,
+  Chart, Series, CommonSeriesSettings, Legend, Export, Tooltip, ITooltipProps,
 } from 'devextreme-react/chart';
 import service from './data.ts';
 
 const dataSource = service.getMaleAgeData();
 
-function customizeTooltip(arg: { percentText: any; valueText: any; }) {
-  return {
-    text: `${arg.percentText} - ${arg.valueText}`,
-  };
-}
+const customizeTooltip: ITooltipProps['customizeTooltip'] = (arg) => ({
+  text: `${arg.percentText} - ${arg.valueText}`,
+});
 
 function App() {
   return (

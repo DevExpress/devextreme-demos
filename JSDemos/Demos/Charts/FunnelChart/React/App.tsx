@@ -7,12 +7,11 @@ import Funnel, {
   Item,
   Border,
   Label,
+  ILabelProps,
 } from 'devextreme-react/funnel';
 import { dataSource } from './data.ts';
 
-function formatLabel(arg: { percentText: any; item: { argument: any; }; }) {
-  return `<span class="label">${arg.percentText}</span><br/>${arg.item.argument}`;
-}
+const formatLabel: ILabelProps['customizeText'] = (arg) => `<span class="label">${arg.percentText}</span><br/>${arg.item.argument}`;
 
 function App() {
   return (

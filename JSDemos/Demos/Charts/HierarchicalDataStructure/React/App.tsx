@@ -1,8 +1,8 @@
 import React from 'react';
-import TreeMap, { Tooltip } from 'devextreme-react/tree-map';
+import TreeMap, { Tooltip, ITooltipProps } from 'devextreme-react/tree-map';
 import { citiesPopulation } from './data.ts';
 
-function customizeTooltip(arg: { node: { isLeaf?: any; data?: any; }; valueText: any; }) {
+const customizeTooltip: ITooltipProps['customizeTooltip'] = (arg) => {
   const { data } = arg.node;
 
   return {
@@ -10,7 +10,7 @@ function customizeTooltip(arg: { node: { isLeaf?: any; data?: any; }; valueText:
       ? `<span class="city">${data.name}</span> (${data.country})<br/>Population: ${arg.valueText}`
       : null,
   };
-}
+};
 
 function App() {
   return (

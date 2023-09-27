@@ -11,7 +11,7 @@ import Chart, {
 import Button from 'devextreme-react/button';
 import { mountains } from './data.ts';
 
-function customizeTooltipText(pointInfo: { argumentText: any; point: { data: { system: any; }; }; valueText: any; }) {
+function customizeTooltipText(pointInfo) {
   return {
     text: `<span class='title'>${pointInfo.argumentText}</span><br />&nbsp;<br />System: ${pointInfo.point.data.system}<br />Height: ${pointInfo.valueText} m`,
   };

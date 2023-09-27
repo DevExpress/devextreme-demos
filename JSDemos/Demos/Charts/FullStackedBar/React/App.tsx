@@ -6,7 +6,7 @@ import service from './data.ts';
 
 const dataSource = service.dataSource();
 
-function customizeTooltip(arg: { percentText: any; valueText: any; }) {
+function customizeTooltip(arg: { percentText: string; valueText: string; }) {
   return {
     text: `${arg.percentText} years: ${arg.valueText}`,
   };

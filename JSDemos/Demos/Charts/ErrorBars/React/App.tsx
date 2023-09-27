@@ -11,15 +11,14 @@ import Chart, {
   Label,
   Title,
   Tooltip,
+  ITooltipProps,
   Grid,
 } from 'devextreme-react/chart';
 import { weatherData } from './data.ts';
 
-function customizeTooltip(pointInfo: { seriesName: any; value: any; lowErrorValue: any; highErrorValue: any; }) {
-  return {
-    text: `${pointInfo.seriesName}: ${pointInfo.value} (range: ${pointInfo.lowErrorValue} - ${pointInfo.highErrorValue})`,
-  };
-}
+const customizeTooltip: ITooltipProps['customizeTooltip'] = (pointInfo) => ({
+  text: `${pointInfo.seriesName}: ${pointInfo.value} (range: ${pointInfo.lowErrorValue} - ${pointInfo.highErrorValue})`,
+});
 
 function App() {
   return (
