@@ -15,6 +15,7 @@ NuGet
 *.ldf
 *proj.user
 repository.config.json
+converter.tsconfig.json
 coverage
 artifacts
 screenshots
