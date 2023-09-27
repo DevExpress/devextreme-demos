@@ -4,7 +4,8 @@
   justify-content: center;
 }
 
-::ng-deep .select-box-container, .multiview-container {
+::ng-deep .select-box-container,
+.multiview-container {
   padding: 16px;
 }
 

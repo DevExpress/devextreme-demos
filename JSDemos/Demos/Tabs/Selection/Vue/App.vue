@@ -83,7 +83,8 @@ export default {
     justify-content: center;
   }
 
-  .select-box-container, .multiview-container {
+  .select-box-container,
+  .multiview-container {
     padding: 16px;
   }
 
