@@ -65,9 +65,8 @@
     <Reference Include="CommonMark, Version=0.1.0.0, Culture=neutral, PublicKeyToken=001ef8810438905d, processorArchitecture=MSIL">
       <HintPath>packages\CommonMark.NET.0.15.1\lib\net45\CommonMark.dll</HintPath>
     </Reference>
-    <Reference Include="DevExtreme.AspNet.Data, Version=2.9.0.0, Culture=neutral, PublicKeyToken=982f5dab1439d0f7, processorArchitecture=MSIL">
-      <HintPath>packages\DevExtreme.AspNet.Data.2.9.0\lib\net452\DevExtreme.AspNet.Data.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="DevExtreme.AspNet.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=982f5dab1439d0f7, processorArchitecture=MSIL">
+      <HintPath>packages\DevExtreme.AspNet.Data.3.0.0\lib\net452\DevExtreme.AspNet.Data.dll</HintPath>
     </Reference>
     <Reference Include="DevExtreme.AspNet.Mvc">
       <HintPath>lib\DevExtreme.AspNet.Mvc.dll</HintPath>
@@ -992,6 +991,7 @@
     <Content Include="Content\DemosStyles\Sortable\Kanban.css" />
     <Content Include="Content\DemosStyles\TabPanel\SortableClosableTabs.css" />
     <Content Include="Content\DemosStyles\Tabs\Overview.css" />
+    <Content Include="Content\DemosStyles\Tabs\Selection.css" />
     <Content Include="Content\DemosStyles\TagBox\GroupedItems.css" />
     <Content Include="Content\DemosStyles\TagBox\TagCountLimitation.css" />
     <Content Include="Content\DemosStyles\Toast\Overview.css" />
@@ -2119,6 +2119,7 @@
     <Content Include="Views\TreeList\UsingSearchPanel.cshtml" />
     <Content Include="Views\Slider\Overview.cshtml" />
     <Content Include="Views\Tabs\Overview.cshtml" />
+    <Content Include="Views\Tabs\Selection.cshtml" />
     <Content Include="Views\TagBox\TagCountLimitation.cshtml" />
     <Content Include="Views\VectorMap\Overview.cshtml" />
     <Content Include="Views\TreeList\Overview.cshtml" />
