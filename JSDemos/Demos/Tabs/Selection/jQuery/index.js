@@ -3,7 +3,7 @@ $(() => {
     dataSource: employees,
     selectedItem: employees[0],
 
-    onSelectionChanged({ addedItems, component }) {
+    onSelectionChanged({ component }) {
       const { selectedItem } = component.option();
 
       selectBox.option({ value: selectedItem });

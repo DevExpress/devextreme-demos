@@ -64,10 +64,6 @@ import DxMultiView from 'devextreme-vue/multi-view';
 
 import { employees } from './data.js';
 
-const tabsRef = 'tabs';
-const selectBoxRef = 'selectBox';
-const multiViewRef = 'multiView';
-
 export default {
   components: {
     DxSelectBox,
