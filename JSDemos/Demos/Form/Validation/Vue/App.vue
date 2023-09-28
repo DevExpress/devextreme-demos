@@ -15,9 +15,9 @@
           validation-group="customerData"
         >
           <DxGroupItem caption="Credentials">
-            <DxSimpleItem 
-            data-field="Email"
-            :editor-options="emailOptions"
+            <DxSimpleItem
+              data-field="Email"
+              :editor-options="emailOptions"
             >
               <DxRequiredRule message="Email is required"/>
               <DxEmailRule message="Email is invalid"/>
@@ -47,7 +47,7 @@
             </DxSimpleItem>
           </DxGroupItem>
           <DxGroupItem caption="Personal Data">
-            <DxSimpleItem 
+            <DxSimpleItem
               data-field="Name"
               :editor-options="nameOptions"
             >
@@ -101,7 +101,7 @@
               />
               <DxRequiredRule message="City is required"/>
             </DxSimpleItem>
-            <DxSimpleItem 
+            <DxSimpleItem
               data-field="Address"
               :editor-options="addressOptions"
             >
