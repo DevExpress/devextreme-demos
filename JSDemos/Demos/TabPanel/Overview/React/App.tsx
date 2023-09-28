@@ -13,7 +13,7 @@ import {
   iconPositions,
   navButtonsCheckBoxLabel,
   dataSource,
-} from './data.js';
+} from './data.ts';
 
 const App = () => {
   const [tabsPosition, setTabsPosition] = React.useState(tabsPositions[0]);
