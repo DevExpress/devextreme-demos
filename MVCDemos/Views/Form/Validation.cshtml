@@ -16,8 +16,8 @@
                     .Items(groupItems => {
                         groupItems.AddSimpleFor(m => m.Email)
                             .Editor(e => e.TextBox()
-								.ValueChangeEvent("keyup")
-							);
+                                .ValueChangeEvent("keyup")
+                            );
 
                         groupItems.AddSimpleFor(m => m.Password)
                             .Editor(e => e.TextBox()
@@ -61,14 +61,14 @@
                     .Items(groupItems => {
                         groupItems.AddSimpleFor(m => m.Name)
                             .Editor(e => e.TextBox()
-								.ValueChangeEvent("keyup")
-							);
+                                .ValueChangeEvent("keyup")
+                            );
                         groupItems.AddSimpleFor(m => m.Date)
                             .Editor(e => e
-								.DateBox()
-								.Placeholder("Birth Date")
-								.AcceptCustomValue(false)
-							);
+                                .DateBox()
+                                .Placeholder("Birth Date")
+                                .AcceptCustomValue(false)
+                            );
                         groupItems.AddSimpleFor(m => m.VacationDates)
                             .Editor(e => e
                                 .DateRangeBox()
@@ -98,8 +98,8 @@
 
                         groupItems.AddSimpleFor(m => m.Address)
                             .Editor(e => e.TextBox()
-								.ValueChangeEvent("keyup")
-							);
+                                .ValueChangeEvent("keyup")
+                            );
 
                         groupItems.AddSimpleFor(m => m.Phone)
                             .HelpText("Enter the phone number in USA phone format")
