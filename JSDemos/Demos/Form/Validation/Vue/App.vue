@@ -17,7 +17,7 @@
           <DxGroupItem caption="Credentials">
             <DxSimpleItem
               data-field="Email"
-              :editor-options="emailOptions"
+              :editor-options="emailEditorOptions"
             >
               <DxRequiredRule message="Email is required"/>
               <DxEmailRule message="Email is invalid"/>
@@ -27,7 +27,7 @@
               />
             </DxSimpleItem>
             <DxSimpleItem
-              :editor-options="passwordOptions"
+              :editor-options="passwordEditorOptions"
               data-field="Password"
             >
               <DxRequiredRule message="Password is required"/>
@@ -35,7 +35,7 @@
             <DxSimpleItem
               name="ConfirmPassword"
               data-field="ConfirmPassword"
-              :editor-options="confirmPasswordOptions"
+              :editor-options="confirmPasswordEditorOptions"
               editor-type="dxTextBox"
             >
               <DxLabel text="Confirm Password"/>
@@ -49,7 +49,7 @@
           <DxGroupItem caption="Personal Data">
             <DxSimpleItem
               data-field="Name"
-              :editor-options="nameOptions"
+              :editor-options="nameEditorOptions"
             >
               <DxRequiredRule message="Name is required"/>
               <DxPatternRule
@@ -103,7 +103,7 @@
             </DxSimpleItem>
             <DxSimpleItem
               data-field="Address"
-              :editor-options="addressOptions"
+              :editor-options="addressEditorOptions"
             >
               <DxRequiredRule message="Address is required"/>
             </DxSimpleItem>
@@ -227,7 +227,7 @@ export default {
         md: 2,
         lg: 2,
       },
-      passwordOptions: {
+      passwordEditorOptions: {
         mode: 'password',
         valueChangeEvent: 'keyup',
         onValueChanged: () => {
@@ -249,7 +249,7 @@ export default {
           },
         ],
       },
-      confirmPasswordOptions: {
+      confirmPasswordEditorOptions: {
         mode: 'password',
         valueChangeEvent: 'keyup',
         buttons: [
@@ -264,13 +264,13 @@ export default {
           },
         ],
       },
-      emailOptions: {
+      emailEditorOptions: {
         valueChangeEvent: 'keyup',
       },
-      nameOptions: {
+      nameEditorOptions: {
         valueChangeEvent: 'keyup',
       },
-      addressOptions: {
+      addressEditorOptions: {
         valueChangeEvent: 'keyup',
       },
       dateBoxOptions: {

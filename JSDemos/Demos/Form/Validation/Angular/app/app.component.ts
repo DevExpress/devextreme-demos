@@ -39,7 +39,7 @@ const sendRequest = function (value) {
 export class AppComponent {
   @ViewChild(DxFormComponent, { static: false }) form:DxFormComponent;
 
-  passwordOptions: any = {
+  passwordEditorOptions: any = {
     mode: 'password',
     valueChangeEvent: 'keyup',
     onValueChanged: () => {
@@ -62,19 +62,19 @@ export class AppComponent {
     ],
   };
 
-  emailOptions: any = {
+  emailEditorOptions: any = {
     valueChangeEvent: 'keyup',
   };
 
-  nameOptions: any = {
+  nameEditorOptions: any = {
     valueChangeEvent: 'keyup',
   };
 
-  addressOptions: any = {
+  addressEditorOptions: any = {
     valueChangeEvent: 'keyup',
   };
 
-  phoneOptions: any = {
+  phoneEditorOptions: any = {
     mask: '+1 (X00) 000-0000',
     maskRules: {
       X: /[02-9]/,
@@ -83,7 +83,7 @@ export class AppComponent {
     valueChangeEvent: 'keyup',
   };
 
-  confirmOptions: any = {
+  confirmPasswordEditorOptions: any = {
     mode: 'password',
     valueChangeEvent: 'keyup',
     buttons: [
