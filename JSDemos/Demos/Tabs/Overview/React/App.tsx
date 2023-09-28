@@ -16,7 +16,7 @@ import {
   iconPositions,
   tabsIcon,
   orientationLabel,
-} from './data.js';
+} from './data.ts';
 
 function OptionWrapper(props) {
   return (
