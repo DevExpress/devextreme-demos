@@ -15,7 +15,10 @@
           validation-group="customerData"
         >
           <DxGroupItem caption="Credentials">
-            <DxSimpleItem data-field="Email">
+            <DxSimpleItem 
+            data-field="Email"
+            :editor-options="emailOptions"
+            >
               <DxRequiredRule message="Email is required"/>
               <DxEmailRule message="Email is invalid"/>
               <DxAsyncRule
@@ -31,6 +34,7 @@
             </DxSimpleItem>
             <DxSimpleItem
               name="ConfirmPassword"
+              data-field="ConfirmPassword"
               :editor-options="confirmPasswordOptions"
               editor-type="dxTextBox"
             >
@@ -43,7 +47,10 @@
             </DxSimpleItem>
           </DxGroupItem>
           <DxGroupItem caption="Personal Data">
-            <DxSimpleItem data-field="Name">
+            <DxSimpleItem 
+              data-field="Name"
+              :editor-options="nameOptions"
+            >
               <DxRequiredRule message="Name is required"/>
               <DxPatternRule
                 :pattern="namePattern"
@@ -94,7 +101,10 @@
               />
               <DxRequiredRule message="City is required"/>
             </DxSimpleItem>
-            <DxSimpleItem data-field="Address">
+            <DxSimpleItem 
+              data-field="Address"
+              :editor-options="addressOptions"
+            >
               <DxRequiredRule message="Address is required"/>
             </DxSimpleItem>
             <DxSimpleItem
@@ -219,6 +229,7 @@ export default {
       },
       passwordOptions: {
         mode: 'password',
+        valueChangeEvent: 'keyup',
         onValueChanged: () => {
           const editor = this.formInstance.getEditor('ConfirmPassword');
           if (editor.option('value')) {
@@ -240,6 +251,7 @@ export default {
       },
       confirmPasswordOptions: {
         mode: 'password',
+        valueChangeEvent: 'keyup',
         buttons: [
           {
             name: 'password',
@@ -252,14 +264,25 @@ export default {
           },
         ],
       },
+      emailOptions: {
+        valueChangeEvent: 'keyup',
+      },
+      nameOptions: {
+        valueChangeEvent: 'keyup',
+      },
+      addressOptions: {
+        valueChangeEvent: 'keyup',
+      },
       dateBoxOptions: {
         placeholder: 'Birth Date',
+        acceptCustomValue: false,
         invalidDateMessage:
           'The date must have the following format: MM/dd/yyyy',
       },
       dateRangeBoxOptions: {
         endDatePlaceholder: 'End Date',
         startDatePlaceholder: 'Start Date',
+        acceptCustomValue: false,
         invalidDateMessage:
           'The date must have the following format: MM/dd/yyyy',
       },
@@ -270,6 +293,7 @@ export default {
       },
       phoneEditorOptions: {
         mask: '+1 (X00) 000-0000',
+        valueChangeEvent: 'keyup',
         maskRules: {
           X: /[02-9]/,
         },
@@ -277,6 +301,7 @@ export default {
       },
       cityEditorOptions: {
         dataSource: service.getCities(),
+        valueChangeEvent: 'keyup',
         minSearchLength: 2,
       },
       countryEditorOptions: {

@@ -41,6 +41,7 @@ export class AppComponent {
 
   passwordOptions: any = {
     mode: 'password',
+    valueChangeEvent: 'keyup',
     onValueChanged: () => {
       let editor = this.form.instance.getEditor('ConfirmPassword');
       if (editor.option('value')) {
@@ -61,8 +62,30 @@ export class AppComponent {
     ],
   };
 
+  emailOptions: any = {
+    valueChangeEvent: 'keyup',
+  };
+
+  nameOptions: any = {
+    valueChangeEvent: 'keyup',
+  };
+
+  addressOptions: any = {
+    valueChangeEvent: 'keyup',
+  };
+
+  phoneOptions: any = {
+    mask: '+1 (X00) 000-0000',
+    maskRules: {
+      X: /[02-9]/,
+    },
+    maskInvalidMessage: 'The phone must have a correct USA phone format',
+    valueChangeEvent: 'keyup',
+  };
+
   confirmOptions: any = {
     mode: 'password',
+    valueChangeEvent: 'keyup',
     buttons: [
       {
         name: 'password',
@@ -99,13 +122,17 @@ export class AppComponent {
 
   phonePattern: any = /^[02-9]\d{9}$/;
 
-  phoneRules: any = {
-    X: /[02-9]/,
+  dateBoxOptions = {
+    placeholder: 'Birth Date',
+    acceptCustomValue: false,
+    invalidDateMessage:
+      'The date must have the following format: MM/dd/yyyy',
   };
 
   dateRangeBoxOptions = {
     startDatePlaceholder: 'Start Date',
     endDatePlaceholder: 'End Date',
+    acceptCustomValue: false,
     invalidDateMessage:
       'The date must have the following format: MM/dd/yyyy',
   };
