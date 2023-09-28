@@ -1,5 +1,4 @@
-::ng-deep .first-group,
-::ng-deep .second-group {
+::ng-deep .form-group {
   padding: 20px;
 }
 
