@@ -40,14 +40,18 @@ jobs:
     - name: Use Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '16'
+        node-version: '18'
+
+    - name: Get npm cache directory
+      id: npm-cache-dir
+      shell: bash
+      run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
     - name: Restore npm cache
       uses: actions/cache@v3
       with:
-        path: ./node_modules
-        key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-node-modules
+        path: ${{ steps.npm-cache-dir.outputs.dir }}
+        key: ${{ runner.os }}-node-${{ github.workflow }}-${{ hashFiles('**/package-lock.json') }}
 
     - name: Check generated JS demos
       run: |
