@@ -1,7 +1,7 @@
 import React from 'react';
 
-import List from 'devextreme-react/list.js';
-import { navigation } from './data.ts';
+import List from 'devextreme-react/list';
+import { navigation } from './data.js';
 
 function NavigationList() {
   return (
