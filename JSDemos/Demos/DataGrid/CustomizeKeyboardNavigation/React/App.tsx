@@ -13,7 +13,7 @@ import {
   states,
   keyActionLabel,
   keyDirectionLabel,
-} from './data.js';
+} from './data.ts';
 
 const enterKeyActions = ['startEdit', 'moveFocus'];
 const enterKeyDirections = ['none', 'column', 'row'];

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Form, Item, Label } from 'devextreme-react/form';
 
-import ProductSelectBox from './ProductSelectBox.js';
-import OrderHistory from './OrderHistory.js';
+import ProductSelectBox from './ProductSelectBox.tsx';
+import OrderHistory from './OrderHistory.tsx';
 
 interface OrdersTabProps {
 supplierId: any;

@@ -8,7 +8,7 @@ import DataGrid, {
 } from 'devextreme-react/data-grid';
 import { jsPDF } from 'jspdf';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
-import { customers } from './data.js';
+import { customers } from './data.ts';
 
 const exportFormats = ['pdf'];
 

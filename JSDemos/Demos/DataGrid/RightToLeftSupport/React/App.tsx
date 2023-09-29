@@ -2,7 +2,7 @@ import React from 'react';
 import DataGrid, { Column, Paging, SearchPanel } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
 
-import { europeanUnion } from './data.js';
+import { europeanUnion } from './data.ts';
 
 const populationFormat = { type: 'fixedPoint', precision: 0 };
 const areaFormat = { type: 'fixedPoint', precision: 0 };

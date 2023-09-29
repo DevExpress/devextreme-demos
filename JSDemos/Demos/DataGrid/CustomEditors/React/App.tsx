@@ -10,9 +10,9 @@ import DataGrid, {
 } from 'devextreme-react/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 import SelectBox from 'devextreme-react/select-box';
-import { statuses } from './data.js';
-import EmployeeDropDownBoxComponent from './EmployeeDropDownBoxComponent.js';
-import EmployeeTagBoxComponent from './EmployeeTagBoxComponent.js';
+import { statuses } from './data.ts';
+import EmployeeDropDownBoxComponent from './EmployeeDropDownBoxComponent.tsx';
+import EmployeeTagBoxComponent from './EmployeeTagBoxComponent.tsx';
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/CustomEditors';
 const statusLabel = { 'aria-label': 'Status' };

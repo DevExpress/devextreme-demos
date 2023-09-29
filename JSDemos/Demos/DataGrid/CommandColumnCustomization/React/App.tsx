@@ -3,7 +3,7 @@ import DataGrid, {
   Button, Column, Editing, Lookup,
 } from 'devextreme-react/data-grid';
 
-import { employees as defaultEmployees, states, getMaxID } from './data.js';
+import { employees as defaultEmployees, states, getMaxID } from './data.ts';
 
 const isChief = (position: string) => position && ['CEO', 'CMO'].indexOf(position.trim().toUpperCase()) >= 0;
 

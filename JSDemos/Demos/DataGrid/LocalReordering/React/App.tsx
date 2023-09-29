@@ -3,7 +3,7 @@ import DataGrid, {
   Column, RowDragging, Scrolling, Lookup, Sorting,
 } from 'devextreme-react/data-grid';
 import { CheckBox } from 'devextreme-react/check-box';
-import { tasks as defaultTasks, employees } from './data.js';
+import { tasks as defaultTasks, employees } from './data.ts';
 
 const App = () => {
   const [tasks, setTasks] = React.useState(defaultTasks);

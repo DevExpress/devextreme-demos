@@ -2,7 +2,7 @@ import React from 'react';
 import DataGrid, {
   Column, Selection, Paging, Summary, TotalItem,
 } from 'devextreme-react/data-grid';
-import { orders } from './data.js';
+import { orders } from './data.ts';
 
 const startupSelectedKeys = [1, 4, 7];
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import DataGrid, { Column } from 'devextreme-react/data-grid';
 
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const cellRender = (data: { value: string; }) => (<img src={data.value} />);
 

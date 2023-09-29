@@ -5,7 +5,7 @@ import DataGrid, {
 import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
 
-import { orders } from './data.js';
+import { orders } from './data.ts';
 
 const saleAmountEditorOptions = { format: 'currency', showClearButton: true };
 const filterLabel = { 'aria-label': 'Filter' };

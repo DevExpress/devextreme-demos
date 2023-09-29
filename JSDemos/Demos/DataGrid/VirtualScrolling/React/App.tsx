@@ -1,6 +1,6 @@
 import React from 'react';
 import DataGrid, { Scrolling, Sorting, LoadPanel } from 'devextreme-react/data-grid';
-import { generateData } from './data.js';
+import { generateData } from './data.ts';
 
 const dataSource = generateData(100000);
 

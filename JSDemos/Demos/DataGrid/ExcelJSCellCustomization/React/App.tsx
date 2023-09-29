@@ -5,7 +5,7 @@ import DataGrid, {
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
 import { exportDataGrid } from 'devextreme/excel_exporter';
-import { companies } from './data.js';
+import { companies } from './data.ts';
 
 const onExporting = (e) => {
   const workbook = new Workbook();

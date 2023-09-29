@@ -1,8 +1,8 @@
 import React from 'react';
 import DataGrid, { Column } from 'devextreme-react/data-grid';
-import DataRow from './DataRow.js';
+import DataRow from './DataRow.tsx';
 
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const App = () => (
   <DataGrid

@@ -9,7 +9,7 @@ import DataGrid, {
   Pager,
   Paging,
 } from 'devextreme-react/data-grid';
-import { employees, states } from './data.js';
+import { employees, states } from './data.ts';
 
 const allowedPageSizes = [5, 10];
 

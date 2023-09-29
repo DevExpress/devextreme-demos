@@ -7,7 +7,7 @@ import DataGrid, {
 } from 'devextreme-react/data-grid';
 import CheckBox from 'devextreme-react/check-box';
 import SelectBox from 'devextreme-react/select-box';
-import { employees, states } from './data.js';
+import { employees, states } from './data.ts';
 
 const startEditActions = ['click', 'dblClick'];
 const actionLabel = { 'aria-label': 'Action' };

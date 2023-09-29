@@ -1,6 +1,6 @@
 import React from 'react';
 import DataGrid from 'devextreme-react/data-grid';
-import { orders } from './data.js';
+import { orders } from './data.ts';
 
 const App = () => (
   <DataGrid

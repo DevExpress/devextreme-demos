@@ -1,6 +1,6 @@
 import React from 'react';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
-import Grid from './Grid.js';
+import Grid from './Grid.tsx';
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DnDBetweenGrids';
 

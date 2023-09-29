@@ -4,7 +4,7 @@ import DataGrid, {
   MasterDetail,
   Selection,
 } from 'devextreme-react/data-grid';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const onContentReady = (e: { component: { getSelectedRowKeys: () => { (): any; new(): any; length: any; }; selectRowsByIndexes: (arg0: number) => void; }; }) => {
   if (!e.component.getSelectedRowKeys().length) { e.component.selectRowsByIndexes(0); }

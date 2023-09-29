@@ -2,7 +2,7 @@ import React from 'react';
 import DataGrid, { Scrolling, Pager, Paging } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
-import { generateData, displayModeLabel } from './data.js';
+import { generateData, displayModeLabel } from './data.ts';
 
 const displayModes = [{ text: 'Display Mode \'full\'', value: 'full' }, { text: 'Display Mode \'compact\'', value: 'compact' }];
 const allowedPageSizes = [5, 10, 'all'];

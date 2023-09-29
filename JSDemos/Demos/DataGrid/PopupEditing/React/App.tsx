@@ -9,7 +9,7 @@ import DataGrid, {
 } from 'devextreme-react/data-grid';
 import 'devextreme-react/text-area';
 import { Item } from 'devextreme-react/form';
-import { employees, states } from './data.js';
+import { employees, states } from './data.ts';
 
 const notesEditorOptions = { height: 100 };
 

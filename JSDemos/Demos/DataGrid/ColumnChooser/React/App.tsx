@@ -4,7 +4,7 @@ import {
 } from 'devextreme-react/data-grid';
 import { SelectBox } from 'devextreme-react/select-box';
 import { CheckBox } from 'devextreme-react/check-box';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const columnChooserModes = [{
   key: 'dragAndDrop',

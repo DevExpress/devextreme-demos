@@ -6,7 +6,7 @@ import DataGrid, {
 } from 'devextreme-react/data-grid';
 
 import query from 'devextreme/data/query';
-import { orders } from './data.js';
+import { orders } from './data.ts';
 
 const countLabel = { 'aria-label': 'Count' };
 const groupingValues = [{

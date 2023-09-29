@@ -5,8 +5,8 @@ import DataGrid, {
 import CustomStore from 'devextreme/data/custom_store';
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
 
-import PriceCell from './PriceCell.js';
-import ChangeCell from './ChangeCell.js';
+import PriceCell from './PriceCell.tsx';
+import ChangeCell from './ChangeCell.tsx';
 
 const App = () => {
   const [connectionStarted, setConnectionStarted] = React.useState(false);

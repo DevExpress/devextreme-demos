@@ -4,7 +4,7 @@ import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
 import { exportDataGrid } from 'devextreme/excel_exporter';
 
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const renderGridCell = (cellData) => (<div><img src={cellData.value}></img></div>);
 

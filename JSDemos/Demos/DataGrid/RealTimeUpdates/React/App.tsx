@@ -6,7 +6,7 @@ import { Slider, Tooltip } from 'devextreme-react/slider';
 import DataSource from 'devextreme/data/data_source';
 import {
   productsStore, ordersStore, getOrderCount, addOrder,
-} from './data.js';
+} from './data.ts';
 
 const dataSource = new DataSource({
   store: productsStore,

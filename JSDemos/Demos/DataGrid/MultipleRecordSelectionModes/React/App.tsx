@@ -7,7 +7,7 @@ import DataGrid, {
 } from 'devextreme-react/data-grid';
 import { SelectBox } from 'devextreme-react/select-box';
 import themes from 'devextreme/ui/themes';
-import { sales } from './data.js';
+import { sales } from './data.ts';
 
 const selectAllFieldLabel = { 'aria-label': 'Select All Mode' };
 const showCheckboxesFieldLabel = { 'aria-label': 'Show Checkboxes Mode' };

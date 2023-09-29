@@ -2,7 +2,7 @@ import React from 'react';
 import {
   DataGrid, HeaderFilter, Search, Column,
 } from 'devextreme-react/data-grid';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const searchFields = ['City', 'State'];
 const searchEditorOptions = { placeholder: 'Search city or state' };

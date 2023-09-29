@@ -2,7 +2,7 @@ import React from 'react';
 import DataGrid, {
   Column, Selection, Summary, GroupItem, SortByGroupSummaryInfo,
 } from 'devextreme-react/data-grid';
-import { orders } from './data.js';
+import { orders } from './data.ts';
 
 const App = () => (
   <DataGrid

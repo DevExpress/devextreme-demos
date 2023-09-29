@@ -5,7 +5,7 @@ import DataGrid, {
 import { Button } from 'devextreme-react/button';
 import ArrayStore from 'devextreme/data/array_store';
 import DataSource from 'devextreme/data/data_source';
-import { employees, states } from './data.js';
+import { employees, states } from './data.ts';
 
 const dataSource = new DataSource({
   store: new ArrayStore({

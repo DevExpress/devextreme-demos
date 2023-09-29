@@ -1,7 +1,7 @@
 import React from 'react';
 import DataGrid, { Column, Sorting } from 'devextreme-react/data-grid';
 import CheckBox from 'devextreme-react/check-box';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const App = () => {
   const [positionDisableSorting, setPositionDisableSorting] = React.useState(false);

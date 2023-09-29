@@ -3,7 +3,7 @@ import DataGrid, {
   Column, Editing, Grouping, GroupPanel, Pager, Paging, ColumnChooser,
 } from 'devextreme-react/data-grid';
 
-import { orders } from './data.js';
+import { orders } from './data.ts';
 
 const allowedPageSizes = [5, 8, 15, 30];
 

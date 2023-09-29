@@ -4,7 +4,7 @@ import DataGrid, {
   Column, Editing, Paging, Lookup,
 } from 'devextreme-react/data-grid';
 
-import { employees, states } from './data.js';
+import { employees, states } from './data.ts';
 
 const App = () => {
   const [events, setEvents] = React.useState([]);

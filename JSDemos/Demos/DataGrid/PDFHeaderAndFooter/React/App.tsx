@@ -2,7 +2,7 @@ import React from 'react';
 import DataGrid, { Column, Export } from 'devextreme-react/data-grid';
 import { jsPDF } from 'jspdf';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
-import { countries } from './data.js';
+import { countries } from './data.ts';
 
 const gdpFormat = {
   type: 'percent',

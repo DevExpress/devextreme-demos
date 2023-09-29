@@ -4,7 +4,7 @@ import {
   Column, DataGrid, MasterDetail, Paging,
 } from 'devextreme-react/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
-import MasterDetailView from './MasterDetailView.js';
+import MasterDetailView from './MasterDetailView.tsx';
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridAdvancedMasterDetailView';
 

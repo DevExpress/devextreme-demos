@@ -7,7 +7,7 @@ import DataGrid, {
   FilterBuilderPopup,
   Scrolling,
 } from 'devextreme-react/data-grid';
-import { orders } from './data.js';
+import { orders } from './data.ts';
 
 const saleAmountEditorOptions = { format: 'currency', showClearButton: true };
 const getOrderDay = (rowData: { OrderDate: VarDate | string | number | Date | VarDate; }) => (new Date(rowData.OrderDate)).getDay();

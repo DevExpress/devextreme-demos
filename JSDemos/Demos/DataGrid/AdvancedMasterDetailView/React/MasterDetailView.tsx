@@ -1,8 +1,8 @@
 import React from 'react';
 import { TabPanel, Item } from 'devextreme-react/tab-panel';
 
-import AddressTab from './AddressTab.js';
-import OrdersTab from './OrdersTab.js';
+import AddressTab from './AddressTab.tsx';
+import OrdersTab from './OrdersTab.tsx';
 
 const MasterDetailView = (props: { data: { key: any; data: any; }; }) => {
   const renderOrdersTab = React.useCallback(() => (

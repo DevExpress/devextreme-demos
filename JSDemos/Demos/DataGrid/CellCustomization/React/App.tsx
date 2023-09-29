@@ -4,9 +4,9 @@ import DataGrid, {
   Sorting,
   Paging,
 } from 'devextreme-react/data-grid';
-import { weekData } from './data.js';
-import DiffCell from './DiffCell.js';
-import ChartCell from './ChartCell.js';
+import { weekData } from './data.ts';
+import DiffCell from './DiffCell.tsx';
+import ChartCell from './ChartCell.tsx';
 
 const App = () => (
   <DataGrid id="gridContainer"

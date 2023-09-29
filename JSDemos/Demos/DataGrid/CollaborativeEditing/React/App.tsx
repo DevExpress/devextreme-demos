@@ -3,7 +3,7 @@ import React from 'react';
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 import Guid from 'devextreme/core/guid';
-import Grid from './Grid.js';
+import Grid from './Grid.tsx';
 
 const BASE_PATH = 'https://js.devexpress.com/Demos/NetCore/';
 const url = `${BASE_PATH}api/DataGridCollaborativeEditing`;

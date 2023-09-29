@@ -1,7 +1,7 @@
 import React from 'react';
 import DataGrid, { Column, MasterDetail } from 'devextreme-react/data-grid';
-import DetailTemplate from './DetailTemplate.js';
-import { employees } from './data.js';
+import DetailTemplate from './DetailTemplate.tsx';
+import { employees } from './data.ts';
 
 const App = () => (
   <DataGrid

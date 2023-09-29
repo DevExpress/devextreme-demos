@@ -7,7 +7,7 @@ import DataGrid, {
   SearchPanel,
 } from 'devextreme-react/data-grid';
 import CheckBox from 'devextreme-react/check-box';
-import { customers } from './data.js';
+import { customers } from './data.ts';
 
 const App = () => {
   const [autoExpandAll, setAutoExpandAll] = React.useState(true);

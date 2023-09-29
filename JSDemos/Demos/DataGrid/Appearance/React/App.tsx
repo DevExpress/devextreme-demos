@@ -2,7 +2,7 @@ import React from 'react';
 import DataGrid, { Column } from 'devextreme-react/data-grid';
 import CheckBox from 'devextreme-react/check-box';
 
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const App = () => {
   const [showColumnLines, setShowColumnLines] = React.useState(false);

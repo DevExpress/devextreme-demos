@@ -5,7 +5,7 @@ import DataGrid, {
 import { jsPDF } from 'jspdf';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
 
-import { companies } from './data.js';
+import { companies } from './data.ts';
 
 const exportFormats = ['pdf'];
 

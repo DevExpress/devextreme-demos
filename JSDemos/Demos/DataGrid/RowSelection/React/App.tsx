@@ -1,6 +1,6 @@
 import React from 'react';
 import DataGrid, { Column, Selection } from 'devextreme-react/data-grid';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const App = () => {
   const [showEmployeeInfo, setShowEmployeeInfo] = React.useState(false);
