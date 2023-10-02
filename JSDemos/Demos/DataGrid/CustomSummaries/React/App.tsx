@@ -1,12 +1,12 @@
 import React from 'react';
 import DataGrid, {
-  Column, Selection, Paging, Summary, TotalItem,
+  Column, Selection, Paging, Summary, ISummaryProps, TotalItem, DataGridTypes,
 } from 'devextreme-react/data-grid';
 import { orders } from './data.ts';
 
 const startupSelectedKeys = [1, 4, 7];
 
-const calculateSelectedRow = (options: { name: string; summaryProcess: string; totalValue: number; component: { isRowSelected: (arg0: any) => any; }; value: { ID: any; SaleAmount: any; }; }) => {
+const calculateSelectedRow: ISummaryProps['calculateCustomSummary'] = (options) => {
   if (options.name === 'SelectedRowsSummary') {
     if (options.summaryProcess === 'start') {
       options.totalValue = 0;
@@ -20,7 +20,7 @@ const calculateSelectedRow = (options: { name: string; summaryProcess: string; t
   }
 };
 
-const onSelectionChanged = (e: { component: { refresh: (arg0: boolean) => any; }; }) => e.component.refresh(true);
+const onSelectionChanged = (e: DataGridTypes.SelectionChangedEvent) => e.component.refresh(true);
 
 const App = () => (
   <DataGrid

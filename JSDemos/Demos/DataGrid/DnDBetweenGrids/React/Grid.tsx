@@ -1,6 +1,6 @@
 import React from 'react';
 import DataGrid, {
-  Column, RowDragging, Scrolling, Lookup,
+  Column, RowDragging, IRowDraggingProps, Scrolling, Lookup,
 } from 'devextreme-react/data-grid';
 
 const priorities = [{
@@ -13,19 +13,14 @@ const priorities = [{
   id: 4, text: 'Urgent',
 }];
 
-interface GridProps {
-tasksStore: CustomStore<any, any>;
-status: number;
-}
-
-const Grid = ({ tasksStore, status }: GridProps) => {
+const Grid = ({ tasksStore, status }) => {
   const [filterExpr] = React.useState(['Status', '=', status]);
   const [dataSource] = React.useState({
     store: tasksStore,
     reshapeOnPush: true,
   });
 
-  const onAdd = React.useCallback((e: { itemData: { ID: any; }; toData: any; }) => {
+  const onAdd = React.useCallback<IRowDraggingProps['onAdd']>((e) => {
     const key = e.itemData.ID;
     const values = { Status: e.toData };
 

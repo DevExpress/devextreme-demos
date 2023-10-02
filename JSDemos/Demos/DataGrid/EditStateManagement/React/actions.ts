@@ -1,3 +1,4 @@
+import React from 'react';
 import { sendRequest } from './utils.js';
 
 const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
@@ -12,7 +13,9 @@ export const SAVING_CANCEL = 'SAVING_CANCEL';
 export const SET_CHANGES = 'SET_CHANGES';
 export const SET_EDIT_ROW_KEY = 'SET_EDIT_ROW_KEY';
 
-export async function loadOrders(dispatch: (arg0: { type: string; payload?: { data: any; }; }) => void) {
+type dispatchType = React.Dispatch<{ type: any, payload?: any }>;
+
+export async function loadOrders(dispatch: dispatchType) {
   dispatch({ type: FETCH_PENDING });
 
   try {
@@ -30,7 +33,7 @@ export async function loadOrders(dispatch: (arg0: { type: string; payload?: { da
   }
 }
 
-export async function saveChange(dispatch: (arg0: { type: string; payload?: { change: any; }; }) => void, change: { type: any; data: any; }) {
+export async function saveChange(dispatch: dispatchType, change: { type: any; data: any; key: any; }) {
   if (change && change.type) {
     let data;
 
@@ -76,14 +79,14 @@ async function sendChange(url: string, change: { type: any; data: any; key: any;
   }
 }
 
-export function setChanges(dispatch: (arg0: { type: string; payload: any; }) => void, changes) {
+export function setChanges(dispatch: dispatchType, changes) {
   dispatch({
     type: SET_CHANGES,
     payload: changes,
   });
 }
 
-export function setEditRowKey(dispatch: (arg0: { type: string; payload: any; }) => void, editRowKey) {
+export function setEditRowKey(dispatch: dispatchType, editRowKey) {
   dispatch({
     type: SET_EDIT_ROW_KEY,
     payload: editRowKey,

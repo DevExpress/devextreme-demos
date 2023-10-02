@@ -1,15 +1,18 @@
 import React from 'react';
 import DataGrid, {
-  Column, FilterRow, HeaderFilter, Search, SearchPanel,
+  Column, FilterRow, HeaderFilter, IFilterRowProps, IHeaderFilterProps, Search, SearchPanel,
 } from 'devextreme-react/data-grid';
-import SelectBox from 'devextreme-react/select-box';
-import CheckBox from 'devextreme-react/check-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
+import CheckBox, { CheckBoxTypes } from 'devextreme-react/check-box';
 
 import { orders } from './data.ts';
 
 const saleAmountEditorOptions = { format: 'currency', showClearButton: true };
 const filterLabel = { 'aria-label': 'Filter' };
-const applyFilterTypes = [{
+const applyFilterTypes: {
+  key: IFilterRowProps['applyFilter'],
+  name: string
+}[] = [{
   key: 'auto',
   name: 'Immediately',
 }, {
@@ -43,7 +46,7 @@ const saleAmountHeaderFilter = [{
   value: ['SaleAmount', '>=', 20000],
 }];
 
-const getOrderDay = (rowData: { OrderDate: VarDate | string | number | Date | VarDate; }) => (new Date(rowData.OrderDate)).getDay();
+const getOrderDay = (rowData) => (new Date(rowData.OrderDate)).getDay();
 
 function calculateFilterExpression(value: string, selectedFilterOperations, target: string) {
   const column = this;
@@ -55,7 +58,7 @@ function calculateFilterExpression(value: string, selectedFilterOperations, targ
   return column.defaultCalculateFilterExpression(value, selectedFilterOperations, target);
 }
 
-const orderHeaderFilter = (data: { dataSource: { postProcess: (results: any) => any; }; }) => {
+const orderHeaderFilter: IHeaderFilterProps['dataSource'] = (data) => {
   data.dataSource.postProcess = (results: { text: string; value: string; }[]) => {
     results.push({
       text: 'Weekends',
@@ -76,17 +79,17 @@ const App = () => {
     dataGridRef.current.instance.clearFilter();
   }, []);
 
-  const onShowFilterRowChanged = React.useCallback((e: { value: any; }) => {
+  const onShowFilterRowChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setShowFilterRow(e.value);
     clearFilter();
   }, [clearFilter]);
 
-  const onShowHeaderFilterChanged = React.useCallback((e: { value: any; }) => {
+  const onShowHeaderFilterChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setShowHeaderFilter(e.value);
     clearFilter();
   }, [clearFilter]);
 
-  const onCurrentFilterChanged = React.useCallback((e: { value: any; }) => {
+  const onCurrentFilterChanged = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setCurrentFilter(e.value);
   }, []);
 

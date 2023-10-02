@@ -1,11 +1,19 @@
 import React from 'react';
-import DataGrid, { Column, FilterRow, Selection } from 'devextreme-react/data-grid';
+import DataGrid, { Column, DataGridTypes, FilterRow, Selection } from 'devextreme-react/data-grid';
 import Button from 'devextreme-react/button';
 import query from 'devextreme/data/query';
 import 'devextreme/data/odata/store';
 
 const MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
-const dataSource = {
+const dataSource: {
+  store: {
+    type: 'odata',
+    url: string,
+    key: string,
+  },
+  expand: string,
+  select: string[]
+} = {
   store: {
     type: 'odata',
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Tasks',
@@ -29,7 +37,8 @@ const App = () => {
   const [peopleCount, setPeopleCount] = React.useState(0);
   const [avgDuration, setAvgDuration] = React.useState(0);
 
-  const calculateStatistics = React.useCallback(async() => {
+  // eslint-disable-next-line space-before-function-paren
+  const calculateStatistics = React.useCallback(async () => {
     const selectedItems = await dataGrid.getSelectedRowsData();
 
     const totalDuration = selectedItems.reduce((currentValue: number, item: { Task_Due_Date: number; Task_Start_Date: number; }) => {
@@ -48,7 +57,7 @@ const App = () => {
     setAvgDuration(Math.round(averageDurationInDays) || 0);
   }, []);
 
-  const onInitialized = React.useCallback((e: { component: any; }) => {
+  const onInitialized = React.useCallback((e: DataGridTypes.InitializedEvent) => {
     dataGrid = e.component;
 
     calculateStatistics();

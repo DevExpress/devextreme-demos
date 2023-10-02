@@ -1,12 +1,24 @@
 import React from 'react';
-import { DataGrid, Column, Paging } from 'devextreme-react/data-grid';
-import { NumberBox } from 'devextreme-react/number-box';
-import { CheckBox } from 'devextreme-react/check-box';
+import {
+  DataGrid, Column, Paging, DataGridTypes,
+} from 'devextreme-react/data-grid';
+import { NumberBox, NumberBoxTypes } from 'devextreme-react/number-box';
+import { CheckBox, CheckBoxTypes } from 'devextreme-react/check-box';
 import 'devextreme/data/odata/store';
 
 const focusedRowKeyLabel = { 'aria-label': 'Focused Row Key' };
 
-const dataSourceOptions = {
+interface ODataSource {
+  store: {
+    type: 'odata',
+    url: string,
+    key: string,
+  },
+  expand: string,
+  select: string[],
+}
+
+const dataSourceOptions: ODataSource = {
   store: {
     type: 'odata',
     key: 'Task_ID',
@@ -32,13 +44,13 @@ const App = () => {
   const [focusedRowKey, setFocusedRowKey] = React.useState(117);
   const [autoNavigateToFocusedRow, setAutoNavigateToFocusedRow] = React.useState(true);
 
-  const onTaskIdChanged = React.useCallback((e: { event: any; value: number; }) => {
+  const onTaskIdChanged = React.useCallback((e: NumberBoxTypes.ValueChangedEvent) => {
     if (e.event && e.value > 0) {
       setFocusedRowKey(e.value);
     }
   }, []);
 
-  const onFocusedRowChanging = React.useCallback((e: { component: { getVisibleRows: () => { (): any; new(): any; length: any; }; pageCount: () => any; pageIndex: (arg0: number) => { (): any; new(): any; done: { (arg0: { (): void; (): void; }): void; new(): any; }; }; option: (arg0: string,arg1: number) => void; }; event: { key: any; }; prevRowIndex: any; newRowIndex: number; }) => {
+  const onFocusedRowChanging = React.useCallback((e: DataGridTypes.FocusedRowChangingEvent) => {
     const rowsCount = e.component.getVisibleRows().length;
     const pageCount = e.component.pageCount();
     const pageIndex = e.component.pageIndex();
@@ -57,7 +69,7 @@ const App = () => {
     }
   }, []);
 
-  const onFocusedRowChanged = React.useCallback((e: { row: { data: any; }; component: { option: (arg0: string) => any; }; }) => {
+  const onFocusedRowChanged = React.useCallback((e: DataGridTypes.FocusedRowChangedEvent) => {
     const data = e.row.data;
     const progress = data.Task_Completion ? `${data.Task_Completion}%` : '';
 
@@ -68,7 +80,7 @@ const App = () => {
     setFocusedRowKey(e.component.option('focusedRowKey'));
   }, []);
 
-  const onAutoNavigateToFocusedRowChanged = React.useCallback((e: { value: any; }) => {
+  const onAutoNavigateToFocusedRowChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setAutoNavigateToFocusedRow(e.value);
   }, []);
 

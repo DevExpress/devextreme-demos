@@ -3,7 +3,17 @@ import DataGrid, { Column } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
 import 'devextreme/data/odata/store';
 
-const dataSourceOptions = {
+interface ODataSource {
+  store: {
+    type: 'odata',
+    url: string,
+    key: string,
+  },
+  expand: string,
+  select: string[],
+}
+
+const dataSourceOptions: ODataSource = {
   store: {
     type: 'odata',
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Tasks',

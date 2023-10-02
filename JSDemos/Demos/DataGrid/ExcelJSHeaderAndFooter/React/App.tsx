@@ -1,5 +1,5 @@
 import React from 'react';
-import DataGrid, { Column, Export } from 'devextreme-react/data-grid';
+import DataGrid, { Column, DataGridTypes, Export } from 'devextreme-react/data-grid';
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
 import { exportDataGrid } from 'devextreme/excel_exporter';
@@ -10,7 +10,7 @@ const gdpFormat = {
   precision: 1,
 };
 
-const onExporting = (e: { component: any; }) => {
+const onExporting = (e: DataGridTypes.ExportingEvent) => {
   const workbook = new Workbook();
   const worksheet = workbook.addWorksheet('CountriesPopulation');
 

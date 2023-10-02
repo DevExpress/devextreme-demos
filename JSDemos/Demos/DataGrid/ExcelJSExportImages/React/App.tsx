@@ -1,6 +1,6 @@
 import React from 'react';
-import DataGrid, { Column, Export } from 'devextreme-react/data-grid';
-import { Workbook } from 'exceljs';
+import DataGrid, { Column, DataGridTypes, Export } from 'devextreme-react/data-grid';
+import { Anchor, Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
 import { exportDataGrid } from 'devextreme/excel_exporter';
 
@@ -8,7 +8,7 @@ import { employees } from './data.ts';
 
 const renderGridCell = (cellData) => (<div><img src={cellData.value}></img></div>);
 
-const onExporting = (e) => {
+const onExporting = (e: DataGridTypes.ExportingEvent) => {
   const workbook = new Workbook();
   const worksheet = workbook.addWorksheet('Main sheet');
 
@@ -29,8 +29,8 @@ const onExporting = (e) => {
 
           worksheet.getRow(excelCell.row).height = 90;
           worksheet.addImage(image, {
-            tl: { col: excelCell.col - 1, row: excelCell.row - 1 },
-            br: { col: excelCell.col, row: excelCell.row },
+            tl: { col: excelCell.col - 1, row: excelCell.row - 1 } as Anchor,
+            br: { col: excelCell.col, row: excelCell.row } as Anchor,
           });
         }
       }

@@ -5,9 +5,10 @@ import DataGrid, {
   Paging,
   Lookup,
   KeyboardNavigation,
+  IKeyboardNavigationProps,
 } from 'devextreme-react/data-grid';
-import SelectBox from 'devextreme-react/select-box';
-import CheckBox from 'devextreme-react/check-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
+import CheckBox, { CheckBoxTypes } from 'devextreme-react/check-box';
 import {
   employees,
   states,
@@ -24,18 +25,18 @@ const onFocusedCellChanging = (e: { isHighlighted: boolean; }) => {
 
 const App = () => {
   const [editOnKeyPress, setEditOnKeyPress] = React.useState(true);
-  const [enterKeyAction, setEnterKeyAction] = React.useState('moveFocus');
-  const [enterKeyDirection, setEnterKeyDirection] = React.useState('column');
+  const [enterKeyAction, setEnterKeyAction] = React.useState<IKeyboardNavigationProps['enterKeyAction']>('moveFocus');
+  const [enterKeyDirection, setEnterKeyDirection] = React.useState<IKeyboardNavigationProps['enterKeyDirection']>('column');
 
-  const editOnKeyPressChanged = React.useCallback((e: { value: any; }) => {
+  const editOnKeyPressChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setEditOnKeyPress(e.value);
   }, []);
 
-  const enterKeyActionChanged = React.useCallback((e: { value: any; }) => {
+  const enterKeyActionChanged = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setEnterKeyAction(e.value);
   }, []);
 
-  const enterKeyDirectionChanged = React.useCallback((e: { value: any; }) => {
+  const enterKeyDirectionChanged = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setEnterKeyDirection(e.value);
   }, []);
 

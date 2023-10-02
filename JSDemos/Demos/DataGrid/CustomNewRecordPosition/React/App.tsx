@@ -1,6 +1,6 @@
 import React from 'react';
 import DataGrid, {
-  Column, Editing, ValidationRule, Button, Toolbar, Item, Scrolling,
+  Column, Editing, IEditingProps, ValidationRule, Button, Toolbar, Item, Scrolling, IScrollingProps, DataGridTypes,
 } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
 import Guid from 'devextreme/core/guid';
@@ -11,13 +11,13 @@ const scrollingModeOptions = ['standard', 'virtual'];
 
 const isAddButtonVisible = ({ row }) => !row.isEditing;
 
-const onRowInserted = (e: { component: { navigateToRow: (arg0: any) => void; }; key: any; }) => {
+const onRowInserted = (e: DataGridTypes.RowInsertedEvent) => {
   e.component.navigateToRow(e.key);
 };
 
 const App = () => {
-  const [newRowPosition, setNewRowPosition] = React.useState('viewportTop');
-  const [scrollingMode, setScrollingMode] = React.useState('standard');
+  const [newRowPosition, setNewRowPosition] = React.useState<IEditingProps['newRowPosition']>('viewportTop');
+  const [scrollingMode, setScrollingMode] = React.useState<IScrollingProps['mode']>('standard');
   const [changes, setChanges] = React.useState([]);
   const [editRowKey, setEditRowKey] = React.useState(null);
 

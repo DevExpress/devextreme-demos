@@ -7,7 +7,17 @@ import { saveAs } from 'file-saver-es';
 import { exportDataGrid } from 'devextreme/excel_exporter';
 import 'devextreme/data/odata/store';
 
-const priceDataSource = {
+interface ODataSource {
+  store: {
+    type: 'odata',
+    url: string,
+    key: string,
+  },
+  select: string[],
+  filter: (string | number)[],
+}
+
+const priceDataSource: ODataSource = {
   store: {
     type: 'odata',
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
@@ -16,7 +26,7 @@ const priceDataSource = {
   select: ['Product_ID', 'Product_Name', 'Product_Sale_Price', 'Product_Retail_Price'],
   filter: ['Product_ID', '<', 10],
 };
-const ratingDataSource = {
+const ratingDataSource: ODataSource = {
   store: {
     type: 'odata',
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
@@ -26,7 +36,7 @@ const ratingDataSource = {
   filter: ['Product_ID', '<', 10],
 };
 
-const setAlternatingRowsBackground = (gridCell, excelCell: { fullAddress: { row: number; }; fill: { type: string; pattern: string; fgColor: { argb: string; }; bgColor: { argb: string; }; }; }) => {
+const setAlternatingRowsBackground = (gridCell, excelCell) => {
   if (gridCell.rowType === 'header' || gridCell.rowType === 'data') {
     if (excelCell.fullAddress.row % 2 === 0) {
       excelCell.fill = {

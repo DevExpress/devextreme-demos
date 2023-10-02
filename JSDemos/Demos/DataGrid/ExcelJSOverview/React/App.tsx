@@ -1,13 +1,13 @@
 import React from 'react';
 import DataGrid, {
-  Column, Export, Selection, GroupPanel, Grouping,
+  Column, Export, Selection, GroupPanel, Grouping, DataGridTypes,
 } from 'devextreme-react/data-grid';
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
 import { exportDataGrid } from 'devextreme/excel_exporter';
 import { employees } from './data.ts';
 
-const onExporting = (e: { component: any; }) => {
+const onExporting = (e: DataGridTypes.ExportingEvent) => {
   const workbook = new Workbook();
   const worksheet = workbook.addWorksheet('Main sheet');
 
