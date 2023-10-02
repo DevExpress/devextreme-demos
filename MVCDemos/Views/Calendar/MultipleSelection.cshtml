@@ -1,0 +1,112 @@
+@{
+    var selectionModes = new[] { "single", "multiple", "range" };
+}
+
+<div id="container">
+    <div class="calendar-container">
+        @(Html.DevExtreme().Calendar()
+            .ID("calendar-container")
+            .Values(new JS("initialValues"))
+            .ShowWeekNumbers(true)
+            .SelectWeekOnClick(true)
+            .SelectionMode(CalendarSelectionMode.Range)
+        )
+    </div>
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(true)
+                .Text("Select week on click")
+                .OnValueChanged("selectWeekOnClick_changed")
+            )
+        </div>
+        <div class="option">
+            <span>Selection Mode</span>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(selectionModes)
+                .Value(CalendarSelectionMode.Range)
+                .InputAttr("aria-label", "Selection Mode")
+                .OnValueChanged("selectionMode_changed")
+            )
+        </div>
+        <div class="caption option">
+          <span>Dates availability</span>
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Set minimum date")
+                .OnValueChanged("minValue_changed")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Set maximum date")
+                .OnValueChanged("maxValue_changed")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Disable weekends")
+                .OnValueChanged("disabledDates_changed")
+            )
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().Button()
+                .Text("Clear value")
+                .OnClick("clearButton_clicked")
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    var date = new Date().getTime();
+    var msInDay = 1000 * 60 * 60 * 24;
+    var initialValues = [date, date + msInDay];
+
+    function getCalendarInstance() {
+        return $("#calendar-container").dxCalendar("instance");
+    }
+
+    function isWeekend(date) {
+        var day = date.getDay();
+
+        return day === 0 || day === 6;
+    }
+
+    function minValue_changed(data) {
+        const minDate = new Date(date - msInDay * 3);
+
+        getCalendarInstance().option("min", data.value ? minDate : null);
+    }
+
+    function maxValue_changed(data) {
+        const maxDate = new Date(date + msInDay * 3);
+
+        getCalendarInstance().option("max", data.value ? maxDate : null);
+    }
+
+    function disabledDates_changed(data) {
+        var calendar = getCalendarInstance();
+        if (data.value) {
+            calendar.option("disabledDates", function (data) {
+                return data.view === "month" && isWeekend(data.date);
+            });
+        } else {
+            calendar.option("disabledDates", null);
+        }
+    }
+
+    function selectWeekOnClick_changed(data) {
+        getCalendarInstance().option("selectWeekOnClick", data.value);
+    }
+
+    function selectionMode_changed(data) {
+        getCalendarInstance().option("selectionMode", data.value);
+    }
+
+    function clearButton_clicked(data) {
+        getCalendarInstance().clear();
+    }
+</script>
