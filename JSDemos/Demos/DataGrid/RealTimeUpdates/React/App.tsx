@@ -2,7 +2,7 @@ import React from 'react';
 import DataGrid, {
   Column, Summary, TotalItem, MasterDetail, Paging,
 } from 'devextreme-react/data-grid';
-import { Slider, Tooltip } from 'devextreme-react/slider';
+import { Slider, SliderTypes, Tooltip } from 'devextreme-react/slider';
 import DataSource from 'devextreme/data/data_source';
 import {
   productsStore, ordersStore, getOrderCount, addOrder,
@@ -13,7 +13,7 @@ const dataSource = new DataSource({
   reshapeOnPush: true,
 });
 
-const getDetailGridDataSource = (product: { ProductID: any; }) => ({
+const getDetailGridDataSource = (product: { ProductID: string | number; }) => ({
   store: ordersStore,
   reshapeOnPush: true,
   filter: ['ProductID', '=', product.ProductID],
@@ -76,7 +76,7 @@ const App = () => {
     return () => clearInterval(interval);
   }, [updateFrequency]);
 
-  const onUpdateFrequencyChanged = (e: { value: any; }) => {
+  const onUpdateFrequencyChanged = (e: SliderTypes.ValueChangedEvent) => {
     setUpdateFrequency(e.value);
   };
 

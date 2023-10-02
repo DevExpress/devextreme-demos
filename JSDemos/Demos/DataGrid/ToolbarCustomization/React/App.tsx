@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from 'devextreme-react/button';
-import SelectBox from 'devextreme-react/select-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import DataGrid, {
   Grouping, Column, ColumnChooser, LoadPanel, Toolbar, Item,
 } from 'devextreme-react/data-grid';
@@ -25,7 +25,7 @@ const App = () => {
   const [groupColumn, setGroupColumn] = React.useState('CustomerStoreState');
   const dataGridRef = React.useRef(null);
 
-  const toggleGroupColumn = React.useCallback((e: { value: any; }) => {
+  const toggleGroupColumn = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     const newGrouping = e.value;
 
     dataGridRef.current.instance.clearGrouping();

@@ -1,6 +1,6 @@
 import React from 'react';
 import DataGrid, { Column, Paging, SearchPanel } from 'devextreme-react/data-grid';
-import SelectBox from 'devextreme-react/select-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 
 import { europeanUnion } from './data.ts';
 
@@ -14,7 +14,7 @@ const App = () => {
   const [rtlEnabled, setRtlEnabled] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(languages[1]);
 
-  const onSelectLanguage = React.useCallback((e: { value: string; }) => {
+  const onSelectLanguage = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     const newRtlEnabled = e.value === languages[0];
 
     setRtlEnabled(newRtlEnabled);

@@ -2,6 +2,7 @@ import React from 'react';
 import ODataStore from 'devextreme/data/odata/store';
 import DataGrid, {
   Column,
+  DataGridTypes,
   Grouping,
   GroupPanel,
   Pager,
@@ -27,7 +28,7 @@ const dataSourceOptions = {
 const App = () => {
   const [collapsed, setCollapsed] = React.useState(true);
 
-  const onContentReady = React.useCallback((e: { component: { expandRow: (arg0: string[]) => void; }; }) => {
+  const onContentReady = React.useCallback((e: DataGridTypes.ContentReadyEvent) => {
     if (collapsed) {
       e.component.expandRow(['EnviroCare']);
       setCollapsed(false);

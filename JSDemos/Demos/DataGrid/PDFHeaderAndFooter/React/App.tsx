@@ -1,5 +1,5 @@
 import React from 'react';
-import DataGrid, { Column, Export } from 'devextreme-react/data-grid';
+import DataGrid, { Column, DataGridTypes, Export } from 'devextreme-react/data-grid';
 import { jsPDF } from 'jspdf';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
 import { countries } from './data.ts';
@@ -11,7 +11,7 @@ const gdpFormat = {
 
 const exportFormats = ['pdf'];
 
-const onExporting = (e: { component: any; }) => {
+const onExporting = (e: DataGridTypes.ExportingEvent) => {
   // eslint-disable-next-line new-cap
   const doc = new jsPDF();
   const lastPoint = { x: 0, y: 0 };

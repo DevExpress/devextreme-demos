@@ -1,16 +1,17 @@
 import React from 'react';
 import DataGrid, {
   Column,
+  DataGridTypes,
   MasterDetail,
   Selection,
 } from 'devextreme-react/data-grid';
 import { employees } from './data.ts';
 
-const onContentReady = (e: { component: { getSelectedRowKeys: () => { (): any; new(): any; length: any; }; selectRowsByIndexes: (arg0: number) => void; }; }) => {
-  if (!e.component.getSelectedRowKeys().length) { e.component.selectRowsByIndexes(0); }
+const onContentReady = (e: DataGridTypes.ContentReadyEvent) => {
+  if (!e.component.getSelectedRowKeys().length) { e.component.selectRowsByIndexes([0]); }
 };
 
-const onSelectionChanged = (e: { component: { collapseAll: (arg0: number) => void; expandRow: (arg0: any) => void; }; currentSelectedRowKeys: any[]; }) => {
+const onSelectionChanged = (e: DataGridTypes.SelectionChangedEvent) => {
   e.component.collapseAll(-1);
   e.component.expandRow(e.currentSelectedRowKeys[0]);
 };

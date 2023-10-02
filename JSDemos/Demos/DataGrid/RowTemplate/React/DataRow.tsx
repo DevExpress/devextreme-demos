@@ -5,7 +5,7 @@ const formatDate = new Intl.DateTimeFormat('en-US').format;
 const DataRow = (rowInfo) => (
   <React.Fragment>
     <tr className="main-row">
-      <td rowSpan="2"><img src={rowInfo.data.Picture} /></td>
+      <td rowSpan={2}><img src={rowInfo.data.Picture} /></td>
       <td>{rowInfo.data.Prefix}</td>
       <td>{rowInfo.data.FirstName}</td>
       <td>{rowInfo.data.LastName}</td>
@@ -14,7 +14,7 @@ const DataRow = (rowInfo) => (
       <td>{formatDate(new Date(rowInfo.data.HireDate))}</td>
     </tr>
     <tr className="notes-row">
-      <td colSpan="6"><div>{rowInfo.data.Notes}</div></td>
+      <td colSpan={6}><div>{rowInfo.data.Notes}</div></td>
     </tr>
   </React.Fragment>
 );

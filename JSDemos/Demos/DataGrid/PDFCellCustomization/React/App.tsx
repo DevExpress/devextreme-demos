@@ -1,6 +1,6 @@
 import React from 'react';
 import DataGrid, {
-  Column, Summary, GroupPanel, Grouping, SortByGroupSummaryInfo, TotalItem, Export,
+  Column, Summary, GroupPanel, Grouping, SortByGroupSummaryInfo, TotalItem, Export, DataGridTypes,
 } from 'devextreme-react/data-grid';
 import { jsPDF } from 'jspdf';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
@@ -9,7 +9,7 @@ import { companies } from './data.ts';
 
 const exportFormats = ['pdf'];
 
-const onExporting = (e: { component: any; }) => {
+const onExporting = (e: DataGridTypes.ExportingEvent) => {
   // eslint-disable-next-line new-cap
   const doc = new jsPDF();
 
@@ -73,7 +73,7 @@ const App = () => (
       <Column dataField="Address" width={200} />
       <Column dataField="City" />
       <Column dataField="State" groupIndex={0} />
-      <Column dataField="Phone" format={(e: string) => phoneNumberFormat(e)} />
+      <Column dataField="Phone" format={(e) => phoneNumberFormat(e)} />
       <Column dataField="Website" caption="" alignment="center" width={100} cellRender={(e) => renderGridCell(e)} />
 
       <Summary>

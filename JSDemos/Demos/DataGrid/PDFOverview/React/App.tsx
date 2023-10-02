@@ -5,6 +5,7 @@ import DataGrid, {
   Export,
   Selection,
   Paging,
+  DataGridTypes,
 } from 'devextreme-react/data-grid';
 import { jsPDF } from 'jspdf';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
@@ -12,7 +13,7 @@ import { customers } from './data.ts';
 
 const exportFormats = ['pdf'];
 
-const onExporting = (e: { component: any; }) => {
+const onExporting = (e: DataGridTypes.ExportingEvent) => {
   // eslint-disable-next-line new-cap
   const doc = new jsPDF();
 

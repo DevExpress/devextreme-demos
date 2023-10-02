@@ -2,7 +2,17 @@ import React from 'react';
 import 'devextreme/data/odata/store';
 import DataGrid, { Column } from 'devextreme-react/data-grid';
 
-const dataSourceOptions = {
+interface ODataSource {
+  store: {
+    type: 'odata',
+    url: string,
+    key: string,
+  },
+  select: string[],
+  filter: (string | number)[],
+}
+
+const dataSourceOptions: ODataSource = {
   store: {
     type: 'odata',
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',

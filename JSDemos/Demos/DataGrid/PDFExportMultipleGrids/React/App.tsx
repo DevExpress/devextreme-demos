@@ -7,7 +7,17 @@ import { jsPDF } from 'jspdf';
 
 import 'devextreme/data/odata/store';
 
-const priceDataSource = {
+interface ODataSource {
+  store: {
+    type: 'odata',
+    url: string,
+    key: string,
+  },
+  select: string[],
+  filter: (string | number)[],
+}
+
+const priceDataSource: ODataSource = {
   store: {
     type: 'odata',
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
@@ -16,7 +26,7 @@ const priceDataSource = {
   select: ['Product_ID', 'Product_Name', 'Product_Sale_Price', 'Product_Retail_Price'],
   filter: ['Product_ID', '<', 10],
 };
-const ratingDataSource = {
+const ratingDataSource: ODataSource = {
   store: {
     type: 'odata',
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
@@ -26,7 +36,7 @@ const ratingDataSource = {
   filter: ['Product_ID', '<', 10],
 };
 
-const setAlternatingRowsBackground = (dataGrid: { getRowIndexByKey: (arg0: any) => any; }, gridCell, pdfCell) => {
+const setAlternatingRowsBackground = (dataGrid: DataGrid['instance'], gridCell, pdfCell) => {
   if (gridCell.rowType === 'data') {
     const rowIndex = dataGrid.getRowIndexByKey(gridCell.data.Product_ID);
     if (rowIndex % 2 === 0) {
