@@ -10,11 +10,7 @@ const statesStore = AspNetData.createStore({
   loadUrl: 'https://js.devexpress.com/Demos/NetCore/api/DataGridStatesLookup',
 });
 
-interface GridProps {
-dataSource: CustomStore<any, any>;
-}
-
-const Grid = (props: GridProps) => (
+const Grid = (props) => (
   <DataGrid
     dataSource={props.dataSource}
     height={600}

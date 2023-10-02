@@ -8,7 +8,7 @@ import { createStore } from 'devextreme-aspnet-data-nojquery';
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridAdvancedMasterDetailView';
 
 interface OrderHistoryProps {
-productId: any;
+  productId: any;
 }
 
 const OrderHistory = ({ productId }: OrderHistoryProps) => {
@@ -42,7 +42,7 @@ const OrderHistory = ({ productId }: OrderHistoryProps) => {
 
       <Summary>
         <TotalItem column="UnitPrice" summaryType="sum">
-          <ValueFormat format="currency" precision={2} />
+          <ValueFormat type="currency" precision={2} />
         </TotalItem>
         <TotalItem column="Quantity" summaryType="count" />
       </Summary>

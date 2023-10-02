@@ -1,5 +1,5 @@
 import React from 'react';
-import DataGrid, { Column, Editing } from 'devextreme-react/data-grid';
+import DataGrid, { Column, DataGridTypes, Editing } from 'devextreme-react/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 import 'whatwg-fetch';
 
@@ -13,7 +13,7 @@ const ordersStore = createStore({
   },
 });
 
-async function sendBatchRequest(url: RequestInfo | URL, changes) {
+async function sendBatchRequest(url: string, changes) {
   const result = await fetch(url, {
     method: 'POST',
     body: JSON.stringify(changes),
@@ -30,13 +30,13 @@ async function sendBatchRequest(url: RequestInfo | URL, changes) {
   }
 }
 
-async function processBatchRequest(url: string, changes, component: { refresh: (arg0: boolean) => any; cancelEditData: () => void; }) {
+async function processBatchRequest(url: string, changes, component: DataGrid['instance']) {
   await sendBatchRequest(url, changes);
   await component.refresh(true);
   component.cancelEditData();
 }
 
-const onSaving = (e: { cancel: boolean; changes: string | any[]; promise: Promise<void>; component: any; }) => {
+const onSaving = (e: DataGridTypes.SavingEvent) => {
   e.cancel = true;
 
   if (e.changes.length) {

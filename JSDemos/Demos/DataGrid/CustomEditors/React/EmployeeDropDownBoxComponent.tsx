@@ -1,11 +1,12 @@
 import React from 'react';
 import DataGrid, {
   Column,
+  DataGridTypes,
   Paging,
   Scrolling,
   Selection,
 } from 'devextreme-react/data-grid';
-import DropDownBox from 'devextreme-react/drop-down-box';
+import DropDownBox, { DropDownBoxTypes } from 'devextreme-react/drop-down-box';
 
 const dropDownOptions = { width: 500 };
 const ownerLabel = { 'aria-label': 'Owner' };
@@ -14,14 +15,14 @@ const EmployeeDropDownBoxComponent = (props) => {
   const [selectedRowKeys, setSelectedRowKeys] = React.useState([props.data.value]);
   const [isDropDownOpened, setDropDownOpened] = React.useState(false);
 
-  const boxOptionChanged = React.useCallback((e: { name: string; value: any; }) => {
+  const boxOptionChanged = React.useCallback((e: DropDownBoxTypes.OptionChangedEvent) => {
     if (e.name === 'opened') {
       setDropDownOpened(e.value);
     }
   }, []);
 
   const contentRender = React.useCallback(() => {
-    const onSelectionChanged = (args: { selectedRowKeys: any[]; }) => {
+    const onSelectionChanged = (args: DataGridTypes.SelectionChangedEvent) => {
       setSelectedRowKeys(args.selectedRowKeys);
       setDropDownOpened(false);
 

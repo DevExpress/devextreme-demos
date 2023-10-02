@@ -1,6 +1,6 @@
 import React from 'react';
 import DataGrid, {
-  Column, Editing, Paging, Selection, Lookup, Toolbar, Item,
+  Column, Editing, Paging, Selection, Lookup, Toolbar, Item, DataGridTypes,
 } from 'devextreme-react/data-grid';
 import { Button } from 'devextreme-react/button';
 import ArrayStore from 'devextreme/data/array_store';
@@ -25,7 +25,7 @@ const App = () => {
     dataSource.reload();
   }, [selectedItemKeys]);
 
-  const onSelectionChanged = React.useCallback((data: { selectedRowKeys: any; }) => {
+  const onSelectionChanged = React.useCallback((data: DataGridTypes.SelectionChangedEvent) => {
     setSelectedItemKeys(data.selectedRowKeys);
   }, []);
 

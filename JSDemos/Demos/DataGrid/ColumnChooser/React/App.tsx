@@ -2,11 +2,14 @@ import React from 'react';
 import {
   DataGrid, Column, ColumnChooser, ColumnChooserSearch, ColumnChooserSelection, Position,
 } from 'devextreme-react/data-grid';
-import { SelectBox } from 'devextreme-react/select-box';
-import { CheckBox } from 'devextreme-react/check-box';
+import { SelectBox, SelectBoxTypes } from 'devextreme-react/select-box';
+import { CheckBox, CheckBoxTypes } from 'devextreme-react/check-box';
 import { employees } from './data.ts';
 
-const columnChooserModes = [{
+const columnChooserModes: {
+  key: 'select' | 'dragAndDrop',
+  name: string,
+}[] = [{
   key: 'dragAndDrop',
   name: 'Drag and drop',
 }, {
@@ -26,23 +29,23 @@ const App = () => {
 
   const isDragMode = mode === columnChooserModes[0].key;
 
-  const onModeValueChanged = React.useCallback((e: { value: any; }) => {
+  const onModeValueChanged = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setMode(e.value);
   }, []);
 
-  const onSearchEnabledValueChanged = React.useCallback((e: { value: any; }) => {
+  const onSearchEnabledValueChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setSearchEnabled(e.value);
   }, []);
 
-  const onAllowSelectAllValueChanged = React.useCallback((e: { value: any; }) => {
+  const onAllowSelectAllValueChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setAllowSelectAll(e.value);
   }, []);
 
-  const onSelectByClickValueChanged = React.useCallback((e: { value: any; }) => {
+  const onSelectByClickValueChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setSelectByClick(e.value);
   }, []);
 
-  const onRecursiveValueChanged = React.useCallback((e: { value: any; }) => {
+  const onRecursiveValueChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setRecursive(e.value);
   }, []);
 

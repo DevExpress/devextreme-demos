@@ -8,7 +8,7 @@ const renderFormItem = (item) => (
 );
 
 interface AddressTabProps {
-data: any;
+  data: any;
 }
 
 const AddressTab = (props: AddressTabProps) => (

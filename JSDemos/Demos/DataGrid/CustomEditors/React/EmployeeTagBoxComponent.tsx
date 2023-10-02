@@ -1,10 +1,10 @@
 import React from 'react';
-import TagBox from 'devextreme-react/tag-box';
+import TagBox, { TagBoxTypes } from 'devextreme-react/tag-box';
 
 const nameLabel = { 'aria-label': 'Name' };
 
 const EmployeeTagBoxComponent = (props) => {
-  const onValueChanged = React.useCallback((e: { value: any; }) => {
+  const onValueChanged = React.useCallback((e: TagBoxTypes.ValueChangedEvent) => {
     props.data.setValue(e.value);
   }, [props]);
 

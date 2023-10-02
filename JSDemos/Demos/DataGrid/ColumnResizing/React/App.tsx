@@ -1,17 +1,18 @@
 import React from 'react';
 import DataGrid from 'devextreme-react/data-grid';
-import SelectBox from 'devextreme-react/select-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
+import { ColumnResizeMode } from 'devextreme/common/grids';
 
 import { orders } from './data.ts';
 
 const columns = ['CompanyName', 'City', 'State', 'Phone', 'Fax'];
-const resizingModes = ['nextColumn', 'widget'];
+const resizingModes: ColumnResizeMode[] = ['nextColumn', 'widget'];
 const columnResizingModeLabel = { 'aria-label': 'Column Resizing Mode' };
 
 const App = () => {
   const [mode, setMode] = React.useState(resizingModes[0]);
 
-  const changeResizingMode = React.useCallback((data: { value: any; }) => {
+  const changeResizingMode = React.useCallback((data: SelectBoxTypes.ValueChangedEvent) => {
     setMode(data.value);
   }, []);
 

@@ -1,19 +1,19 @@
 import React from 'react';
 import DataGrid, {
-  Button, Column, Editing, Lookup,
+  Button, IButtonProps, Column, DataGridTypes, Editing, Lookup, IEditingProps,
 } from 'devextreme-react/data-grid';
 
 import { employees as defaultEmployees, states, getMaxID } from './data.ts';
 
 const isChief = (position: string) => position && ['CEO', 'CMO'].indexOf(position.trim().toUpperCase()) >= 0;
 
-const isCloneIconVisible = (e: { row: { isEditing: any; }; }) => !e.row.isEditing;
+const isCloneIconVisible: IButtonProps['visible'] = (e) => !e.row.isEditing;
 
-const isCloneIconDisabled = (e: { row: { data: { Position: any; }; }; }) => isChief(e.row.data.Position);
+const isCloneIconDisabled: IButtonProps['disabled'] = (e) => isChief(e.row.data.Position);
 
-const isDeleteIconVisible = (e: { row: { data: { Position: any; }; }; }) => !isChief(e.row.data.Position);
+const isDeleteIconVisible: IEditingProps['allowDeleting'] = (e) => !isChief(e.row.data.Position);
 
-const onRowValidating = (e: { newData: { Position: any; }; errorText: string; isValid: boolean; }) => {
+const onRowValidating = (e: DataGridTypes.RowValidatingEvent) => {
   const position = e.newData.Position;
 
   if (isChief(position)) {
@@ -22,7 +22,7 @@ const onRowValidating = (e: { newData: { Position: any; }; errorText: string; is
   }
 };
 
-const onEditorPreparing = (e: { parentType: string; dataField: string; editorOptions: { readOnly: boolean; }; value: any; }) => {
+const onEditorPreparing = (e: DataGridTypes.EditorPreparingEvent) => {
   if (e.parentType === 'dataRow' && e.dataField === 'Position') {
     e.editorOptions.readOnly = isChief(e.value);
   }
@@ -31,7 +31,7 @@ const onEditorPreparing = (e: { parentType: string; dataField: string; editorOpt
 const App = () => {
   const [employees, setEmployees] = React.useState(defaultEmployees);
 
-  const onCloneIconClick = React.useCallback((e: { row: { data: any; rowIndex: number; }; event: { preventDefault: () => void; }; }) => {
+  const onCloneIconClick = React.useCallback<IButtonProps['onClick']>((e) => {
     const clonedItem = { ...e.row.data, ID: getMaxID() };
 
     setEmployees((prevState) => {

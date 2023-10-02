@@ -1,9 +1,10 @@
+/* global RequestInit */
 import React from 'react';
 import {
-  DataGrid, Column, Editing, Scrolling, Lookup, Summary, TotalItem,
+  DataGrid, Column, Editing, Scrolling, Lookup, Summary, TotalItem, IEditingProps,
 } from 'devextreme-react/data-grid';
 import { Button } from 'devextreme-react/button';
-import { SelectBox } from 'devextreme-react/select-box';
+import { SelectBox, SelectBoxTypes } from 'devextreme-react/select-box';
 
 import CustomStore from 'devextreme/data/custom_store';
 import { formatDate } from 'devextreme/localization';
@@ -41,9 +42,9 @@ const App = () => {
   }));
 
   const [requests, setRequests] = React.useState([]);
-  const [refreshMode, setRefreshMode] = React.useState('reshape');
+  const [refreshMode, setRefreshMode] = React.useState<IEditingProps['refreshMode']>('reshape');
 
-  const handleRefreshModeChange = React.useCallback((e: { value: any; }) => {
+  const handleRefreshModeChange = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setRefreshMode(e.value);
   }, []);
 
@@ -51,7 +52,7 @@ const App = () => {
     setRequests([]);
   }, []);
 
-  const logRequest = React.useCallback((method, url: string | any[], data: { [x: string]: any; }) => {
+  const logRequest = React.useCallback((method, url: string, data: Record<string, any>) => {
     const args = Object.keys(data || {}).map((key) => `${key}=${data[key]}`).join(' ');
 
     const time = formatDate(new Date(), 'HH:mm:ss');
@@ -60,11 +61,11 @@ const App = () => {
     setRequests((prevRequests: ConcatArray<string>) => [request].concat(prevRequests));
   }, []);
 
-  // eslint-disable-next-line consistent-return
-  const sendRequest = React.useCallback(async(url: RequestInfo | URL, method = 'GET', data = {}) => {
+  // eslint-disable-next-line consistent-return, space-before-function-paren
+  const sendRequest = React.useCallback(async (url: string, method = 'GET', data = {}) => {
     logRequest(method, url, data);
 
-    const request = {
+    const request: RequestInit = {
       method, credentials: 'include',
     };
 

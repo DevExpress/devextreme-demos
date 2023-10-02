@@ -2,9 +2,9 @@ import React from 'react';
 import 'devextreme/localization/globalize/currency';
 import { formatNumber } from 'devextreme/localization';
 
-const getGridCellData = (gridData: { data: { [x: string]: any; }; column: { caption: string; }; }) => gridData.data[gridData.column.caption.toLowerCase()];
+const getGridCellData = (gridData) => gridData.data[gridData.column.caption.toLowerCase()];
 
-const DiffCell = (cellData: { data: { [x: string]: any; }; column: { caption: string; }; }) => {
+const DiffCell = (cellData) => {
   const gridCellData = getGridCellData(cellData);
 
   return (

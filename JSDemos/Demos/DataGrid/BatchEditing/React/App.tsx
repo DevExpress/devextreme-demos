@@ -2,11 +2,12 @@ import React from 'react';
 import DataGrid, {
   Column,
   Editing,
+  IEditingProps,
   Paging,
   Lookup,
 } from 'devextreme-react/data-grid';
-import CheckBox from 'devextreme-react/check-box';
-import SelectBox from 'devextreme-react/select-box';
+import CheckBox, { CheckBoxTypes } from 'devextreme-react/check-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import { employees, states } from './data.ts';
 
 const startEditActions = ['click', 'dblClick'];
@@ -14,13 +15,13 @@ const actionLabel = { 'aria-label': 'Action' };
 
 const App = () => {
   const [selectTextOnEditStart, setSelectTextOnEditStart] = React.useState(true);
-  const [startEditAction, setStartEditAction] = React.useState('click');
+  const [startEditAction, setStartEditAction] = React.useState<IEditingProps['startEditAction']>('click');
 
-  const onSelectTextOnEditStartChanged = React.useCallback((args: { value: any; }) => {
+  const onSelectTextOnEditStartChanged = React.useCallback((args: CheckBoxTypes.ValueChangedEvent) => {
     setSelectTextOnEditStart(args.value);
   }, []);
 
-  const onStartEditActionChanged = React.useCallback((args: { value: any; }) => {
+  const onStartEditActionChanged = React.useCallback((args: SelectBoxTypes.ValueChangedEvent) => {
     setStartEditAction(args.value);
   }, []);
 

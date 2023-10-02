@@ -1,6 +1,6 @@
 import React from 'react';
 import DataGrid, { Column } from 'devextreme-react/data-grid';
-import CheckBox from 'devextreme-react/check-box';
+import CheckBox, { CheckBoxTypes } from 'devextreme-react/check-box';
 
 import { employees } from './data.ts';
 
@@ -10,19 +10,19 @@ const App = () => {
   const [showBorders, setShowBorders] = React.useState(true);
   const [rowAlternationEnabled, setRowAlternationEnabled] = React.useState(true);
 
-  const onShowColumnLinesValueChanged = React.useCallback((e: { value: any; }) => {
+  const onShowColumnLinesValueChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setShowColumnLines(e.value);
   }, []);
 
-  const onShowRowLinesValueChanged = React.useCallback((e: { value: any; }) => {
+  const onShowRowLinesValueChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setShowRowLines(e.value);
   }, []);
 
-  const onShowBordersValueChanged = React.useCallback((e: { value: any; }) => {
+  const onShowBordersValueChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setShowBorders(e.value);
   }, []);
 
-  const onRowAlternationEnabledChanged = React.useCallback((e: { value: any; }) => {
+  const onRowAlternationEnabledChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setRowAlternationEnabled(e.value);
   }, []);
 

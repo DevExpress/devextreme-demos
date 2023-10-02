@@ -1,20 +1,20 @@
 import React from 'react';
-import { SelectBox } from 'devextreme-react/select-box';
+import { SelectBox, SelectBoxTypes } from 'devextreme-react/select-box';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridAdvancedMasterDetailView';
 const productLabel = { 'aria-label': 'Product' };
 
 interface ProductSelectBoxProps {
-supplierId: any;
-productId: any;
-onProductChanged: any;
+  supplierId: any;
+  productId: any;
+  onProductChanged: any;
 }
 
 const ProductSelectBox = (props: ProductSelectBoxProps) => {
   const [productsData, setProductsData] = React.useState(null);
 
-  const valueChanged = React.useCallback((e: { value: any; }) => {
+  const valueChanged = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     props.onProductChanged(e.value);
   }, [props]);
 

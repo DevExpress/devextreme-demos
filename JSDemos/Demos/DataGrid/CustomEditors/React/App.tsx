@@ -7,9 +7,10 @@ import DataGrid, {
   Column,
   Lookup,
   RequiredRule,
+  DataGridTypes,
 } from 'devextreme-react/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
-import SelectBox from 'devextreme-react/select-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import { statuses } from './data.ts';
 import EmployeeDropDownBoxComponent from './EmployeeDropDownBoxComponent.tsx';
 import EmployeeTagBoxComponent from './EmployeeTagBoxComponent.tsx';
@@ -35,7 +36,7 @@ const tasks = createStore({
   },
 });
 
-const cellTemplate = (container: { textContent: any; title: any; }, options: { value: any; column: { lookup: { calculateCellValue: (arg0: any) => any; }; }; }) => {
+const cellTemplate = (container: { textContent: any; title: any; }, options) => {
   const noBreakSpace = '\u00A0';
 
   const assignees = (options.value || []).map(
@@ -47,18 +48,18 @@ const cellTemplate = (container: { textContent: any; title: any; }, options: { v
   container.title = text;
 };
 
-const calculateFilterExpression = (that: { dataField: any; }, filterValue, selectedFilterOperation, target: string) => {
+const calculateFilterExpression = (that, filterValue, selectedFilterOperation, target: string) => {
   if (target === 'search' && typeof (filterValue) === 'string') {
     return [that.dataField, 'contains', filterValue];
   }
 
-  return (rowData: { AssignedEmployee: any; }) => (rowData.AssignedEmployee || []).indexOf(filterValue) !== -1;
+  return (rowData) => (rowData.AssignedEmployee || []).indexOf(filterValue) !== -1;
 };
 
-const onRowInserted = (e: { component: { navigateToRow: (arg0: any) => any; }; key: any; }) => e.component.navigateToRow(e.key);
+const onRowInserted = (e: DataGridTypes.RowInsertedEvent) => e.component.navigateToRow(e.key);
 
 const statusEditorRender = (cell) => {
-  const onValueChanged = (e: { value: any; }) => cell.setValue(e.value);
+  const onValueChanged = (e: SelectBoxTypes.ValueChangedEvent) => cell.setValue(e.value);
 
   const itemRender = (data) => {
     const imageSource = `images/icons/status-${data.id}.svg`;
@@ -120,7 +121,7 @@ const App = () => (
         allowSorting={false}
         editCellComponent={EmployeeTagBoxComponent}
         cellTemplate={cellTemplate}
-        calculateFilterExpression={calculateFilterExpression}>
+        calculateFilterExpression={calculateFilterExpression as any}>
         <Lookup
           dataSource={employees}
           valueExpr="ID"

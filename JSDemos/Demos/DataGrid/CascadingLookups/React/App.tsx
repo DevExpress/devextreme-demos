@@ -1,8 +1,10 @@
 import React from 'react';
-import DataGrid, { Column, Editing, Lookup } from 'devextreme-react/data-grid';
+import DataGrid, {
+  Column, DataGridTypes, Editing, Lookup,
+} from 'devextreme-react/data-grid';
 import { employees, states, cities } from './data.ts';
 
-const onEditorPreparing = (e: { parentType: string; dataField: string; row: { data: { StateID: any; }; }; editorOptions: { disabled: boolean; }; }) => {
+const onEditorPreparing = (e: DataGridTypes.EditorPreparingEvent) => {
   if (e.parentType === 'dataRow' && e.dataField === 'CityID') {
     const isStateNotSet = e.row.data.StateID === undefined;
 
@@ -10,12 +12,12 @@ const onEditorPreparing = (e: { parentType: string; dataField: string; row: { da
   }
 };
 
-const getFilteredCities = (options: { data: { StateID: any; }; }) => ({
+const getFilteredCities = (options: { data: { StateID?: number; }; }) => ([{
   store: cities,
   filter: options.data ? ['StateID', '=', options.data.StateID] : null,
-});
+}]);
 
-function setStateValue(rowData: { CityID: any; }, value) {
+function setStateValue(rowData: { CityID: number; }, value) {
   rowData.CityID = null;
   this.defaultSetCellValue(rowData, value);
 }

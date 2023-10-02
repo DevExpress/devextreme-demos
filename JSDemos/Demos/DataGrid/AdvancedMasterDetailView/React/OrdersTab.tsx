@@ -5,7 +5,7 @@ import ProductSelectBox from './ProductSelectBox.tsx';
 import OrderHistory from './OrderHistory.tsx';
 
 interface OrdersTabProps {
-supplierId: any;
+  supplierId: any;
 }
 
 const OrdersTab = (props: OrdersTabProps) => {

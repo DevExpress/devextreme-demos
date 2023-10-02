@@ -23,7 +23,7 @@ const createStore = () => AspNetData.createStore({
 const store1 = createStore();
 const store2 = createStore();
 
-const updateStores = (events: { type: "insert" | "update" | "remove"; data?: any; key?: any; index?: number; }[] | { type: string; key: any; data: any; }[] | { type: string; data: any; }[] | { type: string; key: any; }[]) => {
+const updateStores = (events: { type: 'insert' | 'update' | 'remove'; data?: any; key?: any; }[]) => {
   store1.push(events);
   store2.push(events);
 };
