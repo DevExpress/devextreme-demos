@@ -6,7 +6,7 @@
     <div class="calendar-container">
         @(Html.DevExtreme().Calendar()
             .ID("calendar-container")
-            .Values(new JS("initialValues"))
+            .Value(new JS("initialValues"))
             .ShowWeekNumbers(true)
             .SelectWeekOnClick(true)
             .SelectionMode(CalendarSelectionMode.Range)
