@@ -2,7 +2,7 @@ import React from 'react';
 
 import Scheduler, { Resource } from 'devextreme-react/scheduler';
 
-import { data, resourcesData, priorityData } from './data.js';
+import { data, resourcesData, priorityData } from './data.ts';
 
 const currentDate = new Date(2021, 1, 2);
 const views = ['timelineDay', 'timelineWeek', 'timelineWorkWeek', 'timelineMonth'];

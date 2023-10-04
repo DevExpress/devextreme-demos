@@ -3,8 +3,8 @@ import Scheduler, { Resource } from 'devextreme-react/scheduler';
 import { Switch } from 'devextreme-react/switch';
 import { NumberBox } from 'devextreme-react/number-box';
 
-import { data, moviesData } from './data.js';
-import AppointmentTemplate from './AppointmentTemplate.js';
+import { data, moviesData } from './data.ts';
+import AppointmentTemplate from './AppointmentTemplate.tsx';
 
 const currentDate = new Date();
 const views = ['week', 'timelineWeek'];

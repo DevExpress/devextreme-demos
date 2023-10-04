@@ -6,7 +6,7 @@ import RadioGroup from 'devextreme-react/radio-group';
 
 import {
   data, assignees, rooms, priorities, resourcesList,
-} from './data.js';
+} from './data.ts';
 
 const currentDate = new Date(2021, 3, 27);
 const views = ['workWeek'];

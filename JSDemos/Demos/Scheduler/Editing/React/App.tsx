@@ -3,7 +3,7 @@ import Scheduler, { Editing } from 'devextreme-react/scheduler';
 import { CheckBox } from 'devextreme-react/check-box';
 import notify from 'devextreme/ui/notify';
 
-import { data } from './data.js';
+import { data } from './data.ts';
 
 const currentDate = new Date(2021, 3, 29);
 const views = ['day', 'week'];

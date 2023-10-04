@@ -3,7 +3,7 @@ import Scheduler, { Editing } from 'devextreme-react/scheduler';
 import SelectBox from 'devextreme-react/select-box';
 
 import timeZoneUtils from 'devextreme/time_zone_utils';
-import { data, locations } from './data.js';
+import { data, locations } from './data.ts';
 
 const timeZoneLabel = { 'aria-label': 'Time zone' };
 

@@ -4,7 +4,7 @@ import Scheduler, { AppointmentDragging } from 'devextreme-react/scheduler';
 import Draggable from 'devextreme-react/draggable';
 import ScrollView from 'devextreme-react/scroll-view';
 
-import { appointments as defaultAppointments, tasks as defaultTasks } from './data.js';
+import { appointments as defaultAppointments, tasks as defaultTasks } from './data.ts';
 
 const currentDate = new Date(2021, 3, 26);
 const views = [{ type: 'day', intervalCount: 3 }];

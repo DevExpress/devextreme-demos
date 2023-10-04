@@ -1,5 +1,5 @@
 import React from 'react';
-import DataCell from './DataCell.js';
+import DataCell from './DataCell.tsx';
 
 const DataCellMonth = (props: { data: { startDate: any; }; }) => {
   const { startDate } = props.data;

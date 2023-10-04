@@ -2,9 +2,9 @@ import React from 'react';
 import Scheduler, { Resource } from 'devextreme-react/scheduler';
 import ContextMenu from 'devextreme-react/context-menu';
 
-import { data, resourcesData } from './data.js';
+import { data, resourcesData } from './data.ts';
 
-import AppointmentMenuTemplate from './AppointmentTemplate.js';
+import AppointmentMenuTemplate from './AppointmentTemplate.tsx';
 
 const views = ['day', 'month'];
 

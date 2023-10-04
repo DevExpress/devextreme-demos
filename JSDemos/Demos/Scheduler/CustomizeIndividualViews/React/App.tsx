@@ -1,7 +1,7 @@
 import React from 'react';
 import Scheduler, { Resource, View } from 'devextreme-react/scheduler';
 
-import { data, priorityData, typeData } from './data.js';
+import { data, priorityData, typeData } from './data.ts';
 
 const currentDate = new Date(2021, 3, 27);
 const dayOfWeekNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

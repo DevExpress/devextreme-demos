@@ -1,7 +1,7 @@
 import React from 'react';
 import Scheduler, { Resource } from 'devextreme-react/scheduler';
 import SpeedDialAction from 'devextreme-react/speed-dial-action';
-import { data, priorities } from './data.js';
+import { data, priorities } from './data.ts';
 
 const views = ['week', 'month'];
 const cellDuration = 30;

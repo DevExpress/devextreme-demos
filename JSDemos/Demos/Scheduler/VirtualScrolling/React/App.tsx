@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Scheduler, { Resource, View, Scrolling } from 'devextreme-react/scheduler';
-import { resources, generateAppointments } from './data.js';
+import { resources, generateAppointments } from './data.ts';
 
 const currentDate = new Date(2021, 1, 2);
 

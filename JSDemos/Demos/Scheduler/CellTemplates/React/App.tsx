@@ -4,12 +4,12 @@ import React from 'react';
 import Scheduler from 'devextreme-react/scheduler';
 import notify from 'devextreme/ui/notify';
 
-import { data, holidays } from './data.js';
-import Utils from './utils.js';
-import DataCell from './DataCell.js';
-import DataCellMonth from './DataCellMonth.js';
-import DateCell from './DateCell.js';
-import TimeCell from './TimeCell.js';
+import { data, holidays } from './data.ts';
+import Utils from './utils.ts';
+import DataCell from './DataCell.tsx';
+import DataCellMonth from './DataCellMonth.tsx';
+import DateCell from './DateCell.tsx';
+import TimeCell from './TimeCell.tsx';
 
 const currentDate = new Date(2021, 3, 27);
 const views = ['workWeek', 'month'];

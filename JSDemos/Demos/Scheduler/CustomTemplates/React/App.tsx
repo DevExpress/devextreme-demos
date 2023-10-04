@@ -2,9 +2,9 @@ import React from 'react';
 import Scheduler, { Editing, Resource } from 'devextreme-react/scheduler';
 import Query from 'devextreme/data/query';
 
-import Appointment from './Appointment.js';
-import AppointmentTooltip from './AppointmentTooltip.js';
-import { data, moviesData, theatreData } from './data.js';
+import Appointment from './Appointment.tsx';
+import AppointmentTooltip from './AppointmentTooltip.tsx';
+import { data, moviesData, theatreData } from './data.ts';
 
 const currentDate = new Date(2021, 3, 27);
 const views = ['day', 'week', 'timelineDay'];

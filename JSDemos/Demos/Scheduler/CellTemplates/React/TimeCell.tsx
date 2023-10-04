@@ -1,5 +1,5 @@
 import React from 'react';
-import Utils from './utils.js';
+import Utils from './utils.ts';
 
 const TimeCell = (props: { data: { date: any; text: any; }; }) => {
   const { date, text } = props.data;

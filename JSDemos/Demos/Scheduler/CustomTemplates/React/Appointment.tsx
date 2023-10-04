@@ -1,7 +1,7 @@
 import React from 'react';
 import Query from 'devextreme/data/query';
 import localization from 'devextreme/localization';
-import { moviesData } from './data.js';
+import { moviesData } from './data.ts';
 
 const getMovieById = (id) => Query(moviesData).filter(['id', id]).toArray()[0];
 

@@ -2,9 +2,9 @@ import React from 'react';
 
 import Scheduler, { Resource } from 'devextreme-react/scheduler';
 
-import { employees, data } from './data.js';
-import DataCell from './DataCell.js';
-import ResourceCell from './ResourceCell.js';
+import { employees, data } from './data.ts';
+import DataCell from './DataCell.tsx';
+import ResourceCell from './ResourceCell.tsx';
 
 const currentDate = new Date(2021, 5, 2, 11, 30);
 const groups = ['employeeID'];

@@ -1,7 +1,7 @@
 import React from 'react';
 import Scheduler, { Resource } from 'devextreme-react/scheduler';
 
-import { data, resourcesData } from './data.js';
+import { data, resourcesData } from './data.ts';
 
 const currentDate = new Date(2021, 2, 25);
 const views = [{

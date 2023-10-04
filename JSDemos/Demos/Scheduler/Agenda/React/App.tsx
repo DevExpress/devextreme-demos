@@ -2,7 +2,7 @@ import React from 'react';
 
 import Scheduler, { Resource } from 'devextreme-react/scheduler';
 
-import { assignees, data, priorities } from './data.js';
+import { assignees, data, priorities } from './data.ts';
 
 const currentDate = new Date(2021, 4, 11);
 const views = ['agenda'];
