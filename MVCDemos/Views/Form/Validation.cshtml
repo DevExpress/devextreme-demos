@@ -76,8 +76,8 @@
                                 .StartDatePlaceholder("Start Date")
                                 .EndDatePlaceholder("End Date")
                             )
-                            .ValidationRules(vr => {
-                                vr.AddCustom()
+                            .ValidationRules(validationRule => {
+                                validationRule.AddCustom()
                                     .Message("The vacation period must not exceed 25 days")
                                     .ValidationCallback("validateVacationDates");
                             });

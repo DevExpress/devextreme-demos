@@ -188,6 +188,10 @@ export class AppComponent {
     return daysDifference <= 25;
   }
 
+  asyncValidation(params) {
+    return sendRequest(params.value);
+  }
+
   onFormSubmit = function (e) {
     notify({
       message: 'You have submitted the form',
