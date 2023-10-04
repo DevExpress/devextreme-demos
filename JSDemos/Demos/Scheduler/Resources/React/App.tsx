@@ -14,7 +14,7 @@ const views = ['workWeek'];
 const App = () => {
   const [currentResource, setCurrentResource] = React.useState(resourcesList[0]);
 
-  const onRadioGroupValueChanged = React.useCallback((e) => {
+  const onRadioGroupValueChanged = React.useCallback((e: { value: any; }) => {
     setCurrentResource(e.value);
   }, []);
 

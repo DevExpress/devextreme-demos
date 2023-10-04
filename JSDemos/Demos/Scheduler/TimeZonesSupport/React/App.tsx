@@ -10,15 +10,15 @@ const timeZoneLabel = { 'aria-label': 'Time zone' };
 const currentDate = new Date(2021, 3, 27);
 const views = ['workWeek'];
 
-const getTimeZones = (date) => {
+const getTimeZones = (date: Date) => {
   const timeZones = timeZoneUtils.getTimeZones(date);
 
-  return timeZones.filter((timeZone) => locations.indexOf(timeZone.id) !== -1);
+  return timeZones.filter((timeZone: { id: string; }) => locations.indexOf(timeZone.id) !== -1);
 };
 
 const defaultTimeZones = getTimeZones(currentDate);
 
-const onAppointmentFormOpening = (e) => {
+const onAppointmentFormOpening = (e: { form: any; }) => {
   const { form } = e;
 
   const startDateTimezoneEditor = form.getEditor('startDateTimeZone');
@@ -37,11 +37,11 @@ const App = () => {
   const [currentTimeZone, setCurrentTimeZone] = React.useState(defaultTimeZones[0].id);
   const [timeZones, setTimeZones] = React.useState(defaultTimeZones);
 
-  const onValueChanged = React.useCallback((e) => {
+  const onValueChanged = React.useCallback((e: { value: any; }) => {
     setCurrentTimeZone(e.value);
   }, []);
 
-  const onOptionChanged = React.useCallback((e) => {
+  const onOptionChanged = React.useCallback((e: { name: string; value: any; }) => {
     if (e.name === 'currentDate') {
       setTimeZones(getTimeZones(e.value));
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import Utils from './utils.js';
 
-const TimeCell = (props) => {
+const TimeCell = (props: { data: { date: any; text: any; }; }) => {
   const { date, text } = props.data;
 
   const isDinner = Utils.isDinner(date);

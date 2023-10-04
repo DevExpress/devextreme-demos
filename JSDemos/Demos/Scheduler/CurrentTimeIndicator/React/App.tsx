@@ -11,15 +11,15 @@ const views = ['week', 'timelineWeek'];
 
 const intervalLabel = { 'aria-label': 'Interval' };
 
-const onContentReady = (e) => {
+const onContentReady = (e: { component: { scrollTo: (arg0: Date) => void; }; }) => {
   e.component.scrollTo(new Date());
 };
 
-const onAppointmentClick = (e) => {
+const onAppointmentClick = (e: { cancel: boolean; }) => {
   e.cancel = true;
 };
 
-const onAppointmentDblClick = (e) => {
+const onAppointmentDblClick = (e: { cancel: boolean; }) => {
   e.cancel = true;
 };
 
@@ -28,15 +28,15 @@ const App = () => {
   const [shadeUntilCurrentTime, setShadeUntilCurrentTime] = React.useState(true);
   const [updateInterval, setUpdateInterval] = React.useState(10);
 
-  const onShowCurrentTimeIndicatorChanged = React.useCallback((e) => {
+  const onShowCurrentTimeIndicatorChanged = React.useCallback((e: { value: any; }) => {
     setShowCurrentTimeIndicator(e.value);
   }, []);
 
-  const onShadeUntilCurrentTimeChanged = React.useCallback((e) => {
+  const onShadeUntilCurrentTimeChanged = React.useCallback((e: { value: any; }) => {
     setShadeUntilCurrentTime(e.value);
   }, []);
 
-  const onUpdateIntervalChanged = React.useCallback((e) => {
+  const onUpdateIntervalChanged = React.useCallback((e: { value: any; }) => {
     setUpdateInterval(e.value);
   }, []);
 

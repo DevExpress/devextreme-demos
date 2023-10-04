@@ -18,7 +18,7 @@ const notifyDisableDate = () => {
   notify('Cannot create or move an appointment/event to disabled time/date regions.', 'warning', 1000);
 };
 
-const applyDisableDatesToDateEditors = (form) => {
+const applyDisableDatesToDateEditors = (form: { getEditor: (arg0: string) => any; }) => {
   const startDateEditor = form.getEditor('startDate');
   startDateEditor.option('disabledDates', holidays);
 
@@ -26,7 +26,7 @@ const applyDisableDatesToDateEditors = (form) => {
   endDateEditor.option('disabledDates', holidays);
 };
 
-const onAppointmentFormOpening = (e) => {
+const onAppointmentFormOpening = (e: { appointmentData: { startDate: VarDate; }; cancel: boolean; form: any; }) => {
   const startDate = new Date(e.appointmentData.startDate);
   if (!Utils.isValidAppointmentDate(startDate)) {
     e.cancel = true;
@@ -35,7 +35,7 @@ const onAppointmentFormOpening = (e) => {
   applyDisableDatesToDateEditors(e.form);
 };
 
-const onAppointmentAdding = (e) => {
+const onAppointmentAdding = (e: { component: any; appointmentData: any; cancel: boolean; }) => {
   const isValidAppointment = Utils.isValidAppointment(e.component, e.appointmentData);
   if (!isValidAppointment) {
     e.cancel = true;
@@ -43,7 +43,7 @@ const onAppointmentAdding = (e) => {
   }
 };
 
-const onAppointmentUpdating = (e) => {
+const onAppointmentUpdating = (e: { component: any; newData: any; cancel: boolean; }) => {
   const isValidAppointment = Utils.isValidAppointment(e.component, e.newData);
   if (!isValidAppointment) {
     e.cancel = true;

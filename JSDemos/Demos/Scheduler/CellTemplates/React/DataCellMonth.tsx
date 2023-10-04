@@ -1,7 +1,7 @@
 import React from 'react';
 import DataCell from './DataCell.js';
 
-const DataCellMonth = (props) => {
+const DataCellMonth = (props: { data: { startDate: any; }; }) => {
   const { startDate } = props.data;
   const day = startDate.getDate();
 

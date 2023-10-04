@@ -10,15 +10,15 @@ const currentDate = new Date(2021, 3, 26);
 const views = [{ type: 'day', intervalCount: 3 }];
 const draggingGroupName = 'appointmentsGroup';
 
-const onListDragStart = (e) => {
+const onListDragStart = (e: { cancel: boolean; }) => {
   e.cancel = true;
 };
 
-const onItemDragStart = (e) => {
+const onItemDragStart = (e: { itemData: any; fromData: any; }) => {
   e.itemData = e.fromData;
 };
 
-const onItemDragEnd = (e) => {
+const onItemDragEnd = (e: { toData: any; cancel: boolean; }) => {
   if (e.toData) {
     e.cancel = true;
   }
@@ -29,8 +29,8 @@ const App = () => {
     tasks: defaultTasks, appointments: defaultAppointments,
   });
 
-  const onAppointmentRemove = React.useCallback((e) => {
-    setState((currentState) => {
+  const onAppointmentRemove = React.useCallback((e: { itemData: any; }) => {
+    setState((currentState: { appointments: any; tasks: any; }) => {
       const { appointments, tasks } = currentState;
 
       const index = appointments.indexOf(e.itemData);
@@ -44,8 +44,8 @@ const App = () => {
     });
   }, []);
 
-  const onAppointmentAdd = React.useCallback((e) => {
-    setState((currentState) => {
+  const onAppointmentAdd = React.useCallback((e: { fromData: any; itemData: any; }) => {
+    setState((currentState: { appointments: any; tasks: any; }) => {
       const { appointments, tasks } = currentState;
 
       const index = tasks.indexOf(e.fromData);
@@ -67,7 +67,7 @@ const App = () => {
           data="dropArea"
           group={draggingGroupName}
           onDragStart={onListDragStart}>
-          {state.tasks.map((task) => (
+          {state.tasks.map((task: { text: {}; }) => (
             <Draggable
               key={task.text}
               className="item dx-card dx-theme-text-color dx-theme-background-color"

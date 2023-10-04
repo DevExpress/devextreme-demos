@@ -5,7 +5,7 @@ import { moviesData } from './data.js';
 
 const getMovieById = (id) => Query(moviesData).filter(['id', id]).toArray()[0];
 
-const Appointment = (props) => {
+const Appointment = (props: { data: { targetedAppointmentData: any; }; }) => {
   const { targetedAppointmentData } = props.data;
   const { movieId } = targetedAppointmentData;
 

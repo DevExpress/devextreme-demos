@@ -10,7 +10,7 @@ const currentDate = new Date(2021, 3, 27);
 const views = ['day', 'week', 'timelineDay'];
 const groups = ['theatreId'];
 
-const onAppointmentFormOpening = (e) => {
+const onAppointmentFormOpening = (e: { appointmentData?: any; form?: any; }) => {
   const { form } = e;
   let movieInfo = getMovieById(e.appointmentData.movieId) || {};
   let { startDate } = e.appointmentData;
@@ -25,7 +25,7 @@ const onAppointmentFormOpening = (e) => {
       items: moviesData,
       displayExpr: 'text',
       valueExpr: 'id',
-      onValueChanged(args) {
+      onValueChanged(args: { value: any; }) {
         movieInfo = getMovieById(args.value);
 
         form.updateData('director', movieInfo.director);
@@ -48,7 +48,7 @@ const onAppointmentFormOpening = (e) => {
     editorOptions: {
       width: '100%',
       type: 'datetime',
-      onValueChanged(args) {
+      onValueChanged(args: { value: any; }) {
         startDate = args.value;
         form.updateData('endDate', new Date(startDate.getTime() + 60 * 1000 * movieInfo.duration));
       },

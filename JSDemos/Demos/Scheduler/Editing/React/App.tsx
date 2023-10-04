@@ -8,19 +8,19 @@ import { data } from './data.js';
 const currentDate = new Date(2021, 3, 29);
 const views = ['day', 'week'];
 
-const showToast = (event, value, type) => {
+const showToast = (event: string, value, type: string) => {
   notify(`${event} "${value}" task`, type, 800);
 };
 
-const showAddedToast = (e) => {
+const showAddedToast = (e: { appointmentData: { text: any; }; }) => {
   showToast('Added', e.appointmentData.text, 'success');
 };
 
-const showUpdatedToast = (e) => {
+const showUpdatedToast = (e: { appointmentData: { text: any; }; }) => {
   showToast('Updated', e.appointmentData.text, 'info');
 };
 
-const showDeletedToast = (e) => {
+const showDeletedToast = (e: { appointmentData: { text: any; }; }) => {
   showToast('Deleted', e.appointmentData.text, 'warning');
 };
 
@@ -31,15 +31,15 @@ const App = () => {
   const [allowDragging, setAllowDragging] = React.useState(true);
   const [allowUpdating, setAllowUpdating] = React.useState(true);
 
-  const onAllowAddingChanged = React.useCallback((e) => setAllowAdding(e.value), []);
+  const onAllowAddingChanged = React.useCallback((e: { value: any; }) => setAllowAdding(e.value), []);
 
-  const onAllowDeletingChanged = React.useCallback((e) => setAllowDeleting(e.value), []);
+  const onAllowDeletingChanged = React.useCallback((e: { value: any; }) => setAllowDeleting(e.value), []);
 
-  const onAllowResizingChanged = React.useCallback((e) => setAllowResizing(e.value), []);
+  const onAllowResizingChanged = React.useCallback((e: { value: any; }) => setAllowResizing(e.value), []);
 
-  const onAllowDraggingChanged = React.useCallback((e) => setAllowDragging(e.value), []);
+  const onAllowDraggingChanged = React.useCallback((e: { value: any; }) => setAllowDragging(e.value), []);
 
-  const onAllowUpdatingChanged = React.useCallback((e) => setAllowUpdating(e.value), []);
+  const onAllowUpdatingChanged = React.useCallback((e: { value: any; }) => setAllowUpdating(e.value), []);
 
   return (
     <React.Fragment>

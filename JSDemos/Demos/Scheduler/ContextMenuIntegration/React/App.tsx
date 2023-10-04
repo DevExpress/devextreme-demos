@@ -11,7 +11,7 @@ const views = ['day', 'month'];
 const appointmentClassName = '.dx-scheduler-appointment';
 const cellClassName = '.dx-scheduler-date-table-cell';
 
-const onContextMenuItemClick = (e) => {
+const onContextMenuItemClick = (e: { itemData: { onItemClick: (arg0: any) => void; }; }) => {
   e.itemData.onItemClick(e);
 };
 

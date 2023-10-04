@@ -1,6 +1,6 @@
 import React from 'react';
 
-const isWeekEnd = (date) => {
+const isWeekEnd = (date: { getDay: () => any; }) => {
   const day = date.getDay();
   return day === 0 || day === 6;
 };
@@ -12,7 +12,7 @@ const getCurrentTraining = (date, employeeID) => {
   return currentTraining;
 };
 
-const DataCell = (props) => {
+const DataCell = (props: { data: { startDate: any; groups: { employeeID: any; }; text: any; }; }) => {
   const { data: { startDate, groups: { employeeID }, text } } = props;
 
   const dayClasses = [

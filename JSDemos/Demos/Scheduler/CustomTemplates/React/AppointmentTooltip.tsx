@@ -5,7 +5,7 @@ import { moviesData } from './data.js';
 
 const getMovieById = (id) => Query(moviesData).filter(['id', id]).toArray()[0];
 
-const AppointmentTooltip = (props) => {
+const AppointmentTooltip = (props: { data: { appointmentData: { movieId: any; }; }; }) => {
   const { movieId } = props.data.appointmentData;
 
   const movieData = React.useMemo(() => getMovieById(movieId), [movieId]);

@@ -12,7 +12,7 @@ const groups = ['priorityId'];
 const App = () => {
   const [groupByDate, setGroupByDate] = React.useState(true);
 
-  const onGroupByDateChanged = React.useCallback((args) => {
+  const onGroupByDateChanged = React.useCallback((args: { value: any; }) => {
     setGroupByDate(args.value);
   }, []);
 

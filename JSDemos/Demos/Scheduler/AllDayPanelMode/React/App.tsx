@@ -16,7 +16,7 @@ const allDayPanelItems = ['all', 'allDay', 'hidden'];
 const App = () => {
   const [allDayPanelMode, setAllDayPanelMode] = React.useState('allDay');
 
-  const onChangeAllDayPanelMode = React.useCallback((e) => {
+  const onChangeAllDayPanelMode = React.useCallback((e: { value: any; }) => {
     setAllDayPanelMode(e.value);
   }, []);
 
