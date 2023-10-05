@@ -1,64 +1,50 @@
 import React from 'react';
-
-import Scheduler, { AppointmentDragging, IAppointmentDraggingProps, SchedulerTypes } from 'devextreme-react/scheduler';
-import Draggable, { DraggableTypes } from 'devextreme-react/draggable';
+import Scheduler, { AppointmentDragging } from 'devextreme-react/scheduler';
+import Draggable from 'devextreme-react/draggable';
 import ScrollView from 'devextreme-react/scroll-view';
-
-import { appointments as defaultAppointments, tasks as defaultTasks } from './data.ts';
+import { appointments as defaultAppointments, tasks as defaultTasks } from './data.js';
 
 const currentDate = new Date(2021, 3, 26);
-const views: SchedulerTypes.Properties['views'] = [{ type: 'day', intervalCount: 3 }];
+const views = [{ type: 'day', intervalCount: 3 }];
 const draggingGroupName = 'appointmentsGroup';
-
-const onListDragStart = (e: DraggableTypes.DragStartEvent) => {
+const onListDragStart = (e) => {
   e.cancel = true;
 };
-
-const onItemDragStart = (e: DraggableTypes.DragStartEvent) => {
+const onItemDragStart = (e) => {
   e.itemData = e.fromData;
 };
-
-const onItemDragEnd = (e: DraggableTypes.DragEndEvent) => {
+const onItemDragEnd = (e) => {
   if (e.toData) {
     e.cancel = true;
   }
 };
-
 const App = () => {
   const [state, setState] = React.useState({
-    tasks: defaultTasks, appointments: defaultAppointments,
+    tasks: defaultTasks,
+    appointments: defaultAppointments,
   });
-
-  const onAppointmentRemove = React.useCallback<IAppointmentDraggingProps['onRemove'] >((e) => {
-    setState((currentState: { appointments: any; tasks: any; }) => {
+  const onAppointmentRemove = React.useCallback((e) => {
+    setState((currentState) => {
       const { appointments, tasks } = currentState;
-
       const index = appointments.indexOf(e.itemData);
-
       if (index >= 0) {
         tasks.push(e.itemData);
         appointments.splice(index, 1);
       }
-
       return { appointments: [...appointments], tasks: [...tasks] };
     });
   }, []);
-
-  const onAppointmentAdd = React.useCallback<IAppointmentDraggingProps['onAdd']>((e) => {
-    setState((currentState: { appointments: any; tasks: any; }) => {
+  const onAppointmentAdd = React.useCallback((e) => {
+    setState((currentState) => {
       const { appointments, tasks } = currentState;
-
       const index = tasks.indexOf(e.fromData);
-
       if (index >= 0) {
         tasks.splice(index, 1);
         appointments.push(e.itemData);
       }
-
       return { appointments: [...appointments], tasks: [...tasks] };
     });
   }, []);
-
   return (
     <React.Fragment>
       <ScrollView id="scroll">
@@ -66,7 +52,8 @@ const App = () => {
           id="list"
           data="dropArea"
           group={draggingGroupName}
-          onDragStart={onListDragStart}>
+          onDragStart={onListDragStart}
+        >
           {state.tasks.map((task) => (
             <Draggable
               key={task.text}
@@ -101,5 +88,4 @@ const App = () => {
     </React.Fragment>
   );
 };
-
 export default App;

@@ -1,19 +1,15 @@
 import React from 'react';
-
 import Scheduler, { Resource, View } from 'devextreme-react/scheduler';
-
-import { data, priorityData } from './data.ts';
+import { data, priorityData } from './data.js';
 
 const currentDate = new Date(2021, 3, 21);
-
 const groups = ['priorityId'];
-
 const App = () => (
   <Scheduler
     timeZone="America/Los_Angeles"
     dataSource={data}
     groups={groups}
-    defaultCurrentView={'Vertical Grouping' as any}
+    defaultCurrentView="Vertical Grouping"
     defaultCurrentDate={currentDate}
     startDayHour={9}
     endDayHour={16}
@@ -41,5 +37,4 @@ const App = () => (
     />
   </Scheduler>
 );
-
 export default App;

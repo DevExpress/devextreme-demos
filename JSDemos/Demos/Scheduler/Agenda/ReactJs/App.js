@@ -1,12 +1,9 @@
 import React from 'react';
-
-import Scheduler, { Resource, SchedulerTypes } from 'devextreme-react/scheduler';
-
-import { assignees, data, priorities } from './data.ts';
+import Scheduler, { Resource } from 'devextreme-react/scheduler';
+import { assignees, data, priorities } from './data.js';
 
 const currentDate = new Date(2021, 4, 11);
-const views: SchedulerTypes.Properties['views'] = ['agenda'];
-
+const views = ['agenda'];
 const App = () => (
   <Scheduler
     timeZone="America/Los_Angeles"
@@ -15,7 +12,8 @@ const App = () => (
     currentView="agenda"
     defaultCurrentDate={currentDate}
     height={600}
-    startDayHour={9}>
+    startDayHour={9}
+  >
     <Resource
       dataSource={assignees}
       allowMultiple={true}
@@ -30,5 +28,4 @@ const App = () => (
     />
   </Scheduler>
 );
-
 export default App;
