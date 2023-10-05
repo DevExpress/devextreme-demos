@@ -74,7 +74,7 @@ class App extends React.Component {
         <div className="options">
           <div className="caption">Options</div>
           <div className="option">
-            <span>Update frequency:</span>
+            <span>Update frequency per second:</span>
             <Slider
               min={10}
               step={10}
@@ -83,7 +83,6 @@ class App extends React.Component {
               onValueChanged={this.onUpdateFrequencyChanged}>
               <Tooltip
                 enabled={true}
-                format="#0 per second"
                 showMode="always"
                 position="top">
               </Tooltip>

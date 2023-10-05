@@ -133,7 +133,7 @@
 <div class="options">
     <div class="caption">Options</div>
     <div class="option">
-        <span>Update frequency:</span>
+        <span>Update frequency per second:</span>
         @(Html.DevExtreme().Slider()
             .ID("frequency-slider")
             .Min(10)
@@ -144,7 +144,6 @@
             .Tooltip(t => t
                 .Enabled(true)
                 .ShowMode(SliderTooltipShowMode.Always)
-                .Format("#0 per second")
                 .Position(VerticalEdge.Top)
             )
         )
