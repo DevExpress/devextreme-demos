@@ -9,10 +9,8 @@ interface Bundler {
   buildDemo(demo: Demo): Promise<void>;
 }
 
-export class ESBundler implements Bundler {
-  getBuildOptions(demo: Demo): BuildOptions {
-    throw new Error('Method not implemented.');
-  }
+export abstract class ESBundler implements Bundler {
+  abstract getBuildOptions(demo: Demo): BuildOptions;
 
   framework: Framework;
 
