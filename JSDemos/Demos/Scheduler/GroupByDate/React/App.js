@@ -25,9 +25,9 @@ const App = () => {
         groupByDate={groupByDate}
         defaultCurrentView="week"
         defaultCurrentDate={currentDate}
-        height={700}
+        height={730}
         startDayHour={9}
-        endDayHour={16}
+        endDayHour={19}
         crossScrollingEnabled={true}
       >
         <Resource
