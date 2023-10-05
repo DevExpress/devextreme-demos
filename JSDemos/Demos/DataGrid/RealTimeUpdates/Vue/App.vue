@@ -118,7 +118,7 @@
     <div class="options">
       <div class="caption">Options</div>
       <div class="option">
-        <span>Update frequency per second:</span>
+        <span>Update frequency (per second):</span>
         <DxSlider
           :min="10"
           :step="10"
