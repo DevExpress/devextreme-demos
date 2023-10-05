@@ -2,7 +2,7 @@
 import yargs from 'yargs';
 import { Framework, Args, Item } from './helper/types';
 import { copyMetadata, isSkipDemo } from './helper';
-import { Bundler } from './helper/bundler';
+import { ESBundler } from './helper/bundler';
 import ReactBundler from './React/bundler';
 
 import * as menuMeta from '../../JSDemos/menuMeta.json';
@@ -13,7 +13,7 @@ const argv = yargs.options({
   'copy-metadata': { type: 'boolean' },
 }).argv as Args;
 
-const getBundler = (framework: Framework): Bundler => {
+const getBundler = (framework: Framework): ESBundler => {
   if (framework === 'React') {
     return new ReactBundler();
   }
@@ -25,7 +25,7 @@ const getBundler = (framework: Framework): Bundler => {
   return undefined;
 };
 
-const buildDemos = async (bundler: Bundler) => {
+const buildDemos = async (bundler: ESBundler) => {
   const menu: Item[] = (menuMeta as any).default;
 
   for (const meta of menu) {
