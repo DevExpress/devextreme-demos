@@ -75,7 +75,12 @@
                                 .AcceptCustomValue(false)
                                 .StartDatePlaceholder("Start Date")
                                 .EndDatePlaceholder("End Date")
-                            );
+                            )
+                            .ValidationRules(validationRule => {
+                                validationRule.AddCustom()
+                                    .Message("The vacation period must not exceed 25 days")
+                                    .ValidationCallback("validateVacationDates");
+                            });
                     });
 
                 items.AddGroup()
@@ -176,5 +181,22 @@
     function changePasswordMode(name) {
         let editor = formInstance.getEditor(name);
         editor.option('mode', editor.option('mode') === 'text' ? 'password' : 'text');
+    }
+
+    function validateVacationDates({ value }) {
+        const [startDate, endDate] = value;
+
+        if (startDate === null && endDate === null) {
+            return true;
+        }
+        
+        if (startDate === null || endDate === null) {
+            return false;
+        }
+
+        const millisecondsPerDay = 24 * 60 * 60 * 1000;
+        const daysDifference = Math.abs((endDate - startDate) / millisecondsPerDay);
+
+        return daysDifference <= 25;
     }
 </script>
