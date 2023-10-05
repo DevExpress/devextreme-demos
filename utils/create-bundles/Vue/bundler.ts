@@ -1,16 +1,17 @@
-import { build, BuildOptions } from 'esbuild';
+import { BuildOptions } from 'esbuild';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import vuePlugin from 'esbuild-plugin-vue3';
-import { existsSync, mkdirSync, removeSync } from 'fs-extra';
 import { join } from 'path';
 import {
-  copyDemoStyles, getDestinationPathByDemo, getSourcePathByDemo, createDemoLayout,
+  getDestinationPathByDemo, getSourcePathByDemo,
 } from '../helper';
-import { Bundler } from '../helper/bundler';
-import { Demo, Framework } from '../helper/types';
+import { ESBundler } from '../helper/bundler';
+import { Demo } from '../helper/types';
 
-export default class VueBundler implements Bundler {
-  framework: Framework = 'Vue';
+export default class VueBundler extends ESBundler {
+  constructor() {
+    super('Vue');
+  }
 
   getBuildOptions = (demo: Demo): BuildOptions => {
     const sourceDemoPath = getSourcePathByDemo(demo, this.framework);
@@ -31,25 +32,6 @@ export default class VueBundler implements Bundler {
     };
 
     return options;
-  };
-
-  buildDemo = async (demo: Demo): Promise<void> => {
-    const sourceDemoPath = getSourcePathByDemo(demo, this.framework);
-    if (!existsSync(sourceDemoPath)) {
-      return;
-    }
-
-    const destinationDemoPath = getDestinationPathByDemo(demo, this.framework);
-    if (existsSync(destinationDemoPath)) {
-      removeSync(destinationDemoPath);
-    }
-
-    mkdirSync(destinationDemoPath, { recursive: true });
-
-    const options = this.getBuildOptions(demo);
-    await build(options);
-
-    createDemoLayout(demo, this.framework);
   };
 
   #getEntryPoints = (sourceDemoPath: string) => [join(sourceDemoPath, 'index.js')];
