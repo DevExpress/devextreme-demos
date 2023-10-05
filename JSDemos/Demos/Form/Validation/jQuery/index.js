@@ -157,8 +157,7 @@ $(() => {
             return daysDifference < 25;
           },
           message: 'The vacation period must not exceed 25 days',
-        },
-        {
+        }, {
           type: 'custom',
           validationCallback: ({ value }) => {
             const [startDate, endDate] = value;
