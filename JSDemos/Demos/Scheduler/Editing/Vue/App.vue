@@ -53,62 +53,42 @@
     </div>
   </div>
 </template>
-<script>
-
+<script setup lang="ts">
+import { computed, ref } from 'vue';
 import DxScheduler from 'devextreme-vue/scheduler';
-
 import DxCheckBox from 'devextreme-vue/check-box';
-
 import notify from 'devextreme/ui/notify';
-
 import { data } from './data.js';
 
-export default {
-  components: {
-    DxScheduler,
-    DxCheckBox,
-  },
-  data() {
-    return {
-      views: ['day', 'week'],
-      currentDate: new Date(2021, 3, 29),
-      dataSource: data,
-      allowAdding: true,
-      allowDeleting: true,
-      allowUpdating: true,
-      allowResizing: true,
-      allowDragging: true,
-    };
-  },
-  computed: {
-    editing() {
-      return {
-        allowAdding: this.allowAdding,
-        allowDeleting: this.allowDeleting,
-        allowUpdating: this.allowUpdating,
-        allowResizing: this.allowResizing,
-        allowDragging: this.allowDragging,
-      };
-    },
-  },
-  methods: {
-    showToast(event, value, type) {
-      notify(`${event} "${value}" task`, type, 800);
-    },
+const views = ['day', 'week'];
+const currentDate = new Date(2021, 3, 29);
+const dataSource = data;
+const allowAdding = ref(true);
+const allowDeleting = ref(true);
+const allowUpdating = ref(true);
+const allowResizing = ref(true);
+const allowDragging = ref(true);
 
-    showAddedToast(e) {
-      this.showToast('Added', e.appointmentData.text, 'success');
-    },
+const editing = computed(() => ({
+  allowAdding: allowAdding.value,
+  allowDeleting: allowDeleting.value,
+  allowUpdating: allowUpdating.value,
+  allowResizing: allowResizing.value,
+  allowDragging: allowDragging.value,
+}));
 
-    showUpdatedToast(e) {
-      this.showToast('Updated', e.appointmentData.text, 'info');
-    },
-
-    showDeletedToast(e) {
-      this.showToast('Deleted', e.appointmentData.text, 'warning');
-    },
-  },
-};
+function showToast(event, value, type) {
+  notify(`${event} "${value}" task`, type, 800);
+}
+function showAddedToast(e) {
+  showToast('Added', e.appointmentData.text, 'success');
+}
+function showUpdatedToast(e) {
+  showToast('Updated', e.appointmentData.text, 'info');
+}
+function showDeletedToast(e) {
+  showToast('Deleted', e.appointmentData.text, 'warning');
+}
 </script>
 
 <style scoped>
