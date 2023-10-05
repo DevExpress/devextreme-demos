@@ -13,7 +13,7 @@ A user can select multiple dates at a time.
 - *'range'*      
 A user can select a range of dates. The first and the last date in the range are stored in the [value](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#value) property.
 
-If you enable [selectWeekOnClick](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#selectWeekOnClick) in *'multiple'* or *'range'* modes, users can select a week by clicking on a week number.
+If you enable [selectWeekOnClick](/Documentation/ApiReference/UI_Components/dxCalendar/Configuration/#selectWeekOnClick) in *'multiple'* or *'range'* modes, users can select a week by clicking on the week number.
 
 ## Disable and Clear Dates
 
