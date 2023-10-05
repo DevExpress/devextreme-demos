@@ -1,20 +1,20 @@
 import React from 'react';
 
-import Scheduler, { Resource } from 'devextreme-react/scheduler';
+import Scheduler, { Resource, SchedulerTypes } from 'devextreme-react/scheduler';
 
-import RadioGroup from 'devextreme-react/radio-group';
+import RadioGroup, { RadioGroupTypes } from 'devextreme-react/radio-group';
 
 import {
   data, assignees, rooms, priorities, resourcesList,
 } from './data.ts';
 
 const currentDate = new Date(2021, 3, 27);
-const views = ['workWeek'];
+const views: SchedulerTypes.Properties['views'] = ['workWeek'];
 
 const App = () => {
   const [currentResource, setCurrentResource] = React.useState(resourcesList[0]);
 
-  const onRadioGroupValueChanged = React.useCallback((e: { value: any; }) => {
+  const onRadioGroupValueChanged = React.useCallback((e: RadioGroupTypes.ValueChangedEvent) => {
     setCurrentResource(e.value);
   }, []);
 

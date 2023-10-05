@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Scheduler from 'devextreme-react/scheduler';
+import Scheduler, { SchedulerTypes } from 'devextreme-react/scheduler';
 
 import { data } from './data.ts';
 
 const currentDate = new Date(2021, 3, 29);
-const views = ['day', 'week', 'workWeek', 'month'];
+const views: SchedulerTypes.Properties['views'] = ['day', 'week', 'workWeek', 'month'];
 
 const App = () => (
   <Scheduler

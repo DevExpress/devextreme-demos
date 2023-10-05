@@ -1,17 +1,20 @@
 import React from 'react';
-import Scheduler, { Resource } from 'devextreme-react/scheduler';
-import ContextMenu from 'devextreme-react/context-menu';
+import Scheduler, { Resource, SchedulerTypes } from 'devextreme-react/scheduler';
+import ContextMenu, { ContextMenuTypes } from 'devextreme-react/context-menu';
 
 import { data, resourcesData } from './data.ts';
 
 import AppointmentMenuTemplate from './AppointmentTemplate.tsx';
 
-const views = ['day', 'month'];
+const views: SchedulerTypes.Properties['views'] = ['day', 'month'];
 
 const appointmentClassName = '.dx-scheduler-appointment';
 const cellClassName = '.dx-scheduler-date-table-cell';
 
-const onContextMenuItemClick = (e: { itemData: { onItemClick: (arg0: any) => void; }; }) => {
+const onContextMenuItemClick = (
+  // eslint-disable-next-line no-unused-vars
+  e: ContextMenuTypes.ItemClickEvent & { itemData: { onItemClick: (e: ContextMenuTypes.ItemClickEvent) => void } },
+) => {
   e.itemData.onItemClick(e);
 };
 

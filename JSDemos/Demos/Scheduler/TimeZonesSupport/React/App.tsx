@@ -1,6 +1,6 @@
 import React from 'react';
-import Scheduler, { Editing } from 'devextreme-react/scheduler';
-import SelectBox from 'devextreme-react/select-box';
+import Scheduler, { Editing, SchedulerTypes } from 'devextreme-react/scheduler';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 
 import timeZoneUtils from 'devextreme/time_zone_utils';
 import { data, locations } from './data.ts';
@@ -8,7 +8,7 @@ import { data, locations } from './data.ts';
 const timeZoneLabel = { 'aria-label': 'Time zone' };
 
 const currentDate = new Date(2021, 3, 27);
-const views = ['workWeek'];
+const views: SchedulerTypes.Properties['views'] = ['workWeek'];
 
 const getTimeZones = (date: Date) => {
   const timeZones = timeZoneUtils.getTimeZones(date);
@@ -37,11 +37,11 @@ const App = () => {
   const [currentTimeZone, setCurrentTimeZone] = React.useState(defaultTimeZones[0].id);
   const [timeZones, setTimeZones] = React.useState(defaultTimeZones);
 
-  const onValueChanged = React.useCallback((e: { value: any; }) => {
+  const onValueChanged = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setCurrentTimeZone(e.value);
   }, []);
 
-  const onOptionChanged = React.useCallback((e: { name: string; value: any; }) => {
+  const onOptionChanged = React.useCallback((e: SchedulerTypes.OptionChangedEvent) => {
     if (e.name === 'currentDate') {
       setTimeZones(getTimeZones(e.value));
     }

@@ -1,25 +1,25 @@
 import React from 'react';
-import Scheduler, { Resource } from 'devextreme-react/scheduler';
-import { Switch } from 'devextreme-react/switch';
-import { NumberBox } from 'devextreme-react/number-box';
+import Scheduler, { Resource, SchedulerTypes } from 'devextreme-react/scheduler';
+import { Switch, SwitchTypes } from 'devextreme-react/switch';
+import { NumberBox, NumberBoxTypes } from 'devextreme-react/number-box';
 
 import { data, moviesData } from './data.ts';
 import AppointmentTemplate from './AppointmentTemplate.tsx';
 
 const currentDate = new Date();
-const views = ['week', 'timelineWeek'];
+const views: SchedulerTypes.Properties['views'] = ['week', 'timelineWeek'];
 
 const intervalLabel = { 'aria-label': 'Interval' };
 
-const onContentReady = (e: { component: { scrollTo: (arg0: Date) => void; }; }) => {
+const onContentReady = (e: SchedulerTypes.ContentReadyEvent) => {
   e.component.scrollTo(new Date());
 };
 
-const onAppointmentClick = (e: { cancel: boolean; }) => {
+const onAppointmentClick = (e: SchedulerTypes.AppointmentClickEvent) => {
   e.cancel = true;
 };
 
-const onAppointmentDblClick = (e: { cancel: boolean; }) => {
+const onAppointmentDblClick = (e: SchedulerTypes.AppointmentDblClickEvent) => {
   e.cancel = true;
 };
 
@@ -28,15 +28,15 @@ const App = () => {
   const [shadeUntilCurrentTime, setShadeUntilCurrentTime] = React.useState(true);
   const [updateInterval, setUpdateInterval] = React.useState(10);
 
-  const onShowCurrentTimeIndicatorChanged = React.useCallback((e: { value: any; }) => {
+  const onShowCurrentTimeIndicatorChanged = React.useCallback((e: SwitchTypes.ValueChangedEvent) => {
     setShowCurrentTimeIndicator(e.value);
   }, []);
 
-  const onShadeUntilCurrentTimeChanged = React.useCallback((e: { value: any; }) => {
+  const onShadeUntilCurrentTimeChanged = React.useCallback((e: SwitchTypes.ValueChangedEvent) => {
     setShadeUntilCurrentTime(e.value);
   }, []);
 
-  const onUpdateIntervalChanged = React.useCallback((e: { value: any; }) => {
+  const onUpdateIntervalChanged = React.useCallback((e: NumberBoxTypes.ValueChangedEvent) => {
     setUpdateInterval(e.value);
   }, []);
 

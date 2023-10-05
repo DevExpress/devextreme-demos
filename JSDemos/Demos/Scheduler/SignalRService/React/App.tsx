@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Scheduler from 'devextreme-react/scheduler';
+import Scheduler, { SchedulerTypes } from 'devextreme-react/scheduler';
 
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
@@ -23,7 +23,7 @@ const createStore = () => AspNetData.createStore({
 const store1 = createStore();
 const store2 = createStore();
 const currentDate = new Date(2021, 3, 27);
-const views = ['day', 'workWeek'];
+const views: SchedulerTypes.Properties['views'] = ['day', 'workWeek'];
 
 const connection = new HubConnectionBuilder()
   .withUrl(`${BASE_PATH}schedulerSignalRHub`, {

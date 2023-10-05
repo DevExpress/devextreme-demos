@@ -1,11 +1,11 @@
 import React from 'react';
 
-const isWeekEnd = (date: { getDay: () => any; }) => {
+const isWeekEnd = (date: Date) => {
   const day = date.getDay();
   return day === 0 || day === 6;
 };
 
-const getCurrentTraining = (date, employeeID) => {
+const getCurrentTraining = (date: Date, employeeID) => {
   const result = (date + employeeID) % 3;
   const currentTraining = `training-background-${result}`;
 

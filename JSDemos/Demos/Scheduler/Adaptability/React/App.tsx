@@ -1,9 +1,9 @@
 import React from 'react';
-import Scheduler, { Resource } from 'devextreme-react/scheduler';
+import Scheduler, { Resource, SchedulerTypes } from 'devextreme-react/scheduler';
 import SpeedDialAction from 'devextreme-react/speed-dial-action';
 import { data, priorities } from './data.ts';
 
-const views = ['week', 'month'];
+const views: SchedulerTypes.Properties['views'] = ['week', 'month'];
 const cellDuration = 30;
 
 const currentDate = new Date(2021, 2, 25);

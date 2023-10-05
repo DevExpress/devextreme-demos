@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Scheduler from 'devextreme-react/scheduler';
+import Scheduler, { SchedulerTypes } from 'devextreme-react/scheduler';
 
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
@@ -17,7 +17,7 @@ const dataSource = AspNetData.createStore({
 });
 
 const currentDate = new Date(2021, 3, 27);
-const views = ['day', 'workWeek', 'month'];
+const views: SchedulerTypes.Properties['views'] = ['day', 'workWeek', 'month'];
 
 const App = () => (
   <Scheduler

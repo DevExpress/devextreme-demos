@@ -1,10 +1,10 @@
 import React from 'react';
-import Scheduler, { Resource } from 'devextreme-react/scheduler';
+import Scheduler, { Resource, SchedulerTypes } from 'devextreme-react/scheduler';
 
 import { data, resourcesData } from './data.ts';
 
 const currentDate = new Date(2021, 2, 25);
-const views = [{
+const views: SchedulerTypes.Properties['views'] = [{
   type: 'month',
   name: 'Auto Mode',
   maxAppointmentsPerCell: 'auto',

@@ -1,7 +1,7 @@
 /* eslint-disable func-style */
 import React from 'react';
 
-import Scheduler from 'devextreme-react/scheduler';
+import Scheduler, { SchedulerTypes } from 'devextreme-react/scheduler';
 import notify from 'devextreme/ui/notify';
 
 import { data, holidays } from './data.ts';
@@ -12,13 +12,13 @@ import DateCell from './DateCell.tsx';
 import TimeCell from './TimeCell.tsx';
 
 const currentDate = new Date(2021, 3, 27);
-const views = ['workWeek', 'month'];
+const views: SchedulerTypes.Properties['currentView'][] = ['workWeek', 'month'];
 
 const notifyDisableDate = () => {
   notify('Cannot create or move an appointment/event to disabled time/date regions.', 'warning', 1000);
 };
 
-const applyDisableDatesToDateEditors = (form: { getEditor: (arg0: string) => any; }) => {
+const applyDisableDatesToDateEditors = (form: SchedulerTypes.AppointmentFormOpeningEvent['form']) => {
   const startDateEditor = form.getEditor('startDate');
   startDateEditor.option('disabledDates', holidays);
 
@@ -26,7 +26,7 @@ const applyDisableDatesToDateEditors = (form: { getEditor: (arg0: string) => any
   endDateEditor.option('disabledDates', holidays);
 };
 
-const onAppointmentFormOpening = (e: { appointmentData: { startDate: VarDate; }; cancel: boolean; form: any; }) => {
+const onAppointmentFormOpening = (e: SchedulerTypes.AppointmentFormOpeningEvent) => {
   const startDate = new Date(e.appointmentData.startDate);
   if (!Utils.isValidAppointmentDate(startDate)) {
     e.cancel = true;
@@ -35,7 +35,7 @@ const onAppointmentFormOpening = (e: { appointmentData: { startDate: VarDate; };
   applyDisableDatesToDateEditors(e.form);
 };
 
-const onAppointmentAdding = (e: { component: any; appointmentData: any; cancel: boolean; }) => {
+const onAppointmentAdding = (e: SchedulerTypes.AppointmentAddingEvent) => {
   const isValidAppointment = Utils.isValidAppointment(e.component, e.appointmentData);
   if (!isValidAppointment) {
     e.cancel = true;
@@ -43,7 +43,7 @@ const onAppointmentAdding = (e: { component: any; appointmentData: any; cancel: 
   }
 };
 
-const onAppointmentUpdating = (e: { component: any; newData: any; cancel: boolean; }) => {
+const onAppointmentUpdating = (e: SchedulerTypes.AppointmentUpdatingEvent) => {
   const isValidAppointment = Utils.isValidAppointment(e.component, e.newData);
   if (!isValidAppointment) {
     e.cancel = true;
@@ -52,7 +52,7 @@ const onAppointmentUpdating = (e: { component: any; newData: any; cancel: boolea
 };
 
 const App = () => {
-  const [currentView, setCurrentView] = React.useState(views[0]);
+  const [currentView, setCurrentView] = React.useState<SchedulerTypes.Properties['currentView']>(views[0]);
 
   const DataCellComponent = React.useMemo(() => (
     currentView === 'month' ? DataCellMonth : DataCell
