@@ -1,15 +1,18 @@
 window.exports = window.exports || {};
 window.config = {
-  transpiler: 'plugin-babel',
+  transpiler: 'ts',
+  typescriptOptions: {
+    module: 'system',
+    emitDecoratorMetadata: true,
+    experimentalDecorators: true,
+    jsx: 'react',
+  },
   meta: {
-    '*.vue': {
-      loader: 'vue-loader',
+    'react': {
+      'esModule': true,
     },
-    '*.ts': {
-      loader: 'demo-ts-loader',
-    },
-    '*.svg': {
-      loader: 'svg-loader',
+    'typescript': {
+      'exports': 'ts',
     },
     'devextreme/localization.js': {
       'esModule': true,
@@ -31,14 +34,15 @@ window.config = {
     /**/
   },
   paths: {
-    'root:': '../../../../../',
     'npm:': '../../../../../node_modules/',
   },
+  defaultExtension: 'js',
   map: {
-    'vue': 'npm:vue/dist/vue.esm-browser.js',
-    'vue-loader': 'npm:dx-systemjs-vue-browser/index.js',
-    'demo-ts-loader': 'root:utils/demo-ts-loader.js',
-    'svg-loader': 'root:utils/svg-loader.js',
+    'ts': 'npm:plugin-typescript/lib/plugin.js',
+    'typescript': 'npm:typescript/lib/typescript.js',
+    'react': 'npm:react/umd/react.development.js',
+    'react-dom': 'npm:react-dom/umd/react-dom.development.js',
+    'prop-types': 'npm:prop-types/prop-types.js',
 
     /** signalr */
     '@aspnet/signalr': 'npm:@aspnet/signalr/dist/cjs',
@@ -52,6 +56,10 @@ window.config = {
     /** showdown&turndown */
     'devextreme-showdown': 'npm:devextreme-showdown/dist/showdown.js',
     'turndown': 'npm:turndown/lib/turndown.browser.umd.js',
+    /**/
+
+    /** html-react-parser */
+    'html-react-parser': 'npm:html-react-parser/dist/html-react-parser.min.js',
     /**/
 
     /** globalize--vue&react */
@@ -100,18 +108,12 @@ window.config = {
     'devextreme-dist/js/vectormap-data': 'npm:devextreme-dist/js/vectormap-data',
     /**/
 
-    'mitt': 'npm:mitt/dist/mitt.umd.js',
-
-    /** vuex */
-    'vuex': 'npm:vuex/dist/vuex.esm-browser.js',
-    /**/
-
     'rrule': 'npm:rrule/dist/es5/rrule.js',
     'luxon': 'npm:luxon/build/global/luxon.min.js',
     'es6-object-assign': 'npm:es6-object-assign',
 
     'devextreme': 'npm:devextreme/cjs',
-    'devextreme-vue': 'npm:devextreme-vue/cjs',
+    'devextreme-react': 'npm:devextreme-react/cjs',
     'jszip': 'npm:jszip/dist/jszip.min.js',
     'devextreme-quill': 'npm:devextreme-quill/dist/dx-quill.min.js',
     'devexpress-diagram': 'npm:devexpress-diagram/dist/dx-diagram.js',
@@ -126,6 +128,7 @@ window.config = {
     'inferno-create-class': 'npm:inferno-create-class/dist/inferno-create-class.min.js',
     'inferno-extras': 'npm:inferno-extras/dist/inferno-extras.min.js',
 
+    // SystemJS plugins
     'plugin-babel': 'npm:systemjs-plugin-babel/plugin-babel.js',
     'systemjs-babel-build': 'npm:systemjs-plugin-babel/systemjs-babel-browser.js',
 
@@ -134,11 +137,11 @@ window.config = {
     'prettier/parser-html': 'npm:prettier/parser-html.js',
   },
   packages: {
-    'devextreme-vue': {
-      main: 'index.js',
-    },
     'devextreme': {
       defaultExtension: 'js',
+    },
+    'devextreme-react': {
+      main: 'index.js',
     },
     'devextreme/events/utils': {
       main: 'index',
@@ -178,6 +181,7 @@ window.config = {
   babelOptions: {
     sourceMaps: false,
     stage0: true,
+    react: true,
   },
 };
 

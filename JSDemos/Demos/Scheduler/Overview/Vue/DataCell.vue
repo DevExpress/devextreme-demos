@@ -75,8 +75,4 @@ function getCurrentTraining(date, employeeID) {
 .training-background-2 {
   background-image: url("../../../../images/gym/icon-fitball.png");
 }
-
-.dx-theme-material .name h2 {
-  font-size: 28px;
-}
 </style>

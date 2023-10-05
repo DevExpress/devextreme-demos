@@ -6,7 +6,7 @@ class CreateConfig {
   constructor() {
     this.configDir = path.join(__dirname, '..', '..', 'JSDemos/configs');
 
-    this.approaches = ['Angular', 'React', 'Vue'];
+    this.approaches = ['Angular', 'React', 'ReactJs', 'Vue'];
 
     this.meta = meta;
 
