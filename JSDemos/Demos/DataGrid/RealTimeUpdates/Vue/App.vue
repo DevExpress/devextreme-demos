@@ -118,7 +118,7 @@
     <div class="options">
       <div class="caption">Options</div>
       <div class="option">
-        <span>Update frequency:</span>
+        <span>Update frequency (per second):</span>
         <DxSlider
           :min="10"
           :step="10"
@@ -127,7 +127,6 @@
         >
           <DxTooltip
             :enabled="true"
-            format="#0 per second"
             show-mode="always"
             position="top"
           />

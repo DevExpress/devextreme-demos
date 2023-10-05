@@ -117,7 +117,6 @@ $(() => {
     tooltip: {
       enabled: true,
       showMode: 'always',
-      format: '#0 per second',
       position: 'top',
     },
   });
