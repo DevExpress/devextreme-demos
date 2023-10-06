@@ -48,13 +48,13 @@ const cellTemplate = (container: { textContent: any; title: any; }, options) => 
   container.title = text;
 };
 
-const calculateFilterExpression = (that, filterValue, selectedFilterOperation, target: string) => {
+function calculateFilterExpression(this: DataGridTypes.Column, filterValue, selectedFilterOperation, target: string) {
   if (target === 'search' && typeof (filterValue) === 'string') {
-    return [that.dataField, 'contains', filterValue];
+    return [this.dataField, 'contains', filterValue];
   }
 
   return (rowData) => (rowData.AssignedEmployee || []).indexOf(filterValue) !== -1;
-};
+}
 
 const onRowInserted = (e: DataGridTypes.RowInsertedEvent) => e.component.navigateToRow(e.key);
 

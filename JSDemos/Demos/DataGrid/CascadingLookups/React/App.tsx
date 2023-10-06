@@ -12,10 +12,10 @@ const onEditorPreparing = (e: DataGridTypes.EditorPreparingEvent) => {
   }
 };
 
-const getFilteredCities = (options: { data: { StateID?: number; }; }) => ([{
+const getFilteredCities = (options: { data: { StateID?: number; }; }) => ({
   store: cities,
   filter: options.data ? ['StateID', '=', options.data.StateID] : null,
-}]);
+});
 
 function setStateValue(rowData: { CityID: number; }, value) {
   rowData.CityID = null;
@@ -42,7 +42,7 @@ const App = () => (
         <Lookup dataSource={states} displayExpr="Name" valueExpr="ID" />
       </Column>
       <Column dataField="CityID" caption="City">
-        <Lookup dataSource={getFilteredCities} displayExpr="Name" valueExpr="ID" />
+        <Lookup dataSource={getFilteredCities as any} displayExpr="Name" valueExpr="ID" />
       </Column>
     </DataGrid>
   </div>

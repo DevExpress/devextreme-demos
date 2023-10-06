@@ -40,12 +40,12 @@ const cellTemplate = (container, options) => {
   container.textContent = text || noBreakSpace;
   container.title = text;
 };
-const calculateFilterExpression = (that, filterValue, selectedFilterOperation, target) => {
+function calculateFilterExpression(filterValue, selectedFilterOperation, target) {
   if (target === 'search' && typeof filterValue === 'string') {
-    return [that.dataField, 'contains', filterValue];
+    return [this.dataField, 'contains', filterValue];
   }
   return (rowData) => (rowData.AssignedEmployee || []).indexOf(filterValue) !== -1;
-};
+}
 const onRowInserted = (e) => e.component.navigateToRow(e.key);
 const statusEditorRender = (cell) => {
   const onValueChanged = (e) => cell.setValue(e.value);

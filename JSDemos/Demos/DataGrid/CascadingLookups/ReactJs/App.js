@@ -8,12 +8,10 @@ const onEditorPreparing = (e) => {
     e.editorOptions.disabled = isStateNotSet;
   }
 };
-const getFilteredCities = (options) => [
-  {
-    store: cities,
-    filter: options.data ? ['StateID', '=', options.data.StateID] : null,
-  },
-];
+const getFilteredCities = (options) => ({
+  store: cities,
+  filter: options.data ? ['StateID', '=', options.data.StateID] : null,
+});
 function setStateValue(rowData, value) {
   rowData.CityID = null;
   this.defaultSetCellValue(rowData, value);
