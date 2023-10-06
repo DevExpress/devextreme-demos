@@ -13,57 +13,18 @@ import PivotGrid, {
   FieldChooser,
 } from 'devextreme-react/pivot-grid';
 
-import { sales } from './data.js';
+import sales from './data.js';
 
-const currencyFormatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  minimumFractionDigits: 0,
-});
+const customizeTooltip = (args: { seriesName: string | string[]; originalValue: number | number | bigint; }) => {
+  const valueText = (args.seriesName.indexOf('Total') !== -1)
+    ? new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'USD' }).format(args.originalValue)
+    : args.originalValue;
 
-const customizeTooltip = (args) => {
-  const valueText = currencyFormatter.format(args.originalValue);
   return {
-    html: `${args.seriesName} | Total<div class="currency">${valueText}</div>`,
+    html: `${args.seriesName}<div class='currency'>${
+      valueText}</div>`,
   };
 };
-
-const dataSource = new PivotGridDataSource({
-  fields: [
-    {
-      caption: 'Region',
-      width: 120,
-      dataField: 'region',
-      area: 'row',
-      sortBySummaryField: 'Total',
-    },
-    {
-      caption: 'City',
-      dataField: 'city',
-      width: 150,
-      area: 'row',
-    },
-    {
-      dataField: 'date',
-      dataType: 'date',
-      area: 'column',
-    },
-    {
-      groupName: 'date',
-      groupInterval: 'month',
-      visible: false,
-    },
-    {
-      caption: 'Total',
-      dataField: 'amount',
-      dataType: 'number',
-      summaryType: 'sum',
-      format: 'currency',
-      area: 'data',
-    },
-  ],
-  store: sales,
-});
 
 const App = () => {
   const chartRef = React.useRef(null);
@@ -74,16 +35,12 @@ const App = () => {
       dataFieldsDisplayMode: 'splitPanes',
       alternateDataFields: false,
     });
-    setTimeout(() => {
-      dataSource.expandHeaderItem('row', ['North America']);
-      dataSource.expandHeaderItem('column', [2013]);
-    });
   }, []);
 
   return (
     <React.Fragment>
       <Chart ref={chartRef}>
-        <Size height={200} />
+        <Size height={320} />
         <Tooltip enabled={true} customizeTooltip={customizeTooltip} />
         <CommonSeriesSettings type="bar" />
         <AdaptiveLayout width={450} />
@@ -106,5 +63,39 @@ const App = () => {
     </React.Fragment>
   );
 };
+
+const dataSource = new PivotGridDataSource({
+  fields: [{
+    caption: 'Region',
+    width: 120,
+    dataField: 'region',
+    area: 'row',
+    sortBySummaryField: 'Total',
+  }, {
+    caption: 'City',
+    dataField: 'city',
+    width: 150,
+    area: 'row',
+  }, {
+    dataField: 'date',
+    dataType: 'date',
+    area: 'column',
+  }, {
+    groupName: 'date',
+    groupInterval: 'month',
+    visible: false,
+  }, {
+    caption: 'Total',
+    dataField: 'amount',
+    dataType: 'number',
+    summaryType: 'sum',
+    format: 'currency',
+    area: 'data',
+  }, {
+    summaryType: 'count',
+    area: 'data',
+  }],
+  store: sales,
+});
 
 export default App;

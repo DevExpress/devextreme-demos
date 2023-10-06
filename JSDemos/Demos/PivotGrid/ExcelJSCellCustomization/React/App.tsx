@@ -69,7 +69,7 @@ const getConditionalAppearance = (cell) => {
   return { font: '9C6500', fill: 'FFEB9C' };
 };
 
-const onExporting = (e) => {
+const onExporting = (e: { component: any; }) => {
   const workbook = new Workbook();
   const worksheet = workbook.addWorksheet('Sales');
 

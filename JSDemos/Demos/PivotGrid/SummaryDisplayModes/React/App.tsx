@@ -8,7 +8,7 @@ import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 
 import sales from './data.js';
 
-const onContextMenuPreparing = (e) => {
+const onContextMenuPreparing = (e: { field: { dataField: string; summaryDisplayMode: string; index: string | number; }; items: { text: string; selected: boolean; onItemClick: () => void; }[]; }) => {
   if (e.field && e.field.dataField === 'amount') {
     summaryDisplayModes.forEach((mode) => {
       e.items.push({

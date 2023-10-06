@@ -10,7 +10,7 @@ import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 
 import sales from './data.js';
 
-const setSummaryType = (args, sourceField) => {
+const setSummaryType = (args: { itemData: { value: any; }; }, sourceField: { index: string | number; }) => {
   dataSource.field(sourceField.index, {
     summaryType: args.itemData.value,
   });
@@ -18,7 +18,7 @@ const setSummaryType = (args, sourceField) => {
   dataSource.load();
 };
 
-const onContextMenuPreparing = (e) => {
+const onContextMenuPreparing = (e: { field: { summaryType: string; }; items: { text: string; onItemClick?: () => void; items?: { text: string; value: string; onItemClick(args: any): void; selected: boolean; }[]; }[]; }) => {
   const sourceField = e.field;
 
   if (sourceField) {
@@ -44,7 +44,7 @@ const onContextMenuPreparing = (e) => {
     }
 
     if (sourceField.dataType === 'number') {
-      const menuItems = [];
+      const menuItems: ({ text: string; value: string; onItemClick(args: any): void; selected: boolean; })[] = [];
 
       e.items.push({ text: 'Summary Type', items: menuItems });
       ['Sum', 'Avg', 'Min', 'Max'].forEach((summaryType) => {
@@ -136,7 +136,7 @@ const dataSource = new PivotGridDataSource({
     dataField: 'city',
     width: 150,
     area: 'row',
-    selector(data) {
+    selector(data: { city: any; country: any; }) {
       return `${data.city} (${data.country})`;
     },
   }, {

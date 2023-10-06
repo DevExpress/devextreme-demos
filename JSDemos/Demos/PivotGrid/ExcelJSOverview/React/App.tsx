@@ -40,7 +40,7 @@ const dataSource = new PivotGridDataSource({
   store: sales,
 });
 
-const onExporting = (e) => {
+const onExporting = (e: { component: any; }) => {
   const workbook = new Workbook();
   const worksheet = workbook.addWorksheet('Sales');
 

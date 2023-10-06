@@ -19,7 +19,7 @@ const onResetClick = () => {
   dataSource.state({});
 };
 
-const onContextMenuPreparing = (e) => {
+const onContextMenuPreparing = (e: { field: { summaryType: string; }; items: { text: string; onItemClick?: () => void; items?: { text: string; value: string; onItemClick(args: any): void; selected: boolean; }[]; }[]; }) => {
   const sourceField = e.field;
 
   if (sourceField) {
@@ -45,7 +45,7 @@ const onContextMenuPreparing = (e) => {
     }
 
     if (sourceField.dataType === 'number') {
-      const menuItems = [];
+      const menuItems: ({ text: string; value: string; onItemClick(args: any): void; selected: boolean; })[] = [];
 
       e.items.push({ text: 'Summary Type', items: menuItems });
 
@@ -97,7 +97,7 @@ const dataSource = new PivotGridDataSource({
   store: sales,
 });
 
-const setSummaryType = (args, sourceField) => {
+const setSummaryType = (args: { itemData: { value: any; }; }, sourceField: { index: string | number; }) => {
   dataSource.field(sourceField.index, {
     summaryType: args.itemData.value,
   });

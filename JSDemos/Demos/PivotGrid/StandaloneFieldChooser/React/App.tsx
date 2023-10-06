@@ -132,7 +132,7 @@ const dataSource = new PivotGridDataSource({
         enabled: true,
       },
     },
-    selector(data) {
+    selector(data: { city: any; country: any; }) {
       return `${data.city} (${data.country})`;
     },
   }, {

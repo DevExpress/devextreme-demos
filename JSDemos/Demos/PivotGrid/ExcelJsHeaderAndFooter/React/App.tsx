@@ -54,7 +54,7 @@ const App = () => {
   const [exportColumnFieldHeaders, setExportColumnFieldHeaders] = React.useState(false);
   const [exportFilterFieldHeaders, setExportFilterFieldHeaders] = React.useState(false);
 
-  const onExporting = React.useCallback((e) => {
+  const onExporting = React.useCallback((e: { component: any; }) => {
     const workbook = new Workbook();
     const worksheet = workbook.addWorksheet('Sales');
 

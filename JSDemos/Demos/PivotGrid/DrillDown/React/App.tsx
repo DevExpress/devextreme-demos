@@ -15,7 +15,7 @@ const App = () => {
   const [popupVisible, setPopupVisible] = React.useState(false);
   const dataGridRef = React.useRef(null);
 
-  const onCellClick = React.useCallback((e) => {
+  const onCellClick = React.useCallback((e: { area: string; component: { getDataSource: () => any; }; cell: { rowPath: string | any[]; }; }) => {
     if (e.area === 'data') {
       const pivotGridDataSource = e.component.getDataSource();
       const rowPathLength = e.cell.rowPath.length;
