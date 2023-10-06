@@ -10,14 +10,14 @@ import Query from 'devextreme/data/query';
 import { moviesData } from './data.js';
 
 const props = withDefaults(defineProps<{
-  appointmentModel?: object
+  appointmentModel?: {appointmentData: {[key: 'text'|'image']: string}}
 }>(), {
-  appointmentModel: () => { },
+  appointmentModel: () => {},
 });
 const getMovieInfo = function(data) {
   return Query(moviesData)
-      .filter('id', data.movieId)
-      .toArray()[0] || {};
+    .filter('id', data.movieId)
+    .toArray()[0] || {};
 };
 const movieInfo = getMovieInfo(props.appointmentModel.appointmentData);
 

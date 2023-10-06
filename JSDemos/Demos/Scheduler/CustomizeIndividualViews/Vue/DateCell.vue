@@ -6,7 +6,7 @@
 </template>
 <script setup lang="ts">
 withDefaults(defineProps<{
-  cellData?: object
+  cellData?: {date: Date}
 }>(), {
   cellData: () => {},
 });
