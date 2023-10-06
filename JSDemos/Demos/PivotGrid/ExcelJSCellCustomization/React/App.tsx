@@ -3,6 +3,7 @@ import React from 'react';
 import PivotGrid, {
   FieldChooser,
   Export,
+  PivotGridTypes,
 } from 'devextreme-react/pivot-grid';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 import { Workbook } from 'exceljs';
@@ -11,6 +12,12 @@ import { saveAs } from 'file-saver-es';
 // We recommend that you use the official 'file-saver' package in your applications.
 import { exportPivotGrid } from 'devextreme/excel_exporter';
 import { sales } from './data.ts';
+
+interface ConditionalAppearance {
+  fill: string,
+  font: string,
+  bold?: boolean,
+}
 
 const dataSource = new PivotGridDataSource({
   fields: [{
@@ -42,20 +49,20 @@ const isDataCell = (cell) => (cell.area === 'data' && cell.rowType === 'D' && ce
 
 const isTotalCell = (cell) => (cell.type === 'T' || cell.type === 'GT' || cell.rowType === 'T' || cell.rowType === 'GT' || cell.columnType === 'T' || cell.columnType === 'GT');
 
-const getExcelCellFormat = ({ fill, font, bold }) =>
+const getExcelCellFormat = ({ fill, font, bold }: ConditionalAppearance) =>
   ({
     fill: { type: 'pattern', pattern: 'solid', fgColor: { argb: fill } },
     font: { color: { argb: font }, bold },
   });
 
-const getCssStyles = ({ fill, font, bold }) =>
+const getCssStyles = ({ fill, font, bold }: ConditionalAppearance) =>
   ({
     'background-color': `#${fill}`,
     color: `#${font}`,
     'font-weight': bold ? 'bold' : undefined,
   });
 
-const getConditionalAppearance = (cell) => {
+const getConditionalAppearance = (cell): ConditionalAppearance => {
   if (isTotalCell(cell)) {
     return { fill: 'F2F2F2', font: '3F3F3F', bold: true };
   }
@@ -69,7 +76,7 @@ const getConditionalAppearance = (cell) => {
   return { font: '9C6500', fill: 'FFEB9C' };
 };
 
-const onExporting = (e: { component: any; }) => {
+const onExporting = (e: PivotGridTypes.ExportingEvent) => {
   const workbook = new Workbook();
   const worksheet = workbook.addWorksheet('Sales');
 
@@ -97,7 +104,7 @@ const onExporting = (e: { component: any; }) => {
   });
 };
 
-const onCellPrepared = ({ cell, area, cellElement }) => {
+const onCellPrepared = ({ cell, area, cellElement }: PivotGridTypes.CellPreparedEvent & { cell: { area?: string } }) => {
   cell.area = area;
 
   if (isDataCell(cell) || isTotalCell(cell)) {

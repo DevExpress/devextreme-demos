@@ -4,6 +4,7 @@ import PivotGrid, {
   FieldChooser,
   FieldPanel,
   Export,
+  PivotGridTypes,
 } from 'devextreme-react/pivot-grid';
 import CheckBox from 'devextreme-react/check-box';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
@@ -54,7 +55,7 @@ const App = () => {
   const [exportColumnFieldHeaders, setExportColumnFieldHeaders] = React.useState(false);
   const [exportFilterFieldHeaders, setExportFilterFieldHeaders] = React.useState(false);
 
-  const onExporting = React.useCallback((e: { component: any; }) => {
+  const onExporting = React.useCallback((e: PivotGridTypes.ExportingEvent) => {
     const workbook = new Workbook();
     const worksheet = workbook.addWorksheet('Sales');
 

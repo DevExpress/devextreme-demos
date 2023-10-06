@@ -2,6 +2,7 @@ import React from 'react';
 import {
   PivotGrid,
   FieldChooser,
+  PivotGridTypes,
 } from 'devextreme-react/pivot-grid';
 import { DataGrid, Column } from 'devextreme-react/data-grid';
 import { Popup } from 'devextreme-react/popup';
@@ -15,7 +16,7 @@ const App = () => {
   const [popupVisible, setPopupVisible] = React.useState(false);
   const dataGridRef = React.useRef(null);
 
-  const onCellClick = React.useCallback((e: { area: string; component: { getDataSource: () => any; }; cell: { rowPath: string | any[]; }; }) => {
+  const onCellClick = React.useCallback((e: PivotGridTypes.CellClickEvent) => {
     if (e.area === 'data') {
       const pivotGridDataSource = e.component.getDataSource();
       const rowPathLength = e.cell.rowPath.length;

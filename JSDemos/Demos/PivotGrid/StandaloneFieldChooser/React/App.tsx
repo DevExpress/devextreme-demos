@@ -6,6 +6,7 @@ import {
 } from 'devextreme-react/pivot-grid';
 
 import {
+  IPivotGridFieldChooserOptions,
   PivotGridFieldChooser,
   Texts,
 } from 'devextreme-react/pivot-grid-field-chooser';
@@ -31,8 +32,8 @@ const applyChangesModes = ['instantly', 'onDemand'];
 const layouts = service.getLayouts();
 
 const App = () => {
-  const [applyChangesMode, setApplyChangesMode] = React.useState('instantly');
-  const [layout, setLayout] = React.useState(0);
+  const [applyChangesMode, setApplyChangesMode] = React.useState<IPivotGridFieldChooserOptions['applyChangesMode']>('instantly');
+  const [layout, setLayout] = React.useState<IPivotGridFieldChooserOptions['layout']>(0);
   const fieldChooserRef = React.useRef(null);
 
   return (

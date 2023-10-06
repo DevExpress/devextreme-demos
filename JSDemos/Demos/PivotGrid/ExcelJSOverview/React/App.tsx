@@ -3,6 +3,7 @@ import React from 'react';
 import PivotGrid, {
   FieldChooser,
   Export,
+  PivotGridTypes,
 } from 'devextreme-react/pivot-grid';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 import { Workbook } from 'exceljs';
@@ -40,7 +41,7 @@ const dataSource = new PivotGridDataSource({
   store: sales,
 });
 
-const onExporting = (e: { component: any; }) => {
+const onExporting = (e: PivotGridTypes.ExportingEvent) => {
   const workbook = new Workbook();
   const worksheet = workbook.addWorksheet('Sales');
 

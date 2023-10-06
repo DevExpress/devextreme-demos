@@ -3,6 +3,7 @@ import React from 'react';
 import PivotGrid, {
   FieldChooser,
   FieldPanel,
+  PivotGridTypes,
   StateStoring,
 } from 'devextreme-react/pivot-grid';
 import Button from 'devextreme-react/button';
@@ -19,7 +20,7 @@ const onResetClick = () => {
   dataSource.state({});
 };
 
-const onContextMenuPreparing = (e: { field: { summaryType: string; }; items: { text: string; onItemClick?: () => void; items?: { text: string; value: string; onItemClick(args: any): void; selected: boolean; }[]; }[]; }) => {
+const onContextMenuPreparing = (e: PivotGridTypes.ContextMenuPreparingEvent & { field: { index: number } }) => {
   const sourceField = e.field;
 
   if (sourceField) {
@@ -45,7 +46,7 @@ const onContextMenuPreparing = (e: { field: { summaryType: string; }; items: { t
     }
 
     if (sourceField.dataType === 'number') {
-      const menuItems: ({ text: string; value: string; onItemClick(args: any): void; selected: boolean; })[] = [];
+      const menuItems = [];
 
       e.items.push({ text: 'Summary Type', items: menuItems });
 
@@ -97,7 +98,7 @@ const dataSource = new PivotGridDataSource({
   store: sales,
 });
 
-const setSummaryType = (args: { itemData: { value: any; }; }, sourceField: { index: string | number; }) => {
+const setSummaryType = (args, sourceField) => {
   dataSource.field(sourceField.index, {
     summaryType: args.itemData.value,
   });

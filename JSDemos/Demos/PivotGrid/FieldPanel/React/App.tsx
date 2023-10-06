@@ -3,6 +3,7 @@ import React from 'react';
 import PivotGrid, {
   FieldChooser,
   FieldPanel,
+  PivotGridTypes,
 } from 'devextreme-react/pivot-grid';
 import CheckBox from 'devextreme-react/check-box';
 
@@ -10,7 +11,7 @@ import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 
 import sales from './data.ts';
 
-const setSummaryType = (args: { itemData: { value: any; }; }, sourceField: { index: string | number; }) => {
+const setSummaryType = (args, sourceField) => {
   dataSource.field(sourceField.index, {
     summaryType: args.itemData.value,
   });
@@ -18,7 +19,7 @@ const setSummaryType = (args: { itemData: { value: any; }; }, sourceField: { ind
   dataSource.load();
 };
 
-const onContextMenuPreparing = (e: { field: { summaryType: string; }; items: { text: string; onItemClick?: () => void; items?: { text: string; value: string; onItemClick(args: any): void; selected: boolean; }[]; }[]; }) => {
+const onContextMenuPreparing = (e: PivotGridTypes.ContextMenuPreparingEvent & { field: { index: number } }) => {
   const sourceField = e.field;
 
   if (sourceField) {
@@ -44,7 +45,7 @@ const onContextMenuPreparing = (e: { field: { summaryType: string; }; items: { t
     }
 
     if (sourceField.dataType === 'number') {
-      const menuItems: ({ text: string; value: string; onItemClick(args: any): void; selected: boolean; })[] = [];
+      const menuItems = [];
 
       e.items.push({ text: 'Summary Type', items: menuItems });
       ['Sum', 'Avg', 'Min', 'Max'].forEach((summaryType) => {

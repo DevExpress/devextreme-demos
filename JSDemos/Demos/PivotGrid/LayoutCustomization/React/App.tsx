@@ -21,7 +21,7 @@ const App = () => {
         showBorders={true}
         height="440"
       >
-        <FieldChooser height="500" />
+        <FieldChooser height={500} />
       </PivotGrid>
       <div className="options">
         <div className="caption">Options</div>

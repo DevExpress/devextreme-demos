@@ -3,12 +3,13 @@ import React from 'react';
 import PivotGrid, {
   FieldChooser,
   FieldPanel,
+  PivotGridTypes,
 } from 'devextreme-react/pivot-grid';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 
 import sales from './data.ts';
 
-const onContextMenuPreparing = (e: { field: { dataField: string; summaryDisplayMode: string; index: string | number; }; items: { text: string; selected: boolean; onItemClick: () => void; }[]; }) => {
+const onContextMenuPreparing = (e: PivotGridTypes.ContextMenuPreparingEvent) => {
   if (e.field && e.field.dataField === 'amount') {
     summaryDisplayModes.forEach((mode) => {
       e.items.push({

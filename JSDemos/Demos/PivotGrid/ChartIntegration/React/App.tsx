@@ -5,6 +5,7 @@ import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 import Chart, {
   AdaptiveLayout,
   CommonSeriesSettings,
+  ITooltipProps,
   Size,
   Tooltip,
 } from 'devextreme-react/chart';
@@ -15,7 +16,7 @@ import PivotGrid, {
 
 import sales from './data.ts';
 
-const customizeTooltip = (args: { seriesName: string | string[]; originalValue: number | number | bigint; }) => {
+const customizeTooltip: ITooltipProps['customizeTooltip'] = (args) => {
   const valueText = (args.seriesName.indexOf('Total') !== -1)
     ? new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'USD' }).format(args.originalValue)
     : args.originalValue;

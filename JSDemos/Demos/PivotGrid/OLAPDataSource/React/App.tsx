@@ -43,7 +43,6 @@ const dataSource = new PivotGridDataSource({
     { dataField: '[Measures].[Reseller Freight Cost]', area: 'data', format: 'currency' },
   ],
   store: new XmlaStore({
-    type: 'xmla',
     url: 'https://demos.devexpress.com/Services/OLAP/msmdpump.dll',
     catalog: 'Adventure Works DW Standard Edition',
     cube: 'Adventure Works',

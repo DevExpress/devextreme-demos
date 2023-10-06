@@ -25,7 +25,6 @@ const dataSource = new PivotGridDataSource({
     },
   ],
   store: new XmlaStore({
-    type: 'xmla',
     url: 'https://demos.devexpress.com/Services/OLAP/msmdpump.dll',
     catalog: 'Adventure Works DW Standard Edition',
     cube: 'Adventure Works',
