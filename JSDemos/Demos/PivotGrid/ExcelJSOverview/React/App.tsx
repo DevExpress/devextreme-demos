@@ -11,7 +11,7 @@ import { saveAs } from 'file-saver-es';
 //  We recommend that you use the official 'file-saver' package in your applications.
 import { exportPivotGrid } from 'devextreme/excel_exporter';
 
-import { sales } from './data.js';
+import { sales } from './data.ts';
 
 const dataSource = new PivotGridDataSource({
   fields: [{

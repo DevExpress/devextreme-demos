@@ -24,7 +24,7 @@ import {
 
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 
-import service from './data.js';
+import service from './data.ts';
 
 const applyChangesModeLabel = { 'aria-label': 'Apply Changes Mode' };
 const applyChangesModes = ['instantly', 'onDemand'];

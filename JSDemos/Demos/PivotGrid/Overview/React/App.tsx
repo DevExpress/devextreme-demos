@@ -13,7 +13,7 @@ import PivotGrid, {
   FieldChooser,
 } from 'devextreme-react/pivot-grid';
 
-import { sales } from './data.js';
+import { sales } from './data.ts';
 
 const currencyFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',

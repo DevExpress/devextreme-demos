@@ -7,7 +7,7 @@ import { DataGrid, Column } from 'devextreme-react/data-grid';
 import { Popup } from 'devextreme-react/popup';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 
-import { sales } from './data.js';
+import { sales } from './data.ts';
 
 const App = () => {
   const [popupTitle, setPopupTitle] = React.useState('');

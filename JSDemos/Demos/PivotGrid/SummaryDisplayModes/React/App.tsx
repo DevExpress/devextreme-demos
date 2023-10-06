@@ -6,7 +6,7 @@ import PivotGrid, {
 } from 'devextreme-react/pivot-grid';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 
-import sales from './data.js';
+import sales from './data.ts';
 
 const onContextMenuPreparing = (e: { field: { dataField: string; summaryDisplayMode: string; index: string | number; }; items: { text: string; selected: boolean; onItemClick: () => void; }[]; }) => {
   if (e.field && e.field.dataField === 'amount') {

@@ -13,7 +13,7 @@ import PivotGrid, {
   FieldChooser,
 } from 'devextreme-react/pivot-grid';
 
-import sales from './data.js';
+import sales from './data.ts';
 
 const customizeTooltip = (args: { seriesName: string | string[]; originalValue: number | number | bigint; }) => {
   const valueText = (args.seriesName.indexOf('Total') !== -1)
