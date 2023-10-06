@@ -186,6 +186,27 @@ jobs:
     - name: Get sources
       uses: actions/checkout@v3
 
+    - name: Clone devextreme repo from PR author fork
+      continue-on-error: true
+      if: github.event_name == 'pull_request'
+      run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme ./devextreme
+
+    - name: Clone devextreme repo
+      run: |
+        BASE_BRANCH=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
+        test -d ./devextreme || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme
+
+    - name: Restore npm cache
+      uses: actions/cache@v3
+      with:
+        path: ./devextreme/node_modules
+        key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-devextreme-node-modules
+
+    - name: Discover declarations
+      working-directory: ./devextreme
+      run: npm run discover-declarations
+
     #Build devextreme-vue
 
     - name: Use Node.js 18
@@ -206,9 +227,9 @@ jobs:
     - name: Clone devextreme-vue repo
       run: test -d ./devextreme-vue-repo || git clone -b 23.1 https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
 
-    - name: Restore submodule
+    - name: Install packages for devextreme-vue
       working-directory: ./devextreme-vue-repo
-      run: npm run restore-devextreme
+      run: npm install --no-audit --no-fund
 
     - name: Copy devextreme package
       run: |
@@ -221,8 +242,7 @@ jobs:
         pushd devextreme-setup
         installerName=$(realpath .)/$(ls devextreme-installer.tgz)
         popd
-        npm install --save-dev --legacy-peer-deps $installerName --workspace=devextreme-vue --workspace=devextreme-vue2-strategy --workspace=devextreme-vue-sandbox --include-workspace-root
-        npm run generate-metadata
+        npm install --save-dev --legacy-peer-deps $installerName $installerDistName
 
     - name: Build and Pack
       working-directory: ./devextreme-vue-repo
