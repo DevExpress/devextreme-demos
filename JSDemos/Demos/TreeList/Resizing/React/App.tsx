@@ -1,7 +1,7 @@
 import React from 'react';
 import { TreeList, Column } from 'devextreme-react/tree-list';
 import { SelectBox } from 'devextreme-react/select-box';
-import { employees, columnResizingModeLabel } from './data.js';
+import { employees, columnResizingModeLabel } from './data.ts';
 
 const resizingModes = ['nextColumn', 'widget'];
 const expandedRowKeys = [1, 3, 6];

@@ -2,7 +2,7 @@ import React from 'react';
 import {
   TreeList, FilterRow, Selection, Column,
 } from 'devextreme-react/tree-list';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const expandedRowKeys = [1];
 

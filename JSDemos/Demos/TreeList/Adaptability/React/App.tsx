@@ -1,6 +1,6 @@
 import React from 'react';
 import { TreeList, Column, ColumnChooser } from 'devextreme-react/tree-list';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const expandedRowKeys = [1];
 

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import config from 'devextreme-react/core/config';
-import App from './App.js';
+import App from './App.tsx';
 
 config({ useLegacyTemplateEngine: false });
 

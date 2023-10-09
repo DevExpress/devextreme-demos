@@ -1,7 +1,7 @@
 import React from 'react';
 import { TreeList, Column, SearchPanel } from 'devextreme-react/tree-list';
 import SelectBox from 'devextreme-react/select-box';
-import { employees, filterLabel } from './data.js';
+import { employees, filterLabel } from './data.ts';
 
 const filterModes = ['matchOnly', 'withAncestors', 'fullBranch'];
 

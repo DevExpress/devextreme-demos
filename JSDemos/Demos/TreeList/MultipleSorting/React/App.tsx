@@ -2,7 +2,7 @@ import React from 'react';
 import {
   TreeList, Sorting, Column, Lookup,
 } from 'devextreme-react/tree-list';
-import { tasks, employees } from './data.js';
+import { tasks, employees } from './data.ts';
 
 const statuses = [
   'Not Started',

@@ -2,7 +2,7 @@ import React from 'react';
 import {
   TreeList, Scrolling, Paging, Pager, Column, Lookup,
 } from 'devextreme-react/tree-list';
-import { tasks, employees } from './data.js';
+import { tasks, employees } from './data.ts';
 
 const allowedPageSizes = [5, 10, 20];
 

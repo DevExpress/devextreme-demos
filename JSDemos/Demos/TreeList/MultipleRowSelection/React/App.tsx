@@ -2,7 +2,7 @@ import React from 'react';
 import { TreeList, Selection, Column } from 'devextreme-react/tree-list';
 import { CheckBox } from 'devextreme-react/check-box';
 import { SelectBox } from 'devextreme-react/select-box';
-import { employees, selectionModeLabel } from './data.js';
+import { employees, selectionModeLabel } from './data.ts';
 
 const expandedRowKeys = [1, 2, 10];
 const emptySelectedText = 'Nobody has been selected';

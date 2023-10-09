@@ -7,7 +7,7 @@ import TreeList, {
 } from 'devextreme-react/tree-list';
 import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const expandedRowKeys = [1, 2, 4, 5];
 const enterKeyActions = ['startEdit', 'moveFocus'];

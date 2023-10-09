@@ -9,7 +9,7 @@ import TreeList, {
   Scrolling,
   Column,
 } from 'devextreme-react/tree-list';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const allowedPageSizes = [5, 10];
 const expandedRowKeys = [1, 2, 3, 5];

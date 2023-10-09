@@ -4,8 +4,8 @@ import TreeList, {
   Column, ColumnChooser, HeaderFilter, SearchPanel, Selection, Lookup,
 } from 'devextreme-react/tree-list';
 
-import { employees, priorities, tasks } from './data.js';
-import EmployeeCell from './EmployeeCell.js';
+import { employees, priorities, tasks } from './data.ts';
+import EmployeeCell from './EmployeeCell.tsx';
 
 const expandedKeys = [1, 2];
 const selectedKeys = [1, 29, 42];
