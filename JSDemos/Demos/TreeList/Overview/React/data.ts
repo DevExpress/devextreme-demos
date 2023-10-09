@@ -1,5 +1,21 @@
-
-export const tasks = [{
+export interface Employee {
+  ID: number,
+  Name: string,
+  Picture?: string
+}
+interface Task {
+  Task_ID: number,
+  Task_Assigned_Employee_ID: number,
+  Task_Subject: string,
+  Task_Start_Date: string,
+  Task_Due_Date: string,
+  Task_Status: string,
+  Task_Priority: number,
+  Task_Completion: number,
+  Task_Parent_ID: number,
+  Task_Assigned_Employee?: Employee,
+}
+export const tasks: Task[] = [{
   Task_ID: 1,
   Task_Assigned_Employee_ID: 1,
   Task_Subject: 'Plans 2015',
@@ -1811,7 +1827,7 @@ export const tasks = [{
   Task_Parent_ID: 27,
 }];
 
-export const employees = [{
+export const employees: Employee[] = [{
   ID: 1,
   Name: 'John Heart',
   Picture: '../../../../images/employees/01.png',

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  TreeList, Editing, Column, RequiredRule, Lookup,
+  TreeList, Editing, Column, RequiredRule, Lookup, TreeListTypes,
 } from 'devextreme-react/tree-list';
 import { tasks, employees } from './data.ts';
 
@@ -12,7 +12,7 @@ const statuses = [
   'Completed',
 ];
 
-const onInitNewRow = (e: { data: { Task_Status: string; Task_Start_Date: Date; Task_Due_Date: Date; }; }) => {
+const onInitNewRow = (e: TreeListTypes.InitNewRowEvent) => {
   e.data.Task_Status = 'Not Started';
   e.data.Task_Start_Date = new Date();
   e.data.Task_Due_Date = new Date();

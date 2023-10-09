@@ -3,6 +3,7 @@ import React from 'react';
 import TreeList, {
   Column,
   Editing,
+  IKeyboardNavigationProps,
   KeyboardNavigation,
 } from 'devextreme-react/tree-list';
 import SelectBox from 'devextreme-react/select-box';
@@ -19,8 +20,8 @@ const onFocusedCellChanging = (e: { isHighlighted: boolean; }) => {
 
 const App = () => {
   const [editOnKeyPress, setEditOnKeyPress] = React.useState(true);
-  const [enterKeyAction, setEnterKeyAction] = React.useState('moveFocus');
-  const [enterKeyDirection, setEnterKeyDirection] = React.useState('column');
+  const [enterKeyAction, setEnterKeyAction] = React.useState<IKeyboardNavigationProps['enterKeyAction']>('moveFocus');
+  const [enterKeyDirection, setEnterKeyDirection] = React.useState<IKeyboardNavigationProps['enterKeyDirection']>('column');
 
   return (
     <div id="tree-list-demo">

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  TreeList, Editing, Column, RequiredRule, Lookup, Button,
+  TreeList, Editing, Column, RequiredRule, Lookup, Button, IEditingProps, TreeListTypes,
 } from 'devextreme-react/tree-list';
 import { employees } from './data.ts';
 
@@ -11,15 +11,15 @@ const headDataSource = {
   sort: 'Full_Name',
 };
 
-const allowDeleting = (e: { row: { data: { ID: number; }; }; }) => e.row.data.ID !== 1;
+const allowDeleting: IEditingProps['allowDeleting'] = (e) => e.row.data.ID !== 1;
 
-const onEditorPreparing = (e: { dataField: string; row: { data: { ID: number; }; }; cancel: boolean; }) => {
+const onEditorPreparing = (e: TreeListTypes.EditorPreparingEvent) => {
   if (e.dataField === 'Head_ID' && e.row.data.ID === 1) {
     e.cancel = true;
   }
 };
 
-const onInitNewRow = (e: { data: { Head_ID: number; }; }) => {
+const onInitNewRow = (e: TreeListTypes.InitNewRowEvent) => {
   e.data.Head_ID = 1;
 };
 

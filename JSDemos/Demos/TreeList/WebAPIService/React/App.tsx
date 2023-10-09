@@ -1,7 +1,7 @@
 import React from 'react';
 
 import TreeList, {
-  RemoteOperations, Column, SearchPanel, HeaderFilter, Editing, RequiredRule, Lookup,
+  RemoteOperations, Column, SearchPanel, HeaderFilter, Editing, RequiredRule, Lookup, TreeListTypes,
 } from 'devextreme-react/tree-list';
 import AspNetData from 'devextreme-aspnet-data-nojquery';
 
@@ -33,7 +33,7 @@ const statusesData = [
 
 const expandedKeys = [1, 2];
 
-const initNewRow = (e: { data: { Task_Status: string; Task_Start_Date: Date; Task_Due_Date: Date; }; }) => {
+const initNewRow = (e: TreeListTypes.InitNewRowEvent) => {
   e.data.Task_Status = 'Not Started';
   e.data.Task_Start_Date = new Date();
   e.data.Task_Due_Date = new Date();

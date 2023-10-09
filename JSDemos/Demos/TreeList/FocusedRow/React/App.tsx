@@ -1,7 +1,7 @@
 import React from 'react';
 
-import TreeList, { Column, Lookup } from 'devextreme-react/tree-list';
-import { NumberBox } from 'devextreme-react/number-box';
+import TreeList, { Column, Lookup, TreeListTypes } from 'devextreme-react/tree-list';
+import { NumberBox, NumberBoxTypes } from 'devextreme-react/number-box';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/TreeListTasks';
@@ -28,13 +28,13 @@ const App = () => {
   const [taskProgress, setTaskProgress] = React.useState('');
   const [focusedRowKey, setFocusedRowKey] = React.useState(45);
 
-  const onTaskIdChanged = React.useCallback((e: { event: any; value: number; }) => {
+  const onTaskIdChanged = React.useCallback((e: NumberBoxTypes.ValueChangedEvent) => {
     if (e.event && e.value > 0) {
       setFocusedRowKey(e.value);
     }
   }, []);
 
-  const onFocusedRowChanged = React.useCallback((e: { row: { data: { Task_Status: any; }; rowIndex: any; }; component: { cellValue: (arg0: any,arg1: string) => any; option: (arg0: string) => any; }; }) => {
+  const onFocusedRowChanged = React.useCallback((e: TreeListTypes.FocusedRowChangedEvent) => {
     const rowData = e.row && e.row.data;
     let progress;
     let cellValue;

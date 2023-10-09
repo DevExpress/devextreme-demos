@@ -1,5 +1,7 @@
 import React from 'react';
-import { TreeList, RemoteOperations, Column } from 'devextreme-react/tree-list';
+import {
+  TreeList, RemoteOperations, Column, IColumnProps,
+} from 'devextreme-react/tree-list';
 import 'whatwg-fetch';
 
 const dataSource = {
@@ -22,7 +24,7 @@ const dataSource = {
   },
 };
 
-const customizeText = (e: { value: number; }) => {
+const customizeText: IColumnProps['customizeText'] = (e) => {
   if (e.value !== null) {
     return `${Math.ceil(e.value / 1024)} KB`;
   }
@@ -31,7 +33,7 @@ const customizeText = (e: { value: number; }) => {
 const App = () => (
   <TreeList
     id="treelist"
-    dataSource={dataSource}
+    dataSource={dataSource as any}
     showBorders={true}
     keyExpr="id"
     parentIdExpr="parentId"
