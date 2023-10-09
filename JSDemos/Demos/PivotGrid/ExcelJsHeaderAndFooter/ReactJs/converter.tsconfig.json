@@ -1,0 +1,31 @@
+{
+  "include": [
+    "C:/Users/blinov.ivan/Desktop/work/devextreme-demos/JSDemos/Demos/PivotGrid/ExcelJsHeaderAndFooter/_temp/**/*"
+  ],
+  "exclude": [
+    "C:/Users/blinov.ivan/Desktop/work/devextreme-demos/JSDemos/Demos/PivotGrid/ExcelJsHeaderAndFooter/_temp/test/e2e*",
+    "C:/Users/blinov.ivan/Desktop/work/devextreme-demos/JSDemos/Demos/PivotGrid/ExcelJsHeaderAndFooter/_temp/jest.config.ts"
+  ],
+  "compilerOptions": {
+    "outDir": "C:\\Users\\blinov.ivan\\Desktop\\work\\devextreme-demos\\JSDemos\\Demos\\PivotGrid\\ExcelJsHeaderAndFooter\\ReactJs",
+    "rootDir": "C:\\Users\\blinov.ivan\\Desktop\\work\\devextreme-demos\\JSDemos\\Demos\\PivotGrid\\ExcelJsHeaderAndFooter\\_temp",
+    "module": "ES2015",
+    "moduleResolution": "node",
+    "esModuleInterop": false,
+    "sourceMap": false,
+    "jsx": "react-native",
+    "allowJs": true,
+    "target": "ES2018",
+    "lib": [
+      "ES2018",
+      "dom"
+    ],
+    "types": [
+      "node",
+      "jest"
+    ],
+    "noEmit": false,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true
+  }
+}
