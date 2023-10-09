@@ -13,7 +13,7 @@ const expandedRowKeys = [1, 2, 4, 5];
 const enterKeyActions = ['startEdit', 'moveFocus'];
 const enterKeyDirections = ['none', 'column', 'row'];
 
-const onFocusedCellChanging = (e) => {
+const onFocusedCellChanging = (e: { isHighlighted: boolean; }) => {
   e.isHighlighted = true;
 };
 

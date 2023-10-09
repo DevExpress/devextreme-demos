@@ -13,7 +13,7 @@ const tasksData = AspNetData.createStore({
   insertUrl: `${url}/InsertTask`,
   updateUrl: `${url}/UpdateTask`,
   deleteUrl: `${url}/DeleteTask`,
-  onBeforeSend(method, ajaxOptions) {
+  onBeforeSend(method, ajaxOptions: { xhrFields: { withCredentials: boolean; }; }) {
     ajaxOptions.xhrFields = { withCredentials: true };
   },
 });
@@ -33,7 +33,7 @@ const statusesData = [
 
 const expandedKeys = [1, 2];
 
-const initNewRow = (e) => {
+const initNewRow = (e: { data: { Task_Status: string; Task_Start_Date: Date; Task_Due_Date: Date; }; }) => {
   e.data.Task_Status = 'Not Started';
   e.data.Task_Start_Date = new Date();
   e.data.Task_Due_Date = new Date();

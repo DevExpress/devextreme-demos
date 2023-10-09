@@ -5,7 +5,7 @@ import { employees as employeeList } from './data.js';
 
 const expandedRowKeys = [1];
 
-const onDragChange = (e) => {
+const onDragChange = (e: { component: { getVisibleRows: () => any; getNodeByKey: (arg0: any) => any; }; itemData: { ID: any; }; toIndex: string | number; cancel: boolean; }) => {
   const visibleRows = e.component.getVisibleRows();
   const sourceNode = e.component.getNodeByKey(e.itemData.ID);
   let targetNode = visibleRows[e.toIndex].node;
@@ -25,7 +25,7 @@ const App = () => {
   const [allowReordering, setAllowReordering] = React.useState(true);
   const [showDragIcons, setShowDragIcons] = React.useState(true);
 
-  const onReorder = React.useCallback((e) => {
+  const onReorder = React.useCallback((e: { component: { getVisibleRows: () => any; isRowExpanded: (arg0: any) => any; }; itemData: any; dropInsideItem: any; toIndex: number; fromIndex: number; }) => {
     const visibleRows = e.component.getVisibleRows();
     let sourceData = e.itemData;
     const updatedEmployees = [...employees];

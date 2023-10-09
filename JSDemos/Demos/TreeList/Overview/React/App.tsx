@@ -29,7 +29,7 @@ const dataSourceOptions = {
   }),
 };
 
-const customizeTaskCompletionText = (cellInfo) => `${cellInfo.valueText}%`;
+const customizeTaskCompletionText = (cellInfo: { valueText: any; }) => `${cellInfo.valueText}%`;
 
 function App() {
   return (

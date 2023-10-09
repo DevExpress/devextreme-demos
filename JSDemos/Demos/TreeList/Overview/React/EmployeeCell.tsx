@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EmployeeCell = (props) => {
+const EmployeeCell = (props: { data: { data: { Task_Assigned_Employee: any; }; }; }) => {
   const employee = props.data.data.Task_Assigned_Employee;
 
   if (!employee) {

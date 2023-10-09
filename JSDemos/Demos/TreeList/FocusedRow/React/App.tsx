@@ -28,13 +28,13 @@ const App = () => {
   const [taskProgress, setTaskProgress] = React.useState('');
   const [focusedRowKey, setFocusedRowKey] = React.useState(45);
 
-  const onTaskIdChanged = React.useCallback((e) => {
+  const onTaskIdChanged = React.useCallback((e: { event: any; value: number; }) => {
     if (e.event && e.value > 0) {
       setFocusedRowKey(e.value);
     }
   }, []);
 
-  const onFocusedRowChanged = React.useCallback((e) => {
+  const onFocusedRowChanged = React.useCallback((e: { row: { data: { Task_Status: any; }; rowIndex: any; }; component: { cellValue: (arg0: any,arg1: string) => any; option: (arg0: string) => any; }; }) => {
     const rowData = e.row && e.row.data;
     let progress;
     let cellValue;
@@ -43,7 +43,7 @@ const App = () => {
     if (rowData) {
       progress = rowData.Task_Completion ? `${rowData.Task_Completion}%` : '';
       cellValue = e.component.cellValue(e.row.rowIndex, 'Assigned');
-      taskEmployees.byKey(cellValue).done((item) => {
+      taskEmployees.byKey(cellValue).done((item: { Name: any; }) => {
         assigned = item.Name;
       });
 

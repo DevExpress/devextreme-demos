@@ -12,12 +12,11 @@ const statuses = [
   'Completed',
 ];
 
-const onInitNewRow = (e) => {
+const onInitNewRow = (e: { data: { Task_Status: string; Task_Start_Date: Date; Task_Due_Date: Date; }; }) => {
   e.data.Task_Status = 'Not Started';
   e.data.Task_Start_Date = new Date();
   e.data.Task_Due_Date = new Date();
 };
-
 const App = () => (
   <div id="tree-list-demo">
     <TreeList
@@ -34,7 +33,7 @@ const App = () => (
         allowAdding={true}
         allowUpdating={true}
         allowDeleting={true}
-        mode="batch" />
+        mode="cell" />
       <Column
         minWidth={250}
         dataField="Task_Subject">

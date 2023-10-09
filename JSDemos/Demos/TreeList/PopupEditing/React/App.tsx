@@ -17,16 +17,16 @@ const lookupData = {
   sort: 'Full_Name',
 };
 
-const allowDeleting = (e) => e.row.data.ID !== 1;
+const allowDeleting = (e: { row: { data: { ID: number; }; }; }) => e.row.data.ID !== 1;
 
-const onEditorPreparing = (e) => {
+const onEditorPreparing = (e: { dataField: string; row: { data: { ID: number; }; }; editorOptions: { disabled: boolean; value: any; }; }) => {
   if (e.dataField === 'Head_ID' && e.row.data.ID === 1) {
     e.editorOptions.disabled = true;
     e.editorOptions.value = null;
   }
 };
 
-const onInitNewRow = (e) => {
+const onInitNewRow = (e: { data: { Head_ID: number; }; }) => {
   e.data.Head_ID = 1;
 };
 

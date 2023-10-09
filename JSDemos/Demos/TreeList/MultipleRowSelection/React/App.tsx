@@ -14,27 +14,27 @@ const App = () => {
   const [selectionMode, setSelectionMode] = React.useState('all');
   const [selectedEmployeeNames, setSelectedEmployeeNames] = React.useState(emptySelectedText);
 
-  const onSelectionChanged = React.useCallback((e) => {
+  const onSelectionChanged = React.useCallback((e: { component: { getSelectedRowsData: (arg0: any) => any; }; selectedRowKeys: any; }) => {
     const selectedData = e.component.getSelectedRowsData(selectionMode);
     setSelectedRowKeys(e.selectedRowKeys);
     setSelectedEmployeeNames(getEmployeeNames(selectedData));
   }, [selectionMode, getEmployeeNames]);
 
-  const onRecursiveChanged = React.useCallback((e) => {
+  const onRecursiveChanged = React.useCallback((e: { value: any; }) => {
     setRecursive(e.value);
     setSelectedRowKeys([]);
     setSelectedEmployeeNames(emptySelectedText);
   }, []);
 
-  const onSelectionModeChanged = React.useCallback((e) => {
+  const onSelectionModeChanged = React.useCallback((e: { value: any; }) => {
     setSelectionMode(e.value);
     setSelectedRowKeys([]);
     setSelectedEmployeeNames(emptySelectedText);
   }, []);
 
-  const getEmployeeNames = React.useCallback((employeeList) => {
+  const getEmployeeNames = React.useCallback((employeeList: any[]) => {
     if (employeeList.length > 0) {
-      return employeeList.map((employee) => employee.Full_Name).join(', ');
+      return employeeList.map((employee: { Full_Name: any; }) => employee.Full_Name).join(', ');
     }
     return emptySelectedText;
   }, []);
