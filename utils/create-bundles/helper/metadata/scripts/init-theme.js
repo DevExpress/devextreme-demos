@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 function DXDemoTheme(version) {
   const searchParams = new URLSearchParams(window.location.search);
   const theme = searchParams.get('theme') ?? 'dx.material.blue.light';

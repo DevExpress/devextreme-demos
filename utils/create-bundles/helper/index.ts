@@ -1,5 +1,5 @@
 import {
-  existsSync,readFileSync, writeFileSync, readdirSync, copyFileSync, mkdirSync, copySync,
+  existsSync, readFileSync, writeFileSync, readdirSync, copyFileSync, mkdirSync, copySync,
 } from 'fs-extra';
 import { join, basename, extname } from 'path';
 import { createHash } from 'crypto';
