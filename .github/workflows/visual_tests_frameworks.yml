@@ -265,6 +265,9 @@ jobs:
     - name: Prepare JS
       run: npm run prepare-js
 
+    - name: Update bundles config
+      run: npx gulp update-config
+
     - name: Run Web Server
       run: |
         python -m http.server 8080 &

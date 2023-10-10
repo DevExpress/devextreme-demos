@@ -19,23 +19,23 @@ function prepareJs(callback) {
 
 exports.js = prepareJs;
 
-task('prepare-bundles', (callback) => {
+task('copy-bundles', (callback) => {
   copyBundlesFolder();
   callback();
 });
 
-task('create-config', (callback) => {
+task('update-config', (callback) => {
   createConfig.useBundles = true;
   createConfig.run(demosDir);
   callback();
 });
 
 exports.bundles = series(
-  'prepare-bundles',
+  'copy-bundles',
   parallel(
     ['vue', 'angular', 'react'].map((framework) => Object.assign((callback) => {
       build(framework).then(callback);
     }, { displayName: `bundle-${framework}` })),
   ),
-  'create-config',
+  'update-config',
 );
