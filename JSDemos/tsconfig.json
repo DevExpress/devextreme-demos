@@ -9,10 +9,9 @@
     "allowImportingTsExtensions": true,
     "noEmit": true
   },
-  
+
   "include": [
-    "./Demos/**/*.ts",
-    "./Demos/**/*.tsx"
+    "./Demos/**/React/*.ts",
+    "./Demos/**/React/*.tsx"
   ]
 }
-  
