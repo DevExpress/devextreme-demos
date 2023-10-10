@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint-disable import/no-extraneous-dependencies, no-console */
 const path = require('path');
 const fs = require('fs-extra');
 const Builder = require('systemjs-builder');
