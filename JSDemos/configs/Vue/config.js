@@ -111,7 +111,7 @@ window.config = {
     'es6-object-assign': 'npm:es6-object-assign',
 
     'devextreme': 'npm:devextreme/cjs',
-    'devextreme-vue': 'npm:devextreme-vue',
+    'devextreme-vue': 'npm:devextreme-vue/cjs',
     'jszip': 'npm:jszip/dist/jszip.min.js',
     'devextreme-quill': 'npm:devextreme-quill/dist/dx-quill.min.js',
     'devexpress-diagram': 'npm:devexpress-diagram/dist/dx-diagram.js',
@@ -128,6 +128,7 @@ window.config = {
 
     'plugin-babel': 'npm:systemjs-plugin-babel/plugin-babel.js',
     'systemjs-babel-build': 'npm:systemjs-plugin-babel/systemjs-babel-browser.js',
+    'sha-1': 'npm:sha-1/dist/sha1.cjs.js',
 
     // Prettier
     'prettier/standalone': 'npm:prettier/standalone.js',
