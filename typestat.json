@@ -7,26 +7,9 @@
             "importExtensions": true
         },
         "include": [
-            "JSDemos/Demos/Common/EditorsOverview/**/React/!(*config).{js,jsx}",
-            "JSDemos/Demos/Common/CustomTextEditorButtons/**/React/!(*config).{js,jsx}",
-            "JSDemos/Demos/Common/EditorsRightToLeftSupport/**/React/!(*config).{js,jsx}",
-            "JSDemos/Demos/Common/EditorAppearanceVariants/**/React/!(*config).{js,jsx}",
-            "JSDemos/Demos/Autocomplete/**/React/!(*config).{js,jsx}",
-            "JSDemos/Demos/Calendar/**/React/!(*config).{js,jsx}",
-            "JSDemos/Demos/CheckBox/**/React/!(*config).{js,jsx}",
-            "JSDemos/Demos/ColorBox/**/React/!(*config).{js,jsx}",
-            "JSDemos/Demos/DateBox/**/React/!(*config).{js,jsx}",
-            "JSDemos/Demos/DateRangeBox/**/React/!(*config).{js,jsx}",
-            "JSDemos/Demos/DropDownBox/**/React/!(*config).{js,jsx}",
-            "JSDemos/Demos/NumberBox/**/React/!(*config).{js,jsx}",
-            "JSDemos/Demos/SelectBox/**/React/!(*config).{js,jsx}",
-            "JSDemos/Demos/Switch/**/React/!(*config).{js,jsx}",
-            "JSDemos/Demos/TagBox/**/React/!(*config).{js,jsx}",
-            "JSDemos/Demos/TextArea/**/React/!(*config).{js,jsx}",
-            "JSDemos/Demos/TextBox/**/React/!(*config).{js,jsx}",
-            "JSDemos/Demos/Validation/**/React/!(*config).{js,jsx}"
+            
         ],
-        "project": "./tsconfig.json"
+        "project": "JSDemos\\tsconfig.json"
     },
     {
         "fixes": {
@@ -35,25 +18,8 @@
             "noImplicitAny": true
         },
         "include": [
-            "JSDemos/Demos/Common/EditorsOverview/**/React/*.{ts,tsx}",
-            "JSDemos/Demos/Common/CustomTextEditorButtons/**/React/*.{ts,tsx}",
-            "JSDemos/Demos/Common/EditorsRightToLeftSupport/**/React/*.{ts,tsx}",
-            "JSDemos/Demos/Common/EditorAppearanceVariants/**/React/*.{ts,tsx}",
-            "JSDemos/Demos/Autocomplete/**/React/*.{ts,tsx}",
-            "JSDemos/Demos/Calendar/**/React/*.{ts,tsx}",
-            "JSDemos/Demos/CheckBox/**/React/*.{ts,tsx}",
-            "JSDemos/Demos/ColorBox/**/React/*.{ts,tsx}",
-            "JSDemos/Demos/DateBox/**/React/*.{ts,tsx}",
-            "JSDemos/Demos/DateRangeBox/**/React/*.{ts,tsx}",
-            "JSDemos/Demos/DropDownBox/**/React/*.{ts,tsx}",
-            "JSDemos/Demos/NumberBox/**/React/*.{ts,tsx}",
-            "JSDemos/Demos/SelectBox/**/React/*.{ts,tsx}",
-            "JSDemos/Demos/Switch/**/React/*.{ts,tsx}",
-            "JSDemos/Demos/TagBox/**/React/*.{ts,tsx}",
-            "JSDemos/Demos/TextArea/**/React/*.{ts,tsx}",
-            "JSDemos/Demos/TextBox/**/React/*.{ts,tsx}",
-            "JSDemos/Demos/Validation/**/React/*.{ts,tsx}"        
+            
         ],
-        "project": "./tsconfig.json"
+        "project": "JSDemos\\tsconfig.json"
     }
 ]
