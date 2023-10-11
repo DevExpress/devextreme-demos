@@ -3,11 +3,11 @@ import PieChart, {
   Series,
   Label,
   Legend,
-  Connector, ILabelProps,
+  Connector,
+  ILabelProps,
 } from 'devextreme-react/pie-chart';
 
-const customizeText: ILabelProps['customizeText'] =
-    (pointInfo) => `${pointInfo.argument[0].toUpperCase()}${pointInfo.argument.slice(1)}: $${pointInfo.value}M`;
+const customizeText: ILabelProps['customizeText'] = (pointInfo) => `${pointInfo.argument[0].toUpperCase()}${pointInfo.argument.slice(1)}: $${pointInfo.value}M`;
 
 function PieChartComponent(props) {
   return (
