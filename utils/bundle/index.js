@@ -133,7 +133,6 @@ function prepareModulesToNamedImport() {
     'viz/palette.js',
     'excel_exporter.js',
     'pdf_exporter.js',
-    'time_zone_utils.js',
     'devextreme/ui/dialog.js',
     'common/charts.js',
   ];
