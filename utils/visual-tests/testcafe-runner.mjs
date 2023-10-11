@@ -93,7 +93,7 @@ function reporter() {
       if (testRunInfo.skipped) doneMessage = 'skip';
       if (hasErr) doneMessage = 'fail';
 
-      let title = `[${this.dateTimeNow()}]  ${doneMessage} ${symbol} ${nameStyle(name)} [${testRunInfo.durationMs} ms] ${JSON.stringify(testRunInfo.quarantine)}`;
+      let title = `[${this.dateTimeNow()}]  ${doneMessage} ${symbol} ${nameStyle(name)} [${testRunInfo.durationMs} ms]`;
 
       this.setIndent(1)
         .useWordWrap(true);
