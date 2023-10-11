@@ -62,7 +62,7 @@ export class AppComponent {
 
   onOptionChanged(e) {
     if (e.name === 'currentDate') {
-      this.timeZones = this.getTimeZones(e.value);
+      this.timeZones = this.getDefaultTimeZones(e.value);
     }
   }
 }

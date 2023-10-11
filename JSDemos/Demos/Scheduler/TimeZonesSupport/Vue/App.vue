@@ -41,7 +41,7 @@ const getDefaultTimeZones = function(date) {
 };
 
 const currentDate = new Date(2021, 3, 27);
-const timeZones = getTimeZones(currentDate);
+const timeZones = getDefaultTimeZones(currentDate);
 
 export default {
   components: {

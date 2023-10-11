@@ -13,7 +13,7 @@ const views = ['workWeek'];
 const getDefaultTimeZones = (date) =>
   getTimeZones(date).filter((timeZone) => locations.indexOf(timeZone.id) !== -1);
 
-const defaultTimeZones = getTimeZones(currentDate);
+const defaultTimeZones = getDefaultTimeZones(currentDate);
 
 const onAppointmentFormOpening = (e) => {
   const { form } = e;
