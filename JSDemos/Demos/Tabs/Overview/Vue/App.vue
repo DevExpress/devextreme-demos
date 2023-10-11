@@ -201,6 +201,9 @@ export default {
 
 .dx-viewport:not(.dx-theme-generic) .dx-tabs-vertical {
   border-right: 1px solid rgb(225, 225, 225, 0.4);
+}
+
+.dx-tabs-vertical {
   height: 250px;
 }
 </style>
