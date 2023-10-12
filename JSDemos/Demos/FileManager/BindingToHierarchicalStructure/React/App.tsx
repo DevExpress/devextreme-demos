@@ -1,6 +1,6 @@
 import React from 'react';
 import FileManager, { Permissions } from 'devextreme-react/file-manager';
-import { fileItems } from './data.js';
+import { fileItems } from './data.ts';
 
 export default function App() {
   return (

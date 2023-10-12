@@ -2,7 +2,7 @@ import React from 'react';
 import FileManager, {
   Permissions, Toolbar, ContextMenu, Item, FileSelectionItem, ItemView, Details, Column,
 } from 'devextreme-react/file-manager';
-import { fileItems } from './data.js';
+import { fileItems } from './data.ts';
 
 export default function App() {
   const fileManagerRef = React.useRef();
