@@ -146,12 +146,7 @@
         "test-testcafe:accessibility": "cross-env STRATEGY=accessibility CONSTEL=jquery node utils/visual-tests/testcafe-runner.mjs",
         "fix-lint": "prettier --write . && eslint --fix . && stylelint **/*.{css,vue} --fix",
         "prettier": "prettier",
-        "build": "node utils/bundle/index.js",
-        "build-angular": "npm run build -- angular",
-        "build-react": "npm run build -- react",
-        "build-vue": "npm run build -- vue",
-        "build-bundles": "npm-run-all -p build-angular build-react build-vue",
-        "prepare-bundles": "npm run build-bundles && gulp bundles",
+        "prepare-bundles": "gulp bundles",
         "convert-to-js": "ts-node ./utils/ts-to-js-converter/cli.ts",
         "create-typestat-cfg": "cd ./utils/internal && node ./create-typestat-cfg.js",
         "make-demos-bundle": "ts-node ./utils/create-bundles"
