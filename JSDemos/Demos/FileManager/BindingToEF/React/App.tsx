@@ -13,7 +13,7 @@ const allowedFileExtensions = [];
 export default function App() {
   const [currentPath, setCurrentPath] = React.useState('Documents/Reports');
 
-  const onCurrentDirectoryChanged = React.useCallback((e) => {
+  const onCurrentDirectoryChanged = React.useCallback((e: { component: { option: (arg0: string) => any; }; }) => {
     setCurrentPath(e.component.option('currentPath'));
   }, []);
 

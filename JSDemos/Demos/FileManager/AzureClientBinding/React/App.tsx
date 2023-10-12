@@ -30,44 +30,44 @@ function App() {
     setRequests((prevValue) => [request, ...prevValue]);
   }
 
-  function getItems(parentDirectory) {
+  function getItems(parentDirectory: { path: any; }) {
     return azure.getItems(parentDirectory.path);
   }
 
-  function createDirectory(parentDirectory, name) {
+  function createDirectory(parentDirectory: { path: any; }, name) {
     return azure.createDirectory(parentDirectory.path, name);
   }
 
-  function renameItem(item, name) {
+  function renameItem(item: { isDirectory: any; path: any; }, name) {
     return item.isDirectory
       ? azure.renameDirectory(item.path, name)
       : azure.renameFile(item.path, name);
   }
 
-  function deleteItem(item) {
+  function deleteItem(item: { isDirectory: any; path: any; }) {
     return item.isDirectory ? azure.deleteDirectory(item.path) : azure.deleteFile(item.path);
   }
 
-  function copyItem(item, destinationDirectory) {
+  function copyItem(item: { name: any; isDirectory: any; path: any; }, destinationDirectory: { path: any; }) {
     const destinationPath = destinationDirectory.path ? `${destinationDirectory.path}/${item.name}` : item.name;
     return item.isDirectory
       ? azure.copyDirectory(item.path, destinationPath)
       : azure.copyFile(item.path, destinationPath);
   }
 
-  function moveItem(item, destinationDirectory) {
+  function moveItem(item: { name: any; isDirectory: any; path: any; }, destinationDirectory: { path: any; }) {
     const destinationPath = destinationDirectory.path ? `${destinationDirectory.path}/${item.name}` : item.name;
     return item.isDirectory
       ? azure.moveDirectory(item.path, destinationPath)
       : azure.moveFile(item.path, destinationPath);
   }
 
-  function uploadFileChunk(fileData, uploadInfo, destinationDirectory) {
+  function uploadFileChunk(fileData: { name: any; }, uploadInfo: { chunkIndex: number; customData: { accessUrl: any; }; chunkBlob: any; chunkCount: number; }, destinationDirectory: { path: any; }) {
     let promise = null;
 
     if (uploadInfo.chunkIndex === 0) {
       const filePath = destinationDirectory.path ? `${destinationDirectory.path}/${fileData.name}` : fileData.name;
-      promise = gateway.getUploadAccessUrl(filePath).then((accessURLs) => {
+      promise = gateway.getUploadAccessUrl(filePath).then((accessURLs: { url1: any; }) => {
         uploadInfo.customData.accessUrl = accessURLs.url1;
       });
     } else {
@@ -90,7 +90,7 @@ function App() {
     return promise;
   }
 
-  function downloadItems(items) {
+  function downloadItems(items: { path: any; }[]) {
     azure.downloadFile(items[0].path);
   }
 

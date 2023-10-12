@@ -103,7 +103,7 @@ export default function App() {
     return true;
   }, []);
 
-  const updateCategory = React.useCallback((newCategory, directory, viewArea) => {
+  const updateCategory = React.useCallback((newCategory, directory, viewArea: string) => {
     let items = null;
 
     if (viewArea === 'navPane') {
@@ -112,7 +112,7 @@ export default function App() {
       items = fileManagerRef.current.instance.getSelectedItems();
     }
 
-    items.forEach((item) => {
+    items.forEach((item: { dataItem: { category: any; }; }) => {
       if (item.dataItem) {
         item.dataItem.category = newCategory;
       }

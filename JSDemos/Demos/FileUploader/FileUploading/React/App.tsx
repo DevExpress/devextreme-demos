@@ -18,19 +18,19 @@ export default function App() {
   const [accept, setAccept] = React.useState('*');
   const [selectedFiles, setSelectedFiles] = React.useState([]);
 
-  const onSelectedFilesChanged = React.useCallback((e) => {
+  const onSelectedFilesChanged = React.useCallback((e: { value: any; }) => {
     setSelectedFiles(e.value);
   }, [setSelectedFiles]);
 
-  const onAcceptChanged = React.useCallback((e) => {
+  const onAcceptChanged = React.useCallback((e: { value: any; }) => {
     setAccept(e.value);
   }, [setAccept]);
 
-  const onUploadModeChanged = React.useCallback((e) => {
+  const onUploadModeChanged = React.useCallback((e: { value: any; }) => {
     setUploadMode(e.value);
   }, [setUploadMode]);
 
-  const onMultipleChanged = React.useCallback((e) => {
+  const onMultipleChanged = React.useCallback((e: { value: any; }) => {
     setMultiple(e.value);
   }, [setMultiple]);
 
@@ -47,7 +47,7 @@ export default function App() {
         <div className="content" style={{ display: selectedFiles.length > 0 ? 'block' : 'none' }}>
           <div>
             <h4>Selected Files</h4>
-            {selectedFiles.map((file, i) => (
+            {selectedFiles.map((file: { name: any; size: any; type: any; lastModifiedDate: any; }, i) => (
               <div className="selected-item" key={i}>
                 <span>{`Name: ${file.name}`}<br /></span>
                 <span>{`Size ${file.size}`}<br /></span>

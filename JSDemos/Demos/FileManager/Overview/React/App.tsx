@@ -12,7 +12,7 @@ export default function App() {
   const [popupVisible, setPopupVisible] = React.useState(false);
   const [imageItemToDisplay, setImageItemToDisplay] = React.useState({});
 
-  const displayImagePopup = React.useCallback((e) => {
+  const displayImagePopup = React.useCallback((e: { file: { name: any; dataItem: { url: any; }; }; }) => {
     setPopupVisible(true);
     setImageItemToDisplay({
       name: e.file.name,
@@ -24,7 +24,7 @@ export default function App() {
     setPopupVisible(false);
   }, [setPopupVisible]);
 
-  const onCurrentDirectoryChanged = React.useCallback((e) => {
+  const onCurrentDirectoryChanged = React.useCallback((e: { component: { option: (arg0: string) => any; }; }) => {
     setCurrentPath(e.component.option('currentPath'));
   }, [setCurrentPath]);
 

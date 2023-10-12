@@ -5,13 +5,13 @@ import { fileItems } from './data.js';
 export default function App() {
   const [itemViewMode, setItemViewMode] = React.useState('thumbnails');
 
-  const onOptionChanged = React.useCallback((e) => {
+  const onOptionChanged = React.useCallback((e: { fullName: string; value: any; }) => {
     if (e.fullName === 'itemView.mode') {
       setItemViewMode(e.value);
     }
   }, [setItemViewMode]);
 
-  const customizeIcon = React.useCallback((fileSystemItem) => {
+  const customizeIcon = React.useCallback((fileSystemItem: { isDirectory: any; getFileExtension: () => any; }) => {
     if (fileSystemItem.isDirectory) {
       return '../../../../images/thumbnails/folder.svg';
     }

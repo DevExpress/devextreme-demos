@@ -38,11 +38,11 @@ export default function App() {
       });
   }, [setWrapperClassName, setLoadPanelVisible]);
 
-  const uploadChunk = React.useCallback((file, uploadInfo) => {
+  const uploadChunk = React.useCallback((file: { name: any; }, uploadInfo: { chunkIndex: number; customData: { accessUrl: any; }; chunkBlob: any; chunkCount: number; }) => {
     let promise = null;
 
     if (uploadInfo.chunkIndex === 0) {
-      promise = gateway.getUploadAccessUrl(file.name).then((accessURLs) => {
+      promise = gateway.getUploadAccessUrl(file.name).then((accessURLs: { url1: any; }) => {
         uploadInfo.customData.accessUrl = accessURLs.url1;
       });
     } else {

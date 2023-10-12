@@ -11,19 +11,19 @@ export default function App() {
   const [progressVisible, setProgressVisible] = React.useState(false);
   const [progressValue, setProgressValue] = React.useState(0);
 
-  const onDropZoneEnter = React.useCallback((e) => {
+  const onDropZoneEnter = React.useCallback((e: { dropZoneElement: { id: string; }; }) => {
     if (e.dropZoneElement.id === 'dropzone-external') {
       setIsDropZoneActive(true);
     }
   }, [setIsDropZoneActive]);
 
-  const onDropZoneLeave = React.useCallback((e) => {
+  const onDropZoneLeave = React.useCallback((e: { dropZoneElement: { id: string; }; }) => {
     if (e.dropZoneElement.id === 'dropzone-external') {
       setIsDropZoneActive(false);
     }
   }, [setIsDropZoneActive]);
 
-  const onUploaded = React.useCallback((e) => {
+  const onUploaded = React.useCallback((e: { file: any; }) => {
     const { file } = e;
     const fileReader = new FileReader();
     fileReader.onload = () => {
@@ -36,7 +36,7 @@ export default function App() {
     setProgressValue(0);
   }, [setImageSource, setIsDropZoneActive, setTextVisible, setProgressVisible, setProgressValue]);
 
-  const onProgress = React.useCallback((e) => {
+  const onProgress = React.useCallback((e: { bytesLoaded: number; bytesTotal: number; }) => {
     setProgressValue((e.bytesLoaded / e.bytesTotal) * 100);
   }, [setProgressValue]);
 

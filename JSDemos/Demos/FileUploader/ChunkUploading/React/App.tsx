@@ -1,14 +1,14 @@
 import React from 'react';
 import FileUploader from 'devextreme-react/file-uploader';
 
-function getValueInKb(value) {
+function getValueInKb(value: number) {
   return `${(value / 1024).toFixed(0)}kb`;
 }
 
 export default function App() {
   const [chunks, setChunks] = React.useState([]);
 
-  const onUploadProgress = React.useCallback((e) => {
+  const onUploadProgress = React.useCallback((e: { segmentSize: any; bytesLoaded: any; bytesTotal: any; }) => {
     const chunk = {
       segmentSize: e.segmentSize,
       bytesLoaded: e.bytesLoaded,
@@ -35,7 +35,7 @@ export default function App() {
       <span className="note">Maximum file size: <span>4 MB.</span></span>
       <div className="chunk-panel">
         {
-          chunks.map((c, i) => (
+          chunks.map((c: { segmentSize: any; bytesLoaded: any; bytesTotal: any; }, i) => (
             <div key={i}>
               <span>Chunk size:</span>
               <span className="segment-size dx-theme-accent-as-text-color">{getValueInKb(c.segmentSize)}</span>
