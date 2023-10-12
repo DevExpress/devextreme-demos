@@ -6,7 +6,7 @@ import service from './data.ts';
 
 const dataSource = service.getMaleAgeData();
 
-function customizeTooltip(arg: { seriesName: any; valueText: any; }) {
+function customizeTooltip(arg: { seriesName: string; valueText: string; }) {
   return {
     text: `${arg.seriesName} years: ${arg.valueText}`,
   };

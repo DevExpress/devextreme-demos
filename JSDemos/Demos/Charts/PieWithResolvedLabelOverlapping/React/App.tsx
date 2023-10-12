@@ -15,7 +15,7 @@ import { dataSource, resolutionModeLabel } from './data.ts';
 
 const resolveModes: (IPieChartOptions['resolveLabelOverlapping'])[] = ['shift', 'hide', 'none'];
 
-function formatText(arg: { argumentText: any; percentText: any; }) {
+function formatText(arg: { argumentText: string; percentText: string; }) {
   return `${arg.argumentText} (${arg.percentText})`;
 }
 

@@ -11,7 +11,7 @@ import PieChart, {
 } from 'devextreme-react/pie-chart';
 import { exportImportData } from './data.ts';
 
-function customizeTooltip(arg: { argumentText: any; seriesName: any; valueText: any; }) {
+function customizeTooltip(arg: { argumentText: string; seriesName: string; valueText: string; }) {
   return { text: `${arg.argumentText}<br>${arg.seriesName}: ${arg.valueText}B` };
 }
 

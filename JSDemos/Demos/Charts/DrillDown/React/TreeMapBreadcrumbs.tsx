@@ -1,12 +1,13 @@
 
 import React from 'react';
 import Breadcrumb from './Breadcrumb.tsx';
+import { DrillInfo } from './data.ts';
 
 interface TreeMapBreadcrumbsProps {
   className: string;
   // eslint-disable-next-line no-unused-vars
-  onItemClick: (node: any) => void;
-  treeInfo: any;
+  onItemClick: (node: DrillInfo['node']) => void;
+  treeInfo: DrillInfo[];
 }
 
 function TreeMapBreadcrumbs({ className, treeInfo, onItemClick }: TreeMapBreadcrumbsProps) {

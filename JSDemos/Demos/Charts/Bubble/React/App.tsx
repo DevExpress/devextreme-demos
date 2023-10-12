@@ -11,6 +11,8 @@ import {
   Tooltip,
   ITooltipProps,
   Export,
+  ChartTypes,
+  ILabelProps,
 } from 'devextreme-react/chart';
 import { dataSource } from './data.ts';
 
@@ -20,7 +22,7 @@ const customizeTooltip: ITooltipProps['customizeTooltip'] = (pointInfo) => ({
   text: `${pointInfo.point.tag}<br/>Total Population: ${pointInfo.argumentText}M<br/>Population with Age over 60: ${pointInfo.valueText}M (${pointInfo.size}%)`,
 });
 
-function seriesClick(e: { target: any; }) {
+function seriesClick(e: ChartTypes.SeriesClickEvent) {
   const series = e.target;
   if (series.isVisible()) {
     series.hide();
@@ -29,9 +31,7 @@ function seriesClick(e: { target: any; }) {
   }
 }
 
-function customizeText(e: { value: any; }) {
-  return `${e.value}M`;
-}
+const customizeText: ILabelProps['customizeText'] = (e) => `${e.value}M`;
 
 function App() {
   return (

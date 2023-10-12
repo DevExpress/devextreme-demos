@@ -1,26 +1,27 @@
 import React from 'react';
-import TreeMap, { Size, Title, Colorizer } from 'devextreme-react/tree-map';
-import { DrillEvent } from 'devextreme/viz/tree_map';
+import TreeMap, {
+  Size, Title, Colorizer, TreeMapTypes,
+} from 'devextreme-react/tree-map';
 
-import { citiesPopulation } from './data.ts';
+import { DrillInfo, citiesPopulation } from './data.ts';
 
 import TreeMapBreadcrumbs from './TreeMapBreadcrumbs.tsx';
 
-function drillInfoClick(node: { drillDown: () => void; }) {
+function drillInfoClick(node: DrillInfo['node']) {
   if (node) {
     node.drillDown();
   }
 }
 
-function nodeClick(e: { node: { drillDown: () => void; }; }) {
+function nodeClick(e: TreeMapTypes.ClickEvent) {
   e.node.drillDown();
 }
 
 function App() {
-  const [drillInfo, setDrillInfo] = React.useState<{ text?: string, node?: DrillEvent['node'] }[]>([]);
+  const [drillInfo, setDrillInfo] = React.useState<DrillInfo[]>([]);
 
-  const drill = React.useCallback((e: DrillEvent) => {
-    const newDrillInfo: ({ text: any; node?: any; })[] = [];
+  const drill = React.useCallback((e: TreeMapTypes.DrillEvent) => {
+    const newDrillInfo = [];
     for (let node = e.node.getParent(); node; node = node.getParent()) {
       newDrillInfo.unshift({
         text: node.label() || 'All Continents',

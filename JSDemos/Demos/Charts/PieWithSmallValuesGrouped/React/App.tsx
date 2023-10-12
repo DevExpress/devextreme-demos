@@ -9,7 +9,7 @@ import PieChart, {
 } from 'devextreme-react/pie-chart';
 import { dataSource } from './data.ts';
 
-function formatLabel(arg: { argumentText: any; valueText: any; }) {
+function formatLabel(arg: { argumentText: string; valueText: string; }) {
   return `${arg.argumentText}: ${arg.valueText}%`;
 }
 

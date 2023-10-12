@@ -5,7 +5,7 @@ const markerPath = {
   'Noisy Signal': 'M 18 8 L 12 12 L 7 3 L 0 7.4 L 0 10 L 6 6 L 11 15 L 18 10.6 Z',
 };
 
-export default function MarkerTemplate(item: { series: { isVisible: () => any; name: string | number; }; marker: { fill: any; }; }) {
+export default function MarkerTemplate(item) {
   const color = item.series.isVisible() ? item.marker.fill : '#888';
   return (
     <svg>

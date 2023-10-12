@@ -36,11 +36,11 @@ function onValueChanged(data: SelectBoxTypes.ValueChangedEvent) {
   chartDataSource.load();
 }
 
-function customizeLabel(e: { valueText: any; }) {
+function customizeLabel(e: { valueText: string; }) {
   return `${e.valueText}${'&#176C'}`;
 }
 
-function customizeTooltip(arg: { valueText: any; }) {
+function customizeTooltip(arg: { valueText: string; }) {
   return {
     text: `${arg.valueText}${'&#176C'}`,
   };

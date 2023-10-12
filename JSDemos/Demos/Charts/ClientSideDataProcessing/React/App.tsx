@@ -22,7 +22,7 @@ const monthWeather = new DataSource({
   paginate: false,
 });
 
-function customizeLabel(e: { valueText: any; }) {
+function customizeLabel(e: { valueText: string; }) {
   return `${e.valueText}${'&#176C'}`;
 }
 

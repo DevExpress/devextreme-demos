@@ -2,7 +2,7 @@ import React from 'react';
 import Bullet, { Tooltip } from 'devextreme-react/bullet';
 import { service } from './data.ts';
 
-function customizeTooltip(arg: { value: any; target: any; }) {
+function customizeTooltip(arg: { value: number; target: number; }) {
   return {
     text: `Current t&#176: ${arg.value} &#176C<br>Average t&#176:${arg.target}&#176C`,
   };

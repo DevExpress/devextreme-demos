@@ -1,6 +1,14 @@
 import React from 'react';
 
-export default function TooltipTemplate(annotation: { data: any; }) {
+interface AnnotationData {
+  country: string,
+  oldCountryName: string,
+  gold: number,
+  silver: number,
+  bronze: number,
+}
+
+export default function TooltipTemplate(annotation: { data: AnnotationData; }) {
   const { data } = annotation;
 
   return (

@@ -7,7 +7,7 @@ import {
 } from './utils.ts';
 import { data } from './data.ts';
 
-function customizeText(info: { argument: any; }) {
+function customizeText(info: { argument: string; }) {
   return info.argument;
 }
 

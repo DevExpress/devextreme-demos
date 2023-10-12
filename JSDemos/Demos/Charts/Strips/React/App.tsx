@@ -43,7 +43,7 @@ function getLabelsSettings(backgroundColor: string) {
   };
 }
 
-function customizeText(arg: { valueText: any; }) {
+function customizeText(arg: { valueText: string; }) {
   return `${arg.valueText}&#176F`;
 }
 

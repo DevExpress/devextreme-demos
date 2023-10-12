@@ -1,26 +1,24 @@
 import React from 'react';
 import PieChart, {
-  Series, Tooltip, Size, Legend,
+  Series, Tooltip, Size, Legend, ITooltipProps, PieChartTypes,
 } from 'devextreme-react/pie-chart';
 import { SelectBox } from 'devextreme-react/select-box';
 import { populationData, regionLabel } from './data.ts';
 
-function customizeTooltip(pointInfo: { argumentText: any; valueText: any; }) {
-  return {
-    text: `${pointInfo.argumentText}<br/>${pointInfo.valueText}`,
-  };
-}
+const customizeTooltip: ITooltipProps['customizeTooltip'] = (pointInfo) => ({
+  text: `${pointInfo.argumentText}<br/>${pointInfo.valueText}`,
+});
 
 function App() {
   const [selectedRegion, setSelectedRegion] = React.useState(null);
-  const pieChartRef = React.useRef(null);
+  const pieChartRef = React.useRef<PieChart>(null);
 
-  const showTooltip = React.useCallback((point: { showTooltip: () => void; argument: any; }) => {
+  const showTooltip = React.useCallback((point) => {
     point.showTooltip();
     setSelectedRegion(point.argument);
   }, [setSelectedRegion]);
 
-  const onPointClick = React.useCallback((point) => {
+  const onPointClick = React.useCallback((point: PieChartTypes.PointClickEvent) => {
     showTooltip(point);
   }, [showTooltip]);
 

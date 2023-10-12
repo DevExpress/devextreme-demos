@@ -1,21 +1,22 @@
+import PieChart from 'devextreme-react/pie-chart';
 import React from 'react';
 
 const formatNumber = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 0,
 }).format;
 
-function calculateTotal(pieChart: { getAllSeries: () => { getVisiblePoints: () => any[]; }[]; }) {
+function calculateTotal(pieChart: PieChart['instance']) {
   return formatNumber(pieChart
     .getAllSeries()[0]
     .getVisiblePoints()
-    .reduce((s, p: { originalValue: any; }) => s + p.originalValue, 0));
+    .reduce((s, p) => s + Number(p.originalValue), 0));
 }
 
 function getImagePath(country: string) {
   return `../../../../images/flags/${country.replace(/\s/, '').toLowerCase()}.svg`;
 }
 
-export default function TooltipTemplate(pieChart: { getAllSeries: () => { getVisiblePoints: () => { data: { country: any; }; }[]; }[]; getInnerRadius: () => number; }) {
+export default function TooltipTemplate(pieChart: PieChart['instance']) {
   const { country } = pieChart.getAllSeries()[0].getVisiblePoints()[0].data;
   return (
     <svg>

@@ -10,7 +10,10 @@ import { countries, waterLandRatio } from './data.ts';
 const pieCharts: {
   title: string,
   palette: IPieChartOptions['palette'],
-  dataSource: any,
+  dataSource: {
+    name: string,
+    area: number,
+  }[],
 }[] = [{
   title: 'Area of Countries',
   palette: 'Soft',

@@ -7,11 +7,10 @@ import Chart, {
   Label,
   Export,
   Tick,
+  ILabelProps,
 } from 'devextreme-react/chart';
 
-function customizeText(e: { value: any; }) {
-  return `Day ${e.value}`;
-}
+const customizeText: ILabelProps['customizeText'] = (e) => `Day ${e.value}`;
 
 function App() {
   return (

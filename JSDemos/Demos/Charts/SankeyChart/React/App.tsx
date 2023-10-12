@@ -1,12 +1,12 @@
 import React from 'react';
-import Sankey, { Tooltip, Link, Node } from 'devextreme-react/sankey';
+import Sankey, {
+  Tooltip, Link, Node, ITooltipProps,
+} from 'devextreme-react/sankey';
 import { data } from './data.ts';
 
-function customizeLinkTooltip(info: { source: any; target: any; weight: any; }) {
-  return {
-    html: `<b>From:</b> ${info.source}<br/><b>To:</b> ${info.target}<br/><b>Weight:</b> ${info.weight}`,
-  };
-}
+const customizeLinkTooltip: ITooltipProps['customizeLinkTooltip'] = (info) => ({
+  html: `<b>From:</b> ${info.source}<br/><b>To:</b> ${info.target}<br/><b>Weight:</b> ${info.weight}`,
+});
 
 function App() {
   return (

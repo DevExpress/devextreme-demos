@@ -1,4 +1,8 @@
-export const data = [{
+export interface Point {
+  type: string,
+  value: number,
+}
+export const data: Point[] = [{
   type: 'Stripes',
   value: 1,
 }, {

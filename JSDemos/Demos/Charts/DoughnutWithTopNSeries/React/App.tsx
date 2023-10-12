@@ -9,7 +9,7 @@ import PieChart, {
 } from 'devextreme-react/pie-chart';
 import { internetLanguages } from './data.ts';
 
-function customizeLabel(point: { argumentText: any; valueText: any; }) {
+function customizeLabel(point: { argumentText: string; valueText: string; }) {
   return `${point.argumentText}: ${point.valueText}%`;
 }
 

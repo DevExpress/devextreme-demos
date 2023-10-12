@@ -11,14 +11,13 @@ import {
   Font,
   Image,
   Annotation,
+  ICommonAnnotationSettingsProps,
 } from 'devextreme-react/chart';
 import { dataSource, annotationSources } from './data.ts';
 
-function customizeTooltip(annotation: { description: any; }) {
-  return {
-    html: `<div class='tooltip'>${annotation.description}</div>`,
-  };
-}
+const customizeTooltip: ICommonAnnotationSettingsProps['customizeTooltip'] = (annotation) => ({
+  html: `<div class='tooltip'>${annotation.description}</div>`,
+});
 
 function App() {
   return (

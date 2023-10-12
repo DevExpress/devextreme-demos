@@ -11,6 +11,8 @@ import Chart, {
   Legend,
   Label,
   Tooltip,
+  IAggregationProps,
+  ITooltipProps,
 } from 'devextreme-react/chart';
 import CheckBox from 'devextreme-react/check-box';
 import SelectBox from 'devextreme-react/select-box';
@@ -18,31 +20,31 @@ import {
   weatherData, aggregationFunctions, aggregationIntervals, functionLabel, intervalLabel,
 } from './data.ts';
 
-function customizeTooltip(pointInfo) {
+const customizeTooltip: ITooltipProps['customizeTooltip'] = (pointInfo) => {
   const { aggregationInfo } = pointInfo.point;
-  const start = aggregationInfo && aggregationInfo.intervalStart;
-  const end = aggregationInfo && aggregationInfo.intervalEnd;
+  const start: Date = aggregationInfo && aggregationInfo.intervalStart;
+  const end: Date = aggregationInfo && aggregationInfo.intervalEnd;
   const handlers = {
-    'Average temperature': (arg: { argument: { toDateString: () => any; }; value: number; }) => ({
+    'Average temperature': (arg: { argument: Date; value: number; }) => ({
       text: `${(!aggregationInfo
         ? `Date: ${arg.argument.toDateString()}`
         : `Interval: ${start.toDateString()} - ${end.toDateString()}`)
       }<br/>Temperature: ${arg.value.toFixed(2)} °C`,
     }),
-    'Temperature range': (arg: { rangeValue1: any; rangeValue2: any; }) => ({
+    'Temperature range': (arg: { rangeValue1: number; rangeValue2: number; }) => ({
       text: `Interval: ${start.toDateString()
       } - ${end.toDateString()
       }<br/>Temperature range: ${arg.rangeValue1
       } - ${arg.rangeValue2} °C`,
     }),
-    Precipitation: (arg: { argument: { toDateString: () => any; }; valueText: any; }) => ({
+    Precipitation: (arg: { argument: Date; valueText: string; }) => ({
       text: `Date: ${arg.argument.toDateString()
       }<br/>Precipitation: ${arg.valueText} mm`,
     }),
   };
 
   return handlers[pointInfo.seriesName](pointInfo);
-}
+};
 
 function App() {
   const [useAggregation, setUseAggregation] = React.useState(true);
@@ -61,12 +63,12 @@ function App() {
     setCurrentFunction(value);
   }, [setCurrentFunction]);
 
-  const calculateRangeArea = React.useCallback((aggregationInfo: { data: any[]; intervalStart: { valueOf: () => any; }; intervalEnd: { valueOf: () => any; }; }) => {
+  const calculateRangeArea = React.useCallback<IAggregationProps['calculate']>((aggregationInfo) => {
     if (!aggregationInfo.data.length) {
       return null;
     }
 
-    const temp = aggregationInfo.data.map((item: { temp: any; }) => item.temp);
+    const temp = aggregationInfo.data.map((item: { temp: number; }) => item.temp);
     return {
       date: new Date((aggregationInfo.intervalStart.valueOf()
         + aggregationInfo.intervalEnd.valueOf()) / 2),

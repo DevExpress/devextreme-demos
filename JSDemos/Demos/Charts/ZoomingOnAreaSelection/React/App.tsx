@@ -15,7 +15,7 @@ import Chart, {
 import Button from 'devextreme-react/button';
 import { birthLife } from './data.ts';
 
-function customizeTooltip(pointInfo: { point: { data: any; }; }) {
+function customizeTooltip(pointInfo: { point: { data: { country: string, year: number }; }; }) {
   const { data } = pointInfo.point;
   return {
     text: `${data.country} ${data.year}`,

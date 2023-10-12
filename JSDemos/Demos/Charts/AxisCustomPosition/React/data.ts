@@ -1,7 +1,7 @@
 export function generateDataSource() {
   let x1; let x2; let y1; let y2; let
     i;
-  const ds: ({ x1: any; y1: any; x2: undefined; y2: undefined; } | { x1: any; y1: any; x2: any; y2: any; })[] = [];
+  const ds = [];
   for (i = 0; i < 20; i += 1) {
     x1 = random(5, 15);
     y1 = random(5, 15);

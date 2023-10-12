@@ -8,7 +8,14 @@ const formatNumber = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 0,
 }).format;
 
-export default function AnnotationTemplate(annotation: { argument?: any; data?: any; }) {
+interface AnnotationData {
+  name: string,
+  capital: string,
+  population: number,
+  area: number,
+}
+
+export default function AnnotationTemplate(annotation: { argument?: string; data?: AnnotationData; }) {
   const { data } = annotation;
   return (
     <svg className="annotation">

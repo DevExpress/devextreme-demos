@@ -20,7 +20,7 @@ function App() {
     <PieChart
       id="pie-chart"
       key={country}
-      dataSource={data.filter((i: { country: any; }) => i.country === country)}
+      dataSource={data.filter((i) => i.country === country)}
       resolveLabelOverlapping="shift"
       sizeGroup="piesGroup"
       innerRadius={0.65}

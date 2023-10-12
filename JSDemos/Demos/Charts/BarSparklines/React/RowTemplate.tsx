@@ -9,7 +9,7 @@ import DataSource from 'devextreme/data/data_source';
 interface RowTemplateProps {
   key: number;
   year: string;
-  source: DataSource<any, any>;
+  source: DataSource;
 }
 
 export default function RowTemplate(props: RowTemplateProps) {

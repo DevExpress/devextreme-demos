@@ -14,7 +14,7 @@ import { temperaturesData } from './data.ts';
 const highAverage = 77;
 const lowAverage = 58;
 
-function customizeText(arg: { valueText: any; }) {
+function customizeText(arg: { valueText: string; }) {
   return `${arg.valueText}&#176F`;
 }
 

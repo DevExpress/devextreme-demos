@@ -1,5 +1,5 @@
 function generateData(start: number, end: number, step: number) {
-  const data: ({ value: number; originalValue: number; argument: any; })[] = [];
+  const data: ({ value: number; originalValue: number; argument: number; })[] = [];
   for (let i = start; i < end; i += step) {
     const originalValue = Math.log(i);
     data.push({

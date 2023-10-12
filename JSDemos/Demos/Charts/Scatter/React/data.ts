@@ -3,7 +3,7 @@ export function generateDataSource() {
   const b2 = random(-100, 100) / 10;
   let k1 = random(-100, 100) / 10;
   let k2 = random(-100, 100) / 10;
-  const ds: ({ x1: any; y1: number; x2: any; y2: number; })[] = [];
+  const ds: { x1: number; y1: number; x2: number; y2: number; }[] = [];
 
   let i;
   let x1;

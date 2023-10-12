@@ -10,7 +10,7 @@ import PieChart, {
 } from 'devextreme-react/pie-chart';
 import { populationByRegions } from './data.ts';
 
-function customizeTooltip(arg: { valueText: any; percent: number; }) {
+function customizeTooltip(arg: { valueText: string; percent: number; }) {
   return {
     text: `${arg.valueText} - ${(arg.percent * 100).toFixed(2)}%`,
   };

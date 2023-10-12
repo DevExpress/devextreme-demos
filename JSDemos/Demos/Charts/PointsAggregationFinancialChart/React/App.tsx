@@ -18,13 +18,14 @@ import RangeSelector, {
   Series as RsSeries,
   Aggregation as RsAggregation,
   Behavior,
+  RangeSelectorTypes,
 } from 'devextreme-react/range-selector';
 import { dataSource } from './data.ts';
 
 function App() {
   const [visualRange, setVisualRange] = React.useState({});
 
-  const updateVisualRange = React.useCallback((e: { value: any; }) => {
+  const updateVisualRange = React.useCallback((e: RangeSelectorTypes.ValueChangedEvent) => {
     setVisualRange(e.value);
   }, [setVisualRange]);
 

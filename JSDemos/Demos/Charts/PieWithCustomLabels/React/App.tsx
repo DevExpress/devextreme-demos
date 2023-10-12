@@ -9,7 +9,7 @@ import PieChart, {
 } from 'devextreme-react/pie-chart';
 import { dataSource } from './data.ts';
 
-function customizeText(arg: { valueText: any; percentText: any; }) {
+function customizeText(arg: { valueText: string; percentText: string; }) {
   return `${arg.valueText} (${arg.percentText})`;
 }
 
