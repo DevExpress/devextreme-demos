@@ -13,10 +13,6 @@ export default function App() {
   const [loadPanelVisible, setLoadPanelVisible] = React.useState(true);
   const [wrapperClassName, setWrapperClassName] = React.useState('');
 
-  React.useEffect(() => {
-    checkAzureStatus();
-  }, []);
-
   const checkAzureStatus = React.useCallback(() => {
     fetch('https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-status?widgetType=fileManager')
       .then((response) => response.json())
@@ -26,6 +22,10 @@ export default function App() {
         setLoadPanelVisible(false);
       });
   }, [setWrapperClassName, setLoadPanelVisible]);
+
+  React.useEffect(() => {
+    checkAzureStatus();
+  }, [checkAzureStatus]);
 
   return (
     <div id="wrapper" className={wrapperClassName}>

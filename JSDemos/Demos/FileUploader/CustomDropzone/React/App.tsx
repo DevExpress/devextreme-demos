@@ -1,34 +1,34 @@
 import React from 'react';
-import FileUploader from 'devextreme-react/file-uploader';
+import FileUploader, { FileUploaderTypes } from 'devextreme-react/file-uploader';
 import ProgressBar from 'devextreme-react/progress-bar';
 
 const allowedFileExtensions = ['.jpg', '.jpeg', '.gif', '.png'];
 
 export default function App() {
   const [isDropZoneActive, setIsDropZoneActive] = React.useState(false);
-  const [imageSource, setImageSource] = React.useState('');
+  const [imageSource, setImageSource] = React.useState<string>('');
   const [textVisible, setTextVisible] = React.useState(true);
   const [progressVisible, setProgressVisible] = React.useState(false);
   const [progressValue, setProgressValue] = React.useState(0);
 
-  const onDropZoneEnter = React.useCallback((e: { dropZoneElement: { id: string; }; }) => {
+  const onDropZoneEnter = React.useCallback((e: FileUploaderTypes.DropZoneEnterEvent) => {
     if (e.dropZoneElement.id === 'dropzone-external') {
       setIsDropZoneActive(true);
     }
   }, [setIsDropZoneActive]);
 
-  const onDropZoneLeave = React.useCallback((e: { dropZoneElement: { id: string; }; }) => {
+  const onDropZoneLeave = React.useCallback((e: FileUploaderTypes.DropZoneLeaveEvent) => {
     if (e.dropZoneElement.id === 'dropzone-external') {
       setIsDropZoneActive(false);
     }
   }, [setIsDropZoneActive]);
 
-  const onUploaded = React.useCallback((e: { file: any; }) => {
+  const onUploaded = React.useCallback((e: FileUploaderTypes.UploadedEvent) => {
     const { file } = e;
     const fileReader = new FileReader();
     fileReader.onload = () => {
       setIsDropZoneActive(false);
-      setImageSource(fileReader.result);
+      setImageSource(fileReader.result as string);
     };
     fileReader.readAsDataURL(file);
     setTextVisible(false);

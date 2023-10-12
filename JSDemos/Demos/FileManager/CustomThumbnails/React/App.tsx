@@ -1,17 +1,19 @@
 import React from 'react';
-import FileManager, { Permissions, ItemView } from 'devextreme-react/file-manager';
+import FileManager, {
+  Permissions, ItemView, FileManagerTypes, IItemViewProps,
+} from 'devextreme-react/file-manager';
 import { fileItems } from './data.ts';
 
 export default function App() {
-  const [itemViewMode, setItemViewMode] = React.useState('thumbnails');
+  const [itemViewMode, setItemViewMode] = React.useState<IItemViewProps['mode']>('thumbnails');
 
-  const onOptionChanged = React.useCallback((e: { fullName: string; value: any; }) => {
+  const onOptionChanged = React.useCallback((e: FileManagerTypes.OptionChangedEvent) => {
     if (e.fullName === 'itemView.mode') {
       setItemViewMode(e.value);
     }
   }, [setItemViewMode]);
 
-  const customizeIcon = React.useCallback((fileSystemItem: { isDirectory: any; getFileExtension: () => any; }) => {
+  const customizeIcon = React.useCallback<FileManagerTypes.Properties['customizeThumbnail']>((fileSystemItem) => {
     if (fileSystemItem.isDirectory) {
       return '../../../../images/thumbnails/folder.svg';
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FileUploader from 'devextreme-react/file-uploader';
+import FileUploader, { FileUploaderTypes } from 'devextreme-react/file-uploader';
 import { LoadPanel } from 'devextreme-react/load-panel';
 import { AzureGateway } from './azure.file.system.js'; // eslint-disable-line import/no-unresolved
 
@@ -13,6 +13,16 @@ export default function App() {
   const [requests, setRequests] = React.useState([]);
   const [loadPanelVisible, setLoadPanelVisible] = React.useState(true);
   const [wrapperClassName, setWrapperClassName] = React.useState('');
+
+  const checkAzureStatus = React.useCallback(() => {
+    fetch('https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-status?widgetType=fileUploader')
+      .then((response) => response.json())
+      .then((result) => {
+        const className = result.active ? 'show-widget' : 'show-message';
+        setWrapperClassName(className);
+        setLoadPanelVisible(false);
+      });
+  }, [setWrapperClassName, setLoadPanelVisible]);
 
   React.useEffect(() => {
     gateway = new AzureGateway(endpointUrl, onRequestExecuted);
@@ -28,17 +38,7 @@ export default function App() {
     setRequests([request, ...requests]);
   }, [requests]);
 
-  const checkAzureStatus = React.useCallback(() => {
-    fetch('https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-status?widgetType=fileUploader')
-      .then((response) => response.json())
-      .then((result) => {
-        const className = result.active ? 'show-widget' : 'show-message';
-        setWrapperClassName(className);
-        setLoadPanelVisible(false);
-      });
-  }, [setWrapperClassName, setLoadPanelVisible]);
-
-  const uploadChunk = React.useCallback((file: { name: any; }, uploadInfo: { chunkIndex: number; customData: { accessUrl: any; }; chunkBlob: any; chunkCount: number; }) => {
+  const uploadChunk = React.useCallback<FileUploaderTypes.Properties['uploadChunk']>((file, uploadInfo) => {
     let promise = null;
 
     if (uploadInfo.chunkIndex === 0) {

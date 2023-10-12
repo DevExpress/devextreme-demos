@@ -1,5 +1,5 @@
 import React from 'react';
-import FileManager, { Permissions } from 'devextreme-react/file-manager';
+import FileManager, { FileManagerTypes, Permissions } from 'devextreme-react/file-manager';
 import RemoteFileSystemProvider from 'devextreme/file_management/remote_provider';
 import { Popup } from 'devextreme-react/popup';
 
@@ -10,9 +10,9 @@ const remoteProvider = new RemoteFileSystemProvider({
 export default function App() {
   const [currentPath, setCurrentPath] = React.useState('Widescreen');
   const [popupVisible, setPopupVisible] = React.useState(false);
-  const [imageItemToDisplay, setImageItemToDisplay] = React.useState({});
+  const [imageItemToDisplay, setImageItemToDisplay] = React.useState<{ name?: string, url?: string }>({});
 
-  const displayImagePopup = React.useCallback((e: { file: { name: any; dataItem: { url: any; }; }; }) => {
+  const displayImagePopup = React.useCallback((e: FileManagerTypes.SelectedFileOpenedEvent) => {
     setPopupVisible(true);
     setImageItemToDisplay({
       name: e.file.name,
@@ -24,7 +24,7 @@ export default function App() {
     setPopupVisible(false);
   }, [setPopupVisible]);
 
-  const onCurrentDirectoryChanged = React.useCallback((e: { component: { option: (arg0: string) => any; }; }) => {
+  const onCurrentDirectoryChanged = React.useCallback((e: FileManagerTypes.CurrentDirectoryChangedEvent) => {
     setCurrentPath(e.component.option('currentPath'));
   }, [setCurrentPath]);
 

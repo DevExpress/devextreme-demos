@@ -1,7 +1,7 @@
 import React from 'react';
-import FileUploader from 'devextreme-react/file-uploader';
-import SelectBox from 'devextreme-react/select-box';
-import CheckBox from 'devextreme-react/check-box';
+import FileUploader, { FileUploaderTypes } from 'devextreme-react/file-uploader';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
+import CheckBox, { CheckBoxTypes } from 'devextreme-react/check-box';
 
 const uploadModes = ['instantly', 'useButtons'];
 const fileTypeLabel = { 'aria-label': 'File Type' };
@@ -14,23 +14,23 @@ const fileTypesSource = [
 
 export default function App() {
   const [multiple, setMultiple] = React.useState(false);
-  const [uploadMode, setUploadMode] = React.useState('instantly');
+  const [uploadMode, setUploadMode] = React.useState<FileUploaderTypes.Properties['uploadMode']>('instantly');
   const [accept, setAccept] = React.useState('*');
   const [selectedFiles, setSelectedFiles] = React.useState([]);
 
-  const onSelectedFilesChanged = React.useCallback((e: { value: any; }) => {
+  const onSelectedFilesChanged = React.useCallback((e: FileUploaderTypes.ValueChangedEvent) => {
     setSelectedFiles(e.value);
   }, [setSelectedFiles]);
 
-  const onAcceptChanged = React.useCallback((e: { value: any; }) => {
+  const onAcceptChanged = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setAccept(e.value);
   }, [setAccept]);
 
-  const onUploadModeChanged = React.useCallback((e: { value: any; }) => {
+  const onUploadModeChanged = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setUploadMode(e.value);
   }, [setUploadMode]);
 
-  const onMultipleChanged = React.useCallback((e: { value: any; }) => {
+  const onMultipleChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setMultiple(e.value);
   }, [setMultiple]);
 
@@ -47,7 +47,7 @@ export default function App() {
         <div className="content" style={{ display: selectedFiles.length > 0 ? 'block' : 'none' }}>
           <div>
             <h4>Selected Files</h4>
-            {selectedFiles.map((file: { name: any; size: any; type: any; lastModifiedDate: any; }, i) => (
+            {selectedFiles.map((file, i) => (
               <div className="selected-item" key={i}>
                 <span>{`Name: ${file.name}`}<br /></span>
                 <span>{`Size ${file.size}`}<br /></span>

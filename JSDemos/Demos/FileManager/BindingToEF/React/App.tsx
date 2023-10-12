@@ -1,6 +1,6 @@
 import React from 'react';
 import FileManager, {
-  Permissions, ItemView, Details, Column,
+  Permissions, ItemView, Details, Column, FileManagerTypes,
 } from 'devextreme-react/file-manager';
 import RemoteFileSystemProvider from 'devextreme/file_management/remote_provider';
 
@@ -13,7 +13,7 @@ const allowedFileExtensions = [];
 export default function App() {
   const [currentPath, setCurrentPath] = React.useState('Documents/Reports');
 
-  const onCurrentDirectoryChanged = React.useCallback((e: { component: { option: (arg0: string) => any; }; }) => {
+  const onCurrentDirectoryChanged = React.useCallback((e: FileManagerTypes.CurrentDirectoryChangedEvent) => {
     setCurrentPath(e.component.option('currentPath'));
   }, []);
 
@@ -37,7 +37,7 @@ export default function App() {
           <Column dataField="name"></Column>
           <Column dataField="dateModified" caption="Modified"></Column>
           <Column dataField="created" caption="Created" dataType="date"></Column>
-          <Column dataField="modifiedBy" caption="Modified By" visibleIndex="2"></Column>
+          <Column dataField="modifiedBy" caption="Modified By" visibleIndex={2}></Column>
         </Details>
       </ItemView>
     </FileManager>
