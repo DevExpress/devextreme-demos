@@ -126,6 +126,7 @@ const BUNDLE_PATH = `bundles/devextreme.${framework}.systemjs.js`;
 // https://stackoverflow.com/questions/42412965/how-to-load-named-exports-with-systemjs/47108328
 function prepareModulesToNamedImport() {
   const modules = [
+    'time_zone_utils.js',
     'localization.js',
     'viz/export.js',
     'viz/core/export.js',
