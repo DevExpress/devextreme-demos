@@ -1,7 +1,9 @@
 import React from 'react';
 import 'devextreme-react/text-area';
 
-import Form, { Item, GroupItem, Label, FormTypes } from 'devextreme-react/form';
+import Form, {
+  Item, GroupItem, Label, FormTypes,
+} from 'devextreme-react/form';
 import { ValidationRule } from 'devextreme/common';
 import LabelTemplate from './LabelTemplate.tsx';
 import LabelNotesTemplate from './LabelNotesTemplate.tsx';
