@@ -1,6 +1,6 @@
 import React from 'react';
 import FileManager, { Permissions } from 'devextreme-react/file-manager';
-import CustomFileSystemProvider from 'devextreme/file_management/custom_provider';
+import CustomFileSystemProvider, { Options } from 'devextreme/file_management/custom_provider';
 import { LoadPanel } from 'devextreme-react/load-panel';
 import { AzureGateway, AzureFileSystem } from './azure.file.system.js';
 
@@ -9,65 +9,47 @@ const allowedFileExtensions = [];
 const loadPanelPosition = { of: '#file-manager' };
 
 function App() {
-  const [requests, setRequests] = React.useState([]);
+  const [requests, setRequests] = React.useState<{ method, urlPath, queryString }[]>([]);
   const [loadPanelVisible, setLoadPanelVisible] = React.useState(true);
   const [wrapperClassName, setWrapperClassName] = React.useState('');
   const [gateway] = React.useState(new AzureGateway(endpointUrl, onRequestExecuted));
   const [azure] = React.useState(new AzureFileSystem(gateway));
-  const [fileSystemProvider] = React.useState(new CustomFileSystemProvider({
-    getItems,
-    createDirectory,
-    renameItem,
-    deleteItem,
-    copyItem,
-    moveItem,
-    uploadFileChunk,
-    downloadItems,
-  }));
 
   function onRequestExecuted({ method, urlPath, queryString }) {
     const request = { method, urlPath, queryString };
     setRequests((prevValue) => [request, ...prevValue]);
   }
 
-  function getItems(parentDirectory: { path: any; }) {
-    return azure.getItems(parentDirectory.path);
-  }
+  const getItems: Options['getItems'] = (parentDirectory) => azure.getItems(parentDirectory.path);
 
-  function createDirectory(parentDirectory: { path: any; }, name) {
-    return azure.createDirectory(parentDirectory.path, name);
-  }
+  const createDirectory: Options['createDirectory'] = (parentDirectory, name) => azure.createDirectory(parentDirectory.path, name);
 
-  function renameItem(item: { isDirectory: any; path: any; }, name) {
-    return item.isDirectory
-      ? azure.renameDirectory(item.path, name)
-      : azure.renameFile(item.path, name);
-  }
+  const renameItem: Options['renameItem'] = (item, name) => (item.isDirectory
+    ? azure.renameDirectory(item.path, name)
+    : azure.renameFile(item.path, name));
 
-  function deleteItem(item: { isDirectory: any; path: any; }) {
-    return item.isDirectory ? azure.deleteDirectory(item.path) : azure.deleteFile(item.path);
-  }
+  const deleteItem: Options['deleteItem'] = (item) => (item.isDirectory ? azure.deleteDirectory(item.path) : azure.deleteFile(item.path));
 
-  function copyItem(item: { name: any; isDirectory: any; path: any; }, destinationDirectory: { path: any; }) {
+  const copyItem: Options['copyItem'] = (item, destinationDirectory) => {
     const destinationPath = destinationDirectory.path ? `${destinationDirectory.path}/${item.name}` : item.name;
     return item.isDirectory
       ? azure.copyDirectory(item.path, destinationPath)
       : azure.copyFile(item.path, destinationPath);
-  }
+  };
 
-  function moveItem(item: { name: any; isDirectory: any; path: any; }, destinationDirectory: { path: any; }) {
+  const moveItem: Options['moveItem'] = (item, destinationDirectory) => {
     const destinationPath = destinationDirectory.path ? `${destinationDirectory.path}/${item.name}` : item.name;
     return item.isDirectory
       ? azure.moveDirectory(item.path, destinationPath)
       : azure.moveFile(item.path, destinationPath);
-  }
+  };
 
-  function uploadFileChunk(fileData: { name: any; }, uploadInfo: { chunkIndex: number; customData: { accessUrl: any; }; chunkBlob: any; chunkCount: number; }, destinationDirectory: { path: any; }) {
-    let promise = null;
+  const uploadFileChunk: Options['uploadFileChunk'] = (fileData, uploadInfo, destinationDirectory) => {
+    let promise: Promise<void> | null = null;
 
     if (uploadInfo.chunkIndex === 0) {
       const filePath = destinationDirectory.path ? `${destinationDirectory.path}/${fileData.name}` : fileData.name;
-      promise = gateway.getUploadAccessUrl(filePath).then((accessURLs: { url1: any; }) => {
+      promise = gateway.getUploadAccessUrl(filePath).then((accessURLs: { url1: string; }) => {
         uploadInfo.customData.accessUrl = accessURLs.url1;
       });
     } else {
@@ -88,11 +70,22 @@ function App() {
     }
 
     return promise;
-  }
+  };
 
-  function downloadItems(items: { path: any; }[]) {
+  const downloadItems: Options['downloadItems'] = (items) => {
     azure.downloadFile(items[0].path);
-  }
+  };
+
+  const [fileSystemProvider] = React.useState(new CustomFileSystemProvider({
+    getItems,
+    createDirectory,
+    renameItem,
+    deleteItem,
+    copyItem,
+    moveItem,
+    uploadFileChunk,
+    downloadItems,
+  }));
 
   const checkAzureStatus = React.useCallback(() => {
     fetch('https://js.devexpress.com/Demos/Mvc/api/file-manager-azure-status?widgetType=fileManager')
