@@ -117,8 +117,4 @@ export const copyMetadata = () => {
   const sourceData = join(sourceDemosDir, '..', 'data');
   const destinationData = join(destinationPublishDir, 'data');
   copySync(sourceData, destinationData);
-
-  const sourceImages = join(sourceDemosDir, '..', 'images');
-  const destinationImages = join(destinationPublishDir, 'images');
-  copySync(sourceImages, destinationImages);
 };

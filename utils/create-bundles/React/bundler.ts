@@ -19,12 +19,15 @@ export default class ReactBundler extends ESBundler {
     const options: BuildOptions = {
       bundle: true,
       minify: true,
-      loader: { '.js': 'jsx' },
+      loader: {
+        '.js': 'jsx',
+        '.png': 'dataurl',
+        '.svg': 'dataurl',
+      },
       entryNames: '[dir]/bundle.[hash]',
       outdir: destinationDemoPath,
       entryPoints: this.#getEntryPoints(sourceDemoPath),
       plugins: [ignoreMissingCss],
-      external: ['*.png', '*.svg'],
     };
 
     return options;

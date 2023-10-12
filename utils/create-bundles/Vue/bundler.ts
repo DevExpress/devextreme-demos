@@ -20,11 +20,14 @@ export default class VueBundler extends ESBundler {
     const options: BuildOptions = {
       bundle: true,
       minify: true,
+      loader: {
+        '.png': 'dataurl',
+        '.svg': 'dataurl',
+      },
       entryNames: '[dir]/bundle.[hash]',
       outdir: destinationDemoPath,
       entryPoints: this.#getEntryPoints(sourceDemoPath),
       plugins: [vuePlugin() as any],
-      external: ['*.png', '*.svg'],
       define: {
         __VUE_OPTIONS_API__: 'true',
         __VUE_PROD_DEVTOOLS__: 'false',
