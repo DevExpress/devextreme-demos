@@ -37,5 +37,4 @@ exports.bundles = series(
       build(framework).then(callback);
     }, { displayName: `bundle-${framework}` })),
   ),
-  'update-config',
 );
