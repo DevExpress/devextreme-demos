@@ -5,7 +5,69 @@ import FileManager, {
 import { fileItems } from './data.ts';
 
 export default function App() {
-  const fileManagerRef = React.useRef();
+  const fileManagerRef = React.useRef<FileManager>(null);
+
+  const createFile = React.useCallback((
+    fileExtension,
+    directory = fileManagerRef.current.instance.getCurrentDirectory(),
+  ) => {
+    const newItem = {
+      __KEY__: Date.now(),
+      name: `New file${fileExtension}`,
+      isDirectory: false,
+      size: 0,
+    };
+
+    if (!directory.isDirectory) {
+      return false;
+    }
+
+    let array = null;
+    if (!directory.dataItem) {
+      array = fileItems;
+    } else {
+      array = directory.dataItem.items;
+      if (!array) {
+        array = [];
+        directory.dataItem.items = array;
+      }
+    }
+
+    array.push(newItem);
+    return true;
+  }, []);
+
+  const updateCategory = React.useCallback((newCategory, directory, viewArea: string) => {
+    let items = null;
+
+    if (viewArea === 'navPane') {
+      items = [directory];
+    } else {
+      items = fileManagerRef.current.instance.getSelectedItems();
+    }
+
+    items.forEach((item: { dataItem: { category: any; }; }) => {
+      if (item.dataItem) {
+        item.dataItem.category = newCategory;
+      }
+    });
+
+    return items.length > 0;
+  }, []);
+
+  const onItemClick = React.useCallback(({ itemData, viewArea, fileSystemItem }) => {
+    let updated = false;
+
+    if (itemData.extension) {
+      updated = createFile(itemData.extension, fileSystemItem);
+    } else if (itemData.category !== undefined) {
+      updated = updateCategory(itemData.category, fileSystemItem, viewArea);
+    }
+
+    if (updated) {
+      fileManagerRef.current.instance.refresh();
+    }
+  }, [createFile, updateCategory]);
 
   const getNewFileMenuOptions = React.useCallback(() => ({
     items: [
@@ -59,68 +121,6 @@ export default function App() {
     onItemClick,
   }), [onItemClick]);
 
-  const onItemClick = React.useCallback(({ itemData, viewArea, fileSystemItem }) => {
-    let updated = false;
-
-    if (itemData.extension) {
-      updated = createFile(itemData.extension, fileSystemItem);
-    } else if (itemData.category !== undefined) {
-      updated = updateCategory(itemData.category, fileSystemItem, viewArea);
-    }
-
-    if (updated) {
-      fileManagerRef.current.instance.refresh();
-    }
-  }, []);
-
-  const createFile = React.useCallback((
-    fileExtension,
-    directory = fileManagerRef.current.instance.getCurrentDirectory(),
-  ) => {
-    const newItem = {
-      __KEY__: Date.now(),
-      name: `New file${fileExtension}`,
-      isDirectory: false,
-      size: 0,
-    };
-
-    if (!directory.isDirectory) {
-      return false;
-    }
-
-    let array = null;
-    if (!directory.dataItem) {
-      array = fileItems;
-    } else {
-      array = directory.dataItem.items;
-      if (!array) {
-        array = [];
-        directory.dataItem.items = array;
-      }
-    }
-
-    array.push(newItem);
-    return true;
-  }, []);
-
-  const updateCategory = React.useCallback((newCategory, directory, viewArea: string) => {
-    let items = null;
-
-    if (viewArea === 'navPane') {
-      items = [directory];
-    } else {
-      items = fileManagerRef.current.instance.getSelectedItems();
-    }
-
-    items.forEach((item: { dataItem: { category: any; }; }) => {
-      if (item.dataItem) {
-        item.dataItem.category = newCategory;
-      }
-    });
-
-    return items.length > 0;
-  }, []);
-
   return (
     <FileManager
       ref={fileManagerRef}
@@ -143,7 +143,7 @@ export default function App() {
         </Details>
       </ItemView>
       <Toolbar>
-        <Item name="showNavPane" visible="true" />
+        <Item name="showNavPane" visible={true} />
         <Item name="separator" />
         <Item name="create" />
         <Item widget="dxMenu" location="before" options={getNewFileMenuOptions()} />
