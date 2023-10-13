@@ -27,27 +27,22 @@
     <div class="options">
         <div class="caption">Options</div>
         <div class="option">
-            @(Html.DevExtreme().CheckBox()
-                .Text("Set minimum date")
-                .OnValueChanged("minValue_changed")
+            <span>Zoom level</span>
+            @(Html.DevExtreme().SelectBox()
+                .ID("zoom-level")
+                .InputAttr("aria-label", "Zoom Level")
+                .DataSource(zoomLevels)
+                .Value(zoomLevels[0])
+                .OnValueChanged("zoomLevel_changed")
             )
         </div>
         <div class="option">
-            @(Html.DevExtreme().CheckBox()
-                .Text("Set maximum date")
-                .OnValueChanged("maxValue_changed")
-            )
-        </div>
-        <div class="option">
-            @(Html.DevExtreme().CheckBox()
-                .Text("Disable weekends")
-                .OnValueChanged("disabledDates_changed")
-            )
-        </div>
-        <div class="option">
-            @(Html.DevExtreme().CheckBox()
-                .Text("Show week numbers")
-                .OnValueChanged("showWeekNumbers_changed")
+            <span>Selected date</span>
+            @(Html.DevExtreme().DateBox()
+                .InputAttr("aria-label", "Date")
+                .ID("selected-date")
+                .Value(DateTime.Now)
+                .OnValueChanged("selectedDate_changed")
             )
         </div>
         <div class="option">
@@ -61,6 +56,15 @@
             @(Html.DevExtreme().CheckBox()
                 .Text("Disable the calendar")
                 .OnValueChanged("disabledState_changed")
+            )
+        </div>
+        <div class="caption option">
+            <span>Week numeration</span>
+        </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Text("Show week numbers")
+                .OnValueChanged("showWeekNumbers_changed")
             )
         </div>
         <div class="option">
@@ -83,31 +87,11 @@
                 .OnValueChanged("weekNumberRule_changed")
             )
         </div>
-        <div class="option">
-            <span>Zoom level</span>
-            @(Html.DevExtreme().SelectBox()
-                .ID("zoom-level")
-                .InputAttr("aria-label", "Zoom Level")
-                .DataSource(zoomLevels)
-                .Value(zoomLevels[0])
-                .OnValueChanged("zoomLevel_changed")
-            )
-        </div>
-        <div class="option">
-            <span>Selected date</span>
-            @(Html.DevExtreme().DateBox()
-                .InputAttr("aria-label", "Date")
-                .ID("selected-date")
-                .Value(DateTime.Now)
-                .OnValueChanged("selectedDate_changed")
-            )
-        </div>
     </div>
 </div>
 
 <script>
     var date = new Date().getTime();
-    var msInDay = 1000 * 60 * 60 * 24;
 
     function getCalendarInstance() {
         return $("#calendar-container").dxCalendar("instance");
@@ -152,31 +136,6 @@
     function calendar_optionChanged(data) {
         if (data.name === 'zoomLevel') {
             $("#zoom-level").dxSelectBox("instance").option('value', data.value);
-        }
-    }
-
-    function minValue_changed(data) {
-        const minDate = new Date(date - msInDay * 3);
-
-        getCalendarInstance().option("min", data.value ? minDate : null);
-        getDateBoxInstance().option("min", data.value ? minDate : null);
-    }
-
-    function maxValue_changed(data) {
-        const maxDate = new Date(date + msInDay * 3);
-
-        getCalendarInstance().option("max", data.value ? maxDate : null);
-        getDateBoxInstance().option("max", data.value ? maxDate : null);
-    }
-
-    function disabledDates_changed(data) {
-        var calendar = getCalendarInstance();
-        if (data.value) {
-            calendar.option("disabledDates", function (data) {
-                return data.view === "month" && isWeekend(data.date);
-            });
-        } else {
-            calendar.option("disabledDates", null);
         }
     }
 
