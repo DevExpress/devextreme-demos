@@ -24,6 +24,9 @@ import {
 
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 
+import { ApplyChangesMode } from 'devextreme-react/common/grids';
+import { FieldChooserLayout } from 'devextreme-react/common';
+
 import service from './data.ts';
 
 const applyChangesModeLabel = { 'aria-label': 'Apply Changes Mode' };
@@ -31,8 +34,8 @@ const applyChangesModes = ['instantly', 'onDemand'];
 const layouts = service.getLayouts();
 
 const App = () => {
-  const [applyChangesMode, setApplyChangesMode] = React.useState<'instantly' | 'onDemand'>('instantly');
-  const [layout, setLayout] = React.useState<0 | 1 | 2>(0);
+  const [applyChangesMode, setApplyChangesMode] = React.useState<ApplyChangesMode>('instantly');
+  const [layout, setLayout] = React.useState<FieldChooserLayout>(0);
   const fieldChooserRef = React.useRef<PivotGridFieldChooser>(null);
 
   return (
