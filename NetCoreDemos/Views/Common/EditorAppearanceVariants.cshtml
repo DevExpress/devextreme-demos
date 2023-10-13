@@ -15,7 +15,7 @@
             <label>Label Mode</label>
             @(Html.DevExtreme().SelectBox()
                 .ID("label-mode-selector")
-                .Items(new[] { "static", "floating", "hidden" })
+                .Items(new[] { "static", "floating", "hidden", "outside" })
                 .Value(new JS("labelMode"))
                 .InputAttr("aria-label", "Label Mode")
                 .OnValueChanged("getValueChangedHandler('labelMode')")

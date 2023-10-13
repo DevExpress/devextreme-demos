@@ -9,13 +9,13 @@ fixture('Common.EditorAppearanceVariants')
     await t.resizeWindow(900, 600);
   });
 
-runManualTest('Common', 'EditorAppearanceVariants', ['React', 'Vue', 'Angular'], (test) => {
+runManualTest('Common', 'EditorAppearanceVariants', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
   test('EditorAppearanceVariants', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     const SELECTBOX_CLASS = 'dx-selectbox';
     const stylingModes = ['outlined', 'filled', 'underlined'];
-    const labelModes = ['static', 'floating', 'hidden'];
+    const labelModes = ['static', 'floating', 'hidden', 'outside'];
 
     const clickSaveButton = async () => {
       await t.click($('#validate'));

@@ -16,7 +16,7 @@
           <label>Label Mode</label>
           <DxSelectBox
             :input-attr="{ 'aria-label': 'Label Mode' }"
-            :items="[ 'static', 'floating', 'hidden' ]"
+            :items="[ 'static', 'floating', 'hidden', 'outside' ]"
             styling-mode="outlined"
             v-model:value="labelMode"
           />

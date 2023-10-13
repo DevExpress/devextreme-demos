@@ -116,7 +116,7 @@ $(() => {
   }).dxSelectBox('instance');
 
   $('#label-mode-selector').dxSelectBox({
-    items: ['static', 'floating', 'hidden'],
+    items: ['static', 'floating', 'hidden', 'outside'],
     value: 'static',
     inputAttr: { 'aria-label': 'Label Mode' },
     onValueChanged: getValueChangedHandler('labelMode'),
