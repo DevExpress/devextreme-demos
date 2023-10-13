@@ -31,8 +31,8 @@ const applyChangesModes = ['instantly', 'onDemand'];
 const layouts = service.getLayouts();
 
 const App = () => {
-  const [applyChangesMode, setApplyChangesMode] = React.useState('instantly');
-  const [layout, setLayout] = React.useState(0);
+  const [applyChangesMode, setApplyChangesMode] = React.useState<'instantly' | 'onDemand'>('instantly');
+  const [layout, setLayout] = React.useState<0 | 1 | 2>(0);
   const fieldChooserRef = React.useRef<PivotGridFieldChooser>(null);
 
   return (
@@ -69,11 +69,11 @@ const App = () => {
             <Button
               text="Apply"
               type="default"
-              onClick={() => fieldChooserRef.current.applyChanges()}
+              onClick={() => fieldChooserRef.current.instance.applyChanges()}
             ></Button>
             <Button
               text="Cancel"
-              onClick={() => fieldChooserRef.current.cancelChanges()}
+              onClick={() => fieldChooserRef.current.instance.cancelChanges()}
             ></Button>
           </div>
         }

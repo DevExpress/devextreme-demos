@@ -11,7 +11,7 @@ import PivotGrid, {
 const applyChangesModeLabel = { 'aria-label': 'Apply Changes Mode' };
 
 const App = () => {
-  const [applyChangesMode, setApplyChangesMode] = React.useState('instantly');
+  const [applyChangesMode, setApplyChangesMode] = React.useState<'instantly' | 'onDemand'>('instantly');
 
   return (
     <React.Fragment>

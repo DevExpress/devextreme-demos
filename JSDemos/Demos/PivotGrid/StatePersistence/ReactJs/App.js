@@ -19,8 +19,10 @@ const onContextMenuPreparing = (e) => {
         onItemClick() {
           let fieldIndex;
           if (sourceField.groupName) {
-            fieldIndex = dataSource
-              .getAreaFields(sourceField.area, true)[sourceField.areaIndex].index;
+            const areaField = dataSource.getAreaFields(sourceField.area, true)[
+              sourceField.areaIndex
+            ];
+            fieldIndex = areaField.index;
           } else {
             fieldIndex = sourceField.index;
           }
