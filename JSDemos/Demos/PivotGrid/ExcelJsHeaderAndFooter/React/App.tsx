@@ -75,9 +75,11 @@ const App = () => {
     }).then((cellRange) => {
       // Header
       const headerRow = worksheet.getRow(2);
+      const worksheetViews: any = worksheet.views;
+
       headerRow.height = 30;
 
-      const columnFromIndex = worksheet.views[0].xSplit + 1;
+      const columnFromIndex = worksheetViews[0].xSplit + 1;
       const columnToIndex = columnFromIndex + 3;
       worksheet.mergeCells(2, columnFromIndex, 2, columnToIndex);
 

@@ -5,7 +5,6 @@ import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 import Chart, {
   AdaptiveLayout,
   CommonSeriesSettings,
-  ITooltipProps,
   Size,
   Tooltip,
 } from 'devextreme-react/chart';
@@ -16,7 +15,7 @@ import PivotGrid, {
 
 import sales from './data.ts';
 
-const customizeTooltip: ITooltipProps['customizeTooltip'] = (args) => {
+const customizeTooltip = (args) => {
   const valueText = (args.seriesName.indexOf('Total') !== -1)
     ? new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'USD' }).format(args.originalValue)
     : args.originalValue;
@@ -28,8 +27,8 @@ const customizeTooltip: ITooltipProps['customizeTooltip'] = (args) => {
 };
 
 const App = () => {
-  const chartRef = React.useRef(null);
-  const pivotGridRef = React.useRef(null);
+  const chartRef = React.useRef<Chart>(null);
+  const pivotGridRef = React.useRef<PivotGrid>(null);
 
   React.useEffect(() => {
     pivotGridRef.current.instance.bindChart(chartRef.current.instance, {

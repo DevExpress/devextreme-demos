@@ -1,8 +1,9 @@
 import React from 'react';
-import { PivotGrid, PivotGridTypes, Scrolling } from 'devextreme-react/pivot-grid';
+import { PivotGrid, Scrolling } from 'devextreme-react/pivot-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
+import { Options as PivotGridDataSourceOptions } from 'devextreme/ui/pivot_grid/data_source';
 
-const dataSource: PivotGridTypes.Properties['dataSource'] = {
+const dataSource: PivotGridDataSourceOptions = {
   remoteOperations: true,
   store: createStore({
     key: 'OrderID',

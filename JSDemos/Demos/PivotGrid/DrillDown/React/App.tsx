@@ -6,15 +6,16 @@ import {
 } from 'devextreme-react/pivot-grid';
 import { DataGrid, Column } from 'devextreme-react/data-grid';
 import { Popup } from 'devextreme-react/popup';
+import DataSource from 'devextreme/data/data_source';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 
 import { sales } from './data.ts';
 
 const App = () => {
   const [popupTitle, setPopupTitle] = React.useState('');
-  const [drillDownDataSource, setDrillDownDataSource] = React.useState(null);
+  const [drillDownDataSource, setDrillDownDataSource] = React.useState<DataSource>(null);
   const [popupVisible, setPopupVisible] = React.useState(false);
-  const dataGridRef = React.useRef(null);
+  const dataGridRef = React.useRef<DataGrid>(null);
 
   const onCellClick = React.useCallback((e: PivotGridTypes.CellClickEvent) => {
     if (e.area === 'data') {

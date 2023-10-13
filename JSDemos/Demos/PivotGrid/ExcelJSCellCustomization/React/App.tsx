@@ -104,7 +104,7 @@ const onExporting = (e: PivotGridTypes.ExportingEvent) => {
   });
 };
 
-const onCellPrepared = ({ cell, area, cellElement }: PivotGridTypes.CellPreparedEvent & { cell: { area?: string } }) => {
+const onCellPrepared = ({ cell, area, cellElement }: any) => {
   cell.area = area;
 
   if (isDataCell(cell) || isTotalCell(cell)) {

@@ -3,7 +3,6 @@ import React from 'react';
 import PivotGrid, {
   FieldChooser,
   FieldPanel,
-  PivotGridTypes,
   StateStoring,
 } from 'devextreme-react/pivot-grid';
 import Button from 'devextreme-react/button';
@@ -20,7 +19,7 @@ const onResetClick = () => {
   dataSource.state({});
 };
 
-const onContextMenuPreparing = (e: PivotGridTypes.ContextMenuPreparingEvent & { field: { index: number } }) => {
+const onContextMenuPreparing = (e) => {
   const sourceField = e.field;
 
   if (sourceField) {
@@ -28,11 +27,12 @@ const onContextMenuPreparing = (e: PivotGridTypes.ContextMenuPreparingEvent & { 
       e.items.push({
         text: 'Hide field',
         onItemClick() {
-          let fieldIndex;
+          let fieldIndex: number;
+
           if (sourceField.groupName) {
-            fieldIndex = dataSource
-              .getAreaFields(sourceField.area, true)[sourceField.areaIndex]
-              .index;
+            const areaField: any = dataSource.getAreaFields(sourceField.area, true)[sourceField.areaIndex];
+
+            fieldIndex = areaField.index;
           } else {
             fieldIndex = sourceField.index;
           }
