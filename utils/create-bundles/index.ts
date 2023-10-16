@@ -1,6 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import yargs from 'yargs';
-import { Framework, Args, Item, Demo } from './helper/types';
+import {
+  Framework, Args, Item, Demo,
+} from './helper/types';
 import { copyMetadata, isSkipDemo } from './helper';
 import { ESBundler } from './helper/bundler';
 import ReactBundler from './React/bundler';
@@ -30,7 +32,7 @@ export const buildDemo = async (demo: Demo, bundler: ESBundler) => {
 
   // eslint-disable-next-line no-await-in-loop
   await bundler.buildDemo(demo);
-}
+};
 
 const buildDemos = async (bundler: ESBundler) => {
   const menu: Item[] = (menuMeta as any).default;
@@ -53,7 +55,7 @@ if (argv['copy-metadata']) {
   copyMetadata();
 }
 
-if(argv.framework) {
+if (argv.framework) {
   const currentBundler = getBundler(argv.framework);
   if (currentBundler) {
     buildDemos(currentBundler);

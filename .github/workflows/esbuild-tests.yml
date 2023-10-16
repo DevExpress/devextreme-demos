@@ -107,12 +107,6 @@ jobs:
     timeout-minutes: 60
 
     steps:
-    # - name: Pin Chrome version
-    #   run: |
-    #     CHROME_VERSION=117.0.5938.92
-    #     wget "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}-1_amd64.deb"
-    #     sudo dpkg -i "google-chrome-stable_${CHROME_VERSION}-1_amd64.deb"
-
     - name: Get sources
       uses: actions/checkout@v3
 
@@ -127,18 +121,8 @@ jobs:
     - name: Unpack artifacts
       run: 7z x node_modules.7z
 
-    # - name: Prepare JS
-    #   run: npm run prepare-js
-
-    # - name: Update bundles config
-    #   run: npx gulp update-config
-
-    # - name: Run Web Server
-    #   run: |
-    #     python -m http.server 8080 &
-    #     python -m http.server 8081 &
-    #     python -m http.server 8082 &
-    #     python -m http.server 8083 &
+    - name: Prepare JS
+      run: npm run prepare-js
 
     - name: Get changed files
       uses: ./.github/actions/get-changed-files
@@ -155,26 +139,4 @@ jobs:
       env:
         CHANGEDFILEINFOSPATH: ${{ github.workspace }}/changed-files.json
         FRAMEWORK: ${{ matrix.FRAMEWORK }}
-        CI_ENV: true # The `ignore` field in the visualtestrc.json should be disabled when running test locally
       run: npm run esbuild-bundles-test
-
-    - name: Copy changed-files artifacts
-      # if: ${{ failure() }}
-      uses: actions/upload-artifact@v3
-      with:
-        name: changed-files.json
-        path: ${{ github.workspace }}/changed-files.json
-        if-no-files-found: ignore
-
-    # - name: Get screenshots artifacts name
-    #   if: ${{ failure() }}
-    #   id: screenshotname
-    #   run: echo "value=$(echo "${{ matrix.CONSTEL }}" | grep -oP "^\w+")" >> $GITHUB_OUTPUT
-
-    # - name: Copy screenshots artifacts
-    #   if: ${{ failure() }}
-    #   uses: actions/upload-artifact@v3
-    #   with:
-    #     name: screenshots-${{ steps.screenshotname.outputs.value }}
-    #     path: ${{ github.workspace }}/testing/artifacts/compared-screenshots/*
-    #     if-no-files-found: ignore
