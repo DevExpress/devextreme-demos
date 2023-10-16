@@ -96,7 +96,6 @@ jobs:
         retention-days: 1
 
   esbuild:
-    needs: build-demos
     strategy:
       fail-fast: false
       matrix:
