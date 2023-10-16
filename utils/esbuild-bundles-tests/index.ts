@@ -1,17 +1,7 @@
 import { readFileSync, existsSync } from 'fs-extra';
-import { Demo, Framework } from '../create-bundles/helper/types.js';
+import { Demo, Framework, Item } from '../create-bundles/helper/types.js';
 import * as esbundler from '../create-bundles';
 import * as menuMeta from '../../JSDemos/menuMeta.json';
-
-const bundler: Framework[] = [];
-
-const getBundler = (framework: Framework) => {
-  if(!bundler[framework]) {
-    bundler[framework] = esbundler.getBundler(framework);
-  }
-
-  return bundler[framework];
-}
 
 type ChangedFile = { filename: string };
 type ChangedDemo = {
@@ -21,14 +11,15 @@ type ChangedDemo = {
 };
 
 const getDemosByMenuMeta = (changedDemos: ChangedDemo[]) => {
-  const result = [];
+  const menu: Item[] = (menuMeta as any).default;
+  const result: Demo[] = [];
 
-  for (const meta of menuMeta) {
+  for (const meta of menu) {
     for (const group of meta.Groups) {
       const demos = group.Demos || [];
       for (const demo of demos) {
-        for(const changedDemo of changedDemos) {
-          if(demo.Widget === changedDemo.Widget && demo.Name === changedDemo.Name) {
+        for (const changedDemo of changedDemos) {
+          if (demo.Widget === changedDemo.Widget && demo.Name === changedDemo.Name) {
             result.push(demo);
           }
         }
@@ -37,10 +28,10 @@ const getDemosByMenuMeta = (changedDemos: ChangedDemo[]) => {
   }
 
   return result;
-}
+};
 
 const getListChangedDemos = () => {
-  if(process.env.CHANGEDFILEINFOSPATH && !existsSync(process.env.CHANGEDFILEINFOSPATH)) {
+  if (process.env.CHANGEDFILEINFOSPATH && !existsSync(process.env.CHANGEDFILEINFOSPATH)) {
     process.exit();
   }
 
@@ -53,22 +44,23 @@ const getListChangedDemos = () => {
       return {
         Widget: parts[2],
         Name: parts[3],
-        Framework: parts[4] as Framework
+        Framework: parts[4] as Framework,
       };
     })
     .filter((demo: ChangedDemo) => {
-      if(process.env.FRAMEWORK && process.env.FRAMEWORK !== demo.Framework) {
+      if (process.env.FRAMEWORK !== demo.Framework) {
         return false;
       }
 
       return true;
     });
-  
+
   const changedDemos = getDemosByMenuMeta(transformDemos);
   return changedDemos;
-}
+};
 
+const bundler = esbundler.getBundler(process.env.FRAMEWORK as Framework);
 const changedDemos = getListChangedDemos();
 changedDemos.forEach((demo) => {
-  esbundler.buildDemo(demo, getBundler(demo.Framework));
+  esbundler.buildDemo(demo, bundler);
 });
