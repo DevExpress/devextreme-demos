@@ -9,9 +9,7 @@ import Chart, {
   Tick,
 } from 'devextreme-react/chart';
 
-function customizeText(e) {
-  return `Day ${e.value}`;
-}
+const customizeText = (e) => `Day ${e.value}`;
 function App() {
   return (
     <Chart

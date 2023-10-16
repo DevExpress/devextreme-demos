@@ -22,7 +22,7 @@ import {
   intervalLabel,
 } from './data.js';
 
-function customizeTooltip(pointInfo) {
+const customizeTooltip = (pointInfo) => {
   const { aggregationInfo } = pointInfo.point;
   const start = aggregationInfo && aggregationInfo.intervalStart;
   const end = aggregationInfo && aggregationInfo.intervalEnd;
@@ -44,7 +44,7 @@ function customizeTooltip(pointInfo) {
     }),
   };
   return handlers[pointInfo.seriesName](pointInfo);
-}
+};
 function App() {
   const [useAggregation, setUseAggregation] = React.useState(true);
   const [currentFunction, setCurrentFunction] = React.useState(aggregationFunctions[0].func);

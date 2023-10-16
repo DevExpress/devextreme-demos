@@ -8,7 +8,7 @@ function calculateTotal(pieChart) {
     pieChart
       .getAllSeries()[0]
       .getVisiblePoints()
-      .reduce((s, p) => s + p.originalValue, 0),
+      .reduce((s, p) => s + Number(p.originalValue), 0),
   );
 }
 function getImagePath(country) {

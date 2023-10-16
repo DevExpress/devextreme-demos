@@ -3,7 +3,7 @@ export const colorizationOptions = [
     name: 'Discrete',
     options: {
       type: 'discrete',
-      palette: ['Harmony Light'],
+      palette: 'Harmony Light',
       colorizeGroups: false,
     },
   },
@@ -11,7 +11,7 @@ export const colorizationOptions = [
     name: 'Grouped',
     options: {
       type: 'discrete',
-      palette: ['Harmony Light'],
+      palette: 'Harmony Light',
       colorizeGroups: true,
     },
   },

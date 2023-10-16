@@ -14,11 +14,9 @@ import {
 } from 'devextreme-react/chart';
 import { dataSource, annotationSources } from './data.js';
 
-function customizeTooltip(annotation) {
-  return {
-    html: `<div class='tooltip'>${annotation.description}</div>`,
-  };
-}
+const customizeTooltip = (annotation) => ({
+  html: `<div class='tooltip'>${annotation.description}</div>`,
+});
 function App() {
   return (
     <Chart

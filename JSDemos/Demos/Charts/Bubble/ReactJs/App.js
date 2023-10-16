@@ -25,9 +25,7 @@ function seriesClick(e) {
     series.show();
   }
 }
-function customizeText(e) {
-  return `${e.value}M`;
-}
+const customizeText = (e) => `${e.value}M`;
 function App() {
   return (
     <Chart

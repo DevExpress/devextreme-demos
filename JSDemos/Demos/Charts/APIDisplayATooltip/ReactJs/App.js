@@ -5,11 +5,9 @@ import PieChart, {
 import { SelectBox } from 'devextreme-react/select-box';
 import { populationData, regionLabel } from './data.js';
 
-function customizeTooltip(pointInfo) {
-  return {
-    text: `${pointInfo.argumentText}<br/>${pointInfo.valueText}`,
-  };
-}
+const customizeTooltip = (pointInfo) => ({
+  text: `${pointInfo.argumentText}<br/>${pointInfo.valueText}`,
+});
 function App() {
   const [selectedRegion, setSelectedRegion] = React.useState(null);
   const pieChartRef = React.useRef(null);
