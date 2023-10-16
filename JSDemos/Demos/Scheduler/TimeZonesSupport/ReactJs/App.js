@@ -1,17 +1,19 @@
 import React from 'react';
 import Scheduler, { Editing } from 'devextreme-react/scheduler';
 import SelectBox from 'devextreme-react/select-box';
-import timeZoneUtils from 'devextreme/time_zone_utils';
+
+import { getTimeZones } from 'devextreme/time_zone_utils';
 import { data, locations } from './data.js';
 
 const timeZoneLabel = { 'aria-label': 'Time zone' };
 const currentDate = new Date(2021, 3, 27);
 const views = ['workWeek'];
-const getTimeZones = (date) => {
-  const timeZones = timeZoneUtils.getTimeZones(date);
-  return timeZones.filter((timeZone) => locations.indexOf(timeZone.id) !== -1);
-};
-const defaultTimeZones = getTimeZones(currentDate);
+
+const getDefaultTimeZones = (date) =>
+  getTimeZones(date).filter((timeZone) => locations.indexOf(timeZone.id) !== -1);
+
+const defaultTimeZones = getDefaultTimeZones(currentDate);
+
 const onAppointmentFormOpening = (e) => {
   const { form } = e;
   const startDateTimezoneEditor = form.getEditor('startDateTimeZone');
@@ -31,7 +33,7 @@ const App = () => {
   }, []);
   const onOptionChanged = React.useCallback((e) => {
     if (e.name === 'currentDate') {
-      setTimeZones(getTimeZones(e.value));
+      setTimeZones(getDefaultTimeZones(e.value));
     }
   }, []);
   return (
