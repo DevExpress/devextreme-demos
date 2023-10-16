@@ -12,7 +12,7 @@ function App() {
   const setAlgorithm = React.useCallback(
     (data) => {
       setSelectedAlgorithm(data.value);
-      setCurrentAlgorithm(getCurrentAlgorithm(data.value));
+      setCurrentAlgorithm(() => getCurrentAlgorithm(data.value));
     },
     [setSelectedAlgorithm, setCurrentAlgorithm],
   );

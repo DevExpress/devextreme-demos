@@ -17,7 +17,7 @@ function App() {
 
   const setAlgorithm = React.useCallback((data: SelectBoxTypes.ValueChangedEvent) => {
     setSelectedAlgorithm(data.value);
-    setCurrentAlgorithm(getCurrentAlgorithm(data.value));
+    setCurrentAlgorithm(() => getCurrentAlgorithm(data.value));
   }, [setSelectedAlgorithm, setCurrentAlgorithm]);
 
   return (
