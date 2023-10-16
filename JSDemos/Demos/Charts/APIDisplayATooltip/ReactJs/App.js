@@ -25,7 +25,7 @@ function App() {
     [showTooltip],
   );
   const onRegionChanged = React.useCallback(
-    (value) => {
+    ({ value }) => {
       const point = pieChartRef.current.instance.getAllSeries()[0].getPointsByArg(value)[0];
       showTooltip(point);
     },
