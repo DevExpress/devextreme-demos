@@ -3,19 +3,34 @@ import {
   BarGauge, Label, Tooltip, Export, Title, Font, Legend,
 } from 'devextreme-react/bar-gauge';
 
+interface ScaleValue {
+  index: number;
+  value: number;
+  valueText: string;
+}
+
+interface BarItem {
+  color?: string,
+  index?: number,
+  value?: number,
+}
+
 const values = [121.4, 135.4, 115.9, 141.1, 127.5];
 
-function customizeTooltip(arg: { valueText: any; }) {
+function customizeTooltip(arg: ScaleValue) {
   return {
     text: getText(arg, arg.valueText),
   };
 }
 
-function customizeText(arg: { item: any; text: any; }) {
+function customizeText(arg: {
+  item: BarItem,
+  text: any,
+}) {
   return getText(arg.item, arg.text);
 }
 
-function getText(item: { index: number; }, text) {
+function getText(item: BarItem, text: string) {
   return `Racer ${(item.index + 1)} - ${text} km/h`;
 }
 

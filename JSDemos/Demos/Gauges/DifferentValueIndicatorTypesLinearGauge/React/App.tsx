@@ -74,7 +74,7 @@ function App() {
             <Label customizeText={customizeText}></Label>
           </Scale>
           <ValueIndicator
-            type="rangebar"
+            type="rangeBar"
             color="#483D8B"
           ></ValueIndicator>
         </LinearGauge>

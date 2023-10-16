@@ -12,7 +12,7 @@ function App() {
       <Scale startValue={50} endValue={150} tickInterval={10}>
         <Label useRangeColors={true} />
       </Scale>
-      <RangeContainer palette="pastel">
+      <RangeContainer palette="Pastel">
         <Range startValue={50} endValue={90} />
         <Range startValue={90} endValue={130} />
         <Range startValue={130} endValue={150} />

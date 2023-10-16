@@ -80,7 +80,7 @@ function App() {
           value={90}
         >
           <ValueIndicator
-            type="rangebar"
+            type="rangeBar"
             color="#f05b41"
           ></ValueIndicator>
           <Scale

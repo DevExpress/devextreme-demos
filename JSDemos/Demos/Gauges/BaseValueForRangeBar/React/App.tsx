@@ -29,7 +29,7 @@ function App() {
           <Scale startValue={45} endValue={-45} tickInterval={45}>
             <Label customizeText={customizeText} />
           </Scale>
-          <ValueIndicator baseValue={0} type="rangebar" />
+          <ValueIndicator baseValue={0} type="rangeBar" />
         </CircularGauge>
         <LinearGauge
           id="c2"

@@ -24,7 +24,7 @@ function App() {
       <Scale startValue={0} endValue={3000} tickInterval={500}>
         <Label customizeText={customizeText} />
       </Scale>
-      <SubvalueIndicator type="textcloud">
+      <SubvalueIndicator type="textCloud">
         <Text format={format} customizeText={customizeText} />
       </SubvalueIndicator>
       <Export enabled={true} />

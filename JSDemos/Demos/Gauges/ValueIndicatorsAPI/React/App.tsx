@@ -57,7 +57,7 @@ function App() {
           <NumberBox
             id="main-generator"
             value={mainGeneratorValue}
-            onValueChanged={setMainGeneratorValue}
+            onValueChange={setMainGeneratorValue}
             min={10}
             max={40}
             width={100}
@@ -70,7 +70,7 @@ function App() {
           <NumberBox
             id="additional-generator-one"
             value={additionalGenerator1Value}
-            onValueChanged={setAdditionalGenerator1Value}
+            onValueChange={setAdditionalGenerator1Value}
             min={10}
             max={40}
             width={100}
@@ -83,7 +83,7 @@ function App() {
           <NumberBox
             id="additional-generator-two"
             value={additionalGenerator2Value}
-            onValueChanged={setAdditionalGenerator2Value}
+            onValueChange={setAdditionalGenerator2Value}
             min={10}
             max={40}
             width={100}
