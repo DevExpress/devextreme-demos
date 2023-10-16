@@ -21,7 +21,7 @@ import Button from 'devextreme-react/button';
 import ArrayStore from 'devextreme/data/array_store';
 import CustomShapeTemplate from './CustomShapeTemplate.js';
 import CustomShapeToolboxTemplate from './CustomShapeToolboxTemplate.js';
-import service from './data.js';
+import service from './data.ts';
 
 const pageCommands = ['pageSize', 'pageOrientation', 'pageColor'];
 

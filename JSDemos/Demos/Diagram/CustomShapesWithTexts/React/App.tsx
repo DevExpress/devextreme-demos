@@ -1,6 +1,6 @@
 import React from 'react';
 import Diagram, { CustomShape, Group, Toolbox } from 'devextreme-react/diagram';
-import service from './data.js';
+import service from './data.ts';
 import 'whatwg-fetch';
 
 const employees = service.getEmployees();

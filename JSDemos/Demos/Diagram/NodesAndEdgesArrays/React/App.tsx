@@ -3,7 +3,7 @@ import Diagram, {
   Nodes, Edges, AutoLayout, Toolbox, Group,
 } from 'devextreme-react/diagram';
 import ArrayStore from 'devextreme/data/array_store';
-import service from './data.js';
+import service from './data.ts';
 
 const flowNodesDataSource = new ArrayStore({
   key: 'id',

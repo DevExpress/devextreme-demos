@@ -3,7 +3,7 @@ import Diagram, {
   Nodes, AutoLayout, Toolbox, PropertiesPanel,
 } from 'devextreme-react/diagram';
 import ArrayStore from 'devextreme/data/array_store';
-import service from './data.js';
+import service from './data.ts';
 
 const dataSource = new ArrayStore({
   key: 'ID',

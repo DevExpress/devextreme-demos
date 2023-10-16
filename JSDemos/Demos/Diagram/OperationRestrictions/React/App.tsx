@@ -4,7 +4,7 @@ import Diagram, {
 } from 'devextreme-react/diagram';
 import notify from 'devextreme/ui/notify';
 import ArrayStore from 'devextreme/data/array_store';
-import service from './data.js';
+import service from './data.ts';
 
 const shapes = ['team', 'employee'];
 
