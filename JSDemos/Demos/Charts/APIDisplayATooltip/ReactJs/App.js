@@ -19,7 +19,7 @@ function App() {
     [setSelectedRegion],
   );
   const onPointClick = React.useCallback(
-    (point) => {
+    ({ target: point }) => {
       showTooltip(point);
     },
     [showTooltip],

@@ -18,7 +18,7 @@ function App() {
     setSelectedRegion(point.argument);
   }, [setSelectedRegion]);
 
-  const onPointClick = React.useCallback((point: PieChartTypes.PointClickEvent) => {
+  const onPointClick = React.useCallback(({ target: point }: PieChartTypes.PointClickEvent) => {
     showTooltip(point);
   }, [showTooltip]);
 
