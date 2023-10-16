@@ -136,9 +136,11 @@ function onExporting(e) {
   }).then((cellRange) => {
     // Header
     const headerRow = worksheet.getRow(2);
+    const worksheetView: any = worksheet.views[0];
+
     headerRow.height = 30;
 
-    const columnFromIndex = worksheet.views[0].xSplit + 1;
+    const columnFromIndex = worksheetView.xSplit + 1;
     const columnToIndex = columnFromIndex + 3;
     worksheet.mergeCells(2, columnFromIndex, 2, columnToIndex);
 
@@ -148,8 +150,8 @@ function onExporting(e) {
     headerCell.alignment = { horizontal: 'left', vertical: 'middle', wrapText: true };
 
     // Footer
-    const footerRowIndex = cellRange.to.row + 2;
-    const footerCell = worksheet.getRow(footerRowIndex).getCell(cellRange.to.column);
+    const footerRowIndex = (cellRange?.to?.row ?? 0) + 2;
+    const footerCell = worksheet.getRow(footerRowIndex).getCell(cellRange?.to?.column ?? 0);
     footerCell.value = 'www.wikipedia.org';
     footerCell.font = { color: { argb: 'BFBFBF' }, italic: true };
     footerCell.alignment = { horizontal: 'right' };

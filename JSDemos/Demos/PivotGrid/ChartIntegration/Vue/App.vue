@@ -89,7 +89,7 @@ const customizeTooltip = ({ seriesName, originalValue }) => {
 };
 
 onMounted(() => {
-  grid.value?.instance.bindChart(chart.value?.instance, {
+  grid.value?.instance?.bindChart(chart.value?.instance, {
     dataFieldsDisplayMode: 'splitPanes',
     alternateDataFields: false,
   });

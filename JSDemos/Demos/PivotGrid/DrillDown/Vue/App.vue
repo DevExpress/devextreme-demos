@@ -96,7 +96,7 @@ function onCellClick(e) {
   }
 }
 function onShown() {
-  dataGridRef.value?.instance.updateDimensions();
+  dataGridRef.value?.instance?.updateDimensions();
 }
 </script>
 <style scoped>

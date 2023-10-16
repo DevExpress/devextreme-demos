@@ -110,7 +110,7 @@ function onContextMenuPreparing(e) {
 
         dataSource.load();
       };
-      const menuItems = [];
+      const menuItems: any = [];
 
       e.items.push({ text: 'Summary Type', items: menuItems });
 

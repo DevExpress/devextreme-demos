@@ -124,7 +124,8 @@ function onContextMenuPreparing(e) {
       e.items.push({
         text: 'Hide field',
         onItemClick() {
-          let fieldIndex;
+          let fieldIndex: number;
+
           if (sourceField.groupName) {
             fieldIndex = dataSource
               .getAreaFields(sourceField.area, true)[sourceField.areaIndex]
@@ -149,7 +150,7 @@ function onContextMenuPreparing(e) {
 
         dataSource.load();
       };
-      const menuItems = [];
+      const menuItems: any = [];
 
       e.items.push({ text: 'Summary Type', items: menuItems });
 

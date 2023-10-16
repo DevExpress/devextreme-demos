@@ -95,13 +95,13 @@ function isDataCell(cell) {
 function isTotalCell(cell) {
   return (cell.type === 'T' || cell.type === 'GT' || cell.rowType === 'T' || cell.rowType === 'GT' || cell.columnType === 'T' || cell.columnType === 'GT');
 }
-function getExcelCellFormat({ fill, font, bold }) {
+function getExcelCellFormat({ fill, font, bold = false }) {
   return {
     fill: { type: 'pattern', pattern: 'solid', fgColor: { argb: fill } },
     font: { color: { argb: font }, bold },
   };
 }
-function getCssStyles({ fill, font, bold }) {
+function getCssStyles({ fill, font, bold = false }) {
   return {
     'background-color': `#${fill}`,
     color: `#${font}`,

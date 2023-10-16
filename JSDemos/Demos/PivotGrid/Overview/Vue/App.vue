@@ -88,12 +88,12 @@ const chartRef = ref<DxChart>();
 onMounted(() => {
   const pivotGrid = pivotGridRef.value?.instance;
 
-  pivotGrid.bindChart(chartRef.value?.instance, {
+  pivotGrid?.bindChart(chartRef.value?.instance, {
     dataFieldsDisplayMode: 'splitPanes',
     alternateDataFields: false,
   });
 
-  const pivotGridDataSource = pivotGrid.getDataSource();
+  const pivotGridDataSource = pivotGrid?.getDataSource();
 
   setTimeout(() => {
     pivotGridDataSource?.expandHeaderItem('row', ['North America']);
