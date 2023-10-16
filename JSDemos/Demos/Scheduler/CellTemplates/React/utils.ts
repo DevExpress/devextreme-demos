@@ -1,5 +1,5 @@
 import { SchedulerTypes } from 'devextreme-react/scheduler';
-import { dinnerTime, holidays } from './data.js';
+import { dinnerTime, holidays } from './data.ts';
 
 export default class Utils {
   static isHoliday(date: Date) {

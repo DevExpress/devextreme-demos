@@ -52,7 +52,7 @@ const onAppointmentUpdating = (e: SchedulerTypes.AppointmentUpdatingEvent) => {
 };
 
 const App = () => {
-  const [currentView, setCurrentView] = React.useState<SchedulerTypes.Properties['currentView']>(views[0]);
+  const [currentView, setCurrentView] = React.useState<SchedulerTypes.ViewType>(views[0]);
 
   const DataCellComponent = React.useMemo(() => (
     currentView === 'month' ? DataCellMonth : DataCell

@@ -1,9 +1,10 @@
 import React from 'react';
+import { SchedulerTypes } from 'devextreme-react/scheduler';
 import Utils from './utils.ts';
 
 interface DateCellProps {
-itemData: any;
-currentView: any;
+  itemData: any;
+  currentView: SchedulerTypes.ViewType;
 }
 
 const DateCell = (props: DateCellProps) => {
