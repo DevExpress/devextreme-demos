@@ -3,7 +3,7 @@
     <div :class="widgetContainerClasses">
       <DxTabs
         id="withText"
-        selected-index="0"
+        :selected-index="0"
         :data-source="tabsWithText"
         :scroll-by-content="false"
         :show-nav-buttons="false"
@@ -11,7 +11,7 @@
       />
       <DxTabs
         id="withIconAndText"
-        selected-index="0"
+        :selected-index="0"
         :data-source="tabsWithIconAndText"
         :scroll-by-content="false"
         :show-nav-buttons="false"
@@ -19,7 +19,7 @@
       />
       <DxTabs
         id="withIcon"
-        selected-index="0"
+        :selected-index="0"
         :data-source="tabsWithIcon"
         :scroll-by-content="false"
         :show-nav-buttons="false"
@@ -179,7 +179,7 @@ export default {
 }
 
 .dx-tab {
-  width: 135px;
+  width: 136px;
 }
 
 .caption {
@@ -195,12 +195,15 @@ export default {
   margin-top: 20px;
 }
 
-.dx-tabs-horizontal {
+.dx-viewport:not(.dx-theme-generic) .dx-tabs-horizontal {
   border-bottom: 1px solid rgb(225, 225, 225, 0.4);
 }
 
-.dx-tabs-vertical {
+.dx-viewport:not(.dx-theme-generic) .dx-tabs-vertical {
   border-right: 1px solid rgb(225, 225, 225, 0.4);
+}
+
+.dx-tabs-vertical {
   height: 250px;
 }
 </style>
