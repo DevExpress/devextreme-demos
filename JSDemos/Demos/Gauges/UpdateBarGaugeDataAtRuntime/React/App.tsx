@@ -1,7 +1,7 @@
 import React from 'react';
 import { BarGauge, Label } from 'devextreme-react/bar-gauge';
 import { SelectBox } from 'devextreme-react/select-box';
-import { colors, colorLabel } from './data.js';
+import { colors, colorLabel } from './data.ts';
 
 const palette = ['#ff0000', '#00ff00', '#0000ff'];
 

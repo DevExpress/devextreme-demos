@@ -3,7 +3,7 @@ import {
   LinearGauge, Title, Font, Geometry, Scale, RangeContainer, Range, ValueIndicator, Label,
 } from 'devextreme-react/linear-gauge';
 import { SelectBox } from 'devextreme-react/select-box';
-import { cities, cityLabel } from './data.js';
+import { cities, cityLabel } from './data.ts';
 
 const customTicks = [900, 1000, 1020, 1100];
 const temperatureGaugeStartValue = -40;

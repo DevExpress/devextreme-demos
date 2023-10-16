@@ -1,7 +1,7 @@
 import React from 'react';
 import { BarGauge, Label } from 'devextreme-react/bar-gauge';
 import { CheckBox } from 'devextreme-react/check-box';
-import { products } from './data.js';
+import { products } from './data.ts';
 
 const format = {
   type: 'fixedPoint',

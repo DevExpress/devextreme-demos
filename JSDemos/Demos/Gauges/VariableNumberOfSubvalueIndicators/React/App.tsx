@@ -3,7 +3,7 @@ import {
   LinearGauge, Scale, Label, Tooltip, Export, Title, Font,
 } from 'devextreme-react/linear-gauge';
 import { SelectBox } from 'devextreme-react/select-box';
-import { dataSource, departmentLabel } from './data.js';
+import { dataSource, departmentLabel } from './data.ts';
 
 function customizeText({ valueText }) {
   return `${valueText} kW`;

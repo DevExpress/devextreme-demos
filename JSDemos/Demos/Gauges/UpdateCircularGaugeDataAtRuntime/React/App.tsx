@@ -3,7 +3,7 @@ import {
   CircularGauge, Scale, Label, RangeContainer, Range, Tooltip, Title, Font,
 } from 'devextreme-react/circular-gauge';
 import { SelectBox } from 'devextreme-react/select-box';
-import { dataSource, seasonLabel } from './data.js';
+import { dataSource, seasonLabel } from './data.ts';
 
 function customizeText({ valueText }) {
   return `${valueText} °C`;
