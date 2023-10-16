@@ -1,6 +1,6 @@
 import React from 'react';
 import HtmlEditor from 'devextreme-react/html-editor';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const mentionsConfig = [{
   dataSource: employees,
@@ -60,7 +60,7 @@ export default function App() {
         </div>
       </div>
       <HtmlEditor
-        mentions={mentionsConfig}>
+        mentions={mentionsConfig as any}>
         <p>
           <span className="dx-mention" spellCheck="false" data-marker="@" data-mention-value="Kevin Carter"><span><span>@</span>Kevin Carter</span></span>
           {" I think John's expertise can be very valuable in our startup."}
