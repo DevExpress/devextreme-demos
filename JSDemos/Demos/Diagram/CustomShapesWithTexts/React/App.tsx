@@ -6,7 +6,7 @@ import 'whatwg-fetch';
 const employees = service.getEmployees();
 
 export default function App() {
-  const diagramRef = React.useRef();
+  const diagramRef = React.useRef<Diagram>();
 
   React.useEffect(() => {
     const diagram = diagramRef.current.instance;
@@ -33,7 +33,7 @@ export default function App() {
         />
       ))}
       <Toolbox>
-        <Group category="employees" title="Employees" displayMode="texts" />
+        <Group category={'employees' as any} title="Employees" displayMode="texts" />
       </Toolbox>
     </Diagram>
   );

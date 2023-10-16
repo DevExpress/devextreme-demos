@@ -2,8 +2,8 @@ import React from 'react';
 import Diagram, { CustomShape, Nodes, AutoLayout } from 'devextreme-react/diagram';
 import { Popup } from 'devextreme-react/popup';
 import ArrayStore from 'devextreme/data/array_store';
-import CustomShapeTemplate from './CustomShapeTemplate.js';
-import service from './data.ts';
+import CustomShapeTemplate from './CustomShapeTemplate.tsx';
+import service, { Employee as EmployeeType } from './data.ts';
 
 const employees = service.getEmployees();
 const dataSource = new ArrayStore({
@@ -11,16 +11,13 @@ const dataSource = new ArrayStore({
   data: employees,
 });
 
-function itemTypeExpr(obj: { ID: any; }) {
+function itemTypeExpr(obj: { ID: number; }) {
   return `employee${obj.ID}`;
 }
 
 export default function App() {
-  const [currentEmployee, setCurrentEmployee] = React.useState({});
+  const [currentEmployee, setCurrentEmployee] = React.useState<Partial<EmployeeType>>({});
   const [popupVisible, setPopupVisible] = React.useState(false);
-
-  const customShapeTemplate = React.useCallback((item: { dataItem: any; }) => (CustomShapeTemplate(item.dataItem,
-    () => { showInfo(item.dataItem); })), [showInfo]);
 
   const showInfo = React.useCallback((employee) => {
     setCurrentEmployee(employee);
@@ -31,6 +28,9 @@ export default function App() {
     setCurrentEmployee({});
     setPopupVisible(false);
   }, [setCurrentEmployee, setPopupVisible]);
+
+  const customShapeTemplate = React.useCallback((item) => (CustomShapeTemplate(item.dataItem,
+    () => { showInfo(item.dataItem); })), [showInfo]);
 
   return (
     <div id="container">

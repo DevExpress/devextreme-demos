@@ -1,6 +1,6 @@
 import React from 'react';
 import Diagram, {
-  CustomShape, Nodes, AutoLayout, ContextToolbox, Toolbox, PropertiesPanel, Group,
+  CustomShape, Nodes, AutoLayout, ContextToolbox, Toolbox, PropertiesPanel, Group, DiagramTypes,
 } from 'devextreme-react/diagram';
 import notify from 'devextreme/ui/notify';
 import ArrayStore from 'devextreme/data/array_store';
@@ -24,7 +24,7 @@ function showToast(text: string) {
   });
 }
 
-function onRequestLayoutUpdate(e: { changes: string | any[]; allowed: boolean; }) {
+function onRequestLayoutUpdate(e: DiagramTypes.RequestLayoutUpdateEvent) {
   for (let i = 0; i < e.changes.length; i += 1) {
     if (e.changes[i].type === 'remove') {
       e.allowed = true;
@@ -49,7 +49,7 @@ function itemStyleExpr(obj: { Type: string; }) {
 export default function App() {
   const diagramRef = React.useRef(null);
 
-  const onRequestEditOperation = React.useCallback((e: { operation: string; args: { shape: { type: string; attachedConnectorIds: string | any[]; id: any; }; newSize: { width: number; height: number; }; newShape: { type: any; }; connectorPosition: string; newPoints: string | any[]; text: string; }; reason: string; allowed: boolean; }) => {
+  const onRequestEditOperation = React.useCallback((e) => {
     const diagram = diagramRef.current.instance;
     if (e.operation === 'addShape') {
       if (e.args.shape.type !== 'employee' && e.args.shape.type !== 'team') {
@@ -121,20 +121,46 @@ export default function App() {
   }, []);
 
   return (
-    <Diagram id="diagram" ref={diagramRef} onRequestEditOperation={onRequestEditOperation} onRequestLayoutUpdate={onRequestLayoutUpdate}>
-      <CustomShape category="items" type="root" baseType="octagon"
-        defaultText="Development" />
-      <CustomShape category="items" type="team" baseType="ellipse"
-        title="Team" defaultText="Team Name" />
-      <CustomShape category="items" type="employee" baseType="rectangle"
-        title="Employee" defaultText="Employee Name" />
-      <Nodes dataSource={orgItemsDataSource} keyExpr="ID" textExpr="Name" typeExpr="Type" parentKeyExpr="ParentID" styleExpr={itemStyleExpr}>
+    <Diagram
+      id="diagram"
+      ref={diagramRef}
+      onRequestEditOperation={onRequestEditOperation}
+      onRequestLayoutUpdate={onRequestLayoutUpdate}
+    >
+      <CustomShape
+        category="items"
+        type="root"
+        baseType="octagon"
+        defaultText="Development"
+      />
+      <CustomShape
+        category="items"
+        type="team"
+        baseType="ellipse"
+        title="Team"
+        defaultText="Team Name"
+      />
+      <CustomShape
+        category="items"
+        type="employee"
+        baseType="rectangle"
+        title="Employee"
+        defaultText="Employee Name"
+      />
+      <Nodes
+        dataSource={orgItemsDataSource}
+        keyExpr="ID"
+        textExpr="Name"
+        typeExpr="Type"
+        parentKeyExpr="ParentID"
+        styleExpr={itemStyleExpr}
+      >
         <AutoLayout type="tree" />
       </Nodes>
-      <ContextToolbox shapeIconsPerRow={2} width={100} shapes={shapes}>
+      <ContextToolbox shapeIconsPerRow={2} width={100} shapes={shapes as any}>
       </ContextToolbox>
       <Toolbox shapeIconsPerRow={2}>
-        <Group title="Items" shapes={shapes} />
+        <Group title="Items" shapes={shapes as any} />
       </Toolbox>
       <PropertiesPanel visibility="disabled">
       </PropertiesPanel>

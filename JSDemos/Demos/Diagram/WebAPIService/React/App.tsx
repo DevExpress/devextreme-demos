@@ -1,6 +1,6 @@
 import React from 'react';
 import Diagram, {
-  Nodes, AutoLayout, ContextToolbox, Toolbox, Group,
+  Nodes, AutoLayout, ContextToolbox, Toolbox, Group, IContextToolboxProps,
 } from 'devextreme-react/diagram';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 
@@ -26,7 +26,7 @@ const dataSource = createStore({
   },
 });
 
-const shapes = ['rectangle'];
+const shapes: IContextToolboxProps['shapes'] = ['rectangle'];
 
 export default function App() {
   return (

@@ -23,7 +23,7 @@ function itemTypeExpr(obj: { type: string; }, value: string) {
   return null;
 }
 
-function itemWidthExpr(obj: { width: any; type: string; }, value) {
+function itemWidthExpr(obj: { width: number; type: string; }, value) {
   if (value) {
     obj.width = value;
   } else {
@@ -32,7 +32,7 @@ function itemWidthExpr(obj: { width: any; type: string; }, value) {
   return null;
 }
 
-function itemHeightExpr(obj: { height: any; type: string; }, value) {
+function itemHeightExpr(obj: { height: number; type: string; }, value) {
   if (value) {
     obj.height = value;
   } else {
@@ -49,7 +49,7 @@ function itemTextStyleExpr(obj: { level: string; }) {
 }
 
 function itemStyleExpr(obj: { type: string; }) {
-  const style = { stroke: '#444444' };
+  const style: React.CSSProperties = { stroke: '#444444' };
   if (obj.type === 'group') {
     style.fill = '#f3f3f3';
   }

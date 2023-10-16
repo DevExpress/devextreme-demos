@@ -10,6 +10,7 @@ import Diagram, {
   MainToolbar,
   Command,
   Toolbox,
+  DiagramTypes,
 } from 'devextreme-react/diagram';
 import { confirm } from 'devextreme/ui/dialog';
 import 'whatwg-fetch';
@@ -17,7 +18,7 @@ import 'whatwg-fetch';
 const pageCommands = ['pageSize', 'pageOrientation', 'pageColor'];
 const menuCommands = ['bringToFront', 'sendToBack', 'lock', 'unlock'];
 
-function onCustomCommand(e: { name: string; component: { import: (arg0: string) => void; }; }) {
+function onCustomCommand(e: DiagramTypes.CustomCommandEvent) {
   if (e.name === 'clear') {
     const result = confirm('Are you sure you want to clear the diagram? This action cannot be undone.', 'Warning');
     result.then(
@@ -46,12 +47,24 @@ export default function App() {
   }, []);
 
   return (
-    <Diagram id="diagram" ref={diagramRef} onCustomCommand={onCustomCommand}>
-      <ContextMenu enabled={true} commands={menuCommands} />
-      <ContextToolbox enabled={true} category="flowchart" shapeIconsPerRow={5} width={200} />
+    <Diagram
+      id="diagram"
+      ref={diagramRef}
+      onCustomCommand={onCustomCommand}
+    >
+      <ContextMenu
+        enabled={true}
+        commands={menuCommands as any}
+      />
+      <ContextToolbox
+        enabled={true}
+        category="flowchart"
+        shapeIconsPerRow={5}
+        width={200}
+      />
       <PropertiesPanel visibility="visible">
         <Tab>
-          <Group title="Page Properties" commands={pageCommands} />
+          <Group title="Page Properties" commands={pageCommands as any} />
         </Tab>
       </PropertiesPanel>
       <HistoryToolbar visible={false} />
@@ -71,9 +84,14 @@ export default function App() {
         <Command name="lineColor" />
         <Command name="fillColor" />
         <Command name="separator" />
-        <Command name="clear" icon="clearsquare" text="Clear Diagram" />
+        <Command name={'clear' as any} icon="clearsquare" text="Clear Diagram" />
       </MainToolbar>
-      <Toolbox visibility="visible" showSearch={false} shapeIconsPerRow={4} width={220}>
+      <Toolbox
+        visibility="visible"
+        showSearch={false}
+        shapeIconsPerRow={4}
+        width={220}
+      >
         <Group category="general" title="General" />
         <Group category="flowchart" title="Flowchart" expanded={true} />
       </Toolbox>

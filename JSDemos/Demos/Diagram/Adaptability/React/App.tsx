@@ -3,7 +3,7 @@ import Diagram from 'devextreme-react/diagram';
 import 'whatwg-fetch';
 
 export default function App() {
-  const diagramRef = React.useRef();
+  const diagramRef = React.useRef<Diagram>();
 
   React.useEffect(() => {
     const diagram = diagramRef.current.instance;

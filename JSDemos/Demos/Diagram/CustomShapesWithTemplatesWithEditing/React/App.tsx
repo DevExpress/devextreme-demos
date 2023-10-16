@@ -1,27 +1,14 @@
-
-
-interface PopupContentFuncProps {
-currentEmployee: any;
-handleNameChange: any;
-handleTitleChange: any;
-handleCityChange: any;
-handleStateChange: any;
-handleEmailChange: any;
-handleSkypeChange: any;
-handlePhoneChange: any;
-updateEmployeeClick: any;
-cancelEditEmployeeClick: any;
-}import React from 'react';
+import React from 'react';
 import Diagram, {
-  CustomShape, ContextToolbox, PropertiesPanel, Group, Tab, Toolbox, Nodes, AutoLayout,
+  CustomShape, ContextToolbox, PropertiesPanel, Group, Tab, Toolbox, Nodes, AutoLayout, DiagramTypes,
 } from 'devextreme-react/diagram';
 import { Popup } from 'devextreme-react/popup';
 import TextBox from 'devextreme-react/text-box';
 import Button from 'devextreme-react/button';
 import ArrayStore from 'devextreme/data/array_store';
-import CustomShapeTemplate from './CustomShapeTemplate.js';
-import CustomShapeToolboxTemplate from './CustomShapeToolboxTemplate.js';
-import service from './data.ts';
+import CustomShapeTemplate from './CustomShapeTemplate.tsx';
+import CustomShapeToolboxTemplate from './CustomShapeToolboxTemplate.tsx';
+import service, { Employee } from './data.ts';
 
 const pageCommands = ['pageSize', 'pageOrientation', 'pageColor'];
 
@@ -39,16 +26,16 @@ const employees = service.getEmployees();
 const dataSource = new ArrayStore({
   key: 'ID',
   data: employees,
-  onInserting(values: { ID: any; Full_Name: any; Title: any; }, key) {
+  onInserting(values, key) {
     this.update(key, {
       ID: values.ID || (generatedID += 1),
       Full_Name: values.Full_Name || "Employee's Name",
       Title: values.Title || "Employee's Title",
     });
   },
-});
+} as any);
 
-function onRequestLayoutUpdate(e: { changes: string | any[]; allowed: boolean; }) {
+function onRequestLayoutUpdate(e: DiagramTypes.RequestLayoutUpdateEvent) {
   for (let i = 0; i < e.changes.length; i += 1) {
     if (e.changes[i].type === 'remove') {
       e.allowed = true;
@@ -58,7 +45,7 @@ function onRequestLayoutUpdate(e: { changes: string | any[]; allowed: boolean; }
   }
 }
 
-function deleteEmployee(employee: { ID: any; } | { Full_Name: any; Title: any; }) {
+function deleteEmployee(employee: Employee) {
   dataSource.push([{ type: 'remove', key: employee.ID }]);
 }
 
@@ -66,7 +53,7 @@ function itemTypeExpr() {
   return 'employee';
 }
 
-function itemCustomDataExpr(obj: { Full_Name: any; Prefix: any; Title: any; City: any; State: any; Email: any; Skype: any; Mobile_Phone: any; }, value: { Full_Name: any; Prefix: any; Title: any; City: any; State: any; Email: any; Skype: any; Mobile_Phone: any; }) {
+function itemCustomDataExpr(obj: Employee, value: Employee) {
   if (value === undefined) {
     return {
       Full_Name: obj.Full_Name,
@@ -91,17 +78,10 @@ function itemCustomDataExpr(obj: { Full_Name: any; Prefix: any; Title: any; City
 }
 
 export default function App() {
-  const [currentEmployee, setCurrentEmployee] = React.useState({});
+  const [currentEmployee, setCurrentEmployee] = React.useState<Partial<Employee>>({});
   const [popupVisible, setPopupVisible] = React.useState(false);
 
-  const diagramRef = React.useRef(null);
-
-  const customShapeTemplate = React.useCallback((item: { dataItem: { Full_Name: any; Title: any; } | { ID: any; } | { Full_Name: any; Title: any; }; }) => (CustomShapeTemplate(item.dataItem,
-    () => { editEmployee(item.dataItem); },
-    () => { deleteEmployee(item.dataItem); })
-  ), [editEmployee, deleteEmployee]);
-
-  const customShapeToolboxTemplate = React.useCallback(() => CustomShapeToolboxTemplate(), []);
+  const diagramRef = React.useRef<Diagram>(null);
 
   const editEmployee = React.useCallback((employee) => {
     setCurrentEmployee({ ...employee });
@@ -125,6 +105,13 @@ export default function App() {
     setCurrentEmployee({});
     setPopupVisible(false);
   }, [currentEmployee, setCurrentEmployee, setPopupVisible]);
+
+  const customShapeTemplate = React.useCallback((item) => (CustomShapeTemplate(item.dataItem,
+    () => { editEmployee(item.dataItem); },
+    () => { deleteEmployee(item.dataItem); })
+  ), [editEmployee]);
+
+  const customShapeToolboxTemplate = React.useCallback(() => CustomShapeToolboxTemplate(), []);
 
   const cancelEditEmployee = React.useCallback(() => {
     setCurrentEmployee({});
@@ -194,21 +181,43 @@ export default function App() {
 
   return (
     <div id="container">
-      <Diagram id="diagram" ref={diagramRef} customShapeRender={customShapeTemplate} customShapeToolboxRender={customShapeToolboxTemplate} onRequestLayoutUpdate={onRequestLayoutUpdate}>
-        <CustomShape type="employee" baseType="rectangle" category="employee" title="New Employee"
-          defaultWidth={1.5} defaultHeight={1} toolboxWidthToHeightRatio={2}
-          minWidth={1.5} minHeight={1} maxWidth={3} maxHeight={2}
-          allowEditText={false} />
-        <Nodes dataSource={dataSource} keyExpr="ID" typeExpr={itemTypeExpr} customDataExpr={itemCustomDataExpr} parentKeyExpr="Head_ID">
+      <Diagram
+        id="diagram"
+        ref={diagramRef}
+        customShapeRender={customShapeTemplate}
+        customShapeToolboxRender={customShapeToolboxTemplate}
+        onRequestLayoutUpdate={onRequestLayoutUpdate}
+      >
+        <CustomShape
+          type="employee"
+          baseType="rectangle"
+          category="employee"
+          title="New Employee"
+          defaultWidth={1.5}
+          defaultHeight={1}
+          toolboxWidthToHeightRatio={2}
+          minWidth={1.5}
+          minHeight={1}
+          maxWidth={3}
+          maxHeight={2}
+          allowEditText={false}
+        />
+        <Nodes
+          dataSource={dataSource}
+          keyExpr="ID"
+          typeExpr={itemTypeExpr}
+          customDataExpr={itemCustomDataExpr}
+          parentKeyExpr="Head_ID"
+        >
           <AutoLayout type="tree" />
         </Nodes>
         <ContextToolbox shapeIconsPerRow={1} width={100} />
         <Toolbox showSearch={false} shapeIconsPerRow={1}>
-          <Group category="employee" title="Employee" expanded={true} />
+          <Group category={'employee' as any} title="Employee" expanded={true} />
         </Toolbox>
         <PropertiesPanel>
           <Tab>
-            <Group title="Page Properties" commands={pageCommands} />
+            <Group title="Page Properties" commands={pageCommands as any} />
           </Tab>
         </PropertiesPanel>
       </Diagram>
@@ -226,50 +235,85 @@ export default function App() {
   );
 }
 
-function PopupContentFunc(props: PopupContentFuncProps) {
+function PopupContentFunc(props) {
   return (
     <React.Fragment>
       <div className="dx-fieldset">
         <div className="dx-field">
           <div className="dx-field-label">Name</div>
           <div className="dx-field-value">
-            <TextBox inputAttr={nameLabel} value={props.currentEmployee.Full_Name} onValueChanged={props.handleNameChange} valueChangeEvent="input"></TextBox>
+            <TextBox
+              inputAttr={nameLabel}
+              value={props.currentEmployee.Full_Name}
+              onValueChanged={props.handleNameChange}
+              valueChangeEvent="input">
+            </TextBox>
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Title</div>
           <div className="dx-field-value">
-            <TextBox inputAttr={titleLabel} value={props.currentEmployee.Title} onValueChanged={props.handleTitleChange} valueChangeEvent="input"></TextBox>
+            <TextBox
+              inputAttr={titleLabel}
+              value={props.currentEmployee.Title}
+              onValueChanged={props.handleTitleChange}
+              valueChangeEvent="input">
+            </TextBox>
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">City</div>
           <div className="dx-field-value">
-            <TextBox inputAttr={cityLabel} value={props.currentEmployee.City} onValueChanged={props.handleCityChange} valueChangeEvent="input"></TextBox>
+            <TextBox
+              inputAttr={cityLabel}
+              value={props.currentEmployee.City}
+              onValueChanged={props.handleCityChange}
+              valueChangeEvent="input">
+            </TextBox>
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">State</div>
           <div className="dx-field-value">
-            <TextBox inputAttr={stateLabel} value={props.currentEmployee.State} onValueChanged={props.handleStateChange} valueChangeEvent="input"></TextBox>
+            <TextBox
+              inputAttr={stateLabel}
+              value={props.currentEmployee.State}
+              onValueChanged={props.handleStateChange}
+              valueChangeEvent="input">
+            </TextBox>
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Email</div>
           <div className="dx-field-value">
-            <TextBox inputAttr={emailLabel} value={props.currentEmployee.Email} onValueChanged={props.handleEmailChange} valueChangeEvent="input"></TextBox>
+            <TextBox
+              inputAttr={emailLabel}
+              value={props.currentEmployee.Email}
+              onValueChanged={props.handleEmailChange}
+              valueChangeEvent="input">
+            </TextBox>
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Skype</div>
           <div className="dx-field-value">
-            <TextBox inputAttr={skypeLabel} value={props.currentEmployee.Skype} onValueChanged={props.handleSkypeChange} valueChangeEvent="input"></TextBox>
+            <TextBox
+              inputAttr={skypeLabel}
+              value={props.currentEmployee.Skype}
+              onValueChanged={props.handleSkypeChange}
+              valueChangeEvent="input">
+            </TextBox>
           </div>
         </div>
         <div className="dx-field">
           <div className="dx-field-label">Phone</div>
           <div className="dx-field-value">
-            <TextBox inputAttr={phoneLabel} value={props.currentEmployee.Mobile_Phone} onValueChanged={props.handlePhoneChange} valueChangeEvent="input"></TextBox>
+            <TextBox
+              inputAttr={phoneLabel}
+              value={props.currentEmployee.Mobile_Phone}
+              onValueChanged={props.handlePhoneChange}
+              valueChangeEvent="input">
+            </TextBox>
           </div>
         </div>
       </div>

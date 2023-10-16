@@ -5,14 +5,14 @@ import Diagram, {
 import 'whatwg-fetch';
 
 export default function App() {
-  const diagramRef = React.useRef(null);
+  const diagramRef = React.useRef<Diagram>(null);
 
   React.useEffect(() => {
-    const diagram = diagramRef.current.instance;
+    const diagram = diagramRef.current?.instance;
     fetch('../../../../data/diagram-hardware.json')
       .then((response) => response.json())
       .then((json) => {
-        diagram.import(JSON.stringify(json));
+        diagram?.import(JSON.stringify(json));
       })
       .catch(() => {
         throw new Error('Data Loading Error');
@@ -260,7 +260,7 @@ export default function App() {
         <ConnectionPoint x={0.1} y={0.5} />
       </CustomShape>
       <Toolbox>
-        <Group category="hardware" title="Hardware" />
+        <Group category={'hardware' as any} title="Hardware" />
       </Toolbox>
     </Diagram>
   );

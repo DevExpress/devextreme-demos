@@ -10,10 +10,12 @@ const dataSource = new ArrayStore({
   data: service.getEmployees(),
 });
 
-function onContentReady(e: { component: any; }) {
+function onContentReady(e) {
   const diagram = e.component;
   // preselect some shape
-  const items = diagram.getItems().filter((item: { itemType: string; text: string; }) => item.itemType === 'shape' && (item.text === 'Greta Sims'));
+  const items = diagram.getItems().filter(
+    (item) => item.itemType === 'shape' && (item.text === 'Greta Sims'),
+  );
   if (items.length > 0) {
     diagram.setSelectedItems(items);
     diagram.scrollToItem(items[0]);
@@ -27,8 +29,8 @@ export default function App() {
   const onSelectionChanged = React.useCallback(({ items }) => {
     let selectedItems = 'Nobody has been selected';
     const filteredItems = items
-      .filter((item: { itemType: string; }) => item.itemType === 'shape')
-      .map((item: { text: any; }) => item.text);
+      .filter((item) => item.itemType === 'shape')
+      .map((item) => item.text);
     if (filteredItems.length > 0) {
       selectedItems = filteredItems.join(', ');
     }
