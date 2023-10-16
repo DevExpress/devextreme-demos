@@ -5,7 +5,7 @@ import { colors, colorLabel } from './data.js';
 
 const palette = ['#ff0000', '#00ff00', '#0000ff'];
 
-function getBasicColors(value) {
+function getBasicColors(value: string | any[]) {
   const code = Number(`0x${value.slice(1)}`);
   return [
     (code >> 16) & 0xff,

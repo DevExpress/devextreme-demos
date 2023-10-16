@@ -1,4 +1,12 @@
-import React from 'react';
+
+
+interface IndicatorProps {
+value: number;
+inverted: boolean;
+startAngle: number;
+endAngle: number;
+color: string;
+}import React from 'react';
 
 import CircularGauge, {
   Geometry,
@@ -7,7 +15,7 @@ import CircularGauge, {
   ValueIndicator,
 } from 'devextreme-react/circular-gauge';
 
-export default function Indicator(props) {
+export default function Indicator(props: IndicatorProps) {
   return (
     <CircularGauge value={props.value}>
       <Size width={90} height={90} />

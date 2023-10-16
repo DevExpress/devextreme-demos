@@ -5,17 +5,17 @@ import {
 
 const values = [121.4, 135.4, 115.9, 141.1, 127.5];
 
-function customizeTooltip(arg) {
+function customizeTooltip(arg: { valueText: any; }) {
   return {
     text: getText(arg, arg.valueText),
   };
 }
 
-function customizeText(arg) {
+function customizeText(arg: { item: any; text: any; }) {
   return getText(arg.item, arg.text);
 }
 
-function getText(item, text) {
+function getText(item: { index: number; }, text) {
   return `Racer ${(item.index + 1)} - ${text} km/h`;
 }
 

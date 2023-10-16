@@ -18,7 +18,7 @@ function App() {
   const [humidity, setHumidity] = React.useState(cities[0].data.humidity);
   const [pressure, setPressure] = React.useState(cities[0].data.pressure);
 
-  const onSelectionChanged = React.useCallback((e) => {
+  const onSelectionChanged = React.useCallback((e: { selectedItem: { data: any; }; }) => {
     const weatherData = e.selectedItem.data;
     setSelectBoxValue(weatherData);
     setTemperature(weatherData.temperature);

@@ -12,7 +12,7 @@ function App() {
   const [productsActivity, setProductsActivity] = React.useState(products.map((p) => p.active));
   const [values, setValues] = React.useState(products.map((p) => p.count));
 
-  const getValueChangedHandler = React.useCallback((productIndex) => (e) => {
+  const getValueChangedHandler = React.useCallback((productIndex: string | number) => (e: { value: any; }) => {
     const updatedProductsActivity = [...productsActivity];
     updatedProductsActivity[productIndex] = e.value;
     setProductsActivity(updatedProductsActivity);
@@ -33,7 +33,7 @@ function App() {
           <Label format={format} />
         </BarGauge>
         <div id="panel">
-          {productsActivity.map((p, i) => (
+          {productsActivity.map((p: boolean, i) => (
             <CheckBox
               key={i}
               text={products[i].name}
