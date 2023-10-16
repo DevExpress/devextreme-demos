@@ -100,10 +100,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        CONSTEL: [vue(1/4), vue(2/4), vue(3/4), vue(4/4), angular(1/4), angular(2/4), angular(3/4), angular(4/4)]
+        FRAMEWORK: [React, Vue]
 
     runs-on: ubuntu-latest
-    name: ${{ matrix.CONSTEL }}
+    name: ${{ matrix.FRAMEWORK }}
     timeout-minutes: 60
 
     steps:
@@ -148,19 +148,15 @@ jobs:
       with:
         path: changed-files.json
 
-    # - name: Run TestCafe tests
-    #   env:
-    #     CHANGEDFILEINFOSPATH: ${{ github.workspace }}/changed-files.json
-    #     BROWSERS: chrome:headless --disable-partial-raster --disable-skia-runtime-opts --run-all-compositor-stages-before-draw --disable-new-content-rendering-timeout --disable-threaded-animation --disable-threaded-scrolling --disable-checker-imaging --disable-image-animation-resync --use-gl="swiftshader" --disable-features=PaintHolding --js-flags=--random-seed=2147483647 --font-render-hinting=none --disable-font-subpixel-positioning
-    #     #DEBUG: hammerhead:*,testcafe:*
-    #     CONCURRENCY: 4
-    #     TCQUARANTINE: true
-    #     CONSTEL: ${{ matrix.CONSTEL }}
-    #     # DISABLE_DEMO_TEST_SETTINGS: all # Uncomment to ignore all the visualtestrc.json settings
-    #     # DISABLE_DEMO_TEST_SETTINGS: ignore # Uncomment to ignore the `ignore` field
-    #     # DISABLE_DEMO_TEST_SETTINGS: comparison-options # Uncomment to ignore the `comparison-options` field
-    #     CI_ENV: true # The `ignore` field in the visualtestrc.json should be disabled when running test locally
-    #   run: npm run test-testcafe
+    - name: Run prepare metadata
+      run: npm run make-demos-bundle -- --copy-metadata
+
+    - name: Run esbuild bundler tests
+      env:
+        CHANGEDFILEINFOSPATH: ${{ github.workspace }}/changed-files.json
+        CONSTEL: ${{ matrix.FRAMEWORK }}
+        CI_ENV: true # The `ignore` field in the visualtestrc.json should be disabled when running test locally
+      run: npm run esbuild-bundles-test
 
     - name: Copy changed-files artifacts
       # if: ${{ failure() }}

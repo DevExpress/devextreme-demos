@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import yargs from 'yargs';
-import { Framework, Args, Item } from './helper/types';
+import { Framework, Args, Item, Demo } from './helper/types';
 import { copyMetadata, isSkipDemo } from './helper';
 import { ESBundler } from './helper/bundler';
 import ReactBundler from './React/bundler';
@@ -13,7 +13,7 @@ const argv = yargs.options({
   'copy-metadata': { type: 'boolean' },
 }).argv as Args;
 
-const getBundler = (framework: Framework): ESBundler => {
+export const getBundler = (framework: Framework): ESBundler => {
   if (framework === 'React') {
     return new ReactBundler();
   }
@@ -24,6 +24,13 @@ const getBundler = (framework: Framework): ESBundler => {
 
   return undefined;
 };
+
+export const buildDemo = async (demo: Demo, bundler: ESBundler) => {
+  console.log(`${bundler.framework} Demo: ${demo.Widget} - ${demo.Name}`);
+
+  // eslint-disable-next-line no-await-in-loop
+  await bundler.buildDemo(demo);
+}
 
 const buildDemos = async (bundler: ESBundler) => {
   const menu: Item[] = (menuMeta as any).default;
@@ -36,10 +43,7 @@ const buildDemos = async (bundler: ESBundler) => {
           break;
         }
 
-        console.log(`${bundler.framework} Demo: ${demo.Widget} - ${demo.Name}`);
-
-        // eslint-disable-next-line no-await-in-loop
-        await bundler.buildDemo(demo);
+        buildDemo(demo, bundler);
       }
     }
   }
@@ -49,7 +53,9 @@ if (argv['copy-metadata']) {
   copyMetadata();
 }
 
-const currentBundler = getBundler(argv.framework);
-if (currentBundler) {
-  buildDemos(currentBundler);
+if(argv.framework) {
+  const currentBundler = getBundler(argv.framework);
+  if (currentBundler) {
+    buildDemos(currentBundler);
+  }
 }
