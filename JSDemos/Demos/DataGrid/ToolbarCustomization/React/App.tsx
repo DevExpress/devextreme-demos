@@ -23,7 +23,7 @@ const App = () => {
   const [expandAll, setExpandAll] = React.useState(true);
   const [totalCount, setTotalCount] = React.useState(getGroupCount('CustomerStoreState'));
   const [groupColumn, setGroupColumn] = React.useState('CustomerStoreState');
-  const dataGridRef = React.useRef(null);
+  const dataGridRef = React.useRef<DataGrid>(null);
 
   const toggleGroupColumn = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     const newGrouping = e.value;

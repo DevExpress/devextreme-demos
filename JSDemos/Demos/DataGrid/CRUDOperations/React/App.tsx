@@ -1,7 +1,7 @@
 /* global RequestInit */
 import React from 'react';
 import {
-  DataGrid, Column, Editing, Scrolling, Lookup, Summary, TotalItem, IEditingProps,
+  DataGrid, Column, Editing, Scrolling, Lookup, Summary, TotalItem, DataGridTypes,
 } from 'devextreme-react/data-grid';
 import { Button } from 'devextreme-react/button';
 import { SelectBox, SelectBoxTypes } from 'devextreme-react/select-box';
@@ -42,7 +42,7 @@ const App = () => {
   }));
 
   const [requests, setRequests] = React.useState([]);
-  const [refreshMode, setRefreshMode] = React.useState<IEditingProps['refreshMode']>('reshape');
+  const [refreshMode, setRefreshMode] = React.useState<DataGridTypes.GridsEditRefreshMode>('reshape');
 
   const handleRefreshModeChange = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setRefreshMode(e.value);

@@ -3,19 +3,9 @@ import DataGrid, { Column } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
 import 'devextreme/data/odata/store';
 
-interface ODataSource {
+const dataSourceOptions = {
   store: {
-    type: 'odata',
-    url: string,
-    key: string,
-  },
-  expand: string,
-  select: string[],
-}
-
-const dataSourceOptions: ODataSource = {
-  store: {
-    type: 'odata',
+    type: 'odata' as const,
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Tasks',
     key: 'Task_ID',
   },
@@ -34,7 +24,7 @@ const statusLabel = { 'aria-label': 'Status' };
 
 const App = () => {
   const [filterStatus, setFilterStatus] = React.useState(statuses[0]);
-  const dataGridRef = React.useRef(null);
+  const dataGridRef = React.useRef<DataGrid>(null);
 
   const onValueChanged = React.useCallback(({ value }) => {
     const dataGrid = dataGridRef.current.instance;

@@ -48,7 +48,7 @@ const cellTemplate = (container: { textContent: any; title: any; }, options) => 
   container.title = text;
 };
 
-function calculateFilterExpression(this: DataGridTypes.Column, filterValue, selectedFilterOperation, target: string) {
+function calculateFilterExpression(this: DataGridTypes.Column, filterValue, selectedFilterOperation: DataGridTypes.SelectedFilterOperation, target: string) {
   if (target === 'search' && typeof (filterValue) === 'string') {
     return [this.dataField, 'contains', filterValue];
   }

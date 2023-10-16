@@ -1,4 +1,5 @@
 import applyChanges from 'devextreme/data/apply_changes';
+import { DataGridTypes } from 'devextreme-react/data-grid.js';
 import {
   FETCH_PENDING,
   FETCH_SUCCESS,
@@ -11,7 +12,14 @@ import {
   SET_EDIT_ROW_KEY,
 } from './actions.js';
 
-export default function reducer(state: { data: any[]; }, { type, payload }) {
+export interface State {
+  data: any[];
+  editRowKey: any;
+  changes: DataGridTypes.DataChange[];
+  isLoading: boolean;
+}
+
+export default function reducer(state: State, { type, payload }) {
   let newData;
 
   switch (type) {

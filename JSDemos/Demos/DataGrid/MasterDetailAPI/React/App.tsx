@@ -16,7 +16,7 @@ const onSelectionChanged = (e: DataGridTypes.SelectionChangedEvent) => {
   e.component.expandRow(e.currentSelectedRowKeys[0]);
 };
 
-const renderDetail = (props: { data: { Picture: any; Notes: any; }; }) => {
+const renderDetail = (props: DataGridTypes.MasterDetailTemplateData) => {
   const { Picture, Notes } = props.data;
   return (
     <div className="employee-info">

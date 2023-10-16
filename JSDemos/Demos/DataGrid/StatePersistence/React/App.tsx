@@ -11,7 +11,7 @@ const onRefreshClick = () => {
 };
 
 const App = () => {
-  const dataGridRef = React.useRef(null);
+  const dataGridRef = React.useRef<DataGrid>(null);
 
   const onStateResetClick = React.useCallback(() => {
     dataGridRef.current.instance.state(null);

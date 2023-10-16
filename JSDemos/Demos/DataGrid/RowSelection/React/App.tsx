@@ -1,5 +1,5 @@
 import React from 'react';
-import DataGrid, { Column, Selection } from 'devextreme-react/data-grid';
+import DataGrid, { Column, DataGridTypes, Selection } from 'devextreme-react/data-grid';
 import { employees } from './data.ts';
 
 const App = () => {
@@ -7,7 +7,7 @@ const App = () => {
   const [selectedRowPicture, setSelectedRowPicture] = React.useState('');
   const [selectedRowNotes, setSelectedRowNotes] = React.useState('');
 
-  const onSelectionChanged = React.useCallback(({ selectedRowsData }) => {
+  const onSelectionChanged = React.useCallback(({ selectedRowsData }: DataGridTypes.SelectionChangedEvent) => {
     const data = selectedRowsData[0];
 
     setShowEmployeeInfo(!!data);

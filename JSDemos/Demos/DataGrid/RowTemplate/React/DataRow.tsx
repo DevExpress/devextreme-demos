@@ -1,8 +1,9 @@
+import { DataGridTypes } from 'devextreme-react/data-grid';
 import React from 'react';
 
 const formatDate = new Intl.DateTimeFormat('en-US').format;
 
-const DataRow = (rowInfo) => (
+const DataRow = (rowInfo: DataGridTypes.RowTemplateData) => (
   <React.Fragment>
     <tr className="main-row">
       <td rowSpan={2}><img src={rowInfo.data.Picture} /></td>

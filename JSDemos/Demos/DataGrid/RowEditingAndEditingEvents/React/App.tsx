@@ -9,9 +9,9 @@ import { employees, states } from './data.ts';
 const App = () => {
   const [events, setEvents] = React.useState([]);
 
-  const logEvent = React.useCallback((eventName) => {
-    setEvents([eventName, ...events]);
-  }, [events]);
+  const logEvent = React.useCallback((eventName: string) => {
+    setEvents((events) => [eventName, ...events]);
+  }, []);
 
   const clearEvents = React.useCallback(() => {
     setEvents([]);

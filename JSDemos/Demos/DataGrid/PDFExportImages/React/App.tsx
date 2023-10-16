@@ -1,12 +1,12 @@
 import React from 'react';
-import DataGrid, { Column, Export } from 'devextreme-react/data-grid';
+import DataGrid, { Column, DataGridTypes, Export } from 'devextreme-react/data-grid';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
 import { employees } from './data.ts';
 
 const exportFormats = ['pdf'];
 
-const onExporting = ({ component }) => {
+const onExporting = ({ component }: DataGridTypes.ExportingEvent) => {
   // eslint-disable-next-line new-cap
   const doc = new jsPDF();
 
@@ -38,7 +38,7 @@ const onExporting = ({ component }) => {
   });
 };
 
-const renderGridCell = (cellData: { value: string; }) => (
+const renderGridCell = (cellData: DataGridTypes.ColumnCellTemplateData) => (
   <div>
     <img src={cellData.value}></img>
   </div>

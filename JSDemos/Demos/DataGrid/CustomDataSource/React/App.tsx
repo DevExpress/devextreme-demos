@@ -4,7 +4,7 @@ import DataGrid, { Column, Paging, Pager } from 'devextreme-react/data-grid';
 import CustomStore from 'devextreme/data/custom_store';
 import 'whatwg-fetch';
 
-function isNotEmpty(value: string) {
+function isNotEmpty(value: string | undefined | null) {
   return value !== undefined && value !== null && value !== '';
 }
 

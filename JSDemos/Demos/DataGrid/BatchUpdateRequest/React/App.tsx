@@ -13,7 +13,7 @@ const ordersStore = createStore({
   },
 });
 
-async function sendBatchRequest(url: string, changes) {
+async function sendBatchRequest(url: string, changes: DataGridTypes.DataChange[]) {
   const result = await fetch(url, {
     method: 'POST',
     body: JSON.stringify(changes),
@@ -30,7 +30,7 @@ async function sendBatchRequest(url: string, changes) {
   }
 }
 
-async function processBatchRequest(url: string, changes, component: DataGrid['instance']) {
+async function processBatchRequest(url: string, changes: DataGridTypes.DataChange[], component: DataGrid['instance']) {
   await sendBatchRequest(url, changes);
   await component.refresh(true);
   component.cancelEditData();

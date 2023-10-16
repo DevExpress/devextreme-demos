@@ -5,7 +5,7 @@ import DataGrid, {
   Paging,
   Lookup,
   KeyboardNavigation,
-  IKeyboardNavigationProps,
+  DataGridTypes,
 } from 'devextreme-react/data-grid';
 import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import CheckBox, { CheckBoxTypes } from 'devextreme-react/check-box';
@@ -25,8 +25,8 @@ const onFocusedCellChanging = (e: { isHighlighted: boolean; }) => {
 
 const App = () => {
   const [editOnKeyPress, setEditOnKeyPress] = React.useState(true);
-  const [enterKeyAction, setEnterKeyAction] = React.useState<IKeyboardNavigationProps['enterKeyAction']>('moveFocus');
-  const [enterKeyDirection, setEnterKeyDirection] = React.useState<IKeyboardNavigationProps['enterKeyDirection']>('column');
+  const [enterKeyAction, setEnterKeyAction] = React.useState<DataGridTypes.EnterKeyAction>('moveFocus');
+  const [enterKeyDirection, setEnterKeyDirection] = React.useState<DataGridTypes.EnterKeyDirection>('column');
 
   const editOnKeyPressChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
     setEditOnKeyPress(e.value);

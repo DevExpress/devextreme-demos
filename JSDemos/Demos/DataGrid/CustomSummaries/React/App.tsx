@@ -1,12 +1,12 @@
 import React from 'react';
 import DataGrid, {
-  Column, Selection, Paging, Summary, ISummaryProps, TotalItem, DataGridTypes,
+  Column, Selection, Paging, Summary, TotalItem, DataGridTypes,
 } from 'devextreme-react/data-grid';
 import { orders } from './data.ts';
 
 const startupSelectedKeys = [1, 4, 7];
 
-const calculateSelectedRow: ISummaryProps['calculateCustomSummary'] = (options) => {
+const calculateSelectedRow = (options: DataGridTypes.CustomSummaryInfo) => {
   if (options.name === 'SelectedRowsSummary') {
     if (options.summaryProcess === 'start') {
       options.totalValue = 0;

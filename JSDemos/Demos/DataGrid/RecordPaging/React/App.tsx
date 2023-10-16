@@ -1,19 +1,19 @@
 import React from 'react';
 import DataGrid, {
-  Scrolling, Pager, IPagerProps, Paging,
+  Scrolling, Pager, Paging, DataGridTypes,
 } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
 import { generateData, displayModeLabel } from './data.ts';
 
 const displayModes = [{ text: 'Display Mode \'full\'', value: 'full' }, { text: 'Display Mode \'compact\'', value: 'compact' }];
-const allowedPageSizes: IPagerProps['allowedPageSizes'] = [5, 10, 'all'];
+const allowedPageSizes: (DataGridTypes.PagerPageSize | number)[] = [5, 10, 'all'];
 const data = generateData(100000);
 
-const customizeColumns = (columns: { width: number; }[]) => { columns[0].width = 70; };
+const customizeColumns = (columns: DataGridTypes.Column[]) => { columns[0].width = 70; };
 
 const App = () => {
-  const [displayMode, setDisplayMode] = React.useState<IPagerProps['displayMode']>('full');
+  const [displayMode, setDisplayMode] = React.useState<DataGridTypes.PagerDisplayMode>('full');
   const [showPageSizeSelector, setShowPageSizeSelector] = React.useState(true);
   const [showInfo, setShowInfo] = React.useState(true);
   const [showNavButtons, setShowNavButtons] = React.useState(true);

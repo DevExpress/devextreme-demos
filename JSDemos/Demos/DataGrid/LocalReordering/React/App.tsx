@@ -1,6 +1,6 @@
 import React from 'react';
 import DataGrid, {
-  Column, RowDragging, Scrolling, Lookup, Sorting, DataGridTypes, IRowDraggingProps,
+  Column, RowDragging, Scrolling, Lookup, Sorting,
 } from 'devextreme-react/data-grid';
 import { CheckBox, CheckBoxTypes } from 'devextreme-react/check-box';
 import { tasks as defaultTasks, employees } from './data.ts';
@@ -9,7 +9,7 @@ const App = () => {
   const [tasks, setTasks] = React.useState(defaultTasks);
   const [showDragIcons, setShowDragIcons] = React.useState(true);
 
-  const onReorder = React.useCallback<IRowDraggingProps['onReorder']>((e) => {
+  const onReorder = React.useCallback((e) => {
     const visibleRows = e.component.getVisibleRows();
     const newTasks = [...tasks];
 

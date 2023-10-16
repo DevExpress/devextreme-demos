@@ -4,7 +4,7 @@ import DataGrid, {
   Selection,
   FilterRow,
   Paging,
-  ISelectionProps,
+  DataGridTypes,
 } from 'devextreme-react/data-grid';
 import { SelectBox } from 'devextreme-react/select-box';
 import themes from 'devextreme/ui/themes';
@@ -17,8 +17,8 @@ const showCheckBoxesModes = ['none', 'onClick', 'onLongTap', 'always'];
 const selectAllModes = ['allPages', 'page'];
 
 const App = () => {
-  const [allMode, setAllMode] = React.useState<ISelectionProps['selectAllMode']>('allPages');
-  const [checkBoxesMode, setCheckBoxesMode] = React.useState<ISelectionProps['showCheckBoxesMode']>(
+  const [allMode, setAllMode] = React.useState<DataGridTypes.SelectAllMode>('allPages');
+  const [checkBoxesMode, setCheckBoxesMode] = React.useState<DataGridTypes.SelectionColumnDisplayMode>(
     themes.current().startsWith('material') ? 'always' : 'onClick',
   );
 

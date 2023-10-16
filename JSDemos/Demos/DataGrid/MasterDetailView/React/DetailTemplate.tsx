@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataGrid, Column } from 'devextreme-react/data-grid';
+import { DataGrid, Column, DataGridTypes } from 'devextreme-react/data-grid';
 import ArrayStore from 'devextreme/data/array_store';
 import DataSource from 'devextreme/data/data_source';
 import { tasks } from './data.ts';
@@ -12,9 +12,9 @@ const getTasks = (key) => new DataSource({
   filter: ['EmployeeID', '=', key],
 });
 
-const completedValue = (rowData: { Status: string; }) => rowData.Status === 'Completed';
+const completedValue = (rowData) => rowData.Status === 'Completed';
 
-const DetailTemplate = (props: { data: { data: { FirstName: any; LastName: any; }; key: any; }; }) => {
+const DetailTemplate = (props: DataGridTypes.MasterDetailTemplateData) => {
   const { FirstName, LastName } = props.data.data;
   const dataSource = getTasks(props.data.key);
 

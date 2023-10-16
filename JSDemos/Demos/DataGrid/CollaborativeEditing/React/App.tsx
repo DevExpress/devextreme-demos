@@ -9,6 +9,14 @@ const BASE_PATH = 'https://js.devexpress.com/Demos/NetCore/';
 const url = `${BASE_PATH}api/DataGridCollaborativeEditing`;
 const groupId = new Guid().toString();
 
+interface Change {
+  type: 'insert' | 'update' | 'remove';
+
+  data?: any;
+
+  key?: any;
+}
+
 const createStore = () => AspNetData.createStore({
   key: 'ID',
   loadUrl: url,
@@ -23,7 +31,7 @@ const createStore = () => AspNetData.createStore({
 const store1 = createStore();
 const store2 = createStore();
 
-const updateStores = (events: { type: 'insert' | 'update' | 'remove'; data?: any; key?: any; }[]) => {
+const updateStores = (events: Change[]) => {
   store1.push(events);
   store2.push(events);
 };

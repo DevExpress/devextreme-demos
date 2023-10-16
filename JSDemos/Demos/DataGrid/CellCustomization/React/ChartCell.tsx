@@ -1,7 +1,8 @@
 import React from 'react';
 import Sparkline, { Size, Tooltip } from 'devextreme-react/sparkline';
+import { DataGridTypes } from 'devextreme-react/data-grid';
 
-const ChartCell = (cellData) => (
+const ChartCell = (cellData: DataGridTypes.ColumnCellTemplateData) => (
   <div className="chart-cell">
     <Sparkline
       dataSource={cellData.data.dayClose}

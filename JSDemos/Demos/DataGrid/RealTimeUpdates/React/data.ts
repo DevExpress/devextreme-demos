@@ -4,7 +4,16 @@ const cities = ['Los Angeles', 'Denver', 'Bentonville', 'Atlanta', 'Reno', 'Beav
 
 const orders = [];
 
-const products: ({ ProductID: number; ProductName: string; UnitPrice: number; Quantity: number; Amount: number; OrderCount: number; })[] = [];
+export interface Product {
+  ProductID: number;
+  ProductName: string;
+  UnitPrice: number;
+  Quantity: number;
+  Amount: number;
+  OrderCount: number;
+}
+
+const products: Product[] = [];
 
 for (let i = 1; i <= 100; i += 1) {
   products.push({

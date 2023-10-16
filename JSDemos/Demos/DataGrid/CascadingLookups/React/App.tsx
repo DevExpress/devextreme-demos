@@ -2,7 +2,9 @@ import React from 'react';
 import DataGrid, {
   Column, DataGridTypes, Editing, Lookup,
 } from 'devextreme-react/data-grid';
-import { employees, states, cities } from './data.ts';
+import {
+  employees, states, cities, Employee,
+} from './data.ts';
 
 const onEditorPreparing = (e: DataGridTypes.EditorPreparingEvent) => {
   if (e.parentType === 'dataRow' && e.dataField === 'CityID') {
@@ -12,12 +14,12 @@ const onEditorPreparing = (e: DataGridTypes.EditorPreparingEvent) => {
   }
 };
 
-const getFilteredCities = (options: { data: { StateID?: number; }; }) => ({
+const getFilteredCities = (options: { data?: Employee; }) => ({
   store: cities,
   filter: options.data ? ['StateID', '=', options.data.StateID] : null,
 });
 
-function setStateValue(rowData: { CityID: number; }, value) {
+function setStateValue(rowData: Employee, value) {
   rowData.CityID = null;
   this.defaultSetCellValue(rowData, value);
 }

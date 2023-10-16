@@ -1,6 +1,6 @@
 import React from 'react';
 import DataGrid, {
-  Column, FilterRow, HeaderFilter, IFilterRowProps, IHeaderFilterProps, Search, SearchPanel,
+  Column, FilterRow, HeaderFilter, Search, SearchPanel,
 } from 'devextreme-react/data-grid';
 import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import CheckBox, { CheckBoxTypes } from 'devextreme-react/check-box';
@@ -9,14 +9,12 @@ import { orders } from './data.ts';
 
 const saleAmountEditorOptions = { format: 'currency', showClearButton: true };
 const filterLabel = { 'aria-label': 'Filter' };
-const applyFilterTypes: {
-  key: IFilterRowProps['applyFilter'],
-  name: string
-}[] = [{
-  key: 'auto',
+
+const applyFilterTypes = [{
+  key: 'auto' as const,
   name: 'Immediately',
 }, {
-  key: 'onClick',
+  key: 'onClick' as const,
   name: 'On Button Click',
 }];
 
@@ -58,8 +56,8 @@ function calculateFilterExpression(value: string, selectedFilterOperations, targ
   return column.defaultCalculateFilterExpression(value, selectedFilterOperations, target);
 }
 
-const orderHeaderFilter: IHeaderFilterProps['dataSource'] = (data) => {
-  data.dataSource.postProcess = (results: { text: string; value: string; }[]) => {
+const orderHeaderFilter = (data) => {
+  data.dataSource.postProcess = (results) => {
     results.push({
       text: 'Weekends',
       value: 'weekends',

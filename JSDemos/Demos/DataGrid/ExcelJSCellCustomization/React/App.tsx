@@ -46,7 +46,7 @@ const onExporting = (e: DataGridTypes.ExportingEvent) => {
   });
 };
 
-const renderGridCell = (data) => <a href={ data.text } target='_blank' rel='noopener noreferrer'>Website</a>;
+const renderGridCell = (data: DataGridTypes.ColumnCellTemplateData) => <a href={ data.text } target='_blank' rel='noopener noreferrer'>Website</a>;
 
 const phoneNumberFormat = (value) => {
   const USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);

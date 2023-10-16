@@ -5,7 +5,7 @@ import DataGrid, {
 import { formatDate } from 'devextreme/localization';
 import { orders } from './data.ts';
 
-const customizeDate = (itemInfo: { value: Date; }) => `First: ${formatDate(itemInfo.value, 'MMM dd, yyyy')}`;
+const customizeDate = (itemInfo) => `First: ${formatDate(itemInfo.value, 'MMM dd, yyyy')}`;
 
 const App = () => (
   <DataGrid

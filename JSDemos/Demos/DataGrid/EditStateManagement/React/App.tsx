@@ -1,16 +1,16 @@
 import React from 'react';
 import DataGrid, {
-  Column, DataGridTypes, Editing, IEditingProps,
+  Column, DataGridTypes, Editing,
 } from 'devextreme-react/data-grid';
 import { LoadPanel } from 'devextreme-react/load-panel';
 import 'whatwg-fetch';
 
-import reducer from './reducer.js';
+import reducer, { State } from './reducer.js';
 import {
   saveChange, loadOrders, setChanges, setEditRowKey,
 } from './actions.js';
 
-const initialState = {
+const initialState: State = {
   data: [],
   changes: [],
   editRowKey: null,
@@ -37,11 +37,11 @@ const App = () => {
     e.promise = saveChange(dispatch, e.changes[0]);
   }, []);
 
-  const onChangesChange = React.useCallback<IEditingProps['onChangesChange']>((changes) => {
+  const onChangesChange = React.useCallback((changes: DataGridTypes.DataChange[]) => {
     setChanges(dispatch, changes);
   }, []);
 
-  const onEditRowKeyChange = React.useCallback<IEditingProps['onEditRowKeyChange']>((editRowKey) => {
+  const onEditRowKeyChange = React.useCallback((editRowKey) => {
     setEditRowKey(dispatch, editRowKey);
   }, []);
 

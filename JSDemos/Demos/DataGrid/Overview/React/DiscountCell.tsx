@@ -3,12 +3,13 @@ import React from 'react';
 import Bullet, {
   Font, Margin, Size, Tooltip,
 } from 'devextreme-react/bullet';
+import { DataGridTypes } from 'devextreme-react/data-grid';
 
-const customizeTooltip = (data: { value: string; }) => ({
+const customizeTooltip = (data) => ({
   text: `${parseInt(data.value, 10)}%`,
 });
 
-const DiscountCell = (cellData: { value: number; }) => (
+const DiscountCell = (cellData: DataGridTypes.ColumnCellTemplateData) => (
   <Bullet
     showTarget={false}
     showZeroLevel={true}

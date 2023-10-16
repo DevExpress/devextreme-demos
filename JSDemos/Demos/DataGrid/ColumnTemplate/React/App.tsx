@@ -1,9 +1,9 @@
 import React from 'react';
-import DataGrid, { Column } from 'devextreme-react/data-grid';
+import DataGrid, { Column, DataGridTypes } from 'devextreme-react/data-grid';
 
 import { employees } from './data.ts';
 
-const cellRender = (data: { value: string; }) => (<img src={data.value} />);
+const cellRender = (data: DataGridTypes.ColumnCellTemplateData) => (<img src={data.value} />);
 
 const App = () => (
   <DataGrid

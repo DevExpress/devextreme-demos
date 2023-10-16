@@ -45,7 +45,7 @@ const onExporting = (e: DataGridTypes.ExportingEvent) => {
   });
 };
 
-const renderGridCell = (data: { text: string; }) => (
+const renderGridCell = (data: DataGridTypes.ColumnCellTemplateData) => (
   <a href={ data.text } target='_blank' rel='noopener noreferrer'>Website</a>
 );
 

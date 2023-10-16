@@ -1,6 +1,6 @@
 import React from 'react';
 import DataGrid, {
-  Column, RowDragging, Scrolling, Lookup, Sorting, IRowDraggingProps,
+  Column, RowDragging, Scrolling, Lookup, Sorting,
 } from 'devextreme-react/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 
@@ -24,7 +24,7 @@ const employeesStore = createStore({
 });
 
 // eslint-disable-next-line space-before-function-paren
-const processReorder: IRowDraggingProps['onReorder'] = async (e) => {
+const processReorder = async (e) => {
   const visibleRows = e.component.getVisibleRows();
   const newOrderIndex = visibleRows[e.toIndex].data.OrderIndex;
 
@@ -32,7 +32,7 @@ const processReorder: IRowDraggingProps['onReorder'] = async (e) => {
   await e.component.refresh();
 };
 
-const onReorder: IRowDraggingProps['onReorder'] = (e) => {
+const onReorder = (e) => {
   e.promise = processReorder(e);
 };
 

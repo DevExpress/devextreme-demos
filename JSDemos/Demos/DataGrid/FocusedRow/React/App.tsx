@@ -8,19 +8,9 @@ import 'devextreme/data/odata/store';
 
 const focusedRowKeyLabel = { 'aria-label': 'Focused Row Key' };
 
-interface ODataSource {
+const dataSourceOptions = {
   store: {
-    type: 'odata',
-    url: string,
-    key: string,
-  },
-  expand: string,
-  select: string[],
-}
-
-const dataSourceOptions: ODataSource = {
-  store: {
-    type: 'odata',
+    type: 'odata' as const,
     key: 'Task_ID',
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Tasks',
   },
@@ -50,21 +40,20 @@ const App = () => {
     }
   }, []);
 
-  const onFocusedRowChanging = React.useCallback((e: DataGridTypes.FocusedRowChangingEvent) => {
+  // eslint-disable-next-line @typescript-eslint/space-before-function-paren
+  const onFocusedRowChanging = React.useCallback(async(e: DataGridTypes.FocusedRowChangingEvent) => {
     const rowsCount = e.component.getVisibleRows().length;
     const pageCount = e.component.pageCount();
     const pageIndex = e.component.pageIndex();
-    const key = e.event && e.event.key;
+    const key = (e?.event as any).key;
 
     if (key && e.prevRowIndex === e.newRowIndex) {
       if (e.newRowIndex === rowsCount - 1 && pageIndex < pageCount - 1) {
-        e.component.pageIndex(pageIndex + 1).done(() => {
-          e.component.option('focusedRowIndex', 0);
-        });
+        await e.component.pageIndex(pageIndex + 1);
+        e.component.option('focusedRowIndex', 0);
       } else if (e.newRowIndex === 0 && pageIndex > 0) {
-        e.component.pageIndex(pageIndex - 1).done(() => {
-          e.component.option('focusedRowIndex', rowsCount - 1);
-        });
+        await e.component.pageIndex(pageIndex - 1);
+        e.component.option('focusedRowIndex', rowsCount - 1);
       }
     }
   }, []);

@@ -1,17 +1,17 @@
 import React from 'react';
 import DataGrid, {
-  Button, IButtonProps, Column, DataGridTypes, Editing, Lookup, IEditingProps,
+  Button, Column, DataGridTypes, Editing, Lookup,
 } from 'devextreme-react/data-grid';
 
 import { employees as defaultEmployees, states, getMaxID } from './data.ts';
 
 const isChief = (position: string) => position && ['CEO', 'CMO'].indexOf(position.trim().toUpperCase()) >= 0;
 
-const isCloneIconVisible: IButtonProps['visible'] = (e) => !e.row.isEditing;
+const isCloneIconVisible = (e) => !e.row.isEditing;
 
-const isCloneIconDisabled: IButtonProps['disabled'] = (e) => isChief(e.row.data.Position);
+const isCloneIconDisabled = (e) => isChief(e.row.data.Position);
 
-const isDeleteIconVisible: IEditingProps['allowDeleting'] = (e) => !isChief(e.row.data.Position);
+const isDeleteIconVisible = (e) => !isChief(e.row.data.Position);
 
 const onRowValidating = (e: DataGridTypes.RowValidatingEvent) => {
   const position = e.newData.Position;
@@ -31,7 +31,7 @@ const onEditorPreparing = (e: DataGridTypes.EditorPreparingEvent) => {
 const App = () => {
   const [employees, setEmployees] = React.useState(defaultEmployees);
 
-  const onCloneIconClick = React.useCallback<IButtonProps['onClick']>((e) => {
+  const onCloneIconClick = React.useCallback((e) => {
     const clonedItem = { ...e.row.data, ID: getMaxID() };
 
     setEmployees((prevState) => {

@@ -47,8 +47,8 @@ const setAlternatingRowsBackground = (gridCell, excelCell) => {
 };
 
 const App = () => {
-  const priceGridRef = React.useRef(null);
-  const ratingGridRef = React.useRef(null);
+  const priceGridRef = React.useRef<DataGrid>(null);
+  const ratingGridRef = React.useRef<DataGrid>(null);
 
   const exportGrids = React.useCallback(() => {
     const workbook = new Workbook();

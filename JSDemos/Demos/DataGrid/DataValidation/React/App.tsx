@@ -1,6 +1,6 @@
 import React from 'react';
 import DataGrid, {
-  Column, Editing, Paging, RequiredRule, PatternRule, EmailRule, AsyncRule, IAsyncRuleProps,
+  Column, Editing, Paging, RequiredRule, PatternRule, EmailRule, AsyncRule,
 } from 'devextreme-react/data-grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 
@@ -19,7 +19,7 @@ const dataSource = createStore({
 });
 
 // eslint-disable-next-line space-before-function-paren
-const asyncValidation: IAsyncRuleProps['validationCallback'] = async (params) => {
+const asyncValidation = async (params) => {
   const response = await fetch(emailValidationUrl, {
     method: 'POST',
     headers: {

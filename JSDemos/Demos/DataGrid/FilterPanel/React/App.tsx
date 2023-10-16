@@ -5,19 +5,17 @@ import DataGrid, {
   HeaderFilter,
   FilterPanel,
   FilterBuilderPopup,
-  IFilterBuilderPopupProps,
   Scrolling,
 } from 'devextreme-react/data-grid';
-import { DataType } from 'devextreme/common';
 import { orders } from './data.ts';
 
 const saleAmountEditorOptions = { format: 'currency', showClearButton: true };
 const getOrderDay = (rowData) => (new Date(rowData.OrderDate)).getDay();
 
-const filterBuilderPopupPosition: IFilterBuilderPopupProps['position'] = {
+const filterBuilderPopupPosition = {
   of: window,
-  at: 'top',
-  my: 'top',
+  at: 'top' as const,
+  my: 'top' as const,
   offset: { y: 10 },
 };
 
@@ -25,7 +23,7 @@ const filterBuilder = {
   customOperations: [{
     name: 'weekends',
     caption: 'Weekends',
-    dataTypes: ['date'] as DataType[],
+    dataTypes: ['date' as const],
     icon: 'check',
     hasValue: false,
     calculateFilterExpression: () => [[getOrderDay, '=', 0], 'or', [getOrderDay, '=', 6]],
