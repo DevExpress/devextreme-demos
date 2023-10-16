@@ -154,7 +154,7 @@ jobs:
     - name: Run esbuild bundler tests
       env:
         CHANGEDFILEINFOSPATH: ${{ github.workspace }}/changed-files.json
-        CONSTEL: ${{ matrix.FRAMEWORK }}
+        FRAMEWORK: ${{ matrix.FRAMEWORK }}
         CI_ENV: true # The `ignore` field in the visualtestrc.json should be disabled when running test locally
       run: npm run esbuild-bundles-test
 
