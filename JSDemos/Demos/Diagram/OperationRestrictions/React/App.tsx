@@ -13,7 +13,7 @@ const orgItemsDataSource = new ArrayStore({
   data: service.getOrgItems(),
 });
 
-function showToast(text) {
+function showToast(text: string) {
   notify({
     position: {
       at: 'top', my: 'top', of: '#diagram', offset: '0 4',
@@ -24,7 +24,7 @@ function showToast(text) {
   });
 }
 
-function onRequestLayoutUpdate(e) {
+function onRequestLayoutUpdate(e: { changes: string | any[]; allowed: boolean; }) {
   for (let i = 0; i < e.changes.length; i += 1) {
     if (e.changes[i].type === 'remove') {
       e.allowed = true;
@@ -34,7 +34,7 @@ function onRequestLayoutUpdate(e) {
   }
 }
 
-function itemStyleExpr(obj) {
+function itemStyleExpr(obj: { Type: string; }) {
   if (obj.Type === 'root') {
     return { fill: '#ffcfc3' };
   }
@@ -49,7 +49,7 @@ function itemStyleExpr(obj) {
 export default function App() {
   const diagramRef = React.useRef(null);
 
-  const onRequestEditOperation = React.useCallback((e) => {
+  const onRequestEditOperation = React.useCallback((e: { operation: string; args: { shape: { type: string; attachedConnectorIds: string | any[]; id: any; }; newSize: { width: number; height: number; }; newShape: { type: any; }; connectorPosition: string; newPoints: string | any[]; text: string; }; reason: string; allowed: boolean; }) => {
     const diagram = diagramRef.current.instance;
     if (e.operation === 'addShape') {
       if (e.args.shape.type !== 'employee' && e.args.shape.type !== 'team') {

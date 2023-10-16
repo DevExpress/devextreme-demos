@@ -17,7 +17,7 @@ import 'whatwg-fetch';
 const pageCommands = ['pageSize', 'pageOrientation', 'pageColor'];
 const menuCommands = ['bringToFront', 'sendToBack', 'lock', 'unlock'];
 
-function onCustomCommand(e) {
+function onCustomCommand(e: { name: string; component: { import: (arg0: string) => void; }; }) {
   if (e.name === 'clear') {
     const result = confirm('Are you sure you want to clear the diagram? This action cannot be undone.', 'Warning');
     result.then(

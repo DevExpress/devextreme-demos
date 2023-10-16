@@ -1,4 +1,17 @@
-import React from 'react';
+
+
+interface PopupContentFuncProps {
+currentEmployee: any;
+handleNameChange: any;
+handleTitleChange: any;
+handleCityChange: any;
+handleStateChange: any;
+handleEmailChange: any;
+handleSkypeChange: any;
+handlePhoneChange: any;
+updateEmployeeClick: any;
+cancelEditEmployeeClick: any;
+}import React from 'react';
 import Diagram, {
   CustomShape, ContextToolbox, PropertiesPanel, Group, Tab, Toolbox, Nodes, AutoLayout,
 } from 'devextreme-react/diagram';
@@ -26,7 +39,7 @@ const employees = service.getEmployees();
 const dataSource = new ArrayStore({
   key: 'ID',
   data: employees,
-  onInserting(values, key) {
+  onInserting(values: { ID: any; Full_Name: any; Title: any; }, key) {
     this.update(key, {
       ID: values.ID || (generatedID += 1),
       Full_Name: values.Full_Name || "Employee's Name",
@@ -35,7 +48,7 @@ const dataSource = new ArrayStore({
   },
 });
 
-function onRequestLayoutUpdate(e) {
+function onRequestLayoutUpdate(e: { changes: string | any[]; allowed: boolean; }) {
   for (let i = 0; i < e.changes.length; i += 1) {
     if (e.changes[i].type === 'remove') {
       e.allowed = true;
@@ -45,7 +58,7 @@ function onRequestLayoutUpdate(e) {
   }
 }
 
-function deleteEmployee(employee) {
+function deleteEmployee(employee: { ID: any; } | { Full_Name: any; Title: any; }) {
   dataSource.push([{ type: 'remove', key: employee.ID }]);
 }
 
@@ -53,7 +66,7 @@ function itemTypeExpr() {
   return 'employee';
 }
 
-function itemCustomDataExpr(obj, value) {
+function itemCustomDataExpr(obj: { Full_Name: any; Prefix: any; Title: any; City: any; State: any; Email: any; Skype: any; Mobile_Phone: any; }, value: { Full_Name: any; Prefix: any; Title: any; City: any; State: any; Email: any; Skype: any; Mobile_Phone: any; }) {
   if (value === undefined) {
     return {
       Full_Name: obj.Full_Name,
@@ -83,7 +96,7 @@ export default function App() {
 
   const diagramRef = React.useRef(null);
 
-  const customShapeTemplate = React.useCallback((item) => (CustomShapeTemplate(item.dataItem,
+  const customShapeTemplate = React.useCallback((item: { dataItem: { Full_Name: any; Title: any; } | { ID: any; } | { Full_Name: any; Title: any; }; }) => (CustomShapeTemplate(item.dataItem,
     () => { editEmployee(item.dataItem); },
     () => { deleteEmployee(item.dataItem); })
   ), [editEmployee, deleteEmployee]);
@@ -125,31 +138,31 @@ export default function App() {
     }));
   }, [setCurrentEmployee]);
 
-  const handleNameChange = React.useCallback((e) => {
+  const handleNameChange = React.useCallback((e: { value: any; }) => {
     handleChange('Full_Name', e.value);
   }, [handleChange]);
 
-  const handleTitleChange = React.useCallback((e) => {
+  const handleTitleChange = React.useCallback((e: { value: any; }) => {
     handleChange('Title', e.value);
   }, [handleChange]);
 
-  const handleCityChange = React.useCallback((e) => {
+  const handleCityChange = React.useCallback((e: { value: any; }) => {
     handleChange('City', e.value);
   }, [handleChange]);
 
-  const handleStateChange = React.useCallback((e) => {
+  const handleStateChange = React.useCallback((e: { value: any; }) => {
     handleChange('State', e.value);
   }, [handleChange]);
 
-  const handleEmailChange = React.useCallback((e) => {
+  const handleEmailChange = React.useCallback((e: { value: any; }) => {
     handleChange('Email', e.value);
   }, [handleChange]);
 
-  const handleSkypeChange = React.useCallback((e) => {
+  const handleSkypeChange = React.useCallback((e: { value: any; }) => {
     handleChange('Skype', e.value);
   }, [handleChange]);
 
-  const handlePhoneChange = React.useCallback((e) => {
+  const handlePhoneChange = React.useCallback((e: { value: any; }) => {
     handleChange('Mobile_Phone', e.value);
   }, [handleChange]);
 
@@ -213,7 +226,7 @@ export default function App() {
   );
 }
 
-function PopupContentFunc(props) {
+function PopupContentFunc(props: PopupContentFuncProps) {
   return (
     <React.Fragment>
       <div className="dx-fieldset">

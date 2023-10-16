@@ -11,7 +11,7 @@ const dataSource = new ArrayStore({
   data: employees,
 });
 
-function itemTypeExpr(obj) {
+function itemTypeExpr(obj: { ID: any; }) {
   return `employee${obj.ID}`;
 }
 
@@ -19,7 +19,7 @@ export default function App() {
   const [currentEmployee, setCurrentEmployee] = React.useState({});
   const [popupVisible, setPopupVisible] = React.useState(false);
 
-  const customShapeTemplate = React.useCallback((item) => (CustomShapeTemplate(item.dataItem,
+  const customShapeTemplate = React.useCallback((item: { dataItem: any; }) => (CustomShapeTemplate(item.dataItem,
     () => { showInfo(item.dataItem); })), [showInfo]);
 
   const showInfo = React.useCallback((employee) => {

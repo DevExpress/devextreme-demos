@@ -14,7 +14,7 @@ const orgLinksDataSource = new ArrayStore({
   data: service.getOrgLinks(),
 });
 
-function itemTypeExpr(obj, value) {
+function itemTypeExpr(obj: { type: string; }, value: string) {
   if (value) {
     obj.type = (value === 'rectangle') ? undefined : 'group';
   } else {
@@ -23,7 +23,7 @@ function itemTypeExpr(obj, value) {
   return null;
 }
 
-function itemWidthExpr(obj, value) {
+function itemWidthExpr(obj: { width: any; type: string; }, value) {
   if (value) {
     obj.width = value;
   } else {
@@ -32,7 +32,7 @@ function itemWidthExpr(obj, value) {
   return null;
 }
 
-function itemHeightExpr(obj, value) {
+function itemHeightExpr(obj: { height: any; type: string; }, value) {
   if (value) {
     obj.height = value;
   } else {
@@ -41,14 +41,14 @@ function itemHeightExpr(obj, value) {
   return null;
 }
 
-function itemTextStyleExpr(obj) {
+function itemTextStyleExpr(obj: { level: string; }) {
   if (obj.level === 'senior') {
     return { 'font-weight': 'bold', 'text-decoration': 'underline' };
   }
   return {};
 }
 
-function itemStyleExpr(obj) {
+function itemStyleExpr(obj: { type: string; }) {
   const style = { stroke: '#444444' };
   if (obj.type === 'group') {
     style.fill = '#f3f3f3';
