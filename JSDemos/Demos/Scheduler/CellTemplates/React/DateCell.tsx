@@ -14,7 +14,7 @@ const DateCell = (props: DateCellProps) => {
     : Utils.isDisableDate(date);
 
   return (
-    <div className={isDisabled && 'disable-date'}>
+    <div className={isDisabled ? 'disable-date' : undefined}>
       <div>{text}</div>
     </div>
   );

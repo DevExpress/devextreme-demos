@@ -2,10 +2,10 @@ import { SchedulerTypes } from 'devextreme-react/scheduler';
 
 type Appointment = SchedulerTypes.Appointment & { roomId: number[] };
 
-type Resource = {
-  id: number;
+export type Resource = {
+  id?: number;
   text: string;
-  color: string;
+  color?: string;
 };
 
 export const data: Appointment[] = [
