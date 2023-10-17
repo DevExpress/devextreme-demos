@@ -1,3 +1,5 @@
+import { SchedulerTypes } from 'devextreme-react/scheduler';
+
 export const dinnerTime = { from: 12, to: 13 };
 
 export const holidays = [
@@ -5,13 +7,7 @@ export const holidays = [
   new Date(2021, 5, 6),
 ];
 
-type Appointment = {
-  text: string,
-  startDate: Date,
-  endDate: Date,
-};
-
-export const data: Appointment[] = [
+export const data: SchedulerTypes.Appointment[] = [
   {
     text: 'Website Re-Design Plan',
     startDate: new Date(2021, 3, 26, 9, 30),

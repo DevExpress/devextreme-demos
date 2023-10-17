@@ -1,11 +1,6 @@
-type Appointment = {
-  text: string;
-  startDate: Date;
-  endDate: Date;
-  recurrenceRule?: string;
-  allDay?: boolean;
-  priorityId? : Array<number>;
-};
+import { SchedulerTypes } from 'devextreme-react/scheduler';
+
+type Appointment = SchedulerTypes.Appointment & { priorityId? : Array<number>; };
 
 type Resource = {
   text: string;
@@ -13,7 +8,7 @@ type Resource = {
   color: string;
 };
 
-export const data: Array<Appointment> = [
+export const data: Appointment[] = [
   {
     text: 'Website Re-Design Plan',
     startDate: new Date('2021-03-01T16:30:00.000Z'),
@@ -64,7 +59,7 @@ export const data: Array<Appointment> = [
   },
 ];
 
-export const priorities: Array<Resource> = [
+export const priorities: Resource[] = [
   {
     text: 'High priority',
     id: 1,

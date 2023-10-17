@@ -1,10 +1,6 @@
-type Appointment = {
-  startDate: Date;
-  endDate: Date;
-  theatreId: number;
-  movieId: number;
-  price: number;
-};
+import { SchedulerTypes } from 'devextreme-react/scheduler';
+
+type Appointment = SchedulerTypes.Appointment & { theatreId: number; movieId: number; price: number; };
 
 type MovieResource = {
   id: number;

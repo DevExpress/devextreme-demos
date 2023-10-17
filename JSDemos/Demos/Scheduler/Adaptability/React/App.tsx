@@ -12,7 +12,7 @@ const App = () => {
   const schedulerRef = React.useRef<Scheduler>(null);
 
   const showAppointmentPopup = React.useCallback(() => {
-    schedulerRef.current.instance.showAppointmentPopup();
+    schedulerRef.current?.instance.showAppointmentPopup();
   }, [schedulerRef]);
 
   return (

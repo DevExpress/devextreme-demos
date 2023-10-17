@@ -1,10 +1,6 @@
-type Appointment = {
-  text: string;
-  startDate: Date;
-  endDate: Date;
-  priorityId : number;
-  assigneeId: number;
-};
+import { SchedulerTypes } from 'devextreme-react/scheduler';
+
+type Appointment = SchedulerTypes.Appointment & { priorityId: number; assigneeId: number; };
 
 type Resource = {
   text: string;
@@ -12,7 +8,7 @@ type Resource = {
   color: string
 };
 
-export const assignees: Array<Resource> = [{
+export const assignees: Resource[] = [{
   text: 'Samantha Bright',
   id: 1,
   color: '#727bd2',
@@ -30,7 +26,7 @@ export const assignees: Array<Resource> = [{
   color: '#7b49d3',
 }];
 
-export const priorities: Array<Resource> = [{
+export const priorities: Resource[] = [{
   text: 'High',
   id: 1,
   color: '#cc5c53',
@@ -40,7 +36,7 @@ export const priorities: Array<Resource> = [{
   color: '#ff9747',
 }];
 
-export const data: Array<Appointment> = [{
+export const data: Appointment[] = [{
   text: 'Google AdWords Strategy',
   startDate: new Date('2021-05-03T16:00:00.000Z'),
   endDate: new Date('2021-05-03T17:30:00.000Z'),

@@ -1,12 +1,6 @@
-type Appointment = {
-  text: string;
-  startDate: Date;
-  endDate: Date;
-  allDay?: boolean;
-  recurrenceRule?: string;
-  priorityId: number;
-  typeId: number;
-};
+import { SchedulerTypes } from 'devextreme-react/scheduler';
+
+type Appointment = SchedulerTypes.Appointment & { priorityId: number; typeId: number; };
 
 type Resource = {
   text: string;

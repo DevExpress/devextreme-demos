@@ -1,9 +1,6 @@
-export type Appointment = {
-  startDate: Date;
-  endDate: Date;
-  recurrenceRule: string;
-  movieId: number;
-};
+import { SchedulerTypes } from 'devextreme-react/scheduler';
+
+type Appointment = SchedulerTypes.Appointment & { movieId: number };
 
 type Resource = {
   id: number;

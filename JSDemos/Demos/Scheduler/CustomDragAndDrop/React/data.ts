@@ -1,9 +1,4 @@
-export type Appointment = {
-  text: string;
-  startDate: Date;
-  endDate: Date;
-  allDay?: boolean;
-};
+import { SchedulerTypes } from 'devextreme-react/scheduler';
 
 export type Task = {
   text: string;
@@ -33,7 +28,7 @@ export const tasks: Task[] = [
   },
 ];
 
-export const appointments: Appointment[] = [
+export const appointments: SchedulerTypes.Appointment[] = [
   {
     text: 'Book Flights to San Fran for Sales Trip',
     startDate: new Date('2021-04-26T19:00:00.000Z'),
