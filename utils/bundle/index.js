@@ -80,6 +80,7 @@ if (framework === 'react') {
   packages = [
     'react/umd/react.development.js',
     'react-dom/umd/react-dom.development.js',
+    'devextreme/common/charts',
   ];
 }
 
