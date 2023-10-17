@@ -5,10 +5,10 @@ import DataGrid, {
 import { LoadPanel } from 'devextreme-react/load-panel';
 import 'whatwg-fetch';
 
-import reducer, { State } from './reducer.js';
+import reducer, { State } from './reducer.ts';
 import {
   saveChange, loadOrders, setChanges, setEditRowKey,
-} from './actions.js';
+} from './actions.ts';
 
 const initialState: State = {
   data: [],
