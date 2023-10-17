@@ -110,11 +110,16 @@ jobs:
     - name: Get sources
       uses: actions/checkout@v3
 
-    - name: Unpack artifacts
-      run: 7z x node_modules.7z
-
     - name: Delete DX packages
       run:  sed -i '/23.2-next/d' ./package.json
+
+    - name: Download devextreme sources
+      uses: actions/download-artifact@v3
+      with:
+        name: devextreme-sources
+
+    - name: Unpack artifacts
+      run: 7z x node_modules.7z
 
     - name: Install DX packages
       run: |
