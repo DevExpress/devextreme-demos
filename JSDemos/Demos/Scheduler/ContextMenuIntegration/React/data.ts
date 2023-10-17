@@ -1,4 +1,19 @@
-export const data = [
+export type Appointment = {
+  text: string;
+  startDate: Date;
+  endDate: Date;
+  recurrenceRule: string;
+  recurrenceException?: string;
+  roomId: number[];
+};
+
+type Resource = {
+  id: number;
+  text: string;
+  color: string;
+};
+
+export const data: Appointment[] = [
   {
     text: 'Watercolor Landscape',
     roomId: [1],
@@ -51,7 +66,7 @@ export const data = [
   },
 ];
 
-export const resourcesData = [
+export const resourcesData: Resource[] = [
   {
     text: 'Room 101',
     id: 1,

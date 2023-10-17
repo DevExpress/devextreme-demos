@@ -1,8 +1,21 @@
+export type Appointment = {
+  startDate: Date;
+  endDate: Date;
+  recurrenceRule: string;
+  movieId: number;
+};
+
+type Resource = {
+  id: number;
+  text: string;
+  image: string;
+};
+
 export const today = new Date();
 today.setHours(0, 0, 0, 0);
 today.setDate(today.getDate() - today.getDay() + 3);
 
-export const data = [
+export const data: Appointment[] = [
   {
     movieId: 1,
     startDate: new Date(today.getTime() - 113.5 * 3600000),
@@ -31,7 +44,7 @@ export const data = [
   },
 ];
 
-export const moviesData = [{
+export const moviesData: Resource[] = [{
   id: 1,
   text: 'His Girl Friday',
   image: '../../../../images/movies/HisGirlFriday.jpg',

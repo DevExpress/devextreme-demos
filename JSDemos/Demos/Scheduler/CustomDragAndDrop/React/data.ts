@@ -1,4 +1,15 @@
-export const tasks = [
+export type Appointment = {
+  text: string;
+  startDate: Date;
+  endDate: Date;
+  allDay?: boolean;
+};
+
+export type Task = {
+  text: string;
+};
+
+export const tasks: Task[] = [
   {
     text: 'New Brochures',
   }, {
@@ -22,7 +33,7 @@ export const tasks = [
   },
 ];
 
-export const appointments = [
+export const appointments: Appointment[] = [
   {
     text: 'Book Flights to San Fran for Sales Trip',
     startDate: new Date('2021-04-26T19:00:00.000Z'),

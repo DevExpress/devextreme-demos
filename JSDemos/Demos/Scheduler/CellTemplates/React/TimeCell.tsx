@@ -1,7 +1,11 @@
 import React from 'react';
 import Utils from './utils.ts';
 
-const TimeCell = (props: { data: { date: any; text: any; }; }) => {
+type TimeCellProps = {
+  data: { date: Date; text: string; };
+};
+
+const TimeCell: React.FunctionComponent<TimeCellProps> = (props) => {
   const { date, text } = props.data;
 
   const isDinner = Utils.isDinner(date);

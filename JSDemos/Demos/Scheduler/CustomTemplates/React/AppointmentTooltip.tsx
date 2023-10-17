@@ -1,11 +1,16 @@
 import React from 'react';
 import Query from 'devextreme/data/query';
+import { SchedulerTypes } from 'devextreme-react/scheduler';
 
 import { moviesData } from './data.ts';
 
 const getMovieById = (id) => Query(moviesData).filter(['id', id]).toArray()[0];
 
-const AppointmentTooltip = (props: { data: { appointmentData: { movieId: any; }; }; }) => {
+type AppointmentProps = {
+  data: { appointmentData: SchedulerTypes.Appointment & { movieId: number }; }
+};
+
+const AppointmentTooltip: React.FunctionComponent<AppointmentProps> = (props) => {
   const { movieId } = props.data.appointmentData;
 
   const movieData = React.useMemo(() => getMovieById(movieId), [movieId]);

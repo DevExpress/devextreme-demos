@@ -5,17 +5,18 @@ import Query from 'devextreme/data/query';
 import Appointment from './Appointment.tsx';
 import AppointmentTooltip from './AppointmentTooltip.tsx';
 import { data, moviesData, theatreData } from './data.ts';
+import { SelectBoxTypes } from 'devextreme-react/select-box';
+import { DateBoxTypes } from 'devextreme-react/date-box';
 
 const currentDate = new Date(2021, 3, 27);
-const views: SchedulerTypes.Properties['views'] = ['day', 'week', 'timelineDay'];
+const views: SchedulerTypes.ViewType[] = ['day', 'week', 'timelineDay'];
 const groups = ['theatreId'];
 
-const onAppointmentFormOpening = (e: { appointmentData?: any; form?: any; }) => {
-  const { form } = e;
+const onAppointmentFormOpening = (e: SchedulerTypes.AppointmentFormOpeningEvent) => {
   let movieInfo = getMovieById(e.appointmentData.movieId) || {};
   let { startDate } = e.appointmentData;
 
-  form.option('items', [{
+  e.form.option('items', [{
     label: {
       text: 'Movie',
     },
@@ -25,11 +26,11 @@ const onAppointmentFormOpening = (e: { appointmentData?: any; form?: any; }) => 
       items: moviesData,
       displayExpr: 'text',
       valueExpr: 'id',
-      onValueChanged(args: { value: any; }) {
+      onValueChanged(args: SelectBoxTypes.ValueChangedEvent) {
         movieInfo = getMovieById(args.value);
 
-        form.updateData('director', movieInfo.director);
-        form.updateData('endDate', new Date(startDate.getTime() + 60 * 1000 * movieInfo.duration));
+        e.form.updateData('director', movieInfo.director);
+        e.form.updateData('endDate', new Date((startDate as Date).getTime() + 60 * 1000 * movieInfo.duration));
       },
     },
   }, {
@@ -48,9 +49,9 @@ const onAppointmentFormOpening = (e: { appointmentData?: any; form?: any; }) => 
     editorOptions: {
       width: '100%',
       type: 'datetime',
-      onValueChanged(args: { value: any; }) {
+      onValueChanged(args: DateBoxTypes.ValueChangedEvent) {
         startDate = args.value;
-        form.updateData('endDate', new Date(startDate.getTime() + 60 * 1000 * movieInfo.duration));
+        e.form.updateData('endDate', new Date((startDate as Date).getTime() + 60 * 1000 * movieInfo.duration));
       },
     },
   }, {

@@ -23,7 +23,7 @@ const createStore = () => AspNetData.createStore({
 const store1 = createStore();
 const store2 = createStore();
 const currentDate = new Date(2021, 3, 27);
-const views: SchedulerTypes.Properties['views'] = ['day', 'workWeek'];
+const views: SchedulerTypes.ViewType[] = ['day', 'workWeek'];
 
 const connection = new HubConnectionBuilder()
   .withUrl(`${BASE_PATH}schedulerSignalRHub`, {

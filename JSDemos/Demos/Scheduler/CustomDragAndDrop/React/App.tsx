@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Scheduler, { AppointmentDragging, IAppointmentDraggingProps, SchedulerTypes } from 'devextreme-react/scheduler';
+import Scheduler, { AppointmentDragging, SchedulerTypes } from 'devextreme-react/scheduler';
 import Draggable, { DraggableTypes } from 'devextreme-react/draggable';
 import ScrollView from 'devextreme-react/scroll-view';
 
-import { appointments as defaultAppointments, tasks as defaultTasks } from './data.ts';
+import { Appointment, Task, appointments as defaultAppointments, tasks as defaultTasks } from './data.ts';
 
 const currentDate = new Date(2021, 3, 26);
 const views: SchedulerTypes.Properties['views'] = [{ type: 'day', intervalCount: 3 }];
@@ -29,8 +29,8 @@ const App = () => {
     tasks: defaultTasks, appointments: defaultAppointments,
   });
 
-  const onAppointmentRemove = React.useCallback<IAppointmentDraggingProps['onRemove'] >((e) => {
-    setState((currentState: { appointments: any; tasks: any; }) => {
+  const onAppointmentRemove = React.useCallback((e: SchedulerTypes.AppointmentDraggingRemoveEvent) => {
+    setState((currentState: { appointments: Appointment[]; tasks: Task[]; }) => {
       const { appointments, tasks } = currentState;
 
       const index = appointments.indexOf(e.itemData);
@@ -44,8 +44,8 @@ const App = () => {
     });
   }, []);
 
-  const onAppointmentAdd = React.useCallback<IAppointmentDraggingProps['onAdd']>((e) => {
-    setState((currentState: { appointments: any; tasks: any; }) => {
+  const onAppointmentAdd = React.useCallback((e: SchedulerTypes.AppointmentDraggingAddEvent) => {
+    setState((currentState: { appointments: Appointment[]; tasks: Task[]; }) => {
       const { appointments, tasks } = currentState;
 
       const index = tasks.indexOf(e.fromData);

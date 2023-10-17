@@ -1,6 +1,10 @@
+import { SchedulerTypes } from 'devextreme-react/scheduler';
+
+type Appointment = SchedulerTypes.Appointment & { priorityId: number[], roomId: number, assigneeId: number };
+
 export const resourcesList = ['Assignee', 'Room', 'Priority'];
 
-export const data = [
+export const data: Appointment[] = [
   {
     text: 'Website Re-Design Plan',
     assigneeId: 4,

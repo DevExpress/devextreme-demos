@@ -6,7 +6,7 @@ import notify from 'devextreme/ui/notify';
 import { data } from './data.ts';
 
 const currentDate = new Date(2021, 3, 29);
-const views: SchedulerTypes.Properties['views'] = ['day', 'week'];
+const views: SchedulerTypes.ViewType[] = ['day', 'week'];
 
 const showToast = (event: string, value, type: string) => {
   notify(`${event} "${value}" task`, type, 800);
@@ -31,15 +31,15 @@ const App = () => {
   const [allowDragging, setAllowDragging] = React.useState(true);
   const [allowUpdating, setAllowUpdating] = React.useState(true);
 
-  const onAllowAddingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowAdding(e.value), []);
+  const onAllowAddingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowAdding(e.value), [setAllowAdding]);
 
-  const onAllowDeletingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowDeleting(e.value), []);
+  const onAllowDeletingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowDeleting(e.value), [setAllowDeleting]);
 
-  const onAllowResizingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowResizing(e.value), []);
+  const onAllowResizingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowResizing(e.value), [setAllowResizing]);
 
-  const onAllowDraggingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowDragging(e.value), []);
+  const onAllowDraggingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowDragging(e.value), [setAllowDragging]);
 
-  const onAllowUpdatingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowUpdating(e.value), []);
+  const onAllowUpdatingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowUpdating(e.value), [setAllowUpdating]);
 
   return (
     <React.Fragment>

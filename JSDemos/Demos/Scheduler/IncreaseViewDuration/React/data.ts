@@ -1,4 +1,6 @@
-export const data = [{
+import { SchedulerTypes } from 'devextreme-react/scheduler';
+
+export const data: SchedulerTypes.Appointment[] = [{
   text: 'Google AdWords Strategy',
   startDate: new Date('2021-04-05T16:00:00.000Z'),
   endDate: new Date('2021-04-05T17:30:00.000Z'),

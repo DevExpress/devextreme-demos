@@ -1,16 +1,16 @@
 import React from 'react';
 import DataCell from './DataCell.tsx';
 
-const DataCellMonth = (props: { data: { startDate: any; }; }) => {
+type DataCellMonthProps = {
+  data: { startDate: Date; };
+}
+
+const DataCellMonth: React.FunctionComponent<DataCellMonthProps> = (props) => {
   const { startDate } = props.data;
-  const day = startDate.getDate();
 
   return (
-    <DataCell
-      data={props.data}
-      className='dx-scheduler-date-table-cell-text'
-    >
-      {day}
+    <DataCell data={props.data} className='dx-scheduler-date-table-cell-text'>
+      {startDate.getDate()}
     </DataCell>
   );
 };

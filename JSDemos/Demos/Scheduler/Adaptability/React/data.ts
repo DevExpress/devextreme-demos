@@ -1,4 +1,19 @@
-export const data = [
+type Appointment = {
+  text: string;
+  startDate: Date;
+  endDate: Date;
+  recurrenceRule?: string;
+  allDay?: boolean;
+  priorityId? : Array<number>;
+};
+
+type Resource = {
+  text: string;
+  id: number;
+  color: string;
+};
+
+export const data: Array<Appointment> = [
   {
     text: 'Website Re-Design Plan',
     startDate: new Date('2021-03-01T16:30:00.000Z'),
@@ -49,7 +64,7 @@ export const data = [
   },
 ];
 
-export const priorities = [
+export const priorities: Array<Resource> = [
   {
     text: 'High priority',
     id: 1,

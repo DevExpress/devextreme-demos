@@ -1,4 +1,27 @@
-export const moviesData = [{
+type Appointment = {
+  startDate: Date;
+  endDate: Date;
+  theatreId: number;
+  movieId: number;
+  price: number;
+};
+
+type MovieResource = {
+  id: number;
+  text: string;
+  director: string;
+  year: number;
+  image: string;
+  duration: number;
+  color: string;
+};
+
+type TheatreResource = {
+  text: string;
+  id: number;
+};
+
+export const moviesData: MovieResource[] = [{
   id: 1,
   text: 'His Girl Friday',
   director: 'Howard Hawks',
@@ -48,16 +71,15 @@ export const moviesData = [{
   color: '#2a9010',
 }];
 
-export const theatreData = [{
+export const theatreData: TheatreResource[] = [{
   text: 'Cinema Hall 1',
   id: 0,
 }, {
   text: 'Cinema Hall 2',
   id: 1,
-},
-];
+}];
 
-export const data = [{
+export const data: Appointment[] = [{
   theatreId: 0,
   movieId: 3,
   price: 10,

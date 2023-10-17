@@ -2,7 +2,6 @@ import React from 'react';
 
 import Switch, { SwitchTypes } from 'devextreme-react/switch';
 import Scheduler, { Resource, View } from 'devextreme-react/scheduler';
-
 import { data, priorityData } from './data.ts';
 
 const currentDate = new Date(2021, 3, 21);
@@ -14,7 +13,7 @@ const App = () => {
 
   const onGroupByDateChanged = React.useCallback((args: SwitchTypes.ValueChangedEvent) => {
     setGroupByDate(args.value);
-  }, []);
+  }, [setGroupByDate]);
 
   return (
     <div id="scheduler">

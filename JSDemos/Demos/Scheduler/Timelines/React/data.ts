@@ -1,36 +1,14 @@
-export const resourcesData = [
-  {
-    text: 'Samantha Bright',
-    id: 1,
-    color: '#cb6bb2',
-  }, {
-    text: 'John Heart',
-    id: 2,
-    color: '#56ca85',
-  }, {
-    text: 'Todd Hoffman',
-    id: 3,
-    color: '#1e90ff',
-  }, {
-    text: 'Sandra Johnson',
-    id: 4,
-    color: '#ff9747',
-  },
-];
+import { SchedulerTypes } from 'devextreme-react/scheduler';
 
-export const priorityData = [
-  {
-    text: 'Low Priority',
-    id: 1,
-    color: '#1e90ff',
-  }, {
-    text: 'High Priority',
-    id: 2,
-    color: '#ff9747',
-  },
-];
+type Appointment = SchedulerTypes.Appointment & { ownerId: number[], priority: number };
 
-export const data = [{
+type Resource = {
+  text: string;
+  id: number;
+  color: string;
+};
+
+export const data: Appointment[] = [{
   text: 'Google AdWords Strategy',
   ownerId: [2],
   startDate: new Date('2021-02-01T16:00:00.000Z'),
@@ -373,3 +351,35 @@ export const data = [{
   endDate: new Date('2021-02-27T02:30:00.000Z'),
   priority: 2,
 }];
+
+export const resourcesData: Resource[] = [
+  {
+    text: 'Samantha Bright',
+    id: 1,
+    color: '#cb6bb2',
+  }, {
+    text: 'John Heart',
+    id: 2,
+    color: '#56ca85',
+  }, {
+    text: 'Todd Hoffman',
+    id: 3,
+    color: '#1e90ff',
+  }, {
+    text: 'Sandra Johnson',
+    id: 4,
+    color: '#ff9747',
+  },
+];
+
+export const priorityData: Resource[] = [
+  {
+    text: 'Low Priority',
+    id: 1,
+    color: '#1e90ff',
+  }, {
+    text: 'High Priority',
+    id: 2,
+    color: '#ff9747',
+  },
+];

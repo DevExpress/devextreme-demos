@@ -1,4 +1,8 @@
-export const data = [
+import { SchedulerTypes } from 'devextreme-react/scheduler';
+
+type Appointment = SchedulerTypes.Appointment & { roomId: number[] | number };
+
+export const data: Appointment[] = [
   {
     text: 'Watercolor Landscape',
     roomId: [1],

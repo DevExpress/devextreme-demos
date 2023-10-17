@@ -1,4 +1,12 @@
-export const resources = [{
+import { SchedulerTypes } from 'devextreme-react/scheduler';
+
+type Resource = {
+  text: string;
+  id: number;
+  color: string;
+};
+
+export const resources: Resource[] = [{
   id: 0,
   text: 'David Carter',
   color: '#74d57b',
@@ -208,7 +216,7 @@ function filterAppointmentsByTime(appointments: string | any[], startDayHour: nu
 }
 
 export function generateAppointments(startDay: Date, endDay: Date, startDayHour: number, endDayHour: number) {
-  const appointments: ({ text: string; startDate: any; endDate: Date; humanId: number; })[] = [];
+  const appointments: (SchedulerTypes.Appointment & { humanId: number; })[] = [];
 
   let textIndex = 0;
   let durationState = 1;

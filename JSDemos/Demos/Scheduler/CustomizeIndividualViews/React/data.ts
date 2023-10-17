@@ -1,4 +1,20 @@
-export const data = [{
+type Appointment = {
+  text: string;
+  startDate: Date;
+  endDate: Date;
+  allDay?: boolean;
+  recurrenceRule?: string;
+  priorityId: number;
+  typeId: number;
+};
+
+type Resource = {
+  text: string;
+  id: number;
+  color: string;
+};
+
+export const data: Appointment[] = [{
   text: 'Walking a dog',
   priorityId: 1,
   typeId: 1,
@@ -109,10 +125,9 @@ export const data = [{
   typeId: 1,
   startDate: new Date('2021-05-01T17:00:00.000Z'),
   endDate: new Date('2021-05-01T20:30:00.000Z'),
-},
-];
+}];
 
-export const priorityData = [{
+export const priorityData: Resource[] = [{
   text: 'Low Priority',
   id: 1,
   color: '#fcb65e',
@@ -120,10 +135,9 @@ export const priorityData = [{
   text: 'High Priority',
   id: 2,
   color: '#e18e92',
-},
-];
+}];
 
-export const typeData = [{
+export const typeData: Resource[] = [{
   text: 'Home',
   id: 1,
   color: '#b6d623',
@@ -131,5 +145,4 @@ export const typeData = [{
   text: 'Work',
   id: 2,
   color: '#679ec5',
-},
-];
+}];

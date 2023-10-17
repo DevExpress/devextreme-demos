@@ -8,7 +8,7 @@ import ResourceCell from './ResourceCell.tsx';
 
 const currentDate = new Date(2021, 5, 2, 11, 30);
 const groups = ['employeeID'];
-const views: SchedulerTypes.Properties['views'] = ['month'];
+const views: SchedulerTypes.ViewType[] = ['month'];
 
 const App = () => (
   <Scheduler

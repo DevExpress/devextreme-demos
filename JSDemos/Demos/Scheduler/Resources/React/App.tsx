@@ -9,7 +9,7 @@ import {
 } from './data.ts';
 
 const currentDate = new Date(2021, 3, 27);
-const views: SchedulerTypes.Properties['views'] = ['workWeek'];
+const views: SchedulerTypes.ViewType[] = ['workWeek'];
 
 const App = () => {
   const [currentResource, setCurrentResource] = React.useState(resourcesList[0]);

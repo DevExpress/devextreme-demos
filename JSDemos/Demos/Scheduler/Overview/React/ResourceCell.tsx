@@ -1,6 +1,10 @@
 import React from 'react';
 
-const ResourceCell = (props: { data: { color: any; text: any; data: { avatar: any; age: any; discipline: any; }; }; }) => {
+type ResourceCellProps = {
+  data: { color: string; text: string; data: { avatar: string; age: number; discipline: string; }; };
+};
+
+const ResourceCell: React.FunctionComponent<ResourceCellProps> = (props) => {
   const { data: { color, text, data: { avatar, age, discipline } } } = props;
 
   return (

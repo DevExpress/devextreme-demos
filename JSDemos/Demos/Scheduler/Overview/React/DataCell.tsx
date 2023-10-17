@@ -1,18 +1,22 @@
 import React from 'react';
 
+type DataCellProps = {
+  data: { startDate: Date; groups: { employeeID: number; }; text: string; }
+};
+
 const isWeekEnd = (date: Date) => {
   const day = date.getDay();
   return day === 0 || day === 6;
 };
 
-const getCurrentTraining = (date: Date, employeeID) => {
+const getCurrentTraining = (date: number, employeeID: number) => {
   const result = (date + employeeID) % 3;
   const currentTraining = `training-background-${result}`;
 
   return currentTraining;
 };
 
-const DataCell = (props: { data: { startDate: any; groups: { employeeID: any; }; text: any; }; }) => {
+const DataCell: React.FunctionComponent<DataCellProps> = (props) => {
   const { data: { startDate, groups: { employeeID }, text } } = props;
 
   const dayClasses = [

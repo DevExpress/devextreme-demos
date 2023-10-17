@@ -5,7 +5,13 @@ export const holidays = [
   new Date(2021, 5, 6),
 ];
 
-export const data = [
+type Appointment = {
+  text: string,
+  startDate: Date,
+  endDate: Date,
+};
+
+export const data: Appointment[] = [
   {
     text: 'Website Re-Design Plan',
     startDate: new Date(2021, 3, 26, 9, 30),

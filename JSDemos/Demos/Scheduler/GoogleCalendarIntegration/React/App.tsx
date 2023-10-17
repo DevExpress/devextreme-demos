@@ -25,7 +25,7 @@ const dataSource = new CustomStore({
 });
 
 const currentDate = new Date(2017, 4, 25);
-const views: SchedulerTypes.Properties['views'] = ['day', 'workWeek', 'month'];
+const views: SchedulerTypes.ViewType[] = ['day', 'workWeek', 'month'];
 
 const App = () => (
   <React.Fragment>

@@ -1,4 +1,14 @@
-export const data = [
+import { SchedulerTypes } from 'devextreme-react/scheduler';
+
+type Appointment = SchedulerTypes.Appointment & { roomId: number };
+
+type Resource = {
+  text: string;
+  id: number;
+  color: string;
+};
+
+export const data: Appointment[] = [
   {
     text: 'Google AdWords Strategy',
     roomId: 1,
@@ -132,7 +142,7 @@ export const data = [
   },
 ];
 
-export const resourcesData = [
+export const resourcesData: Resource[] = [
   {
     text: 'Room 401',
     id: 1,

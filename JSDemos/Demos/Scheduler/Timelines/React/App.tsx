@@ -5,7 +5,7 @@ import Scheduler, { Resource, SchedulerTypes } from 'devextreme-react/scheduler'
 import { data, resourcesData, priorityData } from './data.ts';
 
 const currentDate = new Date(2021, 1, 2);
-const views: SchedulerTypes.Properties['views'] = ['timelineDay', 'timelineWeek', 'timelineWorkWeek', 'timelineMonth'];
+const views: SchedulerTypes.ViewType[] = ['timelineDay', 'timelineWeek', 'timelineWorkWeek', 'timelineMonth'];
 const groups = ['priority'];
 
 const App = () => (

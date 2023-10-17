@@ -1,9 +1,6 @@
 import React from 'react';
-
 import Scheduler, { SchedulerTypes } from 'devextreme-react/scheduler';
-
 import RadioGroup, { RadioGroupTypes } from 'devextreme-react/radio-group';
-
 import { data } from './data.ts';
 
 const currentDate = new Date(2021, 2, 28);
@@ -12,14 +9,15 @@ const views: SchedulerTypes.Properties['views'] = [{
   name: '4 Days',
   intervalCount: 4,
 }, 'week'];
+
 const allDayPanelItems = ['all', 'allDay', 'hidden'];
 
 const App = () => {
-  const [allDayPanelMode, setAllDayPanelMode] = React.useState<SchedulerTypes.Properties['allDayPanelMode']>('allDay');
+  const [allDayPanelMode, setAllDayPanelMode] = React.useState<'all' | 'allDay' | 'hidden'>('allDay');
 
   const onChangeAllDayPanelMode = React.useCallback((e: RadioGroupTypes.ValueChangedEvent) => {
     setAllDayPanelMode(e.value);
-  }, []);
+  }, [setAllDayPanelMode]);
 
   return (
     <React.Fragment>

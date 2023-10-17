@@ -4,6 +4,7 @@ import React from 'react';
 import Scheduler, { SchedulerTypes } from 'devextreme-react/scheduler';
 import notify from 'devextreme/ui/notify';
 
+import dxForm from 'devextreme/ui/form';
 import { data, holidays } from './data.ts';
 import Utils from './utils.ts';
 import DataCell from './DataCell.tsx';
@@ -12,13 +13,13 @@ import DateCell from './DateCell.tsx';
 import TimeCell from './TimeCell.tsx';
 
 const currentDate = new Date(2021, 3, 27);
-const views: SchedulerTypes.Properties['currentView'][] = ['workWeek', 'month'];
+const views: SchedulerTypes.ViewType[] = ['workWeek', 'month'];
 
 const notifyDisableDate = () => {
   notify('Cannot create or move an appointment/event to disabled time/date regions.', 'warning', 1000);
 };
 
-const applyDisableDatesToDateEditors = (form: SchedulerTypes.AppointmentFormOpeningEvent['form']) => {
+const applyDisableDatesToDateEditors = (form: dxForm) => {
   const startDateEditor = form.getEditor('startDate');
   startDateEditor.option('disabledDates', holidays);
 
@@ -58,7 +59,7 @@ const App = () => {
     currentView === 'month' ? DataCellMonth : DataCell
   ), [currentView]);
 
-  const onCurrentViewChange = React.useCallback((value) => setCurrentView(value), []);
+  const onCurrentViewChange = React.useCallback((value) => setCurrentView(value), [setCurrentView]);
 
   const renderDateCell = React.useCallback((itemData) => (
     <DateCell itemData={itemData} currentView={currentView} />

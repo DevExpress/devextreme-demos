@@ -5,7 +5,7 @@ import Scheduler, { Resource, SchedulerTypes } from 'devextreme-react/scheduler'
 import { data, resourcesData } from './data.ts';
 
 const currentDate = new Date(2020, 10, 25);
-const views: SchedulerTypes.Properties['views'] = ['day', 'week', 'month'];
+const views: SchedulerTypes.ViewType[] = ['day', 'week', 'month'];
 
 const App = () => (
   <Scheduler

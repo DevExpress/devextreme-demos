@@ -1,4 +1,11 @@
-export const data = [{
+type Appointment = {
+  text: string;
+  startDate: Date;
+  endDate: Date;
+  allDay?: boolean;
+};
+
+export const data: Array<Appointment> = [{
   text: 'Book Flights to San Fran for Sales Trip',
   startDate: new Date('2021-03-28T17:00:00.000Z'),
   endDate: new Date('2021-03-28T18:00:00.000Z'),

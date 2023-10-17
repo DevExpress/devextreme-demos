@@ -7,7 +7,7 @@ import { data, moviesData } from './data.ts';
 import AppointmentTemplate from './AppointmentTemplate.tsx';
 
 const currentDate = new Date();
-const views: SchedulerTypes.Properties['views'] = ['week', 'timelineWeek'];
+const views: SchedulerTypes.ViewType[] = ['week', 'timelineWeek'];
 
 const intervalLabel = { 'aria-label': 'Interval' };
 
@@ -30,15 +30,15 @@ const App = () => {
 
   const onShowCurrentTimeIndicatorChanged = React.useCallback((e: SwitchTypes.ValueChangedEvent) => {
     setShowCurrentTimeIndicator(e.value);
-  }, []);
+  }, [setShowCurrentTimeIndicator]);
 
   const onShadeUntilCurrentTimeChanged = React.useCallback((e: SwitchTypes.ValueChangedEvent) => {
     setShadeUntilCurrentTime(e.value);
-  }, []);
+  }, [setShadeUntilCurrentTime]);
 
   const onUpdateIntervalChanged = React.useCallback((e: NumberBoxTypes.ValueChangedEvent) => {
     setUpdateInterval(e.value);
-  }, []);
+  }, [setUpdateInterval]);
 
   return (
     <React.Fragment>

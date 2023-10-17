@@ -1,4 +1,14 @@
-export const data = [
+import { SchedulerTypes } from 'devextreme-react/scheduler';
+
+type Appointment = SchedulerTypes.Appointment & { priorityId: number };
+
+type Resource = {
+  text: string;
+  id: number;
+  color: string;
+};
+
+export const data: Appointment[] = [
   {
     text: 'Website Re-Design Plan',
     priorityId: 2,
@@ -143,7 +153,7 @@ export const data = [
   },
 ];
 
-export const priorityData = [
+export const priorityData: Resource[] = [
   {
     text: 'Low Priority',
     id: 1,

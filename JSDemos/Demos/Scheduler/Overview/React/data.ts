@@ -1,20 +1,17 @@
-export const employees = [{
-  text: 'John Heart',
-  id: 1,
-  color: '#56ca85',
-  avatar: '../../../../images/gym/coach-man.png',
-  age: 27,
-  discipline: 'ABS, Fitball, StepFit',
-}, {
-  text: 'Sandra Johnson',
-  id: 2,
-  color: '#ff9747',
-  avatar: '../../../../images/gym/coach-woman.png',
-  age: 25,
-  discipline: 'ABS, Fitball, StepFit',
-}];
+import { SchedulerTypes } from 'devextreme-react/scheduler';
 
-export const data = [
+type Appointment = SchedulerTypes.Appointment & { employeeID: number };
+
+type Resource = {
+  text: string;
+  id: number;
+  color: string;
+  avatar: string;
+  age: number;
+  discipline: string;
+};
+
+export const data: Appointment[] = [
   {
     text: 'Helen',
     employeeID: 2,
@@ -80,5 +77,20 @@ export const data = [
     employeeID: 2,
     startDate: new Date('2021-06-29T16:30:00.000Z'),
     endDate: new Date('2021-06-29T18:30:00.000Z'),
-  },
-];
+  }];
+
+export const employees: Resource[] = [{
+  text: 'John Heart',
+  id: 1,
+  color: '#56ca85',
+  avatar: '../../../../images/gym/coach-man.png',
+  age: 27,
+  discipline: 'ABS, Fitball, StepFit',
+}, {
+  text: 'Sandra Johnson',
+  id: 2,
+  color: '#ff9747',
+  avatar: '../../../../images/gym/coach-woman.png',
+  age: 25,
+  discipline: 'ABS, Fitball, StepFit',
+}];

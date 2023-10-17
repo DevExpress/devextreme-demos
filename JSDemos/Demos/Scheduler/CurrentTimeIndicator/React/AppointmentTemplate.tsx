@@ -1,11 +1,15 @@
 import React from 'react';
 import Query from 'devextreme/data/query';
-
+import { SchedulerTypes } from 'devextreme-react/scheduler';
 import { moviesData } from './data.ts';
+
+type AppointmentTemplateProps = {
+  data: { appointmentData: SchedulerTypes.Appointment; };
+};
 
 const getMovieById = (id) => Query(moviesData).filter(['id', id]).toArray()[0];
 
-const AppointmentTemplate = (props: { data: { appointmentData: any; }; }) => {
+const AppointmentTemplate: React.FunctionComponent<AppointmentTemplateProps> = (props) => {
   const { appointmentData } = props.data;
 
   const movieInfo = getMovieById(appointmentData.movieId) || {};
