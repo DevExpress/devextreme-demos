@@ -10,7 +10,7 @@ import {
   SAVING_CANCEL,
   SET_CHANGES,
   SET_EDIT_ROW_KEY,
-} from './actions.js';
+} from './actions.ts';
 
 export interface State {
   data: any[];
