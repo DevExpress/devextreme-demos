@@ -123,13 +123,15 @@ jobs:
 
     - name: Install DX packages
       run: |
+        FRAMEWORK_LOWERCASE=$(echo ${{ matrix.FRAMEWORK }} | tr '[:upper:]' '[:lower:]')
+
         DX_VERSION=$(cat node_modules/devextreme/package.json | jq -r '.version')
         DX_DIST_VERSION=$(cat node_modules/devextreme-dist/package.json | jq -r '.version')
-        DX_FRAMEWORK_VERSION=$(cat node_modules/devextreme-${{ matrix.FRAMEWORK | tr '[:upper:]' '[:lower:]' }}/package.json | jq -r '.version')
+        DX_FRAMEWORK_VERSION=$(cat node_modules/devextreme-${{ FRAMEWORK_LOWERCASE }}/package.json | jq -r '.version')
 
         jq ".dependencies += {\"devextreme\": \"$DX_VERSION\"}" package.json > package_temp.json && mv package_temp.json package.json
         jq ".dependencies += {\"devextreme-dist\": \"$DX_DIST_VERSION\"}" package.json > package_temp.json && mv package_temp.json package.json
-        jq ".dependencies += {\"devextreme-${{ matrix.FRAMEWORK | tr '[:upper:]' '[:lower:]' }}\": \"$DX_FRAMEWORK_VERSION\"}" package.json > package_temp.json && mv package_temp.json package.json
+        jq ".dependencies += {\"devextreme-${{ FRAMEWORK_LOWERCASE }}\": \"$DX_FRAMEWORK_VERSION\"}" package.json > package_temp.json && mv package_temp.json package.json
 
     - name: Prepare JS
       run: npm run prepare-js
