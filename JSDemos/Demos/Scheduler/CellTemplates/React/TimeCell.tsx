@@ -5,7 +5,7 @@ type TimeCellProps = {
   data: { date: Date; text: string; };
 };
 
-const TimeCell: React.FunctionComponent<TimeCellProps> = (props) => {
+const TimeCell = (props: TimeCellProps) => {
   const { date, text } = props.data;
 
   const isDinner = Utils.isDinner(date);

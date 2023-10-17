@@ -4,7 +4,7 @@ type ResourceCellProps = {
   data: { color: string; text: string; data: { avatar: string; age: number; discipline: string; }; };
 };
 
-const ResourceCell: React.FunctionComponent<ResourceCellProps> = (props) => {
+const ResourceCell = (props: ResourceCellProps) => {
   const { data: { color, text, data: { avatar, age, discipline } } } = props;
 
   return (

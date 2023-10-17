@@ -5,7 +5,7 @@ type DataCellMonthProps = {
   data: { startDate: Date; };
 }
 
-const DataCellMonth: React.FunctionComponent<DataCellMonthProps> = (props) => {
+const DataCellMonth = (props: DataCellMonthProps) => {
   const { startDate } = props.data;
 
   return (

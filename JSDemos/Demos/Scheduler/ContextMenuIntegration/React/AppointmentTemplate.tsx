@@ -7,10 +7,10 @@ type AppointmentMenuTemplateProps = {
   }
 };
 
-const AppointmentMenuTemplate: React.FunctionComponent<AppointmentMenuTemplateProps> = ({ data }) => (
+const AppointmentMenuTemplate = (props: AppointmentMenuTemplateProps) => (
   <div>
-    {data.color && <div className="item-badge" style={{ backgroundColor: data.color }} />}
-    {data.text}
+    {props.data.color && <div className="item-badge" style={{ backgroundColor: props.data.color }} />}
+    {props.data.text}
   </div>
 );
 

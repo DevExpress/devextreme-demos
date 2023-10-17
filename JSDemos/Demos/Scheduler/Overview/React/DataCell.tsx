@@ -16,7 +16,7 @@ const getCurrentTraining = (date: number, employeeID: number) => {
   return currentTraining;
 };
 
-const DataCell: React.FunctionComponent<DataCellProps> = (props) => {
+const DataCell = (props: DataCellProps) => {
   const { data: { startDate, groups: { employeeID }, text } } = props;
 
   const dayClasses = [

@@ -10,7 +10,7 @@ type AppointmentProps = {
   data: { appointmentData: SchedulerTypes.Appointment & { movieId: number }; }
 };
 
-const AppointmentTooltip: React.FunctionComponent<AppointmentProps> = (props) => {
+const AppointmentTooltip = (props: AppointmentProps) => {
   const { movieId } = props.data.appointmentData;
 
   const movieData = React.useMemo(() => getMovieById(movieId), [movieId]);

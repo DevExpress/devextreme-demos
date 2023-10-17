@@ -8,7 +8,7 @@ type DataCellProps = {
   }
 };
 
-const DataCell: React.FunctionComponent<React.PropsWithChildren<DataCellProps>> = (props) => {
+const DataCell = (props: React.PropsWithChildren<DataCellProps>) => {
   const { startDate } = props.data;
   const isDinner = Utils.isDinner(startDate);
   let cssClasses = props.className || '';
