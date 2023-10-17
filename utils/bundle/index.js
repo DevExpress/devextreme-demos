@@ -80,8 +80,6 @@ if (framework === 'react') {
   packages = [
     'react/umd/react.development.js',
     'react-dom/umd/react-dom.development.js',
-    // TODO: remove this workaround after DevExtreme 23.1.7 release
-    'devextreme/common/charts',
   ];
 }
 
@@ -183,6 +181,8 @@ function build() {
 
   packages.push(
     'devextreme/bundles/dx.custom.config.js',
+    // TODO: remove this workaround after DevExtreme 23.1.7 release
+    'devextreme/common/charts',
     main,
   );
 
