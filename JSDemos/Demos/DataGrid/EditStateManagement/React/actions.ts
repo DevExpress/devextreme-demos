@@ -1,5 +1,5 @@
 import React from 'react';
-import { sendRequest } from './utils.js';
+import { sendRequest } from './utils.ts';
 
 const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
 
