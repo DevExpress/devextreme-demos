@@ -4,7 +4,7 @@ import Query from 'devextreme/data/query';
 
 import Appointment from './Appointment.tsx';
 import AppointmentTooltip from './AppointmentTooltip.tsx';
-import { data, moviesData, theatreData } from './data.ts';
+import { data, moviesData, theatreData, Appointment as AppointmentType } from './data.ts';
 import { SelectBoxTypes } from 'devextreme-react/select-box';
 import { DateBoxTypes } from 'devextreme-react/date-box';
 
@@ -13,8 +13,8 @@ const views: SchedulerTypes.ViewType[] = ['day', 'week', 'timelineDay'];
 const groups = ['theatreId'];
 
 const onAppointmentFormOpening = (e: SchedulerTypes.AppointmentFormOpeningEvent) => {
-  let movieInfo = getMovieById(e.appointmentData.movieId) || {};
-  let { startDate } = e.appointmentData;
+  let movieInfo = getMovieById((e.appointmentData as AppointmentType).movieId) || {};
+  let { startDate } = e.appointmentData!;
 
   e.form.option('items', [{
     label: {
