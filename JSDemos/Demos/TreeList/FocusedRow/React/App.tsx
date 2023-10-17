@@ -34,21 +34,17 @@ const App = () => {
     }
   }, []);
 
-  const onFocusedRowChanged = React.useCallback((e: TreeListTypes.FocusedRowChangedEvent) => {
+  // eslint-disable-next-line @typescript-eslint/space-before-function-paren
+  const onFocusedRowChanged = React.useCallback(async(e: TreeListTypes.FocusedRowChangedEvent) => {
     const rowData = e.row && e.row.data;
-    let progress;
-    let cellValue;
-    let assigned;
 
     if (rowData) {
-      progress = rowData.Task_Completion ? `${rowData.Task_Completion}%` : '';
-      cellValue = e.component.cellValue(e.row.rowIndex, 'Assigned');
-      taskEmployees.byKey(cellValue).done((item: { Name: any; }) => {
-        assigned = item.Name;
-      });
+      const progress = rowData.Task_Completion ? `${rowData.Task_Completion}%` : '';
+      const cellValue = e.component.cellValue(e.row.rowIndex, 'Assigned');
+      const item = await taskEmployees.byKey(cellValue);
 
       setTaskSubject(rowData.Task_Subject);
-      setTaskAssigned(assigned);
+      setTaskAssigned(item.Name);
       setStartDate(new Date(rowData.Task_Start_Date).toLocaleDateString());
       setTaskStatus(e.row.data.Task_Status);
       setTaskProgress(progress);

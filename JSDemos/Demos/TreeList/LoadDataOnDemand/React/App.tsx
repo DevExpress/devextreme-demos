@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-  TreeList, RemoteOperations, Column, IColumnProps,
+  TreeList, RemoteOperations, Column,
 } from 'devextreme-react/tree-list';
 import 'whatwg-fetch';
 
 const dataSource = {
-  async load(loadOptions: { parentIds: any; }) {
+  async load(loadOptions) {
     const parentIdsParam = loadOptions.parentIds;
     const url = new URL('https://js.devexpress.com/Demos/Mvc/api/treeListData');
     if (parentIdsParam) {
@@ -24,12 +24,13 @@ const dataSource = {
   },
 };
 
-const customizeText: IColumnProps['customizeText'] = (e) => {
+const customizeText = (e) => {
   if (e.value !== null) {
     return `${Math.ceil(e.value / 1024)} KB`;
   }
   return null;
 };
+
 const App = () => (
   <TreeList
     id="treelist"

@@ -1,12 +1,14 @@
 import React from 'react';
-import { TreeList, Column, SearchPanel, TreeListTypes } from 'devextreme-react/tree-list';
+import {
+  TreeList, Column, SearchPanel, TreeListTypes,
+} from 'devextreme-react/tree-list';
 import SelectBox from 'devextreme-react/select-box';
 import { employees, filterLabel } from './data.ts';
 
 const filterModes = ['matchOnly', 'withAncestors', 'fullBranch'];
 
 const App = () => {
-  const [filterMode, setFilterMode] = React.useState<TreeListTypes.Properties['filterMode']>('matchOnly');
+  const [filterMode, setFilterMode] = React.useState<TreeListTypes.TreeListFilterMode>('matchOnly');
 
   return (
     <React.Fragment>

@@ -7,7 +7,7 @@ const resizingModes = ['nextColumn', 'widget'];
 const expandedRowKeys = [1, 3, 6];
 
 const App = () => {
-  const [columnResizingMode, setColumnResizingMode] = React.useState<TreeListTypes.Properties['columnResizingMode']>('nextColumn');
+  const [columnResizingMode, setColumnResizingMode] = React.useState<TreeListTypes.ColumnResizeMode>('nextColumn');
 
   return (
     <div>

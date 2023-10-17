@@ -1,11 +1,11 @@
 import React from 'react';
-import TreeList, { Column, IRowDraggingProps, RowDragging } from 'devextreme-react/tree-list';
+import TreeList, { Column, RowDragging } from 'devextreme-react/tree-list';
 import CheckBox from 'devextreme-react/check-box';
 import { employees as employeeList } from './data.ts';
 
 const expandedRowKeys = [1];
 
-const onDragChange: IRowDraggingProps['onDragChange'] = (e) => {
+const onDragChange = (e) => {
   const visibleRows = e.component.getVisibleRows();
   const sourceNode = e.component.getNodeByKey(e.itemData.ID);
   let targetNode = visibleRows[e.toIndex].node;
@@ -25,7 +25,7 @@ const App = () => {
   const [allowReordering, setAllowReordering] = React.useState(true);
   const [showDragIcons, setShowDragIcons] = React.useState(true);
 
-  const onReorder: IRowDraggingProps['onReorder'] = React.useCallback((e) => {
+  const onReorder = React.useCallback((e) => {
     const visibleRows = e.component.getVisibleRows();
     let sourceData = e.itemData;
     const updatedEmployees = [...employees];

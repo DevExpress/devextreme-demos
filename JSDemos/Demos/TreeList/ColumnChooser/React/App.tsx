@@ -1,19 +1,16 @@
 import React from 'react';
 import {
-  TreeList, Column, ColumnChooser, ColumnChooserSearch, ColumnChooserSelection, Position, IColumnChooserProps,
+  TreeList, Column, ColumnChooser, ColumnChooserSearch, ColumnChooserSelection, Position, TreeListTypes,
 } from 'devextreme-react/tree-list';
 import { SelectBox } from 'devextreme-react/select-box';
 import { CheckBox } from 'devextreme-react/check-box';
 import { employees, columnChooserModeLabel } from './data.ts';
 
-const columnChooserModes:{
-  key: IColumnChooserProps['mode'],
-  name: string
-}[] = [{
-  key: 'dragAndDrop',
+const columnChooserModes = [{
+  key: 'dragAndDrop' as const,
   name: 'Drag and drop',
 }, {
-  key: 'select',
+  key: 'select' as const,
   name: 'Select',
 }];
 
@@ -22,7 +19,7 @@ const expandedRowKeys = [1, 5];
 const searchEditorOptions = { placeholder: 'Search column' };
 
 const App = () => {
-  const [mode, setMode] = React.useState<IColumnChooserProps['mode']>(columnChooserModes[1].key);
+  const [mode, setMode] = React.useState<TreeListTypes.ColumnChooserMode>(columnChooserModes[1].key);
   const [searchEnabled, setSearchEnabled] = React.useState(true);
   const [allowSelectAll, setAllowSelectAll] = React.useState(true);
   const [selectByClick, setSelectByClick] = React.useState(true);

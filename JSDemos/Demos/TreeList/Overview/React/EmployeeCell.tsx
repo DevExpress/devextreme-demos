@@ -1,6 +1,7 @@
+import { TreeListTypes } from 'devextreme-react/tree-list';
 import React from 'react';
 
-const EmployeeCell = (props: { data: { data: { Task_Assigned_Employee: any; }; }; }) => {
+const EmployeeCell = (props: TreeListTypes.ColumnCellTemplateData) => {
   const employee = props.data.data.Task_Assigned_Employee;
 
   if (!employee) {

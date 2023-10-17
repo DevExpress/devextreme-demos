@@ -13,7 +13,7 @@ const tasksData = AspNetData.createStore({
   insertUrl: `${url}/InsertTask`,
   updateUrl: `${url}/UpdateTask`,
   deleteUrl: `${url}/DeleteTask`,
-  onBeforeSend(method, ajaxOptions: { xhrFields: { withCredentials: boolean; }; }) {
+  onBeforeSend(method, ajaxOptions) {
     ajaxOptions.xhrFields = { withCredentials: true };
   },
 });

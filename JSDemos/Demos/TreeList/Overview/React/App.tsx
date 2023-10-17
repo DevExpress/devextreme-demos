@@ -1,7 +1,7 @@
 import React from 'react';
 
 import TreeList, {
-  Column, ColumnChooser, HeaderFilter, SearchPanel, Selection, Lookup, IColumnProps,
+  Column, ColumnChooser, HeaderFilter, SearchPanel, Selection, Lookup,
 } from 'devextreme-react/tree-list';
 
 import { employees, priorities, tasks } from './data.ts';
@@ -29,7 +29,7 @@ const dataSourceOptions = {
   }),
 };
 
-const customizeTaskCompletionText: IColumnProps['customizeText'] = (cellInfo) => `${cellInfo.valueText}%`;
+const customizeTaskCompletionText = (cellInfo) => `${cellInfo.valueText}%`;
 
 function App() {
   return (
