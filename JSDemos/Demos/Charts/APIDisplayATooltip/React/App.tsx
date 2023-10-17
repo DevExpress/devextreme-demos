@@ -1,11 +1,11 @@
 import React from 'react';
 import PieChart, {
-  Series, Tooltip, Size, Legend, ITooltipProps, PieChartTypes,
+  Series, Tooltip, Size, Legend, PieChartTypes,
 } from 'devextreme-react/pie-chart';
 import { SelectBox } from 'devextreme-react/select-box';
 import { populationData, regionLabel } from './data.ts';
 
-const customizeTooltip: ITooltipProps['customizeTooltip'] = (pointInfo) => ({
+const customizeTooltip = (pointInfo) => ({
   text: `${pointInfo.argumentText}<br/>${pointInfo.valueText}`,
 });
 

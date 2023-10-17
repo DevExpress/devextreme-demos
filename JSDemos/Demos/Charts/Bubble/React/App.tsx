@@ -9,16 +9,14 @@ import {
   Label,
   Border,
   Tooltip,
-  ITooltipProps,
   Export,
   ChartTypes,
-  ILabelProps,
 } from 'devextreme-react/chart';
 import { dataSource } from './data.ts';
 
 const palette = ['#00ced1', '#008000', '#ffd700', '#ff7f50'];
 
-const customizeTooltip: ITooltipProps['customizeTooltip'] = (pointInfo) => ({
+const customizeTooltip = (pointInfo) => ({
   text: `${pointInfo.point.tag}<br/>Total Population: ${pointInfo.argumentText}M<br/>Population with Age over 60: ${pointInfo.valueText}M (${pointInfo.size}%)`,
 });
 
@@ -31,7 +29,7 @@ function seriesClick(e: ChartTypes.SeriesClickEvent) {
   }
 }
 
-const customizeText: ILabelProps['customizeText'] = (e) => `${e.value}M`;
+const customizeText = (e) => `${e.value}M`;
 
 function App() {
   return (

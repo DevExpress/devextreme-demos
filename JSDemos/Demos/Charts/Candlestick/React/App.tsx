@@ -11,11 +11,10 @@ import Chart, {
   Legend,
   Export,
   Tooltip,
-  ITooltipProps,
 } from 'devextreme-react/chart';
 import { dataSource } from './data.ts';
 
-const customizeTooltip: ITooltipProps['customizeTooltip'] = (arg) => ({
+const customizeTooltip = (arg) => ({
   text: `Open: $${arg.openValue}<br/>
 Close: $${arg.closeValue}<br/>
 High: $${arg.highValue}<br/>

@@ -8,17 +8,15 @@ import {
   Export,
   Legend,
   Margin,
-  ICommonSeriesSettingsProps,
+  ChartTypes,
 } from 'devextreme-react/chart';
 
 import { dataSource, seriesTypeLabel } from './data.ts';
 
-type CommonSeriesSettingsType = ICommonSeriesSettingsProps['type'];
-
-const types: CommonSeriesSettingsType[] = ['area', 'stackedarea', 'fullstackedarea'];
+const types: ChartTypes.SeriesType[] = ['area', 'stackedarea', 'fullstackedarea'];
 
 function App() {
-  const [type, setType] = React.useState(types[0]);
+  const [type, setType] = React.useState<ChartTypes.SeriesType>(types[0]);
 
   const handleChange = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
     setType(e.value);
