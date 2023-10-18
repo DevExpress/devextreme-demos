@@ -23,8 +23,9 @@ const onAppointmentFormOpening = (e: SchedulerTypes.AppointmentFormOpeningEvent)
 
   const startDateTimezoneEditor = form.getEditor('startDateTimeZone');
   const endDateTimezoneEditor = form.getEditor('endDateTimeZone');
-  const startDateDataSource = startDateTimezoneEditor.option('dataSource') as any;
-  const endDateDataSource = endDateTimezoneEditor.option('dataSource') as any;
+
+  const startDateDataSource = startDateTimezoneEditor?.option('dataSource') as any;
+  const endDateDataSource = endDateTimezoneEditor?.option('dataSource') as any;
 
   startDateDataSource.filter(['id', 'contains', 'Europe']);
   endDateDataSource.filter(['id', 'contains', 'Europe']);

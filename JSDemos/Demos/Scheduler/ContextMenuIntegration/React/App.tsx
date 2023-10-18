@@ -109,7 +109,7 @@ const App = () => {
         },
       },
     ]);
-  }, []);
+  }, [groups]);
 
   return (
     <React.Fragment>
