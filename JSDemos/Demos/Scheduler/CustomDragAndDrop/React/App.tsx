@@ -4,7 +4,7 @@ import Scheduler, { AppointmentDragging, SchedulerTypes } from 'devextreme-react
 import Draggable, { DraggableTypes } from 'devextreme-react/draggable';
 import ScrollView from 'devextreme-react/scroll-view';
 
-import { Appointment, Task, appointments as defaultAppointments, tasks as defaultTasks } from './data.ts';
+import { Task, appointments as defaultAppointments, tasks as defaultTasks } from './data.ts';
 
 const currentDate = new Date(2021, 3, 26);
 const views: SchedulerTypes.Properties['views'] = [{ type: 'day', intervalCount: 3 }];
@@ -30,7 +30,7 @@ const App = () => {
   });
 
   const onAppointmentRemove = React.useCallback((e: SchedulerTypes.AppointmentDraggingRemoveEvent) => {
-    setState((currentState: { appointments: Appointment[]; tasks: Task[]; }) => {
+    setState((currentState: { appointments: SchedulerTypes.Appointment[]; tasks: Task[]; }) => {
       const { appointments, tasks } = currentState;
 
       const index = appointments.indexOf(e.itemData);
@@ -45,7 +45,7 @@ const App = () => {
   }, []);
 
   const onAppointmentAdd = React.useCallback((e: SchedulerTypes.AppointmentDraggingAddEvent) => {
-    setState((currentState: { appointments: Appointment[]; tasks: Task[]; }) => {
+    setState((currentState: { appointments: SchedulerTypes.Appointment[]; tasks: Task[]; }) => {
       const { appointments, tasks } = currentState;
 
       const index = tasks.indexOf(e.fromData);
@@ -83,8 +83,8 @@ const App = () => {
         </Draggable>
       </ScrollView>
       <Scheduler
-        timeZone="America/Los_Angeles"
         id="scheduler"
+        timeZone="America/Los_Angeles"
         dataSource={state.appointments}
         views={views}
         defaultCurrentDate={currentDate}

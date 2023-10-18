@@ -1,12 +1,13 @@
 import React from 'react';
 import Scheduler, { Editing, Resource, SchedulerTypes } from 'devextreme-react/scheduler';
 import Query from 'devextreme/data/query';
-
-import Appointment from './Appointment.tsx';
-import AppointmentTooltip from './AppointmentTooltip.tsx';
-import { data, moviesData, theatreData, Appointment as AppointmentType } from './data.ts';
 import { SelectBoxTypes } from 'devextreme-react/select-box';
 import { DateBoxTypes } from 'devextreme-react/date-box';
+import Appointment from './Appointment.tsx';
+import AppointmentTooltip from './AppointmentTooltip.tsx';
+import {
+  data, moviesData, theatreData, Appointment as AppointmentType,
+} from './data.ts';
 
 const currentDate = new Date(2021, 3, 27);
 const views: SchedulerTypes.ViewType[] = ['day', 'week', 'timelineDay'];

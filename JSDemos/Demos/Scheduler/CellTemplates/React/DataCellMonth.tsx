@@ -3,7 +3,7 @@ import DataCell from './DataCell.tsx';
 
 type DataCellMonthProps = {
   data: { startDate: Date; };
-}
+};
 
 const DataCellMonth = (props: DataCellMonthProps) => {
   const { startDate } = props.data;

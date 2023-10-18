@@ -1,5 +1,7 @@
 import { SchedulerTypes } from 'devextreme-react/scheduler';
 
+type Appointment = SchedulerTypes.Appointment & { humanId: number; };
+
 type Resource = {
   text: string;
   id: number;
@@ -216,7 +218,7 @@ function filterAppointmentsByTime(appointments: string | any[], startDayHour: nu
 }
 
 export function generateAppointments(startDay: Date, endDay: Date, startDayHour: number, endDayHour: number) {
-  const appointments: (SchedulerTypes.Appointment & { humanId: number; })[] = [];
+  const appointments: Appointment[] = [];
 
   let textIndex = 0;
   let durationState = 1;

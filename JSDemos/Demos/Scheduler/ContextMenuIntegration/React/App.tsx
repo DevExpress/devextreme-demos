@@ -4,6 +4,7 @@ import ContextMenu, { ContextMenuTypes } from 'devextreme-react/context-menu';
 import { data, resourcesData, Resource as ResourceItem } from './data.ts';
 import AppointmentMenuTemplate from './AppointmentTemplate.tsx';
 
+// eslint-disable-next-line no-unused-vars
 type ContextMenuItem = ContextMenuTypes.Item & ResourceItem & { onItemClick?: (e: ContextMenuTypes.ItemClickEvent) => void };
 
 const views: SchedulerTypes.ViewType[] = ['day', 'month'];
