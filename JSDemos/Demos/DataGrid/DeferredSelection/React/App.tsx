@@ -1,5 +1,7 @@
 import React from 'react';
-import DataGrid, { Column, DataGridTypes, FilterRow, Selection } from 'devextreme-react/data-grid';
+import DataGrid, {
+  Column, DataGridTypes, FilterRow, Selection,
+} from 'devextreme-react/data-grid';
 import Button from 'devextreme-react/button';
 import query from 'devextreme/data/query';
 import 'devextreme/data/odata/store';

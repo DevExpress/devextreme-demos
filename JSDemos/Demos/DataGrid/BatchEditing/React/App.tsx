@@ -21,7 +21,7 @@ const App = () => {
     setSelectTextOnEditStart(args.value);
   }, []);
 
-  const onStartEditActionChanged = React.useCallback(({value}: {value: DataGridTypes.StartEditAction}) => {
+  const onStartEditActionChanged = React.useCallback((args: SelectBoxTypes.ValueChangedEvent) => {
     setStartEditAction(args.value);
   }, []);
 
