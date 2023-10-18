@@ -4,7 +4,7 @@ The Tabs component allows you to create a tabbed UI to navigate between pages or
 
 You can initialize a tab’s contents (text, icons and badges) with values from underlying data objects. This example demonstrates this technique.
 
-Use drop-down editors on the right to change component's [orientation](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#orientation), [styling mode](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#stylingMode), and [icon position](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#iconPosition).
+Use the drop-down editors on the right to change the component's [orientation](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#orientation), [styling mode](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#stylingMode), and [icon position](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#iconPosition).
 
 You can also specify an item template ([itemTemplate](/Documentation/ApiReference/UI_Components/dxTabs/Configuration/#itemTemplate)) to customize tabs.
 
