@@ -150,7 +150,7 @@ function onContextMenuPreparing(e) {
 
         dataSource.load();
       };
-      const menuItems: any = [];
+      const menuItems: Record<string, any>[] = [];
 
       e.items.push({ text: 'Summary Type', items: menuItems });
 
