@@ -1,6 +1,6 @@
 import { SchedulerTypes } from 'devextreme-react/scheduler';
 
-export const data: SchedulerTypes.Appointment = [
+export const data: SchedulerTypes.Appointment[] = [
   {
     text: 'Website Re-Design Plan',
     startDate: new Date('2021-04-26T16:30:00.000Z'),
