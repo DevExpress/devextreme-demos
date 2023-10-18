@@ -6,7 +6,7 @@ bin
 obj
 lib
 NuGet
-.vscode
+.vscode/*
 .idea
 .vs
 .idea
@@ -22,6 +22,7 @@ screenshots
 bundles
 changed-files.json
 
+!.vscode/settings.json
 gulpfile.js/.eslintrc.js
 
 **/azure.file.system.js
@@ -57,3 +58,4 @@ NetCoreDemos/menuMeta.json
 NetCoreDemos/wwwroot/bundle.min.css
 NetCoreDemos/wwwroot/bundle.min.js
 .DS_Store
+publish-demos
