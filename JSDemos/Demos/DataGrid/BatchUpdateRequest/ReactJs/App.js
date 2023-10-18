@@ -1,10 +1,11 @@
-import React from "react";
-import DataGrid, { Column, Editing } from "devextreme-react/data-grid";
-import { createStore } from "devextreme-aspnet-data-nojquery";
-import "whatwg-fetch";
-const URL = "https://js.devexpress.com/Demos/Mvc/api/DataGridBatchUpdateWebApi";
+import React from 'react';
+import DataGrid, { Column, Editing } from 'devextreme-react/data-grid';
+import { createStore } from 'devextreme-aspnet-data-nojquery';
+import 'whatwg-fetch';
+
+const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridBatchUpdateWebApi';
 const ordersStore = createStore({
-  key: "OrderID",
+  key: 'OrderID',
   loadUrl: `${URL}/Orders`,
   onBeforeSend: (method, ajaxOptions) => {
     ajaxOptions.xhrFields = { withCredentials: true };
@@ -12,12 +13,12 @@ const ordersStore = createStore({
 });
 async function sendBatchRequest(url, changes) {
   const result = await fetch(url, {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify(changes),
     headers: {
-      "Content-Type": "application/json;charset=UTF-8",
+      'Content-Type': 'application/json;charset=UTF-8',
     },
-    credentials: "include",
+    credentials: 'include',
   });
   if (!result.ok) {
     const json = await result.json();

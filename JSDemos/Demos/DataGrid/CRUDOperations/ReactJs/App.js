@@ -1,4 +1,4 @@
-/* global RequestInit */
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import {
   DataGrid,
@@ -71,7 +71,6 @@ const App = () => {
   // eslint-disable-next-line consistent-return, space-before-function-paren
   const sendRequest = React.useCallback(
     async(url, method = 'GET', data = {}) => {
-      let _a;
       logRequest(method, url, data);
       const request = {
         method,
@@ -85,9 +84,8 @@ const App = () => {
         request.headers = { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' };
       }
       const response = await fetch(url, request);
-      const isJson = (_a = response.headers.get('content-type')) === null || _a === void 0
-        ? void 0
-        : _a.includes('application/json');
+      const _a = response.headers.get('content-type');
+      const isJson = _a && _a.includes('application/json');
       const result = isJson ? await response.json() : {};
       if (!response.ok) {
         throw result.Message;

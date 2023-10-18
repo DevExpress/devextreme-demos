@@ -10,14 +10,13 @@ import { orders } from './data.js';
 
 const startupSelectedKeys = [1, 4, 7];
 const calculateSelectedRow = (options) => {
-  let _a;
   if (options.name === 'SelectedRowsSummary') {
     if (options.summaryProcess === 'start') {
       options.totalValue = 0;
     }
-    const isRowSelected = options.component.isRowSelected(
-      (_a = options.value) === null || _a === void 0 ? void 0 : _a.ID,
-    );
+    // eslint-disable-next-line no-underscore-dangle
+    const _a = options.value;
+    const isRowSelected = options.component.isRowSelected(_a && _a.ID);
     if (options.summaryProcess === 'calculate' && isRowSelected) {
       options.totalValue += options.value.SaleAmount;
     }
