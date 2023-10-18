@@ -5,13 +5,12 @@ import Chart, {
   Tooltip,
   ValueAxis,
   BreakStyle,
-  IBreakStyleProps,
 } from 'devextreme-react/chart';
 import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import CheckBox, { CheckBoxTypes } from 'devextreme-react/check-box';
 import { dataSource, lineStyleLabel, maxCountLabel } from './data.ts';
 
-const lineStyles: (IBreakStyleProps['line'])[] = ['waved', 'straight'];
+const lineStyles: ('straight' | 'waved')[] = ['waved', 'straight'];
 const breaksCount = [1, 2, 3, 4];
 
 function App() {

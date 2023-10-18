@@ -11,12 +11,11 @@ import Chart, {
   Label,
   Title,
   Tooltip,
-  ITooltipProps,
   Grid,
 } from 'devextreme-react/chart';
 import { weatherData } from './data.ts';
 
-const customizeTooltip: ITooltipProps['customizeTooltip'] = (pointInfo) => ({
+const customizeTooltip = (pointInfo) => ({
   text: `${pointInfo.seriesName}: ${pointInfo.value} (range: ${pointInfo.lowErrorValue} - ${pointInfo.highErrorValue})`,
 });
 

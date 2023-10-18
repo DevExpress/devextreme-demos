@@ -13,15 +13,15 @@ import Chart, {
   Crosshair,
   Margin,
   HorizontalLine,
-  IArgumentAxisProps,
   IAggregationProps,
 } from 'devextreme-react/chart';
+import { VisualRange } from 'devextreme-react/common/charts';
 import CustomStore from 'devextreme/data/custom_store';
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
 import TooltipTemplate from './TooltipTemplate.tsx';
 
 const minVisualRangeLength = { minutes: 10 };
-const defaultVisualRange: IArgumentAxisProps['defaultVisualRange'] = { length: 'hour' };
+const defaultVisualRange: VisualRange = { length: 'hour' };
 
 function App() {
   const [dataSource, setDataSource] = React.useState(null);

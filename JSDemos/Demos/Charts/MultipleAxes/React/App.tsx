@@ -6,14 +6,13 @@ import Chart, {
   Export,
   Legend,
   Tooltip,
-  ITooltipProps,
   Title,
   Grid,
   Format,
 } from 'devextreme-react/chart';
 import { continentSources, populationData } from './data.ts';
 
-const customizeTooltip: ITooltipProps['customizeTooltip'] = (pointInfo) => {
+const customizeTooltip = (pointInfo) => {
   const items = pointInfo.valueText.split('\n');
   const color = pointInfo.point.getColor();
 

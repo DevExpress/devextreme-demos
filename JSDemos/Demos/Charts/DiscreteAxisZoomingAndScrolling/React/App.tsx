@@ -7,7 +7,6 @@ import Chart, {
   CommonSeriesSettings,
   Border,
   Series,
-  IArgumentAxisProps,
 } from 'devextreme-react/chart';
 import RangeSelector, {
   Size,
@@ -19,6 +18,7 @@ import RangeSelector, {
   Series as RsChartSeries,
   RangeSelectorTypes,
 } from 'devextreme-react/range-selector';
+import { VisualRange } from 'devextreme-react/common/charts';
 import { series, dataSource } from './data.ts';
 
 const seriesList = series.map((item) => <Series
@@ -36,7 +36,7 @@ function formatValueAxisLabel(e: { valueText: string; }) {
 }
 
 function App() {
-  const [visualRange, setVisualRange] = React.useState<IArgumentAxisProps['visualRange']>({ startValue: 'Inner Core', endValue: 'Upper Crust' });
+  const [visualRange, setVisualRange] = React.useState<VisualRange>({ startValue: 'Inner Core', endValue: 'Upper Crust' });
 
   const updateVisualRange = React.useCallback((e: RangeSelectorTypes.ValueChangedEvent) => {
     setVisualRange(e.value);

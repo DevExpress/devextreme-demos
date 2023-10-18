@@ -12,7 +12,6 @@ import Chart, {
   Label,
   Tooltip,
   IAggregationProps,
-  ITooltipProps,
 } from 'devextreme-react/chart';
 import CheckBox from 'devextreme-react/check-box';
 import SelectBox from 'devextreme-react/select-box';
@@ -20,7 +19,7 @@ import {
   weatherData, aggregationFunctions, aggregationIntervals, functionLabel, intervalLabel,
 } from './data.ts';
 
-const customizeTooltip: ITooltipProps['customizeTooltip'] = (pointInfo) => {
+const customizeTooltip = (pointInfo) => {
   const { aggregationInfo } = pointInfo.point;
   const start: Date = aggregationInfo && aggregationInfo.intervalStart;
   const end: Date = aggregationInfo && aggregationInfo.intervalEnd;

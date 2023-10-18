@@ -8,7 +8,6 @@ import PolarChart, {
   ValueAxis,
   Export,
   Legend,
-  IValueAxisProps,
 } from 'devextreme-react/polar-chart';
 
 import RangeSelector, {
@@ -19,10 +18,12 @@ import RangeSelector, {
   Behavior,
   RangeSelectorTypes,
 } from 'devextreme-react/range-selector';
+
+import { VisualRange } from 'devextreme-react/common/charts';
 import { dataSource } from './data.ts';
 
 function App() {
-  const [visualRange, setVisualRange] = React.useState<IValueAxisProps['visualRange']>({ startValue: 0, endValue: 8 });
+  const [visualRange, setVisualRange] = React.useState<VisualRange>({ startValue: 0, endValue: 8 });
 
   const updateVisualRange = React.useCallback((e: RangeSelectorTypes.ValueChangedEvent) => {
     setVisualRange(e.value);

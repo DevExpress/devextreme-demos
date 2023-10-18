@@ -5,7 +5,6 @@ import Chart, {
   CommonSeriesSettings,
   Point,
   ArgumentAxis,
-  IArgumentAxisProps,
 } from 'devextreme-react/chart';
 import RangeSelector, {
   Size,
@@ -15,10 +14,11 @@ import RangeSelector, {
   Behavior,
   RangeSelectorTypes,
 } from 'devextreme-react/range-selector';
+import { VisualRange } from 'devextreme-react/common/charts';
 import { zoomingData } from './data.ts';
 
 function App() {
-  const [visualRange, setVisualRange] = React.useState<IArgumentAxisProps['visualRange']>({ startValue: 10, endValue: 880 });
+  const [visualRange, setVisualRange] = React.useState<VisualRange>({ startValue: 10, endValue: 880 });
 
   const updateVisualRange = React.useCallback((e: RangeSelectorTypes.ValueChangedEvent) => {
     setVisualRange(e.value);

@@ -5,7 +5,6 @@ import PieChart, {
   Legend,
   Label,
   Connector,
-  ILabelProps,
 } from 'devextreme-react/pie-chart';
 
 import { data } from './data.ts';
@@ -13,7 +12,7 @@ import CenterTemplate from './CenterTemplate.tsx';
 
 const countries = Array.from(new Set(data.map((item) => item.country)));
 
-const customizeLabel: ILabelProps['customizeText'] = (e) => `${e.argumentText}\n${e.valueText}`;
+const customizeLabel = (e) => `${e.argumentText}\n${e.valueText}`;
 
 function App() {
   const pies = countries.map((country) => (
