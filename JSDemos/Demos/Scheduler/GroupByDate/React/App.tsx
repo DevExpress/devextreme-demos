@@ -13,7 +13,7 @@ const App = () => {
 
   const onGroupByDateChanged = React.useCallback((args: SwitchTypes.ValueChangedEvent) => {
     setGroupByDate(args.value);
-  }, [setGroupByDate]);
+  }, []);
 
   return (
     <div id="scheduler">

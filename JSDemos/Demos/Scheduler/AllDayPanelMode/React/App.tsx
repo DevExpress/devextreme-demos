@@ -13,7 +13,7 @@ const views: SchedulerTypes.Properties['views'] = [{
 const allDayPanelItems = ['all', 'allDay', 'hidden'];
 
 const App = () => {
-  const [allDayPanelMode, setAllDayPanelMode] = React.useState<'all' | 'allDay' | 'hidden'>('allDay');
+  const [allDayPanelMode, setAllDayPanelMode] = React.useState<SchedulerTypes.AllDayPanelMode>('allDay');
 
   const onChangeAllDayPanelMode = React.useCallback((e: RadioGroupTypes.ValueChangedEvent) => {
     setAllDayPanelMode(e.value);

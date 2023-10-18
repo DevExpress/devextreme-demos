@@ -31,15 +31,15 @@ const App = () => {
   const [allowDragging, setAllowDragging] = React.useState(true);
   const [allowUpdating, setAllowUpdating] = React.useState(true);
 
-  const onAllowAddingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowAdding(e.value), [setAllowAdding]);
+  const onAllowAddingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowAdding(e.value), []);
 
-  const onAllowDeletingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowDeleting(e.value), [setAllowDeleting]);
+  const onAllowDeletingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowDeleting(e.value), []);
 
-  const onAllowResizingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowResizing(e.value), [setAllowResizing]);
+  const onAllowResizingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowResizing(e.value), []);
 
-  const onAllowDraggingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowDragging(e.value), [setAllowDragging]);
+  const onAllowDraggingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowDragging(e.value), []);
 
-  const onAllowUpdatingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowUpdating(e.value), [setAllowUpdating]);
+  const onAllowUpdatingChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => setAllowUpdating(e.value), []);
 
   return (
     <React.Fragment>

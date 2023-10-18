@@ -13,7 +13,7 @@ const App = () => {
 
   const showAppointmentPopup = React.useCallback(() => {
     schedulerRef.current?.instance.showAppointmentPopup();
-  }, [schedulerRef]);
+  }, []);
 
   return (
     <React.Fragment>

@@ -3,8 +3,7 @@ import React from 'react';
 
 import Scheduler, { SchedulerTypes } from 'devextreme-react/scheduler';
 import notify from 'devextreme/ui/notify';
-
-import dxForm from 'devextreme/ui/form';
+import Form from 'devextreme-react/form';
 import { data, holidays } from './data.ts';
 import Utils from './utils.ts';
 import DataCell from './DataCell.tsx';
@@ -19,21 +18,23 @@ const notifyDisableDate = () => {
   notify('Cannot create or move an appointment/event to disabled time/date regions.', 'warning', 1000);
 };
 
-const applyDisableDatesToDateEditors = (form: dxForm) => {
+const applyDisableDatesToDateEditors = (form: Form['instance']) => {
   const startDateEditor = form.getEditor('startDate');
-  startDateEditor.option('disabledDates', holidays);
+  startDateEditor?.option('disabledDates', holidays);
 
   const endDateEditor = form.getEditor('endDate');
-  endDateEditor.option('disabledDates', holidays);
+  endDateEditor?.option('disabledDates', holidays);
 };
 
 const onAppointmentFormOpening = (e: SchedulerTypes.AppointmentFormOpeningEvent) => {
-  const startDate = new Date(e.appointmentData.startDate);
-  if (!Utils.isValidAppointmentDate(startDate)) {
-    e.cancel = true;
-    notifyDisableDate();
+  if (e.appointmentData?.startDate) {
+    const startDate = new Date(e.appointmentData.startDate);
+    if (!Utils.isValidAppointmentDate(startDate)) {
+      e.cancel = true;
+      notifyDisableDate();
+    }
+    applyDisableDatesToDateEditors(e.form);
   }
-  applyDisableDatesToDateEditors(e.form);
 };
 
 const onAppointmentAdding = (e: SchedulerTypes.AppointmentAddingEvent) => {
@@ -63,7 +64,7 @@ const App = () => {
 
   const renderDateCell = React.useCallback((itemData) => (
     <DateCell itemData={itemData} currentView={currentView} />
-  ), [currentView]);
+  ), []);
 
   return (
     <Scheduler
