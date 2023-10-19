@@ -75,7 +75,7 @@ $(() => {
   $('#full-width').dxCheckBox({
     text: 'Full width',
     inputAttr: { 'aria-label': 'Full width' },
-    value: true,
+    value: false,
     onValueChanged(data) {
       setTabsOption('width', data.value ? '100%' : 'auto');
     },

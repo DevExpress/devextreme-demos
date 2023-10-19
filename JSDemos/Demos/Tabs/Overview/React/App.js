@@ -34,7 +34,7 @@ const App = () => {
   const [iconPosition, setIconPosition] = React.useState(iconPositions[0]);
   const [showNavigation, setShowNavigation] = React.useState(false);
   const [scrollContent, setScrollContent] = React.useState(false);
-  const [fullWidth, setFullWidth] = React.useState(true);
+  const [fullWidth, setFullWidth] = React.useState(false);
   const [widgetWrapperClasses, setWidgetWrapperClasses] = React.useState('widget-container widget-container-horizontal');
 
   const stylingModeChanged = React.useCallback((e) => {

@@ -87,7 +87,7 @@
         <DxCheckBox
           text="Full width"
           :input-attr="{ 'aria-label': 'Full width' }"
-          :value="true"
+          :value="false"
           @value-changed="onFullWidthChanged"
         />
       </div>
