@@ -2,7 +2,7 @@ import React from 'react';
 import ScrollView, { ScrollViewTypes } from 'devextreme-react/scroll-view';
 import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 import CheckBox, { CheckBoxTypes } from 'devextreme-react/check-box';
-import service from './data.js';
+import service from './data.ts';
 
 type UpdateContentArgs = ScrollViewTypes.PullDownEvent | ScrollViewTypes.ReachBottomEvent;
 const showScrollBarModeLabel = { 'aria-label': 'Show Scrollbar Mode' };
