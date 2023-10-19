@@ -15,9 +15,9 @@
         :data-source="dataSource"
         :width="400"
         :height="400"
-        v-model:layout="layout"
-        v-model:apply-changes-mode="applyChangesMode"
-        v-model:state="state"
+        :layout="layout"
+        :apply-changes-mode="applyChangesMode"
+        :state="state"
       >
         <DxTexts
           all-fields="All"
