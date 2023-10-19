@@ -195,11 +195,10 @@ jobs:
     strategy:
       matrix:
         lint-command:
-          - lint-js
-          - lint-mvc
-          - lint-netcore
-          - lint-css
-          - lint-html
+          - npm run lint-non-js
+          - npm run lint-js "JSDemos/Demos/*/*/Angular/**/*.[jt]s?(x)"
+          - npm run lint-js "JSDemos/Demos/*/*/React/**/*.[jt]s?(x)"
+          - npm run lint-js "JSDemos/Demos/*/*/AngularJS/**/*.[jt]s?(x)" "JSDemos/Demos/*/*/jQuery/**/*.[jt]s?(x)" "JSDemos/Demos/*/*/Vue/**/*.[jt]s?(x)"
 
     steps:
     - name: Get sources
@@ -236,8 +235,8 @@ jobs:
         dotnet new globaljson --sdk-version 5.0.408
         dotnet tool install -g dotnet-format --version 5.1.225507
 
-    - name: Run ${{ matrix.lint-command }}
-      run: npm run ${{ matrix.lint-command }}
+    - name: Run lint ${{ matrix.lint-command }}
+      run: ${{ matrix.lint-command }}
 
   testcafe:
     needs: build-demos
