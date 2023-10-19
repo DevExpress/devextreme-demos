@@ -1,11 +1,8 @@
 import React from 'react';
-
 import 'devextreme-react/text-area';
-
 import Form, {
   GroupItem, SimpleItem, Label, ButtonItem,
 } from 'devextreme-react/form';
-
 import service from './data.ts';
 
 const employee = service.getEmployee();
@@ -13,8 +10,7 @@ const employee = service.getEmployee();
 const App = () => {
   const [phones, setPhones] = React.useState(employee.Phones);
   const [isHomeAddressVisible, setIsHomeAddressVisible] = React.useState(true);
-
-  const FormEmployee = React.useMemo(() => ({ ...employee, Phones: phones }), [phones]);
+  const formData = React.useMemo(() => ({ ...employee, Phones: phones }), [phones]);
 
   const CheckBoxOptions = React.useMemo(() => ({
     text: 'Show Address',
@@ -22,7 +18,6 @@ const App = () => {
     onValueChanged: (e) => {
       setIsHomeAddressVisible(e.component.option('value'));
     },
-
   }), [setIsHomeAddressVisible, isHomeAddressVisible]);
 
   const generateNewPhoneOptions = React.useCallback((index: number) => ({
@@ -65,7 +60,7 @@ const App = () => {
         <Form
           colCount={2}
           id="form"
-          formData={FormEmployee}>
+          formData={formData}>
           <GroupItem>
             <GroupItem>
               <GroupItem caption="Personal Data">
