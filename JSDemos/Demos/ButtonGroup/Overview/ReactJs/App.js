@@ -15,7 +15,7 @@ export default function App() {
           items={alignments}
           keyExpr="alignment"
           stylingMode="outlined"
-          selectedItemKeys={selectedItemKeys}
+          defaultSelectedItemKeys={selectedItemKeys}
           onItemClick={itemClick}
         />
         <ButtonGroup
