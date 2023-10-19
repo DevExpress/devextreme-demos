@@ -17,13 +17,14 @@
 }
 
 .disable-date {
-  background-image: repeating-linear-gradient(
-    135deg,
-    rgba(244, 67, 54, 0.1),
-    rgba(244, 67, 54, 0.1) 4px,
-    transparent 4px,
-    transparent 9px
-  );
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      rgba(244, 67, 54, 0.1),
+      rgba(244, 67, 54, 0.1) 4px,
+      transparent 4px,
+      transparent 9px
+    );
   color: #9b6467;
 }
 
