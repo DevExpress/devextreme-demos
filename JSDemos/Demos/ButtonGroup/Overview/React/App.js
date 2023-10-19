@@ -14,7 +14,7 @@ class App extends React.Component {
             items={alignments}
             keyExpr="alignment"
             stylingMode="outlined"
-            selectedItemKeys={selectedItemKeys}
+            defaultSelectedItemKeys={selectedItemKeys}
             onItemClick={itemClick}
           />
           <ButtonGroup
@@ -30,7 +30,7 @@ class App extends React.Component {
             items={alignments}
             keyExpr="alignment"
             stylingMode="text"
-            selectedItemKeys={selectedItemKeys}
+            defaultSelectedItemKeys={selectedItemKeys}
             onItemClick={itemClick}
           />
           <ButtonGroup
