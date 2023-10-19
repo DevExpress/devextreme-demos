@@ -1,34 +1,29 @@
 import React from 'react';
+
 import 'devextreme-react/text-area';
 
-import Form, { GroupItem, SimpleItem, Label } from 'devextreme-react/form';
+import Form, {
+  GroupItem, SimpleItem, Label, ButtonItem,
+} from 'devextreme-react/form';
+
 import service from './data.ts';
 
 const employee = service.getEmployee();
 
 const App = () => {
-  const [phoneOptions, setPhoneOptions] = React.useState([]);
+  const [phones, setPhones] = React.useState(employee.Phones);
   const [isHomeAddressVisible, setIsHomeAddressVisible] = React.useState(true);
-  const getCheckBoxOptions = React.useCallback(() => ({
+
+  const FormEmployee = React.useMemo(() => ({ ...employee, Phones: phones }), [phones]);
+
+  const CheckBoxOptions = React.useMemo(() => ({
     text: 'Show Address',
-    value: true,
+    value: isHomeAddressVisible,
     onValueChanged: (e) => {
       setIsHomeAddressVisible(e.component.option('value'));
     },
-  }), [setIsHomeAddressVisible]);
 
-  const getPhoneButtonOptions = React.useCallback(() => ({
-    icon: 'add',
-    text: 'Add phone',
-    onClick: () => {
-      employee.Phones.push('');
-      updatePhones();
-    },
-  }), [updatePhones]);
-
-  React.useEffect(() => {
-    setPhoneOptions(getPhonesOptions());
-  }, [setPhoneOptions, getPhonesOptions]);
+  }), [setIsHomeAddressVisible, isHomeAddressVisible]);
 
   const generateNewPhoneOptions = React.useCallback((index: number) => ({
     mask: '+1 (X00) 000-0000',
@@ -40,32 +35,28 @@ const App = () => {
         stylingMode: 'text',
         icon: 'trash',
         onClick: () => {
-          employee.Phones.splice(index, 1);
-          updatePhones();
+          const newPhones = phones.slice(0, index).concat(phones.slice(index + 1));
+          setPhones(newPhones);
         },
       },
     }],
-  }), [updatePhones]);
+  }), [phones]);
 
-  const getPhonesOptions = React.useCallback(() => {
+  const PhoneOptions = React.useMemo(() => {
     const options: any[] = [];
-    for (let i = 0; i < employee.Phones.length; i += 1) {
+    for (let i = 0; i < phones.length; i += 1) {
       options.push(generateNewPhoneOptions(i));
     }
     return options;
-  }, [generateNewPhoneOptions]);
+  }, [phones, generateNewPhoneOptions]);
 
-  const updatePhones = React.useCallback(() => {
-    setPhoneOptions(getPhonesOptions());
-  }, [setPhoneOptions, getPhonesOptions]);
-
-  const phoneItems = React.useCallback(() => phoneOptions
-    && phoneOptions.map((phone, index: number) => <SimpleItem
-      key={`Phones${index}`}
-      dataField={`Phones[${index}]`}
-      editorOptions={phone}>
-      <Label text={`Phone ${index + 1}`} />
-    </SimpleItem>), [phoneOptions]);
+  const PhoneButtonOptions = React.useMemo(() => ({
+    icon: 'add',
+    text: 'Add phone',
+    onClick: () => {
+      setPhones((prevPhones) => [...prevPhones, '']);
+    },
+  }), []);
 
   return (
     <React.Fragment>
@@ -74,13 +65,13 @@ const App = () => {
         <Form
           colCount={2}
           id="form"
-          formData={employee}>
+          formData={FormEmployee}>
           <GroupItem>
             <GroupItem>
               <GroupItem caption="Personal Data">
                 <SimpleItem dataField="FirstName" />
                 <SimpleItem dataField="LastName" />
-                <SimpleItem editorType="dxCheckBox" editorOptions={getCheckBoxOptions()} />
+                <SimpleItem editorType="dxCheckBox" editorOptions={CheckBoxOptions} />
               </GroupItem>
             </GroupItem>
             <GroupItem>
@@ -96,13 +87,19 @@ const App = () => {
             name="phones-container">
             <GroupItem
               name="phones">
-              {phoneItems()}
+              {PhoneOptions.map((phone, index: number) => <SimpleItem
+                key={`Phones${index}`}
+                dataField={`Phones[${index}]`}
+                editorOptions={phone}>
+                <Label text={`Phone ${index + 1}`} />
+              </SimpleItem>)}
             </GroupItem>
-            <SimpleItem itemType="button"
+
+            <ButtonItem
               horizontalAlignment="left"
               cssClass="add-phone-button"
-              buttonOptions={getPhoneButtonOptions()}>
-            </SimpleItem>
+              buttonOptions={PhoneButtonOptions}>
+            </ButtonItem>
           </GroupItem>
         </Form>
       </div>
