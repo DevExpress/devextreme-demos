@@ -97,6 +97,7 @@ export const stylingModeLabel = { 'aria-label': 'Styling Mode' };
 export const iconPositionLabel = { 'aria-label': 'Icon Position' };
 export const showNavigationLabel = { 'aria-label': 'Show Navigation' };
 export const scrollContentLabel = { 'aria-label': 'Scroll Content' };
+export const fullWidthLabel = { 'aria-label': 'Full width' };
 
 export const iconPositions = [
   'start',

@@ -45,7 +45,7 @@ export class AppComponent {
 
   iconPosition: string;
 
-  widgetContainerClasses = 'widget-container widget-container-horizontal';
+  widgetWrapperClasses = 'widget-wrapper widget-wrapper-horizontal';
 
   constructor(service: Service) {
     this.tabsWithText = service.getTabsWithText();
@@ -57,7 +57,7 @@ export class AppComponent {
   }
 
   onOrientationChanged(e) {
-    this.widgetContainerClasses = `widget-container widget-container-${e.value}`;
+    this.widgetWrapperClasses = `widget-wrapper widget-wrapper-${e.value}`;
     this.setTabsOption('orientation', e.value);
   }
 
@@ -67,6 +67,10 @@ export class AppComponent {
 
   onScrollContentChanged(e) {
     this.setTabsOption('scrollByContent', e.value);
+  }
+
+  onFullWidthChanged(e) {
+    this.setTabsOption('width', e.value ? '100%' : 'auto');
   }
 
   onIconPositionChanged(e) {

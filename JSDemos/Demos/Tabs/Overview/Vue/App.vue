@@ -1,30 +1,35 @@
 <template>
   <div id="tabs-demo">
-    <div :class="widgetContainerClasses">
-      <DxTabs
-        id="withText"
-        :selected-index="0"
-        :data-source="tabsWithText"
-        :scroll-by-content="false"
-        :show-nav-buttons="false"
-        @initialized="saveTabInstance1"
-      />
-      <DxTabs
-        id="withIconAndText"
-        :selected-index="0"
-        :data-source="tabsWithIconAndText"
-        :scroll-by-content="false"
-        :show-nav-buttons="false"
-        @initialized="saveTabInstance2"
-      />
-      <DxTabs
-        id="withIcon"
-        :selected-index="0"
-        :data-source="tabsWithIcon"
-        :scroll-by-content="false"
-        :show-nav-buttons="false"
-        @initialized="saveTabInstance3"
-      />
+    <div class="widget-container">
+      <div :class="widgetWrapperClasses">
+        <DxTabs
+          id="withText"
+          width="auto"
+          :selected-index="0"
+          :data-source="tabsWithText"
+          :scroll-by-content="false"
+          :show-nav-buttons="false"
+          @initialized="saveTabInstance1"
+        />
+        <DxTabs
+          id="withIconAndText"
+          width="auto"
+          :selected-index="0"
+          :data-source="tabsWithIconAndText"
+          :scroll-by-content="false"
+          :show-nav-buttons="false"
+          @initialized="saveTabInstance2"
+        />
+        <DxTabs
+          id="withIcon"
+          width="auto"
+          :selected-index="0"
+          :data-source="tabsWithIcon"
+          :scroll-by-content="false"
+          :show-nav-buttons="false"
+          @initialized="saveTabInstance3"
+        />
+      </div>
     </div>
 
     <div class="options">
@@ -63,16 +68,27 @@
         <DxCheckBox
           id="show-navigation-buttons"
           text="Show navigation buttons"
+          :input-attr="{ 'aria-label': 'Show navigation buttons' }"
           :value="false"
           @value-changed="onShowNavigationChanged"
         />
       </div>
+
       <div class="option">
         <DxCheckBox
-          id="scroll-content"
           text="Scroll content"
+          :input-attr="{ 'aria-label': 'Scroll content' }"
           :value="false"
           @value-changed="onScrollContentChanged"
+        />
+      </div>
+
+      <div class="option">
+        <DxCheckBox
+          text="Full width"
+          :input-attr="{ 'aria-label': 'Full width' }"
+          :value="true"
+          @value-changed="onFullWidthChanged"
         />
       </div>
     </div>
@@ -107,10 +123,10 @@ export default {
     };
   },
   computed: {
-    widgetContainerClasses() {
+    widgetWrapperClasses() {
       const { orientation } = this;
 
-      return `widget-container widget-container-${orientation}`;
+      return `widget-wrapper widget-wrapper-${orientation}`;
     },
   },
   methods: {
@@ -128,6 +144,9 @@ export default {
     },
     onScrollContentChanged(e) {
       this.setTabsOption('scrollByContent', e.value);
+    },
+    onFullWidthChanged(e) {
+      this.setTabsOption('width', e.value ? '100%' : 'auto');
     },
     onStylingModeChanged(e) {
       this.setTabsOption('stylingMode', e.value);
@@ -154,20 +173,29 @@ export default {
 
 .widget-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-grow: 1;
-  row-gap: 80px;
-  column-gap: 4px;
   max-width: calc(100% - 300px);
   min-width: 200px;
   padding: 16px 32px;
   overflow: clip;
 }
 
-.widget-container-vertical {
+.widget-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  row-gap: 80px;
+  column-gap: 4px;
+  max-width: 100%;
+}
+
+.widget-wrapper-vertical {
+  width: 100%;
   flex-direction: row;
+  align-items: center;
 }
 
 .options {
@@ -176,10 +204,6 @@ export default {
   flex-shrink: 0;
   padding: 20px;
   background-color: rgba(191, 191, 191, 0.15);
-}
-
-.dx-tab {
-  width: 136px;
 }
 
 .caption {
@@ -193,6 +217,10 @@ export default {
 
 .option {
   margin-top: 20px;
+}
+
+.dx-tabs {
+  max-width: 100%;
 }
 
 .dx-viewport:not(.dx-theme-generic) .dx-tabs-horizontal {

@@ -1,11 +1,13 @@
 $(() => {
   const tab1 = $('#withText').dxTabs({
+    width: 'auto',
     showNavButtons: false,
     dataSource: tabsText,
     selectedIndex: 0,
   }).dxTabs('instance');
 
   const tab2 = $('#withIconAndText').dxTabs({
+    width: 'auto',
     showNavButtons: false,
     dataSource: tabsIconAndText,
     iconPosition: iconPositions[0],
@@ -13,6 +15,7 @@ $(() => {
   }).dxTabs('instance');
 
   const tab3 = $('#withIcon').dxTabs({
+    width: 'auto',
     showNavButtons: false,
     dataSource: tabsIcon,
     selectedIndex: 0,
@@ -24,10 +27,10 @@ $(() => {
     value: 'horizontal',
     inputAttr: { 'aria-label': 'Orientation' },
     onValueChanged(data) {
-      const $widgetContainer = $('.widget-container');
+      const $widgetWrapper = $('.widget-wrapper');
 
-      $widgetContainer.removeClass();
-      $widgetContainer.addClass(`widget-container widget-container-${data.value}`);
+      $widgetWrapper.removeClass();
+      $widgetWrapper.addClass(`widget-wrapper widget-wrapper-${data.value}`);
 
       setTabsOption('orientation', data.value);
     },
@@ -62,9 +65,19 @@ $(() => {
 
   $('#scroll-content').dxCheckBox({
     text: 'Scroll content',
+    inputAttr: { 'aria-label': 'Scroll content' },
     value: false,
     onValueChanged(data) {
       setTabsOption('scrollByContent', data.value);
+    },
+  });
+
+  $('#full-width').dxCheckBox({
+    text: 'Full width',
+    inputAttr: { 'aria-label': 'Full width' },
+    value: true,
+    onValueChanged(data) {
+      setTabsOption('width', data.value ? '100%' : 'auto');
     },
   });
 

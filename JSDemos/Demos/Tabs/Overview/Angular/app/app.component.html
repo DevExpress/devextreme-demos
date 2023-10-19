@@ -1,26 +1,31 @@
 <div id="tabs-demo">
-  <div [class]="widgetContainerClasses">
-    <dx-tabs
-      #withText
-      [selectedIndex]="0"
-      [dataSource]="tabsWithText"
-      [scrollByContent]="false"
-      [showNavButtons]="false"
-    ></dx-tabs>
-    <dx-tabs
-      #withIconAndText
-      [selectedIndex]="0"
-      [dataSource]="tabsWithIconAndText"
-      [scrollByContent]="false"
-      [showNavButtons]="false"
-    ></dx-tabs>
-    <dx-tabs
-      #withIcon
-      [selectedIndex]="0"
-      [dataSource]="tabsWithIcon"
-      [scrollByContent]="false"
-      [showNavButtons]="false"
-    ></dx-tabs>
+  <div class="widget-container">
+    <div [class]="widgetWrapperClasses">
+      <dx-tabs
+        #withText
+        width="auto"
+        [selectedIndex]="0"
+        [dataSource]="tabsWithText"
+        [scrollByContent]="false"
+        [showNavButtons]="false"
+      ></dx-tabs>
+      <dx-tabs
+        #withIconAndText
+        width="auto"
+        [selectedIndex]="0"
+        [dataSource]="tabsWithIconAndText"
+        [scrollByContent]="false"
+        [showNavButtons]="false"
+      ></dx-tabs>
+      <dx-tabs
+        #withIcon
+        width="auto"
+        [selectedIndex]="0"
+        [dataSource]="tabsWithIcon"
+        [scrollByContent]="false"
+        [showNavButtons]="false"
+      ></dx-tabs>
+    </div>
   </div>
 
   <div class="options">
@@ -57,9 +62,10 @@
 
     <div class="option">
       <dx-check-box
+        id="show-navigation-buttons"
         text="Show navigation buttons"
         [value]="false"
-        id="show-navigation-buttons"
+        [inputAttr]="{ 'aria-label': 'Show navigation buttons' }"
         (onValueChanged)="onShowNavigationChanged($event)"
       ></dx-check-box>
     </div>
@@ -68,8 +74,17 @@
       <dx-check-box
         text="Scroll content"
         [value]="false"
-        id="scroll-content"
+        [inputAttr]="{ 'aria-label': 'Scroll content' }"
         (onValueChanged)="onScrollContentChanged($event)"
+      ></dx-check-box>
+    </div>
+
+    <div class="option">
+      <dx-check-box
+        text="Full width"
+        [value]="true"
+        [inputAttr]="{ 'aria-label': 'Full width' }"
+        (onValueChanged)="onFullWidthChanged($event)"
       ></dx-check-box>
     </div>
   </div>
