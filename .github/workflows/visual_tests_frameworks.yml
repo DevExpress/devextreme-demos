@@ -185,12 +185,21 @@ jobs:
         retention-days: 1
 
   lint:
-    name: Lint code base
+    name: Lint code base (${{ matrix.lint-command }})
     needs:
       - build-demos
 
     runs-on: ubuntu-latest
     timeout-minutes: 60
+
+    strategy:
+      matrix:
+        lint-command:
+          - lint-js
+          - lint-mvc
+          - lint-netcore
+          - lint-css
+          - lint-html
 
     steps:
     - name: Get sources
@@ -227,8 +236,8 @@ jobs:
         dotnet new globaljson --sdk-version 5.0.408
         dotnet tool install -g dotnet-format --version 5.1.225507
 
-    - name: Run lint
-      run: npm run lint
+    - name: Run ${{ matrix.lint-command }}
+      run: npm run ${{ matrix.lint-command }}
 
   testcafe:
     needs: build-demos
