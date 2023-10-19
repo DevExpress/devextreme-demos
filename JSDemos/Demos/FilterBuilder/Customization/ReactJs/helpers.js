@@ -1,9 +1,13 @@
 const TAB_SIZE = 4;
+function prepareItem(item, spaces) {
+  return Array.isArray(item[0]) ? formatValue(item, spaces + TAB_SIZE) : JSON.stringify(item);
+}
 export function formatValue(value, spaces = TAB_SIZE) {
   if (value && Array.isArray(value[0])) {
-    return `[${getLineBreak(spaces)}${value
-      .map((item) => (Array.isArray(item[0]) ? formatValue(item, spaces + TAB_SIZE) : JSON.stringify(item)))
-      .join(`,${getLineBreak(spaces)}`)}${getLineBreak(spaces - TAB_SIZE)}]`;
+    const formattedValue = value
+      .map((item) => prepareItem(item, spaces))
+      .join(`,${getLineBreak(spaces)}`);
+    return `[${getLineBreak(spaces)}${formattedValue}${getLineBreak(spaces - TAB_SIZE)}]`;
   }
   return JSON.stringify(value);
 }
