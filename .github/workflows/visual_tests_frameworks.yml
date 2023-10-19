@@ -196,9 +196,9 @@ jobs:
       matrix:
         lint-command:
           - npm run lint-non-js
-          - npm run lint-js "JSDemos/Demos/*/*/Angular/**/*.[jt]s?(x)"
-          - npm run lint-js "JSDemos/Demos/*/*/React/**/*.[jt]s?(x)"
-          - npm run lint-js "JSDemos/Demos/*/*/AngularJS/**/*.[jt]s?(x)" "JSDemos/Demos/*/*/jQuery/**/*.[jt]s?(x)" "JSDemos/Demos/*/*/Vue/**/*.[jt]s?(x)"
+          - npm run lint-angular
+          - npm run lint-react
+          - npm run lint-other-frameworks
 
     steps:
     - name: Get sources
