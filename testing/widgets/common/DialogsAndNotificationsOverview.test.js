@@ -12,7 +12,7 @@ fixture('Common.DialogsAndNotificationsOverview')
       .resizeWindow(900, 600);
   });
 
-runManualTest('Common', 'DialogsAndNotificationsOverview', ['React', 'Vue', 'Angular', 'jQuery'], (test) => {
+runManualTest('Common', 'DialogsAndNotificationsOverview', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
   test('DialogsAndNotificationsOverview', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
