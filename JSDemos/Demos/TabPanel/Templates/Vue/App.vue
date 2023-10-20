@@ -18,8 +18,8 @@
               <span>{{ company.Address }}</span>
             </p>
             <p>
-              <span>{{ company.City }}</span>
-              <span>{{ company.State }}</span>
+              <span><b>{{ company.City }}</b>,&nbsp;</span>
+              <span>{{ company.State }}&nbsp;</span>
               <span>{{ company.Zipcode }}</span>
             </p>
           </div>
