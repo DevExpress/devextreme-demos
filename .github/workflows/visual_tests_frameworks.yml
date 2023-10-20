@@ -185,7 +185,7 @@ jobs:
         retention-days: 1
 
   lint:
-    name: Lint code base (${{ matrix.lint-command }})
+    name: ${{ matrix.name }}
     needs:
       - build-demos
 
@@ -242,7 +242,7 @@ jobs:
         dotnet new globaljson --sdk-version 5.0.408
         dotnet tool install -g dotnet-format --version 5.1.225507
 
-    - name: ${{ matrix.name }}
+    - name: Run lint
       run: ${{ matrix.command }}
 
   testcafe:
