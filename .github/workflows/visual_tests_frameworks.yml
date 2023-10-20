@@ -196,10 +196,10 @@ jobs:
       fail-fast: false
       matrix:
         lint-command:
-          - npm run lint-non-js
-          - npm run lint-angular
-          - npm run lint-react
-          - npm run lint-other-frameworks
+          - npm run lint-non-demos
+          - npx eslint $(ls JSDemos/Demos | tail -n +0 | head -n 23 | sed -e 's/^/JSDemos\/Demos\//g' | sed -e 's/$/\/**\/*.[tj]s?(x)/') --no-ignore
+          - npx eslint $(ls JSDemos/Demos | tail -n +24 | head -n 23 | sed -e 's/^/JSDemos\/Demos\//g' | sed -e 's/$/\/**\/*.[tj]s?(x)/') --no-ignore
+          - npx eslint $(ls JSDemos/Demos | tail -n +47 | head -n 23 | sed -e 's/^/JSDemos\/Demos\//g' | sed -e 's/$/\/**\/*.[tj]s?(x)/') --no-ignore
 
     steps:
     - name: Get sources
