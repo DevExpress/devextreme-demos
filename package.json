@@ -137,7 +137,7 @@
         "prepare-all": "npm run prepare-js && npm run prepare-aspnet",
         "prepare-shared": "npm run prepare-ts && gulp shared",
         "lint-html": "prettier --check .",
-        "lint-js": "eslint .",
+        "lint-js": "eslint . --ignore-pattern 'JSDemos/Demos'",
         "lint-demos": "node utils/eslint-runner.mjs",
         "lint-css": "stylelint **/*.{css,vue}",
         "lint-mvc": "cd MVCDemos && eclint check **/*.cshtml !{bin,obj}/** && dotnet format -w DevExtreme.MVC.Demos.sln --check && cd ../",
