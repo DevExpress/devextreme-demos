@@ -67,7 +67,6 @@
     },
     "devDependencies": {
         "@babel/core": "7.20.12",
-        "@babel/eslint-parser": "7.22.15",
         "@babel/preset-env": "7.20.2",
         "@testcafe-community/axe": "3.5.0",
         "@types/fs-extra": "11.0.2",
@@ -77,6 +76,7 @@
         "@typescript-eslint/parser": "4.33.0",
         "@vue/eslint-config-typescript": "11.0.3",
         "axe-core": "4.7.2",
+        "babel-eslint": "10.1.0",
         "babel-jest": "27.5.1",
         "consola": "3.2.3",
         "cookie-parser": "1.4.6",
