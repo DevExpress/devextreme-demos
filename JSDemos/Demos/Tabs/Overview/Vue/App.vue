@@ -3,33 +3,13 @@
     <div class="widget-container">
       <div :class="widgetWrapperClasses">
         <DxTabs
+          v-for="(dataSource, index) in dataSources"
+          :key="index"
           :selected-index="0"
           :width="tabsWidth"
-          :data-source="tabsWithText"
+          :data-source="dataSource"
           v-model:orientation="orientation"
           v-model:styling-mode="stylingMode"
-          v-model:show-nav-buttons="showNavButtons"
-          v-model:scroll-by-content="scrollByContent"
-        />
-
-        <DxTabs
-          :selected-index="0"
-          :width="tabsWidth"
-          :data-source="tabsWithIconAndText"
-          v-model:orientation="orientation"
-          v-model:styling-mode="stylingMode"
-          v-model:icon-position="iconPosition"
-          v-model:show-nav-buttons="showNavButtons"
-          v-model:scroll-by-content="scrollByContent"
-        />
-
-        <DxTabs
-          :selected-index="0"
-          :width="tabsWidth"
-          :data-source="tabsWithIcon"
-          v-model:orientation="orientation"
-          v-model:styling-mode="stylingMode"
-          v-model:icon-position="iconPosition"
           v-model:show-nav-buttons="showNavButtons"
           v-model:scroll-by-content="scrollByContent"
         />
@@ -120,9 +100,6 @@ export default {
       orientations,
       stylingModes,
       iconPositions,
-      tabsWithText,
-      tabsWithIconAndText,
-      tabsWithIcon,
       fullWidth: false,
       scrollByContent: false,
       showNavButtons: false,
@@ -142,6 +119,9 @@ export default {
       const { fullWidth } = this;
 
       return fullWidth ? '100%' : 'auto';
+    },
+    dataSources() {
+      return [tabsWithText, tabsWithIconAndText, tabsWithIcon];
     },
   },
 };
