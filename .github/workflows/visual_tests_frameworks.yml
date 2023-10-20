@@ -193,6 +193,7 @@ jobs:
     timeout-minutes: 60
 
     strategy:
+      fail-fast: false
       matrix:
         lint-command:
           - npm run lint-non-js
