@@ -3,31 +3,35 @@
     <div class="widget-container">
       <div :class="widgetWrapperClasses">
         <DxTabs
-          id="withText"
-          width="auto"
           :selected-index="0"
+          :width="tabsWidth"
           :data-source="tabsWithText"
-          :scroll-by-content="false"
-          :show-nav-buttons="false"
-          @initialized="saveTabInstance1"
+          v-model:orientation="orientation"
+          v-model:styling-mode="stylingMode"
+          v-model:show-nav-buttons="showNavButtons"
+          v-model:scroll-by-content="scrollByContent"
         />
+
         <DxTabs
-          id="withIconAndText"
-          width="auto"
           :selected-index="0"
+          :width="tabsWidth"
           :data-source="tabsWithIconAndText"
-          :scroll-by-content="false"
-          :show-nav-buttons="false"
-          @initialized="saveTabInstance2"
+          v-model:orientation="orientation"
+          v-model:styling-mode="stylingMode"
+          v-model:icon-position="iconPosition"
+          v-model:show-nav-buttons="showNavButtons"
+          v-model:scroll-by-content="scrollByContent"
         />
+
         <DxTabs
-          id="withIcon"
-          width="auto"
           :selected-index="0"
+          :width="tabsWidth"
           :data-source="tabsWithIcon"
-          :scroll-by-content="false"
-          :show-nav-buttons="false"
-          @initialized="saveTabInstance3"
+          v-model:orientation="orientation"
+          v-model:styling-mode="stylingMode"
+          v-model:icon-position="iconPosition"
+          v-model:show-nav-buttons="showNavButtons"
+          v-model:scroll-by-content="scrollByContent"
         />
       </div>
     </div>
@@ -40,7 +44,6 @@
           :items="orientations"
           :input-attr="{ 'aria-label': 'Orientation' }"
           v-model:value="orientation"
-          @value-changed="onOrientationChanged"
         />
       </div>
 
@@ -50,7 +53,6 @@
           :items="stylingModes"
           :input-attr="{ 'aria-label': 'Styling Mode' }"
           v-model:value="stylingMode"
-          @value-changed="onStylingModeChanged"
         />
       </div>
 
@@ -60,7 +62,6 @@
           :items="iconPositions"
           :input-attr="{ 'aria-label': 'Icon Position' }"
           v-model:value="iconPosition"
-          @value-changed="onIconPositionChanged"
         />
       </div>
 
@@ -69,8 +70,7 @@
           id="show-navigation-buttons"
           text="Show navigation buttons"
           :element-attr="{ 'aria-label': 'Show navigation buttons' }"
-          :value="false"
-          @value-changed="onShowNavigationChanged"
+          v-model:value="showNavButtons"
         />
       </div>
 
@@ -78,8 +78,7 @@
         <DxCheckBox
           text="Scroll content"
           :element-attr="{ 'aria-label': 'Scroll content' }"
-          :value="false"
-          @value-changed="onScrollContentChanged"
+          v-model:value="scrollByContent"
         />
       </div>
 
@@ -87,8 +86,7 @@
         <DxCheckBox
           text="Full width"
           :element-attr="{ 'aria-label': 'Full width' }"
-          :value="false"
-          @value-changed="onFullWidthChanged"
+          v-model:value="fullWidth"
         />
       </div>
     </div>
@@ -101,66 +99,49 @@ import DxSelectBox from 'devextreme-vue/select-box';
 import DxCheckBox from 'devextreme-vue/check-box';
 import DxTabs from 'devextreme-vue/tabs';
 
-import service, { orientations, stylingModes, iconPositions } from './data.js';
+import {
+  orientations,
+  stylingModes,
+  iconPositions,
+  tabsWithText,
+  tabsWithIconAndText,
+  tabsWithIcon,
+} from './data.js';
 
 export default {
   components: {
+    DxCheckBox,
     DxSelectBox,
     DxTabs,
-    DxCheckBox,
   },
+
   data() {
     return {
       orientations,
       stylingModes,
       iconPositions,
-      tabsWithText: service.getTabsWithText(),
-      tabsWithIcon: service.getTabsWithIcon(),
-      tabsWithIconAndText: service.getTabsWithIconAndText(),
+      tabsWithText,
+      tabsWithIconAndText,
+      tabsWithIcon,
+      fullWidth: false,
+      scrollByContent: false,
+      showNavButtons: false,
       orientation: orientations[0],
       iconPosition: iconPositions[0],
-      stylingMode: stylingModes[0],
+      stylingMode: stylingModes[1],
     };
   },
+
   computed: {
     widgetWrapperClasses() {
       const { orientation } = this;
 
       return `widget-wrapper widget-wrapper-${orientation}`;
     },
-  },
-  methods: {
-    saveTabInstance1(e) {
-      this.tabInstance1 = e.component;
-    },
-    saveTabInstance2(e) {
-      this.tabInstance2 = e.component;
-    },
-    saveTabInstance3(e) {
-      this.tabInstance3 = e.component;
-    },
-    onShowNavigationChanged(e) {
-      this.setTabsOption('showNavButtons', e.value);
-    },
-    onScrollContentChanged(e) {
-      this.setTabsOption('scrollByContent', e.value);
-    },
-    onFullWidthChanged(e) {
-      this.setTabsOption('width', e.value ? '100%' : 'auto');
-    },
-    onStylingModeChanged(e) {
-      this.setTabsOption('stylingMode', e.value);
-    },
-    onIconPositionChanged(e) {
-      this.setTabsOption('iconPosition', e.value);
-    },
-    onOrientationChanged(e) {
-      this.setTabsOption('orientation', e.value);
-    },
-    setTabsOption(propertyName, value) {
-      this.tabInstance1.option(propertyName, value);
-      this.tabInstance2.option(propertyName, value);
-      this.tabInstance3.option(propertyName, value);
+    tabsWidth() {
+      const { fullWidth } = this;
+
+      return fullWidth ? '100%' : 'auto';
     },
   },
 };

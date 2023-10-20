@@ -5,25 +5,36 @@
         #withText
         width="auto"
         [selectedIndex]="0"
+        [scrollByContent]="scrollByContent"
+        [showNavButtons]="showNavButtons"
         [dataSource]="tabsWithText"
-        [scrollByContent]="false"
-        [showNavButtons]="false"
+        [orientation]="orientation"
+        [stylingMode]="stylingMode"
+        [iconPosition]="iconPosition"
       ></dx-tabs>
+
       <dx-tabs
         #withIconAndText
         width="auto"
         [selectedIndex]="0"
+        [scrollByContent]="scrollByContent"
+        [showNavButtons]="showNavButtons"
         [dataSource]="tabsWithIconAndText"
-        [scrollByContent]="false"
-        [showNavButtons]="false"
+        [orientation]="orientation"
+        [stylingMode]="stylingMode"
+        [iconPosition]="iconPosition"
       ></dx-tabs>
+
       <dx-tabs
         #withIcon
         width="auto"
         [selectedIndex]="0"
+        [scrollByContent]="scrollByContent"
+        [showNavButtons]="showNavButtons"
         [dataSource]="tabsWithIcon"
-        [scrollByContent]="false"
-        [showNavButtons]="false"
+        [orientation]="orientation"
+        [stylingMode]="stylingMode"
+        [iconPosition]="iconPosition"
       ></dx-tabs>
     </div>
   </div>
@@ -33,19 +44,17 @@
     <div class="option">
       <span>Orientation</span>
       <dx-select-box
-        [items]="orientations"
         [inputAttr]="{ 'aria-label': 'Orientation' }"
+        [value]="orientation"
         (onValueChanged)="onOrientationChanged($event)"
-        [(value)]="orientation"
       ></dx-select-box>
     </div>
 
     <div class="option">
       <span>Styling mode</span>
       <dx-select-box
-        [items]="stylingModes"
         [inputAttr]="{ 'aria-label': 'Styling Mode' }"
-        (onValueChanged)="onStylingModeChanged($event)"
+        [items]="stylingModes"
         [(value)]="stylingMode"
       ></dx-select-box>
     </div>
@@ -53,9 +62,8 @@
     <div class="option">
       <span>Icon position</span>
       <dx-select-box
-        [items]="iconPositions"
         [inputAttr]="{ 'aria-label': 'Icon Position' }"
-        (onValueChanged)="onIconPositionChanged($event)"
+        [items]="iconPositions"
         [(value)]="iconPosition"
       ></dx-select-box>
     </div>
@@ -64,18 +72,16 @@
       <dx-check-box
         id="show-navigation-buttons"
         text="Show navigation buttons"
-        [value]="false"
         [elementAttr]="{ 'aria-label': 'Show navigation buttons' }"
-        (onValueChanged)="onShowNavigationChanged($event)"
+        [(value)]="showNavButtons"
       ></dx-check-box>
     </div>
 
     <div class="option">
       <dx-check-box
         text="Scroll content"
-        [value]="false"
         [elementAttr]="{ 'aria-label': 'Scroll content' }"
-        (onValueChanged)="onScrollContentChanged($event)"
+        [(value)]="scrollByContent"
       ></dx-check-box>
     </div>
 

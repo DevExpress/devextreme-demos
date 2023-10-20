@@ -37,13 +37,15 @@ export class AppComponent {
 
   stylingModes: string[] = ['primary', 'secondary'];
 
-  iconPositions: string[] = ['start', 'top', 'end', 'bottom'];
+  iconPositions: string[] = ['top', 'start', 'end', 'bottom'];
 
   orientation: string;
 
   stylingMode: string;
 
   iconPosition: string;
+
+  showNavButtons = false;
 
   widgetWrapperClasses = 'widget-wrapper widget-wrapper-horizontal';
 
@@ -52,7 +54,7 @@ export class AppComponent {
     this.tabsWithIconAndText = service.getTabsWithIconAndText();
     this.tabsWithIcon = service.getTabsWithIcon();
     this.orientation = this.orientations[0];
-    this.stylingMode = this.stylingModes[0];
+    this.stylingMode = this.stylingModes[1];
     this.iconPosition = this.iconPositions[0];
   }
 
@@ -61,24 +63,8 @@ export class AppComponent {
     this.setTabsOption('orientation', e.value);
   }
 
-  onShowNavigationChanged(e) {
-    this.setTabsOption('showNavButtons', e.value);
-  }
-
-  onScrollContentChanged(e) {
-    this.setTabsOption('scrollByContent', e.value);
-  }
-
   onFullWidthChanged(e) {
     this.setTabsOption('width', e.value ? '100%' : 'auto');
-  }
-
-  onIconPositionChanged(e) {
-    this.setTabsOption('iconPosition', e.value);
-  }
-
-  onStylingModeChanged(e) {
-    this.setTabsOption('stylingMode', e.value);
   }
 
   setTabsOption(option, value) {

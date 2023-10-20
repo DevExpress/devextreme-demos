@@ -100,8 +100,8 @@ export const scrollContentLabel = { 'aria-label': 'Scroll Content' };
 export const fullWidthLabel = { 'aria-label': 'Full width' };
 
 export const iconPositions = [
-  'start',
   'top',
+  'start',
   'end',
   'bottom',
 ];

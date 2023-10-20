@@ -1,30 +1,38 @@
 $(() => {
   const tab1 = $('#withText').dxTabs({
     width: 'auto',
+    selectedIndex: 0,
     showNavButtons: false,
     dataSource: tabsText,
-    selectedIndex: 0,
+    orientation: orientations[0],
+    stylingMode: stylingModes[1],
+    iconPosition: iconPositions[0],
   }).dxTabs('instance');
 
   const tab2 = $('#withIconAndText').dxTabs({
     width: 'auto',
+    selectedIndex: 0,
     showNavButtons: false,
     dataSource: tabsIconAndText,
+    orientation: orientations[0],
+    stylingMode: stylingModes[1],
     iconPosition: iconPositions[0],
-    selectedIndex: 0,
   }).dxTabs('instance');
 
   const tab3 = $('#withIcon').dxTabs({
     width: 'auto',
+    selectedIndex: 0,
     showNavButtons: false,
     dataSource: tabsIcon,
-    selectedIndex: 0,
+    orientation: orientations[0],
+    stylingMode: stylingModes[1],
+    iconPosition: iconPositions[0],
   }).dxTabs('instance');
 
   $('#orientation').dxSelectBox({
     showNavButtons: false,
     items: orientations,
-    value: 'horizontal',
+    value: orientations[0],
     inputAttr: { 'aria-label': 'Orientation' },
     onValueChanged(data) {
       const $widgetWrapper = $('.widget-wrapper');
@@ -38,7 +46,7 @@ $(() => {
 
   $('#styling-mode').dxSelectBox({
     items: stylingModes,
-    value: stylingModes[0],
+    value: stylingModes[1],
     inputAttr: { 'aria-label': 'Styling Mode' },
     onValueChanged(data) {
       setTabsOption('stylingMode', data.value);

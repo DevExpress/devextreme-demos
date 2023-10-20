@@ -30,7 +30,7 @@ function OptionWrapper(props) {
 
 const App = () => {
   const [orientation, setOrientation] = React.useState(orientations[0]);
-  const [stylingMode, setStylingMode] = React.useState(stylingModes[0]);
+  const [stylingMode, setStylingMode] = React.useState(stylingModes[1]);
   const [iconPosition, setIconPosition] = React.useState(iconPositions[0]);
   const [showNavigation, setShowNavigation] = React.useState(false);
   const [scrollContent, setScrollContent] = React.useState(false);
@@ -71,34 +71,36 @@ const App = () => {
           <Tabs
             id="withText"
             width="auto"
+            selectedIndex={0}
             dataSource={tabsText}
             scrollByContent={scrollContent}
             showNavButtons={showNavigation}
             orientation={orientation}
             stylingMode={stylingMode}
-            selectedIndex={0}
           />
+
           <Tabs
             id="withIconAndText"
             width="auto"
+            selectedIndex={0}
             dataSource={tabsIconAndText}
             scrollByContent={scrollContent}
             showNavButtons={showNavigation}
             orientation={orientation}
             stylingMode={stylingMode}
             iconPosition={iconPosition}
-            selectedIndex={0}
           />
+
           <Tabs
             id="withIcon"
             width="auto"
+            selectedIndex={0}
             dataSource={tabsIcon}
             scrollByContent={scrollContent}
             showNavButtons={showNavigation}
             orientation={orientation}
             stylingMode={stylingMode}
             iconPosition={iconPosition}
-            selectedIndex={0}
           />
         </div>
       </div>
