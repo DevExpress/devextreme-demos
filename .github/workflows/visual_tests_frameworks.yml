@@ -195,12 +195,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        lint-command:
-          - npm run lint-non-demos
-          - CONSTEL=1/4 npm run lint-demos
-          - CONSTEL=2/4 npm run lint-demos
-          - CONSTEL=3/4 npm run lint-demos
-          - CONSTEL=4/4 npm run lint-demos
+        include:
+          - name: Lint code base (excluding demos)
+            command: npm run lint-non-demos
+          - name: Lint demos (1/4)
+            command: CONSTEL=1/4 npm run lint-demos
+          - name: Lint demos (2/4)
+            command: CONSTEL=2/4 npm run lint-demos
+          - name: Lint demos (3/4)
+            command: CONSTEL=3/4 npm run lint-demos
+          - name: Lint demos (4/4)
+            command: CONSTEL=4/4 npm run lint-demos
 
     steps:
     - name: Get sources
@@ -237,8 +242,8 @@ jobs:
         dotnet new globaljson --sdk-version 5.0.408
         dotnet tool install -g dotnet-format --version 5.1.225507
 
-    - name: Run lint ${{ matrix.lint-command }}
-      run: ${{ matrix.lint-command }}
+    - name: ${{ matrix.name }}
+      run: ${{ matrix.command }}
 
   testcafe:
     needs: build-demos
