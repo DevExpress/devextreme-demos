@@ -8,10 +8,10 @@
           :selected-index="0"
           :width="tabsWidth"
           :data-source="dataSource"
-          v-model:orientation="orientation"
-          v-model:styling-mode="stylingMode"
-          v-model:show-nav-buttons="showNavButtons"
-          v-model:scroll-by-content="scrollByContent"
+          :orientation="orientation"
+          :styling-mode="stylingMode"
+          :show-nav-buttons="showNavButtons"
+          :scroll-by-content="scrollByContent"
         />
       </div>
     </div>
