@@ -62,7 +62,7 @@ function onRefreshClick() {
   window.location.reload();
 }
 function onStateResetClick() {
-  treeList.value.instance.state(null);
+  treeList.value?.instance?.state(null);
 }
 </script>
 <style scoped>
