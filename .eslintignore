@@ -2,6 +2,7 @@ node_modules/*
 MVCDemos/*
 bundles/*
 NetCoreDemos/*
+publish-demos/*
 JSDemos/Demos/**/testcafe-test-code.js
 /**/azure.file.system.js
 
