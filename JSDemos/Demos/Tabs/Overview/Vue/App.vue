@@ -193,6 +193,6 @@ export default {
 }
 
 .dx-tabs-vertical {
-  height: 250px;
+  height: 227px;
 }
 </style>
