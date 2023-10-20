@@ -10,6 +10,7 @@
           :data-source="dataSource"
           :orientation="orientation"
           :styling-mode="stylingMode"
+          :icon-position="iconPosition"
           :show-nav-buttons="showNavButtons"
           :scroll-by-content="scrollByContent"
         />

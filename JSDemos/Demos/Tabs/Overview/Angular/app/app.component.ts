@@ -47,6 +47,8 @@ export class AppComponent {
 
   showNavButtons = false;
 
+  scrollByContent = false;
+
   widgetWrapperClasses = 'widget-wrapper widget-wrapper-horizontal';
 
   constructor(service: Service) {
