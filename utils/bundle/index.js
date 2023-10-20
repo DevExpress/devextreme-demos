@@ -179,11 +179,7 @@ const build = async (framework) => {
 
   builder.config(builderConfig);
 
-  try {
-    await builder.bundle(packages, bundlePath, bundleOpts);
-  } catch (err) {
-    console.error(`Build ${framework} error `, err);
-  }
+  await builder.bundle(packages, bundlePath, bundleOpts);
 };
 
 const copyBundlesFolder = () => {
