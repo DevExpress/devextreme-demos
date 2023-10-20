@@ -7,7 +7,7 @@
 import Utils from './utils.js';
 
 withDefaults(defineProps<{
-  cellData?: object
+  cellData?: any
   currentView?: string
 }>(), {
   cellData: () => {},

@@ -4,13 +4,12 @@
       ref="schedulerRef"
       time-zone="America/Los_Angeles"
       :data-source="dataSource"
-      v-model:current-date="currentDate"
+      :current-date="currentDate"
       :cell-duration="cellDuration"
       :views="views"
       :height="590"
       :start-day-hour="9"
       :adaptivity-enabled="true"
-      :on-content-ready="onContentReady"
       current-view="month"
     >
       <DxResource
@@ -37,6 +36,6 @@ const cellDuration = 30;
 const dataSource = data;
 const schedulerRef = ref<DxScheduler>();
 function showPopup() {
-  schedulerRef.value.instance.showAppointmentPopup();
+  schedulerRef.value!.instance!.showAppointmentPopup();
 }
 </script>

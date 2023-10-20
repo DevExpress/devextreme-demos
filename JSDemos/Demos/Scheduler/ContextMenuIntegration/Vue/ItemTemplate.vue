@@ -13,9 +13,9 @@
 import { ref } from 'vue';
 
 const props = withDefaults(defineProps<{
-  itemData?: object
+  itemData?: any
 }>(), {
-  itemData: () => { },
+  itemData: () => {},
 });
 
 const styleObject = ref({ backgroundColor: props.itemData.color });

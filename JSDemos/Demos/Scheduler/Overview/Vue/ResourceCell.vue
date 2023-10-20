@@ -21,7 +21,7 @@
 </template>
 <script setup lang="ts">
 withDefaults(defineProps<{
-  employee?: object
+  employee?: any
 }>(), {
   employee: () => {},
 });

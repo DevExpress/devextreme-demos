@@ -10,7 +10,7 @@
 import DataCell from './DataCell.vue';
 
 const props = withDefaults(defineProps<{
-  cellData?: object
+  cellData?: any
 }>(), {
   cellData: () => {},
 });

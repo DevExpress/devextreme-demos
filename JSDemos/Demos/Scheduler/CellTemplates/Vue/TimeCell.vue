@@ -12,7 +12,7 @@ import { computed } from 'vue';
 import Utils from './utils.js';
 
 const props = withDefaults(defineProps<{
-  cellData?: object
+  cellData?: any
 }>(), {
   cellData: () => {},
 });

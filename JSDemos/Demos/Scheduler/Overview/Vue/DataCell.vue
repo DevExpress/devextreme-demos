@@ -9,7 +9,7 @@
 </template>
 <script setup lang="ts">
 withDefaults(defineProps<{
-  cellData?: object
+  cellData?: any
 }>(), {
   cellData: () => {},
 });

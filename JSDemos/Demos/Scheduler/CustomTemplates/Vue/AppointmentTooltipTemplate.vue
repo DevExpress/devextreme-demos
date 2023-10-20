@@ -18,8 +18,8 @@ import Query from 'devextreme/data/query';
 import { moviesData } from './data.js';
 
 const props = withDefaults(defineProps<{
-  scheduler?: object
-  templateTooltipModel?: object
+  scheduler?: any
+  templateTooltipModel?: any
 }>(), {
   scheduler: () => { },
   templateTooltipModel: () => { },
@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<{
 
 const getMovieById = function(resourceId) {
   return Query(moviesData)
-    .filter('id', resourceId)
+    .filter(['id', resourceId])
     .toArray()[0];
 };
 const movieData = getMovieById(props.templateTooltipModel.appointmentData.movieId);

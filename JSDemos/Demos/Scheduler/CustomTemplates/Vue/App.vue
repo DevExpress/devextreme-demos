@@ -133,7 +133,7 @@ function onAppointmentFormOpening(e) {
 }
 const getMovieById = function(resourceId) {
   return Query(moviesData)
-    .filter('id', resourceId)
+    .filter(['id', resourceId])
     .toArray()[0];
 };
 </script>

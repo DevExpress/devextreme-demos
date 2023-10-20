@@ -17,10 +17,10 @@ import Query from 'devextreme/data/query';
 import { moviesData } from './data.js';
 
 const props = withDefaults(defineProps<{
-  scheduler?: object
-  templateModel?: {targetedAppointmentData: {[key: 'movieId'| 'displayStartDate' | 'displayEndDate' | 'price']: string}}
+  scheduler?: any
+  templateModel?: any
 }>(), {
-  scheduler: () => { },
+  scheduler: () => ({ }),
   templateModel: () => { },
 });
 
@@ -29,7 +29,7 @@ function getFormatDate(value) {
 }
 const getMovieById = function(resourceId) {
   return Query(moviesData)
-    .filter('id', resourceId)
+    .filter(['id', resourceId])
     .toArray()[0];
 };
 

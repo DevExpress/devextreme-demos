@@ -48,18 +48,18 @@ const appointmentClassName = '.dx-scheduler-appointment';
 const cellClassName = '.dx-scheduler-date-table-cell';
 const currentDate = ref(new Date(2020, 10, 25));
 const dataSource = data;
-const groups = ref(undefined);
+const groups = ref<any>(undefined);
 const crossScrollingEnabled = ref(false);
 const disabled = ref(true);
-const contextMenuItems = ref([]);
+const contextMenuItems = ref<any[]>([]);
 const target = ref(appointmentClassName);
 const schedulerRef = ref<DxScheduler>();
 
 function onAppointmentContextMenu({ appointmentData, targetedAppointmentData }) {
-  const scheduler = schedulerRef.value.instance;
+  const scheduler = schedulerRef.value!.instance!;
   const resourceItems = resourcesData.map((item) => ({
     ...item,
-    onItemClick: ({ itemData }) => scheduler.updateAppointment(appointmentData, {
+    onItemClick: ({ itemData }) => scheduler?.updateAppointment(appointmentData, {
       ...appointmentData,
       ...{ roomId: [itemData.id] },
     }),
@@ -88,7 +88,7 @@ function onAppointmentContextMenu({ appointmentData, targetedAppointmentData }) 
   ];
 }
 function onCellContextMenu({ cellData }) {
-  const scheduler = schedulerRef.value.instance;
+  const scheduler = schedulerRef.value!.instance!;
   target.value = cellClassName;
   disabled.value = false;
   contextMenuItems.value = [

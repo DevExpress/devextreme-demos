@@ -8,12 +8,19 @@
       :height="600"
       :start-day-hour="9"
       :end-day-hour="19"
-      :editing="editing"
       :on-appointment-added="showAddedToast"
       :on-appointment-updated="showUpdatedToast"
       :on-appointment-deleted="showDeletedToast"
       current-view="week"
-    />
+    >
+      <DxEditing
+        :allow-adding="allowAdding"
+        :allow-deleting="allowDeleting"
+        :allow-updating="allowUpdating"
+        :allow-resizing="allowResizing"
+        :allow-dragging="allowDragging"
+      />
+    </DxScheduler>
     <div class="options">
       <div class="caption">Options</div>
       <div class="options-container">
@@ -54,8 +61,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-import DxScheduler from 'devextreme-vue/scheduler';
+import { ref } from 'vue';
+import DxScheduler, { DxEditing } from 'devextreme-vue/scheduler';
 import DxCheckBox from 'devextreme-vue/check-box';
 import notify from 'devextreme/ui/notify';
 import { data } from './data.js';
@@ -68,14 +75,6 @@ const allowDeleting = ref(true);
 const allowUpdating = ref(true);
 const allowResizing = ref(true);
 const allowDragging = ref(true);
-
-const editing = computed(() => ({
-  allowAdding: allowAdding.value,
-  allowDeleting: allowDeleting.value,
-  allowUpdating: allowUpdating.value,
-  allowResizing: allowResizing.value,
-  allowDragging: allowDragging.value,
-}));
 
 function showToast(event, value, type) {
   notify(`${event} "${value}" task`, type, 800);
