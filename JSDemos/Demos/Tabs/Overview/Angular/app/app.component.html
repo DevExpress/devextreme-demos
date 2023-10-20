@@ -65,7 +65,7 @@
         id="show-navigation-buttons"
         text="Show navigation buttons"
         [value]="false"
-        [inputAttr]="{ 'aria-label': 'Show navigation buttons' }"
+        [elementAttr]="{ 'aria-label': 'Show navigation buttons' }"
         (onValueChanged)="onShowNavigationChanged($event)"
       ></dx-check-box>
     </div>
@@ -74,7 +74,7 @@
       <dx-check-box
         text="Scroll content"
         [value]="false"
-        [inputAttr]="{ 'aria-label': 'Scroll content' }"
+        [elementAttr]="{ 'aria-label': 'Scroll content' }"
         (onValueChanged)="onScrollContentChanged($event)"
       ></dx-check-box>
     </div>
@@ -83,7 +83,7 @@
       <dx-check-box
         text="Full width"
         [value]="false"
-        [inputAttr]="{ 'aria-label': 'Full width' }"
+        [elementAttr]="{ 'aria-label': 'Full width' }"
         (onValueChanged)="onFullWidthChanged($event)"
       ></dx-check-box>
     </div>

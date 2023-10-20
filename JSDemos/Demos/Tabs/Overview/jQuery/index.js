@@ -56,7 +56,7 @@ $(() => {
 
   $('#show-navigation-buttons').dxCheckBox({
     text: 'Show navigation buttons',
-    inputAttr: { 'aria-label': 'Show Navigation Buttons' },
+    elementAttr: { 'aria-label': 'Show Navigation Buttons' },
     value: false,
     onValueChanged(data) {
       setTabsOption('showNavButtons', data.value);
@@ -65,7 +65,7 @@ $(() => {
 
   $('#scroll-content').dxCheckBox({
     text: 'Scroll content',
-    inputAttr: { 'aria-label': 'Scroll content' },
+    elementAttr: { 'aria-label': 'Scroll content' },
     value: false,
     onValueChanged(data) {
       setTabsOption('scrollByContent', data.value);
@@ -74,7 +74,7 @@ $(() => {
 
   $('#full-width').dxCheckBox({
     text: 'Full width',
-    inputAttr: { 'aria-label': 'Full width' },
+    elementAttr: { 'aria-label': 'Full width' },
     value: false,
     onValueChanged(data) {
       setTabsOption('width', data.value ? '100%' : 'auto');

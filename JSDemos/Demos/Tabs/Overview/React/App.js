@@ -137,7 +137,7 @@ const App = () => {
           <CheckBox
             id="show-navigation-buttons"
             text="Show navigation buttons"
-            inputAttr={showNavigationLabel}
+            elementAttr={showNavigationLabel}
             value={showNavigation}
             onValueChanged={showNavigationChanged}
           />
@@ -146,7 +146,7 @@ const App = () => {
         <div className="option">
           <CheckBox
             text="Scroll content"
-            inputAttr={scrollContentLabel}
+            elementAttr={scrollContentLabel}
             value={scrollContent}
             onValueChanged={scrollContentChanged}
           />
@@ -155,7 +155,7 @@ const App = () => {
         <div className="option">
           <CheckBox
             text="Full width"
-            inputAttr={fullWidthLabel}
+            elementAttr={fullWidthLabel}
             value={fullWidth}
             onValueChanged={fullWidthChanged}
           />

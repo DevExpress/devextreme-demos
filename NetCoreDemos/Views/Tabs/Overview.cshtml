@@ -60,7 +60,7 @@
                 .Value(false)
                 .ID("show-navigation-buttons")
                 .Text("Show Navigation Buttons")
-                .InputAttr("aria-label", "Show Navigation Buttons")
+                .ElementAttr("aria-label", "Show Navigation Buttons")
                 .OnValueChanged("showNavigation_valueChanged")
             )
         </div>
@@ -69,7 +69,7 @@
             @(Html.DevExtreme().CheckBox()
                 .Value(false)
                 .Text("Scroll Content")
-                .InputAttr("aria-label", "Scroll Content")
+                .ElementAttr("aria-label", "Scroll Content")
                 .OnValueChanged("scrollContent_valueChanged")
             )
         </div>
@@ -78,7 +78,7 @@
             @(Html.DevExtreme().CheckBox()
                 .Value(false)
                 .Text("Full width")
-                .InputAttr("aria-label", "Full width")
+                .ElementAttr("aria-label", "Full width")
                 .OnValueChanged("fullWidth_valueChanged")
             )
         </div>

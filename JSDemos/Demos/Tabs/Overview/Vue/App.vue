@@ -68,7 +68,7 @@
         <DxCheckBox
           id="show-navigation-buttons"
           text="Show navigation buttons"
-          :input-attr="{ 'aria-label': 'Show navigation buttons' }"
+          :element-attr="{ 'aria-label': 'Show navigation buttons' }"
           :value="false"
           @value-changed="onShowNavigationChanged"
         />
@@ -77,7 +77,7 @@
       <div class="option">
         <DxCheckBox
           text="Scroll content"
-          :input-attr="{ 'aria-label': 'Scroll content' }"
+          :element-attr="{ 'aria-label': 'Scroll content' }"
           :value="false"
           @value-changed="onScrollContentChanged"
         />
@@ -86,7 +86,7 @@
       <div class="option">
         <DxCheckBox
           text="Full width"
-          :input-attr="{ 'aria-label': 'Full width' }"
+          :element-attr="{ 'aria-label': 'Full width' }"
           :value="false"
           @value-changed="onFullWidthChanged"
         />
