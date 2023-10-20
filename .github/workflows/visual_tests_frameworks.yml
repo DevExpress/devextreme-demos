@@ -197,9 +197,10 @@ jobs:
       matrix:
         lint-command:
           - npm run lint-non-demos
-          - npx eslint $(ls JSDemos/Demos | tail -n +0 | head -n 23 | sed -e 's/^/JSDemos\/Demos\//g' | sed -e 's/$/\/**\/*.[tj]s?(x)/') --no-ignore
-          - npx eslint $(ls JSDemos/Demos | tail -n +24 | head -n 23 | sed -e 's/^/JSDemos\/Demos\//g' | sed -e 's/$/\/**\/*.[tj]s?(x)/') --no-ignore
-          - npx eslint $(ls JSDemos/Demos | tail -n +47 | head -n 23 | sed -e 's/^/JSDemos\/Demos\//g' | sed -e 's/$/\/**\/*.[tj]s?(x)/') --no-ignore
+          - CONSTEL=1/4 npm run lint-demos
+          - CONSTEL=2/4 npm run lint-demos
+          - CONSTEL=3/4 npm run lint-demos
+          - CONSTEL=4/4 npm run lint-demos
 
     steps:
     - name: Get sources
