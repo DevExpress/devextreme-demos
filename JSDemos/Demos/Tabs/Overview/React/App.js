@@ -35,7 +35,7 @@ const App = () => {
   const [showNavigation, setShowNavigation] = React.useState(false);
   const [scrollContent, setScrollContent] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(false);
-  const [widgetWrapperClasses, setWidgetWrapperClasses] = React.useState('widget-container widget-container-horizontal');
+  const [widgetWrapperClasses, setWidgetWrapperClasses] = React.useState('widget-wrapper widget-wrapper-horizontal');
 
   const stylingModeChanged = React.useCallback((e) => {
     setStylingMode(e.value);
