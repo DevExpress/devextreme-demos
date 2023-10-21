@@ -45,6 +45,7 @@
       <span>Orientation</span>
       <dx-select-box
         [inputAttr]="{ 'aria-label': 'Orientation' }"
+        [items]="orientations"
         [value]="orientation"
         (onValueChanged)="onOrientationChanged($event)"
       ></dx-select-box>
