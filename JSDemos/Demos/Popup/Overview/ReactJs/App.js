@@ -72,15 +72,14 @@ export default function App() {
     [hideInfo],
   );
   const getItems = React.useCallback(
-    () =>
-      employees.map((employee) => (
-        <li key={employee.ID}>
-          <EmployeeItem
-            employee={employee}
-            showInfo={showInfo}
-          />
-        </li>
-      )),
+    () => employees.map((employee) => (
+      <li key={employee.ID}>
+        <EmployeeItem
+          employee={employee}
+          showInfo={showInfo}
+        />
+      </li>
+    )),
     [showInfo],
   );
   return (

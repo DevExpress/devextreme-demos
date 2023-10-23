@@ -1,16 +1,16 @@
 import React from 'react';
 import { Popup, Position, ToolbarItem } from 'devextreme-react/popup';
 import notify from 'devextreme/ui/notify';
-import { EmployeeItem } from './EmployeeItem.tsx';
+import { EmployeeItem, EmployeeItemProps } from './EmployeeItem.tsx';
 import { employees } from './data.ts';
 
-const defaultCurrentEmployee: Partial<typeof employees[0]> = {};
+const defaultCurrentEmployee: Partial<EmployeeItemProps['employee']> = {};
 export default function App() {
   const [currentEmployee, setCurrentEmployee] = React.useState(defaultCurrentEmployee);
   const [popupVisible, setPopupVisible] = React.useState(false);
   const [positionOf, setPositionOf] = React.useState('');
 
-  const showInfo = React.useCallback((employee: { ID: any; }) => {
+  const showInfo = React.useCallback((employee: EmployeeItemProps['employee']) => {
     setCurrentEmployee(employee);
     setPositionOf(`#image${employee.ID}`);
     setPopupVisible(true);
