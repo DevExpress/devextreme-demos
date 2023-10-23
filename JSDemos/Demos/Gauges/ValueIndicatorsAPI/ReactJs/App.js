@@ -21,14 +21,17 @@ function App() {
     gauge.value(mainGeneratorValue);
     gauge.subvalues([additionalGenerator1Value, additionalGenerator2Value]);
   }, [gaugeRef, mainGeneratorValue, additionalGenerator1Value, additionalGenerator2Value]);
-  React.useEffect(() => {
-    updateValues();
-  }, [updateValues]);
+  const defaultSubvalues = React.useMemo(
+    () => [additionalGenerator1Value, additionalGenerator2Value],
+    [additionalGenerator1Value, additionalGenerator2Value],
+  );
   return (
     <div id="gauge-demo">
       <div className="widget-container">
         <CircularGauge
           id="gauge"
+          defaultValue={mainGeneratorValue}
+          defaultSubvalues={defaultSubvalues}
           ref={gaugeRef}
         >
           <Scale

@@ -30,15 +30,18 @@ function App() {
     additionalGenerator2Value,
   ]);
 
-  React.useEffect(() => {
-    updateValues();
-  }, [updateValues]);
+  const defaultSubvalues = React.useMemo(
+    () => [additionalGenerator1Value, additionalGenerator2Value],
+    [additionalGenerator1Value, additionalGenerator2Value],
+  );
 
   return (
     <div id="gauge-demo">
       <div className="widget-container">
         <CircularGauge
           id="gauge"
+          defaultValue={mainGeneratorValue}
+          defaultSubvalues={defaultSubvalues}
           ref={gaugeRef}
         >
           <Scale startValue={10} endValue={40} tickInterval={5}>
