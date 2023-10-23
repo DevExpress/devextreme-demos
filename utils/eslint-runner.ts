@@ -12,14 +12,14 @@ const getPatterns = () => {
   const [current, total] = CONSTEL.split('/');
 
   const demos = fs.readdirSync(path.resolve(process.cwd(), 'JSDemos/Demos'));
-  const filteredDemos = demos.filter((_, index) => index % total === current - 1);
+  const filteredDemos = demos.filter((_, index) => index % +total === +current - 1);
 
   return filteredDemos.map((demoName) => `JSDemos/Demos/${demoName}/**/*.[tj]s?(x)`);
-}
+};
 
 (async () => {
   const eslint = new ESLint({
-    cwd: process.cwd()
+    cwd: process.cwd(),
   });
 
   const patterns = getPatterns();
@@ -32,4 +32,4 @@ const getPatterns = () => {
 })().catch((error) => {
   console.error(error);
   process.exit(1);
-})
+});
