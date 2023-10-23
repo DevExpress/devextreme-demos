@@ -3,7 +3,7 @@ import notify from 'devextreme/ui/notify';
 import Button from 'devextreme-react/button';
 import Popup from 'devextreme-react/popup';
 import { housesSource } from './data.js';
-import House from './House.js';
+import { House } from './House.js';
 
 const ADD_TO_FAVORITES = 'Add to Favorites';
 const REMOVE_FROM_FAVORITES = 'Remove from Favorites';

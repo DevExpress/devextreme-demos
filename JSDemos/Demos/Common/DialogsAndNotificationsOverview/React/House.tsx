@@ -42,49 +42,9 @@ interface HouseProps {
   key: string;
 }
 
-class House extends React.PureComponent<HouseProps> {
-  constructor(props) {
-    super(props);
-
-    this.show = this.show.bind(this);
-    this.renderAgentDetails = this.renderAgentDetails.bind(this);
-  }
-
-  render() {
-    const { house } = this.props;
-    return (
-      <div>
-        <div onClick={this.show} className="item-content">
-
-          <img alt={house.Address} src={house.Image} />
-
-          <div className="item-options">
-            <div>
-              <div className="address">{house.Address}</div>
-              <div className="price large-text">{formatCurrency(house.Price)}</div>
-              <div className="agent">
-                <div id={`house${house.ID}`}>
-                  <img alt="Listing agent" src="../../../../images/icon-agent.svg" />
-                                    Listing agent
-                </div>
-              </div>
-            </div>
-          </div>
-          <Popover
-            showEvent="mouseenter"
-            hideEvent="mouseleave"
-            position={position}
-            target={`#house${house.ID}`}
-            width={260}
-            contentRender={this.renderAgentDetails}
-          />
-        </div>
-      </div>
-    );
-  }
-
-  renderAgentDetails() {
-    const agent = this.props.house.Agent;
+export function House(props: HouseProps) {
+  const renderAgentDetails = React.useCallback(() => {
+    const agent = props.house.Agent;
     return (
       <div className="agent-details">
         <img alt={agent.Name} src={agent.Picture} />
@@ -94,11 +54,40 @@ class House extends React.PureComponent<HouseProps> {
         </div>
       </div>
     );
-  }
+  }, [props.house.Agent]);
 
-  show() {
-    this.props.show(this.props.house);
-  }
+  const show = React.useCallback(() => {
+    props.show(props.house);
+  }, [props]);
+
+  return (
+    <div>
+      <div onClick={show} className="item-content">
+
+        <img alt={props.house.Address} src={props.house.Image} />
+
+        <div className="item-options">
+          <div>
+            <div className="address">{props.house.Address}</div>
+            <div className="price large-text">{formatCurrency(props.house.Price)}</div>
+            <div className="agent">
+              <div id={`house${props.house.ID}`}>
+                <img alt="Listing agent" src="../../../../images/icon-agent.svg" />
+                                    Listing agent
+              </div>
+            </div>
+          </div>
+        </div>
+        <Popover
+          showEvent="mouseenter"
+          hideEvent="mouseleave"
+          position={position}
+          target={`#house${props.house.ID}`}
+          width={260}
+          contentRender={renderAgentDetails}
+        />
+      </div>
+    </div>
+  );
 }
 
-export default House;
