@@ -33,6 +33,7 @@ $(() => {
     placeholder: 'Select...',
     value: '6/3/1981',
     inputAttr: { 'aria-label': 'Birth Date' },
+    labelMode,
   }).dxValidator({
     validationRules: [{
       type: 'required',
