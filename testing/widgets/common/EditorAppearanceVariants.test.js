@@ -6,7 +6,7 @@ import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 fixture('Common.EditorAppearanceVariants')
   .page('http://localhost:8080/')
   .beforeEach(async (t) => {
-    await t.resizeWindow(900, 600);
+    await t.resizeWindow(900, 800);
   });
 
 runManualTest('Common', 'EditorAppearanceVariants', ['React', 'Vue', 'Angular', 'jQuery'], (test) => {
