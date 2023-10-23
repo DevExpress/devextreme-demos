@@ -13,7 +13,7 @@ import LinearGauge, {
   ValueIndicator as LinearValueIndicator,
 } from 'devextreme-react/linear-gauge';
 import Slider from 'devextreme-react/slider';
-import Indicator from './Indicator.js';
+import Indicator from './Indicator.tsx';
 
 const color = '#f05b41';
 
