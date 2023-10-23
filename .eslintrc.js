@@ -305,7 +305,6 @@ module.exports = {
       project: './tsconfig.json',
       'createDefaultProgram': true,
       'ecmaVersion': 6,
-      'operator-linebreak': ['error', 'after'],
     },
     rules: {
       // TODO consider this rules
