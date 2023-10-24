@@ -9,12 +9,13 @@ const dataSource = new ArrayStore({
   key: 'ID',
   data: service.getEmployees(),
 });
+const textExpression = 'Full_Name';
 function onContentReady(e) {
   const diagram = e.component;
   // preselect some shape
   const items = diagram
     .getItems()
-    .filter((item) => item.itemType === 'shape' && item.text === 'Greta Sims');
+    .filter((item) => item.itemType === 'shape' && item.dataItem[textExpression] === 'Greta Sims');
   if (items.length > 0) {
     diagram.setSelectedItems(items);
     diagram.scrollToItem(items[0]);
@@ -46,7 +47,7 @@ export default function App() {
         <Nodes
           dataSource={dataSource}
           keyExpr="ID"
-          textExpr="Full_Name"
+          textExpr={textExpression}
           parentKeyExpr="Head_ID"
         >
           <AutoLayout type="tree" />

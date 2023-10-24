@@ -1,6 +1,6 @@
 import React from 'react';
 import Diagram, {
-  Nodes, AutoLayout, Toolbox, PropertiesPanel,
+  Nodes, AutoLayout, Toolbox, PropertiesPanel, DiagramTypes,
 } from 'devextreme-react/diagram';
 import ArrayStore from 'devextreme/data/array_store';
 import service from './data.ts';
@@ -10,11 +10,13 @@ const dataSource = new ArrayStore({
   data: service.getEmployees(),
 });
 
-function onContentReady(e) {
+const textExpression = 'Full_Name';
+
+function onContentReady(e: DiagramTypes.ContentReadyEvent) {
   const diagram = e.component;
   // preselect some shape
   const items = diagram.getItems().filter(
-    (item) => item.itemType === 'shape' && (item.text === 'Greta Sims'),
+    (item) => item.itemType === 'shape' && (item.dataItem[textExpression] === 'Greta Sims'),
   );
   if (items.length > 0) {
     diagram.setSelectedItems(items);
@@ -40,7 +42,7 @@ export default function App() {
   return (
     <div>
       <Diagram id="diagram" onContentReady={onContentReady} onSelectionChanged={onSelectionChanged}>
-        <Nodes dataSource={dataSource} keyExpr="ID" textExpr="Full_Name" parentKeyExpr="Head_ID">
+        <Nodes dataSource={dataSource} keyExpr="ID" textExpr={textExpression} parentKeyExpr="Head_ID">
           <AutoLayout type="tree" />
         </Nodes>
         <Toolbox visibility="disabled" />
