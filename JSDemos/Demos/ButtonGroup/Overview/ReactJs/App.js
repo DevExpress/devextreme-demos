@@ -31,7 +31,7 @@ export default function App() {
           items={alignments}
           keyExpr="alignment"
           stylingMode="text"
-          selectedItemKeys={selectedItemKeys}
+          defaultSelectedItemKeys={selectedItemKeys}
           onItemClick={itemClick}
         />
         <ButtonGroup
