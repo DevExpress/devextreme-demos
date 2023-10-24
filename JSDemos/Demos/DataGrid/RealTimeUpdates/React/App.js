@@ -21,6 +21,12 @@ const getDetailGridDataSource = (product) => ({
 
 const getAmount = (order) => order.UnitPrice * order.Quantity;
 
+const tooltipPosition = {
+  at: 'top center',
+  my: 'bottom',
+  collision: 'none',
+};
+
 const detailRender = (detail) => (
   <DataGrid
     dataSource={getDetailGridDataSource(detail.data)}
@@ -127,9 +133,9 @@ const App = () => {
             onValueChanged={onUpdateFrequencyChanged}>
             <Tooltip
               enabled={true}
-              format="#0 per second"
               showMode="always"
-              position="top">
+              format="#0 per second"
+              position={tooltipPosition}>
             </Tooltip>
           </Slider>
         </div>

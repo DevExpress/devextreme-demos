@@ -110,9 +110,13 @@ DemoApp.controller('DemoController', ($scope) => {
     },
     tooltip: {
       enabled: true,
-      format: '#0 per second',
       showMode: 'always',
-      position: 'top',
+      format: '#0 per second',
+      position: {
+        at: 'top center',
+        my: 'bottom',
+        collision: 'none',
+      },
     },
   };
 

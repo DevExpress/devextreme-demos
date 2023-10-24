@@ -127,9 +127,9 @@
         >
           <DxTooltip
             :enabled="true"
-            format="#0 per second"
             show-mode="always"
-            position="top"
+            format="#0 per second"
+            :position="tooltipPosition"
           />
         </DxSlider>
       </div>
@@ -156,6 +156,12 @@ const updatesPerSecond = ref(100);
 const productsDataSource = {
   store: productsStore,
   reshapeOnPush: true,
+};
+
+const tooltipPosition = {
+  at: 'top center',
+  my: 'bottom',
+  collision: 'none',
 };
 
 let interval: any;

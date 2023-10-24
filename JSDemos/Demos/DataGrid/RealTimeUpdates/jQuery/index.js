@@ -118,7 +118,11 @@ $(() => {
       enabled: true,
       showMode: 'always',
       format: '#0 per second',
-      position: 'top',
+      position: {
+        at: 'top center',
+        my: 'bottom',
+        collision: 'none',
+      },
     },
   });
 });
