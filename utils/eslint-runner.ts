@@ -10,10 +10,10 @@ const getPatterns = () => {
     return ['JSDemos/Demos/**/*.[tj]s?(x)'];
   }
 
-  const [current, total] = CONSTEL.split('/');
+  const [current, total] = CONSTEL.split('/').map(Number);
 
   const demos = fs.readdirSync(path.resolve(process.cwd(), 'JSDemos/Demos'));
-  const filteredDemos = demos.filter((_, index) => index % +total === +current - 1);
+  const filteredDemos = demos.filter((_, index) => index % total === current - 1);
 
   return filteredDemos.map((demoName) => `JSDemos/Demos/${demoName}/**/*.[tj]s?(x)`);
 };
