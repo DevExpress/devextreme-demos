@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import fs from 'fs';
 import path from 'path';
 import { ESLint } from 'eslint';
@@ -25,7 +26,7 @@ const getPatterns = () => {
   const patterns = getPatterns();
   const results = await eslint.lintFiles(patterns);
 
-  const formatter = await eslint.loadFormatter("stylish");
+  const formatter = await eslint.loadFormatter('stylish');
   const resultText = formatter.format(results);
 
   console.log(resultText);
