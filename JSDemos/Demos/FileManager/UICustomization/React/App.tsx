@@ -2,7 +2,7 @@ import React from 'react';
 import FileManager, {
   Permissions, Toolbar, ContextMenu, Item, FileSelectionItem, ItemView, Details, Column,
 } from 'devextreme-react/file-manager';
-import { fileItems } from './data.ts';
+import { fileItems, getItemInfo } from './data.ts';
 
 export default function App() {
   const fileManagerRef = React.useRef<FileManager>(null);
@@ -57,11 +57,12 @@ export default function App() {
 
   const onItemClick = React.useCallback(({ itemData, viewArea, fileSystemItem }) => {
     let updated = false;
+    const { extension, category } = getItemInfo(itemData.text);
 
-    if (itemData.extension) {
-      updated = createFile(itemData.extension, fileSystemItem);
-    } else if (itemData.category !== undefined) {
-      updated = updateCategory(itemData.category, fileSystemItem, viewArea);
+    if (extension) {
+      updated = createFile(extension, fileSystemItem);
+    } else if (category !== undefined) {
+      updated = updateCategory(category, fileSystemItem, viewArea);
     }
 
     if (updated) {
@@ -162,17 +163,17 @@ export default function App() {
       <ContextMenu>
         <Item name="create" />
         <Item text="Create new file" icon="plus">
-          <Item text="Text Document" extension=".txt" />
-          <Item text="RTF Document" extension=".rtf" />
-          <Item text="Spreadsheet" extension=".xls" />
+          <Item text="Text Document" />
+          <Item text="RTF Document" />
+          <Item text="Spreadsheet" />
         </Item>
-        <Item name="rename" beginGroup="true" />
+        <Item name="rename" beginGroup />
         <Item name="delete" />
-        <Item text="Category" icon="tags" beginGroup="true">
-          <Item text="Work" category="Work" />
-          <Item text="Important" category="Important" />
-          <Item text="Home" category="Home" />
-          <Item text="None" category="" />
+        <Item text="Category" icon="tags" beginGroup>
+          <Item text="Work" />
+          <Item text="Important" />
+          <Item text="Home" />
+          <Item text="None" />
         </Item>
         <Item name="refresh" />
       </ContextMenu>
