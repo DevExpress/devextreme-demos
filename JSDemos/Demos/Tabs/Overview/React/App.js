@@ -77,6 +77,7 @@ const App = () => {
             showNavButtons={showNavigation}
             orientation={orientation}
             stylingMode={stylingMode}
+            iconPosition={iconPosition}
           />
 
           <Tabs
