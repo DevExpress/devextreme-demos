@@ -1,20 +1,31 @@
 ﻿<div id="tabs-demo">
     <div class="widget-container">
-        @(Html.DevExtreme().Tabs()
-            .ID("withText")
-            .DataSource(new JS("tabsText"))
-            .SelectedIndex(0)
-        )
-        @(Html.DevExtreme().Tabs()
-            .ID("withIconAndText")
-            .DataSource(new JS("tabsTextAndIcon"))
-            .SelectedIndex(0)
-        )
-        @(Html.DevExtreme().Tabs()
-            .ID("withIcon")
-            .DataSource(new JS("tabsIcon"))
-            .SelectedIndex(0)
-        )
+        <div class="widget-wrapper">
+            @(Html.DevExtreme().Tabs()
+                .ID("withText")
+                .Width("auto")
+                .SelectedIndex(0)
+                .DataSource(new JS("tabsText"))
+                .StylingMode(TabsStyle.Secondary)
+                .IconPosition(TabsIconPosition.Top)
+            )
+            @(Html.DevExtreme().Tabs()
+                .ID("withIconAndText")
+                .Width("auto")
+                .SelectedIndex(0)
+                .DataSource(new JS("tabsTextAndIcon"))
+                .StylingMode(TabsStyle.Secondary)
+                .IconPosition(TabsIconPosition.Top)
+            )
+            @(Html.DevExtreme().Tabs()
+                .ID("withIcon")
+                .Width("auto")
+                .SelectedIndex(0)
+                .DataSource(new JS("tabsIcon"))
+                .StylingMode(TabsStyle.Secondary)
+                .IconPosition(TabsIconPosition.Top)
+            )
+        </div>
     </div>
 
     <div class="options">
@@ -35,7 +46,7 @@
             @(Html.DevExtreme().SelectBox()
                 .DataSource(new[] { "primary", "secondary" })
                 .InputAttr("aria-label", "Styling Mode")
-                .Value("primary")
+                .Value("secondary")
                 .OnValueChanged("stylingMode_valueChanged")
             )
         </div>
@@ -55,15 +66,26 @@
                 .Value(false)
                 .ID("show-navigation-buttons")
                 .Text("Show Navigation Buttons")
+                .ElementAttr("aria-label", "Show Navigation Buttons")
                 .OnValueChanged("showNavigation_valueChanged")
             )
         </div>
+
         <div class="option">
             @(Html.DevExtreme().CheckBox()
                 .Value(false)
-                .ID("scroll-content")
                 .Text("Scroll Content")
+                .ElementAttr("aria-label", "Scroll Content")
                 .OnValueChanged("scrollContent_valueChanged")
+            )
+        </div>
+
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(false)
+                .Text("Full width")
+                .ElementAttr("aria-label", "Full width")
+                .OnValueChanged("fullWidth_valueChanged")
             )
         </div>
     </div>
@@ -71,10 +93,10 @@
 
 <script>
     function orientation_valueChanged(e) {
-        const $widgetContainer = $('.widget-container');
+        const $widgetWrapper = $('.widget-wrapper');
 
-        $widgetContainer.removeClass();
-        $widgetContainer.addClass(`widget-container widget-container-${data.value}`);
+        $widgetWrapper.removeClass();
+        $widgetWrapper.addClass(`widget-wrapper widget-wrapper-${data.value}`);
 
         setTabsOption('orientation', e.value);
     }
@@ -93,6 +115,10 @@
 
     function scrollContent_valueChanged(e) {
         setTabsOption('scrollByContent', e.value);
+    }
+
+    function fullWidth_valueChanged(e) {
+        setTabsOption('width', e.value ? '100%' : 'auto');
     }
 
     function setTabsOption(option, value) {
