@@ -98,6 +98,7 @@ export const iconPositionLabel = { 'aria-label': 'Icon Position' };
 export const showNavigationLabel = { 'aria-label': 'Show Navigation' };
 export const scrollContentLabel = { 'aria-label': 'Scroll Content' };
 export const fullWidthLabel = { 'aria-label': 'Full width' };
+export const rtlLabel = { 'aria-label': 'Right to left mode' };
 
 export const iconPositions = [
   'top',

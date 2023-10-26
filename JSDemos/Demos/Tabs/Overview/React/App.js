@@ -12,6 +12,7 @@ import {
   scrollContentLabel,
   fullWidthLabel,
   showNavigationLabel,
+  rtlLabel,
   tabsIconAndText,
   stylingModes,
   iconPositions,
@@ -35,6 +36,7 @@ const App = () => {
   const [showNavigation, setShowNavigation] = React.useState(false);
   const [scrollContent, setScrollContent] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(false);
+  const [rtlEnabled, setRtlEnabled] = React.useState(false);
   const [widgetWrapperClasses, setWidgetWrapperClasses] = React.useState('widget-wrapper widget-wrapper-horizontal');
 
   const stylingModeChanged = React.useCallback((e) => {
@@ -64,6 +66,10 @@ const App = () => {
     setFullWidth(e.value);
   }, [setFullWidth]);
 
+  const rtlEnabledChanged = React.useCallback((e) => {
+    setRtlEnabled(e.value);
+  }, [setRtlEnabled]);
+
   return (
     <div id="tabs-demo">
       <div className="widget-container">
@@ -72,6 +78,7 @@ const App = () => {
             id="withText"
             width="auto"
             selectedIndex={0}
+            rtlEnabled={rtlEnabled}
             dataSource={tabsText}
             scrollByContent={scrollContent}
             showNavButtons={showNavigation}
@@ -84,6 +91,7 @@ const App = () => {
             id="withIconAndText"
             width="auto"
             selectedIndex={0}
+            rtlEnabled={rtlEnabled}
             dataSource={tabsIconAndText}
             scrollByContent={scrollContent}
             showNavButtons={showNavigation}
@@ -96,6 +104,7 @@ const App = () => {
             id="withIcon"
             width="auto"
             selectedIndex={0}
+            rtlEnabled={rtlEnabled}
             dataSource={tabsIcon}
             scrollByContent={scrollContent}
             showNavButtons={showNavigation}
@@ -161,6 +170,15 @@ const App = () => {
             elementAttr={fullWidthLabel}
             value={fullWidth}
             onValueChanged={fullWidthChanged}
+          />
+        </div>
+
+        <div className="option">
+          <CheckBox
+            text="RTL"
+            elementAttr={rtlLabel}
+            value={rtlEnabled}
+            onValueChanged={rtlEnabledChanged}
           />
         </div>
       </div>

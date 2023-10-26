@@ -90,6 +90,15 @@
                 .OnValueChanged("fullWidth_valueChanged")
             )
         </div>
+
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(false)
+                .Text("RTL")
+                .ElementAttr("aria-label", "Right to left mode")
+                .OnValueChanged("rtlEnabled_valueChanged")
+            )
+        </div>
     </div>
 </div>
 
@@ -121,6 +130,10 @@
 
     function fullWidth_valueChanged(e) {
         setTabsOption('width', e.value ? '100%' : 'auto');
+    }
+
+    function rtlEnabled_valueChanged(e) {
+        setTabsOption('rtlEnabled', e.value);
     }
 
     function setTabsOption(option, value) {

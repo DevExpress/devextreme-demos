@@ -7,6 +7,7 @@
           :key="index"
           :selected-index="0"
           :width="tabsWidth"
+          :rtl-enabled="rtlEnabled"
           :data-source="dataSource"
           :orientation="orientation"
           :styling-mode="stylingMode"
@@ -70,8 +71,15 @@
           v-model:value="fullWidth"
         />
       </div>
-    </div>
 
+      <div class="option">
+        <DxCheckBox
+          text="RTL"
+          :element-attr="{ 'aria-label': 'Right to left mode' }"
+          v-model:value="rtlEnabled"
+        />
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -102,6 +110,7 @@ export default {
       stylingModes,
       iconPositions,
       fullWidth: false,
+      rtlEnabled: false,
       scrollByContent: false,
       showNavButtons: false,
       orientation: orientations[0],
@@ -149,8 +158,7 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  row-gap: 80px;
-  column-gap: 4px;
+  gap: 80px;
   max-width: 100%;
 }
 
@@ -190,11 +198,11 @@ export default {
 }
 
 .dx-viewport:not(.dx-theme-generic) .dx-tabs-horizontal {
-  border-bottom: 1px solid rgb(225, 225, 225, 0.4);
+  border-block-end: 1px solid rgb(225, 225, 225, 0.4);
 }
 
 .dx-viewport:not(.dx-theme-generic) .dx-tabs-vertical {
   height: 232px;
-  border-right: 1px solid rgb(225, 225, 225, 0.4);
+  border-inline-end: 1px solid rgb(225, 225, 225, 0.4);
 }
 </style>

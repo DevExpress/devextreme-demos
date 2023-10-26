@@ -1,6 +1,7 @@
 $(() => {
   const tab1 = $('#withText').dxTabs({
     width: 'auto',
+    rtlEnabled: false,
     selectedIndex: 0,
     showNavButtons: false,
     dataSource: tabsText,
@@ -11,6 +12,7 @@ $(() => {
 
   const tab2 = $('#withIconAndText').dxTabs({
     width: 'auto',
+    rtlEnabled: false,
     selectedIndex: 0,
     showNavButtons: false,
     dataSource: tabsIconAndText,
@@ -21,6 +23,7 @@ $(() => {
 
   const tab3 = $('#withIcon').dxTabs({
     width: 'auto',
+    rtlEnabled: false,
     selectedIndex: 0,
     showNavButtons: false,
     dataSource: tabsIcon,
@@ -86,6 +89,15 @@ $(() => {
     value: false,
     onValueChanged(data) {
       setTabsOption('width', data.value ? '100%' : 'auto');
+    },
+  });
+
+  $('#rtl').dxCheckBox({
+    text: 'RTL',
+    elementAttr: { 'aria-label': 'Right to left mode' },
+    value: false,
+    onValueChanged(data) {
+      setTabsOption('rtlEnabled', data.value);
     },
   });
 
