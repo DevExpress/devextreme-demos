@@ -7,3 +7,4 @@ JSDemos/Demos/**/testcafe-test-code.js
 /**/azure.file.system.js
 
 JSDemos/Demos/**/config.js
+JSDemos/Demos/**/Vue/**/*.html
