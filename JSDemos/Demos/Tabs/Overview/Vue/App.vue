@@ -51,7 +51,6 @@
         <DxCheckBox
           id="show-navigation-buttons"
           text="Show navigation buttons"
-          :element-attr="{ 'aria-label': 'Show navigation buttons' }"
           v-model:value="showNavButtons"
         />
       </div>
@@ -59,7 +58,6 @@
       <div class="option">
         <DxCheckBox
           text="Scroll content"
-          :element-attr="{ 'aria-label': 'Scroll content' }"
           v-model:value="scrollByContent"
         />
       </div>
@@ -67,15 +65,13 @@
       <div class="option">
         <DxCheckBox
           text="Full width"
-          :element-attr="{ 'aria-label': 'Full width' }"
           v-model:value="fullWidth"
         />
       </div>
 
       <div class="option">
         <DxCheckBox
-          text="RTL"
-          :element-attr="{ 'aria-label': 'Right to left mode' }"
+          text="Right to left mode"
           v-model:value="rtlEnabled"
         />
       </div>

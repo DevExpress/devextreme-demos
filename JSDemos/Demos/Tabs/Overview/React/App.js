@@ -9,10 +9,6 @@ import {
   tabsText,
   stylingModeLabel,
   iconPositionLabel,
-  scrollContentLabel,
-  fullWidthLabel,
-  showNavigationLabel,
-  rtlLabel,
   tabsIconAndText,
   stylingModes,
   iconPositions,
@@ -149,7 +145,6 @@ const App = () => {
           <CheckBox
             id="show-navigation-buttons"
             text="Show navigation buttons"
-            elementAttr={showNavigationLabel}
             value={showNavigation}
             onValueChanged={showNavigationChanged}
           />
@@ -158,7 +153,6 @@ const App = () => {
         <div className="option">
           <CheckBox
             text="Scroll content"
-            elementAttr={scrollContentLabel}
             value={scrollContent}
             onValueChanged={scrollContentChanged}
           />
@@ -167,7 +161,6 @@ const App = () => {
         <div className="option">
           <CheckBox
             text="Full width"
-            elementAttr={fullWidthLabel}
             value={fullWidth}
             onValueChanged={fullWidthChanged}
           />
@@ -175,8 +168,7 @@ const App = () => {
 
         <div className="option">
           <CheckBox
-            text="RTL"
-            elementAttr={rtlLabel}
+            text="Right to left mode"
             value={rtlEnabled}
             onValueChanged={rtlEnabledChanged}
           />
