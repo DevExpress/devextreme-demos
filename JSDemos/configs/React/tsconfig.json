@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
+    "target": "ES2020",
     "jsx": "react",
     "moduleResolution": "bundler",
     "esModuleInterop": true,
