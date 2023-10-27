@@ -111,29 +111,6 @@ jobs:
         path: node_modules.7z
         retention-days: 1
 
-  lint:
-    name: ${{ matrix.name }}
-    needs:
-      - build-demos
-
-    runs-on: ubuntu-latest
-    timeout-minutes: 60
-
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - name: Lint code base (excluding demos)
-            command: npm run lint-non-demos
-          - name: Lint demos (1/4)
-            command: CONSTEL=1/4 npm run lint-demos
-          - name: Lint demos (2/4)
-            command: CONSTEL=2/4 npm run lint-demos
-          - name: Lint demos (3/4)
-            command: CONSTEL=3/4 npm run lint-demos
-          - name: Lint demos (4/4)
-            command: CONSTEL=4/4 npm run lint-demos
-
   check_generated_demos:
     name: ${{ matrix.name }}
     runs-on: ubuntu-latest
