@@ -71,7 +71,7 @@
 
       <div class="option">
         <DxCheckBox
-          text="Right to left mode"
+          text="Right-to-left mode"
           v-model:value="rtlEnabled"
         />
       </div>

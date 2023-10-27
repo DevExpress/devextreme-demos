@@ -168,7 +168,7 @@ const App = () => {
 
         <div className="option">
           <CheckBox
-            text="Right to left mode"
+            text="Right-to-left mode"
             value={rtlEnabled}
             onValueChanged={rtlEnabledChanged}
           />

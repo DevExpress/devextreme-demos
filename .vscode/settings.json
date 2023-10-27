@@ -1,3 +1,4 @@
 {
 	"editor.tabSize": 2,
+	"dotnet.defaultSolution": "disable",
 }

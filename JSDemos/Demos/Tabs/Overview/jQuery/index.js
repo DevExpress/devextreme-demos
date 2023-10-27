@@ -90,7 +90,7 @@ $(() => {
   });
 
   $('#rtl').dxCheckBox({
-    text: 'Right to left mode',
+    text: 'Right-to-left mode',
     value: false,
     onValueChanged(data) {
       setTabsOption('rtlEnabled', data.value);
