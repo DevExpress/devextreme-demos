@@ -1,4 +1,5 @@
 {
 	"editor.tabSize": 2,
 	"dotnet.defaultSolution": "disable",
+	"angular.enable-strict-mode-prompt": false,
 }
