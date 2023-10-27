@@ -111,10 +111,46 @@ jobs:
         path: node_modules.7z
         retention-days: 1
 
+  lint:
+    name: ${{ matrix.name }}
+    needs:
+      - build-demos
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Lint code base (excluding demos)
+            command: npm run lint-non-demos
+          - name: Lint demos (1/4)
+            command: CONSTEL=1/4 npm run lint-demos
+          - name: Lint demos (2/4)
+            command: CONSTEL=2/4 npm run lint-demos
+          - name: Lint demos (3/4)
+            command: CONSTEL=3/4 npm run lint-demos
+          - name: Lint demos (4/4)
+            command: CONSTEL=4/4 npm run lint-demos
+
   check_generated_demos:
+    name: ${{ matrix.name }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs: build
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Check generated demos (1/4)
+            command: CONSTEL=1/4 npm run convert-to-js
+          - name: Check generated demos (2/4)
+            command: CONSTEL=2/4 npm run convert-to-js
+          - name: Check generated demos (3/4)
+            command: CONSTEL=3/4 npm run convert-to-js
+          - name: Check generated demos (4/4)
+            command: CONSTEL=4/4 npm run convert-to-js
     steps:
     - name: Get sources
       uses: actions/checkout@v3
@@ -130,6 +166,17 @@ jobs:
         path: ./node_modules
         key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
         restore-keys: ${{ runner.os }}-node-modules
+    
+    - name: Delete DX packages
+      run:  sed -i '/23.2-next/d' ./package.json
+
+    - name: Download devextreme sources
+      uses: actions/download-artifact@v3
+      with:
+        name: devextreme-sources
+
+    - name: Unpack artifacts
+      run: 7z x node_modules.7z
 
     - name: Check generated JS demos
       run: |
@@ -137,24 +184,7 @@ jobs:
         
         git reset --hard
 
-        echo "Temp workaround for GitHub runner out of memory, replace with git diff for next TS PRs"
-
-        npm run convert-to-js ./JSDemos/Demos/Scheduler/**/React
-        npm run convert-to-js ./JSDemos/Demos/TreeList/**/React
-        npm run convert-to-js ./JSDemos/Demos/PivotGrid/**/React
-        npm run convert-to-js ./JSDemos/Demos/AutoComplete/**/React
-        npm run convert-to-js ./JSDemos/Demos/CustomTextEditorButtons/**/React
-        npm run convert-to-js ./JSDemos/Demos/Common/**/React
-        npm run convert-to-js ./JSDemos/Demos/DateBox/**/React
-        npm run convert-to-js ./JSDemos/Demos/DateRangeBox/**/React
-        npm run convert-to-js ./JSDemos/Demos/DropDownBox/**/React
-        npm run convert-to-js ./JSDemos/Demos/NumberBox/**/React
-        npm run convert-to-js ./JSDemos/Demos/SelectBox/**/React
-        npm run convert-to-js ./JSDemos/Demos/Switch/**/React
-        npm run convert-to-js ./JSDemos/Demos/TagBox/**/React
-        npm run convert-to-js ./JSDemos/Demos/TextArea/**/React
-        npm run convert-to-js ./JSDemos/Demos/TextBox/**/React
-        npm run convert-to-js ./JSDemos/Demos/Validation/**/React
+        ${{ matrix.command }}
 
         git add ./JSDemos/Demos -N
 

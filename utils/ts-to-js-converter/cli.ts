@@ -3,8 +3,29 @@ import minimist from 'minimist';
 import path from 'path';
 import { glob } from 'glob';
 import { consola } from 'consola';
+import fs from 'fs';
 
 import { converter } from './converter';
+
+const getPatterns = () => {
+  const CONSTEL = process.env.CONSTEL;
+  const userArgs = process.argv.slice(2);
+
+  if (userArgs.length > 0) {
+    return userArgs;
+  }
+
+  if (CONSTEL == null) {
+    return ['JSDemos/Demos/**/React'];
+  }
+
+  const [current, total] = CONSTEL.split('/').map(Number);
+
+  const demos = fs.readdirSync(path.resolve(process.cwd(), 'JSDemos/Demos'));
+  const filteredDemos = demos.filter((_, index) => index % total === current - 1);
+
+  return filteredDemos.map((demoName) => `JSDemos/Demos/${demoName}/**/React`);
+};
 
 const performConversion = async () => {
   const logger = {
@@ -16,7 +37,7 @@ const performConversion = async () => {
     success: consola.success,
   };
 
-  const args = minimist(process.argv.slice(2));
+  const args = minimist(getPatterns());
 
   const sourceDirs = args._ || [process.cwd()];
   const outDirPostfix = 'Js';
