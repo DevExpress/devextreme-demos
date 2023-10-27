@@ -64,7 +64,9 @@ export default {
 </script>
 <style scoped>
 .filter-container {
-  background-color: rgba(191, 191, 191, 0.15);
+  background-color: transparent;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.14), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
   width: 55%;
   float: left;
   margin-bottom: 25px;
@@ -72,6 +74,7 @@ export default {
 }
 
 .dx-filterbuilder {
+  background-color: transparent;
   padding: 10px;
   height: 360px;
   margin: 5px;
