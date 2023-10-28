@@ -113,6 +113,7 @@ export default {
 
 #multiview .header {
   font-size: 34px;
+  padding-top: 0;
 }
 
 .options {

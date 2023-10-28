@@ -109,6 +109,7 @@ export default {
 </script>
 <style>
 .header {
+  font-size: 34px;
   display: inline-block;
   vertical-align: middle;
   padding: 10px 14px 10px 10px;

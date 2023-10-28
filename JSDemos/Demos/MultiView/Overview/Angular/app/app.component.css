@@ -30,6 +30,7 @@
 
 ::ng-deep #multiview .header {
   font-size: 34px;
+  padding-top: 0;
 }
 
 ::ng-deep .options {
