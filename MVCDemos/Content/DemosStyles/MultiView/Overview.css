@@ -23,12 +23,12 @@
     padding-left: 25px;
 }
 
-#multiview  p,
-#multiview  h1  {
+#multiview p,
+#multiview .header {
     margin: 0;
 }
 
-#multiview  h1 {
+#multiview .header {
     font-size: 34px;
 }
 
