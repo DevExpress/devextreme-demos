@@ -1,4 +1,4 @@
-h1 {
+::ng-deep .header {
   display: inline-block;
   vertical-align: middle;
   padding: 10px;
