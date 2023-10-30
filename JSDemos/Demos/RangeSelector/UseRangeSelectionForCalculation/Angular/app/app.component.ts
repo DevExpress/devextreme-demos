@@ -1,4 +1,5 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
+import "@angular/compiler";
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { DatePipe } from '@angular/common';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';

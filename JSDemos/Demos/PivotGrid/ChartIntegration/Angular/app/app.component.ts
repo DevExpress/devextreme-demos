@@ -1,6 +1,7 @@
 import {
   NgModule, Component, ViewChild, AfterViewInit, enableProdMode,
 } from '@angular/core';
+import "@angular/compiler";
 import { CurrencyPipe } from '@angular/common';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';

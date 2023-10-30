@@ -1,6 +1,7 @@
 import {
   NgModule, Component, enableProdMode, ViewChild,
 } from '@angular/core';
+import "@angular/compiler";
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxTreeListModule, DxTreeListComponent } from 'devextreme-angular';

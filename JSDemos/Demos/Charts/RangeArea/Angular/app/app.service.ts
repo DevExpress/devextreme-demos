@@ -1,6 +1,4 @@
-import {
-  Injectable,
-} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 export class InflationEntry {
   date: Date;

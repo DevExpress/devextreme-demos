@@ -1,4 +1,5 @@
 import { Component, Input, AfterViewInit } from '@angular/core';
+import "@angular/compiler";
 import DataSource from 'devextreme/data/data_source';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 

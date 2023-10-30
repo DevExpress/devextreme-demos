@@ -1,6 +1,7 @@
 import {
   NgModule, Component, enableProdMode, ViewChild, QueryList, ViewChildren, ChangeDetectorRef,
 } from '@angular/core';
+import "@angular/compiler";
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 

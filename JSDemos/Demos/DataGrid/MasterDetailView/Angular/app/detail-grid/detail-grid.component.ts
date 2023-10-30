@@ -1,4 +1,5 @@
 import { Component, Input, AfterViewInit } from '@angular/core';
+import "@angular/compiler";
 import DataSource from 'devextreme/data/data_source';
 import ArrayStore from 'devextreme/data/array_store';
 import { Service, Task } from '../app.service';

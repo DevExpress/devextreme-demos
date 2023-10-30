@@ -107,18 +107,18 @@ const prepareConfigs = (framework) => {
     if (currentPackage.fesm2015) {
       main = `devextreme-${framework}`;
       minify = false;
-      const bundlesRoot = 'node_modules/devextreme-angular/bundles';
+      const bundlesRoot = 'node_modules/devextreme-angular/fesm2015';
       const componentNames = fs.readdirSync(bundlesRoot)
-        .filter((fileName) => fileName.indexOf('umd.js.map') !== -1)
+        .filter((fileName) => fileName.indexOf('mjs.map') !== -1)
         .filter((fileName) => fileName.indexOf('devextreme-angular-ui') === 0)
-        .map((fileName) => fileName.replace('devextreme-angular-ui-', '').replace('.umd.js.map', ''));
+        .map((fileName) => fileName.replace('devextreme-angular-ui-', '').replace('.mjs.map', ''));
 
       additionPaths = {
-        'devextreme-angular': `${bundlesRoot}/devextreme-angular.umd.js`,
-        'devextreme-angular/core': `${bundlesRoot}/devextreme-angular-core.umd.js`,
+        'devextreme-angular': `${bundlesRoot}/devextreme-angular.mjs`,
+        'devextreme-angular/core': `${bundlesRoot}/devextreme-angular-core.mjs`,
         ...componentNames.reduce((items, item) => {
           // eslint-disable-next-line no-param-reassign
-          items[`devextreme-angular/ui/${item}`] = `${bundlesRoot}/devextreme-angular-ui-${item}.umd.js`;
+          items[`devextreme-angular/ui/${item}`] = `${bundlesRoot}/devextreme-angular-ui-${item}.mjs`;
           return items;
         }, {}),
       };

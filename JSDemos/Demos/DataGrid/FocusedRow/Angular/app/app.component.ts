@@ -1,6 +1,7 @@
 import {
   NgModule, Component, ViewChild, enableProdMode,
 } from '@angular/core';
+import "@angular/compiler";
 import {
   BrowserModule, BrowserTransferStateModule, DomSanitizer, SafeHtml,
 } from '@angular/platform-browser';
