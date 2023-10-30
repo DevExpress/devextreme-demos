@@ -42,11 +42,11 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
-import { DxPivotGrid, DxFieldChooser } from 'devextreme-vue/pivot-grid';
+import { DxPivotGrid, DxFieldChooser, DxPivotGridTypes } from 'devextreme-vue/pivot-grid';
 import { DxPopup } from 'devextreme-vue/popup';
 import { DxDataGrid, DxColumn } from 'devextreme-vue/data-grid';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
-import { sales } from './data.js';
+import { sales } from './data.ts';
 
 const dataSource = new PivotGridDataSource({
   fields: [
@@ -83,7 +83,7 @@ const drillDownDataSource = ref(null);
 const popupTitle = ref('');
 const popupVisible = ref(false);
 
-function onCellClick(e) {
+function onCellClick(e: DxPivotGridTypes.CellClickEvent) {
   if (e.area === 'data') {
     const pivotGridDataSource = e.component.getDataSource();
     const rowPathLength = e.cell.rowPath.length;
