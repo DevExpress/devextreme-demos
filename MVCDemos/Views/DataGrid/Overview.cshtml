@@ -2,6 +2,7 @@
     .ID("gridContainer")
     .DataSource(d => d
         .OData()
+        .Version(2)
         .Url("https://js.devexpress.com/Demos/SalesViewer/odata/DaySaleDtoes")
         .Key("Id")
         .BeforeSend(@<text>
