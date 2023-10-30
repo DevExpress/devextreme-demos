@@ -270,13 +270,6 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ env.NODE_VERSION }}
-
-    - name: Restore npm cache
-      uses: actions/cache@v3
-      with:
-        path: ./node_modules
-        key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-node-modules
     
     - name: Delete DX packages
       run:  sed -i '/23.2-next/d' ./package.json
@@ -288,6 +281,9 @@ jobs:
 
     - name: Unpack artifacts
       run: 7z x node_modules.7z
+
+    - name: Prepare JS
+      run: npm run prepare-js
 
     - name: Check generated JS demos
       run: |
