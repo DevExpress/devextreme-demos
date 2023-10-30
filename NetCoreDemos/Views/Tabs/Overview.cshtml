@@ -66,7 +66,6 @@
                 .Value(false)
                 .ID("show-navigation-buttons")
                 .Text("Show Navigation Buttons")
-                .ElementAttr("aria-label", "Show Navigation Buttons")
                 .OnValueChanged("showNavigation_valueChanged")
             )
         </div>
@@ -75,7 +74,6 @@
             @(Html.DevExtreme().CheckBox()
                 .Value(false)
                 .Text("Scroll Content")
-                .ElementAttr("aria-label", "Scroll Content")
                 .OnValueChanged("scrollContent_valueChanged")
             )
         </div>
@@ -84,8 +82,15 @@
             @(Html.DevExtreme().CheckBox()
                 .Value(false)
                 .Text("Full width")
-                .ElementAttr("aria-label", "Full width")
                 .OnValueChanged("fullWidth_valueChanged")
+            )
+        </div>
+
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(false)
+                .Text("Right-to-left mode")
+                .OnValueChanged("rtlEnabled_valueChanged")
             )
         </div>
     </div>
@@ -119,6 +124,10 @@
 
     function fullWidth_valueChanged(e) {
         setTabsOption('width', e.value ? '100%' : 'auto');
+    }
+
+    function rtlEnabled_valueChanged(e) {
+        setTabsOption('rtlEnabled', e.value);
     }
 
     function setTabsOption(option, value) {
