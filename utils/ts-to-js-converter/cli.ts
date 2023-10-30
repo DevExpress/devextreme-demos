@@ -7,6 +7,29 @@ import fs from 'fs';
 
 import { converter } from './converter';
 
+function findFoldersWithTsxFiles(directory) {
+  const foldersWithTsxFiles = [];
+  const filesAndFolders = fs.readdirSync(directory);
+
+  for (const item of filesAndFolders) {
+    const itemPath = path.join(directory, item);
+    const stats = fs.statSync(itemPath);
+
+    if (stats.isDirectory()) {
+      const subfolderContainsTsxFiles = findFoldersWithTsxFiles(itemPath);
+
+      if (subfolderContainsTsxFiles.length > 0) {
+        foldersWithTsxFiles.push(...subfolderContainsTsxFiles);
+      }
+    } else if (stats.isFile() && itemPath.endsWith('.tsx')) {
+      foldersWithTsxFiles.push(directory);
+      break;
+    }
+  }
+
+  return foldersWithTsxFiles;
+}
+
 const getPatterns = () => {
   const CONSTEL = process.env.CONSTEL;
   const userArgs = process.argv.slice(2);
@@ -21,10 +44,11 @@ const getPatterns = () => {
 
   const [current, total] = CONSTEL.split('/').map(Number);
 
-  const demos = fs.readdirSync(path.resolve(process.cwd(), 'JSDemos/Demos'));
-  const filteredDemos = demos.filter((_, index) => index % total === current - 1);
+  // When all React TS demos merged, change to just folders
+  const convertedDemos = findFoldersWithTsxFiles('JSDemos/Demos');
+  const filteredDemos = convertedDemos.filter((_, index) => index % total === current - 1);
 
-  return filteredDemos.map((demoName) => `JSDemos/Demos/${demoName}/**/React`);
+  return filteredDemos.map((demoName) => demoName.split(path.sep).join(path.posix.sep));
 };
 
 const performConversion = async () => {
