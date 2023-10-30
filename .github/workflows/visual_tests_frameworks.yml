@@ -254,14 +254,16 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: Check generated demos (1/4)
-            command: CONSTEL=1/4 npm run convert-to-js
-          - name: Check generated demos (2/4)
-            command: CONSTEL=2/4 npm run convert-to-js
-          - name: Check generated demos (3/4)
-            command: CONSTEL=3/4 npm run convert-to-js
-          - name: Check generated demos (4/4)
-            command: CONSTEL=4/4 npm run convert-to-js
+          - name: Check generated demos (1/5)
+            command: CONSTEL=1/5 npm run convert-to-js
+          - name: Check generated demos (2/5)
+            command: CONSTEL=2/5 npm run convert-to-js
+          - name: Check generated demos (3/5)
+            command: CONSTEL=3/5 npm run convert-to-js
+          - name: Check generated demos (4/5)
+            command: CONSTEL=4/5 npm run convert-to-js
+          - name: Check generated demos (5/5)
+            command: CONSTEL=5/5 npm run convert-to-js
     steps:
     - name: Get sources
       uses: actions/checkout@v3
@@ -293,10 +295,6 @@ jobs:
 
     - name: Check generated JS demos
       run: |
-        npm install --no-audit --no-fund --ignore-scripts
-        
-        git reset --hard
-
         ${{ matrix.command }}
 
         git add ./JSDemos/Demos -N
