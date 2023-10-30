@@ -266,11 +266,6 @@ jobs:
     - name: Get sources
       uses: actions/checkout@v3
 
-    - name: Use Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-    
     - name: Delete DX packages
       run:  sed -i '/23.2-next/d' ./package.json
 
@@ -281,6 +276,17 @@ jobs:
 
     - name: Unpack artifacts
       run: 7z x node_modules.7z
+
+    - name: Install packages
+      run: |
+        npm install devextreme-installer.tgz
+        npm install devextreme-dist-installer.tgz
+        npm install devextreme-react-installer.tgz
+        npm install devextreme-vue-installer.tgz
+        npm install devextreme-angular-installer.tgz
+
+    - name: Run npm install
+      run: npm install --no-audit --no-fund
 
     - name: Prepare JS
       run: npm run prepare-js
