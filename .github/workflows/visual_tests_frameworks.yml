@@ -299,7 +299,7 @@ jobs:
 
         git add ./JSDemos/Demos -N
 
-        if git diff --exit-code . ':package-lock.json' 'package.json' ; then
+        if git diff --exit-code . ':!package-lock.json' ':!package.json' ; then
           echo "Generated JS demos are up-to-date"
         else
             echo "Generated JS demos are outdated. Execute 'npm run convert-to-js ./JSDemos/Demos/**/React' and commit changes."
