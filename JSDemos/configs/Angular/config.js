@@ -278,13 +278,8 @@ window.config = {
   packageConfigPaths: [
     'npm:@devextreme/*/package.json',
     'npm:@devextreme/runtime/inferno/package.json',
-    'npm:@angular/*/package.json',
-    'npm:@angular/common/*/package.json',
     'npm:rxjs/package.json',
     'npm:rxjs/operators/package.json',
-    'npm:devextreme-angular/*/package.json',
-    'npm:devextreme-angular/ui/*/package.json',
-    'npm:devextreme-angular/package.json',
     'npm:devexpress-diagram/package.json',
     'npm:devexpress-gantt/package.json',
 
