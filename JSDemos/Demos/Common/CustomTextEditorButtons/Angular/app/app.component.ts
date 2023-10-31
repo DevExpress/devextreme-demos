@@ -43,7 +43,7 @@ export class AppComponent {
   constructor() {
     this.passwordMode = 'password';
     this.passwordButton = {
-      icon: '../../../../images/icons/eye.png',
+      icon: 'eyeopen',
       type: 'default',
       onClick: () => {
         this.passwordMode = this.passwordMode === 'text' ? 'password' : 'text';
@@ -76,6 +76,7 @@ export class AppComponent {
 
     this.todayButton = {
       text: 'Today',
+      stylingMode: 'text',
       onClick: () => {
         this.dateValue = new Date().getTime();
       },

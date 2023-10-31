@@ -9,7 +9,7 @@ $(() => {
       name: 'password',
       location: 'after',
       options: {
-        icon: '../../../../images/icons/eye.png',
+        icon: 'eyeopen',
         type: 'default',
         onClick() {
           passwordEditor.option('mode', passwordEditor.option('mode') === 'text' ? 'password' : 'text');
@@ -61,6 +61,7 @@ $(() => {
 
       options: {
         text: 'Today',
+        stylingMode: 'text',
         onClick() {
           dateEditor.option('value', new Date().getTime());
         },

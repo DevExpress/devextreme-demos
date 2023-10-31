@@ -15,7 +15,7 @@
                         .Location(TextEditorButtonLocation.After)
                         .Widget(w => w.Button()
                             .Type(ButtonType.Default)
-                            .Icon(Url.Content("~/Content/Images/icons/eye.png"))
+                            .Icon("eyeopen")
                             .OnClick("changePasswordMode"));
                 })
             )
@@ -64,6 +64,7 @@
                         .Location(TextEditorButtonLocation.Before)
                         .Widget(w => w.Button()
                             .Text("Today")
+                            .StylingMode(ButtonStylingMode.Text)
                             .OnClick("today"));
 
                     buttons.Add()
