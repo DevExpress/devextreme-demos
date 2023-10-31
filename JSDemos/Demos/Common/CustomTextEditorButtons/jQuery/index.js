@@ -10,7 +10,7 @@ $(() => {
       location: 'after',
       options: {
         icon: 'eyeopen',
-        type: 'default',
+        stylingMode: 'text',
         onClick() {
           passwordEditor.option('mode', passwordEditor.option('mode') === 'text' ? 'password' : 'text');
         },

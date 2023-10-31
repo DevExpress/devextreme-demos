@@ -15,7 +15,7 @@ function App() {
   const passwordButton = React.useMemo(
     () => ({
       icon: 'eyeopen',
-      type: 'default',
+      stylingMode: 'text',
       onClick: () => {
         setPasswordMode((prevPasswordMode) => (prevPasswordMode === 'text' ? 'password' : 'text'));
       },

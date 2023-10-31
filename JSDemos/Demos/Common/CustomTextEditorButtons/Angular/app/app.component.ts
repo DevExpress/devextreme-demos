@@ -44,7 +44,7 @@ export class AppComponent {
     this.passwordMode = 'password';
     this.passwordButton = {
       icon: 'eyeopen',
-      type: 'default',
+      stylingMode: 'text',
       onClick: () => {
         this.passwordMode = this.passwordMode === 'text' ? 'password' : 'text';
       },

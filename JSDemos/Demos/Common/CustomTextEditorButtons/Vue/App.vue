@@ -81,7 +81,7 @@ const millisecondsInDay = 24 * 60 * 60 * 1000;
 const passwordMode = ref('password');
 const passwordButton = {
   icon: 'eyeopen',
-  type: 'default',
+  stylingMode: 'text',
   onClick: () => {
     passwordMode.value = passwordMode.value === 'text' ? 'password' : 'text';
   },
