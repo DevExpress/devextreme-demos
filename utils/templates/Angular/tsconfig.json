@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "paths": {
+      "@angular/platform-browser-dynamic": ["../../../node_modules/@angular/platform-browser-dynamic/system/es2015/ivy/angular-platform-browser-dynamic.min.js"]
+    }
+  }
+}
