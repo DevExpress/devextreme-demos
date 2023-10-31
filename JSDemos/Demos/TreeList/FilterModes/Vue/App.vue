@@ -57,7 +57,7 @@
 import { ref } from 'vue';
 import { DxTreeList, DxColumn, DxSearchPanel } from 'devextreme-vue/tree-list';
 import DxSelectBox from 'devextreme-vue/select-box';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const filterMode = ref('matchOnly');
 const filterModes = ['matchOnly', 'withAncestors', 'fullBranch'];

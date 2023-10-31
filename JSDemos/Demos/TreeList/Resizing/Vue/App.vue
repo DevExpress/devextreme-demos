@@ -49,7 +49,7 @@
 import { ref } from 'vue';
 import { DxTreeList, DxColumn } from 'devextreme-vue/tree-list';
 import { DxSelectBox } from 'devextreme-vue/select-box';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
 const resizingModes = ['nextColumn', 'widget'];
 const columnResizingMode = ref('nextColumn');
