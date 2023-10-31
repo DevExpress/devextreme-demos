@@ -12,8 +12,8 @@ import { customers } from './data.js';
 const App = () => {
   const [autoExpandAll, setAutoExpandAll] = React.useState(true);
   const onAutoExpandAllChanged = React.useCallback(() => {
-    setAutoExpandAll(!autoExpandAll);
-  }, [autoExpandAll]);
+    setAutoExpandAll((autoExpandAll) => !autoExpandAll);
+  }, []);
   return (
     <div>
       <DataGrid

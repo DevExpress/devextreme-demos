@@ -1,4 +1,5 @@
-/* eslint-disable no-underscore-dangle */
+// eslint-disable-next-line no-unused-vars
+/* global RequestInit */
 import React from 'react';
 import {
   DataGrid,
@@ -84,8 +85,7 @@ const App = () => {
         request.headers = { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' };
       }
       const response = await fetch(url, request);
-      const _a = response.headers.get('content-type');
-      const isJson = _a && _a.includes('application/json');
+      const isJson = response.headers.get('content-type')?.includes('application/json');
       const result = isJson ? await response.json() : {};
       if (!response.ok) {
         throw result.Message;

@@ -7,12 +7,9 @@ import { employees, states } from './data.js';
 
 const App = () => {
   const [events, setEvents] = React.useState([]);
-  const logEvent = React.useCallback(
-    (eventName) => {
-      setEvents([eventName, ...events]);
-    },
-    [events],
-  );
+  const logEvent = React.useCallback((eventName) => {
+    setEvents((previousEvents) => [eventName, ...previousEvents]);
+  }, []);
   const clearEvents = React.useCallback(() => {
     setEvents([]);
   }, []);

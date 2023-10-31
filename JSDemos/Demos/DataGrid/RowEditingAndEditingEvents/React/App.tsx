@@ -10,7 +10,7 @@ const App = () => {
   const [events, setEvents] = React.useState([]);
 
   const logEvent = React.useCallback((eventName: string) => {
-    setEvents((events) => [eventName, ...events]);
+    setEvents((previousEvents) => [eventName, ...previousEvents]);
   }, []);
 
   const clearEvents = React.useCallback(() => {

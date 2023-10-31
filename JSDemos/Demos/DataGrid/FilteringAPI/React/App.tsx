@@ -5,7 +5,7 @@ import 'devextreme/data/odata/store';
 
 const dataSourceOptions = {
   store: {
-    type: 'odata',
+    type: 'odata' as const,
     version: 2,
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Tasks',
     key: 'Task_ID',

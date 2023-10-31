@@ -1,16 +1,13 @@
 import React from 'react';
-import {
-  DataGrid, Column, Paging, DataGridTypes,
-} from 'devextreme-react/data-grid';
-import { NumberBox, NumberBoxTypes } from 'devextreme-react/number-box';
-import { CheckBox, CheckBoxTypes } from 'devextreme-react/check-box';
+import { DataGrid, Column, Paging } from 'devextreme-react/data-grid';
+import { NumberBox } from 'devextreme-react/number-box';
+import { CheckBox } from 'devextreme-react/check-box';
 import 'devextreme/data/odata/store';
 
 const focusedRowKeyLabel = { 'aria-label': 'Focused Row Key' };
-
 const dataSourceOptions = {
   store: {
-    type: 'odata' as const,
+    type: 'odata',
     version: 2,
     key: 'Task_ID',
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Tasks',
@@ -26,7 +23,6 @@ const dataSourceOptions = {
     'ResponsibleEmployee/Employee_Full_Name',
   ],
 };
-
 const App = () => {
   const [taskSubject, setTaskSubject] = React.useState('');
   const [taskDetails, setTaskDetails] = React.useState('');
@@ -34,20 +30,17 @@ const App = () => {
   const [taskProgress, setTaskProgress] = React.useState('');
   const [focusedRowKey, setFocusedRowKey] = React.useState(117);
   const [autoNavigateToFocusedRow, setAutoNavigateToFocusedRow] = React.useState(true);
-
-  const onTaskIdChanged = React.useCallback((e: NumberBoxTypes.ValueChangedEvent) => {
+  const onTaskIdChanged = React.useCallback((e) => {
     if (e.event && e.value > 0) {
       setFocusedRowKey(e.value);
     }
   }, []);
-
   // eslint-disable-next-line @typescript-eslint/space-before-function-paren
-  const onFocusedRowChanging = React.useCallback(async(e: DataGridTypes.FocusedRowChangingEvent) => {
+  const onFocusedRowChanging = React.useCallback(async(e) => {
     const rowsCount = e.component.getVisibleRows().length;
     const pageCount = e.component.pageCount();
     const pageIndex = e.component.pageIndex();
-    const key = (e?.event as any).key;
-
+    const key = e?.event.key;
     if (key && e.prevRowIndex === e.newRowIndex) {
       if (e.newRowIndex === rowsCount - 1 && pageIndex < pageCount - 1) {
         await e.component.pageIndex(pageIndex + 1);
@@ -58,22 +51,18 @@ const App = () => {
       }
     }
   }, []);
-
-  const onFocusedRowChanged = React.useCallback((e: DataGridTypes.FocusedRowChangedEvent) => {
+  const onFocusedRowChanged = React.useCallback((e) => {
     const data = e.row.data;
     const progress = data.Task_Completion ? `${data.Task_Completion}%` : '';
-
     setTaskSubject(data.Task_Subject);
     setTaskDetails(data.Task_Description);
     setTaskStatus(data.Task_Status);
     setTaskProgress(progress);
     setFocusedRowKey(e.component.option('focusedRowKey'));
   }, []);
-
-  const onAutoNavigateToFocusedRowChanged = React.useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
+  const onAutoNavigateToFocusedRowChanged = React.useCallback((e) => {
     setAutoNavigateToFocusedRow(e.value);
   }, []);
-
   return (
     <div>
       <DataGrid
@@ -89,11 +78,13 @@ const App = () => {
         <Paging defaultPageSize={10} />
         <Column
           dataField="Task_ID"
-          width={80} />
+          width={80}
+        />
         <Column
           caption="Start Date"
           dataField="Task_Start_Date"
-          dataType="date" />
+          dataType="date"
+        />
         <Column
           caption="Assigned To"
           dataField="ResponsibleEmployee.Employee_Full_Name"
@@ -103,16 +94,21 @@ const App = () => {
         <Column
           caption="Subject"
           dataField="Task_Subject"
-          width={350} />
+          width={350}
+        />
         <Column
           caption="Status"
-          dataField="Task_Status" />
+          dataField="Task_Status"
+        />
       </DataGrid>
 
       <div className="task-info">
         <div className="info">
           <div id="taskSubject">{taskSubject}</div>
-          <p id="taskDetails" dangerouslySetInnerHTML={{ __html: taskDetails }}></p>
+          <p
+            id="taskDetails"
+            dangerouslySetInnerHTML={{ __html: taskDetails }}
+          ></p>
         </div>
         <div className="progress">
           <span id="taskStatus">{taskStatus}</span>
@@ -132,20 +128,19 @@ const App = () => {
               step={0}
               value={focusedRowKey}
               inputAttr={focusedRowKeyLabel}
-              onValueChanged={onTaskIdChanged}>
-            </NumberBox>
+              onValueChanged={onTaskIdChanged}
+            ></NumberBox>
           </div>
           <div className="option">
             <CheckBox
               text="Auto Navigate To Focused Row"
               value={autoNavigateToFocusedRow}
-              onValueChanged={onAutoNavigateToFocusedRowChanged}>
-            </CheckBox>
+              onValueChanged={onAutoNavigateToFocusedRowChanged}
+            ></CheckBox>
           </div>
         </div>
       </div>
     </div>
   );
 };
-
 export default App;

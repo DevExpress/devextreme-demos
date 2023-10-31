@@ -7,17 +7,9 @@ import query from 'devextreme/data/query';
 import 'devextreme/data/odata/store';
 
 const MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
-const dataSource: {
+const dataSource = {
   store: {
-    type: 'odata',
-    url: string,
-    key: string,
-  },
-  expand: string,
-  select: string[]
-} = {
-  store: {
-    type: 'odata',
+    type: 'odata' as const,
     version: 2,
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Tasks',
     key: 'Task_ID',

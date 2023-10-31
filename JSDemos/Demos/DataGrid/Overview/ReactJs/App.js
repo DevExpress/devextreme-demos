@@ -13,6 +13,7 @@ import DiscountCell from './DiscountCell.js';
 const pageSizes = [10, 25, 50, 100];
 const dataSourceOptions = {
   store: new ODataStore({
+    version: 2,
     url: 'https://js.devexpress.com/Demos/SalesViewer/odata/DaySaleDtoes',
     key: 'Id',
     beforeSend(request) {

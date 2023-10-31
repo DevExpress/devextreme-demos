@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 /* global RequestInit */
 import React from 'react';
 import {

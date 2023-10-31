@@ -9,7 +9,7 @@ import 'devextreme/data/odata/store';
 
 const priceDataSource = {
   store: {
-    type: 'odata',
+    type: 'odata' as const,
     version: 2,
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
     key: 'Product_ID',
@@ -19,12 +19,8 @@ const priceDataSource = {
 };
 const ratingDataSource = {
   store: {
-<<<<<<< HEAD:JSDemos/Demos/DataGrid/PDFExportMultipleGrids/React/App.tsx
     type: 'odata' as const,
-=======
-    type: 'odata',
     version: 2,
->>>>>>> 23_2:JSDemos/Demos/DataGrid/PDFExportMultipleGrids/React/App.js
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
     key: 'Product_ID',
   },

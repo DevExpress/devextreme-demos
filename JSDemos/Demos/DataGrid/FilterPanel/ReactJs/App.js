@@ -65,7 +65,6 @@ const saleAmountHeaderFilters = [
 const App = () => (
   <DataGrid
     id="gridContainer"
-    columnAutoWidth={true}
     filterBuilder={filterBuilder}
     defaultFilterValue={filterValue}
     dataSource={orders}

@@ -51,10 +51,7 @@ const OrderHistory = ({ productId }) => {
           column="UnitPrice"
           summaryType="sum"
         >
-          <ValueFormat
-            type="currency"
-            precision={2}
-          />
+          <ValueFormat precision={2} />
         </TotalItem>
         <TotalItem
           column="Quantity"

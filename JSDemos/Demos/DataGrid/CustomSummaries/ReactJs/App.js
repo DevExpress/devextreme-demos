@@ -14,9 +14,7 @@ const calculateSelectedRow = (options) => {
     if (options.summaryProcess === 'start') {
       options.totalValue = 0;
     }
-    // eslint-disable-next-line no-underscore-dangle
-    const _a = options.value;
-    const isRowSelected = options.component.isRowSelected(_a && _a.ID);
+    const isRowSelected = options.component.isRowSelected(options.value?.ID);
     if (options.summaryProcess === 'calculate' && isRowSelected) {
       options.totalValue += options.value.SaleAmount;
     }

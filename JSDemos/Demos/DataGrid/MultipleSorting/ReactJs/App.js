@@ -7,9 +7,9 @@ const App = () => {
   const [positionDisableSorting, setPositionDisableSorting] = React.useState(false);
   const dataGridRef = React.useRef(null);
   const onPositionSortingChanged = React.useCallback(() => {
-    setPositionDisableSorting(!positionDisableSorting);
+    setPositionDisableSorting((previousPositionDisableSorting) => !previousPositionDisableSorting);
     dataGridRef.current.instance.columnOption(5, 'sortOrder', undefined);
-  }, [positionDisableSorting]);
+  }, []);
   return (
     <div>
       <DataGrid

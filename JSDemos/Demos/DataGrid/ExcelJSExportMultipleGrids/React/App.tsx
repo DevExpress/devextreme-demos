@@ -7,19 +7,9 @@ import { saveAs } from 'file-saver-es';
 import { exportDataGrid } from 'devextreme/excel_exporter';
 import 'devextreme/data/odata/store';
 
-interface ODataSource {
+const priceDataSource = {
   store: {
-    type: 'odata',
-    url: string,
-    key: string,
-  },
-  select: string[],
-  filter: (string | number)[],
-}
-
-const priceDataSource: ODataSource = {
-  store: {
-    type: 'odata',
+    type: 'odata' as const,
     version: 2,
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
     key: 'Product_ID',
@@ -27,9 +17,9 @@ const priceDataSource: ODataSource = {
   select: ['Product_ID', 'Product_Name', 'Product_Sale_Price', 'Product_Retail_Price'],
   filter: ['Product_ID', '<', 10],
 };
-const ratingDataSource: ODataSource = {
+const ratingDataSource = {
   store: {
-    type: 'odata',
+    type: 'odata' as const,
     version: 2,
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
     key: 'Product_ID',
