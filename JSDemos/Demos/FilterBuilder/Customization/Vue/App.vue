@@ -99,6 +99,7 @@ export default {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.14), 0 0 2px 0 rgba(0, 0, 0, 0.12);
   border-radius: 6px;
   padding: 15px;
+  margin: 24px;
 }
 
 .dx-filterbuilder .dx-numberbox {
