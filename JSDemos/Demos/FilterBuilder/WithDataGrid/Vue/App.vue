@@ -75,7 +75,7 @@ export default {
   border-radius: 6px;
   padding: 5px;
   width: 500px;
-  margin-bottom: 25px;
+  margin: 24px;
 }
 
 .dx-filterbuilder {
