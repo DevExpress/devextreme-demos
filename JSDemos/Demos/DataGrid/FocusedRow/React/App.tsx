@@ -10,7 +10,8 @@ const focusedRowKeyLabel = { 'aria-label': 'Focused Row Key' };
 
 const dataSourceOptions = {
   store: {
-    type: 'odata' as const,
+    type: 'odata',
+    version: 2,
     key: 'Task_ID',
     url: 'https://js.devexpress.com/Demos/DevAV/odata/Tasks',
   },
