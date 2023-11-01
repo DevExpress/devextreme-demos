@@ -120,6 +120,6 @@ export default {
   font-style: normal;
   font-weight: 400;
   text-align: center;
-  line-height: 40px;
+  line-height: 2em;
 }
 </style>
