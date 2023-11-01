@@ -141,7 +141,8 @@
         "build-react": "npm run build -- react",
         "build-vue": "npm run build -- vue",
         "build-bundles": "npm-run-all -p build-angular build-react build-vue",
-        "prepare-bundles": "npm run build-bundles && gulp bundles"
+        "prepare-bundles": "npm run build-bundles && gulp bundles",
+        "convert-to-js": "ts-node ./utils/ts-to-js-converter/cli.ts"
     },
     "license": "SEE LICENSE IN README.md",
     "keywords": [

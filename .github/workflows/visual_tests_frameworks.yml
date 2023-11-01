@@ -554,6 +554,68 @@ jobs:
     - name: Run lint
       run: ${{ matrix.command }}
 
+  check_generated_demos:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: build-demos
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Check generated demos (1/5)
+            command: CONSTEL=1/5 npm run convert-to-js
+          - name: Check generated demos (2/5)
+            command: CONSTEL=2/5 npm run convert-to-js
+          - name: Check generated demos (3/5)
+            command: CONSTEL=3/5 npm run convert-to-js
+          - name: Check generated demos (4/5)
+            command: CONSTEL=4/5 npm run convert-to-js
+          - name: Check generated demos (5/5)
+            command: CONSTEL=5/5 npm run convert-to-js
+    steps:
+    - name: Get sources
+      uses: actions/checkout@v3
+
+    - name: Delete DX packages
+      run:  sed -i '/23.2-next/d' ./package.json
+
+    - name: Download devextreme sources
+      uses: actions/download-artifact@v3
+      with:
+        name: devextreme-sources
+
+    - name: Unpack artifacts
+      run: 7z x node_modules.7z
+
+    - name: Install packages
+      run: |
+        npm install devextreme-installer.tgz
+        npm install devextreme-dist-installer.tgz
+        npm install devextreme-react-installer.tgz
+        npm install devextreme-vue-installer.tgz
+        npm install devextreme-angular-installer.tgz
+
+    - name: Run npm install
+      run: npm install --no-audit --no-fund
+
+    - name: Prepare JS
+      run: npm run prepare-js
+
+    - name: Check generated JS demos
+      run: |
+        ${{ matrix.command }}
+
+        git add ./JSDemos/Demos -N
+
+        if git diff --exit-code . ':!package-lock.json' ':!package.json' ; then
+          echo "Generated JS demos are up-to-date"
+        else
+            echo "Generated JS demos are outdated. Execute 'npm run convert-to-js ./JSDemos/Demos/**/React' and commit changes."
+            echo "If you see another diff, ensure that extra listed files have LF endings."
+            exit 1
+        fi
+
   testcafe:
     needs: build-demos
     strategy:
