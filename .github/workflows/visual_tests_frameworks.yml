@@ -317,7 +317,7 @@ jobs:
 
     runs-on: ubuntu-latest
     name: ${{ matrix.CONSTEL }}
-    timeout-minutes: 60
+    timeout-minutes: 70
 
     steps:
     - name: Pin Chrome version
