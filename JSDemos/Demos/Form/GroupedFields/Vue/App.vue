@@ -117,8 +117,6 @@ export default {
 
 .long-title h3 {
   font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
   text-align: center;
   line-height: 2em;
 }
