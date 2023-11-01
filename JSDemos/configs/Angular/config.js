@@ -180,7 +180,7 @@ const map = {
 };
 
 components.forEach((component) => {
-  map[`devextreme-angular/ui/${component}`] = `npm:devextreme-angular/fesm2015/devextreme-angular-ui-'${component}'.mjs`;
+  map[`devextreme-angular/ui/${component}`] = `npm:devextreme-angular/fesm2015/devextreme-angular-ui-${component}.mjs`;
 });
 
 window.exports = window.exports || {};
