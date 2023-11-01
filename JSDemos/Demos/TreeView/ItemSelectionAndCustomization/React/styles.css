@@ -12,6 +12,10 @@
   margin-top: 20px;
 }
 
+.selected-container .dx-list-item-content {
+  padding-left: 0;
+}
+
 .selected-container {
   padding: 20px;
   margin-left: 20px;

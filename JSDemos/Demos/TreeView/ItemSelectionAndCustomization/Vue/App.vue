@@ -178,6 +178,10 @@ export default {
   margin-top: 20px;
 }
 
+.selected-container .dx-list-item-content {
+  padding-left: 0;
+}
+
 .options {
   padding: 20px;
   background-color: rgba(191, 191, 191, 0.15);

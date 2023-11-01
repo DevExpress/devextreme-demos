@@ -20,6 +20,10 @@
   margin-top: 20px;
 }
 
+::ng-deep .selected-container .dx-list-item-content {
+  padding-left: 0;
+}
+
 ::ng-deep .options {
   padding: 20px;
   background-color: rgba(191, 191, 191, 0.15);
