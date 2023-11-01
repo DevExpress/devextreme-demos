@@ -8,3 +8,5 @@ JSDemos/Demos/**/testcafe-test-code.js
 
 JSDemos/Demos/**/config.js
 JSDemos/Demos/**/Vue/**/*.html
+
+utils/templates/Angular/**/*.ts

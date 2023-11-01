@@ -2,7 +2,7 @@
 // You can see how to create your own application with Angular and DevExtreme here:
 // https://js.devexpress.com/Documentation/Guide/Angular_Components/Getting_Started/Create_a_DevExtreme_Application/
 
-var components = [ 
+const components = [
   'accordion',
   'action-sheet',
   'autocomplete',
@@ -80,10 +80,10 @@ var components = [
   'validation-group',
   'validation-summary',
   'validator',
-  'vector-map'
+  'vector-map',
 ];
 
-var map = {
+const map = {
   'ts': 'npm:plugin-typescript/lib/plugin.js',
   'typescript': 'npm:typescript/lib/typescript.js',
   '@angular/compiler': 'npm:@angular/compiler/system/es2015/ivy/angular-compiler.min.js',
@@ -179,15 +179,15 @@ var map = {
 
 };
 
-components.forEach(function(component) {
-  map['devextreme-angular/ui/' + component] = 'npm:devextreme-angular/fesm2015/devextreme-angular-ui-' + component + '.mjs';
+components.forEach((component) => {
+  map[`devextreme-angular/ui/${component}`] = `npm:devextreme-angular/fesm2015/devextreme-angular-ui-'${component}'.mjs`;
 });
 
 window.exports = window.exports || {};
 window.config = {
   transpiler: 'plugin-babel',
   babelOptions: {
-    es2015: false
+    es2015: false,
   },
   typescriptOptions: {
     module: 'system',
@@ -199,12 +199,12 @@ window.config = {
       'exports': 'ts',
     },
 
-    "*.mjs": {
-      "format": "esm"
+    '*.mjs': {
+      'format': 'esm',
     },
 
-    "*.ts": {
-      "loader": "ts"
+    '*.ts': {
+      'loader': 'ts',
     },
 
     /** devextreme-aspnet-data-nojquery */
@@ -241,7 +241,7 @@ window.config = {
   paths: {
     'npm:': '../../../../../node_modules/',
   },
-  map: map,
+  map,
   packages: {
     'app': {
       main: './app.component.ts',
