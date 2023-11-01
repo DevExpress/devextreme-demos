@@ -39,7 +39,7 @@
                             .OnClick("() => changePasswordMode('Password')"));
 
                         })
-                     )
+                    )
                 </div>
             </div>
             <div class="dx-field">
@@ -60,7 +60,7 @@
                             .Icon("eyeopen")
                             .OnClick("() => changePasswordMode('ConfirmPassword')"));
                         })
-                      )
+                    )
                 </div>
             </div>
         </div>
@@ -82,6 +82,23 @@
                     @(Html.DevExtreme().DateBoxFor(m => m.Date)
                         .InvalidDateMessage("The date must have the following format: MM/dd/yyyy")
                         )
+                </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">
+                    @Html.LabelFor(m => m.VacationDates, "Vacation Dates")
+                </div>
+                <div class="dx-field-value">
+                    @(Html.DevExtreme().DateRangeBoxFor(m => m.VacationDates)
+                        .ValidationRules(validationRule => {
+                            validationRule.AddCustom()
+                                .Message("The vacation period must not exceed 25 days")
+                                .ValidationCallback("validateVacationDatesRange");
+                            validationRule.AddCustom()
+                                .Message("Both start and end dates must be selected")
+                                .ValidationCallback("validateVacationDatesPresence");
+                        })
+                    )
                 </div>
             </div>
         </div>
@@ -131,23 +148,29 @@
                         )
                 </div>
             </div>
-            @(Html.DevExtreme().CheckBoxFor(m => m.Accepted)
-                .ID("check")
-                .Text("I agree to the Terms and Conditions")
-                )
         </div>
 
         <div class="dx-fieldset">
+            <div class="dx-field">
+                <div class="dx-field-label">
+                    @(Html.DevExtreme().CheckBoxFor(m => m.Accepted)
+                        .ID("check")
+                        .Text("I agree to the Terms and Conditions")
+                        .ValidationMessagePosition(Position.Right)
+                    )
+                </div>
+                <div class="dx-field-value">
+                    @(Html.DevExtreme().Button()
+                        .Width("120px")
+                        .Text("Register")
+                        .Type(ButtonType.Default)
+                        .UseSubmitBehavior(true)
+                    )
+                </div>
+            </div>
             @(Html.DevExtreme().ValidationSummary()
                 .ID("summary")
-                )
-
-            @(Html.DevExtreme().Button()
-                .Width("100%")
-                .Text("Register")
-                .Type(ButtonType.Success)
-                .UseSubmitBehavior(true)
-                )
+            )
         </div>
     }
 }
@@ -162,5 +185,28 @@
         if (editor.option("value")) {
             editor.element().dxValidator("validate")
         }
+    }
+
+    function validateVacationDatesRange({ value }) {
+        const [startDate, endDate] = value;
+
+        if (startDate === null || endDate === null) {
+            return true;
+        }
+
+        const millisecondsPerDay = 24 * 60 * 60 * 1000;
+        const daysDifference = Math.abs((endDate - startDate) / millisecondsPerDay);
+
+        return daysDifference < 25;
+    }
+
+    function validateVacationDatesPresence({ value }) {
+        const [startDate, endDate] = value;
+
+        if (startDate === null && endDate === null) {
+            return true;
+        }
+
+        return startDate !== null && endDate !== null;
     }
 </script>
