@@ -12,7 +12,7 @@ fixture('TreeView.ItemSelectionAndCustomization')
       .resizeWindow(900, 1200);
   });
 
-runManualTest('TreeView', 'Overview', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
+runManualTest('TreeView', 'ItemSelectionAndCustomization', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
   test('ItemSelectionAndCustomization', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
