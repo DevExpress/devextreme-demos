@@ -90,7 +90,7 @@ function onAutoResizeChanged(e) {
   margin-top: 30px;
 }
 
-.full-width-content .dx-widget {
+.full-width-content .textarea-wrapper > .dx-widget {
   margin-bottom: 20px;
 }
 
