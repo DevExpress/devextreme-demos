@@ -1,5 +1,6 @@
 $(() => {
   $('#lookupFieldTemplateOption').dxLookup({
+    height: 35,
     items: employees,
     displayExpr: getDisplayExpr,
     dropDownOptions: {
@@ -16,6 +17,7 @@ $(() => {
   });
 
   $('#lookupItemTemplateOptions').dxLookup({
+    height: 35,
     items: employees,
     searchExpr: ['FirstName', 'LastName', 'Prefix'],
     valueExpr: 'ID',

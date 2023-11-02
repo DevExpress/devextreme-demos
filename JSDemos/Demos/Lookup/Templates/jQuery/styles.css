@@ -11,14 +11,6 @@
   height: 30px;
 }
 
-.dx-theme-material .custom-field > img {
-  height: 36px;
-}
-
-.dx-theme-material .dx-lookup.field-customization .dx-lookup-field {
-  padding: 6px 5px;
-}
-
 .custom-field > div {
   display: inline-block;
   vertical-align: middle;
