@@ -1,5 +1,4 @@
-﻿This demo shows how to validate Form editors. To apply validation rules to an editor, declare them in the [validationRules[]](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/) array. Specify [type](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/RequiredRule/#type) and other properties for each rule. 
-
+﻿This demo shows how to validate Form editors. To apply validation rules to an editor, declare them in the [validationRules](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/) array. Specify [type](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/RequiredRule/#type) and other properties for each rule. 
 
 The following validation rules are shown in this demo:  
 - [RequiredRule](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/RequiredRule/)  
@@ -23,6 +22,9 @@ Requires that an editor value matches the Email pattern.
 - [AsyncRule](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/AsyncRule/)    
 Allows you to add custom server-side validation logic. Rules of this type run last, only if all other rules passed. In this demo, an AsyncRule checks whether user input matches `test@dx-email.com`.
 
+- [CustomRule](/Documentation/ApiReference/UI_Components/dxValidator/Validation_Rules/CustomRule/)    
+A rule with custom validation logic.
+
 To submit form data, do the following:
 
 1. Wrap the Form component in the HTML `<form>` element.
@@ -32,3 +34,5 @@ To submit form data, do the following:
 1. Enable the button's [useSubmitBehavior](/Documentation/ApiReference/UI_Components/dxButton/Configuration/#useSubmitBehavior) property.
 
 When users click the button, the Form validates all editors that belong to the same [validationGroup](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#validationGroup) as this button. In this demo, all these editors belong to the `customerData` group. Form data can be submitted to a server only if input validation is successful. Enable the [showValidationSummary](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#showValidationSummary) property to display all validation errors at the bottom of the Form.
+
+This demo also shows an implementation of the **Reset** button. When users click the button, it [resets](/Documentation/ApiReference/UI_Components/dxForm/Methods/#reseteditorsData) all Form data to initial values. The Form also uses the [isDirty](/Documentation/ApiReference/UI_Components/dxForm/Configuration/#isDirty) flag to check whether changes are made, and if not, disables the button.

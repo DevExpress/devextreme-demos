@@ -19,16 +19,12 @@
     </div>
   </div>
 </template>
-<script>
-
-export default {
-  props: {
-    employee: {
-      type: Object,
-      default: () => {},
-    },
-  },
-};
+<script setup lang="ts">
+withDefaults(defineProps<{
+  employee?: any
+}>(), {
+  employee: () => {},
+});
 </script>
 <style>
 .avatar {
@@ -48,6 +44,7 @@ export default {
 
 .name h2 {
   color: #fff;
+  font-size: 28px;
   text-align: left;
   padding: 0 0 5px 175px;
   margin: 0;

@@ -4,7 +4,7 @@
     :data-source="dataSource"
     :current-date="currentDate"
     :views="views"
-    :height="600"
+    :height="730"
     :start-day-hour="9"
     current-view="month"
   >
@@ -15,24 +15,11 @@
     />
   </DxScheduler>
 </template>
-<script>
-
+<script setup lang="ts">
 import { DxScheduler, DxResource } from 'devextreme-vue/scheduler';
-
 import { data, resourcesData } from './data.js';
 
-export default {
-  components: {
-    DxScheduler,
-    DxResource,
-  },
-  data() {
-    return {
-      views: ['day', 'week', 'month'],
-      currentDate: new Date(2020, 10, 25),
-      dataSource: data,
-      resourcesData,
-    };
-  },
-};
+const views = ['day', 'week', 'month'];
+const currentDate = new Date(2020, 10, 25);
+const dataSource = data;
 </script>

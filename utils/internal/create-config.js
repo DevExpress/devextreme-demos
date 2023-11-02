@@ -6,7 +6,7 @@ class CreateConfig {
   constructor() {
     this.configDir = path.join(__dirname, '..', '..', 'JSDemos/configs');
 
-    this.approaches = ['Angular', 'React', 'Vue'];
+    this.approaches = ['Angular', 'React', 'ReactJs', 'Vue'];
 
     this.meta = meta;
 
@@ -106,6 +106,15 @@ class CreateConfig {
     });
   }
 
+  copyTsConfigForApproaches(fullDemoName) {
+    this.approaches.forEach((approach) => {
+      if (approach === 'ReactJs' || !fs.existsSync(path.join(fullDemoName, approach))) return;
+      const approachConfigPath = path.join(this.configDir, approach, 'tsconfig.json');
+      const demoConfigPath = path.join(fullDemoName, approach, 'tsconfig.json');
+      fs.copyFileSync(approachConfigPath, demoConfigPath);
+    });
+  }
+
   run(demosDir) {
     const demosWithExtraModules = this.getDemosWithExtraModules();
     const configContent = this.createConfigFilesContent(demosWithExtraModules);
@@ -128,6 +137,8 @@ class CreateConfig {
           demosWithExtraModules,
           configContent,
         );
+
+        this.copyTsConfigForApproaches(fullDemoName);
       });
     });
   }

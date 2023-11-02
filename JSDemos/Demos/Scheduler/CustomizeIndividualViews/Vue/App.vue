@@ -6,7 +6,7 @@
     :start-day-hour="7"
     :end-day-hour="23"
     :show-all-day-panel="false"
-    height="600"
+    height="730"
     current-view="workWeek"
   >
     <DxView
@@ -44,33 +44,15 @@
     </template>
   </DxScheduler>
 </template>
-<script>
-
+<script setup lang="ts">
 import DxScheduler, { DxResource, DxView } from 'devextreme-vue/scheduler';
-
 import DateCell from './DateCell.vue';
 import { data, priorityData, typeData } from './data.js';
 
+const dataSource = data;
+const typeGroups = ['typeId'];
+const priorityGroups = ['priorityId'];
 const currentDate = new Date(2021, 3, 27);
-
-export default {
-  components: {
-    DxScheduler,
-    DxResource,
-    DateCell,
-    DxView,
-  },
-  data() {
-    return {
-      currentDate,
-      dataSource: data,
-      priorityData,
-      typeData,
-      typeGroups: ['typeId'],
-      priorityGroups: ['priorityId'],
-    };
-  },
-};
 </script>
 
 <style scoped>

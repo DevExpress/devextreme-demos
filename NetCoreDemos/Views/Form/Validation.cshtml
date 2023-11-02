@@ -14,13 +14,16 @@
                 items.AddGroup()
                     .Caption("Credentials")
                     .Items(groupItems => {
-                        groupItems.AddSimpleFor(m => m.Email);
-
+                        groupItems.AddSimpleFor(m => m.Email)
+                            .Editor(e => e.TextBox()
+                                .ValueChangeEvent("keyup")
+                            );
                         groupItems.AddSimpleFor(m => m.Password)
                             .Editor(e => e.TextBox()
                                 .Mode(TextBoxMode.Password)
                                 .InputAttr("aria-label", "Password")
                                 .OnValueChanged("passwordChanged")
+                                .ValueChangeEvent("keyup")
                                 .Buttons(buttons => {
                                     buttons.Add()
                                         .Name("password")
@@ -38,6 +41,7 @@
                             .Editor(e => e.TextBox()
                                 .Mode(TextBoxMode.Password)
                                 .InputAttr("aria-label", "Password")
+                                .ValueChangeEvent("keyup")
                                 .Buttons(buttons => {
                                     buttons.Add()
                                         .Name("password")
@@ -55,14 +59,32 @@
                 items.AddGroup()
                     .Caption("Personal Data")
                     .Items(groupItems => {
-                        groupItems.AddSimpleFor(m => m.Name);
-                        groupItems.AddSimpleFor(m => m.Date);
+                        groupItems.AddSimpleFor(m => m.Name)
+                            .Editor(e => e.TextBox()
+                                .ValueChangeEvent("keyup")
+                            );
+                        groupItems.AddSimpleFor(m => m.Date)
+                            .Editor(e => e
+                                .DateBox()
+                                .OpenOnFieldClick(true)
+                                .Placeholder("Birth Date")
+                                .AcceptCustomValue(false)
+                            );
                         groupItems.AddSimpleFor(m => m.VacationDates)
                             .Editor(e => e
                                 .DateRangeBox()
                                 .StartDatePlaceholder("Start Date")
+                                .AcceptCustomValue(false)
                                 .EndDatePlaceholder("End Date")
-                            );
+                            )
+                            .ValidationRules(validationRule => {
+                                validationRule.AddCustom()
+                                    .Message("The vacation period must not exceed 25 days")
+                                    .ValidationCallback("validateVacationDatesRange");
+                                validationRule.AddCustom()
+                                    .Message("Both start and end dates must be selected")
+                                    .ValidationCallback("validateVacationDatesPresence");
+                            });
                     });
 
                 items.AddGroup()
@@ -78,17 +100,22 @@
                         groupItems.AddSimpleFor(m => m.City)
                             .Editor(e => e
                                 .Autocomplete()
+                                .ValueChangeEvent("keyup")
                                 .MinSearchLength(2)
                                 .DataSource(d => d.Mvc().Controller("GeoNames").LoadAction("Cities"))
                             );
 
-                        groupItems.AddSimpleFor(m => m.Address);
+                        groupItems.AddSimpleFor(m => m.Address)
+                            .Editor(e => e.TextBox()
+                                .ValueChangeEvent("keyup")
+                            );
 
                         groupItems.AddSimpleFor(m => m.Phone)
                             .HelpText("Enter the phone number in USA phone format")
                             .Editor(e => e.TextBox()
                                 .Mask("+1 (X00) 000-0000")
                                 .InputAttr("aria-label", "Phone")
+                                .ValueChangeEvent("keyup")
                                 .MaskRules(new { X = new JS("/[02-9]/") })
                                 .MaskInvalidMessage("The phone must have a correct USA phone format")
                             );
@@ -100,7 +127,10 @@
                     .Items(groupItems => {
                         groupItems.AddSimpleFor(m => m.Accepted)
                             .Label(l => l.Visible(false))
-                            .Editor(editor => editor.CheckBox().Text("I agree to the Terms and Conditions"));
+                            .Editor(editor => editor.CheckBox()
+                                .Width(270)
+                                .Text("I agree to the Terms and Conditions")
+                            );
                         groupItems.AddGroup()
                             .ColCountByScreen(c => c.Md(2).Sm(2).Lg(2))
                             .CssClass("buttons-group")
@@ -154,5 +184,28 @@
     function changePasswordMode(name) {
         let editor = formInstance.getEditor(name);
         editor.option('mode', editor.option('mode') === 'text' ? 'password' : 'text');
+    }
+
+    function validateVacationDatesRange({ value }) {
+        const [startDate, endDate] = value;
+
+        if (startDate === null || endDate === null) {
+            return true;
+        }
+
+        const millisecondsPerDay = 24 * 60 * 60 * 1000;
+        const daysDifference = Math.abs((endDate - startDate) / millisecondsPerDay);
+
+        return daysDifference < 25;
+    }
+
+    function validateVacationDatesPresence({ value }) {
+        const [startDate, endDate] = value;
+
+        if (startDate === null && endDate === null) {
+            return true;
+        }
+
+        return startDate !== null && endDate !== null;
     }
 </script>

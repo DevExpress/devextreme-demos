@@ -15,7 +15,10 @@
           validation-group="customerData"
         >
           <DxGroupItem caption="Credentials">
-            <DxSimpleItem data-field="Email">
+            <DxSimpleItem
+              data-field="Email"
+              :editor-options="emailEditorOptions"
+            >
               <DxRequiredRule message="Email is required"/>
               <DxEmailRule message="Email is invalid"/>
               <DxAsyncRule
@@ -24,14 +27,15 @@
               />
             </DxSimpleItem>
             <DxSimpleItem
-              :editor-options="passwordOptions"
+              :editor-options="passwordEditorOptions"
               data-field="Password"
             >
               <DxRequiredRule message="Password is required"/>
             </DxSimpleItem>
             <DxSimpleItem
               name="ConfirmPassword"
-              :editor-options="confirmPasswordOptions"
+              data-field="ConfirmPassword"
+              :editor-options="confirmPasswordEditorOptions"
               editor-type="dxTextBox"
             >
               <DxLabel text="Confirm Password"/>
@@ -43,7 +47,10 @@
             </DxSimpleItem>
           </DxGroupItem>
           <DxGroupItem caption="Personal Data">
-            <DxSimpleItem data-field="Name">
+            <DxSimpleItem
+              data-field="Name"
+              :editor-options="nameEditorOptions"
+            >
               <DxRequiredRule message="Name is required"/>
               <DxPatternRule
                 :pattern="namePattern"
@@ -68,6 +75,14 @@
               editor-type="dxDateRangeBox"
             >
               <DxLabel text="Vacation Dates"/>
+              <DxCustomRule
+                :validation-callback="validateVacationDatesRange"
+                message="The vacation period must not exceed 25 days"
+              />
+              <DxCustomRule
+                :validation-callback="validateVacationDatesPresence"
+                message="Both start and end dates must be selected"
+              />
             </DxSimpleItem>
           </DxGroupItem>
           <DxGroupItem caption="Billing address">
@@ -94,7 +109,10 @@
               />
               <DxRequiredRule message="City is required"/>
             </DxSimpleItem>
-            <DxSimpleItem data-field="Address">
+            <DxSimpleItem
+              data-field="Address"
+              :editor-options="addressEditorOptions"
+            >
               <DxRequiredRule message="Address is required"/>
             </DxSimpleItem>
             <DxSimpleItem
@@ -157,6 +175,7 @@ import DxForm, {
   DxPatternRule,
   DxEmailRule,
   DxAsyncRule,
+  DxCustomRule,
 } from 'devextreme-vue/form';
 import DxAutocomplete from 'devextreme-vue/autocomplete';
 import 'devextreme-vue/date-range-box';
@@ -190,6 +209,7 @@ export default {
     DxForm,
     DxAutocomplete,
     DxAsyncRule,
+    DxCustomRule,
     notify,
   },
   data() {
@@ -217,8 +237,9 @@ export default {
         md: 2,
         lg: 2,
       },
-      passwordOptions: {
+      passwordEditorOptions: {
         mode: 'password',
+        valueChangeEvent: 'keyup',
         onValueChanged: () => {
           const editor = this.formInstance.getEditor('ConfirmPassword');
           if (editor.option('value')) {
@@ -238,8 +259,9 @@ export default {
           },
         ],
       },
-      confirmPasswordOptions: {
+      confirmPasswordEditorOptions: {
         mode: 'password',
+        valueChangeEvent: 'keyup',
         buttons: [
           {
             name: 'password',
@@ -252,23 +274,33 @@ export default {
           },
         ],
       },
+      emailEditorOptions: {
+        valueChangeEvent: 'keyup',
+      },
+      nameEditorOptions: {
+        valueChangeEvent: 'keyup',
+      },
+      addressEditorOptions: {
+        valueChangeEvent: 'keyup',
+      },
       dateBoxOptions: {
         placeholder: 'Birth Date',
-        invalidDateMessage:
-          'The date must have the following format: MM/dd/yyyy',
+        acceptCustomValue: false,
+        openOnFieldClick: true,
       },
       dateRangeBoxOptions: {
         endDatePlaceholder: 'End Date',
         startDatePlaceholder: 'Start Date',
-        invalidDateMessage:
-          'The date must have the following format: MM/dd/yyyy',
+        acceptCustomValue: false,
       },
       checkBoxOptions: {
         text: 'I agree to the Terms and Conditions',
+        width: 270,
         value: false,
       },
       phoneEditorOptions: {
         mask: '+1 (X00) 000-0000',
+        valueChangeEvent: 'keyup',
         maskRules: {
           X: /[02-9]/,
         },
@@ -276,6 +308,7 @@ export default {
       },
       cityEditorOptions: {
         dataSource: service.getCities(),
+        valueChangeEvent: 'keyup',
         minSearchLength: 2,
       },
       countryEditorOptions: {
@@ -313,6 +346,27 @@ export default {
     asyncValidation(params) {
       return sendRequest(params.value);
     },
+    validateVacationDatesRange({ value }) {
+      const [startDate, endDate] = value;
+
+      if (startDate === null || endDate === null) {
+        return true;
+      }
+
+      const millisecondsPerDay = 24 * 60 * 60 * 1000;
+      const daysDifference = Math.abs((endDate - startDate) / millisecondsPerDay);
+
+      return daysDifference < 25;
+    },
+    validateVacationDatesPresence({ value }) {
+      const [startDate, endDate] = value;
+
+      if (startDate === null && endDate === null) {
+        return true;
+      }
+
+      return startDate !== null && endDate !== null;
+    },
     handleSubmit(e) {
       notify({
         message: 'You have submitted the form',
@@ -328,7 +382,7 @@ export default {
 </script>
 <style scoped>
 form {
-  margin: 10px;
+  margin: 10px 10px 15px;
 }
 
 .last-group {

@@ -39,8 +39,9 @@ const sendRequest = function (value) {
 export class AppComponent {
   @ViewChild(DxFormComponent, { static: false }) form:DxFormComponent;
 
-  passwordOptions: any = {
+  passwordEditorOptions: any = {
     mode: 'password',
+    valueChangeEvent: 'keyup',
     onValueChanged: () => {
       let editor = this.form.instance.getEditor('ConfirmPassword');
       if (editor.option('value')) {
@@ -61,8 +62,30 @@ export class AppComponent {
     ],
   };
 
-  confirmOptions: any = {
+  emailEditorOptions: any = {
+    valueChangeEvent: 'keyup',
+  };
+
+  nameEditorOptions: any = {
+    valueChangeEvent: 'keyup',
+  };
+
+  addressEditorOptions: any = {
+    valueChangeEvent: 'keyup',
+  };
+
+  phoneEditorOptions: any = {
+    mask: '+1 (X00) 000-0000',
+    maskRules: {
+      X: /[02-9]/,
+    },
+    maskInvalidMessage: 'The phone must have a correct USA phone format',
+    valueChangeEvent: 'keyup',
+  };
+
+  confirmPasswordEditorOptions: any = {
     mode: 'password',
+    valueChangeEvent: 'keyup',
     buttons: [
       {
         name: 'password',
@@ -99,15 +122,16 @@ export class AppComponent {
 
   phonePattern: any = /^[02-9]\d{9}$/;
 
-  phoneRules: any = {
-    X: /[02-9]/,
+  dateBoxOptions = {
+    placeholder: 'Birth Date',
+    acceptCustomValue: false,
+    openOnFieldClick: true,
   };
 
   dateRangeBoxOptions = {
     startDatePlaceholder: 'Start Date',
     endDatePlaceholder: 'End Date',
-    invalidDateMessage:
-      'The date must have the following format: MM/dd/yyyy',
+    acceptCustomValue: false,
   };
 
   registerButtonOptions = {
@@ -146,6 +170,29 @@ export class AppComponent {
     this.countries = service.getCountries();
     this.cities = service.getCities();
     this.customer = service.getCustomer();
+  }
+
+  validateVacationDatesRange({ value }) {
+    const [startDate, endDate] = value;
+
+    if (startDate === null || endDate === null) {
+      return true;
+    }
+
+    const millisecondsPerDay = 24 * 60 * 60 * 1000;
+    const daysDifference = Math.abs((endDate - startDate) / millisecondsPerDay);
+
+    return daysDifference < 25;
+  }
+
+  validateVacationDatesPresence({ value }) {
+    const [startDate, endDate] = value;
+
+    if (startDate === null && endDate === null) {
+      return true;
+    }
+
+    return startDate !== null && endDate !== null;
   }
 
   asyncValidation(params) {

@@ -5,5 +5,8 @@ namespace DevExtreme.MVC.Demos.Controllers {
         public ActionResult Overview() {
             return View();
         }
+        public ActionResult MultipleSelection() {
+            return View();
+        }
     }
 }

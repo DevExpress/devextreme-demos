@@ -3846,8 +3846,10 @@
             "Title": "Overview",
             "Name": "Overview",
             "Widget": "TabPanel",
+            "Badge": "New",
             "MvcAdditionalFiles": [
-              "/Models/Company.cs",
+              "/Models/TabPanelItem.cs",
+              "/Models/TaskItem.cs",
               "/Models/SampleData/TabPanelData.cs"
             ]
           },
@@ -3863,6 +3865,16 @@
               "/Models/SampleData/DataGridEmployees.cs",
               "/Models/EmployeeTask.cs"
             ]
+          },
+          {
+            "Title": "Templates",
+            "Name": "Templates",
+            "Widget": "TabPanel",
+            "Badge": "Updated",
+            "MvcAdditionalFiles": [
+              "/Models/Company.cs",
+              "/Models/SampleData/TabPanelData.cs"
+            ]
           }
         ]
       },
@@ -3874,7 +3886,19 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "Widget": "Tabs"
+            "Widget": "Tabs",
+            "Badge": "Updated"
+          },
+          {
+            "Title": "Selection",
+            "Name": "Selection",
+            "DocUrl": "",
+            "Widget": "Tabs",
+            "MvcDescription": "",
+            "NetCoreDescription": "",
+            "MvcAdditionalFiles": [],
+            "DemoType": "Web",
+            "Badge": "New"
           }
         ]
       },
@@ -4108,7 +4132,14 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "Widget": "Calendar"
+            "Widget": "Calendar",
+            "Badge": "Updated"
+          },
+          {
+            "Title": "Multiple Selection",
+            "Name": "MultipleSelection",
+            "Widget": "Calendar",
+            "Badge": "New"
           }
         ]
       },
@@ -4163,16 +4194,18 @@
         "Name": "Date Range Box",
         "Equivalents": "DateRangeBox, dxDateRangeBox, dx-date-range-box",
         "Breadcrumb": true,
-        "Demos": [{
+        "Demos": [
+          {
             "Title": "Overview",
             "Name": "Overview",
             "Widget": "DateRangeBox"
-        },
-        {
-          "Title": "Formatting",
-          "Name": "Formatting",
-          "Widget": "DateRangeBox"
-        }]
+          },
+          {
+            "Title": "Formatting",
+            "Name": "Formatting",
+            "Widget": "DateRangeBox"
+          }
+        ]
       },
       {
         "Name": "Drop Down Box",
@@ -4409,6 +4442,7 @@
           {
             "Title": "Editor Appearance Variants",
             "Name": "EditorAppearanceVariants",
+            "Badge": "Updated",
             "DocUrl": "",
             "Widget": "Common",
             "DemoType": "Web"

@@ -11,6 +11,7 @@ import Form, {
   RequiredRule,
   StringLengthRule,
   AsyncRule,
+  CustomRule,
 } from 'devextreme-react/form';
 import notify from 'devextreme/ui/notify';
 import Validator from 'devextreme/ui/validator';
@@ -23,10 +24,12 @@ const customer = service.getCustomer();
 const checkBoxOptions = {
   text: 'I agree to the Terms and Conditions',
   value: false,
+  width: 270,
 };
 
 const cityEditorOptions = {
   dataSource: service.getCities(),
+  valueChangeEvent: 'keyup',
   minSearchLength: 2,
 };
 
@@ -34,8 +37,21 @@ const countryEditorOptions = {
   dataSource: service.getCountries(),
 };
 
+const emailEditorOptions = {
+  valueChangeEvent: 'keyup',
+};
+
+const nameEditorOptions = {
+  valueChangeEvent: 'keyup',
+};
+
+const addressEditorOptions = {
+  valueChangeEvent: 'keyup',
+};
+
 const phoneEditorOptions = {
   mask: '+1 (X00) 000-0000',
+  valueChangeEvent: 'keyup',
   maskRules: {
     X: /[02-9]/,
   },
@@ -53,14 +69,14 @@ const maxDate = new Date().setFullYear(new Date().getFullYear() - 21);
 
 const dateBoxOptions = {
   placeholder: 'Birth Date',
-  invalidDateMessage:
-    'The date must have the following format: MM/dd/yyyy',
+  acceptCustomValue: false,
+  openOnFieldClick: true,
 };
 
 const dateRangeBoxOptions = {
   startDatePlaceholder: 'Start Date',
   endDatePlaceholder: 'End Date',
-  invalidDateMessage: 'The date must have the following format: MM/dd/yyyy',
+  acceptCustomValue: false,
 };
 
 function sendRequest(value) {
@@ -77,6 +93,29 @@ const passwordComparison = () => customer.Password;
 const checkComparison = () => true;
 
 const asyncValidation = (params) => sendRequest(params.value);
+
+const validateVacationDatesRange = ({ value }) => {
+  const [startDate, endDate] = value;
+
+  if (startDate === null || endDate === null) {
+    return true;
+  }
+
+  const millisecondsPerDay = 24 * 60 * 60 * 1000;
+  const daysDifference = Math.abs((endDate - startDate) / millisecondsPerDay);
+
+  return daysDifference < 25;
+};
+
+const validateVacationDatesPresence = ({ value }) => {
+  const [startDate, endDate] = value;
+
+  if (startDate === null && endDate === null) {
+    return true;
+  }
+
+  return startDate !== null && endDate !== null;
+};
 
 const registerButtonOptions = {
   text: 'Register',
@@ -100,6 +139,7 @@ function App() {
 
   const getPasswordOptions = React.useCallback(() => ({
     mode: 'password',
+    valueChangeEvent: 'keyup',
     onValueChanged: () => {
       const editor = formInstance.current.getEditor('ConfirmPassword');
       if (editor.option('value')) {
@@ -122,6 +162,7 @@ function App() {
 
   const getConfirmOptions = React.useCallback(() => ({
     mode: 'password',
+    valueChangeEvent: 'keyup',
     buttons: [
       {
         name: 'password',
@@ -174,7 +215,7 @@ function App() {
           validationGroup="customerData"
         >
           <GroupItem caption="Credentials">
-            <SimpleItem dataField="Email" editorType="dxTextBox">
+            <SimpleItem dataField="Email" editorType="dxTextBox" editorOptions={emailEditorOptions}>
               <RequiredRule message="Email is required" />
               <EmailRule message="Email is invalid" />
               <AsyncRule
@@ -184,7 +225,7 @@ function App() {
             <SimpleItem dataField="Password" editorType="dxTextBox" editorOptions={getPasswordOptions()}>
               <RequiredRule message="Password is required" />
             </SimpleItem>
-            <SimpleItem name="ConfirmPassword" editorType="dxTextBox" editorOptions={getConfirmOptions()}>
+            <SimpleItem name="ConfirmPassword" dataField="ConfirmPassword" editorType="dxTextBox" editorOptions={getConfirmOptions()}>
               <Label text="Confirm Password" />
               <RequiredRule message="Confirm Password is required" />
               <CompareRule
@@ -194,7 +235,7 @@ function App() {
             </SimpleItem>
           </GroupItem>
           <GroupItem caption="Personal Data">
-            <SimpleItem dataField="Name">
+            <SimpleItem dataField="Name" editorOptions={nameEditorOptions}>
               <RequiredRule message="Name is required" />
               <PatternRule message="Do not use digits in the Name"
                 pattern={/^[^0-9]+$/} />
@@ -212,6 +253,8 @@ function App() {
               editorOptions={dateRangeBoxOptions}
             >
               <Label text="Vacation Dates" />
+              <CustomRule message="The vacation period must not exceed 25 days" validationCallback={validateVacationDatesRange} />
+              <CustomRule message="Both start and end dates must be selected" validationCallback={validateVacationDatesPresence} />
             </SimpleItem>
 
           </GroupItem>
@@ -224,7 +267,7 @@ function App() {
               <StringLengthRule min={2} message="City must have at least 2 symbols" />
               <RequiredRule message="City is required" />
             </SimpleItem>
-            <SimpleItem dataField="Address">
+            <SimpleItem dataField="Address" editorOptions={addressEditorOptions}>
               <RequiredRule message="Address is required" />
             </SimpleItem>
             <SimpleItem dataField="Phone"

@@ -14,6 +14,9 @@ window.config = {
     'typescript': {
       'exports': 'ts',
     },
+    'devextreme/time_zone_utils.js': {
+      'esModule': true,
+    },
     'devextreme/localization.js': {
       'esModule': true,
     },
@@ -43,6 +46,7 @@ window.config = {
     'react': 'npm:react/umd/react.development.js',
     'react-dom': 'npm:react-dom/umd/react-dom.development.js',
     'prop-types': 'npm:prop-types/prop-types.js',
+    'sha-1': 'npm:sha-1/dist/sha1.cjs.js',
 
     /** signalr */
     '@aspnet/signalr': 'npm:@aspnet/signalr/dist/cjs',
@@ -113,7 +117,7 @@ window.config = {
     'es6-object-assign': 'npm:es6-object-assign',
 
     'devextreme': 'npm:devextreme/cjs',
-    'devextreme-react': 'npm:devextreme-react',
+    'devextreme-react': 'npm:devextreme-react/cjs',
     'jszip': 'npm:jszip/dist/jszip.min.js',
     'devextreme-quill': 'npm:devextreme-quill/dist/dx-quill.min.js',
     'devexpress-diagram': 'npm:devexpress-diagram/dist/dx-diagram.js',
