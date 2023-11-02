@@ -668,6 +668,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\DropDownButtonViewModel.cs" />
     <Compile Include="ViewModels\DynamicAppointmentsViewModel.cs" />
+    <Compile Include="ViewModels\VerifyDateRange.cs" />
     <Compile Include="ViewModels\VerifyAgeAttribute.cs" />
     <Compile Include="ViewModels\EditorsViewModel.cs" />
     <Compile Include="ViewModels\FormViewModel.cs" />

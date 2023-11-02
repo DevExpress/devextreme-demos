@@ -87,15 +87,15 @@
                     @Html.LabelFor(m => m.VacationDates, "Vacation Dates")
                 </div>
                 <div class="dx-field-value">
-                    @(Html.DevExtreme().DateRangeBoxFor(m => m.VacationDates)
-                        .ValidationRules(validationRule => {
+                    @(Html.DevExtreme().DateRangeBoxFor(m => m.VacationDates /*!= null ? m.VacationDates : new DateTime[2]*/)
+                        /*.ValidationRules(validationRule => {
                             validationRule.AddCustom()
                                 .Message("The vacation period must not exceed 25 days")
                                 .ValidationCallback("validateVacationDatesRange");
                             validationRule.AddCustom()
                                 .Message("Both start and end dates must be selected")
                                 .ValidationCallback("validateVacationDatesPresence");
-                        })
+                        })*/
                     )
                 </div>
             </div>

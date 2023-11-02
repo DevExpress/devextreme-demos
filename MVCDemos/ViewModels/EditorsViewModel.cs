@@ -1,6 +1,7 @@
 ﻿using DevExtreme.AspNet.Mvc;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,10 @@ using System.Web.Mvc;
 
 namespace DevExtreme.MVC.Demos.ViewModels {
     public class EditorsViewModel {
+        public EditorsViewModel() {
+            // VacationDates = new DateTime[2];
+        }
+
         [Required(ErrorMessage = "Email is required")]
         [RegularExpression(@"^[\d\w._-]+@[\d\w._-]+\.[\w]+$", ErrorMessage = "Email is invalid")]
         [Remote("CheckEmailAddress", "RemoteValidation", ErrorMessage = "Email is already registered", HttpMethod = "POST")]
@@ -58,7 +63,8 @@ namespace DevExtreme.MVC.Demos.ViewModels {
         [VerifyAge(21, ErrorMessage = "You must be at least {1} years old")]
         public DateTime? Date { get; set; }
 
-        public DateTime?[] VacationDates { get; set; }
+        [VerifyDateRange(25, ErrorMessage = "The vacation period must not exceed {1} days")]
+        public DateTime[] VacationDates { get; set; }
 
         [DevExtremeRequired(ErrorMessage = "You must agree to the Terms and Conditions")]
         public bool Accepted { get; set; }
