@@ -66,6 +66,14 @@
           />
         </div>
       </div>
+      <div class="dx-field">
+        <div class="dx-field-label">Disable out of range selection</div>
+        <div class="dx-field-value">
+          <DxDateRangeBox
+            :disable-out-of-range-selection="true"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>

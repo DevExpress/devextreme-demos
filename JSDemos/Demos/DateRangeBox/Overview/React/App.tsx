@@ -95,6 +95,12 @@ export default function App() {
           />
         </div>
       </div>
+      <div className="dx-field">
+        <div className="dx-field-label">Disable out of range selection</div>
+        <div className="dx-field-value">
+          <DateRangeBox disableOutOfRangeSelection={true} />
+        </div>
+      </div>
     </div>
   );
 }
