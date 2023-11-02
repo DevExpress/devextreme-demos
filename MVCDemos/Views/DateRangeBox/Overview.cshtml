@@ -32,7 +32,7 @@
         </div>
     </div>
     <div class="dx-field">
-        <div class="dx-field-label">Single-calendar View</div>
+        <div class="dx-field-label">Single-calendar view</div>
         <div class="dx-field-value">
             @(Html.DevExtreme().DateRangeBox()
                 .MultiView(false)
@@ -57,19 +57,19 @@
         </div>
     </div>
     <div class="dx-field">
+        <div class="dx-field-label">Disable out of range selection</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateRangeBox()
+                .DisableOutOfRangeSelection(true)
+            )
+        </div>
+    </div>
+    <div class="dx-field">
         <div class="dx-field-label">Clear button</div>
         <div class="dx-field-value">
             @(Html.DevExtreme().DateRangeBox()
                 .ShowClearButton(true)
                 .Value(new JS("initialValue"))
-            )
-        </div>
-    </div>
-    <div class="dx-field">
-        <div class="dx-field-label">Disable out of range selection</div>
-        <div class="dx-field-value">
-            @(Html.DevExtreme().DateRangeBox()
-                .DisableOutOfRangeSelection(true)
             )
         </div>
     </div>

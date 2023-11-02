@@ -56,7 +56,7 @@ export default function App() {
         </div>
       </div>
       <div className="dx-field">
-        <div className="dx-field-label">Single-calendar View</div>
+        <div className="dx-field-label">Single-calendar view</div>
         <div className="dx-field-value">
           <DateRangeBox multiView={false} />
         </div>

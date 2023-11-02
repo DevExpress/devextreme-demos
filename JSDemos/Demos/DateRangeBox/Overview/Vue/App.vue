@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="dx-field">
-        <div class="dx-field-label">Single-calendar View</div>
+        <div class="dx-field-label">Single-calendar view</div>
         <div class="dx-field-value">
           <DxDateRangeBox
             :multi-view="false"
@@ -58,19 +58,19 @@
         </div>
       </div>
       <div class="dx-field">
+        <div class="dx-field-label">Disable out of range selection</div>
+        <div class="dx-field-value">
+          <DxDateRangeBox
+            :disable-out-of-range-selection="true"
+          />
+        </div>
+      </div>
+      <div class="dx-field">
         <div class="dx-field-label">Clear button</div>
         <div class="dx-field-value">
           <DxDateRangeBox
             :show-clear-button="true"
             :value="initialValue"
-          />
-        </div>
-      </div>
-      <div class="dx-field">
-        <div class="dx-field-label">Disable out of range selection</div>
-        <div class="dx-field-value">
-          <DxDateRangeBox
-            :disable-out-of-range-selection="true"
           />
         </div>
       </div>

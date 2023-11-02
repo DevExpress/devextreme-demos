@@ -66,7 +66,7 @@ export default function App() {
         </div>
       </div>
       <div className="dx-field">
-        <div className="dx-field-label">Single-calendar View</div>
+        <div className="dx-field-label">Single-calendar view</div>
         <div className="dx-field-value">
           <DateRangeBox multiView={false} />
         </div>
@@ -87,18 +87,18 @@ export default function App() {
         </div>
       </div>
       <div className="dx-field">
+        <div className="dx-field-label">Disable out of range selection</div>
+        <div className="dx-field-value">
+          <DateRangeBox disableOutOfRangeSelection={true} />
+        </div>
+      </div>
+      <div className="dx-field">
         <div className="dx-field-label">Clear button</div>
         <div className="dx-field-value">
           <DateRangeBox
             defaultValue={initialValue}
             showClearButton
           />
-        </div>
-      </div>
-      <div className="dx-field">
-        <div className="dx-field-label">Disable out of range selection</div>
-        <div className="dx-field-value">
-          <DateRangeBox disableOutOfRangeSelection={true} />
         </div>
       </div>
     </div>
