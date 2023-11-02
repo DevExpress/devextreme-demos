@@ -14,16 +14,9 @@ jobs:
   build:
     name: Build aspnet demos
     runs-on: windows-2019
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.fork == false
 
     steps:
-      - name: Check permissions
-        env:
-          ASPNET_PAT: ${{ secrets.ASPNET_PAT }}
-        if: env.ASPNET_PAT == ''
-        run: |
-          echo "Please create your PR from feature branch (not from fork)"
-          exit 1
-
       - name: Get sources
         uses: actions/checkout@v4
 
