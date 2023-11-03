@@ -1,11 +1,22 @@
-::ng-deep .dx-menu-item-content span {
-  margin-right: 5px;
+::ng-deep .item-template-container {
+  display: flex;
+  align-items: center;
 }
 
-::ng-deep .dx-menu-item .dx-icon-spinright {
-  position: absolute;
-  top: 7px;
-  right: 2px;
+::ng-deep .dx-context-menu .dx-menu-item .dx-menu-item-content {
+  display: block;
+}
+
+::ng-deep .dx-menu-item-content span:not(.dx-icon-spinright) {
+  margin-right: 6px;
+}
+
+::ng-deep .dx-menu-item-content span:not(.dx-menu-item-text) {
+  font-size: 20px;
+}
+
+::ng-deep .dx-menu-item-text {
+  flex-grow: 1;
 }
 
 ::ng-deep #image {

@@ -1,11 +1,22 @@
-.dx-menu-item-content span {
-  margin-right: 5px;
+.item-template-container {
+  display: flex;
+  align-items: center;
 }
 
-.dx-menu-item .dx-icon-spinright {
-  position: absolute;
-  top: 7px;
-  right: 2px;
+.dx-context-menu .dx-menu-item .dx-menu-item-content {
+  display: block;
+}
+
+.dx-menu-item-content span:not(.dx-icon-spinright) {
+  margin-right: 6px;
+}
+
+.dx-menu-item-content span:not(.dx-menu-item-text) {
+  font-size: 20px;
+}
+
+.dx-menu-item-text {
+  flex-grow: 1;
 }
 
 #image {

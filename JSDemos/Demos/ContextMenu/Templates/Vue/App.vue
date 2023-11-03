@@ -15,13 +15,10 @@
       @item-click="itemClick"
     >
       <template #item="{ data: e }">
-        <div>
-          <span :class="e.icon"/>
-          <span
-            v-if="e.items"
-            class="dx-icon-spinright"
-          />
-          {{ e.text }}
+        <div class="item-template-container">
+          <span v-if="e.icon" :class="e.icon"></span>
+          <span class="dx-menu-item-text">{{ e.text }}</span>
+          <span v-if="e.items" class="dx-icon-spinright"></span>
         </div>
       </template>
     </DxContextMenu>
@@ -53,14 +50,21 @@ export default {
 };
 </script>
 <style>
-.dx-menu-item-content span {
-  margin-right: 5px;
+.item-template-container {
+  display: flex;
+  align-items: center;
 }
 
-.dx-menu-item .dx-icon-spinright {
-  position: absolute;
-  top: 7px;
-  right: 2px;
+.dx-menu-item-content span:not(.dx-icon-spinright) {
+  margin-right: 6px;
+}
+
+.dx-menu-item-content span:not(.dx-menu-item-text) {
+  font-size: 20px;
+}
+
+.dx-menu-item-text {
+  flex-grow: 1;
 }
 
 #image {
@@ -70,5 +74,4 @@ export default {
 .label {
   color: #767676;
 }
-
 </style>
