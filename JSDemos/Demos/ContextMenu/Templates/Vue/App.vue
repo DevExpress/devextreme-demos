@@ -16,9 +16,15 @@
     >
       <template #item="{ data: e }">
         <div class="item-template-container">
-          <span v-if="e.icon" :class="e.icon"></span>
+          <span
+            v-if="e.icon"
+            :class="e.icon"
+          />
           <span class="dx-menu-item-text">{{ e.text }}</span>
-          <span v-if="e.items" class="dx-icon-spinright"></span>
+          <span
+            v-if="e.items"
+            class="dx-icon-spinright"
+          />
         </div>
       </template>
     </DxContextMenu>
