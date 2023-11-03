@@ -186,8 +186,7 @@ jobs:
 
   lint:
     name: ${{ matrix.name }}
-    needs:
-      - build-demos
+    needs: build-devextreme
 
     runs-on: ubuntu-latest
     timeout-minutes: 60
@@ -218,9 +217,6 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: devextreme-sources
-
-    - name: Unpack artifacts
-      run: 7z x node_modules.7z
 
     - name: Install packages
       run: |
