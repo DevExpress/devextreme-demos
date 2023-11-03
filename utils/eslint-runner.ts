@@ -26,10 +26,13 @@ const getPatterns = () => {
   const patterns = getPatterns();
   const results = await eslint.lintFiles(patterns);
 
+  const errors = results.reduce((acc, { errorCount }) => acc + errorCount, 0);
+
   const formatter = await eslint.loadFormatter('stylish');
   const resultText = formatter.format(results);
 
   console.log(resultText);
+  process.exit(errors);
 })().catch((error) => {
   console.error(error);
   process.exit(1);
