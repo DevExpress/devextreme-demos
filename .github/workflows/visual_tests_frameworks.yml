@@ -218,9 +218,6 @@ jobs:
       with:
         name: devextreme-sources
 
-    - name: Unpack artifacts
-      run: 7z x node_modules.7z
-
     - name: Install packages
       run: |
         npm install devextreme-installer.tgz
