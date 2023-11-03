@@ -34,7 +34,7 @@ const waitForAngularLoading = ClientFunction(() => new Promise((resolve) => {
   let demoAppCounter = 0;
   const demoAppIntervalHandle = setInterval(() => {
     const demoApp = document.querySelector('demo-app');
-    if ((demoApp && demoApp.innerText !== 'Loading...') || demoAppCounter === 120) {
+    if ((demoApp && demoApp.innerText !== 'Loading...') || demoAppCounter === 350) {
       setTimeout(resolve, 1000);
       clearInterval(demoAppIntervalHandle);
     }
