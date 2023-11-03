@@ -63,8 +63,9 @@ namespace DevExtreme.MVC.Demos.ViewModels {
         [VerifyAge(21, ErrorMessage = "You must be at least {1} years old")]
         public DateTime? Date { get; set; }
 
+        [VerifyDateRangeSelection(ErrorMessage = "Both start and end dates must be selected")]
         [VerifyDateRange(25, ErrorMessage = "The vacation period must not exceed {1} days")]
-        public DateTime[] VacationDates { get; set; }
+        public DateTime?[] VacationDates { get; set; }
 
         [DevExtremeRequired(ErrorMessage = "You must agree to the Terms and Conditions")]
         public bool Accepted { get; set; }
