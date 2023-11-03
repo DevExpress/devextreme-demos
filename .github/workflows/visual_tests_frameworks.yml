@@ -186,8 +186,7 @@ jobs:
 
   lint:
     name: ${{ matrix.name }}
-    needs:
-      - build-demos
+    needs: build-devextreme
 
     runs-on: ubuntu-latest
     timeout-minutes: 60
