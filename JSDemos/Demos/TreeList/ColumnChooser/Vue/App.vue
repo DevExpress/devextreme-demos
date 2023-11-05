@@ -129,7 +129,7 @@ const columnChooserModes = ref([{
   key: 'select',
   name: 'Select',
 }]);
-const mode = ref('select');
+const mode = ref<DxTreeListTypes.ColumnChooserMode>('select');
 const searchEnabled = ref(true);
 const allowSelectAll = ref(true);
 const selectByClick = ref(true);
