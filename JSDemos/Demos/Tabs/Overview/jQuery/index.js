@@ -37,7 +37,11 @@ $(() => {
     value: orientations[0],
     inputAttr: { 'aria-label': 'Orientation' },
     onValueChanged(data) {
-      toggleWidgetWrapperClass(`widget-wrapper-${data.value}`);
+      const $widgetWrapper = $('.widget-wrapper');
+
+      $widgetWrapper.removeClass();
+      $widgetWrapper.addClass(`widget-wrapper widget-wrapper-${data.value}`);
+
       setTabsOption('orientation', data.value);
     },
   });
@@ -91,12 +95,6 @@ $(() => {
       setTabsOption('rtlEnabled', data.value);
     },
   });
-
-  function toggleWidgetWrapperClass(value) {
-    const $widgetWrapper = $('.widget-wrapper');
-
-    $widgetWrapper.toggleClass(value);
-  }
 
   function setTabsOption(option, value) {
     tab1.option(option, value);

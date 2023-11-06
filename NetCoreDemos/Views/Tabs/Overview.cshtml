@@ -97,14 +97,12 @@
 </div>
 
 <script>
-    function toggleWidgetWrapperClass(value) {
+    function orientation_valueChanged(e) {
         const $widgetWrapper = $('.widget-wrapper');
 
-        $widgetWrapper.toggleClass(value);
-    }
+        $widgetWrapper.removeClass();
+        $widgetWrapper.addClass(`widget-wrapper widget-wrapper-${data.value}`);
 
-    function orientation_valueChanged(e) {
-        toggleWidgetWrapperClass(`widget-wrapper-${e.value}`);
         setTabsOption('orientation', e.value);
     }
 
