@@ -32,7 +32,7 @@
         </div>
     </div>
     <div class="dx-field">
-        <div class="dx-field-label">Single-calendar View</div>
+        <div class="dx-field-label">Single-calendar view</div>
         <div class="dx-field-value">
             @(Html.DevExtreme().DateRangeBox()
                 .MultiView(false)
@@ -53,6 +53,14 @@
             @(Html.DevExtreme().DateRangeBox()
                 .Min(new JS("minValue"))
                 .Max(new JS("maxValue"))
+            )
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Disable out of range selection</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DateRangeBox()
+                .DisableOutOfRangeSelection(true)
             )
         </div>
     </div>
