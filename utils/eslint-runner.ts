@@ -26,7 +26,7 @@ const getPatterns = () => {
 
   if (changedFiles != null) {
     const isChangedConfig = changedFiles.some(
-      ({ filename }) => filename.includes('.eslintignore') || filename.includes('.eslintrc.js') || filename.includes('.github'),
+      ({ filename }) => filename.includes('eslint') || filename.includes('package-lock.json') || filename.includes('.github'),
     );
 
     if (isChangedConfig) {
