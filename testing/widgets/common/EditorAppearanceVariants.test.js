@@ -1,5 +1,5 @@
 import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
-import { Selector as $ } from 'testcafe';
+import { Selector as $, ClientFunction } from 'testcafe';
 import asyncForEach from '../../../utils/visual-tests/helpers/async-for-each';
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
@@ -16,6 +16,11 @@ runManualTest('Common', 'EditorAppearanceVariants', ['React', 'Vue', 'Angular', 
     const SELECTBOX_CLASS = 'dx-selectbox';
     const stylingModes = ['outlined', 'filled', 'underlined'];
     const labelModes = ['static', 'floating', 'hidden', 'outside'];
+
+    await ClientFunction(() => {
+      // eslint-disable-next-line no-undef
+      DevExpress.fx.off = true;
+    })();
 
     const clickSaveButton = async () => {
       await t.click($('#validate'));
@@ -39,6 +44,11 @@ runManualTest('Common', 'EditorAppearanceVariants', ['React', 'Vue', 'Angular', 
         await takeScreenshot(`common_editor_appearance_variants_${stylingMode}_${labelMode}_desktop.png`);
       });
     });
+
+    await ClientFunction(() => {
+      // eslint-disable-next-line no-undef
+      DevExpress.fx.off = false;
+    })();
 
     await t
       .expect(compareResults.isValid())
