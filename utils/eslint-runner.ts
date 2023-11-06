@@ -22,8 +22,17 @@ const getPatterns = () => {
 
   const demos = fs.readdirSync(path.resolve(process.cwd(), 'JSDemos/Demos'));
   const filteredDemos = demos.filter((_, index) => index % total === current - 1);
+  const filteredDemosPatterns = filteredDemos.map((widgetName) => `JSDemos/Demos/${widgetName}/**/*.[tj]s?(x)`);
 
   if (changedFiles != null) {
+    const isChangedConfig = changedFiles.some(
+      ({ filename }) => filename.includes('eslint') || filename.includes('package-lock.json') || filename.includes('.github'),
+    );
+
+    if (isChangedConfig) {
+      return filteredDemosPatterns;
+    }
+
     const changedDemos = changedFiles
       .filter((item) => item.filename.startsWith('JSDemos/Demos'))
       .map((item) => {
@@ -38,7 +47,7 @@ const getPatterns = () => {
     return changedDemos.map(({ widget, name, framework }) => `JSDemos/Demos/${widget}/${name}/${framework}/*.[tj]s?(x)`);
   }
 
-  return filteredDemos.map((widgetName) => `JSDemos/Demos/${widgetName}/**/*.[tj]s?(x)`);
+  return filteredDemosPatterns;
 };
 
 (async () => {
