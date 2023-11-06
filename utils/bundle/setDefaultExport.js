@@ -5,15 +5,16 @@ const values = [{
   old: 'commonUtils.equalByValue(oldValue, newValue)',
   new: 'commonUtils.default.equalByValue(oldValue, newValue)'
 }, {
-  old: 'events.one(element',
-  new: 'events.default.one(element'
+  old: 'dxEvents.one(element',
+  new: 'dxEvents.default.one(element'
 }, {
-  old: 'events.triggerHandler(changeHandlers[i]',
-  new: 'events.default.triggerHandler(changeHandlers[i]',
+  old: 'dxEvents.triggerHandler(changeHandlers[i]',
+  new: 'dxEvents.default.triggerHandler(changeHandlers[i]',
 }, {
-  old: 'events.triggerHandler(element',
-  new: 'events.default.triggerHandler(element',
-}]
+  old: 'dxEvents.triggerHandler(element',
+  new: 'dxEvents.default.triggerHandler(element',
+}];
+
 function setDefaultExport() {
   fs.readFile(filePath, 'utf8', (err, data) => {
     let updatedContent = data;
