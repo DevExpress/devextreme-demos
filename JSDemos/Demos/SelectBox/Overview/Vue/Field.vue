@@ -13,18 +13,12 @@
     />
   </div>
 </template>
-<script>
+<script setup lang="ts">
 import DxTextBox from 'devextreme-vue/text-box';
 
-export default {
-  components: {
-    DxTextBox,
-  },
-  props: {
-    fieldData: {
-      type: Object,
-      default: () => {},
-    },
-  },
-};
+withDefaults(defineProps<{
+  fieldData?: Record<string, any>
+}>(), {
+  fieldData: () => {},
+});
 </script>
