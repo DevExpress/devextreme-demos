@@ -3,6 +3,12 @@ import fs from 'fs';
 import path from 'path';
 import { ESLint } from 'eslint';
 
+const getChangedFiles = () => {
+  const changedFilesPath = process.env.CHANGEDFILEINFOSPATH;
+
+  return fs.existsSync(changedFilesPath) ? JSON.parse(fs.readFileSync(changedFilesPath).toString()) : null;
+};
+
 const getPatterns = () => {
   const CONSTEL = process.env.CONSTEL;
 
@@ -10,12 +16,29 @@ const getPatterns = () => {
     return ['JSDemos/Demos/**/*.[tj]s?(x)'];
   }
 
+  const changedFiles: Array<{ filename: string }> | null = getChangedFiles();
+
   const [current, total] = CONSTEL.split('/').map(Number);
 
   const demos = fs.readdirSync(path.resolve(process.cwd(), 'JSDemos/Demos'));
   const filteredDemos = demos.filter((_, index) => index % total === current - 1);
 
-  return filteredDemos.map((demoName) => `JSDemos/Demos/${demoName}/**/*.[tj]s?(x)`);
+  if (changedFiles != null) {
+    const changedDemos = changedFiles
+      .filter((item) => item.filename.startsWith('JSDemos/Demos'))
+      .map((item) => {
+        const parts = item.filename.split('/');
+        return {
+          widget: parts[2],
+          name: parts[3],
+          framework: parts[4],
+        };
+      }).filter(({ widget }) => filteredDemos.includes(widget));
+
+    return changedDemos.map(({ widget, name, framework }) => `JSDemos/Demos/${widget}/${name}/${framework}/*.[tj]s?(x)`);
+  }
+
+  return filteredDemos.map((widgetName) => `JSDemos/Demos/${widgetName}/**/*.[tj]s?(x)`);
 };
 
 (async () => {
@@ -26,10 +49,13 @@ const getPatterns = () => {
   const patterns = getPatterns();
   const results = await eslint.lintFiles(patterns);
 
+  const errors = results.reduce((acc, { errorCount }) => acc + errorCount, 0);
+
   const formatter = await eslint.loadFormatter('stylish');
   const resultText = formatter.format(results);
 
   console.log(resultText);
+  process.exit(errors);
 })().catch((error) => {
   console.error(error);
   process.exit(1);
