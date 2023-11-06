@@ -58,6 +58,7 @@
         "systemjs": "0.21.6",
         "systemjs-plugin-babel": "0.0.25",
         "systemjs-plugin-json": "0.3.0",
+        "traceur": "0.0.105",
         "typescript": "~4.9.5",
         "vue": "^3.3.4",
         "vuex": "4.0.0-beta.4",

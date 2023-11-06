@@ -5,7 +5,7 @@ const { task, parallel, series } = require('gulp');
 const { init } = require('../utils/shared/config-helper');
 const createConfig = require('../utils/internal/create-config');
 const { copyJsSharedResources } = require('../utils/copy-shared-resources/copy');
-const { copyBundlesFolder, build } = require('../utils/bundle');
+const { copyBundlesFolder, build, setDefaultExport } = require('../utils/bundle');
 
 const demosDir = join(__dirname, '..', 'JSDemos/Demos');
 
@@ -37,4 +37,8 @@ exports.bundles = series(
       build(framework).then(callback);
     }, { displayName: `bundle-${framework}` })),
   ),
+  (done) => {
+    setDefaultExport();
+    done();
+  },
 );

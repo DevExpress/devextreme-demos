@@ -2,6 +2,10 @@
 const path = require('path');
 const fs = require('fs-extra');
 const Builder = require('systemjs-builder');
+const { changeFileExtensions } = require('./changeExtension');
+const { setDefaultExport } = require('./setDefaultExport');
+
+changeFileExtensions();
 
 // https://stackoverflow.com/questions/42412965/how-to-load-named-exports-with-systemjs/47108328
 const prepareModulesToNamedImport = () => {
@@ -54,6 +58,9 @@ const getDefaultBuilderConfig = (framework, additionPaths) => ({
   meta: {
     '*': {
       build: false,
+    },
+    '*.mjs': {
+      'format': 'esm',
     },
     'devextreme/*': {
       build: true,
@@ -114,11 +121,11 @@ const prepareConfigs = (framework) => {
         .map((fileName) => fileName.replace('devextreme-angular-ui-', '').replace('.mjs.map', ''));
 
       additionPaths = {
-        'devextreme-angular': `${bundlesRoot}/devextreme-angular.mjs`,
-        'devextreme-angular/core': `${bundlesRoot}/devextreme-angular-core.mjs`,
+        'devextreme-angular': `${bundlesRoot}/devextreme-angular.js`,
+        'devextreme-angular/core': `${bundlesRoot}/devextreme-angular-core.js`,
         ...componentNames.reduce((items, item) => {
           // eslint-disable-next-line no-param-reassign
-          items[`devextreme-angular/ui/${item}`] = `${bundlesRoot}/devextreme-angular-ui-${item}.mjs`;
+          items[`devextreme-angular/ui/${item}`] = `${bundlesRoot}/devextreme-angular-ui-${item}.js`;
           return items;
         }, {}),
       };
@@ -197,4 +204,5 @@ const copyBundlesFolder = () => {
 module.exports = {
   copyBundlesFolder,
   build,
+  setDefaultExport,
 };

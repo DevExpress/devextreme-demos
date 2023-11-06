@@ -31,7 +31,6 @@ const bundleConfig = {
     'devextreme.angular.systemjs.js': '../../../../../bundles/devextreme.angular.systemjs.js',
     'rxjs': 'npm:rxjs/dist/bundles/rxjs.umd.js',
     'rxjs/operators': 'npm:rxjs/dist/cjs/operators/index.js',
-    'devextreme-angular': 'npm:devextreme-angular/fesm2015/devextreme-angular.mjs',
     'devextreme': 'npm:devextreme/cjs',
   },
   packages: {
