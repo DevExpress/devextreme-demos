@@ -29,6 +29,10 @@
   align-items: center;
 }
 
+::ng-deep .widget-wrapper-shown-nav-buttons:not(.widget-wrapper-vertical) {
+  width: 384px;
+}
+
 ::ng-deep .options {
   display: flex;
   flex-direction: column;

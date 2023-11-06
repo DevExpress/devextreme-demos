@@ -25,13 +25,21 @@ function OptionWrapper(props) {
   );
 }
 
+function getWrapperClasses(orientation, showNavigation) {
+  return [
+    'widget-wrapper',
+    `widget-wrapper-${orientation}`,
+    showNavigation ? 'widget-wrapper-shown-nav-buttons' : '',
+  ].join(' ');
+}
+
 const App = () => {
   const [orientation, setOrientation] = React.useState(orientations[0]);
   const [stylingMode, setStylingMode] = React.useState(stylingModes[1]);
   const [iconPosition, setIconPosition] = React.useState(iconPositions[0]);
   const [showNavigation, setShowNavigation] = React.useState(false);
   const [scrollContent, setScrollContent] = React.useState(false);
-  const [fullWidth, setFullWidth] = React.useState(false);
+  const [fullWidth, setFullWidth] = React.useState('auto');
   const [rtlEnabled, setRtlEnabled] = React.useState(false);
   const [widgetWrapperClasses, setWidgetWrapperClasses] = React.useState('widget-wrapper widget-wrapper-horizontal');
 
@@ -45,21 +53,26 @@ const App = () => {
 
   const orientationChanged = React.useCallback(
     (e) => {
-      setWidgetWrapperClasses(`widget-wrapper widget-wrapper-${e.value}`);
+      const value = getWrapperClasses(e.value, showNavigation);
+
+      setWidgetWrapperClasses(value);
       setOrientation(e.value);
-    }, [setOrientation, setWidgetWrapperClasses],
+    }, [showNavigation, setOrientation, setWidgetWrapperClasses],
   );
 
   const showNavigationChanged = React.useCallback((e) => {
+    const value = getWrapperClasses(orientation, e.value);
+
+    setWidgetWrapperClasses(value);
     setShowNavigation(e.value);
-  }, [setShowNavigation]);
+  }, [orientation, setShowNavigation]);
 
   const scrollContentChanged = React.useCallback((e) => {
     setScrollContent(e.value);
   }, [setScrollContent]);
 
   const fullWidthChanged = React.useCallback((e) => {
-    setFullWidth(e.value);
+    setFullWidth(e.value ? '100%' : 'auto');
   }, [setFullWidth]);
 
   const rtlEnabledChanged = React.useCallback((e) => {
@@ -72,8 +85,8 @@ const App = () => {
         <div className={widgetWrapperClasses}>
           <Tabs
             id="withText"
-            width="auto"
             selectedIndex={0}
+            width={fullWidth}
             rtlEnabled={rtlEnabled}
             dataSource={tabsText}
             scrollByContent={scrollContent}
@@ -85,8 +98,8 @@ const App = () => {
 
           <Tabs
             id="withIconAndText"
-            width="auto"
             selectedIndex={0}
+            width={fullWidth}
             rtlEnabled={rtlEnabled}
             dataSource={tabsIconAndText}
             scrollByContent={scrollContent}
@@ -98,8 +111,8 @@ const App = () => {
 
           <Tabs
             id="withIcon"
-            width="auto"
             selectedIndex={0}
+            width={fullWidth}
             rtlEnabled={rtlEnabled}
             dataSource={tabsIcon}
             scrollByContent={scrollContent}
@@ -161,7 +174,7 @@ const App = () => {
         <div className="option">
           <CheckBox
             text="Full width"
-            value={fullWidth}
+            value={fullWidth === '100%'}
             onValueChanged={fullWidthChanged}
           />
         </div>

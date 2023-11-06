@@ -33,16 +33,11 @@ $(() => {
   }).dxTabs('instance');
 
   $('#orientation').dxSelectBox({
-    showNavButtons: false,
     items: orientations,
     value: orientations[0],
     inputAttr: { 'aria-label': 'Orientation' },
     onValueChanged(data) {
-      const $widgetWrapper = $('.widget-wrapper');
-
-      $widgetWrapper.removeClass();
-      $widgetWrapper.addClass(`widget-wrapper widget-wrapper-${data.value}`);
-
+      toggleWidgetWrapperClass(`widget-wrapper-${data.value}`);
       setTabsOption('orientation', data.value);
     },
   });
@@ -69,6 +64,7 @@ $(() => {
     text: 'Show navigation buttons',
     value: false,
     onValueChanged(data) {
+      toggleWidgetWrapperClass('widget-wrapper-shown-nav-buttons', data.value);
       setTabsOption('showNavButtons', data.value);
     },
   });
@@ -96,6 +92,12 @@ $(() => {
       setTabsOption('rtlEnabled', data.value);
     },
   });
+
+  function toggleWidgetWrapperClass(value) {
+    const $widgetWrapper = $('.widget-wrapper');
+
+    $widgetWrapper.toggleClass(value);
+  }
 
   function setTabsOption(option, value) {
     tab1.option(option, value);

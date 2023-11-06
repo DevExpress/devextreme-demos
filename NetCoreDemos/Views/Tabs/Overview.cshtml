@@ -97,12 +97,14 @@
 </div>
 
 <script>
-    function orientation_valueChanged(e) {
+    function toggleWidgetWrapperClass(value) {
         const $widgetWrapper = $('.widget-wrapper');
 
-        $widgetWrapper.removeClass();
-        $widgetWrapper.addClass(`widget-wrapper widget-wrapper-${data.value}`);
+        $widgetWrapper.toggleClass(value);
+    }
 
+    function orientation_valueChanged(e) {
+        toggleWidgetWrapperClass(`widget-wrapper-${e.value}`);
         setTabsOption('orientation', e.value);
     }
 
@@ -115,6 +117,7 @@
     }
 
     function showNavigation_valueChanged(e) {
+        toggleWidgetWrapperClass('widget-wrapper-shown-nav-buttons', e.value);
         setTabsOption('showNavButtons', e.value);
     }
 

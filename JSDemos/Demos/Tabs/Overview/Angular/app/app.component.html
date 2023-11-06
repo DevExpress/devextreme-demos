@@ -1,9 +1,9 @@
 <div id="tabs-demo">
   <div class="widget-container">
-    <div [class]="widgetWrapperClasses">
+    <div [ngClass]="widgetWrapperClasses">
       <dx-tabs
         #withText
-        width="auto"
+        [width]="width"
         [selectedIndex]="0"
         [rtlEnabled]="rtlEnabled"
         [scrollByContent]="scrollByContent"
@@ -16,7 +16,7 @@
 
       <dx-tabs
         #withIconAndText
-        width="auto"
+        [width]="width"
         [selectedIndex]="0"
         [rtlEnabled]="rtlEnabled"
         [scrollByContent]="scrollByContent"
@@ -29,7 +29,7 @@
 
       <dx-tabs
         #withIcon
-        width="auto"
+        [width]="width"
         [selectedIndex]="0"
         [rtlEnabled]="rtlEnabled"
         [scrollByContent]="scrollByContent"
@@ -76,7 +76,8 @@
       <dx-check-box
         id="show-navigation-buttons"
         text="Show navigation buttons"
-        [(value)]="showNavButtons"
+        [value]="showNavButtons"
+        (onValueChanged)="onShowNavButtonsChanged($event)"
       ></dx-check-box>
     </div>
 
