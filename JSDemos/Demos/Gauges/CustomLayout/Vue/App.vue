@@ -55,7 +55,8 @@
     </DxCircularGauge>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxCircularGauge,
   DxScale,
@@ -70,27 +71,8 @@ import {
   DxExport,
 } from 'devextreme-vue/circular-gauge';
 
-export default {
-  components: {
-    DxCircularGauge,
-    DxScale,
-    DxTick,
-    DxLabel,
-    DxRangeContainer,
-    DxRange,
-    DxValueIndicator,
-    DxSubvalueIndicator,
-    DxTitle,
-    DxFont,
-    DxExport,
-  },
-  data() {
-    return {
-      subvalues: [40, 90],
-      value: 85,
-    };
-  },
-};
+const subvalues = [40, 90];
+const value = 85;
 </script>
 <style scoped>
 #gauge {

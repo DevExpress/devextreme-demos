@@ -122,7 +122,8 @@
     />
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   DxLinearGauge,
   DxTitle,
@@ -137,30 +138,9 @@ import {
 import { DxSelectBox } from 'devextreme-vue/select-box';
 import { cities } from './data.js';
 
-export default {
-  components: {
-    DxLinearGauge,
-    DxTitle,
-    DxFont,
-    DxGeometry,
-    DxScale,
-    DxRangeContainer,
-    DxRange,
-    DxValueIndicator,
-    DxLabel,
-    DxSelectBox,
-  },
-  data() {
-    return {
-      cities,
-      value: cities[0],
-      customTicks: [900, 1000, 1020, 1100],
-      pressureLabelFormat: {
-        type: 'decimal',
-      },
-    };
-  },
-};
+const value = ref(cities[0]);
+const customTicks = [900, 1000, 1020, 1100];
+const pressureLabelFormat = { type: 'decimal' };
 </script>
 <style scoped>
 #gauge-demo {
