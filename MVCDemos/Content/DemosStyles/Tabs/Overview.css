@@ -29,10 +29,6 @@
     align-items: center;
 }
 
-.widget-wrapper-shown-nav-buttons:not(.widget-wrapper-vertical) {
-    width: 384px;
-}
-
 .options {
     display: flex;
     flex-direction: column;

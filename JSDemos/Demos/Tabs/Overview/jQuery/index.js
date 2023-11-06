@@ -64,7 +64,6 @@ $(() => {
     text: 'Show navigation buttons',
     value: false,
     onValueChanged(data) {
-      toggleWidgetWrapperClass('widget-wrapper-shown-nav-buttons', data.value);
       setTabsOption('showNavButtons', data.value);
     },
   });

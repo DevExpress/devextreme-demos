@@ -64,22 +64,9 @@ export class AppComponent {
     this.iconPosition = this.iconPositions[0];
   }
 
-  getWrapperClasses(orientation: string, showNavButtons: boolean) {
-    return [
-      'widget-wrapper',
-      `widget-wrapper-${orientation}`,
-      showNavButtons ? 'widget-wrapper-shown-nav-buttons' : '',
-    ].join(' ');
-  }
-
   onOrientationChanged(e) {
-    this.widgetWrapperClasses = this.getWrapperClasses(e.value, this.showNavButtons);
+    this.widgetWrapperClasses = `widget-wrapper widget-wrapper-${e.value}`;
     this.orientation = e.value;
-  }
-
-  onShowNavButtonsChanged(e) {
-    this.widgetWrapperClasses = this.getWrapperClasses(this.orientation, e.value);
-    this.showNavButtons = e.value;
   }
 
   onFullWidthChanged(e) {
