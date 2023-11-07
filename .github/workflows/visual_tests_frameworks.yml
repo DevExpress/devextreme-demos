@@ -249,7 +249,7 @@ jobs:
     - name: Run lint
       env:
         CHANGEDFILEINFOSPATH: ${{ github.workspace }}/changed-files.json
-        DEBUG: 'eslint:cli-engine'
+        DEBUG: 'eslint:cli-engine,stylelint:standalone'
       run: ${{ matrix.command }}
 
   check_generated_demos:
