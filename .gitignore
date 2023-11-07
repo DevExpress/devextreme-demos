@@ -30,6 +30,7 @@ JSDemos/Demos/FileManager/AzureClientBinding/Angular/app/app.service.ts
 JSDemos/Demos/FileUploader/AzureDirectUploading/Angular/app/app.service.ts
 
 JSDemos/Demos/**/config.js
+JSDemos/Demos/**/tsconfig.json
 
 MVCDemos/App_Data/Northwind.mdf
 MVCDemos/Content/icons
