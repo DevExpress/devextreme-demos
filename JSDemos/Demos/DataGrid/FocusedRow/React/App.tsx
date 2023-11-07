@@ -46,7 +46,8 @@ const App = () => {
     const rowsCount = e.component.getVisibleRows().length;
     const pageCount = e.component.pageCount();
     const pageIndex = e.component.pageIndex();
-    const key = (e?.event as any).key;
+    const event = e?.event as any;
+    const key = event.key;
 
     if (key && e.prevRowIndex === e.newRowIndex) {
       if (e.newRowIndex === rowsCount - 1 && pageIndex < pageCount - 1) {
