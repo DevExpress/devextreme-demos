@@ -71,6 +71,7 @@ const maxDate = new Date().setFullYear(new Date().getFullYear() - 21);
 const dateBoxOptions = {
   placeholder: 'Birth Date',
   acceptCustomValue: false,
+  openOnFieldClick: true,
 };
 
 const dateRangeBoxOptions = {

@@ -8,6 +8,7 @@ import { filter, fields } from './data.ts';
 
 const dataSource = new DataSource({
   store: new ODataStore({
+    version: 2,
     fieldTypes: {
       Product_Cost: 'Decimal',
       Product_Sale_Price: 'Decimal',

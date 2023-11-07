@@ -26,7 +26,7 @@
       <div class="caption">Options</div>
 
       <div class="option">
-        <div class="option-label">Tabs position</div>
+        <div class="option-label">Tab position</div>
 
         <DxSelectBox
           v-model:value="tabsPosition"
@@ -135,7 +135,7 @@ export default {
   width: 0;
 }
 
-.dx-theme-material .dx-tabpanel {
+.dx-viewport:not(.dx-theme-generic) .dx-tabpanel {
   border-radius: 8px;
   overflow: clip;
 }

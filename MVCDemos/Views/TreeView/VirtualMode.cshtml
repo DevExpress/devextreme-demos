@@ -1,5 +1,6 @@
 ﻿@(Html.DevExtreme().TreeView()
     .DataSource(d => d.OData()
+        .Version(2)
         .Url("https://js.devexpress.com/Demos/WidgetsGallery/odata/HierarchicalItems")
     )
     .DataStructure(TreeViewDataStructure.Plain)
