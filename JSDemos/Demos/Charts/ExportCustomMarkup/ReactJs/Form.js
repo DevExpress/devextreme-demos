@@ -1,7 +1,7 @@
 import React from 'react';
 
 const fontFamily = "'Segoe UI', 'Helvetica Neue', 'Trebuchet MS', Verdana, sans-serif";
-const Form = React.forwardRef((props, ref) => (
+const Form = React.forwardRef((_, ref) => (
   <div
     id="custom_markup_container"
     ref={ref}
