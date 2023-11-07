@@ -81,6 +81,6 @@ export function createRect(size, fill, stroke, strokeWidth) {
   rect.setAttribute('height', size.toString());
   rect.setAttribute('fill', fill);
   rect.setAttribute('stroke', stroke);
-  rect.setAttribute('stroke-width', strokeWidth.toString());
+  rect.setAttribute('stroke-width', strokeWidth?.toString());
   return rect;
 }

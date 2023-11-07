@@ -3,7 +3,6 @@
     "target": "ES2015",
     "jsx": "react",
     "moduleResolution": "bundler",
-    "esModuleInterop": true,
     "allowImportingTsExtensions": true,
     "noEmit": true
   },
