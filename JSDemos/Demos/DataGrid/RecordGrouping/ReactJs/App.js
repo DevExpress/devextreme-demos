@@ -12,7 +12,7 @@ import { customers } from './data.js';
 const App = () => {
   const [autoExpandAll, setAutoExpandAll] = React.useState(true);
   const onAutoExpandAllChanged = React.useCallback(() => {
-    setAutoExpandAll((autoExpandAll) => !autoExpandAll);
+    setAutoExpandAll((previousAutoExpandAll) => !previousAutoExpandAll);
   }, []);
   return (
     <div>

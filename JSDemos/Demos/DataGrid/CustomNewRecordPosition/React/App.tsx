@@ -1,6 +1,6 @@
 import React from 'react';
 import DataGrid, {
-  Column, Editing, ValidationRule, Button, Toolbar, Item, Scrolling, DataGridTypes,
+  Column, Editing, ValidationRule, Button, IButtonProps, Toolbar, Item, Scrolling, DataGridTypes,
 } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
 import Guid from 'devextreme/core/guid';
@@ -21,7 +21,7 @@ const App = () => {
   const [changes, setChanges] = React.useState([]);
   const [editRowKey, setEditRowKey] = React.useState(null);
 
-  const onAddButtonClick = React.useCallback((e: { row: { key: any; }; }) => {
+  const onAddButtonClick = React.useCallback<IButtonProps['onClick']>((e) => {
     const key = new Guid().toString();
     setChanges([{
       key,
