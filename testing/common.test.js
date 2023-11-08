@@ -85,6 +85,9 @@ const execTestCafeCode = (t, code) => {
     'Diagram',
     'FileManager',
     'Gantt',
+    // Grid's
+    'Scheduler',
+    'PivotGrid',
   ];
 
   getDemoPaths(approach).forEach((demoPath, index) => {
