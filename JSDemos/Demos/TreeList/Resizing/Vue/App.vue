@@ -51,8 +51,8 @@ import { DxTreeList, DxColumn } from 'devextreme-vue/tree-list';
 import { DxSelectBox } from 'devextreme-vue/select-box';
 import { employees } from './data.ts';
 
-const resizingModes = ['nextColumn', 'widget'];
-const columnResizingMode = ref('nextColumn');
+const resizingModes: DxTreeListTypes.ColumnResizeMode[] = ['nextColumn', 'widget'];
+const columnResizingMode = ref<DxTreeListTypes.ColumnResizeMode>('nextColumn');
 const expandedRowKeys = [1, 3, 6];
 </script>
 <style scoped>
