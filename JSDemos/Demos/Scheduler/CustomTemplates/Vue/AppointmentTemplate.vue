@@ -14,7 +14,7 @@
 import { formatDate } from 'devextreme/localization';
 import Query from 'devextreme/data/query';
 
-import DxScheduler, { DxSchedulerTypes } from 'devextreme-vue/cjs/scheduler';
+import DxScheduler, { DxSchedulerTypes } from 'devextreme-vue/scheduler';
 import { moviesData } from './data.ts';
 
 const props = defineProps<{
