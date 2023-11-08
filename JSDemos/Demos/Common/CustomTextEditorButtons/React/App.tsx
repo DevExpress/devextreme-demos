@@ -51,7 +51,7 @@ function App() {
     [setCurrencyFormat, setCurrencyValue],
   );
 
-  const todayButton = React.useMemo(
+  const todayButton = React.useMemo<ButtonTypes.Properties>(
     () => ({
       text: 'Today',
       stylingMode: 'text',
