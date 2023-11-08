@@ -10,6 +10,6 @@
   "Warning: forwardRef render functions accept exactly two parameters: props and ref.",
   "Warning: %s: `ref` is not a prop.",
   "W0001 - dxDataGrid - 'headerFilter.allowSearch' option is deprecated in 23.1. Use the 'headerFilter.search.enabled' option instead",
-  "W0019 - DevExtreme: Valid license key not found",
-  "W0022 - DevExtreme: This version is a pre-release, and it is not suitable for commercial use"
+  "W0019 -",
+  "W0022 -"
 ]

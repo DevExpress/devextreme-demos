@@ -3,6 +3,7 @@
 @(Html.DevExtreme().Chart()
     .ID("chart")
     .DataSource(d => d.OData()
+        .Version(2)
         .Url("https://js.devexpress.com/Demos/WidgetsGallery/odata/WeatherItems")
         .Expand("DayItems")
     )

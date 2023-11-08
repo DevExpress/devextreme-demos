@@ -84,6 +84,7 @@
             columns.Add().DataField("City");
             columns.Add().DataField("Phone");
         })
+        .ShowBorders(true)
         .HoverStateEnabled(true)
         .Paging(p => p.PageSize(10))
         .FilterRow(f => f.Visible(true))
