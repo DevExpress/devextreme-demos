@@ -77,7 +77,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { DxTreeList, DxColumn, DxLookup, DxTreeListTypes } from 'devextreme-vue/tree-list';
+import {
+  DxTreeList, DxColumn, DxLookup, DxTreeListTypes,
+} from 'devextreme-vue/tree-list';
 import DxNumberBox from 'devextreme-vue/number-box';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 

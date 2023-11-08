@@ -55,7 +55,9 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
-import { DxTreeList, DxColumn, DxSearchPanel, DxTreeListTypes } from 'devextreme-vue/tree-list';
+import {
+  DxTreeList, DxColumn, DxSearchPanel, DxTreeListTypes,
+} from 'devextreme-vue/tree-list';
 import DxSelectBox from 'devextreme-vue/select-box';
 import { employees } from './data.ts';
 
