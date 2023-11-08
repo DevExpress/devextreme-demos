@@ -46,6 +46,7 @@ import { DxPivotGrid, DxFieldChooser, DxPivotGridTypes } from 'devextreme-vue/pi
 import { DxPopup } from 'devextreme-vue/popup';
 import { DxDataGrid, DxColumn } from 'devextreme-vue/data-grid';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
+import DataSource from 'devextreme/data/data_source';
 import { sales } from './data.ts';
 
 const dataSource = new PivotGridDataSource({
@@ -79,7 +80,7 @@ const dataSource = new PivotGridDataSource({
   store: sales,
 });
 const dataGridRef = ref<DxDataGrid>();
-const drillDownDataSource = ref(null);
+const drillDownDataSource = ref<DataSource>(null);
 const popupTitle = ref('');
 const popupVisible = ref(false);
 
