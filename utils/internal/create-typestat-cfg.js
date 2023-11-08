@@ -41,12 +41,16 @@ function findAllDemosByGroup(group, reactFoldersByFolderName) {
 function findJSXForRename(reactFolders) {
   const reactJsxPaths = [];
   reactFolders.forEach((folder) => {
-    const files = fs.readdirSync(path.join(pathToOutput, folder));
-    files.forEach((file) => {
-      if (!file.includes('config.') && (file.endsWith('.js') || file.endsWith('.jsx'))) {
-        reactJsxPaths.push(path.join(folder, file));
-      }
-    });
+    const reactFolder = path.join(pathToOutput, folder);
+    const reactFolderExists = fs.existsSync(reactFolder);
+    if (reactFolderExists) {
+      const files = fs.readdirSync(reactFolder);
+      files.forEach((file) => {
+        if (!file.includes('config.') && (file.endsWith('.js') || file.endsWith('.jsx'))) {
+          reactJsxPaths.push(path.join(folder, file));
+        }
+      });
+    }
   });
   return reactJsxPaths;
 }
