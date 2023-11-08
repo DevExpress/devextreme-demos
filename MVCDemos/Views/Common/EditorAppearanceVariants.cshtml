@@ -2,22 +2,24 @@
     <div class="caption">Options</div>
     <div class="editors-modes">
         <div class="option">
-            <label>Styling Mode</label>
             @(Html.DevExtreme().SelectBox()
                 .ID("styling-mode-selector")
                 .Items(new[] { "outlined", "filled", "underlined" })
                 .Value(new JS("stylingMode"))
                 .InputAttr("aria-label", "Styling Mode")
+                .Label("Styling Mode")
+                .LabelMode(EditorLabelMode.Outside)
                 .OnValueChanged("getValueChangedHandler('stylingMode')")
             )
         </div>
         <div class="option">
-            <label>Label Mode</label>
             @(Html.DevExtreme().SelectBox()
                 .ID("label-mode-selector")
-                .Items(new[] { "static", "floating", "hidden" })
+                .Items(new[] { "static", "floating", "hidden", "outside" })
                 .Value(new JS("labelMode"))
                 .InputAttr("aria-label", "Label Mode")
+                .Label("Label Mode")
+                .LabelMode(EditorLabelMode.Outside)
                 .OnValueChanged("getValueChangedHandler('labelMode')")
             )
         </div>
@@ -31,6 +33,7 @@
         .InputAttr("aria-label", "Name")
         .Placeholder("Type...")
         .Label("Name")
+        .LabelMode(EditorLabelMode.Static)
     )
     @(Html.DevExtreme().TextBox()
         .ID("address")
@@ -45,6 +48,7 @@
         .Value(new DateTime(1981, 6, 3))
         .Placeholder("Select...")
         .Label("Birth Date")
+        .LabelMode(EditorLabelMode.Static)
     )
     @(Html.DevExtreme().SelectBox()
         .ID("state")
@@ -66,6 +70,7 @@
         .Label("Phone")
         .Mask("+1 (X00) 000-0000")
         .MaskRules(new { X = new JS("/[02-9]/") })
+        .LabelMode(EditorLabelMode.Static)
     )
     @(Html.DevExtreme().DateBox()
         .ID("hire-date")
@@ -80,12 +85,14 @@
         .StartDateLabel("Start Vacation Date")
         .EndDate("12/3/2023")
         .EndDateLabel("End Vacation Date")
+        .LabelMode(EditorLabelMode.Static)
     )
     @(Html.DevExtreme().TextArea()
         .ID("notes")
         .Value("Olivia loves to sell. She has been selling DevAV products since 2012.")
         .Placeholder("Type...")
         .Label("Notes")
+        .LabelMode(EditorLabelMode.Static)
     )
 </div>
 @(Html.DevExtreme().Button()

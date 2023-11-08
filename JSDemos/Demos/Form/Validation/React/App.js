@@ -11,6 +11,7 @@ import Form, {
   RequiredRule,
   StringLengthRule,
   AsyncRule,
+  CustomRule,
 } from 'devextreme-react/form';
 import notify from 'devextreme/ui/notify';
 import Validator from 'devextreme/ui/validator';
@@ -69,15 +70,13 @@ const maxDate = new Date().setFullYear(new Date().getFullYear() - 21);
 const dateBoxOptions = {
   placeholder: 'Birth Date',
   acceptCustomValue: false,
-  invalidDateMessage:
-    'The date must have the following format: MM/dd/yyyy',
+  openOnFieldClick: true,
 };
 
 const dateRangeBoxOptions = {
   startDatePlaceholder: 'Start Date',
   endDatePlaceholder: 'End Date',
   acceptCustomValue: false,
-  invalidDateMessage: 'The date must have the following format: MM/dd/yyyy',
 };
 
 function sendRequest(value) {
@@ -94,6 +93,29 @@ const passwordComparison = () => customer.Password;
 const checkComparison = () => true;
 
 const asyncValidation = (params) => sendRequest(params.value);
+
+const validateVacationDatesRange = ({ value }) => {
+  const [startDate, endDate] = value;
+
+  if (startDate === null || endDate === null) {
+    return true;
+  }
+
+  const millisecondsPerDay = 24 * 60 * 60 * 1000;
+  const daysDifference = Math.abs((endDate - startDate) / millisecondsPerDay);
+
+  return daysDifference < 25;
+};
+
+const validateVacationDatesPresence = ({ value }) => {
+  const [startDate, endDate] = value;
+
+  if (startDate === null && endDate === null) {
+    return true;
+  }
+
+  return startDate !== null && endDate !== null;
+};
 
 const registerButtonOptions = {
   text: 'Register',
@@ -231,6 +253,8 @@ function App() {
               editorOptions={dateRangeBoxOptions}
             >
               <Label text="Vacation Dates" />
+              <CustomRule message="The vacation period must not exceed 25 days" validationCallback={validateVacationDatesRange} />
+              <CustomRule message="Both start and end dates must be selected" validationCallback={validateVacationDatesPresence} />
             </SimpleItem>
 
           </GroupItem>

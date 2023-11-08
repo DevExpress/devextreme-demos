@@ -2,6 +2,7 @@
     .ID("grid-container")
     .ShowBorders(true)
     .DataSource(d => d.OData()
+        .Version(2)
         .Url("https://js.devexpress.com/Demos/DevAV/odata/Tasks")
         .Key("Task_ID")
         .Expand("ResponsibleEmployee"))

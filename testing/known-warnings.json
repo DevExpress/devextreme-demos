@@ -9,5 +9,7 @@
   "[Vue warn]: Failed to resolve component: ",
   "Warning: forwardRef render functions accept exactly two parameters: props and ref.",
   "Warning: %s: `ref` is not a prop.",
-  "W0001 - dxDataGrid - 'headerFilter.allowSearch' option is deprecated in 23.1. Use the 'headerFilter.search.enabled' option instead"
+  "W0001 - dxDataGrid - 'headerFilter.allowSearch' option is deprecated in 23.1. Use the 'headerFilter.search.enabled' option instead",
+  "W0019 -",
+  "W0022 -"
 ]

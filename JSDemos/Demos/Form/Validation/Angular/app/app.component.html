@@ -80,6 +80,18 @@
         [editorOptions]="dateRangeBoxOptions"
       >
         <dxo-label text="Vacation Dates"> </dxo-label>
+        <dxi-validation-rule
+          type="custom"
+          message="The vacation period must not exceed 25 days"
+          [validationCallback]="validateVacationDatesRange"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="custom"
+          message="Both start and end dates must be selected"
+          [validationCallback]="validateVacationDatesPresence"
+        >
+        </dxi-validation-rule>
       </dxi-item>
     </dxi-item>
     <dxi-item itemType="group" caption="Billing address">

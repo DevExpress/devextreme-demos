@@ -42,6 +42,7 @@ export default {
       gridFilterValue: filter,
       dataSource: new DataSource({
         store: new ODataStore({
+          version: 2,
           fieldTypes: {
             Product_Cost: 'Decimal',
             Product_Sale_Price: 'Decimal',
@@ -69,13 +70,16 @@ export default {
 </script>
 <style scoped>
 .filter-container {
-  background-color: rgba(191, 191, 191, 0.15);
+  background-color: transparent;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.14), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
   padding: 5px;
   width: 500px;
-  margin-bottom: 25px;
+  margin: 24px;
 }
 
 .dx-filterbuilder {
+  background-color: transparent;
   padding: 10px;
 }
 

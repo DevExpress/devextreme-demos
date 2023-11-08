@@ -125,16 +125,13 @@ export class AppComponent {
   dateBoxOptions = {
     placeholder: 'Birth Date',
     acceptCustomValue: false,
-    invalidDateMessage:
-      'The date must have the following format: MM/dd/yyyy',
+    openOnFieldClick: true,
   };
 
   dateRangeBoxOptions = {
     startDatePlaceholder: 'Start Date',
     endDatePlaceholder: 'End Date',
     acceptCustomValue: false,
-    invalidDateMessage:
-      'The date must have the following format: MM/dd/yyyy',
   };
 
   registerButtonOptions = {
@@ -173,6 +170,29 @@ export class AppComponent {
     this.countries = service.getCountries();
     this.cities = service.getCities();
     this.customer = service.getCustomer();
+  }
+
+  validateVacationDatesRange({ value }) {
+    const [startDate, endDate] = value;
+
+    if (startDate === null || endDate === null) {
+      return true;
+    }
+
+    const millisecondsPerDay = 24 * 60 * 60 * 1000;
+    const daysDifference = Math.abs((endDate - startDate) / millisecondsPerDay);
+
+    return daysDifference < 25;
+  }
+
+  validateVacationDatesPresence({ value }) {
+    const [startDate, endDate] = value;
+
+    if (startDate === null && endDate === null) {
+      return true;
+    }
+
+    return startDate !== null && endDate !== null;
   }
 
   asyncValidation(params) {

@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <h1>Employees</h1>
+    <div class="header">Employees</div>
 
     <ul>
       <EmployeeItem
@@ -102,6 +102,7 @@ export default {
       },
       emailButtonOptions: {
         icon: 'email',
+        stylingMode: 'contained',
         text: 'Send',
         onClick: () => {
           const message = `Email is sent to ${this.currentEmployee.FirstName} ${this.currentEmployee.LastName}`;
@@ -116,6 +117,8 @@ export default {
       },
       closeButtonOptions: {
         text: 'Close',
+        stylingMode: 'outlined',
+        type: 'normal',
         onClick: () => {
           this.popupVisible = false;
         },
@@ -133,6 +136,11 @@ export default {
 };
 </script>
 <style>
+.header {
+  font-size: 34px;
+  text-align: center;
+}
+
 #container {
   padding: 10px;
 }

@@ -8,7 +8,7 @@
       :current-date="currentDate"
       :height="730"
       :start-day-hour="9"
-      :end-day-hour="16"
+      :end-day-hour="19"
       :cross-scrolling-enabled="true"
       current-view="week"
     >
@@ -38,30 +38,16 @@
     </div>
   </div>
 </template>
-<script>
-
+<script setup lang="ts">
+import { ref } from 'vue';
 import { DxScheduler, DxResource, DxView } from 'devextreme-vue/scheduler';
 import DxSwitch from 'devextreme-vue/switch';
-
 import { data, priorityData } from './data.js';
 
-export default {
-  components: {
-    DxScheduler,
-    DxResource,
-    DxSwitch,
-    DxView,
-  },
-  data() {
-    return {
-      groupByDate: true,
-      groups: ['priorityId'],
-      currentDate: new Date(2021, 3, 21),
-      dataSource: data,
-      priorityData,
-    };
-  },
-};
+const groupByDate = ref(true);
+const groups = ['priorityId'];
+const currentDate = new Date(2021, 3, 21);
+const dataSource = data;
 </script>
 
 <style scoped>
