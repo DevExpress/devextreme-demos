@@ -46,7 +46,7 @@ import { computed, ref } from 'vue';
 import { DxScheduler, DxSchedulerTypes } from 'devextreme-vue/scheduler';
 import notify from 'devextreme/ui/notify';
 import { data, holidays } from './data.ts';
-import Utils from './utils.js';
+import Utils from './utils.ts';
 import DataCell from './DataCell.vue';
 import DataCellMonth from './DataCellMonth.vue';
 import DateCell from './DateCell.vue';
