@@ -186,8 +186,7 @@ jobs:
 
   lint:
     name: ${{ matrix.name }}
-    needs:
-      - build-demos
+    needs: build-devextreme
 
     runs-on: ubuntu-latest
     timeout-minutes: 60
@@ -207,6 +206,70 @@ jobs:
           - name: Lint demos (4/4)
             command: CONSTEL=4/4 npm run lint-demos
 
+    steps:
+    - name: Get sources
+      uses: actions/checkout@v3
+
+    - name: Get changed files
+      uses: ./.github/actions/get-changed-files
+      if: github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'force all tests')
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        path: changed-files.json
+
+    - name: Delete DX packages
+      run:  sed -i '/23.2-next/d' ./package.json
+
+    - name: Download devextreme sources
+      uses: actions/download-artifact@v3
+      with:
+        name: devextreme-sources
+
+    - name: Install packages
+      run: |
+        npm install devextreme-installer.tgz
+        npm install devextreme-dist-installer.tgz
+        npm install devextreme-react-installer.tgz
+        npm install devextreme-vue-installer.tgz
+        npm install devextreme-angular-installer.tgz
+
+    - name: Run npm install
+      run: npm install --no-audit --no-fund
+
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 5.0.408
+
+    - name: Prepare dotnet
+      run: |
+        dotnet new globaljson --sdk-version 5.0.408
+        dotnet tool install -g dotnet-format --version 5.1.225507
+
+    - name: Run lint
+      env:
+        CHANGEDFILEINFOSPATH: ${{ github.workspace }}/changed-files.json
+      run: ${{ matrix.command }}
+
+  check_generated_demos:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: build-demos
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Check generated demos (1/5)
+            command: CONSTEL=1/5 npm run convert-to-js
+          - name: Check generated demos (2/5)
+            command: CONSTEL=2/5 npm run convert-to-js
+          - name: Check generated demos (3/5)
+            command: CONSTEL=3/5 npm run convert-to-js
+          - name: Check generated demos (4/5)
+            command: CONSTEL=4/5 npm run convert-to-js
+          - name: Check generated demos (5/5)
+            command: CONSTEL=5/5 npm run convert-to-js
     steps:
     - name: Get sources
       uses: actions/checkout@v3
@@ -233,17 +296,23 @@ jobs:
     - name: Run npm install
       run: npm install --no-audit --no-fund
 
-    - uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 5.0.408
+    - name: Prepare JS
+      run: npm run prepare-js
 
-    - name: Prepare dotnet
+    - name: Check generated JS demos
       run: |
-        dotnet new globaljson --sdk-version 5.0.408
-        dotnet tool install -g dotnet-format --version 5.1.225507
+        ${{ matrix.command }}
 
-    - name: Run lint
-      run: ${{ matrix.command }}
+        git add ./JSDemos/Demos -N
+
+        if git diff --exit-code . ':!package-lock.json' ':!package.json' ; then
+          echo "Generated JS demos are up-to-date"
+        else
+            echo "Generated JS demos are outdated. Execute 'npm run convert-to-js ./JSDemos/Demos/**/React' and commit changes."
+            echo "If you see another diff, ensure that extra listed files have LF endings."
+            exit 1
+        fi
+
 
   testcafe:
     needs: build-demos
