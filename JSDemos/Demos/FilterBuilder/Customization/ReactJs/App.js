@@ -23,7 +23,8 @@ function App() {
     [updateTexts, setValue],
   );
   const calculateFilterExpression = React.useCallback(
-    (filterValue, field) => filterValue
+    (filterValue, field) =>
+      filterValue
       && filterValue.length
       && Array.prototype.concat
         .apply(
