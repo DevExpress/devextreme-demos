@@ -213,9 +213,7 @@ function App() {
         <div className="dx-field">
           <div className="dx-field-label">Vacation Dates</div>
           <div className="dx-field-value">
-            <DateRangeBox
-              inputAttr={dateLabel}
-            >
+            <DateRangeBox>
               <Validator>
                 <CustomRule message="The vacation period must not exceed 25 days" validationCallback={validateVacationDatesRange} />
                 <CustomRule message="Both start and end dates must be selected" validationCallback={validateVacationDatesPresence} />
