@@ -18,7 +18,7 @@
         <div class="item-template-container">
           <span
             v-if="e.icon"
-            :class="e.icon dx-icon"
+            :class="['dx-icon', e.icon]"
           />
           <span class="dx-menu-item-text">{{ e.text }}</span>
           <span
