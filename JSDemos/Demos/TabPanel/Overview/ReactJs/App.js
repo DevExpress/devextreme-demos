@@ -3,7 +3,6 @@ import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
 import TabPanel from 'devextreme-react/tab-panel';
 import TabPanelItem from './TabPanelItem.js';
-
 import {
   tabsPositionsSelectBoxLabel,
   tabsPositions,
@@ -20,23 +19,30 @@ const App = () => {
   const [stylingMode, setStylingMode] = React.useState(stylingModes[0]);
   const [iconPosition, setIconPosition] = React.useState(iconPositions[0]);
   const [showNavButtons, setShowNavButtons] = React.useState(true);
-
-  const onTabsPositionChanged = React.useCallback((args) => {
-    setTabsPosition(args.value);
-  }, [setTabsPosition]);
-
-  const onStylingModeChanged = React.useCallback((args) => {
-    setStylingMode(args.value);
-  }, [setStylingMode]);
-
-  const onIconPositionChanged = React.useCallback((args) => {
-    setIconPosition(args.value);
-  }, [setIconPosition]);
-
-  const onShowNavButtonsChanged = React.useCallback((args) => {
-    setShowNavButtons(args.value);
-  }, [setShowNavButtons]);
-
+  const onTabsPositionChanged = React.useCallback(
+    (args) => {
+      setTabsPosition(args.value);
+    },
+    [setTabsPosition],
+  );
+  const onStylingModeChanged = React.useCallback(
+    (args) => {
+      setStylingMode(args.value);
+    },
+    [setStylingMode],
+  );
+  const onIconPositionChanged = React.useCallback(
+    (args) => {
+      setIconPosition(args.value);
+    },
+    [setIconPosition],
+  );
+  const onShowNavButtonsChanged = React.useCallback(
+    (args) => {
+      setShowNavButtons(args.value);
+    },
+    [setShowNavButtons],
+  );
   return (
     <div className="tabpanel-demo">
       <div className="widget-container">
@@ -59,7 +65,7 @@ const App = () => {
         <div className="caption">Options</div>
 
         <div className="option">
-          <div className="option-label">Tab position</div>
+          <div className="option-label">Tabs position</div>
 
           <SelectBox
             inputAttr={tabsPositionsSelectBoxLabel}

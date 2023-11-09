@@ -1,6 +1,8 @@
+import { Position, TabsIconPosition, TabsStyle } from 'devextreme/common';
+
 export const tabsPositionsSelectBoxLabel = { 'aria-label': 'Tab position' };
 
-export const tabsPositions = [
+export const tabsPositions: Position[] = [
   'left',
   'top',
   'right',
@@ -9,14 +11,14 @@ export const tabsPositions = [
 
 export const stylingModesSelectBoxLabel = { 'aria-label': 'Styling mode' };
 
-export const stylingModes = [
+export const stylingModes: TabsStyle[] = [
   'secondary',
   'primary',
 ];
 
 export const iconPositionsSelectBoxLabel = { 'aria-label': 'Icon positions' };
 
-export const iconPositions = [
+export const iconPositions: TabsIconPosition[] = [
   'top',
   'start',
   'end',

@@ -24,7 +24,6 @@ export const tabsText = [
     text: 'Search',
   },
 ];
-
 export const tabsIconAndText = [
   {
     id: 0,
@@ -57,7 +56,6 @@ export const tabsIconAndText = [
     icon: 'search',
   },
 ];
-
 export const tabsIcon = [
   {
     id: 0,
@@ -84,23 +82,9 @@ export const tabsIcon = [
     icon: 'search',
   },
 ];
-
 export const orientations = ['horizontal', 'vertical'];
-
-export const stylingModes = [
-  'primary',
-  'secondary',
-];
-
+export const stylingModes = ['primary', 'secondary'];
 export const orientationLabel = { 'aria-label': 'Orientation' };
 export const stylingModeLabel = { 'aria-label': 'Styling Mode' };
 export const iconPositionLabel = { 'aria-label': 'Icon Position' };
-export const showNavigationLabel = { 'aria-label': 'Show Navigation' };
-export const scrollContentLabel = { 'aria-label': 'Scroll Content' };
-
-export const iconPositions = [
-  'start',
-  'top',
-  'end',
-  'bottom',
-];
+export const iconPositions = ['top', 'start', 'end', 'bottom'];

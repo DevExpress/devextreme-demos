@@ -1,5 +1,4 @@
 import React from 'react';
-
 import List from 'devextreme-react/list';
 import { navigation } from './data.js';
 

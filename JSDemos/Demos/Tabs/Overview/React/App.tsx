@@ -9,8 +9,6 @@ import {
   tabsText,
   stylingModeLabel,
   iconPositionLabel,
-  scrollContentLabel,
-  showNavigationLabel,
   tabsIconAndText,
   stylingModes,
   iconPositions,
@@ -125,7 +123,6 @@ const App = () => {
         <div className="option">
           <CheckBox
             id="show-navigation-buttons"
-            inputAttr={showNavigationLabel}
             text="Show navigation buttons"
             value={showNavigation}
             onValueChanged={showNavigationChanged}
@@ -134,7 +131,6 @@ const App = () => {
         <div className="option">
           <CheckBox
             id="scroll-content"
-            inputAttr={scrollContentLabel}
             text="Scroll content"
             value={scrollContent}
             onValueChanged={scrollContentChanged}

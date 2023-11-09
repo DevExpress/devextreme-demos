@@ -1,30 +1,10 @@
-export const tabsPositionsSelectBoxLabel = { 'aria-label': 'Tabs positions' };
-
-export const tabsPositions = [
-  'left',
-  'top',
-  'right',
-  'bottom',
-];
-
+export const tabsPositionsSelectBoxLabel = { 'aria-label': 'Tab position' };
+export const tabsPositions = ['left', 'top', 'right', 'bottom'];
 export const stylingModesSelectBoxLabel = { 'aria-label': 'Styling mode' };
-
-export const stylingModes = [
-  'secondary',
-  'primary',
-];
-
+export const stylingModes = ['secondary', 'primary'];
 export const iconPositionsSelectBoxLabel = { 'aria-label': 'Icon positions' };
-
-export const iconPositions = [
-  'top',
-  'start',
-  'end',
-  'bottom',
-];
-
+export const iconPositions = ['top', 'start', 'end', 'bottom'];
 export const navButtonsCheckBoxLabel = { 'aria-label': 'Show navigation buttons' };
-
 const tasks = [
   {
     status: 'Not Started',
@@ -61,7 +41,6 @@ const tasks = [
     date: '2023/09/16',
     assignedBy: 'Greta Sims',
   },
-
   {
     status: 'Help Needed',
     priority: 'low',
@@ -90,7 +69,6 @@ const tasks = [
     date: '2023/09/16',
     assignedBy: 'Barb Banks',
   },
-
   {
     status: 'In Progress',
     priority: 'medium',
@@ -126,7 +104,6 @@ const tasks = [
     date: '2023/09/16',
     assignedBy: 'John Heart',
   },
-
   {
     status: 'Deferred',
     priority: 'medium',
@@ -155,7 +132,6 @@ const tasks = [
     date: '2023/09/16',
     assignedBy: 'Greta Sims',
   },
-
   {
     status: 'Rejected',
     priority: 'high',
@@ -191,7 +167,6 @@ const tasks = [
     date: '2023/09/16',
     assignedBy: 'Cindy Stanwick',
   },
-
   {
     status: 'Completed',
     priority: 'medium',
@@ -221,7 +196,6 @@ const tasks = [
     assignedBy: 'Mary Stern',
   },
 ];
-
 export const dataSource = [
   {
     icon: 'description',

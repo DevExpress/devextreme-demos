@@ -1,3 +1,5 @@
+import { Orientation, TabsIconPosition, TabsStyle } from 'devextreme/common';
+
 export const tabsText = [
   {
     id: 0,
@@ -85,9 +87,9 @@ export const tabsIcon = [
   },
 ];
 
-export const orientations = ['horizontal', 'vertical'];
+export const orientations: Orientation[] = ['horizontal', 'vertical'];
 
-export const stylingModes = [
+export const stylingModes: TabsStyle[] = [
   'primary',
   'secondary',
 ];
@@ -96,7 +98,7 @@ export const orientationLabel = { 'aria-label': 'Orientation' };
 export const stylingModeLabel = { 'aria-label': 'Styling Mode' };
 export const iconPositionLabel = { 'aria-label': 'Icon Position' };
 
-export const iconPositions = [
+export const iconPositions: TabsIconPosition[] = [
   'top',
   'start',
   'end',
