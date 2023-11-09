@@ -68,7 +68,7 @@ npm run fix-lint
 1. After you make any changes in React TypeScript sources, run the following command:  
 
 ```
-npm run convert-to-js ./JSDemos/Demos/**/React
+npm run convert-to-js split
 ```
 
 1. To ensure that React JavaScript and TypeScript sources are always in sync, the following GitHub action is used: "Check generated JS demos".

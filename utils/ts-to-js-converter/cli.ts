@@ -34,7 +34,7 @@ const getPatterns = () => {
   const CONSTEL = process.env.CONSTEL;
   const userArgs = process.argv.slice(2);
 
-  if (userArgs.length > 0) {
+  if (userArgs.length > 0 && userArgs[0] !== 'split') {
     return userArgs;
   }
 
@@ -95,4 +95,25 @@ const performConversion = async () => {
     });
 };
 
-performConversion();
+const userFlags = process.argv.slice(2);
+
+async function startScript() {
+  if (userFlags[0] === 'split') {
+    process.env.CONSTEL = '1/4';
+    consola.log('Start converting Part', process.env.CONSTEL);
+    await performConversion();
+    process.env.CONSTEL = '2/4';
+    consola.log('Start converting Part', process.env.CONSTEL);
+    await performConversion();
+    process.env.CONSTEL = '3/4';
+    consola.log('Start converting Part', process.env.CONSTEL);
+    await performConversion();
+    process.env.CONSTEL = '4/4';
+    consola.log('Start converting Part', process.env.CONSTEL);
+    await performConversion();
+  } else {
+    await performConversion();
+  }
+}
+
+startScript();
