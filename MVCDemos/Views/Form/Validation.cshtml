@@ -66,6 +66,7 @@
                         groupItems.AddSimpleFor(m => m.Date)
                             .Editor(e => e
                                 .DateBox()
+                                .OpenOnFieldClick(true)
                                 .Placeholder("Birth Date")
                                 .AcceptCustomValue(false)
                             );
@@ -79,7 +80,10 @@
                             .ValidationRules(validationRule => {
                                 validationRule.AddCustom()
                                     .Message("The vacation period must not exceed 25 days")
-                                    .ValidationCallback("validateVacationDates");
+                                    .ValidationCallback("validateVacationDatesRange");
+                                validationRule.AddCustom()
+                                    .Message("Both start and end dates must be selected")
+                                    .ValidationCallback("validateVacationDatesPresence");
                             });
                     });
 
@@ -189,7 +193,7 @@
         if (startDate === null && endDate === null) {
             return true;
         }
-        
+
         if (startDate === null || endDate === null) {
             return false;
         }
@@ -198,5 +202,28 @@
         const daysDifference = Math.abs((endDate - startDate) / millisecondsPerDay);
 
         return daysDifference <= 25;
+    }
+
+    function validateVacationDatesRange({ value }) {
+        const [startDate, endDate] = value;
+
+        if (startDate === null || endDate === null) {
+            return true;
+        }
+
+        const millisecondsPerDay = 24 * 60 * 60 * 1000;
+        const daysDifference = Math.abs((endDate - startDate) / millisecondsPerDay);
+
+        return daysDifference < 25;
+    }
+
+    function validateVacationDatesPresence({ value }) {
+        const [startDate, endDate] = value;
+
+        if (startDate === null && endDate === null) {
+            return true;
+        }
+
+        return startDate !== null && endDate !== null;
     }
 </script>
