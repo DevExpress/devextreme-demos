@@ -56,10 +56,10 @@ const dataSource = temperaturesData;
 const customizeText = ({ valueText }) => `${valueText}&#176F`;
 const customizePoint = ({ value }) => {
   if (value > highAverage) {
-    return { color: '#ff7c7c', hoverStyle: { color: '#ff7c7c'} }
+    return { color: '#ff7c7c', hoverStyle: { color: '#ff7c7c' } };
   }
-    return  (value < lowAverage) ? { color: '#8c8cff', hoverStyle: { color: '#8c8cff' } } : null;
-}
+  return (value < lowAverage) ? { color: '#8c8cff', hoverStyle: { color: '#8c8cff' } } : null;
+};
 const customizeLabel = ({ value }) => ((value > highAverage) ? {
   visible: true,
   backgroundColor: '#ff7c7c',
