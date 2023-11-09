@@ -3,7 +3,7 @@
     id="chart"
     :data-source="iceHockeyStatistics"
     :customize-point="customizePoint"
-    title="Canadian Men’s National Ice Hockey Team\n at the World Championships"
+    :title="'Canadian Men’s National Ice Hockey Team\n at the World Championships'"
   >
     <DxCommonSeriesSettings
       argument-field="year"
