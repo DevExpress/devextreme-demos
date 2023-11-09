@@ -6,7 +6,7 @@
       :src="fieldData.ImageSrc"
     >
     <DxTextBox
-      :value="fieldData && fieldData.Name"
+      :value="fieldData?.Name"
       :read-only="true"
       :input-attr="{ 'aria-label': 'Name' }"
       class="product-name"
