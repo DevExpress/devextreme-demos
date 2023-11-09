@@ -116,8 +116,7 @@ const data = new ArrayStore({
 });
 function onValueChanged(e) {
   notify(`The value is changed to: "${e.value}"`);
-};
-
+}
 
 </script>
 <style scoped>
