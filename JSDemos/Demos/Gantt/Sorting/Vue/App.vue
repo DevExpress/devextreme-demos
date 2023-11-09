@@ -9,7 +9,7 @@
             :items="['single', 'multiple', 'none']"
             v-model:value="sortingMode"
             :input-attr="{ 'aria-label': 'Sorting Mode' }"
-            @value-changed="sortingChanged($event)"
+            @value-changed="sortingChanged()"
           />
         </div>
       </div>
