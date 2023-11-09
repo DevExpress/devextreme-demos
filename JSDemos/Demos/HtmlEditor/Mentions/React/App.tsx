@@ -60,7 +60,7 @@ export default function App() {
         </div>
       </div>
       <HtmlEditor
-        mentions={mentionsConfig as any}>
+        mentions={mentionsConfig}>
         <p>
           <span className="dx-mention" spellCheck="false" data-marker="@" data-mention-value="Kevin Carter"><span><span>@</span>Kevin Carter</span></span>
           {" I think John's expertise can be very valuable in our startup."}
