@@ -3,7 +3,7 @@
     <DxChart
       id="chart"
       :data-source="dataSource"
-      title="Relative Masses of the Heaviest\n Solar System Objects"
+      :title="'Relative Masses of the Heaviest\n Solar System Objects'"
     >
       <DxSeries
         value-field="mass"
