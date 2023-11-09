@@ -39,7 +39,7 @@ const App = () => (
           </Item>
         </Box>
       </Item>
-      <Item ratio={0} baseSize={'10%' as any}>
+      <Item ratio={0} baseSize="10%">
         <div className="rect demo-dark">10%</div>
       </Item>
     </Box>
