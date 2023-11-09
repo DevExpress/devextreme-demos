@@ -51,8 +51,8 @@ const makeConfig = (
     sourceMap: false,
     jsx: 'react-native',
     allowJs: true,
-    target: 'ES2018',
-    lib: ['ES2018', 'dom'],
+    target: 'ES2020',
+    lib: ['ES2020', 'dom'],
     types,
     noEmit: false,
     skipLibCheck: true,
@@ -181,10 +181,10 @@ const patchImports = async (resolve: PathResolvers, log: Logger) => {
 
 const prettify = async (resolve: PathResolvers, log: Logger) => {
   log.debug('running Prettier');
-  await exec(`prettier --write "${resolve.out('')}" --single-attribute-per-line --print-width 100`, {
+  await exec(`prettier --write "${resolve.out('')}${path.sep}!(*.{css,json})" --single-attribute-per-line --print-width 100`, {
     cwd: resolve.out(''),
   });
-  await exec(`eslint --fix "${resolve.out('')}"`, {
+  await exec(`eslint --fix "${resolve.out('')}" --ignore-pattern "config.js"`, {
     cwd: resolve.out(''),
   });
 };
@@ -234,8 +234,8 @@ export const converter = async (
     await compile(resolve, log);
     await copyAssets(resolve, log);
     await patchImports(resolve, log);
-    await strip(resolve, log);
     await prettify(resolve, log);
+    await strip(resolve, log);
   } catch (error) {
     log.error(error);
     return;

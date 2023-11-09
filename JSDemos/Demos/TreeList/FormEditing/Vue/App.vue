@@ -79,41 +79,30 @@
     </DxTreeList>
   </div>
 </template>
-<script>
+<script setup lang="ts">
 import {
-  DxTreeList, DxEditing, DxColumn, DxValidationRule, DxLookup, DxButton,
+  DxTreeList, DxEditing, DxColumn, DxValidationRule, DxLookup, DxButton, DxTreeListTypes,
 } from 'devextreme-vue/tree-list';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
-export default {
-  components: {
-    DxTreeList, DxEditing, DxColumn, DxValidationRule, DxLookup, DxButton,
-  },
-  data() {
-    return {
-      employees,
-      expandedRowKeys: [1, 2, 3, 4, 5],
-      lookupData: {
-        store: employees,
-        sort: 'Full_Name',
-      },
-    };
-  },
-  methods: {
-    onEditorPreparing(e) {
-      if (e.dataField === 'Head_ID' && e.row.data.ID === 1) {
-        e.editorOptions.disabled = true;
-        e.editorOptions.value = null;
-      }
-    },
-    onInitNewRow(e) {
-      e.data.Head_ID = 1;
-    },
-    allowDeleting(e) {
-      return e.row.data.ID !== 1;
-    },
-  },
+const expandedRowKeys = [1, 2, 3, 4, 5];
+const lookupData = {
+  store: employees,
+  sort: 'Full_Name',
 };
+
+function onEditorPreparing(e: DxTreeListTypes.EditorPreparingEvent) {
+  if (e.dataField === 'Head_ID' && e.row.data.ID === 1) {
+    e.editorOptions.disabled = true;
+    e.editorOptions.value = null;
+  }
+}
+function onInitNewRow(e: DxTreeListTypes.InitNewRowEvent) {
+  e.data.Head_ID = 1;
+}
+function allowDeleting(e) {
+  return e.row.data.ID !== 1;
+}
 </script>
 <style scoped>
 #tree-list-demo {
