@@ -28,7 +28,7 @@ import DxSankey, {
 import { data } from './data.js';
 
 const customizeLinkTooltip = ({ source, target, weight }) => (
-    { html: `<b>From:</b> ${source}<br/><b>To:</b> ${target}<br/><b>Weight:</b> ${weight}` }
+  { html: `<b>From:</b> ${source}<br/><b>To:</b> ${target}<br/><b>Weight:</b> ${weight}` }
 );
 </script>
 <style>

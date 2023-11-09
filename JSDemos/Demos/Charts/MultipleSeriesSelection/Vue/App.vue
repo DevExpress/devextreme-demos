@@ -45,6 +45,7 @@ import DxChart, {
   DxExport,
 } from 'devextreme-vue/chart';
 import { versionSources, statisticsData } from './data.js';
+
 function onSeriesClick({ target: series }) {
   if (series.isSelected()) {
     series.clearSelection();

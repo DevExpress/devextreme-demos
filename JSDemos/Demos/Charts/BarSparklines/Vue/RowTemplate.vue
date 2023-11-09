@@ -60,9 +60,7 @@ const props = withDefaults(defineProps<{
   source: () => {},
 });
 
-function getValueField(name) {
-  return name + props.year;
-};
+const getValueField = (name) => name + props.year;
 </script>
 <style>
 .rows-content td {

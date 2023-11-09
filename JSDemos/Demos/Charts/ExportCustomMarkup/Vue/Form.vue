@@ -60,7 +60,9 @@
 </template>
 <script setup lang="ts">
 
-defineExpose({ getMarkup() {
+defineExpose({
+  getMarkup() {
     return this.$el.innerHTML;
-  } });
+  },
+});
 </script>

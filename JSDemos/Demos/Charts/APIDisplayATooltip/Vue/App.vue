@@ -57,9 +57,9 @@ function onPointClick({ target: point }: DxPieChartTypes.PointClickEvent) {
 }
 function onRegionChanged({ value }) {
   pieChart.value.instance
-      .getAllSeries()[0]
-      .getPointsByArg(value)[0]
-      .showTooltip();
+    .getAllSeries()[0]
+    .getPointsByArg(value)[0]
+    .showTooltip();
 }
 </script>
 <style>

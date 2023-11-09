@@ -39,7 +39,9 @@ import { DxSelectBox } from 'devextreme-vue/select-box';
 import { salesAmount, colorizationOptions } from './data.js';
 
 const selectedType = ref(colorizationOptions[2].name);
-const typeOptions = computed(() => colorizationOptions.find(({ name }) => name === selectedType.value).options);
+const typeOptions = computed(
+  () => colorizationOptions.find(({ name }) => name === selectedType.value).options,
+);
 const customizeTooltip = ({ node, node: { data: { name } }, valueText }) => (
   {
     text: node.isLeaf()

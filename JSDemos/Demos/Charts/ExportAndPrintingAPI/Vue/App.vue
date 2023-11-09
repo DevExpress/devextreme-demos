@@ -54,7 +54,7 @@ import DxButton from 'devextreme-vue/button';
 import { mountains } from './data.js';
 
 const chart = ref();
-const customizeTooltipText = ({ argumentText, point, value, valueText }) => ({
+const customizeTooltipText = ({ argumentText, point, valueText }) => ({
   text: `<span class='title'>${argumentText
   }</span><br />&nbsp;<br />System: ${point.data.system
   }<br />Height: ${valueText} m`,

@@ -62,14 +62,19 @@ const highAverageColor = ref('#ff9b52');
 const lowAverageColor = ref('#6199e6');
 const dataSource = temperaturesData;
 
-const customizePoint = ({ value }) =>
-  (value > highAverage) ? { color: highAverageColor.value } :
-      (value < lowAverage) ? { color: lowAverageColor.value } :
-          null;
-const customizeLabel = ({ value }) =>
-    (value > highAverage) ? getLabelsSettings(highAverageColor.value) :
-        (value < lowAverage) ? getLabelsSettings(lowAverageColor.value) :
-            null;
+const customizePoint = ({ value }) => {
+  if (value > highAverage) {
+    return { color: highAverageColor.value };
+  }
+
+  return (value < lowAverage) ? { color: lowAverageColor.value } : null;
+};
+const customizeLabel = ({ value }) => {
+  if (value > highAverage) {
+    return getLabelsSettings(highAverageColor.value);
+  }
+  return (value < lowAverage) ? getLabelsSettings(lowAverageColor.value) : null;
+};
 const getLabelsSettings = (backgroundColor) => ({
   visible: true,
   backgroundColor,

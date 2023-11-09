@@ -17,12 +17,13 @@
 <script setup lang="ts">
 import DxTreeMap, { DxTooltip } from 'devextreme-vue/tree-map';
 import { citiesPopulation } from './data.js';
+
 const customizeTooltip = ({ node, node: { data: { name, country } }, valueText }) => (
-    {
-      text: node.isLeaf()
-          ? `<span class="city">${name}</span> (${country})<br/>Population: ${valueText}`
-          : null,
-    });
+  {
+    text: node.isLeaf()
+      ? `<span class="city">${name}</span> (${country})<br/>Population: ${valueText}`
+      : null,
+  });
 </script>
 
 <style>

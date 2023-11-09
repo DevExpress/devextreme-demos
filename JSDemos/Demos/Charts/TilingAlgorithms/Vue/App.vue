@@ -42,7 +42,7 @@ import { populationByAge } from './data.js';
 
 const algorithms = ['sliceAndDice', 'squarified', 'strip', 'custom'];
 const selectedAlgorithm = ref(algorithms[2]);
-const currentAlgorithm = computed(() => selectedAlgorithm.value === 'custom' ? customAlgorithm : selectedAlgorithm.value);
+const currentAlgorithm = computed(() => ((selectedAlgorithm.value === 'custom') ? customAlgorithm : selectedAlgorithm.value));
 
 function customizeTooltip({ node, node: { data: { name, value } }, valueText }) {
   const parentData = node.getParent().data;
