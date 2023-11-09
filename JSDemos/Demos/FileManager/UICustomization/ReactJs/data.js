@@ -94,7 +94,7 @@ const fileExtensions = {
 const categories = ['Work', 'Important', 'Home', 'None'];
 export function getItemInfo(name) {
   const extension = fileExtensions[name];
-  const category = extension !== null && extension !== void 0 ? extension : categories.find((cat) => cat === name);
+  const category = extension ?? categories.find((cat) => cat === name);
   return {
     extension,
     category,

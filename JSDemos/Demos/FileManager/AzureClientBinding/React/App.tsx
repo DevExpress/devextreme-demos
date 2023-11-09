@@ -56,7 +56,7 @@ function App() {
       promise = Promise.resolve();
     }
 
-    promise = promise.then(() => gateway.putBlock(
+    promise = promise.then(() => gateway.putBlock( //
       uploadInfo.customData.accessUrl,
       uploadInfo.chunkIndex,
       uploadInfo.chunkBlob,
