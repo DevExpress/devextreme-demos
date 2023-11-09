@@ -27,35 +27,27 @@
     </text>
   </svg>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 
+const props = withDefaults(defineProps<{
+  pieChart?: object
+}>(), {
+  pieChart: () => ({}),
+});
+
+const country = ref(props.pieChart.getAllSeries()[0].getVisiblePoints()[0].data.country);
+
+function getImagePath(country) {
+  return `../../../../images/flags/${country.replace(/\s/, '').toLowerCase()}.svg`;
+};
+function calculateTotal(pieChart) {
+  return formatNumber(pieChart
+    .getAllSeries()[0]
+    .getVisiblePoints()
+    .reduce((s, p) => s + p.originalValue, 0));
+};
 const formatNumber = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 0,
 }).format;
-
-export default {
-  props: {
-    pieChart: {
-      type: Object,
-      default: () => ({}),
-    },
-  },
-  data() {
-    return {
-      country: this.pieChart.getAllSeries()[0].getVisiblePoints()[0].data.country,
-    };
-  },
-  methods: {
-    getImagePath(country) {
-      return `../../../../images/flags/${country.replace(/\s/, '').toLowerCase()}.svg`;
-    },
-
-    calculateTotal(pieChart) {
-      return formatNumber(pieChart
-        .getAllSeries()[0]
-        .getVisiblePoints()
-        .reduce((s, p) => s + p.originalValue, 0));
-    },
-  },
-};
 </script>
