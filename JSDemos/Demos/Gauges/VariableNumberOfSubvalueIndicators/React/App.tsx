@@ -2,7 +2,7 @@ import React from 'react';
 import {
   LinearGauge, Scale, Label, Tooltip, Export, Title, Font,
 } from 'devextreme-react/linear-gauge';
-import { SelectBox } from 'devextreme-react/select-box';
+import { SelectBox, SelectBoxTypes } from 'devextreme-react/select-box';
 import { dataSource, departmentLabel } from './data.ts';
 
 function customizeText({ valueText }) {
@@ -25,9 +25,9 @@ function App() {
   const [value, setValue] = React.useState(dataSource[0].primary);
   const [subvalues, setSubvalues] = React.useState(dataSource[0].secondary);
 
-  const onValueChanged = React.useCallback(({ previousValue }) => {
-    setValue(previousValue.primary);
-    setSubvalues(previousValue.secondary);
+  const onValueChanged = React.useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
+    setValue(e.value.primary);
+    setSubvalues(e.value.secondary);
   }, [setValue, setSubvalues]);
 
   return (

@@ -29,9 +29,9 @@ function App() {
   const [value, setValue] = React.useState(dataSource[0].primary);
   const [subvalues, setSubvalues] = React.useState(dataSource[0].secondary);
   const onValueChanged = React.useCallback(
-    ({ previousValue }) => {
-      setValue(previousValue.primary);
-      setSubvalues(previousValue.secondary);
+    (e) => {
+      setValue(e.value.primary);
+      setSubvalues(e.value.secondary);
     },
     [setValue, setSubvalues],
   );
