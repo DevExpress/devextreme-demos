@@ -24,7 +24,7 @@
         ref="pieChart"
         :data-source="allMedals"
         palette="Harmony Light"
-        title="Total Olympic Medals\n in 2008"
+        :title="'Total Olympic Medals\n in 2008'"
       >
         <DxPieSeries
           argument-field="country"
