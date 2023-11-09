@@ -4,7 +4,6 @@ import Diagram, {
 } from 'devextreme-react/diagram';
 import ArrayStore from 'devextreme/data/array_store';
 import service from './data.js';
-// Try to fix strange bug with non-capital folder letter
 
 const flowNodesDataSource = new ArrayStore({
   key: 'id',
