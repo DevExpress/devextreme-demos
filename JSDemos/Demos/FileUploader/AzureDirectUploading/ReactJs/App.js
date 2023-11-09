@@ -44,13 +44,10 @@ export default function App() {
     } else {
       promise = Promise.resolve();
     }
-    promise = promise.then(() =>
-      gateway.putBlock(
-        //
-        uploadInfo.customData.accessUrl,
-        uploadInfo.chunkIndex,
-        uploadInfo.chunkBlob,
-      ));
+    promise = promise.then(() => {
+      const accessUrl = uploadInfo.customData.accessUrl;
+      return gateway.putBlock(accessUrl, uploadInfo.chunkIndex, uploadInfo.chunkBlob);
+    });
     if (uploadInfo.chunkIndex === uploadInfo.chunkCount - 1) {
       promise = promise.then(() =>
         gateway.putBlockList(uploadInfo.customData.accessUrl, uploadInfo.chunkCount));

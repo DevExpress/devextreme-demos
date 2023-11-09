@@ -62,7 +62,8 @@ function App() {
         accessUrl,
         uploadInfo.chunkIndex,
         uploadInfo.chunkBlob,
-      )});
+      );
+    });
 
     if (uploadInfo.chunkIndex === uploadInfo.chunkCount - 1) {
       promise = promise.then(() => gateway.putBlockList(
