@@ -7,12 +7,11 @@ import 'whatwg-fetch';
 export default function App() {
   const diagramRef = React.useRef(null);
   React.useEffect(() => {
-    let _a;
-    const diagram = (_a = diagramRef.current) === null || _a === void 0 ? void 0 : _a.instance;
+    const diagram = diagramRef.current?.instance;
     fetch('../../../../data/diagram-hardware.json')
       .then((response) => response.json())
       .then((json) => {
-        diagram === null || diagram === void 0 ? void 0 : diagram.import(JSON.stringify(json));
+        diagram?.import(JSON.stringify(json));
       })
       .catch(() => {
         throw new Error('Data Loading Error');
