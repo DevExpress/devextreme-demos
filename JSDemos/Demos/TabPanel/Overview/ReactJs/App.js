@@ -65,7 +65,7 @@ const App = () => {
         <div className="caption">Options</div>
 
         <div className="option">
-          <div className="option-label">Tabs position</div>
+          <div className="option-label">Tab position</div>
 
           <SelectBox
             inputAttr={tabsPositionsSelectBoxLabel}
