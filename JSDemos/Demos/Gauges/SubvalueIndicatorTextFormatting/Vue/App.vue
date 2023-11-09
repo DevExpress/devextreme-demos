@@ -36,7 +36,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
 import {
   DxCircularGauge, DxScale, DxLabel, DxSubvalueIndicator, DxText, DxExport, DxTitle, DxFont,
 } from 'devextreme-vue/circular-gauge';

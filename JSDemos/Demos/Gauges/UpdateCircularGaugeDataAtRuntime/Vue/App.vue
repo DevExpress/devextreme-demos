@@ -64,7 +64,7 @@ import { DxSelectBox } from 'devextreme-vue/select-box';
 import { dataSource } from './data.js';
 
 const selected = ref(dataSource[0].name);
-const value = computed(() => dataSource.find((item) => item.name === selected.value ));
+const value = computed(() => dataSource.find((item) => item.name === selected.value));
 
 const customizeText = ({ valueText }) => `${valueText} °C`;
 </script>

@@ -142,7 +142,7 @@ import { cities } from './data.js';
 const selected = ref(cities[0].name);
 const customTicks = [900, 1000, 1020, 1100];
 const pressureLabelFormat = { type: 'decimal' };
-const value = computed(() => cities.find(({name}) => name === selected.value));
+const value = computed(() => cities.find(({ name }) => name === selected.value));
 </script>
 <style scoped>
 #gauge-demo {

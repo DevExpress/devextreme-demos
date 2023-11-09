@@ -34,7 +34,7 @@
 </template>
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { DxBarGauge, DxPalette, DxLabel } from 'devextreme-vue/bar-gauge';
+import { DxBarGauge, DxLabel } from 'devextreme-vue/bar-gauge';
 import { DxSelectBox } from 'devextreme-vue/select-box';
 import { colors } from './data.js';
 
