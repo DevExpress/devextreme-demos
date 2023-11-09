@@ -1,9 +1,6 @@
 import React from 'react';
 
-const getImagePath = (name) =>
-  `../../../../images/flags/${
-    !name ? '' : name.replace(/\s/, '')
-  }.svg`;
+const getImagePath = (name) => `../../../../images/flags/${name?.replace(/\s/, '')}.svg`;
 const formatNumber = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 0,
 }).format;

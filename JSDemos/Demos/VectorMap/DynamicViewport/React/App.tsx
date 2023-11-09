@@ -1,5 +1,5 @@
 import React from 'react';
-import VectorMap, { Layer, ControlBar } from 'devextreme-react/vector-map';
+import VectorMap, { Layer, ControlBar, VectorMapTypes } from 'devextreme-react/vector-map';
 import TextBox from 'devextreme-react/text-box';
 import SelectBox from 'devextreme-react/select-box';
 import * as mapsData from 'devextreme-dist/js/vectormap-data/world.js';
@@ -23,12 +23,12 @@ const App = () => {
     mapRef.current.instance.viewport(value);
   }, [setCoordinates]);
 
-  const zoomFactorChanged = React.useCallback(({ zoomFactor }) => {
-    setZoomFactor(zoomFactor.toFixed(2));
+  const zoomFactorChanged = React.useCallback((e: VectorMapTypes.ZoomFactorChangedEvent) => {
+    setZoomFactor(e.zoomFactor.toFixed(2));
   }, [setZoomFactor]);
 
-  const centerChanged = React.useCallback(({ center }) => {
-    const value = `${center[0].toFixed(3)}, ${center[1].toFixed(3)}`;
+  const centerChanged = React.useCallback((e: VectorMapTypes.CenterChangedEvent) => {
+    const value = `${e.center[0].toFixed(3)}, ${e.center[1].toFixed(3)}`;
     setCenter(value);
   }, [setCenter]);
 

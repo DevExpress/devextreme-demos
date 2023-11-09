@@ -12,7 +12,7 @@ const customizeTooltip = (arg) => {
   return null;
 };
 const markerClick = ({ target, component }) => {
-  if ((target && target.layer.type) === 'marker') {
+  if (target?.layer.type === 'marker') {
     component.center(target.coordinates()).zoomFactor(10);
   }
 };
