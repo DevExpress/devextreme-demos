@@ -1,7 +1,27 @@
-<dx-data-grid
-  id="gridContainer"
-  [dataSource]="customers"
-  [columns]="['CompanyName', 'City', 'State', 'Phone', 'Fax']"
-  [showBorders]="true"
+<div className="options">
+  <div className="option">
+    <div className="label">Work Hours</div>
+    <div className="value">
+      <dx-radio-group
+        [items]="shifts"
+        [value]="shifts[0]"
+        layout= 'horizontal'
+        (onValueChanged)="onShiftChanged($event)"
+    >
+    </dx-radio-group>
+    </div>
+  </div>
+</div>
+<br />
+<dx-scheduler
+  timeZone='America/Los_Angeles'
+  [dataSource]="appointments"
+  [views]="['day', 'week']"
+  currentView="week"
+  [currentDate]="currentDate"
+  [startDayHour]= "0"
+  [endDayHour]= "8"
+  [height]="600"
+  [showAllDayPanel]="false"
 >
-</dx-data-grid>
+</dx-scheduler>

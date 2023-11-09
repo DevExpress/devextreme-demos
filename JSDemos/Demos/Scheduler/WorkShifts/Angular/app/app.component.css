@@ -1,0 +1,23 @@
+::ng-deep .options {
+  background-color: rgba(191, 191, 191, 0.15);
+  margin-top: 20px;
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+}
+
+::ng-deep .option {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+}
+
+::ng-deep .label,
+::ng-deep .value {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+::ng-deep .label {
+  width: 100px;
+}
