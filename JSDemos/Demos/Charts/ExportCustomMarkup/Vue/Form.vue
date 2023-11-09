@@ -58,12 +58,9 @@
     </svg>
   </div>
 </template>
-<script>
-export default {
-  methods: {
-    getMarkup() {
-      return this.$el.innerHTML;
-    },
-  },
-};
+<script setup lang="ts">
+
+defineExpose({ getMarkup() {
+    return this.$el.innerHTML;
+  } });
 </script>
