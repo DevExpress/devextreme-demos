@@ -53,7 +53,9 @@ import DxSelectBox from 'devextreme-vue/select-box';
 import { windSources, windRoseData } from './data.js';
 
 const selectedPeriod = ref(windRoseData[0].period);
-const periodValues = computed(() => windRoseData.find(({ period }) => period === selectedPeriod.value).values);
+const periodValues = computed(
+  () => windRoseData.find(({ period }) => period === selectedPeriod.value).values,
+);
 
 function onLegendClick({ target }: DxPolarChartTypes.LegendClickEvent) {
   target.isVisible()

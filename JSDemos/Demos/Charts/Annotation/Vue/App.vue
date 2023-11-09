@@ -62,7 +62,7 @@ import {
 } from 'devextreme-vue/chart';
 import { dataSource, annotationSources } from './data.js';
 
-const customizeTooltip = ({description}) => ({html: `<div class='tooltip'>${description}</div>`});
+const customizeTooltip = ({ description }) => ({ html: `<div class='tooltip'>${description}</div>` });
 </script>
 <style scoped>
 #chart {

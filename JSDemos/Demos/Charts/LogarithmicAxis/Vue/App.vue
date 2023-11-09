@@ -44,15 +44,15 @@ import {
   DxTooltip,
   DxCommonPaneSettings,
   DxBorder,
-  DxTitle,
   DxPoint,
 } from 'devextreme-vue/chart';
 import { dataSource } from './data.js';
 
-function customizePoint({ data }) {
-  let color; let
-    hoverStyle;
-  switch (data.type) {
+function customizePoint({ data: { type } }) {
+  let color;
+  let hoverStyle;
+
+  switch (type) {
     case 'Star':
       color = 'red';
       hoverStyle = { border: { color: 'red' } };

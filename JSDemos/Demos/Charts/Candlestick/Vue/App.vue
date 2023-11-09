@@ -54,7 +54,9 @@ import DxChart, {
 } from 'devextreme-vue/chart';
 import { dataSource } from './data.js';
 
-const customizeTooltip = ({ openValue, closeValue, highValue, lowValue }) => ({
+const customizeTooltip = ({
+  openValue, closeValue, highValue, lowValue,
+}) => ({
   text: `Open: $${openValue}<br/>
 Close: $${closeValue}<br/>
 High: $${highValue}<br/>

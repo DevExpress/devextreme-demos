@@ -57,12 +57,10 @@
   </DxChart>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
 import {
   DxChart,
   DxSeries,
   DxCommonSeriesSettings,
-  DxPoint,
   DxLegend,
   DxValueAxis,
   DxArgumentAxis,
