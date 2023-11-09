@@ -3,27 +3,23 @@
     <slot/>
   </div>
 </template>
-<script>
-import Utils from './utils.js';
+<script setup lang="ts">
+import Utils from './utils.ts';
 
-export default {
-  props: {
-    cellData: {
-      type: Object,
-      default: () => {},
-    },
-  },
-  methods: {
-    markDataCell(cellData) {
-      const date = cellData.startDate;
-      const isDisableDate = Utils.isHoliday(date) || Utils.isWeekend(date);
-      const isDinner = !isDisableDate && Utils.isDinner(date);
+withDefaults(defineProps<{
+  cellData?: any
+}>(), {
+  cellData: () => {},
+});
 
-      return {
-        'disable-date': isDisableDate,
-        dinner: isDinner,
-      };
-    },
-  },
-};
+function markDataCell(cellData) {
+  const date = cellData.startDate;
+  const isDisableDate = Utils.isHoliday(date) || Utils.isWeekend(date);
+  const isDinner = !isDisableDate && Utils.isDinner(date);
+
+  return {
+    'disable-date': isDisableDate,
+    dinner: isDinner,
+  };
+}
 </script>

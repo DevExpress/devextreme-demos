@@ -5,29 +5,20 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import Query from 'devextreme/data/query';
+import { DxSchedulerTypes } from 'devextreme-vue/scheduler';
+import { moviesData } from './data.ts';
 
-import { moviesData } from './data.js';
+const props = defineProps<{
+  appointmentModel: DxSchedulerTypes.AppointmentTemplateData
+}>();
 
-const getMovieInfo = function(data) {
+const getMovieInfo = function(data: DxSchedulerTypes.Appointment) {
   return Query(moviesData)
-    .filter('id', data.movieId)
+    .filter(['id', data.movieId])
     .toArray()[0] || {};
 };
+const movieInfo = getMovieInfo(props.appointmentModel.appointmentData);
 
-export default {
-  props: {
-    appointmentModel: {
-      type: Object,
-      default: () => { },
-    },
-  },
-  data() {
-    return {
-      moviesData,
-      movieInfo: getMovieInfo(this.appointmentModel.appointmentData),
-    };
-  },
-};
 </script>

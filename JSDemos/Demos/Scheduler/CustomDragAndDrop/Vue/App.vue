@@ -40,66 +40,48 @@
     </DxScheduler>
   </div>
 </template>
-<script>
-
-import DxScheduler, { DxAppointmentDragging } from 'devextreme-vue/scheduler';
-import DxDraggable from 'devextreme-vue/draggable';
+<script setup lang="ts">
+import { ref } from 'vue';
+import DxScheduler, { DxAppointmentDragging, DxSchedulerTypes } from 'devextreme-vue/scheduler';
+import DxDraggable, { DxDraggableTypes } from 'devextreme-vue/draggable';
 import DxScrollView from 'devextreme-vue/scroll-view';
+import { appointments as appointmentsData, tasks as tasksData, Task } from './data.ts';
 
-import { appointments, tasks } from './data.js';
+const draggingGroupName = ref('appointmentsGroup');
+const views = ref([{ type: 'day', intervalCount: 3 }]);
+const currentDate = ref(new Date(2021, 3, 26));
+const tasks = ref<Task[]>(tasksData);
+const appointments = ref<DxSchedulerTypes.Appointment[]>(appointmentsData);
 
-export default {
-  components: {
-    DxScheduler,
-    DxDraggable,
-    DxScrollView,
-    DxAppointmentDragging,
-  },
-  data() {
-    return {
-      draggingGroupName: 'appointmentsGroup',
-      views: [{ type: 'day', intervalCount: 3 }],
-      currentDate: new Date(2021, 3, 26),
-      tasks,
-      appointments,
-    };
-  },
-  methods: {
-    onAppointmentRemove(e) {
-      const index = this.appointments.indexOf(e.itemData);
+function onAppointmentRemove({ itemData }: DxSchedulerTypes.AppointmentDraggingRemoveEvent) {
+  const index = appointments.value.indexOf(itemData);
 
-      if (index >= 0) {
-        this.appointments = [...this.appointments];
-        this.appointments.splice(index, 1);
-        this.tasks = [...this.tasks, e.itemData];
-      }
-    },
+  if (index >= 0) {
+    appointments.value = [...appointments.value];
+    appointments.value.splice(index, 1);
+    tasks.value = [...tasks.value, itemData];
+  }
+}
+function onAppointmentAdd(e: DxSchedulerTypes.AppointmentDraggingAddEvent) {
+  const index = tasks.value.indexOf(e.fromData);
 
-    onAppointmentAdd(e) {
-      const index = this.tasks.indexOf(e.fromData);
-
-      if (index >= 0) {
-        this.tasks = [...this.tasks];
-        this.tasks.splice(index, 1);
-        this.appointments = [...this.appointments, e.itemData];
-      }
-    },
-
-    onListDragStart(e) {
-      e.cancel = true;
-    },
-
-    onItemDragStart(e) {
-      e.itemData = e.fromData;
-    },
-
-    onItemDragEnd(e) {
-      if (e.toData) {
-        e.cancel = true;
-      }
-    },
-  },
-};
+  if (index >= 0) {
+    tasks.value = [...tasks.value];
+    tasks.value.splice(index, 1);
+    appointments.value = [...appointments.value, e.itemData];
+  }
+}
+function onListDragStart(e: DxDraggableTypes.DragStartEvent) {
+  e.cancel = true;
+}
+function onItemDragStart(e: DxDraggableTypes.DragStartEvent) {
+  e.itemData = e.fromData;
+}
+function onItemDragEnd(e: DxDraggableTypes.DragEndEvent) {
+  if (e.toData) {
+    e.cancel = true;
+  }
+}
 </script>
 <style>
 #scroll,

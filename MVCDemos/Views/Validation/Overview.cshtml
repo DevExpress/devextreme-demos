@@ -32,8 +32,8 @@
                             .Name("password")
                             .Location(TextEditorButtonLocation.After)
                             .Widget(w => w.Button()
-                            .Type(ButtonType.Default)
-                            .Icon(Url.Content("~/Content/Images/icons/eye.png"))
+                            .StylingMode(ButtonStylingMode.Text)
+                            .Icon("eyeopen")
                             .OnClick("() => changePasswordMode('Password')"));
 
                         })
@@ -54,8 +54,8 @@
                             .Name("password")
                             .Location(TextEditorButtonLocation.After)
                             .Widget(w => w.Button()
-                            .Type(ButtonType.Default)
-                            .Icon(Url.Content("~/Content/Images/icons/eye.png"))
+                            .StylingMode(ButtonStylingMode.Text)
+                            .Icon("eyeopen")
                             .OnClick("() => changePasswordMode('ConfirmPassword')"));
                         })
                     )
