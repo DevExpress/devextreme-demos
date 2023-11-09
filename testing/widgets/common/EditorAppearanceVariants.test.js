@@ -6,16 +6,16 @@ import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 fixture('Common.EditorAppearanceVariants')
   .page('http://localhost:8080/')
   .beforeEach(async (t) => {
-    await t.resizeWindow(900, 600);
+    await t.resizeWindow(900, 800);
   });
 
-runManualTest('Common', 'EditorAppearanceVariants', ['React', 'Vue', 'Angular'], (test) => {
+runManualTest('Common', 'EditorAppearanceVariants', ['React', 'Vue', 'Angular', 'jQuery'], (test) => {
   test('EditorAppearanceVariants', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     const SELECTBOX_CLASS = 'dx-selectbox';
     const stylingModes = ['outlined', 'filled', 'underlined'];
-    const labelModes = ['static', 'floating', 'hidden'];
+    const labelModes = ['static', 'floating', 'hidden', 'outside'];
 
     const clickSaveButton = async () => {
       await t.click($('#validate'));

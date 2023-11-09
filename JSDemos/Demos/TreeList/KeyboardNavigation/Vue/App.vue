@@ -29,8 +29,7 @@
     />
   </DxTreeList>
 </template>
-<script>
-
+<script setup lang="ts">
 import {
   DxTreeList,
   DxEditing,
@@ -40,33 +39,18 @@ import {
   DxScrolling,
   DxPager,
   DxPaging,
+  DxTreeListTypes,
 } from 'devextreme-vue/tree-list';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
-export default {
-  components: {
-    DxTreeList,
-    DxEditing,
-    DxHeaderFilter,
-    DxFilterRow,
-    DxFilterPanel,
-    DxScrolling,
-    DxPager,
-    DxPaging,
+const dataSource = employees;
+const columns: (DxTreeListTypes.Column | string)[] = [
+  'Full_Name',
+  {
+    dataField: 'Title',
+    caption: 'Position',
   },
-  data() {
-    return {
-      dataSource: employees,
-      columns: [
-        'Full_Name',
-        {
-          dataField: 'Title',
-          caption: 'Position',
-        },
-        'City',
-        'State',
-      ],
-    };
-  },
-};
+  'City',
+  'State',
+];
 </script>
