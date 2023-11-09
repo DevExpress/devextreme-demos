@@ -86,7 +86,7 @@ import CustomStore from 'devextreme/data/custom_store';
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
 import TooltipTemplate from './TooltipTemplate.vue';
 
-const chartRef= ref(null);
+const chartRef = ref(null);
 const connectionStarted = ref(false);
 const dataSource = ref(null);
 const hubConnection = new HubConnectionBuilder()

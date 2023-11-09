@@ -57,6 +57,7 @@ import DxChart, {
 import DataSource from 'devextreme/data/data_source';
 import 'whatwg-fetch';
 
+const HALFDAY = 43200000;
 const chart = ref();
 const visualRange = ref({
   startValue: new Date(2017, 3, 1),
@@ -73,8 +74,6 @@ const bounds = ref({
 });
 
 let packetsLock = 0;
-const HALFDAY = 43200000;
-
 const currentVisualRange = computed({
   get() {
     return visualRange.value;
@@ -98,12 +97,12 @@ function onVisualRangeChanged() {
     uploadDataByVisualRange(visualRange.value, component);
   }
 }
-function uploadDataByVisualRange(visualRange, component) {
+function uploadDataByVisualRange({ startValue, endValue }, component) {
   const dataSource = component.getDataSource();
   const storage = dataSource.items();
   const ajaxArgs = {
-    startVisible: getDateString(visualRange.startValue),
-    endVisible: getDateString(visualRange.endValue),
+    startVisible: getDateString(startValue),
+    endVisible: getDateString(endValue),
     startBound: getDateString(storage.length ? storage[0].date : null),
     endBound: getDateString(storage.length
       ? storage[storage.length - 1].date : null),

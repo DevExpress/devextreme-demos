@@ -43,7 +43,7 @@ import DxPieChart, {
 } from 'devextreme-vue/pie-chart';
 import { internetLanguages } from './data.js';
 
-const customizeLabel = ({argumentText, valueText}) => `${argumentText}: ${valueText}%`;
+const customizeLabel = ({ argumentText, valueText }) => `${argumentText}: ${valueText}%`;
 </script>
 <style>
 #pie {

@@ -14,7 +14,7 @@
       height="40"
     />
     <text
-      :style="{fontSize: 18, fill:&quot;#494949&quot;}"
+      :style="{fontSize: 18, fill: '#494949'}"
       text-anchor="middle"
       x="100"
       y="120"
@@ -28,25 +28,27 @@
   </svg>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
 
 const props = withDefaults(defineProps<{
-  pieChart?: object
+  pieChart?: Record<string, any>
 }>(), {
   pieChart: () => ({}),
 });
 
-const country = ref(props.pieChart.getAllSeries()[0].getVisiblePoints()[0].data.country);
+const country = props.pieChart
+  .getAllSeries()[0]
+  .getVisiblePoints()[0]
+  .data
+  .country;
 
-function getImagePath(country) {
-  return `../../../../images/flags/${country.replace(/\s/, '').toLowerCase()}.svg`;
-};
-function calculateTotal(pieChart) {
-  return formatNumber(pieChart
+const getImagePath = (countryName) => `../../../../images/flags/${countryName.replace(/\s/, '').toLowerCase()}.svg`;
+const calculateTotal = (pieChart) => formatNumber(
+  pieChart
     .getAllSeries()[0]
     .getVisiblePoints()
-    .reduce((s, p) => s + p.originalValue, 0));
-};
+    .reduce((s, p) => s + p.originalValue, 0),
+);
+
 const formatNumber = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 0,
 }).format;

@@ -44,7 +44,7 @@ import DxPieChart, {
 } from 'devextreme-vue/pie-chart';
 import { exportImportData } from './data.js';
 
-const customizeTooltip = ({argumentText, seriesName, valueText}) => ({
+const customizeTooltip = ({ argumentText, seriesName, valueText }) => ({
   text: `${argumentText}<br>${seriesName}: ${valueText}B`,
 });
 </script>

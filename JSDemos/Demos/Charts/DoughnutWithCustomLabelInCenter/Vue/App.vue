@@ -41,7 +41,7 @@ import {
 import { data } from './data.js';
 import CenterTemplate from './CenterTemplate.vue';
 
-const countries = Array.from(new Set(data.map((item) => item.country)));
+const countries = Array.from(new Set(data.map(({ country }) => country)));
 const customizeLabel = ({ argumentText, valueText }) => `${argumentText}\n${valueText}`;
 const getData = (country) => data.filter((i) => i.country === country);
 </script>
