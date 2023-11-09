@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<div class="left-content">
+<div class="textarea-wrapper">
     @(Html.DevExtreme().TextArea()
         .ID("example-textarea")
         .Value(new JS("text"))
@@ -44,19 +44,22 @@
             </div>
         </div>
     </div>
-    @(Html.DevExtreme().TextArea()
-        .ID("editing-textarea")
-        .Value(new JS("text"))
-        .Height(90)
-        .ValueChangeEvent("change")
-        .OnValueChanged("textArea_valueChanged")
-    )
-    @(Html.DevExtreme().TextArea()
-        .ID("read-only-textarea")
-        .Value(new JS("text"))
-        .Height(90)
-        .ReadOnly(true)
-    )
+
+    <div class="textarea-wrapper">
+        @(Html.DevExtreme().TextArea()
+            .ID("editing-textarea")
+            .Value(new JS("text"))
+            .Height(90)
+            .ValueChangeEvent("change")
+            .OnValueChanged("textArea_valueChanged")
+        )
+        @(Html.DevExtreme().TextArea()
+            .ID("read-only-textarea")
+            .Value(new JS("text"))
+            .Height(90)
+            .ReadOnly(true)
+        )
+    </div>
 </div>
 
 <script>

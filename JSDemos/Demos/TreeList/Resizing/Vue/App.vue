@@ -45,26 +45,15 @@
     </div>
   </div>
 </template>
-<script>
-import { DxTreeList, DxColumn } from 'devextreme-vue/tree-list';
+<script setup lang="ts">
+import { ref } from 'vue';
+import { DxTreeList, DxColumn, DxTreeListTypes } from 'devextreme-vue/tree-list';
 import { DxSelectBox } from 'devextreme-vue/select-box';
-import { employees } from './data.js';
+import { employees } from './data.ts';
 
-export default {
-  components: {
-    DxTreeList,
-    DxColumn,
-    DxSelectBox,
-  },
-  data() {
-    return {
-      employees,
-      resizingModes: ['nextColumn', 'widget'],
-      columnResizingMode: 'nextColumn',
-      expandedRowKeys: [1, 3, 6],
-    };
-  },
-};
+const resizingModes: DxTreeListTypes.ColumnResizeMode[] = ['nextColumn', 'widget'];
+const columnResizingMode = ref<DxTreeListTypes.ColumnResizeMode>('nextColumn');
+const expandedRowKeys = [1, 3, 6];
 </script>
 <style scoped>
 #employees {
