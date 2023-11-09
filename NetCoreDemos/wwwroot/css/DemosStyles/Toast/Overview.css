@@ -1,4 +1,9 @@
-﻿#product-list {
+﻿.header {
+    font-size: 34px;
+    text-align: center;
+}
+
+#product-list {
     padding: 10px;
 }
 

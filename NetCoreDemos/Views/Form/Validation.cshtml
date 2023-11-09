@@ -66,6 +66,7 @@
                         groupItems.AddSimpleFor(m => m.Date)
                             .Editor(e => e
                                 .DateBox()
+                                .OpenOnFieldClick(true)
                                 .Placeholder("Birth Date")
                                 .AcceptCustomValue(false)
                             );

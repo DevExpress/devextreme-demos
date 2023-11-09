@@ -47,6 +47,7 @@
             <div class="dx-field-value">
                 @(Html.DevExtreme().Autocomplete()
                     .DataSource(d => d.OData()
+                        .Version(2)
                         .Url("https://js.devexpress.com/Demos/DevAV/odata/States?$select=Sate_ID,State_Long,State_Short")
                         .Key("Sate_ID")
                         .KeyType(EdmType.Int32)

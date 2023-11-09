@@ -2,7 +2,7 @@
 
 <div id="container">
 
-    <h1>Employees</h1>
+    <div class="header">Employees</div>
 
     @(Html.DevExtreme().Popup()
         .ID("employee-popup")
@@ -43,6 +43,7 @@
                 .Location(ToolbarItemLocation.Before)
                 .Widget(widget => widget.Button()
                     .Icon("email")
+                    .StylingMode(ButtonStylingMode.Contained)
                     .Text("Send")
                     .OnClick(@<text>
                         function showInfo(data) {
@@ -62,6 +63,8 @@
                 .Location(ToolbarItemLocation.After)
                 .Widget(widget => widget.Button()
                     .Text("Close")
+                    .StylingMode(ButtonStylingMode.Outlined)
+                    .Type(ButtonType.Normal)
                     .OnClick(@<text>
                         function hideInfo(data) {
                             const popup = $("#employee-popup").dxPopup("instance");
