@@ -11,7 +11,7 @@ import {
   selectAllModeLabel,
   selectionModeLabel,
   selectByClickLabel,
-} from './data.js';
+} from './data.ts';
 
 const dataSource = new ArrayStore({
   key: 'id',
