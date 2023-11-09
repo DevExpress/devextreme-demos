@@ -18,12 +18,12 @@
         <div class="item-template-container">
           <span
             v-if="e.icon"
-            :class="e.icon"
+            :class="e.icon dx-icon"
           />
           <span class="dx-menu-item-text">{{ e.text }}</span>
           <span
             v-if="e.items"
-            class="dx-icon-spinright"
+            class="dx-icon-spinright dx-icon"
           />
         </div>
       </template>
@@ -59,14 +59,8 @@ export default {
 .item-template-container {
   display: flex;
   align-items: center;
-}
-
-.dx-menu-item-content span:not(.dx-icon-spinright) {
-  margin-right: 6px;
-}
-
-.dx-menu-item-content span:not(.dx-menu-item-text) {
-  font-size: 20px;
+  gap: 6px;
+  width: 100%;
 }
 
 .dx-menu-item-text {

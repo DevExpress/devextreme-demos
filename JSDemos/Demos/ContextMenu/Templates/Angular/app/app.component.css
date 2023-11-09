@@ -1,18 +1,8 @@
 ::ng-deep .item-template-container {
   display: flex;
   align-items: center;
-}
-
-::ng-deep .dx-context-menu .dx-menu-item .dx-menu-item-content {
-  display: block;
-}
-
-::ng-deep .dx-menu-item-content span:not(.dx-icon-spinright) {
-  margin-right: 6px;
-}
-
-::ng-deep .dx-menu-item-content span:not(.dx-menu-item-text) {
-  font-size: 20px;
+  gap: 6px;
+  width: 100%;
 }
 
 ::ng-deep .dx-menu-item-text {

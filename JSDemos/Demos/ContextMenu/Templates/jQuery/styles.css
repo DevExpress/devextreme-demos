@@ -1,18 +1,8 @@
 .item-template-container {
   display: flex;
   align-items: center;
-}
-
-.dx-context-menu .dx-menu-item .dx-menu-item-content {
-  display: block;
-}
-
-.dx-menu-item-content span:not(.dx-icon-spinright) {
-  margin-right: 6px;
-}
-
-.dx-menu-item-content span:not(.dx-menu-item-text) {
-  font-size: 20px;
+  gap: 6px;
+  width: 100%;
 }
 
 .dx-menu-item-text {
