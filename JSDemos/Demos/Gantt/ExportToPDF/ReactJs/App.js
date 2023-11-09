@@ -37,6 +37,9 @@ const endTaskIndexLabel = { 'aria-label': 'End Task Index' };
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.formatBoxRef = null;
+    this.exportModeBoxRef = null;
+    this.dateRangeBoxRef = null;
     this.ganttRef = React.createRef();
     this.state = {
       formatBoxValue: formats[0],
