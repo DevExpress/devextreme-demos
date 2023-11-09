@@ -59,6 +59,7 @@ export default function App() {
   const getEmailButtonOptions = React.useCallback(
     () => ({
       icon: 'email',
+      stylingMode: 'contained',
       text: 'Send',
       onClick: sendEmail,
     }),
@@ -67,24 +68,27 @@ export default function App() {
   const getCloseButtonOptions = React.useCallback(
     () => ({
       text: 'Close',
+      stylingMode: 'outlined',
+      type: 'normal',
       onClick: hideInfo,
     }),
     [hideInfo],
   );
   const getItems = React.useCallback(
-    () => employees.map((employee) => (
-      <li key={employee.ID}>
-        <EmployeeItem
-          employee={employee}
-          showInfo={showInfo}
-        />
-      </li>
-    )),
+    () =>
+      employees.map((employee) => (
+        <li key={employee.ID}>
+          <EmployeeItem
+            employee={employee}
+            showInfo={showInfo}
+          />
+        </li>
+      )),
     [showInfo],
   );
   return (
     <div id="container">
-      <h1>Employees</h1>
+      <div className="header">Employees</div>
       <ul>{getItems()}</ul>
       <Popup
         visible={popupVisible}
