@@ -90,6 +90,8 @@
                 </div>
                 <div class="dx-field-value">
                     @(Html.DevExtreme().DateRangeBoxFor(m => m.VacationDates)
+                        .ID("DateRangeBox")
+                        .OnValueChanged("onVacationDatesChange")
                     )
                 </div>
             </div>
@@ -179,26 +181,27 @@
         }
     }
 
-    function validateVacationDatesRange({ value }) {
-        const [startDate, endDate] = value;
-
-        if (startDate === null || endDate === null) {
-            return true;
-        }
-
-        const millisecondsPerDay = 24 * 60 * 60 * 1000;
-        const daysDifference = Math.abs((endDate - startDate) / millisecondsPerDay);
-
-        return daysDifference < 25;
-    }
-
-    function validateVacationDatesPresence({ value }) {
-        const [startDate, endDate] = value;
+    function onVacationDatesChange(e) {
+        const editor = $("#DateRangeBox").dxDateRangeBox("instance");
+        const [startDate, endDate] = editor.option("value");
+        const currentValidationStatus = editor.option("validationStatus");
+        let isValid;
 
         if (startDate === null && endDate === null) {
-            return true;
+            isValid = true;
+        } else {
+            isValid = startDate !== null && endDate !== null;
         }
 
-        return startDate !== null && endDate !== null;
+        if (isValid) {
+            editor.option({
+                validationStatus: currentValidationStatus
+            });
+        } else {
+            editor.option({
+                validationStatus: "invalid",
+                validationErrors: [{ message: "Both start and end dates must be selected" }]
+            });
+        }
     }
 </script>
