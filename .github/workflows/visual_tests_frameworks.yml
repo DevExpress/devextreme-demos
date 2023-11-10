@@ -261,18 +261,16 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: Check generated demos (1/6)
-            command: CONSTEL=1/6 npm run convert-to-js
-          - name: Check generated demos (2/6)
-            command: CONSTEL=2/6 npm run convert-to-js
-          - name: Check generated demos (3/6)
-            command: CONSTEL=3/6 npm run convert-to-js
-          - name: Check generated demos (4/6)
-            command: CONSTEL=4/6 npm run convert-to-js
-          - name: Check generated demos (5/6)
-            command: CONSTEL=5/6 npm run convert-to-js
-          - name: Check generated demos (6/6)
-            command: CONSTEL=6/6 npm run convert-to-js
+          - name: Check generated demos (1/5)
+            command: CONSTEL=1/5 npm run convert-to-js
+          - name: Check generated demos (2/5)
+            command: CONSTEL=2/5 npm run convert-to-js
+          - name: Check generated demos (3/5)
+            command: CONSTEL=3/5 npm run convert-to-js
+          - name: Check generated demos (4/5)
+            command: CONSTEL=4/5 npm run convert-to-js
+          - name: Check generated demos (5/5)
+            command: CONSTEL=5/5 npm run convert-to-js
     steps:
     - name: Get sources
       uses: actions/checkout@v3
