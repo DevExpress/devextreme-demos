@@ -14,6 +14,7 @@ import Form, {
   CustomRule,
   FormTypes,
 } from 'devextreme-react/form';
+import Button from 'devextreme-react/button';
 import { ButtonType } from 'devextreme-react/common';
 import notify from 'devextreme/ui/notify';
 import Validator from 'devextreme/ui/validator';
@@ -129,15 +130,7 @@ const registerButtonOptions = {
 function App() {
   const formRef = React.useRef<Form>(null);
 
-  const [resetButtonOptions, setResetButtonOptions] = React.useState({
-    disabled: true,
-    icon: 'refresh',
-    text: 'Reset',
-    width: '120px',
-    onClick: () => {
-      formRef.current.instance.reset();
-    },
-  });
+  const [resetButtonDisabled, setResetButtonDisabled] = React.useState(false);
 
   const changePasswordMode = React.useCallback((name) => {
     const editor = formRef.current.instance.getEditor(name);
@@ -194,11 +187,21 @@ function App() {
     e.preventDefault();
   }, []);
 
-  const onOptionChanged = React.useCallback((e: FormTypes.OptionChangedEvent) => {
-    if (e.name === 'isDirty') {
-      setResetButtonOptions({ ...resetButtonOptions, disabled: !e.value });
-    }
-  }, [resetButtonOptions, setResetButtonOptions]);
+  // const onOptionChanged = React.useCallback((e: FormTypes.OptionChangedEvent) => {
+  //   if (e.name === 'isDirty' && e.value === resetButtonDisabled) {
+  //     setResetButtonDisabled(!e.value);
+  //   }
+  // }, [resetButtonDisabled, setResetButtonDisabled]);
+
+  const resetButtonOptions = React.useMemo(() => ({
+    disabled: resetButtonDisabled,
+    icon: 'refresh',
+    text: 'Reset',
+    width: '120px',
+    onClick: () => {
+      formRef.current.instance.reset();
+    },
+  }), [formRef, resetButtonDisabled]);
 
   return (
     <React.Fragment>
@@ -207,7 +210,7 @@ function App() {
           ref={formRef}
           formData={customer}
           readOnly={false}
-          onOptionChanged={onOptionChanged}
+          // onOptionChanged={onOptionChanged}
           showColonAfterLabel={true}
           showValidationSummary={true}
           validationGroup="customerData"
@@ -295,6 +298,7 @@ function App() {
           </GroupItem>
         </Form>
       </form>
+      <Button onClick={() => setResetButtonDisabled(!resetButtonDisabled)}>Change reset button disabled</Button>
     </React.Fragment>
   );
 }
