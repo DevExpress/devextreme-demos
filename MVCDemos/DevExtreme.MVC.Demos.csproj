@@ -1529,7 +1529,6 @@
     <Content Include="Content\Images\hotels\SF-9.jpg" />
     <Content Include="Content\Images\icon-agent.svg" />
     <Content Include="Content\Images\icons\custom-dropbutton-icon.svg" />
-    <Content Include="Content\Images\icons\eye.png" />
     <Content Include="Content\Images\icons\status-1.svg" />
     <Content Include="Content\Images\icons\status-2.svg" />
     <Content Include="Content\Images\icons\status-3.svg" />
