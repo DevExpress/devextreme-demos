@@ -72,7 +72,7 @@
 
       const processLink = () => {
         if (window.location.hash === "") {
-          window.location.hash = "#JSDemos/Demos/DataGrid/Overview/jQuery/dx.light.css";
+          window.location.hash = "#JSDemos/Demos/DataGrid/Overview/jQuery/dx.fluent.blue.light.css";
         }
 
         const pathParts = window.location.hash
@@ -101,7 +101,7 @@
 
         const link = pathParts.slice(0, -1).join("/");
 
-        window.location.hash = `#${link}/${theme}`;
+        window.location.hash = `#${link}/${'dx.fluent.blue.light.css'}`;
 
         return link + "/";
       };
