@@ -7,16 +7,16 @@
     .Width(200)
     .Target("#image")
     .ItemTemplate(@<text>
-        <div>
+        <div class="item-template-container">
             <% if(typeof Icon !== "undefined") { %>
-            <span class="<%- Icon %>"></span>
+            <span class="<%- Icon %> dx-icon"></span>
             <% } %>
+
+            <span class="dx-menu-item-text"><%- Text %></span>
 
             <% if(typeof Items !== "undefined") { %>
-            <span class="dx-icon-spinright"></span>
+            <span class="dx-icon-spinright dx-icon"></span>
             <% } %>
-
-            <%- Text %>
         </div>
     </text>)
     .OnItemClick("contextMenu_itemClick")
