@@ -3,7 +3,7 @@
     id="chart"
     :data-source="dataSource"
     :palette="palette"
-    title="Correlation between Total Population and\n Population with Age over 60"
+    :title="'Correlation between Total Population and\n Population with Age over 60'"
     @series-click="seriesClick"
   >
     <DxCommonSeriesSettings type="bubble"/>
