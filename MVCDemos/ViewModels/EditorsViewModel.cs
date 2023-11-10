@@ -9,10 +9,6 @@ using System.Web.Mvc;
 
 namespace DevExtreme.MVC.Demos.ViewModels {
     public class EditorsViewModel {
-        public EditorsViewModel() {
-            // VacationDates = new DateTime[2];
-        }
-
         [Required(ErrorMessage = "Email is required")]
         [RegularExpression(@"^[\d\w._-]+@[\d\w._-]+\.[\w]+$", ErrorMessage = "Email is invalid")]
         [Remote("CheckEmailAddress", "RemoteValidation", ErrorMessage = "Email is already registered", HttpMethod = "POST")]
@@ -63,7 +59,6 @@ namespace DevExtreme.MVC.Demos.ViewModels {
         [VerifyAge(21, ErrorMessage = "You must be at least {1} years old")]
         public DateTime? Date { get; set; }
 
-        [VerifyDateRangeSelection(ErrorMessage = "Both start and end dates must be selected")]
         [VerifyDateRange(25, ErrorMessage = "The vacation period must not exceed {1} days")]
         public DateTime?[] VacationDates { get; set; }
 
