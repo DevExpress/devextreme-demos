@@ -112,7 +112,7 @@ const execTestCafeCode = (t, code) => {
       }
     }
 
-    runTestAtPage(test, `http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}`)
+    runTestAtPage(test, `http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`)
       .clientScripts(clientScriptSource)(testName, async (t) => {
         if (visualTestStyles) {
           await execCode(visualTestStyles);
@@ -140,7 +140,7 @@ const execTestCafeCode = (t, code) => {
           await t.expect(error).notOk();
           await t.expect(results.violations.length === 0).ok(createReport(results.violations));
         } else {
-          const comparisonResult = await compareScreenshot(t, `${testName}.png`, undefined, comparisonOptions);
+          const comparisonResult = await compareScreenshot(t, `${testName} (fluent.blue.light).png`, undefined, comparisonOptions);
           const consoleMessages = await t.getBrowserConsoleMessages();
           if (!comparisonResult) {
             // eslint-disable-next-line no-console
