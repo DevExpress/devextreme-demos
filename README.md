@@ -71,6 +71,12 @@ npm run fix-lint
 npm run convert-to-js split
 ```
 
+If you want to run this script on specific folder you can pass it to the arguments
+
+```
+npm run convert-to-js "JSDemos/Demos/Diagram/**/React"
+```
+
 1. To ensure that React JavaScript and TypeScript sources are always in sync, the following GitHub action is used: "Check generated JS demos".
 
 ## ASP.NET Demos
