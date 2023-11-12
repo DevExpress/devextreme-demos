@@ -1,24 +1,65 @@
 <template>
-  <DxDataGrid
-    :data-source="dataSource"
-    :columns="columns"
-    :show-borders="true"
+  <div className="options">
+    <div className="option">
+      <div className="label">Work Hours</div>
+      <div className="value">
+        <DxRadioGroup
+          :items="shifts"
+          :value="shifts[0]"
+          layout="horizontal"
+          :on-value-changed="onShiftChanged"
+        />
+      </div>
+    </div>
+  </div>
+  <br>
+  <DxScheduler
+    time-zone="America/Los_Angeles"
+    :data-source="appointments"
+    :current-date="currentDate"
+    :views="views"
+    current-view="week"
+    :start-day-hour="0"
+    :end-day-hour="8"
+    :height="600"
+    :show-all-day-panel="false"
   />
 </template>
-<script>
+<script setup lang="ts">
 
-import DxDataGrid from 'devextreme-vue/data-grid';
-import { customers } from './data.js';
+import DxScheduler from 'devextreme-vue/scheduler';
+import DxRadioGroup, { DxRadioGroupTypes } from 'devextreme-vue/radio-group';
+import { appointments, shifts } from './data.ts';
 
-export default {
-  components: {
-    DxDataGrid,
-  },
-  data() {
-    return {
-      dataSource: customers,
-      columns: ['CompanyName', 'City', 'State', 'Phone', 'Fax'],
-    };
-  },
-};
+const views = ['day', 'week'];
+const currentDate = new Date(2021, 2, 30);
+
+function onShiftChanged(e: DxRadioGroupTypes.ValueChangedEvent) {
+}
 </script>
+
+<style scoped>
+.options {
+  background-color: rgba(191, 191, 191, 0.15);
+  margin-top: 20px;
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.option {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.label,
+.value {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.label {
+  width: 100px;
+}
+</style>
