@@ -42,7 +42,9 @@ const getPatterns = () => {
           name: parts[3],
           framework: parts[4],
         };
-      }).filter(({ widget }) => filteredDemos.includes(widget));
+      })
+      .filter(({ widget, name, framework }) => fs.statSync(`JSDemos/Demos/${widget}/${name}/${framework}`).isDirectory())
+      .filter(({ widget }) => filteredDemos.includes(widget));
 
     return changedDemos.map(({ widget, name, framework }) => `JSDemos/Demos/${widget}/${name}/${framework}/**/*.@(vue|[tj]s?(x))`);
   }
