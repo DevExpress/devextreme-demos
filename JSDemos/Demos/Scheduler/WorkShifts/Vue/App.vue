@@ -1,8 +1,8 @@
 <template>
-  <div className="options">
-    <div className="option">
-      <div className="label">Work Hours</div>
-      <div className="value">
+  <div class="options">
+    <div class="option">
+      <div class="label">Work Hours</div>
+      <div class="value">
         <DxRadioGroup
           :items="shifts"
           :value="shifts[0]"
