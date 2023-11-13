@@ -196,9 +196,10 @@ function App() {
 
   const onOptionChanged = React.useCallback((e: FormTypes.OptionChangedEvent) => {
     if (e.name === 'isDirty') {
-      setResetButtonOptions({ ...resetButtonOptions, disabled: !e.value });
+      const resetButton = formRef.current.instance.getButton('Reset');
+      resetButton.option('disabled', !e.value);
     }
-  }, [resetButtonOptions, setResetButtonOptions]);
+  }, [formRef]);
 
   return (
     <React.Fragment>
