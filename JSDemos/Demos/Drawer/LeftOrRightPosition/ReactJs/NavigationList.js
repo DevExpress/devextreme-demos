@@ -13,7 +13,7 @@ function NavigationList() {
         hoverStateEnabled={false}
         activeStateEnabled={false}
         focusStateEnabled={false}
-        className="panel-list dx-theme-accent-as-background-color"
+        className="panel-list"
       />
     </div>
   );
