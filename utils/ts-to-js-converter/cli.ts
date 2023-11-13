@@ -106,7 +106,6 @@ function splitArrayIntoSubarrays(array, subarrayLength) {
 }
 
 async function startScript() {
-  process.env.CONSTEL = '4/6';
   const allPatterns = getPatterns();
   const batches = splitArrayIntoSubarrays(allPatterns, 10);
   for (const batch of batches) {
