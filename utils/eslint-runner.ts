@@ -25,13 +25,13 @@ const getPatterns = () => {
   const filteredDemosPatterns = filteredDemos.map((widgetName) => `JSDemos/Demos/${widgetName}/**/*.@(vue|[tj]s?(x))`);
 
   if (changedFiles != null) {
-    const isChangedConfig = changedFiles.some(
-      ({ filename }) => filename.includes('eslint') || filename.includes('package-lock.json') || filename.includes('.github'),
-    );
+    // const isChangedConfig = changedFiles.some(
+    //   ({ filename }) => filename.includes('eslint') || filename.includes('package-lock.json') || filename.includes('.github'),
+    // );
 
-    if (isChangedConfig) {
-      return filteredDemosPatterns;
-    }
+    // if (isChangedConfig) {
+    //   return filteredDemosPatterns;
+    // }
 
     const changedDemos = changedFiles
       .filter((item) => item.filename.startsWith('JSDemos/Demos'))
