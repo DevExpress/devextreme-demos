@@ -34,7 +34,7 @@ const getPatterns = () => {
   const CONSTEL = process.env.CONSTEL;
   const userArgs = process.argv.slice(2);
 
-  if (userArgs.length > 0) {
+  if (userArgs.length > 0 && userArgs[0] !== 'split') {
     return userArgs;
   }
 
@@ -106,6 +106,26 @@ function splitArrayIntoSubarrays(array, subarrayLength) {
 }
 
 async function startScript() {
+  const userFlags = process.argv.slice(2);
+  if (userFlags[0] === 'split') {
+    process.env.CONSTEL = '1/4';
+    consola.log('Start converting Part', process.env.CONSTEL);
+    await batchPatternsAndConvert();
+    process.env.CONSTEL = '2/4';
+    consola.log('Start converting Part', process.env.CONSTEL);
+    await batchPatternsAndConvert();
+    process.env.CONSTEL = '3/4';
+    consola.log('Start converting Part', process.env.CONSTEL);
+    await batchPatternsAndConvert();
+    process.env.CONSTEL = '4/4';
+    consola.log('Start converting Part', process.env.CONSTEL);
+    await batchPatternsAndConvert();
+  } else {
+    await batchPatternsAndConvert();
+  }
+}
+
+async function batchPatternsAndConvert() {
   const allPatterns = getPatterns();
   const batches = splitArrayIntoSubarrays(allPatterns, 10);
   for (const batch of batches) {
