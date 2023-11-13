@@ -6,6 +6,7 @@ import { data, shifts } from './data.js';
 const currentDate = new Date(2021, 2, 30);
 const views = ['day', 'week'];
 const App = () => {
+  // eslint-disable-next-line no-unused-vars
   const [offset, setOffset] = React.useState(0);
   const onShiftChanged = React.useCallback((e) => {
     setOffset(e.value);
