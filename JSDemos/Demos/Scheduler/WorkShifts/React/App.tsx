@@ -9,6 +9,7 @@ const currentDate = new Date(2021, 2, 30);
 const views: SchedulerTypes.ViewType[] = ['day', 'week'];
 
 const App = () => {
+  // eslint-disable-next-line no-unused-vars
   const [offset, setOffset] = React.useState(0);
   const onShiftChanged = React.useCallback((e: RadioGroupTypes.ValueChangedEvent) => { setOffset(e.value); }, []);
 

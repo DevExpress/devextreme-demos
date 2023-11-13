@@ -34,6 +34,7 @@ import { appointments, shifts } from './data.ts';
 const views = ['day', 'week'];
 const currentDate = new Date(2021, 2, 30);
 
+// eslint-disable-next-line no-unused-vars
 function onShiftChanged(e: DxRadioGroupTypes.ValueChangedEvent) {
 }
 </script>
