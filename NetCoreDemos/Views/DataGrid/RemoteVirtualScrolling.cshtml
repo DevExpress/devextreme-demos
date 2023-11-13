@@ -19,7 +19,7 @@
     .ShowBorders(true)
     .Columns(columns => {
         columns.AddFor(m => m.Id)
-            .Width(75);
+            .Width(90);
 
         columns.AddFor(m => m.StoreName)
             .Width(150);
@@ -31,7 +31,7 @@
 
         columns.AddFor(m => m.DateKey)
             .Format("yyyy-MM-dd")
-            .Width(100);
+            .Width(110);
 
         columns.AddFor(m => m.SalesAmount)
             .Format("currency")
