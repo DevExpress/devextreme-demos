@@ -5,10 +5,10 @@
       <dx-radio-group
         [items]="shifts"
         [value]="shifts[0]"
-        layout= 'horizontal'
+        layout="horizontal"
         (onValueChanged)="onShiftChanged($event)"
-    >
-    </dx-radio-group>
+      >
+      </dx-radio-group>
     </div>
   </div>
 </div>
@@ -19,8 +19,8 @@
   [views]="['day', 'week']"
   currentView="week"
   [currentDate]="currentDate"
-  [startDayHour]= "0"
-  [endDayHour]= "8"
+  [startDayHour]="0"
+  [endDayHour]="8"
   [height]="600"
   [showAllDayPanel]="false"
 >
