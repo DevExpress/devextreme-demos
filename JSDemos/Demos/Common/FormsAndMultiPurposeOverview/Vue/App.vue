@@ -54,7 +54,7 @@
     </DxGroupItem>
   </DxForm>
 </template>
-<script>
+<script setup lang="ts">
 import {
   DxForm,
   DxSimpleItem,
@@ -64,30 +64,17 @@ import {
 import { DxTextArea } from 'devextreme-vue/text-area';
 import { employee, positions, states } from './data.js';
 
-export default {
-  components: {
-    DxForm,
-    DxTextArea,
-    DxGroupItem,
-    DxSimpleItem,
-    DxLabel,
-  },
-  data() {
-    return {
-      formData: employee,
-      birthDateOptions: { width: '100%' },
-      positionOptions: {
-        items: positions,
-        value: '',
-      },
-      stateOptions: {
-        items: states,
-      },
-      phoneOptions: { mask: '+1 (000) 000-0000' },
-      notesOptions: { height: 140 },
-    };
-  },
+const formData = employee;
+const birthDateOptions = { width: '100%' };
+const positionOptions = {
+  items: positions,
+  value: '',
 };
+const stateOptions = {
+  items: states,
+};
+const phoneOptions = { mask: '+1 (000) 000-0000' };
+const notesOptions = { height: 140 };
 </script>
 <style>
 .form-group {

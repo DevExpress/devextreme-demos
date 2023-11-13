@@ -107,34 +107,22 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import { DxSlider } from 'devextreme-vue/slider';
 import { DxNumberBox } from 'devextreme-vue/number-box';
 
+const sliderValue = ref(10);
+const label = ref({
+visible: true,
+position: 'top',});
+const tooltip = ref({
+  enabled: true,
+  showMode: 'always',
+  position: 'bottom',
+  format,
+});
 const format = (value) => `${value}%`;
-
-export default {
-  components: {
-    DxSlider,
-    DxNumberBox,
-  },
-  data() {
-    return {
-      sliderValue: 10,
-      label: {
-        visible: true,
-        position: 'top',
-        format,
-      },
-      tooltip: {
-        enabled: true,
-        showMode: 'always',
-        position: 'bottom',
-        format,
-      },
-    };
-  },
-};
 </script>
 <style scoped>
 .custom-height-slider {
