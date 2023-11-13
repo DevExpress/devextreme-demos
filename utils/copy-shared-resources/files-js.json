@@ -11,9 +11,11 @@
          "filePath":"./JSDemos/shared/azure.file.system.js",
          "paths":[
             "./JSDemos/Demos/FileUploader/AzureDirectUploading/React",
+            "./JSDemos/Demos/FileUploader/AzureDirectUploading/ReactJs",
             "./JSDemos/Demos/FileUploader/AzureDirectUploading/Vue",  
 
             "./JSDemos/Demos/FileManager/AzureClientBinding/React",
+            "./JSDemos/Demos/FileManager/AzureClientBinding/ReactJs",
             "./JSDemos/Demos/FileManager/AzureClientBinding/Vue"
          ]
       },

@@ -51,7 +51,7 @@ const getPatterns = () => {
   return filteredDemos.map((demoName) => demoName.split(path.sep).join(path.posix.sep));
 };
 
-const performConversion = async () => {
+const performConversion = async (patterns) => {
   const logger = {
     warning: consola.warn,
     error: consola.error,
@@ -61,7 +61,7 @@ const performConversion = async () => {
     success: consola.success,
   };
 
-  const args = minimist(getPatterns());
+  const args = minimist(patterns);
 
   const sourceDirs = args._ || [process.cwd()];
   const outDirPostfix = 'Js';
@@ -95,4 +95,23 @@ const performConversion = async () => {
     });
 };
 
-performConversion();
+function splitArrayIntoSubarrays(array, subarrayLength) {
+  var result = [];
+
+  for (var i = 0; i < array.length; i += subarrayLength) {
+    result.push(array.slice(i, i + subarrayLength));
+  }
+
+  return result;
+}
+
+async function startScript() {
+  const allPatterns = getPatterns();
+  const batches = splitArrayIntoSubarrays(allPatterns, 10);
+  for (const batch of batches) {
+    // eslint-disable-next-line no-await-in-loop
+    await performConversion(batch);
+  }
+}
+
+startScript();

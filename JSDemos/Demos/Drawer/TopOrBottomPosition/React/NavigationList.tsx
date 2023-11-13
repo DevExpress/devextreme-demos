@@ -8,8 +8,9 @@ function NavigationList() {
     <div className="list">
       <List
         dataSource={navigation}
-        className="panel-list dx-theme-accent-as-background-color"
-        height={200} />
+        className="panel-list"
+        height={200}
+      />
     </div>
   );
 }
