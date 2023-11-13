@@ -102,7 +102,8 @@ const registerButtonOptions = {
 };
 function App() {
   const formRef = React.useRef(null);
-  const [resetButtonOptions, setResetButtonOptions] = React.useState({
+
+  const resetButtonOptions = React.useMemo(() => ({
     disabled: true,
     icon: 'refresh',
     text: 'Reset',
@@ -110,7 +111,8 @@ function App() {
     onClick: () => {
       formRef.current.instance.reset();
     },
-  });
+  }), []);
+
   const changePasswordMode = React.useCallback((name) => {
     const editor = formRef.current.instance.getEditor(name);
     editor.option('mode', editor.option('mode') === 'text' ? 'password' : 'text');
@@ -172,14 +174,12 @@ function App() {
     );
     e.preventDefault();
   }, []);
-  const onOptionChanged = React.useCallback(
-    (e) => {
-      if (e.name === 'isDirty') {
-        setResetButtonOptions({ ...resetButtonOptions, disabled: !e.value });
-      }
-    },
-    [resetButtonOptions, setResetButtonOptions],
-  );
+  const onOptionChanged = React.useCallback((e) => {
+    if (e.name === 'isDirty') {
+      const resetButton = formRef.current.instance.getButton('Reset');
+      resetButton.option('disabled', !e.value);
+    }
+  }, [formRef]);
   return (
     <React.Fragment>
       <form

@@ -129,7 +129,7 @@ const registerButtonOptions = {
 function App() {
   const formRef = React.useRef<Form>(null);
 
-  const [resetButtonOptions, setResetButtonOptions] = React.useState({
+  const resetButtonOptions = React.useMemo(() => ({
     disabled: true,
     icon: 'refresh',
     text: 'Reset',
@@ -137,7 +137,7 @@ function App() {
     onClick: () => {
       formRef.current.instance.reset();
     },
-  });
+  }), []);
 
   const changePasswordMode = React.useCallback((name) => {
     const editor = formRef.current.instance.getEditor(name);
