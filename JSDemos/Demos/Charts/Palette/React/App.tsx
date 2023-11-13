@@ -4,7 +4,7 @@ import PieChart, {
   Legend,
 } from 'devextreme-react/pie-chart';
 import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
-import { getPalette } from 'devextreme/viz/palette';
+import * as dxPalette from 'devextreme/viz/palette';
 import {
   paletteCollection, paletteExtensionModes, dataSource, paletteLabel, paletteExtensionLabel,
 } from './data.ts';
@@ -35,7 +35,7 @@ function App() {
         </PieChart>
 
         <div className="palette-container flex-block">
-          {getPalette(palette).simpleSet.map((color) => (
+          {dxPalette.getPalette(palette).simpleSet.map((color) => (
             <div
               className="palette-item"
               style={{ backgroundColor: color }}
