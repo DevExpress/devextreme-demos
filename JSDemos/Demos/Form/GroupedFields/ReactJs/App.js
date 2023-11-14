@@ -24,7 +24,7 @@ export default function App() {
         >
           <GroupItem caption="System Information">
             <SimpleItem dataField="ID" />
-            <GroupItem caption="General Information">
+            <GroupItem caption="Main Information">
               <SimpleItem dataField="FirstName" />
               <SimpleItem dataField="LastName" />
               <SimpleItem dataField="HireDate" />

@@ -14,7 +14,7 @@
             data-field="ID"
           />
           <DxGroupItem
-            caption="General Information"
+            caption="Main Information"
           >
             <DxSimpleItem
               data-field="FirstName"

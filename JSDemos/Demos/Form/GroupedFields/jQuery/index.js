@@ -7,7 +7,7 @@ $(() => {
       caption: 'System Information',
       items: ['ID', {
         itemType: 'group',
-        caption: 'General Information',
+        caption: 'Main Information',
         items: ['FirstName', 'LastName', 'HireDate', 'Position', 'OfficeNo'],
       }],
     }, {

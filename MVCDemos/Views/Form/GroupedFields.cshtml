@@ -13,7 +13,7 @@
                     groupItems.AddSimpleFor(m => m.ID).IsRequired(false);
 
                     groupItems.AddGroup()
-                        .Caption("General Information")
+                        .Caption("Main Information")
                         .Items(innerGroupItems => {
                             groupItems.AddSimpleFor(m => m.FirstName);
                             groupItems.AddSimpleFor(m => m.LastName);
