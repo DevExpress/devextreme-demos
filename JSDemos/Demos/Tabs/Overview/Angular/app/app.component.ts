@@ -53,7 +53,14 @@ export class AppComponent {
 
   rtlEnabled = false;
 
-  widgetWrapperClasses = 'widget-wrapper widget-wrapper-horizontal';
+  shouldRestrictWidth = false;
+
+  widgetWrapperClasses = {
+    'widget-wrapper': true,
+    'widget-wrapper-horizontal': true,
+    'widget-wrapper-vertical': false,
+    'strict-width': false,
+  };
 
   constructor(service: Service) {
     this.tabsWithText = service.getTabsWithText();
@@ -65,8 +72,17 @@ export class AppComponent {
   }
 
   onOrientationChanged(e) {
-    this.widgetWrapperClasses = `widget-wrapper widget-wrapper-${e.value}`;
-    this.orientation = e.value;
+    if (e.value === 'vertical') {
+      this.widgetWrapperClasses['widget-wrapper-vertical'] = true;
+      this.widgetWrapperClasses['widget-wrapper-horizontal'] = false;
+    } else {
+      this.widgetWrapperClasses['widget-wrapper-horizontal'] = true;
+      this.widgetWrapperClasses['widget-wrapper-vertical'] = false;
+    }
+  }
+
+  toggleStrictWidthClass(e) {
+    this.widgetWrapperClasses['strict-width'] = e.value || this.scrollByContent || this.showNavButtons;
   }
 
   onFullWidthChanged(e) {

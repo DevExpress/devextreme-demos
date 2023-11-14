@@ -9,6 +9,7 @@
                 .StylingMode(TabsStyle.Secondary)
                 .IconPosition(TabsIconPosition.Top)
             )
+
             @(Html.DevExtreme().Tabs()
                 .ID("withIconAndText")
                 .Width("auto")
@@ -17,6 +18,7 @@
                 .StylingMode(TabsStyle.Secondary)
                 .IconPosition(TabsIconPosition.Top)
             )
+
             @(Html.DevExtreme().Tabs()
                 .ID("withIcon")
                 .Width("auto")
@@ -63,8 +65,8 @@
 
         <div class="option">
             @(Html.DevExtreme().CheckBox()
-                .Value(false)
                 .ID("show-navigation-buttons")
+                .Value(false)
                 .Text("Show Navigation Buttons")
                 .OnValueChanged("showNavigation_valueChanged")
             )
@@ -72,6 +74,7 @@
 
         <div class="option">
             @(Html.DevExtreme().CheckBox()
+                .ID("scroll-content")
                 .Value(false)
                 .Text("Scroll Content")
                 .OnValueChanged("scrollContent_valueChanged")
@@ -98,36 +101,48 @@
 
 <script>
     function orientation_valueChanged(e) {
-        const $widgetWrapper = $('.widget-wrapper');
+        const $widgetWrapper = $(".widget-wrapper");
 
         $widgetWrapper.removeClass();
         $widgetWrapper.addClass(`widget-wrapper widget-wrapper-${data.value}`);
 
-        setTabsOption('orientation', e.value);
+        setTabsOption("orientation", e.value);
     }
 
     function stylingMode_valueChanged(e) {
-        setTabsOption('stylingMode', e.value);
+        setTabsOption("stylingMode", e.value);
     }
 
     function iconPosition_valueChanged(e) {
-        setTabsOption('iconPosition', e.value);
+        setTabsOption("iconPosition", e.value);
     }
 
     function showNavigation_valueChanged(e) {
-        setTabsOption('showNavButtons', e.value);
+        const scrollContentCheckBox = $("#scroll-content").dxCheckBox("instance");
+        const $widgetWrapper = $(".widget-wrapper");
+        const shouldRestrictWidth = data.value || scrollContentCheckBox.option("value");
+
+        $widgetWrapper.toggleClass("strict-width", shouldRestrictWidth);
+
+        setTabsOption("showNavButtons", e.value);
     }
 
     function scrollContent_valueChanged(e) {
-        setTabsOption('scrollByContent', e.value);
+        const showNavButtonsCheckBox = $("#show-navigation-buttons").dxCheckBox("instance");
+        const $widgetWrapper = $(".widget-wrapper");
+        const shouldRestrictWidth = data.value || showNavButtonsCheckBox.option("value");
+
+        $widgetWrapper.toggleClass("strict-width", shouldRestrictWidth);
+
+        setTabsOption("scrollByContent", e.value);
     }
 
     function fullWidth_valueChanged(e) {
-        setTabsOption('width', e.value ? '100%' : 'auto');
+        setTabsOption("width", e.value ? "100%" : "auto");
     }
 
     function rtlEnabled_valueChanged(e) {
-        setTabsOption('rtlEnabled', e.value);
+        setTabsOption("rtlEnabled", e.value);
     }
 
     function setTabsOption(option, value) {
@@ -139,87 +154,87 @@
     const tabsText = [
         {
             id: 0,
-            text: 'User',
+            text: "User",
         },
         {
             id: 1,
-            text: 'Analytics',
+            text: "Analytics",
         },
         {
             id: 2,
-            text: 'Clients',
+            text: "Clients",
         },
         {
             id: 3,
-            text: 'Orders',
+            text: "Orders",
         },
         {
             id: 4,
-            text: 'Favorites',
+            text: "Favorites",
         },
         {
             id: 5,
-            text: 'Search',
+            text: "Search",
         },
     ];
 
     const tabsTextAndIcon = [
         {
             id: 0,
-            text: 'User',
-            icon: 'user',
+            text: "User",
+            icon: "user",
         },
         {
             id: 1,
-            text: 'Analytics',
-            icon: 'chart',
+            text: "Analytics",
+            icon: "chart",
         },
         {
             id: 2,
-            text: 'Clients',
-            icon: 'accountbox',
+            text: "Clients",
+            icon: "accountbox",
         },
         {
             id: 3,
-            text: 'Orders',
-            icon: 'ordersbox',
+            text: "Orders",
+            icon: "ordersbox",
         },
         {
             id: 4,
-            text: 'Favorites',
-            icon: 'bookmark',
+            text: "Favorites",
+            icon: "bookmark",
         },
         {
             id: 5,
-            text: 'Search',
-            icon: 'search',
+            text: "Search",
+            icon: "search",
         },
     ];
 
     const tabsIcon = [
         {
             id: 0,
-            icon: 'user',
+            icon: "user",
         },
         {
             id: 1,
-            icon: 'chart',
+            icon: "chart",
         },
         {
             id: 2,
-            icon: 'accountbox',
+            icon: "accountbox",
         },
         {
             id: 3,
-            icon: 'ordersbox',
+            icon: "ordersbox",
         },
         {
             id: 4,
-            icon: 'bookmark',
+            icon: "bookmark",
         },
         {
             id: 5,
-            icon: 'search',
+            icon: "search",
         },
     ];
 </script>

@@ -30,21 +30,41 @@ const App = () => {
   const [scrollContent, setScrollContent] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(false);
   const [rtlEnabled, setRtlEnabled] = React.useState(false);
+  const [width, setWidth] = React.useState('auto');
+  const [selectedIndex1, setSelectedIndex1] = React.useState(0);
+  const [selectedIndex2, setSelectedIndex2] = React.useState(0);
+  const [selectedIndex3, setSelectedIndex3] = React.useState(0);
   const [widgetWrapperClasses, setWidgetWrapperClasses] = React.useState(
     'widget-wrapper widget-wrapper-horizontal',
   );
+
+  const toggleShouldRestrictWidth = React.useCallback(
+    (shouldRestrictWidth) => {
+      if (shouldRestrictWidth) {
+        setWidgetWrapperClasses(`${widgetWrapperClasses} strict-width`);
+      } else {
+        const currentClassesArray = widgetWrapperClasses.split(' ');
+        const newClassesString = currentClassesArray.filter((className) => className !== 'strict-width').join(' ');
+
+        setWidgetWrapperClasses(newClassesString);
+      }
+    }, [widgetWrapperClasses, setWidgetWrapperClasses],
+  );
+
   const stylingModeChanged = React.useCallback(
     (e) => {
       setStylingMode(e.value);
     },
     [setStylingMode],
   );
+
   const iconPositionChanged = React.useCallback(
     (e) => {
       setIconPosition(e.value);
     },
     [setIconPosition],
   );
+
   const orientationChanged = React.useCallback(
     (e) => {
       setWidgetWrapperClasses(`widget-wrapper widget-wrapper-${e.value}`);
@@ -52,38 +72,77 @@ const App = () => {
     },
     [setOrientation, setWidgetWrapperClasses],
   );
+
   const showNavigationChanged = React.useCallback(
     (e) => {
+      const shouldRestrictWidth = e.value || scrollContent;
+
+      toggleShouldRestrictWidth(shouldRestrictWidth);
       setShowNavigation(e.value);
     },
-    [setShowNavigation],
+    [scrollContent, setShowNavigation, toggleShouldRestrictWidth],
   );
+
   const scrollContentChanged = React.useCallback(
     (e) => {
+      const shouldRestrictWidth = e.value || showNavigation;
+
+      toggleShouldRestrictWidth(shouldRestrictWidth);
       setScrollContent(e.value);
     },
-    [setScrollContent],
+    [showNavigation, setScrollContent, toggleShouldRestrictWidth],
   );
+
   const fullWidthChanged = React.useCallback(
     (e) => {
       setFullWidth(e.value);
+      setWidth(e.value ? '100%' : 'auto');
     },
-    [setFullWidth],
+    [setFullWidth, setWidth],
   );
+
   const rtlEnabledChanged = React.useCallback(
     (e) => {
       setRtlEnabled(e.value);
     },
     [setRtlEnabled],
   );
+
+  const selectionChanged1 = React.useCallback(
+    (args) => {
+      if (args.name === 'selectedIndex') {
+        setSelectedIndex1(args.value);
+      }
+    },
+    [setSelectedIndex1],
+  );
+
+  const selectionChanged2 = React.useCallback(
+    (args) => {
+      if (args.name === 'selectedIndex') {
+        setSelectedIndex2(args.value);
+      }
+    },
+    [setSelectedIndex2],
+  );
+
+  const selectionChanged3 = React.useCallback(
+    (args) => {
+      if (args.name === 'selectedIndex') {
+        setSelectedIndex3(args.value);
+      }
+    },
+    [setSelectedIndex3],
+  );
+
   return (
     <div id="tabs-demo">
       <div className="widget-container">
         <div className={widgetWrapperClasses}>
           <Tabs
             id="withText"
-            width="auto"
-            selectedIndex={0}
+            width={width}
+            selectedIndex={selectedIndex1}
             rtlEnabled={rtlEnabled}
             dataSource={tabsText}
             scrollByContent={scrollContent}
@@ -91,12 +150,13 @@ const App = () => {
             orientation={orientation}
             stylingMode={stylingMode}
             iconPosition={iconPosition}
+            onOptionChanged={selectionChanged1}
           />
 
           <Tabs
             id="withIconAndText"
-            width="auto"
-            selectedIndex={0}
+            width={width}
+            selectedIndex={selectedIndex2}
             rtlEnabled={rtlEnabled}
             dataSource={tabsIconAndText}
             scrollByContent={scrollContent}
@@ -104,12 +164,13 @@ const App = () => {
             orientation={orientation}
             stylingMode={stylingMode}
             iconPosition={iconPosition}
+            onOptionChanged={selectionChanged2}
           />
 
           <Tabs
             id="withIcon"
-            width="auto"
-            selectedIndex={0}
+            width={width}
+            selectedIndex={selectedIndex3}
             rtlEnabled={rtlEnabled}
             dataSource={tabsIcon}
             scrollByContent={scrollContent}
@@ -117,6 +178,7 @@ const App = () => {
             orientation={orientation}
             stylingMode={stylingMode}
             iconPosition={iconPosition}
+            onOptionChanged={selectionChanged3}
           />
         </div>
       </div>
