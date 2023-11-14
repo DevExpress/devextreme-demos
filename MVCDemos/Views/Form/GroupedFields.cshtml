@@ -11,11 +11,16 @@
                 .Caption("System Information")
                 .Items(groupItems => {
                     groupItems.AddSimpleFor(m => m.ID).IsRequired(false);
-                    groupItems.AddSimpleFor(m => m.FirstName);
-                    groupItems.AddSimpleFor(m => m.LastName);
-                    groupItems.AddSimpleFor(m => m.HireDate).IsRequired(false);
-                    groupItems.AddSimpleFor(m => m.Position);
-                    groupItems.AddSimpleFor(m => m.OfficeNo);
+
+                    groupItems.AddGroup()
+                        .Caption("Main Information")
+                        .Items(innerGroupItems => {
+                            groupItems.AddSimpleFor(m => m.FirstName);
+                            groupItems.AddSimpleFor(m => m.LastName);
+                            groupItems.AddSimpleFor(m => m.HireDate).IsRequired(false);
+                            groupItems.AddSimpleFor(m => m.Position);
+                            groupItems.AddSimpleFor(m => m.OfficeNo);
+                        });
                 });
 
             items.AddGroup()
