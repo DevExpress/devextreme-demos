@@ -29,42 +29,40 @@ const App = () => {
   const [showNavigation, setShowNavigation] = React.useState(false);
   const [scrollContent, setScrollContent] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(false);
-  const [rtlEnabled, setRtlEnabled] = React.useState(false);
   const [width, setWidth] = React.useState('auto');
+  const [rtlEnabled, setRtlEnabled] = React.useState(false);
   const [selectedIndex1, setSelectedIndex1] = React.useState(0);
   const [selectedIndex2, setSelectedIndex2] = React.useState(0);
   const [selectedIndex3, setSelectedIndex3] = React.useState(0);
   const [widgetWrapperClasses, setWidgetWrapperClasses] = React.useState(
     'widget-wrapper widget-wrapper-horizontal',
   );
-
   const toggleShouldRestrictWidth = React.useCallback(
     (shouldRestrictWidth) => {
       if (shouldRestrictWidth) {
         setWidgetWrapperClasses(`${widgetWrapperClasses} strict-width`);
       } else {
         const currentClassesArray = widgetWrapperClasses.split(' ');
-        const newClassesString = currentClassesArray.filter((className) => className !== 'strict-width').join(' ');
-
+        const newClassesString = currentClassesArray
+          .filter((className) => className !== 'strict-width')
+          .join(' ');
         setWidgetWrapperClasses(newClassesString);
       }
-    }, [widgetWrapperClasses, setWidgetWrapperClasses],
+    },
+    [widgetWrapperClasses, setWidgetWrapperClasses],
   );
-
   const stylingModeChanged = React.useCallback(
     (e) => {
       setStylingMode(e.value);
     },
     [setStylingMode],
   );
-
   const iconPositionChanged = React.useCallback(
     (e) => {
       setIconPosition(e.value);
     },
     [setIconPosition],
   );
-
   const orientationChanged = React.useCallback(
     (e) => {
       setWidgetWrapperClasses(`widget-wrapper widget-wrapper-${e.value}`);
@@ -72,27 +70,22 @@ const App = () => {
     },
     [setOrientation, setWidgetWrapperClasses],
   );
-
   const showNavigationChanged = React.useCallback(
     (e) => {
       const shouldRestrictWidth = e.value || scrollContent;
-
       toggleShouldRestrictWidth(shouldRestrictWidth);
       setShowNavigation(e.value);
     },
     [scrollContent, setShowNavigation, toggleShouldRestrictWidth],
   );
-
   const scrollContentChanged = React.useCallback(
     (e) => {
       const shouldRestrictWidth = e.value || showNavigation;
-
       toggleShouldRestrictWidth(shouldRestrictWidth);
       setScrollContent(e.value);
     },
     [showNavigation, setScrollContent, toggleShouldRestrictWidth],
   );
-
   const fullWidthChanged = React.useCallback(
     (e) => {
       setFullWidth(e.value);
@@ -100,14 +93,12 @@ const App = () => {
     },
     [setFullWidth, setWidth],
   );
-
   const rtlEnabledChanged = React.useCallback(
     (e) => {
       setRtlEnabled(e.value);
     },
     [setRtlEnabled],
   );
-
   const selectionChanged1 = React.useCallback(
     (args) => {
       if (args.name === 'selectedIndex') {
@@ -116,7 +107,6 @@ const App = () => {
     },
     [setSelectedIndex1],
   );
-
   const selectionChanged2 = React.useCallback(
     (args) => {
       if (args.name === 'selectedIndex') {
@@ -125,7 +115,6 @@ const App = () => {
     },
     [setSelectedIndex2],
   );
-
   const selectionChanged3 = React.useCallback(
     (args) => {
       if (args.name === 'selectedIndex') {
@@ -134,7 +123,6 @@ const App = () => {
     },
     [setSelectedIndex3],
   );
-
   return (
     <div id="tabs-demo">
       <div className="widget-container">
