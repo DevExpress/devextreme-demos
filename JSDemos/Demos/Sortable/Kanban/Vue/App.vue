@@ -46,6 +46,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import { reactive } from 'vue';
 import { DxScrollView } from 'devextreme-vue/scroll-view';
 import { DxSortable } from 'devextreme-vue/sortable';
 import { tasks, employees } from './data.js';
@@ -55,7 +56,7 @@ const employeesMap = {};
 employees.forEach((employee) => {
   employeesMap[employee.ID] = employee.Name;
 });
-const lists = [];
+const lists = reactive([]);
 statuses.forEach((status) => {
   lists.push(tasks.filter((task) => task.Task_Status === status));
 });

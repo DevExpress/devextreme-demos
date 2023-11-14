@@ -25,27 +25,26 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref, onMounted } from 'vue';
 import DxFilterBuilder from 'devextreme-vue/filter-builder';
 import DxButton from 'devextreme-vue/button';
 import DxList from 'devextreme-vue/list';
 import DataSource from 'devextreme/data/data_source';
-import { filter, fields, products } from './data.js';
 import CustomItem from './CustomItem.vue';
+import { filter, fields, products } from './data.js';
 
 const filterBuilderRef = ref(null);
-const dataSource = ref(new DataSource({
+const dataSource = new DataSource({
   store: products,
-}));
+});
 
-watch(filterBuilderRef,
-  () => {
-    refreshDataSource();
-  });
+onMounted(() => {
+  refreshDataSource();
+});
 
 function refreshDataSource() {
-  dataSource.value.filter(filterBuilderRef.value.instance.getFilterExpression());
-  dataSource.value.load();
+  dataSource.filter(filterBuilderRef.value.instance.getFilterExpression());
+  setTimeout(() => dataSource.load());
 }
 </script>
 <style scoped>
