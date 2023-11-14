@@ -42,10 +42,10 @@ jobs:
         path: 'devextreme-repo/**/node_modules'
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme-repo/**/package-lock.json') }}
 
-    - name: Use Node.js 18
+    - name: Use Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18.16.1'
+        node-version: '20'
 
     - name: DevExtreme - Install packages
       working-directory: ./devextreme-repo
