@@ -14,6 +14,7 @@ import {
   orientationLabel,
 } from './data.js';
 
+const STRICT_WIDTH_CLASS = 'strict-width';
 function OptionWrapper(props) {
   return (
     <div className="option">
@@ -37,10 +38,16 @@ const App = () => {
   const enforceWidthConstraint = React.useCallback(
     (shouldRestrictWidth) => {
       if (shouldRestrictWidth) {
-        setWidgetWrapperClasses((prevClasses) => `${prevClasses} strict-width`);
+        setWidgetWrapperClasses((prevClasses) =>
+          (prevClasses.includes(STRICT_WIDTH_CLASS)
+            ? prevClasses
+            : `${prevClasses} ${STRICT_WIDTH_CLASS}`));
       } else {
         setWidgetWrapperClasses((prevClasses) =>
-          (prevClasses.includes('strict-width') ? prevClasses : `${prevClasses} strict-width`));
+          prevClasses
+            .split(' ')
+            .filter((className) => className !== STRICT_WIDTH_CLASS)
+            .join(' '));
       }
     },
     [setWidgetWrapperClasses],
