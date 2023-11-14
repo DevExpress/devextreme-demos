@@ -54,7 +54,7 @@ const dataSource = new DataSource({
 
 function buttonClick() {
   gridFilterValue.value = filterValue.value;
-};
+}
 </script>
 <style scoped>
 .filter-container {

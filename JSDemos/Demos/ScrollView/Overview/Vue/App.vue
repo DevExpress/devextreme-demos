@@ -68,8 +68,6 @@ import { DxSelectBox } from 'devextreme-vue/select-box';
 import { DxCheckBox } from 'devextreme-vue/check-box';
 import { longText } from './data.js';
 
-const $this = {};
-
 const content = ref(longText);
 const pullDown = ref(false);
 const showScrollbarModes = ref([

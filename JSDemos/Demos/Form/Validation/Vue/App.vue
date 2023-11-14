@@ -178,7 +178,8 @@ import DxForm, {
   DxAsyncRule,
   DxCustomRule,
 } from 'devextreme-vue/form';
-import DxAutocomplete from 'devextreme-vue/autocomplete';
+// eslint-disable-next-line
+import DxAutocomplete from 'devextreme-vue/autocomplete'; // for editor-type=dxAutocomplete
 import 'devextreme-vue/date-range-box';
 import notify from 'devextreme/ui/notify';
 import Validator from 'devextreme/ui/validator';

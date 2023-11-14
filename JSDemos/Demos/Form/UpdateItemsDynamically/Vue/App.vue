@@ -66,8 +66,8 @@ import {
 import service from './data.js';
 
 const employee = service.getEmployee();
+const phoneOptions = ref(getPhonesOptions(employee.Phones));
 let isHomeAddressVisible = true;
-let phoneOptions = ref(getPhonesOptions(employee.Phones));
 
 const checkBoxOptions = {
   text: 'Show Address',

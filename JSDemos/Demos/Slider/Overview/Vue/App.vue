@@ -113,16 +113,17 @@ import { DxSlider } from 'devextreme-vue/slider';
 import { DxNumberBox } from 'devextreme-vue/number-box';
 
 const sliderValue = ref(10);
-const label = ref({
-visible: true,
-position: 'top',});
-const tooltip = ref({
+const label = {
+  visible: true,
+  position: 'top',
+};
+
+const tooltip = {
   enabled: true,
   showMode: 'always',
   position: 'bottom',
-  format,
-});
-const format = (value) => `${value}%`;
+  format: (value) => `${value}%`,
+};
 </script>
 <style scoped>
 .custom-height-slider {

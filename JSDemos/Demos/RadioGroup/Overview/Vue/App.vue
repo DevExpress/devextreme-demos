@@ -77,12 +77,12 @@ import { priorities, priorityEntities, tasks } from './data.js';
 const colorPriority = ref(priorities[2]);
 const selectionPriority = ref(priorityEntities[0].id);
 
-const selectedTasks = computed(() => {
-  return tasks.filter((task) => task.priority === selectionPriority.value);
-});
+const selectedTasks = computed(
+  () => tasks.filter((task) => task.priority === selectionPriority.value),
+);
 
 function changeSelectionPriority(e) {
   selectionPriority.value = e.value;
-};
+}
 </script>
 

@@ -13,12 +13,12 @@ import DxTagBox from 'devextreme-vue/tag-box';
 import { categories } from './data.js';
 
 const props = withDefaults(defineProps<{
-  conditionInfo?: object
+  conditionInfo?: Record<string, any>
 }>(), {
-  conditionInfo: () => {},
+  conditionInfo: () => ({}),
 });
 
 function onValueChanged(e) {
   props.conditionInfo.setValue(e.value && e.value.length ? e.value : null);
-};
+}
 </script>
