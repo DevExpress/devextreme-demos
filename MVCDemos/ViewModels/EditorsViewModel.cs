@@ -1,6 +1,7 @@
 ﻿using DevExtreme.AspNet.Mvc;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -58,6 +59,7 @@ namespace DevExtreme.MVC.Demos.ViewModels {
         [VerifyAge(21, ErrorMessage = "You must be at least {1} years old")]
         public DateTime? Date { get; set; }
 
+        [VerifyDateRange(25, ErrorMessage = "The vacation period must not exceed {1} days")]
         public DateTime?[] VacationDates { get; set; }
 
         [DevExtremeRequired(ErrorMessage = "You must agree to the Terms and Conditions")]
