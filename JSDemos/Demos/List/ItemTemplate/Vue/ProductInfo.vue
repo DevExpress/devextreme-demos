@@ -10,28 +10,22 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+withDefaults(defineProps<{
+  item?: object
+}>(), {
+  item: () => {},
+});
 
+function currency(data) {
+  return currencyFormatter.format(data);
+};
 const currencyFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
   minimumFractionDigits: 0,
   maximumFractionDigits: 0,
 });
-
-export default {
-  props: {
-    item: {
-      type: Object,
-      default: () => {},
-    },
-  },
-  methods: {
-    currency(data) {
-      return currencyFormatter.format(data);
-    },
-  },
-};
 </script>
 <style scoped>
 .product {
