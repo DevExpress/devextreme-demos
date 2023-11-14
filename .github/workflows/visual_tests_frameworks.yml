@@ -13,9 +13,6 @@ on:
   schedule:
     - cron: '0 */2 * * 6,0'
 
-env:
-  NODE_VERSION: '18.16.1'
-
 jobs:
   build-devextreme:
     runs-on: ubuntu-latest
@@ -45,10 +42,10 @@ jobs:
         path: 'devextreme/**/node_modules'
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/**/package-lock.json') }}
 
-    - name: Use Node.js 18
+    - name: Use Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ env.NODE_VERSION }}
+        node-version: '20'
 
     - name: Install packages
       working-directory: ./devextreme
@@ -135,10 +132,10 @@ jobs:
     - name: Get sources
       uses: actions/checkout@v3
 
-    - name: Use Node.js 18
+    - name: Use Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ env.NODE_VERSION }}
+        node-version: '20'
 
     - name: Download devextreme sources
       uses: actions/download-artifact@v3
