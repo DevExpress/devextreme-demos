@@ -11,15 +11,17 @@
   </div>
 </template>
 <script setup lang="ts">
+import { products } from './data.js';
+
 withDefaults(defineProps<{
-  item?: object
+  item?: typeof products[0]
 }>(), {
-  item: () => {},
+  item: () => ({}),
 });
 
 function currency(data) {
   return currencyFormatter.format(data);
-};
+}
 const currencyFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',

@@ -7,14 +7,14 @@
 </template>
 <script setup lang="ts">
 withDefaults(defineProps<{
-  item?: object
+  item?: Record<string, unknown>
 }>(), {
-  item: () => {},
+  item: () => ({}),
 });
 
 function currency(data) {
   return currencyFormatter.format(data);
-};
+}
 const currencyFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
