@@ -58,7 +58,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onBeforeMount, ref } from 'vue';
 import {
   DxDataGrid, DxColumn, DxEditing, DxFilterRow,
 } from 'devextreme-vue/data-grid';
@@ -85,7 +85,7 @@ const amountEditorOptions = { format: 'currency', showClearButton: true };
 const selectBoxInputAttr = { id: 'selectInput' };
 const formatMessage = ref((msg) => msg);
 
-onMounted(() => {
+onBeforeMount(() => {
   initGlobalize();
 });
 function getLocale() {
@@ -101,10 +101,12 @@ function initGlobalize() {
     ruCldrData,
     supplementalCldrData,
   );
+
   Globalize.loadMessages(deMessages);
   Globalize.loadMessages(ruMessages);
   Globalize.loadMessages(service.getDictionary());
   Globalize.locale(locale);
+
   formatMessage.value = Globalize.formatMessage.bind(Globalize);
 }
 
