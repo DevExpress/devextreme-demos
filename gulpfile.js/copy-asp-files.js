@@ -81,10 +81,10 @@ exports.copyAspFiles = series(
   parallel(
     'prepareMisc',
 
-    () => src(`${aspnetPackagesPath}/*.{dll,pdb,xml}`, { strict: true, allowEmpty: false })
+    () => src(`${aspnetPackagesPath}/*.{dll,pdb,xml}`)
       .pipe(dest('MVCDemos/lib')),
 
-    () => src(`${aspnetPackagesPath}/*.nupkg`, { strict: true, allowEmpty: false })
+    () => src(`${aspnetPackagesPath}/*.nupkg`)
       .pipe(dest('NetCoreDemos/Nuget')),
   ),
   restorePackages,
