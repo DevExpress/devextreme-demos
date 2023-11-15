@@ -44,7 +44,7 @@ onMounted(() => {
 
 function refreshDataSource() {
   dataSource.filter(filterBuilderRef.value.instance.getFilterExpression());
-  setTimeout(() => dataSource.load());
+  dataSource.load();
 }
 </script>
 <style scoped>
