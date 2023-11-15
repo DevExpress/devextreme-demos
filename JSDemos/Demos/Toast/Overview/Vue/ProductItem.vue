@@ -15,7 +15,6 @@
 <script setup lang="ts">
 import { DxCheckBox } from 'devextreme-vue/check-box';
 import { products } from './data.js';
-import {watchEffect} from "vue";
 
 type Product = typeof products[0];
 

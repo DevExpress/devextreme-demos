@@ -6,7 +6,7 @@
       <img
         alt="ExcelRemote IR"
         id="product1"
-        src="../../../../images/products/17.png"
+        :src="'../../../../images/products/17.png'"
       >
 
       <DxTooltip
