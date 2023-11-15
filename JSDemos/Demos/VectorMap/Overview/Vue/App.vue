@@ -40,7 +40,6 @@
   </DxVectorMap>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
 import * as mapsData from 'devextreme-dist/js/vectormap-data/world.js';
 import {
   DxVectorMap,
@@ -63,7 +62,7 @@ const { format } = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 0,
 });
 
-const customizeLegendText = (arg) => `${format(arg.start)} to ${format(arg.end)}`;
+const customizeLegendText = ({ start, end }) => `${format(start)} to ${format(end)}`;
 function customizeLayer(elements) {
   elements.forEach((element) => {
     const countryGDPData = countriesGDP[element.attribute('name')];
