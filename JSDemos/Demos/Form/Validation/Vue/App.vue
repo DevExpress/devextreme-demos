@@ -214,7 +214,7 @@ const passwordEditorOptions = ref({
   onValueChanged: () => {
     const editor = formInstance.value.getEditor('ConfirmPassword');
     if (editor.option('value')) {
-      const instance = Validator.getInstance(editor.element());
+      const instance = Validator.getInstance(editor.element()) as Validator;
       instance.validate();
     }
   },
