@@ -56,8 +56,8 @@ const props = withDefaults(defineProps<{
   year?: string
   source?: object
 }>(), {
-  year: () => {},
-  source: () => {},
+  year: '',
+  source: () => ({}),
 });
 
 const getValueField = (name) => name + props.year;

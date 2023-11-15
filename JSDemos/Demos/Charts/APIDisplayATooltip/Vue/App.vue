@@ -36,7 +36,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import DxPieChart, {
-  DxPieChartTypes,
   DxSeries,
   DxTooltip,
   DxSize,
@@ -51,7 +50,7 @@ const pieChart = ref();
 const customizeTooltip = ({ argumentText, valueText }) => ({
   text: `${argumentText}<br/>${valueText}`,
 });
-function onPointClick({ target: point }: DxPieChartTypes.PointClickEvent) {
+function onPointClick({ target: point }) {
   point.showTooltip();
   selectedRegion.value = point.argument;
 }

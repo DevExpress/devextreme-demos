@@ -61,7 +61,7 @@ import {
 withDefaults(defineProps<{
   year?: string
 }>(), {
-  year: () => {},
+  year: '',
 });
 </script>
 <style>
