@@ -50,7 +50,7 @@
 </template>
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import DxMenu, { DxMenuTypes } from 'devextreme-vue/menu';
+import DxMenu from 'devextreme-vue/menu';
 import DxCheckBox from 'devextreme-vue/check-box';
 import DxSelectBox from 'devextreme-vue/select-box';
 import service from './data.js';
@@ -71,7 +71,7 @@ const orientation = ref('horizontal');
 const hideSubmenuOnMouseLeave = ref(false);
 const currentProduct = ref(null);
 
-function itemClick(e: DxMenuTypes.ItemClickEvent) {
+function itemClick(e) {
   if (e.itemData.price) {
     currentProduct.value = e.itemData;
   }
