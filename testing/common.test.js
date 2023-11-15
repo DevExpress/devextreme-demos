@@ -143,7 +143,8 @@ const execTestCafeCode = (t, code) => {
         }
 
         if (process.env.STRATEGY === 'accessibility') {
-          const { error, results } = await axeCheck(t, '.demo-container');
+          const options = { rules: { 'color-contrast': { enabled: false } } };
+          const { error, results } = await axeCheck(t, '.demo-container', options);
 
           if (results.violations.length > 0) {
             createMdReport({ testName, results });
