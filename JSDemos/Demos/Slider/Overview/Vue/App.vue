@@ -98,7 +98,6 @@
             v-model:value="sliderValue"
             :min="0"
             :max="100"
-            :value="10"
             :show-spin-buttons="true"
             :input-attr="{ 'aria-label': 'Slider Value' }"
           />
