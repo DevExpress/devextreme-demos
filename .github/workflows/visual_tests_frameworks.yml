@@ -35,6 +35,10 @@ jobs:
         BASE_BRANCH=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
         test -d ./devextreme || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme
 
+    - name: Log devextreme top commit
+      working-directory: ./devextreme
+      run: git log -1 --oneline
+
     #Build Devextreme
     - name: Restore npm cache
       uses: actions/cache@v3
