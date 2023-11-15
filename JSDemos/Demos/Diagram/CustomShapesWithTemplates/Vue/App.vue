@@ -65,7 +65,7 @@ const dataSource = new ArrayStore({
   key: 'ID',
   data: service.getEmployees(),
 });
-const currentEmployee = ref({});
+const currentEmployee = ref({} as Record<string, any>);
 const popupVisible = ref(false);
 const itemTypeExpr = ({ ID }) => `employee${ID}`;
 

@@ -182,7 +182,7 @@ const dataSource = new ArrayStore({
     values.Title = values.Title || "Employee's Title";
   },
 });
-const currentEmployee = ref({});
+const currentEmployee = ref({} as Record<string, any>);
 const popupVisible = ref(false);
 
 const itemTypeExpr = () => 'employee';
