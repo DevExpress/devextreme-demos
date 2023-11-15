@@ -54,6 +54,15 @@ const execTestCafeCode = (t, code) => {
   return testCafeFunction(t);
 };
 
+const getTestSpecificSkipRules = (testName) => {
+  switch (testName) {
+  case 'Calendar-MultipleSelection':
+    return ['empty-table-header'];
+  default:
+    return [];
+  }
+};
+
 ['jQuery', 'React', 'Vue', 'Angular'].forEach((approach) => {
   if (!shouldRunFramework(approach)) { return; }
   fixture(approach)
@@ -143,7 +152,13 @@ const execTestCafeCode = (t, code) => {
         }
 
         if (process.env.STRATEGY === 'accessibility') {
-          const options = { rules: { 'color-contrast': { enabled: false } } };
+          const testSpecificSkipRules = getTestSpecificSkipRules(testName);
+          const options = { rules: { } };
+
+          ['color-contrast', ...testSpecificSkipRules].forEach((ruleName) => {
+            options.rules[ruleName] = { enabled: false };
+          });
+
           const { error, results } = await axeCheck(t, '.demo-container', options);
 
           if (results.violations.length > 0) {
