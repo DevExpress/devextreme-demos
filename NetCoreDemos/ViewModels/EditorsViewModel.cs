@@ -1,5 +1,4 @@
 ﻿using DevExtreme.AspNet.Mvc;
-using DevExtreme.MVC.Demos.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

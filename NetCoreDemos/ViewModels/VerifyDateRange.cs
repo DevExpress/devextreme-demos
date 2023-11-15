@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web.Mvc;
 
 namespace DevExtreme.NETCore.Demos.ViewModels {
     public class VerifyDateRange : ValidationAttribute, IClientModelValidator {
@@ -42,8 +41,6 @@ namespace DevExtreme.NETCore.Demos.ViewModels {
 
                     return daysDifference < {DaysRange};
                 }}");
-            rule.ValidationType = "custom";
-            yield return rule;
         }
 
         public override string FormatErrorMessage(string name) {
