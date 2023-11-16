@@ -2,19 +2,19 @@
 /* eslint-disable import/no-webpack-loader-syntax */
 import React from 'react';
 import DataGrid, { Column, Editing, FilterRow } from 'devextreme-react/data-grid';
-import SelectBox from 'devextreme-react/select-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 
 import 'devextreme/localization/globalize/number';
 import 'devextreme/localization/globalize/date';
 import 'devextreme/localization/globalize/currency';
 import 'devextreme/localization/globalize/message';
 
-import deMessages from 'npm:devextreme/localization/messages/de.json!json';
-import ruMessages from 'npm:devextreme/localization/messages/ru.json!json';
+import deMessages from 'devextreme/localization/messages/de.json';
+import ruMessages from 'devextreme/localization/messages/ru.json';
 
-import deCldrData from 'npm:devextreme-cldr-data/de.json!json';
-import ruCldrData from 'npm:devextreme-cldr-data/ru.json!json';
-import supplementalCldrData from 'npm:devextreme-cldr-data/supplemental.json!json';
+import deCldrData from 'devextreme-cldr-data/de.json';
+import ruCldrData from 'devextreme-cldr-data/ru.json';
+import supplementalCldrData from 'devextreme-cldr-data/supplemental.json';
 
 import Globalize from 'globalize';
 
@@ -30,32 +30,26 @@ const amountEditorOptions = {
 };
 const selectBoxInputAttr = { id: 'selectInput' };
 
+Globalize.load(
+  deCldrData,
+  ruCldrData,
+  supplementalCldrData,
+);
+Globalize.loadMessages(deMessages);
+Globalize.loadMessages(ruMessages);
+Globalize.loadMessages(service.getDictionary());
+Globalize.locale(sessionStorage.getItem('locale') || 'en');
+
 const App = () => {
   const [locale, setLocale] = React.useState(sessionStorage.getItem('locale') || 'en');
   const locales = service.getLocales();
   const payments = service.getPayments();
 
-  const initGlobalize = React.useCallback(() => {
-    Globalize.load(
-      deCldrData,
-      ruCldrData,
-      supplementalCldrData,
-    );
-    Globalize.loadMessages(deMessages);
-    Globalize.loadMessages(ruMessages);
-    Globalize.loadMessages(service.getDictionary());
-    Globalize.locale(locale);
-  }, [locale]);
-
-  const changeLocale = (e: { value?: string; }) => {
+  const changeLocale = (e: SelectBoxTypes.ValueChangedEvent) => {
     setLocale(e.value);
     sessionStorage.setItem('locale', e.value);
     document.location.reload();
   };
-
-  React.useEffect(() => {
-    initGlobalize();
-  }, [locale, initGlobalize]);
 
   return (
     <div>

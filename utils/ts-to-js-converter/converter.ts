@@ -57,6 +57,7 @@ const makeConfig = (
     noEmit: false,
     skipLibCheck: true,
     allowSyntheticDefaultImports: true,
+    resolveJsonModule: true,
   },
 });
 

@@ -2,10 +2,10 @@
 /* eslint-disable import/no-webpack-loader-syntax */
 import React from 'react';
 import DataGrid, { Column, Editing, FilterRow } from 'devextreme-react/data-grid';
-import SelectBox from 'devextreme-react/select-box';
+import SelectBox, { SelectBoxTypes } from 'devextreme-react/select-box';
 
-import deMessages from 'npm:devextreme/localization/messages/de.json!json';
-import ruMessages from 'npm:devextreme/localization/messages/ru.json!json';
+import deMessages from 'devextreme/localization/messages/de.json';
+import ruMessages from 'devextreme/localization/messages/ru.json';
 import { locale, loadMessages, formatMessage } from 'devextreme/localization';
 
 import service from './data.ts';
@@ -22,35 +22,22 @@ const amountEditorOptions = {
 
 const selectBoxInputAttr = { id: 'selectInput' };
 
-const App = () => {
-  const [localeState, setLocaleState] = React.useState(() => {
-    const storageLocale = sessionStorage.getItem('locale');
-    return storageLocale != null ? storageLocale : 'en';
-  });
+const localeState = sessionStorage.getItem('locale') || 'en';
 
+locale(localeState);
+
+loadMessages(deMessages);
+loadMessages(ruMessages);
+loadMessages(service.getDictionary());
+
+const App = () => {
   const locales = service.getLocales();
   const payments = service.getPayments();
 
-  const setLocale = (savingLocale: string) => {
-    sessionStorage.setItem('locale', savingLocale);
-  };
-
-  const initMessages = () => {
-    loadMessages(deMessages);
-    loadMessages(ruMessages);
-    loadMessages(service.getDictionary());
-  };
-
-  const changeLocale = (e: { value?: any; }) => {
-    setLocale(e.value);
-    setLocaleState(e.value);
+  const changeLocale = (e: SelectBoxTypes.ValueChangedEvent) => {
+    sessionStorage.setItem('locale', e.value);
     document.location.reload();
   };
-
-  React.useEffect(() => {
-    locale(localeState);
-    initMessages();
-  }, [localeState]);
 
   return (
     <div>
