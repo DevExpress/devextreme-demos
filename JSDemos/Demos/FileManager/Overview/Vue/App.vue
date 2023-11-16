@@ -38,7 +38,7 @@ import { DxPopup } from 'devextreme-vue/popup';
 import RemoteFileSystemProvider from 'devextreme/file_management/remote_provider';
 
 const popupVisible = ref(false);
-const imageItemToDisplay = ref({});
+const imageItemToDisplay = ref({} as Record<string, any>);
 
 const remoteProvider = new RemoteFileSystemProvider({
   endpointUrl: 'https://js.devexpress.com/Demos/Mvc/api/file-manager-file-system-images',
