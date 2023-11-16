@@ -5,11 +5,10 @@
       <div class="value">
         <DxRadioGroup
           :items="shifts"
-          :value="shifts[0]"
+          v-model:value="currentShift"
           layout="horizontal"
-          :on-value-changed="onShiftChanged"
         />
-      </div>
+        </dxradiogroup></div>
     </div>
   </div>
   <br>
@@ -21,22 +20,24 @@
     current-view="week"
     :start-day-hour="0"
     :end-day-hour="8"
-    :height="600"
+    :offset="currentShift.offset"
     :show-all-day-panel="false"
   />
 </template>
 <script setup lang="ts">
-
+import { ref } from 'vue';
 import DxScheduler from 'devextreme-vue/scheduler';
 import DxRadioGroup, { DxRadioGroupTypes } from 'devextreme-vue/radio-group';
-import { appointments, shifts } from './data.ts';
+import { appointments, shifts, Shift } from './data.ts';
+
+const radioRef = ref(null);
 
 const views = ['day', 'week'];
 const currentDate = new Date(2021, 2, 30);
+const currentShift = ref(shifts[0]);
 
-// eslint-disable-next-line no-unused-vars
-function onShiftChanged(e: DxRadioGroupTypes.ValueChangedEvent) {
-}
+// window.radioRef = radioRef;
+
 </script>
 
 <style scoped>
