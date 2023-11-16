@@ -150,7 +150,7 @@ jobs:
 
     - name: Run TestCafe tests
       shell: bash
-      continue-on-error: ${{ matrix.STRATEGY == 'accessibility' }}
+      # continue-on-error: ${{ matrix.STRATEGY == 'accessibility' }}
       env:
         STRATEGY: ${{ matrix.STRATEGY }}
         CHANGEDFILEINFOSPATH: ${{ github.workspace }}/changed-files.json
