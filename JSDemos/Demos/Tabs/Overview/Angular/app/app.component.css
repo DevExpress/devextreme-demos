@@ -1,5 +1,6 @@
-::ng-deep .demo-container {
+::ng-deep #tabs-demo {
   display: flex;
+  min-height: 450px;
 }
 
 ::ng-deep .strict-width {
