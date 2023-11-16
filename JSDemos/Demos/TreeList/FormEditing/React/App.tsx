@@ -25,6 +25,7 @@ const onInitNewRow = (e: TreeListTypes.InitNewRowEvent) => {
 };
 const App = () => (
   <TreeList
+    id="employees"
     dataSource={employees}
     columnAutoWidth={true}
     showRowLines={true}
