@@ -62,7 +62,7 @@ import { onBeforeMount, ref } from 'vue';
 import {
   DxDataGrid, DxColumn, DxEditing, DxFilterRow,
 } from 'devextreme-vue/data-grid';
-import DxSelectBox from 'devextreme-vue/select-box';
+import DxSelectBox, { DxSelectBoxTypes } from 'devextreme-vue/select-box';
 import 'devextreme/localization/globalize/number';
 import 'devextreme/localization/globalize/date';
 import 'devextreme/localization/globalize/currency';
@@ -77,9 +77,9 @@ import * as supplementalCldrData from 'npm:devextreme-cldr-data/supplemental.jso
 import * as Globalize from 'globalize';
 import service from './data.js';
 
-const locales = service.getLocales();
-const payments = service.getPayments();
-const locale = getLocale();
+const locales: { name: string, value: string } = service.getLocales();
+const payments: Record<string, string | number>[] = service.getPayments();
+const locale:string = getLocale();
 const editPopupOptions = { width: 700, height: 345 };
 const amountEditorOptions = { format: 'currency', showClearButton: true };
 const selectBoxInputAttr = { id: 'selectInput' };
@@ -88,7 +88,7 @@ const formatMessage = ref((msg) => msg);
 onBeforeMount(() => {
   initGlobalize();
 });
-function getLocale() {
+function getLocale(): string {
   const savedLocale = sessionStorage.getItem('locale');
   return savedLocale != null ? savedLocale : 'en';
 }
@@ -110,8 +110,8 @@ function initGlobalize() {
   formatMessage.value = Globalize.formatMessage.bind(Globalize);
 }
 
-function changeLocale(e) {
-  setLocale(e.value);
+function changeLocale({ value }: DxSelectBoxTypes.ValueChangedEvent) {
+  setLocale(value);
   document.location.reload();
 }
 </script>

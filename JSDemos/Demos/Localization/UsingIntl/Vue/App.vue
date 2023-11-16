@@ -62,7 +62,7 @@ import { onBeforeMount, ref } from 'vue';
 import {
   DxDataGrid, DxColumn, DxEditing, DxFilterRow,
 } from 'devextreme-vue/data-grid';
-import DxSelectBox from 'devextreme-vue/select-box';
+import DxSelectBox, { DxSelectBoxTypes } from 'devextreme-vue/select-box';
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-webpack-loader-syntax */
 import * as deMessages from 'npm:devextreme/localization/messages/de.json!json';
@@ -70,9 +70,9 @@ import * as ruMessages from 'npm:devextreme/localization/messages/ru.json!json';
 import { locale as dxLocale, loadMessages, formatMessage as dxFormatMessage } from 'devextreme/localization';
 import service from './data.js';
 
-const locales = service.getLocales();
-const payments = service.getPayments();
-const locale = getLocale();
+const locales: { name: string, value: string } = service.getLocales();
+const payments: Record<string, string | number>[] = service.getPayments();
+const locale: string = getLocale();
 const editPopupOptions = { width: 700, height: 345 };
 const amountEditorOptions = { format: 'currency', showClearButton: true };
 const selectBoxInputAttr = { id: 'selectInput' };
@@ -83,7 +83,7 @@ onBeforeMount(() => {
   initMessages();
 });
 
-function getLocale() {
+function getLocale(): string {
   const storageLocale = sessionStorage.getItem('locale');
   return storageLocale != null ? storageLocale : 'en';
 }
@@ -96,8 +96,8 @@ function initMessages() {
   loadMessages(service.getDictionary());
   formatMessage.value = dxFormatMessage;
 }
-function changeLocale(e) {
-  setLocale(e.value);
+function changeLocale({ value }: DxSelectBoxTypes.ValueChangedEvent) {
+  setLocale(value);
   document.location.reload();
 }
 </script>
