@@ -19,68 +19,66 @@
     };
 }
 
-<div class="demo-container">
-    <div class="tabpanel-demo">
-        <div class="widget-container">
-            @(Html.DevExtreme().TabPanel()
-                .ID("tabpanel")
-                .ElementAttr("class", "dx-theme-background-color")
-                .DataSource(d => d.Mvc().LoadAction("GetTabPanelItems"))
-                .Width("100%")
-                .Height(418)
-                .AnimationEnabled(true)
-                .SwipeEnabled(true)
-                .ShowNavButtons(true)
-                .TabsPosition(Position.Top)
-                .StylingMode(TabsStyle.Secondary)
-                .IconPosition(TabsIconPosition.Top)
-                .ItemTemplate(new JS("tabPanelTemplate"))
+<div class="tabpanel-demo">
+    <div class="widget-container">
+        @(Html.DevExtreme().TabPanel()
+            .ID("tabpanel")
+            .ElementAttr("class", "dx-theme-background-color")
+            .DataSource(d => d.Mvc().LoadAction("GetTabPanelItems"))
+            .Width("100%")
+            .Height(418)
+            .AnimationEnabled(true)
+            .SwipeEnabled(true)
+            .ShowNavButtons(true)
+            .TabsPosition(Position.Top)
+            .StylingMode(TabsStyle.Secondary)
+            .IconPosition(TabsIconPosition.Top)
+            .ItemTemplate(new JS("tabPanelTemplate"))
+        )
+    </div>
+
+    <div class="options">
+        <div class="caption">Options</div>
+
+        <div class="option">
+            <div class="option-label">Tab position</div>
+
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(tabsPositions)
+                .Value("left")
+                .InputAttr("aria-label", "Tab position")
+                .OnValueChanged("tabsPositionChanged")
             )
         </div>
 
-        <div class="options">
-            <div class="caption">Options</div>
+        <div class="option">
+            <div class="option-label">Styling mode</div>
 
-            <div class="option">
-                <div class="option-label">Tab position</div>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(stylingModes)
+                .Value("secondary")
+                .InputAttr("aria-label", "Styling mode")
+                .OnValueChanged("stylingModeChanged")
+            )
+        </div>
 
-                @(Html.DevExtreme().SelectBox()
-                    .DataSource(tabsPositions)
-                    .Value("left")
-                    .InputAttr("aria-label", "Tab position")
-                    .OnValueChanged("tabsPositionChanged")
-                )
-            </div>
+        <div class="option">
+            <div class="option-label">Icon position</div>
 
-            <div class="option">
-                <div class="option-label">Styling mode</div>
+            @(Html.DevExtreme().SelectBox()
+                .DataSource(iconPositions)
+                .Value("top")
+                .InputAttr("aria-label", "Icon positions")
+                .OnValueChanged("iconPositionChanged")
+            )
+        </div>
 
-                @(Html.DevExtreme().SelectBox()
-                    .DataSource(stylingModes)
-                    .Value("secondary")
-                    .InputAttr("aria-label", "Styling mode")
-                    .OnValueChanged("stylingModeChanged")
-                )
-            </div>
-
-            <div class="option">
-                <div class="option-label">Icon position</div>
-
-                @(Html.DevExtreme().SelectBox()
-                    .DataSource(iconPositions)
-                    .Value("top")
-                    .InputAttr("aria-label", "Icon positions")
-                    .OnValueChanged("iconPositionChanged")
-                )
-            </div>
-
-            <div class="option">
-                @(Html.DevExtreme().CheckBox()
-                    .Value(false)
-                    .Text("Show navigation buttons")
-                    .OnValueChanged("showNavButtonsChanged")
-                )
-            </div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(false)
+                .Text("Show navigation buttons")
+                .OnValueChanged("showNavButtonsChanged")
+            )
         </div>
     </div>
 </div>

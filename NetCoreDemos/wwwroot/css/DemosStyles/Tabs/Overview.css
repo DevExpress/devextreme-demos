@@ -1,6 +1,5 @@
-﻿#tabs-demo {
+﻿.tabs-demo {
     display: flex;
-    min-height: 450px;
 }
 
 .strict-width {
