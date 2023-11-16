@@ -77,9 +77,10 @@ import * as supplementalCldrData from 'npm:devextreme-cldr-data/supplemental.jso
 import * as Globalize from 'globalize';
 import service from './data.js';
 
-const locales: { name: string, value: string } = service.getLocales();
+type Locale = string;
+const locales: { name: string, value: Locale } = service.getLocales();
 const payments: Record<string, string | number>[] = service.getPayments();
-const locale:string = getLocale();
+const locale: Locale = getLocale();
 const editPopupOptions = { width: 700, height: 345 };
 const amountEditorOptions = { format: 'currency', showClearButton: true };
 const selectBoxInputAttr = { id: 'selectInput' };
@@ -88,11 +89,11 @@ const formatMessage = ref((msg) => msg);
 onBeforeMount(() => {
   initGlobalize();
 });
-function getLocale(): string {
+function getLocale(): Locale {
   const savedLocale = sessionStorage.getItem('locale');
   return savedLocale != null ? savedLocale : 'en';
 }
-function setLocale(newLocale) {
+function setLocale(newLocale: Locale) {
   sessionStorage.setItem('locale', newLocale);
 }
 function initGlobalize() {

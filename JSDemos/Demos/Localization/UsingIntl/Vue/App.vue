@@ -70,9 +70,11 @@ import * as ruMessages from 'npm:devextreme/localization/messages/ru.json!json';
 import { locale as dxLocale, loadMessages, formatMessage as dxFormatMessage } from 'devextreme/localization';
 import service from './data.js';
 
-const locales: { name: string, value: string } = service.getLocales();
+type Locale = string;
+
+const locales: { name: string, value: Locale } = service.getLocales();
 const payments: Record<string, string | number>[] = service.getPayments();
-const locale: string = getLocale();
+const locale: Locale = getLocale();
 const editPopupOptions = { width: 700, height: 345 };
 const amountEditorOptions = { format: 'currency', showClearButton: true };
 const selectBoxInputAttr = { id: 'selectInput' };
@@ -83,11 +85,11 @@ onBeforeMount(() => {
   initMessages();
 });
 
-function getLocale(): string {
+function getLocale(): Locale {
   const storageLocale = sessionStorage.getItem('locale');
   return storageLocale != null ? storageLocale : 'en';
 }
-function setLocale(savingLocale) {
+function setLocale(savingLocale: Locale) {
   sessionStorage.setItem('locale', savingLocale);
 }
 function initMessages() {
