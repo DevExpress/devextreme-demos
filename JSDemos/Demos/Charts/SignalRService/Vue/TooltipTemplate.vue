@@ -2,19 +2,19 @@
   <div class="tooltip-template">
     <div>{{ pointInfo.argumentText }}</div>
     <div><span>Open: </span>
-      {{ formatCurrency(prices.openValue, "USD") }}
+      {{ formatCurrency(prices.openValue) }}
     </div>
     <div><span>High: </span>
-      {{ formatCurrency(prices.highValue, "USD") }}
+      {{ formatCurrency(prices.highValue) }}
     </div>
     <div><span>Low: </span>
-      {{ formatCurrency(prices.lowValue, "USD") }}
+      {{ formatCurrency(prices.lowValue) }}
     </div>
     <div><span>Close: </span>
-      {{ formatCurrency(prices.closeValue, "USD") }}
+      {{ formatCurrency(prices.closeValue) }}
     </div>
     <div><span>Volume: </span>
-      {{ formatNumber(volume.value, { maximumFractionDigits: 0 }) }}
+      {{ formatNumber(volume.value) }}
     </div>
   </div>
 </template>
@@ -22,7 +22,7 @@
 import { computed } from 'vue';
 
 const props = withDefaults(defineProps<{
-  pointInfo: Record<string, unknown>
+  pointInfo: Record<string, any>
 }>(), {
   pointInfo: () => ({}),
 });
