@@ -198,9 +198,7 @@ const getTestSpecificSkipRules = (testName) => {
           const axeResult = await axeCheck(t, '.demo-container', options);
           const { error, results } = axeResult;
 
-          if (error) {
-            console.error('####%%%%####', JSON.stringify(error, Object.getOwnPropertyNames(error)));
-          } else if (results.violations.length > 0) {
+          if (results.violations.length > 0) {
             createMdReport({ testName, results });
             await t.report(createTestCafeReport(results.violations));
           }
