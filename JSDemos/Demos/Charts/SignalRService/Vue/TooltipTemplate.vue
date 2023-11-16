@@ -18,30 +18,23 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { computed } from 'vue';
 
-export default {
-  props: {
-    pointInfo: {
-      type: Object,
-      default: () => {},
-    },
-  },
-  data() {
-    return {
-      volume: this.pointInfo.points.filter((point) => point.seriesName === 'Volume')[0],
-      prices: this.pointInfo.points.filter((point) => point.seriesName !== 'Volume')[0],
-    };
-  },
-  methods: {
-    formatCurrency: new Intl.NumberFormat('en-US',
-      { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format,
+const props = withDefaults(defineProps<{
+  pointInfo: Record<string, unknown>
+}>(), {
+  pointInfo: () => ({}),
+});
+const volume = computed<{value : number}>(() => props.pointInfo.points.filter(({ seriesName }) => seriesName === 'Volume')[0]);
+const prices = computed<Record<string, any>>(() => props.pointInfo.points.filter(({ seriesName }) => seriesName !== 'Volume')[0]);
 
-    formatNumber: new Intl.NumberFormat('en-US', {
-      minimumFractionDigits: 0,
-    }).format,
-  },
-};
+const formatCurrency = new Intl.NumberFormat('en-US',
+  { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format;
+
+const formatNumber = new Intl.NumberFormat('en-US', {
+  minimumFractionDigits: 0,
+}).format;
 </script>
 <style>
 .tooltip-template span {
