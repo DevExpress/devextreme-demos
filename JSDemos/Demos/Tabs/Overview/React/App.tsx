@@ -40,11 +40,14 @@ const App = () => {
 
   const enforceWidthConstraint = React.useCallback(
     (shouldRestrictWidth) => {
-      if (shouldRestrictWidth) {
-        setWidgetWrapperClasses((prevClasses) => (prevClasses.includes(STRICT_WIDTH_CLASS) ? prevClasses : `${prevClasses} ${STRICT_WIDTH_CLASS}`));
-      } else {
-        setWidgetWrapperClasses((prevClasses) => prevClasses.split(' ').filter((className) => className !== STRICT_WIDTH_CLASS).join(' '));
-      }
+      const callback = (prevClasses: string) => {
+        const restClasses = prevClasses.split(' ').filter((className) => className !== STRICT_WIDTH_CLASS).join(' ');
+        const strictWidthClass = shouldRestrictWidth ? STRICT_WIDTH_CLASS : '';
+
+        return `${restClasses} ${strictWidthClass}`;
+      };
+
+      setWidgetWrapperClasses(callback);
     }, [setWidgetWrapperClasses],
   );
 
