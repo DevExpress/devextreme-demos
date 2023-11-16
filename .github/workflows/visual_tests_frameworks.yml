@@ -13,9 +13,6 @@ on:
   schedule:
     - cron: '0 */2 * * 6,0'
 
-env:
-  NODE_VERSION: '18.16.1'
-
 jobs:
   build-devextreme:
     runs-on: ubuntu-latest
@@ -38,6 +35,10 @@ jobs:
         BASE_BRANCH=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
         test -d ./devextreme || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme
 
+    - name: Log devextreme top commit
+      working-directory: ./devextreme
+      run: git log -1 --oneline
+
     #Build Devextreme
     - name: Restore npm cache
       uses: actions/cache@v3
@@ -45,10 +46,10 @@ jobs:
         path: 'devextreme/**/node_modules'
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/**/package-lock.json') }}
 
-    - name: Use Node.js 18
+    - name: Use Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ env.NODE_VERSION }}
+        node-version: '20'
 
     - name: Install packages
       working-directory: ./devextreme
@@ -135,10 +136,10 @@ jobs:
     - name: Get sources
       uses: actions/checkout@v3
 
-    - name: Use Node.js 18
+    - name: Use Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ env.NODE_VERSION }}
+        node-version: '20'
 
     - name: Download devextreme sources
       uses: actions/download-artifact@v3

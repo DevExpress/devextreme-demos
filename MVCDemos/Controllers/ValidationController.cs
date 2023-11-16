@@ -12,7 +12,8 @@ namespace DevExtreme.MVC.Demos.Controllers {
         [HttpGet]
         public ActionResult Overview() {
             return View(new EditorsViewModel {
-                Name = "Peter"
+                Name = "Peter",
+                VacationDates = new DateTime?[] { null, null }
             });
         }
 

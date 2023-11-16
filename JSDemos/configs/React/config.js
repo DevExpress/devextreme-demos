@@ -20,6 +20,9 @@ window.config = {
     'devextreme/localization.js': {
       'esModule': true,
     },
+    'devextreme/viz/palette.js': {
+      'esModule': true,
+    },
     '*.json': {
       'loader': 'json',
     },

@@ -39,7 +39,7 @@
                             .OnClick("() => changePasswordMode('Password')"));
 
                         })
-                     )
+                    )
                 </div>
             </div>
             <div class="dx-field">
@@ -60,7 +60,7 @@
                             .Icon("eyeopen")
                             .OnClick("() => changePasswordMode('ConfirmPassword')"));
                         })
-                      )
+                    )
                 </div>
             </div>
         </div>
@@ -82,6 +82,17 @@
                     @(Html.DevExtreme().DateBoxFor(m => m.Date)
                         .InvalidDateMessage("The date must have the following format: MM/dd/yyyy")
                         )
+                </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">
+                    @Html.LabelFor(m => m.VacationDates, "Vacation Dates")
+                </div>
+                <div class="dx-field-value">
+                    @(Html.DevExtreme().DateRangeBoxFor(m => m.VacationDates)
+                        .ID("DateRangeBox")
+                        .OnValueChanged("onVacationDatesChange")
+                    )
                 </div>
             </div>
         </div>
@@ -131,23 +142,29 @@
                         )
                 </div>
             </div>
-            @(Html.DevExtreme().CheckBoxFor(m => m.Accepted)
-                .ID("check")
-                .Text("I agree to the Terms and Conditions")
-                )
         </div>
 
         <div class="dx-fieldset">
+            <div class="dx-field">
+                <div class="dx-field-label">
+                    @(Html.DevExtreme().CheckBoxFor(m => m.Accepted)
+                        .ID("check")
+                        .Text("I agree to the Terms and Conditions")
+                        .ValidationMessagePosition(Position.Right)
+                    )
+                </div>
+                <div class="dx-field-value">
+                    @(Html.DevExtreme().Button()
+                        .Width("120px")
+                        .Text("Register")
+                        .Type(ButtonType.Default)
+                        .UseSubmitBehavior(true)
+                    )
+                </div>
+            </div>
             @(Html.DevExtreme().ValidationSummary()
                 .ID("summary")
-                )
-
-            @(Html.DevExtreme().Button()
-                .Width("100%")
-                .Text("Register")
-                .Type(ButtonType.Success)
-                .UseSubmitBehavior(true)
-                )
+            )
         </div>
     }
 }
@@ -161,6 +178,25 @@
         let editor = $("#ConfirmPassword").dxTextBox("instance");
         if (editor.option("value")) {
             editor.element().dxValidator("validate")
+        }
+    }
+
+    function onVacationDatesChange(e) {
+        const editor = $("#DateRangeBox").dxDateRangeBox("instance");
+        const [startDate, endDate] = editor.option("value");
+        let isValid;
+
+        if (startDate === null && endDate === null) {
+            isValid = true;
+        } else {
+            isValid = startDate !== null && endDate !== null;
+        }
+
+        if (!isValid) {
+            editor.option({
+                validationStatus: "invalid",
+                validationErrors: [{ message: "Both start and end dates must be selected" }]
+            });
         }
     }
 </script>
