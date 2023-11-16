@@ -1,68 +1,66 @@
 <template>
-  <div class="demo-container">
-    <div class="tabpanel-demo">
-      <div class="widget-container">
-        <DxTabPanel
-          class="dx-theme-background-color"
-          width="100%"
-          height="418"
-          item-template="tabPanelItem"
-          :animation-enabled="true"
-          :swipe-enabled="true"
-          :data-source="dataSource"
-          :tabs-position="tabsPosition"
-          :styling-mode="stylingMode"
-          :icon-position="iconPosition"
-          :show-nav-buttons="showNavButtons"
-        >
-          <template #tabPanelItem="{ data }">
-            <TabPanelItem
-              :tasks="data.tasks"
-            />
-          </template>
-        </DxTabPanel>
+  <div class="tabpanel-demo">
+    <div class="widget-container">
+      <DxTabPanel
+        class="dx-theme-background-color"
+        width="100%"
+        height="418"
+        item-template="tabPanelItem"
+        :animation-enabled="true"
+        :swipe-enabled="true"
+        :data-source="dataSource"
+        :tabs-position="tabsPosition"
+        :styling-mode="stylingMode"
+        :icon-position="iconPosition"
+        :show-nav-buttons="showNavButtons"
+      >
+        <template #tabPanelItem="{ data }">
+          <TabPanelItem
+            :tasks="data.tasks"
+          />
+        </template>
+      </DxTabPanel>
+    </div>
+
+    <div class="options">
+      <div class="caption">Options</div>
+
+      <div class="option">
+        <div class="option-label">Tab position</div>
+
+        <DxSelectBox
+          v-model:value="tabsPosition"
+          :input-attr="tabsPositionsSelectBoxLabel"
+          :items="tabsPositions"
+        />
       </div>
 
-      <div class="options">
-        <div class="caption">Options</div>
+      <div class="option">
+        <div class="option-label">Styling mode</div>
 
-        <div class="option">
-          <div class="option-label">Tab position</div>
+        <DxSelectBox
+          v-model:value="stylingMode"
+          :input-attr="stylingModesSelectBoxLabel"
+          :items="stylingModes"
+        />
+      </div>
 
-          <DxSelectBox
-            v-model:value="tabsPosition"
-            :input-attr="tabsPositionsSelectBoxLabel"
-            :items="tabsPositions"
-          />
-        </div>
+      <div class="option">
+        <div class="option-label">Icon position</div>
 
-        <div class="option">
-          <div class="option-label">Styling mode</div>
+        <DxSelectBox
+          v-model:value="iconPosition"
+          :input-attr="iconPositionsSelectBoxLabel"
+          :items="iconPositions"
+        />
+      </div>
 
-          <DxSelectBox
-            v-model:value="stylingMode"
-            :input-attr="stylingModesSelectBoxLabel"
-            :items="stylingModes"
-          />
-        </div>
-
-        <div class="option">
-          <div class="option-label">Icon position</div>
-
-          <DxSelectBox
-            v-model:value="iconPosition"
-            :input-attr="iconPositionsSelectBoxLabel"
-            :items="iconPositions"
-          />
-        </div>
-
-        <div class="option">
-          <DxCheckBox
-            text="Show navigation buttons"
-            v-model:value="showNavButtons"
-            :element-attr="navButtonsCheckBoxLabel"
-          />
-        </div>
+      <div class="option">
+        <DxCheckBox
+          text="Show navigation buttons"
+          v-model:value="showNavButtons"
+          :element-attr="navButtonsCheckBoxLabel"
+        />
       </div>
     </div>
   </div>
@@ -95,7 +93,6 @@ const showNavButtons = ref(true);
 .tabpanel-demo {
   display: flex;
   height: 100%;
-  min-height: 450px;
 }
 
 .widget-container {

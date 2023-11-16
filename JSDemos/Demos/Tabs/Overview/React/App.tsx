@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Tabs from 'devextreme-react/tabs';
 import SelectBox from 'devextreme-react/select-box';
 import CheckBox from 'devextreme-react/check-box';
@@ -88,7 +87,7 @@ const App = () => {
   }, [setRtlEnabled]);
 
   return (
-    <div id="tabs-demo">
+    <div className="tabs-demo">
       <div className="widget-container">
         <div className={widgetWrapperClasses}>
           <Tabs

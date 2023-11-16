@@ -38,68 +38,66 @@ const App = () => {
   }, [setShowNavButtons]);
 
   return (
-    <div className="demo-container">
-      <div className="tabpanel-demo">
-        <div className="widget-container">
-          <TabPanel
-            className="dx-theme-background-color"
-            width="100%"
-            height={418}
-            animationEnabled={true}
-            swipeEnabled={true}
-            dataSource={dataSource}
-            tabsPosition={tabsPosition}
-            stylingMode={stylingMode}
-            iconPosition={iconPosition}
-            showNavButtons={showNavButtons}
-            itemComponent={TabPanelItem}
+    <div className="tabpanel-demo">
+      <div className="widget-container">
+        <TabPanel
+          className="dx-theme-background-color"
+          width="100%"
+          height={418}
+          animationEnabled={true}
+          swipeEnabled={true}
+          dataSource={dataSource}
+          tabsPosition={tabsPosition}
+          stylingMode={stylingMode}
+          iconPosition={iconPosition}
+          showNavButtons={showNavButtons}
+          itemComponent={TabPanelItem}
+        />
+      </div>
+
+      <div className="options">
+        <div className="caption">Options</div>
+
+        <div className="option">
+          <div className="option-label">Tab position</div>
+
+          <SelectBox
+            inputAttr={tabsPositionsSelectBoxLabel}
+            items={tabsPositions}
+            value={tabsPosition}
+            onValueChanged={onTabsPositionChanged}
           />
         </div>
 
-        <div className="options">
-          <div className="caption">Options</div>
+        <div className="option">
+          <div className="option-label">Styling mode</div>
 
-          <div className="option">
-            <div className="option-label">Tab position</div>
+          <SelectBox
+            inputAttr={stylingModesSelectBoxLabel}
+            items={stylingModes}
+            value={stylingMode}
+            onValueChanged={onStylingModeChanged}
+          />
+        </div>
 
-            <SelectBox
-              inputAttr={tabsPositionsSelectBoxLabel}
-              items={tabsPositions}
-              value={tabsPosition}
-              onValueChanged={onTabsPositionChanged}
-            />
-          </div>
+        <div className="option">
+          <div className="option-label">Icon position</div>
 
-          <div className="option">
-            <div className="option-label">Styling mode</div>
+          <SelectBox
+            inputAttr={iconPositionsSelectBoxLabel}
+            items={iconPositions}
+            value={iconPosition}
+            onValueChanged={onIconPositionChanged}
+          />
+        </div>
 
-            <SelectBox
-              inputAttr={stylingModesSelectBoxLabel}
-              items={stylingModes}
-              value={stylingMode}
-              onValueChanged={onStylingModeChanged}
-            />
-          </div>
-
-          <div className="option">
-            <div className="option-label">Icon position</div>
-
-            <SelectBox
-              inputAttr={iconPositionsSelectBoxLabel}
-              items={iconPositions}
-              value={iconPosition}
-              onValueChanged={onIconPositionChanged}
-            />
-          </div>
-
-          <div className="option">
-            <CheckBox
-              text="Show navigation buttons"
-              elementAttr={navButtonsCheckBoxLabel}
-              value={showNavButtons}
-              onValueChanged={onShowNavButtonsChanged}
-            />
-          </div>
+        <div className="option">
+          <CheckBox
+            text="Show navigation buttons"
+            elementAttr={navButtonsCheckBoxLabel}
+            value={showNavButtons}
+            onValueChanged={onShowNavButtonsChanged}
+          />
         </div>
       </div>
     </div>
