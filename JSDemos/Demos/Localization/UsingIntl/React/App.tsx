@@ -4,58 +4,53 @@ import React from 'react';
 import DataGrid, { Column, Editing, FilterRow } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
 
-import 'devextreme/localization/globalize/number';
-import 'devextreme/localization/globalize/date';
-import 'devextreme/localization/globalize/currency';
-import 'devextreme/localization/globalize/message';
-
 import deMessages from 'npm:devextreme/localization/messages/de.json!json';
 import ruMessages from 'npm:devextreme/localization/messages/ru.json!json';
+import { locale, loadMessages, formatMessage } from 'devextreme/localization';
 
-import deCldrData from 'npm:devextreme-cldr-data/de.json!json';
-import ruCldrData from 'npm:devextreme-cldr-data/ru.json!json';
-import supplementalCldrData from 'npm:devextreme-cldr-data/supplemental.json!json';
-
-import Globalize from 'globalize';
-
-import service from './data.js';
+import service from './data.ts';
 
 const editPopupOptions = {
   width: 700,
   height: 345,
 };
+
 const amountEditorOptions = {
   format: 'currency',
   showClearButton: true,
 };
+
 const selectBoxInputAttr = { id: 'selectInput' };
 
 const App = () => {
-  const [locale, setLocale] = React.useState(sessionStorage.getItem('locale') || 'en');
+  const [localeState, setLocaleState] = React.useState(() => {
+    const storageLocale = sessionStorage.getItem('locale');
+    return storageLocale != null ? storageLocale : 'en';
+  });
+
   const locales = service.getLocales();
   const payments = service.getPayments();
 
-  const initGlobalize = React.useCallback(() => {
-    Globalize.load(
-      deCldrData,
-      ruCldrData,
-      supplementalCldrData,
-    );
-    Globalize.loadMessages(deMessages);
-    Globalize.loadMessages(ruMessages);
-    Globalize.loadMessages(service.getDictionary());
-    Globalize.locale(locale);
-  }, [locale]);
+  const setLocale = (savingLocale: string) => {
+    sessionStorage.setItem('locale', savingLocale);
+  };
 
-  const changeLocale = (e) => {
+  const initMessages = () => {
+    loadMessages(deMessages);
+    loadMessages(ruMessages);
+    loadMessages(service.getDictionary());
+  };
+
+  const changeLocale = (e: { value?: any; }) => {
     setLocale(e.value);
-    sessionStorage.setItem('locale', e.value);
+    setLocaleState(e.value);
     document.location.reload();
   };
 
   React.useEffect(() => {
-    initGlobalize();
-  }, [locale, initGlobalize]);
+    locale(localeState);
+    initMessages();
+  }, [localeState]);
 
   return (
     <div>
@@ -74,28 +69,28 @@ const App = () => {
         />
         <Column
           dataField="PaymentId"
-          caption={Globalize.formatMessage('Number')}
+          caption={formatMessage('Number')}
           allowEditing={false}
           width={100}
         />
         <Column
           dataField="ContactName"
-          caption={Globalize.formatMessage('Contact')}
+          caption={formatMessage('Contact')}
         />
         <Column
           dataField="CompanyName"
-          caption={Globalize.formatMessage('Company')}
+          caption={formatMessage('Company')}
         />
         <Column
           dataField="Amount"
-          caption={Globalize.formatMessage('Amount')}
+          caption={formatMessage('Amount')}
           dataType="number"
           format="currency"
           editorOptions={amountEditorOptions}
         />
         <Column
           dataField="PaymentDate"
-          caption={Globalize.formatMessage('PaymentDate')}
+          caption={formatMessage('PaymentDate')}
           dataType="date"
         />
       </DataGrid>
@@ -108,7 +103,7 @@ const App = () => {
             items={locales}
             valueExpr="Value"
             displayExpr="Name"
-            value={locale}
+            value={localeState}
             onValueChanged={changeLocale}
             inputAttr={selectBoxInputAttr}
           />

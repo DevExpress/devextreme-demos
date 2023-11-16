@@ -3,56 +3,44 @@
 import React from 'react';
 import DataGrid, { Column, Editing, FilterRow } from 'devextreme-react/data-grid';
 import SelectBox from 'devextreme-react/select-box';
-
 import deMessages from 'npm:devextreme/localization/messages/de.json!json';
 import ruMessages from 'npm:devextreme/localization/messages/ru.json!json';
-
 import { locale, loadMessages, formatMessage } from 'devextreme/localization';
-
 import service from './data.js';
 
 const editPopupOptions = {
   width: 700,
   height: 345,
 };
-
 const amountEditorOptions = {
   format: 'currency',
   showClearButton: true,
 };
-
 const selectBoxInputAttr = { id: 'selectInput' };
-
 const App = () => {
   const [localeState, setLocaleState] = React.useState(() => {
     const storageLocale = sessionStorage.getItem('locale');
     return storageLocale != null ? storageLocale : 'en';
   });
-
   const locales = service.getLocales();
   const payments = service.getPayments();
-
   const setLocale = (savingLocale) => {
     sessionStorage.setItem('locale', savingLocale);
   };
-
   const initMessages = () => {
     loadMessages(deMessages);
     loadMessages(ruMessages);
     loadMessages(service.getDictionary());
   };
-
   const changeLocale = (e) => {
     setLocale(e.value);
     setLocaleState(e.value);
     document.location.reload();
   };
-
   React.useEffect(() => {
     locale(localeState);
     initMessages();
   }, [localeState]);
-
   return (
     <div>
       <DataGrid
@@ -113,5 +101,4 @@ const App = () => {
     </div>
   );
 };
-
 export default App;
