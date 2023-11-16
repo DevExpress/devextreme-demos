@@ -1,4 +1,4 @@
-﻿#tabs-demo {
+﻿.demo-container {
     display: flex;
     min-height: 450px;
 }

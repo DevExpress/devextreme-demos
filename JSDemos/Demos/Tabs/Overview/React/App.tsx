@@ -88,7 +88,7 @@ const App = () => {
   }, [setRtlEnabled]);
 
   return (
-    <div id="tabs-demo">
+    <div className="demo-container">
       <div className="widget-container">
         <div className={widgetWrapperClasses}>
           <Tabs
