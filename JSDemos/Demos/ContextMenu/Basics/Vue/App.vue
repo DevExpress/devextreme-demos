@@ -4,15 +4,15 @@
       Right click the image to show available actions:
     </div>
     <img
-        id="image"
-        alt="product"
-        :src="'../../../../images/products/7.png'"
+      id="image"
+      alt="product"
+      :src="'../../../../images/products/7.png'"
     >
     <DxContextMenu
-        :data-source="items"
-        :width="200"
-        target="#image"
-        @item-click="itemClick"
+      :data-source="items"
+      :width="200"
+      target="#image"
+      @item-click="itemClick"
     />
   </div>
 </template>
