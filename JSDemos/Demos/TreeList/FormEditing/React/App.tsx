@@ -24,44 +24,42 @@ const onInitNewRow = (e: TreeListTypes.InitNewRowEvent) => {
   e.data.Head_ID = 1;
 };
 const App = () => (
-  <div id="tree-list-demo">
-    <TreeList
-      dataSource={employees}
-      columnAutoWidth={true}
-      showRowLines={true}
-      showBorders={true}
-      defaultExpandedRowKeys={expandedRowKeys}
-      keyExpr="ID"
-      parentIdExpr="Head_ID"
-      onEditorPreparing={onEditorPreparing}
-      onInitNewRow={onInitNewRow}
-    >
-      <Editing allowUpdating={true} allowDeleting={allowDeleting} allowAdding={true} mode="form" />
-      <Column dataField="Full_Name">
-        <ValidationRule type="required" />
-      </Column>
-      <Column dataField="Prefix" caption="Title">
-        <ValidationRule type="required" />
-      </Column>
-      <Column visible={false} dataField="Head_ID" caption="Head">
-        <Lookup dataSource={lookupData} valueExpr="ID" displayExpr="Full_Name" />
-        <ValidationRule type="required" />
-      </Column>
-      <Column dataField="Title" caption="Position">
-        <ValidationRule type="required" />
-      </Column>
-      <Column width={150} dataField="City">
-        <ValidationRule type="required" />
-      </Column>
-      <Column width={120} dataField="Hire_Date" dataType="date">
-        <ValidationRule type="required" />
-      </Column>
-      <Column type="buttons">
-        <Button name="edit" />
-        <Button name="delete" />
-      </Column>
-    </TreeList>
-  </div>
+  <TreeList
+    dataSource={employees}
+    columnAutoWidth={true}
+    showRowLines={true}
+    showBorders={true}
+    defaultExpandedRowKeys={expandedRowKeys}
+    keyExpr="ID"
+    parentIdExpr="Head_ID"
+    onEditorPreparing={onEditorPreparing}
+    onInitNewRow={onInitNewRow}
+  >
+    <Editing allowUpdating={true} allowDeleting={allowDeleting} allowAdding={true} mode="form" />
+    <Column dataField="Full_Name">
+      <ValidationRule type="required" />
+    </Column>
+    <Column dataField="Prefix" caption="Title">
+      <ValidationRule type="required" />
+    </Column>
+    <Column visible={false} dataField="Head_ID" caption="Head">
+      <Lookup dataSource={lookupData} valueExpr="ID" displayExpr="Full_Name" />
+      <ValidationRule type="required" />
+    </Column>
+    <Column dataField="Title" caption="Position">
+      <ValidationRule type="required" />
+    </Column>
+    <Column width={150} dataField="City">
+      <ValidationRule type="required" />
+    </Column>
+    <Column width={120} dataField="Hire_Date" dataType="date">
+      <ValidationRule type="required" />
+    </Column>
+    <Column type="buttons">
+      <Button name="edit" />
+      <Button name="delete" />
+    </Column>
+  </TreeList>
 );
 
 export default App;
