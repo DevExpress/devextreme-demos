@@ -68,7 +68,6 @@
       v-model:visible="popupWithScrollViewVisible"
       :width="360"
       :height="320"
-      :visible="false"
       :hide-on-outside-click="true"
       :show-close-button="true"
       title="Downtown Inn"
