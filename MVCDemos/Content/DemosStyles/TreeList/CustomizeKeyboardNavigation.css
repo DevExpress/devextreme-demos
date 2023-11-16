@@ -1,4 +1,8 @@
-﻿.options {
+﻿#employees {
+    max-height: 640px;
+}  
+
+.options {
     margin-top: 20px;
     padding: 20px;
     background-color: rgba(191, 191, 191, 0.15);

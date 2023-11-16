@@ -24,7 +24,7 @@ const App = () => {
   const [enterKeyDirection, setEnterKeyDirection] = React.useState<TreeListTypes.EnterKeyDirection>('column');
 
   return (
-    <div id="tree-list-demo">
+    <React.Fragment>
       <TreeList
         id="employees"
         dataSource={employees}
@@ -84,7 +84,7 @@ const App = () => {
           </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

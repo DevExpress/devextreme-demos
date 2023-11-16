@@ -15,7 +15,7 @@ const App = () => {
   const [enterKeyAction, setEnterKeyAction] = React.useState('moveFocus');
   const [enterKeyDirection, setEnterKeyDirection] = React.useState('column');
   return (
-    <div id="tree-list-demo">
+    <React.Fragment>
       <TreeList
         id="employees"
         dataSource={employees}
@@ -80,7 +80,7 @@ const App = () => {
           </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 export default App;
