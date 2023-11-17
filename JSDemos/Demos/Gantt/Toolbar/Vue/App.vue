@@ -88,7 +88,7 @@ import {
   dependencies,
   resources,
   resourceAssignments,
-} from './data.js';
+} from './data';
 
 const popupVisible = ref(false);
 const aboutButtonOptions = {

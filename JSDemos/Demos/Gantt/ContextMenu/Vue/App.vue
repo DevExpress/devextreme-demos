@@ -72,7 +72,7 @@ import {
   dependencies,
   resources,
   resourceAssignments,
-} from './data.js';
+} from './data';
 
 const showResources = ref(true);
 const disableContextMenu = ref(false);

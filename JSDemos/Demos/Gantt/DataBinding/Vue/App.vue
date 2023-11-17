@@ -43,7 +43,7 @@ import {
   dependencies,
   resources,
   resourceAssignments,
-} from './data.js';
+} from './data';
 </script>
 <style>
   #gantt {

@@ -63,7 +63,7 @@ import DxChart, {
   DxGrid,
   DxFormat,
 } from 'devextreme-vue/chart';
-import { continentSources, populationData } from './data.js';
+import { continentSources, populationData } from './data';
 
 function customizeTooltip(pointInfo) {
   const items = pointInfo.valueText.split('\n');

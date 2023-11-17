@@ -14,7 +14,7 @@
 </template>
 <script setup lang="ts">
 import { DxCheckBox } from 'devextreme-vue/check-box';
-import { products } from './data.js';
+import { products } from './data';
 
 type Product = typeof products[0];
 

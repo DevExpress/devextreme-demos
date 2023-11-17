@@ -38,7 +38,7 @@
 import {
   DxPieChart, DxSeries, DxLegend, DxLabel, DxConnector,
 } from 'devextreme-vue/pie-chart';
-import { data } from './data.js';
+import { data } from './data';
 import CenterTemplate from './CenterTemplate.vue';
 
 const countries = Array.from(new Set(data.map(({ country }) => country)));

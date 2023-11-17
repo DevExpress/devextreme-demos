@@ -11,7 +11,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { products } from './data.js';
+import { products } from './data';
 
 withDefaults(defineProps<{
   item?: typeof products[0]

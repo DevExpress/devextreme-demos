@@ -41,7 +41,7 @@ import {
   DxLegend,
   DxTitle,
 } from 'devextreme-vue/chart';
-import dataSource from './data.js';
+import dataSource from './data';
 
 const categories = ['Royal Houses'];
 </script>

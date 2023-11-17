@@ -56,7 +56,7 @@ import {
   aluminumCosts,
   nickelCosts,
   copperCosts,
-} from './data.js';
+} from './data';
 
 withDefaults(defineProps<{
   year?: string

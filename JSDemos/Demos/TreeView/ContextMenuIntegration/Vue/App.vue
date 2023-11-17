@@ -31,7 +31,7 @@ import { ref } from 'vue';
 import DxTreeView from 'devextreme-vue/tree-view';
 import DxList from 'devextreme-vue/list';
 import DxContextMenu from 'devextreme-vue/context-menu';
-import service from './data.js';
+import service from './data';
 
 const products = ref(service.getProducts());
 const menuItems = ref(service.getMenuItems());

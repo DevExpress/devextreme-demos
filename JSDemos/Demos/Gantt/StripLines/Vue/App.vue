@@ -41,7 +41,7 @@ import {
 } from 'devextreme-vue/gantt';
 import {
   tasks,
-} from './data.js';
+} from './data';
 
 const currentTime = new Date();
 </script>

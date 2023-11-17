@@ -77,7 +77,7 @@ import {
   dependencies,
   resources,
   resourceAssignments,
-} from './data.js';
+} from './data';
 
 const sortingMode = ref('single');
 const showSortIndexes = ref(false);

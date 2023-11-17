@@ -48,7 +48,7 @@ import {
   DxLegend,
   DxExport,
 } from 'devextreme-vue/chart';
-import { temperaturesData } from './data.js';
+import { temperaturesData } from './data';
 
 const highAverage = 77;
 const lowAverage = 58;

@@ -57,7 +57,7 @@ import {
   oilCosts,
   goldCosts,
   silverCosts,
-} from './data.js';
+} from './data';
 
 withDefaults(defineProps<{
   year?: string

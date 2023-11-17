@@ -42,7 +42,7 @@ import DxPieChart, {
   DxTooltip,
   DxSubtitle,
 } from 'devextreme-vue/pie-chart';
-import { exportImportData } from './data.js';
+import { exportImportData } from './data';
 
 const customizeTooltip = ({ argumentText, seriesName, valueText }) => ({
   text: `${argumentText}<br>${seriesName}: ${valueText}B`,

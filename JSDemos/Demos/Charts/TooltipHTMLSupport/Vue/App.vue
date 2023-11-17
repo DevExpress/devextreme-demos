@@ -27,7 +27,7 @@
 import {
   DxPieChart, DxSeries, DxExport, DxTooltip,
 } from 'devextreme-vue/pie-chart';
-import { populationData } from './data.js';
+import { populationData } from './data';
 import TooltipTemplate from './TooltipTemplate.vue';
 </script>
 <style scoped>

@@ -33,7 +33,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import DxFilterBuilder, { DxCustomOperation } from 'devextreme-vue/filter-builder';
-import { filter, fields } from './data.js';
+import { filter, fields } from './data';
 import { formatValue } from './helpers.js';
 import EditorComponent from './EditorComponent.vue';
 

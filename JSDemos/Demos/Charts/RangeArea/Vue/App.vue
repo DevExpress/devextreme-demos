@@ -50,7 +50,7 @@ import DxChart, {
   DxExport,
   DxLegend,
 } from 'devextreme-vue/chart';
-import { inflationData } from './data.js';
+import { inflationData } from './data';
 
 const customizeLabelText = ({ valueText }) => `${valueText} %`;
 </script>

@@ -47,7 +47,7 @@ import {
   DxExport,
   DxTooltip,
 } from 'devextreme-vue/chart';
-import service from './data.js';
+import service from './data';
 
 const dataSource = service.getMaleAgeData();
 
