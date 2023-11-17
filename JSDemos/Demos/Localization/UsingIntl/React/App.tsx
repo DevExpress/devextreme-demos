@@ -22,20 +22,20 @@ const amountEditorOptions = {
 
 const selectBoxInputAttr = { id: 'selectInput' };
 
-const localeState = sessionStorage.getItem('locale') || 'en';
-
-locale(localeState);
+locale(sessionStorage.getItem('locale') || 'en');
 
 loadMessages(deMessages);
 loadMessages(ruMessages);
 loadMessages(service.getDictionary());
 
 const App = () => {
+  const [localeState, setLocaleState] = React.useState(sessionStorage.getItem('locale') || 'en');
   const locales = service.getLocales();
   const payments = service.getPayments();
 
   const changeLocale = (e: SelectBoxTypes.ValueChangedEvent) => {
     sessionStorage.setItem('locale', e.value);
+    setLocaleState(e.value);
     document.location.reload();
   };
 

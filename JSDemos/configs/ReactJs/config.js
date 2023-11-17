@@ -17,9 +17,16 @@ window.config = {
     'devextreme/localization.js': {
       'esModule': true,
     },
+    /** globalize */
     '*.json': {
       'loader': 'json',
     },
+    /**/
+    /** devextreme-intl */
+    '*.json': {
+      'loader': 'json',
+    },
+    /**/
     'devextreme/viz/palette.js': {
       'esModule': true,
     },
@@ -27,6 +34,7 @@ window.config = {
     'devextreme-aspnet-data-nojquery': {
       'esModule': true,
     },
+    /**/
     /** devextreme-aspnet-data-nojquery */
     'devextreme-aspnet-data-nojquery': {
       'esModule': true,
