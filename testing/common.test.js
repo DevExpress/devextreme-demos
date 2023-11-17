@@ -58,40 +58,40 @@ const SKIP_ACCESSIBILITY_TESTS = ['TabPanel-Overview'];
 const COMMON_SKIP_RULES = ['color-contrast'];
 const getTestSpecificSkipRules = (testName) => {
   switch (testName) {
-  case 'Calendar-MultipleSelection':
-  case 'DataGrid-ExcelJSCellCustomization':
-  case 'DataGrid-HorizontalVirtualScrolling':
-  case 'DataGrid-PDFCellCustomization':
-    return ['empty-table-header'];
-  case 'Autocomplete-Overview':
-  case 'DataGrid-Filtering':
-  case 'DataGrid-FilterPanel':
-  case 'Localization-UsingGlobalize':
-  case 'Localization-UsingIntl':
-    return ['label'];
-  case 'DataGrid-RowTemplate':
-  case 'DataGrid-Row3RdPartyEngineTemplate':
-    return ['aria-required-children', 'image-alt'];
-  case 'DataGrid-CustomNewRecordPosition':
-    return ['link-name'];
-  case 'DataGrid-Column3RdPartyEngineTemplate':
-  case 'DataGrid-ColumnTemplate':
-  case 'DataGrid-ExcelJSExportImages':
-  case 'DataGrid-FilteringAPI':
-  case 'DataGrid-MasterDetailAPI':
-  case 'DataGrid-PDFExportImages':
-  case 'DataGrid-RowSelection':
-  case 'FilterBuilder-WithList':
-  case 'Gallery-Overview':
-    return ['image-alt'];
-  case 'FileUploader-FileSelection':
-    return ['label-title-only'];
-  case 'TreeView-FlatDataStructure':
-    return ['image-redundant-alt'];
-  case 'TreeView-TreeViewWithSearchBar':
-    return ['aria-required-parent'];
-  default:
-    return [];
+    case 'Calendar-MultipleSelection':
+    case 'DataGrid-ExcelJSCellCustomization':
+    case 'DataGrid-HorizontalVirtualScrolling':
+    case 'DataGrid-PDFCellCustomization':
+      return ['empty-table-header'];
+    case 'Autocomplete-Overview':
+    case 'DataGrid-Filtering':
+    case 'DataGrid-FilterPanel':
+    case 'Localization-UsingGlobalize':
+    case 'Localization-UsingIntl':
+      return ['label'];
+    case 'DataGrid-RowTemplate':
+    case 'DataGrid-Row3RdPartyEngineTemplate':
+      return ['aria-required-children', 'image-alt'];
+    case 'DataGrid-CustomNewRecordPosition':
+      return ['link-name'];
+    case 'DataGrid-Column3RdPartyEngineTemplate':
+    case 'DataGrid-ColumnTemplate':
+    case 'DataGrid-ExcelJSExportImages':
+    case 'DataGrid-FilteringAPI':
+    case 'DataGrid-MasterDetailAPI':
+    case 'DataGrid-PDFExportImages':
+    case 'DataGrid-RowSelection':
+    case 'FilterBuilder-WithList':
+    case 'Gallery-Overview':
+      return ['image-alt'];
+    case 'FileUploader-FileSelection':
+      return ['label-title-only'];
+    case 'TreeView-FlatDataStructure':
+      return ['image-redundant-alt'];
+    case 'TreeView-TreeViewWithSearchBar':
+      return ['aria-required-parent'];
+    default:
+      return [];
   }
 };
 
@@ -126,7 +126,6 @@ const getTestSpecificSkipRules = (testName) => {
     'Diagram',
     'FileManager',
     'Gantt',
-    // Grid's
     'Scheduler',
     'PivotGrid',
   ];
@@ -188,10 +187,10 @@ const getTestSpecificSkipRules = (testName) => {
             return;
           }
 
-          const testSpecificSkipRules = getTestSpecificSkipRules(testName);
+          const specificSkipRules = getTestSpecificSkipRules(testName);
           const options = { rules: { } };
 
-          [...COMMON_SKIP_RULES, ...testSpecificSkipRules].forEach((ruleName) => {
+          [...COMMON_SKIP_RULES, ...specificSkipRules].forEach((ruleName) => {
             options.rules[ruleName] = { enabled: false };
           });
 
