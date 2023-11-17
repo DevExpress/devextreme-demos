@@ -9,8 +9,7 @@ const currentDate = new Date(2021, 2, 30);
 const views: SchedulerTypes.ViewType[] = ['day', 'week'];
 
 const App = () => {
-  const [offset, setOffset] = React.useState(shifts[0].offset);
-  const onShiftChange = React.useCallback((e) => { setOffset(e.offset); }, []);
+  const [currentShift, setCurrentShift] = React.useState(shifts[0]);
 
   return <React.Fragment>
     <div className="options">
@@ -21,7 +20,7 @@ const App = () => {
             defaultValue={shifts[0]}
             items={shifts}
             layout= 'horizontal'
-            onValueChange={onShiftChange}
+            onValueChange={setCurrentShift}
           />
         </div>
       </div>
@@ -35,7 +34,7 @@ const App = () => {
       currentDate={currentDate}
       startDayHour= {0}
       endDayHour= {8}
-      offset={offset}
+      offset={currentShift.offset}
       cellDuration={60}
       showAllDayPanel={false}
     />
