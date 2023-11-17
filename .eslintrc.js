@@ -526,6 +526,13 @@ module.exports = {
     'parserOptions': {
       'parser': '@typescript-eslint/parser',
     },
+    'settings': {
+      'import/resolver': {
+        'node': {
+          'extensions': ['.js', '.jsx', '.ts', '.tsx'],
+        },
+      },
+    },
     extends: [
       'plugin:vue/vue3-recommended',
     ],
