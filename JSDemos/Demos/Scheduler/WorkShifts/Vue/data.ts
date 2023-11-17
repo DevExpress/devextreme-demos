@@ -1,9 +1,9 @@
-export type Shift = {
+type Shift = {
   text: string;
   offset: number;
 };
 
-export type Appointment = {
+type Appointment = {
   text: string,
   startDate: string,
   endDate: string,

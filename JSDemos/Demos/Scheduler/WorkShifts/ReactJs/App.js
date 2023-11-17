@@ -6,10 +6,9 @@ import { data, shifts } from './data.js';
 const currentDate = new Date(2021, 2, 30);
 const views = ['day', 'week'];
 const App = () => {
-  // eslint-disable-next-line no-unused-vars
-  const [offset, setOffset] = React.useState(0);
-  const onShiftChanged = React.useCallback((e) => {
-    setOffset(e.value);
+  const [offset, setOffset] = React.useState(shifts[0].offset);
+  const onShiftChange = React.useCallback((e) => {
+    setOffset(e.offset);
   }, []);
   return (
     <React.Fragment>
@@ -21,7 +20,7 @@ const App = () => {
               defaultValue={shifts[0]}
               items={shifts}
               layout="horizontal"
-              onValueChanged={onShiftChanged}
+              onValueChange={onShiftChange}
             />
           </div>
         </div>
@@ -35,8 +34,8 @@ const App = () => {
         currentDate={currentDate}
         startDayHour={0}
         endDayHour={8}
-        // offset={offset}
-        height={600}
+        offset={offset}
+        cellDuration={60}
         showAllDayPanel={false}
       />
     </React.Fragment>
