@@ -44,7 +44,7 @@ const App = () => {
 
   return (
     <React.Fragment>
-      <Toolbar items={toolbarItems} />
+      <Toolbar items={toolbarItems} id="toolbar" className="dx-theme-background-color" />
       <Drawer
         opened={opened}
         openedStateMode={openedStateMode}

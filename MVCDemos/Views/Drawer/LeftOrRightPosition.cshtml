@@ -5,7 +5,7 @@
     var showSubmenuModes = new[] { "slide", "expand" };
 }
 
-<div class="toolbar">
+<div class="toolbar dx-theme-background-color">
     @(Html.DevExtreme().Toolbar()
         .Items(items => {
             items.Add()
@@ -40,7 +40,7 @@
                     .HoverStateEnabled(false)
                     .FocusStateEnabled(false)
                     .ActiveStateEnabled(false)
-                    .ElementAttr("class", "panel-list")
+                    .ElementAttr("class", new JS("listClass"))
                 )
             </div>
         </text>)
@@ -80,6 +80,8 @@
 </div>
 
 <script>
+    const listClass = `panel-list dx-theme-${DevExpress.ui.themes.current().split('.')[0]}-typography`;
+
     function showMode_valueChanged(data) {
         var drawer = $("#drawer").dxDrawer("instance");
         drawer.option("openedStateMode", data.value);

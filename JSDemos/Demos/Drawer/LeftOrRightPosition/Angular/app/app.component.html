@@ -1,4 +1,8 @@
-<dx-toolbar [items]="toolbarContent"> </dx-toolbar>
+<dx-toolbar
+  [items]="toolbarContent"
+  id="toolbar"
+  class="dx-theme-background-color"
+></dx-toolbar>
 <dx-drawer
   [openedStateMode]="selectedOpenMode"
   [position]="selectedPosition"
@@ -10,7 +14,7 @@
 >
   <div *dxTemplate="let data of 'template'" style="width: 200px">
     <dx-list
-      class="panel-list"
+      [elementAttr]="listElementAttr"
       [dataSource]="navigation"
       [hoverStateEnabled]="false"
       [activeStateEnabled]="false"

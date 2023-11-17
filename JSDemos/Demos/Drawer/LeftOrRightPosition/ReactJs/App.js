@@ -51,7 +51,7 @@ const App = () => {
   }, [setOpened]);
   return (
     <React.Fragment>
-      <Toolbar items={toolbarItems} />
+      <Toolbar items={toolbarItems} id="toolbar" className="dx-theme-background-color" />
       <Drawer
         opened={opened}
         openedStateMode={openedStateMode}
@@ -60,6 +60,7 @@ const App = () => {
         component={NavigationList}
         closeOnOutsideClick={onOutsideClick}
         height={400}
+        className="dx-theme-background-color"
       >
         <div
           id="content"

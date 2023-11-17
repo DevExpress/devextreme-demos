@@ -1,7 +1,11 @@
 import React from 'react';
-
 import List from 'devextreme-react/list';
+import themes from 'devextreme/ui/themes';
 import { navigation } from './data.ts';
+
+const listElementAttr = {
+  class: `panel-list dx-theme-${themes.current().split('.')[0]}-typography`,
+};
 
 function NavigationList() {
   return (
@@ -11,7 +15,7 @@ function NavigationList() {
         hoverStateEnabled={false}
         activeStateEnabled={false}
         focusStateEnabled={false}
-        className="panel-list" />
+        elementAttr={listElementAttr} />
     </div>
   );
 }
