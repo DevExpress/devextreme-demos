@@ -43,7 +43,7 @@ const App = () => {
   }, [setOpened]);
 
   return (
-    <React.Fragment>
+    <div className="flex-container">
       <Toolbar items={toolbarItems} id="toolbar" className="dx-theme-background-color" />
       <Drawer
         opened={opened}
@@ -92,7 +92,7 @@ const App = () => {
           )}
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

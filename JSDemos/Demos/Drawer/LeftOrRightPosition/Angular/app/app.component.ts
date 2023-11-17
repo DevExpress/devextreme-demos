@@ -6,7 +6,6 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
   DxDrawerComponent, DxDrawerModule, DxListModule, DxRadioGroupModule, DxToolbarModule,
 } from 'devextreme-angular';
-import themes from 'devextreme/ui/themes';
 import { List, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -41,14 +40,9 @@ export class AppComponent {
 
   isDrawerOpen = true;
 
-  listElementAttr: any;
-
   constructor(service: Service) {
     this.text = service.getContent();
     this.navigation = service.getNavigationList();
-    this.listElementAttr = {
-      class: `panel-list dx-theme-${themes.current().split('.')[0]}-typography`,
-    };
   }
 
   toolbarContent = [{

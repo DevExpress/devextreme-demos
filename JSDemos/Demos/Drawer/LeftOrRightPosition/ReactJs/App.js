@@ -50,8 +50,12 @@ const App = () => {
     return false;
   }, [setOpened]);
   return (
-    <React.Fragment>
-      <Toolbar items={toolbarItems} id="toolbar" className="dx-theme-background-color" />
+    <div className="flex-container">
+      <Toolbar
+        items={toolbarItems}
+        id="toolbar"
+        className="dx-theme-background-color"
+      />
       <Drawer
         opened={opened}
         openedStateMode={openedStateMode}
@@ -60,7 +64,6 @@ const App = () => {
         component={NavigationList}
         closeOnOutsideClick={onOutsideClick}
         height={400}
-        className="dx-theme-background-color"
       >
         <div
           id="content"
@@ -103,7 +106,7 @@ const App = () => {
           )}
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 export default App;

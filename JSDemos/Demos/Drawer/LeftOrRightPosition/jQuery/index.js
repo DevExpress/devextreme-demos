@@ -6,7 +6,7 @@ $(() => {
     height: 400,
     closeOnOutsideClick: true,
     template() {
-      const $list = $('<div>').width(200).addClass(`panel-list dx-theme-${DevExpress.ui.themes.current().split('.')[0]}-typography`);
+      const $list = $('<div>').width(200).addClass('panel-list dx-theme-typography-background-color');
 
       return $list.dxList({
         dataSource: navigation,

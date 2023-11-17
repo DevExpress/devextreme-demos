@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex-container">
     <DxToolbar
       :items="toolbarContent"
       id="toolbar"
@@ -82,7 +82,7 @@ const toolbarContent = [{
 }];
 </script>
 <style scoped>
-    .demo-container {
+    .flex-container {
       overflow: visible;
       display: flex;
       flex-direction: column;

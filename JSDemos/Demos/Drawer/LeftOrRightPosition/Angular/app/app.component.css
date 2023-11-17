@@ -1,4 +1,4 @@
-::ng-deep .demo-container {
+::ng-deep .flex-container {
   overflow: visible;
   display: flex;
   flex-direction: column;
