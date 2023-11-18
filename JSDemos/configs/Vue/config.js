@@ -141,9 +141,6 @@ window.config = {
     'prettier/parser-html': 'npm:prettier/parser-html.js',
   },
   packages: {
-    '.': {
-      defaultExtension: 'ts',
-    },
     'devextreme-vue': {
       main: 'index.js',
     },
