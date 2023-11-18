@@ -19,4 +19,3 @@ export const dataSource = [{
   min: 18,
   max: 31,
 }];
-

@@ -39,4 +39,3 @@ export const cities = [{
     pressure: 1007.0,
   },
 }];
-

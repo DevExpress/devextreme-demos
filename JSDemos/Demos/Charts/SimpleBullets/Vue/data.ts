@@ -1,4 +1,3 @@
-
 const weeksData = [{
   weekCount: 'First',
   bulletsData: [{

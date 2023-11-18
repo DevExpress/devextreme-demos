@@ -1,4 +1,3 @@
-
 export const olympicMedals = [{
   country: 'USA',
   medals: 110,

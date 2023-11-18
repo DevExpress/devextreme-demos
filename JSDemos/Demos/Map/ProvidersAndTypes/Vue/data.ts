@@ -8,4 +8,3 @@ export const mapTypes = [{
   key: 'hybrid',
   name: 'Hybrid Map',
 }];
-

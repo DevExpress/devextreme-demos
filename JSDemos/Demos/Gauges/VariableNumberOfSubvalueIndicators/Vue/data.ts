@@ -19,4 +19,3 @@ export const dataSource = [{
   primary: 2,
   secondary: [],
 }];
-

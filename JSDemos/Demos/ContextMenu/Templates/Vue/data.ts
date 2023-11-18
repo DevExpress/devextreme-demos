@@ -10,4 +10,3 @@ export const contextMenuItems = [
   { text: 'Add Comment', icon: 'dx-icon-add' },
   { text: 'Add to Favorite', icon: 'dx-icon-favorites' },
 ];
-

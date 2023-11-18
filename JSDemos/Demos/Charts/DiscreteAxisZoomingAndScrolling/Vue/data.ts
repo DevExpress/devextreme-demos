@@ -52,4 +52,3 @@ export const dataSource = [{
   K: 2.5,
   Mg: 1.87,
 }];
-
