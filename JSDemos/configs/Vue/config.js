@@ -142,7 +142,10 @@ window.config = {
   },
   packages: {
     '.': {
-      defaultExtension: 'ts',
+      // defaultExtension: 'ts',
+      map: {
+        './data': './data.ts',
+      },
     },
     'devextreme-vue': {
       main: 'index.js',
