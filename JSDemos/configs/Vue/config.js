@@ -144,7 +144,7 @@ window.config = {
     '.': {
       // defaultExtension: 'ts',
       map: {
-        './data': './data.ts',
+        './datadata': './data.ts',
       },
     },
     'devextreme-vue': {
