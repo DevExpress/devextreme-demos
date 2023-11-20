@@ -82,8 +82,11 @@ const toolbarContent = [{
 }];
 </script>
 <style scoped>
-    .flex-container {
+    .demo-container {
       overflow: visible;
+    }
+
+    .flex-container {
       display: flex;
       flex-direction: column;
     }
