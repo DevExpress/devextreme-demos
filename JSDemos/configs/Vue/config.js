@@ -178,7 +178,9 @@ window.config = {
       defaultExtension: 'js',
     },
     '.': {
-      defaultExtension: 'ts',
+      map: {
+        './data': './data.ts',
+      },
     },
   },
   packageConfigPaths: [
