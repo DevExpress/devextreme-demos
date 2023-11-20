@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <DxToolbar :items="toolbarContent"/>
+  <div class="flex-container">
+    <DxToolbar
+      :items="toolbarContent"
+      class="dx-theme-background-color"
+    />
     <DxDrawer
       :opened-state-mode="selectedOpenMode"
       :position="selectedPosition"
