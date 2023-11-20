@@ -163,15 +163,8 @@ window.config = {
     'cldr': {
       main: '../cldr.js',
       defaultExtension: 'js',
-    }/**//** globalize */,
-    'globalize': {
-      main: '../globalize.js',
-      defaultExtension: 'js',
     },
-    'cldr': {
-      main: '../cldr.js',
-      defaultExtension: 'js',
-    }/**//** signalr */,
+    /** signalr */
     '@aspnet/signalr': {
       main: 'index.js',
       defaultExtension: 'js',
