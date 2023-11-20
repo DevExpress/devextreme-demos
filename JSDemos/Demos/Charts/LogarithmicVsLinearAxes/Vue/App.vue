@@ -56,7 +56,7 @@ import {
   DxLabel,
   DxLegend,
 } from 'devextreme-vue/chart';
-import { dataSource } from './data';
+import { dataSource } from './data.ts';
 
 const crosshairFormat = {
   type: 'fixedPoint',

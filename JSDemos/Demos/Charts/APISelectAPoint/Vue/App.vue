@@ -34,7 +34,7 @@ import DxChart, {
   DxExport,
   DxChartTypes,
 } from 'devextreme-vue/chart';
-import { catBreedsData } from './data';
+import { catBreedsData } from './data.ts';
 
 function onDone({ component }) {
   component.getSeriesByPos(0).getPointsByArg('Siamese')[0].select();

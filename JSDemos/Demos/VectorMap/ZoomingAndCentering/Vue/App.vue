@@ -34,7 +34,7 @@ import {
 import {
   DxButton,
 } from 'devextreme-vue/button';
-import { markers } from './data';
+import { markers } from './data.ts';
 
 const mapsWorld = mapsData.world;
 const bounds = [-180, 85, 180, -60];

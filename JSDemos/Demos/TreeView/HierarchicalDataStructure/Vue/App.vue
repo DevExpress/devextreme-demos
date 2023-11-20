@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import DxTreeView from 'devextreme-vue/tree-view';
-import service from './data';
+import service from './data.ts';
 
 const products = service.getProducts();
 const currentItem = ref(products[0]);

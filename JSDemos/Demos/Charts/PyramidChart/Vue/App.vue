@@ -38,7 +38,7 @@ import DxFunnel, {
   DxLabel,
   DxFont,
 } from 'devextreme-vue/funnel';
-import { dataSource } from './data';
+import { dataSource } from './data.ts';
 </script>
 
 <style>

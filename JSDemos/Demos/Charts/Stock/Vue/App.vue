@@ -50,7 +50,7 @@ import DxChart, {
   DxExport,
   DxTooltip,
 } from 'devextreme-vue/chart';
-import { dataSource } from './data';
+import { dataSource } from './data.ts';
 
 const customizeTooltip = (pointInfo) => ({
   text: `Open: $${pointInfo.openValue}<br/>

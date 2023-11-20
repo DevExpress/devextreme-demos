@@ -149,7 +149,7 @@ import {
   dependencies,
   resources,
   resourceAssignments,
-} from './data';
+} from './data.ts';
 
 const scaleType = ref('months');
 const taskTitlePosition = ref('outside');

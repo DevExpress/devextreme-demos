@@ -22,7 +22,7 @@ import {
   DxExport,
   DxLegend,
 } from 'devextreme-vue/polar-chart';
-import { dataSource } from './data';
+import { dataSource } from './data.ts';
 </script>
 <style>
 #chart {

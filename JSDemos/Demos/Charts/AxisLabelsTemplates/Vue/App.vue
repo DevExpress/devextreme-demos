@@ -37,7 +37,7 @@
 import {
   DxChart, DxSeries, DxCommonSeriesSettings, DxLabel, DxArgumentAxis,
 } from 'devextreme-vue/chart';
-import { dataSource } from './data';
+import { dataSource } from './data.ts';
 import LabelTemplate from './LabelTemplate.vue';
 </script>
 <style>

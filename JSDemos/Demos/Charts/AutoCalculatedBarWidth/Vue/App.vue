@@ -37,7 +37,7 @@ import {
   DxLegend,
   DxExport,
 } from 'devextreme-vue/chart';
-import { dataSource } from './data';
+import { dataSource } from './data.ts';
 </script>
 <style>
 #chart {

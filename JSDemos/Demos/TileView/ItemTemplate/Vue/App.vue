@@ -19,7 +19,7 @@
 </template>
 <script setup lang="ts">
 import DxTileView from 'devextreme-vue/tile-view';
-import { homes } from './data';
+import { homes } from './data.ts';
 
 const dataSource = homes;
 const currencyFormatter = new Intl.NumberFormat('en-US', {

@@ -33,7 +33,7 @@ import {
   DxLabel,
   DxTooltip,
 } from 'devextreme-vue/vector-map';
-import { roomsData, buildingData } from './data';
+import { roomsData, buildingData } from './data.ts';
 
 const projection = {
   to: ([l, lt]) => [l / 100, lt / 100],

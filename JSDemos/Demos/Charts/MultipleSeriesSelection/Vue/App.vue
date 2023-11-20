@@ -44,7 +44,7 @@ import DxChart, {
   DxLegend,
   DxExport,
 } from 'devextreme-vue/chart';
-import { versionSources, statisticsData } from './data';
+import { versionSources, statisticsData } from './data.ts';
 
 function onSeriesClick({ target: series }) {
   if (series.isSelected()) {

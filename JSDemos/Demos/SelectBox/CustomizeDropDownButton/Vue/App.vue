@@ -92,7 +92,7 @@
 import { ref } from 'vue';
 import { DxSelectBox } from 'devextreme-vue/select-box';
 import { DxLoadIndicator } from 'devextreme-vue/load-indicator';
-import { products, simpleProducts } from './data';
+import { products, simpleProducts } from './data.ts';
 
 const isLoaded = ref(true);
 const selectedItem = ref(products[0]);

@@ -47,7 +47,7 @@ import {
   DxLegend,
   DxPoint,
 } from 'devextreme-vue/chart';
-import { iceHockeyStatistics } from './data';
+import { iceHockeyStatistics } from './data.ts';
 
 const exportFormats = ['PNG', 'PDF', 'JPEG', 'GIF', 'SVG'];
 

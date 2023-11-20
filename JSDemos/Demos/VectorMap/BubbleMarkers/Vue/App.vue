@@ -44,7 +44,7 @@ import {
   DxSource,
   DxTooltip,
 } from 'devextreme-vue/vector-map';
-import { markers } from './data';
+import { markers } from './data.ts';
 
 const mapsWorld = mapsData.world;
 const bounds = [-180, 85, 180, -60];

@@ -14,7 +14,7 @@
 </template>
 <script setup lang="ts">
 import { DxChart, DxSeries } from 'devextreme-vue/chart';
-import { dataSource } from './data';
+import { dataSource } from './data.ts';
 </script>
 <style>
 #chart {

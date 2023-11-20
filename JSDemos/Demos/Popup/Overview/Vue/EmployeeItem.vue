@@ -15,7 +15,7 @@
 </template>
 <script setup lang="ts">
 import { DxButton } from 'devextreme-vue/button';
-import { employees } from './data';
+import { employees } from './data.ts';
 
 type Employee = typeof employees[0];
 

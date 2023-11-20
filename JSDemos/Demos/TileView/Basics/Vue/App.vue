@@ -12,7 +12,7 @@
 </template>
 <script setup lang="ts">
 import DxTileView from 'devextreme-vue/tile-view';
-import { homes } from './data';
+import { homes } from './data.ts';
 </script>
 <style>
 .dx-tile-image {

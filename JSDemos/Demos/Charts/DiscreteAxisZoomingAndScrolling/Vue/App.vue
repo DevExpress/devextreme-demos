@@ -78,7 +78,7 @@ import {
   DxCommonSeriesSettings as DxCommonSeriesSettingsOptions,
   DxSeries as DxRsChartSeries,
 } from 'devextreme-vue/range-selector';
-import { dataSource } from './data';
+import { dataSource } from './data.ts';
 
 const range = ref([]);
 const series = [{

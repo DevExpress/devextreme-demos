@@ -70,7 +70,7 @@ import DxCheckBox from 'devextreme-vue/check-box';
 import {
   tasks,
   dependencies,
-} from './data';
+} from './data.ts';
 
 const autoUpdateParentTasks = ref(true);
 const validateDependencies = ref(true);

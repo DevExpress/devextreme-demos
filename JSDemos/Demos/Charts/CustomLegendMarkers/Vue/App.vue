@@ -32,7 +32,7 @@
 import {
   DxChart, DxSeries, DxCommonSeriesSettings, DxPoint, DxLegend, DxChartTypes,
 } from 'devextreme-vue/chart';
-import { dataSource } from './data';
+import { dataSource } from './data.ts';
 import MarkerTemplate from './MarkerTemplate.vue';
 
 function onLegendClick({ target }: DxChartTypes.LegendClickEvent) {

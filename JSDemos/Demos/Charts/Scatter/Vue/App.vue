@@ -39,7 +39,7 @@ import {
   DxCommonPaneSettings,
   DxBorder,
 } from 'devextreme-vue/chart';
-import { generateDataSource } from './data';
+import { generateDataSource } from './data.ts';
 
 const dataSource = generateDataSource();
 </script>

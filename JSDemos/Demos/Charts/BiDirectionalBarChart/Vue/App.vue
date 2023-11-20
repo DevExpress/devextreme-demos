@@ -43,7 +43,7 @@ import DxChart, {
   DxSeries,
   DxTooltip,
 } from 'devextreme-vue/chart';
-import { dataSource } from './data';
+import { dataSource } from './data.ts';
 
 const customizeTooltip = ({ valueText }) => ({ text: Math.abs(valueText) });
 const customizeLabel = ({ value }) => `${Math.abs(value)}%`;

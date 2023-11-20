@@ -246,7 +246,7 @@ import {
   DxCustomRule,
 } from 'devextreme-vue/validator';
 import notify from 'devextreme/ui/notify';
-import service from './data';
+import service from './data.ts';
 
 const currentDate = new Date();
 const countries = ref(service.getCountries());

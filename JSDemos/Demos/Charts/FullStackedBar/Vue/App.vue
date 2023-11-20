@@ -53,7 +53,7 @@ import {
   DxExport,
   DxTooltip,
 } from 'devextreme-vue/chart';
-import service from './data';
+import service from './data.ts';
 
 const dataSource = service.dataSource();
 
