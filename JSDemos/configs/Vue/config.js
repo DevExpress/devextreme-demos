@@ -60,15 +60,8 @@ window.config = {
     'turndown': 'npm:turndown/lib/turndown.browser.umd.js',
     /**/
 
-    /** globalize--vue&react */
-    'globalize': 'npm:globalize/dist/globalize',
-    'json': 'npm:systemjs-plugin-json/json.js',
-    'cldr': 'npm:cldrjs/dist/cldr',
-    /**/
-
     /** globalize */
     'globalize': 'npm:globalize/dist/globalize',
-    'json': 'npm:systemjs-plugin-json/json.js',
     'cldr': 'npm:cldrjs/dist/cldr',
     /**/
 
@@ -77,18 +70,13 @@ window.config = {
     'file-saver-es': 'npm:file-saver-es/dist/FileSaver.min.js',
     /**/
 
-    /** jspdf */
-    'fflate': 'npm:fflate/esm/browser.js',
-    'jspdf': 'npm:jspdf/dist/jspdf.umd.min.js',
-    /**/
-
     /** jspdf&jspdf-autotable */
     'fflate': 'npm:fflate/esm/browser.js',
     'jspdf': 'npm:jspdf/dist/jspdf.umd.min.js',
     'jspdf-autotable': 'npm:jspdf-autotable/dist/jspdf.plugin.autotable.min.js',
     /**/
 
-    /** devextreme-intl */
+    /** devextreme-intl & globalize */
     'json': 'npm:systemjs-plugin-json/json.js',
     /**/
 
@@ -141,12 +129,6 @@ window.config = {
     'prettier/parser-html': 'npm:prettier/parser-html.js',
   },
   packages: {
-    '.': {
-      // defaultExtension: 'ts',
-      map: {
-        './datadata': './data.ts',
-      },
-    },
     'devextreme-vue': {
       main: 'index.js',
     },
@@ -166,14 +148,6 @@ window.config = {
     'cldr': {
       main: '../cldr.js',
       defaultExtension: 'js',
-    }/**//** globalize */,
-    'globalize': {
-      main: '../globalize.js',
-      defaultExtension: 'js',
-    },
-    'cldr': {
-      main: '../cldr.js',
-      defaultExtension: 'js',
     }/**//** signalr */,
     '@aspnet/signalr': {
       main: 'index.js',
@@ -182,6 +156,12 @@ window.config = {
     'es6-object-assign': {
       main: './index.js',
       defaultExtension: 'js',
+    },
+    '.': {
+      // defaultExtension: 'ts',
+      /*       map: {
+        './datadata': './data.ts',
+      }, */
     },
   },
   packageConfigPaths: [
