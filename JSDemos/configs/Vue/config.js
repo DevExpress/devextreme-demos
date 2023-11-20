@@ -177,9 +177,8 @@ window.config = {
       main: './index.js',
       defaultExtension: 'js',
     },
-    '.': {
-      defaultExtension: 'js',
-    },
+    /*     '.': {
+    }, */
   },
   packageConfigPaths: [
     'npm:@devextreme/*/package.json',
