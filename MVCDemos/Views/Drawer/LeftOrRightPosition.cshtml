@@ -13,6 +13,7 @@
                     .Widget(w => w
                         .Button()
                         .Icon("menu")
+                        .StylingMode(ButtonStylingMode.Text)
                         .OnClick("openButton_click")
                     )
                     .Location(ToolbarItemLocation.Before);
@@ -41,7 +42,7 @@
                         .HoverStateEnabled(false)
                         .FocusStateEnabled(false)
                         .ActiveStateEnabled(false)
-                        .ElementAttr("class", new JS("listClass"))
+                        .ElementAttr("class", "panel-list dx-theme-typography-background-color")
                     )
                 </div>
             </text>)
@@ -82,8 +83,6 @@
 </div>
 
 <script>
-    const listClass = `panel-list dx-theme-${DevExpress.ui.themes.current().split('.')[0]}-typography`;
-
     function showMode_valueChanged(data) {
         var drawer = $("#drawer").dxDrawer("instance");
         drawer.option("openedStateMode", data.value);
