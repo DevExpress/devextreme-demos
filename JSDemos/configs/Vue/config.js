@@ -157,12 +157,6 @@ window.config = {
       main: './index.js',
       defaultExtension: 'js',
     },
-    '.': {
-      // defaultExtension: 'ts',
-      /*       map: {
-        './datadata': './data.ts',
-      }, */
-    },
   },
   packageConfigPaths: [
     'npm:@devextreme/*/package.json',
