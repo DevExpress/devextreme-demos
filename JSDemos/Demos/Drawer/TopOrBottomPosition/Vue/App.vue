@@ -103,7 +103,6 @@ const toolbarContent = [{
     }
 
     .dx-drawer-shrink.dx-drawer-opened #content {
-      column-width: 300px;
       margin-right: -10px;
     }
 
