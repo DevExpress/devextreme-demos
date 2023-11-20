@@ -51,6 +51,7 @@ export class AppComponent {
     location: 'before',
     options: {
       icon: 'menu',
+      stylingMode: 'text',
       onClick: () => this.drawer.instance.toggle(),
     },
   }];

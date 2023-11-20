@@ -24,6 +24,7 @@ $(() => {
       location: 'before',
       options: {
         icon: 'menu',
+        stylingMode: 'text',
         onClick() {
           drawer.toggle();
         },

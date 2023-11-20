@@ -19,9 +19,9 @@ const App = () => {
   const toolbarItems = React.useMemo(() => [{
     widget: 'dxButton',
     location: 'before',
-    stylingMode: 'text',
     options: {
       icon: 'menu',
+      stylingMode: 'text',
       onClick: () => setOpened(!opened),
     },
   }], [opened, setOpened]);

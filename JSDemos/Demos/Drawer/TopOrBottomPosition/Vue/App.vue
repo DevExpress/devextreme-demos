@@ -71,6 +71,7 @@ const toolbarContent = [{
   location: 'before',
   options: {
     icon: 'menu',
+    stylingMode: 'text',
     onClick: () => { openState.value = !openState.value; },
   },
 }];
