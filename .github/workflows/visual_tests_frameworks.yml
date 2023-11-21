@@ -191,7 +191,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        CONSTEL: [vue(1/6)]
+        CONSTEL: [vue(1/10), vue(2/10), vue(3/10), vue(4/10), vue(5/10), vue(6/10), vue(7/10), vue(8/10), vue(9/10), vue(10/10)]
 
     runs-on: ubuntu-latest
     name: ${{ matrix.CONSTEL }}
