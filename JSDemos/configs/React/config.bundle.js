@@ -27,6 +27,11 @@ const bundleConfig = {
   map: {
     'devextreme.react.systemjs.js': '../../../../../bundles/devextreme.react.systemjs.js',
   },
+  meta: {
+    '*.json': {
+      'loader': 'json',
+    },
+  },
   packages: {
     'react': {
       defaultExtension: 'js',
