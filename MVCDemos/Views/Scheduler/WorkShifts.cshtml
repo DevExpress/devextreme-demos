@@ -1,0 +1,46 @@
+﻿@model DevExtreme.MVC.Demos.ViewModels.WorkShiftsViewModel
+
+<div class="options">
+    <div class="option">
+        <div class="label">Work Hours</div>
+        <div class="value">
+            @(Html.DevExtreme().RadioGroup()
+                .DataSource(Model.WorkShifts)
+                .DisplayExpr("Text")
+                .ValueExpr("Offset")
+                .Value(-120)
+                .Layout(Orientation.Horizontal)
+                .OnValueChanged("OnShiftChanged")
+            )
+        </div>
+    </div>
+</div>
+<br />
+@(Html.DevExtreme().Scheduler()
+    .ID("scheduler")
+    .DataSource(Model.Appointments)
+    .TimeZone("America/Los_Angeles")
+    .Views(new[] {
+        SchedulerViewType.Day,
+        SchedulerViewType.Week,
+    })
+    .CurrentView(SchedulerViewType.Week)
+    .CurrentDate(new DateTime(2021, 3, 30))
+    .StartDayHour(0)
+    .EndDayHour(8)
+    .Offset(-120)
+    .CellDuration(60)
+    .ShowAllDayPanel(false)
+    .TextExpr("Text")
+    .StartDateExpr("StartDate")
+    .EndDateExpr("EndDate")
+    .RecurrenceRuleExpr("RecurrenceRule")
+)
+
+<script>
+    function OnShiftChanged(e) {
+        var scheduler = $("#scheduler").dxScheduler("instance");
+        scheduler.option('offset', e.value);
+    }
+</script>
+
