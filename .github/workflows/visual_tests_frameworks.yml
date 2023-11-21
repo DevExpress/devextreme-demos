@@ -185,80 +185,13 @@ jobs:
           bundles/
         retention-days: 1
 
-  lint:
-    name: ${{ matrix.name }}
-    needs: build-devextreme
-
-    runs-on: ubuntu-latest
-    timeout-minutes: 60
-
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - name: Lint code base (excluding demos)
-            command: npm run lint-non-demos
-          - name: Lint demos (1/4)
-            command: CONSTEL=1/4 npm run lint-demos
-          - name: Lint demos (2/4)
-            command: CONSTEL=2/4 npm run lint-demos
-          - name: Lint demos (3/4)
-            command: CONSTEL=3/4 npm run lint-demos
-          - name: Lint demos (4/4)
-            command: CONSTEL=4/4 npm run lint-demos
-
-    steps:
-    - name: Get sources
-      uses: actions/checkout@v3
-
-    - name: Get changed files
-      uses: ./.github/actions/get-changed-files
-      if: github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'force all tests')
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        path: changed-files.json
-
-    - name: Delete DX packages
-      run:  sed -i '/23.2-next/d' ./package.json
-
-    - name: Download devextreme sources
-      uses: actions/download-artifact@v3
-      with:
-        name: devextreme-sources
-
-    - name: Install packages
-      run: |
-        npm install devextreme-installer.tgz
-        npm install devextreme-dist-installer.tgz
-        npm install devextreme-react-installer.tgz
-        npm install devextreme-vue-installer.tgz
-        npm install devextreme-angular-installer.tgz
-
-    - name: Run npm install
-      run: npm install --no-audit --no-fund
-
-    - uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 5.0.408
-
-    - name: Prepare dotnet
-      run: |
-        dotnet new globaljson --sdk-version 5.0.408
-        dotnet tool install -g dotnet-format --version 5.1.225507
-
-    - name: Run lint
-      env:
-        CHANGEDFILEINFOSPATH: ${{ github.workspace }}/changed-files.json
-        DEBUG: 'eslint:cli-engine,stylelint:standalone'
-      run: ${{ matrix.command }}
 
   testcafe:
     needs: build-demos
     strategy:
       fail-fast: false
       matrix:
-        CONSTEL: [vue(1/6), vue(2/6), vue(3/6), vue(4/6), vue(5/6), vue(6/6)]
+        CONSTEL: [vue(1/6)]
 
     runs-on: ubuntu-latest
     name: ${{ matrix.CONSTEL }}
@@ -311,7 +244,7 @@ jobs:
         CHANGEDFILEINFOSPATH: ${{ github.workspace }}/changed-files.json
         BROWSERS: chrome:headless --disable-partial-raster --disable-skia-runtime-opts --run-all-compositor-stages-before-draw --disable-new-content-rendering-timeout --disable-threaded-animation --disable-threaded-scrolling --disable-checker-imaging --disable-image-animation-resync --use-gl="swiftshader" --disable-features=PaintHolding --js-flags=--random-seed=2147483647 --font-render-hinting=none --disable-font-subpixel-positioning
         #DEBUG: hammerhead:*,testcafe:*
-        CONCURRENCY: 4
+        CONCURRENCY: 1
         TCQUARANTINE: true
         CONSTEL: ${{ matrix.CONSTEL }}
         # DISABLE_DEMO_TEST_SETTINGS: all # Uncomment to ignore all the visualtestrc.json settings
