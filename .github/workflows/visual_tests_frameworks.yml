@@ -230,6 +230,12 @@ jobs:
         python -m http.server 8081 &
         python -m http.server 8082 &
         python -m http.server 8083 &
+        python -m http.server 8084 &
+        python -m http.server 8085 &
+        python -m http.server 8086 &
+        python -m http.server 8087 &
+        python -m http.server 8088 &
+        python -m http.server 8089 &
 
     - name: Get changed files
       uses: ./.github/actions/get-changed-files
@@ -244,7 +250,7 @@ jobs:
         CHANGEDFILEINFOSPATH: ${{ github.workspace }}/changed-files.json
         BROWSERS: chrome:headless --disable-partial-raster --disable-skia-runtime-opts --run-all-compositor-stages-before-draw --disable-new-content-rendering-timeout --disable-threaded-animation --disable-threaded-scrolling --disable-checker-imaging --disable-image-animation-resync --use-gl="swiftshader" --disable-features=PaintHolding --js-flags=--random-seed=2147483647 --font-render-hinting=none --disable-font-subpixel-positioning
         #DEBUG: hammerhead:*,testcafe:*
-        CONCURRENCY: 1
+        CONCURRENCY: 10
         TCQUARANTINE: true
         CONSTEL: ${{ matrix.CONSTEL }}
         # DISABLE_DEMO_TEST_SETTINGS: all # Uncomment to ignore all the visualtestrc.json settings
