@@ -81,7 +81,7 @@ import {
   iconPositions,
   navButtonsCheckBoxLabel,
   dataSource,
-} from './data.js';
+} from './data.ts';
 
 const tabsPosition = ref(tabsPositions[0]);
 const stylingMode = ref(stylingModes[0]);

@@ -53,10 +53,10 @@ import {
   employees, states, cities, Employee, City,
 } from './data.ts';
 
-function setStateValue(this: Column, newData: Employee, value: number, currentRowData: Employee) {
+function setStateValue(column: Column, newData: Employee, value: number, currentRowData: Employee) {
   newData.CityID = null;
 
-  this.defaultSetCellValue!(newData, value, currentRowData);
+  column.defaultSetCellValue!(newData, value, currentRowData);
 }
 
 const getFilteredCities = (options: { data: City }) => ({
