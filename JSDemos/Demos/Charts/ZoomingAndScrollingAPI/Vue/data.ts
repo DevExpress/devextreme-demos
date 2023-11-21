@@ -273,4 +273,3 @@ export const zoomingData = [
     arg: 880, y1: -20, y2: 20, y3: 30,
   },
 ];
-

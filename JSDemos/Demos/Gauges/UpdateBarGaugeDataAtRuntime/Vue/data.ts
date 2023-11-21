@@ -35,4 +35,3 @@ export const colors = [{
   name: 'Umber',
   code: '#635147',
 }];
-

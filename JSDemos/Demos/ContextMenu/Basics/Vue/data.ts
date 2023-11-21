@@ -9,4 +9,3 @@ export const contextMenuItems = [
   { text: 'Comment' },
   { text: 'Favorite' },
 ];
-
