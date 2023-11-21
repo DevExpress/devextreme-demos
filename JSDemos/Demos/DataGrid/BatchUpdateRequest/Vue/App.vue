@@ -32,7 +32,6 @@
 import {
   DxDataGrid, DxColumn, DxEditing, DxDataGridTypes,
 } from 'devextreme-vue/data-grid';
-import DataGrid from 'devextreme/ui/data_grid';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 import 'whatwg-fetch';
 
@@ -55,7 +54,7 @@ const onSaving = (e: DxDataGridTypes.SavingEvent) => {
 };
 
 async function processBatchRequest(
-  url: string, changes: DxDataGridTypes.DataChange[], component: DataGrid,
+  url: string, changes: DxDataGridTypes.DataChange[], component: DxDataGridTypes.DataGrid,
 ) {
   await sendBatchRequest(url, changes);
   await component.refresh(true);
