@@ -79,7 +79,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import {DxDataGrid, DxColumn, DxPaging, DxDataGridTypes} from 'devextreme-vue/data-grid';
+import {
+  DxDataGrid, DxColumn, DxPaging, DxDataGridTypes,
+} from 'devextreme-vue/data-grid';
 import DxNumberBox from 'devextreme-vue/number-box';
 import DxCheckBox from 'devextreme-vue/check-box';
 import { Options as DataSourceOptions } from 'devextreme/data/data_source';
