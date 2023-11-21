@@ -48,12 +48,13 @@
 import {
   DxDataGrid, DxColumn, DxEditing, DxLookup, DxDataGridTypes,
 } from 'devextreme-vue/data-grid';
-import { Column } from 'devextreme/ui/data_grid';
 import {
   employees, states, cities, Employee, City,
 } from './data.ts';
 
-function setStateValue(column: Column, newData: Employee, value: number, currentRowData: Employee) {
+function setStateValue(
+  column: DxDataGridTypes.Column, newData: Employee, value: number, currentRowData: Employee,
+) {
   newData.CityID = null;
 
   column.defaultSetCellValue!(newData, value, currentRowData);
