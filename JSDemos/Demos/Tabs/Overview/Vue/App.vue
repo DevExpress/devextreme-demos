@@ -104,7 +104,7 @@ const stylingMode = ref(stylingModes[1]);
 const widgetWrapperClasses = computed(() => [
   'widget-wrapper',
   `widget-wrapper-${orientation.value}`,
-  shouldRestrictWidth.value && 'strict-width',
+  orientation.value === 'horizontal' && (shouldRestrictWidth.value && 'strict-width'),
 ]);
 
 const tabsWidth = computed(() => (fullWidth.value ? '100%' : 'auto'));

@@ -82,7 +82,9 @@ export class AppComponent {
   }
 
   toggleStrictWidthClass(e) {
-    this.widgetWrapperClasses['strict-width'] = e.value || this.scrollByContent || this.showNavButtons;
+    const isHorizontal = this.orientation === 'horizontal';
+
+    this.widgetWrapperClasses['strict-width'] = isHorizontal && (e.value || this.scrollByContent || this.showNavButtons);
   }
 
   onFullWidthChanged(e) {

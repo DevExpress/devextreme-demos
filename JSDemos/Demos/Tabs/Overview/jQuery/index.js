@@ -32,7 +32,7 @@ $(() => {
     iconPosition: iconPositions[0],
   }).dxTabs('instance');
 
-  $('#orientation').dxSelectBox({
+  const orientationSelectBox = $('#orientation').dxSelectBox({
     items: orientations,
     value: orientations[0],
     inputAttr: { 'aria-label': 'Orientation' },
@@ -44,7 +44,7 @@ $(() => {
 
       setTabsOption('orientation', data.value);
     },
-  });
+  }).dxSelectBox('instance');
 
   $('#styling-mode').dxSelectBox({
     items: stylingModes,
@@ -69,7 +69,8 @@ $(() => {
     value: false,
     onValueChanged(data) {
       const $widgetWrapper = $('.widget-wrapper');
-      const shouldRestrictWidth = data.value || scrollContentCheckBox.option('value');
+      const isHorizontal = orientationSelectBox.option('value') === 'horizontal';
+      const shouldRestrictWidth = isHorizontal && (data.value || scrollContentCheckBox.option('value'));
 
       $widgetWrapper.toggleClass('strict-width', shouldRestrictWidth);
 
@@ -82,7 +83,8 @@ $(() => {
     value: false,
     onValueChanged(data) {
       const $widgetWrapper = $('.widget-wrapper');
-      const shouldRestrictWidth = data.value || showNavButtonsCheckBox.option('value');
+      const isHorizontal = orientationSelectBox.option('value') === 'horizontal';
+      const shouldRestrictWidth = isHorizontal && (data.value || showNavButtonsCheckBox.option('value'));
 
       $widgetWrapper.toggleClass('strict-width', shouldRestrictWidth);
 
