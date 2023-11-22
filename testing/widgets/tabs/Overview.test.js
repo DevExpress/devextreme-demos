@@ -59,6 +59,7 @@ runManualTest('Tabs', 'Overview', ['jQuery', 'React', 'Vue', 'Angular'], (test) 
     await takeScreenshot('tabs_shownavbuttons_true.png');
 
     await t
+      .click($(`.${OPTION_CLASS} .${CHECKBOX_CLASS}`).nth(2))
       .click($(`.${OPTION_CLASS} .${SELECTBOX_CLASS}`).nth(0))
       .click($(`.${SELECTBOX_POPUP_WRAPPER_CLASS} .${LIST_ITEM_CLASS}`).nth(1))
       .wait(200);
