@@ -4,7 +4,6 @@ const yargs = require('yargs');
 
 const { copyCommonAspFiles } = require('./copy-common-asp-files');
 const { copyAspFiles, buildAndCopyAspFiles } = require('./copy-asp-files');
-const { copyMvcSharedResources } = require('../utils/copy-shared-resources/copy');
 
 const argv = yargs
   .boolean('release')
@@ -13,5 +12,4 @@ const argv = yargs
 exports.aspnet = series(
   argv.release ? copyAspFiles : buildAndCopyAspFiles,
   copyCommonAspFiles,
-  copyMvcSharedResources,
 );

@@ -4,14 +4,12 @@ const { task, parallel, series } = require('gulp');
 
 const { init } = require('../utils/shared/config-helper');
 const createConfig = require('../utils/internal/create-config');
-const { copyJsSharedResources } = require('../utils/copy-shared-resources/copy');
 const { copyBundlesFolder, build } = require('../utils/bundle');
 
 const demosDir = join(__dirname, '..', 'JSDemos/Demos');
 
 function prepareJs(callback) {
   init();
-  copyJsSharedResources(callback);
   createConfig.useBundles = false;
   createConfig.run(demosDir);
   callback();
