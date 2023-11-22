@@ -23,16 +23,6 @@ window.config = {
     'devextreme/viz/palette.js': {
       'esModule': true,
     },
-    /** globalize */
-    '*.json': {
-      'loader': 'json',
-    },
-    /**/
-    /** devextreme-intl */
-    '*.json': {
-      'loader': 'json',
-    },
-    /**/
     /** devextreme-aspnet-data-nojquery */
     'devextreme-aspnet-data-nojquery': {
       'esModule': true,
@@ -163,6 +153,14 @@ window.config = {
     },
     'devextreme/events/utils': {
       main: 'index',
+    },
+    'devextreme/localization/messages': {
+      format: 'json',
+      defaultExtension: '',
+    },
+    'devextreme-cldr-data': {
+      format: 'json',
+      defaultExtension: '',
     },
     'devextreme/events': {
       main: 'index',

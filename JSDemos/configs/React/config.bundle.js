@@ -36,6 +36,14 @@ const bundleConfig = {
       defaultExtension: 'js',
       main: 'umd/react-dom.development.js',
     },
+    'devextreme/localization/messages': {
+      format: 'json',
+      defaultExtension: '',
+    },
+    'devextreme-cldr-data': {
+      format: 'json',
+      defaultExtension: '',
+    },
   },
 };
 
