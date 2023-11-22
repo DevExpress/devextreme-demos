@@ -140,7 +140,7 @@ const searchEnabled = ref(true);
 const allowSelectAll = ref(true);
 const selectByClick = ref(true);
 const recursive = ref(true);
-const editorOptions: DxTextBoxTypes.TextBoxProperties = { placeholder: 'Search column' };
+const editorOptions: DxTextBoxTypes.Properties = { placeholder: 'Search column' };
 
 </script>
 <style scoped>
