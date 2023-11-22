@@ -22,7 +22,6 @@ changed-files.json
 gulpfile.js/.eslintrc.js
 
 JSDemos/Demos/**/config.js
-JSDemos/Demos/**/azure.file.system.js
 JSDemos/Demos/FileManager/AzureClientBinding/Angular/app/app.service.ts
 JSDemos/Demos/FileUploader/AzureDirectUploading/Angular/app/app.service.ts
 
@@ -39,7 +38,6 @@ MVCDemos/Scripts/*
 !MVCDemos/Scripts/_references\.js
 MVCDemos/App_Data/menuMeta.json
 MVCDemos/packages
-MVCDemos/Scripts/**/azure.file.system.js
 
 NetCoreDemos/wwwroot/Descr/Temp
 NetCoreDemos/wwwroot/bundle.min.css
@@ -54,5 +52,4 @@ NetCoreDemos/wwwroot/DemoShell
 NetCoreDemos/DemoShell
 NetCoreDemos/wwwroot/bundle.min.css
 NetCoreDemos/wwwroot/bundle.min.js
-NetCoreDemos/wwwroot/**/azure.file.system.js
 .DS_Store
