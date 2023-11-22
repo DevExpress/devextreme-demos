@@ -34,6 +34,11 @@ function restorePackages(callback) {
   callback();
 }
 
+function installAspNetCorePackage(callback) {
+  systemSync('dotnet add NetCoreDemos package DevExtreme.AspNet.Core --prerelease --source NetCoreDemos/NuGet/');
+  callback();
+}
+
 task('prepareMisc', parallel(
   () => src('MVCDemos/AppData/*.ldf', { read: false }).pipe(clean()),
   () => src('NetCoreDemos/Northwind.mdf')
@@ -87,5 +92,5 @@ exports.copyAspFiles = series(
     () => src(`${aspnetPackagesPath}/*.nupkg`)
       .pipe(dest('NetCoreDemos/Nuget')),
   ),
-  restorePackages,
+  installAspNetCorePackage,
 );
