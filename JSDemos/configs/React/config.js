@@ -154,6 +154,14 @@ window.config = {
     'devextreme/events/utils': {
       main: 'index',
     },
+    'devextreme/events': {
+      main: 'index',
+    },
+    /** globalize */
+    'globalize': {
+      main: '../globalize.js',
+      defaultExtension: 'js',
+    },
     'devextreme/localization/messages': {
       format: 'json',
       defaultExtension: '',
@@ -162,29 +170,22 @@ window.config = {
       format: 'json',
       defaultExtension: '',
     },
-    'devextreme/events': {
-      main: 'index',
-    }/** globalize--vue&react */,
-    'globalize': {
-      main: '../globalize.js',
-      defaultExtension: 'js',
-    },
     'cldr': {
       main: '../cldr.js',
       defaultExtension: 'js',
-    }/**//** globalize */,
-    'globalize': {
-      main: '../globalize.js',
-      defaultExtension: 'js',
     },
-    'cldr': {
-      main: '../cldr.js',
-      defaultExtension: 'js',
-    }/**//** signalr */,
+    /**/
+    /** signalr */
     '@aspnet/signalr': {
       main: 'index.js',
       defaultExtension: 'js',
     }/**/,
+    /** devextreme-intl */
+    'devextreme/localization/messages': {
+      format: 'json',
+      defaultExtension: '',
+    },
+    /**/
     'es6-object-assign': {
       main: './index.js',
       defaultExtension: 'js',
