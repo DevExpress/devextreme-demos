@@ -15,14 +15,6 @@ namespace DevExtreme.MVC.Demos.Controllers {
             return View();
         }
 
-        public ActionResult AzureServerBinding() {
-            return View(AzureStorageAccount.FileManager.Value);
-        }
-
-        public ActionResult AzureClientBinding() {
-            return View(AzureStorageAccount.FileManager.Value);
-        }
-
         public ActionResult BindingToHierarchicalStructure() {
             return View();
         }

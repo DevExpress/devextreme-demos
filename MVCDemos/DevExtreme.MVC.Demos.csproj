@@ -247,13 +247,9 @@
     <Compile Include="Controllers\ApiControllers\DataGridRowReorderingController.cs" />
     <Compile Include="Controllers\ApiControllers\DnDBetweenGridsController.cs" />
     <Compile Include="Controllers\ApiControllers\DataGridCustomEditorsController.cs" />
-    <Compile Include="Controllers\ApiControllers\FileManagerAzureAccessApiController.cs" />
-    <Compile Include="Controllers\ApiControllers\FileManagerAzureProviderApiController.cs" />
-    <Compile Include="Controllers\ApiControllers\FileManagerAzureStatusApiController.cs" />
     <Compile Include="Controllers\ApiControllers\FileManagerDBProviderApiController.cs" />
     <Compile Include="Controllers\ApiControllers\FileManagerScriptsApiController.cs" />
     <Compile Include="Controllers\ApiControllers\FileManagerImagesApiController.cs" />
-    <Compile Include="Controllers\ApiControllers\FileUploaderAzureAccessApiController.cs" />
     <Compile Include="Controllers\ApiControllers\ListItemDraggingEditingController.cs" />
     <Compile Include="Controllers\ApiControllers\SchedulerSignalRController.cs" />
     <Compile Include="Controllers\ApiControllers\SelectBoxEditingController.cs" />
@@ -370,8 +366,6 @@
     <Compile Include="Models\ElectronicsCategory.cs" />
     <Compile Include="Models\ElectronicsGroupedItem.cs" />
     <Compile Include="Models\ElectronicsSimpleItem.cs" />
-    <Compile Include="Models\FileManagement\AzureBlobFileProvider.cs" />
-    <Compile Include="Models\FileManagement\AzureStorageAccount.cs" />
     <Compile Include="Models\FileManagement\DBFileProvider.cs" />
     <Compile Include="Models\FileManagement\FileItem.cs" />
     <Compile Include="Models\FileManagement\FileManagementDbContext.cs" />
@@ -1780,7 +1774,6 @@
     <Content Include="Scripts\localization\dx.messages.en.js" />
     <Content Include="Scripts\localization\dx.messages.ja.js" />
     <Content Include="Scripts\localization\dx.messages.ru.js" />
-    <Content Include="Scripts\utils\azure.file.system.js" />
     <Content Include="Scripts\vectormap-data\africa.js" />
     <Content Include="Scripts\vectormap-data\canada.js" />
     <Content Include="Scripts\vectormap-data\eurasia.js" />
@@ -2196,9 +2189,6 @@
     <Content Include="Views\DataGrid\DnDBetweenGridsPartial.cshtml" />
     <Content Include="Views\FileManager\BindingToEF.cshtml" />
     <Content Include="Views\Sortable\Customization.cshtml" />
-    <Content Include="Views\FileManager\AzureServerBinding.cshtml" />
-    <Content Include="Views\FileManager\AzureClientBinding.cshtml" />
-    <Content Include="Views\FileUploader\AzureDirectUploading.cshtml" />
     <Content Include="Views\TreeList\LocalReordering.cshtml" />
     <Content Include="Views\Form\UpdateItemsDynamically.cshtml" />
     <Content Include="Views\Diagram\CustomShapesWithTemplates.cshtml" />
