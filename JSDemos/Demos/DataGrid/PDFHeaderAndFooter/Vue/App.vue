@@ -56,7 +56,7 @@
 </template>
 
 <script setup lang="ts">
-import DxDataGrid, { DxColumn, DxDataGridTypes, DxExport } from 'devextreme-vue/data-grid';
+import DxDataGrid, { DxColumn, DxExport, DxDataGridTypes } from 'devextreme-vue/data-grid';
 import { jsPDF } from 'jspdf';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
 import { countries } from './data.ts';
