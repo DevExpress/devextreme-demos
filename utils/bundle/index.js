@@ -178,7 +178,7 @@ const build = async (framework) => {
   } = prepareConfigs(framework);
 
   builder.config(builderConfig);
-
+ console.log('-----packages----->', packages);
   try {
     await builder.bundle(packages, bundlePath, bundleOpts);
   } catch (err) {
