@@ -21,6 +21,7 @@ changed-files.json
 
 gulpfile.js/.eslintrc.js
 
+JSDemos/shared/empty-file.js
 JSDemos/Demos/**/config.js
 
 MVCDemos/App_Data/Northwind.mdf
