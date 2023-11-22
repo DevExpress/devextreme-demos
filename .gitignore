@@ -22,8 +22,6 @@ changed-files.json
 gulpfile.js/.eslintrc.js
 
 JSDemos/Demos/**/config.js
-JSDemos/Demos/FileManager/AzureClientBinding/Angular/app/app.service.ts
-JSDemos/Demos/FileUploader/AzureDirectUploading/Angular/app/app.service.ts
 
 MVCDemos/App_Data/Northwind.mdf
 MVCDemos/Content/icons
