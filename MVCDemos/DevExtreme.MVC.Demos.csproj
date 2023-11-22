@@ -359,6 +359,7 @@
     <Compile Include="Models\ActiveCompany.cs" />
     <Compile Include="Models\AdaptabilityAppointment.cs" />
     <Compile Include="Models\AdaptabilityAppointmentsResource.cs" />
+    <Compile Include="Models\WorkShift.cs" />
     <Compile Include="Models\CustomEditorsEmployee.cs" />
     <Compile Include="Models\CustomEditorsTask.cs" />
     <Compile Include="Models\DataGrid\InMemoryRowReorderingTasksDataContext.cs" />
@@ -432,6 +433,8 @@
     <Compile Include="Models\SampleData\ToolbarData.cs" />
     <Compile Include="Models\SampleData\TreeViewHierarchicalDataForDragAndDrop.cs" />
     <Compile Include="Models\SampleData\TreeViewPlainDataForDragAndDrop.cs" />
+    <Compile Include="Models\SampleData\WorkShiftsAppointmentData.cs" />
+    <Compile Include="Models\SampleData\WorkShiftsOffsetData.cs" />
     <Compile Include="Models\SimpleData.cs" />
     <Compile Include="Models\StateData.cs" />
     <Compile Include="Models\TemperatureItem.cs" />
@@ -668,6 +671,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\DropDownButtonViewModel.cs" />
     <Compile Include="ViewModels\DynamicAppointmentsViewModel.cs" />
+    <Compile Include="ViewModels\WorkShiftsViewModel.cs" />
     <Compile Include="ViewModels\VerifyDateRange.cs" />
     <Compile Include="ViewModels\VerifyAgeAttribute.cs" />
     <Compile Include="ViewModels\EditorsViewModel.cs" />
@@ -985,6 +989,7 @@
     <Content Include="Content\DemosStyles\Scheduler\Resources.css" />
     <Content Include="Content\DemosStyles\Scheduler\SignalRService.css" />
     <Content Include="Content\DemosStyles\Scheduler\TimeZonesSupport.css" />
+    <Content Include="Content\DemosStyles\Scheduler\WorkShifts.css" />
     <Content Include="Content\DemosStyles\ScrollView\Overview.css" />
     <Content Include="Content\DemosStyles\SelectBox\CustomizeDropDownButton.css" />
     <Content Include="Content\DemosStyles\SelectBox\GroupedItems.css" />
@@ -2265,6 +2270,7 @@
     <Content Include="Views\Scheduler\AllDayPanelMode.cshtml" />
     <Content Include="Views\DataGrid\ColumnChooser.cshtml" />
     <Content Include="Views\DataGrid\ColumnHeaderFilter.cshtml" />
+    <Content Include="Views\Scheduler\WorkShifts.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
