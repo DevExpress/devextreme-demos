@@ -59,6 +59,20 @@ runManualTest('Tabs', 'Overview', ['jQuery', 'React', 'Vue', 'Angular'], (test) 
     await takeScreenshot('tabs_shownavbuttons_true.png');
 
     await t
+      .click($(`.${OPTION_CLASS} .${SELECTBOX_CLASS}`).nth(0))
+      .click($(`.${SELECTBOX_POPUP_WRAPPER_CLASS} .${LIST_ITEM_CLASS}`).nth(1))
+      .wait(200);
+
+    await takeScreenshot('tabs_orientation_vertical_without_strict_class.png');
+
+    await t
+      .click($(`.${OPTION_CLASS} .${SELECTBOX_CLASS}`).nth(0))
+      .click($(`.${SELECTBOX_POPUP_WRAPPER_CLASS} .${LIST_ITEM_CLASS}`).nth(0))
+      .wait(200);
+
+    await takeScreenshot('tabs_orientation_horizontal_with_strict_class.png');
+
+    await t
       .expect(compareResults.isValid())
       .ok(compareResults.errorMessages());
   });
