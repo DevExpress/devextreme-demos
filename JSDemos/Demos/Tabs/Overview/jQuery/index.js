@@ -42,6 +42,8 @@ $(() => {
       $widgetWrapper.removeClass();
       $widgetWrapper.addClass(`widget-wrapper widget-wrapper-${data.value}`);
 
+      toggleStrictWidthClass(showNavButtonsCheckBox.option('value') || scrollContentCheckBox.option('value'));
+
       setTabsOption('orientation', data.value);
     },
   }).dxSelectBox('instance');
@@ -68,11 +70,9 @@ $(() => {
     text: 'Show navigation buttons',
     value: false,
     onValueChanged(data) {
-      const $widgetWrapper = $('.widget-wrapper');
-      const isHorizontal = orientationSelectBox.option('value') === 'horizontal';
-      const shouldRestrictWidth = isHorizontal && (data.value || scrollContentCheckBox.option('value'));
+      const shouldRestrictWidth = data.value || scrollContentCheckBox.option('value');
 
-      $widgetWrapper.toggleClass('strict-width', shouldRestrictWidth);
+      toggleStrictWidthClass(shouldRestrictWidth);
 
       setTabsOption('showNavButtons', data.value);
     },
@@ -82,11 +82,9 @@ $(() => {
     text: 'Scroll content',
     value: false,
     onValueChanged(data) {
-      const $widgetWrapper = $('.widget-wrapper');
-      const isHorizontal = orientationSelectBox.option('value') === 'horizontal';
-      const shouldRestrictWidth = isHorizontal && (data.value || showNavButtonsCheckBox.option('value'));
+      const shouldRestrictWidth = data.value || showNavButtonsCheckBox.option('value');
 
-      $widgetWrapper.toggleClass('strict-width', shouldRestrictWidth);
+      toggleStrictWidthClass(shouldRestrictWidth);
 
       setTabsOption('scrollByContent', data.value);
     },
@@ -112,5 +110,12 @@ $(() => {
     tab1.option(option, value);
     tab2.option(option, value);
     tab3.option(option, value);
+  }
+
+  function toggleStrictWidthClass(shouldRestrictWidth) {
+    const $widgetWrapper = $('.widget-wrapper');
+    const isHorizontal = orientationSelectBox.option('value') === 'horizontal';
+
+    $widgetWrapper.toggleClass('strict-width', isHorizontal && shouldRestrictWidth);
   }
 });

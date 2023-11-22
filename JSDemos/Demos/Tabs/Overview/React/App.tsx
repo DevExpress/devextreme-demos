@@ -35,7 +35,7 @@ const App = () => {
   const [fullWidth, setFullWidth] = React.useState(false);
   const [width, setWidth] = React.useState('auto');
   const [rtlEnabled, setRtlEnabled] = React.useState(false);
-  const [widgetWrapperClasses, setWidgetWrapperClasses] = React.useState('widget-wrapper widget-wrapper-horizontal');
+  const [wrapperClasses, setWrapperClasses] = React.useState('widget-wrapper widget-wrapper-horizontal');
 
   const enforceWidthConstraint = React.useCallback(
     (shouldRestrictWidth) => {
@@ -46,8 +46,8 @@ const App = () => {
         return `${restClasses} ${strictWidthClass}`;
       };
 
-      setWidgetWrapperClasses(callback);
-    }, [setWidgetWrapperClasses],
+      setWrapperClasses(callback);
+    }, [setWrapperClasses],
   );
 
   const stylingModeChanged = React.useCallback((e) => {
@@ -59,9 +59,16 @@ const App = () => {
   }, [setIconPosition]);
 
   const orientationChanged = React.useCallback((e) => {
-    setWidgetWrapperClasses(`widget-wrapper widget-wrapper-${e.value}`);
+    setWrapperClasses(`widget-wrapper widget-wrapper-${e.value}`);
+    enforceWidthConstraint(e.value === 'horizontal' && (scrollContent || showNavigation));
     setOrientation(e.value);
-  }, [setOrientation, setWidgetWrapperClasses]);
+  }, [
+    scrollContent,
+    showNavigation,
+    setOrientation,
+    setWrapperClasses,
+    enforceWidthConstraint,
+  ]);
 
   const showNavigationChanged = React.useCallback((e) => {
     const shouldRestrictWidth = orientation === 'horizontal' && (e.value || scrollContent);
@@ -89,7 +96,7 @@ const App = () => {
   return (
     <div className="tabs-demo">
       <div className="widget-container">
-        <div className={widgetWrapperClasses}>
+        <div className={wrapperClasses}>
           <Tabs
             id="withText"
             width={width}

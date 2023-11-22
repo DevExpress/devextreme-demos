@@ -107,6 +107,11 @@
         $widgetWrapper.removeClass();
         $widgetWrapper.addClass(`widget-wrapper widget-wrapper-${data.value}`);
 
+        const scrollContentCheckBox = $("#scroll-content").dxCheckBox("instance");
+        const showNavButtonsCheckBox = $("#show-navigation-buttons").dxCheckBox("instance");
+
+        toggleStrictWidthClass(showNavButtonsCheckBox.option("value") || scrollContentCheckBox.option("value"));
+
         setTabsOption("orientation", e.value);
     }
 
@@ -120,24 +125,18 @@
 
     function showNavigation_valueChanged(e) {
         const scrollContentCheckBox = $("#scroll-content").dxCheckBox("instance");
-        const orientationSelectBox = $("#orientation").dxSelectBox("instance");
-        const $widgetWrapper = $(".widget-wrapper");
-        const isHorizontal = orientationSelectBox.option("value") === "horizontal";
-        const shouldRestrictWidth = isHorizontal && (data.value || scrollContentCheckBox.option("value"));
+        const shouldRestrictWidth = data.value || scrollContentCheckBox.option("value");
 
-        $widgetWrapper.toggleClass("strict-width", shouldRestrictWidth);
+        toggleStrictWidthClass(shouldRestrictWidth);
 
         setTabsOption("showNavButtons", e.value);
     }
 
     function scrollContent_valueChanged(e) {
         const showNavButtonsCheckBox = $("#show-navigation-buttons").dxCheckBox("instance");
-        const orientationSelectBox = $("#orientation").dxSelectBox("instance");
-        const $widgetWrapper = $(".widget-wrapper");
-        const isHorizontal = orientationSelectBox.option("value") === "horizontal";
-        const shouldRestrictWidth = isHorizontal && (data.value || showNavButtonsCheckBox.option("value"));
+        const shouldRestrictWidth = data.value || showNavButtonsCheckBox.option("value");
 
-        $widgetWrapper.toggleClass("strict-width", shouldRestrictWidth);
+        toggleStrictWidthClass(shouldRestrictWidth);
 
         setTabsOption("scrollByContent", e.value);
     }
@@ -154,6 +153,14 @@
         $("#withText").dxTabs("instance").option(option, value);
         $("#withIconAndText").dxTabs("instance").option(option, value);
         $("#withIcon").dxTabs("instance").option(option, value);
+    }
+
+    function toggleStrictWidthClass(shouldRestrictWidth) {
+        const $widgetWrapper = $(".widget-wrapper");
+        const orientationSelectBox = $("#orientation").dxSelectBox("instance");
+        const isHorizontal = orientationSelectBox.option("value") === "horizontal";
+
+        $widgetWrapper.toggleClass("strict-width", isHorizontal && shouldRestrictWidth);
     }
 
     const tabsText = [
