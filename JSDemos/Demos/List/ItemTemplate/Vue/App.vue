@@ -18,7 +18,7 @@ import { products } from './data.js';
 const dataSource = products;
 </script>
 <style>
-.demo-container {
+#app {
   height: 450px;
 }
 
