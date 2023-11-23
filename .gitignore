@@ -25,9 +25,7 @@ changed-files.json
 !.vscode/settings.json
 gulpfile.js/.eslintrc.js
 
-**/azure.file.system.js
-JSDemos/Demos/FileManager/AzureClientBinding/Angular/app/app.service.ts
-JSDemos/Demos/FileUploader/AzureDirectUploading/Angular/app/app.service.ts
+JSDemos/shared/empty-file.js
 
 JSDemos/Demos/**/config.js
 JSDemos/Demos/**/tsconfig.json

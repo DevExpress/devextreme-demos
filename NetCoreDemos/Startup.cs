@@ -55,8 +55,6 @@ namespace DevExtreme.NETCore.Demos {
             services.AddDbContext<FileManagementDbContext>(ConfigureFileManagementContext);
             services.AddTransient<DbFileProvider>();
 
-            services.AddTransient(CreateAzureBlobFileProvider);
-
             services.AddCors(options => options.AddPolicy("CorsPolicy", builder => {
                 builder
                     .AllowAnyMethod()
@@ -114,13 +112,6 @@ namespace DevExtreme.NETCore.Demos {
             options.UseSqlite("Data Source=" + dbPath);
         }
 
-        static AzureBlobFileProvider CreateAzureBlobFileProvider(IServiceProvider serviceProvider) {
-            var env = serviceProvider.GetRequiredService<IWebHostEnvironment>();
-            var tempDirPath = Path.Combine(env.ContentRootPath, "UploadTemp");
-            var account = AzureStorageAccount.FileManager;
-            return new AzureBlobFileProvider(account.AccountName, account.AccessKey, account.ContainerName, tempDirPath);
-        }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
             if(env.IsDevelopment()) {
@@ -148,8 +139,6 @@ namespace DevExtreme.NETCore.Demos {
             });
 
             Models.SampleData.SampleData.RootPath = env.WebRootPath;
-
-            AzureStorageAccount.Load(Configuration.GetSection("AzureStorage"));
         }
     }
 }
