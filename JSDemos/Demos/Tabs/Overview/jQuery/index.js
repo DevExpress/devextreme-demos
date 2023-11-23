@@ -46,7 +46,7 @@ $(() => {
 
       setTabsOption('orientation', data.value);
     },
-  }).dxSelectBox('instance');
+  });
 
   $('#styling-mode').dxSelectBox({
     items: stylingModes,
