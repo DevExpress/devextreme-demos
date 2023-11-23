@@ -81,19 +81,19 @@ const App = () => {
   );
   const showNavigationChanged = React.useCallback(
     (e) => {
-      const shouldRestrictWidth = orientation === 'horizontal' && (e.value || scrollContent);
+      const shouldRestrictWidth = e.value || scrollContent;
       enforceWidthConstraint(shouldRestrictWidth);
       setShowNavigation(e.value);
     },
-    [orientation, scrollContent, setShowNavigation, enforceWidthConstraint],
+    [scrollContent, setShowNavigation, enforceWidthConstraint],
   );
   const scrollContentChanged = React.useCallback(
     (e) => {
-      const shouldRestrictWidth = orientation === 'horizontal' && (e.value || showNavigation);
+      const shouldRestrictWidth = e.value || showNavigation;
       enforceWidthConstraint(shouldRestrictWidth);
       setScrollContent(e.value);
     },
-    [orientation, showNavigation, setScrollContent, enforceWidthConstraint],
+    [showNavigation, setScrollContent, enforceWidthConstraint],
   );
   const fullWidthChanged = React.useCallback(
     (e) => {
