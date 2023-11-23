@@ -141,9 +141,10 @@ window.config = {
     'prettier/parser-html': 'npm:prettier/parser-html.js',
   },
   packages: {
+    /** local */
     '.': {
       map: {
-        './data': './data.ts',
+        './data': '/data.ts',
       },
     },
     'devextreme-vue': {
