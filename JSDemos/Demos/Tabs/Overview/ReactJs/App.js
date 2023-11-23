@@ -63,11 +63,21 @@ const App = () => {
   );
   const orientationChanged = React.useCallback(
     (e) => {
-      setWrapperClasses(`widget-wrapper widget-wrapper-${e.value}`);
-      enforceWidthConstraint(e.value === 'horizontal' && (scrollContent || showNavigation));
+      const isVertical = e.value === 'vertical';
+      const callback = (prevClasses) => {
+        const restClasses = prevClasses
+          .split(' ')
+          .filter(
+            (className) =>
+              className !== (isVertical ? 'widget-wrapper-horizontal' : 'widget-wrapper-vertical'),
+          )
+          .join(' ');
+        return `${restClasses} widget-wrapper-${e.value}`;
+      };
+      setWrapperClasses(callback);
       setOrientation(e.value);
     },
-    [scrollContent, showNavigation, setOrientation, setWrapperClasses, enforceWidthConstraint],
+    [setOrientation, setWrapperClasses],
   );
   const showNavigationChanged = React.useCallback(
     (e) => {

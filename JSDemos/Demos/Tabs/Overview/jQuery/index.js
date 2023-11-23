@@ -32,17 +32,17 @@ $(() => {
     iconPosition: iconPositions[0],
   }).dxTabs('instance');
 
-  const orientationSelectBox = $('#orientation').dxSelectBox({
+  $('#orientation').dxSelectBox({
     items: orientations,
     value: orientations[0],
     inputAttr: { 'aria-label': 'Orientation' },
     onValueChanged(data) {
       const $widgetWrapper = $('.widget-wrapper');
 
-      $widgetWrapper.removeClass();
-      $widgetWrapper.addClass(`widget-wrapper widget-wrapper-${data.value}`);
+      const isVertical = data.value === 'vertical';
 
-      toggleStrictWidthClass(showNavButtonsCheckBox.option('value') || scrollContentCheckBox.option('value'));
+      $widgetWrapper.toggleClass('widget-wrapper-vertical', isVertical);
+      $widgetWrapper.toggleClass('widget-wrapper-horizontal', !isVertical);
 
       setTabsOption('orientation', data.value);
     },
@@ -114,8 +114,7 @@ $(() => {
 
   function toggleStrictWidthClass(shouldRestrictWidth) {
     const $widgetWrapper = $('.widget-wrapper');
-    const isHorizontal = orientationSelectBox.option('value') === 'horizontal';
 
-    $widgetWrapper.toggleClass('strict-width', isHorizontal && shouldRestrictWidth);
+    $widgetWrapper.toggleClass('strict-width', shouldRestrictWidth);
   }
 });

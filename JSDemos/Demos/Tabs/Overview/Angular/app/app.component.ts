@@ -79,14 +79,10 @@ export class AppComponent {
       this.widgetWrapperClasses['widget-wrapper-horizontal'] = true;
       this.widgetWrapperClasses['widget-wrapper-vertical'] = false;
     }
-
-    this.toggleStrictWidthClass();
   }
 
-  toggleStrictWidthClass(shouldRestrictWidth = true) {
-    const isHorizontal = this.orientation === 'horizontal';
-
-    this.widgetWrapperClasses['strict-width'] = isHorizontal && (shouldRestrictWidth || this.scrollByContent || this.showNavButtons);
+  toggleStrictWidthClass() {
+    this.widgetWrapperClasses['strict-width'] = this.scrollByContent || this.showNavButtons;
   }
 
   onFullWidthChanged(e) {

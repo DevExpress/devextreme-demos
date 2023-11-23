@@ -1,6 +1,6 @@
 ﻿<div class="tabs-demo">
     <div class="widget-container">
-        <div class="widget-wrapper">
+        <div class="widget-wrapper widget-wrapper-horizontal">
             @(Html.DevExtreme().Tabs()
                 .ID("withText")
                 .Width("auto")
@@ -36,7 +36,6 @@
         <div class="option">
             <div>Orientation</div>
             @(Html.DevExtreme().SelectBox()
-                .ID("orientation")
                 .DataSource(new[] { "horizontal", "vertical" })
                 .InputAttr("aria-label", "Orientation")
                 .Value("horizontal")
@@ -103,14 +102,11 @@
 <script>
     function orientation_valueChanged(e) {
         const $widgetWrapper = $(".widget-wrapper");
+        
+        const isVertical = e.value === "vertical";
 
-        $widgetWrapper.removeClass();
-        $widgetWrapper.addClass(`widget-wrapper widget-wrapper-${data.value}`);
-
-        const scrollContentCheckBox = $("#scroll-content").dxCheckBox("instance");
-        const showNavButtonsCheckBox = $("#show-navigation-buttons").dxCheckBox("instance");
-
-        toggleStrictWidthClass(showNavButtonsCheckBox.option("value") || scrollContentCheckBox.option("value"));
+        $widgetWrapper.toggleClass("widget-wrapper-vertical", isVertical);
+        $widgetWrapper.toggleClass("widget-wrapper-horizontal", !isVertical);
 
         setTabsOption("orientation", e.value);
     }
@@ -157,8 +153,6 @@
 
     function toggleStrictWidthClass(shouldRestrictWidth) {
         const $widgetWrapper = $(".widget-wrapper");
-        const orientationSelectBox = $("#orientation").dxSelectBox("instance");
-        const isHorizontal = orientationSelectBox.option("value") === "horizontal";
 
         $widgetWrapper.toggleClass("strict-width", isHorizontal && shouldRestrictWidth);
     }
