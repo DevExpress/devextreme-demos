@@ -17,10 +17,6 @@ module.exports = {
       'error',
       'multi-line',
     ],
-    indent: [
-      'error',
-      2,
-    ],
     'spellcheck/spell-checker': spellcheckRule,
   },
 };
