@@ -154,14 +154,14 @@ window.config = {
     'devextreme/events/utils': {
       main: 'index',
     },
+    'devextreme/localization/messages': {
+      format: 'json',
+      defaultExtension: '',
+    },
     'devextreme/events': {
       main: 'index',
     }/** globalize */,
     'devextreme-cldr-data': {
-      format: 'json',
-      defaultExtension: '',
-    }/**//** devextreme-intl */,
-    'devextreme/localization/messages': {
       format: 'json',
       defaultExtension: '',
     }/**//** globalize--vue&react */,
