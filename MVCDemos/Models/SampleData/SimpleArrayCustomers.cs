@@ -13,7 +13,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Zipcode = 72716,
                 Phone = "(800) 555-2797",
                 Fax = "(800) 555-2171",
-                Website = "http://www.nowebsitesupermart.com"
+                Website = "http://www.nowebsitesupermart.dx"
             },
             new Customer {
                 ID = 2,
@@ -24,7 +24,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Zipcode = 30339,
                 Phone = "(800) 595-3232",
                 Fax = "(800) 595-3231",
-                Website = "http://www.nowebsitedepot.com"
+                Website = "http://www.nowebsitedepot.dx"
             },
             new Customer {
                 ID = 3,
@@ -35,7 +35,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Zipcode = 55403,
                 Phone = "(612) 304-6073",
                 Fax = "(612) 304-6074",
-                Website = "http://www.nowebsitemusic.com"
+                Website = "http://www.nowebsitemusic.dx"
             },
             new Customer {
                 ID = 4,
@@ -46,7 +46,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Zipcode = 98027,
                 Phone = "(800) 955-2292",
                 Fax = "(800) 955-2293",
-                Website = "http://www.nowebsitetomsclub.com"
+                Website = "http://www.nowebsitetomsclub.dx"
             },
             new Customer {
                 ID = 5,
@@ -57,7 +57,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Zipcode = 60179,
                 Phone = "(847) 286-2500",
                 Fax = "(847) 286-2501",
-                Website = "http://www.nowebsiteemart.com"
+                Website = "http://www.nowebsiteemart.dx"
             },
             new Customer {
                 ID = 6,
@@ -68,7 +68,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Zipcode = 60015,
                 Phone = "(847) 940-2500",
                 Fax = "(847) 940-2501",
-                Website = "http://www.nowebsitewalters.com"
+                Website = "http://www.nowebsitewalters.dx"
             },
             new Customer {
                 ID = 7,
@@ -79,7 +79,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Zipcode = 76102,
                 Phone = "(817) 820-0741",
                 Fax = "(817) 820-0742",
-                Website = "http://www.nowebsiteshack.com"
+                Website = "http://www.nowebsiteshack.dx"
             },
             new Customer {
                 ID = 8,
@@ -90,7 +90,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Zipcode = 60523,
                 Phone = "(800) 955-2929",
                 Fax = "(800) 955-9392",
-                Website = "http://www.nowebsitecircuittown.com"
+                Website = "http://www.nowebsitecircuittown.dx"
             },
             new Customer {
                 ID = 9,
@@ -101,7 +101,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Zipcode = 55423,
                 Phone = "(612) 291-1000",
                 Fax = "(612) 291-2001",
-                Website = "http://www.nowebsitepremierbuy.com"
+                Website = "http://www.nowebsitepremierbuy.dx"
             },
             new Customer {
                 ID = 10,
@@ -112,7 +112,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Zipcode = 60563,
                 Phone = "(630) 438-7800",
                 Fax = "(630) 438-7801",
-                Website = "http://www.nowebsiteelectrixmax.com"
+                Website = "http://www.nowebsiteelectrixmax.dx"
             },
             new Customer {
                 ID = 11,
@@ -123,7 +123,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Zipcode = 75270,
                 Phone = "(214) 854-3000",
                 Fax = "(214) 854-3001",
-                Website = "http://www.nowebsitevideoemporium.com"
+                Website = "http://www.nowebsitevideoemporium.dx"
             },
             new Customer {
                 ID = 12,
@@ -134,7 +134,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 Zipcode = 28117,
                 Phone = "(800) 445-6937",
                 Fax = "(800) 445-6938",
-                Website = "http://www.nowebsitescreenshop.com"
+                Website = "http://www.nowebsitescreenshop.dx"
             }
         };
     }
