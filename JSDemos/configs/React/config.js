@@ -156,7 +156,11 @@ window.config = {
     },
     'devextreme/events': {
       main: 'index',
-    }/** devextreme-intl */,
+    }/** globalize */,
+    'devextreme-cldr-data': {
+      format: 'json',
+      defaultExtension: '',
+    }/**//** devextreme-intl */,
     'devextreme/localization/messages': {
       format: 'json',
       defaultExtension: '',
@@ -172,10 +176,6 @@ window.config = {
     'globalize': {
       main: '../globalize.js',
       defaultExtension: 'js',
-    },
-    'devextreme-cldr-data': {
-      format: 'json',
-      defaultExtension: '',
     },
     'cldr': {
       main: '../cldr.js',
