@@ -14,27 +14,15 @@ window.config = {
     'typescript': {
       'exports': 'ts',
     },
+    'devextreme/time_zone_utils.js': {
+      'esModule': true,
+    },
     'devextreme/localization.js': {
       'esModule': true,
     },
-    /** globalize */
-    '*.json': {
-      'loader': 'json',
-    },
-    /**/
-    /** devextreme-intl */
-    '*.json': {
-      'loader': 'json',
-    },
-    /**/
     'devextreme/viz/palette.js': {
       'esModule': true,
     },
-    /** devextreme-aspnet-data-nojquery */
-    'devextreme-aspnet-data-nojquery': {
-      'esModule': true,
-    },
-    /**/
     /** devextreme-aspnet-data-nojquery */
     'devextreme-aspnet-data-nojquery': {
       'esModule': true,
@@ -61,6 +49,7 @@ window.config = {
     'react': 'npm:react/umd/react.development.js',
     'react-dom': 'npm:react-dom/umd/react-dom.development.js',
     'prop-types': 'npm:prop-types/prop-types.js',
+    'sha-1': 'npm:sha-1/dist/sha1.cjs.js',
 
     /** signalr */
     '@aspnet/signalr': 'npm:@aspnet/signalr/dist/cjs',
@@ -167,7 +156,11 @@ window.config = {
     },
     'devextreme/events': {
       main: 'index',
-    }/** globalize--vue&react */,
+    }/** devextreme-intl */,
+    'devextreme/localization/messages': {
+      format: 'json',
+      defaultExtension: '',
+    }/**//** globalize--vue&react */,
     'globalize': {
       main: '../globalize.js',
       defaultExtension: 'js',
@@ -179,6 +172,10 @@ window.config = {
     'globalize': {
       main: '../globalize.js',
       defaultExtension: 'js',
+    },
+    'devextreme-cldr-data': {
+      format: 'json',
+      defaultExtension: '',
     },
     'cldr': {
       main: '../cldr.js',

@@ -154,17 +154,13 @@ window.config = {
     'devextreme/events/utils': {
       main: 'index',
     },
+    'devextreme/events': {
+      main: 'index',
+    }/** devextreme-intl */,
     'devextreme/localization/messages': {
       format: 'json',
       defaultExtension: '',
-    },
-    'devextreme-cldr-data': {
-      format: 'json',
-      defaultExtension: '',
-    },
-    'devextreme/events': {
-      main: 'index',
-    }/** globalize--vue&react */,
+    }/**//** globalize--vue&react */,
     'globalize': {
       main: '../globalize.js',
       defaultExtension: 'js',
@@ -176,6 +172,10 @@ window.config = {
     'globalize': {
       main: '../globalize.js',
       defaultExtension: 'js',
+    },
+    'devextreme-cldr-data': {
+      format: 'json',
+      defaultExtension: '',
     },
     'cldr': {
       main: '../cldr.js',
