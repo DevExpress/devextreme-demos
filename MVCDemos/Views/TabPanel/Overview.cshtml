@@ -72,14 +72,6 @@
                 .OnValueChanged("iconPositionChanged")
             )
         </div>
-
-        <div class="option">
-            @(Html.DevExtreme().CheckBox()
-                .Value(false)
-                .Text("Show navigation buttons")
-                .OnValueChanged("showNavButtonsChanged")
-            )
-        </div>
     </div>
 </div>
 
@@ -130,9 +122,5 @@
 
     function iconPositionChanged({ value }) {
         getTabPanelInstance().option({ iconPosition: value });
-    }
-
-    function showNavButtonsChanged({ value }) {
-        getTabPanelInstance().option({ showNavButtons: value });
     }
 </script>
