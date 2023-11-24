@@ -12,7 +12,7 @@ const root = join(__dirname, '..', '..');
 const indexFileName = 'index.html';
 const cssDirectory = join(root, 'node_modules', 'devextreme', 'dist', 'css');
 const getAvailableThemes = readdirSync(cssDirectory).filter((f) => /^dx\.(?!common).*\.css$/i.test(f));
-const baseTheme = 'dx.light.css';
+const baseTheme = 'dx.fluent.saas.light.css';
 const port = process.argv[2] ?? 3000;
 
 const demoIndexHandler = (request, response) => {

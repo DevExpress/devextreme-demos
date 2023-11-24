@@ -1109,7 +1109,7 @@
     <Content Include="Content\DevExtreme\dx.darkviolet.css" />
     <Content Include="Content\DevExtreme\dx.greenmist.css" />
     <Content Include="Content\DevExtreme\dx.light.compact.css" />
-    <Content Include="Content\DevExtreme\dx.light.css" />
+    <Content Include="Content\DevExtreme\dx.fluent.saas.light.css" />
     <Content Include="Content\DevExtreme\dx.material.blue.dark.compact.css" />
     <Content Include="Content\DevExtreme\dx.material.blue.dark.css" />
     <Content Include="Content\DevExtreme\dx.material.blue.light.compact.css" />
