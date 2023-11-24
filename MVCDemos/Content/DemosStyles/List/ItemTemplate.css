@@ -1,9 +1,9 @@
-﻿.list-container {
-    min-height: 440px;
-    height: auto;
-    position: absolute;
-    top: 0; 
-    bottom: 0;
+﻿.demo-container {
+    height: 450px;
+}
+  
+.list-container {
+    height: 100%;
 }
 
 .product {

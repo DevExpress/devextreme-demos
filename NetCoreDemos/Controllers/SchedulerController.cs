@@ -134,5 +134,12 @@ namespace DevExtreme.NETCore.Demos.Controllers {
         public ActionResult AllDayPanelMode() {
             return View();
         }
+
+        public ActionResult WorkShifts() {
+            return View(new WorkShiftsViewModel {
+                Appointments = SampleData.WorkShiftsAppointments,
+                WorkShifts = SampleData.WorkShifts
+            });
+        }
     }
 }

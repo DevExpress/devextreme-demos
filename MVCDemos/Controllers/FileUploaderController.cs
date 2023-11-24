@@ -127,12 +127,6 @@ namespace DevExtreme.MVC.Demos.Controllers {
         }
         #endregion
 
-        #region AzureDirectUploading
-        public ActionResult AzureDirectUploading() {
-            return View(AzureStorageAccount.FileUploader.Value);
-        }
-        #endregion
-
         #region CustomDropzone
         public ActionResult CustomDropzone() {
             return View();

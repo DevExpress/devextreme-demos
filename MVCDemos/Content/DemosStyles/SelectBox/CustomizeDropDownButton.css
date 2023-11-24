@@ -1,4 +1,13 @@
-﻿.custom-icon {
+﻿.dx-dropdowneditor-button .dx-button-content {
+    text-align: center;
+}
+  
+.dx-dropdowneditor-button .dx-button-content .dx-loadindicator {
+    width: 1.5em;
+    height: 1.5em;
+}
+  
+.custom-icon {
     max-height: 100%;
     max-width: 100%;
     font-size: 28px;
@@ -11,5 +20,6 @@
 }
 
 .custom-item .product-name {
-    padding-right: 20px;
+    line-height: 32px;
+    padding-left: 5px;
 }
