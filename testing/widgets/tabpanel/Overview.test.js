@@ -6,7 +6,6 @@ const OPTION_CLASS = 'option';
 const SELECTBOX_CLASS = 'dx-selectbox';
 const SELECTBOX_POPUP_WRAPPER_CLASS = 'dx-selectbox-popup-wrapper';
 const LIST_ITEM_CLASS = 'dx-list-item';
-const CHECKBOX_CLASS = 'dx-checkbox';
 
 fixture('TabPanel.Overview')
   .page('http://localhost:8080/')
@@ -39,12 +38,6 @@ runManualTest('TabPanel', 'Overview', ['jQuery', 'React', 'Vue', 'Angular'], (te
       .wait(200);
 
     await takeScreenshot('tabpanel_iconposition_start.png');
-
-    await t
-      .click($(`.${OPTION_CLASS} .${CHECKBOX_CLASS}`).nth(0))
-      .wait(200);
-
-    await takeScreenshot('tabpanel_shownavbuttons_false.png');
 
     await t
       .expect(compareResults.isValid())

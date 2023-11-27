@@ -140,6 +140,10 @@ const prepareConfigs = (framework) => {
       pathValue: 'node_modules/react-dom/*',
     }];
 
+    additionPaths = {
+      'devextreme/localization/messages/*': 'node_modules/devextreme/localization/messages/*',
+    };
+
     packages = [
       'react/umd/react.development.js',
       'react-dom/umd/react-dom.development.js',
