@@ -10,7 +10,6 @@
       [tabsPosition]="tabsPosition"
       [stylingMode]="stylingMode"
       [iconPosition]="iconPosition"
-      [showNavButtons]="showNavButtons"
     >
       <div *dxTemplate="let tabPanelItem of 'item'">
         <div class="tabpanel-item">
@@ -64,14 +63,6 @@
         [items]="iconPositions"
         [(value)]="iconPosition"
       ></dx-select-box>
-    </div>
-
-    <div class="option">
-      <dx-check-box
-        text="Show navigation buttons"
-        [elementAttr]="{ 'aria-label': 'Show navigation buttons' }"
-        [(value)]="showNavButtons"
-      ></dx-check-box>
     </div>
   </div>
 </div>
