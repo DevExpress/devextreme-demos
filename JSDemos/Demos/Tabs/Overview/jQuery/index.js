@@ -33,15 +33,16 @@ $(() => {
   }).dxTabs('instance');
 
   $('#orientation').dxSelectBox({
-    showNavButtons: false,
     items: orientations,
     value: orientations[0],
     inputAttr: { 'aria-label': 'Orientation' },
     onValueChanged(data) {
       const $widgetWrapper = $('.widget-wrapper');
 
-      $widgetWrapper.removeClass();
-      $widgetWrapper.addClass(`widget-wrapper widget-wrapper-${data.value}`);
+      const isVertical = data.value === 'vertical';
+
+      $widgetWrapper.toggleClass('widget-wrapper-vertical', isVertical);
+      $widgetWrapper.toggleClass('widget-wrapper-horizontal', !isVertical);
 
       setTabsOption('orientation', data.value);
     },
@@ -65,21 +66,29 @@ $(() => {
     },
   });
 
-  $('#show-navigation-buttons').dxCheckBox({
+  const showNavButtonsCheckBox = $('#show-navigation-buttons').dxCheckBox({
     text: 'Show navigation buttons',
     value: false,
     onValueChanged(data) {
+      const shouldRestrictWidth = data.value || scrollContentCheckBox.option('value');
+
+      toggleStrictWidthClass(shouldRestrictWidth);
+
       setTabsOption('showNavButtons', data.value);
     },
-  });
+  }).dxCheckBox('instance');
 
-  $('#scroll-content').dxCheckBox({
+  const scrollContentCheckBox = $('#scroll-content').dxCheckBox({
     text: 'Scroll content',
     value: false,
     onValueChanged(data) {
+      const shouldRestrictWidth = data.value || showNavButtonsCheckBox.option('value');
+
+      toggleStrictWidthClass(shouldRestrictWidth);
+
       setTabsOption('scrollByContent', data.value);
     },
-  });
+  }).dxCheckBox('instance');
 
   $('#full-width').dxCheckBox({
     text: 'Full width',
@@ -101,5 +110,11 @@ $(() => {
     tab1.option(option, value);
     tab2.option(option, value);
     tab3.option(option, value);
+  }
+
+  function toggleStrictWidthClass(shouldRestrictWidth) {
+    const $widgetWrapper = $('.widget-wrapper');
+
+    $widgetWrapper.toggleClass('strict-width', shouldRestrictWidth);
   }
 });

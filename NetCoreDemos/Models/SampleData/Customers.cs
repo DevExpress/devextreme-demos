@@ -14,7 +14,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 55423,
                 Phone = "(612) 291-1000",
                 Fax = "(612) 291-2001",
-                Website = "http =//www.nowebsitepremierbuy.com"
+                Website = "http =//www.nowebsitepremierbuy.dx"
             },
             new Customer {
                 ID = 2,
@@ -25,7 +25,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 60563,
                 Phone = "(630) 438-7800",
                 Fax = "(630) 438-7801",
-                Website = "http =//www.nowebsiteelectrixmax.com"
+                Website = "http =//www.nowebsiteelectrixmax.dx"
             },
             new Customer {
                 ID = 3,
@@ -36,7 +36,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 75270,
                 Phone = "(214) 854-3000",
                 Fax = "(214) 854-3001",
-                Website = "http =//www.nowebsitevideoemporium.com"
+                Website = "http =//www.nowebsitevideoemporium.dx"
             },
             new Customer {
                 ID = 4,
@@ -47,7 +47,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 28117,
                 Phone = "(800) 445-6937",
                 Fax = "(800) 445-6938",
-                Website = "http =//www.nowebsitescreenshop.com"
+                Website = "http =//www.nowebsitescreenshop.dx"
             },
             new Customer {
                 ID = 5,
@@ -58,7 +58,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 95014,
                 Phone = "(408) 996-1010",
                 Fax = "(408) 996-1012",
-                Website = "http =//www.nowebsitebraeburn.com"
+                Website = "http =//www.nowebsitebraeburn.dx"
             },
             new Customer {
                 ID = 6,
@@ -69,7 +69,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 17011,
                 Phone = "(717) 761-2633",
                 Fax = "(717) 761-2334",
-                Website = "http =//www.nowebsitepriceco.com"
+                Website = "http =//www.nowebsitepriceco.dx"
             },
             new Customer {
                 ID = 7,
@@ -80,7 +80,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 31093,
                 Phone = "(995) 623-6785",
                 Fax = "(995) 623-6786",
-                Website = "http =//www.nowebsiteultimategadget.com"
+                Website = "http =//www.nowebsiteultimategadget.dx"
             },
             new Customer {
                 ID = 8,
@@ -91,7 +91,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 91007,
                 Phone = "(626) 265-8632",
                 Fax = "(626) 265-8633",
-                Website = "http =//www.nowebsiteezstop.com"
+                Website = "http =//www.nowebsiteezstop.dx"
             },
             new Customer {
                 ID = 9,
@@ -102,7 +102,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 90220,
                 Phone = "(310) 884-9000",
                 Fax = "(310) 884-9001",
-                Website = "http =//www.nowebsiteclicker.com"
+                Website = "http =//www.nowebsiteclicker.dx"
             },
             new Customer {
                 ID = 10,
@@ -113,7 +113,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 98134,
                 Phone = "(206) 447-1575",
                 Fax = "(206) 447-1576",
-                Website = "http =//www.nowebsiteamerica.com"
+                Website = "http =//www.nowebsiteamerica.dx"
             },
             new Customer {
                 ID = 11,
@@ -124,7 +124,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 90034,
                 Phone = "(310) 237-5642",
                 Fax = "(310) 237-5643",
-                Website = "http =//www.nowebsitezonetoys.com"
+                Website = "http =//www.nowebsitezonetoys.dx"
             },
             new Customer {
                 ID = 12,
@@ -135,7 +135,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 90245,
                 Phone = "(310) 536-0611",
                 Fax = "(310) 536-0612",
-                Website = "http =//www.nowebsiteacme.com"
+                Website = "http =//www.nowebsiteacme.dx"
             },
             new Customer {
                 ID = 13,
@@ -146,7 +146,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 72716,
                 Phone = "(800) 555-2797",
                 Fax = "(800) 555-2171",
-                Website = "http://www.nowebsitesupermart.com"
+                Website = "http://www.nowebsitesupermart.dx"
             },
             new Customer {
                 ID = 14,
@@ -157,7 +157,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 30339,
                 Phone = "(800) 595-3232",
                 Fax = "(800) 595-3231",
-                Website = "http =//www.nowebsitedepot.com"
+                Website = "http =//www.nowebsitedepot.dx"
             },
             new Customer {
                 ID = 15,
@@ -168,7 +168,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 55403,
                 Phone = "(612) 304-6073",
                 Fax = "(612) 304-6074",
-                Website = "http =//www.nowebsitemusic.com"
+                Website = "http =//www.nowebsitemusic.dx"
             },
             new Customer {
                 ID  = 16,
@@ -179,7 +179,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 98027,
                 Phone = "(800) 955-2292",
                 Fax = "(800) 955-2293",
-                Website = "http =//www.nowebsitetomsclub.com"
+                Website = "http =//www.nowebsitetomsclub.dx"
             },
             new Customer {
                 ID = 17,
@@ -190,7 +190,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 60179,
                 Phone = "(847) 286-2500",
                 Fax = "(847) 286-2501",
-                Website = "http =//www.nowebsiteemart.com"
+                Website = "http =//www.nowebsiteemart.dx"
             },
             new Customer {
                 ID = 18,
@@ -201,7 +201,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 60015,
                 Phone = "(847) 940-2500",
                 Fax = "(847) 940-2501",
-                Website = "http =//www.nowebsitewalters.com"
+                Website = "http =//www.nowebsitewalters.dx"
             },
             new Customer {
                 ID = 19,
@@ -212,7 +212,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 76102,
                 Phone = "(817) 820-0741",
                 Fax = "(817) 820-0742",
-                Website = "http =//www.nowebsiteshack.com"
+                Website = "http =//www.nowebsiteshack.dx"
             },
             new Customer {
                 ID = 20,
@@ -223,7 +223,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 Zipcode = 60523,
                 Phone = "(800) 955-2929",
                 Fax = "(800) 955-9392",
-                Website = "http =//www.nowebsitecircuittown.com"
+                Website = "http =//www.nowebsitecircuittown.dx"
             }
         };
     }

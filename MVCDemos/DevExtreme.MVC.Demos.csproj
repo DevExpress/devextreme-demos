@@ -53,15 +53,6 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Azure.Core, Version=1.25.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
-      <HintPath>packages\Azure.Core.1.25.0\lib\net461\Azure.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Azure.Storage.Blobs, Version=12.13.1.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
-      <HintPath>packages\Azure.Storage.Blobs.12.13.1\lib\netstandard2.0\Azure.Storage.Blobs.dll</HintPath>
-    </Reference>
-    <Reference Include="Azure.Storage.Common, Version=12.12.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
-      <HintPath>packages\Azure.Storage.Common.12.12.0\lib\netstandard2.0\Azure.Storage.Common.dll</HintPath>
-    </Reference>
     <Reference Include="CommonMark, Version=0.1.0.0, Culture=neutral, PublicKeyToken=001ef8810438905d, processorArchitecture=MSIL">
       <HintPath>packages\CommonMark.NET.0.15.1\lib\net45\CommonMark.dll</HintPath>
     </Reference>
@@ -87,9 +78,6 @@
     </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
@@ -246,13 +234,9 @@
     <Compile Include="Controllers\ApiControllers\DataGridRowReorderingController.cs" />
     <Compile Include="Controllers\ApiControllers\DnDBetweenGridsController.cs" />
     <Compile Include="Controllers\ApiControllers\DataGridCustomEditorsController.cs" />
-    <Compile Include="Controllers\ApiControllers\FileManagerAzureAccessApiController.cs" />
-    <Compile Include="Controllers\ApiControllers\FileManagerAzureProviderApiController.cs" />
-    <Compile Include="Controllers\ApiControllers\FileManagerAzureStatusApiController.cs" />
     <Compile Include="Controllers\ApiControllers\FileManagerDBProviderApiController.cs" />
     <Compile Include="Controllers\ApiControllers\FileManagerScriptsApiController.cs" />
     <Compile Include="Controllers\ApiControllers\FileManagerImagesApiController.cs" />
-    <Compile Include="Controllers\ApiControllers\FileUploaderAzureAccessApiController.cs" />
     <Compile Include="Controllers\ApiControllers\ListItemDraggingEditingController.cs" />
     <Compile Include="Controllers\ApiControllers\SchedulerSignalRController.cs" />
     <Compile Include="Controllers\ApiControllers\SelectBoxEditingController.cs" />
@@ -359,6 +343,7 @@
     <Compile Include="Models\ActiveCompany.cs" />
     <Compile Include="Models\AdaptabilityAppointment.cs" />
     <Compile Include="Models\AdaptabilityAppointmentsResource.cs" />
+    <Compile Include="Models\WorkShift.cs" />
     <Compile Include="Models\CustomEditorsEmployee.cs" />
     <Compile Include="Models\CustomEditorsTask.cs" />
     <Compile Include="Models\DataGrid\InMemoryRowReorderingTasksDataContext.cs" />
@@ -370,8 +355,6 @@
     <Compile Include="Models\ElectronicsCategory.cs" />
     <Compile Include="Models\ElectronicsGroupedItem.cs" />
     <Compile Include="Models\ElectronicsSimpleItem.cs" />
-    <Compile Include="Models\FileManagement\AzureBlobFileProvider.cs" />
-    <Compile Include="Models\FileManagement\AzureStorageAccount.cs" />
     <Compile Include="Models\FileManagement\DBFileProvider.cs" />
     <Compile Include="Models\FileManagement\FileItem.cs" />
     <Compile Include="Models\FileManagement\FileManagementDbContext.cs" />
@@ -432,6 +415,8 @@
     <Compile Include="Models\SampleData\ToolbarData.cs" />
     <Compile Include="Models\SampleData\TreeViewHierarchicalDataForDragAndDrop.cs" />
     <Compile Include="Models\SampleData\TreeViewPlainDataForDragAndDrop.cs" />
+    <Compile Include="Models\SampleData\WorkShiftsAppointmentData.cs" />
+    <Compile Include="Models\SampleData\WorkShiftsOffsetData.cs" />
     <Compile Include="Models\SimpleData.cs" />
     <Compile Include="Models\StateData.cs" />
     <Compile Include="Models\TemperatureItem.cs" />
@@ -668,6 +653,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\DropDownButtonViewModel.cs" />
     <Compile Include="ViewModels\DynamicAppointmentsViewModel.cs" />
+    <Compile Include="ViewModels\WorkShiftsViewModel.cs" />
     <Compile Include="ViewModels\VerifyDateRange.cs" />
     <Compile Include="ViewModels\VerifyAgeAttribute.cs" />
     <Compile Include="ViewModels\EditorsViewModel.cs" />
@@ -739,9 +725,7 @@
     <Content Include="Content\DemosStyles\Diagram\SimpleView.css" />
     <Content Include="Content\DemosStyles\Diagram\UICustomization.css" />
     <Content Include="Content\DemosStyles\FieldSet\Overview.css" />
-    <Content Include="Content\DemosStyles\FileManager\AzureClientBinding.css" />
     <Content Include="Content\DemosStyles\FileManager\Overview.css" />
-    <Content Include="Content\DemosStyles\FileUploader\AzureDirectUploading.css" />
     <Content Include="Content\DemosStyles\FloatingActionButton\Overview.css" />
     <Content Include="Content\DemosStyles\Charts\Annotation.css" />
     <Content Include="Content\DemosStyles\Common\CustomTextEditorButtons.css" />
@@ -985,6 +969,7 @@
     <Content Include="Content\DemosStyles\Scheduler\Resources.css" />
     <Content Include="Content\DemosStyles\Scheduler\SignalRService.css" />
     <Content Include="Content\DemosStyles\Scheduler\TimeZonesSupport.css" />
+    <Content Include="Content\DemosStyles\Scheduler\WorkShifts.css" />
     <Content Include="Content\DemosStyles\ScrollView\Overview.css" />
     <Content Include="Content\DemosStyles\SelectBox\CustomizeDropDownButton.css" />
     <Content Include="Content\DemosStyles\SelectBox\GroupedItems.css" />
@@ -1792,7 +1777,6 @@
     <Content Include="Scripts\localization\dx.messages.en.js" />
     <Content Include="Scripts\localization\dx.messages.ja.js" />
     <Content Include="Scripts\localization\dx.messages.ru.js" />
-    <Content Include="Scripts\utils\azure.file.system.js" />
     <Content Include="Scripts\vectormap-data\africa.js" />
     <Content Include="Scripts\vectormap-data\canada.js" />
     <Content Include="Scripts\vectormap-data\eurasia.js" />
@@ -2212,9 +2196,6 @@
     <Content Include="Views\DataGrid\DnDBetweenGridsPartial.cshtml" />
     <Content Include="Views\FileManager\BindingToEF.cshtml" />
     <Content Include="Views\Sortable\Customization.cshtml" />
-    <Content Include="Views\FileManager\AzureServerBinding.cshtml" />
-    <Content Include="Views\FileManager\AzureClientBinding.cshtml" />
-    <Content Include="Views\FileUploader\AzureDirectUploading.cshtml" />
     <Content Include="Views\TreeList\LocalReordering.cshtml" />
     <Content Include="Views\Form\UpdateItemsDynamically.cshtml" />
     <Content Include="Views\Diagram\CustomShapesWithTemplates.cshtml" />
@@ -2265,6 +2246,7 @@
     <Content Include="Views\Scheduler\AllDayPanelMode.cshtml" />
     <Content Include="Views\DataGrid\ColumnChooser.cshtml" />
     <Content Include="Views\DataGrid\ColumnHeaderFilter.cshtml" />
+    <Content Include="Views\Scheduler\WorkShifts.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -20,6 +20,9 @@ window.config = {
     'devextreme/localization.js': {
       'esModule': true,
     },
+    'devextreme/viz/palette.js': {
+      'esModule': true,
+    },
     /** devextreme-aspnet-data-nojquery */
     'devextreme-aspnet-data-nojquery': {
       'esModule': true,
@@ -131,6 +134,7 @@ window.config = {
     'inferno-clone-vnode': 'npm:inferno-clone-vnode/dist/inferno-clone-vnode.min.js',
     'inferno-create-class': 'npm:inferno-create-class/dist/inferno-create-class.min.js',
     'inferno-extras': 'npm:inferno-extras/dist/inferno-extras.min.js',
+    'devextreme-cldr-data': 'npm:devextreme-cldr-data',
 
     // SystemJS plugins
     'plugin-babel': 'npm:systemjs-plugin-babel/plugin-babel.js',
@@ -150,9 +154,17 @@ window.config = {
     'devextreme/events/utils': {
       main: 'index',
     },
+    'devextreme/localization/messages': {
+      format: 'json',
+      defaultExtension: '',
+    },
     'devextreme/events': {
       main: 'index',
-    }/** globalize--vue&react */,
+    }/** globalize */,
+    'devextreme-cldr-data': {
+      format: 'json',
+      defaultExtension: '',
+    }/**//** globalize--vue&react */,
     'globalize': {
       main: '../globalize.js',
       defaultExtension: 'js',

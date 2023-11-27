@@ -21,6 +21,7 @@ const App = () => {
         location: 'before',
         options: {
           icon: 'menu',
+          stylingMode: 'text',
           onClick: () => setOpened(!opened),
         },
       },
@@ -50,8 +51,12 @@ const App = () => {
     return false;
   }, [setOpened]);
   return (
-    <React.Fragment>
-      <Toolbar items={toolbarItems} />
+    <div className="flex-container">
+      <Toolbar
+        items={toolbarItems}
+        id="toolbar"
+        className="dx-theme-background-color"
+      />
       <Drawer
         opened={opened}
         openedStateMode={openedStateMode}
@@ -102,7 +107,7 @@ const App = () => {
           )}
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 export default App;

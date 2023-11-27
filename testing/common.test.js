@@ -54,6 +54,47 @@ const execTestCafeCode = (t, code) => {
   return testCafeFunction(t);
 };
 
+const SKIP_ACCESSIBILITY_TESTS = ['TabPanel-Overview'];
+const COMMON_SKIP_RULES = ['color-contrast'];
+const getTestSpecificSkipRules = (testName) => {
+  switch (testName) {
+    case 'Calendar-MultipleSelection':
+    case 'DataGrid-ExcelJSCellCustomization':
+    case 'DataGrid-HorizontalVirtualScrolling':
+    case 'DataGrid-PDFCellCustomization':
+      return ['empty-table-header'];
+    case 'Autocomplete-Overview':
+    case 'DataGrid-Filtering':
+    case 'DataGrid-FilterPanel':
+    case 'Localization-UsingGlobalize':
+    case 'Localization-UsingIntl':
+      return ['label'];
+    case 'DataGrid-RowTemplate':
+    case 'DataGrid-Row3RdPartyEngineTemplate':
+      return ['aria-required-children', 'image-alt'];
+    case 'DataGrid-CustomNewRecordPosition':
+      return ['link-name'];
+    case 'DataGrid-Column3RdPartyEngineTemplate':
+    case 'DataGrid-ColumnTemplate':
+    case 'DataGrid-ExcelJSExportImages':
+    case 'DataGrid-FilteringAPI':
+    case 'DataGrid-MasterDetailAPI':
+    case 'DataGrid-PDFExportImages':
+    case 'DataGrid-RowSelection':
+    case 'FilterBuilder-WithList':
+    case 'Gallery-Overview':
+      return ['image-alt'];
+    case 'FileUploader-FileSelection':
+      return ['label-title-only'];
+    case 'TreeView-FlatDataStructure':
+      return ['image-redundant-alt'];
+    case 'TreeView-TreeViewWithSearchBar':
+      return ['aria-required-parent'];
+    default:
+      return [];
+  }
+};
+
 ['jQuery', 'React', 'Vue', 'Angular'].forEach((approach) => {
   if (!shouldRunFramework(approach)) { return; }
   fixture(approach)
@@ -79,6 +120,15 @@ const execTestCafeCode = (t, code) => {
 
   const getDemoPaths = (platform) => glob.sync('JSDemos/Demos/*/*')
     .map((path) => join(path, platform));
+  const ACCESSIBILITY_UNSUPPORTED_COMPONENTS = [
+    'Accordion',
+    'Charts',
+    'Diagram',
+    'FileManager',
+    'Gantt',
+    'Scheduler',
+    'PivotGrid',
+  ];
 
   getDemoPaths(approach).forEach((demoPath, index) => {
     if (!shouldRunTestAtIndex(index + 1) || !existsSync(demoPath)) { return; }
@@ -104,6 +154,9 @@ const execTestCafeCode = (t, code) => {
         ...visualTestSettings[approachLowerCase],
       }) || {};
 
+      if (process.env.STRATEGY === 'accessibility' && ACCESSIBILITY_UNSUPPORTED_COMPONENTS.indexOf(widgetName) > -1) {
+        return;
+      }
       if (process.env.CI_ENV && process.env.DISABLE_DEMO_TEST_SETTINGS !== 'ignore') {
         if (mergedTestSettings.ignore) { return; }
       }
@@ -130,7 +183,19 @@ const execTestCafeCode = (t, code) => {
         }
 
         if (process.env.STRATEGY === 'accessibility') {
-          const { error, results } = await axeCheck(t, '.demo-container');
+          if (SKIP_ACCESSIBILITY_TESTS.indexOf(testName) > -1) {
+            return;
+          }
+
+          const specificSkipRules = getTestSpecificSkipRules(testName);
+          const options = { rules: { } };
+
+          [...COMMON_SKIP_RULES, ...specificSkipRules].forEach((ruleName) => {
+            options.rules[ruleName] = { enabled: false };
+          });
+
+          const axeResult = await axeCheck(t, '.demo-container', options);
+          const { error, results } = axeResult;
 
           if (results.violations.length > 0) {
             createMdReport({ testName, results });

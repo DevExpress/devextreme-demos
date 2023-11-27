@@ -1,34 +1,25 @@
-.dx-toolbar {
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.08);
-    padding: 5px 10px;
-    margin-bottom: 5px;
+.demo-container {
+    overflow: visible;
 }
- 
-.dx-list-item-icon-container, .dx-toolbar-before {
-    width: 36px;
-    padding-right: 0px!important;
-    text-align: center;
-}
- 
-.dx-list-item-content {
-    padding-left: 10px !important;
+  
+.flex-container {
+    display: flex;
+    flex-direction: column;
 }
 
-.dx-button {
-    background-color: rgba(191, 191, 191, -0.15);
-    border: none;
+.dx-drawer-content {
+    display: flex;
+}
+
+.toolbar {
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.08);
+    padding: 5px 10px;
+    z-index: 10000;
 }
 
 .panel-list {
     height: 400px;
-}
-
-.dx-drawer-expand.dx-drawer-right .panel-list {
-    float: right;
-}
-
-.panel-list .dx-list-item {
-    border-top: 1px solid rgba(221, 221, 221, .2);
+    padding-top: 12px;
 }
 
 .options {

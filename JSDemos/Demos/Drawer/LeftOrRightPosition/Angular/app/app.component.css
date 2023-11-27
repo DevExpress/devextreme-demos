@@ -1,35 +1,25 @@
-::ng-deep .dx-toolbar {
+::ng-deep .demo-container {
+  overflow: visible;
+}
+
+::ng-deep .flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .dx-drawer-content {
+  display: flex;
+}
+
+::ng-deep #toolbar {
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.08);
   padding: 5px 10px;
-  margin-bottom: 5px;
-}
-
-::ng-deep .dx-list-item-icon-container,
-::ng-deep .dx-toolbar-before {
-  width: 36px;
-  padding-right: 0 !important;
-  text-align: center;
-}
-
-::ng-deep .dx-list-item-content {
-  padding-left: 10px !important;
-}
-
-::ng-deep .dx-button {
-  background-color: rgba(191, 191, 191, -0.15);
-  border: none;
+  z-index: 10000;
 }
 
 ::ng-deep .dx-list.panel-list {
   height: 400px;
-}
-
-::ng-deep .dx-drawer-expand.dx-drawer-right .panel-list {
-  float: right;
-}
-
-::ng-deep .panel-list .dx-list-item {
-  border-top: 1px solid rgba(221, 221, 221, 0.2);
+  padding-top: 12px;
 }
 
 ::ng-deep .options {

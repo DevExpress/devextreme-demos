@@ -1,14 +1,14 @@
 [
-  "W1023 - Appointments require unique keys. Otherwise, the agenda view may not work correctly. See:\nhttp://js.devexpress.com/error/23_2/W1023",
   "The specified credentials are invalid. You can sign up for a free developer account at http://www.bingmapsportal.com",
-  "W2108 - The browser does not support exporting images to GIF format. See:\nhttp://js.devexpress.com/error/23_2/W2108",
   "[Vue warn]: Do not use built-in or reserved HTML elements as component id: title",
   "[Vue warn]: Property \"",
-  "W1011 - The \"keyExpr\" option is not applied when dataSource is not an array.",
   "[Vue warn]: Failed to resolve component: ",
   "Warning: forwardRef render functions accept exactly two parameters: props and ref.",
   "Warning: %s: `ref` is not a prop.",
-  "W0001 - dxDataGrid - 'headerFilter.allowSearch' option is deprecated in 23.1. Use the 'headerFilter.search.enabled' option instead",
+  "W0001 -",
   "W0019 -",
-  "W0022 -"
+  "W0022 -",
+  "W1011 -",
+  "W1023 -",
+  "W2108 -"
 ]
