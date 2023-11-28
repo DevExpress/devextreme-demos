@@ -35,6 +35,7 @@
     .ID("sales-popup")
     .Width(600)
     .Height(400)
+    .ShowCloseButton(true)
     .ContentTemplate(@<text>
         @(Html.DevExtreme().DataGrid<Sale>()
             .ElementAttr("class", "drill-down")
