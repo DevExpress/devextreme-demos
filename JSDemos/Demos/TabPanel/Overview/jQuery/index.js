@@ -33,7 +33,6 @@ $(() => {
     height: 418,
     animationEnabled: true,
     swipeEnabled: true,
-    showNavButtons: true,
     tabsPosition: tabsPositions[0],
     stylingMode: stylingModes[0],
     iconPosition: iconPositions[0],
@@ -64,15 +63,6 @@ $(() => {
     value: iconPositions[0],
     onValueChanged({ value }) {
       tabPanel.option({ iconPosition: value });
-    },
-  });
-
-  $('#show-nav-buttons-checkbox').dxCheckBox({
-    text: 'Show navigation buttons',
-    elementAttr: navButtonsCheckBoxLabel,
-    value: true,
-    onValueChanged({ value }) {
-      tabPanel.option({ showNavButtons: value });
     },
   });
 });

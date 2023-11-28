@@ -22,9 +22,9 @@
     .TimeZone("America/Los_Angeles")
     .Views(new[] {
         SchedulerViewType.Day,
-        SchedulerViewType.Week,
+        SchedulerViewType.WorkWeek,
     })
-    .CurrentView(SchedulerViewType.Week)
+    .CurrentView(SchedulerViewType.WorkWeek)
     .CurrentDate(new DateTime(2021, 3, 30))
     .StartDayHour(0)
     .EndDayHour(8)

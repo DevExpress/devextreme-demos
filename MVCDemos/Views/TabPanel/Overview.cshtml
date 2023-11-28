@@ -29,7 +29,6 @@
             .Height(418)
             .AnimationEnabled(true)
             .SwipeEnabled(true)
-            .ShowNavButtons(true)
             .TabsPosition(Position.Top)
             .StylingMode(TabsStyle.Secondary)
             .IconPosition(TabsIconPosition.Top)
@@ -70,14 +69,6 @@
                 .Value("top")
                 .InputAttr("aria-label", "Icon positions")
                 .OnValueChanged("iconPositionChanged")
-            )
-        </div>
-
-        <div class="option">
-            @(Html.DevExtreme().CheckBox()
-                .Value(false)
-                .Text("Show navigation buttons")
-                .OnValueChanged("showNavButtonsChanged")
             )
         </div>
     </div>
@@ -130,9 +121,5 @@
 
     function iconPositionChanged({ value }) {
         getTabPanelInstance().option({ iconPosition: value });
-    }
-
-    function showNavButtonsChanged({ value }) {
-        getTabPanelInstance().option({ showNavButtons: value });
     }
 </script>
