@@ -12,7 +12,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
             }, new Appointment {
               Text = "Approve Personal Computer Upgrade Plan",
               StartDate = "2021-03-31T01:30:00.000Z",
-              EndDate = "2021-03-31T02:00:00.000Z",
+              EndDate = "2021-03-31T03:00:00.000Z",
             }, new Appointment {
               Text = "Final Budget Review",
               StartDate = "2021-03-30T16:30:00.000Z",
@@ -28,7 +28,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
             }, new Appointment {
               Text = "Prepare 2021 Marketing Plan",
               StartDate = "2021-04-01T16:30:00.000Z",
-              EndDate = "2021-04-01T17:30:00.000Z",
+              EndDate = "2021-04-01T18:00:00.000Z",
             }, new Appointment {
               Text = "Brochure Design Review",
               StartDate = "2021-04-02T17:30:00.000Z",
@@ -44,7 +44,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
             }, new Appointment {
               Text = "Launch New Website",
               StartDate = "2021-04-01T01:30:00.000Z",
-              EndDate = "2021-04-01T02:30:00.000Z",
+              EndDate = "2021-04-01T03:00:00.000Z",
               RecurrenceRule = "FREQ=WEEKLY;BYDAY=WE;INTERVAL=2",
             }, new Appointment {
               Text = "Install New Router in Dev Room",
