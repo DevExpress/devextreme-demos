@@ -13,7 +13,7 @@ fixture('Scheduler.Templates')
   });
 
 runManualTest('Scheduler', 'Resources', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
-  test('', async (t) => {
+  test('Resource fields shouldn\'t empty', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await disableAnimation();
