@@ -30,7 +30,7 @@ const data = [{
   text: 'Google AdWords Strategy',
   startDate: new Date('2021-05-03T16:00:00.000Z'),
   endDate: new Date('2021-05-03T17:30:00.000Z'),
-  assigneeId: [3,
+  assigneeId: [3],
   priorityId: 1,
 }, {
   text: 'New Brochures',
