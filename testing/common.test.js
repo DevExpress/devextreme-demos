@@ -75,6 +75,9 @@ const execTestCafeCode = (t, code) => {
 
   const getDemoPaths = (platform) => glob.sync('JSDemos/Demos/*/*')
     .map((path) => join(path, platform));
+  const BROKEN_THIRD_PARTY_SCRIPTS_COMPONENTS = [
+    'Map',
+  ];
 
   getDemoPaths(approach).forEach((demoPath, index) => {
     if (!shouldRunTestAtIndex(index) || !existsSync(demoPath)) { return; }
@@ -101,6 +104,9 @@ const execTestCafeCode = (t, code) => {
         ...visualTestSettings[approachLowerCase],
       }) || {};
 
+      if (BROKEN_THIRD_PARTY_SCRIPTS_COMPONENTS.indexOf(widgetName) > -1) {
+        return;
+      }
       if (process.env.CI_ENV && process.env.DISABLE_DEMO_TEST_SETTINGS !== 'ignore') {
         if (mergedTestSettings.ignore) { return; }
       }
