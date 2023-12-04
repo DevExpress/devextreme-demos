@@ -102,6 +102,51 @@ npm run convert-to-js "JSDemos/Demos/Diagram/**/React"
 
 1. Open the `NetCoreDemos/DevExtreme.NETCore.Demos.sln` or `MVCDemos/DevExtreme.MVC.Demos.sln` project in Visual Studio and add or edit demos there.
 
+## Launch .NET Demos on Mac OS
+
+> **_NOTE:_** You will need [parallels](https://www.parallels.com) and [Visual studio](https://visualstudio.microsoft.com) installed in parallels.
+
+1. Clone the current repo and [devextreme-aspnet](https://github.com/DevExpress/devextreme-aspnet) to local folder in parallels Windows
+> **_NOTE:_** **Don't clone on Mac OS file system.** The virtual machine works with Mac OS a file system like a network drive.
+
+2. Open the `repository.config.json` file, set the `devextreme-aspnet` property to the path where your clone of the `devextreme-aspnet` repository is located, and set the `devextreme` property to the path DevExtreme repo if you want to use local devextreme dist. For example:
+
+    ```json
+    {
+      "devextreme": "C:/Work/DevExtreme",
+      "devextreme-aspnet": "C:/Work/devextreme-aspnet"
+    }
+    ```
+
+3. Prepare ASP.NET demos for launch and development. Run this command in the `devextreme-demos` repository.
+    ```
+    npm run prepare-all
+    ```
+    For this, you need .NET Framework 4.5.2 installed on your device. You can download a full Developer Pack here: [.NET 4.5.2 Developer Pack Installer](https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net452-developer-pack-offline-installer).
+
+### Launch .NET core Demos
+
+> **_NOTE:_** IIS express supported only .NET 7 on ARM architecture. **Therefore, you can't launch demos using Visual Studio.** The only way to launch demos on ARM architecture is [Kestrel web server](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-8.0).
+
+
+1. In folder ```\devextreme-demos\NetCoreDemos\``` execute command
+```
+dotnet run --urls=http://localhost:5001/
+```
+
+> **_NOTE:_** ```--urls``` can have any url value
+
+### Launch .Net MVC Demos
+
+IIS supported on ARM architecture, so you can launch demos using Visual Studio.
+
+
+## Possible problems you will encounter
+
+### Problem - .NET Core demos doesn't pick up the latest devextreme sources
+
+> **Solution:_** Clear local Nuget cache. Remove folder ```Windows:\Users\{username}\.nuget\packages\devextreme.aspnet.core```
+
 ## See Also
 
 - [Technical demos online](https://js.devexpress.com/Demos/)
