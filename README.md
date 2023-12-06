@@ -118,7 +118,7 @@ npm run convert-to-js "JSDemos/Demos/Diagram/**/React"
     }
     ```
 
-3. Prepare ASP.NET demos for launch and development. Run this command in the `devextreme-demos` repository.
+3. Prepare ASP.NET demos for launch and development. Run this command in the `devextreme-demos` repository:
     ```
     npm run prepare-all
     ```
