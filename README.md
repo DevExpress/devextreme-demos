@@ -104,7 +104,7 @@ npm run convert-to-js "JSDemos/Demos/Diagram/**/React"
 
 ## Launch .NET Demos on Mac OS
 
-> **_NOTE:_** You will need [parallels](https://www.parallels.com) and [Visual studio](https://visualstudio.microsoft.com) installed in parallels.
+> **_NOTE:_** Install [Parallels](https://www.parallels.com) and [Visual Studio](https://visualstudio.microsoft.com) in Parallels.
 
 1. Clone the current repo and [devextreme-aspnet](https://github.com/DevExpress/devextreme-aspnet) to local folder in parallels Windows
 > **_NOTE:_** **Don't clone on Mac OS file system.** The virtual machine works with Mac OS a file system like a network drive.
