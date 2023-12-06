@@ -122,7 +122,7 @@ npm run convert-to-js "JSDemos/Demos/Diagram/**/React"
     ```
     npm run prepare-all
     ```
-    For this, you need .NET Framework 4.5.2 installed on your device. You can download a full Developer Pack here: [.NET 4.5.2 Developer Pack Installer](https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net452-developer-pack-offline-installer).
+    Ensure you have .NET Framework 4.5.2 installed on your device. You can download the full Developer Pack here: [.NET 4.5.2 Developer Pack Installer](https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net452-developer-pack-offline-installer).
 
 ### Launch .NET core Demos
 
