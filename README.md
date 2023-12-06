@@ -138,7 +138,7 @@ dotnet run --urls=http://localhost:5001/
 
 ### Launch .Net MVC Demos
 
-IIS supported on ARM architecture, so you can launch demos using Visual Studio.
+IIS supports the ARM architecture, so you can launch demos using Visual Studio.
 
 
 ## Possible problems you will encounter
