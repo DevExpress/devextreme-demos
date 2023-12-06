@@ -129,7 +129,7 @@ npm run convert-to-js "JSDemos/Demos/Diagram/**/React"
 > **_NOTE:_** IIS express supported only .NET 7 on ARM architecture. **Therefore, you can't launch demos using Visual Studio.** The only way to launch demos on ARM architecture is [Kestrel web server](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-8.0).
 
 
-1. In folder ```\devextreme-demos\NetCoreDemos\``` execute command
+1. Execute the following command in the ```\devextreme-demos\NetCoreDemos\``` folder:
 ```
 dotnet run --urls=http://localhost:5001/
 ```
