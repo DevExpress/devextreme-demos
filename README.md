@@ -141,7 +141,7 @@ dotnet run --urls=http://localhost:5001/
 IIS supports the ARM architecture, so you can launch demos using Visual Studio.
 
 
-## Possible problems you will encounter
+## Possible Problems You May Encounter
 
 ### Problem - .NET Core demos doesn't pick up the latest devextreme sources
 
