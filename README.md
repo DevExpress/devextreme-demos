@@ -134,7 +134,7 @@ npm run convert-to-js "JSDemos/Demos/Diagram/**/React"
 dotnet run --urls=http://localhost:5001/
 ```
 
-> **_NOTE:_** ```--urls``` can have any url value
+> **_NOTE:_** ```--urls``` can have any url value.
 
 ### Launch .Net MVC Demos
 
