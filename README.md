@@ -145,7 +145,7 @@ IIS supports the ARM architecture, so you can launch demos using Visual Studio.
 
 ### .NET Core demos do not pick up the latest devextreme sources
 
-> **Solution:_** Clear local Nuget cache. Remove folder ```Windows:\Users\{username}\.nuget\packages\devextreme.aspnet.core```
+> **Solution:_** Clear local Nuget cache. Remove the ```Windows:\Users\{username}\.nuget\packages\devextreme.aspnet.core``` folder.
 
 ## See Also
 
