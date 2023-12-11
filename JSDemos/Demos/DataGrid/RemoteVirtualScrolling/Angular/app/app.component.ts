@@ -18,14 +18,10 @@ if (!/localhost/.test(document.location.host)) {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  dataSource: any;
-
-  constructor() {
-    this.dataSource = AspNetData.createStore({
-      key: 'Id',
-      loadUrl: 'https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/Sales',
-    });
-  }
+  dataSource = AspNetData.createStore({
+    key: 'Id',
+    loadUrl: 'https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/Sales',
+  });
 }
 
 @NgModule({

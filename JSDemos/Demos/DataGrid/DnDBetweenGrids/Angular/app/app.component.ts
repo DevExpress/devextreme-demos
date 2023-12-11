@@ -3,6 +3,7 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxDataGridModule } from 'devextreme-angular';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
+import { Options as DataSourceOptions } from 'devextreme/data/data_source';
 import { Priority, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -19,13 +20,13 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   statuses: Array<number>;
 
-  dataSource: any;
+  dataSource: DataSourceOptions;
 
   priorities: Array<Priority>;
 
   url: string;
 
-  tasksStore: any;
+  tasksStore: AspNetData.CustomStore;
 
   constructor(service: Service) {
     this.url = 'https://js.devexpress.com/Demos/Mvc/api/DnDBetweenGrids';
@@ -39,7 +40,7 @@ export class AppComponent {
       onBeforeSend(method, ajaxOptions) {
         ajaxOptions.xhrFields = { withCredentials: true };
       },
-    }),
+    });
 
     this.dataSource = {
       store: this.tasksStore,

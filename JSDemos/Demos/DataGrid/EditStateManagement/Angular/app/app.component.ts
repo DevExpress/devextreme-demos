@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { DxDataGridModule, DxLoadPanelModule } from 'devextreme-angular';
 import { Observable, Subscription } from 'rxjs';
+import { DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 import { Service, Order, Change } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -52,7 +53,7 @@ export class AppComponent implements OnInit, OnDestroy {
     })), null, ' ');
   }
 
-  onSaving(e: any) {
+  onSaving(e: DxDataGridTypes.SavingEvent) {
     const change = e.changes[0];
 
     if (change) {

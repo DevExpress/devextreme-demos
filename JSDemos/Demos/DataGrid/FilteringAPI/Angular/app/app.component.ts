@@ -10,6 +10,7 @@ import {
 } from 'devextreme-angular';
 
 import 'devextreme/data/odata/store';
+import { Options as DataSourceOptions } from 'devextreme/data/data_source';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -27,7 +28,7 @@ export class AppComponent {
 
   statuses: string[];
 
-  tasks: any;
+  tasks: DataSourceOptions;
 
   constructor() {
     this.statuses = ['All', 'Not Started', 'In Progress', 'Need Assistance', 'Deferred', 'Completed'];

@@ -11,6 +11,7 @@ import {
 } from 'devextreme-angular';
 
 import { Order, Service } from './app.service';
+import {DxoHeaderFilterComponent} from "devextreme-angular/ui/nested/header-filter";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -29,11 +30,11 @@ export class AppComponent {
 
   orders: Order[];
 
-  saleAmountHeaderFilter: any;
+  saleAmountHeaderFilter: DxoHeaderFilterComponent['dataSource'];
 
-  applyFilterTypes: any;
+  applyFilterTypes: Record<string, string>[];
 
-  currentFilter: any;
+  currentFilter: string;
 
   showFilterRow: boolean;
 

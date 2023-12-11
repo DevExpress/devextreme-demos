@@ -10,8 +10,8 @@ import {
 import { DxDataGridModule, DxSelectBoxModule, DxButtonModule } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
 import { formatDate } from 'devextreme/localization';
-
 import { lastValueFrom } from 'rxjs';
+
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -26,11 +26,11 @@ const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
   preserveWhitespaces: true,
 })
 export class AppComponent {
-  dataSource: any;
+  dataSource: CustomStore;
 
-  customersData: any;
+  customersData: {paginate: boolean, store: CustomStore};
 
-  shippersData: any;
+  shippersData: CustomStore;
 
   refreshModes: string[];
 
@@ -73,7 +73,7 @@ export class AppComponent {
     });
   }
 
-  async sendRequest(url: string, method = 'GET', data: any = {}) {
+  async sendRequest(url: string, method = 'GET', data = {}) {
     this.logRequest(method, url, data);
 
     const httpParams = new HttpParams({ fromObject: data });

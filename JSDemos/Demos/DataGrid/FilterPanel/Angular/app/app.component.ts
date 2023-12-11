@@ -2,16 +2,17 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxDataGridModule } from 'devextreme-angular';
-
-import DataSource from 'devextreme/data/data_source';
-import { Service } from './app.service';
+import { DxFilterBuilderTypes } from 'devextreme-angular/ui/filter-builder';
+import { PositionConfig } from 'devextreme/animation/position';
+import { DxoHeaderFilterComponent } from 'devextreme-angular/ui/nested/header-filter';
+import { Order, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
 
-const getOrderDay = function (rowData: any): number {
-  return (new Date(rowData.OrderDate)).getDay();
+const getOrderDay = function ({ OrderDate }): number {
+  return (new Date(OrderDate)).getDay();
 };
 
 @Component({
@@ -22,15 +23,15 @@ const getOrderDay = function (rowData: any): number {
 })
 
 export class AppComponent {
-  dataSource: any;
+  dataSource: Order[];
 
-  filterValue: Array<any>;
+  filterValue: Array<string[] | string>;
 
-  customOperations: Array<any>;
+  customOperations: DxFilterBuilderTypes.CustomOperation[];
 
-  popupPosition: any;
+  popupPosition: PositionConfig;
 
-  saleAmountHeaderFilter: any;
+  saleAmountHeaderFilter: DxoHeaderFilterComponent['dataSource'];
 
   constructor(service: Service) {
     this.dataSource = service.getOrders();

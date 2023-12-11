@@ -10,6 +10,7 @@ import {
 } from 'devextreme-angular';
 import ArrayStore from 'devextreme/data/array_store';
 import { Service, Employee, State } from './app.service';
+import {DxDataGridTypes} from "devextreme-angular/ui/data-grid";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -28,7 +29,7 @@ export class AppComponent {
 
   states: State[];
 
-  selectedItemKeys: any[] = [];
+  selectedItemKeys: string[] = [];
 
   constructor(service: Service) {
     this.dataSource = new ArrayStore({
@@ -38,8 +39,8 @@ export class AppComponent {
     this.states = service.getStates();
   }
 
-  onSelectionChanged(data: any) {
-    this.selectedItemKeys = data.selectedRowKeys;
+  onSelectionChanged({ selectedRowKeys }: DxDataGridTypes.SelectionChangedEvent) {
+    this.selectedItemKeys = selectedRowKeys;
   }
 
   deleteRecords() {

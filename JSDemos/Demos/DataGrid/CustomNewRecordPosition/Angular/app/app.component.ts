@@ -5,6 +5,7 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxDataGridModule, DxSelectBoxModule } from 'devextreme-angular';
 import Guid from 'devextreme/core/guid';
+import CustomStore from 'devextreme/data/custom_store';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -18,7 +19,7 @@ if (!/localhost/.test(document.location.host)) {
   providers: [Service],
 })
 export class AppComponent {
-  dataSource: any;
+  dataSource: CustomStore;
 
   newRowPosition = 'viewportTop';
 

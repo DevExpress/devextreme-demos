@@ -17,9 +17,9 @@ const url = 'https://js.devexpress.com/Demos/Mvc/api/RowReordering';
   styleUrls: ['app/app.component.css'],
 })
 export class AppComponent {
-  tasksStore: any;
+  tasksStore: AspNetData.CustomStore;
 
-  employeesStore: any;
+  employeesStore: AspNetData.CustomStore;
 
   constructor() {
     this.tasksStore = AspNetData.createStore({

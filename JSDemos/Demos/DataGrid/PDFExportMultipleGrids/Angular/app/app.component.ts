@@ -8,7 +8,7 @@ import {
 } from 'devextreme-angular';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
-
+import { Options as DataSourceConfig } from 'devextreme/data/data_source';
 import 'devextreme/data/odata/store';
 
 if (!/localhost/.test(document.location.host)) {
@@ -26,9 +26,9 @@ export class AppComponent {
 
   @ViewChild('ratingDataGrid', { static: false }) ratingDataGrid: DxDataGridComponent;
 
-  priceDataSource: any;
+  priceDataSource: DataSourceConfig;
 
-  ratingDataSource: any;
+  ratingDataSource: DataSourceConfig;
 
   constructor() {
     this.priceDataSource = {

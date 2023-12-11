@@ -22,13 +22,7 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   url: string;
 
-  suppliersData: any;
-
-  productsDataMap: object = {};
-
-  productIdBySupplier: object = {};
-
-  orderHistoryDataMap: object = {};
+  suppliersData: DataSource;
 
   constructor() {
     this.url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridAdvancedMasterDetailView';

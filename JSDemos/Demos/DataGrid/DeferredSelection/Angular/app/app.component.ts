@@ -7,6 +7,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxDataGridModule, DxDataGridComponent, DxButtonModule } from 'devextreme-angular';
 import query from 'devextreme/data/query';
 import 'devextreme/data/odata/store';
+import { Options as DataSourceOptions } from 'devextreme/data/data_source';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -23,7 +24,7 @@ export class AppComponent implements AfterViewInit {
 
   MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
 
-  dataSource: any = {
+  dataSource: DataSourceOptions = {
     store: {
       type: 'odata',
       version: 2,

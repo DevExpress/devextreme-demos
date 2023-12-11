@@ -12,8 +12,9 @@ import {
   DxNumberBoxModule,
   DxCheckBoxModule,
 } from 'devextreme-angular';
-
+import { Options as DataSourceOptions } from 'devextreme/data/data_source';
 import 'devextreme/data/odata/store';
+import { DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -30,9 +31,9 @@ export class AppComponent {
 
   @ViewChild(DxNumberBoxComponent, { static: false }) numberBox: DxNumberBoxComponent;
 
-  columns: any;
+  columns: DxDataGridTypes.Column[];
 
-  dataSource: any;
+  dataSource: DataSourceOptions;
 
   isReady: boolean;
 

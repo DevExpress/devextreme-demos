@@ -32,7 +32,7 @@ export class AppComponent {
 
   totalCount: number;
 
-  groupingValues: any[];
+  groupingValues: Record<string, string>[];
 
   constructor(service: Service) {
     this.orders = service.getOrders();

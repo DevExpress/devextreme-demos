@@ -22,7 +22,7 @@ export class AppComponent {
 
   searchEnabled: boolean;
 
-  editorOptions: any;
+  editorOptions: Record<string, string>;
 
   allowSelectAll: boolean;
 
@@ -30,7 +30,7 @@ export class AppComponent {
 
   recursive: boolean;
 
-  columnChooserModes: any;
+  columnChooserModes: Record<string, string>[];
 
   constructor(service: Service) {
     this.employees = service.getEmployees();
