@@ -86,10 +86,6 @@ const getTestSpecificSkipRules = (testName) => {
       return ['image-alt'];
     case 'FileUploader-FileSelection':
       return ['label-title-only'];
-    case 'TreeView-FlatDataStructure':
-      return ['image-redundant-alt'];
-    case 'TreeView-TreeViewWithSearchBar':
-      return ['aria-required-parent'];
     default:
       return [];
   }
