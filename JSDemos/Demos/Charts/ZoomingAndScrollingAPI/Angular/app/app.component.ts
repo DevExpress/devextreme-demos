@@ -4,8 +4,8 @@ import {
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxChartModule, DxRangeSelectorModule } from 'devextreme-angular';
-
 import { Service, ZoomingData } from './app.service';
+import {DxChartTypes} from "devextreme-angular/ui/chart";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -19,7 +19,7 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   zoomingData: ZoomingData[];
 
-  visualRange: any = {};
+  visualRange: DxChartTypes.ArgumentAxis['visualRange'] = {};
 
   constructor(service: Service) {
     this.zoomingData = service.getZoomingData();

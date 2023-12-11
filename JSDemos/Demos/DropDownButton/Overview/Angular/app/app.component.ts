@@ -1,5 +1,5 @@
 import {
-  NgModule, Component, ViewChild, enableProdMode,
+  NgModule, Component, enableProdMode,
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -8,12 +8,16 @@ import notify from 'devextreme/ui/notify';
 import {
   DxDropDownButtonModule,
   DxToolbarModule,
+  DxDropDownButtonComponent,
 } from 'devextreme-angular';
+import { DxDropDownButtonTypes } from 'devextreme-angular/ui/drop-down-button';
 import { SimpleObject, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+
+type Color = string;
 
 @Component({
   selector: 'demo-app',
@@ -30,9 +34,9 @@ export class AppComponent {
 
   alignment: string;
 
-  dropDownButton: any;
+  dropDownButton: DxDropDownButtonComponent['instance'];
 
-  colors: string[];
+  colors: Color[];
 
   downloads: string[];
 
@@ -58,31 +62,31 @@ export class AppComponent {
     this.lineHeights = service.getLineHeights();
   }
 
-  onAlignmentChanged = (e) => {
+  onAlignmentChanged = (e: DxDropDownButtonTypes.SelectionChangedEvent) => {
     this.alignment = e.item.value;
   };
 
-  onFontSizeChanged = (e) => {
+  onFontSizeChanged = (e: DxDropDownButtonTypes.SelectionChangedEvent) => {
     this.fontSize = e.item.value;
   };
 
-  onLineHeightChanged = (e) => {
+  onLineHeightChanged = (e: DxDropDownButtonTypes.SelectionChangedEvent) => {
     this.lineHeight = e.item.value;
   };
 
-  onButtonClick(e) {
+  onButtonClick(e: DxDropDownButtonTypes.ButtonClickEvent) {
     notify(`Go to ${e.component.option('text')}'s profile`, 'success', 600);
   }
 
-  onItemClick(e) {
+  onItemClick(e: DxDropDownButtonTypes.ItemClickEvent) {
     notify(e.itemData.name || e.itemData, 'success', 600);
   }
 
-  onColorPickerInit = (e) => {
+  onColorPickerInit = (e: DxDropDownButtonTypes.InitializedEvent) => {
     this.dropDownButton = e.component;
   };
 
-  onColorClick(color) {
+  onColorClick(color: Color) {
     this.color = color;
     this.dropDownButton.element().getElementsByClassName('dx-icon-square')[0].style.color = color;
     this.dropDownButton.close();

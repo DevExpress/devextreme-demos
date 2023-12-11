@@ -2,6 +2,7 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxChartModule } from 'devextreme-angular';
+import { DxChartTypes } from 'devextreme-angular/ui/chart';
 import { Population, CorrelationDescription, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -26,27 +27,20 @@ export class AppComponent {
     this.correlationSource = service.getCorrelationSource();
   }
 
-  customizeTooltip(arg: any) {
-    return {
-      text: `${arg.point.tag}<br/>Total Population: ${arg.argumentText}M<br/>Population with Age over 60: ${arg.valueText}M (${arg.size}%)`,
-    };
-  }
+  customizeTooltip = ({
+    point, argumentText, valueText, size,
+  }: { point: Record<string, unknown>, argumentText: string, valueText: string, size: number }) => ({
+    text: `${point.tag}<br/>Total Population: ${argumentText}M<br/>Population with Age over 60: ${valueText}M (${size}%)`,
+  });
 
-  argumentCustomizeText(args: any) {
-    return `${args.value}M`;
-  }
+  argumentCustomizeText = ({ value }: { value: string }) => `${value}M`;
 
-  valueCustomizeText(args: any) {
-    return `${args.value}M`;
-  }
+  valueCustomizeText = ({ value }: { value: string }) => `${value}M`;
 
-  onSeriesClick(e: any) {
-    const series = e.target;
-    if (series.isVisible()) {
-      series.hide();
-    } else {
-      series.show();
-    }
+  onSeriesClick({ target: series }: DxChartTypes.SeriesClickEvent) {
+    series.isVisible()
+      ? series.hide()
+      : series.show();
   }
 }
 

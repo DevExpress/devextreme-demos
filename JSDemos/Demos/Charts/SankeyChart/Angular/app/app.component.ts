@@ -22,11 +22,11 @@ export class AppComponent {
     this.data = service.getData();
   }
 
-  customizeLinkTooltip(info: any) {
-    return {
-      html: `<b>From:</b> ${info.source}<br/><b>To:</b> ${info.target}<br/><b>Weight:</b> ${info.weight}`,
-    };
-  }
+  customizeLinkTooltip = ({ source, target, weight }) => (
+    {
+      html: `<b>From:</b> ${source}<br/><b>To:</b> ${target}<br/><b>Weight:</b> ${weight}`,
+    }
+  );
 }
 @NgModule({
   imports: [

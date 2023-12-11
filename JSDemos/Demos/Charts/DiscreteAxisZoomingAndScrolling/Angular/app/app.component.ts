@@ -27,9 +27,7 @@ export class AppComponent {
     this.seriesSource = service.getSeries();
   }
 
-  customizeText(arg: any) {
-    return `${arg.valueText}%`;
-  }
+  customizeText = ({ valueText }: { valueText: string }) => `${valueText}%`;
 }
 
 @NgModule({

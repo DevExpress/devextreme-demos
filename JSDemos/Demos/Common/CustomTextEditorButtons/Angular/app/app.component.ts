@@ -22,21 +22,21 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   passwordMode: string;
 
-  passwordButton: any;
+  passwordButton: Record<string, unknown>;
 
   currencyFormat: string;
 
-  currencyButton: any;
+  currencyButton: Record<string, unknown>;
 
   priceValue: number;
 
   dateValue: number;
 
-  todayButton: any;
+  todayButton: Record<string, unknown>;
 
-  prevDateButton: any;
+  prevDateButton: Record<string, unknown>;
 
-  nextDateButton: any;
+  nextDateButton: Record<string, unknown>;
 
   millisecondsInDay = 24 * 60 * 60 * 1000;
 

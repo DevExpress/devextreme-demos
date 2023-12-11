@@ -36,7 +36,7 @@ export class AppComponent {
 
   states: string[];
 
-  phoneRules: any = {
+  phoneRules = {
     X: /[02-9]/,
   };
 

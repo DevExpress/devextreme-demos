@@ -14,6 +14,9 @@ import {
 } from 'devextreme-angular';
 
 import CustomStore from 'devextreme/data/custom_store';
+import { DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
+import { DxDropDownBox } from 'devextreme-vue';
+import { DxDropDownBoxTypes } from 'devextreme-angular/ui/drop-down-box';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -28,19 +31,19 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   @ViewChild(DxTreeViewComponent, { static: false }) treeView;
 
-  treeDataSource: any;
+  treeDataSource: CustomStore;
 
-  treeBoxValue: string;
+  treeBoxValue: unknown[] | string;
 
   isTreeBoxOpened: boolean;
 
-  gridDataSource: any;
+  gridDataSource: CustomStore;
 
   gridBoxValue: number[] = [3];
 
   isGridBoxOpened: boolean;
 
-  gridColumns: any = ['CompanyName', 'City', 'Phone'];
+  gridColumns = ['CompanyName', 'City', 'Phone'];
 
   constructor(private httpClient: HttpClient, private ref: ChangeDetectorRef) {
     this.treeDataSource = this.makeAsyncDataSource(this.httpClient, 'treeProducts.json');
@@ -70,22 +73,22 @@ export class AppComponent {
     }
   }
 
-  treeView_itemSelectionChanged(e) {
+  treeView_itemSelectionChanged(e: DxTreeViewTypes.ItemSelectionChangedEvent) {
     this.treeBoxValue = e.component.getSelectedNodeKeys();
   }
 
-  gridBox_displayExpr(item) {
-    return item && `${item.CompanyName} <${item.Phone}>`;
+  gridBox_displayExpr({ CompanyName = '', Phone = '' }) {
+    return `${CompanyName} <${Phone}>`;
   }
 
-  onTreeBoxOptionChanged(e) {
+  onTreeBoxOptionChanged(e: DxTreeViewTypes.OptionChangedEvent) {
     if (e.name === 'value') {
       this.isTreeBoxOpened = false;
       this.ref.detectChanges();
     }
   }
 
-  onGridBoxOptionChanged(e) {
+  onGridBoxOptionChanged(e: DxDropDownBoxTypes.OptionChangedEvent) {
     if (e.name === 'value') {
       this.isGridBoxOpened = false;
       this.ref.detectChanges();

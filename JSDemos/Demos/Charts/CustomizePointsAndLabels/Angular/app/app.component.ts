@@ -26,27 +26,25 @@ export class AppComponent {
     this.temperaturesData = service.getTemperaturesData();
   }
 
-  customizePoint = (arg: any) => {
-    if (arg.value > this.highAverage) {
+  customizePoint = ({ value }: { value: number }) => {
+    if (value > this.highAverage) {
       return { color: '#ff7c7c', hoverStyle: { color: '#ff7c7c' } };
-    } if (arg.value < this.lowAverage) {
+    } if (value < this.lowAverage) {
       return { color: '#8c8cff', hoverStyle: { color: '#8c8cff' } };
     }
   };
 
-  customizeLabel = (arg: any) => {
-    if (arg.value > this.highAverage) {
+  customizeLabel = ({ value }: { value: number }) => {
+    if (value > this.highAverage) {
       return {
         visible: true,
         backgroundColor: '#ff7c7c',
-        customizeText(e: any) {
-          return `${e.valueText}&#176F`;
-        },
+        customizeText: this.customizeText,
       };
     }
   };
 
-  customizeText = (arg: any) => `${arg.valueText}&#176F`;
+  customizeText = ({ valueText }: { valueText: string }) => `${valueText}&#176F`;
 }
 
 @NgModule({

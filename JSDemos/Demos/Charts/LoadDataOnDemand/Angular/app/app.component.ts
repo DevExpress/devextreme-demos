@@ -13,6 +13,11 @@ if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
 
+interface DateBounds {
+  startValue: Date,
+  endValue: Date,
+}
+
 @Component({
   selector: 'demo-app',
   templateUrl: 'app/app.component.html',
@@ -21,15 +26,19 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   @ViewChild(DxChartComponent, { static: false }) component: DxChartComponent;
 
-  private _visualRange: any = {};
+  private _visualRange: {
+    startValue: Date,
+    endValue?: Date,
+    length?: Record<string, number>
+  };
 
   HALFDAY = 43200000;
 
   packetsLock = 0;
 
-  chartDataSource: any;
+  chartDataSource: DataSource;
 
-  bounds: any;
+  bounds: DateBounds;
 
   constructor(private httpClient: HttpClient) {
     this.chartDataSource = new DataSource({
@@ -51,21 +60,23 @@ export class AppComponent {
     };
   }
 
-  get currentVisualRange(): any {
+  get currentVisualRange() {
     return this._visualRange;
   }
 
-  set currentVisualRange(range: any) {
+  set currentVisualRange(range: typeof this._visualRange) {
     this._visualRange.startValue = range.startValue;
     this._visualRange.endValue = range.endValue;
     this.onVisualRangeChanged();
   }
 
+  dateDiff = (start, end): number => end - start;
+
   onVisualRangeChanged() {
     const items = this.component.instance.getDataSource().items();
     if (!items.length
-            || items[0].date - this._visualRange.startValue >= this.HALFDAY
-            || this._visualRange.endValue - items[items.length - 1].date >= this.HALFDAY) {
+            || this.dateDiff(items[0].date, this._visualRange.startValue) >= this.HALFDAY
+            || this.dateDiff(this._visualRange.endValue, items[items.length - 1].date) >= this.HALFDAY) {
       this.uploadDataByVisualRange();
     }
   }
@@ -87,7 +98,7 @@ export class AppComponent {
       this.component.instance.showLoadingIndicator();
 
       this.getDataFrame(ajaxArgs)
-        .then((dataFrame: any) => {
+        .then((dataFrame: Record<string, number | Date>[]) => {
           this.packetsLock--;
           dataFrame = dataFrame.map((i) => ({
             date: new Date(i.Date),
@@ -108,7 +119,7 @@ export class AppComponent {
     }
   }
 
-  getDataFrame(args: any) {
+  getDataFrame(args: Record<string, string>) {
     let params = '?';
 
     params += `startVisible=${args.startVisible}`;
