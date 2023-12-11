@@ -34,8 +34,8 @@ export class AppComponent {
 
 @Pipe({ name: 'gridCellData' })
 export class GridCellDataPipe implements PipeTransform {
-  transform(gridData: any) {
-    return gridData.data[gridData.column.caption.toLowerCase()];
+  transform({ data, column }) {
+    return data[column.caption.toLowerCase()];
   }
 }
 

@@ -15,15 +15,13 @@ if (!/localhost/.test(document.location.host)) {
   templateUrl: 'app/app.component.html',
 })
 export class AppComponent {
-  customersData: any;
+  customersData: AspNetData.CustomStore;
 
-  shippersData: any;
+  shippersData: AspNetData.CustomStore;
 
-  dataSource: any;
+  dataSource: AspNetData.CustomStore;
 
   url: string;
-
-  masterDetailDataSource: any;
 
   constructor() {
     this.url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';

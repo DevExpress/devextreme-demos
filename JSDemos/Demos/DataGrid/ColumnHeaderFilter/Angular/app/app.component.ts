@@ -21,9 +21,9 @@ export class AppComponent {
 
   showHeaderFilter: boolean;
 
-  editorOptions: any;
+  editorOptions: Record<string, string>;
 
-  searchExpr: any;
+  searchExpr: string[];
 
   constructor(service: Service) {
     this.employees = service.getEmployees();

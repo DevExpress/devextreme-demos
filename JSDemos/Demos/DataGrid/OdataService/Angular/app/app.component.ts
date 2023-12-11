@@ -1,7 +1,7 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
+import { Options as DataSourceConfig } from 'devextreme/data/data_source';
 import 'devextreme/data/odata/store';
 import { DxDataGridModule } from 'devextreme-angular';
 
@@ -14,7 +14,7 @@ if (!/localhost/.test(document.location.host)) {
   templateUrl: 'app/app.component.html',
 })
 export class AppComponent {
-  dataSource: any;
+  dataSource: DataSourceConfig;
 
   constructor() {
     this.dataSource = {

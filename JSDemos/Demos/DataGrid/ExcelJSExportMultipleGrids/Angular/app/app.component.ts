@@ -10,7 +10,7 @@ import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
 // Our demo infrastructure requires us to use 'file-saver-es'. We recommend that you use the official 'file-saver' package in your applications.
 import { exportDataGrid } from 'devextreme/excel_exporter';
-import DataGrid from 'devextreme/ui/data_grid';
+import { Options as DataSourceOptions } from 'devextreme/data/data_source';
 import 'devextreme/data/odata/store';
 
 if (!/localhost/.test(document.location.host)) {
@@ -28,9 +28,9 @@ export class AppComponent {
 
   @ViewChild('ratingDataGrid', { static: false }) ratingDataGrid: DxDataGridComponent;
 
-  priceDataSource: any;
+  priceDataSource: DataSourceOptions;
 
-  ratingDataSource: any;
+  ratingDataSource: DataSourceOptions;
 
   constructor() {
     this.priceDataSource = {
