@@ -23,12 +23,8 @@ export class AppComponent {
     this.data = service.getData();
   }
 
-  customizeText(arg: any) {
-    return `<span style='font-size: 28px'>${
-      arg.percentText
-    }</span><br/>${
-      arg.item.argument}`;
-  }
+  customizeText = ({ percentText, item: { argument } }) =>
+      `<span style='font-size: 28px'>${percentText}</span><br/>${argument}`
 }
 
 @NgModule({

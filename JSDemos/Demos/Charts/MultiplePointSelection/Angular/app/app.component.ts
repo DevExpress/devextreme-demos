@@ -3,6 +3,7 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxChartModule } from 'devextreme-angular';
 
+import { DxChartTypes } from 'devextreme-angular/ui/chart';
 import { Service, MedalsInfo } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -22,8 +23,7 @@ export class AppComponent {
     this.medalsInfo = service.getMedalsInfo();
   }
 
-  pointClick(e: any) {
-    const point = e.target;
+  pointClick({ target: point }: DxChartTypes.PointClickEvent) {
     if (point.isSelected()) {
       point.clearSelection();
     } else {

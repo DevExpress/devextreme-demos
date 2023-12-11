@@ -44,7 +44,7 @@ export class AppComponent {
 
   cellTemplate = 'cell';
 
-  holidays: any = [[1, 0], [4, 6], [25, 11]];
+  holidays = [[1, 0], [4, 6], [25, 11]];
 
   isWeekend(date) {
     const day = date.getDay();

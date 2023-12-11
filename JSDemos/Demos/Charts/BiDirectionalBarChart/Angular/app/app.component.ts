@@ -23,11 +23,11 @@ export class AppComponent {
     this.populationData = service.getPopulationData();
   }
 
-  customizeTooltip = (args: any) => ({
-    text: Math.abs(args.valueText),
+  customizeTooltip = ({ valueText }: { valueText: number }) => ({
+    text: Math.abs(valueText),
   });
 
-  customizeLabel = (args: any) => `${Math.abs(args.value)}%`;
+  customizeLabel = ({ value }: { value: number }) => `${Math.abs(value)}%`;
 }
 
 @NgModule({

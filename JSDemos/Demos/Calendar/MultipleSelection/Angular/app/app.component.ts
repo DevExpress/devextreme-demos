@@ -24,11 +24,11 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   @ViewChild(DxCalendarComponent, { static: false }) calendar: DxCalendarComponent;
 
-  now: Date = new Date();
+  now = new Date();
 
-  value: any = [new Date(), new Date(new Date().getTime() + 1000 * 60 * 60 * 24)];
+  value = [new Date(), new Date(new Date().getTime() + 1000 * 60 * 60 * 24)];
 
-  selectionModes: string[] = [
+  selectionModes = [
     'single', 'multiple', 'range',
   ];
 

@@ -24,25 +24,25 @@ export class AppComponent {
     this.iceHockeyStatistics = service.getIceHockeyStatistics();
   }
 
-  customizePoint(arg: any) {
-    if (arg.value == 1) {
+  customizePoint({ value }) {
+    if (value == 1) {
       return { image: { url: '../../../../images/Charts/PointImage/icon-medal-gold.png', width: 20, height: 20 }, visible: true };
-    } if (arg.value == 2) {
+    } if (value == 2) {
       return { image: { url: '../../../../images/Charts/PointImage/icon-medal-silver.png', width: 20, height: 20 }, visible: true };
-    } if (arg.value == 3) {
+    } if (value == 3) {
       return { image: { url: '../../../../images/Charts/PointImage/icon-medal-bronse.png', width: 20, height: 20 }, visible: true };
     }
   }
 
-  customizeText(arg: any) {
-    if (arg.valueText == 1) {
-      return `${arg.valueText}st place`;
-    } if (arg.valueText == 2) {
-      return `${arg.valueText}nd place`;
-    } if (arg.valueText == 3) {
-      return `${arg.valueText}rd place`;
+  customizeText({ valueText }) {
+    if (valueText == 1) {
+      return `${valueText}st place`;
+    } if (valueText == 2) {
+      return `${valueText}nd place`;
+    } if (valueText == 3) {
+      return `${valueText}rd place`;
     }
-    return `${arg.valueText}th place`;
+    return `${valueText}th place`;
   }
 }
 

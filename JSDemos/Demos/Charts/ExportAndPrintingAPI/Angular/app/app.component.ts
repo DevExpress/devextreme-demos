@@ -27,17 +27,14 @@ export class AppComponent {
     this.mountains = service.getMountains();
   }
 
-  customizeTooltip(arg: any) {
-    return {
-      text: `<span class='title'>${arg.argumentText}</span><br />&nbsp;<br />`
-                + `System: ${arg.point.data.system}<br />` + `Height: ${
-        arg.valueText} m`,
-    };
-  }
+  customizeTooltip = ({ argumentText, valueText, point: { data: { system } } }) => (
+    {
+      text: `<span class='title'>${argumentText}</span><br />&nbsp;<br />System: ${
+        system}<br />Height: ${valueText} m`,
+    }
+  );
 
-  customizeLabel(arg: any) {
-    return `${arg.value} m`;
-  }
+  customizeLabel = ({ value }: { value: string }) => `${value} m`;
 
   print() {
     this.chart.instance.print();

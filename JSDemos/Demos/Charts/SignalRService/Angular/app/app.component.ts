@@ -7,6 +7,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
 import { DxChartModule, DxChartComponent } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
+import {DxChartTypes} from "devextreme-angular/ui/chart";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -21,7 +22,7 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   @ViewChild(DxChartComponent, { static: false }) component: DxChartComponent;
 
-  dataSource: any;
+  dataSource: CustomStore;
 
   connectionStarted: boolean;
 
@@ -43,7 +44,7 @@ export class AppComponent {
     hubConnection
       .start()
       .then(() => {
-        hubConnection.on('updateStockPrice', (data: any) => {
+        hubConnection.on('updateStockPrice', (data: Record<string, unknown>) => {
           store.push([{ type: 'insert', key: data.date, data }]);
         });
         this.dataSource = store;
@@ -64,22 +65,22 @@ export class AppComponent {
     }
   }
 
-  customizePoint = (arg: any) => {
-    if (arg.seriesName === 'Volume') {
-      const point = this.component.instance.getAllSeries()[0].getPointsByArg(arg.argument)[0].data;
+  customizePoint = ({ seriesName, argument }) => {
+    if (seriesName === 'Volume') {
+      const point = this.component.instance.getAllSeries()[0].getPointsByArg(argument)[0].data;
       if (point.close >= point.open) {
         return { color: '#1db2f5' };
       }
     }
   };
 
-  formatPrice = (points: any, field: any) => {
-    const pricePoint = points.filter((point) => point.seriesName !== 'Volume')[0];
+  formatPrice = (points: { seriesName: string, [key: string]: string }[], field: string) => {
+    const pricePoint = points.find((point) => point.seriesName !== 'Volume');
     return this.currencyPipe.transform(pricePoint[field], 'USD', 'symbol', '1.0-0');
   };
 
-  formatVolume = (points: any) => {
-    const volPoint = points.filter((point) => point.seriesName === 'Volume')[0];
+  formatVolume = (points: { seriesName: string, [key: string]: string }[]) => {
+    const volPoint = points.find((point) => point.seriesName === 'Volume');
     return this.decimalPipe.transform(volPoint.value, '3.0-0');
   };
 }

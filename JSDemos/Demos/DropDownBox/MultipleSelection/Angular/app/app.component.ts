@@ -14,6 +14,7 @@ import {
 } from 'devextreme-angular';
 
 import CustomStore from 'devextreme/data/custom_store';
+import {DxTreeViewTypes} from "devextreme-angular/ui/tree-view";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -25,13 +26,13 @@ if (!/localhost/.test(document.location.host)) {
   styleUrls: ['app/app.component.css'],
 })
 export class AppComponent {
-  @ViewChild(DxTreeViewComponent, { static: false }) treeView;
+  @ViewChild(DxTreeViewComponent, { static: false }) treeView: DxTreeViewComponent;
 
-  treeDataSource: any;
+  treeDataSource: CustomStore;
 
   treeBoxValue: string[];
 
-  gridDataSource: any;
+  gridDataSource: CustomStore;
 
   gridBoxValue: number[] = [3];
 
@@ -51,15 +52,15 @@ export class AppComponent {
     });
   }
 
-  onDropDownBoxValueChanged(e) {
-    this.updateSelection(this.treeView && this.treeView.instance);
+  onDropDownBoxValueChanged() {
+    this.updateSelection(this.treeView?.instance);
   }
 
-  onTreeViewReady(e) {
-    this.updateSelection(e.component);
+  onTreeViewReady({ component }: DxTreeViewTypes.ContentReadyEvent) {
+    this.updateSelection(component);
   }
 
-  updateSelection(treeView) {
+  updateSelection(treeView: DxTreeViewTypes.ContentReadyEvent['component']) {
     if (!treeView) return;
 
     if (!this.treeBoxValue) {
@@ -73,8 +74,8 @@ export class AppComponent {
     }
   }
 
-  onTreeViewSelectionChanged(e) {
-    this.treeBoxValue = e.component.getSelectedNodeKeys();
+  onTreeViewSelectionChanged({ component }: DxTreeViewTypes.SelectionChangedEvent) {
+    this.treeBoxValue = component.getSelectedNodeKeys();
   }
 }
 

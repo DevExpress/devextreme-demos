@@ -33,18 +33,18 @@ export class AppComponent {
     this.lowAverage = lowAverage;
   }
 
-  customizePoint = (arg: any) => {
-    if (arg.value > this.highAverage) {
+  customizePoint = ({ value }: { value: number }) => {
+    if (value > this.highAverage) {
       return { color: this.highAverageColor };
-    } if (arg.value < this.lowAverage) {
+    } if (value < this.lowAverage) {
       return { color: this.lowAverageColor };
     }
   };
 
-  customizeLabel = (arg: any) => {
-    if (arg.value > this.highAverage) {
+  customizeLabel = ({ value }: { value: number }) => {
+    if (value > this.highAverage) {
       return getLabelsSettings(this.highAverageColor);
-    } if (arg.value < this.lowAverage) {
+    } if (value < this.lowAverage) {
       return getLabelsSettings(this.lowAverageColor);
     }
   };
@@ -52,7 +52,7 @@ export class AppComponent {
   customizeText = customizeText;
 }
 
-function getLabelsSettings(backgroundColor: any) {
+function getLabelsSettings(backgroundColor: string) {
   return {
     visible: true,
     backgroundColor,
@@ -60,9 +60,7 @@ function getLabelsSettings(backgroundColor: any) {
   };
 }
 
-function customizeText(arg: any) {
-  return `${arg.valueText}&#176F`;
-}
+const customizeText = ({ valueText }) => `${valueText}&#176F`;
 
 @NgModule({
   imports: [

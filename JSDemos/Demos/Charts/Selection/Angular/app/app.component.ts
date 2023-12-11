@@ -3,6 +3,7 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxChartModule } from 'devextreme-angular';
 
+import { DxChartTypes } from 'devextreme-angular/ui/chart';
 import { Service, ExportData } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -22,17 +23,14 @@ export class AppComponent {
     this.exportData = service.getExportData();
   }
 
-  pointClick(e: any) {
+  pointClick(e: DxChartTypes.PointClickEvent) {
     e.target.select();
   }
 
-  legendClick(e: any) {
-    const series = e.target;
-    if (series.isVisible()) {
-      series.hide();
-    } else {
-      series.show();
-    }
+  legendClick({ target: series }: DxChartTypes.LegendClickEvent) {
+    series.isVisible()
+      ? series.hide()
+      : series.show();
   }
 }
 

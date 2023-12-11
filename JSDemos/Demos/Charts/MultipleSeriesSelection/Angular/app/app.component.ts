@@ -3,6 +3,7 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxChartModule } from 'devextreme-angular';
 
+import { DxChartTypes } from 'devextreme-angular/ui/chart';
 import { Service, Statistics } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -22,8 +23,7 @@ export class AppComponent {
     this.statisticsData = service.getStatisticsData();
   }
 
-  seriesClick(e: any) {
-    const series = e.target;
+  seriesClick({ target: series }: DxChartTypes.SeriesClickEvent) {
     if (series.isSelected()) {
       series.clearSelection();
     } else {

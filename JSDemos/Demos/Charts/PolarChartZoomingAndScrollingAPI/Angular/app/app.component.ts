@@ -4,6 +4,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { DxPolarChartModule, DxRangeSelectorModule } from 'devextreme-angular';
 
+import { DxChartTypes } from 'devextreme-angular/ui/chart';
 import { DataFrame, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -19,7 +20,7 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   dataSource: DataFrame[];
 
-  visualRange: any = {};
+  visualRange: DxChartTypes.ValueAxis['visualRange'] = {};
 
   constructor(service: Service) {
     this.visualRange = { startValue: 0, endValue: 8 };
