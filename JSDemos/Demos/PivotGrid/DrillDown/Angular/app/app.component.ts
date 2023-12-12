@@ -11,6 +11,7 @@ import {
   DxTemplateModule,
 } from 'devextreme-angular';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
+import DataSource from 'devextreme/data/data_source';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -26,9 +27,9 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   @ViewChild('drillDownDataGrid') drillDownDataGrid: DxDataGridComponent;
 
-  pivotGridDataSource: any;
+  pivotGridDataSource: PivotGridDataSource;
 
-  drillDownDataSource: any;
+  drillDownDataSource: DataSource;
 
   salesPopupVisible = false;
 

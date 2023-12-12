@@ -16,9 +16,9 @@ if (!/localhost/.test(document.location.host)) {
   providers: [Service],
 })
 export class AppComponent {
-  pivotGridDataSource: any;
+  pivotGridDataSource: PivotGridDataSource;
 
-  summaryDisplayModes: any[] = [
+  summaryDisplayModes = [
     { text: 'None', value: 'none' },
     { text: 'Absolute Variation', value: 'absoluteVariation' },
     { text: 'Percent Variation', value: 'percentVariation' },

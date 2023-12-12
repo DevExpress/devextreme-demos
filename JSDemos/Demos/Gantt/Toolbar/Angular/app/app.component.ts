@@ -28,7 +28,14 @@ export class AppComponent {
 
   resourceAssignments: ResourceAssignment[];
 
-  customButtonOptions: any;
+  customButtonOptions = {
+    text: 'About',
+    icon: 'info',
+    stylingMode: 'text',
+    onClick: () => {
+      this.popupVisible = true;
+    },
+  };
 
   popupVisible: boolean;
 
@@ -38,15 +45,6 @@ export class AppComponent {
     this.resources = service.getResources();
     this.resourceAssignments = service.getResourceAssignments();
     this.popupVisible = false;
-
-    this.customButtonOptions = {
-      text: 'About',
-      icon: 'info',
-      stylingMode: 'text',
-      onClick: () => {
-        this.popupVisible = true;
-      },
-    };
   }
 }
 

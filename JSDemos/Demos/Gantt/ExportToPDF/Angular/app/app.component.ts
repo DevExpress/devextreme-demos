@@ -61,21 +61,18 @@ export class AppComponent {
 
   resourceAssignments: ResourceAssignment[];
 
-  exportButtonOptions: any;
+  exportButtonOptions = {
+    hint: 'Export to PDF',
+    icon: 'exportpdf',
+    stylingMode: 'text',
+    onClick: () => this.exportButtonClick(),
+  };
 
   constructor(service: Service, private ref: ChangeDetectorRef) {
     this.tasks = service.getTasks();
     this.dependencies = service.getDependencies();
     this.resources = service.getResources();
     this.resourceAssignments = service.getResourceAssignments();
-
-    this.exportButtonOptions = {
-      hint: 'Export to PDF',
-      icon: 'exportpdf',
-      stylingMode: 'text',
-      onClick: () => this.exportButtonClick(),
-    };
-
     this.formatBoxValue = this.formats[0];
     this.landscapeCheckBoxValue = true;
     this.exportModeBoxValue = this.exportModes[0];
@@ -107,7 +104,7 @@ export class AppComponent {
     exportGanttToPdf(
       {
         component: gantt,
-        createDocumentMethod: (args?: any) => new jsPDF(args),
+        createDocumentMethod: (args?: unknown) => new jsPDF(args),
         format,
         landscape: isLandscape,
         exportMode,

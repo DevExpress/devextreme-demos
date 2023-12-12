@@ -35,7 +35,7 @@ export class AppComponent {
 
   colCount: number;
 
-  width: any;
+  width: number;
 
   constructor(service: Service) {
     this.labelMode = 'floating';

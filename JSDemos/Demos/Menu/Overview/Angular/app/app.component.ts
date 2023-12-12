@@ -2,9 +2,10 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { DxMenuModule, DxSelectBoxModule, DxCheckBoxModule } from 'devextreme-angular';
+import {DxMenuModule, DxSelectBoxModule, DxCheckBoxModule, DxMenuComponent} from 'devextreme-angular';
 
 import { Product, Service } from './app.service';
+import {DxMenuTypes} from "devextreme-angular/ui/menu";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -19,22 +20,20 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   products: Product[];
 
-  showSubmenuModes: any;
+  showSubmenuModes = [{
+    name: 'onHover' as DxMenuTypes.SubmenuShowMode,
+    delay: { show: 0, hide: 500 },
+  }, {
+    name: 'onClick' as DxMenuTypes.SubmenuShowMode,
+    delay: { show: 0, hide: 300 },
+  }];
 
-  showFirstSubmenuModes: any;
+  showFirstSubmenuModes = this.showSubmenuModes[1];
 
   currentProduct: Product;
 
   constructor(service: Service) {
     this.products = service.getProducts();
-    this.showSubmenuModes = [{
-      name: 'onHover',
-      delay: { show: 0, hide: 500 },
-    }, {
-      name: 'onClick',
-      delay: { show: 0, hide: 300 },
-    }];
-    this.showFirstSubmenuModes = this.showSubmenuModes[1];
   }
 
   itemClick(data) {

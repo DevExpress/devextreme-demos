@@ -1,5 +1,5 @@
 import {
-  NgModule, Component, ViewChild, enableProdMode,
+  NgModule, Component, enableProdMode,
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -20,11 +20,11 @@ const anyOfOperation = {
   caption: 'Is any of',
   icon: 'check',
   editorTemplate: 'tagBoxTemplate',
-  calculateFilterExpression(filterValue: any, field: any) {
-    return filterValue && filterValue.length
-                && Array.prototype.concat.apply([], filterValue.map((value) => [[field.dataField, '=', value], 'or'])).slice(0, -1);
+  calculateFilterExpression(filterValue: string[], field: Record<string, unknown>) {
+    return filterValue?.length
+                && filterValue.map((value) => [[field.dataField, '=', value], 'or']).slice(0, -1);
   },
-};
+} as const;
 
 @Component({
   selector: 'demo-app',
@@ -34,19 +34,19 @@ const anyOfOperation = {
 })
 
 export class AppComponent {
-  filterText: any;
+  filterText: string;
 
-  dataSourceText: any;
+  dataSourceText: string;
 
-  fields: Array<any>;
+  fields: Array<string>;
 
-  customOperations: Array<any>;
+  customOperations: Array<typeof anyOfOperation>;
 
-  filter: any;
+  filter: Array<string[] | string>;
 
   categories: string[];
 
-  groupOperations: string[] = ['and', 'or'];
+  groupOperations = ['and', 'or'];
 
   constructor(service: Service) {
     this.fields = service.getFields();

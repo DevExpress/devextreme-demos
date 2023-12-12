@@ -7,6 +7,7 @@ import {
   DxFormModule,
 } from 'devextreme-angular';
 
+import { DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
 import { Employee, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -25,11 +26,11 @@ export class AppComponent implements AfterViewInit {
 
   isHomeAddressVisible: boolean;
 
-  checkBoxOptions: any;
+  checkBoxOptions: Record<string, unknown>;
 
-  phoneOptions: any[] = [];
+  phoneOptions: Record<string, unknown>[] = [];
 
-  addPhoneButtonOptions: any;
+  addPhoneButtonOptions: Record<string, unknown>;
 
   constructor(service: Service) {
     this.employee = service.getEmployee();
@@ -40,7 +41,7 @@ export class AppComponent implements AfterViewInit {
     this.checkBoxOptions = {
       text: 'Show Address',
       value: true,
-      onValueChanged: (e) => {
+      onValueChanged: (e: DxCheckBoxTypes.ValueChangedEvent) => {
         this.isHomeAddressVisible = e.component.option('value');
       },
     };
@@ -57,13 +58,7 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {}
 
-  getPhonesOptions(phones: any) {
-    const options = [];
-    for (let i = 0; i < phones.length; i++) {
-      options.push(this.generateNewPhoneOptions(i));
-    }
-    return options;
-  }
+  getPhonesOptions = (phones: string[]) => phones.map((_, index) => this.generateNewPhoneOptions(index));
 
   generateNewPhoneOptions(index: number) {
     return {

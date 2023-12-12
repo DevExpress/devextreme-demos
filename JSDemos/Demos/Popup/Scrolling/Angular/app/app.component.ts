@@ -21,7 +21,16 @@ export class AppComponent {
 
   popupWithScrollViewVisible = false;
 
-  bookButtonOptions: any;
+  bookButtonOptions = {
+    width: 300,
+    text: 'Book',
+    type: 'default',
+    stylingMode: 'contained',
+    onClick: () => {
+      this.popupVisible = false;
+      this.popupWithScrollViewVisible = false;
+    },
+  };
 
   showPopup() {
     this.popupVisible = true;
@@ -29,19 +38,6 @@ export class AppComponent {
 
   showPopupWithScrollView() {
     this.popupWithScrollViewVisible = true;
-  }
-
-  constructor() {
-    this.bookButtonOptions = {
-      width: 300,
-      text: 'Book',
-      type: 'default',
-      stylingMode: 'contained',
-      onClick: () => {
-        this.popupVisible = false;
-        this.popupWithScrollViewVisible = false;
-      },
-    };
   }
 }
 

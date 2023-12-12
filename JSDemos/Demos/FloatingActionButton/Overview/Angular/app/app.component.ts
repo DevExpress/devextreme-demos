@@ -34,14 +34,13 @@ export class AppComponent {
 
   states: State[];
 
-  directions: any;
+  directions = directions;
 
   selectedRowIndex = -1;
 
   constructor(private service: Service) {
     this.employees = service.getEmployees();
     this.states = service.getStates();
-    this.directions = directions;
   }
 
   editRow() {
