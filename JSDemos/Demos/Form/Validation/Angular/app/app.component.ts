@@ -39,7 +39,7 @@ const sendRequest = function (value) {
 export class AppComponent {
   @ViewChild(DxFormComponent, { static: false }) form:DxFormComponent;
 
-  passwordEditorOptions: any = {
+  passwordEditorOptions = {
     mode: 'password',
     valueChangeEvent: 'keyup',
     onValueChanged: () => {
@@ -62,19 +62,19 @@ export class AppComponent {
     ],
   };
 
-  emailEditorOptions: any = {
+  emailEditorOptions = {
     valueChangeEvent: 'keyup',
   };
 
-  nameEditorOptions: any = {
+  nameEditorOptions = {
     valueChangeEvent: 'keyup',
   };
 
-  addressEditorOptions: any = {
+  addressEditorOptions = {
     valueChangeEvent: 'keyup',
   };
 
-  phoneEditorOptions: any = {
+  phoneEditorOptions = {
     mask: '+1 (X00) 000-0000',
     maskRules: {
       X: /[02-9]/,
@@ -83,7 +83,7 @@ export class AppComponent {
     valueChangeEvent: 'keyup',
   };
 
-  confirmPasswordEditorOptions: any = {
+  confirmPasswordEditorOptions = {
     mode: 'password',
     valueChangeEvent: 'keyup',
     buttons: [
@@ -118,9 +118,9 @@ export class AppComponent {
 
   cityPattern = '^[^0-9]+$';
 
-  namePattern: any = /^[^0-9]+$/;
+  namePattern = /^[^0-9]+$/;
 
-  phonePattern: any = /^[02-9]\d{9}$/;
+  phonePattern = /^[02-9]\d{9}$/;
 
   dateBoxOptions = {
     placeholder: 'Birth Date',

@@ -21,9 +21,7 @@ export class AppComponent {
 
   gaugeSubvalues: number[] = [12, 23];
 
-  customizeText(arg: any) {
-    return `${arg.valueText} kV`;
-  }
+  customizeText = ({ valueText }) => `${valueText} kV`;
 
   updateValues() {
     this.gaugeValue = this.mainGenerator;

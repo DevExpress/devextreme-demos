@@ -16,9 +16,9 @@ if (!/localhost/.test(document.location.host)) {
   providers: [Service],
 })
 export class AppComponent {
-  pivotGridDataSource: any;
+  pivotGridDataSource: PivotGridDataSource;
 
-  summaryDisplayModes: any = [
+  summaryDisplayModes = [
     { text: 'None', value: 'none' },
     { text: 'Absolute Variation', value: 'absoluteVariation' },
     { text: 'Percent Variation', value: 'percentVariation' },
@@ -64,7 +64,7 @@ export class AppComponent {
   }
 
   prepareContextMenu(e) {
-    const dataSource: any = this.pivotGridDataSource;
+    const dataSource = this.pivotGridDataSource;
     if (e.field !== dataSource.field(4)) { return; }
 
     for (const summaryDisplayMode of this.summaryDisplayModes) {
@@ -73,7 +73,7 @@ export class AppComponent {
       e.items.push({
         text: summaryDisplayMode.text,
         selected: e.field.summaryDisplayMode === summaryDisplayModeValue,
-        onItemClick(args) {
+        onItemClick() {
           let format;
           const caption = summaryDisplayModeValue === 'none' ? 'Total Sales' : 'Relative Sales';
           if (summaryDisplayModeValue === 'none' || summaryDisplayModeValue === 'absoluteVariation') {

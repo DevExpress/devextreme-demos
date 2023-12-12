@@ -7,6 +7,7 @@ import { Workbook, WorksheetViewFrozen } from 'exceljs';
 import { saveAs } from 'file-saver-es';
 // Our demo infrastructure requires us to use 'file-saver-es'. We recommend that you use the official 'file-saver' package in your applications.
 import { exportPivotGrid } from 'devextreme/excel_exporter';
+import { Options as DataSourceConfig } from 'devextreme/ui/pivot_grid/data_source';
 import { Service, Sale } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -23,7 +24,7 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   sales: Sale[];
 
-  dataSource: any;
+  dataSource: DataSourceConfig;
 
   exportDataFieldHeaders = false;
 

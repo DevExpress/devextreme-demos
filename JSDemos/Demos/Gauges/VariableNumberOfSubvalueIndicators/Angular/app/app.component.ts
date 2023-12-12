@@ -24,9 +24,7 @@ export class AppComponent {
     this.currentValue = this.powerInfo[0];
   }
 
-  customizeText(arg: any) {
-    return `${arg.valueText} kW`;
-  }
+  customizeText = ({ valueText }) => `${valueText} kW`;
 
   customizeTooltip(arg) {
     let result = `${arg.valueText} kW`;
