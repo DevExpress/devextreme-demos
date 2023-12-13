@@ -14,9 +14,9 @@ if (!/localhost/.test(document.location.host)) {
   templateUrl: 'app/app.component.html',
 })
 export class AppComponent {
-  appointmentsData: any;
+  appointmentsData: AspNetData.CustomStore;
 
-  currentDate: Date = new Date(2021, 3, 27);
+  currentDate = new Date(2021, 3, 27);
 
   constructor() {
     const url = 'https://js.devexpress.com/Demos/Mvc/api/SchedulerData';

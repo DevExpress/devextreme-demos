@@ -49,21 +49,21 @@ export class AppComponent {
 
   confirmPasswordMode = 'password';
 
-  maxDate: Date = new Date();
+  maxDate = new Date();
 
   cityPattern = '^[^0-9]+$';
 
-  namePattern: any = /^[^0-9]+$/;
+  namePattern = /^[^0-9]+$/;
 
-  phonePattern: any = /^[02-9]\d{9}$/;
+  phonePattern = /^[02-9]\d{9}$/;
 
   countries: string[];
 
-  phoneRules: any = {
+  phoneRules = {
     X: /[02-9]/,
   };
 
-  passwordButton: any = {
+  passwordButton = {
     icon: 'eyeopen',
     stylingMode: 'text',
     onClick: () => {
@@ -71,7 +71,7 @@ export class AppComponent {
     },
   };
 
-  confirmPasswordButton: any = {
+  confirmPasswordButton = {
     icon: 'eyeopen',
     stylingMode: 'text',
     onClick: () => {
@@ -86,13 +86,9 @@ export class AppComponent {
 
   passwordComparison = () => this.password;
 
-  checkComparison() {
-    return true;
-  }
+  checkComparison = () => true;
 
-  validateVacationDatesRange({ value }) {
-    const [startDate, endDate] = value;
-
+  validateVacationDatesRange({ value: [startDate, endDate] }) {
     if (startDate === null || endDate === null) {
       return true;
     }
@@ -103,9 +99,7 @@ export class AppComponent {
     return daysDifference < 25;
   }
 
-  validateVacationDatesPresence({ value }) {
-    const [startDate, endDate] = value;
-
+  validateVacationDatesPresence({ value: [startDate, endDate] }) {
     if (startDate === null && endDate === null) {
       return true;
     }
@@ -113,9 +107,7 @@ export class AppComponent {
     return startDate !== null && endDate !== null;
   }
 
-  asyncValidation(params) {
-    return sendRequest(params.value);
-  }
+  asyncValidation = (params: Record<string, unknown>) => sendRequest(params.value);
 
   onPasswordChanged() {
     if (this.confirmPassword) {
@@ -123,7 +115,7 @@ export class AppComponent {
     }
   }
 
-  onFormSubmit = function (e) {
+  onFormSubmit = function (e: SubmitEvent) {
     notify({
       message: 'You have submitted the form',
       position: {

@@ -21,25 +21,25 @@ if (!/localhost/.test(document.location.host)) {
   providers: [Service],
 })
 export class AppComponent {
-  items: any[];
+  items: ProductType[];
 
   productTypes: ProductType[];
 
-  productsStore: any;
+  productsStore: DataSource;
 
-  backButtonOptions: any;
+  backButtonOptions: Record<string, unknown>;
 
-  refreshButtonOptions: any;
+  refreshButtonOptions: Record<string, unknown>;
 
-  selectBoxOptions: any;
+  selectBoxOptions: Record<string, unknown>;
 
-  addButtonOptions: any;
+  addButtonOptions: Record<string, unknown>;
 
-  saveButtonOptions: any;
+  saveButtonOptions: Record<string, unknown>;
 
-  printButtonOptions: any;
+  printButtonOptions: Record<string, unknown>;
 
-  settingsButtonOptions: any;
+  settingsButtonOptions: Record<string, unknown>;
 
   constructor(service: Service) {
     this.productTypes = service.getProductTypes();
@@ -68,7 +68,7 @@ export class AppComponent {
       inputAttr: { 'aria-label': 'Categories' },
       onValueChanged: (args) => {
         if (args.value > 1) {
-          this.productsStore.filter('type', '=', args.value);
+          this.productsStore.filter(['type', '=', args.value]);
         } else {
           this.productsStore.filter(null);
         }

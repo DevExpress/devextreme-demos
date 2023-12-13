@@ -8,7 +8,7 @@ import {
   DxTagBoxModule,
 } from 'devextreme-angular';
 
-import { Product, Service } from './app.service';
+import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -22,8 +22,6 @@ if (!/localhost/.test(document.location.host)) {
 })
 export class AppComponent {
   simpleProducts: DataSource;
-
-  data: any;
 
   constructor(service: Service) {
     this.simpleProducts = new DataSource({

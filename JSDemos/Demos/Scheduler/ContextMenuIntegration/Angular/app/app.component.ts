@@ -41,7 +41,7 @@ export class AppComponent {
 
   resourcesData: Resource[];
 
-  groups: any;
+  groups: string[];
 
   crossScrollingEnabled = false;
 

@@ -4,6 +4,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { DxTreeListModule } from 'devextreme-angular';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
+import { DxTreeListTypes } from 'devextreme-angular/ui/tree-list';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -15,11 +16,17 @@ if (!/localhost/.test(document.location.host)) {
   styleUrls: ['app/app.component.css'],
 })
 export class AppComponent {
-  tasksData: any;
+  tasksData: AspNetData.CustomStore;
 
-  employeesData: any;
+  employeesData: AspNetData.CustomStore;
 
-  statusesData: Array<string>;
+  statusesData = [
+    'Not Started',
+    'Need Assistance',
+    'In Progress',
+    'Deferred',
+    'Completed',
+  ];
 
   constructor() {
     const url = 'https://js.devexpress.com/Demos/Mvc/api/TreeListTasks';
@@ -39,17 +46,9 @@ export class AppComponent {
       key: 'ID',
       loadUrl: `${url}/TaskEmployees`,
     });
-
-    this.statusesData = [
-      'Not Started',
-      'Need Assistance',
-      'In Progress',
-      'Deferred',
-      'Completed',
-    ];
   }
 
-  initNewRow(e) {
+  initNewRow(e: DxTreeListTypes.InitNewRowEvent) {
     e.data.Task_Status = 'Not Started';
     e.data.Task_Start_Date = new Date();
     e.data.Task_Due_Date = new Date();

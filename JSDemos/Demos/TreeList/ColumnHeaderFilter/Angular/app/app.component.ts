@@ -19,17 +19,12 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   employees: Employee[];
 
-  showHeaderFilter: boolean;
+  editorOptions = { placeholder: 'Search city or state' };
 
-  editorOptions: any;
-
-  searchExpr: any;
+  searchExpr = ['City', 'State'];
 
   constructor(service: Service) {
     this.employees = service.getEmployees();
-    this.showHeaderFilter = true;
-    this.editorOptions = { placeholder: 'Search city or state' };
-    this.searchExpr = ['City', 'State'];
   }
 }
 

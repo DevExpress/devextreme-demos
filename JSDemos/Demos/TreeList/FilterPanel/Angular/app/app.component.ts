@@ -10,10 +10,6 @@ if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
 
-const getOrderDay = function (rowData: any): number {
-  return (new Date(rowData.OrderDate)).getDay();
-};
-
 @Component({
   selector: 'demo-app',
   providers: [Service],
@@ -22,15 +18,14 @@ const getOrderDay = function (rowData: any): number {
 })
 
 export class AppComponent {
-  dataSource: any;
+  dataSource: DataSource;
 
-  filterValue: Array<any>;
+  filterValue = ['City', '=', 'Bentonville'];
 
   constructor(service: Service) {
     this.dataSource = new DataSource({
       store: service.getEmployees(),
     });
-    this.filterValue = ['City', '=', 'Bentonville'];
   }
 }
 

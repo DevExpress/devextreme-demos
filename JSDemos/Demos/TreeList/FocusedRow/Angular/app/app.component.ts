@@ -5,6 +5,7 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxTreeListModule, DxNumberBoxModule } from 'devextreme-angular';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
+import {DxTreeListTypes} from "devextreme-angular/ui/tree-list";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -19,11 +20,9 @@ const url = 'https://js.devexpress.com/Demos/Mvc/api/TreeListTasks';
   preserveWhitespaces: true,
 })
 export class AppComponent {
-  columns: any;
+  dataSource: AspNetData.CustomStore;
 
-  dataSource: any;
-
-  taskEmployees: any;
+  taskEmployees: AspNetData.CustomStore;
 
   taskSubject: string;
 
@@ -35,10 +34,9 @@ export class AppComponent {
 
   taskProgress: string;
 
-  focusedRowKey: number;
+  focusedRowKey = 45;
 
   constructor() {
-    this.focusedRowKey = 45;
     this.dataSource = AspNetData.createStore({
       key: 'Task_ID',
       loadUrl: `${url}/Tasks`,
@@ -53,15 +51,15 @@ export class AppComponent {
     });
   }
 
-  onFocusedRowChanged(e) {
+  onFocusedRowChanged(e: DxTreeListTypes.FocusedRowChangedEvent) {
     const rowData = e.row && e.row.data;
-    let cellValue;
-    let assigned;
+    let cellValue: unknown;
+    let assigned: string;
 
     if (rowData) {
       cellValue = e.component.cellValue(e.row.rowIndex, 'Assigned');
-      this.taskEmployees.byKey(cellValue).done((item) => {
-        assigned = item.Name;
+      this.taskEmployees.byKey(cellValue).done(({ Name }) => {
+        assigned = Name;
       });
 
       this.taskSubject = rowData.Task_Subject;

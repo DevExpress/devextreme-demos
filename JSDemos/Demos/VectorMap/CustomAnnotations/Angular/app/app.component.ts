@@ -18,7 +18,7 @@ if (!/localhost/.test(document.location.host)) {
 })
 
 export class AppComponent {
-  usaMap: any = mapsData.usa;
+  usaMap = mapsData.usa;
 
   states: StatesCollection[];
 
@@ -26,7 +26,7 @@ export class AppComponent {
     this.states = service.getStatesData();
   }
 
-  getImagePath = (annotation) => {
+  getImagePath = (annotation: StatesCollection) => {
     const name = annotation.data.name.replace(/\s/, '');
     return `../../../../images/flags/${name}.svg`;
   };

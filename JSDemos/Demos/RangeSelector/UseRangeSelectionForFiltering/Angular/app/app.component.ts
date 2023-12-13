@@ -20,23 +20,19 @@ export class AppComponent {
 
   selectedEmployees: Employee[];
 
-  tableTitles: string[] = ['First Name', 'Last Name', 'Birth Year', 'City', 'Title'];
-
   constructor(service: Service) {
     this.employees = service.getEmployees();
     this.selectedEmployees = this.employees;
   }
 
   onValueChanged(e) {
-    const selectedEmployees: any[] = [];
-
-    this.employees.forEach((item, index) => {
-      if (item.BirthYear >= e.value[0] && item.BirthYear <= e.value[1]) {
-        selectedEmployees.push(item);
-      }
-    });
-
-    this.selectedEmployees = selectedEmployees;
+    this.selectedEmployees = this.employees.map(
+      (item, index) => (
+        (item.BirthYear >= e.value[0] && item.BirthYear <= e.value[1])
+          ? item
+          : undefined
+      ),
+    ).filter(Boolean);
   }
 }
 

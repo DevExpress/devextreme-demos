@@ -1,4 +1,4 @@
-import { NgModule, Component, enableProdMode } from '@angular/core';
+import {NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { DatePipe } from '@angular/common';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -15,15 +15,15 @@ if (!/localhost/.test(document.location.host)) {
   preserveWhitespaces: true,
 })
 export class AppComponent {
-  pipe: any = new DatePipe('en-US');
+  pipe = new DatePipe('en-US');
 
-  dataSource: string[] = ['onHandleMove', 'onHandleRelease'];
+  dataSource = ['onHandleMove', 'onHandleRelease'];
 
   workingDaysCount = 260;
 
-  startValue: Date = new Date(2011, 0, 1);
+  startValue = new Date(2011, 0, 1);
 
-  endValue: Date = new Date(2011, 11, 31);
+  endValue = new Date(2011, 11, 31);
 
   onValueChanged = (e) => {
     const currentDate = new Date(e.value[0]);

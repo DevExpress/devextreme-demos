@@ -20,32 +20,26 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   employees: Employee[];
 
-  searchEnabled: boolean;
+  searchEnabled = true;
 
-  editorOptions: any;
+  allowSelectAll = true;
 
-  allowSelectAll: boolean;
+  selectByClick = true;
 
-  selectByClick: boolean;
+  recursive = true;
 
-  recursive: boolean;
+  editorOptions = { placeholder: 'Search column' };
 
-  columnChooserModes: any;
+  columnChooserModes = [{
+    key: 'dragAndDrop',
+    name: 'Drag and drop',
+  }, {
+    key: 'select',
+    name: 'Select',
+  }];
 
   constructor(service: Service) {
     this.employees = service.getEmployees();
-    this.searchEnabled = true;
-    this.editorOptions = { placeholder: 'Search column' };
-    this.allowSelectAll = true;
-    this.selectByClick = true;
-    this.recursive = true;
-    this.columnChooserModes = [{
-      key: 'dragAndDrop',
-      name: 'Drag and drop',
-    }, {
-      key: 'select',
-      name: 'Select',
-    }];
   }
 }
 

@@ -39,7 +39,7 @@ export class AppComponent {
 
   dragTemplate: string;
 
-  cursorOffset: any;
+  cursorOffset: {x: number, y: number};
 
   constructor(service: Service) {
     this.items = service.getTasks().map((task) => task.Task_Subject);

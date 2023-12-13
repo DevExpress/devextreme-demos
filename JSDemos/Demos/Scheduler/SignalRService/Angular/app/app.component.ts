@@ -58,11 +58,11 @@ connection
   styleUrls: ['app/app.component.css'],
 })
 export class AppComponent {
-  store1: any;
+  store1: AspNetData.CustomStore;
 
-  store2: any;
+  store2: AspNetData.CustomStore;
 
-  currentDate: Date = new Date(2021, 3, 27);
+  currentDate = new Date(2021, 3, 27);
 
   constructor() {
     this.store1 = store1;

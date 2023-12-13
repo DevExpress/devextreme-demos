@@ -3,6 +3,8 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxSchedulerModule, DxSelectBoxModule, DxTemplateModule } from 'devextreme-angular';
 import { getTimeZones, dxSchedulerTimeZone } from 'devextreme/time_zone_utils';
+import { DxSchedulerTypes } from 'devextreme-angular/ui/scheduler';
+import DataSource from 'devextreme/data/data_source';
 import { Service, Data } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -34,24 +36,15 @@ export class AppComponent {
     this.timeZones = this.getDefaultTimeZones(this.currentDate);
     this.dataSource = service.getData();
     this.currentTimeZone = this.timeZones[0].id;
-    this.currentDate = this.currentDate;
   }
 
   getDefaultTimeZones(date: Date) {
     return getTimeZones(date).filter((timeZone) => this.service.getLocations().indexOf(timeZone.id) !== -1);
   }
 
-  onValueChanged(e: any) {
-    this.currentTimeZone = e.value;
-  }
-
-  onAppointmentFormOpening(e: any) {
-    const form = e.form;
-
-    const startDateTimezoneEditor = form.getEditor('startDateTimeZone');
-    const endDateTimezoneEditor = form.getEditor('endDateTimeZone');
-    const startDateDataSource = startDateTimezoneEditor.option('dataSource');
-    const endDateDataSource = endDateTimezoneEditor.option('dataSource');
+  onAppointmentFormOpening({ form }: DxSchedulerTypes.AppointmentFormOpeningEvent) {
+    const startDateDataSource = form.getEditor('startDateTimeZone').option('dataSource') as DataSource;
+    const endDateDataSource = form.getEditor('endDateTimeZone').option('dataSource') as DataSource;
 
     startDateDataSource.filter(['id', 'contains', 'Europe']);
     endDateDataSource.filter(['id', 'contains', 'Europe']);
@@ -60,9 +53,9 @@ export class AppComponent {
     endDateDataSource.load();
   }
 
-  onOptionChanged(e) {
-    if (e.name === 'currentDate') {
-      this.timeZones = this.getDefaultTimeZones(e.value);
+  onOptionChanged({ name, value }: DxSchedulerTypes.OptionChangedEvent) {
+    if (name === 'currentDate') {
+      this.timeZones = this.getDefaultTimeZones(value);
     }
   }
 }

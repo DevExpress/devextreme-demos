@@ -26,7 +26,21 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent implements AfterViewInit {
   @ViewChild(DxScrollViewComponent, { static: false }) scrollView: DxScrollViewComponent;
 
-  showScrollbarModes: any[];
+  showScrollbarModes = [
+    {
+      text: 'On Scroll',
+      value: 'onScroll',
+    }, {
+      text: 'On Hover',
+      value: 'onHover',
+    }, {
+      text: 'Always',
+      value: 'always',
+    }, {
+      text: 'Never',
+      value: 'never',
+    },
+  ];
 
   content: string;
 
@@ -42,20 +56,6 @@ export class AppComponent implements AfterViewInit {
 
   constructor(service: Service) {
     this.content = service.getContent();
-
-    this.showScrollbarModes = [{
-      text: 'On Scroll',
-      value: 'onScroll',
-    }, {
-      text: 'On Hover',
-      value: 'onHover',
-    }, {
-      text: 'Always',
-      value: 'always',
-    }, {
-      text: 'Never',
-      value: 'never',
-    }];
 
     this.scrollbarMode = this.showScrollbarModes[0].value;
   }

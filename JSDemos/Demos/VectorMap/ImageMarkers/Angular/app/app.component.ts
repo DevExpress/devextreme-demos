@@ -18,7 +18,7 @@ if (!/localhost/.test(document.location.host)) {
 })
 
 export class AppComponent {
-  usaMap: any = mapsData.usa;
+  usaMap = mapsData.usa;
 
   weather: FeatureCollection;
 

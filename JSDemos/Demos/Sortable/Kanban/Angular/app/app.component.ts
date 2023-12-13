@@ -5,7 +5,7 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { DxScrollViewModule, DxSortableModule } from 'devextreme-angular';
-import { Service } from './app.service';
+import { Employee, Task, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -19,11 +19,11 @@ if (!/localhost/.test(document.location.host)) {
   preserveWhitespaces: true,
 })
 export class AppComponent {
-  lists: any[] = [];
+  lists: Task[][] = [];
 
-  statuses: string[] = ['Not Started', 'Need Assistance', 'In Progress', 'Deferred', 'Completed'];
+  statuses = ['Not Started', 'Need Assistance', 'In Progress', 'Deferred', 'Completed'];
 
-  employees: Object = {};
+  employees: Record<'ID', Employee> | {} = {};
 
   constructor(service: Service) {
     const tasks = service.getTasks();

@@ -11,6 +11,7 @@ import {
 } from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
 import hideToasts from 'devextreme/ui/toast/hide_toasts';
+import DevExpress from "devextreme";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -51,8 +52,8 @@ export class AppComponent {
   direction = 'up-push';
 
   show() {
-    const position: any = this.isPredefined ? this.predefinedPosition : this.coordinatePosition;
-    const direction: any = this.direction;
+    const position = this.isPredefined ? this.predefinedPosition : this.coordinatePosition;
+    const direction = this.direction;
 
     notify({
       message: `Toast ${this.id}`,
@@ -68,7 +69,7 @@ export class AppComponent {
         hide: { type: 'fade', duration: 40, to: 0 },
       },
     },
-    { position, direction });
+    { position, direction } as DevExpress.ui.Stack);
     this.id += 1;
   }
 

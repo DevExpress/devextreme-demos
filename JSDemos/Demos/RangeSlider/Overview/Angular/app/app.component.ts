@@ -1,5 +1,5 @@
 import {
-  NgModule, Component, ViewChild, enableProdMode,
+  NgModule, Component, enableProdMode,
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -19,32 +19,24 @@ export class AppComponent {
 
   end = 90;
 
-  label: any;
+  format = (value: unknown) => `${value}%`;
 
-  tooltip: any;
+  label = {
+    visible: true,
+    format: (value: unknown) => this.format(value),
+    position: 'top',
+  };
 
-  tooltipEnabled: any;
+  tooltip = {
+    enabled: true,
+    format: (value: unknown) => this.format(value),
+    showMode: 'always',
+    position: 'bottom',
+  };
 
-  constructor() {
-    this.label = {
-      visible: true,
-      format: (value) => this.format(value),
-      position: 'top',
-    };
-    this.tooltip = {
-      enabled: true,
-      format: (value) => this.format(value),
-      showMode: 'always',
-      position: 'bottom',
-    };
-    this.tooltipEnabled = {
-      enabled: true,
-    };
-  }
-
-  format(value) {
-    return `${value}%`;
-  }
+  tooltipEnabled = {
+    enabled: true,
+  };
 }
 
 @NgModule({

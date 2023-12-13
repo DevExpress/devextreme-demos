@@ -5,6 +5,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxTreeListModule } from 'devextreme-angular';
 
 import { Employee, Service } from './app.service';
+import {DxTreeListTypes} from "devextreme-angular/ui/tree-list";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -19,7 +20,10 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   employees: Employee[];
 
-  lookupData: any;
+  lookupData: {
+    store: Employee[],
+    sort: string,
+  };
 
   constructor(service: Service) {
     this.employees = service.getEmployees();
@@ -30,19 +34,17 @@ export class AppComponent {
     };
   }
 
-  editorPreparing(e) {
+  editorPreparing(e: DxTreeListTypes.EditorPreparingEvent) {
     if (e.dataField === 'Head_ID' && e.row.data.ID === 1) {
       e.cancel = true;
     }
   }
 
-  initNewRow(e) {
+  initNewRow(e: DxTreeListTypes.InitNewRowEvent) {
     e.data.Head_ID = 1;
   }
 
-  allowDeleting(e) {
-    return e.row.data.ID !== 1;
-  }
+  allowDeleting = ({ row }) => row.data.ID !== 1;
 }
 
 @NgModule({

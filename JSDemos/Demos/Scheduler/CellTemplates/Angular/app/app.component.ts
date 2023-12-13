@@ -4,11 +4,13 @@ import {
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxSchedulerModule, DxTemplateModule } from 'devextreme-angular';
-import {
+import dxScheduler, {
   OptionChangedEvent, AppointmentFormOpeningEvent, AppointmentAddingEvent, AppointmentUpdatingEvent,
 } from 'devextreme/ui/scheduler';
 import DataSource from 'devextreme/data/data_source';
 import notify from 'devextreme/ui/notify';
+import { DxSchedulerTypes } from 'devextreme-angular/ui/scheduler';
+import dxForm from 'devextreme/ui/form';
 import { DataService } from './app.service';
 
 @Pipe({ name: 'apply' })
@@ -106,7 +108,7 @@ export class AppComponent {
     return hours === this.dinnerTime.from && minutes === 0;
   };
 
-  isValidAppointment = (component: any, appointmentData: any) => {
+  isValidAppointment = (component: dxScheduler, appointmentData: DxSchedulerTypes.Appointment) => {
     const startDate = new Date(appointmentData.startDate);
     const endDate = new Date(appointmentData.endDate);
     const cellDuration = component.option('cellDuration');
@@ -135,7 +137,7 @@ export class AppComponent {
 
   isValidAppointmentDate = (date: Date) => !this.isHoliday(date) && !this.isDinner(date) && !this.isWeekend(date);
 
-  applyDisableDatesToDateEditors = (form: any) => {
+  applyDisableDatesToDateEditors = (form: dxForm) => {
     const holidays = this.dataService.getHolidays();
     const startDateEditor = form.getEditor('startDate');
     startDateEditor.option('disabledDates', holidays);
