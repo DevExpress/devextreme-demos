@@ -1,11 +1,11 @@
 import {
-  NgModule, Component, ViewChild, enableProdMode,
+  NgModule, Component, enableProdMode,
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxTreeListModule, DxNumberBoxModule } from 'devextreme-angular';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
-import {DxTreeListTypes} from "devextreme-angular/ui/tree-list";
+import { DxTreeListTypes } from 'devextreme-angular/ui/tree-list';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -20,10 +20,6 @@ const url = 'https://js.devexpress.com/Demos/Mvc/api/TreeListTasks';
   preserveWhitespaces: true,
 })
 export class AppComponent {
-  dataSource: AspNetData.CustomStore;
-
-  taskEmployees: AspNetData.CustomStore;
-
   taskSubject: string;
 
   taskAssigned: string;
@@ -36,20 +32,19 @@ export class AppComponent {
 
   focusedRowKey = 45;
 
-  constructor() {
-    this.dataSource = AspNetData.createStore({
-      key: 'Task_ID',
-      loadUrl: `${url}/Tasks`,
-      onBeforeSend(_, ajaxOptions) {
-        ajaxOptions.xhrFields = { withCredentials: true };
-      },
-    });
-    this.taskEmployees = AspNetData.createStore({
-      key: 'ID',
-      loadMode: 'raw',
-      loadUrl: `${url}/TaskEmployees`,
-    });
-  }
+  dataSource = AspNetData.createStore({
+    key: 'Task_ID',
+    loadUrl: `${url}/Tasks`,
+    onBeforeSend(_, ajaxOptions) {
+      ajaxOptions.xhrFields = { withCredentials: true };
+    },
+  });
+
+  taskEmployees = AspNetData.createStore({
+    key: 'ID',
+    loadMode: 'raw',
+    loadUrl: `${url}/TaskEmployees`,
+  });
 
   onFocusedRowChanged(e: DxTreeListTypes.FocusedRowChangedEvent) {
     const rowData = e.row && e.row.data;

@@ -3,8 +3,8 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxNumberBoxModule, DxCheckBoxModule, DxSelectBoxModule } from 'devextreme-angular';
 import DataSource from 'devextreme/data/data_source';
+import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
 import { Product, Service, SimpleProduct } from './app.service';
-import {DxSelectBoxTypes} from "devextreme-angular/ui/select-box";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

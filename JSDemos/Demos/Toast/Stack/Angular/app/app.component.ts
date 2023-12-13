@@ -1,5 +1,5 @@
 import {
-  NgModule, Component, enableProdMode, ViewEncapsulation,
+  NgModule, Component, enableProdMode,
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -11,7 +11,7 @@ import {
 } from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
 import hideToasts from 'devextreme/ui/toast/hide_toasts';
-import DevExpress from "devextreme";
+import DevExpress from 'devextreme';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
