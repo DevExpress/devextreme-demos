@@ -35,7 +35,7 @@ export class AppComponent {
     this.selectedEmployee = value;
   }
 
-  getDisplayExpr = ({ FirstName = '', LastName = '' }: Record<string, string> = {}) => `${FirstName} ${LastName}`;
+  getDisplayExpr = ({ FirstName, LastName }: Record<string, string> = {}) => (FirstName ? `${FirstName} ${LastName}` : undefined);
 }
 
 @NgModule({

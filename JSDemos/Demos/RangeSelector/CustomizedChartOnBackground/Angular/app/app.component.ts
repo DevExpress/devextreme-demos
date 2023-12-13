@@ -33,7 +33,7 @@ export class AppComponent {
     { x: 16, y: 13 },
   ];
 
-  customizeText = ({ valueText })=> `${valueText} s`;
+  customizeText = ({ valueText }) => `${valueText} s`;
 }
 
 @NgModule({

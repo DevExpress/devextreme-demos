@@ -6,8 +6,8 @@ import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
 // Our demo infrastructure requires us to use 'file-saver-es'. We recommend that you use the official 'file-saver' package in your applications.
 import { exportPivotGrid } from 'devextreme/excel_exporter';
-import { Service, Sale } from './app.service';
 import { Options as DataSourceConfig } from 'devextreme/ui/pivot_grid/data_source';
+import { Service, Sale } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
