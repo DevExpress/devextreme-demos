@@ -18,7 +18,7 @@ if (!/localhost/.test(document.location.host)) {
 })
 
 export class AppComponent {
-  worldMap: any = mapsData.world;
+  worldMap = mapsData.world;
 
   markers: FeatureCollection;
 
@@ -30,17 +30,11 @@ export class AppComponent {
     this.customizeText = this.customizeText.bind(this);
   }
 
-  customizeText(arg) {
-    return this.names[arg.index];
-  }
+  customizeText = ({ index }: { index: number }) => this.names[index];
 
-  customizeTooltip(arg) {
-    if (arg.layer.type === 'marker') {
-      return {
-        text: arg.attribute('tooltip'),
-      };
-    }
-  }
+  customizeTooltip = ({ layer, attribute }: { layer: Record<string, string>, attribute: Function }) => ((layer.type === 'marker')
+    ? { text: attribute('tooltip') }
+    : undefined);
 }
 
 @NgModule({

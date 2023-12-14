@@ -7,6 +7,7 @@ import { DxVectorMapComponent, DxVectorMapModule, DxButtonModule } from 'devextr
 
 import * as mapsData from 'devextreme-dist/js/vectormap-data/world.js';
 import { Marker, Service } from './app.service';
+import {DxVectorMapTypes} from "devextreme-angular/ui/vector-map";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -22,7 +23,7 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   @ViewChild(DxVectorMapComponent, { static: false }) vectorMap: DxVectorMapComponent;
 
-  worldMap: any = mapsData.world;
+  worldMap = mapsData.world;
 
   markers: Marker[];
 
@@ -38,9 +39,9 @@ export class AppComponent {
     }
   }
 
-  markerClick(e) {
-    if (e.target && e.target.layer.type === 'marker') {
-      e.component.center(e.target.coordinates()).zoomFactor(10);
+  markerClick({ target, component }) {
+    if (target?.layer.type === 'marker') {
+      component.center(target.coordinates()).zoomFactor(10);
     }
   }
 

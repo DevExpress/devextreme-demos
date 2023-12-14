@@ -18,7 +18,7 @@ if (!/localhost/.test(document.location.host)) {
 })
 
 export class AppComponent {
-  worldMap: any = mapsData.world;
+  worldMap = mapsData.world;
 
   populations: Object;
 
@@ -27,30 +27,24 @@ export class AppComponent {
     this.customizeLayers = this.customizeLayers.bind(this);
   }
 
-  customizeTooltip(arg) {
-    if (arg.attribute('population')) {
+  customizeTooltip({ attribute }: { attribute: Function }) {
+    if (attribute('population')) {
       return {
-        text: `${arg.attribute('name')}: ${arg.attribute('population')}% of world population`,
+        text: `${attribute('name')}: ${attribute('population')}% of world population`,
       };
     }
   }
 
-  customizeLayers(elements) {
+  customizeLayers(elements: { attribute: Function }[]) {
     elements.forEach((element) => {
       element.attribute('population', this.populations[element.attribute('name')]);
     });
   }
 
-  customizeText(arg) {
-    let text;
-    if (arg.index === 0) {
-      text = '< 0.5%';
-    } else if (arg.index === 5) {
-      text = '> 3%';
-    } else {
-      text = `${arg.start}% to ${arg.end}%`;
-    }
-    return text;
+  customizeText({ index, start, end }: { [key: string]: number }) {
+    let text = (index === 0) ? '< 0.5%' : '> 3%';
+
+    return (index === 5) ? text : `${start}% to ${end}%`;
   }
 }
 
