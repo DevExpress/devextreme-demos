@@ -9,8 +9,8 @@ import {
   DxButtonModule,
 } from 'devextreme-angular';
 import ArrayStore from 'devextreme/data/array_store';
+import { DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 import { Service, Employee, State } from './app.service';
-import {DxDataGridTypes} from "devextreme-angular/ui/data-grid";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

@@ -1,17 +1,16 @@
 import {
-  NgModule, Component, enableProdMode, ChangeDetectionStrategy,
+  NgModule, Component, enableProdMode,
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
-  HttpClient, HttpClientModule, HttpHeaders, HttpParams,
+  HttpClient, HttpClientModule, HttpParams,
 } from '@angular/common/http';
 
 import { DxDataGridModule, DxSelectBoxModule, DxButtonModule } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
 import { formatDate } from 'devextreme/localization';
 import { lastValueFrom } from 'rxjs';
-
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -28,20 +27,28 @@ const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi';
 export class AppComponent {
   dataSource: CustomStore;
 
-  customersData: {paginate: boolean, store: CustomStore};
-
-  shippersData: CustomStore;
-
-  refreshModes: string[];
-
-  refreshMode: string;
-
   requests: string[] = [];
 
-  constructor(private http: HttpClient) {
-    this.refreshMode = 'reshape';
-    this.refreshModes = ['full', 'reshape', 'repaint'];
+  refreshModes = ['full', 'reshape', 'repaint'];
 
+  refreshMode = 'reshape';
+
+  customersData = {
+    paginate: true,
+    store: new CustomStore({
+      key: 'Value',
+      loadMode: 'raw',
+      load: () => this.sendRequest(`${URL}/CustomersLookup`),
+    }),
+  };
+
+  shippersData = new CustomStore({
+    key: 'Value',
+    loadMode: 'raw',
+    load: () => this.sendRequest(`${URL}/ShippersLookup`),
+  });
+
+  constructor(private http: HttpClient) {
     this.dataSource = new CustomStore({
       key: 'OrderID',
       load: () => this.sendRequest(`${URL}/Orders`),
@@ -55,21 +62,6 @@ export class AppComponent {
       remove: (key) => this.sendRequest(`${URL}/DeleteOrder`, 'DELETE', {
         key,
       }),
-    });
-
-    this.customersData = {
-      paginate: true,
-      store: new CustomStore({
-        key: 'Value',
-        loadMode: 'raw',
-        load: () => this.sendRequest(`${URL}/CustomersLookup`),
-      }),
-    };
-
-    this.shippersData = new CustomStore({
-      key: 'Value',
-      loadMode: 'raw',
-      load: () => this.sendRequest(`${URL}/ShippersLookup`),
     });
   }
 
