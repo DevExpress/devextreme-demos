@@ -57,8 +57,8 @@ export class AppComponent {
 
   onVisualRangeChanged() {
     const items = this.component.instance.getDataSource().items();
-    const itemsFirstDate = items[0].date as number;
-    const itemsLastDate = items[items.length - 1].date as number;
+    const itemsFirstDate = items?.[0]?.date as number;
+    const itemsLastDate = items?.[items.length - 1]?.date as number;
     const startDate = this._visualRange.startValue as number;
     const endDate = this._visualRange.endValue as number;
 
