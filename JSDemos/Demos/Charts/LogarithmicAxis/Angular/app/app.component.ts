@@ -21,17 +21,19 @@ export class AppComponent {
     this.relativeMasses = service.getRelativeMasses();
   }
 
-  customizePoint = ({ data: { type } }) => ((type == 'Star')
-    ? {
-      color: 'red',
-      hoverStyle: { border: { color: 'red' } },
-    } : {
-      ...(type == 'Satellite')
-        ? {
-          color: 'gray',
-          hoverStyle: { border: { color: 'gray' } },
-        } : {},
-    });
+  customizePoint = ({ data: { type } }) => (
+    (type == 'Star')
+      ? {
+        color: 'red',
+        hoverStyle: { border: { color: 'red' } },
+      }
+      : {
+        ...(type == 'Satellite')
+          ? {
+            color: 'gray',
+            hoverStyle: { border: { color: 'gray' } },
+          } : {},
+      });
 }
 
 @NgModule({
