@@ -7,7 +7,6 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
 import { DxChartModule, DxChartComponent } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
-import {DxChartTypes} from "devextreme-angular/ui/chart";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -52,8 +51,8 @@ export class AppComponent {
       });
   }
 
-  calculateCandle(e) {
-    const prices = e.data.map((d) => d.price);
+  calculateCandle(e: Record<string, Date> & { data: Record<string, unknown>[] }) {
+    const prices: unknown[] = e.data.map((d) => d.price);
     if (prices.length) {
       return {
         date: new Date((e.intervalStart.valueOf() + e.intervalEnd.valueOf()) / 2),

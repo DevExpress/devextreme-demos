@@ -5,17 +5,14 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
-
 import {
   DxDropDownBoxModule,
   DxTreeViewModule,
   DxDataGridModule,
   DxTreeViewComponent,
 } from 'devextreme-angular';
-
 import CustomStore from 'devextreme/data/custom_store';
 import { DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
-import { DxDropDownBox } from 'devextreme-vue';
 import { DxDropDownBoxTypes } from 'devextreme-angular/ui/drop-down-box';
 
 if (!/localhost/.test(document.location.host)) {
@@ -29,31 +26,28 @@ if (!/localhost/.test(document.location.host)) {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  @ViewChild(DxTreeViewComponent, { static: false }) treeView;
+  @ViewChild(DxTreeViewComponent, { static: false }) treeView: DxTreeViewComponent;
 
   treeDataSource: CustomStore;
 
-  treeBoxValue: unknown[] | string;
-
-  isTreeBoxOpened: boolean;
-
   gridDataSource: CustomStore;
 
-  gridBoxValue: number[] = [3];
+  isTreeBoxOpened = false;
 
-  isGridBoxOpened: boolean;
+  isGridBoxOpened = false;
+
+  gridBoxValue = [3];
+
+  treeBoxValue: string | string[] = '1_1';
 
   gridColumns = ['CompanyName', 'City', 'Phone'];
 
   constructor(private httpClient: HttpClient, private ref: ChangeDetectorRef) {
     this.treeDataSource = this.makeAsyncDataSource(this.httpClient, 'treeProducts.json');
     this.gridDataSource = this.makeAsyncDataSource(this.httpClient, 'customers.json');
-    this.isTreeBoxOpened = false;
-    this.isGridBoxOpened = false;
-    this.treeBoxValue = '1_1';
   }
 
-  makeAsyncDataSource(http, jsonFile) {
+  makeAsyncDataSource(http: HttpClient, jsonFile: string) {
     return new CustomStore({
       loadMode: 'raw',
       key: 'ID',
@@ -66,10 +60,10 @@ export class AppComponent {
   syncTreeViewSelection() {
     if (!this.treeView) return;
 
-    if (!this.treeBoxValue) {
-      this.treeView.instance.unselectAll();
-    } else {
+    if (this.treeBoxValue) {
       this.treeView.instance.selectItem(this.treeBoxValue);
+    } else {
+      this.treeView.instance.unselectAll();
     }
   }
 
@@ -77,11 +71,9 @@ export class AppComponent {
     this.treeBoxValue = e.component.getSelectedNodeKeys();
   }
 
-  gridBox_displayExpr({ CompanyName = '', Phone = '' }) {
-    return `${CompanyName} <${Phone}>`;
-  }
+  gridBox_displayExpr = ({ CompanyName, Phone }) => CompanyName && `${CompanyName} <${Phone}>`;
 
-  onTreeBoxOptionChanged(e: DxTreeViewTypes.OptionChangedEvent) {
+  onTreeBoxOptionChanged(e: DxDropDownBoxTypes.OptionChangedEvent) {
     if (e.name === 'value') {
       this.isTreeBoxOpened = false;
       this.ref.detectChanges();
