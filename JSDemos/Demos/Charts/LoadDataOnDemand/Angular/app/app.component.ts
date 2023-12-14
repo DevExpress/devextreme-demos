@@ -21,6 +21,13 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   @ViewChild(DxChartComponent, { static: false }) component: DxChartComponent;
 
+  private _visualRange: VisualRange = {
+    startValue: new Date(2017, 3, 1),
+    length: {
+      weeks: 2,
+    },
+  };
+
   HALFDAY = 43200000;
 
   packetsLock = 0;
@@ -36,20 +43,13 @@ export class AppComponent {
     endValue: new Date(2017, 11, 31),
   };
 
-  _visualRange: VisualRange = {
-    startValue: new Date(2017, 3, 1),
-    length: {
-      weeks: 2,
-    },
-  };
-
   constructor(private httpClient: HttpClient) {}
 
-  get currentVisualRange() {
+  get currentVisualRange(): VisualRange {
     return this._visualRange;
   }
 
-  set currentVisualRange(range: typeof this._visualRange) {
+  set currentVisualRange(range: VisualRange) {
     this._visualRange.startValue = range.startValue;
     this._visualRange.endValue = range.endValue;
     this.onVisualRangeChanged();
@@ -60,8 +60,8 @@ export class AppComponent {
   onVisualRangeChanged() {
     const items = this.component.instance.getDataSource().items();
     if (!items.length
-            || this.dateDiff(items[0].date, this._visualRange.startValue as Date) >= this.HALFDAY
-            || this.dateDiff(this._visualRange.endValue as Date, items[items.length - 1].date) >= this.HALFDAY) {
+            || this.dateDiff(this._visualRange.startValue as Date, items[0].date) >= this.HALFDAY
+            || this.dateDiff(items[items.length - 1].date, this._visualRange.endValue as Date) >= this.HALFDAY) {
       this.uploadDataByVisualRange();
     }
   }
@@ -92,6 +92,7 @@ export class AppComponent {
           }));
 
           const componentStorage = dataSource.store();
+
           dataFrame.forEach((item) => componentStorage.insert(item));
           dataSource.reload();
 
@@ -105,14 +106,13 @@ export class AppComponent {
   }
 
   getDataFrame(args: Record<string, string>) {
-    const params = '?'
-        + `startVisible=${args.startVisible}`
+    const params = `startVisible=${args.startVisible}`
         + `&endVisible=${args.endVisible}`
         + `&startBound=${args.startBound}`
         + `&endBound=${args.endBound}`;
 
     return lastValueFrom(
-      this.httpClient.get(`https://js.devexpress.com/Demos/WidgetsGallery/data/temperatureData${params}`),
+      this.httpClient.get(`https://js.devexpress.com/Demos/WidgetsGallery/data/temperatureData?${params}`),
     );
   }
 

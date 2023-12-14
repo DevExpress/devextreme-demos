@@ -2,7 +2,6 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxChartModule } from 'devextreme-angular';
-
 import { Service, RelativeMass } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -27,8 +26,11 @@ export class AppComponent {
       color: 'red',
       hoverStyle: { border: { color: 'red' } },
     } : {
-      color: 'gray',
-      hoverStyle: { border: { color: 'gray' } },
+      ...(type == 'Satellite')
+        ? {
+          color: 'gray',
+          hoverStyle: { border: { color: 'gray' } },
+        } : {},
     });
 }
 
