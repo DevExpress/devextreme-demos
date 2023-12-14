@@ -5,17 +5,12 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
-
 import { DxChartModule, DxChartComponent } from 'devextreme-angular';
 import DataSource from 'devextreme/data/data_source';
+import { VisualRange } from 'devextreme/common/charts';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
-}
-
-interface DateBounds {
-  startValue: Date,
-  endValue: Date,
 }
 
 @Component({
@@ -26,39 +21,29 @@ interface DateBounds {
 export class AppComponent {
   @ViewChild(DxChartComponent, { static: false }) component: DxChartComponent;
 
-  private _visualRange: {
-    startValue: Date,
-    endValue?: Date,
-    length?: Record<string, number>
-  };
-
   HALFDAY = 43200000;
 
   packetsLock = 0;
 
-  chartDataSource: DataSource;
+  chartDataSource = new DataSource({
+    store: [],
+    sort: 'date',
+    paginate: false,
+  });
 
-  bounds: DateBounds;
+  bounds = {
+    startValue: new Date(2017, 0, 1),
+    endValue: new Date(2017, 11, 31),
+  };
 
-  constructor(private httpClient: HttpClient) {
-    this.chartDataSource = new DataSource({
-      store: [],
-      sort: 'date',
-      paginate: false,
-    });
+  _visualRange: VisualRange = {
+    startValue: new Date(2017, 3, 1),
+    length: {
+      weeks: 2,
+    },
+  };
 
-    this.bounds = {
-      startValue: new Date(2017, 0, 1),
-      endValue: new Date(2017, 11, 31),
-    };
-
-    this._visualRange = {
-      startValue: new Date(2017, 3, 1),
-      length: {
-        weeks: 2,
-      },
-    };
-  }
+  constructor(private httpClient: HttpClient) {}
 
   get currentVisualRange() {
     return this._visualRange;
@@ -70,13 +55,13 @@ export class AppComponent {
     this.onVisualRangeChanged();
   }
 
-  dateDiff = (start, end): number => end - start;
+  dateDiff = (start: Date, end: Date) => (end.getTime() - start.getTime());
 
   onVisualRangeChanged() {
     const items = this.component.instance.getDataSource().items();
     if (!items.length
-            || this.dateDiff(items[0].date, this._visualRange.startValue) >= this.HALFDAY
-            || this.dateDiff(this._visualRange.endValue, items[items.length - 1].date) >= this.HALFDAY) {
+            || this.dateDiff(items[0].date, this._visualRange.startValue as Date) >= this.HALFDAY
+            || this.dateDiff(this._visualRange.endValue as Date, items[items.length - 1].date) >= this.HALFDAY) {
       this.uploadDataByVisualRange();
     }
   }
@@ -85,8 +70,8 @@ export class AppComponent {
     const dataSource = this.component.instance.getDataSource();
     const storage = dataSource.items();
     const ajaxArgs = {
-      startVisible: this.getDateString(this._visualRange.startValue),
-      endVisible: this.getDateString(this._visualRange.endValue),
+      startVisible: this.getDateString(this._visualRange.startValue as Date),
+      endVisible: this.getDateString(this._visualRange.endValue as Date),
       startBound: this.getDateString(storage.length ? storage[0].date : null),
       endBound: this.getDateString(storage.length
         ? storage[storage.length - 1].date : null),
@@ -120,12 +105,11 @@ export class AppComponent {
   }
 
   getDataFrame(args: Record<string, string>) {
-    let params = '?';
-
-    params += `startVisible=${args.startVisible}`;
-    params += `&endVisible=${args.endVisible}`;
-    params += `&startBound=${args.startBound}`;
-    params += `&endBound=${args.endBound}`;
+    const params = '?'
+        + `startVisible=${args.startVisible}`
+        + `&endVisible=${args.endVisible}`
+        + `&startBound=${args.startBound}`
+        + `&endBound=${args.endBound}`;
 
     return lastValueFrom(
       this.httpClient.get(`https://js.devexpress.com/Demos/WidgetsGallery/data/temperatureData${params}`),
