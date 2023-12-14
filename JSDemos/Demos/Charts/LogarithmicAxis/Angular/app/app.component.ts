@@ -22,18 +22,16 @@ export class AppComponent {
   }
 
   customizePoint = ({ data: { type } }) => (
-    (type == 'Star')
-      ? {
+    {
+      Star: {
         color: 'red',
         hoverStyle: { border: { color: 'red' } },
-      }
-      : {
-        ...(type == 'Satellite')
-          ? {
-            color: 'gray',
-            hoverStyle: { border: { color: 'gray' } },
-          } : {},
-      });
+      },
+      Satellite: {
+        color: 'gray',
+        hoverStyle: { border: { color: 'gray' } },
+      },
+    }[type]);
 }
 
 @NgModule({
