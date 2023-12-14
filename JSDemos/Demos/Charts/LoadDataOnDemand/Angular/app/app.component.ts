@@ -55,13 +55,16 @@ export class AppComponent {
     this.onVisualRangeChanged();
   }
 
-  dateDiff = (start: Date, end: Date) => (end.getTime() - start.getTime());
-
   onVisualRangeChanged() {
     const items = this.component.instance.getDataSource().items();
+    const itemsFirstDate = items[0].date as number;
+    const itemsLastDate = items[items.length - 1].date as number;
+    const startDate = this._visualRange.startValue as number;
+    const endDate = this._visualRange.endValue as number;
+
     if (!items.length
-            || this.dateDiff(this._visualRange.startValue as Date, items[0].date) >= this.HALFDAY
-            || this.dateDiff(items[items.length - 1].date, this._visualRange.endValue as Date) >= this.HALFDAY) {
+            || itemsFirstDate - startDate >= this.HALFDAY
+            || endDate - itemsLastDate >= this.HALFDAY) {
       this.uploadDataByVisualRange();
     }
   }
@@ -69,12 +72,12 @@ export class AppComponent {
   uploadDataByVisualRange() {
     const dataSource = this.component.instance.getDataSource();
     const storage = dataSource.items();
+    const bounded = !!storage.length;
     const ajaxArgs = {
       startVisible: this.getDateString(this._visualRange.startValue as Date),
       endVisible: this.getDateString(this._visualRange.endValue as Date),
-      startBound: this.getDateString(storage.length ? storage[0].date : null),
-      endBound: this.getDateString(storage.length
-        ? storage[storage.length - 1].date : null),
+      startBound: this.getDateString(bounded ? storage[0].date : null),
+      endBound: this.getDateString(bounded ? storage[storage.length - 1].date : null),
     };
 
     if (ajaxArgs.startVisible !== ajaxArgs.startBound
