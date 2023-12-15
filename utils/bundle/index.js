@@ -87,7 +87,6 @@ const prepareConfigs = (framework) => {
   let additionPaths = {};
 
   let main = `devextreme-${framework}/index.js`;
-  let minify = true;
 
   if (framework === 'angular') {
     additionPackage = [{
@@ -106,7 +105,6 @@ const prepareConfigs = (framework) => {
     // eslint-disable-next-line spellcheck/spell-checker
     if (currentPackage.fesm2015) {
       main = `devextreme-${framework}`;
-      minify = false;
       const bundlesRoot = 'node_modules/devextreme-angular/bundles';
       const componentNames = fs.readdirSync(bundlesRoot)
         .filter((fileName) => fileName.indexOf('umd.js.map') !== -1)
@@ -167,8 +165,6 @@ const prepareConfigs = (framework) => {
     packages: packages.join(' + '),
     bundlePath: `bundles/devextreme.${framework}.systemjs.js`,
     bundleOpts: {
-      minify,
-      uglify: { mangle: true },
     },
   };
 };
