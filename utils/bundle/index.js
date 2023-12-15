@@ -3,43 +3,6 @@ const path = require('path');
 const fs = require('fs-extra');
 const Builder = require('systemjs-builder');
 
-// https://stackoverflow.com/questions/42412965/how-to-load-named-exports-with-systemjs/47108328
-const prepareModulesToNamedImport = () => {
-  const modules = [
-    'time_zone_utils.js',
-    'localization.js',
-    'viz/export.js',
-    'viz/core/export.js',
-    'viz/vector_map/projection.js',
-    'viz/palette.js',
-    'excel_exporter.js',
-    'pdf_exporter.js',
-    'time_zone_utils.js',
-    'devextreme/ui/dialog.js',
-    'common/charts.js',
-  ];
-
-  const paths = [
-    '../npm-scripts/npm-devextreme/cjs',
-    'node_modules/devextreme/cjs',
-  ];
-
-  const esModuleExport = 'exports.__esModule = true;';
-
-  paths.forEach((p) => {
-    modules.forEach((name) => {
-      const filePath = `${p}/${name}`;
-
-      if (fs.existsSync(filePath)) {
-        const fileText = fs.readFileSync(filePath, 'utf8');
-        if (fileText.search(esModuleExport) === -1) {
-          fs.appendFileSync(filePath, `\n ${esModuleExport}`);
-        }
-      }
-    });
-  });
-};
-
 const getDefaultBuilderConfig = (framework, additionPaths) => ({
   defaultExtension: false,
   defaultJSExtensions: 'js',
@@ -57,6 +20,7 @@ const getDefaultBuilderConfig = (framework, additionPaths) => ({
     },
     'devextreme/*': {
       build: true,
+      esModule: true,
     },
     'devexpress-gantt': {
       build: true,
@@ -172,8 +136,6 @@ const prepareConfigs = (framework) => {
 
 const build = async (framework) => {
   const builder = new Builder();
-  prepareModulesToNamedImport();
-
   const {
     builderConfig, packages, bundlePath, bundleOpts,
   } = prepareConfigs(framework);
