@@ -1,4 +1,6 @@
-import React, { useCallback, useEffect, useMemo, useReducer } from 'react';
+import React, {
+  useCallback, useEffect, useMemo, useReducer,
+} from 'react';
 import DataGrid, {
   Column, DataGridTypes, Editing,
 } from 'devextreme-react/data-grid';
