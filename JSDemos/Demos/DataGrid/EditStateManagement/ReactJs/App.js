@@ -1,4 +1,6 @@
-import React, { useCallback, useEffect, useMemo, useReducer } from 'react';
+import React, {
+  useCallback, useEffect, useMemo, useReducer,
+} from 'react';
 import DataGrid, { Column, Editing } from 'devextreme-react/data-grid';
 import { LoadPanel } from 'devextreme-react/load-panel';
 import 'whatwg-fetch';
