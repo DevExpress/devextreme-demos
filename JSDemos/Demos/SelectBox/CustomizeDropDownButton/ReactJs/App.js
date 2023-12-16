@@ -32,10 +32,7 @@ function App() {
     }),
     [setIsLoaded],
   );
-  const renderLoadIndicator = useCallback(
-    () => <IndicatorIcon isLoaded={isLoaded} />,
-    [isLoaded],
-  );
+  const renderLoadIndicator = useCallback(() => <IndicatorIcon isLoaded={isLoaded} />, [isLoaded]);
   const renderConditionalIcon = useCallback(
     () => <ConditionalIcon value={selectedItem} />,
     [selectedItem],

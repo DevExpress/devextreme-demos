@@ -133,10 +133,7 @@ function App() {
     ),
     [textAlign, onTextAlignChanged],
   );
-  const renderMenuSeparator = useCallback(
-    () => <div className="toolbar-menu-separator"></div>,
-    [],
-  );
+  const renderMenuSeparator = useCallback(() => <div className="toolbar-menu-separator"></div>, []);
   return (
     <React.Fragment>
       <div className="widget-container">

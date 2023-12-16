@@ -6,9 +6,7 @@ import { populationByAge, algorithmLabel } from './data.js';
 const algorithms = ['sliceanddice', 'squarified', 'strip', 'custom'];
 function App() {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithms[2]);
-  const [currentAlgorithm, setCurrentAlgorithm] = useState(
-    getCurrentAlgorithm(algorithms[2]),
-  );
+  const [currentAlgorithm, setCurrentAlgorithm] = useState(getCurrentAlgorithm(algorithms[2]));
   const setAlgorithm = useCallback(
     (data) => {
       setSelectedAlgorithm(data.value);
