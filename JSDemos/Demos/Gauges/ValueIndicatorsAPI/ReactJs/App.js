@@ -1,4 +1,6 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, {
+  useCallback, useMemo, useRef, useState,
+} from 'react';
 import {
   CircularGauge, Scale, Label, Tooltip, Title, Font,
 } from 'devextreme-react/circular-gauge';
