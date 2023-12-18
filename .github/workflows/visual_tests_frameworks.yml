@@ -5,8 +5,10 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  push:
   pull_request:
+  push:
+    branches:
+      - "[0-9][0-9]_[0-9]"
   workflow_dispatch:
   schedule:
     - cron: '0 */2 * * 6,0'
@@ -21,7 +23,7 @@ jobs:
 
     #Git
     - name: Get sources
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Clone devextreme repo from PR author fork
       continue-on-error: true
@@ -35,7 +37,7 @@ jobs:
 
     #Build Devextreme
     - name: Restore npm cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ./devextreme/node_modules
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
@@ -76,10 +78,16 @@ jobs:
     needs: build-devextreme
 
     steps:
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-quality: ga
+        dotnet-version: |
+          3.1
+          6.0
 
     #Git
     - name: Get sources
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Clone devextreme repo from PR author fork
       continue-on-error: true
@@ -92,7 +100,7 @@ jobs:
         test -d ./devextreme || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme
 
     - name: Restore npm cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ./devextreme/node_modules
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
@@ -120,7 +128,7 @@ jobs:
       run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme-react ./devextreme-react-repo
 
     - name: Clone devextreme-react repo
-      run: test -d ./devextreme-react-repo || git clone -b master https://github.com/devexpress/devextreme-react ./devextreme-react-repo
+      run: test -d ./devextreme-react-repo || git clone -b 22.1 https://github.com/devexpress/devextreme-react ./devextreme-react-repo
 
     - name: Copy devextreme package
       run: |
@@ -171,10 +179,16 @@ jobs:
     needs: build-devextreme
 
     steps:
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-quality: ga
+        dotnet-version: |
+          3.1
+          6.0
 
     #Git
     - name: Get sources
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Clone devextreme repo from PR author fork
       continue-on-error: true
@@ -187,7 +201,7 @@ jobs:
         test -d ./devextreme || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme
 
     - name: Restore npm cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ./devextreme/node_modules
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
@@ -215,13 +229,13 @@ jobs:
       run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme-vue ./devextreme-vue-repo
 
     - name: Clone devextreme-vue repo
-      run: test -d ./devextreme-vue-repo || git clone -b master https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
+      run: test -d ./devextreme-vue-repo || git clone -b 22.1 https://github.com/devexpress/devextreme-vue ./devextreme-vue-repo
 
     - name: Copy devextreme package
       run: |
         mkdir ./devextreme-vue-repo/devextreme-setup
         cp ./devextreme-installer.tgz ./devextreme-vue-repo/devextreme-setup
-   
+
     - name: Get devextreme-vue ref
       working-directory: ./devextreme-vue-repo
       id: devextreme-vue-ref
@@ -245,7 +259,7 @@ jobs:
     - name: Install packages for devextreme-vue
       working-directory: ./devextreme-vue-repo
       run: npm install --no-audit --no-fund
-      
+
     - name: Build and Pack
       working-directory: ./devextreme-vue-repo
       run: npm run pack
@@ -268,10 +282,15 @@ jobs:
     needs: build-devextreme
 
     steps:
-
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-quality: ga
+        dotnet-version: |
+          3.1
+          6.0
     #Git
     - name: Get sources
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Clone devextreme repo from PR author fork
       continue-on-error: true
@@ -284,7 +303,7 @@ jobs:
         test -d ./devextreme || git clone -b $BASE_BRANCH --depth 1 https://github.com/devexpress/devextreme ./devextreme
 
     - name: Restore npm cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ./devextreme/node_modules
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme/package-lock.json') }}
@@ -312,13 +331,13 @@ jobs:
       run: git clone -b ${{github.event.pull_request.head.ref}} --depth 1 https://github.com/${{github.event.pull_request.user.login}}/devextreme-angular ./devextreme-angular-repo
 
     - name: Clone devextreme-angular repo
-      run: test -d ./devextreme-angular-repo || git clone -b master https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
+      run: test -d ./devextreme-angular-repo || git clone -b 22.1 https://github.com/devexpress/devextreme-angular ./devextreme-angular-repo
 
     - name: Copy devextreme package
       run: |
         mkdir ./devextreme-angular-repo/devextreme-setup
         cp ./devextreme-installer.tgz ./devextreme-angular-repo/devextreme-setup
-   
+
     - name: Get devextreme-angular ref
       working-directory: ./devextreme-angular-repo
       id: devextreme-angular-ref
@@ -340,7 +359,7 @@ jobs:
     - name: Install packages for devextreme-angular
       working-directory: ./devextreme-angular-repo
       run: npm install --no-audit --no-fund
-      
+
     - name: Build and Pack
       working-directory: ./devextreme-angular-repo
       run: npm run pack
@@ -365,7 +384,7 @@ jobs:
     steps:
 
     - name: Get sources
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Use Node.js 14
       uses: actions/setup-node@v2
@@ -378,7 +397,7 @@ jobs:
         name: devextreme-sources
 
     - name: Restore npm cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ./node_modules
         key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
@@ -405,12 +424,12 @@ jobs:
 
     - name: Prepare bundles
       run: npm run prepare-bundles
-    
+
     - name: Demos - Run tsc
       run: tsc --noEmit
 
     #Publish artifacts
-    - name: Zip node_modules    
+    - name: Zip node_modules
       run: 7z a -t7z -mx3 -mmt2 node_modules.7z node_modules
 
     - name: Copy build artifacts
@@ -431,11 +450,11 @@ jobs:
 
     steps:
     - name: Get sources
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Delete DX packages
       run:  sed -i '/22.1-next/d' ./package.json
-    
+
     - name: Download devextreme sources
       uses: actions/download-artifact@v2
       with:
@@ -453,6 +472,10 @@ jobs:
 
     - name: Run npm install
       run: npm install --no-audit --no-fund
+
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 5.0.408
 
     - name: Prepare dotnet
       run: |
@@ -481,7 +504,7 @@ jobs:
 #        sudo dpkg -i "google-chrome-stable_${CHROME_VERSION}_amd64.deb"
 
     - name: Get sources
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Delete DX packages
       run:  sed -i '/22.1-next/d' ./package.json
@@ -496,7 +519,7 @@ jobs:
 
     - name: Prepare JS
       run: npm run prepare-js
-    
+
     - name: Prepare Bundles
       run: npx gulp bundles
 

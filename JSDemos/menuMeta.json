@@ -2518,7 +2518,6 @@
           {
             "Title": "Doughnut",
             "Name": "Doughnut",
-            "DocUrl": "Guide/UI_Components/PieChart/Series/Overview/",
             "Credits": "www.wikipedia.org",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2623,7 +2622,6 @@
           {
             "Title": "Line",
             "Name": "Line",
-            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Line_Series/",
             "Credits": "www.geohive.com",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2632,7 +2630,6 @@
           {
             "Title": "Spline",
             "Name": "Spline",
-            "DocUrl": "Guide/UI_Components/Chart/Series_Types/Line_Series/",
             "Credits": "www.top500.org",
             "Widget": "Charts",
             "DemoType": "Viz",
@@ -2641,7 +2638,6 @@
           {
             "Title": "Resolved Axis Label Overlapping",
             "Name": "AxisLabelsOverlapping",
-            "DocUrl": "Guide/UI_Components/Chart/Axes/Axis_Labels/",
             "Widget": "Charts",
             "DemoType": "Viz",
             "Equivalents": "overlappingBehavior"
@@ -2706,7 +2702,6 @@
           {
             "Title": "Pies with Equal Sizes",
             "Name": "PiesWithEqualSize",
-            "DocUrl": "Guide/UI_Components/PieChart/Equally-Sized_Pies/",
             "Widget": "Charts",
             "DemoType": "Viz",
             "Equivalents": "sizeGroup"
@@ -2714,7 +2709,6 @@
           {
             "Title": "Pie with Custom Labels",
             "Name": "PieWithCustomLabels",
-            "DocUrl": "Guide/UI_Components/PieChart/Point_Labels/Relocate_Labels/",
             "Credits": "www.wikipedia.org",
             "Widget": "Charts",
             "DemoType": "Viz"
@@ -2743,7 +2737,6 @@
           {
             "Title": "Palette",
             "Name": "Palette",
-            "DocUrl": "Guide/UI_Components/PieChart/Series/Overview/",
             "Widget": "Charts",
             "DemoType": "Viz"
           },
@@ -3048,7 +3041,6 @@
           {
             "Title": "Multiple Axes",
             "Name": "MultipleAxes",
-            "DocUrl": "Guide/UI_Components/Chart/Axes/Multi-Axis_Chart/",
             "Credits": "www.wikipedia.org",
             "Widget": "Charts",
             "DemoType": "Viz"
@@ -4121,6 +4113,8 @@
             "Title": "Overview",
             "Name": "Overview",
             "Widget": "Autocomplete",
+            "Badge": "Updated",
+            "Modules": "whatwg-fetch",
             "MvcAdditionalFiles": [
               "/Models/SampleData/Names.cs",
               "/Models/SampleData/Surnames.cs",
@@ -4959,6 +4953,9 @@
             "Name": "ChunkUploading",
             "DocUrl": "",
             "Widget": "FileUploader",
+            "MvcAdditionalFiles": [
+              "/Models/FileUploader/ChunkMetadata.cs"
+            ],
             "BackendFiles": [
               "FileUploaderController.cs"
             ]
@@ -5014,14 +5011,12 @@
           {
             "Title": "Basics",
             "Name": "Basics",
-            "DocUrl": "Guide/UI_Components/ActionSheet/Overview/",
             "Widget": "ActionSheet",
             "DemoType": "Mobile"
           },
           {
             "Title": "Popover Mode",
             "Name": "PopoverMode",
-            "DocUrl": "Guide/UI_Components/ActionSheet/Specify_Display_Mode/",
             "Widget": "ActionSheet",
             "DemoType": "Mobile"
           }
@@ -5572,7 +5567,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/LoadIndicator/Overview/",
             "Widget": "LoadIndicator"
           }
         ]
@@ -5585,7 +5579,6 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/LoadPanel/Overview/",
             "Widget": "LoadPanel",
             "MvcAdditionalFiles": [
               "/Scripts/data/employee.js"
@@ -5601,10 +5594,9 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "Guide/UI_Components/Popover/Overview/",
             "Widget": "Popover"
           }
-        ]
+        ] 
       },
       {
         "Name": "Popup",
@@ -5659,7 +5651,7 @@
             "Title": "Stack",
             "Name": "Stack",
             "Badge": "New",
-            "DocUrl": "Guide/UI_Components/Toast/Stack/",
+            "DocUrl": "Guide/UI_Components/Toast/Getting_Started_with_Toast/#Display_a_Toast_notification/Use_the_notify_Method/",
             "Widget": "Toast"
           }
         ]

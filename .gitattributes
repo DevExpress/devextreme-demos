@@ -1,4 +1,5 @@
 *       text eol=lf
+*.mdf   binary
 
 # images
 *.gif   binary

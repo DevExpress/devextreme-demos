@@ -14,6 +14,11 @@
         .DragEnabled(false)
         .HideOnOutsideClick(true)
         .ShowCloseButton(false)
+        .Position(positionConfig => positionConfig
+            .At(HorizontalAlignment.Center, VerticalAlignment.Bottom)
+            .My(HorizontalAlignment.Center, VerticalAlignment.Center)
+            .Collision(PositionResolveCollision.Fit, PositionResolveCollision.Fit)
+        )
         .ToolbarItems(barItems => {
             barItems.Add()
                 .Toolbar(Toolbar.Bottom)

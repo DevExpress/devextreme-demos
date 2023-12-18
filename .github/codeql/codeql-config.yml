@@ -1,0 +1,5 @@
+name: "devextreme-demos CodeQL config"
+
+paths-ignore:
+  - "MVCDemos/**"
+  - "NetCoreDemos/**"

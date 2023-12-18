@@ -5,8 +5,10 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  push:
   pull_request:
+  push:
+    branches:
+      - "[0-9][0-9]_[0-9]"
   workflow_dispatch:
   schedule:
     - cron: '0 * * * 6,0'
@@ -21,7 +23,7 @@ jobs:
 
     #Git
     - name: Get sources
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Clone devextreme repo from PR author fork
       continue-on-error: true
@@ -35,7 +37,7 @@ jobs:
 
     #Build Devextreme
     - name: DevExtreme - Restore npm cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ./devextreme-repo/node_modules
         key: ${{ runner.os }}-devextreme-node-modules-${{ hashFiles('devextreme-repo/package-lock.json') }}
@@ -60,7 +62,7 @@ jobs:
 
     #Build Demos
     - name: Demos - Restore npm cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ./node_modules
         key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
@@ -106,7 +108,7 @@ jobs:
 #        sudo dpkg -i "google-chrome-stable_${CHROME_VERSION}_amd64.deb"
 
     - name: Get sources
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
 
     - name: Delete DX packages

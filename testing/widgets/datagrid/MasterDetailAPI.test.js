@@ -2,15 +2,15 @@ import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
 import { Selector as $ } from 'testcafe';
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
-fixture('DataGrid.MasterDetailView')
+fixture('DataGrid.MasterDetailAPI')
   .page('http://localhost:8080/')
   .beforeEach(async (t) => {
     await t
       .resizeWindow(900, 600);
   });
 
-runManualTest('DataGrid', 'MasterDetailView', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
-  test('MasterDetailView', async (t) => {
+runManualTest('DataGrid', 'MasterDetailAPI', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
+  test('MasterDetailAPI', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click(

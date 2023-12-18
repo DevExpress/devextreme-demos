@@ -59,6 +59,19 @@ function importAnd(es6, cjs, callback) {
   return callback(...getValues(cjs));
 }
 
+function mockOptionMethod(instance) {
+  const { option } = instance;
+  instance.option = function mock(name) {
+    if (arguments.length === 0) {
+      return option.call(this);
+    }
+    if (arguments.length === 1 && typeof name === 'string') {
+      return option.call(this, name);
+    }
+    return undefined;
+  };
+}
+
 // eslint-disable-next-line no-unused-vars
 const testUtils = {
   postpone,
@@ -67,6 +80,7 @@ const testUtils = {
   postponeUntilNotFound,
   importAnd,
   findElements,
+  mockOptionMethod,
 };
 
 window.testUtils = testUtils;

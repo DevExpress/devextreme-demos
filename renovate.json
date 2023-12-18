@@ -1,38 +1,52 @@
 {
     "extends": [
-        "config:base"
+        "config:js-app"
     ],
+    "prConcurrentLimit": 2,
+    "semanticCommits": "enabled",
     "baseBranches": [
-        "21_2",
-        "22_1"
+        "22_1",
+        "22_2"
     ],
     "labels": [
         "dependencies"
     ],
-    "lockFileMaintenance": {
-        "enabled": true,
-        "schedule": [
-            "every 1 day"
-        ],
-        "automerge": true
-    },
     "vulnerabilityAlerts": {
         "enabled": true,
         "automerge": true
     },
     "packageRules": [
         {
-            "packagePatterns": [
-                "*"
+            "matchPackageNames": [
+              "devextreme",
+              "devextreme-aspnet-data",
+              "devextreme-aspnet-data-nojquery",
+              "devextreme-angular",
+              "devextreme-react",
+              "devextreme-vue",
+              "eslint-config-devextreme",
+              "rrule",
+              "vuex"
             ],
+            "enabled": false
+        },
+        {
+            "matchPackagePatterns": [ "*" ],
+            "matchUpdateTypes": [ "minor", "patch" ],
+            "automerge": true
+        },
+        {
+            "matchPackagePatterns": [ "*" ],
+            "matchUpdateTypes": [ "major" ],
             "enabled": false
         }
     ],
-    "assignAutomerge": true,
     "reviewers": [
-        "team:devextreme-core"
+        "team:devextreme-devops"
     ],
     "ignorePaths": [
-        ".github"
+        ".github",
+        "MVCDemos",
+        "NetCoreDemos"
     ]
 }
