@@ -401,8 +401,6 @@ module.exports = {
     ],
     globals: {
       System: false,
-      AzureGateway: false,
-      AzureFileSystem: false,
     },
     settings: {
       react: {
@@ -523,8 +521,6 @@ module.exports = {
     ],
     globals: {
       System: false,
-      AzureGateway: false,
-      AzureFileSystem: false,
     },
     rules: {
       'block-spacing': 'error',
