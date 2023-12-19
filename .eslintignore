@@ -3,6 +3,6 @@ MVCDemos/*
 bundles/*
 NetCoreDemos/*
 JSDemos/Demos/**/testcafe-test-code.js
-/**/azure.file.system.js
+JSDemos/shared/empty-file.js
 
 JSDemos/Demos/**/config.js
