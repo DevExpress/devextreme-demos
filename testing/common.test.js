@@ -125,9 +125,7 @@ const getTestSpecificSkipRules = (testName) => {
     'Scheduler',
     'PivotGrid',
   ];
-  const BROKEN_THIRD_PARTY_SCRIPTS_COMPONENT = [
-    'Map',
-  ];
+  const BROKEN_THIRD_PARTY_SCRIPTS_COMPONENT = [];
 
   getDemoPaths(approach).forEach((demoPath, index) => {
     if (!shouldRunTestAtIndex(index + 1) || !existsSync(demoPath)) { return; }
