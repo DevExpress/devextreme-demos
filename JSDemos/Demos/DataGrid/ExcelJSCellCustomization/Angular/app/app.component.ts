@@ -6,6 +6,7 @@ import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';
 // Our demo infrastructure requires us to use 'file-saver-es'. We recommend that you use the official 'file-saver' package in your applications.
 import { exportDataGrid } from 'devextreme/excel_exporter';
+import { DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 import { Service, Company } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -22,11 +23,11 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   companies: Company[];
 
-  constructor(private service: Service) {
+  constructor(service: Service) {
     this.companies = service.getCompanies();
   }
 
-  onExporting(e) {
+  onExporting(e: DxDataGridTypes.ExportingEvent) {
     const workbook = new Workbook();
     const worksheet = workbook.addWorksheet('Companies');
 
@@ -65,7 +66,7 @@ export class AppComponent {
     });
   }
 
-  phoneNumberFormat(value) {
+  phoneNumberFormat(value: string) {
     const USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);
 
     return `(${USNumber[1]}) ${USNumber[2]}-${USNumber[3]}`;

@@ -11,6 +11,7 @@ import {
   DxButtonModule,
 } from 'devextreme-angular';
 import query from 'devextreme/data/query';
+import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
 import { Service, Order } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -30,30 +31,27 @@ export class AppComponent {
 
   expandAll = true;
 
-  totalCount: number;
+  groupingValues = [{
+    value: 'CustomerStoreState',
+    text: 'Grouping by State',
+  }, {
+    value: 'Employee',
+    text: 'Grouping by Employee',
+  }];
 
-  groupingValues: Record<string, string>[];
+  totalCount = this.getGroupCount('CustomerStoreState');
 
   constructor(service: Service) {
     this.orders = service.getOrders();
-    this.totalCount = this.getGroupCount('CustomerStoreState');
-
-    this.groupingValues = [{
-      value: 'CustomerStoreState',
-      text: 'Grouping by State',
-    }, {
-      value: 'Employee',
-      text: 'Grouping by Employee',
-    }];
   }
 
-  getGroupCount(groupField) {
+  getGroupCount(groupField: string) {
     return query(this.orders)
       .groupBy(groupField)
       .toArray().length;
   }
 
-  toggleGroupColumn(e) {
+  toggleGroupColumn(e: DxSelectBoxTypes.ValueChangedEvent) {
     this.dataGrid.instance.clearGrouping();
     this.dataGrid.instance.columnOption(e.value, 'groupIndex', 0);
     this.totalCount = this.getGroupCount(e.value);

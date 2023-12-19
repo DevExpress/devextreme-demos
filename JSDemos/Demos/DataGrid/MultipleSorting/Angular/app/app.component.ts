@@ -4,8 +4,8 @@ import {
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxDataGridComponent, DxDataGridModule, DxCheckBoxModule } from 'devextreme-angular';
-
 import { Employee, Service } from './app.service';
+import {DxCheckBoxTypes} from "devextreme-angular/ui/check-box";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -29,7 +29,7 @@ export class AppComponent {
     this.employees = service.getEmployees();
   }
 
-  onValueChange(e) {
+  onValueChange(e: DxCheckBoxTypes.ValueChangedEvent) {
     if (e.value) {
       this.dataGrid.instance.columnOption(5, 'sortOrder', undefined);
     }

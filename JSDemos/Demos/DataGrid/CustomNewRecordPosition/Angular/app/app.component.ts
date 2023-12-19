@@ -1,11 +1,12 @@
 import {
-  NgModule, Component, enableProdMode, ChangeDetectorRef,
+  NgModule, Component, enableProdMode,
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxDataGridModule, DxSelectBoxModule } from 'devextreme-angular';
 import Guid from 'devextreme/core/guid';
 import CustomStore from 'devextreme/data/custom_store';
+import { DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -21,39 +22,38 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   dataSource: CustomStore;
 
-  newRowPosition = 'viewportTop';
+  newRowPosition: DxDataGridTypes.NewRowPosition = 'viewportTop';
 
-  scrollingMode = 'standard';
+  scrollingMode: DxDataGridTypes.DataGridScrollMode = 'standard';
 
   changes = [];
 
   editRowKey = null;
 
-  newRowPositionOptions = ['first', 'last', 'pageTop', 'pageBottom', 'viewportTop', 'viewportBottom'];
+  newRowPositionOptions: DxDataGridTypes.NewRowPosition[] = ['first', 'last', 'pageTop', 'pageBottom', 'viewportTop', 'viewportBottom'];
 
-  scrollingModeOptions = ['standard', 'virtual'];
+  scrollingModeOptions: DxDataGridTypes.DataGridScrollMode[] = ['standard', 'virtual'];
 
   constructor(service: Service) {
     this.dataSource = service.getDataSource();
-    this.onAddButtonClick = this.onAddButtonClick.bind(this);
   }
 
-  onAddButtonClick(e) {
+  onAddButtonClick = ({ row }: DxDataGridTypes.ColumnButtonClickEvent) => {
     const key = new Guid().toString();
     this.changes = [{
       key,
       type: 'insert',
-      insertAfterKey: e.row.key,
+      insertAfterKey: row.key,
     }];
     this.editRowKey = key;
-  }
+  };
 
-  isAddButtonVisible({ row }) {
+  isAddButtonVisible({ row }: { row: Record<string, unknown> }) {
     return !row.isEditing;
   }
 
-  onRowInserted(e) {
-    e.component.navigateToRow(e.key);
+  async onRowInserted(e: DxDataGridTypes.RowInsertedEvent) {
+    await e.component.navigateToRow(e.key);
   }
 }
 

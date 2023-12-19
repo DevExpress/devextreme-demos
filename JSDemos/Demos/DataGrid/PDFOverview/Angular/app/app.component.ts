@@ -6,6 +6,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxDataGridModule } from 'devextreme-angular';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
+import { DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 import { Service, Customer } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -25,7 +26,7 @@ export class AppComponent {
     this.customers = service.getCustomers();
   }
 
-  onExporting(e) {
+  onExporting(e: DxDataGridTypes.ExportingEvent) {
     const doc = new jsPDF();
     exportDataGrid({
       jsPDFDocument: doc,

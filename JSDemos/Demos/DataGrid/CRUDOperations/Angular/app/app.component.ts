@@ -1,16 +1,13 @@
-import {
-  NgModule, Component, enableProdMode,
-} from '@angular/core';
+import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
   HttpClient, HttpClientModule, HttpParams,
 } from '@angular/common/http';
-
 import { DxDataGridModule, DxSelectBoxModule, DxButtonModule } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
 import { formatDate } from 'devextreme/localization';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -70,7 +67,7 @@ export class AppComponent {
 
     const httpParams = new HttpParams({ fromObject: data });
     const httpOptions = { withCredentials: true, body: httpParams };
-    let request;
+    let request: Observable<Object>;
 
     switch (method) {
       case 'GET':

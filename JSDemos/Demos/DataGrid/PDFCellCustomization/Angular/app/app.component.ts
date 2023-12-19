@@ -6,6 +6,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxDataGridModule } from 'devextreme-angular';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
+import { DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 import { Service, Company } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -22,12 +23,13 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   companies: Company[];
 
-  constructor(private service: Service) {
+  constructor(service: Service) {
     this.companies = service.getCompanies();
   }
 
-  onExporting(e) {
+  onExporting(e: DxDataGridTypes.ExportingEvent) {
     const doc = new jsPDF();
+
     exportDataGrid({
       jsPDFDocument: doc,
       component: e.component,
@@ -60,7 +62,7 @@ export class AppComponent {
     });
   }
 
-  phoneNumberFormat(value) {
+  phoneNumberFormat(value: string) {
     const USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);
 
     return `(${USNumber[1]}) ${USNumber[2]}-${USNumber[3]}`;

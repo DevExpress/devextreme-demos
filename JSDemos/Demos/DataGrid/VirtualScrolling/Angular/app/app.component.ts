@@ -29,7 +29,7 @@ export class AppComponent {
     columns[0].width = 70;
   }
 
-  onContentReady(e) {
+  onContentReady(e: DxDataGridTypes.ContentReadyEvent) {
     e.component.option('loadPanel.enabled', false);
   }
 }

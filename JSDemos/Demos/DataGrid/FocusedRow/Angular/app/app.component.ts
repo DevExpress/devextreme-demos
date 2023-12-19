@@ -31,10 +31,6 @@ export class AppComponent {
 
   @ViewChild(DxNumberBoxComponent, { static: false }) numberBox: DxNumberBoxComponent;
 
-  columns: DxDataGridTypes.Column[];
-
-  dataSource: DataSourceOptions;
-
   isReady: boolean;
 
   taskSubject: string;
@@ -49,48 +45,49 @@ export class AppComponent {
 
   autoNavigateToFocusedRow = true;
 
-  constructor(private sanitizer: DomSanitizer) {
-    this.dataSource = {
-      store: {
-        type: 'odata',
-        version: 2,
-        key: 'Task_ID',
-        url: 'https://js.devexpress.com/Demos/DevAV/odata/Tasks',
-      },
-      expand: 'ResponsibleEmployee',
-      select: [
-        'Task_ID',
-        'Task_Subject',
-        'Task_Start_Date',
-        'Task_Status',
-        'Task_Description',
-        'Task_Completion',
-        'ResponsibleEmployee/Employee_Full_Name',
-      ],
-    };
-    this.columns = [
-      {
-        dataField: 'Task_ID',
-        width: 80,
-      }, {
-        caption: 'Start Date',
-        dataField: 'Task_Start_Date',
-        dataType: 'date',
-      }, {
-        caption: 'Assigned To',
-        dataField: 'ResponsibleEmployee.Employee_Full_Name',
-        cssClass: 'employee',
-        allowSorting: false,
-      }, {
-        caption: 'Subject',
-        dataField: 'Task_Subject',
-        width: 350,
-      }, {
-        caption: 'Status',
-        dataField: 'Task_Status',
-      },
-    ];
-  }
+  dataSource: DataSourceOptions = {
+    store: {
+      type: 'odata',
+      version: 2,
+      key: 'Task_ID',
+      url: 'https://js.devexpress.com/Demos/DevAV/odata/Tasks',
+    },
+    expand: 'ResponsibleEmployee',
+    select: [
+      'Task_ID',
+      'Task_Subject',
+      'Task_Start_Date',
+      'Task_Status',
+      'Task_Description',
+      'Task_Completion',
+      'ResponsibleEmployee/Employee_Full_Name',
+    ],
+  };
+
+  columns: DxDataGridTypes.Column[] = [
+    {
+      dataField: 'Task_ID',
+      width: 80,
+    }, {
+      caption: 'Start Date',
+      dataField: 'Task_Start_Date',
+      dataType: 'date',
+    }, {
+      caption: 'Assigned To',
+      dataField: 'ResponsibleEmployee.Employee_Full_Name',
+      cssClass: 'employee',
+      allowSorting: false,
+    }, {
+      caption: 'Subject',
+      dataField: 'Task_Subject',
+      width: 350,
+    }, {
+      caption: 'Status',
+      dataField: 'Task_Status',
+    },
+  ];
+
+  constructor(private sanitizer: DomSanitizer) {}
 
   onFocusedRowChanging(e) {
     const rowsCount = e.component.getVisibleRows().length;
@@ -111,9 +108,7 @@ export class AppComponent {
     }
   }
 
-  onFocusedRowChanged(e) {
-    const data = e.row.data;
-
+  onFocusedRowChanged({ row: { data } }: DxDataGridTypes.FocusedRowChangedEvent) {
     this.taskSubject = data.Task_Subject;
     this.taskDetailsHtml = this.sanitizer.bypassSecurityTrustHtml(data.Task_Description);
     this.taskStatus = data.Task_Status;
