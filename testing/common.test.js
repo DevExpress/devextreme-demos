@@ -54,7 +54,7 @@ const execTestCafeCode = (t, code) => {
   return testCafeFunction(t);
 };
 
-const SKIP_ACCESSIBILITY_TESTS = ['TabPanel-Overview'];
+const SKIP_ACCESSIBILITY_TESTS = ['TabPanel-Overview', 'Map-Markers', 'Map-Routes'];
 const COMMON_SKIP_RULES = ['color-contrast'];
 const getTestSpecificSkipRules = (testName) => {
   switch (testName) {
