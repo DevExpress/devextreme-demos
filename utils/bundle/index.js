@@ -130,6 +130,7 @@ const prepareConfigs = (framework) => {
       name: 'react/*',
       metaValue: {
         build: true,
+        esModule: true,
       },
       pathValue: 'node_modules/react/*',
     }, {
