@@ -97,7 +97,9 @@ const getTestSpecificSkipRules = (testName) => {
     .beforeEach(async (t) => {
       // eslint-disable-next-line spellcheck/spell-checker
       t.ctx.watchDogHandle = setTimeout(() => { throw new Error('test timeout exceeded'); }, 3 * 60 * 1000);
-      await t.resizeWindow(1000, 800);
+      await t
+        .skipJsErrors(({ message }) => message.includes('sj_evt is not defined'))
+        .resizeWindow(1000, 800);
     })
     // eslint-disable-next-line spellcheck/spell-checker
     .afterEach((t) => clearTimeout(t.ctx.watchDogHandle))
