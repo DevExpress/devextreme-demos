@@ -13,6 +13,8 @@ if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
 
+type FirstArgument<T> = T extends (...args: any) => any ? Parameters<T>[0]: never;
+
 @Component({
   selector: 'demo-app',
   templateUrl: 'app/app.component.html',
@@ -48,7 +50,7 @@ export class AppComponent {
     this.editRowKey = key;
   };
 
-  isAddButtonVisible({ row }: { row: Record<string, unknown> }) {
+  isAddButtonVisible({ row }: FirstArgument<DxDataGridTypes.ColumnButton['visible']>) {
     return !row.isEditing;
   }
 
