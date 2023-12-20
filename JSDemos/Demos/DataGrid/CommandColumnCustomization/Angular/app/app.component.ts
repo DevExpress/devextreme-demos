@@ -9,6 +9,8 @@ if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
 
+type FirstArgument<T> = T extends (...args: any) => any ? Parameters<T>[0]: never;
+
 @Component({
   selector: 'demo-app',
   templateUrl: 'app/app.component.html',
@@ -31,15 +33,15 @@ export class AppComponent {
     return position && ['CEO', 'CMO'].indexOf(position.trim().toUpperCase()) >= 0;
   }
 
-  isCloneIconVisible({ row }: { row: Record<string, unknown> }) {
+  isCloneIconVisible({ row }: FirstArgument<DxDataGridTypes.ColumnButton['visible']>) {
     return !row.isEditing;
   }
 
-  isCloneIconDisabled({ row }: { row: Record<string, unknown> }) {
-    return AppComponent.isChief((row.data as Record<string, string>).Position);
+  isCloneIconDisabled({ row }: FirstArgument<DxDataGridTypes.ColumnButton['disabled']>) {
+    return AppComponent.isChief((row.data).Position);
   }
 
-  isDeleteIconVisible({ row }: { row: Record<string, unknown> }) {
+  isDeleteIconVisible({ row }: FirstArgument<DxDataGridTypes.Editing['allowDeleting']>) {
     return !AppComponent.isChief((row.data as Record<string, string>).Position);
   }
 
@@ -52,7 +54,7 @@ export class AppComponent {
     }
   }
 
-  onEditorPreparing(e: DxDataGridTypes.EditorPreparedEvent & { editorOptions: Record<string, unknown> }) {
+  onEditorPreparing(e: DxDataGridTypes.EditorPreparingEvent) {
     if (e.parentType === 'dataRow' && e.dataField === 'Position') {
       e.editorOptions.readOnly = AppComponent.isChief(e.value);
     }
