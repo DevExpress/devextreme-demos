@@ -1,10 +1,10 @@
 import {
-  NgModule, Component, ViewChild, AfterViewInit, enableProdMode,
+  NgModule, Component, enableProdMode,
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { DxScrollViewModule, DxSortableModule } from 'devextreme-angular';
+import { DxSortableTypes } from 'devextreme-angular/ui/sortable';
 import { Employee, Task, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -37,7 +37,7 @@ export class AppComponent {
     });
   }
 
-  onListReorder(e) {
+  onListReorder(e: DxSortableTypes.ReorderEvent) {
     const list = this.lists.splice(e.fromIndex, 1)[0];
     this.lists.splice(e.toIndex, 0, list);
 
@@ -45,11 +45,11 @@ export class AppComponent {
     this.statuses.splice(e.toIndex, 0, status);
   }
 
-  onTaskDragStart(e) {
+  onTaskDragStart(e: DxSortableTypes.DragStartEvent) {
     e.itemData = e.fromData[e.fromIndex];
   }
 
-  onTaskDrop(e) {
+  onTaskDrop(e: DxSortableTypes.AddEvent) {
     e.fromData.splice(e.fromIndex, 1);
     e.toData.splice(e.toIndex, 0, e.itemData);
   }

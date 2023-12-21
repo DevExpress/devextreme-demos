@@ -4,6 +4,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
   DxTreeListModule, DxButtonModule, DxCheckBoxModule, DxSelectBoxModule,
 } from 'devextreme-angular';
+import { DxTreeListTypes } from 'devextreme-angular/ui/tree-list';
 import { Service, Employee } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -23,22 +24,19 @@ export class AppComponent {
 
   enterKeyDirections: Array<string>;
 
-  editOnkeyPress: boolean;
+  editOnkeyPress = true;
 
-  enterKeyAction: string;
+  enterKeyAction: DxTreeListTypes.EnterKeyAction = 'moveFocus';
 
-  enterKeyDirection: string;
+  enterKeyDirection: DxTreeListTypes.EnterKeyDirection = 'column';
 
   constructor(service: Service) {
     this.employees = service.getEmployees();
     this.enterKeyActions = service.getEnterKeyActions();
     this.enterKeyDirections = service.getEnterKeyDirections();
-    this.editOnkeyPress = true;
-    this.enterKeyAction = 'moveFocus';
-    this.enterKeyDirection = 'column';
   }
 
-  onFocusedCellChanging(e) {
+  onFocusedCellChanging(e: DxTreeListTypes.FocusedCellChangingEvent) {
     e.isHighlighted = true;
   }
 }

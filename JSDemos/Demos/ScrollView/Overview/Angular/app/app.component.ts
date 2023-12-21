@@ -11,6 +11,9 @@ import {
   DxSelectBoxModule,
 } from 'devextreme-angular';
 import { Service } from './app.service';
+import {DxCheckBoxTypes} from "devextreme-angular/ui/check-box";
+import {DxSchedulerTypes} from "devextreme-angular/ui/scheduler";
+import {DxScrollViewTypes} from "devextreme-angular/ui/scroll-view";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -64,24 +67,24 @@ export class AppComponent implements AfterViewInit {
     this.scrollView.instance.option('onReachBottom', this.updateBottomContent);
   }
 
-  valueChanged = (data) => {
+  valueChanged = (data: DxCheckBoxTypes.ValueChangedEvent) => {
     this.scrollView.instance.option('onReachBottom', data.value ? this.updateBottomContent : null);
   };
 
-  updateContent = (args, eventName) => {
+  updateContent = (args: DxScrollViewTypes.PullDownEvent | DxScrollViewTypes.ReachBottomEvent, eventName: string) => {
     const updateContentText = `<br /><div>Content has been updated on the ${eventName} event.</div><br />`;
     if (this.updateContentTimer) { clearTimeout(this.updateContentTimer as number); }
     this.updateContentTimer = setTimeout(() => {
       this.content = (eventName == 'PullDown' ? updateContentText + this.content : this.content + updateContentText);
-      args.component.release();
+      args.component.release(false);
     }, 500);
   };
 
-  updateTopContent = (e) => {
+  updateTopContent = (e: DxScrollViewTypes.PullDownEvent) => {
     this.updateContent(e, 'PullDown');
   };
 
-  updateBottomContent = (e) => {
+  updateBottomContent = (e: DxScrollViewTypes.ReachBottomEvent) => {
     this.updateContent(e, 'ReachBottom');
   };
 }

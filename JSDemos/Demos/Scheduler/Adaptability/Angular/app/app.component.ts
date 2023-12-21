@@ -34,7 +34,7 @@ export class AppComponent {
     this.priorities = service.getResources();
   }
 
-  showAppointmentPopup(e) {
+  showAppointmentPopup() {
     this.scheduler.instance.showAppointmentPopup();
   }
 }

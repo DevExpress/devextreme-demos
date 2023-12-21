@@ -1,26 +1,16 @@
 import {
-  NgModule, Component, enableProdMode, ViewChild, ViewChildren, QueryList,
+  NgModule, Component, enableProdMode, ViewChild,
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { DxContextMenuModule, DxSchedulerModule, DxSchedulerComponent } from 'devextreme-angular';
-
 import { AppointmentContextMenuEvent, CellContextMenuEvent } from 'devextreme/ui/scheduler';
-import { Item, ItemClickEvent, ItemContextMenuEvent } from 'devextreme/ui/context_menu';
+import { ItemClickEvent } from 'devextreme/ui/context_menu';
 import { Appointment, Resource, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
-
-type ContextMenuItemClick = ItemClickEvent & {
-  itemData: ContextMenuItem
-};
-type ContextMenuItem = Item & {
-  onItemClick?: (e: ContextMenuItemClick) => void;
-  id?: Resource['id'];
-};
 
 const appointmentClassName = '.dx-scheduler-appointment';
 const cellClassName = '.dx-scheduler-date-table-cell';
@@ -45,7 +35,7 @@ export class AppComponent {
 
   crossScrollingEnabled = false;
 
-  contextMenuItems: ContextMenuItem[] = [];
+  contextMenuItems = [];
 
   disabled = true;
 
@@ -58,7 +48,7 @@ export class AppComponent {
 
   onAppointmentContextMenu({ appointmentData, targetedAppointmentData }: AppointmentContextMenuEvent) {
     const scheduler = this.scheduler.instance;
-    const resourceItems: ContextMenuItem[] = this.resourcesData
+    const resourceItems = this.resourcesData
       .map((item) => ({
         ...item,
         onItemClick: ({ itemData }) => scheduler.updateAppointment(appointmentData, {
@@ -134,8 +124,8 @@ export class AppComponent {
     ];
   }
 
-  onContextMenuItemClick(e: ContextMenuItemClick) {
-    e.itemData.onItemClick(e);
+  onContextMenuItemClick(e: ItemClickEvent) {
+    (e.itemData as unknown & { onItemClick: Function }).onItemClick(e);
   }
 }
 
