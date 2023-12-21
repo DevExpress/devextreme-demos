@@ -4,7 +4,7 @@ import {
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxChartModule, DxChartComponent, DxButtonModule } from 'devextreme-angular';
-
+import { DxChartTypes } from 'devextreme-angular/ui/chart';
 import { Service, Mountain } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -34,7 +34,7 @@ export class AppComponent {
     }
   );
 
-  customizeLabel = ({ value }: { value: string }) => `${value} m`;
+  customizeLabel = ({ value }: Parameters<DxChartTypes.ValueAxisLabel['customizeText']>[0]) => `${value} m`;
 
   print() {
     this.chart.instance.print();

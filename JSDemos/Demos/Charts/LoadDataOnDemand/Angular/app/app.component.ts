@@ -7,7 +7,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 import { DxChartModule, DxChartComponent } from 'devextreme-angular';
 import DataSource from 'devextreme/data/data_source';
-import { VisualRange } from 'devextreme/common/charts';
+import { VisualRange } from 'devextreme-angular/common/charts';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

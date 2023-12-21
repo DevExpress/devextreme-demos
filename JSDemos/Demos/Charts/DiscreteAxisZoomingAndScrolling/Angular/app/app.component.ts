@@ -1,10 +1,10 @@
 import {
-  NgModule, Component, ViewChild, enableProdMode,
+  NgModule, Component, enableProdMode,
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxChartModule, DxRangeSelectorModule } from 'devextreme-angular';
-
+import { DxChartTypes } from 'devextreme-angular/ui/chart';
 import { Service, ChemicalComposition, SerieDescription } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -27,7 +27,7 @@ export class AppComponent {
     this.seriesSource = service.getSeries();
   }
 
-  customizeText = ({ valueText }: { valueText: string }) => `${valueText}%`;
+  customizeText = ({ valueText }: Parameters<DxChartTypes.ValueAxisLabel['customizeText']>[0]) => `${valueText}%`;
 }
 
 @NgModule({

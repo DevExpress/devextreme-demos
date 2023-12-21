@@ -1,9 +1,8 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { DxChartModule } from 'devextreme-angular';
-
+import { DxChartTypes } from 'devextreme-angular/ui/chart';
 import { Population, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -27,7 +26,7 @@ export class AppComponent {
     text: Math.abs(valueText),
   });
 
-  customizeLabel = ({ value }: { value: number }) => `${Math.abs(value)}%`;
+  customizeLabel = ({ value }: Parameters<DxChartTypes.ValueAxisLabel['customizeText']>[0]) => `${Math.abs(value as number)}%`;
 }
 
 @NgModule({

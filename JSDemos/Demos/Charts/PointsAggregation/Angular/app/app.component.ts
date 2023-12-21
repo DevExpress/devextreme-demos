@@ -1,13 +1,13 @@
 import {
-  NgModule, Component, ViewChild, enableProdMode,
+  NgModule, Component, enableProdMode,
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxChartModule, DxSelectBoxModule, DxCheckBoxModule } from 'devextreme-angular';
-
 import {
   Service, WeatherIndicators, AggregationInterval, AggregationFunction,
 } from './app.service';
+import {DxChartTypes} from "devextreme-angular/ui/chart";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

@@ -7,6 +7,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
 import { DxChartModule, DxChartComponent } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
+import {DxChartTypes} from "devextreme-angular/ui/chart";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -64,7 +65,7 @@ export class AppComponent {
     }
   }
 
-  customizePoint = ({ seriesName, argument }) => {
+  customizePoint = ({ seriesName, argument }: Parameters<DxChartTypes.Properties['customizePoint']>[0]) => {
     if (seriesName === 'Volume') {
       const point = this.component.instance.getAllSeries()[0].getPointsByArg(argument)[0].data;
       if (point.close >= point.open) {

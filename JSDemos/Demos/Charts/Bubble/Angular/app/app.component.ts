@@ -33,9 +33,9 @@ export class AppComponent {
     text: `${point.tag}<br/>Total Population: ${argumentText}M<br/>Population with Age over 60: ${valueText}M (${size}%)`,
   });
 
-  argumentCustomizeText = ({ value }: { value: string }) => `${value}M`;
+  argumentCustomizeText = ({ value }: Parameters<DxChartTypes.ArgumentAxisLabel['customizeText']>[0]) => `${value}M`;
 
-  valueCustomizeText = ({ value }: { value: string }) => `${value}M`;
+  valueCustomizeText = ({ value }: Parameters<DxChartTypes.ValueAxisLabel['customizeText']>[0]) => `${value}M`;
 
   onSeriesClick({ target: series }: DxChartTypes.SeriesClickEvent) {
     series.isVisible()

@@ -3,11 +3,9 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
-
 import { DxAutocompleteModule, DxTemplateModule } from 'devextreme-angular';
 import ODataStore from 'devextreme/data/odata/store';
 import CustomStore from 'devextreme/data/custom_store';
-import { LoadOptions } from 'devextreme/data';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -52,7 +50,7 @@ export class AppComponent {
     this.clientsStore = new CustomStore({
       key: 'Value',
       useDefaultSearch: true,
-      load(loadOptions: LoadOptions) {
+      async load(loadOptions) {
         let params: HttpParams = new HttpParams();
         [
           'skip',
@@ -64,7 +62,7 @@ export class AppComponent {
           }
         });
         return lastValueFrom(httpClient.get('https://js.devexpress.com/Demos/Mvc/api/DataGridWebApi/CustomersLookup', { params }))
-          .then(({ data }: { data: Record<string, string>[] }) => ({
+          .then(({ data }: { data: Record<string, unknown>[] }) => ({
             data,
           }))
           .catch((error) => { throw 'Data Loading Error'; });

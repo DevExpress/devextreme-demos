@@ -2,12 +2,14 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxChartModule } from 'devextreme-angular';
-
+import { DxChartTypes } from 'devextreme-angular/ui/chart';
 import { Service, Temperature } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+
+const customizeText = ({ valueText }: Parameters<DxChartTypes.ArgumentAxisLabel['customizeText']>[0]) => `${valueText}&#176F`;
 
 @Component({
   selector: 'demo-app',
@@ -33,7 +35,7 @@ export class AppComponent {
     this.lowAverage = lowAverage;
   }
 
-  customizePoint = ({ value }: { value: number }) => {
+  customizePoint = ({ value }: Parameters<DxChartTypes.Properties['customizePoint']>[0]) => {
     if (value > this.highAverage) {
       return { color: this.highAverageColor };
     } if (value < this.lowAverage) {
@@ -41,7 +43,7 @@ export class AppComponent {
     }
   };
 
-  customizeLabel = ({ value }: { value: number }) => {
+  customizeLabel = ({ value }: Parameters<DxChartTypes.Properties['customizeLabel']>[0]) => {
     if (value > this.highAverage) {
       return getLabelsSettings(this.highAverageColor);
     } if (value < this.lowAverage) {
@@ -59,8 +61,6 @@ function getLabelsSettings(backgroundColor: string) {
     customizeText,
   };
 }
-
-const customizeText = ({ valueText }) => `${valueText}&#176F`;
 
 @NgModule({
   imports: [
