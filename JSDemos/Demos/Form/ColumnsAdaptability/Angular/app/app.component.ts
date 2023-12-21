@@ -4,7 +4,7 @@ import {
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxFormModule, DxCheckBoxModule } from 'devextreme-angular';
-
+import { DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
 import { Employee, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -20,21 +20,18 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   employee: Employee;
 
-  colCountByScreen: Object;
+  colCountByScreen = {
+    md: 4,
+    sm: 2,
+  };
 
   constructor(service: Service) {
     this.employee = service.getEmployee();
-    this.colCountByScreen = {
-      md: 4,
-      sm: 2,
-    };
   }
 
-  screen(width) {
-    return width < 720 ? 'sm' : 'md';
-  }
+  screen = (width: number) => (width < 720 ? 'sm' : 'md');
 
-  valueChanged(e) {
+  valueChanged(e: DxCheckBoxTypes.ValueChangedEvent) {
     if (e.value) {
       this.colCountByScreen = null;
     } else {

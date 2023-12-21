@@ -14,12 +14,16 @@ import {
 } from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
 import Validator from 'devextreme/ui/validator';
-
+import { DxiValidationRuleComponent } from 'devextreme-angular/ui/nested';
+import { DxFormTypes } from 'devextreme-angular/ui/form';
 import { Customer, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+
+type ArrowFunction<T> = T extends Function ? (...args: any) => any : never;
+type FirstArgument<T> = T extends Function ? Parameters<ArrowFunction<T>>[0] : never;
 
 const sendRequest = function (value) {
   const invalidEmail = 'test@dx-email.com';
@@ -37,7 +41,7 @@ const sendRequest = function (value) {
   styleUrls: ['app/app.component.css'],
 })
 export class AppComponent {
-  @ViewChild(DxFormComponent, { static: false }) form:DxFormComponent;
+  @ViewChild(DxFormComponent, { static: false }) form: DxFormComponent;
 
   passwordEditorOptions = {
     mode: 'password',
@@ -195,11 +199,11 @@ export class AppComponent {
     return startDate !== null && endDate !== null;
   }
 
-  asyncValidation(params) {
+  asyncValidation(params: FirstArgument<DxiValidationRuleComponent['validationCallback']>[0]) {
     return sendRequest(params.value);
   }
 
-  onFormSubmit = function (e) {
+  onFormSubmit = function (e: SubmitEvent) {
     notify({
       message: 'You have submitted the form',
       position: {
@@ -211,7 +215,7 @@ export class AppComponent {
     e.preventDefault();
   };
 
-  onOptionChanged = function (e) {
+  onOptionChanged = function (e: DxFormTypes.OptionChangedEvent) {
     if (e.name === 'isDirty') {
       const resetButton = this.form.instance.getButton('Reset');
       resetButton.option('disabled', !e.value);
