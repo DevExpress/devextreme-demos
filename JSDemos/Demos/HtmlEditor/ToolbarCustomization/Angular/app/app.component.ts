@@ -1,15 +1,12 @@
 import {
-  NgModule, ViewChild, Component, enableProdMode,
+  NgModule, Component, enableProdMode,
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
-  DxHtmlEditorComponent,
   DxHtmlEditorModule,
-  DxPopupComponent,
   DxPopupModule,
 } from 'devextreme-angular';
-
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -28,7 +25,7 @@ export class AppComponent {
 
   popupVisible: boolean;
 
-  toolbarButtonOptions :any = {
+  toolbarButtonOptions = {
     text: 'Show markup',
     stylingMode: 'text',
     onClick: () => this.popupVisible = true,
