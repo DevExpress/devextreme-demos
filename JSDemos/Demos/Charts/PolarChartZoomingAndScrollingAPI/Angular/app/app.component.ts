@@ -1,10 +1,8 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-import { DxPolarChartModule, DxRangeSelectorModule } from 'devextreme-angular';
-
-import { DxChartTypes } from 'devextreme-angular/ui/chart';
+import { DxRangeSelectorModule } from 'devextreme-angular';
+import { DxPolarChartModule, DxPolarChartTypes } from 'devextreme-angular/ui/polar-chart';
 import { DataFrame, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -20,7 +18,7 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   dataSource: DataFrame[];
 
-  visualRange: DxChartTypes.ValueAxis['visualRange'] = {};
+  visualRange: DxPolarChartTypes.ValueAxis['visualRange'] = {};
 
   constructor(service: Service) {
     this.visualRange = { startValue: 0, endValue: 8 };

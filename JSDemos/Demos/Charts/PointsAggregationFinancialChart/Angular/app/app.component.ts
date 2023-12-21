@@ -3,8 +3,8 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxChartModule, DxChartComponent, DxRangeSelectorModule } from 'devextreme-angular';
-import { DxChartTypes } from 'devextreme-angular/ui/chart';
+import { DxRangeSelectorModule } from 'devextreme-angular';
+import { DxChartModule, DxChartComponent, DxChartTypes } from 'devextreme-angular/ui/chart';
 import { Service, StockPrice } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

@@ -3,10 +3,8 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxPieChartModule, DxSelectBoxModule, DxPieChartComponent } from 'devextreme-angular';
-
-import { DxPieChartTypes } from 'devextreme-angular/ui/pie-chart';
-import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
+import { DxPieChartModule, DxPieChartComponent, DxPieChartTypes } from 'devextreme-angular/ui/pie-chart';
+import { DxSelectBoxModule, DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
 import { Service, Population } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

@@ -1,8 +1,8 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxTreeMapModule, DxSelectBoxModule } from 'devextreme-angular';
-import { DxTreeMapTypes } from 'devextreme-angular/ui/tree-map';
+import { DxSelectBoxModule } from 'devextreme-angular';
+import { DxTreeMapModule, DxTreeMapTypes } from 'devextreme-angular/ui/tree-map';
 import { SalesAmount, Service } from './app.service';
 
 interface ColorizationOption {
