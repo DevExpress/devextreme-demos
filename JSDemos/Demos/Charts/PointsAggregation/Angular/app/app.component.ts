@@ -7,7 +7,6 @@ import { DxChartModule, DxSelectBoxModule, DxCheckBoxModule } from 'devextreme-a
 import {
   Service, WeatherIndicators, AggregationInterval, AggregationFunction,
 } from './app.service';
-import {DxChartTypes} from "devextreme-angular/ui/chart";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

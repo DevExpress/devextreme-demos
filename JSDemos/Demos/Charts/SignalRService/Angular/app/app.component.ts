@@ -5,9 +5,8 @@ import { DecimalPipe, CurrencyPipe } from '@angular/common';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HubConnectionBuilder, HttpTransportType } from '@aspnet/signalr';
-import { DxChartModule, DxChartComponent } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
-import {DxChartTypes} from "devextreme-angular/ui/chart";
+import { DxChartModule, DxChartComponent, DxChartTypes } from 'devextreme-angular/ui/chart';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
