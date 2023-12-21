@@ -22,7 +22,7 @@ export class Order {
 export class Change<T> {
   type: 'insert' | 'update' | 'remove';
 
-  key: string;
+  key: any;
 
   data: Partial<T>;
 }

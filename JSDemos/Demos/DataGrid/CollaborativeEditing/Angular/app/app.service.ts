@@ -9,9 +9,9 @@ const BASE_PATH = 'https://js.devexpress.com/Demos/NetCore/';
 class StoreChangedEvent {
   type: 'update' | 'insert' | 'remove';
 
-  key?: string;
+  key?: any;
 
-  data?: Record<string, unknown>;
+  data?: any;
 }
 
 @Injectable()
