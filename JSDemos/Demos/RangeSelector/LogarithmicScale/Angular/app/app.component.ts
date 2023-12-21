@@ -1,9 +1,10 @@
 import {
-  NgModule, Component, ViewChild, enableProdMode,
+  NgModule, Component, enableProdMode,
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxRangeSelectorModule, DxChartModule } from 'devextreme-angular';
+import { DxChartTypes } from 'devextreme-angular/ui/chart';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -15,9 +16,9 @@ if (!/localhost/.test(document.location.host)) {
   styleUrls: ['app/app.component.css'],
 })
 export class AppComponent {
-  dataSource: any[] = [];
+  dataSource: Record<string, unknown>[] = [];
 
-  visualRange: any = {};
+  visualRange: DxChartTypes.ArgumentAxis['visualRange'] = {};
 
   constructor() {
     const max = 100;
