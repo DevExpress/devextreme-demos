@@ -4,12 +4,18 @@ import {
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
-  DxGanttComponent, DxGanttModule, DxSelectBoxModule, DxCheckBoxModule, DxNumberBoxModule, DxDateBoxModule,
+  DxGanttComponent,
+  DxGanttModule,
+  DxSelectBoxModule,
+  DxCheckBoxModule,
+  DxNumberBoxModule,
+  DxDateBoxModule,
 } from 'devextreme-angular';
 import { exportGantt as exportGanttToPdf } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
+import { DxButtonTypes } from 'devextreme-angular/ui/button';
 import {
   Service, Task, Dependency, Resource, ResourceAssignment,
 } from './app.service';
@@ -63,7 +69,7 @@ export class AppComponent {
 
   dateRangeBoxValue = this.dateRanges[1];
 
-  exportButtonOptions = {
+  exportButtonOptions: DxButtonTypes.Properties = {
     hint: 'Export to PDF',
     icon: 'exportpdf',
     stylingMode: 'text',

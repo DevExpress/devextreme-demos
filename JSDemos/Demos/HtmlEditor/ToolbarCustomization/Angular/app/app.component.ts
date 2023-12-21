@@ -7,6 +7,7 @@ import {
   DxHtmlEditorModule,
   DxPopupModule,
 } from 'devextreme-angular';
+import { DxButtonTypes } from 'devextreme-angular/ui/button';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -25,7 +26,7 @@ export class AppComponent {
 
   popupVisible: boolean;
 
-  toolbarButtonOptions = {
+  toolbarButtonOptions: DxButtonTypes.Properties = {
     text: 'Show markup',
     stylingMode: 'text',
     onClick: () => this.popupVisible = true,

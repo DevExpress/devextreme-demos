@@ -2,6 +2,7 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxCircularGaugeModule } from 'devextreme-angular';
+import { DxCircularGaugeTypes } from 'devextreme-angular/ui/circular-gauge';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -13,7 +14,7 @@ if (!/localhost/.test(document.location.host)) {
   styleUrls: ['app/app.component.css'],
 })
 export class AppComponent {
-  customizeText = ({ valueText }) => `${valueText} %`;
+  customizeText = ({ valueText }: Parameters<DxCircularGaugeTypes.ScaleLabel['customizeText']>[0]) => `${valueText} %`;
 }
 
 @NgModule({

@@ -1,13 +1,11 @@
 import {
-  NgModule, Component, enableProdMode, AfterViewInit,
+  NgModule, Component, enableProdMode,
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  DxFormModule,
-} from 'devextreme-angular';
-
+import { DxFormModule } from 'devextreme-angular';
 import { DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
+import { DxButtonTypes } from 'devextreme-angular/ui/button';
 import { Employee, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -21,42 +19,35 @@ if (!/localhost/.test(document.location.host)) {
   styleUrls: ['app/app.component.css'],
 })
 
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
   employee: Employee;
 
-  isHomeAddressVisible: boolean;
-
-  checkBoxOptions: Record<string, unknown>;
+  isHomeAddressVisible = true;
 
   phoneOptions: Record<string, unknown>[] = [];
 
-  addPhoneButtonOptions: Record<string, unknown>;
+  checkBoxOptions: DxCheckBoxTypes.Properties = {
+    text: 'Show Address',
+    value: true,
+    onValueChanged: (e: DxCheckBoxTypes.ValueChangedEvent) => {
+      this.isHomeAddressVisible = e.component.option('value');
+    },
+  };
+
+  addPhoneButtonOptions: DxButtonTypes.Properties = {
+    icon: 'add',
+    text: 'Add phone',
+    onClick: () => {
+      this.employee.Phones.push('');
+      this.phoneOptions = this.getPhonesOptions(this.employee.Phones);
+    },
+  };
 
   constructor(service: Service) {
     this.employee = service.getEmployee();
-    this.isHomeAddressVisible = true;
 
     this.phoneOptions = this.getPhonesOptions(this.employee.Phones);
-
-    this.checkBoxOptions = {
-      text: 'Show Address',
-      value: true,
-      onValueChanged: (e: DxCheckBoxTypes.ValueChangedEvent) => {
-        this.isHomeAddressVisible = e.component.option('value');
-      },
-    };
-
-    this.addPhoneButtonOptions = {
-      icon: 'add',
-      text: 'Add phone',
-      onClick: () => {
-        this.employee.Phones.push('');
-        this.phoneOptions = this.getPhonesOptions(this.employee.Phones);
-      },
-    };
   }
-
-  ngAfterViewInit(): void {}
 
   getPhonesOptions = (phones: string[]) => phones.map((_, index) => this.generateNewPhoneOptions(index));
 

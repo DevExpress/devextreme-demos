@@ -36,8 +36,8 @@ export class AppComponent {
     this.products = service.getProducts();
   }
 
-  itemClick(data) {
-    const item = data.itemData;
+  itemClick(data: DxMenuTypes.ItemClickEvent) {
+    const item = data.itemData as Product;
 
     if (item.price) {
       this.currentProduct = item;

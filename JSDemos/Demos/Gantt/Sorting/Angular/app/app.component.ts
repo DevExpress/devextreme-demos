@@ -2,7 +2,7 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxGanttModule, DxSelectBoxModule, DxCheckBoxModule } from 'devextreme-angular';
-import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
+import { SingleOrMultiple } from 'devextreme-angular/common';
 import {
   Service, Task, Dependency, Resource, ResourceAssignment,
 } from './app.service';
@@ -31,7 +31,7 @@ export class AppComponent {
 
   showSortIndexDisabled = true;
 
-  sortingMode: 'single' | 'multiple' | 'none' = 'single';
+  sortingMode: SingleOrMultiple = 'single';
 
   constructor(service: Service) {
     this.tasks = service.getTasks();
@@ -40,7 +40,7 @@ export class AppComponent {
     this.resourceAssignments = service.getResourceAssignments();
   }
 
-  onSortingValueChanged(e: DxSelectBoxTypes.ValueChangedEvent) {
+  onSortingValueChanged() {
     this.showSortIndexDisabled = this.sortingMode !== 'multiple';
   }
 }
