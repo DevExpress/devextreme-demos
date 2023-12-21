@@ -3,6 +3,7 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxPivotGridModule, DxButtonModule } from 'devextreme-angular';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
+import { DxPivotGridTypes } from 'devextreme-angular/ui/pivot-grid';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -63,8 +64,9 @@ export class AppComponent {
     });
   }
 
-  prepareContextMenu(e) {
+  prepareContextMenu(e: DxPivotGridTypes.ContextMenuPreparingEvent) {
     const dataSource = this.pivotGridDataSource;
+
     if (e.field !== dataSource.field(4)) { return; }
 
     for (const summaryDisplayMode of this.summaryDisplayModes) {

@@ -12,6 +12,7 @@ import {
 } from 'devextreme-angular';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 import DataSource from 'devextreme/data/data_source';
+import { DxPivotGridTypes } from 'devextreme-angular/ui/pivot-grid';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -63,7 +64,7 @@ export class AppComponent {
     });
   }
 
-  onPivotCellClick(e) {
+  onPivotCellClick(e: DxPivotGridTypes.CellClickEvent) {
     if (e.area == 'data') {
       const rowPathLength = e.cell.rowPath.length;
       const rowPathName = e.cell.rowPath[rowPathLength - 1];
