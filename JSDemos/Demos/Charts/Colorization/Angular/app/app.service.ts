@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 export interface SalesAmount {
   name: string;
-  items: Record<string, unknown>[];
+  items: any;
 }
 
 const salesAmount: SalesAmount[] = [{
