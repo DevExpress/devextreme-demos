@@ -82,8 +82,11 @@ export class AppComponent {
   };
 
   onColorClick(color: Color) {
+    const iconElement = this.dropDownButton.element().getElementsByClassName('dx-icon-square')[0] as HTMLElement;
+
+    iconElement.style.color = color;
+
     this.color = color;
-    this.dropDownButton.element().getElementsByClassName('dx-icon-square')[0].style.color = color;
     this.dropDownButton.close();
   }
 }
