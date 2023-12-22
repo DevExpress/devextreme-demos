@@ -35,7 +35,7 @@ export class AppComponent {
                 + '% </div></div></div>',
   });
 
-  customizeLabelText = ({ valueText }: Parameters<DxChartTypes.ValueAxisLabel['customizeText']>[0]) => `${valueText}%`;
+  customizeLabelText: DxChartTypes.ValueAxisLabel['customizeText'] = ({ valueText }) => `${valueText}%`;
 }
 
 @NgModule({

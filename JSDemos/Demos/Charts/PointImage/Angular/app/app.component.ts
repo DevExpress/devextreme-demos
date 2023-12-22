@@ -23,23 +23,23 @@ export class AppComponent {
     this.iceHockeyStatistics = service.getIceHockeyStatistics();
   }
 
-  customizePoint({ value }: Parameters<DxChartTypes.Properties['customizePoint']>[0]) {
-    if (value == 1) {
-      return { image: { url: '../../../../images/Charts/PointImage/icon-medal-gold.png', width: 20, height: 20 }, visible: true };
-    } if (value == 2) {
-      return { image: { url: '../../../../images/Charts/PointImage/icon-medal-silver.png', width: 20, height: 20 }, visible: true };
-    } if (value == 3) {
-      return { image: { url: '../../../../images/Charts/PointImage/icon-medal-bronse.png', width: 20, height: 20 }, visible: true };
-    }
-  }
+  customizePoint: DxChartTypes.Properties['customizePoint'] = ({ value }) => {
+    const color = {
+      1: 'gold',
+      2: 'silver',
+      3: 'bronse',
+    }[value];
 
-  customizeText({ valueText }: Parameters<DxChartTypes.ValueAxisLabel['customizeText']>[0]) {
-    return {
-      1: `${valueText}st place`,
-      2: `${valueText}nd place`,
-      3: `${valueText}rd place`,
-    }[valueText] || `${valueText}th place`;
-  }
+    if (color) {
+      return { image: { url: `../../../../images/Charts/PointImage/icon-medal-${color}.png`, width: 20, height: 20 }, visible: true };
+    }
+  };
+
+  customizeText: DxChartTypes.ValueAxisLabel['customizeText'] = ({ valueText }) => ({
+    1: `${valueText}st place`,
+    2: `${valueText}nd place`,
+    3: `${valueText}rd place`,
+  }[valueText] || `${valueText}th place`);
 }
 
 @NgModule({

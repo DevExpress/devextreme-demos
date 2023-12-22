@@ -23,11 +23,9 @@ export class AppComponent {
 
   dataSource: CustomStore;
 
-  connectionStarted: boolean;
+  connectionStarted = false;
 
   constructor(private decimalPipe: DecimalPipe, private currencyPipe: CurrencyPipe) {
-    this.connectionStarted = false;
-
     const hubConnection = new HubConnectionBuilder()
       .withUrl('https://js.devexpress.com/Demos/NetCore/stockTickDataHub', {
         skipNegotiation: true,
@@ -64,7 +62,7 @@ export class AppComponent {
     }
   }
 
-  customizePoint = ({ seriesName, argument }: Parameters<DxChartTypes.Properties['customizePoint']>[0]) => {
+  customizePoint: DxChartTypes.Properties['customizePoint'] = ({ seriesName, argument }) => {
     if (seriesName === 'Volume') {
       const point = this.component.instance.getAllSeries()[0].getPointsByArg(argument)[0].data;
       if (point.close >= point.open) {

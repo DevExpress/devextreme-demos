@@ -34,7 +34,7 @@ export class AppComponent {
     }
   );
 
-  customizeLabel = ({ value }: Parameters<DxChartTypes.ValueAxisLabel['customizeText']>[0]) => `${value} m`;
+  customizeLabel: DxChartTypes.ValueAxisLabel['customizeText'] = ({ value }) => `${value} m`;
 
   print() {
     this.chart.instance.print();

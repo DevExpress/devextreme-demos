@@ -25,7 +25,7 @@ export class AppComponent {
     this.temperaturesData = service.getTemperaturesData();
   }
 
-  customizePoint = ({ value }: Parameters<DxChartTypes.Properties['customizePoint']>[0]) => {
+  customizePoint: DxChartTypes.Properties['customizePoint'] = ({ value }) => {
     if (value > this.highAverage) {
       return { color: '#ff7c7c', hoverStyle: { color: '#ff7c7c' } };
     }
@@ -35,7 +35,7 @@ export class AppComponent {
       : undefined;
   };
 
-  customizeLabel = ({ value }: Parameters<DxChartTypes.Properties['customizeLabel']>[0]) => {
+  customizeLabel: DxChartTypes.Properties['customizeLabel'] = ({ value }) => {
     if (value > this.highAverage) {
       return {
         visible: true,
@@ -45,7 +45,7 @@ export class AppComponent {
     }
   };
 
-  customizeText = ({ valueText }: Parameters<DxChartTypes.ValueAxisLabel['customizeText']>[0]) => `${valueText}&#176F`;
+  customizeText: DxChartTypes.ValueAxisLabel['customizeText'] = ({ valueText }) => `${valueText}&#176F`;
 }
 
 @NgModule({

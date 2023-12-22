@@ -27,7 +27,7 @@ export class AppComponent {
     this.seriesSource = service.getSeries();
   }
 
-  customizeText = ({ valueText }: Parameters<DxChartTypes.ValueAxisLabel['customizeText']>[0]) => `${valueText}%`;
+  customizeText: DxChartTypes.ValueAxisLabel['customizeText'] = ({ valueText }) => `${valueText}%`;
 }
 
 @NgModule({

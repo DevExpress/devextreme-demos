@@ -8,7 +8,7 @@ if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
 
-const customizeText = ({ valueText }: Parameters<DxChartTypes.ArgumentAxisLabel['customizeText']>[0]) => `${valueText}&#176F`;
+const customizeText: DxChartTypes.ArgumentAxisLabel['customizeText'] = ({ valueText }) => `${valueText}&#176F`;
 
 @Component({
   selector: 'demo-app',
@@ -34,7 +34,7 @@ export class AppComponent {
     this.lowAverage = lowAverage;
   }
 
-  customizePoint = ({ value }: Parameters<DxChartTypes.Properties['customizePoint']>[0]) => {
+  customizePoint: DxChartTypes.Properties['customizePoint'] = ({ value }) => {
     if (value > this.highAverage) {
       return { color: this.highAverageColor };
     } if (value < this.lowAverage) {
@@ -42,7 +42,7 @@ export class AppComponent {
     }
   };
 
-  customizeLabel = ({ value }: Parameters<DxChartTypes.Properties['customizeLabel']>[0]) => {
+  customizeLabel: DxChartTypes.Properties['customizeLabel'] = ({ value }) => {
     if (value > this.highAverage) {
       return getLabelsSettings(this.highAverageColor);
     } if (value < this.lowAverage) {

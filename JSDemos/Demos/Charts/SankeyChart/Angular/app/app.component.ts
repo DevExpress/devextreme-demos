@@ -21,7 +21,7 @@ export class AppComponent {
     this.data = service.getData();
   }
 
-  customizeLinkTooltip = ({ source, target, weight }: Parameters<DxSankeyTypes.Tooltip['customizeLinkTooltip']>[0]) => (
+  customizeLinkTooltip: DxSankeyTypes.Tooltip['customizeLinkTooltip'] = ({ source, target, weight }) => (
     {
       html: `<b>From:</b> ${source}<br/><b>To:</b> ${target}<br/><b>Weight:</b> ${weight}`,
     }

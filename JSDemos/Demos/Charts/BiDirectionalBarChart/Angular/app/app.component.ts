@@ -25,7 +25,7 @@ export class AppComponent {
     text: Math.abs(valueText),
   });
 
-  customizeLabel = ({ value }: Parameters<DxChartTypes.ValueAxisLabel['customizeText']>[0]) => `${Math.abs(value as number)}%`;
+  customizeLabel: DxChartTypes.ValueAxisLabel['customizeText'] = ({ value }) => `${Math.abs(value as number)}%`;
 }
 
 @NgModule({
