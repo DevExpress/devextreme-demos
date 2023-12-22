@@ -1,8 +1,7 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxNumberBoxModule } from 'devextreme-angular';
-import { DxNumberBoxTypes } from 'devextreme-angular/ui/number-box';
+import { DxNumberBoxModule, DxNumberBoxTypes } from 'devextreme-angular/ui/number-box';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

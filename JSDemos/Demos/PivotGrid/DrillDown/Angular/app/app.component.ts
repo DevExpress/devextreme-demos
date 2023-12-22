@@ -4,7 +4,6 @@ import {
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
-  DxPivotGridModule,
   DxDataGridComponent,
   DxDataGridModule,
   DxPopupModule,
@@ -12,7 +11,7 @@ import {
 } from 'devextreme-angular';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 import DataSource from 'devextreme/data/data_source';
-import { DxPivotGridTypes } from 'devextreme-angular/ui/pivot-grid';
+import { DxPivotGridModule, DxPivotGridTypes } from 'devextreme-angular/ui/pivot-grid';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

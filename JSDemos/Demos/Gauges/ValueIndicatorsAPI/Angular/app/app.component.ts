@@ -1,8 +1,8 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxCircularGaugeModule, DxNumberBoxModule, DxButtonModule } from 'devextreme-angular';
-import { DxCircularGaugeTypes } from 'devextreme-angular/ui/circular-gauge';
+import { DxNumberBoxModule, DxButtonModule } from 'devextreme-angular';
+import { DxCircularGaugeModule, DxCircularGaugeTypes } from 'devextreme-angular/ui/circular-gauge';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

@@ -1,8 +1,8 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxCheckBoxModule, DxGalleryModule } from 'devextreme-angular';
-import { DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
+import { DxGalleryModule } from 'devextreme-angular';
+import { DxCheckBoxModule, DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

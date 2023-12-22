@@ -1,13 +1,10 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxMapModule, DxSelectBoxModule } from 'devextreme-angular';
-import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
+import { DxMapModule } from 'devextreme-angular';
+import { DxSelectBoxModule, DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
 import {
-  Marker,
-  APIKey,
-  Route,
-  Service,
+  Marker, APIKey, Route, Service,
 } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

@@ -1,9 +1,8 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxGanttModule, DxCheckBoxModule } from 'devextreme-angular';
-import { DxGanttTypes } from 'devextreme-angular/ui/gantt';
-import { DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
+import { DxGanttModule, DxGanttTypes } from 'devextreme-angular/ui/gantt';
+import { DxCheckBoxModule, DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
 import {
   Service, Task, Dependency, Resource, ResourceAssignment,
 } from './app.service';

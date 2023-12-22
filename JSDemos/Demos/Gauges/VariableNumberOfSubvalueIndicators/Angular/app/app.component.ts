@@ -1,8 +1,8 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxLinearGaugeModule, DxSelectBoxModule } from 'devextreme-angular';
-import { DxCircularGaugeTypes } from 'devextreme-angular/ui/circular-gauge';
+import { DxSelectBoxModule } from 'devextreme-angular';
+import { DxLinearGaugeModule, DxLinearGaugeTypes } from 'devextreme-angular/ui/linear-gauge';
 import { Service, PowerInfo } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -25,7 +25,7 @@ export class AppComponent {
     this.currentValue = this.powerInfo[0];
   }
 
-  customizeText = ({ valueText }: Parameters<DxCircularGaugeTypes.ScaleLabel['customizeText']>[0]) => `${valueText} kW`;
+  customizeText = ({ valueText }: Parameters<DxLinearGaugeTypes.ScaleLabel['customizeText']>[0]) => `${valueText} kW`;
 
   customizeTooltip({ index, valueText }) {
     let result = `${valueText} kW`;

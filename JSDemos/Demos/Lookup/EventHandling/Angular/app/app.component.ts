@@ -1,9 +1,8 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxLookupModule, DxSelectBoxModule } from 'devextreme-angular';
-
-import { DxLookupTypes } from 'devextreme-angular/ui/lookup';
+import { DxSelectBoxModule } from 'devextreme-angular';
+import { DxLookupModule, DxLookupTypes } from 'devextreme-angular/ui/lookup';
 import { Service, Employee } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

@@ -1,10 +1,8 @@
 import { Component, NgModule, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  DxPopupModule, DxButtonModule, DxScrollViewModule, DxTemplateModule,
-} from 'devextreme-angular';
-import { DxButtonTypes } from 'devextreme-angular/ui/button';
+import { DxPopupModule, DxScrollViewModule, DxTemplateModule } from 'devextreme-angular';
+import { DxButtonModule, DxButtonTypes } from 'devextreme-angular/ui/button';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

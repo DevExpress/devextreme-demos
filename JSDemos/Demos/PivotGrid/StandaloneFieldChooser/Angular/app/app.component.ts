@@ -2,14 +2,13 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
-  DxPivotGridModule,
   DxPivotGridFieldChooserModule,
   DxRadioGroupModule,
   DxButtonModule,
   DxSelectBoxModule,
 } from 'devextreme-angular';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
-import { DxPivotGridTypes } from 'devextreme-angular/ui/pivot-grid';
+import { DxPivotGridModule, DxPivotGridTypes } from 'devextreme-angular/ui/pivot-grid';
 import { Service, Layout, Sale } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

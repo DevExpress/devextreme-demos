@@ -1,8 +1,8 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxRangeSelectorModule, DxDataGridModule } from 'devextreme-angular';
-import { DxRangeSelectorTypes } from 'devextreme-angular/ui/range-selector';
+import { DxDataGridModule } from 'devextreme-angular';
+import { DxRangeSelectorModule, DxRangeSelectorTypes } from 'devextreme-angular/ui/range-selector';
 import { Service, Employee } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

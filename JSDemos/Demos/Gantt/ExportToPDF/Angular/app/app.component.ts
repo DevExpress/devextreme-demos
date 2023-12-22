@@ -6,7 +6,6 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
   DxGanttComponent,
   DxGanttModule,
-  DxSelectBoxModule,
   DxCheckBoxModule,
   DxNumberBoxModule,
   DxDateBoxModule,
@@ -14,7 +13,7 @@ import {
 import { exportGantt as exportGanttToPdf } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
-import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
+import { DxSelectBoxModule, DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
 import { DxButtonTypes } from 'devextreme-angular/ui/button';
 import {
   Service, Task, Dependency, Resource, ResourceAssignment,

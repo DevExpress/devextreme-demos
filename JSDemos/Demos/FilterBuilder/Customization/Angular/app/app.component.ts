@@ -1,15 +1,8 @@
-import {
-  NgModule, Component, enableProdMode,
-} from '@angular/core';
+import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  DxListModule,
-  DxButtonModule,
-  DxTagBoxModule,
-  DxFilterBuilderModule, DxFilterBuilderComponent,
-} from 'devextreme-angular';
-import { DxFilterBuilderTypes } from 'devextreme-angular/ui/filter-builder';
+import { DxListModule, DxButtonModule, DxTagBoxModule } from 'devextreme-angular';
+import { DxFilterBuilderModule, DxFilterBuilderComponent, DxFilterBuilderTypes } from 'devextreme-angular/ui/filter-builder';
 import { Service } from './app.service';
 
 type FilterBuilderValue = ReturnType<DxFilterBuilderComponent['instance']['getFilterExpression']>;

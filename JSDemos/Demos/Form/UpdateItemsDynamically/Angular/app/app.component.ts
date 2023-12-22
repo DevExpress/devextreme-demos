@@ -1,11 +1,10 @@
-import {
-  NgModule, Component, enableProdMode,
-} from '@angular/core';
+import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxFormModule } from 'devextreme-angular';
 import { DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
 import { DxButtonTypes } from 'devextreme-angular/ui/button';
+import { DxTextBoxTypes } from 'devextreme-angular/ui/text-box';
 import { Employee, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -24,7 +23,7 @@ export class AppComponent {
 
   isHomeAddressVisible = true;
 
-  phoneOptions: Record<string, unknown>[] = [];
+  phoneOptions: DxTextBoxTypes.Properties[] = [];
 
   checkBoxOptions: DxCheckBoxTypes.Properties = {
     text: 'Show Address',
@@ -51,7 +50,7 @@ export class AppComponent {
 
   getPhonesOptions = (phones: string[]) => phones.map((_, index) => this.generateNewPhoneOptions(index));
 
-  generateNewPhoneOptions(index: number) {
+  generateNewPhoneOptions(index: number): DxTextBoxTypes.Properties {
     return {
       mask: '+1 (X00) 000-0000',
       maskRules: { X: /[01-9]/ },

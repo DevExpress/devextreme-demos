@@ -3,10 +3,7 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  DxHtmlEditorModule,
-  DxPopupModule,
-} from 'devextreme-angular';
+import { DxHtmlEditorModule, DxPopupModule } from 'devextreme-angular';
 import { DxButtonTypes } from 'devextreme-angular/ui/button';
 import { Service } from './app.service';
 
