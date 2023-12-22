@@ -3,14 +3,11 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { DatePipe } from '@angular/common';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxSelectBoxModule } from 'devextreme-angular';
-import { DxRangeSelectorComponent, DxRangeSelectorModule, DxRangeSelectorTypes } from 'devextreme-angular/ui/range-selector';
+import { DxRangeSelectorModule, DxRangeSelectorTypes } from 'devextreme-angular/ui/range-selector';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
-
-type SliderMarker = DxRangeSelectorComponent['sliderMarker'];
-type ArrowFunction<T> = T extends Function ? (...args: any) => any : never;
 
 @Component({
   selector: 'demo-app',
@@ -42,9 +39,9 @@ export class AppComponent {
     this.workingDaysCount = workingDaysCount;
   };
 
-  customizeSliderMarker = (data: Parameters<ArrowFunction<SliderMarker['customizeText']>>[0]) => this.pipe.transform(data.value, 'dd EEEE');
+  customizeSliderMarker: DxRangeSelectorTypes.Properties['sliderMarker']['customizeText'] = ({ value }) => this.pipe.transform(value, 'dd EEEE');
 
-  customizeLabel = (data: Parameters<ArrowFunction<SliderMarker['customizeText']>>[0]) => this.pipe.transform(data.value, 'MMM');
+  customizeLabel: DxRangeSelectorTypes.Properties['scale']['label']['customizeText'] = ({ value }) => this.pipe.transform(value, 'MMM');
 }
 
 @NgModule({

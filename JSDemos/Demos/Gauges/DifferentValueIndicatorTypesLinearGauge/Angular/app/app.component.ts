@@ -13,7 +13,7 @@ if (!/localhost/.test(document.location.host)) {
   styleUrls: ['app/app.component.css'],
 })
 export class AppComponent {
-  customizeText = ({ valueText }: Parameters<DxLinearGaugeTypes.ScaleLabel['customizeText']>[0]) => `${valueText} %`;
+  customizeText: DxLinearGaugeTypes.ScaleLabel['customizeText'] = ({ valueText }) => `${valueText} %`;
 }
 
 @NgModule({

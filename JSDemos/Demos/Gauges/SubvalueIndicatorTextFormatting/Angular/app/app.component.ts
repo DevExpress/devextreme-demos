@@ -13,7 +13,7 @@ if (!/localhost/.test(document.location.host)) {
   styleUrls: ['app/app.component.css'],
 })
 export class AppComponent {
-  customizeText = ({ valueText }: Parameters<DxCircularGaugeTypes.ScaleLabel['customizeText']>[0]) => `${valueText} °C`;
+  customizeText: DxCircularGaugeTypes.ScaleLabel['customizeText'] = ({ valueText }) => `${valueText} °C`;
 }
 
 @NgModule({

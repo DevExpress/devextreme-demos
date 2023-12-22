@@ -9,7 +9,7 @@ if (!/localhost/.test(document.location.host)) {
 }
 
 type ListItemDragging = DxListComponent['itemDragging'];
-type FirstArgument<T> = T extends (...args: any) => any ? Parameters<T>[0] : never;
+type FirstArgument<T> = T extends (firstArg: infer A, ...args: any) => any ? A : never;
 
 @Component({
   selector: 'demo-app',
@@ -28,21 +28,21 @@ export class AppComponent {
     this.plannedTasks = service.getPlannedTasks();
   }
 
-  onDragStart(e: FirstArgument<ListItemDragging['onDragStart']>) {
+  onDragStart: ListItemDragging['onDragStart'] = (e) => {
     e.itemData = e.fromData[e.fromIndex];
-  }
+  };
 
-  onAdd = (e: FirstArgument<ListItemDragging['onAdd']>) => {
+  onAdd: ListItemDragging['onAdd'] = (e) => {
     e.toData.splice(e.toIndex, 0, e.itemData);
   };
 
-  onRemove = (e: FirstArgument<ListItemDragging['onRemove']>) => {
+  onRemove: ListItemDragging['onRemove'] = (e) => {
     e.fromData.splice(e.fromIndex, 1);
   };
 
-  onReorder = (e: FirstArgument<ListItemDragging['onReorder']>) => {
-    this.onRemove(e as FirstArgument<ListItemDragging['onRemove']>);
-    this.onAdd(e as FirstArgument<ListItemDragging['onAdd']>);
+  onReorder: ListItemDragging['onReorder'] = (e) => {
+    this.onRemove(e as FirstArgument<typeof this.onRemove>);
+    this.onAdd(e as FirstArgument<typeof this.onAdd>);
   };
 }
 

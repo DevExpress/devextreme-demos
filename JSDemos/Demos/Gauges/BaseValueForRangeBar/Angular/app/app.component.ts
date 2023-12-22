@@ -16,7 +16,7 @@ type ScaleLabel = DxLinearGaugeTypes.ScaleLabel | DxCircularGaugeTypes.ScaleLabe
   styleUrls: ['app/app.component.css'],
 })
 export class AppComponent {
-  customizeText = ({ valueText }: Parameters<ScaleLabel['customizeText']>[0]) => `${valueText}°`;
+  customizeText: ScaleLabel['customizeText'] = ({ valueText }) => `${valueText}°`;
 }
 
 @NgModule({

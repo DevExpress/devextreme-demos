@@ -25,7 +25,7 @@ export class AppComponent {
     this.currentValue = this.powerInfo[0];
   }
 
-  customizeText = ({ valueText }: Parameters<DxLinearGaugeTypes.ScaleLabel['customizeText']>[0]) => `${valueText} kW`;
+  customizeText: DxLinearGaugeTypes.ScaleLabel['customizeText'] = ({ valueText }) => `${valueText} kW`;
 
   customizeTooltip({ index, valueText }) {
     let result = `${valueText} kW`;

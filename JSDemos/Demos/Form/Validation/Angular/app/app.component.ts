@@ -197,9 +197,7 @@ export class AppComponent {
     return startDate !== null && endDate !== null;
   }
 
-  asyncValidation({ value }: Parameters<AsyncRule['validationCallback']>[0]) {
-    return sendRequest(value);
-  }
+  asyncValidation: AsyncRule['validationCallback'] = ({ value }) => sendRequest(value);
 
   onFormSubmit = (e: SubmitEvent) => {
     notify({

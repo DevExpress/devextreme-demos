@@ -22,7 +22,7 @@ export class AppComponent {
 
   gaugeSubvalues = [12, 23];
 
-  customizeText = ({ valueText }: Parameters<DxCircularGaugeTypes.ScaleLabel['customizeText']>[0]) => `${valueText} kV`;
+  customizeText: DxCircularGaugeTypes.ScaleLabel['customizeText'] = ({ valueText }) => `${valueText} kV`;
 
   updateValues() {
     this.gaugeValue = this.mainGenerator;
