@@ -5,15 +5,10 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
-import {
-  DxDropDownBoxModule,
-  DxTreeViewModule,
-  DxDataGridModule,
-  DxTreeViewComponent,
-} from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
-import { DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
-import { DxDropDownBoxTypes } from 'devextreme-angular/ui/drop-down-box';
+import { DxDataGridModule } from 'devextreme-angular';
+import { DxTreeViewModule, DxTreeViewComponent, DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
+import { DxDropDownBoxModule, DxDropDownBoxTypes } from 'devextreme-angular/ui/drop-down-box';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

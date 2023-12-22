@@ -4,13 +4,8 @@ import {
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import notify from 'devextreme/ui/notify';
-
-import {
-  DxDropDownButtonModule,
-  DxToolbarModule,
-  DxDropDownButtonComponent,
-} from 'devextreme-angular';
-import { DxDropDownButtonTypes } from 'devextreme-angular/ui/drop-down-button';
+import { DxToolbarModule } from 'devextreme-angular';
+import { DxDropDownButtonModule, DxDropDownButtonComponent, DxDropDownButtonTypes } from 'devextreme-angular/ui/drop-down-button';
 import { SimpleObject, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

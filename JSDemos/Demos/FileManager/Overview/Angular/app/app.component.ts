@@ -1,9 +1,9 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxFileManagerModule, DxPopupModule } from 'devextreme-angular';
 import RemoteFileSystemProvider from 'devextreme/file_management/remote_provider';
-import { DxFileManagerTypes } from 'devextreme-angular/ui/file-manager';
+import { DxPopupModule } from 'devextreme-angular';
+import { DxFileManagerModule, DxFileManagerTypes } from 'devextreme-angular/ui/file-manager';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

@@ -4,10 +4,9 @@ import {
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClientModule } from '@angular/common/http';
-import { DxDiagramModule, DxDiagramComponent } from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
 import ArrayStore from 'devextreme/data/array_store';
-import { DxDiagramTypes } from 'devextreme-angular/ui/diagram';
+import { DxDiagramModule, DxDiagramComponent, DxDiagramTypes } from 'devextreme-angular/ui/diagram';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

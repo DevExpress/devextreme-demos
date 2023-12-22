@@ -1,13 +1,9 @@
 import { Component, NgModule, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  DxTextBoxModule,
-  DxNumberBoxModule,
-  DxDateBoxModule,
-} from 'devextreme-angular';
+import { DxNumberBoxModule, DxDateBoxModule } from 'devextreme-angular';
 import { DxButtonTypes } from 'devextreme-angular/ui/button';
-import { DxTextBoxTypes } from 'devextreme-angular/ui/text-box';
+import { DxTextBoxModule, DxTextBoxTypes } from 'devextreme-angular/ui/text-box';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

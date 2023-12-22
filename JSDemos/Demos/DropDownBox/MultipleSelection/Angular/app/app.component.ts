@@ -5,14 +5,9 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
-import {
-  DxDropDownBoxModule,
-  DxTreeViewModule,
-  DxDataGridModule,
-  DxTreeViewComponent,
-} from 'devextreme-angular';
+import { DxDropDownBoxModule, DxDataGridModule } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
-import { DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
+import { DxTreeViewModule, DxTreeViewComponent, DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

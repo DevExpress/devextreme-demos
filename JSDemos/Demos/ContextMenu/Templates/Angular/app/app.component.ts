@@ -1,9 +1,9 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxContextMenuModule, DxTemplateModule } from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
-import { DxContextMenuTypes } from 'devextreme-angular/ui/context-menu';
+import { DxTemplateModule } from 'devextreme-angular';
+import { DxContextMenuModule, DxContextMenuTypes } from 'devextreme-angular/ui/context-menu';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
