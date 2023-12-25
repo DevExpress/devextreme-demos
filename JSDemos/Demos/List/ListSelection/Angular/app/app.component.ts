@@ -4,8 +4,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxSelectBoxModule, DxListModule, DxCheckBoxModule } from 'devextreme-angular';
 import DataSource from 'devextreme/data/data_source';
 import ArrayStore from 'devextreme/data/array_store';
-
-import { Task, Service } from './app.service';
+import { DxListTypes } from 'devextreme-angular/ui/list';
+import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -21,9 +21,9 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   tasks: DataSource;
 
-  selectAllModeValue = 'page';
+  selectAllModeValue: DxListTypes.SelectAllMode = 'page';
 
-  selectionModeValue = 'all';
+  selectionModeValue: DxListTypes.Properties['selectionMode'] = 'all';
 
   selectByClick = false;
 

@@ -20,14 +20,12 @@ export class AppComponent {
 
   selectedEmployee: Employee;
 
-  applyValueMode: string;
+  applyValueMode: DxLookupTypes.ApplyValueMode = 'instantly';
 
-  applyValueModes: string[];
+  applyValueModes: DxLookupTypes.ApplyValueMode[] = ['instantly', 'useButtons'];
 
   constructor(service: Service) {
     this.employees = service.getEmployees();
-    this.applyValueMode = 'instantly';
-    this.applyValueModes = ['instantly', 'useButtons'];
   }
 
   valueChanged({ value }: DxLookupTypes.ValueChangedEvent) {

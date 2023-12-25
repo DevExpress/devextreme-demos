@@ -1,13 +1,8 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  DxCheckBoxModule,
-  DxSelectBoxModule,
-  DxNumberBoxModule,
-  DxFormModule,
-} from 'devextreme-angular';
-
+import { DxCheckBoxModule, DxSelectBoxModule, DxNumberBoxModule } from 'devextreme-angular';
+import { DxFormModule, DxFormTypes } from 'devextreme-angular/ui/form';
 import { Company, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -23,27 +18,21 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   companies: Company[];
 
-  labelMode: string;
-
-  labelLocation: string;
-
-  readOnly: boolean;
-
-  showColon: boolean;
-
-  minColWidth: number;
-
-  colCount: number;
-
   width: number;
 
+  labelMode: DxFormTypes.FormLabelMode = 'floating';
+
+  labelLocation: DxFormTypes.LabelLocation = 'left';
+
+  readOnly = false;
+
+  showColon = true;
+
+  minColWidth = 300;
+
+  colCount = 2;
+
   constructor(service: Service) {
-    this.labelMode = 'floating';
-    this.labelLocation = 'left';
-    this.readOnly = false;
-    this.showColon = true;
-    this.minColWidth = 300;
-    this.colCount = 2;
     this.companies = service.getCompanies();
   }
 
