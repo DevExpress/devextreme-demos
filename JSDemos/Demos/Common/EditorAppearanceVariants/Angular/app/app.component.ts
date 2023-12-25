@@ -3,7 +3,6 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
   DxSelectBoxModule,
-  DxTextBoxModule,
   DxTextAreaModule,
   DxTagBoxModule,
   DxDateBoxModule,
@@ -12,7 +11,7 @@ import {
   DxDateRangeBoxModule,
 } from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
-
+import { DxTextBoxModule, DxTextBoxTypes } from 'devextreme-angular/ui/text-box';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -28,9 +27,9 @@ if (!/localhost/.test(document.location.host)) {
 })
 
 export class AppComponent {
-  stylingMode = 'outlined';
+  stylingMode: DxTextBoxTypes.Properties['stylingMode'] = 'outlined';
 
-  labelMode = 'static';
+  labelMode: DxTextBoxTypes.Properties['labelMode'] = 'static';
 
   birthDate = new Date(1981, 5, 3);
 

@@ -8,6 +8,7 @@ import {
   DxCalendarModule,
   DxTemplateModule,
 } from 'devextreme-angular';
+import {DxCalendarTypes} from "devextreme-angular/ui/calendar";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -20,11 +21,11 @@ if (!/localhost/.test(document.location.host)) {
 })
 
 export class AppComponent {
-  now: Date = new Date();
+  now = new Date();
 
-  currentValue: Date = new Date();
+  currentValue = new Date();
 
-  zoomLevels: string[] = [
+  zoomLevels: DxCalendarTypes.CalendarZoomLevel[] = [
     'month', 'year', 'decade', 'century',
   ];
 
@@ -38,7 +39,7 @@ export class AppComponent {
     { id: 6, text: 'Saturday' },
   ];
 
-  weekNumberRules: string[] = [
+  weekNumberRules: DxCalendarTypes.WeekNumberRule[] = [
     'auto', 'firstDay', 'firstFourDays', 'fullWeek',
   ];
 
@@ -46,7 +47,7 @@ export class AppComponent {
 
   holidays = [[1, 0], [4, 6], [25, 11]];
 
-  isWeekend(date) {
+  isWeekend(date: Date) {
     const day = date.getDay();
 
     return day === 0 || day === 6;

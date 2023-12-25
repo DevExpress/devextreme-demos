@@ -6,7 +6,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import notify from 'devextreme/ui/notify';
 import { DxToolbarModule } from 'devextreme-angular';
 import { DxDropDownButtonModule, DxDropDownButtonComponent, DxDropDownButtonTypes } from 'devextreme-angular/ui/drop-down-button';
-import { SimpleObject, Service } from './app.service';
+import { ItemObject, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -21,34 +21,29 @@ type Color = string;
   providers: [Service],
 })
 export class AppComponent {
-  fontSize: number;
-
-  color: string;
-
-  lineHeight: number;
-
-  alignment: string;
-
   dropDownButton: DxDropDownButtonComponent['instance'];
 
   colors: Color[];
 
   downloads: string[];
 
-  profileSettings: SimpleObject[];
+  profileSettings: ItemObject[];
 
-  fontSizes: SimpleObject[];
+  fontSizes: ItemObject[];
 
-  lineHeights: SimpleObject[];
+  lineHeights: ItemObject[];
 
-  alignments: SimpleObject[];
+  alignments: ItemObject[];
+
+  fontSize = 14;
+
+  color: string = null;
+
+  lineHeight = 1.35;
+
+  alignment = 'left';
 
   constructor(service: Service) {
-    this.fontSize = 14;
-    this.color = null;
-    this.lineHeight = 1.35;
-    this.alignment = 'left';
-
     this.colors = service.getColors();
     this.fontSizes = service.getFontSizes();
     this.downloads = service.getDownloads();
