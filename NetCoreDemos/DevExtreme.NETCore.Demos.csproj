@@ -22,7 +22,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.12" />
     <PackageReference Include="DevExtreme.AspNet.Data" Version="3.0.0" />
-    <PackageReference Include="DevExtreme.AspNet.Core" Version="23.2.0" />
+    <PackageReference Include="DevExtreme.AspNet.Core" Version="24.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.12" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.NewtonsoftJson" Version="6.0.12" />
   </ItemGroup>
