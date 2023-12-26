@@ -1,7 +1,5 @@
-import {
-  Injectable,
-} from '@angular/core';
-import {DxChartTypes} from "devextreme-angular/ui/chart";
+import { Injectable } from '@angular/core';
+import { DxChartTypes } from 'devextreme-angular/ui/chart';
 
 export class DataItem {
   arg: string;
