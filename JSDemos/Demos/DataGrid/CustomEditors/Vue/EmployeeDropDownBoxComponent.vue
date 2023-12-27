@@ -43,9 +43,9 @@ import {
   DxColumn,
   DxDataGridTypes,
 } from 'devextreme-vue/data-grid';
-
-import DxDropDownBox from 'devextreme-vue/drop-down-box';
+import DxDropDownBox, { DxDropDownBoxTypes } from 'devextreme-vue/drop-down-box';
 import CustomStore from 'devextreme/data/custom_store';
+import {DxPopupTypes} from "devextreme-vue/popup";
 
 const props = defineProps<{
   value: number,
@@ -56,7 +56,7 @@ const props = defineProps<{
 
 const currentValue = ref(props.value);
 const dropDownBoxRef = ref<DxDropDownBox | null>(null);
-const dropDownOptions = { width: 500 };
+const dropDownOptions: DxDropDownBoxTypes.Properties['dropDownOptions'] = { width: 500 };
 
 const onSelectionChanged = (e: DxDataGridTypes.SelectionChangedEvent) => {
   currentValue.value = e.selectedRowKeys[0];
