@@ -30,7 +30,7 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   salesAmount: SalesAmount[];
 
-  options: ColorizationOption [ 'options' ];
+  options: ColorizationOption[ 'options' ];
 
   colorizationOptions: ColorizationOption[] = [{
     name: 'Discrete',
