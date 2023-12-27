@@ -45,7 +45,6 @@ import {
 } from 'devextreme-vue/data-grid';
 import DxDropDownBox, { DxDropDownBoxTypes } from 'devextreme-vue/drop-down-box';
 import CustomStore from 'devextreme/data/custom_store';
-import {DxPopupTypes} from "devextreme-vue/popup";
 
 const props = defineProps<{
   value: number,
