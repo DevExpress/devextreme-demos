@@ -1,7 +1,9 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxListModule, DxButtonModule, DxTagBoxModule } from 'devextreme-angular';
+import { DxListModule } from 'devextreme-angular/ui/list';
+import { DxButtonModule } from 'devextreme-angular/ui/button';
+import { DxTagBoxModule } from 'devextreme-angular/ui/tag-box';
 import { DxFilterBuilderModule, DxFilterBuilderComponent, DxFilterBuilderTypes } from 'devextreme-angular/ui/filter-builder';
 import { Service } from './app.service';
 
