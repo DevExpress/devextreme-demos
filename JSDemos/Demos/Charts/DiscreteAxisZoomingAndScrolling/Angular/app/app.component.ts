@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxRangeSelectorModule } from 'devextreme-angular';
+import { DxRangeSelectorModule } from 'devextreme-angular/ui/range-selector';
 import { DxChartModule, DxChartTypes } from 'devextreme-angular/ui/chart';
 import { Service, ChemicalComposition, SerieDescription } from './app.service';
 
