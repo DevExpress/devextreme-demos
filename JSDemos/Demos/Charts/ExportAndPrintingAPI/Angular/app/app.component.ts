@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxButtonModule } from 'devextreme-angular';
+import { DxButtonModule } from 'devextreme-angular/ui/button';
 import { DxChartModule, DxChartComponent, DxChartTypes } from 'devextreme-angular/ui/chart';
 import { Service, Mountain } from './app.service';
 
