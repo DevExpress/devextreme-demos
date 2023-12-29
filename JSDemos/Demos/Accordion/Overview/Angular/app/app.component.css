@@ -15,14 +15,6 @@
   margin-right: 400px;
 }
 
-::ng-deep .dx-theme-material #accordion .dx-accordion-item-title {
-  display: flex;
-}
-
-::ng-deep .dx-theme-material #accordion .header {
-  align-self: center;
-}
-
 ::ng-deep .options {
   padding: 20px;
   position: absolute;

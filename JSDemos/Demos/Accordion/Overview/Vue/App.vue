@@ -91,14 +91,6 @@ const animationDuration = ref(300);
   margin-right: 400px;
 }
 
-.dx-theme-material #accordion .dx-accordion-item-title {
-  display: flex;
-}
-
-.dx-theme-material #accordion .header {
-  align-self: center;
-}
-
 .options {
   padding: 20px;
   position: absolute;
