@@ -105,9 +105,4 @@ function selectLanguage(e) {
     font-weight: 500;
     padding-right: 15px;
   }
-
-  .dx-theme-material .dx-accordion .dx-accordion-item-opened .dx-accordion-item-title {
-    padding-top: 20px;
-  }
-
 </style>
