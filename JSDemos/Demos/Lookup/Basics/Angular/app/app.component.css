@@ -1,5 +1,4 @@
-::ng-deep .dx-theme-generic .dx-fieldset,
-::ng-deep .dx-theme-material .dx-fieldset {
+::ng-deep .dx-fieldset {
   width: 40%;
   float: left;
 }

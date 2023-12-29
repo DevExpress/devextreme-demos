@@ -1,5 +1,4 @@
-.dx-theme-generic .dx-fieldset,
-.dx-theme-material .dx-fieldset {
+.dx-fieldset {
   width: 40%;
   float: left;
 }
