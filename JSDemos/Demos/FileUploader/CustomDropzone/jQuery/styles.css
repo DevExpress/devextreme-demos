@@ -5,6 +5,7 @@
   border-width: 2px;
   border-style: dashed;
   padding: 10px;
+  border-color: var(--border-color);
 }
 
 #dropzone-external > * {
@@ -13,6 +14,7 @@
 
 #dropzone-external.dropzone-active {
   border-style: solid;
+  border-color: var(--accent-color);
 }
 
 .widget-container > span {
