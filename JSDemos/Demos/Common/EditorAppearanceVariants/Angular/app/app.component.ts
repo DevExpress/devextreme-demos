@@ -12,6 +12,7 @@ import {
 } from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
 import { DxTextBoxModule, DxTextBoxTypes } from 'devextreme-angular/ui/text-box';
+import { LabelMode } from 'devextreme-angular/common';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -29,7 +30,7 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   stylingMode: DxTextBoxTypes.Properties['stylingMode'] = 'outlined';
 
-  labelMode: DxTextBoxTypes.Properties['labelMode'] = 'static';
+  labelMode: LabelMode = 'static';
 
   birthDate = new Date(1981, 5, 3);
 

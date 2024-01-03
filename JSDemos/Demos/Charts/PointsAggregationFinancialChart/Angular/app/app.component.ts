@@ -4,7 +4,8 @@ import {
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxRangeSelectorModule } from 'devextreme-angular';
-import { DxChartModule, DxChartComponent, DxChartTypes } from 'devextreme-angular/ui/chart';
+import { VisualRange } from 'devextreme-angular/common/charts';
+import { DxChartModule, DxChartComponent } from 'devextreme-angular/ui/chart';
 import { Service, StockPrice } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -22,7 +23,7 @@ export class AppComponent {
 
   stockPrices: StockPrice[];
 
-  visualRange: DxChartTypes.ArgumentAxis['visualRange'] = {};
+  visualRange: VisualRange = {};
 
   constructor(service: Service) {
     this.stockPrices = service.getStockPrices();

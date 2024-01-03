@@ -22,7 +22,7 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   dataSource: ArrayStore;
 
-  selectedItems: DxDiagramTypes.SelectionChangedEvent['items'];
+  selectedItems: DxDiagramTypes.Item[];
 
   constructor(service: Service) {
     this.dataSource = new ArrayStore({

@@ -3,8 +3,8 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxSelectBoxModule } from 'devextreme-angular';
 import { getPalette } from 'devextreme/viz/palette';
+import { Palette, PaletteExtensionMode } from 'devextreme-angular/common/charts';
 import { DxPieChartModule, DxPieChartTypes } from 'devextreme-angular/ui/pie-chart';
-import { PaletteExtensionMode } from 'devextreme-angular/common/charts';
 import { DataItem, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -22,11 +22,11 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   data: DataItem[];
 
-  paletteCollection: DxPieChartTypes.Properties['palette'][];
+  paletteCollection: Palette[];
 
-  paletteExtensionModes: DxPieChartTypes.Properties['paletteExtensionMode'][];
+  paletteExtensionModes: PaletteExtensionMode[];
 
-  palette: DxPieChartTypes.Properties['palette'];
+  palette: Palette;
 
   paletteExtensionMode: PaletteExtensionMode = 'blend';
 
