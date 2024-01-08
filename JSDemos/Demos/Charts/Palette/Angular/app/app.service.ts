@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Palette, PaletteExtensionMode} from 'devextreme-angular/common/charts';
+import { Palette, PaletteExtensionMode } from 'devextreme-angular/common/charts';
 
 export class DataItem {
   arg: string;

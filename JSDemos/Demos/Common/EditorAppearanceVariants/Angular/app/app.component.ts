@@ -12,8 +12,7 @@ import {
   DxTextBoxModule,
 } from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
-import { EditorStyle } from 'devextreme-angular/common';
-import { LabelMode } from 'devextreme-angular/common';
+import { EditorStyle, LabelMode } from 'devextreme-angular/common';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

@@ -4,7 +4,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxSelectBoxModule } from 'devextreme-angular';
 import { getPalette } from 'devextreme/viz/palette';
 import { Palette, PaletteExtensionMode } from 'devextreme-angular/common/charts';
-import { DxPieChartModule, DxPieChartTypes } from 'devextreme-angular/ui/pie-chart';
+import { DxPieChartModule } from 'devextreme-angular/ui/pie-chart';
 import { DataItem, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
