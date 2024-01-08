@@ -1,7 +1,7 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxListComponent, DxListModule } from 'devextreme-angular';
+import { DxListComponent, DxListModule } from 'devextreme-angular/ui/list';
 import { Task, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

@@ -1,7 +1,7 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxFormModule } from 'devextreme-angular';
+import { DxFormModule } from 'devextreme-angular/ui/form';
 import { DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
 import { DxButtonTypes } from 'devextreme-angular/ui/button';
 import { DxTextBoxTypes } from 'devextreme-angular/ui/text-box';
