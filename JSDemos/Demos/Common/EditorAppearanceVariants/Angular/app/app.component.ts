@@ -9,9 +9,10 @@ import {
   DxButtonModule,
   DxValidatorModule,
   DxDateRangeBoxModule,
+  DxTextBoxModule,
 } from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
-import { DxTextBoxModule, DxTextBoxTypes } from 'devextreme-angular/ui/text-box';
+import { EditorStyle } from 'devextreme-angular/common';
 import { LabelMode } from 'devextreme-angular/common';
 import { Service } from './app.service';
 
@@ -28,7 +29,7 @@ if (!/localhost/.test(document.location.host)) {
 })
 
 export class AppComponent {
-  stylingMode: DxTextBoxTypes.Properties['stylingMode'] = 'outlined';
+  stylingMode: EditorStyle = 'outlined';
 
   labelMode: LabelMode = 'static';
 
@@ -42,6 +43,7 @@ export class AppComponent {
 
   validateClick({ validationGroup }) {
     const result = validationGroup.validate();
+
     if (result.isValid) {
       notify('The task was saved successfully.', 'success');
     } else {

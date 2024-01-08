@@ -24,7 +24,7 @@ export class AppComponent {
 
   priceValue = 14500.55;
 
-  passwordMode: DxTextBoxTypes.Properties['mode'] = 'password';
+  passwordMode: DxTextBoxTypes.TextBoxType = 'password';
 
   dateValue = new Date().getTime();
 

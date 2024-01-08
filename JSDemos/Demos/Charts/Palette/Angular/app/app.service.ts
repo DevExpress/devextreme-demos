@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DxChartTypes } from 'devextreme-angular/ui/chart';
-import { Palette } from 'devextreme-angular/common/charts';
+import {Palette, PaletteExtensionMode} from 'devextreme-angular/common/charts';
 
 export class DataItem {
   arg: string;
@@ -21,7 +20,7 @@ export class Service {
     return ['Material', 'Soft Pastel', 'Harmony Light', 'Pastel', 'Bright', 'Soft', 'Ocean', 'Office', 'Vintage', 'Violet', 'Carmine', 'Dark Moon', 'Soft Blue', 'Dark Violet', 'Green Mist'];
   }
 
-  getPaletteExtensionModes(): DxChartTypes.Properties['paletteExtensionMode'][] {
+  getPaletteExtensionModes(): PaletteExtensionMode[] {
     return ['alternate', 'blend', 'extrapolate'];
   }
 }
