@@ -4,6 +4,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxSelectBoxModule, DxListModule, DxCheckBoxModule } from 'devextreme-angular';
 import DataSource from 'devextreme/data/data_source';
 import ArrayStore from 'devextreme/data/array_store';
+import { SingleMultipleAllOrNone } from "devextreme/common";
 import { DxListTypes } from 'devextreme-angular/ui/list';
 import { Service } from './app.service';
 
@@ -23,7 +24,7 @@ export class AppComponent {
 
   selectAllModeValue: DxListTypes.SelectAllMode = 'page';
 
-  selectionModeValue: DxListTypes.Properties['selectionMode'] = 'all';
+  selectionModeValue: SingleMultipleAllOrNone = 'all';
 
   selectByClick = false;
 

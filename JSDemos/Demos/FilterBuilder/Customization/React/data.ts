@@ -17,7 +17,7 @@ export const categories = [
   'Automation',
 ];
 export const groupOperations: FilterBuilderTypes.GroupOperation[] = ['and', 'or'];
-export const fields: FilterBuilderTypes.Properties['fields'] = [{
+export const fields: FilterBuilderTypes.Field[] = [{
   dataField: 'Name',
 }, {
   dataField: 'Price',
