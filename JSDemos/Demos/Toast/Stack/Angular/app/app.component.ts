@@ -9,11 +9,13 @@ import {
 } from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
 import hideToasts from 'devextreme/ui/toast/hide_toasts';
-import DevExpress from 'devextreme';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+
+type Position = Parameters<typeof notify>[1]['position'];
+type Direction = Parameters<typeof notify>[1]['direction'];
 
 @Component({
   selector: 'demo-app',
@@ -23,13 +25,13 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   types: string[] = ['error', 'info', 'success', 'warning'];
 
-  positions: string[] = [
+  positions: Position[] = [
     'top left', 'top center', 'top right',
     'bottom left', 'bottom center', 'bottom right',
     'left center', 'center', 'right center',
   ];
 
-  directions: string[] = [
+  directions: Direction[] = [
     'down-push', 'down-stack', 'up-push', 'up-stack',
     'left-push', 'left-stack', 'right-push', 'right-stack',
   ];
@@ -38,16 +40,16 @@ export class AppComponent {
 
   isPredefined = true;
 
-  predefinedPosition = 'bottom center';
+  predefinedPosition: Position = 'bottom center';
 
-  coordinatePosition: object = {
+  coordinatePosition: Position = {
     top: undefined,
     bottom: undefined,
     left: undefined,
     right: undefined,
   };
 
-  direction = 'up-push';
+  direction: Direction = 'up-push';
 
   show() {
     const position = this.isPredefined ? this.predefinedPosition : this.coordinatePosition;
@@ -67,7 +69,7 @@ export class AppComponent {
         hide: { type: 'fade', duration: 40, to: 0 },
       },
     },
-    { position, direction } as DevExpress.ui.Stack);
+    { position, direction });
     this.id += 1;
   }
 
